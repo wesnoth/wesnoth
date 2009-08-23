@@ -791,6 +791,14 @@ void server::run() {
 			}
 			// Was the player in the lobby or a game?
 			if (rooms_.in_lobby(e.socket)) {
+
+				// Find the matching nick-ip pair in the log and update the sign off time
+				connection_log ip_name = connection_log(pl_it->second.name(), ip, 0);
+				std::deque<connection_log>::iterator i = std::find(ip_log_.begin(), ip_log_.end(), ip_name);
+				if(i != ip_log_.end()) {
+					i->log_off = time(NULL);
+				}
+
 				rooms_.remove_player(e.socket);
 				LOG_SERVER << ip << "\t" << pl_it->second.name()
 					<< "\thas logged off. (socket: " << e.socket << ")\n";
@@ -1131,7 +1139,7 @@ void server::process_login(const network::connection sock,
 	}
 
 	// Log the IP
-	std::pair<std::string, std::string> ip_name = std::make_pair(username, network::ip_address(sock));
+	connection_log ip_name = connection_log(username, network::ip_address(sock), 0);
 	if (std::find(ip_log_.begin(), ip_log_.end(), ip_name) == ip_log_.end()) {
 		ip_log_.push_back(ip_name);
 		// Remove the oldest entry if the size of the IP log exceeds the maximum size
@@ -1508,11 +1516,11 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 				// If nobody was banned yet check the ip_log but only if a
 				// simple username was used to prevent accidental bans.
 				if (utils::isvalid_username(target)) {
-					for (std::deque<std::pair<std::string, std::string> >::const_iterator i = ip_log_.begin();
+					for (std::deque<connection_log>::const_iterator i = ip_log_.begin();
 							i != ip_log_.end(); i++) {
-						if (i->first == target) {
+						if (i->nick == target) {
 							banned = true;
-							out << ban_manager_.ban(i->second, parsed_time, reason, issuer_name, group, target);
+							out << ban_manager_.ban(i->ip, parsed_time, reason, issuer_name, group, target);
 						}
 					}
 				}
@@ -1593,10 +1601,10 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 
 		// If a simple username is given we'll check for its IP instead.
 		if (utils::isvalid_username(parameters)) {
-			for (std::deque<std::pair<std::string, std::string> >::const_iterator i = ip_log_.begin();
+			for (std::deque<connection_log>::const_iterator i = ip_log_.begin();
 					i != ip_log_.end(); ++i) {
-				if (parameters == i->first) {
-					parameters = i->second;
+				if (parameters == i->nick) {
+					parameters = i->ip;
 					found_something = true;
 					break;
 				}
@@ -1610,32 +1618,32 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 		// If this looks like an IP look up which nicks have been connected from it
 		// Otherwise look for the last IP the nick used to connect
 		if (std::count(parameters.begin(), parameters.end(), '.') >= 1) {
-			for (std::deque<std::pair<std::string, std::string> >::const_iterator i = ip_log_.begin();
+			for (std::deque<connection_log>::const_iterator i = ip_log_.begin();
 					i != ip_log_.end(); i++) {
-				const std::string& username = i->first;
-				const std::string& ip = i->second;
+				const std::string& username = i->nick;
+				const std::string& ip = i->ip;
 				if (utils::wildcard_string_match(ip, parameters)) {
 					found_something = true;
 					wesnothd::player_map::const_iterator pl = std::find_if(players_.begin(), players_.end(), boost::bind(&::match_ip, _1, ip));
 					if (pl != players_.end()) {
 						out << std::endl << player_status(pl);
 					} else {
-						out << "\n'" << username << "' @ " << ip;
+						out << "\n'" << username << "' @ " << ip << " last seen: " << ctime(&(i->log_off));
 					}
 				}
 			}
 		} else {
-			for (std::deque<std::pair<std::string, std::string> >::const_iterator i = ip_log_.begin();
+			for (std::deque<connection_log>::const_iterator i = ip_log_.begin();
 					i != ip_log_.end(); i++) {
-				const std::string& username = i->first;
-				const std::string& ip = i->second;
+				const std::string& username = i->nick;
+				const std::string& ip = i->ip;
 				if (utils::wildcard_string_match(username, parameters)) {
 					found_something = true;
 					wesnothd::player_map::const_iterator pl = std::find_if(players_.begin(), players_.end(), boost::bind(&::match_username, _1, username));
 					if (pl != players_.end()) {
 						out << std::endl << player_status(pl);
 					} else {
-						out << "\n'" << username << "' @ " << ip;
+						out << "\n'" << username << "' @ " << ip << " last seen: " << ctime(&(i->log_off));
 					}
 				}
 			}
