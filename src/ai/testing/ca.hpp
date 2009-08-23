@@ -263,9 +263,7 @@ public:
 	virtual bool execute();
 private:
 
-	map_location from_;
-
-	map_location to_;
+	move_result_ptr move_;
 };
 
 //============================================================================

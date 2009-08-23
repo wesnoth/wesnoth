@@ -1556,7 +1556,7 @@ void get_villages_phase::dump_reachmap(treachmap& reachmap)
 //==============================================================
 
 get_healing_phase::get_healing_phase( rca_context &context, const config &cfg )
-	: candidate_action(context,cfg),from_(),to_()
+	: candidate_action(context,cfg),move_()
 {
 }
 
@@ -1605,8 +1605,7 @@ double get_healing_phase::evaluate()
 			// If we have found an eligible village,
 			// and we can move there without expecting to get whacked next turn:
 			if(best_loc != it.second && best_vulnerability*leader_penalty < u.hitpoints()) {
-				from_ = best_loc->first;
-				to_ = best_loc->second;
+				move_ = check_move_action(best_loc->first,best_loc->second,true);
 				return 30; //@todo: externalize
 			}
 		}
@@ -1617,33 +1616,20 @@ double get_healing_phase::evaluate()
 
 bool get_healing_phase::execute()
 {
-	if (from_==to_){
-		stopunit_result_ptr stop_res = execute_stopunit_action(from_,true,false);
-		if (!stop_res->is_ok()) {
-			if (!stop_res->is_gamestate_changed()) {
-				return false;
-			}
-			return true;
-		}
-
-		return true;
-	}
-
 	LOG_AI_TESTING_AI_DEFAULT << "moving unit to village for healing...\n";
-	move_result_ptr move_res = execute_move_action(from_,to_,true);
-	if (!move_res->is_ok()) {
-		if (!move_res->is_gamestate_changed()) {
-			return false;
-		}
-		return true;
+	bool gamestate_changed = false;
+	move_->execute();
+	if (!move_->is_ok()){
+		LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute not ok" << std::endl;
 	}
-	return true;
+	gamestate_changed |= move_->is_gamestate_changed();
+	return gamestate_changed;
 }
 
 //==============================================================
 
 retreat_phase::retreat_phase( rca_context &context, const config &cfg )
-	: candidate_action(context,cfg)
+	: candidate_action(context,cfg), move_()
 {
 }
 
