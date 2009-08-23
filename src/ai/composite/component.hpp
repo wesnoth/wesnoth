@@ -39,7 +39,7 @@ namespace ai {
 struct path_element {
 	std::string property;
 	std::string id;
-	std::string position;
+	int position;
 };
 
 

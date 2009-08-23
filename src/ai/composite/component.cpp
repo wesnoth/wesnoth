@@ -22,6 +22,7 @@
 #include "../formula/ai.hpp"
 #include "../../log.hpp"
 
+#include <boost/lexical_cast.hpp>
 #include <boost/regex.hpp>
 
 namespace ai {
@@ -86,7 +87,17 @@ static component *find_component(component *root, const std::string &path, path_
 		path_element pe;
 		pe.property = *i++;
 		pe.id = *i++;
-	       	pe.position = *i++;
+		std::string position = *i++;
+		if (position.empty()) {
+			pe.position = -2;
+		} else {
+			try {
+				pe.position = boost::lexical_cast<int>(*i++);
+			} catch (boost::bad_lexical_cast){
+				pe.position = -2;
+			}
+		}	
+					
 		elements.push_back(pe);
 	}
 	if (elements.size()<1) {

@@ -30,6 +30,7 @@
 #include "../contexts.hpp"
 #include "../default/contexts.hpp"
 #include "../interface.hpp"
+#include "component.hpp"
 
 #include <vector>
 
@@ -42,7 +43,7 @@
 //============================================================================
 namespace ai {
 
-class ai_composite : public ai_context, public virtual default_ai_context_proxy, public interface {
+class ai_composite : public ai_context, public virtual default_ai_context_proxy, public interface, public component {
 public:
 
 
@@ -95,6 +96,18 @@ public:
 	 * unwrap
 	 */
 	virtual ai_context& get_ai_context();
+
+
+	virtual component* get_child(const path_element &child);
+
+
+	virtual bool add_child(const path_element &child, const config &cfg);
+
+
+	virtual bool change_child(const path_element &child, const config &cfg);
+
+
+	virtual bool delete_child(const path_element &child);
 
 protected:
 

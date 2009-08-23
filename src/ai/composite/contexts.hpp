@@ -1,3 +1,4 @@
+
 /* $Id$ */
 /*
    Copyright (C) 2009 by Yurii Chernyi <terraninfo@terraninfo.net>
@@ -38,7 +39,7 @@
 //============================================================================
 namespace ai {
 
-class ai_context : public virtual default_ai_context{
+class ai_context : public virtual default_ai_context {
 public:
 
 

@@ -124,5 +124,74 @@ config ai_composite::to_config() const
 	return cfg;
 }
 
+component* ai_composite::get_child(const path_element &child)
+{
+	//@todo 1.7.4 implement
+	if (child.property=="aspect") {
+		//ASPECT
+		if (child.id.empty()) {
+			return NULL;
+		}
+
+		aspect_map::const_iterator a = get_aspects().find(child.id);
+		if (a==get_aspects().end()){
+			return NULL;
+		} else {
+			//@todo 1.7.4 implement
+			return NULL;
+			//	return &*a->second;
+		}
+	} else if (child.property=="stage") {
+		//STAGE
+		if (child.id.empty()) {
+			if ( (child.position<0) || (child.position>=static_cast<int>(stages_.size())) ) {
+				return NULL;
+			} else {
+				//@todo 1.7.4 implement
+				return NULL;
+				//return &stages_.at(pos);
+			}
+		}
+		//foreach(const stage_ptr &s, stages_) {
+			//if (s->get_id()==child.id) {
+				//@todo 1.7.4 implement
+				//return &*s;
+				//}
+				//}
+		return NULL;
+	} else if (child.property=="engine") {
+		//ENGINE
+		return NULL;
+	} else if (child.property=="goal") {
+		//GOAL
+		return NULL;
+	}
+
+	//OOPS
+	return NULL;
+}
+
+
+bool ai_composite::add_child(const path_element &child, const config &cfg)
+{
+	//@todo 1.7.4 implement
+	return false;
+}
+
+
+bool ai_composite::change_child(const path_element &child, const config &cfg)
+{
+	//@todo 1.7.4 implement
+	return false;
+}
+
+
+bool ai_composite::delete_child(const path_element &child)
+{
+	//@todo 1.7.4 implement
+	return false;
+}
+
+
 
 } //end of namespace ai
