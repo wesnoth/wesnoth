@@ -146,7 +146,7 @@ void holder::modify_ai_config_old( const config::const_child_itors &ai_parameter
 
 void holder::modify_ai(const config &cfg)
 {
-	if (this->readonly_context_ == NULL) {
+	if (!this->ai_) {
 		// if not initialized, initialize now.
 		get_ai_ref();
 	}
@@ -154,11 +154,11 @@ void holder::modify_ai(const config &cfg)
 	const std::string &act = cfg["action"];
 	bool res = false;
 	if (act == "add") {
-		res = component_manager::add_component(NULL,cfg["path"],cfg.child("cfg"));
+		res = component_manager::add_component(&*this->ai_,cfg["path"],cfg.child("cfg"));
 	} else if (act == "change") {
-		res = component_manager::change_component(NULL,cfg["path"],cfg.child("cfg"));
+		res = component_manager::change_component(&*this->ai_,cfg["path"],cfg.child("cfg"));
 	} else if (act == "delete") {
-		res = component_manager::delete_component(NULL,cfg["path"]);
+		res = component_manager::delete_component(&*this->ai_,cfg["path"]);
 	} else {
 		ERR_AI_MANAGER << "modify_ai tag has invalid 'action' attribute " << std::endl;
 	}

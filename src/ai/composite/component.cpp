@@ -32,6 +32,33 @@ static lg::log_domain log_ai_composite_component("ai/composite/component");
 #define LOG_AI_COMPOSITE LOG_STREAM(info, log_ai_composite_component)
 #define ERR_AI_COMPOSITE LOG_STREAM(err, log_ai_composite_component)
 
+
+component* component::get_child(const path_element &/*child*/)
+{
+	return NULL;
+}
+
+
+bool component::add_child(const path_element &/*child*/, const config &/*cfg*/)
+{
+	return false;
+}
+
+
+bool component::change_child(const path_element &/*child*/, const config &/*cfg*/)
+{
+	return false;
+}
+
+
+bool component::delete_child(const path_element &/*child*/)
+{
+	return false;
+}
+
+
+
+
 /*
 [modify_ai]
     component = "aspect['aggression']"
@@ -76,7 +103,8 @@ static component *find_component(component *root, const std::string &path, path_
 
 	//match path elements in [modify_ai] tag
 	boost::regex re("([^\\.^\\[]+)(\\['([^\\]]+)'\\]|\\[(\\d*)\\]|())");
-	boost::sregex_token_iterator i(path.begin(), path.end(), re, 0);
+	int const sub_matches[] = {1,3,4};
+	boost::sregex_token_iterator i(path.begin(), path.end(), re, sub_matches);
 	boost::sregex_token_iterator j;
 
 	component *c  = root;
@@ -92,12 +120,12 @@ static component *find_component(component *root, const std::string &path, path_
 			pe.position = -2;
 		} else {
 			try {
-				pe.position = boost::lexical_cast<int>(*i++);
+				pe.position = boost::lexical_cast<int>(position);
 			} catch (boost::bad_lexical_cast){
 				pe.position = -2;
 			}
 		}	
-					
+		DBG_AI_COMPOSITE << "adding path element: "<< pe << std::endl;
 		elements.push_back(pe);
 	}
 	if (elements.size()<1) {
@@ -153,3 +181,9 @@ bool component_manager::delete_component(component *root, const std::string &pat
 
 
 } //end of namespace ai
+
+std::ostream &operator<<(std::ostream &o, const ai::path_element &e)
+{
+	o << "property["<<e.property<<"] id["<<e.id <<"] position["<<e.position<<"]"<<std::endl;
+	return o;
+}

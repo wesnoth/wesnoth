@@ -47,10 +47,10 @@ class component {
 public:
 	component() {};
 	virtual ~component() {};
-	virtual component* get_child(const path_element &child) = 0;
-	virtual bool change_child(const path_element &child, const config &cfg) = 0;
-	virtual bool add_child(const path_element &child, const config &cfg) = 0;
-	virtual bool delete_child(const path_element &child) = 0;
+	virtual component* get_child(const path_element &child);
+	virtual bool change_child(const path_element &child, const config &cfg);
+	virtual bool add_child(const path_element &child, const config &cfg);
+	virtual bool delete_child(const path_element &child);
 };
 
 class component_manager {
@@ -61,6 +61,9 @@ public:
 };
 
 } //end of namespace ai
+
+
+std::ostream &operator<<(std::ostream &o, const ai::path_element &e);
 
 #ifdef _MSC_VER
 #pragma warning(pop)

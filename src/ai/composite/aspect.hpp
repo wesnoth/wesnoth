@@ -21,6 +21,7 @@
 
 #include "../../global.hpp"
 
+#include "component.hpp"
 #include "engine.hpp"
 #include "stage.hpp"
 
@@ -37,6 +38,7 @@
 #include <vector>
 #include <deque>
 #include <iterator>
+#include <algorithm>
 #include <boost/lexical_cast.hpp>
 #include <boost/pointer_cast.hpp>
 
@@ -512,7 +514,7 @@ public:
 
 //----
 
-class aspect : public readonly_context_proxy, public events::observer {
+class aspect : public readonly_context_proxy, public events::observer, public component {
 public:
 	aspect(readonly_context &context, const config &cfg, const std::string &id);
 
@@ -537,6 +539,9 @@ public:
 	virtual void on_create();
 
 
+	virtual bool redeploy(const config &cfg, const std::string & id);
+
+
 	virtual config to_config() const;
 
 
@@ -557,7 +562,9 @@ public:
 
 	const std::string& get_id() const;
 
+
 	static lg::log_domain& log();
+
 protected:
 	mutable bool valid_;
 	mutable bool valid_variant_;
@@ -689,7 +696,7 @@ public:
 		boost::shared_ptr< composite_aspect <T> > c = boost::dynamic_pointer_cast< composite_aspect<T> >(where_);
 		if (c) {
 			assert (c->get_id()==this->get_name());
-			c->add_facet(cfg);
+			c->add_facet(-1, cfg);
 			c->invalidate();
 		} else {
 			LOG_STREAM(debug, aspect::log()) << "typesafe_known_aspect [" << this->get_name() << "] : while adding facet to aspect, got null. this might be caused by target [aspect] being not composite" << std::endl;
@@ -705,6 +712,32 @@ protected:
 
 
 template<typename T>
+class path_element_matches{
+public:
+	path_element_matches(const path_element &element)
+		: count_(0), element_(element)
+	{
+	}
+	virtual ~path_element_matches(){}
+
+	bool operator()(const T& t)
+	{
+		if ( (!element_.id.empty()) && (element_.id == t->get_id()) ) {
+			return true;
+		}
+		if (count_ == element_.position) {
+			return true;
+		}
+		count_++;
+		return false;
+	}
+
+private:
+	int count_;
+	path_element element_;
+};
+
+template<typename T>
 class composite_aspect : public typesafe_aspect<T> {
 public:
 
@@ -712,7 +745,7 @@ public:
 		: typesafe_aspect<T>(context, cfg, id)
 	{
 		foreach (const config &cfg_element, this->cfg_.child_range("facet") ){
-			add_facet(cfg_element);
+			add_facet(-1,cfg_element);
 		}
 
 		const config &_default = this->cfg_.child("default");
@@ -756,14 +789,71 @@ public:
 	}
 
 
-	virtual void add_facet(const config &cfg)
+	virtual bool add_facet(int pos, const config &cfg)
 	{
+		if (pos<0) {
+			pos = facets_.size();
+		}
 		std::vector< aspect_ptr > facets;
 		engine::parse_aspect_from_config(*this,cfg,this->get_id(),std::back_inserter(facets));
+		int j=0;
 		foreach (aspect_ptr a, facets ){
 			boost::shared_ptr< typesafe_aspect<T> > b = boost::dynamic_pointer_cast< typesafe_aspect<T> > (a);
-			facets_.push_back(b);
+			facets_.insert(facets_.begin()+pos+j,b);
+			j++;
 		}
+		return (j>0);
+	}
+
+
+	virtual component* get_child(const path_element &child)
+	{
+		if (child.property!="facet") {
+			return NULL;
+		}
+		typename std::vector< boost::shared_ptr< typesafe_aspect<T> > >::iterator i = std::find_if(facets_.begin(),facets_.end(),path_element_matches< boost::shared_ptr< typesafe_aspect<T> > >(child));
+		if (i!=facets_.end()){
+			return &*(*i);
+		}
+		return NULL;
+	}
+
+
+	virtual bool add_child(const path_element &child, const config &cfg)
+	{
+		if (child.property!="facet") {
+			return false;
+		}
+		typename std::vector< boost::shared_ptr< typesafe_aspect<T> > >::iterator i = std::find_if(facets_.begin(),facets_.end(),path_element_matches< boost::shared_ptr< typesafe_aspect<T> > >(child));
+		LOG_STREAM(debug, aspect::log()) << "adding a new child facet to composite aspect["<<this->get_id()<<"]"<< std::endl;
+		return add_facet(i-facets_.begin(),cfg);
+	}
+
+
+	virtual bool change_child(const path_element &child, const config &cfg)
+	{
+		if (child.property!="facet") {
+			return false;
+		}
+		typename std::vector< boost::shared_ptr< typesafe_aspect<T> > >::iterator i = std::find_if(facets_.begin(),facets_.end(),path_element_matches< boost::shared_ptr< typesafe_aspect<T> > >(child));
+		if (i!=facets_.end()){
+			return (*i)->redeploy(cfg,this->get_id());
+		}
+		return false;
+	}
+
+
+	virtual bool delete_child(const path_element &child)
+	{
+		if (child.property!="facet") {
+			return false;
+		}
+		typename std::vector< boost::shared_ptr< typesafe_aspect<T> > >::iterator i = std::find_if(facets_.begin(),facets_.end(),path_element_matches< boost::shared_ptr< typesafe_aspect<T> > >(child));
+		if (i!=facets_.end()) {
+			facets_.erase(i);
+			return true;
+		}
+		return false;
 	}
 
 protected:

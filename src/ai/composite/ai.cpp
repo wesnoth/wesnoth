@@ -137,9 +137,7 @@ component* ai_composite::get_child(const path_element &child)
 		if (a==get_aspects().end()){
 			return NULL;
 		} else {
-			//@todo 1.7.4 implement
-			return NULL;
-			//	return &*a->second;
+			return &*a->second;
 		}
 	} else if (child.property=="stage") {
 		//STAGE
