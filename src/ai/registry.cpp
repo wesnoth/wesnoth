@@ -75,6 +75,9 @@ static register_stage_factory<ai_default_recruitment_stage>
 static register_candidate_action_factory<testing_ai_default::goto_phase>
 	goto_phase_factory("testing_ai_default::goto_phase");
 
+static register_candidate_action_factory<testing_ai_default::aspect_recruitment_phase>
+	aspect_recruitment_phase_factory("testing_ai_default::aspect_recruitment_phase");
+
 static register_candidate_action_factory<testing_ai_default::recruitment_phase>
 	recruitment_phase_factory("testing_ai_default::recruitment_phase");
 

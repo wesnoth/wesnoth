@@ -51,6 +51,20 @@ public:
 
 };
 
+
+//============================================================================
+class aspect_recruitment_phase : public candidate_action {
+public:
+
+	aspect_recruitment_phase( rca_context &context, const config &cfg );
+
+	virtual ~aspect_recruitment_phase();
+
+	virtual double evaluate();
+
+	virtual bool execute();
+};
+
 //============================================================================
 
 class recruitment_phase : public candidate_action {

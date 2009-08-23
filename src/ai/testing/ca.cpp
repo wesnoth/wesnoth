@@ -62,6 +62,51 @@ bool goto_phase::execute()
 
 //==============================================================
 
+aspect_recruitment_phase::aspect_recruitment_phase( rca_context &context, const config &cfg )
+	: candidate_action(context,cfg)
+{
+}
+
+
+aspect_recruitment_phase::~aspect_recruitment_phase()
+{
+}
+
+double aspect_recruitment_phase::evaluate()
+{
+	const unit_map::const_iterator leader = get_info().units.find_leader(get_side());
+	if(leader == get_info().units.end()) {
+		return BAD_SCORE;
+	}
+	if(!get_info().map.is_keep(leader->first)) {
+		return BAD_SCORE;
+	}
+
+	std::set<map_location> checked_hexes;
+	checked_hexes.insert(leader->first);
+	if(count_free_hexes_in_castle(leader->first, checked_hexes)==0) {
+		return BAD_SCORE;
+	}
+
+	//note that no gold check is done. This is intended, to speed up recruitment_phase::evaluate()
+	//so, after 1st failed recruit, this candidate action will be blacklisted for 1 turn.
+
+	return get_score();
+}
+
+bool aspect_recruitment_phase::execute()
+{
+	raise_user_interact();
+	stage_ptr r = get_recruitment(*this);
+	if (r) {
+		return r->play_stage();
+	}
+	ERR_AI_TESTING_AI_DEFAULT << "no recruitment aspect - skipping recruitment" << std::endl;
+	return false;
+}
+
+//==============================================================
+
 recruitment_phase::recruitment_phase( rca_context &context, const config &cfg )
 	: candidate_action(context,cfg)
 {
