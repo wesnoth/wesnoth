@@ -280,6 +280,11 @@ public:
 	virtual double evaluate();
 
 	virtual bool execute();
+private:
+
+	bool should_retreat(const map_location& loc, const unit_map::const_iterator un, const move_map &srcdst, const move_map &dstsrc, double caution);
+
+	move_result_ptr move_;
 
 };
 

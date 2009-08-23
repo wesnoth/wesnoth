@@ -1653,15 +1653,138 @@ retreat_phase::~retreat_phase()
 
 double retreat_phase::evaluate()
 {
-	ERR_AI_TESTING_AI_DEFAULT << get_name() << ": evaluate - not yet implemented!" << std::endl;
+
+
+	// Get versions of the move map that assume that all units are at full movement
+	unit_map units_ = get_info().units;
+
+	unit_map::const_iterator leader = units_.find_leader(get_side());
+	std::map<map_location,paths> dummy_possible_moves;
+
+	move_map fullmove_srcdst;
+	move_map fullmove_dstsrc;
+	calculate_possible_moves(dummy_possible_moves, fullmove_srcdst, fullmove_dstsrc,
+			false, true, &get_avoid());
+
+	map_location leader_adj[6];
+	if(leader != units_.end()) {
+		get_adjacent_tiles(leader->first,leader_adj);
+	}
+
+	for(unit_map::iterator i = units_.begin(); i != units_.end(); ++i) {
+		if(i->second.side() == get_side() &&
+				i->second.movement_left() == i->second.total_movement() &&
+				unit_map::const_iterator(i) != leader &&
+				!i->second.incapacitated()) {
+
+			// This unit still has movement left, and is a candidate to retreat.
+			// We see the amount of power of each side on the situation,
+			// and decide whether it should retreat.
+			if(should_retreat(i->first, i, fullmove_srcdst, fullmove_dstsrc, get_caution())) {
+
+				bool can_reach_leader = false;
+
+				// Time to retreat. Look for the place where the power balance
+				// is most in our favor.
+				// If we can't find anywhere where we like the power balance,
+				// just try to get to the best defensive hex.
+				typedef move_map::const_iterator Itor;
+				std::pair<Itor,Itor> itors = get_srcdst().equal_range(i->first);
+				map_location best_pos, best_defensive(i->first);
+				double best_rating = 0.0;
+				int best_defensive_rating = i->second.defense_modifier(get_info().map.get_terrain(i->first))
+					- (get_info().map.is_village(i->first) ? 10 : 0);
+				while(itors.first != itors.second) {
+
+					if(leader != units_.end() && std::count(leader_adj,
+								leader_adj + 6, itors.first->second)) {
+
+						can_reach_leader = true;
+						break;
+					}
+
+					// We rate the power balance of a hex based on our power projection
+					// compared to theirs, multiplying their power projection by their
+					// chance to hit us on the hex we're planning to flee to.
+					const map_location& hex = itors.first->second;
+					const int defense = i->second.defense_modifier(get_info().map.get_terrain(hex));
+					const double our_power = power_projection(hex,get_dstsrc());
+					const double their_power = power_projection(hex,get_enemy_dstsrc()) * double(defense)/100.0;
+					const double rating = our_power - their_power;
+					if(rating > best_rating) {
+						best_pos = hex;
+						best_rating = rating;
+					}
+
+					// Give a bonus for getting to a village.
+					const int modified_defense = defense - (get_info().map.is_village(hex) ? 10 : 0);
+
+					if(modified_defense < best_defensive_rating) {
+						best_defensive_rating = modified_defense;
+						best_defensive = hex;
+					}
+
+					++itors.first;
+				}
+
+				// If the unit is in range of its leader, it should
+				// never retreat -- it has to defend the leader instead.
+				if(can_reach_leader) {
+					continue;
+				}
+
+				if(!best_pos.valid()) {
+					best_pos = best_defensive;
+				}
+
+				if(best_pos.valid()) {
+					move_ = check_move_action(i->first,best_pos,true);
+					if (move_->is_ok()) {
+						return 30;
+					}
+				}
+			}
+		}
+	}
+
 	return BAD_SCORE;
 }
 
 bool retreat_phase::execute()
 {
-	ERR_AI_TESTING_AI_DEFAULT << get_name() << ": execute - not yet implemented!" << std::endl;
-	return true;
+	bool gamestate_changed = false;
+	move_->execute();
+	if (!move_->is_ok()){
+		LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute not ok" << std::endl;
+	}
+	gamestate_changed |= move_->is_gamestate_changed();
+	return gamestate_changed;
 }
+
+
+
+bool retreat_phase::should_retreat(const map_location& loc, const unit_map::const_iterator un,  const move_map &srcdst, const move_map &dstsrc, double caution)
+{
+	const move_map &enemy_dstsrc = get_enemy_dstsrc();
+
+	if(caution <= 0.0) {
+		return false;
+	}
+
+	const double optimal_terrain = best_defensive_position(un->first, dstsrc,
+			srcdst, enemy_dstsrc).chance_to_hit/100.0;
+	const double proposed_terrain =
+		un->second.defense_modifier(get_info().map.get_terrain(loc))/100.0;
+
+	// The 'exposure' is the additional % chance to hit
+	// this unit receives from being on a sub-optimal defensive terrain.
+	const double exposure = proposed_terrain - optimal_terrain;
+
+	const double our_power = power_projection(loc,dstsrc);
+	const double their_power = power_projection(loc,enemy_dstsrc);
+	return caution*their_power*(1.0+exposure) > our_power;
+}
+
 
 //==============================================================
 
