@@ -51,7 +51,18 @@ void show_dialog(twidget* caller)
  *
  * == Title screen ==
  *
- * This shows the title screen.
+ * This shows the title screen. This dialog is still under construction and
+ * is only shown when --new-widgets are used.
+ *
+ * @start_table = grid
+ *     (addons) (button) ()       The button to get the addons.
+ *     (language) (button) ()     The button to change the language.
+ *
+ *     (tip) (label) ()           The tip of the day.
+ *     (source) (label) ()        The source for the tip of the day.
+ *     (next_tip) (button) ()     The button show the next tip of day.
+ *     (previous_tip) (button) () The button show the previous tip of day.
+ * @end_table
  */
 
 ttitle_screen::ttitle_screen()
@@ -77,21 +88,21 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 		variant(_("Version") + std::string(" ") + game_config::revision));
 
 	/**** Set the buttons ****/
-	window.get_widget<tbutton>("addons", false).
+	NEW_find_widget<tbutton>(&window, "addons", false).
 			set_callback_mouse_left_click(show_dialog<gui2::taddon_connect>);
 
 	// Note changing the language doesn't upate the title screen...
-	window.get_widget<tbutton>("language", false).
+	NEW_find_widget<tbutton>(&window, "language", false).
 			set_callback_mouse_left_click(
 				show_dialog<gui2::tlanguage_selection>);
 
 	/**** Set the tip of the day ****/
 	update_tip(window, true);
 
-	window.get_widget<tbutton>("next_tip", false).
+	NEW_find_widget<tbutton>(&window, "next_tip", false).
 			set_callback_mouse_left_click(next_tip);
 
-	window.get_widget<tbutton>("previous_tip", false).
+	NEW_find_widget<tbutton>(&window, "previous_tip", false).
 			set_callback_mouse_left_click(previous_tip);
 
 	/***** Select a random game_title *****/
@@ -119,8 +130,9 @@ void ttitle_screen::update_tip(twindow& window, const bool previous)
 	const config *tip = get_tip_of_day(tips_);
 	assert(tip);
 
-	window.get_widget<tlabel>("tip", false).set_label((*tip)["text"]);
-	window.get_widget<tlabel>("source", false).set_label((*tip)["source"]);
+	NEW_find_widget<tlabel>(&window, "tip", false).set_label((*tip)["text"]);
+	NEW_find_widget<tlabel>(&window, "source", false).
+			set_label((*tip)["source"]);
 
 	/**
 	 * @todo Convert the code to use a multi_page so the invalidate is not
