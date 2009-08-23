@@ -124,7 +124,7 @@ void holder::modify_ai_config_old( const config::const_child_itors &ai_parameter
 	// transform ai_parameters to new-style config
 
 	config cfg;
-	configuration::upgrade_aspect_configs_from_1_07_02_to_1_07_03(ai_parameters,cfg);
+	configuration::upgrade_aspect_configs_from_1_07_02_to_1_07_03(this->side_,ai_parameters,cfg);
 	//at this point we have a single config which contains [aspect][facet] tags
 	DBG_AI_MANAGER << "after transforming [modify_side][ai] into new syntax, config contains:"<< std::endl << cfg << std::endl;
 
@@ -568,7 +568,7 @@ bool manager::add_ai_for_side_from_file( side_number side, const std::string& fi
 
 bool manager::add_ai_for_side_from_config( side_number side, const config& cfg, bool replace ){
 	config parsed_cfg;
-	configuration::parse_side_config(cfg, parsed_cfg);
+	configuration::parse_side_config(side, cfg, parsed_cfg);
 
 	if (replace) {
 		remove_ai_for_side(side);

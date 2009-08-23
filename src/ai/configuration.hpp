@@ -23,7 +23,7 @@
 #include "../global.hpp"
 
 #include "../config.hpp"
-
+#include "game_info.hpp"
 
 #include <map>
 #include <vector>
@@ -102,7 +102,7 @@ public:
 	 * @param[in] ai_parameters - old [ai] snippets
 	 * @param[out cfg - new-style [ai] snippet
 	 */
-	static void upgrade_aspect_configs_from_1_07_02_to_1_07_03(const config::const_child_itors &ai_parameters, config &parsed_cfg);
+	static void upgrade_aspect_configs_from_1_07_02_to_1_07_03(side_number side, const config::const_child_itors &ai_parameters, config &parsed_cfg);
 
 
 	/**
@@ -112,7 +112,7 @@ public:
 	 * @retval true success
 	 * @retval false failure
 	 */
-	static bool parse_side_config(const config& cfg, config &parsed_cfg);
+	static bool parse_side_config(side_number side, const config& cfg, config &parsed_cfg);
 
 
 private:
@@ -126,7 +126,7 @@ private:
 	 * @retval true success
 	 * @retval false failure
 	 */
-	static bool upgrade_aspect_config_from_1_07_02_to_1_07_03(const config& cfg, config& parsed_cfg, const std::string &id, bool aspect_was_attribute = true);
+	static bool upgrade_aspect_config_from_1_07_02_to_1_07_03(side_number side, const config& cfg, config& parsed_cfg, const std::string &id, bool aspect_was_attribute = true);
 
 
 	/**
@@ -137,7 +137,7 @@ private:
 	 * @retval true success, cfg is guaranteed to be valid
 	 * @retval false failure
 	 */
-	static bool upgrade_side_config_from_1_07_02_to_1_07_03(config &cfg);
+	static bool upgrade_side_config_from_1_07_02_to_1_07_03(side_number side, config &cfg);
 
 	typedef std::map<std::string, description> description_map;
 	static description_map ai_configurations_;

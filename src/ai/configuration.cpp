@@ -154,7 +154,7 @@ const config& configuration::get_default_ai_parameters()
 }
 
 
-bool configuration::upgrade_aspect_config_from_1_07_02_to_1_07_03(const config& cfg, config& parsed_cfg, const std::string &id, bool aspect_was_attribute)
+bool configuration::upgrade_aspect_config_from_1_07_02_to_1_07_03(side_number /*side*/, const config& cfg, config& parsed_cfg, const std::string &id, bool aspect_was_attribute)
 {
 	config aspect_config;
 	aspect_config["id"] = id;
@@ -199,23 +199,23 @@ bool configuration::upgrade_aspect_config_from_1_07_02_to_1_07_03(const config& 
 }
 
 
-bool configuration::parse_side_config(const config& original_cfg, config &cfg )
+bool configuration::parse_side_config(side_number side, const config& original_cfg, config &cfg )
 {
-	LOG_AI_CONFIGURATION << "Parsing [side] configuration from config" << std::endl;
+	LOG_AI_CONFIGURATION << "side "<< side <<": parsing AI configuration from config" << std::endl;
 
 	//leave only the [ai] children
 	cfg = config();
 	foreach (const config &aiparam, original_cfg.child_range("ai")) {
 		cfg.add_child("ai",aiparam);
 	}
-	DBG_AI_CONFIGURATION << "Config contains:"<< std::endl << cfg << std::endl;
+	DBG_AI_CONFIGURATION << "side " << side << ": config contains:"<< std::endl << cfg << std::endl;
 
 	//insert default config at the beginning
 	if (default_config_) {
-		LOG_AI_CONFIGURATION << "Applying default configuration" << std::endl;
+		DBG_AI_CONFIGURATION << "side "<< side <<": applying default configuration" << std::endl;
 		cfg.add_child_at("ai",default_config_,0);
 	} else {
-		WRN_AI_CONFIGURATION << "Default configuration is not available, do not applying it" << std::endl;
+		ERR_AI_CONFIGURATION << "side "<< side <<": default configuration is not available, do not applying it" << std::endl;
 	}
 
 	//find version
@@ -230,32 +230,32 @@ bool configuration::parse_side_config(const config& original_cfg, config &cfg )
 	}
 
 	if (version<10703) {
-		if (!upgrade_side_config_from_1_07_02_to_1_07_03(cfg)) {
+		if (!upgrade_side_config_from_1_07_02_to_1_07_03(side, cfg)) {
 			return false;
 		}
 		version = 10703;
 	}
 
 	//construct new-style integrated config
-	LOG_AI_CONFIGURATION << "Doing final operations on AI config"<< std::endl;
+	LOG_AI_CONFIGURATION << "side "<< side << ": doing final operations on AI config"<< std::endl;
 	config parsed_cfg = config();
 
-	LOG_AI_CONFIGURATION << "Merging AI configurations"<< std::endl;
+	LOG_AI_CONFIGURATION << "side "<< side <<": merging AI configurations"<< std::endl;
 	foreach (const config &aiparam, cfg.child_range("ai")) {
 		parsed_cfg.append(aiparam);
 	}
 
-	LOG_AI_CONFIGURATION << "Setting config version to "<< version << std::endl;
+	LOG_AI_CONFIGURATION << "side "<< side <<": setting config version to "<< version << std::endl;
 	parsed_cfg["version"] = boost::lexical_cast<std::string>( version );
 
 
-	LOG_AI_CONFIGURATION << "Merging AI aspect with the same id"<< std::endl;
+	LOG_AI_CONFIGURATION << "side "<< side <<": merging AI aspect with the same id"<< std::endl;
 	parsed_cfg.merge_children_by_attribute("aspect","id");
 
-	LOG_AI_CONFIGURATION << "Removing duplicate [default] tags from aspects"<< std::endl;
+	LOG_AI_CONFIGURATION << "side "<< side <<": removing duplicate [default] tags from aspects"<< std::endl;
 	foreach (config &aspect_cfg, parsed_cfg.child_range("aspect")) {
 		if (!aspect_cfg.child("default")) {
-			WRN_AI_CONFIGURATION << "Aspect with id=["<<aspect_cfg["id"]<<"] lacks default config facet!" <<std::endl;
+			WRN_AI_CONFIGURATION << "side "<< side <<": aspect with id=["<<aspect_cfg["id"]<<"] lacks default config facet!" <<std::endl;
 			continue;
 		}
 		config c = aspect_cfg.child("default");
@@ -263,8 +263,8 @@ bool configuration::parse_side_config(const config& original_cfg, config &cfg )
 		aspect_cfg.add_child("default",c);
 	}
 
-	DBG_AI_CONFIGURATION << "Done parsing side config, it contains:"<< std::endl << parsed_cfg << std::endl;
-	LOG_AI_CONFIGURATION << "Done parsing side config"<< std::endl;
+	DBG_AI_CONFIGURATION << "side "<< side <<": done parsing side config, it contains:"<< std::endl << parsed_cfg << std::endl;
+	LOG_AI_CONFIGURATION << "side "<< side <<": done parsing side config"<< std::endl;
 
 	cfg = parsed_cfg;
 	return cfg;//in boolean context
@@ -272,13 +272,13 @@ bool configuration::parse_side_config(const config& original_cfg, config &cfg )
 }
 
 
-bool configuration::upgrade_side_config_from_1_07_02_to_1_07_03(config &cfg)
+bool configuration::upgrade_side_config_from_1_07_02_to_1_07_03(side_number side, config &cfg)
 {
-	LOG_AI_CONFIGURATION << "Upgrading ai config version from version 1.7.2 to 1.7.3"<< std::endl;
+	LOG_AI_CONFIGURATION << "side "<< side <<": upgrading ai config version from version 1.7.2 to 1.7.3"<< std::endl;
 	config parsed_cfg;
 
 	//get values of all aspects
-	upgrade_aspect_configs_from_1_07_02_to_1_07_03(cfg.child_range("ai"), parsed_cfg);
+	upgrade_aspect_configs_from_1_07_02_to_1_07_03(side, cfg.child_range("ai"), parsed_cfg);
 
 	//dump the rest of the config into fallback stage
 
@@ -326,12 +326,12 @@ bool configuration::upgrade_side_config_from_1_07_02_to_1_07_03(config &cfg)
 
 	cfg = config();
 	cfg.add_child("ai",parsed_cfg);
-	DBG_AI_CONFIGURATION << "After upgrade to 1.7.3 syntax, config contains:"<< std::endl << cfg << std::endl;
+	DBG_AI_CONFIGURATION << "side "<< side <<": after upgrade to 1.7.3 syntax, config contains:"<< std::endl << cfg << std::endl;
 	return cfg;//in boolean context
 }
 
 
-void configuration::upgrade_aspect_configs_from_1_07_02_to_1_07_03(const config::const_child_itors &ai_parameters, config &parsed_cfg)
+void configuration::upgrade_aspect_configs_from_1_07_02_to_1_07_03(side_number side, const config::const_child_itors &ai_parameters, config &parsed_cfg)
 {
 	parsed_cfg = config();
 	config cfg("ai");
@@ -340,9 +340,9 @@ void configuration::upgrade_aspect_configs_from_1_07_02_to_1_07_03(const config:
 	foreach (const config &aiparam, ai_parameters) {
 		cfg_ai.append(aiparam);
 	}
-	DBG_AI_CONFIGURATION << "upgrading aspects from syntax of 1.7.2. to 1.7.3, old-style config is:" << std::endl << cfg << std::endl;
+	DBG_AI_CONFIGURATION << "side "<< side <<": upgrading aspects from syntax of 1.7.2. to 1.7.3, old-style config is:" << std::endl << cfg << std::endl;
 	foreach (const well_known_aspect &wka, well_known_aspects) {
-		upgrade_aspect_config_from_1_07_02_to_1_07_03(cfg,parsed_cfg,wka.name_,wka.was_an_attribute_);
+		upgrade_aspect_config_from_1_07_02_to_1_07_03(side, cfg,parsed_cfg,wka.name_,wka.was_an_attribute_);
 	}
 }
 
