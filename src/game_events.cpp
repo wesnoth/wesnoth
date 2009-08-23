@@ -827,6 +827,16 @@ WML_HANDLER_FUNCTION(gold, /*event_info*/, cfg)
 		}
 	}
 
+WML_HANDLER_FUNCTION(modify_ai, /*event_info*/, cfg)
+{
+		std::string side = cfg["side"];
+		const int side_num = lexical_cast_default<int>(side,0);
+		if (side_num==0) {
+			return;
+		}
+		ai::manager::modify_active_ai_for_side(side_num,cfg.get_parsed_config());
+	}
+
 WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 {
 	std::vector<team> &teams = *resources::teams;
