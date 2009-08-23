@@ -302,11 +302,23 @@ bool configuration::upgrade_side_config_from_1_07_02_to_1_07_03(config &cfg)
 	}
 	fallback_stage_cfg_ai.clear_children("aspect");//@todo 1.7: cleanup only configs of well-known ai aspects
 
-	//move stages to root of the config
+	//move [stage]s to root of the config
 	foreach (const config &aistage, fallback_stage_cfg_ai.child_range("stage")) {
 		parsed_cfg.add_child("stage",aistage);
 	}
 	fallback_stage_cfg_ai.clear_children("stage");
+
+	//move [goal] to root of the config
+	foreach (const config &aigoal, fallback_stage_cfg_ai.child_range("goal")) {
+		parsed_cfg.add_child("goal",aigoal);
+	}
+	fallback_stage_cfg_ai.clear_children("goal");
+
+	//move [modify_ai]'s to root of the config
+	foreach (const config &aimodifyai, fallback_stage_cfg_ai.child_range("modify_ai")) {
+		parsed_cfg.add_child("modify_ai",aimodifyai);
+	}
+	fallback_stage_cfg_ai.clear_children("modify_ai");
 
 	fallback_stage_cfg.add_child("ai",fallback_stage_cfg_ai);
 
