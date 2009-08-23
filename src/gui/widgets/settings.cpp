@@ -190,6 +190,7 @@ const std::string& tgui_definition::read(const config& cfg)
  * @start_table = widget_overview
  *     Button                        @macro = button_description
  *     Image                         @macro = image_description
+ *     Horizontal_listbox            @macro = horizontal_listbox_description
  *     Horizontal_scrollbar          @macro = horizontal_scrollbar_description
  *     Label                         @macro = label_description
  *     Listbox                       @macro = listbox_description
@@ -262,6 +263,8 @@ const std::string& tgui_definition::read(const config& cfg)
 
 	/***** Control definitions *****/
 	load_definitions<tbutton_definition>("button", cfg);
+	load_definitions<thorizontal_listbox_definition>(
+			"horizontal_listbox", cfg);
 	load_definitions<thorizontal_scrollbar_definition>("horizontal_scrollbar", cfg);
 	load_definitions<timage_definition>("image", cfg);
 	load_definitions<tlabel_definition>("label", cfg);
@@ -759,10 +762,19 @@ tlistbox_definition::tresolution::tresolution(const config& cfg) :
  *
  */
 
+/*WIKI
+ * @page = GUIWidgetDefinitionWML
+ * @order = 1_horizonal_listbox
+ *
+ * == Horizontal listbox ==
+ *
+ * @macro = horizontal_listbox_description
+ *
+ * The definition of a horizontal listbox is the same as for a normal listbox.
+ */
 	// Note the order should be the same as the enum tstate is listbox.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 	state.push_back(tstate_definition(cfg.child("state_disabled")));
-
 
 	const config &child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));

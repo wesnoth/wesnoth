@@ -170,6 +170,15 @@ struct tbutton_definition : public tcontrol_definition
 
 };
 
+/*
+ * A horizontal listbox definition is the same as a normal listbox.
+ * The big difference between them is the difference in the instanciation,
+ * which looks different on the WML side, still uses the normal listbox widget
+ * class.
+ */
+struct tlistbox_definition;
+typedef tlistbox_definition thorizontal_listbox_definition;
+
 struct thorizontal_scrollbar_definition : public tcontrol_definition
 {
 	thorizontal_scrollbar_definition(const config& cfg);

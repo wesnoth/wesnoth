@@ -12,7 +12,6 @@
    See the COPYING file for more details.
 */
 
-
 #ifndef GUI_WIDGETS_LISTBOX_HPP_INCLUDED
 #define GUI_WIDGETS_LISTBOX_HPP_INCLUDED
 
@@ -23,6 +22,7 @@ namespace gui2 {
 
 namespace implementation {
 	struct tbuilder_listbox;
+	struct tbuilder_horizontal_listbox;
 }
 
 /** The listbox class. */
@@ -30,6 +30,7 @@ class tlistbox
 		: public tscrollbar_container
 {
 	friend struct implementation::tbuilder_listbox;
+	friend struct implementation::tbuilder_horizontal_listbox;
 	friend class tdebug_layout_graph;
 public:
 	/**

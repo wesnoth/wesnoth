@@ -22,6 +22,7 @@
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/window_builder/button.hpp"
 #include "gui/auxiliary/window_builder/helper.hpp"
+#include "gui/auxiliary/window_builder/horizontal_listbox.hpp"
 #include "gui/auxiliary/window_builder/horizontal_scrollbar.hpp"
 #include "gui/auxiliary/window_builder/image.hpp"
 #include "gui/auxiliary/window_builder/label.hpp"
@@ -67,6 +68,7 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 	using namespace gui2::implementation;
 
 	TRY(button);
+	TRY(horizontal_listbox);
 	TRY(horizontal_scrollbar);
 	TRY(image);
 	TRY(label);
