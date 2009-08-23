@@ -91,7 +91,7 @@ double recruitment_phase::evaluate()
 	//note that no gold check is done. This is intended, to speed up recruitment_phase::evaluate()
 	//so, after 1st failed recruit, this candidate action will be blacklisted for 1 turn.
 
-	return 100;//@todo: externalize
+	return get_score();
 }
 
 bool recruitment_phase::execute()
@@ -605,7 +605,7 @@ double combat_phase::evaluate()
 	// Documenting this in case someone has this bright idea again...*don't*...
 	if(choice_rating_ > 0.0) {
 		best_analysis_ = *choice_it;
-		return 40;//@todo: externalize
+		return get_score();
 	} else {
 		return BAD_SCORE;
 	}
@@ -694,9 +694,9 @@ double move_leader_to_keep_phase::evaluate()
 		if (leader_paths.destinations.contains(keep) && units_.count(keep) == 0) {
 			move_ = check_move_action(leader->first,keep,false);
 			if (move_->is_ok()){
-				return 70;
+				return get_score();
 			}
-			//move_unit(leader->first,keep,get_possible_moves());
+
 		}
 		// Make a map of the possible locations the leader can move to,
 		// ordered by the distance from the keep.
@@ -721,7 +721,7 @@ double move_leader_to_keep_phase::evaluate()
 			if(get_enemy_dstsrc().count(j->second) == 0) {
 				move_ = check_move_action(leader->first,j->second,true);
 				if (move_->is_ok()){
-					return 70;
+					return get_score();
 				}
 			}
 		}
@@ -758,7 +758,7 @@ double get_villages_phase::evaluate()
 	unit_map::const_iterator leader = get_info().units.find_leader(get_side());
 	get_villages(get_possible_moves(),get_dstsrc(),get_enemy_dstsrc(),leader);
 	if (moves_.size()>0) {
-		return 25;//@todo 1.7 externalize
+		return get_score();
 	}
 	return BAD_SCORE;
 }
@@ -1606,7 +1606,9 @@ double get_healing_phase::evaluate()
 			// and we can move there without expecting to get whacked next turn:
 			if(best_loc != it.second && best_vulnerability*leader_penalty < u.hitpoints()) {
 				move_ = check_move_action(best_loc->first,best_loc->second,true);
-				return 30; //@todo: externalize
+				if (move_->is_ok()) {
+					return get_score();
+				}
 			}
 		}
 	}
@@ -1726,7 +1728,7 @@ double retreat_phase::evaluate()
 				if(best_pos.valid()) {
 					move_ = check_move_action(i->first,best_pos,true);
 					if (move_->is_ok()) {
-						return 30;
+						return get_score();
 					}
 				}
 			}
@@ -1816,7 +1818,7 @@ double simple_move_and_targeting_phase::evaluate()
 	if(closest_distance != -1) {
 		move_ = check_move_action(closest_move.second,closest_move.first,true);
 		if (move_->is_ok()){
-			return 15;
+			return get_score();
 		}
 	}
 
