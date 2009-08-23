@@ -38,12 +38,12 @@ namespace {
  *
  * This shows the dialog with a list of predefined multiplayer servers.
  *
- * @start_table = container--SPECIAL
- *     server_list listbox             Listbox with the predefined servers to
+ * @start_table = grid
+ *     (server_list) (listbox) ()      Listbox with the predefined servers to
  *                                     connect to.
- *     # [name] -                      Widgets which shows the name of the
+ *     -[name] (control) ()            Widgets which shows the name of the
  *                                     server.
- *     # address -                     The address/host_name of the server.
+ *     -(address) (control) ()         The address/host_name of the server.
  * @end_table
  */
 class tmp_server_list : public tdialog
@@ -131,10 +131,10 @@ void callback_view_list_button(twidget* caller)
  *
  * This shows the dialog to the MP server to connect to.
  *
- * @start_table = container
- *     host_name (text_box)            The name of the server to connect to.
- *     [list] (button)                 Shows a dialog with a list of predefined
- *                                     servers to connect to.
+ * @start_table = grid
+ *     (host_name) (text_box) ()       The name of the server to connect to.
+ *     [list] (button) ()              Shows a dialog with a list of
+ *                                     predefined servers to connect to.
  * @end_table
  */
 tmp_connect::tmp_connect() :
@@ -192,13 +192,13 @@ void tmp_connect::show_server_list(twindow& window)
  *
  * This shows the dialog to log in to the MP server
  *
- * @start_table = container
- *     user_name (text_box)            the login user name
- *     password (text_box)             the password
- *     [password_reminder] (button)    Request a password reminder
- *     [change_username] (button)      Use a different username
- *     [login_label] (button)          Displays the information received
- *                                     from the server
+ * @start_table = grid
+ *     (user_name) (text_box) ()       The login user name.
+ *     (password) (text_box) ()        The password.
+ *     [password_reminder] (button) () Request a password reminder.
+ *     [change_username] (button) ()   Use a different username.
+ *     [login_label] (button) ()       Displays the information received
+ *                                     from the server.
  * @end_table
  */
 
@@ -234,8 +234,8 @@ void tmp_login::pre_show(CVideo& /*video*/, twindow& window)
 		button->set_retval(2);
 	}
 
-	// Needs to be a scroll_label since the text can get long and a normal label
-	// can't wrap (at the moment).
+	// Needs to be a scroll_label since the text can get long and a normal
+	// label can't wrap (at the moment).
 	tcontrol* label =
 		dynamic_cast<tscroll_label*>(window.find_widget("login_label", false));
 	if(label) label->set_label(label_);
