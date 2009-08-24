@@ -140,7 +140,7 @@ config engine::to_config() const
 }
 
 
-component* find_component( component */*root*/, const std::string &/*path*/ )
+static component* find_component( component */*root*/, const std::string &/*path*/ )
 {
 	LOG_AI_COMPOSITE_ENGINE << "find_component is not implemented by this engine" << std::endl;
 	return NULL;
