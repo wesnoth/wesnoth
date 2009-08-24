@@ -76,7 +76,7 @@ const std::string& aspect::get_name() const
 	return name_;
 }
 
-bool aspect::redeploy(const config &cfg, const std::string &id)
+bool aspect::redeploy(const config &cfg, const std::string& /*id*/)
 {
 	if (invalidate_on_turn_start_) {
 		manager::remove_turn_started_observer(this);
