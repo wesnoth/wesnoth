@@ -90,6 +90,12 @@ public:
 	void switch_side(side_number side);
 
 
+	virtual bool add_goal(int pos, const config &cfg);
+
+
+	virtual bool add_stage(int pos, const config &cfg);
+
+
 	void on_create();
 
 	/**

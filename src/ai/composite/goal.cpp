@@ -34,20 +34,20 @@ static lg::log_domain log_ai_composite_goal("ai/composite/goal");
 goal::goal(readonly_context &/*context*/, const config &cfg)
 	: cfg_(cfg), value_()
 {
-	if (cfg.has_attribute("value")) {
-		try {
-			value_ = boost::lexical_cast<double>(cfg["value"]);
-		} catch (boost::bad_lexical_cast){
-			ERR_AI_COMPOSITE_GOAL << "bad value of goal"<<std::endl;
-			value_ = 0;
-		}
-	}
 }
 
 
 
 void goal::on_create()
 {
+	if (cfg_.has_attribute("value")) {
+		try {
+			value_ = boost::lexical_cast<double>(cfg_["value"]);
+		} catch (boost::bad_lexical_cast){
+			ERR_AI_COMPOSITE_GOAL << "bad value of goal"<<std::endl;
+			value_ = 0;
+		}
+	}
 }
 
 
@@ -72,5 +72,18 @@ config goal::to_config() const
 	return cfg_;
 }
 
+
+const std::string& goal::get_id() const
+{
+	return cfg_["id"];
+}
+
+
+bool goal::redeploy(const config &cfg)
+{
+	cfg_ = cfg;
+	on_create();
+	return true;
+}
 
 } //end of namespace ai

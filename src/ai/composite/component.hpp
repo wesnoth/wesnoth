@@ -60,6 +60,35 @@ public:
 	static bool delete_component(component *root, const std::string &path);
 };
 
+
+
+template<typename T>
+class path_element_matches{
+public:
+	path_element_matches(const path_element &element)
+		: count_(0), element_(element)
+	{
+	}
+	virtual ~path_element_matches(){}
+
+	bool operator()(const T& t)
+	{
+		if ( (!element_.id.empty()) && (element_.id == t->get_id()) ) {
+			return true;
+		}
+		if (count_ == element_.position) {
+			return true;
+		}
+		count_++;
+		return false;
+	}
+
+private:
+	int count_;
+	path_element element_;
+};
+
+
 } //end of namespace ai
 
 

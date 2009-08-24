@@ -66,7 +66,14 @@ config stage::to_config() const
 	config cfg;
 	cfg["engine"] = cfg_["engine"];
 	cfg["name"] = cfg_["name"];
+	cfg["id"] = cfg_["id"];
 	return cfg;
+}
+
+
+const std::string& stage::get_id() const
+{
+	return cfg_["id"];
 }
 
 // =======================================================================

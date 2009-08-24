@@ -50,6 +50,12 @@ public:
 	void on_create();
 
 
+	const std::string& get_id() const;
+
+
+	bool redeploy(const config &cfg);
+
+
 	double value()
 	{
 		return value_;

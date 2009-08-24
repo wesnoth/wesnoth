@@ -712,32 +712,6 @@ protected:
 
 
 template<typename T>
-class path_element_matches{
-public:
-	path_element_matches(const path_element &element)
-		: count_(0), element_(element)
-	{
-	}
-	virtual ~path_element_matches(){}
-
-	bool operator()(const T& t)
-	{
-		if ( (!element_.id.empty()) && (element_.id == t->get_id()) ) {
-			return true;
-		}
-		if (count_ == element_.position) {
-			return true;
-		}
-		count_++;
-		return false;
-	}
-
-private:
-	int count_;
-	path_element element_;
-};
-
-template<typename T>
 class composite_aspect : public typesafe_aspect<T> {
 public:
 
@@ -825,7 +799,7 @@ public:
 			return false;
 		}
 		typename std::vector< boost::shared_ptr< typesafe_aspect<T> > >::iterator i = std::find_if(facets_.begin(),facets_.end(),path_element_matches< boost::shared_ptr< typesafe_aspect<T> > >(child));
-		LOG_STREAM(debug, aspect::log()) << "adding a new child facet to composite aspect["<<this->get_id()<<"]"<< std::endl;
+		LOG_STREAM(info, aspect::log()) << "adding a new child facet to composite aspect["<<this->get_id()<<"]"<< std::endl;
 		return add_facet(i-facets_.begin(),cfg);
 	}
 

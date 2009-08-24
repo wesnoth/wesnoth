@@ -77,6 +77,7 @@ public:
 	virtual config to_config() const;
 
 
+	virtual const std::string& get_id() const;
 protected:
 	/**
 	 * Play the turn - implementation
