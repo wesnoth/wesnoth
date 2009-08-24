@@ -336,8 +336,7 @@ void play_controller::save_map(){
 }
 
 void play_controller::load_game(){
-	game_state state_copy(gamestate_); //we pass a copy of the gamestate, as cancelling the load dialog would clear gamestate_
-	loadgame load(*gui_, game_config_, state_copy);
+	loadgame load(*gui_, game_config_, gamestate_);
 	load.load_game();
 }
 
