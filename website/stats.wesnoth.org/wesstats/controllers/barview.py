@@ -45,7 +45,7 @@ class BarGraphController(BaseController):
 		available_filters = view_data[5].split(',')
 		fdata = dict()
 		for filter in available_filters:
-			curs.execute("SELECT DISTINCT "+filter+" FROM GAMES")
+			curs.execute("SELECT DISTINCT "+filter+" FROM GAMES_SP")
 			#curs.fetchall() returns a list of lists, we convert this to a plain list for ease of handling
 			raw_fdata = curs.fetchall()
 			fdata[filter] = []
@@ -73,7 +73,7 @@ class BarGraphController(BaseController):
 		for i in range(len(y_data)):
 			y_data_str += y_xforms[i] + "(" + y_data[i] + "),"
 		y_data_str = y_data_str[0:len(y_data_str)-1]
-		query = "SELECT "+view_data[1]+","+y_data_str+" FROM GAMES "+filters+" GROUP BY "+view_data[1]
+		query = "SELECT "+view_data[1]+","+y_data_str+" FROM GAMES_SP "+filters+" GROUP BY "+view_data[1]
 		log.debug("SQL query:")
 		log.debug(query)
 		results = helperlib.scaled_query(curs,query,100,evaluators.count_eval)

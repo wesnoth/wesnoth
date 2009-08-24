@@ -65,6 +65,7 @@ class RootController(BaseController):
 			#split v1 log into an array instead of a blob
 			raw_log = raw_log.split('\n')
 		wml_tree = helperlib.build_tree(raw_log)
+		
 		if not wml_tree.has_key("platform"):
 			wml_tree["platform"] = "unknown"
 
@@ -118,6 +119,10 @@ class RootController(BaseController):
 				int(wml_tree["game"][result_type]["end_turn"])) #15 cols
 			curs.execute("INSERT INTO GAMES VALUES (DEFAULT,NOW(),%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",params)
 		
+		if wml_tree.has_key("upload_log"):
+			if wml_tree["upload_log"].has_key("ai_log"):
+				pass
+
 		kill_events = wml_tree["game"].setdefault("kill_event",[])
 		for kill in kill_events:
 			if isinstance(kill,types.StringType):

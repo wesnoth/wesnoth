@@ -55,7 +55,7 @@ class LineGraphController(BaseController):
 		available_filters = view_data[5].split(',')
 		fdata = dict()
 		for filter in available_filters:
-			curs.execute("SELECT DISTINCT "+filter+" FROM GAMES")
+			curs.execute("SELECT DISTINCT "+filter+" FROM GAMES_SP")
 			#curs.fetchall() returns a list of lists, we convert this to a plain list for ease of handling
 			raw_fdata = curs.fetchall()
 			fdata[filter] = []
@@ -117,7 +117,7 @@ class LineGraphController(BaseController):
 			y_group_str += y_data[i] + ","
 		y_data_str = y_data_str[0:len(y_data_str)-1]
 		y_group_str = y_group_str[0:len(y_group_str)-1]
-		query = "SELECT CAST(timestamp as DATE)," + y_data_str + " FROM GAMES " + filters + " GROUP BY CAST(timestamp as DATE)," + y_group_str 
+		query = "SELECT CAST(timestamp as DATE)," + y_data_str + " FROM GAMES_SP " + filters + " GROUP BY CAST(timestamp as DATE)," + y_group_str 
 		log.debug("SQL query:")
 		log.debug(query)
 		results = helperlib.scaled_query(curs,query,100,evaluators.simple_eval)

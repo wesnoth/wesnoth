@@ -42,7 +42,7 @@ class KillGraphController(BaseController):
 		log.debug(view_data)
 		#@TODO: overloaded information about what kind of game this is into ydata, there needs to be a better solution for this in the future
 		#use the correct GAMES table for singleplayer or multiplayer
-		games_tbl = "GAMES"
+		games_tbl = "GAMES_SP"
 		if view_data[2] == "multiplayer":
 			games_tbl = "GAMES_MP"
 		
