@@ -1587,12 +1587,10 @@ void game_controller::launch_game(RELOAD_GAME_DATA reload)
 			the_end(disp(), state_.classification().end_text, state_.classification().end_text_duration);
 			about::show_about(disp(),state_.classification().campaign);
 		}
-		if (result == QUIT)
-		{
-			loaded_game_ = "";
-			loaded_game_show_replay_ = false;
-			loaded_game_cancel_orders_ = false;
-		}
+
+		loaded_game_ = "";
+		loaded_game_show_replay_ = false;
+		loaded_game_cancel_orders_ = false;
 	} catch(game::load_game_exception& e) {
 
 		//this will make it so next time through the title screen loop, this game is loaded
