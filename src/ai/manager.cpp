@@ -655,6 +655,10 @@ void manager::modify_active_ai_config_old_for_side ( side_number side, const con
 
 void manager::modify_active_ai_for_side ( side_number side, const config &cfg )
 {
+	if (ai_info_==NULL) {
+		//replay ?
+		return;
+	}
 	get_active_ai_holder_for_side(side).modify_ai(cfg);
 }
 
