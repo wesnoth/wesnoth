@@ -49,7 +49,7 @@ namespace uploader_settings {
 	const std::string target_host = "www.wesnoth.org";
 	const std::string target_url = "/cgi-bin/upload";
 	const Uint16 target_port = 80;
-	const std::string target_host_dev = "cornmander.com";
+	const std::string target_host_dev = "www.wesnoth.org";
 	const std::string target_url_dev = "/wesstats/upload";
 	const Uint16 target_port_dev = 80;
 } //namespace uploader_settings
