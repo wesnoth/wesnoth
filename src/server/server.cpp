@@ -91,11 +91,8 @@ clock_t get_cpu_time(bool active) {
 
 namespace {
 
-bool match_username(std::pair<network::connection, player> pl, const std::string& username) {
-	return pl.second.name() == username;
-}
-bool match_ip(std::pair<network::connection, player> pl, const std::string& ip) {
-	return network::ip_address(pl.first) == ip;
+bool match_user(std::pair<network::connection, player> pl, const std::string& username, const std::string& ip) {
+	return pl.second.name() == username && network::ip_address(pl.first) == ip;
 }
 }
 
@@ -1725,7 +1722,7 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 				const std::string& ip = i->ip;
 				if (utils::wildcard_string_match(ip, parameters)) {
 					found_something = true;
-					wesnothd::player_map::const_iterator pl = std::find_if(players_.begin(), players_.end(), boost::bind(&::match_ip, _1, ip));
+					wesnothd::player_map::const_iterator pl = std::find_if(players_.begin(), players_.end(), boost::bind(&::match_user, _1, username, ip));
 					if (pl != players_.end()) {
 						out << std::endl << player_status(pl);
 					} else {
@@ -1740,7 +1737,7 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 				const std::string& ip = i->ip;
 				if (utils::wildcard_string_match(username, parameters)) {
 					found_something = true;
-					wesnothd::player_map::const_iterator pl = std::find_if(players_.begin(), players_.end(), boost::bind(&::match_username, _1, username));
+					wesnothd::player_map::const_iterator pl = std::find_if(players_.begin(), players_.end(), boost::bind(&::match_user, _1, username, ip));
 					if (pl != players_.end()) {
 						out << std::endl << player_status(pl);
 					} else {
