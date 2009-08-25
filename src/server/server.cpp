@@ -1548,33 +1548,19 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 				: "You have been kicked. Reason: " + std::string(i + 1, parameters.end()));
 		bool kicked = false;
 		// if we find a '.' consider it an ip mask
-		if (std::count(kick_mask.begin(), kick_mask.end(), '.') >= 1) {
-			for (wesnothd::player_map::const_iterator pl = players_.begin();
-				pl != players_.end(); ++pl)
-			{
-				if (utils::wildcard_string_match(network::ip_address(pl->first), kick_mask)) {
-					if (kicked) out << "\n";
-					else kicked = true;
-					out << "Kicked " << pl->second.name() << " ("
-						<< network::ip_address(pl->first) << "). '"
-						<< kick_message << "'";
-					send_error(pl->first, kick_message.c_str());
-					network::queue_disconnect(pl->first);
-				}
-			}
-		} else {
-			for (wesnothd::player_map::const_iterator pl = players_.begin();
-				pl != players_.end(); ++pl)
-			{
-				if (utils::wildcard_string_match(pl->second.name(), kick_mask)) {
-					if (kicked) out << "\n";
-					else kicked = true;
-					out << "Kicked " << pl->second.name() << " ("
-						<< network::ip_address(pl->first) << "). '"
-						<< kick_message << "'";
-					send_error(pl->first, kick_message.c_str());
-					network::queue_disconnect(pl->first);
-				}
+		const bool match_ip = (std::count(kick_mask.begin(), kick_mask.end(), '.') >= 1);
+		for (wesnothd::player_map::const_iterator pl = players_.begin();
+			pl != players_.end(); ++pl)
+		{
+			if ((match_ip && utils::wildcard_string_match(network::ip_address(pl->first), kick_mask))
+			|| (!match_ip && utils::wildcard_string_match(pl->second.name(), kick_mask))) {
+				if (kicked) out << "\n";
+				else kicked = true;
+				out << "Kicked " << pl->second.name() << " ("
+					<< network::ip_address(pl->first) << "). '"
+					<< kick_message << "'";
+				send_error(pl->first, kick_message.c_str());
+				network::queue_disconnect(pl->first);
 			}
 		}
 		if (!kicked) out << "No user matched '" << kick_mask << "'.";
@@ -1615,34 +1601,19 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 
 		// If this looks like an IP look up which nicks have been connected from it
 		// Otherwise look for the last IP the nick used to connect
-		if (std::count(parameters.begin(), parameters.end(), '.') >= 1) {
-			for (std::deque<connection_log>::const_iterator i = ip_log_.begin();
-					i != ip_log_.end(); i++) {
-				const std::string& username = i->nick;
-				const std::string& ip = i->ip;
-				if (utils::wildcard_string_match(ip, parameters)) {
-					found_something = true;
-					wesnothd::player_map::const_iterator pl = std::find_if(players_.begin(), players_.end(), boost::bind(&::match_user, _1, username, ip));
-					if (pl != players_.end()) {
-						out << std::endl << player_status(pl);
-					} else {
-						out << "\n'" << username << "' @ " << ip << " last seen: " << ctime(&(i->log_off));
-					}
-				}
-			}
-		} else {
-			for (std::deque<connection_log>::const_iterator i = ip_log_.begin();
-					i != ip_log_.end(); i++) {
-				const std::string& username = i->nick;
-				const std::string& ip = i->ip;
-				if (utils::wildcard_string_match(username, parameters)) {
-					found_something = true;
-					wesnothd::player_map::const_iterator pl = std::find_if(players_.begin(), players_.end(), boost::bind(&::match_user, _1, username, ip));
-					if (pl != players_.end()) {
-						out << std::endl << player_status(pl);
-					} else {
-						out << "\n'" << username << "' @ " << ip << " last seen: " << ctime(&(i->log_off));
-					}
+		const bool match_ip = (std::count(parameters.begin(), parameters.end(), '.') >= 1);
+		for (std::deque<connection_log>::const_iterator i = ip_log_.begin();
+				i != ip_log_.end(); i++) {
+			const std::string& username = i->nick;
+			const std::string& ip = i->ip;
+			if ((match_ip && utils::wildcard_string_match(ip, parameters))
+			|| (!match_ip && utils::wildcard_string_match(username, parameters))) {
+				found_something = true;
+				wesnothd::player_map::const_iterator pl = std::find_if(players_.begin(), players_.end(), boost::bind(&::match_user, _1, username, ip));
+				if (pl != players_.end()) {
+					out << std::endl << player_status(pl);
+				} else {
+					out << "\n'" << username << "' @ " << ip << " last seen: " << ctime(&(i->log_off));
 				}
 			}
 		}
