@@ -331,9 +331,6 @@ std::pair<map_location,map_location> ai_default::choose_move(std::vector<target>
 
 	//choose the best target for that unit
 	for(std::vector<target>::iterator tg = targets.begin(); tg != targets.end(); ++tg) {
-		if(get_avoid().match(tg->loc)) {
-			continue;
-		}
 		LOG_AI << "Considering target at: " << tg->loc <<"\n";
 
 		raise_user_interact();

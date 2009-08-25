@@ -313,15 +313,15 @@ std::vector<target> default_ai_context_impl::find_targets(unit_map::const_iterat
 	//find the enemy leaders and explicit targets
 	unit_map::const_iterator u;
 	for(u = units_.begin(); u != units_.end(); ++u) {
-
-		//is a visible enemy leader
-		if (u->second.can_recruit() && current_team().is_enemy(u->second.side())
-		&& !u->second.invisible(u->first, units_, teams_)) {
-			assert(map_.on_board(u->first));
-			LOG_AI << "found enemy leader (side: " << u->second.side() << ") target... " << u->first << " with value: " << get_leader_value() << "\n";
-			targets.push_back(target(u->first,get_leader_value(),target::LEADER));
+		if (get_leader_value()>0.0) {
+			//is a visible enemy leader
+			if (u->second.can_recruit() && current_team().is_enemy(u->second.side())
+			    && !u->second.invisible(u->first, units_, teams_)) {
+				assert(map_.on_board(u->first));
+				LOG_AI << "found enemy leader (side: " << u->second.side() << ") target... " << u->first << " with value: " << get_leader_value() << "\n";
+				targets.push_back(target(u->first,get_leader_value(),target::LEADER));
+			}
 		}
-
 		//explicit targets for this team
 
 		for(std::vector<goal_ptr>::iterator j = goals.begin();

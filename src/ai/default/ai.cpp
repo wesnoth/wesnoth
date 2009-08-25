@@ -33,6 +33,7 @@
 #include "../../mouse_handler_base.hpp"
 #include "../../replay.hpp"
 #include "../../statistics.hpp"
+#include "../../terrain_filter.hpp"
 #include "../../unit_display.hpp"
 #include "../../wml_exception.hpp"
 
@@ -1088,6 +1089,37 @@ bool ai_default::retreat_units(unit_map::const_iterator leader)
 	return false;
 }
 
+class remove_wrong_targets {
+public:
+	remove_wrong_targets(const readonly_context &context)
+		:avoid_(context.get_avoid()), map_(context.get_info().map)
+	{
+	}
+
+bool operator()(const target &t){
+	if (!map_.on_board(t.loc)) {
+		DBG_AI << "removing target "<< t.loc << " due to it not on_board" << std::endl;
+		return true;
+	}
+
+	if (t.value<=0) {
+		DBG_AI << "removing target "<< t.loc << " due to value<=0" << std::endl;
+		return true;
+	}
+
+	if (avoid_.match(t.loc)) {
+		DBG_AI << "removing target "<< t.loc << " due to 'avoid' match" << std::endl;
+		return true;
+	}
+
+	return false;
+}
+private:
+	const terrain_filter &avoid_;
+	const gamemap &map_;
+
+};
+
 bool ai_default::move_to_targets(unit_map::const_iterator leader)
 {
 	LOG_AI << "finding targets...\n";
@@ -1101,6 +1133,12 @@ bool ai_default::move_to_targets(unit_map::const_iterator leader)
 			if(targets.empty()) {
 				return false;
 			}
+		}
+
+		targets.erase( std::remove_if(targets.begin(),targets.end(),remove_wrong_targets(*this)), targets.end() );
+
+		if(targets.empty()) {
+			return false;
 		}
 
 		LOG_AI << "choosing move with " << targets.size() << " targets\n";
