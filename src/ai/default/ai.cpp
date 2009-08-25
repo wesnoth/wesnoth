@@ -977,6 +977,9 @@ bool ai_default::should_retreat(const map_location& loc, const unit_map::const_i
 
 bool ai_default::retreat_units(unit_map::const_iterator leader)
 {
+	if (get_caution()<=0) {
+		return false;//note: this speeds up the evaluation - per-unit caution is not implemented anyway
+	}
 	// Get versions of the move map that assume that all units are at full movement
 	std::map<map_location,paths> dummy_possible_moves;
 	move_map fullmove_srcdst;
