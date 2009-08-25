@@ -792,7 +792,7 @@ void server::run() {
 				metrics_.service_request();
 
 				if(buf.empty()) {
-					std::cerr << "received empty packet\n";
+					WRN_SERVER << "received empty packet\n";
 					continue;
 				}
 
@@ -809,6 +809,7 @@ void server::run() {
 					data_ptr->take_ownership_of_buffer(buf_ptr);
 
 				} catch (simple_wml::error& e) {
+					WRN_CONFIG << "simple_wml error in received data: " << e.message << std::endl;
 					send_error(sock, ("Invalid WML received: " + e.message).c_str());
 					delete [] buf_ptr;
 					continue;
@@ -836,8 +837,6 @@ void server::run() {
 
 			metrics_.no_requests();
 
-		} catch(config::error& e) {
-			WRN_CONFIG << "Warning: error in received data: " << e.message << "\n";
 		} catch(simple_wml::error& e) {
 			WRN_CONFIG << "Warning: error in received data: " << e.message << "\n";
 		} catch(network::error& e) {
@@ -2170,8 +2169,8 @@ void server::process_data_game(const network::connection sock,
 		return;
 // Everything below should only be processed if the game is already intialized.
 	} else if (!g->level_init()) {
-		WRN_SERVER << "Received unknown data from: " << pl->second.name()
-			<< " (socket:" << sock
+		WRN_SERVER << network::ip_address(sock) << "\tReceived unknown data from: "
+			<< pl->second.name() << " (socket:" << sock
 			<< ") while the scenario wasn't yet initialized.\n" << data.output();
 		return;
 	// If the host is sending the next scenario data.
@@ -2390,8 +2389,9 @@ void server::process_data_game(const network::connection sock,
 		return;
 	}
 
-	WRN_SERVER << "Received unknown data from: " << pl->second.name()
-		<< ". (socket:" << sock << ")\n" << data.output();
+	WRN_SERVER << network::ip_address(sock) << "\tReceived unknown data from: "
+		<< pl->second.name() << " (socket:" << sock << ") in game: \""
+		<< g->name() << "\" (" << g->id() << ")\n" << data.output();
 }
 
 void server::delete_game(std::vector<wesnothd::game*>::iterator game_it) {

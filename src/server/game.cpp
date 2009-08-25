@@ -32,6 +32,7 @@
 #define WRN_GAME LOG_STREAM(warn, mp_server)
 #define LOG_GAME LOG_STREAM(info, mp_server)
 #define DBG_GAME LOG_STREAM(debug, mp_server)
+#define WRN_CONFIG LOG_STREAM(warn, config)
 
 namespace chat_message {
 
@@ -96,18 +97,13 @@ game::~game()
 	// Hack to handle the pseudo games lobby_ and not_logged_in_.
 	if (owner_ == 0) return;
 
-	try {
-		save_replay();
+	save_replay();
 
-		user_vector users = all_game_users();
-		for (user_vector::const_iterator u = users.begin(); u != users.end(); ++u) {
-			remove_player(*u, false, true);
-		}
-		clear_history();
-	} catch (...) {
-		LOG_GAME << "Caught unknown error while destructing game:\t\""
-			<< name_ << "\" (" << id_ << ")\n";
+	user_vector users = all_game_users();
+	for (user_vector::const_iterator u = users.begin(); u != users.end(); ++u) {
+		remove_player(*u, false, true);
 	}
+	clear_history();
 }
 
 bool game::allow_observers() const {
@@ -1205,12 +1201,17 @@ void game::send_history(const network::connection sock) const
 		delete *i;
 	}
 
-	simple_wml::document* doc = new simple_wml::document(buf.c_str(), simple_wml::INIT_STATIC);
-	const simple_wml::string_span& data = doc->output_compressed();
-	doc->compress();
-	network::send_raw_data(data.begin(), data.size(), sock,"game_history");
-	history_.clear();
-	history_.push_back(doc);
+	try {
+		simple_wml::document* doc = new simple_wml::document(buf.c_str(), simple_wml::INIT_STATIC);
+		const simple_wml::string_span& data = doc->output_compressed();
+		doc->compress();
+		network::send_raw_data(data.begin(), data.size(), sock,"game_history");
+		history_.clear();
+		history_.push_back(doc);
+	} catch (simple_wml::error& e) {
+		WRN_CONFIG << "simple_wml error: " << e.message << std::endl;
+	}
+
 }
 
 static bool is_invalid_filename_char(char c) {
@@ -1252,16 +1253,21 @@ void game::save_replay() {
 	name << " (" << id_ << ").gz";
 
 	std::string replay_data_str = replay_data.str();
-	simple_wml::document replay(replay_data_str.c_str(), simple_wml::INIT_STATIC);
+	try {
+		simple_wml::document replay(replay_data_str.c_str(), simple_wml::INIT_STATIC);
 
-	std::string filename(name.str());
-	std::replace(filename.begin(), filename.end(), ' ', '_');
-	filename.erase(std::remove_if(filename.begin(), filename.end(), is_invalid_filename_char), filename.end());
-	DBG_GAME << "saving replay: " << filename << std::endl;
-	scoped_ostream os(ostream_file(replay_save_path_ + filename));
-	(*os) << replay.output_compressed();
-	if (!os->good()) {
-		LOG_GAME << "Could not save replay! (" << filename << ")\n";
+		std::string filename(name.str());
+		std::replace(filename.begin(), filename.end(), ' ', '_');
+		filename.erase(std::remove_if(filename.begin(), filename.end(), is_invalid_filename_char), filename.end());
+		DBG_GAME << "saving replay: " << filename << std::endl;
+		scoped_ostream os(ostream_file(replay_save_path_ + filename));
+		(*os) << replay.output_compressed();
+
+		if (!os->good()) {
+			ERR_GAME << "Could not save replay! (" << filename << ")\n";
+		}
+	} catch (simple_wml::error& e) {
+		WRN_CONFIG << "simple_wml error: " << e.message << std::endl;
 	}
 }
 
