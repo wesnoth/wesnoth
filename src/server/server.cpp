@@ -53,7 +53,6 @@
 #include <cassert>
 #include <cerrno>
 #include <cstdlib>
-#include <ctime>
 #include <iomanip>
 #include <iostream>
 #include <map>
@@ -1714,7 +1713,7 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 				if (pl != players_.end()) {
 					out << std::endl << player_status(pl);
 				} else {
-					out << "\n'" << username << "' @ " << ip << " last seen: " << ctime(&(i->log_off));
+					out << "\n'" << username << "' @ " << ip << " last seen: " << lg::get_timestamp(i->log_off, "%H:%M:%S %d.%m.%Y");
 				}
 			}
 		}
