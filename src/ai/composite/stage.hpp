@@ -87,7 +87,7 @@ protected:
 
 	recursion_counter recursion_counter_;
 
-	const config &cfg_;
+	config cfg_;
 
 };
 
