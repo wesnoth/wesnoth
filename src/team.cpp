@@ -439,6 +439,13 @@ bool team::calculate_is_enemy(size_t index) const
 	return std::find(info_.enemies.begin(),info_.enemies.end(),int(index+1)) != info_.enemies.end();
 }
 
+void team::set_share_maps( bool share_maps ){
+	// Share_view and share_maps can't both be enabled,
+	// so share_view overrides share_maps.
+	// If you want to change them, be sure to change share_view FIRST
+	info_.share_maps = !info_.share_view && share_maps;
+}
+
 void team::set_share_view( bool share_view ){
 	info_.share_view = share_view;
 }

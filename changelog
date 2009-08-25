@@ -22,6 +22,8 @@ Version 1.7.3+svn:
    * Added a horizontal listbox
  * WML Engine:
    * Support for [show_if] inside [message]	
+   * Added ability to change the share_maps team attribute using [modify_side]
+     tag. Be sure to use shroud=yes for that side
  * Miscellaneous and bugfixes:
    * Removed obsolete code for implicit linked widgets for the listbox
    * [part] caption= is no longer supported; prepend the CAPTION macro

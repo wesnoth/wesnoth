@@ -266,6 +266,8 @@ public:
 
 	void log_recruitable();
 
+	/**set the share maps attribute */
+	void set_share_maps( bool share_maps );
 	/**set the share view attribute */
 	void set_share_view( bool share_view );
 
