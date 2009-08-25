@@ -58,6 +58,7 @@
 #include <cerrno>
 #include <cstdlib>
 #include <ctime>
+#include <iomanip>
 #include <iostream>
 #include <map>
 #include <set>
@@ -258,7 +259,7 @@ std::string player_status(wesnothd::player_map::const_iterator pl) {
 	const int minutes = (time_connected/60)%60;
 	const int hours = time_connected/(60*60);
 	out << "'" << pl->second.name() << "' @ " << network::ip_address(pl->first)
-		<< " connected for " << hours << ":" << minutes << ":" << seconds
+		<< " connected for " << std::setw(2) << hours << ":" << std::setw(2) << minutes << ":" << std::setw(2) << seconds
 		<< " sent " << stats.bytes_sent << " bytes, received "
 		<< stats.bytes_received << " bytes";
 	return out.str();
