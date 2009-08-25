@@ -22,6 +22,7 @@
 #include "team.hpp"
 #include "variable.hpp"
 #include "savegame_config.hpp"
+#include "serialization/binary_or_text.hpp"
 
 #include <time.h>
 #include <string>
@@ -89,6 +90,8 @@ public:
 
 	//write the gamestate into a config object
 	void write_snapshot(config& cfg) const;
+	//write the config information into a stream (file)
+	void write_config(config_writer& out) const;
 
 	// Variable access
 
