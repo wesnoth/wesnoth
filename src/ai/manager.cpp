@@ -54,6 +54,12 @@ static lg::log_domain log_ai_manager("ai/manager");
 #define LOG_AI_MANAGER LOG_STREAM(info, log_ai_manager)
 #define ERR_AI_MANAGER LOG_STREAM(err, log_ai_manager)
 
+static lg::log_domain log_ai_mod("ai/mod");
+#define DBG_AI_MOD LOG_STREAM(debug, log_ai_mod)
+#define LOG_AI_MOD LOG_STREAM(info, log_ai_mod)
+#define WRN_AI_MOD LOG_STREAM(warn, log_ai_mod)
+#define ERR_AI_MOD LOG_STREAM(err, log_ai_mod)
+
 holder::holder( side_number side, const config &cfg )
 	: ai_(), side_context_(NULL), readonly_context_(NULL), readwrite_context_(NULL), default_ai_context_(NULL), side_(side), cfg_(cfg)
 {
@@ -150,7 +156,9 @@ void holder::modify_ai(const config &cfg)
 		// if not initialized, initialize now.
 		get_ai_ref();
 	}
-
+	LOG_AI_MOD << "side "<< side_ << "        [modify_ai]"<<std::endl;
+	DBG_AI_MOD << std::endl << cfg << std::endl;
+	DBG_AI_MOD << "side "<< side_ << " before [modify_ai]"<<std::endl << to_config() << std::endl;
 	const std::string &act = cfg["action"];
 	bool res = false;
 	if (act == "add") {
@@ -160,12 +168,15 @@ void holder::modify_ai(const config &cfg)
 	} else if (act == "delete") {
 		res = component_manager::delete_component(&*this->ai_,cfg["path"]);
 	} else {
-		ERR_AI_MANAGER << "modify_ai tag has invalid 'action' attribute " << std::endl;
+		ERR_AI_MOD << "modify_ai tag has invalid 'action' attribute " << std::endl;
 	}
+	DBG_AI_MOD << "side "<< side_ << "  after [modify_ai]"<<std::endl << to_config() << std::endl;
 	if (!res) {
-		ERR_AI_MANAGER << "[modify_ai] failed"<< std::endl;
-		DBG_AI_MANAGER << "[modify_ai] config is: "<< std::endl << cfg << std::endl;
+		WRN_AI_MOD << "[modify_ai] failed"<< std::endl;
+	} else {
+		LOG_AI_MOD << "[modify_ai] success"<< std::endl;
 	}
+
 }
 
 config holder::to_config() const

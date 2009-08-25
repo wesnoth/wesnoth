@@ -61,15 +61,9 @@ bool component::delete_child(const path_element &/*child*/)
 
 /*
 [modify_ai]
-    component = "aspect['aggression']"
-    property = "facet"
-    action= "add"
-    [cfg]...[/cfg]
-[/modify_ai]
-
-[modify_ai]
-    component = "stage['fallback']
+    path = "stage['fallback']
     action = "change"
+    [cfg]...[/cfg]
 [/modify_ai]
 
 [modify_ai]
@@ -79,17 +73,13 @@ bool component::delete_child(const path_element &/*child*/)
 [/modify_ai]
 
 [modify_ai]
-    component = "aspect['aggression']"
-    property = facet['zzzz']
+    path = "aspect['aggression'].facet['zzzz']
     action = "delete"
-    [cfg]...[/cfg]
 [/modify_ai]
 
 [modify_ai]
-    component = "aspect['aggression']"
+    component = "aspect['aggression'].facet"
     action = "add"
-    property = "facet"
-    where="end"
     [cfg]...[/cfg]
 [/modify_ai]
 */
