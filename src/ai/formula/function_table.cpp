@@ -29,6 +29,7 @@
 #include "../../menu_events.hpp"
 #include "../../pathfind.hpp"
 #include "../../replay.hpp"
+#include "../../terrain_filter.hpp"
 #include "../../unit.hpp"
 
 static lg::log_domain log_formula_ai("ai/formula_ai");
@@ -1426,6 +1427,25 @@ private:
 	const formula_ai& ai_;
 };
 
+//hack
+//@todo 1.7.4 document or remove
+class is_avoided_location_function : public function_expression {
+public:
+	is_avoided_location_function(const args_list& args, const formula_ai& ai_object)
+		: function_expression("is_avoided_location",args, 1, 1), ai_(ai_object)
+	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		variant res = args()[0]->evaluate(variables,add_debug_info(fdb,0,"is_avoided_location:location"));
+		if(res.is_null()) {
+			return variant();
+		}
+		const map_location& loc = convert_variant<location_callable>(res)->loc();
+		return variant(ai_.get_avoid().match(loc));
+	}
+
+	const formula_ai &ai_;
+};
 
 class max_possible_damage_function : public function_expression {
 public:
@@ -1554,6 +1574,8 @@ expression_ptr ai_function_symbol_table::create_function(const std::string &fn,
 		return expression_ptr(new safe_call_function(args));
 	} else if(fn == "get_unit_type") {
 		return expression_ptr(new get_unit_type_function(args));
+	} else if(fn == "is_avoided_location") {
+		return expression_ptr(new is_avoided_location_function(args,ai_));
 	} else if(fn == "is_village") {
 		return expression_ptr(new is_village_function(args));
 	} else if(fn == "is_unowned_village") {
