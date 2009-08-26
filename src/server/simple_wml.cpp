@@ -6,6 +6,11 @@
 
 #include "simple_wml.hpp"
 
+#include "../log.hpp"
+
+static lg::log_domain log_config("config");
+#define ERR_SWML LOG_STREAM(err, log_config)
+
 namespace simple_wml {
 
 namespace {
@@ -54,33 +59,33 @@ char* uncompress_buffer(const string_span& input, string_span* span)
 
 char* compress_buffer(const char* input, string_span* span)
 {
-	std::string in(input);
-	std::istringstream stream(in);
-	boost::iostreams::filtering_stream<boost::iostreams::input> filter;
-	filter.push(boost::iostreams::gzip_compressor());
-	filter.push(stream);
-
-	std::vector<char> buf(in.size()*2 + 80);
-	const int len = filter.read(&buf[0], buf.size()).gcount();
-	assert(len < 128*1024*1024);
-	if((!filter.eof() && !filter.good()) || len == static_cast<int>(buf.size())) {
-		throw error("failed to compress");
-	}
-
-	buf.resize(len);
-
-	char* small_out;
 	try {
-		small_out = new char[len];
+		std::string in(input);
+		std::istringstream stream(in);
+		boost::iostreams::filtering_stream<boost::iostreams::input> filter;
+		filter.push(boost::iostreams::gzip_compressor());
+		filter.push(stream);
+
+		std::vector<char> buf(in.size()*2 + 80);
+		const int len = filter.read(&buf[0], buf.size()).gcount();
+		assert(len < 128*1024*1024);
+		if((!filter.eof() && !filter.good()) || len == static_cast<int>(buf.size())) {
+			throw error("failed to compress");
+		}
+
+		buf.resize(len);
+
+		char* small_out = new char[len];
 		memcpy(small_out, &buf[0], len);
+
+		*span = string_span(small_out, len);
+		assert(*small_out == 31);
+		return small_out;
 	} catch (std::bad_alloc& e) {
-		std::cerr << "ERROR: Trying to allocate " << len << " bytes.";
+		ERR_SWML << "ERROR: bad_alloc caught in compress_buffer() with input: '"
+		<< *input << "' " << e.what() << std::endl;
 		throw error("Bad allocation request in compress_buffer().");
 	}
-
-	*span = string_span(small_out, len);
-	assert(*small_out == 31);
-	return small_out;
 }
 
 }  // namespace
@@ -122,7 +127,7 @@ char* string_span::duplicate() const
 error::error(const char* msg)
   : message(msg)
 {
-	std::cerr << "ERROR: '" << msg << "'\n";
+	ERR_SWML << "ERROR: '" << msg << "'\n";
 }
 
 std::ostream& operator<<(std::ostream& o, const string_span& s)
@@ -201,7 +206,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 		default: {
 			const char* end = strchr(s, '=');
 			if(end == NULL) {
-				std::cerr << "attribute: " << s << "\n";
+				ERR_SWML << "attribute: " << s << "\n";
 				throw error("could not find '=' after attribute");
 			}
 
@@ -215,7 +220,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 			}
 
 			if(*s != '"') {
-				std::cerr << "no quotes for attribute '" << name << "'\n";
+				ERR_SWML << "no quotes for attribute '" << name << "'\n";
 				throw error("did not find quotes around attribute");
 			}
 
@@ -227,7 +232,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 				}
 
 				if(end == NULL) {
-					std::cerr << "ATTR: '" << name << "' (((" << s << ")))\n";
+					ERR_SWML << "ATTR: '" << name << "' (((" << s << ")))\n";
 					throw error("did not find end of attribute");
 				}
 
@@ -250,7 +255,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 
 			string_span value(s, end - s);
 			if(attr_.empty() == false && !(attr_.back().first < name)) {
-				std::cerr << "attributes: '" << attr_.back().first << "' < '" << name << "'\n";
+				ERR_SWML << "attributes: '" << attr_.back().first << "' < '" << name << "'\n";
 				throw error("attributes not in order");
 			}
 
@@ -956,7 +961,8 @@ const char* document::output()
 	try {
 		buf = new char[buf_size];
 	} catch (std::bad_alloc& e) {
-		std::cerr << "ERROR: Trying to allocate " << buf_size << " bytes.";
+		ERR_SWML << "ERROR: Trying to allocate " << buf_size << " bytes. "
+		<< e.what() << std::endl;
 		throw error("Bad allocation request in output().");
 	}
 	buffers_.push_back(buf);
