@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "utils/test_support.hpp"
+#include <boost/test/unit_test.hpp>
 
 #define GETTEXT_DOMAIN "wesnoth-test"
 

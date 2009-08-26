@@ -14,7 +14,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-test"
 
-#include "utils/test_support.hpp"
+#include <boost/test/unit_test.hpp>
 
 #include "util.hpp"
 

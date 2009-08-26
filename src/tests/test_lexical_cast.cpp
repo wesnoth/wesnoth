@@ -16,7 +16,7 @@
 
 #include "lexical_cast.hpp"
 
-#include "utils/test_support.hpp"
+#include <boost/test/unit_test.hpp>
 
 #include <boost/mpl/vector.hpp>
 #include <boost/mpl/copy.hpp>

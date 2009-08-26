@@ -15,7 +15,7 @@
 // In this domain since it compares a shared string from this domain.
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "tests/utils/test_support.hpp"
+#include <boost/test/unit_test.hpp>
 
 #include "config_cache.hpp"
 #include "filesystem.hpp"
