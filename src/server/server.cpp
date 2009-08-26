@@ -437,6 +437,8 @@ void server::load_config() {
 	save_replays_ = utils::string_bool(cfg_["save_replays"], false);
 	replay_save_path_ = cfg_["replay_save_path"];
 
+	tor_ip_list_ = utils::split(read_file(cfg_["tor_ip_list_path"]), '\n');
+
 	admin_passwd_ = cfg_["passwd"];
 	motd_ = cfg_["motd"];
 	lan_server_ = lexical_cast_default<time_t>(cfg_["lan_server"], 0);
@@ -539,6 +541,11 @@ bool server::ip_exceeds_connection_limit(const std::string& ip) const {
 }
 
 std::string server::is_ip_banned(const std::string& ip) const {
+	if (!tor_ip_list_.empty()) {
+		for (std::vector<std::string>::const_iterator i = tor_ip_list_.begin(); i != tor_ip_list_.end(); ++i) {
+			if (*i == ip) return "TOR IP";
+		}
+	}
 	return ban_manager_.is_ip_banned(ip);
 }
 

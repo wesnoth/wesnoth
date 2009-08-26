@@ -87,6 +87,7 @@ private:
 	bool save_replays_;
 	std::string replay_save_path_;
 	bool allow_remote_shutdown_;
+	std::vector<std::string> tor_ip_list_;
 
 	/** Parse the server config into local variables. */
 	void load_config();
