@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-16 17:44+0200\n"
+"POT-Creation-Date: 2009-08-26 14:50+0200\n"
 "PO-Revision-Date: 2009-04-28 01:03-0500\n"
 "Last-Translator: sylecn <sylecn@yahoo.com.cn>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -168,104 +168,104 @@ msgstr "创建动作对象时错误"
 msgid "Action not implemented"
 msgstr "动作未被实现"
 
-#: src/editor/editor_controller.cpp:133
+#: src/editor/editor_controller.cpp:120
 msgid "Quit Editor"
 msgstr "退出编辑器"
 
-#: src/editor/editor_controller.cpp:286
+#: src/editor/editor_controller.cpp:275
 msgid "Fatal error"
 msgstr "严重错误"
 
-#: src/editor/editor_controller.cpp:311 src/editor/editor_controller.cpp:1068
+#: src/editor/editor_controller.cpp:300 src/editor/editor_controller.cpp:1060
 msgid "(New Map)"
 msgstr "（新建地图）"
 
-#: src/editor/editor_controller.cpp:317
+#: src/editor/editor_controller.cpp:306
 msgid "Do you really want to quit?"
 msgstr "确定要退出吗？"
 
-#: src/editor/editor_controller.cpp:319
+#: src/editor/editor_controller.cpp:308
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr "确定要退出吗？上次保存之后所作的修改将会丢失。"
 
-#: src/editor/editor_controller.cpp:321
+#: src/editor/editor_controller.cpp:310
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr "确定要退出吗？下面的地图已经被修改，上次保存之后所作的修改将会丢失："
 
-#: src/editor/editor_controller.cpp:326
+#: src/editor/editor_controller.cpp:315
 msgid "Quit"
 msgstr "退出"
 
-#: src/editor/editor_controller.cpp:382
+#: src/editor/editor_controller.cpp:371
 msgid "No editor time-of-day found."
 msgstr "没有找到编辑器时间(time-of-day)"
 
-#: src/editor/editor_controller.cpp:418
+#: src/editor/editor_controller.cpp:407
 msgid "Unsaved Changes"
 msgstr "未保存的更改"
 
-#: src/editor/editor_controller.cpp:419
+#: src/editor/editor_controller.cpp:408
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr "放弃上次保存之后所作的修改吗？"
 
-#: src/editor/editor_controller.cpp:437
+#: src/editor/editor_controller.cpp:426
 msgid "Choose a Map to Open"
 msgstr "选择要打开的地图"
 
-#: src/editor/editor_controller.cpp:472
+#: src/editor/editor_controller.cpp:461
 msgid "Save the Map As"
 msgstr "地图另存为"
 
-#: src/editor/editor_controller.cpp:476
+#: src/editor/editor_controller.cpp:465
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "文件已存在，要覆盖吗？"
 
-#: src/editor/editor_controller.cpp:493
+#: src/editor/editor_controller.cpp:482
 msgid "No random map generators found."
 msgstr "没有找到随机地图生成器。"
 
-#: src/editor/editor_controller.cpp:506 src/editor/editor_controller.cpp:510
+#: src/editor/editor_controller.cpp:495 src/editor/editor_controller.cpp:499
 msgid "Map creation failed."
 msgstr "创建地图失败。"
 
-#: src/editor/editor_controller.cpp:525
+#: src/editor/editor_controller.cpp:514
 msgid "Choose a mask to apply"
 msgstr "选择要使用的遮照"
 
-#: src/editor/editor_controller.cpp:532
+#: src/editor/editor_controller.cpp:521
 msgid "Error loading mask"
 msgstr "加载遮照时错误"
 
-#: src/editor/editor_controller.cpp:547
+#: src/editor/editor_controller.cpp:536
 msgid "Choose target map"
 msgstr "选择目标地图"
 
-#: src/editor/editor_controller.cpp:554 src/editor/editor_controller.cpp:718
+#: src/editor/editor_controller.cpp:543 src/editor/editor_controller.cpp:707
 msgid "Error loading map"
 msgstr "加载地图时错误"
 
-#: src/editor/editor_controller.cpp:632 src/editor/editor_controller.cpp:674
+#: src/editor/editor_controller.cpp:621 src/editor/editor_controller.cpp:663
 msgid "This map is already open."
 msgstr "这张地图已经被打开。"
 
-#: src/editor/editor_controller.cpp:653
+#: src/editor/editor_controller.cpp:642
 msgid "Map saved."
 msgstr "地图已保存。"
 
-#: src/editor/editor_controller.cpp:697
+#: src/editor/editor_controller.cpp:686
 msgid "Loaded embedded map data"
 msgstr "已加载嵌入的地图数据"
 
-#: src/editor/editor_controller.cpp:698 src/editor/editor_controller.cpp:712
+#: src/editor/editor_controller.cpp:687 src/editor/editor_controller.cpp:701
 msgid "Map loaded from scenario"
 msgstr "已从场景加载地图"
 
-#: src/editor/editor_controller.cpp:708
+#: src/editor/editor_controller.cpp:697
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -273,31 +273,31 @@ msgstr ""
 "已加载引用的地图文件：\n"
 "$new"
 
-#: src/editor/editor_controller.cpp:1098
+#: src/editor/editor_controller.cpp:1090
 msgid "Undo"
 msgstr "撤销"
 
-#: src/editor/editor_controller.cpp:1100
+#: src/editor/editor_controller.cpp:1092
 msgid "Can't Undo"
 msgstr "无法撤销"
 
-#: src/editor/editor_controller.cpp:1104
+#: src/editor/editor_controller.cpp:1096
 msgid "Redo"
 msgstr "重复"
 
-#: src/editor/editor_controller.cpp:1106
+#: src/editor/editor_controller.cpp:1098
 msgid "Can't Redo"
 msgstr "无法重复"
 
-#: src/editor/editor_controller.cpp:1111
+#: src/editor/editor_controller.cpp:1103
 msgid "Auto-update Terrain Transitions: Yes"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:1114
+#: src/editor/editor_controller.cpp:1106
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:1118
+#: src/editor/editor_controller.cpp:1110
 msgid "Auto-update Terrain Transitions: No"
 msgstr ""
 
@@ -365,7 +365,7 @@ msgstr ""
 "哪个玩家在这里开始游戏？使用alt+数字键设置起始点，使用del键清除光标所在位置的"
 "起始点。使用数字键可以跳转到对应的起始点。"
 
-#: src/gui/dialogs/editor_settings.cpp:119
+#: src/gui/dialogs/editor_settings.cpp:161
 msgid "Custom setting"
 msgstr "自定义设置"
 

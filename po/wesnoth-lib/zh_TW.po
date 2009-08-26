@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-18 21:52+0200\n"
+"POT-Creation-Date: 2009-08-26 14:50+0200\n"
 "PO-Revision-Date: 2009-05-16 11:34+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
@@ -602,7 +602,9 @@ msgstr "連結"
 #: data/gui/default/window/mp_create_game.cfg:550
 #: data/gui/default/window/mp_login.cfg:262
 #: data/gui/default/window/mp_method_selection.cfg:218
-#: data/gui/default/window/mp_server_list.cfg:229 src/construct_dialog.cpp:133
+#: data/gui/default/window/mp_server_list.cfg:229
+#: data/gui/default/window/unit_create.cfg:216
+#: data/gui/default/window/unit_create.cfg:217 src/construct_dialog.cpp:133
 #: src/construct_dialog.cpp:136
 msgid "Cancel"
 msgstr "取消"
@@ -623,6 +625,8 @@ msgstr "戰役"
 #: data/gui/default/window/game_save.cfg:120
 #: data/gui/default/window/mp_login.cfg:234
 #: data/gui/default/window/mp_method_selection.cfg:204
+#: data/gui/default/window/unit_create.cfg:204
+#: data/gui/default/window/unit_create.cfg:205
 #: data/gui/default/window/wml_message.cfg:458
 #: data/gui/default/window/wml_message.cfg:679 src/construct_dialog.cpp:125
 #: src/construct_dialog.cpp:132 src/gui/dialogs/message.cpp:188
@@ -1439,7 +1443,7 @@ msgstr "密碼提示"
 #. [grid]
 #: data/gui/default/window/mp_method_selection.cfg:31
 #: data/gui/default/window/title_screen.cfg:184
-#: src/gui/dialogs/game_load.cpp:239
+#: src/gui/dialogs/game_load.cpp:262
 msgid "Multiplayer"
 msgstr "多人對戰"
 
@@ -1513,7 +1517,7 @@ msgstr "上一個"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:182
-#: src/gui/dialogs/game_load.cpp:241
+#: src/gui/dialogs/game_load.cpp:264
 msgid "Tutorial"
 msgstr "教學"
 
@@ -1549,30 +1553,36 @@ msgid "Create Unit (Debug!)"
 msgstr "創造士兵（測試！）"
 
 #. [label]
-#: data/gui/default/window/unit_create.cfg:66
+#: data/gui/default/window/unit_create.cfg:59
 #, fuzzy
 msgid "Gender:"
 msgstr "產生"
 
 #. [toggle_button]: id=male_toggle
-#: data/gui/default/window/unit_create.cfg:80
+#: data/gui/default/window/unit_create.cfg:69
 #, fuzzy
 msgid "Male"
 msgstr "城堡"
 
 #. [toggle_button]: id=female_toggle
-#: data/gui/default/window/unit_create.cfg:94
+#: data/gui/default/window/unit_create.cfg:79
 msgid "Female"
 msgstr ""
 
+#. [toggle_button]: id=namegen_toggle
+#: data/gui/default/window/unit_create.cfg:97
+#, fuzzy
+msgid "Generate name"
+msgstr "產生地圖"
+
 #. [label]: id=race
-#: data/gui/default/window/unit_create.cfg:123
+#: data/gui/default/window/unit_create.cfg:126
 #, fuzzy
 msgid "Race"
 msgstr "取消"
 
 #. [label]: id=unit_type
-#: data/gui/default/window/unit_create.cfg:135
+#: data/gui/default/window/unit_create.cfg:138
 msgid "Type"
 msgstr ""
 
@@ -2040,44 +2050,47 @@ msgstr "字體大小是0。"
 msgid "Text doesn't start on canvas."
 msgstr "畫面沒有文字。"
 
-#: src/gui/auxiliary/window_builder.cpp:138
+#: src/gui/auxiliary/window_builder.cpp:140
 msgid "Linked '$id' group has multiple definitions."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder.cpp:186 src/gui/widgets/settings.cpp:513
+#: src/gui/auxiliary/window_builder.cpp:188 src/gui/widgets/settings.cpp:516
 msgid "No resolution defined."
 msgstr "没有設定解決方法"
 
-#: src/gui/auxiliary/window_builder.cpp:292
+#: src/gui/auxiliary/window_builder.cpp:294
 #: src/gui/auxiliary/window_builder/panel.cpp:35
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:38
-#: src/gui/widgets/settings.cpp:768 src/gui/widgets/settings.cpp:867
-#: src/gui/widgets/settings.cpp:960 src/gui/widgets/settings.cpp:1002
-#: src/gui/widgets/settings.cpp:1117
+#: src/gui/widgets/settings.cpp:780 src/gui/widgets/settings.cpp:879
+#: src/gui/widgets/settings.cpp:972 src/gui/widgets/settings.cpp:1014
+#: src/gui/widgets/settings.cpp:1129
 msgid "No grid defined."
 msgstr "沒有設定網格"
 
-#: src/gui/auxiliary/window_builder.cpp:323
+#: src/gui/auxiliary/window_builder.cpp:325
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder.cpp:422
+#: src/gui/auxiliary/window_builder.cpp:424
 msgid "A row must have a column."
 msgstr "行必須要有列"
 
-#: src/gui/auxiliary/window_builder.cpp:423
+#: src/gui/auxiliary/window_builder.cpp:425
 msgid "Number of columns differ."
 msgstr "列數不同。"
 
+#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:41
 #: src/gui/auxiliary/window_builder/listbox.cpp:51
 #: src/gui/auxiliary/window_builder/scrollbar_panel.cpp:40
 msgid "No list defined."
 msgstr "没有設定列表"
 
+#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:45
 #: src/gui/auxiliary/window_builder/listbox.cpp:55
 msgid "A 'list_definition' should contain one row."
 msgstr "'list_definition' 應該最少要有一行。"
 
+#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:61
 #: src/gui/auxiliary/window_builder/listbox.cpp:71
 #: src/gui/auxiliary/window_builder/multi_page.cpp:58
 msgid ""
@@ -2098,34 +2111,34 @@ msgstr "標籤值與數值不符。"
 msgid "No stack defined."
 msgstr "没有設定列表"
 
-#: src/gui/dialogs/game_load.cpp:214
+#: src/gui/dialogs/game_load.cpp:235
 msgid "#(Invalid)"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:232
+#: src/gui/dialogs/game_load.cpp:255
 msgid "Campaign: $campaign_name"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:249
+#: src/gui/dialogs/game_load.cpp:274
 #, fuzzy
 msgid "replay"
 msgstr "玩家"
 
-#: src/gui/dialogs/game_load.cpp:251
+#: src/gui/dialogs/game_load.cpp:276
 #, fuzzy
 msgid "Turn"
 msgstr "結束本回合"
 
-#: src/gui/dialogs/game_load.cpp:253
+#: src/gui/dialogs/game_load.cpp:278
 #, fuzzy
 msgid "Scenario Start"
 msgstr "任務目標"
 
-#: src/gui/dialogs/game_load.cpp:256
+#: src/gui/dialogs/game_load.cpp:281
 msgid "Difficulty: "
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:258
+#: src/gui/dialogs/game_load.cpp:285
 #, fuzzy
 msgid "Version: "
 msgstr "版本"
@@ -2170,7 +2183,7 @@ msgstr "錯誤"
 msgid "Load Game..."
 msgstr "讀取遊戲..."
 
-#: src/gui/dialogs/title_screen.cpp:77
+#: src/gui/dialogs/title_screen.cpp:88
 msgid "Version"
 msgstr "版本"
 
@@ -2182,16 +2195,16 @@ msgstr "元件'$id'沒有被設定"
 msgid "No default gui defined."
 msgstr "沒有設定預設網格"
 
-#: src/gui/widgets/settings.cpp:300
+#: src/gui/widgets/settings.cpp:303
 msgid "Window not defined."
 msgstr "視窗沒有設定"
 
-#: src/gui/widgets/settings.cpp:397
+#: src/gui/widgets/settings.cpp:400
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "元件設定 '$definition' 沒有設定 '$id'."
 
-#: src/gui/widgets/settings.cpp:539
+#: src/gui/widgets/settings.cpp:542
 msgid "No state or draw section defined."
 msgstr "没有設定狀態或界線"
 

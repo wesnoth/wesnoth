@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-16 17:44+0200\n"
+"POT-Creation-Date: 2009-08-26 14:50+0200\n"
 "PO-Revision-Date: 2005-12-05 10:25+0200\n"
 "Last-Translator: ott <ott@gaon.net>\n"
 "Language-Team: afrikaans\n"
@@ -159,137 +159,137 @@ msgstr ""
 msgid "Action not implemented"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:133
+#: src/editor/editor_controller.cpp:120
 msgid "Quit Editor"
 msgstr "Sluit Editor"
 
-#: src/editor/editor_controller.cpp:286
+#: src/editor/editor_controller.cpp:275
 msgid "Fatal error"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:311 src/editor/editor_controller.cpp:1068
+#: src/editor/editor_controller.cpp:300 src/editor/editor_controller.cpp:1060
 msgid "(New Map)"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:317
+#: src/editor/editor_controller.cpp:306
 msgid "Do you really want to quit?"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:319
+#: src/editor/editor_controller.cpp:308
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr ""
 
-#: src/editor/editor_controller.cpp:321
+#: src/editor/editor_controller.cpp:310
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:326
+#: src/editor/editor_controller.cpp:315
 msgid "Quit"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:382
+#: src/editor/editor_controller.cpp:371
 msgid "No editor time-of-day found."
 msgstr ""
 
-#: src/editor/editor_controller.cpp:418
+#: src/editor/editor_controller.cpp:407
 msgid "Unsaved Changes"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:419
+#: src/editor/editor_controller.cpp:408
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:437
+#: src/editor/editor_controller.cpp:426
 #, fuzzy
 msgid "Choose a Map to Open"
 msgstr "Kies 'n kaart om te laai"
 
-#: src/editor/editor_controller.cpp:472
+#: src/editor/editor_controller.cpp:461
 msgid "Save the Map As"
 msgstr "Stoor die Kaart As"
 
-#: src/editor/editor_controller.cpp:476
+#: src/editor/editor_controller.cpp:465
 #, fuzzy
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Kaart bestaan reeds. Wil jy dit vervang?"
 
-#: src/editor/editor_controller.cpp:493
+#: src/editor/editor_controller.cpp:482
 msgid "No random map generators found."
 msgstr ""
 
-#: src/editor/editor_controller.cpp:506 src/editor/editor_controller.cpp:510
+#: src/editor/editor_controller.cpp:495 src/editor/editor_controller.cpp:499
 msgid "Map creation failed."
 msgstr ""
 
-#: src/editor/editor_controller.cpp:525
+#: src/editor/editor_controller.cpp:514
 #, fuzzy
 msgid "Choose a mask to apply"
 msgstr "Kies 'n kaart om te laai"
 
-#: src/editor/editor_controller.cpp:532
+#: src/editor/editor_controller.cpp:521
 msgid "Error loading mask"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:547
+#: src/editor/editor_controller.cpp:536
 msgid "Choose target map"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:554 src/editor/editor_controller.cpp:718
+#: src/editor/editor_controller.cpp:543 src/editor/editor_controller.cpp:707
 msgid "Error loading map"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:632 src/editor/editor_controller.cpp:674
+#: src/editor/editor_controller.cpp:621 src/editor/editor_controller.cpp:663
 msgid "This map is already open."
 msgstr ""
 
-#: src/editor/editor_controller.cpp:653
+#: src/editor/editor_controller.cpp:642
 msgid "Map saved."
 msgstr "Kaart gestoor."
 
-#: src/editor/editor_controller.cpp:697
+#: src/editor/editor_controller.cpp:686
 msgid "Loaded embedded map data"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:698 src/editor/editor_controller.cpp:712
+#: src/editor/editor_controller.cpp:687 src/editor/editor_controller.cpp:701
 msgid "Map loaded from scenario"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:708
+#: src/editor/editor_controller.cpp:697
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:1098
+#: src/editor/editor_controller.cpp:1090
 msgid "Undo"
 msgstr "Kanselleer aksie"
 
-#: src/editor/editor_controller.cpp:1100
+#: src/editor/editor_controller.cpp:1092
 msgid "Can't Undo"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:1104
+#: src/editor/editor_controller.cpp:1096
 msgid "Redo"
 msgstr "Doen weer"
 
-#: src/editor/editor_controller.cpp:1106
+#: src/editor/editor_controller.cpp:1098
 msgid "Can't Redo"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:1111
+#: src/editor/editor_controller.cpp:1103
 msgid "Auto-update Terrain Transitions: Yes"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:1114
+#: src/editor/editor_controller.cpp:1106
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:1118
+#: src/editor/editor_controller.cpp:1110
 msgid "Auto-update Terrain Transitions: No"
 msgstr ""
 
@@ -357,7 +357,7 @@ msgid ""
 "starting position."
 msgstr ""
 
-#: src/gui/dialogs/editor_settings.cpp:119
+#: src/gui/dialogs/editor_settings.cpp:161
 msgid "Custom setting"
 msgstr ""
 

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-18 21:52+0200\n"
+"POT-Creation-Date: 2009-08-26 14:50+0200\n"
 "PO-Revision-Date: 2009-04-12 00:11+0200\n"
 "Last-Translator: Guillaume Melquiond <guillaume.melquiond@gmail.com>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
@@ -247,7 +247,7 @@ msgstr ""
 #: data/core/units/drakes/Clasher.cfg:38
 #: data/core/units/drakes/Enforcer.cfg:36
 #: data/core/units/drakes/Flameheart.cfg:79
-#: data/core/units/drakes/Flare.cfg:83 data/core/units/drakes/Slasher.cfg:23
+#: data/core/units/drakes/Flare.cfg:83 data/core/units/drakes/Thrasher.cfg:23
 #: data/core/units/elves/Archer.cfg:37 data/core/units/elves/Avenger.cfg:76
 #: data/core/units/elves/Captain.cfg:47 data/core/units/elves/Champion.cfg:36
 #: data/core/units/elves/Fighter.cfg:36 data/core/units/elves/Hero.cfg:35
@@ -314,7 +314,7 @@ msgstr ""
 #. [attack]: type=pierce
 #: data/core/units/drakes/Clasher.cfg:47
 #: data/core/units/drakes/Enforcer.cfg:54
-#: data/core/units/drakes/Slasher.cfg:32
+#: data/core/units/drakes/Thrasher.cfg:32
 #: data/core/units/dwarves/Guardsman.cfg:43
 #: data/core/units/dwarves/Sentinel.cfg:51
 #: data/core/units/dwarves/Stalwart.cfg:46
@@ -326,12 +326,10 @@ msgstr ""
 #: data/core/units/humans/Horseman.cfg:36
 #: data/core/units/humans/Loyalist_Javelineer.cfg:40
 #: data/core/units/humans/Loyalist_Spearman.cfg:59
-#: data/core/units/merfolk/Entangler.cfg:25
 #: data/core/units/merfolk/Hoplite.cfg:48
 #: data/core/units/merfolk/Hunter.cfg:25 data/core/units/merfolk/Hunter.cfg:33
 #: data/core/units/merfolk/Javelineer.cfg:25
 #: data/core/units/merfolk/Javelineer.cfg:33
-#: data/core/units/merfolk/Netcaster.cfg:24
 #: data/core/units/merfolk/Spearman.cfg:24
 #: data/core/units/merfolk/Spearman.cfg:32
 #: data/core/units/saurians/Ambusher.cfg:39
@@ -362,7 +360,7 @@ msgstr ""
 
 #. [attack]: type=impact
 #: data/core/units/drakes/Enforcer.cfg:45
-#: data/core/units/drakes/Slasher.cfg:41
+#: data/core/units/drakes/Thrasher.cfg:41
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:37
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:33
 #: data/core/units/humans/Outlaw.cfg:36
@@ -538,20 +536,20 @@ msgstr ""
 "précision leur feu sur les défenses stratégiques de leurs ennemis."
 
 #. [unit_type]: id=Drake Thrasher, race=drake
-#: data/core/units/drakes/Slasher.cfg:4
+#: data/core/units/drakes/Thrasher.cfg:4
 #, fuzzy
 msgid "Drake Thrasher"
 msgstr "Cogneur dracan"
 
 #. [unit_type]: id=Drake Thrasher, race=drake
-#: data/core/units/drakes/Slasher.cfg:19
+#: data/core/units/drakes/Thrasher.cfg:19
 msgid ""
-"Instead of letting themselves be bound by their armor, Slashers have learned "
-"to redirect its weight to supplement their bodies' momentum, adding power to "
-"the blows of their short spears and hand-mounted claws. Equipment and body "
-"are one; even their thick helms and the thick skulls beneath them are "
-"weapons. A Slasher will gladly fulfill his caste duties, as long as it can "
-"be done on the battlefield."
+"Instead of letting themselves be bound by their armor, Thrashers have "
+"learned to redirect its weight to supplement their bodies' momentum, adding "
+"power to the blows of their short spears and hand-mounted claws. Equipment "
+"and body are one; even their thick helms and the thick skulls beneath them "
+"are weapons. A Thrasher will gladly fulfill his caste duties, as long as it "
+"can be done on the battlefield."
 msgstr ""
 
 #. [unit_type]: id=Drake Warden, race=drake
@@ -640,7 +638,7 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/dwarves/Dragonguard.cfg:39
 #: data/core/units/dwarves/Thunderer.cfg:111
-#: data/core/units/dwarves/Thunderguard.cfg:39
+#: data/core/units/dwarves/Thunderguard.cfg:40
 #: data/core/units/humans/Outlaw_Assassin.cfg:40
 #: data/core/units/humans/Outlaw_Rogue.cfg:39
 #: data/core/units/humans/Outlaw_Thief.cfg:188
@@ -916,7 +914,7 @@ msgstr ""
 
 #. [attack]: type=pierce
 #: data/core/units/dwarves/Thunderer.cfg:120
-#: data/core/units/dwarves/Thunderguard.cfg:48
+#: data/core/units/dwarves/Thunderguard.cfg:49
 msgid "thunderstick"
 msgstr "bâton de tonnerre"
 
@@ -1646,8 +1644,8 @@ msgstr "torche"
 
 #. [attack]: type=impact
 #: data/core/units/goblins/Pillager.cfg:65
-#: data/core/units/merfolk/Entangler.cfg:33
-#: data/core/units/merfolk/Netcaster.cfg:32
+#: data/core/units/merfolk/Entangler.cfg:35
+#: data/core/units/merfolk/Netcaster.cfg:34
 msgid "net"
 msgstr "filet"
 
@@ -2950,8 +2948,10 @@ msgstr ""
 
 #. [attack]: type=impact
 #: data/core/units/humans/Outlaw_Footpad.cfg:38
-#: data/core/units/humans/Outlaw_Ruffian.cfg:23
+#: data/core/units/humans/Outlaw_Ruffian.cfg:36
 #: data/core/units/humans/Outlaw_Thug.cfg:37
+#: data/core/units/merfolk/Entangler.cfg:27
+#: data/core/units/merfolk/Netcaster.cfg:26
 #: data/core/units/trolls/Troll.cfg:38
 msgid "club"
 msgstr "gourdin"
@@ -3032,7 +3032,7 @@ msgid "Ruffian"
 msgstr "Voyou"
 
 #. [unit_type]: id=Ruffian, race=human
-#: data/core/units/humans/Outlaw_Ruffian.cfg:18
+#: data/core/units/humans/Outlaw_Ruffian.cfg:19
 msgid ""
 "Some men without particular skills cannot or will not make an honest living. "
 "Those that attempt to make their way through life by the heavy end of a "
@@ -3327,18 +3327,19 @@ msgid "Merman Entangler"
 msgstr "Rétiaire ondin"
 
 #. [unit_type]: id=Merman Entangler, race=merman
-#: data/core/units/merfolk/Entangler.cfg:20
+#: data/core/units/merfolk/Entangler.cfg:22
 msgid ""
-"The weighted nets used by mermen in warfare are a difficult weapon to use "
-"well; those who master it are valued and revered by their comrades. This "
-"weapon helps to cement the utter superiority of a merman in his own element, "
-"and makes their race a threat even to enemies who merely approach the water."
+"Merfolk tend to use a combination of both nets and clubs in fishing; nets to "
+"collect the fish, and clubs to finish the kill.  Both of these tools have "
+"seen adaptation for warfare, and are valuable enough that auxilliaries who "
+"specialize in using them are deliberately brought to battle.\n"
+"\n"
+"    Mermen often find themselves in a standoff with land-based enemies; the "
+"merfolk are too strong in the water, and are too weak to make any offense on "
+"land.  Nets are a key bit of leverage; without nets, mermen can't give any "
+"effective chase over land, and are at a great disadvantage in hand-to-hand "
+"combat."
 msgstr ""
-"Le lourd filet utilisé par les ondins au combat est une arme difficile à "
-"bien utiliser ; ceux qui la maîtrisent sont estimés et admirés par leurs "
-"camarades. Cette arme aide à assurer l'hégémonie des ondins dans leur "
-"élément et fait de leur race une menace même pour des ennemis qui "
-"s'approcheraient trop près de l'eau."
 
 #. [unit_type]: id=Merman Fighter, race=merman
 #: data/core/units/merfolk/Fighter.cfg:4
@@ -3448,25 +3449,20 @@ msgid "Merman Netcaster"
 msgstr "Lanceur de filet ondin"
 
 #. [unit_type]: id=Merman Netcaster, race=merman
-#: data/core/units/merfolk/Netcaster.cfg:19
+#: data/core/units/merfolk/Netcaster.cfg:21
 msgid ""
 "Fishing, as practiced by mermen, is largely a matter of chasing schools of "
-"fish into waiting nets. These are not very damaging in themselves, but they "
-"can be used to great effect against troops attempting to ford a river. "
-"Smaller, weighted nets can be cast through the air; though these are not "
-"designed for peacetime use, they are especially effective in warfare. Mermen "
-"use such weapons both to immobilize troops in water, and more importantly, "
-"to level the playing field against troops on land, who would otherwise be at "
-"a great advantage."
+"fish into waiting nets, where oar-like clubs are used to dispatch the prey. "
+"The improvisation of using these against soldiers proved very effective;  "
+"most land-native creatures are already quite awkward when waist-deep in "
+"water, and getting caught in a net can nearly render them helpless.\n"
+"    \n"
+"    The effectiveness of this led to the development of smaller, weighted "
+"nets, which could be cast through the air; these were useless for fishing, "
+"but were useful in both combat, and in hunting game that came too close to "
+"shore. Clubs were used in combat with little or no adaptation from fishing, "
+"since they were already quite deadly."
 msgstr ""
-"La pêche pratiquée par les ondins consiste principalement à rabattre des "
-"bancs de poissons vers des filets étendus auparavant. Ceux-ci ne sont pas "
-"très dangereux, mais peuvent s'avérer très efficaces contre des troupes qui "
-"tentent de traverser une rivière à gué. Des filets lestés, plus petits, à "
-"usage strictement militaire, peuvent également être lancés en l'air. Les "
-"ondins utilisent ces armes pour immobiliser les ennemis dans l'eau, et "
-"surtout pour limiter les mouvement de leurs adversaires sur terre, où ces "
-"derniers seraient vraiment très avantagés."
 
 #. [unit_type]: id=Mermaid Priestess, race=merman
 #: data/core/units/merfolk/Priestess.cfg:4
@@ -5196,6 +5192,38 @@ msgstr ""
 "\n"
 "Les woses sont complètement pacifiques, mais possèdent une grande force. Ils "
 "ne sont, malgré tout, ni rapides, ni prompts à se déplacer."
+
+#~ msgid ""
+#~ "The weighted nets used by mermen in warfare are a difficult weapon to use "
+#~ "well; those who master it are valued and revered by their comrades. This "
+#~ "weapon helps to cement the utter superiority of a merman in his own "
+#~ "element, and makes their race a threat even to enemies who merely "
+#~ "approach the water."
+#~ msgstr ""
+#~ "Le lourd filet utilisé par les ondins au combat est une arme difficile à "
+#~ "bien utiliser ; ceux qui la maîtrisent sont estimés et admirés par leurs "
+#~ "camarades. Cette arme aide à assurer l'hégémonie des ondins dans leur "
+#~ "élément et fait de leur race une menace même pour des ennemis qui "
+#~ "s'approcheraient trop près de l'eau."
+
+#~ msgid ""
+#~ "Fishing, as practiced by mermen, is largely a matter of chasing schools "
+#~ "of fish into waiting nets. These are not very damaging in themselves, but "
+#~ "they can be used to great effect against troops attempting to ford a "
+#~ "river. Smaller, weighted nets can be cast through the air; though these "
+#~ "are not designed for peacetime use, they are especially effective in "
+#~ "warfare. Mermen use such weapons both to immobilize troops in water, and "
+#~ "more importantly, to level the playing field against troops on land, who "
+#~ "would otherwise be at a great advantage."
+#~ msgstr ""
+#~ "La pêche pratiquée par les ondins consiste principalement à rabattre des "
+#~ "bancs de poissons vers des filets étendus auparavant. Ceux-ci ne sont pas "
+#~ "très dangereux, mais peuvent s'avérer très efficaces contre des troupes "
+#~ "qui tentent de traverser une rivière à gué. Des filets lestés, plus "
+#~ "petits, à usage strictement militaire, peuvent également être lancés en "
+#~ "l'air. Les ondins utilisent ces armes pour immobiliser les ennemis dans "
+#~ "l'eau, et surtout pour limiter les mouvement de leurs adversaires sur "
+#~ "terre, où ces derniers seraient vraiment très avantagés."
 
 #~ msgid "Drake Slasher"
 #~ msgstr "Tailladeur dracan"
