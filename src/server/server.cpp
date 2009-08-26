@@ -2108,10 +2108,14 @@ void server::process_data_game(const network::connection sock,
 			rooms_.lobby().send_server_message(msg.str().c_str(), sock);
 			return;
 		}
-		const simple_wml::node& s = *data.child("store_next_scenario");
+		// Remember the era since the client does not send it again.
+		simple_wml::document era;
+		if (simple_wml::node* e = g->level().root().child("era")) e->copy_into(era.root());
+		DBG_SERVER << "era of the previous scenario:\n" << era.output();
 		// Record the full scenario in g->level()
 		g->level().clear();
-		s.copy_into(g->level().root());
+		era.root().copy_into(g->level().root().add_child("era"));
+		data.child("store_next_scenario")->copy_into(g->level().root());
 		g->start_game(pl);
 		if (g->description() == NULL) {
 			ERR_SERVER << network::ip_address(sock) << "\tERROR: \""
@@ -2119,6 +2123,7 @@ void server::process_data_game(const network::connection sock,
 				<< ") is initialized but has no description_.\n";
 			return;
 		}
+		const simple_wml::node& s = g->level().root();
 		simple_wml::node& desc = *g->description();
 		// Update the game's description.
 		// If there is no shroud, then tell players in the lobby
