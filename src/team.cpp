@@ -408,7 +408,14 @@ bool team::calculate_is_enemy(size_t index) const
 		return false;
 	}
 
-	// We are friends with anyone who has the same team name
+	// We are friends with anyone who we share a teamname with
+	std::vector<std::string> our_teams = utils::split(info_.team_name),
+						   their_teams = utils::split((*teams)[index].info_.team_name);
+	for(std::vector<std::string>::const_iterator t = our_teams.begin(); t != our_teams.end(); ++t) {
+		if(std::find(their_teams.begin(), their_teams.end(), *t) != their_teams.end())
+			return false;
+	}
+	return true;
 	return (*teams)[index].info_.team_name != info_.team_name;
 }
 
