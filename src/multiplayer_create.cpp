@@ -512,7 +512,6 @@ void create::process_event()
 
 		for (int pos = parameters_.scenario_data.child_count("side"); pos < map_positions; ++pos) {
 			config& side = parameters_.scenario_data.add_child("side");
-			side["enemy"] = "1";
 			side["side"] = lexical_cast<std::string>(pos+1);
 			side["team_name"] = lexical_cast<std::string>(pos+1);
 			side["canrecruit"] = "yes";

@@ -74,7 +74,6 @@ public:
 		int income_per_village;
 		mutable int average_price;
 		std::set<std::string> can_recruit;
-		std::vector<int> enemies;
 		std::string team_name;
 		t_string user_team_name;
 		std::string save_id;

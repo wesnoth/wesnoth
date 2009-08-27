@@ -77,7 +77,6 @@ team::team_info::team_info(const config& cfg) :
 		income_per_village(0),
 		average_price(0),
 		can_recruit(),
-		enemies(),
 		team_name(cfg["team_name"]),
 		user_team_name(cfg["user_team_name"]),
 		save_id(cfg["save_id"]),
@@ -152,14 +151,6 @@ team::team_info::team_info(const config& cfg) :
 	else
 		income_per_village = lexical_cast_default<int>(village_income, game_config::village_income);
 
-	const std::string& enemies_list = cfg["enemy"];
-	if(!enemies_list.empty()) {
-		std::vector<std::string> venemies = utils::split(enemies_list);
-		for(std::vector<std::string>::const_iterator i = venemies.begin(); i != venemies.end(); ++i) {
-			enemies.push_back(atoi(i->c_str()));
-		}
-	}
-
 	std::string control = cfg["controller"];
 	//by default, persistence of a team is set depending on the controller
 	persistent = true;
@@ -221,15 +212,6 @@ void team::team_info::write(config& cfg) const
 	cfg["allow_player"] = allow_player ? "yes" : "no";
 	cfg["no_leader"] = no_leader ? "yes" : "no";
 	cfg["hidden"] = hidden ? "yes" : "no";
-
-	std::stringstream enemies_str;
-	for(std::vector<int>::const_iterator en = enemies.begin(); en != enemies.end(); ++en) {
-		enemies_str << *en;
-		if(en+1 != enemies.end())
-			enemies_str << ",";
-	}
-
-	cfg["enemy"] = enemies_str.str();
 
 	switch(controller) {
 	case AI: cfg["controller"] = "ai"; break;
@@ -426,17 +408,8 @@ bool team::calculate_is_enemy(size_t index) const
 		return false;
 	}
 
-	// If we have a team name, we are friends
-	// with anyone who has the same team name
-	if(info_.team_name.empty() == false) {
-		return (*teams)[index].info_.team_name != info_.team_name;
-	}
-
-	// If enemies aren't listed, then everyone is an enemy
-	if(info_.enemies.empty())
-		return true;
-
-	return std::find(info_.enemies.begin(),info_.enemies.end(),int(index+1)) != info_.enemies.end();
+	// We are friends with anyone who has the same team name
+	return (*teams)[index].info_.team_name != info_.team_name;
 }
 
 void team::set_share_maps( bool share_maps ){
