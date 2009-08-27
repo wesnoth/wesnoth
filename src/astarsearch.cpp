@@ -75,9 +75,28 @@ struct node {
 		, in(bad_search_counter)
 	{
 	}
-	node(double s, const map_location &c, const map_location &p, const map_location &dst, bool i) :
+	node(double s, const map_location &c, const map_location &p, const map_location &dst, bool i, const std::set<map_location>* teleports):
 		g(s), h(heuristic(c, dst)), t(g + h), curr(c), prev(p), in(search_counter + i)
-		{ }
+	{
+		if (teleports != NULL) {
+			double srch = h, dsth = h;
+			std::set<map_location>::const_iterator i;
+			for(i = teleports->begin(); i != teleports->end(); ++i) {
+				const double new_srch = heuristic(c, *i);
+				const double new_dsth = heuristic(*i, dst);
+				if(new_srch < srch) {
+					srch = new_srch;
+				}
+				if(new_dsth < dsth) {
+					dsth = new_dsth;
+				}
+			}
+			if(srch + dsth + 1.0 < h) {
+				h = srch + dsth + 1.0;
+				t = g + h;
+			}
+		}
+	}
 
 	bool operator<(const node& o) const {
 		return t < o.t;
@@ -147,7 +166,7 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 	comp node_comp(nodes);
 
 	nodes[index(dst)].g = stop_at;
-	nodes[index(src)] = node(0, src, map_location::null_location, dst, true);
+	nodes[index(src)] = node(0, src, map_location::null_location, dst, true, teleports_ptr);
 
 	std::vector<int> pq;
 	pq.push_back(index(src));
@@ -175,7 +194,7 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 
 			bool in_list = next.in == search_counter + 1;
 
-			next = node(cost, locs[i], n.curr, dst, true);
+			next = node(cost, locs[i], n.curr, dst, true, teleports_ptr);
 
 			if (in_list) {
 				std::push_heap(pq.begin(), std::find(pq.begin(), pq.end(), index(locs[i])) + 1, node_comp);
