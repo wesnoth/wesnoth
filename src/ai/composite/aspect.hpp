@@ -61,7 +61,7 @@ public:
 		try {
 			value = boost::lexical_cast<T>(cfg["value"]);
 		} catch (boost::bad_lexical_cast e) {
-			//@todo: 1.7.4 handle error
+			//@todo: 1.7.5 handle error
 		}
 	}
 
@@ -70,7 +70,7 @@ public:
 		try {
 			cfg["value"] = boost::lexical_cast<std::string>(value);
 		} catch (boost::bad_lexical_cast e) {
-			//@todo: 1.7.4 handle error
+			//@todo: 1.7.5 handle error
 		}
 	}
 
@@ -735,7 +735,7 @@ public:
 
 	virtual void recalculate() const
 	{
-		//@todo 1.7.4 optimize in case of an aspect which returns variant
+		//@todo 1.7.5 optimize in case of an aspect which returns variant
 		//typedef std::vector< boost::shared_ptr< typesafe_aspect < T > > >::reverse_const_iterator Iter;
 
 		foreach (const boost::shared_ptr<typesafe_aspect <T> > &f, make_pair(facets_.rbegin(),facets_.rend())) {

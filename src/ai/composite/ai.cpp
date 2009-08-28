@@ -219,7 +219,7 @@ bool ai_composite::change_child(const path_element &child, const config &cfg)
 	} else if (child.property=="stage") {
 	      	std::vector< stage_ptr >::iterator i = std::find_if(stages_.begin(),stages_.end(),path_element_matches< stage_ptr >(child));
 		if (i!=stages_.end()) {
-			//@todo 1.7.4 implement
+			//@todo 1.7.5 implement
 			//return (*i)->redeploy(cfg);
 		}
 		return false;
