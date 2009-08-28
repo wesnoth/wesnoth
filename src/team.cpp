@@ -416,7 +416,6 @@ bool team::calculate_is_enemy(size_t index) const
 			return false;
 	}
 	return true;
-	return (*teams)[index].info_.team_name != info_.team_name;
 }
 
 void team::set_share_maps( bool share_maps ){
