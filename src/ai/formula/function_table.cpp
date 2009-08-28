@@ -492,7 +492,7 @@ private:
 		//NOTE: get_wml_location also filters file path to ensure it doesn't contain things like "../../top/secret"
 		std::string path = get_wml_location(filename);
 		if(path.empty()) {
-			//@todo: 1.7.4: log something
+			ERR_AI << "run_file : not found [" << filename <<"]"<< std::endl;
 			return variant(); //no suitable file
 		}
 
@@ -500,6 +500,7 @@ private:
 		//need to get function_table from somewhere or delegate to someone who has access to it
 		formula_ptr parsed_formula = ai_.create_optional_formula(formula_string);
 		if(parsed_formula == game_logic::formula_ptr()) {
+			ERR_AI << "run_file : unable to create formula"<< std::endl;
 			return variant(); //was unable to create a formula from file
 		}
 		return parsed_formula->evaluate(variables,add_debug_info(fdb,-1,"run_file:formula_from_file"));
@@ -1427,8 +1428,6 @@ private:
 	const formula_ai& ai_;
 };
 
-//hack
-//@todo 1.7.4 document or remove
 class is_avoided_location_function : public function_expression {
 public:
 	is_avoided_location_function(const args_list& args, const formula_ai& ai_object)
