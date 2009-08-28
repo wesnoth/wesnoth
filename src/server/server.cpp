@@ -794,14 +794,6 @@ void server::run() {
 			}
 			// Was the player in the lobby or a game?
 			if (rooms_.in_lobby(e.socket)) {
-
-				// Find the matching nick-ip pair in the log and update the sign off time
-				connection_log ip_name = connection_log(pl_it->second.name(), ip, 0);
-				std::deque<connection_log>::iterator i = std::find(ip_log_.begin(), ip_log_.end(), ip_name);
-				if(i != ip_log_.end()) {
-					i->log_off = time(NULL);
-				}
-
 				rooms_.remove_player(e.socket);
 				LOG_SERVER << ip << "\t" << pl_it->second.name()
 					<< "\thas logged off. (socket: " << e.socket << ")\n";
@@ -825,6 +817,14 @@ void server::run() {
 					break;
 				}
 			}
+
+			// Find the matching nick-ip pair in the log and update the sign off time
+			connection_log ip_name = connection_log(pl_it->second.name(), ip, 0);
+			std::deque<connection_log>::iterator i = std::find(ip_log_.begin(), ip_log_.end(), ip_name);
+			if(i != ip_log_.end()) {
+				i->log_off = time(NULL);
+			}
+
 			players_.erase(pl_it);
 			if (lan_server_)
 			{
