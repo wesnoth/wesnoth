@@ -1056,20 +1056,17 @@ std::string get_wml_location(const std::string &filename, const std::string &cur
 
 	if (filename[0] == '@')
 	{
-		ERR_FS << filename << " style includes are deprecated and will be removed in 1.7.3. Use '~' instead.\n";
+		// TODO: remove this before 1.8
+		ERR_FS << filename << " style includes are obsolete and no longer work. Use '~' instead.\n";
 	}
 
-	if (filename[0] == '~' || filename[0] == '@')
+	if (filename[0] == '~')
 	{
-		// If the filename starts with '~' or '@', look in the user data directory.
+		// If the filename starts with '~', look in the user data directory.
 		result = get_user_data_dir() + "/data/" + filename.substr(1);
 		DBG_FS << "  trying '" << result << "'\n";
 
 		already_found = file_exists(result) || is_directory(result);
-
-		// If it starts with '@', look also in the standard data directory.
-		if (filename[0] == '@' && !already_found && !game_config::path.empty())
-			result = game_config::path + "/data/" + filename.substr(1);
 	}
 	else if (filename.size() >= 2 && filename[0] == '.' && filename[1] == '/')
 	{
