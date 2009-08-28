@@ -130,7 +130,7 @@ public:
 
 plain_route a_star_search(const map_location& src, const map_location& dst,
                             double stop_at, const cost_calculator *calc, const size_t width,
-                            const size_t height, const std::set<map_location>* teleports_ptr) {
+                            const size_t height, const std::set<map_location>* teleports) {
 	//----------------- PRE_CONDITIONS ------------------
 	assert(src.valid(width, height));
 	assert(dst.valid(width, height));
@@ -148,11 +148,10 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 		return locRoute;
 	}
 
-	const std::set<map_location>& teleports = teleports_ptr ? *teleports_ptr : std::set<map_location>();
-
-
-	std::vector<map_location> locs(6 + teleports.size());
-	std::copy(teleports.begin(), teleports.end(), locs.begin() + 6);
+	std::vector<map_location> locs(teleports ?  6+teleports->size() : 6 );
+	if (teleports) {
+		std::copy(teleports->begin(), teleports->end(), locs.begin() + 6);
+	}
 
 	// increment search_counter but skip the range equivalent to uninitialized
 	search_counter += 2;
@@ -166,7 +165,7 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 	comp node_comp(nodes);
 
 	nodes[index(dst)].g = stop_at;
-	nodes[index(src)] = node(0, src, map_location::null_location, dst, true, teleports_ptr);
+	nodes[index(src)] = node(0, src, map_location::null_location, dst, true, teleports);
 
 	std::vector<int> pq;
 	pq.push_back(index(src));
@@ -181,7 +180,8 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 
 		get_adjacent_tiles(n.curr, &locs[0]);
 
-		for (int i = teleports.count(n.curr) ? locs.size() : 6; i-- > 0;) {
+		int i = teleports && teleports->count(n.curr) ? locs.size() : 6;
+		for (; i-- > 0;) {
 			if (!locs[i].valid(width, height)) continue;
 
 			node& next = nodes[index(locs[i])];
@@ -194,7 +194,7 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 
 			bool in_list = next.in == search_counter + 1;
 
-			next = node(cost, locs[i], n.curr, dst, true, teleports_ptr);
+			next = node(cost, locs[i], n.curr, dst, true, teleports);
 
 			if (in_list) {
 				std::push_heap(pq.begin(), std::find(pq.begin(), pq.end(), index(locs[i])) + 1, node_comp);
