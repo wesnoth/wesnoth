@@ -1628,7 +1628,6 @@ void game_controller::play_replay()
 editor::EXIT_STATUS game_controller::start_editor(const std::string& filename)
 {
     cache_.clear_defines();
-    cache_.add_define("EDITO");
     cache_.add_define("EDITOR");
 	load_game_cfg();
     const binary_paths_manager bin_paths_manager(game_config_);
