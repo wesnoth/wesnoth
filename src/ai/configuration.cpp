@@ -299,6 +299,27 @@ bool configuration::upgrade_side_config_from_1_07_02_to_1_07_03(side_number side
 			}
 			fallback_stage_cfg_ai.append(aiparam);
 		}
+
+		foreach (const config &aitarget, aiparam.child_range("target")) {
+			config aigoal;
+			if (aiparam.has_attribute("turns")) {
+				aigoal["turns"] = aiparam["turns"];
+			}
+			if (aiparam.has_attribute("time_of_day")) {
+				aigoal["time_of_day"] = aiparam["time_of_day"];
+			}
+			if (aitarget.has_attribute("value")) {
+				aigoal["value"] = aitarget["value"];
+			} else {
+				aigoal["value"] = "0";
+			}
+
+			config &aigoalcriteria = aigoal.add_child("criteria",aitarget);
+			aigoalcriteria.remove_attribute("value");
+
+			parsed_cfg.add_child("goal",aigoal);
+		}
+		aiparam.clear_children("target");
 	}
 	fallback_stage_cfg_ai.clear_children("aspect");//@todo 1.7: cleanup only configs of well-known ai aspects
 
@@ -334,13 +355,13 @@ bool configuration::upgrade_side_config_from_1_07_02_to_1_07_03(side_number side
 void configuration::upgrade_aspect_configs_from_1_07_02_to_1_07_03(side_number side, const config::const_child_itors &ai_parameters, config &parsed_cfg)
 {
 	parsed_cfg = config();
-	config cfg("ai");
-	config &cfg_ai = cfg.child("ai");
+	config cfg;
 
 	foreach (const config &aiparam, ai_parameters) {
-		cfg_ai.append(aiparam);
+		cfg.add_child("ai",aiparam);
 	}
-	DBG_AI_CONFIGURATION << "side "<< side <<": upgrading aspects from syntax of 1.7.2. to 1.7.3, old-style config is:" << std::endl << cfg << std::endl;
+
+	DBG_AI_CONFIGURATION << "side "<< side <<": upgrading aspects from syntax of 1.7.2. to 1.7.3, old-style config is:" << std::endl << cfg << std::endl;		
 	foreach (const well_known_aspect &wka, well_known_aspects) {
 		upgrade_aspect_config_from_1_07_02_to_1_07_03(side, cfg,parsed_cfg,wka.name_,wka.was_an_attribute_);
 	}

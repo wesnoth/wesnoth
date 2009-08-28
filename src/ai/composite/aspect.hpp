@@ -850,25 +850,7 @@ public:
 
 	virtual bool active() const
 	{
-		if(time_of_day_.empty() == false) {
-			const std::vector<std::string>& times = utils::split(time_of_day_);
-			if(std::count(times.begin(),times.end(),this->get_info().tod_manager_.get_time_of_day().name) == 0) {
-				return false;
-			}
-		}
-
-		if(turns_.empty() == false) {
-			int turn = this->get_info().tod_manager_.turn();
-			const std::vector<std::string>& turns_list = utils::split(turns_);
-			for(std::vector<std::string>::const_iterator j = turns_list.begin(); j != turns_list.end() ; j++ ) {
-				const std::pair<int,int> range = utils::parse_range(*j);
-				if(turn >= range.first && turn <= range.second) {
-				      return true;
-				}
-			}
-			return false;
-		}
-		return true;
+		return this->is_active(time_of_day_,turns_);
 	}
 
 

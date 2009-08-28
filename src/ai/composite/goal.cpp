@@ -31,9 +31,10 @@ static lg::log_domain log_ai_composite_goal("ai/composite/goal");
 #define LOG_AI_COMPOSITE_GOAL LOG_STREAM(info, log_ai_composite_goal)
 #define ERR_AI_COMPOSITE_GOAL LOG_STREAM(err, log_ai_composite_goal)
 
-goal::goal(readonly_context &/*context*/, const config &cfg)
-	: cfg_(cfg), value_()
+goal::goal(readonly_context &context, const config &cfg)
+	: readonly_context_proxy(), cfg_(cfg), value_()
 {
+	init_readonly_context_proxy(context);
 }
 
 
@@ -62,7 +63,10 @@ bool goal::matches_unit(unit_map::const_iterator u)
 	if (!u.valid()) {
 		return false;
 	}
-	config &criteria = cfg_.child("criteria");
+	const config &criteria = cfg_.child("criteria");
+	if (!criteria) {
+		return false;
+	}
 	return u->second.matches_filter(vconfig(criteria),u->first);
 }
 
@@ -84,6 +88,12 @@ bool goal::redeploy(const config &cfg)
 	cfg_ = cfg;
 	on_create();
 	return true;
+}
+
+
+bool goal::active() const
+{
+	return is_active(cfg_["time_of_day"],cfg_["turns"]);
 }
 
 } //end of namespace ai

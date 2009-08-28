@@ -326,6 +326,10 @@ std::vector<target> default_ai_context_impl::find_targets(unit_map::const_iterat
 
 		for(std::vector<goal_ptr>::iterator j = goals.begin();
 		    j != goals.end(); ++j) {
+
+			if (!(*j)->active()) {
+				continue;
+			}
 			if ((*j)->matches_unit(u)) {
 				LOG_AI << "found explicit target... " << u->first << " with value: " << (*j)->value() << "\n";
 				targets.push_back(target(u->first,(*j)->value(),target::EXPLICIT));

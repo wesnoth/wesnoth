@@ -19,6 +19,14 @@
 #ifndef AI_COMPOSITE_GOAL_HPP_INCLUDED
 #define AI_COMPOSITE_GOAL_HPP_INCLUDED
 
+
+#ifdef _MSC_VER
+#pragma warning(push)
+//silence "inherits via dominance" warnings
+#pragma warning(disable:4250)
+#endif
+
+
 #include "../../global.hpp"
 
 #include "../contexts.hpp"
@@ -30,10 +38,9 @@
 #include <vector>
 #include <deque>
 
-
 namespace ai {
 
-class goal {
+class goal : public readonly_context_proxy {
 public:
 	goal(readonly_context &context, const config &cfg);
 
@@ -48,6 +55,9 @@ public:
 
 
 	void on_create();
+
+
+	bool active() const;
 
 
 	const std::string& get_id() const;
@@ -111,5 +121,10 @@ public:
 
 
 } //end of namespace ai
+
+
+#ifdef _MSC_VER
+#pragma warning(pop)
+#endif
 
 #endif

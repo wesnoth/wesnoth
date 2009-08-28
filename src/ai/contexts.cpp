@@ -1025,4 +1025,27 @@ std::map<std::pair<map_location,const unit_type *>,
 }
 
 
+bool readonly_context_impl::is_active(const std::string &time_of_day, const std::string &turns) const
+{
+		if(time_of_day.empty() == false) {
+			const std::vector<std::string>& times = utils::split(time_of_day);
+			if(std::count(times.begin(),times.end(),this->get_info().tod_manager_.get_time_of_day().name) == 0) {
+				return false;
+			}
+		}
+
+		if(turns.empty() == false) {
+			int turn = this->get_info().tod_manager_.turn();
+			const std::vector<std::string>& turns_list = utils::split(turns);
+			for(std::vector<std::string>::const_iterator j = turns_list.begin(); j != turns_list.end() ; j++ ) {
+				const std::pair<int,int> range = utils::parse_range(*j);
+				if(turn >= range.first && turn <= range.second) {
+				      return true;
+				}
+			}
+			return false;
+		}
+		return true;
+}
+
 } //of namespace ai

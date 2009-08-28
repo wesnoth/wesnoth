@@ -286,6 +286,9 @@ public:
 	virtual int get_villages_per_scout() const = 0;
 
 
+	virtual bool is_active(const std::string &time_of_day, const std::string &turns) const = 0;
+
+
 	virtual void invalidate_defensive_position_cache() const = 0;
 
 
@@ -744,6 +747,13 @@ public:
 	}
 
 
+
+	virtual bool is_active(const std::string &time_of_day, const std::string &turns) const
+	{
+		return target_->is_active(time_of_day, turns);
+	}
+
+
 	virtual void invalidate_defensive_position_cache() const
 	{
 		return target_->invalidate_defensive_position_cache();
@@ -1185,6 +1195,9 @@ public:
 	virtual int get_villages_per_scout() const;
 
 
+	virtual bool is_active(const std::string &time_of_day, const std::string &turns) const;
+
+
 	virtual void invalidate_defensive_position_cache() const;
 
 
@@ -1382,6 +1395,7 @@ public:
 private:
 	recursion_counter recursion_counter_;
 };
+
 
 } //end of namespace ai
 
