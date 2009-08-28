@@ -208,6 +208,13 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 	foreach (const config &aiparam, original_cfg.child_range("ai")) {
 		cfg.add_child("ai",aiparam);
 	}
+
+	//backward-compatability hack: put ai_algorithm if it is present
+	if (original_cfg.has_attribute("ai_algorithm")) {
+		config ai_a;
+		ai_a["ai_algorithm"] = original_cfg["ai_algorithm"];
+		cfg.add_child("ai",ai_a);
+	}
 	DBG_AI_CONFIGURATION << "side " << side << ": config contains:"<< std::endl << cfg << std::endl;
 
 	//insert default config at the beginning
