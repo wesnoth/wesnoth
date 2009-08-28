@@ -57,6 +57,9 @@ public:
 	void set_undo(const bool undo) { undo_ = undo; }
 
 	unit_map::iterator selected_unit();
+
+	void add_waypoint(const map_location& loc) {waypoints_.push_back(loc);}
+	void clear_waypoints() {waypoints_.clear();}
 	marked_route get_route(unit_map::const_iterator un, map_location go_to, team &team);
 protected:
 	/**
@@ -111,6 +114,7 @@ private:
 	map_location selected_hex_;
 	map_location next_unit_;
 	marked_route current_route_;
+	std::list<map_location> waypoints_;
 	paths current_paths_;
 	bool enemy_paths_;
 	int path_turns_;

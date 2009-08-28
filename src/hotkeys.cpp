@@ -45,6 +45,7 @@ const struct {
 } hotkey_list_[] = {
 	{ hotkey::HOTKEY_CYCLE_UNITS, "cycle", N_("Next Unit"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_CYCLE_BACK_UNITS, "cycleback", N_("Previous Unit"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_ADD_WAYPOINT, "addwaypoint", N_("Add waypoint"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_UNIT_HOLD_POSITION, "holdposition", N_("Hold Position"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_END_UNIT_TURN, "endunitturn", N_("End Unit Turn"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_LEADER, "leader", N_("Leader"), false, hotkey::SCOPE_GAME },
@@ -679,6 +680,9 @@ bool command_executor::execute_command(HOTKEY_COMMAND command, int /*index*/)
 			break;
 		case HOTKEY_ENDTURN:
 			end_turn();
+			break;
+		case HOTKEY_ADD_WAYPOINT:
+			add_waypoint();
 			break;
 		case HOTKEY_UNIT_HOLD_POSITION:
 			unit_hold_position();

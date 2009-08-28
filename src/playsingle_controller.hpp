@@ -50,6 +50,7 @@ public:
 	virtual void change_side();
 	virtual void label_terrain(bool);
 	virtual void continue_move();
+	virtual void add_waypoint();
 	virtual void unit_hold_position();
 	virtual void end_unit_turn();
 	virtual void user_command();
