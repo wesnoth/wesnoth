@@ -26,6 +26,7 @@ Version 1.7.3+svn:
    * Added ability to change the share_maps team attribute using [modify_side]
      tag. Be sure to use shroud=yes for that side
    * [side] team_name is now a comma-separated list of teams the side is on
+   * [modify_side] user_team_name no longer requires that team_name also be modified
  * Miscellaneous and bugfixes:
    * Removed obsolete code for implicit linked widgets for the listbox
    * [part] caption= is no longer supported; prepend the CAPTION macro

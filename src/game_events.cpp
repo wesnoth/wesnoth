@@ -874,6 +874,10 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 				LOG_NG << "change side's team to team_name '" << team_name << "'\n";
 				teams[team_index].change_team(team_name,
 						user_team_name);
+			} else if(!user_team_name.empty()) {
+				LOG_NG << "change side's user_team_name to '" << user_team_name << "'\n";
+				teams[team_index].change_team(teams[team_index].team_name(),
+						user_team_name);
 			}
 			// Modify recruit list (override)
 			if (!recruit_str.empty()) {
