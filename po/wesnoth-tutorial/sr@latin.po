@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-08-18 21:52+0200\n"
-"PO-Revision-Date: 2009-06-13 21:24+0200\n"
+"PO-Revision-Date: 2009-08-26 17:28+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: sr\n"
-"X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%"
 "10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Environment: wesnoth, wesnoth/noent\n"
 
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:40
 msgid ""
@@ -299,17 +299,14 @@ msgstr ""
 msgid ""
 "Unfortunately, you've used up your turn attacking the quintain. The quintain "
 "will now get a turn."
-msgstr ""
-"Nažalost, tvoj potez prođe u napadu na drvenka. Sada je red na drvenka."
+msgstr "Nažalost, potez ti prođe u napadu na drvenka. Sada je red na drvenka."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:450
-#, fuzzy
 msgid ""
 "female^Unfortunately, you've used up your turn attacking the quintain. The "
 "quintain will now get a turn."
-msgstr ""
-"Nažalost, tvoj potez prođe u napadu na drvenka. Sada je red na drvenka."
+msgstr "Nažalost, potez ti prođe u napadu na drvenka. Sada je red na drvenka."
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:456
@@ -356,7 +353,6 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:498
-#, fuzzy
 msgid ""
 "female^There is a village on the other side of the river. Visiting villages "
 "is a good idea, and ending your turn in one will heal you. To the village!"
@@ -439,7 +435,6 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:593
-#, fuzzy
 msgid ""
 "female^A splendid idea. You can recruit two units if you return to the keep. "
 "You have plenty of gold for that."
@@ -696,9 +691,8 @@ msgstr ""
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1021
-#, fuzzy
 msgid "The quintain is dead, and I have gained more experience!"
-msgstr "Drvenko je uništen, gospodo, a ja sakupih iskustva!"
+msgstr "Drvenko je uništen, a ja sakupih iskustva!"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1026
@@ -1023,14 +1017,13 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:530
-#, fuzzy
 msgid ""
 "During your tutorial, both $recall_name1 and $recall_name2 gained "
 "$recall_xp1 experience points. You should recall them now so they can gain "
 "more experience, rather than recruiting new ones."
 msgstr ""
-"Za obuke do sada, $recall_name1 sakupi $recall_xp1 iskustva, a $recall_name2 "
-"sakupi $recall_xp2. Bolje ih sazovi pre najamljivanja novih jedinica, tako "
+"Tokom dosadašnje obuke, i $recall_name1 i $recall_name2 sakupiše po "
+"$recall_xp1 iskustva. Bolje ih sazovi pre najamljivanja novih jedinica, tako "
 "da mogu steći još iskustva."
 
 #. [else]
@@ -1040,9 +1033,9 @@ msgid ""
 "and $recall_name2 gained $recall_xp2. You should recall them now so they can "
 "gain more experience, rather than recruiting new ones."
 msgstr ""
-"Za obuke do sada, $recall_name1 sakupi $recall_xp1 iskustva, a $recall_name2 "
-"sakupi $recall_xp2. Bolje ih sazovi pre najamljivanja novih jedinica, tako "
-"da mogu steći još iskustva."
+"Tokom dosadašnje obuke, $recall_name1 sakupi $recall_xp1 iskustva, a "
+"$recall_name2 sakupi $recall_xp2. Bolje ih sazovi pre najamljivanja novih "
+"jedinica, tako da mogu steći još iskustva."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:539
@@ -1051,9 +1044,9 @@ msgid ""
 "You should recall that unit now, and recruit a second one (which is cheaper "
 "than recalling, anyway)."
 msgstr ""
-"Za obuke do sada, $recall_name1 sakupi $recall_xp1 iskustva. Bolje sazovi "
-"sada tu jedinicu, a unajmi još jednu (unajmljivanje je ionako jeftinije od "
-"sazivanja starih saboraca)."
+"Tokom dosadašnje obuke, $recall_name1 sakupi $recall_xp1 iskustva. Bolje "
+"sazovi sada tu jedinicu, a unajmi još jednu (unajmljivanje je ionako "
+"jeftinije od sazivanja starih saboraca)."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:542
@@ -1658,7 +1651,6 @@ msgstr ""
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1357
-#, fuzzy
 msgid ""
 "We will miss $deadguy.name| because she had $deadguy.experience experience "
 "points, meaning she would have advanced to level 2 soon."
@@ -1722,7 +1714,6 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1430
-#, fuzzy
 msgid ""
 "female^Advancing a level has fully healed me!\n"
 "I always have a 60% chance of hitting with my Marksman ability, and I deal 9 "

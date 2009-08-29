@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-08-29 12:11+0200\n"
-"PO-Revision-Date: 2009-07-19 14:24+0200\n"
+"PO-Revision-Date: 2009-08-29 12:39+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "MIME-Version: 1.0\n"
@@ -768,57 +768,52 @@ msgstr "Primeni"
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:28
 msgid "Formula debugger"
-msgstr ""
+msgstr "Ispravljač formula"
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:51
 msgid "Welcome"
-msgstr ""
+msgstr "Dobro došli"
 
 #. [label]: id=state
 #: data/gui/default/window/formula_debugger.cfg:63
-#, fuzzy
 msgid "state"
-msgstr "Datum"
+msgstr "stanje"
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:77
 msgid "Call stack"
-msgstr ""
+msgstr "Stek poziva"
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:86
-#, fuzzy
 msgid "Actions"
-msgstr "radnja"
+msgstr "Radnje"
 
 #. [button]: id=step
 #: data/gui/default/window/formula_debugger.cfg:120
-#, fuzzy
 msgid "Step operation"
-msgstr "Moderisanje"
+msgstr "Korakni operaciju"
 
 #. [button]: id=next
 #: data/gui/default/window/formula_debugger.cfg:130
-#, fuzzy
 msgid "Next operation"
-msgstr "Sledeći generator"
+msgstr "Sledeća operacija"
 
 #. [button]: id=stepout
 #: data/gui/default/window/formula_debugger.cfg:140
 msgid "Step out"
-msgstr ""
+msgstr "Iskorakni"
 
 #. [button]: id=continue
 #: data/gui/default/window/formula_debugger.cfg:150
-#, fuzzy
 msgid "Continue"
-msgstr "Nastavi potez"
+msgstr "Nastavi"
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:166
 msgid "Execution trace"
-msgstr ""
+msgstr "Trag izvršavanja"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
@@ -839,7 +834,7 @@ msgstr "Brisanje datoteke"
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_delete.cfg:52
 msgid "Do you really want to delete this game?"
-msgstr "Želite li zaista da obrišete ovu igru?"
+msgstr "Želite li zaista da obrišete ovu poziciju?"
 
 #. [toggle_button]: id=dont_ask_again
 #: data/gui/default/window/game_delete.cfg:72
@@ -875,12 +870,12 @@ msgstr "Ne"
 #: data/gui/default/window/game_load.cfg:42
 #: src/gui/dialogs/mp_create_game.cpp:78 src/hotkeys.cpp:66
 msgid "Load Game"
-msgstr "Učitavanje igre"
+msgstr "Učitavanje pozicije"
 
 #. [label]: id=lblChoose
 #: data/gui/default/window/game_load.cfg:179
 msgid "Choose the game to load"
-msgstr "Igra za učitavanje"
+msgstr "Pozicija za učitavanje"
 
 #. [label]: id=lblFilter
 #: data/gui/default/window/game_load.cfg:203
@@ -921,7 +916,7 @@ msgstr "Obustavi naređenja"
 #: data/gui/default/window/game_save_message.cfg:32
 #: data/gui/default/window/game_save_oos.cfg:32 src/hotkeys.cpp:63
 msgid "Save Game"
-msgstr "Sačuvaj igru"
+msgstr "Sačuvaj poziciju"
 
 #. [label]
 #: data/gui/default/window/game_save.cfg:62
@@ -981,14 +976,13 @@ msgstr "Promeni jezik"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:108
-#, fuzzy
 msgid "Games"
-msgstr "Ime"
+msgstr "Partije"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:176
 msgid "Requires a password to join"
-msgstr ""
+msgstr "Zahteva lozinku za priključivanje"
 
 #. [toggle_button]: id=use_map_settings
 #. [row]
@@ -999,19 +993,18 @@ msgstr "Sa postavkama mape"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:178
-#, fuzzy
 msgid "Reloaded game"
-msgstr "Napravi igru"
+msgstr "Učitana pozicija"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:179
 msgid "Unknown era"
-msgstr ""
+msgstr "Nepoznata epoha"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:181
 msgid "Gold per village"
-msgstr ""
+msgstr "Zlata po selu"
 
 #. [label]
 #. [row]
@@ -1023,56 +1016,52 @@ msgstr "Modifikator iskustva"
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:185
 msgid "Time limit"
-msgstr ""
+msgstr "Vremensko ograničenje"
 
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:304
-#, fuzzy
 msgid "Sort players:"
-msgstr "Igrači:"
+msgstr "Ređanje igrača:"
 
 #. [toggle_button]: id=player_list_sort_relation
 #: data/gui/default/window/lobby_main.cfg:312
 msgid "Friends first, ignored people last"
-msgstr ""
+msgstr "Prvo prijatelji, ignorisani na kraju"
 
 #. [toggle_button]: id=player_list_sort_name
 #: data/gui/default/window/lobby_main.cfg:320
 msgid "Alphabetically"
-msgstr ""
+msgstr "Abecedno"
 
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:332
-#, fuzzy
 msgid "Selected game"
-msgstr "Brisanje datoteke"
+msgstr "Izabrana partija"
 
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:333
 msgid "Current room"
-msgstr ""
+msgstr "Tekuća soba"
 
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:334
 msgid "Lobby"
-msgstr ""
+msgstr "Hol"
 
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:335
-#, fuzzy
 msgid "Other games"
-msgstr "Napravi igru"
+msgstr "Druge partije"
 
 #. [label]: id=room
 #: data/gui/default/window/lobby_main.cfg:357
 msgid "Rooms"
-msgstr ""
+msgstr "Sobe"
 
 #. [image]: id=pending_messages
 #: data/gui/default/window/lobby_main.cfg:375
-#, fuzzy
 msgid "Messages waiting"
-msgstr "Glasništvo"
+msgstr "Čekaju poruke"
 
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:451
@@ -1146,7 +1135,7 @@ msgstr "Pomoć"
 #: data/gui/default/window/lobby_main.cfg:565
 #: data/gui/default/window/mp_create_game.cfg:33
 msgid "Create Game"
-msgstr "Napravi igru"
+msgstr "Napravi partiju"
 
 #. [button]: id=join_global
 #: data/gui/default/window/lobby_main.cfg:571
@@ -1160,55 +1149,48 @@ msgstr "Posmatraj"
 
 #. [toggle_button]: id=skip_replay
 #: data/gui/default/window/lobby_main.cfg:583
-#, fuzzy
 msgid "Quick replay"
-msgstr "snimak"
+msgstr "Brzi snimak"
 
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:30
-#, fuzzy
 msgid "Player Info - "
-msgstr "Igrača: "
+msgstr "Podaci o igraču — "
 
 #. [button]: id=start_whisper
 #: data/gui/default/window/lobby_player_info.cfg:62
-#, fuzzy
 msgid "Send private message"
 msgstr "Pošalji privatnu poruku"
 
 #. [button]: id=add_to_friends
 #: data/gui/default/window/lobby_player_info.cfg:91
-#, fuzzy
 msgid "Add to friends list"
-msgstr "Dodaj korisničko ime na spisak prijatelja"
+msgstr "Dodaj na spisak prijatelja"
 
 #. [button]: id=add_to_ignores
 #: data/gui/default/window/lobby_player_info.cfg:100
-#, fuzzy
 msgid "Add to ignores list"
-msgstr "Dodaj korisničko ime na spisak ignorisanih"
+msgstr "Dodaj na spisak ignorisanih"
 
 #. [button]: id=remove_from_list
 #: data/gui/default/window/lobby_player_info.cfg:109
-#, fuzzy
 msgid "Remove from list"
-msgstr "Ukloni korisničko ime sa spiska"
+msgstr "Ukloni sa spiska"
 
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:133
-#, fuzzy
 msgid "Moderation"
 msgstr "Moderisanje"
 
 #. [button]: id=check_status
 #: data/gui/default/window/lobby_player_info.cfg:140
 msgid "Check status"
-msgstr ""
+msgstr "Proveri stanje"
 
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:147
 msgid "Kick / ban reason:"
-msgstr ""
+msgstr "Razlog izbacivanja/zabrane:"
 
 #. [button]: id=kick
 #: data/gui/default/window/lobby_player_info.cfg:160
@@ -1219,13 +1201,12 @@ msgstr "Izbaci"
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:167
 msgid "Ban time:"
-msgstr ""
+msgstr "Trajanje zabrane:"
 
 #. [button]: id=kick_ban
 #: data/gui/default/window/lobby_player_info.cfg:180
-#, fuzzy
 msgid "Kick/ban"
-msgstr "Izbaci"
+msgstr "Izbaci/zabrani"
 
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
@@ -1314,7 +1295,7 @@ msgstr "Prikaži spisak"
 #: data/gui/default/window/mp_create_game.cfg:62
 #: data/gui/default/window/mp_create_game.cfg:77
 msgid "Name of game:"
-msgstr "Naziv igre:"
+msgstr "Naziv partije:"
 
 #. [label]: id=map_players
 #: data/gui/default/window/mp_create_game.cfg:140
@@ -1374,7 +1355,7 @@ msgstr "Nasumično vreme početka"
 #. [button]: id=ok
 #: data/gui/default/window/mp_create_game.cfg:535
 msgid "Create game"
-msgstr "Napravi igru"
+msgstr "Napravi partiju"
 
 #. [window]: id=mp_login
 #: data/gui/default/window/mp_login.cfg:8
@@ -1452,22 +1433,22 @@ msgstr "Na drugi server"
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:158
 msgid "Host Networked Game"
-msgstr "Domaćin mrežnoj igri"
+msgstr "Domaćin mrežnoj partiji"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:159
 msgid "Host a game using dedicated server 'wesnothd'"
-msgstr "Budite domaćin igre s namenskim serverom (wesnothd)"
+msgstr "Budite domaćin partije na namenskom serveru (wesnothd)"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:168
 msgid "Local Game"
-msgstr "Lokalna igra"
+msgstr "Lokalna partija"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:169
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
-msgstr "Pokrenite višeigranje sa VI ili ljudima za istim računarom"
+msgstr "Pokrenite višeigračku partiju sa VI ili ljudima za istim računarom"
 
 #. [label]: id=address
 #: data/gui/default/window/mp_server_list.cfg:113
@@ -1524,37 +1505,33 @@ msgstr "Napravi jedinicu (ispr.!)"
 
 #. [label]
 #: data/gui/default/window/unit_create.cfg:59
-#, fuzzy
 msgid "Gender:"
-msgstr "Stvori"
+msgstr "Pol:"
 
 #. [toggle_button]: id=male_toggle
 #: data/gui/default/window/unit_create.cfg:69
-#, fuzzy
 msgid "Male"
-msgstr "zamak"
+msgstr "muški"
 
 #. [toggle_button]: id=female_toggle
 #: data/gui/default/window/unit_create.cfg:79
 msgid "Female"
-msgstr ""
+msgstr "ženski"
 
 #. [toggle_button]: id=namegen_toggle
 #: data/gui/default/window/unit_create.cfg:97
-#, fuzzy
 msgid "Generate name"
-msgstr "Stvori mapu"
+msgstr "Generiši ime"
 
 #. [label]: id=race
 #: data/gui/default/window/unit_create.cfg:126
-#, fuzzy
 msgid "Race"
-msgstr "Odustani"
+msgstr "rasa"
 
 #. [label]: id=unit_type
 #: data/gui/default/window/unit_create.cfg:138
 msgid "Type"
-msgstr ""
+msgstr "tip"
 
 #: src/filechooser.cpp:74
 msgid "File: "
@@ -1614,7 +1591,7 @@ msgstr "Sačuvaj snimak pri ji./vi. pobedi ili vi. porazu"
 
 #: src/game_preferences_display.cpp:162 src/game_preferences_display.cpp:342
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
-msgstr "Briši samoupise pri ji./vi. pobedi ili vi. porazu"
+msgstr "Briši autopozicije pri ji./vi. pobedi ili vi. porazu"
 
 #: src/game_preferences_display.cpp:163
 msgid "Do Not Show Lobby Joins"
@@ -1817,7 +1794,7 @@ msgstr "Dodaj vreme u porukama u ćaskanju"
 
 #: src/game_preferences_display.cpp:295
 msgid "Choose whether the game should run full screen or in a window"
-msgstr "Izaberi da li se igra preko celog ekrana ili u prozoru"
+msgstr "Da li se igra preko celog ekrana ili u prozoru"
 
 #: src/game_preferences_display.cpp:298
 msgid ""
@@ -1880,7 +1857,7 @@ msgstr "Prikaži poruke o svim igračima koji pristignu u višeigrački hol"
 #: src/game_preferences_display.cpp:362
 msgid "Find and set path to MP server to host LAN games."
 msgstr ""
-"Pronađite i postavite putanju do vi. servera, za udomljavanje LAN igara."
+"Pronađite i postavite putanju do vi. servera, za udomljavanje LAN partija."
 
 #: src/game_preferences_display.cpp:363
 msgid "View and edit your friends and ignores list"
@@ -1912,7 +1889,7 @@ msgstr "Prikaži iznad jedinica tekst sa pretrpljenom štetom pri udaru"
 
 #: src/game_preferences_display.cpp:375
 msgid "Change the resolution the game runs at"
-msgstr "Promeni rezoluciju igre"
+msgstr "Promeni rezoluciju koju igra koristi"
 
 #: src/game_preferences_display.cpp:376
 msgid "Change the theme the game runs with"
@@ -1954,7 +1931,7 @@ msgstr "Brzina: "
 
 #: src/game_preferences_display.cpp:696 src/game_preferences_display.cpp:698
 msgid "Maximum Auto-Saves: "
-msgstr "Najviše samoupisa: "
+msgstr "Najviše autopozicija: "
 
 #: src/game_preferences_display.cpp:696
 msgid "infinite"
@@ -2006,15 +1983,17 @@ msgstr "Sačuvana podešavanja teme: "
 
 #: src/game_preferences_display.cpp:1209
 msgid "New theme will take effect on next new or loaded game."
-msgstr "Nova tema će se iskazati u sledećoj novoj ili učitanoj igri."
+msgstr ""
+"Nova tema će se iskazati po sledećem pokretanju igre ili učitavanju pozicije."
 
 #: src/game_preferences_display.cpp:1213
 msgid "No known themes. Try changing from within an existing game."
-msgstr "Nema poznatih tema. Pokušajte da promenite u okviru tekuće igre."
+msgstr "Nema poznatih tema. Pokušajte da promenite unutar započete partije."
 
 #: src/game_preferences_display.cpp:1256
 msgid "Find $filename server binary to host networked games"
-msgstr "Pronađite serversku izvršnu $filename, za udomljavanje mrežnih igara."
+msgstr ""
+"Pronađite serversku izvršnu $filename, za udomljavanje mrežnih partija."
 
 #: src/gui/auxiliary/canvas.cpp:356
 msgid "Line doesn't fit on canvas."
@@ -2121,35 +2100,35 @@ msgstr "Verzija: "
 
 #: src/gui/dialogs/lobby_main.cpp:386
 msgid "Observers allowed"
-msgstr ""
+msgstr "Posmatrači dozvoljeni"
 
 #: src/gui/dialogs/lobby_main.cpp:389
 msgid "Observers not allowed"
-msgstr ""
+msgstr "Posmatrači nisu dozvoljeni"
 
 #: src/gui/dialogs/lobby_main.cpp:664
 msgid ""
 "Whisper session with $name started. If you don't want to receive messages "
 "from this user, type /ignore $name\n"
 msgstr ""
+"Započeta sesija šaptanja za $name|. Ako ne želite da primate poruke ovog "
+"korisnika, upišite /ignore $name\n"
 
 #: src/gui/dialogs/lobby_main.cpp:670
 msgid "Room $name joined"
-msgstr ""
+msgstr "U sobi $name"
 
 #: src/gui/dialogs/lobby_main.cpp:1088
-#, fuzzy
 msgid "Password Required"
-msgstr "Podsetnik lozinke"
+msgstr "Neophodna lozinka"
 
 #: src/gui/dialogs/lobby_main.cpp:1089
 msgid "Joining this game requires a password."
-msgstr ""
+msgstr "Za priključivanje ovoj partiji neophodna je lozinka."
 
 #: src/gui/dialogs/lobby_main.cpp:1090
-#, fuzzy
 msgid "Password: "
-msgstr "Lozinka:"
+msgstr "Lozinka: "
 
 #: src/gui/dialogs/message.cpp:216
 msgid "Error"
@@ -2157,7 +2136,7 @@ msgstr "Greška"
 
 #: src/gui/dialogs/mp_create_game.cpp:79
 msgid "Load Game..."
-msgstr "Učitaj igru..."
+msgstr "Učitaj poziciju..."
 
 #: src/gui/dialogs/title_screen.cpp:88
 msgid "Version"
@@ -2198,7 +2177,7 @@ msgstr "Prethodna jedinica"
 
 #: src/hotkeys.cpp:48
 msgid "Add waypoint"
-msgstr ""
+msgstr "Dodaj putokaz"
 
 #: src/hotkeys.cpp:49
 msgid "Hold Position"
@@ -2780,6 +2759,3 @@ msgstr ""
 #: src/wml_exception.cpp:76
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "U odeljku ‘[$section|]’ nije postavljen obavezni ključ ‘$key|’."
-
-#~ msgid "Save The Map"
-#~ msgstr "Sačuvaj mapu"

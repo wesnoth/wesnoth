@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-low\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-08-29 12:11+0200\n"
-"PO-Revision-Date: 2009-06-16 13:59+0200\n"
+"PO-Revision-Date: 2009-08-29 12:39+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "MIME-Version: 1.0\n"
@@ -16,6 +16,7 @@ msgstr ""
 "Language: sr\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%"
 "10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Environment: wesnoth, wesnoth/noent\n"
 
 #. [campaign]: id=LOW
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:48
@@ -105,7 +106,7 @@ msgstr "Pomoć za WML"
 #. [about]
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:109
 msgid "Artificial Intelligence"
-msgstr ""
+msgstr "Veštačka inteligencija"
 
 #. [about]
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:116
@@ -311,7 +312,7 @@ msgstr "Isteknu li potezi"
 #. [objectives]
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:319
 msgid "Early finish bonus: Defeat Wrulf"
-msgstr ""
+msgstr "Bonus za rani završetak: poraziš li Vrulfa"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:328
@@ -388,7 +389,7 @@ msgstr ""
 #. [message]: id=Velon
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:400
 msgid "Flee, Kalenz... find vengeance for us!"
-msgstr ""
+msgstr "Beži, Kalenze... da nas osvetiš!"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:404
@@ -396,21 +397,23 @@ msgid ""
 "Velon, I swear on the life of Irdya that I will not let you be forgotten "
 "while elves yet draw breath to sing."
 msgstr ""
+"Velone, kunem se životom Irdije da neću dopustiti da te zaborave sve dok "
+"vilenjaci budu imali daška za pesmu."
 
 #. [message]: id=Velon
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:413
 msgid "Swords will aid us more than songs, Kalenz; you saw that before I."
-msgstr ""
+msgstr "Mačevi nam trebaju više od pesama, Kalenze; uvideo si to pre mene."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:417
 msgid "Swordsmen you shall have, as swiftly as I can find them and return."
-msgstr ""
+msgstr "Mačevaoca će biti, koliko ih brzo budem mogao okupiti i vratiti se."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:428
 msgid "This is a stub. Velon died, I am so sad!"
-msgstr ""
+msgstr "Velon postrada, tako sam tužan!"
 
 #. [message]: race=orc
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:442
@@ -420,12 +423,12 @@ msgstr "Nećete daleko! Za njima!"
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:473
 msgid "Curse you, tree-shaggers! We will feed your young to our wolves!"
-msgstr ""
+msgstr "Prokleti bili, drvoljupci! Vašim mladima hranićemo svoje vukove!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:488
 msgid "What is this? The orc held plunder!"
-msgstr ""
+msgstr "Šta je ovo? Ovaj ork je nosio plen!"
 
 #. [message]: id=Velon
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:502
@@ -454,51 +457,49 @@ msgstr ""
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:64
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:153
 msgid "Player"
-msgstr ""
+msgstr "Igrač"
 
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:68
 msgid "Neutral"
-msgstr ""
+msgstr "Neutralni"
 
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:117
-#, fuzzy
 msgid "Those stinking trolls ha' stepped on OUR land!"
-msgstr "Ti smrdljivi trolovi zagaziše na NAŠU zemlju! U napad!"
+msgstr "Ti smrdljivi trolovi zagaziše na NAŠU zemlju!"
 
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:131
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:204
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:228
 msgid "Enemies"
-msgstr ""
+msgstr "Neprijatelji"
 
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:186
-#, fuzzy
 msgid "Those lying elves have stepped on OUR land!"
-msgstr "Ti lažljivi vilenjaci zagaziše na NAŠU zemlju! U napad!"
+msgstr "Ti lažljivi vilenjaci zagaziše na NAŠU zemlju!"
 
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:369
 msgid ""
 "Looks like it would be fun to watch... Just take care to not step on our "
 "territory"
 msgstr ""
+"Deluje da će biti zabavno posmatrati... Samo pazite da ne kročite na našu "
+"teritoriju."
 
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:381
-#, fuzzy
 msgid "Death to elves!"
-msgstr "Nastrada li Kalenz"
+msgstr "Smrt vilenjacima!"
 
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:392
-#, fuzzy
 msgid "Death to trolls!"
-msgstr "Nastrada li Galtrid"
+msgstr "Smrt trolovima!"
 
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:404
 msgid "Kill them all!"
-msgstr ""
+msgstr "Pobijte ih sve!"
 
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:417
 msgid "Defend our territory! Slay all trespassers!"
-msgstr ""
+msgstr "Odbranimo svoju zemlju! Posecite sve uljeze!"
 
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:444
 msgid "Grugl"
@@ -560,6 +561,8 @@ msgid ""
 "<span color='white'>Alternative objective:</span>\n"
 "<span color='#00ff00'>Defeat Grugl</span>"
 msgstr ""
+"<span color='white'>Alternativni cilj:</span>\n"
+"<span color='#00ff00'>Poraziš li Grugla</span>"
 
 #. [objective]: condition=lose
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:556
@@ -581,9 +584,11 @@ msgstr "Uspesmo. Napred ka Vesmeru!"
 msgid "Crazy elves! But at least they felled a few trolls before they left."
 msgstr "Ludi vilenjaci! Ali bar oboriše ponekog trola pre nego što odoše."
 
+# well-spelled: Аааррггхх
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:605
 msgid "Uuuurrrggghh! Elves had too many sharp pointy things for Grugl to eat."
 msgstr ""
+"Aaarrgghh! Vilenjaci imaju previše oštrih šiljaka da bi ih Grugl progutao."
 
 #. [scenario]: id=03_Kalian
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:6
@@ -592,13 +597,12 @@ msgstr "Kalijan pod napadom"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:35
-#, fuzzy
 msgid ""
 "Kalenz and his band finally were on their way to the Ka'lian, but things "
 "were not as they had hoped..."
 msgstr ""
-"Kalenz s družinom napokon pristiže u Kalijan, ali stanje ne beše kakvom su "
-"se nadali..."
+"Kalenz i družina napokon se zaputiše ka Kalijanu, ali okolnosti ne behu "
+"kakvim su se nadali..."
 
 # |, no-check-spell
 #. [unit]: type=Orcish Warlord, id=Mutaf-uru
@@ -620,9 +624,8 @@ msgstr "Murudin"
 # |, no-check-spell
 #. [unit]: type=Orcish Slayer, id=orc_leader
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:190
-#, fuzzy
 msgid "Urudin"
-msgstr "Murudin"
+msgstr "Urudin"
 
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:338
@@ -631,9 +634,8 @@ msgstr "Murudin"
 #: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:124
 #: data/campaigns/Legend_of_Wesmere/scenarios/17_Breaking_the_siege.cfg:187
 #: data/campaigns/Legend_of_Wesmere/scenarios/22_Northern_Battle.cfg:149
-#, fuzzy
 msgid "Defeat all enemy leaders"
-msgstr "Poraziš li neprijateljske vođe"
+msgstr "Poraziš li sve neprijateljske vođe"
 
 #. [objective]: condition=lose
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:350
@@ -650,6 +652,10 @@ msgid ""
 "orcs who were trying to hunt down his small company. Then, the north wind "
 "blew, and the fog finally lifted..."
 msgstr ""
+"Danima je Kalenz putovao sa svojom malom skupinom izabranika, sve više se "
+"približavajući Kalijanu. Zahvaljujući gustoj magli, uspeše da izmaknu "
+"orkovima koji su pokušavali da presretnu malu družinu. Napokon dunu severni "
+"vetar, i magla se razveja..."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:369
@@ -687,14 +693,13 @@ msgstr "Šta je to? Još mesa za moje snage? Držite ih!"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:407
-#, fuzzy
 msgid "We have lost for some reason!"
-msgstr "Još jednom zaustavismo orkove!"
+msgstr "Kako li izgubismo?!"
 
 #. [message]: id=guard
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:444
 msgid "Watch out! Someone is sneaking around in the mist."
-msgstr ""
+msgstr "Pazi! Neko se šunja kroz izmaglicu."
 
 #. [message]: id=orc_leader
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:449
@@ -703,6 +708,9 @@ msgid ""
 "and we <i>might</i> spare you. Or, at the very least, we'll give you a quick "
 "and painless death."
 msgstr ""
+"Predajte kamen, i <i>možda</i> nećemo uništiti vašu krhku vilin-tvrđavicu i "
+"<i>možda</i> ćemo vas poštedeti. Ili ćemo vam bar podariti brzu i bezbolnu "
+"smrt."
 
 #. [message]: id=Galtrid
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:454
@@ -711,11 +719,14 @@ msgid ""
 "and it was never raided. It will still stand after the last of you beasts "
 "have vanished and your wrongdoings are long forgotten."
 msgstr ""
+"Kakav kamen? Kalijan je stariji nego što vi pogana stvorenja gmižete pod "
+"suncem, i nijednom ga ne poharaše. Stajaće i pošto i poslednja od vas zveri "
+"iščezne i na zlodela se vaša davno zaboravi."
 
 #. [message]: id=orc_leader
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:466
 msgid "Punch his arrogant words back down his throat!"
-msgstr ""
+msgstr "Sabijte mu nadobudne reči nazad u grlo!"
 
 #. [message]: id=Galtrid
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:514
@@ -723,6 +734,8 @@ msgid ""
 "To arms, brothers and sisters! Hopefully, our army will return to aid us "
 "soon."
 msgstr ""
+"Na oružje, braćo i sestre! Nadajmo se da će nam naša vojska ubrzo priteći u "
+"pomoć."
 
 # |, no-check-spell
 #. [message]: id=Kalenz
@@ -849,6 +862,7 @@ msgstr ""
 #: data/campaigns/Legend_of_Wesmere/scenarios/04_Elvish_Treasury.cfg:217
 msgid "This text is a stub. Let's fight the saurians first and talk later."
 msgstr ""
+"Ovaj tekst je zametak. Da se prvo izborimo sa saurijancima, pa ćemo pričati."
 
 #. [objective]: condition=lose
 #: data/campaigns/Legend_of_Wesmere/scenarios/04_Elvish_Treasury.cfg:239
@@ -966,7 +980,7 @@ msgstr ""
 #. [message]: id=Cleodil
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_Saurian_Treasury.cfg:164
 msgid "This is a stub. We will need horse riders to transport the treasure."
-msgstr ""
+msgstr "Trebaće nam jahači da prenesemo blago."
 
 #. [message]: id=Hraurg
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_Saurian_Treasury.cfg:169
@@ -979,7 +993,7 @@ msgstr ""
 #. [object]
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_Saurian_Treasury.cfg:193
 msgid "Treasure Chest"
-msgstr ""
+msgstr "kovčeg s blagom"
 
 #. [message]: id=unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_Saurian_Treasury.cfg:232
@@ -1023,7 +1037,7 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_Saurian_Treasury.cfg:305
 msgid "New Objective: Transport the treasure with a rider to the signpost"
-msgstr ""
+msgstr "Novi cilj: Preneseš li blago jahačem do putokaza"
 
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_Saurian_Treasury.cfg:340
@@ -1475,14 +1489,12 @@ msgstr "Zdrobićemo vilenjačiće, i domoći ću se tajkamena!"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:518
-#, fuzzy
 msgid ""
 "These are hardened orc and troll veterans. Men, prepare for a long, hard "
 "fight..."
 msgstr ""
 "Ovo su prekaljeni orkovski i trolovski veterani. Spremite se za dugu i tešku "
-"borbu...\n"
-"*jaka VI*"
+"borbu..."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:532
@@ -1688,19 +1700,15 @@ msgstr "Veće teških izbora"
 #: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_hard_choices.cfg:22
 #: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_hard_choices.cfg:52
 #: data/campaigns/Legend_of_Wesmere/scenarios/20_Council_ruling.cfg:48
-#, fuzzy
 msgid "Iradia"
-msgstr "Uradredija"
+msgstr "Iradija"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_hard_choices.cfg:22
-#, fuzzy
 msgid ""
 "Kalenz, you have won a great victory! Wesmere is safe. But...for what cause "
 "have you invited a dwarf to the elvish council? This is most unusual!"
 msgstr ""
-"@Iradija\n"
-"\n"
 "Kalenze, izborio si veliku pobedu! Vesmer je bezbedan. Ali... s kojim naumom "
 "pozva jednog patuljka na vilenjačko veće?"
 
@@ -1746,29 +1754,23 @@ msgstr "Kalenz"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_hard_choices.cfg:27
-#, fuzzy
 msgid ""
 "My lords, this is Olurf. He and his dwarves have fought by our side and have "
 "well earned a place in this meeting. The war that comes upon us must be met "
 "by all in Wesnoth, Elves, Dwarves and Humans."
 msgstr ""
-"@Kalenz\n"
-"\n"
 "Gospodari, ovo je Olurf. On i njegovi patuljci boriše se uz nas i time "
 "zaradiše mesto na ovom sastanku. Rat nametnut nam moraju podneti svi u "
 "Vesnotu, vilenjaci, patuljci i ljudi."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_hard_choices.cfg:32
-#, fuzzy
 msgid ""
 "Leave the humans out of this. King Haldric has broken the treaty we signed "
 "with him eleven years ago, and has sent back all our emissaries. When he "
 "arrived on our shore he was very humble, but now his arrogance knows no "
 "bounds. He believes the orcs will not dare to fight him."
 msgstr ""
-"@Uripur\n"
-"\n"
 "Izostavi ljude iz toga. Kralj Haldrik je pogazio sporazum što s njim "
 "potpisasmo pre jedanaest godina, i opozvao sve svoje izaslanike. Kad je "
 "pristao na naše obale bio je vrlo skroman, ali sada njegova oholost ne "
@@ -1778,18 +1780,15 @@ msgstr ""
 #: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_hard_choices.cfg:32
 #: data/campaigns/Legend_of_Wesmere/scenarios/20_Council_ruling.cfg:33
 msgid "Uripur"
-msgstr ""
+msgstr "Uripur"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_hard_choices.cfg:37
-#, fuzzy
 msgid ""
 "My lords, the orcs have been pushed out of Wesmere, but they are far from "
 "defeated. We must take the fight to them, recover our lost lands and smash "
 "their great horde beyond possibility that it will threaten us again."
 msgstr ""
-"@Kalenz\n"
-"\n"
 "Gospodari, orkovi su odbijeni iz Vesmera, ali daleko od toga da su pobeđeni. "
 "Moramo preneti borbu na njihov teren, povratiti naše izgubljene zemlje, i "
 "razoriti veliku hordu izvan mogućnosti da nam ikada više zapreti."
@@ -1798,19 +1797,16 @@ msgstr ""
 #: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_hard_choices.cfg:42
 #: data/campaigns/Legend_of_Wesmere/scenarios/20_Council_ruling.cfg:23
 msgid "Legmir"
-msgstr ""
+msgstr "Legmir"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_hard_choices.cfg:42
-#, fuzzy
 msgid ""
 "Too many elves have died already. To take the war to the orcs, we would have "
 "to risk all our remaining fighters on one throw. And we are not as skilled "
 "in fighting outside our forests. We have already shown the orcs that "
 "attacking us is folly; the prudent course would be to rebuild our strength."
 msgstr ""
-"@Legmir\n"
-"\n"
 "Previše je vilenjaka već stradalo. Da bismo rat preneli orkovima, morali "
 "bismo rizikovati sve preostale borce u jednom zamahu. A nismo tako umešni u "
 "borbi izvan naših šuma. Već smo pokazali orkovima da je uludo napasti nas; "
@@ -1831,34 +1827,28 @@ msgstr "Landar"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_hard_choices.cfg:47
-#, fuzzy
 msgid ""
 "Those of us who follow Kalenz have shown it can be done. We have been "
 "fighting ever since we were forced out of our home country, in all kinds of "
 "lands. And, we are willing to die in order to defeat foul orcs!"
 msgstr ""
-"@Landar\n"
-"\n"
 "Oni među nama uz Kalenza pokazali se da se to može učiniti. Od kada nas "
 "izgnaše iz naše domovine, borismo se po svakakvim zemljama. I spremni smo da "
 "izginemo samo da porazimo pogane orkove!"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_hard_choices.cfg:52
-#, fuzzy
 msgid ""
 "Our answer is still no. Prepare our defenses as best you can, but do not "
 "renew offensive war. This is the council's decision."
 msgstr ""
-"@Iradija\n"
-"\n"
 "Naš odgovor je i dalje odrečan. Spremite odbranu najbolje što možete, ali ne "
 "započinjite ofanzivni rat. To je odluka veća."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_hard_choices.cfg:56
 msgid "Aftermath"
-msgstr ""
+msgstr "Ishod"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_hard_choices.cfg:57
@@ -1867,29 +1857,23 @@ msgstr "Po napuštanju veća, naši junaci porazgovaraše potajno..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_hard_choices.cfg:63
-#, fuzzy
 msgid ""
 "This is madness! The orcs will but regain their strength and attack again, "
 "if we give them the time! We must have some other sort of help. Olurf, can "
 "we perhaps make a war-pact with the dwarves?"
 msgstr ""
-"@Kalenz\n"
-"\n"
 "Ludilo! Orkovi će povratiti snagu i ponovo nas napasti, samo li im damo "
 "vremena! Moramo se domoći pomoći s druge strane. Olurfe, možemo li stupiti u "
 "nekakav ratni sporazum sa patuljcima?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_hard_choices.cfg:68
-#, fuzzy
 msgid ""
 "I dinna' think it can be, Kalenz. My people are too suspicious of you elves. "
 "But it may be there is something else we can do. I ha' heard tale of a "
 "powerful mage in the mountains who helped our people before. Maybe he will "
 "aid us again."
 msgstr ""
-"@Olurf\n"
-"\n"
 "Ne verujem da će to biti, Kalenze. Moj narod, mnogo je nepoverljiv prema "
 "vama vilenjacima. Ali možda mogu nešto drugo da uradim. Dočuh priču o moćnom "
 "magu u planinama koji je nekada pomogao našem narodu. Možda bi nam mogao "
@@ -1907,57 +1891,40 @@ msgstr "Olurf"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_hard_choices.cfg:73
-#, fuzzy
 msgid "And where do we find this mage, if he exists?"
-msgstr ""
-"@Kalenz\n"
-"\n"
-"A gde bismo našli tog maga, ako uopšte postoji?"
+msgstr "A gde bismo našli tog maga, ako uopšte postoji?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_hard_choices.cfg:78
-#, fuzzy
 msgid ""
 "It willna' be easy. He lives in the mountains of Thoria and he never helps "
 "anyone for free. Thoria is very dangerous, especially for elves. Even "
 "dwarves and trolls dinna' go there lightly."
 msgstr ""
-"@Olurf\n"
-"\n"
 "Neće biti lako. Živi u planinama Torije, i nikad nikome ne pomaže bez "
 "nadoknade. Torija je vrlo opasna, posebno za vilenjake. Čak ni patuljci ni "
 "trolovi ne zalaze tamo tek tako."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_hard_choices.cfg:83
-#, fuzzy
 msgid ""
 "I think the orcs will be in no position to attack us for some time. Maybe we "
 "should go see this mage. Olurf, can you take us there?"
 msgstr ""
-"@Kalenz\n"
-"\n"
 "Mislim da orkovi još neko vreme neće biti u stanju da nas napadnu. Možda "
 "valja posetiti tog maga. Olurfe, hoćeš li nas povesti k njemu?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_hard_choices.cfg:88
-#, fuzzy
 msgid "I think I can. But dangerous this will be!"
-msgstr ""
-"@Olurf\n"
-"\n"
-"Mislim da mogu. Ali biće opasno!"
+msgstr "Mislim da mogu. Ali biće opasno!"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_hard_choices.cfg:93
-#, fuzzy
 msgid ""
 "Very well. We shall leave our best troops and gold here in case the orcs "
 "attack Wesmere again."
 msgstr ""
-"@Kalenz\n"
-"\n"
 "Vrlo dobro. Ostavićemo ovde najbolje snage i zlato, za slučaj da orkovi "
 "ponovo udare na Vesmer."
 
@@ -2338,6 +2305,8 @@ msgid ""
 "There...I sense magic emanating from that stone keep east of the lake. That "
 "is where we will find the mage."
 msgstr ""
+"Tamo... Osećam kako magija izbija iz one kamene kule istočno od jezera. Tamo "
+"ćemo pronaći i maga."
 
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/11_Battle_of_the_book.cfg:157
@@ -2374,15 +2343,12 @@ msgstr "Otkrovenja"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:18
-#, fuzzy
 msgid ""
 "So you are the ones who defeated Aquagar and his drakes. Olurf, I know you; "
 "you were here before when we were both much younger. But Elves never come to "
 "Thoria. Yet these are no ordinary times for this land. I know all; I have "
 "foreseen this would happen."
 msgstr ""
-"@Krelanu\n"
-"\n"
 "Znači vi ste ti što poraziše Akvagara i njegove zmagove. Olurfe, tebe znam; "
 "bio si ovde ranije, dok smo obojica bili znatno mlađi. Ali vilenjake još ne "
 "spazih u Toriji. Opet, ovo nisu obična vremena za ovu zemlju. Sve znam; "
@@ -2390,93 +2356,66 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:23
-#, fuzzy
 msgid ""
 "This is Kalenz, leader of the elves. I have brought him here to ask for your "
 "advice and your aid in dealing with the orcs."
 msgstr ""
-"@Olurf\n"
-"\n"
 "Ovo je Kalenz, vođ vilenjaka. Dovedoh ga ovde da zatraži tvoj savet i tvoju "
 "pomoć protiv orkova."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:28
-#, fuzzy
 msgid ""
 "Elves, you have fought valiantly and have won a great victory at the forest "
 "of Wesmere. Yet the forces ranged against you are not yet defeated. Indeed, "
 "they grow stronger every day. You contend against destiny. But for the "
 "moment you have diverted the orcs' attention."
 msgstr ""
-"@Krelanu\n"
-"\n"
 "Vilenjaci, valjano se boriste i izboriste veliku pobedu u Vesmerskoj šumi. "
 "Pa ipak, sila ustrojena na vas još nije poražena — uistinu, ojačava svakim "
 "danom. Takmičite se protiv sudbine. Ali ste na čas odvratili pažnju orkovima."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:33
-#, fuzzy
 msgid "What do you mean, 'diverted their attention'?"
-msgstr ""
-"@Kalenz\n"
-"\n"
-"Kako to misliš, „odvratili im pažnju“?"
+msgstr "Kako to misliš, „odvratili im pažnju“?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:38
-#, fuzzy
 msgid ""
 "You cannot even imagine it. Why do you suppose orcs came all the way here to "
 "attack you?"
 msgstr ""
-"@Krelanu\n"
-"\n"
 "Ne možeš ni zamisliti. Šta misliš, zašto orkovi dođoše skroz do ovde da vas "
 "napadnu?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:43
-#, fuzzy
 msgid "Because they are orcs! Look old man, can you help us beat them or not?"
 msgstr ""
-"@Landar\n"
-"\n"
 "Zato što su orkovi! Vidi, starče, možeš li nam pomoći da ih porazimo ili ne?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:48
-#, fuzzy
 msgid "You must be Landar. Very brave, but also very brash."
-msgstr ""
-"@Krelanu\n"
-"\n"
-"Ti mora da si Landar. Vrlo hrabar, ali i vrlo ishitren."
+msgstr "Ti mora da si Landar. Vrlo hrabar, ali i vrlo ishitren."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:53
-#, fuzzy
 msgid ""
 "Landar is brash, but he does speak plainly why we came here. I do not "
 "understand what you are talking about, either. Olurf tells me you are very "
 "wise, but only help for a price. We will pay any price within our power; "
 "just name it."
 msgstr ""
-"@Kalenz\n"
-"\n"
 "Landar jeste ishitren, ali kaže jasno zašto smo došli ovamo. Ni ja ne "
 "razumem o čemu pričaš. Olurf mi reče da si vrlo mudar, ali da pomažeš samo "
 "po nagodbi. Platićemo koliko nam je u moći; reci šta tražiš."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:58
-#, fuzzy
 msgid "Are you saying the orcs attacked us looking for something?"
-msgstr ""
-"@Kleodil\n"
-"\n"
-"Tvrdiš li da su nas orkovi napali u potrazi za nečim?"
+msgstr "Tvrdiš li da su nas orkovi napali u potrazi za nečim?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:58
@@ -2501,54 +2440,36 @@ msgstr "Kleodil"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:63
-#, fuzzy
 msgid "Yes, that is what I am saying."
-msgstr ""
-"@Krelanu\n"
-"\n"
-"Da, tačno to kažem."
+msgstr "Da, tačno to kažem."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:68
-#, fuzzy
 msgid ""
 "It makes sense now. The Saurians were asking about a dastone, and also after "
 "we won in Wesmere there was an Orc mumbling something about a dastone..."
 msgstr ""
-"@Kleodil\n"
-"\n"
 "Uklapa se. Saurijanci su se raspitivali za neki tajkamen, a i pošto "
 "pobedismo u Vesmeru, jedan od orkova nešto mrmljaše o tome..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:73
-#, fuzzy
 msgid "It's not a dastone, it's the stone: They mean the Ruby of Fire..."
-msgstr ""
-"@Krelanu\n"
-"\n"
-"Nije tajkamen, nego kamen nad kamenima: misle na Vatreni rubin..."
+msgstr "Nije tajkamen, nego kamen nad kamenima: misle na Vatreni rubin..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:78
-#, fuzzy
 msgid "What's that, and what does it have to do with us?"
-msgstr ""
-"@Kalenz\n"
-"\n"
-"Šta je to, i kakve veze ima sa nama?"
+msgstr "Šta je to, i kakve veze ima sa nama?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:83
-#, fuzzy
 msgid ""
 "It's the source of your troubles. It is a very powerful magical artifact. "
 "The tyrant Haldric has it, but he has fooled the orcs into believing that "
 "the elves are hiding it. But now, they suspect they have been fooled. "
 "Haldric and his people will pay for his arrogance."
 msgstr ""
-"@Krelanu\n"
-"\n"
 "Kamen je izvor vaših nevolja. To je vrlo moćan magični predmet. U posedu je "
 "tiranina Haldrika, ali je prevarom ubedio orkove da ga vilenjaci skrivaju. "
 "Sada, međutim, oni sumnjaju da su nasamareni. Haldrik i njegov narod platiće "
@@ -2556,19 +2477,15 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:88
-#, fuzzy
 msgid ""
 "Hmm... You seem to love king Haldric even less than the elf-lords of the "
 "Ka'lian do...How do you know all this of him?"
 msgstr ""
-"@Kalenz\n"
-"\n"
 "Hm... Čini se da ti kralja Haldrika voliš manje i od vilin-gospodara iz "
 "Kalijana... Kako znaš sve to o njemu?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:93
-#, fuzzy
 msgid ""
 "I once counted Haldric a friend, but he was the one who banished me from "
 "Wesnoth. He charged me with trying to steal the Ruby, seeking its power for "
@@ -2579,8 +2496,6 @@ msgid ""
 "heart, can safely handle it outside of battle. Unshielded, its magical "
 "radiance changes Haldric a little every time he comes close to it."
 msgstr ""
-"@Krelanu\n"
-"\n"
 "Jednom Haldrika smatrah za prijatelja, ali je on taj koji me izgna iz "
 "Vesnota. Optužio me je da sam pokušao da ukradem Rubin, da prigrabim njegovu "
 "moć... Istina je, međutim, da Rubin izopačuje Haldrikov um, čineći ga sve "
@@ -2592,83 +2507,60 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:98
-#, fuzzy
 msgid "So the orcs will, seeking the Ruby, now attack the humans?"
-msgstr ""
-"@Kalenz\n"
-"\n"
-"Orkovi će, dakle, u potrazi za Rubinom sada udariti na ljude?"
+msgstr "Orkovi će, dakle, u potrazi za Rubinom sada udariti na ljude?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:103
-#, fuzzy
 msgid ""
 "Yes. But after they win, your people will be next. And after you, the "
 "dwarves."
 msgstr ""
-"@Krelanu\n"
-"\n"
 "Hoće. Ali nakon što pobede, tvoj narod je sledeći. Posle vas, patuljci."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:108
-#, fuzzy
 msgid ""
 "Don't worry overmuch about us. It is clear you have troubles of your own."
-msgstr ""
-"@Landar\n"
-"\n"
-"Ne brini ti mnogo za nas. Jasno je da imaš i sopstvenih problema."
+msgstr "Ne brini ti mnogo za nas. Jasno je da imaš i sopstvenih problema."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:113
-#, fuzzy
 msgid ""
 "We are grateful for this counsel. But can you help us directly? Is there a "
 "way to stop the orcs?"
 msgstr ""
-"@Kalenz\n"
-"\n"
 "Zahvalni smo za ovo savetovanje. Ali, možeš li nam izravno pomoći? Ima li "
 "načina da se orkovi zaustave?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:118
-#, fuzzy
 msgid ""
 "You cannot defeat them with the forces you can now muster. You can only gain "
 "time, in the hope that you can use it to grow strong again."
 msgstr ""
-"@Krelanu\n"
-"\n"
 "Ne možete ih poraziti snagama koje trenutno okupljate. Možete samo kupovati "
 "vreme, u nadi da će te ga pametno upotrebiti da ponovo ojačate."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:123
-#, fuzzy
 msgid ""
 "How? Don't tell me we had to fight the saurians, cross Arkan-Thoria, contend "
 "against the river monsters, and fight trolls and yetis to come here for "
 "nothing!"
 msgstr ""
-"@Kalenz\n"
-"\n"
 "Kako? Ne reci da smo se morali boriti protiv saurijanaca, pregaziti Arkan-"
 "Toriju, suočiti se s rečnim nemanima, probiti kroz trolove i jetije da "
 "dođemo do ovde — nizašta!"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:128
-#, fuzzy
 msgid ""
 "You need to kill their Great Chief and make it look like he was murdered by "
 "orcs. That way the orcs will start a civil war for succession, for many "
 "yearn to take their Great Chief's place. You will be safe until a new leader "
 "arises strong enough to unite them again."
 msgstr ""
-"@Krelanu\n"
-"\n"
 "Morate ubiti njihovog velikog poglavicu, ali tako da izgleda kao da su to "
 "učinili drugi orkovi. Time ćete ih gurnuti u međusobni rat za nasleđe, jer "
 "mnogi žude za nameštenjem Velikog Poglavice. Bićete bezbedni dok se ne "
@@ -2676,35 +2568,23 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:133
-#, fuzzy
 msgid ""
 "Kill an orcish Great Chieftain? But he's guarded better than a Troll hole!"
 msgstr ""
-"@Olurf\n"
-"\n"
 "Ubiti orkovskog velikog poglavicu? Ali čuvan je bolje nego trolovska jazbina!"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:138
-#, fuzzy
 msgid "Indeed, it will not be at all easy. But maybe I can help you..."
-msgstr ""
-"@Krelanu\n"
-"\n"
-"Uistinu, ne može biti ni izbliza lako. Možda vam mogu pomoći..."
+msgstr "Uistinu, ne može biti ni izbliza lako. Možda vam mogu pomoći..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:143
-#, fuzzy
 msgid "But you want something in return..."
-msgstr ""
-"@Kalenz\n"
-"\n"
-"Ali želiš nešto zauzvrat..."
+msgstr "Ali želiš nešto zauzvrat..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:148
-#, fuzzy
 msgid ""
 "It is as you say. These drakes were after my book. This book has all the "
 "magic and spells I know in it. They are very powerful, but the one enemy "
@@ -2713,8 +2593,6 @@ msgid ""
 "destroy it than I could slay my own child. Aquagar is slain, but more will "
 "come. One of my allies has betrayed me, and now too many know of this book."
 msgstr ""
-"@Krelanu\n"
-"\n"
 "Tačno tako. Ovi zmagovi hteli su se domoći moje knjige. U njoj je sva magija "
 "i čarolije koje znam. Vrlo su moćne, ali jedan neprijatelj koga ne mogu "
 "nadvladati je starost. Pohranjeno me znanje kuša da produžim svoj vek na zle "
@@ -2724,24 +2602,17 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:153
-#, fuzzy
 msgid "If you come with us, we will protect you..."
-msgstr ""
-"@Kalenz\n"
-"\n"
-"Ako pođeš s nama, štitićemo te..."
+msgstr "Ako pođeš s nama, štitićemo te..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:158
-#, fuzzy
 msgid ""
 "No, my time is done... But the charge I lay on you, Kalenz, is to take my "
 "book and keep it from unworthy hands. Find someone to hold it who will not "
 "be corrupted by its power. And then find someone worthy not merely to hold "
 "it, but to use it!"
 msgstr ""
-"@Krelanu\n"
-"\n"
 "Ne, moje vreme je na izmaku... Ali te zadužujem, Kalenze, da poneseš moju "
 "knjigu i ne daš je u nedostojne ruke. Nađi i podaj je nekome koga neće "
 "iskvariti njena moć. I tada ne koliko dostojnog da je čuva, nego da je i "
@@ -2749,24 +2620,18 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:163
-#, fuzzy
 msgid ""
 "If your book is as powerful as you say, why not use it against the orcs?"
 msgstr ""
-"@Landar\n"
-"\n"
 "Ako je knjiga moćna koliko tvrdiš, zašto je ne upotrebiti protiv orkova?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:168
-#, fuzzy
 msgid ""
 "Because the book is like the Ruby of Fire. Any fool can use the magic in the "
 "book, but only a master can vanquish the lust for power that it will bring "
 "out in him. He who fails will turn into something like Haldric, or worse..."
 msgstr ""
-"@Krelanu\n"
-"\n"
 "Zato što je ova knjiga kao Vatreni rubin. Svaka budala može prizvati magiju "
 "iz nje, ali samo majstor može ukrotiti žeđ za moći koju će u njemu "
 "probuditi. Koji to ne uspe, pretvoriće se u nešto poput Haldrika, ili još "
@@ -2774,112 +2639,82 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:173
-#, fuzzy
 msgid ""
 "Cleodil is pure in heart. Perhaps she can guard your book without being "
 "corrupted by its secrets..."
 msgstr ""
-"@Kalenz\n"
-"\n"
 "Kleodil je čistog srca. Možda ona može čuvati knjigu a da je ne iskvare "
 "njene tajne..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:178
-#, fuzzy
 msgid ""
 "I am sure all these secrets are far beyond my art. My art is the healing "
 "kind and I..."
 msgstr ""
-"@Kleodil\n"
-"\n"
 "Ubeđena sam da su te tajne daleko izvan moje veštine, koja je od vidarske "
 "vrste, i..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:183
-#, fuzzy
 msgid "There is no other option."
-msgstr ""
-"@Krelanu\n"
-"\n"
-"Nema drugog izbora."
+msgstr "Nema drugog izbora."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:188
-#, fuzzy
 msgid ""
 "Very well, suppose Cleodil accepts the guardianship of your book. How will "
 "you then help us slay the orcish Great Chief?"
 msgstr ""
-"@Kalenz\n"
-"\n"
 "Vrlo dobro, pretpostavimo da se Kleodil prihvati bdenja nad knjigom. Kako "
 "ćeš nam tada pomoći da posečemo orkovskog velikog poglavicu?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:193
-#, fuzzy
 msgid ""
 "There is a way, but it will be very dangerous. Two of you must enter the "
 "orcish camp by stealth and kill the Great Chief. There is a potion that will "
 "make you invisible for some time."
 msgstr ""
-"@Crelanu\n"
-"\n"
 "Načina ima, ali biće vrlo opasno. Dvoje vaših mora se potajno uvući u "
 "orkovski logor i ubiti velikog poglavicu. Postoji napitak koji će ih učiniti "
 "nevidljivim na neko vreme."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:198
-#, fuzzy
 msgid ""
 "The elves have legends of such things. I suppose you have this potion, then?"
 msgstr ""
-"@Kalenz\n"
-"\n"
 "Vilenjačka predanja pričaju o tome. Pretpostavljam, onda, da imaš takav "
 "napitak?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:203
-#, fuzzy
 msgid ""
 "Indeed I do, but it is perilous to use. It is made from the eyes of a "
 "powerful undead lich. It will make you invisible, but it is likely also to "
 "have undesirable effects, some temporary, some permanent!"
 msgstr ""
-"@Krelanu\n"
-"\n"
 "Zaista imam, ali ga je opasno koristiti. Načinjen je od očiju moćnog "
 "nemrtvog kosca. Učiniće ispijača nevidljivim, ali će verovatno izazvati i "
 "neželjene posledice — neke privremene, neke trajne!"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:208
-#, fuzzy
 msgid ""
 "No! This is too dark and dangerous! I fear for you, Kalenz! I...would not "
 "see you come to harm."
 msgstr ""
-"@Kleodil\n"
-"\n"
 "Ne! To je previše mračno i opasno! Plašim se za tebe, Kalenze! Ja... ne "
 "želim da ti se nešto dogodi."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:213
-#, fuzzy
 msgid "What undesirable effects?"
-msgstr ""
-"@Kalenz\n"
-"\n"
-"Kakve neželjene posledice?"
+msgstr "Kakve neželjene posledice?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:218
-#, fuzzy
 msgid ""
 "Your physical strength will decrease, though in return you will be able to "
 "use magic more easily and powerfully. Cleodil will show you. But the real "
@@ -2889,8 +2724,6 @@ msgid ""
 "only a small dose and finish the job quickly. Delay and you will fail in "
 "your mission; take too large a dose, and you will become as the lich was."
 msgstr ""
-"@Krelanu\n"
-"\n"
 "Fizička snaga će ti se umanjiti, ali ćeš zauzvrat moći lakše i moćnije da se "
 "koristiš magijom. Kleodil će ti pokazati. Ali prava opasnost počiva u dodiru "
 "koščeve zle prirode koja će teći tvojim venama. Moraćeš se sam izboriti i "
@@ -2900,7 +2733,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:223
-#, fuzzy
 msgid ""
 "It is a dark and desperate course you set before me, but I see no other way; "
 "we must stop the orcs. As leader I cannot ask my men to run a risk I will "
@@ -2908,8 +2740,6 @@ msgid ""
 "Chief. But I will not compel anyone else to come with me, not at peril of "
 "being overwhelmed from within by evil magic. Does anyone volunteer?"
 msgstr ""
-"@Kalenz\n"
-"\n"
 "Mračan je i očajnički put na koji me upućuješ, ali ne vidim drugog; moramo "
 "zaustaviti orkove. Kao vođ ne mogu tražiti od podređenih da rizikuju što sam "
 "ne bih, tako da ja moram biti jedan od dvojice koji će poći da ubiju velikog "
@@ -2918,45 +2748,31 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:228
-#, fuzzy
 msgid "I will come with you. We shall not fail!"
-msgstr ""
-"@Landar\n"
-"\n"
-"Ja ću poći s tobom. Nećemo pokleknuti!"
+msgstr "Ja ću poći s tobom. Nećemo pokleknuti!"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:233
-#, fuzzy
 msgid "This does not seem the wisest of choices."
-msgstr ""
-"@Krelanu\n"
-"\n"
-"To ne bi bio najmudriji izbor."
+msgstr "To ne bi bio najmudriji izbor."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:238
-#, fuzzy
 msgid ""
 "Landar may be impetuous, but he is a great fighter and my trusted friend. We "
 "should be about our task now, I think. Crelanu, your book will be safe with "
 "us. Cleodil will guard it until we find a worthy keeper."
 msgstr ""
-"@Kalenz\n"
-"\n"
 "Landar je možda nagao, ali je izvrstan borac i poverljiv prijatelj. Mislim "
 "da sada treba da se posvetimo zadatku. Krelanu, tvoja će knjiga biti "
 "bezbedna s nama. Kleodil će je nositi dok ne nađemo dostojnog čuvara."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:243
-#, fuzzy
 msgid ""
 "Come, I will give you and Landar the potion and show you a safe point to "
 "cross the river."
 msgstr ""
-"@Krelanu\n"
-"\n"
 "Dođite, daću tebi i Landaru napitak, i pokazati vam bezbedno mesto za "
 "prelaženje reke."
 
@@ -3144,12 +2960,15 @@ msgid ""
 "forces us to attack before our reenforcements arrive. Maybe we can beat the "
 "humans before the elves can intervene. Overrun city and castle!"
 msgstr ""
+"Vilenjačka vojska sa severa? I patuljci s njima? Loše vesti, to nas "
+"primorava da udarimo pre nego što stignu naša pojačanja. Možda možemo potući "
+"ljude pre nego što vilenjaci stignu da priskoče. Pregazite grad i zamak!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:274
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:385
 msgid "The brazen cry of a war-horn is heard in the distance."
-msgstr ""
+msgstr "Drčna jeka ratnog roga čuje se u daljini."
 
 # |, no-check-spell
 #. [unit]: id=Aldun, type=Horseman
@@ -3178,22 +2997,22 @@ msgstr ""
 #. [message]: id=Aldar
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:405
 msgid "More of them arrive."
-msgstr ""
+msgstr "Pristiže ih još."
 
 #. [message]: role=reenforce1
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:410
 msgid "Our wolves' teeth will crack their bones! Attack!"
-msgstr ""
+msgstr "Zubi naših vukova krckaće njihove kosti! U napad!"
 
 #. [message]: role=reenforce2
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:423
 msgid "Blood and steel! Hunt the worms down and crush them!"
-msgstr ""
+msgstr "Krv i čelik! Polovite crve i zdrobite ih!"
 
 #. [message]: role=reenforce2
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:505
 msgid "Har har har!"
-msgstr ""
+msgstr "Ha, ha, ha!"
 
 # |, no-check-spell
 #. [message]: role=l3_store
@@ -3234,7 +3053,7 @@ msgstr "Još konja!! Bežite, kupimo se odavde!"
 #. [message]: speaker=narrator
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:657
 msgid "The *not* brazen at all cry of a war-horn is heard in the distance."
-msgstr ""
+msgstr "Nimalo drčni pisak ratnog roga čuje se u daljini."
 
 #. [message]: id=Aldar
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:674
@@ -3242,6 +3061,7 @@ msgid ""
 "This is only a pause between their waves! Use the time to recollect a "
 "formation."
 msgstr ""
+"Ovo je samo predah između njihovih talasa! Utrošite vreme da saberete redove."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:688
@@ -3277,13 +3097,10 @@ msgstr "Sporazum"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/15_The_Treaty.cfg:14
-#, fuzzy
 msgid ""
 "Friends, today we have won a great victory, though it lost us good men. Let "
 "this be the beginning of a new alliance between our people."
 msgstr ""
-"@Haldrik Drugi\n"
-"\n"
 "Prijatelji, danas izborismo veliku pobedu, iako nas je koštala valjanih "
 "ljudi. Neka ovo bude početak novog saveza između naših naroda."
 
@@ -3294,46 +3111,35 @@ msgstr ""
 #: data/campaigns/Legend_of_Wesmere/scenarios/15_The_Treaty.cfg:60
 #: data/campaigns/Legend_of_Wesmere/scenarios/15_The_Treaty.cfg:70
 msgid "Haldric II"
-msgstr ""
+msgstr "Haldrik Drugi"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/15_The_Treaty.cfg:19
-#, fuzzy
 msgid ""
 "King Haldric II, I am very pleased to hear these words. We are facing "
 "dangerous adversaries. We intend to put an end to this threat and we will "
 "welcome any ally against it."
 msgstr ""
-"@Kalenz\n"
-"\n"
 "Kralju Haldriče, raduje me što čujem takve reči. Suočeni smo s opasnim "
 "protivnicima. Namera nam je da okončamo ovu pretnju, i dobro je došao svaki "
 "saveznik protiv nje."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/15_The_Treaty.cfg:24
-#, fuzzy
 msgid ""
 "What? We cannot trust these humans! Where were they when we fought the orcs "
 "alone? This King is bound to betray us just as his father did!"
 msgstr ""
-"@Landar\n"
-"\n"
 "Šta? Ne možemo verovati ljudima! Gde su bili kad smo stajali sami naspram "
 "orkova? Ovaj će nas kralj izdati pre ili kasnije, kao što je i njegov otac!"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/15_The_Treaty.cfg:29
-#, fuzzy
 msgid "Silence! How dare you talk this way to the King!"
-msgstr ""
-"@Aldar\n"
-"\n"
-"Umukni! Kako se usuđuješ da tako pričaš o kralju!"
+msgstr "Umukni! Kako se usuđuješ da tako pričaš o kralju!"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/15_The_Treaty.cfg:34
-#, fuzzy
 msgid ""
 "Calm down, Aldar! The elf is right to reproach us. My father did not help "
 "when the orcs attacked you. But my father is dead. There are a lot of things "
@@ -3341,8 +3147,6 @@ msgid ""
 "his last days. But *I* am the King of Wesnoth now, not my father! And it is "
 "my intention to renew our alliance by signing a new treaty here, with you."
 msgstr ""
-"@Haldrik Drugi\n"
-"\n"
 "Mirno, Aldare! Vilenjak nas pravo prekoreva. Moj vam otac ne htede pomoći "
 "kad vas orkovi napadoše. Ali moj otac je mrtav. Učinio je mnoge stvari koje "
 "ne mogu razumeti; u zadnje dane, postao je sasvim sumnjičav i čudan. "
@@ -3351,38 +3155,27 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/15_The_Treaty.cfg:39
-#, fuzzy
 msgid ""
 "The King speaks wisdom. We cannot undo the past. And we need each other to "
 "fight the orcs. I will sign the treaty on behalf of the Elves."
 msgstr ""
-"@Kalenz\n"
-"\n"
 "Kralj mudro zbori. Ne možemo obrisati prošlost, ali smo potrebni jedni "
 "drugima da se izborimo s orkovima. Potpisaću sporazum u ime vilenjaka."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/15_The_Treaty.cfg:44
-#, fuzzy
 msgid ""
 "Your father had a certain stone, the Ruby of Fire. Do you still have it?"
 msgstr ""
-"@Kleodil\n"
-"\n"
 "Vaš otac je posedovao izvesni kamen, Vatreni rubin. Imate li ga još uvek?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/15_The_Treaty.cfg:50
-#, fuzzy
 msgid "How is it that you know about the Ruby of Fire?"
-msgstr ""
-"@Haldrik Drugi\n"
-"\n"
-"Odakle znate za Vatreni rubin?"
+msgstr "Odakle znate za Vatreni rubin?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/15_The_Treaty.cfg:55
-#, fuzzy
 msgid ""
 "We have learned, oh King, that the energy suffusing the Ruby can have evil "
 "effects on its wielders. It may well be this was the reason your father grew "
@@ -3390,8 +3183,6 @@ msgid ""
 "advise you to enclose it in a net or filigree of pure gold charged with the "
 "magic of light."
 msgstr ""
-"@Kleodil\n"
-"\n"
 "Doznali smo, kralju, da sila pohranjena u Rubinu može imati zlo dejstvo na "
 "njegovog posednika. Upravo to može biti razlog zatvaranju vašeg oca u sebe. "
 "Za dobro vaše i vašeg kraljevstva, savetujemo vam da ga optočite mrežicom "
@@ -3399,50 +3190,37 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/15_The_Treaty.cfg:60
-#, fuzzy
 msgid ""
 "Yes...this would explain many things. It shall be as you say, and I am "
 "grateful for the warning."
 msgstr ""
-"@Haldrik Drugi\n"
-"\n"
 "Da... to bi objasnilo mnoge stvari. Biće kao što kažete, i zahvalan sam vam "
 "na upozorenju."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/15_The_Treaty.cfg:65
-#, fuzzy
 msgid ""
 "Now that we have signed the Treaty, let us put it into action. We will take "
 "the fight to the orcs before winter falls; we need you to demonstrate "
 "against them, drawing them away from the roads north. Can we count on you?"
 msgstr ""
-"@Kalenz\n"
-"\n"
 "Sada pošto potpisasmo sporazum, pretočimo ga u dela. Navalićemo na orkove "
 "pre nego što zalegne zima; potrebno nam je da ih vi pritegnete, odvratite od "
 "puteva ka severu. Možemo li računati na vas?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/15_The_Treaty.cfg:70
-#, fuzzy
 msgid ""
 "I am not sure... My late father did not pay too much attention to army "
 "matters and we have already lost very many men..."
 msgstr ""
-"@Haldrik Drugi\n"
-"\n"
 "Nisam siguran... Moj pokojni otac nije obraćao mnogo pažnje na vojna "
 "pitanja, a već smo izgubili mnogo ljudstva..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/15_The_Treaty.cfg:75
-#, fuzzy
 msgid "I knew it! I always told you we stand alone!"
-msgstr ""
-"@Landar\n"
-"\n"
-"Znao sam! Stalno ti govorim da smo sami u ovome!"
+msgstr "Znao sam! Stalno ti govorim da smo sami u ovome!"
 
 #. [scenario]: id=16_The_Chief_must_die
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:5
@@ -3464,45 +3242,35 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:48
-#, fuzzy
 msgid ""
 "I have taught you all that I dare. My lord...Kalenz...I pray you come back "
 "safely. My heart aches when I think of you going into such danger as this. "
 "It is peril not merely to your body, but to the essence of yourself."
 msgstr ""
-"@Kleodil\n"
-"\n"
 "Naučila sam te svemu što se usuđujem. Gospodaru... Kalenze... molim se da se "
 "bezbedno vratiš. Srce mi se cepa kad pomislim u kakvu se opasnost upuštaš. "
 "Nije to tek pretnja tvom fizičkom bitku, već samom tvom suštastvu."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:53
-#, fuzzy
 msgid "Cleodil..."
-msgstr "Kleodil"
+msgstr "Kleodil..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:58
-#, fuzzy
 msgid ""
 "I do not think I could bear your death. Still less could I bear the "
 "corruption of your soul; the grief would ruin me."
 msgstr ""
-"@Kleodil\n"
-"\n"
 "Mislim da ne bih mogla podneti tvoju smrt, a još manje iskvarenje tvoje "
 "duše. Žalost bi me slomila."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:63
-#, fuzzy
 msgid ""
 "My eyes are open. To the danger, and...to you. You glow like a star in the "
 "night, Cleodil. You will be my guide out of darkness."
 msgstr ""
-"@Kalenz\n"
-"\n"
 "Oči su mi otvorene. Za opasnost, i za... tebe. Sjajiš kao zvezda u noći, "
 "Kleodil. Bićeš moja vodilja iz tame."
 
@@ -3600,6 +3368,8 @@ msgid ""
 "With our ruse revealed, the orcs will attack our forests instead of fighting "
 "among themselves."
 msgstr ""
+"Sad kad je naša podvala otkrivena, orkovi će udariti na naše šume umesto da "
+"se glože međusobno."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:394
@@ -3644,7 +3414,6 @@ msgstr "nevidljivost"
 #. [hides]: id=invisible
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die_utils.cfg:18
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die_utils.cfg:20
-#, fuzzy
 msgid ""
 "invisible:\n"
 "Enemy units cannot see this unit, except for wolf-based units who can smell "
@@ -3656,7 +3425,7 @@ msgstr ""
 "\n"
 "Neprijateljske jedinice ne mogu videti ovu jedinicu, ali je one s vukovima "
 "mogu namirisati kada su dovoljno blizu. Stoga, osim vučjih, neprijateljske "
-"jedinice neće napasti ovu jedinicu. Odbrana je na 90% za svaki teren osim "
+"jedinice neće napasti ovu jedinicu. Odbrana je na 80% za svaki teren osim "
 "vode, gde je 70%."
 
 # |, no-check-spell
@@ -3974,125 +3743,88 @@ msgstr "Čas slave"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/18_Hour_of_Glory.cfg:14
-#, fuzzy
 msgid ""
 "Kalenz, your mission is complete. The orcish Great Chieftain is dead and you "
 "have recaptured your home. Yet I sense there is turmoil in your mind..."
 msgstr ""
-"@Kleodil\n"
-"\n"
 "Kalenze, tvoj zadatak je dovršen. Veliki poglavica orkova je mrtav, povratio "
 "si svoj dom. Pa ipak, osećam nemir u tvom umu..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/18_Hour_of_Glory.cfg:19
-#, fuzzy
 msgid ""
 "It is indeed as you say, Cleodil. It is that potion that gnaws at me. I "
 "cannot enjoy our victories, nor can I rest. I am fighting it every single "
 "moment."
 msgstr ""
-"@Kalenz\n"
-"\n"
 "Uistinu je kako kažeš, Kleodil. Onaj me napitak grize. Ne mogu uživati u "
 "našim pobedama, niti se opustiti. Svaki trenutak trošim opirući mu se."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/18_Hour_of_Glory.cfg:24
-#, fuzzy
 msgid "Crelanu warned us this might occur..."
-msgstr ""
-"@Kleodil\n"
-"\n"
-"Krelanu nas je upozorio da do toga može doći..."
+msgstr "Krelanu nas je upozorio da do toga može doći..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/18_Hour_of_Glory.cfg:29
-#, fuzzy
 msgid "There was no other choice. Even if we die, it was worth it."
-msgstr ""
-"@Kalenz\n"
-"\n"
-"Nije bilo drugog puta. Čak i ako umremo, vredelo je."
+msgstr "Nije bilo drugog puta. Čak i ako umremo, vredelo je."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/18_Hour_of_Glory.cfg:34
-#, fuzzy
 msgid ""
 "You will not die. You must fight it. I have faith in you Kalenz...beloved..."
 "you will overcome and master it. It will be hard and painful, but you will "
 "beat the potion. It is Landar that truly concerns me..."
 msgstr ""
-"@Kleodil\n"
-"\n"
 "Nećeš umreti. Moraš se boriti. Verujem u tebe, Kalenze... voljeni... "
 "nadjačaćeš ga i zauzdati. Biće naporno i bolno, ali ćeš prevazići napitak. "
 "Landar je taj koji me zaista brine..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/18_Hour_of_Glory.cfg:39
-#, fuzzy
 msgid "He seems to handle it better than do I..."
-msgstr ""
-"@Kalenz\n"
-"\n"
-"Čini se da ga on bolje podnosi od mene..."
+msgstr "Čini se da ga on bolje podnosi od mene..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/18_Hour_of_Glory.cfg:44
-#, fuzzy
 msgid ""
 "It does seem so, Kalenz. But I fear things may not be as they seem. Landar's "
 "mind has become dark and clouded to my healing senses."
 msgstr ""
-"@Kleodil\n"
-"\n"
 "Čini se, Kalenze. Ali se plašim da stvari nisu kakvim izgledaju. Landarov um "
 "je postao mračan i zamagljen pred mojim vidarskim čulima."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/18_Hour_of_Glory.cfg:49
-#, fuzzy
 msgid ""
 "I understand too well what that may portend, beloved, but I do not wish to "
 "believe it. Landar is my friend, near as dear to me as you are."
 msgstr ""
-"@Kalenz\n"
-"\n"
 "Predobro shvatam na šta to sluti, voljena, ali ne želim da poverujem. Landar "
 "je moj prijatelj, pri srcu mi skoro koliko i ti."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/18_Hour_of_Glory.cfg:54
-#, fuzzy
 msgid ""
 "Some dwarves have been found dead in our camp. Landar is extremely "
 "unfriendly towards them, and ill-feeling is growing. I think the dwarves "
 "will leave us soon."
 msgstr ""
-"@Kleodil\n"
-"\n"
 "Neki patuljci nađeni su mrtvi u našem logoru. Landar je izuzetno neprijatan "
 "prema njima, i zlomišlje narasta. Mislim da će nas patuljci ubrzo napustiti."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/18_Hour_of_Glory.cfg:59
-#, fuzzy
 msgid "I will try to mend matters between them..."
-msgstr ""
-"@Kalenz\n"
-"\n"
-"Pokušaću da izravnam razmirice među njima..."
+msgstr "Pokušaću da izravnam razmirice među njima..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/18_Hour_of_Glory.cfg:64
-#, fuzzy
 msgid ""
 "I see I cannot convince you. Go, do as you must; but be careful Kalenz, for "
 "I fear for us all..."
 msgstr ""
-"@Kleodil\n"
-"\n"
 "Vidim da te ne mogu ubediti. Pođi, čini što moraš; ali budi oprezan, "
 "Kalenze, jer se plašim za sve nas..."
 
@@ -4122,7 +3854,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/19_Costly_Revenge.cfg:34
-#, fuzzy
 msgid ""
 "I am not entirely easy with this myself, Cleodil. But there is something to "
 "what Landar says; the wide green world must know there is a price, a heavy "
@@ -4134,7 +3865,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/19_Costly_Revenge.cfg:39
-#, fuzzy
 msgid ""
 "Then you who walk the earth path and carry steel can collect that price. "
 "Those on the faerie path will not be with you. Not this time."
@@ -4156,7 +3886,7 @@ msgstr "Hgir"
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/19_Costly_Revenge.cfg:175
 msgid "Defeat all enemy units, and destroy all villages"
-msgstr ""
+msgstr "Poraziš li sve neprijateljske jedinice i uništiš sva sela"
 
 #. [message]
 #: data/campaigns/Legend_of_Wesmere/scenarios/19_Costly_Revenge.cfg:207
@@ -4182,6 +3912,7 @@ msgstr "Plašim se da će biti krvoprolića..."
 msgid ""
 "Destroy them, root and branch. Burn out their homes. Let none remain alive!"
 msgstr ""
+"Satrite ih, koren i granu. Spalite njihove domove. Niko da ne ostane živ!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Legend_of_Wesmere/scenarios/19_Costly_Revenge.cfg:228
@@ -4189,34 +3920,36 @@ msgid ""
 "Kalenz is not able to recruit or recall shamans or any of their advancements "
 "in this scenario."
 msgstr ""
+"Kalenz u ovom scenariju ne može da unajmljuje i saziva vračarke, niti "
+"njihove više nivoe."
 
 #. [message]
 #: data/campaigns/Legend_of_Wesmere/scenarios/19_Costly_Revenge.cfg:286
 msgid "These are but eggs and hatchlings."
-msgstr ""
+msgstr "To su tek jaja i mladunci."
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/19_Costly_Revenge.cfg:290
 msgid ""
 "Do not spare them. They will only foul our forests anew when they get their "
 "growth."
-msgstr ""
+msgstr "Ne štedite ih. Samo će nanovo opoganiti naše šume kad narastu."
 
 #. [message]
 #: data/campaigns/Legend_of_Wesmere/scenarios/19_Costly_Revenge.cfg:299
 msgid "They even shatter our eggs!"
-msgstr ""
+msgstr "Razbijaju čak i naša jaja!"
 
 #. [message]: role=Anduilas
 #: data/campaigns/Legend_of_Wesmere/scenarios/19_Costly_Revenge.cfg:330
 msgid "But...to kill their young? Are we to go that far?"
-msgstr ""
+msgstr "Ali... pobiti im mlade? Toliko daleko da idemo?"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/19_Costly_Revenge.cfg:334
 msgid ""
 "Stay. You need not have the blood of children on your hands, and I shall not."
-msgstr ""
+msgstr "Stani. Ne treba ti krv dece na rukama, i ja je neću imati."
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/19_Costly_Revenge.cfg:338
@@ -4224,6 +3957,8 @@ msgid ""
 "Perhaps you are too tender-minded to do what must be done, but many of us "
 "are not."
 msgstr ""
+"Možda si ti previše nežne prirode za ono što se mora učiniti, ali mnogi od "
+"nas nisu."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/19_Costly_Revenge.cfg:342
@@ -4231,26 +3966,30 @@ msgid ""
 "I will not set elf against elf. But, Landar, I fear you are storing up a "
 "dreadful price for yourself."
 msgstr ""
+"Neću nagnati vilenjaka na vilenjaka. Ali, Landare, plašim se da gomilaš "
+"strašnu cenu samom sebi."
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/19_Costly_Revenge.cfg:346
 msgid "Stand aside. I will do what is needful."
-msgstr ""
+msgstr "Stupi u stranu. Uradiću što se mora."
 
 #. [message]
 #: data/campaigns/Legend_of_Wesmere/scenarios/19_Costly_Revenge.cfg:353
 msgid "Their revenge is terrible! I fear for our kind."
-msgstr ""
+msgstr "Osveta im je grozna! Plašim se za našu vrstu."
 
 #. [message]
 #: data/campaigns/Legend_of_Wesmere/scenarios/19_Costly_Revenge.cfg:358
 msgid "Don't flee. We cannot abandon our capitol."
-msgstr ""
+msgstr "Ne bežite. Ne možemo napustiti svoju prestonicu."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/19_Costly_Revenge.cfg:405
 msgid "That was the last. A bitter day's work, and no memory to be proud of."
 msgstr ""
+"To beše poslednji. Gorka li dana, isposlovasmo sećanje kojim se nećemo "
+"ponositi."
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/19_Costly_Revenge.cfg:410
@@ -4258,6 +3997,7 @@ msgid ""
 "<small>A shame we missed the opportunity to do that with the dwarves as well."
 "</small>"
 msgstr ""
+"<small>Šteta što propustismo priliku da isto učinimo i s patuljcima.</small>"
 
 #. [scenario]: id=20_Council_ruling
 #: data/campaigns/Legend_of_Wesmere/scenarios/20_Council_ruling.cfg:3
@@ -4277,7 +4017,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/20_Council_ruling.cfg:23
-#, fuzzy
 msgid ""
 "Kalenz, the council has called you here to demand that you apologize for "
 "your actions. You took the decision to help the humans at Tath, and hence "
@@ -4285,8 +4024,6 @@ msgid ""
 "attack the Saurians. These were decisions to be taken by the council, not by "
 "a field commander! "
 msgstr ""
-"@Legmir\n"
-"\n"
 "Kalenze, veće te je sazvalo ovde da zatraži da se izviniš za svoje postupke. "
 "Doneo si odluku da pomogneš ljudima kod Tata, time rizikujući dalji sukob sa "
 "orkovima; da udariš na orkove na severu; na kraju, da napadneš saurijance. "
@@ -4294,7 +4031,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/20_Council_ruling.cfg:28
-#, fuzzy
 msgid ""
 "With all respect my lords, we were and still are in a war. We could not "
 "spare the time to consult with you, lest our opportunities slip from our "
@@ -4302,8 +4038,6 @@ msgid ""
 "been beneficial to our cause: The orcs are now in a civil war for "
 "succession, the North Elves are free and the Saurians are no longer a threat."
 msgstr ""
-"@Kalenz\n"
-"\n"
 "Uz dužno poštovanje, gospodari, bili smo i još uvek smo u ratu. Nije bilo "
 "vremena da se savetujemo s vama, ne bi li smo ispustili prilike iz šaka i "
 "time rat još razvukli i platili veću cenu. Osim toga, svi naši postupci "
@@ -4312,13 +4046,10 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/20_Council_ruling.cfg:33
-#, fuzzy
 msgid ""
 "The council is not blind to these benefits. But, still, you cannot decide "
 "high matters of statecraft on behalf of the Elves. We cannot allow it."
 msgstr ""
-"@Uripur\n"
-"\n"
 "Veće nije slepo za te koristi. Svejedno, ne možeš ti odlučivati o visokim "
 "pitanjima državotvornim u ime svih vilenjaka. Ne možemo to dopustiti."
 
@@ -4330,25 +4061,19 @@ msgstr "Galtrid"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/20_Council_ruling.cfg:38
-#, fuzzy
 msgid ""
 "If it weren't for Kalenz and his men, none of us would be here to argue the "
 "point today. "
 msgstr ""
-"@Galtrid\n"
-"\n"
 "Da ne bi Kalenza i njegovih snaga, niko od nas ne bi bio ovde da danas "
 "razmatra ovu stvar."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/20_Council_ruling.cfg:43
-#, fuzzy
 msgid ""
 "I agree. What's done is done. Let us concentrate on the future, not the "
 "past. "
 msgstr ""
-"@Uradredija\n"
-"\n"
 "Slažem se. Što je učinjeno, učinjeno je. Usredsredimo se na budućnost, ne na "
 "prošlost."
 
@@ -4360,36 +4085,26 @@ msgstr "Uradredija"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/20_Council_ruling.cfg:48
-#, fuzzy
 msgid ""
 "Kalenz, the council has decided that you are to be stripped of all military "
 "authority. You may now go."
 msgstr ""
-"@Iradija\n"
-"\n"
 "Kalenze, veće je odlučilo da se razrešiš svih vojnih nadležnosti. Sada možeš "
 "poći."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/20_Council_ruling.cfg:53
-#, fuzzy
 msgid ""
 "I lay down my burden humbly and gladly. But we need to have a strong army, "
 "as the orcs will return!"
 msgstr ""
-"@Kalenz\n"
-"\n"
 "Polažem to breme pokorno i dragovoljno. Ali moraćemo držati jaku vojsku, jer "
 "će se orkovi vratiti!"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/20_Council_ruling.cfg:59
-#, fuzzy
 msgid "Cowards and traitors!"
-msgstr ""
-"@Landar\n"
-"\n"
-"Kukavice i izdajice!"
+msgstr "Kukavice i izdajice!"
 
 #. [scenario]: id=21_Elvish_Assassins
 #: data/campaigns/Legend_of_Wesmere/scenarios/21_Elvish_Assassins.cfg:12
@@ -4613,18 +4328,18 @@ msgstr "Ne! Ovde je kraj!"
 msgid ""
 "This is a stub. Forgive me $unit.name|. I will remember the good comrate you "
 "have been!"
-msgstr ""
+msgstr "Oprosti, $unit.name|. Pamtiću te kao valjanog sadruga!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/23_End_of_War.cfg:189
 msgid ""
 "This is a stub. Whatever $second_unit.name|. I was bored of Live anyway."
-msgstr ""
+msgstr "Nema veze, $second_unit.name|. I tako mi je život dosadio."
 
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/23_End_of_War.cfg:210
 msgid "This is a stub."
-msgstr ""
+msgstr "Zametak."
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/23_End_of_War.cfg:223
@@ -4823,104 +4538,3 @@ msgstr "O, ne! Zakasnismo..."
 #: data/campaigns/Legend_of_Wesmere/utils/low-macros.cfg:196
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "Prikupi $amount_gold zlatnika."
-
-#~ msgid " New Objective: Defeat the units guarding the treasury."
-#~ msgstr " Novi cilj: poraziš li jedinice što čuvaju riznicu."
-
-#~ msgid "Victory is ours. "
-#~ msgstr "Pobeda je naša."
-
-#~ msgid "Payback time!"
-#~ msgstr "Stiže naplata!"
-
-#~ msgid "Defeat Grugl"
-#~ msgstr "Poraziš li Grugla"
-
-#~ msgid "Try to save leveled dwarf units"
-#~ msgstr "Pokušaš li da sačuvaš napredovale patuljačke jedinice"
-
-#~ msgid ""
-#~ "I see the orcish army is big but consists mostly of inexperienced "
-#~ "fighters. This should not take too long...\n"
-#~ "*Weak AI*"
-#~ msgstr ""
-#~ "Orkovska je vojska velika, ali se sastoji uglavnom od neiskusnih boraca. "
-#~ "Ovo ne bi trebalo da potraje...\n"
-#~ "*slaba VI*"
-
-#~ msgid "New Objective:"
-#~ msgstr "Novi cilj:"
-
-# |, no-check-spell
-#~ msgid "Olontoril"
-#~ msgstr "Olontoril"
-
-# |, no-check-spell
-#~ msgid "Irglus"
-#~ msgstr "Irglus"
-
-# |, no-check-spell
-#~ msgid "Antomeril"
-#~ msgstr "Antomeril"
-
-# |, no-check-spell
-#~ msgid "Lirdomer"
-#~ msgstr "Lirdomer"
-
-# |, no-check-spell
-#~ msgid "Gragul"
-#~ msgstr "Gragul"
-
-# |, no-check-spell
-#~ msgid "Muhtr"
-#~ msgstr "Mutr"
-
-# |, no-check-spell
-#~ msgid "Griul"
-#~ msgstr "Grijul"
-
-# |, no-check-spell
-#~ msgid "Etruw"
-#~ msgstr "Etruv"
-
-# |, no-check-spell
-#~ msgid "Bihlas"
-#~ msgstr "Bihlas"
-
-# |, no-check-spell
-#~ msgid "Mrat"
-#~ msgstr "Mrat"
-
-#, fuzzy
-#~ msgid "Flee, Kalenz... our hopes ride with you..."
-#~ msgstr "Beži, Kalenze... naša nadanja jašu s tobom..."
-
-#~ msgid "We have escaped them, but we will not forget. We shall return!"
-#~ msgstr "Izbegli smo im, ali nećemo zaboraviti. Vratićemo se!"
-
-#~ msgid "Destroy their homes and bring death to all of them!"
-#~ msgstr "Sravnite im domove i pošaljite ih sve u smrt!"
-
-#~ msgid "Defeat Wrulf"
-#~ msgstr "Poraziš li Vrulfa"
-
-#~ msgid ""
-#~ "@Kalenz\n"
-#~ "\n"
-#~ "Cleodil..."
-#~ msgstr ""
-#~ "@Kalenz\n"
-#~ "\n"
-#~ "Kleodil..."
-
-#~ msgid "Defeat all enemies"
-#~ msgstr "Poraziš li sve neprijatelje"
-
-#~ msgid "Defeat every enemy unit"
-#~ msgstr "Poraziš li sve neprijateljske jedinice"
-
-#~ msgid "and"
-#~ msgstr "i"
-
-#~ msgid "Destroy all villages"
-#~ msgstr "Uništiš li sva sela"

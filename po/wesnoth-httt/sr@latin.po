@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-08-29 12:11+0200\n"
-"PO-Revision-Date: 2009-06-13 21:24+0200\n"
+"PO-Revision-Date: 2009-08-26 17:28+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: sr\n"
-"X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%"
 "10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Environment: wesnoth, wesnoth/noent\n"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:11
@@ -5178,7 +5178,6 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:237
-#, fuzzy
 msgid ""
 "Then perhaps we should head east along the river, and seek refuge and rest "
 "there for a time?"
@@ -5253,7 +5252,6 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:284
-#, fuzzy
 msgid ""
 "Prince Konrad, you and your friends keep talking about avoiding the Arkan-"
 "thoria. But we can lead you down this river. With the help of us merfolk, "
@@ -5262,9 +5260,9 @@ msgid ""
 "that it will be a safe journey, because I do not know what lies ahead, but "
 "it is an option and you should consider it, my lord."
 msgstr ""
-"Prinče Konrade, vi i vaši prijatelji često pominjete da reku treba izbeći. "
-"Ali vas mi možemo povesti uz nju. Uz pomoć nas morejaca, kretanjem uzvodno "
-"mogli biste doseći dom severnjačkih vilenjaka mnogo pre nego ikojim od "
+"Prinče Konrade, vi i vaši prijatelji često pominjete da Arkan-toriju treba "
+"izbeći. Ali vas mi možemo povesti niz nju. Uz pomoć nas morejaca, rečnim "
+"putem mogli biste doseći dom severnjačkih vilenjaka mnogo pre nego ikojim od "
 "kopnenih puteva. Ne mogu vam obećati bezbedno putovanje jer ne znam šta leži "
 "pred nama, ali je to mogućnost o kojoj biste mogli porazmisliti, gospodaru."
 
@@ -5752,7 +5750,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:321
-#, fuzzy
 msgid ""
 "A final blow destroys the lich, releasing a small shock wave of energy "
 "outwards. A giant cloud of dust bellows out as the remnants of the Lich's "
@@ -5837,17 +5834,15 @@ msgstr "Varven"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:277
-#, fuzzy
 msgid ""
 "The party traveled down the river for days, sometimes walking through the "
 "shallow water, sometimes swimming, helped by the Merfolk."
 msgstr ""
-"Družina se kretaše uz reku danima, ponekad gazeći plitkom vodom, ponekad "
+"Družina se kretaše niz reku danima, ponekad gazeći plitkom vodom, ponekad "
 "plivajući, uz pomoć morejsku."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:282
-#, fuzzy
 msgid ""
 "One day they saw a gruesome sight - a fleet of boats and rafts sunk or "
 "shattered among the river islands. Konrad sent some of the mermen to "
@@ -5858,7 +5853,6 @@ msgstr ""
 
 #. [message]: role=merman-advisor
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:286
-#, fuzzy
 msgid ""
 "These are not proper ships, but shallow-draft boats built only recently; "
 "much of their timber is green. They were sunk in battle, not by a storm. "
@@ -5866,19 +5860,19 @@ msgid ""
 "place not long ago, perhaps only a few weeks past. We've found no survivors. "
 "One more thing...all flew the banner of the Crown of Wesnoth."
 msgstr ""
-"Nalikuje da su brodovi potopljeni u boju, ne olujom. Koji su ostali "
-"neprevrnuti, spaljeni su. Mora da je do bitke došlo nedavno, koliko pre "
-"nekoliko sedmica. Ne nađosmo preživelih. Još nešto... Svi potopljeni brodovi "
-"nose barjak vesnotske krune."
+"Ovo nisu pravi brodovi, već čamci niskog gaza tek skoro sagrađeni; drvna "
+"građa im je uglavnom još zelena. Potopljeni su u boju, ne u oluji. Koji su "
+"ostali neprevrnuti, spaljeni su. Mora da je do bitke došlo nedavno, koliko "
+"pre nekoliko sedmica. Ne nađosmo preživelih. Još nešto... Svi nose barjak "
+"vesnotske krune."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:290
-#, fuzzy
 msgid ""
 "Haven't you found any enemy boats, ones the Wesnothians were fighting "
 "against?"
 msgstr ""
-"Ne nađoste li neki od protivničkih brodova, sa kojima su se Vesnoćani "
+"Ne nađoste li neki od protivničkih čamaca, sa kojima su se Vesnoćani "
 "sukobili?"
 
 #. [message]: role=merman-advisor
@@ -5888,15 +5882,14 @@ msgstr "Ne, ne nađosmo. Ako ih je i bilo, odavno su otplovili."
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:298
-#, fuzzy
 msgid "Perhaps the monsters Lord Kalenz alluded to sunk the boats."
-msgstr "Možda brodove potopiše čudovišta koja spomenu gospodar Kalenz."
+msgstr "Možda čamce potopiše čudovišta koja spomenu gospodar Kalenz."
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:302
 msgid ""
 "That is possible. I would guess they were seeking a way east, just as we are."
-msgstr ""
+msgstr "Moguće je. Nagađam da su tražili put na istok, baš kao i mi."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:306
@@ -5925,12 +5918,11 @@ msgstr ""
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:318
-#, fuzzy
 msgid ""
 "Then we have only two choices: to proceed down the river or to go back where "
 "we came from and fight our way through the orcs or the undead."
 msgstr ""
-"Onda su nam samo dva izbora: dalje uz reku, ili nazad odakle smo pošli i "
+"Onda su nam samo dva izbora: dalje niz reku, ili nazad odakle smo pošli i "
 "probiti se kroz orkove ili nemrtve."
 
 #. [message]: speaker=Delfador
@@ -6021,13 +6013,12 @@ msgstr ""
 # well-spelled: ГРРРОАР
 #. [message]: speaker=Keh Ohn
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:388
-#, fuzzy
 msgid ""
 "GRROAR!! Will you silly self-centered creatures show some manners and pay "
 "some attention to me?"
 msgstr ""
-"GRRROAR!! Hoće li jedno od vas samozadovoljnih stvorenja napokon iskazati "
-"lepo ponašanje i posvetiti mi nešto pažnje?"
+"GRRROAR!! Hoće li jedno od vas smešnih samozadovoljnih stvorenja napokon "
+"iskazati lepo ponašanje i posvetiti mi nešto pažnje?"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:392
@@ -6061,12 +6052,11 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:408
-#, fuzzy
 msgid ""
 "No...There is an ongoing civil war amongst us humans. The boats were sent by "
 "our enemies, not by us, even if they were Wesnothian boats."
 msgstr ""
-"Ne... Među ljudima dugo plamti građanski rat. Brodove poslaše naši "
+"Ne... Među ljudima dugo plamti građanski rat. Čamce poslaše naši "
 "neprijatelji, ne mi, i pored toga što su pod vesnoćanskim barjacima."
 
 #. [message]: speaker=Kalenz
@@ -6099,13 +6089,12 @@ msgstr "Prenebregnete li moje upozorenje — spremite se boju."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:428
-#, fuzzy
 msgid ""
 "So be it. We have to go down the river; we have no choice. We'll fight our "
 "way through if necessary."
 msgstr ""
-"Onda tako mora biti. Moramo uz reku, izbora nemamo. Ako nema druge, borićemo "
-"se."
+"Onda tako mora biti. Moramo niz reku, izbora nemamo. Ako nema druge, "
+"borićemo se."
 
 #. [message]: speaker=Keh Ohn
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:432
@@ -6165,13 +6154,12 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:827
-#, fuzzy
 msgid ""
 "Keep on going down the river. While we're at it, let us force as many drakes "
 "as possible to pay with their lives. They have defied us, and now they will "
 "meet the same fate as their leader!"
 msgstr ""
-"Nastavite uz reku. Kad smo već pri tome, naterajmo što je više zmagova "
+"Nastavite niz reku. Kad smo već pri tome, naterajmo što je više zmagova "
 "moguće da životima plate. U svom prkosu doživeće istu sudbinu kao i njihov "
 "poglavar!"
 
@@ -6336,21 +6324,23 @@ msgid ""
 "spume, it must drop several hundred feet at least. We must leave the river "
 "before we are swept into it, or we will surely perish!"
 msgstr ""
+"Pred nama je vodopad. Po grmljavini vode i dizanju pene, pad mora biti bar "
+"nekoliko stotina stopa. Moramo se skloniti s reke pre nego što nas usisa, "
+"inače smo sigurno gotovi!"
 
 #. [message]: role=merman-advisor
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1168
 msgid "Even we merfolk cannot swim that. The road east is blocked."
-msgstr ""
+msgstr "Čak ni mi morejci ne možemo to preplivati. Put na istok je zaprečen."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1172
-#, fuzzy
 msgid ""
 "Wait. What about the tributary which flows into the river from inside the "
 "mountain? There seems to be a cave..."
 msgstr ""
-"A šta je sa pritokom koja se uliva u reku iz unutrašnjosti planine? To kao "
-"da ima neka pećina tamo..."
+"Sačekajte. Šta je sa onom pritokom što se uliva u reku iz unutrašnjosti "
+"planine? Kao da ima neka pećina tamo..."
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1177
@@ -8748,25 +8738,3 @@ msgstr ""
 "Izbegavši u Etenvud, sa onu stranu jugozapadne granice Vesnota, Delfador "
 "odgajaše Konrada pod zaštitom vilenjaka, posmatrajući tužno kako otpoče "
 "Aševerina strahovlada nad zemljom..."
-
-#~ msgid ""
-#~ "Young and brash, Fighters fight with a sword, and are vulnerable to "
-#~ "attack from enemies. However they have the potential to become great "
-#~ "warriors one day."
-#~ msgstr ""
-#~ "Mladi i drski, borci se služe mačem, i ranjivi su u napadu neprijatelja. "
-#~ "Ipak imaju mogućnosti da jednoga dana postanu veliki ratnici."
-
-#~ msgid "That is possible..."
-#~ msgstr "Može biti..."
-
-#~ msgid ""
-#~ "There is a waterfall ahead. It is so high I can barely see the top of it! "
-#~ "Neither the merfolk, even less the land dwellers can swim up the "
-#~ "waterfall. Even gryphons might have trouble flying up so far! I am "
-#~ "afraid, Your Highness, that we are stuck."
-#~ msgstr ""
-#~ "Pred nama je vodopad, toliko visok da mu jedva mogu videti vrha! Ni "
-#~ "morejci, a žitelji kopna još manje, ne mogu plivati uz vodopad. Čak i "
-#~ "grifonima može biti zamorno da polete tako visoko! Bojim se, visočanstvo, "
-#~ "da smo zaglavljeni."

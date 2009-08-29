@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-08-10 17:58+0300\n"
-"PO-Revision-Date: 2009-05-20 10:52+0200\n"
+"PO-Revision-Date: 2009-08-26 17:28+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "MIME-Version: 1.0\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Language: sr\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%"
 "10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Environment: wesnoth, wesnoth/noent\n"
 
 #: ../../doc/man/wesnoth.6:16
 #, no-wrap
@@ -157,7 +158,7 @@ msgstr ""
 "није инсталиран на систему."
 
 #: ../../doc/man/wesnoth.6:68
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-e,\\ --editor>I<\\ file>"
 msgstr "B<-e, --editor \\ датотека>"
 
@@ -237,9 +238,9 @@ msgid ""
 "from I<file> open. If it is a directory, the editor will start with a load "
 "map dialog opened there."
 msgstr ""
-"учитава сачувану игру I<датотека> из стандардног директоријума сачуваних "
-"игара. Ако је задата и опција B<-e> или B<--editor>, покреће се уређивач са "
-"отвореном мапом из те датотеке. Ако је I<датотека> у ствари директоријум, "
+"учитава позицију I<датотека> из стандардног директоријума сачуваних "
+"позиција. Ако је задата и опција B<-e> или B<--editor>, покреће се уређивач "
+"са отвореном мапом из те датотеке. Ако је I<датотека> у ствари директоријум, "
 "уређивач ће на њему отворити дијалог за учитавање мапе."
 
 #: ../../doc/man/wesnoth.6:108 ../../doc/man/wesnothd.6:58
@@ -285,14 +286,13 @@ msgid "B<-m, --multiplayer>"
 msgstr "B<-m, --multiplayer>"
 
 #: ../../doc/man/wesnoth.6:132
-#, fuzzy
 msgid ""
 "runs a multiplayer game. There are additional options that can be used "
 "together with B<--multiplayer> as explained below. Only these additional "
 "options can follow B<--multiplayer>."
 msgstr ""
-"покреће вишеиграчку игру. Уз ову опцију могу бити употребљене још неке, "
-"наведене испод."
+"покреће вишеиграчку партију. Уз ову опцију могу бити употребљене још неке, "
+"наведене испод (само оне могу пратити B<--multiplayer>)."
 
 #: ../../doc/man/wesnoth.6:132
 #, no-wrap
@@ -421,7 +421,7 @@ msgstr "B<--with-replay>"
 
 #: ../../doc/man/wesnoth.6:176
 msgid "replays the game loaded with the B<--load> option."
-msgstr "врти снимак игре учитане опцијом B<--load>."
+msgstr "пушта снимак партије учитане опцијом B<--load>."
 
 #: ../../doc/man/wesnoth.6:177
 #, no-wrap
@@ -662,7 +662,7 @@ msgid ""
 "wiki/ServerAdministration on what commands the server accepts via the "
 "wesnoth client (/query ...) or the fifo."
 msgstr ""
-"Управља вишеиграчким сесијама \"Боја за Веснот\". Погледајте http://www."
+"Управља вишеиграчким партијама \"Боја за Веснот\". Погледајте http://www."
 "wesnoth.org/wiki/ServerAdministration за наредбе које сервер прихвата преко "
 "клијента (/query ...) или фифоа."
 
@@ -794,19 +794,20 @@ msgstr "[/I<ознака>]"
 msgid "Global keys:"
 msgstr "Глобални кључеви:"
 
-# type: TP
 #: ../../doc/man/wesnothd.6:110
 #, no-wrap
 msgid "B<allow_remote_shutdown>"
-msgstr ""
+msgstr "B<allow_remote_shutdown>"
 
-# type: Plain text
 #: ../../doc/man/wesnothd.6:114
 msgid ""
 "If set to `no' (default), shut_down and restart requests are ignored unless "
 "the come from the fifo.  Set it to `yes' to allow remote shutdown via a /"
 "query by an administrator."
 msgstr ""
+"ако се зада 'no' (подразумевано), захтеви за гашење и поновно покретање се "
+"игноришу осим ако стижу из фифоа. Задајте 'yes' да дозволите удаљено гашење "
+"на /query администратора."
 
 #: ../../doc/man/wesnothd.6:114
 #, no-wrap
@@ -822,18 +823,18 @@ msgstr ""
 "пише. Забране ће бити записиване у њу, и читане по наредном покретању "
 "сервера."
 
-# type: TP
 #: ../../doc/man/wesnothd.6:118
 #, no-wrap
 msgid "B<compress_stored_rooms>"
-msgstr ""
+msgstr "B<compress_stored_rooms>"
 
-# type: Plain text
 #: ../../doc/man/wesnothd.6:121
 msgid ""
 "Determines whether the rooms file should be read and written to in "
 "compressed form. Defaults to `yes'."
 msgstr ""
+"одређује да ли фајл соба треба читати и писати у компресованом облику. "
+"Подразумевано 'yes'."
 
 #: ../../doc/man/wesnothd.6:121
 #, no-wrap
@@ -876,7 +877,7 @@ msgid ""
 "from wesnoth).  If not specified defaults to the compile-time specified path "
 "(default: /var/run/socket/wesnothd/socket)."
 msgstr ""
-"Путања до фифоа из којег сервер може да чита наредбе (исте као /query ... из "
+"путања до фифоа из којег сервер може да чита наредбе (исте као /query ... из "
 "игре). Ако није задато, спада на подразумевану уграђену (/var/run/socket/"
 "wesnothd/socket)."
 
@@ -913,13 +914,11 @@ msgstr "B<motd>"
 msgid "The message of the day."
 msgstr "порука дана"
 
-# type: TP
 #: ../../doc/man/wesnothd.6:144
 #, no-wrap
 msgid "B<new_room_policy>"
-msgstr ""
+msgstr "B<new_room_policy>"
 
-# type: Plain text
 #: ../../doc/man/wesnothd.6:147
 msgid ""
 "Determines who can create new rooms on the server. Available values are "
@@ -927,6 +926,10 @@ msgid ""
 "respectively to everyone, registered users, admin users or disables new room "
 "creation. Default value is `everyone'."
 msgstr ""
+"одређује ко може да ствара нове собе на серверу. Могуће вредности су "
+"'everyone', 'registered', 'admin' и 'nobody', дајући дозволу, редом, свима, "
+"регистрованим корисницима, администраторима и никоме. Подразумевана вредност "
+"је 'everyone'."
 
 #: ../../doc/man/wesnothd.6:147
 #, no-wrap
@@ -950,7 +953,7 @@ msgid ""
 "trailing /!) Defaults to `' which means the directory wesnothd was started "
 "in."
 msgstr ""
-"Директоријум где сервер смешта снимке игара (не заборавите пратеће /!). "
+"Директоријум где сервер смешта снимке партија (не заборавите пратеће /!). "
 "Подразумевано је '' (празно), што значи директоријум у којем је wesnothd "
 "покренут."
 
@@ -968,17 +971,19 @@ msgstr ""
 "(Може се издати само преко фифоа.)"
 
 #: ../../doc/man/wesnothd.6:156
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<room_save_file>"
-msgstr "B<ban_save_file>"
+msgstr "B<room_save_file>"
 
-# type: Plain text
 #: ../../doc/man/wesnothd.6:159
 msgid ""
 "Path to a file where the room info should be stored. This file is read on "
 "server startup and written to later. If empty or not set, rooms are not "
 "loaded and not saved."
 msgstr ""
+"путања до фајла где се складиште подаци собе. Овај фајл чита сервер при "
+"покретању, и касније уписује. Ако је празно или није задато, собе се не "
+"учитавају нити уписују."
 
 #: ../../doc/man/wesnothd.6:159
 #, no-wrap
@@ -990,7 +995,7 @@ msgid ""
 "Defines whether the server will automatically save replays of games. "
 "(default: B<false>)"
 msgstr ""
-"Одређује да ли сервер аутоматски уписује снимке игара (подразумевно: "
+"Одређује да ли сервер аутоматски уписује снимке партија (подразумевно: "
 "B<false>)."
 
 #: ../../doc/man/wesnothd.6:162
