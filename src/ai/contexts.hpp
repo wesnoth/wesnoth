@@ -29,7 +29,6 @@ class gamemap;
 #include "../game_display.hpp"
 #include "../gamestatus.hpp"
 #include "../generic_event.hpp"
-#include "../pathfind.hpp"
 #include "../playturn.hpp"
 
 #ifdef _MSC_VER

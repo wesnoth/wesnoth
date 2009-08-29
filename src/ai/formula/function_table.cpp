@@ -27,7 +27,6 @@
 #include "../../log.hpp"
 #include "../../map_label.hpp"
 #include "../../menu_events.hpp"
-#include "../../pathfind.hpp"
 #include "../../replay.hpp"
 #include "../../terrain_filter.hpp"
 #include "../../unit.hpp"

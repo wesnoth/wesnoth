@@ -16,7 +16,7 @@
 #define TERRAIN_FILTER_H_INCLUDED
 
 #include "map_location.hpp"
-#include "pathfind.hpp"
+#include "pathutils.hpp"
 #include "variable.hpp"
 
 class config;
