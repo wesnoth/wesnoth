@@ -116,7 +116,7 @@ void configuration::init(const config &game_config)
 std::vector<description*> configuration::get_available_ais(){
 	std::vector<description*> ais_list;
 	for(description_map::iterator desc = ai_configurations_.begin(); desc!=ai_configurations_.end(); ++desc) {
-		ais_list.push_back(&desc->second);	
+		ais_list.push_back(&desc->second);
 		DBG_AI_CONFIGURATION << "has ai with config: "<< std::endl << desc->second.cfg<< std::endl;
 	}
 	return ais_list;
@@ -368,7 +368,7 @@ void configuration::upgrade_aspect_configs_from_1_07_02_to_1_07_03(side_number s
 		cfg.add_child("ai",aiparam);
 	}
 
-	DBG_AI_CONFIGURATION << "side "<< side <<": upgrading aspects from syntax of 1.7.2. to 1.7.3, old-style config is:" << std::endl << cfg << std::endl;		
+	DBG_AI_CONFIGURATION << "side "<< side <<": upgrading aspects from syntax of 1.7.2. to 1.7.3, old-style config is:" << std::endl << cfg << std::endl;
 	foreach (const well_known_aspect &wka, well_known_aspects) {
 		upgrade_aspect_config_from_1_07_02_to_1_07_03(side, cfg,parsed_cfg,wka.name_,wka.was_an_attribute_);
 	}

@@ -97,7 +97,7 @@ public:
 
 	/***** ***** ***** ***** Easy close handling ***** ***** ***** *****/
 
-	/** 
+	/**
 	 * Inherited from twidget.
 	 *
 	 * The default behavious is that a widget blocks easy close, if not it

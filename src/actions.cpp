@@ -2639,7 +2639,7 @@ void apply_shroud_changes(undo_list &undos, int side)
 		// FIXME: A wml-killed unit will not update the shroud explored before its death
 		if(unit_itor == units.end())
 			continue;
-		
+
 		unit temporary_unit(unit_itor->second);
 		// We're not really going to mutate the unit, just temporarily
 		// set its moves to maximum, but then switch them back.

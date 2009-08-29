@@ -178,7 +178,7 @@ void write_players(game_state& gamestate, config& cfg, const bool use_snapshot, 
 	} else {
 		source = &gamestate.starting_pos;
 	}
-	
+
 	if (merge_side) {
 		//merge sides/players from starting pos with the scenario cfg
 		std::vector<std::string> tags;
@@ -603,7 +603,7 @@ void game_state::build_team(const config& side_cfg,
 		side_cfg["controller"] == "human_ai" ||
 		utils::string_bool(side_cfg["persistent"])) {
 		player_exists = true;
-		
+
 		//if we have a snapshot, level contains team information
 		//else, we look for [side] or [player] (deprecated) tags in starting_pos
 		if (snapshot) {
@@ -652,7 +652,7 @@ void game_state::build_team(const config& side_cfg,
 			}
 		} catch (config::error&) {
 			ERR_NG << "player tag for " << save_id << " does not have gold information\n";
-		}			
+		}
 	}
 
 	LOG_NG << "set gold to '" << ngold << "'\n";
@@ -686,7 +686,7 @@ void game_state::build_team(const config& side_cfg,
 	// If this side tag describes the leader of the side
 	if(!utils::string_bool(side_cfg["no_leader"]) && side_cfg["controller"] != "null") {
 		unit new_unit(&units, side_cfg, true);
-		
+
 		if (player_cfg != NULL) {
 			for(std::vector<unit>::iterator it = teams.back().recall_list().begin();
 				it != teams.back().recall_list().end(); ++it) {

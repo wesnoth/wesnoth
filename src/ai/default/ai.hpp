@@ -102,7 +102,7 @@ private:
 	 */
 	virtual int average_resistance_against(const unit_type& a, const unit_type& b) const;
 
-	
+
 };
 
 class ai_default : public virtual ai_context_proxy, public interface, public game_logic::formula_callable {

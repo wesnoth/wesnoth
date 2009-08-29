@@ -38,7 +38,7 @@ public:
 		state_(ENABLED),
 		text_(),
 		selection_start_(0),
-		selection_length_(0),		
+		selection_length_(0),
 		key_press_callback_()	{
 	}
 
@@ -402,7 +402,7 @@ protected:
 	virtual void handle_key_default(
 		bool& handled, SDLKey key, SDLMod modifier, Uint16 unicode);
 
-	/** 
+	/**
 	 * Key press callback.
 	 *
 	 * This callback is called in key_press before the other functions. The
@@ -416,7 +416,7 @@ protected:
 	 */
 	boost::function< bool (twidget*, SDLKey, SDLMod, Uint16) > key_press_callback_;
 
-	/** 
+	/**
 	 * Text changed callback.
 	 *
 	 * This callback is called in key_press after the key_press event has been

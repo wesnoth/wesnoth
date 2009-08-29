@@ -36,7 +36,7 @@ namespace ai {
 stage_unit_formulas::stage_unit_formulas(ai_context &context, const config &cfg, formula_ai &fai)
        	: stage(context,cfg), cfg_(cfg), fai_(fai)
 {
-	
+
 }
 
 
@@ -71,25 +71,25 @@ bool stage_unit_formulas::do_play_stage()
 						if(e.filename == "formula")
 							e.line = 0;
 						fai_.handle_exception( e, "Unit priority formula error for unit: '" + i->second.type_id() + "' standing at (" + boost::lexical_cast<std::string>(i->first.x+1) + "," + boost::lexical_cast<std::string>(i->first.y+1) + ")");
-						
+
 						priority = 0;
 					} catch(type_error& e) {
 						priority = 0;
 						ERR_AI << "formula type error while evaluating unit priority formula  " << e.message << "\n";
 					}
 				}
-				
+
 				units_with_formulas.insert( game_logic::unit_formula_pair( i, priority ) );
 			}
 		}
         }
-	
+
 	for(game_logic::unit_formula_set::iterator pair_it = units_with_formulas.begin() ; pair_it != units_with_formulas.end() ; ++pair_it)
 	{
 		unit_map::iterator i = pair_it->first;
-		
+
 		if( i.valid() ) {
-			
+
 			if ( i->second.has_formula() ) {
 				try {
 					game_logic::const_formula_ptr formula(fai_.create_optional_formula(i->second.get_formula()));
@@ -151,5 +151,5 @@ config stage_unit_formulas::to_config() const
 	//@todo: serialize to config
 	return cfg;
 }
-	
+
 } // end of namespace ai

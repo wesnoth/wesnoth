@@ -155,7 +155,7 @@ public:
 	 * @param markedup            Should the text be rendered with pango
 	 *                            markup. If the markup is invalid it's
 	 *                            rendered as text without markup.
-	 * 
+	 *
 	 * @returns                   The status, if rendered as markup and the
 	 *                            markup contains errors, false is returned
 	 *                            else true.

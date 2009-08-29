@@ -64,7 +64,7 @@ public:
 
 	std::string evaluate(const std::string& formula_str);
 
-	virtual void add_formula_function(const std::string& name, game_logic::const_formula_ptr formula, game_logic::const_formula_ptr precondition, const std::vector<std::string>& args);	
+	virtual void add_formula_function(const std::string& name, game_logic::const_formula_ptr formula, game_logic::const_formula_ptr precondition, const std::vector<std::string>& args);
 
 	//class responsible for looking for possible infinite loops when calling set_var or set_unit_var
 	class gamestate_change_observer : public events::observer

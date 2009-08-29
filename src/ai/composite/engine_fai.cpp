@@ -44,7 +44,7 @@ public:
 	fai_candidate_action_wrapper( rca_context &context, const config &cfg, game_logic::candidate_action_ptr fai_ca, formula_ai &_formula_ai )
 		: candidate_action(context,cfg),fai_ca_(fai_ca),formula_ai_(_formula_ai),cfg_(cfg)//@todo 1.7: implement fai_ca->to_config()
 	{
-	
+
 }
 
 	virtual ~fai_candidate_action_wrapper() {}

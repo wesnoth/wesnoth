@@ -2399,7 +2399,7 @@ WML_HANDLER_FUNCTION(store_unit_type, /*event_info*/, cfg)
 	if(variable.empty()) {
 		variable="unit_type";
 	}
-	
+
 	std::vector<std::string> types_to_store = utils::split(type_name);
 	unit_type_data::unit_type_map_wrapper &ut_map = unit_type_data::types();
 
@@ -2410,7 +2410,7 @@ WML_HANDLER_FUNCTION(store_unit_type, /*event_info*/, cfg)
 		if(ut != ut_map.end()) {
 			resources::state_of_game->add_variable_cfg(variable, ut->second.get_cfg());
 		} else {
-			lg::wml_error << "attempt to store nonexistent unit_type \"" 
+			lg::wml_error << "attempt to store nonexistent unit_type \""
 				<< types_to_store[i] << "\"\n";
 		}
 	}
@@ -3107,7 +3107,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 		play_controller *controller = resources::controller;
 		if(!has_input && (
 				 controller->is_skiping_replay() ||
-				 current_context->skip_messages 
+				 current_context->skip_messages
 				 ))
 	       	{
 			return;

@@ -539,7 +539,7 @@ variant variant::operator-(const variant& v) const
 	if(type_ == TYPE_DECIMAL || v.type_ == TYPE_DECIMAL) {
 		return variant( as_decimal() - v.as_decimal() , DECIMAL_VARIANT);
 	}
-	
+
 	return variant(as_int() - v.as_int());
 }
 
@@ -624,7 +624,7 @@ variant variant::operator^(const variant& v) const
 
 		if( res > 0.5 )
 			i++;
-		
+
 		return variant( i , variant::DECIMAL_VARIANT);
 	}
 
@@ -771,7 +771,7 @@ variant variant::list_elements_add(const variant& v) const
 	v.must_be(TYPE_LIST);
 
 	if( num_elements() != v.num_elements() )
-		throw type_error("Operator '.+' requires two lists of the same length");	
+		throw type_error("Operator '.+' requires two lists of the same length");
 
 	std::vector< variant > res;
 	res.reserve(num_elements());
@@ -789,7 +789,7 @@ variant variant::list_elements_sub(const variant& v) const
 	v.must_be(TYPE_LIST);
 
 	if( num_elements() != v.num_elements() )
-		throw type_error("Operator '.-' requires two lists of the same length");	
+		throw type_error("Operator '.-' requires two lists of the same length");
 
 	std::vector< variant > res;
 	res.reserve(num_elements());
@@ -807,7 +807,7 @@ variant variant::list_elements_mul(const variant& v) const
 	v.must_be(TYPE_LIST);
 
 	if( num_elements() != v.num_elements() )
-		throw type_error("Operator '.*' requires two lists of the same length");	
+		throw type_error("Operator '.*' requires two lists of the same length");
 
 	std::vector< variant > res;
 	res.reserve(num_elements());
@@ -825,7 +825,7 @@ variant variant::list_elements_div(const variant& v) const
 	v.must_be(TYPE_LIST);
 
 	if( num_elements() != v.num_elements() )
-		throw type_error("Operator './' requires two lists of the same length");	
+		throw type_error("Operator './' requires two lists of the same length");
 
 	std::vector< variant > res;
 	res.reserve(num_elements());
@@ -1042,7 +1042,7 @@ std::string variant::to_debug_string(std::vector<const game_logic::formula_calla
 		}
 
 		s << fractional;
-		
+
 		break;
 	}
 	case TYPE_LIST: {

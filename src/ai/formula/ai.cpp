@@ -130,7 +130,7 @@ std::string formula_ai::evaluate(const std::string& formula_str)
 
 		if (ai_ptr_) {
 			variant var = execute_variant(v, *ai_ptr_, true );
-			
+
 			if (  !var.is_empty() ) {
 				return "Made move: " + var.to_debug_string();
 			}
@@ -325,7 +325,7 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 		const set_var_callable* set_var_command = try_convert_variant<set_var_callable>(action);
 		const set_unit_var_callable* set_unit_var_command = try_convert_variant<set_unit_var_callable>(action);
 		const fallback_callable* fallback_command = try_convert_variant<fallback_callable>(action);
-		
+
 		if( move || move_partial ) {
 			move_result_ptr move_result;
 
@@ -355,7 +355,7 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 			}
 
 			if( move_result->is_gamestate_changed() )
-				made_moves.push_back(action);		
+				made_moves.push_back(action);
 		} else if(attack) {
 			bool gamestate_changed = false;
 			move_result_ptr move_result;
@@ -384,7 +384,7 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 					//attack failed
 
 					LOG_AI << "ERROR #" << attack_result->get_status() << " while executing 'attack' formula function\n\n";
-					
+
 					if(safe_call) {
 						//safe_call was called, prepare error information
 						error = variant(new safe_call_result(attack, attack_result->get_status()));
@@ -449,7 +449,7 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 					ERR_AI << "ERROR #" <<recruit_result->get_status() << " while executing 'recruit' formula function\n"<<std::endl;
 				}
 			}
-			
+
 			//is_gamestate_changed()==true means that the game state was somehow changed by action.
 			//it is believed that during a turn, a game state can change only a finite number of times
 			if( recruit_result->is_gamestate_changed() )
@@ -489,7 +489,7 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 				    error = variant(new safe_call_result(set_unit_var_command,
 									status));
 			}
-			
+
 		} else if( action.is_string() && action.as_string() == "recruit") {
 			stage_ptr r = get_recruitment(ai_);
 			if (r) {
@@ -555,7 +555,7 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 			}
 
 			//store the result in safe_call_callable case we would like to display it to the user
-			//for example if this formula was executed from commandline	    
+			//for example if this formula was executed from commandline
 			safe_call->set_backup_result(backup_result);
 
 			error = variant();

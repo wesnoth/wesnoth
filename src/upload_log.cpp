@@ -280,7 +280,7 @@ void upload_log::read_replay()
 					cfg.add_child("attack",c.child("attack"));
 					cfg.add_child("results",c2.child("results"));
 				}
-			}	
+			}
 		}
 	}
 
@@ -318,7 +318,7 @@ upload_log::~upload_log()
 #endif
 
 		std::ostream *out = ostream_file(filename_);
-		
+
 		if(uploader_settings::new_uploader) {
 			boost::iostreams::filtering_stream<boost::iostreams::output> filter;
 			filter.push(boost::iostreams::gzip_compressor());
@@ -365,7 +365,7 @@ void upload_log::start(game_state &state, const team &team,
                        int side_number,
 					   const unit_map &units,
 					   const t_string &turn,
-					   int num_turns, 
+					   int num_turns,
 					   const std::string map_data)
 {
 	std::vector<const unit*> all_units;

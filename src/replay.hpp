@@ -68,7 +68,7 @@ public:
 	void add_log_data(const std::string &key, const std::string &var);
 	void add_log_data(const std::string &category, const std::string &key, const std::string &var);
 	void add_log_data(const std::string &category, const std::string &key, const config& c);
-	
+
 	/**
 	 * Mark an expected advancement adding it to the queue
 	 */

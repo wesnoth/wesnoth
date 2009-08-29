@@ -164,7 +164,7 @@ component* ai_composite::get_child(const path_element &child)
 		aspect_map::const_iterator a = get_aspects().find(child.id);
 		if (a!=get_aspects().end()){
 			return &*a->second;
-		} 
+		}
 		return NULL;
 	} else if (child.property=="stage") {
 	      	//std::vector< stage_ptr >::iterator i = std::find_if(stages_.begin(),stages_.end(),path_element_matches< stage_ptr >(child));
@@ -262,7 +262,7 @@ bool ai_composite::delete_child(const path_element &child)
 			get_goals().erase(i);
 			return true;
 		}
-		return false;		
+		return false;
 	}
 
 	//OOPS

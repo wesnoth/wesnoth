@@ -123,7 +123,7 @@ private:
 				first_item = false;
 			}
 			s << a->str();
-		} 
+		}
 		s << ']';
 		return s.str();
 	}
@@ -907,7 +907,7 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 				iterator dot = i1->begin;
 				while( *dot != '.' )
 					dot++;
-				
+
 				int n = atoi(std::string(i1->begin,dot).c_str());
 
 				iterator end = i1->end;

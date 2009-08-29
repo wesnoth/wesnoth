@@ -357,7 +357,7 @@ marked_route mouse_handler::get_route(unit_map::const_iterator un, map_location 
 		// maybe reserve head and tail and reinitialize it each time ?
 		waypoints_.push_front(un->first);
 		waypoints_.push_back(go_to);
-		
+
 		std::list<map_location>::const_iterator wsrc = waypoints_.begin(),
 				wdst = ++waypoints_.begin();
 
@@ -711,8 +711,8 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 
 		gui().draw();
 		//@TODO: change ToD to be location specific for the defender
-		recorder.add_attack(attacker_loc, defender_loc, att.attack_num, def.attack_num, 
-			attacker->second.type_id(), defender->second.type_id(), att.level, 
+		recorder.add_attack(attacker_loc, defender_loc, att.attack_num, def.attack_num,
+			attacker->second.type_id(), defender->second.type_id(), att.level,
 			def.level, resources::tod_manager->turn(), resources::tod_manager->get_time_of_day());
 		rand_rng::invalidate_seed();
 		if (rand_rng::has_valid_seed()) { //means SRNG is disabled

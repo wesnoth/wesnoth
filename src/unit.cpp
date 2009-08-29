@@ -861,7 +861,7 @@ const std::map<std::string,std::string> unit::get_states() const
 		if (get_state(i->second)) {
 			all_states.insert(make_pair(i->first, "yes" ));
 		}
-	
+
 	}
 	return all_states;
 }

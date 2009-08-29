@@ -305,13 +305,13 @@ void attack_result::do_execute()
 		set_error(E_UNABLE_TO_CHOOSE_ATTACKER_WEAPON);
 		return;
 	}
-	
+
 	const unit *d_ = get_unit(get_info(),defender_loc_);
 	const unit *a_ = get_unit(get_info(),attacker_loc_);
 
 	//@TODO: change ToD to be location specific for the defender unit
 	recorder.add_attack(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon, a_->type_id(),
-		d_->type_id(), a_->level(), d_->level(), resources::tod_manager->turn(), 
+		d_->type_id(), a_->level(), d_->level(), resources::tod_manager->turn(),
 		resources::tod_manager->get_time_of_day());
 	rand_rng::invalidate_seed();
 	rand_rng::clear_new_seed_callback();

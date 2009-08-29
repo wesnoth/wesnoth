@@ -42,10 +42,10 @@ class user_handler {
 		{
 		}
 
-		virtual ~user_handler() 
-		{ 
+		virtual ~user_handler()
+		{
 			if(mailer_) {
-				delete mailer_; 
+				delete mailer_;
 				mailer_ = NULL;
 			}
 		}

@@ -250,7 +250,7 @@ void unit_callable::get_inputs(std::vector<game_logic::formula_input>* inputs) c
 	inputs->push_back(game_logic::formula_input("side", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("states", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("cost", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("usage", FORMULA_READ_ONLY));	
+	inputs->push_back(game_logic::formula_input("usage", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("vars", FORMULA_READ_ONLY));
 }
 

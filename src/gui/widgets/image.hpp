@@ -29,7 +29,7 @@ public:
 	{
 	}
 
-	/** 
+	/**
 	 * Wrapper for set_label.
 	 *
 	 * Some people considered this function missing and confusing so added
@@ -42,7 +42,7 @@ public:
 		set_label(label);
 	}
 
-	/** 
+	/**
 	 * Wrapper for label.
 	 *
 	 * Some people considered this function missing and confusing so added

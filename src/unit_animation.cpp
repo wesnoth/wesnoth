@@ -694,7 +694,7 @@ bool unit_animation::particule::need_minimal_update() const
 {
 	if(get_current_frame_begin_time() != last_frame_begin_time_ ) {
 		return true;
-	} 
+	}
 	return false;
 }
 

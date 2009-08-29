@@ -1833,7 +1833,7 @@ simple_move_and_targeting_phase::~simple_move_and_targeting_phase()
 double simple_move_and_targeting_phase::evaluate()
 {
 	unit_map &units_ = get_info().units;
-	
+
 	unit_map::const_iterator leader = units_.find_leader(get_side());
 	map_location my_leader_loc = map_location::null_location;
 	if (leader.valid()) {

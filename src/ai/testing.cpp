@@ -56,7 +56,7 @@ void ai_testing::log_turn(const char* msg, unsigned int side)
 	DBG_AI_TESTING << msg << "_GOLD"       << side << ": " << _gold << std::endl;
 	DBG_AI_TESTING << msg << "_VILLAGES"   << side << ": " << _villages << std::endl;
 	DBG_AI_TESTING << msg << "_INCOME"     << side << ": " << _income << std::endl;
-	
+
 	config c;
         c["side"] = str_cast(side);
         c["turn"] = str_cast(_turn_number);

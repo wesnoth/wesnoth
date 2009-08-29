@@ -1039,7 +1039,7 @@ bool play_controller::in_context_menu(hotkey::HOTKEY_COMMAND command) const
 		// Enable recruit/recall on castle/keep tiles
 		for(unit_map::const_iterator leader = units_.begin();
 				leader != units_.end();leader++) {
-			if (leader->second.can_recruit() && 
+			if (leader->second.can_recruit() &&
 				static_cast<int>(leader->second.side()) == player_number_ &&
 				can_recruit_on(map_, leader->first, mouse_handler_.get_last_hex()))
 				return true;

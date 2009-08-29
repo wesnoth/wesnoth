@@ -36,7 +36,7 @@ struct tmessage_implementation
 {
 	/**
 	 * Initialiazes a button.
-	 * 
+	 *
 	 * @param window              The window that contains the button.
 	 * @param button_status       The button status to modify.
 	 * @param id                  The id of the button.

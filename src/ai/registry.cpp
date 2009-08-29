@@ -238,7 +238,7 @@ static register_aspect_factory< standard_aspect<double> >
 
 static register_aspect_factory< standard_aspect<int> >
 	villages_per_scout__standard_aspect_factory("villages_per_scout*standard_aspect");
-	
+
 
 //name = default
 static register_aspect_factory< standard_aspect<double> >

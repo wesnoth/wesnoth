@@ -173,7 +173,7 @@ team::team_info::team_info(const config& cfg) :
 		controller = AI;
 		persistent = false;
 	}
-	
+
 	//override persistence flag if it is explicitly defined in the config
 	persistent = utils::string_bool(cfg["persistent"], persistent);
 

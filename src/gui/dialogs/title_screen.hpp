@@ -44,7 +44,7 @@ private:
 	/** Hold the tips of the day. */
 	config tips_;
 
-	/** 
+	/**
 	 * Updates the tip of day widget.
 	 *
 	 * @param previous            Show the previous tip, else shows the next

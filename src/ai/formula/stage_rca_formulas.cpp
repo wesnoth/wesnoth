@@ -38,18 +38,18 @@ stage_rca_formulas::stage_rca_formulas(ai_context &context, const config &cfg, f
 {
 /*	try {
 		if( candidate_action_manager_.has_candidate_actions() ) {
-			
+
 			while( candidate_action_manager_.evaluate_candidate_actions(&fai_, get_info().units) )
 			{
 				game_logic::map_formula_callable callable(&fai_);
 				callable.add_ref();
-				
+
 				candidate_action_manager_.update_callable_map( callable );
-				
+
 				game_logic::const_formula_ptr move_formula(candidate_action_manager_.get_best_action_formula());
-				
+
 				fai_.make_action(move_formula, callable);
-				
+
 			}
 		}
 	}
@@ -87,5 +87,5 @@ config stage_rca_formulas::to_config() const
 	cfg.append(cfg_);
 	return cfg;
 }
-	
+
 } // end of namespace ai

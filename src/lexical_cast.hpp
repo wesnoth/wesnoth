@@ -93,7 +93,7 @@ struct bad_lexical_cast {};
 namespace implementation {
 
 /**
- * Base class for the conversion.                                             
+ * Base class for the conversion.
  *
  * Since functions can't be partially specialized we use a class, which can be
  * partially specialized for the conversion.

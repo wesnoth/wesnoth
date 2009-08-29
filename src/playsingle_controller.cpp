@@ -179,7 +179,7 @@ void playsingle_controller::continue_move(){
 }
 
 void playsingle_controller::add_waypoint(){
-	if (!browse_) 
+	if (!browse_)
 		mouse_handler_.add_waypoint(mouse_handler_.get_last_hex());
 }
 
@@ -364,7 +364,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 				utils::string_bool(end_cfg["bonus"], true),
 				false
 				);
-			
+
 		}
 
 		// Avoid autosaving after loading, but still
@@ -488,7 +488,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			gamestate_.snapshot = config();
 			store_recalls();
 			store_gold(end_level);
-			
+
 			return VICTORY;
 		}
 	} // end catch
@@ -907,12 +907,12 @@ void playsingle_controller::store_gold(end_level_exception& end_level, const boo
 				title = _("Victory");
 				report << font::BOLD_TEXT << _("You have emerged victorious!") << "\n~\n";
 			}
-			
+
 			int persistent_teams = 0;
 			for(std::vector<team>::iterator j=teams_.begin(); j!=teams_.end(); ++j) {
 				if (j->persistent()) persistent_teams++;
 			}
-			
+
 			if (persistent_teams > 0 &&
 					 (has_next_scenario ||
 					 gamestate_.classification().campaign_type == "test")) {

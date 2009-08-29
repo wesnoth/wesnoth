@@ -154,7 +154,7 @@ void formula_debugger::check_breakpoints()
 }
 
 void formula_debugger::show_gui()
-{	
+{
 	if (resources::screen == NULL) {
 		WRN_FDB << "do not showing debug window due to NULL gui" << std::endl;
 		return;
@@ -174,7 +174,7 @@ void formula_debugger::call_stack_push(const std::string &str)
 	f_name_extra_debug_info = "";
 	execution_trace_.push_back(call_stack_.back());
 }
-	
+
 
 void formula_debugger::call_stack_pop()
 {
@@ -241,7 +241,7 @@ variant formula_debugger::evaluate_formula_callback(const formula &f)
 base_breakpoint::base_breakpoint(formula_debugger &fdb, const std::string &name, bool one_time_only)
 	: fdb_(fdb), name_(name), one_time_only_(one_time_only)
 {
-	
+
 }
 
 

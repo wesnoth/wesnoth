@@ -40,7 +40,7 @@ public:
 
 	enum TYPE { TYPE_NULL, TYPE_INT, TYPE_DECIMAL, TYPE_CALLABLE, TYPE_LIST, TYPE_STRING, TYPE_MAP };
 
-	enum DECIMAL_VARIANT_TYPE { DECIMAL_VARIANT };	
+	enum DECIMAL_VARIANT_TYPE { DECIMAL_VARIANT };
 
 	variant();
 	explicit variant(int n);
@@ -67,7 +67,7 @@ public:
 	bool is_decimal() const { return type_ == TYPE_DECIMAL; }
 	bool is_map() const { return type_ == TYPE_MAP; }
 	int as_int() const { if(type_ == TYPE_NULL) { return 0; } must_be(TYPE_INT); return int_value_; }
-	
+
 	//this function returns variant's internal representation of decimal number:
 	//for example number 1.234 is represented as 1234
 	int as_decimal() const;
@@ -102,7 +102,7 @@ public:
 
 		return res;
 	}
-	
+
 	variant operator+(const variant&) const;
 	variant operator-(const variant&) const;
 	variant operator*(const variant&) const;

@@ -252,7 +252,7 @@ private:
 	void get_villages(const moves_map &possible_moves,
 		const move_map &dstsrc, const move_map &enemy_dstsrc,
 		unit_map::const_iterator &leader);
-	
+
 
 	void find_villages(
 		treachmap& reachmap,

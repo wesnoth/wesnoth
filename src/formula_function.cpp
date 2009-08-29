@@ -44,7 +44,7 @@ std::string function_expression::str() const
 			first_arg = false;
 		}
 		s << a->str();
-		} 
+		}
 	s << ')';
 	return s.str();
 }
@@ -746,7 +746,7 @@ private:
 			for( size_t i = 0; i < args().size() ; i++)
 				args()[i]->evaluate(variables,fdb);
 		}
-		
+
 		return variant();
 	}
 };

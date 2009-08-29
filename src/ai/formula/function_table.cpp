@@ -294,7 +294,7 @@ private:
 		for(size_t side = 0 ; side < units_input.num_elements() ; ++side) {
 			if( leaders_input[side].is_empty() )
 				continue;
-			
+
 			const map_location loc = convert_variant<location_callable>(leaders_input[side][0])->loc();
 			const variant units_of_side = units_input[side];
 
@@ -310,7 +310,7 @@ private:
 				*j = *j / units_input[index].num_elements();
 
 			++index;
-		}		
+		}
 		//std::vector<variant> res;
 		std::map<variant, variant> res;
 
@@ -518,8 +518,8 @@ public:
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		const map_location starting_loc = convert_variant<location_callable>(args()[0]->evaluate(variables,add_debug_info(fdb,0,"castle_locs:location")))->loc();
-		
-		//looks like reimplementing a generic graph search algorithm to me							       
+
+		//looks like reimplementing a generic graph search algorithm to me
                 std::set< map_location > visited_locs;
                 std::queue< map_location > queued_locs;
 

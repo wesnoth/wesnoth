@@ -86,11 +86,11 @@ public:
 
 
 	void call_stack_push(const std::string &str);
-	
-	
+
+
 	void call_stack_pop();
 
-	
+
 	void call_stack_set_evaluated(bool evaluated);
 
 

@@ -103,7 +103,7 @@ bool aspect::redeploy(const config &cfg, const std::string& /*id*/)
 	engine_ = cfg["engine"];
 	name_ = cfg["name"];
 	id_ = cfg["id"];
-	DBG_AI_COMPOSITE_ASPECT << "redeploying aspect: engine=["<<engine_<<"], name=["<<name_<<"], id=["<<id_<<"]"<< std::endl;	
+	DBG_AI_COMPOSITE_ASPECT << "redeploying aspect: engine=["<<engine_<<"], name=["<<name_<<"], id=["<<id_<<"]"<< std::endl;
 	if (invalidate_on_turn_start_) {
 		manager::add_turn_started_observer(this);
 	}

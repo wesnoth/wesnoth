@@ -237,7 +237,7 @@ void add_completed_campaign(const std::string& campaign_id) {
 
 bool is_campaign_completed(const std::string& campaign_id) {
 	std::vector<std::string> completed = utils::split(preferences::get("completed_campaigns"));
-	
+
 	return std::find(completed.begin(), completed.end(), campaign_id) != completed.end();
 }
 

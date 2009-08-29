@@ -286,7 +286,7 @@ public:
 
 
 	virtual void clear_additional_targets() const;
-	
+
 
 	int get_recursion_count() const
 	{

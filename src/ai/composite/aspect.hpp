@@ -448,7 +448,7 @@ class variant_value_translator<attacks_vector> {
 public:
 
 	static void variant_to_value(const variant &/*var*/, attacks_vector &/*value*/)
-	{ 
+	{
 		assert(false);//not implemented
 	}
 
@@ -622,7 +622,7 @@ public:
 	}
 
 	virtual void recalculate() const = 0;
-	
+
 
 	virtual boost::shared_ptr<T> get_ptr() const
 	{

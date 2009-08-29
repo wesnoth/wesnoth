@@ -114,7 +114,7 @@ static component *find_component(component *root, const std::string &path, path_
 			} catch (boost::bad_lexical_cast){
 				pe.position = -2;
 			}
-		}	
+		}
 		DBG_AI_COMPOSITE << "adding path element: "<< pe << std::endl;
 		elements.push_back(pe);
 	}
@@ -129,9 +129,9 @@ static component *find_component(component *root, const std::string &path, path_
 		if (c==NULL) {
 			return NULL;
 		}
-	}	
+	}
 
-	tail = *k_max;	
+	tail = *k_max;
 	return c;
 
 }
@@ -145,7 +145,7 @@ bool component_manager::add_component(component *root, const std::string &path, 
 		return false;
 	}
 	return c->add_child(tail, cfg);
-	
+
 }
 
 bool component_manager::change_component(component *root, const std::string &path, const config &cfg)

@@ -1482,7 +1482,7 @@ bool ai_default::do_recruitment()
 		return r->play_stage();
 	}
 	ERR_AI << "no recruitment aspect - skipping recruitment" << std::endl;
-	return false;    
+	return false;
 }
 
 

@@ -971,7 +971,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			if(current_team.recall_list().empty()) {
 				replay::throw_error("illegal recall\n");
 			}
-			
+
 			sort_units(current_team.recall_list());
 
 			const std::string& recall_num = child["value"];
@@ -1059,7 +1059,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				replay::throw_error(errbuf.str());
 			}
 
-			bool show_move = preferences::show_ai_moves() || !(current_team.is_ai() || current_team.is_network_ai()); 
+			bool show_move = preferences::show_ai_moves() || !(current_team.is_ai() || current_team.is_network_ai());
 			::move_unit(NULL, steps, NULL, NULL, show_move, NULL, true, true, true);
 
 			//NOTE: The AI fire sighetd event whem moving in the FoV of team 1

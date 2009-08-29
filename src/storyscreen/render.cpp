@@ -409,7 +409,7 @@ void part_ui::render_story_box()
 	}
 
 	SDL_Rect update_area = { 0, fix_text_y, screen_area().w, fix_text_h };
-	
+
 	/* do */ {
 		// this should kill the tiniest flickering caused
 		// by the buttons being hidden and unhidden in this scope.

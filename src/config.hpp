@@ -334,7 +334,7 @@ public:
 	void merge_children(const std::string& key);
 
 	/**
-	 * All children with the given key and with equal values 
+	 * All children with the given key and with equal values
 	 * of the specified attribute will be merged into the
 	 * element with that key and that value of the attribute
 	 */

@@ -302,10 +302,10 @@ public:
 
 
 	/**
-	 * Returns a smart pointer to a new AI. 
+	 * Returns a smart pointer to a new AI.
 	 * @param ai_algorithm_type type of AI algorithm to create
 	 * @param cfg a config of the ai
-	 * @param context context in which this ai is created 
+	 * @param context context in which this ai is created
 	 * @return the reference to the created AI
 	 */
 	static ai_ptr create_transient_ai( const std::string &ai_algorithm_type, const config &cfg, ai_context *ai_context);
@@ -359,7 +359,7 @@ public:
 	/**
 	 * Gets AI algorithm identifier for active AI of the given @a side.
 	 * @param side side number (1-based).
-	 * @return ai identifier for the active AI 
+	 * @return ai identifier for the active AI
 	 */
 	static std::string get_active_ai_identifier_for_side( side_number side );
 
@@ -367,7 +367,7 @@ public:
 	/**
 	 * Gets AI config for active AI of the given @a side.
 	 * @param side side number (1-based).
-	 * @return a config object for the active AI 
+	 * @return a config object for the active AI
 	 */
 	static config to_config( side_number side );
 

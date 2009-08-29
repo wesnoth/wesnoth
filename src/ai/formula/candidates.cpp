@@ -145,7 +145,7 @@ void move_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 	score_ = 0;
 
 	candidate_action_filters::const_iterator me_filter = filter_map_.find("me");
-	
+
 	std::vector<variant> res;
 
 	for(unit_map::unit_iterator i = units.begin() ; i != units.end() ; ++i)
@@ -268,12 +268,12 @@ void attack_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 		}
 		enemy_units_flt.push_back(u_callable);
 	}
-	
+
 	for( size_t my_unit = 0 ; my_unit < my_units_flt.size() ; ++my_unit){
 		const unit_callable* my_unit_callalbe = my_units_flt[my_unit];
 		for( size_t enemy_unit = 0 ; enemy_unit < enemy_units_flt.size() ; ++enemy_unit){
 			if( ai->can_reach_unit( my_unit_callalbe->get_location(), enemy_units_flt[enemy_unit]->get_location() )) {
-			    
+
 				game_logic::map_formula_callable callable(static_cast<const formula_callable*>(ai));
 				callable.add_ref();
 				callable.add("me", filtered_my_units[my_unit]);

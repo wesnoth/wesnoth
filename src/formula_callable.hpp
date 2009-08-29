@@ -98,7 +98,7 @@ protected:
 	//for example: formula_callable < terrain_callable < unit_type_callable ...
         enum TYPE { FORMULA_C, TERRAIN_C, LOCATION_C, UNIT_TYPE_C, UNIT_C,
                         ATTACK_TYPE_C, MOVE_PARTIAL_C, MOVE_C, ATTACK_C, MOVE_MAP_C };
-                        
+
         TYPE type_;
 private:
 	virtual variant get_value(const std::string& key) const = 0;

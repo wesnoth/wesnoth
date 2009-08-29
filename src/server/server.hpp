@@ -30,13 +30,13 @@ private:
 	const network::manager net_manager_;
 	network::server_manager server_;
 	wesnothd::ban_manager ban_manager_;
-	
+
 	struct connection_log {
 		connection_log(std::string _nick, std::string _ip, time_t _log_off) :
 		nick(_nick), ip(_ip), log_off(_log_off) {}
 		std::string nick, ip;
 		time_t log_off;
-	    
+
 		bool operator==(const connection_log& c) {
 		// log off time does not matter to find ip-nick pairs
 		return c.nick == nick && c.ip == ip;

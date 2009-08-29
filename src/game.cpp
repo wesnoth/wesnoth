@@ -360,7 +360,7 @@ game_controller::game_controller(int argc, char** argv) :
 				force_bpp_ = 32;
 			}
 		}
-#endif 
+#endif
 		else if(val == "--smallgui") {
 			game_config::small_gui = true;
 		} else if(val == "--config-dir") {
@@ -428,7 +428,7 @@ game_controller::game_controller(int argc, char** argv) :
 			gui2::new_widgets = true;
 		} else if(val == "--new-uploader") {
 			//hidden option to test experimental game log upload changes
-			uploader_settings::new_uploader = true;	
+			uploader_settings::new_uploader = true;
 #ifndef DISABLE_EDITOR
 		} else if(val == "-e" || val == "--editor") {
 			jump_to_editor_ = true;
@@ -714,14 +714,14 @@ bool game_controller::play_screenshot_mode()
 	if(!screenshot_mode_) {
 		return true;
 	}
-	
+
 #ifndef DISABLE_EDITOR
 	cache_.clear_defines();
 	cache_.add_define("EDITOR");
 	load_game_cfg();
 	const binary_paths_manager bin_paths_manager(game_config_);
 	::init_textdomains(game_config_);
-	
+
 	editor::start(game_config_, video_, screenshot_map_, true, screenshot_filename_);
 	return false;
 #else
@@ -925,9 +925,9 @@ bool game_controller::play_multiplayer_mode()
 		foreach (config &s, level.child_range("side")) {
 			if( s["controller"] != "ai" ) {
 				all_ai = false;
-			}	
+			}
 		}
-		
+
 		upload_log log( all_ai && uploader_settings::new_uploader );
 		recorder.add_log_data("ai_log","ai_label",label);
 
@@ -1837,9 +1837,9 @@ static int process_command_args(int argc, char** argv) {
 				return 2;
 			}
 			static char opt[] = "SDL_VIDEODRIVER=dummy";
-			SDL_putenv(opt);	
+			SDL_putenv(opt);
 		}
-#endif 
+#endif
 		else if(val == "--config-dir") {
 			if (argc <= ++arg)
 				break;
