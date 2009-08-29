@@ -1411,10 +1411,13 @@ private:
 
 	void menu_handler::create_unit(mouse_handler& mousehandler)
 	{
+#if 0
+		/** @todo: reenable after releasing 1.7.4; as-is causes memory corruption */
 		if(gui2::new_widgets) {
 			create_unit_2(mousehandler);
 			return;
 		}
+#endif
 
 		std::vector<std::string> options;
 		static int last_selection = -1;
