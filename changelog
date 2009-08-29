@@ -2,6 +2,9 @@ Version 1.7.3+svn:
  * AI:
    * Formula AI debugger (uses -new-widgets)
    * New 'debug()' formula function
+ * Animations
+   * Movement have the number of steps done in value and the number of step left
+     in value_second, this allows take-off and landing animations
  * Campaigns
    * Legend of Wesmere
      * Scenario 3 redesigned
@@ -21,6 +24,13 @@ Version 1.7.3+svn:
  * Language and i18n:
    * Updated translations: Chinese (Traditional), German, Lithuanian, Russian,
      Serbian
+ * Music and sound
+   * "Journey's End" from Mattias Westlund
+   * "Over the Northern Mountains" from Mattias Westlund
+   * Added horn signal sound effects
+ * Units
+   * New weapon names for a number of drake attacks to account for changes to
+     the sprites.
  * User interface:
    * Removed the hotkey to enable/disable mouse scrolling
    * Added a horizontal listbox
@@ -41,17 +51,7 @@ Version 1.7.3+svn:
    * Remove the boost 1.33 code in the unit tests
    * Fix regression about broken undo after a multi-turn ("goto") move
    * Fix regression about pathfinding poorly using the teleport ability
- * Animations
-   * Movement have the number of steps done in value and the number of step left
-     in value_second, this allows take-off and landing animations
- * Units
-   * New weapon names for a number of drake attacks to account for changes to
-     the sprites.
- * Music and sound
-   * "Journey's End" from Mattias Westlund
-   * "Over the Northern Mountains" from Mattias Westlund
-   * Horn signal sound effects
-	
+
 Version 1.7.3:
  * AI:
    * New AI configuration syntax
