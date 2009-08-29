@@ -23,6 +23,7 @@ Version 1.7.3+svn:
  * User interface:
    * Removed the hotkey to enable/disable mouse scrolling
    * Added a horizontal listbox
+   * New basic support for specifying waypoints (via a new hotkey 'w')
  * WML Engine:
    * Support for [show_if] inside [message]	
    * Added ability to change the share_maps team attribute using [modify_side]
@@ -37,6 +38,8 @@ Version 1.7.3+svn:
    * Fixed 100% CPU usage on storyscreens with no text (e.g. map screens)
    * Fix ODR issues in gui2
    * Remove the boost 1.33 code in the unit tests
+   * Fix regression about broken undo after a multi-turn ("goto") move
+   * Fix regression about pathfinding poorly using the teleport ability
  * Animations
    * Movement have the number of steps done in value and the number of step left
      in value_second, this allows take-off and landing animations
