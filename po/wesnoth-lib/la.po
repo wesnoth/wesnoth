@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-26 14:50+0200\n"
+"POT-Creation-Date: 2009-08-29 12:11+0200\n"
 "PO-Revision-Date: 2006-06-15 17:19+0200\n"
 "Last-Translator: Mark Polo <markpolo@gmail.com>\n"
 "Language-Team: Latin\n"
@@ -605,7 +605,7 @@ msgstr ""
 #: data/gui/default/window/editor_new_map.cfg:111
 #: data/gui/default/window/editor_resize_map.cfg:275
 #: data/gui/default/window/editor_settings.cfg:240
-#: data/gui/default/window/game_load.cfg:457
+#: data/gui/default/window/game_load.cfg:442
 #: data/gui/default/window/game_save.cfg:134
 #: data/gui/default/window/language_selection.cfg:133
 #: data/gui/default/window/message.cfg:136
@@ -630,8 +630,8 @@ msgstr ""
 #. [button]: id=ok
 #: data/gui/default/window/campaign_dialog.cfg:301
 #: data/gui/default/window/editor_settings.cfg:230
-#: data/gui/default/window/game_load.cfg:442
-#: data/gui/default/window/game_load.cfg:443
+#: data/gui/default/window/game_load.cfg:428
+#: data/gui/default/window/game_load.cfg:429
 #: data/gui/default/window/game_save.cfg:119
 #: data/gui/default/window/game_save.cfg:120
 #: data/gui/default/window/mp_login.cfg:234
@@ -672,7 +672,7 @@ msgstr "Chartam Novam Generare"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:109
+#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:110
 msgid "New Map"
 msgstr "Charta Nova"
 
@@ -697,7 +697,7 @@ msgstr "Novam Chartam Creare"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:154
+#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:155
 msgid "Resize Map"
 msgstr "Magnitudinem Chartae Mutare"
 
@@ -744,7 +744,7 @@ msgstr "Magnitudinem Chartae Mutare"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:107
+#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:108
 #, fuzzy
 msgid "Editor Settings"
 msgstr "Impostationes Clavium Notarum"
@@ -862,8 +862,8 @@ msgstr ""
 #. [grid]
 #: data/gui/default/window/formula_debugger.cfg:222
 #: data/gui/default/window/lobby_main.cfg:539
-#: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:642
-#: src/hotkeys.cpp:930
+#: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:643
+#: src/hotkeys.cpp:934
 msgid "Quit"
 msgstr "Relinquere"
 
@@ -911,48 +911,48 @@ msgstr "Non"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_load.cfg:42
-#: src/gui/dialogs/mp_create_game.cpp:78 src/hotkeys.cpp:65
+#: src/gui/dialogs/mp_create_game.cpp:78 src/hotkeys.cpp:66
 msgid "Load Game"
 msgstr "Lusum Restituere"
 
 #. [label]: id=lblChoose
-#: data/gui/default/window/game_load.cfg:177
+#: data/gui/default/window/game_load.cfg:179
 msgid "Choose the game to load"
 msgstr ""
 
 #. [label]: id=lblFilter
-#: data/gui/default/window/game_load.cfg:197
+#: data/gui/default/window/game_load.cfg:203
 msgid "Filter"
 msgstr ""
 
 #. [label]: id=name
 #. [label]: id=filename
-#: data/gui/default/window/game_load.cfg:248
+#: data/gui/default/window/game_load.cfg:253
 #: data/gui/default/window/mp_server_list.cfg:96
 msgid "Name"
 msgstr ""
 
 #. [label]: id=date
-#: data/gui/default/window/game_load.cfg:265
+#: data/gui/default/window/game_load.cfg:267
 #, fuzzy
 msgid "Date"
 msgstr "Glutinare"
 
 #. [button]: id=delete
-#: data/gui/default/window/game_load.cfg:381
-#: data/gui/default/window/game_load.cfg:382
+#: data/gui/default/window/game_load.cfg:351
+#: data/gui/default/window/game_load.cfg:352
 #, fuzzy
 msgid "Delete"
 msgstr "Pligam Delere"
 
 #. [toggle_button]: id=show_replay
-#: data/gui/default/window/game_load.cfg:404
+#: data/gui/default/window/game_load.cfg:370
 #, fuzzy
 msgid "Show replay"
 msgstr "lusor"
 
 #. [toggle_button]: id=cancel_orders
-#: data/gui/default/window/game_load.cfg:416
+#: data/gui/default/window/game_load.cfg:388
 #, fuzzy
 msgid "Cancel orders"
 msgstr "Abrogare"
@@ -961,7 +961,7 @@ msgstr "Abrogare"
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_save.cfg:32
 #: data/gui/default/window/game_save_message.cfg:32
-#: data/gui/default/window/game_save_oos.cfg:32 src/hotkeys.cpp:62
+#: data/gui/default/window/game_save_oos.cfg:32 src/hotkeys.cpp:63
 msgid "Save Game"
 msgstr "Lusum Servare"
 
@@ -990,7 +990,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit_game
-#: data/gui/default/window/game_save_oos.cfg:159 src/hotkeys.cpp:84
+#: data/gui/default/window/game_save_oos.cfg:159 src/hotkeys.cpp:85
 msgid "Quit Game"
 msgstr "Lusum Relinquere"
 
@@ -1171,7 +1171,7 @@ msgstr "Harena"
 #. [grid]
 #: data/gui/default/window/lobby_main.cfg:545
 #: data/gui/default/window/title_screen.cfg:189
-#: src/game_preferences_display.cpp:53 src/hotkeys.cpp:78
+#: src/game_preferences_display.cpp:53 src/hotkeys.cpp:79
 msgid "Preferences"
 msgstr "Anteposita"
 
@@ -1185,7 +1185,7 @@ msgstr "Scrinium"
 #. [button]: id=show_help
 #. [button]: id=help
 #: data/gui/default/window/lobby_main.cfg:557
-#: data/gui/default/window/title_screen.cfg:109 src/hotkeys.cpp:185
+#: data/gui/default/window/title_screen.cfg:109 src/hotkeys.cpp:186
 msgid "Help"
 msgstr "Subsidium"
 
@@ -1576,7 +1576,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/unit_create.cfg:37 src/hotkeys.cpp:76
+#: data/gui/default/window/unit_create.cfg:37 src/hotkeys.cpp:77
 msgid "Create Unit (Debug!)"
 msgstr "Unitatem Creare (Emendare!)"
 
@@ -2280,444 +2280,448 @@ msgid "Previous Unit"
 msgstr "Unitas previa"
 
 #: src/hotkeys.cpp:48
+msgid "Add waypoint"
+msgstr ""
+
+#: src/hotkeys.cpp:49
 msgid "Hold Position"
 msgstr "Positionem Mantenere"
 
-#: src/hotkeys.cpp:49
+#: src/hotkeys.cpp:50
 msgid "End Unit Turn"
 msgstr "Tractum Unitatis Finire"
 
-#: src/hotkeys.cpp:50
+#: src/hotkeys.cpp:51
 msgid "Leader"
 msgstr "Dux"
 
-#: src/hotkeys.cpp:51
+#: src/hotkeys.cpp:52
 msgid "Undo"
 msgstr "Infectum Reddere"
 
-#: src/hotkeys.cpp:52
+#: src/hotkeys.cpp:53
 msgid "Redo"
 msgstr "Factum Reddere"
 
-#: src/hotkeys.cpp:53
+#: src/hotkeys.cpp:54
 msgid "Zoom In"
 msgstr "Amplificare"
 
-#: src/hotkeys.cpp:54
+#: src/hotkeys.cpp:55
 msgid "Zoom Out"
 msgstr "Minuere"
 
-#: src/hotkeys.cpp:55
+#: src/hotkeys.cpp:56
 msgid "Default Zoom"
 msgstr "Conspectus Solitus"
 
-#: src/hotkeys.cpp:56
+#: src/hotkeys.cpp:57
 msgid "Toggle Full Screen"
 msgstr "Scrinium Totum vel in Fenestra Permutare"
 
-#: src/hotkeys.cpp:57 src/hotkeys.cpp:885
+#: src/hotkeys.cpp:58 src/hotkeys.cpp:889
 msgid "Screenshot"
 msgstr "Imago Scrinii"
 
-#: src/hotkeys.cpp:58
+#: src/hotkeys.cpp:59
 #, fuzzy
 msgid "Map Screenshot"
 msgstr "Imago Scrinii"
 
-#: src/hotkeys.cpp:59
+#: src/hotkeys.cpp:60
 msgid "Accelerated"
 msgstr "Celerior"
 
-#: src/hotkeys.cpp:60
+#: src/hotkeys.cpp:61
 msgid "Unit Description"
 msgstr "Descriptio Unitatis"
 
-#: src/hotkeys.cpp:61
+#: src/hotkeys.cpp:62
 msgid "Rename Unit"
 msgstr "Unitatem Renominare"
 
-#: src/hotkeys.cpp:63
+#: src/hotkeys.cpp:64
 #, fuzzy
 msgid "Save Replay"
 msgstr "Claves Notarum Servare"
 
-#: src/hotkeys.cpp:64 src/hotkeys.cpp:111
+#: src/hotkeys.cpp:65 src/hotkeys.cpp:112
 msgid "Save Map"
 msgstr "Chartam Servare"
 
-#: src/hotkeys.cpp:66
+#: src/hotkeys.cpp:67
 msgid "Recruit"
 msgstr "Conscribere"
 
-#: src/hotkeys.cpp:67
+#: src/hotkeys.cpp:68
 msgid "Repeat Recruit"
 msgstr "Rursus Conscribere"
 
-#: src/hotkeys.cpp:68
+#: src/hotkeys.cpp:69
 msgid "Recall"
 msgstr "Revocare"
 
-#: src/hotkeys.cpp:69
+#: src/hotkeys.cpp:70
 msgid "End Turn"
 msgstr "Tractum Finire"
 
-#: src/hotkeys.cpp:70
+#: src/hotkeys.cpp:71
 #, fuzzy
 msgid "Toggle Ellipses"
 msgstr "Rete Ponere/Tollere"
 
-#: src/hotkeys.cpp:71
+#: src/hotkeys.cpp:72
 msgid "Toggle Grid"
 msgstr "Rete Ponere/Tollere"
 
-#: src/hotkeys.cpp:72
+#: src/hotkeys.cpp:73
 msgid "Mouse Scrolling"
 msgstr "Gyrum Muris"
 
-#: src/hotkeys.cpp:73
+#: src/hotkeys.cpp:74
 msgid "Status Table"
 msgstr "Index Statuum"
 
-#: src/hotkeys.cpp:74
+#: src/hotkeys.cpp:75
 msgid "Mute"
 msgstr "Musicam et sonum tollere"
 
-#: src/hotkeys.cpp:75
+#: src/hotkeys.cpp:76
 msgid "Speak"
 msgstr "Loqui"
 
-#: src/hotkeys.cpp:77
+#: src/hotkeys.cpp:78
 #, fuzzy
 msgid "Change Side (Debug!)"
 msgstr "Partem Unitatis Mutare (Emendare!)"
 
-#: src/hotkeys.cpp:79
+#: src/hotkeys.cpp:80
 msgid "Scenario Objectives"
 msgstr "Proposita Missionis"
 
-#: src/hotkeys.cpp:80
+#: src/hotkeys.cpp:81
 msgid "Unit List"
 msgstr "Index Unitatum"
 
-#: src/hotkeys.cpp:81
+#: src/hotkeys.cpp:82
 msgid "Statistics"
 msgstr "Census"
 
-#: src/hotkeys.cpp:82 src/hotkeys.cpp:92
+#: src/hotkeys.cpp:83 src/hotkeys.cpp:93
 msgid "Stop"
 msgstr "Sistere"
 
-#: src/hotkeys.cpp:83 src/hotkeys.cpp:90
+#: src/hotkeys.cpp:84 src/hotkeys.cpp:91
 msgid "Play"
 msgstr "Ludere"
 
-#: src/hotkeys.cpp:85
+#: src/hotkeys.cpp:86
 #, fuzzy
 msgid "Set Team Label"
 msgstr "Titulum Ponere"
 
-#: src/hotkeys.cpp:86
+#: src/hotkeys.cpp:87
 msgid "Set Label"
 msgstr "Titulum Ponere"
 
-#: src/hotkeys.cpp:87
+#: src/hotkeys.cpp:88
 msgid "Clear Labels"
 msgstr "Titula Tollere"
 
-#: src/hotkeys.cpp:88
+#: src/hotkeys.cpp:89
 msgid "Show Enemy Moves"
 msgstr "Motus Hostium Monstrare"
 
-#: src/hotkeys.cpp:89
+#: src/hotkeys.cpp:90
 msgid "Best Possible Enemy Moves"
 msgstr "Motus Optimos Hostium Monstrare"
 
-#: src/hotkeys.cpp:91
+#: src/hotkeys.cpp:92
 msgid "Reset"
 msgstr "Reponere"
 
-#: src/hotkeys.cpp:93
+#: src/hotkeys.cpp:94
 msgid "Next Turn"
 msgstr "Tractus Insequens"
 
-#: src/hotkeys.cpp:94
+#: src/hotkeys.cpp:95
 msgid "Next Side"
 msgstr "Pars proxima"
 
-#: src/hotkeys.cpp:96
+#: src/hotkeys.cpp:97
 #, fuzzy
 msgid "Full map"
 msgstr "Chartam in Speculo Reddere"
 
-#: src/hotkeys.cpp:98
+#: src/hotkeys.cpp:99
 msgid "Each team"
 msgstr ""
 
-#: src/hotkeys.cpp:100
+#: src/hotkeys.cpp:101
 msgid "Team 1"
 msgstr ""
 
-#: src/hotkeys.cpp:101
+#: src/hotkeys.cpp:102
 msgid "Skip animation"
 msgstr "Animationem saltare"
 
-#: src/hotkeys.cpp:104
+#: src/hotkeys.cpp:105
 msgid "Quit to Desktop"
 msgstr ""
 
-#: src/hotkeys.cpp:105
+#: src/hotkeys.cpp:106
 #, fuzzy
 msgid "Close Map"
 msgstr "Claudere"
 
-#: src/hotkeys.cpp:106
+#: src/hotkeys.cpp:107
 msgid "Switch Map"
 msgstr ""
 
-#: src/hotkeys.cpp:108
+#: src/hotkeys.cpp:109
 msgid "Partial Undo"
 msgstr ""
 
-#: src/hotkeys.cpp:110
+#: src/hotkeys.cpp:111
 msgid "Load Map"
 msgstr "Chartam Restituere"
 
-#: src/hotkeys.cpp:112
+#: src/hotkeys.cpp:113
 #, fuzzy
 msgid "Save Map As"
 msgstr "Chartam Servare"
 
-#: src/hotkeys.cpp:113
+#: src/hotkeys.cpp:114
 msgid "Revert All Changes"
 msgstr ""
 
-#: src/hotkeys.cpp:114
+#: src/hotkeys.cpp:115
 #, fuzzy
 msgid "Map Information"
 msgstr "Generator Chartarum"
 
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:117
 msgid "Swap fore- and background terrains"
 msgstr ""
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:118
 #, fuzzy
 msgid "Next Tool"
 msgstr "Tractus Insequens"
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:119
 msgid "Paint Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:120
 msgid "Fill Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:120
+#: src/hotkeys.cpp:121
 #, fuzzy
 msgid "Selection Tool"
 msgstr "Omnia Eligere"
 
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:123
 msgid "Set Starting Positions Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:123
+#: src/hotkeys.cpp:124
 #, fuzzy
 msgid "Next Brush"
 msgstr "Tractus Insequens"
 
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:125
 #, fuzzy
 msgid "Default Brush"
 msgstr "Conspectus Solitus"
 
-#: src/hotkeys.cpp:125
+#: src/hotkeys.cpp:126
 msgid "Cut"
 msgstr "Excidere"
 
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:127
 msgid "Copy"
 msgstr "Exscribere"
 
-#: src/hotkeys.cpp:127
+#: src/hotkeys.cpp:128
 msgid "Paste"
 msgstr "Glutinare"
 
-#: src/hotkeys.cpp:128
+#: src/hotkeys.cpp:129
 msgid "Export selected coordinates to system clipboard"
 msgstr ""
 
-#: src/hotkeys.cpp:130
+#: src/hotkeys.cpp:131
 msgid "Select All"
 msgstr "Omnia Eligere"
 
-#: src/hotkeys.cpp:132
+#: src/hotkeys.cpp:133
 msgid "Select Inverse"
 msgstr ""
 
-#: src/hotkeys.cpp:134
+#: src/hotkeys.cpp:135
 #, fuzzy
 msgid "Select None"
 msgstr "Omnia Eligere"
 
-#: src/hotkeys.cpp:136
+#: src/hotkeys.cpp:137
 msgid "Rotate Clipboard Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:138
+#: src/hotkeys.cpp:139
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:140
+#: src/hotkeys.cpp:141
 msgid "Flip Clipboard Horizontally"
 msgstr ""
 
-#: src/hotkeys.cpp:142
+#: src/hotkeys.cpp:143
 msgid "Flip Clipboard Vertically"
 msgstr ""
 
-#: src/hotkeys.cpp:144
+#: src/hotkeys.cpp:145
 #, fuzzy
 msgid "Rotate Selection"
 msgstr "Electionem Implere"
 
-#: src/hotkeys.cpp:146
+#: src/hotkeys.cpp:147
 #, fuzzy
 msgid "Flip Selection"
 msgstr "Electionem Implere"
 
-#: src/hotkeys.cpp:148
+#: src/hotkeys.cpp:149
 msgid "Fill Selection"
 msgstr "Electionem Implere"
 
-#: src/hotkeys.cpp:150
+#: src/hotkeys.cpp:151
 #, fuzzy
 msgid "Generate Tiles In Selection"
 msgstr "Electionem Implere"
 
-#: src/hotkeys.cpp:152
+#: src/hotkeys.cpp:153
 msgid "Randomize Tiles In Selection"
 msgstr ""
 
-#: src/hotkeys.cpp:156
+#: src/hotkeys.cpp:157
 #, fuzzy
 msgid "Rotate Map"
 msgstr "Chartam Restituere"
 
-#: src/hotkeys.cpp:158
+#: src/hotkeys.cpp:159
 #, fuzzy
 msgid "Generate Map"
 msgstr "Chartam Novam Generare"
 
-#: src/hotkeys.cpp:160
+#: src/hotkeys.cpp:161
 msgid "Apply a Mask"
 msgstr ""
 
-#: src/hotkeys.cpp:162
+#: src/hotkeys.cpp:163
 #, fuzzy
 msgid "Create Mask"
 msgstr "Lusum Servare"
 
-#: src/hotkeys.cpp:164
+#: src/hotkeys.cpp:165
 #, fuzzy
 msgid "Refresh Display"
 msgstr "Scrinium"
 
-#: src/hotkeys.cpp:166
+#: src/hotkeys.cpp:167
 msgid "Update Terrain Transitions"
 msgstr ""
 
-#: src/hotkeys.cpp:168
+#: src/hotkeys.cpp:169
 msgid "Auto-update Terrain Transitions"
 msgstr ""
 
-#: src/hotkeys.cpp:170
+#: src/hotkeys.cpp:171
 msgid "Refresh Image Cache"
 msgstr "Thesaurum Imaginum Renovare"
 
-#: src/hotkeys.cpp:172
+#: src/hotkeys.cpp:173
 msgid "Draw Hex Coordinates"
 msgstr ""
 
-#: src/hotkeys.cpp:174
+#: src/hotkeys.cpp:175
 #, fuzzy
 msgid "Draw Terrain Codes"
 msgstr "Agros Pingere"
 
-#: src/hotkeys.cpp:179
+#: src/hotkeys.cpp:180
 msgid "Delay Shroud Updates"
 msgstr "Integumentum Tardius Ponere"
 
-#: src/hotkeys.cpp:180
+#: src/hotkeys.cpp:181
 msgid "Update Shroud Now"
 msgstr "Integumentum Nunc Ponere"
 
-#: src/hotkeys.cpp:181
+#: src/hotkeys.cpp:182
 msgid "Continue Move"
 msgstr "Tractum Pergere"
 
-#: src/hotkeys.cpp:182
+#: src/hotkeys.cpp:183
 msgid "Find Label or Unit"
 msgstr "Titulum aut Unitatem Invenire"
 
-#: src/hotkeys.cpp:183
+#: src/hotkeys.cpp:184
 msgid "Speak to Ally"
 msgstr "Socio Loqui"
 
-#: src/hotkeys.cpp:184
+#: src/hotkeys.cpp:185
 msgid "Speak to All"
 msgstr "Omnibus Loqui"
 
-#: src/hotkeys.cpp:186
+#: src/hotkeys.cpp:187
 msgid "View Chat Log"
 msgstr "Acta Colloquii Aspicere"
 
-#: src/hotkeys.cpp:187
+#: src/hotkeys.cpp:188
 msgid "Change the language"
 msgstr "Linguam mutare"
 
-#: src/hotkeys.cpp:189
+#: src/hotkeys.cpp:190
 msgid "Enter user command"
 msgstr "Imperium utentis dare"
 
-#: src/hotkeys.cpp:190
+#: src/hotkeys.cpp:191
 #, fuzzy
 msgid "Custom command"
 msgstr "Imperium utentis dare"
 
-#: src/hotkeys.cpp:191
+#: src/hotkeys.cpp:192
 msgid "Run AI formula"
 msgstr ""
 
-#: src/hotkeys.cpp:192
+#: src/hotkeys.cpp:193
 #, fuzzy
 msgid "Clear messages"
 msgstr "Titula Tollere"
 
-#: src/hotkeys.cpp:194
+#: src/hotkeys.cpp:195
 msgid "User-Command#2"
 msgstr ""
 
-#: src/hotkeys.cpp:195
+#: src/hotkeys.cpp:196
 msgid "User-Command#3"
 msgstr ""
 
-#: src/hotkeys.cpp:642 src/hotkeys.cpp:930
+#: src/hotkeys.cpp:643 src/hotkeys.cpp:934
 msgid "Do you really want to quit?"
 msgstr "Visne vere relinquere?"
 
-#: src/hotkeys.cpp:885
+#: src/hotkeys.cpp:889
 #, fuzzy
 msgid "Map-Screenshot"
 msgstr "Imago Scrinii"
 
-#: src/hotkeys.cpp:892
+#: src/hotkeys.cpp:896
 #, fuzzy
 msgid "Screenshot done"
 msgstr "Imago Scrinii"
 
-#: src/hotkeys.cpp:894
+#: src/hotkeys.cpp:898
 #, fuzzy
 msgid "Screenshot failed"
 msgstr "Imago Scrinii"

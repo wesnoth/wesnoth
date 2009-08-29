@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4.2+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-26 14:50+0200\n"
+"POT-Creation-Date: 2009-08-29 12:11+0200\n"
 "PO-Revision-Date: 2008-07-01 17:35-0000\n"
 "Last-Translator: amnay <amnay@operamail.com>\n"
 "Language-Team: none\n"
@@ -603,7 +603,7 @@ msgstr ""
 #: data/gui/default/window/editor_new_map.cfg:111
 #: data/gui/default/window/editor_resize_map.cfg:275
 #: data/gui/default/window/editor_settings.cfg:240
-#: data/gui/default/window/game_load.cfg:457
+#: data/gui/default/window/game_load.cfg:442
 #: data/gui/default/window/game_save.cfg:134
 #: data/gui/default/window/language_selection.cfg:133
 #: data/gui/default/window/message.cfg:136
@@ -628,8 +628,8 @@ msgstr ""
 #. [button]: id=ok
 #: data/gui/default/window/campaign_dialog.cfg:301
 #: data/gui/default/window/editor_settings.cfg:230
-#: data/gui/default/window/game_load.cfg:442
-#: data/gui/default/window/game_load.cfg:443
+#: data/gui/default/window/game_load.cfg:428
+#: data/gui/default/window/game_load.cfg:429
 #: data/gui/default/window/game_save.cfg:119
 #: data/gui/default/window/game_save.cfg:120
 #: data/gui/default/window/mp_login.cfg:234
@@ -670,7 +670,7 @@ msgstr "إنشاء خريطة جديدة"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:109
+#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:110
 msgid "New Map"
 msgstr "خريطة جديدة"
 
@@ -695,7 +695,7 @@ msgstr "إنشاء خريطة جديدة"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:154
+#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:155
 msgid "Resize Map"
 msgstr "إعادة تحجيم الخريطة"
 
@@ -742,7 +742,7 @@ msgstr "إعادة تحجيم الخريطة"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:107
+#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:108
 #, fuzzy
 msgid "Editor Settings"
 msgstr "تفضيلتات مفتاح الاختصار"
@@ -861,8 +861,8 @@ msgstr ""
 #. [grid]
 #: data/gui/default/window/formula_debugger.cfg:222
 #: data/gui/default/window/lobby_main.cfg:539
-#: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:642
-#: src/hotkeys.cpp:930
+#: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:643
+#: src/hotkeys.cpp:934
 msgid "Quit"
 msgstr "مغادرة"
 
@@ -910,50 +910,50 @@ msgstr "لا"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_load.cfg:42
-#: src/gui/dialogs/mp_create_game.cpp:78 src/hotkeys.cpp:65
+#: src/gui/dialogs/mp_create_game.cpp:78 src/hotkeys.cpp:66
 msgid "Load Game"
 msgstr "تحميل لعبة"
 
 #. [label]: id=lblChoose
-#: data/gui/default/window/game_load.cfg:177
+#: data/gui/default/window/game_load.cfg:179
 msgid "Choose the game to load"
 msgstr ""
 
 #. [label]: id=lblFilter
-#: data/gui/default/window/game_load.cfg:197
+#: data/gui/default/window/game_load.cfg:203
 #, fuzzy
 msgid "Filter"
 msgstr "الملف:"
 
 #. [label]: id=name
 #. [label]: id=filename
-#: data/gui/default/window/game_load.cfg:248
+#: data/gui/default/window/game_load.cfg:253
 #: data/gui/default/window/mp_server_list.cfg:96
 #, fuzzy
 msgid "Name"
 msgstr "الإسم:"
 
 #. [label]: id=date
-#: data/gui/default/window/game_load.cfg:265
+#: data/gui/default/window/game_load.cfg:267
 #, fuzzy
 msgid "Date"
 msgstr "إلصاق"
 
 #. [button]: id=delete
-#: data/gui/default/window/game_load.cfg:381
-#: data/gui/default/window/game_load.cfg:382
+#: data/gui/default/window/game_load.cfg:351
+#: data/gui/default/window/game_load.cfg:352
 #, fuzzy
 msgid "Delete"
 msgstr "حذف الملف"
 
 #. [toggle_button]: id=show_replay
-#: data/gui/default/window/game_load.cfg:404
+#: data/gui/default/window/game_load.cfg:370
 #, fuzzy
 msgid "Show replay"
 msgstr "لاعب"
 
 #. [toggle_button]: id=cancel_orders
-#: data/gui/default/window/game_load.cfg:416
+#: data/gui/default/window/game_load.cfg:388
 #, fuzzy
 msgid "Cancel orders"
 msgstr "إلغاء"
@@ -962,7 +962,7 @@ msgstr "إلغاء"
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_save.cfg:32
 #: data/gui/default/window/game_save_message.cfg:32
-#: data/gui/default/window/game_save_oos.cfg:32 src/hotkeys.cpp:62
+#: data/gui/default/window/game_save_oos.cfg:32 src/hotkeys.cpp:63
 msgid "Save Game"
 msgstr "حفظ اللعبة"
 
@@ -991,7 +991,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit_game
-#: data/gui/default/window/game_save_oos.cfg:159 src/hotkeys.cpp:84
+#: data/gui/default/window/game_save_oos.cfg:159 src/hotkeys.cpp:85
 msgid "Quit Game"
 msgstr "مغادرة اللعبة"
 
@@ -1173,7 +1173,7 @@ msgstr "رمال"
 #. [grid]
 #: data/gui/default/window/lobby_main.cfg:545
 #: data/gui/default/window/title_screen.cfg:189
-#: src/game_preferences_display.cpp:53 src/hotkeys.cpp:78
+#: src/game_preferences_display.cpp:53 src/hotkeys.cpp:79
 msgid "Preferences"
 msgstr "تفضيلات"
 
@@ -1187,7 +1187,7 @@ msgstr "فيديو"
 #. [button]: id=show_help
 #. [button]: id=help
 #: data/gui/default/window/lobby_main.cfg:557
-#: data/gui/default/window/title_screen.cfg:109 src/hotkeys.cpp:185
+#: data/gui/default/window/title_screen.cfg:109 src/hotkeys.cpp:186
 msgid "Help"
 msgstr "مساعدة"
 
@@ -1581,7 +1581,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/unit_create.cfg:37 src/hotkeys.cpp:76
+#: data/gui/default/window/unit_create.cfg:37 src/hotkeys.cpp:77
 msgid "Create Unit (Debug!)"
 msgstr "خلق وحدة (تنقيح!)"
 
@@ -2258,441 +2258,445 @@ msgid "Previous Unit"
 msgstr "الوحدة السابقة"
 
 #: src/hotkeys.cpp:48
+msgid "Add waypoint"
+msgstr ""
+
+#: src/hotkeys.cpp:49
 msgid "Hold Position"
 msgstr "البقاء على ذلك الوضع"
 
-#: src/hotkeys.cpp:49
+#: src/hotkeys.cpp:50
 msgid "End Unit Turn"
 msgstr "إنهاء دور الوحدة"
 
-#: src/hotkeys.cpp:50
+#: src/hotkeys.cpp:51
 msgid "Leader"
 msgstr "القائد"
 
-#: src/hotkeys.cpp:51
+#: src/hotkeys.cpp:52
 msgid "Undo"
 msgstr "تراجع"
 
-#: src/hotkeys.cpp:52
+#: src/hotkeys.cpp:53
 msgid "Redo"
 msgstr "إعادة"
 
-#: src/hotkeys.cpp:53
+#: src/hotkeys.cpp:54
 msgid "Zoom In"
 msgstr "تكبير"
 
-#: src/hotkeys.cpp:54
+#: src/hotkeys.cpp:55
 msgid "Zoom Out"
 msgstr "تصغير"
 
-#: src/hotkeys.cpp:55
+#: src/hotkeys.cpp:56
 msgid "Default Zoom"
 msgstr "التكبير الأصلي"
 
-#: src/hotkeys.cpp:56
+#: src/hotkeys.cpp:57
 msgid "Toggle Full Screen"
 msgstr "ملء الشاشة"
 
-#: src/hotkeys.cpp:57 src/hotkeys.cpp:885
+#: src/hotkeys.cpp:58 src/hotkeys.cpp:889
 msgid "Screenshot"
 msgstr "لقطة شاشة"
 
-#: src/hotkeys.cpp:58
+#: src/hotkeys.cpp:59
 #, fuzzy
 msgid "Map Screenshot"
 msgstr "لقطة شاشة"
 
-#: src/hotkeys.cpp:59
+#: src/hotkeys.cpp:60
 msgid "Accelerated"
 msgstr "سريع"
 
-#: src/hotkeys.cpp:60
+#: src/hotkeys.cpp:61
 msgid "Unit Description"
 msgstr "وصف الوحدة"
 
-#: src/hotkeys.cpp:61
+#: src/hotkeys.cpp:62
 msgid "Rename Unit"
 msgstr "إعادة تسمية الوحدة"
 
-#: src/hotkeys.cpp:63
+#: src/hotkeys.cpp:64
 msgid "Save Replay"
 msgstr "حفظ الإعادة"
 
-#: src/hotkeys.cpp:64 src/hotkeys.cpp:111
+#: src/hotkeys.cpp:65 src/hotkeys.cpp:112
 msgid "Save Map"
 msgstr "حفظ الخريطة"
 
-#: src/hotkeys.cpp:66
+#: src/hotkeys.cpp:67
 msgid "Recruit"
 msgstr "تجنيد"
 
-#: src/hotkeys.cpp:67
+#: src/hotkeys.cpp:68
 msgid "Repeat Recruit"
 msgstr "إعادة التجنيد"
 
-#: src/hotkeys.cpp:68
+#: src/hotkeys.cpp:69
 msgid "Recall"
 msgstr "استدعاء"
 
-#: src/hotkeys.cpp:69
+#: src/hotkeys.cpp:70
 msgid "End Turn"
 msgstr "إنهاء الدور"
 
-#: src/hotkeys.cpp:70
+#: src/hotkeys.cpp:71
 #, fuzzy
 msgid "Toggle Ellipses"
 msgstr "شبكة"
 
-#: src/hotkeys.cpp:71
+#: src/hotkeys.cpp:72
 msgid "Toggle Grid"
 msgstr "شبكة"
 
-#: src/hotkeys.cpp:72
+#: src/hotkeys.cpp:73
 msgid "Mouse Scrolling"
 msgstr "لفّ الفأرة"
 
-#: src/hotkeys.cpp:73
+#: src/hotkeys.cpp:74
 msgid "Status Table"
 msgstr "جدول الحالات"
 
-#: src/hotkeys.cpp:74
+#: src/hotkeys.cpp:75
 msgid "Mute"
 msgstr "اكتم"
 
-#: src/hotkeys.cpp:75
+#: src/hotkeys.cpp:76
 msgid "Speak"
 msgstr "تكلم"
 
-#: src/hotkeys.cpp:77
+#: src/hotkeys.cpp:78
 #, fuzzy
 msgid "Change Side (Debug!)"
 msgstr "تغيير طرف الوحدة (تنقيح!)"
 
-#: src/hotkeys.cpp:79
+#: src/hotkeys.cpp:80
 msgid "Scenario Objectives"
 msgstr "أهداف السِيناريُو"
 
-#: src/hotkeys.cpp:80
+#: src/hotkeys.cpp:81
 msgid "Unit List"
 msgstr "قائمة الوحدات"
 
-#: src/hotkeys.cpp:81
+#: src/hotkeys.cpp:82
 msgid "Statistics"
 msgstr "إحصائيات"
 
-#: src/hotkeys.cpp:82 src/hotkeys.cpp:92
+#: src/hotkeys.cpp:83 src/hotkeys.cpp:93
 msgid "Stop"
 msgstr "وقوف"
 
-#: src/hotkeys.cpp:83 src/hotkeys.cpp:90
+#: src/hotkeys.cpp:84 src/hotkeys.cpp:91
 msgid "Play"
 msgstr "إلعب"
 
-#: src/hotkeys.cpp:85
+#: src/hotkeys.cpp:86
 msgid "Set Team Label"
 msgstr "وضع لصيقة مرئية من طرف الفريق فقط"
 
-#: src/hotkeys.cpp:86
+#: src/hotkeys.cpp:87
 msgid "Set Label"
 msgstr "وضع لصيقة"
 
-#: src/hotkeys.cpp:87
+#: src/hotkeys.cpp:88
 msgid "Clear Labels"
 msgstr "محو اللصائق"
 
-#: src/hotkeys.cpp:88
+#: src/hotkeys.cpp:89
 msgid "Show Enemy Moves"
 msgstr "إظهار تنقلات العدو"
 
-#: src/hotkeys.cpp:89
+#: src/hotkeys.cpp:90
 msgid "Best Possible Enemy Moves"
 msgstr "أفضل تنقل ممكن للعدوّ"
 
-#: src/hotkeys.cpp:91
+#: src/hotkeys.cpp:92
 msgid "Reset"
 msgstr "إعادة التنضيد"
 
-#: src/hotkeys.cpp:93
+#: src/hotkeys.cpp:94
 msgid "Next Turn"
 msgstr "الدور التالي"
 
-#: src/hotkeys.cpp:94
+#: src/hotkeys.cpp:95
 msgid "Next Side"
 msgstr "الطرف التالي"
 
-#: src/hotkeys.cpp:96
+#: src/hotkeys.cpp:97
 msgid "Full map"
 msgstr "خريطة كاملة"
 
-#: src/hotkeys.cpp:98
+#: src/hotkeys.cpp:99
 msgid "Each team"
 msgstr "كل فريق"
 
-#: src/hotkeys.cpp:100
+#: src/hotkeys.cpp:101
 msgid "Team 1"
 msgstr "الفريق 1"
 
-#: src/hotkeys.cpp:101
+#: src/hotkeys.cpp:102
 msgid "Skip animation"
 msgstr "تخطّي التحريكة"
 
-#: src/hotkeys.cpp:104
+#: src/hotkeys.cpp:105
 msgid "Quit to Desktop"
 msgstr ""
 
-#: src/hotkeys.cpp:105
+#: src/hotkeys.cpp:106
 #, fuzzy
 msgid "Close Map"
 msgstr "غلق"
 
-#: src/hotkeys.cpp:106
+#: src/hotkeys.cpp:107
 msgid "Switch Map"
 msgstr ""
 
-#: src/hotkeys.cpp:108
+#: src/hotkeys.cpp:109
 msgid "Partial Undo"
 msgstr ""
 
-#: src/hotkeys.cpp:110
+#: src/hotkeys.cpp:111
 msgid "Load Map"
 msgstr "تحميل خريطة"
 
-#: src/hotkeys.cpp:112
+#: src/hotkeys.cpp:113
 #, fuzzy
 msgid "Save Map As"
 msgstr "حفظ الخريطة"
 
-#: src/hotkeys.cpp:113
+#: src/hotkeys.cpp:114
 msgid "Revert All Changes"
 msgstr ""
 
-#: src/hotkeys.cpp:114
+#: src/hotkeys.cpp:115
 #, fuzzy
 msgid "Map Information"
 msgstr "مُوَلِّد الخرائط"
 
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:117
 msgid "Swap fore- and background terrains"
 msgstr ""
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:118
 #, fuzzy
 msgid "Next Tool"
 msgstr "الدور التالي"
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:119
 msgid "Paint Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:120
 msgid "Fill Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:120
+#: src/hotkeys.cpp:121
 #, fuzzy
 msgid "Selection Tool"
 msgstr "انتقاء الكل"
 
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:123
 msgid "Set Starting Positions Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:123
+#: src/hotkeys.cpp:124
 #, fuzzy
 msgid "Next Brush"
 msgstr "الدور التالي"
 
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:125
 #, fuzzy
 msgid "Default Brush"
 msgstr "التكبير الأصلي"
 
-#: src/hotkeys.cpp:125
+#: src/hotkeys.cpp:126
 msgid "Cut"
 msgstr "قصّ"
 
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:127
 msgid "Copy"
 msgstr "نسخ"
 
-#: src/hotkeys.cpp:127
+#: src/hotkeys.cpp:128
 msgid "Paste"
 msgstr "إلصاق"
 
-#: src/hotkeys.cpp:128
+#: src/hotkeys.cpp:129
 msgid "Export selected coordinates to system clipboard"
 msgstr ""
 
-#: src/hotkeys.cpp:130
+#: src/hotkeys.cpp:131
 msgid "Select All"
 msgstr "انتقاء الكل"
 
-#: src/hotkeys.cpp:132
+#: src/hotkeys.cpp:133
 msgid "Select Inverse"
 msgstr ""
 
-#: src/hotkeys.cpp:134
+#: src/hotkeys.cpp:135
 #, fuzzy
 msgid "Select None"
 msgstr "انتقاء الكل"
 
-#: src/hotkeys.cpp:136
+#: src/hotkeys.cpp:137
 msgid "Rotate Clipboard Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:138
+#: src/hotkeys.cpp:139
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:140
+#: src/hotkeys.cpp:141
 msgid "Flip Clipboard Horizontally"
 msgstr ""
 
-#: src/hotkeys.cpp:142
+#: src/hotkeys.cpp:143
 msgid "Flip Clipboard Vertically"
 msgstr ""
 
-#: src/hotkeys.cpp:144
+#: src/hotkeys.cpp:145
 msgid "Rotate Selection"
 msgstr "إدارة المنتقى"
 
-#: src/hotkeys.cpp:146
+#: src/hotkeys.cpp:147
 #, fuzzy
 msgid "Flip Selection"
 msgstr "ملء المنتقى"
 
-#: src/hotkeys.cpp:148
+#: src/hotkeys.cpp:149
 msgid "Fill Selection"
 msgstr "ملء المنتقى"
 
-#: src/hotkeys.cpp:150
+#: src/hotkeys.cpp:151
 #, fuzzy
 msgid "Generate Tiles In Selection"
 msgstr "إدارة المنتقى"
 
-#: src/hotkeys.cpp:152
+#: src/hotkeys.cpp:153
 msgid "Randomize Tiles In Selection"
 msgstr ""
 
-#: src/hotkeys.cpp:156
+#: src/hotkeys.cpp:157
 #, fuzzy
 msgid "Rotate Map"
 msgstr "تحميل خريطة"
 
-#: src/hotkeys.cpp:158
+#: src/hotkeys.cpp:159
 #, fuzzy
 msgid "Generate Map"
 msgstr "إنشاء خريطة جديدة"
 
-#: src/hotkeys.cpp:160
+#: src/hotkeys.cpp:161
 msgid "Apply a Mask"
 msgstr ""
 
-#: src/hotkeys.cpp:162
+#: src/hotkeys.cpp:163
 #, fuzzy
 msgid "Create Mask"
 msgstr "حفظ اللعبة"
 
-#: src/hotkeys.cpp:164
+#: src/hotkeys.cpp:165
 #, fuzzy
 msgid "Refresh Display"
 msgstr "فيديو"
 
-#: src/hotkeys.cpp:166
+#: src/hotkeys.cpp:167
 #, fuzzy
 msgid "Update Terrain Transitions"
 msgstr "تجديد الإنتقال بين الخانات"
 
-#: src/hotkeys.cpp:168
+#: src/hotkeys.cpp:169
 #, fuzzy
 msgid "Auto-update Terrain Transitions"
 msgstr "تجديد الإنتقال بين الخانات"
 
-#: src/hotkeys.cpp:170
+#: src/hotkeys.cpp:171
 msgid "Refresh Image Cache"
 msgstr "تحديث مخبإ الصورة"
 
-#: src/hotkeys.cpp:172
+#: src/hotkeys.cpp:173
 msgid "Draw Hex Coordinates"
 msgstr ""
 
-#: src/hotkeys.cpp:174
+#: src/hotkeys.cpp:175
 #, fuzzy
 msgid "Draw Terrain Codes"
 msgstr "رسم الأرضية"
 
-#: src/hotkeys.cpp:179
+#: src/hotkeys.cpp:180
 msgid "Delay Shroud Updates"
 msgstr "تأخير تجديد الحُجُب"
 
-#: src/hotkeys.cpp:180
+#: src/hotkeys.cpp:181
 msgid "Update Shroud Now"
 msgstr "تحديث الحجب الآن"
 
-#: src/hotkeys.cpp:181
+#: src/hotkeys.cpp:182
 msgid "Continue Move"
 msgstr "متابعة الحركة"
 
-#: src/hotkeys.cpp:182
+#: src/hotkeys.cpp:183
 msgid "Find Label or Unit"
 msgstr "العثور على لصيقة أو وحدة"
 
-#: src/hotkeys.cpp:183
+#: src/hotkeys.cpp:184
 msgid "Speak to Ally"
 msgstr "تكليم الحليف"
 
-#: src/hotkeys.cpp:184
+#: src/hotkeys.cpp:185
 msgid "Speak to All"
 msgstr "تكليم الجميع"
 
-#: src/hotkeys.cpp:186
+#: src/hotkeys.cpp:187
 msgid "View Chat Log"
 msgstr "إظهار تاريخ الحديث"
 
-#: src/hotkeys.cpp:187
+#: src/hotkeys.cpp:188
 msgid "Change the language"
 msgstr "تغيير اللغة"
 
-#: src/hotkeys.cpp:189
+#: src/hotkeys.cpp:190
 msgid "Enter user command"
 msgstr "إدخال أمر المُستَخدِم"
 
-#: src/hotkeys.cpp:190
+#: src/hotkeys.cpp:191
 #, fuzzy
 msgid "Custom command"
 msgstr "إدخال أمر المُستَخدِم"
 
-#: src/hotkeys.cpp:191
+#: src/hotkeys.cpp:192
 msgid "Run AI formula"
 msgstr ""
 
-#: src/hotkeys.cpp:192
+#: src/hotkeys.cpp:193
 msgid "Clear messages"
 msgstr "محو الرسائل"
 
-#: src/hotkeys.cpp:194
+#: src/hotkeys.cpp:195
 msgid "User-Command#2"
 msgstr "أمر المُستخدِم #2"
 
-#: src/hotkeys.cpp:195
+#: src/hotkeys.cpp:196
 msgid "User-Command#3"
 msgstr "أمر المُستخدِم #3"
 
-#: src/hotkeys.cpp:642 src/hotkeys.cpp:930
+#: src/hotkeys.cpp:643 src/hotkeys.cpp:934
 msgid "Do you really want to quit?"
 msgstr "أتريد فعلاً المغادرة؟"
 
-#: src/hotkeys.cpp:885
+#: src/hotkeys.cpp:889
 #, fuzzy
 msgid "Map-Screenshot"
 msgstr "لقطة شاشة"
 
-#: src/hotkeys.cpp:892
+#: src/hotkeys.cpp:896
 #, fuzzy
 msgid "Screenshot done"
 msgstr "لقطة شاشة"
 
-#: src/hotkeys.cpp:894
+#: src/hotkeys.cpp:898
 #, fuzzy
 msgid "Screenshot failed"
 msgstr "لقطة شاشة"

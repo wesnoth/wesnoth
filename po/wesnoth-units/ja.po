@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-26 14:50+0200\n"
+"POT-Creation-Date: 2009-08-29 12:11+0200\n"
 "PO-Revision-Date: 2008-04-22 10:08+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -195,19 +195,10 @@ msgstr ""
 
 #. [attack]: type=blade
 #: data/core/units/drakes/Armageddon.cfg:85
-#: data/core/units/drakes/Burner.cfg:108 data/core/units/drakes/Fire.cfg:71
 #: data/core/units/drakes/Inferno.cfg:72
-#: data/core/units/goblins/Direwolf_Rider.cfg:55
-#: data/core/units/gryphons/Gryphon.cfg:41
-#: data/core/units/gryphons/Gryphon_Master.cfg:42
-#: data/core/units/gryphons/Gryphon_Rider.cfg:42
-#: data/core/units/monsters/Skeletal_Dragon.cfg:42
-#: data/core/units/undead/Corpse_Ghoul.cfg:27
-#: data/core/units/undead/Corpse_Necrophage.cfg:28
-#: data/core/units/undead/Spirit_Nightgaunt.cfg:54
-#: data/core/units/undead/Spirit_Shadow.cfg:122
-msgid "claws"
-msgstr "かぎ爪"
+#, fuzzy
+msgid "battle claws"
+msgstr "戦斧"
 
 #. [attack]: type=fire
 #: data/core/units/drakes/Armageddon.cfg:94
@@ -230,44 +221,22 @@ msgstr "ドレークの熟練剣士"
 
 #. [unit_type]: id=Drake Blademaster, race=drake
 #: data/core/units/drakes/Blademaster.cfg:19
+#, fuzzy
 msgid ""
-"The drakes who master the use of a sword are sworn into a special order. The "
-"mark of their initiation is the black-and-white warpaint they display in "
+"The drakes who master the use of war blades are sworn into a special order. "
+"The mark of their initiation is the black-and-white warpaint they display in "
 "battle."
 msgstr ""
 "剣の扱いの達人であるドレークは特別な階級に就任します。この儀式の印として、戦"
 "いにおいて黒と白の戦闘化粧をしています。"
 
 #. [attack]: type=blade
-#. [attack]: type=arcane
 #: data/core/units/drakes/Blademaster.cfg:69
-#: data/core/units/drakes/Clasher.cfg:38
-#: data/core/units/drakes/Enforcer.cfg:36
-#: data/core/units/drakes/Flameheart.cfg:79
-#: data/core/units/drakes/Flare.cfg:83 data/core/units/drakes/Thrasher.cfg:23
-#: data/core/units/elves/Archer.cfg:37 data/core/units/elves/Avenger.cfg:76
-#: data/core/units/elves/Captain.cfg:47 data/core/units/elves/Champion.cfg:36
-#: data/core/units/elves/Fighter.cfg:36 data/core/units/elves/Hero.cfg:35
-#: data/core/units/elves/High_Lord.cfg:73 data/core/units/elves/Lord.cfg:39
-#: data/core/units/elves/Marksman.cfg:66 data/core/units/elves/Marshal.cfg:46
-#: data/core/units/elves/Outrider.cfg:46 data/core/units/elves/Ranger.cfg:73
-#: data/core/units/elves/Rider.cfg:48 data/core/units/elves/Scout.cfg:47
-#: data/core/units/elves/Sharpshooter.cfg:63
-#: data/core/units/humans/Horse_Knight.cfg:35
-#: data/core/units/humans/Horse_Paladin.cfg:52
-#: data/core/units/humans/Loyalist_Cavalryman.cfg:64
-#: data/core/units/humans/Loyalist_Dragoon.cfg:49
-#: data/core/units/humans/Loyalist_Lieutenant.cfg:46
-#: data/core/units/humans/Loyalist_Longbowman.cfg:39
-#: data/core/units/humans/Loyalist_Master_Bowman.cfg:39
-#: data/core/units/humans/Loyalist_Sergeant.cfg:47
-#: data/core/units/humans/Loyalist_Swordsman.cfg:39
-#: data/core/units/humans/Woodsman_Ranger.cfg:59
-#: data/core/units/nagas/Fighter.cfg:102 data/core/units/nagas/Myrmidon.cfg:43
-#: data/core/units/nagas/Warrior.cfg:41 data/core/units/orcs/Grunt.cfg:71
-#: data/core/units/orcs/Leader.cfg:28
-msgid "sword"
-msgstr "剣"
+#: data/core/units/drakes/Fighter.cfg:108
+#: data/core/units/drakes/Warrior.cfg:107
+#, fuzzy
+msgid "war blade"
+msgstr "斬撃"
 
 #. [unit_type]: id=Drake Burner, race=drake
 #: data/core/units/drakes/Burner.cfg:4
@@ -285,6 +254,20 @@ msgstr ""
 "ドレークの焼却者は数少なく、誇りを持った者達で、彼の遠い祖先の力、特に 炎の息"
 "を吐く能力について、最もよく受け継いでいます。これは、彼等の巨大で 恐ろしい爪"
 "が合わさることで、戦闘では危険な敵となります。"
+
+#. [attack]: type=blade
+#: data/core/units/drakes/Burner.cfg:108 data/core/units/drakes/Fire.cfg:71
+#: data/core/units/goblins/Direwolf_Rider.cfg:55
+#: data/core/units/gryphons/Gryphon.cfg:41
+#: data/core/units/gryphons/Gryphon_Master.cfg:42
+#: data/core/units/gryphons/Gryphon_Rider.cfg:42
+#: data/core/units/monsters/Skeletal_Dragon.cfg:42
+#: data/core/units/undead/Corpse_Ghoul.cfg:27
+#: data/core/units/undead/Corpse_Necrophage.cfg:28
+#: data/core/units/undead/Spirit_Nightgaunt.cfg:54
+#: data/core/units/undead/Spirit_Shadow.cfg:122
+msgid "claws"
+msgstr "かぎ爪"
 
 #. [unit_type]: id=Drake Clasher, race=drake
 #: data/core/units/drakes/Clasher.cfg:4
@@ -307,6 +290,13 @@ msgid ""
 "and enforcing the laws of their tribe."
 msgstr ""
 
+#. [attack]: type=blade
+#: data/core/units/drakes/Clasher.cfg:38
+#: data/core/units/drakes/Enforcer.cfg:36
+#: data/core/units/drakes/Thrasher.cfg:23
+msgid "war talon"
+msgstr ""
+
 #. [attack]: type=pierce
 #: data/core/units/drakes/Clasher.cfg:47
 #: data/core/units/drakes/Enforcer.cfg:54
@@ -323,7 +313,7 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Javelineer.cfg:40
 #: data/core/units/humans/Loyalist_Spearman.cfg:59
 #: data/core/units/merfolk/Hoplite.cfg:48
-#: data/core/units/merfolk/Hunter.cfg:25 data/core/units/merfolk/Hunter.cfg:33
+#: data/core/units/merfolk/Hunter.cfg:37 data/core/units/merfolk/Hunter.cfg:45
 #: data/core/units/merfolk/Javelineer.cfg:25
 #: data/core/units/merfolk/Javelineer.cfg:33
 #: data/core/units/merfolk/Spearman.cfg:24
@@ -357,15 +347,8 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/drakes/Enforcer.cfg:45
 #: data/core/units/drakes/Thrasher.cfg:41
-#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:37
-#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:33
-#: data/core/units/humans/Outlaw.cfg:36
-#: data/core/units/humans/Outlaw_Bandit.cfg:47
-#: data/core/units/humans/Outlaw_Fugitive.cfg:41
-#: data/core/units/humans/Outlaw_Highwayman.cfg:37
-#: data/core/units/humans/Royal_Warrior.cfg:35
-msgid "mace"
-msgstr "メイス"
+msgid "ram"
+msgstr ""
 
 #. [unit_type]: id=Drake Fighter, race=drake
 #: data/core/units/drakes/Fighter.cfg:4
@@ -376,20 +359,14 @@ msgstr "ドレークの戦士"
 #: data/core/units/drakes/Fighter.cfg:20
 #, fuzzy
 msgid ""
-"Drake Fighters wield curved scimitars, and possess the fire-breathing skills "
-"of their ancestors. They can also fly, which is troubling to any foe. Their "
-"great strength, coupled with their hardened scales, is rightly frightening "
-"to swordsman of any other race."
+"Drake Fighters wield curved war blades, and possess the fire-breathing "
+"skills of their ancestors. They can also fly, which is troubling to any foe. "
+"Their great strength, coupled with their hardened scales, is rightly "
+"frightening to swordsman of any other race."
 msgstr ""
 "ドレークの戦士は得意なシミターを装備しており、祖先の能力である火炎の ブレスを"
 "行うこともできます。経験の積んだ彼らのほとんどは次のドレークの 熟練戦士となり"
 "ます。"
-
-#. [attack]: type=blade
-#: data/core/units/drakes/Fighter.cfg:108
-#: data/core/units/drakes/Warrior.cfg:107
-msgid "scimitar"
-msgstr "シミター"
 
 #. [unit_type]: id=Fire Drake, race=drake
 #: data/core/units/drakes/Fire.cfg:4
@@ -425,6 +402,34 @@ msgstr ""
 "血管を持っていると言われます。ドラゴンのように炎を吐くことができるため、 この"
 "考えを信じさせますが、なんらかの理由で、身体を切り開いて明らかにしようと した"
 "ものは誰もいません。"
+
+#. [attack]: type=blade
+#. [attack]: type=arcane
+#: data/core/units/drakes/Flameheart.cfg:79
+#: data/core/units/drakes/Flare.cfg:83 data/core/units/elves/Archer.cfg:37
+#: data/core/units/elves/Avenger.cfg:76 data/core/units/elves/Captain.cfg:47
+#: data/core/units/elves/Champion.cfg:36 data/core/units/elves/Fighter.cfg:36
+#: data/core/units/elves/Hero.cfg:35 data/core/units/elves/High_Lord.cfg:73
+#: data/core/units/elves/Lord.cfg:39 data/core/units/elves/Marksman.cfg:66
+#: data/core/units/elves/Marshal.cfg:46 data/core/units/elves/Outrider.cfg:46
+#: data/core/units/elves/Ranger.cfg:73 data/core/units/elves/Rider.cfg:48
+#: data/core/units/elves/Scout.cfg:47
+#: data/core/units/elves/Sharpshooter.cfg:63
+#: data/core/units/humans/Horse_Knight.cfg:35
+#: data/core/units/humans/Horse_Paladin.cfg:52
+#: data/core/units/humans/Loyalist_Cavalryman.cfg:64
+#: data/core/units/humans/Loyalist_Dragoon.cfg:49
+#: data/core/units/humans/Loyalist_Lieutenant.cfg:46
+#: data/core/units/humans/Loyalist_Longbowman.cfg:39
+#: data/core/units/humans/Loyalist_Master_Bowman.cfg:39
+#: data/core/units/humans/Loyalist_Sergeant.cfg:47
+#: data/core/units/humans/Loyalist_Swordsman.cfg:39
+#: data/core/units/humans/Woodsman_Ranger.cfg:59
+#: data/core/units/nagas/Fighter.cfg:102 data/core/units/nagas/Myrmidon.cfg:43
+#: data/core/units/nagas/Warrior.cfg:41 data/core/units/orcs/Grunt.cfg:71
+#: data/core/units/orcs/Leader.cfg:28
+msgid "sword"
+msgstr "剣"
 
 #. [unit_type]: id=Drake Flare, race=drake
 #: data/core/units/drakes/Flare.cfg:4
@@ -573,9 +578,10 @@ msgstr "ドレークの熟練戦士"
 #: data/core/units/drakes/Warrior.cfg:19
 #, fuzzy
 msgid ""
-"Drake Warriors wield swords with great skill, and possess the fire breathing "
-"skills of their ancestors. The great strength of their kind allows them to "
-"strike devastating blows, and to withstand punishment in equal measure."
+"Drake Warriors wield war blades with great skill, and possess the fire "
+"breathing skills of their ancestors. The great strength of their kind allows "
+"them to strike devastating blows, and to withstand punishment in equal "
+"measure."
 msgstr ""
 "ドレークの熟練戦士は素晴らしい腕前の剣を装備しており、祖先の能力である 火炎の"
 "ブレスを行うこともできます。彼等のすさまじい力により、縮み上がるような 一撃を"
@@ -1765,7 +1771,7 @@ msgstr ""
 "直ちに突破してしまうほどです。"
 
 #. [attack]: type=blade
-#: data/core/units/humans/Horse_Grand_Knight.cfg:24
+#: data/core/units/humans/Horse_Grand_Knight.cfg:36
 #: data/core/units/humans/Loyalist_Cavalier.cfg:50
 #: data/core/units/humans/Loyalist_General.cfg:56
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:52
@@ -1775,7 +1781,7 @@ msgid "longsword"
 msgstr "剣"
 
 #. [attack]: type=pierce
-#: data/core/units/humans/Horse_Grand_Knight.cfg:33
+#: data/core/units/humans/Horse_Grand_Knight.cfg:45
 #: data/core/units/humans/Horse_Knight.cfg:44
 #: data/core/units/humans/Horse_Lancer.cfg:24
 #: data/core/units/humans/Horse_Paladin.cfg:61
@@ -2145,6 +2151,17 @@ msgstr ""
 "ています。横隊の中心にいる何人かはその力を 相当支えています。これによる悪化傾"
 "向は明らかで、金属の重さと、 払わねばならない多大な注意の両方においてですが、"
 "特定の状況において この部隊はこの交換条件に十分見合う価値があります。"
+
+#. [attack]: type=impact
+#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:37
+#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:33
+#: data/core/units/humans/Outlaw.cfg:36
+#: data/core/units/humans/Outlaw_Bandit.cfg:47
+#: data/core/units/humans/Outlaw_Fugitive.cfg:41
+#: data/core/units/humans/Outlaw_Highwayman.cfg:37
+#: data/core/units/humans/Royal_Warrior.cfg:35
+msgid "mace"
+msgstr "メイス"
 
 #. [unit_type]: id=Iron Mauler, race=human
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:4
@@ -4973,6 +4990,9 @@ msgstr ""
 "ウーズは全く戦いを好みませんが怪力を持っています。しかしながら、動き回ったり "
 "することになれておらず、素早くもできません。"
 
+#~ msgid "scimitar"
+#~ msgstr "シミター"
+
 #~ msgid ""
 #~ "The weighted nets used by mermen in warfare are a difficult weapon to use "
 #~ "well; those who master it are valued and revered by their comrades. This "
@@ -5209,9 +5229,6 @@ msgstr ""
 
 #~ msgid "pierce"
 #~ msgstr "貫通"
-
-#~ msgid "blade"
-#~ msgstr "斬撃"
 
 #~ msgid "fire"
 #~ msgstr "火炎"

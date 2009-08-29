@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-12 12:58+0200\n"
+"POT-Creation-Date: 2009-08-29 12:11+0200\n"
 "PO-Revision-Date: 2008-12-23 19:00+0900\n"
 "Last-Translator:  <P2295417919104729@hotmail.co.jp>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -364,7 +364,7 @@ msgid "...I know... All right now, let's stop these goblins!"
 msgstr "……分かってる……大丈夫だよ。 ゴブリンどもを止めにいくぞ！"
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:274
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:293
 msgid ""
 "We are barely able to survive these orc raids. We lost two men last week, "
 "more today... yet Weldyn does nothing!"
@@ -372,8 +372,18 @@ msgstr ""
 "このオークの襲撃を乗り切れそうにないな。先週は二人やられた。そして今日も……そ"
 "れでも Weldyn の連中は動かねぇ！"
 
+#. [message]: speaker=Harper
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:300
+#, fuzzy
+msgid ""
+"We are barely able to survive these orc raids. We lost two men last week, "
+"more could have died today... yet Weldyn does nothing!"
+msgstr ""
+"このオークの襲撃を乗り切れそうにないな。先週は二人やられた。そして今日も……そ"
+"れでも Weldyn の連中は動かねぇ！"
+
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:278
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:306
 msgid ""
 "The King stopped sending patrols out here once the war started. Once that "
 "happened, the burden fell to us. We are citizens of Wesnoth, and as long as "
@@ -384,19 +394,19 @@ msgstr ""
 "なびく限り、大群にも耐えよう。"
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:282
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:310
 msgid "The banner will fly over a ghost town if help does not come soon."
 msgstr "すぐに助けが来ないなら、ゴーストタウンに旗が翻ることになるだろうさ。"
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:310
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:338
 msgid ""
 "They're getting closer to our village! What about the town guards, can they "
 "help us?"
 msgstr "やつらが村に迫っている！番兵はどうしたんだ、助けてくれねえのか？"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:314
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:342
 msgid ""
 "They'll come out when they see those riders, or us, approaching, but there "
 "aren't many of them... I wouldn't count on them being able to protect the "
@@ -406,22 +416,22 @@ msgstr ""
 "しかし多くはいない……単独でそう長く村を守れるとは思えん。"
 
 #. [event]
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:329
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:357
 msgid "Remald"
 msgstr "Remald"
 
 #. [event]
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:330
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:358
 msgid "Wolmas"
 msgstr "Wolmas"
 
 #. [event]
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:335
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:363
 msgid "Jasken"
 msgstr "Jasken"
 
 #. [message]: speaker=Wolmas
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:342
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:370
 #, fuzzy
 msgid "What's happening here? Why are you running like mad, $unit.name|?"
 msgstr ""
@@ -429,22 +439,22 @@ msgstr ""
 "user_description| ？"
 
 #. [message]: speaker=unit
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:346
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:374
 msgid "Goblin riders on the hunt. We must not let any of them to the village!"
 msgstr "ゴブリンライダーの襲撃だ。一匹たりとも村に入れるな！"
 
 #. [message]: speaker=Wolmas
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:353
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:381
 msgid "Look! Goblin riders are on the hunt - and heading right for Dallben!"
 msgstr "見ろ！ ウルフライダーどもが狩に出ている。Dallben に向かって来るぞ！"
 
 #. [message]: speaker=Remald
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:357
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:385
 msgid "Halt!"
 msgstr "止まれ！"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:377
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:405
 msgid ""
 "The goblins reached the village! There will surely be nothing left when they "
 "are done pillaging it."
@@ -452,7 +462,7 @@ msgstr ""
 "ゴブリンが村に着いた！ やつらが略奪し終わった後には、何も残らねぇだろうな……"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:390
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:418
 msgid ""
 "None remarked on the passing of the tiny, isolated frontier town. It was but "
 "a harbinger of the evil to come under the tyranny of Asheviere."

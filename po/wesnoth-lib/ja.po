@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-26 14:50+0200\n"
+"POT-Creation-Date: 2009-08-29 12:11+0200\n"
 "PO-Revision-Date: 2008-02-25 00:50+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -607,7 +607,7 @@ msgstr ""
 #: data/gui/default/window/editor_new_map.cfg:111
 #: data/gui/default/window/editor_resize_map.cfg:275
 #: data/gui/default/window/editor_settings.cfg:240
-#: data/gui/default/window/game_load.cfg:457
+#: data/gui/default/window/game_load.cfg:442
 #: data/gui/default/window/game_save.cfg:134
 #: data/gui/default/window/language_selection.cfg:133
 #: data/gui/default/window/message.cfg:136
@@ -632,8 +632,8 @@ msgstr ""
 #. [button]: id=ok
 #: data/gui/default/window/campaign_dialog.cfg:301
 #: data/gui/default/window/editor_settings.cfg:230
-#: data/gui/default/window/game_load.cfg:442
-#: data/gui/default/window/game_load.cfg:443
+#: data/gui/default/window/game_load.cfg:428
+#: data/gui/default/window/game_load.cfg:429
 #: data/gui/default/window/game_save.cfg:119
 #: data/gui/default/window/game_save.cfg:120
 #: data/gui/default/window/mp_login.cfg:234
@@ -674,7 +674,7 @@ msgstr "新しいマップの生成"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:109
+#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:110
 msgid "New Map"
 msgstr "新規マップ"
 
@@ -699,7 +699,7 @@ msgstr "新しいマップの作成"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:154
+#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:155
 msgid "Resize Map"
 msgstr "マップのサイズ変更"
 
@@ -746,7 +746,7 @@ msgstr "マップのサイズ変更"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:107
+#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:108
 #, fuzzy
 msgid "Editor Settings"
 msgstr "ホットキーの設定"
@@ -865,8 +865,8 @@ msgstr ""
 #. [grid]
 #: data/gui/default/window/formula_debugger.cfg:222
 #: data/gui/default/window/lobby_main.cfg:539
-#: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:642
-#: src/hotkeys.cpp:930
+#: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:643
+#: src/hotkeys.cpp:934
 msgid "Quit"
 msgstr "終了"
 
@@ -914,50 +914,50 @@ msgstr "いいえ"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_load.cfg:42
-#: src/gui/dialogs/mp_create_game.cpp:78 src/hotkeys.cpp:65
+#: src/gui/dialogs/mp_create_game.cpp:78 src/hotkeys.cpp:66
 msgid "Load Game"
 msgstr "ゲームを再開"
 
 #. [label]: id=lblChoose
-#: data/gui/default/window/game_load.cfg:177
+#: data/gui/default/window/game_load.cfg:179
 msgid "Choose the game to load"
 msgstr ""
 
 #. [label]: id=lblFilter
-#: data/gui/default/window/game_load.cfg:197
+#: data/gui/default/window/game_load.cfg:203
 #, fuzzy
 msgid "Filter"
 msgstr "ファイル:"
 
 #. [label]: id=name
 #. [label]: id=filename
-#: data/gui/default/window/game_load.cfg:248
+#: data/gui/default/window/game_load.cfg:253
 #: data/gui/default/window/mp_server_list.cfg:96
 #, fuzzy
 msgid "Name"
 msgstr "名前:"
 
 #. [label]: id=date
-#: data/gui/default/window/game_load.cfg:265
+#: data/gui/default/window/game_load.cfg:267
 #, fuzzy
 msgid "Date"
 msgstr "貼り付け"
 
 #. [button]: id=delete
-#: data/gui/default/window/game_load.cfg:381
-#: data/gui/default/window/game_load.cfg:382
+#: data/gui/default/window/game_load.cfg:351
+#: data/gui/default/window/game_load.cfg:352
 #, fuzzy
 msgid "Delete"
 msgstr "ファイル削除"
 
 #. [toggle_button]: id=show_replay
-#: data/gui/default/window/game_load.cfg:404
+#: data/gui/default/window/game_load.cfg:370
 #, fuzzy
 msgid "Show replay"
 msgstr "プレイヤー"
 
 #. [toggle_button]: id=cancel_orders
-#: data/gui/default/window/game_load.cfg:416
+#: data/gui/default/window/game_load.cfg:388
 #, fuzzy
 msgid "Cancel orders"
 msgstr "キャンセル"
@@ -966,7 +966,7 @@ msgstr "キャンセル"
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_save.cfg:32
 #: data/gui/default/window/game_save_message.cfg:32
-#: data/gui/default/window/game_save_oos.cfg:32 src/hotkeys.cpp:62
+#: data/gui/default/window/game_save_oos.cfg:32 src/hotkeys.cpp:63
 msgid "Save Game"
 msgstr "ゲームを保存"
 
@@ -995,7 +995,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit_game
-#: data/gui/default/window/game_save_oos.cfg:159 src/hotkeys.cpp:84
+#: data/gui/default/window/game_save_oos.cfg:159 src/hotkeys.cpp:85
 msgid "Quit Game"
 msgstr "ゲームを終了"
 
@@ -1176,7 +1176,7 @@ msgstr "砂地"
 #. [grid]
 #: data/gui/default/window/lobby_main.cfg:545
 #: data/gui/default/window/title_screen.cfg:189
-#: src/game_preferences_display.cpp:53 src/hotkeys.cpp:78
+#: src/game_preferences_display.cpp:53 src/hotkeys.cpp:79
 msgid "Preferences"
 msgstr "設定"
 
@@ -1190,7 +1190,7 @@ msgstr "表示"
 #. [button]: id=show_help
 #. [button]: id=help
 #: data/gui/default/window/lobby_main.cfg:557
-#: data/gui/default/window/title_screen.cfg:109 src/hotkeys.cpp:185
+#: data/gui/default/window/title_screen.cfg:109 src/hotkeys.cpp:186
 msgid "Help"
 msgstr "ヘルプ"
 
@@ -1584,7 +1584,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/unit_create.cfg:37 src/hotkeys.cpp:76
+#: data/gui/default/window/unit_create.cfg:37 src/hotkeys.cpp:77
 msgid "Create Unit (Debug!)"
 msgstr "ユニット作成（デバッグ用）"
 
@@ -2264,441 +2264,445 @@ msgid "Previous Unit"
 msgstr "前のユニット"
 
 #: src/hotkeys.cpp:48
+msgid "Add waypoint"
+msgstr ""
+
+#: src/hotkeys.cpp:49
 msgid "Hold Position"
 msgstr "位置を保持"
 
-#: src/hotkeys.cpp:49
+#: src/hotkeys.cpp:50
 msgid "End Unit Turn"
 msgstr "ターンを終了"
 
-#: src/hotkeys.cpp:50
+#: src/hotkeys.cpp:51
 msgid "Leader"
 msgstr "リーダー"
 
-#: src/hotkeys.cpp:51
+#: src/hotkeys.cpp:52
 msgid "Undo"
 msgstr "アンドゥ"
 
-#: src/hotkeys.cpp:52
+#: src/hotkeys.cpp:53
 msgid "Redo"
 msgstr "リドゥ"
 
-#: src/hotkeys.cpp:53
+#: src/hotkeys.cpp:54
 msgid "Zoom In"
 msgstr "ズームイン"
 
-#: src/hotkeys.cpp:54
+#: src/hotkeys.cpp:55
 msgid "Zoom Out"
 msgstr "ズームアウト"
 
-#: src/hotkeys.cpp:55
+#: src/hotkeys.cpp:56
 msgid "Default Zoom"
 msgstr "デフォルトズーム"
 
-#: src/hotkeys.cpp:56
+#: src/hotkeys.cpp:57
 msgid "Toggle Full Screen"
 msgstr "フルスクリーン切り換え"
 
-#: src/hotkeys.cpp:57 src/hotkeys.cpp:885
+#: src/hotkeys.cpp:58 src/hotkeys.cpp:889
 msgid "Screenshot"
 msgstr "スクリーンショット"
 
-#: src/hotkeys.cpp:58
+#: src/hotkeys.cpp:59
 #, fuzzy
 msgid "Map Screenshot"
 msgstr "スクリーンショット"
 
-#: src/hotkeys.cpp:59
+#: src/hotkeys.cpp:60
 msgid "Accelerated"
 msgstr "高速"
 
-#: src/hotkeys.cpp:60
+#: src/hotkeys.cpp:61
 msgid "Unit Description"
 msgstr "ユニットの解説"
 
-#: src/hotkeys.cpp:61
+#: src/hotkeys.cpp:62
 msgid "Rename Unit"
 msgstr "ユニット名を変更"
 
-#: src/hotkeys.cpp:63
+#: src/hotkeys.cpp:64
 msgid "Save Replay"
 msgstr "リプレイを保存"
 
-#: src/hotkeys.cpp:64 src/hotkeys.cpp:111
+#: src/hotkeys.cpp:65 src/hotkeys.cpp:112
 msgid "Save Map"
 msgstr "マップの保存"
 
-#: src/hotkeys.cpp:66
+#: src/hotkeys.cpp:67
 msgid "Recruit"
 msgstr "雇用する"
 
-#: src/hotkeys.cpp:67
+#: src/hotkeys.cpp:68
 msgid "Repeat Recruit"
 msgstr "雇用を繰り返す"
 
-#: src/hotkeys.cpp:68
+#: src/hotkeys.cpp:69
 msgid "Recall"
 msgstr "召還する"
 
-#: src/hotkeys.cpp:69
+#: src/hotkeys.cpp:70
 msgid "End Turn"
 msgstr "ターンを終了"
 
-#: src/hotkeys.cpp:70
+#: src/hotkeys.cpp:71
 #, fuzzy
 msgid "Toggle Ellipses"
 msgstr "グリッド表示切り替え"
 
-#: src/hotkeys.cpp:71
+#: src/hotkeys.cpp:72
 msgid "Toggle Grid"
 msgstr "グリッド表示切り替え"
 
-#: src/hotkeys.cpp:72
+#: src/hotkeys.cpp:73
 msgid "Mouse Scrolling"
 msgstr "マウススクロール"
 
-#: src/hotkeys.cpp:73
+#: src/hotkeys.cpp:74
 msgid "Status Table"
 msgstr "ステータス表"
 
-#: src/hotkeys.cpp:74
+#: src/hotkeys.cpp:75
 msgid "Mute"
 msgstr "無音"
 
-#: src/hotkeys.cpp:75
+#: src/hotkeys.cpp:76
 msgid "Speak"
 msgstr "話す"
 
-#: src/hotkeys.cpp:77
+#: src/hotkeys.cpp:78
 #, fuzzy
 msgid "Change Side (Debug!)"
 msgstr "ユニット陣営変更（デバッグ用）"
 
-#: src/hotkeys.cpp:79
+#: src/hotkeys.cpp:80
 msgid "Scenario Objectives"
 msgstr "シナリオの目標"
 
-#: src/hotkeys.cpp:80
+#: src/hotkeys.cpp:81
 msgid "Unit List"
 msgstr "ユニット一覧"
 
-#: src/hotkeys.cpp:81
+#: src/hotkeys.cpp:82
 msgid "Statistics"
 msgstr "統計情報"
 
-#: src/hotkeys.cpp:82 src/hotkeys.cpp:92
+#: src/hotkeys.cpp:83 src/hotkeys.cpp:93
 msgid "Stop"
 msgstr "ストップ"
 
-#: src/hotkeys.cpp:83 src/hotkeys.cpp:90
+#: src/hotkeys.cpp:84 src/hotkeys.cpp:91
 msgid "Play"
 msgstr "プレイ"
 
-#: src/hotkeys.cpp:85
+#: src/hotkeys.cpp:86
 msgid "Set Team Label"
 msgstr "チームラベルを付ける"
 
-#: src/hotkeys.cpp:86
+#: src/hotkeys.cpp:87
 msgid "Set Label"
 msgstr "ラベルを付ける"
 
-#: src/hotkeys.cpp:87
+#: src/hotkeys.cpp:88
 msgid "Clear Labels"
 msgstr "ラベルをクリアする"
 
-#: src/hotkeys.cpp:88
+#: src/hotkeys.cpp:89
 msgid "Show Enemy Moves"
 msgstr "敵の移動を見る"
 
-#: src/hotkeys.cpp:89
+#: src/hotkeys.cpp:90
 msgid "Best Possible Enemy Moves"
 msgstr "最も可能性のある敵の動き"
 
-#: src/hotkeys.cpp:91
+#: src/hotkeys.cpp:92
 msgid "Reset"
 msgstr "リセット"
 
-#: src/hotkeys.cpp:93
+#: src/hotkeys.cpp:94
 msgid "Next Turn"
 msgstr "次のターン"
 
-#: src/hotkeys.cpp:94
+#: src/hotkeys.cpp:95
 msgid "Next Side"
 msgstr "次の陣営"
 
-#: src/hotkeys.cpp:96
+#: src/hotkeys.cpp:97
 msgid "Full map"
 msgstr "マップ全体"
 
-#: src/hotkeys.cpp:98
+#: src/hotkeys.cpp:99
 msgid "Each team"
 msgstr "チームごと"
 
-#: src/hotkeys.cpp:100
+#: src/hotkeys.cpp:101
 msgid "Team 1"
 msgstr "チーム 1"
 
-#: src/hotkeys.cpp:101
+#: src/hotkeys.cpp:102
 msgid "Skip animation"
 msgstr "アニメーションをスキップ"
 
-#: src/hotkeys.cpp:104
+#: src/hotkeys.cpp:105
 msgid "Quit to Desktop"
 msgstr ""
 
-#: src/hotkeys.cpp:105
+#: src/hotkeys.cpp:106
 #, fuzzy
 msgid "Close Map"
 msgstr "閉じる"
 
-#: src/hotkeys.cpp:106
+#: src/hotkeys.cpp:107
 msgid "Switch Map"
 msgstr ""
 
-#: src/hotkeys.cpp:108
+#: src/hotkeys.cpp:109
 msgid "Partial Undo"
 msgstr ""
 
-#: src/hotkeys.cpp:110
+#: src/hotkeys.cpp:111
 msgid "Load Map"
 msgstr "マップ読み込み"
 
-#: src/hotkeys.cpp:112
+#: src/hotkeys.cpp:113
 #, fuzzy
 msgid "Save Map As"
 msgstr "マップの保存"
 
-#: src/hotkeys.cpp:113
+#: src/hotkeys.cpp:114
 msgid "Revert All Changes"
 msgstr ""
 
-#: src/hotkeys.cpp:114
+#: src/hotkeys.cpp:115
 #, fuzzy
 msgid "Map Information"
 msgstr "マップ生成"
 
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:117
 msgid "Swap fore- and background terrains"
 msgstr ""
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:118
 #, fuzzy
 msgid "Next Tool"
 msgstr "次のターン"
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:119
 msgid "Paint Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:120
 msgid "Fill Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:120
+#: src/hotkeys.cpp:121
 #, fuzzy
 msgid "Selection Tool"
 msgstr "全て選択"
 
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:123
 msgid "Set Starting Positions Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:123
+#: src/hotkeys.cpp:124
 #, fuzzy
 msgid "Next Brush"
 msgstr "次のターン"
 
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:125
 #, fuzzy
 msgid "Default Brush"
 msgstr "デフォルトズーム"
 
-#: src/hotkeys.cpp:125
+#: src/hotkeys.cpp:126
 msgid "Cut"
 msgstr "切り取り"
 
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:127
 msgid "Copy"
 msgstr "コピー"
 
-#: src/hotkeys.cpp:127
+#: src/hotkeys.cpp:128
 msgid "Paste"
 msgstr "貼り付け"
 
-#: src/hotkeys.cpp:128
+#: src/hotkeys.cpp:129
 msgid "Export selected coordinates to system clipboard"
 msgstr ""
 
-#: src/hotkeys.cpp:130
+#: src/hotkeys.cpp:131
 msgid "Select All"
 msgstr "全て選択"
 
-#: src/hotkeys.cpp:132
+#: src/hotkeys.cpp:133
 msgid "Select Inverse"
 msgstr ""
 
-#: src/hotkeys.cpp:134
+#: src/hotkeys.cpp:135
 #, fuzzy
 msgid "Select None"
 msgstr "全て選択"
 
-#: src/hotkeys.cpp:136
+#: src/hotkeys.cpp:137
 msgid "Rotate Clipboard Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:138
+#: src/hotkeys.cpp:139
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:140
+#: src/hotkeys.cpp:141
 msgid "Flip Clipboard Horizontally"
 msgstr ""
 
-#: src/hotkeys.cpp:142
+#: src/hotkeys.cpp:143
 msgid "Flip Clipboard Vertically"
 msgstr ""
 
-#: src/hotkeys.cpp:144
+#: src/hotkeys.cpp:145
 msgid "Rotate Selection"
 msgstr "選択領域を反転させる"
 
-#: src/hotkeys.cpp:146
+#: src/hotkeys.cpp:147
 #, fuzzy
 msgid "Flip Selection"
 msgstr "選択領域を塗りつぶす"
 
-#: src/hotkeys.cpp:148
+#: src/hotkeys.cpp:149
 msgid "Fill Selection"
 msgstr "選択領域を塗りつぶす"
 
-#: src/hotkeys.cpp:150
+#: src/hotkeys.cpp:151
 #, fuzzy
 msgid "Generate Tiles In Selection"
 msgstr "選択領域を反転させる"
 
-#: src/hotkeys.cpp:152
+#: src/hotkeys.cpp:153
 msgid "Randomize Tiles In Selection"
 msgstr ""
 
-#: src/hotkeys.cpp:156
+#: src/hotkeys.cpp:157
 #, fuzzy
 msgid "Rotate Map"
 msgstr "マップ読み込み"
 
-#: src/hotkeys.cpp:158
+#: src/hotkeys.cpp:159
 #, fuzzy
 msgid "Generate Map"
 msgstr "新しいマップの生成"
 
-#: src/hotkeys.cpp:160
+#: src/hotkeys.cpp:161
 msgid "Apply a Mask"
 msgstr ""
 
-#: src/hotkeys.cpp:162
+#: src/hotkeys.cpp:163
 #, fuzzy
 msgid "Create Mask"
 msgstr "新しいマップの作成"
 
-#: src/hotkeys.cpp:164
+#: src/hotkeys.cpp:165
 #, fuzzy
 msgid "Refresh Display"
 msgstr "表示"
 
-#: src/hotkeys.cpp:166
+#: src/hotkeys.cpp:167
 #, fuzzy
 msgid "Update Terrain Transitions"
 msgstr "変化を更新する"
 
-#: src/hotkeys.cpp:168
+#: src/hotkeys.cpp:169
 #, fuzzy
 msgid "Auto-update Terrain Transitions"
 msgstr "変化を更新する"
 
-#: src/hotkeys.cpp:170
+#: src/hotkeys.cpp:171
 msgid "Refresh Image Cache"
 msgstr "イメージキャッシュを更新"
 
-#: src/hotkeys.cpp:172
+#: src/hotkeys.cpp:173
 msgid "Draw Hex Coordinates"
 msgstr ""
 
-#: src/hotkeys.cpp:174
+#: src/hotkeys.cpp:175
 #, fuzzy
 msgid "Draw Terrain Codes"
 msgstr "地形を描く"
 
-#: src/hotkeys.cpp:179
+#: src/hotkeys.cpp:180
 msgid "Delay Shroud Updates"
 msgstr "幕の更新を遅らせる"
 
-#: src/hotkeys.cpp:180
+#: src/hotkeys.cpp:181
 msgid "Update Shroud Now"
 msgstr "幕を今すぐ更新する"
 
-#: src/hotkeys.cpp:181
+#: src/hotkeys.cpp:182
 msgid "Continue Move"
 msgstr "移動を続ける"
 
-#: src/hotkeys.cpp:182
+#: src/hotkeys.cpp:183
 msgid "Find Label or Unit"
 msgstr "ラベルとユニットの検索"
 
-#: src/hotkeys.cpp:183
+#: src/hotkeys.cpp:184
 msgid "Speak to Ally"
 msgstr "同盟軍に話す"
 
-#: src/hotkeys.cpp:184
+#: src/hotkeys.cpp:185
 msgid "Speak to All"
 msgstr "全員に話す"
 
-#: src/hotkeys.cpp:186
+#: src/hotkeys.cpp:187
 msgid "View Chat Log"
 msgstr "チャットログ表示"
 
-#: src/hotkeys.cpp:187
+#: src/hotkeys.cpp:188
 msgid "Change the language"
 msgstr "言語を変更します"
 
-#: src/hotkeys.cpp:189
+#: src/hotkeys.cpp:190
 msgid "Enter user command"
 msgstr "ユーザーコマンドを入力してください"
 
-#: src/hotkeys.cpp:190
+#: src/hotkeys.cpp:191
 #, fuzzy
 msgid "Custom command"
 msgstr "ユーザーコマンドを入力してください"
 
-#: src/hotkeys.cpp:191
+#: src/hotkeys.cpp:192
 msgid "Run AI formula"
 msgstr ""
 
-#: src/hotkeys.cpp:192
+#: src/hotkeys.cpp:193
 msgid "Clear messages"
 msgstr "メッセージをクリアする"
 
-#: src/hotkeys.cpp:194
+#: src/hotkeys.cpp:195
 msgid "User-Command#2"
 msgstr "ユーザーコマンド#2"
 
-#: src/hotkeys.cpp:195
+#: src/hotkeys.cpp:196
 msgid "User-Command#3"
 msgstr "ユーザーコマンド#3"
 
-#: src/hotkeys.cpp:642 src/hotkeys.cpp:930
+#: src/hotkeys.cpp:643 src/hotkeys.cpp:934
 msgid "Do you really want to quit?"
 msgstr "本当に終了しますか？"
 
-#: src/hotkeys.cpp:885
+#: src/hotkeys.cpp:889
 #, fuzzy
 msgid "Map-Screenshot"
 msgstr "スクリーンショット"
 
-#: src/hotkeys.cpp:892
+#: src/hotkeys.cpp:896
 #, fuzzy
 msgid "Screenshot done"
 msgstr "スクリーンショット"
 
-#: src/hotkeys.cpp:894
+#: src/hotkeys.cpp:898
 #, fuzzy
 msgid "Screenshot failed"
 msgstr "スクリーンショット"

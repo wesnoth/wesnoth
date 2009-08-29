@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-units_1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-26 14:50+0200\n"
+"POT-Creation-Date: 2009-08-29 12:11+0200\n"
 "PO-Revision-Date: 2009-02-06 22:44+0100\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <>\n"
@@ -197,19 +197,10 @@ msgstr ""
 
 #. [attack]: type=blade
 #: data/core/units/drakes/Armageddon.cfg:85
-#: data/core/units/drakes/Burner.cfg:108 data/core/units/drakes/Fire.cfg:71
 #: data/core/units/drakes/Inferno.cfg:72
-#: data/core/units/goblins/Direwolf_Rider.cfg:55
-#: data/core/units/gryphons/Gryphon.cfg:41
-#: data/core/units/gryphons/Gryphon_Master.cfg:42
-#: data/core/units/gryphons/Gryphon_Rider.cfg:42
-#: data/core/units/monsters/Skeletal_Dragon.cfg:42
-#: data/core/units/undead/Corpse_Ghoul.cfg:27
-#: data/core/units/undead/Corpse_Necrophage.cfg:28
-#: data/core/units/undead/Spirit_Nightgaunt.cfg:54
-#: data/core/units/undead/Spirit_Shadow.cfg:122
-msgid "claws"
-msgstr "karmok"
+#, fuzzy
+msgid "battle claws"
+msgstr "csatabárd"
 
 #. [attack]: type=fire
 #: data/core/units/drakes/Armageddon.cfg:94
@@ -232,44 +223,22 @@ msgstr "Perzsekény pengeforgató"
 
 #. [unit_type]: id=Drake Blademaster, race=drake
 #: data/core/units/drakes/Blademaster.cfg:19
+#, fuzzy
 msgid ""
-"The drakes who master the use of a sword are sworn into a special order. The "
-"mark of their initiation is the black-and-white warpaint they display in "
+"The drakes who master the use of war blades are sworn into a special order. "
+"The mark of their initiation is the black-and-white warpaint they display in "
 "battle."
 msgstr ""
 "A perzsekények, akik elsajátították a kardforgatást, különleges rendbe "
 "gyűltek. Rendi jelük a fekete-fehér harci öltözet, amelyet csatában viselnek."
 
 #. [attack]: type=blade
-#. [attack]: type=arcane
 #: data/core/units/drakes/Blademaster.cfg:69
-#: data/core/units/drakes/Clasher.cfg:38
-#: data/core/units/drakes/Enforcer.cfg:36
-#: data/core/units/drakes/Flameheart.cfg:79
-#: data/core/units/drakes/Flare.cfg:83 data/core/units/drakes/Thrasher.cfg:23
-#: data/core/units/elves/Archer.cfg:37 data/core/units/elves/Avenger.cfg:76
-#: data/core/units/elves/Captain.cfg:47 data/core/units/elves/Champion.cfg:36
-#: data/core/units/elves/Fighter.cfg:36 data/core/units/elves/Hero.cfg:35
-#: data/core/units/elves/High_Lord.cfg:73 data/core/units/elves/Lord.cfg:39
-#: data/core/units/elves/Marksman.cfg:66 data/core/units/elves/Marshal.cfg:46
-#: data/core/units/elves/Outrider.cfg:46 data/core/units/elves/Ranger.cfg:73
-#: data/core/units/elves/Rider.cfg:48 data/core/units/elves/Scout.cfg:47
-#: data/core/units/elves/Sharpshooter.cfg:63
-#: data/core/units/humans/Horse_Knight.cfg:35
-#: data/core/units/humans/Horse_Paladin.cfg:52
-#: data/core/units/humans/Loyalist_Cavalryman.cfg:64
-#: data/core/units/humans/Loyalist_Dragoon.cfg:49
-#: data/core/units/humans/Loyalist_Lieutenant.cfg:46
-#: data/core/units/humans/Loyalist_Longbowman.cfg:39
-#: data/core/units/humans/Loyalist_Master_Bowman.cfg:39
-#: data/core/units/humans/Loyalist_Sergeant.cfg:47
-#: data/core/units/humans/Loyalist_Swordsman.cfg:39
-#: data/core/units/humans/Woodsman_Ranger.cfg:59
-#: data/core/units/nagas/Fighter.cfg:102 data/core/units/nagas/Myrmidon.cfg:43
-#: data/core/units/nagas/Warrior.cfg:41 data/core/units/orcs/Grunt.cfg:71
-#: data/core/units/orcs/Leader.cfg:28
-msgid "sword"
-msgstr "kard"
+#: data/core/units/drakes/Fighter.cfg:108
+#: data/core/units/drakes/Warrior.cfg:107
+#, fuzzy
+msgid "war blade"
+msgstr "mérgezett pengéjű kard"
 
 #. [unit_type]: id=Drake Burner, race=drake
 #: data/core/units/drakes/Burner.cfg:4
@@ -288,6 +257,20 @@ msgstr ""
 "akikben távoli őseik vére és ereje a legigazibban áramlik, megadva nekik a "
 "tűzokádás képességét. Ez, párosítva hatalmas méretükkel és félelmetes "
 "karmaikkal, halálos ellenséggé teszi őket a harcban."
+
+#. [attack]: type=blade
+#: data/core/units/drakes/Burner.cfg:108 data/core/units/drakes/Fire.cfg:71
+#: data/core/units/goblins/Direwolf_Rider.cfg:55
+#: data/core/units/gryphons/Gryphon.cfg:41
+#: data/core/units/gryphons/Gryphon_Master.cfg:42
+#: data/core/units/gryphons/Gryphon_Rider.cfg:42
+#: data/core/units/monsters/Skeletal_Dragon.cfg:42
+#: data/core/units/undead/Corpse_Ghoul.cfg:27
+#: data/core/units/undead/Corpse_Necrophage.cfg:28
+#: data/core/units/undead/Spirit_Nightgaunt.cfg:54
+#: data/core/units/undead/Spirit_Shadow.cfg:122
+msgid "claws"
+msgstr "karmok"
 
 #. [unit_type]: id=Drake Clasher, race=drake
 #: data/core/units/drakes/Clasher.cfg:4
@@ -310,6 +293,13 @@ msgid ""
 "and enforcing the laws of their tribe."
 msgstr ""
 
+#. [attack]: type=blade
+#: data/core/units/drakes/Clasher.cfg:38
+#: data/core/units/drakes/Enforcer.cfg:36
+#: data/core/units/drakes/Thrasher.cfg:23
+msgid "war talon"
+msgstr ""
+
 #. [attack]: type=pierce
 #: data/core/units/drakes/Clasher.cfg:47
 #: data/core/units/drakes/Enforcer.cfg:54
@@ -326,7 +316,7 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Javelineer.cfg:40
 #: data/core/units/humans/Loyalist_Spearman.cfg:59
 #: data/core/units/merfolk/Hoplite.cfg:48
-#: data/core/units/merfolk/Hunter.cfg:25 data/core/units/merfolk/Hunter.cfg:33
+#: data/core/units/merfolk/Hunter.cfg:37 data/core/units/merfolk/Hunter.cfg:45
 #: data/core/units/merfolk/Javelineer.cfg:25
 #: data/core/units/merfolk/Javelineer.cfg:33
 #: data/core/units/merfolk/Spearman.cfg:24
@@ -360,15 +350,8 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/drakes/Enforcer.cfg:45
 #: data/core/units/drakes/Thrasher.cfg:41
-#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:37
-#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:33
-#: data/core/units/humans/Outlaw.cfg:36
-#: data/core/units/humans/Outlaw_Bandit.cfg:47
-#: data/core/units/humans/Outlaw_Fugitive.cfg:41
-#: data/core/units/humans/Outlaw_Highwayman.cfg:37
-#: data/core/units/humans/Royal_Warrior.cfg:35
-msgid "mace"
-msgstr "buzogány"
+msgid "ram"
+msgstr ""
 
 #. [unit_type]: id=Drake Fighter, race=drake
 #: data/core/units/drakes/Fighter.cfg:4
@@ -379,21 +362,15 @@ msgstr "Perzsekény verekedő"
 #: data/core/units/drakes/Fighter.cfg:20
 #, fuzzy
 msgid ""
-"Drake Fighters wield curved scimitars, and possess the fire-breathing skills "
-"of their ancestors. They can also fly, which is troubling to any foe. Their "
-"great strength, coupled with their hardened scales, is rightly frightening "
-"to swordsman of any other race."
+"Drake Fighters wield curved war blades, and possess the fire-breathing "
+"skills of their ancestors. They can also fly, which is troubling to any foe. "
+"Their great strength, coupled with their hardened scales, is rightly "
+"frightening to swordsman of any other race."
 msgstr ""
 "A perzsekény verekedők görbe élű handzsárt forgatnak halálos erővel, "
 "valamint elődeiktől a tűzokádás képességét is örökölték. Repülni is tudnak, "
 "ami minden ellenségüket aggasztja. Hatalmas erejük, párosítva megerősített "
 "páncéljukkal, igazán rémisztő minden más faj kardforgatójának."
-
-#. [attack]: type=blade
-#: data/core/units/drakes/Fighter.cfg:108
-#: data/core/units/drakes/Warrior.cfg:107
-msgid "scimitar"
-msgstr "handzsár"
 
 #. [unit_type]: id=Fire Drake, race=drake
 #: data/core/units/drakes/Fire.cfg:4
@@ -429,6 +406,34 @@ msgstr ""
 "közvetlen leszármazottjainak - ereiben vér helyett tűz folyik. Erre ad "
 "bizonyságot, hogy tüzet okádnak, habár valamilyen oknál fogva még senki sem "
 "próbált egyet sem felvágni, hogy megtudja, igaz-e ez."
+
+#. [attack]: type=blade
+#. [attack]: type=arcane
+#: data/core/units/drakes/Flameheart.cfg:79
+#: data/core/units/drakes/Flare.cfg:83 data/core/units/elves/Archer.cfg:37
+#: data/core/units/elves/Avenger.cfg:76 data/core/units/elves/Captain.cfg:47
+#: data/core/units/elves/Champion.cfg:36 data/core/units/elves/Fighter.cfg:36
+#: data/core/units/elves/Hero.cfg:35 data/core/units/elves/High_Lord.cfg:73
+#: data/core/units/elves/Lord.cfg:39 data/core/units/elves/Marksman.cfg:66
+#: data/core/units/elves/Marshal.cfg:46 data/core/units/elves/Outrider.cfg:46
+#: data/core/units/elves/Ranger.cfg:73 data/core/units/elves/Rider.cfg:48
+#: data/core/units/elves/Scout.cfg:47
+#: data/core/units/elves/Sharpshooter.cfg:63
+#: data/core/units/humans/Horse_Knight.cfg:35
+#: data/core/units/humans/Horse_Paladin.cfg:52
+#: data/core/units/humans/Loyalist_Cavalryman.cfg:64
+#: data/core/units/humans/Loyalist_Dragoon.cfg:49
+#: data/core/units/humans/Loyalist_Lieutenant.cfg:46
+#: data/core/units/humans/Loyalist_Longbowman.cfg:39
+#: data/core/units/humans/Loyalist_Master_Bowman.cfg:39
+#: data/core/units/humans/Loyalist_Sergeant.cfg:47
+#: data/core/units/humans/Loyalist_Swordsman.cfg:39
+#: data/core/units/humans/Woodsman_Ranger.cfg:59
+#: data/core/units/nagas/Fighter.cfg:102 data/core/units/nagas/Myrmidon.cfg:43
+#: data/core/units/nagas/Warrior.cfg:41 data/core/units/orcs/Grunt.cfg:71
+#: data/core/units/orcs/Leader.cfg:28
+msgid "sword"
+msgstr "kard"
 
 #. [unit_type]: id=Drake Flare, race=drake
 #: data/core/units/drakes/Flare.cfg:4
@@ -573,10 +578,12 @@ msgstr "Perzsekény harcos"
 
 #. [unit_type]: id=Drake Warrior, race=drake
 #: data/core/units/drakes/Warrior.cfg:19
+#, fuzzy
 msgid ""
-"Drake Warriors wield swords with great skill, and possess the fire breathing "
-"skills of their ancestors. The great strength of their kind allows them to "
-"strike devastating blows, and to withstand punishment in equal measure."
+"Drake Warriors wield war blades with great skill, and possess the fire "
+"breathing skills of their ancestors. The great strength of their kind allows "
+"them to strike devastating blows, and to withstand punishment in equal "
+"measure."
 msgstr ""
 "A perzsekény harcosok halálos erővel forgatják a kardot, és elődeiktől a "
 "tűzokádás képességét is örökölték. Fajtájuk ereje lehetővé teszi, hogy "
@@ -1809,7 +1816,7 @@ msgstr ""
 "számára, és gyakran elég a védelmi vonal áttöréséhez."
 
 #. [attack]: type=blade
-#: data/core/units/humans/Horse_Grand_Knight.cfg:24
+#: data/core/units/humans/Horse_Grand_Knight.cfg:36
 #: data/core/units/humans/Loyalist_Cavalier.cfg:50
 #: data/core/units/humans/Loyalist_General.cfg:56
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:52
@@ -1819,7 +1826,7 @@ msgid "longsword"
 msgstr "kard"
 
 #. [attack]: type=pierce
-#: data/core/units/humans/Horse_Grand_Knight.cfg:33
+#: data/core/units/humans/Horse_Grand_Knight.cfg:45
 #: data/core/units/humans/Horse_Knight.cfg:44
 #: data/core/units/humans/Horse_Lancer.cfg:24
 #: data/core/units/humans/Horse_Paladin.cfg:61
@@ -2212,6 +2219,17 @@ msgstr ""
 "némely helyzetben ezek a csapatok megérik a vesződést. Néhányukat egy "
 "védelmi vonal közepén csatarendbe állítva jelentősen megnövelik a vonal "
 "erejét."
+
+#. [attack]: type=impact
+#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:37
+#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:33
+#: data/core/units/humans/Outlaw.cfg:36
+#: data/core/units/humans/Outlaw_Bandit.cfg:47
+#: data/core/units/humans/Outlaw_Fugitive.cfg:41
+#: data/core/units/humans/Outlaw_Highwayman.cfg:37
+#: data/core/units/humans/Royal_Warrior.cfg:35
+msgid "mace"
+msgstr "buzogány"
 
 #. [unit_type]: id=Iron Mauler, race=human
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:4
@@ -5227,6 +5245,9 @@ msgstr ""
 "A fapásztorok a végletekig békések, de hatalmas erő birtokosai. Amikor "
 "helyet kell változtatniuk, mindig kiderül, hogy mennyire lassan teszik ezt a "
 "számukra szokatlan műveletet."
+
+#~ msgid "scimitar"
+#~ msgstr "handzsár"
 
 #~ msgid ""
 #~ "The weighted nets used by mermen in warfare are a difficult weapon to use "
