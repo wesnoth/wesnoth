@@ -290,6 +290,7 @@ ai_default::ai_default(ai_context &context, const config &cfg) :
 	game_logic::formula_callable(),
 	cfg_(cfg),
 	recursion_counter_(context.get_recursion_count()),
+	leader(),
 	threats_found_(false),
 	disp_(context.get_info().disp),
 	map_(context.get_info().map),
@@ -298,7 +299,8 @@ ai_default::ai_default(ai_context &context, const config &cfg) :
 	tod_manager_(context.get_info().tod_manager_),
 	consider_combat_(true),
 	recruiting_preferred_(0),
-	formula_ai_()
+	formula_ai_(),
+	formula_ai_ptr_()
 {
 	add_ref();
 	init_ai_context_proxy(context);
