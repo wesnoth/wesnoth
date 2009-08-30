@@ -50,6 +50,13 @@ namespace ai {
 
 struct description {
 public:
+	description()
+		: text()
+		, id()
+		, cfg()
+	{
+	}
+
 	std::string text;
 	std::string id;
 	config cfg;
