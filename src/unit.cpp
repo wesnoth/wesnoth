@@ -169,6 +169,7 @@ unit::unit(const unit& o):
 unit::unit(unit_map* unitmap, const config& cfg,
 		bool use_traits, game_state* state) :
 	cfg_(),
+	loc_(),
 	advances_to_(),
 	type_(),
 	race_(NULL),
@@ -246,6 +247,7 @@ unit::unit(unit_map* unitmap, const config& cfg,
 
 unit::unit(const config& cfg,bool use_traits) :
 	cfg_(),
+	loc_(),
 	advances_to_(),
 	type_(),
 	race_(NULL),
@@ -350,6 +352,7 @@ unit_race::GENDER unit::generate_gender(const unit_type& type, bool gen, game_st
 unit::unit(unit_map *unitmap, const unit_type *t, int side,
 		bool use_traits, bool dummy_unit, unit_race::GENDER gender, std::string variation, bool force_gender) :
 	cfg_(),
+	loc_(),
 	advances_to_(),
 	type_(),
 	race_(NULL),
