@@ -249,6 +249,8 @@ game_controller::game_controller(int argc, char** argv) :
 	multiplayer_mode_(false),
 	no_gui_(false),
 	screenshot_mode_(false),
+	screenshot_map_(),
+	screenshot_filename_(),
 	force_bpp_(-1),
 	game_config_(),
 	old_defines_map_(),
