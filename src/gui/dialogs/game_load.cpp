@@ -64,11 +64,15 @@ namespace gui2 {
  */
 
 tgame_load::tgame_load(const config& cache_config)
-	: txtFilter_(register_text("txtFilter", false)),
-	chk_show_replay_(register_bool("show_replay")),
-	chk_cancel_orders_(register_bool("cancel_orders")),
-	filename_(),
-	cache_config_(cache_config)
+	: txtFilter_(register_text("txtFilter", false))
+	, chk_show_replay_(register_bool("show_replay"))
+	, chk_cancel_orders_(register_bool("cancel_orders"))
+	, filename_()
+	, show_replay_(false)
+	, cancel_orders_(false)
+	, games_()
+	, cache_config_(cache_config)
+	, last_words_()
 {
 }
 
