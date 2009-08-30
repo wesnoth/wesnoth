@@ -68,8 +68,13 @@ struct queued_event_context
 	static qe const &get()
 	{ return *(current_qe ? current_qe : &default_qe); }
 	qe const *previous_qe;
+
 	queued_event_context(qe const *new_qe)
-	{ previous_qe = current_qe; current_qe = new_qe; }
+		: previous_qe(current_qe)
+	{
+		current_qe = new_qe;
+	}
+
 	~queued_event_context()
 	{ current_qe = previous_qe; }
 };
