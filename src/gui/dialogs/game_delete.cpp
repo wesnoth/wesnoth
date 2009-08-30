@@ -34,6 +34,7 @@ namespace gui2 {
 
 tgame_delete::tgame_delete()
 	: chk_dont_ask_again_(register_bool("dont_ask_again"))
+	, dont_ask_again_(false)
 {}
 
 twindow* tgame_delete::build_window(CVideo& video)
