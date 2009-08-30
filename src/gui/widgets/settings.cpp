@@ -985,6 +985,7 @@ tscrollbar_panel_definition::tscrollbar_panel_definition(const config& cfg)
 
 tscrollbar_panel_definition::tresolution::tresolution(const config& cfg)
 	: tresolution_definition_(cfg)
+	, grid()
 {
 /*WIKI
  * @page = GUIWidgetDefinitionWML
