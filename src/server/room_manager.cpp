@@ -38,8 +38,15 @@ namespace wesnothd {
 const char* const room_manager::lobby_name_ = "lobby";
 
 room_manager::room_manager(player_map &all_players)
-: all_players_(all_players), lobby_(NULL), filename_(),
-compress_stored_rooms_(true), new_room_policy_(PP_EVERYONE), dirty_(false)
+	: all_players_(all_players)
+	, lobby_(NULL)
+	, rooms_by_name_()
+	, rooms_by_player_()
+	, player_stored_rooms_()
+	, filename_()
+	, compress_stored_rooms_(true)
+	, new_room_policy_(PP_EVERYONE)
+	, dirty_(false)
 {
 }
 
