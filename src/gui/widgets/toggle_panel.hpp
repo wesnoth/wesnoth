@@ -30,11 +30,12 @@ namespace gui2 {
 class ttoggle_panel : public tpanel, public tselectable_
 {
 public:
-	ttoggle_panel() :
-		tpanel(COUNT),
-		state_(ENABLED),
-		retval_(0),
-		callback_state_change_(0)
+	ttoggle_panel()
+		: tpanel(COUNT)
+		, state_(ENABLED)
+		, retval_(0)
+		, callback_state_change_(0)
+		, callback_mouse_left_double_click_()
 	{
 		set_wants_mouse_left_double_click();
 	}
