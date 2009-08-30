@@ -18,6 +18,7 @@ import gzip
 import StringIO
 import logging
 import hashlib
+import base64
 import os.path
 import types
 
@@ -66,41 +67,46 @@ class RootController(BaseController):
 			raw_log = raw_log.split('\n')
 		wml_tree = helperlib.build_tree(raw_log)
 		
-		if not wml_tree.has_key("platform"):
-			wml_tree["platform"] = "unknown"
-
-		result_type = "victory"
-		if not wml_tree.has_key("victory"):
-			result_type = "defeat"
-			if not wml_tree.has_key("defeat"):
-				result_type = "quit"
-
+		log_type = "singleplayer" #possible values are singleplayer,multiplayer,ai
+		if wml_tree["game"]["campaign"] == "multiplayer":
+			log_type = "multiplayer"
+		if wml_tree.has_key("upload_log"):
+			if wml_tree["upload_log"].has_key("ai_log"):
+				log_type = "ai"
+	
 		map = wml_tree["game"]["map_data"]
-		
 		#decode the map data to a standard map definition
 		map = map.replace(";","\n")
 
 		#save a copy of the map if we haven't seen it yet
-		map_id = hashlib.md5()
+		map_id = hashlib.sha256()
 		map_id.update(map)
-		map_filename = configuration.MAP_DIR + map_id.hexdigest()
+		id_digest = base64.urlsafe_b64encode(map_id.digest())
+		map_filename = configuration.MAP_DIR + id_digest
 		if not os.path.exists(map_filename):
 			map_file = open(map_filename,"w")
 			map_file.writelines(map)
 			map_file.close()
 
-		conn = MySQLdb.connect(configuration.DB_HOSTNAME,configuration.DB_USERNAME,configuration.DB_PASSWORD,configuration.DB_NAME,use_unicode=True)
+		conn = MySQLdb.connect(configuration.DB_HOSTNAME,configuration.DB_WRITE_USERNAME,configuration.DB_WRITE_PASSWORD,configuration.DB_NAME,use_unicode=True)
 		curs = conn.cursor()
-		if wml_tree["game"]["campaign"] == "multiplayer":
+		
+		if log_type == "multiplayer":
 			params = (
 				wml_tree["id"],
 				wml_tree["serial"],
 				wml_tree["version"],
 				wml_tree["game"]["campaign"],
 				wml_tree["game"]["scenario"],
-				wml_tree.setdefault("platform","unknown"))
+				wml_tree.setdefault("platform","unknown")) #6 cols
 			curs.execute("INSERT INTO GAMES_MP VALUES (DEFAULT,NOW(),%s,%s,%s,%s,%s,%s)",params)
-		else:
+		elif log_type == "singleplayer":
+			result_type = "victory"
+			if not wml_tree.has_key("victory"):
+				result_type = "defeat"
+				if not wml_tree.has_key("defeat"):
+					result_type = "quit"
+
 			params = (
 				wml_tree["id"],
 				wml_tree["serial"],
@@ -118,10 +124,70 @@ class RootController(BaseController):
 				int(wml_tree["game"][result_type].setdefault("gold","0")),
 				int(wml_tree["game"][result_type]["end_turn"])) #15 cols
 			curs.execute("INSERT INTO GAMES VALUES (DEFAULT,NOW(),%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",params)
-		
-		if wml_tree.has_key("upload_log"):
-			if wml_tree["upload_log"].has_key("ai_log"):
-				pass
+		elif log_type == "ai":
+			"""
+			`game_id` int(11) NOT NULL auto_increment,
+			`timestamp` datetime NOT NULL,
+			`user_id` char(32) NOT NULL,
+			`serial` char(18) NOT NULL,
+			`platform` char(8) default NULL,
+			`version` char(32) default NULL,
+			`scenario` char(40) default NULL,
+			`result` enum('victory','defeat','draw') default NULL,
+			`end_turn` int(11) default NULL,
+			`faction1` varchar(32) NOT NULL,
+			`faction2` varchar(32) NOT NULL,
+			`winner` enum('faction1','faction2') NOT NULL,
+			`ai_ident1` varchar(256) NOT NULL,
+			`ai_ident2` varchar(256) NOT NULL,
+			`ai_config1` varchar(256) NOT NULL,
+			`ai_config2` varchar(256) NOT NULL,
+			`label` varchar(256) NOT NULL,
+			`units_winner` int(3) NOT NULL,
+			`units_loser` int(3) NOT NULL,
+			`gold_winner` int(5) NOT NULL,
+			`gold_loser` int(5) NOT NULL,
+			"""
+			ai_log = wml_tree["game"]["upload_log"]["ai_log"]
+			winner = "faction1"
+			units_winner = 0
+			units_loser = 0
+			gold_winner = 0
+			gold_loser = 0
+			if ai_log["result"] == "victory":
+				if ai_log["winner"] == "1":
+					units_winner = ai_log["end_units1"]
+					units_loser = ai_log["end_units2"]
+					gold_winner = ai_log["end_units1"]
+					gold_loser = ai_log["end_units2"]
+				else:
+					units_winner = ai_log["end_units2"]
+					units_loser = ai_log["end_units1"]
+					gold_winner = ai_log["end_units2"]
+					gold_loser = ai_log["end_units1"]
+					winner = "faction2"
+			params = (
+				wml_tree["id"], #user_id
+				wml_tree["serial"],
+				wml_tree.setdefault("platform","unknown"),
+				wml_tree["version"],
+				wml_tree["game"]["scenario"],
+				ai_log["result"],
+				ai_log["end_turn"],
+				ai_log["faction1"],
+				ai_log["faction2"],
+				winner,
+				ai_log.setdefault("ai_id1",""),
+				ai_log.setdefault("ai_id2",""),
+				"",
+				"",
+				ai_log.setdefault("ai_label",""),
+				int(units_winner),
+				int(units_loser),
+				int(gold_winner),
+				int(gold_loser) )
+			pass		
+
 
 		kill_events = wml_tree["game"].setdefault("kill_event",[])
 		for kill in kill_events:
@@ -150,8 +216,9 @@ class RootController(BaseController):
 				killed_lvl,
 				killer_id,
 				killer_lvl,
-				killed_position[0]+","+killed_position[1] )
-			curs.execute("INSERT INTO KILLMAP VALUES (%s,%s,LAST_INSERT_ID(),%s,%s,%s,%s,%s,%s)",params)
+				killed_position[0]+","+killed_position[1],
+				log_type )
+			curs.execute("INSERT INTO KILLMAP VALUES (%s,%s,LAST_INSERT_ID(),%s,%s,%s,%s,%s,%s,%s)",params)
 
 		conn.close()
 		return dict()

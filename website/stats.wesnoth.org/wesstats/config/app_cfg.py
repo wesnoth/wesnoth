@@ -48,7 +48,7 @@ base_config.sa_auth.user_class = model.User
 base_config.sa_auth.group_class = model.Group
 # what is the class you want to use to search for permissions in the database
 base_config.sa_auth.permission_class = model.Permission
-
+base_config.sa_auth.cookie_secret = "zuq9YAM8"
 # override this if you would like to provide a different who plugin for
 # managing login and logout of your application
 base_config.sa_auth.form_plugin = None
