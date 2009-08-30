@@ -585,6 +585,8 @@ class typesafe_aspect : public aspect {
 public:
 	typesafe_aspect(readonly_context &context, const config &cfg, const std::string &id)
 		: aspect(context,cfg,id)
+		, value_()
+		, value_variant_()
 	{
 	}
 
@@ -717,6 +719,8 @@ public:
 
 	composite_aspect(readonly_context &context, const config &cfg, const std::string &id)
 		: typesafe_aspect<T>(context, cfg, id)
+		, facets_()
+		, default_()
 	{
 		foreach (const config &cfg_element, this->cfg_.child_range("facet") ){
 			add_facet(-1,cfg_element);
