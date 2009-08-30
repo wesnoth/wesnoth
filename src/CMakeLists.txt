@@ -393,7 +393,6 @@ SET(wesnoth-main_SRC
     storyscreen/render.cpp
     team.cpp
     terrain_filter.cpp
-    time_of_day.cpp
     titlescreen.cpp
     tod_manager.cpp
     tooltips.cpp
