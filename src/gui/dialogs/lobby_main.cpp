@@ -274,14 +274,29 @@ void tlobby_main::do_notify(t_notify_mode mode)
 	}
 }
 
-tlobby_main::tlobby_main(const config& game_config, lobby_info& info, display& disp)
-: legacy_result_(QUIT)
-, game_config_(game_config)
-, gamelistbox_(NULL), chat_log_container_(NULL)
-, chat_input_(NULL), window_(NULL)
-, lobby_info_(info), preferences_callback_(NULL)
-, open_windows_(), active_window_(0), selected_game_id_()
-, player_list_(), player_list_dirty_(false), disp_(disp)
+tlobby_main::tlobby_main(const config& game_config
+		, lobby_info& info
+		, display& disp)
+	: legacy_result_(QUIT)
+	, game_config_(game_config)
+	, gamelistbox_(NULL)
+	, userlistbox_(NULL)
+	, roomlistbox_(NULL)
+	, chat_log_container_(NULL)
+	, chat_input_(NULL)
+	, window_(NULL)
+	, lobby_info_(info)
+	, preferences_callback_(NULL)
+	, open_windows_()
+	, active_window_(0)
+	, filter_friends_(NULL)
+	, filter_ignored_(NULL)
+	, filter_slots_(NULL)
+	, filter_invert_(NULL)
+	, filter_text_(NULL)
+	, selected_game_id_()
+	, player_list_()
+	, player_list_dirty_(false), disp_(disp)
 {
 }
 
