@@ -322,6 +322,14 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc)
 	return res;
 }
 
+void mouse_handler::add_waypoint(const map_location& loc) {
+	if(!waypoints_.empty() && waypoints_.back() == loc) {
+		waypoints_.pop_back();
+	} else {
+		waypoints_.push_back(loc);
+	} 
+}
+
 marked_route mouse_handler::get_route(unit_map::const_iterator un, map_location go_to, team &team)
 {
 	// The pathfinder will check unit visibility (fogged/stealthy).
@@ -370,7 +378,7 @@ marked_route mouse_handler::get_route(unit_map::const_iterator un, map_location 
 		}
 	}
 
-	return mark_route(route, un->second, viewing_team(), units_,teams_,map_);
+	return mark_route(route, waypoints_, un->second, viewing_team(), units_,teams_,map_);
 }
 
 void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool browse)

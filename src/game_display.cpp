@@ -634,7 +634,7 @@ void game_display::draw_movement_info(const map_location& loc)
 			}
 
 			//we display turn info only if different from a simple last "1"
-			if (w->second.turns > 1 || loc != route_.steps.back()) {
+			if (w->second.turns > 1 || (w->second.turns == 1 && loc != route_.steps.back())) {
 				std::stringstream turns_text;
 				turns_text << w->second.turns;
 				draw_text_in_hex(loc, LAYER_MOVE_INFO, turns_text.str(), 17, font::NORMAL_COLOUR, 0.5,0.8);

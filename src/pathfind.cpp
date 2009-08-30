@@ -371,7 +371,8 @@ paths::paths(gamemap const &map, unit_map const &units,
 		see_all, ignore_units);
 }
 
-marked_route mark_route(const plain_route &rt, const unit &u,
+marked_route mark_route(const plain_route &rt,
+	const std::vector<map_location>& waypoints, const unit &u,
 	const team &viewing_team, const unit_map &units,
 	const std::vector<team> &teams, const gamemap &map)
 {
@@ -385,8 +386,11 @@ marked_route mark_route(const plain_route &rt, const unit &u,
 	const team& unit_team = teams[u.side()-1];
 	bool zoc = false;
 
-	for (std::vector<map_location>::const_iterator i = rt.steps.begin();
-		i !=rt.steps.end(); i++) {
+	std::vector<map_location>::const_iterator i = rt.steps.begin(),
+			w = waypoints.begin();
+
+	// TODO fix the name confusion with waypoints and route.waypoints
+	for (; i !=rt.steps.end(); i++) {
 		bool last_step = (i+1 == rt.steps.end());
 
 		// move_cost of the next step is irrelevant for the last step
@@ -413,6 +417,13 @@ marked_route mark_route(const plain_route &rt, const unit &u,
 			movement = u.total_movement();
 			if(move_cost > movement) {
 				return res; //we can't reach destination
+			}
+		}
+		if (w < waypoints.end() && *i == *w) {
+			w++;
+			if(res.waypoints.count(*i)==0) {
+				bool invisible = u.invisible(*i,units,teams,false);
+				res.waypoints[*i] = marked_route::waypoint(0, zoc, false, invisible);
 			}
 		}
 
