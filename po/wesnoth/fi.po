@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-29 12:11+0200\n"
+"POT-Creation-Date: 2009-08-30 19:20+0200\n"
 "PO-Revision-Date: 2009-07-09 23:03+0200\n"
 "Last-Translator: Mikko Nikkilä <miccoh@gmail.com>\n"
 "Language-Team: Finnish\n"
@@ -7039,8 +7039,8 @@ msgstr "Päätä skenaario"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:197 src/unit.cpp:2518
-#: src/unit.cpp:2672
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:197 src/unit.cpp:2521
+#: src/unit.cpp:2675
 msgid "HP"
 msgstr "EP"
 
@@ -7617,7 +7617,7 @@ msgstr "Ei käyttökelpoista asetta"
 msgid "Chance of being unscathed"
 msgstr "Mahdollisuus selvitä naarmutta:"
 
-#: src/attack_prediction_display.cpp:547 src/mouse_events.cpp:681
+#: src/attack_prediction_display.cpp:547 src/mouse_events.cpp:685
 msgid "Damage Calculations"
 msgstr "Vahinkolaskelmat"
 
@@ -7766,40 +7766,40 @@ msgstr "KP: "
 msgid "Moves: "
 msgstr "Liikepisteitä: "
 
-#: src/game.cpp:666 src/game.cpp:1395
+#: src/game.cpp:668 src/game.cpp:1397
 msgid "The Battle for Wesnoth"
 msgstr "Taistelu Wesnothista"
 
-#: src/game.cpp:995 src/game.cpp:1003 src/playsingle_controller.cpp:496
+#: src/game.cpp:997 src/game.cpp:1005 src/playsingle_controller.cpp:496
 #: src/playsingle_controller.cpp:551
 msgid "The file you have tried to load is corrupt"
 msgstr "Tiedosto, jonka yritit avata, on korruptoitunut"
 
-#: src/game.cpp:998 src/game.cpp:1006 src/savegame.cpp:535
+#: src/game.cpp:1000 src/game.cpp:1008 src/savegame.cpp:535
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Tiedosto, jonka yritit ladata, on vahingoittunut: '"
 
-#: src/game.cpp:1010
+#: src/game.cpp:1012
 msgid "File I/O Error while reading the game"
 msgstr "Peliä luettaessa tiedoston I/O -virhe"
 
-#: src/game.cpp:1105
+#: src/game.cpp:1107
 msgid "No campaigns are available.\n"
 msgstr "Yhtään kampanjaa ei ole saatavilla.\n"
 
-#: src/game.cpp:1138
+#: src/game.cpp:1140
 msgid "Difficulty"
 msgstr "Vaikeustaso"
 
-#: src/game.cpp:1139
+#: src/game.cpp:1141
 msgid "Select difficulty level:"
 msgstr "Valitse vaikeustaso:"
 
-#: src/game.cpp:1274
+#: src/game.cpp:1276
 msgid "Do you really want to start the server?"
 msgstr "Haluatko varmasti käynnistää palvelimen?"
 
-#: src/game.cpp:1275
+#: src/game.cpp:1277
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
@@ -7807,61 +7807,61 @@ msgstr ""
 "Palvelin ajaa itseään taustaprosessina kunnes kaikki käyttäjät ovat "
 "poistuneet."
 
-#: src/game.cpp:1279
+#: src/game.cpp:1281
 msgid "Don't show again"
 msgstr "Älä näytä uudelleen"
 
-#: src/game.cpp:1350
+#: src/game.cpp:1352
 msgid "Error while starting server: "
 msgstr "Virhe käynnistäessä palvelinta:"
 
-#: src/game.cpp:1352 src/playcampaign.cpp:99 src/playcampaign.cpp:365
+#: src/game.cpp:1354 src/playcampaign.cpp:99 src/playcampaign.cpp:365
 msgid "The game could not be loaded: "
 msgstr "Peliä ei voitu ladata: "
 
-#: src/game.cpp:1354 src/playcampaign.cpp:101 src/playcampaign.cpp:368
+#: src/game.cpp:1356 src/playcampaign.cpp:101 src/playcampaign.cpp:368
 msgid "Error while playing the game: "
 msgstr "Virhe pelatessa: "
 
-#: src/game.cpp:1374 src/playcampaign.cpp:103 src/playcampaign.cpp:371
+#: src/game.cpp:1376 src/playcampaign.cpp:103 src/playcampaign.cpp:371
 msgid "The game map could not be loaded: "
 msgstr "Karttaa ei voitu ladata: "
 
-#: src/game.cpp:1518
+#: src/game.cpp:1520
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Seuraavassa lisäosassa oli virhe, eikä sitä voitu ladata:"
 msgstr[1] "Seuraavissa lisäosissa oli virheitä, eikä niitä voitu ladata:"
 
-#: src/game.cpp:1525
+#: src/game.cpp:1527
 msgid "ERROR DETAILS:"
 msgstr "VIRHEEN TARKEMPI KUVAUS:"
 
-#: src/game.cpp:1543
+#: src/game.cpp:1545
 msgid "Error loading game configuration files: '"
 msgstr "Virhe ladattaessa asetustiedostoja: '"
 
-#: src/game.cpp:1544
+#: src/game.cpp:1546
 msgid "' (The game will now exit)"
 msgstr "' (peli sulkeutuu nyt)"
 
-#: src/game.cpp:1553
+#: src/game.cpp:1555
 msgid "Loading data files"
 msgstr "Ladataan tiedostoja"
 
-#: src/game.cpp:1988
+#: src/game.cpp:1990
 msgid "Loading game configuration."
 msgstr "Ladataan asetuksia."
 
-#: src/game.cpp:1994
+#: src/game.cpp:1996
 msgid "Re-initialize fonts for the current language."
 msgstr "Alustetaan merkistö uudelleen tätä kieltä varten."
 
-#: src/game.cpp:2002
+#: src/game.cpp:2004
 msgid "Searching for installed add-ons."
 msgstr "Etsitään asennettuja lisäosia."
 
-#: src/game.cpp:2011
+#: src/game.cpp:2013
 msgid "Loading title screen."
 msgstr "Ladataan aloitusikkunaa."
 
@@ -8222,50 +8222,50 @@ msgstr "Luetaan yksikkötiedostoja."
 msgid "Reading files and creating cache..."
 msgstr "Luetaan tiedostoja ja luodaan väliaikaistiedostoa."
 
-#: src/lobby_data.cpp:234 src/multiplayer_lobby.cpp:431
+#: src/lobby_data.cpp:238 src/multiplayer_lobby.cpp:431
 msgid "Unknown era: $era_id"
 msgstr "Tuntematon aikakausi: $era_id"
 
-#: src/lobby_data.cpp:239 src/multiplayer_lobby.cpp:435
+#: src/lobby_data.cpp:243 src/multiplayer_lobby.cpp:435
 msgid "Unknown era"
 msgstr "Tuntematon aikakausi"
 
-#: src/lobby_data.cpp:294 src/multiplayer_lobby.cpp:497
+#: src/lobby_data.cpp:298 src/multiplayer_lobby.cpp:497
 msgid "Remote scenario"
 msgstr "Toisella koneella oleva skenaario"
 
-#: src/lobby_data.cpp:302 src/multiplayer_lobby.cpp:504
+#: src/lobby_data.cpp:306 src/multiplayer_lobby.cpp:504
 msgid "Unknown scenario: $scenario_id"
 msgstr "Tuntematon skenaario: $scenario_id"
 
-#: src/lobby_data.cpp:307 src/multiplayer_lobby.cpp:508
+#: src/lobby_data.cpp:311 src/multiplayer_lobby.cpp:508
 msgid "Unknown scenario"
 msgstr "Tuntematon skenaario"
 
-#: src/lobby_data.cpp:313 src/multiplayer_lobby.cpp:513
+#: src/lobby_data.cpp:317 src/multiplayer_lobby.cpp:513
 msgid "Reloaded game"
 msgstr "Uudelleenladattu peli"
 
-#: src/lobby_data.cpp:324 src/multiplayer_lobby.cpp:529
+#: src/lobby_data.cpp:328 src/multiplayer_lobby.cpp:529
 msgid "Turn "
 msgstr "Vuoro"
 
-#: src/lobby_data.cpp:328 src/multiplayer_lobby.cpp:533
+#: src/lobby_data.cpp:332 src/multiplayer_lobby.cpp:533
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Vapaa paikka:"
 msgstr[1] "Vapaita paikkoja:"
 
-#: src/lobby_data.cpp:334 src/multiplayer_lobby.cpp:544
+#: src/lobby_data.cpp:338 src/multiplayer_lobby.cpp:544
 msgid "Fog"
 msgstr "Sumu"
 
-#: src/lobby_data.cpp:337 src/lobby_data.cpp:340 src/multiplayer_create.cpp:83
+#: src/lobby_data.cpp:341 src/lobby_data.cpp:344 src/multiplayer_create.cpp:83
 #: src/multiplayer_lobby.cpp:548 src/multiplayer_lobby.cpp:554
 msgid "Shroud"
 msgstr "Huntu"
 
-#: src/lobby_data.cpp:342 src/multiplayer_lobby.cpp:558
+#: src/lobby_data.cpp:346 src/multiplayer_lobby.cpp:558
 msgid "none"
 msgstr "Ei mitään"
 
@@ -8880,11 +8880,11 @@ msgstr "Komento:"
 msgid "User-Command#3"
 msgstr "Käyttäjäkomento#3"
 
-#: src/mouse_events.cpp:692
+#: src/mouse_events.cpp:696
 msgid "Attack Enemy"
 msgstr "Hyökkää vihollista vastaan"
 
-#: src/mouse_events.cpp:693
+#: src/mouse_events.cpp:697
 msgid "Choose weapon:"
 msgstr "Valitse ase:"
 
@@ -9434,7 +9434,7 @@ msgstr "Ei voitu lisätä yhteyspalikkaa."
 msgid "Could not send initial handshake"
 msgstr "Ei voitu lähettää alkukättelyä."
 
-#: src/pathfind.cpp:454
+#: src/pathfind.cpp:466
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Maastoa yhtä vähemmällä liikkumiskustannuksella kohdattu."
 
@@ -9974,39 +9974,39 @@ msgstr "Auta Wesnothia lähettämällä meille tietoa"
 msgid "No time of day has been defined."
 msgstr "Vuorokaudenaikaa ei ole määritelty."
 
-#: src/unit.cpp:502
+#: src/unit.cpp:505
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "Tuntematon yksikkötyyppi ”$type|” generoidessa piirteitä"
 
-#: src/unit.cpp:684
+#: src/unit.cpp:687
 msgid "Unknown unit type '$type|'"
 msgstr "Tuntematon yksikkötyyppi '$type|'"
 
-#: src/unit.cpp:2475 src/unit.cpp:2660 src/unit.cpp:2733
+#: src/unit.cpp:2478 src/unit.cpp:2663 src/unit.cpp:2736
 msgid " and "
 msgstr " ja "
 
-#: src/unit.cpp:2486
+#: src/unit.cpp:2489
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2551
+#: src/unit.cpp:2554
 msgid "moves"
 msgstr "siirrot"
 
-#: src/unit.cpp:2569 src/unit.cpp:2687
+#: src/unit.cpp:2572 src/unit.cpp:2690
 msgid "XP to advance"
 msgstr "KP:tä ylenemiseen"
 
-#: src/unit.cpp:2679
+#: src/unit.cpp:2682
 msgid " move"
 msgstr "siirto"
 
-#: src/unit.cpp:2695
+#: src/unit.cpp:2698
 msgid "$effect_description per level"
 msgstr "$effect_description tasoa kohden"
 
-#: src/unit.cpp:2742
+#: src/unit.cpp:2745
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 

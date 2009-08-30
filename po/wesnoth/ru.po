@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-29 12:11+0200\n"
+"POT-Creation-Date: 2009-08-30 19:20+0200\n"
 "PO-Revision-Date: 2009-08-17 13:45+0200\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team:  <ru@li.org>\n"
@@ -6964,8 +6964,8 @@ msgstr "Закончить сценарий"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:197 src/unit.cpp:2518
-#: src/unit.cpp:2672
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:197 src/unit.cpp:2521
+#: src/unit.cpp:2675
 msgid "HP"
 msgstr "ЗД"
 
@@ -7545,7 +7545,7 @@ msgstr "Нет подходящего оружия"
 msgid "Chance of being unscathed"
 msgstr "Шанс выйти целым"
 
-#: src/attack_prediction_display.cpp:547 src/mouse_events.cpp:681
+#: src/attack_prediction_display.cpp:547 src/mouse_events.cpp:685
 msgid "Damage Calculations"
 msgstr "Подсчёт ущерба"
 
@@ -7694,40 +7694,40 @@ msgid "Moves: "
 msgstr "Ходов: "
 
 # ?
-#: src/game.cpp:666 src/game.cpp:1395
+#: src/game.cpp:668 src/game.cpp:1397
 msgid "The Battle for Wesnoth"
 msgstr "Битва за Веснот"
 
-#: src/game.cpp:995 src/game.cpp:1003 src/playsingle_controller.cpp:496
+#: src/game.cpp:997 src/game.cpp:1005 src/playsingle_controller.cpp:496
 #: src/playsingle_controller.cpp:551
 msgid "The file you have tried to load is corrupt"
 msgstr "Файл, который Вы пытались загрузить, поврежден"
 
-#: src/game.cpp:998 src/game.cpp:1006 src/savegame.cpp:535
+#: src/game.cpp:1000 src/game.cpp:1008 src/savegame.cpp:535
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Загружаемый файл поврежден: \""
 
-#: src/game.cpp:1010
+#: src/game.cpp:1012
 msgid "File I/O Error while reading the game"
 msgstr "Ошибка ввода/вывода при чтении файла с игрой"
 
-#: src/game.cpp:1105
+#: src/game.cpp:1107
 msgid "No campaigns are available.\n"
 msgstr "Нет доступных кампаний.\n"
 
-#: src/game.cpp:1138
+#: src/game.cpp:1140
 msgid "Difficulty"
 msgstr "Сложность"
 
-#: src/game.cpp:1139
+#: src/game.cpp:1141
 msgid "Select difficulty level:"
 msgstr "Выберите уровень сложности:"
 
-#: src/game.cpp:1274
+#: src/game.cpp:1276
 msgid "Do you really want to start the server?"
 msgstr "Вы действительно хотите запустить сервер?"
 
-#: src/game.cpp:1275
+#: src/game.cpp:1277
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
@@ -7735,62 +7735,62 @@ msgstr ""
 "Сервер будет работать фоновым процессом, пока все пользователи не "
 "отсоединятся."
 
-#: src/game.cpp:1279
+#: src/game.cpp:1281
 msgid "Don't show again"
 msgstr "Больше мне это не показывайте!"
 
-#: src/game.cpp:1350
+#: src/game.cpp:1352
 msgid "Error while starting server: "
 msgstr "Ошибка при запуске сервера: "
 
-#: src/game.cpp:1352 src/playcampaign.cpp:99 src/playcampaign.cpp:365
+#: src/game.cpp:1354 src/playcampaign.cpp:99 src/playcampaign.cpp:365
 msgid "The game could not be loaded: "
 msgstr "Игра не может быть загружена: "
 
-#: src/game.cpp:1354 src/playcampaign.cpp:101 src/playcampaign.cpp:368
+#: src/game.cpp:1356 src/playcampaign.cpp:101 src/playcampaign.cpp:368
 msgid "Error while playing the game: "
 msgstr "Возникла ошибка во время игры: "
 
-#: src/game.cpp:1374 src/playcampaign.cpp:103 src/playcampaign.cpp:371
+#: src/game.cpp:1376 src/playcampaign.cpp:103 src/playcampaign.cpp:371
 msgid "The game map could not be loaded: "
 msgstr "Игровая карта не может быть загружена: "
 
-#: src/game.cpp:1518
+#: src/game.cpp:1520
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Следующий аддон имеет ошибки и не может быть загружен:"
 msgstr[1] "Следующие аддоны имеют ошибки и не могут быть загружены:"
 msgstr[2] "Следующие аддоны имеют ошибки и не могут быть загружены:"
 
-#: src/game.cpp:1525
+#: src/game.cpp:1527
 msgid "ERROR DETAILS:"
 msgstr "ПОДРОБНОСТИ ОШИБКИ:"
 
-#: src/game.cpp:1543
+#: src/game.cpp:1545
 msgid "Error loading game configuration files: '"
 msgstr "Ошибка при загрузке файлов с настройками игры: \""
 
-#: src/game.cpp:1544
+#: src/game.cpp:1546
 msgid "' (The game will now exit)"
 msgstr "\" (сейчас игра будет завершена)"
 
-#: src/game.cpp:1553
+#: src/game.cpp:1555
 msgid "Loading data files"
 msgstr "Чтение файлов данных"
 
-#: src/game.cpp:1988
+#: src/game.cpp:1990
 msgid "Loading game configuration."
 msgstr "Загрузка настроек игры"
 
-#: src/game.cpp:1994
+#: src/game.cpp:1996
 msgid "Re-initialize fonts for the current language."
 msgstr "Реинициализация шрифтов для текущего языка"
 
-#: src/game.cpp:2002
+#: src/game.cpp:2004
 msgid "Searching for installed add-ons."
 msgstr "Ищу установленные аддоны"
 
-#: src/game.cpp:2011
+#: src/game.cpp:2013
 msgid "Loading title screen."
 msgstr "Загружаю главный экран."
 
@@ -8151,51 +8151,51 @@ msgstr "Читаю файлы бойцов."
 msgid "Reading files and creating cache..."
 msgstr "Читаю файлы и создаю кэш"
 
-#: src/lobby_data.cpp:234 src/multiplayer_lobby.cpp:431
+#: src/lobby_data.cpp:238 src/multiplayer_lobby.cpp:431
 msgid "Unknown era: $era_id"
 msgstr "Неизвестная эра: $era_id"
 
-#: src/lobby_data.cpp:239 src/multiplayer_lobby.cpp:435
+#: src/lobby_data.cpp:243 src/multiplayer_lobby.cpp:435
 msgid "Unknown era"
 msgstr "Неизвестная эра"
 
-#: src/lobby_data.cpp:294 src/multiplayer_lobby.cpp:497
+#: src/lobby_data.cpp:298 src/multiplayer_lobby.cpp:497
 msgid "Remote scenario"
 msgstr "Удаленный сценарий"
 
-#: src/lobby_data.cpp:302 src/multiplayer_lobby.cpp:504
+#: src/lobby_data.cpp:306 src/multiplayer_lobby.cpp:504
 msgid "Unknown scenario: $scenario_id"
 msgstr "Неизвестный сценарий: $scenario_id"
 
-#: src/lobby_data.cpp:307 src/multiplayer_lobby.cpp:508
+#: src/lobby_data.cpp:311 src/multiplayer_lobby.cpp:508
 msgid "Unknown scenario"
 msgstr "Неизвестный сценарий"
 
-#: src/lobby_data.cpp:313 src/multiplayer_lobby.cpp:513
+#: src/lobby_data.cpp:317 src/multiplayer_lobby.cpp:513
 msgid "Reloaded game"
 msgstr "Игра перезагружена"
 
-#: src/lobby_data.cpp:324 src/multiplayer_lobby.cpp:529
+#: src/lobby_data.cpp:328 src/multiplayer_lobby.cpp:529
 msgid "Turn "
 msgstr "Ход"
 
-#: src/lobby_data.cpp:328 src/multiplayer_lobby.cpp:533
+#: src/lobby_data.cpp:332 src/multiplayer_lobby.cpp:533
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Свободный слот:"
 msgstr[1] "Свободных слота:"
 msgstr[2] "Свободных слотов:"
 
-#: src/lobby_data.cpp:334 src/multiplayer_lobby.cpp:544
+#: src/lobby_data.cpp:338 src/multiplayer_lobby.cpp:544
 msgid "Fog"
 msgstr "Туман"
 
-#: src/lobby_data.cpp:337 src/lobby_data.cpp:340 src/multiplayer_create.cpp:83
+#: src/lobby_data.cpp:341 src/lobby_data.cpp:344 src/multiplayer_create.cpp:83
 #: src/multiplayer_lobby.cpp:548 src/multiplayer_lobby.cpp:554
 msgid "Shroud"
 msgstr "Пелена"
 
-#: src/lobby_data.cpp:342 src/multiplayer_lobby.cpp:558
+#: src/lobby_data.cpp:346 src/multiplayer_lobby.cpp:558
 msgid "none"
 msgstr "нет"
 
@@ -8816,11 +8816,11 @@ msgstr "Команда:"
 msgid "User-Command#3"
 msgstr "Пользовательская команда № 3"
 
-#: src/mouse_events.cpp:692
+#: src/mouse_events.cpp:696
 msgid "Attack Enemy"
 msgstr "Атаковать противника"
 
-#: src/mouse_events.cpp:693
+#: src/mouse_events.cpp:697
 msgid "Choose weapon:"
 msgstr "Выберите оружие:"
 
@@ -9367,7 +9367,7 @@ msgstr "Не могу добавить сокет к набору сокетов
 msgid "Could not send initial handshake"
 msgstr "Не могу отправить данные для инициализации"
 
-#: src/pathfind.cpp:454
+#: src/pathfind.cpp:466
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Обнаружена территория с ценой движения меньше 1."
 
@@ -9909,39 +9909,39 @@ msgstr "Помогите Весноту, отправив нам информа�
 msgid "No time of day has been defined."
 msgstr "Время суток не задано."
 
-#: src/unit.cpp:502
+#: src/unit.cpp:505
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "Неизвестный тип бойца: '$type|' в списке особенностей"
 
-#: src/unit.cpp:684
+#: src/unit.cpp:687
 msgid "Unknown unit type '$type|'"
 msgstr "Неизвестный тип бойца: '$type|'"
 
-#: src/unit.cpp:2475 src/unit.cpp:2660 src/unit.cpp:2733
+#: src/unit.cpp:2478 src/unit.cpp:2663 src/unit.cpp:2736
 msgid " and "
 msgstr " и"
 
-#: src/unit.cpp:2486
+#: src/unit.cpp:2489
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2551
+#: src/unit.cpp:2554
 msgid "moves"
 msgstr "ходы"
 
-#: src/unit.cpp:2569 src/unit.cpp:2687
+#: src/unit.cpp:2572 src/unit.cpp:2690
 msgid "XP to advance"
 msgstr "ОП для улучшения"
 
-#: src/unit.cpp:2679
+#: src/unit.cpp:2682
 msgid " move"
 msgstr " ход"
 
-#: src/unit.cpp:2695
+#: src/unit.cpp:2698
 msgid "$effect_description per level"
 msgstr "$effect_description за уровень"
 
-#: src/unit.cpp:2742
+#: src/unit.cpp:2745
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 

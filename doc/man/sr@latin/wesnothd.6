@@ -33,7 +33,7 @@ wesnothd \-\- višeigrački mrežni domar "Boja za \fBVesnot\fP"
 .
 .SH OPIS
 .
-Upravlja višeigračkim sesijama "Boja za Vesnot". Pogledajte
+Upravlja višeigračkim partijama "Boja za Vesnot". Pogledajte
 http://www.wesnoth.org/wiki/ServerAdministration za naredbe koje server
 prihvata preko klijenta (/query ...) ili fifoa.
 .
@@ -92,9 +92,9 @@ ključ="\fIvrednost\fP,\fIvrednost\fP,..."
 .
 .TP 
 \fBallow_remote_shutdown\fP
-If set to `no' (default), shut_down and restart requests are ignored unless
-the come from the fifo.  Set it to `yes' to allow remote shutdown via a
-/query by an administrator.
+ako se zada 'no' (podrazumevano), zahtevi za gašenje i ponovno pokretanje se
+ignorišu osim ako stižu iz fifoa. Zadajte 'yes' da dozvolite udaljeno
+gašenje na /query administratora.
 .TP 
 \fBban_save_file\fP
 Puna ili relativna putanja do (gzipovane) datoteke koju server može da čita
@@ -102,8 +102,8 @@ i piše. Zabrane će biti zapisivane u nju, i čitane po narednom pokretanju
 servera.
 .TP 
 \fBcompress_stored_rooms\fP
-Determines whether the rooms file should be read and written to in
-compressed form. Defaults to `yes'.
+određuje da li fajl soba treba čitati i pisati u kompresovanom
+obliku. Podrazumevano 'yes'.
 .TP 
 \fBconnections_allowed\fP
 broj dozvoljenih veza sa iste IP adrese, \fB0\fP znači bezbroj (podrazumevno:
@@ -116,7 +116,7 @@ koriste ako se ništa ne zada, su:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-Putanja do fifoa iz kojeg server može da čita naredbe (iste kao /query
+putanja do fifoa iz kojeg server može da čita naredbe (iste kao /query
 \&... iz igre). Ako nije zadato, spada na podrazumevanu ugrađenu
 (/var/run/socket/wesnothd/socket).
 .TP 
@@ -132,17 +132,17 @@ vremenski period u sekundama koji se razmatra za otkrivanje poplave poruka
 poruka dana
 .TP 
 \fBnew_room_policy\fP
-Determines who can create new rooms on the server. Available values are
-`everyone', `registered', `admin' and `nobody', and give the permission
-respectively to everyone, registered users, admin users or disables new room
-creation. Default value is `everyone'.
+određuje ko može da stvara nove sobe na serveru. Moguće vrednosti su
+\&'everyone', 'registered', 'admin' i 'nobody', dajući dozvolu, redom, svima,
+registrovanim korisnicima, administratorima i nikome. Podrazumevana vrednost
+je 'everyone'.
 .TP 
 \fBpasswd\fP
 lozinka za sticanje administratorskih ovlašćenja. Obično počinje sa 'admin
 \&'
 .TP 
 \fBreplay_save_path\fP
-Direktorijum gde server smešta snimke igara (ne zaboravite prateće
+Direktorijum gde server smešta snimke partija (ne zaboravite prateće
 /!). Podrazumevano je \*(rq (prazno), što znači direktorijum u kojem je
 wesnothd pokrenut.
 .TP 
@@ -151,12 +151,12 @@ Naredba kojom server pokreće novi serverski proces pri naredbi
 \&'restart'. (Može se izdati samo preko fifoa.)
 .TP 
 \fBroom_save_file\fP
-Path to a file where the room info should be stored. This file is read on
-server startup and written to later. If empty or not set, rooms are not
-loaded and not saved.
+putanja do fajla gde se skladište podaci sobe. Ovaj fajl čita server pri
+pokretanju, i kasnije upisuje. Ako je prazno ili nije zadato, sobe se ne
+učitavaju niti upisuju.
 .TP 
 \fBsave_replays\fP
-Određuje da li server automatski upisuje snimke igara (podrazumevno:
+Određuje da li server automatski upisuje snimke partija (podrazumevno:
 \fBfalse\fP).
 .TP 
 \fBversions_accepted\fP

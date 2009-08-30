@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-29 12:11+0200\n"
+"POT-Creation-Date: 2009-08-30 19:20+0200\n"
 "PO-Revision-Date: 2009-08-04 15:21+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: none\n"
@@ -1404,7 +1404,7 @@ msgstr "Parooli meeldetuletus"
 #. [grid]
 #: data/gui/default/window/mp_method_selection.cfg:31
 #: data/gui/default/window/title_screen.cfg:184
-#: src/gui/dialogs/game_load.cpp:262
+#: src/gui/dialogs/game_load.cpp:266
 msgid "Multiplayer"
 msgstr "Mitmemängija mäng"
 
@@ -1479,7 +1479,7 @@ msgstr "Eelmine"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:182
-#: src/gui/dialogs/game_load.cpp:264
+#: src/gui/dialogs/game_load.cpp:268
 msgid "Tutorial"
 msgstr "Mänguõpetus"
 
@@ -2029,8 +2029,8 @@ msgstr "Lahutusvõmet pole määratud."
 #: src/gui/auxiliary/window_builder/panel.cpp:35
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:38
 #: src/gui/widgets/settings.cpp:780 src/gui/widgets/settings.cpp:879
-#: src/gui/widgets/settings.cpp:972 src/gui/widgets/settings.cpp:1014
-#: src/gui/widgets/settings.cpp:1129
+#: src/gui/widgets/settings.cpp:972 src/gui/widgets/settings.cpp:1015
+#: src/gui/widgets/settings.cpp:1130
 msgid "No grid defined."
 msgstr "Servereid pole määratud."
 
@@ -2076,43 +2076,43 @@ msgstr "'Value_labels' väärtus ei klapi."
 msgid "No stack defined."
 msgstr "Pinu pole määratud."
 
-#: src/gui/dialogs/game_load.cpp:235
+#: src/gui/dialogs/game_load.cpp:239
 msgid "#(Invalid)"
 msgstr "#(Viga)"
 
-#: src/gui/dialogs/game_load.cpp:255
+#: src/gui/dialogs/game_load.cpp:259
 msgid "Campaign: $campaign_name"
 msgstr "Sõjakäik: $campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:274
+#: src/gui/dialogs/game_load.cpp:278
 msgid "replay"
 msgstr "mängusalvestus"
 
-#: src/gui/dialogs/game_load.cpp:276
+#: src/gui/dialogs/game_load.cpp:280
 msgid "Turn"
 msgstr "Käik"
 
-#: src/gui/dialogs/game_load.cpp:278
+#: src/gui/dialogs/game_load.cpp:282
 msgid "Scenario Start"
 msgstr "Algus"
 
-#: src/gui/dialogs/game_load.cpp:281
+#: src/gui/dialogs/game_load.cpp:285
 msgid "Difficulty: "
 msgstr "Raskusaste:"
 
-#: src/gui/dialogs/game_load.cpp:285
+#: src/gui/dialogs/game_load.cpp:289
 msgid "Version: "
 msgstr "Versioon: "
 
-#: src/gui/dialogs/lobby_main.cpp:386
+#: src/gui/dialogs/lobby_main.cpp:401
 msgid "Observers allowed"
 msgstr ""
 
-#: src/gui/dialogs/lobby_main.cpp:389
+#: src/gui/dialogs/lobby_main.cpp:404
 msgid "Observers not allowed"
 msgstr ""
 
-#: src/gui/dialogs/lobby_main.cpp:664
+#: src/gui/dialogs/lobby_main.cpp:679
 msgid ""
 "Whisper session with $name started. If you don't want to receive messages "
 "from this user, type /ignore $name\n"
@@ -2120,19 +2120,19 @@ msgstr ""
 "Alustasid sosistamist kasutajaga $name. Kui soovid selle kasutaja sõnumeid "
 "eirata, kirjuta  /ignore $name\n"
 
-#: src/gui/dialogs/lobby_main.cpp:670
+#: src/gui/dialogs/lobby_main.cpp:685
 msgid "Room $name joined"
 msgstr "Liitusid ruumiga $name"
 
-#: src/gui/dialogs/lobby_main.cpp:1088
+#: src/gui/dialogs/lobby_main.cpp:1103
 msgid "Password Required"
 msgstr "Parool"
 
-#: src/gui/dialogs/lobby_main.cpp:1089
+#: src/gui/dialogs/lobby_main.cpp:1104
 msgid "Joining this game requires a password."
 msgstr "Selle mänguga liitumiseks on vaja parooli."
 
-#: src/gui/dialogs/lobby_main.cpp:1090
+#: src/gui/dialogs/lobby_main.cpp:1105
 msgid "Password: "
 msgstr "Parool:"
 
