@@ -1010,6 +1010,70 @@ private:
 };
 
 
+
+class next_hop_function : public function_expression {
+public:
+	explicit next_hop_function(const args_list& args, const formula_ai& ai)
+	  : function_expression("next_hop", args, 2, 3), ai_(ai)
+	{}
+
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+
+		const map_location src = convert_variant<location_callable>(args()[0]->evaluate(variables,add_debug_info(fdb,0,"next_hop:src")))->loc();
+		const map_location dst = convert_variant<location_callable>(args()[1]->evaluate(variables,add_debug_info(fdb,1,"next_hop:dst")))->loc();
+                map_location unit_loc;
+
+                if( src == dst )
+			return variant();
+
+                if(args().size() > 2)
+			unit_loc = convert_variant<location_callable>(args()[2]->evaluate(variables,add_debug_info(fdb,2,"next_hop:unit_location")))->loc();
+                else
+                    unit_loc = src;
+
+                unit_map::iterator unit_it = ai_.get_info().units.find(unit_loc);
+
+		if( unit_it == ai_.get_info().units.end() ) {
+			std::ostringstream str;
+			str << "next_hop function: expected unit at location (" << (unit_loc.x+1) << "," << (unit_loc.y+1) << ")";
+			throw formula_error( str.str(), "", "", 0);
+		}
+
+                std::set<map_location> allowed_teleports = ai_.get_allowed_teleports(unit_it);
+
+		plain_route route = ai_.shortest_path_calculator( src, dst, unit_it, allowed_teleports );
+
+                if( route.steps.size() < 2 ) {
+			return variant();
+                }
+
+		map_location loc = map_location::null_location;
+		const ai::moves_map &possible_moves = ai_.get_possible_moves();
+		const ai::moves_map::const_iterator& p_it = possible_moves.find(unit_loc);
+		if (p_it==possible_moves.end() ) {
+			return variant();
+		}
+
+                for (std::vector<map_location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
+
+			if (p_it->second.destinations.find(*loc_iter) != p_it->second.destinations.end() ) {
+				loc = *loc_iter;
+			} else {
+				break;
+			}
+                }
+		if (loc==map_location::null_location) {
+			return variant();
+		}
+		return variant(new location_callable(loc));
+	}
+
+	const formula_ai& ai_;
+};
+
+
+
 class move_function : public function_expression {
 public:
 	explicit move_function(const args_list& args)
@@ -1602,6 +1666,8 @@ expression_ptr ai_function_symbol_table::create_function(const std::string &fn,
 		return expression_ptr(new max_possible_damage_function(args, ai_));
 	} else if(fn == "max_possible_damage_with_retaliation") {
 		return expression_ptr(new max_possible_damage_with_retaliation_function(args, ai_));
+	} else if(fn == "next_hop") {
+		return expression_ptr(new next_hop_function(args, ai_));
 	} else if(fn == "adjacent_locs") {
 		return expression_ptr(new adjacent_locs_function(args, ai_));
 	} else if(fn == "locations_in_radius") {
