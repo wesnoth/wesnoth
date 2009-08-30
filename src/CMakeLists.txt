@@ -149,74 +149,15 @@ endif(ENABLE_POOL_ALLOC AND NOT WIN32)
 # internal reference is the name given here
 add_library(wesnoth-core STATIC EXCLUDE_FROM_ALL ${libwesnoth-core_STAT_SRC})
 
-########### libwesnoth-game ###############
-# rename libwesnoth.a to libwesnoth-game.a to have clearer targets
+########### Wesnoth main source files ###############
 
-SET(libwesnoth-game_STAT_SRC
-    astarsearch.cpp
-    builder.cpp
-    cavegen.cpp
-    clipboard.cpp
-    construct_dialog.cpp
-    cursor.cpp
-    display.cpp
-    events.cpp
-    filechooser.cpp
-    font.cpp
-    hotkeys.cpp
-    image.cpp
-    image_function.cpp
-    key.cpp
-    language.cpp
-    loadscreen.cpp
-    lobby_data.cpp
-    lobby_preferences.cpp
-    map_create.cpp
-    map_label.cpp
-    mapgen.cpp
-    mapgen_dialog.cpp
-    marked-up_text.cpp
-    minimap.cpp
-    pathutils.cpp
-    preferences.cpp
-    preferences_display.cpp
-    race.cpp
-    random.cpp
-    reports.cpp
-    sdl_utils.cpp
-    show_dialog.cpp
-    sound.cpp
-    soundsource.cpp
-    sound_music_track.cpp
-    terrain.cpp
-    terrain_translation.cpp
-    text.cpp
-    time_of_day.cpp
-    video.cpp
-    theme.cpp
-    widgets/button.cpp
-    widgets/file_menu.cpp
-    widgets/label.cpp
-    widgets/menu.cpp
-    widgets/menu_style.cpp
-    widgets/progressbar.cpp
-    widgets/scrollarea.cpp
-    widgets/scrollbar.cpp
-    widgets/slider.cpp
-    widgets/textbox.cpp
-    widgets/widget.cpp
-    wml_exception.cpp
-)
+# Depending on whether the game or the game and the tests are build the main
+# sources are compiled in the game library or not. If only one target is needed
+# the putting in the game library solution is slower. If both targets are build
+# the library is faster (especially if the user doesn't use ccache (or
+# something similar)).
 
-# a 'lib' is automatically set in front when creating the library (as in the filename)
-# internal reference is the name given here
-add_library(wesnoth-game STATIC EXCLUDE_FROM_ALL ${libwesnoth-game_STAT_SRC})
-
-########### Wesnoth ###############
-
-IF(ENABLE_GAME)
-
-SET(wesnoth-main_SRC
+set(wesnoth-main_SRC
     about.cpp
     actions.cpp
     addon_checks.cpp
@@ -413,48 +354,139 @@ SET(wesnoth-main_SRC
     widgets/scrollpane.cpp
 )
 
-# used with editor option in the wesnoth target
+if(ENABLE_EDITOR)
+	set(wesnoth-main_SRC
+		gui/dialogs/editor_generate_map.cpp
+		gui/dialogs/editor_new_map.cpp
+		gui/dialogs/editor_resize_map.cpp
+		gui/dialogs/editor_settings.cpp
+		editor/action.cpp
+		editor/brush.cpp
+		editor/editor_main.cpp
+		editor/editor_controller.cpp
+		editor/editor_display.cpp
+		editor/editor_layout.cpp
+		editor/editor_map.cpp
+		editor/editor_palettes.cpp
+		editor/editor_preferences.cpp
+		editor/map_context.cpp
+		editor/map_fragment.cpp
+		editor/mouse_action.cpp
+		${wesnoth-main_SRC}
+	)
+endif(ENABLE_EDITOR)
 
-SET(wesnoth-editor_SRC
-    gui/dialogs/editor_generate_map.cpp
-    gui/dialogs/editor_new_map.cpp
-    gui/dialogs/editor_resize_map.cpp
-    gui/dialogs/editor_settings.cpp
-    editor/action.cpp
-    editor/brush.cpp
-    editor/editor_main.cpp
-    editor/editor_controller.cpp
-    editor/editor_display.cpp
-    editor/editor_layout.cpp
-    editor/editor_map.cpp
-    editor/editor_palettes.cpp
-    editor/editor_preferences.cpp
-    editor/map_context.cpp
-    editor/map_fragment.cpp
-    editor/mouse_action.cpp
+########### libwesnoth-game ###############
+# rename libwesnoth.a to libwesnoth-game.a to have clearer targets
+
+SET(libwesnoth-game_STAT_SRC
+    astarsearch.cpp
+    builder.cpp
+    cavegen.cpp
+    clipboard.cpp
+    construct_dialog.cpp
+    cursor.cpp
+    display.cpp
+    events.cpp
+    filechooser.cpp
+    font.cpp
+    hotkeys.cpp
+    image.cpp
+    image_function.cpp
+    key.cpp
+    language.cpp
+    loadscreen.cpp
+    lobby_data.cpp
+    lobby_preferences.cpp
+    map_create.cpp
+    map_label.cpp
+    mapgen.cpp
+    mapgen_dialog.cpp
+    marked-up_text.cpp
+    minimap.cpp
+    pathutils.cpp
+    preferences.cpp
+    preferences_display.cpp
+    race.cpp
+    random.cpp
+    reports.cpp
+    sdl_utils.cpp
+    show_dialog.cpp
+    sound.cpp
+    soundsource.cpp
+    sound_music_track.cpp
+    terrain.cpp
+    terrain_translation.cpp
+    text.cpp
+    time_of_day.cpp
+    video.cpp
+    theme.cpp
+    widgets/button.cpp
+    widgets/file_menu.cpp
+    widgets/label.cpp
+    widgets/menu.cpp
+    widgets/menu_style.cpp
+    widgets/progressbar.cpp
+    widgets/scrollarea.cpp
+    widgets/scrollbar.cpp
+    widgets/slider.cpp
+    widgets/textbox.cpp
+    widgets/widget.cpp
+    wml_exception.cpp
 )
 
-IF(ENABLE_EDITOR)
+if(ENABLE_GAME AND ENABLE_TESTS)
+	set(libwesnoth-game_STAT_SRC
+		${libwesnoth-game_STAT_SRC}
+		${wesnoth-main_SRC}
+	)
+endif(ENABLE_GAME AND ENABLE_TESTS)
 
-SET(wesnoth-main_SRC
-    ${wesnoth-main_SRC}
-    ${wesnoth-editor_SRC}
-)
+# a 'lib' is automatically set in front when creating the library (as in the filename)
+# internal reference is the name given here
+add_library(wesnoth-game STATIC EXCLUDE_FROM_ALL ${libwesnoth-game_STAT_SRC})
 
-ENDIF(ENABLE_EDITOR)
+if(ENABLE_GAME AND ENABLE_TESTS)
+	target_link_libraries(wesnoth-game
+		wesnoth-core
+	)
+endif(ENABLE_GAME AND ENABLE_TESTS)
 
-SET(wesnoth_SRC
-    game.cpp
-    ${wesnoth-main_SRC}
-)
+########### Wesnoth ###############
 
-add_executable(wesnoth ${wesnoth_SRC})
-target_link_libraries(wesnoth wesnoth-core wesnoth-game ${game-external-libs})
-set_target_properties(wesnoth PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}wesnoth${BINARY_SUFFIX})
+if(ENABLE_GAME)
+	if(ENABLE_TESTS)
+		set(wesnoth_SRC
+			game.cpp
+		)
+		set(wesnoth_LIB
+			wesnoth-game
+		)
+	else(ENABLE_TESTS)
+		set(wesnoth_SRC
+			game.cpp
+			${wesnoth-main_SRC}
+		)
+		set(wesnoth_LIB
+			wesnoth-core
+			wesnoth-game
+		)
+	endif(ENABLE_TESTS)
 
-install(TARGETS wesnoth DESTINATION ${BINDIR})
 
-ENDIF(ENABLE_GAME)
+	add_executable(wesnoth
+		${wesnoth_SRC}
+	)
+	target_link_libraries(wesnoth
+	   ${wesnoth_LIB}
+	   ${game-external-libs}
+	)
+	set_target_properties(wesnoth
+		PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}
+	)
+
+	install(TARGETS wesnoth DESTINATION ${BINDIR})
+endif(ENABLE_GAME)
 
 ########### Wesnothd Server ###############
 
@@ -553,33 +585,47 @@ ENDIF(ENABLE_TOOLS)
 
 ########### Unit tests ###############
 
-IF(ENABLE_TESTS)
+if(ENABLE_TESTS)
 
-ADD_DEFINITIONS(-DBOOST_TEST_DYN_LINK)
+	add_definitions(-DBOOST_TEST_DYN_LINK)
 
-SET(test_SRC
-    tests/main.cpp
-	tests/utils/fake_display.cpp 
-	tests/utils/fake_event_source.cpp 
-	tests/utils/game_config_manager.cpp
-	tests/utils/play_scenario.cpp
-	tests/test_config_cache.cpp
-	tests/test_formula_ai.cpp
-    tests/test_lexical_cast.cpp	
-	tests/test_network_worker.cpp
-    tests/test_policy.cpp
-	tests/test_team.cpp
-    tests/test_util.cpp
-    tests/test_serialization.cpp
-    tests/test_version.cpp
-    tests/gui/test_drop_target.cpp
-    tests/gui/test_gui2.cpp
-	tests/gui/test_save_dialog.cpp
-    ${wesnoth-main_SRC}
-)
+	set(test_SRC
+		tests/main.cpp
+		tests/utils/fake_display.cpp 
+		tests/utils/fake_event_source.cpp 
+		tests/utils/game_config_manager.cpp
+		tests/utils/play_scenario.cpp
+		tests/test_config_cache.cpp
+		tests/test_formula_ai.cpp
+		tests/test_lexical_cast.cpp	
+		tests/test_network_worker.cpp
+		tests/test_policy.cpp
+		tests/test_team.cpp
+		tests/test_util.cpp
+		tests/test_serialization.cpp
+		tests/test_version.cpp
+		tests/gui/test_drop_target.cpp
+		tests/gui/test_gui2.cpp
+		tests/gui/test_save_dialog.cpp
+	)
+	if(NOT ENABLE_GAME)
+		set(test_SRC
+			${test_SRC}
+			${wesnoth-main_SRC}
+		)
+	endif(NOT ENABLE_GAME)
 
-add_executable(test ${test_SRC})
-target_link_libraries(test wesnoth-core wesnoth-game ${game-external-libs} boost_unit_test_framework)
-set_target_properties(test PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}test${BINARY_SUFFIX})
+	add_executable(test
+		${test_SRC}
+	)
+	target_link_libraries(test
+		wesnoth-core
+		wesnoth-game
+		${game-external-libs}
+		boost_unit_test_framework
+	)
+	set_target_properties(test
+		PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}test${BINARY_SUFFIX}
+	)
+endif(ENABLE_TESTS)
 
-ENDIF(ENABLE_TESTS)
