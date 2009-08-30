@@ -327,7 +327,10 @@ void mouse_handler::add_waypoint(const map_location& loc) {
 		waypoints_.pop_back();
 	} else {
 		waypoints_.push_back(loc);
-	} 
+	}
+	// we need to update the route, simulate a mouse move for the moment
+	// (browse is supposed false here, 0,0 are dummy values)
+	mouse_motion(0,0, false, true);
 }
 
 marked_route mouse_handler::get_route(unit_map::const_iterator un, map_location go_to, team &team)

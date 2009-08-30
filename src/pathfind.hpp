@@ -118,11 +118,12 @@ struct marked_route
 
 	struct waypoint
 	{
-		waypoint(int turns_number = 0, bool in_zoc = false,
+		waypoint(int turns_number = 0, bool pass = false,  bool in_zoc = false,
 		         bool do_capture = false, bool is_invisible = false)
-			: turns(turns_number), zoc(in_zoc),
+			: turns(turns_number), pass_here(pass), zoc(in_zoc),
 			  capture(do_capture), invisible(is_invisible) {}
 		int turns;
+		bool pass_here;
 		bool zoc;
 		bool capture;
 		bool invisible;

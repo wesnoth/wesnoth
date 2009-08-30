@@ -397,6 +397,11 @@ marked_route mark_route(const plain_route &rt,
 		assert(last_step || map.on_board(*(i+1)));
 		const int move_cost = last_step ? 0 : u.movement_cost(map[*(i+1)]);
 		bool capture = false;
+		bool pass_here = false;
+		if (w != waypoints.end() && *i == *w) {
+			w++;
+			pass_here = true;
+		}
 
 		if (last_step || zoc || move_cost > movement) {
 			// check if we stop an a village and so maybe capture it
@@ -410,7 +415,7 @@ marked_route mark_route(const plain_route &rt,
 
 			bool invisible = u.invisible(*i,units,teams,false);
 
-			res.waypoints[*i] = marked_route::waypoint(turns, zoc, capture, invisible);
+			res.waypoints[*i] = marked_route::waypoint(turns, pass_here, zoc, capture, invisible);
 
 			if (last_step) break; // finished and we used dummy move_cost
 
@@ -418,13 +423,9 @@ marked_route mark_route(const plain_route &rt,
 			if(move_cost > movement) {
 				return res; //we can't reach destination
 			}
-		}
-		if (w < waypoints.end() && *i == *w) {
-			w++;
-			if(res.waypoints.count(*i)==0) {
-				bool invisible = u.invisible(*i,units,teams,false);
-				res.waypoints[*i] = marked_route::waypoint(0, zoc, false, invisible);
-			}
+		} else if (pass_here) {
+			bool invisible = u.invisible(*i,units,teams,false);
+			res.waypoints[*i] = marked_route::waypoint(0, pass_here, zoc, false, invisible);
 		}
 
 		zoc = enemy_zoc(map,units,teams, *(i+1), viewing_team,u.side())
