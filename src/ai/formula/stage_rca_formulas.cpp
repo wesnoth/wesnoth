@@ -33,8 +33,12 @@ static lg::log_domain log_ai("ai/stage/rca_formulas");
 
 namespace ai {
 
-stage_rca_formulas::stage_rca_formulas(ai_context &context, const config &cfg, formula_ai &fai)
-       	: stage(context,cfg), cfg_(cfg), fai_(fai)
+stage_rca_formulas::stage_rca_formulas(ai_context &context
+		, const config &cfg, formula_ai &fai)
+	: stage(context,cfg)
+	, cfg_(cfg)
+	, fai_(fai)
+	, candidate_action_manager_()
 {
 /*	try {
 		if( candidate_action_manager_.has_candidate_actions() ) {
