@@ -33,13 +33,15 @@ class ttext_ : public tcontrol
 {
 
 public:
-	ttext_() :
-		tcontrol(COUNT),
-		state_(ENABLED),
-		text_(),
-		selection_start_(0),
-		selection_length_(0),
-		key_press_callback_()	{
+	ttext_()
+		: tcontrol(COUNT)
+		, state_(ENABLED)
+		, text_()
+		, selection_start_(0)
+		, selection_length_(0)
+		, key_press_callback_()
+		, text_changed_callback_()
+	{
 	}
 
 	/** Inherited from tevent_executor. */
