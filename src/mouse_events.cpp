@@ -354,16 +354,12 @@ marked_route mouse_handler::get_route(unit_map::const_iterator un, map_location 
 		route.steps.push_back(un->first);
 		route.move_cost = 0;
 
-		// maybe reserve head and tail and reinitialize it each time ?
-		waypoints_.push_front(un->first);
-		waypoints_.push_back(go_to);
-
-		std::list<map_location>::const_iterator wsrc = waypoints_.begin(),
-				wdst = ++waypoints_.begin();
-
-		for(; wdst != waypoints_.end(); ++wsrc, ++wdst) {
-			if (*wsrc==*wdst) continue;
-			plain_route inter_route = a_star_search(*wsrc, *wdst, 10000.0, &calc, map_.w(), map_.h(), &allowed_teleports);
+		const int wsize = waypoints_.size();
+		for(int w = -1; w < wsize; ++w){
+			const map_location& src = w < 0 ? un->first : waypoints_[w];
+			const map_location& dst = w+1 < wsize ? waypoints_[w+1] : go_to;
+			if (src==dst) continue;
+			plain_route inter_route = a_star_search(src, dst, 10000.0, &calc, map_.w(), map_.h(), &allowed_teleports);
 			if(inter_route.steps.size()>=1) {
 				// add to the main route but skip the head (already in)
 				route.steps.insert(route.steps.end(),
@@ -371,10 +367,6 @@ marked_route mouse_handler::get_route(unit_map::const_iterator un, map_location 
 				route.move_cost+=inter_route.move_cost;
 			}
 		}
-
-		// restore waypoints_ by removing temporary source and destination
-		waypoints_.pop_front();
-		waypoints_.pop_back();
 	}
 
 	return mark_route(route, un->second, viewing_team(), units_,teams_,map_);
