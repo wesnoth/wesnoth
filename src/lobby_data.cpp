@@ -62,7 +62,9 @@ void chat_log::clear()
 }
 
 room_info::room_info(const std::string& name)
-: name_(name), members_()
+	: name_(name)
+	, members_()
+	, log_()
 {
 }
 
@@ -145,6 +147,8 @@ game_info::game_info() :
 	remote_scenario(false),
 	map_info(),
 	map_size_info(),
+	era(),
+	era_short(),
 	gold(),
 	xp(),
 	vision(),
@@ -423,9 +427,18 @@ bool game_filter_general_string_part::match(const game_info &game) const
 }
 
 lobby_info::lobby_info(const config& game_config)
-: game_config_(game_config), gamelist_(), gamelist_initialized_(false)
-, rooms_(), games_(), games_filtered_(), users_()
-, game_filter_(), game_filter_invert_(false)
+	: game_config_(game_config)
+	, gamelist_()
+	, gamelist_initialized_(false)
+	, rooms_()
+	, games_()
+	, games_by_id_()
+	, games_filtered_()
+	, users_()
+	, users_sorted_()
+	, whispers_()
+	, game_filter_()
+	, game_filter_invert_(false)
 {
 }
 
