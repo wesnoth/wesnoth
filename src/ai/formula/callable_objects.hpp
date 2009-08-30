@@ -194,7 +194,9 @@ class safe_call_callable : public formula_callable {
 	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
 public:
 	safe_call_callable(const variant& main, const expression_ptr& backup)
-	  : main_(main), backup_formula_(backup)
+		: main_(main)
+		, backup_()
+		, backup_formula_(backup)
 	{}
 
 	const variant& get_main() const { return main_; }
