@@ -613,7 +613,9 @@ void game_display::draw_movement_info(const map_location& loc)
 			// With 11 colors, the last one will be used only for def=100
 			int val = (game_config::defense_color_scale.size()-1) * def/100;
 			SDL_Color color = int_to_color(game_config::defense_color_scale[val]);
-			draw_text_in_hex(loc, LAYER_MOVE_INFO, def_text.str(), 18, color);
+			// simple waypoint (no turn point) use smaller font 
+			int def_font = w->second.turns > 0 ? 18 : 16;
+			draw_text_in_hex(loc, LAYER_MOVE_INFO, def_text.str(), def_font, color);
 
 			int xpos = get_location_x(loc);
 			int ypos = get_location_y(loc);
