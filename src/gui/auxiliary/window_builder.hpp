@@ -117,6 +117,13 @@ public:
 
 		struct tlinked_group
 		{
+			tlinked_group()
+				: id()
+				, fixed_width(false)
+				, fixed_height(false)
+			{
+			}
+
 			std::string id;
 			bool fixed_width;
 			bool fixed_height;
