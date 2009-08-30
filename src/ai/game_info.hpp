@@ -98,8 +98,13 @@ public:
 
 		game_info(game_display& disp, gamemap& map, unit_map& units,
 			std::vector<team>& teams, tod_manager& tod_mng, class game_state& game_state)
-			: disp(disp), map(map), units(units), teams(teams),
-			   tod_manager_(tod_mng), game_state_(game_state)
+			: disp(disp)
+			, map(map)
+			, units(units)
+			, teams(teams)
+			, tod_manager_(tod_mng)
+			, game_state_(game_state)
+			, recent_attacks()
 		{}
 
 		/** The display object, used to draw the moves the AI makes. */
