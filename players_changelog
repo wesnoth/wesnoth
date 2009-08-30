@@ -2,9 +2,16 @@ This is meant to be a concise list of player-visible changes (very minor
 changes may be omitted). For a complete list of changes, see the main
 changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/trunk/changelog
 
-Version 1.7.3+svn:
+Version 1.7.4:
  * AI:
-   * Fixed crashes and infinite loops on AI turn
+   * Fixed crashes and infinite loops on AI turn.
+
+ * Campaigns
+   * Legend of Wesmere
+     * Scenario 3 was completely redesigned.
+     * Fixed wrong or unclear scenario objectives.
+     * Scenario 16: Reduced the number of wolf riders.
+
  * Graphics:
    * New portraits for Ancient Wose, Ruffian, Master-at-arms, Naga
      Warrior/Myrmidon, Grand Knight, Merman Hunter.
@@ -13,26 +20,20 @@ Version 1.7.3+svn:
    * New base frame and animations for Inferno Drake, Fire Drake.
 
  * Music and sound
-   * "Journey's End" from Mattias Westlund
-   * "Over the Northern Mountains" from Mattias Westlund
-   * Horn signal sound effects
-
- * Campaigns
-   * Legend of Wesmere
-     * Scenario 3 redesigned
-     * Fixed wrong or unclear scenario objectives
-     * Scenario 16: Reduced the number of wolf riders
+   * Added "Journey's End" from Mattias Westlund.
+   * Added "Over the Northern Mountains" from Mattias Westlund.
+   * Added Horn signal sound effects.
 
  * Language and translations:
    * Updated translations: Chinese (Traditional), German, Lithuanian, Russian,
      Serbian.
 
- * User interface:
-   * Removed the hotkey to enable/disable mouse scrolling
-
  * Units
    * New weapon names for a number of drake attacks to account for changes to
      the sprites.
+
+ * User interface:
+   * Removed the hotkey to enable/disable mouse scrolling
 
 
 Version 1.7.3:
