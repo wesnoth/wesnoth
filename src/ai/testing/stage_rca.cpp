@@ -33,7 +33,9 @@ static lg::log_domain log_ai_testing_rca_default("ai/testing/rca_default");
 #define ERR_AI_TESTING_RCA_DEFAULT LOG_STREAM(err, log_ai_testing_rca_default)
 
 candidate_action_evaluation_loop::candidate_action_evaluation_loop( ai_context &context, const config &cfg)
-	: stage(context,cfg),cfg_(cfg)
+	: stage(context,cfg)
+	, candidate_actions_()
+	, cfg_(cfg)
 {
 }
 
