@@ -109,6 +109,9 @@ bool aspect_recruitment_phase::execute()
 
 recruitment_phase::recruitment_phase( rca_context &context, const config &cfg )
 	: candidate_action(context,cfg)
+	, unit_movement_scores_()
+	, not_recommended_units_()
+	, unit_combat_scores_()
 {
 }
 
@@ -788,8 +791,12 @@ bool move_leader_to_keep_phase::execute()
 //==============================================================
 
 get_villages_phase::get_villages_phase( rca_context &context, const config &cfg )
-	: candidate_action(context,cfg), keep_loc_(),
-		leader_loc_(),best_leader_loc_(),debug_(false)
+	: candidate_action(context,cfg)
+	, keep_loc_()
+	, leader_loc_()
+	, best_leader_loc_()
+	, debug_(false)
+	, moves_()
 {
 }
 
@@ -1821,8 +1828,10 @@ bool retreat_phase::should_retreat(const map_location& loc, const unit_map::cons
 
 //==============================================================
 
-simple_move_and_targeting_phase::simple_move_and_targeting_phase( rca_context &context, const config &cfg )
+simple_move_and_targeting_phase::simple_move_and_targeting_phase(
+		rca_context &context, const config &cfg)
 	: candidate_action(context,cfg)
+	, move_()
 {
 }
 
