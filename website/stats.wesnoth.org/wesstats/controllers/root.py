@@ -70,8 +70,8 @@ class RootController(BaseController):
 		log_type = "singleplayer" #possible values are singleplayer,multiplayer,ai
 		if wml_tree["game"]["campaign"] == "multiplayer":
 			log_type = "multiplayer"
-		if wml_tree.has_key("upload_log"):
-			if wml_tree["upload_log"].has_key("ai_log"):
+		if wml_tree["game"].has_key("upload_log"):
+			if wml_tree["game"]["upload_log"].has_key("ai_log"):
 				log_type = "ai"
 	
 		map = wml_tree["game"]["map_data"]
@@ -90,7 +90,7 @@ class RootController(BaseController):
 
 		conn = MySQLdb.connect(configuration.DB_HOSTNAME,configuration.DB_WRITE_USERNAME,configuration.DB_WRITE_PASSWORD,configuration.DB_NAME,use_unicode=True)
 		curs = conn.cursor()
-		
+	
 		if log_type == "multiplayer":
 			params = (
 				wml_tree["id"],
@@ -106,7 +106,6 @@ class RootController(BaseController):
 				result_type = "defeat"
 				if not wml_tree.has_key("defeat"):
 					result_type = "quit"
-
 			params = (
 				wml_tree["id"],
 				wml_tree["serial"],
@@ -123,31 +122,8 @@ class RootController(BaseController):
 				int(wml_tree["game"][result_type]["time"]),
 				int(wml_tree["game"][result_type].setdefault("gold","0")),
 				int(wml_tree["game"][result_type]["end_turn"])) #15 cols
-			curs.execute("INSERT INTO GAMES VALUES (DEFAULT,NOW(),%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",params)
+			curs.execute("INSERT INTO GAMES_SP VALUES (DEFAULT,NOW(),%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",params)
 		elif log_type == "ai":
-			"""
-			`game_id` int(11) NOT NULL auto_increment,
-			`timestamp` datetime NOT NULL,
-			`user_id` char(32) NOT NULL,
-			`serial` char(18) NOT NULL,
-			`platform` char(8) default NULL,
-			`version` char(32) default NULL,
-			`scenario` char(40) default NULL,
-			`result` enum('victory','defeat','draw') default NULL,
-			`end_turn` int(11) default NULL,
-			`faction1` varchar(32) NOT NULL,
-			`faction2` varchar(32) NOT NULL,
-			`winner` enum('faction1','faction2') NOT NULL,
-			`ai_ident1` varchar(256) NOT NULL,
-			`ai_ident2` varchar(256) NOT NULL,
-			`ai_config1` varchar(256) NOT NULL,
-			`ai_config2` varchar(256) NOT NULL,
-			`label` varchar(256) NOT NULL,
-			`units_winner` int(3) NOT NULL,
-			`units_loser` int(3) NOT NULL,
-			`gold_winner` int(5) NOT NULL,
-			`gold_loser` int(5) NOT NULL,
-			"""
 			ai_log = wml_tree["game"]["upload_log"]["ai_log"]
 			winner = "faction1"
 			units_winner = 0
@@ -185,9 +161,10 @@ class RootController(BaseController):
 				int(units_winner),
 				int(units_loser),
 				int(gold_winner),
-				int(gold_loser) )
-			pass		
-
+				int(gold_loser)) #19 cols
+			print "preinsert"
+			curs.execute("INSERT INTO GAMES_AI VALUES (DEFAULT,NOW(),%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",params)
+			print "postinsert"
 
 		kill_events = wml_tree["game"].setdefault("kill_event",[])
 		for kill in kill_events:
@@ -210,7 +187,7 @@ class RootController(BaseController):
 				
 			params = (
 				wml_tree["game"]["scenario"],	
-				map_id.hexdigest(),
+				id_digest,
 				kill["attack"]["turn"],
 				killed_id,
 				killed_lvl,
@@ -219,8 +196,9 @@ class RootController(BaseController):
 				killed_position[0]+","+killed_position[1],
 				log_type )
 			curs.execute("INSERT INTO KILLMAP VALUES (%s,%s,LAST_INSERT_ID(),%s,%s,%s,%s,%s,%s,%s)",params)
-
+		conn.commit()
 		conn.close()
+		log.debug("upload OK")
 		return dict()
 	
 	@expose(template="wesstats.templates.deleteview")
