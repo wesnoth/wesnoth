@@ -36,7 +36,6 @@
 #include "map.hpp"
 #include "map_label.hpp"
 #include "minimap.hpp"
-#include "pathutils.hpp"
 #include "preferences.hpp"
 #include "sdl_utils.hpp"
 #include "tooltips.hpp"

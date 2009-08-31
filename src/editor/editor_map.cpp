@@ -23,7 +23,6 @@
 #include "../gettext.hpp"
 #include "../map_exception.hpp"
 #include "../map_label.hpp"
-#include "../pathutils.hpp"
 #include "../wml_exception.hpp"
 
 

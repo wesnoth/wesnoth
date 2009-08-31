@@ -21,15 +21,6 @@
 #include "map.hpp"
 #include <set>
 
-/** Function which tells if two locations are adjacent. */
-bool tiles_adjacent(const map_location& a, const map_location& b);
-
-/**
- * Function which, given a location, will place all adjacent locations in res.
- * res must point to an array of 6 location objects.
- */
-void get_adjacent_tiles(const map_location& a, map_location* res);
-
 /**
  * Function which, given a location, will place all locations in a ring of
  * distance r in res. res must be a std::vector of location
@@ -57,13 +48,6 @@ void get_tiles_radius(const gamemap& map, const std::vector<map_location>& locs,
  * res must be a std::vector of location
  */
 void get_tiles_in_radius(const map_location& a, const int r, std::vector<map_location>& res);
-
-/**
- * Function which gives the number of hexes between two tiles
- * (i.e. the minimum number of hexes that have to be traversed
- * to get from one hex to the other).
- */
-size_t distance_between(const map_location& a, const map_location& b);
 
 #endif
 

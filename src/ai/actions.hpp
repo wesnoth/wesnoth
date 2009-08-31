@@ -26,7 +26,6 @@
 
 #include "../map.hpp"
 #include "../map_location.hpp"
-#include "../pathfind.hpp"
 #include "../team.hpp"
 
 #include <memory>

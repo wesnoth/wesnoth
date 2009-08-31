@@ -18,7 +18,6 @@
 #include "display.hpp"
 #include "foreach.hpp"
 #include "log.hpp"
-#include "pathutils.hpp"
 #include "sound.hpp"
 #include "soundsource.hpp"
 

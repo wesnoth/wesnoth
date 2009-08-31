@@ -41,7 +41,6 @@
 #include "../game_preferences.hpp"
 #include "../log.hpp"
 #include "../mouse_handler_base.hpp"
-#include "../pathfind.hpp"
 #include "play_controller.hpp"
 #include "../replay.hpp"
 #include "resources.hpp"
