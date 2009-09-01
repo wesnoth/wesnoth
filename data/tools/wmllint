@@ -1028,6 +1028,10 @@ def sanity_check(filename, lines):
     in_trait = False
     ignore_id = False
     in_object = False
+    in_stage = False
+    in_cfg = False
+    in_sound_source = False
+    in_remove_sound_source = False
     in_message = False
     in_option = False
     ignoreable = False
@@ -1052,6 +1056,22 @@ def sanity_check(filename, lines):
             in_object = True
         elif "[/object]" in lines[i]:
             in_object = False
+        elif "[stage]" in lines[i]:
+            in_stage = True
+        elif "[/stage]" in lines[i]:
+            in_stage = False
+        elif "[cfg]" in lines[i]:
+            in_cfg = True
+        elif "[/cfg]" in lines[i]:
+            in_cfg = False
+        elif "[sound_source]" in lines[i]:
+            in_sound_source = True
+        elif "[/sound_source]" in lines[i]:
+            in_sound_source = False
+        elif "[remove_sound_source]" in lines[i]:
+            in_remove_sound_source = True
+        elif "[/remove_sound_source]" in lines[i]:
+            in_remove_sound_source = False
         elif "[message]" in lines[i]:
             in_message = True
         elif "[/message]" in lines[i]:
@@ -1131,7 +1151,7 @@ def sanity_check(filename, lines):
                         present.append(value)
                     elif value in ('narrator', 'unit', 'second_unit') or (value and value[0] in ("$", "{")):
                         continue
-                    elif preamble_seen and not ignore_id and not in_object and not value in present:
+                    elif preamble_seen and not ignore_id and not in_object and not in_cfg and not in_sound_source and not in_remove_sound_source and not in_stage and not value in present:
                         print '"%s", line %d: unknown \'%s\' referred to by id' \
                               % (filename, i+1, value)
                 if markcheck and has_tr_mark and not ("wmllint: ignore" in comment or "wmllint: noconvert" in comment):
@@ -1354,7 +1374,7 @@ def hack_syntax(filename, lines):
     for i in range(len(lines)):
         if "no-syntax-rewrite" in lines[i]:
             break
-        elif "'" in lines[i]:
+        elif lines[i].count("'") % 2 == 1:
             try:
                 (key, prefix, value, comment) = parse_attribute(lines[i])
                 if "'" in value and value[0].isalpha() and value[-1].isalpha():
