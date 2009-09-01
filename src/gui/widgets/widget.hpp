@@ -659,7 +659,7 @@ private:
  * Returns the first parent of a widget with a certain type.
  *
  * @param widget                  The widget to get the parent from,
- * @param T                       The class of the widget to return.
+ * @tparam T                      The class of the widget to return.
  *
  * @returns                       The parent widget.
  */
