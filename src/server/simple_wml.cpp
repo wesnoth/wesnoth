@@ -83,7 +83,7 @@ char* compress_buffer(const char* input, string_span* span)
 		return small_out;
 	} catch (std::bad_alloc& e) {
 		ERR_SWML << "ERROR: bad_alloc caught in compress_buffer() with input: '"
-		<< *input << "' " << e.what() << std::endl;
+		<< input << "' " << e.what() << std::endl;
 		throw error("Bad allocation request in compress_buffer().");
 	}
 }
