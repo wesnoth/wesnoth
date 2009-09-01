@@ -244,12 +244,12 @@ namespace {
 class delete_save : public gui::dialog_button_action
 {
 public:
-	delete_save(display& disp, gui::filter_textbox& filter, std::vector<save_info>& saves, std::vector<config*>& save_summaries) : disp_(disp), saves_(saves), summaries_(save_summaries), filter_(filter) {}
+	delete_save(display& disp, gui::filter_textbox& filter, std::vector<savegame::save_info>& saves, std::vector<config*>& save_summaries) : disp_(disp), saves_(saves), summaries_(save_summaries), filter_(filter) {}
 private:
 	gui::dialog_button_action::RESULT button_pressed(int menu_selection);
 
 	display& disp_;
-	std::vector<save_info>& saves_;
+	std::vector<savegame::save_info>& saves_;
 	std::vector<config*>& summaries_;
 	gui::filter_textbox& filter_;
 };
@@ -280,7 +280,7 @@ gui::dialog_button_action::RESULT delete_save::button_pressed(int menu_selection
 		filter_.delete_item(menu_selection);
 
 		// Delete the file
-		savegame_manager::delete_game(saves_[index].name);
+		savegame::savegame_manager::delete_game(saves_[index].name);
 
 		// Remove it from the list of saves
 		saves_.erase(saves_.begin() + index);
@@ -301,7 +301,7 @@ class save_preview_pane : public gui::preview_pane
 {
 public:
 	save_preview_pane(CVideo &video, const config& game_config, gamemap* map,
-			const std::vector<save_info>& info,
+			const std::vector<savegame::save_info>& info,
 			const std::vector<config*>& summaries,
 			const gui::filter_textbox& textbox) :
 		gui::preview_pane(video),
@@ -327,7 +327,7 @@ public:
 private:
 	const config* game_config_;
 	gamemap* map_;
-	const std::vector<save_info>* info_;
+	const std::vector<savegame::save_info>* info_;
 	const std::vector<config*>& summaries_;
 	int index_;
 	std::map<std::string,surface> map_cache_;
@@ -344,7 +344,7 @@ void save_preview_pane::draw_contents()
 	config& summary = *summaries_[index_];
 	if (summary["label"] == ""){
 		try {
-			savegame_manager::load_summary((*info_)[index_].name, summary, &dummy);
+			savegame::savegame_manager::load_summary((*info_)[index_].name, summary, &dummy);
 			*summaries_[index_] = summary;
 		} catch(game::load_game_failed&) {
 			summary["corrupt"] = "yes";
@@ -427,7 +427,7 @@ void save_preview_pane::draw_contents()
 	}
 
 	char time_buf[256] = {0};
-	const save_info& save = (*info_)[index_];
+	const savegame::save_info& save = (*info_)[index_];
 	tm* tm_l = localtime(&save.time_modified);
 	if (tm_l) {
 		const size_t res = strftime(time_buf,sizeof(time_buf),_("%a %b %d %H:%M %Y"),tm_l);
@@ -546,10 +546,10 @@ std::string format_time_summary(time_t t)
 
 std::string load_game_dialog(display& disp, const config& game_config, bool* show_replay, bool* cancel_orders)
 {
-	std::vector<save_info> games;
+	std::vector<savegame::save_info> games;
 	{
 		cursor::setter cur(cursor::WAIT);
-		games = savegame_manager::get_saves_list();
+		games = savegame::savegame_manager::get_saves_list();
 	}
 
 	if(games.empty()) {
@@ -560,11 +560,11 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sho
 	}
 
 	std::vector<config*> summaries;
-	std::vector<save_info>::const_iterator i;
+	std::vector<savegame::save_info>::const_iterator i;
 	//FIXME: parent_to_child is not used yet
 	std::map<std::string,std::string> parent_to_child;
 	for(i = games.begin(); i != games.end(); ++i) {
-		config& cfg = save_index::save_summary(i->name);
+		config& cfg = savegame::save_index::save_summary(i->name);
 		parent_to_child[cfg["parent"]] = i->name;
 		summaries.push_back(&cfg);
 	}
@@ -623,7 +623,7 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sho
 
 	int res = lmenu.show();
 
-	save_index::write_save_index();
+	savegame::save_index::write_save_index();
 
 	if(res == -1)
 		return "";

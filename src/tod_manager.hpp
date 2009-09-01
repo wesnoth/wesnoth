@@ -26,7 +26,7 @@ class game_state;
 class unit_map;
 
 //time of day and turn functionality
-class tod_manager : public savegame_config
+class tod_manager : public savegame::savegame_config
 {
 	public:
 		tod_manager(const config& time_cfg, int num_turns, game_state* state=NULL);

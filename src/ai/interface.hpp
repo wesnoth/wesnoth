@@ -30,7 +30,7 @@
 
 namespace ai {
 
-class interface : savegame_config {
+class interface : savegame::savegame_config {
 public:
 	/**
 	 * The constructor.

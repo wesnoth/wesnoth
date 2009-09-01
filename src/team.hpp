@@ -35,7 +35,7 @@ struct time_of_day;
  * This class stores all the data for a single 'side' (in game nomenclature).
  * E.g., there is only one leader unit per team.
  */
-class team : public viewpoint, public savegame_config
+class team : public viewpoint, public savegame::savegame_config
 {
 	class shroud_map {
 	public:

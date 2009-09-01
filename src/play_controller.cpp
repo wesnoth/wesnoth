@@ -309,7 +309,7 @@ void play_controller::status_table(){
 void play_controller::save_game(){
 	if(save_blocker::try_block()) {
 		save_blocker::save_unblocker unblocker;
-		game_savegame save(gamestate_, *gui_, to_config(), preferences::compress_saves());
+		savegame::game_savegame save(gamestate_, *gui_, to_config(), preferences::compress_saves());
 		save.save_game_interactive((*gui_).video(), "", gui::OK_CANCEL);
 	} else {
 		save_blocker::on_unblock(this,&play_controller::save_game);
@@ -319,7 +319,7 @@ void play_controller::save_game(){
 void play_controller::save_replay(){
 	if(save_blocker::try_block()) {
 		save_blocker::save_unblocker unblocker;
-		replay_savegame save(gamestate_, preferences::compress_saves());
+		savegame::replay_savegame save(gamestate_, preferences::compress_saves());
 		save.save_game_interactive((*gui_).video(), "", gui::OK_CANCEL);
 	} else {
 		save_blocker::on_unblock(this,&play_controller::save_replay);
@@ -336,7 +336,7 @@ void play_controller::save_map(){
 }
 
 void play_controller::load_game(){
-	loadgame load(*gui_, game_config_, gamestate_);
+	savegame::loadgame load(*gui_, game_config_, gamestate_);
 	load.load_game();
 }
 
@@ -921,7 +921,7 @@ void play_controller::expand_autosaves(std::vector<std::string>& items)
 			std::vector<std::string> newsaves;
 			for (unsigned int turn = this->turn(); turn != 0; turn--) {
 				std::string name = gamestate_.classification().label + "-" + _("Auto-Save") + lexical_cast<std::string>(turn);
-				if (savegame_manager::save_game_exists(name, preferences::compress_saves())) {
+				if (savegame::savegame_manager::save_game_exists(name, preferences::compress_saves())) {
 					if(preferences::compress_saves()) {
 						newsaves.push_back(name + ".gz");
 					} else {

@@ -31,7 +31,7 @@
 class scoped_wml_variable;
 
 //meta information of the game
-class game_classification : public savegame_config
+class game_classification : public savegame::savegame_config
 {
 public:
 	game_classification();

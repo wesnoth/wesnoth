@@ -1523,7 +1523,7 @@ void connect::load_game()
 {
 	if(params_.saved_game) {
 		try{
-			loadgame load(disp(), game_config(), state_);
+			savegame::loadgame load(disp(), game_config(), state_);
 			load.load_multiplayer_game();
 		}
 		catch (load_game_cancelled_exception){

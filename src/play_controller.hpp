@@ -43,7 +43,7 @@
 class game_display;
 class team;
 
-class play_controller : public controller_base, public events::observer, public savegame_config
+class play_controller : public controller_base, public events::observer, public savegame::savegame_config
 {
 public:
 	play_controller(const config& level, game_state& state_of_game,

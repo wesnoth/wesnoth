@@ -2950,11 +2950,11 @@ private:
 		menu_handler_.gui_->toggle_benchmark();
 	}
 	void console_handler::do_save() {
-		savegame save(menu_handler_.gamestate_, preferences::compress_saves());
+		savegame::savegame save(menu_handler_.gamestate_, preferences::compress_saves());
 		save.save_game_automatic(menu_handler_.gui_->video(), true, get_data());
 	}
 	void console_handler::do_save_quit() {
-		savegame save(menu_handler_.gamestate_, preferences::compress_saves());
+		savegame::savegame save(menu_handler_.gamestate_, preferences::compress_saves());
 		save.save_game_automatic(menu_handler_.gui_->video(), true, get_data());
 		throw end_level_exception(QUIT);
 	}

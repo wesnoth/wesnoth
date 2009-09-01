@@ -960,7 +960,7 @@ bool game_controller::is_loading() const
 
 bool game_controller::load_game()
 {
-	loadgame load(disp(), game_config_, state_);
+	savegame::loadgame load(disp(), game_config_, state_);
 
 	try {
 		load.load_game(loaded_game_, loaded_game_show_replay_, loaded_game_cancel_orders_);

@@ -79,7 +79,7 @@ public:
 	void write_config(config& cfg) const;
 };
 
-class manager : public events::observer, public savegame_config {
+class manager : public events::observer, public savegame::savegame_config {
 
 	typedef std::map<std::string, positional_source *> positional_source_map;
 	typedef positional_source_map::iterator            positional_source_iterator;

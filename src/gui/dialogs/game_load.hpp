@@ -49,7 +49,7 @@ private:
 
 	void display_savegame(twindow& window);
 	void evaluate_summary_string(std::stringstream& str, const config& cfg_summary);
-	void fill_game_list(twindow& window, std::vector<save_info>& games);
+	void fill_game_list(twindow& window, std::vector<savegame::save_info>& games);
 
 	tfield_text* txtFilter_;
 	tfield_bool* chk_show_replay_;
@@ -59,7 +59,7 @@ private:
 	bool show_replay_;
 	bool cancel_orders_;
 
-	std::vector<save_info> games_;
+	std::vector<savegame::save_info> games_;
 	const config& cache_config_;
 
 	std::vector<std::string> last_words_;

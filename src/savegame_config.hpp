@@ -18,6 +18,8 @@
 //FIXME: move to gamestate.hpp once dependencies between team and game_state are sorted
 class config;
 
+namespace savegame {
+	
 class savegame_config
 {
 public:
@@ -25,4 +27,5 @@ public:
 	virtual config to_config() const = 0;
 };
 
+}
 #endif

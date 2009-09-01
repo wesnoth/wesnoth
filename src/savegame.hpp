@@ -30,6 +30,8 @@ class game_display;
 struct load_game_cancelled_exception {};
 struct illegal_filename_exception {};
 
+namespace savegame {
+
 /** Filename and modification date for a file list */
 struct save_info {
 	save_info(const std::string& n, time_t t) : name(n), time_modified(t) {}
@@ -291,6 +293,8 @@ private:
 	/** Adds the player information to the starting position (= [replay_start]). */
 	virtual void before_save();
 };
+
+} //end of namespace savegame
 
 void replace_underbar2space(std::string &name);
 void replace_space2underbar(std::string &name);

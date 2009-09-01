@@ -123,6 +123,8 @@ static lg::log_domain log_engine("engine");
 	}
 #endif /* _WIN32 */
 
+namespace savegame {
+
 const std::string save_info::format_time_local() const{
 	char time_buf[256] = {0};
 	tm* tm_l = localtime(&time_modified);
@@ -1004,5 +1006,7 @@ void game_savegame::write_game_snapshot()
 	gamestate().write_snapshot(snapshot());
 
 	gui_.labels().write(snapshot());
+}
+
 }
 

@@ -102,7 +102,7 @@ void tgame_load::pre_show(CVideo& /*video*/, twindow& window)
 
 	{
 		cursor::setter cur(cursor::WAIT);
-		games_ = savegame_manager::get_saves_list();
+		games_ = savegame::savegame_manager::get_saves_list();
 	}
 	fill_game_list(window, games_);
 
@@ -112,13 +112,13 @@ void tgame_load::pre_show(CVideo& /*video*/, twindow& window)
 }
 
 void tgame_load::fill_game_list(twindow& window
-		, std::vector<save_info>& games)
+		, std::vector<savegame::save_info>& games)
 {
 	tlistbox& list = NEW_find_widget<tlistbox>(
 			&window, "savegame_list", false);
 	list.clear();
 
-	foreach(const save_info game, games) {
+	foreach(const savegame::save_info game, games) {
 		std::map<std::string, string_map> data;
 		string_map item;
 
@@ -198,14 +198,14 @@ void tgame_load::display_savegame(twindow& window)
 {
 	tlistbox& list = NEW_find_widget<tlistbox>(
 			&window, "savegame_list", false);
-	save_info& game = games_[list.get_selected_row()];
+	savegame::save_info& game = games_[list.get_selected_row()];
 	filename_ = game.name;
 
 	config cfg_summary;
 	std::string dummy;
 
 	try {
-		savegame_manager::load_summary(game.name, cfg_summary, &dummy);
+		savegame::savegame_manager::load_summary(game.name, cfg_summary, &dummy);
 	} catch(game::load_game_failed&) {
 		cfg_summary["corrupt"] = "yes";
 	}
@@ -314,7 +314,7 @@ void tgame_load::delete_button_callback(twindow& window)
 		}
 
 		// Delete the file
-		savegame_manager::delete_game(games_[index].name);
+		savegame::savegame_manager::delete_game(games_[index].name);
 
 		// Remove it from the list of saves
 		games_.erase(games_.begin() + index);
