@@ -544,9 +544,7 @@ bool server::ip_exceeds_connection_limit(const std::string& ip) const {
 
 std::string server::is_ip_banned(const std::string& ip) const {
 	if (!tor_ip_list_.empty()) {
-		for (std::vector<std::string>::const_iterator i = tor_ip_list_.begin(); i != tor_ip_list_.end(); ++i) {
-			if (*i == ip) return "TOR IP";
-		}
+		if (find(tor_ip_list_.begin(), tor_ip_list_.end(), ip) != tor_ip_list_.end()) return "TOR IP";
 	}
 	return ban_manager_.is_ip_banned(ip);
 }
