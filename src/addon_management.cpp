@@ -114,6 +114,16 @@ std::vector<std::string> available_addons()
 			res.push_back(*i);
 		}
 	}
+	for(std::vector<std::string>::const_iterator i = files.begin(); i != files.end(); ++i) {
+		const size_t length = i->size() - 4;
+		if (i->rfind(".cfg", length) != length) continue;
+		const std::string name = i->substr(0, length);
+		// Continue if there is a dir (which we already processed).
+		if (std::find(dirs.begin(), dirs.end(), name) != dirs.end()) continue;
+		if (std::find(files.begin(), files.end(), name + ".pbl") != files.end()) {
+			res.push_back(name);
+		}
+	}
 
 	return res;
 }
