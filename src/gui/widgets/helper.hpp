@@ -95,7 +95,7 @@ Uint32 decode_colour(const std::string& colour);
 /**
  * Converts a font style string to a font style.
  *
- * @param colour                  A font style string see
+ * @param style                   A font style string see
  *                                http://www.wesnoth.org/wiki/GUIVariable for
  *                                more info.
  *
