@@ -102,7 +102,7 @@ void tgame_load::pre_show(CVideo& /*video*/, twindow& window)
 
 	{
 		cursor::setter cur(cursor::WAIT);
-		games_ = savegame::savegame_manager::get_saves_list();
+		games_ = savegame::manager::get_saves_list();
 	}
 	fill_game_list(window, games_);
 
@@ -205,7 +205,7 @@ void tgame_load::display_savegame(twindow& window)
 	std::string dummy;
 
 	try {
-		savegame::savegame_manager::load_summary(game.name, cfg_summary, &dummy);
+		savegame::manager::load_summary(game.name, cfg_summary, &dummy);
 	} catch(game::load_game_failed&) {
 		cfg_summary["corrupt"] = "yes";
 	}
@@ -314,7 +314,7 @@ void tgame_load::delete_button_callback(twindow& window)
 		}
 
 		// Delete the file
-		savegame::savegame_manager::delete_game(games_[index].name);
+		savegame::manager::delete_game(games_[index].name);
 
 		// Remove it from the list of saves
 		games_.erase(games_.begin() + index);

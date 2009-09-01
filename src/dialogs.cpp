@@ -280,7 +280,7 @@ gui::dialog_button_action::RESULT delete_save::button_pressed(int menu_selection
 		filter_.delete_item(menu_selection);
 
 		// Delete the file
-		savegame::savegame_manager::delete_game(saves_[index].name);
+		savegame::manager::delete_game(saves_[index].name);
 
 		// Remove it from the list of saves
 		saves_.erase(saves_.begin() + index);
@@ -344,7 +344,7 @@ void save_preview_pane::draw_contents()
 	config& summary = *summaries_[index_];
 	if (summary["label"] == ""){
 		try {
-			savegame::savegame_manager::load_summary((*info_)[index_].name, summary, &dummy);
+			savegame::manager::load_summary((*info_)[index_].name, summary, &dummy);
 			*summaries_[index_] = summary;
 		} catch(game::load_game_failed&) {
 			summary["corrupt"] = "yes";
@@ -549,7 +549,7 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sho
 	std::vector<savegame::save_info> games;
 	{
 		cursor::setter cur(cursor::WAIT);
-		games = savegame::savegame_manager::get_saves_list();
+		games = savegame::manager::get_saves_list();
 	}
 
 	if(games.empty()) {

@@ -211,7 +211,7 @@ struct save_info_less_time {
 	}
 };
 
-void savegame_manager::read_save_file(const std::string& name, config& cfg, std::string* error_log)
+void manager::read_save_file(const std::string& name, config& cfg, std::string* error_log)
 {
 	std::string modified_name = name;
 	replace_space2underbar(modified_name);
@@ -240,7 +240,7 @@ void savegame_manager::read_save_file(const std::string& name, config& cfg, std:
 	}
 }
 
-void savegame_manager::load_summary(const std::string& name, config& cfg_summary, std::string* error_log){
+void manager::load_summary(const std::string& name, config& cfg_summary, std::string* error_log){
 	log_scope("load_game_summary");
 
 	config cfg;
@@ -249,7 +249,7 @@ void savegame_manager::load_summary(const std::string& name, config& cfg_summary
 	::extract_summary_from_config(cfg, cfg_summary);
 }
 
-bool savegame_manager::save_game_exists(const std::string& name, const bool compress_saves)
+bool manager::save_game_exists(const std::string& name, const bool compress_saves)
 {
 	std::string fname = name;
 	replace_space2underbar(fname);
@@ -261,7 +261,7 @@ bool savegame_manager::save_game_exists(const std::string& name, const bool comp
 	return file_exists(get_saves_dir() + "/" + fname);
 }
 
-std::vector<save_info> savegame_manager::get_saves_list(const std::string *dir, const std::string* filter)
+std::vector<save_info> manager::get_saves_list(const std::string *dir, const std::string* filter)
 {
 	// Don't use a reference, it seems to break on arklinux with GCC-4.3.
 	const std::string saves_dir = (dir) ? *dir : get_saves_dir();
@@ -286,7 +286,7 @@ std::vector<save_info> savegame_manager::get_saves_list(const std::string *dir, 
 	return res;
 }
 
-void savegame_manager::clean_saves(const std::string &label)
+void manager::clean_saves(const std::string &label)
 {
 	std::vector<save_info> games = get_saves_list();
 	std::string prefix = label + "-" + _("Auto-Save");
@@ -299,7 +299,7 @@ void savegame_manager::clean_saves(const std::string &label)
 	}
 }
 
-void savegame_manager::remove_old_auto_saves(const int autosavemax, const int infinite_auto_saves)
+void manager::remove_old_auto_saves(const int autosavemax, const int infinite_auto_saves)
 {
 	const std::string auto_save = _("Auto-Save");
 	int countdown = autosavemax;
@@ -315,7 +315,7 @@ void savegame_manager::remove_old_auto_saves(const int autosavemax, const int in
 	}
 }
 
-void savegame_manager::delete_game(const std::string& name)
+void manager::delete_game(const std::string& name)
 {
 	std::string modified_name = name;
 	replace_space2underbar(modified_name);
@@ -439,7 +439,7 @@ void loadgame::load_game(std::string& filename, bool show_replay, bool cancel_or
 		throw load_game_cancelled_exception();
 
 	std::string error_log;
-	savegame_manager::read_save_file(filename_, load_config_, &error_log);
+	manager::read_save_file(filename_, load_config_, &error_log);
 
 	if(!error_log.empty()) {
         try {
@@ -526,7 +526,7 @@ void loadgame::load_multiplayer_game()
 		cursor::setter cur(cursor::WAIT);
 		log_scope("load_game");
 
-		savegame_manager::read_save_file(filename_, load_config_, &error_log);
+		manager::read_save_file(filename_, load_config_, &error_log);
 		copy_era(load_config_);
 
 		gamestate_ = game_state(load_config_);
@@ -651,7 +651,7 @@ int savegame::show_save_dialog(CVideo& video, const std::string& message, const 
 bool savegame::check_overwrite(CVideo& video)
 {
 	std::string filename = filename_;
-	if (savegame_manager::save_game_exists(filename, compress_saves_)) {
+	if (manager::save_game_exists(filename, compress_saves_)) {
 		std::stringstream message;
 		message << _("Save already exists. Do you want to overwrite it?") << "\n" << _("Name: ") << filename;
 		int retval = gui2::show_message(video, _("Overwrite?"), message.str(), gui2::tmessage::yes_no_buttons);
@@ -926,7 +926,7 @@ void autosave_savegame::autosave(const bool disable_autosave, const int autosave
 
 	save_game_automatic(gui_.video());
 
-	savegame_manager::remove_old_auto_saves(autosave_max, infinite_autosaves);
+	manager::remove_old_auto_saves(autosave_max, infinite_autosaves);
 }
 
 void autosave_savegame::create_filename()

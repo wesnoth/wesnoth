@@ -46,7 +46,7 @@ struct save_info {
 Container for a couple of savefile manipulating methods.
 Note: You are not supposed to instantiate this class.
 */
-class savegame_manager
+class manager
 {
 public:
 	/** Read summary information out of an existing savefile. */
@@ -68,7 +68,7 @@ public:
 
 private:
 	/** Default-Constructor (don't instantiate this class) */
-	savegame_manager() {}
+	manager() {}
 };
 
 /**
