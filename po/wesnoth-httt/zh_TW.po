@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-httt\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-29 12:11+0200\n"
-"PO-Revision-Date: 2009-07-06 14:10+0800\n"
+"POT-Creation-Date: 2009-08-30 19:20+0200\n"
+"PO-Revision-Date: 2009-09-01 16:17+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -542,11 +542,15 @@ msgstr "不要讓敵人在前進了"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:24
+#, fuzzy
 msgid ""
 "<span color='white'>Alternative objective:</span>\n"
 "<span color='#00ff00'>Defeat the enemy leader</span> <small>(special bonus)</"
 "small>"
 msgstr ""
+"<255,255,255>分支任務:\n"
+"@擊敗敵方主將\n"
+"`(特殊獎勵)"
 
 #. [objective]: condition=lose
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:37
@@ -768,7 +772,7 @@ msgstr "好多臭人類騎士！我們已經打不贏了。快逃吧！"
 msgid ""
 "Reinforcements have arrived, but lo! Our allies have already destroyed the "
 "orcish army menacing our fair port. In honor, I must reward your valor."
-msgstr "援軍已到，敵圍已破。這都是您的功勞。"
+msgstr "援軍到了，我們得盟友已經幫我們擊退了敵人。這都是您的功勞。"
 
 #. [message]: speaker=Kaylan
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:431
@@ -778,13 +782,13 @@ msgid ""
 "lance in the service of young prince Konrad here. May you help him restore "
 "order to the country."
 msgstr ""
-"您不顧性命的為我守下港口，我願意把我的重將給您當回報。西默，上前來，用你的矛"
-"發誓，投效王子康拉德，助他收回皇位。"
+"您不顧性命的為我守下了港口，我願意把防守城鎮的重要職位給你當回報。西默，上前"
+"來，用你的矛發誓，投效王子康拉德，幫助他收回皇位。"
 
 #. [message]: speaker=Simyr
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:435
 msgid "It is my pleasure and honor to serve, my liege."
-msgstr "為主上效力乃微臣榮幸。"
+msgstr "能幫助您是我的榮幸。"
 
 #. [message]: speaker=Kaylan
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:450
@@ -993,11 +997,15 @@ msgstr "擊殺任何一位敵方將領，堅守下去。"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:24
+#, fuzzy
 msgid ""
 "<span color='white'>Alternative objective:</span>\n"
 "<span color='#00ff00'>Defeat all enemy leaders</span> <small>(early finish "
 "bonus)</small>"
 msgstr ""
+"<255,255,255>分支任務:\n"
+"@擊敗敵方所有主將\n"
+"`(提前結束)"
 
 #. [side]: type=Orcish Warrior, id=Dwaba-Kukai
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:58
@@ -1555,16 +1563,20 @@ msgstr "罪孽之島"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:24
+#, fuzzy
 msgid ""
 "<span color='white'>Alternative objective:</span>\n"
 "<span color='#00ff00'>Defeat all enemy leaders</span> <small>(special bonus)"
 "</small>"
 msgstr ""
+"<255,255,255>分支任務:\n"
+"@擊敗敵方所有主將\n"
+"`(特殊獎勵)"
 
 #. [objectives]
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:32
 msgid "No gold carried over to the next scenario."
-msgstr ""
+msgstr "此戰役沒有金幣留至下一場景。"
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:40
@@ -1739,7 +1751,7 @@ msgstr "我們一起消滅了不死軍團！依照約定，我願意加入您的
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:456
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:514
 msgid "You regain your lost troops and $isle_damned_starting_gold gold!"
-msgstr ""
+msgstr "您發現了走散的部隊，而且獲得 $isle_damned_starting_gold 金幣！"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:485
@@ -2509,11 +2521,15 @@ msgstr "防禦敵軍進攻，生還兩天"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:23
+#, fuzzy
 msgid ""
 "<span color='white'>Alternative objective:</span>\n"
 "<span color='#00ff00'>Eradicate the liches</span> <small>(early finish bonus)"
 "</small>"
 msgstr ""
+"<255,255,255>分支任務:\n"
+"@擊殺巫妖\n"
+"`(提前結束)"
 
 #. [side]: type=Lich, id=Galga
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:75
@@ -3237,12 +3253,12 @@ msgstr "那我們只得宣戰了，搶奪此地。來人，開戰！"
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:187
 msgid "More snow is falling. We must finish this battle quickly. Onward men!"
-msgstr "冬雪下得更大。得速戰速決。來人！衝啊！"
+msgstr "冬雪下得更大了。得速戰速決。來人！衝啊！"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:314
 msgid "We must make haste before the snow overwhelms us!"
-msgstr "盡快結束戰爭渡過寒冬！"
+msgstr "我們必須盡快結束戰爭渡過寒冬！"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:322
@@ -4073,19 +4089,19 @@ msgstr "謝謝。不要在這裡逗留了，走吧。"
 msgid ""
 "Better prepared this time to fight the current, you eventually manage to "
 "emerge from the whirlpool."
-msgstr "此次已有備于此湍流，最終從此漩渦中逃生。"
+msgstr "這次眼前的戰鬥是經過充分準備的，而你最後也終於從這裡脫逃了。"
 
 #. [message]: speaker=Ulfdain
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:289
 msgid ""
 "Well, mer-mahn, we made it. I will fight for yer lord. He sounds like a "
 "brave fellow."
-msgstr "善哉，人-魚，吾等生還矣。汝王乃勇者也，吾將為之而戰。"
+msgstr "沒錯，漁人，我們做到了。你的主子有王者的英姿，我將為他效力。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:303
 msgid "These passages seem to have been used recently."
-msgstr "此些地道，剛剛被用過。"
+msgstr "剛剛好像有人走過這裡的地道。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:336
@@ -4097,61 +4113,61 @@ msgid ""
 "which have since been driven into the upper caves of Knalga by the forces of "
 "darkness."
 msgstr ""
-"我軍踏入一巨大廳堂，有如天工。只見其四壁聳立，高不見頂，巨窟裂紋，遍布行廊。"
-"其畔地勢平坦，其側精雕巧琢。此嘗為昔日矮人國繁華中心，然其現已移往柯那格上層"
-"窑洞，蓋為黑暗所驅耳。"
+"軍隊進入一個巧如天工的巨大廳室。在黑暗中廳室的牆壁高到讓你看不見頂部。牆上裂"
+"縫，遍布整個大廊，廳室的地板則被精雕巧琢的非常光滑。這裡曾是矮人國繁華中心的"
+"中心地帶，然而現在已經移往柯內革，此地便為黑暗所籠罩。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:349
 msgid "There is a big cave-in south of here."
-msgstr "此地向南，有一地陷。"
+msgstr "南邊有一個洞穴。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:362
 msgid "The rocks are moving!"
-msgstr "岩石在動！"
+msgstr "那個岩石在動！"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:423
 msgid "Who goes there? Friend or foe?"
-msgstr "那是何人？是友是敵？"
+msgstr "那是誰？朋友還是敵人？"
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:427
 msgid ""
 "We are desperately trying to rid these tunnels of orcs and trolls! Please "
 "help us in our quest."
-msgstr "吾輩已費盡心思，要驅逐半獸人出地道！請助吾等一把。"
+msgstr "我們已經費盡心思，想要把半獸人驅逐出地道！請幫助我們吧。"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:438
 msgid "Vile creature! Let us rid these tunnels of its kind!"
-msgstr "是半獸人！讓吾等從此地道中清除此輩！"
+msgstr "是半獸人！讓我們把這群半獸人趕出地道吧！"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:449
 msgid "I did not know that the undead were in these pits!"
-msgstr "不曉得此窟原有不死族！"
+msgstr "我不知道這裡竟然有不死族！"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:460
 msgid "Who is this foul enemy that we fight?"
-msgstr "吾等搏鬥的惡敵，究是何人？"
+msgstr "跟我們戰鬥的傢伙，究竟是什麼人？"
 
 #. [message]: speaker=Lionel
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:464
 msgid "I am Lionel. I am the Lost General. I will avenge myself upon you all!"
-msgstr "吾乃黎爾諾將軍。失落之將。吾要報復于汝輩！"
+msgstr "我是萊諾。我曾經是個偉大的將軍。我現在要向你們報仇！"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:468
 msgid "Avenge? What have we done to you that you must avenge?"
-msgstr "報復？吾輩作過何事，使汝要報復吾輩？"
+msgstr "報仇？我們做過了什麼事，你要報復我們？"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:472
 msgid "Lionel? A General? I remember that name..."
-msgstr "黎爾諾？將軍？吾記得此名..."
+msgstr "萊諾？將軍？我好像記得這個名字..."
 
 #. [message]: speaker=Lionel
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:476
@@ -4161,20 +4177,21 @@ msgid ""
 "this cavern, to starve to death. The dwarves were no help, leaving me to "
 "die. Now I will get revenge on you all!"
 msgstr ""
-"汝識得吾？呵。吾嘗乃帝皇上將。受派到此，取那聖火權杖。但半獸人，困吾輩于此地"
-"洞之中，絶糧而死。衆矮人見死不救，亦弃吾矣。現將吾報此仇！"
+"你認識我？嗯。我曾經是國王手下的大將。接到任務到這裡，尋找那聖火權杖。但半獸"
+"人，把我們困在這個地洞裡，許多兄弟受不了飢餓而死去。其他矮人們見死不救，把我"
+"們遺棄在這裡。現在我將要為此報仇！"
 
 #. [message]: speaker=Lionel
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:495
 msgid ""
 "Argh! I am vanquished! But at least by worthy foes, instead of those "
 "disgusting orcs."
-msgstr "啊！吾軍敗陣！尚幸好為敵可敬者所敗，而非獸妖。"
+msgstr "啊！我輸了！好險我的敵人不是惡獸，而是我可敬的敵人。"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:499
 msgid "Rest in peace, Lionel. The poor, lost general."
-msgstr "佑黎爾諾將軍安息罷。可憐失落將軍。"
+msgstr "願萊諾將軍安息。可憐的失落將軍。"
 
 #. [message]: speaker=Lionel
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:503
@@ -4185,21 +4202,21 @@ msgid ""
 "not asking for directions when I became lost. May you have better fortune in "
 "your quest than I did!"
 msgstr ""
-"吾雖敗，任不可負。子雖吾敵，却可敬焉，吾意告汝等，權杖于東，循來之路而入，進"
-"于深洞。吾没，始于未聞方向，望子等命運比吾好些！"
+"我雖然戰敗了，但任務還是必須要達成。你雖然是我的敵人，但卻如此的令我敬畏，我"
+"告訴你們，從這裡往東走，權杖就在那洞窟的深處。我始終沒有找到正確的方向，希望"
+"你能比我還幸運！"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:517
 msgid "The earth shakes."
-msgstr "地動也。"
+msgstr "地震了。"
 
 #. [message]: speaker=Geldar
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:553
 msgid ""
 "Tall ones, I thank ye. Life has been nothing but a struggle recently. We are "
 "the last outpost o' civilization in these caves."
-msgstr ""
-"高生者，多謝相助。近日來民不聊生，唯挣扎耳。吾等乃是窑洞文明之最後先鋒了。"
+msgstr "高個兒，多謝。最近越來越不平靜。我們應該是這洞窟裡最後一群正常人了。"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:557
@@ -4208,7 +4225,8 @@ msgid ""
 "We are not alone, and now that our foes have smelled our blood it will be "
 "worse."
 msgstr ""
-"此窑洞甚廣，若吾等需尋此柄，得速行之。吾等非獨行，若遭敵探得，則愈糟矣。"
+"這裡實在是太大了，如果我們想早點找到權杖，一定得趕緊前進。絕對不可以單獨行"
+"動，如果遭到敵方來襲，就糟了。"
 
 #. [message]: speaker=Geldar
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:561
@@ -4217,13 +4235,13 @@ msgid ""
 "Beyond my citadel the spawn of the darkness hold complete sway. You'll no' "
 "survive without assistance."
 msgstr ""
-"權杖？啊，爾輩地表人野心勃勃。吾之城堡以下，由黑暗所造者支配，無助者如爾等，"
-"必有性命之厄矣。"
+"權杖？啊，要尋找權杖。看你們人類這麼心急。沒有我的軍隊保護你們，在這個黑暗的"
+"深窟裡，實在太危險了。"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:565
 msgid "How will we make it?"
-msgstr "吾等何以取之？"
+msgstr "那我們該怎麼辦？"
 
 #. [message]: speaker=Geldar
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:569
@@ -4232,8 +4250,8 @@ msgid ""
 "reaches of the underground kingdom. The Scepter can only be there. Please "
 "accept the service of my guardsmen. These elite warriors will protect you."
 msgstr ""
-"吾之城堡東北，年輕人。此通道去往地底王國深處，權杖唯有在此。請納吾守衛者之"
-"軍，此精鋭武士將衛君左右。"
+"我的城堡在東北方，年輕人。此通道是前往地底王國深處，權杖一定在那邊。請接受我"
+"們守衛的協助吧，精銳的守衛會保護你們的。"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:579
@@ -4241,13 +4259,13 @@ msgid ""
 "Your boon is most welcome, sir dwarf. Keeping the Scepter out of the hands "
 "of evil beasts is a common goal for us, and we will prevail with your help."
 msgstr ""
-"矮人先生，感激爾等恩惠。令此權杖不受邪惡野獸所擾，乃吾等通力所向者也。有此協"
-"助，吾等必勝。"
+"親愛的矮人，實在是太感謝你了。為了不讓權杖落入邪惡妖魔的手中，我們回盡全力找"
+"到它的。有您的協助，我們一定可以成功。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:584
 msgid "You may now recruit the legendary dwarvish guardsmen!"
-msgstr "我軍現可招矮人守衛兵！"
+msgstr "現在可以招募矮人守衛！"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:593
@@ -4255,12 +4273,13 @@ msgid ""
 "I do not know, Konrad, but I can sense our path only leads us downward. We "
 "will continue to the northeast, to the deepest depths of these caverns."
 msgstr ""
-"康拉德，吾不得知。然此路唯領吾等下行。吾等將繼續向東北，至此窑洞最深之處。"
+"康拉德，我真的不太清楚。但我知道我們必須往前進。我們將繼續往東北走，往洞窟的"
+"最深處前進。"
 
 #. [scenario]: id=16_Hasty_Alliance, id=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:4
 msgid "Hasty Alliance"
-msgstr "快速聯盟"
+msgstr "簽訂同盟"
 
 #. [objective]: condition=lose
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:30
@@ -4285,8 +4304,8 @@ msgid ""
 "deepest parts of the hewn caverns. Except for disturbances caused by the "
 "occasional goblin, the air in the lower passages was still and tomblike."
 msgstr ""
-"衆人已離矮人村落甚遠，下臨此洞穴之至深處。除偶有地精打擾之外，此間更凝重如墳"
-"墓。"
+"一行人離矮人城鎮越來越遠，向洞穴深處前進。除了偶爾有地精打擾之外，這裡的氣忿"
+"凝重的像墳場一樣。"
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:49
@@ -4296,8 +4315,9 @@ msgid ""
 "flickered and went out. Even the staff of the elder mage struggled to "
 "produce enough light to see by."
 msgstr ""
-"康拉德與迪法多一行穿越低廊，從迷宫様地穴中來到一冰冷漆黑之地。光亮閃爍遠去，"
-"黑暗似將其摧垮。縱是老道之法杖生光，亦不足探明前道。"
+"康拉德與迪法多一行人穿越了迴廊，從像迷宫的地道中來到一個冰冷又漆黑的地方。明"
+"亮的燈光漸漸遠去，伸手不見五指。即使迪法多用法杖施展出的聖光，也不足照明前面"
+"的道路。"
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:54
@@ -4306,8 +4326,8 @@ msgid ""
 "visible. Wind howled and whipped over narrow ledges bridging the depths, "
 "almost as if animated by powerful nearby magic... and newly awoken evil."
 msgstr ""
-"衆人前行，得一空穴，不見四壁。疾風呼號，掠過衆人足下之橋，如受強力術法與新生"
-"邪惡所控。"
+"一行人發現了一個洞穴，洞穴寬廣到無法環顧四周的牆壁。強風狂暴的鞭打著洞穴深處"
+"的吊橋，好像這裡某處藏了什麼強的的魔法...或者是即將甦醒的邪惡力量。"
 
 #. [side]: type=Commander, id=Konrad
 #. [side]: type=Princess, id=Li'sar
@@ -4319,32 +4339,32 @@ msgstr "人類"
 #. [side]: type=Troll Warrior, id=Haaf-Garga
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:106
 msgid "Haaf-Garga"
-msgstr "哈俄－戛戛"
+msgstr "黑鴉-卡根"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:147
 msgid "Where are we? Which way now? I am tired of this darkness!"
-msgstr "此乃何處？又該往何處行？吾已厭倦此漆黑！"
+msgstr "我們在哪裡？現在要往哪裡去？我已經厭捲了黑暗！"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:151
 msgid "I am not sure of the way. Let me think for a moment."
-msgstr "吾不曉得。讓吾想想。"
+msgstr "我不是很確定。讓我好好的想想。"
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:209
 msgid "En garde!"
-msgstr "趕快護駕！"
+msgstr "注意！"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:213
 msgid "What in the world are you doing here?"
-msgstr "汝來此處做何勾當？"
+msgstr "你在這裡有什麼陰謀？"
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:217
 msgid "Tracking you down, of course! You have escaped me for the last time!"
-msgstr "自是追殺汝等！汝現已無計可脱！"
+msgstr "當然是追殺你們！你們已經逃不了了！"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:221
@@ -4352,7 +4372,9 @@ msgid ""
 "Foolish girl! We are in the deepest of caverns, probably surrounded by all "
 "manner of creatures, and you still want to fight us? You will bring us all "
 "to ruin!"
-msgstr "無知少婦！于此地下深坑内，怪獸無數，爾竟戰吾？如此吾等皆休矣！"
+msgstr ""
+"蠢女孩！我們現在在地底的深處，前面有一堆我們不知道的危險，而你現在竟然要跟我"
+"們戰鬥？妳要我們全死在這裡啊！"
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:225
@@ -4360,7 +4382,9 @@ msgid ""
 "Don't try to trick me! I know why you have come here! But I will put an end "
 "to you and your treason here. Then I will get the Scepter, and return to the "
 "daylight again!"
-msgstr "休想騙吾！吾知汝之所欲，將滅汝亂黨于此。吾乃將得權杖，重返天日！"
+msgstr ""
+"別想騙我！我知道為什麼你們要來這裡，我將在這裡消滅你們。而我將拿著權杖，回到"
+"光明的世界！"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:244
@@ -4370,48 +4394,49 @@ msgstr "巨魔"
 #. [message]: type=Goblin Knight
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:336
 msgid "Surprise! Die, you sun-lovers!"
-msgstr "出乎預料吧！死吧！順陽者！"
+msgstr "沒想到吧！受死吧！地表人！"
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:340
 msgid ""
 "Now we are surrounded! Do you still want to fight us, Princess? Surely that "
 "would lead to doom for us all!"
-msgstr "吾等現已遭包圍！公主尚想鬥吾等否？若此吾雙方皆葬身于此！"
+msgstr ""
+"我們現在已經遭到包圍了！妳現在還堅持跟我們戰鬥嗎？這樣這裡將會是我們的葬深之"
+"地！"
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:344
 msgid ""
 "I see we have little choice but to help each other. Let us fight together "
 "until we return to the surface. Agreed?"
-msgstr "已彆無選擇，唯聯盟耳。吾倆就并肩作戰，直到地面，意此乎？"
+msgstr "我想我們已經沒有其他選擇了。讓我們同盟合作到離開這裡為止，如何？"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:348
 msgid ""
 "Very well, I promise that you will reach the surface again, or we shall all "
 "perish together, Princess."
-msgstr "很好公主，吾誓護汝到地面，若不行，就一同葬身此地。"
+msgstr "太好了，我保證讓妳活著離開這裡，若沒有，就一同葬身在這裡吧。"
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:352
 msgid "But once we escape from this hole, I have a score to settle with you!"
-msgstr "却逃出此洞，吾將與汝算賬！"
+msgstr "但只要一離開這裡，我還是會找你報仇的！"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:361
 msgid ""
 "Well, we have helped each other survive so far, Princess. Now let's continue "
 "together. What do you say?"
-msgstr "公主看哪，此聯盟以助生還！不如繼續，不知公主看如何？"
+msgstr "太好了，公主，看來我們合作無間。不如繼續同盟，你覺得如何？"
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:365
 msgid ""
 "Yes. We agreed to help each other get out of these pits alive, did we not? "
 "Let us continue to pool our resources. I pledge to you my gold."
-msgstr ""
-"此話有理。吾倆同意助對方，直至離此洞穴。所有的資源共同使用。此吾滿金袋。"
+msgstr "好的。吾倆同意助對方，直至離此洞穴。所有的資源共同使用。此吾滿金袋。"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:370
@@ -5511,7 +5536,7 @@ msgstr "吾打倒此不死族妖怪，然其竟能復活！此四周妖術横行
 msgid ""
 "Those are some of the monsters I warned about. Such undead guardians are "
 "indestructible. We must find another way to go."
-msgstr ""
+msgstr "此吾所言妖怪也。这些不死守卫是无法破坏的。我们必须另寻出路。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:563
@@ -5824,6 +5849,8 @@ msgid ""
 "the North Elves. I was born not far east of here...more years ago than I "
 "care to remember."
 msgstr ""
+"最好，朋友们，我们快到Lintanir森林了，北方精灵的家园。我在许多年之前出生在离"
+"这里不远的东边。"
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:352
@@ -5848,7 +5875,7 @@ msgstr "只要大家小心謹慎前往，吾相信即可至精靈地，享安全
 #. [unit]: id=Telerandor, type=Elvish Rider
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:376
 msgid "Telerandor"
-msgstr ""
+msgstr "Telerandor"
 
 #. [message]: speaker=Telerandor
 #. [message]: speaker=Glarilon
@@ -6123,10 +6150,13 @@ msgstr "尋得出口，令康拉德至之"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:28
+#, fuzzy
 msgid ""
 "<span color='white'>Optional objective:</span>\n"
 "<span color='#00ff00'>Help the Wose fend off the undead attack</span>"
 msgstr ""
+"<255,255,255>分支任務:\n"
+"@Help the Wose fend off the undead attack"
 
 #. [objective]: condition=lose
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:48
@@ -7437,7 +7467,7 @@ msgstr "權杖"
 #. [attack]: type=cold
 #: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:32
 msgid "raging blizzard"
-msgstr ""
+msgstr "狂怒的暴風雪"
 
 #. [variation]
 #. [unit_type]
@@ -7827,8 +7857,31 @@ msgstr ""
 #~ msgid "And so it has begun!"
 #~ msgstr "一切沒問題！"
 
+#~ msgid ""
+#~ "<255,255,255>Alternative objective:\n"
+#~ "@Defeat Muff Malal\n"
+#~ "`(early finish bonus)"
+#~ msgstr ""
+#~ "<255,255,255>分支任務:\n"
+#~ "@Defeat Muff Malal\n"
+#~ "`(提前結束)"
+
+#~ msgid ""
+#~ "<255,255,255>Bonus objective:\n"
+#~ "@Defeat all Death Knights first"
+#~ msgstr ""
+#~ "<255,255,255>獎勵任務:\n"
+#~ "@擊敗所有死亡騎士"
+
 #~ msgid "That is possible..."
 #~ msgstr "或許如此……"
+
+#~ msgid ""
+#~ "<255,255,255>Optional objective:\n"
+#~ "@Rescue the sergeant"
+#~ msgstr ""
+#~ "<255,255,255>分支任務:\n"
+#~ "@Rescue the sergeant"
 
 #~ msgid ""
 #~ "There is a waterfall ahead. It is so high I can barely see the top of it! "
@@ -7838,6 +7891,13 @@ msgstr ""
 #~ msgstr ""
 #~ "前方乃是瀑布，高聳不能見頂。漁人亦無法游上，遑論人類。縱使獅鹫，亦難以飛上"
 #~ "此瀑。大王，吾恐吾等將受困也。"
+
+#~ msgid ""
+#~ "<255,255,255>Bonus objective:\n"
+#~ "@Defeat all enemy leaders"
+#~ msgstr ""
+#~ "<255,255,255>獎勵任務:\n"
+#~ "@擊敗敵方所有主將"
 
 #~ msgid "Clan Member Defeated"
 #~ msgstr "騎族已戰敗"
