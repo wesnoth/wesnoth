@@ -57,7 +57,7 @@ struct cost_calculator
 {
 	cost_calculator() {}
 
-	virtual double cost(const map_location& src, const map_location& loc, const double so_far) const = 0;
+	virtual double cost(const map_location& loc, const double so_far) const = 0;
 	virtual ~cost_calculator() {}
 
 	inline double getNoPathValue() const { return (42424242.0); }
@@ -159,7 +159,7 @@ struct shortest_path_calculator : cost_calculator
 	shortest_path_calculator(const unit& u, const team& t, const unit_map& units,
                              const std::vector<team>& teams, const gamemap& map,
                              bool ignore_unit = false, bool ignore_defense_ = false);
-	virtual double cost(const map_location& src, const map_location& loc, const double so_far) const;
+	virtual double cost(const map_location& loc, const double so_far) const;
 
 private:
 	unit const &unit_;
@@ -180,7 +180,7 @@ private:
 struct emergency_path_calculator : cost_calculator
 {
 	emergency_path_calculator(const unit& u, const gamemap& map);
-	virtual double cost(const map_location& src, const map_location& loc, const double so_far) const;
+	virtual double cost(const map_location& loc, const double so_far) const;
 
 private:
 	unit const &unit_;
@@ -194,7 +194,7 @@ private:
 struct dummy_path_calculator : cost_calculator
 {
 	dummy_path_calculator(const unit& u, const gamemap& map);
-	virtual double cost(const map_location& src, const map_location& loc, const double so_far) const;
+	virtual double cost(const map_location& loc, const double so_far) const;
 
 };
 

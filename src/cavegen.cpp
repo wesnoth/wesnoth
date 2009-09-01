@@ -287,7 +287,7 @@ struct passage_path_calculator : cost_calculator
 		map_(mapdata), wall_(wall), laziness_(laziness), windiness_(windiness)
 	{}
 
-	virtual double cost(const map_location& src,const map_location& loc, const double so_far) const;
+	virtual double cost(const map_location& loc, const double so_far) const;
 private:
 	const t_translation::t_map& map_;
 	t_translation::t_terrain wall_;
@@ -295,7 +295,7 @@ private:
 	size_t windiness_;
 };
 
-double passage_path_calculator::cost(const map_location& /*src*/,const map_location& loc, const double) const
+double passage_path_calculator::cost(const map_location& loc, const double) const
 {
 	assert(loc.x >= 0 && loc.y >= 0 && size_t(loc.x) < map_.size() &&
 	        !map_.empty() && size_t(loc.y) < map_.front().size());

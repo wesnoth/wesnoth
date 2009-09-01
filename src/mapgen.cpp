@@ -372,7 +372,7 @@ struct road_path_calculator : cost_calculator
 	{
 	}
 
-	virtual double cost(const location& src, const location& loc, const double so_far) const;
+	virtual double cost(const location& loc, const double so_far) const;
 
 	mutable int calls;
 private:
@@ -383,7 +383,7 @@ private:
 	mutable std::map<t_translation::t_terrain, double> cache_;
 };
 
-double road_path_calculator::cost(const location& /*src*/, const location& loc,
+double road_path_calculator::cost(const location& loc,
 	const double /*so_far*/) const
 {
 	++calls;
@@ -1056,7 +1056,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 			continue;
 		}
 
-		if (calc.cost(src,src, 0.0) >= 1000.0 || calc.cost(src,dst, 0.0) >= 1000.0) {
+		if (calc.cost(src, 0.0) >= 1000.0 || calc.cost(dst, 0.0) >= 1000.0) {
 			continue;
 		}
 

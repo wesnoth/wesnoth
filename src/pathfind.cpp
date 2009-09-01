@@ -451,7 +451,7 @@ shortest_path_calculator::shortest_path_calculator(unit const &u, team const &t,
 	  ignore_unit_(ignore_unit), ignore_defense_(ignore_defense)
 {}
 
-double shortest_path_calculator::cost(const map_location& /*src*/,const map_location& loc, const double so_far) const
+double shortest_path_calculator::cost(const map_location& loc, const double so_far) const
 {
 	assert(map_.on_board(loc));
 
@@ -535,7 +535,7 @@ emergency_path_calculator::emergency_path_calculator(const unit& u, const gamema
 	: unit_(u), map_(map)
 {}
 
-double emergency_path_calculator::cost(const map_location&,const map_location& loc, const double) const
+double emergency_path_calculator::cost(const map_location& loc, const double) const
 {
 	assert(map_.on_board(loc));
 
@@ -545,7 +545,7 @@ double emergency_path_calculator::cost(const map_location&,const map_location& l
 dummy_path_calculator::dummy_path_calculator(const unit&, const gamemap&)
 {}
 
-double dummy_path_calculator::cost(const map_location&, const map_location&, const double) const
+double dummy_path_calculator::cost(const map_location&, const double) const
 {
 	return 1.0;
 }

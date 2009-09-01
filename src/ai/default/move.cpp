@@ -50,7 +50,7 @@ struct move_cost_calculator : cost_calculator
 		avoid_enemies_(u.usage() == "scout")
 	{}
 
-	virtual double cost(const map_location&, const map_location& loc, const double) const
+	virtual double cost(const map_location& loc, const double) const
 	{
 		/*
 		if(!map_.on_board(loc))

@@ -141,7 +141,7 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 
 	DBG_PF << "A* search: " << src << " -> " << dst << '\n';
 
-	if (calc->cost(src,dst, 0) >= stop_at) {
+	if (calc->cost(dst, 0) >= stop_at) {
 		LOG_PF << "aborted A* search because Start or Dest is invalid\n";
 		plain_route locRoute;
 		locRoute.move_cost = int(calc->getNoPathValue());
@@ -189,7 +189,7 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 			double thresh = (next.in - search_counter <= 1u) ? next.g : stop_at;
 			// cost() is always >= 1  (assumed and needed by the heuristic)
 			if (n.g + 1 >= thresh) continue;
-			double cost = n.g + calc->cost(n.curr, locs[i], n.g);
+			double cost = n.g + calc->cost(locs[i], n.g);
 			if (cost >= thresh) continue;
 
 			bool in_list = next.in == search_counter + 1;
