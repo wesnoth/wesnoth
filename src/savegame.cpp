@@ -31,7 +31,6 @@
 #include "replay.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
-#include "sound.hpp"
 #include "statistics.hpp"
 //#include "unit.hpp"
 #include "unit_id.hpp"
@@ -1001,7 +1000,7 @@ void game_savegame::write_game_snapshot()
 
 	game_events::write_events(snapshot());
 
-	sound::write_music_play_list(snapshot());
+	write_music_play_list(snapshot());
 
 	gamestate().write_snapshot(snapshot());
 

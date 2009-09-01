@@ -11,23 +11,12 @@
    See the COPYING file for more details.
 */
 
-#ifndef SAVEGAME_CONFIG_HPP_INCLUDED
-#define SAVEGAME_CONFIG_HPP_INCLUDED
-
-/* interface for building a config from savegame related objects */
-//FIXME: move to gamestate.hpp once dependencies between team and game_state are sorted
-class config;
+#include "sound.hpp"
 
 namespace savegame {
-	
-class savegame_config
-{
-public:
-	virtual ~savegame_config() {};
-	virtual config to_config() const = 0;
-};
 
-void write_music_play_list(config& snapshot);
+void write_music_play_list(config& snapshot) {
+	sound::write_music_play_list(snapshot);
+}
 
 }
-#endif

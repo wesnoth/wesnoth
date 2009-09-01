@@ -323,6 +323,7 @@ set(wesnoth-main_SRC
     resources.cpp
     save_blocker.cpp
     savegame.cpp
+    savegame_config.cpp
     scripting/lua.cpp
     sha1.cpp
     settings.cpp
