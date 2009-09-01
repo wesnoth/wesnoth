@@ -335,7 +335,7 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, int xpos, int y
 			if (rule != rules.second)
 			{
 				const config &cfg = *rule;
-				const t_translation::t_list& terrain = t_translation::read_list(cfg["terrain_type"]);
+				const t_translation::t_list& terrain = t_translation::read_list(cfg["terrain"]);
 
 				tmerge_mode mode = BOTH;
 				if (cfg["layer"] == "base") {
