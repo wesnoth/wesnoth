@@ -12,11 +12,16 @@
 */
 
 #include "sound.hpp"
+#include "game_events.hpp"
 
 namespace savegame {
 
 void write_music_play_list(config& snapshot) {
 	sound::write_music_play_list(snapshot);
+}
+
+void write_events(config& cfg) {
+	game_events::write_events(cfg);
 }
 
 }

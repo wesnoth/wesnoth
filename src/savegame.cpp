@@ -19,7 +19,6 @@
 #include "foreach.hpp"
 #include "game_display.hpp"
 #include "game_end_exceptions.hpp"
-#include "game_events.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/game_load.hpp"
 #include "gui/dialogs/game_save.hpp"
@@ -998,7 +997,7 @@ void game_savegame::write_game_snapshot()
 	buf << gui_.playing_team();
 	snapshot()["playing_team"] = buf.str();
 
-	game_events::write_events(snapshot());
+	write_events(snapshot());
 
 	write_music_play_list(snapshot());
 

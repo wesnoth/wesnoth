@@ -29,5 +29,7 @@ public:
 
 void write_music_play_list(config& snapshot);
 
+void write_events(config& cfg);
+
 }
 #endif
