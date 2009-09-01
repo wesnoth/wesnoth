@@ -20,7 +20,7 @@ import configuration
 TBLSTRING = "SMPL"
 
 def sample(size):
-	conn = MySQLdb.connect(configuration.DB_HOSTNAME,configuration.DB_USERNAME,configuration.DB_PASSWORD,configuration.DB_NAME)
+	conn = MySQLdb.connect(configuration.DB_HOSTNAME,configuration.DB_WRITE_USERNAME,configuration.DB_WRITE_PASSWORD,configuration.DB_NAME)
 	curs = conn.cursor()
 
 	curs.execute("SELECT DISTINCT `table` FROM _wsviews")
