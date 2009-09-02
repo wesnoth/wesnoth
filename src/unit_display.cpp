@@ -159,6 +159,15 @@ void move_unit(const std::vector<map_location>& path, unit& u, const std::vector
 	//       don't forget to change the previous draw(false) to true
 	disp->draw(true);
 
+	// extra immobile mvt anim for take-off
+	temp_unit.set_location(path[0]);
+	disp->place_temporary_unit(temp_unit);
+	temp_unit.set_facing(path[0].get_relative_dir(path[1]));
+	unit_animator animator;
+	animator.add_animation(&temp_unit,"pre_movement",path[0],path[1]);
+	animator.start_animations();
+	animator.wait_for_end();
+
 	for(size_t i = 0; i+1 < path.size(); ++i) {
 
 		invisible = teams[temp_unit.side()-1].is_enemy(int(disp->viewing_team()+1)) &&
@@ -190,9 +199,14 @@ void move_unit(const std::vector<map_location>& path, unit& u, const std::vector
 			}
 		}
 	}
+	temp_unit.set_location(path[path.size() - 1]);
+	temp_unit.set_facing(path[path.size()-2].get_relative_dir(path[path.size()-1]));
+	animator.clear();
+	animator.add_animation(&temp_unit,"post_movement",path[path.size()-2],path[path.size()-1]);
+	animator.start_animations();
+	animator.wait_for_end();
 	disp->remove_temporary_unit();
 	u.set_location(path[path.size() - 1]);
-	u.set_facing(path[path.size()-2].get_relative_dir(path[path.size()-1]));
 	u.set_standing();
 
 	u.set_hidden(was_hidden);

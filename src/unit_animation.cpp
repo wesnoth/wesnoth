@@ -364,6 +364,16 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.push_back(tmp_anim);
 
 		tmp_anim = *itor;
+		tmp_anim.unit_anim_.override(0,1,"","",0,"");
+		tmp_anim.event_ = utils::split("pre_movement");
+		animations.push_back(tmp_anim);
+
+		tmp_anim = *itor;
+		tmp_anim.unit_anim_.override(0,1,"","",0,"");
+		tmp_anim.event_ = utils::split("post_movement");
+		animations.push_back(tmp_anim);
+
+		tmp_anim = *itor;
 		tmp_anim.unit_anim_.override(0,5100,"","",0,"0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,",lexical_cast<std::string>(display::LAYER_UNIT_MOVE_DEFAULT-display::LAYER_UNIT_FIRST));
 		tmp_anim.event_ = utils::split("movement");
 		animations.push_back(tmp_anim);
@@ -548,6 +558,14 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		animations.back().sub_anims_["_poison_sound"].add_frame(1,frame_builder().sound("poison.ogg"),true);
 	}
 
+	expanded_cfg = unit_animation::prepare_animation(cfg,"pre_movement_anim");
+	foreach (config &anim, expanded_cfg.child_range("pre_movement_anim"))
+	{
+		anim["apply_to"] = "pre_movement";
+		if (anim["layer"].empty()) anim["layer"] = move_layer;
+		animations.push_back(unit_animation(anim));
+	}
+
 	expanded_cfg = unit_animation::prepare_animation(cfg,"movement_anim");
 	foreach (config &anim, expanded_cfg.child_range("movement_anim"))
 	{
@@ -555,6 +573,14 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 			anim["offset"] = "0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,";
 		}
 		anim["apply_to"] = "movement";
+		if (anim["layer"].empty()) anim["layer"] = move_layer;
+		animations.push_back(unit_animation(anim));
+	}
+
+	expanded_cfg = unit_animation::prepare_animation(cfg,"post_movement_anim");
+	foreach (config &anim, expanded_cfg.child_range("post_movement_anim"))
+	{
+		anim["apply_to"] = "post_movement";
 		if (anim["layer"].empty()) anim["layer"] = move_layer;
 		animations.push_back(unit_animation(anim));
 	}
