@@ -149,7 +149,7 @@ public:
 	void send_and_record_server_message(const char* message,
 			const network::connection exclude=0);
 	void send_data(simple_wml::document& data, const network::connection exclude=0, std::string packet_type = "") const;
-	void send_to_one(simple_wml::document& data, const network::connection sock, std::string packet_type = "") const;
+	bool send_to_one(simple_wml::document& data, const network::connection sock, std::string packet_type = "") const;
 
 	void clear_history();
 	void record_data(simple_wml::document* data);
@@ -191,6 +191,7 @@ private:
 	bool is_muted_observer(const network::connection player) const;
 	bool all_observers_muted() const { return all_observers_muted_; }
 
+	bool send_taken_side(simple_wml::document& cfg, const simple_wml::node::child_list::const_iterator side) const;
 	/**
 	 * Figures out which side to take and tells that side to the game owner.
 	 *
@@ -212,6 +213,7 @@ private:
 			const bool player_left = true,
 			const std::string& controller = "");
 	void transfer_ai_sides(const network::connection player);
+	void send_leave_game(network::connection user) const;
 	void send_data_team(simple_wml::document& data, const simple_wml::string_span& team,
 			const network::connection exclude=0, std::string packet_type = "") const;
 	void send_data_observers(simple_wml::document& data, const network::connection exclude=0, std::string packet_type = "") const;
