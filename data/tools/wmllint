@@ -861,16 +861,6 @@ def sanity_check(filename, lines):
                     races.append(value)
             except TypeError:
                 pass
-    # Check for fluky credit parts
-    for nav in WmllintIterator(lines, filename):
-        above = nav.ancestors()
-        if above and above[-1] == "[entry]":
-            try:
-                (key, prefix, value, comment) = parse_attribute(nav.text)
-                if key == "email" and " " in value:
-                    print '"%s", line %d: space in email name' % (filename, nav.lineno+1)
-            except TypeError:
-                pass
     # Sanity-check recruit and recruitment_pattern.
     # This code has a limitation; if there are multiple instances of
     # recruit and recruitment_pattern (as can happen if these lists
@@ -1418,6 +1408,14 @@ def hack_syntax(filename, lines):
     # More syntax transformations would go here.
     return lines
 
+def local_checks(filename, nav, key, prefix, value, comment):
+    errlead = '"%s", line %d: ' %  (filename, nav.lineno+1)
+    above = nav.ancestors()
+    # Check for fluky credit parts
+    if above and above[-1] == "[entry]":
+        if key == "email" and " " in value:
+            print errlead + 'space in email name'
+
 # Generic machinery starts here
 
 def is_map(filename):
@@ -1693,6 +1691,14 @@ def translator(filename, mapxforms, textxform):
         print '"%s", line %d: tag stack nonempty (%s) at end of file.' % (filename, lineno, tagstack)
     tagstack = []
     if iswml(filename):
+        # Perform checks that are purel local.  This is an
+        # optimization hack to reduce parsing overhead.
+        for nav in WmllintIterator(newdata, filename):
+            try:
+                (key, prefix, value, comment) = parse_attribute(nav.text)
+                local_checks(filename, nav, key, prefix, value, comment)
+            except TypeError:
+                pass
         # Perform semantic sanity checks
         newdata = sanity_check(filename, newdata)
         # OK, now perform WML rewrites
