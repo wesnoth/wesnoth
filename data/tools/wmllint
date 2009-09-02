@@ -465,20 +465,6 @@ linechanges = (
         ("slasher-", "arbiter-"),
         )
 
-def validate_stack(stack, filename, lineno):
-    "Check the stack for deprecated WML syntax."
-    if verbose >= 3:
-        print '"%s", line %d: %s' % (filename, lineno+1, stack)
-    if stack:
-        (tag, attributes) = tagstack[-1]
-        ancestors = map(lambda x: x[0], tagstack)
-        # Most tags are not allowed with [part]
-        if "part" in ancestors and tag not in ("part", "image", "insert_tag", "if", "then", "else", "switch", "case", "variable", "deprecated_message"):
-            print '"%s", line %d: [%s] within [part] tag' % (filename, lineno+1, tag)
-        
-        #if tag == "sound" and "attack" in ancestors:
-        #    print '"%s", line %d: deprecated [sound] within [attack] tag' % (filename, lineno+1)
-
 def validate_on_pop(tagstack, closer, filename, lineno):
     "Validate the stack at the time a new close tag is seen."
     (tag, attributes) = tagstack[-1]
@@ -740,20 +726,26 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
     "Sanity checks that don't require file context or globals."
     errlead = '"%s", line %d: ' %  (filename, nav.lineno+1)
     ancestors = nav.ancestors()
-    parent = ancestors and ancestors[-1]
     in_definition = "#define" in ancestors
     in_call = filter(lambda x: x.startswith("{"), ancestors)
+    parent = None
+    if ancestors:
+        parent = ancestors[-1]
+        ancestors = ancestors[:-1]
     # Check for things marked translated that aren't strings
     if "_" in nav.text and not "wmllint: ignore" in nav.text:
         m = re.search(r'[=(]\s*_\s+("?)', nav.text)
         if m and not m.group(1):
             print errlead + 'translatability mark before non-string'
+    # Most tags are not allowed with [part]
+    if "[part]" in ancestors and parent not in ("[part]", "[image]", "[insert_tag]", "[if]", "[then]", "[else]", "[switch]", "[case]", "[variable]", "[deprecated_message]"):
+        print errlead + '%s not permitted within [part] tag' % parent
     # Check for fluky credit parts
     if parent == "[entry]":
         if key == "email" and " " in value:
             print errlead + 'space in email name'
     # Check for various things that shouldn't be outside an [ai] tag
-    if not in_definition and not in_call and not "[ai]" in ancestors:
+    if not in_definition and not in_call and not "[ai]" in nav.ancestors():
         if key in ("number_of_possible_recruits_to_force_recruit",
                    "recruitment_ignore_bad_movement",
                    "recruitment_ignore_bad_combat",
@@ -1642,8 +1634,6 @@ def translator(filename, mapxforms, textxform):
                         if '#' in value:
                             value = value.split("#")[0]
                         tagstack[-1][1][attribute] = value.strip()
-                    if validate:
-                        validate_stack(tagstack, filename, lineno)
             if "wmllint: validate-on" in comment:
                 validate = True
             if "wmllint: validate-off" in comment:
