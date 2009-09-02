@@ -205,6 +205,7 @@ wesnoth_source = \
 	resources.cpp \
 	save_blocker.cpp \
 	savegame.cpp \
+    savegame_config.cpp \
 	scripting/lua.cpp \
 	sha1.cpp \
 	settings.cpp \
