@@ -349,7 +349,7 @@ bool upload_log::game_finished(config *game)
 	if (!game)
 		return false;
 
-	return game->child("victory") || game->child("defeat") || game->child("quit");
+	return game->child("victory") || game->child("defeat") || game->child("quit") || game->child("upload_log").child("ai_log");
 }
 
 config &upload_log::add_game_result(const std::string &str, int turn)

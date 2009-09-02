@@ -382,7 +382,6 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		throw;
 	} catch(end_level_exception& end_level) {
 		ai_testing::log_game_end();
-		log.quit(turn());
 		*end_level_result = end_level;
 		if(!end_level.custom_endlevel_music.empty()) {
 			switch(end_level.result) {
