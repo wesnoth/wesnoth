@@ -224,6 +224,8 @@ stringfixes = {
 ("scepter he should send", "Sceptre he should send"),
 ("from his Elvish pursuers", "from his elvish pursuers"),
 ("getting the sceptre", "getting the Sceptre"),
+("scepter of fire", "sceptre of fire"),
+("his scepter intact", "his sceptre intact"),
 ),
 
 "wesnoth-tb" :(
