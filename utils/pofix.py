@@ -213,6 +213,19 @@ stringfixes = {
 ("Shan Taum doesn't seem to have to many of his", "Shan Taum doesn't seem to have too many of his"),
 ),
 
+"wesnoth-sof" :(
+("Not all of us Elves are", "Not all of us elves are"),
+("to make an sceptre out", "to make a sceptre out"),
+("us to the Eastern", "us to the eastern"),
+("Mines, and I", "mines, and I"),
+("years looking for you Dwarves", "years looking for you dwarves"),
+("he put on the sceptre", "he put on the Sceptre"),
+("give the sceptre", "give the Sceptre"),
+("scepter he should send", "Sceptre he should send"),
+("from his Elvish pursuers", "from his elvish pursuers"),
+("getting the sceptre", "getting the Sceptre"),
+),
+
 "wesnoth-tb" :(
 ("mage Bjarn send for", "mage Bjarn sends for"),
 ),
