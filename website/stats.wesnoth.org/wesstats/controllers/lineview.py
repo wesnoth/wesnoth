@@ -47,15 +47,18 @@ class LineGraphController(BaseController):
 		conn = MySQLdb.connect(configuration.DB_HOSTNAME,configuration.DB_USERNAME,configuration.DB_PASSWORD,configuration.DB_NAME,use_unicode=True)
 		curs = conn.cursor()
 		
-		curs.execute("SELECT title,xdata,ydata,xlabel,ylabel,filters,y_xform FROM _wsviews WHERE url = %s", (self.url,))
+		curs.execute("SELECT title,xdata,ydata,xlabel,ylabel,filters,y_xform,tbl FROM _wsviews WHERE url = %s", (self.url,))
 		view_data = curs.fetchall()[0]
 		log.debug("line chart request, here is SQL data for this view:")
 		log.debug(view_data)
+
+		tbl = view_data[7]
+
 		#fetch the relevant filters for this template and their possible values
 		available_filters = view_data[5].split(',')
 		fdata = dict()
 		for filter in available_filters:
-			curs.execute("SELECT DISTINCT "+filter+" FROM GAMES_SP")
+			curs.execute("SELECT DISTINCT " + filter + " FROM " + tbl)
 			#curs.fetchall() returns a list of lists, we convert this to a plain list for ease of handling
 			raw_fdata = curs.fetchall()
 			fdata[filter] = []
@@ -117,10 +120,10 @@ class LineGraphController(BaseController):
 			y_group_str += y_data[i] + ","
 		y_data_str = y_data_str[0:len(y_data_str)-1]
 		y_group_str = y_group_str[0:len(y_group_str)-1]
-		query = "SELECT CAST(timestamp as DATE)," + y_data_str + " FROM GAMES_SP " + filters + " GROUP BY CAST(timestamp as DATE)," + y_group_str 
+		query = "SELECT CAST(timestamp as DATE),%s FROM %s %s GROUP BY CAST(timestamp as DATE),%s" % (y_data_str,tbl,filters,y_group_str)
 		log.debug("SQL query:")
 		log.debug(query)
-		results = helperlib.scaled_query(curs,query,100,evaluators.simple_eval)
+		results = helperlib.scaled_query(curs,tbl,query,100,evaluators.simple_eval)
 		#log.debug("query result:")
 		#log.debug(results)
 		data = LineGraphController.reformat_data(self,results)

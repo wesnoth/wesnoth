@@ -40,8 +40,8 @@ sys.path.append('/srv/www/html/wesstats')
 os.environ['PYTHON_EGG_CACHE'] = '/srv/www/html/wesstats/python-eggs'
 
 #6.[Optional]If you want to enable logging you need to initialize logging. You also need to setup logger handlers in you production.ini. When done uncomment next two lines.
-#from paste.script.util.logging_config import fileConfig
-#fileConfig('/srv/www/html/wesstats/prod.apache.ini')
+from paste.script.util.logging_config import fileConfig
+fileConfig('/srv/www/html/wesstats/prod.apache.ini')
 
 #7. Load you application production.ini file.
 from paste.deploy import loadapp

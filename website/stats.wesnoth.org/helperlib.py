@@ -36,20 +36,21 @@ def is_valid_date(date):
 def is_valid_level(lev):
 	return lev.isdigit()	
 
-def scaled_query(curs,query,threshold,evaluator):
+def scaled_query(curs,tbl,query,threshold,evaluator):
 	s_time = time.time()
 	#list of all the sample sizes
-	curs.execute("SELECT TABLE_NAME FROM information_schema.tables WHERE `TABLE_NAME` REGEXP '^"+configuration.DB_TABLE_PREFIX+"SMPL'")
+	query = "SELECT TABLE_NAME FROM information_schema.tables WHERE TABLE_NAME REGEXP '^%s%sSMPL'" % (configuration.DB_TABLE_PREFIX,tbl)
+	curs.execute(query)
 	results = curs.fetchall()
 	sizes = []
 	for result in results:
-		sizes.append(int(result[0][len(configuration.DB_TABLE_PREFIX+"SMPL"):]))
+		sizes.append(int(result[0][len(configuration.DB_TABLE_PREFIX+"SMPL"+tbl):]))
 	sizes.sort()
 	#print sizes
 	#try query on all the sample sizes in increasing order until we get one that meets the threshold
 	for size in sizes:
-		tblname = configuration.DB_TABLE_PREFIX+"SMPL"+str(size)
-		nquery = query.replace("GAMES",tblname)
+		tblname = "%sSMPL%s%d" % (configuration.DB_TABLE_PREFIX,tbl,size)
+		nquery = query.replace(tbl,tblname)
 		curs.execute(nquery)
 		results = curs.fetchall()
 		length = evaluator(results)
