@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-30 19:20+0200\n"
+"POT-Creation-Date: 2009-09-03 00:21+0200\n"
 "PO-Revision-Date: 2008-12-09 21:00+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -7278,71 +7278,71 @@ msgstr "Unidades albiscadas! ($friendphrase, $enemyphrase)"
 msgid "(press $hotkey to keep moving)"
 msgstr "(preme $hotkey para continuar o desprazamento)"
 
-#: src/addon_management.cpp:362
+#: src/addon_management.cpp:372
 msgid "B"
 msgstr "B"
 
-#: src/addon_management.cpp:365 src/dialogs.cpp:1056
+#: src/addon_management.cpp:375 src/dialogs.cpp:1056
 msgid "KB"
 msgstr "KB"
 
-#: src/addon_management.cpp:368
+#: src/addon_management.cpp:378
 msgid "MB"
 msgstr "MB"
 
-#: src/addon_management.cpp:371
+#: src/addon_management.cpp:381
 msgid "GB"
 msgstr "GB"
 
-#: src/addon_management.cpp:404
+#: src/addon_management.cpp:414
 msgid "addon_type^Campaign"
 msgstr "Campaña"
 
-#: src/addon_management.cpp:406
+#: src/addon_management.cpp:416
 msgid "addon_type^Scenario"
 msgstr "Escenario"
 
-#: src/addon_management.cpp:408
+#: src/addon_management.cpp:418
 #, fuzzy
 msgid "addon_type^MP era"
 msgstr "Era MX"
 
-#: src/addon_management.cpp:410
+#: src/addon_management.cpp:420
 #, fuzzy
 msgid "addon_type^MP faction"
 msgstr "Facción MX"
 
-#: src/addon_management.cpp:412
+#: src/addon_management.cpp:422
 #, fuzzy
 msgid "addon_type^MP map-pack"
 msgstr "Paquete de mapas MX"
 
-#: src/addon_management.cpp:414
+#: src/addon_management.cpp:424
 msgid "addon_type^MP scenario"
 msgstr "Escenario MX"
 
-#: src/addon_management.cpp:416
+#: src/addon_management.cpp:426
 msgid "addon_type^MP campaign"
 msgstr "Campaña MX"
 
-#: src/addon_management.cpp:418
+#: src/addon_management.cpp:428
 msgid "addon_type^Resources"
 msgstr "Recursos"
 
-#: src/addon_management.cpp:420
+#: src/addon_management.cpp:430
 #, fuzzy
 msgid "addon_type^Other"
 msgstr "Era MX"
 
-#: src/addon_management.cpp:422
+#: src/addon_management.cpp:432
 msgid "addon_type^(unknown)"
 msgstr "(descoñecido)"
 
-#: src/addon_management.cpp:452
+#: src/addon_management.cpp:462
 msgid "Dependencies"
 msgstr "Dependencias"
 
-#: src/addon_management.cpp:456
+#: src/addon_management.cpp:466
 #, fuzzy
 msgid ""
 "$addon_title depends upon the following add-on which you have not installed "
@@ -7353,62 +7353,62 @@ msgid_plural ""
 msgstr[0] "Este complemento depende do seguinte complemento non instalado:"
 msgstr[1] "Este complemento depende dos seguintes complementos non instalados:"
 
-#: src/addon_management.cpp:459
+#: src/addon_management.cpp:469
 msgid ""
 "Do you still want to download $addon_title|? (You will have to install all "
 "the dependencies in order to play.)"
 msgstr ""
 
-#: src/addon_management.cpp:477 src/addon_management.cpp:549
+#: src/addon_management.cpp:487 src/addon_management.cpp:559
 #: src/multiplayer.cpp:213 src/multiplayer.cpp:268 src/multiplayer_ui.cpp:78
 msgid "Connection timed out"
 msgstr "A conexión expirou"
 
-#: src/addon_management.cpp:480
+#: src/addon_management.cpp:490
 msgid "The server responded with an error: \"$error|\""
 msgstr "O servidor respondeu cun erro: \"$error|\""
 
-#: src/addon_management.cpp:488
+#: src/addon_management.cpp:498
 msgid "Terms"
 msgstr "Termos"
 
-#: src/addon_management.cpp:522
+#: src/addon_management.cpp:532
 msgid "Sending add-on"
 msgstr "Enviando complemento"
 
-#: src/addon_management.cpp:526 src/addon_management.cpp:551
+#: src/addon_management.cpp:536 src/addon_management.cpp:561
 msgid "The server responded with an error: \""
 msgstr "O servidor respondeu cun erro: \""
 
-#: src/addon_management.cpp:529 src/addon_management.cpp:554
+#: src/addon_management.cpp:539 src/addon_management.cpp:564
 #: src/multiplayer_wait.cpp:403
 msgid "Response"
 msgstr "Resposta"
 
-#: src/addon_management.cpp:581
+#: src/addon_management.cpp:591
 msgid "Downloading add-on: $addon_title|..."
 msgstr "Descargando o complemento: $addon_title|..."
 
-#: src/addon_management.cpp:596
+#: src/addon_management.cpp:606
 msgid ""
 "The add-on has an invalid file or directory name and can not be installed."
 msgstr ""
 "O complemento ten un nome de ficheiro ou de directorio incorrecto e non se "
 "pode instalar."
 
-#: src/addon_management.cpp:645
+#: src/addon_management.cpp:655
 msgid "The add-on '$addon_title|' has been successfully installed."
 msgstr "Instalouse con éxito o complemento '$addon_title|'."
 
-#: src/addon_management.cpp:646
+#: src/addon_management.cpp:656
 msgid "Add-on Installed"
 msgstr "Complemento Instalado"
 
-#: src/addon_management.cpp:704
+#: src/addon_management.cpp:714
 msgid "Outdated add-ons"
 msgstr "Complementos desactualizados"
 
-#: src/addon_management.cpp:706
+#: src/addon_management.cpp:716
 msgid ""
 "An outdated local add-on has publishing information attached. It will not be "
 "offered for updating."
@@ -7418,54 +7418,54 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/addon_management.cpp:715
+#: src/addon_management.cpp:725
 msgid "Could not find any updated add-ons on this server."
 msgstr ""
 "Non se puido atopar ningún actualización para complementos neste servidor."
 
-#: src/addon_management.cpp:715
+#: src/addon_management.cpp:725
 msgid "No add-ons to update"
 msgstr "Non hai que actualizar ningún complemento"
 
-#: src/addon_management.cpp:729 src/addon_management.cpp:932
+#: src/addon_management.cpp:739 src/addon_management.cpp:942
 #: src/dialogs.cpp:576 src/menu_events.cpp:195 src/menu_events.cpp:841
 msgid "Name"
 msgstr "Nome"
 
-#: src/addon_management.cpp:729
+#: src/addon_management.cpp:739
 msgid "New version"
 msgstr "Nova versión"
 
-#: src/addon_management.cpp:729
+#: src/addon_management.cpp:739
 msgid "Old version"
 msgstr "Versión antiga"
 
-#: src/addon_management.cpp:730 src/addon_management.cpp:933
+#: src/addon_management.cpp:740 src/addon_management.cpp:943
 msgid "Author"
 msgstr "Autor"
 
-#: src/addon_management.cpp:730 src/addon_management.cpp:933
+#: src/addon_management.cpp:740 src/addon_management.cpp:943
 msgid "Size"
 msgstr "Tamaño"
 
-#: src/addon_management.cpp:784
+#: src/addon_management.cpp:794
 #, fuzzy
 msgid "Update add-ons"
 msgstr "Actualizar os complementos"
 
-#: src/addon_management.cpp:785
+#: src/addon_management.cpp:795
 msgid "Select an add-on to update:"
 msgstr "Seleccione un complemento para actualizar:"
 
-#: src/addon_management.cpp:799
+#: src/addon_management.cpp:809
 msgid "Update all"
 msgstr "Actualizar todo"
 
-#: src/addon_management.cpp:856
+#: src/addon_management.cpp:866
 msgid "Update failed"
 msgstr "Fallo ó actualizar"
 
-#: src/addon_management.cpp:858
+#: src/addon_management.cpp:868
 msgid "The following add-on could not be downloaded or updated successfully:"
 msgid_plural ""
 "The following add-ons could not be downloaded or updated successfully:"
@@ -7474,83 +7474,83 @@ msgstr[0] ""
 msgstr[1] ""
 "Non se puideron descargar ou actualizar con éxito os seguintes complementos:"
 
-#: src/addon_management.cpp:867
+#: src/addon_management.cpp:877
 msgid "Update succeeded"
 msgstr "Actualización con éxito"
 
-#: src/addon_management.cpp:868
+#: src/addon_management.cpp:878
 msgid "Add-on updated successfully."
 msgstr "Os complementos actualizáronse con éxito."
 
-#: src/addon_management.cpp:869
+#: src/addon_management.cpp:879
 msgid "All add-ons updated successfully."
 msgstr "Actualizáronse con éxito tódolos complementos."
 
-#: src/addon_management.cpp:893
+#: src/addon_management.cpp:903
 #, fuzzy
 msgid "Connecting to add-ons server..."
 msgstr "Conectando ó Servidor de Complementos..."
 
-#: src/addon_management.cpp:896
+#: src/addon_management.cpp:906
 msgid "Could not connect to host."
 msgstr "Non se puido conectar á máquina."
 
-#: src/addon_management.cpp:904
+#: src/addon_management.cpp:914
 msgid "Requesting list of add-ons"
 msgstr "Solicitando a lista de complementos"
 
-#: src/addon_management.cpp:916
+#: src/addon_management.cpp:926
 msgid "An error occurred while communicating with the server."
 msgstr "Ocorreu un erro ó comunicarse co servidor."
 
-#: src/addon_management.cpp:932 src/titlescreen.cpp:342
+#: src/addon_management.cpp:942 src/titlescreen.cpp:342
 msgid "Version"
 msgstr "Versión"
 
-#: src/addon_management.cpp:933
+#: src/addon_management.cpp:943
 msgid "Downloads"
 msgstr "Descargas"
 
-#: src/addon_management.cpp:933 src/help.cpp:1458 src/menu_events.cpp:194
+#: src/addon_management.cpp:943 src/help.cpp:1458 src/menu_events.cpp:194
 #: src/menu_events.cpp:840 src/menu_events.cpp:1428
 msgid "Type"
 msgstr "Tipo"
 
-#: src/addon_management.cpp:999
+#: src/addon_management.cpp:1009
 msgid "Publish add-on: "
 msgstr "Publicar complemento: "
 
-#: src/addon_management.cpp:1005
+#: src/addon_management.cpp:1015
 msgid "Delete add-on: "
 msgstr "Eliminar complemento: "
 
-#: src/addon_management.cpp:1011
+#: src/addon_management.cpp:1021
 msgid "There are no add-ons available for download from this server."
 msgstr "Non hai complementos dispoñibles para descargar dende este servidor."
 
-#: src/addon_management.cpp:1024
+#: src/addon_management.cpp:1034
 #, fuzzy
 msgid "Get add-ons"
 msgstr "Complementos"
 
-#: src/addon_management.cpp:1025
+#: src/addon_management.cpp:1035
 msgid "Choose the add-on to download."
 msgstr "Elixa o complemento a descargar."
 
-#: src/addon_management.cpp:1037 src/dialogs.cpp:601 src/menu_events.cpp:900
+#: src/addon_management.cpp:1047 src/dialogs.cpp:601 src/menu_events.cpp:900
 #: src/menu_events.cpp:1464
 msgid "Filter: "
 msgstr "Filtro: "
 
-#: src/addon_management.cpp:1074
+#: src/addon_management.cpp:1084
 msgid "Network communication error."
 msgstr "Erro de comunicación da rede."
 
-#: src/addon_management.cpp:1077
+#: src/addon_management.cpp:1087
 msgid "Remote host disconnected."
 msgstr "A máquina remota desconectouse."
 
-#: src/addon_management.cpp:1080
+#: src/addon_management.cpp:1090
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
@@ -7558,35 +7558,35 @@ msgstr ""
 "Ocorreu un problema ó crear os ficheiros necesarios para instalar este "
 "complemento."
 
-#: src/addon_management.cpp:1098
+#: src/addon_management.cpp:1108
 msgid "You have no add-ons installed."
 msgstr "Non tes complementos instalados."
 
-#: src/addon_management.cpp:1110
+#: src/addon_management.cpp:1120
 msgid "Choose the add-on to remove."
 msgstr "Escolle o complemento a eliminar."
 
-#: src/addon_management.cpp:1110
+#: src/addon_management.cpp:1120
 msgid "Uninstall add-ons"
 msgstr "Desinstalar complementos"
 
-#: src/addon_management.cpp:1122
+#: src/addon_management.cpp:1132
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr "Estás seguro de que desexas eliminar o complemento '$addon|'?"
 
-#: src/addon_management.cpp:1127 src/multiplayer.cpp:225
+#: src/addon_management.cpp:1137 src/multiplayer.cpp:225
 msgid "Confirm"
 msgstr "Confirmar"
 
-#: src/addon_management.cpp:1139
+#: src/addon_management.cpp:1149
 msgid "Add-on '$addon|' deleted."
 msgstr "Eliminouse o complemento '$addon|'."
 
-#: src/addon_management.cpp:1144
+#: src/addon_management.cpp:1154
 msgid "Add-on deleted"
 msgstr "Complemento eliminado"
 
-#: src/addon_management.cpp:1152
+#: src/addon_management.cpp:1162
 msgid "Add-on could not be deleted properly:"
 msgstr "Non se puido eliminar correctamente o complemento:"
 
@@ -7792,8 +7792,8 @@ msgstr "Movementos: "
 msgid "The Battle for Wesnoth"
 msgstr "Battle for Wesnoth"
 
-#: src/game.cpp:997 src/game.cpp:1005 src/playsingle_controller.cpp:496
-#: src/playsingle_controller.cpp:551
+#: src/game.cpp:997 src/game.cpp:1005 src/playsingle_controller.cpp:495
+#: src/playsingle_controller.cpp:550
 msgid "The file you have tried to load is corrupt"
 msgstr "O ficheiro que intentou cargar está corrompido"
 
@@ -8294,11 +8294,11 @@ msgstr "Manto do descoñecido"
 msgid "none"
 msgstr "ningún"
 
-#: src/map.cpp:163
+#: src/map.cpp:162
 msgid "A map without a header is not supported"
 msgstr "Non se soportan os mapas sen cabeceira"
 
-#: src/mapgen.cpp:739
+#: src/mapgen.cpp:740
 msgid "Random maps with an odd width aren't supported."
 msgstr "Os mapas aleatorios cun ancho raro non están soportados."
 
@@ -9627,15 +9627,15 @@ msgstr[1] ""
 "Comezará o seguinte escenario con $gold ou co ouro mínimo inicial que teña "
 "definido, o que sexa máis alto."
 
-#: src/playsingle_controller.cpp:421
+#: src/playsingle_controller.cpp:420
 msgid "Game Over"
 msgstr "Partida Rematada"
 
-#: src/playsingle_controller.cpp:422
+#: src/playsingle_controller.cpp:421
 msgid "The game is over."
 msgstr "A partida rematou."
 
-#: src/playsingle_controller.cpp:507
+#: src/playsingle_controller.cpp:506
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game\n"
@@ -9644,19 +9644,19 @@ msgstr ""
 "Houbo unha interrupción da rede, e o xogo non pode continuar. Desexas gardar "
 "a partida?"
 
-#: src/playsingle_controller.cpp:673
+#: src/playsingle_controller.cpp:672
 msgid "It is now $name|'s turn"
 msgstr "Agora é o turno de $name|"
 
-#: src/playsingle_controller.cpp:905
+#: src/playsingle_controller.cpp:904
 msgid "Scenario Report"
 msgstr "Informe do Escenario"
 
-#: src/playsingle_controller.cpp:907
+#: src/playsingle_controller.cpp:906
 msgid "Victory"
 msgstr "Victoria"
 
-#: src/playsingle_controller.cpp:908
+#: src/playsingle_controller.cpp:907
 msgid "You have emerged victorious!"
 msgstr "Venciches!"
 
@@ -10012,8 +10012,8 @@ msgstr "Axúdalle a Wesnoth"
 msgid "Help Wesnoth by sending us information"
 msgstr "Axuda a Wesnoth enviándonos información"
 
-#: src/tod_manager.cpp:102 src/tod_manager.cpp:134 src/tod_manager.cpp:238
-#: src/tod_manager.cpp:251 src/tod_manager.cpp:301
+#: src/tod_manager.cpp:101 src/tod_manager.cpp:133 src/tod_manager.cpp:237
+#: src/tod_manager.cpp:250 src/tod_manager.cpp:300
 msgid "No time of day has been defined."
 msgstr "Non se definiu a hora do día."
 

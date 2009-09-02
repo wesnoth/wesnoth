@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth1.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-30 19:20+0200\n"
+"POT-Creation-Date: 2009-09-03 00:21+0200\n"
 "PO-Revision-Date: 2009-05-08 22:09+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
@@ -6606,68 +6606,68 @@ msgstr "發現非我方控制單位！（$friendphrase, $enemyphrase）"
 msgid "(press $hotkey to keep moving)"
 msgstr "（按$hotkey鍵繼續移動）"
 
-#: src/addon_management.cpp:362
+#: src/addon_management.cpp:372
 msgid "B"
 msgstr "B"
 
-#: src/addon_management.cpp:365 src/dialogs.cpp:1056
+#: src/addon_management.cpp:375 src/dialogs.cpp:1056
 msgid "KB"
 msgstr "KB"
 
-#: src/addon_management.cpp:368
+#: src/addon_management.cpp:378
 msgid "MB"
 msgstr "MB"
 
-#: src/addon_management.cpp:371
+#: src/addon_management.cpp:381
 msgid "GB"
 msgstr "GB"
 
-#: src/addon_management.cpp:404
+#: src/addon_management.cpp:414
 msgid "addon_type^Campaign"
 msgstr "戰役"
 
-#: src/addon_management.cpp:406
+#: src/addon_management.cpp:416
 msgid "addon_type^Scenario"
 msgstr "任務"
 
-#: src/addon_management.cpp:408
+#: src/addon_management.cpp:418
 msgid "addon_type^MP era"
 msgstr "多人遊戲時代"
 
-#: src/addon_management.cpp:410
+#: src/addon_management.cpp:420
 msgid "addon_type^MP faction"
 msgstr "多人遊戲陣營"
 
-#: src/addon_management.cpp:412
+#: src/addon_management.cpp:422
 msgid "addon_type^MP map-pack"
 msgstr "多人遊戲地圖"
 
-#: src/addon_management.cpp:414
+#: src/addon_management.cpp:424
 msgid "addon_type^MP scenario"
 msgstr "多人遊戲任務"
 
-#: src/addon_management.cpp:416
+#: src/addon_management.cpp:426
 msgid "addon_type^MP campaign"
 msgstr "多人遊戲戰役"
 
-#: src/addon_management.cpp:418
+#: src/addon_management.cpp:428
 msgid "addon_type^Resources"
 msgstr "資源"
 
-#: src/addon_management.cpp:420
+#: src/addon_management.cpp:430
 #, fuzzy
 msgid "addon_type^Other"
 msgstr "多人遊戲時代"
 
-#: src/addon_management.cpp:422
+#: src/addon_management.cpp:432
 msgid "addon_type^(unknown)"
 msgstr "未知"
 
-#: src/addon_management.cpp:452
+#: src/addon_management.cpp:462
 msgid "Dependencies"
 msgstr "需求"
 
-#: src/addon_management.cpp:456
+#: src/addon_management.cpp:466
 #, fuzzy
 msgid ""
 "$addon_title depends upon the following add-on which you have not installed "
@@ -6678,60 +6678,60 @@ msgid_plural ""
 msgstr[0] "這個模組需要以下額外的需求:"
 msgstr[1] "這個模組需要以下額外的需求:"
 
-#: src/addon_management.cpp:459
+#: src/addon_management.cpp:469
 msgid ""
 "Do you still want to download $addon_title|? (You will have to install all "
 "the dependencies in order to play.)"
 msgstr ""
 
-#: src/addon_management.cpp:477 src/addon_management.cpp:549
+#: src/addon_management.cpp:487 src/addon_management.cpp:559
 #: src/multiplayer.cpp:213 src/multiplayer.cpp:268 src/multiplayer_ui.cpp:78
 msgid "Connection timed out"
 msgstr "連接超時"
 
-#: src/addon_management.cpp:480
+#: src/addon_management.cpp:490
 msgid "The server responded with an error: \"$error|\""
 msgstr "伺服器返回一個錯誤： \""
 
-#: src/addon_management.cpp:488
+#: src/addon_management.cpp:498
 msgid "Terms"
 msgstr "條件"
 
-#: src/addon_management.cpp:522
+#: src/addon_management.cpp:532
 msgid "Sending add-on"
 msgstr "發送模組"
 
-#: src/addon_management.cpp:526 src/addon_management.cpp:551
+#: src/addon_management.cpp:536 src/addon_management.cpp:561
 msgid "The server responded with an error: \""
 msgstr "伺服器回應錯誤： \""
 
-#: src/addon_management.cpp:529 src/addon_management.cpp:554
+#: src/addon_management.cpp:539 src/addon_management.cpp:564
 #: src/multiplayer_wait.cpp:403
 msgid "Response"
 msgstr "回應"
 
-#: src/addon_management.cpp:581
+#: src/addon_management.cpp:591
 msgid "Downloading add-on: $addon_title|..."
 msgstr "正在下載模組:$addon_title|..."
 
-#: src/addon_management.cpp:596
+#: src/addon_management.cpp:606
 msgid ""
 "The add-on has an invalid file or directory name and can not be installed."
 msgstr "模組的元件或目錄的名稱錯誤導致無法安裝。"
 
-#: src/addon_management.cpp:645
+#: src/addon_management.cpp:655
 msgid "The add-on '$addon_title|' has been successfully installed."
 msgstr "這個模組已經成功安裝。"
 
-#: src/addon_management.cpp:646
+#: src/addon_management.cpp:656
 msgid "Add-on Installed"
 msgstr "模組已安裝完成"
 
-#: src/addon_management.cpp:704
+#: src/addon_management.cpp:714
 msgid "Outdated add-ons"
 msgstr "舊模組"
 
-#: src/addon_management.cpp:706
+#: src/addon_management.cpp:716
 msgid ""
 "An outdated local add-on has publishing information attached. It will not be "
 "offered for updating."
@@ -6741,167 +6741,167 @@ msgid_plural ""
 msgstr[0] "一個舊模組附加的資訊。此模組將不會在升級。"
 msgstr[1] "一些舊模組附加的資訊。這些模組將不會在升級。"
 
-#: src/addon_management.cpp:715
+#: src/addon_management.cpp:725
 msgid "Could not find any updated add-ons on this server."
 msgstr "無法在這個伺服器找到可以升級的模組。"
 
-#: src/addon_management.cpp:715
+#: src/addon_management.cpp:725
 msgid "No add-ons to update"
 msgstr "沒有要更新的模組"
 
-#: src/addon_management.cpp:729 src/addon_management.cpp:932
+#: src/addon_management.cpp:739 src/addon_management.cpp:942
 #: src/dialogs.cpp:576 src/menu_events.cpp:195 src/menu_events.cpp:841
 msgid "Name"
 msgstr "名稱"
 
-#: src/addon_management.cpp:729
+#: src/addon_management.cpp:739
 msgid "New version"
 msgstr "新版本"
 
-#: src/addon_management.cpp:729
+#: src/addon_management.cpp:739
 msgid "Old version"
 msgstr "舊版本"
 
-#: src/addon_management.cpp:730 src/addon_management.cpp:933
+#: src/addon_management.cpp:740 src/addon_management.cpp:943
 msgid "Author"
 msgstr "作者"
 
-#: src/addon_management.cpp:730 src/addon_management.cpp:933
+#: src/addon_management.cpp:740 src/addon_management.cpp:943
 msgid "Size"
 msgstr "大小"
 
-#: src/addon_management.cpp:784
+#: src/addon_management.cpp:794
 msgid "Update add-ons"
 msgstr "更新模組"
 
-#: src/addon_management.cpp:785
+#: src/addon_management.cpp:795
 msgid "Select an add-on to update:"
 msgstr "選擇要更新的模組:"
 
-#: src/addon_management.cpp:799
+#: src/addon_management.cpp:809
 msgid "Update all"
 msgstr "全部更新"
 
-#: src/addon_management.cpp:856
+#: src/addon_management.cpp:866
 msgid "Update failed"
 msgstr "更新失敗"
 
-#: src/addon_management.cpp:858
+#: src/addon_management.cpp:868
 msgid "The following add-on could not be downloaded or updated successfully:"
 msgid_plural ""
 "The following add-ons could not be downloaded or updated successfully:"
 msgstr[0] "以下模組，無法下載或是已經下載成功："
 msgstr[1] "以下模組，無法下載或是已經下載成功："
 
-#: src/addon_management.cpp:867
+#: src/addon_management.cpp:877
 msgid "Update succeeded"
 msgstr "更新成功"
 
-#: src/addon_management.cpp:868
+#: src/addon_management.cpp:878
 msgid "Add-on updated successfully."
 msgstr "模組已更新成功。"
 
-#: src/addon_management.cpp:869
+#: src/addon_management.cpp:879
 msgid "All add-ons updated successfully."
 msgstr "全部的模組已更新成功。"
 
-#: src/addon_management.cpp:893
+#: src/addon_management.cpp:903
 msgid "Connecting to add-ons server..."
 msgstr "正在連接到伺服器..."
 
-#: src/addon_management.cpp:896
+#: src/addon_management.cpp:906
 msgid "Could not connect to host."
 msgstr "無法連接到主機。"
 
-#: src/addon_management.cpp:904
+#: src/addon_management.cpp:914
 msgid "Requesting list of add-ons"
 msgstr "搜尋模組列表"
 
-#: src/addon_management.cpp:916
+#: src/addon_management.cpp:926
 msgid "An error occurred while communicating with the server."
 msgstr "與伺服器通訊錯誤。"
 
-#: src/addon_management.cpp:932 src/titlescreen.cpp:342
+#: src/addon_management.cpp:942 src/titlescreen.cpp:342
 msgid "Version"
 msgstr "版本"
 
-#: src/addon_management.cpp:933
+#: src/addon_management.cpp:943
 msgid "Downloads"
 msgstr "下載數"
 
-#: src/addon_management.cpp:933 src/help.cpp:1458 src/menu_events.cpp:194
+#: src/addon_management.cpp:943 src/help.cpp:1458 src/menu_events.cpp:194
 #: src/menu_events.cpp:840 src/menu_events.cpp:1428
 msgid "Type"
 msgstr "類型"
 
-#: src/addon_management.cpp:999
+#: src/addon_management.cpp:1009
 msgid "Publish add-on: "
 msgstr "發布模組： "
 
-#: src/addon_management.cpp:1005
+#: src/addon_management.cpp:1015
 msgid "Delete add-on: "
 msgstr "移除模組： "
 
-#: src/addon_management.cpp:1011
+#: src/addon_management.cpp:1021
 msgid "There are no add-ons available for download from this server."
 msgstr "這個伺服器上無可供下載的模組。"
 
-#: src/addon_management.cpp:1024
+#: src/addon_management.cpp:1034
 msgid "Get add-ons"
 msgstr "取得模組"
 
-#: src/addon_management.cpp:1025
+#: src/addon_management.cpp:1035
 msgid "Choose the add-on to download."
 msgstr "選擇要下載的模組。"
 
-#: src/addon_management.cpp:1037 src/dialogs.cpp:601 src/menu_events.cpp:900
+#: src/addon_management.cpp:1047 src/dialogs.cpp:601 src/menu_events.cpp:900
 #: src/menu_events.cpp:1464
 msgid "Filter: "
 msgstr "過濾： "
 
-#: src/addon_management.cpp:1074
+#: src/addon_management.cpp:1084
 msgid "Network communication error."
 msgstr "網絡通訊錯誤。"
 
-#: src/addon_management.cpp:1077
+#: src/addon_management.cpp:1087
 msgid "Remote host disconnected."
 msgstr "遠程主機關閉。"
 
-#: src/addon_management.cpp:1080
+#: src/addon_management.cpp:1090
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
 msgstr "安裝這個模組時發生錯誤。"
 
-#: src/addon_management.cpp:1098
+#: src/addon_management.cpp:1108
 msgid "You have no add-ons installed."
 msgstr "您没有安裝任何模組。"
 
-#: src/addon_management.cpp:1110
+#: src/addon_management.cpp:1120
 msgid "Choose the add-on to remove."
 msgstr "選擇要移除的模組。"
 
-#: src/addon_management.cpp:1110
+#: src/addon_management.cpp:1120
 msgid "Uninstall add-ons"
 msgstr "移除模組"
 
-#: src/addon_management.cpp:1122
+#: src/addon_management.cpp:1132
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr "您確定要移除模組 '$addon|' ?"
 
-#: src/addon_management.cpp:1127 src/multiplayer.cpp:225
+#: src/addon_management.cpp:1137 src/multiplayer.cpp:225
 msgid "Confirm"
 msgstr "確認"
 
-#: src/addon_management.cpp:1139
+#: src/addon_management.cpp:1149
 msgid "Add-on '$addon|' deleted."
 msgstr "模組'$addon|'已移除"
 
-#: src/addon_management.cpp:1144
+#: src/addon_management.cpp:1154
 msgid "Add-on deleted"
 msgstr "模組已移除"
 
-#: src/addon_management.cpp:1152
+#: src/addon_management.cpp:1162
 msgid "Add-on could not be deleted properly:"
 msgstr "無法移除模組:"
 
@@ -7105,8 +7105,8 @@ msgstr "移動： "
 msgid "The Battle for Wesnoth"
 msgstr "Battle for Wesnoth"
 
-#: src/game.cpp:997 src/game.cpp:1005 src/playsingle_controller.cpp:496
-#: src/playsingle_controller.cpp:551
+#: src/game.cpp:997 src/game.cpp:1005 src/playsingle_controller.cpp:495
+#: src/playsingle_controller.cpp:550
 msgid "The file you have tried to load is corrupt"
 msgstr "您想載入的文件已損壞"
 
@@ -7598,11 +7598,11 @@ msgstr "戰場黑幕"
 msgid "none"
 msgstr "無"
 
-#: src/map.cpp:163
+#: src/map.cpp:162
 msgid "A map without a header is not supported"
 msgstr "不支援不含標題的地圖"
 
-#: src/mapgen.cpp:739
+#: src/mapgen.cpp:740
 msgid "Random maps with an odd width aren't supported."
 msgstr "不支援寬度為奇數的隨機地圖"
 
@@ -8894,34 +8894,34 @@ msgid_plural ""
 msgstr[0] "您將以 $gold 金子和預定的最小起始資金中較高那個開始下一幕。"
 msgstr[1] "你將以 $gold 金子和預定的最小起始資金中較高那個開始下一幕。"
 
-#: src/playsingle_controller.cpp:421
+#: src/playsingle_controller.cpp:420
 msgid "Game Over"
 msgstr "遊戲結束"
 
-#: src/playsingle_controller.cpp:422
+#: src/playsingle_controller.cpp:421
 msgid "The game is over."
 msgstr "本遊戲結束。"
 
-#: src/playsingle_controller.cpp:507
+#: src/playsingle_controller.cpp:506
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game\n"
 "cannot continue. Do you want to save the game?"
 msgstr "網絡連接已斷開，遊戲無法繼續進行。您想儲存遊戲嗎？"
 
-#: src/playsingle_controller.cpp:673
+#: src/playsingle_controller.cpp:672
 msgid "It is now $name|'s turn"
 msgstr "輪到$name|了"
 
-#: src/playsingle_controller.cpp:905
+#: src/playsingle_controller.cpp:904
 msgid "Scenario Report"
 msgstr "任務報告"
 
-#: src/playsingle_controller.cpp:907
+#: src/playsingle_controller.cpp:906
 msgid "Victory"
 msgstr "勝利"
 
-#: src/playsingle_controller.cpp:908
+#: src/playsingle_controller.cpp:907
 msgid "You have emerged victorious!"
 msgstr "您贏得了勝利！"
 
@@ -9260,8 +9260,8 @@ msgstr "幫助韋諾"
 msgid "Help Wesnoth by sending us information"
 msgstr "回報資訊，幫助韋諾"
 
-#: src/tod_manager.cpp:102 src/tod_manager.cpp:134 src/tod_manager.cpp:238
-#: src/tod_manager.cpp:251 src/tod_manager.cpp:301
+#: src/tod_manager.cpp:101 src/tod_manager.cpp:133 src/tod_manager.cpp:237
+#: src/tod_manager.cpp:250 src/tod_manager.cpp:300
 msgid "No time of day has been defined."
 msgstr "没有定制時間."
 

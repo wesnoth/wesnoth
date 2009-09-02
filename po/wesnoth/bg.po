@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-30 19:20+0200\n"
+"POT-Creation-Date: 2009-09-03 00:21+0200\n"
 "PO-Revision-Date: 2007-08-21 17:39+0300\n"
 "Last-Translator: Denica <dmincheva2002@gmail.com>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -6614,73 +6614,73 @@ msgstr "Забелязани единици! ($friendphrase, $enemyphrase)"
 msgid "(press $hotkey to keep moving)"
 msgstr "(натиснете $hotkey , за да продължите)"
 
-#: src/addon_management.cpp:362
+#: src/addon_management.cpp:372
 msgid "B"
 msgstr "Б"
 
-#: src/addon_management.cpp:365 src/dialogs.cpp:1056
+#: src/addon_management.cpp:375 src/dialogs.cpp:1056
 msgid "KB"
 msgstr "КБ"
 
-#: src/addon_management.cpp:368
+#: src/addon_management.cpp:378
 msgid "MB"
 msgstr "МБ"
 
-#: src/addon_management.cpp:371
+#: src/addon_management.cpp:381
 #, fuzzy
 msgid "GB"
 msgstr "Б"
 
-#: src/addon_management.cpp:404
+#: src/addon_management.cpp:414
 msgid "addon_type^Campaign"
 msgstr ""
 
-#: src/addon_management.cpp:406
+#: src/addon_management.cpp:416
 msgid "addon_type^Scenario"
 msgstr ""
 
-#: src/addon_management.cpp:408
+#: src/addon_management.cpp:418
 #, fuzzy
 msgid "addon_type^MP era"
 msgstr "Отдалечена мисия"
 
-#: src/addon_management.cpp:410
+#: src/addon_management.cpp:420
 #, fuzzy
 msgid "addon_type^MP faction"
 msgstr "Отдалечена мисия"
 
-#: src/addon_management.cpp:412
+#: src/addon_management.cpp:422
 #, fuzzy
 msgid "addon_type^MP map-pack"
 msgstr "Отдалечена мисия"
 
-#: src/addon_management.cpp:414
+#: src/addon_management.cpp:424
 #, fuzzy
 msgid "addon_type^MP scenario"
 msgstr "Отдалечена мисия"
 
-#: src/addon_management.cpp:416
+#: src/addon_management.cpp:426
 msgid "addon_type^MP campaign"
 msgstr ""
 
-#: src/addon_management.cpp:418
+#: src/addon_management.cpp:428
 msgid "addon_type^Resources"
 msgstr ""
 
-#: src/addon_management.cpp:420
+#: src/addon_management.cpp:430
 #, fuzzy
 msgid "addon_type^Other"
 msgstr "Отдалечена мисия"
 
-#: src/addon_management.cpp:422
+#: src/addon_management.cpp:432
 msgid "addon_type^(unknown)"
 msgstr ""
 
-#: src/addon_management.cpp:452
+#: src/addon_management.cpp:462
 msgid "Dependencies"
 msgstr "Зависимости"
 
-#: src/addon_management.cpp:456
+#: src/addon_management.cpp:466
 #, fuzzy
 msgid ""
 "$addon_title depends upon the following add-on which you have not installed "
@@ -6691,64 +6691,64 @@ msgid_plural ""
 msgstr[0] "Допълнението има следните зависимости:"
 msgstr[1] "Допълнението има следните зависимости:"
 
-#: src/addon_management.cpp:459
+#: src/addon_management.cpp:469
 msgid ""
 "Do you still want to download $addon_title|? (You will have to install all "
 "the dependencies in order to play.)"
 msgstr ""
 
-#: src/addon_management.cpp:477 src/addon_management.cpp:549
+#: src/addon_management.cpp:487 src/addon_management.cpp:559
 #: src/multiplayer.cpp:213 src/multiplayer.cpp:268 src/multiplayer_ui.cpp:78
 msgid "Connection timed out"
 msgstr "Времето за връзката е просрочено"
 
-#: src/addon_management.cpp:480
+#: src/addon_management.cpp:490
 #, fuzzy
 msgid "The server responded with an error: \"$error|\""
 msgstr "Сървърът отвърна с грешка: \""
 
-#: src/addon_management.cpp:488
+#: src/addon_management.cpp:498
 msgid "Terms"
 msgstr "Условия"
 
-#: src/addon_management.cpp:522
+#: src/addon_management.cpp:532
 msgid "Sending add-on"
 msgstr "Пращане на допълнението"
 
-#: src/addon_management.cpp:526 src/addon_management.cpp:551
+#: src/addon_management.cpp:536 src/addon_management.cpp:561
 msgid "The server responded with an error: \""
 msgstr "Сървърът отвърна с грешка: \""
 
-#: src/addon_management.cpp:529 src/addon_management.cpp:554
+#: src/addon_management.cpp:539 src/addon_management.cpp:564
 #: src/multiplayer_wait.cpp:403
 msgid "Response"
 msgstr "Отговор"
 
-#: src/addon_management.cpp:581
+#: src/addon_management.cpp:591
 #, fuzzy
 msgid "Downloading add-on: $addon_title|..."
 msgstr "Сваляне на допълнение..."
 
-#: src/addon_management.cpp:596
+#: src/addon_management.cpp:606
 msgid ""
 "The add-on has an invalid file or directory name and can not be installed."
 msgstr ""
 
-#: src/addon_management.cpp:645
+#: src/addon_management.cpp:655
 #, fuzzy
 msgid "The add-on '$addon_title|' has been successfully installed."
 msgstr "Допълнението бе инсталирано."
 
-#: src/addon_management.cpp:646
+#: src/addon_management.cpp:656
 msgid "Add-on Installed"
 msgstr "Инсталирано допълнение"
 
-#: src/addon_management.cpp:704
+#: src/addon_management.cpp:714
 #, fuzzy
 msgid "Outdated add-ons"
 msgstr "Пращане на допълнението"
 
-#: src/addon_management.cpp:706
+#: src/addon_management.cpp:716
 msgid ""
 "An outdated local add-on has publishing information attached. It will not be "
 "offered for updating."
@@ -6758,57 +6758,57 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/addon_management.cpp:715
+#: src/addon_management.cpp:725
 msgid "Could not find any updated add-ons on this server."
 msgstr ""
 
-#: src/addon_management.cpp:715
+#: src/addon_management.cpp:725
 msgid "No add-ons to update"
 msgstr ""
 
-#: src/addon_management.cpp:729 src/addon_management.cpp:932
+#: src/addon_management.cpp:739 src/addon_management.cpp:942
 #: src/dialogs.cpp:576 src/menu_events.cpp:195 src/menu_events.cpp:841
 msgid "Name"
 msgstr "Име"
 
-#: src/addon_management.cpp:729
+#: src/addon_management.cpp:739
 #, fuzzy
 msgid "New version"
 msgstr "Версия"
 
-#: src/addon_management.cpp:729
+#: src/addon_management.cpp:739
 #, fuzzy
 msgid "Old version"
 msgstr "Версия"
 
-#: src/addon_management.cpp:730 src/addon_management.cpp:933
+#: src/addon_management.cpp:740 src/addon_management.cpp:943
 msgid "Author"
 msgstr "Автор"
 
-#: src/addon_management.cpp:730 src/addon_management.cpp:933
+#: src/addon_management.cpp:740 src/addon_management.cpp:943
 msgid "Size"
 msgstr "Размер"
 
-#: src/addon_management.cpp:784
+#: src/addon_management.cpp:794
 #, fuzzy
 msgid "Update add-ons"
 msgstr "Пращане на допълнението"
 
-#: src/addon_management.cpp:785
+#: src/addon_management.cpp:795
 msgid "Select an add-on to update:"
 msgstr ""
 
-#: src/addon_management.cpp:799
+#: src/addon_management.cpp:809
 #, fuzzy
 msgid "Update all"
 msgstr "Пещерна стена"
 
-#: src/addon_management.cpp:856
+#: src/addon_management.cpp:866
 #, fuzzy
 msgid "Update failed"
 msgstr "Пещерна стена"
 
-#: src/addon_management.cpp:858
+#: src/addon_management.cpp:868
 #, fuzzy
 msgid "The following add-on could not be downloaded or updated successfully:"
 msgid_plural ""
@@ -6816,87 +6816,87 @@ msgid_plural ""
 msgstr[0] "Следните допълнителни кампании имаха грешки и не бяха заредени:"
 msgstr[1] "Следните допълнителни кампании имаха грешки и не бяха заредени:"
 
-#: src/addon_management.cpp:867
+#: src/addon_management.cpp:877
 #, fuzzy
 msgid "Update succeeded"
 msgstr "Свали допълнения"
 
-#: src/addon_management.cpp:868
+#: src/addon_management.cpp:878
 msgid "Add-on updated successfully."
 msgstr ""
 
-#: src/addon_management.cpp:869
+#: src/addon_management.cpp:879
 msgid "All add-ons updated successfully."
 msgstr ""
 
-#: src/addon_management.cpp:893
+#: src/addon_management.cpp:903
 #, fuzzy
 msgid "Connecting to add-ons server..."
 msgstr "Свързване към сървър..."
 
-#: src/addon_management.cpp:896
+#: src/addon_management.cpp:906
 msgid "Could not connect to host."
 msgstr "Свързването към сървъра бе неуспешно."
 
-#: src/addon_management.cpp:904
+#: src/addon_management.cpp:914
 #, fuzzy
 msgid "Requesting list of add-ons"
 msgstr "Запитване за списък с допълнения"
 
-#: src/addon_management.cpp:916
+#: src/addon_management.cpp:926
 #, fuzzy
 msgid "An error occurred while communicating with the server."
 msgstr "Грешка при комуникацията със сървъра."
 
-#: src/addon_management.cpp:932 src/titlescreen.cpp:342
+#: src/addon_management.cpp:942 src/titlescreen.cpp:342
 msgid "Version"
 msgstr "Версия"
 
-#: src/addon_management.cpp:933
+#: src/addon_management.cpp:943
 msgid "Downloads"
 msgstr "Сваляния"
 
-#: src/addon_management.cpp:933 src/help.cpp:1458 src/menu_events.cpp:194
+#: src/addon_management.cpp:943 src/help.cpp:1458 src/menu_events.cpp:194
 #: src/menu_events.cpp:840 src/menu_events.cpp:1428
 msgid "Type"
 msgstr "Тип"
 
-#: src/addon_management.cpp:999
+#: src/addon_management.cpp:1009
 msgid "Publish add-on: "
 msgstr "Публикувай допълнение: "
 
-#: src/addon_management.cpp:1005
+#: src/addon_management.cpp:1015
 msgid "Delete add-on: "
 msgstr "Изтрий допълнение: "
 
-#: src/addon_management.cpp:1011
+#: src/addon_management.cpp:1021
 msgid "There are no add-ons available for download from this server."
 msgstr "Няма допълнения за сваляне на този сървър."
 
-#: src/addon_management.cpp:1024
+#: src/addon_management.cpp:1034
 #, fuzzy
 msgid "Get add-ons"
 msgstr "Свали допълнения"
 
-#: src/addon_management.cpp:1025
+#: src/addon_management.cpp:1035
 msgid "Choose the add-on to download."
 msgstr "Избери допълнение за сваляне."
 
-#: src/addon_management.cpp:1037 src/dialogs.cpp:601 src/menu_events.cpp:900
+#: src/addon_management.cpp:1047 src/dialogs.cpp:601 src/menu_events.cpp:900
 #: src/menu_events.cpp:1464
 #, fuzzy
 msgid "Filter: "
 msgstr "Умения: "
 
-#: src/addon_management.cpp:1074
+#: src/addon_management.cpp:1084
 msgid "Network communication error."
 msgstr "Грешка при мрежовата комуникация."
 
-#: src/addon_management.cpp:1077
+#: src/addon_management.cpp:1087
 msgid "Remote host disconnected."
 msgstr "Връзката с отдалечения сървър е прекъсната."
 
-#: src/addon_management.cpp:1080
+#: src/addon_management.cpp:1090
 #, fuzzy
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
@@ -6905,38 +6905,38 @@ msgstr ""
 "Възникна проблем при създаването на файловете, необходими за инсталирането "
 "на кампанията."
 
-#: src/addon_management.cpp:1098
+#: src/addon_management.cpp:1108
 #, fuzzy
 msgid "You have no add-ons installed."
 msgstr "Допълнения не бяха инсталирани."
 
-#: src/addon_management.cpp:1110
+#: src/addon_management.cpp:1120
 msgid "Choose the add-on to remove."
 msgstr "Избери допълнение за сваляне."
 
-#: src/addon_management.cpp:1110
+#: src/addon_management.cpp:1120
 #, fuzzy
 msgid "Uninstall add-ons"
 msgstr "Пращане на допълнението"
 
-#: src/addon_management.cpp:1122
+#: src/addon_management.cpp:1132
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr ""
 
-#: src/addon_management.cpp:1127 src/multiplayer.cpp:225
+#: src/addon_management.cpp:1137 src/multiplayer.cpp:225
 msgid "Confirm"
 msgstr "Потвърди"
 
-#: src/addon_management.cpp:1139
+#: src/addon_management.cpp:1149
 #, fuzzy
 msgid "Add-on '$addon|' deleted."
 msgstr "Допълнение изтрито"
 
-#: src/addon_management.cpp:1144
+#: src/addon_management.cpp:1154
 msgid "Add-on deleted"
 msgstr "Допълнение изтрито"
 
-#: src/addon_management.cpp:1152
+#: src/addon_management.cpp:1162
 #, fuzzy
 msgid "Add-on could not be deleted properly:"
 msgstr "Допълнението не беше изтрито - липсва файл."
@@ -7144,8 +7144,8 @@ msgstr "Ходове: "
 msgid "The Battle for Wesnoth"
 msgstr "Битката за Уеснот"
 
-#: src/game.cpp:997 src/game.cpp:1005 src/playsingle_controller.cpp:496
-#: src/playsingle_controller.cpp:551
+#: src/game.cpp:997 src/game.cpp:1005 src/playsingle_controller.cpp:495
+#: src/playsingle_controller.cpp:550
 msgid "The file you have tried to load is corrupt"
 msgstr "Файлът е повреден"
 
@@ -7672,11 +7672,11 @@ msgstr "Було"
 msgid "none"
 msgstr "няма"
 
-#: src/map.cpp:163
+#: src/map.cpp:162
 msgid "A map without a header is not supported"
 msgstr ""
 
-#: src/mapgen.cpp:739
+#: src/mapgen.cpp:740
 msgid "Random maps with an odd width aren't supported."
 msgstr ""
 
@@ -9030,15 +9030,15 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/playsingle_controller.cpp:421
+#: src/playsingle_controller.cpp:420
 msgid "Game Over"
 msgstr "Край на Играта"
 
-#: src/playsingle_controller.cpp:422
+#: src/playsingle_controller.cpp:421
 msgid "The game is over."
 msgstr "Играта приключи."
 
-#: src/playsingle_controller.cpp:507
+#: src/playsingle_controller.cpp:506
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game\n"
@@ -9046,20 +9046,20 @@ msgid ""
 msgstr ""
 "Мрежата бе прекъсната и играта не може да продължи. Искате ли да я запазите?"
 
-#: src/playsingle_controller.cpp:673
+#: src/playsingle_controller.cpp:672
 #, fuzzy
 msgid "It is now $name|'s turn"
 msgstr "Вие сте на ход"
 
-#: src/playsingle_controller.cpp:905
+#: src/playsingle_controller.cpp:904
 msgid "Scenario Report"
 msgstr "Доклад от мисията"
 
-#: src/playsingle_controller.cpp:907
+#: src/playsingle_controller.cpp:906
 msgid "Victory"
 msgstr "Победа"
 
-#: src/playsingle_controller.cpp:908
+#: src/playsingle_controller.cpp:907
 msgid "You have emerged victorious!"
 msgstr "Вие сте победител!"
 
@@ -9418,8 +9418,8 @@ msgstr "Битката за Уеснот"
 msgid "Help Wesnoth by sending us information"
 msgstr "Помогнете на Уеснот, като ни пращате информация"
 
-#: src/tod_manager.cpp:102 src/tod_manager.cpp:134 src/tod_manager.cpp:238
-#: src/tod_manager.cpp:251 src/tod_manager.cpp:301
+#: src/tod_manager.cpp:101 src/tod_manager.cpp:133 src/tod_manager.cpp:237
+#: src/tod_manager.cpp:250 src/tod_manager.cpp:300
 #, fuzzy
 msgid "No time of day has been defined."
 msgstr "Произволно време на денонощието в началото"

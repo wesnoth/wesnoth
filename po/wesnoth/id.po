@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-30 19:20+0200\n"
+"POT-Creation-Date: 2009-09-03 00:21+0200\n"
 "PO-Revision-Date: 2009-04-27 14:31+0530\n"
 "Last-Translator: Nicky IW <inkraiswitras@yahoo.com>\n"
 "Language-Team: none\n"
@@ -7375,68 +7375,68 @@ msgstr "Unit terlihat! ($friendphrase, $enemyphrase)"
 msgid "(press $hotkey to keep moving)"
 msgstr "(tekan $hotkey untuk pindah terus)"
 
-#: src/addon_management.cpp:362
+#: src/addon_management.cpp:372
 msgid "B"
 msgstr "B"
 
-#: src/addon_management.cpp:365 src/dialogs.cpp:1056
+#: src/addon_management.cpp:375 src/dialogs.cpp:1056
 msgid "KB"
 msgstr "KB"
 
-#: src/addon_management.cpp:368
+#: src/addon_management.cpp:378
 msgid "MB"
 msgstr "MB"
 
-#: src/addon_management.cpp:371
+#: src/addon_management.cpp:381
 msgid "GB"
 msgstr "GB"
 
-#: src/addon_management.cpp:404
+#: src/addon_management.cpp:414
 msgid "addon_type^Campaign"
 msgstr "Kampanye"
 
-#: src/addon_management.cpp:406
+#: src/addon_management.cpp:416
 msgid "addon_type^Scenario"
 msgstr "Skenario"
 
-#: src/addon_management.cpp:408
+#: src/addon_management.cpp:418
 msgid "addon_type^MP era"
 msgstr "Era MP"
 
-#: src/addon_management.cpp:410
+#: src/addon_management.cpp:420
 msgid "addon_type^MP faction"
 msgstr "Faction MP"
 
-#: src/addon_management.cpp:412
+#: src/addon_management.cpp:422
 msgid "addon_type^MP map-pack"
 msgstr "bundel peta MP"
 
-#: src/addon_management.cpp:414
+#: src/addon_management.cpp:424
 msgid "addon_type^MP scenario"
 msgstr "skenario MP"
 
-#: src/addon_management.cpp:416
+#: src/addon_management.cpp:426
 msgid "addon_type^MP campaign"
 msgstr "Kampanye MP"
 
-#: src/addon_management.cpp:418
+#: src/addon_management.cpp:428
 msgid "addon_type^Resources"
 msgstr "Resource"
 
-#: src/addon_management.cpp:420
+#: src/addon_management.cpp:430
 #, fuzzy
 msgid "addon_type^Other"
 msgstr "Era MP"
 
-#: src/addon_management.cpp:422
+#: src/addon_management.cpp:432
 msgid "addon_type^(unknown)"
 msgstr "(tidak diketahui)"
 
-#: src/addon_management.cpp:452
+#: src/addon_management.cpp:462
 msgid "Dependencies"
 msgstr "Ketergantungan"
 
-#: src/addon_management.cpp:456
+#: src/addon_management.cpp:466
 #, fuzzy
 msgid ""
 "$addon_title depends upon the following add-on which you have not installed "
@@ -7448,62 +7448,62 @@ msgstr[0] ""
 "1 Add-on ini tergantung dengan add-on berikut yang anda belum instal: Add-on "
 "ini tergantung dengan beberapa add-on berikut yang anda belum instal:"
 
-#: src/addon_management.cpp:459
+#: src/addon_management.cpp:469
 msgid ""
 "Do you still want to download $addon_title|? (You will have to install all "
 "the dependencies in order to play.)"
 msgstr ""
 
-#: src/addon_management.cpp:477 src/addon_management.cpp:549
+#: src/addon_management.cpp:487 src/addon_management.cpp:559
 #: src/multiplayer.cpp:213 src/multiplayer.cpp:268 src/multiplayer_ui.cpp:78
 msgid "Connection timed out"
 msgstr "Koneksi timed out."
 
-#: src/addon_management.cpp:480
+#: src/addon_management.cpp:490
 msgid "The server responded with an error: \"$error|\""
 msgstr "Server menjawab dengan error: \"$error|\""
 
-#: src/addon_management.cpp:488
+#: src/addon_management.cpp:498
 msgid "Terms"
 msgstr "Istilah"
 
-#: src/addon_management.cpp:522
+#: src/addon_management.cpp:532
 msgid "Sending add-on"
 msgstr "Mengirim add-on"
 
-#: src/addon_management.cpp:526 src/addon_management.cpp:551
+#: src/addon_management.cpp:536 src/addon_management.cpp:561
 msgid "The server responded with an error: \""
 msgstr "Server menjawab dengan error: \""
 
-#: src/addon_management.cpp:529 src/addon_management.cpp:554
+#: src/addon_management.cpp:539 src/addon_management.cpp:564
 #: src/multiplayer_wait.cpp:403
 msgid "Response"
 msgstr "Jawaban"
 
-#: src/addon_management.cpp:581
+#: src/addon_management.cpp:591
 msgid "Downloading add-on: $addon_title|..."
 msgstr "Sedang download add-on: $addon_title|..."
 
-#: src/addon_management.cpp:596
+#: src/addon_management.cpp:606
 msgid ""
 "The add-on has an invalid file or directory name and can not be installed."
 msgstr ""
 "Add-on ini memiliki file atau nama direktori yang tidak berlaku dan tidak "
 "bisa diinstal."
 
-#: src/addon_management.cpp:645
+#: src/addon_management.cpp:655
 msgid "The add-on '$addon_title|' has been successfully installed."
 msgstr "Add-on '$addon_title|' sudah diinstal."
 
-#: src/addon_management.cpp:646
+#: src/addon_management.cpp:656
 msgid "Add-on Installed"
 msgstr "Tambahan sudah diinstal"
 
-#: src/addon_management.cpp:704
+#: src/addon_management.cpp:714
 msgid "Outdated add-ons"
 msgstr "Tambahan kuno"
 
-#: src/addon_management.cpp:706
+#: src/addon_management.cpp:716
 msgid ""
 "An outdated local add-on has publishing information attached. It will not be "
 "offered for updating."
@@ -7515,52 +7515,52 @@ msgstr[0] ""
 "tidak akan ditawarkan untuk diupdate. Beberapa add-on lokal kuno memiliki "
 "informasi publikasi tercantum. Mereka tidak akan ditawarkan untuk diupdate."
 
-#: src/addon_management.cpp:715
+#: src/addon_management.cpp:725
 msgid "Could not find any updated add-ons on this server."
 msgstr "Tidak bisa menemukan tambahan apapun di server ini."
 
-#: src/addon_management.cpp:715
+#: src/addon_management.cpp:725
 msgid "No add-ons to update"
 msgstr "Tidak ada add-on untuk diupdate."
 
-#: src/addon_management.cpp:729 src/addon_management.cpp:932
+#: src/addon_management.cpp:739 src/addon_management.cpp:942
 #: src/dialogs.cpp:576 src/menu_events.cpp:195 src/menu_events.cpp:841
 msgid "Name"
 msgstr "Nama"
 
-#: src/addon_management.cpp:729
+#: src/addon_management.cpp:739
 msgid "New version"
 msgstr "Versi baru"
 
-#: src/addon_management.cpp:729
+#: src/addon_management.cpp:739
 msgid "Old version"
 msgstr "Versi lama"
 
-#: src/addon_management.cpp:730 src/addon_management.cpp:933
+#: src/addon_management.cpp:740 src/addon_management.cpp:943
 msgid "Author"
 msgstr "Pencipta"
 
-#: src/addon_management.cpp:730 src/addon_management.cpp:933
+#: src/addon_management.cpp:740 src/addon_management.cpp:943
 msgid "Size"
 msgstr "Size"
 
-#: src/addon_management.cpp:784
+#: src/addon_management.cpp:794
 msgid "Update add-ons"
 msgstr "Update tambahan"
 
-#: src/addon_management.cpp:785
+#: src/addon_management.cpp:795
 msgid "Select an add-on to update:"
 msgstr "Pilih tambahan untuk diupdate:"
 
-#: src/addon_management.cpp:799
+#: src/addon_management.cpp:809
 msgid "Update all"
 msgstr "Update semua"
 
-#: src/addon_management.cpp:856
+#: src/addon_management.cpp:866
 msgid "Update failed"
 msgstr "Update gagal"
 
-#: src/addon_management.cpp:858
+#: src/addon_management.cpp:868
 msgid "The following add-on could not be downloaded or updated successfully:"
 msgid_plural ""
 "The following add-ons could not be downloaded or updated successfully:"
@@ -7568,81 +7568,81 @@ msgstr[0] ""
 "1 Add-on berikut tidak bisa didownload atau diupdate dengan sukses: Semua "
 "add-on berikut tidak bisa didownload atau diupdate dengan sukses:"
 
-#: src/addon_management.cpp:867
+#: src/addon_management.cpp:877
 msgid "Update succeeded"
 msgstr "Update sukses"
 
-#: src/addon_management.cpp:868
+#: src/addon_management.cpp:878
 msgid "Add-on updated successfully."
 msgstr "Tambahan sudah diupdate dengan sukses."
 
-#: src/addon_management.cpp:869
+#: src/addon_management.cpp:879
 msgid "All add-ons updated successfully."
 msgstr "Semua tambahan sudah diupdate dengan sukses."
 
-#: src/addon_management.cpp:893
+#: src/addon_management.cpp:903
 msgid "Connecting to add-ons server..."
 msgstr "Menyambungkan ke server tambahan..."
 
-#: src/addon_management.cpp:896
+#: src/addon_management.cpp:906
 msgid "Could not connect to host."
 msgstr "Tidak bisa bersambung ke host."
 
-#: src/addon_management.cpp:904
+#: src/addon_management.cpp:914
 msgid "Requesting list of add-ons"
 msgstr "Meminta daftar tambahan"
 
-#: src/addon_management.cpp:916
+#: src/addon_management.cpp:926
 msgid "An error occurred while communicating with the server."
 msgstr "Sebuah error terjadi ketika berkomunikasi dengan server."
 
-#: src/addon_management.cpp:932 src/titlescreen.cpp:342
+#: src/addon_management.cpp:942 src/titlescreen.cpp:342
 msgid "Version"
 msgstr "Versi"
 
-#: src/addon_management.cpp:933
+#: src/addon_management.cpp:943
 msgid "Downloads"
 msgstr "Jumlah Download"
 
-#: src/addon_management.cpp:933 src/help.cpp:1458 src/menu_events.cpp:194
+#: src/addon_management.cpp:943 src/help.cpp:1458 src/menu_events.cpp:194
 #: src/menu_events.cpp:840 src/menu_events.cpp:1428
 msgid "Type"
 msgstr "Tipe"
 
-#: src/addon_management.cpp:999
+#: src/addon_management.cpp:1009
 msgid "Publish add-on: "
 msgstr "Terbitkan tambahan:"
 
-#: src/addon_management.cpp:1005
+#: src/addon_management.cpp:1015
 msgid "Delete add-on: "
 msgstr "Hapus tambahan:"
 
-#: src/addon_management.cpp:1011
+#: src/addon_management.cpp:1021
 msgid "There are no add-ons available for download from this server."
 msgstr "Tidak ada tambahan tersedia untuk didownload dari server ini."
 
-#: src/addon_management.cpp:1024
+#: src/addon_management.cpp:1034
 msgid "Get add-ons"
 msgstr "Dapatkan tambahan."
 
-#: src/addon_management.cpp:1025
+#: src/addon_management.cpp:1035
 msgid "Choose the add-on to download."
 msgstr "Pilih tambahan untuk didownload."
 
-#: src/addon_management.cpp:1037 src/dialogs.cpp:601 src/menu_events.cpp:900
+#: src/addon_management.cpp:1047 src/dialogs.cpp:601 src/menu_events.cpp:900
 #: src/menu_events.cpp:1464
 msgid "Filter: "
 msgstr "Filter:"
 
-#: src/addon_management.cpp:1074
+#: src/addon_management.cpp:1084
 msgid "Network communication error."
 msgstr "Error komunikasi jaringan."
 
-#: src/addon_management.cpp:1077
+#: src/addon_management.cpp:1087
 msgid "Remote host disconnected."
 msgstr "Remote host terputus hubungan."
 
-#: src/addon_management.cpp:1080
+#: src/addon_management.cpp:1090
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
@@ -7650,35 +7650,35 @@ msgstr ""
 "Sebuah masalah terjadi ketika mencoba menciptakan file yang diperlukan untuk "
 "menginstal tambahan ini."
 
-#: src/addon_management.cpp:1098
+#: src/addon_management.cpp:1108
 msgid "You have no add-ons installed."
 msgstr "Anda tidak memiliki tambahan terinstal."
 
-#: src/addon_management.cpp:1110
+#: src/addon_management.cpp:1120
 msgid "Choose the add-on to remove."
 msgstr "Pilih tambahan yang mau dirubah."
 
-#: src/addon_management.cpp:1110
+#: src/addon_management.cpp:1120
 msgid "Uninstall add-ons"
 msgstr "Ubah tambahan"
 
-#: src/addon_management.cpp:1122
+#: src/addon_management.cpp:1132
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr "Apakah anda yakin anda mau menghapus add-on '$addon|'?"
 
-#: src/addon_management.cpp:1127 src/multiplayer.cpp:225
+#: src/addon_management.cpp:1137 src/multiplayer.cpp:225
 msgid "Confirm"
 msgstr "Tegaskan"
 
-#: src/addon_management.cpp:1139
+#: src/addon_management.cpp:1149
 msgid "Add-on '$addon|' deleted."
 msgstr "Add-on '$addon|' sudah dihapus."
 
-#: src/addon_management.cpp:1144
+#: src/addon_management.cpp:1154
 msgid "Add-on deleted"
 msgstr "Tambahan sudah dihapus"
 
-#: src/addon_management.cpp:1152
+#: src/addon_management.cpp:1162
 msgid "Add-on could not be deleted properly:"
 msgstr "Tambahan tidak bisa dihapus dengan benar:"
 
@@ -7884,8 +7884,8 @@ msgstr "Gerakan:"
 msgid "The Battle for Wesnoth"
 msgstr "Peperangan untuk Wesnoth"
 
-#: src/game.cpp:997 src/game.cpp:1005 src/playsingle_controller.cpp:496
-#: src/playsingle_controller.cpp:551
+#: src/game.cpp:997 src/game.cpp:1005 src/playsingle_controller.cpp:495
+#: src/playsingle_controller.cpp:550
 msgid "The file you have tried to load is corrupt"
 msgstr "File yang anda coba load rusak"
 
@@ -8383,11 +8383,11 @@ msgstr "Selubung"
 msgid "none"
 msgstr "tidak ada"
 
-#: src/map.cpp:163
+#: src/map.cpp:162
 msgid "A map without a header is not supported"
 msgstr "Peta tanpa judul tidak didukung"
 
-#: src/mapgen.cpp:739
+#: src/mapgen.cpp:740
 msgid "Random maps with an odd width aren't supported."
 msgstr "Peta acak dengan lebar ganjil tidak didukung."
 
@@ -9709,15 +9709,15 @@ msgstr[0] ""
 "Anda akan memulai skenario berikutnya dengan $gold atau emas permulaan "
 "minimum terpasang, yang manapun yang lebih tinggi."
 
-#: src/playsingle_controller.cpp:421
+#: src/playsingle_controller.cpp:420
 msgid "Game Over"
 msgstr "Permainan Selesai"
 
-#: src/playsingle_controller.cpp:422
+#: src/playsingle_controller.cpp:421
 msgid "The game is over."
 msgstr "Permainan selesai."
 
-#: src/playsingle_controller.cpp:507
+#: src/playsingle_controller.cpp:506
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game\n"
@@ -9726,19 +9726,19 @@ msgstr ""
 "Jaringan terputus, dan permainan ini tidak bisa diteruskan. Apakah anda "
 "ingin menyimpan permainan ini?"
 
-#: src/playsingle_controller.cpp:673
+#: src/playsingle_controller.cpp:672
 msgid "It is now $name|'s turn"
 msgstr "Sekarang giliran $name|"
 
-#: src/playsingle_controller.cpp:905
+#: src/playsingle_controller.cpp:904
 msgid "Scenario Report"
 msgstr "Laporan Skenario"
 
-#: src/playsingle_controller.cpp:907
+#: src/playsingle_controller.cpp:906
 msgid "Victory"
 msgstr "Menang"
 
-#: src/playsingle_controller.cpp:908
+#: src/playsingle_controller.cpp:907
 msgid "You have emerged victorious!"
 msgstr "Anda sudah menang!"
 
@@ -10087,8 +10087,8 @@ msgstr "Bantu Wesnoth"
 msgid "Help Wesnoth by sending us information"
 msgstr "Bantu Wesnoth dengan mengirim informasi ke kami"
 
-#: src/tod_manager.cpp:102 src/tod_manager.cpp:134 src/tod_manager.cpp:238
-#: src/tod_manager.cpp:251 src/tod_manager.cpp:301
+#: src/tod_manager.cpp:101 src/tod_manager.cpp:133 src/tod_manager.cpp:237
+#: src/tod_manager.cpp:250 src/tod_manager.cpp:300
 msgid "No time of day has been defined."
 msgstr "Tidak ada jam hari yang sudah ditetapkan."
 

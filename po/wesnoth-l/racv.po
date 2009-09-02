@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-29 12:11+0200\n"
+"POT-Creation-Date: 2009-09-03 00:21+0200\n"
 "PO-Revision-Date: 2006-09-12 19:58+0200\n"
 "Last-Translator: Robert Millan <rmh@aybabtu.com>\n"
 "Language-Team: Català <wesnoth-ca@lists.ettin.org>\n"
@@ -194,7 +194,7 @@ msgstr "Els Goblins arriben al poblet de Dallben"
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:127
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:103
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:124
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:156
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:156
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:97
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:287
 msgid "Death of Baldras"
@@ -206,7 +206,7 @@ msgstr "Mort de Baldras"
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:131
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:107
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:128
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:160
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:160
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:101
 msgid "Death of Harper"
 msgstr "Mort de Harper"
@@ -217,7 +217,7 @@ msgstr "Mort de Harper"
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:139
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:115
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:132
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:164
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:164
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:105
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:291
 msgid "Turns run out"
@@ -486,10 +486,10 @@ msgstr ""
 msgid "Civil Disobedience"
 msgstr "Desobediència Civil"
 
-#. [side]: type=Highwayman, id=Baldras
-#. [side]: type=Shadow Lord, id=Helicrom
-#. [side]
 #. [side]: type=Bandit, id=Baldras
+#. [side]: type=Shadow Lord, id=Helicrom
+#. [side]: type=Highwayman, id=Baldras
+#. [side]
 #. [side]: type=Rogue, id=Hans
 #. [side]: type=Highwayman_Peasant, id=Relnan
 #. [side]: type=General, id=Lord Maddock
@@ -502,8 +502,8 @@ msgstr "Desobediència Civil"
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:63
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:40
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:96
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:55
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:77
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:55
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:77
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:50
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:58
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:203
@@ -692,9 +692,9 @@ msgstr ""
 #. [side]: type=Saurian Oracle, id=Thhsthss
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:88
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:109
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:105
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:121
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:138
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:105
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:121
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:138
 msgid "Evil"
 msgstr ""
 
@@ -1227,7 +1227,7 @@ msgstr "Estan buscant-nos a nosaltres."
 #, fuzzy
 msgid ""
 "Well, good thing I found you first. Now hurry, you must make it past the "
-"city into the Gray Woods. There is a small path in the southeast that leads "
+"city into the Grey Woods. There is a small path in the southeast that leads "
 "into the forest; look for the signpost. My brother Hans is waiting for you "
 "there and will take you to our master. Try to avoid the soldiers if you can."
 msgstr ""
@@ -1307,7 +1307,8 @@ msgstr ""
 
 #. [message]: speaker=Hans
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:748
-msgid "Fly, and we may yet evade them in the Gray Woods."
+#, fuzzy
+msgid "Fly, and we may yet evade them in the Grey Woods."
 msgstr "Voleu, i tal volta els puguem despistar al Bosc Terrós."
 
 #. [message]: speaker=Baldras
@@ -1317,7 +1318,7 @@ msgstr "Dirigix-nos..."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:777
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:438
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:438
 #, fuzzy
 msgid ""
 "We have spent too much time here. Surely the Queen's forces have returned to "
@@ -1329,44 +1330,45 @@ msgstr ""
 "lluitar en una batalla suïcida."
 
 #. [scenario]: id=the_gray_woods
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:4
-msgid "The Gray Woods"
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:4
+#, fuzzy
+msgid "The Grey Woods"
 msgstr "El Bosc Terrós"
 
 #. [side]: type=Shadow Lord, id=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:61
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:61
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:187
 msgid "Helicrom"
 msgstr ""
 
 #. [side]: type=Necromancer, id=Mal-Jarrof
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:96
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:96
 msgid "Mal-Jarrof"
 msgstr ""
 
 #. [side]: type=Necromancer, id=Mal-Jerod
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:112
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:112
 msgid "Mal-Jerod"
 msgstr ""
 
 #. [side]: type=Lich, id=Sel-Mana
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:128
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:128
 msgid "Sel-Mana"
 msgstr ""
 
 #. [objective]: condition=win
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:152
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:152
 #, fuzzy
 msgid "Defeat the lich and its minions"
 msgstr "Derrota els Senyors Lich"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:220
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:220
 msgid "The leader, I presume."
 msgstr "El capitost, supose."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:224
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:224
 #, fuzzy
 msgid ""
 "I am Helicrom, and you should not be so glib. I control dangerous men. My "
@@ -1380,12 +1382,12 @@ msgstr ""
 "un treball noble, però els nostres objectius requereixen molt or."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:228
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:228
 msgid "Your pursuits?"
 msgstr "Els vostres objectius?"
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:232
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:232
 #, fuzzy
 msgid ""
 "The former King's magic ministry kept a tight control on the training and "
@@ -1400,7 +1402,7 @@ msgstr ""
 "No es fàcil mantenir el secret ni la seguretat."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:236
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:236
 #, fuzzy
 msgid "I have heard of you. Necromancers. Barely-human scum, I say."
 msgstr ""
@@ -1408,7 +1410,7 @@ msgstr ""
 "crec."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:240
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:240
 #, fuzzy
 msgid ""
 "Wrong. Necromancers become slaves to their lich masters and eventually lose "
@@ -1424,13 +1426,13 @@ msgstr ""
 "ambdós mons, sense encaixar en cap."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:244
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:244
 #, fuzzy
 msgid "I...see, I think. Why do you want to help us?"
 msgstr "Val, doncs. Per què vols la nostra ajuda?"
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:248
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:248
 #, fuzzy
 msgid ""
 "We don't. You have sought us out. But, I do know of your situation and am "
@@ -1442,7 +1444,7 @@ msgstr ""
 "Reina, és una vaca que ens agrada agullonar, per dir-ho d'alguna manera."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:259
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:259
 #, fuzzy
 msgid ""
 "Carcyn is always foggy as of late because these woods have recently become "
@@ -1454,7 +1456,7 @@ msgstr ""
 "que els han fet despertar... no estem segurs."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:263
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:263
 #, fuzzy
 msgid ""
 "So now you need to defend your rear as well as your front... I see your "
@@ -1466,20 +1468,20 @@ msgstr ""
 "com una patena si ens ajudes a defendre la nostra llar."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:288
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:288
 msgid "Finally that creature is dead, yet its foolish minions resist."
 msgstr ""
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:295
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:295
 msgid "The lich is destroyed and its minions dead."
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:312
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:312
 #, fuzzy
 msgid ""
-"The defeat of the evil lich infesting the Gray Woods was a bittersweet "
+"The defeat of the evil lich infesting the Grey Woods was a bittersweet "
 "victory. With Helicrom dead, the guild of shadow magic was thrown into "
 "disarray."
 msgstr ""
@@ -1487,7 +1489,7 @@ msgstr ""
 "victòria agredolça."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:317
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:317
 #, fuzzy
 msgid ""
 "The remaining members were very grateful and offered Baldras a sizable sum "
@@ -1498,7 +1500,7 @@ msgstr ""
 "durant el pròxim conflicte."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:336
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:336
 #, fuzzy
 msgid ""
 "With the undead driven out, we may live here in relative peace and pursue "
@@ -1508,7 +1510,7 @@ msgstr ""
 "morts, podrem viure en una pau relativa i dedicar-nos al nostre estudis."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:340
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:340
 #, fuzzy
 msgid ""
 "Studies? Peace? You mean to continue feeding on the lawful citizens of "
@@ -1518,7 +1520,7 @@ msgstr ""
 "Wesnoth. No hi haurà pau per a ells."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:344
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:344
 #, fuzzy
 msgid ""
 "No one here is in a position to be dispensing moral judgments. Regardless, "
@@ -1530,7 +1532,7 @@ msgstr ""
 "haveu realitzat ací avui. T'ajudaré amb totes les meues capacitats."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:348
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:348
 #, fuzzy
 msgid ""
 "I was planning on giving you gold. Any good army is well financed, and with "
@@ -1540,7 +1542,7 @@ msgstr ""
 "finançat, i amb els Lich destruïts ens ho podrem permetre."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:352
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:352
 #, fuzzy
 msgid ""
 "But, I think it would help you more if I lent you some of my men to join you "
@@ -1552,7 +1554,7 @@ msgstr ""
 "ha estat manant alguns mags, i alguns tenen ganes de prendre's la revenja."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:356
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:356
 msgid ""
 "On the other hand, if I keep the full force of my organization here, we "
 "might be able to regroup and join you on the battlefield when the time comes."
@@ -1562,24 +1564,24 @@ msgstr ""
 "faja falta."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:360
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:360
 msgid "I leave it to you to decide."
 msgstr "Tu diràs."
 
 #. [option]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:362
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:362
 #, fuzzy
 msgid "I will take the gold. How does 500 sound?"
 msgstr "M'estime més l'or. Què tal sonen 500?"
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:366
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:366
 #, fuzzy
 msgid "Agreed. Good luck and farewell to you, Master Baldras."
 msgstr "D'acord. Bona sort i els meus millors desitjos, Mestre Baldras."
 
 #. [option]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:387
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:387
 #, fuzzy
 msgid ""
 "Send your men with us. They will be valuable help as we prepare for the "
@@ -1589,7 +1591,7 @@ msgstr ""
 "ens preparem contra l'atac de la guarnició de l'exèrcit de Wesnoth."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:391
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:391
 #, fuzzy
 msgid "Done. My finest mages and thieves are at your disposal. Use them well."
 msgstr ""
@@ -1597,13 +1599,13 @@ msgstr ""
 "bé."
 
 #. [option]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:405
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:405
 msgid "I wish you to join us in battle against the Queen's forces."
 msgstr ""
 "Preferiria que m'ajudares en alguna batalla contra les forces de la Reina."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:409
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:409
 #, fuzzy
 msgid ""
 "Alright. I need time to clean up this forest and recall my men from the "
@@ -1615,7 +1617,7 @@ msgstr ""
 "setmana. Tot depèn de tu! Mentre tant..."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:459
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:459
 #, fuzzy
 msgid "My men... have failed to protect me! I perish..."
 msgstr "Els meus hòmens... no han pogut protegir-me! Soc història..."
@@ -1629,7 +1631,7 @@ msgstr "Els Caçadors"
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:24
 #, fuzzy
 msgid ""
-"Baldras and his men quickly left the Gray Woods, not entirely convinced of "
+"Baldras and his men quickly left the Grey Woods, not entirely convinced of "
 "their safety even after eradicating the lich."
 msgstr ""
 "Baldras i els seus hòmens van abandonar ràpidament el Bosc Terrós, sense "
@@ -1640,7 +1642,7 @@ msgstr ""
 #, fuzzy
 msgid ""
 "As they marched, many men and women from the small hamlets peppering the "
-"area around Carcyn and the Gray Woods approached the group, asking to join "
+"area around Carcyn and the Grey Woods approached the group, asking to join "
 "them. The ascent of the Queen had cast an uneasy pall over the citizens of "
 "Wesnoth, and some of them were willing to resist it."
 msgstr ""

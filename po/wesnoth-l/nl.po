@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-29 12:11+0200\n"
+"POT-Creation-Date: 2009-09-03 00:21+0200\n"
 "PO-Revision-Date: 2008-04-09 15:52+0100\n"
 "Last-Translator: Foppe Benedictus <foppe.benedictus@gmail.com>\n"
 "Language-Team: Dutch <foppe.benedictus@gmail.com>\n"
@@ -187,7 +187,7 @@ msgstr "De goblins bereiken Dallben"
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:127
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:103
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:124
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:156
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:156
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:97
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:287
 msgid "Death of Baldras"
@@ -199,7 +199,7 @@ msgstr "Dood van Baldras"
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:131
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:107
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:128
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:160
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:160
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:101
 msgid "Death of Harper"
 msgstr "Dood van Harper"
@@ -210,7 +210,7 @@ msgstr "Dood van Harper"
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:139
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:115
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:132
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:164
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:164
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:105
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:291
 msgid "Turns run out"
@@ -475,10 +475,10 @@ msgstr ""
 msgid "Civil Disobedience"
 msgstr "Burgelijke Ongehoorzaamheid"
 
-#. [side]: type=Highwayman, id=Baldras
-#. [side]: type=Shadow Lord, id=Helicrom
-#. [side]
 #. [side]: type=Bandit, id=Baldras
+#. [side]: type=Shadow Lord, id=Helicrom
+#. [side]: type=Highwayman, id=Baldras
+#. [side]
 #. [side]: type=Rogue, id=Hans
 #. [side]: type=Highwayman_Peasant, id=Relnan
 #. [side]: type=General, id=Lord Maddock
@@ -491,8 +491,8 @@ msgstr "Burgelijke Ongehoorzaamheid"
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:63
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:40
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:96
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:55
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:77
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:55
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:77
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:50
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:58
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:203
@@ -681,9 +681,9 @@ msgstr "Urk Delek"
 #. [side]: type=Saurian Oracle, id=Thhsthss
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:88
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:109
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:105
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:121
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:138
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:105
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:121
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:138
 msgid "Evil"
 msgstr ""
 
@@ -1211,7 +1211,7 @@ msgstr "Ze zijn op zoek naar ons."
 #, fuzzy
 msgid ""
 "Well, good thing I found you first. Now hurry, you must make it past the "
-"city into the Gray Woods. There is a small path in the southeast that leads "
+"city into the Grey Woods. There is a small path in the southeast that leads "
 "into the forest; look for the signpost. My brother Hans is waiting for you "
 "there and will take you to our master. Try to avoid the soldiers if you can."
 msgstr ""
@@ -1288,7 +1288,8 @@ msgstr "Als je wilt mag je komen, maar onze leider wil met Baldras spreken."
 
 #. [message]: speaker=Hans
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:748
-msgid "Fly, and we may yet evade them in the Gray Woods."
+#, fuzzy
+msgid "Fly, and we may yet evade them in the Grey Woods."
 msgstr "Als we snel zijn kunnen we ze nog ontlopen in het Grijze Woud."
 
 #. [message]: speaker=Baldras
@@ -1298,7 +1299,7 @@ msgstr "Toon ons de weg..."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:777
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:438
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:438
 #, fuzzy
 msgid ""
 "We have spent too much time here. Surely the Queen's forces have returned to "
@@ -1310,44 +1311,45 @@ msgstr ""
 "terugkeren om een verloren strijd te strijden."
 
 #. [scenario]: id=the_gray_woods
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:4
-msgid "The Gray Woods"
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:4
+#, fuzzy
+msgid "The Grey Woods"
 msgstr "Het Grijze Woud"
 
 #. [side]: type=Shadow Lord, id=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:61
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:61
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:187
 msgid "Helicrom"
 msgstr "Helicrom"
 
 #. [side]: type=Necromancer, id=Mal-Jarrof
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:96
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:96
 msgid "Mal-Jarrof"
 msgstr "Mal-Jarrof"
 
 #. [side]: type=Necromancer, id=Mal-Jerod
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:112
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:112
 msgid "Mal-Jerod"
 msgstr "Mal-Jerod"
 
 #. [side]: type=Lich, id=Sel-Mana
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:128
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:128
 msgid "Sel-Mana"
 msgstr "Sel-Mana"
 
 #. [objective]: condition=win
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:152
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:152
 #, fuzzy
 msgid "Defeat the lich and its minions"
 msgstr "Dood de Lich en zijn "
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:220
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:220
 msgid "The leader, I presume."
 msgstr "De leider, naar ik aanneem."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:224
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:224
 #, fuzzy
 msgid ""
 "I am Helicrom, and you should not be so glib. I control dangerous men. My "
@@ -1362,12 +1364,12 @@ msgstr ""
 "goud."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:228
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:228
 msgid "Your pursuits?"
 msgstr "Jullie bezigheden?"
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:232
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:232
 #, fuzzy
 msgid ""
 "The former King's magic ministry kept a tight control on the training and "
@@ -1382,7 +1384,7 @@ msgstr ""
 "geheimhouding en veiligheid zijn niet goedkoop."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:236
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:236
 #, fuzzy
 msgid "I have heard of you. Necromancers. Barely-human scum, I say."
 msgstr ""
@@ -1390,7 +1392,7 @@ msgstr ""
 "naar mijn mening."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:240
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:240
 #, fuzzy
 msgid ""
 "Wrong. Necromancers become slaves to their lich masters and eventually lose "
@@ -1406,13 +1408,13 @@ msgstr ""
 "zodanig leven we tussen beide werelden en horen we in geen van beide thuis."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:244
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:244
 #, fuzzy
 msgid "I...see, I think. Why do you want to help us?"
 msgstr "Het zal wel. Waarom willen jullie ons helpen?"
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:248
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:248
 #, fuzzy
 msgid ""
 "We don't. You have sought us out. But, I do know of your situation and am "
@@ -1425,7 +1427,7 @@ msgstr ""
 "loer te draaien."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:259
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:259
 #, fuzzy
 msgid ""
 "Carcyn is always foggy as of late because these woods have recently become "
@@ -1437,7 +1439,7 @@ msgstr ""
 "gewekt... we weten het niet precies."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:263
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:263
 #, fuzzy
 msgid ""
 "So now you need to defend your rear as well as your front... I see your "
@@ -1449,20 +1451,20 @@ msgstr ""
 "verdedigen."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:288
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:288
 msgid "Finally that creature is dead, yet its foolish minions resist."
 msgstr ""
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:295
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:295
 msgid "The lich is destroyed and its minions dead."
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:312
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:312
 #, fuzzy
 msgid ""
-"The defeat of the evil lich infesting the Gray Woods was a bittersweet "
+"The defeat of the evil lich infesting the Grey Woods was a bittersweet "
 "victory. With Helicrom dead, the guild of shadow magic was thrown into "
 "disarray."
 msgstr ""
@@ -1470,7 +1472,7 @@ msgstr ""
 "honingzoet."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:317
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:317
 #, fuzzy
 msgid ""
 "The remaining members were very grateful and offered Baldras a sizable sum "
@@ -1481,7 +1483,7 @@ msgstr ""
 "het ermee moest doen."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:336
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:336
 #, fuzzy
 msgid ""
 "With the undead driven out, we may live here in relative peace and pursue "
@@ -1491,7 +1493,7 @@ msgstr ""
 "kunnen we hier in relatieve rust onze studie vervolgen."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:340
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:340
 #, fuzzy
 msgid ""
 "Studies? Peace? You mean to continue feeding on the lawful citizens of "
@@ -1501,7 +1503,7 @@ msgstr ""
 "beroven. Zij zullen geen rust kennen."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:344
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:344
 #, fuzzy
 msgid ""
 "No one here is in a position to be dispensing moral judgments. Regardless, "
@@ -1513,7 +1515,7 @@ msgstr ""
 "mijn beste vermogen helpen."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:348
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:348
 #, fuzzy
 msgid ""
 "I was planning on giving you gold. Any good army is well financed, and with "
@@ -1523,7 +1525,7 @@ msgstr ""
 "gefinancieerd en nu de Lichen verslagen zijn kunnen we het missen."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:352
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:352
 #, fuzzy
 msgid ""
 "But, I think it would help you more if I lent you some of my men to join you "
@@ -1535,7 +1537,7 @@ msgstr ""
 "mannen jeuken om daarvoor wraak te nemen."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:356
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:356
 msgid ""
 "On the other hand, if I keep the full force of my organization here, we "
 "might be able to regroup and join you on the battlefield when the time comes."
@@ -1545,22 +1547,22 @@ msgstr ""
 "gekomen is."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:360
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:360
 msgid "I leave it to you to decide."
 msgstr "Ik laat het aan jou over om te beslissen."
 
 #. [option]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:362
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:362
 msgid "I will take the gold. How does 500 sound?"
 msgstr "Ik neem het goud. Wat dacht je van 500 goudstukken?"
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:366
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:366
 msgid "Agreed. Good luck and farewell to you, Master Baldras."
 msgstr "Akkoord. Vaarwel en succes, meester Baldras."
 
 #. [option]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:387
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:387
 #, fuzzy
 msgid ""
 "Send your men with us. They will be valuable help as we prepare for the "
@@ -1570,7 +1572,7 @@ msgstr ""
 "op het garnizoen van Wesnoth voorbereiden."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:391
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:391
 #, fuzzy
 msgid "Done. My finest mages and thieves are at your disposal. Use them well."
 msgstr ""
@@ -1578,13 +1580,13 @@ msgstr ""
 "ze verstandig."
 
 #. [option]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:405
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:405
 msgid "I wish you to join us in battle against the Queen's forces."
 msgstr ""
 "Ik verzoek je ons in de strijd tegen de troepen van de koningin bij te staan."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:409
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:409
 #, fuzzy
 msgid ""
 "Alright. I need time to clean up this forest and recall my men from the "
@@ -1596,7 +1598,7 @@ msgstr ""
 "rijden. Alles hangt nu van jullie af. Tot dan..."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:459
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:459
 #, fuzzy
 msgid "My men... have failed to protect me! I perish..."
 msgstr "Mijn mannen... hebben mij niet kunnen beschermen! Ik ben er geweest..."
@@ -1610,7 +1612,7 @@ msgstr "De Jagers"
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:24
 #, fuzzy
 msgid ""
-"Baldras and his men quickly left the Gray Woods, not entirely convinced of "
+"Baldras and his men quickly left the Grey Woods, not entirely convinced of "
 "their safety even after eradicating the lich."
 msgstr ""
 "Baldras en zijn mannen verlieten het Grijze Woud haastig, niet geheel zeker "
@@ -1621,7 +1623,7 @@ msgstr ""
 #, fuzzy
 msgid ""
 "As they marched, many men and women from the small hamlets peppering the "
-"area around Carcyn and the Gray Woods approached the group, asking to join "
+"area around Carcyn and the Grey Woods approached the group, asking to join "
 "them. The ascent of the Queen had cast an uneasy pall over the citizens of "
 "Wesnoth, and some of them were willing to resist it."
 msgstr ""

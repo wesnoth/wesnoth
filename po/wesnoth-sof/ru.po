@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-29 12:11+0200\n"
+"POT-Creation-Date: 2009-09-03 00:21+0200\n"
 "PO-Revision-Date: 2009-06-20 16:22+0400\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team: none\n"
@@ -234,7 +234,7 @@ msgstr "Смерть Хальдрика II"
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:554
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:156
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:536
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:79
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:79
 msgid "Death of Alanin"
 msgstr "Смерть Аланина"
 
@@ -258,7 +258,7 @@ msgstr "Захват (уничтожение) любого каравана"
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:168
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:466
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:540
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:83
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:83
 msgid "Time runs out"
 msgstr "Закончились ходы"
 
@@ -2621,10 +2621,11 @@ msgstr "Если позволите сказать, повелитель, вы �
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:216
+#, fuzzy
 msgid ""
 "Shut up, Baglur! You don't know what you're talking about. I've analyzed the "
 "situation, and we're doomed. Our best hope is to surrender. Perhaps if we "
-"give the elves the plans for the sceptre they will let us survive."
+"give the elves the plans for the Sceptre of Fire they will let us survive."
 msgstr ""
 "Заткнись, Баглур! Ты ничего в этом не смыслишь! Я всё тщательно взвесил — "
 "нам крышка! Единственное, что нам остаётся — это сдаться. Быть может, если "
@@ -2637,10 +2638,11 @@ msgstr "Если позволите сказать, повелитель, вы �
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:226
+#, fuzzy
 msgid ""
 "Shut up, Rugnur! You don't know what you're talking about. I've analyzed the "
 "situation, and we're doomed. Our best hope is to surrender. Perhaps if we "
-"give the elves the plans for the sceptre they will let us survive."
+"give the elves the plans for the Sceptre of Fire they will let us survive."
 msgstr ""
 "Заткнись, Ругнур! Ты же ничего в этом не смыслишь! Я всё тщательно взвесил — "
 "нам крышка! Единственное, что нам остаётся — это сдаться. Быть может, если "
@@ -2843,10 +2845,11 @@ msgstr "Выходите, гномы, и сдавайтесь! Или помри
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:437
+#, fuzzy
 msgid ""
 "Alanin, ride as fast as you can south. Tell Haldric we are heading "
 "northeast, towards the old eastern mines, and if he wants his precious "
-"Sceptre he should send forces to meet us there as soon as he can!"
+"sceptre he should send forces to meet us there as soon as he can!"
 msgstr ""
 "Аланин, скачи на юг как можно быстрее. Доложи Хальдрику, что мы отправляемся "
 "на северо-восток, к старым восточным шахтам. И что если ему нужен его "
@@ -2887,12 +2890,12 @@ msgstr ""
 "Не знаю, что там в пещерах, но вряд ли оно хуже, чем смерть в этих местах."
 
 #. [scenario]: id=7_Outriding_the_Outriders
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:3
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:3
 msgid "Outriding the Outriders"
 msgstr "Обгоняя предвестников"
 
 #. [part]
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:55
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:55
 msgid ""
 "Rugnur had fled across the Arkan-thoria, but Alanin could not do that. He "
 "went south - back to the Wesnoth border."
@@ -2901,7 +2904,7 @@ msgstr ""
 "поскакал на юг — обратно к границе Веснота."
 
 #. [part]
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:58
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:58
 msgid ""
 "The elves followed both of them. First I will tell of their pursuit of "
 "Alanin, before we descend into the caves to learn Rugnur's fate."
@@ -2910,12 +2913,12 @@ msgstr ""
 "судьбу Ругнура, я расскажу о том, как гнались за Аланином."
 
 #. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:75
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:75
 msgid "Reach the Wesnothian outpost in the south"
 msgstr "Доберитесь до веснотской заставы на юге"
 
 #. [message]: speaker=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:100
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:100
 msgid ""
 "Well, the elves are behind me for now, but they will send riders to catch "
 "me, and elvish riders are faster than me."
@@ -2924,7 +2927,7 @@ msgstr ""
 "эльфийские всадники быстрее меня."
 
 #. [message]: speaker=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:104
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:104
 msgid ""
 "My only hope is to convince the peasants to stop the elves from passing "
 "through their land, so I can get ahead of them."
@@ -2933,32 +2936,32 @@ msgstr ""
 "пройти, тогда я смогу от них оторваться."
 
 #. [unit]: type=Elvish Outrider, id=Asaeri
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:110
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:110
 msgid "Lord Asaeri"
 msgstr "Лорд Азаэри"
 
 #. [unit]: type=Elvish Outrider, id=Gaelir
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:121
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:121
 msgid "Gaelir"
 msgstr "Гаэлир"
 
 #. [unit]: type=Elvish Outrider, id=Salira
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:132
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:132
 msgid "Salira"
 msgstr "Салира"
 
 #. [unit]: type=Elvish Outrider, id=Losnin
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:144
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:144
 msgid "Losnin"
 msgstr "Лоснин"
 
 #. [unit]: type=Elvish Outrider, id=Ealin
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:156
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:156
 msgid "Ealin"
 msgstr "Эалин"
 
 #. [message]: speaker=Asaeri
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:174
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:174
 msgid ""
 "You cannot outride us, horseman of Wesnoth! Whatever message you are "
 "carrying, it will not be delivered!"
@@ -2967,17 +2970,17 @@ msgstr ""
 "будет доставлено!"
 
 #. [message]: speaker=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:178
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:178
 msgid "We shall see about that!"
 msgstr "Это мы ещё посмотрим!"
 
 #. [unit]: type=Elvish Outrider, id=Raesil
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:187
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:187
 msgid "Raesil"
 msgstr "Раэзил"
 
 #. [message]: speaker=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:204
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:204
 msgid ""
 "The villagers here are loyal to Wesnoth. They should be willing to help me "
 "escape these elves!"
@@ -2985,27 +2988,27 @@ msgstr ""
 "Местные жители — подданные Веснота. Они-то и помогут мне сбежать от эльфов!"
 
 #. [unit]: type=Spearman, id=Rolin    # wmllint: ignore
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:209
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:209
 msgid "Rolin"
 msgstr "Ролин"
 
 #. [message]: speaker=Rolin   # wmllint: ignore
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:219
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:219
 msgid "We will certainly help any warrior of Wesnoth who needs our help!"
 msgstr "Мы поможем любому воину Веснота, который нуждается в нашей помощи."
 
 #. [unit]: type=Lieutenant, id=Hadlin   # wmllint: ignore
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:269
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:269
 msgid "Hadlin"
 msgstr "Адлин"
 
 #. [message]: speaker=Hadlin  # wmllint: ignore
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:280
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:280
 msgid "Who goes there?"
 msgstr "Стой, кто идёт?"
 
 #. [message]: speaker=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:284
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:284
 msgid ""
 "I'm a dragoon, with Haldric II's personal bodyguard. I was sent on a mission "
 "in the northlands, and now elvish horsemen are chasing me. I barely evaded "
@@ -3016,7 +3019,7 @@ msgstr ""
 "оторвался."
 
 #. [message]: speaker=Hadlin  # wmllint: ignore
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:288
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:288
 msgid ""
 "I see. Well, come on in. I doubt they would be able to capture this fort, "
 "even if they did want to start a war, which I doubt."
@@ -3207,14 +3210,16 @@ msgstr "Приведите Турсагана к кузнице"
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:319
-msgid "Defend Thursagan until the sceptre is complete"
+#, fuzzy
+msgid "Defend Thursagan until the Sceptre of Fire is complete"
 msgstr "Защищайте Турсагана, пока скипетр не будет закончен"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:347
+#, fuzzy
 msgid ""
 "This forge will work perfectly. Give me a few days here, and I can reforge "
-"the sceptre to fulfill its purpose."
+"the Sceptre of Fire to fulfill its purpose."
 msgstr ""
 "Отличная кузница! Дайте мне несколько дней, и я перекую скипетр так, что он "
 "будет соответствовать своему предназначению."
@@ -3266,7 +3271,8 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:485
-msgid "In $turnsleft more turns I will have completed the sceptre."
+#, fuzzy
+msgid "In $turnsleft more turns I will have completed the Sceptre of Fire."
 msgstr "Я закончу скипетр через $turnsleft ходов."
 
 #. [scenario]: id=9_Caverns_of_Flame
@@ -3443,9 +3449,10 @@ msgstr ""
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:551
+#, fuzzy
 msgid ""
 "We cannot let any of the elves or their mercenaries escape; they would tell "
-"where the sceptre is. Make sure they all die!"
+"where the Sceptre of Fire is. Make sure they all die!"
 msgstr ""
 "Нельзя позволить кому-то из эльфов или их наёмников уйти; иначе они "
 "расскажут, где скипетр. Удостоверьтесь, что все мертвы!"
@@ -3488,8 +3495,9 @@ msgstr "Ахх!!! Вулкан извергается, а выход для на
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:694
+#, fuzzy
 msgid ""
-"We have hidden the sceptre well, but now the volcano is going to erupt and "
+"We have hidden the Sceptre well, but now the volcano is going to erupt and "
 "kill us all."
 msgstr "Ну что ж, мы надёжно спрятали скипетр. Но извержение убьёт нас всех."
 
@@ -3719,10 +3727,11 @@ msgstr "Крааа! Праадаа! Всоо. Оокаа."
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:218
+#, fuzzy
 msgid ""
-"I see. Well... what do you want me to do now? The sceptre is made, yes, but "
-"I don't know where it is, the makers are dead, and orcs have probably "
-"already found it and hid it somewhere else."
+"I see. Well... what do you want me to do now? The Sceptre of Fire is made, "
+"yes, but I don't know where it is, the makers are dead, and orcs have "
+"probably already found it and hid it somewhere else."
 msgstr ""
 "Понял. И всё же... что мне теперь делать? Скипетр готов, это правда, но я не "
 "знаю где он, его создатели мертвы, а орки, наверняка, уже нашли его и куда-"
@@ -3730,11 +3739,12 @@ msgstr ""
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:222
+#, fuzzy
 msgid ""
 "I do not know. I only bring the news, I did not cause it, nor do I fully "
 "understand its implications. But, my advice would be to do nothing. I "
 "believe you will not find it, though you send a hundred armies to look for "
-"it. But record in the history books that the sceptre does exist."
+"it. But record in the history books that the Sceptre of Fire does exist."
 msgstr ""
 "Боюсь, мне нечего сказать. Я лишь принёс известия, но не был причиной того, "
 "что случилось, да и смысл всего этого я до конца не понимаю. Но если Вы "
