@@ -247,10 +247,5 @@ class RootController(BaseController):
 		elif type == "kill":
 			view = KillGraphController(url)
 		else:
-			view = NotFoundController(url)
-
+			return dict()
 		return view, remainder
-
-class NotFoundController(object):
-	def __init__(self,url):
-		self.url = url

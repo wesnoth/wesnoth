@@ -39,7 +39,7 @@ class PieGraphController(BaseController):
 		
 		curs.execute("SELECT title,xdata,ydata,xlabel,ylabel,filters,y_xform,tbl FROM _wsviews WHERE url = %s", (self.url,))
 		view_data = curs.fetchall()[0]
-		log.info("pie chart request, here is SQL data for this view:")
+		log.debug("pie chart request, here is SQL data for this view:")
 		log.debug(view_data)
 		tbl = view_data[7]
 		#fetch the relevant filters for this template and their possible values

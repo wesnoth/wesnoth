@@ -39,10 +39,12 @@ def is_valid_level(lev):
 def scaled_query(curs,tbl,query,threshold,evaluator):
 	s_time = time.time()
 	#list of all the sample sizes
-	query = "SELECT TABLE_NAME FROM information_schema.tables WHERE TABLE_NAME REGEXP '^%s%sSMPL'" % (configuration.DB_TABLE_PREFIX,tbl)
-	curs.execute(query)
+	_query = "SELECT TABLE_NAME FROM information_schema.tables WHERE TABLE_NAME REGEXP '^%sSMPL%s'" % (configuration.DB_TABLE_PREFIX,tbl)
+	log.debug(_query)
+	curs.execute(_query)
 	results = curs.fetchall()
 	sizes = []
+	log.debug(sizes)
 	for result in results:
 		sizes.append(int(result[0][len(configuration.DB_TABLE_PREFIX+"SMPL"+tbl):]))
 	sizes.sort()
@@ -51,6 +53,7 @@ def scaled_query(curs,tbl,query,threshold,evaluator):
 	for size in sizes:
 		tblname = "%sSMPL%s%d" % (configuration.DB_TABLE_PREFIX,tbl,size)
 		nquery = query.replace(tbl,tblname)
+		log.debug("new query: "+nquery)
 		curs.execute(nquery)
 		results = curs.fetchall()
 		length = evaluator(results)
@@ -58,6 +61,7 @@ def scaled_query(curs,tbl,query,threshold,evaluator):
 			log.debug("query took " + str(time.time()-s_time) + " seconds")
 			return results
 	log.debug("too few results from sample tables, using entire table")
+	log.debug(query)
 	curs.execute(query)
 	log.debug("query took " + str(time.time()-s_time) + " seconds")
 	return curs.fetchall()
