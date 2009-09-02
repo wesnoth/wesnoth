@@ -187,6 +187,7 @@ private:
 	bool all_observers_muted() const { return all_observers_muted_; }
 	void send_muted_observers(const player_map::const_iterator user) const;
 
+	bool send_taken_side(simple_wml::document& cfg, const simple_wml::node::child_list::const_iterator side) const;
 	/**
 	 * Figures out which side to take and tells that side to the game owner.
 	 *
@@ -208,6 +209,7 @@ private:
 			const bool player_left = true,
 			const std::string& controller = "");
 	void transfer_ai_sides(const network::connection player);
+	void send_leave_game(network::connection user) const;
 	void send_data_team(simple_wml::document& data, const simple_wml::string_span& team,
 			const network::connection exclude=0, std::string packet_type = "") const;
 	void send_data_observers(simple_wml::document& data, const network::connection exclude=0, std::string packet_type = "") const;

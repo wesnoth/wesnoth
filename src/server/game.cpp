@@ -196,10 +196,21 @@ void game::start_game(const player_map::const_iterator starter) {
 	send_observerjoins();
 }
 
+bool game::send_taken_side(simple_wml::document& cfg, const simple_wml::node::child_list::const_iterator side) const
+{
+	const size_t side_num = (**side)["side"].to_int();
+	if (side_num < 1 || side_num > gamemap::MAX_PLAYERS) return false;
+	if (sides_[side_num - 1] != 0) return false;
+	// We expect that the host will really use our proposed side number. (He could do different...)
+	cfg.root().set_attr_dup("side", (**side)["side"]);
+
+	// Tell the host which side the new player should take.
+	return wesnothd::send_to_one(cfg, owner_);
+}
+
 bool game::take_side(const player_map::const_iterator user)
 {
 	DBG_GAME << "take_side...\n";
-	DBG_GAME << debug_player_info();
 
 	if (started_) return false;
 
@@ -209,7 +220,6 @@ bool game::take_side(const player_map::const_iterator user)
 	cfg.root().set_attr("leader", "random");
 	cfg.root().set_attr("gender", "random");
 
-	size_t side_num;
 	// Check if we can figure out a fitting side.
 	const simple_wml::node::child_list& sides = level_.root().children("side");
 	for(simple_wml::node::child_list::const_iterator side = sides.begin(); side != sides.end(); ++side) {
@@ -217,33 +227,13 @@ bool game::take_side(const player_map::const_iterator user)
 				&& ((**side)["save_id"] == user->second.name().c_str()
 				|| (**side)["current_player"] == user->second.name().c_str()))
 		{
-			side_num = (**side)["side"].to_int();
-			if (side_num < 1 || side_num > gamemap::MAX_PLAYERS) continue;
-			if (sides_[side_num - 1] != 0) continue;
-			cfg.root().set_attr_dup("side", (**side)["side"]);
-			// Tell the host which side the new player should take.
-
-			simple_wml::string_span data = cfg.output_compressed();
-			network::send_raw_data(data.begin(), data.size(), owner_, cfg.root().first_child().to_string());
-			DBG_GAME << "take_side: took side " << side_num << " because the name matched\n";
-			DBG_GAME << debug_player_info();
-			return true;
+			if (send_taken_side(cfg, side)) return true;
 		}
 	}
 	// If there was no fitting side just take the first available.
 	for(simple_wml::node::child_list::const_iterator side = sides.begin(); side != sides.end(); ++side) {
 		if((**side)["controller"] == "network") {
-			side_num = (**side)["side"].to_int();
-			if (side_num < 1 || side_num > gamemap::MAX_PLAYERS) continue;
-			if (sides_[side_num - 1] != 0) continue;
-			// we expect that the host will really use our proposed side number (he could do different)
-			cfg.root().set_attr_dup("side", (**side)["side"]);
-			// Tell the host which side the new player should take.
-			simple_wml::string_span data = cfg.output_compressed();
-			network::send_raw_data(data.begin(), data.size(), owner_, cfg.root().first_child().to_string());
-			DBG_GAME << "take_side: took the first free network side which was " << side_num << "\n";
-			DBG_GAME << debug_player_info();
-			return true;
+			if (send_taken_side(cfg, side)) return true;
 		}
 	}
 	DBG_GAME << "take_side: there are no more sides available\n";
@@ -483,10 +473,11 @@ void game::notify_new_host(){
 	// Why do we send the new host his own name?
 	cfg_host_transfer.set_attr("name", owner_name.c_str());
 	cfg_host_transfer.set_attr("value", "1");
-	const simple_wml::string_span data = cfg.output_compressed();
-	network::send_raw_data(data.begin(), data.size(), owner_,cfg.root().first_child().to_string());
-	send_and_record_server_message((owner_name
-			+ " has been chosen as the new host.").c_str());
+	std::string message = owner_name + " has been chosen as the new host.";
+	if (!wesnothd::send_to_one(cfg, owner_)) {
+		message += " But an internal error occured. You probably have to abandon this game.";
+	}
+	send_and_record_server_message(message.c_str());
 }
 
 bool game::describe_slots() {
@@ -624,6 +615,12 @@ void game::unmute_observer(const simple_wml::node& unmute,
 	send_and_record_server_message((username.to_string() + " has been unmuted.").c_str());
 }
 
+void game::send_leave_game(network::connection user) const
+{
+	static simple_wml::document leave_game("[leave_game]\n[/leave_game]\n", simple_wml::INIT_COMPRESSED);
+	wesnothd::send_to_one(leave_game, user);
+}
+
 network::connection game::kick_member(const simple_wml::node& kick,
 		const player_map::const_iterator kicker)
 {
@@ -650,9 +647,7 @@ network::connection game::kick_member(const simple_wml::node& kick,
 	send_and_record_server_message((username.to_string() + " has been kicked.").c_str());
 
 	// Tell the user to leave the game.
-	static simple_wml::document leave_game("[leave_game]\n[/leave_game]\n", simple_wml::INIT_COMPRESSED);
-	static const simple_wml::string_span leave_game_data = leave_game.output_compressed();
-	network::send_raw_data(leave_game_data.begin(), leave_game_data.size(), user->first,leave_game.root().first_child().to_string());
+	send_leave_game(user->first);
 	remove_player(user->first);
 	return user->first;
 }
@@ -687,9 +682,7 @@ network::connection game::ban_user(const simple_wml::node& ban,
 	send_and_record_server_message((username.to_string() + " has been banned.").c_str());
 	if (is_member(user->first)) {
 		//tell the user to leave the game.
-		static simple_wml::document leave_game("[leave_game]\n[/leave_game]\n", simple_wml::INIT_COMPRESSED);
-		static const simple_wml::string_span leave_game_data = leave_game.output_compressed();
-		network::send_raw_data(leave_game_data.begin(), leave_game_data.size(), user->first,leave_game.root().first_child().to_string());
+		send_leave_game(user->first);
 		remove_player(user->first);
 		return user->first;
 	}
@@ -832,7 +825,7 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 			simple_wml::document doc;
 			simple_wml::node& rs = doc.root().add_child("random_seed");
 			rs.set_attr_int("seed", seed);
-			send_to_one(doc, user->first, "game replay");
+			wesnothd::send_to_one(doc, user->first, "game replay");
 		}
 	}
 	if (turn->no_children()) {
@@ -956,13 +949,12 @@ bool game::add_player(const network::connection player, bool observer) {
 	DBG_GAME << debug_player_info();
 	// Send the user the game data.
 	//std::cerr << "SENDING LEVEL {{{" << level_.output() << "}}}\n";
-	simple_wml::string_span level_data = level_.output_compressed();
-	network::send_raw_data(level_data.begin(), level_data.size(), player,"game_level");
+	if (!wesnothd::send_to_one(level_, player)) return false;
+
 	if(started_) {
 		//tell this player that the game has started
 		static simple_wml::document start_game_doc("[start_game]\n[/start_game]\n", simple_wml::INIT_COMPRESSED);
-		static const simple_wml::string_span start_game = start_game_doc.output_compressed();
-		network::send_raw_data(start_game.begin(), start_game.size(), player,start_game_doc.root().first_child().to_string());
+		if (!wesnothd::send_to_one(start_game_doc, player)) return false;
 		// Send observer join of all the observers in the game to the new player
 		// only once the game started. The client forgets about it anyway
 		// otherwise.
@@ -1096,8 +1088,7 @@ void game::load_next_scenario(const player_map::const_iterator user) const {
 	send_server_message_to_all((user->second.name() + " advances to the next scenario").c_str(), user->first);
 	simple_wml::document cfg_scenario;
 	level_.root().copy_into(cfg_scenario.root().add_child("next_scenario"));
-	simple_wml::string_span data = cfg_scenario.output_compressed();
-	network::send_raw_data(data.begin(), data.size(), user->first, cfg_scenario.root().first_child().to_string());
+	if (!wesnothd::send_to_one(cfg_scenario, user->first)) return;
 	// Send the player the history of the game to-date.
 	send_history(user->first);
 	// Send observer join of all the observers in the game to the user.
@@ -1176,8 +1167,7 @@ void game::send_observerjoins(const network::connection sock) const {
 			send_data(cfg, *ob);
 		} else {
 			// Send to the (new) user.
-			const simple_wml::string_span& data = cfg.output_compressed();
-			network::send_raw_data(data.begin(), data.size(), sock);
+			wesnothd::send_to_one(cfg, sock);
 		}
 	}
 }
@@ -1218,7 +1208,7 @@ void game::send_history(const network::connection sock) const
 		history_.clear();
 		history_.push_back(doc);
 	} catch (simple_wml::error& e) {
-		WRN_CONFIG << "simple_wml error: " << e.message << std::endl;
+		WRN_CONFIG << __func__ << ": simple_wml error: " << e.message << std::endl;
 	}
 
 }
@@ -1276,7 +1266,7 @@ void game::save_replay() {
 			ERR_GAME << "Could not save replay! (" << filename << ")\n";
 		}
 	} catch (simple_wml::error& e) {
-		WRN_CONFIG << "simple_wml error: " << e.message << std::endl;
+		WRN_CONFIG << __func__ << ": simple_wml error: " << e.message << std::endl;
 	}
 }
 
@@ -1392,7 +1382,7 @@ void game::send_server_message(const char* message, network::connection sock, si
 	}
 
 	if(sock) {
-		send_to_one(doc, sock, "message");
+		wesnothd::send_to_one(doc, sock, "message");
 	}
 }
-}
+} // namespace wesnothd

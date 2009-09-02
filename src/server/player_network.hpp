@@ -50,7 +50,7 @@ player_map::const_iterator find_user(const player_map& all_players,
  * @param sock        the socket id to send to
  * @param packet_type the packet type, if empty the root node name is used
  */
-void send_to_one(simple_wml::document& data,
+bool send_to_one(simple_wml::document& data,
 				 const network::connection sock,
 				 std::string packet_type = "");
 

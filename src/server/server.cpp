@@ -152,8 +152,12 @@ void send_doc(simple_wml::document& doc, network::connection connection, std::st
 {
 	if (type.empty())
 		type = doc.root().first_child().to_string();
-	simple_wml::string_span s = doc.output_compressed();
-	network::send_raw_data(s.begin(), s.size(), connection, type);
+	try {
+		simple_wml::string_span s = doc.output_compressed();
+		network::send_raw_data(s.begin(), s.size(), connection, type);
+	} catch (simple_wml::error& e) {
+		WRN_CONFIG << __func__ << ": simple_wml error: " << e.message << std::endl;
+	}
 }
 
 void make_add_diff(const simple_wml::node& src, const char* gamelist,
@@ -264,7 +268,8 @@ std::string player_status(wesnothd::player_map::const_iterator pl) {
 	return out.str();
 }
 
-}
+} // namespace
+
 class fps_limiter {
 	size_t start_ticks_;
 	size_t ms_per_frame_;
@@ -356,16 +361,14 @@ void server::send_error(network::connection sock, const char* msg, const char* e
 	simple_wml::document doc;
 	doc.root().add_child("error").set_attr("message", msg);
 	if(strlen(error_code)) (*(doc.root().child("error"))).set_attr("error_code", error_code);
-	simple_wml::string_span output = doc.output_compressed();
-	network::send_raw_data(output.begin(), output.size(), sock, "error");
+	send_doc(doc, sock, "error");
 }
 
 void server::send_error_dup(network::connection sock, const std::string& msg) const
 {
 	simple_wml::document doc;
 	doc.root().add_child("error").set_attr_dup("message", msg.c_str());
-	simple_wml::string_span output = doc.output_compressed();
-	network::send_raw_data(output.begin(), output.size(), sock, "error");
+	send_doc(doc, sock, "error");
 }
 
 void server::send_password_request(network::connection sock, const char* msg,
@@ -393,8 +396,7 @@ void server::send_password_request(network::connection sock, const char* msg,
 			force_confirmation ? "yes" : "no");
 	if(strlen(error_code)) (*(doc.root().child("error"))).set_attr("error_code", error_code);
 
-	simple_wml::string_span output = doc.output_compressed();
-	network::send_raw_data(output.begin(), output.size(), sock);
+	send_doc(doc, sock, "error");
 }
 
 config server::read_config() const {
