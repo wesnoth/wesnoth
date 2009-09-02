@@ -271,9 +271,9 @@ static lg::log_domain log_server("server");
 		return (ip_ & mask_) == (pair.first & mask_);
 	}
 
-	// Unlike match_ip this function takes the mask of the argument to do the matching.
+	// Unlike match_ip this function takes both masks into account.
 	bool banned::match_ipmask(const ip_mask& pair) const {
-		return (ip_ & pair.second) == (pair.first & pair.second);
+		return (ip_ & mask_ & pair.second) == (pair.first & pair.second & mask_);
 	}
 
 	void ban_manager::read()
