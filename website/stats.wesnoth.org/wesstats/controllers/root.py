@@ -74,9 +74,10 @@ class RootController(BaseController):
 		log_type = "singleplayer" #possible values are singleplayer,multiplayer,ai
 		if wml_tree["game"]["campaign"] == "multiplayer":
 			log_type = "multiplayer"
-		if wml_tree["game"].has_key("upload_log"):
+		if wml_tree["game"].has_key("upload_log") and log_type == "multiplayer":
 			if wml_tree["game"]["upload_log"].has_key("ai_log"):
 				log_type = "ai"
+		log.debug("received log_type: "+log_type)
 	
 		map = wml_tree["game"]["map_data"]
 		#decode the map data to a standard map definition
