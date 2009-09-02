@@ -736,16 +736,8 @@ class WmllintIterator(WmlIterator):
             print >>sys.stderr, item,
         print >>sys.stderr #terminate line
 
-def sanity_check(filename, lines):
-    "Perform sanity and consistency checks on input lines."
-    for nav in WmllintIterator(lines, filename):
-        # Check for things marked translated that aren't strings
-        if "_" in nav.text and not "wmllint: ignore" in nav.text:
-            m = re.search(r'[=(]\s*_\s+("?)', nav.text)
-            if m and not m.group(1):
-                msg = '"%s", line %d: translatability mark before non-string' % \
-                      (nav.fname, nav.lineno+1)
-                print msg
+def global_sanity_check(filename, lines):
+    "Perform sanity and consistency checks on input files."
     # Sanity-check abilities and traits against notes macros.
     # Note: This check is disabled on units derived via [base_unit].
     # Also, build dictionaries of unit movement types and races
@@ -1408,9 +1400,15 @@ def hack_syntax(filename, lines):
     # More syntax transformations would go here.
     return lines
 
-def local_checks(filename, nav, key, prefix, value, comment):
+def local_sanity_check(filename, nav, key, prefix, value, comment):
+    "Sanity checks that don't require file context or globals."
     errlead = '"%s", line %d: ' %  (filename, nav.lineno+1)
     above = nav.ancestors()
+    # Check for things marked translated that aren't strings
+    if "_" in nav.text and not "wmllint: ignore" in nav.text:
+        m = re.search(r'[=(]\s*_\s+("?)', nav.text)
+        if m and not m.group(1):
+            print errlead + 'translatability mark before non-string'
     # Check for fluky credit parts
     if above and above[-1] == "[entry]":
         if key == "email" and " " in value:
@@ -1696,11 +1694,11 @@ def translator(filename, mapxforms, textxform):
         for nav in WmllintIterator(newdata, filename):
             try:
                 (key, prefix, value, comment) = parse_attribute(nav.text)
-                local_checks(filename, nav, key, prefix, value, comment)
+                local_sanity_check(filename, nav, key, prefix, value, comment)
             except TypeError:
                 pass
-        # Perform semantic sanity checks
-        newdata = sanity_check(filename, newdata)
+        # Perform file-global semantic sanity checks
+        newdata = global_sanity_check(filename, newdata)
         # OK, now perform WML rewrites
         newdata = hack_syntax(filename, newdata)
         # Run everything together
