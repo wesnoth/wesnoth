@@ -34,7 +34,6 @@ double heuristic(const map_location& src, const map_location& dst)
 	// We will mainly use the distances in hexes
 	// but we substract a tiny bonus for shorter Euclidean distance
 	// based on how the path looks on the screen.
-	// We must substract (and not add) to keep the heuristic 'admissible'.
 
 	// 0.75 comes frome the horizontal hex imbrication
 	double xdiff = (src.x - dst.x) * 0.75;
@@ -44,8 +43,11 @@ double heuristic(const map_location& src, const map_location& dst)
 	// we assume a map with a maximum diagonal of 300 (bigger than a 200x200)
 	// and we divide by 90000 * 10000 to avoid interfering with the defense subcost
 	// (see shortest_path_calculator::cost)
-	return distance_between(src, dst) -
-			(90000.0 - ( xdiff*xdiff + ydiff*ydiff)) / 900000000.0;
+	// NOTE: In theory, such heuristic is barely 'admissible' for A*,
+	// But not a problem for our current A* (we use heuristic only for speed)
+	// Plus, the euclidian fraction stay below the 1MP minumum and is also
+	// a good heuristic, so we still find the shortest path efficiently.
+	return distance_between(src, dst) + (xdiff*xdiff + ydiff*ydiff) / 900000000.0;
 
 	// TODO: move the heuristic function into the cost_calculator
 	// so we can use case-specific heuristic
