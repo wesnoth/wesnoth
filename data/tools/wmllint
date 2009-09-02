@@ -859,6 +859,41 @@ def global_sanity_check(filename, lines):
                     traits.append(p)
                 if q in nav.text:
                     notes.append(q)
+    # Detect units that speak in their death events
+    filter_subject = None
+    die_event = False
+    for nav in WmllintIterator(lines, filename):
+        if "[/event]" in nav.text:
+            filter_subject = None
+            die_event = False
+        elif not nav.ancestors():
+            continue
+        elif "[event]" in nav.ancestors():
+            parent = nav.ancestors()[-1]
+            if parent == "[event]":
+                # Check if it's a death event
+                fields = parse_attribute(nav.text)
+                if fields:
+                    (key, prefix, value, comment) = fields 
+                    if key == 'name' and value == 'die':
+                        die_event = True
+            elif parent == "[filter]":
+                # Check to see if it has a filter subject
+                if "id" in nav.text:
+                    try:
+                        (key,prefix,value,comment) = parse_attribute(nav.text)
+                        filter_subject = value
+                    except TypeError:
+                        pass
+            elif die_event and filter_subject and parent == "[message]":
+                # Who is speaking?
+                fields = parse_attribute(nav.text)
+                if fields:
+                    (key, prefix, value, comment) = fields 
+                    if key in ("id", "speaker"):
+                        if (value == filter_subject) or (value == "unit"):
+                            print '"%s", line %d: %s speaks in his/her death event' % (filename, nav.lineno+1, value)
+                        filter_subject = None
     # Collect information on defined movement types and races
     for nav in WmllintIterator(lines, filename):
         above = nav.ancestors()
