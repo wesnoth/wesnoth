@@ -736,6 +736,32 @@ class WmllintIterator(WmlIterator):
             print >>sys.stderr, item,
         print >>sys.stderr #terminate line
 
+def local_sanity_check(filename, nav, key, prefix, value, comment):
+    "Sanity checks that don't require file context or globals."
+    errlead = '"%s", line %d: ' %  (filename, nav.lineno+1)
+    ancestors = nav.ancestors()
+    parent = ancestors and ancestors[-1]
+    in_definition = "#define" in ancestors
+    in_call = filter(lambda x: x.startswith("{"), ancestors)
+    # Check for things marked translated that aren't strings
+    if "_" in nav.text and not "wmllint: ignore" in nav.text:
+        m = re.search(r'[=(]\s*_\s+("?)', nav.text)
+        if m and not m.group(1):
+            print errlead + 'translatability mark before non-string'
+    # Check for fluky credit parts
+    if parent == "[entry]":
+        if key == "email" and " " in value:
+            print errlead + 'space in email name'
+    # Check for various things that shouldn't be outside an [ai] tag
+    if not in_definition and not in_call and not "[ai]" in ancestors:
+        if key in ("number_of_possible_recruits_to_force_recruit",
+                   "recruitment_ignore_bad_movement",
+                   "recruitment_ignore_bad_combat",
+                   "recruitment_pattern",
+                   "villages_per_scout", "leader_value", "village_value",
+                   "aggression", "caution", "attack_depth", "grouping"):
+            print errlead + key + " outside [ai] scope"
+
 def global_sanity_check(filename, lines):
     "Perform sanity and consistency checks on input files."
     # Sanity-check abilities and traits against notes macros.
@@ -933,50 +959,6 @@ def global_sanity_check(filename, lines):
                               % (filename, i+1, value)
                 except ValueError:
                     pass	# Ignore ill-formed integer literals
-            elif key == "number_of_possible_recruits_to_force_recruit" and value:
-                if not in_ai:
-                    print '"%s", line %d: number_of_possible_recruits_to_force_recruit outside [ai]' \
-                              % (filename, i+1)
-            elif key == "villages_per_scout" and value:
-                if not in_ai:
-                    print '"%s", line %d: villages_per_scout outside [ai]' \
-                              % (filename, i+1)
-            elif key == "leader_value" and value:
-                if not in_ai:
-                    print '"%s", line %d: leader_value outside [ai]' \
-                              % (filename, i+1)
-            elif key == "village_value" and value:
-                if not in_ai:
-                    print '"%s", line %d: village_value outside [ai]' \
-                              % (filename, i+1)
-            elif key == "aggression" and value:
-                if not in_ai:
-                    print '"%s", line %d: aggression outside [ai]' \
-                              % (filename, i+1)
-            elif key == "caution" and value:
-                if not in_ai:
-                    print '"%s", line %d: caution outside [ai]' \
-                              % (filename, i+1)
-            elif key == "recruitment_ignore_bad_movement" and value:
-                if not in_ai:
-                    print '"%s", line %d: recruitment_ignore_bad_movement outside [ai]' \
-                              % (filename, i+1)
-            elif key == "recruitment_ignore_bad_combat" and value:
-                if not in_ai:
-                    print '"%s", line %d: recruitment_ignore_bad_combat outside [ai]' \
-                              % (filename, i+1)
-            elif key == "recruitment_pattern" and value:
-                if not in_ai:
-                    print '"%s", line %d: recruitment_pattern outside [ai]' \
-                              % (filename, i+1)
-            elif key == "attack_depth" and value:
-                if not in_ai:
-                    print '"%s", line %d: attack_depth outside [ai]' \
-                              % (filename, i+1)
-            elif key == "grouping" and value:
-                if not in_ai:
-                    print '"%s", line %d: grouping outside [ai]' \
-                              % (filename, i+1)
         except TypeError:
             pass
     # Interpret various magic comments
@@ -1399,20 +1381,6 @@ def hack_syntax(filename, lines):
             lines[i] = re.sub(r"terrain([^_])", r"terrain_type\1", lines[i])
     # More syntax transformations would go here.
     return lines
-
-def local_sanity_check(filename, nav, key, prefix, value, comment):
-    "Sanity checks that don't require file context or globals."
-    errlead = '"%s", line %d: ' %  (filename, nav.lineno+1)
-    above = nav.ancestors()
-    # Check for things marked translated that aren't strings
-    if "_" in nav.text and not "wmllint: ignore" in nav.text:
-        m = re.search(r'[=(]\s*_\s+("?)', nav.text)
-        if m and not m.group(1):
-            print errlead + 'translatability mark before non-string'
-    # Check for fluky credit parts
-    if above and above[-1] == "[entry]":
-        if key == "email" and " " in value:
-            print errlead + 'space in email name'
 
 # Generic machinery starts here
 
