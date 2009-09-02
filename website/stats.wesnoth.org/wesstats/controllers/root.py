@@ -49,13 +49,17 @@ class RootController(BaseController):
 		conn.close()
 		return dict(views=views)
 
-	@expose(template="wesstats.templates.addview")
+	#@expose(template="wesstats.templates.addview")
 	def addview(self):
 		return dict()
 
-	@expose()
+	@expose("wesstats.templates.upload")
 	def upload(self, **kw):
 		raw_log = pylons.request.body
+		if len(raw_log) == 0:
+			log.debug("uploader pageview")
+			return dict(status="this is not the page you're looking for.")
+			
 		#check for gzip compression
 		if raw_log[0] == '\037' and raw_log[1] == '\213':
 			#try to decompress log
@@ -162,9 +166,7 @@ class RootController(BaseController):
 				int(units_loser),
 				int(gold_winner),
 				int(gold_loser)) #19 cols
-			print "preinsert"
 			curs.execute("INSERT INTO GAMES_AI VALUES (DEFAULT,NOW(),%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",params)
-			print "postinsert"
 
 		kill_events = wml_tree["game"].setdefault("kill_event",[])
 		for kill in kill_events:
@@ -199,9 +201,9 @@ class RootController(BaseController):
 		conn.commit()
 		conn.close()
 		log.debug("upload OK")
-		return dict()
+		return dict(status="uploaded")
 	
-	@expose(template="wesstats.templates.deleteview")
+	#@expose(template="wesstats.templates.deleteview")
 	def deleteview(self,**kw):
 		conn = MySQLdb.connect(configuration.DB_HOSTNAME,configuration.DB_USERNAME,configuration.DB_PASSWORD,configuration.DB_NAME,use_unicode=True)
 		curs = conn.cursor()
