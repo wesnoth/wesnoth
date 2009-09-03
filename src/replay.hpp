@@ -44,7 +44,7 @@ public:
 
 	void add_start();
 	void add_recruit(int unit_index, const map_location& loc);
-	void add_recall(int unit_index, const map_location& loc);
+	void add_recall(const std::string& unit_id, const map_location& loc);
 	void add_disband(int unit_index);
 	void add_countdown_update(int value,int team);
 	void add_movement(const std::vector<map_location>& steps);

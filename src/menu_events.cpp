@@ -52,6 +52,8 @@
 #include "scripting/lua.hpp"
 #include "widgets/combo.hpp"
 
+#include <boost/bind.hpp>
+
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -935,8 +937,8 @@ private:
 			gui2::show_transient_message(gui_->video(), "", err);
 			return;
 		}
-		recorder.add_recall(res, loc);
 		unit &un = recall_list_team[res];
+		recorder.add_recall(un.id(), loc);
 		un.set_game_context(&units_);
 		place_recruit(un, loc, true, true);
 		statistics::recall_unit(un);
@@ -990,9 +992,9 @@ private:
 				statistics::un_recall_unit(un);
 				current_team.spend_gold(-game_config::recall_cost);
 
-				current_team.recall_list().insert(current_team.recall_list().begin()+action.recall_pos,un);
+				current_team.recall_list().push_back(un);
 				// invalidate before erasing allow us
-				// to also do the ovelerlapped hexes
+				// to also do the overlapped hexes
 				gui_->invalidate(action.recall_loc);
 				units_.erase(action.recall_loc);
 				gui_->draw();
@@ -1097,17 +1099,22 @@ private:
 			} else {
 				// Redo recall
 
-				recorder.add_recall(action.recall_pos,action.recall_loc);
+				recorder.add_recall(action.affected_unit.id(), action.recall_loc);
 				map_location loc = action.recall_loc;
 				const events::command_disabler disable_commands;
 				const std::string &msg = find_recruit_location(side_num, loc);
 				if(msg.empty()) {
-					unit un = current_team.recall_list()[action.recall_pos];
+					unit un = action.affected_unit;
 					un.set_game_context(&units_);
 					place_recruit(un, loc, true, true);
 					statistics::recall_unit(un);
 					current_team.spend_gold(game_config::recall_cost);
-					current_team.recall_list().erase(current_team.recall_list().begin()+action.recall_pos);
+
+					//remove the unit from the recall list
+					std::vector<unit>::iterator unit_it = std::find_if(current_team.recall_list().begin(), 
+						current_team.recall_list().end(), boost::bind(&unit::matches_id, _1, action.affected_unit.id()));
+					assert(unit_it != current_team.recall_list().end());
+					current_team.recall_list().erase(unit_it);
 
 					gui_->invalidate(loc);
 					gui_->draw();

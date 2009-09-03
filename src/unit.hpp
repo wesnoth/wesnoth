@@ -165,6 +165,7 @@ public:
 	bool has_moved() const { return movement_left() != total_movement(); }
 	bool has_goto() const { return get_goto().valid(); }
 	bool emits_zoc() const { return emit_zoc_ && !incapacitated();}
+	bool matches_id(const std::string& unit_id) const;
 	/* cfg: standard unit filter */
 	bool matches_filter(const vconfig& cfg,const map_location& loc,bool use_flat_tod=false) const;
 	void add_overlay(const std::string& overlay) { overlays_.push_back(overlay); }

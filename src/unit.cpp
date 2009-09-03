@@ -3226,3 +3226,7 @@ std::string get_checksum(const unit& u) {
 	return wcfg.hash();
 }
 
+bool unit::matches_id(const std::string& unit_id) const
+{
+	return id_ == unit_id;
+}

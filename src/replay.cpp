@@ -34,6 +34,8 @@
 #include "statistics.hpp"
 #include "wesconfig.h"
 
+#include <boost/bind.hpp>
+
 static lg::log_domain log_replay("replay");
 #define DBG_REPLAY LOG_STREAM(debug, log_replay)
 #define LOG_REPLAY LOG_STREAM(info, log_replay)
@@ -193,13 +195,13 @@ void replay::add_recruit(int value, const map_location& loc)
 	cmd->add_child("recruit",val);
 }
 
-void replay::add_recall(int value, const map_location& loc)
+void replay::add_recall(const std::string& unit_id, const map_location& loc)
 {
 	config* const cmd = add_command();
 
 	config val;
 
-	val["value"] = str_cast(value);
+	val["value"] = unit_id;
 
 	loc.write(val);
 
@@ -972,21 +974,20 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				replay::throw_error("illegal recall\n");
 			}
 
-			sort_units(current_team.recall_list());
-
-			const std::string& recall_num = child["value"];
-			const int val = lexical_cast_default<int>(recall_num);
-
+			const std::string& unit_id = child["value"];
 			map_location loc(child, resources::state_of_game);
 
-			if(val >= 0 && val < int(current_team.recall_list().size())) {
-				statistics::recall_unit(current_team.recall_list()[val]);
-				current_team.recall_list()[val].set_game_context(resources::units);
-				place_recruit(current_team.recall_list()[val], loc, true, !get_replay_source().is_skipping());
-				current_team.recall_list().erase(current_team.recall_list().begin()+val);
+			std::vector<unit>::iterator recall_unit = std::find_if(current_team.recall_list().begin(), 
+				current_team.recall_list().end(), boost::bind(&unit::matches_id, _1, unit_id));
+
+			if (recall_unit != current_team.recall_list().end()) {
+				statistics::recall_unit(*recall_unit);
+				(*recall_unit).set_game_context(resources::units);
+				place_recruit(*recall_unit, loc, true, !get_replay_source().is_skipping());
+				current_team.recall_list().erase(recall_unit);
 				current_team.spend_gold(game_config::recall_cost);
 			} else {
-				replay::throw_error("illegal recall\n");
+				replay::throw_error("illegal recall: unit_id '" + unit_id + "' could not be found within the recall list.\n");
 			}
 			fix_shroud = !get_replay_source().is_skipping();
 			check_checksums(*cfg);
