@@ -107,6 +107,8 @@ public:
 	void load_game(std::string& filename, bool show_replay, bool cancel_orders);
 	/** Loading a game from within the multiplayer-create dialog. */
 	void load_multiplayer_game();
+	/** Populates the level-config for multiplayer from the loaded savegame information. */
+	void fill_mplevel_config(config& level);
 	/** Generate the gamestate out of the loaded game config. */
 	void set_gamestate();
 

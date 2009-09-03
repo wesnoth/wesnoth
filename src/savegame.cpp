@@ -545,6 +545,53 @@ void loadgame::load_multiplayer_game()
 	check_version_compatibility();
 }
 
+void loadgame::fill_mplevel_config(config& level){
+		level["savegame"] = "yes";
+		// If we have a start of scenario MP campaign scenario the snapshot
+		// is empty the starting position contains the wanted info.
+		const config& start_data = !gamestate_.snapshot.empty() ? gamestate_.snapshot : gamestate_.starting_pos;
+		level["map_data"] = start_data["map_data"];
+		level["id"] = start_data["id"];
+		level["name"] = start_data["name"];
+		level["completion"] = start_data["completion"];
+		level["next_underlying_unit_id"] = start_data["next_underlying_unit_id"];
+		// Probably not needed.
+		level["turn"] = start_data["turn_at"];
+		level["turn_at"] = start_data["turn_at"];
+		level["turns"] = start_data["turns"];
+		level["mp_use_map_settings"] = start_data["mp_use_map_settings"];
+		level["mp_village_gold"] = start_data["mp_village_gold"];
+		level["mp_fog"] = start_data["mp_fog"];
+		level["mp_shroud"] = start_data["mp_shroud"];
+		level["mp_countdown"] = start_data["mp_countdown"];
+		level["mp_countdown_init_time"] = start_data["mp_countdown_init_time"];
+		level["mp_countdown_turn_bonus"] = start_data["mp_countdown_turn_bonus"];
+		level["mp_countdown_action_bonus"] = start_data["mp_countdown_action_bonus"];
+		level["experience_modifier"] = start_data["experience_modifier"];
+		level["observer"] = start_data["observer"];
+		//Start-of-scenario save
+		if(gamestate_.snapshot.empty()){
+			//For a start-of-scenario-save, write the data to the starting_pos and not the snapshot, since
+			//there should only be snapshots for midgame reloads
+			if (config &c = level.child("replay_start")) {
+				c.merge_with(start_data);
+			} else {
+				level.add_child("replay_start") = start_data;
+			}
+			level.add_child("snapshot") = config();
+		} else {
+			level.add_child("snapshot") = start_data;
+			level.add_child("replay_start") = gamestate_.starting_pos;
+		}
+		level["random_seed"] = start_data["random_seed"];
+		level["random_calls"] = start_data["random_calls"];
+
+		// Adds the replay data, and the replay start, to the level,
+		// so clients can receive it.
+		level.add_child("replay") = gamestate_.replay_data;
+		level.add_child("statistics") = statistics::write_stats();
+}
+
 void loadgame::copy_era(config &cfg)
 {
 	const config &replay_start = cfg.child("replay_start");

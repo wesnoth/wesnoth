@@ -1525,57 +1525,12 @@ void connect::load_game()
 		try{
 			savegame::loadgame load(disp(), game_config(), state_);
 			load.load_multiplayer_game();
+			load.fill_mplevel_config(level_);
 		}
 		catch (load_game_cancelled_exception){
 			set_result(CREATE);
 			return;
 		}
-
-		level_["savegame"] = "yes";
-		// If we have a start of scenario MP campaign scenario the snapshot
-		// is empty the starting position contains the wanted info.
-		const config& start_data = !state_.snapshot.empty() ? state_.snapshot : state_.starting_pos;
-		level_["map_data"] = start_data["map_data"];
-		level_["id"] = start_data["id"];
-		level_["name"] = start_data["name"];
-		level_["completion"] = start_data["completion"];
-		level_["next_underlying_unit_id"] = start_data["next_underlying_unit_id"];
-		// Probably not needed.
-		level_["turn"] = start_data["turn_at"];
-		level_["turn_at"] = start_data["turn_at"];
-		level_["turns"] = start_data["turns"];
-		level_["mp_use_map_settings"] = start_data["mp_use_map_settings"];
-		level_["mp_village_gold"] = start_data["mp_village_gold"];
-		level_["mp_fog"] = start_data["mp_fog"];
-		level_["mp_shroud"] = start_data["mp_shroud"];
-		level_["mp_countdown"] = start_data["mp_countdown"];
-		level_["mp_countdown_init_time"] = start_data["mp_countdown_init_time"];
-		level_["mp_countdown_turn_bonus"] = start_data["mp_countdown_turn_bonus"];
-		level_["mp_countdown_action_bonus"] = start_data["mp_countdown_action_bonus"];
-		level_["experience_modifier"] = start_data["experience_modifier"];
-		level_["observer"] = start_data["observer"];
-		//Start-of-scenario save
-		if(state_.snapshot.empty()){
-			//For a start-of-scenario-save, write the data to the starting_pos and not the snapshot, since
-			//there should only be snapshots for midgame reloads
-			if (config &c = level_.child("replay_start")) {
-				c.merge_with(start_data);
-			} else {
-				level_.add_child("replay_start") = start_data;
-			}
-			level_.add_child("snapshot") = config();
-		} else {
-			level_.add_child("snapshot") = start_data;
-			level_.add_child("replay_start") = state_.starting_pos;
-		}
-		level_["random_seed"] = start_data["random_seed"];
-		level_["random_calls"] = start_data["random_calls"];
-
-		// Adds the replay data, and the replay start, to the level,
-		// so clients can receive it.
-		level_.add_child("replay") = state_.replay_data;
-		level_.add_child("statistics") = statistics::write_stats();
-
 	} else {
 		level_["savegame"] = "no";
 		level_ = params_.scenario_data;
