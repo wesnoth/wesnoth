@@ -18,6 +18,7 @@
  * @file ai/contexts.cpp
  */
 
+#include "actions.hpp"
 #include "contexts.hpp"
 #include "manager.hpp"
 

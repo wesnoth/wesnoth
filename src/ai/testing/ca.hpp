@@ -1,4 +1,5 @@
 /* $Id$ */
+
 /*
    Copyright (C) 2009 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
@@ -151,7 +152,14 @@ public:
 	virtual double evaluate();
 
 	virtual bool execute();
+private:
 
+	void remove_goal(const std::string &id);
+
+	bool auto_remove_;
+	map_location dst_;
+	std::string id_;
+	move_result_ptr move_;
 };
 
 //============================================================================
@@ -318,6 +326,7 @@ private:
 	move_result_ptr move_;
 };
 
+
 //============================================================================
 
 class leader_control_phase : public candidate_action {
@@ -330,7 +339,6 @@ public:
 	virtual double evaluate();
 
 	virtual bool execute();
-
 };
 
 

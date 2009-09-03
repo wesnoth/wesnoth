@@ -24,7 +24,6 @@
 class game_display;
 class gamemap;
 
-#include "actions.hpp"
 #include "game_info.hpp"
 #include "../game_display.hpp"
 #include "../gamestatus.hpp"

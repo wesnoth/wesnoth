@@ -20,6 +20,7 @@
 #include "../../global.hpp"
 
 #include "ai.hpp"
+#include "../actions.hpp"
 #include "../manager.hpp"
 
 #include "../../attack_prediction.hpp"

@@ -17,6 +17,7 @@
 #include "../../global.hpp"
 
 #include "ai.hpp"
+#include "../actions.hpp"
 
 #include "../../foreach.hpp"
 #include "../../log.hpp"

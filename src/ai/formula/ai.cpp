@@ -27,6 +27,7 @@
 #include "callable_objects.hpp"
 #include "function_table.hpp"
 
+#include "../actions.hpp"
 #include "../manager.hpp"
 
 #include "../../foreach.hpp"

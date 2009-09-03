@@ -61,26 +61,26 @@ bool component::delete_child(const path_element &/*child*/)
 
 /*
 [modify_ai]
-    path = "stage['fallback']
+    path = "stage[fallback]
     action = "change"
-    [cfg]...[/cfg]
+    [stage]...[/stage]
 [/modify_ai]
 
 [modify_ai]
-    component = "aspect['avoid'].facet['zzz']"
+    component = "aspect[avoid].facet[zzz]"
     action = "change"
-    [cfg]...[/cfg]
+    [facet]...[/facet]
 [/modify_ai]
 
 [modify_ai]
-    path = "aspect['aggression'].facet['zzzz']
+    path = "aspect[aggression].facet[zzzz]
     action = "delete"
 [/modify_ai]
 
 [modify_ai]
-    component = "aspect['aggression'].facet"
+    component = "aspect[aggression].facet"
     action = "add"
-    [cfg]...[/cfg]
+    [facet]...[/facet]
 [/modify_ai]
 */
 
@@ -92,7 +92,7 @@ static component *find_component(component *root, const std::string &path, path_
 	}
 
 	//match path elements in [modify_ai] tag
-	boost::regex re("([^\\.^\\[]+)(\\['([^\\]]+)'\\]|\\[(\\d*)\\]|())");
+	boost::regex re("([^\\.^\\[]+)(\\[(\\d*)\\]|\\[([^\\]]+)\\]|())");
 	int const sub_matches[] = {1,3,4};
 	boost::sregex_token_iterator i(path.begin(), path.end(), re, sub_matches);
 	boost::sregex_token_iterator j;
@@ -104,8 +104,8 @@ static component *find_component(component *root, const std::string &path, path_
 	{
 		path_element pe;
 		pe.property = *i++;
-		pe.id = *i++;
 		std::string position = *i++;
+		pe.id = *i++;
 		if (position.empty()) {
 			pe.position = -2;
 		} else {
@@ -144,7 +144,11 @@ bool component_manager::add_component(component *root, const std::string &path, 
 	if (c==NULL) {
 		return false;
 	}
-	return c->add_child(tail, cfg);
+	const config &ch = cfg.child(tail.property);
+	if (!ch) {
+		return false;
+	}
+	return c->add_child(tail, ch);
 
 }
 
@@ -155,7 +159,11 @@ bool component_manager::change_component(component *root, const std::string &pat
 	if (c==NULL) {
 		return false;
 	}
-	return c->change_child(tail,cfg);
+	const config &ch = cfg.child(tail.property);
+	if (!ch) {
+		return false;
+	}
+	return c->change_child(tail,ch);
 }
 
 bool component_manager::delete_component(component *root, const std::string &path)
@@ -165,7 +173,6 @@ bool component_manager::delete_component(component *root, const std::string &pat
 	if (c==NULL) {
 		return false;
 	}
-
 	return c->delete_child(tail);
 }
 

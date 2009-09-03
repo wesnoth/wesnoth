@@ -18,6 +18,8 @@
  */
 
 #include "ca.hpp"
+#include "../actions.hpp"
+#include "../manager.hpp"
 #include "../composite/engine.hpp"
 #include "../composite/rca.hpp"
 #include "../../foreach.hpp"
@@ -57,7 +59,7 @@ double goto_phase::evaluate()
 bool goto_phase::execute()
 {
 	ERR_AI_TESTING_AI_DEFAULT << get_name() << ": execute - not yet implemented" << std::endl;
-	return true;
+	return false;
 }
 
 //==============================================================
@@ -687,7 +689,7 @@ bool combat_phase::execute()
 //==============================================================
 
 move_leader_to_goals_phase::move_leader_to_goals_phase( rca_context &context, const config &cfg )
-	: candidate_action(context,cfg)
+	: candidate_action(context,cfg), auto_remove_(), dst_(), id_(), move_()
 {
 }
 
@@ -697,14 +699,107 @@ move_leader_to_goals_phase::~move_leader_to_goals_phase()
 
 double move_leader_to_goals_phase::evaluate()
 {
-	ERR_AI_TESTING_AI_DEFAULT << get_name() << ": evaluate - not yet implemented!" << std::endl;
+	const config &goal = get_leader_goal();
+
+	if (!goal) {
+		LOG_AI_TESTING_AI_DEFAULT << get_name() << "No goal found\n";
+		return BAD_SCORE;
+	}
+
+	if (goal.empty()) {
+		LOG_AI_TESTING_AI_DEFAULT << get_name() << "Empty goal found\n";
+		return BAD_SCORE;
+	}
+
+	double max_risk = lexical_cast_default<double>(goal["max_risk"],1-get_caution());
+	auto_remove_ = utils::string_bool(goal["auto_remove"],false);
+
+	dst_ = map_location(goal, &get_info().game_state_);
+	if (!dst_.valid()) {
+		ERR_AI_TESTING_AI_DEFAULT << "Invalid goal: "<<std::endl<<goal;
+		return BAD_SCORE;
+	}
+
+	const unit_map::iterator leader = get_info().units.find_leader(get_side());
+	if(!leader.valid() || leader->second.incapacitated()) {
+		WRN_AI_TESTING_AI_DEFAULT << "Leader not found\n";
+		return BAD_SCORE;
+	}
+
+	id_ = goal["id"];
+	if (leader->first==dst_) {
+		//goal already reached
+		if (auto_remove_ && !id_.empty()) {
+			remove_goal(id_);
+		} else {
+			move_ = check_move_action(leader->first, leader->first,!auto_remove_);//we do full moves if we don't want to remove goal
+			if (move_->is_ok()) {
+				return get_score();
+			} else {
+				return BAD_SCORE;
+			}
+		}
+	}
+
+	shortest_path_calculator calc(leader->second, current_team(), get_info().units, get_info().teams, get_info().map);
+	plain_route route = a_star_search(leader->first, dst_, 1000.0, &calc,
+			get_info().map.w(), get_info().map.h());
+	if(route.steps.empty()) {
+		LOG_AI_TESTING_AI_DEFAULT << "route empty";
+		return BAD_SCORE;
+	}
+
+	const paths leader_paths(get_info().map, get_info().units, leader->first,
+				 get_info().teams, false, false, current_team());
+
+	std::map<map_location,paths> possible_moves;
+	possible_moves.insert(std::pair<map_location,paths>(leader->first,leader_paths));
+
+	map_location loc;
+	foreach (const map_location &l, route.steps)
+	{
+		if (leader_paths.destinations.contains(l) &&
+		    power_projection(l, get_enemy_dstsrc()) < double(leader->second.hitpoints())*max_risk)
+		{
+			loc = l;
+		}
+	}
+
+	if(loc.valid()) {
+		move_ = check_move_action(leader->first,loc,false);
+		if (move_->is_ok()) {
+			return get_score();
+		}
+	}
 	return BAD_SCORE;
+
 }
 
 bool move_leader_to_goals_phase::execute()
 {
-	ERR_AI_TESTING_AI_DEFAULT << get_name() << ": execute - not yet implemented!" << std::endl;
-	return true;
+	bool gamestate_changed = false;
+	move_->execute();
+	if (!move_->is_ok()){
+		LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute not ok" << std::endl;
+	}
+	gamestate_changed |= move_->is_gamestate_changed();
+	if (move_->get_unit_location()==dst_) {
+		//goal already reached
+		if (auto_remove_ && !id_.empty()) {
+			remove_goal(id_);
+		}
+	}
+			
+	return gamestate_changed;
+}
+
+void move_leader_to_goals_phase::remove_goal(const std::string &id)
+{
+	config mod_ai;
+	mod_ai["side"] = lexical_cast<std::string>(get_side());
+	mod_ai["path"] = "aspect[leader_goal].facet["+id+"]";
+	mod_ai["action"] = "delete";
+	manager::modify_active_ai_for_side(get_side(),mod_ai);
 }
 
 //==============================================================
@@ -1903,20 +1998,23 @@ leader_control_phase::leader_control_phase( rca_context &context, const config &
 {
 }
 
+
 leader_control_phase::~leader_control_phase()
 {
 }
 
 double leader_control_phase::evaluate()
 {
-	ERR_AI_TESTING_AI_DEFAULT << get_name() << ": evaluate - not yet implemented!" << std::endl;
+	ERR_AI_TESTING_AI_DEFAULT << get_name() << ": evaluate - not yet implemented" << std::endl;
 	return BAD_SCORE;
 }
 
+
+
 bool leader_control_phase::execute()
 {
-	ERR_AI_TESTING_AI_DEFAULT << get_name() << ": execute - not yet implemented!" << std::endl;
-	return true;
+	ERR_AI_TESTING_AI_DEFAULT << get_name() << ": execute - not yet implemented" << std::endl;	
+	return false;
 }
 
 //==============================================================

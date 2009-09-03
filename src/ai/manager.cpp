@@ -156,15 +156,15 @@ void holder::modify_ai(const config &cfg)
 		// if not initialized, initialize now.
 		get_ai_ref();
 	}
-	LOG_AI_MOD << "side "<< side_ << "        [modify_ai]"<<std::endl;
+	const std::string &act = cfg["action"];
+	LOG_AI_MOD << "side "<< side_ << "        [modify_ai] "<<act<<" \""<<cfg["path"]<<"\""<<std::endl;
 	DBG_AI_MOD << std::endl << cfg << std::endl;
 	DBG_AI_MOD << "side "<< side_ << " before [modify_ai]"<<std::endl << to_config() << std::endl;
-	const std::string &act = cfg["action"];
 	bool res = false;
 	if (act == "add") {
-		res = component_manager::add_component(&*this->ai_,cfg["path"],cfg.child("cfg"));
+		res = component_manager::add_component(&*this->ai_,cfg["path"],cfg);
 	} else if (act == "change") {
-		res = component_manager::change_component(&*this->ai_,cfg["path"],cfg.child("cfg"));
+		res = component_manager::change_component(&*this->ai_,cfg["path"],cfg);
 	} else if (act == "delete") {
 		res = component_manager::delete_component(&*this->ai_,cfg["path"]);
 	} else {

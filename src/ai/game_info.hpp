@@ -71,7 +71,8 @@ class typesafe_aspect;
 
 template<typename T>
 struct aspect_type {
-        typedef boost::shared_ptr< typesafe_aspect<T> > typesafe_ptr;
+	typedef boost::shared_ptr< typesafe_aspect<T> > typesafe_ptr;
+	typedef std::vector< boost::shared_ptr< typesafe_aspect<T> > > typesafe_ptr_vector;
 };
 
 template<typename T>
@@ -79,8 +80,21 @@ class typesafe_known_aspect;
 
 template<typename T>
 struct known_aspect_type {
-        typedef boost::shared_ptr< typesafe_known_aspect<T> > typesafe_ptr;
+	typedef boost::shared_ptr< typesafe_known_aspect<T> > typesafe_ptr;
+	typedef std::vector< boost::shared_ptr< typesafe_known_aspect<T> > > typesafe_ptr_vector;
 };
+
+class attack_result;
+class move_result;
+class recruit_result;
+class stopunit_result;
+class move_and_attack_result;
+
+typedef boost::shared_ptr<attack_result> attack_result_ptr;
+typedef boost::shared_ptr<move_result> move_result_ptr;
+typedef boost::shared_ptr<recruit_result> recruit_result_ptr;
+typedef boost::shared_ptr<stopunit_result> stopunit_result_ptr;
+typedef boost::shared_ptr<move_and_attack_result> move_and_attack_result_ptr;
 
 typedef boost::shared_ptr< aspect > aspect_ptr;
 typedef boost::shared_ptr< candidate_action > candidate_action_ptr;

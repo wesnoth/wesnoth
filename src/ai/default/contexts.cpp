@@ -23,6 +23,7 @@
 #include "../../attack_prediction.hpp"
 #include "../../foreach.hpp"
 #include "../../log.hpp"
+#include "../../map.hpp"
 #include "../composite/goal.hpp"
 
 static lg::log_domain log_ai("ai/general");

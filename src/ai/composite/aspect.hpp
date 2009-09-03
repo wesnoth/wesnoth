@@ -731,7 +731,7 @@ public:
 			std::vector< aspect_ptr > default_aspects;
 			engine::parse_aspect_from_config(*this,_default,this->get_id(),std::back_inserter(default_aspects));
 			if (!default_aspects.empty()) {
-				boost::shared_ptr< typesafe_aspect<T> > b = boost::dynamic_pointer_cast< typesafe_aspect<T> >(default_aspects.front());
+				typename aspect_type<T>::typesafe_ptr b = boost::dynamic_pointer_cast< typesafe_aspect<T> >(default_aspects.front());
 				default_ = b;
 			}
 		}
@@ -742,7 +742,7 @@ public:
 		//@todo 1.7.5 optimize in case of an aspect which returns variant
 		//typedef std::vector< boost::shared_ptr< typesafe_aspect < T > > >::reverse_const_iterator Iter;
 
-		foreach (const boost::shared_ptr<typesafe_aspect <T> > &f, make_pair(facets_.rbegin(),facets_.rend())) {
+		foreach (const typename aspect_type<T>::typesafe_ptr &f, make_pair(facets_.rbegin(),facets_.rend())) {
 			if (f->active()) {
 				this->value_ = boost::shared_ptr<T>(f->get_ptr());
 				this->valid_ = true;
@@ -757,7 +757,7 @@ public:
 	virtual config to_config() const
 	{
 		config cfg = aspect::to_config();
-		foreach (const boost::shared_ptr< typesafe_aspect<T> > f, facets_) {
+		foreach (const typename aspect_type<T>::typesafe_ptr f, facets_) {
 			cfg.add_child("facet",f->to_config());
 		}
 		if (default_) {
@@ -776,7 +776,7 @@ public:
 		engine::parse_aspect_from_config(*this,cfg,this->get_id(),std::back_inserter(facets));
 		int j=0;
 		foreach (aspect_ptr a, facets ){
-			boost::shared_ptr< typesafe_aspect<T> > b = boost::dynamic_pointer_cast< typesafe_aspect<T> > (a);
+			typename aspect_type<T>::typesafe_ptr b = boost::dynamic_pointer_cast< typesafe_aspect<T> > (a);
 			facets_.insert(facets_.begin()+pos+j,b);
 			j++;
 		}
@@ -789,7 +789,7 @@ public:
 		if (child.property!="facet") {
 			return NULL;
 		}
-		typename std::vector< boost::shared_ptr< typesafe_aspect<T> > >::iterator i = std::find_if(facets_.begin(),facets_.end(),path_element_matches< boost::shared_ptr< typesafe_aspect<T> > >(child));
+		typename aspect_type<T>::typesafe_ptr_vector::iterator i = std::find_if(facets_.begin(),facets_.end(),path_element_matches< typename aspect_type<T>::typesafe_ptr >(child));
 		if (i!=facets_.end()){
 			return &*(*i);
 		}
@@ -802,7 +802,7 @@ public:
 		if (child.property!="facet") {
 			return false;
 		}
-		typename std::vector< boost::shared_ptr< typesafe_aspect<T> > >::iterator i = std::find_if(facets_.begin(),facets_.end(),path_element_matches< boost::shared_ptr< typesafe_aspect<T> > >(child));
+		typename aspect_type<T>::typesafe_ptr_vector::iterator i = std::find_if(facets_.begin(),facets_.end(),path_element_matches< typename aspect_type<T>::typesafe_ptr >(child));
 		LOG_STREAM(info, aspect::log()) << "adding a new child facet to composite aspect["<<this->get_id()<<"]"<< std::endl;
 		return add_facet(i-facets_.begin(),cfg);
 	}
@@ -813,7 +813,7 @@ public:
 		if (child.property!="facet") {
 			return false;
 		}
-		typename std::vector< boost::shared_ptr< typesafe_aspect<T> > >::iterator i = std::find_if(facets_.begin(),facets_.end(),path_element_matches< boost::shared_ptr< typesafe_aspect<T> > >(child));
+		typename aspect_type<T>::typesafe_ptr_vector::iterator i = std::find_if(facets_.begin(),facets_.end(),path_element_matches< typename aspect_type<T>::typesafe_ptr >(child));
 		if (i!=facets_.end()){
 			return (*i)->redeploy(cfg,this->get_id());
 		}
@@ -826,17 +826,18 @@ public:
 		if (child.property!="facet") {
 			return false;
 		}
-		typename std::vector< boost::shared_ptr< typesafe_aspect<T> > >::iterator i = std::find_if(facets_.begin(),facets_.end(),path_element_matches< boost::shared_ptr< typesafe_aspect<T> > >(child));
+		typename aspect_type<T>::typesafe_ptr_vector::iterator i = std::find_if(facets_.begin(),facets_.end(),path_element_matches< typename aspect_type<T>::typesafe_ptr >(child));
 		if (i!=facets_.end()) {
 			facets_.erase(i);
+			this->invalidate();//@todo: invalidate only if facet was active
 			return true;
 		}
 		return false;
 	}
 
 protected:
-	std::vector< boost::shared_ptr< typesafe_aspect<T> > > facets_;
-	boost::shared_ptr< typesafe_aspect<T> > default_;
+	typename aspect_type<T>::typesafe_ptr_vector facets_;
+	typename aspect_type<T>::typesafe_ptr default_;
 
 };
 

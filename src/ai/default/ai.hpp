@@ -21,7 +21,6 @@
 
 #include "contexts.hpp"
 
-#include "../actions.hpp"
 #include "../interface.hpp"
 #include "../contexts.hpp"
 #include "../composite/stage.hpp"

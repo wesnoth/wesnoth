@@ -262,12 +262,6 @@ private:
 };
 
 
-
-typedef boost::shared_ptr<attack_result> attack_result_ptr;
-typedef boost::shared_ptr<move_result> move_result_ptr;
-typedef boost::shared_ptr<recruit_result> recruit_result_ptr;
-typedef boost::shared_ptr<stopunit_result> stopunit_result_ptr;
-
 class actions {
 
 public:
