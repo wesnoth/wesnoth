@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-09-03 13:25+0200\n"
-"PO-Revision-Date: 2009-07-19 14:24+0200\n"
+"PO-Revision-Date: 2009-08-26 17:28+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,7 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:53
 msgid "Compressed Saves"
-msgstr "kompresovani upisi"
+msgstr "kompresovane pozicije"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:60
@@ -753,7 +753,8 @@ msgstr ""
 "\n"
 "Kada dobijete scenario, mapa će se zasiveti i dugme „Gotovo“ pri dnu "
 "promeniti u „Kraj“. Pre nego što kliknete na dugme da nastavite, možete "
-"promeniti opcije upisivanja, ili (u višeigranju) popričati sa saigračima."
+"promeniti opcije upisivanja, ili (u višeigračkoj partiji) popričati sa "
+"saigračima."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:164
@@ -2750,7 +2751,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"upisuje igru (bez pitanja).\n"
+"upisuje poziciju (bez pitanja).\n"
 "\n"
 
 #. [topic]: id=general_commands
@@ -2760,7 +2761,7 @@ msgid ""
 "Save the game and quit the scenario (without prompting)."
 msgstr ""
 "\n"
-"napušta scenario uz upisivanje igre (bez pitanja)."
+"napušta scenario uz upisivanje pozicije (bez pitanja)."
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:799
@@ -2776,8 +2777,8 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"zabranjuje igrača po IP adresi koju koristi to korisničko ime, i izbacuje "
-"ga.\n"
+"zabranjuje igrača u višeigračkoj partiji po IP adresi za korisničkim imenom, "
+"i izbacuje ga.\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -7414,7 +7415,7 @@ msgstr "Nema ciljeva"
 
 #: src/dialogs.cpp:249
 msgid "Save Game"
-msgstr "Sačuvaj igru"
+msgstr "Sačuvaj poziciju"
 
 #: src/dialogs.cpp:259
 msgid "Quit Game"
@@ -7429,16 +7430,16 @@ msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
 msgstr ""
-"Imena upisa ne mogu sadržati dvotačke, kose i obrnute kose crte. Zadajte "
+"Imena pozicija ne mogu sadržati dvotačke, kose i obrnute kose crte. Zadajte "
 "drugačije ime."
 
 #: src/dialogs.cpp:294
 msgid "Save names should not end on '.gz'. Please choose a different name."
-msgstr "Imena upisa ne treba završavati sa ‘.gz’. Zadajte drugačije ime."
+msgstr "Imena pozicija ne treba završavati sa ‘.gz’. Zadajte drugačije ime."
 
 #: src/dialogs.cpp:302
 msgid "Save already exists. Do you want to overwrite it?"
-msgstr "Upis već postoji. Želite li da ga prebrišete?"
+msgstr "Pozicija već postoji. Želite li da je prebrišete?"
 
 #: src/dialogs.cpp:303 src/menu_events.cpp:606 src/playcampaign.cpp:418
 msgid "Name: "
@@ -7450,7 +7451,7 @@ msgstr "Prebrisati?"
 
 #: src/dialogs.cpp:341
 msgid "Do you really want to delete this game?"
-msgstr "Želite li zaista da obrišete ovu igru?"
+msgstr "Želite li zaista da obrišete ovu poziciju?"
 
 #: src/dialogs.cpp:343
 msgid "Don't ask me again!"
@@ -7514,7 +7515,7 @@ msgstr "%b %d"
 
 #: src/dialogs.cpp:629
 msgid "No Saved Games"
-msgstr "Nema sačuvanih igara"
+msgstr "Nema pozicija"
 
 #: src/dialogs.cpp:630
 msgid ""
@@ -7522,9 +7523,9 @@ msgid ""
 "\n"
 "(Games are saved automatically when you complete a scenario)"
 msgstr ""
-"Nema sačuvanih igara za učitavanje.\n"
+"Nema pozicija za učitavanje.\n"
 "\n"
-"(Igre se čuvaju automatski kada završite scenario)"
+"(Pozicije se upisuju automatski kada završite scenario)"
 
 #: src/dialogs.cpp:645
 msgid "Date"
@@ -7532,11 +7533,11 @@ msgstr "datum"
 
 #: src/dialogs.cpp:662 src/multiplayer_create.cpp:102
 msgid "Load Game"
-msgstr "Učitaj igru"
+msgstr "Učitaj poziciju"
 
 #: src/dialogs.cpp:663
 msgid "Choose the game to load"
-msgstr "Izaberite igru za učitavanje"
+msgstr "Izaberite poziciju za učitavanje"
 
 #: src/dialogs.cpp:677
 msgid "Show replay"
@@ -7548,7 +7549,7 @@ msgstr "Poništi naređenja"
 
 #: src/dialogs.cpp:688
 msgid "Delete Save"
-msgstr "Obriši sačuvano"
+msgstr "Obriši poziciju"
 
 #: src/dialogs.cpp:745
 msgid "Profile"
@@ -7582,14 +7583,14 @@ msgstr ""
 
 #: src/game.cpp:952 src/multiplayer_connect.cpp:1562
 msgid "This save is from a version too old to be loaded."
-msgstr "Ovaj upis je sačuvan verzijom igre prestarom da bi se učitao."
+msgstr "Ova pozicija je sačuvana prestarom verzijom igre da bi se učitala."
 
 #: src/game.cpp:958 src/multiplayer_connect.cpp:1569
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr ""
-"Ovaj upis je sačuvan različitom verzijom igre. Želite li da pokušate "
+"Ova pozicija je sačuvana različitom verzijom igre. Želite li da pokušate "
 "učitavanje?"
 
 #: src/game.cpp:981 src/game.cpp:989 src/playsingle_controller.cpp:492
@@ -7603,7 +7604,7 @@ msgstr "Datoteka koju ste pokušali da učitate iskvarena je: '"
 
 #: src/game.cpp:996
 msgid "File I/O Error while reading the game"
-msgstr "U/I greška u datoteci prilikom čitanja igre"
+msgstr "U/I greška u datoteci prilikom čitanja pozicije"
 
 #: src/game.cpp:1083 src/game.cpp:1121
 msgid "No campaigns are available.\n"
@@ -7637,11 +7638,11 @@ msgstr "Greška pri pokretanju servera: "
 
 #: src/game.cpp:1411 src/playcampaign.cpp:97 src/playcampaign.cpp:383
 msgid "The game could not be loaded: "
-msgstr "Igru nije moguće učitati: "
+msgstr "Poziciju nije moguće učitati: "
 
 #: src/game.cpp:1413 src/playcampaign.cpp:99 src/playcampaign.cpp:386
 msgid "Error while playing the game: "
-msgstr "Greška prilikom igranja igre: "
+msgstr "Greška prilikom igranja partije: "
 
 #: src/game.cpp:1433 src/playcampaign.cpp:101 src/playcampaign.cpp:389
 msgid "The game map could not be loaded: "
@@ -7726,7 +7727,7 @@ msgstr " snimak"
 
 #: src/gamestatus.cpp:923 src/gamestatus.cpp:953 src/replay.cpp:227
 msgid "Could not write to file"
-msgstr "Ne mogu pisati u datoteku"
+msgstr "Ne mogu da pišem u datoteku"
 
 #: src/generate_report.cpp:96
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
@@ -8030,7 +8031,7 @@ msgstr "Nasumične mape neparne širine nisu podržane."
 #: src/menu_events.cpp:56 src/menu_events.cpp:748 src/menu_events.cpp:750
 #: src/play_controller.cpp:790 src/playcampaign.cpp:110
 msgid "Auto-Save"
-msgstr "Samoupis"
+msgstr "Autopozicija"
 
 #: src/menu_events.cpp:96 src/menu_events.cpp:99 src/menu_events.cpp:103
 msgid "Do you really want to dismiss him?"
@@ -8179,11 +8180,11 @@ msgstr "Sačuvano"
 
 #: src/menu_events.cpp:615
 msgid "The game has been saved"
-msgstr "Igra je sačuvana"
+msgstr "Pozicija je sačuvana"
 
 #: src/menu_events.cpp:618 src/playcampaign.cpp:604
 msgid "The game could not be saved"
-msgstr "Ne mogu da sačuvam igru"
+msgstr "Ne mogu da sačuvam poziciju"
 
 #: src/menu_events.cpp:633
 msgid "Save the Map As"
@@ -8203,7 +8204,8 @@ msgstr "Ne mogu da sačuvam mapu: $msg"
 
 #: src/menu_events.cpp:755
 msgid "Could not auto save the game. Please save the game manually."
-msgstr "Ne mogu da automatski sačuvam igru. Pokušajte da je sačuvate ručno."
+msgstr ""
+"Ne mogu da sačuvam poziciju automatski. Pokušajte da je sačuvate ručno."
 
 #: src/menu_events.cpp:783
 msgid "Chat Log"
@@ -8371,7 +8373,7 @@ msgid ""
 "control a side in a running game you are in."
 msgstr ""
 "Šalje privatnu poruku. Ne možete slati poruke igračima koji ne upravljaju "
-"nekom stranom u tekućoj igri u kojoj ste i sami."
+"nekom stranom u tekućoj partiji u kojoj ste i sami."
 
 #: src/menu_events.cpp:2193
 msgid "Change the log level of a log domain."
@@ -8439,7 +8441,7 @@ msgstr "Sagledava postupak osvežavanja ekrana."
 
 #: src/menu_events.cpp:2351
 msgid "Save game."
-msgstr "Upisuje igru."
+msgstr "Upisuje poziciju."
 
 #: src/menu_events.cpp:2353
 msgid "Quit game."
@@ -8455,7 +8457,7 @@ msgstr "Ignoriše greške u snimku."
 
 #: src/menu_events.cpp:2362
 msgid "Disable autosaves."
-msgstr "Isključuje samoupis."
+msgstr "Isključuje autopozicije."
 
 #: src/menu_events.cpp:2364
 msgid "Advance to the next scenario, or scenario identified by 'id'"
@@ -8594,7 +8596,7 @@ msgstr "Ispravljanje aktivirano!"
 
 #: src/menu_events.cpp:2930
 msgid "Debug mode not available in network games"
-msgstr "Ispravljanje nije dostupno u mrežnim igrama."
+msgstr "Ispravljanje nije dostupno u mrežnim partijama."
 
 #: src/menu_events.cpp:2935
 msgid "Debug mode deactivated!"
@@ -8801,7 +8803,7 @@ msgstr "prazno"
 
 #: src/multiplayer_connect.cpp:1551
 msgid "This is not a multiplayer save"
-msgstr "Ovo nije višeigrački upis"
+msgstr "Ovo nije višeigračka pozicija"
 
 #: src/multiplayer_connect.cpp:1680
 msgid "Cannot find era $era"
@@ -8821,7 +8823,7 @@ msgstr "Čekamo da se pridruže igrači..."
 
 #: src/multiplayer_create.cpp:47 src/multiplayer_lobby.cpp:683
 msgid "Create Game"
-msgstr "Napravi igru"
+msgstr "Napravi partiju"
 
 #: src/multiplayer_create.cpp:60
 msgid "Time limit"
@@ -8829,7 +8831,7 @@ msgstr "vremenski limit"
 
 #: src/multiplayer_create.cpp:73
 msgid "Name of game:"
-msgstr "naziv igre:"
+msgstr "naziv partije:"
 
 #: src/multiplayer_create.cpp:76
 msgid "Era:"
@@ -8874,11 +8876,11 @@ msgstr "Lozinka..."
 
 #: src/multiplayer_create.cpp:103
 msgid "Load Game..."
-msgstr "Učitaj igru..."
+msgstr "Učitaj poziciju..."
 
 #: src/multiplayer_create.cpp:139
 msgid "The maximum number of turns the game can last"
-msgstr "Maksimalan broj poteza koliko igra može trajati"
+msgstr "Maksimalan broj poteza koliko partija može trajati"
 
 #: src/multiplayer_create.cpp:142
 msgid "Enables user time limit"
@@ -8972,8 +8974,8 @@ msgstr "Lozinka: "
 msgid ""
 "Set the password that people wanting to join your game as players must enter."
 msgstr ""
-"Odredite lozinku koju moraju upisati oni koji žele da se pridruže igri kao "
-"igrači."
+"Odredite lozinku koju moraju upisati oni koji žele da se pridruže partiji "
+"kao igrači."
 
 #: src/multiplayer_create.cpp:335
 msgid "Turns: "
@@ -9018,7 +9020,7 @@ msgstr "veličina: "
 
 #: src/multiplayer_lobby.cpp:115
 msgid "--no games open--"
-msgstr "--nema otvorenih igara--"
+msgstr "--nema započetih partija--"
 
 #: src/multiplayer_lobby.cpp:149
 msgid " (Unknown Era)"
@@ -9046,7 +9048,7 @@ msgstr "nepoznat scenario"
 
 #: src/multiplayer_lobby.cpp:508
 msgid "Reloaded game"
-msgstr "učitana igra"
+msgstr "učitana pozicija"
 
 #: src/multiplayer_lobby.cpp:524
 msgid "Turn "
@@ -9078,7 +9080,7 @@ msgstr "Igrački hol"
 
 #: src/multiplayer_lobby.cpp:681
 msgid "Observe Game"
-msgstr "Posmatraj igru"
+msgstr "Posmatraj partiju"
 
 #: src/multiplayer_lobby.cpp:682
 msgid "Join Game"
@@ -9102,7 +9104,7 @@ msgstr "Brzo skoči na aktivni potez pri posmatranju."
 
 #: src/multiplayer_lobby.cpp:804
 msgid "Joining this game requires a password."
-msgstr "Pridruživanje ovoj igri samo uz lozinku."
+msgstr "Pridruživanje ovoj partiji samo uz lozinku."
 
 #: src/multiplayer_ui.cpp:190
 msgid "Invalid Color"
@@ -9122,11 +9124,11 @@ msgstr "regruti: "
 
 #: src/multiplayer_wait.cpp:185
 msgid "Waiting for game to start..."
-msgstr "Čekam da igra počne ..."
+msgstr "Čekam da partija počne ..."
 
 #: src/multiplayer_wait.cpp:208
 msgid "Getting game data..."
-msgstr "Preuzimam podatke igre..."
+msgstr "Preuzimam podatke partije..."
 
 #: src/multiplayer_wait.cpp:264
 msgid "No era information found."
@@ -9190,7 +9192,7 @@ msgstr "Uspostavljam prikaz..."
 
 #: src/play_controller.cpp:192
 msgid "Starting game"
-msgstr "Otpočinjem igru..."
+msgstr "Otpočinjem partiju..."
 
 #: src/play_controller.cpp:797
 msgid "Back to turn "
@@ -9226,7 +9228,7 @@ msgstr "Preuzimam sledeći scenario..."
 
 #: src/playcampaign.cpp:595
 msgid "Do you want to save your game?"
-msgstr "Želite li da sačuvate igru?"
+msgstr "Želite li da sačuvate poziciju?"
 
 #: src/playcampaign.cpp:596
 msgid "Name:"
@@ -9258,12 +9260,12 @@ msgid ""
 "\n"
 "Do you want to save an error log of your game?"
 msgstr ""
-"Igra je van toka, i ne može se nastaviti. Do ovoga je moglo doći iz nekoliko "
-"razloga, na primer ako ste vi ili drugi igrač izmenili postavke igre. To "
-"može značiti da neko pokušava da vara. Manje verovatno, može biti i greška "
-"do igre.\n"
+"Igra je van sinhronizacije, i ne može se nastaviti. Do ovoga je moglo doći "
+"iz nekoliko razloga, na primer ako ste vi ili drugi igrač izmenili postavke "
+"igre. To može značiti da neko pokušava da vara. Manje verovatno, može biti i "
+"greška do igre.\n"
 "\n"
-"Želite li da sačuvate dnevnik grešaka tekuće igre?"
+"Želite li da sačuvate dnevnik grešaka tekuće partije?"
 
 #: src/playsingle_controller.cpp:183
 msgid "Remaining gold: "
@@ -9367,7 +9369,7 @@ msgid ""
 "want to save the game?"
 msgstr ""
 "Mrežna veza je prekinuta i igra se ne može nastaviti.\n"
-"Želite li da sačuvate igru?"
+"Želite li da sačuvate poziciju?"
 
 #: src/playsingle_controller.cpp:675
 msgid "It is now $name|'s turn"
@@ -9587,7 +9589,7 @@ msgstr ""
 
 #: src/titlescreen.cpp:434
 msgid "Load a saved game"
-msgstr "Učitajte sačuvanu igru"
+msgstr "Učitajte poziciju"
 
 #: src/titlescreen.cpp:435
 msgid "Download usermade campaigns, eras, or map packs"
@@ -9731,7 +9733,7 @@ msgid ""
 "(anonymously) to wesnoth.org.\n"
 msgstr ""
 "Vesnot očekuje reagovanja od volontera poput vas, pogotovu početnika i novih "
-"igrača. Vesnot čuva sažetke vaših igara: možete nam pomoći u poboljšanju "
+"igrača. Vesnot čuva sažetke vaših partija: možete nam pomoći u poboljšanju "
 "igrivosti dajući dozvolu da se ovi sažeci (anonimno) pošalju na wesnoth."
 "org.\n"
 

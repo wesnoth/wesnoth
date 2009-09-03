@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-08-12 13:04+0200\n"
-"PO-Revision-Date: 2009-07-19 14:24+0200\n"
+"PO-Revision-Date: 2009-08-29 12:39+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "MIME-Version: 1.0\n"
@@ -704,14 +704,14 @@ msgstr "Прикажи списак"
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:33
 msgid "Create Game"
-msgstr "Направи игру"
+msgstr "Направи партију"
 
 #. [label]
 #. [text_box]: id=game_name
 #: data/gui/default/window/mp_create_game.cfg:62
 #: data/gui/default/window/mp_create_game.cfg:77
 msgid "Name of game:"
-msgstr "Назив игре:"
+msgstr "Назив партије:"
 
 #. [label]: id=map_players
 #: data/gui/default/window/mp_create_game.cfg:140
@@ -781,7 +781,7 @@ msgstr "Насумично време почетка"
 #. [button]: id=ok
 #: data/gui/default/window/mp_create_game.cfg:536
 msgid "Create game"
-msgstr "Направи игру"
+msgstr "Направи партију"
 
 #. [window]: id=mp_login
 #: data/gui/default/window/mp_login.cfg:8
@@ -857,22 +857,22 @@ msgstr "На други сервер"
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:162
 msgid "Host Networked Game"
-msgstr "Домаћин мрежној игри"
+msgstr "Домаћин мрежној партији"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:163
 msgid "Host a game using dedicated server 'wesnothd'"
-msgstr "Будите домаћин игре с наменским сервером (wesnothd)"
+msgstr "Будите домаћин партије на наменском серверу (wesnothd)"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:173
 msgid "Local Game"
-msgstr "Локална игра"
+msgstr "Локална партија"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:174
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
-msgstr "Покрените вишеиграње са ВИ или људима за истим рачунаром"
+msgstr "Покрените вишеиграчку партију са ВИ или људима за истим рачунаром"
 
 #. [label]: id=name
 #: data/gui/default/window/mp_server_list.cfg:86
@@ -1003,7 +1003,7 @@ msgstr "Сачувај снимак при ји./ви. победи или ви.
 
 #: src/game_preferences_display.cpp:157 src/game_preferences_display.cpp:336
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
-msgstr "Бриши самоуписе при ји./ви. победи или ви. поразу"
+msgstr "Бриши аутопозиције при ји./ви. победи или ви. поразу"
 
 #: src/game_preferences_display.cpp:158
 msgid "Do Not Show Lobby Joins"
@@ -1206,7 +1206,7 @@ msgstr "Додај време у порукама у ћаскању"
 
 #: src/game_preferences_display.cpp:289
 msgid "Choose whether the game should run full screen or in a window"
-msgstr "Изабери да ли се игра преко целог екрана или у прозору"
+msgstr "Да ли се игра преко целог екрана или у прозору"
 
 #: src/game_preferences_display.cpp:292
 msgid ""
@@ -1268,7 +1268,8 @@ msgstr "Прикажи поруке о свим играчима који при
 
 #: src/game_preferences_display.cpp:356
 msgid "Find and set path to MP server to host LAN games."
-msgstr "Пронађите и поставите путању до ви. сервера, за удомљавање ЛАН игара."
+msgstr ""
+"Пронађите и поставите путању до ви. сервера, за удомљавање ЛАН партија."
 
 #: src/game_preferences_display.cpp:357
 msgid "View and edit your friends and ignores list"
@@ -1300,7 +1301,7 @@ msgstr "Прикажи изнад јединица текст са претрп�
 
 #: src/game_preferences_display.cpp:369
 msgid "Change the resolution the game runs at"
-msgstr "Промени резолуцију игре"
+msgstr "Промени резолуцију коју игра користи"
 
 #: src/game_preferences_display.cpp:370
 msgid "Change the theme the game runs with"
@@ -1342,7 +1343,7 @@ msgstr "Брзина: "
 
 #: src/game_preferences_display.cpp:684 src/game_preferences_display.cpp:686
 msgid "Maximum Auto-Saves: "
-msgstr "Највише самоуписа: "
+msgstr "Највише аутопозиција: "
 
 #: src/game_preferences_display.cpp:684
 msgid "infinite"
@@ -1394,23 +1395,24 @@ msgstr "Сачувана подешавања теме: "
 
 #: src/game_preferences_display.cpp:1161
 msgid "New theme will take effect on next new or loaded game."
-msgstr "Нова тема ће се исказати у следећој новој или учитаној игри."
+msgstr ""
+"Нова тема ће се исказати по следећем покретању игре или учитавању позиције."
 
 #: src/game_preferences_display.cpp:1165
 msgid "No known themes. Try changing from within an existing game."
-msgstr "Нема познатих тема. Покушајте да промените у оквиру текуће игре."
+msgstr "Нема познатих тема. Покушајте да промените унутар започете партије."
 
 #: src/game_preferences_display.cpp:1208
 msgid "Find $filename server binary to host networked games"
-msgstr "Пронађите серверску извршну $filename, за удомљавање мрежних игара."
+msgstr "Пронађите серверску извршну $filename, за удомљавање мрежних партија."
 
 #: src/gui/dialogs/mp_create_game.cpp:78 src/hotkeys.cpp:64
 msgid "Load Game"
-msgstr "Учитавање игре"
+msgstr "Учитавање позиције"
 
 #: src/gui/dialogs/mp_create_game.cpp:79
 msgid "Load Game..."
-msgstr "Учитај игру..."
+msgstr "Учитај позицију..."
 
 #: src/gui/dialogs/title_screen.cpp:73
 msgid "Version"
@@ -1558,7 +1560,7 @@ msgstr "Преименуј јединицу"
 
 #: src/hotkeys.cpp:61
 msgid "Save Game"
-msgstr "Сачувај игру"
+msgstr "Сачувај позицију"
 
 #: src/hotkeys.cpp:62
 msgid "Save Replay"

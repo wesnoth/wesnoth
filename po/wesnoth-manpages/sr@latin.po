@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-05-03 10:54+0300\n"
-"PO-Revision-Date: 2009-05-20 10:52+0200\n"
+"PO-Revision-Date: 2009-08-26 17:28+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "MIME-Version: 1.0\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Language: sr\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%"
 "10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Environment: wesnoth, wesnoth/noent\n"
 
 #: ../../doc/man/wesnoth.6:16
 #, no-wrap
@@ -237,9 +238,9 @@ msgid ""
 "from I<file> open. If it is a directory, the editor will start with a load "
 "map dialog opened there."
 msgstr ""
-"učitava sačuvanu igru I<datoteka> iz standardnog direktorijuma sačuvanih "
-"igara. Ako je zadata i opcija B<-e> ili B<--editor>, pokreće se uređivač sa "
-"otvorenom mapom iz te datoteke. Ako je I<datoteka> u stvari direktorijum, "
+"učitava poziciju I<datoteka> iz standardnog direktorijuma sačuvanih "
+"pozicija. Ako je zadata i opcija B<-e> ili B<--editor>, pokreće se uređivač "
+"sa otvorenom mapom iz te datoteke. Ako je I<datoteka> u stvari direktorijum, "
 "uređivač će na njemu otvoriti dijalog za učitavanje mape."
 
 #: ../../doc/man/wesnoth.6:108 ../../doc/man/wesnothd.6:58
@@ -289,7 +290,7 @@ msgid ""
 "runs a multiplayer game. There are additional options that can be used "
 "together with B<--multiplayer> as explained below."
 msgstr ""
-"pokreće višeigračku igru. Uz ovu opciju mogu biti upotrebljene još neke, "
+"pokreće višeigračku partiju. Uz ovu opciju mogu biti upotrebljene još neke, "
 "navedene ispod."
 
 #: ../../doc/man/wesnoth.6:131
@@ -419,7 +420,7 @@ msgstr "B<--with-replay>"
 
 #: ../../doc/man/wesnoth.6:175
 msgid "replays the game loaded with the B<--load> option."
-msgstr "vrti snimak igre učitane opcijom B<--load>."
+msgstr "pušta snimak partije učitane opcijom B<--load>."
 
 #: ../../doc/man/wesnoth.6:176
 #, no-wrap
@@ -650,7 +651,7 @@ msgid ""
 "wiki/ServerAdministration on what commands the server accepts via the "
 "wesnoth client (/query ...) or the fifo."
 msgstr ""
-"Upravlja višeigračkim sesijama \"Boja za Vesnot\". Pogledajte http://www."
+"Upravlja višeigračkim partijama \"Boja za Vesnot\". Pogledajte http://www."
 "wesnoth.org/wiki/ServerAdministration za naredbe koje server prihvata preko "
 "klijenta (/query ...) ili fifoa."
 
@@ -837,7 +838,7 @@ msgid ""
 "from wesnoth).  If not specified defaults to the compile-time specified path "
 "(default: /var/run/socket/wesnothd/socket)."
 msgstr ""
-"Putanja do fifoa iz kojeg server može da čita naredbe (iste kao /query ... "
+"putanja do fifoa iz kojeg server može da čita naredbe (iste kao /query ... "
 "iz igre). Ako nije zadato, spada na podrazumevanu ugrađenu (/var/run/socket/"
 "wesnothd/socket)."
 
@@ -897,7 +898,7 @@ msgid ""
 "trailing /!) Defaults to `' which means the directory wesnothd was started "
 "in."
 msgstr ""
-"Direktorijum gde server smešta snimke igara (ne zaboravite prateće /!). "
+"Direktorijum gde server smešta snimke partija (ne zaboravite prateće /!). "
 "Podrazumevano je '' (prazno), što znači direktorijum u kojem je wesnothd "
 "pokrenut."
 
@@ -924,7 +925,7 @@ msgid ""
 "Defines whether the server will automatically save replays of games. "
 "(default: B<false>)"
 msgstr ""
-"Određuje da li server automatski upisuje snimke igara (podrazumevno: "
+"Određuje da li server automatski upisuje snimke partija (podrazumevno: "
 "B<false>)."
 
 #: ../../doc/man/wesnothd.6:149
