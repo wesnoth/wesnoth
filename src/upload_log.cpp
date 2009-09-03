@@ -275,7 +275,7 @@ void upload_log::read_replay()
 		if(c.child("attack")) {
 			//search through the attack to see if a unit died
 			foreach (const config &c2, c.child_range("random")) {
-				if(c2.child_count("results") && c2.child("results")["dies"] == "yes") {
+				if(c2.child("results") && c2.child("results")["dies"] == "yes") {
 					config& cfg = game_->add_child("kill_event");
 					cfg.add_child("attack",c.child("attack"));
 					cfg.add_child("results",c2.child("results"));
@@ -349,7 +349,11 @@ bool upload_log::game_finished(config *game)
 	if (!game)
 		return false;
 
-	return game->child("victory") || game->child("defeat") || game->child("quit") || game->child("upload_log").child("ai_log");
+	bool has_ai_log = false;
+	if(game->child("upload_log"))
+		has_ai_log = game->child("upload_log").child("ai_log") != 0;
+
+	return game->child("victory") || game->child("defeat") || game->child("quit") || has_ai_log;
 }
 
 config &upload_log::add_game_result(const std::string &str, int turn)
