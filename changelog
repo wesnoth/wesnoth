@@ -1,12 +1,17 @@
-Version 1.7.4+svn:
- * Campaigns
+Version 1.7.5:
+ * Campaigns:
    * Legend of Wesmere
-     * Scenario 21 redesigned	
+     * Scenario 21 redesigned
  * Language and i18n:
    * Setup for tracking localized images.
    * Updated translations: Chinese (Traditional), Lithuanian, Serbian.
+ * Units:
+   * Fixed problems with the Drakes introduced in 1.7.4 (wrong resistances and
+     a possible crash when advancing to the Inferno Drake)
  * Miscellaneous and bugfixes:
-   * Optimized the cmake building if both game and tests are enabled.
+   * Optimized the cmake building if both game and tests are enabled
+   * Switched to new stats upload mechanism so that stats.wesnoth.org should
+     soon provide usefull data
 
 Version 1.7.4:
  * AI:
