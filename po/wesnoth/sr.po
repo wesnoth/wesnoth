@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-09-03 00:21+0200\n"
+"POT-Creation-Date: 2009-09-03 15:55+0200\n"
 "PO-Revision-Date: 2009-08-26 17:28+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -7655,66 +7655,66 @@ msgstr "ИП: "
 msgid "Moves: "
 msgstr "кретање: "
 
-#: src/game.cpp:668 src/game.cpp:1397
+#: src/game.cpp:665 src/game.cpp:1394
 msgid "The Battle for Wesnoth"
 msgstr "Бој за Веснот"
 
-#: src/game.cpp:997 src/game.cpp:1005 src/playsingle_controller.cpp:495
-#: src/playsingle_controller.cpp:550
+#: src/game.cpp:994 src/game.cpp:1002 src/playsingle_controller.cpp:496
+#: src/playsingle_controller.cpp:551
 msgid "The file you have tried to load is corrupt"
 msgstr "Датотека коју сте покушали да отворите искварена је"
 
-#: src/game.cpp:1000 src/game.cpp:1008 src/savegame.cpp:535
+#: src/game.cpp:997 src/game.cpp:1005 src/savegame.cpp:535
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Датотека коју сте покушали да учитате искварена је: '"
 
-#: src/game.cpp:1012
+#: src/game.cpp:1009
 msgid "File I/O Error while reading the game"
 msgstr "У/И грешка у датотеци приликом читања позиције"
 
-#: src/game.cpp:1107
+#: src/game.cpp:1104
 msgid "No campaigns are available.\n"
 msgstr "Нема ниједног похода.\n"
 
-#: src/game.cpp:1140
+#: src/game.cpp:1137
 msgid "Difficulty"
 msgstr "Тежина"
 
-#: src/game.cpp:1141
+#: src/game.cpp:1138
 msgid "Select difficulty level:"
 msgstr "Изаберите ниво тежине:"
 
-#: src/game.cpp:1276
+#: src/game.cpp:1273
 msgid "Do you really want to start the server?"
 msgstr "Желите ли заиста да покренете сервер?"
 
-#: src/game.cpp:1277
+#: src/game.cpp:1274
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr "Сервер ће радити као позадински процес док се не откаче сви корисници."
 
-#: src/game.cpp:1281
+#: src/game.cpp:1278
 msgid "Don't show again"
 msgstr "Не показуј поново"
 
-#: src/game.cpp:1352
+#: src/game.cpp:1349
 msgid "Error while starting server: "
 msgstr "Грешка при покретању сервера: "
 
-#: src/game.cpp:1354 src/playcampaign.cpp:99 src/playcampaign.cpp:365
+#: src/game.cpp:1351 src/playcampaign.cpp:99 src/playcampaign.cpp:365
 msgid "The game could not be loaded: "
 msgstr "Позицију није могуће учитати: "
 
-#: src/game.cpp:1356 src/playcampaign.cpp:101 src/playcampaign.cpp:368
+#: src/game.cpp:1353 src/playcampaign.cpp:101 src/playcampaign.cpp:368
 msgid "Error while playing the game: "
 msgstr "Грешка приликом играња партије: "
 
-#: src/game.cpp:1376 src/playcampaign.cpp:103 src/playcampaign.cpp:371
+#: src/game.cpp:1373 src/playcampaign.cpp:103 src/playcampaign.cpp:371
 msgid "The game map could not be loaded: "
 msgstr "Мапу игре није могуће учитати: "
 
-#: src/game.cpp:1520
+#: src/game.cpp:1517
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Следећи додаци имају грешку и не могу се учитати:"
@@ -7722,35 +7722,35 @@ msgstr[1] "Следећи додаци имају грешку и не могу 
 msgstr[2] "Следећи додаци имају грешку и не могу се учитати:"
 msgstr[3] "Следећи додатак има грешку и не може се учитати:"
 
-#: src/game.cpp:1527
+#: src/game.cpp:1524
 msgid "ERROR DETAILS:"
 msgstr "ДЕТАЉИ ГРЕШКЕ:"
 
-#: src/game.cpp:1545
+#: src/game.cpp:1542
 msgid "Error loading game configuration files: '"
 msgstr "Грешка при учитавању поставних датотека игре: '"
 
-#: src/game.cpp:1546
+#: src/game.cpp:1543
 msgid "' (The game will now exit)"
 msgstr "' (игра ће се сад угасити)"
 
-#: src/game.cpp:1555
+#: src/game.cpp:1552
 msgid "Loading data files"
 msgstr "Учитавам податке."
 
-#: src/game.cpp:1990
+#: src/game.cpp:1985
 msgid "Loading game configuration."
 msgstr "Учитавам поставу игре."
 
-#: src/game.cpp:1996
+#: src/game.cpp:1991
 msgid "Re-initialize fonts for the current language."
 msgstr "Васпостављам фонтове за текући језик."
 
-#: src/game.cpp:2004
+#: src/game.cpp:1999
 msgid "Searching for installed add-ons."
 msgstr "Тражим инсталиране додатке."
 
-#: src/game.cpp:2013
+#: src/game.cpp:2008
 msgid "Loading title screen."
 msgstr "Учитавам насловни екран."
 
@@ -9486,15 +9486,15 @@ msgstr[3] ""
 "Почињете наредни сценарио са већим од једног златника и најмањег задатог "
 "почетног броја."
 
-#: src/playsingle_controller.cpp:420
+#: src/playsingle_controller.cpp:421
 msgid "Game Over"
 msgstr "Крај игре"
 
-#: src/playsingle_controller.cpp:421
+#: src/playsingle_controller.cpp:422
 msgid "The game is over."
 msgstr "Игра је завршена."
 
-#: src/playsingle_controller.cpp:506
+#: src/playsingle_controller.cpp:507
 msgid ""
 "A network disconnection has occurred, and the game\n"
 "cannot continue. Do you want to save the game?"
@@ -9502,19 +9502,19 @@ msgstr ""
 "Мрежна веза је прекинута и игра се не може наставити.\n"
 "Желите ли да сачувате позицију?"
 
-#: src/playsingle_controller.cpp:672
+#: src/playsingle_controller.cpp:673
 msgid "It is now $name|'s turn"
 msgstr "На потезу је $name"
 
-#: src/playsingle_controller.cpp:904
+#: src/playsingle_controller.cpp:905
 msgid "Scenario Report"
 msgstr "Извештај сценарија"
 
-#: src/playsingle_controller.cpp:906
+#: src/playsingle_controller.cpp:907
 msgid "Victory"
 msgstr "Победа"
 
-#: src/playsingle_controller.cpp:907
+#: src/playsingle_controller.cpp:908
 msgid "You have emerged victorious!"
 msgstr "Победили сте!"
 
@@ -9952,7 +9952,7 @@ msgstr "законита"
 msgid "female^neutral"
 msgstr "неутрална"
 
-#: src/upload_log.cpp:520
+#: src/upload_log.cpp:368
 msgid ""
 "Wesnoth relies on volunteers like yourself for feedback, especially "
 "beginners and new players. Wesnoth keeps summaries of your games: you can "
@@ -9963,18 +9963,18 @@ msgstr ""
 "играча. Веснот чува сажетке ваших партија: можете нам помоћи у побољшању "
 "игривости дајући дозволу да се ови сажеци (анонимно) пошаљу на wesnoth.org.\n"
 
-#: src/upload_log.cpp:521
+#: src/upload_log.cpp:369
 msgid "Summaries are stored here:"
 msgstr "Сажеци се чувају овде:"
 
-#: src/upload_log.cpp:523
+#: src/upload_log.cpp:371
 msgid "You can view the results at:"
 msgstr "Резултате можете видети на:"
 
-#: src/upload_log.cpp:525
+#: src/upload_log.cpp:373
 msgid "Help us make Wesnoth better for you!"
 msgstr "Помозите нам да побољшамо Веснот за вас!"
 
-#: src/upload_log.cpp:527
+#: src/upload_log.cpp:375
 msgid "Enable summary uploads"
 msgstr "Укључи слање сажетака"
