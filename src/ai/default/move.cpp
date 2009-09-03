@@ -746,10 +746,12 @@ void ai_default::move_leader_to_keep()
 			const int current_distance = distance_between(leader->first,keep);
 			foreach (const paths::step &dest, leader_paths.destinations)
 			{
-				const int new_distance = distance_between(dest.curr,keep);
-				if(new_distance < current_distance) {
-					moves_toward_keep.insert(std::make_pair(new_distance, dest.curr));
-			 	}
+				if (!units_.find(dest.curr).valid()){
+					const int new_distance = distance_between(dest.curr,keep);
+					if(new_distance < current_distance) {
+						moves_toward_keep.insert(std::make_pair(new_distance, dest.curr));
+					}
+				}
 	 		}
 
 			// Find the first location which we can move to,
