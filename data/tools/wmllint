@@ -2009,10 +2009,10 @@ if __name__ == '__main__':
         # Handle SingleUnitWML or Standard Unit Filter or SideWML
         # Also, when macro calls have description= in them, the arg is
         # a SUF being passed in.
-        if (under("unit") and not "units" in filename) or \
+        if tagstack and ((under("unit") and not "units" in filename) or \
                standard_unit_filter() or \
                under("side") or \
-               re.search("{[A-Z]+.*description=.*}", line):
+               re.search("{[A-Z]+.*description=.*}", line)):
             if "id" not in tagstack[-1][1] and "_" not in line:
                 line = re.sub(r"\bdescription\s*=", "id=", line)
             if "name" not in tagstack[-1][1]:
