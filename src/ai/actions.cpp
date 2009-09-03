@@ -127,10 +127,14 @@ bool action_result::is_ok()
 }
 
 
-void action_result::set_error(int error_code){
+void action_result::set_error(int error_code, bool log_as_error){
 	status_ = error_code;
 	if (is_execution()) {
-		ERR_AI_ACTIONS << "Error #"<<error_code<<" in "<< do_describe();
+		if (log_as_error) {
+			ERR_AI_ACTIONS << "Error #"<<error_code<<" in "<< do_describe();
+		} else {
+			LOG_AI_ACTIONS << "Error #"<<error_code<<" in "<< do_describe();
+		}
 	} else {
 		LOG_AI_ACTIONS << "Error #"<<error_code<<" when checking "<< do_describe();
 	}
@@ -460,7 +464,7 @@ const move_unit_spectator& move_result::get_move_spectator() const
 void move_result::do_check_after()
 {
 	if (move_spectator_.get_ambusher().valid()) {
-		set_error(E_AMBUSHED);
+		set_error(E_AMBUSHED,false);
 		return;
 	}
 	if (move_spectator_.get_failed_teleport().valid()) {

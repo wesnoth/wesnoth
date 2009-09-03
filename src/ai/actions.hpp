@@ -95,7 +95,7 @@ protected:
 	const team& get_my_team(const game_info& info) const;
 
 	/* set error code */
-	void set_error(int error_code);
+	void set_error(int error_code, bool log_as_error = true);
 
 	/* is error code equal to 0 (no errors)? */
 	bool is_success() const;
