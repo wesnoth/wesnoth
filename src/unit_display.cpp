@@ -135,7 +135,6 @@ void move_unit(const std::vector<map_location>& path, unit& u, const std::vector
 	// Original unit is usually hidden (but still on map, so count is correct)
 	unit temp_unit = u;
 	u.set_hidden(true);
-	u.set_location(path[0]);
 	temp_unit.set_standing(false);
 	temp_unit.set_hidden(false);
 	disp->place_temporary_unit(temp_unit);
@@ -206,11 +205,8 @@ void move_unit(const std::vector<map_location>& path, unit& u, const std::vector
 	animator.start_animations();
 	animator.wait_for_end();
 	disp->remove_temporary_unit();
-	u.set_location(path[path.size() - 1]);
-	u.set_standing();
 
 	u.set_hidden(was_hidden);
-	disp->invalidate_unit_after_move(path[0], path[path.size()-1]);
 
 	events::mouse_handler* mousehandler = events::mouse_handler::get_singleton();
 	if (mousehandler) {
