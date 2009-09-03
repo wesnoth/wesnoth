@@ -1919,12 +1919,13 @@ Usage: wmllint [options] [dir]
     -D, --diff                 Display diffs between converted and unconverted files.
     -r, --revert               Revert the conversion from the -bak files.
     -s, --stripcr              Convert DOS-style CR/LF to Unix-style LF.
-    --future                   Enable experimental WML conversions.
+    -f, --future               Enable experimental WML conversions.
+    -S, --nospellcheck         Suppress spellchecking
 """)
 
 if __name__ == '__main__':
     try:
-        (options, arguments) = getopt.getopt(sys.argv[1:], "cdDfhnrsv", [
+        (options, arguments) = getopt.getopt(sys.argv[1:], "cdDfhnrsvS", [
             "clean",
             "diffs",
             "dryrun",
@@ -1933,6 +1934,7 @@ if __name__ == '__main__':
             "revert",
             "stripcr",
             "verbose",
+            "nospellcheck",
             ])
     except getopt.GetoptError:
         help()
@@ -1945,6 +1947,7 @@ if __name__ == '__main__':
     stringfreeze = False
     stripcr = False
     verbose = 0
+    dospellcheck = True
     for (switch, val) in options:
         if switch in ('-h', '--help'):
             help()
@@ -1966,6 +1969,8 @@ if __name__ == '__main__':
             stringfreeze = True
         elif switch in ('-v', '--verbose'):
             verbose += 1
+        elif switch in ('-S', '--nospellcheck'):
+            dospellcheck = False
     if clean and revert:
         sys.stderr.write("wmllint: can't do clean and revert together.\n")
         sys.exit(1)
@@ -2097,23 +2102,24 @@ if __name__ == '__main__':
             # Consistency-check everything we got from the file scans
             consistency_check()
             # Attempt a spell-check
-            try:
-                import enchant
-                d = enchant.Dict("en_US")
-                checker = d.provider.desc
-                if checker.endswith(" Provider"):
-                    checker = checker[:-9]
-                print "# Spell-checking with", checker
-                for word in declared_spellings["GLOBAL"]:
-                    d.add_to_session(word.lower())
-                for dir in arguments:
-                    ofp = None
-                    for fn in allcfgfiles(dir):
-                        if verbose >= 2:
-                            print fn + ":"
-                        spellcheck(fn, d)
-            except ImportError:
-                sys.stderr.write("wmllint: spell check unavailable, install python-enchant to enable\n")
+            if dospellcheck:
+                try:
+                    import enchant
+                    d = enchant.Dict("en_US")
+                    checker = d.provider.desc
+                    if checker.endswith(" Provider"):
+                        checker = checker[:-9]
+                    print "# Spell-checking with", checker
+                    for word in declared_spellings["GLOBAL"]:
+                        d.add_to_session(word.lower())
+                    for dir in arguments:
+                        ofp = None
+                        for fn in allcfgfiles(dir):
+                            if verbose >= 2:
+                                print fn + ":"
+                            spellcheck(fn, d)
+                except ImportError:
+                    sys.stderr.write("wmllint: spell check unavailable, install python-enchant to enable\n")
     except KeyboardInterrupt:
         print "Aborted"
 
