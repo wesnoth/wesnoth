@@ -428,9 +428,6 @@ game_controller::game_controller(int argc, char** argv) :
 		} else if(val == "--new-widgets") {
 			// This is a hidden option to enable the new widget toolkit.
 			gui2::new_widgets = true;
-		} else if(val == "--new-uploader") {
-			//hidden option to test experimental game log upload changes
-			uploader_settings::new_uploader = true;
 #ifndef DISABLE_EDITOR
 		} else if(val == "-e" || val == "--editor") {
 			jump_to_editor_ = true;
@@ -930,7 +927,7 @@ bool game_controller::play_multiplayer_mode()
 			}
 		}
 
-		upload_log log( all_ai && uploader_settings::new_uploader );
+		upload_log log( all_ai );
 		recorder.add_log_data("ai_log","ai_label",label);
 
 		state_.snapshot = level;
@@ -1816,8 +1813,6 @@ static int process_command_args(int argc, char** argv) {
 			<< "                               file bug reports since most are known).\n"
 			<< "                               Parts of the library are deemed stable and will\n"
 			<< "                               work without this switch.\n"
-			<< "  --new-uploader               Enables the new experimental game log uploader.\n"
-			<< "                               Under development - expect things not to work.\n"
 			;
 			return 0;
 		} else if(val == "--version" || val == "-v") {

@@ -28,10 +28,6 @@ class t_string;
 class team;
 class unit_map;
 
-namespace uploader_settings {
-	extern bool new_uploader;
-} //namespace uploader_settings
-
 struct upload_log
 {
 public:
@@ -47,8 +43,8 @@ public:
 
 	// User starts a game (may be new campaign or saved).
 	void start(game_state &state, const team &team,
-	           int side_number, const unit_map &map, const t_string &turn,
-			   int num_turns, const std::string map_data);
+			const t_string &turn, int num_turns, 
+			const std::string map_data);
 	void start(game_state &state, const std::string map_data);
 
 	// User finishes a level.
