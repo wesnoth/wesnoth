@@ -7,6 +7,7 @@
 # This tool cross-references macro definitions with macro calls, and
 # resource (sound or image) files with uses of the resources in WML.
 # and generates various useful reports from such cross-references.
+# It also checks actual macro arguments against types implied by the formals
 #
 # (Most of the work is done by a cross-referencer class that is also
 # used elsewhere, e.g. by wmlmove.) 

@@ -5,7 +5,10 @@ wmltools.py -- Python routines for working with a Battle For Wesnoth WML tree
 
 import sys, os, re, sre_constants, hashlib, glob, gzip
 
-resource_extensions = ("png", "jpg", "jpeg", "ogg", "wav", "map", "mask")
+map_extensions   = ("map", "mask")
+image_extensions = ("png", "jpg", "jpeg")
+sound_extensions = ("ogg", "wav")
+resource_extensions = map_extensions + image_extensions + sound_extensions
 image_reference = r"[A-Za-z0-9{}.][A-Za-z0-9_/+{}.-]*\.(png|jpg)(?=(~.*)?)"
 
 def pop_to_top(whoami):
@@ -84,7 +87,7 @@ class Forest:
             subtree.sort(lambda x, y: cmp(x, y) - 2*int(x.endswith("_main.cfg"))  + 2*int(y.endswith("_main.cfg")))
             self.forest.append(subtree)
         for i in range(len(self.forest)):
-            # Ignore versiuon-control subdirectories and Emacs tempfiles
+            # Ignore version-control subdirectories and Emacs tempfiles
             self.forest[i] = filter(lambda x: ".svn" not in x and ".git" not in x and '.#' not in x, self.forest[i])
             self.forest[i] = filter(lambda x: not os.path.isdir(x), self.forest[i])
             if exclude:
@@ -158,7 +161,7 @@ def formaltype(f):
         ftype = "string"
     elif f.endswith("IMAGE") or f == "PROFILE":
         ftype = "image"
-    elif f in ("MUSIC",) or f.endswith("SOUND"):
+    elif f.endswith("MUSIC",) or f.endswith("SOUND"):
         ftype = "sound"
     elif f in ("FILTER",):
         ftype = "filter"
@@ -212,12 +215,12 @@ def argmatch(formals, actuals):
     if len(formals) != len(actuals):
         return False
     for (f, a) in zip(formals, actuals):
-        ftype = formaltype(f)
-        atype = actualtype(a)
         # Here's the compatibility logic.  First, we catch the situations
         # in which a more restricted actual type matches a more general
         # formal one.  Then we have a fallback rule checking for type
         # equality or wildcarding.
+        ftype = formaltype(f)
+        atype = actualtype(a)
         if ftype == "any":
             pass
         elif atype in ("filter", "empty") and ftype == "wml":
