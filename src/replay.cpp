@@ -208,13 +208,13 @@ void replay::add_recall(const std::string& unit_id, const map_location& loc)
 	cmd->add_child("recall",val);
 }
 
-void replay::add_disband(int value)
+void replay::add_disband(const std::string unit_id)
 {
 	config* const cmd = add_command();
 
 	config val;
 
-	val["value"] = str_cast(value);
+	val["value"] = unit_id;
 
 	cmd->add_child("disband",val);
 }
@@ -999,12 +999,12 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				replay::throw_error("illegal disband\n");
 			}
 
-			sort_units(current_team.recall_list());
-			const std::string& unit_num = child["value"];
-			const int val = lexical_cast_default<int>(unit_num);
+			const std::string& unit_id = child["value"];
+			std::vector<unit>::iterator disband_unit = std::find_if(current_team.recall_list().begin(), 
+				current_team.recall_list().end(), boost::bind(&unit::matches_id, _1, unit_id));
 
-			if(val >= 0 && val < int(current_team.recall_list().size())) {
-				current_team.recall_list().erase(current_team.recall_list().begin()+val);
+			if(disband_unit != current_team.recall_list().end()) {
+				current_team.recall_list().erase(disband_unit);
 			} else {
 				replay::throw_error("illegal disband\n");
 			}

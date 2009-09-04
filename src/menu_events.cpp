@@ -105,8 +105,13 @@ namespace events{
 			filter_.delete_item(menu_selection);
 			//add dismissal to the undo stack
 			undo_stack_.push_back(undo_action(u, map_location(), static_cast<int>(index), true));
-			units_.erase(units_.begin() + index);
-			recorder.add_disband(index);
+
+			//remove the unit from the recall list
+			std::vector<unit>::iterator dismissed_unit = std::find_if(units_.begin(), units_.end(), boost::bind(&unit::matches_id, _1, u.id()));
+			assert(dismissed_unit != units_.end());
+			recorder.add_disband(dismissed_unit->id());
+			units_.erase(dismissed_unit);
+
 			//clear the redo stack to avoid duplication of dismissals
 			redo_stack_.clear();
 			return gui::DELETE_ITEM;
@@ -975,7 +980,7 @@ private:
 				ERR_NG << "trying to undo a dismissal for side " << side_num
 					<< ", which has no recall list!\n";
 			} else {
-				current_team.recall_list().insert(current_team.recall_list().begin()+action.recall_pos,action.affected_unit);
+				current_team.recall_list().push_back(action.affected_unit);
 			}
 		} else if(action.is_recall()) {
 
@@ -1089,8 +1094,10 @@ private:
 					<< ", which has no recall list!\n";
 			} else {
 			//redo a dismissal
-			recorder.add_disband(action.recall_pos);
-			current_team.recall_list().erase(current_team.recall_list().begin()+action.recall_pos);
+			recorder.add_disband(action.affected_unit.id());
+			std::vector<unit>::iterator unit_it = std::find_if(current_team.recall_list().begin(), 
+				current_team.recall_list().end(), boost::bind(&unit::matches_id, _1, action.affected_unit.id()));
+			current_team.recall_list().erase(unit_it);
 			}
 		} else if(action.is_recall()) {
 			if(!current_team.persistent()) {
