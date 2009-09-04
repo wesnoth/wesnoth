@@ -45,7 +45,7 @@ static lg::log_domain log_uploader("uploader");
 extern replay recorder;
 
 const std::string TARGET_HOST = "www.wesnoth.org";
-const std::string TARGET_URL = "/cgi-bin/upload";
+const std::string TARGET_URL = "/wesstats/upload";
 const Uint16 TARGET_PORT = 80;
 
 struct upload_log::thread_info upload_log::thread_;
