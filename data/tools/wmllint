@@ -1021,6 +1021,8 @@ def global_sanity_check(filename, lines):
     in_object = False
     in_stage = False
     in_cfg = False
+    in_goal = False
+    in_facet = False
     in_sound_source = False
     in_remove_sound_source = False
     in_message = False
@@ -1055,6 +1057,14 @@ def global_sanity_check(filename, lines):
             in_cfg = True
         elif "[/cfg]" in lines[i]:
             in_cfg = False
+        elif "[goal]" in lines[i]:
+            in_goal = True
+        elif "[/goal]" in lines[i]:
+            in_goal = False
+        elif "[facet]" in lines[i]:
+            in_facet = True
+        elif "[/facet]" in lines[i]:
+            in_facet = False
         elif "[sound_source]" in lines[i]:
             in_sound_source = True
         elif "[/sound_source]" in lines[i]:
@@ -1142,7 +1152,7 @@ def global_sanity_check(filename, lines):
                         present.append(value)
                     elif value in ('narrator', 'unit', 'second_unit') or (value and value[0] in ("$", "{")):
                         continue
-                    elif preamble_seen and not ignore_id and not in_object and not in_cfg and not in_sound_source and not in_remove_sound_source and not in_stage and not value in present:
+                    elif preamble_seen and not ignore_id and not in_object and not in_cfg and not in_facet and not in_sound_source and not in_remove_sound_source and not in_stage and not in_goal and not value in present:
                         print '"%s", line %d: unknown \'%s\' referred to by id' \
                               % (filename, i+1, value)
                 if markcheck and has_tr_mark and not ("wmllint: ignore" in comment or "wmllint: noconvert" in comment):
@@ -1730,6 +1740,92 @@ def translator(filename, mapxforms, textxform):
     else:
         return None
 
+def inner_spellcheck(nav, value, spelldict):
+    "Spell-check an attribute value or string."
+    # Strip off translation marks
+    if value.startswith("_"):
+        value = value[1:].strip()
+    # Strip off line continuations, they interfere with string-stripping
+    value = value.strip()
+    if value.endswith("+"):
+        value = value[:-1].rstrip()
+    # Strip off string quotes
+    value = string_strip(value)
+    # Discard extraneous stuff 
+    value = value.replace("...", " ")
+    value = value.replace("''", "")
+    value = value.replace("female^", " ")
+    value = value.replace("male^", " ")
+    value = value.replace("teamname^", " ")
+    if '<' in value:
+        value = re.sub("<[^>]+>text='([^']*)'<[^>]+>", r"\1", value)
+        value = re.sub("<[0-9,]+>", "", value)
+    # Fold continued lines
+    value = re.sub(r'" *\+\s*_? *"', "", value)
+    # It would be nice to use pyenchant's tokenizer here, but we can't
+    # because it wants to strip the trailing quotes we need to spot
+    # the Dwarvish-accent words.
+    for token in value.split():
+        # Try it with simple lowercasing first
+        lowered = token.lower()
+        if d.check(lowered):
+            continue
+        # Strip leading punctuation and grotty Wesnoth highlighters
+        while lowered and lowered[0] in " \t(`@*'%_":
+            lowered = lowered[1:]
+        # Not interested in interpolations or numeric literals
+        if not lowered or lowered.startswith("$"):
+            continue
+        # Suffix handling. Done in two passes because some
+        # Dwarvish dialect words end in a single quote
+        while lowered and lowered[-1] in "_-*).,:;?!& \t":
+            lowered = lowered[:-1]
+        if lowered and spelldict.check(lowered):
+            continue;
+        while lowered and lowered[-1] in "_-*').,:;?!& \t":
+            lowered = lowered[:-1]
+        # Not interested in interpolations or numeric literals
+        if not lowered or lowered.startswith("$") or lowered[0].isdigit():
+            continue
+       # Nuke balanced string quotes if present
+        lowered = string_strip(lowered)
+        if lowered and spelldict.check(lowered):
+            continue
+        # No match? Strip posessive suffixes and try again.
+        elif lowered.endswith("'s") and spelldict.check(lowered[:-2]):
+            continue
+        # Hyphenated compounds need all their parts good
+        if "-" in lowered:
+            parts = lowered.split("-")
+            if filter(lambda w: not w or spelldict.check(w), parts) == parts:
+                continue
+        # Modifier literals aren't interesting
+        if re.match("[+-][0-9]", lowered):
+            continue
+        # Match various onomatopoetic exclamations of variable form
+        if re.match("hm+", lowered):
+            continue
+        if re.match("a+[ur]*g+h*", lowered):
+            continue
+        if re.match("(mu)?ha(ha)*", lowered):
+            continue
+        if re.match("ah+", lowered):
+            continue
+        if re.match("no+", lowered):
+            continue
+        if re.match("no+", lowered):
+            continue
+        if re.match("um+", lowered):
+            continue
+        if re.match("aw+", lowered):
+            continue
+        if re.match("o+h+", lowered):
+            continue
+        if re.match("s+h+", lowered):
+            continue
+        nav.printError('possible misspelling "%s"' % token)
+                
+
 def spellcheck(fn, d):
     "Spell-check a file using an Enchant dictionary object."
     local_spellings = []
@@ -1780,88 +1876,7 @@ def spellcheck(fn, d):
             (key, prefix, value, comment) = parse_attribute(nav.text)
             if "no spellcheck" in comment:
                 continue
-            # Strip off translation marks
-            if value.startswith("_"):
-                value = value[1:].strip()
-            # Strip off line continuations, they interfere with string-stripping
-            value = value.strip()
-            if value.endswith("+"):
-                value = value[:-1].rstrip()
-            # Strip off string quotes
-            value = string_strip(value)
-            # Discard extraneous stuff 
-            value = value.replace("...", " ")
-            value = value.replace("''", "")
-            value = value.replace("female^", " ")
-            value = value.replace("male^", " ")
-            value = value.replace("teamname^", " ")
-            if '<' in value:
-                value = re.sub("<[^>]+>text='([^']*)'<[^>]+>", r"\1", value)
-                value = re.sub("<[0-9,]+>", "", value)
-            # Fold continued lines
-            value = re.sub(r'" *\+\s*_? *"', "", value)
-            # It would be nice to use pyenchant's tokenizer here, but we can't
-            # because it wants to strip the trailing quotes we need to spot
-            # the Dwarvish-accent words.
-            for token in value.split():
-                # Try it with simple lowercasing first
-                lowered = token.lower()
-                if d.check(lowered):
-                    continue
-                # Strip leading punctuation and grotty Wesnoth highlighters
-                while lowered and lowered[0] in " \t(`@*'%_":
-                    lowered = lowered[1:]
-                # Not interested in interpolations or numeric literals
-                if not lowered or lowered.startswith("$"):
-                    continue
-                # Suffix handling. Done in two passes because some
-                # Dwarvish dialect words end in a single quote
-                while lowered and lowered[-1] in "_-*).,:;?!& \t":
-                    lowered = lowered[:-1]
-                if lowered and d.check(lowered):
-                    continue;
-                while lowered and lowered[-1] in "_-*').,:;?!& \t":
-                    lowered = lowered[:-1]
-                # Not interested in interpolations or numeric literals
-                if not lowered or lowered.startswith("$") or lowered[0].isdigit():
-                    continue
-               # Nuke balanced string quotes if present
-                lowered = string_strip(lowered)
-                if lowered and d.check(lowered):
-                    continue
-                # No match? Strip posessive suffixes and try again.
-                elif lowered.endswith("'s") and d.check(lowered[:-2]):
-                    continue
-                # Hyphenated compounds need all their parts good
-                if "-" in lowered:
-                    parts = lowered.split("-")
-                    if filter(lambda w: not w or d.check(w), parts) == parts:
-                        continue
-                # Modifier literals aren't interesting
-                if re.match("[+-][0-9]", lowered):
-                    continue
-                # Match various onomatopoetic exclamations of variable form
-                if re.match("hm+", lowered):
-                    continue
-                if re.match("a+[ur]*g+h*", lowered):
-                    continue
-                if re.match("(mu)?ha(ha)*", lowered):
-                    continue
-                if re.match("ah+", lowered):
-                    continue
-                if re.match("no+", lowered):
-                    continue
-                if re.match("no+", lowered):
-                    continue
-                if re.match("um+", lowered):
-                    continue
-                if re.match("aw+", lowered):
-                    continue
-                if re.match("o+h+", lowered):
-                    continue
-                if re.match("s+h+", lowered):
-                    continue
-                nav.printError('possible misspelling "%s"' % token)
+            inner_spellcheck(nav, value, d)
         # Take exceptions from the id fields
         if nav.element == "id=":
             (key, prefix, value, comment) = parse_attribute(nav.text)
