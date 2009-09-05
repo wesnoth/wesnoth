@@ -1257,9 +1257,9 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 	std::string parameters = (i == query.end() ? "" : std::string(i+1,query.end()));
 	utils::strip(parameters);
 	const std::string& help_msg = "Available commands are: adminmsg <msg>,"
-			" ban <mask> <time> <reason>, bans [deleted], clones,"
+			" ban <mask> <time> <reason>, bans [deleted] [<ipmask>], clones,"
 			" dul|deny_unregistered_login [yes|no], kick <mask> [<reason>],"
-			" k[ick]ban <mask> [<time>] <reason>, help, games, metrics,"
+			" k[ick]ban <mask> <time> <reason>, help, games, metrics,"
 			" netstats [all], [lobby]msg <message>, motd [<message>],"
 			" pm|privatemsg <nick> <message>, requests, sample, searchlog <mask>,"
 			" signout, stats, status [<mask>], unban <ipmask>\n"
