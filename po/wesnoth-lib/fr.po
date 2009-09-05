@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-30 19:20+0200\n"
-"PO-Revision-Date: 2009-07-27 23:22+0100\n"
-"Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
+"POT-Creation-Date: 2009-09-03 15:55+0200\n"
+"PO-Revision-Date: 2009-08-09 00:12+0100\n"
+"Last-Translator: Damien J\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -278,7 +278,7 @@ msgstr "Forêt enneigée"
 #: data/core/terrain.cfg:641 data/core/terrain.cfg:652
 #: data/core/terrain.cfg:662
 msgid "Forested Hills"
-msgstr "Colline boisé"
+msgstr "Collines boisées"
 
 #. [terrain_type]: id=forested_snow_hills
 #. [terrain_type]: id=deciduous_forest_winter_snow_hills
@@ -286,7 +286,7 @@ msgstr "Colline boisé"
 #: data/core/terrain.cfg:587 data/core/terrain.cfg:630
 #: data/core/terrain.cfg:673
 msgid "Forested Snow Hills"
-msgstr "Collines boisées et enneigées"
+msgstr "Collines boisées enneigées"
 
 #. [terrain_type]: id=deciduous_forest_summer_hills
 #: data/core/terrain.cfg:598
@@ -578,7 +578,6 @@ msgstr ""
 msgid "Server:"
 msgstr "Serveur :"
 
-# Damien : les transitions sont entre terrains ; c'est pas dans la VO, mais je le rappelle.
 #. [button]
 #: data/gui/default/window/addon_connect.cfg:135
 #: data/gui/default/window/addon_connect.cfg:136
@@ -718,17 +717,17 @@ msgstr "Redéfinir la hauteur :"
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:119
 msgid "Old height:"
-msgstr "Ancienne auteur :"
+msgstr "Ancienne hauteur :"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:147
 msgid "Expand / shrink direction"
-msgstr "Direction d'agrandissement / Rétrécissement"
+msgstr "Direction d'agrandissement / rétrécissement"
 
 #. [toggle_button]: id=copy_edge_terrain
 #: data/gui/default/window/editor_resize_map.cfg:242
 msgid "Copy edge terrain"
-msgstr "Copier le terrain bordure"
+msgstr "Copier le terrain en bordure"
 
 #. [button]: id=ok
 #: data/gui/default/window/editor_resize_map.cfg:264
@@ -758,7 +757,7 @@ msgstr "Suivant"
 #. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:83
 msgid "Custom lighting setting"
-msgstr "Paramètres personnalisés de l'éclairage"
+msgstr "Paramètres personnalisés d'éclairage"
 
 #. [toggle_button]: id=custom_tod_auto_refresh
 #: data/gui/default/window/editor_settings.cfg:93
@@ -783,7 +782,7 @@ msgstr "Bleu :"
 #. [toggle_button]: id=use_mdi
 #: data/gui/default/window/editor_settings.cfg:208
 msgid "Allow more than one map to be open at the same time (MDI)"
-msgstr "Permettre l'ouverture de plusieurs cartes en même temps (MDI)"
+msgstr "Permettre l'ouverture simultanée de plusieurs cartes (MDI)"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=apply
@@ -1056,12 +1055,12 @@ msgstr ""
 #: data/gui/default/window/lobby_main.cfg:183
 #: data/gui/default/window/mp_create_game.cfg:412
 msgid "Experience modifier"
-msgstr "Modifier l'expérience"
+msgstr "Modificateur d'expérience"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:185
 msgid "Time limit"
-msgstr ""
+msgstr "Limite de temps"
 
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:304
@@ -1268,13 +1267,11 @@ msgstr ""
 
 #. [button]: id=kick_ban
 #: data/gui/default/window/lobby_player_info.cfg:180
-#, fuzzy
 msgid "Kick/ban"
-msgstr "Kick"
+msgstr "Éjecter / Exclure"
 
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
-#, fuzzy
 msgid "Multiplayer command dialog"
 msgstr "Invite de commandes multijoueurs"
 
@@ -1337,12 +1334,12 @@ msgstr "Temps :"
 #. [button]: id=status
 #: data/gui/default/window/mp_cmd_wrapper.cfg:366
 msgid "Status"
-msgstr "Status"
+msgstr "Statut"
 
 #. [button]: id=ban
 #: data/gui/default/window/mp_cmd_wrapper.cfg:396
 msgid "Ban"
-msgstr "Exclusion"
+msgstr "Exclure"
 
 #. [label]
 #: data/gui/default/window/mp_connect.cfg:50
@@ -1385,14 +1382,13 @@ msgstr "Défaut"
 #. [button]: id=password
 #: data/gui/default/window/mp_create_game.cfg:218
 msgid "Set Password"
-msgstr "Déterminer un mot de passe"
+msgstr "Définir un mot de passe"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:246
 msgid "Map to play:"
 msgstr "Carte à jouer :"
 
-# césure pour interface
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:331
 msgid "Number of turns"
@@ -1416,7 +1412,7 @@ msgstr "Brouillard de guerre"
 #. [toggle_button]: id=random_start_time
 #: data/gui/default/window/mp_create_game.cfg:493
 msgid "Random start time"
-msgstr "Temps de départ aléatoire"
+msgstr "Heure de départ aléatoire"
 
 #. [button]: id=ok
 #: data/gui/default/window/mp_create_game.cfg:535
@@ -1454,7 +1450,7 @@ msgstr "Sauvegarder le mot de passe dans les préférences (texte en clair)"
 #. [button]: id=password_reminder
 #: data/gui/default/window/mp_login.cfg:248
 msgid "Password Reminder"
-msgstr "Pense-bête de mot de passe"
+msgstr "Pense-bête du mot de passe"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -1481,7 +1477,7 @@ msgstr ""
 "serveur : vous devrez fournir un mot de passe uniquement si vous souhaitez "
 "utiliser un nom d'utilisateur enregistré sur le forum.\n"
 "\n"
-"Le forum de la Bataille pour Wesnoth se trouve à l'adresse suivante : http://"
+"Le forum de Bataille pour Wesnoth se trouve à l'adresse suivante : http://"
 "www.wesnoth.org/forum/"
 
 #. [column]
@@ -1694,7 +1690,7 @@ msgstr "Iconifier les connectés au vestibule"
 
 #: src/game_preferences_display.cpp:169
 msgid "Set path to wesnothd"
-msgstr "Paramètre le chemin vers wesnothd"
+msgstr "Paramétrer le chemin vers wesnothd"
 
 #: src/game_preferences_display.cpp:170
 msgid "Friends List"
@@ -1868,8 +1864,8 @@ msgstr "Choisir entre le mode plein écran et le mode fenêtré"
 msgid ""
 "Should the map view scroll to a unit when an action or move is animated."
 msgstr ""
-"La carte doit elle défiler vers une unité en cas d'animation d'une action ou "
-"d'un déplacement."
+"La carte doit-elle défiler vers une unité en cas d'animation (action ou "
+"déplacement)."
 
 #: src/game_preferences_display.cpp:301
 msgid "Make units move and fight faster"
@@ -1926,8 +1922,8 @@ msgstr "Signaler toute arrivée de joueur au vestibule"
 #: src/game_preferences_display.cpp:362
 msgid "Find and set path to MP server to host LAN games."
 msgstr ""
-"Trouve et paramètre le chemin au serveur de jeu pour héberger des parties "
-"LAN multijoueur."
+"Trouver et paramétrer le chemin du serveur hébergeant des parties LAN "
+"multijoueurs."
 
 #: src/game_preferences_display.cpp:363
 msgid "View and edit your friends and ignores list"
@@ -1935,7 +1931,7 @@ msgstr "Modifier la liste des amis et des ignorés"
 
 #: src/game_preferences_display.cpp:364
 msgid "Back to the multiplayer options"
-msgstr "Retour aux options multijoueurs"
+msgstr "Revenir aux options multijoueurs"
 
 #: src/game_preferences_display.cpp:365
 msgid "Add this username to your friends list"
@@ -1955,7 +1951,7 @@ msgstr "Entrer un nom d'utilisateur"
 
 #: src/game_preferences_display.cpp:373
 msgid "Show text above a unit when it is hit to display damage inflicted"
-msgstr "Afficher les dégâts reçus au-dessus d'une unité touchée"
+msgstr "Afficher les dégâts au-dessus d'une unité touchée"
 
 #: src/game_preferences_display.cpp:375
 msgid "Change the resolution the game runs at"
@@ -2129,8 +2125,7 @@ msgstr "Une « list_definition » doit contenir un rang."
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
-"La « list_data » doit avoir le même nombre de colonnes que la "
-"« list_definition »."
+"La « list_data » doit avoir autant de colonnes que la « list_definition »."
 
 #: src/gui/auxiliary/window_builder/multi_page.cpp:37
 #, fuzzy
@@ -2596,7 +2591,6 @@ msgstr "Rafraîchir l'affichage"
 msgid "Update Terrain Transitions"
 msgstr "Mettre à jour les transitions de terrains"
 
-# Damien : les transitions sont entre terrains ; c'est pas dans la VO, mais je le rappelle.
 #: src/hotkeys.cpp:169
 msgid "Auto-update Terrain Transitions"
 msgstr "Mettre à jour automatiquement les transitions de terrains"
@@ -2787,7 +2781,7 @@ msgstr "Configuration des raccourcis clavier"
 
 #: src/preferences_display.cpp:218 src/preferences_display.cpp:286
 msgid "Press desired Hotkey (Esc cancels)"
-msgstr "Taper le raccourci désiré (Échap annule)"
+msgstr "Saisir le raccourci désiré (Échap pour annuler)"
 
 #: src/preferences_display.cpp:237
 msgid "Action"
@@ -2837,7 +2831,7 @@ msgid ""
 "An error due to possibly invalid WML occurred\n"
 "The error message is :"
 msgstr ""
-"Une erreur probablement due à du code WML invalide est survenue.\n"
+"Une erreur probablement due à du code WML non valide est survenue.\n"
 "Le message d'erreur est :"
 
 #: src/wml_exception.cpp:55

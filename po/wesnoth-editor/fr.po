@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-09-03 00:21+0200\n"
-"PO-Revision-Date: 2009-05-09 20:36+0200\n"
-"Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
+"POT-Creation-Date: 2009-09-03 15:55+0200\n"
+"PO-Revision-Date: 2009-08-09 00:26+0100\n"
+"Last-Translator: Damien J\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,17 +26,17 @@ msgstr "Hexagone seul"
 #. [brush]
 #: data/core/editor/brushes.cfg:15
 msgid "Radius 1 Hex"
-msgstr "Hexagone de rayon 1"
+msgstr "Zone d'un hexagone de rayon"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:25
 msgid "Radius 2 Hex"
-msgstr "Hexagone de rayon 2"
+msgstr "Zone de deux hexagones de rayon"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:55
 msgid "Hex Line NW-SE"
-msgstr "Ligne hexagonale NO-SE"
+msgstr "Ligne d'hexagones NO-SE"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:10
@@ -104,7 +104,7 @@ msgid ""
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
 "Utilisez les boutons gauche/droite de la souris pour dessiner l'avant/"
-"arrière-plan des terrains. Maintenez Shift appuyée pour ne dessiner que la "
+"arrière-plan des terrains. Maintenez Shift appuyé pour ne dessiner que la "
 "couche de base. Utilisez Ctrl+clic pour prélever le terrain sous le curseur."
 
 #. [editor_tool_hint]: id=editor-tool-select
@@ -115,8 +115,7 @@ msgid ""
 "selection of tiles with same terrain."
 msgstr ""
 "Le bouton gauche de la souris sélectionne, celui de droite désélectionne. "
-"Appuyez en même temps sur Shift pour une sélection magique des cases de même "
-"terrain."
+"Appuyez simultanément sur Shift pour sélectionner des cases du même terrain."
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
 #. [menu]: id=start_position_button_editor
@@ -127,9 +126,8 @@ msgid ""
 "position under cursor, delete clears."
 msgstr ""
 "Le bouton gauche de la souris permet de choisir un joueur, celui de droite "
-"l'efface. Les touches de numéro défilent la carte vers la position de "
-"départ, les touches Alt+Numéro placent la position de départ correspondante "
-"sous le curseur, Suppr l'efface."
+"l'efface. Les chiffres vous amènent aux positions de départ, Alt+chiffre "
+"placent la position de départ correspondante sous le curseur, Suppr l'efface."
 
 #. [editor_tool_hint]: id=editor-paste
 #: data/core/editor/tool-hints.cfg:30
@@ -137,9 +135,9 @@ msgid ""
 "Click to paste, zoom out for more accuracy when pasting large areas. Use the "
 "edit menu to transform the clipboard (rotate, mirror)."
 msgstr ""
-"Cliquez pour coller. Zoomez pour plus de précision lorsque vous collez des "
-"zones étendues. Utilisez le menu d'édition pour transformer le presse-papier "
-"(rotations, mirroir)."
+"Cliquez pour coller. Zoomez pour coller avec précision des zones étendues. "
+"Utilisez le menu d'édition pour transformer le presse-papier (rotations, "
+"miroir)."
 
 #. [menu]: id=menu-editor-file
 #: data/themes/editor.cfg:120
@@ -196,7 +194,7 @@ msgid ""
 "lost."
 msgstr ""
 "Voulez-vous vraiment quitter ? Les modifications effectuées sur la carte "
-"depuis la dernière sauvergarde seront perdus."
+"depuis la dernière sauvegarde seront perdues."
 
 #: src/editor/editor_controller.cpp:310
 msgid ""
@@ -204,8 +202,8 @@ msgid ""
 "since the last save will be lost:"
 msgstr ""
 "Voulez-vous vraiment quitter ? Les cartes suivantes ont été modifiées et "
-"tout les modifications effectuées depuis la dernière sauvergarde seront "
-"perdus :"
+"toutes les modifications effectuées depuis la dernière sauvegarde seront "
+"perdues :"
 
 #: src/editor/editor_controller.cpp:315
 msgid "Quit"
@@ -264,7 +262,7 @@ msgstr "Erreur lors du chargement de la carte"
 
 #: src/editor/editor_controller.cpp:621 src/editor/editor_controller.cpp:663
 msgid "This map is already open."
-msgstr "Cette carte est déja ouverte."
+msgstr "Cette carte est déjà ouverte."
 
 #: src/editor/editor_controller.cpp:642
 msgid "Map saved."
@@ -325,11 +323,11 @@ msgstr ""
 
 #: src/editor/editor_palettes.cpp:506
 msgid "(non-core)"
-msgstr ""
+msgstr "(extension)"
 
 #: src/editor/editor_palettes.cpp:507
 msgid "Will not work in game without extra care."
-msgstr ""
+msgstr "Ne fonctionnera pas dans le jeu sans travail supplémentaire."
 
 #: src/editor/editor_palettes.cpp:532
 msgid "FG"
@@ -376,6 +374,10 @@ msgid ""
 "the cursor. Pressing a number key by itself will scroll to that player's "
 "starting position."
 msgstr ""
+"Quel joueur devrait commencer ici ? Appuyez sur ALT et un chiffre pour "
+"définir la position de départ d'un joueur, appuyez sur Suppr pour effacer la "
+"position sous le curseur. Appuyez seulement sur un chiffre pour aller à la "
+"position de départ du joueur associé à ce numéro."
 
 #: src/gui/dialogs/editor_settings.cpp:161
 msgid "Custom setting"

@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-09-03 15:55+0200\n"
-"PO-Revision-Date: 2009-08-15 16:45+0200\n"
-"Last-Translator: Guillaume Melquiond <guillaume.melquiond@gmail.com>\n"
+"PO-Revision-Date: 2009-09-05 16:07+0200\n"
+"Last-Translator: Damien J\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -2690,7 +2690,7 @@ msgstr ""
 "eaux peu profondes. Quant aux unités aquatiques, elles y bénéficient d'une "
 "protection exceptionnellement haute.\n"
 "\n"
-"Les ondins et les nagas recoivent 70 % de défense sur les récifs côtiers."
+"Les ondins et les nagas reçoivent 70 % de défense sur les récifs côtiers."
 
 #. [topic]: id=terrain_bridge
 #: data/core/help.cfg:739
@@ -2992,8 +2992,8 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Permet d'activer un menu offrant le choix d'un scénarion pour avancer "
-"immédiatement dans une campagne.\n"
+"Active un menu de choix de scénario pour avancer immédiatement dans une "
+"campagne.\n"
 "\n"
 
 #. [topic]: id=debug_commands
@@ -3037,7 +3037,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Avancer immédiatement jusqu'au prochain scénario dans une campagne.\n"
+"Avance immédiatement jusqu'au prochain scénario dans une campagne.\n"
 "\n"
 
 #. [topic]: id=debug_commands
@@ -3048,7 +3048,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Change manuellement une variable d'état du jeu par cette valeur.\n"
+"Permet de définir manuellement une variable du jeu.\n"
 "\n"
 
 #. [topic]: id=debug_commands
@@ -3059,7 +3059,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Affiche une variable d'état du jeu.\n"
+"Affiche la valeur d'une variable du jeu.\n"
 "\n"
 
 #. [topic]: id=debug_commands
@@ -3070,7 +3070,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Déclenche manuellement cet événement.\n"
+"Déclenche manuellement un évènement précis.\n"
 "\n"
 
 #. [topic]: id=debug_commands
@@ -3353,7 +3353,7 @@ msgstr "immersion"
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:469 data/core/macros/abilities.cfg:475
 msgid "female^submerge"
-msgstr "Submerger"
+msgstr "immersion"
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:473 data/core/macros/abilities.cfg:479
@@ -3620,7 +3620,6 @@ msgstr "flanc $temp_i"
 msgid "focusing on defeating $this_enemy_description|."
 msgstr "Se focaliser contre $this_enemy_description|."
 
-# Benoît : à verifier si ça colle bien dans le contexte
 #. [value]
 #. [option]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:329
@@ -3729,12 +3728,12 @@ msgstr "Définir l'objectif…"
 #. [literal]
 #: data/core/macros/ai_controller.cfg:880
 msgid "Set behavior..."
-msgstr "Définir un comportement…"
+msgstr "Définir le comportement…"
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:920
 msgid "Exit"
-msgstr "Sortie"
+msgstr "Sortir"
 
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
@@ -5122,7 +5121,7 @@ msgstr "vigoureuse"
 msgid "Can rest while moving, takes a quarter less poison damage"
 msgstr ""
 "Peut récupérer en bougeant, subit un quart de dommages en moins lors d'un "
-"empoisonement."
+"empoisonnement."
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:151 data/core/macros/traits.cfg:164
@@ -7380,7 +7379,7 @@ msgstr ""
 #: src/addon_management.cpp:487 src/addon_management.cpp:559
 #: src/multiplayer.cpp:213 src/multiplayer.cpp:268 src/multiplayer_ui.cpp:78
 msgid "Connection timed out"
-msgstr "Tentative de connexion expirée"
+msgstr "Délai de connexion dépassé"
 
 #: src/addon_management.cpp:490
 msgid "The server responded with an error: \"$error|\""
@@ -7455,7 +7454,7 @@ msgstr "Nom"
 
 #: src/addon_management.cpp:739
 msgid "New version"
-msgstr "Nouvelle sersion"
+msgstr "Nouvelle version"
 
 #: src/addon_management.cpp:739
 msgid "Old version"
@@ -7547,7 +7546,7 @@ msgstr "Effacer l'extension : "
 
 #: src/addon_management.cpp:1021
 msgid "There are no add-ons available for download from this server."
-msgstr "Ce serveur ne propose pas d'extension téléchargeable."
+msgstr "Ce serveur ne propose pas d'extension."
 
 #: src/addon_management.cpp:1034
 msgid "Get add-ons"
@@ -9055,7 +9054,7 @@ msgstr "(Vide)"
 
 #: src/multiplayer_connect.cpp:677
 msgid "(Reserved for $playername)"
-msgstr "(Reservé pour $playername)"
+msgstr "(Réservé pour $playername)"
 
 #: src/multiplayer_connect.cpp:682
 msgid "(empty)"
@@ -9863,7 +9862,6 @@ msgid "Damage"
 msgstr "Dégâts"
 
 #: src/statistics_dialog.cpp:176
-#, fuzzy
 msgid "Overall"
 msgstr "Total"
 
