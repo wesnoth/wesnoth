@@ -254,6 +254,9 @@ public:
 	virtual const moves_map& get_possible_moves() const = 0;
 
 
+	virtual const std::vector<unit>& get_recall_list() const = 0;
+
+
 	virtual stage_ptr get_recruitment(ai_context &context) const = 0;
 
 
@@ -682,6 +685,12 @@ public:
 	virtual double power_projection(const map_location& loc, const move_map& dstsrc) const
 	{
 		return target_->power_projection(loc,dstsrc);
+	}
+
+
+	virtual const std::vector<unit>& get_recall_list() const
+	{
+		return target_->get_recall_list();
 	}
 
 
@@ -1163,6 +1172,9 @@ public:
 	virtual const moves_map& get_possible_moves() const;
 
 
+	virtual const std::vector<unit>& get_recall_list() const;
+
+	
 	virtual stage_ptr get_recruitment(ai_context &context) const;
 
 

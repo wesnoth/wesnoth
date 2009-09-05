@@ -654,6 +654,17 @@ const moves_map& readonly_context_impl::get_possible_moves() const
 }
 
 
+const std::vector<unit>& readonly_context_impl::get_recall_list() const
+{
+	static std::vector<unit> dummy_units;
+	//@todo: check for (level_["disallow_recall"]))
+	if(!current_team().persistent()) {
+		return dummy_units;
+	}
+
+	return current_team().recall_list();
+}
+
 stage_ptr readonly_context_impl::get_recruitment(ai_context &context) const
 {
 	if (recruitment_) {
