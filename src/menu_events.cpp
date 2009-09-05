@@ -104,7 +104,7 @@ namespace events{
 			// Remove the item from filter_textbox memory
 			filter_.delete_item(menu_selection);
 			//add dismissal to the undo stack
-			undo_stack_.push_back(undo_action(u, map_location(), static_cast<int>(index), true));
+			undo_stack_.push_back(undo_action(u, map_location(), undo_action::DISMISS));
 
 			//remove the unit from the recall list
 			std::vector<unit>::iterator dismissed_unit = std::find_if(units_.begin(), units_.end(), boost::bind(&unit::matches_id, _1, u.id()));
@@ -803,7 +803,7 @@ private:
 		    || new_unit.type()->has_random_traits()) {
 			clear_undo_stack(side_num);
 		} else {
-			undo_stack_.push_back(undo_action(new_unit, loc, RECRUIT_POS));
+			undo_stack_.push_back(undo_action(new_unit, loc, undo_action::RECRUIT));
 		}
 
 		gui_->recalculate_minimap();
@@ -953,7 +953,7 @@ private:
 		if (shroud_cleared) {
 			clear_undo_stack(side_num);
 		} else {
-			undo_stack_.push_back(undo_action(un, loc, res));
+			undo_stack_.push_back(undo_action(un, loc, undo_action::RECALL));
 		}
 
 		redo_stack_.clear();
@@ -973,7 +973,7 @@ private:
 		team &current_team = teams_[side_num - 1];
 
 		undo_action& action = undo_stack_.back();
-		if (action.is_dismiss) {
+		if (action.is_dismiss()) {
 			//undo a dismissal
 
 			if(!current_team.persistent()) {
@@ -1088,7 +1088,7 @@ private:
 		team &current_team = teams_[side_num - 1];
 
 		undo_action& action = redo_stack_.back();
-		if (action.is_dismiss) {
+		if (action.is_dismiss()) {
 			if(!current_team.persistent()) {
 				ERR_NG << "trying to redo a dismiss for side " << side_num
 					<< ", which has no recall list!\n";

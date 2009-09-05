@@ -36,8 +36,6 @@ class unit;
 #include <deque>
 #include <sstream>
 
-#define RECRUIT_POS -2
-
 bool can_recruit_on(const gamemap& map, const map_location& leader, const map_location loc);
 
 struct end_level_exception;
@@ -344,6 +342,8 @@ int combat_modifier(const unit_map &units, const map_location &loc,
 
 /** Records information to be able to undo a movement. */
 struct undo_action {
+	enum ACTION_TYPE { NONE, RECRUIT, RECALL, DISMISS};
+
 	undo_action(const unit& u,
 		const std::vector<map_location>& rt,
 		int sm, int timebonus = 0, int orig = -1) :
@@ -351,33 +351,31 @@ struct undo_action {
 			starting_moves(sm),
 			original_village_owner(orig),
 			recall_loc(),
-			recall_pos(-1),
+			type(NONE),
 			affected_unit(u),
-			countdown_time_bonus(timebonus),
-			is_dismiss(false)
+			countdown_time_bonus(timebonus)
 			{}
 
-	undo_action(const unit& u, const map_location& loc, const int pos, const bool dismiss=false) :
+	undo_action(const unit& u, const map_location& loc, const ACTION_TYPE action_type=NONE) :
 		route(),
 		starting_moves(),
 		original_village_owner(),
 		recall_loc(loc),
-		recall_pos(pos),
+		type(action_type),
 		affected_unit(u),
-		countdown_time_bonus(1),
-		is_dismiss(dismiss)
+		countdown_time_bonus(1)
 		{}
 
 	std::vector<map_location> route;
 	int starting_moves;
 	int original_village_owner;
 	map_location recall_loc;
-	int recall_pos; // set to RECRUIT_POS for an undo-able recruit
+	ACTION_TYPE type;
 	unit affected_unit;
 	int countdown_time_bonus;
-	bool is_dismiss; //set to true if the action is a dismissal of a recallable unit
-	bool is_recall() const { return recall_pos >= 0; }
-	bool is_recruit() const { return recall_pos == RECRUIT_POS; }
+	bool is_dismiss() const { return type == DISMISS; }
+	bool is_recall() const { return type == RECALL; }
+	bool is_recruit() const { return type == RECRUIT; }
 };
 
 typedef std::deque<undo_action> undo_list;
