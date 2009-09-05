@@ -2328,6 +2328,7 @@ private:
 				register_command("save", &console_handler::do_save, _("Save game."));
 				register_alias("save", "w");
 				register_command("quit", &console_handler::do_quit, _("Quit game."));
+				// Note the next value is used hardcoded in the init tests.
 				register_alias("quit", "q!");
 				register_command("save_quit", &console_handler::do_save_quit,
 					_("Save and quit."));

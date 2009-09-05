@@ -107,6 +107,7 @@ namespace test_utils {
 
 		source_.type_key(current_time_++, SDLK_COLON, SDLMod(KMOD_LSHIFT | KMOD_SHIFT) );
 		source_.type_key(current_time_++, SDLK_q);
+		source_.type_key(current_time_++, SDLK_EXCLAIM);
 		source_.type_key(current_time_++, SDLK_RETURN);
 
 		upload_log no_upload(false);
