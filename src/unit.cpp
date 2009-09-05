@@ -350,7 +350,7 @@ unit_race::GENDER unit::generate_gender(const unit_type& type, bool gen, game_st
 }
 
 unit::unit(unit_map *unitmap, const unit_type *t, int side,
-		bool use_traits, bool dummy_unit, unit_race::GENDER gender, std::string variation, bool force_gender) :
+		bool use_traits, bool dummy_unit, unit_race::GENDER gender, std::string variation, bool force_gender, bool force_generate_name) :
 	cfg_(),
 	loc_(),
 	advances_to_(),
@@ -422,7 +422,7 @@ unit::unit(unit_map *unitmap, const unit_type *t, int side,
 	cfg_["upkeep"]="full";
 	advance_to(t);
 	if(dummy_unit == false) validate_side(side_);
-	if(use_traits) {
+	if(use_traits || force_generate_name) {
 		// Units that don't have traits generated are just
 		// generic units, so they shouldn't get a description
 		// either.

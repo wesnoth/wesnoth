@@ -26,39 +26,26 @@ namespace gui2 {
 class tunit_create : public tdialog
 {
 public:
-	tunit_create() :
-		races_(),
-		types_(),
-		gender_(unit_race::MALE),
-		generate_name_(false),
-		choice_(0)
-	{}
-
-	unit_race::GENDER gender() const { return gender_; }
-	void set_gender(unit_race::GENDER gender) { gender_ = gender; }
-
-	bool generate_name() const { return generate_name_; }
-	void set_generate_name(bool generate_name) { generate_name_ = generate_name; }
-
-	/** Inserts a new race/unit-type pair into the list. */
-	void add_race_type_pair(const std::string& race, const std::string& type) {
-		races_.push_back(race);
-		types_.push_back(type);
-	}
+	tunit_create();
 
 	/** Unit type choice from the user. */
-	size_t list_choice() const { return choice_; }
-	void set_list_choice(size_t choice);
+	const std::string& choice() const { return choice_; }
 
-	/** Value used to indicate that the user did not choice an unit type. */
-	size_t no_choice() const;
+	/** Whether the user actually chose a unit type or not. */
+	bool no_choice() const { return choice_.empty(); }
+
+	/** User's choice whether to create a unit with a random name. */
+	bool generate_name() { return generate_name_; }
+
+	/** Gender choice from the user. */
+	unit_race::GENDER gender() { return gender_; }
 
 private:
-	std::vector<std::string> races_;
-	std::vector<std::string> types_;
-	unit_race::GENDER gender_;
-	bool              generate_name_;
-	size_t            choice_;
+	unit_race::GENDER        gender_;
+	bool                     generate_name_;
+
+	std::string              choice_;
+	std::vector<std::string> type_ids_;
 
 	/** Inherited from tdialog. */
 	twindow* build_window(CVideo& video);
@@ -69,7 +56,7 @@ private:
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);
 
-	std::vector<std::string>::size_type list_size() const;
+	void gender_toggle_callback(twindow& window);
 };
 
 }

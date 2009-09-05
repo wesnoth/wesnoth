@@ -17,27 +17,40 @@
 #include "gui/dialogs/unit_create.hpp"
 
 #include "gui/auxiliary/log.hpp"
+#include "gui/dialogs/helper.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
+#include "unit_types.hpp"
+
+namespace {
+	static std::string last_chosen_type_id = "";
+	static bool last_generate_names_value = true;
+	static unit_race::GENDER last_gender = unit_race::MALE;
+
+	/**
+	 * Helper function for updating the male/female checkboxes.
+	 * It's not a private member of class gui2::tunit_create so
+	 * we don't have to expose a forward-declaration of ttoggle_button
+	 * in the interface.
+	 */
+	void update_male_female_toggles(gui2::ttoggle_button& male, gui2::ttoggle_button& female, unit_race::GENDER choice)
+	{
+		male.set_value(choice == unit_race::MALE);
+		female.set_value(choice == unit_race::FEMALE);
+	}
+}
 
 namespace gui2 {
 
 /* TODO: wiki-doc me! */
 
-size_t tunit_create::no_choice() const
+tunit_create::tunit_create()
+	: gender_(last_gender)
+	, generate_name_(last_generate_names_value)
+	, choice_(last_chosen_type_id)
+	, type_ids_()
 {
-	return std::max(races_.size(), types_.size());
-}
-
-std::vector<std::string>::size_type tunit_create::list_size() const
-{
-	return std::min(races_.size(), types_.size());
-}
-
-void tunit_create::set_list_choice(size_t choice)
-{
-	choice_ = std::min(choice, list_size() - 1);
 }
 
 twindow* tunit_create::build_window(CVideo& video)
@@ -56,61 +69,109 @@ void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
 	tlistbox& list = NEW_find_widget<tlistbox>(
 			&window, "unit_type_list", false);
 
-	if(gender_ == unit_race::FEMALE) {
-		female_toggle.set_value(true);
-		male_toggle.set_value(false);
-	}
-	else {
-		female_toggle.set_value(false);
-		male_toggle.set_value(true);
-	}
-
+	male_toggle.set_callback_state_change(
+		dialog_callback<tunit_create, &tunit_create::gender_toggle_callback>
+	);
+	female_toggle.set_callback_state_change(
+		dialog_callback<tunit_create, &tunit_create::gender_toggle_callback>
+	);
+	update_male_female_toggles(male_toggle, female_toggle, gender_);
 	namegen_toggle.set_value(generate_name_);
+	list.clear();
 
-	if(types_.empty() != true) {
-		// TODO: check at setter time instead/merge setters in one?
-		if(races_.size() != types_.size()) {
-			WRN_GUI_G << "tunit_create::pre_show(): more unit "
-					"races than types, using minimum set\n";
+	// We use this container to "map" unit_type ids to list subscripts
+	// later, so it ought to be empty before proceeding.
+	type_ids_.clear();
+
+	std::vector< std::string > type_labels, race_labels;
+
+	for(unit_type_data::unit_type_map::const_iterator i = unit_type_data::types().begin(); i != unit_type_data::types().end(); ++i)
+	{
+		unit_type_data::types().find_unit_type(i->first, unit_type::HELP_INDEX);
+
+		// And so we map an unit_type id to a list subscript. Ugh.
+		type_ids_.push_back(i->first);
+
+		std::string race_label = "";
+
+		const race_map::const_iterator race_it =
+			unit_type_data::types().races().find(i->second.race());
+
+		if (race_it != unit_type_data::types().races().end()) {
+			race_label = race_it->second.plural_name();
 		}
 
-		for(std::vector<std::string>::size_type k = 0; k < list_size(); ++k) {
-			std::map<std::string, string_map> data;
-			string_map item;
+		std::map< std::string, string_map > row_data;
+		string_map column;
 
-			item["label"] = types_[k];
-			data.insert(std::make_pair("unit_type", item));
-			item["label"] = races_[k];
-			data.insert(std::make_pair("race", item));
+		column["label"] = i->second.type_name();
+		row_data.insert(std::make_pair("unit_type", column));
+		column["label"] = race_label;
+		row_data.insert(std::make_pair("race", column));
 
-			list.add_row(data);
+		list.add_row(row_data);
+
+		// Select the previous choice, if any.
+		if(choice_.empty() != true && choice_ == i->first) {
+			list.select_row(list.get_item_count() - 1);
 		}
+	}
+
+	if(type_ids_.empty()) {
+		ERR_GUI_G << "no unit types found for unit create dialog; not good\n";
 	}
 }
 
 void tunit_create::post_show(twindow& window)
 {
-	if(get_retval() != twindow::OK) {
-		choice_ = no_choice();
-		return;
-	}
-
-	tlistbox& list = NEW_find_widget<tlistbox>(
-			&window, "unit_type_list", false);
-
-	if(list.get_selected_row() < 0) {
-		choice_ = no_choice();
-		return;
-	}
-
 	ttoggle_button& female_toggle = NEW_find_widget<ttoggle_button>(
 			&window, "female_toggle", false);
 	ttoggle_button& namegen_toggle = NEW_find_widget<ttoggle_button>(
 			&window, "namegen_toggle", false);
+	tlistbox& list = NEW_find_widget<tlistbox>(
+			&window, "unit_type_list", false);
 
-	choice_ = static_cast<size_t>(list.get_selected_row());
-	gender_ = female_toggle.get_value() ? unit_race::FEMALE : unit_race::MALE;
-	generate_name_ = namegen_toggle.get_value();
+	choice_ = "";
+
+	if(get_retval() != twindow::OK) {
+		return;
+	}
+
+	const int selected_row = list.get_selected_row();
+	if(selected_row < 0) {
+		return;
+	}
+	else if(static_cast<size_t>(selected_row) >= type_ids_.size()) {
+		// FIXME: maybe assert?
+		ERR_GUI_G << "unit create dialog has more list items than known unit types; not good\n";
+		return;
+	}
+
+	last_chosen_type_id = choice_ =
+		type_ids_[static_cast<size_t>(selected_row)];
+	last_gender = gender_ =
+		female_toggle.get_value() ? unit_race::FEMALE : unit_race::MALE;
+	last_generate_names_value = generate_name_ =
+		namegen_toggle.get_value();
+}
+
+void tunit_create::gender_toggle_callback(twindow& window)
+{
+	ttoggle_button& male_toggle = NEW_find_widget<ttoggle_button>(
+			&window, "male_toggle", false);
+	ttoggle_button& female_toggle = NEW_find_widget<ttoggle_button>(
+			&window, "female_toggle", false);
+
+	// Ye olde ugly hack for the lack of radio buttons.
+
+	if(gender_ == unit_race::MALE) {
+		gender_ = female_toggle.get_value() ? unit_race::FEMALE : unit_race::MALE;
+	}
+	else {
+		gender_ = male_toggle.get_value() ? unit_race::MALE : unit_race::FEMALE;
+	}
+
+	update_male_female_toggles(male_toggle, female_toggle, gender_);
 }
 
 }

@@ -1360,48 +1360,29 @@ private:
 	void menu_handler::create_unit_2(mouse_handler& mousehandler)
 	{
 		assert(gui_ != NULL);
-		static unit_race::GENDER gender = unit_race::MALE;
-		static bool generate_name = false;
-		static std::string last_choice = "";
-		std::vector<const unit_type*> unit_choices;
-		std::vector<std::string> type_ids;
-		size_t choice = 0;
-
+		//
+		// The unit creation dialog makes sure unit types
+		// are properly cached.
+		//
 		gui2::tunit_create create_dlg;
-
-		create_dlg.set_gender(gender);
-		create_dlg.set_generate_name(generate_name);
-		for(unit_type_data::unit_type_map::const_iterator i = unit_type_data::types().begin(); i != unit_type_data::types().end(); ++i) {
-			assert(&(i->second) != NULL);
-
-			const race_map::const_iterator race_it = unit_type_data::types().races().find(i->second.race());
-			std::string race;
-
-			if(race_it != unit_type_data::types().races().end()) {
-				race = race_it->second.plural_name();
-			}
-
-			create_dlg.add_race_type_pair(race, i->second.type_name());
-			unit_choices.push_back(&(i->second));
-			type_ids.push_back(i->first);
-
-			if(i->first == last_choice) {
-				choice = unit_choices.size() - 1;
-			}
-		}
-		create_dlg.set_list_choice(choice);
-
 		create_dlg.show(gui_->video());
 
-		if((choice = create_dlg.list_choice()) == create_dlg.no_choice()) {
+		if(create_dlg.no_choice()) {
 			return;
 		}
-		assert(type_ids.size() >= choice);
-		last_choice = type_ids[choice];
-		gender = create_dlg.gender();
-		generate_name = create_dlg.generate_name();
 
-		const unit_type& ut = *unit_choices[choice];
+		const std::string& ut_id = create_dlg.choice();
+		unit_type_data::unit_type_map::const_iterator i =
+			unit_type_data::types().find_unit_type(ut_id);
+		if(i == unit_type_data::types().end()) {
+			ERR_NG << "create unit dialog returned inexistent or unusable unit_type id '" << ut_id << "'\n";
+			return;
+		}
+
+		const unit_type& ut = i->second;
+
+		unit_race::GENDER gender = create_dlg.gender();
+		const bool generate_name = create_dlg.generate_name();
 
 		// Do not try to set bad genders, may mess up l10n
 		// FIXME: is this actually necessary?
@@ -1409,7 +1390,7 @@ private:
 			gender = ut.genders().front();
 		}
 
-		unit chosen(&units_, unit_choices[choice], 1, false, false, gender, "");
+		unit chosen(&units_, &ut, 1, false, false, gender, "", true, generate_name);
 		chosen.new_turn();
 
 		const map_location& loc = mousehandler.get_last_hex();
@@ -1426,13 +1407,11 @@ private:
 
 	void menu_handler::create_unit(mouse_handler& mousehandler)
 	{
-#if 0
 		/** @todo: reenable after releasing 1.7.4; as-is causes memory corruption */
 		if(gui2::new_widgets) {
 			create_unit_2(mousehandler);
 			return;
 		}
-#endif
 
 		std::vector<std::string> options;
 		static int last_selection = -1;
