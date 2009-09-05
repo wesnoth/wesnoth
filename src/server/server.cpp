@@ -2118,8 +2118,10 @@ void server::process_data_game(const network::connection sock,
 			return;
 		}
 		// Remember the era id since the client does not send it again (yet?).
-		simple_wml::string_span era_id;
-		if (simple_wml::node* e = g->level().root().child("era")) era_id = e->attr("id");
+		std::string era_id;
+		if (simple_wml::node* e = g->level().root().child("era")) {
+			era_id = e->attr("id").to_string();
+		}
 		// Record the full scenario in g->level()
 		g->level().clear();
 		data.child("store_next_scenario")->copy_into(g->level().root());
@@ -2145,7 +2147,7 @@ void server::process_data_game(const network::connection sock,
 			desc.set_attr_dup("mp_era", s.child("era")->attr("id"));
 		} else {
 			DBG_SERVER << "using the era id of the previous scenario: " << era_id << std::endl;
-			desc.set_attr_dup("mp_era", era_id);
+			desc.set_attr_dup("mp_era", era_id.c_str());
 		}
 
 		// map id
