@@ -478,6 +478,23 @@ const config &config::find_child(const std::string& key,
 	return const_cast<config *>(this)->find_child(key, name, value);
 }
 
+const config& config::find_child_recursive(const std::string& key,
+                                 const std::string& name,
+                                 const t_string& value) const
+{
+	const config& res = this->find_child(key, name, value);
+	if (res)
+		return res;
+
+	foreach (const any_child &child, all_children_range()) {
+		const config& res2 = child.cfg.find_child_recursive(key, name, value);
+
+		if (res2)
+			return res2;
+	}
+
+	return invalid;
+}
 namespace {
 	/**
 	 * Helper struct for iterative config clearing.

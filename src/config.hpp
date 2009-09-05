@@ -227,6 +227,8 @@ public:
 	                   const t_string& value);
 	const config &find_child(const std::string& key, const std::string& name,
 	                         const t_string& value) const;
+	const config &find_child_recursive(const std::string& key, const std::string& name,
+	                         const t_string& value) const;
 
 	void clear_children(const std::string& key);
 	void remove_child(const std::string& key, size_t index);

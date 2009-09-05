@@ -680,8 +680,13 @@ void game_state::build_team(const config& side_cfg,
 
 	// If this team has no objectives, set its objectives
 	// to the level-global "objectives"
-	if(teams.back().objectives().empty())
-		teams.back().set_objectives(level["objectives"]);
+	if(teams.back().objectives().empty()){
+		const config& child = level.find_child_recursive("objectives", "side", side_cfg["side"]);
+		bool silent = false;
+		if (child && child.has_attribute("silent"))
+			silent = utils::string_bool(child["silent"]);
+		teams.back().set_objectives(level["objectives"], silent);
+	}
 
 	// If this side tag describes the leader of the side
 	if(!utils::string_bool(side_cfg["no_leader"]) && side_cfg["controller"] != "null") {
