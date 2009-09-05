@@ -283,7 +283,16 @@ void part_ui::render_title_box()
 	const int titlebox_w = txtsurf->w;
 	const int titlebox_h = txtsurf->h;
 
-	// TODO location correction
+	switch(p_.title_block_alignment()) {
+	case part::CENTERED:
+		titlebox_x = base_rect_.w / 2 - titlebox_w / 2 - titlebox_padding;
+		break;
+	case part::RIGHT:
+		titlebox_x = base_rect_.w - titlebox_padding - titlebox_w;
+		break;
+	default:
+		break; // already set before
+	}
 
 	draw_solid_tinted_rectangle(
 		base_rect_.x + titlebox_x - titleshadow_padding,
