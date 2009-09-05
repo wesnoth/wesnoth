@@ -189,9 +189,6 @@ void positional_source::update_positions(unsigned int time, const display &disp)
 
 	int distance_volume = DISTANCE_SILENT;
 	for(std::vector<map_location>::iterator i = locations_.begin(); i != locations_.end(); ++i) {
-		if(disp.shrouded(*i) || (check_fogged_ && disp.fogged(*i)))
-			continue;
-
 		int v = calculate_volume(*i, disp);
 		if(v < distance_volume) {
 			distance_volume = v;
@@ -209,6 +206,9 @@ int positional_source::calculate_volume(const map_location &loc, const display &
 {
 	assert(range_ > 0);
 	assert(faderange_ > 0);
+
+	if(disp.shrouded(loc) || (check_fogged_ && disp.fogged(loc)))
+		return DISTANCE_SILENT;
 
 	SDL_Rect area = disp.map_area();
 	map_location center = disp.hex_clicked_on(area.x + area.w / 2, area.y + area.h / 2);
