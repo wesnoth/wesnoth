@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-09-03 15:57+0200\n"
-"PO-Revision-Date: 2009-08-04 11:23+0300\n"
+"PO-Revision-Date: 2009-09-05 09:51+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -84,8 +84,9 @@ msgstr "Li'sar"
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:194
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:201
+#, fuzzy
 msgid "<big>Welcome to Wesnoth!</big>"
-msgstr "<big>Tere tulemast Wesnothi!</big>"
+msgstr "*Tere tulemast Wesnothi!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:196
@@ -133,20 +134,22 @@ msgstr "Tee vasakklõps Li'saril"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:228
+#, fuzzy
 msgid ""
 "<big>You have selected Konrad.</big>\n"
 "The places he can move to are highlighted."
 msgstr ""
-"<big>Sa valisid Konradi.</big>\n"
+"*Sa valisid Konradi.\n"
 "Kohad, kuhu ta saab liikuda, on kaardil heledamad."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:235
+#, fuzzy
 msgid ""
 "<big>You have selected Li'sar.</big>\n"
 "The places she can move to are highlighted."
 msgstr ""
-"<big>Sa valisid Li'sari.</big>\n"
+"*Sa valisid Li'sari.\n"
 "Kohad, kuhu ta saab liikuda, on kaardil heledamad."
 
 #. [event]
@@ -173,12 +176,13 @@ msgstr "Tee vasakklõps väljal SIIA"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:282
+#, fuzzy
 msgid ""
 "<big>Oops!</big>\n"
 "You moved to the wrong place! After this message, you can press 'u' to undo, "
 "then try again."
 msgstr ""
-"<big>Oih!</big>\n"
+"*Oih!\n"
 "Sa läksid valesse kohta! Selle teate järel võid vajutada 'u' (tühistamine) "
 "ja proovida uuesti."
 
@@ -693,8 +697,9 @@ msgstr ""
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1021
+#, fuzzy
 msgid "The quintain is dead, and I have gained more experience!"
-msgstr "Puuslik on võidetud ja mina sain kogemust juurde!"
+msgstr "Härrased, puuslik on võidetud ja mina sain kogemust juurde!"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1026
@@ -763,11 +768,12 @@ msgstr ""
 "stsenaarium' -nuppu."
 
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:27
+#, fuzzy
 msgid ""
 "<big>Remember:</big>\n"
 "You can press 'u' to undo most things; useful for correcting mistakes."
 msgstr ""
-"<big>Jäta meelde:</big>\n"
+"*Jäta meelde:\n"
 "Enamikku tegevusi saab 'u' vajutusega tagasi võtta - nii saad oma vigu "
 "parandada."
 
@@ -1310,12 +1316,13 @@ msgstr "Orkidel pole kaugrünnakut, nii et kasuta nende vastu vibukütte."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:921
+#, fuzzy
 msgid ""
 "Attack the orc with an Archer\n"
 "(move mouse over units to see description on right)"
 msgstr ""
-"Ründa orki vibukütiga\n"
-"(vii hiirekursor üksuste peale, et näha ekraani paremas servas kirjeldust)"
+"Ründa orki vibukütiga (vii hiirekursor üksuste peale, et näha ekraani "
+"paremas servas kirjeldust)"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:929
@@ -1825,10 +1832,6 @@ msgstr ""
 msgid "flail"
 msgstr "kettnui"
 
-#, fuzzy
-#~ msgid "<big>Galdrad"
-#~ msgstr "Galdrad"
-
 #~ msgid ""
 #~ "Hello translators! Tutorial is meant to be a little funny at the start, "
 #~ "welcoming new players. Please keep friendly fun feeling! Any questions "
@@ -1838,8 +1841,19 @@ msgstr "kettnui"
 #~ "mängijatega arvestav. Palun hoidke üldine toon sõbraliku ja lõbusana! "
 #~ "Küsimused võib saata aadressile rusty@rustcorp.com.au ."
 
+#~ msgid ""
+#~ "\n"
+#~ "*Left click or press spacebar to continue..."
+#~ msgstr ""
+#~ "\n"
+#~ "*Jätkamiseks tee vasakklõps või vajuta tühikuklahvi..."
+
 #~ msgid "*Galdrad"
 #~ msgstr "*Galdrad"
+
+#, fuzzy
+#~ msgid "<big>Galdrad"
+#~ msgstr "Galdrad"
 
 #~ msgid "Elder Mage"
 #~ msgstr "Vana Maag"
@@ -1859,13 +1873,6 @@ msgstr "kettnui"
 
 #~ msgid "lightning"
 #~ msgstr "välk"
-
-#~ msgid ""
-#~ "\n"
-#~ "*Left click to continue..."
-#~ msgstr ""
-#~ "\n"
-#~ "*Jätkamiseks tee vasakklõps..."
 
 #~ msgid "impact"
 #~ msgstr "löök"

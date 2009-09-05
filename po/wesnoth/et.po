@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4 Estonian translation\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-09-03 15:55+0200\n"
-"PO-Revision-Date: 2009-08-05 12:11+0300\n"
+"PO-Revision-Date: 2009-09-05 09:42+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: Kaido Kikkas <kakk@kakupesa.net>\n"
 "MIME-Version: 1.0\n"
@@ -2811,6 +2811,7 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:813
+#, fuzzy
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -2824,11 +2825,12 @@ msgstr ""
 "Määra osapoole (kirjuta siia number) eest mängijaks (kirjuta siia mängija "
 "või vaatleja kasutajanimi). Osapooli ja nende mängijaid saad näha "
 "'Stsenaariumi seadete' alt (vajuta 'Olekutabeli' (vaikimisi Alt-s) juures "
-"'veel'-nuppu.). Mängu omanik saab muuta kõiki osapooli.\n"
+"'veel'-nuppu).\n"
 "\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:816
+#, fuzzy
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. If you "
@@ -2838,7 +2840,8 @@ msgid ""
 msgstr ""
 "\n"
 "Viska mängija mitmemängija mängust välja. Ta võib mänguga uuesti liituda.  "
-"Kui tahad ainult osapooli muuta, kasuta pigem :control -käsku.\n"
+"Seda loetakse sõbralikuks tegevuseks mängija puhul, kel on mängus kas "
+"ühenduse- või muu probleem.\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -2856,17 +2859,18 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:822
+#, fuzzy
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
 "\n"
 msgstr ""
 "\n"
-"Lülita kõigi vaatlejate vaigistamine sisse/välja.\n"
-"\n"
+"Lülita kõigi vaatlejate vaigistamine sisse/välja."
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:825
+#, fuzzy
 msgid ""
 "\n"
 "Unban a user in a multiplayer game by the IP address used by that username. "
@@ -2874,8 +2878,9 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Luba mängija osalemine mitmemängija mängus kasutajanime ja IP-aadressi "
-"järgi. Mängija ei pea olema mängus, kuid peab olema ühenduses serveriga.\n"
+"Keela mängija osalemine mitmemängija mängus kasutajanime ja IP-aadressi "
+"järgi ja viska ta välja. Saab kasutada ka nende puhul, kes pole mängus, kuid "
+"on serveriga ühenduses (sel juhul nad lihtsalt blokeeritakse).\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -2985,6 +2990,7 @@ msgstr ""
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:861
+#, fuzzy
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -2992,7 +2998,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Muudab valitud üksuse määratud omadust.Näiteks: :unit hitpoints=100\n"
+"Muudab valitud üksuse määratud omadust.Näiteks: :unit hitpoints=100"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:862
@@ -3367,6 +3373,7 @@ msgid "petrifies"
 msgstr "kivistav"
 
 #: data/core/macros/abilities.cfg:617
+#, fuzzy
 msgid ""
 "Petrify:\n"
 "This attack petrifies the target, turning it to stone. Units that have been "
@@ -3871,6 +3878,7 @@ msgid "storm trident"
 msgstr "tormikolmhark"
 
 #: data/core/macros/names.cfg:18
+#, fuzzy
 msgid ""
 "Egar,Elch,Ga'ash,Gadé Ihn,Gakré Ohm,Galeck,Galsh,Garadin,Garchin,Gark,Garlan,"
 "Garlin Ohn,Garrutin,Gart'lo,Garushi,Gashinar,Gashol,Gaushii,Gaustun,Gegchi,"
@@ -3883,24 +3891,25 @@ msgid ""
 "Verath,Verditt,Verkon,Verlinn,Vermad,Vertick,Vladnir"
 msgstr ""
 "Egar,Elch,Ga'ash,Gadé Ihn,Gakré Ohm,Galeck,Galsh,Garadin,Garchin,Gark,Garlan,"
-"Garlin Ohn,Garrutin,Gart'lo,Garushi,Gashinar,Gashol,Gaushii,Gaustun,Gegchi,"
-"Gelka Kon,Gelknick,Gillan,Gisharri,Gost,Grada,Græt Ihn,Grashen,Gravlan,Grag,"
-"Grelnit,Grenn Ohn,Greth,Gribbel,Gridda,Grish,Gron Ihn,Ka,Kahn Ih,Karigan,"
-"Karri Kon,Karron,Kask,Kegrid,Kerath Ihn,Kerath Kor,Klash,Kon Garashé,Kraag,"
-"Krall Ohn,Kran Kor,Krash,Kraslar,Krenli,Kruggen,Kun,Mah Toa,Margian,"
-"Mar'Ildian,Markan,Markinos,Mar Ohn,Marra Di'lek,Marrito,Marritos,Merkush,"
+"Garlin ohn,Garrutin,Gart'lo,Garushi,Gashinar,Gashöl,Gaushii,Gaustun,Gegchi,"
+"Gelka Kon,Gelknick,Gillan,Gisharri,Goyst,Grada,Græt Ihn,Grashen,Gravlan,Gray,"
+"Grelnit,Grenn ohn,Gretz,Gribbel,Gridda,Grish,Gron ih,Ka,Kahn Ih,Karigan,"
+"Karri Kon,Karron,Kasp,Kegrid,Kerath Ihn,Kerath Kor,Klash,Kon Garashé,Kraag,"
+"Krall Ohn,Kran Kor,Krash,Kraslar,Krenli,Kruggen,Kun,Mah Toa,Mal,Margian,"
+"Marhildian,Markan,Markinos,Mar Ohn,Marra Di'lek,Marrito,Marritos,Merkush,"
 "Merritos Gark,Morusté,Murr,Omataké,Reshan,Vashitt,Velnick,Veralon,Veramo,"
-"Verath,Verditt,Verkon,Verlinn,Vermad,Vertick,Vladnir"
+"Verath,Verditt,Verkon,Verlinn,Vermay,Vertick,Vladnir"
 
 #: data/core/macros/names.cfg:19
+#, fuzzy
 msgid ""
 "Alen Ka,Alinash Mal,Ashirt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
 "Eshi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orrida,Oshibi,Vallin,Valnirra,"
 "Valnitt,Velisk,Verra,Vellin Ka,Veshtar,Vushtin"
 msgstr ""
-"Alen Ka,Alinash Mal,Ashirt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
-"Eshi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orrida,Oshibi,Vallin,Valnirra,"
-"Valnitt,Velisk,Verra,Vellin Ka,Veshtar,Vushtin"
+"Alen Ka,Alinash Mal,Ashijt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
+"Eshyi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orriday,Oshibi,Vallin,Valnirra,"
+"Valnitt,Velisp,Vellin Ka,Vushtin,Werra,Weshter,Wilniss"
 
 #: data/core/macros/names.cfg:23
 msgid ""
@@ -5488,6 +5497,7 @@ msgstr "Inimesed"
 
 #. [race]: id=human
 #: data/core/units.cfg:169
+#, fuzzy
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -5530,15 +5540,15 @@ msgstr ""
 "Inimeste rass on äärmiselt kirju. Kuigi nad pärinevad algselt Vanalt "
 "Mandrilt, on nad nüüd levinud üle kogu ilma ja jagunenud paljudeks eri "
 "kultuurideks ja alamrassideks. Nad pole küll sündinud võluvõimega nagu mõned "
-"teised olevused, kuid suudavad õppida seda kasutama ja isegi rohkem kui "
-"enamik teisi olendeid. Neil pole erilisi võimeid ega soodumusi peale nende "
-"paindlikkuse ja teotahte. Ehkki nad on tihti vastuolus teiste rassidega, "
-"võivad nad vahel sõlmida liite teiste vähem sõjakate rassidega nagu haldjad "
-"ja päkapikud. Vähenõudlikumad neist ei põlga aga ära ka orkidest "
-"palgasõdurite värbamist. Neil pole otseseid vaenlasi, ehkki teiste rasside "
-"kombel tunneb enamik inimesi vastumeelsust kooljate suhtes. Inimesed on "
-"lühemad kui haldjad, ent pikemad kui päkapikud. Nende nahavärv võib olla "
-"erinev - peaaegu valgest kuni tumepruunini.\n"
+"teised olevused, kuid suudavad õppida seda kasutama ja isegi erinevamaid "
+"võlukunste kui enamik teisi olendeid. Neil pole erilisi võimeid ega "
+"soodumusi peale nende paindlikkuse ja teotahte. Ehkki nad on tihti vastuolus "
+"teiste rassidega, võivad nad vahel sõlmida liite teiste vähem sõjakate "
+"rassidega nagu haldjad ja päkapikud. Vähenõudlikumad neist ei põlga aga ära "
+"ka orkidest palgasõdurite värbamist. Neil pole looduslikke vaenlasi, ehkki "
+"teiste rasside kombel tunneb enamik inimesi vastumeelsust kooljate suhtes. "
+"Inimesed on lühemad kui haldjad, ent pikemad kui päkapikud. Nende nahavärv "
+"võib olla erinev - peaaegu valgest kuni tumepruunini.\n"
 "\n"
 "<header>text='Krooni alamad'</header>\n"
 "Inimesi on eri sorti, kuid Suurel Mandril elab enamik neist Wesnothi krooni "
@@ -6033,22 +6043,26 @@ msgstr "$name soo,$name raba,$name nõmm"
 
 #. [language]
 #: data/hardwired/english.cfg:26
+#, fuzzy
 msgid "$name|bury,$name|ham,$name|ton,$name|bury"
 msgstr "$name küla, $name"
 
 #. [language]
 #: data/hardwired/english.cfg:27
+#, fuzzy
 msgid "$name|harbor,$name|port,$lake|port,$lake|harbor"
 msgstr "$name sadam"
 
 #. [language]
 #: data/hardwired/english.cfg:28
+#, fuzzy
 msgid ""
 "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross,$name on river"
 msgstr "$name koole,$name ülekäik"
 
 #. [language]
 #: data/hardwired/english.cfg:29
+#, fuzzy
 msgid ""
 "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge,$bridge|ham,"
 "$bridge|ton"
@@ -7103,22 +7117,26 @@ msgid "Dependencies"
 msgstr "Sõltuvused"
 
 #: src/addon_management.cpp:466
+#, fuzzy
 msgid ""
 "$addon_title depends upon the following add-on which you have not installed "
 "yet:"
 msgid_plural ""
 "$addon_title depends upon the following add-ons which you have not installed "
 "yet:"
-msgstr[0] "$addon_title vajab lisaks järgmist moodulit:"
-msgstr[1] "$addon_title vajab lisaks järgmisi mooduleid:"
+msgstr[0] ""
+"$addon_title vajab lisaks järgmist moodulit, mida pole seni paigaldatud:"
+msgstr[1] ""
+"$addon_title vajab lisaks järgmisi mooduleid, mida pole seni paigaldatud:"
 
 #: src/addon_management.cpp:469
+#, fuzzy
 msgid ""
 "Do you still want to download $addon_title|? (You will have to install all "
 "the dependencies in order to play.)"
 msgstr ""
-"Kas sa soovid tõesti  $addon_title| alla laadida? (Mängimiseks pead "
-"paigaldama ka kõik teised vajaminevad lisamoodulid.)"
+"Kas sa soovid selle lisamooduli alla laadida? (Mängimiseks pead paigaldama "
+"ka kõik teised vajaminevad lisamoodulid.)"
 
 #: src/addon_management.cpp:487 src/addon_management.cpp:559
 #: src/multiplayer.cpp:213 src/multiplayer.cpp:268 src/multiplayer_ui.cpp:78
@@ -7713,6 +7731,7 @@ msgid "poisoned: "
 msgstr "mürgitatud: "
 
 #: src/generate_report.cpp:123
+#, fuzzy
 msgid "This unit has been petrified. It may not move or attack."
 msgstr "See üksus on kivistatud. Ta ei või liikuda ega rünnata."
 
@@ -7974,16 +7993,19 @@ msgid "?"
 msgstr "?"
 
 #: src/loadscreen.cpp:245
+#, fuzzy
 msgid "Verifying cache..."
-msgstr "Vahemälu kontroll..."
+msgstr "Vahemälu kontroll"
 
 #: src/loadscreen.cpp:264
+#, fuzzy
 msgid "Reading unit files..."
-msgstr "Üksusefailide lugemine..."
+msgstr "Üksusefailide lugemine."
 
 #: src/loadscreen.cpp:283
+#, fuzzy
 msgid "Reading files and creating cache..."
-msgstr "Failide lugemine ja vahemälu loomine..."
+msgstr "Failide lugemine ja vahemälu loomine."
 
 #: src/lobby_data.cpp:238 src/multiplayer_lobby.cpp:431
 msgid "Unknown era: $era_id"
@@ -8356,8 +8378,9 @@ msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr "Luba vaatlejal rääkida. Ilma argumendita lubab rääkida kõigil."
 
 #: src/menu_events.cpp:2137
+#, fuzzy
 msgid "Mute/Unmute all observers. (toggles)"
-msgstr "Vaigista/Luba kõik vaatlejad. (sisse-välja lüliti)"
+msgstr "Vaigista kõik vaatlejad."
 
 #: src/menu_events.cpp:2147
 msgid "Send a message to the server admins currently online"
@@ -8831,8 +8854,11 @@ msgid "Cannot find era $era"
 msgstr "Ei leia ajastut $era"
 
 #: src/multiplayer_connect.cpp:1656
+#, fuzzy
 msgid "Defeat enemy leader(s)"
-msgstr "Alista vaenlase pealik(ud)"
+msgstr ""
+"Võit:\n"
+"@Alista vaenlase pealik(ud)"
 
 #: src/multiplayer_connect.cpp:1720
 msgid "Waiting for players to join..."
@@ -9349,12 +9375,13 @@ msgid "The game is over."
 msgstr "Mäng on läbi."
 
 #: src/playsingle_controller.cpp:507
+#, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game\n"
 "cannot continue. Do you want to save the game?"
 msgstr ""
-"Võrguühendus katkes ja mäng ei saa jätkuda.\n"
-" Kas soovid seda mängu salvestada?"
+"Võrguühendus katkes ja mäng ei saa jätkuda.  Kas soovid seda mängu "
+"salvestada?"
 
 #: src/playsingle_controller.cpp:673
 msgid "It is now $name|'s turn"
@@ -9421,8 +9448,9 @@ msgid "This is not a multiplayer save"
 msgstr "See ei ole mitmemängija mängu salvestus"
 
 #: src/savegame.cpp:567
+#, fuzzy
 msgid "The game could not be saved: "
-msgstr "Mängu salvestamine ebaõnnestus:"
+msgstr "Mängu salvestamine ebaõnnestus"
 
 #: src/savegame.cpp:654
 msgid "Name: "
@@ -9826,17 +9854,40 @@ msgstr "Aita meil Wesnothi paremaks teha!"
 msgid "Enable summary uploads"
 msgstr "Lülita kokkuvõtete saatmine sisse"
 
-#~ msgid "Computer player"
-#~ msgstr "Arvuti"
+#~ msgid ""
+#~ "\n"
+#~ "Ban a user in a multiplayer game by the IP address used by that username "
+#~ "and kick him.\n"
+#~ "\n"
+#~ msgstr ""
+#~ "\n"
+#~ "Keela mängija osalemine mitmemängija mängus kasutajanime ja IP-aadressi "
+#~ "järgi ning viska ta mängust välja.\n"
+#~ "\n"
+
+#~ msgid "stones"
+#~ msgstr "kivistav"
+
+#~ msgid "`(early finish bonus)"
+#~ msgstr "`(Varakult lõpetamise boonus)"
 
 #~ msgid "Play a campaign"
 #~ msgstr "Mängi sõjakäiku"
 
-#~ msgid "Default AI"
-#~ msgstr "Vaikimisi tehisintellekt"
+#~ msgid "$name|ham,$name|ton,$name|wood,$name Forest"
+#~ msgstr "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 
-#~ msgid "Do you still want to download it?"
-#~ msgstr "Kas soovid ikka seda alla laadida?"
+#~ msgid "An invalid weapon is selected, possibly by the Python AI."
+#~ msgstr "Valiti vale relvatüüp, ilmselt on see Pythoni tehisintellekti viga."
+
+#~ msgid "female^stone"
+#~ msgstr "kivistatud"
+
+#~ msgid "stone"
+#~ msgstr "kivistatud"
+
+#~ msgid "Unknown unit type : "
+#~ msgstr "Tundmatu üksusetüüp: "
 
 #~ msgid "Quit Game"
 #~ msgstr "Välju mängust"
@@ -9844,18 +9895,33 @@ msgstr "Lülita kokkuvõtete saatmine sisse"
 #~ msgid "Ignore All"
 #~ msgstr "Eira kõiki"
 
-#~ msgid "An invalid weapon is selected, possibly by the Python AI."
-#~ msgstr "Valiti vale relvatüüp, ilmselt on see Pythoni tehisintellekti viga."
-
-#~ msgid "Unknown unit type : "
-#~ msgstr "Tundmatu üksusetüüp: "
-
 #~ msgid ""
 #~ "Save names may not contain colons, slashes, or backslashes. Please choose "
 #~ "a different name."
 #~ msgstr ""
 #~ "Salvestuse nimes ei tohi olla kooloneid ega kaldkriipse. Palun vali mõni "
 #~ "teine nimi."
+
+#~ msgid "stone: "
+#~ msgstr "kivistatud: "
+
+#~ msgid "Remove a trait from a unit. (Does not work yet.)"
+#~ msgstr "Eemalda üksuse eripära. (Hetkel see veel ei tööta.)"
+
+#~ msgid "Default AI"
+#~ msgstr "Vaikimisi tehisintellekt"
+
+#~ msgid "Computer player"
+#~ msgstr "Arvuti"
+
+#~ msgid "The replay could not be saved"
+#~ msgstr "Kordust ei suudetud salvestada"
+
+#~ msgid "Name:"
+#~ msgstr "Nimi:"
+
+#~ msgid "Do you still want to download it?"
+#~ msgstr "Kas soovid ikka seda alla laadida?"
 
 #, fuzzy
 #~ msgid "Landar"
@@ -9866,27 +9932,11 @@ msgstr "Lülita kokkuvõtete saatmine sisse"
 #~ msgstr "Käik"
 
 #, fuzzy
-#~ msgid "scepter of fire"
+#~ msgid "sceptre of fire"
 #~ msgstr "tulerubiin"
-
-#~ msgid "stones"
-#~ msgstr "kivistav"
-
-#, fuzzy
-#~ msgid "female^stone"
-#~ msgstr "tugev"
-
-#~ msgid "stone"
-#~ msgstr "kivistatud"
-
-#~ msgid "stone: "
-#~ msgstr "kivistatud: "
 
 #~ msgid " included from "
 #~ msgstr "Lisatud "
-
-#~ msgid "The replay could not be saved"
-#~ msgstr "Kordust ei suudetud salvestada"
 
 #, fuzzy
 #~ msgid "Reading cache"
