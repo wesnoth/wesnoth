@@ -27,6 +27,7 @@
 #include "game_events.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/wml_message.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
@@ -826,6 +827,14 @@ WML_HANDLER_FUNCTION(gold, /*event_info*/, cfg)
 			(*resources::teams)[team_index].spend_gold(-amount_num);
 		}
 	}
+
+WML_HANDLER_FUNCTION(inspect, /*event_info*/, cfg)
+{
+	if (game_config::debug) {
+		gui2::tgamestate_inspector inspect_dialog(cfg);
+		inspect_dialog.show(resources::screen->video());
+	}
+}
 
 WML_HANDLER_FUNCTION(modify_ai, /*event_info*/, cfg)
 {

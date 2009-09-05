@@ -103,6 +103,7 @@ static void fill_window_types()
 	window_type_list[LOBBY_PLAYER_INFO] = "lobby_player_info";
 	window_type_list[UNIT_CREATE] = "unit_create";
 	window_type_list[FORMULA_DEBUGGER] = "formula_debugger";
+	window_type_list[GAMESTATE_INSPECTOR] = "gamestate_inspector";
 }
 
 const std::string& get_id(const twindow_type window_type)

@@ -251,6 +251,7 @@ set(wesnoth-main_SRC
     gui/dialogs/game_load.cpp
     gui/dialogs/game_delete.cpp
     gui/dialogs/game_save.cpp
+    gui/dialogs/gamestate_inspector.cpp
     gui/dialogs/language_selection.cpp
     gui/dialogs/lobby_main.cpp
     gui/dialogs/lobby_player_info.cpp

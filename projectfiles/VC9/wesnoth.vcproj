@@ -1988,6 +1988,34 @@
 						</FileConfiguration>
 					</File>
 					<File
+						RelativePath="..\..\src\gui\dialogs\gamestate_inspector.cpp"
+						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug (fast)|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+					</File>
+					<File
 						RelativePath="..\..\src\gui\dialogs\language_selection.cpp"
 						>
 						<FileConfiguration
@@ -5464,6 +5492,10 @@
 					</File>
 					<File
 						RelativePath="..\..\src\gui\dialogs\game_save.hpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\gui\dialogs\gamestate_inspector.hpp"
 						>
 					</File>
 					<File

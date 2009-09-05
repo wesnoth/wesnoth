@@ -30,6 +30,7 @@
 #include "game_events.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/transient_message.hpp"
+#include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/unit_create.hpp"
 #include "gui/widgets/window.hpp"
 #include "help.hpp"
@@ -2287,6 +2288,7 @@ private:
 			void do_set_alias();
 			void do_set_var();
 			void do_show_var();
+			void do_inspect();
 			void do_unit();
 //			void do_buff();
 //			void do_unbuff();
@@ -2369,6 +2371,8 @@ private:
 					_("Execute a Lua statement."));
 				register_command("custom", &console_handler::do_custom,
 					_("Set the command used by the custom command hotkey"), "<command>[;<command>...]");
+				register_command("inspect", &console_handler::do_inspect,
+					_("Launch the gamestate inspector"), "", "D");
 				register_command("alias", &console_handler::do_set_alias,
 					_("Set or show alias to a command"), "<name>[=<command>]");
 				register_command("set_var", &console_handler::do_set_var,
@@ -3072,6 +3076,14 @@ private:
 	void console_handler::do_show_var() {
 		gui2::show_transient_message((*menu_handler_.gui_).video(),"",menu_handler_.gamestate_.get_variable(get_data()));
 	}
+
+
+	void console_handler::do_inspect() {
+		vconfig cfg;
+		gui2::tgamestate_inspector inspect_dialog(cfg);
+		inspect_dialog.show(resources::screen->video());
+	}
+
 	void console_handler::do_unit() {
 		// prevent SIGSEGV due to attempt to set HP during a fight
 		if (events::commands_disabled > 0)
