@@ -133,7 +133,8 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 					   const std::string& text,
 					   const std::string team_name,
 					   const SDL_Color colour,
-					   const bool visible_in_fog)
+					   const bool visible_in_fog,
+					   const bool visible_in_shroud)
 {
 	terrain_label* res = 0;
 	const team_label_map::const_iterator current_label_map = labels_.find(team_name);
@@ -146,7 +147,7 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 		if(text.empty())
 		{
 			const_cast<terrain_label*>(current_label->second)->set_text("");
-			res = new terrain_label("",team_name,loc,*this,colour,visible_in_fog);
+			res = new terrain_label("",team_name,loc,*this,colour,visible_in_fog,visible_in_shroud);
 			delete current_label->second;
 			const_cast<label_map&>(current_label_map->second).erase(loc);
 
@@ -186,7 +187,8 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 				loc,
 				*this,
 				colour,
-				visible_in_fog);
+				visible_in_fog,
+				visible_in_shroud);
 		add_label(loc,label);
 
 		res = label;
@@ -295,11 +297,13 @@ terrain_label::terrain_label(const std::string& text,
 							 const map_location& loc,
 							 const map_labels& parent,
 							 const SDL_Color colour,
-							 const bool visible_in_fog)  :
+							 const bool visible_in_fog,
+							 const bool visible_in_shroud)  :
 		handle_(0),
 		text_(text),
 		team_name_(team_name),
 		visible_in_fog_(visible_in_fog),
+		visible_in_shroud_(visible_in_shroud),
 		colour_(colour),
 		parent_(&parent),
 		loc_(loc)
@@ -314,6 +318,7 @@ terrain_label::terrain_label(const map_labels &parent, const config &cfg) :
 		text_(),
 		team_name_(),
 		visible_in_fog_(true),
+		visible_in_shroud_(false),
 		colour_(),
 		parent_(&parent),
 		loc_()
@@ -338,6 +343,7 @@ void terrain_label::read(const config &cfg)
 	text_      = cfg["text"];
 	team_name_ = cfg["team_name"];
 	visible_in_fog_ = utils::string_bool(cfg["visible_in_fog"],true);
+	visible_in_shroud_ = utils::string_bool(cfg["visible_in_shroud"],false);
 
 	text_ = utils::interpolate_variables_into_string(text_, vs);
 	team_name_ = utils::interpolate_variables_into_string(team_name_, vs);
@@ -364,6 +370,7 @@ void terrain_label::write(config& cfg) const
 	cfg["team_name"] = (this->team_name());
 	cfg["colour"] = cfg_colour();
 	cfg["visible_in_fog"] = visible_in_fog() ? "yes" : "no";
+	cfg["visible_in_shroud"] = visible_in_shroud() ? "yes" : "no";
 }
 
 const std::string& terrain_label::text() const
@@ -379,6 +386,11 @@ const std::string& terrain_label::team_name() const
 bool terrain_label::visible_in_fog() const
 {
 	return visible_in_fog_;
+}
+
+bool terrain_label::visible_in_shroud() const
+{
+	return visible_in_shroud_;
 }
 
 const map_location& terrain_label::location() const
@@ -442,9 +454,8 @@ void terrain_label::calculate_shroud() const
 
 	if (handle_)
 	{
-		font::show_floating_label(handle_,
-								  !is_shrouded(parent_->disp(),
-											   loc_));
+        bool shrouded = visible_in_shroud_ || !is_shrouded(parent_->disp(), loc_);
+        font::show_floating_label(handle_, shrouded);
 	}
 }
 
@@ -478,14 +489,13 @@ void terrain_label::draw()
 
 bool terrain_label::visible() const
 {
-	if (!visible_in_fog_)
-	{
-		if (parent_->disp().fogged(loc_))
-		{
-			return false;
-		}
+	if ((!visible_in_fog_ && parent_->disp().fogged(loc_))
+        || (!visible_in_shroud_ && parent_->disp().shrouded(loc_))) {
+            return false;
 	}
-	return  (parent_->team_name() == team_name_
+
+
+	return (parent_->team_name() == team_name_
 			|| (team_name_.empty() && parent_->visible_global_label(loc_)));
 }
 

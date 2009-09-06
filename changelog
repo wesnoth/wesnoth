@@ -11,7 +11,7 @@ Version 1.7.5+svn:
  * Music and sound effects:
    * Added new music track, "Into the Shadows" by Tyler Johnson
    * Fixed bug #14239 (check_fogged ignored by sound sources)
-   * Partly implemented FR #14246 (check_shrouded for sound sources)
+   * Implemented FR #14246 (check_shrouded= for sound sources)
  * User interface:
    * new gamestate inspector debug dialog (via 'inspect' command 
      and '[inspect]' tag)
@@ -19,6 +19,7 @@ Version 1.7.5+svn:
    * Fix silent=yes for objectives
    * Allow [story] [part] blocks to specify the title box alignment
      with title_alignment=
+   * Implemented FR #14246 (visible_in_shroud= for [label])
  * Miscellaneous and bugfixes:
    * Fix broken "Skip Ai moves" option.
    * Changed upload log format and defaulted the new uploader.

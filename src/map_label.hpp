@@ -48,7 +48,8 @@ public:
 							   const std::string& text,
 							   const std::string team = "",
 							   const SDL_Color colour = font::NORMAL_COLOUR,
-							   const bool visible_in_fog = true);
+							   const bool visible_in_fog = true,
+							   const bool visible_in_shroud = false);
 
 	void add_label(const map_location&,
 				   const terrain_label*);
@@ -91,7 +92,8 @@ public:
 				  const map_location&,
 				  const map_labels&,
 				  const SDL_Color colour = font::NORMAL_COLOUR,
-				  const bool visible_in_fog = true);
+				  const bool visible_in_fog = true,
+				  const bool visible_in_shroud = false);
 
 	terrain_label(const map_labels &, const config &);
 
@@ -103,6 +105,7 @@ public:
 	const std::string& text() const;
 	const std::string& team_name() const;
 	bool visible_in_fog() const;
+	bool visible_in_shroud() const;
 	const map_location& location() const;
 	const SDL_Colour& colour() const;
 
@@ -131,6 +134,8 @@ private:
 	std::string text_;
 	std::string team_name_;
 	bool visible_in_fog_;
+	bool visible_in_shroud_;
+
 	SDL_Color	colour_;
 
 	const map_labels* parent_;
