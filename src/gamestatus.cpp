@@ -34,6 +34,7 @@
 #include "wml_exception.hpp"
 #include "formula_string_utils.hpp"
 #include "map.hpp"
+#include "pathfind.hpp"
 
 #ifndef _MSC_VER
 #include <sys/time.h>
@@ -688,6 +689,7 @@ void game_state::build_team(const config& side_cfg,
 		teams.back().set_objectives(level["objectives"], silent);
 	}
 
+	map_location start_pos = map_location::null_location;
 	// If this side tag describes the leader of the side
 	if(!utils::string_bool(side_cfg["no_leader"]) && side_cfg["controller"] != "null") {
 		unit new_unit(&units, side_cfg, true);
@@ -706,7 +708,7 @@ void game_state::build_team(const config& side_cfg,
 
 		// See if the side specifies its location.
 		// Otherwise start it at the map-given starting position.
-		map_location start_pos(side_cfg, this);
+		start_pos = map_location(side_cfg, this);
 
 		if(side_cfg["x"].empty() && side_cfg["y"].empty()) {
 			start_pos = map.starting_position(side);
@@ -724,7 +726,7 @@ void game_state::build_team(const config& side_cfg,
 		utils::string_map symbols;
 		symbols["side"] = lexical_cast<std::string>(side);
 		VALIDATE(units.count(start_pos) == 0,
-			t_string(vgettext("Duplicate side definition for side '$side|' found.", symbols)));
+			t_string(vgettext("Leader position not empty - duplicate side definition for side '$side|' found.", symbols)));
 
 		units.add(start_pos, new_unit);
 		LOG_NG << "initializing side '" << side_cfg["side"] << "' at "
@@ -768,9 +770,19 @@ void game_state::build_team(const config& side_cfg,
 
 		const std::string& x = (**su)["x"];
 		const std::string& y = (**su)["y"];
-
+		bool should_find_vacant_hex = utils::string_bool((**su)["find_vacant"],false);
 		map_location loc(**su, this);
-		if(x.empty() && y.empty()) {
+
+		if (should_find_vacant_hex) {
+			if(!loc.valid() || !map.on_board(loc)) {
+				loc = find_vacant_tile(map, units, start_pos, VACANT_ANY);
+			} else {
+				loc = find_vacant_tile(map, units, loc, VACANT_ANY);
+			}
+		}
+
+
+		if(x.empty() && y.empty() && !should_find_vacant_hex) {
 			//if there is no player tag, this means this team is either not persistent or the units have been added from a [side] tag earlier
 			if(player_exists) {
 				teams.back().recall_list().push_back(new_unit);
