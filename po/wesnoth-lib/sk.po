@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-30 19:20+0200\n"
+"POT-Creation-Date: 2009-09-06 14:31+0200\n"
 "PO-Revision-Date: 2009-03-29 14:23+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
@@ -804,6 +804,7 @@ msgstr ""
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:86
+#: data/gui/default/window/gamestate_inspector.cfg:187
 #, fuzzy
 msgid "Actions"
 msgstr "Akcia"
@@ -985,6 +986,38 @@ msgstr ""
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr ""
 
+#. [label]
+#: data/gui/default/window/gamestate_inspector.cfg:33
+msgid "Gamestate Inspector"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/gamestate_inspector.cfg:86
+#, fuzzy
+msgid "Content"
+msgstr "Pripojiť"
+
+#. [label]
+#: data/gui/default/window/gamestate_inspector.cfg:97
+msgid "Inspection window"
+msgstr ""
+
+#. [label]: id=name
+#: data/gui/default/window/gamestate_inspector.cfg:125
+msgid "Variable"
+msgstr ""
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=ok
+#. [button]: id=cancel
+#. [button]: id=close_window
+#: data/gui/default/window/gamestate_inspector.cfg:250
+#: data/gui/default/window/lobby_main.cfg:503
+#: data/gui/default/window/lobby_player_info.cfg:192
+#: data/gui/default/window/message.cfg:122 src/construct_dialog.cpp:139
+msgid "Close"
+msgstr "Zavri"
+
 #. [grid]
 #. [label]
 #: data/gui/default/window/language_selection.cfg:31
@@ -1131,16 +1164,6 @@ msgstr ""
 #, fuzzy
 msgid "Invert filter"
 msgstr "Otoč výber"
-
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=ok
-#. [button]: id=cancel
-#. [button]: id=close_window
-#: data/gui/default/window/lobby_main.cfg:503
-#: data/gui/default/window/lobby_player_info.cfg:192
-#: data/gui/default/window/message.cfg:122 src/construct_dialog.cpp:139
-msgid "Close"
-msgstr "Zavri"
 
 #. [button]: id=send_message
 #: data/gui/default/window/lobby_main.cfg:527
@@ -2062,16 +2085,16 @@ msgstr "Text sa nezmestí na plochu."
 msgid "Linked '$id' group has multiple definitions."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder.cpp:188 src/gui/widgets/settings.cpp:516
+#: src/gui/auxiliary/window_builder.cpp:188 src/gui/widgets/settings.cpp:517
 msgid "No resolution defined."
 msgstr "Nebolo definované rozlíšenie."
 
 #: src/gui/auxiliary/window_builder.cpp:294
 #: src/gui/auxiliary/window_builder/panel.cpp:35
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:38
-#: src/gui/widgets/settings.cpp:780 src/gui/widgets/settings.cpp:879
-#: src/gui/widgets/settings.cpp:972 src/gui/widgets/settings.cpp:1015
-#: src/gui/widgets/settings.cpp:1130
+#: src/gui/widgets/settings.cpp:781 src/gui/widgets/settings.cpp:880
+#: src/gui/widgets/settings.cpp:973 src/gui/widgets/settings.cpp:1016
+#: src/gui/widgets/settings.cpp:1131
 msgid "No grid defined."
 msgstr "Nebola definovaná žiadna mriežka."
 
@@ -2199,20 +2222,20 @@ msgstr "Verzia"
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Nebol definovaný povinný prvok '$id'."
 
-#: src/gui/widgets/settings.cpp:143
+#: src/gui/widgets/settings.cpp:144
 msgid "No default gui defined."
 msgstr "Nebolo definované predvolené GUI."
 
-#: src/gui/widgets/settings.cpp:303
+#: src/gui/widgets/settings.cpp:304
 msgid "Window not defined."
 msgstr "Nie je definované okno."
 
-#: src/gui/widgets/settings.cpp:400
+#: src/gui/widgets/settings.cpp:401
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "Definícia prvku '$definition' neobsahuje definíciu '$id'."
 
-#: src/gui/widgets/settings.cpp:542
+#: src/gui/widgets/settings.cpp:543
 msgid "No state or draw section defined."
 msgstr "Nebol definovaný žiadny stav ani oblasť kreslenia."
 

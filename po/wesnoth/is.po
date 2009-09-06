@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.0-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-09-03 15:55+0200\n"
+"POT-Creation-Date: 2009-09-06 14:31+0200\n"
 "PO-Revision-Date: 2009-06-15 15:08-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: \n"
@@ -562,7 +562,7 @@ msgstr "Leikspilun"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:33 data/core/help.cfg:355 src/menu_events.cpp:845
+#: data/core/help.cfg:33 data/core/help.cfg:355 src/menu_events.cpp:853
 msgid "Traits"
 msgstr "Einkenni"
 
@@ -3541,6 +3541,13 @@ msgid ""
 "20% of finishing gold carried over to the next scenario."
 msgstr ""
 
+#. [objective]: description=<span color='white'>, condition=win
+#: data/core/macros/carryover-utils.cfg:34
+#: data/core/macros/carryover-utils.cfg:42
+#, fuzzy
+msgid "Alternative objective:"
+msgstr "Setja markmið..."
+
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:39
 msgid "You have come across a wishing well. What would you like to wish for?"
@@ -6457,7 +6464,7 @@ msgstr "Ljúka atburðarás"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:197 src/unit.cpp:2521
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:205 src/unit.cpp:2521
 #: src/unit.cpp:2675
 msgid "HP"
 msgstr "HP"
@@ -6465,8 +6472,8 @@ msgstr "HP"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-xp
 #: data/themes/default.cfg:221 data/themes/dfool.cfg:242
-#: data/themes/experimental.cfg:190 src/menu_events.cpp:198
-#: src/menu_events.cpp:843
+#: data/themes/experimental.cfg:190 src/menu_events.cpp:206
+#: src/menu_events.cpp:851
 msgid "XP"
 msgstr "XP"
 
@@ -6592,8 +6599,8 @@ msgstr "Sjónarhorf"
 msgid "Skip animation"
 msgstr "Sleppa teikningum"
 
-#: src/about.cpp:198 src/help.cpp:3157 src/menu_events.cpp:315
-#: src/menu_events.cpp:342 src/statistics_dialog.cpp:114
+#: src/about.cpp:198 src/help.cpp:3157 src/menu_events.cpp:323
+#: src/menu_events.cpp:350 src/statistics_dialog.cpp:114
 msgid "Close"
 msgstr "Loka"
 
@@ -6633,43 +6640,43 @@ msgstr "eitruð"
 msgid "petrified"
 msgstr ""
 
-#: src/actions.cpp:2477
+#: src/actions.cpp:2484
 msgid "Ambushed!"
 msgstr "Fyrirsát!"
 
-#: src/actions.cpp:2484
+#: src/actions.cpp:2491
 msgid "Failed teleport! Exit not empty"
 msgstr "Fjarflutingur mistókst! Útgangur ekki tómur"
 
-#: src/actions.cpp:2529
+#: src/actions.cpp:2536
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Vinaleg ($friends) eining í sjónmáli"
 msgstr[1] "Vinalegar ($friends) einingar í sjónmáli"
 
-#: src/actions.cpp:2532
+#: src/actions.cpp:2539
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Óvinveitt ($enemies) eining í sjónmáli!"
 msgstr[1] "Óvinveittar ($enemies) einingar í sjónmáli!"
 
-#: src/actions.cpp:2537
+#: src/actions.cpp:2544
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "$friends vingjarnleg"
 msgstr[1] "$friends vingjarnlegir"
 
-#: src/actions.cpp:2538
+#: src/actions.cpp:2545
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "$enemies óvingjarnleg"
 msgstr[1] "$enemies óvingjarnlegir"
 
-#: src/actions.cpp:2539
+#: src/actions.cpp:2546
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr ""
 
-#: src/actions.cpp:2548
+#: src/actions.cpp:2555
 msgid "(press $hotkey to keep moving)"
 msgstr "($hotkey til að halda áfram)"
 
@@ -6823,7 +6830,7 @@ msgid "No add-ons to update"
 msgstr "Engar viðbætur til uppfærslu"
 
 #: src/addon_management.cpp:739 src/addon_management.cpp:942
-#: src/dialogs.cpp:576 src/menu_events.cpp:195 src/menu_events.cpp:841
+#: src/dialogs.cpp:576 src/menu_events.cpp:203 src/menu_events.cpp:849
 msgid "Name"
 msgstr "Nafn"
 
@@ -6902,8 +6909,8 @@ msgstr "Útgáfa"
 msgid "Downloads"
 msgstr "Niðurhöl"
 
-#: src/addon_management.cpp:943 src/help.cpp:1458 src/menu_events.cpp:194
-#: src/menu_events.cpp:840 src/menu_events.cpp:1428
+#: src/addon_management.cpp:943 src/help.cpp:1458 src/menu_events.cpp:202
+#: src/menu_events.cpp:848 src/menu_events.cpp:1427
 msgid "Type"
 msgstr "Tegund"
 
@@ -6927,8 +6934,8 @@ msgstr "Sækja viðbætur"
 msgid "Choose the add-on to download."
 msgstr "Veldu viðbót til niðurhals."
 
-#: src/addon_management.cpp:1047 src/dialogs.cpp:601 src/menu_events.cpp:900
-#: src/menu_events.cpp:1464
+#: src/addon_management.cpp:1047 src/dialogs.cpp:601 src/menu_events.cpp:908
+#: src/menu_events.cpp:1463
 msgid "Filter: "
 msgstr "Sía: "
 
@@ -7072,11 +7079,11 @@ msgstr "Fjölspilun"
 msgid "Tutorial"
 msgstr "Sýnikennsla"
 
-#: src/dialogs.cpp:484 src/savegame.cpp:908
+#: src/dialogs.cpp:484 src/savegame.cpp:955
 msgid "replay"
 msgstr "endurinning"
 
-#: src/dialogs.cpp:486 src/savegame.cpp:981
+#: src/dialogs.cpp:486 src/savegame.cpp:1028
 msgid "Turn"
 msgstr "Umferð"
 
@@ -7278,35 +7285,35 @@ msgstr "Hleð inn aðalval."
 msgid "Invalid color range: "
 msgstr "Ógilt gildi lits: "
 
-#: src/game_events.cpp:179
+#: src/game_events.cpp:180
 msgid "Error: "
 msgstr "Villa: "
 
-#: src/game_events.cpp:182
+#: src/game_events.cpp:183
 msgid "Warning: "
 msgstr "Viðvörun: "
 
-#: src/game_events.cpp:185
+#: src/game_events.cpp:186
 msgid "Debug: "
 msgstr "Aflúsun: "
 
-#: src/game_events.cpp:188
+#: src/game_events.cpp:189
 msgid "Info: "
 msgstr "Upplýsingar: "
 
-#: src/game_events.cpp:1172 src/multiplayer_connect.cpp:1654
+#: src/game_events.cpp:1189 src/multiplayer_connect.cpp:1609
 msgid "Victory:"
 msgstr "Sigur:"
 
-#: src/game_events.cpp:1175
+#: src/game_events.cpp:1192
 msgid "Defeat:"
 msgstr "Tap:"
 
-#: src/game_events.cpp:3461
+#: src/game_events.cpp:3478
 msgid "[unit_worth]'s filter didn't match any units!"
 msgstr ""
 
-#: src/gamestatus.cpp:722
+#: src/gamestatus.cpp:727
 msgid "Duplicate side definition for side '$side|' found."
 msgstr "Tvíföld skilgrining hliðar fyrir hliðina '$side|' fannst."
 
@@ -7565,7 +7572,7 @@ msgstr "Kostnaður Hreyfingar"
 msgid "<header>text='Units of this race'</header>"
 msgstr ""
 
-#: src/help.cpp:2681 src/menu_events.cpp:567
+#: src/help.cpp:2681 src/menu_events.cpp:575
 msgid " < Back"
 msgstr " < Til baka"
 
@@ -7597,7 +7604,7 @@ msgstr "Endir"
 msgid "System default language"
 msgstr ""
 
-#: src/leader_list.cpp:139 src/menu_events.cpp:1454
+#: src/leader_list.cpp:139 src/menu_events.cpp:1453
 #: src/multiplayer_connect.cpp:216 src/multiplayer_connect.cpp:268
 msgid "gender^Random"
 msgstr "Slembi"
@@ -7690,200 +7697,200 @@ msgstr "Kort án hauss er ekki stutt"
 msgid "Random maps with an odd width aren't supported."
 msgstr "Slembikort með breidd í oddatölu er ekki stutt."
 
-#: src/menu_events.cpp:85 src/menu_events.cpp:88 src/menu_events.cpp:92
+#: src/menu_events.cpp:88 src/menu_events.cpp:91 src/menu_events.cpp:95
 msgid "Do you really want to dismiss him?"
 msgstr "Ertu viss um að þú viljir vísa honum frá?"
 
-#: src/menu_events.cpp:85
+#: src/menu_events.cpp:88
 msgid "My lord, this unit is loyal and requires no upkeep! "
 msgstr "Herra, þessi eining er trygg og þarfnast ekki uppihalds!"
 
-#: src/menu_events.cpp:86 src/menu_events.cpp:89 src/menu_events.cpp:93
+#: src/menu_events.cpp:89 src/menu_events.cpp:92 src/menu_events.cpp:96
 msgid "Do you really want to dismiss her?"
 msgstr "Ertu viss um að þú viljir vísa henni frá?"
 
-#: src/menu_events.cpp:88
+#: src/menu_events.cpp:91
 msgid "My lord, this unit is an experienced one, having advanced levels! "
 msgstr "Herra, þessi eining er reynd, hafandi hækkað styrkleikastig sitt!"
 
-#: src/menu_events.cpp:92
+#: src/menu_events.cpp:95
 msgid "My lord, this unit is close to advancing a level! "
 msgstr "Herra, þessi eining er nálægt því að hækka styrkleikastig sitt!"
 
-#: src/menu_events.cpp:185
+#: src/menu_events.cpp:193
 msgid "Statistics"
 msgstr "Staða"
 
-#: src/menu_events.cpp:196 src/menu_events.cpp:842
+#: src/menu_events.cpp:204 src/menu_events.cpp:850
 msgid "Level^Lvl."
 msgstr "Lvl."
 
-#: src/menu_events.cpp:199
+#: src/menu_events.cpp:207
 msgid "unit list^Traits"
 msgstr "Einkenni"
 
-#: src/menu_events.cpp:200
+#: src/menu_events.cpp:208
 msgid "Moves"
 msgstr "Hreyfingar"
 
-#: src/menu_events.cpp:201
+#: src/menu_events.cpp:209
 msgid "Location^Loc."
 msgstr "Hnit"
 
-#: src/menu_events.cpp:202
+#: src/menu_events.cpp:210
 msgid "Status"
 msgstr "Staða"
 
-#: src/menu_events.cpp:310
+#: src/menu_events.cpp:318
 msgid "Unit List"
 msgstr "Einingalisti"
 
-#: src/menu_events.cpp:313 src/menu_events.cpp:335
+#: src/menu_events.cpp:321 src/menu_events.cpp:343
 msgid "Scroll To"
 msgstr "Skruna til"
 
-#: src/menu_events.cpp:367
+#: src/menu_events.cpp:375
 msgid "Leader"
 msgstr "Leiðtogi"
 
-#: src/menu_events.cpp:368 src/multiplayer_connect.cpp:1009
+#: src/menu_events.cpp:376 src/multiplayer_connect.cpp:1009
 msgid "Team"
 msgstr "Lið"
 
-#: src/menu_events.cpp:369 src/multiplayer_connect.cpp:1020
+#: src/menu_events.cpp:377 src/multiplayer_connect.cpp:1020
 msgid "Gold"
 msgstr "Gull"
 
-#: src/menu_events.cpp:370
+#: src/menu_events.cpp:378
 msgid "Villages"
 msgstr "Þorp"
 
-#: src/menu_events.cpp:371
+#: src/menu_events.cpp:379
 msgid "status^Units"
 msgstr "Einingar"
 
-#: src/menu_events.cpp:372
+#: src/menu_events.cpp:380
 msgid "Upkeep"
 msgstr "Viðhald"
 
-#: src/menu_events.cpp:373 src/multiplayer_connect.cpp:1021
+#: src/menu_events.cpp:381 src/multiplayer_connect.cpp:1021
 #: src/multiplayer_wait.cpp:518
 msgid "Income"
 msgstr "Tekjur"
 
-#: src/menu_events.cpp:474
+#: src/menu_events.cpp:482
 msgid "Current Status"
 msgstr "Núverandi staða"
 
-#: src/menu_events.cpp:475
+#: src/menu_events.cpp:483
 msgid "More >"
 msgstr "Meira >"
 
-#: src/menu_events.cpp:493
+#: src/menu_events.cpp:501
 msgid "scenario settings^Leader"
 msgstr "Leiðtogi"
 
-#: src/menu_events.cpp:495
+#: src/menu_events.cpp:503
 msgid "scenario settings^Side"
 msgstr "Hlið"
 
-#: src/menu_events.cpp:496
+#: src/menu_events.cpp:504
 msgid ""
 "scenario settings^Start\n"
 "Gold"
 msgstr ""
 
-#: src/menu_events.cpp:497
+#: src/menu_events.cpp:505
 msgid ""
 "scenario settings^Base\n"
 "Income"
 msgstr ""
 
-#: src/menu_events.cpp:498
+#: src/menu_events.cpp:506
 msgid ""
 "scenario settings^Gold Per\n"
 "Village"
 msgstr ""
 
-#: src/menu_events.cpp:499
+#: src/menu_events.cpp:507
 msgid "scenario settings^Fog"
 msgstr "Þoka"
 
-#: src/menu_events.cpp:500
+#: src/menu_events.cpp:508
 msgid "scenario settings^Shroud"
 msgstr "Hyl"
 
-#: src/menu_events.cpp:547 src/menu_events.cpp:548
+#: src/menu_events.cpp:555 src/menu_events.cpp:556
 msgid "no"
 msgstr "nei"
 
-#: src/menu_events.cpp:547 src/menu_events.cpp:548
+#: src/menu_events.cpp:555 src/menu_events.cpp:556
 msgid "yes"
 msgstr "já"
 
-#: src/menu_events.cpp:564
+#: src/menu_events.cpp:572
 msgid "Scenario Settings"
 msgstr "Stillingar atburðarásar"
 
-#: src/menu_events.cpp:586
+#: src/menu_events.cpp:594
 msgid "Save the Map As"
 msgstr "Vista kort sem"
 
-#: src/menu_events.cpp:591
+#: src/menu_events.cpp:599
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Kortið er nú þegar til staðar. Viltu yfirskrifa það?"
 
-#: src/menu_events.cpp:603
+#: src/menu_events.cpp:611
 msgid "Map saved."
 msgstr "Kort vistað."
 
-#: src/menu_events.cpp:607
+#: src/menu_events.cpp:615
 msgid "Could not save the map: $msg"
 msgstr "Gat ekki vist kort: $msg"
 
-#: src/menu_events.cpp:622
+#: src/menu_events.cpp:630
 msgid "Chat Log"
 msgstr "Spjall"
 
-#: src/menu_events.cpp:632
+#: src/menu_events.cpp:640
 msgid "Message:"
 msgstr "Skilaboð:"
 
-#: src/menu_events.cpp:633
+#: src/menu_events.cpp:641
 msgid "Send to allies only"
 msgstr "Senda bara til vina"
 
-#: src/menu_events.cpp:633
+#: src/menu_events.cpp:641
 msgid "Send to observers only"
 msgstr "Senda bara til áhorfenda"
 
-#: src/menu_events.cpp:699
+#: src/menu_events.cpp:707
 msgid "unit^Gold"
 msgid_plural "Gold"
 msgstr[0] "Gull"
 msgstr[1] "Gull"
 
-#: src/menu_events.cpp:706
+#: src/menu_events.cpp:714
 msgid "You have no units available to recruit."
 msgstr "Þú hefur engar einingar til að ráða."
 
-#: src/menu_events.cpp:718
+#: src/menu_events.cpp:726
 msgid "Recruit"
 msgstr "Ráða"
 
-#: src/menu_events.cpp:719 src/menu_events.cpp:895
+#: src/menu_events.cpp:727 src/menu_events.cpp:903
 msgid "Select unit:"
 msgstr "Veldu einingu:"
 
-#: src/menu_events.cpp:765
+#: src/menu_events.cpp:773
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Þú hefur ekki nægt gull til að ráða þessa einingu."
 
-#: src/menu_events.cpp:811
+#: src/menu_events.cpp:819
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Þú ert aðskilin frá hermönnum þínum og getur ekki endurráðið þá."
 
-#: src/menu_events.cpp:832
+#: src/menu_events.cpp:840
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -7891,15 +7898,15 @@ msgstr ""
 "Það eru engir hermenn til endurráðninga\n"
 "(þú verður að hafa eftirlifendur úr fyrri atburðarás)"
 
-#: src/menu_events.cpp:894
+#: src/menu_events.cpp:902
 msgid "Recall"
 msgstr "Undurkalla"
 
-#: src/menu_events.cpp:904
+#: src/menu_events.cpp:912
 msgid "Dismiss Unit"
 msgstr "Vísa frá einingu"
 
-#: src/menu_events.cpp:922
+#: src/menu_events.cpp:930
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] ""
@@ -7907,71 +7914,71 @@ msgstr[0] ""
 msgstr[1] ""
 "Þú verður að eiga að minsta kosti $cost gull til að geta endurkallað einingu"
 
-#: src/menu_events.cpp:1277
+#: src/menu_events.cpp:1297
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
 "Þú hefur ekki byrjað lotuna þína enn. Viltu virkilega enda lotuna þína?"
 
-#: src/menu_events.cpp:1285 src/menu_events.cpp:1290
+#: src/menu_events.cpp:1305 src/menu_events.cpp:1310
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Sumar einingar geta enn hreyft sig. Ertu viss um að þú viljir ljúka "
 "umferðinni?"
 
-#: src/menu_events.cpp:1325
+#: src/menu_events.cpp:1345
 msgid "Rename Unit"
 msgstr "Endurskýra einingu"
 
-#: src/menu_events.cpp:1427
+#: src/menu_events.cpp:1426
 msgid "Race"
 msgstr "Ætt"
 
-#: src/menu_events.cpp:1451
+#: src/menu_events.cpp:1450
 msgid "Create Unit (Debug!)"
 msgstr "Búa til einingu (Aflúsun!)"
 
-#: src/menu_events.cpp:1454 src/multiplayer_wait.cpp:128
+#: src/menu_events.cpp:1453 src/multiplayer_wait.cpp:128
 msgid "Gender: "
 msgstr "Kyn: "
 
-#: src/menu_events.cpp:1545
+#: src/menu_events.cpp:1544
 msgid "Place Label"
 msgstr "Settu örnefni"
 
-#: src/menu_events.cpp:1547
+#: src/menu_events.cpp:1546
 msgid "Label: "
 msgstr "Örnefni: "
 
-#: src/menu_events.cpp:1548
+#: src/menu_events.cpp:1547
 msgid "Team only"
 msgstr "Lið eingöngu"
 
-#: src/menu_events.cpp:1665
+#: src/menu_events.cpp:1664
 msgid "Search"
 msgstr "Leit"
 
-#: src/menu_events.cpp:1846
+#: src/menu_events.cpp:1845
 msgid "This command is currently unavailable."
 msgstr "Þessi skipun er ekki til boða núna."
 
-#: src/menu_events.cpp:1857
+#: src/menu_events.cpp:1856
 msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
 msgstr ""
 
-#: src/menu_events.cpp:1962
+#: src/menu_events.cpp:1961
 msgid " No help available."
 msgstr " Engin hjálp til staðar."
 
-#: src/menu_events.cpp:2121
+#: src/menu_events.cpp:2120
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
 msgstr ""
 
-#: src/menu_events.cpp:2125
+#: src/menu_events.cpp:2124
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
@@ -7979,37 +7986,37 @@ msgstr ""
 "Banna og sparka spilara eða áhorfenda. Ef hann er ekki inní leiknun enn á "
 "miðlaranum verður hann bara bannaður."
 
-#: src/menu_events.cpp:2128
+#: src/menu_events.cpp:2127
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr ""
 
-#: src/menu_events.cpp:2131
+#: src/menu_events.cpp:2130
 msgid "Kick a player or observer."
 msgstr "Sparka spilara eða athugara"
 
-#: src/menu_events.cpp:2133
+#: src/menu_events.cpp:2132
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr "Þaggar niður í áhorfenda. Birtir niðurþöggunar stöðu."
 
-#: src/menu_events.cpp:2135
+#: src/menu_events.cpp:2134
 #, fuzzy
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr "Þaggar niður í áhorfenda. Birtir niðurþöggunar stöðu."
 
-#: src/menu_events.cpp:2137
+#: src/menu_events.cpp:2136
 #, fuzzy
 msgid "Mute/Unmute all observers. (toggles)"
 msgstr "Þagga niður í öllur áhorfendum."
 
-#: src/menu_events.cpp:2147
+#: src/menu_events.cpp:2146
 msgid "Send a message to the server admins currently online"
 msgstr "Senda skilaboð til þá stjórnendur miðlarans sem eru tengdir"
 
-#: src/menu_events.cpp:2149
+#: src/menu_events.cpp:2148
 msgid "Send an emotion or personal action in chat."
 msgstr "Senda broskall í spjalli."
 
-#: src/menu_events.cpp:2152
+#: src/menu_events.cpp:2151
 msgid ""
 "Sends a private message. You can't send messages to players that don't "
 "control a side in a running game you are in."
@@ -8017,75 +8024,75 @@ msgstr ""
 "Senda einkaskilaboð. Þú getur ekki sent skilaboð til spilara sem ekki "
 "stjórna liði í leiknum sem þú ert í."
 
-#: src/menu_events.cpp:2158
+#: src/menu_events.cpp:2157
 msgid "Change the log level of a log domain."
 msgstr ""
 
-#: src/menu_events.cpp:2160
+#: src/menu_events.cpp:2159
 msgid "Add a nick to your ignores list."
 msgstr "Bæta við notendanafn á hunsunarlista."
 
-#: src/menu_events.cpp:2162
+#: src/menu_events.cpp:2161
 msgid "Add a nick to your friends list."
 msgstr "Bæta við notendanafn á vinalista."
 
-#: src/menu_events.cpp:2164
+#: src/menu_events.cpp:2163
 msgid "Remove a nick from your ignores or friends list."
 msgstr "Fjarlægja notendanafn úr husunar- og vinalista."
 
-#: src/menu_events.cpp:2166
+#: src/menu_events.cpp:2165
 msgid "Show your ignores and friends list."
 msgstr "Birta vina og hunsunarlista."
 
-#: src/menu_events.cpp:2169
+#: src/menu_events.cpp:2168
 msgid "Display version information."
 msgstr "Sýna útgáfu upplýsingar"
 
-#: src/menu_events.cpp:2171
+#: src/menu_events.cpp:2170
 msgid "Register your nick"
 msgstr "Skrá notendanafn þitt"
 
-#: src/menu_events.cpp:2173
+#: src/menu_events.cpp:2172
 msgid "Drop your nick."
 msgstr "Afskrá notendanafn þitt."
 
-#: src/menu_events.cpp:2175
+#: src/menu_events.cpp:2174
 msgid "Update details for your nick. For possible details see '/details'."
 msgstr ""
 "Uppfærir smáatriði fyrir gælunafn þitt. Fyrir möguleg smáatriði sjá '/"
 "details'."
 
-#: src/menu_events.cpp:2178
+#: src/menu_events.cpp:2177
 msgid "Request information about a nick."
 msgstr "Biðja um upplýsingar um gælunafn."
 
-#: src/menu_events.cpp:2180
+#: src/menu_events.cpp:2179
 msgid "Request a list of details you can set for your registered nick."
 msgstr ""
 "Biðja um lista af smáatriðum sem þú getur ssett fyrir skráð gælunafn þitt."
 
-#: src/menu_events.cpp:2182
+#: src/menu_events.cpp:2181
 #, fuzzy
 msgid "Join a room."
 msgstr "Tengjast leik"
 
-#: src/menu_events.cpp:2185
+#: src/menu_events.cpp:2184
 msgid "Part a room."
 msgstr ""
 
-#: src/menu_events.cpp:2187
+#: src/menu_events.cpp:2186
 msgid "List room members."
 msgstr ""
 
-#: src/menu_events.cpp:2189
+#: src/menu_events.cpp:2188
 msgid "List available rooms."
 msgstr ""
 
-#: src/menu_events.cpp:2191
+#: src/menu_events.cpp:2190
 msgid "Room message."
 msgstr ""
 
-#: src/menu_events.cpp:2193
+#: src/menu_events.cpp:2192
 msgid "Room query."
 msgstr ""
 
@@ -8117,172 +8124,176 @@ msgstr "Vista leik."
 msgid "Quit game."
 msgstr "Ljúka leik."
 
-#: src/menu_events.cpp:2338
+#: src/menu_events.cpp:2339
 msgid "Save and quit."
 msgstr "Vista og hætta."
 
-#: src/menu_events.cpp:2341
+#: src/menu_events.cpp:2342
 msgid "Ignore replay errors."
 msgstr "Hunsa endurinningarvillur."
 
-#: src/menu_events.cpp:2343
+#: src/menu_events.cpp:2344
 msgid "Disable autosaves."
 msgstr "Óvirkja sjálfvistanir."
 
-#: src/menu_events.cpp:2345
+#: src/menu_events.cpp:2346
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr ""
 
-#: src/menu_events.cpp:2348
+#: src/menu_events.cpp:2349
 msgid "Choose next scenario"
 msgstr "Val næstu atburðarásar"
 
-#: src/menu_events.cpp:2351
+#: src/menu_events.cpp:2352
 msgid "Turn debug mode on."
 msgstr "Ræsa aflúsunarham."
 
-#: src/menu_events.cpp:2353
+#: src/menu_events.cpp:2354
 msgid "Turn debug mode off."
 msgstr "Slökkva aflúsunarham."
 
-#: src/menu_events.cpp:2355
+#: src/menu_events.cpp:2356
 msgid "Execute a Lua statement."
 msgstr ""
 
-#: src/menu_events.cpp:2357
+#: src/menu_events.cpp:2358
 msgid "Set the command used by the custom command hotkey"
 msgstr ""
 
-#: src/menu_events.cpp:2359
+#: src/menu_events.cpp:2360
+msgid "Launch the gamestate inspector"
+msgstr ""
+
+#: src/menu_events.cpp:2362
 msgid "Set or show alias to a command"
 msgstr "Setja eða birta samnefni skipanna"
 
-#: src/menu_events.cpp:2361
+#: src/menu_events.cpp:2364
 msgid "Set a scenario variable."
 msgstr "Setja breytu atburðarásar."
 
-#: src/menu_events.cpp:2363
+#: src/menu_events.cpp:2366
 msgid "Show a scenario variable."
 msgstr "Birta breytu atburðarásar."
 
-#: src/menu_events.cpp:2365
+#: src/menu_events.cpp:2368
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr "Breyta breytu einingar. (Eingöngu efsta lag lykla eru stutt.)"
 
-#: src/menu_events.cpp:2371
+#: src/menu_events.cpp:2374
 msgid "Discover all units in help."
 msgstr ""
 
-#: src/menu_events.cpp:2376
+#: src/menu_events.cpp:2379
 msgid "Create a unit."
 msgstr "Búa til einingu."
 
-#: src/menu_events.cpp:2378
+#: src/menu_events.cpp:2381
 msgid "Toggle fog for the current player."
 msgstr ""
 
-#: src/menu_events.cpp:2380
+#: src/menu_events.cpp:2383
 msgid "Toggle shroud for the current player."
 msgstr ""
 
-#: src/menu_events.cpp:2382
+#: src/menu_events.cpp:2385
 msgid "Give gold to the current player."
 msgstr "Gefa gull til núverandi spilara."
 
-#: src/menu_events.cpp:2384
+#: src/menu_events.cpp:2387
 msgid "Fire a game event."
 msgstr "Fullnusta leikjaratburð."
 
-#: src/menu_events.cpp:2387
+#: src/menu_events.cpp:2390
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr ""
 
-#: src/menu_events.cpp:2390
+#: src/menu_events.cpp:2393
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr ""
 
-#: src/menu_events.cpp:2434
+#: src/menu_events.cpp:2437
 msgid "Unknown debug level: '$level'."
 msgstr "Óþekkt aflúsinarstig: '$level'."
 
-#: src/menu_events.cpp:2436 src/menu_events.cpp:2445
+#: src/menu_events.cpp:2439 src/menu_events.cpp:2448
 msgid "error"
 msgstr "villa"
 
-#: src/menu_events.cpp:2443
+#: src/menu_events.cpp:2446
 msgid "Unknown debug domain: '$domain'."
 msgstr "Óþekkt aflúsunarlén: '$domain'."
 
-#: src/menu_events.cpp:2452
+#: src/menu_events.cpp:2455
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr ""
 
-#: src/menu_events.cpp:2626
+#: src/menu_events.cpp:2629
 msgid "Added to ignore list: "
 msgstr "Bætt í hundsunarlista: "
 
-#: src/menu_events.cpp:2629 src/menu_events.cpp:2646
+#: src/menu_events.cpp:2632 src/menu_events.cpp:2649
 msgid "Invalid username: "
 msgstr "Ógilt notandanafn: "
 
-#: src/menu_events.cpp:2644
+#: src/menu_events.cpp:2647
 msgid "Added to friends list: "
 msgstr "Bætt í vinalista: "
 
-#: src/menu_events.cpp:2658
+#: src/menu_events.cpp:2661
 msgid "Removed from list: "
 msgstr "Fjarlægður frá lista: "
 
-#: src/menu_events.cpp:2676
+#: src/menu_events.cpp:2679
 msgid "There are no players on your friends or ignore list."
 msgstr "það eru engin spilarar á vina né hundsunar listanum."
 
-#: src/menu_events.cpp:2846
+#: src/menu_events.cpp:2849
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr ""
 "Gat ekki fundið örnefni eða einingu sem inniheldur strenginn '$search'."
 
-#: src/menu_events.cpp:2875
+#: src/menu_events.cpp:2878
 msgid "Can't droid invalid side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2880
+#: src/menu_events.cpp:2883
 msgid "Can't droid networked side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2917
+#: src/menu_events.cpp:2920
 msgid "Can't change control of invalid side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2923
+#: src/menu_events.cpp:2926
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2988
+#: src/menu_events.cpp:2991
 msgid "Choose Scenario (Debug!)"
 msgstr "Velja atburðarás (Aflúsun!)"
 
-#: src/menu_events.cpp:3001
+#: src/menu_events.cpp:3004
 msgid "Debug mode activated!"
 msgstr "Aflúsunarham virkt!"
 
-#: src/menu_events.cpp:3004
+#: src/menu_events.cpp:3007
 msgid "Debug mode not available in network games"
 msgstr "Aflúsunarhamur ekki til staðar í netleikjum"
 
-#: src/menu_events.cpp:3009
+#: src/menu_events.cpp:3012
 msgid "Debug mode deactivated!"
 msgstr "Aflúsunarham óvirkt!"
 
-#: src/menu_events.cpp:3183
+#: src/menu_events.cpp:3194
 msgid "ai"
 msgstr "gervigreind"
 
-#: src/menu_events.cpp:3193 src/menu_events.cpp:3208
+#: src/menu_events.cpp:3204 src/menu_events.cpp:3219
 msgid "prompt^Command:"
 msgstr "Skipun:"
 
-#: src/menu_events.cpp:3228
+#: src/menu_events.cpp:3239
 msgid "User-Command#3"
 msgstr "Notendaskipun #3"
 
@@ -8478,18 +8489,18 @@ msgstr "Gervigreind"
 msgid "Empty"
 msgstr "Autt"
 
-#: src/multiplayer_connect.cpp:1631
+#: src/multiplayer_connect.cpp:1586
 msgid "Cannot find era $era"
 msgstr "Gat ekki fundið tímabilið $era"
 
-#: src/multiplayer_connect.cpp:1656
+#: src/multiplayer_connect.cpp:1611
 #, fuzzy
 msgid "Defeat enemy leader(s)"
 msgstr ""
 "Sigur:\n"
 "@Dráp á leiðtogum óvina"
 
-#: src/multiplayer_connect.cpp:1720
+#: src/multiplayer_connect.cpp:1675
 msgid "Waiting for players to join..."
 msgstr "Bíð eftir spilurum..."
 
@@ -8860,7 +8871,7 @@ msgid "Starting game"
 msgstr "Ræsa leik"
 
 #: src/play_controller.cpp:923 src/savegame.cpp:290 src/savegame.cpp:302
-#: src/savegame.cpp:934 src/savegame.cpp:936
+#: src/savegame.cpp:981 src/savegame.cpp:983
 msgid "Auto-Save"
 msgstr "Sjálf-vistun"
 
@@ -9072,48 +9083,48 @@ msgstr ""
 msgid "This is not a multiplayer save"
 msgstr "Þetta er ekki vistun úr fjölspilunarleik"
 
-#: src/savegame.cpp:567
+#: src/savegame.cpp:614
 #, fuzzy
 msgid "The game could not be saved: "
 msgstr "Tókst ekki að vista leikinn"
 
-#: src/savegame.cpp:654
+#: src/savegame.cpp:701
 msgid "Name: "
 msgstr "Nafn: "
 
-#: src/savegame.cpp:654
+#: src/savegame.cpp:701
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Vistun er nú þegar til staðar. Viltu yfirrita?"
 
-#: src/savegame.cpp:655
+#: src/savegame.cpp:702
 msgid "Overwrite?"
 msgstr "Yfirskrifa?"
 
-#: src/savegame.cpp:665
+#: src/savegame.cpp:712
 msgid "Save names should not end on '.gz'. Please choose a different name."
 msgstr "Vistunarnöfn ættu ekki að enda á '.gz'. Vinsamlegast veldu annað nafn."
 
-#: src/savegame.cpp:727
+#: src/savegame.cpp:774
 msgid "Saved"
 msgstr "Vistað"
 
-#: src/savegame.cpp:727
+#: src/savegame.cpp:774
 msgid "The game has been saved"
 msgstr "Leikurinn hefur verið vistaður"
 
-#: src/savegame.cpp:761 src/savegame.cpp:786
+#: src/savegame.cpp:808 src/savegame.cpp:833
 msgid "Could not write to file"
 msgstr "Gat ekki skrifað í skrá"
 
-#: src/savegame.cpp:899
+#: src/savegame.cpp:946
 msgid "Save Replay"
 msgstr "Vista endurinningu"
 
-#: src/savegame.cpp:917
+#: src/savegame.cpp:964
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Gat ekki sjálfvistað leikinn. Vinsamlegast vistið leikinn handvirkt."
 
-#: src/savegame.cpp:969
+#: src/savegame.cpp:1016
 msgid "Save Game"
 msgstr "Vista leik"
 

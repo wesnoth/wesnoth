@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-30 19:20+0200\n"
+"POT-Creation-Date: 2009-09-06 14:31+0200\n"
 "PO-Revision-Date: 2009-08-29 12:39+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -787,6 +787,7 @@ msgstr "Стек позива"
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:86
+#: data/gui/default/window/gamestate_inspector.cfg:187
 msgid "Actions"
 msgstr "Радње"
 
@@ -956,6 +957,38 @@ msgstr "Пребрисати?"
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Сачувана игра већ постоји. Желите ли да је пребришете?"
 
+#. [label]
+#: data/gui/default/window/gamestate_inspector.cfg:33
+msgid "Gamestate Inspector"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/gamestate_inspector.cfg:86
+#, fuzzy
+msgid "Content"
+msgstr "Повежи се"
+
+#. [label]
+#: data/gui/default/window/gamestate_inspector.cfg:97
+msgid "Inspection window"
+msgstr ""
+
+#. [label]: id=name
+#: data/gui/default/window/gamestate_inspector.cfg:125
+msgid "Variable"
+msgstr ""
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=ok
+#. [button]: id=cancel
+#. [button]: id=close_window
+#: data/gui/default/window/gamestate_inspector.cfg:250
+#: data/gui/default/window/lobby_main.cfg:503
+#: data/gui/default/window/lobby_player_info.cfg:192
+#: data/gui/default/window/message.cfg:122 src/construct_dialog.cpp:139
+msgid "Close"
+msgstr "Затвори"
+
 #. [grid]
 #. [label]
 #: data/gui/default/window/language_selection.cfg:31
@@ -1092,16 +1125,6 @@ msgstr "Слободних места"
 #: data/gui/default/window/lobby_main.cfg:488
 msgid "Invert filter"
 msgstr "Изврни филтер"
-
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=ok
-#. [button]: id=cancel
-#. [button]: id=close_window
-#: data/gui/default/window/lobby_main.cfg:503
-#: data/gui/default/window/lobby_player_info.cfg:192
-#: data/gui/default/window/message.cfg:122 src/construct_dialog.cpp:139
-msgid "Close"
-msgstr "Затвори"
 
 #. [button]: id=send_message
 #: data/gui/default/window/lobby_main.cfg:527
@@ -2014,16 +2037,16 @@ msgstr "Текст не стаје на платно."
 msgid "Linked '$id' group has multiple definitions."
 msgstr "Повезана група ‘$id’ има вишеструке дефиниције."
 
-#: src/gui/auxiliary/window_builder.cpp:188 src/gui/widgets/settings.cpp:516
+#: src/gui/auxiliary/window_builder.cpp:188 src/gui/widgets/settings.cpp:517
 msgid "No resolution defined."
 msgstr "Резолуција није дефинисана."
 
 #: src/gui/auxiliary/window_builder.cpp:294
 #: src/gui/auxiliary/window_builder/panel.cpp:35
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:38
-#: src/gui/widgets/settings.cpp:780 src/gui/widgets/settings.cpp:879
-#: src/gui/widgets/settings.cpp:972 src/gui/widgets/settings.cpp:1015
-#: src/gui/widgets/settings.cpp:1130
+#: src/gui/widgets/settings.cpp:781 src/gui/widgets/settings.cpp:880
+#: src/gui/widgets/settings.cpp:973 src/gui/widgets/settings.cpp:1016
+#: src/gui/widgets/settings.cpp:1131
 msgid "No grid defined."
 msgstr "Мрежа није дефинисана."
 
@@ -2145,20 +2168,20 @@ msgstr "верзија"
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Обавезни виџет „$id“ није дефинисан."
 
-#: src/gui/widgets/settings.cpp:143
+#: src/gui/widgets/settings.cpp:144
 msgid "No default gui defined."
 msgstr "Подразумевано сучеље није дефинисано."
 
-#: src/gui/widgets/settings.cpp:303
+#: src/gui/widgets/settings.cpp:304
 msgid "Window not defined."
 msgstr "Прозор није дефинисан."
 
-#: src/gui/widgets/settings.cpp:400
+#: src/gui/widgets/settings.cpp:401
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "Дефиниција виџета „$definition“ не садржи дефиницију за „$id“."
 
-#: src/gui/widgets/settings.cpp:542
+#: src/gui/widgets/settings.cpp:543
 msgid "No state or draw section defined."
 msgstr "Одељак стања или цртања није дефинисан."
 

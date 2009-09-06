@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-09-03 00:21+0200\n"
+"POT-Creation-Date: 2009-09-06 14:31+0200\n"
 "PO-Revision-Date: 2005-12-14 12:40+0200\n"
 "Last-Translator: \n"
 "Language-Team: Afrikaans\n"
@@ -22,7 +22,7 @@ msgid "Blood Bat"
 msgstr "Bloed Vlêrmuis"
 
 #. [unit_type]: id=Blood Bat, race=bats
-#: data/core/units/bats/Bat_Blood.cfg:19
+#: data/core/units/bats/Bat_Blood.cfg:20
 msgid ""
 "Blood Bats are so named because of their ruddy hue, which some mark as a "
 "symbol of their preferred diet. These creatures are fast and can drain the "
@@ -32,9 +32,9 @@ msgstr ""
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
-#: data/core/units/bats/Bat_Blood.cfg:176
-#: data/core/units/bats/Bat_Dread.cfg:29
-#: data/core/units/bats/Bat_Vampire.cfg:176
+#: data/core/units/bats/Bat_Blood.cfg:189
+#: data/core/units/bats/Bat_Dread.cfg:42
+#: data/core/units/bats/Bat_Vampire.cfg:189
 #: data/core/units/goblins/Direwolf_Rider.cfg:46
 #: data/core/units/goblins/Knight.cfg:48
 #: data/core/units/goblins/Pillager.cfg:47
@@ -53,7 +53,7 @@ msgid "Dread Bat"
 msgstr "Vampier Vlêrmuis"
 
 #. [unit_type]: id=Dread Bat, race=bats
-#: data/core/units/bats/Bat_Dread.cfg:25
+#: data/core/units/bats/Bat_Dread.cfg:26
 msgid ""
 "The most vicious, predatory, and successful of the Blood Bats become Dread "
 "Bats, gaining the ability to drain not merely the blood but the very life "
@@ -66,7 +66,7 @@ msgid "Vampire Bat"
 msgstr "Vampier Vlêrmuis"
 
 #. [unit_type]: id=Vampire Bat, race=bats
-#: data/core/units/bats/Bat_Vampire.cfg:19
+#: data/core/units/bats/Bat_Vampire.cfg:20
 #, fuzzy
 msgid ""
 "Vampire bats are flying beasts that feed on the blood of other creatures. "
@@ -189,7 +189,7 @@ msgstr "strydbyl"
 
 #. [attack]: type=fire
 #: data/core/units/drakes/Armageddon.cfg:94
-#: data/core/units/drakes/Blademaster.cfg:78
+#: data/core/units/drakes/Blademaster.cfg:117
 #: data/core/units/drakes/Burner.cfg:117
 #: data/core/units/drakes/Fighter.cfg:117 data/core/units/drakes/Fire.cfg:116
 #: data/core/units/drakes/Flameheart.cfg:88
@@ -207,7 +207,7 @@ msgid "Drake Blademaster"
 msgstr "Drake Lem-meester"
 
 #. [unit_type]: id=Drake Blademaster, race=drake
-#: data/core/units/drakes/Blademaster.cfg:19
+#: data/core/units/drakes/Blademaster.cfg:20
 #, fuzzy
 msgid ""
 "The drakes who master the use of war blades are sworn into a special order. "
@@ -218,12 +218,12 @@ msgstr ""
 "wesens se merk is die swart en wit oorlogsverf wat hulle wys in 'n stryd."
 
 #. [attack]: type=blade
-#: data/core/units/drakes/Blademaster.cfg:69
-#: data/core/units/drakes/Fighter.cfg:108
-#: data/core/units/drakes/Warrior.cfg:107
-#, fuzzy
-msgid "war blade"
-msgstr "lem"
+#: data/core/units/drakes/Blademaster.cfg:108
+#: data/core/units/drakes/Clasher.cfg:38
+#: data/core/units/drakes/Enforcer.cfg:36
+#: data/core/units/drakes/Thrasher.cfg:23
+msgid "war talon"
+msgstr ""
 
 #. [unit_type]: id=Drake Burner, race=drake
 #: data/core/units/drakes/Burner.cfg:4
@@ -279,16 +279,8 @@ msgid ""
 "and enforcing the laws of their tribe."
 msgstr ""
 
-#. [attack]: type=blade
-#: data/core/units/drakes/Clasher.cfg:38
-#: data/core/units/drakes/Enforcer.cfg:36
-#: data/core/units/drakes/Thrasher.cfg:23
-msgid "war talon"
-msgstr ""
-
 #. [attack]: type=pierce
 #: data/core/units/drakes/Clasher.cfg:47
-#: data/core/units/drakes/Enforcer.cfg:54
 #: data/core/units/drakes/Thrasher.cfg:32
 #: data/core/units/dwarves/Guardsman.cfg:43
 #: data/core/units/dwarves/Sentinel.cfg:51
@@ -303,10 +295,10 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Spearman.cfg:59
 #: data/core/units/merfolk/Hoplite.cfg:48
 #: data/core/units/merfolk/Hunter.cfg:37 data/core/units/merfolk/Hunter.cfg:45
-#: data/core/units/merfolk/Javelineer.cfg:25
-#: data/core/units/merfolk/Javelineer.cfg:33
-#: data/core/units/merfolk/Spearman.cfg:24
-#: data/core/units/merfolk/Spearman.cfg:32
+#: data/core/units/merfolk/Javelineer.cfg:37
+#: data/core/units/merfolk/Javelineer.cfg:45
+#: data/core/units/merfolk/Spearman.cfg:36
+#: data/core/units/merfolk/Spearman.cfg:44
 #: data/core/units/saurians/Ambusher.cfg:39
 #: data/core/units/saurians/Ambusher.cfg:48
 #: data/core/units/saurians/Flanker.cfg:40
@@ -339,6 +331,15 @@ msgstr ""
 msgid "ram"
 msgstr ""
 
+#. [attack]: type=pierce
+#. [attack]: type=blade
+#: data/core/units/drakes/Enforcer.cfg:54
+#: data/core/units/merfolk/Fighter.cfg:37
+#: data/core/units/merfolk/Triton.cfg:38 data/core/units/merfolk/Triton.cfg:46
+#: data/core/units/merfolk/Warrior.cfg:36
+msgid "trident"
+msgstr "seevurk"
+
 #. [unit_type]: id=Drake Fighter, race=drake
 #: data/core/units/drakes/Fighter.cfg:4
 msgid "Drake Fighter"
@@ -356,6 +357,13 @@ msgstr ""
 "Drakevegters hanteer hul kromswaarde met dodelike vaardigheid en besit ook "
 "die vuurblaas vaardighede van hulle voorouers. Die vaardigste vegters word "
 "bevorder tot die geledere van die Drakekrygers."
+
+#. [attack]: type=blade
+#: data/core/units/drakes/Fighter.cfg:108
+#: data/core/units/drakes/Warrior.cfg:107
+#, fuzzy
+msgid "war blade"
+msgstr "lem"
 
 #. [unit_type]: id=Fire Drake, race=drake
 #: data/core/units/drakes/Fire.cfg:4
@@ -3431,14 +3439,6 @@ msgid ""
 msgstr ""
 "Vaardige wesens van die see, is Meermanne sterk en vinnig in enige water-"
 "agtige omgewing, maar hulle sukkel om op land te beweeg."
-
-#. [attack]: type=pierce
-#. [attack]: type=blade
-#: data/core/units/merfolk/Fighter.cfg:37
-#: data/core/units/merfolk/Triton.cfg:38 data/core/units/merfolk/Triton.cfg:46
-#: data/core/units/merfolk/Warrior.cfg:36
-msgid "trident"
-msgstr "seevurk"
 
 #. [unit_type]: id=Merman Hoplite, race=merman
 #: data/core/units/merfolk/Hoplite.cfg:4
