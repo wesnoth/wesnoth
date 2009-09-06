@@ -33,7 +33,7 @@ wesnothd \-\- višeigrački mrežni domar "Boja za \fBVesnot\fP"
 .
 .SH OPIS
 .
-Upravlja višeigračkim sesijama "Boja za Vesnot". Pogledajte
+Upravlja višeigračkim partijama "Boja za Vesnot". Pogledajte
 http://www.wesnoth.org/wiki/ServerAdministration za naredbe koje server
 prihvata preko klijenta (/query ...) ili fifoa.
 .
@@ -107,7 +107,7 @@ koriste ako se ništa ne zada, su:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-Putanja do fifoa iz kojeg server može da čita naredbe (iste kao /query
+putanja do fifoa iz kojeg server može da čita naredbe (iste kao /query
 \&... iz igre). Ako nije zadato, spada na podrazumevanu ugrađenu
 (/var/run/socket/wesnothd/socket).
 .TP 
@@ -127,7 +127,7 @@ lozinka za sticanje administratorskih ovlašćenja. Obično počinje sa 'admin
 \&'
 .TP 
 \fBreplay_save_path\fP
-Direktorijum gde server smešta snimke igara (ne zaboravite prateće
+Direktorijum gde server smešta snimke partija (ne zaboravite prateće
 /!). Podrazumevano je \*(rq (prazno), što znači direktorijum u kojem je
 wesnothd pokrenut.
 .TP 
@@ -136,7 +136,7 @@ Naredba kojom server pokreće novi serverski proces pri naredbi
 \&'restart'. (Može se izdati samo preko fifoa.)
 .TP 
 \fBsave_replays\fP
-Određuje da li server automatski upisuje snimke igara (podrazumevno:
+Određuje da li server automatski upisuje snimke partija (podrazumevno:
 \fBfalse\fP).
 .TP 
 \fBversions_accepted\fP
