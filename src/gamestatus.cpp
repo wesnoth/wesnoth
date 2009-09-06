@@ -726,7 +726,7 @@ void game_state::build_team(const config& side_cfg,
 		VALIDATE(units.count(start_pos) == 0,
 			t_string(vgettext("Duplicate side definition for side '$side|' found.", symbols)));
 
-		units.add(map.starting_position(new_unit.side()), new_unit);
+		units.add(start_pos, new_unit);
 		LOG_NG << "initializing side '" << side_cfg["side"] << "' at "
 			<< start_pos << '\n';
 	}
