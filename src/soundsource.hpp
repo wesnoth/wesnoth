@@ -44,6 +44,7 @@ class positional_source {
 	unsigned int range_;
 	unsigned int faderange_;
 	bool check_fogged_;
+	bool check_shrouded_;
 	std::string files_;
 	std::vector<map_location> locations_;
 
@@ -131,6 +132,7 @@ class sourcespec
 	int range_;
 	int faderange_;
 	bool check_fogged_;
+	bool check_shrouded_;
 
 	std::vector<map_location> locations_;
 
@@ -145,6 +147,7 @@ public:
 		range_(3),
 		faderange_(14),
 		check_fogged_(false),
+		check_shrouded_(false),
 		locations_()
 	{}
 
@@ -164,9 +167,14 @@ public:
 	}
 
 	bool check_fogged() const { return check_fogged_; }
+	bool check_shrouded() const { return check_shrouded_; }
 
 	void set_check_fogged(bool value) {
 		check_fogged_ = value;
+	}
+
+	void set_check_shrouded(bool value) {
+		check_shrouded_ = value;
 	}
 
 	const std::vector<map_location>& get_locations() const {

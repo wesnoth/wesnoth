@@ -132,6 +132,7 @@ positional_source::positional_source(const sourcespec &spec) :
 	range_(spec.full_range()),
 	faderange_(spec.fade_range()),
 	check_fogged_(spec.check_fogged()),
+	check_shrouded_(spec.check_shrouded()),
 	files_(spec.files()),
 	locations_(spec.get_locations())
 {
@@ -207,7 +208,7 @@ int positional_source::calculate_volume(const map_location &loc, const display &
 	assert(range_ > 0);
 	assert(faderange_ > 0);
 
-	if(disp.shrouded(loc) || (check_fogged_ && disp.fogged(loc)))
+	if((check_shrouded_ && disp.shrouded(loc)) || (check_fogged_ && disp.fogged(loc)))
 		return DISTANCE_SILENT;
 
 	SDL_Rect area = disp.map_area();
@@ -233,6 +234,7 @@ void positional_source::write_config(config& cfg) const
 	cfg["delay"] = str_cast<unsigned int>(this->min_delay_);
 	cfg["chance"] = str_cast<unsigned int>(this->chance_);
 	cfg["check_fogged"] = this->check_fogged_ ? "yes" : "no";
+	cfg["check_shrouded"] = this->check_fogged_ ? "yes" : "no";
 
 	cfg["x"] = cfg["y"] = "";
 	bool first_loc = true;
@@ -261,6 +263,7 @@ sourcespec::sourcespec(const config& cfg) :
 	range_(lexical_cast_default<int>(cfg["full_range"], 3)),
 	faderange_(lexical_cast_default<int>(cfg["fade_range"], 14)),
 	check_fogged_(utils::string_bool(cfg["check_fogged"], true)),
+	check_shrouded_(utils::string_bool(cfg["check_shrouded"], true)),
 	locations_()
 {
 	const std::vector<std::string>& vx = utils::split(cfg["x"]);
