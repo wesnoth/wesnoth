@@ -2,10 +2,12 @@ This is meant to be a concise list of player-visible changes (very minor
 changes may be omitted). For a complete list of changes, see the main
 changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/branches/1.6/changelog
 
-Version 1.6.4+svn:
+Version 1.6.5:
   * Campaigns
+    * Legend of Wesmere:
+      * Work around a possible crash at the end of scenario 7 (bug #14172).
     * Under the Burning Suns
-      * Fixed bug #13978: UtBS: "stun" ability doesn't modify enemy ZoC
+      * Fixed bug #13978: UtBS: "stun" ability doesn't modify enemy ZoC.
 
   * Language and translations
     * Updated translations: Chinese (Traditional), Czech, Dutch, Estonian,
@@ -13,7 +15,7 @@ Version 1.6.4+svn:
       Serbian, Slovak.
 
   * User interface
-    * Removed the hotkey to enable/disable mouse scrolling
+    * Removed the hotkey to enable/disable mouse scrolling.
 
 
 Version 1.6.4:
