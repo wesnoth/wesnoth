@@ -679,24 +679,7 @@ void playsingle_controller::show_turn_dialog(){
 }
 
 void playsingle_controller::execute_gotos(){
-	// Execute goto-movements - first collect gotos in a list
-	std::vector<map_location> gotos;
-
-	for(unit_map::iterator ui = units_.begin(); ui != units_.end(); ++ui) {
-		if(ui->second.get_goto() == ui->first)
-			ui->second.set_goto(map_location());
-
-		if(ui->second.side() == player_number_ && map_.on_board(ui->second.get_goto()))
-			gotos.push_back(ui->first);
-	}
-
-	for(std::vector<map_location>::const_iterator g = gotos.begin(); g != gotos.end(); ++g) {
-		unit_map::const_iterator ui = units_.find(*g);
-		menu_handler_.move_unit_to_loc(ui,ui->second.get_goto(),false, player_number_, mouse_handler_);
-	}
-
-	// erase the footsteps after movement
-	gui_->set_route(NULL);
+	menu_handler_.execute_gotos(mouse_handler_, player_number_);
 }
 
 void playsingle_controller::play_human_turn() {

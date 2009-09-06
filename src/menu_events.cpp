@@ -1606,6 +1606,90 @@ private:
 		gui_->invalidate_game_status();
 	}
 
+	void menu_handler::execute_gotos(mouse_handler &mousehandler, int side)
+	{
+		// we will loop on all gotos and try to fully move a maximum of them,
+		// but we want to avoid multiple blocking of the same unit,
+		// so, if possible, it's better to first wait that the blocker move
+
+		bool wait_blocker_move = true;
+		std::set<map_location> fully_moved;
+
+		bool change = false;
+		bool blocked_unit = false;
+		do {
+			change = false;
+			blocked_unit = false;
+			for(unit_map::iterator ui = units_.begin(); ui != units_.end(); ++ui) {
+				if(ui->second.side() != side  || ui->second.movement_left() == 0)
+					continue;
+
+				const map_location& current_loc = ui->first;
+				const map_location& goto_loc = ui->second.get_goto();
+
+				if(goto_loc == current_loc)
+					ui->second.set_goto(map_location());
+
+				if(!map_.on_board(goto_loc))
+					continue;
+
+				// avoid pathfinding calls for finished units
+				if(fully_moved.count(current_loc))
+					continue;
+
+				marked_route route = mousehandler.get_route(ui, goto_loc, teams_[side - 1]);
+
+				if(route.steps.size() <= 1) { // invalid path
+					fully_moved.insert(current_loc);
+					continue;
+				}
+
+				// look where we will stop this turn (turn_1 waypoint or goto)
+				map_location next_stop = goto_loc;
+				marked_route::waypoint_map::const_iterator w = route.waypoints.begin();
+				for(; w != route.waypoints.end(); ++w) {
+					if (w->second.turns == 1) {
+						next_stop = w->first;
+						break;
+					}
+				}
+
+				if(next_stop == current_loc) {
+					fully_moved.insert(current_loc);
+					continue; 
+				}
+
+				// we delay each blocked move because some other change
+				// may open a another not blocked path 
+				if(units_.count(next_stop)) {
+					blocked_unit = true;
+					if (wait_blocker_move)
+						continue;
+				}
+
+				gui_->set_route(&route);
+				int moves = ::move_unit(NULL, route.steps, &recorder, &undo_stack_, true, NULL, false);
+				change = moves > 0;
+
+				if (change) {
+					// something changed, resume waiting blocker (maybe one can move now)
+					wait_blocker_move = true;
+				}
+			}
+
+			if(!change && wait_blocker_move) {
+				// no change when waiting, stop waiting and retry
+				wait_blocker_move = false;
+				change = true;
+			}
+		} while(change && blocked_unit);
+
+		// erase the footsteps after movement
+		gui_->set_route(NULL);
+		gui_->invalidate_game_status();
+	}
+
+
 	void menu_handler::toggle_ellipses()
 	{
 		preferences::set_ellipses(!preferences::ellipses());
