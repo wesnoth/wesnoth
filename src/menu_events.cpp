@@ -1602,7 +1602,7 @@ private:
 		assert(route.steps.front() == ui->first);
 
 		gui_->set_route(&route);
-		move_unit(NULL, route.steps, &recorder, &undo_stack_, false, NULL, continue_move);
+		move_unit(NULL, route.steps, &recorder, &undo_stack_, true, NULL, continue_move);
 		gui_->invalidate_game_status();
 	}
 
