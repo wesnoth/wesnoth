@@ -2409,13 +2409,13 @@ size_t move_unit(move_unit_spectator *move_spectator,
 
 	// move the real unit
 	units.move(ui->first, steps.back());
+	unit::clear_status_caches();
+	
 	ui = units.find(steps.back());
-	ui->second.set_location(steps.back());
 	ui->second.set_movement(moves_left);
 	ui->second.set_standing();
 
 	disp.invalidate_unit_after_move(steps.front(), steps.back());
-	unit::clear_status_caches();
 
 	if(move_recorder != NULL) {
 		move_recorder->add_movement(steps);

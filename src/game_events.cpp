@@ -628,27 +628,35 @@ WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 	if (!resources::game_map->on_board(vacant_dst)) return;
 
 	const int side = u->second.side();
-	const map_location src_loc = u->first;
-
-	resources::units->move(src_loc, vacant_dst);
-	if (resources::game_map->is_village(vacant_dst)) {
-		get_village(vacant_dst, *resources::screen, *resources::teams, side - 1, *resources::units);
-	}
-
 	if (utils::string_bool(cfg["clear_shroud"], true)) {
 		clear_shroud(side);
 	}
+
+	const map_location src_loc = u->first;
+
 	if (utils::string_bool(cfg["animate"])) {
 		std::vector<map_location> teleport_path;
 		teleport_path.push_back(src_loc);
 		teleport_path.push_back(vacant_dst);
 		unit_display::move_unit(teleport_path, u->second, *resources::teams);
 	} else {
-		u->second.set_standing();
 		resources::screen->invalidate(src_loc);
 		resources::screen->invalidate(dst);
-		resources::screen->draw();
 	}
+	
+	resources::units->move(src_loc, vacant_dst);
+	unit::clear_status_caches();
+	
+	u = resources::units->find(vacant_dst);
+	u->second.set_standing();
+
+	if (resources::game_map->is_village(vacant_dst)) {
+		get_village(vacant_dst, *resources::screen, *resources::teams, side - 1, *resources::units);
+	}
+
+	resources::screen->invalidate_unit_after_move(src_loc, dst);
+	
+	resources::screen->draw();
 }
 
 WML_HANDLER_FUNCTION(unpetrify, /*event_info*/, cfg)

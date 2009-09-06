@@ -1032,7 +1032,7 @@ private:
 			const int starting_moves = action.starting_moves;
 			std::vector<map_location> route = action.route;
 			std::reverse(route.begin(),route.end());
-			const unit_map::iterator u = units_.find(route.front());
+			unit_map::iterator u = units_.find(route.front());
 			const unit_map::iterator u_end = units_.find(route.back());
 			if(u == units_.end() || u_end != units_.end()) {
 				//this can actually happen if the scenario designer has abused the [allow_undo] command
@@ -1052,13 +1052,16 @@ private:
 			action.starting_moves = u->second.movement_left();
 
 			unit_display::move_unit(route,u->second,teams_);
-			std::pair<map_location,unit> *up = units_.extract(u->first);
-			up->second.set_goto(map_location());
-			up->second.set_movement(starting_moves);
-			up->first = route.back();
-			units_.insert(up);
+
+			units_.move(u->first, route.back());
 			unit::clear_status_caches();
-			up->second.set_standing();
+
+			u = units_.find(route.back());
+			u->second.set_goto(map_location());
+			u->second.set_movement(starting_moves);
+			u->second.set_standing();
+
+			gui_->invalidate_unit_after_move(route.front(), route.back());
 			gui_->invalidate(route.back());
 			gui_->draw();
 		}
@@ -1179,7 +1182,7 @@ private:
 			// Redo movement action
 			const int starting_moves = action.starting_moves;
 			std::vector<map_location> route = action.route;
-			const unit_map::iterator u = units_.find(route.front());
+			unit_map::iterator u = units_.find(route.front());
 			if(u == units_.end()) {
 				assert(false);
 				return;
@@ -1188,16 +1191,17 @@ private:
 			action.starting_moves = u->second.movement_left();
 
 			unit_display::move_unit(route,u->second,teams_);
-			std::pair<map_location,unit> *up = units_.extract(u->first);
-			up->second.set_goto(map_location());
-			up->second.set_movement(starting_moves);
-			up->first = route.back();
-			units_.insert(up);
+
+			units_.move(u->first, route.back());
+			u = units_.find(route.back());
+
 			unit::clear_status_caches();
-			up->second.set_standing();
+			u->second.set_goto(map_location());
+			u->second.set_movement(starting_moves);
+			u->second.set_standing();
 
 			if(map_.is_village(route.back())) {
-				get_village(route.back(),*gui_,teams_,up->second.side()-1,units_);
+				get_village(route.back(),*gui_,teams_,u->second.side()-1,units_);
 				//MP_COUNTDOWN restore capture bonus
 				if(action.countdown_time_bonus)
 				{
@@ -1205,6 +1209,7 @@ private:
 				}
 			}
 
+			gui_->invalidate_unit_after_move(route.front(), route.back());
 			gui_->invalidate(route.back());
 			gui_->draw();
 
