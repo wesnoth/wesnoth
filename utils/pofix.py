@@ -104,7 +104,6 @@ stringfixes = {
 #
 ("It sees that guard", "It seems that guard"),
 ("Go thorough that rubble", "Go through that rubble"),
-("the wilder march country", "the wilder marsh country"),
 ),
 
 # Changes in the wesnoth domain make consistent the use of the American
