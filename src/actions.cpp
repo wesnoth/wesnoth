@@ -2410,7 +2410,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 	// move the real unit
 	units.move(ui->first, steps.back());
 	unit::clear_status_caches();
-	
+
 	ui = units.find(steps.back());
 	ui->second.set_movement(moves_left);
 	ui->second.set_standing();

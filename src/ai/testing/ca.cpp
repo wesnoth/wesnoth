@@ -789,7 +789,7 @@ bool move_leader_to_goals_phase::execute()
 			remove_goal(id_);
 		}
 	}
-			
+
 	return gamestate_changed;
 }
 
@@ -2013,7 +2013,7 @@ double leader_control_phase::evaluate()
 
 bool leader_control_phase::execute()
 {
-	ERR_AI_TESTING_AI_DEFAULT << get_name() << ": execute - not yet implemented" << std::endl;	
+	ERR_AI_TESTING_AI_DEFAULT << get_name() << ": execute - not yet implemented" << std::endl;
 	return false;
 }
 

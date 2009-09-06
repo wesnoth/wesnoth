@@ -1174,7 +1174,7 @@ public:
 
 	virtual const std::vector<unit>& get_recall_list() const;
 
-	
+
 	virtual stage_ptr get_recruitment(ai_context &context) const;
 
 

@@ -1099,7 +1099,7 @@ private:
 			} else {
 			//redo a dismissal
 			recorder.add_disband(action.affected_unit.id());
-			std::vector<unit>::iterator unit_it = std::find_if(current_team.recall_list().begin(), 
+			std::vector<unit>::iterator unit_it = std::find_if(current_team.recall_list().begin(),
 				current_team.recall_list().end(), boost::bind(&unit::matches_id, _1, action.affected_unit.id()));
 			current_team.recall_list().erase(unit_it);
 			}
@@ -1122,7 +1122,7 @@ private:
 					current_team.spend_gold(game_config::recall_cost);
 
 					//remove the unit from the recall list
-					std::vector<unit>::iterator unit_it = std::find_if(current_team.recall_list().begin(), 
+					std::vector<unit>::iterator unit_it = std::find_if(current_team.recall_list().begin(),
 						current_team.recall_list().end(), boost::bind(&unit::matches_id, _1, action.affected_unit.id()));
 					assert(unit_it != current_team.recall_list().end());
 					current_team.recall_list().erase(unit_it);

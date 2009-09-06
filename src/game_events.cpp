@@ -643,10 +643,10 @@ WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 		resources::screen->invalidate(src_loc);
 		resources::screen->invalidate(dst);
 	}
-	
+
 	resources::units->move(src_loc, vacant_dst);
 	unit::clear_status_caches();
-	
+
 	u = resources::units->find(vacant_dst);
 	u->second.set_standing();
 
@@ -655,7 +655,7 @@ WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 	}
 
 	resources::screen->invalidate_unit_after_move(src_loc, dst);
-	
+
 	resources::screen->draw();
 }
 

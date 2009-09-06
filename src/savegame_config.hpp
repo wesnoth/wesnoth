@@ -19,7 +19,7 @@
 class config;
 
 namespace savegame {
-	
+
 class savegame_config
 {
 public:

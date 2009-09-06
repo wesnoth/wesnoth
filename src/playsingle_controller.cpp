@@ -327,7 +327,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		// Log before prestart events: they do weird things.
 		if (first_human_team_ != -1) { //sp logs
 			log.start(gamestate_, teams_[first_human_team_],
-					loading_game_ ? gamestate_.get_variable("turn_number") : "", 
+					loading_game_ ? gamestate_.get_variable("turn_number") : "",
 					number_of_turns(), resources::game_map->write());
 		} else { //ai vs. ai upload logs
 			log.start(gamestate_, resources::game_map->write());

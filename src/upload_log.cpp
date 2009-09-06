@@ -288,7 +288,7 @@ void upload_log::start(game_state &state, const team &team,
 	(*game_)["campaign"] = state.classification().campaign_define;
 	(*game_)["difficulty"] = state.classification().difficulty;
 	(*game_)["scenario"] = state.classification().scenario;
-	
+
 	//replace newlines in map definition with semicolons so that braindead server-side wml parser doesn't get confused
 	std::string encoded_map(map_data);
 	for(size_t idx = 0; idx < encoded_map.length(); idx++) {
@@ -296,7 +296,7 @@ void upload_log::start(game_state &state, const team &team,
 			encoded_map[idx] = ';';
 	}
 	(*game_)["map_data"] = encoded_map;
-	
+
 	if (!state.classification().version.empty())
 		(*game_)["version"] = state.classification().version;
 	if (!turn.empty())
@@ -320,7 +320,7 @@ void upload_log::start(game_state &state, const std::string map_data)
 	(*game_)["campaign"] = state.classification().campaign_type;
 	(*game_)["difficulty"] = state.classification().difficulty;
 	(*game_)["scenario"] = state.classification().label;
-	
+
 	//replace newlines in map definition with semicolons so that braindead server-side wml parser doesn't get confused
 	std::string encoded_map(map_data);
 	for(size_t idx = 0; idx < encoded_map.length(); idx++) {
@@ -328,7 +328,7 @@ void upload_log::start(game_state &state, const std::string map_data)
 			encoded_map[idx] = ';';
 	}
 	(*game_)["map_data"] = encoded_map;
-	
+
 	if (!state.classification().version.empty())
 		(*game_)["version"] = state.classification().version;
 }

@@ -59,7 +59,7 @@ public:
 	unit_map::iterator selected_unit();
 
 	void add_waypoint(const map_location& loc);
-	
+
 	marked_route get_route(unit_map::const_iterator un, map_location go_to, team &team);
 protected:
 	/**

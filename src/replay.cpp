@@ -977,7 +977,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			const std::string& unit_id = child["value"];
 			map_location loc(child, resources::state_of_game);
 
-			std::vector<unit>::iterator recall_unit = std::find_if(current_team.recall_list().begin(), 
+			std::vector<unit>::iterator recall_unit = std::find_if(current_team.recall_list().begin(),
 				current_team.recall_list().end(), boost::bind(&unit::matches_id, _1, unit_id));
 
 			if (recall_unit != current_team.recall_list().end()) {
@@ -1000,7 +1000,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			}
 
 			const std::string& unit_id = child["value"];
-			std::vector<unit>::iterator disband_unit = std::find_if(current_team.recall_list().begin(), 
+			std::vector<unit>::iterator disband_unit = std::find_if(current_team.recall_list().begin(),
 				current_team.recall_list().end(), boost::bind(&unit::matches_id, _1, unit_id));
 
 			if(disband_unit != current_team.recall_list().end()) {
