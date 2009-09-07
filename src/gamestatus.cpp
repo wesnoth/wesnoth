@@ -672,7 +672,7 @@ void game_state::build_team(const config& side_cfg,
 	//take recall list from [player] tag and update the side number of its units
 	if (player_cfg != NULL) {
 		foreach(const config &u, (*player_cfg).child_range("unit")) {
-			if (u["x"].empty() && u["y"].empty()) {
+			if (u["x"].empty() && u["y"].empty() && !utils::string_bool(u["find_vacant"],false)) {
 				config temp_cfg(u); //copy ctor, as player_cfg is const
 				temp_cfg["side"] = str_cast<int>(side);
 				unit un(temp_cfg, false);
