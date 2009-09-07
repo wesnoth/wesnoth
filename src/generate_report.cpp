@@ -65,9 +65,9 @@ report generate_report(TYPE type,
 	case UNIT_NAME:
 		return report(u->name(), "", u->name());
 	case UNIT_TYPE:
-		return report(u->type_name(), "", u->unit_description());
+		return report(font::unit_type + u->type_name(), "", u->unit_description());
 	case UNIT_RACE:
-		return report(u->race()->name(u->gender()));
+		return report(font::race + "  " + u->race()->name(u->gender()));
 	case UNIT_SIDE: {
 		std::string flag_icon = teams[u->side() - 1].flag_icon();
 		std::string old_rgb = game_config::flag_rgb;

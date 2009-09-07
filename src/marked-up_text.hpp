@@ -29,7 +29,7 @@ namespace font {
 extern const char LARGE_TEXT, SMALL_TEXT, BOLD_TEXT, NORMAL_TEXT, NULL_MARKUP, BLACK_TEXT, GRAY_TEXT,
                   GOOD_TEXT, BAD_TEXT, GREEN_TEXT, RED_TEXT, COLOR_TEXT, YELLOW_TEXT, IMAGE;
 
-extern const std::string weapon, weapon_details;
+extern const std::string weapon, weapon_details, unit_type, race;
 
 /** Parses the markup-tags at the front of a string. */
 std::string::const_iterator parse_markup(std::string::const_iterator i1,
