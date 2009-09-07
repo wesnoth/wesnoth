@@ -2576,7 +2576,7 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 										desciption) != desciptions.end()) {
 
 								lg::wml_error << "Recall list has duplicate unit "
-									"uderlying_ids '" << desciption
+									"underlying_ids '" << desciption
 									<< "' unstore_unit may not work as expected.\n";
 							} else {
 								desciptions.push_back(desciption);
@@ -2603,7 +2603,7 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 					}
 					t.recall_list().push_back(u);
 				} else {
-					ERR_NG << "Cannot unstore unit: no recall list for player " << u.side()
+					ERR_NG << "Cannot unstore unit: recall list is empty for player " << u.side()
 						<< " and the map location is invalid.\n";
 				}
 			}
