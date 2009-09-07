@@ -237,7 +237,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			at.set_specials_context(displayed_unit_hex, map_location(), *u);
 			std::string lang_type = gettext(at.type().c_str());
 			str.str("");
-			str << "<245,230,193>";
+			str << font::weapon;
 			if (u->get_state(unit::STATE_SLOWED)) {
 				str << round_damage(at.damage(), 1, 2) << '-';
 			} else {
@@ -283,7 +283,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			str<<"\n";
 			res.add_text(str,tooltip);
 
-			str << "<166,146,117>  ";
+			str << font::weapon_details << "  ";
 			std::string range = gettext(at.range().c_str());
 			str << range << "--" << lang_type << "\n";
 			str<<"\n";
@@ -328,7 +328,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 
 			if(! specials.empty()) {
 				for(std::vector<t_string>::const_iterator sp_it = specials.begin(); sp_it != specials.end(); ++sp_it) {
-					str << "<166,146,117>  ";
+					str << font::weapon_details << "  ";
 					str << (*sp_it);
 					str<<"\n";
 					++sp_it;

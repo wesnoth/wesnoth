@@ -796,19 +796,19 @@ void unit_preview_pane::draw_contents()
 			//at_it->set_specials_context(map_location(),u);
 
 			// see generate_report() in generate_report.cpp
-			text << "<245,230,193>" << at_it->name()
+			text << font::weapon << at_it->name()
 				<< " (" << gettext(at_it->type().c_str()) << ")\n";
 
 			std::string special = at_it->weapon_specials(true);
 			if (!special.empty()) {
-				text << "<166,146,117>  " << special << "\n";
+				text << font::weapon_details << "  " << special << "\n";
 			}
 			std::string accuracy = at_it->accuracy_parry_description();
 			if(accuracy.empty() == false) {
 				accuracy += " ";
 			}
 
-			text << "<166,146,117>  " << at_it->damage() << "-" << at_it->num_attacks()
+			text << font::weapon_details << "  " << at_it->damage() << "-" << at_it->num_attacks()
 				<< " " << accuracy << "-- " << _(at_it->range().c_str()) << "\n";
 		}
 	}

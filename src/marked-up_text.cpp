@@ -38,6 +38,10 @@ const char LARGE_TEXT='*', SMALL_TEXT='`',
            GREEN_TEXT='@', RED_TEXT='#',
            COLOR_TEXT='<', IMAGE='&';
 
+const std::string weapon = "<245,230,193>",
+		weapon_details = "<166,146,117>";
+
+
 std::string::const_iterator parse_markup(std::string::const_iterator i1,
 												std::string::const_iterator i2,
 												int* font_size,
