@@ -230,17 +230,14 @@ namespace events{
 				 row << DEFAULT_ITEM;
 				 selected = units_list.size();
 			}
-//%%
 			// If unit is leader, show name in special color, e.g. gold/silver
 			/** @todo TODO: hero just has overlay "misc/hero-icon.png" - needs an ability to query */
 
 			if(i->second.can_recruit() ) {
-//				row << "<255,255,200>";
                 row << "<205,173,0>";   // gold3
 			}
 			row << i->second.type_name() << COLUMN_SEPARATOR;
 			if(i->second.can_recruit() ) {
-//				row << "<255,255,200>";
                 row << "<205,173,0>";   // gold3
 			}
 			row << i->second.name()   << COLUMN_SEPARATOR;
@@ -298,7 +295,6 @@ namespace events{
 			//if(utils::string_bool(i->second.get_state("hides")))	// "hides" gives ability, not status
 			if(utils::string_bool(i->second.get_state("invisible")))
 				row << IMAGE_PREFIX << "misc/invisible.png";
-//%%
 			items.push_back(row.str());
 
 			locations_list.push_back(i->first);
@@ -2352,8 +2348,8 @@ private:
 			void do_show_var();
 			void do_inspect();
 			void do_unit();
-//			void do_buff();
-//			void do_unbuff();
+			// void do_buff();
+			// void do_unbuff();
 			void do_discover();
 			void do_undiscover();
 			void do_create();
@@ -2444,15 +2440,16 @@ private:
 					_("Show a scenario variable."), "<var>", "D");
 				register_command("unit", &console_handler::do_unit,
 					_("Modify a unit variable. (Only top level keys are supported.)"), "", "D");
-/*				register_command("buff", &console_handler::do_buff,
-					_("Add a trait to a unit."), "", "D");
-				register_command("unbuff", &console_handler::do_unbuff,
-					_("Remove a trait from a unit. (Does not work yet.)"), "", "D");*/
+				
+				// register_command("buff", &console_handler::do_buff,
+				//    _("Add a trait to a unit."), "", "D");
+				// register_command("unbuff", &console_handler::do_unbuff,
+				//    _("Remove a trait from a unit. (Does not work yet.)"), "", "D");
 				register_command("discover", &console_handler::do_discover,
 					_("Discover all units in help."), "");
 				// Hide to prevent unwanted clearing of user's progress
-/*				register_command("undiscover", &console_handler::do_undiscover,
-					_("'Undiscover' all units in help."), "");*/
+				// register_command("undiscover", &console_handler::do_undiscover,
+				//	  _("'Undiscover' all units in help."), "");*/
 				register_command("create", &console_handler::do_create,
 					_("Create a unit."), "", "D");
 				register_command("fog", &console_handler::do_fog,
