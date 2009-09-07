@@ -39,10 +39,9 @@ namespace reports {
 
 report generate_report(TYPE type,
                        std::map<reports::TYPE, std::string> report_contents,
-	const team &current_team,
-                       int current_side, int playing_side,
+                       const team &current_team, int current_side, int playing_side,
                        const map_location& loc, const map_location& mouseover, const map_location& displayed_unit_hex,
-	const std::set<std::string> &observers,
+                       const std::set<std::string> &observers,
                        const config& level, bool show_everything)
 {
 	unit_map &units = *resources::units;
@@ -51,8 +50,7 @@ report generate_report(TYPE type,
 
 	const unit *u = NULL;
 
-	if((int(type) >= int(UNIT_REPORTS_BEGIN) && int(type) < int(UNIT_REPORTS_END)) || type == POSITION) {
-
+	if((int(type) >= int(UNIT_REPORTS_BEGIN) && int(type) < int(UNIT_REPORTS_END)) || type == POSITION){
 		u = get_visible_unit(units, displayed_unit_hex, map, teams, current_team, show_everything);
 		if (!u && type != POSITION) {
 			return report();
@@ -147,8 +145,8 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		return res;
 	}
 	case UNIT_HP: {
-	    report res;
-	    std::stringstream tooltip;
+		report res;
+		std::stringstream tooltip;
 		str << font::color2markup(u->hp_color());
 		str << u->hitpoints() << "/" << u->max_hitpoints();
 
@@ -190,35 +188,35 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		return res ;
 	}
 	case UNIT_XP: {
-	  report res;
-	  std::stringstream tooltip;
+		report res;
+		std::stringstream tooltip;
 
 		str << font::color2markup(u->xp_color());
 		str << u->experience() << "/" << u->max_experience();
 
-	  tooltip << _("Experience Modifier: ") << ((level["experience_modifier"] != "") ? level["experience_modifier"] : "100") << "%";
-	  res.add_text(str,tooltip);
+		tooltip << _("Experience Modifier: ") << ((level["experience_modifier"] != "") ? level["experience_modifier"] : "100") << "%";
+		res.add_text(str,tooltip);
 
-	  return res;
+		return res;
 	}
 	case UNIT_ADVANCEMENT_OPTIONS: {
-	  report res;
+		report res;
 		const std::map<std::string,std::string> &adv_icons = u->advancement_icons();
-	  for(std::map<std::string,std::string>::const_iterator i=adv_icons.begin();i!=adv_icons.end();i++){
-	    res.add_image(i->first,i->second);
-	  }
-	  return(res);
-
+		for(std::map<std::string,std::string>::const_iterator i=adv_icons.begin();i!=adv_icons.end();i++){
+			res.add_image(i->first,i->second);
+		}
+		return(res);
 	}
 	case UNIT_MOVES: {
-	  float movement_frac = 1.0;
+		float movement_frac = 1.0;
 		if (u->side() == playing_side) {
 			movement_frac = static_cast<float>(u->movement_left()) / std::max(1.0f, static_cast<float>(u->total_movement()));
-		  if (movement_frac > 1.0) movement_frac = 1.0;
-	  }
+			if (movement_frac > 1.0)
+				movement_frac = 1.0;
+		}
 
-	  int grey = 128 + static_cast<int>((255-128) * movement_frac);
-	  str << "<" << grey << "," << grey << "," << grey <<">";
+		int grey = 128 + static_cast<int>((255-128) * movement_frac);
+		str << "<" << grey << "," << grey << "," << grey <<">";
 		str << u->movement_left() << "/" << u->total_movement();
 		break;
 	}
@@ -359,7 +357,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		std::stringstream tooltip;
 
 		tooltip << tod.name << "\n"
-		        << _("Lawful units: ")
+				<< _("Lawful units: ")
 				<< (tod.lawful_bonus > 0 ? "+" : "") << tod.lawful_bonus << "%\n"
 				<< _("Neutral units: ") << "0%\n"
 				<< _("Chaotic units: ")
@@ -389,7 +387,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			std::vector<map_location>::const_iterator i = map.villages().begin();
 			for (; i != map.villages().end(); i++) {
 				if (!current_team.shrouded(*i))
-					 unshrouded_villages++;
+					unshrouded_villages++;
 			}
 			str << unshrouded_villages;
 		} else {
