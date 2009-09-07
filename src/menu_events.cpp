@@ -206,7 +206,6 @@ namespace events{
 									_("XP")            + COLUMN_SEPARATOR +
 									_("unit list^Traits") + COLUMN_SEPARATOR +
 									_("Moves")         + COLUMN_SEPARATOR +
-									_("Location^Loc.") + COLUMN_SEPARATOR +
 									_("Status");
 
 		gui::menu::basic_sorter sorter;
@@ -286,11 +285,6 @@ namespace events{
 				row << font::GREEN_TEXT;
 			}
 			row << i->second.movement_left() << "/" << i->second.total_movement() << COLUMN_SEPARATOR;
-
-			const int def =  100 - i->second.defense_modifier(map_.get_terrain(i->first));
-			int val = (game_config::defense_color_scale.size()-1) * def/100;
-			row << rgb2highlight(game_config::defense_color_scale[val]);
-			row << i->first << COLUMN_SEPARATOR;
 
 			// show icons if unit is slowed, poisoned, petrified, invisible:
 			if(i->second.get_state(unit::STATE_PETRIFIED))
