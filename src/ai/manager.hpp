@@ -13,7 +13,7 @@
 */
 
 /**
- * @file ai/ai_manager.hpp
+ * @file ai/manager.hpp
  * Managing the AIs lifecycle - headers
  * @todo 1.7 Refactor history handling and internal commands.
  * @todo 1.7 AI Interface command to clear the history.
