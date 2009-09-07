@@ -13,11 +13,10 @@
 */
 
 /**
- * @file formula_debugger.hpp
+ * @file src/formula_debugger.hpp
  * Formula AI debugger
  *
  */
-
 
 #ifndef FORMULA_DEBUGGER_HPP_INCLUDED
 #define FORMULA_DEBUGGER_HPP_INCLUDED
