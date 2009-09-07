@@ -754,7 +754,7 @@ void unit_preview_pane::draw_contents()
 
 	if(det.name.empty() == false) {
 		std::stringstream desc;
-		desc << font::NORMAL_TEXT << det.name;
+		desc << font::BOLD_TEXT << det.name;
 		const std::string description = desc.str();
 		description_rect = font::text_area(description, font::SIZE_NORMAL);
 		description_rect = font::draw_text(&video(), area,
@@ -767,7 +767,7 @@ void unit_preview_pane::draw_contents()
 	std::stringstream text;
 	text << font::unit_type << det.type_name << "\n"
 		<< font::race << "  " << det.race << "\n"
-		<< font::BOLD_TEXT << _("level") << " " << det.level << "\n"
+		<< _("level") << " " << det.level << "\n"
 		<< det.alignment << "\n"
 		<< det.traits << "\n";
 

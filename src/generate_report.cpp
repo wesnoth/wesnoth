@@ -63,7 +63,7 @@ report generate_report(TYPE type,
 
 	switch(type) {
 	case UNIT_NAME:
-		return report(u->name(), "", u->name());
+		return report(std::string(1,font::BOLD_TEXT) + u->name(), "", u->name());
 	case UNIT_TYPE:
 		return report(font::unit_type + u->type_name(), "", u->unit_description());
 	case UNIT_RACE:
