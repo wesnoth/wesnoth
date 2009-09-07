@@ -36,6 +36,8 @@
 #include "map.hpp"
 #include "pathfind.hpp"
 
+#include <boost/bind.hpp>
+
 #ifndef _MSC_VER
 #include <sys/time.h>
 #endif
@@ -766,8 +768,9 @@ void game_state::build_team(const config& side_cfg,
 
 		config temp_cfg(**su);
 		temp_cfg["side"] = str_cast<int>(side); //set the side before unit creation to avoid invalid side errors
-		unit new_unit(&units, temp_cfg, true);
+		temp_cfg.remove_attribute("find_vacant");
 
+		const std::string& id =(**su)["id"];
 		const std::string& x = (**su)["x"];
 		const std::string& y = (**su)["y"];
 		bool should_find_vacant_hex = utils::string_bool((**su)["find_vacant"],false);
@@ -782,11 +785,17 @@ void game_state::build_team(const config& side_cfg,
 		}
 
 
+		std::vector<unit>::iterator recall_list_element = std::find_if(teams.back().recall_list().begin(), teams.back().recall_list().end(), boost::bind(&unit::matches_id, _1, id));
 		if(x.empty() && y.empty() && !should_find_vacant_hex) {
 			//if there is no player tag, this means this team is either not persistent or the units have been added from a [side] tag earlier
 			if(player_exists) {
-				teams.back().recall_list().push_back(new_unit);
-				LOG_NG << "inserting unit on recall list for side " << new_unit.side() << "\n";
+				if (recall_list_element==teams.back().recall_list().end()) {
+					unit new_unit(&units, temp_cfg, true);
+					teams.back().recall_list().push_back(new_unit);
+					LOG_NG << "inserting unit on recall list for side " << new_unit.side() << "\n";
+				} else {
+					LOG_NG << "wanted to insert unit on recall list, but recall list for side " << (**su)["side"] << "already contains id="<<id<<"\n";
+				}
 			}
 		} else if(!loc.valid() || !map.on_board(loc)) {
 			throw game::load_game_failed(
@@ -799,11 +808,22 @@ void game_state::build_team(const config& side_cfg,
 			if (units.find(loc) != units.end()) {
 				ERR_NG << "[unit] trying to overwrite existing unit at " << loc << "\n";
 			} else {
-				units.add(loc, new_unit);
-				LOG_NG << "inserting unit for side " << new_unit.side() << "\n";
+				if (recall_list_element==teams.back().recall_list().end()) {
+					unit new_unit(&units, temp_cfg, true);
+					units.add(loc, new_unit);
+					LOG_NG << "inserting unit for side " << new_unit.side() << "\n";
+				} else {
+					//get unit from recall list
+					unit u = *recall_list_element;
+					u.set_game_context(&units);
+					teams.back().recall_list().erase(recall_list_element);
+					units.add(loc, u);
+					LOG_NG << "inserting unit from recall list for side " << u.side()<< " with id="<< id << "\n";
+				}
 			}
 		}
 	}
+
 }
 
 void game_state::set_menu_items(const config::const_child_itors &menu_items)
