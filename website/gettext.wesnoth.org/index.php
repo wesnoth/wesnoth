@@ -35,7 +35,10 @@ if(!isset($_GET['package'])){
 }
 
 if(!isset($_GET['version'])){
-	$version = 'branch';
+// set the default starting point when calling gettext.wesnoth.org:
+// 'branch': show stats from the current stable branch
+// 'trunk':  show stats from trunk
+	$version = 'trunk';
 }else{
 	$version = $_GET['version'];
 }
