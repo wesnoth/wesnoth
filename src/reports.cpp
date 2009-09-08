@@ -22,7 +22,7 @@ namespace {
 		"unit_name", "unit_type",
 		"unit_race", "unit_level", "unit_side", "unit_amla",
 		"unit_traits", "unit_status", "unit_alignment", "unit_abilities",
-		"unit_hp", "unit_xp", "unit_advancement_options", "unit_moves",
+		"unit_hp", "unit_xp", "unit_advancement_options", "unit_defense", "unit_moves",
 		"unit_weapons", "unit_image", "unit_profile", "time_of_day",
 		"turn", "gold", "villages", "num_units", "upkeep", "expenses",
 		"income", "terrain", "position", "side_playing", "observers",
