@@ -46,7 +46,7 @@ $langs['sr@latin'] = 'Serbian (Latin letters)';
 $langs['sv'] = 'Swedish';
 $langs['tl'] = 'Filipino';
 $langs['tr'] = 'Turkish';
-//$langs['vi'] = 'Vietnamese';
+$langs['vi'] = 'Vietnamese';
 $langs['zh_CN'] = 'Chinese';
 $langs['zh_TW'] = 'Chinese (Taiwan)';
 ?>
