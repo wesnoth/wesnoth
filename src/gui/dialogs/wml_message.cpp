@@ -196,25 +196,7 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 	} else {
 		options->set_visible(twidget::INVISIBLE);
 	}
-
-	if(!has_input_) {
-		/*
-		 * Hide the buttton and do the layout, if window.does_easy_close() is
-		 * false the scroll_label has a scrollbar so we need to show the
-		 * button. When the button is hidden the text for the label is bigger
-		 * and thus not need a scrollbar. Also when the button is visible
-		 * easy_close will always return false.
-		 */
-		tbutton* button =
-			dynamic_cast<tbutton*>(window.find_widget("ok", false));
-		VALIDATE(button, missing_widget("ok"));
-		button->set_visible(twidget::INVISIBLE);
-		window.layout();
-
-		if(window.disable_easy_close()) {
-			button->set_visible(twidget::VISIBLE);
-		}
-	}
+	window.set_easy_close(!has_input_ && option_list_.empty());
 }
 
 void twml_message_::post_show(twindow& window)

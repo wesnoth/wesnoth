@@ -453,6 +453,15 @@ private:
 	 * be closed. The widgets in the window may override this behaviour by
 	 * registering themselves as blockers. This is tested by the function
 	 * disable_easy_close().
+	 *
+	 * The handling of easy close is done in the window, in order to do so a
+	 * window either needs a click_dismiss or an ok button. Both will be hidden
+	 * when not needed and when needed first the ok is tried and then the
+	 * click_dismiss button. this allows adding a click_dismiss button to the
+	 * window definition and use the ok from the window instance.
+	 *
+	 * @todo After testing the click dismiss feature it should be documented in
+	 * the wiki.
 	 */
 	bool easy_close_;
 

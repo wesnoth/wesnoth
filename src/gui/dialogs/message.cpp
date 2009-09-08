@@ -100,20 +100,6 @@ void tmessage::pre_show(CVideo& /*video*/, twindow& window)
 
 	// Override the user value, to make sure it's set properly.
 	window.set_easy_close(auto_close_);
-	if(auto_close_) {
-		/*
-		 * Hide the buttton and do the layout, if window.does_easy_close() is
-		 * false the scroll_label has a scrollbar so we need to show the
-		 * button. When the button is hidden the text for the label is bigger
-		 * and thus not need a scrollbar. Also when the button is visible
-		 * easy_close will always return false.
-		 */
-		window.layout();
-
-		if(window.disable_easy_close()) {
-			set_button_visible(ok, twidget::VISIBLE);
-		}
-	}
 }
 
 void tmessage::post_show(twindow& /*window*/)

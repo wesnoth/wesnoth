@@ -28,6 +28,7 @@
 #include "log.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/layout_exception.hpp"
+#include "gui/widgets/button.hpp"
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 #include "gui/widgets/debug.hpp"
 #endif
@@ -662,7 +663,7 @@ void twindow::remove_linked_widget(const std::string& id
 
 void twindow::layout()
 {
-	/**** Initialize and get initial size. *****/
+	/***** Initialize. *****/
 
 	boost::intrusive_ptr<const twindow_definition::tresolution> conf =
 		boost::dynamic_pointer_cast<const twindow_definition::tresolution>
@@ -670,9 +671,6 @@ void twindow::layout()
 	assert(conf);
 
 	log_scope2(log_gui_layout, "Window: Recalculate size");
-
-	layout_init(true);
-	generate_dot_file("layout_init", LAYOUT);
 
 	const game_logic::map_formula_callable variables =
 		get_screen_size_variables();
@@ -688,6 +686,27 @@ void twindow::layout()
 				? std::min(maximum_height_, settings::screen_height)
 				: settings::screen_height
 			: h_(variables);
+
+	/***** Handle click dismiss status. *****/
+	tbutton* click_dismiss_button = NULL;
+	if((click_dismiss_button
+			= NEW_find_widget<tbutton>(this, "click_dismiss", false, false))) {
+
+		click_dismiss_button->set_visible(twidget::INVISIBLE);
+	}
+	if(easy_close_) {
+		tbutton* button = NEW_find_widget<tbutton>(this, "ok", false, false);
+		if(button) {
+			button->set_visible(twidget::INVISIBLE);
+			click_dismiss_button = button;
+		}
+		VALIDATE(click_dismiss_button
+				, _("Click dismiss needs a 'click_dismiss' or 'ok' button."));
+	}
+
+	/***** Layout. *****/
+	layout_init(true);
+	generate_dot_file("layout_init", LAYOUT);
 
 	layout_linked_widgets();
 
@@ -711,11 +730,44 @@ void twindow::layout()
 				"which doesn't fit on the screen."), sstr.str());
 	}
 
+	/****** Validate click dismiss status. *****/
+	if(easy_close_ && disable_easy_close()) {
+		assert(click_dismiss_button);
+		click_dismiss_button->set_visible(twidget::VISIBLE);
+
+
+		layout_init(true);
+		generate_dot_file("layout_init", LAYOUT);
+
+		layout_linked_widgets();
+
+		try {
+			twindow_implementation::layout(
+					*this, maximum_width, maximum_height);
+
+		} catch(tlayout_exception_resize_failed&) {
+
+			/** @todo implement the scrollbars on the window. */
+
+			std::stringstream sstr;
+			sstr << __FILE__ << ":" << __LINE__ << " in function '" << __func__
+				<< "' found the following problem: Failed to size window;"
+				<< " wanted size " << get_best_size()
+				<< " available size "
+				<< maximum_width << ',' << maximum_height
+				<< " screen size "
+				<< settings::screen_width << ',' << settings::screen_height
+				<< '.';
+
+			throw twml_exception(_("Failed to show a dialog, "
+						"which doesn't fit on the screen."), sstr.str());
+		}
+	}
+
+	/***** Get the best location for the window *****/
 	tpoint size = get_best_size();
 
 	assert(size.x <= maximum_width && size.y <= maximum_height);
-
-	/***** Get the best location for the window *****/
 
 	tpoint origin(0, 0);
 
