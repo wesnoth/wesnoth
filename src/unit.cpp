@@ -1284,6 +1284,8 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 
 	cfg_ = cfg;
 
+	cfg_.clear_children("unit"); //remove underlying unit definitions from scenario files
+
 	// @todo: FIXME Compatibility hack for unit renames, can be removed for 1.7.5.
 	if (cfg_["type"] == "Drake Gladiator") {
 		cfg_["type"] = "Drake Thrasher";
