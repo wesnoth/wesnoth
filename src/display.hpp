@@ -34,9 +34,6 @@
 #define DISPLAY_H_INCLUDED
 
 class config;
-class team;
-class unit;
-class unit_map;
 class terrain_builder;
 class map_labels;
 
@@ -46,10 +43,10 @@ class map_labels;
 #include "key.hpp"
 #include "map_location.hpp"
 #include "reports.hpp"
-#include "team.hpp"
 #include "time_of_day.hpp"
 #include "theme.hpp"
 #include "video.hpp"
+#include "viewpoint.hpp"
 #include "widgets/button.hpp"
 
 #include "SDL.h"
