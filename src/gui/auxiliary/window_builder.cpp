@@ -147,7 +147,7 @@ twindow* build(CVideo& video, const std::string& type)
 				lg.id, lg.fixed_width, lg.fixed_height);
 	}
 
-	window->set_easy_close(definition->easy_close);
+	window->set_click_dismiss(definition->click_dismiss);
 
 	boost::intrusive_ptr<const twindow_definition::tresolution> conf =
 			boost::dynamic_pointer_cast<
@@ -217,7 +217,7 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
 			implementation::get_h_align(cfg["horizontal_placement"])),
 	maximum_width(lexical_cast_default<unsigned>(cfg["maximum_width"])),
 	maximum_height(lexical_cast_default<unsigned>(cfg["maximum_height"])),
-	easy_close(utils::string_bool(cfg["easy_close"])),
+	click_dismiss(utils::string_bool(cfg["click_dismiss"])),
 	definition(cfg["definition"]),
 	linked_groups(),
 	grid(0)
@@ -256,26 +256,27 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
  *     maximum_height (unsigned = 0) The maximum height of the window (only
  *                                   used for automatic placement).
  *
- *     easy_close (bool = false)     Does the window need easy close behaviour?
- *                                   Easy close behaviour means that any mouse
- *                                   click will close the dialog. Note certain
- *                                   widgets will automatically disable this
- *                                   behaviour since they need to process the
- *                                   clicks as well, for example buttons do need
- *                                   a click and a misclick on button shouldn't
- *                                   close the dialog. NOTE with some widgets
- *                                   this behaviour depends on their contents
- *                                   (like scrolling labels) so the behaviour
- *                                   might get changed depending on the data in
- *                                   the dialog. NOTE the default behaviour
- *                                   might be changed since it will be disabled
- *                                   when can't be used due to widgets which use
- *                                   the mouse, including buttons, so it might
- *                                   be wise to set the behaviour explicitly
- *                                   when not wanted and no mouse using widgets
- *                                   are available. This means enter, escape or
- *                                   an external source needs to be used to
- *                                   close the dialog (which is valid).
+ *     click_dismiss (bool = false)  Does the window need click dismiss
+ *                                   behaviour? Click dismiss behaviour means
+ *                                   that any mouse click will close the
+ *                                   dialog. Note certain widgets will
+ *                                   automatically disable this behaviour since
+ *                                   they need to process the clicks as well,
+ *                                   for example buttons do need a click and a
+ *                                   misclick on button shouldn't close the
+ *                                   dialog. NOTE with some widgets this
+ *                                   behaviour depends on their contents (like
+ *                                   scrolling labels) so the behaviour might
+ *                                   get changed depending on the data in the
+ *                                   dialog. NOTE the default behaviour might
+ *                                   be changed since it will be disabled when
+ *                                   can't be used due to widgets which use the
+ *                                   mouse, including buttons, so it might be
+ *                                   wise to set the behaviour explicitly when
+ *                                   not wanted and no mouse using widgets are
+ *                                   available. This means enter, escape or an
+ *                                   external source needs to be used to close
+ *                                   the dialog (which is valid).
  *
  *     definition (string = "default")
  *                                   Definition of the window which we want to

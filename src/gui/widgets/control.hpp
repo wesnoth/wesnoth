@@ -103,7 +103,7 @@ public:
 	 * The default behavious is that a widget blocks easy close, if not it
 	 * hould override this function.
 	 */
-	bool disable_easy_close() const;
+	bool disable_click_dismiss() const;
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 

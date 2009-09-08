@@ -441,11 +441,11 @@ const twidget* tscrollbar_container::find_widget(
 			::find_widget<const twidget>(*this, id, must_be_active);
 }
 
-bool tscrollbar_container::disable_easy_close() const
+bool tscrollbar_container::disable_click_dismiss() const
 {
 	assert(content_grid_);
-	return tcontainer_::disable_easy_close()
-			|| content_grid_->disable_easy_close();
+	return tcontainer_::disable_click_dismiss()
+			|| content_grid_->disable_click_dismiss();
 }
 
 void tscrollbar_container::vertical_scrollbar_click(twidget* caller)

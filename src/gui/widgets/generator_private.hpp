@@ -782,10 +782,10 @@ public:
 	}
 
 	/** Inherited from widget. */
-	bool disable_easy_close() const
+	bool disable_click_dismiss() const
 	{
 		foreach(titem* item, items_) {
-			if(item->grid.disable_easy_close()) {
+			if(item->grid.disable_click_dismiss()) {
 				return true;
 			}
 		}

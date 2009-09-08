@@ -259,7 +259,7 @@ public:
 	bool has_widget(const twidget* widget) const;
 
 	/** Inherited from tcontrol. */
-	bool disable_easy_close() const;
+	bool disable_click_dismiss() const;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 

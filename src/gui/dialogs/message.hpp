@@ -106,7 +106,7 @@ private:
 	std::string message_;
 
 	/**
-	 * Does the window need to use easy_close when the dialog doesn't need a
+	 * Does the window need to use click_dismiss when the dialog doesn't need a
 	 * scrollbar.
 	 */
 	bool auto_close_;

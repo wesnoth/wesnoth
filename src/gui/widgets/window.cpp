@@ -234,7 +234,7 @@ twindow::twindow(CVideo& video,
 	, y_(y)
 	, w_(w)
 	, h_(h)
-	, easy_close_(false)
+	, click_dismiss_(false)
 	, enter_disabled_(false)
 	, escape_disabled_(false)
 	, linked_size_()
@@ -612,7 +612,7 @@ void twindow::key_press(tevent_handler& /*event_handler*/, bool& handled,
 		set_retval(CANCEL);
 		handled = true;
 	} else if(key == SDLK_SPACE) {
-		handled = easy_close();
+		handled = click_dismiss();
 	}
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	if(key == SDLK_F12) {
@@ -694,7 +694,7 @@ void twindow::layout()
 
 		click_dismiss_button->set_visible(twidget::INVISIBLE);
 	}
-	if(easy_close_) {
+	if(click_dismiss_) {
 		tbutton* button = NEW_find_widget<tbutton>(this, "ok", false, false);
 		if(button) {
 			button->set_visible(twidget::INVISIBLE);
@@ -731,7 +731,7 @@ void twindow::layout()
 	}
 
 	/****** Validate click dismiss status. *****/
-	if(easy_close_ && disable_easy_close()) {
+	if(click_dismiss_ && disable_click_dismiss()) {
 		assert(click_dismiss_button);
 		click_dismiss_button->set_visible(twidget::VISIBLE);
 
@@ -956,9 +956,9 @@ void twindow::do_show_help_popup(const tpoint& location, const t_string& help_po
 	help_popup_.set_visible(twidget::VISIBLE);
 }
 
-bool twindow::easy_close()
+bool twindow::click_dismiss()
 {
-	if(does_easy_close()) {
+	if(does_click_dismiss()) {
 		set_retval(OK);
 		return true;
 	}

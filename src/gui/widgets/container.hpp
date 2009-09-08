@@ -144,7 +144,7 @@ public:
 	void set_active(const bool active);
 
 	/** Inherited from tcontrol. */
-	bool disable_easy_close() const;
+	bool disable_click_dismiss() const;
 
 	/**
 	 * Initializes and builds the grid.

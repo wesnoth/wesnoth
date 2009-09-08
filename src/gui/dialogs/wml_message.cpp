@@ -88,7 +88,7 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 		input->set_value(*input_text_);
 		input->set_maximum_length(input_maximum_lenght_);
 		window.keyboard_capture(input);
-		window.set_easy_close(false);
+		window.set_click_dismiss(false);
 		window.set_escape_disabled(true);
 	} else {
 		caption->set_visible(twidget::INVISIBLE);
@@ -187,16 +187,16 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 
 		if(!has_input_) {
 			window.keyboard_capture(options);
-			window.set_easy_close(false);
+			window.set_click_dismiss(false);
 			window.set_escape_disabled(true);
 		} else {
 			window.add_to_keyboard_chain(options);
-			// easy_close has been disabled due to the input.
+			// click_dismiss has been disabled due to the input.
 		}
 	} else {
 		options->set_visible(twidget::INVISIBLE);
 	}
-	window.set_easy_close(!has_input_ && option_list_.empty());
+	window.set_click_dismiss(!has_input_ && option_list_.empty());
 }
 
 void twml_message_::post_show(twindow& window)

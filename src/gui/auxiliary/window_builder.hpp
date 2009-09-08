@@ -111,7 +111,7 @@ public:
 		unsigned maximum_width;
 		unsigned maximum_height;
 
-		bool easy_close;
+		bool click_dismiss;
 
 		std::string definition;
 

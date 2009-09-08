@@ -99,7 +99,7 @@ void tmessage::pre_show(CVideo& /*video*/, twindow& window)
 	window.keyboard_capture(label);
 
 	// Override the user value, to make sure it's set properly.
-	window.set_easy_close(auto_close_);
+	window.set_click_dismiss(auto_close_);
 }
 
 void tmessage::post_show(twindow& /*window*/)

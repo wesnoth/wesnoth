@@ -70,7 +70,7 @@ void tcontrol::set_members(const string_map& data)
 	}
 }
 
-bool tcontrol::disable_easy_close() const
+bool tcontrol::disable_click_dismiss() const
 {
 	return get_visible() == twidget::VISIBLE && get_active();
 }

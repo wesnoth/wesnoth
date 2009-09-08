@@ -53,7 +53,7 @@ public:
 	unsigned get_state() const { return 0; }
 
 	/** Inherited from tcontrol. */
-	bool disable_easy_close() const { return false; }
+	bool disable_click_dismiss() const { return false; }
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 

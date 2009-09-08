@@ -568,7 +568,7 @@ bool tgrid::has_widget(const twidget* widget) const
 	return false;
 }
 
-bool tgrid::disable_easy_close() const
+bool tgrid::disable_click_dismiss() const
 {
 	if(get_visible() != twidget::VISIBLE) {
 		return false;
@@ -578,7 +578,7 @@ bool tgrid::disable_easy_close() const
 		const twidget* widget = child.widget();
 		assert(widget);
 
-		if(widget->disable_easy_close()) {
+		if(widget->disable_click_dismiss()) {
 			return true;
 		}
 	}

@@ -142,9 +142,9 @@ void tcontainer_::set_active(const bool active)
 	set_self_active(active);
 }
 
-bool tcontainer_::disable_easy_close() const
+bool tcontainer_::disable_click_dismiss() const
 {
-	return tcontrol::disable_easy_close() && grid_.disable_easy_close();
+	return tcontrol::disable_click_dismiss() && grid_.disable_click_dismiss();
 }
 
 void tcontainer_::init_grid(

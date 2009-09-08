@@ -210,7 +210,7 @@ void tevent_handler::handle_event(const SDL_Event& event)
 			switch(event.button.button) {
 
 				/*
-				 * All button clicks should trigger easy_close() This is doen
+				 * All button clicks should trigger click_dismiss() This is done
 				 * in the mouse_button_up function since that also evaluates
 				 * the state of the mouse before handling the event.
 				 *
@@ -588,7 +588,7 @@ void tevent_handler::mouse_button_up(
 
 	button.focus = 0;
 	set_hover();
-	easy_close();
+	click_dismiss();
 }
 
 void tevent_handler::mouse_click(twidget* widget, tmouse_button& button)

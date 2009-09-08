@@ -236,21 +236,21 @@ public:
 	/**
 	 * Register a widget that prevents easy closing.
 	 *
-	 * Duplicate registration are ignored. See easy_close_ for more info.
+	 * Duplicate registration are ignored. See click_dismiss_ for more info.
 	 *
 	 * @param id                  The id of the widget to register.
 	 */
-	void add_easy_close_blocker(const std::string& id);
+	void add_click_dismiss_blocker(const std::string& id);
 
 	/**
 	 * Unregister a widget the prevents easy closing.
 	 *
 	 * Removing a non registered id is allowed but will do nothing. See
-	 * easy_close_ for more info.
+	 * click_dismiss_ for more info.
 	 *
 	 * @param id                  The id of the widget to register.
 	 */
-	void remove_easy_close_blocker(const std::string& id);
+	void remove_click_dismiss_blocker(const std::string& id);
 
 	/**
 	 * Does the window close easily?
@@ -260,9 +260,9 @@ public:
 	 *
 	 * @returns                   Whether or not the window closes easily.
 	 */
-	bool does_easy_close() const
+	bool does_click_dismiss() const
 	{
-		return easy_close_ && !disable_easy_close();
+		return click_dismiss_ && !disable_click_dismiss();
 	}
 
 	/**
@@ -347,7 +347,10 @@ public:
 
 	void set_owner(tdialog* owner) { owner_ = owner; }
 
-	void set_easy_close(const bool easy_close) { easy_close_ = easy_close; }
+	void set_click_dismiss(const bool click_dismiss)
+	{
+		click_dismiss_ = click_dismiss;
+	}
 
 	static void set_sunset(const unsigned interval)
 		{ sunset_ = interval ? interval : 5; }
@@ -452,7 +455,7 @@ private:
 	 * Easy closing means that whenever a mouse click is done the dialog will
 	 * be closed. The widgets in the window may override this behaviour by
 	 * registering themselves as blockers. This is tested by the function
-	 * disable_easy_close().
+	 * disable_click_dismiss().
 	 *
 	 * The handling of easy close is done in the window, in order to do so a
 	 * window either needs a click_dismiss or an ok button. Both will be hidden
@@ -463,7 +466,7 @@ private:
 	 * @todo After testing the click dismiss feature it should be documented in
 	 * the wiki.
 	 */
-	bool easy_close_;
+	bool click_dismiss_;
 
 	/** Disable the enter key see our setter for more info. */
 	bool enter_disabled_;
@@ -540,7 +543,7 @@ private:
 		{ help_popup_.set_visible(twidget::HIDDEN); }
 
 	/** Inherited from tevent_handler. */
-	bool easy_close();
+	bool click_dismiss();
 
 	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const;

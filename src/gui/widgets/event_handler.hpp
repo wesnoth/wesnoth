@@ -409,12 +409,12 @@ private:
 	virtual void do_remove_help_popup() = 0;
 
 	/**
-	 * Handler for the easy close functionallity.
+	 * Handler for the click dismiss functionallity.
 	 *
-	 * @returns                   True if the easyclose action is performed,
+	 * @returns                   True if the click dismiss action is performed,
 	 *                            false otherwise.
 	 */
-	virtual bool easy_close() = 0;
+	virtual bool click_dismiss() = 0;
 };
 
 } // namespace gui2
