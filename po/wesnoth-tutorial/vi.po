@@ -1,0 +1,1862 @@
+# Phạm Thành Nam <phamthanhnam.ptn@gmail.com>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: Battle for Wesnoth\n"
+"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"POT-Creation-Date: 2009-09-06 15:06+0200\n"
+"PO-Revision-Date: 2009-08-30 21:26+0700\n"
+"Last-Translator: Phạm Thành Nam <phamthanhnam.ptn@gmail.com>\n"
+"Language-Team: Vietnamese <>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:40
+msgid ""
+"\n"
+"<big>Click a mouse button or press spacebar to continue...</big>"
+msgstr ""
+"\n"
+"<big>Nhấn một nút chuột hoặc ấn thanh dấu cách để tiếp tục...</big>"
+
+#. [tutorial]: id=tutorial
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:49
+msgid "Wesnoth Tutorial"
+msgstr "Hướng dẫn Wesnoth"
+
+#. [side]: type=Fighter, id=student
+#. [command]
+#. [option]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:82
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:83
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:158
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:160
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:295
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:296
+msgid "Konrad"
+msgstr "Konrad"
+
+#. [unit]: id=Delfador, type=Elder Mage
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:120
+msgid "Delfador"
+msgstr "Delfador"
+
+#. [objectives]
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:135
+msgid ""
+"You will learn the basics of:\n"
+"Movement\n"
+"Attacking\n"
+"Healing\n"
+"Recruiting"
+msgstr ""
+"Bạn sẽ học những điều cơ bản về:\n"
+"Di chuyển\n"
+"Tấn công\n"
+"Điều trị\n"
+"Tuyển quân"
+
+#. [objective]: condition=win
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:137
+msgid "Destroy a fierce enemy"
+msgstr "Tiêu diệt một kẻ thù dữ tợn"
+
+#. [objective]: condition=lose
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:141
+msgid "Get yourself killed"
+msgstr "Để mình bị giết"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:156
+msgid "Who would you like to play?"
+msgstr "Bạn muốn điều khiển ai?"
+
+#. [unit]: type=Fighteress, id=student
+#. [command]
+#. [option]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:165
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:167
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:179
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:365
+msgid "Li'sar"
+msgstr "Li'sar"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:194
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:201
+msgid "<big>Welcome to Wesnoth!</big>"
+msgstr "<big>Chào mừng bạn đến với Wesnoth!</big>"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:196
+msgid ""
+"\n"
+"For this tutorial, you are playing Konrad. "
+msgstr ""
+"\n"
+"Trong hướng dẫn này, bạn điều khiển Konrad. "
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:197
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:204
+msgid ""
+"You are standing in the keep, and your mentor Delfador is on the east side "
+"of the river."
+msgstr ""
+"Bạn đang đứng trên pháo đài, và quân sư Delfador của bạn đang ở bờ phía đông "
+"của dòng sông."
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:203
+msgid ""
+"\n"
+"For this tutorial, you are playing Li'sar. "
+msgstr ""
+"\n"
+"Trong hướng dẫn này, bạn điều khiển Li'sar. "
+
+#. [event]
+#. [event]: id=student moves 0}
+#. [then]
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:208
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:381
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:501
+msgid "Left click on Konrad"
+msgstr "Nhấn chuột trái vào Konrad"
+
+#. [event]
+#. [event]: id=student moves 0}
+#. [then]
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:209
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:382
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:502
+msgid "Left click on Li'sar"
+msgstr "Nhấn chuột trái vào Li'sar"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:228
+msgid ""
+"<big>You have selected Konrad.</big>\n"
+"The places he can move to are highlighted."
+msgstr ""
+"<big>Bạn đã chọn Konrad.</big>\n"
+"Những nơi anh ta có thể di chuyển đến được tô sáng."
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:235
+msgid ""
+"<big>You have selected Li'sar.</big>\n"
+"The places she can move to are highlighted."
+msgstr ""
+"<big>Bạn đã chọn Li'sar.</big>\n"
+"Những nơi cô ấy có thể di chuyển đến được tô sáng."
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:240
+msgid "HERE"
+msgstr "ĐÂY"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:246
+msgid "Move Konrad next to Delfador by clicking on the tile marked 'HERE'."
+msgstr ""
+"Di chuyển Konrad đến bên cạnh Delfador bằng cách nhấn vào ô có chữ 'ĐÂY'."
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:250
+msgid "Move Li'sar next to Delfador by clicking on the tile marked 'HERE'."
+msgstr ""
+"Di chuyển Li'sar đến bên cạnh Delfador bằng cách nhấn vào ô có chữ 'ĐÂY'."
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:255
+msgid "Left click on tile labeled HERE"
+msgstr "Nhấn chuột trái vào ô có nhãn ĐÂY"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:282
+msgid ""
+"<big>Oops!</big>\n"
+"You moved to the wrong place! After this message, you can press 'u' to undo, "
+"then try again."
+msgstr ""
+"<big>Ôi không!</big>\n"
+"Bạn đã di chuyển đến sai vị trí ! Sau thông điệp này, bạn có thể ấn 'u' để "
+"đảo ngược di chuyển, sau đó thử lại."
+
+#. [message]: id=student
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:304
+msgid "Good morning, Delfador! Is it time to attack things?"
+msgstr "Chào ngài, Delfador! Đã đến lúc để tấn công chưa?"
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:308
+msgid "Um, well..."
+msgstr "Hừm..."
+
+#. [message]: id=student
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:312
+msgid "Have you found an orc for me to fight, huh? A troll?"
+msgstr ""
+"Ngài đã tìm thấy một tên người thú cho tôi đánh rồi, phải không? Hay là một "
+"con quỷ khổng lồ?"
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:316
+msgid "Quiet! I will summon an enemy for you..."
+msgstr "Yên lặng nào! Ta sẽ triệu gọi cho mi một kẻ thù..."
+
+#. [event]: id=student moves 0}
+#. [unit_type]: id=Quintain, race=mechanical
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:344
+#: data/campaigns/tutorial/units/Quintain.cfg:4
+msgid "Quintain"
+msgstr "Hình nộm"
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:348
+msgid "... this quintain!"
+msgstr "... là hình nộm này!"
+
+#. [message]: id=student
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:352
+msgid "A quintain? You want me to pretend to fight a dummy?"
+msgstr "Một hình nộm? Ngài muốn tôi chiến đấu với một con bù nhìn sao?"
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:356
+msgid "Child, you have 32 hitpoints and a sword. I'm fairly sure you'll win."
+msgstr ""
+"Nhóc, mi có 32 năng lượng và một thanh kiếm. Ta chắc chắn là mi sẽ thắng."
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:361
+msgid ""
+"To attack the quintain, first select the attacker (Konrad) then the target "
+"(the quintain). You will see an attack description. When you click OK, "
+"Konrad will attack."
+msgstr ""
+"Để tấn công hình nộm, trước hết chọn người tấn công (Konrad) sau đó chọn mục "
+"tiêu (hình nộm). Bạn sẽ thấy một mô tả đòn tấn công. Khi bạn nhấn Đồng ý, "
+"Konrad sẽ tấn công."
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:366
+msgid ""
+"To attack the quintain, first select the attacker (Li'sar) then the target "
+"(the quintain). You will see an attack description. When you click OK, "
+"Li'sar will attack."
+msgstr ""
+"Để tấn công hình nộm, trước hết chọn người tấn công (Li'sar) sau đó chọn mục "
+"tiêu (hình nộm). Bạn sẽ thấy một mô tả đòn tấn công. Khi bạn nhấn Đồng ý, "
+"Li'sar sẽ tấn công."
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:377
+msgid "Click on the quintain to attack it"
+msgstr "Nhấn vào hình nộm để tấn công nó"
+
+#. [message]: id=student
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:413
+msgid "Hey! This quintain fights back!"
+msgstr "Ơ! Hình nộm này đánh trả!"
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:417
+msgid "Hmm, maybe we should have started with a doll."
+msgstr "Hừm, có lẽ chúng ta nên bắt đầu với một con búp bê."
+
+#. [message]: id=student
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:421
+msgid "Should I retreat?"
+msgstr "Tôi có nên rút lui không?"
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:425
+msgid "Good idea!"
+msgstr "Ý kiến hay đấy!"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:430
+msgid ""
+"Note: the tiny blue crown above Delfador means you will lose the game if he "
+"is killed. You will also lose the game if your leader (Konrad) is killed."
+msgstr ""
+"Ghi chú: vương miện màu xanh nhỏ phía trên Delfador có nghĩa là bạn sẽ thua "
+"cuộc nếu ông ấy bị giết. Bạn cũng sẽ thua cuộc nếu người lãnh đạo của bạn "
+"(Konrad) bị giết."
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:433
+msgid ""
+"Note: the tiny blue crown above Delfador means you will lose the game if he "
+"is killed. You will also lose the game if your leader (Li'sar) is killed."
+msgstr ""
+"Ghi chú: vương miện màu xanh nhỏ phía trên Delfador có nghĩa là bạn sẽ thua "
+"cuộc nếu ông ấy bị giết. Bạn cũng sẽ thua cuộc nếu người lãnh đạo của bạn "
+"(Li'sar) bị giết."
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:445
+msgid ""
+"Unfortunately, you've used up your turn attacking the quintain. The quintain "
+"will now get a turn."
+msgstr ""
+"Mi đã sử dụng hết lượt của mình khi tấn công hình nộm. Hình nộm bây giờ sẽ "
+"được một lượt."
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:450
+msgid ""
+"female^Unfortunately, you've used up your turn attacking the quintain. The "
+"quintain will now get a turn."
+msgstr ""
+"Mi đã sử dụng hết lượt của mình khi tấn công hình nộm. Hình nộm bây giờ sẽ "
+"được một lượt."
+
+#. [message]: id=student
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:456
+msgid "The DUMMY gets a turn?"
+msgstr "Con BÙ NHÌN được một lượt?"
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:462
+msgid ""
+"Yes. It's a magical quintain.\n"
+"Now, this quintain gets 5 chances to hit you for 3 damage each. If it hits "
+"every time, you'll drop from $student_hp to $future_hp hit points. Brace "
+"yourself!"
+msgstr ""
+"Đúng vậy. Nó là một hình nộm có phép thuật.\n"
+"Bây giờ, hình nộm này có 5 cơ hội để đánh trúng mi với mỗi đòn đánh trúng là "
+"3 lượng thiệt hại. Nếu lần nào nó cũng đánh trúng, mi sẽ giảm năng lượng từ "
+"$student_hp xuống còn $future_hp. Cố lên nhé!"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:465
+msgid "Click on the End Turn button on the bottom right"
+msgstr "Nhấn vào nút Kết thúc lượt ở góc phải phía dưới"
+
+#. [message]: id=student
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:486
+msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
+msgstr "Ối! Tôi cần phải trị thương! Chỉ còn $student_hp năng lượng!"
+
+#. [event]
+#. [then]
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:488
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:448
+msgid "Village"
+msgstr "Làng"
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:493
+msgid ""
+"There is a village on the other side of the river. Visiting villages is a "
+"good idea, and ending your turn in one will heal you. To the village!"
+msgstr ""
+"Có một ngôi làng ở phía bên kia sông. Viếng thăm các ngôi làng là một ý kiến "
+"hay, khi kết thúc lượt trong một ngôi làng, mi sẽ được điều trị. Mau đến "
+"ngôi làng!"
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:498
+msgid ""
+"female^There is a village on the other side of the river. Visiting villages "
+"is a good idea, and ending your turn in one will heal you. To the village!"
+msgstr ""
+"Có một ngôi làng ở phía bên kia sông. Viếng thăm các ngôi làng là một ý kiến "
+"hay, khi kết thúc lượt trong một ngôi làng, mi sẽ được điều trị. Mau đến "
+"ngôi làng!"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:511
+msgid "Click on the village to move Konrad"
+msgstr "Nhấn vào ngôi làng để di chuyển Konrad"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:512
+msgid "Click on the village to move Li'sar"
+msgstr "Nhấn vào ngôi làng để di chuyển Li'sar"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:530
+msgid ""
+"You captured a village! It now flies your flag color and has been added to "
+"your total village count at the top of the screen (house icon). Villages "
+"provide the gold needed to recruit units. Each turn, you gain two gold plus "
+"one for every village you own."
+msgstr ""
+"Bạn đã chiếm được một ngôi làng! Bây giờ nó được cắm lá cờ có màu của bạn và "
+"đã được thêm vào tổng số ngôi làng ở phía trên màn hình (biểu tượng ngôi "
+"nhà). Làng cung cấp vàng cần để tuyển các đơn vị. Mỗi lượt, bạn giành được "
+"hai lượng vàng cộng thêm một với mỗi ngôi làng mà bạn có."
+
+#. [event]
+#. [then]
+#. [else]
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:534
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:664
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:696
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:820
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:872
+msgid "Click on the End Turn button"
+msgstr "Nhấn vào nút Kết thúc lượt"
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:570
+msgid ""
+"You're about to be healed by $hp_difference hitpoints, but I think you're "
+"going to need some help against that quintain."
+msgstr ""
+"Mi sắp hồi phục $hp_difference năng lượng, nhưng ta nghĩ mi cần một số trợ "
+"giúp để chống lại hình nộm này."
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:575
+msgid ""
+"female^You're about to be healed by $hp_difference hitpoints, but I think "
+"you're going to need some help against that quintain."
+msgstr ""
+"Mi sắp hồi phục $hp_difference năng lượng, nhưng ta nghĩ mi cần một số trợ "
+"giúp để chống lại hình nộm này."
+
+#. [message]: id=student
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:581
+msgid "I'll recruit some elves!"
+msgstr "Tôi sẽ tuyển một số thần tiên!"
+
+#. [event]
+#. [then]
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:583
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:976
+msgid "Keep"
+msgstr "Pháo đài"
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:588
+msgid ""
+"A splendid idea. You can recruit two units if you return to the keep. You "
+"have plenty of gold for that."
+msgstr ""
+"Ý tưởng rất tuyệt. Mi có thể tuyển hai đơn vị nếu mi trở về pháo đài. Mi có "
+"nhiều vàng để thực hiện điều đó."
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:593
+msgid ""
+"female^A splendid idea. You can recruit two units if you return to the keep. "
+"You have plenty of gold for that."
+msgstr ""
+"Ý tưởng rất tuyệt. Mi có thể tuyển hai đơn vị nếu mi trở về pháo đài. Mi có "
+"nhiều vàng để thực hiện điều đó."
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:599
+msgid "Move Konrad to the keep"
+msgstr "Di chuyển Konrad đến pháo đài"
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:600
+msgid "Move Li'sar to the keep"
+msgstr "Di chuyển Li'sar đến pháo đài"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:618
+msgid ""
+"Whenever you're on a keep, you can recruit into castle tiles around it by "
+"right-clicking and selecting 'Recruit'. This time you will only be given one "
+"type of unit to choose: the Elvish Fighter."
+msgstr ""
+"Khi bạn ở trên một pháo đài, bạn có thể tuyển quân trong các ô lâu đài xung "
+"quanh nó bằng cách nhấn chuột phải và chọn 'Tuyển quân'. Lần này bạn sẽ chỉ "
+"được cho một kiểu đơn vị để chọn lựa: đấu sĩ thần tiên."
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:622
+msgid "Right click on one castle tile and select Recruit"
+msgstr "Nhấn chuột phải lên một ô lâu đài và chọn Tuyển quân"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:658
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:690
+msgid ""
+"These newly recruited units can do nothing this turn; you will control them "
+"next turn.\n"
+"Note: after this dialog, you can move the mouse over a unit to see a "
+"description on the right of the screen."
+msgstr ""
+"Các đơn vị mới được tuyển dụng chưa thể làm gì ở lượt này; bạn sẽ điều khiển "
+"chúng ở lượt kế tiếp.\n"
+"Ghi chú: sau hộp thoại này, bạn có thể di chuyển chuột trên một đơn vị để "
+"xem mô tả ở bên phải màn hình."
+
+#. [else]
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:669
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:701
+msgid "Right click on the other castle tile and Recruit another unit"
+msgstr "Nhấn chuột phải lên ô pháo đài còn lại và tuyển một đơn vị khác"
+
+#. [message]: id=student
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:718
+msgid ""
+"Hey, the quintain just healed 2 hitpoints! I'd better attack it at once!"
+msgstr ""
+"Ơ, hình nộm vừa hồi phục 2 năng lượng! Tôi cần tấn công nó thêm lần nữa!"
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:722
+msgid "Yes, if a unit doesn't do anything for a turn, it will slowly heal."
+msgstr ""
+"Đúng vậy, nếu một đơn vị không làm gì trong một lượt, nó sẽ hồi phục từ từ."
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:734
+msgid ""
+"But before you send your fighters against the quintain, you should know they "
+"have two kinds of attack..."
+msgstr ""
+"Nhưng trước khi mi phái các đấu sĩ để chống lại hình nộm, mi nên biết họ có "
+"hai kiểu tấn công..."
+
+#. [message]: id=student
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:738
+msgid "I'll tell them to use the one that does the most damage!"
+msgstr "Tôi sẽ bảo họ sử dụng kiểu tấn công gây nhiều thiệt hại nhất!"
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:742
+msgid ""
+"And which would that be? The sword (5-4) or the bow (3-3)? I suppose you'll "
+"find out..."
+msgstr ""
+"Thế thì sẽ là gì nào? Kiếm (5-4) hay cung (3-3)? Ta nghĩ rằng mi sẽ tìm ra..."
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:744
+msgid "Left click on an Elvish Fighter"
+msgstr "Nhấn chuột trái lên một đấu sĩ thần tiên"
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:745
+msgid "End your turn and attack again."
+msgstr "Kết thúc lượt và tấn công lần nữa."
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:764
+msgid ""
+"You wouldn't do anything stupid like charging that quintain yourself again, "
+"now would you?\n"
+"Use the fighters you recruited first; they'll be a lot of help."
+msgstr ""
+"Mi sẽ không làm điều gì ngốc nghếch như lại tự mình tấn công hình nộm đó "
+"chứ, phải không?\n"
+"Sử dụng các đấu sĩ mà mi đã tuyển lúc đầu; họ sẽ giúp ích nhiều đấy."
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:775
+msgid "Left click on the Quintain to attack it."
+msgstr "Nhấn chuột trái lên hình nộm để tấn công nó."
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:809
+msgid ""
+"Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
+"attack. Quintain defended with its melee attack (3-5). The ranged attack was "
+"safer."
+msgstr ""
+"Thần tiên của mi đã sử dụng kiếm (5-4; hay 5 lượng thiệt hại, 4 lần tấn "
+"công), đó là một đòn tấn công cận chiến. Hình nộm đã phòng thủ bằng đòn tấn "
+"công cận chiến của nó (3-5). Tấn công từ xa an toàn hơn."
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:817
+msgid ""
+"Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
+"attack. The quintain defended with its melee attack (3-5). The ranged attack "
+"was safer.\n"
+"End your turn, then attack again."
+msgstr ""
+"Thần tiên của mi đã sử dụng kiếm (5-4; hay 5 lượng thiệt hại, 4 lần tấn "
+"công), đó là một đòn tấn công cận chiến. Hình nộm đã phòng thủ bằng đòn tấn "
+"công cận chiến của nó (3-5). Tấn công từ xa an toàn hơn.\n"
+"Kết thúc lượt, sau đó tấn công lần nữa."
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:829
+msgid ""
+"Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
+"attack. The quintain defended with its melee attack (3-5).\n"
+"You should tell the other Elf to use the bow."
+msgstr ""
+"Thần tiên của mi đã sử dụng kiếm (5-4; hay 5 lượng thiệt hại, 4 lần tấn "
+"công), đó là một đòn tấn công cận chiến. Hình nộm đã phòng thủ bằng đòn tấn "
+"công cận chiến của nó (3-5).\n"
+"Mi nên bảo thần tiên còn lại sử dụng cung."
+
+#. [else]
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:832
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:881
+msgid "Attack with the other Elf"
+msgstr "Tấn công bằng thần tiên còn lại"
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:861
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:879
+msgid ""
+"Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
+"The quintain has no ranged attack, only a melee attack, so it could not "
+"defend itself."
+msgstr ""
+"Thần tiên của mi đã sử dụng cung, đó là một đòn tấn công từ xa (3-3; hay 3 "
+"lượng thiệt hại, 3 lần tấn công). Hình nộm không có đòn tấn công từ xa, chỉ "
+"có một đòn tấn công cận chiến, vì thế nó không thể tự bảo vệ."
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:869
+msgid ""
+"Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
+"The quintain has no ranged attack, only a melee attack, so it could not "
+"defend itself.\n"
+"End your turn, then attack again."
+msgstr ""
+"Thần tiên của mi đã sử dụng cung, đó là một đòn tấn công từ xa (3-3; hay 3 "
+"lượng thiệt hại, 3 lần tấn công). Hình nộm không có đòn tấn công từ xa, chỉ "
+"có một đòn tấn công cận chiến, vì thế nó không thể tự bảo vệ.\n"
+"Kết thúc lượt, sau đó tấn công lần nữa."
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:900
+msgid "Keep attacking with both elves until the quintain is finished!"
+msgstr "Tiếp tục tấn công bằng cả hai thần tiên đến khi hình nộm bị tiêu diệt!"
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:914
+msgid "Maybe you should recruit another elf?"
+msgstr "Có lẽ mi nên tuyển một thần tiên khác?"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:920
+msgid ""
+"Note:\n"
+"You can right click on a unit to see a detailed Unit Description."
+msgstr ""
+"Ghi chú:\n"
+"Bạn có thể nhấn chuột phải lên một đơn vị để xem một mô tả đơn vị chi tiết."
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:943
+msgid ""
+"Note:\n"
+"Remember to pull back wounded units into villages and recruit more if "
+"needed. Take special care of units with the highest experience points (XP) "
+"so they can level up!"
+msgstr ""
+"Ghi chú:\n"
+"Nhớ kéo lùi các đơn vị bị thương vào các ngôi làng và tuyển thêm nếu cần "
+"thiết. Đặc biệt chú ý đến các đơn vị có điểm kinh nghiệm (KN) lớn nhất để "
+"chúng có thể nâng cấp!"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:962
+msgid ""
+"Note:\n"
+"Each village you own can support a single unit for free. After that, each "
+"unit costs you one gold per turn."
+msgstr ""
+"Ghi chú:\n"
+"Mỗi ngôi làng bạn sở hữu có thể nuôi một đơn vị miễn phí. Sau đó, bạn phải "
+"trả phí cho mỗi đơn vị một lượng vàng mỗi lượt."
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:979
+msgid ""
+"Note:\n"
+"When a unit gets enough experience (the experience bar is the smaller bar on "
+"the right), it will go up a level. Elvish Fighters have two options, and you "
+"will have a chance to choose which one you want. Note that level 2 units "
+"cost you twice as much to support as level 1 units."
+msgstr ""
+"Ghi chú:\n"
+"Khi một đơn vị có đủ kinh nghiệm (thanh kinh nghiệm là thanh nhỏ hơn ở bên "
+"phải), nó sẽ nâng cấp lên một trình độ. Các đấu sĩ thần tiên có hai tùy "
+"chọn, và bạn có cơ hội chọn tùy chọn bạn muốn. Chú ý rằng các đơn vị trình "
+"độ 2 đòi bạn trả phí nuôi quân nhiều gấp đôi các đơn vị trình độ 1."
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:996
+msgid ""
+"Note:\n"
+"Once you select a unit, you'll see percentages for different terrain tiles. "
+"The higher the percentage, the more defense that unit will have. For "
+"example, defense is good in castles and villages but bad in rivers. The "
+"dummy's attacks are magical, however, so they have a 70% chance of hitting "
+"you wherever you stand."
+msgstr ""
+"Ghi chú:\n"
+"Khi bạn chọn một đơn vị, bạn sẽ nhìn thấy các tỷ lệ phần trăm với các ô địa "
+"hình khác nhau. Tỷ lệ phần trăm càng cao, đơn vị đó càng có nhiều khả năng "
+"phòng thủ. Ví dụ, khả năng phòng thủ là tốt trong lâu đài và làng nhưng kém "
+"ở sông. Tuy nhiên, các đòn tấn công của con bù nhìn là phép thuật, do đó "
+"chúng có cơ hội 70% đánh trúng bạn bất kể bạn đứng ở đâu."
+
+#. [message]: speaker=second_unit
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1021
+msgid "The quintain is dead, and I have gained more experience!"
+msgstr "Hình nộm đã chết, và tôi vừa giành được thêm kinh nghiệm!"
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1026
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1030
+msgid ""
+"Yes, you gain experience through battle, especially by killing an opponent. "
+"Gain enough experience and you'll become more powerful."
+msgstr ""
+"Đúng vậy, mi giành được kinh nghiệm qua chiến trận, đặc biệt bằng cách giết "
+"một đối thủ. Giành đủ kinh nghiệm và mi sẽ trở nên mạnh hơn."
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1027
+msgid ""
+" Now, Konrad, I will leave you with more dummies to practice on! After that, "
+"we have real work to do..."
+msgstr ""
+" Bây giờ, Konrad, ta sẽ để mi luyện tập với nhiều hình nộm hơn! Sau đó, "
+"chúng ta sẽ có công việc thực sự để làm..."
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1031
+msgid ""
+" Now, Li'sar, I will leave you with more dummies to practice on! After that, "
+"we have real work to do..."
+msgstr ""
+" Bây giờ, Li'sar, ta sẽ để mi luyện tập với nhiều hình nộm hơn! Sau đó, "
+"chúng ta sẽ có công việc thực sự để làm..."
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1070
+msgid ""
+"Note:\n"
+"These dummies only attack if you are a single tile away. With care, you "
+"should be able to kill them one at a time."
+msgstr ""
+"Ghi chú:\n"
+"Các hình nộm này chỉ tấn công nếu bạn đứng cạnh chúng. Nếu cẩn thận, bạn có "
+"thể giết được chúng lần lượt từng con một."
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1079
+msgid "Do you want to keep practicing?"
+msgstr "Bạn có muốn tiếp tục tập luyện không?"
+
+#. [option]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1081
+msgid "Yes, I'm still figuring it out."
+msgstr "Có, tôi vẫn đang tìm hiểu."
+
+#. [option]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1084
+msgid "No, I think I've got it."
+msgstr "Không, tôi nghĩ thế là đủ rồi."
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1125
+msgid ""
+"After your victory notice, the map will be grayed out to indicate that the "
+"scenario is over, but you will be able to examine the final positions and "
+"state of your troops before clicking 'End Scenario' to continue to the next "
+"scenario."
+msgstr ""
+"Sau thông báo chiến thắng, bản đồ sẽ xám lại để biểu thị rằng kịch bản đã "
+"kết thúc, nhưng bạn vẫn có thể kiểm tra lại các vị trí cuối cùng và trạng "
+"thái quân lính của bạn trước khi nhấn 'Kết thúc kịch bản' để tiếp tục sang "
+"kịch bản kế tiếp."
+
+#: data/campaigns/tutorial/scenarios/2_Speaking.cfg:27
+msgid ""
+"<big>Remember:</big>\n"
+"You can press 'u' to undo most things; useful for correcting mistakes."
+msgstr ""
+"<big>Nhớ:</big>\n"
+"Bạn có thể ấn 'u' để đảo lại hầu hết các thứ; rất hữu ích để sửa chữa sai "
+"lầm."
+
+#. [unit]: id=Galdrad, type=Elvish Captain
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/2_Speaking.cfg:39
+#: data/campaigns/tutorial/scenarios/2_Speaking.cfg:49
+#: data/campaigns/tutorial/scenarios/2_Speaking.cfg:62
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:388
+msgid "Galdrad"
+msgstr "Galdrad"
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/2_Speaking.cfg:74
+msgid ""
+", your new recruit, has two traits: strong and intelligent. Strong means a "
+"unit does more damage, and intelligent means it requires less experience to "
+"advance a level."
+msgstr ""
+", lính mới tuyển của em, có hai đặc điểm: mạnh mẽ và thông minh. Mạnh mẽ có "
+"nghĩa là một đơn vị gây lượng thiệt hại nhiều hơn, và thông minh có nghĩa là "
+"nó cần ít kinh nghiệm hơn để nâng cấp trình độ."
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/2_Speaking.cfg:87
+msgid ""
+" has two traits: quick and resilient. Quick means a unit can move one tile "
+"further each turn, and resilient means it has more hitpoints."
+msgstr ""
+" có hai đặc điểm: nhanh nhẹn và bền bỉ. Nhanh nhẹn có nghĩa là một đơn vị có "
+"thể di chuyển thêm một ô mỗi lượt, và bền bỉ có nghĩa là nó có nhiều năng "
+"lượng hơn."
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:25
+msgid "Patch of forest"
+msgstr "Mảnh rừng"
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:26
+msgid ""
+"Now put an unwounded unit, preferably a fighter, in that patch of forest on "
+"the south-east of the island; a nice, defensible spot."
+msgstr ""
+"Bây giờ đặt một đơn vị không bị thương, một đấu sĩ thì tốt, vào mảnh rừng "
+"phía đông nam hòn đảo; đó là một điểm phòng thủ tốt."
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:27
+msgid "Can one unit survive against all those enemies?"
+msgstr "Một đơn vị có thể sống sót để chống lại toàn bộ kẻ thù đó không?"
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:28
+#, fuzzy
+msgid ""
+"With a little help, yes. If you move your Shaman next to the defending unit, "
+"she will heal it 4 hitpoints per turn. Just be careful not to expose the "
+"Shaman to attack since she is fairly weak herself."
+msgstr ""
+"Có thể, với một ít trợ giúp. Nếu em di chuyển pháp sư đến bên cạnh đơn vị "
+"đang phòng thủ, pháp sư sẽ điều trị cho đơn vị đó 4 năng lượng mỗi lượt. Chỉ "
+"cần cẩn thận không đưa pháp sư vào tình thế dễ bị tấn công, vì bản thân nó "
+"khá là yếu."
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:29
+msgid "Move a unit (fighter if possible) to the patch of forest"
+msgstr "Di chuyển một đơn vị (đấu sĩ nếu có thể) đến mảnh rừng"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:36
+msgid ""
+"Advance other units onto the island or to capture villages, then End Turn"
+msgstr ""
+"Tiến các đơn vị khác lên hòn đảo hoặc để chiếm các ngôi làng, sau đó kết "
+"thúc lượt"
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:174
+msgid ""
+"That unit is about one kill (8 experience points) away from gaining a level! "
+"Do not let it die!"
+msgstr ""
+"Đơn vị đó chỉ còn một đòn kết liễu (8 điểm kinh nghiệm) nữa là có thể nâng "
+"cấp trình độ! Đừng để nó chết!"
+
+#. [message]: speaker=second_unit
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:226
+msgid "I hope I have a chance to retreat after this!"
+msgstr "Mình hy vọng có một cơ hội rút lui sau đợt này!"
+
+#. [message]: speaker=second_unit
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:237
+msgid "One lucky attack by an Orcish Grunt, and I'm done for!"
+msgstr "Chỉ cần một tên bộ binh người thú tấn công gặp may nữa, là mình ra đi!"
+
+#. [message]: speaker=second_unit
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:248
+msgid "Ouch! I could make use of some healing in a village."
+msgstr "Ối! Mình cần được điều trị trong một ngôi làng."
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:275
+msgid "I have $side.gold gold; enough to recruit!"
+msgstr "Em có $side.gold lượng vàng; đủ để tuyển quân!"
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:276
+msgid "Yes, keep recruiting more units: I think you might need them!"
+msgstr ""
+"Đúng vậy, tiếp tục tuyển thêm các đơn vị: anh nghĩ em sẽ cần đến chúng!"
+
+#. [tutorial]: id=2_Tutorial
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:286
+msgid "Wesnoth Tutorial Part II"
+msgstr "Hướng dẫn Wesnoth phần II"
+
+#. [side]: type=Orcish Warrior, id=Thrag
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:307
+msgid "Thrag"
+msgstr "Thrag"
+
+#. [objective]: condition=win
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:332
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:371
+msgid "Defeat the Orc Leader"
+msgstr "Đánh bại lãnh đạo người thú"
+
+#. [objective]: condition=lose
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:336
+msgid "Death of Konrad"
+msgstr "Konrad chết"
+
+#. [objective]: condition=lose
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:340
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:379
+msgid "Turns run out"
+msgstr "Hết lượt"
+
+#. [objective]: condition=lose
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:375
+msgid "Death of Li'sar"
+msgstr "Li'sar chết"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:415
+msgid ""
+"Ho Galdrad! Has Delfador conjured something else to beat me with? A flock of "
+"scarecrows, perhaps?"
+msgstr ""
+"Ồ anh Galdrad! Ngài Delfador có làm trò ảo thuật gọi ra thứ gì khác để nện "
+"em nữa không? Có thể là một bầy bù nhìn chăng?"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:417
+msgid "This is no game, Konrad! "
+msgstr "Đây không phải trò chơi, Konrad! "
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:418
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:419
+msgid ""
+"Orcs have encamped across the river. This is elven country; they are fools "
+"to enter here. We Elves are fast and hard to hit in forests. You must defeat "
+"their leader so they never threaten us again. I will advise you."
+msgstr ""
+"Bọn người thú đã đóng quân phía bên kia sông. Đây là xứ sở của thần tiên; "
+"bọn chúng là những kẻ ngốc nghếch khi vào đây. Bọn anh là các thần tiên nên "
+"nhanh và khó đánh trúng trong rừng. Em phải đánh bại tên thủ lĩnh để bọn "
+"chúng không bao giờ đe dọa chúng ta nữa. Anh sẽ chỉ bảo cho em."
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:418
+msgid "This is no game, Li'sar! "
+msgstr "Đây không phải trò chơi, Li'sar! "
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:421
+msgid "What should I do?"
+msgstr "Em nên làm gì?"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:426
+msgid ""
+"First, we will have to deal with the Orcish Grunt stationed in the middle of "
+"the river. He should be little trouble."
+msgstr ""
+"Trước hết, chúng ta sẽ phải đối phó với tên bộ binh người thú đứng ở giữa "
+"sông. Giải quyết hắn ta sẽ không mấy khó khăn."
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:427
+msgid ""
+"By then, their leader will have recruited units to send against us and the "
+"real fight will begin."
+msgstr ""
+"Sau đó, tên thủ lĩnh của chúng sẽ tuyển các đơn vị để phái đến đánh chúng ta "
+"và trận chiến thực sự sẽ bắt đầu."
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:428
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:429
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:430
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:431
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:432
+msgid "SHALLOW"
+msgstr "NÔNG"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:433
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:434
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:435
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:436
+msgid "DEEP"
+msgstr "SÂU"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:438
+msgid ""
+"See this dark blue water? It's too deep for either side to cross. They could "
+"slowly wade through that narrow band of shallow lighter-blue water in the "
+"east; but we could stand on the shore and force them to fight us from the "
+"water, where they are exposed and we are protected by the forest."
+msgstr ""
+"Có nhìn thấy vùng nước màu xanh đậm đó không? Nó quá sâu để băng qua đối với "
+"cả hai bên. Bọn chúng có thể lội từ từ qua dải nước nông màu xanh nhạt chật "
+"hẹp ở phía đông; nhưng chúng ta có thể đứng trên bờ và buộc chúng phải đánh "
+"chúng ta từ dưới nước, ở đó chúng bị sơ hở còn chúng ta được rừng bảo vệ."
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:449
+msgid ""
+"The more likely attack, then, is across the bridge. That middle island is "
+"the key: it has a village for healing injured units and forests in which we "
+"fight so well."
+msgstr ""
+"Thế thì cuộc tấn công nhiều khả năng nhất, là băng qua cầu. Hòn đảo ở giữa "
+"chính là chìa khóa: nó có một ngôi làng để điều trị cho các đơn vị bị "
+"thương, và rừng ở đó chúng ta sẽ chiến đấu thuận lợi."
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:455
+msgid ""
+"To start, we will need some units:\n"
+"Two Elvish Fighters\n"
+"Two Elvish Archers\n"
+"One Elvish Shaman"
+msgstr ""
+"Để bắt đầu, chúng ta sẽ cần một số đơn vị:\n"
+"Hai đấu sĩ thần tiên\n"
+"Hai cung thủ thần tiên\n"
+"Một pháp sư thần tiên"
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:530
+msgid ""
+"During your tutorial, both $recall_name1 and $recall_name2 gained "
+"$recall_xp1 experience points. You should recall them now so they can gain "
+"more experience, rather than recruiting new ones."
+msgstr ""
+"Trong buổi tập trước, cả hai $recall_name1 và $recall_name2 đều đã giành "
+"được $recall_xp1 điểm kinh nghiệm. Bây giờ em nên gọi lại để họ có thể giành "
+"thêm kinh nghiệm, hơn là tuyển các đơn vị mới."
+
+#. [else]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:533
+msgid ""
+"During your tutorial, $recall_name1 gained $recall_xp1 experience points, "
+"and $recall_name2 gained $recall_xp2. You should recall them now so they can "
+"gain more experience, rather than recruiting new ones."
+msgstr ""
+"Trong buổi tập trước, $recall_name1 đã giành được $recall_xp1 điểm kinh "
+"nghiệm, và $recall_name2 giành được $recall_xp2. Bây giờ em nên gọi lại để "
+"họ có thể giành thêm kinh nghiệm, hơn là tuyển các đơn vị mới."
+
+#. [else]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:539
+msgid ""
+"During your tutorial, $recall_name1 gained $recall_xp1 experience points. "
+"You should recall that unit now, and recruit a second one (which is cheaper "
+"than recalling, anyway)."
+msgstr ""
+"Trong buổi tập trước, $recall_name1 đã giành được $recall_xp1 điểm kinh "
+"nghiệm. Bây giờ em nên gọi lại đơn vị đó, và tuyển một đơn vị thứ hai (dù "
+"sao đi nữa, vẫn rẻ hơn gọi lại)."
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:542
+msgid "RECALL $recall_name1"
+msgstr "GỌI LẠI $recall_name1"
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:543
+msgid "Right click on the tile north-east of you and recall $recall_name1"
+msgstr "Nhấn chuột phải lên ô phía đông bắc của bạn và gọi lại $recall_name1"
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:552
+msgid ""
+"If any Elvish Fighters from your last battle had experience, we would recall "
+"them to the current battlefield. However, both units don't have much "
+"experience so it's more efficient to recruit new ones. Recruit an Elvish "
+"Fighter."
+msgstr ""
+"Nếu có bất kỳ đấu sĩ thần tiên nào từ trận chiến trước có kinh nghiệm, chúng "
+"ta sẽ gọi lại họ ra chiến trường hiện thời. Tuy nhiên, cả hai đơn vị đều "
+"không có nhiều kinh nghiệm do đó tuyển các đơn vị mới sẽ hiệu quả hơn. Tuyển "
+"một đấu sĩ thần tiên."
+
+#. [else]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:555
+msgid ""
+"If you had any experienced units alive from your last battle we would recall "
+"them. Instead we must recruit a new Elvish Fighter."
+msgstr ""
+"Nếu em có bất kỳ đơn vị nào có kinh nghiệm còn sống từ trận chiến trước, "
+"chúng ta sẽ gọi lại họ, thay vì phải tuyển một đấu sĩ thần tiên mới."
+
+#. [else]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:558
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:814
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:857
+msgid "Elvish Fighter"
+msgstr "Đấu sĩ thần tiên"
+
+#. [else]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:559
+msgid "Right click on the tile north-east of you and recruit an Elvish Fighter"
+msgstr ""
+"Nhấn chuột phải lên ô phía đông bắc của bạn và tuyển một đấu sĩ thần tiên"
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:599
+msgid "No! I said recruit an Elvish SHAMAN! Now try again..."
+msgstr "Không! Anh đã nói tuyển một PHÁP SƯ thần tiên! Bây giờ thử lại..."
+
+#. [else]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:608
+msgid ""
+"The Shaman is a fairly weak unit but has the ability to heal units around "
+"it. It also has a special attack which slows enemies, halving the damage "
+"they do!"
+msgstr ""
+"Pháp sư là một đơn vị khá yếu nhưng có khả năng điều trị cho các đơn vị xung "
+"quanh nó. Nó cũng có một đòn tấn công đặc biệt làm chậm kẻ thù, giảm một nửa "
+"lượng thiệt hại chúng gây ra!"
+
+#. [else]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:609
+msgid "So, should I end my turn now?"
+msgstr "Xong rồi, bây giờ em có nên kết thúc lượt không?"
+
+#. [else]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:611
+msgid ""
+"While none of your recruited units can move, you still can. Your five units "
+"cost you 5 gold in upkeep, leaving you 3 gold poorer per turn. You need more "
+"income."
+msgstr ""
+"Mặc dù không có đơn vị được tuyển dụng nào có thể di chuyển, nhưng em thì "
+"vẫn có thể. Năm đơn vị của em đòi phí bảo trí 5 lượng vàng, làm em mất 3 "
+"lượng vàng mỗi lượt. Em cần thêm thu nhập."
+
+#. [else]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:613
+msgid "Move Konrad to capture a village"
+msgstr "Di chuyển Konrad để chiếm một ngôi làng"
+
+#. [else]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:614
+msgid "Move Li'sar to capture a village"
+msgstr "Di chuyển Li'sar để chiếm một ngôi làng"
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:631
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:670
+msgid "No! I said recruit an Elvish ARCHER! Now try again..."
+msgstr "Không! Anh đã nói tuyển một CUNG THỦ thần tiên! Bây giờ thử lại..."
+
+#. [unit]: id=Eowynial, type=Elvish Archer
+#. [else]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:637
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:649
+msgid "Eowynial"
+msgstr "Eowynial"
+
+#. [else]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:653
+msgid "Shaman"
+msgstr "Pháp sư"
+
+#. [else]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:654
+msgid "Recruit an Elvish Shaman to your north"
+msgstr "Tuyển một pháp sư thần tiên ở phía bắc của bạn"
+
+#. [unit]: id=Elriend, type=Elvish Archer
+#. [else]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:676
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:687
+msgid "Elriend"
+msgstr "Elriend"
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:710
+msgid "No! I said RECALL $recall_name2|! Now try again..."
+msgstr "Không! Anh đã nói GỌI LẠI $recall_name2|! Bây giờ thử lại..."
+
+#. [else]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:719
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:756
+msgid "Archer #1"
+msgstr "Cung thủ #1"
+
+#. [else]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:720
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:757
+msgid "Archer #2"
+msgstr "Cung thủ #2"
+
+#. [else]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:722
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:759
+msgid "Recruit two Elvish Archers in tiles to your west"
+msgstr "Tuyển hai cung thủ thần tiên trong hai ô ở phía tây của bạn"
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:735
+msgid "No! I said recruit an Elvish FIGHTER! Now try again..."
+msgstr "Không! Anh đã nói tuyển một ĐẤU SĨ thần tiên! Bây giờ thử lại..."
+
+#. [unit]: id=Golir, type=Elvish Fighter
+#. [else]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:741
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:752
+msgid "Golir"
+msgstr "Golir"
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:790
+msgid "No! I said recall $recall_name1, not $recall_name2|! Now try again..."
+msgstr ""
+"Không! Anh đã nói gọi lại $recall_name1, không phải $recall_name2|! Bây giờ "
+"thử lại..."
+
+#. [else]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:794
+msgid ""
+"No! I said RECALL $recall_name1 from the last battle, not recruit a new "
+"$recruit.language_name|! Now try again..."
+msgstr ""
+"Không! Anh đã nói GỌI LẠI $recall_name1 từ trận chiến trước, không phải "
+"tuyển một $recruit.language_name mới! Bây giờ thử lại..."
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:810
+msgid "Right click on the tile east of you and recall $recall_name2"
+msgstr "Nhấn chuột phải lên ô phía đông của bạn và gọi lại $recall_name2"
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:811
+msgid "RECALL $recall_name2"
+msgstr "GỌI LẠI $recall_name2"
+
+#. [else]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:815
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:858
+msgid "Right click on the tile east of you and recruit an Elvish Fighter"
+msgstr "Nhấn chuột phải lên ô phía đông của bạn và tuyển một đấu sĩ thần tiên"
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:838
+msgid ""
+"$recruit.language_name|? I said RECRUIT a new ELVISH FIGHTER. Now try "
+"again..."
+msgstr ""
+"$recruit.language_name|? Anh đã nói TUYỂN một ĐẤU SĨ THẦN TIÊN mới. Bây giờ "
+"thử lại..."
+
+#. [unit]: id=Elindel, type=Elvish Fighter
+#. [else]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:845
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:856
+msgid "Elindel"
+msgstr "Elindel"
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:885
+msgid "You've learned well, Konrad! "
+msgstr "Em làm tốt lắm, Konrad! "
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:886
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:888
+msgid ""
+"The village supports one unit and pays 1 gold per turn. You're only losing 1 "
+"gold per turn now."
+msgstr ""
+"Ngôi làng nuôi một đơn vị và trả 1 lượng vàng mỗi lượt. Bây giờ em chỉ mất 1 "
+"lượng vàng mỗi lượt."
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:887
+msgid "You've learned well, Li'sar! "
+msgstr "Em làm tốt lắm, Li'sar! "
+
+#. [then]
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:890
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1018
+msgid "End your turn"
+msgstr "Kết thúc lượt"
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:896
+msgid ""
+"You've captured all the villages around the keep, but stay near so you can "
+"recruit more units."
+msgstr ""
+"Em đã chiếm được tất cả các ngôi làng xung quanh pháo đài, nhưng ở lại gần "
+"để em có thể tuyển thêm các đơn vị."
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:911
+msgid ""
+"You should leave the villages near your keep for Konrad to capture, as he "
+"needs to stay nearby to recruit more units anyway."
+msgstr ""
+"Bạn nên để các ngôi làng gần pháo đài cho Konrad chiếm, vì anh ấy cần ở gần "
+"pháo đài để tuyển thêm các đơn vị."
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:912
+msgid ""
+"You should leave the villages near your keep for Li'sar to capture, as she "
+"needs to stay nearby to recruit more units anyway."
+msgstr ""
+"Bạn nên để các ngôi làng gần pháo đài cho Li'sar chiếm, vì cô ấy cần ở gần "
+"pháo đài để tuyển thêm các đơn vị."
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:918
+msgid "Orcs have no ranged attack, so use your archers against them."
+msgstr ""
+"Bọn người thú không có đòn tấn công từ xa, vì thế sử dụng các cung thủ để "
+"chống lại chúng."
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:921
+msgid ""
+"Attack the orc with an Archer\n"
+"(move mouse over units to see description on right)"
+msgstr ""
+"Tấn công người thú bằng một cung thủ\n"
+"(di chuyển chuột trên các đơn vị để xem mô tả ở bên phải)"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:929
+msgid ""
+"Excellent. Elves are well-protected in the forest. There's only a 30% chance "
+"of hitting an Elvish Archer in forests."
+msgstr ""
+"Tuyệt vời. Thần tiên được bảo vệ tốt trong rừng. Chỉ có 30% cơ hội đánh "
+"trúng một cung thủ thần tiên trong rừng."
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:938
+msgid ""
+"It's very dangerous to stand in water when there are enemies about! Your "
+"unit will have an 80% chance of being hit when the enemy counter-attacks! "
+"Cancel!"
+msgstr ""
+"Đứng dưới nước khi có kẻ thù gần đó là rất nguy hiểm! Đơn vị của em sẽ có cơ "
+"hội 80% bị đánh trúng khi kẻ thù trả đũa! Hủy đi!"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:944
+msgid "Attack the Orc with the other Archer"
+msgstr "Tấn công người thú bằng cung thủ còn lại"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:956
+msgid "Fighter to HERE"
+msgstr "Đấu sĩ đến ĐÂY"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:957
+msgid ""
+"Your other units cannot reach that Orc this turn. Send a Fighter to the "
+"village to the far east. It will take two turns to reach it."
+msgstr ""
+"Các đơn vị khác của em không thể tiếp cận với tên người thú đó ở lượt này. "
+"Phái một đấu sĩ đến ngôi làng ở xa phía đông. Sẽ mất hai lượt để đến đó."
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:958
+msgid ""
+"You can order a unit to move for multiple turns by selecting the unit and "
+"clicking on the destination. A number will indicate how many turns it will "
+"take until that unit reaches the tile."
+msgstr ""
+"Bạn có thể ra lệnh cho một đơn vị di chuyển trong nhiều lượt bằng cách chọn "
+"đơn vị và nhấn vào đích đến. Sẽ có một số chỉ thị số lượt cần thiết để đơn "
+"vị đó tiếp cận ô."
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:959
+msgid "Tell a Fighter to move to the far east village"
+msgstr "Bảo một đấu sĩ di chuyển đến ngôi làng ở xa phía đông"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:977
+msgid ""
+"Send the other Fighter and the Shaman south so they can attack next turn, "
+"then return to the keep to recruit more units!"
+msgstr ""
+"Phái đấu sĩ còn lại và pháp sư về phía nam để họ có thể tấn công ở lượt kế "
+"tiếp, sau đó trở về pháo đài để tuyển thêm các đơn vị!"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:978
+msgid "Move your Fighter and Shaman south, then return Konrad to the Keep"
+msgstr ""
+"Di chuyển đấu sĩ và pháp sư của bạn về phía nam, sau đó đưa Konrad trở về "
+"pháo đài"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:979
+msgid "Move your Fighter and Shaman south, then return Li'sar to the Keep"
+msgstr ""
+"Di chuyển đấu sĩ và pháp sư của bạn về phía nam, sau đó đưa Li'sar trở về "
+"pháo đài"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:989
+msgid "Recruit another Archer and a Fighter"
+msgstr "Tuyển một cung thủ và một đấu sĩ khác"
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1004
+msgid "I have no more money to recruit!"
+msgstr "Em không còn tiền để tuyển quân nữa!"
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1005
+msgid "This is often a problem, which is why owning villages is important."
+msgstr ""
+"Đây thường là một vấn đề, đó là lý do tại sao việc chiếm các ngôi làng lại "
+"quan trọng."
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1006
+msgid "Move Konrad to another (unowned) village"
+msgstr "Di chuyển Konrad đến một ngôi làng khác (chưa sở hữu)"
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1007
+msgid "Move Li'sar to another (unowned) village"
+msgstr "Di chuyển Li'sar đến một ngôi làng khác (chưa sở hữu)"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1032
+msgid ""
+"That Grunt is blocking the bridge! We must occupy that island before the "
+"Wolf Riders reach it."
+msgstr ""
+"Tên bộ binh đó đang chặn cây cầu! Chúng ta phải chiếm hòn đảo đó trước khi "
+"các kỵ binh chó sói tiếp cận."
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1033
+msgid "Can't our units just move around him?"
+msgstr "Các đơn vị của chúng ta không thể di chuyển quanh hắn sao?"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1036
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1037
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1038
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1039
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1040
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1041
+msgid "ZoC"
+msgstr "VKS"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1044
+msgid ""
+"No. Once you move close to an enemy unit, you are in its 'Zone of Control' "
+"and cannot move further that turn.\n"
+"To move your troops onto that island without wading slowly through the "
+"water, you'll have to kill him."
+msgstr ""
+"Không. Khi em di chuyển đến gần một đơn vị kẻ thù, em đang ở trong 'vùng "
+"kiểm soát' của nó và không thể di chuyển được nữa ở lượt đó.\n"
+"Để di chuyển quân lính của mình lên hòn đảo đó mà không phải lội một cách "
+"chậm chạp qua nước, em phải giết hắn."
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1045
+msgid "Attack the orc with an Archer"
+msgstr "Tấn công người thú bằng một cung thủ"
+
+#. [then]
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1071
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1084
+msgid "Advance other units and capture villages, then End Turn"
+msgstr "Tiến các đơn vị khác lên và chiếm các ngôi làng, sau đó kết thúc lượt"
+
+#. [else]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1076
+msgid ""
+"No other units can reach that Orc. I hope my archer survives its counter-"
+"attack! I'd better grab more villages and move everyone closer for next turn."
+msgstr ""
+"Không còn đơn vị nào khác có thể tiếp cận được tên người thú đó. Mình hy "
+"vọng cung thủ của mình sống sót sau đòn trả đũa của hắn! Tốt hơn là mình nên "
+"chộp thêm làng và di chuyển mọi người gần hơn ở lượt sau."
+
+#. [else]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1077
+msgid ""
+"Yes. If your Shaman stands just behind that unit on the bridge, it will heal "
+"it at the beginning of the next turn."
+msgstr ""
+"Đúng vậy. Nếu pháp sư của em đứng ngay sau đơn vị đó trên cầu, nó sẽ điều "
+"trị cho đơn vị đó ở đầu lượt kế tiếp."
+
+#. [else]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1078
+msgid "Move your Shaman onto the bridge to stand behind your other unit"
+msgstr "Di chuyển pháp sư của bạn lên cầu và đứng sau đơn vị khác"
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1124
+msgid ""
+"Be careful: if you stand on the bridge you are exposed to attack from "
+"multiple directions!"
+msgstr ""
+"Cẩn thận: nếu em đứng trên cầu em có nguy cơ bị tấn công từ nhiều hướng!"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1137
+msgid ""
+"It's very dangerous to stand in water when there are enemies about! Your "
+"unit will have an 80% chance of being hit! Cancel, and wait for them to "
+"attack you!"
+msgstr ""
+"Đứng dưới nước khi có kẻ thù gần đó là rất nguy hiểm! Đơn vị của em sẽ có cơ "
+"hội 80% bị đánh trúng! Hủy đi, và chờ bọn chúng tấn công em!"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1147
+msgid ""
+"Don't forget about your fighter in the east; you can move him south to that "
+"last village near the channel."
+msgstr ""
+"Đừng quên về đấu sĩ ở phía đông; em có thể di chuyển anh ta về phía nam đến "
+"ngôi làng cuối cùng gần dòng sông."
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1153
+msgid ""
+"We need to take that village, otherwise they will take it next turn! Move "
+"your wounded unit onto the village so it can heal, then kill that Orc!"
+msgstr ""
+"Chúng ta cần chiếm ngôi làng đó, nếu không chúng sẽ chiếm nó ở lượt sau! Di "
+"chuyển đơn vị bị thương vào ngôi làng để nó có thể phục hồi, sau đó giết tên "
+"người thú đó!"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1165
+msgid ""
+"Careful! It is now nighttime. Orcs are chaotic, meaning their attacks are "
+"25% stronger at night and 25% weaker in the day. You are lawful: stronger by "
+"day. Elves are neutral: unaffected by night and day."
+msgstr ""
+"Cẩn thận! Bây giờ là ban đêm. Bọn người thú là hỗn độn, có nghĩa là các đòn "
+"tấn công của chúng mạnh hơn 25% vào ban đêm và yếu hơn 25% vào ban ngày. Em "
+"là chính thống: mạnh hơn vào ban ngày. Thần tiên là trung lập: không bị ảnh "
+"hưởng bởi đêm hay ngày."
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1166
+msgid ""
+"After this dialog, hold the mouse over the landscape image below the minimap "
+"on the right to see a description of the time of day."
+msgstr ""
+"Sau hộp thoại này, giữ chuột trên bức ảnh phong cảnh dưới bản đồ nhỏ ở bên "
+"phải để xem mô tả về thời điểm trong ngày."
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1173
+msgid ""
+"Remember to retreat your wounded units to villages. Healers can only heal 4 "
+"hitpoints at a time, while villages can heal 8 (the maximum for any unit)."
+msgstr ""
+"Nhớ rút lui các đơn vị bị thương vào trong làng. Các điều trị viên chỉ có "
+"thể phục hồi 4 năng lượng mỗi lần, trong khi các ngôi làng có thể phục hồi 8 "
+"(lượng tối đa cho bất kỳ đơn vị nào)."
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1180
+msgid "Defend here"
+msgstr "Phòng thủ ở đây"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1181
+msgid ""
+"Beware of those Orcs crossing the river! If they get into the forest they'll "
+"be hard to dislodge!"
+msgstr ""
+"Chú ý bọn người thú đang băng qua sông! Nếu chúng vào được rừng chúng sẽ khó "
+"để đánh đuổi!"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1188
+msgid ""
+"You can make sure you've used all your units each turn by pressing 'n' to "
+"automatically select the next unit. SPACE will indicate a unit is finished.\n"
+"When 'n' no longer selects a new unit, you can end your turn."
+msgstr ""
+"Bạn có thể đảm bảo bạn đã sử dụng toàn bộ các đơn vị của mình ở mỗi lượt "
+"bằng cách ấn 'n' để tự động chọn đơn vị kế tiếp. SPACE sẽ chỉ thị một đơn vị "
+"đã được hoàn thành.\n"
+"Khi 'n' không chọn đơn vị mới nào nữa, bạn có thể kết thúc lượt."
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1193
+msgid "You only need to defeat the leader to win (see Main Menu->Objectives)."
+msgstr ""
+"Bạn chỉ cần đánh bại tên thủ lĩnh để chiến thắng (xem Trình đơn chính->Mục "
+"tiêu)."
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1198
+msgid ""
+"Remember to recruit troops useful for the situation. Archers are "
+"particularly effective against Grunts, Wolf Riders and their leader."
+msgstr ""
+"Nhớ tuyển quân hữu ích với các tình huống. Các cung thủ là đặc biệt hiệu quả "
+"để chống lại bộ binh, kỵ binh chó sói và kẻ lãnh đạo của chúng."
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1216
+msgid ""
+"Stay near the keep! You need to be on a keep to recruit more units, and I "
+"doubt the Orc leader will let you use his!"
+msgstr ""
+"Ở gần pháo đài! Em cần ở trên một pháo đài để tuyển thêm các đơn vị và anh "
+"nghi ngờ khả năng tên thủ lĩnh người thú sẽ để em sử dụng pháo đài của hắn!"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1230
+msgid ""
+"Their leader has moved into that village! He's not as stupid as I thought. "
+"The village heals him each turn and provides good defense."
+msgstr ""
+"Tên thủ lĩnh đã di chuyển vào ngôi làng đó! Hắn ta không ngốc nghếch như "
+"mình tưởng. Ngôi làng điều trị cho hắn mỗi lượt và cho hắn lợi thế phòng thủ."
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1241
+msgid ""
+"That unit has captured our village! You'd better get him out; it heals him "
+"each turn and provides good defense."
+msgstr ""
+"Đơn vị đó đã chiếm ngôi làng của chúng ta! Tốt hơn hết em nên đuổi hắn ra; "
+"nó sẽ điều trị cho hắn mỗi lượt và cho hắn lợi thế phòng thủ."
+
+#. [message]: speaker=unit
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1253
+msgid ""
+"Using me to attack is risky! I can slow the opponent with my ranged attack, "
+"but I hope you have a plan if I miss!"
+msgstr ""
+"Sử dụng tôi để tấn công là đầy mạo hiểm. Tôi có thể làm chậm đối thủ bằng "
+"đòn tấn công từ xa, nhưng tôi hy vọng ngài đã có kế hoạch nếu tôi đánh trượt!"
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1289
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1305
+msgid ""
+"You are close to killing their leader! The unit who finishes him will gain "
+"16 experience points because he is level 2. Choose your unit carefully!"
+msgstr ""
+"Em sắp giết được tên thủ lĩnh của chúng rồi! Đơn vị nào kết liễu hắn sẽ "
+"giành được 16 điểm kinh nghiệm bởi vì hắn có trình độ 2. Chọn đơn vị một "
+"cách cẩn thận!"
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1354
+msgid ""
+"We will miss $deadguy.name| because he had $deadguy.experience experience "
+"points, meaning he would have advanced to level 2 soon."
+msgstr ""
+"Chúng ta sẽ nhớ đến $deadguy.name| bởi vì anh ấy có $deadguy.experience điểm "
+"kinh nghiệm, có nghĩa là anh ấy sớm nâng cấp lên trình độ 2."
+
+#. [else]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1357
+msgid ""
+"We will miss $deadguy.name| because she had $deadguy.experience experience "
+"points, meaning she would have advanced to level 2 soon."
+msgstr ""
+"Chúng ta sẽ nhớ đến $deadguy.name| bởi vì cô ấy có $deadguy.experience điểm "
+"kinh nghiệm, có nghĩa là cô ấy sớm nâng cấp lên trình độ 2."
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1368
+msgid ""
+"We will miss $deadguy.name|, but it's better than one of our experienced "
+"troops dying!"
+msgstr ""
+"Chúng ta sẽ nhớ đến $deadguy.name|, nhưng quan trọng hơn là một trong số "
+"những chiến sĩ có kinh nghiệm của chúng ta đã chết!"
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1381
+msgid ""
+"Losing a healer hurts all the troops! Keep them out of the enemy's reach!"
+msgstr ""
+"Mất một điều trị viên sẽ làm tổn thương đến mọi quân lính! Giữ họ tránh xa "
+"phạm vi tiếp cận của kẻ thù!"
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1382
+msgid ""
+"You can see where an enemy can reach by moving the mouse over them. You can "
+"see all the possible enemy moves at once with the 'Show Enemy Moves' command "
+"from the 'Actions' menu."
+msgstr ""
+"Bạn có thể xem một kẻ thù có thể tiếp cận những đâu bằng cách di chuyển "
+"chuột trên chúng. Bạn có thể xem tất cả các di chuyển có thể của kẻ thù cùng "
+"một lúc bằng lệnh 'Hiện di chuyển của kẻ thù' từ trình đơn 'Hành động'."
+
+#. [else]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1386
+msgid ""
+"Level 2 units are powerful, but not invulnerable! Goodbye, $deadguy.name|."
+msgstr ""
+"Các đơn vị trình độ 2 là mạnh, nhưng không phải không thể bị tấn công! Tạm "
+"biệt $deadguy.name|."
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1401
+msgid ""
+"Beware of the Orc leader: he can do 36 hitpoints of damage at night! Attack "
+"with many units at once during the day."
+msgstr ""
+"Chú ý tên thủ lĩnh người thú: hắn ta có thể gây lượng thiệt hại 36 năng "
+"lượng vào ban đêm! Tấn công bằng nhiều đơn vị cùng lúc vào ban ngày."
+
+#. [message]: speaker=unit
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1421
+msgid ""
+"Advancing a level has fully healed me!\n"
+"I always have a 60% chance of hitting with my Marksman ability, and I deal 9 "
+"damage each for 4 attacks. Use me to dislodge hard-to-hit units."
+msgstr ""
+"Nâng cấp trình độ đã giúp tôi hồi phục hoàn toàn!\n"
+"Tôi luôn có cơ hội đánh trúng 60% nhờ khả năng thiện xạ, và tôi gây 9 lượng "
+"thiệt hại mỗi lần với 4 đòn tấn công. Sử dụng tôi để đánh bật các đơn vị khó "
+"đánh trúng."
+
+#. [message]: speaker=unit
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1430
+msgid ""
+"female^Advancing a level has fully healed me!\n"
+"I always have a 60% chance of hitting with my Marksman ability, and I deal 9 "
+"damage each for 4 attacks. Use me to dislodge hard-to-hit units."
+msgstr ""
+"Nâng cấp trình độ đã giúp tôi hồi phục hoàn toàn!\n"
+"Tôi luôn có cơ hội đánh trúng 60% nhờ khả năng thiện xạ, và tôi gây 9 lượng "
+"thiệt hại mỗi lần với 4 đòn tấn công. Sử dụng tôi để đánh bật các đơn vị khó "
+"đánh trúng."
+
+#. [message]: speaker=unit
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1446
+msgid ""
+"Advancing a level has fully healed me!\n"
+"I am good with both bow and sword, and I have a special ability: ambush. I "
+"can hide in forests where enemies can only see me if they are right next to "
+"me."
+msgstr ""
+"Nâng cấp trình độ đã giúp tôi hồi phục hoàn toàn!\n"
+"Tôi giỏi cả cung lẫn kiếm, và tôi có một khả năng đặc biệt: mai phục. Tôi có "
+"thể ẩn nấp trong rừng, ở đó kẻ thù chỉ có thể nhìn thấy tôi nếu chúng ở ngay "
+"cạnh tôi."
+
+#. [message]: speaker=unit
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1460
+msgid ""
+"Advancing a level has fully healed me!\n"
+"I am good with both bow and sword, and I have a special ability: leadership. "
+"Level 1 units around me do 25% more damage, so position me carefully."
+msgstr ""
+"Nâng cấp trình độ đã giúp tôi hồi phục hoàn toàn!\n"
+"Tôi giỏi cả cung lẫn kiếm, và tôi có một khả năng đặc biệt: lãnh đạo. Các "
+"đơn vị trình độ 1 xung quanh tôi có thể gây nhiều thiệt hại hơn 25%, vì thế "
+"bố trí tôi một cách cẩn thận."
+
+#. [message]: speaker=unit
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1475
+msgid ""
+"Advancing a level has fully healed me!\n"
+"I am particularly good with the sword, dealing 8 damage in 4 attacks."
+msgstr ""
+"Nâng cấp trình độ đã giúp tôi hồi phục hoàn toàn!\n"
+"Tôi đặc biệt giỏi kiếm, gây 8 lượng thiệt hại với mỗi một trong số 4 đòn tấn "
+"công."
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1643
+msgid "You took too long! We'll never be rid of these Orcs!"
+msgstr ""
+"Mất quá nhiều thời gian! Chúng ta sẽ chẳng bao giờ thoát khỏi bọn người thú "
+"này!"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1661
+msgid ""
+"You are victorious! You may want to try Novice-level campaigns such as: The "
+"South Guard, An Orcish Incursion, A Tale of Two Brothers, and Heir to the "
+"Throne. The South Guard was specifically designed as a beginner's campaign. "
+"Konrad, Li'sar and Delfador are characters from Heir to the Throne."
+msgstr ""
+"Bạn đã giành chiến thắng! Bạn có thể thử các chiến dịch thuộc trình độ mới "
+"bắt đầu như: Đội bảo vệ phương nam, Cuộc xăm lăng của người thú, Câu chuyện "
+"về hai anh em, và Người thừa kế ngai vàng. Đội bảo vệ phương nam được thiết "
+"kế đặc biệt làm chiến dịch cho người mới bắt đầu. Konrad, Li'sar và Delfador "
+"là các nhân vật từ Người thừa kế ngai vàng."
+
+#. [unit_type]: id=Fighter, race=human
+#: data/campaigns/tutorial/units/Fighter.cfg:4
+msgid "Fighter"
+msgstr "Đấu sĩ"
+
+#. [unit_type]: id=Fighteress, race=human
+#. [unit_type]: id=Fighter, race=human
+#: data/campaigns/tutorial/units/Fighter.cfg:17
+#: data/campaigns/tutorial/units/Fighteress.cfg:17
+msgid ""
+"Young and brash, Fighters are skilled with swords and are vulnerable to "
+"attack from enemies. However, they have the potential to become great "
+"warriors one day."
+msgstr ""
+"Trẻ tuổi và non nớt, các đấu sĩ khéo léo với kiếm và dễ bị kẻ thù tấn công. "
+"Tuy nhiên, họ có tiềm năng trở thành những chiến binh lớn vào một ngày nào "
+"đó."
+
+#. [attack]: type=blade
+#: data/campaigns/tutorial/units/Fighter.cfg:22
+msgid "sword"
+msgstr "kiếm"
+
+#. [unit_type]: id=Fighteress, race=human
+#: data/campaigns/tutorial/units/Fighteress.cfg:4
+msgid "female^Fighter"
+msgstr "Đấu sĩ"
+
+#. [attack]: type=blade
+#: data/campaigns/tutorial/units/Fighteress.cfg:21
+msgid "saber"
+msgstr "kiếm lưỡi cong"
+
+#. [unit_type]: id=Quintain, race=mechanical
+#: data/campaigns/tutorial/units/Quintain.cfg:14
+msgid ""
+"Quintains are used to practice swordplay and jousting on. It would be "
+"extremely unusual to be attacked by one."
+msgstr ""
+"Hình nộm được sử dụng để luyện tập đấu kiếm và cưỡi ngựa đấu thương. Nó sẽ "
+"cực kỳ khác thường khi bị tấn công bởi ai đó."
+
+#. [attack]: type=impact
+#: data/campaigns/tutorial/units/Quintain.cfg:22
+msgid "flail"
+msgstr "đập"
