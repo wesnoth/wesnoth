@@ -2194,8 +2194,9 @@ void server::process_data_game(const network::connection sock,
 		update_game_in_lobby(g);
 		return;
 	} else if (data.child("leave_game")) {
+		// May be better to just let remove_player() figure out when a game ends.
 		if ((g->is_player(sock) && g->nplayers() == 1)
-			|| (g->is_owner(sock) && !g->started())) {
+		|| (g->is_owner(sock) && (!g->started() || g->nplayers() == 0))) {
 			// Remove the player in delete_game() with all other remaining
 			// ones so he gets the updated gamelist.
 			delete_game(itor);
