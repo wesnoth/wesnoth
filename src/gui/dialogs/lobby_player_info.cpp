@@ -41,7 +41,7 @@ twindow* tlobby_player_info::build_window(CVideo& video)
 
 void tlobby_player_info::pre_show(CVideo& /*video*/, twindow& window)
 {
-	relation_ = &window.get_widget<tlabel>("relation_info", false);
+	relation_ = NEW_find_widget<tlabel>(&window, "relation_info", false, true);
 	GUI2_EASY_BUTTON_CALLBACK(start_whisper, tlobby_player_info);
 
 	GUI2_EASY_BUTTON_CALLBACK(add_to_friends, tlobby_player_info);
@@ -55,7 +55,8 @@ void tlobby_player_info::pre_show(CVideo& /*video*/, twindow& window)
 	GUI2_EASY_BUTTON_CALLBACK(kick, tlobby_player_info);
 	GUI2_EASY_BUTTON_CALLBACK(kick_ban, tlobby_player_info);
 
-	window.get_widget<tlabel>("player_name", false).set_label(info_.name);
+	NEW_find_widget<tlabel>(&window, "player_name", false)
+			.set_label(info_.name);
 
 	std::stringstream loc;
 	const game_info* game = lobby_info_.get_game_by_id(info_.game_id);
@@ -70,7 +71,9 @@ void tlobby_player_info::pre_show(CVideo& /*video*/, twindow& window)
 		loc << _("In lobby");
 	}
 
-	window.get_widget<tlabel>("location_info", false).set_label(loc.str());
+	NEW_find_widget<tlabel>(&window, "location_info", false)
+			.set_label(loc.str());
+
 	update_relation(window);
 
 	if (!preferences::is_authenticated()) {
