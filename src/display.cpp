@@ -2165,7 +2165,7 @@ void display::refresh_report(reports::TYPE report_num, reports::report report,
 			}
 			str = item->postfix();
 			if(str.empty() == false) {
-			  report.push_back(reports::element(str,"",report.end()->tooltip));
+			  report.push_back(reports::element(str,"",report.back().tooltip));
 			}
 			// Loop through and display each report element
 			size_t tallest = 0;
