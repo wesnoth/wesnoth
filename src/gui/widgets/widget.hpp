@@ -285,36 +285,6 @@ public:
 		{ return id_ == id ? this : 0; }
 
 	/**
-	 * Gets a widget with the wanted id.
-	 *
-	 * This template function doesn't return a pointer to a generic widget but
-	 * returns the wanted type and tests for its existence.
-	 *
-	 * @param id                  The id of the widget to find.
-	 * @param must_be_active      The widget should be active, not all widgets
-	 *                            have an active flag, those who don't ignore
-	 *                            flag.
-	 *
-	 * @returns                   The widget with the id.
-	 */
-	template <class T>
-	T& get_widget(const std::string& id, const bool must_be_active)
-	{
-		T* result = dynamic_cast<T*>(find_widget(id, must_be_active));
-		VALIDATE(result, missing_widget(id));
-		return *result;
-	}
-
-	/** The const version of get_widget. */
-	template <class T>
-	const T& get_widget(const std::string& id, const bool must_be_active) const
-	{
-		const T* result = dynamic_cast<const T*>(find_widget(id, must_be_active));
-		VALIDATE(result, missing_widget(id));
-		return *result;
-	}
-
-	/**
 	 * Does the widget contain the widget.
 	 *
 	 * Widgets can be containers which have more widgets inside them, this
