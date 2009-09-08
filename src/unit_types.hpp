@@ -19,7 +19,6 @@
 #include "map_location.hpp"
 #include "portrait.hpp"
 #include "race.hpp"
-#include "util.hpp"
 
 #include <set>
 #include <string>
