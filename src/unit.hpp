@@ -32,7 +32,6 @@ class vconfig;
 class team;
 class unit_type;
 
-#include <set>
 #include <string>
 #include <vector>
 
