@@ -421,9 +421,18 @@ struct tvertical_scrollbar_definition : public tcontrol_definition
 	};
 };
 
-struct twindow_definition : public tpanel_definition
+struct twindow_definition
+	: public tcontrol_definition
 {
 	twindow_definition(const config& cfg);
+
+	struct tresolution
+		: public tpanel_definition::tresolution
+	{
+		tresolution(const config& cfg);
+
+		tbuilder_grid_ptr grid;
+	};
 };
 
 struct tgui_definition

@@ -925,6 +925,44 @@ void twindow::draw(surface& /*surf*/, const bool /*force*/,
 	assert(false);
 }
 
+namespace {
+
+/**
+ * Swaps an item in a grid for another one.*/
+void swap_grid(tgrid* grid,
+		tgrid* content_grid, twidget* widget, const std::string& id)
+{
+	assert(content_grid);
+	assert(widget);
+
+	// Make sure the new child has same id.
+	widget->set_id(id);
+
+	// Get the container containing the wanted widget.
+	tgrid* parent_grid = NULL;
+	if(grid) {
+		parent_grid = NEW_find_widget<tgrid>(grid, id, false, false);
+	}
+	if(!parent_grid) {
+		parent_grid = NEW_find_widget<tgrid>(content_grid, id, true, false);
+	}
+	parent_grid = dynamic_cast<tgrid*>(parent_grid->parent());
+	assert(parent_grid);
+
+	// Replace the child.
+	widget = parent_grid->swap_child(id, widget, false);
+	assert(widget);
+
+	delete widget;
+}
+
+} // namespace
+
+void twindow::finalize(const boost::intrusive_ptr<tbuilder_grid>& content_grid)
+{
+	swap_grid(NULL, &grid(), content_grid->build(), "_content_grid");
+}
+
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 
 void twindow::generate_dot_file(const std::string& generator,

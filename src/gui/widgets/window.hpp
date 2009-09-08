@@ -52,6 +52,7 @@ class twindow
 	, public cursor::setter
 {
 	friend class tdebug_layout_graph;
+	friend twindow* build(CVideo&, const std::string&);
 	friend struct twindow_implementation;
 
 	// Wants to use layout().
@@ -556,6 +557,13 @@ private:
 	 * processing loop.
 	 */
 	boost::function<void ()> event_loop_pre_cb_;
+
+	/**
+	 * Finishes the initialization of the grid.
+	 *
+	 * @param content_grid        The new contents for the content grid.
+	 */
+	void finalize(const boost::intrusive_ptr<tbuilder_grid>& content_grid);
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	tdebug_layout_graph* debug_layout_;

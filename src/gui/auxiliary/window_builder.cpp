@@ -149,7 +149,17 @@ twindow* build(CVideo& video, const std::string& type)
 
 	window->set_easy_close(definition->easy_close);
 
-	window->init_grid(definition->grid);
+	boost::intrusive_ptr<const twindow_definition::tresolution> conf =
+			boost::dynamic_pointer_cast<
+				const twindow_definition::tresolution>(window->config());
+	assert(conf);
+
+	if(conf->grid) {
+		window->init_grid(conf->grid);
+		window->finalize(definition->grid);
+	} else {
+		window->init_grid(definition->grid);
+	}
 
 	window->add_to_keyboard_chain(window);
 

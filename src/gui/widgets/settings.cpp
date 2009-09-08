@@ -1366,7 +1366,7 @@ tvertical_scrollbar_definition::tresolution::tresolution(const config& cfg) :
 }
 
 twindow_definition::twindow_definition(const config& cfg) :
-	tpanel_definition(cfg)
+	tcontrol_definition(cfg)
 {
 /*WIKI
  * @page = GUIWidgetDefinitionWML
@@ -1380,6 +1380,21 @@ twindow_definition::twindow_definition(const config& cfg) :
  */
 
 	DBG_GUI_P << "Parsing window " << id << '\n';
+
+	load_resolutions<tresolution>(cfg);
+}
+
+twindow_definition::tresolution::tresolution(const config& cfg)
+	: tpanel_definition::tresolution(cfg)
+	, grid(NULL)
+{
+	const config &child = cfg.child("grid");
+//	VALIDATE(child, _("No grid defined."));
+
+	/** @todo Evaluate whether the grid should become mandatory. */
+	if(child) {
+		grid = new tbuilder_grid(child);
+	}
 }
 
 tresolution_definition_ptr get_control(
