@@ -16,6 +16,7 @@ Version 1.7.5+svn:
  * User interface:
    * new gamestate inspector debug dialog (via 'inspect' command 
      and '[inspect]' tag)
+   * Rename easy_close to click_dismiss
  * WML engine:
    * Fix silent=yes for objectives
    * Allow [story] [part] blocks to specify the title box alignment
@@ -29,6 +30,7 @@ Version 1.7.5+svn:
    * Fixed the unit tests from 'hanging'
    * Fix bug #14160 (carryover percentage in [endlevel] ignored
      when victory_when_enemies_defeated="yes")
+   * Various cleanups to the gui2 code	 
 
 Version 1.7.5:
  * Campaigns:
