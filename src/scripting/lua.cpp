@@ -172,8 +172,8 @@ static void table_of_wml_config(lua_State *L, config const &cfg)
   do { lua_settop(L, initial_top); return false; } while (0)
 
 /**
- * Converts a Lua table to a config object.
- * The source table should be at the top of the stack on entry. It is
+ * Converts an optional table or vconfig to a config object.
+ * The source object should be at the top of the stack on entry. It is
  * still at the top on exit.
  * @param tstring_meta absolute stack position of t_string's metatable, or 0 if none.
  * @return false if some attributes had not the proper type.
@@ -184,6 +184,29 @@ static bool wml_config_of_table(lua_State *L, config &cfg, int tstring_meta = 0)
 {
 	if (!lua_checkstack(L, LUA_MINSTACK))
 		return false;
+
+	switch (lua_type(L, -1))
+	{
+		case LUA_TTABLE:
+			break;
+		case LUA_TUSERDATA:
+		{
+			if (!lua_getmetatable(L, -1))
+				return false;
+			lua_pushlightuserdata(L, (void *)&vconfigKey);
+			lua_gettable(L, LUA_REGISTRYINDEX);
+			bool ok = lua_rawequal(L, -1, -2);
+			lua_pop(L, 2);
+			if (!ok) return false;
+			cfg = static_cast<vconfig *>(lua_touserdata(L, -1))->get_parsed_config();
+			return true;
+		}
+		case LUA_TNONE:
+		case LUA_TNIL:
+			return true;
+		default:
+			return false;
+	}
 
 	// Get t_string's metatable, so that it can be used later to detect t_string object.
 	int initial_top = lua_gettop(L);
@@ -203,8 +226,7 @@ static bool wml_config_of_table(lua_State *L, config &cfg, int tstring_meta = 0)
 		char const *m = lua_tostring(L, -1);
 		if (!m) return_misformed();
 		lua_rawgeti(L, -2, 2);
-		if (!lua_istable(L, -1) ||
-		    !wml_config_of_table(L, cfg.add_child(m), tstring_meta))
+		if (!wml_config_of_table(L, cfg.add_child(m), tstring_meta))
 			return_misformed();
 		lua_pop(L, 3);
 	}
@@ -766,23 +788,24 @@ static int lua_set_variable(lua_State *L)
 			break;
 		case LUA_TUSERDATA:
 			// Compare its metatable with t_string's metatable.
+			if (!lua_getmetatable(L, 2))
+				goto error_call_destructors;
 			lua_pushlightuserdata(L, (void *)&tstringKey);
 			lua_gettable(L, LUA_REGISTRYINDEX);
-			if (!lua_getmetatable(L, 2) || !lua_rawequal(L, -1, -2))
-				goto error_call_destructors;
+			if (!lua_rawequal(L, -1, -2)) {
+				lua_pop(L, 2);
+				goto try_table;
+			}
 			v.as_scalar() = *static_cast<t_string *>(lua_touserdata(L, 2));
 			break;
-		case LUA_TTABLE:
-		{
+		default:
+			try_table:
 			lua_settop(L, 2);
 			config &cfg = v.as_container();
 			cfg.clear();
 			if (!wml_config_of_table(L, cfg))
 				goto error_call_destructors;
 			break;
-		}
-		default:
-			goto error_call_destructors;
 	}
 	return 0;
 }
@@ -1238,7 +1261,7 @@ static int lua_message(lua_State *L)
  */
 static int lua_eval_conditional(lua_State *L)
 {
-	if (!lua_istable(L, 1)) {
+	if (lua_isnoneornil(L, 1)) {
 		error_call_destructors:
 		return luaL_typerror(L, 1, "WML table");
 	}
