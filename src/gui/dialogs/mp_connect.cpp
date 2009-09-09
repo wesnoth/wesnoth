@@ -237,7 +237,7 @@ void tmp_login::pre_show(CVideo& /*video*/, twindow& window)
 	// Needs to be a scroll_label since the text can get long and a normal
 	// label can't wrap (at the moment).
 	tcontrol* label =
-		dynamic_cast<tscroll_label*>(window.find_widget("login_label", false));
+		dynamic_cast<tscroll_label*>(window.find("login_label", false));
 	if(label) label->set_label(label_);
 
 	if(ttoggle_button* button = NEW_find_widget<ttoggle_button>(

@@ -124,21 +124,18 @@ public:
 		{ return grid_.find_at(coordinate, must_be_active); }
 
 	/** Inherited from tcontrol.*/
-	twidget* find_widget(const std::string& id, const bool must_be_active)
+	twidget* find(const std::string& id, const bool must_be_active)
 	{
-		twidget* result = tcontrol::find_widget(id, must_be_active);
-		return result ? result : grid_.find_widget(id, must_be_active);
+		twidget* result = tcontrol::find(id, must_be_active);
+		return result ? result : grid_.find(id, must_be_active);
 	}
 
 	/** Inherited from tcontrol.*/
-	const twidget* find_widget(const std::string& id, const bool must_be_active) const
+	const twidget* find(const std::string& id, const bool must_be_active) const
 	{
-		const twidget* result = tcontrol::find_widget(id, must_be_active);
-		return result ? result : grid_.find_widget(id, must_be_active);
+		const twidget* result = tcontrol::find(id, must_be_active);
+		return result ? result : grid_.find(id, must_be_active);
 	}
-
-	/** Import overloaded versions. */
-	using tcontrol::find_widget;
 
 	/** Inherited from tcontrol. */
 	void set_active(const bool active);

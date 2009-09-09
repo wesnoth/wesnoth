@@ -72,25 +72,25 @@ struct tscrollbar_container_implementation
 
 	/**
 	 * Implementation for the wrappers for
-	 * [const] twidget* tscrollbar_container::find_widget(
+	 * [const] twidget* tscrollbar_container::find(
 	 * const std::string&, const bool) [const].
 	 *
 	 * @param W                   twidget or const twidget.
 	 */
 	template<class W>
-	static W* find_widget(
+	static W* find(
 			typename tconst_duplicator<W, tscrollbar_container>::type&
 				scrollbar_container,
 			const std::string& id, const bool must_be_active)
 	{
 		// Inherited.
 		W* result = scrollbar_container.tcontainer_
-				::find_widget(id, must_be_active);
+				::find(id, must_be_active);
 
 		// Can be called before finalize so test instead of assert for the grid.
 		if(!result && scrollbar_container.content_grid_) {
 			result = scrollbar_container.
-				content_grid_->find_widget(id, must_be_active);
+				content_grid_->find(id, must_be_active);
 		}
 
 		return result;

@@ -85,11 +85,6 @@ public:
 		return /*result ? result :*/ tcontrol::find_at(coordinate, must_be_active);
 	}
 
-	// Needed to import the find_at(const tpoint&, const bool) and it's const version
-	// inheriting from panel eventhought they are the same as tcontainer_ but it might be
-	// panel reimplements it.
-	using tpanel::find_widget;
-
 	/** Inherited from tpanel. */
 	void set_active(const bool active);
 

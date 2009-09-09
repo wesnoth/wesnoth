@@ -185,22 +185,19 @@ public:
 	}
 
 	/** Inherited from twidget.*/
-	twidget* find_widget(const std::string& id, const bool must_be_active)
+	twidget* find(const std::string& id, const bool must_be_active)
 	{
-		return (twidget::find_widget(id, must_be_active)
+		return (twidget::find(id, must_be_active)
 			&& (!must_be_active || get_active())) ? this : 0;
 	}
 
 	/** Inherited from twidget.*/
-	const twidget* find_widget(const std::string& id,
+	const twidget* find(const std::string& id,
 			const bool must_be_active) const
 	{
-		return (twidget::find_widget(id, must_be_active)
+		return (twidget::find(id, must_be_active)
 			&& (!must_be_active || get_active())) ? this : 0;
 	}
-
-	/** Import overloaded versions. */
-	using twidget::find_widget;
 
 	/**
 	 * Inherited from twidget.

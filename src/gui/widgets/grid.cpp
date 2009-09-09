@@ -545,16 +545,16 @@ const twidget* tgrid::find_at(const tpoint& coordinate,
 		*this, coordinate, must_be_active);
 }
 
-twidget* tgrid::find_widget(const std::string& id, const bool must_be_active)
+twidget* tgrid::find(const std::string& id, const bool must_be_active)
 {
-	return tgrid_implementation::find_widget<twidget>(
+	return tgrid_implementation::find<twidget>(
 			*this, id, must_be_active);
 }
 
-const twidget* tgrid::find_widget(const std::string& id,
+const twidget* tgrid::find(const std::string& id,
 		const bool must_be_active) const
 {
-	return tgrid_implementation::find_widget<const twidget>(
+	return tgrid_implementation::find<const twidget>(
 			*this, id, must_be_active);
 }
 

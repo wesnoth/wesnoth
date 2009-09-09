@@ -40,7 +40,7 @@ void dialog_callback(twidget* caller)
  * current scope).
  */
 #define GUI2_EASY_BUTTON_CALLBACK(ID, MY_TYPE) \
-	tbutton* ID##_btn = dynamic_cast<tbutton*>(window.find_widget(#ID, false)); \
+	tbutton* ID##_btn = dynamic_cast<tbutton*>(window.find(#ID, false)); \
 	VALIDATE(ID##_btn, missing_widget(#ID)); \
 	ID##_btn->set_callback_mouse_left_click(dialog_callback<MY_TYPE, \
 		&MY_TYPE::ID##_button_callback>);

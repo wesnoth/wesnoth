@@ -553,12 +553,12 @@ const twidget* tindependant::find_at(const tpoint& coordinate
 	return grid.find_at(coordinate, must_be_active);
 }
 
-twidget* tindependant::find_widget(
+twidget* tindependant::find(
 		const std::string& id, const bool must_be_active)
 {
 	for(size_t i = 0; i < get_item_count(); ++i) {
 		if(is_selected(i)) {
-			if(twidget* widget = get_item(i).find_widget(id, must_be_active)) {
+			if(twidget* widget = get_item(i).find(id, must_be_active)) {
 				return widget;
 			}
 		}
@@ -566,13 +566,13 @@ twidget* tindependant::find_widget(
 	return NULL;
 }
 
-const twidget* tindependant::find_widget(
+const twidget* tindependant::find(
 		const std::string& id, const bool must_be_active) const
 {
 	for(size_t i = 0; i < get_item_count(); ++i) {
 		if(is_selected(i)) {
 			if(const twidget* widget =
-					get_item(i).find_widget(id, must_be_active)) {
+					get_item(i).find(id, must_be_active)) {
 
 				return widget;
 			}
@@ -668,7 +668,7 @@ void tshow::init(tgrid* grid
 			}
 		} else {
 			tcontrol* control = dynamic_cast<
-					tcontrol*>(grid->find_widget(item.first, false));
+					tcontrol*>(grid->find(item.first, false));
 			if(control) {
 				control->set_members(item.second);
 			}

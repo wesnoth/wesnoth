@@ -77,7 +77,7 @@ void tlobby_player_info::pre_show(CVideo& /*video*/, twindow& window)
 	update_relation(window);
 
 	if (!preferences::is_authenticated()) {
-		twidget* aw = window.find_widget("admin", false);
+		twidget* aw = window.find("admin", false);
 		aw->set_visible(twidget::INVISIBLE);
 	}
 }

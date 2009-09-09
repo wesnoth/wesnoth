@@ -337,7 +337,7 @@ void add_tooltip_data(std::map<std::string, string_map>& map,
 
 void set_visible_if_exists(tgrid* grid, const char* id, bool visible)
 {
-	twidget* w = grid->find_widget(id, false);
+	twidget* w = grid->find(id, false);
 	if (w) {
 		w->set_visible(visible ? twidget::VISIBLE : twidget::INVISIBLE);
 	}
@@ -451,19 +451,19 @@ void tlobby_main::update_gamelist()
 		set_visible_if_exists(grid, "use_map_settings", game.use_map_settings);
 		set_visible_if_exists(grid, "no_era", !game.have_era);
 
-		tbutton* join_button = dynamic_cast<tbutton*>(grid->find_widget("join", false));
+		tbutton* join_button = dynamic_cast<tbutton*>(grid->find("join", false));
 		if (join_button) {
 			join_button->set_callback_mouse_left_click(
 				dialog_callback<tlobby_main, &tlobby_main::join_button_callback>);
 			join_button->set_active(game.can_join());
 		}
-		tbutton* observe_button = dynamic_cast<tbutton*>(grid->find_widget("observe", false));
+		tbutton* observe_button = dynamic_cast<tbutton*>(grid->find("observe", false));
 		if (observe_button) {
 			observe_button->set_callback_mouse_left_click(
 				dialog_callback<tlobby_main, &tlobby_main::observe_button_callback>);
 			observe_button->set_active(game.can_observe());
 		}
-		tminimap* minimap = dynamic_cast<tminimap*>(grid->find_widget("minimap", false));
+		tminimap* minimap = dynamic_cast<tminimap*>(grid->find("minimap", false));
 		if (minimap) {
 			minimap->set_config(&game_config_);
 			minimap->set_map_data(game.map_data);
@@ -606,14 +606,14 @@ void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
 		&tlobby_main::player_filter_callback, this, _1));
 
 
-	chat_log_container_ = dynamic_cast<tmulti_page*>(window.find_widget("chat_log_container", false));
+	chat_log_container_ = dynamic_cast<tmulti_page*>(window.find("chat_log_container", false));
 	VALIDATE(chat_log_container_, missing_widget("chat_log_container_"));
 
 	window.set_enter_disabled(true);
 	window.set_event_loop_pre_callback(boost::bind(&tlobby_main::network_handler, this));
 	window_ = &window;
 
-	chat_input_ = dynamic_cast<ttext_box*>(window.find_widget("chat_input", false));
+	chat_input_ = dynamic_cast<ttext_box*>(window.find("chat_input", false));
 	VALIDATE(chat_input_, missing_widget("chat_input"));
 	chat_input_->set_key_press_callback(boost::bind(&tlobby_main::chat_input_keypress_callback, this, _1, _2, _3, _4));
 

@@ -225,13 +225,13 @@ public:
 	tdialog* dialog() { return owner_; }
 
 	/** Inherited from tcontainer_. */
-	twidget* find_widget(const std::string& id, const bool must_be_active)
-		{ return tcontainer_::find_widget(id, must_be_active); }
+	twidget* find(const std::string& id, const bool must_be_active)
+		{ return tcontainer_::find(id, must_be_active); }
 
 	/** Inherited from tcontainer_. */
-	const twidget* find_widget(const std::string& id,
+	const twidget* find(const std::string& id,
 			const bool must_be_active) const
-		{ return tcontainer_::find_widget(id, must_be_active); }
+		{ return tcontainer_::find(id, must_be_active); }
 
 	/**
 	 * Register a widget that prevents easy closing.

@@ -59,13 +59,13 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 
 	// Set the markup
 	tlabel* title =
-			dynamic_cast<tlabel*>(window.find_widget("title", false));
+			dynamic_cast<tlabel*>(window.find("title", false));
 	assert(title);
 	title->set_label(title_);
 	title->set_markup_mode(tcontrol::WML_MARKUP);
 
 	tcontrol* message =
-			dynamic_cast<tcontrol*>(window.find_widget("message", false));
+			dynamic_cast<tcontrol*>(window.find("message", false));
 	assert(message);
 	message->set_label(message_);
 	message->set_markup_mode(tcontrol::PANGO_MARKUP);
@@ -75,11 +75,11 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 
 	// Find the input box related fields.
 	tlabel* caption = dynamic_cast<tlabel*>(
-			window.find_widget("input_caption", false));
+			window.find("input_caption", false));
 	VALIDATE(caption, missing_widget("input_caption"));
 
 	ttext_box* input = dynamic_cast<ttext_box*>(
-			 window.find_widget("input", true));
+			 window.find("input", true));
 	VALIDATE(input, missing_widget("input"));
 
 	if(has_input_) {
@@ -97,7 +97,7 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 
 	// Find the option list related fields.
 	tlistbox* options = dynamic_cast<tlistbox*>(
-			window.find_widget("input_list", true));
+			window.find("input_list", true));
 	VALIDATE(options, missing_widget("input_list"));
 
 	/*
@@ -167,12 +167,12 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 			assert(grid);
 
 			tcontrol* control = dynamic_cast<tcontrol*>(
-					grid->find_widget("label", false));
+					grid->find("label", false));
 			assert(control);
 			control->set_markup_mode(tcontrol::WML_MARKUP);
 
 			control = dynamic_cast<tcontrol*>(
-					grid->find_widget("description", false));
+					grid->find("description", false));
 			assert(control);
 			control->set_markup_mode(tcontrol::WML_MARKUP);
 		}
@@ -203,7 +203,7 @@ void twml_message_::post_show(twindow& window)
 {
 	if(has_input_) {
 		ttext_box* input = dynamic_cast<ttext_box*>(
-				 window.find_widget("input", true));
+				 window.find("input", true));
 		VALIDATE(input, missing_widget("input"));
 
 		*input_text_ = input->get_value();
@@ -211,7 +211,7 @@ void twml_message_::post_show(twindow& window)
 
 	if(!option_list_.empty()) {
 		tlistbox* options = dynamic_cast<tlistbox*>(
-				window.find_widget("input_list", true));
+				window.find("input_list", true));
 		VALIDATE(options, missing_widget("input_list"));
 
 		*chosen_option_ = options->get_selected_row();

@@ -64,11 +64,11 @@ twindow* tmp_create_game::build_window(CVideo& video)
 
 void tmp_create_game::pre_show(CVideo& /*video*/, twindow& window)
 {
-	tminimap* minimap = dynamic_cast<tminimap*>(window.find_widget("minimap", false));
+	tminimap* minimap = dynamic_cast<tminimap*>(window.find("minimap", false));
 	VALIDATE(minimap, missing_widget("minimap"));
 	minimap->set_config(&cfg_);
 
-	tlistbox* list = dynamic_cast<tlistbox*>(window.find_widget("map_list", false));
+	tlistbox* list = dynamic_cast<tlistbox*>(window.find("map_list", false));
 	VALIDATE(list, missing_widget("map_list"));
 
 	list->set_callback_value_change(dialog_callback<tmp_create_game, &tmp_create_game::update_map>);
@@ -115,7 +115,7 @@ void tmp_create_game::pre_show(CVideo& /*video*/, twindow& window)
 void tmp_create_game::post_show(twindow& window)
 {
 	if(get_retval() == twindow::OK) {
-		tlistbox* list = dynamic_cast<tlistbox*>(window.find_widget("map_list", false));
+		tlistbox* list = dynamic_cast<tlistbox*>(window.find("map_list", false));
 		assert(list);
 
 	}
@@ -123,10 +123,10 @@ void tmp_create_game::post_show(twindow& window)
 
 void tmp_create_game::update_map(twindow& window)
 {
-	tlistbox* list = dynamic_cast<tlistbox*>(window.find_widget("map_list", false));
+	tlistbox* list = dynamic_cast<tlistbox*>(window.find("map_list", false));
 	VALIDATE(list, missing_widget("map_list"));
 
-	tminimap* minimap = dynamic_cast<tminimap*>(window.find_widget("minimap", false));
+	tminimap* minimap = dynamic_cast<tminimap*>(window.find("minimap", false));
 	VALIDATE(list, missing_widget("minimap"));
 
 	const int index = list->get_selected_row() - 1;

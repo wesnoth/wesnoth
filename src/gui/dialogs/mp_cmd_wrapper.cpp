@@ -58,42 +58,42 @@ twindow* tmp_cmd_wrapper::build_window(CVideo& video)
 void tmp_cmd_wrapper::pre_show(CVideo& /*video*/, twindow& window)
 {
 	ttext_box* message =
-		dynamic_cast<ttext_box*>(window.find_widget("message", false));
+		dynamic_cast<ttext_box*>(window.find("message", false));
 	if(message) window.keyboard_capture(message);
 
-	message = dynamic_cast<ttext_box*>(window.find_widget("reason", false));
+	message = dynamic_cast<ttext_box*>(window.find("reason", false));
 	if(message) message->set_active(preferences::is_authenticated());
 
-	message = dynamic_cast<ttext_box*>(window.find_widget("time", false));
+	message = dynamic_cast<ttext_box*>(window.find("time", false));
 	if(message) message->set_active(preferences::is_authenticated());
 
 	tlabel* label =
-		dynamic_cast<tlabel*>(window.find_widget("user_label", false));
+		dynamic_cast<tlabel*>(window.find("user_label", false));
 	if(label) label->set_label(user_);
 
 
-	tbutton* b = dynamic_cast<tbutton*>(window.find_widget("add_friend", false));
+	tbutton* b = dynamic_cast<tbutton*>(window.find("add_friend", false));
 	if(b) b->set_retval(1);
 
-	b = dynamic_cast<tbutton*>(window.find_widget("add_ignore", false));
+	b = dynamic_cast<tbutton*>(window.find("add_ignore", false));
 	if(b) b->set_retval(2);
 
-	b = dynamic_cast<tbutton*>(window.find_widget("remove", false));
+	b = dynamic_cast<tbutton*>(window.find("remove", false));
 	if(b) b->set_retval(3);
 
-	b = dynamic_cast<tbutton*>(window.find_widget("status", false));
+	b = dynamic_cast<tbutton*>(window.find("status", false));
 	if(b) {
 		b->set_retval(4);
 		b->set_active(preferences::is_authenticated());
 	}
 
-	b = dynamic_cast<tbutton*>(window.find_widget("kick", false));
+	b = dynamic_cast<tbutton*>(window.find("kick", false));
 	if(b) {
 		b->set_retval(5);
 		b->set_active(preferences::is_authenticated());
 	}
 
-	b = dynamic_cast<tbutton*>(window.find_widget("ban", false));
+	b = dynamic_cast<tbutton*>(window.find("ban", false));
 	if(b) {
 		b->set_retval(6);
 		b->set_active(preferences::is_authenticated());
@@ -104,15 +104,15 @@ void tmp_cmd_wrapper::pre_show(CVideo& /*video*/, twindow& window)
 void tmp_cmd_wrapper::post_show(twindow& window)
 {
 	ttext_box* message =
-		dynamic_cast<ttext_box*>(window.find_widget("message", false));
+		dynamic_cast<ttext_box*>(window.find("message", false));
 	message_ = message ? message_ = message->get_value() : "";
 
 	ttext_box* reason =
-		dynamic_cast<ttext_box*>(window.find_widget("reason", false));
+		dynamic_cast<ttext_box*>(window.find("reason", false));
 	reason_ = reason ? reason_ = reason->get_value() : "";
 
 	ttext_box* time =
-		dynamic_cast<ttext_box*>(window.find_widget("time", false));
+		dynamic_cast<ttext_box*>(window.find("time", false));
 	time_ = time ? time_ = time->get_value() : "";
 
 }

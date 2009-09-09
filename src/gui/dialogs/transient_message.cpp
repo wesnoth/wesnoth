@@ -29,14 +29,14 @@ twindow* ttransient_message::build_window(CVideo& video)
 void ttransient_message::pre_show(CVideo& /*video*/, twindow& window)
 {
 	tlabel* title =
-		dynamic_cast<tlabel*>(window.find_widget("title", false));
+		dynamic_cast<tlabel*>(window.find("title", false));
 	VALIDATE(title, missing_widget("title"));
 
 	title->set_label(title_);
 	title->set_markup_mode(title_markup_mode_);
 
 	tlabel* message =
-		dynamic_cast<tlabel*>(window.find_widget("message", false));
+		dynamic_cast<tlabel*>(window.find("message", false));
 	VALIDATE(message, missing_widget("message"));
 
 	message->set_label(message_);

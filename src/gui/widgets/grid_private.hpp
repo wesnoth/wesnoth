@@ -74,17 +74,17 @@ struct tgrid_implementation
 
 	/**
 	 * Implementation for the wrappers for
-	 * [const] twidget* tgrid::find_widget(const std::string&,
+	 * [const] twidget* tgrid::find(const std::string&,
 	 * const bool) [const].
 	 *
 	 * @param W                   twidget or const twidget.
 	 */
 	template<class W>
-	static W* find_widget(typename tconst_duplicator<W, tgrid>::type& grid,
+	static W* find(typename tconst_duplicator<W, tgrid>::type& grid,
 				const std::string& id, const bool must_be_active)
 	{
 		// Inherited.
-		W* widget = grid.twidget::find_widget(id, must_be_active);
+		W* widget = grid.twidget::find(id, must_be_active);
 		if(widget) {
 			return widget;
 		}
@@ -97,7 +97,7 @@ struct tgrid_implementation
 				continue;
 			}
 
-			widget = widget->find_widget(id, must_be_active);
+			widget = widget->find(id, must_be_active);
 			if(widget) {
 				return widget;
 			}

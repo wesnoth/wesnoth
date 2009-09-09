@@ -46,7 +46,7 @@ struct tmessage_implementation
 			const std::string& id)
 	{
 		button_status.button =
-			dynamic_cast<tbutton*>(window.find_widget(id, false));
+			dynamic_cast<tbutton*>(window.find(id, false));
 		VALIDATE(button_status.button, missing_widget(id));
 		button_status.button->set_visible(button_status.visible);
 
@@ -75,7 +75,7 @@ void tmessage::pre_show(CVideo& /*video*/, twindow& window)
 	// ***** ***** ***** ***** Set up the widgets ***** ***** ***** *****
 	if(!title_.empty()) {
 		tlabel* title =
-			dynamic_cast<tlabel*>(window.find_widget("title", false));
+			dynamic_cast<tlabel*>(window.find("title", false));
 		VALIDATE(title, missing_widget("title"));
 
 		title->set_label(title_);
@@ -83,14 +83,14 @@ void tmessage::pre_show(CVideo& /*video*/, twindow& window)
 
 	if(!image_.empty()) {
 		timage* image =
-			dynamic_cast<timage*>(window.find_widget("image", false));
+			dynamic_cast<timage*>(window.find("image", false));
 		VALIDATE(image, missing_widget("image"));
 
 		image->set_label(image_);
 	}
 
 	tcontrol* label =
-		dynamic_cast<tcontrol*>(window.find_widget("label", false));
+		dynamic_cast<tcontrol*>(window.find("label", false));
 	VALIDATE(label, missing_widget("label"));
 
 	label->set_label(message_);

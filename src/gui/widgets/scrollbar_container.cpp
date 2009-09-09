@@ -427,18 +427,18 @@ const twidget* tscrollbar_container::find_at(const tpoint& coordinate,
 			::find_at<const twidget>(*this, coordinate, must_be_active);
 }
 
-twidget* tscrollbar_container::find_widget(
+twidget* tscrollbar_container::find(
 		const std::string& id, const bool must_be_active)
 {
 	return tscrollbar_container_implementation
-			::find_widget<twidget>(*this, id, must_be_active);
+			::find<twidget>(*this, id, must_be_active);
 }
 
-const twidget* tscrollbar_container::find_widget(
+const twidget* tscrollbar_container::find(
 			const std::string& id, const bool must_be_active) const
 {
 	return tscrollbar_container_implementation
-			::find_widget<const twidget>(*this, id, must_be_active);
+			::find<const twidget>(*this, id, must_be_active);
 }
 
 bool tscrollbar_container::disable_click_dismiss() const

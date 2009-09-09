@@ -422,10 +422,9 @@ struct tindependant
 	const twidget* find_at(const tpoint& coordinate
 			, const bool must_be_active) const;
 
-	twidget* find_widget(const std::string& id, const bool must_be_active);
+	twidget* find(const std::string& id, const bool must_be_active);
 
-	const twidget* find_widget(
-			const std::string& id, const bool must_be_active) const;
+	const twidget* find(const std::string& id, const bool must_be_active) const;
 
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 

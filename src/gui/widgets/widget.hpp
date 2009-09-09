@@ -274,12 +274,12 @@ public:
 	 * @retval 0                  No widget with the id found (or not active if
 	 *                            must_be_active was set).
 	 */
-	virtual twidget* find_widget(const std::string& id,
+	virtual twidget* find(const std::string& id,
 			const bool /*must_be_active*/)
 		{ return id_ == id ? this : 0; }
 
-	/** The const version of find_widget. */
-	virtual const twidget* find_widget(const std::string& id,
+	/** The const version of find. */
+	virtual const twidget* find(const std::string& id,
 			const bool /*must_be_active*/) const
 		{ return id_ == id ? this : 0; }
 
@@ -671,7 +671,7 @@ T* NEW_find_widget(typename tconst_duplicator<T, twidget>::type* widget
 		, const bool must_exist)
 {
 	T* result =
-		dynamic_cast<T*>(widget->find_widget(id, must_be_active));
+		dynamic_cast<T*>(widget->find(id, must_be_active));
 	VALIDATE(!must_exist || result, missing_widget(id));
 
 	return result;

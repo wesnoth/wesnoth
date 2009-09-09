@@ -135,14 +135,10 @@ public:
 			const bool must_be_active) const;
 
 	/** Inherited from tcontainer_. */
-	twidget* find_widget(const std::string& id, const bool must_be_active);
-
-	/** Import overloaded versions. */
-	using tcontainer_::find_widget;
+	twidget* find(const std::string& id, const bool must_be_active);
 
 	/** Inherited from tcontrol.*/
-	const twidget* find_widget(
-			const std::string& id, const bool must_be_active) const;
+	const twidget* find(const std::string& id, const bool must_be_active) const;
 
 	/** Inherited from tcontainer_. */
 	bool disable_click_dismiss() const;

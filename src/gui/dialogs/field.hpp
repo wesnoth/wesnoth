@@ -124,7 +124,7 @@ public:
 	void widget_set_enabled(twindow& window, const bool enable, const bool sync)
 	{
 		tcontrol* widget =
-			dynamic_cast<tcontrol*>(window.find_widget(id(), false));
+			dynamic_cast<tcontrol*>(window.find(id(), false));
 
 		if(!widget) {
 			return;
@@ -155,7 +155,7 @@ public:
 	 */
 	twidget* widget(twindow& window) {
 
-		twidget* widget = dynamic_cast<tcontrol*>(window.find_widget(id(), false));
+		twidget* widget = dynamic_cast<tcontrol*>(window.find(id(), false));
 		VALIDATE(optional_ || widget, missing_widget(id()));
 
 		return widget;
@@ -346,7 +346,7 @@ private:
 		if(is_optional()) {
 			return;
 		}
-		const W* widget = dynamic_cast<const W*>(window.find_widget(id(), false));
+		const W* widget = dynamic_cast<const W*>(window.find(id(), false));
 		VALIDATE(widget, missing_widget(id()));
 	}
 
@@ -359,7 +359,7 @@ private:
 	void save(twindow& window, const bool must_be_active)
 	{
 		const W* widget =
-			dynamic_cast<const W*>(window.find_widget(id(), must_be_active));
+			dynamic_cast<const W*>(window.find(id(), must_be_active));
 
 		if(widget) {
 			value_ = widget->get_value();
@@ -371,7 +371,7 @@ private:
 	 */
 	void restore(twindow& window)
 	{
-		W* widget = dynamic_cast<W*>(window.find_widget(id(), false));
+		W* widget = dynamic_cast<W*>(window.find(id(), false));
 
 		if(widget) {
 			widget->set_value(value_);
@@ -401,7 +401,7 @@ private:
 	{
 		if(callback_change_) {
 			tselectable_* widget =
-				dynamic_cast<tselectable_*>(window.find_widget(id(), false));
+				dynamic_cast<tselectable_*>(window.find(id(), false));
 
 			if(widget) {
 				widget->set_callback_state_change(callback_change_);
@@ -429,8 +429,7 @@ private:
 	/** Overridden from tfield_. */
 	void finalize_specialized(twindow& window)
 	{
-		ttext_box* widget =
-			dynamic_cast<ttext_box*>(window.find_widget(id(), false));
+		ttext_box* widget = dynamic_cast<ttext_box*>(window.find(id(), false));
 
 		if(widget) {
 			widget->save_to_history();

@@ -59,12 +59,12 @@ namespace gui2 {
 void tcampaign_selection::campaign_selected(twindow& window)
 {
 	tlistbox* list = dynamic_cast<tlistbox*>(
-			window.find_widget("campaign_list", false));
+			window.find("campaign_list", false));
 	VALIDATE(list, missing_widget("campaign_list"));
 
 
 	tmulti_page* multi_page = dynamic_cast<tmulti_page*>(
-			window.find_widget("campaign_details", false));
+			window.find("campaign_details", false));
 	VALIDATE(multi_page, missing_widget("campaign_details"));
 
 	multi_page->select_page(list->get_selected_row());
@@ -79,7 +79,7 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 {
 	/***** Setup campaign list. *****/
 	tlistbox* list = dynamic_cast<tlistbox*>(
-			window.find_widget("campaign_list", false));
+			window.find("campaign_list", false));
 	VALIDATE(list, missing_widget("campaign_list"));
 
 	list->set_callback_value_change(dialog_callback
@@ -89,7 +89,7 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 
 	/***** Setup campaign details. *****/
 	tmulti_page* multi_page = dynamic_cast<tmulti_page*>(
-			window.find_widget("campaign_details", false));
+			window.find("campaign_details", false));
 	VALIDATE(multi_page, missing_widget("campaign_details"));
 
 	foreach (const config &c, campaigns_) {
@@ -109,7 +109,7 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 		tgrid* grid = list->get_row_grid(list->get_item_count() - 1);
 		assert(grid);
 
-		twidget* widget = grid->find_widget("victory", false);
+		twidget* widget = grid->find("victory", false);
 		if(widget && !utils::string_bool(c["completed"], false)) {
 			widget->set_visible(twidget::HIDDEN);
 		}
@@ -133,7 +133,7 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 void tcampaign_selection::post_show(twindow& window)
 {
 		tlistbox* list = dynamic_cast<tlistbox*>(
-				window.find_widget("campaign_list", false));
+				window.find("campaign_list", false));
 		assert(list);
 
 		choice_ = list->get_selected_row();
