@@ -411,11 +411,11 @@ static int lua_vconfig_get(lua_State *L)
 {
 	vconfig *v = static_cast<vconfig *>(lua_touserdata(L, 1));
 
-	if (lua_isnumber(L, 1))
+	if (lua_isnumber(L, 2))
 	{
 		vconfig::all_children_iterator i = v->ordered_begin();
 		unsigned len = std::distance(i, v->ordered_end());
-		unsigned pos = lua_tointeger(L, 1) - 1;
+		unsigned pos = lua_tointeger(L, 2) - 1;
 		if (pos >= len) return 0;
 		std::advance(i, pos);
 		lua_createtable(L, 2, 0);
