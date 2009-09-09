@@ -13,7 +13,9 @@ local function all_teams()
 end
 
 local function get_child(cfg, name)
-	for i,v in ipairs(cfg) do
+	-- ipairs cannot be used on a vconfig object
+	for i = 1, #cfg do
+		local v = cfg[i]
 		if v[1] == name then return v[2] end
 	end
 end
