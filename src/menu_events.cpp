@@ -1915,7 +1915,7 @@ private:
 		const std::string& help_chat_help = _("Commands: msg/whisper <nick>"
 				" <message>, list <subcommand> [<argument>], me/emote <message>."
 				" Type /help [<command>] for detailed instructions.");
-		if ((cmd == "me" || cmd == "emote") && argc > 0) {
+		if ((cmd == "me" || cmd == "emote") && argc >= 0) {
 			//emote message
 			send_chat_message("/me" + message.substr(cmd.size() + 1), allies_only);
 		} else if (cmd == "query" || cmd == "ban" || cmd == "kick"

@@ -15,6 +15,7 @@
 #define MULTIPLAYER_UI_HPP_INCLUDED
 
 #include "hotkeys.hpp"
+#include "generic_event.hpp"
 #include "network.hpp"
 #include "preferences_display.hpp"
 #include "widgets/label.hpp"
@@ -69,13 +70,17 @@ private:
 
 //a base class for the different multiplayer base dialogs: game list, create
 //game, wait game, game setup
-class ui : public gui::widget, private events::chat_handler, private font::floating_label_context
+class ui : public gui::widget, private events::chat_handler, private font::floating_label_context, public events::observer
 {
 public:
 	enum result { CONTINUE, JOIN, OBSERVE, CREATE, PREFERENCES, PLAY, QUIT };
 
 	ui(game_display& d, const std::string& title,
 			const config& cfg, chat& c, config& gamelist);
+
+	virtual ~ui();
+
+	virtual void handle_generic_event(const std::string& event_name);
 
 	// Asks the multiplayer_ui to pump some data from the network, and then
 	// to process it. The actual processing will be left to the child
@@ -99,6 +104,9 @@ protected:
 	static const int yscale_base;
 
 	SDL_Rect client_area() const;
+
+	std::vector<std::string> friends_;
+	std::vector<std::string> ignores_;
 
 	game_display& disp_;
 	game_display& disp() { return disp_; };

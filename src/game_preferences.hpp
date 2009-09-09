@@ -27,6 +27,10 @@ class unit_map;
 #include <utility>
 #include <set>
 
+namespace events {
+	class generic_event;
+}
+
 namespace preferences {
 
 	struct manager
@@ -208,6 +212,9 @@ namespace preferences {
 	void encounter_recallable_units(game_state& gamestate);
 	// Add all terrains on the map as encountered terrains.
 	void encounter_map_terrain(gamemap& map);
+
+	events::generic_event & friend_added_event();
+	events::generic_event & ignore_added_event();
 }
 
 #endif

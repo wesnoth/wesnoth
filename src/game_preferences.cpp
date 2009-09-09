@@ -21,6 +21,7 @@
 #include "game_preferences.hpp"
 #include "gamestatus.hpp"
 #include "gettext.hpp"
+#include "generic_event.hpp"
 #include "hotkeys.hpp"
 #include "log.hpp"
 #include "network.hpp" // ping_timeout
@@ -60,6 +61,9 @@ void remove_relation(const std::string nick, const std::string relation) {
 	r.erase(std::remove(r.begin(), r.end(), nick), r.end());
 	preferences::set(relation, utils::join(r));
 }
+
+events::generic_event friend_added_event_("friend_added");
+events::generic_event ignore_added_event_("ignore_added");
 
 } // anon namespace
 
@@ -116,12 +120,14 @@ std::string get_ignores() {
 bool add_friend(const std::string nick) {
 	if (!utils::isvalid_username(nick)) return false;
 	add_relation(nick, "friends");
+	friend_added_event_.notify_observers();
 	return true;
 }
 
 bool add_ignore(const std::string nick) {
 	if (!utils::isvalid_username(nick)) return false;
 	add_relation(nick, "ignores");
+	ignore_added_event_.notify_observers();
 	return true;
 }
 
@@ -730,6 +736,16 @@ void encounter_map_terrain(gamemap& map){
 			};
 		}
 	}
+}
+
+events::generic_event & friend_added_event()
+{
+	return friend_added_event_;
+}
+
+events::generic_event & ignore_added_event()
+{
+	return ignore_added_event_;
 }
 
 } // preferences namespace

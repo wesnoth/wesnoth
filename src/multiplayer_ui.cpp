@@ -17,6 +17,7 @@
 #include "config.hpp"
 #include "construct_dialog.hpp"
 #include "game_display.hpp"
+#include "generic_event.hpp"
 #include "font.hpp"
 #include "marked-up_text.hpp"
 #include "gettext.hpp"
@@ -262,6 +263,27 @@ ui::ui(game_display& disp, const std::string& title, const config& cfg, chat& c,
 	const SDL_Rect area = { 0, 0, disp.video().getx(), disp.video().gety() };
 	users_menu_.set_numeric_keypress_selection(false);
 	set_location(area);
+
+	friends_ = utils::split(preferences::get("friends"));
+	ignores_ = utils::split(preferences::get("ignores"));
+
+	preferences::friend_added_event().attach_handler(this);
+	preferences::ignore_added_event().attach_handler(this);
+}
+
+ui::~ui() {
+	preferences::friend_added_event().detach_handler(this);
+	preferences::ignore_added_event().detach_handler(this);
+}
+
+void ui::handle_generic_event(const std::string& event_name)
+{
+	if(event_name == "ignore_added") {
+		ignores_ = utils::split(preferences::get("ignores"));
+	} 
+	else if(event_name == "ignore_added") {
+		friends_ = utils::split(preferences::get("friends"));
+	}
 }
 
 void ui::process_network()
@@ -614,13 +636,12 @@ void ui::gamelist_updated(bool silent)
 		if(!(**user)["location"].empty()) {
 			u_elem.location = (**user)["location"];
 		}
-		std::vector<std::string> friends = utils::split(preferences::get("friends"));
-		std::vector<std::string> ignores = utils::split(preferences::get("ignores"));
+
 		if (u_elem.name == preferences::login()) {
 			u_elem.relation = ME;
-		} else if (std::find(ignores.begin(), ignores.end(), u_elem.name) != ignores.end()) {
+		} else if (std::find(ignores_.begin(), ignores_.end(), u_elem.name) != ignores_.end()) {
 			u_elem.relation = IGNORED;
-		} else if (std::find(friends.begin(), friends.end(), u_elem.name) != friends.end()) {
+		} else if (std::find(friends_.begin(), friends_.end(), u_elem.name) != friends_.end()) {
 			u_elem.relation = FRIEND;
 		} else {
 			u_elem.relation = NEUTRAL;
