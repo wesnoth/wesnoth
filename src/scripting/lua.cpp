@@ -1173,7 +1173,7 @@ LuaKernel::LuaKernel()
 	lua_setfield(L, -2, "__index");
 	lua_pushcfunction(L, lua_side_set);
 	lua_setfield(L, -2, "__newindex");
-	lua_pushstring(L, "Hands off! (getside metatable)");
+	lua_pushstring(L, "side");
 	lua_setfield(L, -2, "__metatable");
 	lua_settable(L, LUA_REGISTRYINDEX);
 
@@ -1182,7 +1182,7 @@ LuaKernel::LuaKernel()
 	lua_createtable(L, 0, 1);
 	lua_pushcfunction(L, lua_gettext);
 	lua_setfield(L, -2, "__call");
-	lua_pushstring(L, "Hands off! (gettext metatable)");
+	lua_pushstring(L, "message domain");
 	lua_setfield(L, -2, "__metatable");
 	lua_settable(L, LUA_REGISTRYINDEX);
 
@@ -1191,7 +1191,7 @@ LuaKernel::LuaKernel()
 	lua_createtable(L, 0, 1);
 	lua_pushcfunction(L, lua_unit_type_get);
 	lua_setfield(L, -2, "__index");
-	lua_pushstring(L, "Hands off! (gettype metatable)");
+	lua_pushstring(L, "unit type");
 	lua_setfield(L, -2, "__metatable");
 	lua_settable(L, LUA_REGISTRYINDEX);
 
@@ -1202,7 +1202,7 @@ LuaKernel::LuaKernel()
 	lua_setfield(L, -2, "__index");
 	lua_pushcfunction(L, lua_unit_set);
 	lua_setfield(L, -2, "__newindex");
-	lua_pushstring(L, "Hands off! (getunit metatable)");
+	lua_pushstring(L, "unit");
 	lua_setfield(L, -2, "__metatable");
 	lua_settable(L, LUA_REGISTRYINDEX);
 
@@ -1215,7 +1215,7 @@ LuaKernel::LuaKernel()
 	lua_setfield(L, -2, "__gc");
 	lua_pushcfunction(L, lua_tstring_tostring);
 	lua_setfield(L, -2, "__tostring");
-	lua_pushstring(L, "Hands off! (tstring metatable)");
+	lua_pushstring(L, "translatable string");
 	lua_setfield(L, -2, "__metatable");
 	lua_settable(L, LUA_REGISTRYINDEX);
 
@@ -1226,7 +1226,7 @@ LuaKernel::LuaKernel()
 	lua_setfield(L, -2, "__call");
 	lua_pushcfunction(L, lua_wml_action_collect);
 	lua_setfield(L, -2, "__gc");
-	lua_pushstring(L, "Hands off! (wml action metatable)");
+	lua_pushstring(L, "wml action handler");
 	lua_setfield(L, -2, "__metatable");
 	lua_settable(L, LUA_REGISTRYINDEX);
 
@@ -1350,4 +1350,3 @@ void LuaKernel::execute(char const *prog, int nArgs, int nRets)
 }
 
 #endif // HAVE LUA
-
