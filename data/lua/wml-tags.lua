@@ -163,7 +163,8 @@ local function wml_store_gold(cfg)
 end
 
 local function wml_clear_variable(cfg)
-	for w in string.gmatch(cfg.name, "[^%s,][^,]*") do
+	local names = cfg.name or wml_error("[clear_variable] missing required name= attribute.")
+	for w in string.gmatch(names, "[^%s,][^,]*") do
 		wesnoth.set_variable(trim(w))
 	end
 end
