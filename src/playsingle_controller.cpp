@@ -21,6 +21,7 @@
 
 #include "playsingle_controller.hpp"
 
+#include "actions.hpp"
 #include "ai/manager.hpp"
 #include "ai/game_info.hpp"
 #include "ai/testing.hpp"
@@ -145,6 +146,7 @@ void playsingle_controller::force_end_level(LEVEL_RESULT res,
 		// Or should we merge them instead?
 		return;
 	}
+	victory_conditions::set_victory_when_enemies_defeated(false);
 	end_level_ = new end_level_exception(res, endlevel_music_list, percentage,
 		add, bonus, report, prescenario_save, linger);
 }
