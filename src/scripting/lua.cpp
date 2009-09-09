@@ -1168,7 +1168,7 @@ LuaKernel::LuaKernel()
 
 	// Create the getside metatable.
 	lua_pushlightuserdata(L, (void *)&getsideKey);
-	lua_createtable(L, 0, 2);
+	lua_createtable(L, 0, 3);
 	lua_pushcfunction(L, lua_side_get);
 	lua_setfield(L, -2, "__index");
 	lua_pushcfunction(L, lua_side_set);
@@ -1179,7 +1179,7 @@ LuaKernel::LuaKernel()
 
 	// Create the gettext metatable.
 	lua_pushlightuserdata(L, (void *)&gettextKey);
-	lua_createtable(L, 0, 1);
+	lua_createtable(L, 0, 2);
 	lua_pushcfunction(L, lua_gettext);
 	lua_setfield(L, -2, "__call");
 	lua_pushstring(L, "message domain");
@@ -1188,7 +1188,7 @@ LuaKernel::LuaKernel()
 
 	// Create the gettype metatable.
 	lua_pushlightuserdata(L, (void *)&gettypeKey);
-	lua_createtable(L, 0, 1);
+	lua_createtable(L, 0, 2);
 	lua_pushcfunction(L, lua_unit_type_get);
 	lua_setfield(L, -2, "__index");
 	lua_pushstring(L, "unit type");
@@ -1197,7 +1197,7 @@ LuaKernel::LuaKernel()
 
 	// Create the getunit metatable.
 	lua_pushlightuserdata(L, (void *)&getunitKey);
-	lua_createtable(L, 0, 2);
+	lua_createtable(L, 0, 3);
 	lua_pushcfunction(L, lua_unit_get);
 	lua_setfield(L, -2, "__index");
 	lua_pushcfunction(L, lua_unit_set);
@@ -1208,7 +1208,7 @@ LuaKernel::LuaKernel()
 
 	// Create the tstring metatable.
 	lua_pushlightuserdata(L, (void *)&tstringKey);
-	lua_createtable(L, 0, 3);
+	lua_createtable(L, 0, 4);
 	lua_pushcfunction(L, lua_tstring_concat);
 	lua_setfield(L, -2, "__concat");
 	lua_pushcfunction(L, lua_tstring_collect);
@@ -1221,7 +1221,7 @@ LuaKernel::LuaKernel()
 
 	// Create the wml action metatable.
 	lua_pushlightuserdata(L, (void *)&wactionKey);
-	lua_createtable(L, 0, 2);
+	lua_createtable(L, 0, 3);
 	lua_pushcfunction(L, lua_wml_action_call);
 	lua_setfield(L, -2, "__call");
 	lua_pushcfunction(L, lua_wml_action_collect);
