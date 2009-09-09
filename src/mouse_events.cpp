@@ -646,11 +646,14 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 		attw.set_specials_context(attacker->first, defender->first, attacker->second, true);
 		defw.set_specials_context(attacker->first, defender->first, attacker->second, false);
 
-		//if there is an attack special or defend special, we output a single space for the other unit, to make sure
-		//that the attacks line up nicely.
-		std::string special_pad = "";
-		if (!attw.weapon_specials().empty() || !defw.weapon_specials().empty())
-			special_pad = " ";
+		// if missing, add dummy special, to be sure to have
+		// big enough mimimum width (weapon's name can be very short)
+		std::string att_weapon_special = attw.weapon_specials();
+		if (att_weapon_special.empty())
+			att_weapon_special += "       ";
+		std::string def_weapon_special = defw.weapon_specials();
+		if (def_weapon_special.empty())
+			def_weapon_special += "       ";
 
 		std::stringstream atts;
 		if (i == best) {
@@ -661,15 +664,24 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 		if (!range.empty()) {
 			range = gettext(range.c_str());
 		}
+
+		// color CtH in red-yellow-green
+		SDL_Color att_cth_color =
+				int_to_color( game_config::red_to_green(att.chance_to_hit) );
+		SDL_Color def_cth_color =
+				int_to_color( game_config::red_to_green(def.chance_to_hit) );
+
 		atts << IMAGE_PREFIX << attw.icon() << COLUMN_SEPARATOR
-			 << font::BOLD_TEXT << attw.name() << "\n" << att.damage << "-"
-			 << att.num_blows << " "  << " (" << att.chance_to_hit << "%)\n"
-			 << attw.weapon_specials() << special_pad
-			 << COLUMN_SEPARATOR << font::weapon << "- " << range << " -" << COLUMN_SEPARATOR
-			 << font::BOLD_TEXT << defw.name() << "\n" << def.damage << "-"
-			 << def.num_blows << " "  << " (" << def.chance_to_hit << "%)\n"
-			 << defw.weapon_specials() << special_pad << COLUMN_SEPARATOR
-			 << IMAGE_PREFIX << defw.icon();
+			 << font::BOLD_TEXT << attw.name()  << "\n"
+			 << att.damage << "-" << att.num_blows
+			 << "  " << att_weapon_special << "\n"
+			 << font::color2markup(att_cth_color) << att.chance_to_hit << "%"
+			 << COLUMN_SEPARATOR << font::weapon_details << "- " << range << " -" << COLUMN_SEPARATOR
+			 << font::BOLD_TEXT << defw.name()  << "\n"
+			 << def.damage << "-" << def.num_blows
+			 << "  " << def_weapon_special << "\n"
+			 << font::color2markup(def_cth_color) << def.chance_to_hit << "%"
+			 << COLUMN_SEPARATOR << IMAGE_PREFIX << defw.icon();
 
 		items.push_back(atts.str());
 	}
