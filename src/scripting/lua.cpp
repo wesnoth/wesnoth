@@ -245,6 +245,45 @@ static bool wml_config_of_table(lua_State *L, config &cfg, int tstring_meta = 0)
 #undef return_misformed
 
 /**
+ * Gets an optional vconfig from either a table or a userdata.
+ * @return false in case of failure.
+ */
+static bool lua_tovconfig(lua_State *L, int index, vconfig &vcfg)
+{
+	switch (lua_type(L, index))
+	{
+		case LUA_TTABLE:
+		{
+			config cfg;
+			lua_pushvalue(L, index);
+			bool ok = wml_config_of_table(L, cfg);
+			lua_pop(L, 1);
+			if (!ok) return false;
+			vcfg = vconfig(cfg, true);
+			break;
+		}
+		case LUA_TUSERDATA:
+		{
+			if (!lua_getmetatable(L, index))
+				return false;
+			lua_pushlightuserdata(L, (void *)&vconfigKey);
+			lua_gettable(L, LUA_REGISTRYINDEX);
+			bool ok = lua_rawequal(L, -1, -2);
+			lua_pop(L, 2);
+			if (!ok) return false;
+			vcfg = *static_cast<vconfig *>(lua_touserdata(L, index));
+			break;
+		}
+		case LUA_TNONE:
+		case LUA_TNIL:
+			break;
+		default:
+			return false;
+	}
+	return true;
+}
+
+/**
  * Creates a t_string object (__call metamethod).
  * - Arg 1: userdata containing the domain.
  * - Arg 2: string to translate.
@@ -619,17 +658,14 @@ static int lua_unit_set(lua_State *L)
  */
 static int lua_get_units(lua_State *L)
 {
-	bool has_filter = lua_gettop(L) >= 1;
-	if (has_filter && !lua_istable(L, 1)) {
+	if (false) {
 		error_call_destructors:
 		return luaL_typerror(L, 1, "WML table");
 	}
-	config filter;
-	if (has_filter) {
-		lua_settop(L, 1);
-		if (!wml_config_of_table(L, filter))
-			goto error_call_destructors;
-	}
+
+	vconfig filter;
+	if (!lua_tovconfig(L, 1, filter))
+		goto error_call_destructors;
 
 	// Go through all the units while keeping the following stack:
 	// 1: metatable, 2: return table, 3: userdata, 4: metatable copy
@@ -642,7 +678,7 @@ static int lua_get_units(lua_State *L)
 	for (unit_map::const_unit_iterator ui = units.begin(), ui_end = units.end();
 	     ui != ui_end; ++ui)
 	{
-		if (has_filter && !ui->second.matches_filter(vconfig(filter), ui->first))
+		if (!filter.null() && !ui->second.matches_filter(filter, ui->first))
 			continue;
 		size_t *p = static_cast<size_t *>(lua_newuserdata(L, sizeof(size_t)));
 		*p = ui->second.underlying_id();
@@ -661,20 +697,18 @@ static int lua_get_units(lua_State *L)
  */
 static int lua_fire(lua_State *L)
 {
-	char const *m = luaL_checkstring(L, 1);
-	bool has_config = lua_gettop(L) >= 2;
-	if (has_config && !lua_istable(L, 2)) {
+	if (false) {
 		error_call_destructors:
 		return luaL_typerror(L, 2, "WML table");
 	}
-	config cfg;
-	if (has_config) {
-		lua_settop(L, 2);
-		if (!wml_config_of_table(L, cfg))
-			goto error_call_destructors;
-	}
 
-	game_events::handle_event_command(m, queued_event_context::get(), vconfig(cfg, true));
+	char const *m = luaL_checkstring(L, 1);
+
+	vconfig vcfg;
+	if (!lua_tovconfig(L, 2, vcfg))
+		goto error_call_destructors;
+
+	game_events::handle_event_command(m, queued_event_context::get(), vcfg);
 	return 0;
 }
 
@@ -793,32 +827,8 @@ static int lua_wml_action_call(lua_State *L)
 	}
 
 	vconfig vcfg;
-	switch (lua_type(L, 2))
-	{
-		case LUA_TTABLE:
-		{
-			config cfg;
-			lua_settop(L, 2);
-			if (!wml_config_of_table(L, cfg))
-				goto error_call_destructors;
-			vcfg = vconfig(cfg, true);
-			break;
-		}
-		case LUA_TUSERDATA:
-		{
-			lua_pushlightuserdata(L, (void *)&vconfigKey);
-			lua_gettable(L, LUA_REGISTRYINDEX);
-			if (!lua_getmetatable(L, 2) || !lua_rawequal(L, -1, -2))
-				goto error_call_destructors;
-			vcfg = *static_cast<vconfig *>(lua_touserdata(L, 2));
-			break;
-		}
-		case LUA_TNONE:
-		case LUA_TNIL:
-			break;
-		default:
-			goto error_call_destructors;
-	}
+	if (!lua_tovconfig(L, 2, vcfg))
+		goto error_call_destructors;
 
 	game_events::action_handler **h =
 		static_cast<game_events::action_handler **>(lua_touserdata(L, 1));
