@@ -441,7 +441,7 @@ static int lua_vconfig_get(lua_State *L)
 		return 1;
 	}
 
-	if (!v->has_attribute(m)) return 0;
+	if (v->null() || !v->has_attribute(m)) return 0;
 	scalar_of_wml_string(L, (*v)[m]);
 	return 1;
 }
