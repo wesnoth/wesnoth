@@ -195,28 +195,28 @@ twindow* teditor_settings::build_window(CVideo& video)
 void teditor_settings::pre_show(CVideo& /*video*/, twindow& window)
 {
 	assert(!tods_.empty());
-	current_tod_label_ = NEW_find_widget<tlabel>(
+	current_tod_label_ = find_widget<tlabel>(
 			&window, "current_tod", false, true);
-	current_tod_image_ = NEW_find_widget<tlabel>(
+	current_tod_image_ = find_widget<tlabel>(
 			&window, "current_tod_image", false, true);
-	custom_tod_toggle_ = NEW_find_widget<ttoggle_button>(
+	custom_tod_toggle_ = find_widget<ttoggle_button>(
 			&window, "custom_tod_toggle", false, true);
-	custom_tod_auto_refresh_ = NEW_find_widget<ttoggle_button>(
+	custom_tod_auto_refresh_ = find_widget<ttoggle_button>(
 			&window, "custom_tod_auto_refresh", false, true);
-	custom_tod_red_ = NEW_find_widget<tslider>(
+	custom_tod_red_ = find_widget<tslider>(
 			&window, "custom_tod_red", false, true);
-	custom_tod_green_ = NEW_find_widget<tslider>(
+	custom_tod_green_ = find_widget<tslider>(
 			&window, "custom_tod_green", false, true);
-	custom_tod_blue_ = NEW_find_widget<tslider>(
+	custom_tod_blue_ = find_widget<tslider>(
 			&window, "custom_tod_blue", false, true);
 
-	tbutton& next_tod_button = NEW_find_widget<tbutton>(
+	tbutton& next_tod_button = find_widget<tbutton>(
 			&window, "next_tod", false);
 	next_tod_button.set_callback_mouse_left_click(
 			dialog_callback<teditor_settings
 				, &teditor_settings::do_next_tod>);
 
-	tbutton& apply_button = NEW_find_widget<tbutton>(
+	tbutton& apply_button = find_widget<tbutton>(
 			&window, "apply", false);
 	apply_button.set_callback_mouse_left_click(
 			dialog_callback<teditor_settings

@@ -60,14 +60,13 @@ twindow* tunit_create::build_window(CVideo& video)
 
 void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
 {
-	ttoggle_button& male_toggle = NEW_find_widget<ttoggle_button>(
+	ttoggle_button& male_toggle = find_widget<ttoggle_button>(
 			&window, "male_toggle", false);
-	ttoggle_button& female_toggle = NEW_find_widget<ttoggle_button>(
+	ttoggle_button& female_toggle = find_widget<ttoggle_button>(
 			&window, "female_toggle", false);
-	ttoggle_button& namegen_toggle = NEW_find_widget<ttoggle_button>(
+	ttoggle_button& namegen_toggle = find_widget<ttoggle_button>(
 			&window, "namegen_toggle", false);
-	tlistbox& list = NEW_find_widget<tlistbox>(
-			&window, "unit_type_list", false);
+	tlistbox& list = find_widget<tlistbox>(&window, "unit_type_list", false);
 
 	male_toggle.set_callback_state_change(
 		dialog_callback<tunit_create, &tunit_create::gender_toggle_callback>
@@ -124,12 +123,11 @@ void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
 
 void tunit_create::post_show(twindow& window)
 {
-	ttoggle_button& female_toggle = NEW_find_widget<ttoggle_button>(
+	ttoggle_button& female_toggle = find_widget<ttoggle_button>(
 			&window, "female_toggle", false);
-	ttoggle_button& namegen_toggle = NEW_find_widget<ttoggle_button>(
+	ttoggle_button& namegen_toggle = find_widget<ttoggle_button>(
 			&window, "namegen_toggle", false);
-	tlistbox& list = NEW_find_widget<tlistbox>(
-			&window, "unit_type_list", false);
+	tlistbox& list = find_widget<tlistbox>(&window, "unit_type_list", false);
 
 	choice_ = "";
 
@@ -157,9 +155,9 @@ void tunit_create::post_show(twindow& window)
 
 void tunit_create::gender_toggle_callback(twindow& window)
 {
-	ttoggle_button& male_toggle = NEW_find_widget<ttoggle_button>(
+	ttoggle_button& male_toggle = find_widget<ttoggle_button>(
 			&window, "male_toggle", false);
-	ttoggle_button& female_toggle = NEW_find_widget<ttoggle_button>(
+	ttoggle_button& female_toggle = find_widget<ttoggle_button>(
 			&window, "female_toggle", false);
 
 	// Ye olde ugly hack for the lack of radio buttons.

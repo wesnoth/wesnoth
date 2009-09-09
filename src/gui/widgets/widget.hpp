@@ -665,7 +665,7 @@ template<class T> T* get_parent(twidget* widget)
  * @returns                   The widget with the id.
  */
 template<class T>
-T* NEW_find_widget(typename tconst_duplicator<T, twidget>::type* widget
+T* find_widget(typename tconst_duplicator<T, twidget>::type* widget
 		, const std::string& id
 		, const bool must_be_active
 		, const bool must_exist)
@@ -693,11 +693,11 @@ T* NEW_find_widget(typename tconst_duplicator<T, twidget>::type* widget
  * @returns                   The widget with the id.
  */
 template<class T>
-T& NEW_find_widget(typename tconst_duplicator<T, twidget>::type* widget
+T& find_widget(typename tconst_duplicator<T, twidget>::type* widget
 		, const std::string& id
 		, const bool must_be_active)
 {
-	return *NEW_find_widget<T>(widget, id, must_be_active, true);
+	return *find_widget<T>(widget, id, must_be_active, true);
 }
 
 } // namespace gui2

@@ -97,16 +97,16 @@ void teditor_generate_map::pre_show(CVideo& /*video*/, twindow& window)
 	assert(gui_);
 
 	current_generator_label_ =
-			&NEW_find_widget<tlabel>(&window, "current_generator", false);
+			&find_widget<tlabel>(&window, "current_generator", false);
 
 	tbutton& settings_button =
-			NEW_find_widget<tbutton>(&window, "settings", false);
+			find_widget<tbutton>(&window, "settings", false);
 	settings_button.set_callback_mouse_left_click(
 			dialog_callback<teditor_generate_map
 				, &teditor_generate_map::do_settings>);
 
 	tbutton& next_generator_button =
-			NEW_find_widget<tbutton>(&window, "next_generator", false);
+			find_widget<tbutton>(&window, "next_generator", false);
 	next_generator_button.set_callback_mouse_left_click(
 			dialog_callback<teditor_generate_map
 				, &teditor_generate_map::do_next_generator>);

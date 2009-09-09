@@ -54,7 +54,7 @@ twindow* tformula_debugger::build_window(CVideo& video)
 void tformula_debugger::pre_show(CVideo& /*video*/, twindow& window)
 {
 	// stack label
-	tcontrol* stack_label = NEW_find_widget<tcontrol>(
+	tcontrol* stack_label = find_widget<tcontrol>(
 			&window, "stack", false, true);
 
 	std::stringstream stack_text;
@@ -75,7 +75,7 @@ void tformula_debugger::pre_show(CVideo& /*video*/, twindow& window)
 	window.keyboard_capture(stack_label);
 
 	// execution trace label
-	tcontrol* execution_label = NEW_find_widget<tcontrol>(
+	tcontrol* execution_label = find_widget<tcontrol>(
 			&window, "execution", false, true);
 
 	std::stringstream execution_text;
@@ -112,35 +112,31 @@ void tformula_debugger::pre_show(CVideo& /*video*/, twindow& window)
 		}
 	}
 
-	NEW_find_widget<tcontrol>(&window, "state", false).set_label(state_str);
+	find_widget<tcontrol>(&window, "state", false).set_label(state_str);
 
 	// callbacks
-	tbutton& step_button =
-			NEW_find_widget<tbutton>(&window, "step", false);
+	tbutton& step_button = find_widget<tbutton>(&window, "step", false);
 
 	step_button.set_callback_mouse_left_click(dialog_callback<
 			  tformula_debugger
 			, &tformula_debugger::callback_step_button>);
 
 
-	tbutton& stepout_button =
-			NEW_find_widget<tbutton>(&window, "stepout", false);
+	tbutton& stepout_button = find_widget<tbutton>(&window, "stepout", false);
 
 	stepout_button.set_callback_mouse_left_click(dialog_callback<
 			  tformula_debugger
 			, &tformula_debugger::callback_stepout_button>);
 
 
-	tbutton& next_button =
-			NEW_find_widget<tbutton>(&window, "next", false);
+	tbutton& next_button = find_widget<tbutton>(&window, "next", false);
 
 	next_button.set_callback_mouse_left_click(dialog_callback<
 			  tformula_debugger
 			, &tformula_debugger::callback_next_button>);
 
 
-	tbutton& continue_button =
-			NEW_find_widget<tbutton>(&window, "continue", false);
+	tbutton& continue_button = find_widget<tbutton>(&window, "continue", false);
 
 	continue_button.set_callback_mouse_left_click(dialog_callback<
 			  tformula_debugger

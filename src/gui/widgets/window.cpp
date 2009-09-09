@@ -690,12 +690,12 @@ void twindow::layout()
 	/***** Handle click dismiss status. *****/
 	tbutton* click_dismiss_button = NULL;
 	if((click_dismiss_button
-			= NEW_find_widget<tbutton>(this, "click_dismiss", false, false))) {
+			= find_widget<tbutton>(this, "click_dismiss", false, false))) {
 
 		click_dismiss_button->set_visible(twidget::INVISIBLE);
 	}
 	if(click_dismiss_) {
-		tbutton* button = NEW_find_widget<tbutton>(this, "ok", false, false);
+		tbutton* button = find_widget<tbutton>(this, "ok", false, false);
 		if(button) {
 			button->set_visible(twidget::INVISIBLE);
 			click_dismiss_button = button;
@@ -993,10 +993,10 @@ void swap_grid(tgrid* grid,
 	// Get the container containing the wanted widget.
 	tgrid* parent_grid = NULL;
 	if(grid) {
-		parent_grid = NEW_find_widget<tgrid>(grid, id, false, false);
+		parent_grid = find_widget<tgrid>(grid, id, false, false);
 	}
 	if(!parent_grid) {
-		parent_grid = NEW_find_widget<tgrid>(content_grid, id, true, false);
+		parent_grid = find_widget<tgrid>(content_grid, id, true, false);
 	}
 	parent_grid = dynamic_cast<tgrid*>(parent_grid->parent());
 	assert(parent_grid);

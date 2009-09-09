@@ -75,7 +75,7 @@ static void inspect_var(twindow& window, const std::string &s)
 	if (s_.length()>20000) {//workaround for known bug
 		s_.resize(20000);
 	}
-	tcontrol *i = NEW_find_widget<tcontrol>(&window, "inspect", false,true);
+	tcontrol *i = find_widget<tcontrol>(&window, "inspect", false,true);
 	i->set_label(s_);
 	window.invalidate_layout();//workaround for assertion failure
 }
@@ -83,8 +83,7 @@ static void inspect_var(twindow& window, const std::string &s)
 
 static void inspect_vars(twindow& window)
 {
-	tlistbox& list = NEW_find_widget<tlistbox>(
-			&window, "stuff_list", false);
+	tlistbox& list = find_widget<tlistbox>(&window, "stuff_list", false);
 
 	int selected = list.get_selected_row();
 	if (selected==-1) {
@@ -117,17 +116,17 @@ static void inspect_vars(twindow& window)
 static void inspect_ai(twindow& window, int side)
 {
 	const config &ai_cfg = ai::manager::to_config(side);
-	NEW_find_widget<tcontrol>(&window, "inspect", false).set_label(ai_cfg.debug());
+	find_widget<tcontrol>(&window, "inspect", false).set_label(ai_cfg.debug());
 }
 */
 
 void tgamestate_inspector::pre_show(CVideo& /*video*/, twindow& window)
 {
 
-	NEW_find_widget<tcontrol>(&window, "inspector_name", false).set_label(cfg_["name"]);
+	find_widget<tcontrol>(
+			&window, "inspector_name", false).set_label(cfg_["name"]);
 
-	tlistbox& list = NEW_find_widget<tlistbox>(
-			&window, "stuff_list", false);
+	tlistbox& list = find_widget<tlistbox>(&window, "stuff_list", false);
 
 	list.set_callback_value_change(
 		dialog_callback<tgamestate_inspector, &tgamestate_inspector::stuff_list_item_clicked>);

@@ -47,7 +47,7 @@ twindow* taddon_connect::build_window(CVideo& video)
 void taddon_connect::pre_show(CVideo& /*video*/, twindow& window)
 {
 	ttext_box& host_widget =
-			NEW_find_widget<ttext_box>(&window, "host_name", false);
+			find_widget<ttext_box>(&window, "host_name", false);
 
 	host_widget.set_value(host_name_);
 	window.keyboard_capture(&host_widget);
@@ -57,7 +57,7 @@ void taddon_connect::post_show(twindow& window)
 {
 	if(get_retval() == twindow::OK) {
 		ttext_box& host_widget =
-				NEW_find_widget<ttext_box>(&window, "host_name", false);
+				find_widget<ttext_box>(&window, "host_name", false);
 
 		host_widget.save_to_history();
 		host_name_= host_widget.get_value();

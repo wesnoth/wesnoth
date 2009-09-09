@@ -47,14 +47,13 @@ twindow* tmp_method_selection::build_window(CVideo& video)
 void tmp_method_selection::pre_show(CVideo& /*video*/, twindow& window)
 {
 	user_name_ = preferences::login();
-	ttext_box* user_widget = NEW_find_widget<ttext_box>(
+	ttext_box* user_widget = find_widget<ttext_box>(
 			&window, "user_name", false, true);
 	user_widget->set_value(user_name_);
 	user_widget->set_maximum_length(mp::max_login_size);
 	window.keyboard_capture(user_widget);
 
-	tlistbox* list = NEW_find_widget<tlistbox>(
-			&window, "method_list", false, true);
+	tlistbox* list = find_widget<tlistbox>(&window, "method_list", false, true);
 
 	window.add_to_keyboard_chain(list);
 }
@@ -62,10 +61,9 @@ void tmp_method_selection::pre_show(CVideo& /*video*/, twindow& window)
 void tmp_method_selection::post_show(twindow& window)
 {
 	if(get_retval() == twindow::OK) {
-		ttext_box& user_widget = NEW_find_widget<ttext_box>(
+		ttext_box& user_widget = find_widget<ttext_box>(
 				&window, "user_name", false);
-		tlistbox& list = NEW_find_widget<tlistbox>(
-				&window, "method_list", false);
+		tlistbox& list = find_widget<tlistbox>(&window, "method_list", false);
 
 		choice_ = list.get_selected_row();
 

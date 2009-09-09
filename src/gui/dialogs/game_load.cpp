@@ -85,16 +85,15 @@ void tgame_load::pre_show(CVideo& /*video*/, twindow& window)
 {
 	assert(txtFilter_);
 
-	NEW_find_widget<tminimap>(&window, "minimap", false).
-			set_config(&cache_config_);
+	find_widget<tminimap>(&window, "minimap", false).set_config(&cache_config_);
 
-	ttext_box* filter = NEW_find_widget<ttext_box>(
+	ttext_box* filter = find_widget<ttext_box>(
 			&window, "txtFilter", false, true);
 	window.keyboard_capture(filter);
 	filter->set_text_changed_callback(boost::bind(
 			&tgame_load::filter_text_changed, this, _1, _2));
 
-	tlistbox* list = NEW_find_widget<tlistbox>(
+	tlistbox* list = find_widget<tlistbox>(
 			&window, "savegame_list", false, true);
 	window.keyboard_capture(list);
 	list->set_callback_value_change(
@@ -114,8 +113,7 @@ void tgame_load::pre_show(CVideo& /*video*/, twindow& window)
 void tgame_load::fill_game_list(twindow& window
 		, std::vector<savegame::save_info>& games)
 {
-	tlistbox& list = NEW_find_widget<tlistbox>(
-			&window, "savegame_list", false);
+	tlistbox& list = find_widget<tlistbox>(&window, "savegame_list", false);
 	list.clear();
 
 	foreach(const savegame::save_info game, games) {
@@ -143,8 +141,7 @@ bool tgame_load::filter_text_changed(ttext_* textbox, const std::string text)
 {
 	twindow& window = *textbox->get_window();
 
-	tlistbox& list = NEW_find_widget<tlistbox>(
-			&window, "savegame_list", false);
+	tlistbox& list = find_widget<tlistbox>(&window, "savegame_list", false);
 
 	const std::vector<std::string> words = utils::split(text, ' ');
 
@@ -160,7 +157,7 @@ bool tgame_load::filter_text_changed(ttext_* textbox, const std::string text)
 		}
 		else{
 			tgrid::iterator it = row->begin();
-			tlabel& filename_label = NEW_find_widget<tlabel>(*it, "filename", false);
+			tlabel& filename_label = find_widget<tlabel>(*it, "filename", false);
 
 			bool found = false;
 			foreach (const std::string& word, words){
@@ -196,8 +193,7 @@ void tgame_load::post_show(twindow& window)
 
 void tgame_load::display_savegame(twindow& window)
 {
-	tlistbox& list = NEW_find_widget<tlistbox>(
-			&window, "savegame_list", false);
+	tlistbox& list = find_widget<tlistbox>(&window, "savegame_list", false);
 	savegame::save_info& game = games_[list.get_selected_row()];
 	filename_ = game.name;
 
@@ -210,22 +206,19 @@ void tgame_load::display_savegame(twindow& window)
 		cfg_summary["corrupt"] = "yes";
 	}
 
-	NEW_find_widget<timage>(&window, "imgLeader", false).
+	find_widget<timage>(&window, "imgLeader", false).
 			set_label(cfg_summary["leader_image"]);
 
-	NEW_find_widget<tminimap>(&window, "minimap", false).
+	find_widget<tminimap>(&window, "minimap", false).
 			set_map_data(cfg_summary["map_data"]);
 
-
-	NEW_find_widget<tlabel>(&window, "lblScenario", false).
-			set_label(game.name);
+	find_widget<tlabel>(&window, "lblScenario", false).set_label(game.name);
 
 	std::stringstream str;
 	str << game.format_time_local();
 	evaluate_summary_string(str, cfg_summary);
 
-	NEW_find_widget<tlabel>(&window, "lblSummary", false).
-			set_label(str.str());
+	find_widget<tlabel>(&window, "lblSummary", false).set_label(str.str());
 
 	// FIXME: Find a better way to change the label width
 	window.invalidate_layout();
@@ -293,8 +286,7 @@ void tgame_load::evaluate_summary_string(std::stringstream& str
 
 void tgame_load::delete_button_callback(twindow& window)
 {
-	tlistbox& list = NEW_find_widget<tlistbox>(
-			&window, "savegame_list", false);
+	tlistbox& list = find_widget<tlistbox>(&window, "savegame_list", false);
 
 	const size_t index = size_t(list.get_selected_row());
 	if(index < games_.size()) {

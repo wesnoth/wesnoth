@@ -130,11 +130,10 @@ twindow* teditor_resize_map::build_window(CVideo& video)
 
 void teditor_resize_map::pre_show(CVideo& /*video*/, twindow& window)
 {
-	tlabel& old_width = NEW_find_widget<tlabel>(&window, "old_width", false);
-	tlabel& old_height =
-			NEW_find_widget<tlabel>(&window, "old_height", false);
-	height_ = NEW_find_widget<tslider>(&window, "height", false, true);
-	width_ = NEW_find_widget<tslider>(&window, "width", false, true);
+	tlabel& old_width = find_widget<tlabel>(&window, "old_width", false);
+	tlabel& old_height = find_widget<tlabel>(&window, "old_height", false);
+	height_ = find_widget<tslider>(&window, "height", false, true);
+	width_ = find_widget<tslider>(&window, "width", false, true);
 
 	height_->set_callback_positioner_move(dialog_callback<teditor_resize_map
 			, &teditor_resize_map::update_expand_direction>);
@@ -146,7 +145,7 @@ void teditor_resize_map::pre_show(CVideo& /*video*/, twindow& window)
 	std::string name_prefix = "expand";
 	for (int i = 0; i < 9; ++i) {
 		std::string name = name_prefix + lexical_cast<std::string>(i);
-		direction_buttons_[i] = NEW_find_widget<ttoggle_button>(
+		direction_buttons_[i] = find_widget<ttoggle_button>(
 				&window, name, false, true);
 
 		direction_buttons_[i]->set_callback_state_change(

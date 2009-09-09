@@ -45,7 +45,7 @@ twindow* tlanguage_selection::build_window(CVideo& video)
 
 void tlanguage_selection::pre_show(CVideo& /*video*/, twindow& window)
 {
-	tlistbox* list = NEW_find_widget<tlistbox>(
+	tlistbox* list = find_widget<tlistbox>(
 			&window, "language_list", false, true);
 	window.keyboard_capture(list);
 
@@ -67,7 +67,7 @@ void tlanguage_selection::pre_show(CVideo& /*video*/, twindow& window)
 void tlanguage_selection::post_show(twindow& window)
 {
 	if(get_retval() == twindow::OK) {
-		tlistbox* list = NEW_find_widget<tlistbox>(
+		tlistbox* list = find_widget<tlistbox>(
 				&window, "language_list", false, true);
 
 		const int res = list->get_selected_row();

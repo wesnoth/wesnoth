@@ -475,9 +475,9 @@ void tscrollbar_container::finalize_setup()
 	/***** Setup vertical scrollbar *****/
 
 	vertical_scrollbar_grid_ =
-		NEW_find_widget<tgrid>(this, "_vertical_scrollbar_grid", false, true);
+		find_widget<tgrid>(this, "_vertical_scrollbar_grid", false, true);
 
-	vertical_scrollbar_ = NEW_find_widget<tscrollbar_>(
+	vertical_scrollbar_ = find_widget<tscrollbar_>(
 			vertical_scrollbar_grid_, "_vertical_scrollbar", false, true);
 
 	vertical_scrollbar_->
@@ -485,9 +485,9 @@ void tscrollbar_container::finalize_setup()
 
 	/***** Setup horizontal scrollbar *****/
 	horizontal_scrollbar_grid_ =
-		NEW_find_widget<tgrid>(this, "_horizontal_scrollbar_grid", false, true);
+		find_widget<tgrid>(this, "_horizontal_scrollbar_grid", false, true);
 
-	horizontal_scrollbar_ = NEW_find_widget<tscrollbar_>(
+	horizontal_scrollbar_ = find_widget<tscrollbar_>(
 			horizontal_scrollbar_grid_, "_horizontal_scrollbar", false, true);
 
 	horizontal_scrollbar_->
@@ -498,7 +498,7 @@ void tscrollbar_container::finalize_setup()
 	foreach(const hack& item, scroll_lookup()) {
 
 		// Vertical.
-		tbutton* button = NEW_find_widget<tbutton>(
+		tbutton* button = find_widget<tbutton>(
 				vertical_scrollbar_grid_, item.first, false, false);
 
 		if(button) {
@@ -507,7 +507,7 @@ void tscrollbar_container::finalize_setup()
 		}
 
 		// Horizontal.
-		button = NEW_find_widget<tbutton>(
+		button = find_widget<tbutton>(
 				horizontal_scrollbar_grid_, item.first, false, false);
 
 		if(button) {
@@ -629,7 +629,7 @@ void tscrollbar_container::set_scrollbar_button_status()
 	if(true) { /** @todo scrollbar visibility. */
 		/***** set scroll up button status *****/
 		foreach(const std::string& name, button_up_names) {
-			tbutton* button = NEW_find_widget<tbutton>(
+			tbutton* button = find_widget<tbutton>(
 					vertical_scrollbar_grid_, name, false, false);
 
 			if(button) {
@@ -639,7 +639,7 @@ void tscrollbar_container::set_scrollbar_button_status()
 
 		/***** set scroll down status *****/
 		foreach(const std::string& name, button_down_names) {
-			tbutton* button = NEW_find_widget<tbutton>(
+			tbutton* button = find_widget<tbutton>(
 					vertical_scrollbar_grid_, name, false, false);
 
 			if(button) {
@@ -655,7 +655,7 @@ void tscrollbar_container::set_scrollbar_button_status()
 	if(true) { /** @todo scrollbar visibility. */
 		/***** Set scroll left button status *****/
 		foreach(const std::string& name, button_up_names) {
-			tbutton* button = NEW_find_widget<tbutton>(
+			tbutton* button = find_widget<tbutton>(
 					horizontal_scrollbar_grid_, name, false, false);
 
 			if(button) {
@@ -665,7 +665,7 @@ void tscrollbar_container::set_scrollbar_button_status()
 
 		/***** Set scroll right button status *****/
 		foreach(const std::string& name, button_down_names) {
-			tbutton* button = NEW_find_widget<tbutton>(
+			tbutton* button = find_widget<tbutton>(
 					horizontal_scrollbar_grid_, name, false, false);
 
 			if(button) {

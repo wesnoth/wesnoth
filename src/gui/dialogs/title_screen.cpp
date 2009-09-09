@@ -88,21 +88,21 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 		variant(_("Version") + std::string(" ") + game_config::revision));
 
 	/**** Set the buttons ****/
-	NEW_find_widget<tbutton>(&window, "addons", false).
+	find_widget<tbutton>(&window, "addons", false).
 			set_callback_mouse_left_click(show_dialog<gui2::taddon_connect>);
 
 	// Note changing the language doesn't upate the title screen...
-	NEW_find_widget<tbutton>(&window, "language", false).
+	find_widget<tbutton>(&window, "language", false).
 			set_callback_mouse_left_click(
 				show_dialog<gui2::tlanguage_selection>);
 
 	/**** Set the tip of the day ****/
 	update_tip(window, true);
 
-	NEW_find_widget<tbutton>(&window, "next_tip", false).
+	find_widget<tbutton>(&window, "next_tip", false).
 			set_callback_mouse_left_click(next_tip);
 
-	NEW_find_widget<tbutton>(&window, "previous_tip", false).
+	find_widget<tbutton>(&window, "previous_tip", false).
 			set_callback_mouse_left_click(previous_tip);
 
 	/***** Select a random game_title *****/
@@ -130,9 +130,8 @@ void ttitle_screen::update_tip(twindow& window, const bool previous)
 	const config *tip = get_tip_of_day(tips_);
 	assert(tip);
 
-	NEW_find_widget<tlabel>(&window, "tip", false).set_label((*tip)["text"]);
-	NEW_find_widget<tlabel>(&window, "source", false).
-			set_label((*tip)["source"]);
+	find_widget<tlabel>(&window, "tip", false).set_label((*tip)["text"]);
+	find_widget<tlabel>(&window, "source", false).set_label((*tip)["source"]);
 
 	/**
 	 * @todo Convert the code to use a multi_page so the invalidate is not

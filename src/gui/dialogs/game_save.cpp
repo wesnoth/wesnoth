@@ -54,7 +54,7 @@ void tgame_save::pre_show(CVideo& /*video*/, twindow& window)
 {
 	assert(txtFilename_);
 
-	NEW_find_widget<tlabel>(&window, "lblTitle", false).set_label(title_);
+	find_widget<tlabel>(&window, "lblTitle", false).set_label(title_);
 
 	txtFilename_->set_widget_value(window, filename_);
 	window.keyboard_capture(txtFilename_->widget(window));
@@ -77,7 +77,7 @@ twindow* tgame_save_message::build_window(CVideo& video)
 
 void tgame_save_message::pre_show(CVideo& video, twindow& window)
 {
-	NEW_find_widget<tlabel>(&window, "lblMessage", false).set_label(message_);
+	find_widget<tlabel>(&window, "lblMessage", false).set_label(message_);
 
 	tgame_save::pre_show(video, window);
 }

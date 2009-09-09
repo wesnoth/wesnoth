@@ -50,7 +50,7 @@ twindow* taddon_list::build_window(CVideo& video)
 
 void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
 {
-	tlistbox& list = NEW_find_widget<tlistbox>(&window, "addon_list", false);
+	tlistbox& list = find_widget<tlistbox>(&window, "addon_list", false);
 
 	/**
 	 * @todo do we really want to keep the length limit for the various
