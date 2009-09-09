@@ -77,7 +77,8 @@ namespace game_config
 	extern double hp_bar_scaling, xp_bar_scaling;
 
 	extern std::string flag_rgb;
-	extern std::vector<Uint32> red_to_green_scale;
+	extern std::vector<Uint32> red_green_scale;
+	extern std::vector<Uint32> red_green_scale_text;
 
 	extern std::vector<std::string> foot_speed_prefix;
 	extern std::string foot_teleport_enter, foot_teleport_exit;
@@ -115,9 +116,11 @@ namespace game_config
 	/**
 	 * Return a color corresponding to the value val
 	 * red for val=0 to green for val=100, passing by yellow.
-	 * Colors are defined in red_to_green_scale from [game_config]
-	 */	
-	Uint32 red_to_green(int val);
+	 * Colors are defined by [game_config] keys
+	 * red_green_scale and red_green_scale_text
+	 */
+
+	Uint32 red_to_green(int val, bool for_text = true);
 
 	extern const version_info wesnoth_version;
 	extern const version_info min_savegame_version;
