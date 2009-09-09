@@ -610,7 +610,7 @@ void game_display::draw_movement_info(const map_location& loc)
 			std::stringstream def_text;
 			def_text << def << "%";
 
-			SDL_Color color = int_to_color(game_config::red_to_green(def));
+			SDL_Color color = int_to_color(game_config::red_to_green(def, false));
 
 			// simple waypoint (no turn point) use smaller font
 			int def_font = w->second.turns > 0 ? 18 : 16;
