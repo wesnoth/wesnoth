@@ -792,20 +792,38 @@ static int lua_wml_action_call(lua_State *L)
 		return luaL_typerror(L, 2, "WML table");
 	}
 
-	config cfg;
-	if (!lua_isnoneornil(L, 2))
+	vconfig vcfg;
+	switch (lua_type(L, 2))
 	{
-		if (!lua_istable(L, 2))
-			goto error_call_destructors;
-		lua_settop(L, 2);
-		if (!wml_config_of_table(L, cfg))
+		case LUA_TTABLE:
+		{
+			config cfg;
+			lua_settop(L, 2);
+			if (!wml_config_of_table(L, cfg))
+				goto error_call_destructors;
+			vcfg = vconfig(cfg, true);
+			break;
+		}
+		case LUA_TUSERDATA:
+		{
+			lua_pushlightuserdata(L, (void *)&vconfigKey);
+			lua_gettable(L, LUA_REGISTRYINDEX);
+			if (!lua_getmetatable(L, 2) || !lua_rawequal(L, -1, -2))
+				goto error_call_destructors;
+			vcfg = *static_cast<vconfig *>(lua_touserdata(L, 2));
+			break;
+		}
+		case LUA_TNONE:
+		case LUA_TNIL:
+			break;
+		default:
 			goto error_call_destructors;
 	}
 
 	game_events::action_handler **h =
 		static_cast<game_events::action_handler **>(lua_touserdata(L, 1));
 	// Hidden metamethod, so h has to be an action handler.
-	(*h)->handle(queued_event_context::get(), vconfig(cfg, true));
+	(*h)->handle(queued_event_context::get(), vcfg);
 	return 0;
 }
 
@@ -828,8 +846,46 @@ static int lua_wml_action_collect(lua_State *L)
  */
 static int lua_wml_action_proxy(lua_State *L)
 {
+	if (false) {
+		error_call_destructors:
+		return luaL_typerror(L, 1, "WML table");
+	}
+
 	lua_pushvalue(L, lua_upvalueindex(1));
-	lua_pushvalue(L, 1);
+
+	switch (lua_type(L, 1))
+	{
+		case LUA_TTABLE:
+		{
+			config cfg;
+			lua_pushvalue(L, 1);
+			if (!wml_config_of_table(L, cfg))
+				goto error_call_destructors;
+			lua_pop(L, 1);
+			new(lua_newuserdata(L, sizeof(vconfig))) vconfig(cfg, true);
+			lua_pushlightuserdata(L, (void *)&vconfigKey);
+			lua_gettable(L, LUA_REGISTRYINDEX);
+			lua_setmetatable(L, -2);
+			break;
+		}
+		case LUA_TUSERDATA:
+		{
+			lua_pushlightuserdata(L, (void *)&vconfigKey);
+			lua_gettable(L, LUA_REGISTRYINDEX);
+			if (!lua_getmetatable(L, 1) || !lua_rawequal(L, -1, -2))
+				goto error_call_destructors;
+			lua_pop(L, 2);
+			lua_pushvalue(L, 1);
+			break;
+		}
+		case LUA_TNONE:
+		case LUA_TNIL:
+			lua_pushnil(L);
+			break;
+		default:
+			goto error_call_destructors;
+	}
+
 	lua_pushvalue(L, lua_upvalueindex(2));
 	lua_call(L, 2, 0);
 	return 0;
@@ -862,8 +918,10 @@ void lua_action_handler::handle(const game_events::queued_event &ev, const vconf
 	lua_remove(L, -3);
 
 	// Push the WML table argument before the old handler.
-	lua_newtable(L);
-	table_of_wml_config(L, cfg.get_parsed_config());
+	new(lua_newuserdata(L, sizeof(vconfig))) vconfig(cfg);
+	lua_pushlightuserdata(L, (void *)&vconfigKey);
+	lua_gettable(L, LUA_REGISTRYINDEX);
+	lua_setmetatable(L, -2);
 	lua_insert(L, -2);
 
 	queued_event_context dummy(&ev);
