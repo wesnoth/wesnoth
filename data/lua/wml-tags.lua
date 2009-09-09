@@ -89,6 +89,7 @@ local function generate_objectives(cfg, team, silent)
 end
 
 local function wml_objectives(cfg)
+	cfg = cfg.__parsed
 	local side = cfg.side or 0
 	local silent = cfg.silent
 
