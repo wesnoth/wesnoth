@@ -77,7 +77,7 @@ namespace game_config
 	extern double hp_bar_scaling, xp_bar_scaling;
 
 	extern std::string flag_rgb;
-	extern std::vector<Uint32> defense_color_scale;
+	extern std::vector<Uint32> red_to_green_scale;
 
 	extern std::vector<std::string> foot_speed_prefix;
 	extern std::string foot_teleport_enter, foot_teleport_exit;
@@ -111,6 +111,13 @@ namespace game_config
 	void add_color_info(const config& v);
 	const std::vector<Uint32>& tc_info(const std::string& name);
 	const color_range& color_info(const std::string& name);
+
+	/**
+	 * Return a color corresponding to the value val
+	 * red for val=0 to green for val=100, passing by yellow.
+	 * Colors are defined in red_to_green_scale from [game_config]
+	 */	
+	Uint32 red_to_green(int val);
 
 	extern const version_info wesnoth_version;
 	extern const version_info min_savegame_version;

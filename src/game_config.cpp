@@ -73,7 +73,7 @@ namespace game_config
 	std::string flag_image = "flags/flag-1.png:150,flags/flag-2.png:150,flags/flag-3.png:150,flags/flag-4.png:150";
 	std::string flag_icon_image = "flags/flag_icon.png";
 	std::string flag_rgb = "flag_green";
-	std::vector<Uint32> defense_color_scale;
+	std::vector<Uint32> red_to_green_scale;
 
 	double hp_bar_scaling = 0.666;
 	double xp_bar_scaling = 0.5;
@@ -212,9 +212,9 @@ namespace game_config
 		if( !flag_rgb.size()){
 			flag_rgb="flag_green";
 		}
-		defense_color_scale = string2rgb(v["defense_color_scale"]);
-		if (defense_color_scale.empty()) {
-			defense_color_scale.push_back(0x00FFFF00);
+		red_to_green_scale = string2rgb(v["red_to_green_scale"]);
+		if (red_to_green_scale.empty()) {
+			red_to_green_scale.push_back(0x00FFFF00);
 		}
 
 		server_list.clear();
@@ -303,6 +303,12 @@ namespace game_config
 			}
 		}
 		return i->second;
+	}
+
+	Uint32 red_to_green(int val){
+		val = std::max<int>(0, std::min<int>(val, 100));
+		int lvl = (red_to_green_scale.size()-1) * val / 100;
+		return red_to_green_scale[lvl];
 	}
 
 } // game_config

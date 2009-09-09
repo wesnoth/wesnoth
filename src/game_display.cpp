@@ -610,9 +610,8 @@ void game_display::draw_movement_info(const map_location& loc)
 			std::stringstream def_text;
 			def_text << def << "%";
 
-			// With 11 colors, the last one will be used only for def=100
-			int val = (game_config::defense_color_scale.size()-1) * def/100;
-			SDL_Color color = int_to_color(game_config::defense_color_scale[val]);
+			SDL_Color color = int_to_color(game_config::red_to_green(def));
+
 			// simple waypoint (no turn point) use smaller font
 			int def_font = w->second.turns > 0 ? 18 : 16;
 			draw_text_in_hex(loc, LAYER_MOVE_INFO, def_text.str(), def_font, color);

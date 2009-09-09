@@ -210,8 +210,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 	case UNIT_DEFENSE: {
 		const t_translation::t_terrain terrain = map[displayed_unit_hex];
 		int def = 100 - u->defense_modifier(terrain);
-		int val = (game_config::defense_color_scale.size()-1) * def/100;
-		SDL_Color color = int_to_color(game_config::defense_color_scale[val]);
+		SDL_Color color = int_to_color(game_config::red_to_green(def));
 		str << font::color2markup(color);
 		str << def << "%";
 		break;
