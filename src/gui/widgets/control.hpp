@@ -170,17 +170,17 @@ public:
 	void load_config();
 
 	/** Inherited from twidget. */
-	twidget* find_widget(const tpoint& coordinate, const bool must_be_active)
+	twidget* find_at(const tpoint& coordinate, const bool must_be_active)
 	{
-		return (twidget::find_widget(coordinate, must_be_active)
+		return (twidget::find_at(coordinate, must_be_active)
 			&& (!must_be_active || get_active())) ? this : 0;
 	}
 
 	/** Inherited from twidget. */
-	const twidget* find_widget(const tpoint& coordinate,
+	const twidget* find_at(const tpoint& coordinate,
 			const bool must_be_active) const
 	{
-		return (twidget::find_widget(coordinate, must_be_active)
+		return (twidget::find_at(coordinate, must_be_active)
 			&& (!must_be_active || get_active())) ? this : 0;
 	}
 

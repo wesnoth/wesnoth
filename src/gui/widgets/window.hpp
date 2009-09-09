@@ -213,13 +213,13 @@ public:
 	const twindow& get_window() const { return *this; }
 
 	/** Inherited from tevent_handler. */
-	twidget* find_widget(const tpoint& coordinate, const bool must_be_active)
-		{ return tpanel::find_widget(coordinate, must_be_active); }
+	twidget* find_at(const tpoint& coordinate, const bool must_be_active)
+		{ return tpanel::find_at(coordinate, must_be_active); }
 
 	/** Inherited from tevent_handler. */
-	const twidget* find_widget(const tpoint& coordinate,
+	const twidget* find_at(const tpoint& coordinate,
 			const bool must_be_active) const
-		{ return tpanel::find_widget(coordinate, must_be_active); }
+		{ return tpanel::find_at(coordinate, must_be_active); }
 
 	/** Inherited from twidget. */
 	tdialog* dialog() { return owner_; }

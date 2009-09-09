@@ -44,13 +44,13 @@ struct tscrollbar_container_implementation
 {
 	/**
 	 * Implementation for the wrappers for
-	 * [const] twidget* tscrollbar_container::find_widget(
+	 * [const] twidget* tscrollbar_container::find_at(
 	 * const tpoint&, const bool) [const].
 	 *
 	 * @param W                   twidget or const twidget.
 	 */
 	template<class W>
-	static W* find_widget(
+	static W* find_at(
 			typename tconst_duplicator<W, tscrollbar_container>::type&
 				scrollbar_container,
 			const tpoint& coordinate, const bool must_be_active)
@@ -60,11 +60,11 @@ struct tscrollbar_container_implementation
 				&& scrollbar_container.content_grid_);
 
 		W* result = scrollbar_container.tcontainer_
-				::find_widget(coordinate, must_be_active);
+				::find_at(coordinate, must_be_active);
 
 		if(result == scrollbar_container.content_) {
 			return scrollbar_container.content_grid_->
-					find_widget(coordinate, must_be_active);
+					find_at(coordinate, must_be_active);
 		}
 
 		return result;

@@ -235,11 +235,11 @@ protected:
 public:
 
 	/** Inherited from twidget. */
-	virtual twidget* find_widget(
+	virtual twidget* find_at(
 			const tpoint& coordinate, const bool must_be_active) = 0;
 
 	/** Inherited from twidget. */
-	virtual const twidget* find_widget(
+	virtual const twidget* find_at(
 			const tpoint& coordinate, const bool must_be_active) const = 0;
 
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/

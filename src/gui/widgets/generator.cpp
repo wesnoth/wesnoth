@@ -170,7 +170,7 @@ void thorizontal_list::set_visible_area(const SDL_Rect& area)
 	}
 }
 
-twidget* thorizontal_list::find_widget(
+twidget* thorizontal_list::find_at(
 		const tpoint& coordinate, const bool must_be_active)
 {
 	twindow* window = get_window();
@@ -184,7 +184,7 @@ twidget* thorizontal_list::find_widget(
 		}
 
 		twidget* widget =
-				grid.find_widget(coordinate, must_be_active);
+				grid.find_at(coordinate, must_be_active);
 
 		if(widget) {
 			return widget;
@@ -193,7 +193,7 @@ twidget* thorizontal_list::find_widget(
 	return NULL;
 }
 
-const twidget* thorizontal_list::find_widget(const tpoint& coordinate,
+const twidget* thorizontal_list::find_at(const tpoint& coordinate,
 		const bool must_be_active) const
 {
 	const twindow* window = get_window();
@@ -207,7 +207,7 @@ const twidget* thorizontal_list::find_widget(const tpoint& coordinate,
 		}
 
 		const twidget* widget =
-				grid.find_widget(coordinate, must_be_active);
+				grid.find_at(coordinate, must_be_active);
 
 		if(widget) {
 			return widget;
@@ -363,7 +363,7 @@ void tvertical_list::set_visible_area(const SDL_Rect& area)
 	}
 }
 
-twidget* tvertical_list::find_widget(
+twidget* tvertical_list::find_at(
 		const tpoint& coordinate, const bool must_be_active)
 {
 	twindow* window = get_window();
@@ -378,7 +378,7 @@ twidget* tvertical_list::find_widget(
 
 
 		twidget* widget =
-				grid.find_widget(coordinate, must_be_active);
+				grid.find_at(coordinate, must_be_active);
 
 		if(widget) {
 			return widget;
@@ -387,7 +387,7 @@ twidget* tvertical_list::find_widget(
 	return NULL;
 }
 
-const twidget* tvertical_list::find_widget(const tpoint& coordinate,
+const twidget* tvertical_list::find_at(const tpoint& coordinate,
 		const bool must_be_active) const
 {
 	const twindow* window = get_window();
@@ -401,7 +401,7 @@ const twidget* tvertical_list::find_widget(const tpoint& coordinate,
 		}
 
 		const twidget* widget =
-				grid.find_widget(coordinate, must_be_active);
+				grid.find_at(coordinate, must_be_active);
 
 		if(widget) {
 			return widget;
@@ -523,7 +523,7 @@ void tindependant::set_origin(const tpoint& origin)
 	}
 }
 
-twidget* tindependant::find_widget(const tpoint& coordinate
+twidget* tindependant::find_at(const tpoint& coordinate
 		, const bool must_be_active)
 {
 	const twindow* window = get_window();
@@ -535,10 +535,10 @@ twidget* tindependant::find_widget(const tpoint& coordinate
 	}
 
 	tgrid& grid = get_item(selected_item);
-	return grid.find_widget(coordinate, must_be_active);
+	return grid.find_at(coordinate, must_be_active);
 }
 
-const twidget* tindependant::find_widget(const tpoint& coordinate
+const twidget* tindependant::find_at(const tpoint& coordinate
 		, const bool must_be_active) const
 {
 	const twindow* window = get_window();
@@ -550,7 +550,7 @@ const twidget* tindependant::find_widget(const tpoint& coordinate
 	}
 
 	const tgrid& grid = get_item(selected_item);
-	return grid.find_widget(coordinate, must_be_active);
+	return grid.find_at(coordinate, must_be_active);
 }
 
 twidget* tindependant::find_widget(

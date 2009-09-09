@@ -413,18 +413,18 @@ void tscrollbar_container::focus(tevent_handler&)
 	window->keyboard_capture(this);
 }
 
-twidget* tscrollbar_container::find_widget(
+twidget* tscrollbar_container::find_at(
 		const tpoint& coordinate, const bool must_be_active)
 {
 	return tscrollbar_container_implementation
-			::find_widget<twidget>(*this, coordinate, must_be_active);
+			::find_at<twidget>(*this, coordinate, must_be_active);
 }
 
-const twidget* tscrollbar_container::find_widget(const tpoint& coordinate,
+const twidget* tscrollbar_container::find_at(const tpoint& coordinate,
 		const bool must_be_active) const
 {
 	return tscrollbar_container_implementation
-			::find_widget<const twidget>(*this, coordinate, must_be_active);
+			::find_at<const twidget>(*this, coordinate, must_be_active);
 }
 
 twidget* tscrollbar_container::find_widget(

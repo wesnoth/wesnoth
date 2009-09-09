@@ -144,7 +144,7 @@ void tevent_handler::handle_event(const SDL_Event& event)
 
 			mouse_x_ = event.motion.x;
 			mouse_y_ = event.motion.y;
-			mouse_over = find_widget(tpoint(mouse_x_, mouse_y_), true);
+			mouse_over = find_at(tpoint(mouse_x_, mouse_y_), true);
 
 			mouse_move(event, mouse_over);
 
@@ -165,7 +165,7 @@ void tevent_handler::handle_event(const SDL_Event& event)
 
 			mouse_x_ = event.button.x;
 			mouse_y_ = event.button.y;
-			mouse_over = find_widget(tpoint(mouse_x_, mouse_y_), true);
+			mouse_over = find_at(tpoint(mouse_x_, mouse_y_), true);
 
 			/**
 			 * @todo these two events aren't documented in the event overview
@@ -173,7 +173,7 @@ void tevent_handler::handle_event(const SDL_Event& event)
 			 */
 			if(!mouse_captured_) {
 				twidget* widget =
-						find_widget(tpoint(mouse_x_, mouse_y_), false);
+						find_at(tpoint(mouse_x_, mouse_y_), false);
 				if(widget) {
 					focus_parent_container(widget);
 					focus_parent_window(widget);
@@ -205,7 +205,7 @@ void tevent_handler::handle_event(const SDL_Event& event)
 
 			mouse_x_ = event.button.x;
 			mouse_y_ = event.button.y;
-			mouse_over = find_widget(tpoint(mouse_x_, mouse_y_), true);
+			mouse_over = find_at(tpoint(mouse_x_, mouse_y_), true);
 
 			switch(event.button.button) {
 
@@ -236,7 +236,7 @@ void tevent_handler::handle_event(const SDL_Event& event)
 				case SDL_BUTTON_WHEELRIGHT :
 					DBG_GUI_E << "Event: Wheel\n";
 					mouse_wheel(event,
-							find_widget(tpoint(mouse_x_, mouse_y_), false));
+							find_at(tpoint(mouse_x_, mouse_y_), false));
 					break;
 				default:
 					// cast to avoid being printed as char.

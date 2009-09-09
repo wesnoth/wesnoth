@@ -65,7 +65,7 @@ public:
 	void mouse_left_button_double_click(tevent_handler&);
 
 	/** Inherited from tcontainer_ */
-	twidget* find_widget(const tpoint& coordinate, const bool must_be_active)
+	twidget* find_at(const tpoint& coordinate, const bool must_be_active)
 	{
 		/**
 		 * @todo since there is no mouse event nesting (or event nesting at all)
@@ -74,18 +74,18 @@ public:
 		 * intended button on the addon panel. So we need to chain mouse events
 		 * as well and also add a handled flag for them.
 		 */
-//		twidget* result = tcontainer_::find_widget(coordinate, must_be_active);
-		return /*result ? result :*/ tcontrol::find_widget(coordinate, must_be_active);
+//		twidget* result = tcontainer_::find_at(coordinate, must_be_active);
+		return /*result ? result :*/ tcontrol::find_at(coordinate, must_be_active);
 	}
 
 	/** Inherited from tcontainer_ */
-	const twidget* find_widget(const tpoint& coordinate, const bool must_be_active) const
+	const twidget* find_at(const tpoint& coordinate, const bool must_be_active) const
 	{
-//		const twidget* result = tcontainer_::find_widget(coordinate, must_be_active);
-		return /*result ? result :*/ tcontrol::find_widget(coordinate, must_be_active);
+//		const twidget* result = tcontainer_::find_at(coordinate, must_be_active);
+		return /*result ? result :*/ tcontrol::find_at(coordinate, must_be_active);
 	}
 
-	// Needed to import the find_widget(const tpoint&, const bool) and it's const version
+	// Needed to import the find_at(const tpoint&, const bool) and it's const version
 	// inheriting from panel eventhought they are the same as tcontainer_ but it might be
 	// panel reimplements it.
 	using tpanel::find_widget;

@@ -53,12 +53,12 @@ public:
 	/** Returns the main window. */
 	virtual const twindow& get_window() const = 0;
 
-	/** See twidget::find_widget() for the description. */
-	virtual twidget* find_widget(const tpoint& coordinate,
+	/** See twidget::find_at() for the description. */
+	virtual twidget* find_at(const tpoint& coordinate,
 			const bool must_be_active) = 0;
 
-	/** The const version of find_widget. */
-	virtual const twidget* find_widget(const tpoint& coordinate,
+	/** The const version of find_at. */
+	virtual const twidget* find_at(const tpoint& coordinate,
 		const bool must_be_active) const = 0;
 
 	/**

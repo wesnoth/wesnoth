@@ -239,10 +239,10 @@ public:
 			const std::vector<twidget*>& call_stack);
 
 	/** Inherited from twidget. */
-	twidget* find_widget(const tpoint& coordinate, const bool must_be_active);
+	twidget* find_at(const tpoint& coordinate, const bool must_be_active);
 
 	/** Inherited from twidget. */
-	const twidget* find_widget(const tpoint& coordinate,
+	const twidget* find_at(const tpoint& coordinate,
 			const bool must_be_active) const;
 
 	/** Inherited from twidget.*/

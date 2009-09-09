@@ -66,8 +66,7 @@ public:
 		/**
 		 * The user set the widget visible, that means:
 		 * * widget is visible.
-		 * * find_widget always 'sees' the widget (the active flag is tested
-		 *   later).
+		 * * find_at always 'sees' the widget (the active flag is tested later).
 		 * * widget (if active) handles events (and sends events to children)
 		 * * widget is drawn (and sends populate_dirty_list to children)
 		 */
@@ -75,7 +74,7 @@ public:
 		/**
 		 * The user set the widget hidden, that means:
 		 * * item is invisible but keeps its size.
-		 * * find_widget 'sees' the widget if active is false.
+		 * * find_at 'sees' the widget if active is false.
 		 * * item doesn't handle events (and doesn't send events to children).
 		 * * item doesn't populate_dirty_list (nor does it send the request
 		 *   to its children).
@@ -84,7 +83,7 @@ public:
 		/**
 		 * The user set the widget invisible, that means:
 		 * * item is invisible and gridcell has size 0,0.
-		 * * find_widget never 'sees' the widget.
+		 * * find_at never 'sees' the widget.
 		 * * item doesn't handle events (and doesn't send events to children).
 		 * * item doesn't populate_dirty_list (nor does it send the request
 		 *   to its children).
@@ -256,11 +255,11 @@ public:
 	 * @retval 0                  No widget at the wanted coordinate found (or
 	 *                            not active if must_be_active was set).
 	 */
-	virtual twidget* find_widget(const tpoint& coordinate,
+	virtual twidget* find_at(const tpoint& coordinate,
 			const bool must_be_active);
 
-	/** The const version of find_widget. */
-	virtual const twidget* find_widget(const tpoint& coordinate,
+	/** The const version of find_at. */
+	virtual const twidget* find_at(const tpoint& coordinate,
 			const bool must_be_active) const;
 
 	/**

@@ -531,17 +531,17 @@ void tgrid::child_populate_dirty_list(twindow& caller,
 	}
 }
 
-twidget* tgrid::find_widget(const tpoint& coordinate,
+twidget* tgrid::find_at(const tpoint& coordinate,
 		const bool must_be_active)
 {
-	return tgrid_implementation::find_widget<twidget>(
+	return tgrid_implementation::find_at<twidget>(
 		*this, coordinate, must_be_active);
 }
 
-const twidget* tgrid::find_widget(const tpoint& coordinate,
+const twidget* tgrid::find_at(const tpoint& coordinate,
 		const bool must_be_active) const
 {
-	return tgrid_implementation::find_widget<const twidget>(
+	return tgrid_implementation::find_at<const twidget>(
 		*this, coordinate, must_be_active);
 }
 

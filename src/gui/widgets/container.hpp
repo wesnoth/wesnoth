@@ -115,13 +115,13 @@ protected:
 public:
 
 	/** Inherited from tcontrol. */
-	twidget* find_widget(const tpoint& coordinate, const bool must_be_active)
-		{ return grid_.find_widget(coordinate, must_be_active); }
+	twidget* find_at(const tpoint& coordinate, const bool must_be_active)
+		{ return grid_.find_at(coordinate, must_be_active); }
 
 	/** Inherited from tcontrol. */
-	const twidget* find_widget(const tpoint& coordinate,
+	const twidget* find_at(const tpoint& coordinate,
 			const bool must_be_active) const
-		{ return grid_.find_widget(coordinate, must_be_active); }
+		{ return grid_.find_at(coordinate, must_be_active); }
 
 	/** Inherited from tcontrol.*/
 	twidget* find_widget(const std::string& id, const bool must_be_active)

@@ -861,7 +861,7 @@ void twindow::do_show_tooltip(const tpoint& location, const t_string& tooltip)
 
 	assert(!tooltip.empty());
 
-	twidget* widget = find_widget(location, true);
+	twidget* widget = find_at(location, true);
 	assert(widget);
 
 	const SDL_Rect widget_rect = widget->get_rect();
@@ -921,7 +921,7 @@ void twindow::do_show_help_popup(const tpoint& location, const t_string& help_po
 	if(help_popup.empty()) {
 		return;
 	}
-	twidget* widget = find_widget(location, true);
+	twidget* widget = find_at(location, true);
 	assert(widget);
 
 	const SDL_Rect widget_rect = widget->get_rect();

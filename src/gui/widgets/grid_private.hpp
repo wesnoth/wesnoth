@@ -46,12 +46,12 @@ struct tgrid_implementation
 {
 	/**
 	 * Implementation for the wrappers for
-	 * [const] twidget* tgrid::find_widget(const tpoint&, const bool) [const].
+	 * [const] twidget* tgrid::find_at(const tpoint&, const bool) [const].
 	 *
 	 * @param W                   twidget or const twidget.
 	 */
 	template<class W>
-	static W* find_widget(typename tconst_duplicator<W, tgrid>::type& grid,
+	static W* find_at(typename tconst_duplicator<W, tgrid>::type& grid,
 			const tpoint& coordinate, const bool must_be_active)
 	{
 		typedef typename tconst_duplicator<W, tgrid::tchild>::type hack;
@@ -62,7 +62,7 @@ struct tgrid_implementation
 				continue;
 			}
 
-			widget = widget->find_widget(coordinate, must_be_active);
+			widget = widget->find_at(coordinate, must_be_active);
 			if(widget) {
 				return widget;
 			}

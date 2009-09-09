@@ -128,10 +128,10 @@ public:
 	unsigned get_state() const { return state_; }
 
 	/** Inherited from tcontainer_. */
-	twidget* find_widget(const tpoint& coordinate, const bool must_be_active);
+	twidget* find_at(const tpoint& coordinate, const bool must_be_active);
 
 	/** Inherited from tcontainer_. */
-	const twidget* find_widget(const tpoint& coordinate,
+	const twidget* find_at(const tpoint& coordinate,
 			const bool must_be_active) const;
 
 	/** Inherited from tcontainer_. */
