@@ -2,6 +2,7 @@
 # encoding: utf8
 
 import sys, os.path, re, time, glob
+from subprocess import Popen
 # in case the wesnoth python package has not been installed
 sys.path.append("data/tools")
 import wesnoth.wmldata as wmldata
@@ -108,6 +109,7 @@ if __name__ == "__main__":
             print "Unpacking %s..." % name
             cs.unpackdir(mythread.data, cdir, verbose = options.verbose)
             dirname = os.path.join(cdir, name)
+            oldcfg_path = os.path.join(cdir, name + ".cfg")
             info = os.path.join(dirname, "info.cfg")
             try:
                 f = file(info, "w")
@@ -123,11 +125,18 @@ if __name__ == "__main__":
                 try: os.mkdir(options.tar)
                 except OSError: pass
                 tarname = options.tar + "/" + name + ".tar.bz2"
-                if options.verbose:
-                    sys.stderr.write("Creating tarball %(tarname)s.\n" %
-                        locals())
-                os.system("tar cjf %(tarname)s -C %(cdir)s %(name)s" %
-                    locals())
+                if os.path.isfile(oldcfg_path):
+                    oldcfg = name + ".cfg"
+                    if options.verbose:
+                        sys.stderr.write("Creating tarball with command: tar " +
+                            "cjf %(tarname)s -C %(cdir)s %(name)s %(oldcfg)s\n" %
+                            locals())
+                    Popen(["tar", "cjf", tarname, "-C", cdir, name, oldcfg])
+                else:
+                    if options.verbose:
+                        sys.stderr.write("Creating tarball with command: tar " +
+                            "cjf %(tarname)s -C %(cdir)s %(name)s\n" % locals())
+                    Popen(["tar", "cjf", tarname, "-C", cdir, name])
 
     def get_info(name):
         """
