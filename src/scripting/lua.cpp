@@ -91,6 +91,7 @@ static char const gettypeKey = 0;
 static char const getunitKey = 0;
 static char const tstringKey = 0;
 static char const uactionKey = 0;
+static char const vconfigKey = 0;
 static char const wactionKey = 0;
 
 /**
@@ -339,6 +340,69 @@ static int lua_tstring_tostring(lua_State *L)
 	t_string *t = static_cast<t_string *>(lua_touserdata(L, 1));
 	lua_pushstring(L, t->c_str());
 	return 1;
+}
+
+/**
+ * Gets the parsed field of a vconfig object (_index metamethod).
+ * Special fields __literal and __parsed return Lua tables.
+ */
+static int lua_vconfig_get(lua_State *L)
+{
+	vconfig *v = static_cast<vconfig *>(lua_touserdata(L, 1));
+
+	if (lua_isnumber(L, 1))
+	{
+		vconfig::all_children_iterator i = v->ordered_begin();
+		unsigned len = std::distance(i, v->ordered_end());
+		unsigned pos = lua_tointeger(L, 1) - 1;
+		if (pos >= len) return 0;
+		std::advance(i, pos);
+		lua_createtable(L, 2, 0);
+		lua_pushstring(L, i.get_key().c_str());
+		lua_rawseti(L, -2, 1);
+		new(lua_newuserdata(L, sizeof(vconfig))) vconfig(i.get_child());
+		lua_pushlightuserdata(L, (void *)&vconfigKey);
+		lua_gettable(L, LUA_REGISTRYINDEX);
+		lua_setmetatable(L, -2);
+		lua_rawseti(L, -2, 2);
+		return 1;
+	}
+
+	char const *m = luaL_checkstring(L, 2);
+	if (strcmp(m, "__literal") == 0) {
+		lua_newtable(L);
+		table_of_wml_config(L, v->get_config());
+		return 1;
+	}
+	if (strcmp(m, "__parsed") == 0) {
+		lua_newtable(L);
+		table_of_wml_config(L, v->get_parsed_config());
+		return 1;
+	}
+
+	if (!v->has_attribute(m)) return 0;
+	scalar_of_wml_string(L, (*v)[m]);
+	return 1;
+}
+
+/**
+ * Returns the number of a child of a vconfig object.
+ */
+static int lua_vconfig_size(lua_State *L)
+{
+	vconfig *v = static_cast<vconfig *>(lua_touserdata(L, 1));
+	lua_pushinteger(L, std::distance(v->ordered_begin(), v->ordered_end()));
+	return 1;
+}
+
+/**
+ * Destroys a vconfig object before it is collected (__gc metamethod).
+ */
+static int lua_vconfig_collect(lua_State *L)
+{
+	vconfig *v = static_cast<vconfig *>(lua_touserdata(L, 1));
+	v->vconfig::~vconfig();
+	return 0;
 }
 
 #define return_tstring_attrib(name, accessor) \
@@ -1216,6 +1280,19 @@ LuaKernel::LuaKernel()
 	lua_pushcfunction(L, lua_tstring_tostring);
 	lua_setfield(L, -2, "__tostring");
 	lua_pushstring(L, "translatable string");
+	lua_setfield(L, -2, "__metatable");
+	lua_settable(L, LUA_REGISTRYINDEX);
+
+	// Create the vconfig metatable.
+	lua_pushlightuserdata(L, (void *)&vconfigKey);
+	lua_createtable(L, 0, 4);
+	lua_pushcfunction(L, lua_vconfig_collect);
+	lua_setfield(L, -2, "__gc");
+	lua_pushcfunction(L, lua_vconfig_get);
+	lua_setfield(L, -2, "__index");
+	lua_pushcfunction(L, lua_vconfig_size);
+	lua_setfield(L, -2, "__len");
+	lua_pushstring(L, "wml object");
 	lua_setfield(L, -2, "__metatable");
 	lua_settable(L, LUA_REGISTRYINDEX);
 
