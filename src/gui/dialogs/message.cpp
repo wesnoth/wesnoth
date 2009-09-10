@@ -45,9 +45,8 @@ struct tmessage_implementation
 	init_button(twindow& window, tmessage::tbutton_status& button_status,
 			const std::string& id)
 	{
-		button_status.button =
-			dynamic_cast<tbutton*>(window.find(id, false));
-		VALIDATE(button_status.button, missing_widget(id));
+		button_status.button = find_widget<tbutton>(
+				&window, id, false, true);
 		button_status.button->set_visible(button_status.visible);
 
 		if(!button_status.caption.empty()) {
@@ -74,29 +73,19 @@ void tmessage::pre_show(CVideo& /*video*/, twindow& window)
 
 	// ***** ***** ***** ***** Set up the widgets ***** ***** ***** *****
 	if(!title_.empty()) {
-		tlabel* title =
-			dynamic_cast<tlabel*>(window.find("title", false));
-		VALIDATE(title, missing_widget("title"));
-
-		title->set_label(title_);
+		find_widget<tlabel>(&window, "title", false).set_label(title_);
 	}
 
 	if(!image_.empty()) {
-		timage* image =
-			dynamic_cast<timage*>(window.find("image", false));
-		VALIDATE(image, missing_widget("image"));
-
-		image->set_label(image_);
+		find_widget<timage>(&window, "image", false).set_label(image_);
 	}
 
-	tcontrol* label =
-		dynamic_cast<tcontrol*>(window.find("label", false));
-	VALIDATE(label, missing_widget("label"));
+	tcontrol& label = find_widget<tcontrol>(&window, "label", false);
+	label.set_label(message_);
 
-	label->set_label(message_);
 	// The label might not always be a scroll_label but the capturing
 	// shouldn't hurt.
-	window.keyboard_capture(label);
+	window.keyboard_capture(&label);
 
 	// Override the user value, to make sure it's set properly.
 	window.set_click_dismiss(auto_close_);
