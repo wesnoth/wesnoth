@@ -23,66 +23,101 @@ void debug_delete(node* n) {
 
 char* uncompress_buffer(const string_span& input, string_span* span)
 {
-	std::istringstream stream(std::string(input.begin(), input.end()));
-	boost::iostreams::filtering_stream<boost::iostreams::input> filter;
-	filter.push(boost::iostreams::gzip_decompressor());
-	filter.push(stream);
+	int nalloc = input.size();
+	int state = 0;
+	try {
+		std::istringstream stream(std::string(input.begin(), input.end()));
+		state = 1;
+		boost::iostreams::filtering_stream<boost::iostreams::input> filter;
+		state = 2;
+		filter.push(boost::iostreams::gzip_decompressor());
+		filter.push(stream);
+		state = 3;
 
-	const size_t chunk_size = input.size() * 10;
-	std::vector<char> buf(chunk_size);
-	size_t len = 0;
-	size_t pos = 0;
-	while(filter.good() && (len = filter.read(&buf[pos], chunk_size).gcount()) == chunk_size) {
-		if(pos + chunk_size > 40000000) {
-			throw error("WML document exceeds 40MB limit");
+		const size_t chunk_size = input.size() * 10;
+		nalloc = chunk_size;
+		std::vector<char> buf(chunk_size);
+		state = 4;
+		size_t len = 0;
+		size_t pos = 0;
+		while(filter.good() && (len = filter.read(&buf[pos], chunk_size).gcount()) == chunk_size) {
+			if(pos + chunk_size > 40000000) {
+				throw error("WML document exceeds 40MB limit");
+			}
+
+			pos += len;
+			buf.resize(pos + chunk_size);
+			len = 0;
+		}
+
+		if(!filter.eof() && !filter.good()) {
+			throw error("failed to uncompress");
 		}
 
 		pos += len;
-		buf.resize(pos + chunk_size);
-		len = 0;
+		state = 5;
+		nalloc = pos;
+
+		buf.resize(pos);
+		state = 6;
+
+		char* small_out = new char[pos+1];
+		memcpy(small_out, &buf[0], pos);
+		state = 7;
+
+		small_out[pos] = 0;
+
+		*span = string_span(small_out, pos);
+		state = 8;
+		return small_out;
+	} catch (std::bad_alloc& e) {
+		ERR_SWML << "ERROR: bad_alloc caught in uncompress_buffer() state "
+		<< state << " alloc bytes " << nalloc << " with input: '"
+		<< input << "' " << e.what() << std::endl;
+		throw error("Bad allocation request in uncompress_buffer().");
 	}
-
-	if(!filter.eof() && !filter.good()) {
-		throw error("failed to uncompress");
-	}
-
-	pos += len;
-	buf.resize(pos);
-
-	char* small_out = new char[pos+1];
-	memcpy(small_out, &buf[0], pos);
-	small_out[pos] = 0;
-
-	*span = string_span(small_out, pos);
-	return small_out;
 }
 
 char* compress_buffer(const char* input, string_span* span)
 {
+	int nalloc = strlen(input);
+	int state = 0;
 	try {
 		std::string in(input);
+		state = 1;
 		std::istringstream stream(in);
+		state = 2;
 		boost::iostreams::filtering_stream<boost::iostreams::input> filter;
+		state = 3;
 		filter.push(boost::iostreams::gzip_compressor());
 		filter.push(stream);
+		state = 4;
+		nalloc = in.size()*2 + 80;
 
 		std::vector<char> buf(in.size()*2 + 80);
+		state = 5;
 		const int len = filter.read(&buf[0], buf.size()).gcount();
 		assert(len < 128*1024*1024);
 		if((!filter.eof() && !filter.good()) || len == static_cast<int>(buf.size())) {
 			throw error("failed to compress");
 		}
+		state = 6;
+		nalloc = len;
 
 		buf.resize(len);
+		state = 7;
 
 		char* small_out = new char[len];
 		memcpy(small_out, &buf[0], len);
+		state = 8;
 
 		*span = string_span(small_out, len);
 		assert(*small_out == 31);
+		state = 9;
 		return small_out;
 	} catch (std::bad_alloc& e) {
-		ERR_SWML << "ERROR: bad_alloc caught in compress_buffer() with input: '"
+		ERR_SWML << "ERROR: bad_alloc caught in compress_buffer() state "
+		<< state << " alloc bytes " << nalloc << " with input: '"
 		<< input << "' " << e.what() << std::endl;
 		throw error("Bad allocation request in compress_buffer().");
 	}
