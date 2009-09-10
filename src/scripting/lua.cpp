@@ -147,6 +147,20 @@ static void luaW_pushscalar(lua_State *L, t_string const &v)
 }
 
 /**
+ * Returns true if the metatable of the object is the one found in the registry.
+ */
+static bool luaW_hasmetatable(lua_State *L, int index, char const &key)
+{
+	if (!lua_getmetatable(L, index))
+		return false;
+	lua_pushlightuserdata(L, (void *)&key);
+	lua_rawget(L, LUA_REGISTRYINDEX);
+	bool ok = lua_rawequal(L, -1, -2);
+	lua_pop(L, 2);
+	return ok;
+}
+
+/**
  * Converts a config object to a Lua table.
  * The destination table should be at the top of the stack on entry. It is
  * still at the top on exit.
@@ -200,13 +214,8 @@ static bool luaW_toconfig(lua_State *L, int index, config &cfg, int tstring_meta
 			break;
 		case LUA_TUSERDATA:
 		{
-			if (!lua_getmetatable(L, index))
+			if (!luaW_hasmetatable(L, index, vconfigKey))
 				return false;
-			lua_pushlightuserdata(L, (void *)&vconfigKey);
-			lua_gettable(L, LUA_REGISTRYINDEX);
-			bool ok = lua_rawequal(L, -1, -2);
-			lua_pop(L, 2);
-			if (!ok) return false;
 			cfg = static_cast<vconfig *>(lua_touserdata(L, index))->get_parsed_config();
 			return true;
 		}
@@ -290,17 +299,10 @@ static bool luaW_tovconfig(lua_State *L, int index, vconfig &vcfg)
 			break;
 		}
 		case LUA_TUSERDATA:
-		{
-			if (!lua_getmetatable(L, index))
+			if (!luaW_hasmetatable(L, index, vconfigKey))
 				return false;
-			lua_pushlightuserdata(L, (void *)&vconfigKey);
-			lua_gettable(L, LUA_REGISTRYINDEX);
-			bool ok = lua_rawequal(L, -1, -2);
-			lua_pop(L, 2);
-			if (!ok) return false;
 			vcfg = *static_cast<vconfig *>(lua_touserdata(L, index));
 			break;
-		}
 		case LUA_TNONE:
 		case LUA_TNIL:
 			break;
@@ -792,24 +794,21 @@ static int intf_set_variable(lua_State *L)
 			v.as_scalar() = lua_tostring(L, 2);
 			break;
 		case LUA_TUSERDATA:
-			// Compare its metatable with t_string's metatable.
-			if (!lua_getmetatable(L, 2))
-				goto error_call_destructors;
-			lua_pushlightuserdata(L, (void *)&tstringKey);
-			lua_gettable(L, LUA_REGISTRYINDEX);
-			if (!lua_rawequal(L, -1, -2)) {
-				lua_pop(L, 2);
-				goto try_table;
+			if (luaW_hasmetatable(L, 2, tstringKey)) {
+				v.as_scalar() = *static_cast<t_string *>(lua_touserdata(L, 2));
+				break;
 			}
-			v.as_scalar() = *static_cast<t_string *>(lua_touserdata(L, 2));
-			break;
-		default:
-			try_table:
+			// no break
+		case LUA_TTABLE:
+		{
 			config &cfg = v.as_container();
 			cfg.clear();
 			if (!luaW_toconfig(L, 2, cfg))
 				goto error_call_destructors;
 			break;
+		}
+		default:
+			goto error_call_destructors;
 	}
 	return 0;
 }
@@ -905,11 +904,8 @@ static int cfun_wml_action_proxy(lua_State *L)
 		}
 		case LUA_TUSERDATA:
 		{
-			lua_pushlightuserdata(L, (void *)&vconfigKey);
-			lua_gettable(L, LUA_REGISTRYINDEX);
-			if (!lua_getmetatable(L, 1) || !lua_rawequal(L, -1, -2))
+			if (!luaW_hasmetatable(L, 1, vconfigKey))
 				goto error_call_destructors;
-			lua_pop(L, 2);
 			lua_pushvalue(L, 1);
 			break;
 		}
