@@ -179,32 +179,35 @@ static void table_of_wml_config(lua_State *L, config const &cfg)
 
 /**
  * Converts an optional table or vconfig to a config object.
- * The source object should be at the top of the stack on entry. It is
- * still at the top on exit.
  * @param tstring_meta absolute stack position of t_string's metatable, or 0 if none.
  * @return false if some attributes had not the proper type.
  * @note If the table has holes in the integer keys or floating-point keys,
  *       some keys will be ignored and the error will go undetected.
  */
-static bool wml_config_of_table(lua_State *L, config &cfg, int tstring_meta = 0)
+static bool luaW_toconfig(lua_State *L, int index, config &cfg, int tstring_meta = 0)
 {
 	if (!lua_checkstack(L, LUA_MINSTACK))
 		return false;
 
-	switch (lua_type(L, -1))
+	// Get the absolute index of the table.
+	int initial_top = lua_gettop(L);
+	if (-initial_top <= index && index <= -1)
+		index = initial_top + index + 1;
+
+	switch (lua_type(L, index))
 	{
 		case LUA_TTABLE:
 			break;
 		case LUA_TUSERDATA:
 		{
-			if (!lua_getmetatable(L, -1))
+			if (!lua_getmetatable(L, index))
 				return false;
 			lua_pushlightuserdata(L, (void *)&vconfigKey);
 			lua_gettable(L, LUA_REGISTRYINDEX);
 			bool ok = lua_rawequal(L, -1, -2);
 			lua_pop(L, 2);
 			if (!ok) return false;
-			cfg = static_cast<vconfig *>(lua_touserdata(L, -1))->get_parsed_config();
+			cfg = static_cast<vconfig *>(lua_touserdata(L, index))->get_parsed_config();
 			return true;
 		}
 		case LUA_TNONE:
@@ -215,30 +218,28 @@ static bool wml_config_of_table(lua_State *L, config &cfg, int tstring_meta = 0)
 	}
 
 	// Get t_string's metatable, so that it can be used later to detect t_string object.
-	int initial_top = lua_gettop(L);
 	if (!tstring_meta) {
 		lua_pushlightuserdata(L, (void *)&tstringKey);
 		lua_gettable(L, LUA_REGISTRYINDEX);
-		tstring_meta = lua_gettop(L);
-		lua_pushvalue(L, -2);
+		tstring_meta = initial_top + 1;
 	}
 
 	// First convert the children (integer indices).
-	for (int i = 1, i_end = lua_objlen(L, -1); i <= i_end; ++i)
+	for (int i = 1, i_end = lua_objlen(L, index); i <= i_end; ++i)
 	{
-		lua_rawgeti(L, -1, i);
+		lua_rawgeti(L, index, i);
 		if (!lua_istable(L, -1)) return_misformed();
 		lua_rawgeti(L, -1, 1);
 		char const *m = lua_tostring(L, -1);
 		if (!m) return_misformed();
 		lua_rawgeti(L, -2, 2);
-		if (!wml_config_of_table(L, cfg.add_child(m), tstring_meta))
+		if (!luaW_toconfig(L, -1, cfg.add_child(m), tstring_meta))
 			return_misformed();
 		lua_pop(L, 3);
 	}
 
 	// Then convert the attributes (string indices).
-	for (lua_pushnil(L); lua_next(L, -2); lua_pop(L, 1))
+	for (lua_pushnil(L); lua_next(L, index); lua_pop(L, 1))
 	{
 		if (lua_isnumber(L, -2)) continue;
 		if (!lua_isstring(L, -2)) return_misformed();
@@ -283,9 +284,7 @@ static bool luaW_tovconfig(lua_State *L, int index, vconfig &vcfg)
 		case LUA_TTABLE:
 		{
 			config cfg;
-			lua_pushvalue(L, index);
-			bool ok = wml_config_of_table(L, cfg);
-			lua_pop(L, 1);
+			bool ok = luaW_toconfig(L, index, cfg);
 			if (!ok) return false;
 			vcfg = vconfig(cfg, true);
 			break;
@@ -806,10 +805,9 @@ static int intf_set_variable(lua_State *L)
 			break;
 		default:
 			try_table:
-			lua_settop(L, 2);
 			config &cfg = v.as_container();
 			cfg.clear();
-			if (!wml_config_of_table(L, cfg))
+			if (!luaW_toconfig(L, 2, cfg))
 				goto error_call_destructors;
 			break;
 	}
@@ -897,10 +895,8 @@ static int cfun_wml_action_proxy(lua_State *L)
 		case LUA_TTABLE:
 		{
 			config cfg;
-			lua_pushvalue(L, 1);
-			if (!wml_config_of_table(L, cfg))
+			if (!luaW_toconfig(L, 1, cfg))
 				goto error_call_destructors;
-			lua_pop(L, 1);
 			new(lua_newuserdata(L, sizeof(vconfig))) vconfig(cfg, true);
 			lua_pushlightuserdata(L, (void *)&vconfigKey);
 			lua_gettable(L, LUA_REGISTRYINDEX);
@@ -1263,8 +1259,7 @@ static int intf_eval_conditional(lua_State *L)
 	}
 
 	config cond;
-	lua_settop(L, 1);
-	if (!wml_config_of_table(L, cond))
+	if (!luaW_toconfig(L, 1, cond))
 		goto error_call_destructors;
 
 	bool b = game_events::conditional_passed(resources::units, vconfig(cond));
