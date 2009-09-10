@@ -64,20 +64,17 @@ twindow* tmp_create_game::build_window(CVideo& video)
 
 void tmp_create_game::pre_show(CVideo& /*video*/, twindow& window)
 {
-	tminimap* minimap = dynamic_cast<tminimap*>(window.find("minimap", false));
-	VALIDATE(minimap, missing_widget("minimap"));
-	minimap->set_config(&cfg_);
+	find_widget<tminimap>(&window, "minimap", false).set_config(&cfg_);
 
-	tlistbox* list = dynamic_cast<tlistbox*>(window.find("map_list", false));
-	VALIDATE(list, missing_widget("map_list"));
-
-	list->set_callback_value_change(dialog_callback<tmp_create_game, &tmp_create_game::update_map>);
+	tlistbox& list = find_widget<tlistbox>(&window, "map_list", false);
+	list.set_callback_value_change(
+			dialog_callback<tmp_create_game, &tmp_create_game::update_map>);
 
 	// Load option (might turn it into a button later).
 	string_map item;
 	item.insert(std::make_pair("label", _("Load Game")));
 	item.insert(std::make_pair("tooltip", _("Load Game...")));
-	list->add_row(item);
+	list.add_row(item);
 
 	// User maps
 /*	FIXME implement user maps
@@ -99,7 +96,7 @@ void tmp_create_game::pre_show(CVideo& /*video*/, twindow& window)
 			string_map item;
 			item.insert(std::make_pair("label", map["name"]));
 			item.insert(std::make_pair("tooltip", map["name"]));
-			list->add_row(item);
+			list.add_row(item);
 
 			// This hack is needed since the next item is too wide to fit.
 			// and the scrollbar can't truncate text yet.
@@ -115,29 +112,24 @@ void tmp_create_game::pre_show(CVideo& /*video*/, twindow& window)
 void tmp_create_game::post_show(twindow& window)
 {
 	if(get_retval() == twindow::OK) {
-		tlistbox* list = dynamic_cast<tlistbox*>(window.find("map_list", false));
-		assert(list);
-
+		find_widget<tlistbox>(&window, "map_list", false);
 	}
 }
 
 void tmp_create_game::update_map(twindow& window)
 {
-	tlistbox* list = dynamic_cast<tlistbox*>(window.find("map_list", false));
-	VALIDATE(list, missing_widget("map_list"));
+	tminimap& minimap = find_widget<tminimap>(&window, "minimap", false);
 
-	tminimap* minimap = dynamic_cast<tminimap*>(window.find("minimap", false));
-	VALIDATE(list, missing_widget("minimap"));
-
-	const int index = list->get_selected_row() - 1;
+	const int index = find_widget<tlistbox>(
+			&window, "map_list", false).get_selected_row() - 1;
 
 	if(index >= 0) {
 		config::const_child_itors children = cfg_.child_range("multiplayer");
 		std::advance(children.first, index);
 		scenario_ = &*children.first;
-		minimap->set_map_data((*scenario_)["map_data"]);
+		minimap.set_map_data((*scenario_)["map_data"]);
 	} else {
-		minimap->set_map_data("");
+		minimap.set_map_data("");
 		scenario_ = NULL;
 	}
 
