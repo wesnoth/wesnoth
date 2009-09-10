@@ -116,7 +116,7 @@ static void luaW_pushtstring(lua_State *L, t_string const &v)
 {
 	new(lua_newuserdata(L, sizeof(t_string))) t_string(v);
 	lua_pushlightuserdata(L, (void *)&tstringKey);
-	lua_gettable(L, LUA_REGISTRYINDEX);
+	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_setmetatable(L, -2);
 }
 
@@ -229,7 +229,7 @@ static bool luaW_toconfig(lua_State *L, int index, config &cfg, int tstring_meta
 	// Get t_string's metatable, so that it can be used later to detect t_string object.
 	if (!tstring_meta) {
 		lua_pushlightuserdata(L, (void *)&tstringKey);
-		lua_gettable(L, LUA_REGISTRYINDEX);
+		lua_rawget(L, LUA_REGISTRYINDEX);
 		tstring_meta = initial_top + 1;
 	}
 
@@ -339,7 +339,7 @@ static int intf_textdomain(lua_State *L)
 	void *p = lua_newuserdata(L, l + 1);
 	memcpy(p, m, l + 1);
 	lua_pushlightuserdata(L, (void *)&gettextKey);
-	lua_gettable(L, LUA_REGISTRYINDEX);
+	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_setmetatable(L, -2);
 	return 1;
 }
@@ -379,7 +379,7 @@ static int impl_tstring_concat(lua_State *L)
 	t_string *t = new(lua_newuserdata(L, sizeof(t_string))) t_string;
 
 	lua_pushlightuserdata(L, (void *)&tstringKey);
-	lua_gettable(L, LUA_REGISTRYINDEX);
+	lua_rawget(L, LUA_REGISTRYINDEX);
 
 	// Append both arguments to t.
 	tstring_concat_aux(L, *t, 1);
@@ -430,7 +430,7 @@ static int impl_vconfig_get(lua_State *L)
 		lua_rawseti(L, -2, 1);
 		new(lua_newuserdata(L, sizeof(vconfig))) vconfig(i.get_child());
 		lua_pushlightuserdata(L, (void *)&vconfigKey);
-		lua_gettable(L, LUA_REGISTRYINDEX);
+		lua_rawget(L, LUA_REGISTRYINDEX);
 		lua_setmetatable(L, -2);
 		lua_rawseti(L, -2, 2);
 		return 1;
@@ -517,7 +517,7 @@ static int impl_vconfig_collect(lua_State *L)
 	if (strcmp(m, name) == 0) { \
 		if (lua_type(L, -1) == LUA_TUSERDATA) { \
 			lua_pushlightuserdata(L, (void *)&tstringKey); \
-			lua_gettable(L, LUA_REGISTRYINDEX); \
+			lua_rawget(L, LUA_REGISTRYINDEX); \
 			if (!lua_getmetatable(L, -2) || !lua_rawequal(L, -1, -2)) \
 				return luaL_typerror(L, -3, "(translatable) string"); \
 			const t_string &value = *static_cast<t_string *>(lua_touserdata(L, -3)); \
@@ -592,7 +592,7 @@ static int intf_get_unit_type(lua_State *L)
 	lua_pushvalue(L, 1);
 	lua_setfield(L, -2, "id");
 	lua_pushlightuserdata(L, (void *)&gettypeKey);
-	lua_gettable(L, LUA_REGISTRYINDEX);
+	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_setmetatable(L, -2);
 	return 1;
 }
@@ -700,7 +700,7 @@ static int intf_get_units(lua_State *L)
 	// 1: metatable, 2: return table, 3: userdata, 4: metatable copy
 	lua_settop(L, 0);
 	lua_pushlightuserdata(L, (void *)&getunitKey);
-	lua_gettable(L, LUA_REGISTRYINDEX);
+	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_newtable(L);
 	int i = 1;
 	unit_map &units = *resources::units;
@@ -898,7 +898,7 @@ static int cfun_wml_action_proxy(lua_State *L)
 				goto error_call_destructors;
 			new(lua_newuserdata(L, sizeof(vconfig))) vconfig(cfg, true);
 			lua_pushlightuserdata(L, (void *)&vconfigKey);
-			lua_gettable(L, LUA_REGISTRYINDEX);
+			lua_rawget(L, LUA_REGISTRYINDEX);
 			lua_setmetatable(L, -2);
 			break;
 		}
@@ -938,18 +938,18 @@ void lua_action_handler::handle(const game_events::queued_event &ev, const vconf
 {
 	// Load the error handler from the registry.
 	lua_pushlightuserdata(L, (void *)&executeKey);
-	lua_gettable(L, LUA_REGISTRYINDEX);
+	lua_rawget(L, LUA_REGISTRYINDEX);
 
 	// Load the user function from the registry.
 	lua_pushlightuserdata(L, (void *)&uactionKey);
-	lua_gettable(L, LUA_REGISTRYINDEX);
+	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_rawgeti(L, -1, num);
 	lua_remove(L, -2);
 
 	// Push the WML table argument.
 	new(lua_newuserdata(L, sizeof(vconfig))) vconfig(cfg);
 	lua_pushlightuserdata(L, (void *)&vconfigKey);
-	lua_gettable(L, LUA_REGISTRYINDEX);
+	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_setmetatable(L, -2);
 
 	queued_event_context dummy(&ev);
@@ -976,7 +976,7 @@ lua_action_handler::~lua_action_handler()
 {
 	// Remove the function from the registry, so that it can be collected.
 	lua_pushlightuserdata(L, (void *)&uactionKey);
-	lua_gettable(L, LUA_REGISTRYINDEX);
+	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_pushnil(L);
 	lua_rawseti(L, -2, num);
 	lua_pop(L, 1);
@@ -995,7 +995,7 @@ static int intf_register_wml_action(lua_State *L)
 	// Retrieve the user action table from the registry.
 	// Functions are stored on odd indices, handlers on even ones.
 	lua_pushlightuserdata(L, (void *)&uactionKey);
-	lua_gettable(L, LUA_REGISTRYINDEX);
+	lua_rawget(L, LUA_REGISTRYINDEX);
 	size_t length = lua_objlen(L, -1);
 
 	// Push the function on it so that it is not collected.
@@ -1021,7 +1021,7 @@ static int intf_register_wml_action(lua_State *L)
 	void *p = lua_newuserdata(L, sizeof(game_events::action_handler *));
 	*static_cast<game_events::action_handler **>(p) = previous;
 	lua_pushlightuserdata(L, (void *)&wactionKey);
-	lua_gettable(L, LUA_REGISTRYINDEX);
+	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_setmetatable(L, -2);
 	return 1;
 }
@@ -1095,7 +1095,7 @@ static int intf_get_side(lua_State *L)
 
 	// Get the metatable from the registry and set it.
 	lua_pushlightuserdata(L, (void *)&getsideKey);
-	lua_gettable(L, LUA_REGISTRYINDEX);
+	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_setmetatable(L, 2);
 
 	return 1;
@@ -1317,7 +1317,7 @@ LuaKernel::LuaKernel()
 	lua_setfield(L, -2, "__newindex");
 	lua_pushstring(L, "side");
 	lua_setfield(L, -2, "__metatable");
-	lua_settable(L, LUA_REGISTRYINDEX);
+	lua_rawset(L, LUA_REGISTRYINDEX);
 
 	// Create the gettext metatable.
 	lua_pushlightuserdata(L, (void *)&gettextKey);
@@ -1326,7 +1326,7 @@ LuaKernel::LuaKernel()
 	lua_setfield(L, -2, "__call");
 	lua_pushstring(L, "message domain");
 	lua_setfield(L, -2, "__metatable");
-	lua_settable(L, LUA_REGISTRYINDEX);
+	lua_rawset(L, LUA_REGISTRYINDEX);
 
 	// Create the gettype metatable.
 	lua_pushlightuserdata(L, (void *)&gettypeKey);
@@ -1335,7 +1335,7 @@ LuaKernel::LuaKernel()
 	lua_setfield(L, -2, "__index");
 	lua_pushstring(L, "unit type");
 	lua_setfield(L, -2, "__metatable");
-	lua_settable(L, LUA_REGISTRYINDEX);
+	lua_rawset(L, LUA_REGISTRYINDEX);
 
 	// Create the getunit metatable.
 	lua_pushlightuserdata(L, (void *)&getunitKey);
@@ -1346,7 +1346,7 @@ LuaKernel::LuaKernel()
 	lua_setfield(L, -2, "__newindex");
 	lua_pushstring(L, "unit");
 	lua_setfield(L, -2, "__metatable");
-	lua_settable(L, LUA_REGISTRYINDEX);
+	lua_rawset(L, LUA_REGISTRYINDEX);
 
 	// Create the tstring metatable.
 	lua_pushlightuserdata(L, (void *)&tstringKey);
@@ -1359,7 +1359,7 @@ LuaKernel::LuaKernel()
 	lua_setfield(L, -2, "__tostring");
 	lua_pushstring(L, "translatable string");
 	lua_setfield(L, -2, "__metatable");
-	lua_settable(L, LUA_REGISTRYINDEX);
+	lua_rawset(L, LUA_REGISTRYINDEX);
 
 	// Create the vconfig metatable.
 	lua_pushlightuserdata(L, (void *)&vconfigKey);
@@ -1372,7 +1372,7 @@ LuaKernel::LuaKernel()
 	lua_setfield(L, -2, "__len");
 	lua_pushstring(L, "wml object");
 	lua_setfield(L, -2, "__metatable");
-	lua_settable(L, LUA_REGISTRYINDEX);
+	lua_rawset(L, LUA_REGISTRYINDEX);
 
 	// Create the wml action metatable.
 	lua_pushlightuserdata(L, (void *)&wactionKey);
@@ -1383,7 +1383,7 @@ LuaKernel::LuaKernel()
 	lua_setfield(L, -2, "__gc");
 	lua_pushstring(L, "wml action handler");
 	lua_setfield(L, -2, "__metatable");
-	lua_settable(L, LUA_REGISTRYINDEX);
+	lua_rawset(L, LUA_REGISTRYINDEX);
 
 	// Delete dofile and loadfile.
 	lua_pushnil(L);
@@ -1394,14 +1394,14 @@ LuaKernel::LuaKernel()
 	// Create the user action table.
 	lua_pushlightuserdata(L, (void *)&uactionKey);
 	lua_newtable(L);
-	lua_settable(L, LUA_REGISTRYINDEX);
+	lua_rawset(L, LUA_REGISTRYINDEX);
 
 	// Store the error handler, then close debug.
 	lua_pushlightuserdata(L, (void *)&executeKey);
 	lua_getglobal(L, "debug");
 	lua_getfield(L, -1, "traceback");
 	lua_remove(L, -2);
-	lua_settable(L, LUA_REGISTRYINDEX);
+	lua_rawset(L, LUA_REGISTRYINDEX);
 	lua_pushnil(L);
 	lua_setglobal(L, "debug");
 
@@ -1472,7 +1472,7 @@ void LuaKernel::execute(char const *prog, int nArgs, int nRets)
 
 	// Load the error handler before the function arguments.
 	lua_pushlightuserdata(L, (void *)&executeKey);
-	lua_gettable(L, LUA_REGISTRYINDEX);
+	lua_rawget(L, LUA_REGISTRYINDEX);
 	if (nArgs)
 		lua_insert(L, -1 - nArgs);
 
