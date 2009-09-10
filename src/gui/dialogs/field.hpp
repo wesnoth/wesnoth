@@ -342,12 +342,10 @@ private:
 	 */
 	void validate_widget(twindow& window)
 	{
-
 		if(is_optional()) {
 			return;
 		}
-		const W* widget = dynamic_cast<const W*>(window.find(id(), false));
-		VALIDATE(widget, missing_widget(id()));
+		find_widget<const W>(&window, id(), false);
 	}
 
 	/**
