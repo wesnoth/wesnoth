@@ -20,6 +20,12 @@
  *   never to call a Lua error function that will jump while in the scope
  *   of a C++ object with a destructor. This is why this file uses goto-s
  *   to force object unscoping before erroring out.
+ *
+ * @note Naming conventions:
+ *   - intf_ functions are exported in the wesnoth domain,
+ *   - impl_ functions are hidden inside metatables,
+ *   - cfun_ functions are closures,
+ *   - luaW_ functions are helpers in Lua style.
  */
 
 #ifdef DISABLE_LUA
@@ -106,7 +112,7 @@ static void chat_message(std::string const &caption, std::string const &msg)
 /**
  * Pushes a t_string on the top of the stack.
  */
-static void lua_pushtstring(lua_State *L, t_string const &v)
+static void luaW_pushtstring(lua_State *L, t_string const &v)
 {
 	new(lua_newuserdata(L, sizeof(t_string))) t_string(v);
 	lua_pushlightuserdata(L, (void *)&tstringKey);
@@ -118,7 +124,7 @@ static void lua_pushtstring(lua_State *L, t_string const &v)
  * Converts a string into a Lua object pushed at the top of the stack.
  * Boolean ("yes"/"no") and numbers are detected and typed accordingly.
  */
-static void scalar_of_wml_string(lua_State *L, t_string const &v)
+static void luaW_pushscalar(lua_State *L, t_string const &v)
 {
 	if (!v.translatable())
 	{
@@ -136,7 +142,7 @@ static void scalar_of_wml_string(lua_State *L, t_string const &v)
 	}
 	else
 	{
-		lua_pushtstring(L, v);
+		luaW_pushtstring(L, v);
 	}
 }
 
@@ -163,7 +169,7 @@ static void table_of_wml_config(lua_State *L, config const &cfg)
 	}
 	foreach (const config::attribute &attr, cfg.attribute_range())
 	{
-		scalar_of_wml_string(L, attr.second);
+		luaW_pushscalar(L, attr.second);
 		lua_setfield(L, -2, attr.first.c_str());
 	}
 }
@@ -270,7 +276,7 @@ static bool wml_config_of_table(lua_State *L, config &cfg, int tstring_meta = 0)
  * Gets an optional vconfig from either a table or a userdata.
  * @return false in case of failure.
  */
-static bool lua_tovconfig(lua_State *L, int index, vconfig &vcfg)
+static bool luaW_tovconfig(lua_State *L, int index, vconfig &vcfg)
 {
 	switch (lua_type(L, index))
 	{
@@ -311,12 +317,12 @@ static bool lua_tovconfig(lua_State *L, int index, vconfig &vcfg)
  * - Arg 2: string to translate.
  * - Ret 1: string containing the translatable string.
  */
-static int lua_gettext(lua_State *L)
+static int impl_gettext(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 2);
 	char const *d = static_cast<char *>(lua_touserdata(L, 1));
 	// Hidden metamethod, so d has to be a string. Use it to create a t_string.
-	lua_pushtstring(L, t_string(m, d));
+	luaW_pushtstring(L, t_string(m, d));
 	return 1;
 }
 
@@ -325,7 +331,7 @@ static int lua_gettext(lua_State *L)
  * - Arg 1: string containing the domain.
  * - Ret 1: a full userdata with __call pointing to lua_gettext.
  */
-static int lua_textdomain(lua_State *L)
+static int intf_textdomain(lua_State *L)
 {
 	size_t l;
 	char const *m = luaL_checklstring(L, 1, &l);
@@ -344,7 +350,7 @@ static int lua_textdomain(lua_State *L)
  *       is still there on exit.) Second, the caller hasn't any valuable object
  *       with dynamic lifetime, since they would be leaked on error.
  */
-static void lua_tstring_concat_aux(lua_State *L, t_string &dst, int src)
+static void tstring_concat_aux(lua_State *L, t_string &dst, int src)
 {
 	switch (lua_type(L, src)) {
 		case LUA_TNUMBER:
@@ -366,7 +372,7 @@ static void lua_tstring_concat_aux(lua_State *L, t_string &dst, int src)
 /**
  * Appends a scalar to a t_string object (__concat metamethod).
  */
-static int lua_tstring_concat(lua_State *L)
+static int impl_tstring_concat(lua_State *L)
 {
 	// Create a new t_string.
 	t_string *t = new(lua_newuserdata(L, sizeof(t_string))) t_string;
@@ -375,8 +381,8 @@ static int lua_tstring_concat(lua_State *L)
 	lua_gettable(L, LUA_REGISTRYINDEX);
 
 	// Append both arguments to t.
-	lua_tstring_concat_aux(L, *t, 1);
-	lua_tstring_concat_aux(L, *t, 2);
+	tstring_concat_aux(L, *t, 1);
+	tstring_concat_aux(L, *t, 2);
 
 	lua_setmetatable(L, -2);
 	return 1;
@@ -385,7 +391,7 @@ static int lua_tstring_concat(lua_State *L)
 /**
  * Destroys a t_string object before it is collected (__gc metamethod).
  */
-static int lua_tstring_collect(lua_State *L)
+static int impl_tstring_collect(lua_State *L)
 {
 	t_string *t = static_cast<t_string *>(lua_touserdata(L, 1));
 	t->t_string::~t_string();
@@ -396,7 +402,7 @@ static int lua_tstring_collect(lua_State *L)
  * Converts a t_string object to a string (__tostring metamethod);
  * that is, performs a translation.
  */
-static int lua_tstring_tostring(lua_State *L)
+static int impl_tstring_tostring(lua_State *L)
 {
 	t_string *t = static_cast<t_string *>(lua_touserdata(L, 1));
 	lua_pushstring(L, t->c_str());
@@ -407,7 +413,7 @@ static int lua_tstring_tostring(lua_State *L)
  * Gets the parsed field of a vconfig object (_index metamethod).
  * Special fields __literal and __parsed return Lua tables.
  */
-static int lua_vconfig_get(lua_State *L)
+static int impl_vconfig_get(lua_State *L)
 {
 	vconfig *v = static_cast<vconfig *>(lua_touserdata(L, 1));
 
@@ -442,14 +448,14 @@ static int lua_vconfig_get(lua_State *L)
 	}
 
 	if (v->null() || !v->has_attribute(m)) return 0;
-	scalar_of_wml_string(L, (*v)[m]);
+	luaW_pushscalar(L, (*v)[m]);
 	return 1;
 }
 
 /**
  * Returns the number of a child of a vconfig object.
  */
-static int lua_vconfig_size(lua_State *L)
+static int impl_vconfig_size(lua_State *L)
 {
 	vconfig *v = static_cast<vconfig *>(lua_touserdata(L, 1));
 	lua_pushinteger(L, std::distance(v->ordered_begin(), v->ordered_end()));
@@ -459,7 +465,7 @@ static int lua_vconfig_size(lua_State *L)
 /**
  * Destroys a vconfig object before it is collected (__gc metamethod).
  */
-static int lua_vconfig_collect(lua_State *L)
+static int impl_vconfig_collect(lua_State *L)
 {
 	vconfig *v = static_cast<vconfig *>(lua_touserdata(L, 1));
 	v->vconfig::~vconfig();
@@ -468,7 +474,7 @@ static int lua_vconfig_collect(lua_State *L)
 
 #define return_tstring_attrib(name, accessor) \
 	if (strcmp(m, name) == 0) { \
-		lua_pushtstring(L, accessor); \
+		luaW_pushtstring(L, accessor); \
 		return 1; \
 	}
 
@@ -549,7 +555,7 @@ static int lua_vconfig_collect(lua_State *L)
  * - Arg 2: string containing the name of the property.
  * - Ret 1: something containing the attribute.
  */
-static int lua_unit_type_get(lua_State *L)
+static int impl_unit_type_get(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 2);
 	lua_getfield(L, 1, "id");
@@ -575,7 +581,7 @@ static int lua_unit_type_get(lua_State *L)
  * - Arg 1: string containing the unit type id.
  * - Ret 1: table with an "id" field and with __index pointing to lua_unit_type_get.
  */
-static int lua_get_unit_type(lua_State *L)
+static int intf_get_unit_type(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
 	unit_type_data::unit_type_map_wrapper &ut_map = unit_type_data::types();
@@ -594,7 +600,7 @@ static int lua_get_unit_type(lua_State *L)
  * Gets the ids of all the unit types.
  * - Ret 1: table containing the ids.
  */
-static int lua_get_unit_type_ids(lua_State *L)
+static int intf_get_unit_type_ids(lua_State *L)
 {
 	lua_newtable(L);
 	int i = 1;
@@ -615,7 +621,7 @@ static int lua_get_unit_type_ids(lua_State *L)
  * - Arg 2: string containing the name of the property.
  * - Ret 1: something containing the attribute.
  */
-static int lua_unit_get(lua_State *L)
+static int impl_unit_get(lua_State *L)
 {
 	size_t id = *static_cast<size_t *>(lua_touserdata(L, 1));
 	char const *m = luaL_checkstring(L, 2);
@@ -652,7 +658,7 @@ static int lua_unit_get(lua_State *L)
  * - Arg 2: string containing the name of the property.
  * - Arg 3: something containing the attribute.
  */
-static int lua_unit_set(lua_State *L)
+static int impl_unit_set(lua_State *L)
 {
 	size_t id = *static_cast<size_t *>(lua_touserdata(L, 1));
 	char const *m = luaL_checkstring(L, 2);
@@ -678,7 +684,7 @@ static int lua_unit_set(lua_State *L)
  * - Ret 1: table containing full userdata with __index pointing to
  *          lua_unit_get and __newindex pointing to lua_unit_set.
  */
-static int lua_get_units(lua_State *L)
+static int intf_get_units(lua_State *L)
 {
 	if (false) {
 		error_call_destructors:
@@ -686,7 +692,7 @@ static int lua_get_units(lua_State *L)
 	}
 
 	vconfig filter;
-	if (!lua_tovconfig(L, 1, filter))
+	if (!luaW_tovconfig(L, 1, filter))
 		goto error_call_destructors;
 
 	// Go through all the units while keeping the following stack:
@@ -717,7 +723,7 @@ static int lua_get_units(lua_State *L)
  * - Arg 1: string containing the handler name.
  * - Arg 2: optional WML config.
  */
-static int lua_fire(lua_State *L)
+static int intf_fire(lua_State *L)
 {
 	if (false) {
 		error_call_destructors:
@@ -727,7 +733,7 @@ static int lua_fire(lua_State *L)
 	char const *m = luaL_checkstring(L, 1);
 
 	vconfig vcfg;
-	if (!lua_tovconfig(L, 2, vcfg))
+	if (!luaW_tovconfig(L, 2, vcfg))
 		goto error_call_destructors;
 
 	game_events::handle_event_command(m, queued_event_context::get(), vcfg);
@@ -740,12 +746,12 @@ static int lua_fire(lua_State *L)
  * - Arg 2: optional bool indicating if tables for containers should be left empty.
  * - Ret 1: value of the variable, if any.
  */
-static int lua_get_variable(lua_State *L)
+static int intf_get_variable(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
 	variable_info v(m, false, variable_info::TYPE_SCALAR);
 	if (v.is_valid) {
-		scalar_of_wml_string(L, v.as_scalar());
+		luaW_pushscalar(L, v.as_scalar());
 		return 1;
 	} else {
 		variable_info w(m, false, variable_info::TYPE_CONTAINER);
@@ -764,7 +770,7 @@ static int lua_get_variable(lua_State *L)
  * - Arg 1: string containing the variable name.
  * - Arg 2: bool/int/string/table containing the value.
  */
-static int lua_set_variable(lua_State *L)
+static int intf_set_variable(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
 	if (false) {
@@ -815,7 +821,7 @@ static int lua_set_variable(lua_State *L)
  * - Arg 1: string containing the file name.
  * - Ret *: values returned by executing the file body.
  */
-static int lua_dofile(lua_State *L)
+static int intf_dofile(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
 	if (false) {
@@ -842,7 +848,7 @@ static int lua_dofile(lua_State *L)
  * - Arg 1: userdata containing the handler.
  * - Arg 2: optional WML config.
  */
-static int lua_wml_action_call(lua_State *L)
+static int impl_wml_action_call(lua_State *L)
 {
 	if (false) {
 		error_call_destructors:
@@ -850,7 +856,7 @@ static int lua_wml_action_call(lua_State *L)
 	}
 
 	vconfig vcfg;
-	if (!lua_tovconfig(L, 2, vcfg))
+	if (!luaW_tovconfig(L, 2, vcfg))
 		goto error_call_destructors;
 
 	game_events::action_handler **h =
@@ -864,7 +870,7 @@ static int lua_wml_action_call(lua_State *L)
  * Destroys a WML action handler before its pointer is collected (__gc metamethod).
  * - Arg 1: userdata containing the handler.
  */
-static int lua_wml_action_collect(lua_State *L)
+static int impl_wml_action_collect(lua_State *L)
 {
 	game_events::action_handler **h =
 		static_cast<game_events::action_handler **>(lua_touserdata(L, 1));
@@ -877,7 +883,7 @@ static int lua_wml_action_collect(lua_State *L)
  * Calls the first upvalue and passes the first argument.
  * - Arg 1: optional WML config.
  */
-static int lua_wml_action_proxy(lua_State *L)
+static int cfun_wml_action_proxy(lua_State *L)
 {
 	if (false) {
 		error_call_destructors:
@@ -990,7 +996,7 @@ lua_action_handler::~lua_action_handler()
  * - Arg 2: function taking a WML table as argument.
  * - Ret 1: previous action handler, if any.
  */
-static int lua_register_wml_action(lua_State *L)
+static int intf_register_wml_action(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
 
@@ -1014,7 +1020,7 @@ static int lua_register_wml_action(lua_State *L)
 	if (lua_prev)
 	{
 		lua_rawgeti(L, -1, lua_prev->num);
-		lua_pushcclosure(L, lua_wml_action_proxy, 1);
+		lua_pushcclosure(L, cfun_wml_action_proxy, 1);
 		delete lua_prev;
 		return 1;
 	}
@@ -1034,7 +1040,7 @@ static int lua_register_wml_action(lua_State *L)
  * - Arg 2: string containing the name of the property.
  * - Ret 1: something containing the attribute.
  */
-static int lua_side_get(lua_State *L)
+static int impl_side_get(lua_State *L)
 {
 	// Hidden metamethod, so arg1 has to be a pointer to a team.
 	team &t = **static_cast<team **>(lua_touserdata(L, 1));
@@ -1059,7 +1065,7 @@ static int lua_side_get(lua_State *L)
  * - Arg 2: string containing the name of the property.
  * - Arg 3: something containing the attribute.
  */
-static int lua_side_set(lua_State *L)
+static int impl_side_set(lua_State *L)
 {
 	// Hidden metamethod, so arg1 has to be a pointer to a team.
 	team &t = **static_cast<team **>(lua_touserdata(L, 1));
@@ -1083,7 +1089,7 @@ static int lua_side_set(lua_State *L)
  * - Ret 1: full userdata with __index pointing to lua_side_get
  *          and __newindex pointing to lua_side_set.
  */
-static int lua_get_side(lua_State *L)
+static int intf_get_side(lua_State *L)
 {
 	int s = luaL_checkint(L, 1);
 
@@ -1108,7 +1114,7 @@ static int lua_get_side(lua_State *L)
  * - Args 1,2: map location.
  * - Ret 1: string.
  */
-static int lua_get_terrain(lua_State *L)
+static int intf_get_terrain(lua_State *L)
 {
 	int x = luaL_checkint(L, 1);
 	int y = luaL_checkint(L, 2);
@@ -1124,7 +1130,7 @@ static int lua_get_terrain(lua_State *L)
  * - Args 1,2: map location.
  * - Arg 3: terrain code string.
  */
-static int lua_set_terrain(lua_State *L)
+static int intf_set_terrain(lua_State *L)
 {
 	int x = luaL_checkint(L, 1);
 	int y = luaL_checkint(L, 2);
@@ -1141,7 +1147,7 @@ static int lua_set_terrain(lua_State *L)
  * - Arg 1: terrain code string.
  * - Ret 1: table.
  */
-static int lua_get_terrain_info(lua_State *L)
+static int intf_get_terrain_info(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
 	t_translation::t_terrain t = t_translation::read_terrain_code(m);
@@ -1151,9 +1157,9 @@ static int lua_get_terrain_info(lua_State *L)
 	lua_newtable(L);
 	lua_pushstring(L, info.id().c_str());
 	lua_setfield(L, -2, "id");
-	lua_pushtstring(L, info.name());
+	luaW_pushtstring(L, info.name());
 	lua_setfield(L, -2, "name");
-	lua_pushtstring(L, info.description());
+	luaW_pushtstring(L, info.description());
 	lua_setfield(L, -2, "description");
 	lua_pushboolean(L, info.is_village());
 	lua_setfield(L, -2, "village");
@@ -1172,7 +1178,7 @@ static int lua_get_terrain_info(lua_State *L)
  * - Args 1,2: map location.
  * - Ret 1: integer.
  */
-static int lua_get_village_owner(lua_State *L)
+static int intf_get_village_owner(lua_State *L)
 {
 	int x = luaL_checkint(L, 1);
 	int y = luaL_checkint(L, 2);
@@ -1192,7 +1198,7 @@ static int lua_get_village_owner(lua_State *L)
  * - Args 1,2: map location.
  * - Arg 3: integer for the side or empty to remove ownership.
  */
-static int lua_set_village_owner(lua_State *L)
+static int intf_set_village_owner(lua_State *L)
 {
 	int x = luaL_checkint(L, 1);
 	int y = luaL_checkint(L, 2);
@@ -1217,7 +1223,7 @@ static int lua_set_village_owner(lua_State *L)
  * - Ret 1: width.
  * - Ret 2: height.
  */
-static int lua_get_map_size(lua_State *L)
+static int intf_get_map_size(lua_State *L)
 {
 	const gamemap &map = *resources::game_map;
 	lua_pushinteger(L, map.w());
@@ -1230,7 +1236,7 @@ static int lua_get_map_size(lua_State *L)
  * - Arg 1: optional message header.
  * - Arg 2 (or 1): message.
  */
-static int lua_message(lua_State *L)
+static int intf_message(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
 	char const *h = m;
@@ -1249,7 +1255,7 @@ static int lua_message(lua_State *L)
  * - Arg 1: WML table.
  * - Ret 1: boolean.
  */
-static int lua_eval_conditional(lua_State *L)
+static int intf_eval_conditional(lua_State *L)
 {
 	if (lua_isnoneornil(L, 1)) {
 		error_call_destructors:
@@ -1289,24 +1295,24 @@ LuaKernel::LuaKernel()
 
 	// Put some callback functions in the scripting environment.
 	static luaL_reg const callbacks[] = {
-		{ "dofile",                   &lua_dofile                   },
-		{ "fire",                     &lua_fire                     },
-		{ "eval_conditional",         &lua_eval_conditional         },
-		{ "get_map_size",             &lua_get_map_size             },
-		{ "get_side",                 &lua_get_side                 },
-		{ "get_terrain",              &lua_get_terrain              },
-		{ "get_terrain_info",         &lua_get_terrain_info         },
-		{ "get_unit_type",            &lua_get_unit_type            },
-		{ "get_unit_type_ids",        &lua_get_unit_type_ids        },
-		{ "get_units",                &lua_get_units                },
-		{ "get_variable",             &lua_get_variable             },
-		{ "get_village_owner",        &lua_get_village_owner        },
-		{ "message",                  &lua_message                  },
-		{ "register_wml_action",      &lua_register_wml_action      },
-		{ "set_terrain",              &lua_set_terrain              },
-		{ "set_variable",             &lua_set_variable             },
-		{ "set_village_owner",        &lua_set_village_owner        },
-		{ "textdomain",               &lua_textdomain               },
+		{ "dofile",                   &intf_dofile                   },
+		{ "fire",                     &intf_fire                     },
+		{ "eval_conditional",         &intf_eval_conditional         },
+		{ "get_map_size",             &intf_get_map_size             },
+		{ "get_side",                 &intf_get_side                 },
+		{ "get_terrain",              &intf_get_terrain              },
+		{ "get_terrain_info",         &intf_get_terrain_info         },
+		{ "get_unit_type",            &intf_get_unit_type            },
+		{ "get_unit_type_ids",        &intf_get_unit_type_ids        },
+		{ "get_units",                &intf_get_units                },
+		{ "get_variable",             &intf_get_variable             },
+		{ "get_village_owner",        &intf_get_village_owner        },
+		{ "message",                  &intf_message                  },
+		{ "register_wml_action",      &intf_register_wml_action      },
+		{ "set_terrain",              &intf_set_terrain              },
+		{ "set_variable",             &intf_set_variable             },
+		{ "set_village_owner",        &intf_set_village_owner        },
+		{ "textdomain",               &intf_textdomain               },
 		{ NULL, NULL }
 	};
 	luaL_register(L, "wesnoth", callbacks);
@@ -1314,9 +1320,9 @@ LuaKernel::LuaKernel()
 	// Create the getside metatable.
 	lua_pushlightuserdata(L, (void *)&getsideKey);
 	lua_createtable(L, 0, 3);
-	lua_pushcfunction(L, lua_side_get);
+	lua_pushcfunction(L, impl_side_get);
 	lua_setfield(L, -2, "__index");
-	lua_pushcfunction(L, lua_side_set);
+	lua_pushcfunction(L, impl_side_set);
 	lua_setfield(L, -2, "__newindex");
 	lua_pushstring(L, "side");
 	lua_setfield(L, -2, "__metatable");
@@ -1325,7 +1331,7 @@ LuaKernel::LuaKernel()
 	// Create the gettext metatable.
 	lua_pushlightuserdata(L, (void *)&gettextKey);
 	lua_createtable(L, 0, 2);
-	lua_pushcfunction(L, lua_gettext);
+	lua_pushcfunction(L, impl_gettext);
 	lua_setfield(L, -2, "__call");
 	lua_pushstring(L, "message domain");
 	lua_setfield(L, -2, "__metatable");
@@ -1334,7 +1340,7 @@ LuaKernel::LuaKernel()
 	// Create the gettype metatable.
 	lua_pushlightuserdata(L, (void *)&gettypeKey);
 	lua_createtable(L, 0, 2);
-	lua_pushcfunction(L, lua_unit_type_get);
+	lua_pushcfunction(L, impl_unit_type_get);
 	lua_setfield(L, -2, "__index");
 	lua_pushstring(L, "unit type");
 	lua_setfield(L, -2, "__metatable");
@@ -1343,9 +1349,9 @@ LuaKernel::LuaKernel()
 	// Create the getunit metatable.
 	lua_pushlightuserdata(L, (void *)&getunitKey);
 	lua_createtable(L, 0, 3);
-	lua_pushcfunction(L, lua_unit_get);
+	lua_pushcfunction(L, impl_unit_get);
 	lua_setfield(L, -2, "__index");
-	lua_pushcfunction(L, lua_unit_set);
+	lua_pushcfunction(L, impl_unit_set);
 	lua_setfield(L, -2, "__newindex");
 	lua_pushstring(L, "unit");
 	lua_setfield(L, -2, "__metatable");
@@ -1354,11 +1360,11 @@ LuaKernel::LuaKernel()
 	// Create the tstring metatable.
 	lua_pushlightuserdata(L, (void *)&tstringKey);
 	lua_createtable(L, 0, 4);
-	lua_pushcfunction(L, lua_tstring_concat);
+	lua_pushcfunction(L, impl_tstring_concat);
 	lua_setfield(L, -2, "__concat");
-	lua_pushcfunction(L, lua_tstring_collect);
+	lua_pushcfunction(L, impl_tstring_collect);
 	lua_setfield(L, -2, "__gc");
-	lua_pushcfunction(L, lua_tstring_tostring);
+	lua_pushcfunction(L, impl_tstring_tostring);
 	lua_setfield(L, -2, "__tostring");
 	lua_pushstring(L, "translatable string");
 	lua_setfield(L, -2, "__metatable");
@@ -1367,11 +1373,11 @@ LuaKernel::LuaKernel()
 	// Create the vconfig metatable.
 	lua_pushlightuserdata(L, (void *)&vconfigKey);
 	lua_createtable(L, 0, 4);
-	lua_pushcfunction(L, lua_vconfig_collect);
+	lua_pushcfunction(L, impl_vconfig_collect);
 	lua_setfield(L, -2, "__gc");
-	lua_pushcfunction(L, lua_vconfig_get);
+	lua_pushcfunction(L, impl_vconfig_get);
 	lua_setfield(L, -2, "__index");
-	lua_pushcfunction(L, lua_vconfig_size);
+	lua_pushcfunction(L, impl_vconfig_size);
 	lua_setfield(L, -2, "__len");
 	lua_pushstring(L, "wml object");
 	lua_setfield(L, -2, "__metatable");
@@ -1380,9 +1386,9 @@ LuaKernel::LuaKernel()
 	// Create the wml action metatable.
 	lua_pushlightuserdata(L, (void *)&wactionKey);
 	lua_createtable(L, 0, 3);
-	lua_pushcfunction(L, lua_wml_action_call);
+	lua_pushcfunction(L, impl_wml_action_call);
 	lua_setfield(L, -2, "__call");
-	lua_pushcfunction(L, lua_wml_action_collect);
+	lua_pushcfunction(L, impl_wml_action_collect);
 	lua_setfield(L, -2, "__gc");
 	lua_pushstring(L, "wml action handler");
 	lua_setfield(L, -2, "__metatable");
