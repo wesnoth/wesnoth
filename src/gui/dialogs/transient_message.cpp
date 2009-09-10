@@ -28,20 +28,14 @@ twindow* ttransient_message::build_window(CVideo& video)
 
 void ttransient_message::pre_show(CVideo& /*video*/, twindow& window)
 {
-	tlabel* title =
-		dynamic_cast<tlabel*>(window.find("title", false));
-	VALIDATE(title, missing_widget("title"));
+	tlabel& title = find_widget<tlabel>(&window, "title", false);
+	title.set_label(title_);
+	title.set_markup_mode(title_markup_mode_);
 
-	title->set_label(title_);
-	title->set_markup_mode(title_markup_mode_);
-
-	tlabel* message =
-		dynamic_cast<tlabel*>(window.find("message", false));
-	VALIDATE(message, missing_widget("message"));
-
-	message->set_label(message_);
-	message->set_markup_mode(message_markup_mode_);
-	message->set_can_wrap(true);
+	tlabel& message = find_widget<tlabel>(&window, "message", false);
+	message.set_label(message_);
+	message.set_markup_mode(message_markup_mode_);
+	message.set_can_wrap(true);
 }
 
 void show_transient_message(CVideo& video, const std::string& title,
