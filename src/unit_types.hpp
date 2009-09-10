@@ -117,8 +117,8 @@ public:
 	unit_movement_type();
 
 	const t_string& name() const;
-	int movement_cost(const gamemap& map, t_translation::t_terrain terrain, int recurse_count=0) const;
-	int defense_modifier(const gamemap& map, t_translation::t_terrain terrain, int recurse_count=0) const;
+	int movement_cost(const gamemap& map, t_translation::t_terrain terrain) const;
+	int defense_modifier(const gamemap& map, t_translation::t_terrain terrain) const;
 	int damage_against(const attack_type& attack) const { return resistance_against(attack); }
 	int resistance_against(const attack_type& attack) const;
 
@@ -140,6 +140,15 @@ private:
 
 	config cfg_;
 };
+
+int movement_cost_internal(std::map<t_translation::t_terrain, int>& move_costs,
+		const config& cfg, const unit_movement_type* parent,
+		const gamemap& map,	t_translation::t_terrain terrain, int recurse_count = 0);
+
+int defense_modifier_internal(std::map<t_translation::t_terrain, int>& defense_mods,
+		const config& cfg, const unit_movement_type* parent,
+		const gamemap& map, t_translation::t_terrain terrain, int recurse_count = 0);
+
 
 typedef std::map<std::string,unit_movement_type> movement_type_map;
 

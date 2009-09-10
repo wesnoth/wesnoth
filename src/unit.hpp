@@ -230,7 +230,7 @@ public:
 	bool is_fearless() const { return is_fearless_; }
 	bool is_healthy() const { return is_healthy_; }
 	int movement_cost(const t_translation::t_terrain terrain) const;
-	int defense_modifier(t_translation::t_terrain terrain, int recurse_count=0) const;
+	int defense_modifier(t_translation::t_terrain terrain) const;
 	int resistance_against(const std::string& damage_name,bool attacker,const map_location& loc) const;
 	int resistance_against(const attack_type& damage_type,bool attacker,const map_location& loc) const
 		{return resistance_against(damage_type.type(), attacker, loc);};
@@ -358,7 +358,6 @@ private:
 	bool ability_affects_self(const std::string& ability,const config& cfg,const map_location& loc) const;
 	bool resistance_filter_matches(const config& cfg,bool attacker,const std::string& damage_name, int res) const;
 
-	int movement_cost_internal(t_translation::t_terrain terrain, int recurse_count=0) const;
 	bool has_ability_by_id(const std::string& ability) const;
 	void remove_ability_by_id(const std::string& ability);
 
