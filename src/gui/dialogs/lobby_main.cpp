@@ -604,16 +604,14 @@ void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
 	player_list_.sort_by_relation->set_callback_state_change(boost::bind(
 		&tlobby_main::player_filter_callback, this, _1));
 
-
-	chat_log_container_ = dynamic_cast<tmulti_page*>(window.find("chat_log_container", false));
-	VALIDATE(chat_log_container_, missing_widget("chat_log_container_"));
+	chat_log_container_ = find_widget<tmulti_page>(
+			&window, "chat_log_container", false, true);
 
 	window.set_enter_disabled(true);
 	window.set_event_loop_pre_callback(boost::bind(&tlobby_main::network_handler, this));
 	window_ = &window;
 
-	chat_input_ = dynamic_cast<ttext_box*>(window.find("chat_input", false));
-	VALIDATE(chat_input_, missing_widget("chat_input"));
+	chat_input_ = find_widget<ttext_box>(&window, "chat_input", false, true);
 	chat_input_->set_key_press_callback(boost::bind(&tlobby_main::chat_input_keypress_callback, this, _1, _2, _3, _4));
 
 	GUI2_EASY_BUTTON_CALLBACK(send_message, tlobby_main);
