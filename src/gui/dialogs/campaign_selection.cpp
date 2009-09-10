@@ -58,16 +58,12 @@ namespace gui2 {
 
 void tcampaign_selection::campaign_selected(twindow& window)
 {
-	tlistbox* list = dynamic_cast<tlistbox*>(
-			window.find("campaign_list", false));
-	VALIDATE(list, missing_widget("campaign_list"));
+	tlistbox& list = find_widget<tlistbox>(&window, "campaign_list", false);
 
+	tmulti_page& multi_page = find_widget<tmulti_page>(
+			&window, "campaign_details", false);
 
-	tmulti_page* multi_page = dynamic_cast<tmulti_page*>(
-			window.find("campaign_details", false));
-	VALIDATE(multi_page, missing_widget("campaign_details"));
-
-	multi_page->select_page(list->get_selected_row());
+	multi_page.select_page(list.get_selected_row());
 }
 
 twindow* tcampaign_selection::build_window(CVideo& video)
@@ -78,19 +74,16 @@ twindow* tcampaign_selection::build_window(CVideo& video)
 void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 {
 	/***** Setup campaign list. *****/
-	tlistbox* list = dynamic_cast<tlistbox*>(
-			window.find("campaign_list", false));
-	VALIDATE(list, missing_widget("campaign_list"));
+	tlistbox& list = find_widget<tlistbox>(&window, "campaign_list", false);
 
-	list->set_callback_value_change(dialog_callback
+	list.set_callback_value_change(dialog_callback
 			<tcampaign_selection, &tcampaign_selection::campaign_selected>);
 
-	window.keyboard_capture(list);
+	window.keyboard_capture(&list);
 
 	/***** Setup campaign details. *****/
-	tmulti_page* multi_page = dynamic_cast<tmulti_page*>(
-			window.find("campaign_details", false));
-	VALIDATE(multi_page, missing_widget("campaign_details"));
+	tmulti_page& multi_page = find_widget<tmulti_page>(
+			&window, "campaign_details", false);
 
 	foreach (const config &c, campaigns_) {
 
@@ -104,9 +97,9 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 		list_item["label"] = c["name"];
 		list_item_item.insert(std::make_pair("name", list_item));
 
-		list->add_row(list_item_item);
+		list.add_row(list_item_item);
 
-		tgrid* grid = list->get_row_grid(list->get_item_count() - 1);
+		tgrid* grid = list.get_row_grid(list.get_item_count() - 1);
 		assert(grid);
 
 		twidget* widget = grid->find("victory", false);
@@ -124,7 +117,7 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 		detail_item["label"] = c["image"];
 		detail_page.insert(std::make_pair("image", detail_item));
 
-		multi_page->add_page(detail_page);
+		multi_page.add_page(detail_page);
 	}
 
 	campaign_selected(window);
@@ -132,11 +125,8 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 
 void tcampaign_selection::post_show(twindow& window)
 {
-		tlistbox* list = dynamic_cast<tlistbox*>(
-				window.find("campaign_list", false));
-		assert(list);
-
-		choice_ = list->get_selected_row();
+		choice_ = find_widget<tlistbox>(
+				&window, "campaign_list", false).get_selected_row();
 }
 
 } // namespace gui2
