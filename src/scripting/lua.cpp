@@ -342,7 +342,7 @@ static int lua_textdomain(lua_State *L)
  * @note This function is private to lua_tstring_concat. It expects two things.
  *       First, the t_string metatable is at the top of the stack on entry. (It
  *       is still there on exit.) Second, the caller hasn't any valuable object
- *       with dynamic lifetime, since they would leaked on error.
+ *       with dynamic lifetime, since they would be leaked on error.
  */
 static void lua_tstring_concat_aux(lua_State *L, t_string &dst, int src)
 {
