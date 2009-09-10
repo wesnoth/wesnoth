@@ -58,47 +58,36 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 	window.canvas(1).set_variable("portrait_mirror", variant(mirror_));
 
 	// Set the markup
-	tlabel* title =
-			dynamic_cast<tlabel*>(window.find("title", false));
-	assert(title);
-	title->set_label(title_);
-	title->set_markup_mode(tcontrol::WML_MARKUP);
+	tlabel& title = find_widget<tlabel>(&window, "title", false);
+	title.set_label(title_);
+	title.set_markup_mode(tcontrol::WML_MARKUP);
 
-	tcontrol* message =
-			dynamic_cast<tcontrol*>(window.find("message", false));
-	assert(message);
-	message->set_label(message_);
-	message->set_markup_mode(tcontrol::PANGO_MARKUP);
+	tcontrol& message = find_widget<tcontrol>(&window, "message", false);
+	message.set_label(message_);
+	message.set_markup_mode(tcontrol::PANGO_MARKUP);
 	// The message label might not always be a scroll_label but the capturing
 	// shouldn't hurt.
-	window.keyboard_capture(message);
+	window.keyboard_capture(&message);
 
 	// Find the input box related fields.
-	tlabel* caption = dynamic_cast<tlabel*>(
-			window.find("input_caption", false));
-	VALIDATE(caption, missing_widget("input_caption"));
-
-	ttext_box* input = dynamic_cast<ttext_box*>(
-			 window.find("input", true));
-	VALIDATE(input, missing_widget("input"));
+	tlabel& caption = find_widget<tlabel>(&window, "input_caption", false);
+	ttext_box& input = find_widget<ttext_box>(&window, "input", true);
 
 	if(has_input_) {
-		caption->set_label(input_caption_);
-		caption->set_markup_mode(tcontrol::WML_MARKUP);
-		input->set_value(*input_text_);
-		input->set_maximum_length(input_maximum_lenght_);
-		window.keyboard_capture(input);
+		caption.set_label(input_caption_);
+		caption.set_markup_mode(tcontrol::WML_MARKUP);
+		input.set_value(*input_text_);
+		input.set_maximum_length(input_maximum_lenght_);
+		window.keyboard_capture(&input);
 		window.set_click_dismiss(false);
 		window.set_escape_disabled(true);
 	} else {
-		caption->set_visible(twidget::INVISIBLE);
-		input->set_visible(twidget::INVISIBLE);
+		caption.set_visible(twidget::INVISIBLE);
+		input.set_visible(twidget::INVISIBLE);
 	}
 
 	// Find the option list related fields.
-	tlistbox* options = dynamic_cast<tlistbox*>(
-			window.find("input_list", true));
-	VALIDATE(options, missing_widget("input_list"));
+	tlistbox& options = find_widget<tlistbox>(&window, "input_list", true);
 
 	/*
 	 * The options have some special markup:
@@ -160,21 +149,17 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 			data["icon"]["label"] = icon;
 			data["label"]["label"] = label;
 			data["description"]["label"] = description;
-			options->add_row(data);
+			options.add_row(data);
 
 			// Set the markup flag.
-			tgrid* grid = options->get_row_grid(i);
+			tgrid* grid = options.get_row_grid(i);
 			assert(grid);
 
-			tcontrol* control = dynamic_cast<tcontrol*>(
-					grid->find("label", false));
-			assert(control);
-			control->set_markup_mode(tcontrol::WML_MARKUP);
+			find_widget<tcontrol>(grid, "label", false)
+					.set_markup_mode(tcontrol::WML_MARKUP);
 
-			control = dynamic_cast<tcontrol*>(
-					grid->find("description", false));
-			assert(control);
-			control->set_markup_mode(tcontrol::WML_MARKUP);
+			find_widget<tcontrol>(grid, "description", false)
+					.set_markup_mode(tcontrol::WML_MARKUP);
 		}
 
 		// Avoid negetive and 0 since item 0 is already selected.
@@ -182,19 +167,19 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 				&& static_cast<size_t>(*chosen_option_)
 				< option_list_.size()) {
 
-			options->select_row(*chosen_option_);
+			options.select_row(*chosen_option_);
 		}
 
 		if(!has_input_) {
-			window.keyboard_capture(options);
+			window.keyboard_capture(&options);
 			window.set_click_dismiss(false);
 			window.set_escape_disabled(true);
 		} else {
-			window.add_to_keyboard_chain(options);
+			window.add_to_keyboard_chain(&options);
 			// click_dismiss has been disabled due to the input.
 		}
 	} else {
-		options->set_visible(twidget::INVISIBLE);
+		options.set_visible(twidget::INVISIBLE);
 	}
 	window.set_click_dismiss(!has_input_ && option_list_.empty());
 }
@@ -202,19 +187,13 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 void twml_message_::post_show(twindow& window)
 {
 	if(has_input_) {
-		ttext_box* input = dynamic_cast<ttext_box*>(
-				 window.find("input", true));
-		VALIDATE(input, missing_widget("input"));
-
-		*input_text_ = input->get_value();
+		*input_text_ =
+				find_widget<ttext_box>(&window, "input", true).get_value();
 	}
 
 	if(!option_list_.empty()) {
-		tlistbox* options = dynamic_cast<tlistbox*>(
-				window.find("input_list", true));
-		VALIDATE(options, missing_widget("input_list"));
-
-		*chosen_option_ = options->get_selected_row();
+		*chosen_option_ = find_widget<tlistbox>(
+				&window, "input_list", true).get_selected_row();
 	}
 }
 
