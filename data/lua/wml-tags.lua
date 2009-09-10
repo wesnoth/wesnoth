@@ -147,7 +147,9 @@ local function wml_show_objectives(cfg)
 	end
 end
 
-local function wml_message(cfg, engine_message)
+local engine_message
+
+local function wml_message(cfg)
 	local show_if = get_child(cfg, "show_if")
 	if not show_if or wesnoth.eval_conditional(show_if) then
 		engine_message(cfg)
@@ -202,7 +204,7 @@ end
 
 wesnoth.register_wml_action("objectives", wml_objectives)
 wesnoth.register_wml_action("show_objectives", wml_show_objectives)
-wesnoth.register_wml_action("message", wml_message)
+engine_message = wesnoth.register_wml_action("message", wml_message)
 wesnoth.register_wml_action("gold", wml_gold)
 wesnoth.register_wml_action("store_gold", wml_store_gold)
 wesnoth.register_wml_action("clear_variable", wml_clear_variable)

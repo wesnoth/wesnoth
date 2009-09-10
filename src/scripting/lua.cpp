@@ -874,7 +874,7 @@ static int lua_wml_action_collect(lua_State *L)
 }
 
 /**
- * Calls the first upvalue and passes the first argument and the second upvalue.
+ * Calls the first upvalue and passes the first argument.
  * - Arg 1: optional WML config.
  */
 static int lua_wml_action_proxy(lua_State *L)
@@ -919,8 +919,7 @@ static int lua_wml_action_proxy(lua_State *L)
 			goto error_call_destructors;
 	}
 
-	lua_pushvalue(L, lua_upvalueindex(2));
-	lua_call(L, 2, 0);
+	lua_call(L, 1, 0);
 	return 0;
 }
 
@@ -943,22 +942,20 @@ void lua_action_handler::handle(const game_events::queued_event &ev, const vconf
 	lua_pushlightuserdata(L, (void *)&executeKey);
 	lua_gettable(L, LUA_REGISTRYINDEX);
 
-	// Load the user function and the old handler from the registry.
+	// Load the user function from the registry.
 	lua_pushlightuserdata(L, (void *)&uactionKey);
 	lua_gettable(L, LUA_REGISTRYINDEX);
 	lua_rawgeti(L, -1, num);
-	lua_rawgeti(L, -2, num + 1);
-	lua_remove(L, -3);
+	lua_remove(L, -2);
 
-	// Push the WML table argument before the old handler.
+	// Push the WML table argument.
 	new(lua_newuserdata(L, sizeof(vconfig))) vconfig(cfg);
 	lua_pushlightuserdata(L, (void *)&vconfigKey);
 	lua_gettable(L, LUA_REGISTRYINDEX);
 	lua_setmetatable(L, -2);
-	lua_insert(L, -2);
 
 	queued_event_context dummy(&ev);
-	int res = lua_pcall(L, 2, 0, -4);
+	int res = lua_pcall(L, 1, 0, -3);
 	if (res)
 	{
 		char const *m = lua_tostring(L, -1);
@@ -979,19 +976,19 @@ void lua_action_handler::handle(const game_events::queued_event &ev, const vconf
 
 lua_action_handler::~lua_action_handler()
 {
-	// Remove the functions from the registry, so that they can be collected.
+	// Remove the function from the registry, so that it can be collected.
 	lua_pushlightuserdata(L, (void *)&uactionKey);
 	lua_gettable(L, LUA_REGISTRYINDEX);
 	lua_pushnil(L);
 	lua_rawseti(L, -2, num);
-	lua_pushnil(L);
-	lua_rawseti(L, -2, num + 1);
+	lua_pop(L, 1);
 }
 
 /**
  * Registers a function as WML action handler.
  * - Arg 1: string containing the WML tag.
  * - Arg 2: function taking a WML table as argument.
+ * - Ret 1: previous action handler, if any.
  */
 static int lua_register_wml_action(lua_State *L)
 {
@@ -1010,32 +1007,25 @@ static int lua_register_wml_action(lua_State *L)
 	// Create the proxy C++ action handler.
 	game_events::action_handler *previous;
 	game_events::register_action_handler(m, new lua_action_handler(L, length + 1), &previous);
-	if (!previous) {
-		lua_pushboolean(L, 0);
-		lua_rawseti(L, -2, length + 2);
-		return 0;
-	}
+	if (!previous) return 0;
 
 	// Detect if the previous handler was already from Lua and optimize it away.
 	lua_action_handler *lua_prev = dynamic_cast<lua_action_handler *>(previous);
 	if (lua_prev)
 	{
 		lua_rawgeti(L, -1, lua_prev->num);
-		lua_rawgeti(L, -2, lua_prev->num + 1);
-		lua_pushcclosure(L, lua_wml_action_proxy, 2);
-		lua_rawseti(L, -2, length + 2);
+		lua_pushcclosure(L, lua_wml_action_proxy, 1);
 		delete lua_prev;
-		return 0;
+		return 1;
 	}
 
-	// Push the previous handler in the user action table too.
+	// Return the previous handler.
 	void *p = lua_newuserdata(L, sizeof(game_events::action_handler *));
 	*static_cast<game_events::action_handler **>(p) = previous;
 	lua_pushlightuserdata(L, (void *)&wactionKey);
 	lua_gettable(L, LUA_REGISTRYINDEX);
 	lua_setmetatable(L, -2);
-	lua_rawseti(L, -2, length + 2);
-	return 0;
+	return 1;
 }
 
 /**
