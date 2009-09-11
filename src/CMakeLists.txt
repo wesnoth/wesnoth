@@ -220,6 +220,7 @@ set(wesnoth-main_SRC
     generic_event.cpp
     gui/auxiliary/canvas.cpp
     gui/auxiliary/log.cpp
+    gui/auxiliary/widget_definition.cpp
     gui/auxiliary/window_builder/button.cpp
     gui/auxiliary/window_builder/control.cpp
     gui/auxiliary/window_builder/helper.cpp

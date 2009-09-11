@@ -20,8 +20,8 @@
 #ifndef GUI_WIDGETS_SETTING_HPP_INCLUDED
 #define GUI_WIDGETS_SETTING_HPP_INCLUDED
 
-#include "gui/auxiliary/canvas.hpp"
 #include "gui/auxiliary/formula.hpp"
+#include "gui/auxiliary/widget_definition.hpp"
 #include "gui/auxiliary/window_builder.hpp"
 #include "tstring.hpp"
 
@@ -85,60 +85,6 @@ enum twindow_type {
 
 const std::string& get_id(const twindow_type window_type);
 
-/**
- * Contains the state info for a resolution.
- *
- * At the moment all states are the same so there is no need to use
- * inheritance. If that is needed at some point the containers should contain
- * pointers and we should inherit from reference_counted_object.
- */
-struct tstate_definition
-{
-private:
-	tstate_definition();
-
-public:
-	tstate_definition(const config &cfg);
-
-	tcanvas canvas;
-};
-
-
-/** Base class of a resolution, contains the common keys for a resolution. */
-struct tresolution_definition_ : public reference_counted_object
-{
-private:
-	tresolution_definition_();
-public:
-	tresolution_definition_(const config& cfg);
-
-	unsigned window_width;
-	unsigned window_height;
-
-	unsigned min_width;
-	unsigned min_height;
-
-	unsigned default_width;
-	unsigned default_height;
-
-	unsigned max_width;
-	unsigned max_height;
-
-	unsigned text_extra_width;
-	unsigned text_extra_height;
-	unsigned text_font_size;
-	int text_font_style;
-
-	std::vector<tstate_definition> state;
-};
-
-typedef
-	boost::intrusive_ptr<tresolution_definition_>
-	tresolution_definition_ptr;
-
-typedef
-	boost::intrusive_ptr<const tresolution_definition_>
-	tresolution_definition_const_ptr;
 
 struct tcontrol_definition : public reference_counted_object
 {
