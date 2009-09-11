@@ -59,6 +59,8 @@ int formula_ai::get_recursion_count() const{
 formula_ai::formula_ai(readonly_context &context, const config &cfg)
 	:
 	readonly_context_proxy(),
+	game_logic::formula_callable(),
+	ai_ptr_(NULL),
 	cfg_(cfg),
 	recursion_counter_(context.get_recursion_count()),
 	outcome_positions_(),
