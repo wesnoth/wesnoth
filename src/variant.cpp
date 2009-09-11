@@ -65,17 +65,31 @@ type_error::type_error(const std::string& str) : message(str) {
 	std::cerr << "ERROR: " << message << "\n" << get_call_stack();
 }
 
-variant_iterator::variant_iterator() : type_(TYPE_NULL)
-{}
+variant_iterator::variant_iterator()
+	: type_(TYPE_NULL)
+	, list_iterator_()
+	, map_iterator_()
+{
+}
 
 variant_iterator::variant_iterator(const variant_iterator& iter) : type_(iter.type_), list_iterator_(iter.list_iterator_), map_iterator_(iter.map_iterator_)
 {}
 
-variant_iterator::variant_iterator(const std::vector<variant>::iterator& iter) : type_(TYPE_LIST), list_iterator_(iter)
-{}
+variant_iterator::variant_iterator(
+		const std::vector<variant>::iterator& iter)
+	: type_(TYPE_LIST)
+	, list_iterator_(iter)
+	, map_iterator_()
+{
+}
 
-variant_iterator::variant_iterator(const std::map<variant, variant>::iterator& iter) : type_(TYPE_MAP), map_iterator_(iter)
-{}
+variant_iterator::variant_iterator(
+		const std::map<variant, variant>::iterator& iter)
+	: type_(TYPE_MAP)
+	, list_iterator_()
+	, map_iterator_(iter)
+{
+}
 
 variant variant_iterator::operator*() const
 {
@@ -165,22 +179,34 @@ bool variant_iterator::operator!=(const variant_iterator& that) const
 }
 
 struct variant_list {
-	variant_list() : refcount(0)
-	{}
+	variant_list()
+		: elements()
+		, refcount(0)
+	{
+	}
+
 	std::vector<variant> elements;
 	int refcount;
 };
 
 struct variant_string {
-	variant_string() : refcount(0)
-	{}
+	variant_string()
+		: str()
+		, refcount(0)
+	{
+	}
+
 	std::string str;
 	int refcount;
 };
 
 struct variant_map {
-	variant_map() : refcount(0)
-	{}
+	variant_map()
+		: elements()
+		, refcount(0)
+	{
+	}
+
 	std::map<variant,variant> elements;
 	int refcount;
 };
@@ -282,6 +308,7 @@ variant::variant(std::map<variant,variant>* map)
 }
 
 variant::variant(const variant& v)
+    : type_(v.type_)
 {
 	memcpy(this, &v, sizeof(v));
 	increment_refcount();
