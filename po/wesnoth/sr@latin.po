@@ -16,59 +16,59 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: sr\n"
-"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%"
-"10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Environment: wesnoth, wesnoth/noent\n"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:5
 msgid "Compressed Saves"
-msgstr "kompresovane pozicije"
+msgstr "Kompresovane pozicije"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:12
 msgid "Confirm deleting saves"
-msgstr "potvrda brisanja pozicija"
+msgstr "Potvrda brisanja pozicija"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:19
 msgid "Mouse Scrolling"
-msgstr "paniranje mišem"
+msgstr "Paniranje mišem"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:26
 msgid "Middle-click Scrolling"
-msgstr "paniranje srednjim klikom"
+msgstr "Paniranje srednjim klikom"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:33
 msgid "Keep scrolling when mouse leaves window"
-msgstr "paniranje se nastavlja kad miš napusti prozor"
+msgstr "Paniranje se nastavlja kad miš napusti prozor"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:40
 msgid "Animate Map"
-msgstr "animirana mapa"
+msgstr "Animirana mapa"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:47
 msgid "Show Titlescreen Animation"
-msgstr "animacija naslovnog ekrana"
+msgstr "Animacija naslovnog ekrana"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:54
 msgid "Unit Standing Animations"
-msgstr "animacije stojećih jedinica"
+msgstr "Animacije stojećih jedinica"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:61
 msgid "Show Combat"
-msgstr "prikaz borbe"
+msgstr "Prikaz borbe"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:68
 msgid "Ping Timeout"
-msgstr "prekovreme pinga"
+msgstr "Prekovreme pinga"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:69
@@ -82,22 +82,22 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:79
 msgid "Accept whisper messages from friends only"
-msgstr "šaptačke poruke primaju se samo od prijatelja"
+msgstr "Šaptačke poruke primaju se samo od prijatelja"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:86
 msgid "Auto-open whisper windows in lobby"
-msgstr "šaptački prozori se sami otvaraju u holu"
+msgstr "Šaptački prozori se sami otvaraju u holu"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:93
 msgid "Group players in lobby"
-msgstr "igrače se grupišu u holu"
+msgstr "Grupisanje igrača u holu"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:100
 msgid "Lobby sounds"
-msgstr "zvukovi hola"
+msgstr "Zvukovi hola"
 
 #. [message]: speaker=narrator
 #: data/ai/scenarios/ai_arena_small/0002-poisoning.cfg:16
@@ -6253,6 +6253,7 @@ msgstr ""
 msgid "Wesnoth Developers"
 msgstr "— programeri Vesnota"
 
+# >> Great Mage Delfador
 #. [tip]
 #: data/hardwired/tips.cfg:7
 msgid ""
@@ -6260,8 +6261,8 @@ msgid ""
 "if you coddle him too much he may be at too low a level to survive future "
 "battles."
 msgstr ""
-"Ne zanemarite pribavljanje iskustva svome vođu! Morate ga čuvati od zla, ali "
-"ako ga previše mazite može ostati preniskog nivoa da bi preživeo buduće "
+"Ne zanemari pribavljanje iskustva svome vođu! Moraš ga čuvati od zla, ali "
+"ako ga previše maziš, može ostati preniskog nivoa da bi preživeo buduće "
 "bojeve."
 
 #. [tip]
@@ -6301,6 +6302,7 @@ msgstr ""
 msgid "- The Wesnoth Tactical Guide"
 msgstr "— Taktički vodič Vesnota"
 
+# >> King Konrad
 #. [tip]
 #: data/hardwired/tips.cfg:15
 msgid ""
@@ -6309,8 +6311,8 @@ msgid ""
 "some high-level troops sooner."
 msgstr ""
 "Jedinice s osobinom ‘oštroumnosti’ zahtevaju manje iskustvenih poena za "
-"napredovanje. Pokušajte da njima zadajete završne udarce rano tokom pohoda, "
-"kako biste brzo došli do nešto vojske visokog nivoa."
+"napredovanje. Pokušaj da njima zadaješ završne udarce rano tokom pohoda, "
+"kako bi vojska ranije dobila jedinice viših nivoa."
 
 #. [tip]
 #: data/hardwired/tips.cfg:16
@@ -6516,7 +6518,7 @@ msgid ""
 "always have a 70% chance to hit, and units with the 'marksman' ability will "
 "always have at least 60% chance to hit when attacking on their turn."
 msgstr ""
-"Izgledi da se jedinica pogodi zavisi od toga koliko se ona može dobro "
+"Izgledi da se jedinica pogodi zavise od toga koliko se ona može dobro "
 "braniti na terenu gde se nalazi. Ipak, magični napadi uvek imaju 70% izgleda "
 "za pogodak, a jedinice s osobinom ‘oštrookosti’ imaju bar 60% izgleda kada "
 "udare u svom potezu."
@@ -6616,13 +6618,14 @@ msgstr ""
 "Ako vas napadnu iz nekoliko pravaca, može biti promućurno poslati nešto "
 "potrošnih jedinica da zapreče te pravce, kako bi se dobilo na vremenu."
 
+# >> Meneldur
 #. [tip]
 #: data/hardwired/tips.cfg:115
 msgid ""
 "Do not be afraid to retreat and regroup; it is often the key to victory."
 msgstr ""
-"Ne plašite se povlačenja radi boljeg raspoređivanja; često je to neophodno "
-"za pobedu."
+"Ne plaši se povlačenja radi boljeg raspoređivanja; često je to neophodno za "
+"pobedu."
 
 #. [tip]
 #: data/hardwired/tips.cfg:116
@@ -6642,6 +6645,7 @@ msgstr ""
 "uvek dobiti više zlata, nego kada biste zaposedali sela i čekali isticanje "
 "poteza."
 
+# >> Handbook of Tactical Analysis Volume I - Haldric II
 #. [tip]
 #: data/hardwired/tips.cfg:123
 msgid ""
@@ -6650,10 +6654,10 @@ msgid ""
 "recruit from there. Also, some of your allies may be willing to make room "
 "for you on their keep so you can recruit there."
 msgstr ""
-"Vaš vođ može unajmljivati ili sazivati jedinice sa bilo koje kule unutar "
-"zamka, ne samo iz onog odakle je krenuo. Možete zarobiti neprijateljev "
-"zamak, i odande unajmljivati. Takođe, možda će i neki saveznik biti voljan "
-"da vam privremeno ustupi svoj zamak."
+"Tvoj vođ može unajmljivati ili sazivati jedinice sa bilo koje kule unutar "
+"zamka, ne samo iz onog odakle je krenuo. Možeš zarobiti neprijateljev zamak, "
+"i odande unajmljivati. Takođe, možda će i neki saveznik biti voljan da ti "
+"privremeno ustupi svoj zamak."
 
 #. [tip]
 #: data/hardwired/tips.cfg:127
@@ -6664,6 +6668,7 @@ msgstr ""
 "Skeleti su otporni na sečiva, mraz i probojne napade, ali ranjivi na udar, "
 "vatru, i volšebne napade."
 
+# >> Handbook of Tactical Analysis Volume I - Haldric II
 #. [tip]
 #: data/hardwired/tips.cfg:131
 msgid ""
@@ -6671,8 +6676,9 @@ msgid ""
 "same side fight better. Use leaders to help your other units level up faster."
 msgstr ""
 "Jedinice sa sposobnošću ‘vođstva’ čine da se susedne jedinice nižeg nivoa "
-"bore bolje. Koristite vođe da potpomognete napredovanje drugim jedinicama."
+"bore bolje. Koristi vođe da potpomogneš napredovanje drugim jedinicama."
 
+# >> Great Mage Delfador
 #. [tip]
 #: data/hardwired/tips.cfg:135
 msgid ""
@@ -6680,14 +6686,15 @@ msgid ""
 "the village and attack you, while enjoying the defense and healing of the "
 "village."
 msgstr ""
-"Izbegavajte stupanje nadomak nezauzetog sela. Neprijateljska jedinica može "
-"uskočiti u selo i napasti vašu, dok uživa zaštitu i lečenje koje joj selo "
+"Izbegavaj stupanje nadomak nezauzetog sela. Neprijateljska jedinica može "
+"uskočiti u selo i napasti tvoju, dok uživa zaštitu i lečenje koje joj selo "
 "pruža."
 
+# >> Princess Li'sar
 #. [tip]
 #: data/hardwired/tips.cfg:139
 msgid "Use lines of units to screen injured units to let them recover."
-msgstr "Koristite frontove jedinica za zaštitu ranjenih jedinica pri oporavku."
+msgstr "Koristi frontove jedinica za zaštitu ranjenih pri oporavku."
 
 #. [tip]
 #: data/hardwired/tips.cfg:140
@@ -6717,14 +6724,15 @@ msgstr ""
 "Možete videti gde se neprijateljska jedinica može pomeriti pomakom miša "
 "preko nje."
 
+# >> Scroll of Chantal
 #. [tip]
 #: data/hardwired/tips.cfg:155
 msgid ""
 "Use healers to support your attacks - they will win you battles without "
 "needing to attack anything themselves."
 msgstr ""
-"Koristite vidare kao podršku u napadima — dobijaće vam bitke, a da sami "
-"ništa napali nisu."
+"Koristi vidare kao podršku u napadima — dobijaće ti bitke, a da sami ništa "
+"napali nisu."
 
 #. [tip]
 #: data/hardwired/tips.cfg:156
@@ -6816,6 +6824,7 @@ msgstr ""
 "glavnog ekrana). Ovi podaci su nam suštinski za podešavanje nivoa težine u "
 "pohodima."
 
+# >> Queen Li'sar
 #. [tip]
 #: data/hardwired/tips.cfg:191
 msgid ""
@@ -6823,9 +6832,9 @@ msgid ""
 "veteran to damage a joint target heavily enough for the junior partner to "
 "get in the killing blow."
 msgstr ""
-"Da biste brzo pogurali jedinicu niskog nivoa, uparite ja sa jednom "
-"veteranskom, pa koristite veterana da ošteti zajedničkog neprijatelja "
-"dovoljno teško da ga mlađi saborac može uništiti u jednom napadu."
+"Da brzo iznapreduješ jedinicu niskog nivoa, upari ja sa jednom veteranskom, "
+"pa koristi veterana da ošteti zajedničkog neprijatelja dovoljno teško da ga "
+"mlađi saborac može uništiti u jednom napadu."
 
 #. [tip]
 #: data/hardwired/tips.cfg:192
