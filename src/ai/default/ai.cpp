@@ -19,7 +19,6 @@
 
 #include "ai.hpp"
 
-#include "../dfool/ai.hpp"
 #include "../actions.hpp"
 #include "../manager.hpp"
 #include "../formula/ai.hpp"

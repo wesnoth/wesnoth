@@ -22,7 +22,6 @@
 #include "configuration.hpp"
 #include "contexts.hpp"
 #include "default/ai.hpp"
-#include "dfool/ai.hpp"
 #include "manager.hpp"
 #include "formula/ai.hpp"
 #include "registry.hpp"
@@ -44,7 +43,6 @@ const std::string manager::AI_TYPE_COMPOSITE_AI = "composite_ai";
 const std::string manager::AI_TYPE_SAMPLE_AI = "sample_ai";
 const std::string manager::AI_TYPE_IDLE_AI = "idle_ai";
 const std::string manager::AI_TYPE_FORMULA_AI = "formula_ai";
-const std::string manager::AI_TYPE_DFOOL_AI = "dfool_ai";
 const std::string manager::AI_TYPE_AI2 = "ai2";
 const std::string manager::AI_TYPE_DEFAULT = "default";
 

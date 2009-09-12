@@ -180,7 +180,6 @@ set(wesnoth-main_SRC
     ai/default/contexts.cpp
     ai/default/move.cpp
     ai/default/village.cpp
-    ai/dfool/ai.cpp
     ai/formula/ai.cpp
     ai/formula/callable_objects.cpp
     ai/formula/candidates.cpp

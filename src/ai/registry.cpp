@@ -24,7 +24,6 @@
 #include "composite/engine_fai.hpp"
 #include "composite/goal.hpp"
 #include "default/ai.hpp"
-#include "dfool/ai.hpp"
 #include "formula/ai.hpp"
 #include "registry.hpp"
 #include "testing/aspect_attacks.hpp"
@@ -41,7 +40,6 @@ static register_ai_factory<ai_default> ai_factory_default("");
 static register_ai_factory<ai_default> ai_default_ai_factory("default_ai");
 static register_ai_factory<ai2> ai2_ai_factory("ai2");
 static register_ai_factory<idle_ai> ai_idle_ai_factory("idle_ai");
-static register_ai_factory<dfool::dfool_ai> ai_dfool_ai_factory("dfool_ai");
 //static register_ai_factory<formula_ai> ai_formula_ai_factory("formula_ai");
 static register_ai_factory<ai_composite> ai_composite_ai_factory("composite_ai");
 
