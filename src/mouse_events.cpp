@@ -429,10 +429,52 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 	//see if we're trying to do a attack or move-and-attack
 	if(!browse && !commands_disabled && attack_from.valid()) {
 		if (attack_from == selected_hex_) { //no move needed
-			attack_enemy(u, clicked_u);
+			int choice = show_attack_dialog(attack_from, clicked_u->first);
+			if (choice >=0 ) {
+				attack_enemy(u, clicked_u, choice);
+			}
 			return false;
 		}
-		else if (move_unit_along_current_route(false, true)) {//move the unit without updating shroud
+		else {
+			// we will now temporary move next to the enemy
+			int movement_left = u->second.movement_left();
+			units_.move(src, attack_from);
+			// status can be different there
+			unit::clear_status_caches();
+			u = units_.find(attack_from);
+
+			paths::dest_vect::const_iterator itor =
+					current_paths_.destinations.find(attack_from);
+			if(itor == current_paths_.destinations.end()) {
+				// can't reach the attacking location
+				// not supposed to happen, so abort
+				return false;
+			}
+			// update movement_left as if we did the move
+			u->second.set_movement(itor->move_left);
+
+			int choice = show_attack_dialog(attack_from, clicked_u->first);
+
+			// revert the temporary move
+			units_.move(attack_from, src);
+			u = units_.find(src);
+			u->second.set_movement(movement_left);
+			u->second.set_standing();
+
+			if (choice < 0) {
+				// user hit cancel, don't start move+attack
+				return false;
+			}
+
+			// move the unit without clearing fog (to avoid interruption)
+			//TODO: clear fog and interrupt+resume move
+			if(!move_unit_along_current_route(false, true)) {
+				// interrupted move
+				// we assume that move_unit() did the cleaning
+				// (update shroud/fog, clear undo if needed)
+				return false;
+			}
+			
 			// a WML event could have invalidated both attacker and defender
 			// so make sure they're valid before attacking
 			u = find_unit(attack_from);
@@ -441,29 +483,10 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 				enemy != units_.end() && current_team().is_enemy(enemy->second.side()) && !enemy->second.incapacitated()
 				&& !commands_disabled) {
 
-				// reselect the unit to make the attacker's stats appear during the attack dialog
-				gui().select_hex(attack_from);
-
-				if(attack_enemy(u,enemy)) { // Fight !!
-					return false;
-				} else { //canceled attack, undo the move
-					undo_ = true;
-					selected_hex_ = src;
-					gui().select_hex(src);
-					current_paths_ = orig_paths;
-					gui().highlight_reach(current_paths_);
-					return false;
-				}
-			}
-			else {  // the attack is not valid anymore, abort
+				attack_enemy(u, enemy, choice); // Fight !!
 				return false;
 			}
 
-		}
-		else { // interrupted move
-			// we assume that move_unit() did the cleaning
-			// (update shroud/fog, clear undo if needed)
-			return false;
 		}
 	}
 
@@ -602,29 +625,11 @@ bool mouse_handler::move_unit_along_current_route(bool check_shroud, bool attack
 	return moves == steps.size();
 }
 
-bool mouse_handler::attack_enemy(unit_map::iterator attacker, unit_map::iterator defender)
+
+int mouse_handler::fill_weapon_choices(std::vector<battle_context>& bc_vector, unit_map::iterator attacker, unit_map::iterator defender)
 {
-	try {
-		return attack_enemy_(attacker, defender);
-	} catch(std::bad_alloc) {
-		lg::wml_error << "Memory exhausted a unit has either a lot hitpoints or a negative amount.\n";
-		return false;
-	}
-
-}
-
-bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterator defender)
-{
-	//we must get locations by value instead of by references, because the iterators
-	//may become invalidated later
-	const map_location attacker_loc = attacker->first;
-	const map_location defender_loc = defender->first;
-
-	std::vector<std::string> items;
-
-	std::vector<battle_context> bc_vector;
-	unsigned int i, best = 0;
-	for (i = 0; i < attacker->second.attacks().size(); i++) {
+	int best = 0;
+	for (unsigned int i = 0; i < attacker->second.attacks().size(); i++) {
 		// skip weapons with attack_weight=0
 		if (attacker->second.attacks()[i].attack_weight() > 0) {
 			battle_context bc(units_, attacker->first, defender->first, i);
@@ -634,8 +639,20 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 			}
 		}
 	}
+	return best;
+}
 
-	for (i = 0; i < bc_vector.size(); i++) {
+int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const map_location& defender_loc)
+{
+	unit_map::iterator attacker = find_unit(attacker_loc);
+	unit_map::iterator defender = find_unit(defender_loc);
+
+	std::vector<battle_context> bc_vector;
+	int best = fill_weapon_choices(bc_vector, attacker, defender);
+
+	std::vector<std::string> items;
+
+	for (unsigned int i = 0; i < bc_vector.size(); i++) {
 		const battle_context::unit_stats& att = bc_vector[i].get_attacker_stats();
 		const battle_context::unit_stats& def = bc_vector[i].get_defender_stats();
 		config tmp_config;
@@ -656,7 +673,7 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 			def_weapon_special += "       ";
 
 		std::stringstream atts;
-		if (i == best) {
+		if (static_cast<int>(i) == best) {
 			atts << DEFAULT_ITEM;
 		}
 
@@ -686,18 +703,11 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 		items.push_back(atts.str());
 	}
 
-	//make it so that when we attack an enemy, the attacking unit
-	//is again shown in the status bar, so that we can easily
-	//compare between the attacking and defending unit
-	gui().highlight_hex(map_location());
-	gui().draw(true,true);
-
 	attack_prediction_displayer ap_displayer(bc_vector, attacker_loc, defender_loc);
 	std::vector<gui::dialog_button_info> buttons;
 	buttons.push_back(gui::dialog_button_info(&ap_displayer, _("Damage Calculations")));
 
 	int res = 0;
-
 	{
 		dialogs::units_list_preview_pane attacker_preview(attacker->second, dialogs::unit_preview_pane::SHOW_BASIC, true);
 		dialogs::units_list_preview_pane defender_preview(defender->second, dialogs::unit_preview_pane::SHOW_BASIC, false);
@@ -710,36 +720,62 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 				gui::OK_CANCEL,&items,&preview_panes,"",NULL,-1,NULL,-1,-1,
 				NULL,&buttons);
 	}
-
 	cursor::set(cursor::NORMAL);
-	if(size_t(res) < bc_vector.size()) {
-		commands_disabled++;
-		const battle_context::unit_stats &att = bc_vector[res].get_attacker_stats();
-		const battle_context::unit_stats &def = bc_vector[res].get_defender_stats();
 
-		attacker->second.set_goto(map_location());
-		clear_undo_stack();
-		redo_stack_.clear();
+	return res; 
+}
 
-		current_paths_ = paths();
-		gui().clear_attack_indicator();
-		gui().unhighlight_reach();
+void mouse_handler::attack_enemy(unit_map::iterator attacker, unit_map::iterator defender, int choice)
+{
+	try {
+		attack_enemy_(attacker, defender, choice);
+	} catch(std::bad_alloc) {
+		lg::wml_error << "Memory exhausted a unit has either a lot hitpoints or a negative amount.\n";
+	}
+}
 
-		gui().draw();
-		//@TODO: change ToD to be location specific for the defender
-		recorder.add_attack(attacker_loc, defender_loc, att.attack_num, def.attack_num,
-			attacker->second.type_id(), defender->second.type_id(), att.level,
-			def.level, resources::tod_manager->turn(), resources::tod_manager->get_time_of_day());
-		rand_rng::invalidate_seed();
-		if (rand_rng::has_valid_seed()) { //means SRNG is disabled
-			perform_attack(attacker_loc, defender_loc, att.attack_num, def.attack_num, rand_rng::get_last_seed());
-		} else {
-			rand_rng::set_new_seed_callback(boost::bind(&mouse_handler::perform_attack,
-				this, attacker_loc, defender_loc, att.attack_num, def.attack_num, _1));
-		}
-		return true;
+void mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterator defender, int choice)
+{
+	std::vector<battle_context> bc_vector;
+	fill_weapon_choices(bc_vector, attacker, defender);
+
+	if(size_t(choice) >= bc_vector.size()) {
+		return;
+	}
+
+	//we must get locations by value instead of by references, because the iterators
+	//may become invalidated later
+	const map_location attacker_loc = attacker->first;
+	const map_location defender_loc = defender->first;
+
+	commands_disabled++;
+	const battle_context::unit_stats &att = bc_vector[choice].get_attacker_stats();
+	const battle_context::unit_stats &def = bc_vector[choice].get_defender_stats();
+
+	attacker->second.set_goto(map_location());
+	clear_undo_stack();
+	redo_stack_.clear();
+
+	current_paths_ = paths();
+	// make the attacker's stats appear during the attack
+	gui().display_unit_hex(attacker_loc);
+	// remove highlighted hexes etc..
+	gui().select_hex(map_location());
+	gui().highlight_hex(map_location());
+	gui().clear_attack_indicator();
+	gui().unhighlight_reach();
+	gui().draw();
+
+	//@TODO: change ToD to be location specific for the defender
+	recorder.add_attack(attacker_loc, defender_loc, att.attack_num, def.attack_num,
+		attacker->second.type_id(), defender->second.type_id(), att.level,
+		def.level, resources::tod_manager->turn(), resources::tod_manager->get_time_of_day());
+	rand_rng::invalidate_seed();
+	if (rand_rng::has_valid_seed()) { //means SRNG is disabled
+		perform_attack(attacker_loc, defender_loc, att.attack_num, def.attack_num, rand_rng::get_last_seed());
 	} else {
-		return false;
+		rand_rng::set_new_seed_callback(boost::bind(&mouse_handler::perform_attack,
+			this, attacker_loc, defender_loc, att.attack_num, def.attack_num, _1));
 	}
 }
 

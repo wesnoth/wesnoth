@@ -84,10 +84,18 @@ protected:
 	void select_hex(const map_location& hex, const bool browse);
 	void clear_undo_stack();
 	bool move_unit_along_current_route(bool check_shroud, bool attackmove=false);
+
+	// fill weapon choices into bc_vector
+	// return the best weapon choice
+	int fill_weapon_choices(std::vector<battle_context>& bc_vector, unit_map::iterator attacker, unit_map::iterator defender);
+	// show the attack dialog and return the choice made
+	// which can be invalid if 'cancel' was used
+	int show_attack_dialog(const map_location& attacker_loc, const map_location& defender_loc);
 	// wrapper to catch bad_alloc so this should be called
-	bool attack_enemy(unit_map::iterator attacker, unit_map::iterator defender);
+	void attack_enemy(unit_map::iterator attacker, unit_map::iterator defender, int choice);
 	// the real function but can throw bad_alloc
-	bool attack_enemy_(unit_map::iterator attacker, unit_map::iterator defender);
+	// choice is the attack chosen in the attack dialog
+	void attack_enemy_(unit_map::iterator attacker, unit_map::iterator defender, int choice);
 
 	// the perform attack function called after a random seed is obtained
 	void perform_attack(map_location attacker_loc, map_location defender_loc,
