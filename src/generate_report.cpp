@@ -127,7 +127,10 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 	case UNIT_ALIGNMENT: {
 		const std::string &align = unit_type::alignment_description(u->alignment(), u->gender());
 		const std::string &align_id = unit_type::alignment_id(u->alignment());
-		return report(align, "", string_table[align_id + "_description"]);
+		std::stringstream ss;
+		int cm = combat_modifier(units, displayed_unit_hex, u->alignment(), u->is_fearless());
+		ss << align << " (" << (cm >= 0 ? "+" : "") << cm << "%)";
+		return report(ss.str(), "", string_table[align_id + "_description"]);
 	}
 	case UNIT_ABILITIES: {
 		report res;
