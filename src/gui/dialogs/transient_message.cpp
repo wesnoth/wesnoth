@@ -39,9 +39,7 @@ void ttransient_message::pre_show(CVideo& /*video*/, twindow& window)
 }
 
 void show_transient_message(CVideo& video, const std::string& title,
-	const std::string& message,
-	const tcontrol::tmarkup_mode message_markup_mode,
-	const tcontrol::tmarkup_mode title_markup_mode)
+	const std::string& message, bool message_markup_mode, bool title_markup_mode)
 {
 	ttransient_message dlg(title, title_markup_mode,
 			message, message_markup_mode);

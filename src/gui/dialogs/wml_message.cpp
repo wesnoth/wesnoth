@@ -60,11 +60,11 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 	// Set the markup
 	tlabel& title = find_widget<tlabel>(&window, "title", false);
 	title.set_label(title_);
-	title.set_markup_mode(tcontrol::WML_MARKUP);
+	title.set_markup_mode(true);
 
 	tcontrol& message = find_widget<tcontrol>(&window, "message", false);
 	message.set_label(message_);
-	message.set_markup_mode(tcontrol::PANGO_MARKUP);
+	message.set_markup_mode(true);
 	// The message label might not always be a scroll_label but the capturing
 	// shouldn't hurt.
 	window.keyboard_capture(&message);
@@ -75,7 +75,7 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 
 	if(has_input_) {
 		caption.set_label(input_caption_);
-		caption.set_markup_mode(tcontrol::WML_MARKUP);
+		caption.set_markup_mode(true);
 		input.set_value(*input_text_);
 		input.set_maximum_length(input_maximum_lenght_);
 		window.keyboard_capture(&input);
@@ -156,10 +156,10 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 			assert(grid);
 
 			find_widget<tcontrol>(grid, "label", false)
-					.set_markup_mode(tcontrol::WML_MARKUP);
+				.set_markup_mode(true);
 
 			find_widget<tcontrol>(grid, "description", false)
-					.set_markup_mode(tcontrol::WML_MARKUP);
+				.set_markup_mode(true);
 		}
 
 		// Avoid negetive and 0 since item 0 is already selected.

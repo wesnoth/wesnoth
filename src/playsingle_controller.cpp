@@ -235,8 +235,8 @@ void playsingle_controller::report_victory(
 			report << _("Early finish bonus: ")
 				   << finishing_bonus_per_turn
 				   << " " << _("per turn") << "\n"
-				   << font::BOLD_TEXT << _("Turns finished early: ")
-				   << turns_left << "\n"
+				   << "<b>" << _("Turns finished early: ")
+				   << turns_left << "</b>\n"
 				   << _("Bonus: ")
 				   << finishing_bonus << "\n";
 	  	}
@@ -247,9 +247,9 @@ void playsingle_controller::report_victory(
 		report << '\n' << _("Carry over percentage: ") << end_level.carryover_percentage;
 	}
 	if(end_level.carryover_add) {
-		report << '\n' << font::BOLD_TEXT << _("Bonus Gold: ") << player_gold;
+		report << "\n<b>" << _("Bonus Gold: ") << player_gold <<"</b>";
 	} else {
-		report << '\n' << font::BOLD_TEXT << _("Retained Gold: ") << player_gold;
+		report << "\n<b>" << _("Retained Gold: ") << player_gold << "</b>";
 	}
 
 	std::string goldmsg;
@@ -890,7 +890,7 @@ void playsingle_controller::store_gold(end_level_exception& end_level, const boo
 				title = _("Scenario Report");
 			} else {
 				title = _("Victory");
-				report << font::BOLD_TEXT << _("You have emerged victorious!") << "\n~\n";
+				report << "<b>" << _("You have emerged victorious!") << "</b>\n\n";
 			}
 
 			int persistent_teams = 0;
@@ -943,7 +943,7 @@ void playsingle_controller::store_gold(end_level_exception& end_level, const boo
 								report << "\n";
 							}
 
-							report << font::BOLD_TEXT << i->current_player() << "\n";
+							report << "<b>" << i->current_player() << "</b>\n";
 						}
 
 						report_victory(report, end_level, carryover_gold, i->gold(), finishing_bonus_per_turn, turns_left, finishing_bonus);
@@ -953,9 +953,8 @@ void playsingle_controller::store_gold(end_level_exception& end_level, const boo
 
 			if(end_level.carryover_report)
 			{
-				/** @todo Convert to pango markup. */
 				gui2::show_transient_message(gui_->video(),
-						title, report.str(), gui2::tcontrol::WML_MARKUP);
+					title, report.str(), true);
 			}
 }
 

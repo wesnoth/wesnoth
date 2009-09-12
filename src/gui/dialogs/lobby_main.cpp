@@ -428,10 +428,10 @@ void tlobby_main::update_gamelist()
 		tgrid* grid = gamelistbox_->get_row_grid(gamelistbox_->get_item_count() - 1);
 
 		find_widget<tcontrol>(grid, "name", false)
-				.set_markup_mode(tcontrol::PANGO_MARKUP);
+				.set_markup_mode(true);
 
 		find_widget<tcontrol>(grid, "status", false)
-				.set_markup_mode(tcontrol::PANGO_MARKUP);
+				.set_markup_mode(true);
 
 		ttoggle_panel& row_panel =
 				find_widget<ttoggle_panel>(grid, "panel", false);
@@ -550,7 +550,7 @@ void tlobby_main::update_playerlist()
 		tgrid* grid = target_list->list->get_row_grid(target_list->list->get_item_count() - 1);
 
 		find_widget<tlabel>(grid, "player", false)
-				.set_markup_mode(tcontrol::PANGO_MARKUP);
+				.set_markup_mode(true);
 
 		find_widget<ttoggle_panel>(grid, "userpanel", false)
 				.set_callback_mouse_left_double_click(boost::bind(

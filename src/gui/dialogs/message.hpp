@@ -164,8 +164,8 @@ void show_message(CVideo& video, const std::string& title,
  */
 int show_message(CVideo& video, const std::string& title,
 	const std::string& message, const tmessage::tbutton_style button_style,
-	const tcontrol::tmarkup_mode message_markup_mode = tcontrol::NO_MARKUP,
-	const tcontrol::tmarkup_mode title_markup_mode = tcontrol::NO_MARKUP);
+	bool message_markup_mode = false,
+	bool title_markup_mode = false);
 
 /**
  * Shows an error message to the user.
@@ -176,7 +176,7 @@ int show_message(CVideo& video, const std::string& title,
  * @param message_markup_mode The markup mode used for the title.
  */
 void show_error_message(CVideo& video, const std::string& message,
-		const tcontrol::tmarkup_mode message_markup_mode = tcontrol::NO_MARKUP);
+	bool message_markup_mode = false);
 
 } // namespace gui2
 

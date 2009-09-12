@@ -70,7 +70,7 @@ void tformula_debugger::pre_show(CVideo& /*video*/, twindow& window)
 		c++;
 	}
 
-	stack_label->set_markup_mode(tcontrol::PANGO_MARKUP);
+	stack_label->set_markup_mode(true);
 	stack_label->set_label(stack_text.str());
 	window.keyboard_capture(stack_label);
 
@@ -97,7 +97,7 @@ void tformula_debugger::pre_show(CVideo& /*video*/, twindow& window)
 		}
 	}
 
-	execution_label->set_markup_mode(tcontrol::PANGO_MARKUP);
+	execution_label->set_markup_mode(true);
 	execution_label->set_label(execution_text.str());
 
 	// state

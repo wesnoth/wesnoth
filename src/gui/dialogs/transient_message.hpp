@@ -26,9 +26,9 @@ class ttransient_message
 {
 public:
 	ttransient_message(const std::string& title,
-			const tcontrol::tmarkup_mode title_markup_mode,
+			bool title_markup_mode,
 			const std::string& message,
-			const tcontrol::tmarkup_mode message_markup_mode)
+			bool message_markup_mode)
 		: title_(title)
 		, title_markup_mode_(title_markup_mode)
 		, message_(message)
@@ -44,13 +44,13 @@ private:
 	std::string title_;
 
 	/** The markup mode for the title. */
-	tcontrol::tmarkup_mode title_markup_mode_;
+	bool title_markup_mode_;
 
 	/** The message to show to the user. */
 	std::string message_;
 
 	/** The markup mode for the message. */
-	tcontrol::tmarkup_mode message_markup_mode_;
+	bool message_markup_mode_;
 
 	/** Inherited from tdialog. */
 	twindow* build_window(CVideo& video);
@@ -74,8 +74,8 @@ private:
  */
 void show_transient_message(CVideo& video, const std::string& title,
 	const std::string& message,
-	const tcontrol::tmarkup_mode message_markup_mode = tcontrol::NO_MARKUP,
-	const tcontrol::tmarkup_mode title_markup_mode = tcontrol::NO_MARKUP);
+	bool message_markup_mode = false,
+	bool title_markup_mode = false);
 
 } // namespace gui2
 

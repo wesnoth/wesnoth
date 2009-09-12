@@ -357,9 +357,7 @@ struct twrapper<gui2::ttransient_message>
 {
 	static gui2::ttransient_message* create()
 	{
-		return new gui2::ttransient_message(
-				"Title", gui2::tcontrol::NO_MARKUP,
-				"Message", gui2::tcontrol::NO_MARKUP);
+		return new gui2::ttransient_message("Title", false, "Message", false);
 	}
 };
 

@@ -239,8 +239,7 @@ void show_objectives(const config &level, const std::string &objectives)
 
 	gui2::show_transient_message(resources::screen->video(),
 		name + (campaign_name.empty() ? "" : "<small> - " + campaign_name + "</small>"),
-		(objectives.empty() ? no_objectives : objectives),
-		gui2::tcontrol::PANGO_MARKUP, gui2::tcontrol::PANGO_MARKUP);
+		(objectives.empty() ? no_objectives : objectives), true, true);
 }
 
 namespace {
