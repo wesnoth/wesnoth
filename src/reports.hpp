@@ -82,10 +82,8 @@ namespace reports {
 		}
 
 		// Convenience functions
-		void add_text(std::stringstream& text, std::stringstream& tooltip);
 		void add_text(const std::string& text, const std::string& tooltip);
 		void add_image(const std::string& image, const std::string& tooltip);
-		void add_image(std::stringstream& image, std::stringstream& tooltip);
 	};
 
 	report generate_report(TYPE type,

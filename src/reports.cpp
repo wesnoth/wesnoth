@@ -41,22 +41,8 @@ const std::string& report_name(TYPE type)
 	return report_names[type];
 }
 
-void report::add_text(std::stringstream& text, std::stringstream& tooltip) {
-	add_text(text.str(), tooltip.str());
-	// Clear the streams
-	text.str("");
-	tooltip.str("");
-}
-
 void report::add_text(const std::string& text, const std::string& tooltip) {
 	this->push_back(element(text,"",tooltip));
-}
-
-void report::add_image(std::stringstream& image, std::stringstream& tooltip) {
-	add_image(image.str(), tooltip.str());
-	// Clear the streams
-	image.str("");
-	tooltip.str("");
 }
 
 void report::add_image(const std::string& image, const std::string& tooltip) {

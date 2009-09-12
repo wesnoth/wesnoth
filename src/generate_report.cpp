@@ -37,6 +37,21 @@
 
 namespace reports {
 
+static void add_status(report &r,
+	char const *path, char const *desc1, char const *desc2)
+{
+	std::ostringstream s;
+	s << gettext(desc1) << gettext(desc2);
+	r.add_image(path, s.str());
+}
+
+static std::string flush(std::ostringstream &s)
+{
+	std::string r(s.str());
+	s.str(std::string());
+	return r;
+}
+
 report generate_report(TYPE type,
                        std::map<reports::TYPE, std::string> report_contents,
                        const team &current_team, int current_side, int playing_side,
@@ -57,7 +72,7 @@ report generate_report(TYPE type,
 		}
 	}
 
-	std::stringstream str;
+	std::ostringstream str;
 
 	switch(type) {
 	case UNIT_NAME:
@@ -92,38 +107,30 @@ report generate_report(TYPE type,
 	}
 	case UNIT_TRAITS:
 		return report(u->traits_description(), "", u->modification_description("trait"));
-	case UNIT_STATUS: {
-		std::stringstream unit_status;
-		std::stringstream tooltip;
-		report res;
 
+	case UNIT_STATUS: {
+		report res;
 		if (map.on_board(displayed_unit_hex) &&
 		    u->invisible(displayed_unit_hex, units, teams))
 		{
-			unit_status << "misc/invisible.png";
-			tooltip << _("invisible: ") << _("This unit is invisible. It cannot be seen or attacked by enemy units.");
-			res.add_image(unit_status,tooltip);
+			add_status(res, "misc/invisible.png", N_("invisible: "),
+				N_("This unit is invisible. It cannot be seen or attacked by enemy units."));
 		}
 		if (u->get_state(unit::STATE_SLOWED)) {
-			unit_status << "misc/slowed.png";
-			tooltip << _("slowed: ") << _("This unit has been slowed. It will only deal half its normal damage when attacking and its movement cost is doubled.");
-			res.add_image(unit_status,tooltip);
+			add_status(res, "misc/slowed.png", N_("slowed: "),
+				N_("This unit has been slowed. It will only deal half its normal damage when attacking and its movement cost is doubled."));
 		}
 		if (u->get_state(unit::STATE_POISONED)) {
-			unit_status << "misc/poisoned.png";
-			tooltip << _("poisoned: ") << _("This unit is poisoned. It will lose 8 HP every turn until it can seek a cure to the poison in a village or from a friendly unit with the 'cures' ability.\n\
-\n\
-Units cannot be killed by poison alone. The poison will not reduce it below 1 HP.");
-			res.add_image(unit_status,tooltip);
+			add_status(res, "misc/poisoned.png", N_("poisoned: "),
+				N_("This unit is poisoned. It will lose 8 HP every turn until it can seek a cure to the poison in a village or from a friendly unit with the 'cures' ability.\n\nUnits cannot be killed by poison alone. The poison will not reduce it below 1 HP."));
 		}
 		if (u->get_state(unit::STATE_PETRIFIED)) {
-			unit_status << "misc/petrified.png";
-			tooltip << _("petrified: ") << _("This unit has been petrified. It may not move or attack.");
-			res.add_image(unit_status,tooltip);
+			add_status(res, "misc/petrified.png", N_("petrified: "),
+				N_("This unit has been petrified. It may not move or attack."));
 		}
-
 		return res;
 	}
+
 	case UNIT_ALIGNMENT: {
 		const std::string &align = unit_type::alignment_description(u->alignment(), u->gender());
 		const std::string &align_id = unit_type::alignment_id(u->alignment());
@@ -134,15 +141,13 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 	}
 	case UNIT_ABILITIES: {
 		report res;
-		std::stringstream tooltip;
 		const std::vector<std::string> &abilities = u->ability_tooltips();
 		for(std::vector<std::string>::const_iterator i = abilities.begin(); i != abilities.end(); ++i) {
 			str << gettext(i->c_str());
 			if(i+2 != abilities.end())
 				str << ",";
 			++i;
-			tooltip << i->c_str(); //string_table[*i + "_description"];
-			res.add_text(str,tooltip);
+			res.add_text(flush(str), *i);
 		}
 
 		return res;
@@ -187,7 +192,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			tooltip << (*line);
 		}
 
-		res.add_text(str,tooltip);
+		res.add_text(str.str(), tooltip.str());
 		return res ;
 	}
 	case UNIT_XP: {
@@ -198,7 +203,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		str << u->experience() << "/" << u->max_experience();
 
 		tooltip << _("Experience Modifier: ") << ((level["experience_modifier"] != "") ? level["experience_modifier"] : "100") << "%";
-		res.add_text(str,tooltip);
+		res.add_text(str.str(), tooltip.str());
 
 		return res;
 	}
@@ -208,7 +213,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		for(std::map<std::string,std::string>::const_iterator i=adv_icons.begin();i!=adv_icons.end();i++){
 			res.add_image(i->first,i->second);
 		}
-		return(res);
+		return res;
 	}
 	case UNIT_DEFENSE: {
 		const t_translation::t_terrain terrain = map[displayed_unit_hex];
@@ -233,7 +238,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 	}
 	case UNIT_WEAPONS: {
 		report res;
-		std::stringstream tooltip;
+		std::ostringstream tooltip;
 
 		size_t team_index = u->side() - 1;
 		if(team_index >= teams.size()) {
@@ -290,7 +295,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			}
 
 			str<<"\n";
-			res.add_text(str,tooltip);
+			res.add_text(flush(str), flush(tooltip));
 
 			str << font::weapon_details << "  ";
 			std::string range = gettext(at.range().c_str());
@@ -330,7 +335,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 				tooltip << "\n";
 			}
 
-			res.add_text(str,tooltip);
+			res.add_text(flush(str), flush(tooltip));
 
 
 			const std::vector<t_string> &specials = at.special_tooltips();
@@ -343,7 +348,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 					++sp_it;
 					tooltip << (*sp_it) << "\n";
 				}
-				res.add_text(str,tooltip);
+				res.add_text(flush(str), flush(tooltip));
 			}
 		}
 
