@@ -38,6 +38,7 @@
 #include "minimap.hpp"
 #include "preferences.hpp"
 #include "sdl_utils.hpp"
+#include "text.hpp"
 #include "tooltips.hpp"
 
 #include "SDL_image.h"
@@ -2100,159 +2101,162 @@ void display::refresh_report(reports::TYPE report_num, reports::report report,
 			     bool brighten)
 {
 	const theme::status_item* const item = theme_.get_status_item(reports::report_name(report_num));
-	if(item != NULL) {
-		SDL_Rect& rect = reportRects_[report_num];
-		const SDL_Rect& new_rect = item->location(screen_area());
-
-		// Report and its location is unchanged since last time. Do nothing.
-		if(rect == new_rect && reports_[report_num] == report) {
-			return;
-		}
-
-		reports_[report_num] = report;
-
-		surface& surf = reportSurfaces_[report_num];
-
-		if(surf != NULL) {
-			SDL_BlitSurface(surf,NULL,screen_.getSurface(),&rect);
-			update_rect(rect);
-		}
-		// If the rectangle has just changed, assign the surface to it
-		if(new_rect != rect || surf == NULL) {
-			surf.assign(NULL);
-			rect = new_rect;
-
-			// If the rectangle is present, and we are blitting text,
-			// then we need to backup the surface.
-			// (Images generally won't need backing up,
-			// unless they are transperant, but that is done later).
-			if(rect.w > 0 && rect.h > 0) {
-				surf.assign(get_surface_portion(screen_.getSurface(),rect));
-				if(reportSurfaces_[report_num] == NULL) {
-					ERR_DP << "Could not backup background for report!\n";
-				}
-			}
-
-			update_rect(rect);
-		}
-
-		tooltips::clear_tooltips(rect);
-
-		SDL_Rect area = rect;
-
-		int x = rect.x, y = rect.y;
-
-		if(!report.empty()) {
-			// Add prefix, postfix elements.
-			// Make sure that they get the same tooltip
-			// as the guys around them.
-			std::stringstream temp;
-			Uint32 RGB = item->font_rgb();
-			int red   = (RGB & 0x00FF0000)>>16;
-			int green = (RGB & 0x0000FF00)>>8;
-			int blue  = (RGB & 0x000000FF);
-
-			static const std::string c_start="<";
-			static const std::string c_sep=",";
-			static const std::string c_end=">";
-			std::stringstream color;
-			color<< c_start << red << c_sep << green << c_sep << blue << c_end;
-			std::string str;
-
-			str = item->prefix();
-			if(str.empty() == false) {
-			  report.insert(report.begin(), reports::element(str,"",report.begin()->tooltip));
-			}
-			str = item->postfix();
-			if(str.empty() == false) {
-			  report.push_back(reports::element(str,"",report.back().tooltip));
-			}
-			// Loop through and display each report element
-			size_t tallest = 0;
-			int image_count = 0;
-			bool used_ellipsis=false;
-			std::stringstream ellipsis_tooltip;
-			SDL_Rect ellipsis_area =rect;
-			for(reports::report::iterator i = report.begin(); i != report.end(); ++i) {
-			  temp.str("");
-				if(i->text.empty() == false) {
-				  if(used_ellipsis == false) {
-					// Draw a text element
-				        if(item->font_rgb_set()) {
-						temp <<color.str();
-					}
-					temp << i->text;
-					str = temp.str();
-					area = font::draw_text(&screen_,rect,item->font_size(),font::NORMAL_COLOUR,str,x,y);
-					if(area.h > tallest) {
-						tallest = area.h;
-					}
-					if(i->text[i->text.size() - 1] == '\n') {
-						x = rect.x;
-						y += tallest;
-						tallest = 0;
-					} else {
-						x += area.w;
-					}
-				  }
-				} else if(i->image.get_filename().empty() == false) {
-				  if(used_ellipsis == false) {
-					// Draw an image element
-					surface img(image::get_image(i->image));
-
-					if(img == NULL) {
-						ERR_DP << "could not find image for report: '" << i->image.get_filename() << "'\n";
-						continue;
-					}
-
-					if(rect.w + rect.x - x < img->w && image_count) {
-					  // We have more than one image, and this one doesn't fit.
-					  img=surface(image::get_image(game_config::ellipsis_image));
-					  used_ellipsis=true;
-					}
-
-					area.x = x;
-					area.y = y;
-					area.w = std::min<int>(rect.w + rect.x - x, img->w);
-					area.h = std::min<int>(rect.h + rect.y - y, img->h);
-					draw_image_for_report(img, area);
-
-					if(brighten) {
-						surface tod_bright(image::get_image(game_config:: tod_bright_image));
-						if(tod_bright != NULL) {
-							draw_image_for_report(tod_bright,area);
-						}
-					}
-
-					image_count++;
-					if(area.h > tallest) {
-						tallest = area.h;
-					}
-
-					if(! used_ellipsis) {
-						x += area.w;
-					} else {
-						ellipsis_area = area;
-					}
-				  }
-				} else {
-					// No text or image, skip this element
-					continue;
-				}
-				if(i->tooltip.empty() == false) {
-					if(! used_ellipsis) {
-						tooltips::add_tooltip(area,i->tooltip);
-					} else { // Collect all tooltips for the ellipsis
-						ellipsis_tooltip<<i->tooltip<<"\n";
-					}
-				}
-			}
-			if(used_ellipsis) {
-				tooltips::add_tooltip(ellipsis_area,ellipsis_tooltip.str());
-			}
-		}
-	} else {
+	if (!item) {
 		reportSurfaces_[report_num].assign(NULL);
+		return;
+	}
+
+	SDL_Rect &rect = reportRects_[report_num];
+	const SDL_Rect &new_rect = item->location(screen_area());
+
+	// Report and its location is unchanged since last time. Do nothing.
+	if (rect == new_rect && reports_[report_num] == report) {
+		return;
+	}
+
+	reports_[report_num] = report;
+
+	surface &surf = reportSurfaces_[report_num];
+
+	if (surf) {
+		SDL_BlitSurface(surf, NULL, screen_.getSurface(), &rect);
+		update_rect(rect);
+	}
+
+	// If the rectangle has just changed, assign the surface to it
+	if (new_rect != rect || !surf)
+	{
+		surf.assign(NULL);
+		rect = new_rect;
+
+		// If the rectangle is present, and we are blitting text,
+		// then we need to backup the surface.
+		// (Images generally won't need backing up,
+		// unless they are transperant, but that is done later).
+		if (rect.w > 0 && rect.h > 0) {
+			surf.assign(get_surface_portion(screen_.getSurface(), rect));
+			if (reportSurfaces_[report_num] == NULL) {
+				ERR_DP << "Could not backup background for report!\n";
+			}
+		}
+		update_rect(rect);
+	}
+
+	tooltips::clear_tooltips(rect);
+
+	if (report.empty()) return;
+
+	int x = rect.x, y = rect.y;
+
+	// Add prefix, postfix elements.
+	// Make sure that they get the same tooltip
+	// as the guys around them.
+	std::string str = item->prefix();
+	if (!str.empty()) {
+		report.insert(report.begin(), reports::element(str, "", report.begin()->tooltip));
+	}
+	str = item->postfix();
+	if (!str.empty()) {
+		report.push_back(reports::element(str, "", report.back().tooltip));
+	}
+
+	// Loop through and display each report element.
+	size_t tallest = 0;
+	int image_count = 0;
+	bool used_ellipsis = false;
+	std::ostringstream ellipsis_tooltip;
+	SDL_Rect ellipsis_area = rect;
+
+	foreach (const reports::element &e, report)
+	{
+		SDL_Rect area = { x, y, rect.w + rect.x - x, rect.h + rect.y - y };
+
+		if (!e.text.empty())
+		{
+			if (used_ellipsis) goto skip_element;
+
+			// Draw a text element.
+			font::ttext text;
+			if (item->font_rgb_set()) {
+				text.set_foreground_colour(item->font_rgb());
+			}
+			text.set_font_size(item->font_size());
+			text.set_text(e.text, true);
+			text.set_maximum_width(area.w);
+			text.set_maximum_height(area.h);
+			surface s = text.render();
+			screen_.blit_surface(x, y, s);
+			area.w = s->w;
+			area.h = s->h;
+			if (area.h > tallest) {
+				tallest = area.h;
+			}
+			if (e.text[e.text.size() - 1] == '\n') {
+				x = rect.x;
+				y += tallest;
+				tallest = 0;
+			} else {
+				x += area.w;
+			}
+		}
+		else if (!e.image.get_filename().empty())
+		{
+			if (used_ellipsis) goto skip_element;
+
+			// Draw an image element.
+			surface img(image::get_image(e.image));
+
+			if (!img) {
+				ERR_DP << "could not find image for report: '" << e.image.get_filename() << "'\n";
+				continue;
+			}
+
+			if (area.w < img->w && image_count) {
+				// We have more than one image, and this one doesn't fit.
+				img = surface(image::get_image(game_config::ellipsis_image));
+				used_ellipsis = true;
+			}
+
+			if (img->w < area.w) area.w = img->w;
+			if (img->h < area.h) area.h = img->h;
+			draw_image_for_report(img, area);
+
+			if (brighten) {
+				surface tod_bright(image::get_image(game_config:: tod_bright_image));
+				if (!tod_bright)
+					draw_image_for_report(tod_bright, area);
+			}
+
+			++image_count;
+			if (area.h > tallest) {
+				tallest = area.h;
+			}
+
+			if (!used_ellipsis) {
+				x += area.w;
+			} else {
+				ellipsis_area = area;
+			}
+		}
+		else
+		{
+			// No text nor image, skip this element
+			continue;
+		}
+
+		skip_element:
+		if (!e.tooltip.empty()) {
+			if (!used_ellipsis) {
+				tooltips::add_tooltip(area, e.tooltip);
+			} else {
+				// Collect all tooltips for the ellipsis.
+				ellipsis_tooltip << e.tooltip << '\n';
+			}
+		}
+	}
+
+	if (used_ellipsis) {
+		tooltips::add_tooltip(ellipsis_area, ellipsis_tooltip.str());
 	}
 }
 
