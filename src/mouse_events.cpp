@@ -682,6 +682,14 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 			range = gettext(range.c_str());
 		}
 
+		// add dummy names if missing, to keep stats aligned
+		std::string attw_name = attw.name();
+		if(attw_name.empty()) 
+			attw_name = " "; 
+		std::string defw_name = defw.name();
+		if(defw_name.empty())
+			defw_name = " ";
+
 		// color CtH in red-yellow-green
 		SDL_Color att_cth_color =
 				int_to_color( game_config::red_to_green(att.chance_to_hit) );
@@ -689,12 +697,12 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 				int_to_color( game_config::red_to_green(def.chance_to_hit) );
 
 		atts << IMAGE_PREFIX << attw.icon() << COLUMN_SEPARATOR
-			 << font::BOLD_TEXT << attw.name()  << "\n"
+			 << font::BOLD_TEXT << attw_name  << "\n"
 			 << att.damage << "-" << att.num_blows
 			 << "  " << att_weapon_special << "\n"
 			 << font::color2markup(att_cth_color) << att.chance_to_hit << "%"
 			 << COLUMN_SEPARATOR << font::weapon_details << "- " << range << " -" << COLUMN_SEPARATOR
-			 << font::BOLD_TEXT << defw.name()  << "\n"
+			 << font::BOLD_TEXT << defw_name  << "\n"
 			 << def.damage << "-" << def.num_blows
 			 << "  " << def_weapon_special << "\n"
 			 << font::color2markup(def_cth_color) << def.chance_to_hit << "%"
