@@ -2180,8 +2180,14 @@ void display::refresh_report(reports::TYPE report_num, reports::report report,
 			if (item->font_rgb_set()) {
 				text.set_foreground_colour(item->font_rgb());
 			}
+			std::string t = e.text;
+			bool eol = false;
+			if (t[t.size() - 1] == '\n') {
+				eol = true;
+				t = t.substr(0, t.size() - 1);
+			}
 			text.set_font_size(item->font_size());
-			text.set_text(e.text, true);
+			text.set_text(t, true);
 			text.set_maximum_width(area.w);
 			text.set_maximum_height(area.h);
 			surface s = text.render();
@@ -2191,7 +2197,7 @@ void display::refresh_report(reports::TYPE report_num, reports::report report,
 			if (area.h > tallest) {
 				tallest = area.h;
 			}
-			if (e.text[e.text.size() - 1] == '\n') {
+			if (eol) {
 				x = rect.x;
 				y += tallest;
 				tallest = 0;
