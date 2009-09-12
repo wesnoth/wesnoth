@@ -1972,49 +1972,50 @@ static bool try_add_unit_to_recall_list(const map_location& loc, const unit& u)
 // If we should spawn a new unit on the map somewhere
 WML_HANDLER_FUNCTION(unit, /*event_info*/, cfg)
 {
-		const config& parsed_cfg = cfg.get_parsed_config();
-		unit new_unit(resources::units, parsed_cfg, true, resources::state_of_game);
-		if(cfg.has_attribute("to_variable")) {
-			config &var = resources::state_of_game->get_variable_cfg(parsed_cfg["to_variable"]);
-			new_unit.write(var);
-			var["x"] = parsed_cfg["x"];
-			var["y"] = parsed_cfg["y"];
-		} else {
-			preferences::encountered_units().insert(new_unit.type_id());
-			map_location loc = cfg_to_loc(cfg);
+	const config& parsed_cfg = cfg.get_parsed_config();
+	unit new_unit(resources::units, parsed_cfg, true, resources::state_of_game);
 
-			if (resources::game_map->on_board(loc))
-			{
-				loc = find_vacant_tile(*resources::game_map, *resources::units, loc);
-				const bool show = resources::screen && !resources::screen->fogged(loc);
-				const bool animate = show && utils::string_bool(parsed_cfg["animate"], false);
-
-				//	If new unit is leader set current player/visible side name
-				//	to units name
-				if (new_unit.can_recruit())
-					(*resources::teams)[new_unit.side() - 1].set_current_player(new_unit.name());
-
-				resources::units->erase(loc);
-				resources::units->add(loc, new_unit);
-				if (resources::game_map->is_village(loc)) {
-					get_village(loc, *resources::screen, *resources::teams, new_unit.side() - 1, *resources::units);
-				}
-
-				resources::screen->invalidate(loc);
-
-				unit_map::iterator un = resources::units->find(loc);
-
-				if(animate) {
-					unit_display::unit_recruited(loc);
-				}
-				else if(show) {
-					resources::screen->draw();
-				}
-			} else {
-                try_add_unit_to_recall_list(loc, new_unit);
-			}
-		}
+	if (cfg.has_attribute("to_variable")) {
+		config &var = resources::state_of_game->get_variable_cfg(parsed_cfg["to_variable"]);
+		var.clear();
+		new_unit.write(var);
+		var["x"] = parsed_cfg["x"];
+		var["y"] = parsed_cfg["y"];
+		return;
 	}
+
+	preferences::encountered_units().insert(new_unit.type_id());
+	map_location loc = cfg_to_loc(cfg);
+
+	if (!resources::game_map->on_board(loc)) {
+		try_add_unit_to_recall_list(loc, new_unit);
+		return;
+	}
+
+	loc = find_vacant_tile(*resources::game_map, *resources::units, loc);
+	bool show = resources::screen && !resources::screen->fogged(loc);
+	bool animate = show && utils::string_bool(parsed_cfg["animate"], false);
+
+	// If the new unit is a leader, use its name as the player name.
+	if (new_unit.can_recruit()) {
+		(*resources::teams)[new_unit.side() - 1].set_current_player(new_unit.name());
+	}
+
+	resources::units->erase(loc);
+	resources::units->add(loc, new_unit);
+
+	if (resources::game_map->is_village(loc)) {
+		get_village(loc, *resources::screen, *resources::teams, new_unit.side() - 1, *resources::units);
+	}
+
+	resources::screen->invalidate(loc);
+
+	if (animate) {
+		unit_display::unit_recruited(loc);
+	} else if (show) {
+		resources::screen->draw();
+	}
+}
 
 // If we should recall units that match a certain description
 WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
