@@ -21,6 +21,7 @@
 #include "global.hpp"
 
 #include "actions.hpp"
+#include "font.hpp"
 #include "foreach.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
@@ -52,6 +53,13 @@ static std::string flush(std::ostringstream &s)
 	return r;
 }
 
+static std::string span_color(SDL_Color const &c)
+{
+	return "<span foreground=\"#" + font::color2hexa(c) + "\">";
+}
+
+static char const *naps = "</span>";
+
 report generate_report(TYPE type,
                        std::map<reports::TYPE, std::string> report_contents,
                        const team &current_team, int current_side, int playing_side,
@@ -76,11 +84,15 @@ report generate_report(TYPE type,
 
 	switch(type) {
 	case UNIT_NAME:
-		return report(std::string(1,font::BOLD_TEXT) + u->name(), "", u->name());
+		str << "<b>" << u->name() << "</b>";
+		return report(str.str(), "", u->name());
 	case UNIT_TYPE:
-		return report(font::unit_type + u->type_name(), "", u->unit_description());
+		str << span_color(font::unit_type_color) << u->type_name() << naps;
+		return report(str.str(), "", u->unit_description());
 	case UNIT_RACE:
-		return report(font::race + u->race()->name(u->gender()));
+		str << span_color(font::race_color)
+			<< u->race()->name(u->gender()) << naps;
+		break;
 	case UNIT_SIDE: {
 		std::string flag_icon = teams[u->side() - 1].flag_icon();
 		std::string old_rgb = game_config::flag_rgb;
@@ -153,10 +165,9 @@ report generate_report(TYPE type,
 		return res;
 	}
 	case UNIT_HP: {
-		report res;
-		std::stringstream tooltip;
-		str << font::color2markup(u->hp_color());
-		str << u->hitpoints() << "/" << u->max_hitpoints();
+		std::ostringstream tooltip;
+		str << span_color(u->hp_color()) << u->hitpoints()
+			<< '/' << u->max_hitpoints() << naps;
 
 		std::set<std::string> resistances_table;
 
@@ -165,7 +176,7 @@ report generate_report(TYPE type,
 		bool att_def_diff = false;
 		for(string_map::iterator resist = resistances.begin();
 				resist != resistances.end(); ++resist) {
-			std::stringstream line;
+			std::ostringstream line;
 			line << gettext(resist->first.c_str()) << ": ";
 
 			// Some units have different resistances when
@@ -192,20 +203,16 @@ report generate_report(TYPE type,
 			tooltip << (*line);
 		}
 
-		res.add_text(str.str(), tooltip.str());
-		return res ;
+		return report(str.str(), "", tooltip.str());
 	}
 	case UNIT_XP: {
-		report res;
-		std::stringstream tooltip;
+		std::ostringstream tooltip;
 
-		str << font::color2markup(u->xp_color());
-		str << u->experience() << "/" << u->max_experience();
+		str << span_color(u->xp_color()) << u->experience()
+			<< '/' << u->max_experience() << naps;
 
 		tooltip << _("Experience Modifier: ") << ((level["experience_modifier"] != "") ? level["experience_modifier"] : "100") << "%";
-		res.add_text(str.str(), tooltip.str());
-
-		return res;
+		return report(str.str(), "", tooltip.str());
 	}
 	case UNIT_ADVANCEMENT_OPTIONS: {
 		report res;
@@ -219,8 +226,7 @@ report generate_report(TYPE type,
 		const t_translation::t_terrain terrain = map[displayed_unit_hex];
 		int def = 100 - u->defense_modifier(terrain);
 		SDL_Color color = int_to_color(game_config::red_to_green(def));
-		str << font::color2markup(color);
-		str << def << "%";
+		str << span_color(color) << def << "%</span>";
 		break;
 	}
 	case UNIT_MOVES: {
@@ -232,8 +238,9 @@ report generate_report(TYPE type,
 		}
 
 		int grey = 128 + static_cast<int>((255-128) * movement_frac);
-		str << "<" << grey << "," << grey << "," << grey <<">";
-		str << u->movement_left() << "/" << u->total_movement();
+		SDL_Color c = { grey, grey, grey, 0 };
+		str << span_color(c) << u->movement_left()
+			<< '/' << u->total_movement() << naps;
 		break;
 	}
 	case UNIT_WEAPONS: {
@@ -250,8 +257,7 @@ report generate_report(TYPE type,
 		{
 			at.set_specials_context(displayed_unit_hex, map_location(), *u);
 			std::string lang_type = gettext(at.type().c_str());
-			str.str("");
-			str << font::weapon;
+			str << span_color(font::weapon_color);
 			if (u->get_state(unit::STATE_SLOWED)) {
 				str << round_damage(at.damage(), 1, 2) << '-';
 			} else {
@@ -294,13 +300,12 @@ report generate_report(TYPE type,
 				tooltip << " " << (parry > 0 ? "+" : "") << parry << _("tooltip^% parry");
 			}
 
-			str<<"\n";
+			str << "</span>\n";
 			res.add_text(flush(str), flush(tooltip));
 
-			str << font::weapon_details << "  ";
 			std::string range = gettext(at.range().c_str());
-			str << range << "--" << lang_type << "\n";
-			str<<"\n";
+			str << span_color(font::weapon_details_color) << "  "
+				<< range << "--" << lang_type << "</span>\n";
 
 			tooltip << _("weapon range: ") << range <<"\n";
 			tooltip << _("damage type: ")  << lang_type << "\n";
@@ -327,7 +332,7 @@ report generate_report(TYPE type,
 				tooltip << (resist->first >= 0 ? "+" : "") << resist->first << "% " << _("vs") << " ";
 				for(std::vector<std::string>::const_iterator i = resist->second.begin(); i != resist->second.end(); ++i) {
 					if(i != resist->second.begin()) {
-						tooltip << ",";
+						tooltip << ", ";
 					}
 
 					tooltip << *i;
@@ -342,11 +347,10 @@ report generate_report(TYPE type,
 
 			if(! specials.empty()) {
 				for(std::vector<t_string>::const_iterator sp_it = specials.begin(); sp_it != specials.end(); ++sp_it) {
-					str << font::weapon_details << "  ";
-					str << (*sp_it);
-					str<<"\n";
+					str << span_color(font::weapon_details_color)
+						<< "  " << *sp_it << "</span>\n";
 					++sp_it;
-					tooltip << (*sp_it) << "\n";
+					tooltip << *sp_it << '\n';
 				}
 				res.add_text(flush(str), flush(tooltip));
 			}
@@ -383,21 +387,28 @@ report generate_report(TYPE type,
 	}
 	case TURN: {
 		str << resources::tod_manager->turn();
-
 		int nb = resources::tod_manager->number_of_turns();
 		if (nb != -1) str << '/' << nb;
-
-		str << "\n";
 		break;
 	}
 	// For the following status reports, show them in gray text
 	// when it is not the active player's turn.
-	case GOLD:
-		str << (current_side != playing_side ? font::GRAY_TEXT : (current_team.gold() < 0 ? font::BAD_TEXT : font::NULL_MARKUP)) << current_team.gold();
+	case GOLD: {
+		char const *end = naps;
+		if (current_side != playing_side)
+			str << span_color(font::GRAY_COLOUR);
+		else if (current_team.gold() < 0)
+			str << span_color(font::BAD_COLOUR);
+		else
+			end = "";
+		str << current_team.gold() << end;
 		break;
+	}
 	case VILLAGES: {
 		const team_data data = calculate_team_data(current_team,current_side,units);
-		str << (current_side != playing_side ? font::GRAY_TEXT : font::NULL_MARKUP) << data.villages << "/";
+		if (current_side != playing_side)
+			str << span_color(font::GRAY_COLOUR);
+		str << data.villages << '/';
 		if (current_team.uses_shroud()) {
 			int unshrouded_villages = 0;
 			std::vector<map_location>::const_iterator i = map.villages().begin();
@@ -409,25 +420,46 @@ report generate_report(TYPE type,
 		} else {
 			str << map.villages().size();
 		}
+		if (current_side != playing_side)
+			str << naps;
 		break;
 	}
 	case NUM_UNITS: {
-		str << (current_side != playing_side ? font::GRAY_TEXT : font::NULL_MARKUP) << side_units(units, current_side);
+		if (current_side != playing_side)
+			str << span_color(font::GRAY_COLOUR);
+		str << side_units(units, current_side);
+		if (current_side != playing_side)
+			str << naps;
 		break;
 	}
 	case UPKEEP: {
 		const team_data data = calculate_team_data(current_team,current_side,units);
-		str << (current_side != playing_side ? font::GRAY_TEXT : font::NULL_MARKUP) << data.expenses << " (" << data.upkeep << ")";
+		if (current_side != playing_side)
+			str << span_color(font::GRAY_COLOUR);
+		str << data.expenses << " (" << data.upkeep << ")";
+		if (current_side != playing_side)
+			str << naps;
 		break;
 	}
 	case EXPENSES: {
 		const team_data data = calculate_team_data(current_team,current_side,units);
-		str << (current_side != playing_side ? font::GRAY_TEXT : font::NULL_MARKUP) << data.expenses;
+		if (current_side != playing_side)
+			str << span_color(font::GRAY_COLOUR);
+		str << data.expenses;
+		if (current_side != playing_side)
+			str << naps;
 		break;
 	}
 	case INCOME: {
-		const team_data data = calculate_team_data(current_team,current_side,units);
-		str << (current_side != playing_side ? font::GRAY_TEXT : (data.net_income < 0 ? font::BAD_TEXT : font::NULL_MARKUP)) << data.net_income;
+		team_data data = calculate_team_data(current_team, current_side, units);
+		char const *end = naps;
+		if (current_side != playing_side)
+			str << span_color(font::GRAY_COLOUR);
+		else if (data.net_income < 0)
+			str << span_color(font::BAD_COLOUR);
+		else
+			end = "";
+		str << data.net_income << end;
 		break;
 	}
 	case TERRAIN: {
@@ -556,13 +588,15 @@ report generate_report(TYPE type,
 		int sec;
 		if (current_team.countdown_time() > 0){
 			sec = current_team.countdown_time() / 1000;
-
-			str << (current_side != playing_side ? font::GRAY_TEXT : font::NORMAL_TEXT);
-
-			if(sec < 60)
-				str << "<200,0,0>";
-			else if(sec < 120)
-				str << "<200,200,0>";
+			char const *end = naps;
+			if (current_side != playing_side)
+				str << span_color(font::GRAY_COLOUR);
+			else if (sec < 60)
+				str << "<span foreground=\"#c80000\">";
+			else if (sec < 120)
+				str << "<span foreground=\"#c8c800\">";
+			else
+				end = "";
 
 			min = sec / 60;
 			str << min << ":";
@@ -570,7 +604,7 @@ report generate_report(TYPE type,
 			if (sec < 10) {
 				str << "0";
 			}
-			str << sec;
+			str << sec << end;
 			break;
 		} // Intentional fall-through to REPORT_CLOCK
 		  // if the time countdown isn't valid.

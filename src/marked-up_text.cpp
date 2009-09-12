@@ -43,6 +43,11 @@ const std::string weapon = "<245,230,193>",
 		weapon_details = "<166,146,117>",
 		unit_type = "<245,230,193>",
 		race = "<166,146,117>";
+const SDL_Color
+	weapon_color = { 245, 230, 193, 0 },
+	weapon_details_color = { 166, 146, 117, 0 },
+	unit_type_color = { 245, 230, 193, 0 },
+	race_color = { 166, 146, 117, 0 };
 
 std::string::const_iterator parse_markup(std::string::const_iterator i1,
 												std::string::const_iterator i2,
@@ -155,7 +160,8 @@ std::string nullify_markup(const std::string& text) {
 	return utils::join(lines, '\n');
 }
 
-std::string color2markup(const SDL_Color color) {
+std::string color2markup(const SDL_Color &color)
+{
 	std::stringstream markup;
 	// The RGB of SDL_Color are Uint8, we need to cast them to int.
 	// Without cast, it gives their char equivalent.
@@ -164,6 +170,13 @@ std::string color2markup(const SDL_Color color) {
 		   << static_cast<int>(color.g) << ","
 		   << static_cast<int>(color.b) << ">";
 	return markup.str();
+}
+
+std::string color2hexa(const SDL_Color &color)
+{
+	char buf[7];
+	sprintf(buf, "%02x%02x%02x", color.r, color.g, color.b);
+	return buf;
 }
 
 SDL_Rect text_area(const std::string& text, int size, int style)

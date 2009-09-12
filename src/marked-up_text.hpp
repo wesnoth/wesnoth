@@ -31,6 +31,8 @@ extern const char LARGE_TEXT, SMALL_TEXT, BOLD_TEXT, NORMAL_TEXT, NULL_MARKUP, B
 
 extern const std::string weapon, weapon_details, unit_type, race;
 
+extern const SDL_Color weapon_color, weapon_details_color, unit_type_color, race_color;
+
 /** Parses the markup-tags at the front of a string. */
 std::string::const_iterator parse_markup(std::string::const_iterator i1,
 												std::string::const_iterator i2,
@@ -93,7 +95,10 @@ bool is_format_char(char c);
 bool is_cjk_char(const wchar_t ch);
 
 /** Create string of color-markup, such as "<255,255,0>" for yellow. */
-std::string color2markup(const SDL_Color color);
+std::string color2markup(const SDL_Color &color);
+
+/** Creates the hexadecimal string of a color, such as "#ffff00" for yellow. */
+std::string color2hexa(const SDL_Color &color);
 
 /**
  * Wrap text.
