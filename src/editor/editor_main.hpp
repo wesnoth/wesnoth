@@ -15,6 +15,8 @@
 #ifndef EDITOR_EDITOR_MAIN_H_INCLUDED
 #define EDITOR_EDITOR_MAIN_H_INCLUDED
 
+#include <string>
+
 class config;
 class CVideo;
 

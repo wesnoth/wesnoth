@@ -17,17 +17,19 @@
  * */
 
 #ifndef AI_FORMULA_CANDIDATES_HPP_INCLUDED
-#define	AI_FORMULA_CANDIDATES_HPP_INCLUDED
+#define AI_FORMULA_CANDIDATES_HPP_INCLUDED
 
-#include "../../global.hpp"
+#include "global.hpp"
+#include "formula_fwd.hpp"
+#include "formula_function.hpp"
 
-#include "../../formula_fwd.hpp"
-#include "../../formula_function.hpp"
+#include <set>
+
+class unit_map;
+class config;
 
 namespace ai {
-
 class formula_ai;
-
 }
 
 namespace game_logic {

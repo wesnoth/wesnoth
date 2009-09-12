@@ -23,7 +23,8 @@
 #include "events.hpp"
 #include "gui/widgets/event_executor.hpp"
 
-#include "SDL.h"
+#include <string>
+#include <SDL.h>
 
 class t_string;
 

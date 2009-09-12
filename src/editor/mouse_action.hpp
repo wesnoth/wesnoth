@@ -15,10 +15,11 @@
 #ifndef EDITOR_MOUSE_ACTION_HPP
 #define EDITOR_MOUSE_ACTION_HPP
 
-#include "action_base.hpp"
-#include "editor_map.hpp"
-#include "../map.hpp"
-#include "../terrain.hpp"
+#include "editor/action_base.hpp"
+#include "editor/editor_map.hpp"
+#include "map.hpp"
+#include "terrain.hpp"
+#include "theme.hpp"
 
 class CKey;
 

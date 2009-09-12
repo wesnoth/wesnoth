@@ -30,6 +30,7 @@ class game_display;
 class terrain_label;
 class unit_map;
 class play_controller;
+struct time_of_day;
 
 class replay: public rand_rng::rng
 {
@@ -51,7 +52,7 @@ public:
 	void add_attack(const map_location& a, const map_location& b,
 		int att_weapon, int def_weapon, const std::string& attacker_type_id,
 		const std::string& defender_type_id, int attacker_lvl,
-		int defender_lvl, const size_t turn, const time_of_day t);
+		int defender_lvl, const size_t turn, const time_of_day &t);
 	void add_seed(const char* child_name, rand_rng::seed_t seed);
 	void choose_option(int index);
 	void text_input(std::string input);
