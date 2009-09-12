@@ -15,7 +15,6 @@
 #ifndef TEXT_HPP_INCLUDED
 #define TEXT_HPP_INCLUDED
 
-#include "copy_policy.hpp"
 #include "sdl_utils.hpp"
 
 #include <boost/noncopyable.hpp>
