@@ -20,6 +20,10 @@ Version 1.7.5+svn:
    * new gamestate inspector debug dialog (via 'inspect' command 
      and '[inspect]' tag)
    * Rename easy_close to click_dismiss
+   * Automatically try to resolve blocked multi-turn moves
+   * Better visually differentiate name, type and race in sidebar
+   * Add colorized terrain defense info in sidebar
+   * In attack dialog, split damages and chance to hit and color the later.
  * WML engine:
    * Fix silent=yes for objectives
    * Allow [story] [part] blocks to specify the title box alignment
@@ -34,7 +38,8 @@ Version 1.7.5+svn:
    * Fixed the unit tests from 'hanging'
    * Fix bug #14160 (carryover percentage in [endlevel] ignored
      when victory_when_enemies_defeated="yes")
-   * Various cleanups to the gui2 code	 
+   * Various cleanups to the gui2 code
+   * Remove position info from unit list
 
 Version 1.7.5:
  * Campaigns:
