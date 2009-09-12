@@ -626,6 +626,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\src\savegame_config.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\..\src\sdl_utils.cpp"
 				>
 			</File>
@@ -1301,6 +1305,34 @@
 					</File>
 					<File
 						RelativePath="..\..\src\gui\widgets\scrollbar_container.cpp"
+						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Widgets\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Widgets\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug (fast)|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Widgets\"
+							/>
+						</FileConfiguration>
+					</File>
+					<File
+						RelativePath="..\..\src\gui\widgets\scrollbar_panel.cpp"
 						>
 						<FileConfiguration
 							Name="Debug|Win32"
@@ -2388,6 +2420,34 @@
 						</FileConfiguration>
 					</File>
 					<File
+						RelativePath="..\..\src\gui\auxiliary\widget_definition.cpp"
+						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug (fast)|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\"
+							/>
+						</FileConfiguration>
+					</File>
+					<File
 						RelativePath="..\..\src\gui\auxiliary\window_builder.cpp"
 						>
 						<FileConfiguration
@@ -2476,6 +2536,34 @@
 						</File>
 						<File
 							RelativePath="..\..\src\gui\auxiliary\window_builder\helper.cpp"
+							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Debug (fast)|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+								/>
+							</FileConfiguration>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\window_builder\horizontal_listbox.cpp"
 							>
 							<FileConfiguration
 								Name="Debug|Win32"
@@ -4459,34 +4547,6 @@
 				<Filter
 					Name="dfool"
 					>
-					<File
-						RelativePath="..\..\src\ai\dfool\ai.cpp"
-						>
-						<FileConfiguration
-							Name="Debug|Win32"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-								ObjectFile="$(IntDir)\ai\dfool\"
-							/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Release|Win32"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-								ObjectFile="$(IntDir)\ai\dfool\"
-							/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug (fast)|Win32"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-								ObjectFile="$(IntDir)\ai\dfool\"
-							/>
-						</FileConfiguration>
-					</File>
 				</Filter>
 				<Filter
 					Name="formula"
@@ -5225,6 +5285,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\src\savegame_config.hpp"
+				>
+			</File>
+			<File
 				RelativePath="..\..\src\scoped_resource.hpp"
 				>
 			</File>
@@ -5727,6 +5791,10 @@
 						>
 					</File>
 					<File
+						RelativePath="..\..\src\gui\auxiliary\widget_definition.hpp"
+						>
+					</File>
+					<File
 						RelativePath="..\..\src\gui\auxiliary\window_builder.hpp"
 						>
 					</File>
@@ -5747,6 +5815,10 @@
 						</File>
 						<File
 							RelativePath="..\..\src\gui\auxiliary\window_builder\helper.hpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\window_builder\horizontal_listbox.hpp"
 							>
 						</File>
 						<File
