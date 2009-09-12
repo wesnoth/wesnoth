@@ -47,11 +47,6 @@ public:
 	};
 
 	/**
-	 * Default constructor.
-	 */
-	floating_image();
-
-	/**
 	 * WML-based constructor.
 	 * @param cfg Object corresponding to a [image] block's contents from
 	 *            a [part] node.
@@ -220,9 +215,6 @@ public:
 	}
 
 private:
-	// Default constructor. Not used. Should never be used.
-	part();
-
 	/** Takes care of initializing and branching properties. */
 	void resolve_wml(const vconfig &cfg);
 

@@ -35,16 +35,6 @@
 
 namespace storyscreen {
 
-floating_image::floating_image()
-	: file_()
-	, x_(0)
-	, y_(0)
-	, delay_(0)
-	, autoscaled_(false)
-	, centered_(false)
-{
-}
-
 floating_image::floating_image(const floating_image& fi)
 	: file_()
 	, x_(0)
@@ -102,21 +92,6 @@ floating_image::render_input floating_image::get_render_input(double scale, SDL_
 		}
 	}
 	return ri;
-}
-
-part::part()
-	: scale_background_()
-	, background_file_()
-	, show_title_()
-	, text_()
-	, text_title_()
-	, text_block_loc_()
-	, title_alignment_()
-	, music_()
-	, sound_()
-	, floating_images_()
-{
-	ASSERT_LOG(0xDEADBEEF == 0x0, "Ouch: shouldn't happen");
 }
 
 part::part(const vconfig &part_cfg)
