@@ -233,13 +233,8 @@ bool animate_unit_advancement(const map_location &loc, size_t choice)
 void show_objectives(const config &level, const std::string &objectives)
 {
 	static const std::string no_objectives(_("No objectives available"));
-	const std::string& name = level["name"];
-	std::string campaign_name = std::string(level["campaign"]);
-	replace_underbar2space(campaign_name);
-
-	gui2::show_transient_message(resources::screen->video(),
-		name + (campaign_name.empty() ? "" : "<small> - " + campaign_name + "</small>"),
-		(objectives.empty() ? no_objectives : objectives), true, true);
+	gui2::show_transient_message(resources::screen->video(), level["name"],
+		(objectives.empty() ? no_objectives : objectives), true);
 }
 
 namespace {
