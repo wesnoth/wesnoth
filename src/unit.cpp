@@ -3007,7 +3007,7 @@ void unit::set_hidden(bool state) {
  * 		*
  * 	[/special]
  * [/attack]
- * anything in: [abilities], [advance_from], [defense], [movement_cost], [resistance], [trait]
+ * anything in: [abilities], [advance_from], [defense], [movement_costs], [resistance], [trait]
  * remove description, description_inactive, name, name_inactive from all tags under [abilities]
  * remove description from all tags under [specials]
  * remove description, male_name, female_name, name from [trait]
@@ -3083,7 +3083,7 @@ std::string get_checksum(const unit& u) {
 		child.recursive_clear_value("name");
 	}
 
-	const std::string child_keys[] = {"advance_from", "defense", "movement_cost", "resistance",""};
+	const std::string child_keys[] = {"advance_from", "defense", "movement_costs", "resistance", ""};
 
 	for (int i = 0; !child_keys[i].empty(); ++i)
 	{
