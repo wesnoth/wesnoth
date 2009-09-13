@@ -1224,6 +1224,48 @@ static int intf_get_map_size(lua_State *L)
 }
 
 /**
+ * Gets some game_config data (__index metamethod).
+ * - Arg 1: userdata (ignored).
+ * - Arg 2: string containing the name of the property.
+ * - Ret 1: something containing the attribute.
+ */
+static int impl_game_config_get(lua_State *L)
+{
+	char const *m = luaL_checkstring(L, 2);
+
+	// Find the corresponding attribute.
+	return_int_attrib("base_income", game_config::base_income);
+	return_int_attrib("village_income", game_config::village_income);
+	return_int_attrib("poison_amount", game_config::poison_amount);
+	return_int_attrib("rest_heal_amount", game_config::rest_heal_amount);
+	return_int_attrib("recall_cost", game_config::recall_cost);
+	return_int_attrib("kill_experience", game_config::kill_experience);
+	return_string_attrib("version", game_config::version);
+	return 0;
+}
+
+/**
+ * Sets some game_config data (__newindex metamethod).
+ * - Arg 1: userdata (ignored).
+ * - Arg 2: string containing the name of the property.
+ * - Arg 3: something containing the attribute.
+ */
+static int impl_game_config_set(lua_State *L)
+{
+	char const *m = luaL_checkstring(L, 2);
+	lua_settop(L, 3);
+
+	// Find the corresponding attribute.
+	modify_int_attrib("base_income", game_config::base_income = value);
+	modify_int_attrib("village_income", game_config::village_income = value);
+	modify_int_attrib("poison_amount", game_config::poison_amount = value);
+	modify_int_attrib("rest_heal_amount", game_config::rest_heal_amount = value);
+	modify_int_attrib("recall_cost", game_config::recall_cost = value);
+	modify_int_attrib("kill_experience", game_config::kill_experience = value);
+	return 0;
+}
+
+/**
  * Displays a message in the chat window and in the logs.
  * - Arg 1: optional message header.
  * - Arg 2 (or 1): message.
@@ -1395,6 +1437,20 @@ LuaKernel::LuaKernel()
 	lua_pushlightuserdata(L, (void *)&uactionKey);
 	lua_newtable(L);
 	lua_rawset(L, LUA_REGISTRYINDEX);
+
+	// Create the game_config variable with its metatable.
+	lua_getglobal(L, "wesnoth");
+	lua_newuserdata(L, 0);
+	lua_createtable(L, 0, 3);
+	lua_pushcfunction(L, impl_game_config_get);
+	lua_setfield(L, -2, "__index");
+	lua_pushcfunction(L, impl_game_config_set);
+	lua_setfield(L, -2, "__newindex");
+	lua_pushstring(L, "game config");
+	lua_setfield(L, -2, "__metatable");
+	lua_setmetatable(L, -2);
+	lua_setfield(L, -2, "game_config");
+	lua_pop(L, 1);
 
 	// Store the error handler, then close debug.
 	lua_pushlightuserdata(L, (void *)&executeKey);
