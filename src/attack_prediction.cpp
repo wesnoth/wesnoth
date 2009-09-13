@@ -24,7 +24,7 @@
 
 #include "attack_prediction.hpp"
 
-
+#include "game_config.hpp"
 
 // Compile with -O3 -DBENCHMARK for speed testing,
 // -DCHECK for testing correctness
@@ -734,8 +734,7 @@ void combatant::consider_levelup(combatant &opp) {
 
 
 
-	} else if (u_.experience + ((opp.u_.level == 0) ? 4 : opp.u_.level * 8)
-						 >= u_.max_experience) {
+	} else if (u_.experience + game_config::kill_xp(opp.u_.level) >= u_.max_experience) {
 		// if we kill, we will level up. So then the damage we had
 		// becomes less probable since it's now conditional on us not
 		// levelling up.  This doesn't apply to the probability of us

@@ -180,8 +180,7 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 				xp_for_advance = 1;
 
 			fight_xp = defend_it->second.level();
-			kill_xp = fight_xp ? fight_xp * game_config::kill_experience :
-				game_config::kill_experience / 2;
+			kill_xp = game_config::kill_xp(fight_xp);
 
 			if (fight_xp >= xp_for_advance) {
 				advance_prob = prob_fought;
@@ -220,8 +219,7 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 		 * kill_experience.
 		 */
 		int fight_xp = up->second.level();
-		int kill_xp = fight_xp ? fight_xp * game_config::kill_experience :
-				game_config::kill_experience / 2;
+		int kill_xp = game_config::kill_xp(fight_xp);
 		def_avg_experience += fight_xp * (1.0 - att.hp_dist[0]) + kill_xp * att.hp_dist[0];
 		if (m == movements.begin()) {
 			first_chance_kill = def.hp_dist[0];

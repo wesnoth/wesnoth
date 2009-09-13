@@ -37,6 +37,11 @@ namespace game_config
 	extern const std::string version;
 	extern const std::string revision;
 
+	inline int kill_xp(int level)
+	{
+		return level ? kill_experience * level : kill_experience / 2;
+	}
+
 	extern std::string wesnoth_program_dir;
 
 	/** Default percentage gold carried over to the next scenario. */

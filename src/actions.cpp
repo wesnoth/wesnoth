@@ -1237,9 +1237,7 @@ attack::attack(const map_location &attacker, const map_location &defender,
 			}
 
 			if(dies) { // attacker kills defender
-				a_.xp_ = game_config::kill_experience * d_.get_unit().level();
-				if(d_.get_unit().level() == 0)
-					a_.xp_ = game_config::kill_experience / 2;
+				a_.xp_ = game_config::kill_xp(d_.get_unit().level());
 				d_.xp_ = 0;
 				resources::screen->invalidate(a_.iter_->first);
 
@@ -1507,9 +1505,7 @@ attack::attack(const map_location &attacker, const map_location &defender,
 			}
 
 			if(dies) { // defender kills attacker
-				d_.xp_ = game_config::kill_experience * a_.get_unit().level();
-				if(a_.get_unit().level() == 0)
-					d_.xp_ = game_config::kill_experience / 2;
+				d_.xp_ = game_config::kill_xp(a_.get_unit().level());
 				a_.xp_ = 0;
 				resources::screen->invalidate(d_.iter_->first);
 
