@@ -1446,33 +1446,28 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 		} while(++cfg_range.first != cfg_range.second);
 	}
 
-	//dont use the unit_type's defense if this config has its own defined
+	//adjust the unit_type's defense if this config has its own defined
 	cfg_range = cfg.child_range("defense");
 	if(cfg_range.first != cfg_range.second) {
-		cfg_.clear_children("defense");
-		defense_mods_.clear();
-		config &target = cfg_.add_child("defense");
+		config &target = cfg_.child_or_add("defense");
 		do {
 			target.append(*cfg_range.first);
 		} while(++cfg_range.first != cfg_range.second);
 	}
 
-	//dont use the unit_type's movement costs if this config has its own defined
+	//adjust the unit_type's movement costs if this config has its own defined
 	cfg_range = cfg.child_range("movement_costs");
 	if(cfg_range.first != cfg_range.second) {
-		cfg_.clear_children("movement_costs");
-		movement_costs_.clear();
-		config &target = cfg_.add_child("movement_costs");
+		config &target = cfg_.child_or_add("movement_costs");
 		do {
 			target.append(*cfg_range.first);
 		} while(++cfg_range.first != cfg_range.second);
 	}
 
-	//dont use the unit_type's resistance if this config has its own defined
+	//adjust the unit_type's resistance if this config has its own defined
 	cfg_range = cfg.child_range("resistance");
 	if(cfg_range.first != cfg_range.second) {
-		cfg_.clear_children("resistance");
-		config &target = cfg_.add_child("resistance");
+		config &target = cfg_.child_or_add("resistance");
 		do {
 			target.append(*cfg_range.first);
 		} while(++cfg_range.first != cfg_range.second);
