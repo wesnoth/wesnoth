@@ -55,10 +55,6 @@ class twindow
 	friend twindow* build(CVideo&, const std::string&);
 	friend struct twindow_implementation;
 
-	// Wants to use layout().
-	friend class tmessage;
-	friend class twml_message_;
-
 public:
 
 	twindow(CVideo& video,
