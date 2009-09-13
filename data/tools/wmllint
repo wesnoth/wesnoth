@@ -463,6 +463,8 @@ linechanges = (
         ("gladiator-", "thrasher-"),
         ("Drake Slasher", "Drake Arbiter"),
         ("slasher-", "arbiter-"),
+        # Changes after 1.7.5
+        ("portraits/nagas/fighter+female.png", "portraits/nagas/fighter.png"),
         )
 
 def validate_on_pop(tagstack, closer, filename, lineno):
@@ -1133,7 +1135,7 @@ def global_sanity_check(filename, lines):
             elif key in ('name', 'male_name', 'female_name'):		# FIXME: check this someday
                 pass
             elif key in translatables:
-                if markcheck  and not value.startswith("$")  and not value.startswith("{") and not has_tr_mark:
+                if markcheck and not value.startswith("$") and not value.startswith("{") and not re.match(" +", value) and not has_tr_mark:
                     print '"%s", line %d: %s needs translation mark' \
                           % (filename, i+1, key)
                     lines[i] = lines[i].replace('=', "=_ ")
