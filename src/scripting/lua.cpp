@@ -284,9 +284,10 @@ static bool luaW_toconfig(lua_State *L, int index, config &cfg, int tstring_meta
 
 /**
  * Gets an optional vconfig from either a table or a userdata.
+ * @param def true if an empty config should be created for a missing value.
  * @return false in case of failure.
  */
-static bool luaW_tovconfig(lua_State *L, int index, vconfig &vcfg)
+static bool luaW_tovconfig(lua_State *L, int index, vconfig &vcfg, bool def = true)
 {
 	switch (lua_type(L, index))
 	{
@@ -305,6 +306,8 @@ static bool luaW_tovconfig(lua_State *L, int index, vconfig &vcfg)
 			break;
 		case LUA_TNONE:
 		case LUA_TNIL:
+			if (def)
+				vcfg = vconfig(config(), true);
 			break;
 		default:
 			return false;
@@ -459,7 +462,8 @@ static int impl_vconfig_get(lua_State *L)
 static int impl_vconfig_size(lua_State *L)
 {
 	vconfig *v = static_cast<vconfig *>(lua_touserdata(L, 1));
-	lua_pushinteger(L, std::distance(v->ordered_begin(), v->ordered_end()));
+	lua_pushinteger(L, v->null() ? 0 :
+		std::distance(v->ordered_begin(), v->ordered_end()));
 	return 1;
 }
 
@@ -693,7 +697,7 @@ static int intf_get_units(lua_State *L)
 	}
 
 	vconfig filter;
-	if (!luaW_tovconfig(L, 1, filter))
+	if (!luaW_tovconfig(L, 1, filter, false))
 		goto error_call_destructors;
 
 	// Go through all the units while keeping the following stack:
@@ -911,7 +915,7 @@ static int cfun_wml_action_proxy(lua_State *L)
 		}
 		case LUA_TNONE:
 		case LUA_TNIL:
-			lua_pushnil(L);
+			lua_createtable(L, 0, 0);
 			break;
 		default:
 			goto error_call_destructors;
