@@ -21,6 +21,12 @@
 #ifndef LOG_HPP_INCLUDED
 #define LOG_HPP_INCLUDED
 
+#ifndef __func__
+ #ifdef __FUNCTION__
+  #define __func__ __FUNCTION__
+ #endif
+#endif
+
 #include <iostream> // needed else all files including log.hpp need to do it.
 #include <string>
 #include <utility>

@@ -24,12 +24,6 @@
 
 #include <boost/bind.hpp>
 
-#ifndef __func__
- #ifdef __FUNCTION__
-  #define __func__ __FUNCTION__
- #endif
-#endif
-
 static lg::log_domain log_server("server");
 #define ERR_GAME LOG_STREAM(err, log_server)
 #define WRN_GAME LOG_STREAM(warn, log_server)
