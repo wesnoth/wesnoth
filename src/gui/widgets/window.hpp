@@ -387,14 +387,6 @@ private:
 	/** Avoid drawing the window.  */
 	bool suspend_drawing_;
 
-	/**
-	 * The first window shown is the toplevel window.
-	 *
-	 * The toplevel window is the one that starts and stops the drawing timer.
-	 * It's set when the timer is 0 when the window is shown.
-	 */
-	bool top_level_;
-
 	/** When the window closes this surface is used to undraw the window. */
 	surface restorer_;
 

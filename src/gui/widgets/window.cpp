@@ -220,7 +220,6 @@ twindow::twindow(CVideo& video,
 	, owner_(0)
 	, need_layout_(true)
 	, suspend_drawing_(true)
-	, top_level_(false)
 	, restorer_()
 	, tooltip_()
 	, tooltip_restorer_()
@@ -361,21 +360,45 @@ twindow::tretval twindow::get_retval_by_id(const std::string& id)
 
 int twindow::show(const bool restore, const unsigned auto_close_timeout)
 {
+	/**
+	 * Helper class to set and restore the drawing interval.
+	 *
+	 * We need to make sure we restore the value when the function ends, be it
+	 * normally or due to an exception.
+	 */
+	class tdraw_interval_setter
+	{
+	public:
+		tdraw_interval_setter()
+			: interval_(draw_interval)
+		{
+			if(interval_ == 0) {
+				draw_interval = 30;
+				SDL_AddTimer(draw_interval, draw_timer, NULL);
+
+				// There might be some time between creation and showing so
+				// reupdate the sizes.
+				update_screen_size();
+
+			}
+		}
+
+		~tdraw_interval_setter()
+		{
+			draw_interval = interval_;
+		}
+	private:
+
+		int interval_;
+	};
+
 	log_scope2(log_gui_draw, "Window: show.");
 
 	generate_dot_file("show", SHOW);
 
 	assert(status_ == NEW);
 
-	top_level_ = (draw_interval == 0);
-	if(top_level_) {
-		draw_interval = 30;
-		SDL_AddTimer(draw_interval, draw_timer, NULL);
-
-		// There might be some time between creation and showing so reupdate
-		// the sizes.
-		update_screen_size();
-	}
+	tdraw_interval_setter draw_interval_setter;
 
 	/*
 	 * Before show has been called, some functions might have done some testing
@@ -417,10 +440,6 @@ int twindow::show(const bool restore, const unsigned auto_close_timeout)
 	}
 
 	suspend_drawing_ = true;
-
-	if(top_level_) {
-		draw_interval = 0;
-	}
 
 	// restore area
 	if(restore) {
