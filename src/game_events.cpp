@@ -75,6 +75,7 @@ struct event_context
 {
 	bool mutated;
 	bool skip_messages;
+	event_context(bool s): mutated(true), skip_messages(s) {}
 };
 
 static event_context *current_context;
@@ -89,10 +90,8 @@ struct scoped_context
 
 	scoped_context()
 		: old_context(current_context)
-		, new_context()
+		, new_context(old_context ? old_context->skip_messages : false)
 	{
-		new_context.skip_messages = old_context ? old_context->skip_messages : false;
-		new_context.mutated = true;
 		current_context = &new_context;
 	}
 
@@ -100,6 +99,28 @@ struct scoped_context
 	{
 		if (old_context) old_context->mutated |= new_context.mutated;
 		current_context = old_context;
+	}
+};
+
+/**
+ * Failsafe context state, in case commands are executed outside an event.
+ */
+struct scoped_dummy_context
+{
+	bool dummy_context;
+
+	scoped_dummy_context()
+		: dummy_context(!current_context)
+	{
+		if (!dummy_context) return;
+		current_context = new event_context(false);
+	}
+
+	~scoped_dummy_context()
+	{
+		if (!dummy_context) return;
+		delete current_context;
+		current_context = NULL;
 	}
 };
 
@@ -3662,6 +3683,7 @@ namespace game_events {
 			<< std::hex << std::setiosflags(std::ios::uppercase)
 			<< reinterpret_cast<uintptr_t>(&cfg.get_config()) << std::dec << "\n";
 
+		scoped_dummy_context dummy;
 		if (!call_wml_action_handler(cmd, event_info, cfg))
 		{
 			ERR_NG << "Couldn't find function for wml tag: "<< cmd <<"\n";
