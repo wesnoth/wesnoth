@@ -2976,42 +2976,9 @@ void unit::set_hidden(bool state) {
 	// We need to get rid of haloes immediately to avoid display glitches
 	clear_haloes();
 }
-/**
- * advances_to
- * alignment
- * cost
- * experience
- * gender
- * hitpoints
- * level
- * max_attacks
- * max_experience
- * max_hitpoints
- * max_moves
- * movement
- * movement_type
- * race
- * random_traits
- * resting
- * undead_variation
- * upkeep
- * value
- * zoc
- * [attack]
- *         name
- *         type
- *         range
- *         damage
- *         number
- *         [specials]
- * 		*
- * 	[/special]
- * [/attack]
- * anything in: [abilities], [advance_from], [defense], [movement_costs], [resistance], [trait]
- * remove description, description_inactive, name, name_inactive from all tags under [abilities]
- * remove description from all tags under [specials]
- * remove description, male_name, female_name, name from [trait]
- **/
+
+// Filters unimportant stats from the unit config and returns a checksum of
+// the remaining config.
 std::string get_checksum(const unit& u) {
 	config unit_config;
 	config wcfg;
