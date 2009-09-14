@@ -49,8 +49,14 @@ twidget::~twidget()
 	DBG_GUI_LF << "widget destroy: " << (void*)this
 		<< " (id: " << id_ << ", definition: " << definition_ << ")\n";
 
-	if(tevent_handler* event_handler = get_window()) {
-		event_handler->remove_widget(this);
+	twindow* window = get_window();
+	if(!window) {
+		return;
+	}
+
+	window->remove_widget(this);
+	if(!linked_group_.empty()) {
+		window->remove_linked_widget(linked_group_, this);
 	}
 }
 
