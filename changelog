@@ -10,6 +10,8 @@ Version 1.7.5+svn:
    * Updated translations: Czech, Estonian, Finnish, French, German,
      Lithuanian, Serbian, Spanish.
    * New translations: Vietnamese
+ * Multiplayer:
+   * New map: 4p Ruins of Terra-Dwelve
  * Music and sound effects:
    * Added new music track, "Into the Shadows" by Tyler Johnson
    * Fixed bug #14239 (check_fogged ignored by sound sources)
@@ -17,7 +19,7 @@ Version 1.7.5+svn:
  * Units:
    * Changed the Drake Glider movetype to give 40% defense almost everywhere.
  * User interface:
-   * new gamestate inspector debug dialog (via 'inspect' command 
+   * new gamestate inspector debug dialog (via 'inspect' command
      and '[inspect]' tag)
    * Rename easy_close to click_dismiss
    * Automatically try to resolve blocked multi-turn moves
@@ -98,7 +100,7 @@ Version 1.7.4:
    * Added a horizontal listbox
    * New basic support for specifying waypoints (via a new hotkey 'w')
  * WML Engine:
-   * Support for [show_if] inside [message]	
+   * Support for [show_if] inside [message]
    * Added ability to change the share_maps team attribute using [modify_side]
      tag. Be sure to use shroud=yes for that side
    * [side] team_name is now a comma-separated list of teams the side is on
@@ -127,14 +129,14 @@ Version 1.7.3:
    * Under the Burning Suns
      * Fixed bug #13978: UtBS: "stun" ability doesn't modify enemy ZoC
    * Legend of Wesmere
-     * Story only scenarios now display the speaker's name in the title.	
-     * Ambient sound effects.	
-     * Redone the campaign's objectives.	
+     * Story only scenarios now display the speaker's name in the title.
+     * Ambient sound effects.
+     * Redone the campaign's objectives.
      * Added the "Dwarfish Scout" to the player's recruit list.
      * Scenario 19 now requires the player to destroy Saurgrath.
      * Scenario 14 redesigned.
-     * Scenario 23 implemented Santi's plan to let half the army defect. 	
-     * Map updates (mostly new alias terrains added).	
+     * Scenario 23 implemented Santi's plan to let half the army defect.
+     * Map updates (mostly new alias terrains added).
      * Replaced the campaign image with a transparent one (Thanks to Kitty).
  * Editor:
    * Renamed editor2 to editor pretty much everywhere
@@ -210,7 +212,7 @@ Version 1.7.2:
      * changed Orcish Shaman movetype from smallfoot to orcishfoot
  * Graphics:
     * New portrait for male and female Footpad, male and female Outlaw,
-      Horseman, Drake Clasher, Goblin Wolf Rider, Goblin Pillager, Dwarf 
+      Horseman, Drake Clasher, Goblin Wolf Rider, Goblin Pillager, Dwarf
       Explorer, Dwarf Scout, Cavalryman, Skeleton.
     * New unit graphics and animations for the Dwarvish Scout, Pathfinder,
       and Explorer; Drake Clasher, Slasher, Warden, Gladiator, Enforcer.
@@ -235,7 +237,7 @@ Version 1.7.2:
      slider
    * Add better configurable linked widgets in the new gui
    * Allow to make items in a listbox invisible (needed for filtering)
-   * Initial new loby user interface, available for testing with --new-widgets   
+   * Initial new loby user interface, available for testing with --new-widgets
  * Miscellaneous and bugfixes:
    * Fixed language switch not affecting unit descriptions (bug #13827)
    * Fixed teleporting to impassable terrain (bug #13795)
