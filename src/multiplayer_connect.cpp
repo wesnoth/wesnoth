@@ -639,7 +639,7 @@ config connect::side::get_config() const
 	res["id"] = id_;
 
 	if (id_.empty()) {
-		char const *description;
+		std::string description;
 		switch(controller_) {
 		case CNTR_NETWORK:
 			description = N_("(Vacant slot)");
@@ -663,7 +663,7 @@ config connect::side::get_config() const
 				utils::string_map symbols;
 				symbols["playername"] = ai_cfg["description"];
 				symbols["side"] = res["side"].str();
-				description = vgettext("$playername $side",symbols).c_str();
+				description = vgettext("$playername $side",symbols);
 			}
 			break;
 		case CNTR_EMPTY:
@@ -674,7 +674,7 @@ config connect::side::get_config() const
 			{
 				utils::string_map symbols;
 				symbols["playername"] = current_player_;
-				description = vgettext("(Reserved for $playername)",symbols).c_str();
+				description = vgettext("(Reserved for $playername)",symbols);
 			}
 			break;
 		case CNTR_LAST:
