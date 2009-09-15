@@ -368,17 +368,14 @@ namespace game_events {
 		action_handler **previous)
 	{
 		dynamic_wml_action_map::iterator itor = dynamic_wml_actions.find(tag);
-		action_handler *p = NULL;
 		if (itor != dynamic_wml_actions.end()) {
-			p = itor->second;
-			itor->second = h;
+			if (previous) *previous = itor->second;
+			else delete itor->second;
+			if (h) itor->second = h;
+			else dynamic_wml_actions.erase(itor);
 		} else {
-			dynamic_wml_actions[tag] = h;
-		}
-		if (previous) {
-			*previous = p;
-		} else {
-			delete p;
+			if (previous) *previous = NULL;
+			if (h) dynamic_wml_actions[tag] = h;
 		}
 	}
 
