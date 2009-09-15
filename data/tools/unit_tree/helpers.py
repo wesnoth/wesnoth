@@ -135,7 +135,8 @@ class ImageCollector:
                 # helpers.py currently executing.
                 command = os.path.join(os.path.dirname(__file__),
                     "TeamColorizer")
-                Popen([command, ipath, opath])
+                p = Popen([command, ipath, opath])
+                p.wait()
             else:
                 sys.stderr.write(
                     "Warning: Required image %s: \"%s\" does not exist.\n" % (c, i))

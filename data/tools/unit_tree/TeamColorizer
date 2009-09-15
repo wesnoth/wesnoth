@@ -92,6 +92,7 @@ if __name__ == '__main__':
     if verbose:
         print convertor + " '" + infilename + "' '" + outfilename + "'"
     if not dryrun:
-        Popen(convertor.split() + [infilename, outfilename])
+        p = Popen(convertor.split() + [infilename, outfilename])
+        p.wait()
 
 # TeamColorizer ends here.
