@@ -53,7 +53,13 @@ namespace {
 	int const titleshadow_g = 0;
 	int const titleshadow_b = 0;
 
+#ifndef USE_TINY_GUI
 	int const titlebox_font_size = 20; // pt?
+	int const storybox_font_size = 14; // pt?
+#else
+	int const titlebox_font_size = 11; // pt?
+	int const storybox_font_size = 10; // pt?
+#endif
 
 	Uint32 const titlebox_font_color = 0xFFFFFFFF;
 	Uint32 const storybox_font_color = 0xDDDDDDFF;
@@ -387,6 +393,7 @@ void part_ui::render_story_box()
 		t.set_text(p_.text(), false);
 	}
 	t.set_font_style(font::ttext::STYLE_NORMAL)
+	     .set_font_size(storybox_font_size)
 		 .set_foreground_colour(storybox_font_color)
 		 .set_maximum_width(max_width)
 		 .set_maximum_height(max_height);
