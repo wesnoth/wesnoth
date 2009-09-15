@@ -10,7 +10,7 @@ Run without arguments to see usage.
 try: import psyco; psyco.full()
 except ImportError: pass
 
-import sys, os, re, glob, shutil, copy, urllib2
+import sys, os, re, glob, shutil, copy, urllib2, gc
 
 import wesnoth.wmldata as wmldata
 import wesnoth.wmlparser as wmlparser
@@ -945,6 +945,8 @@ if __name__ == '__main__':
     global options
     global image_collector
     import optparse
+    
+    gc.disable()
 
     op = optparse.OptionParser()
     op.add_option("-l", "--language", default = "all",
@@ -1030,5 +1032,14 @@ if __name__ == '__main__':
             f = MyFile(os.path.join(options.output, "animations.html"), "w")
             animations.write_table(f, wesnoth)
             f.close()
-
-
+        
+        # Kill all references, this makes sure the reference counting
+        # kicks in and throws away all data for the previous
+        # translation - saving a bit of memory since otherwise two
+        # translations would be kept at a time.
+        wesnoth = None
+        
+        # We run a GC collection here, this ensures that also data
+        # which still are referenced but not reachable (yes, yes,
+        # this shouldn't happen) are freed.
+        gc.collect()
