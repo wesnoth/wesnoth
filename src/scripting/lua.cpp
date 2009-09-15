@@ -989,39 +989,50 @@ lua_action_handler::~lua_action_handler()
 /**
  * Registers a function as WML action handler.
  * - Arg 1: string containing the WML tag.
- * - Arg 2: function taking a WML table as argument.
+ * - Arg 2: optional function taking a WML table as argument.
  * - Ret 1: previous action handler, if any.
  */
 static int intf_register_wml_action(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
+	bool enable = !lua_isnoneornil(L, 2);
 
 	// Retrieve the user action table from the registry.
-	// Functions are stored on odd indices, handlers on even ones.
 	lua_pushlightuserdata(L, (void *)&uactionKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
-	size_t length = lua_objlen(L, -1);
 
-	// Push the function on it so that it is not collected.
-	lua_pushvalue(L, 2);
-	lua_rawseti(L, -2, length + 1);
+	lua_action_handler *h = NULL;
+	if (enable)
+	{
+		// Push the function in the table so that it is not collected.
+		size_t length = lua_objlen(L, -1);
+		lua_pushvalue(L, 2);
+		lua_rawseti(L, -2, length + 1);
 
-	// Create the proxy C++ action handler.
+		// Create the proxy C++ action handler.
+		h = new lua_action_handler(L, length + 1);
+	}
+
+	// Register the new handler and retrieve the previous one.
 	game_events::action_handler *previous;
-	game_events::register_action_handler(m, new lua_action_handler(L, length + 1), &previous);
+	game_events::register_action_handler(m, h, &previous);
 	if (!previous) return 0;
 
-	// Detect if the previous handler was already from Lua and optimize it away.
+	// Detect if the previous handler was already from Lua.
 	lua_action_handler *lua_prev = dynamic_cast<lua_action_handler *>(previous);
 	if (lua_prev)
 	{
+		// Extract the function from the table,
+		// and put a lightweight wrapper around it.
 		lua_rawgeti(L, -1, lua_prev->num);
 		lua_pushcclosure(L, cfun_wml_action_proxy, 1);
+
+		// Delete the old heavyweight wraper.
 		delete lua_prev;
 		return 1;
 	}
 
-	// Return the previous handler.
+	// Wrap and return the previous handler.
 	void *p = lua_newuserdata(L, sizeof(game_events::action_handler *));
 	*static_cast<game_events::action_handler **>(p) = previous;
 	lua_pushlightuserdata(L, (void *)&wactionKey);
