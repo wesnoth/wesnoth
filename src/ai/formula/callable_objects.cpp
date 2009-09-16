@@ -238,6 +238,21 @@ void attack_map_callable::collect_possible_attacks(std::vector<variant>& vars, m
 }
 
 
+variant recall_callable::get_value(const std::string& key) const {
+	if( key == "id")
+		return variant(id_);
+	if( key == "loc")
+		return variant(new location_callable(loc_));
+	return variant();
+}
+
+void recall_callable::get_inputs(std::vector<game_logic::formula_input>* inputs) const {
+	inputs->push_back(game_logic::formula_input("id", game_logic::FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("loc", game_logic::FORMULA_READ_ONLY));
+}
+
+
+
 variant recruit_callable::get_value(const std::string& key) const {
 	if( key == "unit_type")
 		return variant(type_);

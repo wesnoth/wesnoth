@@ -887,6 +887,25 @@ private:
 };
 
 
+
+class recall_function : public function_expression {
+public:
+	explicit recall_function(const args_list& args)
+	  : function_expression("recall", args, 1, 2)
+	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const std::string id = args()[0]->evaluate(variables,add_debug_info(fdb,0,"recall:id")).as_string();
+		map_location loc;
+		if(args().size() >= 2) {
+			loc = convert_variant<location_callable>(args()[1]->evaluate(variables,add_debug_info(fdb,1,"recall:location")))->loc();
+		}
+
+		return variant(new recall_callable(loc, id));
+	}
+};
+
+
 class recruit_function : public function_expression {
 public:
 	explicit recruit_function(const args_list& args)
@@ -1630,6 +1649,8 @@ expression_ptr ai_function_symbol_table::create_function(const std::string &fn,
 		return expression_ptr(new move_partial_function(args));
 	} else if(fn == "attack") {
 		return expression_ptr(new attack_function(args, ai_));
+	} else if(fn == "recall") {
+		return expression_ptr(new recall_function(args));
 	} else if(fn == "recruit") {
 		return expression_ptr(new recruit_function(args));
 	} else if(fn == "safe_call") {

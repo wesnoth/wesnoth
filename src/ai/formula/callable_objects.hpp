@@ -125,6 +125,24 @@ public:
 };
 
 
+
+class recall_callable : public formula_callable {
+	map_location loc_;
+	std::string id_;
+
+	variant get_value(const std::string& key) const;
+
+	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
+public:
+	recall_callable(const map_location& loc, const std::string& id)
+	  : loc_(loc), id_(id)
+	{}
+
+	const map_location& loc() const { return loc_; }
+	const std::string& id() const { return id_; }
+};
+
+
 class recruit_callable : public formula_callable {
 	map_location loc_;
 	std::string type_;

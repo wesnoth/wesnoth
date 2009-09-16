@@ -193,6 +193,44 @@ private:
 	map_location unit_location_;
 };
 
+
+class recall_result : public action_result {
+public:
+	recall_result (side_number side, const std::string &unit_id, const map_location& where);
+	static const int E_NOT_AVAILABLE_FOR_RECALLING = 6001;
+	static const int E_NO_GOLD = 6003;
+	static const int E_NO_LEADER = 6004;
+	static const int E_LEADER_NOT_ON_KEEP = 6005;
+	static const int E_BAD_RECALL_LOCATION = 6006;
+	virtual std::string do_describe() const;
+protected:
+	virtual void do_check_before();
+	virtual void do_check_after();
+	virtual void do_execute();
+	virtual void do_init_for_execution();
+private:
+	bool test_available_for_recalling(const team &my_team, bool update_knowledge = false);
+	bool test_enough_gold(
+		const team& my_team,
+		bool update_knowledge = false );
+	const unit *get_leader(
+		const unit_map& units,
+		bool update_knowledge = false );
+	bool test_leader_on_keep(
+		const gamemap& map,
+		const unit &my_leader,
+		bool update_knowledge = false);
+	bool test_suitable_recall_location (
+		const gamemap& map,
+		const unit_map& units,
+		const unit &my_leader,
+		bool update_knowledge = false);
+
+	const std::string& unit_id_;
+	const map_location where_;
+	map_location recall_location_;
+};
+
 class recruit_result : public action_result {
 public:
 	recruit_result( side_number side, const std::string& unit_name, const map_location& where);
@@ -310,6 +348,26 @@ static move_result_ptr execute_move_action( side_number side,
 	bool remove_movement );
 
 
+
+/**
+ * Ask the game to recall a unit for us on specified location
+ * @param side the side which tries to execute the move
+ * @param execute should move be actually executed or not
+ * @param unit_id the id of the unit to be recalled.
+ * @param where location where the unit is to be recalled.
+ * @retval possible result: ok
+ * @retval possible_result: something wrong
+ * @retval possible_result: leader not on keep
+ * @retval possible_result: no free space on keep
+ * @retval possible_result: not enough gold
+ */
+static recall_result_ptr execute_recall_action( side_number side,
+	bool execute,
+	const std::string& unit_id,
+	const map_location& where );
+
+
+
 /**
  * Ask the game to recruit a unit for us on specified location
  * @param side the side which tries to execute the move
@@ -356,6 +414,7 @@ static stopunit_result_ptr execute_stopunit_action( side_number side,
 
 std::ostream &operator<<(std::ostream &s, ai::attack_result const &r);
 std::ostream &operator<<(std::ostream &s, ai::move_result const &r);
+std::ostream &operator<<(std::ostream &s, ai::recall_result const &r);
 std::ostream &operator<<(std::ostream &s, ai::recruit_result const &r);
 std::ostream &operator<<(std::ostream &s, ai::stopunit_result const &r);
 

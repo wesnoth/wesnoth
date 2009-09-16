@@ -160,6 +160,7 @@ public:
 	virtual void log_message(const std::string& msg) = 0;
 	virtual attack_result_ptr check_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon) = 0;
 	virtual move_result_ptr check_move_action(const map_location& from, const map_location& to, bool remove_movement=true) = 0;
+	virtual recall_result_ptr check_recall_action(const std::string& id, const map_location &where = map_location::null_location) = 0;
 	virtual recruit_result_ptr check_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location) = 0;
 	virtual stopunit_result_ptr check_stopunit_action(const map_location& unit_location, bool remove_movement = true, bool remove_attacks = false) = 0;
 	virtual void calculate_possible_moves(std::map<map_location,paths>& possible_moves,
@@ -362,6 +363,9 @@ public:
 	virtual move_result_ptr execute_move_action(const map_location& from, const map_location& to, bool remove_movement=true) = 0;
 
 
+	virtual recall_result_ptr execute_recall_action(const std::string& id, const map_location &where = map_location::null_location) = 0;
+
+
 	virtual recruit_result_ptr execute_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location) = 0;
 
 
@@ -484,6 +488,13 @@ public:
 	{
 		return target_->check_move_action(from, to, remove_movement);
 	}
+
+
+	virtual recall_result_ptr check_recall_action(const std::string &id, const map_location &where = map_location::null_location)
+	{
+		return target_->check_recall_action(id, where);
+	}
+
 
 	virtual recruit_result_ptr check_recruit_action(const std::string &unit_name, const map_location &where = map_location::null_location)
 	{
@@ -866,6 +877,12 @@ public:
 	}
 
 
+	virtual recall_result_ptr execute_recall_action(const std::string& id, const map_location &where = map_location::null_location)
+	{
+		return target_->execute_recall_action(id,where);
+	}
+
+
 	virtual recruit_result_ptr execute_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location)
 	{
 		return target_->execute_recruit_action(unit_name,where);
@@ -1020,6 +1037,20 @@ public:
 	 * @retval possible result: move is impossible
 	 */
 	move_result_ptr check_move_action(const map_location& from, const map_location& to, bool remove_movement=true);
+
+
+
+	/**
+	 * Check if it is possible to recall a unit for us on specified location
+	 * @param id the id of the unit to be recruited.
+	 * @param where location where the unit is to be recruited.
+	 * @retval possible result: ok
+	 * @retval possible_result: something wrong
+	 * @retval possible_result: leader not on keep
+	 * @retval possible_result: no free space on keep
+	 * @retval possible_result: not enough gold
+	 */
+	recall_result_ptr check_recall_action(const std::string& id, const map_location &where = map_location::null_location);
 
 
 	/**
@@ -1341,6 +1372,19 @@ public:
 	 * @retval possible result: move is impossible
 	 */
 	virtual move_result_ptr execute_move_action(const map_location& from, const map_location& to, bool remove_movement=true);
+
+
+	/**
+	 * Ask the game to recall a unit for us on specified location
+	 * @param id the id of the unit to be recalled.
+	 * @param where location where the unit is to be recalled.
+	 * @retval possible result: ok
+	 * @retval possible_result: something wrong
+	 * @retval possible_result: leader not on keep
+	 * @retval possible_result: no free space on keep
+	 * @retval possible_result: not enough gold
+	 */
+	virtual recall_result_ptr execute_recall_action(const std::string& id, const map_location &where = map_location::null_location);
 
 
 	/**

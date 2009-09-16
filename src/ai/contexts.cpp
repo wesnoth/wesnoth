@@ -104,8 +104,18 @@ move_result_ptr readonly_context_impl::check_move_action(const map_location& fro
 }
 
 
+recall_result_ptr readwrite_context_impl::execute_recall_action(const std::string& id, const map_location &where){
+	return actions::execute_recall_action(get_side(),true,id,where);
+}
+
+
 recruit_result_ptr readwrite_context_impl::execute_recruit_action(const std::string& unit_name, const map_location &where){
 	return actions::execute_recruit_action(get_side(),true,unit_name,where);
+}
+
+
+recall_result_ptr readonly_context_impl::check_recall_action(const std::string& id, const map_location &where){
+	return actions::execute_recall_action(get_side(),false,id,where);
 }
 
 

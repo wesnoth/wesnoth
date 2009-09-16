@@ -47,6 +47,8 @@
 #include "../statistics.hpp"
 #include "../team.hpp"
 
+#include <boost/bind.hpp>
+
 namespace ai {
 
 static lg::log_domain log_ai_actions("ai/actions");
@@ -560,6 +562,221 @@ void move_result::do_init_for_execution()
 
 
 
+// recall_result
+recall_result::recall_result(side_number side,
+		const std::string& unit_id, const map_location& where)
+	: action_result(side)
+	, unit_id_(unit_id)
+	, where_(where)
+	, recall_location_(where)
+{
+}
+
+bool recall_result::test_available_for_recalling(const team &my_team, bool)
+{
+	const std::vector<unit>::const_iterator rec = std::find_if(my_team.recall_list().begin(), my_team.recall_list().end(), boost::bind(&unit::matches_id, _1, unit_id_));
+	if (rec == my_team.recall_list().end()) {
+		set_error(E_NOT_AVAILABLE_FOR_RECALLING);
+		return false;
+	}
+	return true;
+}
+
+
+bool recall_result::test_enough_gold(const team &my_team,  bool)
+{
+	if (my_team.gold() < game_config::recall_cost ) {
+		set_error(E_NO_GOLD);
+		return false;
+	}
+	return true;
+}
+
+const unit *recall_result::get_leader(const unit_map& units, bool)
+{
+	unit_map::const_iterator my_leader = units.find_leader(get_side());
+	if (my_leader == units.end()){
+		set_error(E_NO_LEADER);
+		return NULL;
+	}
+	return &my_leader->second;
+
+}
+
+bool recall_result::test_leader_on_keep(const gamemap &map, const unit &my_leader, bool)
+{
+	if (!map.is_keep(my_leader.get_location())) {
+		set_error(E_LEADER_NOT_ON_KEEP);
+		return false;
+	}
+	return true;
+}
+
+bool recall_result::test_suitable_recall_location(const gamemap &map, const unit_map &units, const unit &my_leader, bool)
+{
+	recall_location_ = where_;
+
+	//if we have not-on-board location, such as null_location, then the caller wants us to recall on 'any' possible tile.
+	if (!map.on_board(recall_location_)) {
+		recall_location_ = find_vacant_tile(map, units, my_leader.get_location(), VACANT_CASTLE);
+	}
+
+	if (!can_recruit_on(map, my_leader.get_location(), recall_location_)) {
+		set_error(E_BAD_RECALL_LOCATION);
+		return false;
+	}
+	return true;
+}
+
+void recall_result::do_check_before()
+{
+	LOG_AI_ACTIONS << " check_before " << *this << std::endl;
+	const game_info& s_info = get_subjective_info();
+	const game_info& info = get_info();
+
+	const unit_map& s_units = s_info.units;
+	const unit_map& units = info.units;
+
+	const team& s_my_team = get_my_team(s_info);
+	const team& my_team = get_my_team(info);
+
+	//Unit available for recalling?
+	if ( !test_available_for_recalling(s_my_team) ||
+	    (is_execution() && using_subjective_info() &&
+	     !test_available_for_recalling(my_team, true)))
+	{
+		return;
+	}
+
+	//Enough gold?
+	if (!test_enough_gold(s_my_team) ||
+	    (is_execution() && using_subjective_info() &&
+	     !test_enough_gold(my_team, true)))
+	{
+		return;
+	}
+
+	//Leader present?
+	const unit *s_my_leader = get_leader(s_units);
+
+	if (!s_my_leader ||
+	    (is_execution() && using_subjective_info() &&
+	     !get_leader(units, true)))
+	{
+		return;
+	}
+
+	//Leader on keep?
+	const gamemap& s_map = s_info.map;
+	const gamemap& map = info.map;
+
+	if (!test_leader_on_keep(s_map, *s_my_leader) ||
+	    (is_execution() && using_subjective_info() &&
+	     !test_leader_on_keep(map, *s_my_leader, true)))
+	{
+		return;
+	}
+
+	//Try to get suitable recall location. Is suitable location available ?
+	if (!test_suitable_recall_location(s_map, s_units, *s_my_leader) ||
+	    (is_execution() && using_subjective_info() &&
+	     !test_suitable_recall_location(map, units, *s_my_leader, true)))
+	{
+		return;
+	}
+
+}
+
+
+void recall_result::do_check_after()
+{
+	const game_info& info = get_info();
+	const gamemap& map = info.map;
+	if (!map.on_board(recall_location_)){
+		set_error(AI_ACTION_FAILURE);
+		return;
+	}
+
+	const unit_map& units = info.units;
+	unit_map::const_iterator unit = units.find(recall_location_);
+	if (unit==units.end()){
+		set_error(AI_ACTION_FAILURE);
+		return;
+	}
+	if (unit->second.side()!=get_side()){
+		set_error(AI_ACTION_FAILURE);
+		return;
+	}
+
+}
+
+std::string recall_result::do_describe() const
+{
+	std::stringstream s;
+	s << "recall by side ";
+	s << get_side();
+	s << " of unit id ["<<unit_id_;
+	if (where_ != map_location::null_location){
+		s << "] on location "<<where_;
+	} else {
+		s << "] on any suitable location";
+	}
+	s <<std::endl;
+	return s.str();
+}
+
+
+void recall_result::do_execute()
+{
+	LOG_AI_ACTIONS << "start of execution of: " << *this << std::endl;
+	assert(is_success());
+
+	game_info& info = get_info();
+	team& my_team = get_my_team(info);
+
+	const events::command_disabler disable_commands;
+
+	std::vector<unit>::iterator rec = std::find_if(my_team.recall_list().begin(), my_team.recall_list().end(), boost::bind(&unit::matches_id, _1, unit_id_));
+
+	assert(rec != my_team.recall_list().end());
+
+	const std::string &err = find_recruit_location(get_side(), recall_location_);
+	if(!err.empty()) {
+		set_error(AI_ACTION_FAILURE);
+		return;
+	} else {
+
+		unit &un = *rec;
+		recorder.add_recall(un.id(), recall_location_);
+		un.set_game_context(&info.units);
+		place_recruit(un, recall_location_, true, true);
+		statistics::recall_unit(un);
+		my_team.spend_gold(game_config::recall_cost);
+
+		my_team.recall_list().erase(rec);
+		if (resources::screen!=NULL) {
+			resources::screen->invalidate_game_status();
+			resources::screen->invalidate_all();
+		}
+		recorder.add_checksum_check(recall_location_);
+		set_gamestate_changed();
+		try {
+			manager::raise_gamestate_changed();
+		} catch (...) {
+			is_ok(); //Silences "unchecked result" warning
+			throw;
+		}
+	}
+
+}
+
+
+void recall_result::do_init_for_execution()
+{
+}
+
+
+
 
 // recruit_result
 recruit_result::recruit_result(side_number side,
@@ -922,6 +1139,7 @@ attack_result_ptr actions::execute_attack_action( side_number side,
 }
 
 
+
 move_result_ptr actions::execute_move_action( side_number side,
 	bool execute,
 	const map_location& from,
@@ -929,6 +1147,18 @@ move_result_ptr actions::execute_move_action( side_number side,
 	bool remove_movement)
 {
 	move_result_ptr action(new move_result(side,from,to,remove_movement));
+	execute ? action->execute() : action->check_before();
+	return action;
+
+}
+
+
+recall_result_ptr actions::execute_recall_action( side_number side,
+	bool execute,
+	const std::string& unit_id,
+	const map_location& where)
+{
+	recall_result_ptr action(new recall_result(side,unit_id,where));
 	execute ? action->execute() : action->check_before();
 	return action;
 
@@ -970,6 +1200,12 @@ std::ostream &operator<<(std::ostream &s, ai::attack_result const &r) {
 
 
 std::ostream &operator<<(std::ostream &s, ai::move_result const &r) {
+        s << r.do_describe();
+        return s;
+}
+
+
+std::ostream &operator<<(std::ostream &s, ai::recall_result const &r) {
         s << r.do_describe();
         return s;
 }

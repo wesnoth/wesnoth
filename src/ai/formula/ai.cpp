@@ -325,6 +325,7 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 		const attack_callable* attack = try_convert_variant<attack_callable>(action);
 		const attack_analysis* _attack_analysis = try_convert_variant<attack_analysis>(action);
 		const recruit_callable* recruit_command = try_convert_variant<recruit_callable>(action);
+		const recall_callable* recall_command = try_convert_variant<recall_callable>(action);
 		const set_var_callable* set_var_command = try_convert_variant<set_var_callable>(action);
 		const set_unit_var_callable* set_unit_var_command = try_convert_variant<set_unit_var_callable>(action);
 		const fallback_callable* fallback_command = try_convert_variant<fallback_callable>(action);
@@ -432,6 +433,31 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 				ai_.execute_attack_action(_attack_analysis->movements.front().second,_attack_analysis->target,-1);
 			}
 			made_moves.push_back(action);
+		} else if(recall_command) {
+
+			recall_result_ptr recall_result = ai_.check_recall_action(recall_command->id(), recall_command->loc());
+
+			if( recall_result->is_ok() ) {
+				recall_result->execute();
+			}
+
+			if (!recall_result->is_ok()) {
+
+				if(safe_call) {
+					//safe call was called, prepare error information
+					error = variant(new safe_call_result(recall_command,
+									recall_result->get_status()));
+
+					LOG_AI << "ERROR #" <<recall_result->get_status() << " while executing 'recall' formula function\n"<<std::endl;
+				} else {
+					ERR_AI << "ERROR #" <<recall_result->get_status() << " while executing 'recall' formula function\n"<<std::endl;
+				}
+			}
+
+			if( recall_result->is_gamestate_changed() ) {
+				made_moves.push_back(action);
+			}
+
 		} else if(recruit_command) {
 			recruit_result_ptr recruit_result = ai_.check_recruit_action(recruit_command->type(), recruit_command->loc());
 
@@ -750,6 +776,13 @@ variant formula_ai::get_value(const std::string& key) const
 		}
 		return variant(new unit_callable(*i));
 
+		//} else if(key == "recall_list") {
+		//std::vector<variant> vars;
+		//for(std::vector<unit>::const_iterator i = get_recall_list().begin(); i != get_recall_list().end(); ++i) {
+		//	vars.push_back(variant(new unit_callable(std::make_pair(map_location::null_location,*i))));
+		//}
+		//return variant(&vars);
+
 	} else if(key == "vars")
 	{
 		return variant(&vars_);
@@ -804,6 +837,7 @@ void formula_ai::get_inputs(std::vector<formula_input>* inputs) const
 	inputs->push_back(game_logic::formula_input("enemy_moves", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("my_leader", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("my_recruits", FORMULA_READ_ONLY));
+	//inputs->push_back(game_logic::formula_input("recall_list", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("recruits_of_side", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("units", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("units_of_side", FORMULA_READ_ONLY));
