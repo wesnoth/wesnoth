@@ -649,7 +649,7 @@ static lg::log_domain log_server("server");
 		}
 
 		// Don't list ban groups when looking for specific bans.
-		if (!groups.empty() && mask != "*")
+		if (!groups.empty() && mask == "*")
 		{
 			out << "\nban groups: ";
 
