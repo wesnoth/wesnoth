@@ -661,7 +661,10 @@ void twindow::add_linked_widget(const std::string& id, twidget* widget)
 	assert(widget);
 	assert(has_linked_size_group(id));
 
-	linked_size_[id].widgets.push_back(widget);
+	std::vector<twidget*>& widgets = linked_size_[id].widgets;
+	if(std::find(widgets.begin(), widgets.end(), widget) == widgets.end()) {
+		widgets.push_back(widget);
+	}
 }
 
 void twindow::remove_linked_widget(const std::string& id
@@ -677,6 +680,9 @@ void twindow::remove_linked_widget(const std::string& id
 
 	if(itor != widgets.end()) {
 		widgets.erase(itor);
+
+		assert(std::find(widgets.begin(), widgets.end(), widget)
+			   == widgets.end());
 	}
 }
 
