@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-09-15 17:16+0200\n"
-"PO-Revision-Date: 2009-04-02 20:00+0100\n"
+"PO-Revision-Date: 2009-09-16 10:32+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,8 @@ msgstr "Nichts"
 
 #. [toggle_button]: id=shroud
 #. [terrain_type]: id=shroud
-#: data/core/terrain.cfg:22 data/gui/default/window/mp_create_game.cfg:471
+#: data/core/terrain.cfg:22
+#: data/gui/default/window/mp_create_game.cfg:471
 msgid "Shroud"
 msgstr "Schleier der Finsternis"
 
@@ -50,10 +51,15 @@ msgstr "Schnee"
 #. [terrain_type]: id=bridgelava
 #. [terrain_type]: id=bridgelavadiag1
 #. [terrain_type]: id=bridglavadiag2
-#: data/core/terrain.cfg:66 data/core/terrain.cfg:75 data/core/terrain.cfg:84
-#: data/core/terrain.cfg:95 data/core/terrain.cfg:104
-#: data/core/terrain.cfg:114 data/core/terrain.cfg:126
-#: data/core/terrain.cfg:136 data/core/terrain.cfg:147
+#: data/core/terrain.cfg:66
+#: data/core/terrain.cfg:75
+#: data/core/terrain.cfg:84
+#: data/core/terrain.cfg:95
+#: data/core/terrain.cfg:104
+#: data/core/terrain.cfg:114
+#: data/core/terrain.cfg:126
+#: data/core/terrain.cfg:136
+#: data/core/terrain.cfg:147
 msgid "Bridge"
 msgstr "Brücke"
 
@@ -71,8 +77,10 @@ msgstr "Wald"
 #. [terrain_type]: id=castle
 #. [terrain_type]: id=dwarven_castle
 #. [terrain_type]: id=castle_overlay
-#: data/core/terrain.cfg:184 data/core/terrain.cfg:194
-#: data/core/terrain.cfg:205 data/core/terrain.cfg:372
+#: data/core/terrain.cfg:184
+#: data/core/terrain.cfg:194
+#: data/core/terrain.cfg:205
+#: data/core/terrain.cfg:372
 msgid "Castle"
 msgstr "Burg"
 
@@ -100,10 +108,14 @@ msgstr "Sumpfruine"
 #. [terrain_type]: id=sunken_keep
 #. [terrain_type]: id=swamp_keep
 #. [terrain_type]: id=keep_overlay
-#: data/core/terrain.cfg:255 data/core/terrain.cfg:268
-#: data/core/terrain.cfg:281 data/core/terrain.cfg:294
-#: data/core/terrain.cfg:307 data/core/terrain.cfg:320
-#: data/core/terrain.cfg:333 data/core/terrain.cfg:346
+#: data/core/terrain.cfg:255
+#: data/core/terrain.cfg:268
+#: data/core/terrain.cfg:281
+#: data/core/terrain.cfg:294
+#: data/core/terrain.cfg:307
+#: data/core/terrain.cfg:320
+#: data/core/terrain.cfg:333
+#: data/core/terrain.cfg:346
 #: data/core/terrain.cfg:360
 msgid "Keep"
 msgstr "Burgfried"
@@ -123,7 +135,8 @@ msgstr "Burgfried"
 #. [terrain_type]: id=human_keep
 #. [terrain_type]: id=dwarven_keep
 #. [terrain_type]: id=swamp_keep
-#: data/core/terrain.cfg:282 data/core/terrain.cfg:308
+#: data/core/terrain.cfg:282
+#: data/core/terrain.cfg:308
 #: data/core/terrain.cfg:347
 #, fuzzy
 msgid "Castle Keep"
@@ -172,7 +185,8 @@ msgstr "Oase"
 #. [terrain_type]: id=snow_forest
 #. [terrain_type]: id=deciduous_forest_winter_snow
 #. [terrain_type]: id=mixed_forest_winter_snow
-#: data/core/terrain.cfg:441 data/core/terrain.cfg:516
+#: data/core/terrain.cfg:441
+#: data/core/terrain.cfg:516
 #: data/core/terrain.cfg:561
 msgid "Snow Forest"
 msgstr "Verschneiter Wald"
@@ -195,9 +209,12 @@ msgstr "Bedeutsamer Baum"
 #. [terrain_type]: id=mixed_forest_summer
 #. [terrain_type]: id=mixed_forest_fall
 #. [terrain_type]: id=mixed_forest_winter
-#: data/core/terrain.cfg:463 data/core/terrain.cfg:483
-#: data/core/terrain.cfg:494 data/core/terrain.cfg:505
-#: data/core/terrain.cfg:528 data/core/terrain.cfg:539
+#: data/core/terrain.cfg:463
+#: data/core/terrain.cfg:483
+#: data/core/terrain.cfg:494
+#: data/core/terrain.cfg:505
+#: data/core/terrain.cfg:528
+#: data/core/terrain.cfg:539
 #: data/core/terrain.cfg:550
 msgid "Forest"
 msgstr "Wald"
@@ -262,9 +279,12 @@ msgstr "Verschneiter Wald"
 #. [terrain_type]: id=mixed_forest_summer_hills
 #. [terrain_type]: id=mixed_forest_fall_hills
 #. [terrain_type]: id=mixed_forest_winter_hills
-#: data/core/terrain.cfg:577 data/core/terrain.cfg:597
-#: data/core/terrain.cfg:608 data/core/terrain.cfg:619
-#: data/core/terrain.cfg:641 data/core/terrain.cfg:652
+#: data/core/terrain.cfg:577
+#: data/core/terrain.cfg:597
+#: data/core/terrain.cfg:608
+#: data/core/terrain.cfg:619
+#: data/core/terrain.cfg:641
+#: data/core/terrain.cfg:652
 #: data/core/terrain.cfg:662
 msgid "Forested Hills"
 msgstr "Bewaldete Hügel"
@@ -272,7 +292,8 @@ msgstr "Bewaldete Hügel"
 #. [terrain_type]: id=forested_snow_hills
 #. [terrain_type]: id=deciduous_forest_winter_snow_hills
 #. [terrain_type]: id=mixed_forest_winter_snow_hills
-#: data/core/terrain.cfg:587 data/core/terrain.cfg:630
+#: data/core/terrain.cfg:587
+#: data/core/terrain.cfg:630
 #: data/core/terrain.cfg:673
 msgid "Forested Snow Hills"
 msgstr "Bewaldete verschneite Hügel"
@@ -322,7 +343,8 @@ msgstr "Bewaldete Hügel"
 #. [terrain_type]: id=grassland
 #. [terrain_type]: id=grassland_flowers
 #. [terrain_type]: id=windmill
-#: data/core/terrain.cfg:688 data/core/terrain.cfg:697
+#: data/core/terrain.cfg:688
+#: data/core/terrain.cfg:697
 #: data/core/terrain.cfg:706
 msgid "Grassland"
 msgstr "Wiese"
@@ -350,7 +372,8 @@ msgstr "Hügel"
 #. [terrain_type]: id=desert_mountains
 #. [terrain_type]: id=mountains
 #. [terrain_type]: id=snow_mountains
-#: data/core/terrain.cfg:760 data/core/terrain.cfg:770
+#: data/core/terrain.cfg:760
+#: data/core/terrain.cfg:770
 #: data/core/terrain.cfg:778
 msgid "Mountains"
 msgstr "Berge"
@@ -384,7 +407,8 @@ msgstr "Lava"
 
 #. [terrain_type]: id=road
 #. [terrain_type]: id=stone_path
-#: data/core/terrain.cfg:826 data/core/terrain.cfg:844
+#: data/core/terrain.cfg:826
+#: data/core/terrain.cfg:844
 #: data/core/terrain.cfg:853
 msgid "Road"
 msgstr "Straße"
@@ -461,21 +485,36 @@ msgstr "Unwegsame Höhle"
 #. [terrain_type]: id=mermen_village
 #. [terrain_type]: id=swamp_village
 #. [terrain_type]: id=swamp_merfolk-village
-#: data/core/terrain.cfg:974 data/core/terrain.cfg:985
-#: data/core/terrain.cfg:998 data/core/terrain.cfg:1009
-#: data/core/terrain.cfg:1020 data/core/terrain.cfg:1031
-#: data/core/terrain.cfg:1044 data/core/terrain.cfg:1055
-#: data/core/terrain.cfg:1068 data/core/terrain.cfg:1079
-#: data/core/terrain.cfg:1089 data/core/terrain.cfg:1100
-#: data/core/terrain.cfg:1111 data/core/terrain.cfg:1123
-#: data/core/terrain.cfg:1134 data/core/terrain.cfg:1145
-#: data/core/terrain.cfg:1156 data/core/terrain.cfg:1167
-#: data/core/terrain.cfg:1180 data/core/terrain.cfg:1191
-#: data/core/terrain.cfg:1202 data/core/terrain.cfg:1213
-#: data/core/terrain.cfg:1224 data/core/terrain.cfg:1235
-#: data/core/terrain.cfg:1246 data/core/terrain.cfg:1257
-#: data/core/terrain.cfg:1268 data/core/terrain.cfg:1281
-#: data/core/terrain.cfg:1296 data/core/terrain.cfg:1307
+#: data/core/terrain.cfg:974
+#: data/core/terrain.cfg:985
+#: data/core/terrain.cfg:998
+#: data/core/terrain.cfg:1009
+#: data/core/terrain.cfg:1020
+#: data/core/terrain.cfg:1031
+#: data/core/terrain.cfg:1044
+#: data/core/terrain.cfg:1055
+#: data/core/terrain.cfg:1068
+#: data/core/terrain.cfg:1079
+#: data/core/terrain.cfg:1089
+#: data/core/terrain.cfg:1100
+#: data/core/terrain.cfg:1111
+#: data/core/terrain.cfg:1123
+#: data/core/terrain.cfg:1134
+#: data/core/terrain.cfg:1145
+#: data/core/terrain.cfg:1156
+#: data/core/terrain.cfg:1167
+#: data/core/terrain.cfg:1180
+#: data/core/terrain.cfg:1191
+#: data/core/terrain.cfg:1202
+#: data/core/terrain.cfg:1213
+#: data/core/terrain.cfg:1224
+#: data/core/terrain.cfg:1235
+#: data/core/terrain.cfg:1246
+#: data/core/terrain.cfg:1257
+#: data/core/terrain.cfg:1268
+#: data/core/terrain.cfg:1281
+#: data/core/terrain.cfg:1296
+#: data/core/terrain.cfg:1307
 msgid "Village"
 msgstr "Dorf"
 
@@ -521,7 +560,8 @@ msgstr "Wand"
 
 #. [terrain_type]: id=impassable_overlay
 #. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:1404 data/core/terrain.cfg:1442
+#: data/core/terrain.cfg:1404
+#: data/core/terrain.cfg:1442
 msgid "Impassable"
 msgstr "Unpassierbar"
 
@@ -604,7 +644,8 @@ msgstr "Verbinden"
 #: data/gui/default/window/mp_method_selection.cfg:218
 #: data/gui/default/window/mp_server_list.cfg:229
 #: data/gui/default/window/unit_create.cfg:216
-#: data/gui/default/window/unit_create.cfg:217 src/construct_dialog.cpp:134
+#: data/gui/default/window/unit_create.cfg:217
+#: src/construct_dialog.cpp:134
 #: src/construct_dialog.cpp:137
 msgid "Cancel"
 msgstr "Abbrechen"
@@ -628,8 +669,10 @@ msgstr "Kampagne"
 #: data/gui/default/window/unit_create.cfg:204
 #: data/gui/default/window/unit_create.cfg:205
 #: data/gui/default/window/wml_message.cfg:458
-#: data/gui/default/window/wml_message.cfg:679 src/construct_dialog.cpp:126
-#: src/construct_dialog.cpp:133 src/gui/dialogs/message.cpp:163
+#: data/gui/default/window/wml_message.cfg:679
+#: src/construct_dialog.cpp:126
+#: src/construct_dialog.cpp:133
+#: src/gui/dialogs/message.cpp:163
 #: src/gui/dialogs/message.cpp:170
 msgid "OK"
 msgstr "Okay"
@@ -658,19 +701,22 @@ msgstr "Erzeugen"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:110
+#: data/gui/default/window/editor_new_map.cfg:27
+#: src/hotkeys.cpp:110
 msgid "New Map"
 msgstr "Neue Karte"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:46 src/mapgen_dialog.cpp:120
+#: data/gui/default/window/editor_new_map.cfg:46
+#: src/mapgen_dialog.cpp:120
 msgid "Width:"
 msgstr "Breite:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:73 src/mapgen_dialog.cpp:121
+#: data/gui/default/window/editor_new_map.cfg:73
+#: src/mapgen_dialog.cpp:121
 msgid "Height:"
 msgstr "Höhe:"
 
@@ -682,7 +728,8 @@ msgstr "Karte erstellen"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:155
+#: data/gui/default/window/editor_resize_map.cfg:27
+#: src/hotkeys.cpp:155
 msgid "Resize Map"
 msgstr "Kartengröße anpassen"
 
@@ -724,7 +771,8 @@ msgstr "Kartengröße anpassen"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:108
+#: data/gui/default/window/editor_settings.cfg:38
+#: src/hotkeys.cpp:108
 msgid "Editor Settings"
 msgstr "Editoreinstellungen"
 
@@ -840,7 +888,8 @@ msgstr ""
 #. [grid]
 #: data/gui/default/window/formula_debugger.cfg:222
 #: data/gui/default/window/lobby_main.cfg:539
-#: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:643
+#: data/gui/default/window/title_screen.cfg:191
+#: src/hotkeys.cpp:643
 #: src/hotkeys.cpp:934
 msgid "Quit"
 msgstr "Beenden"
@@ -872,7 +921,8 @@ msgstr ""
 #: data/gui/default/window/game_save_oos.cfg:187
 #: data/gui/default/window/game_save_overwrite.cfg:88
 #: data/gui/default/window/game_save_overwrite.cfg:89
-#: src/construct_dialog.cpp:129 src/gui/dialogs/message.cpp:177
+#: src/construct_dialog.cpp:129
+#: src/gui/dialogs/message.cpp:177
 msgid "Yes"
 msgstr "Ja"
 
@@ -882,14 +932,16 @@ msgstr "Ja"
 #: data/gui/default/window/game_save_message.cfg:154
 #: data/gui/default/window/game_save_oos.cfg:201
 #: data/gui/default/window/game_save_overwrite.cfg:103
-#: src/construct_dialog.cpp:130 src/gui/dialogs/message.cpp:179
+#: src/construct_dialog.cpp:130
+#: src/gui/dialogs/message.cpp:179
 msgid "No"
 msgstr "Nein"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_load.cfg:42
-#: src/gui/dialogs/mp_create_game.cpp:75 src/hotkeys.cpp:66
+#: src/gui/dialogs/mp_create_game.cpp:75
+#: src/hotkeys.cpp:66
 msgid "Load Game"
 msgstr "Spielstand laden"
 
@@ -913,22 +965,19 @@ msgstr "Name"
 
 #. [label]: id=date
 #: data/gui/default/window/game_load.cfg:267
-#, fuzzy
 msgid "Date"
-msgstr "Einfügen"
+msgstr "Datum"
 
 #. [button]: id=delete
 #: data/gui/default/window/game_load.cfg:351
 #: data/gui/default/window/game_load.cfg:352
-#, fuzzy
 msgid "Delete"
-msgstr "Datei löschen"
+msgstr "Löschen"
 
 #. [toggle_button]: id=show_replay
 #: data/gui/default/window/game_load.cfg:370
-#, fuzzy
 msgid "Show replay"
-msgstr "Spieler"
+msgstr "Spielverlauf anzeigen"
 
 #. [toggle_button]: id=cancel_orders
 #: data/gui/default/window/game_load.cfg:388
@@ -940,7 +989,8 @@ msgstr "Abbrechen"
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_save.cfg:32
 #: data/gui/default/window/game_save_message.cfg:32
-#: data/gui/default/window/game_save_oos.cfg:32 src/hotkeys.cpp:63
+#: data/gui/default/window/game_save_oos.cfg:32
+#: src/hotkeys.cpp:63
 msgid "Save Game"
 msgstr "Spiel speichern"
 
@@ -948,7 +998,6 @@ msgstr "Spiel speichern"
 #: data/gui/default/window/game_save.cfg:62
 #: data/gui/default/window/game_save_message.cfg:82
 #: data/gui/default/window/game_save_oos.cfg:82
-#, fuzzy
 msgid "Name:"
 msgstr "Name: "
 
@@ -969,7 +1018,8 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit_game
-#: data/gui/default/window/game_save_oos.cfg:159 src/hotkeys.cpp:85
+#: data/gui/default/window/game_save_oos.cfg:159
+#: src/hotkeys.cpp:85
 msgid "Quit Game"
 msgstr "Spiel beenden"
 
@@ -1011,7 +1061,8 @@ msgstr ""
 #: data/gui/default/window/gamestate_inspector.cfg:250
 #: data/gui/default/window/lobby_main.cfg:503
 #: data/gui/default/window/lobby_player_info.cfg:192
-#: data/gui/default/window/message.cfg:122 src/construct_dialog.cpp:140
+#: data/gui/default/window/message.cfg:122
+#: src/construct_dialog.cpp:140
 msgid "Close"
 msgstr "Schließen"
 
@@ -1035,9 +1086,8 @@ msgstr "Sprache ändern"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:108
-#, fuzzy
 msgid "Games"
-msgstr "Name"
+msgstr "Spiele"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:176
@@ -1172,7 +1222,8 @@ msgstr "Sand"
 #. [grid]
 #: data/gui/default/window/lobby_main.cfg:545
 #: data/gui/default/window/title_screen.cfg:189
-#: src/game_preferences_display.cpp:53 src/hotkeys.cpp:79
+#: src/game_preferences_display.cpp:53
+#: src/hotkeys.cpp:79
 msgid "Preferences"
 msgstr "Einstellungen"
 
@@ -1186,7 +1237,8 @@ msgstr "Anzeige aktualisieren"
 #. [button]: id=show_help
 #. [button]: id=help
 #: data/gui/default/window/lobby_main.cfg:557
-#: data/gui/default/window/title_screen.cfg:109 src/hotkeys.cpp:186
+#: data/gui/default/window/title_screen.cfg:109
+#: src/hotkeys.cpp:186
 msgid "Help"
 msgstr "Hilfe"
 
@@ -1228,15 +1280,13 @@ msgstr "Sendet eine private Nachricht"
 
 #. [button]: id=add_to_friends
 #: data/gui/default/window/lobby_player_info.cfg:91
-#, fuzzy
 msgid "Add to friends list"
-msgstr "Diesen Spieler zu Eurer Freundesliste hinzufügen"
+msgstr "Zu Eurer Freundesliste hinzufügen"
 
 #. [button]: id=add_to_ignores
 #: data/gui/default/window/lobby_player_info.cfg:100
-#, fuzzy
 msgid "Add to ignores list"
-msgstr "Diesen Spieler zu Eurer Ignorierliste hinzufügen"
+msgstr "Zu Eurer Ignorierliste hinzufügen"
 
 #. [button]: id=remove_from_list
 #: data/gui/default/window/lobby_player_info.cfg:109
@@ -1246,7 +1296,6 @@ msgstr "Entfernt den Spieler von Eurer Liste"
 
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:133
-#, fuzzy
 msgid "Moderation"
 msgstr "Moderation"
 
@@ -1472,21 +1521,15 @@ msgstr "Mehrspieler"
 #. [text_box]: id=user_name
 #: data/gui/default/window/mp_method_selection.cfg:82
 msgid ""
-"You may login to the official multiplayer server with your forum username "
-"and password.\n"
-"Note that registration is not required to join the server: you need to "
-"supply a password only if you wish to use a registered username.\n"
+"You may login to the official multiplayer server with your forum username and password.\n"
+"Note that registration is not required to join the server: you need to supply a password only if you wish to use a registered username.\n"
 "\n"
 "The Battle for Wesnoth forum can be found at http://www.wesnoth.org/forum/"
 msgstr ""
-"Ihr könnt Euch auf dem offiziellen Mehrspieler Server mit dem Nutzernamen, "
-"welchen Ihr für das Forum nutzt, sowie dem zugehörigem Passwort anmelden.\n"
-"Eine Registrierung ist nicht erforderlich um dem Server beizutreten: Ihr "
-"müsst nur dann ein Passwort angeben, wenn Ihr einen bereits registrierten "
-"Nutzernamen verwenden möchtet.\n"
+"Ihr könnt Euch auf dem offiziellen Mehrspieler Server mit dem Nutzernamen, welchen Ihr für das Forum nutzt, sowie dem zugehörigem Passwort anmelden.\n"
+"Eine Registrierung ist nicht erforderlich um dem Server beizutreten: Ihr müsst nur dann ein Passwort angeben, wenn Ihr einen bereits registrierten Nutzernamen verwenden möchtet.\n"
 "\n"
-"Das Battle for Wesnoth Forum ist unter http://www.wesnoth.org/forum/ zu "
-"finden.\" "
+"Das Battle for Wesnoth Forum ist unter http://www.wesnoth.org/forum/ zu finden.\" "
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:138
@@ -1511,8 +1554,7 @@ msgstr "Netzwerkpartie eröffnen"
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:159
 msgid "Host a game using dedicated server 'wesnothd'"
-msgstr ""
-"Ausrichten einer Partie unter Zuhilfenahme des dedizierten »wesnothd« Servers"
+msgstr "Ausrichten einer Partie unter Zuhilfenahme des dedizierten »wesnothd« Servers"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:168
@@ -1574,26 +1616,25 @@ msgstr "Mitwirkende"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/unit_create.cfg:37 src/hotkeys.cpp:77
+#: data/gui/default/window/unit_create.cfg:37
+#: src/hotkeys.cpp:77
 msgid "Create Unit (Debug!)"
 msgstr "Einheit erstellen (Debug!)"
 
 #. [label]
 #: data/gui/default/window/unit_create.cfg:59
-#, fuzzy
 msgid "Gender:"
-msgstr "Erzeugen"
+msgstr "Geschlecht:"
 
 #. [toggle_button]: id=male_toggle
 #: data/gui/default/window/unit_create.cfg:69
-#, fuzzy
 msgid "Male"
-msgstr "Burg"
+msgstr "Männlich"
 
 #. [toggle_button]: id=female_toggle
 #: data/gui/default/window/unit_create.cfg:79
 msgid "Female"
-msgstr ""
+msgstr "Weiblich"
 
 #. [toggle_button]: id=namegen_toggle
 #: data/gui/default/window/unit_create.cfg:97
@@ -1620,7 +1661,8 @@ msgstr "Datei: "
 msgid "Delete File"
 msgstr "Datei löschen"
 
-#: src/filechooser.cpp:79 src/filechooser.cpp:204
+#: src/filechooser.cpp:79
+#: src/filechooser.cpp:204
 msgid "New Folder"
 msgstr "Neuer Ordner"
 
@@ -1645,7 +1687,6 @@ msgid "player"
 msgstr "Spieler"
 
 #: src/game_preferences_display.cpp:156
-#, fuzzy
 msgid "Full Screen"
 msgstr "Vollbild"
 
@@ -1665,11 +1706,13 @@ msgstr "Computerzüge überspringen"
 msgid "Show Grid"
 msgstr "Gitternetz einblenden"
 
-#: src/game_preferences_display.cpp:161 src/game_preferences_display.cpp:339
+#: src/game_preferences_display.cpp:161
+#: src/game_preferences_display.cpp:339
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr "Spielverläufe nach ES/MS Sieg oder MS Niederlage speichern"
 
-#: src/game_preferences_display.cpp:162 src/game_preferences_display.cpp:342
+#: src/game_preferences_display.cpp:162
+#: src/game_preferences_display.cpp:342
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr "Spielstände nach ES/MS Sieg oder MS Niederlage löschen"
 
@@ -1841,21 +1884,22 @@ msgstr "Ändern der Abtastrate (Sample Rate)"
 msgid "User defined sample rate"
 msgstr "Benutzerdefinierte Abtastrate"
 
-#: src/game_preferences_display.cpp:273 src/game_preferences_display.cpp:277
+#: src/game_preferences_display.cpp:273
+#: src/game_preferences_display.cpp:277
 msgid "Change the buffer size"
 msgstr "Ändern der Größe des Puffers"
 
-#: src/game_preferences_display.cpp:275 src/game_preferences_display.cpp:823
+#: src/game_preferences_display.cpp:275
+#: src/game_preferences_display.cpp:823
 msgid "Buffer Size: "
 msgstr "Größe des Puffers: "
 
 #: src/game_preferences_display.cpp:282
 msgid "Change the speed of scrolling around the map"
-msgstr ""
-"Ändert die Geschwindigkeit, mit der der angezeigte Kartenausschnitt bewegt "
-"wird"
+msgstr "Ändert die Geschwindigkeit, mit der der angezeigte Kartenausschnitt bewegt wird"
 
-#: src/game_preferences_display.cpp:287 src/game_preferences_display.cpp:289
+#: src/game_preferences_display.cpp:287
+#: src/game_preferences_display.cpp:289
 msgid "Set the amount of chat lines shown"
 msgstr "Legt die Anzahl der angezeigten Mitteilungen fest"
 
@@ -1868,11 +1912,8 @@ msgid "Choose whether the game should run full screen or in a window"
 msgstr "Das Spiel im Vollbild- oder Fenstermodus betreiben"
 
 #: src/game_preferences_display.cpp:298
-msgid ""
-"Should the map view scroll to a unit when an action or move is animated."
-msgstr ""
-"Bewegt die Kartenansicht zu der jeweiligen Einheit, wenn diese eine Aktion "
-"oder Bewegung ausführt."
+msgid "Should the map view scroll to a unit when an action or move is animated."
+msgstr "Bewegt die Kartenansicht zu der jeweiligen Einheit, wenn diese eine Aktion oder Bewegung ausführt."
 
 #: src/game_preferences_display.cpp:301
 msgid "Make units move and fight faster"
@@ -1880,8 +1921,7 @@ msgstr "Die Bewegungs- und Kampfgeschwindigkeit der Einheiten wird erhöht"
 
 #: src/game_preferences_display.cpp:318
 msgid "Units move and fight speed"
-msgstr ""
-"Die Änderung der Bewegungs- und Kampfgeschwindigkeit der Einheiten festlegen"
+msgstr "Die Änderung der Bewegungs- und Kampfgeschwindigkeit der Einheiten festlegen"
 
 #: src/game_preferences_display.cpp:321
 msgid "Show unit idle animations"
@@ -1893,8 +1933,7 @@ msgstr "Frequenz der Untätigkeitsanimationen einstellen"
 
 #: src/game_preferences_display.cpp:332
 msgid "Set maximum number of automatic saves to be retained"
-msgstr ""
-"Legt die maximale Anzahl an zu behaltenden automatischen Spielständen fest"
+msgstr "Legt die maximale Anzahl an zu behaltenden automatischen Spielständen fest"
 
 #: src/game_preferences_display.cpp:336
 msgid "Do not animate AI units moving"
@@ -1918,20 +1957,15 @@ msgstr "Deaktiveren, um gespeicherte Passwörter zu löschen (bei Programmende).
 
 #: src/game_preferences_display.cpp:356
 msgid "Do not show messages about players joining the multiplayer lobby"
-msgstr ""
-"Zeigt keine Mitteilung, wenn ein Spieler die Mehrspieler-Eingangshalle "
-"betritt"
+msgstr "Zeigt keine Mitteilung, wenn ein Spieler die Mehrspieler-Eingangshalle betritt"
 
 #: src/game_preferences_display.cpp:358
 msgid "Show messages about your friends joining the multiplayer lobby"
-msgstr ""
-"Zeigt eine Mitteilung, wenn einer Eurer Freunde die Mehrspieler-"
-"Eingangshalle betritt"
+msgstr "Zeigt eine Mitteilung, wenn einer Eurer Freunde die Mehrspieler-Eingangshalle betritt"
 
 #: src/game_preferences_display.cpp:360
 msgid "Show messages about all players joining the multiplayer lobby"
-msgstr ""
-"Zeigt eine Mitteilung, wenn ein Spieler die Mehrspieler-Eingangshalle betritt"
+msgstr "Zeigt eine Mitteilung, wenn ein Spieler die Mehrspieler-Eingangshalle betritt"
 
 #: src/game_preferences_display.cpp:362
 msgid "Find and set path to MP server to host LAN games."
@@ -1982,18 +2016,12 @@ msgid "Play a bell sound at the beginning of your turn"
 msgstr "Spielt einen Signalton zu Rundenbeginn des Spielers"
 
 #: src/game_preferences_display.cpp:385
-msgid ""
-"Show a colored circle around the base of each unit to show which side it is "
-"on"
-msgstr ""
-"Ein farbiger Kreis markiert die Einheiten, um zu zeigen, welcher Seite sie "
-"angehören"
+msgid "Show a colored circle around the base of each unit to show which side it is on"
+msgstr "Ein farbiger Kreis markiert die Einheiten, um zu zeigen, welcher Seite sie angehören"
 
 #: src/game_preferences_display.cpp:388
 msgid "Choose whether the sun moves left-to-right or right-to-left"
-msgstr ""
-"Wählt, ob die Sonne entweder von links nach rechts, oder von rechts nach "
-"links läuft"
+msgstr "Wählt, ob die Sonne entweder von links nach rechts, oder von rechts nach links läuft"
 
 #: src/game_preferences_display.cpp:391
 msgid "Use colored mouse cursors (may be slower)"
@@ -2011,7 +2039,8 @@ msgstr "Tastenkürzel betrachten und verändern"
 msgid "Speed: "
 msgstr "Geschwindigkeit: "
 
-#: src/game_preferences_display.cpp:696 src/game_preferences_display.cpp:698
+#: src/game_preferences_display.cpp:696
+#: src/game_preferences_display.cpp:698
 msgid "Maximum Auto-Saves: "
 msgstr "Maximale automatische Spielstände: "
 
@@ -2023,7 +2052,8 @@ msgstr "unendlich"
 msgid "Chat Lines: "
 msgstr "Mitteilungen: "
 
-#: src/game_preferences_display.cpp:897 src/game_preferences_display.cpp:905
+#: src/game_preferences_display.cpp:897
+#: src/game_preferences_display.cpp:905
 msgid "Invalid username"
 msgstr "Ungültiger Spielername"
 
@@ -2065,15 +2095,11 @@ msgstr "Derzeitiges Grafikthema: "
 
 #: src/game_preferences_display.cpp:1209
 msgid "New theme will take effect on next new or loaded game."
-msgstr ""
-"Das Grafikthema wird aktualisiert, sobald ein neues oder gespeichertes Spiel "
-"gestartet wird."
+msgstr "Das Grafikthema wird aktualisiert, sobald ein neues oder gespeichertes Spiel gestartet wird."
 
 #: src/game_preferences_display.cpp:1213
 msgid "No known themes. Try changing from within an existing game."
-msgstr ""
-"Keine Grafikthemen gefunden. Versucht die Einstellungen in einem laufenden "
-"Spiel anzupassen."
+msgstr "Keine Grafikthemen gefunden. Versucht die Einstellungen in einem laufenden Spiel anzupassen."
 
 #: src/game_preferences_display.cpp:1256
 msgid "Find $filename server binary to host networked games"
@@ -2099,15 +2125,18 @@ msgstr "Der Text beginnt nicht auf der Zeichenfläche."
 msgid "Linked '$id' group has multiple definitions."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder.cpp:198 src/gui/widgets/settings.cpp:445
+#: src/gui/auxiliary/window_builder.cpp:198
+#: src/gui/widgets/settings.cpp:445
 msgid "No resolution defined."
 msgstr "Keine Auflösung definiert."
 
 #: src/gui/auxiliary/window_builder.cpp:305
 #: src/gui/auxiliary/window_builder/panel.cpp:35
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:38
-#: src/gui/widgets/settings.cpp:709 src/gui/widgets/settings.cpp:808
-#: src/gui/widgets/settings.cpp:901 src/gui/widgets/settings.cpp:944
+#: src/gui/widgets/settings.cpp:709
+#: src/gui/widgets/settings.cpp:808
+#: src/gui/widgets/settings.cpp:901
+#: src/gui/widgets/settings.cpp:944
 #: src/gui/widgets/settings.cpp:1059
 msgid "No grid defined."
 msgstr "Kein Gitternetz definiert."
@@ -2138,25 +2167,20 @@ msgstr "Eine »Listendefinition« sollte nur eine Zeile enthalten."
 #: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:61
 #: src/gui/auxiliary/window_builder/listbox.cpp:71
 #: src/gui/auxiliary/window_builder/multi_page.cpp:58
-msgid ""
-"'list_data' must have the same number of columns as the 'list_definition'."
-msgstr ""
-"Die Anzahl von Spalten eines »Listeneintrags« muss jener der "
-"»Listendefinition« entsprechen."
+msgid "'list_data' must have the same number of columns as the 'list_definition'."
+msgstr "Die Anzahl von Spalten eines »Listeneintrags« muss jener der »Listendefinition« entsprechen."
 
 #: src/gui/auxiliary/window_builder/multi_page.cpp:37
-#, fuzzy
 msgid "No page defined."
-msgstr "Kein Gitternetz definiert."
+msgstr "Keine Seite definiert."
 
 #: src/gui/auxiliary/window_builder/slider.cpp:66
 msgid "The number of value_labels and values don't match."
 msgstr "Die Anzahl von Schlüsseln und Werten stimmt nicht überein."
 
 #: src/gui/auxiliary/window_builder/stacked_widget.cpp:35
-#, fuzzy
 msgid "No stack defined."
-msgstr "Keine Liste definiert."
+msgstr "Kein Stapel definiert."
 
 #: src/gui/dialogs/game_load.cpp:232
 msgid "#(Invalid)"
@@ -2164,7 +2188,7 @@ msgstr ""
 
 #: src/gui/dialogs/game_load.cpp:252
 msgid "Campaign: $campaign_name"
-msgstr ""
+msgstr "Kampagne: $campaign_name"
 
 #: src/gui/dialogs/game_load.cpp:271
 #, fuzzy
@@ -2172,9 +2196,8 @@ msgid "replay"
 msgstr "Spieler"
 
 #: src/gui/dialogs/game_load.cpp:273
-#, fuzzy
 msgid "Turn"
-msgstr "Zug beenden"
+msgstr "Runde"
 
 #: src/gui/dialogs/game_load.cpp:275
 #, fuzzy
@@ -2183,12 +2206,11 @@ msgstr "Missionsziele"
 
 #: src/gui/dialogs/game_load.cpp:278
 msgid "Difficulty: "
-msgstr ""
+msgstr "Schwierigkeitsgrad: "
 
 #: src/gui/dialogs/game_load.cpp:282
-#, fuzzy
 msgid "Version: "
-msgstr "Version"
+msgstr "Version: "
 
 #: src/gui/dialogs/lobby_main.cpp:404
 msgid "Observers allowed"
@@ -2199,26 +2221,22 @@ msgid "Observers not allowed"
 msgstr ""
 
 #: src/gui/dialogs/lobby_main.cpp:692
-msgid ""
-"Whisper session with $name started. If you don't want to receive messages "
-"from this user, type /ignore $name\n"
+msgid "Whisper session with $name started. If you don't want to receive messages from this user, type /ignore $name\n"
 msgstr ""
 
 #: src/gui/dialogs/lobby_main.cpp:698
 msgid "Room $name joined"
-msgstr ""
+msgstr "Raum $name betreten"
 
 #: src/gui/dialogs/lobby_main.cpp:1123
-#, fuzzy
 msgid "Password Required"
-msgstr "Passworterinnerung"
+msgstr "Passwort benötigt"
 
 #: src/gui/dialogs/lobby_main.cpp:1124
 msgid "Joining this game requires a password."
-msgstr ""
+msgstr "Um diesem Spiel beizutreten, wird ein Passwort benötigt."
 
 #: src/gui/dialogs/lobby_main.cpp:1125
-#, fuzzy
 msgid "Password: "
 msgstr "Passwort:"
 
@@ -2247,11 +2265,8 @@ msgid "Window not defined."
 msgstr "Fenster nicht definiert."
 
 #: src/gui/widgets/settings.cpp:401
-msgid ""
-"Widget definition '$definition' doesn't contain the definition for '$id'."
-msgstr ""
-"Die Steuerelementdefinition »$definition|« enthält nicht die Definition für "
-"»$id«."
+msgid "Widget definition '$definition' doesn't contain the definition for '$id'."
+msgstr "Die Steuerelementdefinition »$definition|« enthält nicht die Definition für »$id«."
 
 #: src/gui/widgets/settings.cpp:471
 msgid "No state or draw section defined."
@@ -2261,12 +2276,11 @@ msgstr "Kein Zustands- oder Zeichenabschnitt definiert."
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr ""
 
-#: src/gui/widgets/window.cpp:748 src/gui/widgets/window.cpp:781
+#: src/gui/widgets/window.cpp:748
+#: src/gui/widgets/window.cpp:781
 #: src/tests/gui/test_gui2.cpp:232
 msgid "Failed to show a dialog, which doesn't fit on the screen."
-msgstr ""
-"Anzeigen eines Dialogfensters fehlgeschlagen. Es passt nicht in die aktuelle "
-"Fenstergröße."
+msgstr "Anzeigen eines Dialogfensters fehlgeschlagen. Es passt nicht in die aktuelle Fenstergröße."
 
 #: src/hotkeys.cpp:46
 msgid "Next Unit"
@@ -2278,7 +2292,7 @@ msgstr "Vorherige Einheit"
 
 #: src/hotkeys.cpp:48
 msgid "Add waypoint"
-msgstr ""
+msgstr "Wegpunkt hinzufügen"
 
 #: src/hotkeys.cpp:49
 msgid "Hold Position"
@@ -2316,7 +2330,8 @@ msgstr "Keine Vergrößerung"
 msgid "Toggle Full Screen"
 msgstr "Vollbild"
 
-#: src/hotkeys.cpp:58 src/hotkeys.cpp:889
+#: src/hotkeys.cpp:58
+#: src/hotkeys.cpp:889
 msgid "Screenshot"
 msgstr "Bildschirmfoto"
 
@@ -2340,7 +2355,8 @@ msgstr "Einheit umbenennen"
 msgid "Save Replay"
 msgstr "Aufzeichnung speichern"
 
-#: src/hotkeys.cpp:65 src/hotkeys.cpp:112
+#: src/hotkeys.cpp:65
+#: src/hotkeys.cpp:112
 msgid "Save Map"
 msgstr "Karte speichern"
 
@@ -2386,7 +2402,6 @@ msgid "Speak"
 msgstr "Sprechen"
 
 #: src/hotkeys.cpp:78
-#, fuzzy
 msgid "Change Side (Debug!)"
 msgstr "Zugehörigkeit ändern (Debug!)"
 
@@ -2402,11 +2417,13 @@ msgstr "Einheitenübersicht"
 msgid "Statistics"
 msgstr "Statistiken"
 
-#: src/hotkeys.cpp:83 src/hotkeys.cpp:93
+#: src/hotkeys.cpp:83
+#: src/hotkeys.cpp:93
 msgid "Stop"
 msgstr "Stopp"
 
-#: src/hotkeys.cpp:84 src/hotkeys.cpp:91
+#: src/hotkeys.cpp:84
+#: src/hotkeys.cpp:91
 msgid "Play"
 msgstr "Abspielen"
 
@@ -2682,7 +2699,8 @@ msgstr "Benutzerkommando#2"
 msgid "User-Command#3"
 msgstr "Benutzerkommando#3"
 
-#: src/hotkeys.cpp:643 src/hotkeys.cpp:934
+#: src/hotkeys.cpp:643
+#: src/hotkeys.cpp:934
 msgid "Do you really want to quit?"
 msgstr "Möchtet Ihr das Spiel wirklich beenden?"
 
@@ -2710,9 +2728,10 @@ msgstr "Erstellen des Bildschirmfotos fehlgeschlagen"
 #. translate this message as "sv,da", while Danish as "da,sv".
 #: src/image.cpp:342
 msgid "language code for localized resources^en_US"
-msgstr ""
+msgstr "de"
 
-#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:208
+#: src/mapgen_dialog.cpp:109
+#: src/preferences_display.cpp:208
 msgid "Close Window"
 msgstr "Fenster schließen"
 
@@ -2772,26 +2791,22 @@ msgstr "Die maximale Textlänge ist kleiner als 1."
 msgid "Could not get image for terrain: $terrain."
 msgstr "Für Gelände $terrain wurde keine Grafik gefunden."
 
-#: src/minimap.cpp:116 src/minimap.cpp:128
+#: src/minimap.cpp:116
+#: src/minimap.cpp:128
 msgid "Error creating or aquiring an image."
 msgstr "Fehler beim Erstellen oder Laden einer Grafik."
 
-#: src/preferences_display.cpp:75 src/preferences_display.cpp:113
-msgid ""
-"The video mode could not be changed. Your window manager must be set to 16 "
-"bits per pixel to run the game in windowed mode. Your display must support "
-"1024x768x16 to run the game full screen."
-msgstr ""
-"Der Bildschirmmodus konnte nicht geändert werden. Euer Fenstermanager muss "
-"auf 16bit Farbtiefe eingestellt sein, um das Spiel im Fenstermodus spielen "
-"zu können. Um das Spiel im Vollbildmodus zu spielen, muss Euer Bildschirm "
-"1024x768x16 unterstützen."
+#: src/preferences_display.cpp:75
+#: src/preferences_display.cpp:113
+msgid "The video mode could not be changed. Your window manager must be set to 16 bits per pixel to run the game in windowed mode. Your display must support 1024x768x16 to run the game full screen."
+msgstr "Der Bildschirmmodus konnte nicht geändert werden. Euer Fenstermanager muss auf 16bit Farbtiefe eingestellt sein, um das Spiel im Fenstermodus spielen zu können. Um das Spiel im Vollbildmodus zu spielen, muss Euer Bildschirm 1024x768x16 unterstützen."
 
 #: src/preferences_display.cpp:212
 msgid "Hotkey Settings"
 msgstr "Tastenkürzel anpassen"
 
-#: src/preferences_display.cpp:218 src/preferences_display.cpp:286
+#: src/preferences_display.cpp:218
+#: src/preferences_display.cpp:286
 msgid "Press desired Hotkey (Esc cancels)"
 msgstr "Drückt das gewünschte Tastenkürzel (Esc zum Abbrechen)"
 
@@ -2816,11 +2831,8 @@ msgid "This Hotkey is already in use."
 msgstr "Dieses Tastenkürzel wird bereits verwendet."
 
 #: src/preferences_display.cpp:331
-msgid ""
-"Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
-msgstr ""
-"Warnung: Das Tastaturkürzel für einen Schnappschuss ist weder mit Strg, Alt "
-"oder der Metataste kombiniert."
+msgid "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
+msgstr "Warnung: Das Tastaturkürzel für einen Schnappschuss ist weder mit Strg, Alt oder der Metataste kombiniert."
 
 #: src/preferences_display.cpp:422
 msgid "There are no alternative video modes available"
@@ -2831,12 +2843,8 @@ msgid "Choose Resolution"
 msgstr "Wählt die gewünschte Auflösung"
 
 #: src/terrain_translation.cpp:706
-msgid ""
-"A terrain with a string with more than 4 characters has been found, the "
-"affected terrain is :"
-msgstr ""
-"Ein Gelände mit mehr als vier Zeichen wurde gefunden. Das betroffen Gelände "
-"ist:"
+msgid "A terrain with a string with more than 4 characters has been found, the affected terrain is :"
+msgstr "Ein Gelände mit mehr als vier Zeichen wurde gefunden. Das betroffen Gelände ist:"
 
 #: src/wml_exception.cpp:53
 msgid ""
@@ -2851,17 +2859,12 @@ msgid "When reporting the bug please include the following error message :"
 msgstr "Wenn Ihr diesen Fehler meldet, gebt bitte diese Fehlermeldung an:"
 
 #: src/wml_exception.cpp:73
-msgid ""
-"In section '[$section|]' where '$primary_key| = $primary_value' the "
-"mandatory key '$key|' isn't set."
-msgstr ""
-"Im Abschnitt »[$section|]«, in dem »$primary_key| = $primary_value« gilt,  ist "
-"der benötigte Schlüssel »$key|« nicht gesetzt."
+msgid "In section '[$section|]' where '$primary_key| = $primary_value' the mandatory key '$key|' isn't set."
+msgstr "Im Abschnitt »[$section|]«, in dem »$primary_key| = $primary_value« gilt,  ist der benötigte Schlüssel »$key|« nicht gesetzt."
 
 #: src/wml_exception.cpp:76
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
-msgstr ""
-"Im Abschnitt »[$section|]« ist der benötigte Schlüssel »$key|« nicht gesetzt."
+msgstr "Im Abschnitt »[$section|]« ist der benötigte Schlüssel »$key|« nicht gesetzt."
 
 #~ msgid "Save The Map"
 #~ msgstr "Karte speichern"
@@ -2873,3 +2876,4 @@ msgstr ""
 #~ msgstr ""
 #~ "Die Anzahl von Spalten eines »Listeneintrags« muss jener der "
 #~ "»Listendefinition« entsprechen."
+
