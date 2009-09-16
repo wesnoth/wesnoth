@@ -276,9 +276,14 @@ if(ENABLE_POT_UPDATE_TARGET)
 				# still works.
 				OUTPUT ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${LANG}.po.lang.dummy
 				COMMAND ${GETTEXT_MSGMERGE_EXECUTABLE} 
-						--backup=none
-						-U ${LANG}.po 
+						${LANG}.po
 						${DOMAIN}.pot
+						-o ${LANG}.po.tmp
+				COMMAND ${CMAKE_COMMAND} -E copy
+						${LANG}.po.tmp
+						${LANG}.po
+				COMMAND ${CMAKE_COMMAND} -E remove
+						${LANG}.po.tmp
 				WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/po/${DOMAIN}
 				COMMENT "po-update [${DOMAIN}-${LANG}]: Updated po file."
 			)
