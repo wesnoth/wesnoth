@@ -24,8 +24,10 @@ variant convert_map( const std::map<T, K>& input_map ) {
 	return variant( &tmp );
 }
 
+
 template <typename T>
-variant convert_vector( const std::vector<T>& input_vector ) {
+variant convert_vector( const std::vector<T>& input_vector )
+{
 	std::vector<variant> tmp;
 
 	for(typename std::vector<T>::const_iterator i = input_vector.begin(); i != input_vector.end(); ++i) {
@@ -34,6 +36,7 @@ variant convert_vector( const std::vector<T>& input_vector ) {
 
 	return variant( &tmp );
 }
+
 
 variant location_callable::get_value(const std::string& key) const
 {
@@ -139,11 +142,23 @@ int attack_type_callable::do_compare(const formula_callable* callable) const
 variant unit_callable::get_value(const std::string& key) const
 {
 	if(key == "x") {
-		return variant(loc_.x+1);
+		if (loc_==map_location::null_location) {
+			return variant();
+		} else {
+			return variant(loc_.x+1);
+		}
 	} else if(key == "y") {
-		return variant(loc_.y+1);
+		if (loc_==map_location::null_location) {
+			return variant();
+		} else {
+			return variant(loc_.y+1);
+		}
 	} else if(key == "loc") {
-		return variant(new location_callable(loc_));
+		if (loc_==map_location::null_location) {
+			return variant();
+		} else {
+			return variant(new location_callable(loc_));
+		}
 	} else if(key == "id") {
 		return variant(u_.id());
 	} else if(key == "type") {

@@ -61,7 +61,9 @@ public: \
 };
 
 template <typename T, typename K> variant convert_map( const std::map<T,K>& map );
+
 template <typename T> variant convert_vector( const std::vector<T>& input_vector );
+
 
 class terrain_callable : public game_logic::formula_callable {
 public:
@@ -151,6 +153,12 @@ public:
 		type_ = UNIT_C;
 	}
 
+	unit_callable(const unit &u)
+		: loc_(map_location::null_location), u_(u)
+	{
+		type_ = UNIT_C;
+	}
+
 	const unit& get_unit() const { return u_; }
 	const location& get_location() const { return loc_; }
 	variant get_value(const std::string& key) const;
@@ -202,4 +210,5 @@ CALLABLE_WRAPPER_FN(is_human)
 CALLABLE_WRAPPER_FN(is_ai)
 CALLABLE_WRAPPER_FN(is_network)
 CALLABLE_WRAPPER_END
+
 #endif

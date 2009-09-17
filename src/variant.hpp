@@ -197,4 +197,6 @@ T* try_convert_variant(const variant& v) {
 	return dynamic_cast<T*>(v.mutable_callable());
 }
 
+
+
 #endif

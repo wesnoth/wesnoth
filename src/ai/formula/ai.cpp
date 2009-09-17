@@ -30,6 +30,7 @@
 #include "../actions.hpp"
 #include "../manager.hpp"
 
+#include "../../callable_objects.hpp"
 #include "../../foreach.hpp"
 #include "../../formula_debugger.hpp"
 #include "../../log.hpp"
@@ -776,12 +777,15 @@ variant formula_ai::get_value(const std::string& key) const
 		}
 		return variant(new unit_callable(*i));
 
-		//} else if(key == "recall_list") {
-		//std::vector<variant> vars;
-		//for(std::vector<unit>::const_iterator i = get_recall_list().begin(); i != get_recall_list().end(); ++i) {
-		//	vars.push_back(variant(new unit_callable(std::make_pair(map_location::null_location,*i))));
-		//}
-		//return variant(&vars);
+	} else if(key == "recall_list")
+	{
+		std::vector<variant> tmp;
+
+		for(std::vector<unit>::const_iterator i = current_team().recall_list().begin(); i != current_team().recall_list().end(); ++i) {
+			tmp.push_back( variant( new unit_callable(*i) ) );
+		}
+
+		return variant( &tmp );
 
 	} else if(key == "vars")
 	{
