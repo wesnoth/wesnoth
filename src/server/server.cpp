@@ -1582,29 +1582,13 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 		}
 		motd_ = parameters;
 		out << "Message of the day set to: " << motd_;
-	} else if (command == "searchlog") {
+	} else if (command == "searchlog" || command == "sl") {
 		if (parameters.empty()) {
 			return "You must enter a mask to search for.";
 		}
 		out << "IP/NICK LOG for '" << parameters << "'";
 
 		bool found_something = false;
-
-		// If a simple username is given we'll check for its IP instead.
-		if (utils::isvalid_username(parameters)) {
-			for (std::deque<connection_log>::const_iterator i = ip_log_.begin();
-					i != ip_log_.end(); ++i) {
-				if (parameters == i->nick) {
-					parameters = i->ip;
-					found_something = true;
-					break;
-				}
-			}
-			if (!found_something) {
-				out << "\nNo match found.";
-				return out.str();
-			}
-		}
 
 		// If this looks like an IP look up which nicks have been connected from it
 		// Otherwise look for the last IP the nick used to connect
