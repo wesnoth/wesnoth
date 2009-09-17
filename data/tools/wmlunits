@@ -942,6 +942,15 @@ def output(isocode):
     return stuff
 
 if __name__ == '__main__':
+	
+    # We change the process name to "wmlunits"
+    try:
+        import ctypes
+        libc = ctypes.CDLL("libc.so.6")
+        libc.prctl(15, "wmlunits", 0, 0, 0)
+    except: # oh well...
+        pass
+
     global options
     global image_collector
     import optparse
