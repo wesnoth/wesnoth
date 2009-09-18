@@ -18,8 +18,6 @@
 
 #include "gui/widgets/window.hpp"
 
-#include "gui/auxiliary/log.hpp" // included for the deprecated message
-
 namespace gui2 {
 
 namespace {
