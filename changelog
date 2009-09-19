@@ -3,6 +3,10 @@ Version 1.7.5+svn:
    * Stabilized syntax of [modify_ai] tag
    * Reorganized AI macro library
    * Added 'move leader to target' candidate action
+   * Added recall capabilities to default ai.
+   * Added recall formula ai function and ai.recall_list formula ai attribute.
+   * Modified default ai recruitment to recall good units from recall list.
+   * Modified default ai recruitment to consider enemy potential recruits during recruitment.
  * Graphics:
    * New portraits for Merman Spearman, Bat, Merman Netcaster
    * Added a couple of missing frames for the Inferno Drake
