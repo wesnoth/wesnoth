@@ -59,9 +59,12 @@ public:
 	bool do_play_stage();
 	config to_config() const;
 	int get_combat_score(const unit_type& ut) const;
+
 private:
 	config cfg_;
 	std::map<std::string,int> best_usage_;
+
+	void get_combat_score_vs(const unit_type& ut, const std::string &enemy_type_id, int &score, int &weighting, int hitpoints, int max_hitpoints) const;
 
 	virtual bool recruit_usage(const std::string& usage);
 

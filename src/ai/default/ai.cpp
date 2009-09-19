@@ -1270,22 +1270,40 @@ int ai_default_recruitment_stage::compare_unit_types(const unit_type& a, const u
 	return a_effectiveness_vs_b - b_effectiveness_vs_a;
 }
 
+void ai_default_recruitment_stage::get_combat_score_vs(const unit_type& ut, const std::string &enemy_type_id, int &score, int &weighting, int hitpoints, int max_hitpoints) const
+{
+	const unit_type_data::unit_type_map::const_iterator enemy_info = unit_type_data::types().find_unit_type(enemy_type_id);
+	VALIDATE((enemy_info != unit_type_data::types().end()), "Unknown unit type : " + enemy_type_id + " while scoring units.");
+	int weight = ut.cost();
+	if (hitpoints>0) {
+		weight *= hitpoints / max_hitpoints;
+	}
+
+	weighting += weight;
+	score += compare_unit_types(ut, enemy_info->second) * weight;
+}
+
 int ai_default_recruitment_stage::get_combat_score(const unit_type& ut) const
 {
 	int score = 0, weighting = 0;
 	const unit_map & units_ = get_info().units;
 	for(unit_map::const_iterator j = units_.begin(); j != units_.end(); ++j) {
-		if(j->second.can_recruit() || current_team().is_enemy(j->second.side()) == false) {
+		if(current_team().is_enemy(j->second.side()) == false) {
+			continue;
+		}
+
+		if (j->second.can_recruit()) {
+
+			team &enemy_team = get_info().teams[j->second.side()-1];
+			const std::set<std::string> &recruits = enemy_team.recruits();
+			foreach (const std::string &rec, recruits) {
+				get_combat_score_vs(ut,rec,score,weighting,0,0);
+			}
 			continue;
 		}
 
 		unit const &un = j->second;
-		const unit_type_data::unit_type_map::const_iterator enemy_info = unit_type_data::types().find_unit_type(un.type_id());
-		VALIDATE((enemy_info != unit_type_data::types().end()), "Unknown unit type : " + un.type_id() + " while scoring units.");
-
-		int weight = un.cost() * un.hitpoints() / un.max_hitpoints();
-		weighting += weight;
-		score += compare_unit_types(ut, enemy_info->second) * weight;
+		get_combat_score_vs(ut,un.type_id(),score,weighting,un.hitpoints(),un.max_hitpoints());
 	}
 
 	if(weighting != 0) {
