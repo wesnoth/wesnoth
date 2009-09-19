@@ -1325,7 +1325,8 @@ static int intf_eval_conditional(lua_State *L)
  * Finds a path between two locations.
  * - Args 1,2: source location. (Or Arg 1: unit.)
  * - Args 3,4: destination.
- * - Arg 5: parameters or cost function.
+ * - Arg 5: optional cost function or
+ *          table (optional fields: ignore_units, viewing_side)
  * - Ret 1: array of pairs containing path steps.
  * - Ret 2: path cost.
  */
@@ -1379,9 +1380,24 @@ static int intf_find_path(lua_State *L)
 
 	std::vector<team> &teams = *resources::teams;
 	gamemap &map = *resources::game_map;
+	int viewing_side = u->side();
+	bool ignore_units = false;
 
-	shortest_path_calculator calc(*u, teams[u->side() - 1],
-		*resources::units, teams, map);
+	if (lua_istable(L, arg))
+	{
+		lua_pushstring(L, "ignore_units");
+		lua_gettable(L, arg);
+		ignore_units = lua_toboolean(L, -1);
+		lua_pop(L, 1);
+		lua_pushstring(L, "viewing_side");
+		lua_gettable(L, arg);
+		int i = lua_tointeger(L, -1);
+		if (i >= 1 && i <= int(teams.size())) viewing_side = i;
+		lua_pop(L, 1);
+	}
+
+	shortest_path_calculator calc(*u, teams[viewing_side - 1],
+		*resources::units, teams, map, ignore_units);
 	plain_route res = a_star_search(src, dst, 10000.0, &calc, map.w(), map.h());
 
 	int nb = res.steps.size();
