@@ -1321,6 +1321,75 @@ static int intf_eval_conditional(lua_State *L)
 	return 1;
 }
 
+struct lua_calculator : cost_calculator
+{
+	lua_State *L;
+	int num;
+
+	lua_calculator(lua_State *L, int index);
+	double cost(const map_location &loc, double so_far) const;
+	~lua_calculator();
+};
+
+lua_calculator::lua_calculator(lua_State *L_, int index)
+	: L(L_)
+{
+	lua_pushvalue(L, index);
+
+	// Retrieve the user function table from the registry.
+	lua_pushlightuserdata(L, (void *)&uactionKey);
+	lua_rawget(L, LUA_REGISTRYINDEX);
+
+	// Push the function in the table so that it is not collected.
+	num = lua_objlen(L, -1) + 1;
+	lua_insert(L, -2);
+	lua_rawseti(L, -2, num);
+
+	lua_pop(L, 1);
+}
+
+double lua_calculator::cost(const map_location &loc, double so_far) const
+{
+	// Load the error handler from the registry.
+	lua_pushlightuserdata(L, (void *)&executeKey);
+	lua_rawget(L, LUA_REGISTRYINDEX);
+
+	// Load the user function from the registry.
+	lua_pushlightuserdata(L, (void *)&uactionKey);
+	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_rawgeti(L, -1, num);
+	lua_remove(L, -2);
+
+	// Push the location and current cost.
+	lua_pushinteger(L, loc.x + 1);
+	lua_pushinteger(L, loc.y + 1);
+	lua_pushnumber(L, so_far);
+
+	int res = lua_pcall(L, 3, 1, -5);
+	if (res)
+	{
+		char const *m = lua_tostring(L, -1);
+		chat_message("Lua error", m);
+		ERR_LUA << m << '\n';
+		lua_pop(L, 2);
+		return 0;
+	}
+
+	double cost = lua_tonumber(L, -1);
+	lua_pop(L, 2);
+	return cost;
+}
+
+lua_calculator::~lua_calculator()
+{
+	// Remove the function from the registry, so that it can be collected.
+	lua_pushlightuserdata(L, (void *)&uactionKey);
+	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_pushnil(L);
+	lua_rawseti(L, -2, num);
+	lua_pop(L, 1);
+}
+
 /**
  * Finds a path between two locations.
  * - Args 1,2: source location. (Or Arg 1: unit.)
@@ -1383,6 +1452,8 @@ static int intf_find_path(lua_State *L)
 	int viewing_side = u->side();
 	bool ignore_units = false;
 
+	cost_calculator *calc = NULL;
+
 	if (lua_istable(L, arg))
 	{
 		lua_pushstring(L, "ignore_units");
@@ -1395,10 +1466,18 @@ static int intf_find_path(lua_State *L)
 		if (i >= 1 && i <= int(teams.size())) viewing_side = i;
 		lua_pop(L, 1);
 	}
+	else if (lua_isfunction(L, arg))
+	{
+		calc = new lua_calculator(L, arg);
+	}
 
-	shortest_path_calculator calc(*u, teams[viewing_side - 1],
-		*resources::units, teams, map, ignore_units);
-	plain_route res = a_star_search(src, dst, 10000.0, &calc, map.w(), map.h());
+	if (!calc) {
+		calc = new shortest_path_calculator(*u, teams[viewing_side - 1],
+			*resources::units, teams, map, ignore_units);
+	}
+
+	plain_route res = a_star_search(src, dst, 10000.0, calc, map.w(), map.h());
+	delete calc;
 
 	int nb = res.steps.size();
 	lua_createtable(L, nb, 0);
