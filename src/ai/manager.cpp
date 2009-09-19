@@ -215,6 +215,37 @@ const std::string holder::describe_ai()
 }
 
 
+const std::string holder::get_ai_overview()
+{
+	if (!this->ai_) {
+		get_ai_ref();
+	}
+	std::stringstream s;
+	s << "aggression:  " << this->ai_->get_aggression() << std::endl;
+	s << "attack_depth:  " << this->ai_->get_attack_depth() << std::endl;
+	s << "caution:  " << this->ai_->get_caution() << std::endl;
+	s << "grouping:  " << this->ai_->get_grouping() << std::endl;
+	s << "leader_value:  " << this->ai_->get_leader_value() << std::endl;
+	s << "number_of_possible_recruits_to_force_recruit:  " << this->ai_->get_number_of_possible_recruits_to_force_recruit() << std::endl;
+	s << "passive_leader:  " << this->ai_->get_passive_leader() << std::endl;
+	s << "passive_leader_shares_keep:  " << this->ai_->get_passive_leader_shares_keep() << std::endl;
+	s << "recruitment_ignore_bad_combat:  " << this->ai_->get_recruitment_ignore_bad_movement() << std::endl;
+	s << "recruitment_ignore_bad_movement:  " << this->ai_->get_recruitment_ignore_bad_combat() << std::endl;
+	s << "recruitment_pattern:  ";
+	for(std::vector<std::string>::const_iterator i =  this->ai_->get_recruitment_pattern().begin(); i !=  this->ai_->get_recruitment_pattern().end(); ++i) {
+		if(i != this->ai_->get_recruitment_pattern().begin())
+			s << ",";
+
+		s << *i;
+	}
+	s << "scout_village_targeting:  " << this->ai_->get_scout_village_targeting() << std::endl;
+	s << "simple_targeting:  " << this->ai_->get_simple_targeting() << std::endl;
+	s << "support_villages:  " << this->ai_->get_support_villages() << std::endl;
+	s << "village_value:  " << this->ai_->get_village_value() << std::endl;
+	s << "villages_per_scout:  " << this->ai_->get_villages_per_scout() << std::endl;
+	return s.str();
+}
+
 const std::string holder::get_ai_identifier() const
 {
 	return cfg_["id"];
@@ -671,6 +702,11 @@ void manager::modify_active_ai_for_side ( side_number side, const config &cfg )
 	get_active_ai_holder_for_side(side).modify_ai(cfg);
 }
 
+
+std::string manager::get_active_ai_overview_for_side( side_number side)
+{
+	return get_active_ai_holder_for_side(side).get_ai_overview();
+}
 
 std::string manager::get_active_ai_identifier_for_side( side_number side )
 {
