@@ -1523,9 +1523,13 @@ public:
 		}
 
 		p.second = (1-xp_ratio) * stage_.get_combat_score(*u.type());
+		double recall_cost = game_config::recall_cost != 0 ? game_config::recall_cost : 1;
+
+		p.second *= static_cast<double>(u.type()->cost())/recall_cost;
 		if (u.can_advance() && (xp_ratio>0) ) {
-			int best_combat_score_of_advancement = 0;
+		        double best_combat_score_of_advancement = 0;
 			bool best_combat_score_of_advancement_found = false;
+			int best_cost = recall_cost;
 			foreach (const std::string &i, u.advances_to()) {
 				const unit_type_data::unit_type_map::const_iterator ut = unit_type_data::types().find_unit_type(i);
 				if(ut == unit_type_data::types().end()) {
@@ -1536,11 +1540,11 @@ public:
 				if (!best_combat_score_of_advancement_found || (best_combat_score_of_advancement<combat_score_of_advancement)) {
 					best_combat_score_of_advancement = combat_score_of_advancement;
 					best_combat_score_of_advancement_found = true;
+					best_cost = ut->second.cost();
 				}
 
 			}
-			p.second+= xp_ratio*best_combat_score_of_advancement;
-
+			p.second += xp_ratio*best_combat_score_of_advancement*best_cost/recall_cost;
 		}
 
 		return p;
