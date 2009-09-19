@@ -54,6 +54,7 @@ extern "C" {
 #include "gamestatus.hpp"
 #include "log.hpp"
 #include "map.hpp"
+#include "pathfind.hpp"
 #include "resources.hpp"
 #include "scripting/lua.hpp"
 #include "terrain_translation.hpp"
@@ -1320,6 +1321,85 @@ static int intf_eval_conditional(lua_State *L)
 	return 1;
 }
 
+/**
+ * Finds a path between two locations.
+ * - Args 1,2: source location. (Or Arg 1: unit.)
+ * - Args 3,4: destination.
+ * - Arg 5: parameters or cost function.
+ * - Ret 1: array of pairs containing path steps.
+ * - Ret 2: path cost.
+ */
+static int intf_find_path(lua_State *L)
+{
+	int arg = 1;
+	if (false) {
+		error_call_destructors:
+		return luaL_argerror(L, arg, "???");
+	}
+
+	map_location src, dst;
+	const unit *u = NULL;
+
+	if (lua_isuserdata(L, arg))
+	{
+		if (!luaW_hasmetatable(L, 1, getunitKey))
+			goto error_call_destructors;
+		size_t id = *static_cast<size_t *>(lua_touserdata(L, 1));
+		unit_map::const_unit_iterator ui = resources::units->find(id);
+		if (!ui.valid())
+			goto error_call_destructors;
+		u = &ui->second;
+		src = u->get_location();
+		++arg;
+	}
+	else
+	{
+		if (!lua_isnumber(L, arg))
+			goto error_call_destructors;
+		src.x = lua_tointeger(L, arg) - 1;
+		++arg;
+		if (!lua_isnumber(L, arg))
+			goto error_call_destructors;
+		src.y = lua_tointeger(L, arg) - 1;
+		unit_map::const_unit_iterator ui = resources::units->find(src);
+		if (!ui.valid())
+			goto error_call_destructors;
+		u = &ui->second;
+		++arg;
+	}
+
+	if (!lua_isnumber(L, arg))
+		goto error_call_destructors;
+	dst.x = lua_tointeger(L, arg) - 1;
+	++arg;
+	if (!lua_isnumber(L, arg))
+		goto error_call_destructors;
+	dst.y = lua_tointeger(L, arg) - 1;
+	++arg;
+
+	std::vector<team> &teams = *resources::teams;
+	gamemap &map = *resources::game_map;
+
+	shortest_path_calculator calc(*u, teams[u->side() - 1],
+		*resources::units, teams, map);
+	plain_route res = a_star_search(src, dst, 10000.0, &calc, map.w(), map.h());
+
+	int nb = res.steps.size();
+	lua_createtable(L, nb, 0);
+	for (int i = 0; i < nb; ++i)
+	{
+		lua_createtable(L, 2, 0);
+		lua_pushinteger(L, res.steps[i].x);
+		lua_rawseti(L, -2, 1);
+		lua_pushinteger(L, res.steps[i].y);
+		lua_rawseti(L, -2, 2);
+		lua_rawseti(L, -2, i + 1);
+	}
+	lua_pushinteger(L, res.move_cost);
+
+	return 2;
+}
+
 LuaKernel::LuaKernel()
 	: mState(luaL_newstate())
 {
@@ -1346,6 +1426,7 @@ LuaKernel::LuaKernel()
 		{ "dofile",                   &intf_dofile                   },
 		{ "fire",                     &intf_fire                     },
 		{ "eval_conditional",         &intf_eval_conditional         },
+		{ "find_path",                &intf_find_path                },
 		{ "get_map_size",             &intf_get_map_size             },
 		{ "get_side",                 &intf_get_side                 },
 		{ "get_terrain",              &intf_get_terrain              },
