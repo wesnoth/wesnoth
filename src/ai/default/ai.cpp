@@ -1275,8 +1275,8 @@ void ai_default_recruitment_stage::get_combat_score_vs(const unit_type& ut, cons
 	const unit_type_data::unit_type_map::const_iterator enemy_info = unit_type_data::types().find_unit_type(enemy_type_id);
 	VALIDATE((enemy_info != unit_type_data::types().end()), "Unknown unit type : " + enemy_type_id + " while scoring units.");
 	int weight = ut.cost();
-	if (hitpoints>0) {
-		weight *= static_cast<double>(hitpoints) / max_hitpoints;
+	if ((hitpoints>0) && (max_hitpoints>0)) {
+		weight = weight * hitpoints / max_hitpoints;
 	}
 
 	weighting += weight;
