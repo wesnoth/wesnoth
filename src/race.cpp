@@ -23,7 +23,7 @@
 #include "random.hpp"
 #include "simple_rng.hpp"
 
-#include "log.hpp" // needed for deprecation warning
+#include "wml_exception.hpp" // needed for validate
 
 static config empty_traits;
 
@@ -151,21 +151,8 @@ unit_race::unit_race(const config& cfg) :
 		global_traits_(!utils::string_bool(cfg["ignore_global_traits"]))
 
 {
-	/**
-	 * @todo FIXME remove support after branching 1.4.
-	 *  2 versions with lg::wml_error
-	 *  VALIDATE after that
-	 */
-	if(id_.empty()) {
-		// This code is only for compatibility with old race defs.
-		lg::wml_error << "[race] '" << cfg["name"] << "' is missing its id, this behaviour is deprecated and will break in 1.7.4\n";
-		id_ = (cfg["name"]);
-	}
-	if(plural_name_.empty()) {
-		// This code is only for compatibility with old race defs.
-		lg::wml_error << "[race] '" << cfg["name"] << "' is missing its plural_name, this behaviour is deprecated and will break in 1.7.4\n";
-		plural_name_ = (cfg["name"]);
-	}
+	VALIDATE(!id_.empty(), "[race] '" + (cfg["name"] != "" ? cfg["name"] : cfg["male_name"]) + "' is missing the required key 'id'\n");
+	VALIDATE(!plural_name_.empty(), "[race] '" + (cfg["name"] != "" ? cfg["name"] : cfg["id"]) + "' is missing the required key 'plural_name'\n");
 	// use "name" if "male_name" or "female_name" aren't available
 	name_[MALE] = cfg["male_name"];
 	if(name_[MALE].empty()) {

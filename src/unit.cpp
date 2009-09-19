@@ -1286,13 +1286,6 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 
 	cfg_.clear_children("unit"); //remove underlying unit definitions from scenario files
 
-	// @todo: FIXME Compatibility hack for unit renames, can be removed for 1.7.5.
-	if (cfg_["type"] == "Drake Gladiator") {
-		cfg_["type"] = "Drake Thrasher";
-	} else if (cfg_["type"] == "Drake Slasher") {
-		cfg_["type"] = "Drake Arbiter";
-	}
-
 	type_ = cfg_["type"];
 	side_ = lexical_cast_default<int>(cfg["side"]);
 	if(side_ <= 0) {
@@ -1391,11 +1384,6 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	max_experience_ = std::max<int>(1,lexical_cast_default<int>(cfg["max_experience"], max_experience_));
 
 	std::vector<std::string> temp_advances = utils::split(cfg["advances_to"]);
-	// @todo: FIXME Compatibility hack for unit renames, can be removed for 1.7.5.
-	foreach (std::string& advance, temp_advances) {
-		if (advance == "Drake Gladiator") advance = "Drake Thrasher";
-		else if (advance == "Drake Slasher") advance = "Drake Arbiter";
-	}
 	if(temp_advances.size() == 1 && temp_advances.front() == "null") {
 		advances_to_.clear();
 	}else if(temp_advances.size() >= 1 && temp_advances.front() != "") {
