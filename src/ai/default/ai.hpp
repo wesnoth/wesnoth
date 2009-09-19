@@ -58,8 +58,10 @@ public:
 	void on_create();
 	bool do_play_stage();
 	config to_config() const;
+	int get_combat_score(const unit_type& ut) const;
 private:
 	config cfg_;
+	std::map<std::string,int> best_usage_;
 
 	virtual bool recruit_usage(const std::string& usage);
 
@@ -72,8 +74,15 @@ private:
 	 */
 	virtual void analyze_potential_recruit_movements();
 
+	std::string find_suitable_recall_id();
+
 	std::map<std::string,int> unit_movement_scores_;
+
 	std::set<std::string> not_recommended_units_;
+
+	std::map<std::string,int> unit_combat_scores_;
+
+	std::vector<std::pair<std::string,double> > recall_list_scores_;
 
 	/**
 	 * Analyze all the units that this side can recruit
@@ -85,7 +94,8 @@ private:
 	 */
 	virtual void analyze_potential_recruit_combat();
 
-	std::map<std::string,int> unit_combat_scores_;
+
+	bool analyze_recall_list();
 
 	/**
 	 * Rates two unit types for their suitability against each other.

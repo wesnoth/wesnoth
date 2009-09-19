@@ -37,6 +37,8 @@
 #include "../../unit_display.hpp"
 #include "../../wml_exception.hpp"
 
+#include <iterator>
+#include <algorithm>
 #include <fstream>
 
 static lg::log_domain log_ai("ai/general");
@@ -1268,6 +1270,30 @@ int ai_default_recruitment_stage::compare_unit_types(const unit_type& a, const u
 	return a_effectiveness_vs_b - b_effectiveness_vs_a;
 }
 
+int ai_default_recruitment_stage::get_combat_score(const unit_type& ut) const
+{
+	int score = 0, weighting = 0;
+	const unit_map & units_ = get_info().units;
+	for(unit_map::const_iterator j = units_.begin(); j != units_.end(); ++j) {
+		if(j->second.can_recruit() || current_team().is_enemy(j->second.side()) == false) {
+			continue;
+		}
+
+		unit const &un = j->second;
+		const unit_type_data::unit_type_map::const_iterator enemy_info = unit_type_data::types().find_unit_type(un.type_id());
+		VALIDATE((enemy_info != unit_type_data::types().end()), "Unknown unit type : " + un.type_id() + " while scoring units.");
+
+		int weight = un.cost() * un.hitpoints() / un.max_hitpoints();
+		weighting += weight;
+		score += compare_unit_types(ut, enemy_info->second) * weight;
+	}
+
+	if(weighting != 0) {
+		score /= weighting;
+	}
+	return score;
+}
+
 void ai_default_recruitment_stage::analyze_potential_recruit_combat()
 {
 	if(unit_combat_scores_.empty() == false ||
@@ -1278,8 +1304,7 @@ void ai_default_recruitment_stage::analyze_potential_recruit_combat()
 	log_scope2(log_ai, "analyze_potential_recruit_combat()");
 
 	// Records the best combat analysis for each usage type.
-	std::map<std::string,int> best_usage;
-	unit_map &units_ = get_info().units;
+	best_usage_.clear();
 
 	const std::set<std::string>& recruits = current_team().recruits();
 	std::set<std::string>::const_iterator i;
@@ -1289,32 +1314,13 @@ void ai_default_recruitment_stage::analyze_potential_recruit_combat()
 			continue;
 		}
 
-		int score = 0, weighting = 0;
-
-		for(unit_map::const_iterator j = units_.begin(); j != units_.end(); ++j) {
-			if(j->second.can_recruit() || current_team().is_enemy(j->second.side()) == false) {
-				continue;
-			}
-
-			unit const &un = j->second;
-			const unit_type_data::unit_type_map::const_iterator enemy_info = unit_type_data::types().find_unit_type(un.type_id());
-			VALIDATE((enemy_info != unit_type_data::types().end()), "Unknown unit type : " + un.type_id() + " while scoring units.");
-
-			int weight = un.cost() * un.hitpoints() / un.max_hitpoints();
-			weighting += weight;
-			score += compare_unit_types(info->second, enemy_info->second) * weight;
-		}
-
-		if(weighting != 0) {
-			score /= weighting;
-		}
-
+		int score = get_combat_score(info->second);
 		LOG_AI << "combat score of '" << *i << "': " << score << "\n";
 		unit_combat_scores_[*i] = score;
 
-		if(best_usage.count(info->second.usage()) == 0 ||
-				score > best_usage[info->second.usage()]) {
-			best_usage[info->second.usage()] = score;
+		if(best_usage_.count(info->second.usage()) == 0 ||
+				score > best_usage_[info->second.usage()]) {
+			best_usage_[info->second.usage()] = score;
 		}
 	}
 
@@ -1327,9 +1333,9 @@ void ai_default_recruitment_stage::analyze_potential_recruit_combat()
 			continue;
 		}
 
-		if(unit_combat_scores_[*i] + 600 < best_usage[info->second.usage()]) {
+		if(unit_combat_scores_[*i] + 600 < best_usage_[info->second.usage()]) {
 			LOG_AI << "recommending not to use '" << *i << "' because of poor combat performance "
-				      << unit_combat_scores_[*i] << "/" << best_usage[info->second.usage()] << "\n";
+				      << unit_combat_scores_[*i] << "/" << best_usage_[info->second.usage()] << "\n";
 			not_recommended_units_.insert(*i);
 		}
 	}
@@ -1354,9 +1360,11 @@ private:
 ai_default_recruitment_stage::ai_default_recruitment_stage(ai_context &context, const config &cfg)
 	: stage(context,cfg),
 	  cfg_(cfg),
+	  best_usage_(),
 	  unit_movement_scores_(),
 	  not_recommended_units_(),
-	  unit_combat_scores_()
+	  unit_combat_scores_(),
+	  recall_list_scores_()
 {
 }
 
@@ -1483,8 +1491,113 @@ bool ai_default::do_recruitment()
 	if (r) {
 		return r->play_stage();
 	}
-	ERR_AI << "no recruitment aspect - skipping recruitment" << std::endl;
+	ERR_AI << "no recruitment aspect - skipping recruitment and recall" << std::endl;
 	return false;
+}
+
+
+std::string ai_default_recruitment_stage::find_suitable_recall_id()
+{
+	if (recall_list_scores_.empty()) {
+		return "";
+	}
+	std::string best_id = recall_list_scores_.back().first;
+	recall_list_scores_.pop_back();
+	return best_id;
+}
+
+class unit_combat_score_getter {
+public:
+	unit_combat_score_getter(const ai_default_recruitment_stage &s)
+		: stage_(s)
+	{
+	}
+	std::pair<std::string, double> operator()(const unit &u) {
+		std::pair<std::string,int> p;
+		p.first = u.id();
+		assert(u.type()!=NULL);
+		p.second = stage_.get_combat_score(*u.type());
+		return p;
+/*
+		double xp_ratio = u.experience()/u.max_experience();
+		double score = (1-xp_ratio)*get_combat_score[u.type()];
+		if (xp_ratio>0) {
+			int best_combat_score_of_advancement = 0;
+			bool best_combat_score_of_advancement_found = false;
+			foreach (std::string advances_to, u.advances_to()) {
+				//std::vector<unit_type*> possible_advancements = u.get_possible_advancements();
+				//int sz = possible_advancements.size();
+				int combat_score_of_advancement = unit_combat_score(ut);
+//				if (combat_score_of_advancement > best_combat_score_of_advancement
+			//}
+			//score+= xp_ratio*unit_combat_score(*ut);
+			}
+		}
+
+*/
+	}
+private:
+	const ai_default_recruitment_stage &stage_;
+};
+
+
+	
+class bad_recalls_remover {
+public:
+	bad_recalls_remover(const std::map<std::string, int> unit_combat_scores)
+		: allow_any_(false), best_combat_score_()
+	{
+		std::map<std::string, int>::const_iterator cs = std::min_element(unit_combat_scores.begin(),unit_combat_scores.end(),unit_combat_scores.value_comp());
+
+		if (cs == unit_combat_scores.end()) {
+			allow_any_ = true;
+		} else {
+			best_combat_score_ = cs->second;
+		}
+	}
+	bool operator()(const std::pair<std::string,double> p) {
+		if (allow_any_) {
+			return false;
+		}
+		if (p.second>=best_combat_score_) {
+			return false;
+		}
+		return true;
+	}
+
+private:
+	bool allow_any_;
+	double best_combat_score_;
+};
+
+
+class combat_score_less {
+public:
+	bool operator()(const std::pair<std::string,double> &s1, const std::pair<std::string,double> &s2)
+	{
+		return s1.second<s2.second;
+	}
+};
+
+bool ai_default_recruitment_stage::analyze_recall_list()
+{
+	if (current_team().gold() < game_config::recall_cost ) {
+		return false;
+	}
+
+	const std::vector<unit> &recalls = current_team().recall_list();
+
+	if (recalls.empty()) {
+		return false;
+	}
+
+	std::transform(recalls.begin(), recalls.end(), std::back_inserter< std::vector <std::pair<std::string,double> > > (recall_list_scores_), unit_combat_score_getter(*this) );
+
+	recall_list_scores_.erase( std::remove_if(recall_list_scores_.begin(), recall_list_scores_.end(), bad_recalls_remover(unit_combat_scores_)), recall_list_scores_.end() );
+
+	sort(recall_list_scores_.begin(),recall_list_scores_.end(),combat_score_less());
+
+	return !(recall_list_scores_.empty());
 }
 
 
@@ -1500,6 +1613,26 @@ bool ai_default_recruitment_stage::do_play_stage()
 
 	analyze_potential_recruit_movements();
 	analyze_potential_recruit_combat();
+
+	//handle recalls
+	//if there any recalls left which have a better combat score/cost ratio, get them
+	bool gamestate_changed = false;
+	std::string id;
+	if (analyze_recall_list()) {
+		while ( !(id = find_suitable_recall_id()).empty() ) {
+		
+			recall_result_ptr recall_res = check_recall_action(id);
+			if (recall_res->is_ok()) {
+				recall_res->execute();
+				if (!recall_res->is_ok()) {
+					ERR_AI << "recall failed "<< std::endl;
+					break;
+				}
+			}
+			gamestate_changed |= recall_res->is_gamestate_changed();
+
+		}
+	}
 
 	std::vector<std::string> options = get_recruitment_pattern();
 	if (std::count(options.begin(), options.end(), "scout") > 0) {
@@ -1567,16 +1700,16 @@ bool ai_default_recruitment_stage::do_play_stage()
 		options.push_back("");
 	}
 	// Buy units as long as we have room and can afford it.
-        bool ret = false;
+
 	while (recruit_usage(options[rand()%options.size()])) {
-		ret = true;
+		gamestate_changed = true;
 		options = get_recruitment_pattern();
 		if (options.empty()) {
 			options.push_back("");
 		}
 	}
 
-	return ret;
+	return gamestate_changed;
 }
 
 
