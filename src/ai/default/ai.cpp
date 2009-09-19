@@ -1516,25 +1516,35 @@ public:
 		std::pair<std::string,int> p;
 		p.first = u.id();
 		assert(u.type()!=NULL);
-		p.second = stage_.get_combat_score(*u.type());
-		return p;
-/*
-		double xp_ratio = u.experience()/u.max_experience();
-		double score = (1-xp_ratio)*get_combat_score[u.type()];
-		if (xp_ratio>0) {
-			int best_combat_score_of_advancement = 0;
-			bool best_combat_score_of_advancement_found = false;
-			foreach (std::string advances_to, u.advances_to()) {
-				//std::vector<unit_type*> possible_advancements = u.get_possible_advancements();
-				//int sz = possible_advancements.size();
-				int combat_score_of_advancement = unit_combat_score(ut);
-//				if (combat_score_of_advancement > best_combat_score_of_advancement
-			//}
-			//score+= xp_ratio*unit_combat_score(*ut);
-			}
+
+		double xp_ratio = 0;
+		if (u.can_advance() && (u.max_experience()>0)) {
+			xp_ratio = u.experience()/u.max_experience();
 		}
 
-*/
+		p.second = (1-xp_ratio) * stage_.get_combat_score(*u.type());
+		if (u.can_advance() && (xp_ratio>0) ) {
+			int best_combat_score_of_advancement = 0;
+			bool best_combat_score_of_advancement_found = false;
+			foreach (const std::string &i, u.advances_to()) {
+				const unit_type_data::unit_type_map::const_iterator ut = unit_type_data::types().find_unit_type(i);
+				if(ut == unit_type_data::types().end()) {
+					continue;
+				}
+
+				int combat_score_of_advancement = stage_.get_combat_score(ut->second);
+				if (!best_combat_score_of_advancement_found || (best_combat_score_of_advancement<combat_score_of_advancement)) {
+					best_combat_score_of_advancement = combat_score_of_advancement;
+					best_combat_score_of_advancement_found = true;
+				}
+
+			}
+			p.second+= xp_ratio*best_combat_score_of_advancement;
+
+		}
+
+		return p;
+
 	}
 private:
 	const ai_default_recruitment_stage &stage_;
@@ -1593,10 +1603,36 @@ bool ai_default_recruitment_stage::analyze_recall_list()
 
 	std::transform(recalls.begin(), recalls.end(), std::back_inserter< std::vector <std::pair<std::string,double> > > (recall_list_scores_), unit_combat_score_getter(*this) );
 
+	if (!lg::debug.dont_log(log_ai)) {
+		std::stringstream s;
+		s << "Recall list (after scoring):"<< std::endl;
+		for (std::vector< std::pair<std::string,double> >::const_iterator p = recall_list_scores_.begin(); p!=recall_list_scores_.end();++p) {
+			s << p->first << " ["<<p->second<<"]"<<std::endl;
+		}
+		DBG_AI << s.str();
+	}
+
 	recall_list_scores_.erase( std::remove_if(recall_list_scores_.begin(), recall_list_scores_.end(), bad_recalls_remover(unit_combat_scores_)), recall_list_scores_.end() );
+
+	if (!lg::debug.dont_log(log_ai)) {
+		std::stringstream s;
+		s << "Recall list, after erase:"<< std::endl;
+		for (std::vector< std::pair<std::string,double> >::const_iterator p = recall_list_scores_.begin(); p!=recall_list_scores_.end();++p) {
+			s << p->first << " ["<<p->second<<"]"<<std::endl;
+		}
+		DBG_AI << s.str();
+	}
 
 	sort(recall_list_scores_.begin(),recall_list_scores_.end(),combat_score_less());
 
+	if (!lg::debug.dont_log(log_ai)) {
+		std::stringstream s;
+		s << "Recall list, after sort (worst to best):"<< std::endl;
+		for (std::vector< std::pair<std::string,double> >::const_iterator p = recall_list_scores_.begin(); p!=recall_list_scores_.end();++p) {
+			s << p->first << " ["<<p->second<<"]"<<std::endl;
+		}
+		DBG_AI << s.str();
+	}
 	return !(recall_list_scores_.empty());
 }
 
