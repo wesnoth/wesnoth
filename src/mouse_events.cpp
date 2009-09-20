@@ -475,7 +475,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 				// (update shroud/fog, clear undo if needed)
 				return false;
 			}
-			
+
 			// a WML event could have invalidated both attacker and defender
 			// so make sure they're valid before attacking
 			u = find_unit(attack_from);
@@ -685,8 +685,8 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 
 		// add dummy names if missing, to keep stats aligned
 		std::string attw_name = attw.name();
-		if(attw_name.empty()) 
-			attw_name = " "; 
+		if(attw_name.empty())
+			attw_name = " ";
 		std::string defw_name = defw.name();
 		if(defw_name.empty())
 			defw_name = " ";
@@ -731,7 +731,7 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 	}
 	cursor::set(cursor::NORMAL);
 
-	return res; 
+	return res;
 }
 
 void mouse_handler::attack_enemy(unit_map::iterator attacker, unit_map::iterator defender, int choice)

@@ -1573,7 +1573,7 @@ private:
 };
 
 
-	
+
 class bad_recalls_remover {
 public:
 	bad_recalls_remover(const std::map<std::string, int> unit_combat_scores)
@@ -1678,7 +1678,7 @@ bool ai_default_recruitment_stage::do_play_stage()
 	std::string id;
 	if (analyze_recall_list()) {
 		while ( !(id = find_suitable_recall_id()).empty() ) {
-		
+
 			recall_result_ptr recall_res = check_recall_action(id);
 			if (recall_res->is_ok()) {
 				recall_res->execute();

@@ -72,7 +72,7 @@ enum tevent {
  *
  * This helper is needed as a user can't supply the wrong kind of callback
  * functions to tdispatcher::connect_signal. If a wrong callback would be send
- * it will never get called. 
+ * it will never get called.
  *
  * This version is for callbacks without extra parameters.
  * NOTE some mouse functions like MOUSE_ENTER don't send the mouse coordinates

@@ -130,7 +130,7 @@ public:
 	 * The signal handler has three callback queues:
 	 * * pre_child These callbacks are called before a container widget sends it
 	 *   to the child items. Widgets without children should also use this
-	 *   queue. 
+	 *   queue.
 	 * * child The callbacks for the proper child widget(s) are called.
 	 * * post_child The callbacks for the parent container to be called after
 	 *   the child.
@@ -139,7 +139,7 @@ public:
 	 * back.
 	 *
 	 * Whether all three queues are executed depend on the whether the
-	 * callbacks modify the handled and halt flag. 
+	 * callbacks modify the handled and halt flag.
 	 * * When the halt flag is set execution of the current queue stops, when
 	 *   doing so the handled flag must be set as well.
 	 * * When the handled flag is set the events in that queue are executed and
