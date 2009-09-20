@@ -20,6 +20,7 @@
 
 #include "play_controller.hpp"
 #include "dialogs.hpp"
+#include "foreach.hpp"
 #include "gettext.hpp"
 #include "loadscreen.hpp"
 #include "log.hpp"
@@ -32,9 +33,12 @@
 #include "game_preferences.hpp"
 #include "wml_exception.hpp"
 #include "formula_string_utils.hpp"
+#include "ai/manager.hpp"
+#include "ai/testing.hpp"
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
+#define DBG_NG LOG_STREAM(debug, log_engine)
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
@@ -75,6 +79,8 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	previous_turn_(0),
 	savenames_(),
 	wml_commands_(),
+	victory_when_enemies_defeated_(true),
+	end_level_data_(),
 	victory_music_(),
 	defeat_music_()
 {
@@ -1109,5 +1115,72 @@ void play_controller::set_defeat_music_list(const std::string& list)
 	defeat_music_  = utils::split(list);
 	if(defeat_music_.empty())
 		defeat_music_ = utils::split(game_config::default_defeat_music);
+}
+
+void play_controller::check_victory()
+{
+	check_end_level();
+
+	std::vector<unsigned> seen_leaders;
+	for (unit_map::const_iterator i = units_.begin(),
+	     i_end = units_.end(); i != i_end; ++i)
+	{
+		if (i->second.can_recruit()) {
+			DBG_NG << "seen leader for side " << i->second.side() << "\n";
+			seen_leaders.push_back(i->second.side());
+		}
+	}
+
+	// Clear villages for teams that have no leader
+	for (std::vector<team>::iterator tm_beg = teams_.begin(), tm = tm_beg,
+	     tm_end = teams_.end(); tm != tm_end; ++tm)
+	{
+		if (std::find(seen_leaders.begin(), seen_leaders.end(), tm - tm_beg + 1) == seen_leaders.end()) {
+			tm->clear_villages();
+			// invalidate_all() is overkill and expensive but this code is
+			// run rarely so do it the expensive way.
+			gui_->invalidate_all();
+		}
+	}
+
+	bool found_player = false;
+
+	for (size_t n = 0; n != seen_leaders.size(); ++n) {
+		size_t side = seen_leaders[n] - 1;
+
+		for (size_t m = n +1 ; m != seen_leaders.size(); ++m) {
+			if (teams_[side].is_enemy(seen_leaders[m])) {
+				return;
+			}
+		}
+
+		if (teams_[side].is_human()) {
+			found_player = true;
+		}
+	}
+
+	if (found_player) {
+		game_events::fire("enemies defeated");
+		check_end_level();
+	}
+
+	if (!victory_when_enemies_defeated_ && (found_player || is_observer())) {
+		// This level has asked not to be ended by this condition.
+		return;
+	}
+
+	if (non_interactive()) {
+		std::cout << "winner: ";
+		foreach (unsigned l, seen_leaders) {
+			std::string ai = ai::manager::get_active_ai_identifier_for_side(l);
+			if (ai.empty()) ai = "default ai";
+			std::cout << l << " (using " << ai << ") ";
+		}
+		std::cout << '\n';
+		ai_testing::log_victory(seen_leaders);
+	}
+
+	DBG_NG << "throwing end level exception...\n";
+	throw end_level_exception(found_player ? VICTORY : DEFEAT);
 }
 

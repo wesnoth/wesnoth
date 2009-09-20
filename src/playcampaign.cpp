@@ -109,7 +109,7 @@ void play_replay(display& disp, game_state& gamestate, const config& game_config
 static LEVEL_RESULT playsingle_scenario(const config& game_config,
 		const config* level, display& disp, game_state& state_of_game,
 		const config::const_child_itors &story, upload_log &log,
-		bool skip_replay, end_level_exception *end_level)
+		bool skip_replay, end_level_data &end_level)
 {
 	const int ticks = SDL_GetTicks();
 	const int num_turns = atoi((*level)["turns"].c_str());
@@ -118,8 +118,9 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 	playsingle_controller playcontroller(*level, state_of_game, ticks, num_turns, game_config, disp.video(), skip_replay);
 	LOG_NG << "created objects... " << (SDL_GetTicks() - playcontroller.get_ticks()) << "\n";
 
-	const LEVEL_RESULT res = playcontroller.play_scenario(story, log, skip_replay, end_level);
+	LEVEL_RESULT res = playcontroller.play_scenario(story, log, skip_replay);
 	log.read_replay();
+	end_level = playcontroller.get_end_level_data();
 
 	if (res == DEFEAT) {
 		gui2::show_transient_message(disp.video(),
@@ -128,7 +129,8 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 				    );
 	}
 
-	if (!disp.video().faked() && res != QUIT && end_level->linger_mode)
+	if (!disp.video().faked() && res != QUIT && end_level.linger_mode)
+	{
 		try {
 			playcontroller.linger(log);
 		} catch(end_level_exception& e) {
@@ -136,6 +138,7 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 				return QUIT;
 			}
 		}
+	}
 
 	return res;
 }
@@ -144,14 +147,15 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 static LEVEL_RESULT playmp_scenario(const config& game_config,
 		config const* level, display& disp, game_state& state_of_game,
 		const config::const_child_itors &story, upload_log &log, bool skip_replay,
-		io_type_t& io_type, end_level_exception *end_level)
+		io_type_t& io_type, end_level_data &end_level)
 {
 	const int ticks = SDL_GetTicks();
 	const int num_turns = atoi((*level)["turns"].c_str());
 	playmp_controller playcontroller(*level, state_of_game, ticks, num_turns,
 		game_config, disp.video(), skip_replay, io_type == IO_SERVER);
-	const LEVEL_RESULT res = playcontroller.play_scenario(story, log, skip_replay, end_level);
+	LEVEL_RESULT res = playcontroller.play_scenario(story, log, skip_replay);
 	log.read_replay();
+	end_level = playcontroller.get_end_level_data();
 	//Check if the player started as mp client and changed to host
 	if (io_type == IO_CLIENT && playcontroller.is_host())
 		io_type = IO_SERVER;
@@ -164,7 +168,7 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 	}
 
 	if (!disp.video().faked() && res != QUIT) {
-		if(!end_level->linger_mode) {
+		if (!end_level.linger_mode) {
 			if(!playcontroller.is_host()) {
 				// If we continue without lingering we need to
 				// make sure the host uploads the next scenario
@@ -296,7 +300,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		bool save_game_after_scenario = true;
 
 		LEVEL_RESULT res = VICTORY;
-		end_level_exception end_level(VICTORY);
+		end_level_data end_level;
 
 		try {
 			// Preserve old label eg. replay
@@ -354,11 +358,11 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 			switch (io_type){
 			case IO_NONE:
-				res = playsingle_scenario(game_config,scenario,disp,gamestate,story,log, skip_replay, &end_level);
+				res = playsingle_scenario(game_config, scenario, disp, gamestate, story, log, skip_replay, end_level);
 				break;
 			case IO_SERVER:
 			case IO_CLIENT:
-				res = playmp_scenario(game_config,scenario,disp,gamestate,story,log, skip_replay, io_type, &end_level);
+				res = playmp_scenario(game_config, scenario, disp, gamestate, story, log, skip_replay, io_type, end_level);
 				break;
 			}
 		} catch(game::load_game_failed& e) {
@@ -418,7 +422,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 		// Continue without saving is like a victory,
 		// but the save game dialog isn't displayed
-		if(!end_level.save)
+		if (!end_level.prescenario_save)
 			save_game_after_scenario = false;
 
 		// Switch to the next scenario.

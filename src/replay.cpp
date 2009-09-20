@@ -827,7 +827,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				//if there are no more advancing units, then we check for victory,
 				//in case the battle that led to advancement caused the end of scenario
 				if(advancing_units.empty()) {
-					check_victory();
+					resources::controller->check_victory();
 				}
 				continue;
 			}
@@ -1150,7 +1150,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			//check victory now if we don't have any advancements. If we do have advancements,
 			//we don't check until the advancements are processed.
 			if(get_replay_source().expected_advancements().empty()) {
-				check_victory();
+				resources::controller->check_victory();
 			}
 			fix_shroud = !get_replay_source().is_skipping();
 		}

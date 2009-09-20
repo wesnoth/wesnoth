@@ -94,8 +94,7 @@ void action_result::execute()
 	if (is_success()){
 		do_execute();
 		try {
-			check_victory();
-			resources::controller->check_end_level();
+			resources::controller->check_victory();
 		} catch (...) {
 			is_ok(); //Silences "unchecked result" warning
 			throw;

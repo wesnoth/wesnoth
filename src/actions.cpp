@@ -17,8 +17,6 @@
  * Recruiting, Fighting.
  */
 
-#include "ai/manager.hpp"
-#include "ai/testing.hpp"
 #include "attack_prediction.hpp"
 #include "foreach.hpp"
 #include "game_display.hpp"
@@ -149,47 +147,6 @@ void move_unit_spectator::set_failed_teleport(const unit_map::const_iterator &u)
 void move_unit_spectator::set_unit(const unit_map::const_iterator &u)
 {
 	unit_ = u;
-}
-
-
-// Conditions placed on victory must be accessible from the global function
-// check_victory, but shouldn't be passed to that function as parameters,
-// since it is called from a variety of places.
-namespace victory_conditions
-{
-	static bool when_enemies_defeated = true;
-	static int carryover_percentage = 80;
-	static bool carryover_add = false;
-
-	void set_victory_when_enemies_defeated(const bool on)
-	{
-		when_enemies_defeated = on;
-	}
-
-	static bool victory_when_enemies_defeated()
-	{
-		return when_enemies_defeated;
-	}
-
-	void set_carryover_percentage(const int percentage)
-	{
-		carryover_percentage = percentage;
-	}
-
-	static int get_carryover_percentage()
-	{
-		return carryover_percentage;
-	}
-
-	void set_carryover_add(const bool add)
-	{
-		carryover_add = add;
-	}
-
-	static bool get_carryover_add()
-	{
-		return carryover_add;
-	}
 }
 
 bool can_recruit_on(const gamemap& map, const map_location& leader, const map_location loc)
@@ -1953,77 +1910,6 @@ void advance_unit(map_location loc, const std::string &advance_to)
 	resources::units->replace(loc, new_unit);
 	LOG_NG << "firing post_advance event at " << loc << "\n";
 	game_events::fire("post_advance",loc);
-}
-
-void check_victory()
-{
-	std::vector<unsigned int> seen_leaders;
-	for (unit_map::const_iterator i = resources::units->begin(),
-	     i_end = resources::units->end(); i != i_end; ++i)
-	{
-		if(i->second.can_recruit()) {
-			DBG_NG << "seen leader for side " << i->second.side() << "\n";
-			seen_leaders.push_back(i->second.side());
-		}
-	}
-
-	// Clear villages for teams that have no leader
-	for (std::vector<team>::iterator tm_beg = resources::teams->begin(), tm = tm_beg,
-	     tm_end = resources::teams->end(); tm != tm_end; ++tm)
-	{
-		if (std::find(seen_leaders.begin(), seen_leaders.end(), tm - tm_beg + 1) == seen_leaders.end()) {
-			tm->clear_villages();
-			// invalidate_all() is overkill and expensive but this code is
-			// run rarely so do it the expensive way.
-			resources::screen->invalidate_all();
-		}
-	}
-
-	bool found_enemies = false;
-	bool found_player = false;
-
-	for(size_t n = 0; n != seen_leaders.size(); ++n) {
-		const size_t side = seen_leaders[n]-1;
-
-		for(size_t m = n+1; m != seen_leaders.size(); ++m) {
-			if ((*resources::teams)[side].is_enemy(seen_leaders[m])) {
-				found_enemies = true;
-			}
-		}
-
-		if ((*resources::teams)[side].is_human()) {
-			found_player = true;
-		}
-	}
-
-	if(found_enemies == false) {
-		if (found_player) {
-			game_events::fire("enemies defeated");
-		}
-
-		if (victory_conditions::victory_when_enemies_defeated() == false
-				&& (found_player || is_observer())){
-			// This level has asked not to be ended by this condition.
-			return;
-		}
-
-		if(non_interactive()) {
-			std::cout << "winner: ";
-			for(std::vector<unsigned int>::const_iterator i = seen_leaders.begin(); i != seen_leaders.end(); ++i) {
-				std::string ai = ai::manager::get_active_ai_identifier_for_side(*i);
-				if (ai == "") ai = "default ai";
-				std::cout << *i << " (using " << ai << ") ";
-			}
-			std::cout << "\n";
-			ai_testing::log_victory(seen_leaders);
-		}
-
-		LOG_NG << "throwing end level exception...\n";
-
-		throw end_level_exception(found_player ? VICTORY : DEFEAT, "",
-				victory_conditions::get_carryover_percentage(),
-				victory_conditions::get_carryover_add());
-	}
 }
 
 int combat_modifier(const unit_map &units, const map_location &loc,

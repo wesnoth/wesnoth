@@ -25,6 +25,7 @@
 #include <string>
 
 enum LEVEL_RESULT {
+	NONE,
 	VICTORY,
 	DEFEAT,
 	QUIT,
@@ -33,47 +34,46 @@ enum LEVEL_RESULT {
 };
 
 /**
- * Exception used to signal the end of a scenario.
- * It also conveys additional information on the game
- * outcomes which can be provided by WML.
+ * Exception used to signal the end of a player turn.
  */
-struct end_level_exception {
-	end_level_exception(
-		LEVEL_RESULT res,
-		const std::string& endlevel_music_list="",
-		const int percentage = -1,
-		const bool add = false,
-		const bool bonus=true,
-		const bool report=true,
-		const bool prescenario_save=true,
-		const bool linger=true
-	)
-		: result(res)
-		, carryover_report(report)
-		, save(prescenario_save)
-		, linger_mode(linger)
-		, gold_bonus(bonus)
-		, carryover_percentage(percentage)
-		, carryover_add(add)
-		, custom_endlevel_music(endlevel_music_list)
+struct end_turn_exception
+{
+	end_turn_exception(unsigned r = 0): redo(r) {}
+	unsigned redo;
+};
+
+/**
+ * Exception used to signal the end of a scenario.
+ */
+struct end_level_exception
+{
+	end_level_exception(LEVEL_RESULT res): result(res) {}
+	LEVEL_RESULT result;
+};
+
+
+/**
+ * Additional information on the game outcome which can be provided by WML.
+ */
+struct end_level_data
+{
+	end_level_data()
+		: carryover_report(true)
+		, prescenario_save(true)
+		, linger_mode(true)
+		, gold_bonus(true)
+		, carryover_percentage(80)
+		, carryover_add(false)
+		, custom_endlevel_music()
 	{}
 
-	LEVEL_RESULT result;               /**< Game outcome. */
-	bool carryover_report;			   /**< Should a summary of the scenario outcome be displayed?*/
-	bool save;						   /**< Should a prescenario be created the next game?*/
-	bool linger_mode;				   /**< Should linger mode be invoked?*/
+	bool carryover_report;             /**< Should a summary of the scenario outcome be displayed? */
+	bool prescenario_save;             /**< Should a prescenario be created the next game? */
+	bool linger_mode;                  /**< Should linger mode be invoked? */
 	bool gold_bonus;                   /**< Should early-finish bonus be applied? */
 	int carryover_percentage;          /**< How much gold is carried over to next scenario. */
 	bool carryover_add;                /**< Add or replace next scenario's minimum starting gold. */
 	std::string custom_endlevel_music; /**< Custom short music played at the end. */
-};
-
-/**
- * Signals the end of a player turn.
- */
-struct end_turn_exception {
-	end_turn_exception(unsigned int r = 0): redo(r) {}
-	unsigned int redo;
 };
 
 #endif /* ! GAME_END_EXCEPTIONS_HPP_INCLUDED */

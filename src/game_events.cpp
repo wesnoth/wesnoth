@@ -2785,67 +2785,73 @@ WML_HANDLER_FUNCTION(endlevel, /*event_info*/, cfg)
 	game_state *state_of_game = resources::state_of_game;
 	unit_map *units = resources::units;
 
-		// Remove 0-hp units from the unit map to avoid the following problem:
-		// In case a die event triggers an endlevel the dead unit is still as a
-		// 'ghost' in linger mode. After save loading in linger mode the unit
-		// is fully visible again.
-		unit_map::iterator u = units->begin();
-		while(u != units->end()) {
-			if(u->second.hitpoints() <= 0) {
-				units->erase(u++);
-			} else {
-				++u;
-			}
-		}
-
-		const std::string next_scenario = cfg["next_scenario"];
-		if(next_scenario.empty() == false) {
-			state_of_game->classification().next_scenario = next_scenario;
-		}
-
-		const std::string end_of_campaign_text = cfg["end_text"];
-		if(! end_of_campaign_text.empty()) {
-			state_of_game->classification().end_text = end_of_campaign_text;
-		}
-		const std::string end_of_campaign_text_delay = cfg["end_text_duration"];
-		if(! end_of_campaign_text_delay.empty()) {
-			state_of_game->classification().end_text_duration =
-				lexical_cast_default<unsigned int,const std::string&>(end_of_campaign_text_delay, state_of_game->classification().end_text_duration);
-		}
-
-		const std::string result = cfg["result"].base_str(); //do not translate
-		const std::string endlevel_music = cfg["music"];
-
-		const bool carryover_report = utils::string_bool(cfg["carryover_report"],true);
-		const bool save = utils::string_bool(cfg["save"],true);
-		const bool linger_mode = utils::string_bool(cfg["linger_mode"],true);
-
-		if(result.empty() || result == "victory") {
-			const bool bonus = utils::string_bool(cfg["bonus"],true);
-			const int carry_over = lexical_cast_default<int>
-				(cfg["carryover_percentage"],
-				 game_config::gold_carryover_percentage);
-			const bool gold_add = utils::string_bool(cfg["carryover_add"],
-					game_config::gold_carryover_add);
-
-			resources::controller->force_end_level(VICTORY, endlevel_music,
-				carry_over, gold_add, bonus, carryover_report, save, linger_mode);
-		} else if(result == "continue") {
-			lg::wml_error << "continue is deprecated as result in [endlevel],"
-				<< " use the new attributes instead.\n";
-			resources::controller->force_end_level(VICTORY, endlevel_music,
-				100, false, false, false, true, false);
-		} else if(result == "continue_no_save") {
-			lg::wml_error << "continue_no_save is deprecated as result in [endlevel],"
-				<< " use the new attributes instead.\n";
-			resources::controller->force_end_level(VICTORY, endlevel_music,
-				100, false, false, false, false, false);
+	// Remove 0-hp units from the unit map to avoid the following problem:
+	// In case a die event triggers an endlevel the dead unit is still as a
+	// 'ghost' in linger mode. After save loading in linger mode the unit
+	// is fully visible again.
+	unit_map::iterator u = units->begin();
+	while (u != units->end()) {
+		if (u->second.hitpoints() <= 0) {
+			units->erase(u++);
 		} else {
-			LOG_NG << "throwing event defeat...\n";
-			resources::controller->force_end_level(DEFEAT, endlevel_music,
-				-1, false, true, carryover_report, save, linger_mode);
+			++u;
 		}
 	}
+
+	std::string next_scenario = cfg["next_scenario"];
+	if (!next_scenario.empty()) {
+		state_of_game->classification().next_scenario = next_scenario;
+	}
+
+	std::string end_of_campaign_text = cfg["end_text"];
+	if (!end_of_campaign_text.empty()) {
+		state_of_game->classification().end_text = end_of_campaign_text;
+	}
+
+	std::string end_of_campaign_text_delay = cfg["end_text_duration"];
+	if (!end_of_campaign_text_delay.empty()) {
+		state_of_game->classification().end_text_duration =
+			lexical_cast_default<unsigned int,const std::string&>(end_of_campaign_text_delay, state_of_game->classification().end_text_duration);
+	}
+
+	end_level_data &data = resources::controller->get_end_level_data();
+
+	std::string result = cfg["result"];
+	data.custom_endlevel_music = cfg["music"];
+	data.carryover_report = utils::string_bool(cfg["carryover_report"], true);
+	data.prescenario_save = utils::string_bool(cfg["save"], true);
+	data.linger_mode = utils::string_bool(cfg["linger_mode"], true);
+	data.gold_bonus = utils::string_bool(cfg["bonus"], true);
+	data.carryover_percentage = lexical_cast_default<int>
+		(cfg["carryover_percentage"],
+		 game_config::gold_carryover_percentage);
+	data.carryover_add = utils::string_bool(cfg["carryover_add"],
+		game_config::gold_carryover_add);
+
+	if (result.empty() || result == "victory") {
+		resources::controller->force_end_level(VICTORY);
+	} else if (result == "continue") {
+		lg::wml_error << "continue is deprecated as result in [endlevel],"
+			" use the new attributes instead.\n";
+		data.carryover_percentage = 100;
+		data.carryover_add = false;
+		data.carryover_report = false;
+		data.linger_mode = false;
+		resources::controller->force_end_level(VICTORY);
+	} else if (result == "continue_no_save") {
+		lg::wml_error << "continue_no_save is deprecated as result in [endlevel],"
+			" use the new attributes instead.\n";
+		data.carryover_percentage = 100;
+		data.carryover_add = false;
+		data.carryover_report = false;
+		data.prescenario_save = false;
+		data.linger_mode = false;
+		resources::controller->force_end_level(VICTORY);
+	} else {
+		data.carryover_add = false;
+		resources::controller->force_end_level(DEFEAT);
+	}
+}
 
 WML_HANDLER_FUNCTION(redraw, /*event_info*/, cfg)
 {

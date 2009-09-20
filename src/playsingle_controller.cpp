@@ -54,13 +54,11 @@ playsingle_controller::playsingle_controller(const config& level,
 	textbox_info_(),
 	replay_sender_(recorder),
 	end_turn_(false),
-	end_level_(NULL),
 	player_type_changed_(false),
 	replaying_(false),
 	turn_over_(false),
 	skip_next_turn_(false),
-	victory_music_(),
-	defeat_music_()
+	level_result_(NONE)
 {
 	// game may need to start in linger mode
 	if (state_of_game.classification().completion == "victory" || state_of_game.classification().completion == "defeat")
@@ -74,14 +72,11 @@ playsingle_controller::playsingle_controller(const config& level,
 	ai::manager::add_observer(this) ;
 }
 
-
 playsingle_controller::~playsingle_controller()
 {
 	ai::manager::remove_observer(this) ;
 	ai::manager::clear_ais() ;
-	delete end_level_;
 }
-
 
 void playsingle_controller::init_gui(){
 	LOG_NG << "Initializing GUI... " << (SDL_GetTicks() - ticks_) << "\n";
@@ -138,26 +133,10 @@ void playsingle_controller::force_end_turn(){
 	end_turn_ = true;
 }
 
-void playsingle_controller::force_end_level(LEVEL_RESULT res,
-	const std::string &endlevel_music_list, int percentage, bool add,
-	bool bonus, bool report, bool prescenario_save, bool linger)
-{
-	if (end_level_) {
-		// Or should we merge them instead?
-		return;
-	}
-	victory_conditions::set_victory_when_enemies_defeated(false);
-	end_level_ = new end_level_exception(res, endlevel_music_list, percentage,
-		add, bonus, report, prescenario_save, linger);
-}
-
 void playsingle_controller::check_end_level()
 {
-	if (!end_level_) return;
-	end_level_exception exn(*end_level_);
-	delete end_level_;
-	end_level_ = NULL;
-	throw exn;
+	if (level_result_ == NONE) return;
+	throw end_level_exception(level_result_);
 }
 
 void playsingle_controller::rename_unit(){
@@ -222,12 +201,10 @@ void playsingle_controller::user_command_3(){
 #endif
 
 void playsingle_controller::report_victory(
-		    std::stringstream& report,
-		    end_level_exception& end_level,
-		    int player_gold,
-		    int remaining_gold, int finishing_bonus_per_turn,
-		    int turns_left, int finishing_bonus)
+	std::ostringstream &report, int player_gold, int remaining_gold,
+	int finishing_bonus_per_turn, int turns_left, int finishing_bonus)
 {
+	end_level_data &end_level = get_end_level_data();
 	report << _("Remaining gold: ")
 		   << remaining_gold << "\n";
 	if(end_level.gold_bonus) {
@@ -282,7 +259,7 @@ void playsingle_controller::report_victory(
 
 LEVEL_RESULT playsingle_controller::play_scenario(
 	const config::const_child_itors &story, upload_log &log,
-	bool skip_replay, end_level_exception *end_level_result)
+	bool skip_replay)
 {
 	LOG_NG << "in playsingle_controller::play_scenario()...\n";
 
@@ -315,14 +292,13 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		soundsources_manager_->add(spec);
 	}
 
-	victory_conditions::set_victory_when_enemies_defeated(
-		utils::string_bool(level_["victory_when_enemies_defeated"], true)
-	);
-	victory_conditions::set_carryover_percentage(
-		lexical_cast_default<int>(level_["carryover_percentage"],
-		game_config::gold_carryover_percentage));
-	victory_conditions::set_carryover_add(utils::string_bool(
-		level_["carryover_add"], game_config::gold_carryover_add));
+	set_victory_when_enemies_defeated(
+		utils::string_bool(level_["victory_when_enemies_defeated"], true));
+	end_level_data &end_level = get_end_level_data();
+	end_level.carryover_percentage = lexical_cast_default<int>(
+		level_["carryover_percentage"], game_config::gold_carryover_percentage);
+	end_level.carryover_add = utils::string_bool(
+		level_["carryover_add"], game_config::gold_carryover_add);
 
 	LOG_NG << "entering try... " << (SDL_GetTicks() - ticks_) << "\n";
 	try {
@@ -360,14 +336,15 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		if (linger_) {
 			//determine the bonus gold handling for this scenario
 			const config end_cfg = level_.child_or_empty("endlevel");
-
-			throw end_level_exception(SKIP_TO_LINGER, "",
-				lexical_cast_default<int>(level_["carryover_percentage"],game_config::gold_carryover_percentage),
-				utils::string_bool(level_["carryover_add"], game_config::gold_carryover_add),
-				utils::string_bool(end_cfg["bonus"], true),
-				false
-				);
-
+			end_level.carryover_percentage = lexical_cast_default<int>(
+				level_["carryover_percentage"],
+				game_config::gold_carryover_percentage);
+			end_level.carryover_add = utils::string_bool(
+				level_["carryover_add"],
+				game_config::gold_carryover_add);
+			end_level.gold_bonus = utils::string_bool(end_cfg["bonus"], true);
+			end_level.carryover_report = false;
+			throw end_level_exception(SKIP_TO_LINGER);
 		}
 
 		// Avoid autosaving after loading, but still
@@ -383,15 +360,13 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		// Loading a new game is effectively a quit.
 		log.quit(turn());
 		throw;
-	} catch(end_level_exception& end_level) {
+	} catch (end_level_exception &end_level_exn) {
 		ai_testing::log_game_end();
-		*end_level_result = end_level;
-		if(!end_level.custom_endlevel_music.empty()) {
-			switch(end_level.result) {
-			case DEFEAT:
+		LEVEL_RESULT end_level_result = end_level_exn.result;
+		if (!end_level.custom_endlevel_music.empty()) {
+			if (end_level_result == DEFEAT) {
 				set_defeat_music_list(end_level.custom_endlevel_music);
-				break;
-			default:
+			} else {
 				set_victory_music_list(end_level.custom_endlevel_music);
 			}
 		}
@@ -408,8 +383,9 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		if (game_config::exit_at_end) {
 			exit(0);
 		}
-		if (end_level.result == DEFEAT || end_level.result == VICTORY) {
-			gamestate_.classification().completion = (end_level.result == VICTORY) ? "victory" : "defeat";
+		if (end_level_result == DEFEAT || end_level_result == VICTORY)
+		{
+			gamestate_.classification().completion = (end_level_exn.result == VICTORY) ? "victory" : "defeat";
 			// If we're a player, and the result is victory/defeat, then send
 			// a message to notify the server of the reason for the game ending.
 			if (!obs) {
@@ -426,10 +402,12 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			}
 		}
 
-		if(end_level.result == QUIT) {
+		if (end_level_result == QUIT) {
 			log.quit(turn());
-			return end_level.result;
-		} else if(end_level.result == DEFEAT) {
+			return QUIT;
+		}
+		else if (end_level_result == DEFEAT)
+		{
 			gamestate_.classification().completion = "defeat";
 			log.defeat(turn());
 			game_events::fire("defeat");
@@ -443,10 +421,11 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			} else {
 				return QUIT;
 			}
-		} else if (end_level.result == VICTORY)
+		}
+		else if (end_level_result == VICTORY)
 		{
-			gamestate_.classification().completion = (!end_level.linger_mode ?
-			                         "running" : "victory");
+			gamestate_.classification().completion =
+				!end_level.linger_mode ? "running" : "victory";
 			game_events::fire("victory");
 
 			//
@@ -458,7 +437,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			// a victory, so let them use [music] tags
 			// instead should they want special music.
 			//
-			if(end_level.result == VICTORY && (!obs) && (end_level.linger_mode)) {
+			if (!obs && end_level.linger_mode) {
 				const std::string& victory_music = select_victory_music();
 				if(victory_music.empty() != true)
 					sound::play_music_once(victory_music);
@@ -481,16 +460,16 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			gamestate_.snapshot = config();
 			store_recalls();
 			//store gold and report victory
-			store_gold(end_level, obs);
-
+			store_gold(obs);
 			return VICTORY;
-		} else if (end_level.result == SKIP_TO_LINGER) {
+		}
+		else if (end_level_result == SKIP_TO_LINGER)
+		{
 			LOG_NG << "resuming from loaded linger state...\n";
 			//as carryover information is stored in the snapshot, we have to re-store it after loading a linger state
 			gamestate_.snapshot = config();
 			store_recalls();
-			store_gold(end_level);
-
+			store_gold();
 			return VICTORY;
 		}
 	} // end catch
@@ -879,83 +858,76 @@ void playsingle_controller::store_recalls() {
 	}
 }
 
-void playsingle_controller::store_gold(end_level_exception& end_level, const bool obs) {
-			const bool has_next_scenario = !gamestate_.classification().next_scenario.empty() &&
-					gamestate_.classification().next_scenario != "null";
+void playsingle_controller::store_gold(bool obs)
+{
+	bool has_next_scenario = !gamestate_.classification().next_scenario.empty() &&
+		gamestate_.classification().next_scenario != "null";
 
-			std::stringstream report;
-			std::string title;
+	std::ostringstream report;
+	std::string title;
 
-			if (obs) {
-				title = _("Scenario Report");
-			} else {
-				title = _("Victory");
-				report << "<b>" << _("You have emerged victorious!") << "</b>\n\n";
-			}
+	if (obs) {
+		title = _("Scenario Report");
+	} else {
+		title = _("Victory");
+		report << "<b>" << _("You have emerged victorious!") << "</b>\n\n";
+	}
 
-			int persistent_teams = 0;
-			for(std::vector<team>::iterator j=teams_.begin(); j!=teams_.end(); ++j) {
-				if (j->persistent()) persistent_teams++;
-			}
+	int persistent_teams = 0;
+	foreach (const team &t, teams_) {
+		if (t.persistent()) ++persistent_teams;
+	}
 
-			if (persistent_teams > 0 &&
-					 (has_next_scenario ||
-					 gamestate_.classification().campaign_type == "test")) {
-				const int finishing_bonus_per_turn =
-						 map_.villages().size() * game_config::village_income +
-						 game_config::base_income;
-				const int turns_left = std::max<int>(0, number_of_turns() - turn());
-				const int finishing_bonus = (end_level.gold_bonus && (turns_left > -1)) ?
-						 (finishing_bonus_per_turn * turns_left) : 0;
-				std::vector<team>::iterator i;
-				for(i=teams_.begin(); i!=teams_.end(); ++i) {
+	end_level_data &end_level = get_end_level_data();
 
-					if (i->persistent()) {
-						int carryover_gold = ((i->gold() + finishing_bonus) * end_level.carryover_percentage) / 100;
+	if (persistent_teams > 0 && (has_next_scenario ||
+		gamestate_.classification().campaign_type == "test"))
+	{
+		int finishing_bonus_per_turn =
+			map_.villages().size() * game_config::village_income +
+			game_config::base_income;
+		int turns_left = std::max<int>(0, number_of_turns() - turn());
+		int finishing_bonus = (end_level.gold_bonus && turns_left > -1) ?
+			finishing_bonus_per_turn * turns_left : 0;
+		foreach (const team &t, teams_)
+		{
+			if (!t.persistent()) continue;
+			int carryover_gold = ((t.gold() + finishing_bonus) * end_level.carryover_percentage) / 100;
+			config::child_itors side_range = gamestate_.snapshot.child_range("side");
+			config::child_iterator side_it = side_range.first;
 
-						//store the gold in snapshot side
-						config::child_itors side_range = gamestate_.snapshot.child_range("side");
-						config::child_iterator side_it = side_range.first;
-						//check if this side already exists in the snapshot
-						while (side_it != side_range.second) {
-							if ((*side_it)["save_id"] == i->save_id()) {
-								(*side_it)["gold"] = str_cast<int>(carryover_gold);
-								(*side_it)["gold_add"] = end_level.carryover_add ? "yes" : "no";
-								break;
-							}
-							side_it++;
-						}
-						//if it doesnt, add a new child
-						if (side_it == side_range.second) {
-							config& new_side = gamestate_.snapshot.add_child("side");
-							new_side["save_id"] = i->save_id();
-							new_side["gold"] = str_cast<int>(carryover_gold);
-							new_side["gold_add"] = end_level.carryover_add ? "yes" : "no";
-
-						}
-
-						// Only show the report for ourselves.
-						if (!i->is_human())
-							continue;
-
-						if(persistent_teams > 1) {
-							if(i!=teams_.begin()) {
-								report << "\n";
-							}
-
-							report << "<b>" << i->current_player() << "</b>\n";
-						}
-
-						report_victory(report, end_level, carryover_gold, i->gold(), finishing_bonus_per_turn, turns_left, finishing_bonus);
-					}
+			// Check if this side already exists in the snapshot.
+			while (side_it != side_range.second) {
+				if ((*side_it)["save_id"] == t.save_id()) {
+					(*side_it)["gold"] = str_cast<int>(carryover_gold);
+					(*side_it)["gold_add"] = end_level.carryover_add ? "yes" : "no";
+					break;
 				}
+				++side_it;
 			}
 
-			if(end_level.carryover_report)
-			{
-				gui2::show_transient_message(gui_->video(),
-					title, report.str(), true);
+			// If it doesn't, add a new child.
+			if (side_it == side_range.second) {
+				config &new_side = gamestate_.snapshot.add_child("side");
+				new_side["save_id"] = t.save_id();
+				new_side["gold"] = str_cast<int>(carryover_gold);
+				new_side["gold_add"] = end_level.carryover_add ? "yes" : "no";
 			}
+
+			// Only show the report for ourselves.
+			if (!t.is_human()) continue;
+
+			if (persistent_teams > 1) {
+				report << "\n<b>" << t.current_player() << "</b>\n";
+			}
+
+			report_victory(report, carryover_gold, t.gold(), finishing_bonus_per_turn, turns_left, finishing_bonus);
+		}
+	}
+
+	if (end_level.carryover_report) {
+		gui2::show_transient_message(gui_->video(), title, report.str(), true);
+	}
 }
 
 bool playsingle_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int index) const

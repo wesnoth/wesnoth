@@ -30,10 +30,10 @@ class playsingle_controller : public play_controller
 public:
 	playsingle_controller(const config& level, game_state& state_of_game,
 		const int ticks, const int num_turns, const config& game_config, CVideo& video, bool skip_replay);
-        virtual ~playsingle_controller() ;
+	virtual ~playsingle_controller();
 
-	LEVEL_RESULT play_scenario(const config::const_child_itors &story, upload_log &log,
-		bool skip_replay, end_level_exception *end_level = NULL);
+	LEVEL_RESULT play_scenario(const config::const_child_itors &story,
+		upload_log &log, bool skip_replay);
 
 	virtual void handle_generic_event(const std::string& name);
 
@@ -63,9 +63,8 @@ public:
 #endif
 	void linger(upload_log& log);
 
-	virtual void force_end_level(LEVEL_RESULT res, const std::string &endlevel_music_list,
-		int percentage, bool add, bool bonus, bool report, bool prescenario_save,
-		bool linger);
+	virtual void force_end_level(LEVEL_RESULT res)
+	{ level_result_ = res; }
 	virtual void check_end_level();
 
 protected:
@@ -82,7 +81,7 @@ protected:
 	virtual void init_gui();
 	void check_time_over();
 	void store_recalls();
-	void store_gold(end_level_exception& end_level, const bool obs = false);
+	void store_gold(bool obs = false);
 
 	const cursor::setter cursor_setter;
 	std::deque<config> data_backlog_;
@@ -90,20 +89,15 @@ protected:
 	replay_network_sender replay_sender_;
 
 	bool end_turn_;
-	end_level_exception *end_level_;
 	bool player_type_changed_;
 	bool replaying_;
 	bool turn_over_;
 	bool skip_next_turn_;
+	LEVEL_RESULT level_result_;
 private:
-	void report_victory(std::stringstream& report,
-		    end_level_exception& end_level,
-		    int player_gold,
-		    int remaining_gold, int finishing_bonus_per_turn,
-		    int turns_left, int finishing_bonus);
-
-	std::vector<std::string> victory_music_;
-	std::vector<std::string> defeat_music_;
+	void report_victory(std::ostringstream &report, int player_gold,
+		int remaining_gold, int finishing_bonus_per_turn,
+		int turns_left, int finishing_bonus);
 };
 
 

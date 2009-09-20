@@ -81,12 +81,19 @@ public:
 	virtual void play_side(const unsigned int team_num, bool save) = 0;
 
 	virtual void force_end_turn() = 0;
-	virtual void force_end_level(LEVEL_RESULT res,
-		const std::string &endlevel_music_list = std::string(),
-		int percentage = -1, bool add = false, bool bonus = true,
-		bool report = true, bool prescenario_save = true,
-		bool linger = true) = 0;
+	virtual void force_end_level(LEVEL_RESULT res) = 0;
 	virtual void check_end_level() = 0;
+
+	void set_victory_when_enemies_defeated(bool e)
+	{ victory_when_enemies_defeated_ = true; }
+	end_level_data &get_end_level_data()
+	{ return end_level_data_; }
+
+	/**
+	 * Checks to see if a side has won, and throws an end_level_exception.
+	 * Will also remove control of villages from sides with dead leaders.
+	 */
+	void check_victory();
 
 	//turn functions
 	size_t turn() const {return tod_manager_.turn();}
@@ -209,6 +216,8 @@ private:
 	std::vector<wml_menu_item *> wml_commands_;
 	static const size_t MAX_WML_COMMANDS = 7;
 
+	bool victory_when_enemies_defeated_;
+	end_level_data end_level_data_;
 	std::vector<std::string> victory_music_;
 	std::vector<std::string> defeat_music_;
 };

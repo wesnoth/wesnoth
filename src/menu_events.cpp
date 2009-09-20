@@ -3045,11 +3045,21 @@ void console_handler::do_ignore_replay_errors() {
 void console_handler::do_nosaves() {
 	game_config::disable_autosave = (get_data() != "off") ? true : false;
 }
-void console_handler::do_next_level() {
+
+void console_handler::do_next_level()
+{
 	if (!get_data().empty())
 		menu_handler_.gamestate_.classification().next_scenario = get_data();
-	throw end_level_exception(VICTORY, "", 100, false, false, false, true, false);
+	end_level_data &e = resources::controller->get_end_level_data();
+	e.carryover_percentage = 100;
+	e.carryover_add = false;
+	e.gold_bonus = false;
+	e.carryover_report = false;
+	e.prescenario_save = true;
+	e.linger_mode = false;
+	throw end_level_exception(VICTORY);
 }
+
 void console_handler::do_choose_level() {
 	std::vector<std::string> options;
 	int next = 0, nb = 0;
@@ -3071,9 +3081,17 @@ void console_handler::do_choose_level() {
 
 	if (size_t(choice) < options.size()) {
 		menu_handler_.gamestate_.classification().next_scenario = options[choice];
-		throw end_level_exception(VICTORY, "", 100, false, false, false, true, false);
+		end_level_data &e = resources::controller->get_end_level_data();
+		e.carryover_percentage = 100;
+		e.carryover_add = false;
+		e.gold_bonus = false;
+		e.carryover_report = false;
+		e.prescenario_save = true;
+		e.linger_mode = false;
+		throw end_level_exception(VICTORY);
 	}
 }
+
 void console_handler::do_debug() {
 	if (network::nconnections() == 0) {
 		print(get_cmd(), _("Debug mode activated!"));

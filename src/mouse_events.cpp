@@ -27,6 +27,7 @@
 #include "map.hpp"
 #include "marked-up_text.hpp"
 #include "menu_events.hpp"
+#include "play_controller.hpp"
 #include "sound.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
@@ -823,7 +824,7 @@ void mouse_handler::perform_attack(
 		dialogs::advance_unit(defender_loc, !defender_human);
 	}
 
-	check_victory();
+	resources::controller->check_victory();
 	gui().draw();
 }
 

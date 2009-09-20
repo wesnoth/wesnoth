@@ -38,8 +38,6 @@ class unit;
 
 bool can_recruit_on(const gamemap& map, const map_location& leader, const map_location loc);
 
-struct end_level_exception;
-
 /**
  * Finds a location to place a unit.
  * If @a need_castle is true, a leader of the @a side must be on a keep
@@ -327,13 +325,6 @@ map_location under_leadership(const unit_map& units,
                                    const map_location& loc, int* bonus=NULL);
 
 /**
- * Checks to see if a side has won, and will throw
- * an end_level_exception if one has.
- * Will also remove control of villages from sides with dead leaders.
- */
-void check_victory();
-
-/**
  * Returns the amount that a unit's damage should be multiplied by
  * due to the current time of day.
  */
@@ -414,13 +405,6 @@ void apply_shroud_changes(undo_list &undos, int side);
  * it can do (including attacking etc).
  */
 bool unit_can_move(const unit &u);
-
-
-namespace victory_conditions {
-	void set_victory_when_enemies_defeated(const bool on);
-	void set_carryover_percentage(const int percentage);
-	void set_carryover_add(const bool add);
-}
 
 /**
  * Function to check if an attack will satisfy the requirements for backstab.
