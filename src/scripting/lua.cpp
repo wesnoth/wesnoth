@@ -1378,7 +1378,7 @@ double lua_calculator::cost(const map_location &loc, double so_far) const
 
 	double cost = lua_tonumber(L, -1);
 	lua_pop(L, 2);
-	return cost;
+	return !(cost >= 1.) ? 1. : cost;
 }
 
 lua_calculator::~lua_calculator()
