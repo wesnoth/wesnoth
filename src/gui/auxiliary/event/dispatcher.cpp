@@ -39,7 +39,7 @@ tdispatcher::tdispatcher()
 tdispatcher::~tdispatcher()
 {
 	if(connected_) {
-		connect_dispatcher(this);
+		disconnect_dispatcher(this);
 	}
 }
 
