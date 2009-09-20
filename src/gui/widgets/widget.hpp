@@ -15,6 +15,7 @@
 #ifndef GUI_WIDGETS_WIDGET_HPP_INCLUDED
 #define GUI_WIDGETS_WIDGET_HPP_INCLUDED
 
+#include "gui/auxiliary/event/dispatcher.hpp"
 #include "gui/widgets/event_executor.hpp"
 #include "gui/widgets/helper.hpp"
 #include "sdl_utils.hpp"
@@ -40,6 +41,7 @@ class twindow;
 class twidget
 	: private boost::noncopyable
 	, public virtual tevent_executor
+	, public virtual event::tdispatcher
 {
 	friend class tdebug_layout_graph;
 	friend class twindow; // needed for modifying the layout_size.
