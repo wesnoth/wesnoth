@@ -144,33 +144,37 @@ msgstr ""
 
         def handle_element(nav, fn):
             if isAttribute(nav):
-                attributes_stack[-1].append(nav.text.strip())
-                get_translatables(nav, fn)
                 if verbose > 1:
                     print "Attribute", nav, "with ancestors", nav.ancestors()
+                try:
+                    attributes_stack[-1].append(nav.text.strip())
+                except IndexError:
+                    print >>sys.stderr, "wmlxgettext: Attributes without an enclosing tag."
+                    sys.exit(1)
+                get_translatables(nav, fn)
             elif isCloser(nav):
-                contexts[opener_stack.pop()] = attributes_stack.pop()
                 if verbose > 1:
                     print "Closing scope", nav
+                contexts[opener_stack.pop()] = attributes_stack.pop()
             elif isOpener(nav):
-                attributes_stack.append([])
-                opener_stack.append((nav.element, fn, nav.lineno))
                 if verbose > 1:
                     print "Opening scope", nav
-            elif isMacroOpener(nav):
+                attributes_stack.append([])
                 opener_stack.append((nav.element, fn, nav.lineno))
-                get_translatables(nav, fn)
+            elif isMacroOpener(nav):
                 if verbose > 1:
                     print "Opening macro scope", nav
+                opener_stack.append((nav.element, fn, nav.lineno))
+                get_translatables(nav, fn)
             elif isMacroCloser(nav):
-                opener_stack.pop()
                 if verbose > 1:
                     print "Closing macro scope", nav
+                opener_stack.pop()
             elif inMacroContinuation(nav):
-                nav.element = "argument"
-                get_translatables(nav, fn)
                 if verbose > 1:
                     print "In macro continuation", `nav.text`
+                nav.element = "argument"
+                get_translatables(nav, fn)
             elif isInlineMacro(nav):
                 if verbose > 1:
                     print "Inline macro", nav
