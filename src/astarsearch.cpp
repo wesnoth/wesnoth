@@ -150,7 +150,9 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 		return locRoute;
 	}
 
-	std::vector<map_location> locs(teleports ?  6+teleports->size() : 6 );
+	if (teleports && teleports->empty()) teleports = NULL;
+
+	std::vector<map_location> locs(teleports ? 6 + teleports->size() : 6 );
 	if (teleports) {
 		std::copy(teleports->begin(), teleports->end(), locs.begin() + 6);
 	}
