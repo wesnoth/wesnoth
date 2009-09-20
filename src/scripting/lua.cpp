@@ -35,6 +35,7 @@ static lg::log_domain lua("scripting/lua");
 LuaKernel::LuaKernel() {LOG_STREAM(err, lua) << "Lua support disabled in this build";}
 LuaKernel::~LuaKernel() {}
 void LuaKernel::run_event(vconfig const&, game_events::queued_event const&) {}
+bool LuaKernel::run_filter(char const *name, unit const &u) { return false; }
 void LuaKernel::run(char const *prog) {}
 void LuaKernel::execute(char const *prog, int nArgs, int nRets) {}
 #else  // HAVE LUA
@@ -1717,6 +1718,44 @@ void LuaKernel::run_event(vconfig const &cfg, game_events::queued_event const &e
 
 	queued_event_context dummy(&ev);
 	execute(prog.c_str(), 1, 0);
+}
+
+/**
+ * Runs a script from a unit filter.
+ * The script is an already compiled function given by its name.
+ */
+bool LuaKernel::run_filter(char const *name, unit const &u)
+{
+	lua_State *L = mState;
+
+	unit_map::const_unit_iterator ui = resources::units->find(u.get_location());
+	if (!ui.valid()) return false;
+
+	// Load the error handler and get the user filter
+	lua_pushlightuserdata(L, (void *)&executeKey);
+	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_getglobal(L, name);
+
+	// Pass the unit as argument.
+	size_t *p = static_cast<size_t *>(lua_newuserdata(L, sizeof(size_t)));
+	*p = ui->second.underlying_id();
+	lua_pushlightuserdata(L, (void *)&getunitKey);
+	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_setmetatable(L, -2);
+
+	int res = lua_pcall(L, 1, 1, -3);
+	if (res)
+	{
+		char const *m = lua_tostring(L, -1);
+		chat_message("Lua error", m);
+		ERR_LUA << m << '\n';
+		lua_pop(L, 2);
+		return false;
+	}
+
+	bool b = lua_toboolean(L, -1);
+	lua_pop(L, 2);
+	return b;
 }
 
 /**

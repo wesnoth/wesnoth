@@ -27,6 +27,7 @@ public:
 	LuaKernel();
 	~LuaKernel();
 	void run_event(vconfig const &, game_events::queued_event const &);
+	bool run_filter(char const *name, unit const &u);
 	void run(char const *prog);
 };
 

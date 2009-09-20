@@ -37,6 +37,7 @@
 #include "terrain_filter.hpp"
 #include "formula_string_utils.hpp"
 #include "team.hpp"
+#include "scripting/lua.hpp"
 
 static lg::log_domain log_unit("unit");
 #define DBG_UT LOG_STREAM(debug, log_unit)
@@ -1271,6 +1272,12 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 		if(!form.evaluate(callable).as_bool()) {//@todo: use formula_ai
 			return false;
 		}
+	}
+
+	if (cfg.has_attribute("lua_function")) {
+		bool b = resources::lua_kernel->run_filter
+			(cfg["lua_function"].c_str(), *this);
+		if (!b) return false;
 	}
 
 	return true;
