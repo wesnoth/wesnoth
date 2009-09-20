@@ -85,7 +85,7 @@ public:
 	virtual void check_end_level() = 0;
 
 	void set_victory_when_enemies_defeated(bool e)
-	{ victory_when_enemies_defeated_ = true; }
+	{ victory_when_enemies_defeated_ = e; }
 	end_level_data &get_end_level_data()
 	{ return end_level_data_; }
 
