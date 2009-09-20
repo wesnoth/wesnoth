@@ -28,7 +28,10 @@ namespace event {
 /***** tdispatcher class. *****/
 
 tdispatcher::tdispatcher()
-	: signal_queue_()
+	: mouse_behaviour_(all)
+	, signal_queue_()
+	, signal_mouse_queue_()
+	, signal_keyboard_queue_()
 	, connected_(false)
 {
 }
