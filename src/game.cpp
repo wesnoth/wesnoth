@@ -46,6 +46,7 @@
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 #include "gui/widgets/debug.hpp"
 #endif
+#include "gui/auxiliary/event/handler.hpp"
 #include "gui/widgets/window.hpp"
 #include "help.hpp"
 #include "hotkeys.hpp"
@@ -1979,6 +1980,7 @@ static int do_gameloop(int argc, char** argv)
 	cursor::set(cursor::WAIT);
 
 	gui2::init();
+	const gui2::event::tmanager gui_event_manager;
 
 	loadscreen::global_loadscreen_manager loadscreen_manager(game.disp().video());
 
