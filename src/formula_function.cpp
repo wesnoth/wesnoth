@@ -661,6 +661,36 @@ private:
 	}
 };
 
+class reduce_function : public function_expression {
+public:
+	explicit reduce_function(const args_list& args)
+	    : function_expression("reduce", args, 2, 2)
+	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		std::vector<variant> list_vars;
+		std::map<variant,variant> map_vars;
+		const variant items = args()[0]->evaluate(variables,fdb);
+
+		if(items.num_elements() == 0)
+			return variant();
+		else if(items.num_elements() == 1)
+			return items[0];
+
+		variant_iterator it = items.get_iterator();
+		it = items.begin();
+		variant res(*it);
+		map_formula_callable self_callable;
+		self_callable.add_ref();
+		for(++it; it != items.end(); ++it) {
+			self_callable.add("a", res);
+			self_callable.add("b", *it);
+			res = args().back()->evaluate(formula_callable_with_backup(self_callable, formula_variant_callable_with_backup(*it, variables)),fdb);
+		}
+		return res;
+	}
+};
+
 class sum_function : public function_expression {
 public:
 	explicit sum_function(const args_list& args)
@@ -1002,6 +1032,7 @@ functions_map& get_functions_map() {
 		FUNCTION(filter);
 		FUNCTION(find);
 		FUNCTION(map);
+		FUNCTION(reduce);
 		FUNCTION(sum);
 		FUNCTION(head);
 		FUNCTION(size);
