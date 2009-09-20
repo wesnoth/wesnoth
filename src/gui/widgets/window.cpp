@@ -434,7 +434,7 @@ int twindow::show(const bool restore, const unsigned auto_close_timeout)
 		if (event_loop_pre_cb_) {
 			event_loop_pre_cb_();
 		}
-		process_events();
+		events::pump();
 		// Add a delay so we don't keep spinning if there's no event.
 		SDL_Delay(10);
 	}
