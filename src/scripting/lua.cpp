@@ -1408,6 +1408,7 @@ static int intf_find_path(lua_State *L)
 	}
 
 	map_location src, dst;
+	unit_map &units = *resources::units;
 	const unit *u = NULL;
 
 	if (lua_isuserdata(L, arg))
@@ -1415,7 +1416,7 @@ static int intf_find_path(lua_State *L)
 		if (!luaW_hasmetatable(L, 1, getunitKey))
 			goto error_call_destructors;
 		size_t id = *static_cast<size_t *>(lua_touserdata(L, 1));
-		unit_map::const_unit_iterator ui = resources::units->find(id);
+		unit_map::const_unit_iterator ui = units.find(id);
 		if (!ui.valid())
 			goto error_call_destructors;
 		u = &ui->second;
@@ -1431,7 +1432,7 @@ static int intf_find_path(lua_State *L)
 		if (!lua_isnumber(L, arg))
 			goto error_call_destructors;
 		src.y = lua_tointeger(L, arg) - 1;
-		unit_map::const_unit_iterator ui = resources::units->find(src);
+		unit_map::const_unit_iterator ui = units.find(src);
 		if (!ui.valid())
 			goto error_call_destructors;
 		u = &ui->second;
@@ -1450,7 +1451,7 @@ static int intf_find_path(lua_State *L)
 	std::vector<team> &teams = *resources::teams;
 	gamemap &map = *resources::game_map;
 	int viewing_side = u->side();
-	bool ignore_units = false;
+	bool ignore_units = false, see_all = false, ignore_teleport = false;
 
 	cost_calculator *calc = NULL;
 
@@ -1460,10 +1461,17 @@ static int intf_find_path(lua_State *L)
 		lua_gettable(L, arg);
 		ignore_units = lua_toboolean(L, -1);
 		lua_pop(L, 1);
+		lua_pushstring(L, "ignore_teleport");
+		lua_gettable(L, arg);
+		ignore_teleport = lua_toboolean(L, -1);
+		lua_pop(L, 1);
 		lua_pushstring(L, "viewing_side");
 		lua_gettable(L, arg);
-		int i = lua_tointeger(L, -1);
-		if (i >= 1 && i <= int(teams.size())) viewing_side = i;
+		if (!lua_isnil(L, -1)) {
+			int i = lua_tointeger(L, -1);
+			if (i >= 1 && i <= int(teams.size())) viewing_side = i;
+			else see_all = true;
+		}
 		lua_pop(L, 1);
 	}
 	else if (lua_isfunction(L, arg))
@@ -1471,12 +1479,21 @@ static int intf_find_path(lua_State *L)
 		calc = new lua_calculator(L, arg);
 	}
 
-	if (!calc) {
-		calc = new shortest_path_calculator(*u, teams[viewing_side - 1],
-			*resources::units, teams, map, ignore_units);
+	team &viewing_team = teams[viewing_side - 1];
+	std::set<map_location> teleport_locations;
+
+	if (!ignore_teleport) {
+		teleport_locations = get_teleport_locations(
+			*u, units, viewing_team, see_all, ignore_units);
 	}
 
-	plain_route res = a_star_search(src, dst, 10000.0, calc, map.w(), map.h());
+	if (!calc) {
+		calc = new shortest_path_calculator(*u, viewing_team,
+			units, teams, map, ignore_units);
+	}
+
+	plain_route res = a_star_search(src, dst, 10000.0, calc, map.w(), map.h(),
+		&teleport_locations);
 	delete calc;
 
 	int nb = res.steps.size();
