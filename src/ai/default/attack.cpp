@@ -360,7 +360,7 @@ bool ai_default::desperate_attack(const map_location &loc)
 
 	for (unsigned n = 0; n != 6; ++n)
 	{
-		const unit *enemy = get_visible_unit(units_, adj[n], map_, teams_, current_team());
+		const unit *enemy = get_visible_unit(units_, adj[n], current_team());
 		if (!enemy || !current_team().is_enemy(enemy->side()) || enemy->incapacitated())
 			continue;
 		const std::vector<attack_type> &attacks = u.attacks();
@@ -395,7 +395,7 @@ bool ai_default::desperate_attack(const map_location &loc)
 	// Who would do most damage to us when they attack?  (approximate: may be different ToD)
 	for (unsigned n = 0; n != 6; ++n)
 	{
-		const unit *enemy = get_visible_unit(units_, adj[n], map_, teams_, current_team());
+		const unit *enemy = get_visible_unit(units_, adj[n], current_team());
 		if (!enemy || !current_team().is_enemy(enemy->side()) || enemy->incapacitated())
 			continue;
 		const std::vector<attack_type> &attacks = enemy->attacks();

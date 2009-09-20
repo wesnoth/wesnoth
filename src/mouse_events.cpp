@@ -261,12 +261,12 @@ unit_map::iterator mouse_handler::selected_unit()
 
 unit_map::iterator mouse_handler::find_unit(const map_location& hex)
 {
-	return find_visible_unit(units_,hex,map_,teams_,viewing_team());
+	return find_visible_unit(units_, hex, viewing_team());
 }
 
 unit_map::const_iterator mouse_handler::find_unit(const map_location& hex) const
 {
-	return find_visible_unit(units_,hex,map_,teams_,viewing_team());
+	return find_visible_unit(units_, hex, viewing_team());
 }
 
 map_location mouse_handler::current_unit_attacks_from(const map_location& loc)

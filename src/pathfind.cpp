@@ -84,17 +84,15 @@ map_location find_vacant_tile(const gamemap& map,
 	return map_location();
 }
 
-bool enemy_zoc(gamemap const &map,
-               unit_map const &units,
-               std::vector<team> const &teams,
-               map_location const &loc, team const &viewing_team, int side, bool see_all)
+bool enemy_zoc(unit_map const &units, std::vector<team> const &teams,
+	map_location const &loc, team const &viewing_team, int side, bool see_all)
 {
 	map_location locs[6];
 	const team &current_team = teams[side-1];
 	get_adjacent_tiles(loc,locs);
 	for (int i = 0; i != 6; ++i)
 	{
-		const unit *u = get_visible_unit(units, locs[i], map, teams, viewing_team, see_all);
+		const unit *u = get_visible_unit(units, locs[i], viewing_team, see_all);
 		if (u && u->side() != side && current_team.is_enemy(u->side()) &&
 		    u->emits_zoc())
 		{
@@ -182,7 +180,7 @@ static void find_routes(const gamemap& map, const unit_map& units,
 			    viewing_team.fogged(l))
 				continue;
 			if (!ignore_units && l != loc &&
-			    get_visible_unit(units, l, map, teams, viewing_team, see_all))
+			    get_visible_unit(units, l, viewing_team, see_all))
 				continue;
 			teleports.insert(l);
 		}
@@ -242,12 +240,12 @@ static void find_routes(const gamemap& map, const unit_map& units,
 
 			if (!ignore_units) {
 				const unit *v =
-					get_visible_unit(units, locs[i], map, teams, viewing_team, see_all);
+					get_visible_unit(units, locs[i], viewing_team, see_all);
 				if (v && current_team.is_enemy(v->side()))
 					continue;
 
 				if (!force_ignore_zocs && t.movement_left > 0
-						&& enemy_zoc(map, units, teams, locs[i], viewing_team, u.side(), see_all)
+						&& enemy_zoc(units, teams, locs[i], viewing_team, u.side(), see_all)
 						&& !u.get_ability_bool("skirmisher", locs[i])) {
 					t.movement_left = 0;
 				}
@@ -428,7 +426,7 @@ marked_route mark_route(const plain_route &rt,
 			res.waypoints[*i] = marked_route::waypoint(0, pass_here, zoc, false, invisible);
 		}
 
-		zoc = enemy_zoc(map,units,teams, *(i+1), viewing_team,u.side())
+		zoc = enemy_zoc(units, teams, *(i + 1), viewing_team,u.side())
 					&& !u.get_ability_bool("skirmisher", *(i+1));
 
 		if (zoc || capture) {
@@ -472,7 +470,7 @@ double shortest_path_calculator::cost(const map_location& loc, const double so_f
 	int other_unit_subcost = 0;
 	if (!ignore_unit_) {
 		const unit *other_unit =
-			get_visible_unit(units_, loc, map_, teams_, viewing_team_);
+			get_visible_unit(units_, loc, viewing_team_);
 
 		// We can't traverse visible enemy and we also prefer empty hexes
 		// (less blocking in multi-turn moves and better when exploring fog,
@@ -511,7 +509,7 @@ double shortest_path_calculator::cost(const map_location& loc, const double so_f
 
 	// check ZoC
 	if (!ignore_unit_ && remaining_movement != terrain_cost
-			&& enemy_zoc(map_,units_,teams_, loc, viewing_team_, unit_.side())
+			&& enemy_zoc(units_, teams_, loc, viewing_team_, unit_.side())
 			&& !unit_.get_ability_bool("skirmisher", loc)) {
 		// entering ZoC cost all remaining MP
 		move_cost += remaining_movement;

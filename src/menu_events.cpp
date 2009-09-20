@@ -1343,12 +1343,12 @@ void menu_handler::rename_unit(mouse_handler& mousehandler)
 unit_map::iterator menu_handler::current_unit(mouse_handler& mousehandler)
 {
 	unit_map::iterator res = find_visible_unit(units_, mousehandler.get_last_hex(),
-		map_, teams_, teams_[gui_->viewing_team()]);
+		teams_[gui_->viewing_team()]);
 	if(res != units_.end()) {
 		return res;
 	} else {
 		return find_visible_unit(units_, mousehandler.get_selected_hex(),
-		map_, teams_, teams_[gui_->viewing_team()]);
+			teams_[gui_->viewing_team()]);
 	}
 }
 

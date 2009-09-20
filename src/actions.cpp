@@ -2210,7 +2210,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 		team_num = ui->second.side()-1;
 		tm = &teams[team_num];
 
-		if (!skirmisher && enemy_zoc(map, units, teams, *step, *tm, ui->second.side())) {
+		if (!skirmisher && enemy_zoc(units, teams, *step, *tm, ui->second.side())) {
 			moves_left = 0;
 		}
 

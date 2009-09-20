@@ -2824,32 +2824,23 @@ int side_upkeep(const unit_map& units, int side)
 	return res;
 }
 
-unit_map::iterator find_visible_unit(unit_map& units,
-		const map_location &loc,
-		const gamemap& map,
-		  const std::vector<team>& teams, const team& current_team,
-		bool see_all)
+unit_map::iterator find_visible_unit(unit_map& units, const map_location &loc,
+	const team& current_team, bool see_all)
 {
+	if (!resources::game_map->on_board(loc)) return units.end();
 	unit_map::iterator u = units.find(loc);
-	if(map.on_board(loc) && !see_all){
-		if(u != units.end()){
-			if(current_team.fogged(loc)){
-				return units.end();
-			}
-			if(current_team.is_enemy(u->second.side()) &&
-					u->second.invisible(loc,units,teams)) {
-				return units.end();
-			}
-		}
-	}
+	if (see_all) return u;
+	if (!u.valid() || current_team.fogged(loc) ||
+	    (current_team.is_enemy(u->second.side()) &&
+	     u->second.invisible(loc, units, *resources::teams)))
+		return units.end();
 	return u;
 }
 
 const unit *get_visible_unit(const unit_map &units, const map_location &loc,
-	const gamemap &map, const std::vector<team> &teams, const team &current_team,
-	bool see_all)
+	const team &current_team, bool see_all)
 {
-	unit_map::const_iterator ui = find_visible_unit(units, loc, map, teams,
+	unit_map::const_iterator ui = find_visible_unit(units, loc,
 		current_team, see_all);
 	if (ui == units.end()) return NULL;
 	return &ui->second;
