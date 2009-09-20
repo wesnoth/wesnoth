@@ -258,6 +258,8 @@ wesnoth_sources = Split("""
     widgets/drop_target.cpp
     widgets/scrollpane.cpp
     gui/auxiliary/canvas.cpp
+    gui/auxiliary/event/dispatcher.cpp
+    gui/auxiliary/event/handler.cpp
     gui/auxiliary/log.cpp
     gui/auxiliary/widget_definition.cpp
     gui/auxiliary/window_builder/button.cpp

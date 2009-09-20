@@ -218,6 +218,8 @@ set(wesnoth-main_SRC
     generate_report.cpp
     generic_event.cpp
     gui/auxiliary/canvas.cpp
+    gui/auxiliary/event/dispatcher.cpp
+    gui/auxiliary/event/handler.cpp
     gui/auxiliary/log.cpp
     gui/auxiliary/widget_definition.cpp
     gui/auxiliary/window_builder/button.cpp
