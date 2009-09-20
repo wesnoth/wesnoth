@@ -146,11 +146,7 @@ msgstr ""
             if isAttribute(nav):
                 if verbose > 1:
                     print "Attribute", nav, "with ancestors", nav.ancestors()
-                try:
-                    attributes_stack[-1].append(nav.text.strip())
-                except IndexError:
-                    print >>sys.stderr, "wmlxgettext: Attributes without an enclosing tag."
-                    sys.exit(1)
+                attributes_stack[-1].append(nav.text.strip())
                 get_translatables(nav, fn)
             elif isCloser(nav):
                 if verbose > 1:
@@ -203,8 +199,12 @@ msgstr ""
                             if verbose:
                                 print "wmlxgettext: skipping %s, wrong domain" % fn
                             continue
+                opener_stack.append(("<toplevel>", fn, 0))
+                attributes_stack.append([])
                 for nav in WmllintIterator(lines, fn):
                     handle_element(nav, fn)
+                opener_stack.pop()
+                
         # Debugging output
         if verbose:
             print "Translatables:"
