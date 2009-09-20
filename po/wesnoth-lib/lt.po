@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-09-16 21:47+0200\n"
+"POT-Creation-Date: 2009-09-20 15:43+0200\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lietuvių <komp_lt@konferencijos.lt>\n"
@@ -792,7 +792,7 @@ msgstr ""
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:86
-#: data/gui/default/window/gamestate_inspector.cfg:187
+#: data/gui/default/window/gamestate_inspector.cfg:268
 msgid "Actions"
 msgstr "Veiksmai"
 
@@ -967,23 +967,36 @@ msgid "Save already exists. Do you want to overwrite it?"
 msgstr ""
 
 #. [label]
-#: data/gui/default/window/gamestate_inspector.cfg:33
+#: data/gui/default/window/gamestate_inspector.cfg:38
 msgid "Gamestate Inspector"
 msgstr ""
 
 #. [label]
-#: data/gui/default/window/gamestate_inspector.cfg:86
+#: data/gui/default/window/gamestate_inspector.cfg:92
+#, fuzzy
+msgid "Types"
+msgstr "Tipas"
+
+#. [label]
+#: data/gui/default/window/gamestate_inspector.cfg:103
 #, fuzzy
 msgid "Content"
 msgstr "Prisijungti"
 
 #. [label]
-#: data/gui/default/window/gamestate_inspector.cfg:97
+#: data/gui/default/window/gamestate_inspector.cfg:114
 msgid "Inspection window"
 msgstr ""
 
+#. [label]: id=unit_type
+#. [label]: id=typename
+#: data/gui/default/window/gamestate_inspector.cfg:145
+#: data/gui/default/window/unit_create.cfg:138
+msgid "Type"
+msgstr "Tipas"
+
 #. [label]: id=name
-#: data/gui/default/window/gamestate_inspector.cfg:125
+#: data/gui/default/window/gamestate_inspector.cfg:206
 msgid "Variable"
 msgstr ""
 
@@ -991,7 +1004,7 @@ msgstr ""
 #. [button]: id=ok
 #. [button]: id=cancel
 #. [button]: id=close_window
-#: data/gui/default/window/gamestate_inspector.cfg:250
+#: data/gui/default/window/gamestate_inspector.cfg:331
 #: data/gui/default/window/lobby_main.cfg:503
 #: data/gui/default/window/lobby_player_info.cfg:192
 #: data/gui/default/window/message.cfg:122 src/construct_dialog.cpp:140
@@ -1562,11 +1575,6 @@ msgstr "Generuoti žemėlapį"
 #: data/gui/default/window/unit_create.cfg:126
 msgid "Race"
 msgstr "Rasė"
-
-#. [label]: id=unit_type
-#: data/gui/default/window/unit_create.cfg:138
-msgid "Type"
-msgstr "Tipas"
 
 #: src/filechooser.cpp:74
 msgid "File: "

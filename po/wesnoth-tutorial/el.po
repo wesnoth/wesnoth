@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-09-16 21:47+0200\n"
+"POT-Creation-Date: 2009-09-20 15:45+0200\n"
 "PO-Revision-Date: 2008-01-31 02:12+0200\n"
 "Last-Translator: Konstantinos Egarhos <atixos@gmail.com>\n"
 "Language-Team: none\n"
@@ -421,8 +421,8 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:534
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:664
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:696
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:820
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:872
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:831
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:883
 msgid "Click on the End Turn button"
 msgstr "Κάνε κλικ στο κουμπί Τέλος Γύρου"
 
@@ -530,7 +530,7 @@ msgstr ""
 "Δεξί κλικ σε κάποιο άλλο χώρο του κάστρου και στρατολόγησε μια ακόμα μονάδα"
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:718
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:722
 #, fuzzy
 msgid ""
 "Hey, the quintain just healed 2 hitpoints! I'd better attack it at once!"
@@ -539,12 +539,19 @@ msgstr ""
 "να επιτεθώ αμέσως!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:722
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:726
 msgid "Yes, if a unit doesn't do anything for a turn, it will slowly heal."
 msgstr ""
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:734
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:732
+msgid ""
+"Had the quintain survived your onslaught, it would have regained two "
+"hitpoints. If a unit doesn't do anything for a turn, it will slowly heal."
+msgstr ""
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:745
 #, fuzzy
 msgid ""
 "But before you send your fighters against the quintain, you should know they "
@@ -556,13 +563,13 @@ msgstr ""
 "ξέρεις ότι έχουν δύο είδη επιθέσεων..."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:738
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:749
 #, fuzzy
 msgid "I'll tell them to use the one that does the most damage!"
 msgstr "Θα τους πω να χρησιμοποιήσουν αυτό που κάνει την πιο πολλή ζημιά!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:742
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:753
 #, fuzzy
 msgid ""
 "And which would that be? The sword (5-4) or the bow (3-3)? I suppose you'll "
@@ -571,18 +578,18 @@ msgstr ""
 "Και πιο είναι αυτό; Το σπαθί (5-4) ή το τόξο (3-3); Υποθέτω θα το βρεις..."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:744
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:755
 msgid "Left click on an Elvish Fighter"
 msgstr "Αριστερό κλικ στο Ξωτικοπολεμιστή"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:745
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:756
 #, fuzzy
 msgid "End your turn and attack again."
 msgstr "Τελείωσε τον γύρω σου, και τότε ξανακάνε επίθεση."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:764
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:775
 msgid ""
 "You wouldn't do anything stupid like charging that quintain yourself again, "
 "now would you?\n"
@@ -590,12 +597,12 @@ msgid ""
 msgstr ""
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:775
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:786
 msgid "Left click on the Quintain to attack it."
 msgstr "Αριστερό κλικ στο Ανδρόκειλο για να επιτεθείς."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:809
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:820
 #, fuzzy
 msgid ""
 "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
@@ -607,7 +614,7 @@ msgstr ""
 "5). Η επίθεση από απόσταση ήταν ασφαλέστερη."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:817
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:828
 #, fuzzy
 msgid ""
 "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
@@ -621,7 +628,7 @@ msgstr ""
 "Τελείωσε τον γύρο σου, και ξαναπροσπάθησε."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:829
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:840
 #, fuzzy
 msgid ""
 "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
@@ -634,15 +641,15 @@ msgstr ""
 "Καλύτερα να πεις στο άλλο Ξωτικό να χρησιμοποιήσει τόξο."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:832
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:881
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:843
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:892
 #, fuzzy
 msgid "Attack with the other Elf"
 msgstr "Κάνε επίθεση με το άλλο Ξωτικό"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:861
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:879
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:872
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:890
 #, fuzzy
 msgid ""
 "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
@@ -654,7 +661,7 @@ msgstr ""
 "έτσι δεν μπόρεσε να αμυνθεί."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:869
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:880
 #, fuzzy
 msgid ""
 "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
@@ -668,19 +675,19 @@ msgstr ""
 "Τελείωσε τον γύρο σου, και ξανακάνε επίθεση."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:900
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:911
 #, fuzzy
 msgid "Keep attacking with both elves until the quintain is finished!"
 msgstr ""
 "Συνέχισε να πολεμάς, με τα δύο ξωτικά, μέχρι να νικήσεις το ανδρόκειλο!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:914
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:925
 msgid "Maybe you should recruit another elf?"
 msgstr "Μήπως θα έπρεπε να στρατολογήσεις ένα ακόμα ξωτικό;"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:920
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:931
 msgid ""
 "Note:\n"
 "You can right click on a unit to see a detailed Unit Description."
@@ -689,7 +696,7 @@ msgstr ""
 "Μπορείς να κάνεις δεξί κλικ σε μια μονάδα για να δεις το Προφίλ τους."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:943
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:954
 #, fuzzy
 msgid ""
 "Note:\n"
@@ -703,7 +710,7 @@ msgstr ""
 "μονάδες με μεγαλύτερη εμπειρία (BE)."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:962
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:973
 msgid ""
 "Note:\n"
 "Each village you own can support a single unit for free. After that, each "
@@ -714,7 +721,7 @@ msgstr ""
 "κάθε μονάδα κοστίζει ένα νόμισμα ανά γύρο."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:979
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:990
 #, fuzzy
 msgid ""
 "Note:\n"
@@ -731,7 +738,7 @@ msgstr ""
 "επιπέδου."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:996
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1007
 #, fuzzy
 msgid ""
 "Note:\n"
@@ -749,14 +756,14 @@ msgstr ""
 "ευστοχήσουν όπου και αν είναι ο αντίπαλος."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1021
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1032
 #, fuzzy
 msgid "The quintain is dead, and I have gained more experience!"
 msgstr "Το ανδρόκειλο είναι νεκρό, κύριοι, και πήρα περισσότερη εμπειρία!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1026
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1030
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1037
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1041
 #, fuzzy
 msgid ""
 "Yes, you gain experience through battle, especially by killing an opponent. "
@@ -766,7 +773,7 @@ msgstr ""
 "Όσο πιο πολύ εμπειρία τόσο ισχυρότερος γίνεσαι."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1027
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1038
 #, fuzzy
 msgid ""
 " Now, Konrad, I will leave you with more dummies to practice on! After that, "
@@ -776,7 +783,7 @@ msgstr ""
 "Μετά, έχουμε λίγη πραγματική δουλειά να κάνουμε..."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1031
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1042
 #, fuzzy
 msgid ""
 " Now, Li'sar, I will leave you with more dummies to practice on! After that, "
@@ -786,7 +793,7 @@ msgstr ""
 "ασχοληθούμε με πραγματικές μάχες..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1070
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1081
 msgid ""
 "Note:\n"
 "These dummies only attack if you are a single tile away. With care, you "
@@ -797,22 +804,22 @@ msgstr ""
 "καταφέρεις να τις σκοτώσεις μία μία."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1079
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1090
 msgid "Do you want to keep practicing?"
 msgstr "Θέλεις να συνεχίσεις την εξάσκηση;"
 
 #. [option]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1081
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1092
 msgid "Yes, I'm still figuring it out."
 msgstr "Ναι, ακόμα μαθαίνω."
 
 #. [option]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1084
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1095
 msgid "No, I think I've got it."
 msgstr "Όχι, νομίζω το'πιασα."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1125
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1136
 #, fuzzy
 msgid ""
 "After your victory notice, the map will be grayed out to indicate that the "

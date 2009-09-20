@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-09-16 21:47+0200\n"
+"POT-Creation-Date: 2009-09-20 15:59+0200\n"
 "PO-Revision-Date: 2009-08-17 13:45+0200\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team:  <ru@li.org>\n"
@@ -103,12 +103,12 @@ msgid "Lobby sounds"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/ai/scenarios/ai_arena_small/0002-poisoning.cfg:16
+#: data/ai/scenarios/ai_arena_small/0002-poisoning.cfg:17
 msgid "This situation should test the ability of AI to spread poison around..."
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/ai/scenarios/ai_arena_small/0003-simple_combat.cfg:16
+#: data/ai/scenarios/ai_arena_small/0003-simple_combat.cfg:17
 msgid "This situation should test the ability of AI to make an attack..."
 msgstr ""
 
@@ -122,7 +122,7 @@ msgstr "Подземелье"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:304
-#: src/actions.cpp:1142 src/actions.cpp:1415
+#: src/actions.cpp:1099 src/actions.cpp:1372
 msgid "poisoned"
 msgstr "отравлен"
 
@@ -181,14 +181,14 @@ msgstr ""
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1241
-#: src/actions.cpp:1147 src/actions.cpp:1420
+#: src/actions.cpp:1104 src/actions.cpp:1377
 msgid "female^slowed"
 msgstr "замедлена"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [else]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1244
-#: src/actions.cpp:1147 src/actions.cpp:1420
+#: src/actions.cpp:1104 src/actions.cpp:1377
 msgid "slowed"
 msgstr "замедлен"
 
@@ -6981,8 +6981,8 @@ msgstr "Закончить сценарий"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:205 src/unit.cpp:2386
-#: src/unit.cpp:2540
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:205 src/unit.cpp:2374
+#: src/unit.cpp:2528
 msgid "HP"
 msgstr "ЗД"
 
@@ -7128,53 +7128,53 @@ msgstr "пропустить анимацию"
 msgid "Close"
 msgstr "Закрыть"
 
-#: src/actions.cpp:235
+#: src/actions.cpp:192
 msgid "You don't have a leader to recruit with."
 msgstr "У вас нет лидера, который мог бы вербовать."
 
-#: src/actions.cpp:242
+#: src/actions.cpp:199
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
 "Вы можете вербовать или призывать бойцов, только если Ваш лидер находится в "
 "замке."
 
-#: src/actions.cpp:261
+#: src/actions.cpp:218
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "В замке нет свободных полей для нового бойца."
 
-#: src/actions.cpp:395 src/actions.cpp:454 src/actions.cpp:1021
+#: src/actions.cpp:352 src/actions.cpp:411 src/actions.cpp:978
 #, fuzzy
 msgid "An invalid attacker weapon got selected."
 msgstr "Выбрана неправильная эра"
 
-#: src/actions.cpp:400
+#: src/actions.cpp:357
 #, fuzzy
 msgid "An invalid defender weapon got selected."
 msgstr "Выбрана неправильная эра"
 
-#: src/actions.cpp:1142 src/actions.cpp:1415
+#: src/actions.cpp:1099 src/actions.cpp:1372
 msgid "female^poisoned"
 msgstr "отравлена"
 
-#: src/actions.cpp:1154 src/actions.cpp:1427
+#: src/actions.cpp:1111 src/actions.cpp:1384
 #, fuzzy
 msgid "female^petrified"
 msgstr "отравлена"
 
-#: src/actions.cpp:1154 src/actions.cpp:1427
+#: src/actions.cpp:1111 src/actions.cpp:1384
 msgid "petrified"
 msgstr ""
 
-#: src/actions.cpp:2480
+#: src/actions.cpp:2366
 msgid "Ambushed!"
 msgstr "Засада!"
 
-#: src/actions.cpp:2487
+#: src/actions.cpp:2373
 msgid "Failed teleport! Exit not empty"
 msgstr "Телепорт не удался. Пункт назначения не пуст."
 
 # ignore-interpolations: $friends
-#: src/actions.cpp:2532
+#: src/actions.cpp:2418
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Вижу дружественного бойца"
@@ -7182,32 +7182,32 @@ msgstr[1] "Вижу $friends дружественных бойцов"
 msgstr[2] "Вижу $friends дружественных бойцов"
 
 # ignore-interpolations: $enemies
-#: src/actions.cpp:2535
+#: src/actions.cpp:2421
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Вижу врага!"
 msgstr[1] "Вижу $enemies врагов!"
 msgstr[2] "Вижу $enemies врагов!"
 
-#: src/actions.cpp:2540
+#: src/actions.cpp:2426
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "$friends дружественный, "
 msgstr[1] "$friends дружественных, "
 msgstr[2] "$friends дружественных, "
 
-#: src/actions.cpp:2541
+#: src/actions.cpp:2427
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "$enemies вражеский"
 msgstr[1] "$enemies вражеских"
 msgstr[2] "$enemies вражеских"
 
-#: src/actions.cpp:2542
+#: src/actions.cpp:2428
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Вижу войска! ($friendphrase, $enemyphrase)"
 
-#: src/actions.cpp:2551
+#: src/actions.cpp:2437
 msgid "(press $hotkey to keep moving)"
 msgstr "(нажмите $hotkey, чтобы продолжить движение)"
 
@@ -7569,7 +7569,7 @@ msgstr "Нет подходящего оружия"
 msgid "Chance of being unscathed"
 msgstr "Шанс выйти целым"
 
-#: src/attack_prediction_display.cpp:547 src/mouse_events.cpp:716
+#: src/attack_prediction_display.cpp:547 src/mouse_events.cpp:717
 msgid "Damage Calculations"
 msgstr "Подсчёт ущерба"
 
@@ -7726,8 +7726,8 @@ msgstr "Ходов: "
 msgid "The Battle for Wesnoth"
 msgstr "Битва за Веснот"
 
-#: src/game.cpp:994 src/game.cpp:1002 src/playsingle_controller.cpp:498
-#: src/playsingle_controller.cpp:553
+#: src/game.cpp:994 src/game.cpp:1002 src/playsingle_controller.cpp:477
+#: src/playsingle_controller.cpp:532
 msgid "The file you have tried to load is corrupt"
 msgstr "Файл, который Вы пытались загрузить, поврежден"
 
@@ -7771,15 +7771,15 @@ msgstr "Больше мне это не показывайте!"
 msgid "Error while starting server: "
 msgstr "Ошибка при запуске сервера: "
 
-#: src/game.cpp:1351 src/playcampaign.cpp:99 src/playcampaign.cpp:365
+#: src/game.cpp:1351 src/playcampaign.cpp:99 src/playcampaign.cpp:369
 msgid "The game could not be loaded: "
 msgstr "Игра не может быть загружена: "
 
-#: src/game.cpp:1353 src/playcampaign.cpp:101 src/playcampaign.cpp:368
+#: src/game.cpp:1353 src/playcampaign.cpp:101 src/playcampaign.cpp:372
 msgid "Error while playing the game: "
 msgstr "Возникла ошибка во время игры: "
 
-#: src/game.cpp:1373 src/playcampaign.cpp:103 src/playcampaign.cpp:371
+#: src/game.cpp:1373 src/playcampaign.cpp:103 src/playcampaign.cpp:375
 msgid "The game map could not be loaded: "
 msgstr "Игровая карта не может быть загружена: "
 
@@ -7850,7 +7850,7 @@ msgstr "Победа:"
 msgid "Defeat:"
 msgstr "Поражение:"
 
-#: src/game_events.cpp:3497
+#: src/game_events.cpp:3503
 msgid "[unit_worth]'s filter didn't match any units!"
 msgstr ""
 
@@ -8819,39 +8819,39 @@ msgstr "Не могу изменить управление неверной с�
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "Не могу изменить управление вышедшей из пределов стороны:  '$side'. "
 
-#: src/menu_events.cpp:3066
+#: src/menu_events.cpp:3076
 msgid "Choose Scenario (Debug!)"
 msgstr "Выберите сценарий (Отладка!)"
 
-#: src/menu_events.cpp:3079
+#: src/menu_events.cpp:3097
 msgid "Debug mode activated!"
 msgstr "Режим отладки включён!"
 
-#: src/menu_events.cpp:3082
+#: src/menu_events.cpp:3100
 msgid "Debug mode not available in network games"
 msgstr "В сетевой игре отладочный режим недоступен."
 
-#: src/menu_events.cpp:3087
+#: src/menu_events.cpp:3105
 msgid "Debug mode deactivated!"
 msgstr "Режим отладки отключён!"
 
-#: src/menu_events.cpp:3269
+#: src/menu_events.cpp:3287
 msgid "ai"
 msgstr "комп"
 
-#: src/menu_events.cpp:3279 src/menu_events.cpp:3294
+#: src/menu_events.cpp:3297 src/menu_events.cpp:3312
 msgid "prompt^Command:"
 msgstr "Команда:"
 
-#: src/menu_events.cpp:3314
+#: src/menu_events.cpp:3332
 msgid "User-Command#3"
 msgstr "Пользовательская команда № 3"
 
-#: src/mouse_events.cpp:726
+#: src/mouse_events.cpp:727
 msgid "Attack Enemy"
 msgstr "Атаковать противника"
 
-#: src/mouse_events.cpp:727
+#: src/mouse_events.cpp:728
 msgid "Choose weapon:"
 msgstr "Выберите оружие:"
 
@@ -9402,60 +9402,60 @@ msgstr "Не могу отправить данные для инициализ�
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Обнаружена территория с ценой движения меньше 1."
 
-#: src/play_controller.cpp:113
+#: src/play_controller.cpp:119
 msgid "Loading level"
 msgstr "Загружаю уровень"
 
-#: src/play_controller.cpp:134
+#: src/play_controller.cpp:140
 msgid "Initializing teams"
 msgstr "Инициализация команд"
 
-#: src/play_controller.cpp:161
+#: src/play_controller.cpp:167
 msgid "Loading units"
 msgstr "Читаю файлы бойцов"
 
-#: src/play_controller.cpp:168 src/play_controller.cpp:173
+#: src/play_controller.cpp:174 src/play_controller.cpp:179
 msgid "Initializing display"
 msgstr "Инициализация дисплея"
 
-#: src/play_controller.cpp:209
+#: src/play_controller.cpp:215
 msgid "Starting game"
 msgstr "Запуск игры"
 
-#: src/play_controller.cpp:923 src/savegame.cpp:290 src/savegame.cpp:302
+#: src/play_controller.cpp:929 src/savegame.cpp:290 src/savegame.cpp:302
 #: src/savegame.cpp:981 src/savegame.cpp:983
 msgid "Auto-Save"
 msgstr "автосохр"
 
-#: src/play_controller.cpp:930
+#: src/play_controller.cpp:936
 msgid "Back to turn "
 msgstr "Вернуться к ходу "
 
-#: src/playcampaign.cpp:126 src/playcampaign.cpp:161
+#: src/playcampaign.cpp:127 src/playcampaign.cpp:165
 msgid "Defeat"
 msgstr "Поражение"
 
-#: src/playcampaign.cpp:127 src/playcampaign.cpp:162
+#: src/playcampaign.cpp:128 src/playcampaign.cpp:166
 msgid "You have been defeated!"
 msgstr "Вы проиграли!"
 
-#: src/playcampaign.cpp:375
+#: src/playcampaign.cpp:379
 msgid "Error while reading the WML: "
 msgstr "Возникла ошибка при чтении WML:"
 
-#: src/playcampaign.cpp:411
+#: src/playcampaign.cpp:415
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Сценарий завершён. Вы хотите продолжить кампанию?"
 
-#: src/playcampaign.cpp:437
+#: src/playcampaign.cpp:441
 msgid "Downloading next scenario..."
 msgstr "Скачивание следующего сценария..."
 
-#: src/playcampaign.cpp:571
+#: src/playcampaign.cpp:575
 msgid "Do you want to save your game?"
 msgstr "Вы хотите сохранить эту игру?"
 
-#: src/playcampaign.cpp:588
+#: src/playcampaign.cpp:592
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Неизвестный сценарий:  '$scenario|'"
 
@@ -9496,43 +9496,43 @@ msgstr ""
 "\n"
 "Вы хотите сохранить журнал ошибки?"
 
-#: src/playsingle_controller.cpp:231
+#: src/playsingle_controller.cpp:208
 msgid "Remaining gold: "
 msgstr "Остаток золота: "
 
-#: src/playsingle_controller.cpp:235
+#: src/playsingle_controller.cpp:212
 msgid "Early finish bonus: "
 msgstr "Бонус за быстрый финиш: "
 
-#: src/playsingle_controller.cpp:237
+#: src/playsingle_controller.cpp:214
 msgid "per turn"
 msgstr "за ход"
 
-#: src/playsingle_controller.cpp:238
+#: src/playsingle_controller.cpp:215
 msgid "Turns finished early: "
 msgstr "Количество оставшихся ходов: "
 
-#: src/playsingle_controller.cpp:240
+#: src/playsingle_controller.cpp:217
 msgid "Bonus: "
 msgstr "Бонус: "
 
-#: src/playsingle_controller.cpp:243
+#: src/playsingle_controller.cpp:220
 msgid "Gold: "
 msgstr "Золото: "
 
-#: src/playsingle_controller.cpp:247
+#: src/playsingle_controller.cpp:224
 msgid "Carry over percentage: "
 msgstr "Процент, сохраняющийся в следующем сценарии:"
 
-#: src/playsingle_controller.cpp:250
+#: src/playsingle_controller.cpp:227
 msgid "Bonus Gold: "
 msgstr "Бонус: "
 
-#: src/playsingle_controller.cpp:252
+#: src/playsingle_controller.cpp:229
 msgid "Retained Gold: "
 msgstr "Сохранённое золото: "
 
-#: src/playsingle_controller.cpp:262
+#: src/playsingle_controller.cpp:239
 msgid ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
@@ -9549,7 +9549,7 @@ msgstr[2] ""
 "Вы начнёте следующий сценарий с $gold золота, или с заданным для этого "
 "сценария минимумом."
 
-#: src/playsingle_controller.cpp:270
+#: src/playsingle_controller.cpp:247
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
@@ -9566,15 +9566,15 @@ msgstr[2] ""
 "Вы начнёте следующий сценарий с $gold золотыми монетами, или с минимумом, "
 "заданном в этом сценарии (в зависимости от того, что больше)."
 
-#: src/playsingle_controller.cpp:423
+#: src/playsingle_controller.cpp:399
 msgid "Game Over"
 msgstr "Игра окончена"
 
-#: src/playsingle_controller.cpp:424
+#: src/playsingle_controller.cpp:400
 msgid "The game is over."
 msgstr "Игра окончена."
 
-#: src/playsingle_controller.cpp:509
+#: src/playsingle_controller.cpp:488
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game\n"
@@ -9582,19 +9582,19 @@ msgid ""
 msgstr ""
 "Произошло отключение, игра не может быть продолжена. Хотите сохранить игру?"
 
-#: src/playsingle_controller.cpp:675
+#: src/playsingle_controller.cpp:654
 msgid "It is now $name|'s turn"
 msgstr "Сейчас ход $name|"
 
-#: src/playsingle_controller.cpp:890
+#: src/playsingle_controller.cpp:870
 msgid "Scenario Report"
 msgstr "Отчет о сценарии"
 
-#: src/playsingle_controller.cpp:892
+#: src/playsingle_controller.cpp:872
 msgid "Victory"
 msgstr "Победа"
 
-#: src/playsingle_controller.cpp:893
+#: src/playsingle_controller.cpp:873
 msgid "You have emerged victorious!"
 msgstr "Вы победили!"
 
@@ -9948,31 +9948,31 @@ msgstr "Неизвестный тип бойца: '$type|' в списке ос�
 msgid "Unknown unit type '$type|'"
 msgstr "Неизвестный тип бойца: '$type|'"
 
-#: src/unit.cpp:2343 src/unit.cpp:2528 src/unit.cpp:2601
+#: src/unit.cpp:2331 src/unit.cpp:2516 src/unit.cpp:2589
 msgid " and "
 msgstr " и"
 
-#: src/unit.cpp:2354
+#: src/unit.cpp:2342
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2419
+#: src/unit.cpp:2407
 msgid "moves"
 msgstr "ходы"
 
-#: src/unit.cpp:2437 src/unit.cpp:2555
+#: src/unit.cpp:2425 src/unit.cpp:2543
 msgid "XP to advance"
 msgstr "ОП для улучшения"
 
-#: src/unit.cpp:2547
+#: src/unit.cpp:2535
 msgid " move"
 msgstr " ход"
 
-#: src/unit.cpp:2563
+#: src/unit.cpp:2551
 msgid "$effect_description per level"
 msgstr "$effect_description за уровень"
 
-#: src/unit.cpp:2610
+#: src/unit.cpp:2598
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 

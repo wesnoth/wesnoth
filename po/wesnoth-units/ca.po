@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.6.0+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-09-16 21:47+0200\n"
+"POT-Creation-Date: 2009-09-20 15:45+0200\n"
 "PO-Revision-Date: 2009-03-22 08:50+0100\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
@@ -198,7 +198,7 @@ msgstr ""
 
 #. [attack]: type=blade
 #: data/core/units/drakes/Armageddon.cfg:85
-#: data/core/units/drakes/Fire.cfg:107 data/core/units/drakes/Inferno.cfg:108
+#: data/core/units/drakes/Fire.cfg:110 data/core/units/drakes/Inferno.cfg:111
 #, fuzzy
 msgid "battle claws"
 msgstr "destral de guerra"
@@ -207,13 +207,13 @@ msgstr "destral de guerra"
 #: data/core/units/drakes/Armageddon.cfg:94
 #: data/core/units/drakes/Blademaster.cfg:117
 #: data/core/units/drakes/Burner.cfg:117
-#: data/core/units/drakes/Fighter.cfg:117 data/core/units/drakes/Fire.cfg:116
+#: data/core/units/drakes/Fighter.cfg:117 data/core/units/drakes/Fire.cfg:119
 #: data/core/units/drakes/Flameheart.cfg:88
 #: data/core/units/drakes/Flare.cfg:92 data/core/units/drakes/Glider.cfg:119
 #: data/core/units/drakes/Hurricane.cfg:118
-#: data/core/units/drakes/Inferno.cfg:117 data/core/units/drakes/Sky.cfg:116
+#: data/core/units/drakes/Inferno.cfg:120 data/core/units/drakes/Sky.cfg:116
 #: data/core/units/drakes/Warrior.cfg:116
-#: data/core/units/monsters/Fire_Dragon.cfg:46
+#: data/core/units/monsters/Fire_Dragon.cfg:49
 msgid "fire breath"
 msgstr "alè de foc"
 
@@ -269,8 +269,8 @@ msgstr ""
 #: data/core/units/monsters/Skeletal_Dragon.cfg:42
 #: data/core/units/undead/Corpse_Ghoul.cfg:27
 #: data/core/units/undead/Corpse_Necrophage.cfg:28
-#: data/core/units/undead/Spirit_Nightgaunt.cfg:54
-#: data/core/units/undead/Spirit_Shadow.cfg:122
+#: data/core/units/undead/Spirit_Nightgaunt.cfg:67
+#: data/core/units/undead/Spirit_Shadow.cfg:135
 msgid "claws"
 msgstr "urpes"
 
@@ -3710,12 +3710,12 @@ msgstr ""
 "per als més necis - o els més braus."
 
 #. [attack]: type=blade
-#: data/core/units/monsters/Fire_Dragon.cfg:28
+#: data/core/units/monsters/Fire_Dragon.cfg:31
 msgid "bite"
 msgstr "mossegada"
 
 #. [attack]: type=impact
-#: data/core/units/monsters/Fire_Dragon.cfg:37
+#: data/core/units/monsters/Fire_Dragon.cfg:40
 msgid "tail"
 msgstr "cua"
 
@@ -5065,7 +5065,7 @@ msgstr ""
 
 #. [attack]: type=cold
 #: data/core/units/undead/Spirit_Ghost.cfg:144
-#: data/core/units/undead/Spirit_Spectre.cfg:57
+#: data/core/units/undead/Spirit_Spectre.cfg:70
 #: data/core/units/undead/Spirit_Wraith.cfg:32
 msgid "wail"
 msgstr "lamentació"
@@ -5076,7 +5076,7 @@ msgid "Nightgaunt"
 msgstr "Malson"
 
 #. [unit_type]: id=Nightgaunt, race=undead
-#: data/core/units/undead/Spirit_Nightgaunt.cfg:18
+#: data/core/units/undead/Spirit_Nightgaunt.cfg:19
 msgid ""
 "The purpose of the masks that these creatures wear is unknown, as is the "
 "countenance that they obscure. These terrible forms are rarely seen by the "
@@ -5094,7 +5094,7 @@ msgid "Shadow"
 msgstr "Ombra"
 
 #. [unit_type]: id=Shadow, race=undead
-#: data/core/units/undead/Spirit_Shadow.cfg:19
+#: data/core/units/undead/Spirit_Shadow.cfg:20
 msgid ""
 "When light came into the world and gave form to the unknown, fear was forced "
 "to retreat into darkness. Since that day, the shadows of the world have held "
@@ -5114,7 +5114,7 @@ msgid "Spectre"
 msgstr "Espectre"
 
 #. [unit_type]: id=Spectre, race=undead
-#: data/core/units/undead/Spirit_Spectre.cfg:20
+#: data/core/units/undead/Spirit_Spectre.cfg:21
 msgid ""
 "Sometimes called the 'hollow men', spectres form the right arm of their "
 "masters' powers. They are an unholy terror to the living, for they are quite "
@@ -5133,7 +5133,7 @@ msgstr ""
 "el seguirà en l'atac."
 
 #. [attack]: type=arcane
-#: data/core/units/undead/Spirit_Spectre.cfg:46
+#: data/core/units/undead/Spirit_Spectre.cfg:59
 #: data/core/units/undead/Spirit_Wraith.cfg:21
 msgid "baneblade"
 msgstr "fulla maleïda"

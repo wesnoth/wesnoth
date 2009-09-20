@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-09-16 21:47+0200\n"
+"POT-Creation-Date: 2009-09-20 15:59+0200\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lietuvių <komp_lt@konferencijos.lt>\n"
@@ -94,12 +94,12 @@ msgid "Lobby sounds"
 msgstr "Vestibiulio garsai"
 
 #. [message]: speaker=narrator
-#: data/ai/scenarios/ai_arena_small/0002-poisoning.cfg:16
+#: data/ai/scenarios/ai_arena_small/0002-poisoning.cfg:17
 msgid "This situation should test the ability of AI to spread poison around..."
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/ai/scenarios/ai_arena_small/0003-simple_combat.cfg:16
+#: data/ai/scenarios/ai_arena_small/0003-simple_combat.cfg:17
 msgid "This situation should test the ability of AI to make an attack..."
 msgstr ""
 
@@ -113,7 +113,7 @@ msgstr "Požemis"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:304
-#: src/actions.cpp:1142 src/actions.cpp:1415
+#: src/actions.cpp:1099 src/actions.cpp:1372
 msgid "poisoned"
 msgstr "apnuodytas"
 
@@ -172,14 +172,14 @@ msgstr ""
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1241
-#: src/actions.cpp:1147 src/actions.cpp:1420
+#: src/actions.cpp:1104 src/actions.cpp:1377
 msgid "female^slowed"
 msgstr "sulėtinta"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [else]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1244
-#: src/actions.cpp:1147 src/actions.cpp:1420
+#: src/actions.cpp:1104 src/actions.cpp:1377
 msgid "slowed"
 msgstr "sulėtintas"
 
@@ -5908,8 +5908,8 @@ msgstr "Baigti scenarijų"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:205 src/unit.cpp:2386
-#: src/unit.cpp:2540
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:205 src/unit.cpp:2374
+#: src/unit.cpp:2528
 msgid "HP"
 msgstr "GT"
 
@@ -6055,48 +6055,48 @@ msgstr "Praleisti animaciją"
 msgid "Close"
 msgstr "Užverti"
 
-#: src/actions.cpp:235
+#: src/actions.cpp:192
 msgid "You don't have a leader to recruit with."
 msgstr "Neturite vado, su kuriuo galite samdyti."
 
-#: src/actions.cpp:242
+#: src/actions.cpp:199
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
 "Jūsų vadas turi būti bokšte, kad galėtumėte samdyti arba grąžinti dalinius."
 
-#: src/actions.cpp:261
+#: src/actions.cpp:218
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Nėra laisvų pilies laukelių, kuriuose galima samdyti dalinį."
 
-#: src/actions.cpp:395 src/actions.cpp:454 src/actions.cpp:1021
+#: src/actions.cpp:352 src/actions.cpp:411 src/actions.cpp:978
 msgid "An invalid attacker weapon got selected."
 msgstr "Pasirinktas netinkamas puolančiojo ginklas."
 
-#: src/actions.cpp:400
+#: src/actions.cpp:357
 msgid "An invalid defender weapon got selected."
 msgstr "Pasirinktas netinkamas besiginančiojo ginklas."
 
-#: src/actions.cpp:1142 src/actions.cpp:1415
+#: src/actions.cpp:1099 src/actions.cpp:1372
 msgid "female^poisoned"
 msgstr "apnuodyta"
 
-#: src/actions.cpp:1154 src/actions.cpp:1427
+#: src/actions.cpp:1111 src/actions.cpp:1384
 msgid "female^petrified"
 msgstr "suakmenėjusi"
 
-#: src/actions.cpp:1154 src/actions.cpp:1427
+#: src/actions.cpp:1111 src/actions.cpp:1384
 msgid "petrified"
 msgstr "suakmenėjęs"
 
-#: src/actions.cpp:2480
+#: src/actions.cpp:2366
 msgid "Ambushed!"
 msgstr "Pasala!"
 
-#: src/actions.cpp:2487
+#: src/actions.cpp:2373
 msgid "Failed teleport! Exit not empty"
 msgstr "Nepavyko teleportuotis! Išėjimas ne laisvas"
 
-#: src/actions.cpp:2532
+#: src/actions.cpp:2418
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Pastebėtas draugiškas dalinys"
@@ -6104,7 +6104,7 @@ msgstr[1] "Pastebėti $friends draugiški daliniai"
 msgstr[2] "Pastebėta $friends draugiškų dalinių"
 msgstr[3] "Pastebėtas $friends draugiškas dalinys"
 
-#: src/actions.cpp:2535
+#: src/actions.cpp:2421
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Pastebėtas priešiškas dalinys"
@@ -6112,7 +6112,7 @@ msgstr[1] "Pastebėti $enemies priešiški daliniai"
 msgstr[2] "Pastebėta $enemies priešiškų dalinių"
 msgstr[3] "Pastebėtas $enemies priešiškas dalinys"
 
-#: src/actions.cpp:2540
+#: src/actions.cpp:2426
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "$friends draugiškas"
@@ -6120,7 +6120,7 @@ msgstr[1] "$friends draugiški"
 msgstr[2] "$friends draugiškų"
 msgstr[3] "$friends draugiškas"
 
-#: src/actions.cpp:2541
+#: src/actions.cpp:2427
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "$enemies priešiškas"
@@ -6128,11 +6128,11 @@ msgstr[1] "$enemies priešiški"
 msgstr[2] "$enemies priešiškų"
 msgstr[3] "$enemies priešiškas"
 
-#: src/actions.cpp:2542
+#: src/actions.cpp:2428
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Pastebėti daliniai! ($friendphrase, $enemyphrase)"
 
-#: src/actions.cpp:2551
+#: src/actions.cpp:2437
 msgid "(press $hotkey to keep moving)"
 msgstr ""
 
@@ -6491,7 +6491,7 @@ msgstr "Nėra naudingo ginklo"
 msgid "Chance of being unscathed"
 msgstr "Tikimybė būti nesužeistam"
 
-#: src/attack_prediction_display.cpp:547 src/mouse_events.cpp:716
+#: src/attack_prediction_display.cpp:547 src/mouse_events.cpp:717
 msgid "Damage Calculations"
 msgstr "Žalos skaičiavimai"
 
@@ -6649,8 +6649,8 @@ msgstr ""
 msgid "The Battle for Wesnoth"
 msgstr "Mūšis dėl Vesnoto"
 
-#: src/game.cpp:994 src/game.cpp:1002 src/playsingle_controller.cpp:498
-#: src/playsingle_controller.cpp:553
+#: src/game.cpp:994 src/game.cpp:1002 src/playsingle_controller.cpp:477
+#: src/playsingle_controller.cpp:532
 msgid "The file you have tried to load is corrupt"
 msgstr "Failas, kurį bandėte įkelti, yra sugadintas"
 
@@ -6692,15 +6692,15 @@ msgstr "Daugiau neberodyti"
 msgid "Error while starting server: "
 msgstr "Įvyko klaida, paleidžiant serverį: "
 
-#: src/game.cpp:1351 src/playcampaign.cpp:99 src/playcampaign.cpp:365
+#: src/game.cpp:1351 src/playcampaign.cpp:99 src/playcampaign.cpp:369
 msgid "The game could not be loaded: "
 msgstr "Žaidimas negali būti įkeltas: "
 
-#: src/game.cpp:1353 src/playcampaign.cpp:101 src/playcampaign.cpp:368
+#: src/game.cpp:1353 src/playcampaign.cpp:101 src/playcampaign.cpp:372
 msgid "Error while playing the game: "
 msgstr "Įvyko klaida, žaidžiant žaidimą: "
 
-#: src/game.cpp:1373 src/playcampaign.cpp:103 src/playcampaign.cpp:371
+#: src/game.cpp:1373 src/playcampaign.cpp:103 src/playcampaign.cpp:375
 msgid "The game map could not be loaded: "
 msgstr "Žaidimo žemėlapis negali būti įkeltas: "
 
@@ -6772,7 +6772,7 @@ msgstr "Pergalė:"
 msgid "Defeat:"
 msgstr "Pralaimėjimas:"
 
-#: src/game_events.cpp:3497
+#: src/game_events.cpp:3503
 msgid "[unit_worth]'s filter didn't match any units!"
 msgstr ""
 
@@ -7719,39 +7719,39 @@ msgstr ""
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:3066
+#: src/menu_events.cpp:3076
 msgid "Choose Scenario (Debug!)"
 msgstr "Pasirinkti scenarijų (Derinimas!)"
 
-#: src/menu_events.cpp:3079
+#: src/menu_events.cpp:3097
 msgid "Debug mode activated!"
 msgstr "Įjungtas derinimo režimas!"
 
-#: src/menu_events.cpp:3082
+#: src/menu_events.cpp:3100
 msgid "Debug mode not available in network games"
 msgstr "Derinimo režimas neprieinamas tinklo žaidimuose"
 
-#: src/menu_events.cpp:3087
+#: src/menu_events.cpp:3105
 msgid "Debug mode deactivated!"
 msgstr "Išjungtas derinimo režimas!"
 
-#: src/menu_events.cpp:3269
+#: src/menu_events.cpp:3287
 msgid "ai"
 msgstr "di"
 
-#: src/menu_events.cpp:3279 src/menu_events.cpp:3294
+#: src/menu_events.cpp:3297 src/menu_events.cpp:3312
 msgid "prompt^Command:"
 msgstr "Komanda:"
 
-#: src/menu_events.cpp:3314
+#: src/menu_events.cpp:3332
 msgid "User-Command#3"
 msgstr "Naudotojo-komanda#3"
 
-#: src/mouse_events.cpp:726
+#: src/mouse_events.cpp:727
 msgid "Attack Enemy"
 msgstr "Pulti priešą"
 
-#: src/mouse_events.cpp:727
+#: src/mouse_events.cpp:728
 msgid "Choose weapon:"
 msgstr "Pasirinkite ginklą:"
 
@@ -8294,60 +8294,60 @@ msgstr ""
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Rasta vietovė su judėjimo kaina mažesne nei 1."
 
-#: src/play_controller.cpp:113
+#: src/play_controller.cpp:119
 msgid "Loading level"
 msgstr "Įkeliamas lygis"
 
-#: src/play_controller.cpp:134
+#: src/play_controller.cpp:140
 msgid "Initializing teams"
 msgstr "Paruošiamos komandos"
 
-#: src/play_controller.cpp:161
+#: src/play_controller.cpp:167
 msgid "Loading units"
 msgstr "Įkeliami daliniai"
 
-#: src/play_controller.cpp:168 src/play_controller.cpp:173
+#: src/play_controller.cpp:174 src/play_controller.cpp:179
 msgid "Initializing display"
 msgstr "Paruošiamas ekranas"
 
-#: src/play_controller.cpp:209
+#: src/play_controller.cpp:215
 msgid "Starting game"
 msgstr "Paleidžiamas žaidimas"
 
-#: src/play_controller.cpp:923 src/savegame.cpp:290 src/savegame.cpp:302
+#: src/play_controller.cpp:929 src/savegame.cpp:290 src/savegame.cpp:302
 #: src/savegame.cpp:981 src/savegame.cpp:983
 msgid "Auto-Save"
 msgstr "Autoišsaugojimas"
 
-#: src/play_controller.cpp:930
+#: src/play_controller.cpp:936
 msgid "Back to turn "
 msgstr "Atgal į ėjimą "
 
-#: src/playcampaign.cpp:126 src/playcampaign.cpp:161
+#: src/playcampaign.cpp:127 src/playcampaign.cpp:165
 msgid "Defeat"
 msgstr "Pralaimėjimas"
 
-#: src/playcampaign.cpp:127 src/playcampaign.cpp:162
+#: src/playcampaign.cpp:128 src/playcampaign.cpp:166
 msgid "You have been defeated!"
 msgstr "Jūs buvote nugalėtas!"
 
-#: src/playcampaign.cpp:375
+#: src/playcampaign.cpp:379
 msgid "Error while reading the WML: "
 msgstr "Klaida, skaitant WML: "
 
-#: src/playcampaign.cpp:411
+#: src/playcampaign.cpp:415
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Šis scenarijus pasibaigė. Ar norite tęsti kampaniją?"
 
-#: src/playcampaign.cpp:437
+#: src/playcampaign.cpp:441
 msgid "Downloading next scenario..."
 msgstr "Atsiunčiamas kitas scenarijus..."
 
-#: src/playcampaign.cpp:571
+#: src/playcampaign.cpp:575
 msgid "Do you want to save your game?"
 msgstr "Ar norite išsaugoti savo žaidimą?"
 
-#: src/playcampaign.cpp:588
+#: src/playcampaign.cpp:592
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Nežinomas scenarijus: „$scenario|“"
 
@@ -8381,43 +8381,43 @@ msgid ""
 "Do you want to save an error log of your game?"
 msgstr ""
 
-#: src/playsingle_controller.cpp:231
+#: src/playsingle_controller.cpp:208
 msgid "Remaining gold: "
 msgstr "Likęs auksas: "
 
-#: src/playsingle_controller.cpp:235
+#: src/playsingle_controller.cpp:212
 msgid "Early finish bonus: "
 msgstr "Ankstyvo pabaigimo premija: "
 
-#: src/playsingle_controller.cpp:237
+#: src/playsingle_controller.cpp:214
 msgid "per turn"
 msgstr "per ėjimą"
 
-#: src/playsingle_controller.cpp:238
+#: src/playsingle_controller.cpp:215
 msgid "Turns finished early: "
 msgstr ""
 
-#: src/playsingle_controller.cpp:240
+#: src/playsingle_controller.cpp:217
 msgid "Bonus: "
 msgstr "Premija: "
 
-#: src/playsingle_controller.cpp:243
+#: src/playsingle_controller.cpp:220
 msgid "Gold: "
 msgstr "Auksas: "
 
-#: src/playsingle_controller.cpp:247
+#: src/playsingle_controller.cpp:224
 msgid "Carry over percentage: "
 msgstr "Pernešimo procentas: "
 
-#: src/playsingle_controller.cpp:250
+#: src/playsingle_controller.cpp:227
 msgid "Bonus Gold: "
 msgstr "Premijinis auksas: "
 
-#: src/playsingle_controller.cpp:252
+#: src/playsingle_controller.cpp:229
 msgid "Retained Gold: "
 msgstr "Išlaikytas auksas: "
 
-#: src/playsingle_controller.cpp:262
+#: src/playsingle_controller.cpp:239
 msgid ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
@@ -8437,7 +8437,7 @@ msgstr[3] ""
 "Kitą scenarijų pradėsite su $gold aukso pridėto prie nustatyto mažiausio "
 "pradžios aukso."
 
-#: src/playsingle_controller.cpp:270
+#: src/playsingle_controller.cpp:247
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
@@ -8457,15 +8457,15 @@ msgstr[3] ""
 "Kitą scenarijų pradėsite su $gold aukso arba nustatytu mažiausiu pradžios "
 "auksu, priklausomai nuo to, kas daugiau."
 
-#: src/playsingle_controller.cpp:423
+#: src/playsingle_controller.cpp:399
 msgid "Game Over"
 msgstr "Žaidimas baigtas"
 
-#: src/playsingle_controller.cpp:424
+#: src/playsingle_controller.cpp:400
 msgid "The game is over."
 msgstr "Žaidimas baigtas."
 
-#: src/playsingle_controller.cpp:509
+#: src/playsingle_controller.cpp:488
 msgid ""
 "A network disconnection has occurred, and the game\n"
 "cannot continue. Do you want to save the game?"
@@ -8473,19 +8473,19 @@ msgstr ""
 "Įvyko tinklo atsijungimas ir žaidimas negali tęstis.\n"
 "Ar norite išsaugoti šį žaidimą?"
 
-#: src/playsingle_controller.cpp:675
+#: src/playsingle_controller.cpp:654
 msgid "It is now $name|'s turn"
 msgstr "Dabar $name| ėjimas"
 
-#: src/playsingle_controller.cpp:890
+#: src/playsingle_controller.cpp:870
 msgid "Scenario Report"
 msgstr "Scenarijaus ataskaita"
 
-#: src/playsingle_controller.cpp:892
+#: src/playsingle_controller.cpp:872
 msgid "Victory"
 msgstr "Pergalė"
 
-#: src/playsingle_controller.cpp:893
+#: src/playsingle_controller.cpp:873
 msgid "You have emerged victorious!"
 msgstr "Jūs išėjote nugalėtoju!"
 
@@ -8843,31 +8843,31 @@ msgstr "Generuojant bruožus nežinomas dalinio tipas „$type|“"
 msgid "Unknown unit type '$type|'"
 msgstr "Nežinomas dalinio tipas „$type|“"
 
-#: src/unit.cpp:2343 src/unit.cpp:2528 src/unit.cpp:2601
+#: src/unit.cpp:2331 src/unit.cpp:2516 src/unit.cpp:2589
 msgid " and "
 msgstr " ir "
 
-#: src/unit.cpp:2354
+#: src/unit.cpp:2342
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2419
+#: src/unit.cpp:2407
 msgid "moves"
 msgstr ""
 
-#: src/unit.cpp:2437 src/unit.cpp:2555
+#: src/unit.cpp:2425 src/unit.cpp:2543
 msgid "XP to advance"
 msgstr ""
 
-#: src/unit.cpp:2547
+#: src/unit.cpp:2535
 msgid " move"
 msgstr ""
 
-#: src/unit.cpp:2563
+#: src/unit.cpp:2551
 msgid "$effect_description per level"
 msgstr "$effect_description lygiui"
 
-#: src/unit.cpp:2610
+#: src/unit.cpp:2598
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 

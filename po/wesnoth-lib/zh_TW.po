@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-09-16 21:47+0200\n"
+"POT-Creation-Date: 2009-09-20 15:43+0200\n"
 "PO-Revision-Date: 2009-05-16 11:34+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
@@ -801,7 +801,7 @@ msgstr ""
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:86
-#: data/gui/default/window/gamestate_inspector.cfg:187
+#: data/gui/default/window/gamestate_inspector.cfg:268
 #, fuzzy
 msgid "Actions"
 msgstr "動作"
@@ -984,23 +984,36 @@ msgid "Save already exists. Do you want to overwrite it?"
 msgstr ""
 
 #. [label]
-#: data/gui/default/window/gamestate_inspector.cfg:33
+#: data/gui/default/window/gamestate_inspector.cfg:38
 msgid "Gamestate Inspector"
 msgstr ""
 
 #. [label]
-#: data/gui/default/window/gamestate_inspector.cfg:86
+#: data/gui/default/window/gamestate_inspector.cfg:92
+#, fuzzy
+msgid "Types"
+msgstr "是"
+
+#. [label]
+#: data/gui/default/window/gamestate_inspector.cfg:103
 #, fuzzy
 msgid "Content"
 msgstr "連結"
 
 #. [label]
-#: data/gui/default/window/gamestate_inspector.cfg:97
+#: data/gui/default/window/gamestate_inspector.cfg:114
 msgid "Inspection window"
 msgstr ""
 
+#. [label]: id=unit_type
+#. [label]: id=typename
+#: data/gui/default/window/gamestate_inspector.cfg:145
+#: data/gui/default/window/unit_create.cfg:138
+msgid "Type"
+msgstr ""
+
 #. [label]: id=name
-#: data/gui/default/window/gamestate_inspector.cfg:125
+#: data/gui/default/window/gamestate_inspector.cfg:206
 msgid "Variable"
 msgstr ""
 
@@ -1008,7 +1021,7 @@ msgstr ""
 #. [button]: id=ok
 #. [button]: id=cancel
 #. [button]: id=close_window
-#: data/gui/default/window/gamestate_inspector.cfg:250
+#: data/gui/default/window/gamestate_inspector.cfg:331
 #: data/gui/default/window/lobby_main.cfg:503
 #: data/gui/default/window/lobby_player_info.cfg:192
 #: data/gui/default/window/message.cfg:122 src/construct_dialog.cpp:140
@@ -1603,11 +1616,6 @@ msgstr "產生地圖"
 #, fuzzy
 msgid "Race"
 msgstr "取消"
-
-#. [label]: id=unit_type
-#: data/gui/default/window/unit_create.cfg:138
-msgid "Type"
-msgstr ""
 
 #: src/filechooser.cpp:74
 msgid "File: "

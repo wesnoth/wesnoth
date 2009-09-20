@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-09-16 21:47+0200\n"
+"POT-Creation-Date: 2009-09-20 15:43+0200\n"
 "PO-Revision-Date: 2007-12-06 00:53+0900\n"
 "Last-Translator: Claus Aranha <caranha@gmail.com>\n"
 "Language-Team: Portuguese/Brazil\n"
@@ -824,7 +824,7 @@ msgstr ""
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:86
-#: data/gui/default/window/gamestate_inspector.cfg:187
+#: data/gui/default/window/gamestate_inspector.cfg:268
 #, fuzzy
 msgid "Actions"
 msgstr "Ação"
@@ -1008,23 +1008,36 @@ msgid "Save already exists. Do you want to overwrite it?"
 msgstr ""
 
 #. [label]
-#: data/gui/default/window/gamestate_inspector.cfg:33
+#: data/gui/default/window/gamestate_inspector.cfg:38
 msgid "Gamestate Inspector"
 msgstr ""
 
 #. [label]
-#: data/gui/default/window/gamestate_inspector.cfg:86
+#: data/gui/default/window/gamestate_inspector.cfg:92
+#, fuzzy
+msgid "Types"
+msgstr "sim"
+
+#. [label]
+#: data/gui/default/window/gamestate_inspector.cfg:103
 #, fuzzy
 msgid "Content"
 msgstr "Continuar Movimento"
 
 #. [label]
-#: data/gui/default/window/gamestate_inspector.cfg:97
+#: data/gui/default/window/gamestate_inspector.cfg:114
 msgid "Inspection window"
 msgstr ""
 
+#. [label]: id=unit_type
+#. [label]: id=typename
+#: data/gui/default/window/gamestate_inspector.cfg:145
+#: data/gui/default/window/unit_create.cfg:138
+msgid "Type"
+msgstr ""
+
 #. [label]: id=name
-#: data/gui/default/window/gamestate_inspector.cfg:125
+#: data/gui/default/window/gamestate_inspector.cfg:206
 msgid "Variable"
 msgstr ""
 
@@ -1032,7 +1045,7 @@ msgstr ""
 #. [button]: id=ok
 #. [button]: id=cancel
 #. [button]: id=close_window
-#: data/gui/default/window/gamestate_inspector.cfg:250
+#: data/gui/default/window/gamestate_inspector.cfg:331
 #: data/gui/default/window/lobby_main.cfg:503
 #: data/gui/default/window/lobby_player_info.cfg:192
 #: data/gui/default/window/message.cfg:122 src/construct_dialog.cpp:140
@@ -1637,11 +1650,6 @@ msgstr "Gerar novo mapa"
 #, fuzzy
 msgid "Race"
 msgstr "Cancelar"
-
-#. [label]: id=unit_type
-#: data/gui/default/window/unit_create.cfg:138
-msgid "Type"
-msgstr ""
 
 #: src/filechooser.cpp:74
 msgid "File: "
