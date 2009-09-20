@@ -125,29 +125,13 @@ void twidget::set_size(const tpoint& origin, const tpoint& size)
 twidget* twidget::find_at(const tpoint& coordinate,
 		const bool must_be_active)
 {
-	if(visible_ == INVISIBLE
-			|| (visible_ == HIDDEN && must_be_active)) {
-		return 0;
-	}
-
-	return coordinate.x >= x_
-			&& coordinate.x < (x_ + static_cast<int>(w_))
-			&& coordinate.y >= y_
-			&& coordinate.y < (y_ + static_cast<int>(h_)) ? this : 0;
+	return is_at(coordinate, must_be_active) ? this : 0;
 }
 
 const twidget* twidget::find_at(const tpoint& coordinate,
 		const bool must_be_active) const
 {
-	if(visible_ == INVISIBLE
-			|| (visible_ == HIDDEN && must_be_active)) {
-		return 0;
-	}
-
-	return coordinate.x >= x_
-			&& coordinate.x < (x_ + static_cast<int>(w_))
-			&& coordinate.y >= y_
-			&& coordinate.y < (y_ + static_cast<int>(h_)) ? this : 0;
+	return is_at(coordinate, must_be_active) ? this : 0;
 }
 
 SDL_Rect twidget::get_dirty_rect() const
@@ -306,4 +290,16 @@ void twidget::draw_debug_border(surface& frame_buffer)
 }
 #endif
 
+bool twidget::is_at(const tpoint& coordinate, const bool must_be_active) const
+{
+	if(visible_ == INVISIBLE
+			|| (visible_ == HIDDEN && must_be_active)) {
+		return false;
+	}
+
+	return coordinate.x >= x_
+			&& coordinate.x < (x_ + static_cast<int>(w_))
+			&& coordinate.y >= y_
+			&& coordinate.y < (y_ + static_cast<int>(h_)) ? true : false;
+}
 } // namespace gui2

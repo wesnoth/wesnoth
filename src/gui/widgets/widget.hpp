@@ -622,6 +622,27 @@ private:
 
 	/** See draw_foreground. */
 	virtual void impl_draw_foreground(surface& /*frame_buffer*/) {}
+
+	/** (Will be) inherited from event::tdispatcher. */
+	virtual bool is_at(const tpoint& coordinate) const
+	{
+		return is_at(coordinate, true);
+	}
+
+	/**
+	 * Is the coordinate inside our area.
+	 *
+	 * Helper for find_at so also looks at our visibility.
+	 *
+	 * @param coordinate          The coordinate which should be inside the
+	 *                            widget.
+	 * @param must_be_active      The widget should be active, not all widgets
+	 *                            have an active flag, those who don't ignore
+	 *                            flag.
+	 *
+	 * @returns                   Status.
+	 */
+	bool is_at(const tpoint& coordinate, const bool must_be_active) const;
 };
 
 /**
