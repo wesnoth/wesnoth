@@ -26,6 +26,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map.hpp"
+#include "resources.hpp"
 #include "unit.hpp"
 #include "unit_map.hpp"
 #include "wml_exception.hpp"
@@ -103,6 +104,29 @@ bool enemy_zoc(unit_map const &units, std::vector<team> const &teams,
 	return false;
 }
 
+std::set<map_location> get_teleport_locations(const unit &u,
+	const unit_map &units, const team &viewing_team,
+	bool see_all, bool ignore_units)
+{
+	std::set<map_location> res;
+	if (!u.get_ability_bool("teleport")) return res;
+
+	const team &current_team = (*resources::teams)[u.side() - 1];
+	const map_location &loc = u.get_location();
+	foreach (const map_location &l, current_team.villages())
+	{
+		// This must be a vacant village (or occupied by the unit)
+		// to be able to teleport.
+		if (!see_all && viewing_team.is_enemy(u.side()) && viewing_team.fogged(l))
+			continue;
+		if (!ignore_units && l != loc &&
+		    get_visible_unit(units, l, viewing_team, see_all))
+			continue;
+		res.insert(l);
+	}
+	return res;
+}
+
 static unsigned search_counter;
 
 namespace {
@@ -170,20 +194,8 @@ static void find_routes(const gamemap& map, const unit_map& units,
 {
 	const team& current_team = teams[u.side() - 1];
 	std::set<map_location> teleports;
-	if (allow_teleport)
-	{
-		// Check for teleporting units. This must be a vacant village (or
-		// occupied by the unit) controlled by our team to be able to teleport.
-		foreach (const map_location &l, current_team.villages())
-		{
-			if (!see_all && viewing_team.is_enemy(u.side()) &&
-			    viewing_team.fogged(l))
-				continue;
-			if (!ignore_units && l != loc &&
-			    get_visible_unit(units, l, viewing_team, see_all))
-				continue;
-			teleports.insert(l);
-		}
+	if (allow_teleport) {
+		teleports = get_teleport_locations(u, units, viewing_team, see_all, ignore_units);
 	}
 
 	const int total_movement = u.total_movement();

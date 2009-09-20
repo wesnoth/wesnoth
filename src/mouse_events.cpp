@@ -339,23 +339,8 @@ marked_route mouse_handler::get_route(unit_map::const_iterator un, map_location 
 	// The pathfinder will check unit visibility (fogged/stealthy).
 	const shortest_path_calculator calc(un->second,team,units_,teams_,map_);
 
-	std::set<map_location> allowed_teleports;
-
-	if (un->second.get_ability_bool("teleport"))
-	{
-		// search all known empty friendly villages
-		for(std::set<map_location>::const_iterator i = team.villages().begin();
-				i != team.villages().end(); ++i) {
-			if (viewing_team().is_enemy(un->second.side()) && viewing_team().fogged(*i))
-				continue;
-
-			unit_map::const_iterator occupant = find_unit(*i);
-			if (occupant != units_.end() && occupant != un)
-				continue;
-
-			allowed_teleports.insert(*i);
-		}
-	}
+	std::set<map_location> allowed_teleports = get_teleport_locations(
+		un->second, units_, viewing_team());
 
 	plain_route route;
 
