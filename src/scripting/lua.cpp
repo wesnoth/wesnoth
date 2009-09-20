@@ -1501,9 +1501,9 @@ static int intf_find_path(lua_State *L)
 	for (int i = 0; i < nb; ++i)
 	{
 		lua_createtable(L, 2, 0);
-		lua_pushinteger(L, res.steps[i].x);
+		lua_pushinteger(L, res.steps[i].x + 1);
 		lua_rawseti(L, -2, 1);
-		lua_pushinteger(L, res.steps[i].y);
+		lua_pushinteger(L, res.steps[i].y + 1);
 		lua_rawseti(L, -2, 2);
 		lua_rawseti(L, -2, i + 1);
 	}
