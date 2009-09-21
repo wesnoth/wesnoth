@@ -1159,14 +1159,14 @@ void server::process_query(const network::connection sock,
 		DBG_SERVER << "ERROR: process_query(): Could not find player with socket: " << sock << "\n";
 		return;
 	}
-	const simple_wml::string_span& command(query["type"]);
+	const std::string command(query["type"].to_string());
 	std::ostringstream response;
 	const std::string& help_msg = "Available commands are: adminmsg <msg>, help, games, metrics,"
 			" motd, netstats [all], requests, sample, stats, status, wml.";
 	// Commands a player may issue.
 	if (command == "status") {
-		response << process_command(command.to_string() + " " + pl->second.name(), pl->second.name());
-	} else if (command.to_string().find("adminmsg") == 0
+		response << process_command(command + " " + pl->second.name(), pl->second.name());
+	} else if (command.find("adminmsg") == 0
 			|| command == "games"
 			|| command == "metrics"
 			|| command == "motd"
@@ -1178,7 +1178,7 @@ void server::process_query(const network::connection sock,
 			|| command == "status " + pl->second.name()
 			|| command == "wml")
 	{
-		response << process_command(command.to_string(), pl->second.name());
+		response << process_command(command, pl->second.name());
 	} else if (pl->second.is_moderator()) {
 		if (command == "signout") {
 			LOG_SERVER << "Admin signed out: IP: "
@@ -1194,13 +1194,18 @@ void server::process_query(const network::connection sock,
 			LOG_SERVER << "Admin Command: type: " << command
 				<< "\tIP: "<< network::ip_address(sock)
 				<< "\tnick: "<< pl->second.name() << std::endl;
-			response << process_command(command.to_string(), pl->second.name());
+			response << process_command(command, pl->second.name());
 			LOG_SERVER << response.str() << std::endl;
 		}
 	} else if (command == "help" || command.empty()) {
 		response << help_msg;
-	} else if (!admin_passwd_.empty() && command.to_string().find("admin ") == 0) {
-		std::string passwd = command.to_string().substr(6);
+	} else if (command == "admin" || command.find("admin ") == 0) {
+		if (admin_passwd_.empty()) {
+			rooms_.lobby().send_server_message("No password set.", sock);
+			return;
+		}
+		std::string passwd;
+		if (command.size() >= 6) passwd = command.substr(6);
 		if (passwd == admin_passwd_) {
 			LOG_SERVER << "New Admin recognized: IP: "
 				<< network::ip_address(sock) << "\tnick: "
