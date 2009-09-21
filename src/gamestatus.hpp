@@ -91,7 +91,7 @@ public:
 	//write the gamestate into a config object
 	void write_snapshot(config& cfg) const;
 	//write the config information into a stream (file)
-	void write_config(config_writer& out) const;
+	void write_config(config_writer& out, bool write_variables=true) const;
 
 	// Variable access
 

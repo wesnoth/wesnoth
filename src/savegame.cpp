@@ -815,7 +815,7 @@ void savegame::write_game(config_writer &out) const
 
 	out.write_key_val("version", game_config::version);
 	out.write_key_val("next_underlying_unit_id", lexical_cast<std::string>(n_unit::id_manager::instance().get_save_id()));
-	gamestate_.write_config(out);
+	gamestate_.write_config(out, false);
 	out.write_child("snapshot",snapshot_);
 	out.open_child("statistics");
 	statistics::write_stats(out);
