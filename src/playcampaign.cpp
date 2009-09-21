@@ -356,6 +356,13 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 			sound::empty_playlist();
 
+			//add the variables to the starting_pos unless they are already there
+			const config &wmlvars = gamestate.starting_pos.child("variables");
+			if (!wmlvars || wmlvars.empty()){
+				gamestate.starting_pos.clear_children("variables");
+				gamestate.starting_pos.add_child("variables", gamestate.get_variables());
+			}
+
 			switch (io_type){
 			case IO_NONE:
 				res = playsingle_scenario(game_config, scenario, disp, gamestate, story, log, skip_replay, end_level);
@@ -563,6 +570,8 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				if (gamestate.classification().campaign_type != "multiplayer"){
 					gamestate.starting_pos = config();
 				}
+				//add the variables to the starting position
+				gamestate.starting_pos.add_child("variables", gamestate.get_variables());
 
 				savegame::scenariostart_savegame save(gamestate, preferences::compress_saves());
 
@@ -582,6 +591,8 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 			if (gamestate.classification().campaign_type != "multiplayer"){
 				gamestate.starting_pos = *scenario;
+				//add the variables to the starting position
+				gamestate.starting_pos.add_child("variables", gamestate.get_variables());
 				write_players(gamestate, gamestate.starting_pos, true, true);
 			}
 		}
