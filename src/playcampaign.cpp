@@ -82,6 +82,11 @@ void play_replay(display& disp, game_state& gamestate, const config& game_config
 	}
 	starting_pos = gamestate.starting_pos;
 
+	//for replays, use the variables specified in starting_pos
+	if (const config &vars = starting_pos.child("variables")) {
+		gamestate.set_variables(vars);
+	}
+
 	try {
 		// Preserve old label eg. replay
 		if (gamestate.classification().label.empty())
