@@ -6,12 +6,13 @@ Version 1.7.5+svn:
    * Added recall capabilities to default ai.
    * Added recall formula ai function and ai.recall_list formula ai attribute.
    * Modified default ai recruitment to recall good units from recall list.
-   * Modified default ai recruitment to consider enemy potential recruits during recruitment.
+   * Modified default ai recruitment to consider enemy potential recruits
+     during recruitment.
  * Formula AI:
    * New 'reduce()' formula function
  * Graphics:
-   * New portraits for Merman Spearman, Bat, Merman Netcaster, Nightgaunt, Spectre,
-     Shadow
+   * New portraits for Merman Spearman, Bat, Merman Netcaster, Nightgaunt,
+     Spectre, Shadow
    * Added a couple of missing frames for the Inferno Drake
  * Language and i18n:
    * Updated translations: Czech, Dutch, Estonian, Finnish, French, German,
@@ -24,6 +25,8 @@ Version 1.7.5+svn:
    * Fixed bug #14239 (check_fogged ignored by sound sources)
    * Implemented FR #14246 (check_shrouded= for sound sources)
  * Units:
+   * Made units with the 'healthy' trait always rest heal but take normal
+     damage from poison.
    * Changed the Drake Glider movetype to give 40% defense almost everywhere.
    * Gave the Fire Dragon 100% fire resistance.
  * User interface:

@@ -1805,7 +1805,7 @@ void calculate_healing(int side, bool update_display)
 				curing = "cured";
 				curer = units.end();
 			}
-			if(i->second.resting()) {
+			if(i->second.resting() || i->second.is_healthy()) {
 				rest_healing = game_config::rest_heal_amount;
 				healing += rest_healing;
 			}
@@ -1826,7 +1826,7 @@ void calculate_healing(int side, bool update_display)
 				healers.clear();
 				healing = rest_healing;
 				if(i->second.side() == side) {
-					healing -= i->second.is_healthy() ? game_config::poison_amount * 3/4 : game_config::poison_amount;
+					healing -= game_config::poison_amount;
 				}
 			}
 		}

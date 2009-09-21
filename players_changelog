@@ -4,12 +4,13 @@ changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/trunk/changelog
 
 Version 1.7.5+svn:
  * AI:
-   * In some campaigns, such as in Legend of Wesmere, allied AI sides can now recall their veterans from earlier scenarios.
-   * AI will now recruit somewhat more intilligently.
+   * In some campaigns, such as in Legend of Wesmere, allied AI sides can now
+     recall their veterans from earlier scenarios.
+   * AI will now recruit somewhat more intelligently.
 
    * Graphics:
-   * New portraits for Merman Spearman, Bat, Merman Netcaster, Nightgaunt, Spectre,
-     Shadow
+   * New portraits for Merman Spearman, Bat, Merman Netcaster, Nightgaunt,
+     Spectre, Shadow
 
  * Language and translations:
    * Updated translations: Czech, Dutch, Estonian, Finnish, French, German,
@@ -19,7 +20,9 @@ Version 1.7.5+svn:
    * New map: 4p Ruins of Terra-Dwelve.
 
  * Units:
-   * Changed the Drake Glider movetype to give 40% defense almost everywhere.
+   * Made units with the 'healthy' trait always rest heal but take normal
+     damage from poison.
+   * Changed the Drake Glider's movetype to give 40% defense almost everywhere.
    * Gave the Fire Dragon 100% fire resistance.
 
  * User interface:

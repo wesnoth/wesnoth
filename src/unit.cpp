@@ -798,7 +798,7 @@ void unit::new_turn()
 void unit::end_turn()
 {
 	set_state(STATE_SLOWED,false);
-	if((movement_ != total_movement()) && !(get_state(STATE_NOT_MOVED)) && (!is_healthy_ || attacks_left_ < max_attacks_)) {
+	if((movement_ != total_movement()) && !(get_state(STATE_NOT_MOVED))) {
 		resting_ = false;
 	}
 	set_state(STATE_NOT_MOVED,false);
