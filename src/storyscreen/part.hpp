@@ -120,24 +120,24 @@ class part
 {
 public:
 	/**
-	 * Where the text block should be placed.
+	 * Currently used to indicate where the text block should be placed.
 	 * Note that it will always take as much space as it is
 	 * possible horizontally.
 	 */
-	enum TEXT_BLOCK_LOCATION {
-		TOP,		/**< Top of the screen. */
-		MIDDLE,		/**< Center of the screen. */
-		BOTTOM		/**< Bottom of the screen. This is the default. */
+	enum BLOCK_LOCATION {
+		BLOCK_TOP,		/**< Top of the screen. */
+		BLOCK_MIDDLE,	/**< Center of the screen. */
+		BLOCK_BOTTOM	/**< Bottom of the screen. This is the default. */
 	};
 	/**
-	 * Where the page title should be placed.
+	 * Currently used to indicate where the page title should be placed.
 	 * It always takes as little space (horizontally) as possible,
 	 * and it is always placed at the top of the screen.
 	 */
-	enum TITLE_ALIGNMENT {
-		LEFT,		/**< Top-left corner. */
-		CENTERED,	/**< Center on the topmost edge of the screen. */
-		RIGHT		/**< Top-right corner. */
+	enum TEXT_ALIGNMENT {
+		TEXT_LEFT,		/**< Top-left corner. */
+		TEXT_CENTERED,	/**< Center on the topmost edge of the screen. */
+		TEXT_RIGHT		/**< Top-right corner. */
 	};
 	/**
 	 * Used to signal user actions.
@@ -200,12 +200,12 @@ public:
 	}
 
 	/** Retrieves the area of the screen on which the story text is displayed. */
-	TEXT_BLOCK_LOCATION text_block_location() const {
+	BLOCK_LOCATION story_text_location() const {
 		return text_block_loc_;
 	}
 
 	/** Retrieves the alignment of the title text against the screen. */
-	TITLE_ALIGNMENT title_block_alignment() const {
+	TEXT_ALIGNMENT title_text_alignment() const {
 		return title_alignment_;
 	}
 
@@ -218,8 +218,8 @@ private:
 	/** Takes care of initializing and branching properties. */
 	void resolve_wml(const vconfig &cfg);
 
-	static TEXT_BLOCK_LOCATION string_tblock_loc(const std::string& s);
-	static TITLE_ALIGNMENT string_title_align(const std::string& s);
+	static BLOCK_LOCATION string_tblock_loc(const std::string& s);
+	static TEXT_ALIGNMENT string_title_align(const std::string& s);
 
 	bool scale_background_;
 	std::string background_file_;
@@ -227,8 +227,8 @@ private:
 	bool show_title_;
 	std::string text_;
 	std::string text_title_;
-	TEXT_BLOCK_LOCATION text_block_loc_;
-	TITLE_ALIGNMENT title_alignment_;
+	BLOCK_LOCATION text_block_loc_;
+	TEXT_ALIGNMENT title_alignment_;
 
 	std::string music_;
 	std::string sound_;

@@ -153,17 +153,17 @@ void part_ui::prepare_geometry()
 	text_x_ = 200;
 	buttons_x_ = video_.getx() - 200 - 40;
 
-	switch(p_.text_block_location())
+	switch(p_.story_text_location())
 	{
-	case part::TOP:
+	case part::BLOCK_TOP:
 		text_y_ = 0;
 		buttons_y_ = 40;
 		break;
-	case part::MIDDLE:
+	case part::BLOCK_MIDDLE:
 		text_y_ = video_.gety() / 3;
 		buttons_y_ = video_.gety() / 2 + 15;
 		break;
-	default: // part::BOTTOM
+	default: // part::BLOCK_BOTTOM
 		text_y_ = video_.gety() - 200;
 		buttons_y_ = video_.gety() - 40;
 		break;
@@ -289,11 +289,11 @@ void part_ui::render_title_box()
 	const int titlebox_w = txtsurf->w;
 	const int titlebox_h = txtsurf->h;
 
-	switch(p_.title_block_alignment()) {
-	case part::CENTERED:
+	switch(p_.title_text_alignment()) {
+	case part::TEXT_CENTERED:
 		titlebox_x = base_rect_.w / 2 - titlebox_w / 2 - titlebox_padding;
 		break;
-	case part::RIGHT:
+	case part::TEXT_RIGHT:
 		titlebox_x = base_rect_.w - titlebox_padding - titlebox_w;
 		break;
 	default:
@@ -326,17 +326,17 @@ void part_ui::render_story_box_borders(SDL_Rect& /*update_area*/)
 #else
 void part_ui::render_story_box_borders(SDL_Rect& update_area)
 {
-	const part::TEXT_BLOCK_LOCATION tbl = p_.text_block_location();
+	const part::BLOCK_LOCATION tbl = p_.story_text_location();
 
 	if(has_background_) {
 		surface border_top = NULL;
 		surface border_bottom = NULL;
 
-		if(tbl == part::BOTTOM || tbl == part::MIDDLE) {
+		if(tbl == part::BLOCK_BOTTOM || tbl == part::BLOCK_MIDDLE) {
 			border_top = image::get_image(storybox_top_border_path);
 		}
 
-		if(tbl == part::TOP || tbl == part::MIDDLE) {
+		if(tbl == part::BLOCK_TOP || tbl == part::BLOCK_MIDDLE) {
 			border_bottom = image::get_image(storybox_bottom_border_path);
 		}
 
@@ -380,7 +380,7 @@ void part_ui::render_story_box()
 		return;
 	}
 
-	const part::TEXT_BLOCK_LOCATION tbl = p_.text_block_location();
+	const part::BLOCK_LOCATION tbl = p_.story_text_location();
 	const int max_width = buttons_x_ - storybox_padding - text_x_;
 	const int max_height = screen_area().h - storybox_padding;
 
@@ -405,7 +405,7 @@ void part_ui::render_story_box()
 	}
 
 	int fix_text_y = text_y_;
-	if(fix_text_y + storybox_padding + txtsurf->h > screen_area().h && tbl != part::TOP) {
+	if(fix_text_y + storybox_padding + txtsurf->h > screen_area().h && tbl != part::BLOCK_TOP) {
 		fix_text_y =
 			(screen_area().h > txtsurf->h + 1) ?
 			(std::max(0, screen_area().h - txtsurf->h - (storybox_padding+1))) :
@@ -413,10 +413,10 @@ void part_ui::render_story_box()
 	}
 	int fix_text_h;
 	switch(tbl) {
-	case part::TOP:
+	case part::BLOCK_TOP:
 		fix_text_h = std::max(txtsurf->h + 2*storybox_padding, screen_area().h/4);
 		break;
-	case part::MIDDLE:
+	case part::BLOCK_MIDDLE:
 		fix_text_h = std::max(txtsurf->h + 2*storybox_padding, screen_area().h/3);
 		break;
 	default:

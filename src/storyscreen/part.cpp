@@ -100,8 +100,8 @@ part::part(const vconfig &part_cfg)
 	, show_title_()
 	, text_()
 	, text_title_()
-	, text_block_loc_(part::BOTTOM)
-	, title_alignment_(part::LEFT)
+	, text_block_loc_(part::BLOCK_BOTTOM)
+	, title_alignment_(part::TEXT_LEFT)
 	, music_()
 	, sound_()
 	, floating_images_()
@@ -109,30 +109,30 @@ part::part(const vconfig &part_cfg)
 	resolve_wml(part_cfg);
 }
 
-part::TEXT_BLOCK_LOCATION part::string_tblock_loc(const std::string& s)
+part::BLOCK_LOCATION part::string_tblock_loc(const std::string& s)
 {
 	if(s.empty() != true) {
 		if(s == "top") {
-			return part::TOP;
+			return part::BLOCK_TOP;
 		}
 		else if("middle") {
-			return part::MIDDLE;
+			return part::BLOCK_MIDDLE;
 		}
 	}
-	return part::BOTTOM;
+	return part::BLOCK_BOTTOM;
 }
 
-part::TITLE_ALIGNMENT part::string_title_align(const std::string& s)
+part::TEXT_ALIGNMENT part::string_title_align(const std::string& s)
 {
 	if(s.empty() != true) {
 		if(s == "right") {
-			return part::RIGHT;
+			return part::TEXT_RIGHT;
 		}
 		else if(s == "center") {
-			return part::CENTERED;
+			return part::TEXT_CENTERED;
 		}
 	}
-	return part::LEFT;
+	return part::TEXT_LEFT;
 }
 
 void part::resolve_wml(const vconfig &cfg)
