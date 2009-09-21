@@ -435,6 +435,7 @@ tmanager::tmanager()
 tmanager::~tmanager()
 {
 	delete handler;
+	handler = NULL;
 
 #ifdef MAIN_EVENT_HANDLER
 	draw_interval = 0;
