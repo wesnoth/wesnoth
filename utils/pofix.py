@@ -204,6 +204,7 @@ stringfixes = {
 ('Sure, minus expenses"', 'Sure, minus expenses."'),
 ('I told ye I\'d be here"', 'I told ye I\'d be here."'),
 ('is bringing with him, though"','is bringing with him, though."'),
+('I an defeated.','I am defeated.'),
 ),
 
 "wesnoth-sotbe" :(
