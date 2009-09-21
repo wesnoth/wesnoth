@@ -289,8 +289,16 @@ game_state::game_state(const config& cfg, bool show_replay) :
 	if(classification_.campaign_type.empty()) {
 		classification_.campaign_type = "scenario";
 	}
-
-	if (const config &vars = cfg.child("variables")) {
+	
+	//priority of populating wml variables:
+	//snapshot -> replay_start -> root
+	if (const config &vars = snapshot.child("variables")) {
+		set_variables(vars);
+	}
+	else if (const config &vars = replay_start.child("variables")) {
+		set_variables(vars);
+	}
+	else if (const config &vars = cfg.child("variables")) {
 		set_variables(vars);
 	}
 	set_menu_items(cfg.child_range("menu_item"));
