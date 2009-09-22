@@ -275,9 +275,6 @@ public:
 		return mouse_behaviour_;
 	}
 
-	// The following two struct definitions were originally private,
-	// however MS VC++ chokes on that, so they were changed to public
-
 	/** Helper struct to generate the various signal types. */
 	template<class T>
 	struct tsignal
