@@ -26,7 +26,7 @@
 
 namespace gui2 {
 
-class tpoint;
+struct tpoint;
 
 namespace event {
 
@@ -274,10 +274,9 @@ public:
 	{
 		return mouse_behaviour_;
 	}
-private:
 
-	/** The mouse behaviour for the dispatcher. */
-	tmouse_behaviour mouse_behaviour_;
+	// The following two struct definitions were originally private,
+	// however MS VC++ chokes on that, so they were changed to public
 
 	/** Helper struct to generate the various signal types. */
 	template<class T>
@@ -329,6 +328,11 @@ private:
 
 		}
 	};
+
+private:
+
+	/** The mouse behaviour for the dispatcher. */
+	tmouse_behaviour mouse_behaviour_;
 
 	/** Signal queue for callbacks in tset_event. */
 	tsignal_queue<tsignal_function> signal_queue_;
