@@ -308,7 +308,7 @@ if( vars.side_terrain,
 			set_var(debug_print('recruits_map'), debug_print( 'RECRUITS ', calculate_recruits(self)) )
 			]
 			+
-			if( turn = 1,
+			if( turn = 0,
 				[
 					null(
 						sum(

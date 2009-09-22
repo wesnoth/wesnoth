@@ -66,6 +66,10 @@ static register_stage_factory<testing_ai_default::fallback_to_other_ai>
 static register_stage_factory<ai_default_recruitment_stage>
 	ai_default_recruitment_stage_factory("ai_default::recruitment");
 
+static register_stage_factory<idle_stage>
+	ai_idle_stage_factory("empty");
+
+
 // =======================================================================
 // Candidate actions
 // =======================================================================
