@@ -1612,6 +1612,9 @@ void game_controller::play_replay()
 	try {
 		::play_replay(disp(),state_,game_config_,video_);
 
+		loaded_game_ = "";
+		loaded_game_show_replay_ = false;
+		loaded_game_cancel_orders_ = false;
 	} catch(game::load_game_exception& e) {
 
 		//this will make it so next time through the title screen loop, this game is loaded
