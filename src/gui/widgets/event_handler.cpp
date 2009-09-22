@@ -94,7 +94,9 @@ static Uint32 popup_callback(Uint32 /*interval*/, void* /*param*/)
  * blocker is used.
  */
 tevent_handler::tevent_handler() :
+#ifndef GUI2_NEW_EVENT_HANDLING
 	events::handler(false), // don't join we haven't created a context yet
+#endif
 	event_context_(),
 	mouse_x_(-1),
 	mouse_y_(-1),
@@ -134,7 +136,9 @@ tevent_handler::tevent_handler() :
 	}
 
 	// The event context is created now we join it.
+#ifndef GUI2_NEW_EVENT_HANDLING
 	join();
+#endif
 }
 
 void tevent_handler::handle_event(const SDL_Event& event)

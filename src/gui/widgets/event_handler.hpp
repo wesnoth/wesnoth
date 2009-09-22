@@ -35,12 +35,19 @@ class twidget;
 class twindow;
 
 /** The event handler class for the widget library. */
-class tevent_handler : public events::handler
+class tevent_handler
+#ifndef GUI2_NEW_EVENT_HANDLING
+	: public events::handler
+#endif
 {
 public:
 	tevent_handler();
 
+#ifdef GUI2_NEW_EVENT_HANDLING
+	virtual ~tevent_handler() {}
+#else
 	~tevent_handler() { leave(); }
+#endif
 
 	/** Inherited from events::handler. */
 	void process_events() { events::pump(); }
