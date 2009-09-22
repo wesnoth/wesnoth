@@ -416,6 +416,18 @@ private:
 	 *                            false otherwise.
 	 */
 	virtual bool click_dismiss() = 0;
+
+
+public:
+	void connect();
+
+private:
+
+	void sdl_mouse_motion(const tpoint& coordinate);
+	void sdl_left_button_down(const tpoint& coordinate);
+	void sdl_left_button_up(const tpoint& coordinate);
+
+
 };
 
 } // namespace gui2

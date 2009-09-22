@@ -26,6 +26,8 @@
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
 
+#include <boost/bind.hpp>
+
 namespace gui2{
 
 /**
@@ -755,6 +757,61 @@ void tevent_handler::key_down(const SDL_Event& event)
 		(**ritor).key_press(*this, handled,
 			event.key.keysym.sym, event.key.keysym.mod, event.key.keysym.unicode);
 	}
+}
+
+void tevent_handler::connect()
+{
+	twindow& w = get_window();
+	w.event::tdispatcher::connect();
+	w.connect_signal<event::DRAW>(boost::bind(&twindow::draw, &get_window()));
+	w.connect_signal<event::SDL_MOUSE_MOTION>(
+			boost::bind(&tevent_handler::sdl_mouse_motion, this, _4));
+	w.connect_signal<event::SDL_LEFT_BUTTON_DOWN>(
+			boost::bind(&tevent_handler::sdl_left_button_down, this, _4));
+	w.connect_signal<event::SDL_LEFT_BUTTON_UP>(
+			boost::bind(&tevent_handler::sdl_left_button_up, this, _4));
+}
+
+void tevent_handler::sdl_mouse_motion(const tpoint& coordinate)
+{
+	SDL_Event event;
+	twidget* mouse_over = find_at(coordinate, true);
+
+	if(mouse_captured_) {
+		mouse_focus_->mouse_move(*this);
+		set_hover(true);
+	} else {
+		if(!mouse_focus_ && mouse_over) {
+			mouse_enter(event, mouse_over);
+		} else if (mouse_focus_ && !mouse_over) {
+			mouse_leave(event, mouse_over);
+		} else if(mouse_focus_ && mouse_focus_ == mouse_over) {
+			mouse_over->mouse_move(*this);
+			set_hover();
+		} else if(mouse_focus_ && mouse_over) {
+			// moved from one widget to the next
+			mouse_leave(event, mouse_over);
+			mouse_enter(event, mouse_over);
+		} else {
+			assert(!mouse_focus_ && !mouse_over);
+		}
+	}
+
+}
+void tevent_handler::sdl_left_button_down(const tpoint& coordinate)
+{
+	SDL_Event event;
+	twidget* mouse_over = find_at(coordinate, true);
+
+	mouse_button_down(event, mouse_over, left_);
+}
+
+void tevent_handler::sdl_left_button_up(const tpoint& coordinate)
+{
+	SDL_Event event;
+	twidget* mouse_over = find_at(coordinate, true);
+
+	mouse_button_up(event, mouse_over, left_);
 }
 
 /**
