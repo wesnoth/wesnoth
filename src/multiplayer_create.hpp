@@ -17,6 +17,7 @@
 #ifndef MULTIPLAYER_CREATE_HPP_INCLUDED
 #define MULTIPLAYER_CREATE_HPP_INCLUDED
 
+#include "mp_game_settings.hpp"
 #include "multiplayer_ui.hpp"
 #include "widgets/slider.hpp"
 #include "widgets/label.hpp"
@@ -29,84 +30,10 @@ namespace mp {
 class create : public mp::ui
 {
 public:
-	struct parameters
-	{
-		parameters() :
-			name(),
-			era(),
-			password(),
-			num_turns(0),
-			village_gold(0),
-			xp_modifier(0),
-			mp_countdown_init_time(0),
-			mp_countdown_reservoir_time(0),
-			mp_countdown_turn_bonus(0),
-			mp_countdown_action_bonus(0),
-			mp_countdown(false),
-			use_map_settings(false),
-			random_start_time(false),
-			fog_game(false),
-			shroud_game(false),
-			allow_observers(false),
-			share_view(false),
-			share_maps(false),
-			saved_game(false),
-			scenario_data()
-
-		{ reset(); };
-
-		void reset() {
-			name = "";
-			era = "";
-			password = "";
-			num_turns = 0;
-			village_gold = 0;
-			xp_modifier = 0;
-			mp_countdown_init_time=0;
-			mp_countdown_reservoir_time=0;
-			mp_countdown_turn_bonus=0;
-			mp_countdown_action_bonus=0;
-			mp_countdown=false;
-			use_map_settings = random_start_time = fog_game = shroud_game = allow_observers = share_view = share_maps = false;
-
-			scenario_data.clear();
-		}
-
-		// The items returned while configuring the game
-
-		std::string name;
-		std::string era;
-		std::string password;
-
-		int num_turns;
-		int village_gold;
-		int xp_modifier;
-		int mp_countdown_init_time;
-		int mp_countdown_reservoir_time;
-		int mp_countdown_turn_bonus;
-		int mp_countdown_action_bonus;
-		bool mp_countdown;
-		bool use_map_settings;
-		bool random_start_time;
-		bool fog_game;
-		bool shroud_game;
-		bool allow_observers;
-		bool share_view;
-		bool share_maps;
-
-		bool saved_game;
-
-		/**
-		 * If the game is to be randomly generated, the map generator
-		 * will create the scenario data in this variable
-		 */
-		config scenario_data;
-	};
-
 	create(game_display& dist, const config& game_config, chat& c, config& gamelist);
 	~create();
 
-	parameters& get_parameters();
+	mp_game_settings& get_parameters();
 
 protected:
 	virtual void layout_children(const SDL_Rect& rect);
@@ -174,7 +101,7 @@ private:
 
 	util::scoped_ptr<map_generator> generator_;
 
-	parameters parameters_;
+	mp_game_settings parameters_;
 };
 
 } // end namespace mp

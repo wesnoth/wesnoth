@@ -17,6 +17,7 @@
 #ifndef GAME_STATUS_HPP_INCLUDED
 #define GAME_STATUS_HPP_INCLUDED
 
+#include "mp_game_settings.hpp"
 #include "random.hpp"
 #include "simple_rng.hpp"
 #include "team.hpp"
@@ -117,6 +118,10 @@ public:
 	game_classification& classification() { return classification_; }
 	const game_classification& classification() const { return classification_; } //FIXME: const getter to allow use from const gamestatus::sog() (see ai.cpp:344) - remove after merge?
 
+	/** Multiplayer parameters for this game */
+	mp_game_settings& mp_settings() { return mp_settings_; }
+	const mp_game_settings& mp_settings() const { return mp_settings_; }
+
 	/**
 	 * If the game is saved mid-level, we have a series of replay steps
 	 * to take the game up to the position it was saved at.
@@ -149,6 +154,7 @@ private:
 	const rand_rng::set_random_generator generator_setter; /**< Make sure that rng is initialized first */
 	friend struct variable_info;
 	game_classification classification_;
+	mp_game_settings mp_settings_;
 };
 
 

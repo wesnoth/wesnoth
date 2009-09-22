@@ -558,17 +558,9 @@ void loadgame::fill_mplevel_config(config& level){
 		// Probably not needed.
 		level["turn"] = start_data["turn_at"];
 		level["turn_at"] = start_data["turn_at"];
-		level["turns"] = start_data["turns"];
-		level["mp_use_map_settings"] = start_data["mp_use_map_settings"];
-		level["mp_village_gold"] = start_data["mp_village_gold"];
-		level["mp_fog"] = start_data["mp_fog"];
-		level["mp_shroud"] = start_data["mp_shroud"];
-		level["mp_countdown"] = start_data["mp_countdown"];
-		level["mp_countdown_init_time"] = start_data["mp_countdown_init_time"];
-		level["mp_countdown_turn_bonus"] = start_data["mp_countdown_turn_bonus"];
-		level["mp_countdown_action_bonus"] = start_data["mp_countdown_action_bonus"];
-		level["experience_modifier"] = start_data["experience_modifier"];
-		level["observer"] = start_data["observer"];
+
+		level.add_child("multiplayer", gamestate_.mp_settings().to_config());
+
 		//Start-of-scenario save
 		if(gamestate_.snapshot.empty()){
 			//For a start-of-scenario-save, write the data to the starting_pos and not the snapshot, since

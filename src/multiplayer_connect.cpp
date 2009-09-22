@@ -727,24 +727,6 @@ config connect::side::get_config() const
 			res["shroud"] = parent_->params_.shroud_game ? "yes" : "no";
 		}
 
-
-		if(!parent_->params_.use_map_settings || res["mp_countdown"].empty() || (res["mp_countdown"] != "yes" && res["mp_countdown"] != "no")) {
-			res["mp_countdown"] = parent_->params_.mp_countdown ? "yes" : "no";;
-		}
-
-		if(!parent_->params_.use_map_settings || res["mp_countdown_init_time"].empty()) {
-			res["mp_countdown_init_time"] = lexical_cast<std::string>(parent_->params_.mp_countdown_init_time);
-		}
-		if(!parent_->params_.use_map_settings || res["mp_countdown_turn_bonus"].empty()) {
-			res["mp_countdown_turn_bonus"] = lexical_cast<std::string>(parent_->params_.mp_countdown_turn_bonus);
-		}
-		if(!parent_->params_.use_map_settings || res["mp_countdown_reservoir_time"].empty()) {
-			res["mp_countdown_reservoir_time"] = lexical_cast<std::string>(parent_->params_.mp_countdown_reservoir_time);
-		}
-		if(!parent_->params_.use_map_settings || res["mp_countdown_action_bonus"].empty()) {
-			res["mp_countdown_action_bonus"] = lexical_cast<std::string>(parent_->params_.mp_countdown_action_bonus);
-		}
-
 		res["share_maps"] = parent_->params_.share_maps ? "yes" : "no";
 		res["share_view"] =  parent_->params_.share_view ? "yes" : "no";
 		if(!parent_->params_.use_map_settings || res["village_gold"].empty())
@@ -991,7 +973,7 @@ void connect::side::resolve_random()
 }
 
 connect::connect(game_display& disp, const config& game_config,
-		chat& c, config& gamelist, const create::parameters& params,
+		chat& c, config& gamelist, const mp_game_settings& params,
 		mp::controller default_controller, bool local_players_only) :
 	mp::ui(disp, _("Game Lobby: ") + params.name, game_config, c, gamelist),
 	local_only_(local_players_only),
@@ -1532,16 +1514,12 @@ void connect::load_game()
 			return;
 		}
 	} else {
+		level_.clear();
 		level_["savegame"] = "no";
-		level_ = params_.scenario_data;
+		level_.merge_with(params_.scenario_data);
+		level_.add_child("multiplayer", params_.to_config());
 
 		level_["hash"] = level_.hash();
-		level_["turns"] = lexical_cast_default<std::string>(params_.num_turns, "20");
-		level_["mp_countdown"] = params_.mp_countdown ? "yes" : "no";
-		level_["mp_countdown_init_time"] = lexical_cast_default<std::string>(params_.mp_countdown_init_time, "270");
-		level_["mp_countdown_turn_bonus"] = lexical_cast_default<std::string>(params_.mp_countdown_turn_bonus, "35");
-		level_["mp_countdown_reservoir_time"] = lexical_cast_default<std::string>(params_.mp_countdown_reservoir_time, "330");
-		level_["mp_countdown_action_bonus"] = lexical_cast_default<std::string>(params_.mp_countdown_action_bonus, "13");
 		level_["next_underlying_unit_id"] = lexical_cast<std::string>(0);
 		n_unit::id_manager::instance().clear();
 
@@ -1557,13 +1535,7 @@ void connect::load_game()
 			level_["random_start_time"] = "no";
 		}
 
-		level_["scenario"] = params_.name;
-		level_["experience_modifier"] = lexical_cast<std::string>(params_.xp_modifier);
 		level_["random_seed"] = lexical_cast<std::string>(state_.rng().get_random_seed());
-		level_["mp_village_gold"] = lexical_cast<std::string>(params_.village_gold);
-		level_["mp_fog"] = params_.fog_game ? "yes" : "no";
-		level_["mp_shroud"] = params_.shroud_game ? "yes" : "no";
-		level_["mp_use_map_settings"] = params_.use_map_settings ? "yes" : "no";
 	}
 
 	// Add the map name to the title.

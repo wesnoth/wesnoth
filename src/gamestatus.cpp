@@ -164,7 +164,8 @@ game_state::game_state()  :
 		variables(),
 		temporaries(),
 		generator_setter(&recorder),
-		classification_()
+		classification_(),
+		mp_settings_()
 		{}
 
 void write_players(game_state& gamestate, config& cfg, const bool use_snapshot, const bool merge_side)
@@ -257,7 +258,8 @@ game_state::game_state(const config& cfg, bool show_replay) :
 		variables(),
 		temporaries(),
 		generator_setter(&recorder),
-		classification_(cfg)
+		classification_(cfg),
+		mp_settings_(cfg)
 {
 	n_unit::id_manager::instance().set_save_id(lexical_cast_default<size_t>(cfg["next_underlying_unit_id"],0));
 	log_scope("read_game");
@@ -269,11 +271,9 @@ game_state::game_state(const config& cfg, bool show_replay) :
 
 
 	if (snapshot && !snapshot.empty() && !show_replay) {
-
 		this->snapshot = snapshot;
 
 		rng_.seed_random(lexical_cast_default<unsigned>(snapshot["random_calls"]));
-
 	} else {
 		assert(replay_start != NULL);
 
@@ -566,6 +566,7 @@ game_state& game_state::operator=(const game_state& state)
 	rng_ = state.rng_;
 	scoped_variables = state.scoped_variables;
 	classification_ = game_classification(state.classification());
+	mp_settings_ = mp_game_settings(state.mp_settings());
 
 	clear_wmi(wml_menu_items);
 	std::map<std::string, wml_menu_item*>::const_iterator itor;
@@ -852,6 +853,7 @@ void game_state::set_menu_items(const config::const_child_itors &menu_items)
 void game_state::write_config(config_writer& out, bool write_variables) const
 {
 	out.write(classification_.to_config());
+	out.write_child("multiplayer", mp_settings_.to_config());
 	out.write_key_val("random_seed", lexical_cast<std::string>(rng_.get_random_seed()));
 	out.write_key_val("random_calls", lexical_cast<std::string>(rng_.get_random_calls()));
 	if (write_variables) {

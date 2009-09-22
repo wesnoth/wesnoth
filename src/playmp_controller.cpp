@@ -253,7 +253,7 @@ void playmp_controller::play_human_turn(){
 			throw e;
 		}
 
-		if (!linger_ && (current_team().countdown_time() > 0) && (level_["mp_countdown"] == "yes")) {
+		if (!linger_ && (current_team().countdown_time() > 0) && gamestate_.mp_settings().mp_countdown) {
 			SDL_Delay(1);
 			const int ticks = SDL_GetTicks();
 			int new_time = current_team().countdown_time()-std::max<int>(1,(ticks - cur_ticks));
@@ -269,16 +269,16 @@ void playmp_controller::play_human_turn(){
 			} else {
 				// Clock time ended
 				// If no turn bonus or action bonus -> defeat
-				const int action_increment = lexical_cast_default<int>(level_["mp_countdown_action_bonus"],0);
-				if ( lexical_cast_default<int>(level_["mp_countdown_turn_bonus"],0) == 0
+				const int action_increment = gamestate_.mp_settings().mp_countdown_action_bonus;
+				if ( (gamestate_.mp_settings().mp_countdown_turn_bonus == 0 )
 					&& (action_increment == 0 || current_team().action_bonus_count() == 0)) {
 					// Not possible to end level in MP with throw end_level_exception(DEFEAT);
 					// because remote players only notice network disconnection
 					// Current solution end remaining turns automatically
 					current_team().set_countdown_time(10);
 				} else {
-					const int maxtime = lexical_cast_default<int>(level_["mp_countdown_reservoir_time"],0);
-					int secs = lexical_cast_default<int>(level_["mp_countdown_turn_bonus"],0);
+					const int maxtime = gamestate_.mp_settings().mp_countdown_reservoir_time;
+					int secs = gamestate_.mp_settings().mp_countdown_turn_bonus;
 					secs += action_increment  * current_team().action_bonus_count();
 					current_team().set_action_bonus_count(0);
 					secs = (secs > maxtime) ? maxtime : secs;
@@ -434,10 +434,10 @@ void playmp_controller::wait_for_upload()
 }
 
 void playmp_controller::after_human_turn(){
-	if ( level_["mp_countdown"] == "yes" ){
-		const int action_increment = lexical_cast_default<int>(level_["mp_countdown_action_bonus"],0);
-		const int maxtime = lexical_cast_default<int>(level_["mp_countdown_reservoir_time"],0);
-		int secs = (current_team().countdown_time() / 1000) + lexical_cast_default<int>(level_["mp_countdown_turn_bonus"],0);
+	if ( gamestate_.mp_settings().mp_countdown ){
+		const int action_increment = gamestate_.mp_settings().mp_countdown_action_bonus;
+		const int maxtime = gamestate_.mp_settings().mp_countdown_reservoir_time;
+		int secs = (current_team().countdown_time() / 1000) + gamestate_.mp_settings().mp_countdown_turn_bonus;
 		secs += action_increment  * current_team().action_bonus_count();
 		current_team().set_action_bonus_count(0);
 		secs = (secs > maxtime) ? maxtime : secs;

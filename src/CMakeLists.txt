@@ -306,6 +306,7 @@ set(wesnoth-main_SRC
     menu_events.cpp
     mouse_events.cpp
     mouse_handler_base.cpp
+	mp_game_settings.cpp
     multiplayer.cpp
     multiplayer_ui.cpp
     multiplayer_wait.cpp

@@ -416,7 +416,7 @@ static void enter_wait_mode(game_display& disp, const config& game_config, mp::c
 static void enter_create_mode(game_display& disp, const config& game_config, mp::chat& chat, config& gamelist, mp::controller default_controller, bool local_players_only = false);
 
 static void enter_connect_mode(game_display& disp, const config& game_config,
-		mp::chat& chat, config& gamelist, const mp::create::parameters& params,
+		mp::chat& chat, config& gamelist, const mp_game_settings& params,
 		mp::controller default_controller, bool local_players_only = false)
 {
 	mp::ui::result res;
@@ -470,7 +470,7 @@ static void enter_create_mode(game_display& disp, const config& game_config, mp:
 	} else {
 
 		mp::ui::result res;
-		mp::create::parameters params;
+		mp_game_settings params;
 
 		{
 			mp::create ui(disp, game_config, chat, gamelist);

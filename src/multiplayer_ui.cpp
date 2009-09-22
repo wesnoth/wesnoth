@@ -128,6 +128,7 @@ void level_to_gamestate(config& level, game_state& state)
 		state.set_variables(vars);
 	}
 	state.set_menu_items(level.child_range("menu_item"));
+	state.mp_settings().set_from_config(level);
 
 	//Check whether it is a save-game by looking for snapshot data
 	const config &snapshot = level.child("snapshot");

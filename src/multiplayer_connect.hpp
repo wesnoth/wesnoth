@@ -180,7 +180,7 @@ public:
 
 
 	connect(game_display& disp, const config& game_config,
-			chat& c, config& gamelist, const create::parameters& params,
+			chat& c, config& gamelist, const mp_game_settings& params,
 			mp::controller default_controller, bool local_players_only = false);
 
 	virtual void process_event();
@@ -254,7 +254,7 @@ private:
 	/** This is the "game state" object which is created by this dialog. */
 	game_state state_;
 
-	create::parameters params_;
+	mp_game_settings params_;
 
 	/** The list of available sides for the current era. */
 	std::vector<const config *> era_sides_;

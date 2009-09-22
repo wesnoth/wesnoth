@@ -259,7 +259,7 @@ create::~create()
 	}
 }
 
-create::parameters& create::get_parameters()
+mp_game_settings& create::get_parameters()
 {
 	const int turns = turns_slider_.value() < turns_slider_.max_value() ?
 		turns_slider_.value() : -1;
