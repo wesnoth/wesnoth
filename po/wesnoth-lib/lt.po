@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-09-20 15:43+0200\n"
+"POT-Creation-Date: 2009-09-20 15:59+0200\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lietuvių <komp_lt@konferencijos.lt>\n"
@@ -211,44 +211,42 @@ msgstr "Tropinis miškas"
 #. [terrain_type]: id=deciduous_forest_summer
 #: data/core/terrain.cfg:484
 msgid "Summer Deciduous Forest"
-msgstr ""
+msgstr "Vasarinis lapuočių miškas"
 
 #. [terrain_type]: id=deciduous_forest_fall
 #: data/core/terrain.cfg:495
 msgid "Fall Deciduous Forest"
-msgstr ""
+msgstr "Rudeninis lapuočių miškas"
 
 #. [terrain_type]: id=deciduous_forest_winter
 #: data/core/terrain.cfg:506
 msgid "Winter Deciduous Forest"
-msgstr ""
+msgstr "Žieminis lapuočių miškas"
 
 #. [terrain_type]: id=deciduous_forest_winter_snow
 #: data/core/terrain.cfg:517
-#, fuzzy
 msgid "Snowy Deciduous Forest"
-msgstr "Apsnigtas miškas"
+msgstr "Apsnigtas lapuočių miškas"
 
 #. [terrain_type]: id=mixed_forest_summer
 #: data/core/terrain.cfg:529
 msgid "Summer Mixed Forest"
-msgstr ""
+msgstr "Vasarinis mišrus miškas"
 
 #. [terrain_type]: id=mixed_forest_fall
 #: data/core/terrain.cfg:540
 msgid "Fall Mixed Forest"
-msgstr ""
+msgstr "Rudeninis mišrus miškas"
 
 #. [terrain_type]: id=mixed_forest_winter
 #: data/core/terrain.cfg:551
 msgid "Winter Mixed Forest"
-msgstr ""
+msgstr "Žieminis mišrus miškas"
 
 #. [terrain_type]: id=mixed_forest_winter_snow
 #: data/core/terrain.cfg:562
-#, fuzzy
 msgid "Snowy Mixed Forest"
-msgstr "Apsnigtas miškas"
+msgstr "Apsnigtas mišrus miškas"
 
 #. [terrain_type]: id=forested_hills
 #. [terrain_type]: id=deciduous_forest_summer_hills
@@ -274,45 +272,38 @@ msgstr "Apsnigtos miškingos kalvos"
 
 #. [terrain_type]: id=deciduous_forest_summer_hills
 #: data/core/terrain.cfg:598
-#, fuzzy
 msgid "Summer Deciduous Forested Hills"
-msgstr "Miškingos kalvos"
+msgstr "Vasarinės lapuočiais apaugusios kalvos"
 
 #. [terrain_type]: id=deciduous_forest_fall_hills
 #: data/core/terrain.cfg:609
-#, fuzzy
 msgid "Fall Deciduous Forested Hills"
-msgstr "Miškingos kalvos"
+msgstr "Rudeninės lapuočiais apaugusios kalvos"
 
 #. [terrain_type]: id=deciduous_forest_winter_hills
 #: data/core/terrain.cfg:620
-#, fuzzy
 msgid "Winter Deciduous Forested Hills"
-msgstr "Miškingos kalvos"
+msgstr "Žieminės lapuočiais apaugusios kalvos"
 
 #. [terrain_type]: id=deciduous_forest_winter_snow_hills
 #: data/core/terrain.cfg:631
-#, fuzzy
 msgid "Snowy Deciduous Forested Hills"
-msgstr "Miškingos kalvos"
+msgstr "Snieguotos lapuočiais apaugusios kalvos"
 
 #. [terrain_type]: id=mixed_forest_summer_hills
 #: data/core/terrain.cfg:642
-#, fuzzy
 msgid "Summer Mixed Forested Hills"
-msgstr "Miškingos kalvos"
+msgstr "Vasarinės mišriu mišku apaugusios kalvos"
 
 #. [terrain_type]: id=mixed_forest_winter_hills
 #: data/core/terrain.cfg:663
-#, fuzzy
 msgid "Winter Mixed Forested Hills"
-msgstr "Miškingos kalvos"
+msgstr "Žieminės mišriu mišku apaugusios kalvos"
 
 #. [terrain_type]: id=mixed_forest_winter_snow_hills
 #: data/core/terrain.cfg:674
-#, fuzzy
 msgid "Snowy Mixed Forested Hills"
-msgstr "Miškingos kalvos"
+msgstr "Apsnigtos mišriu mišku apaugusios kalvos"
 
 #. [terrain_type]: id=grassland
 #. [terrain_type]: id=grassland_flowers
@@ -798,15 +789,13 @@ msgstr "Veiksmai"
 
 #. [button]: id=step
 #: data/gui/default/window/formula_debugger.cfg:120
-#, fuzzy
 msgid "Step operation"
-msgstr "Moderavimas"
+msgstr "Pažingsniui"
 
 #. [button]: id=next
 #: data/gui/default/window/formula_debugger.cfg:130
-#, fuzzy
 msgid "Next operation"
-msgstr "Kitas generatorius"
+msgstr "Kita operacija"
 
 #. [button]: id=stepout
 #: data/gui/default/window/formula_debugger.cfg:140
@@ -836,7 +825,6 @@ msgstr "Išjungti"
 
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_delete.cfg:32
-#, fuzzy
 msgid "Delete Save"
 msgstr "Trinti failą"
 
@@ -848,7 +836,7 @@ msgstr "Ar tikrai norite ištrinti šį žaidimą?"
 #. [toggle_button]: id=dont_ask_again
 #: data/gui/default/window/game_delete.cfg:72
 msgid "Don't ask me again!"
-msgstr ""
+msgstr "Daugiau nebeklausk!"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -884,7 +872,7 @@ msgstr "Įkelti žaidimą"
 #. [label]: id=lblChoose
 #: data/gui/default/window/game_load.cfg:179
 msgid "Choose the game to load"
-msgstr ""
+msgstr "Pasirinkite norimą užkrauti žaidimą"
 
 #. [label]: id=lblFilter
 #: data/gui/default/window/game_load.cfg:203
@@ -911,9 +899,8 @@ msgstr "Trinti"
 
 #. [toggle_button]: id=show_replay
 #: data/gui/default/window/game_load.cfg:370
-#, fuzzy
 msgid "Show replay"
-msgstr "Išsaugoti peržaidimą"
+msgstr "Parodyti peržaidimą"
 
 #. [toggle_button]: id=cancel_orders
 #: data/gui/default/window/game_load.cfg:388
@@ -964,7 +951,7 @@ msgstr "Perrašyti?"
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_save_overwrite.cfg:52
 msgid "Save already exists. Do you want to overwrite it?"
-msgstr ""
+msgstr "Toks išsaugojimas jau yra. Ar norite perrašyti?"
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:38
@@ -973,9 +960,8 @@ msgstr ""
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:92
-#, fuzzy
 msgid "Types"
-msgstr "Tipas"
+msgstr "Tipai"
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:103
@@ -998,7 +984,7 @@ msgstr "Tipas"
 #. [label]: id=name
 #: data/gui/default/window/gamestate_inspector.cfg:206
 msgid "Variable"
-msgstr ""
+msgstr "Kintamasis"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -1037,7 +1023,7 @@ msgstr "Žaidimai"
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:176
 msgid "Requires a password to join"
-msgstr ""
+msgstr "Reikalauja slaptažodžio"
 
 #. [toggle_button]: id=use_map_settings
 #. [row]
@@ -1048,9 +1034,8 @@ msgstr "Naudoti žemėlapio nustatymus"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:178
-#, fuzzy
 msgid "Reloaded game"
-msgstr "Sukurti žaidimą"
+msgstr "Perkrautas žaidimas"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:179
@@ -1072,7 +1057,7 @@ msgstr "Patirties modifikatorius"
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:185
 msgid "Time limit"
-msgstr ""
+msgstr "Laiko limitas"
 
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:304
@@ -1200,15 +1185,13 @@ msgstr ""
 
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:30
-#, fuzzy
 msgid "Player Info - "
-msgstr "Žaidėjai: "
+msgstr "Apie žaidėją: "
 
 #. [button]: id=start_whisper
 #: data/gui/default/window/lobby_player_info.cfg:62
-#, fuzzy
 msgid "Send private message"
-msgstr "Siųsti privačią žinutę"
+msgstr "Siųsti asmeninę žinutę"
 
 #. [button]: id=add_to_friends
 #: data/gui/default/window/lobby_player_info.cfg:91
@@ -1238,7 +1221,7 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:147
 msgid "Kick / ban reason:"
-msgstr ""
+msgstr "Priežastis išspirti:"
 
 #. [button]: id=kick
 #: data/gui/default/window/lobby_player_info.cfg:160
@@ -1253,13 +1236,11 @@ msgstr ""
 
 #. [button]: id=kick_ban
 #: data/gui/default/window/lobby_player_info.cfg:180
-#, fuzzy
 msgid "Kick/ban"
 msgstr "Išspirti"
 
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
-#, fuzzy
 msgid "Multiplayer command dialog"
 msgstr "Daugelio žaidėjų žaidimo komandų dialogas"
 
@@ -1567,9 +1548,8 @@ msgstr "Moteris"
 
 #. [toggle_button]: id=namegen_toggle
 #: data/gui/default/window/unit_create.cfg:97
-#, fuzzy
 msgid "Generate name"
-msgstr "Generuoti žemėlapį"
+msgstr "Generuoti vardą"
 
 #. [label]: id=race
 #: data/gui/default/window/unit_create.cfg:126
@@ -2114,12 +2094,11 @@ msgstr ""
 
 #: src/gui/dialogs/game_load.cpp:252
 msgid "Campaign: $campaign_name"
-msgstr ""
+msgstr "Kampanija: $campaign_name"
 
 #: src/gui/dialogs/game_load.cpp:271
-#, fuzzy
 msgid "replay"
-msgstr "žaidėjas"
+msgstr "peržaidimas"
 
 #: src/gui/dialogs/game_load.cpp:273
 msgid "Turn"
@@ -2492,19 +2471,19 @@ msgstr "Nieko nežymėti"
 
 #: src/hotkeys.cpp:137
 msgid "Rotate Clipboard Clockwise"
-msgstr ""
+msgstr "Pasukti iškarpinę pagal laikrodžio rodyklę"
 
 #: src/hotkeys.cpp:139
 msgid "Rotate Clipboard Counter-Clockwise"
-msgstr ""
+msgstr "Pasukti iškarpinę prieš laikrodžio rodyklę"
 
 #: src/hotkeys.cpp:141
 msgid "Flip Clipboard Horizontally"
-msgstr ""
+msgstr "Apsukti iškarpinę horizontaliai"
 
 #: src/hotkeys.cpp:143
 msgid "Flip Clipboard Vertically"
-msgstr ""
+msgstr "Apsukti iškarpinę vertikaliai"
 
 #: src/hotkeys.cpp:145
 msgid "Rotate Selection"

@@ -12,8 +12,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 ? 0 : n%100!=11 ? 3 : n%10>=2 && (n"
-"%100<10 || n%100>=20) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10==1 && n%100!=11 ? 1 : n%"
+"10>=2 && (n%100<10 || n%100>=20) ? 2 : 3);\n"
 "X-Generator: Lokalize 1.0\n"
 
 #. [advanced_preference]: type=boolean
@@ -2839,12 +2839,10 @@ msgstr ""
 "informacijoje, kai jis yra pažymėtas."
 
 #: data/core/macros/abilities.cfg:615
-#, fuzzy
 msgid "petrifies"
-msgstr "Smūgiai"
+msgstr "paverčia akmeniu"
 
 #: data/core/macros/abilities.cfg:617
-#, fuzzy
 msgid ""
 "Petrify:\n"
 "This attack petrifies the target, turning it to stone. Units that have been "
@@ -3159,9 +3157,8 @@ msgstr ""
 #. [objective]: description=<span color='white'>, condition=win
 #: data/core/macros/carryover-utils.cfg:34
 #: data/core/macros/carryover-utils.cfg:42
-#, fuzzy
 msgid "Alternative objective:"
-msgstr "Nustatyti tikslą..."
+msgstr "Alternatyvus tikslas:"
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:39
@@ -4654,7 +4651,7 @@ msgstr ""
 "jokia kita rasė negali lygintis su jų lankininkais greičiu ir taiklumu. Visi "
 "elfai taip pat turi nepaaiškinamą potraukį prie nepaliestos gamtos. Jie "
 "dažnai jaučiasi nejaukiai didelėse erdvėse be augalų. Elfai pagrinde gyvena "
-"Didžiojo žemyno miškuose; Aetenvude pietvakariuose, Vesmeroje šiaurės "
+"Didžiojo žemyno miškuose; Ėtenvude pietvakariuose, Vesmeroje šiaurės "
 "vakaruose ir didžiajame šiauriniame miške, kurio piečiausias kraštas "
 "vadinamas Lintaniro mišku.\n"
 "\n"
@@ -5959,9 +5956,8 @@ msgstr "lygis"
 
 #. [unit_moves]: id=unit-moves
 #: data/themes/default.cfg:459 data/themes/experimental.cfg:399
-#, fuzzy
 msgid "statuspanel^moves"
-msgstr "judėjimas"
+msgstr "ėjimai"
 
 #. [unit_defense]: id=unit-defense
 #: data/themes/default.cfg:468 data/themes/experimental.cfg:408
@@ -6100,33 +6096,33 @@ msgstr "Nepavyko teleportuotis! Išėjimas ne laisvas"
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Pastebėtas draugiškas dalinys"
-msgstr[1] "Pastebėti $friends draugiški daliniai"
-msgstr[2] "Pastebėta $friends draugiškų dalinių"
-msgstr[3] "Pastebėtas $friends draugiškas dalinys"
+msgstr[1] "Pastebėtas $friends draugiškas dalinys"
+msgstr[2] "Pastebėti $friends draugiški daliniai"
+msgstr[3] "Pastebėta $friends draugiškų dalinių"
 
 #: src/actions.cpp:2421
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Pastebėtas priešiškas dalinys"
-msgstr[1] "Pastebėti $enemies priešiški daliniai"
-msgstr[2] "Pastebėta $enemies priešiškų dalinių"
-msgstr[3] "Pastebėtas $enemies priešiškas dalinys"
+msgstr[1] "Pastebėtas $enemies priešiškas dalinys"
+msgstr[2] "Pastebėti $enemies priešiški daliniai"
+msgstr[3] "Pastebėta $enemies priešiškų dalinių"
 
 #: src/actions.cpp:2426
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "$friends draugiškas"
-msgstr[1] "$friends draugiški"
-msgstr[2] "$friends draugiškų"
-msgstr[3] "$friends draugiškas"
+msgstr[1] "$friends draugiškas"
+msgstr[2] "$friends draugiški"
+msgstr[3] "$friends draugiškų"
 
 #: src/actions.cpp:2427
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "$enemies priešiškas"
-msgstr[1] "$enemies priešiški"
-msgstr[2] "$enemies priešiškų"
-msgstr[3] "$enemies priešiškas"
+msgstr[1] "$enemies priešiškas"
+msgstr[2] "$enemies priešiški"
+msgstr[3] "$enemies priešiškų"
 
 #: src/actions.cpp:2428
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
@@ -6504,7 +6500,6 @@ msgid "What should our victorious unit become?"
 msgstr "Kuo mūsų pergalingas dalinys turi tapti?"
 
 #: src/dialogs.cpp:216
-#, fuzzy
 msgid "Level"
 msgstr "lygis"
 
@@ -6823,9 +6818,8 @@ msgid "petrified: "
 msgstr "suakmenėjęs: "
 
 #: src/generate_report.cpp:141
-#, fuzzy
 msgid "This unit has been petrified. It may not move or attack."
-msgstr "Šis dalinys buvo paverstas į akmenį. Jis negali judėti ar pulti."
+msgstr "Šis dalinys buvo paverstas akmeniu. Jis negali judėti ar pulti."
 
 #: src/generate_report.cpp:195
 msgid "Resistances: "
@@ -6851,9 +6845,9 @@ msgstr[3] "žalos"
 msgid "tooltip^attack"
 msgid_plural "attacks"
 msgstr[0] "ataka"
-msgstr[1] "atakos"
+msgstr[1] "ataka"
 msgstr[2] "atakos"
-msgstr[3] "ataka"
+msgstr[3] "atakų"
 
 #: src/generate_report.cpp:294
 #, no-c-format
@@ -6894,9 +6888,8 @@ msgid "Observers:"
 msgstr "Stebėtojai:"
 
 #: src/gui/dialogs/lobby_player_info.cpp:64
-#, fuzzy
 msgid "In game:"
-msgstr "Vardas:"
+msgstr "Žaidime:"
 
 #: src/gui/dialogs/lobby_player_info.cpp:66
 msgid "(observing)"
@@ -7357,7 +7350,7 @@ msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
-"Nėra dalinių prieinamų grąžinimui\n"
+"Nėra dalinių, kuriuos būtų galima grąžinti\n"
 "(Privalote turėti išgyvenusių veteranų iš ankstesnio scenarijaus)"
 
 #: src/menu_events.cpp:892
@@ -7372,9 +7365,9 @@ msgstr "Atleisti dalinį"
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] "Privalote turėti bent vieną auksinį, kad grąžintumėte dalinį."
-msgstr[1] "Privalote turėti bent $cost auksinius, kad grąžintumėte dalinį."
-msgstr[2] "Privalote turėti bent $cost auksinių, kad grąžintumėte dalinį."
-msgstr[3] "Privalote turėti bent $cost auksinį, kad grąžintumėte dalinį."
+msgstr[1] "Privalote turėti bent $cost auksinį, kad grąžintumėte dalinį."
+msgstr[2] "Privalote turėti bent $cost auksinius, kad grąžintumėte dalinį."
+msgstr[3] "Privalote turėti bent $cost auksinių, kad grąžintumėte dalinį."
 
 #: src/menu_events.cpp:1287
 msgid ""
@@ -8883,9 +8876,9 @@ msgstr[3] "žalos"
 msgid "strike"
 msgid_plural "strikes"
 msgstr[0] "smūgis"
-msgstr[1] "smūgiai"
-msgstr[2] "smūgių"
-msgstr[3] "smūgis"
+msgstr[1] "smūgis"
+msgstr[2] "smūgiai"
+msgstr[3] "smūgių"
 
 #: src/unit_types.cpp:214
 #, no-c-format
