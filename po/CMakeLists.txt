@@ -53,6 +53,7 @@ set(LANGUAGES
 	sv
 	tl
 	tr
+	vi
 	zh_CN
 	zh_TW
 )
