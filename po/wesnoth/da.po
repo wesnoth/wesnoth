@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-09-20 15:59+0200\n"
+"POT-Creation-Date: 2009-09-23 12:26+0200\n"
 "PO-Revision-Date: 2008-11-04 13:44+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -3372,16 +3372,19 @@ msgstr ""
 "Denne enhed modtager 1 liv til sit maksimum, hver kan den dræber en levende "
 "enhed."
 
+#. [unstore_unit]
 #: data/core/macros/abilities.cfg:524
 msgid "+1 max HP"
 msgstr "+1 maks liv"
 
 # Der må være noget bedre end "stikke i ryggen"... Hvad med "dolke"?
 # snigangreb eller bagholdsangreb er vist bedre som abilities. Joe 18.feb 2007.
+#. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:566
 msgid "backstab"
 msgstr "snigangreb"
 
+#. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:568
 #, fuzzy
 msgid ""
@@ -3395,10 +3398,13 @@ msgstr ""
 "af enheden, der bliver angrebet med denne evne, og denne enhed ikke er "
 "paralyseret (det vil sige gjort til sten)."
 
+#. [plague]: id=plague({TYPE}), type={TYPE}
+#. [plague]: id=plague, type=Walking Corpse
 #: data/core/macros/abilities.cfg:580 data/core/macros/abilities.cfg:592
 msgid "plague"
 msgstr "pest"
 
+#. [plague]: id=plague({TYPE}), type={TYPE}
 #: data/core/macros/abilities.cfg:582
 msgid ""
 "Plague:\n"
@@ -3411,6 +3417,7 @@ msgstr ""
 "enhed der er identisk med og på den samme side som enheden der har "
 "pestangrebet. Dette gælder ikke for udøde eller enheder i landsbyer."
 
+#. [plague]: id=plague, type=Walking Corpse
 #: data/core/macros/abilities.cfg:594
 msgid ""
 "Plague:\n"
@@ -3423,10 +3430,12 @@ msgstr ""
 "gående lig på den samme side som enheden, der har pestangrebet. Dette gælder "
 "ikke for udøde eller enheder i landsbyer."
 
+#. [slow]: id=slow
 #: data/core/macros/abilities.cfg:604
 msgid "slows"
 msgstr "langsom"
 
+#. [slow]: id=slow
 #: data/core/macros/abilities.cfg:606
 msgid ""
 "Slow:\n"
@@ -3441,11 +3450,13 @@ msgstr ""
 "bevægelsesomkostningfordobles. En enhed, som er gjort langsom, vil have en "
 "lille ikon på dens informationssidepanel, når den vælges."
 
+#. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:615
 #, fuzzy
 msgid "petrifies"
 msgstr "Slag"
 
+#. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:617
 #, fuzzy
 msgid ""
@@ -3457,10 +3468,12 @@ msgstr ""
 "Dette angreb gør målet til sten. Enheder, der er gjort til sten, kan ikke "
 "bevæge sig eller angribe."
 
+#. [chance_to_hit]: id=marksman
 #: data/core/macros/abilities.cfg:626
 msgid "marksman"
 msgstr "skarpskytte"
 
+#. [chance_to_hit]: id=marksman
 #: data/core/macros/abilities.cfg:628
 msgid ""
 "Marksman:\n"
@@ -3469,10 +3482,12 @@ msgstr ""
 "Skarpskytte:\n"
 "Hvis anvendt offensivt, har dette angreb en træfsikkerhed på mindst 60 %."
 
+#. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:653
 msgid "swarm"
 msgstr "sværm"
 
+#. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:655
 #, fuzzy
 msgid ""
@@ -3488,10 +3503,12 @@ msgstr ""
 "angreb."
 
 # kan også være angrib
+#. [damage]: id=charge
 #: data/core/macros/abilities.cfg:664
 msgid "charge"
 msgstr "storm"
 
+#. [damage]: id=charge
 #: data/core/macros/abilities.cfg:666
 msgid ""
 "Charge:\n"
@@ -3502,10 +3519,12 @@ msgstr ""
 "Når anvendt offensivt giver dette angreb dobbelt skade til modstanderen. Det "
 "gør også, at enheden selv modtager dobbelt skade fra modstanderens modangreb."
 
+#. [drains]: id=drains
 #: data/core/macros/abilities.cfg:678
 msgid "drains"
 msgstr "dræn"
 
+#. [drains]: id=drains
 #: data/core/macros/abilities.cfg:680
 msgid ""
 "Drain:\n"
@@ -3516,10 +3535,12 @@ msgstr ""
 "Denne enhed dræner livsenergi fra levende enheder - den helbreder sig selv "
 "med halvdelen af det drænede (nedrundet)."
 
+#. [poison]: id=poison
 #: data/core/macros/abilities.cfg:700
 msgid "poison"
 msgstr "gift"
 
+#. [poison]: id=poison
 #: data/core/macros/abilities.cfg:702
 msgid ""
 "Poison:\n"
@@ -5098,70 +5119,69 @@ msgid "female^resilient"
 msgstr "robust"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:139
+#: data/core/macros/traits.cfg:138
 msgid "healthy"
 msgstr "sund"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:140
+#: data/core/macros/traits.cfg:139
 msgid "female^healthy"
 msgstr "sund"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:141
-#, fuzzy
-msgid "Can rest while moving, takes a quarter less poison damage"
-msgstr "Kan hvile under bevægelse, halverer giftskade"
+#: data/core/macros/traits.cfg:140
+msgid "Always rest heals"
+msgstr ""
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:158 data/core/macros/traits.cfg:171
+#: data/core/macros/traits.cfg:157 data/core/macros/traits.cfg:170
 msgid "fearless"
 msgstr "frygløs"
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:159 data/core/macros/traits.cfg:172
+#: data/core/macros/traits.cfg:158 data/core/macros/traits.cfg:171
 msgid "female^fearless"
 msgstr "frygtløs"
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:160 data/core/macros/traits.cfg:173
+#: data/core/macros/traits.cfg:159 data/core/macros/traits.cfg:172
 msgid "Fights normally during unfavorable times of day/night"
 msgstr "Kæmper normalt under ikkefavorable tider af døgnet"
 
 #. [trait]: id=weak
-#: data/core/macros/traits.cfg:181
+#: data/core/macros/traits.cfg:180
 msgid "weak"
 msgstr "svag"
 
 #. [trait]: id=weak
-#: data/core/macros/traits.cfg:182
+#: data/core/macros/traits.cfg:181
 msgid "female^weak"
 msgstr "svag"
 
 #. [trait]: id=slow
-#: data/core/macros/traits.cfg:199
+#: data/core/macros/traits.cfg:198
 msgid "slow"
 msgstr "langsom"
 
 #. [trait]: id=slow
-#: data/core/macros/traits.cfg:200
+#: data/core/macros/traits.cfg:199
 msgid "female^slow"
 msgstr "langsom"
 
 #. [trait]: id=dim
-#: data/core/macros/traits.cfg:216
+#: data/core/macros/traits.cfg:215
 #, fuzzy
 msgid "dim"
 msgstr "Middel"
 
 #. [trait]: id=dim
-#: data/core/macros/traits.cfg:217
+#: data/core/macros/traits.cfg:216
 #, fuzzy
 msgid "female^dim"
 msgstr "frygtløs"
 
 #. [trait]: id=aged
-#: data/core/macros/traits.cfg:229
+#: data/core/macros/traits.cfg:228
 #, fuzzy
 msgid "aged"
 msgstr "afstands"
@@ -7032,8 +7052,8 @@ msgstr "Afslut scenarie"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:205 src/unit.cpp:2374
-#: src/unit.cpp:2528
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:205 src/unit.cpp:2381
+#: src/unit.cpp:2535
 msgid "HP"
 msgstr "L"
 
@@ -7619,7 +7639,7 @@ msgstr "Intet brugbar våben"
 msgid "Chance of being unscathed"
 msgstr "Risiko for at være uskadt"
 
-#: src/attack_prediction_display.cpp:547 src/mouse_events.cpp:717
+#: src/attack_prediction_display.cpp:547 src/mouse_events.cpp:702
 msgid "Damage Calculations"
 msgstr "Skadesudregninger"
 
@@ -7667,11 +7687,11 @@ msgstr "Flerspiller"
 msgid "Tutorial"
 msgstr "Vejledning"
 
-#: src/dialogs.cpp:483 src/savegame.cpp:955
+#: src/dialogs.cpp:483 src/savegame.cpp:947
 msgid "replay"
 msgstr "omspil"
 
-#: src/dialogs.cpp:485 src/savegame.cpp:1028
+#: src/dialogs.cpp:485 src/savegame.cpp:1020
 msgid "Turn"
 msgstr "Runde"
 
@@ -7743,7 +7763,7 @@ msgid "OK"
 msgstr "O.k."
 
 #: src/dialogs.cpp:615 src/dialogs.cpp:1027 src/dialogs.cpp:1134
-#: src/multiplayer_connect.cpp:1024 src/multiplayer_create.cpp:85
+#: src/multiplayer_connect.cpp:1006 src/multiplayer_create.cpp:85
 #: src/multiplayer_wait.cpp:176
 msgid "Cancel"
 msgstr "Anullér"
@@ -7772,40 +7792,40 @@ msgstr "EP: "
 msgid "Moves: "
 msgstr "Bevægelser: "
 
-#: src/game.cpp:665 src/game.cpp:1394
+#: src/game.cpp:666 src/game.cpp:1395
 msgid "The Battle for Wesnoth"
 msgstr "Kampen om Wesnoth"
 
-#: src/game.cpp:994 src/game.cpp:1002 src/playsingle_controller.cpp:477
-#: src/playsingle_controller.cpp:532
+#: src/game.cpp:995 src/game.cpp:1003 src/playsingle_controller.cpp:476
+#: src/playsingle_controller.cpp:531
 msgid "The file you have tried to load is corrupt"
 msgstr "Filen du forsøgte at indlæse er korrupt"
 
-#: src/game.cpp:997 src/game.cpp:1005 src/savegame.cpp:535
+#: src/game.cpp:998 src/game.cpp:1006 src/savegame.cpp:535
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Filen du prøvede at indlæse er korrupt: '"
 
-#: src/game.cpp:1009
+#: src/game.cpp:1010
 msgid "File I/O Error while reading the game"
 msgstr "I/O-filfejl under læsning af spillet"
 
-#: src/game.cpp:1104
+#: src/game.cpp:1105
 msgid "No campaigns are available.\n"
 msgstr "Ingen kampagner er tilgængelige.\n"
 
-#: src/game.cpp:1137
+#: src/game.cpp:1138
 msgid "Difficulty"
 msgstr "Sværhedsgrad"
 
-#: src/game.cpp:1138
+#: src/game.cpp:1139
 msgid "Select difficulty level:"
 msgstr "Vælg sværhedsgrad:"
 
-#: src/game.cpp:1273
+#: src/game.cpp:1274
 msgid "Do you really want to start the server?"
 msgstr "Vil du virkelig starte serveren?"
 
-#: src/game.cpp:1274
+#: src/game.cpp:1275
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
@@ -7813,27 +7833,27 @@ msgstr ""
 "Serveren vil køre som en baggrundsproces indtil alle brugerne har afbrudt "
 "forbindelsen."
 
-#: src/game.cpp:1278
+#: src/game.cpp:1279
 msgid "Don't show again"
 msgstr "Vis ikke igen!"
 
-#: src/game.cpp:1349
+#: src/game.cpp:1350
 msgid "Error while starting server: "
 msgstr "Fejl under opstart af server: "
 
-#: src/game.cpp:1351 src/playcampaign.cpp:99 src/playcampaign.cpp:369
+#: src/game.cpp:1352 src/playcampaign.cpp:104 src/playcampaign.cpp:381
 msgid "The game could not be loaded: "
 msgstr "Spillet kunne ikke indlæses: "
 
-#: src/game.cpp:1353 src/playcampaign.cpp:101 src/playcampaign.cpp:372
+#: src/game.cpp:1354 src/playcampaign.cpp:106 src/playcampaign.cpp:384
 msgid "Error while playing the game: "
 msgstr "Fejl under spillet: "
 
-#: src/game.cpp:1373 src/playcampaign.cpp:103 src/playcampaign.cpp:375
+#: src/game.cpp:1374 src/playcampaign.cpp:108 src/playcampaign.cpp:387
 msgid "The game map could not be loaded: "
 msgstr "Kortet kunne ikke indlæses: "
 
-#: src/game.cpp:1517
+#: src/game.cpp:1518
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] ""
@@ -7841,35 +7861,35 @@ msgstr[0] ""
 msgstr[1] ""
 "Følgende udvidelsesmoduler indeholder fejl og kunne derfor ikke indlæses:"
 
-#: src/game.cpp:1524
+#: src/game.cpp:1525
 msgid "ERROR DETAILS:"
 msgstr "FEJL-DETALJER:"
 
-#: src/game.cpp:1542
+#: src/game.cpp:1543
 msgid "Error loading game configuration files: '"
 msgstr "Fejl ved indlæsning af spillets konfigurationsfiler: '"
 
-#: src/game.cpp:1543
+#: src/game.cpp:1544
 msgid "' (The game will now exit)"
 msgstr "' (Spillet afsluttes)"
 
-#: src/game.cpp:1552
+#: src/game.cpp:1553
 msgid "Loading data files"
 msgstr "Indlæser datafiler"
 
-#: src/game.cpp:1985
+#: src/game.cpp:1990
 msgid "Loading game configuration."
 msgstr "Indlæser spillets konfiguration."
 
-#: src/game.cpp:1991
+#: src/game.cpp:1996
 msgid "Re-initialize fonts for the current language."
 msgstr "Genindlæser fonte for det nuværende sprog."
 
-#: src/game.cpp:1999
+#: src/game.cpp:2004
 msgid "Searching for installed add-ons."
 msgstr "Søger efter intallerede kampagner"
 
-#: src/game.cpp:2008
+#: src/game.cpp:2013
 msgid "Loading title screen."
 msgstr "Henter titelskærm."
 
@@ -7895,7 +7915,7 @@ msgstr ""
 msgid "Info: "
 msgstr ""
 
-#: src/game_events.cpp:1207 src/multiplayer_connect.cpp:1609
+#: src/game_events.cpp:1207 src/multiplayer_connect.cpp:1581
 msgid "Victory:"
 msgstr "Sejr:"
 
@@ -7907,7 +7927,7 @@ msgstr "Nederlag:"
 msgid "[unit_worth]'s filter didn't match any units!"
 msgstr ""
 
-#: src/gamestatus.cpp:731
+#: src/gamestatus.cpp:740
 #, fuzzy
 msgid ""
 "Leader position not empty - duplicate side definition for side '$side|' "
@@ -8341,11 +8361,11 @@ msgstr "Rul til"
 msgid "Leader"
 msgstr "Leder"
 
-#: src/menu_events.cpp:366 src/multiplayer_connect.cpp:1009
+#: src/menu_events.cpp:366 src/multiplayer_connect.cpp:991
 msgid "Team"
 msgstr "Hold"
 
-#: src/menu_events.cpp:367 src/multiplayer_connect.cpp:1020
+#: src/menu_events.cpp:367 src/multiplayer_connect.cpp:1002
 msgid "Gold"
 msgstr "Guld"
 
@@ -8361,7 +8381,7 @@ msgstr "Enheder"
 msgid "Upkeep"
 msgstr "Vedligeholdelse"
 
-#: src/menu_events.cpp:371 src/multiplayer_connect.cpp:1021
+#: src/menu_events.cpp:371 src/multiplayer_connect.cpp:1003
 #: src/multiplayer_wait.cpp:518
 msgid "Income"
 msgstr "Indkomst"
@@ -8901,11 +8921,11 @@ msgstr "Kommando:"
 msgid "User-Command#3"
 msgstr "Brugerkommando#3"
 
-#: src/mouse_events.cpp:727
+#: src/mouse_events.cpp:712
 msgid "Attack Enemy"
 msgstr "Angrib fjende"
 
-#: src/mouse_events.cpp:728
+#: src/mouse_events.cpp:713
 msgid "Choose weapon:"
 msgstr "Vælg våben:"
 
@@ -9023,83 +9043,83 @@ msgstr "(Reserveret for $playername)"
 msgid "(empty)"
 msgstr "Tom"
 
-#: src/multiplayer_connect.cpp:810
+#: src/multiplayer_connect.cpp:792
 msgid "Reserved"
 msgstr "Reserveret"
 
-#: src/multiplayer_connect.cpp:811
+#: src/multiplayer_connect.cpp:793
 msgid "--give--"
 msgstr "--giv--"
 
-#: src/multiplayer_connect.cpp:935
+#: src/multiplayer_connect.cpp:917
 msgid "Only random sides in the current era."
 msgstr "Ingen tilfældige sider i denne æra"
 
-#: src/multiplayer_connect.cpp:959
+#: src/multiplayer_connect.cpp:941
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Ikke i stand til at finde en ledertype for fraktion $faction"
 
-#: src/multiplayer_connect.cpp:996
+#: src/multiplayer_connect.cpp:978
 msgid "Game Lobby: "
 msgstr "Spillounge: "
 
-#: src/multiplayer_connect.cpp:1016
+#: src/multiplayer_connect.cpp:998
 msgid "Player/Type"
 msgstr "Spiller/Type"
 
-#: src/multiplayer_connect.cpp:1017
+#: src/multiplayer_connect.cpp:999
 msgid "Faction"
 msgstr "Deling"
 
-#: src/multiplayer_connect.cpp:1018
+#: src/multiplayer_connect.cpp:1000
 msgid "Team/Gender"
 msgstr "Hold/køn"
 
-#: src/multiplayer_connect.cpp:1019
+#: src/multiplayer_connect.cpp:1001
 msgid "Color"
 msgstr "Farve"
 
-#: src/multiplayer_connect.cpp:1023
+#: src/multiplayer_connect.cpp:1005
 msgid "I'm Ready"
 msgstr "Jeg er klar"
 
-#: src/multiplayer_connect.cpp:1033
+#: src/multiplayer_connect.cpp:1015
 #, fuzzy
 msgid "The scenario is invalid because it has no id."
 msgstr "Dette scenarie er ugyldigt, det har ingen sider."
 
-#: src/multiplayer_connect.cpp:1037
+#: src/multiplayer_connect.cpp:1019
 msgid "The scenario is invalid because it has no sides."
 msgstr "Dette scenarie er ugyldigt, det har ingen sider."
 
-#: src/multiplayer_connect.cpp:1430
+#: src/multiplayer_connect.cpp:1412
 msgid "Network Player"
 msgstr "Netværksspiller"
 
-#: src/multiplayer_connect.cpp:1432
+#: src/multiplayer_connect.cpp:1414
 msgid "Local Player"
 msgstr "Lokal spiller"
 
-#: src/multiplayer_connect.cpp:1433
+#: src/multiplayer_connect.cpp:1415
 msgid "Computer Player"
 msgstr "Computer-spiller"
 
-#: src/multiplayer_connect.cpp:1434
+#: src/multiplayer_connect.cpp:1416
 msgid "Empty"
 msgstr "Tom"
 
-#: src/multiplayer_connect.cpp:1586
+#: src/multiplayer_connect.cpp:1558
 msgid "Cannot find era $era"
 msgstr "Kan ikke finde æra $era"
 
-#: src/multiplayer_connect.cpp:1611
+#: src/multiplayer_connect.cpp:1583
 #, fuzzy
 msgid "Defeat enemy leader(s)"
 msgstr ""
 "Sejr:\n"
 "@Besejr fjendtlige leder(e)"
 
-#: src/multiplayer_connect.cpp:1675
+#: src/multiplayer_connect.cpp:1647
 msgid "Waiting for players to join..."
 msgstr "Venter på at spillere kobler op..."
 
@@ -9387,11 +9407,11 @@ msgstr ""
 msgid "Joining this game requires a password."
 msgstr "Det kræver en adgangskode at slutte sig til dette spil."
 
-#: src/multiplayer_ui.cpp:193
+#: src/multiplayer_ui.cpp:194
 msgid "Invalid Color"
 msgstr "Ugyldig farve"
 
-#: src/multiplayer_ui.cpp:425
+#: src/multiplayer_ui.cpp:426
 #, fuzzy
 msgid "Selected user: "
 msgstr "Vælg enhed:"
@@ -9451,7 +9471,7 @@ msgstr "Kunne ikke tilføje sokkel til sokkelsættet"
 msgid "Could not send initial handshake"
 msgstr "Kunne ikke starte håndtryk"
 
-#: src/pathfind.cpp:466
+#: src/pathfind.cpp:476
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Terræn som har mindre en 1 i bevægelsesomkostning."
 
@@ -9478,7 +9498,7 @@ msgid "Starting game"
 msgstr "Begynder spil"
 
 #: src/play_controller.cpp:929 src/savegame.cpp:290 src/savegame.cpp:302
-#: src/savegame.cpp:981 src/savegame.cpp:983
+#: src/savegame.cpp:973 src/savegame.cpp:975
 msgid "Auto-Save"
 msgstr "Auto-gem"
 
@@ -9486,31 +9506,31 @@ msgstr "Auto-gem"
 msgid "Back to turn "
 msgstr "Tilbage til runde "
 
-#: src/playcampaign.cpp:127 src/playcampaign.cpp:165
+#: src/playcampaign.cpp:132 src/playcampaign.cpp:170
 msgid "Defeat"
 msgstr "Nederlag"
 
-#: src/playcampaign.cpp:128 src/playcampaign.cpp:166
+#: src/playcampaign.cpp:133 src/playcampaign.cpp:171
 msgid "You have been defeated!"
 msgstr "Du er blevet besejret!"
 
-#: src/playcampaign.cpp:379
+#: src/playcampaign.cpp:391
 msgid "Error while reading the WML: "
 msgstr "Fejl under læsning af WML: "
 
-#: src/playcampaign.cpp:415
+#: src/playcampaign.cpp:427
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Dette scenarie er slut. Ønsker ud at fortsætte med kampagnen?"
 
-#: src/playcampaign.cpp:441
+#: src/playcampaign.cpp:453
 msgid "Downloading next scenario..."
 msgstr "Henter næste scenarie..."
 
-#: src/playcampaign.cpp:575
+#: src/playcampaign.cpp:590
 msgid "Do you want to save your game?"
 msgstr "Vil du gemme dit spil?"
 
-#: src/playcampaign.cpp:592
+#: src/playcampaign.cpp:609
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Ukendt scenarie: '$scenario|'"
 
@@ -9614,15 +9634,15 @@ msgstr[1] ""
 "Du vil starte det næste scenarie med $gold eller scenariets minimums guld, "
 "såfremt denne er højere."
 
-#: src/playsingle_controller.cpp:399
+#: src/playsingle_controller.cpp:398
 msgid "Game Over"
 msgstr "Spil forbi"
 
-#: src/playsingle_controller.cpp:400
+#: src/playsingle_controller.cpp:399
 msgid "The game is over."
 msgstr "Spillet er slut"
 
-#: src/playsingle_controller.cpp:488
+#: src/playsingle_controller.cpp:487
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game\n"
@@ -9631,19 +9651,19 @@ msgstr ""
 "En netværksfejl er opstået og spillet kan ikke fortsættes. Ønsker du at "
 "gemme spillet?"
 
-#: src/playsingle_controller.cpp:654
+#: src/playsingle_controller.cpp:653
 msgid "It is now $name|'s turn"
 msgstr "Det er nu $name|s runde"
 
-#: src/playsingle_controller.cpp:870
+#: src/playsingle_controller.cpp:869
 msgid "Scenario Report"
 msgstr "Scenarierapport"
 
-#: src/playsingle_controller.cpp:872
+#: src/playsingle_controller.cpp:871
 msgid "Victory"
 msgstr "Sejr!"
 
-#: src/playsingle_controller.cpp:873
+#: src/playsingle_controller.cpp:872
 msgid "You have emerged victorious!"
 msgstr "Du har sejret!"
 
@@ -9696,49 +9716,49 @@ msgstr ""
 msgid "This is not a multiplayer save"
 msgstr "Dette er ikke et flerspiller gemt spil"
 
-#: src/savegame.cpp:614
+#: src/savegame.cpp:606
 #, fuzzy
 msgid "The game could not be saved: "
 msgstr "Spillet kunne ikke gemmes"
 
-#: src/savegame.cpp:701
+#: src/savegame.cpp:693
 msgid "Name: "
 msgstr "Navn: "
 
-#: src/savegame.cpp:701
+#: src/savegame.cpp:693
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Filen eksisterer allerede. Vil du overskrive den?"
 
-#: src/savegame.cpp:702
+#: src/savegame.cpp:694
 msgid "Overwrite?"
 msgstr "Overskriv?"
 
-#: src/savegame.cpp:712
+#: src/savegame.cpp:704
 msgid "Save names should not end on '.gz'. Please choose a different name."
 msgstr ""
 "Navnet på et gemt spil må ikke slute på ».gz«. Vælg venligst et andet navn."
 
-#: src/savegame.cpp:774
+#: src/savegame.cpp:766
 msgid "Saved"
 msgstr "Gemt"
 
-#: src/savegame.cpp:774
+#: src/savegame.cpp:766
 msgid "The game has been saved"
 msgstr "Spillet er gemt"
 
-#: src/savegame.cpp:808 src/savegame.cpp:833
+#: src/savegame.cpp:800 src/savegame.cpp:825
 msgid "Could not write to file"
 msgstr "Kunne ikke skrive til filen"
 
-#: src/savegame.cpp:946
+#: src/savegame.cpp:938
 msgid "Save Replay"
 msgstr "Gem omspil"
 
-#: src/savegame.cpp:964
+#: src/savegame.cpp:956
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Kunne ikke auto-gemme spillet, gem det venligst manuelt."
 
-#: src/savegame.cpp:1016
+#: src/savegame.cpp:1008
 msgid "Save Game"
 msgstr "Gem spil"
 
@@ -9996,40 +10016,40 @@ msgstr "Hjælp Wesnoth ved at sende os information"
 msgid "No time of day has been defined."
 msgstr "Intet tid på dagen er defineret."
 
-#: src/unit.cpp:505
+#: src/unit.cpp:506
 #, fuzzy
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "Ukendt enhedstype '$type|'"
 
-#: src/unit.cpp:687
+#: src/unit.cpp:688
 msgid "Unknown unit type '$type|'"
 msgstr "Ukendt enhedstype '$type|'"
 
-#: src/unit.cpp:2331 src/unit.cpp:2516 src/unit.cpp:2589
+#: src/unit.cpp:2338 src/unit.cpp:2523 src/unit.cpp:2596
 msgid " and "
 msgstr " og "
 
-#: src/unit.cpp:2342
+#: src/unit.cpp:2349
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2407
+#: src/unit.cpp:2414
 msgid "moves"
 msgstr "bevægelser"
 
-#: src/unit.cpp:2425 src/unit.cpp:2543
+#: src/unit.cpp:2432 src/unit.cpp:2550
 msgid "XP to advance"
 msgstr "Erfaring til forfremmelse"
 
-#: src/unit.cpp:2535
+#: src/unit.cpp:2542
 msgid " move"
 msgstr " bevægelse"
 
-#: src/unit.cpp:2551
+#: src/unit.cpp:2558
 msgid "$effect_description per level"
 msgstr "$effect_description per niveau"
 
-#: src/unit.cpp:2598
+#: src/unit.cpp:2605
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 
@@ -10114,6 +10134,10 @@ msgstr "Hjælp os med at gøre Wesnoth bedre for dig!"
 #: src/upload_log.cpp:375
 msgid "Enable summary uploads"
 msgstr "Slå sending af resumer til"
+
+#, fuzzy
+#~ msgid "Can rest while moving, takes a quarter less poison damage"
+#~ msgstr "Kan hvile under bevægelse, halverer giftskade"
 
 #~ msgid "Location^Loc."
 #~ msgstr "Plac."

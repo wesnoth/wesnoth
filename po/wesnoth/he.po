@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-09-20 15:59+0200\n"
+"POT-Creation-Date: 2009-09-23 12:26+0200\n"
 "PO-Revision-Date: 2009-07-13 00:55+0300\n"
 "Last-Translator: Oron Peled <oron@actcom.co.il>\n"
 "Language-Team: Hebrew\n"
@@ -3244,14 +3244,17 @@ msgid ""
 "unit."
 msgstr "נקודות הפגיעה המקסימליות של יחידה זו גדלות ב-1 כשהיא הורגת יחידה חיה. "
 
+#. [unstore_unit]
 #: data/core/macros/abilities.cfg:524
 msgid "+1 max HP"
 msgstr "+1 נק\"פ מלא"
 
+#. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:566
 msgid "backstab"
 msgstr "דקירה בגב"
 
+#. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:568
 msgid ""
 "Backstab:\n"
@@ -3263,10 +3266,13 @@ msgstr ""
 "התקפה זו גורמת לנזק כפול אם יש יחידה אוייבת למטרה בצידה השני של המטרה, "
 "ויחידה זו לא מנוטרלת (לדוגמה הפכה לאבן)."
 
+#. [plague]: id=plague({TYPE}), type={TYPE}
+#. [plague]: id=plague, type=Walking Corpse
 #: data/core/macros/abilities.cfg:580 data/core/macros/abilities.cfg:592
 msgid "plague"
 msgstr "מגיפה"
 
+#. [plague]: id=plague({TYPE}), type={TYPE}
 #: data/core/macros/abilities.cfg:582
 msgid ""
 "Plague:\n"
@@ -3278,6 +3284,7 @@ msgstr ""
 "כאשר יחידה מתה מהתקפת מגפה, יחידה זו מוחלפת על ידי יחידה מאותו סוג ששייכת "
 "לצד של היחידה עם התקפת המגפה. (הדבר לא עובד על אל-מתים או יחידות בכפרים)."
 
+#. [plague]: id=plague, type=Walking Corpse
 #: data/core/macros/abilities.cfg:594
 msgid ""
 "Plague:\n"
@@ -3289,10 +3296,12 @@ msgstr ""
 "כאשר יחידה מתה מהתקפת מגפה, יחידה זו מוחלפת על ידי גוויה מהלכת ששייכת לצד של "
 "היחידה עם התקפת המגפה. (הדבר לא עובד על אל-מתים או יחידות בכפרים)."
 
+#. [slow]: id=slow
 #: data/core/macros/abilities.cfg:604
 msgid "slows"
 msgstr "מאט"
 
+#. [slow]: id=slow
 #: data/core/macros/abilities.cfg:606
 msgid ""
 "Slow:\n"
@@ -3306,11 +3315,13 @@ msgstr ""
 "ויחידות מואטות נעות בחצי מהמהירות (מעוגל למטה). במסך הצד כלי מואט יקבל סימן "
 "חילזון"
 
+#. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:615
 #, fuzzy
 msgid "petrifies"
 msgstr "נסיונות פגיעה"
 
+#. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:617
 #, fuzzy
 msgid ""
@@ -3321,10 +3332,12 @@ msgstr ""
 "אבן:\n"
 "התקפה זאת הופכת את הקורבן לאבן. יחידות שהפכו לאבן לא יכולות לזוז או לתקוף."
 
+#. [chance_to_hit]: id=marksman
 #: data/core/macros/abilities.cfg:626
 msgid "marksman"
 msgstr "צליפה"
 
+#. [chance_to_hit]: id=marksman
 #: data/core/macros/abilities.cfg:628
 msgid ""
 "Marksman:\n"
@@ -3333,10 +3346,12 @@ msgstr ""
 "צלף:\n"
 "כאשר משומשת לתקיפה, להתקפה זו יש תמיד לפחות 60% לפגוע."
 
+#. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:653
 msgid "swarm"
 msgstr "נחיל"
 
+#. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:655
 msgid ""
 "Swarm:\n"
@@ -3350,10 +3365,12 @@ msgstr ""
 "הפגיעה בתור הוא באותו יחס כמו הנק\"פ הנוכחי \\ הנק\"פ המירבי של היחידה. "
 "לדוגמא יחידה שיש לה 3/4 מהנק\"פ המירבי תקבל 3/4 ממספר נסיונות הפגיעה בתור."
 
+#. [damage]: id=charge
 #: data/core/macros/abilities.cfg:664
 msgid "charge"
 msgstr "הסתערות"
 
+#. [damage]: id=charge
 #: data/core/macros/abilities.cfg:666
 msgid ""
 "Charge:\n"
@@ -3364,10 +3381,12 @@ msgstr ""
 "התקפה זו גורמת נזק כפול למטרה. היא גם גורמת ליחידה זו לקבל נזק כפול מהתקפת "
 "הנגד של המטרה."
 
+#. [drains]: id=drains
 #: data/core/macros/abilities.cfg:678
 msgid "drains"
 msgstr "יניקה"
 
+#. [drains]: id=drains
 #: data/core/macros/abilities.cfg:680
 msgid ""
 "Drain:\n"
@@ -3378,10 +3397,12 @@ msgstr ""
 "יחידה זו יונקת את כח החיים מיחידות חיות, ומרפא את עצמה בחצי מהנזק אותה היא "
 "גרמה (מעוגל למטה)."
 
+#. [poison]: id=poison
 #: data/core/macros/abilities.cfg:700
 msgid "poison"
 msgstr "רעל"
 
+#. [poison]: id=poison
 #: data/core/macros/abilities.cfg:702
 msgid ""
 "Poison:\n"
@@ -4555,67 +4576,67 @@ msgid "female^resilient"
 msgstr "עמידה"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:139
+#: data/core/macros/traits.cfg:138
 msgid "healthy"
 msgstr "בריא"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:140
+#: data/core/macros/traits.cfg:139
 msgid "female^healthy"
 msgstr "בריאה"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:141
-msgid "Can rest while moving, takes a quarter less poison damage"
-msgstr "יכול לנוך בזמן הליכה, מקבל רק 6 (במקום 8) נזק/תור מרעל."
+#: data/core/macros/traits.cfg:140
+msgid "Always rest heals"
+msgstr ""
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:158 data/core/macros/traits.cfg:171
+#: data/core/macros/traits.cfg:157 data/core/macros/traits.cfg:170
 msgid "fearless"
 msgstr "חסר פחד"
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:159 data/core/macros/traits.cfg:172
+#: data/core/macros/traits.cfg:158 data/core/macros/traits.cfg:171
 msgid "female^fearless"
 msgstr "חסרת פחד"
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:160 data/core/macros/traits.cfg:173
+#: data/core/macros/traits.cfg:159 data/core/macros/traits.cfg:172
 msgid "Fights normally during unfavorable times of day/night"
 msgstr "לא שופג הקטנות לנזק מקרב בזמן (אור/חושך) גרוע."
 
 #. [trait]: id=weak
-#: data/core/macros/traits.cfg:181
+#: data/core/macros/traits.cfg:180
 msgid "weak"
 msgstr "חלש"
 
 #. [trait]: id=weak
-#: data/core/macros/traits.cfg:182
+#: data/core/macros/traits.cfg:181
 msgid "female^weak"
 msgstr "חלשה"
 
 #. [trait]: id=slow
-#: data/core/macros/traits.cfg:199
+#: data/core/macros/traits.cfg:198
 msgid "slow"
 msgstr "איטי"
 
 #. [trait]: id=slow
-#: data/core/macros/traits.cfg:200
+#: data/core/macros/traits.cfg:199
 msgid "female^slow"
 msgstr "איטית"
 
 #. [trait]: id=dim
-#: data/core/macros/traits.cfg:216
+#: data/core/macros/traits.cfg:215
 msgid "dim"
 msgstr "טיפש"
 
 #. [trait]: id=dim
-#: data/core/macros/traits.cfg:217
+#: data/core/macros/traits.cfg:216
 msgid "female^dim"
 msgstr "טיפשה"
 
 #. [trait]: id=aged
-#: data/core/macros/traits.cfg:229
+#: data/core/macros/traits.cfg:228
 #, fuzzy
 msgid "aged"
 msgstr "טווח רחוק"
@@ -6137,8 +6158,8 @@ msgstr "סיים התקלות"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:205 src/unit.cpp:2374
-#: src/unit.cpp:2528
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:205 src/unit.cpp:2381
+#: src/unit.cpp:2535
 msgid "HP"
 msgstr "נק\"פ"
 
@@ -6707,7 +6728,7 @@ msgstr "אין נשק שמיש"
 msgid "Chance of being unscathed"
 msgstr "סיכוי לא להפגע"
 
-#: src/attack_prediction_display.cpp:547 src/mouse_events.cpp:717
+#: src/attack_prediction_display.cpp:547 src/mouse_events.cpp:702
 msgid "Damage Calculations"
 msgstr "חישובי נזק"
 
@@ -6756,11 +6777,11 @@ msgstr "רב משתתפים"
 msgid "Tutorial"
 msgstr "הדרכה"
 
-#: src/dialogs.cpp:483 src/savegame.cpp:955
+#: src/dialogs.cpp:483 src/savegame.cpp:947
 msgid "replay"
 msgstr "הקלטת משחק"
 
-#: src/dialogs.cpp:485 src/savegame.cpp:1028
+#: src/dialogs.cpp:485 src/savegame.cpp:1020
 msgid "Turn"
 msgstr "תור"
 
@@ -6831,7 +6852,7 @@ msgid "OK"
 msgstr "אשר"
 
 #: src/dialogs.cpp:615 src/dialogs.cpp:1027 src/dialogs.cpp:1134
-#: src/multiplayer_connect.cpp:1024 src/multiplayer_create.cpp:85
+#: src/multiplayer_connect.cpp:1006 src/multiplayer_create.cpp:85
 #: src/multiplayer_wait.cpp:176
 msgid "Cancel"
 msgstr "בטל"
@@ -6860,101 +6881,101 @@ msgstr "נק\"נ: "
 msgid "Moves: "
 msgstr "מהלכים: "
 
-#: src/game.cpp:665 src/game.cpp:1394
+#: src/game.cpp:666 src/game.cpp:1395
 msgid "The Battle for Wesnoth"
 msgstr "הקרב על ווסנות'"
 
-#: src/game.cpp:994 src/game.cpp:1002 src/playsingle_controller.cpp:477
-#: src/playsingle_controller.cpp:532
+#: src/game.cpp:995 src/game.cpp:1003 src/playsingle_controller.cpp:476
+#: src/playsingle_controller.cpp:531
 msgid "The file you have tried to load is corrupt"
 msgstr "הקובץ, אותו ניסית לטעון, פגום"
 
-#: src/game.cpp:997 src/game.cpp:1005 src/savegame.cpp:535
+#: src/game.cpp:998 src/game.cpp:1006 src/savegame.cpp:535
 msgid "The file you have tried to load is corrupt: '"
 msgstr "הקובץ, אותו ניסית לטעון, פגום: '"
 
-#: src/game.cpp:1009
+#: src/game.cpp:1010
 msgid "File I/O Error while reading the game"
 msgstr "שגיאה קלט בטעינת המשחק"
 
-#: src/game.cpp:1104
+#: src/game.cpp:1105
 #, fuzzy
 msgid "No campaigns are available.\n"
 msgstr "אין מטרות זמינות"
 
-#: src/game.cpp:1137
+#: src/game.cpp:1138
 msgid "Difficulty"
 msgstr "רמת קושי"
 
-#: src/game.cpp:1138
+#: src/game.cpp:1139
 msgid "Select difficulty level:"
 msgstr "בחר רמת קושי:"
 
-#: src/game.cpp:1273
+#: src/game.cpp:1274
 msgid "Do you really want to start the server?"
 msgstr "האם אתה בטוח שברצונך להפעיל את השרת?"
 
-#: src/game.cpp:1274
+#: src/game.cpp:1275
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr "השרת ירוץ ברקע עד שהמשתמש האחרון יצא."
 
-#: src/game.cpp:1278
+#: src/game.cpp:1279
 msgid "Don't show again"
 msgstr "אל תציג שוב!"
 
-#: src/game.cpp:1349
+#: src/game.cpp:1350
 msgid "Error while starting server: "
 msgstr "שגיאה בזמן התחלת שרת: "
 
-#: src/game.cpp:1351 src/playcampaign.cpp:99 src/playcampaign.cpp:369
+#: src/game.cpp:1352 src/playcampaign.cpp:104 src/playcampaign.cpp:381
 msgid "The game could not be loaded: "
 msgstr "לא ניתן לטעון את המשחק: "
 
-#: src/game.cpp:1353 src/playcampaign.cpp:101 src/playcampaign.cpp:372
+#: src/game.cpp:1354 src/playcampaign.cpp:106 src/playcampaign.cpp:384
 msgid "Error while playing the game: "
 msgstr "שגיאה בזמן המשחק: "
 
-#: src/game.cpp:1373 src/playcampaign.cpp:103 src/playcampaign.cpp:375
+#: src/game.cpp:1374 src/playcampaign.cpp:108 src/playcampaign.cpp:387
 msgid "The game map could not be loaded: "
 msgstr "נכשלה טעינת מפת המשחק: "
 
-#: src/game.cpp:1517
+#: src/game.cpp:1518
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "בתוסף להלן היו שגיאות שמנעו את טעינתו"
 msgstr[1] "בחבילות הבאות היו שגיאות שמנעו את טעינתם:"
 
-#: src/game.cpp:1524
+#: src/game.cpp:1525
 msgid "ERROR DETAILS:"
 msgstr "פרטי השגיאה:"
 
-#: src/game.cpp:1542
+#: src/game.cpp:1543
 msgid "Error loading game configuration files: '"
 msgstr "שגיאה בטעינת קבצי תצורה: "
 
-#: src/game.cpp:1543
+#: src/game.cpp:1544
 msgid "' (The game will now exit)"
 msgstr "' (המשחק יסתיים עתה)"
 
-#: src/game.cpp:1552
+#: src/game.cpp:1553
 msgid "Loading data files"
 msgstr "טוען קבצי מידע"
 
-#: src/game.cpp:1985
+#: src/game.cpp:1990
 msgid "Loading game configuration."
 msgstr "טוען קבצי תצורה."
 
-#: src/game.cpp:1991
+#: src/game.cpp:1996
 msgid "Re-initialize fonts for the current language."
 msgstr "אתחל גופנים לשפה החדשה."
 
-#: src/game.cpp:1999
+#: src/game.cpp:2004
 msgid "Searching for installed add-ons."
 msgstr "מחפש תוספים מותקנים"
 
-#: src/game.cpp:2008
+#: src/game.cpp:2013
 msgid "Loading title screen."
 msgstr "טוען משך ראשי"
 
@@ -6978,7 +6999,7 @@ msgstr "דיבוג: "
 msgid "Info: "
 msgstr "מידע: "
 
-#: src/game_events.cpp:1207 src/multiplayer_connect.cpp:1609
+#: src/game_events.cpp:1207 src/multiplayer_connect.cpp:1581
 msgid "Victory:"
 msgstr "ניצחון:"
 
@@ -6990,7 +7011,7 @@ msgstr "תבוסה:"
 msgid "[unit_worth]'s filter didn't match any units!"
 msgstr ""
 
-#: src/gamestatus.cpp:731
+#: src/gamestatus.cpp:740
 #, fuzzy
 msgid ""
 "Leader position not empty - duplicate side definition for side '$side|' "
@@ -7429,11 +7450,11 @@ msgstr "גלגל ל-"
 msgid "Leader"
 msgstr "מנהיג"
 
-#: src/menu_events.cpp:366 src/multiplayer_connect.cpp:1009
+#: src/menu_events.cpp:366 src/multiplayer_connect.cpp:991
 msgid "Team"
 msgstr "צוות"
 
-#: src/menu_events.cpp:367 src/multiplayer_connect.cpp:1020
+#: src/menu_events.cpp:367 src/multiplayer_connect.cpp:1002
 msgid "Gold"
 msgstr "זהב"
 
@@ -7449,7 +7470,7 @@ msgstr "יחידות"
 msgid "Upkeep"
 msgstr "מחיר אחזקה"
 
-#: src/menu_events.cpp:371 src/multiplayer_connect.cpp:1021
+#: src/menu_events.cpp:371 src/multiplayer_connect.cpp:1003
 #: src/multiplayer_wait.cpp:518
 msgid "Income"
 msgstr "הכנסה"
@@ -7975,11 +7996,11 @@ msgstr "פקודה:"
 msgid "User-Command#3"
 msgstr "מפקד"
 
-#: src/mouse_events.cpp:727
+#: src/mouse_events.cpp:712
 msgid "Attack Enemy"
 msgstr "יש לתקוף את האויב"
 
-#: src/mouse_events.cpp:728
+#: src/mouse_events.cpp:713
 msgid "Choose weapon:"
 msgstr "בחירת נשק:"
 
@@ -8096,87 +8117,87 @@ msgstr ""
 msgid "(empty)"
 msgstr "ריק"
 
-#: src/multiplayer_connect.cpp:810
+#: src/multiplayer_connect.cpp:792
 #, fuzzy
 msgid "Reserved"
 msgstr "שרת: "
 
-#: src/multiplayer_connect.cpp:811
+#: src/multiplayer_connect.cpp:793
 msgid "--give--"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:935
+#: src/multiplayer_connect.cpp:917
 #, fuzzy
 msgid "Only random sides in the current era."
 msgstr "אין צדדים לא אקראיים בתקופה הנוכחית"
 
-#: src/multiplayer_connect.cpp:959
+#: src/multiplayer_connect.cpp:941
 msgid "Unable to find a leader type for faction $faction"
 msgstr "לא ניתן למצוא סוג מנהיג לסיעה $faction"
 
-#: src/multiplayer_connect.cpp:996
+#: src/multiplayer_connect.cpp:978
 #, fuzzy
 msgid "Game Lobby: "
 msgstr "לובי המשחק"
 
-#: src/multiplayer_connect.cpp:1016
+#: src/multiplayer_connect.cpp:998
 msgid "Player/Type"
 msgstr "שחקן/סוג"
 
-#: src/multiplayer_connect.cpp:1017
+#: src/multiplayer_connect.cpp:999
 msgid "Faction"
 msgstr "סיעה"
 
-#: src/multiplayer_connect.cpp:1018
+#: src/multiplayer_connect.cpp:1000
 #, fuzzy
 msgid "Team/Gender"
 msgstr "מגנה"
 
-#: src/multiplayer_connect.cpp:1019
+#: src/multiplayer_connect.cpp:1001
 msgid "Color"
 msgstr "צבע"
 
-#: src/multiplayer_connect.cpp:1023
+#: src/multiplayer_connect.cpp:1005
 msgid "I'm Ready"
 msgstr "אני מוכן"
 
-#: src/multiplayer_connect.cpp:1033
+#: src/multiplayer_connect.cpp:1015
 #, fuzzy
 msgid "The scenario is invalid because it has no id."
 msgstr "התרחיש לא חוקי כי אין בו צדדים."
 
-#: src/multiplayer_connect.cpp:1037
+#: src/multiplayer_connect.cpp:1019
 msgid "The scenario is invalid because it has no sides."
 msgstr "התרחיש לא חוקי כי אין בו צדדים."
 
-#: src/multiplayer_connect.cpp:1430
+#: src/multiplayer_connect.cpp:1412
 msgid "Network Player"
 msgstr "שחקן רשת"
 
-#: src/multiplayer_connect.cpp:1432
+#: src/multiplayer_connect.cpp:1414
 msgid "Local Player"
 msgstr "שחקן מקומי"
 
-#: src/multiplayer_connect.cpp:1433
+#: src/multiplayer_connect.cpp:1415
 msgid "Computer Player"
 msgstr "שחקן מחשב"
 
-#: src/multiplayer_connect.cpp:1434
+#: src/multiplayer_connect.cpp:1416
 msgid "Empty"
 msgstr "ריק"
 
-#: src/multiplayer_connect.cpp:1586
+#: src/multiplayer_connect.cpp:1558
 msgid "Cannot find era $era"
 msgstr "לא יכול למצוא תקופה $era"
 
-#: src/multiplayer_connect.cpp:1611
+#: src/multiplayer_connect.cpp:1583
 #, fuzzy
 msgid "Defeat enemy leader(s)"
 msgstr ""
 "נצחון\n"
 "@תבוסה מנהיגי האויב"
 
-#: src/multiplayer_connect.cpp:1675
+#: src/multiplayer_connect.cpp:1647
 msgid "Waiting for players to join..."
 msgstr "ממתין להצטרפות שחקנים..."
 
@@ -8472,11 +8493,11 @@ msgstr ""
 msgid "Joining this game requires a password."
 msgstr ""
 
-#: src/multiplayer_ui.cpp:193
+#: src/multiplayer_ui.cpp:194
 msgid "Invalid Color"
 msgstr "צבע לא חוקי"
 
-#: src/multiplayer_ui.cpp:425
+#: src/multiplayer_ui.cpp:426
 #, fuzzy
 msgid "Selected user: "
 msgstr "בחר יחידה:"
@@ -8537,7 +8558,7 @@ msgstr "הוספת נקודת חיבור (socket) לנקודות הקיימות 
 msgid "Could not send initial handshake"
 msgstr "שליחת לחיצת יד ראשונית נכשלה"
 
-#: src/pathfind.cpp:466
+#: src/pathfind.cpp:476
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr ""
 
@@ -8563,7 +8584,7 @@ msgid "Starting game"
 msgstr "נטוש את המשחק"
 
 #: src/play_controller.cpp:929 src/savegame.cpp:290 src/savegame.cpp:302
-#: src/savegame.cpp:981 src/savegame.cpp:983
+#: src/savegame.cpp:973 src/savegame.cpp:975
 msgid "Auto-Save"
 msgstr "שמירה אוטומטית"
 
@@ -8571,34 +8592,34 @@ msgstr "שמירה אוטומטית"
 msgid "Back to turn "
 msgstr ""
 
-#: src/playcampaign.cpp:127 src/playcampaign.cpp:165
+#: src/playcampaign.cpp:132 src/playcampaign.cpp:170
 msgid "Defeat"
 msgstr "תבוסה"
 
-#: src/playcampaign.cpp:128 src/playcampaign.cpp:166
+#: src/playcampaign.cpp:133 src/playcampaign.cpp:171
 msgid "You have been defeated!"
 msgstr "הובסת!"
 
-#: src/playcampaign.cpp:379
+#: src/playcampaign.cpp:391
 #, fuzzy
 msgid "Error while reading the WML: "
 msgstr "שגיאה בזמן המשחק: "
 
-#: src/playcampaign.cpp:415
+#: src/playcampaign.cpp:427
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr ""
 
-#: src/playcampaign.cpp:441
+#: src/playcampaign.cpp:453
 #, fuzzy
 msgid "Downloading next scenario..."
 msgstr "מוריד את השלב הבא..."
 
-#: src/playcampaign.cpp:575
+#: src/playcampaign.cpp:590
 #, fuzzy
 msgid "Do you want to save your game?"
 msgstr "האם אתה רוצה לשמור את המשחק שלך?"
 
-#: src/playcampaign.cpp:592
+#: src/playcampaign.cpp:609
 #, fuzzy
 msgid "Unknown scenario: '$scenario|'"
 msgstr "תרחיש לא ידוע: "
@@ -8694,34 +8715,34 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/playsingle_controller.cpp:399
+#: src/playsingle_controller.cpp:398
 msgid "Game Over"
 msgstr "המשחק נגמר"
 
-#: src/playsingle_controller.cpp:400
+#: src/playsingle_controller.cpp:399
 msgid "The game is over."
 msgstr "המשחק הסתיים."
 
-#: src/playsingle_controller.cpp:488
+#: src/playsingle_controller.cpp:487
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game\n"
 "cannot continue. Do you want to save the game?"
 msgstr "התרחש ניתוק מהרשת, והמשחק אינו יכול להמשך. האם ברצונך לשמור את המשחק?"
 
-#: src/playsingle_controller.cpp:654
+#: src/playsingle_controller.cpp:653
 msgid "It is now $name|'s turn"
 msgstr "עכשיו הגיע תורו של $name|"
 
-#: src/playsingle_controller.cpp:870
+#: src/playsingle_controller.cpp:869
 msgid "Scenario Report"
 msgstr "דו\"ח תרחיש"
 
-#: src/playsingle_controller.cpp:872
+#: src/playsingle_controller.cpp:871
 msgid "Victory"
 msgstr "נצחון"
 
-#: src/playsingle_controller.cpp:873
+#: src/playsingle_controller.cpp:872
 msgid "You have emerged victorious!"
 msgstr "יצאת מנצח!"
 
@@ -8771,50 +8792,50 @@ msgstr "משחק שמור זה שייך לגרסה שונה של המשחק. ה�
 msgid "This is not a multiplayer save"
 msgstr "זה לא שמירה של משחק רב משתתפים"
 
-#: src/savegame.cpp:614
+#: src/savegame.cpp:606
 #, fuzzy
 msgid "The game could not be saved: "
 msgstr "שמירת המשחק נכשלה"
 
-#: src/savegame.cpp:701
+#: src/savegame.cpp:693
 msgid "Name: "
 msgstr "שם:"
 
-#: src/savegame.cpp:701
+#: src/savegame.cpp:693
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "המשחק השמור כבר קיים. האם לדרוס אותו?"
 
-#: src/savegame.cpp:702
+#: src/savegame.cpp:694
 msgid "Overwrite?"
 msgstr "דרוס?"
 
-#: src/savegame.cpp:712
+#: src/savegame.cpp:704
 #, fuzzy
 msgid "Save names should not end on '.gz'. Please choose a different name."
 msgstr "אסור שהשם יגמר ב-'.gz'. יש לבחור שם אחר."
 
-#: src/savegame.cpp:774
+#: src/savegame.cpp:766
 msgid "Saved"
 msgstr "נשמר"
 
-#: src/savegame.cpp:774
+#: src/savegame.cpp:766
 msgid "The game has been saved"
 msgstr "המשחק נשמר"
 
-#: src/savegame.cpp:808 src/savegame.cpp:833
+#: src/savegame.cpp:800 src/savegame.cpp:825
 msgid "Could not write to file"
 msgstr "כתיבה לקובץ נכשלה"
 
-#: src/savegame.cpp:946
+#: src/savegame.cpp:938
 #, fuzzy
 msgid "Save Replay"
 msgstr "הקלטת משחק"
 
-#: src/savegame.cpp:964
+#: src/savegame.cpp:956
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "שמירת משחק אוטומטית נכשלה. יש לבצע שמירה ידנית."
 
-#: src/savegame.cpp:1016
+#: src/savegame.cpp:1008
 msgid "Save Game"
 msgstr "שמור משחק"
 
@@ -9069,41 +9090,41 @@ msgstr "עזור לווסנות' על ידי שליחת מידע אלינו"
 msgid "No time of day has been defined."
 msgstr "שום קטגורית זמן לא הוגדרה. "
 
-#: src/unit.cpp:505
+#: src/unit.cpp:506
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "נמצא כלי לא ידוע '$type|' בזמן יצירת כשרונות"
 
-#: src/unit.cpp:687
+#: src/unit.cpp:688
 msgid "Unknown unit type '$type|'"
 msgstr "כלי לא ידוע '$type|'"
 
-#: src/unit.cpp:2331 src/unit.cpp:2516 src/unit.cpp:2589
+#: src/unit.cpp:2338 src/unit.cpp:2523 src/unit.cpp:2596
 msgid " and "
 msgstr " ו "
 
-#: src/unit.cpp:2342
+#: src/unit.cpp:2349
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
 # NOT TO GET THE "UNTRANSLATED"
 # MESSAGE
-#: src/unit.cpp:2407
+#: src/unit.cpp:2414
 msgid "moves"
 msgstr "מהירות"
 
-#: src/unit.cpp:2425 src/unit.cpp:2543
+#: src/unit.cpp:2432 src/unit.cpp:2550
 msgid "XP to advance"
 msgstr "נק\"נ לרמה הבאה"
 
-#: src/unit.cpp:2535
+#: src/unit.cpp:2542
 msgid " move"
 msgstr " תנועה"
 
-#: src/unit.cpp:2551
+#: src/unit.cpp:2558
 msgid "$effect_description per level"
 msgstr "$effect_description/דרגה"
 
-#: src/unit.cpp:2598
+#: src/unit.cpp:2605
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 
@@ -9185,6 +9206,9 @@ msgstr "עזור לנו להפוך את ווסנות' לטוב יותר בשבי
 #: src/upload_log.cpp:375
 msgid "Enable summary uploads"
 msgstr "אפשר העלאות סיכומיפ"
+
+#~ msgid "Can rest while moving, takes a quarter less poison damage"
+#~ msgstr "יכול לנוך בזמן הליכה, מקבל רק 6 (במקום 8) נזק/תור מרעל."
 
 #~ msgid "Location^Loc."
 #~ msgstr "מיקום"

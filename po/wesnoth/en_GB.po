@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-09-20 15:59+0200\n"
+"POT-Creation-Date: 2009-09-23 12:26+0200\n"
 "PO-Revision-Date: 2009-07-07 05:54-0500\n"
 "Last-Translator: Eric S. Raymond <esr@thyrsus.com>\n"
 "Language-Team: English (British) <en@li.org>\n"
@@ -3343,14 +3343,17 @@ msgstr ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 
+#. [unstore_unit]
 #: data/core/macros/abilities.cfg:524
 msgid "+1 max HP"
 msgstr "+1 max HP"
 
+#. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:566
 msgid "backstab"
 msgstr "backstab"
 
+#. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:568
 msgid ""
 "Backstab:\n"
@@ -3363,10 +3366,13 @@ msgstr ""
 "opposite side of the target, and that unit is not incapacitated (e.g. turned "
 "to stone)."
 
+#. [plague]: id=plague({TYPE}), type={TYPE}
+#. [plague]: id=plague, type=Walking Corpse
 #: data/core/macros/abilities.cfg:580 data/core/macros/abilities.cfg:592
 msgid "plague"
 msgstr "plague"
 
+#. [plague]: id=plague({TYPE}), type={TYPE}
 #: data/core/macros/abilities.cfg:582
 msgid ""
 "Plague:\n"
@@ -3379,6 +3385,7 @@ msgstr ""
 "identical to and on the same side as the unit with the Plague attack. This "
 "doesn't work on Undead or units in villages."
 
+#. [plague]: id=plague, type=Walking Corpse
 #: data/core/macros/abilities.cfg:594
 msgid ""
 "Plague:\n"
@@ -3391,10 +3398,12 @@ msgstr ""
 "identical to and on the same side as the unit with the Plague attack. This "
 "doesn't work on Undead or units in villages."
 
+#. [slow]: id=slow
 #: data/core/macros/abilities.cfg:604
 msgid "slows"
 msgstr "slows"
 
+#. [slow]: id=slow
 #: data/core/macros/abilities.cfg:606
 msgid ""
 "Slow:\n"
@@ -3409,10 +3418,12 @@ msgstr ""
 "that is slowed will feature a snail icon in its sidebar information when it "
 "is selected."
 
+#. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:615
 msgid "petrifies"
 msgstr "petrifies"
 
+#. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:617
 msgid ""
 "Petrify:\n"
@@ -3423,10 +3434,12 @@ msgstr ""
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
 
+#. [chance_to_hit]: id=marksman
 #: data/core/macros/abilities.cfg:626
 msgid "marksman"
 msgstr "marksman"
 
+#. [chance_to_hit]: id=marksman
 #: data/core/macros/abilities.cfg:628
 msgid ""
 "Marksman:\n"
@@ -3435,10 +3448,12 @@ msgstr ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
 
+#. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:653
 msgid "swarm"
 msgstr "swarm"
 
+#. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:655
 msgid ""
 "Swarm:\n"
@@ -3453,10 +3468,12 @@ msgstr ""
 "unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
 "number of strikes."
 
+#. [damage]: id=charge
 #: data/core/macros/abilities.cfg:664
 msgid "charge"
 msgstr "charge"
 
+#. [damage]: id=charge
 #: data/core/macros/abilities.cfg:666
 msgid ""
 "Charge:\n"
@@ -3467,10 +3484,12 @@ msgstr ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target's counterattack."
 
+#. [drains]: id=drains
 #: data/core/macros/abilities.cfg:678
 msgid "drains"
 msgstr "drains"
 
+#. [drains]: id=drains
 #: data/core/macros/abilities.cfg:680
 msgid ""
 "Drain:\n"
@@ -3481,10 +3500,12 @@ msgstr ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
 
+#. [poison]: id=poison
 #: data/core/macros/abilities.cfg:700
 msgid "poison"
 msgstr "poison"
 
+#. [poison]: id=poison
 #: data/core/macros/abilities.cfg:702
 msgid ""
 "Poison:\n"
@@ -5048,67 +5069,67 @@ msgid "female^resilient"
 msgstr "resilient"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:139
+#: data/core/macros/traits.cfg:138
 msgid "healthy"
 msgstr "healthy"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:140
+#: data/core/macros/traits.cfg:139
 msgid "female^healthy"
 msgstr "healthy"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:141
-msgid "Can rest while moving, takes a quarter less poison damage"
-msgstr "Can rest while moving, takes a quarter less poison damage"
+#: data/core/macros/traits.cfg:140
+msgid "Always rest heals"
+msgstr ""
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:158 data/core/macros/traits.cfg:171
+#: data/core/macros/traits.cfg:157 data/core/macros/traits.cfg:170
 msgid "fearless"
 msgstr "fearless"
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:159 data/core/macros/traits.cfg:172
+#: data/core/macros/traits.cfg:158 data/core/macros/traits.cfg:171
 msgid "female^fearless"
 msgstr "fearless"
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:160 data/core/macros/traits.cfg:173
+#: data/core/macros/traits.cfg:159 data/core/macros/traits.cfg:172
 msgid "Fights normally during unfavorable times of day/night"
 msgstr "Fights normally during unfavorable times of day/night"
 
 #. [trait]: id=weak
-#: data/core/macros/traits.cfg:181
+#: data/core/macros/traits.cfg:180
 msgid "weak"
 msgstr "weak"
 
 #. [trait]: id=weak
-#: data/core/macros/traits.cfg:182
+#: data/core/macros/traits.cfg:181
 msgid "female^weak"
 msgstr "weak"
 
 #. [trait]: id=slow
-#: data/core/macros/traits.cfg:199
+#: data/core/macros/traits.cfg:198
 msgid "slow"
 msgstr "slow"
 
 #. [trait]: id=slow
-#: data/core/macros/traits.cfg:200
+#: data/core/macros/traits.cfg:199
 msgid "female^slow"
 msgstr "slow"
 
 #. [trait]: id=dim
-#: data/core/macros/traits.cfg:216
+#: data/core/macros/traits.cfg:215
 msgid "dim"
 msgstr "dim"
 
 #. [trait]: id=dim
-#: data/core/macros/traits.cfg:217
+#: data/core/macros/traits.cfg:216
 msgid "female^dim"
 msgstr "dim"
 
 #. [trait]: id=aged
-#: data/core/macros/traits.cfg:229
+#: data/core/macros/traits.cfg:228
 msgid "aged"
 msgstr "aged"
 
@@ -6962,8 +6983,8 @@ msgstr "End scenario"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:205 src/unit.cpp:2374
-#: src/unit.cpp:2528
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:205 src/unit.cpp:2381
+#: src/unit.cpp:2535
 msgid "HP"
 msgstr "HP"
 
@@ -7543,7 +7564,7 @@ msgstr "No usable weapon"
 msgid "Chance of being unscathed"
 msgstr "Chance of being unscathed"
 
-#: src/attack_prediction_display.cpp:547 src/mouse_events.cpp:717
+#: src/attack_prediction_display.cpp:547 src/mouse_events.cpp:702
 msgid "Damage Calculations"
 msgstr "Damage Calculations"
 
@@ -7591,11 +7612,11 @@ msgstr "Multiplayer"
 msgid "Tutorial"
 msgstr "Tutorial"
 
-#: src/dialogs.cpp:483 src/savegame.cpp:955
+#: src/dialogs.cpp:483 src/savegame.cpp:947
 msgid "replay"
 msgstr "replay"
 
-#: src/dialogs.cpp:485 src/savegame.cpp:1028
+#: src/dialogs.cpp:485 src/savegame.cpp:1020
 msgid "Turn"
 msgstr "Turn"
 
@@ -7667,7 +7688,7 @@ msgid "OK"
 msgstr "OK"
 
 #: src/dialogs.cpp:615 src/dialogs.cpp:1027 src/dialogs.cpp:1134
-#: src/multiplayer_connect.cpp:1024 src/multiplayer_create.cpp:85
+#: src/multiplayer_connect.cpp:1006 src/multiplayer_create.cpp:85
 #: src/multiplayer_wait.cpp:176
 msgid "Cancel"
 msgstr "Cancel"
@@ -7696,40 +7717,40 @@ msgstr "XP: "
 msgid "Moves: "
 msgstr "Moves: "
 
-#: src/game.cpp:665 src/game.cpp:1394
+#: src/game.cpp:666 src/game.cpp:1395
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
-#: src/game.cpp:994 src/game.cpp:1002 src/playsingle_controller.cpp:477
-#: src/playsingle_controller.cpp:532
+#: src/game.cpp:995 src/game.cpp:1003 src/playsingle_controller.cpp:476
+#: src/playsingle_controller.cpp:531
 msgid "The file you have tried to load is corrupt"
 msgstr "The file you have tried to load is corrupt"
 
-#: src/game.cpp:997 src/game.cpp:1005 src/savegame.cpp:535
+#: src/game.cpp:998 src/game.cpp:1006 src/savegame.cpp:535
 msgid "The file you have tried to load is corrupt: '"
 msgstr "The file you have tried to load is corrupt: '"
 
-#: src/game.cpp:1009
+#: src/game.cpp:1010
 msgid "File I/O Error while reading the game"
 msgstr "File I/O Error while reading the game"
 
-#: src/game.cpp:1104
+#: src/game.cpp:1105
 msgid "No campaigns are available.\n"
 msgstr "No campaigns are available.\n"
 
-#: src/game.cpp:1137
+#: src/game.cpp:1138
 msgid "Difficulty"
 msgstr "Difficulty"
 
-#: src/game.cpp:1138
+#: src/game.cpp:1139
 msgid "Select difficulty level:"
 msgstr "Select difficulty level:"
 
-#: src/game.cpp:1273
+#: src/game.cpp:1274
 msgid "Do you really want to start the server?"
 msgstr "Do you really want to start the server?"
 
-#: src/game.cpp:1274
+#: src/game.cpp:1275
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
@@ -7737,61 +7758,61 @@ msgstr ""
 "The server will run in a background process until all users have "
 "disconnected."
 
-#: src/game.cpp:1278
+#: src/game.cpp:1279
 msgid "Don't show again"
 msgstr "Don't show again"
 
-#: src/game.cpp:1349
+#: src/game.cpp:1350
 msgid "Error while starting server: "
 msgstr "Error while starting server: "
 
-#: src/game.cpp:1351 src/playcampaign.cpp:99 src/playcampaign.cpp:369
+#: src/game.cpp:1352 src/playcampaign.cpp:104 src/playcampaign.cpp:381
 msgid "The game could not be loaded: "
 msgstr "The game could not be loaded: "
 
-#: src/game.cpp:1353 src/playcampaign.cpp:101 src/playcampaign.cpp:372
+#: src/game.cpp:1354 src/playcampaign.cpp:106 src/playcampaign.cpp:384
 msgid "Error while playing the game: "
 msgstr "Error while playing the game: "
 
-#: src/game.cpp:1373 src/playcampaign.cpp:103 src/playcampaign.cpp:375
+#: src/game.cpp:1374 src/playcampaign.cpp:108 src/playcampaign.cpp:387
 msgid "The game map could not be loaded: "
 msgstr "The game map could not be loaded: "
 
-#: src/game.cpp:1517
+#: src/game.cpp:1518
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "The following add-on had errors and could not be loaded:"
 msgstr[1] "The following add-ons had errors and could not be loaded:"
 
-#: src/game.cpp:1524
+#: src/game.cpp:1525
 msgid "ERROR DETAILS:"
 msgstr "ERROR DETAILS:"
 
-#: src/game.cpp:1542
+#: src/game.cpp:1543
 msgid "Error loading game configuration files: '"
 msgstr "Error loading game configuration files: '"
 
-#: src/game.cpp:1543
+#: src/game.cpp:1544
 msgid "' (The game will now exit)"
 msgstr "' (The game will now exit)"
 
-#: src/game.cpp:1552
+#: src/game.cpp:1553
 msgid "Loading data files"
 msgstr "Loading data files"
 
-#: src/game.cpp:1985
+#: src/game.cpp:1990
 msgid "Loading game configuration."
 msgstr "Loading game configuration."
 
-#: src/game.cpp:1991
+#: src/game.cpp:1996
 msgid "Re-initialize fonts for the current language."
 msgstr "Re-initialise fonts for the current language."
 
-#: src/game.cpp:1999
+#: src/game.cpp:2004
 msgid "Searching for installed add-ons."
 msgstr "Searching for installed add-ons."
 
-#: src/game.cpp:2008
+#: src/game.cpp:2013
 msgid "Loading title screen."
 msgstr "Loading title screen."
 
@@ -7815,7 +7836,7 @@ msgstr "Debug: "
 msgid "Info: "
 msgstr "Info: "
 
-#: src/game_events.cpp:1207 src/multiplayer_connect.cpp:1609
+#: src/game_events.cpp:1207 src/multiplayer_connect.cpp:1581
 msgid "Victory:"
 msgstr "Victory:"
 
@@ -7827,7 +7848,7 @@ msgstr "Defeat:"
 msgid "[unit_worth]'s filter didn't match any units!"
 msgstr "[unit_worth]'s filter didn't match any units!"
 
-#: src/gamestatus.cpp:731
+#: src/gamestatus.cpp:740
 #, fuzzy
 msgid ""
 "Leader position not empty - duplicate side definition for side '$side|' "
@@ -8255,11 +8276,11 @@ msgstr "Scroll To"
 msgid "Leader"
 msgstr "Leader"
 
-#: src/menu_events.cpp:366 src/multiplayer_connect.cpp:1009
+#: src/menu_events.cpp:366 src/multiplayer_connect.cpp:991
 msgid "Team"
 msgstr "Team"
 
-#: src/menu_events.cpp:367 src/multiplayer_connect.cpp:1020
+#: src/menu_events.cpp:367 src/multiplayer_connect.cpp:1002
 msgid "Gold"
 msgstr "Gold"
 
@@ -8275,7 +8296,7 @@ msgstr "Units"
 msgid "Upkeep"
 msgstr "Upkeep"
 
-#: src/menu_events.cpp:371 src/multiplayer_connect.cpp:1021
+#: src/menu_events.cpp:371 src/multiplayer_connect.cpp:1003
 #: src/multiplayer_wait.cpp:518
 msgid "Income"
 msgstr "Income"
@@ -8800,11 +8821,11 @@ msgstr "Command:"
 msgid "User-Command#3"
 msgstr "User-Command#3"
 
-#: src/mouse_events.cpp:727
+#: src/mouse_events.cpp:712
 msgid "Attack Enemy"
 msgstr "Attack Enemy"
 
-#: src/mouse_events.cpp:728
+#: src/mouse_events.cpp:713
 msgid "Choose weapon:"
 msgstr "Choose weapon:"
 
@@ -8926,79 +8947,79 @@ msgstr "(Reserved for $playername)"
 msgid "(empty)"
 msgstr "(empty)"
 
-#: src/multiplayer_connect.cpp:810
+#: src/multiplayer_connect.cpp:792
 msgid "Reserved"
 msgstr "Reserved"
 
-#: src/multiplayer_connect.cpp:811
+#: src/multiplayer_connect.cpp:793
 msgid "--give--"
 msgstr "--give--"
 
-#: src/multiplayer_connect.cpp:935
+#: src/multiplayer_connect.cpp:917
 msgid "Only random sides in the current era."
 msgstr "Only random sides in the current era."
 
-#: src/multiplayer_connect.cpp:959
+#: src/multiplayer_connect.cpp:941
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Unable to find a leader type for faction $faction"
 
-#: src/multiplayer_connect.cpp:996
+#: src/multiplayer_connect.cpp:978
 msgid "Game Lobby: "
 msgstr "Game Lobby: "
 
-#: src/multiplayer_connect.cpp:1016
+#: src/multiplayer_connect.cpp:998
 msgid "Player/Type"
 msgstr "Player/Type"
 
-#: src/multiplayer_connect.cpp:1017
+#: src/multiplayer_connect.cpp:999
 msgid "Faction"
 msgstr "Faction"
 
-#: src/multiplayer_connect.cpp:1018
+#: src/multiplayer_connect.cpp:1000
 msgid "Team/Gender"
 msgstr "Team/Gender"
 
-#: src/multiplayer_connect.cpp:1019
+#: src/multiplayer_connect.cpp:1001
 msgid "Color"
 msgstr "Colour"
 
-#: src/multiplayer_connect.cpp:1023
+#: src/multiplayer_connect.cpp:1005
 msgid "I'm Ready"
 msgstr "I'm Ready"
 
-#: src/multiplayer_connect.cpp:1033
+#: src/multiplayer_connect.cpp:1015
 msgid "The scenario is invalid because it has no id."
 msgstr "The scenario is invalid because it has no id."
 
-#: src/multiplayer_connect.cpp:1037
+#: src/multiplayer_connect.cpp:1019
 msgid "The scenario is invalid because it has no sides."
 msgstr "The scenario is invalid because it has no sides."
 
-#: src/multiplayer_connect.cpp:1430
+#: src/multiplayer_connect.cpp:1412
 msgid "Network Player"
 msgstr "Network Player"
 
-#: src/multiplayer_connect.cpp:1432
+#: src/multiplayer_connect.cpp:1414
 msgid "Local Player"
 msgstr "Local Player"
 
-#: src/multiplayer_connect.cpp:1433
+#: src/multiplayer_connect.cpp:1415
 msgid "Computer Player"
 msgstr "Computer Player"
 
-#: src/multiplayer_connect.cpp:1434
+#: src/multiplayer_connect.cpp:1416
 msgid "Empty"
 msgstr "Empty"
 
-#: src/multiplayer_connect.cpp:1586
+#: src/multiplayer_connect.cpp:1558
 msgid "Cannot find era $era"
 msgstr "Cannot find era $era"
 
-#: src/multiplayer_connect.cpp:1611
+#: src/multiplayer_connect.cpp:1583
 msgid "Defeat enemy leader(s)"
 msgstr "Defeat enemy leader(s)"
 
-#: src/multiplayer_connect.cpp:1675
+#: src/multiplayer_connect.cpp:1647
 msgid "Waiting for players to join..."
 msgstr "Waiting for players to join..."
 
@@ -9286,11 +9307,11 @@ msgstr "Only show games whose title or description contain the entered text"
 msgid "Joining this game requires a password."
 msgstr "Joining this game requires a password."
 
-#: src/multiplayer_ui.cpp:193
+#: src/multiplayer_ui.cpp:194
 msgid "Invalid Color"
 msgstr "Invalid Colour"
 
-#: src/multiplayer_ui.cpp:425
+#: src/multiplayer_ui.cpp:426
 msgid "Selected user: "
 msgstr "Selected user:"
 
@@ -9348,7 +9369,7 @@ msgstr "Could not add socket to socket set"
 msgid "Could not send initial handshake"
 msgstr "Could not send initial handshake"
 
-#: src/pathfind.cpp:466
+#: src/pathfind.cpp:476
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Terrain with a movement cost less than 1 encountered."
 
@@ -9373,7 +9394,7 @@ msgid "Starting game"
 msgstr "Starting game"
 
 #: src/play_controller.cpp:929 src/savegame.cpp:290 src/savegame.cpp:302
-#: src/savegame.cpp:981 src/savegame.cpp:983
+#: src/savegame.cpp:973 src/savegame.cpp:975
 msgid "Auto-Save"
 msgstr "Auto-Save"
 
@@ -9381,31 +9402,31 @@ msgstr "Auto-Save"
 msgid "Back to turn "
 msgstr "Back to turn "
 
-#: src/playcampaign.cpp:127 src/playcampaign.cpp:165
+#: src/playcampaign.cpp:132 src/playcampaign.cpp:170
 msgid "Defeat"
 msgstr "Defeat"
 
-#: src/playcampaign.cpp:128 src/playcampaign.cpp:166
+#: src/playcampaign.cpp:133 src/playcampaign.cpp:171
 msgid "You have been defeated!"
 msgstr "You have been defeated!"
 
-#: src/playcampaign.cpp:379
+#: src/playcampaign.cpp:391
 msgid "Error while reading the WML: "
 msgstr "Error while reading the WML: "
 
-#: src/playcampaign.cpp:415
+#: src/playcampaign.cpp:427
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "This scenario has ended. Do you want to continue the campaign?"
 
-#: src/playcampaign.cpp:441
+#: src/playcampaign.cpp:453
 msgid "Downloading next scenario..."
 msgstr "Downloading next scenario..."
 
-#: src/playcampaign.cpp:575
+#: src/playcampaign.cpp:590
 msgid "Do you want to save your game?"
 msgstr "Do you want to save your game?"
 
-#: src/playcampaign.cpp:592
+#: src/playcampaign.cpp:609
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Unknown scenario: '$scenario|'"
 
@@ -9509,15 +9530,15 @@ msgstr[1] ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
 
-#: src/playsingle_controller.cpp:399
+#: src/playsingle_controller.cpp:398
 msgid "Game Over"
 msgstr "Game Over"
 
-#: src/playsingle_controller.cpp:400
+#: src/playsingle_controller.cpp:399
 msgid "The game is over."
 msgstr "The game is over."
 
-#: src/playsingle_controller.cpp:488
+#: src/playsingle_controller.cpp:487
 msgid ""
 "A network disconnection has occurred, and the game\n"
 "cannot continue. Do you want to save the game?"
@@ -9525,19 +9546,19 @@ msgstr ""
 "A network disconnection has occurred, and the game\n"
 "cannot continue. Do you want to save the game?"
 
-#: src/playsingle_controller.cpp:654
+#: src/playsingle_controller.cpp:653
 msgid "It is now $name|'s turn"
 msgstr "It is now $name|'s turn"
 
-#: src/playsingle_controller.cpp:870
+#: src/playsingle_controller.cpp:869
 msgid "Scenario Report"
 msgstr "Scenario Report"
 
-#: src/playsingle_controller.cpp:872
+#: src/playsingle_controller.cpp:871
 msgid "Victory"
 msgstr "Victory"
 
-#: src/playsingle_controller.cpp:873
+#: src/playsingle_controller.cpp:872
 msgid "You have emerged victorious!"
 msgstr "You have emerged victorious!"
 
@@ -9589,48 +9610,48 @@ msgstr ""
 msgid "This is not a multiplayer save"
 msgstr "This is not a multiplayer save"
 
-#: src/savegame.cpp:614
+#: src/savegame.cpp:606
 #, fuzzy
 msgid "The game could not be saved: "
 msgstr "The game could not be saved"
 
-#: src/savegame.cpp:701
+#: src/savegame.cpp:693
 msgid "Name: "
 msgstr "Name: "
 
-#: src/savegame.cpp:701
+#: src/savegame.cpp:693
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Save already exists. Do you want to overwrite it?"
 
-#: src/savegame.cpp:702
+#: src/savegame.cpp:694
 msgid "Overwrite?"
 msgstr "Overwrite?"
 
-#: src/savegame.cpp:712
+#: src/savegame.cpp:704
 msgid "Save names should not end on '.gz'. Please choose a different name."
 msgstr "Save names should not end on '.gz'. Please choose a different name."
 
-#: src/savegame.cpp:774
+#: src/savegame.cpp:766
 msgid "Saved"
 msgstr "Saved"
 
-#: src/savegame.cpp:774
+#: src/savegame.cpp:766
 msgid "The game has been saved"
 msgstr "The game has been saved"
 
-#: src/savegame.cpp:808 src/savegame.cpp:833
+#: src/savegame.cpp:800 src/savegame.cpp:825
 msgid "Could not write to file"
 msgstr "Could not write to file"
 
-#: src/savegame.cpp:946
+#: src/savegame.cpp:938
 msgid "Save Replay"
 msgstr "Save Replay"
 
-#: src/savegame.cpp:964
+#: src/savegame.cpp:956
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Could not auto save the game. Please save the game manually."
 
-#: src/savegame.cpp:1016
+#: src/savegame.cpp:1008
 msgid "Save Game"
 msgstr "Save Game"
 
@@ -9884,39 +9905,39 @@ msgstr "Help Wesnoth by sending us information"
 msgid "No time of day has been defined."
 msgstr "No time of day has been defined."
 
-#: src/unit.cpp:505
+#: src/unit.cpp:506
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "Unknown unit type '$type|' while generating traits"
 
-#: src/unit.cpp:687
+#: src/unit.cpp:688
 msgid "Unknown unit type '$type|'"
 msgstr "Unknown unit type '$type|'"
 
-#: src/unit.cpp:2331 src/unit.cpp:2516 src/unit.cpp:2589
+#: src/unit.cpp:2338 src/unit.cpp:2523 src/unit.cpp:2596
 msgid " and "
 msgstr " and "
 
-#: src/unit.cpp:2342
+#: src/unit.cpp:2349
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2407
+#: src/unit.cpp:2414
 msgid "moves"
 msgstr "moves"
 
-#: src/unit.cpp:2425 src/unit.cpp:2543
+#: src/unit.cpp:2432 src/unit.cpp:2550
 msgid "XP to advance"
 msgstr "XP to advance"
 
-#: src/unit.cpp:2535
+#: src/unit.cpp:2542
 msgid " move"
 msgstr " move"
 
-#: src/unit.cpp:2551
+#: src/unit.cpp:2558
 msgid "$effect_description per level"
 msgstr "$effect_description per level"
 
-#: src/unit.cpp:2598
+#: src/unit.cpp:2605
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 
@@ -9997,6 +10018,9 @@ msgstr "Help us make Wesnoth better for you!"
 #: src/upload_log.cpp:375
 msgid "Enable summary uploads"
 msgstr "Enable summary uploads"
+
+#~ msgid "Can rest while moving, takes a quarter less poison damage"
+#~ msgstr "Can rest while moving, takes a quarter less poison damage"
 
 #~ msgid "Location^Loc."
 #~ msgstr "Loc"

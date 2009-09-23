@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-09-20 15:59+0200\n"
+"POT-Creation-Date: 2009-09-23 12:26+0200\n"
 "PO-Revision-Date: 2005-12-14 12:40+0200\n"
 "Last-Translator: \n"
 "Language-Team: Afrikaans\n"
@@ -3321,14 +3321,17 @@ msgid ""
 "unit."
 msgstr ""
 
+#. [unstore_unit]
 #: data/core/macros/abilities.cfg:524
 msgid "+1 max HP"
 msgstr ""
 
+#. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:566
 msgid "backstab"
 msgstr "rugsteek"
 
+#. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:568
 #, fuzzy
 msgid ""
@@ -3341,10 +3344,13 @@ msgstr ""
 "Hierdie eenheid dien dubbele skade toe as 'n goedgesinde eenheid aan die "
 "ander kant van die teiken is. (Dit werk nie vir bongenote nie.)"
 
+#. [plague]: id=plague({TYPE}), type={TYPE}
+#. [plague]: id=plague, type=Walking Corpse
 #: data/core/macros/abilities.cfg:580 data/core/macros/abilities.cfg:592
 msgid "plague"
 msgstr "plaag"
 
+#. [plague]: id=plague({TYPE}), type={TYPE}
 #: data/core/macros/abilities.cfg:582
 #, fuzzy
 msgid ""
@@ -3358,6 +3364,7 @@ msgstr ""
 "'n identiese eenheid aan dieselfde kant as die eenheid met die plaagaanval. "
 "(Dit werk nie op wandelende dooies of eenhede in dorpe nie.)"
 
+#. [plague]: id=plague, type=Walking Corpse
 #: data/core/macros/abilities.cfg:594
 #, fuzzy
 msgid ""
@@ -3371,11 +3378,13 @@ msgstr ""
 "'n identiese eenheid aan dieselfde kant as die eenheid met die plaagaanval. "
 "(Dit werk nie op wandelende dooies of eenhede in dorpe nie.)"
 
+#. [slow]: id=slow
 #: data/core/macros/abilities.cfg:604
 #, fuzzy
 msgid "slows"
 msgstr "verstadig"
 
+#. [slow]: id=slow
 #: data/core/macros/abilities.cfg:606
 msgid ""
 "Slow:\n"
@@ -3385,11 +3394,13 @@ msgid ""
 "is selected."
 msgstr ""
 
+#. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:615
 #, fuzzy
 msgid "petrifies"
 msgstr "Trefhoue"
 
+#. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:617
 #, fuzzy
 msgid ""
@@ -3401,10 +3412,12 @@ msgstr ""
 "Hierdie eenheid verander die teiken in klip. Eenhede wat in klip verander "
 "het mag nie beweeg of aanval nie."
 
+#. [chance_to_hit]: id=marksman
 #: data/core/macros/abilities.cfg:626
 msgid "marksman"
 msgstr "skutter"
 
+#. [chance_to_hit]: id=marksman
 #: data/core/macros/abilities.cfg:628
 msgid ""
 "Marksman:\n"
@@ -3414,10 +3427,12 @@ msgstr ""
 "Wanneer aanvallend gebruik word het hierdie aanval altyd ten minste 'n 60% "
 "kans om te tref."
 
+#. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:653
 msgid "swarm"
 msgstr "slaan toe"
 
+#. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:655
 msgid ""
 "Swarm:\n"
@@ -3427,10 +3442,12 @@ msgid ""
 "number of strikes."
 msgstr ""
 
+#. [damage]: id=charge
 #: data/core/macros/abilities.cfg:664
 msgid "charge"
 msgstr "bestorm"
 
+#. [damage]: id=charge
 #: data/core/macros/abilities.cfg:666
 #, fuzzy
 msgid ""
@@ -3442,11 +3459,13 @@ msgstr ""
 "Hierdie aanval rig dubbele skade aan die teiken aan. Dit veroorsaak ook dat "
 "hierdie eenheid dubbele skade ly vanaf die teiken se teenaanval."
 
+#. [drains]: id=drains
 #: data/core/macros/abilities.cfg:678
 #, fuzzy
 msgid "drains"
 msgstr "dreineer"
 
+#. [drains]: id=drains
 #: data/core/macros/abilities.cfg:680
 msgid ""
 "Drain:\n"
@@ -3458,10 +3477,12 @@ msgstr ""
 "'n hoeveelheid gelykstaande aan die helfte van die skade wat dit toedien, "
 "afgerond."
 
+#. [poison]: id=poison
 #: data/core/macros/abilities.cfg:700
 msgid "poison"
 msgstr "gif"
 
+#. [poison]: id=poison
 #: data/core/macros/abilities.cfg:702
 #, fuzzy
 msgid ""
@@ -4646,75 +4667,75 @@ msgid "female^resilient"
 msgstr "volhard"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:139
+#: data/core/macros/traits.cfg:138
 msgid "healthy"
 msgstr ""
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:140
+#: data/core/macros/traits.cfg:139
 #, fuzzy
 msgid "female^healthy"
 msgstr "Dief"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:141
-msgid "Can rest while moving, takes a quarter less poison damage"
+#: data/core/macros/traits.cfg:140
+msgid "Always rest heals"
 msgstr ""
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:158 data/core/macros/traits.cfg:171
+#: data/core/macros/traits.cfg:157 data/core/macros/traits.cfg:170
 #, fuzzy
 msgid "fearless"
 msgstr "Prinses"
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:159 data/core/macros/traits.cfg:172
+#: data/core/macros/traits.cfg:158 data/core/macros/traits.cfg:171
 #, fuzzy
 msgid "female^fearless"
 msgstr "Prinses"
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:160 data/core/macros/traits.cfg:173
+#: data/core/macros/traits.cfg:159 data/core/macros/traits.cfg:172
 msgid "Fights normally during unfavorable times of day/night"
 msgstr ""
 
 #. [trait]: id=weak
-#: data/core/macros/traits.cfg:181
+#: data/core/macros/traits.cfg:180
 msgid "weak"
 msgstr ""
 
 #. [trait]: id=weak
-#: data/core/macros/traits.cfg:182
+#: data/core/macros/traits.cfg:181
 #, fuzzy
 msgid "female^weak"
 msgstr "Uitvaagsel"
 
 #. [trait]: id=slow
-#: data/core/macros/traits.cfg:199
+#: data/core/macros/traits.cfg:198
 #, fuzzy
 msgid "slow"
 msgstr "verstadig"
 
 #. [trait]: id=slow
-#: data/core/macros/traits.cfg:200
+#: data/core/macros/traits.cfg:199
 #, fuzzy
 msgid "female^slow"
 msgstr "Misdadiger"
 
 #. [trait]: id=dim
-#: data/core/macros/traits.cfg:216
+#: data/core/macros/traits.cfg:215
 #, fuzzy
 msgid "dim"
 msgstr "Middelmatig"
 
 #. [trait]: id=dim
-#: data/core/macros/traits.cfg:217
+#: data/core/macros/traits.cfg:216
 #, fuzzy
 msgid "female^dim"
 msgstr "Prinses"
 
 #. [trait]: id=aged
-#: data/core/macros/traits.cfg:229
+#: data/core/macros/traits.cfg:228
 #, fuzzy
 msgid "aged"
 msgstr "afstandgeveg"
@@ -6281,8 +6302,8 @@ msgstr "Onbekende scenario: '"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:205 src/unit.cpp:2374
-#: src/unit.cpp:2528
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:205 src/unit.cpp:2381
+#: src/unit.cpp:2535
 msgid "HP"
 msgstr "LP"
 
@@ -6906,7 +6927,7 @@ msgstr "Kies wapen:"
 msgid "Chance of being unscathed"
 msgstr ""
 
-#: src/attack_prediction_display.cpp:547 src/mouse_events.cpp:717
+#: src/attack_prediction_display.cpp:547 src/mouse_events.cpp:702
 msgid "Damage Calculations"
 msgstr "Skadeberekenings"
 
@@ -6955,11 +6976,11 @@ msgstr "Veelspeler"
 msgid "Tutorial"
 msgstr "Onderrig"
 
-#: src/dialogs.cpp:483 src/savegame.cpp:955
+#: src/dialogs.cpp:483 src/savegame.cpp:947
 msgid "replay"
 msgstr "wys weer"
 
-#: src/dialogs.cpp:485 src/savegame.cpp:1028
+#: src/dialogs.cpp:485 src/savegame.cpp:1020
 msgid "Turn"
 msgstr "Beurt"
 
@@ -7032,7 +7053,7 @@ msgid "OK"
 msgstr "Goed"
 
 #: src/dialogs.cpp:615 src/dialogs.cpp:1027 src/dialogs.cpp:1134
-#: src/multiplayer_connect.cpp:1024 src/multiplayer_create.cpp:85
+#: src/multiplayer_connect.cpp:1006 src/multiplayer_create.cpp:85
 #: src/multiplayer_wait.cpp:176
 msgid "Cancel"
 msgstr "Kanselleer"
@@ -7061,70 +7082,70 @@ msgstr "EP: "
 msgid "Moves: "
 msgstr "Skuiwe: "
 
-#: src/game.cpp:665 src/game.cpp:1394
+#: src/game.cpp:666 src/game.cpp:1395
 msgid "The Battle for Wesnoth"
 msgstr "Die Stryd om Wesnoth"
 
-#: src/game.cpp:994 src/game.cpp:1002 src/playsingle_controller.cpp:477
-#: src/playsingle_controller.cpp:532
+#: src/game.cpp:995 src/game.cpp:1003 src/playsingle_controller.cpp:476
+#: src/playsingle_controller.cpp:531
 msgid "The file you have tried to load is corrupt"
 msgstr "Die lêer wat jy probeer laai het is beskadig"
 
-#: src/game.cpp:997 src/game.cpp:1005 src/savegame.cpp:535
+#: src/game.cpp:998 src/game.cpp:1006 src/savegame.cpp:535
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Die lêer wat jy probeer laai het, is beskadig: '"
 
-#: src/game.cpp:1009
+#: src/game.cpp:1010
 msgid "File I/O Error while reading the game"
 msgstr "Lêer fout tydens inlees van spel"
 
-#: src/game.cpp:1104
+#: src/game.cpp:1105
 #, fuzzy
 msgid "No campaigns are available.\n"
 msgstr "Geen doelwitte beskikbaar nie"
 
-#: src/game.cpp:1137
+#: src/game.cpp:1138
 msgid "Difficulty"
 msgstr "Moeilikheidsgraad"
 
-#: src/game.cpp:1138
+#: src/game.cpp:1139
 msgid "Select difficulty level:"
 msgstr "Kies moeilikheidsgraad:"
 
-#: src/game.cpp:1273
+#: src/game.cpp:1274
 #, fuzzy
 msgid "Do you really want to start the server?"
 msgstr "Wil jy regtig hierdie spel uitvee?"
 
-#: src/game.cpp:1274
+#: src/game.cpp:1275
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr ""
 
-#: src/game.cpp:1278
+#: src/game.cpp:1279
 #, fuzzy
 msgid "Don't show again"
 msgstr "Moenie my weer vra nie!"
 
-#: src/game.cpp:1349
+#: src/game.cpp:1350
 #, fuzzy
 msgid "Error while starting server: "
 msgstr "Fout tydens speel van spel: "
 
-#: src/game.cpp:1351 src/playcampaign.cpp:99 src/playcampaign.cpp:369
+#: src/game.cpp:1352 src/playcampaign.cpp:104 src/playcampaign.cpp:381
 msgid "The game could not be loaded: "
 msgstr "Die spel kon nie gelaai word nie: "
 
-#: src/game.cpp:1353 src/playcampaign.cpp:101 src/playcampaign.cpp:372
+#: src/game.cpp:1354 src/playcampaign.cpp:106 src/playcampaign.cpp:384
 msgid "Error while playing the game: "
 msgstr "Fout tydens speel van spel: "
 
-#: src/game.cpp:1373 src/playcampaign.cpp:103 src/playcampaign.cpp:375
+#: src/game.cpp:1374 src/playcampaign.cpp:108 src/playcampaign.cpp:387
 msgid "The game map could not be loaded: "
 msgstr "Die spelkaart kon nie gelaai word nie: "
 
-#: src/game.cpp:1517
+#: src/game.cpp:1518
 #, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
@@ -7133,37 +7154,37 @@ msgstr[0] ""
 msgstr[1] ""
 "Die volgende bykomende veldtogte kon nie gelaai word nie weens foute:"
 
-#: src/game.cpp:1524
+#: src/game.cpp:1525
 msgid "ERROR DETAILS:"
 msgstr "FOUT BESONDERHEDE:"
 
-#: src/game.cpp:1542
+#: src/game.cpp:1543
 msgid "Error loading game configuration files: '"
 msgstr "Fout met laai van konfigurasie lêers: '"
 
-#: src/game.cpp:1543
+#: src/game.cpp:1544
 msgid "' (The game will now exit)"
 msgstr "' (Die spel gaan nou sluit)"
 
-#: src/game.cpp:1552
+#: src/game.cpp:1553
 msgid "Loading data files"
 msgstr ""
 
-#: src/game.cpp:1985
+#: src/game.cpp:1990
 #, fuzzy
 msgid "Loading game configuration."
 msgstr "Fout met laai van konfigurasie lêers: '"
 
-#: src/game.cpp:1991
+#: src/game.cpp:1996
 msgid "Re-initialize fonts for the current language."
 msgstr ""
 
-#: src/game.cpp:1999
+#: src/game.cpp:2004
 #, fuzzy
 msgid "Searching for installed add-ons."
 msgstr "Besig om veldtog af te laai..."
 
-#: src/game.cpp:2008
+#: src/game.cpp:2013
 msgid "Loading title screen."
 msgstr ""
 
@@ -7190,7 +7211,7 @@ msgstr ""
 msgid "Info: "
 msgstr ""
 
-#: src/game_events.cpp:1207 src/multiplayer_connect.cpp:1609
+#: src/game_events.cpp:1207 src/multiplayer_connect.cpp:1581
 msgid "Victory:"
 msgstr "Oorwinning:"
 
@@ -7202,7 +7223,7 @@ msgstr "Nederlaag:"
 msgid "[unit_worth]'s filter didn't match any units!"
 msgstr ""
 
-#: src/gamestatus.cpp:731
+#: src/gamestatus.cpp:740
 msgid ""
 "Leader position not empty - duplicate side definition for side '$side|' "
 "found."
@@ -7679,11 +7700,11 @@ msgstr ""
 msgid "Leader"
 msgstr "Leier"
 
-#: src/menu_events.cpp:366 src/multiplayer_connect.cpp:1009
+#: src/menu_events.cpp:366 src/multiplayer_connect.cpp:991
 msgid "Team"
 msgstr "Span"
 
-#: src/menu_events.cpp:367 src/multiplayer_connect.cpp:1020
+#: src/menu_events.cpp:367 src/multiplayer_connect.cpp:1002
 msgid "Gold"
 msgstr "Goud"
 
@@ -7699,7 +7720,7 @@ msgstr ""
 msgid "Upkeep"
 msgstr "Onderhoud"
 
-#: src/menu_events.cpp:371 src/multiplayer_connect.cpp:1021
+#: src/menu_events.cpp:371 src/multiplayer_connect.cpp:1003
 #: src/multiplayer_wait.cpp:518
 msgid "Income"
 msgstr "Inkomste"
@@ -8244,11 +8265,11 @@ msgstr "Bevel:"
 msgid "User-Command#3"
 msgstr "Bevelvoerder"
 
-#: src/mouse_events.cpp:727
+#: src/mouse_events.cpp:712
 msgid "Attack Enemy"
 msgstr "Val vyand aan"
 
-#: src/mouse_events.cpp:728
+#: src/mouse_events.cpp:713
 msgid "Choose weapon:"
 msgstr "Kies wapen:"
 
@@ -8368,87 +8389,87 @@ msgstr ""
 msgid "(empty)"
 msgstr "Leeg"
 
-#: src/multiplayer_connect.cpp:810
+#: src/multiplayer_connect.cpp:792
 #, fuzzy
 msgid "Reserved"
 msgstr "Bediener: "
 
-#: src/multiplayer_connect.cpp:811
+#: src/multiplayer_connect.cpp:793
 msgid "--give--"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:935
+#: src/multiplayer_connect.cpp:917
 #, fuzzy
 msgid "Only random sides in the current era."
 msgstr "Geen nie-willekeurige kante in die huidige tydperk"
 
-#: src/multiplayer_connect.cpp:959
+#: src/multiplayer_connect.cpp:941
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Kon nie 'n leiersoort vasstel vir $faction|-stam"
 
-#: src/multiplayer_connect.cpp:996
+#: src/multiplayer_connect.cpp:978
 #, fuzzy
 msgid "Game Lobby: "
 msgstr "Spelsaal"
 
-#: src/multiplayer_connect.cpp:1016
+#: src/multiplayer_connect.cpp:998
 msgid "Player/Type"
 msgstr "Speler/Tipe"
 
-#: src/multiplayer_connect.cpp:1017
+#: src/multiplayer_connect.cpp:999
 msgid "Faction"
 msgstr "Faksie"
 
-#: src/multiplayer_connect.cpp:1018
+#: src/multiplayer_connect.cpp:1000
 #, fuzzy
 msgid "Team/Gender"
 msgstr "Verdediger"
 
-#: src/multiplayer_connect.cpp:1019
+#: src/multiplayer_connect.cpp:1001
 msgid "Color"
 msgstr "Kleur"
 
-#: src/multiplayer_connect.cpp:1023
+#: src/multiplayer_connect.cpp:1005
 msgid "I'm Ready"
 msgstr "Ek is Gereed"
 
-#: src/multiplayer_connect.cpp:1033
+#: src/multiplayer_connect.cpp:1015
 #, fuzzy
 msgid "The scenario is invalid because it has no id."
 msgstr "Die scenario is ongeldig want daar is geen kante nie."
 
-#: src/multiplayer_connect.cpp:1037
+#: src/multiplayer_connect.cpp:1019
 msgid "The scenario is invalid because it has no sides."
 msgstr "Die scenario is ongeldig want daar is geen kante nie."
 
-#: src/multiplayer_connect.cpp:1430
+#: src/multiplayer_connect.cpp:1412
 msgid "Network Player"
 msgstr "Netwerkspeler"
 
-#: src/multiplayer_connect.cpp:1432
+#: src/multiplayer_connect.cpp:1414
 msgid "Local Player"
 msgstr "Plaaslike Speler"
 
-#: src/multiplayer_connect.cpp:1433
+#: src/multiplayer_connect.cpp:1415
 msgid "Computer Player"
 msgstr "Rekenaar Speler"
 
-#: src/multiplayer_connect.cpp:1434
+#: src/multiplayer_connect.cpp:1416
 msgid "Empty"
 msgstr "Leeg"
 
-#: src/multiplayer_connect.cpp:1586
+#: src/multiplayer_connect.cpp:1558
 msgid "Cannot find era $era"
 msgstr "Kan nie die $era|-era vind nie"
 
-#: src/multiplayer_connect.cpp:1611
+#: src/multiplayer_connect.cpp:1583
 #, fuzzy
 msgid "Defeat enemy leader(s)"
 msgstr ""
 "Oorwinning\n"
 "@Verslaan vyandige leier(s)"
 
-#: src/multiplayer_connect.cpp:1675
+#: src/multiplayer_connect.cpp:1647
 msgid "Waiting for players to join..."
 msgstr "Wag vir spelers om aan te sluit"
 
@@ -8747,12 +8768,12 @@ msgstr ""
 msgid "Joining this game requires a password."
 msgstr ""
 
-#: src/multiplayer_ui.cpp:193
+#: src/multiplayer_ui.cpp:194
 #, fuzzy
 msgid "Invalid Color"
 msgstr "Ongeldige kleur"
 
-#: src/multiplayer_ui.cpp:425
+#: src/multiplayer_ui.cpp:426
 #, fuzzy
 msgid "Selected user: "
 msgstr "Kies eenheid:"
@@ -8813,7 +8834,7 @@ msgstr "Kon nie die socket by socket-stel byvoeg nie"
 msgid "Could not send initial handshake"
 msgstr "Kon nie die aanvanklike 'handshake' stuur nie"
 
-#: src/pathfind.cpp:466
+#: src/pathfind.cpp:476
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr ""
 
@@ -8839,7 +8860,7 @@ msgid "Starting game"
 msgstr "Skop op"
 
 #: src/play_controller.cpp:929 src/savegame.cpp:290 src/savegame.cpp:302
-#: src/savegame.cpp:981 src/savegame.cpp:983
+#: src/savegame.cpp:973 src/savegame.cpp:975
 msgid "Auto-Save"
 msgstr "Outo-stoor"
 
@@ -8847,34 +8868,34 @@ msgstr "Outo-stoor"
 msgid "Back to turn "
 msgstr ""
 
-#: src/playcampaign.cpp:127 src/playcampaign.cpp:165
+#: src/playcampaign.cpp:132 src/playcampaign.cpp:170
 msgid "Defeat"
 msgstr "Nederlaag"
 
-#: src/playcampaign.cpp:128 src/playcampaign.cpp:166
+#: src/playcampaign.cpp:133 src/playcampaign.cpp:171
 msgid "You have been defeated!"
 msgstr "Jy is verslaan!"
 
-#: src/playcampaign.cpp:379
+#: src/playcampaign.cpp:391
 #, fuzzy
 msgid "Error while reading the WML: "
 msgstr "Fout tydens speel van spel: "
 
-#: src/playcampaign.cpp:415
+#: src/playcampaign.cpp:427
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr ""
 
-#: src/playcampaign.cpp:441
+#: src/playcampaign.cpp:453
 #, fuzzy
 msgid "Downloading next scenario..."
 msgstr "Besig om die volgende vlak af te laai"
 
-#: src/playcampaign.cpp:575
+#: src/playcampaign.cpp:590
 #, fuzzy
 msgid "Do you want to save your game?"
 msgstr "Wil jy jou spel stoor?"
 
-#: src/playcampaign.cpp:592
+#: src/playcampaign.cpp:609
 #, fuzzy
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Onbekende scenario: '"
@@ -8970,15 +8991,15 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/playsingle_controller.cpp:399
+#: src/playsingle_controller.cpp:398
 msgid "Game Over"
 msgstr "Spel is Oor"
 
-#: src/playsingle_controller.cpp:400
+#: src/playsingle_controller.cpp:399
 msgid "The game is over."
 msgstr "Die spel is klaar."
 
-#: src/playsingle_controller.cpp:488
+#: src/playsingle_controller.cpp:487
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game\n"
@@ -8987,20 +9008,20 @@ msgstr ""
 "'n Netwerk-koppelprobleem het ontstaan en die spel kan nie voortgaan nie. "
 "Wil jy die spel stoor?"
 
-#: src/playsingle_controller.cpp:654
+#: src/playsingle_controller.cpp:653
 #, fuzzy
 msgid "It is now $name|'s turn"
 msgstr "Dis nou jou beurt"
 
-#: src/playsingle_controller.cpp:870
+#: src/playsingle_controller.cpp:869
 msgid "Scenario Report"
 msgstr "Scenarioverslag"
 
-#: src/playsingle_controller.cpp:872
+#: src/playsingle_controller.cpp:871
 msgid "Victory"
 msgstr "Oorwinning"
 
-#: src/playsingle_controller.cpp:873
+#: src/playsingle_controller.cpp:872
 msgid "You have emerged victorious!"
 msgstr "Jy het die oorwinning behaal!"
 
@@ -9060,54 +9081,54 @@ msgstr ""
 msgid "This is not a multiplayer save"
 msgstr "Hierdie is nie 'n veelspeler gestoorde lêer nie"
 
-#: src/savegame.cpp:614
+#: src/savegame.cpp:606
 #, fuzzy
 msgid "The game could not be saved: "
 msgstr "Die spel kon nie gestoor word nie"
 
-#: src/savegame.cpp:701
+#: src/savegame.cpp:693
 #, fuzzy
 msgid "Name: "
 msgstr "Naam:"
 
-#: src/savegame.cpp:701
+#: src/savegame.cpp:693
 #, fuzzy
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Lêer bestaan reeds. Wil jy daar bo-oor skryf?"
 
-#: src/savegame.cpp:702
+#: src/savegame.cpp:694
 msgid "Overwrite?"
 msgstr "Stoor bo-oor?"
 
-#: src/savegame.cpp:712
+#: src/savegame.cpp:704
 #, fuzzy
 msgid "Save names should not end on '.gz'. Please choose a different name."
 msgstr ""
 "Gestoorde name mag nie deeltekens of skuinsstrepe bevat nie. Kies asseblief "
 "'n ander naam."
 
-#: src/savegame.cpp:774
+#: src/savegame.cpp:766
 msgid "Saved"
 msgstr "Gestoor"
 
-#: src/savegame.cpp:774
+#: src/savegame.cpp:766
 msgid "The game has been saved"
 msgstr "Die spel is gestoor"
 
-#: src/savegame.cpp:808 src/savegame.cpp:833
+#: src/savegame.cpp:800 src/savegame.cpp:825
 msgid "Could not write to file"
 msgstr "Kon nie die lêer stoor nie"
 
-#: src/savegame.cpp:946
+#: src/savegame.cpp:938
 #, fuzzy
 msgid "Save Replay"
 msgstr "Wys weer"
 
-#: src/savegame.cpp:964
+#: src/savegame.cpp:956
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Kon nie die spel outo-stoor nie. Stoor die spel self, asseblief."
 
-#: src/savegame.cpp:1016
+#: src/savegame.cpp:1008
 msgid "Save Game"
 msgstr "Stoor Spel"
 
@@ -9378,42 +9399,42 @@ msgstr ""
 msgid "No time of day has been defined."
 msgstr ""
 
-#: src/unit.cpp:505
+#: src/unit.cpp:506
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr ""
 
-#: src/unit.cpp:687
+#: src/unit.cpp:688
 msgid "Unknown unit type '$type|'"
 msgstr ""
 
-#: src/unit.cpp:2331 src/unit.cpp:2516 src/unit.cpp:2589
+#: src/unit.cpp:2338 src/unit.cpp:2523 src/unit.cpp:2596
 #, fuzzy
 msgid " and "
 msgstr "Sand"
 
-#: src/unit.cpp:2342
+#: src/unit.cpp:2349
 msgid "$attack_list|: $effect_description"
 msgstr ""
 
-#: src/unit.cpp:2407
+#: src/unit.cpp:2414
 #, fuzzy
 msgid "moves"
 msgstr "Skuiwe"
 
-#: src/unit.cpp:2425 src/unit.cpp:2543
+#: src/unit.cpp:2432 src/unit.cpp:2550
 msgid "XP to advance"
 msgstr "EP om te bevorder"
 
-#: src/unit.cpp:2535
+#: src/unit.cpp:2542
 #, fuzzy
 msgid " move"
 msgstr "Skuiwe"
 
-#: src/unit.cpp:2551
+#: src/unit.cpp:2558
 msgid "$effect_description per level"
 msgstr ""
 
-#: src/unit.cpp:2598
+#: src/unit.cpp:2605
 msgid "$trait_name|: $trait_description "
 msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-09-20 15:59+0200\n"
+"POT-Creation-Date: 2009-09-23 12:26+0200\n"
 "PO-Revision-Date: 2007-12-06 00:40+0900\n"
 "Last-Translator: Claus Aranha <caranha@gmail.com>\n"
 "Language-Team: Portuguese - Brasil\n"
@@ -3418,14 +3418,17 @@ msgid ""
 "unit."
 msgstr ""
 
+#. [unstore_unit]
 #: data/core/macros/abilities.cfg:524
 msgid "+1 max HP"
 msgstr ""
 
+#. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:566
 msgid "backstab"
 msgstr "golpe por trás"
 
+#. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:568
 #, fuzzy
 msgid ""
@@ -3439,10 +3442,13 @@ msgstr ""
 "lado oposto deste, e se essa unidade não estiver incapacitada (p.ex. "
 "transformada em pedra)."
 
+#. [plague]: id=plague({TYPE}), type={TYPE}
+#. [plague]: id=plague, type=Walking Corpse
 #: data/core/macros/abilities.cfg:580 data/core/macros/abilities.cfg:592
 msgid "plague"
 msgstr "praga"
 
+#. [plague]: id=plague({TYPE}), type={TYPE}
 #: data/core/macros/abilities.cfg:582
 msgid ""
 "Plague:\n"
@@ -3455,6 +3461,7 @@ msgstr ""
 "uma unidade idêntica àquela que a atacou com a Praga, e pertencente ao mesmo "
 "time. Esta abilidade não funciona em Mortos-Vivos ou unidades em aldeias."
 
+#. [plague]: id=plague, type=Walking Corpse
 #: data/core/macros/abilities.cfg:594
 msgid ""
 "Plague:\n"
@@ -3467,10 +3474,12 @@ msgstr ""
 "um corpo ambulante, pertencente ao mesmo time da unidade que a atacou com a "
 "Praga. Esta abilidade não funciona em Mortos-Vivos ou unidades em aldeias."
 
+#. [slow]: id=slow
 #: data/core/macros/abilities.cfg:604
 msgid "slows"
 msgstr "lentidão"
 
+#. [slow]: id=slow
 #: data/core/macros/abilities.cfg:606
 msgid ""
 "Slow:\n"
@@ -3485,11 +3494,13 @@ msgstr ""
 "unidade Lenta mostrará um ícone com um caramujo entre as informações da "
 "barra lateral quando for selecinada."
 
+#. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:615
 #, fuzzy
 msgid "petrifies"
 msgstr "Golpes"
 
+#. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:617
 #, fuzzy
 msgid ""
@@ -3501,10 +3512,12 @@ msgstr ""
 "Este ataque transforma o alvo em pedra. Unidades petrificadas não podem se "
 "mover ou atacar."
 
+#. [chance_to_hit]: id=marksman
 #: data/core/macros/abilities.cfg:626
 msgid "marksman"
 msgstr "atirador"
 
+#. [chance_to_hit]: id=marksman
 #: data/core/macros/abilities.cfg:628
 msgid ""
 "Marksman:\n"
@@ -3514,10 +3527,12 @@ msgstr ""
 "Quando usado ofensivamente, este ataque sempre tem pelo menos 60% de chance "
 "de acertar."
 
+#. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:653
 msgid "swarm"
 msgstr "enxame"
 
+#. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:655
 #, fuzzy
 msgid ""
@@ -3533,10 +3548,12 @@ msgstr ""
 "unidade tem, em relação com o máximo. Por exemplo, uma unidade com 3/4 de "
 "seu HP máximo terá 3/4 do número total de golpes."
 
+#. [damage]: id=charge
 #: data/core/macros/abilities.cfg:664
 msgid "charge"
 msgstr "carga"
 
+#. [damage]: id=charge
 #: data/core/macros/abilities.cfg:666
 #, fuzzy
 msgid ""
@@ -3548,10 +3565,12 @@ msgstr ""
 "Este ataque causa o dobro de dano ao alvo. Ele também faz com que esta "
 "unidade tome o dobro de dano do contra ataque do alvo."
 
+#. [drains]: id=drains
 #: data/core/macros/abilities.cfg:678
 msgid "drains"
 msgstr "drenar"
 
+#. [drains]: id=drains
 #: data/core/macros/abilities.cfg:680
 msgid ""
 "Drain:\n"
@@ -3563,10 +3582,12 @@ msgstr ""
 "pontos de vida igual a metade do dano que ela causar (arredondado para "
 "baixo)."
 
+#. [poison]: id=poison
 #: data/core/macros/abilities.cfg:700
 msgid "poison"
 msgstr "veneno"
 
+#. [poison]: id=poison
 #: data/core/macros/abilities.cfg:702
 msgid ""
 "Poison:\n"
@@ -4787,73 +4808,72 @@ msgid "female^resilient"
 msgstr "resistente"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:139
+#: data/core/macros/traits.cfg:138
 msgid "healthy"
 msgstr "saudável"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:140
+#: data/core/macros/traits.cfg:139
 msgid "female^healthy"
 msgstr "saudável"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:141
-#, fuzzy
-msgid "Can rest while moving, takes a quarter less poison damage"
-msgstr "Pode descansar enquanto move"
+#: data/core/macros/traits.cfg:140
+msgid "Always rest heals"
+msgstr ""
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:158 data/core/macros/traits.cfg:171
+#: data/core/macros/traits.cfg:157 data/core/macros/traits.cfg:170
 msgid "fearless"
 msgstr "corajoso"
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:159 data/core/macros/traits.cfg:172
+#: data/core/macros/traits.cfg:158 data/core/macros/traits.cfg:171
 msgid "female^fearless"
 msgstr "corajosa"
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:160 data/core/macros/traits.cfg:173
+#: data/core/macros/traits.cfg:159 data/core/macros/traits.cfg:172
 msgid "Fights normally during unfavorable times of day/night"
 msgstr "Luta sem penalidades de noite ou dia"
 
 #. [trait]: id=weak
-#: data/core/macros/traits.cfg:181
+#: data/core/macros/traits.cfg:180
 msgid "weak"
 msgstr ""
 
 #. [trait]: id=weak
-#: data/core/macros/traits.cfg:182
+#: data/core/macros/traits.cfg:181
 #, fuzzy
 msgid "female^weak"
 msgstr "morta-viva"
 
 #. [trait]: id=slow
-#: data/core/macros/traits.cfg:199
+#: data/core/macros/traits.cfg:198
 #, fuzzy
 msgid "slow"
 msgstr "lentidão"
 
 #. [trait]: id=slow
-#: data/core/macros/traits.cfg:200
+#: data/core/macros/traits.cfg:199
 #, fuzzy
 msgid "female^slow"
 msgstr "leal"
 
 #. [trait]: id=dim
-#: data/core/macros/traits.cfg:216
+#: data/core/macros/traits.cfg:215
 #, fuzzy
 msgid "dim"
 msgstr "Médio"
 
 #. [trait]: id=dim
-#: data/core/macros/traits.cfg:217
+#: data/core/macros/traits.cfg:216
 #, fuzzy
 msgid "female^dim"
 msgstr "corajosa"
 
 #. [trait]: id=aged
-#: data/core/macros/traits.cfg:229
+#: data/core/macros/traits.cfg:228
 #, fuzzy
 msgid "aged"
 msgstr "longa distância"
@@ -6425,8 +6445,8 @@ msgstr "Terminar o Cenário"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:205 src/unit.cpp:2374
-#: src/unit.cpp:2528
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:205 src/unit.cpp:2381
+#: src/unit.cpp:2535
 msgid "HP"
 msgstr "HP"
 
@@ -7022,7 +7042,7 @@ msgstr "Nenhuma arma possível"
 msgid "Chance of being unscathed"
 msgstr "Chance de sair sem danos"
 
-#: src/attack_prediction_display.cpp:547 src/mouse_events.cpp:717
+#: src/attack_prediction_display.cpp:547 src/mouse_events.cpp:702
 msgid "Damage Calculations"
 msgstr "Cálculo de Danos"
 
@@ -7070,11 +7090,11 @@ msgstr "Multijogador"
 msgid "Tutorial"
 msgstr "Tutorial"
 
-#: src/dialogs.cpp:483 src/savegame.cpp:955
+#: src/dialogs.cpp:483 src/savegame.cpp:947
 msgid "replay"
 msgstr "replay"
 
-#: src/dialogs.cpp:485 src/savegame.cpp:1028
+#: src/dialogs.cpp:485 src/savegame.cpp:1020
 msgid "Turn"
 msgstr "Turno"
 
@@ -7147,7 +7167,7 @@ msgid "OK"
 msgstr "OK"
 
 #: src/dialogs.cpp:615 src/dialogs.cpp:1027 src/dialogs.cpp:1134
-#: src/multiplayer_connect.cpp:1024 src/multiplayer_create.cpp:85
+#: src/multiplayer_connect.cpp:1006 src/multiplayer_create.cpp:85
 #: src/multiplayer_wait.cpp:176
 msgid "Cancel"
 msgstr "Cancelar"
@@ -7176,107 +7196,107 @@ msgstr "XP: "
 msgid "Moves: "
 msgstr "Movimento: "
 
-#: src/game.cpp:665 src/game.cpp:1394
+#: src/game.cpp:666 src/game.cpp:1395
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
-#: src/game.cpp:994 src/game.cpp:1002 src/playsingle_controller.cpp:477
-#: src/playsingle_controller.cpp:532
+#: src/game.cpp:995 src/game.cpp:1003 src/playsingle_controller.cpp:476
+#: src/playsingle_controller.cpp:531
 msgid "The file you have tried to load is corrupt"
 msgstr "O Arquivo que você tentou carregar está corrompido"
 
-#: src/game.cpp:997 src/game.cpp:1005 src/savegame.cpp:535
+#: src/game.cpp:998 src/game.cpp:1006 src/savegame.cpp:535
 msgid "The file you have tried to load is corrupt: '"
 msgstr "O Arquivo que você tentou carregar está corrompido: '"
 
-#: src/game.cpp:1009
+#: src/game.cpp:1010
 msgid "File I/O Error while reading the game"
 msgstr "Erro de E/S ao ler o jogo"
 
-#: src/game.cpp:1104
+#: src/game.cpp:1105
 #, fuzzy
 msgid "No campaigns are available.\n"
 msgstr "Nenhum objetivo disponível"
 
-#: src/game.cpp:1137
+#: src/game.cpp:1138
 msgid "Difficulty"
 msgstr "Dificuldade"
 
-#: src/game.cpp:1138
+#: src/game.cpp:1139
 msgid "Select difficulty level:"
 msgstr "Escolha o nível de dificuldade"
 
-#: src/game.cpp:1273
+#: src/game.cpp:1274
 #, fuzzy
 msgid "Do you really want to start the server?"
 msgstr "Você realmente quer mandá-la embora?"
 
-#: src/game.cpp:1274
+#: src/game.cpp:1275
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr ""
 
-#: src/game.cpp:1278
+#: src/game.cpp:1279
 #, fuzzy
 msgid "Don't show again"
 msgstr "Não me pergunte novamente!"
 
-#: src/game.cpp:1349
+#: src/game.cpp:1350
 #, fuzzy
 msgid "Error while starting server: "
 msgstr "Erro durante o jogo: "
 
-#: src/game.cpp:1351 src/playcampaign.cpp:99 src/playcampaign.cpp:369
+#: src/game.cpp:1352 src/playcampaign.cpp:104 src/playcampaign.cpp:381
 msgid "The game could not be loaded: "
 msgstr "O jogo não pôde ser carregado: "
 
-#: src/game.cpp:1353 src/playcampaign.cpp:101 src/playcampaign.cpp:372
+#: src/game.cpp:1354 src/playcampaign.cpp:106 src/playcampaign.cpp:384
 msgid "Error while playing the game: "
 msgstr "Erro durante o jogo: "
 
-#: src/game.cpp:1373 src/playcampaign.cpp:103 src/playcampaign.cpp:375
+#: src/game.cpp:1374 src/playcampaign.cpp:108 src/playcampaign.cpp:387
 msgid "The game map could not be loaded: "
 msgstr "O mapa do jogo não pôde ser carregado: "
 
-#: src/game.cpp:1517
+#: src/game.cpp:1518
 #, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Os seguintes extras tiveram erros e não puderam ser carregados:"
 msgstr[1] "Os seguintes extras tiveram erros e não puderam ser carregados:"
 
-#: src/game.cpp:1524
+#: src/game.cpp:1525
 msgid "ERROR DETAILS:"
 msgstr "DETALHES DO ERRO:"
 
-#: src/game.cpp:1542
+#: src/game.cpp:1543
 msgid "Error loading game configuration files: '"
 msgstr "Erro carregando arquivo de configuração do jogo: '"
 
-#: src/game.cpp:1543
+#: src/game.cpp:1544
 msgid "' (The game will now exit)"
 msgstr "' (O programa vai terminar agora)"
 
-#: src/game.cpp:1552
+#: src/game.cpp:1553
 #, fuzzy
 msgid "Loading data files"
 msgstr "Lendo os arquivos de unidades."
 
-#: src/game.cpp:1985
+#: src/game.cpp:1990
 msgid "Loading game configuration."
 msgstr "Carregando a configuração do jogo."
 
-#: src/game.cpp:1991
+#: src/game.cpp:1996
 msgid "Re-initialize fonts for the current language."
 msgstr "Re-inicializa as fontes para o idioma atual."
 
-#: src/game.cpp:1999
+#: src/game.cpp:2004
 #, fuzzy
 msgid "Searching for installed add-ons."
 msgstr "Enviando extra"
 
-#: src/game.cpp:2008
+#: src/game.cpp:2013
 msgid "Loading title screen."
 msgstr "Carregando a tela inicial."
 
@@ -7302,7 +7322,7 @@ msgstr ""
 msgid "Info: "
 msgstr ""
 
-#: src/game_events.cpp:1207 src/multiplayer_connect.cpp:1609
+#: src/game_events.cpp:1207 src/multiplayer_connect.cpp:1581
 msgid "Victory:"
 msgstr "Vitória:"
 
@@ -7314,7 +7334,7 @@ msgstr "Derrota:"
 msgid "[unit_worth]'s filter didn't match any units!"
 msgstr ""
 
-#: src/gamestatus.cpp:731
+#: src/gamestatus.cpp:740
 msgid ""
 "Leader position not empty - duplicate side definition for side '$side|' "
 "found."
@@ -7765,11 +7785,11 @@ msgstr "Ir Para"
 msgid "Leader"
 msgstr "Líder"
 
-#: src/menu_events.cpp:366 src/multiplayer_connect.cpp:1009
+#: src/menu_events.cpp:366 src/multiplayer_connect.cpp:991
 msgid "Team"
 msgstr "Time"
 
-#: src/menu_events.cpp:367 src/multiplayer_connect.cpp:1020
+#: src/menu_events.cpp:367 src/multiplayer_connect.cpp:1002
 msgid "Gold"
 msgstr "Ouro"
 
@@ -7785,7 +7805,7 @@ msgstr "Unidades"
 msgid "Upkeep"
 msgstr "Manutenção"
 
-#: src/menu_events.cpp:371 src/multiplayer_connect.cpp:1021
+#: src/menu_events.cpp:371 src/multiplayer_connect.cpp:1003
 #: src/multiplayer_wait.cpp:518
 msgid "Income"
 msgstr "Receita"
@@ -8351,11 +8371,11 @@ msgstr "Comando:"
 msgid "User-Command#3"
 msgstr "Comando-Pessoal#3"
 
-#: src/mouse_events.cpp:727
+#: src/mouse_events.cpp:712
 msgid "Attack Enemy"
 msgstr "Atacar Inimigo"
 
-#: src/mouse_events.cpp:728
+#: src/mouse_events.cpp:713
 msgid "Choose weapon:"
 msgstr "Escolha a arma:"
 
@@ -8473,86 +8493,86 @@ msgstr ""
 msgid "(empty)"
 msgstr "Vazio"
 
-#: src/multiplayer_connect.cpp:810
+#: src/multiplayer_connect.cpp:792
 #, fuzzy
 msgid "Reserved"
 msgstr "Reservatório: "
 
-#: src/multiplayer_connect.cpp:811
+#: src/multiplayer_connect.cpp:793
 msgid "--give--"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:935
+#: src/multiplayer_connect.cpp:917
 #, fuzzy
 msgid "Only random sides in the current era."
 msgstr "Sem lados não aleatórios na era atual"
 
-#: src/multiplayer_connect.cpp:959
+#: src/multiplayer_connect.cpp:941
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Não encontro um líder para a facção $faction"
 
-#: src/multiplayer_connect.cpp:996
+#: src/multiplayer_connect.cpp:978
 #, fuzzy
 msgid "Game Lobby: "
 msgstr "Sala de espera"
 
-#: src/multiplayer_connect.cpp:1016
+#: src/multiplayer_connect.cpp:998
 msgid "Player/Type"
 msgstr "Jogador/Tipo"
 
-#: src/multiplayer_connect.cpp:1017
+#: src/multiplayer_connect.cpp:999
 msgid "Faction"
 msgstr "Facção"
 
-#: src/multiplayer_connect.cpp:1018
+#: src/multiplayer_connect.cpp:1000
 msgid "Team/Gender"
 msgstr "Time/Sexo"
 
-#: src/multiplayer_connect.cpp:1019
+#: src/multiplayer_connect.cpp:1001
 msgid "Color"
 msgstr "Cor"
 
-#: src/multiplayer_connect.cpp:1023
+#: src/multiplayer_connect.cpp:1005
 msgid "I'm Ready"
 msgstr "Estou pronto"
 
-#: src/multiplayer_connect.cpp:1033
+#: src/multiplayer_connect.cpp:1015
 #, fuzzy
 msgid "The scenario is invalid because it has no id."
 msgstr "O cenário é inválido porque não tem times."
 
-#: src/multiplayer_connect.cpp:1037
+#: src/multiplayer_connect.cpp:1019
 msgid "The scenario is invalid because it has no sides."
 msgstr "O cenário é inválido porque não tem times."
 
-#: src/multiplayer_connect.cpp:1430
+#: src/multiplayer_connect.cpp:1412
 msgid "Network Player"
 msgstr "Jogador Remoto"
 
-#: src/multiplayer_connect.cpp:1432
+#: src/multiplayer_connect.cpp:1414
 msgid "Local Player"
 msgstr "Jogador Local"
 
-#: src/multiplayer_connect.cpp:1433
+#: src/multiplayer_connect.cpp:1415
 msgid "Computer Player"
 msgstr "Computador"
 
-#: src/multiplayer_connect.cpp:1434
+#: src/multiplayer_connect.cpp:1416
 msgid "Empty"
 msgstr "Vazio"
 
-#: src/multiplayer_connect.cpp:1586
+#: src/multiplayer_connect.cpp:1558
 msgid "Cannot find era $era"
 msgstr "Não consegui achar a era $era"
 
-#: src/multiplayer_connect.cpp:1611
+#: src/multiplayer_connect.cpp:1583
 #, fuzzy
 msgid "Defeat enemy leader(s)"
 msgstr ""
 "Vitória:\n"
 "@Derrotar o(s) lídere(s) inimigo(s)"
 
-#: src/multiplayer_connect.cpp:1675
+#: src/multiplayer_connect.cpp:1647
 msgid "Waiting for players to join..."
 msgstr "Esperando outros jogadores conectarem..."
 
@@ -8839,11 +8859,11 @@ msgstr ""
 msgid "Joining this game requires a password."
 msgstr ""
 
-#: src/multiplayer_ui.cpp:193
+#: src/multiplayer_ui.cpp:194
 msgid "Invalid Color"
 msgstr "Cor inválida"
 
-#: src/multiplayer_ui.cpp:425
+#: src/multiplayer_ui.cpp:426
 #, fuzzy
 msgid "Selected user: "
 msgstr "Selecionar unidade:"
@@ -8904,7 +8924,7 @@ msgstr "Não foi possível adicionar o socket ao grupo de sockets"
 msgid "Could not send initial handshake"
 msgstr "Não pode enviar mensagem inicial"
 
-#: src/pathfind.cpp:466
+#: src/pathfind.cpp:476
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr ""
 
@@ -8932,7 +8952,7 @@ msgid "Starting game"
 msgstr "Abortar o jogo"
 
 #: src/play_controller.cpp:929 src/savegame.cpp:290 src/savegame.cpp:302
-#: src/savegame.cpp:981 src/savegame.cpp:983
+#: src/savegame.cpp:973 src/savegame.cpp:975
 msgid "Auto-Save"
 msgstr "Salvo-automaticamente"
 
@@ -8940,31 +8960,31 @@ msgstr "Salvo-automaticamente"
 msgid "Back to turn "
 msgstr "Voltar ao turno "
 
-#: src/playcampaign.cpp:127 src/playcampaign.cpp:165
+#: src/playcampaign.cpp:132 src/playcampaign.cpp:170
 msgid "Defeat"
 msgstr "Derrota"
 
-#: src/playcampaign.cpp:128 src/playcampaign.cpp:166
+#: src/playcampaign.cpp:133 src/playcampaign.cpp:171
 msgid "You have been defeated!"
 msgstr "Você foi derrotado!"
 
-#: src/playcampaign.cpp:379
+#: src/playcampaign.cpp:391
 msgid "Error while reading the WML: "
 msgstr "Erro na leitura do WML: "
 
-#: src/playcampaign.cpp:415
+#: src/playcampaign.cpp:427
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Este cenário terminou. Você quer continuar a campanha?"
 
-#: src/playcampaign.cpp:441
+#: src/playcampaign.cpp:453
 msgid "Downloading next scenario..."
 msgstr "Fazendo o download do próximo cenário..."
 
-#: src/playcampaign.cpp:575
+#: src/playcampaign.cpp:590
 msgid "Do you want to save your game?"
 msgstr "Você realmente quer salvar este jogo?"
 
-#: src/playcampaign.cpp:592
+#: src/playcampaign.cpp:609
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Cenário desconhecido: '$scenario|'"
 
@@ -9071,15 +9091,15 @@ msgstr[1] ""
 "Você começará o próximo cenário com $gold ou a quantidade mínima de ouro "
 "inicial, o que for maior."
 
-#: src/playsingle_controller.cpp:399
+#: src/playsingle_controller.cpp:398
 msgid "Game Over"
 msgstr "Fim do Jogo"
 
-#: src/playsingle_controller.cpp:400
+#: src/playsingle_controller.cpp:399
 msgid "The game is over."
 msgstr "O jogo terminou."
 
-#: src/playsingle_controller.cpp:488
+#: src/playsingle_controller.cpp:487
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game\n"
@@ -9088,19 +9108,19 @@ msgstr ""
 "Uma desconecção de rede ocorreu, e o jogo não pode prosseguir. Você quer "
 "salvar o jogo?"
 
-#: src/playsingle_controller.cpp:654
+#: src/playsingle_controller.cpp:653
 msgid "It is now $name|'s turn"
 msgstr "Agora é o turno de $name|"
 
-#: src/playsingle_controller.cpp:870
+#: src/playsingle_controller.cpp:869
 msgid "Scenario Report"
 msgstr "Relatar um cenário"
 
-#: src/playsingle_controller.cpp:872
+#: src/playsingle_controller.cpp:871
 msgid "Victory"
 msgstr "Vitória"
 
-#: src/playsingle_controller.cpp:873
+#: src/playsingle_controller.cpp:872
 msgid "You have emerged victorious!"
 msgstr "Você obteve a vitória!"
 
@@ -9155,55 +9175,55 @@ msgstr ""
 msgid "This is not a multiplayer save"
 msgstr "Este não é um jogo salvo de multijogadores"
 
-#: src/savegame.cpp:614
+#: src/savegame.cpp:606
 #, fuzzy
 msgid "The game could not be saved: "
 msgstr "O jogo não pôde ser salvo"
 
-#: src/savegame.cpp:701
+#: src/savegame.cpp:693
 #, fuzzy
 msgid "Name: "
 msgstr "Nome:"
 
-#: src/savegame.cpp:701
+#: src/savegame.cpp:693
 #, fuzzy
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Arquivo já existente. Você quer sobreescrevê-lo?"
 
-#: src/savegame.cpp:702
+#: src/savegame.cpp:694
 msgid "Overwrite?"
 msgstr "Sobreescrever?"
 
-#: src/savegame.cpp:712
+#: src/savegame.cpp:704
 #, fuzzy
 msgid "Save names should not end on '.gz'. Please choose a different name."
 msgstr ""
 "Nomes de jogos salvos não podem ter vírgulas, barras ou barras invertidas. "
 "Por favor escolha outro nome."
 
-#: src/savegame.cpp:774
+#: src/savegame.cpp:766
 msgid "Saved"
 msgstr "Salvo"
 
-#: src/savegame.cpp:774
+#: src/savegame.cpp:766
 msgid "The game has been saved"
 msgstr "O jogo foi salvo"
 
-#: src/savegame.cpp:808 src/savegame.cpp:833
+#: src/savegame.cpp:800 src/savegame.cpp:825
 msgid "Could not write to file"
 msgstr "Não foi possível escrever no arquivo"
 
-#: src/savegame.cpp:946
+#: src/savegame.cpp:938
 #, fuzzy
 msgid "Save Replay"
 msgstr "Replay"
 
-#: src/savegame.cpp:964
+#: src/savegame.cpp:956
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 "Não pude salvar o jogo automaticamente. Por favor salve o jogo manualmente."
 
-#: src/savegame.cpp:1016
+#: src/savegame.cpp:1008
 msgid "Save Game"
 msgstr "Salvar o Jogo"
 
@@ -9467,40 +9487,40 @@ msgstr "Ajude Wesnoth nos enviando informações"
 msgid "No time of day has been defined."
 msgstr "O tempo no inicio do jogo fica aleatório"
 
-#: src/unit.cpp:505
+#: src/unit.cpp:506
 #, fuzzy
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "Tipo de unidade desconhecido: '$type|'"
 
-#: src/unit.cpp:687
+#: src/unit.cpp:688
 msgid "Unknown unit type '$type|'"
 msgstr "Tipo de unidade desconhecido: '$type|'"
 
-#: src/unit.cpp:2331 src/unit.cpp:2516 src/unit.cpp:2589
+#: src/unit.cpp:2338 src/unit.cpp:2523 src/unit.cpp:2596
 msgid " and "
 msgstr " e "
 
-#: src/unit.cpp:2342
+#: src/unit.cpp:2349
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2407
+#: src/unit.cpp:2414
 msgid "moves"
 msgstr "move"
 
-#: src/unit.cpp:2425 src/unit.cpp:2543
+#: src/unit.cpp:2432 src/unit.cpp:2550
 msgid "XP to advance"
 msgstr "XP para avançar"
 
-#: src/unit.cpp:2535
+#: src/unit.cpp:2542
 msgid " move"
 msgstr " movimento"
 
-#: src/unit.cpp:2551
+#: src/unit.cpp:2558
 msgid "$effect_description per level"
 msgstr "$effect_description por nível"
 
-#: src/unit.cpp:2598
+#: src/unit.cpp:2605
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 
@@ -9585,6 +9605,10 @@ msgstr "Ajude-nos a fazer um Wesnoth melhor para você!"
 #: src/upload_log.cpp:375
 msgid "Enable summary uploads"
 msgstr "Permitir o envio de resumos"
+
+#, fuzzy
+#~ msgid "Can rest while moving, takes a quarter less poison damage"
+#~ msgstr "Pode descansar enquanto move"
 
 #~ msgid "Location^Loc."
 #~ msgstr "Loc."

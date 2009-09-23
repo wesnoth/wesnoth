@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-09-20 15:59+0200\n"
+"POT-Creation-Date: 2009-09-23 12:26+0200\n"
 "PO-Revision-Date: 2007-08-21 17:39+0300\n"
 "Last-Translator: Denica <dmincheva2002@gmail.com>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -3415,14 +3415,17 @@ msgid ""
 "unit."
 msgstr ""
 
+#. [unstore_unit]
 #: data/core/macros/abilities.cfg:524
 msgid "+1 max HP"
 msgstr ""
 
+#. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:566
 msgid "backstab"
 msgstr "удар в гръб"
 
+#. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:568
 #, fuzzy
 msgid ""
@@ -3435,10 +3438,13 @@ msgstr ""
 "Тази атака нанася двойни поражения ако от другата страна на единицата-цел "
 "има противник, който не е обездвижен (например вкаменен)."
 
+#. [plague]: id=plague({TYPE}), type={TYPE}
+#. [plague]: id=plague, type=Walking Corpse
 #: data/core/macros/abilities.cfg:580 data/core/macros/abilities.cfg:592
 msgid "plague"
 msgstr "чума"
 
+#. [plague]: id=plague({TYPE}), type={TYPE}
 #: data/core/macros/abilities.cfg:582
 #, fuzzy
 msgid ""
@@ -3452,6 +3458,7 @@ msgstr ""
 "включваща се на страната на противника, използвал нападението с Чума. (Това "
 "не важи при Немъртви и единици в селища.)"
 
+#. [plague]: id=plague, type=Walking Corpse
 #: data/core/macros/abilities.cfg:594
 msgid ""
 "Plague:\n"
@@ -3464,10 +3471,12 @@ msgstr ""
 "се на страната на противника, използвал нападението с Чума. (Това не важи "
 "при Немъртви и единици в селища.)"
 
+#. [slow]: id=slow
 #: data/core/macros/abilities.cfg:604
 msgid "slows"
 msgstr "забавяне"
 
+#. [slow]: id=slow
 #: data/core/macros/abilities.cfg:606
 #, fuzzy
 msgid ""
@@ -3482,11 +3491,13 @@ msgstr ""
 "пораженията, причинени от атаките на целта, и цената за движение на забавена "
 "единица се удвоява."
 
+#. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:615
 #, fuzzy
 msgid "petrifies"
 msgstr "Успешни попадения"
 
+#. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:617
 #, fuzzy
 msgid ""
@@ -3498,10 +3509,12 @@ msgstr ""
 "Тази атака вкаменява целта. Единици, които са вкаменени не могат да се "
 "движат или да атакуват."
 
+#. [chance_to_hit]: id=marksman
 #: data/core/macros/abilities.cfg:626
 msgid "marksman"
 msgstr "майстор стрелец"
 
+#. [chance_to_hit]: id=marksman
 #: data/core/macros/abilities.cfg:628
 msgid ""
 "Marksman:\n"
@@ -3510,10 +3523,12 @@ msgstr ""
 "Майстор стрелец:\n"
 "Когато се използва в нападение тази атака винаги има поне 60% шанс да уцели."
 
+#. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:653
 msgid "swarm"
 msgstr "масирана атака"
 
+#. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:655
 #, fuzzy
 msgid ""
@@ -3529,10 +3544,12 @@ msgstr ""
 "единица с 3/4 от максимума точки здраве ще нанася само 3/4 от ударите, които "
 "и се полагат."
 
+#. [damage]: id=charge
 #: data/core/macros/abilities.cfg:664
 msgid "charge"
 msgstr "щурм"
 
+#. [damage]: id=charge
 #: data/core/macros/abilities.cfg:666
 #, fuzzy
 msgid ""
@@ -3544,10 +3561,12 @@ msgstr ""
 "Тази атака нанася двойно поражение на целта, но също така е причина "
 "единицата да понася двойни поражения от контраатаката на целта."
 
+#. [drains]: id=drains
 #: data/core/macros/abilities.cfg:678
 msgid "drains"
 msgstr "Източване"
 
+#. [drains]: id=drains
 #: data/core/macros/abilities.cfg:680
 msgid ""
 "Drain:\n"
@@ -3558,10 +3577,12 @@ msgstr ""
 "Тази единица източва здраве от живите единици, като се лекува с половината "
 "от нанесеното поражение (закръглено надолу)."
 
+#. [poison]: id=poison
 #: data/core/macros/abilities.cfg:700
 msgid "poison"
 msgstr "отрова"
 
+#. [poison]: id=poison
 #: data/core/macros/abilities.cfg:702
 #, fuzzy
 msgid ""
@@ -4764,73 +4785,72 @@ msgid "female^resilient"
 msgstr "издръжлива"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:139
+#: data/core/macros/traits.cfg:138
 msgid "healthy"
 msgstr "здрав"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:140
+#: data/core/macros/traits.cfg:139
 msgid "female^healthy"
 msgstr "здрава"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:141
-#, fuzzy
-msgid "Can rest while moving, takes a quarter less poison damage"
-msgstr "В състояние е да почива по време на път."
+#: data/core/macros/traits.cfg:140
+msgid "Always rest heals"
+msgstr ""
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:158 data/core/macros/traits.cfg:171
+#: data/core/macros/traits.cfg:157 data/core/macros/traits.cfg:170
 msgid "fearless"
 msgstr "безстрашен"
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:159 data/core/macros/traits.cfg:172
+#: data/core/macros/traits.cfg:158 data/core/macros/traits.cfg:171
 msgid "female^fearless"
 msgstr "безстрашна"
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:160 data/core/macros/traits.cfg:173
+#: data/core/macros/traits.cfg:159 data/core/macros/traits.cfg:172
 msgid "Fights normally during unfavorable times of day/night"
 msgstr "Бие се нормално през неблагоприятните периоди от деня/нощта"
 
 #. [trait]: id=weak
-#: data/core/macros/traits.cfg:181
+#: data/core/macros/traits.cfg:180
 msgid "weak"
 msgstr ""
 
 #. [trait]: id=weak
-#: data/core/macros/traits.cfg:182
+#: data/core/macros/traits.cfg:181
 #, fuzzy
 msgid "female^weak"
 msgstr "немъртва"
 
 #. [trait]: id=slow
-#: data/core/macros/traits.cfg:199
+#: data/core/macros/traits.cfg:198
 #, fuzzy
 msgid "slow"
 msgstr "забавяне"
 
 #. [trait]: id=slow
-#: data/core/macros/traits.cfg:200
+#: data/core/macros/traits.cfg:199
 #, fuzzy
 msgid "female^slow"
 msgstr "лоялна"
 
 #. [trait]: id=dim
-#: data/core/macros/traits.cfg:216
+#: data/core/macros/traits.cfg:215
 #, fuzzy
 msgid "dim"
 msgstr "Среден"
 
 #. [trait]: id=dim
-#: data/core/macros/traits.cfg:217
+#: data/core/macros/traits.cfg:216
 #, fuzzy
 msgid "female^dim"
 msgstr "безстрашна"
 
 #. [trait]: id=aged
-#: data/core/macros/traits.cfg:229
+#: data/core/macros/traits.cfg:228
 #, fuzzy
 msgid "aged"
 msgstr "далечен бой"
@@ -6412,8 +6432,8 @@ msgstr "Отдалечена мисия"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:205 src/unit.cpp:2374
-#: src/unit.cpp:2528
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:205 src/unit.cpp:2381
+#: src/unit.cpp:2535
 msgid "HP"
 msgstr "Здраве"
 
@@ -7013,7 +7033,7 @@ msgstr "Няма използваемо оръжие"
 msgid "Chance of being unscathed"
 msgstr "Шанс да остане невредим"
 
-#: src/attack_prediction_display.cpp:547 src/mouse_events.cpp:717
+#: src/attack_prediction_display.cpp:547 src/mouse_events.cpp:702
 msgid "Damage Calculations"
 msgstr "Оценка на щетите"
 
@@ -7062,11 +7082,11 @@ msgstr "Игра в мрежа"
 msgid "Tutorial"
 msgstr "Обучение"
 
-#: src/dialogs.cpp:483 src/savegame.cpp:955
+#: src/dialogs.cpp:483 src/savegame.cpp:947
 msgid "replay"
 msgstr "повторение"
 
-#: src/dialogs.cpp:485 src/savegame.cpp:1028
+#: src/dialogs.cpp:485 src/savegame.cpp:1020
 msgid "Turn"
 msgstr "Ход"
 
@@ -7139,7 +7159,7 @@ msgid "OK"
 msgstr "ОК"
 
 #: src/dialogs.cpp:615 src/dialogs.cpp:1027 src/dialogs.cpp:1134
-#: src/multiplayer_connect.cpp:1024 src/multiplayer_create.cpp:85
+#: src/multiplayer_connect.cpp:1006 src/multiplayer_create.cpp:85
 #: src/multiplayer_wait.cpp:176
 msgid "Cancel"
 msgstr "Отказ"
@@ -7168,107 +7188,107 @@ msgstr "Опит: "
 msgid "Moves: "
 msgstr "Ходове: "
 
-#: src/game.cpp:665 src/game.cpp:1394
+#: src/game.cpp:666 src/game.cpp:1395
 msgid "The Battle for Wesnoth"
 msgstr "Битката за Уеснот"
 
-#: src/game.cpp:994 src/game.cpp:1002 src/playsingle_controller.cpp:477
-#: src/playsingle_controller.cpp:532
+#: src/game.cpp:995 src/game.cpp:1003 src/playsingle_controller.cpp:476
+#: src/playsingle_controller.cpp:531
 msgid "The file you have tried to load is corrupt"
 msgstr "Файлът е повреден"
 
-#: src/game.cpp:997 src/game.cpp:1005 src/savegame.cpp:535
+#: src/game.cpp:998 src/game.cpp:1006 src/savegame.cpp:535
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Файлът който се опитвате да заредите е повреден: '"
 
-#: src/game.cpp:1009
+#: src/game.cpp:1010
 msgid "File I/O Error while reading the game"
 msgstr "Грешка Вход/Изход при четене на играта"
 
-#: src/game.cpp:1104
+#: src/game.cpp:1105
 #, fuzzy
 msgid "No campaigns are available.\n"
 msgstr "Няма цели"
 
-#: src/game.cpp:1137
+#: src/game.cpp:1138
 msgid "Difficulty"
 msgstr "Трудност"
 
-#: src/game.cpp:1138
+#: src/game.cpp:1139
 msgid "Select difficulty level:"
 msgstr "Избери ниво на трудност:"
 
-#: src/game.cpp:1273
+#: src/game.cpp:1274
 #, fuzzy
 msgid "Do you really want to start the server?"
 msgstr "Наистина ли искате ли да изтриете записа?"
 
-#: src/game.cpp:1274
+#: src/game.cpp:1275
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr ""
 
-#: src/game.cpp:1278
+#: src/game.cpp:1279
 #, fuzzy
 msgid "Don't show again"
 msgstr "Не ме питай отново."
 
-#: src/game.cpp:1349
+#: src/game.cpp:1350
 #, fuzzy
 msgid "Error while starting server: "
 msgstr "Грешка по време на игра : "
 
-#: src/game.cpp:1351 src/playcampaign.cpp:99 src/playcampaign.cpp:369
+#: src/game.cpp:1352 src/playcampaign.cpp:104 src/playcampaign.cpp:381
 msgid "The game could not be loaded: "
 msgstr "Играта не може да се зареди: "
 
-#: src/game.cpp:1353 src/playcampaign.cpp:101 src/playcampaign.cpp:372
+#: src/game.cpp:1354 src/playcampaign.cpp:106 src/playcampaign.cpp:384
 msgid "Error while playing the game: "
 msgstr "Грешка по време на игра : "
 
-#: src/game.cpp:1373 src/playcampaign.cpp:103 src/playcampaign.cpp:375
+#: src/game.cpp:1374 src/playcampaign.cpp:108 src/playcampaign.cpp:387
 msgid "The game map could not be loaded: "
 msgstr "Картата не може да се зареди: "
 
-#: src/game.cpp:1517
+#: src/game.cpp:1518
 #, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Следните допълнителни кампании имаха грешки и не бяха заредени:"
 msgstr[1] "Следните допълнителни кампании имаха грешки и не бяха заредени:"
 
-#: src/game.cpp:1524
+#: src/game.cpp:1525
 msgid "ERROR DETAILS:"
 msgstr "ПОДРОБНОСТИ ЗА ГРЕШКАТА:"
 
-#: src/game.cpp:1542
+#: src/game.cpp:1543
 msgid "Error loading game configuration files: '"
 msgstr "Грешка при зареждане на файловете с настройките: '"
 
-#: src/game.cpp:1543
+#: src/game.cpp:1544
 msgid "' (The game will now exit)"
 msgstr "' (Следва изход от играта)"
 
-#: src/game.cpp:1552
+#: src/game.cpp:1553
 #, fuzzy
 msgid "Loading data files"
 msgstr "Четена на файловете с единици."
 
-#: src/game.cpp:1985
+#: src/game.cpp:1990
 msgid "Loading game configuration."
 msgstr "Зареждане на настройките на играта."
 
-#: src/game.cpp:1991
+#: src/game.cpp:1996
 msgid "Re-initialize fonts for the current language."
 msgstr "Обновяване на шрифтовете за текущият език."
 
-#: src/game.cpp:1999
+#: src/game.cpp:2004
 #, fuzzy
 msgid "Searching for installed add-ons."
 msgstr "Пращане на допълнението"
 
-#: src/game.cpp:2008
+#: src/game.cpp:2013
 msgid "Loading title screen."
 msgstr "Зареждане на главният екран."
 
@@ -7294,7 +7314,7 @@ msgstr ""
 msgid "Info: "
 msgstr ""
 
-#: src/game_events.cpp:1207 src/multiplayer_connect.cpp:1609
+#: src/game_events.cpp:1207 src/multiplayer_connect.cpp:1581
 msgid "Victory:"
 msgstr "Победа:"
 
@@ -7306,7 +7326,7 @@ msgstr "Загуба:"
 msgid "[unit_worth]'s filter didn't match any units!"
 msgstr ""
 
-#: src/gamestatus.cpp:731
+#: src/gamestatus.cpp:740
 msgid ""
 "Leader position not empty - duplicate side definition for side '$side|' "
 "found."
@@ -7774,11 +7794,11 @@ msgstr ""
 msgid "Leader"
 msgstr "Водач"
 
-#: src/menu_events.cpp:366 src/multiplayer_connect.cpp:1009
+#: src/menu_events.cpp:366 src/multiplayer_connect.cpp:991
 msgid "Team"
 msgstr "Отбор"
 
-#: src/menu_events.cpp:367 src/multiplayer_connect.cpp:1020
+#: src/menu_events.cpp:367 src/multiplayer_connect.cpp:1002
 msgid "Gold"
 msgstr "Злато"
 
@@ -7794,7 +7814,7 @@ msgstr "Единици"
 msgid "Upkeep"
 msgstr "Издръжки"
 
-#: src/menu_events.cpp:371 src/multiplayer_connect.cpp:1021
+#: src/menu_events.cpp:371 src/multiplayer_connect.cpp:1003
 #: src/multiplayer_wait.cpp:518
 msgid "Income"
 msgstr "Приход"
@@ -8346,11 +8366,11 @@ msgstr "Команда:"
 msgid "User-Command#3"
 msgstr "Команди"
 
-#: src/mouse_events.cpp:727
+#: src/mouse_events.cpp:712
 msgid "Attack Enemy"
 msgstr "Атакувай противника"
 
-#: src/mouse_events.cpp:728
+#: src/mouse_events.cpp:713
 msgid "Choose weapon:"
 msgstr "Избери оръжие:"
 
@@ -8468,87 +8488,87 @@ msgstr ""
 msgid "(empty)"
 msgstr "Празно"
 
-#: src/multiplayer_connect.cpp:810
+#: src/multiplayer_connect.cpp:792
 #, fuzzy
 msgid "Reserved"
 msgstr "Резерв: "
 
-#: src/multiplayer_connect.cpp:811
+#: src/multiplayer_connect.cpp:793
 msgid "--give--"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:935
+#: src/multiplayer_connect.cpp:917
 #, fuzzy
 msgid "Only random sides in the current era."
 msgstr "Няма непроизволни страни в текущата ера"
 
-#: src/multiplayer_connect.cpp:959
+#: src/multiplayer_connect.cpp:941
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Намирането на тип водач за фракция $faction е невъзможно"
 
-#: src/multiplayer_connect.cpp:996
+#: src/multiplayer_connect.cpp:978
 #, fuzzy
 msgid "Game Lobby: "
 msgstr "Лоби на играта"
 
-#: src/multiplayer_connect.cpp:1016
+#: src/multiplayer_connect.cpp:998
 msgid "Player/Type"
 msgstr "Играч/Тип"
 
-#: src/multiplayer_connect.cpp:1017
+#: src/multiplayer_connect.cpp:999
 msgid "Faction"
 msgstr "Фракция"
 
-#: src/multiplayer_connect.cpp:1018
+#: src/multiplayer_connect.cpp:1000
 #, fuzzy
 msgid "Team/Gender"
 msgstr "Защитаващ се"
 
-#: src/multiplayer_connect.cpp:1019
+#: src/multiplayer_connect.cpp:1001
 msgid "Color"
 msgstr "Цвят"
 
-#: src/multiplayer_connect.cpp:1023
+#: src/multiplayer_connect.cpp:1005
 msgid "I'm Ready"
 msgstr "Готов съм"
 
-#: src/multiplayer_connect.cpp:1033
+#: src/multiplayer_connect.cpp:1015
 #, fuzzy
 msgid "The scenario is invalid because it has no id."
 msgstr "Мисията е невалидна, защото няма страни."
 
-#: src/multiplayer_connect.cpp:1037
+#: src/multiplayer_connect.cpp:1019
 msgid "The scenario is invalid because it has no sides."
 msgstr "Мисията е невалидна, защото няма страни."
 
-#: src/multiplayer_connect.cpp:1430
+#: src/multiplayer_connect.cpp:1412
 msgid "Network Player"
 msgstr "Играч в мрежата"
 
-#: src/multiplayer_connect.cpp:1432
+#: src/multiplayer_connect.cpp:1414
 msgid "Local Player"
 msgstr "Локален Играч"
 
-#: src/multiplayer_connect.cpp:1433
+#: src/multiplayer_connect.cpp:1415
 msgid "Computer Player"
 msgstr "Компютър"
 
-#: src/multiplayer_connect.cpp:1434
+#: src/multiplayer_connect.cpp:1416
 msgid "Empty"
 msgstr "Празно"
 
-#: src/multiplayer_connect.cpp:1586
+#: src/multiplayer_connect.cpp:1558
 msgid "Cannot find era $era"
 msgstr "Ера $era не е открита"
 
-#: src/multiplayer_connect.cpp:1611
+#: src/multiplayer_connect.cpp:1583
 #, fuzzy
 msgid "Defeat enemy leader(s)"
 msgstr ""
 "Условия за победа\n"
 "@Побеждаване на вражеския водач(и)"
 
-#: src/multiplayer_connect.cpp:1675
+#: src/multiplayer_connect.cpp:1647
 msgid "Waiting for players to join..."
 msgstr "Изчакване на играчи да се присъединят..."
 
@@ -8838,11 +8858,11 @@ msgstr ""
 msgid "Joining this game requires a password."
 msgstr ""
 
-#: src/multiplayer_ui.cpp:193
+#: src/multiplayer_ui.cpp:194
 msgid "Invalid Color"
 msgstr "Невалиден цвят"
 
-#: src/multiplayer_ui.cpp:425
+#: src/multiplayer_ui.cpp:426
 #, fuzzy
 msgid "Selected user: "
 msgstr "Избери единица:"
@@ -8903,7 +8923,7 @@ msgstr "Добавянето на сокета към комплекта от с
 msgid "Could not send initial handshake"
 msgstr "Пращането на първоначалния поздрав е невъзможно"
 
-#: src/pathfind.cpp:466
+#: src/pathfind.cpp:476
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr ""
 
@@ -8931,7 +8951,7 @@ msgid "Starting game"
 msgstr "Прекъсване на играта"
 
 #: src/play_controller.cpp:929 src/savegame.cpp:290 src/savegame.cpp:302
-#: src/savegame.cpp:981 src/savegame.cpp:983
+#: src/savegame.cpp:973 src/savegame.cpp:975
 msgid "Auto-Save"
 msgstr "Автоматично запазване"
 
@@ -8939,31 +8959,31 @@ msgstr "Автоматично запазване"
 msgid "Back to turn "
 msgstr "Обратно към ход"
 
-#: src/playcampaign.cpp:127 src/playcampaign.cpp:165
+#: src/playcampaign.cpp:132 src/playcampaign.cpp:170
 msgid "Defeat"
 msgstr "Загуба"
 
-#: src/playcampaign.cpp:128 src/playcampaign.cpp:166
+#: src/playcampaign.cpp:133 src/playcampaign.cpp:171
 msgid "You have been defeated!"
 msgstr "Изгубихте!"
 
-#: src/playcampaign.cpp:379
+#: src/playcampaign.cpp:391
 msgid "Error while reading the WML: "
 msgstr "Грешка при четене на WML:"
 
-#: src/playcampaign.cpp:415
+#: src/playcampaign.cpp:427
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr ""
 
-#: src/playcampaign.cpp:441
+#: src/playcampaign.cpp:453
 msgid "Downloading next scenario..."
 msgstr "Сваляне на следващата мисия..."
 
-#: src/playcampaign.cpp:575
+#: src/playcampaign.cpp:590
 msgid "Do you want to save your game?"
 msgstr "Искате ли да запазите играта?"
 
-#: src/playcampaign.cpp:592
+#: src/playcampaign.cpp:609
 #, fuzzy
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Непозната мисия: '"
@@ -9059,15 +9079,15 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/playsingle_controller.cpp:399
+#: src/playsingle_controller.cpp:398
 msgid "Game Over"
 msgstr "Край на Играта"
 
-#: src/playsingle_controller.cpp:400
+#: src/playsingle_controller.cpp:399
 msgid "The game is over."
 msgstr "Играта приключи."
 
-#: src/playsingle_controller.cpp:488
+#: src/playsingle_controller.cpp:487
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game\n"
@@ -9075,20 +9095,20 @@ msgid ""
 msgstr ""
 "Мрежата бе прекъсната и играта не може да продължи. Искате ли да я запазите?"
 
-#: src/playsingle_controller.cpp:654
+#: src/playsingle_controller.cpp:653
 #, fuzzy
 msgid "It is now $name|'s turn"
 msgstr "Вие сте на ход"
 
-#: src/playsingle_controller.cpp:870
+#: src/playsingle_controller.cpp:869
 msgid "Scenario Report"
 msgstr "Доклад от мисията"
 
-#: src/playsingle_controller.cpp:872
+#: src/playsingle_controller.cpp:871
 msgid "Victory"
 msgstr "Победа"
 
-#: src/playsingle_controller.cpp:873
+#: src/playsingle_controller.cpp:872
 msgid "You have emerged victorious!"
 msgstr "Вие сте победител!"
 
@@ -9142,55 +9162,55 @@ msgstr "Записът е от друга версия на играта, Иск
 msgid "This is not a multiplayer save"
 msgstr "Това не е игра за мрежова игра"
 
-#: src/savegame.cpp:614
+#: src/savegame.cpp:606
 #, fuzzy
 msgid "The game could not be saved: "
 msgstr "Играта не бе запазена"
 
-#: src/savegame.cpp:701
+#: src/savegame.cpp:693
 #, fuzzy
 msgid "Name: "
 msgstr "Име:"
 
-#: src/savegame.cpp:701
+#: src/savegame.cpp:693
 #, fuzzy
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Записът съществува. Желаете ли да го заместите с нов?"
 
-#: src/savegame.cpp:702
+#: src/savegame.cpp:694
 msgid "Overwrite?"
 msgstr "Заместване?"
 
-#: src/savegame.cpp:712
+#: src/savegame.cpp:704
 #, fuzzy
 msgid "Save names should not end on '.gz'. Please choose a different name."
 msgstr ""
 "Имената на игрите не могат да съдържат специални символи като кавички и "
 "наклонени черти. Моля изберете друго име."
 
-#: src/savegame.cpp:774
+#: src/savegame.cpp:766
 msgid "Saved"
 msgstr "Запазена"
 
-#: src/savegame.cpp:774
+#: src/savegame.cpp:766
 msgid "The game has been saved"
 msgstr "Играта бе запазена"
 
-#: src/savegame.cpp:808 src/savegame.cpp:833
+#: src/savegame.cpp:800 src/savegame.cpp:825
 msgid "Could not write to file"
 msgstr "Записът невъзможен "
 
-#: src/savegame.cpp:946
+#: src/savegame.cpp:938
 #, fuzzy
 msgid "Save Replay"
 msgstr "Повторение"
 
-#: src/savegame.cpp:964
+#: src/savegame.cpp:956
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 "Автоматичното запазване на играта е невъзможно. Моля запазете играта ръчно."
 
-#: src/savegame.cpp:1016
+#: src/savegame.cpp:1008
 msgid "Save Game"
 msgstr "Запази играта"
 
@@ -9453,42 +9473,42 @@ msgstr "Помогнете на Уеснот, като ни пращате ин�
 msgid "No time of day has been defined."
 msgstr "Произволно време на денонощието в началото"
 
-#: src/unit.cpp:505
+#: src/unit.cpp:506
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr ""
 
-#: src/unit.cpp:687
+#: src/unit.cpp:688
 msgid "Unknown unit type '$type|'"
 msgstr ""
 
-#: src/unit.cpp:2331 src/unit.cpp:2516 src/unit.cpp:2589
+#: src/unit.cpp:2338 src/unit.cpp:2523 src/unit.cpp:2596
 #, fuzzy
 msgid " and "
 msgstr "Песъчлив терен"
 
-#: src/unit.cpp:2342
+#: src/unit.cpp:2349
 msgid "$attack_list|: $effect_description"
 msgstr ""
 
-#: src/unit.cpp:2407
+#: src/unit.cpp:2414
 #, fuzzy
 msgid "moves"
 msgstr "Ходове"
 
-#: src/unit.cpp:2425 src/unit.cpp:2543
+#: src/unit.cpp:2432 src/unit.cpp:2550
 msgid "XP to advance"
 msgstr "Опит, оставащ до повишение"
 
-#: src/unit.cpp:2535
+#: src/unit.cpp:2542
 #, fuzzy
 msgid " move"
 msgstr "Ходове"
 
-#: src/unit.cpp:2551
+#: src/unit.cpp:2558
 msgid "$effect_description per level"
 msgstr ""
 
-#: src/unit.cpp:2598
+#: src/unit.cpp:2605
 msgid "$trait_name|: $trait_description "
 msgstr ""
 
@@ -9576,6 +9596,10 @@ msgstr "Помогнете ни да направим Уеснот по-добъ
 #: src/upload_log.cpp:375
 msgid "Enable summary uploads"
 msgstr "Позволи качване на обобщения"
+
+#, fuzzy
+#~ msgid "Can rest while moving, takes a quarter less poison damage"
+#~ msgstr "В състояние е да почива по време на път."
 
 #, fuzzy
 #~ msgid "Location^Loc."
