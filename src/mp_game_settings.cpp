@@ -77,6 +77,7 @@ void mp_game_settings::set_from_config(const config& game_cfg)
 {
 	const config& cfg = game_cfg.child("multiplayer");
 	name = cfg["scenario"];
+	era = cfg["era"];
 	xp_modifier = lexical_cast_default<int>(cfg["experience_modifier"]);
 	num_turns = lexical_cast_default<int>(cfg["turns"]);
 	use_map_settings = utils::string_bool(cfg["mp_use_map_settings"]);
@@ -113,14 +114,15 @@ config mp_game_settings::to_config() const
 {
 	config cfg;
 
+	cfg["scenario"] = name;
+	cfg["era"] = era;
 	cfg["turns"] = lexical_cast_default<std::string>(num_turns, "20");
+	cfg["experience_modifier"] = lexical_cast<std::string>(xp_modifier);
 	cfg["mp_countdown"] = mp_countdown ? "yes" : "no";
 	cfg["mp_countdown_init_time"] = lexical_cast_default<std::string>(mp_countdown_init_time, "270");
 	cfg["mp_countdown_turn_bonus"] = lexical_cast_default<std::string>(mp_countdown_turn_bonus, "35");
 	cfg["mp_countdown_reservoir_time"] = lexical_cast_default<std::string>(mp_countdown_reservoir_time, "330");
 	cfg["mp_countdown_action_bonus"] = lexical_cast_default<std::string>(mp_countdown_action_bonus, "13");
-	cfg["scenario"] = name;
-	cfg["experience_modifier"] = lexical_cast<std::string>(xp_modifier);
 	cfg["mp_village_gold"] = lexical_cast<std::string>(village_gold);
 	cfg["mp_fog"] = fog_game ? "yes" : "no";
 	cfg["mp_shroud"] = shroud_game ? "yes" : "no";
