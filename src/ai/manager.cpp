@@ -231,13 +231,14 @@ const std::string holder::get_ai_overview()
 	s << "passive_leader_shares_keep:  " << this->ai_->get_passive_leader_shares_keep() << std::endl;
 	s << "recruitment_ignore_bad_combat:  " << this->ai_->get_recruitment_ignore_bad_movement() << std::endl;
 	s << "recruitment_ignore_bad_movement:  " << this->ai_->get_recruitment_ignore_bad_combat() << std::endl;
-	s << "recruitment_pattern:  ";
-	for(std::vector<std::string>::const_iterator i =  this->ai_->get_recruitment_pattern().begin(); i !=  this->ai_->get_recruitment_pattern().end(); ++i) {
-		if(i != this->ai_->get_recruitment_pattern().begin())
-			s << ",";
-
-		s << *i;
-	}
+//	s << "recruitment_pattern:  ";
+//	for(std::vector<std::string>::const_iterator i =  this->ai_->get_recruitment_pattern().begin(); i !=  this->ai_->get_recruitment_pattern().end(); ++i) {
+//		if(i != this->ai_->get_recruitment_pattern().begin())
+//			s << ",";
+//
+//		s << *i;
+//	}
+//	s << std::endl;
 	s << "scout_village_targeting:  " << this->ai_->get_scout_village_targeting() << std::endl;
 	s << "simple_targeting:  " << this->ai_->get_simple_targeting() << std::endl;
 	s << "support_villages:  " << this->ai_->get_support_villages() << std::endl;
