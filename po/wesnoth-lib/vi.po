@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-09-06 15:04+0200\n"
+"POT-Creation-Date: 2009-09-23 12:26+0200\n"
 "PO-Revision-Date: 2009-08-30 21:11+0700\n"
 "Last-Translator: Phạm Thành Nam <phamthanhnam.ptn@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
@@ -585,8 +585,8 @@ msgstr "Kết nối"
 #: data/gui/default/window/mp_method_selection.cfg:218
 #: data/gui/default/window/mp_server_list.cfg:229
 #: data/gui/default/window/unit_create.cfg:216
-#: data/gui/default/window/unit_create.cfg:217 src/construct_dialog.cpp:133
-#: src/construct_dialog.cpp:136
+#: data/gui/default/window/unit_create.cfg:217 src/construct_dialog.cpp:134
+#: src/construct_dialog.cpp:137
 msgid "Cancel"
 msgstr "Hủy bỏ"
 
@@ -608,9 +608,9 @@ msgstr "Chơi một chiến dịch"
 #: data/gui/default/window/unit_create.cfg:204
 #: data/gui/default/window/unit_create.cfg:205
 #: data/gui/default/window/wml_message.cfg:458
-#: data/gui/default/window/wml_message.cfg:679 src/construct_dialog.cpp:125
-#: src/construct_dialog.cpp:132 src/gui/dialogs/message.cpp:188
-#: src/gui/dialogs/message.cpp:195
+#: data/gui/default/window/wml_message.cfg:679 src/construct_dialog.cpp:126
+#: src/construct_dialog.cpp:133 src/gui/dialogs/message.cpp:163
+#: src/gui/dialogs/message.cpp:170
 msgid "OK"
 msgstr "Đồng ý"
 
@@ -780,7 +780,7 @@ msgstr "Ngăn xếp lời gọi"
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:86
-#: data/gui/default/window/gamestate_inspector.cfg:187
+#: data/gui/default/window/gamestate_inspector.cfg:268
 msgid "Actions"
 msgstr "Hành động"
 
@@ -845,7 +845,7 @@ msgstr "Đừng hỏi tôi nữa!"
 #: data/gui/default/window/game_save_oos.cfg:187
 #: data/gui/default/window/game_save_overwrite.cfg:88
 #: data/gui/default/window/game_save_overwrite.cfg:89
-#: src/construct_dialog.cpp:128 src/gui/dialogs/message.cpp:202
+#: src/construct_dialog.cpp:129 src/gui/dialogs/message.cpp:177
 msgid "Yes"
 msgstr "Có"
 
@@ -855,14 +855,14 @@ msgstr "Có"
 #: data/gui/default/window/game_save_message.cfg:154
 #: data/gui/default/window/game_save_oos.cfg:201
 #: data/gui/default/window/game_save_overwrite.cfg:103
-#: src/construct_dialog.cpp:129 src/gui/dialogs/message.cpp:204
+#: src/construct_dialog.cpp:130 src/gui/dialogs/message.cpp:179
 msgid "No"
 msgstr "Không"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_load.cfg:42
-#: src/gui/dialogs/mp_create_game.cpp:78 src/hotkeys.cpp:66
+#: src/gui/dialogs/mp_create_game.cpp:75 src/hotkeys.cpp:66
 msgid "Load Game"
 msgstr "Tải trò chơi"
 
@@ -951,23 +951,36 @@ msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Bản lưu đã tồn tại. Bạn có muốn ghi đè lên nó không?"
 
 #. [label]
-#: data/gui/default/window/gamestate_inspector.cfg:33
+#: data/gui/default/window/gamestate_inspector.cfg:38
 msgid "Gamestate Inspector"
 msgstr ""
 
 #. [label]
-#: data/gui/default/window/gamestate_inspector.cfg:86
+#: data/gui/default/window/gamestate_inspector.cfg:92
+#, fuzzy
+msgid "Types"
+msgstr "Kiểu"
+
+#. [label]
+#: data/gui/default/window/gamestate_inspector.cfg:103
 #, fuzzy
 msgid "Content"
 msgstr "Kết nối"
 
 #. [label]
-#: data/gui/default/window/gamestate_inspector.cfg:97
+#: data/gui/default/window/gamestate_inspector.cfg:114
 msgid "Inspection window"
 msgstr ""
 
+#. [label]: id=unit_type
+#. [label]: id=typename
+#: data/gui/default/window/gamestate_inspector.cfg:145
+#: data/gui/default/window/unit_create.cfg:138
+msgid "Type"
+msgstr "Kiểu"
+
 #. [label]: id=name
-#: data/gui/default/window/gamestate_inspector.cfg:125
+#: data/gui/default/window/gamestate_inspector.cfg:206
 msgid "Variable"
 msgstr ""
 
@@ -975,10 +988,10 @@ msgstr ""
 #. [button]: id=ok
 #. [button]: id=cancel
 #. [button]: id=close_window
-#: data/gui/default/window/gamestate_inspector.cfg:250
+#: data/gui/default/window/gamestate_inspector.cfg:331
 #: data/gui/default/window/lobby_main.cfg:503
 #: data/gui/default/window/lobby_player_info.cfg:192
-#: data/gui/default/window/message.cfg:122 src/construct_dialog.cpp:139
+#: data/gui/default/window/message.cfg:122 src/construct_dialog.cpp:140
 msgid "Close"
 msgstr "Đóng"
 
@@ -1411,7 +1424,7 @@ msgstr "Nhắc nhở mật khẩu"
 #. [grid]
 #: data/gui/default/window/mp_method_selection.cfg:31
 #: data/gui/default/window/title_screen.cfg:184
-#: src/gui/dialogs/game_load.cpp:266
+#: src/gui/dialogs/game_load.cpp:259
 msgid "Multiplayer"
 msgstr "Nhiều đấu thủ"
 
@@ -1486,7 +1499,7 @@ msgstr "Trước"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:182
-#: src/gui/dialogs/game_load.cpp:268
+#: src/gui/dialogs/game_load.cpp:261
 msgid "Tutorial"
 msgstr "Hướng dẫn"
 
@@ -1545,11 +1558,6 @@ msgstr "Tạo tên"
 #: data/gui/default/window/unit_create.cfg:126
 msgid "Race"
 msgstr "Loài"
-
-#. [label]: id=unit_type
-#: data/gui/default/window/unit_create.cfg:138
-msgid "Type"
-msgstr "Kiểu"
 
 #: src/filechooser.cpp:74
 msgid "File: "
@@ -2027,28 +2035,28 @@ msgstr "Văn bản không bắt đầu trên họa tiết nền."
 msgid "Linked '$id' group has multiple definitions."
 msgstr "Nhóm '$id' đã liên kết có nhiều định nghĩa."
 
-#: src/gui/auxiliary/window_builder.cpp:188 src/gui/widgets/settings.cpp:517
+#: src/gui/auxiliary/window_builder.cpp:198 src/gui/widgets/settings.cpp:445
 msgid "No resolution defined."
 msgstr "Không xác định được độ phân giải nào."
 
-#: src/gui/auxiliary/window_builder.cpp:294
+#: src/gui/auxiliary/window_builder.cpp:305
 #: src/gui/auxiliary/window_builder/panel.cpp:35
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:38
-#: src/gui/widgets/settings.cpp:781 src/gui/widgets/settings.cpp:880
-#: src/gui/widgets/settings.cpp:973 src/gui/widgets/settings.cpp:1016
-#: src/gui/widgets/settings.cpp:1131
+#: src/gui/widgets/settings.cpp:709 src/gui/widgets/settings.cpp:808
+#: src/gui/widgets/settings.cpp:901 src/gui/widgets/settings.cpp:944
+#: src/gui/widgets/settings.cpp:1059
 msgid "No grid defined."
 msgstr "Không xác định được lưới nào."
 
-#: src/gui/auxiliary/window_builder.cpp:325
+#: src/gui/auxiliary/window_builder.cpp:336
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgstr "Nhóm '$id' đã liên kết cần khóa 'fixed_width' hoặc 'fixed_height'.."
 
-#: src/gui/auxiliary/window_builder.cpp:424
+#: src/gui/auxiliary/window_builder.cpp:435
 msgid "A row must have a column."
 msgstr "Một hàng phải có một cột."
 
-#: src/gui/auxiliary/window_builder.cpp:425
+#: src/gui/auxiliary/window_builder.cpp:436
 msgid "Number of columns differ."
 msgstr "Số cột sai khác."
 
@@ -2082,43 +2090,43 @@ msgstr "Số value_labels và values không khớp nhau."
 msgid "No stack defined."
 msgstr "Không xác định được ngăn xếp nào."
 
-#: src/gui/dialogs/game_load.cpp:239
+#: src/gui/dialogs/game_load.cpp:232
 msgid "#(Invalid)"
 msgstr "#(Không hợp lệ)"
 
-#: src/gui/dialogs/game_load.cpp:259
+#: src/gui/dialogs/game_load.cpp:252
 msgid "Campaign: $campaign_name"
 msgstr "Chiến dịch: $campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:278
+#: src/gui/dialogs/game_load.cpp:271
 msgid "replay"
 msgstr "phát lại"
 
-#: src/gui/dialogs/game_load.cpp:280
+#: src/gui/dialogs/game_load.cpp:273
 msgid "Turn"
 msgstr "Lượt"
 
-#: src/gui/dialogs/game_load.cpp:282
+#: src/gui/dialogs/game_load.cpp:275
 msgid "Scenario Start"
 msgstr "Mở đầu kịch bản"
 
-#: src/gui/dialogs/game_load.cpp:285
+#: src/gui/dialogs/game_load.cpp:278
 msgid "Difficulty: "
 msgstr "Độ khó: "
 
-#: src/gui/dialogs/game_load.cpp:289
+#: src/gui/dialogs/game_load.cpp:282
 msgid "Version: "
 msgstr "Phiên bản: "
 
-#: src/gui/dialogs/lobby_main.cpp:401
+#: src/gui/dialogs/lobby_main.cpp:404
 msgid "Observers allowed"
 msgstr "Cho phép người quan sát"
 
-#: src/gui/dialogs/lobby_main.cpp:404
+#: src/gui/dialogs/lobby_main.cpp:407
 msgid "Observers not allowed"
 msgstr "Không cho phép người quan sát"
 
-#: src/gui/dialogs/lobby_main.cpp:679
+#: src/gui/dialogs/lobby_main.cpp:692
 msgid ""
 "Whisper session with $name started. If you don't want to receive messages "
 "from this user, type /ignore $name\n"
@@ -2126,27 +2134,27 @@ msgstr ""
 "Phiên thì thầm với $name đã khởi chạy. Nếu bạn không muốn nhận tin nhắn từ "
 "người dùng này, đánh /ignore $name\n"
 
-#: src/gui/dialogs/lobby_main.cpp:685
+#: src/gui/dialogs/lobby_main.cpp:698
 msgid "Room $name joined"
 msgstr "Đã tham gia phòng $name"
 
-#: src/gui/dialogs/lobby_main.cpp:1103
+#: src/gui/dialogs/lobby_main.cpp:1123
 msgid "Password Required"
 msgstr "Cần mật khẩu"
 
-#: src/gui/dialogs/lobby_main.cpp:1104
+#: src/gui/dialogs/lobby_main.cpp:1124
 msgid "Joining this game requires a password."
 msgstr "Tham gia trò chơi này cần mật khẩu."
 
-#: src/gui/dialogs/lobby_main.cpp:1105
+#: src/gui/dialogs/lobby_main.cpp:1125
 msgid "Password: "
 msgstr "Mật khẩu: "
 
-#: src/gui/dialogs/message.cpp:216
+#: src/gui/dialogs/message.cpp:191
 msgid "Error"
 msgstr "Lỗi"
 
-#: src/gui/dialogs/mp_create_game.cpp:79
+#: src/gui/dialogs/mp_create_game.cpp:76
 msgid "Load Game..."
 msgstr "Tải trò chơi..."
 
@@ -2171,11 +2179,16 @@ msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "Định nghĩa widget '$definition' không chứa định nghĩa cho '$id'."
 
-#: src/gui/widgets/settings.cpp:543
+#: src/gui/widgets/settings.cpp:471
 msgid "No state or draw section defined."
 msgstr "Không xác định được trạng thái hoặc vùng vẽ nào."
 
-#: src/gui/widgets/window.cpp:710 src/tests/gui/test_gui2.cpp:232
+#: src/gui/widgets/window.cpp:732
+msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
+msgstr ""
+
+#: src/gui/widgets/window.cpp:757 src/gui/widgets/window.cpp:790
+#: src/tests/gui/test_gui2.cpp:232
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Thất bại khi hiện hộp thoại, nó không vừa với màn hình."
 
@@ -2673,7 +2686,7 @@ msgstr "Nội địa"
 msgid "Island"
 msgstr "Đảo"
 
-#: src/marked-up_text.cpp:397
+#: src/marked-up_text.cpp:416
 msgid "The maximum text width is less than 1."
 msgstr "Chiều rộng văn bản tối đa nhỏ hơn 1."
 
