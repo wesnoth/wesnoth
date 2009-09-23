@@ -206,6 +206,7 @@ void move_unit(const std::vector<map_location>& path, unit& u, const std::vector
 	animator.wait_for_end();
 	disp->remove_temporary_unit();
 
+	u.set_facing(path[path.size()-2].get_relative_dir(path[path.size()-1]));
 	u.set_hidden(was_hidden);
 
 	events::mouse_handler* mousehandler = events::mouse_handler::get_singleton();
