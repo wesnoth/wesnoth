@@ -2009,6 +2009,8 @@ void server::process_data_game(const network::connection sock,
 			assert(gamelist != NULL);
 			simple_wml::node& desc = gamelist->add_child("game");
 			g->level().root().copy_into(desc);
+			if (g->level().root().child("multiplayer"))
+				g->level().root().child("multiplayer")->copy_into(desc);
 			g->set_description(&desc);
 			desc.set_attr_dup("id", lexical_cast<std::string>(g->id()).c_str());
 		} else {
@@ -2036,21 +2038,25 @@ void server::process_data_game(const network::connection sock,
 			desc.set_attr("mp_era", "");
 		}
 
+		const simple_wml::node* mp = data.child("multiplayer");
+
 		// map id
 		desc.set_attr_dup("mp_scenario", data["id"]);
-		desc.set_attr_dup("observer", data["observer"]);
-		desc.set_attr_dup("mp_village_gold", data["mp_village_gold"]);
-		desc.set_attr_dup("experience_modifier", data["experience_modifier"]);
-		desc.set_attr_dup("mp_fog", data["mp_fog"]);
-		desc.set_attr_dup("mp_shroud", data["mp_shroud"]);
-		desc.set_attr_dup("mp_use_map_settings", data["mp_use_map_settings"]);
-		desc.set_attr_dup("mp_countdown", data["mp_countdown"]);
-		desc.set_attr_dup("mp_countdown_init_time", data["mp_countdown_init_time"]);
-		desc.set_attr_dup("mp_countdown_turn_bonus", data["mp_countdown_turn_bonus"]);
-		desc.set_attr_dup("mp_countdown_reservoir_time", data["mp_countdown_reservoir_time"]);
-		desc.set_attr_dup("mp_countdown_action_bonus", data["mp_countdown_action_bonus"]);
 		desc.set_attr_dup("savegame", data["savegame"]);
 		desc.set_attr_dup("hash", data["hash"]);
+		if (mp){
+			desc.set_attr_dup("observer", (*mp)["observer"]);
+			desc.set_attr_dup("mp_village_gold", (*mp)["mp_village_gold"]);
+			desc.set_attr_dup("experience_modifier", (*mp)["experience_modifier"]);
+			desc.set_attr_dup("mp_fog", (*mp)["mp_fog"]);
+			desc.set_attr_dup("mp_shroud", (*mp)["mp_shroud"]);
+			desc.set_attr_dup("mp_use_map_settings", (*mp)["mp_use_map_settings"]);
+			desc.set_attr_dup("mp_countdown", (*mp)["mp_countdown"]);
+			desc.set_attr_dup("mp_countdown_init_time", (*mp)["mp_countdown_init_time"]);
+			desc.set_attr_dup("mp_countdown_turn_bonus", (*mp)["mp_countdown_turn_bonus"]);
+			desc.set_attr_dup("mp_countdown_reservoir_time", (*mp)["mp_countdown_reservoir_time"]);
+			desc.set_attr_dup("mp_countdown_action_bonus", (*mp)["mp_countdown_action_bonus"]);
+		}
 		//desc["map_name"] = data["name"];
 		//desc["map_description"] = data["description"];
 		//desc[""] = data["objectives"];
