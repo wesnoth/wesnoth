@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-09-23 12:26+0200\n"
-"PO-Revision-Date: 2009-07-31 21:57+0100\n"
+"PO-Revision-Date: 2009-09-22 11:24+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -3757,9 +3757,8 @@ msgid "No early finish bonus."
 msgstr "Bez bonusu za rychlý konec."
 
 #: data/core/macros/carryover-utils.cfg:15
-#, fuzzy
 msgid "<small>(early finish bonus)</small>"
-msgstr "`(bonus za rychlý konec)"
+msgstr "<small>(bonus za rychlý konec)</small>"
 
 #: data/core/macros/carryover-utils.cfg:18
 msgid "No gold carried over to the next scenario."
@@ -6188,60 +6187,51 @@ msgstr "Jezero $name"
 msgid "$name's Peak,Mount $name"
 msgstr ""
 
-# pův.: "město|$name,tón|$name,pole|$name"
 #. [language]
 #: data/hardwired/english.cfg:25
-#, fuzzy
 msgid "$name's Swamp,$name|marsh,$name|fen"
-msgstr "$name|ham,$name|ton,$name|field"
+msgstr "$name's Swamp,$name|marsh,$name|fen"
 
-# pův.: "$name|pochován,město|$name,tón|$name"
 #. [language]
 #: data/hardwired/english.cfg:26
-#, fuzzy
 msgid "$name|bury,$name|ham,$name|ton,$name|bury"
-msgstr "$name|bury,$name|ham,$name|ton"
+msgstr "$name|bury,$name|ham,$name|ton,$name|bury"
 
-# pův.: "přístav|$name,přístav|$name"
 #. [language]
 #: data/hardwired/english.cfg:27
-#, fuzzy
 msgid "$name|harbor,$name|port,$lake|port,$lake|harbor"
-msgstr "$name|harbor,$name|port"
+msgstr "$name|harbor,$name|port,$lake|port,$lake|harbor"
 
-# pův.: "město|$name,brod|$name,křižovatka|$name,$river|brod,soutok|$river"
 #. [language]
 #: data/hardwired/english.cfg:28
-#, fuzzy
 msgid ""
 "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross,$name on river"
-msgstr "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
+msgstr ""
+"$name|ham,$name|ford,$name|cross,$river|ford,$river|cross,$name on river"
 
-# pův.: "most|$river,most|$river,most|$river,město|$name,most|$name"
 #. [language]
 #: data/hardwired/english.cfg:29
-#, fuzzy
 msgid ""
 "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge,$bridge|ham,"
 "$bridge|ton"
-msgstr "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
+msgstr ""
+"$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge,$bridge|ham,"
+"$bridge|ton"
 
-# pův.: "město|$name,tón|$name,pole|$name"
 #. [language]
 #: data/hardwired/english.cfg:30
 msgid "$name|ham,$name|ton,$name|field"
 msgstr "$name|ham,$name|ton,$name|field"
 
-# pův.: "město|$name,tón|$name,háj|$name,Les $name"
 #. [language]
 #: data/hardwired/english.cfg:31
-#, fuzzy
 msgid ""
 "$name|ham,$name|ton,$name|wood,$name Forest,$forest|wood,$forest|ham,$forest|"
 "ton"
-msgstr "$name|ham,$name|ton,$name|wood,$name Forest"
+msgstr ""
+"$name|ham,$name|ton,$name|wood,$name Forest,$forest|wood,$forest|ham,$forest|"
+"ton"
 
-# pův.: "město|$name,pochován|$name,tón|$name,vrch|$name,hřeben|$name"
 #. [language]
 #: data/hardwired/english.cfg:32
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
@@ -6252,7 +6242,6 @@ msgstr "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgid "$mountain|mont,$mountain|cliff,$mountain|bury,$mountain|ham"
 msgstr ""
 
-# pův.: "město|$name,pochován|$name,tón|$name,vrchol|$name,vrchol|$name,sráz|$name,sráz|$name"
 #. [language]
 #: data/hardwired/english.cfg:34
 msgid ""
@@ -6265,12 +6254,10 @@ msgstr ""
 msgid "$road's Rest,$road's Waypoint,$road|bury,$road|ham,$name|bury,$name|ham"
 msgstr ""
 
-# pův.: "$name|pochován,město|$name,tón|$name"
 #. [language]
 #: data/hardwired/english.cfg:36
-#, fuzzy
 msgid "$name|bury,$name|ham,$name|ton,$swamp|bury,$swamp|ham,$swamp|ton,"
-msgstr "$name|bury,$name|ham,$name|ton"
+msgstr "$name|bury,$name|ham,$name|ton,$swamp|bury,$swamp|ham,$swamp|ton,"
 
 #. [language]
 #: data/hardwired/english.cfg:39
@@ -7198,9 +7185,8 @@ msgid "female^poisoned"
 msgstr "otrávená"
 
 #: src/actions.cpp:1111 src/actions.cpp:1384
-#, fuzzy
 msgid "female^petrified"
-msgstr "otrávená"
+msgstr "zkamenělá"
 
 #: src/actions.cpp:1111 src/actions.cpp:1384
 msgid "petrified"
@@ -7299,9 +7285,8 @@ msgid "addon_type^Resources"
 msgstr "Zdroje"
 
 #: src/addon_management.cpp:430
-#, fuzzy
 msgid "addon_type^Other"
-msgstr "Éra MP"
+msgstr "Jiný"
 
 #: src/addon_management.cpp:432
 msgid "addon_type^(unknown)"
@@ -7956,7 +7941,6 @@ msgid "petrified: "
 msgstr ""
 
 #: src/generate_report.cpp:141
-#, fuzzy
 msgid "This unit has been petrified. It may not move or attack."
 msgstr "Tato jednotka byla proměněna v kámen. Nemůže se ani hýbat, ani útočit."
 
@@ -9342,8 +9326,9 @@ msgid "Quit"
 msgstr "Konec"
 
 #: src/multiplayer_lobby.cpp:734
+#, fuzzy
 msgid "Apply Filter"
-msgstr ""
+msgstr "Filtr: "
 
 #: src/multiplayer_lobby.cpp:735
 msgid "Invert"
@@ -9840,6 +9825,7 @@ msgid "Damage"
 msgstr "Zranění"
 
 #: src/statistics_dialog.cpp:176
+#, fuzzy
 msgid "Overall"
 msgstr "Celkem"
 
@@ -10130,14 +10116,17 @@ msgstr "Povolit posílání souhrnů"
 #~ msgid "Location^Loc."
 #~ msgstr "Místo"
 
+#~ msgid "Play a campaign"
+#~ msgstr "Hraj tažení"
+
 #~ msgid "Computer player"
 #~ msgstr "Počítačový hráč"
 
+#~ msgid "Default AI"
+#~ msgstr "Standardní"
+
 #~ msgid "stones"
 #~ msgstr "zkamenění"
-
-#~ msgid "Play a campaign"
-#~ msgstr "Hraj tažení"
 
 #~ msgid "An invalid weapon is selected, possibly by the Python AI."
 #~ msgstr "Vybrána neplatná zbraň, pravděpodobně kvůli Pythonové AI."
@@ -10169,9 +10158,6 @@ msgstr "Povolit posílání souhrnů"
 
 #~ msgid "Remove a trait from a unit. (Does not work yet.)"
 #~ msgstr "Odebere jednotce vlastnost. (Zatím nefunkční!)"
-
-#~ msgid "Default AI"
-#~ msgstr "Standardní"
 
 #~ msgid "The replay could not be saved"
 #~ msgstr "Záznam se nepodařilo uložit"

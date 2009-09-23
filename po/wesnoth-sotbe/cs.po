@@ -16,9 +16,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-09-16 21:47+0200\n"
-"PO-Revision-Date: 2009-05-20 17:22+0100\n"
-"Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
+"POT-Creation-Date: 2009-09-23 12:26+0200\n"
+"PO-Revision-Date: 2009-09-23 23:02+0100\n"
+"Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -71,11 +71,10 @@ msgstr "Válečný lord"
 #. [campaign]: id=Son_Of_The_Black_Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:22
 msgid "(Expert level, 18 scenarios.)"
-msgstr ""
+msgstr "(Obtížnost: expert, 18 scénářů)"
 
 #. [campaign]: id=Son_Of_The_Black_Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:22
-#, fuzzy
 msgid ""
 "Your father Karun Black-Eye was the greatest orcish leader that ever lived. "
 "Now, as his son, it's up to you to thwart the selfish designs of the humans "
@@ -91,7 +90,6 @@ msgstr ""
 "soupeřící skřetí kmeny, svolej Skřetí Radu, pozvedni Velkou Hordu a pošli "
 "lidské červy a jejich odporné spojence do země mrtvých.\n"
 "\n"
-"(Obtížnost: expert, 18 scénářů)"
 
 #. [about]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:27
@@ -698,6 +696,9 @@ msgid ""
 "<span color='#00ff00'>Defeat the enemy leader</span> <small>(early finish "
 "bonus)</small>"
 msgstr ""
+"<span color='white'>Bonusový cíl:</span>\n"
+"<span color='#00ff00'>Poraz nepřátelského vůdce</span> <small>(bonus za "
+"rychlý konec)</small>"
 
 #. [side]: type=Dwarvish Lord, id=Kwili
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:85
@@ -868,15 +869,14 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:278
-#, fuzzy
 msgid ""
 "<b>Bonus objective:</b>\n"
 "Defeat the enemy leader\n"
 "<span size='small'>(early finish bonus)</span>"
 msgstr ""
-"<255,255,255>Bonusový úkol:\n"
-"@Poraz nepřátelského vůdce\n"
-"`(bonus za předčasné ukončení)"
+"<b>Bonusový úkol:</b>\n"
+"Poraz nepřátelského vůdce\n"
+"<span size='small'>(bonus za předčasné ukončení)</span>"
 
 #. [objective]: condition=lose
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:286
@@ -1708,13 +1708,12 @@ msgstr "Jsou šamané v bezpečí?"
 
 #. [message]: speaker=Affman
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:296
-#, fuzzy
 msgid ""
 "When we realized that there was no way we could hold the humans off, we sent "
 "them east to a place near the Mourned Hills along with most of our women and "
 "children. The rest of us remained here to buy them some time."
 msgstr ""
-"Když jsme si uvědomili,že není způsob jak lidi zadržet, poslali jsme je "
+"Když jsme si uvědomili, že není způsob jak lidi zadržet, poslali jsme je "
 "východně na místo poblíž Truchlivých kopců s našimi ženami a dětmi. My jsme "
 "tu zůstali a pokoušíme se jim získat nějaký čas. "
 
@@ -2139,7 +2138,6 @@ msgstr ""
 
 #. [message]: speaker=Gork
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:165
-#, fuzzy
 msgid ""
 "It has not always been like this. A lot of hunters from the tribes used to "
 "hunt here and fish in the River Bork. But that all changed a few years ago. "
@@ -2212,7 +2210,7 @@ msgstr ""
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:223
 msgid "Now we're going to have some some answers out of you."
-msgstr ""
+msgstr "Teď z tebe dostaneme nějaké informace."
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:228
@@ -2287,13 +2285,11 @@ msgstr "Dobrá, vypadá to, že tu máme práci. Musíme zničit tu enklávu."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:279
-#, fuzzy
 msgid "With pleasure. But what should I do with this weakling?"
-msgstr "S potěšením. Co mám udělat s tímhle chlapíkem?"
+msgstr "S potěšením. Co mám udělat s tímhle slabochem?"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:284
-#, fuzzy
 msgid "Behead it."
 msgstr "Usekněte mu hlavu."
 
@@ -2345,6 +2341,9 @@ msgid ""
 "<span color='#00ff00'>Defeat Shan Taum</span> <small>(early finish bonus)</"
 "small>"
 msgstr ""
+"<span color='white'>Alternativní cíl:</span>\n"
+"<span color='#00ff00'>Poraz Šan Tauma</span> <small>(bonus za rychlý konec)</"
+"small>"
 
 #. [side]: type=Orcish Warlord, id=Shan Taum
 #. [unit]: type=Orcish Warlord, id=Shan Taum
@@ -2603,14 +2602,13 @@ msgstr "Jižní věž"
 
 #. [message]: speaker=Plonk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:186
-#, fuzzy
 msgid ""
 "Reinforcements, at last! Whoever you are, you are welcome in Prestim! The "
 "fortified bridge over the River Bork was taken this morning by a small "
 "commando of elves, we have already tried to assault it twice without success."
 msgstr ""
 "Posily! Konečně! Ať jste kdo jste, vítejte v Prestimu! Opevněný most přes "
-"řeku Gork byl dnes ráno dobyt malou skupinkou elfů. Dvakrát jsme se jej "
+"řeku Bork byl dnes ráno dobyt malou skupinkou elfů. Dvakrát jsme se jej "
 "marně pokoušeli dobýt zpět."
 
 #. [message]: speaker=Grüü
@@ -3196,7 +3194,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:103
-#, fuzzy
 msgid ""
 "After a few weeks of putting down minor rebellions and clearing out the last "
 "human strongholds, the first snows of the long northern winter began to "
@@ -3237,7 +3234,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:118
-#, fuzzy
 msgid ""
 "Rushing to reach Borstep before the river froze up for the winter, the orcs "
 "sailed up the River Bork. Paddling day and night the horde barely managed to "
@@ -3358,9 +3354,8 @@ msgstr "Přinutíme je zaplatit za to co udělali našim lidem. Krev a ocel!"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:307
-#, fuzzy
 msgid "Victory...Grüü, what <i>is</i> that you are eating?"
-msgstr "Vítězství ... Grüü, co je to „to“, co jíš?"
+msgstr "Vítězství ... Grüü, <i>co</i> je to „to“, co jíš?"
 
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:312
@@ -3650,9 +3645,8 @@ msgstr "Ne to ne. Jejich těla jsou zmražená v támhletom jezeře."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:675
-#, fuzzy
 msgid "We had better go look."
-msgstr "Raději bys to měl zkontrolovat."
+msgstr "Raději bychom to měli zkontrolovat."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:681
@@ -3858,7 +3852,6 @@ msgstr "Správně!"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:250
-#, fuzzy
 msgid ""
 "It's been a chilly winter. How about we warm ourselves up a bit by giving "
 "these traitors a good whupping, boys?"

@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-09-16 21:47+0200\n"
-"PO-Revision-Date: 2009-07-06 21:43+0100\n"
+"POT-Creation-Date: 2009-09-23 12:26+0200\n"
+"PO-Revision-Date: 2009-09-21 23:29+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -75,7 +75,6 @@ msgstr "Pouštní slídič"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:26
-#, fuzzy
 msgid ""
 "In the distant future a small band of elves struggles to survive amidst the "
 "ruins of fallen empires. Lead your people out of the desert on an epic "
@@ -86,12 +85,11 @@ msgstr ""
 "padlých říší. Veď svůj lid pryč z pouště na epické výpravě za novým "
 "domovem.\n"
 "\n"
-"(Obtížnost: expert, 11 scénářů, některé v úpravě)\n"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:27
 msgid "(Expert level, 11 scenarios, some under reconstruction)\n"
-msgstr ""
+msgstr "(Obtížnost: expert, 11 scénářů, některé v úpravě)\n"
 
 #. [about]
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:32
@@ -6254,7 +6252,6 @@ msgstr "Cože?!"
 
 #. [message]: speaker=Elyssa
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:547
-#, fuzzy
 msgid ""
 "I have learned a lot about the dwarves in my time here, and yet there's so "
 "much more to learn. Have you seen their forges? They really know how to work "
@@ -12241,17 +12238,16 @@ msgstr ""
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:629
-#, fuzzy
 msgid ""
 "It all started in the years before the Great Fall. The elves of Wesmere "
 "Forest were masters of the arcane magics. They valued knowledge above all "
 "else and specialized in divination, seeking to scry out the secrets of the "
 "other races. In their scrying they attracted the notice of the demon Zhangor."
 msgstr ""
-"Vše to začalo v létech před Velkým pádem. Elfové z lesa Wesmere byli mistři "
-"tajů magie. Cenili si vědomostí nade vše a specializovali se na prorokování; "
+"Vše to začalo v létech před Velkým pádem. Elfové z Wesmérie byli mistři tajů "
+"magie. Cenili si vědomostí nade vše a specializovali se na prorokování; "
 "snažili se věštbou odhalit tajemství ostatních ras. Svým věštěním však "
-"přitáhli pozornost démona Zhangorho."
+"přitáhli pozornost démona Zhangora."
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:634
@@ -15174,7 +15170,6 @@ msgstr "omráčení"
 #. [chance_to_hit]: id=stun
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:305
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:308
-#, fuzzy
 msgid ""
 "Stun:\n"
 "This attack puts enormous pressure on the enemy, disrupting his ZOC if a hit "
@@ -15183,18 +15178,17 @@ msgstr ""
 "Omráčení:\n"
 "Tento útok je veden velkou silou; pokud je nepřítel zasažen, omráčí jej - "
 "stane se zpomaleným a jeho oblast kontroly přestane platit (po jedno kolo). "
-"K omráčení může dojít pouze při ofenzivním použití útoku, ne při obraně. "
-"Útočník je po použití tohoto útoku vyčerpán a zpomalen."
+"K omráčení může dojít pouze při ofenzivním použití útoku, ne při obraně."
 
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:322
 msgid "skilled in surviving the desert"
-msgstr ""
+msgstr "zkušený v přežití v poušti"
 
 #. [hides]: id=camouflage
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:330
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:331
 msgid "camouflage"
-msgstr ""
+msgstr "kamufláž"
 
 #. [hides]: id=camouflage
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:335
@@ -15209,6 +15203,15 @@ msgid ""
 "enemy unit that first discovers this unit immediately loses all its "
 "remaining movement."
 msgstr ""
+"Kamufláž:\n"
+"Tato jednotka se umí skrýt na pouštních dunách, horách a v kráterech, takže "
+"ji nepřátelé nemohou odhalit.\n"
+"\n"
+"Nepřátelské jednotky nevidí tuto jednotku, pokud stojí na pouštních dunách, "
+"pouštních horách, oázách a kráterech. Výjimkou je, pokud stojí hned vedle "
+"ní. Když někdo tuto jednotku takto odhalí, okamžitě ztrácí veškerý pohyb v "
+"tomto kole. Toto se stává pouze prvnímu nálezci; poté je již jednotka "
+"viditelná."
 
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:355
 msgid "Kaleh of the Quenoth Elves"
@@ -16603,9 +16606,6 @@ msgstr "Dlouhá tma (4)"
 #~ msgstr ""
 #~ "Rychlejší než většina trpaslíků, členové hlídek nejraději zkoumají nad i "
 #~ "pod zemí. Ovládají jak boj se sekerami, tak i vrh s nimi."
-
-#~ msgid "slowed"
-#~ msgstr "zpomalený"
 
 #~ msgid "You Control Less Than 6 Villages"
 #~ msgstr "Ovládáš méně než 6 vesnic"
