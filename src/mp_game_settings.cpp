@@ -42,7 +42,7 @@ mp_game_settings::mp_game_settings() :
 	saved_game(false),
 	scenario_data()
 
-{ reset(); };
+{ reset(); }
 
 mp_game_settings::mp_game_settings(const config& cfg)
 {
