@@ -80,8 +80,6 @@
 		<Unit filename="..\..\src\ai\default\contexts.hpp" />
 		<Unit filename="..\..\src\ai\default\move.cpp" />
 		<Unit filename="..\..\src\ai\default\village.cpp" />
-		<Unit filename="..\..\src\ai\dfool\ai.cpp" />
-		<Unit filename="..\..\src\ai\dfool\ai.hpp" />
 		<Unit filename="..\..\src\ai\formula\ai.cpp" />
 		<Unit filename="..\..\src\ai\formula\ai.hpp" />
 		<Unit filename="..\..\src\ai\formula\callable_objects.cpp" />
@@ -224,10 +222,16 @@
 		<Unit filename="..\..\src\global.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\canvas.cpp" />
 		<Unit filename="..\..\src\gui\auxiliary\canvas.hpp" />
+		<Unit filename="..\..\src\gui\auxiliary\event\dispatcher.cpp" />
+		<Unit filename="..\..\src\gui\auxiliary\event\dispatcher.hpp" />
+		<Unit filename="..\..\src\gui\auxiliary\event\handler.cpp" />
+		<Unit filename="..\..\src\gui\auxiliary\event\handler.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\formula.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\layout_exception.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\log.cpp" />
 		<Unit filename="..\..\src\gui\auxiliary\log.hpp" />
+		<Unit filename="..\..\src\gui\auxiliary\widget_definition.cpp" />
+		<Unit filename="..\..\src\gui\auxiliary\widget_definition.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\window_builder.cpp" />
 		<Unit filename="..\..\src\gui\auxiliary\window_builder.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\window_builder\button.cpp" />
@@ -460,6 +464,8 @@
 		<Unit filename="..\..\src\mouse_events.hpp" />
 		<Unit filename="..\..\src\mouse_handler_base.cpp" />
 		<Unit filename="..\..\src\mouse_handler_base.hpp" />
+		<Unit filename="..\..\src\mp_game_settings.cpp" />
+		<Unit filename="..\..\src\mp_game_settings.hpp" />
 		<Unit filename="..\..\src\multiplayer.cpp" />
 		<Unit filename="..\..\src\multiplayer.hpp" />
 		<Unit filename="..\..\src\multiplayer_connect.cpp" />
@@ -518,6 +524,7 @@
 		<Unit filename="..\..\src\save_blocker.hpp" />
 		<Unit filename="..\..\src\savegame.cpp" />
 		<Unit filename="..\..\src\savegame.hpp" />
+		<Unit filename="..\..\src\savegame_config.cpp" />
 		<Unit filename="..\..\src\savegame_config.hpp" />
 		<Unit filename="..\..\src\scoped_resource.hpp" />
 		<Unit filename="..\..\src\scripting\lua.cpp" />
