@@ -706,7 +706,8 @@ class HTMLOutput:
 
         terrains = self.wesnoth.terrain_lookup
         terrainlist = []
-        for tid, t in terrains.items():
+        for tstring, t in terrains.items():
+            tid = t.get_text_val("id")
             if tid in ["off_map", "fog", "shroud"]: continue
             if t.get_first("aliasof"): continue
             name = t.get_text_val("name")
