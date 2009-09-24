@@ -1,25 +1,91 @@
 #!/usr/bin/env python
 """
-TeamColorizer
+Usage: TeamColorizer [--color=COLOR] input-filename output-filename
 
-TeamColorize input output
+Map the magenta team-color patches in the input image to red (or a custom
+color) in the output image, copy the result to output.
 
-Map the magenta team-color patches in the input image to red in the
-output image, copy the result to output.
+COLOR should be a normal Wesnoth team color. Note that the default (when no
+options are given) is to use red (255, 0, 0). Advanced options include:
+
+  -h, -?, --help
+    These options display this help and then exit.
+  -d, --dryrun
+    Print the command to be executed, but don't actually generate the output
+    image.
+  -v, --verbose
+    Print extra information about what is going on.
+  -x, --hex
+    Use base 16 for defining custom colors. Works with the -r, -g, and -b
+    options.
+  -l, --luminance
+    Use luminance instead of average value for computing color brightness when
+    mapping colors. This produces results that are noticeably poorer than those
+    produced by the in-game algorithm (which is used in the absence of -l).
+  -rRED, --red=RED
+    Set the desired red value to RED. Should be an integer between 0 and 255,
+    or a hex value in the same range if -x is given.
+  -gGREEN, --green=GREEN, -bBLUE, --blue=BLUE
+    These work the same as -r, but for blue and green values.
+  --color=COLOR
+    Causes -r, -g, and -b to be ignored. Sets the desired color. Use Wesnoth
+    team colors, like 'red' or 'blue'. This method uses a more complex color
+    definition but produces results identical to the in-game algorithm. Extra
+    colors available: 'magenta' (which does nothing) and 'pink'.
 """
+import sys, getopt, subprocess
 
-import sys,getopt
-from subprocess import Popen
+# Note: Luminance formula taken from the Wikipedia article on luminance:
+#   http://en.wikipedia.org/wiki/Luminance_(colorimetry)
+def rgb2lum(r,g,b):
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b
 
-team_red=255
-team_green=0
-team_blue=0
-team_red_max=255
-team_green_max=255
-team_blue_max=255
-team_red_min=0
-team_green_min=0
-team_blue_min=0
+max_color=255
+default_color = { 'mid': { 'r':255, 'g':0, 'b':0 },
+                  'max': { 'r':0xff, 'g':0xff, 'b':0xff },
+                  'min': { 'r':0x00, 'g':0x00, 'b':0x00 }}
+
+team_colors = {
+'magenta':  { 'mid': { 'r':0xf4, 'g':0x9a, 'b':0xc1 },
+              'max': { 'r':0xff, 'g':0xff, 'b':0xff },
+              'min': { 'r':0x00, 'g':0x00, 'b':0x00 }},
+'red':      { 'mid': { 'r':0xff, 'g':0x00, 'b':0x00 },
+              'max': { 'r':0xff, 'g':0xff, 'b':0xff },
+              'min': { 'r':0x00, 'g':0x00, 'b':0x00 }},
+'lightred': { 'mid': { 'r':0xd1, 'g':0x62, 'b':0x0d },
+              'max': { 'r':0xff, 'g':0xff, 'b':0xff },
+              'min': { 'r':0x00, 'g':0x00, 'b':0x00 }},
+'darkred':  { 'mid': { 'r':0x8a, 'g':0x08, 'b':0x08 },
+              'max': { 'r':0xff, 'g':0xff, 'b':0xff },
+              'min': { 'r':0x00, 'g':0x00, 'b':0x00 }},
+'blue':     { 'mid': { 'r':0x2e, 'g':0x41, 'b':0x9b },
+              'max': { 'r':0xff, 'g':0xff, 'b':0xff },
+              'min': { 'r':0x0f, 'g':0x0f, 'b':0x0f }},
+'green':    { 'mid': { 'r':0x62, 'g':0xb6, 'b':0x64 },
+              'max': { 'r':0xff, 'g':0xff, 'b':0xff },
+              'min': { 'r':0x00, 'g':0x00, 'b':0x00 }},
+'purple':   { 'mid': { 'r':0x93, 'g':0x00, 'b':0x9d },
+              'max': { 'r':0xff, 'g':0xff, 'b':0xff },
+              'min': { 'r':0x00, 'g':0x00, 'b':0x00 }},
+'orange':   { 'mid': { 'r':0xff, 'g':0x7e, 'b':0x00 },
+              'max': { 'r':0xff, 'g':0xff, 'b':0xff },
+              'min': { 'r':0x0f, 'g':0x0f, 'b':0x0f }},
+'black':    { 'mid': { 'r':0x5a, 'g':0x5a, 'b':0x5a },
+              'max': { 'r':0xff, 'g':0xff, 'b':0xff },
+              'min': { 'r':0x00, 'g':0x00, 'b':0x00 }},
+'white':    { 'mid': { 'r':0xe1, 'g':0xe1, 'b':0xe1 },
+              'max': { 'r':0xff, 'g':0xff, 'b':0xff },
+              'min': { 'r':0x1e, 'g':0x1e, 'b':0x1e }},
+'brown':    { 'mid': { 'r':0x94, 'g':0x50, 'b':0x27 },
+              'max': { 'r':0xff, 'g':0xff, 'b':0xff },
+              'min': { 'r':0x00, 'g':0x00, 'b':0x00 }},
+'teal':     { 'mid': { 'r':0x30, 'g':0xcb, 'b':0xc0 },
+              'max': { 'r':0xff, 'g':0xff, 'b':0xff },
+              'min': { 'r':0x00, 'g':0x00, 'b':0x00 }},
+'pink':     { 'mid': { 'r':0xff, 'g':0x77, 'b':0xa0 },
+              'max': { 'r':0xff, 'g':0xff, 'b':0xff },
+              'min': { 'r':0x00, 'g':0x00, 'b':0x00 }},
+}
 
 flag_rgb=((244,154,193),
           (63,0,22),
@@ -39,40 +105,111 @@ flag_rgb=((244,154,193),
           (246,173,205),
           (248,193,217),
           (250,213,229),
-          #(253,233,241),	# Perl version didn't use this
+          (253,233,241),
           )
 
-base_red = flag_rgb[0][0]
-base_green = flag_rgb[0][1]
-base_blue = flag_rgb[0][2]
-base_sum = base_red+base_green+base_blue
+base_red = team_colors['magenta']['mid']['r']
+base_green = team_colors['magenta']['mid']['g']
+base_blue = team_colors['magenta']['mid']['b']
+base_avg = (base_red + base_green + base_blue) / 3
 
-convertor = "convert"
-for (red, green, blue) in flag_rgb:
-    sum=red+green+blue
-    if sum <= base_sum:
-        ratio = (sum * 1.0)/base_sum
-        new_red = int(team_red*ratio+team_red_min*(1-ratio))
-        new_green = int(team_green*ratio+team_green_min*(1-ratio))
-        new_blue = int(team_blue*ratio+team_blue_min*(1-ratio))
-    else:
-        ratio=(base_sum * 1.0)/sum
-        new_red = int(team_red*ratio+team_red_max*(1-ratio))
-        new_green = int(team_green*ratio+team_green_max*(1-ratio))
-        new_blue = int(team_blue*ratio+team_blue_max*(1-ratio))
+def convert_color(color, hex=False):
+    '''
+    Takes a dictionary containing 'r', 'g', and 'b' keys in one of various
+    formats, and optionally a boolean specifying whether hexidecimal or base 10
+    should be used (default is False, which implies base 10). If the keys are
+    integers, they're left as-is, but if they're strings, they're converted
+    into integers, using either base 10 or 16 as directed. This returns a new
+    dictionary, leaving the old one unmodified. Optionally, a string may be
+    given instead of a dictionary. In this case, the string is looked up in the
+    internal table, and the resulting values are used. A failed table lookup
+    results in an error message.
+    '''
+    if type(color) == str:
+        if color in team_colors:
+            return team_colors[color]
+        else:
+            sys.stderr.write("Couldn't find color '%s'.\n" % color)
+            sys.exit(1)
+    new = {}
+    base = 10
+    if hex: base = 16
+    for c in 'rgb':
+        if type(color['mid'][c]) == str:
+            try:
+                new[c] = int(color[c], base)
+            except ValueError:
+                sys.stderr.write("Couldn't convert color value %s='%s' using "\
+                                 "base %d. Did you forget -x?\n" %\
+                                 (c, color['mid'][c], base))
+                sys.exit(1)
+        else:
+            new[c] = color['mid'][c]
+        if new[c] not in range(0,256):
+            sys.stderr.write("Value %s='%s' is out-of-range! Color values "\
+                             "should be in the range [0, 255].\n" % (c, new[c]))
+            sys.exit(1)
+    return { 'mid': new,
+             'max': { 'r': 0xff, 'g': 0xff, 'b': 0xff },
+             'min': { 'r': 0x00, 'g': 0x00, 'b': 0x00 },}
 
-    #    print "red: red\tgreen: green\tblue: blue\told_rgb\n"
-    #    print "\tred: new_red\tgreen: new_green\tblue: new_blue\tnew_rgb\n"
-    convertor += " -fill #%02x%02x%02x -opaque #%02x%02x%02x" \
-        % (new_red, new_green, new_blue, red, green, blue)
+def get_convert_options(color):
+    '''
+    Takes a dictionary containing 'r', 'g', and 'b' keys each with an integer
+    value in the range [0, 255]. Returns a list containing all of the arguments
+    to ImageMagick 'convert' necessary to teamcolor a unit to this color.
+    '''
+    options = []
 
+    new_red = color['mid']['r']
+    new_green = color['mid']['g']
+    new_blue = color['mid']['b']
+
+    min_red = color['min']['r']
+    min_green = color['min']['g']
+    min_blue = color['min']['b']
+
+    max_red = color['max']['r']
+    max_green = color['max']['g']
+    max_blue = color['max']['b']
+
+    for (old_r, old_g, old_b) in flag_rgb:
+        if method == "average":
+            old_avg = (old_r + old_g + old_b) / 3
+            reference_avg = base_avg
+        elif method == "luminance":
+            old_avg = rgb2lum(old_r, old_g, old_b)
+            reference_avg = rgb2lum(base_red, base_green, base_blue)
+        if old_avg <= reference_avg:
+            old_rat = old_avg / float(reference_avg)
+            new_r = int(old_rat * new_red + (1 - old_rat) * min_red)
+            new_g = int(old_rat * new_green + (1 - old_rat) * min_green)
+            new_b = int(old_rat * new_blue + (1 - old_rat) * min_blue)
+        else:
+            old_rat = (255 - old_avg) / float(255 - reference_avg)
+            new_r = int(old_rat * new_red + (1 - old_rat) * max_red)
+            new_g = int(old_rat * new_green + (1 - old_rat) * max_green)
+            new_b = int(old_rat * new_blue + (1 - old_rat) * max_blue)
+
+        if new_r > 255: new_r = 255
+        if new_g > 255: new_g = 255
+        if new_b > 255: new_b = 255
+
+        options += ["-fill",
+                    "#%02x%02x%02x" % (new_r, new_g, new_b),
+                    "-opaque",
+                    "#%02x%02x%02x" % (old_r, old_g, old_b) ]
+    return options
 
 if __name__ == '__main__':
-    (options, arguments) = getopt.getopt(sys.argv[1:], "h?dv",
-                                         ['help', 'dryrun', 'verbose'])
+    (options, arguments) = getopt.getopt(sys.argv[1:], "h?dvxlr:g:b:",
+      ['help', 'dryrun', 'verbose', 'hex', 'luminance', 'red=', 'green=', 'blue=', 'color='])
     verbose = 0
     dryrun = False
+    hex = False
+    method = "average"
     exclude = []
+    color = default_color
     for (opt, val) in options:
         if opt in ('-?', '-h', '--help'):
             print __doc__
@@ -82,17 +219,41 @@ if __name__ == '__main__':
             verbose += 1
         elif opt in ('-v', '--verbose'):
             verbose += 1
+        elif opt in ('-x', '--hex'):
+            hex = True
+        elif opt in ('-l', '--luminance'):
+            method = "luminance"
+        elif opt in ('-r', '--red'):
+            if type(color) == dict:
+                color['mid']['r'] = val
+        elif opt in ('-g', '--green'):
+            if type(color) == dict:
+                color['mid']['g'] = val
+        elif opt in ('-b', '--blue'):
+            if type(color) == dict:
+                color['mid']['b'] = val
+        elif opt == '--color':
+            color = val
 
     if len(arguments) != 2:
-        print "usage: TeamColorizer [-h] [-d] [-v] input-file output-file";
+        print "Invalid number of arguments: %d (required: 2)" % len(arguments)
+        print __doc__
         sys.exit(1)
     else:
         (infilename, outfilename) = arguments
 
+    color = convert_color(color, hex)
+    options = get_convert_options(color)
+    command = ['convert'] + options +\
+              [infilename, outfilename]
+
     if verbose:
-        print convertor + " '" + infilename + "' '" + outfilename + "'"
+        print ' '.join(command)
     if not dryrun:
-        p = Popen(convertor.split() + [infilename, outfilename])
-        p.wait()
+        ret = subprocess.call(command)
+        if ret != 0:
+            sys.stderr.write("Error: Conversion command exited with error "\
+                             "code %d.\n" % ret)
+            sys.exit(ret)
 
 # TeamColorizer ends here.
