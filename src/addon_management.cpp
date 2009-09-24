@@ -1179,10 +1179,13 @@ void manage_addons(game_display& disp)
 	bool do_refresh = false;
 	std::string remote_host;
 	const std::string default_host = preferences::campaign_server();
+	const bool have_addons = !installed_addons().empty();
 
 	gui2::taddon_connect addon_dlg;
 
 	addon_dlg.set_host_name(default_host);
+	addon_dlg.set_allow_remove(have_addons);
+	addon_dlg.set_allow_updates(have_addons);
 	addon_dlg.show(disp.video());
 
 	res = addon_dlg.get_retval();

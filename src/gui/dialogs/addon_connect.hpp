@@ -26,7 +26,23 @@ class taddon_connect
 public:
 	taddon_connect()
 		: host_name_()
+		, allow_updates_()
+		, allow_remove_()
 	{
+	}
+
+	bool allow_updates() const { return allow_updates_; }
+
+	void set_allow_updates(bool allow_updates)
+	{
+		allow_updates_ = allow_updates;
+	}
+
+	bool allow_remove() const { return allow_remove_; }
+
+	void set_allow_remove(bool allow_remove)
+	{
+		allow_remove_ = allow_remove;
 	}
 
 	const std::string& host_name() const { return host_name_; }
@@ -38,6 +54,9 @@ public:
 
 private:
 	std::string host_name_;
+
+	bool allow_updates_;
+	bool allow_remove_;
 
 	/** Inherited from tdialog. */
 	twindow* build_window(CVideo& video);

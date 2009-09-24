@@ -16,6 +16,7 @@
 
 #include "gui/dialogs/addon_connect.hpp"
 
+#include "gui/widgets/button.hpp"
 #include "gui/widgets/window.hpp"
 #include "gui/widgets/text_box.hpp"
 
@@ -48,6 +49,12 @@ void taddon_connect::pre_show(CVideo& /*video*/, twindow& window)
 {
 	ttext_box& host_widget =
 			find_widget<ttext_box>(&window, "host_name", false);
+	tbutton& update_cmd =
+			find_widget<tbutton>(&window, "update_addons", false);
+	update_cmd.set_active( allow_updates_ );
+	tbutton& remove_cmd =
+			find_widget<tbutton>(&window, "remove_addons", false);
+	remove_cmd.set_active( allow_remove_ );
 
 	host_widget.set_value(host_name_);
 	window.keyboard_capture(&host_widget);
