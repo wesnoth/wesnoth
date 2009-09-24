@@ -40,12 +40,11 @@
 #include "global.hpp"
 
 #include "config.hpp"
+#include "log.hpp"
+#include "network.hpp"
 #include "random.hpp"
 #include "rng.hpp"
 #include "simple_rng.hpp"
-#include "log.hpp"
-#include "rng.hpp"
-#include "network.hpp"
 
 static lg::log_domain log_random("random");
 #define DBG_RND LOG_STREAM(debug, log_random)
