@@ -199,6 +199,45 @@ if not os.path.isabs(env["prefix"]):
     env["destdir"] = ""
 
 #
+# work around long command line problem on windows
+# see http://www.scons.org/wiki/LongCmdLinesOnWin32
+#
+if env['PLATFORM'] == 'win32':
+    try:
+        import win32file
+        import win32event
+        import win32process
+        import win32security
+        import string
+
+        def my_spawn(sh, escape, cmd, args, spawnenv):
+            for var in spawnenv:
+                spawnenv[var] = spawnenv[var].encode('ascii', 'replace')
+
+            sAttrs = win32security.SECURITY_ATTRIBUTES()
+            StartupInfo = win32process.STARTUPINFO()
+            newargs = string.join(map(escape, args[1:]), ' ')
+            cmdline = cmd + " " + newargs
+
+            # check for any special operating system commands
+            if cmd == 'del':
+                for arg in args[1:]:
+                    win32file.DeleteFile(arg)
+                exit_code = 0
+            else:
+                # otherwise execute the command.
+                hProcess, hThread, dwPid, dwTid = win32process.CreateProcess(None, cmdline, None, None, 1, 0, spawnenv, None, StartupInfo)
+                win32event.WaitForSingleObject(hProcess, win32event.INFINITE)
+                exit_code = win32process.GetExitCodeProcess(hProcess)
+                win32file.CloseHandle(hProcess);
+                win32file.CloseHandle(hThread);
+            return exit_code
+
+        env['SPAWN'] = my_spawn
+    except ImportError:
+        pass
+
+#
 # Check some preconditions
 #
 
