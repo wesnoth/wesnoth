@@ -235,7 +235,9 @@ if env['PLATFORM'] == 'win32':
 
         env['SPAWN'] = my_spawn
     except ImportError:
-        pass
+        def subprocess_spawn(sh, escape, cmd, args, env):
+            return call(' '.join(args))
+        env['SPAWN'] = subprocess_spawn
 
 #
 # Check some preconditions
