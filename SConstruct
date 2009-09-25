@@ -202,7 +202,7 @@ if not os.path.isabs(env["prefix"]):
 # work around long command line problem on windows
 # see http://www.scons.org/wiki/LongCmdLinesOnWin32
 #
-if env['PLATFORM'] == 'win32':
+if sys.platform == 'win32':
     try:
         import win32file
         import win32event
