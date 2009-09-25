@@ -1037,7 +1037,7 @@ namespace {
 
 				options.push_back(IMAGE_PREFIX + icon + COLUMN_SEPARATOR + text_columns);
 				// icon paths shouldn't be filtered!
-				options_to_filter.push_back(text_columns);
+				options_to_filter.push_back(text_columns + descriptions.back());
 			}
 
 			std::string pub_option_text, del_option_text;
