@@ -2009,8 +2009,10 @@ void server::process_data_game(const network::connection sock,
 			assert(gamelist != NULL);
 			simple_wml::node& desc = gamelist->add_child("game");
 			g->level().root().copy_into(desc);
-			if (g->level().root().child("multiplayer"))
-				g->level().root().child("multiplayer")->copy_into(desc);
+			if (data.root().child("multiplayer"))
+				data.root().child("multiplayer")->copy_into(desc);
+			else
+				ERR_SERVER << "server.cpp, process_data_game: Expected child 'multiplayer' was not found in level WML.\n";
 			g->set_description(&desc);
 			desc.set_attr_dup("id", lexical_cast<std::string>(g->id()).c_str());
 		} else {
@@ -2030,42 +2032,12 @@ void server::process_data_game(const network::connection sock,
 			desc.set_attr_dup("map_data", data["map_data"]);
 		}
 		if(data.child("era")) {
-			desc.set_attr_dup("mp_era", data.child("era")->attr("id"));
 			if(!(utils::string_bool(data.child("era")->attr("require_era").to_string(),true))) {
 				desc.set_attr("require_era", "no");
 			}
-		} else {
-			desc.set_attr("mp_era", "");
 		}
-
-		const simple_wml::node* mp = data.child("multiplayer");
-
-		// map id
-		desc.set_attr_dup("mp_scenario", data["id"]);
-		desc.set_attr_dup("savegame", data["savegame"]);
-		desc.set_attr_dup("hash", data["hash"]);
-		if (mp){
-			desc.set_attr_dup("observer", (*mp)["observer"]);
-			desc.set_attr_dup("mp_village_gold", (*mp)["mp_village_gold"]);
-			desc.set_attr_dup("experience_modifier", (*mp)["experience_modifier"]);
-			desc.set_attr_dup("mp_fog", (*mp)["mp_fog"]);
-			desc.set_attr_dup("mp_shroud", (*mp)["mp_shroud"]);
-			desc.set_attr_dup("mp_use_map_settings", (*mp)["mp_use_map_settings"]);
-			desc.set_attr_dup("mp_countdown", (*mp)["mp_countdown"]);
-			desc.set_attr_dup("mp_countdown_init_time", (*mp)["mp_countdown_init_time"]);
-			desc.set_attr_dup("mp_countdown_turn_bonus", (*mp)["mp_countdown_turn_bonus"]);
-			desc.set_attr_dup("mp_countdown_reservoir_time", (*mp)["mp_countdown_reservoir_time"]);
-			desc.set_attr_dup("mp_countdown_action_bonus", (*mp)["mp_countdown_action_bonus"]);
-		}
-		//desc["map_name"] = data["name"];
-		//desc["map_description"] = data["description"];
-		//desc[""] = data["objectives"];
-		//desc[""] = data["random_start_time"];
-		//desc[""] = data["turns"];
-		//desc.set_attr_dup("client_version", data["version"]);
 
 		// Record the full scenario in g->level()
-
 		g->level().swap(data);
 		// The host already put himself in the scenario so we just need
 		// to update_side_data().
@@ -2137,34 +2109,11 @@ void server::process_data_game(const network::connection sock,
 		} else {
 			desc.set_attr("map_data", "");
 		}
+		if (data.root().child("multiplayer"))
+			data.root().child("multiplayer")->copy_into(desc);
+		else
+			ERR_SERVER << "server.cpp, process_data_game: Expected child 'multiplayer' was not found in level WML.\n";
 
-		if(s.child("era")) {
-			desc.set_attr_dup("mp_era", s.child("era")->attr("id"));
-		} else {
-			DBG_SERVER << "using the era id of the previous scenario: " << era_id << std::endl;
-			desc.set_attr_dup("mp_era", era_id.c_str());
-		}
-
-		// map id
-		desc.set_attr_dup("mp_scenario", s["id"]);
-		desc.set_attr_dup("observer", s["observer"]);
-		desc.set_attr_dup("mp_village_gold", s["mp_village_gold"]);
-		desc.set_attr_dup("experience_modifier", s["experience_modifier"]);
-		desc.set_attr_dup("mp_fog", s["mp_fog"]);
-		desc.set_attr_dup("mp_shroud", s["mp_shroud"]);
-		desc.set_attr_dup("mp_use_map_settings", s["mp_use_map_settings"]);
-		desc.set_attr_dup("mp_countdown", s["mp_countdown"]);
-		desc.set_attr_dup("mp_countdown_init_time", s["mp_countdown_init_time"]);
-		desc.set_attr_dup("mp_countdown_turn_bonus", s["mp_countdown_turn_bonus"]);
-		desc.set_attr_dup("mp_countdown_reservoir_time", s["mp_countdown_reservoir_time"]);
-		desc.set_attr_dup("mp_countdown_action_bonus", s["mp_countdown_action_bonus"]);
-		desc.set_attr_dup("hash", s["hash"]);
-		//desc["map_name"] = s["name"];
-		//desc["map_description"] = s["description"];
-		//desc[""] = s["objectives"];
-		//desc[""] = s["random_start_time"];
-		//desc[""] = s["turns"];
-		//desc["client_version"] = s["version"];
 		// Send the update of the game description to the lobby.
 		update_game_in_lobby(g);
 		return;

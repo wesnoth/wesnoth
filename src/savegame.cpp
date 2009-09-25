@@ -546,42 +546,43 @@ void loadgame::load_multiplayer_game()
 }
 
 void loadgame::fill_mplevel_config(config& level){
-		level["savegame"] = "yes";
-		// If we have a start of scenario MP campaign scenario the snapshot
-		// is empty the starting position contains the wanted info.
-		const config& start_data = !gamestate_.snapshot.empty() ? gamestate_.snapshot : gamestate_.starting_pos;
-		level["map_data"] = start_data["map_data"];
-		level["id"] = start_data["id"];
-		level["name"] = start_data["name"];
-		level["completion"] = start_data["completion"];
-		level["next_underlying_unit_id"] = start_data["next_underlying_unit_id"];
-		// Probably not needed.
-		level["turn"] = start_data["turn_at"];
-		level["turn_at"] = start_data["turn_at"];
+	gamestate_.mp_settings().saved_game = true;
 
-		level.add_child("multiplayer", gamestate_.mp_settings().to_config());
+	// If we have a start of scenario MP campaign scenario the snapshot
+	// is empty the starting position contains the wanted info.
+	const config& start_data = !gamestate_.snapshot.empty() ? gamestate_.snapshot : gamestate_.starting_pos;
+	level["map_data"] = start_data["map_data"];
+	level["id"] = start_data["id"];
+	level["name"] = start_data["name"];
+	level["completion"] = start_data["completion"];
+	level["next_underlying_unit_id"] = start_data["next_underlying_unit_id"];
+	// Probably not needed.
+	level["turn"] = start_data["turn_at"];
+	level["turn_at"] = start_data["turn_at"];
 
-		//Start-of-scenario save
-		if(gamestate_.snapshot.empty()){
-			//For a start-of-scenario-save, write the data to the starting_pos and not the snapshot, since
-			//there should only be snapshots for midgame reloads
-			if (config &c = level.child("replay_start")) {
-				c.merge_with(start_data);
-			} else {
-				level.add_child("replay_start") = start_data;
-			}
-			level.add_child("snapshot") = config();
+	level.add_child("multiplayer", gamestate_.mp_settings().to_config());
+
+	//Start-of-scenario save
+	if(gamestate_.snapshot.empty()){
+		//For a start-of-scenario-save, write the data to the starting_pos and not the snapshot, since
+		//there should only be snapshots for midgame reloads
+		if (config &c = level.child("replay_start")) {
+			c.merge_with(start_data);
 		} else {
-			level.add_child("snapshot") = start_data;
-			level.add_child("replay_start") = gamestate_.starting_pos;
+			level.add_child("replay_start") = start_data;
 		}
-		level["random_seed"] = start_data["random_seed"];
-		level["random_calls"] = start_data["random_calls"];
+		level.add_child("snapshot") = config();
+	} else {
+		level.add_child("snapshot") = start_data;
+		level.add_child("replay_start") = gamestate_.starting_pos;
+	}
+	level["random_seed"] = start_data["random_seed"];
+	level["random_calls"] = start_data["random_calls"];
 
-		// Adds the replay data, and the replay start, to the level,
-		// so clients can receive it.
-		level.add_child("replay") = gamestate_.replay_data;
-		level.add_child("statistics") = statistics::write_stats();
+	// Adds the replay data, and the replay start, to the level,
+	// so clients can receive it.
+	level.add_child("replay") = gamestate_.replay_data;
+	level.add_child("statistics") = statistics::write_stats();
 }
 
 void loadgame::copy_era(config &cfg)

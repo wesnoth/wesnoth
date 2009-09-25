@@ -287,7 +287,7 @@ mp_game_settings& create::get_parameters()
 		++era_list.first;
 	}
 
-	parameters_.era = (*era_list.first)["id"];
+	parameters_.mp_era = (*era_list.first)["id"];
 	parameters_.num_turns = turns;
 	// CHECK
 	parameters_.mp_countdown_init_time = mp_countdown_init_time_val;

@@ -34,8 +34,10 @@ struct mp_game_settings : public savegame::savegame_config
 	// The items returned while configuring the game
 
 	std::string name;
-	std::string era;
 	std::string password;
+	std::string hash;
+	std::string mp_era;
+	std::string mp_scenario;
 
 	int num_turns;
 	int village_gold;

@@ -22,8 +22,10 @@
 
 mp_game_settings::mp_game_settings() :
 	name(),
-	era(),
 	password(),
+	hash(),
+	mp_era(),
+	mp_scenario(),
 	num_turns(0),
 	village_gold(0),
 	xp_modifier(0),
@@ -52,8 +54,10 @@ mp_game_settings::mp_game_settings(const config& cfg)
 mp_game_settings::mp_game_settings(const mp_game_settings& settings)
 {
 	name = settings.name;
-	era = settings.era;
 	password = settings.password;
+	hash = settings.hash;
+	mp_era = settings.mp_era;
+	mp_scenario = settings.mp_scenario;
 	num_turns = settings.num_turns;
 	village_gold = settings.village_gold;
 	xp_modifier = settings.xp_modifier;
@@ -77,7 +81,9 @@ void mp_game_settings::set_from_config(const config& game_cfg)
 {
 	const config& cfg = game_cfg.child("multiplayer");
 	name = cfg["scenario"];
-	era = cfg["era"];
+	hash = cfg["hash"];
+	mp_era = cfg["mp_era"];
+	mp_scenario = cfg["mp_scenario"];
 	xp_modifier = lexical_cast_default<int>(cfg["experience_modifier"]);
 	num_turns = lexical_cast_default<int>(cfg["turns"]);
 	use_map_settings = utils::string_bool(cfg["mp_use_map_settings"]);
@@ -90,13 +96,16 @@ void mp_game_settings::set_from_config(const config& game_cfg)
 	mp_countdown_action_bonus = lexical_cast_default<int>(cfg["mp_countdown_action_bonus"]);
 	village_gold = lexical_cast_default<int>(cfg["mp_village_gold"]);
 	allow_observers = utils::string_bool(cfg["observer"]);
+	saved_game = utils::string_bool(cfg["savegame"]);
 }
 
 void mp_game_settings::reset() 
 {
 	name = "";
-	era = "";
 	password = "";
+	hash = "";
+	mp_era = "";
+	mp_scenario = "";
 	num_turns = 0;
 	village_gold = 0;
 	xp_modifier = 0;
@@ -115,7 +124,9 @@ config mp_game_settings::to_config() const
 	config cfg;
 
 	cfg["scenario"] = name;
-	cfg["era"] = era;
+	cfg["hash"] = hash;
+	cfg["mp_era"] = mp_era;
+	cfg["mp_scenario"] = mp_scenario;
 	cfg["turns"] = lexical_cast_default<std::string>(num_turns, "20");
 	cfg["experience_modifier"] = lexical_cast<std::string>(xp_modifier);
 	cfg["mp_countdown"] = mp_countdown ? "yes" : "no";
@@ -128,6 +139,7 @@ config mp_game_settings::to_config() const
 	cfg["mp_shroud"] = shroud_game ? "yes" : "no";
 	cfg["mp_use_map_settings"] = use_map_settings ? "yes" : "no";
 	cfg["observer"] = allow_observers ? "yes" : "no";
+	cfg["savegame"] = saved_game ? "yes" : "no";
 
 	return cfg;
 }

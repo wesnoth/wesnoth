@@ -1515,11 +1515,12 @@ void connect::load_game()
 		}
 	} else {
 		level_.clear();
-		level_["savegame"] = "no";
+		params_.saved_game = false;
+		params_.mp_scenario = params_.scenario_data["id"];
 		level_.merge_with(params_.scenario_data);
 		level_.add_child("multiplayer", params_.to_config());
 
-		level_["hash"] = level_.hash();
+		params_.hash = level_.hash();
 		level_["next_underlying_unit_id"] = lexical_cast<std::string>(0);
 		n_unit::id_manager::instance().clear();
 
@@ -1542,7 +1543,7 @@ void connect::load_game()
 	append_to_title(" - " + level_["name"]);
 
 
-	std::string era = params_.era;
+	std::string era = params_.mp_era;
 	if (params_.saved_game) {
 		if (const config &c = level_.child("snapshot").child("era"))
 			era = c["id"];
