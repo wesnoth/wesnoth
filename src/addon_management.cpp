@@ -1022,6 +1022,9 @@ namespace {
 				sizes.push_back(-atoi(size.c_str()));
 
 				std::string icon = c["icon"];
+				if(icon.empty() || image::get_image(icon).null()) {
+					icon = "misc/blank-hex.png";
+				}
 				if(icon.find("units/") != std::string::npos &&
 				   icon.find_first_of('~') == std::string::npos) {
 					//a hack to prevent magenta icons, because they look awful
