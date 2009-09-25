@@ -113,7 +113,7 @@ void level_to_gamestate(config& level, game_state& state)
 	//adds the starting pos to the level
 	if (!level.child("replay_start")) {
 		level.add_child("replay_start", level);
-		level.child("replay_start").remove_child("multiplayer", 1);
+		level.child("replay_start").remove_child("multiplayer", 0);
 	}
 	//this is important, if it does not happen, the starting position is missing and
 	//will be drawn from the snapshot instead (which is not what we want since we have
