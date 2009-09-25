@@ -853,7 +853,8 @@ void game_state::set_menu_items(const config::const_child_itors &menu_items)
 void game_state::write_config(config_writer& out, bool write_variables) const
 {
 	out.write(classification_.to_config());
-	out.write_child("multiplayer", mp_settings_.to_config());
+	if (classification_.campaign_type == "multiplayer")
+		out.write_child("multiplayer", mp_settings_.to_config());
 	out.write_key_val("random_seed", lexical_cast<std::string>(rng_.get_random_seed()));
 	out.write_key_val("random_calls", lexical_cast<std::string>(rng_.get_random_calls()));
 	if (write_variables) {

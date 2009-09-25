@@ -79,7 +79,7 @@ mp_game_settings::mp_game_settings(const mp_game_settings& settings)
 
 void mp_game_settings::set_from_config(const config& game_cfg)
 {
-	const config& cfg = game_cfg.child("multiplayer");
+	const config& cfg = game_cfg.child("multiplayer") ? game_cfg.child("multiplayer") : game_cfg;
 	name = cfg["scenario"];
 	hash = cfg["hash"];
 	mp_era = cfg["mp_era"];
