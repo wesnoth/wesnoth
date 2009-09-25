@@ -311,6 +311,43 @@ void unarchive_addon(const config& cfg)
 }
 
 namespace {
+	/** Class to handle showing add-on descriptions. */
+	class display_description : public gui::dialog_button_action
+	{
+		display& disp_;
+		std::vector<std::string> titles_, desc_;
+
+	public:
+		display_description(display& disp, std::vector<std::string> const& titles, std::vector<std::string> const& descriptions)
+			: disp_(disp)
+			, titles_(titles)
+			, desc_(descriptions)
+		{}
+
+		virtual gui::dialog_button_action::RESULT button_pressed(int menu_selection)
+		{
+			if(menu_selection < 0) { return gui::CONTINUE_DIALOG; }
+			size_t const uchoice = static_cast<size_t>(menu_selection);
+
+			std::string text;
+			std::string title;
+
+			if(uchoice >= desc_.size()) {
+				text = _("No description available.");
+			}
+			else {
+				title = titles_[uchoice];
+				text = desc_[uchoice];
+			}
+
+			gui::dialog dlg(disp_, title, text, gui::MESSAGE);
+			dlg.show();
+
+			return gui::CONTINUE_DIALOG;
+		}
+	};
+
+
 	/**
 	 * Strip the ".cfg" extension and replace "_" with " " for display.
 	 *
@@ -934,7 +971,7 @@ namespace {
 			}
 
 			// column contents
-			std::vector<std::string> addons, titles, versions, uploads, types, options, options_to_filter;
+			std::vector<std::string> addons, titles, versions, uploads, types, options, options_to_filter, descriptions;
 			std::vector<int> sizes;
 
 			std::string sep(1, COLUMN_SEPARATOR);
@@ -961,6 +998,7 @@ namespace {
 				addons.push_back(name);
 				versions.push_back(c["version"]);
 				uploads.push_back(c["uploads"]);
+				descriptions.push_back(c["description"]);
 				types.push_back(type_str);
 
 				if(std::count(publish_options.begin(), publish_options.end(), name) != 0) {
@@ -1042,6 +1080,11 @@ namespace {
 													  gui::dialog::max_menu_width, &sorter,
 													  &addon_style, false);
 				addon_dialog.set_menu(addon_menu);
+
+				display_description description_helper(disp, titles, descriptions);
+
+				gui::dialog_button* description = new gui::dialog_button(disp.video(), _("Description"), gui::button::TYPE_PRESS, gui::CONTINUE_DIALOG, &description_helper);
+				addon_dialog.add_button(description, gui::dialog::BUTTON_EXTRA);
 
 				gui::filter_textbox* filter = new gui::filter_textbox(disp.video(),
 				_("Filter: "), options, options_to_filter, 1, addon_dialog, 300);
