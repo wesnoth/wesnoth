@@ -201,7 +201,7 @@ void move_unit(const std::vector<map_location>& path, unit& u, const std::vector
 	temp_unit.set_location(path[path.size() - 1]);
 	temp_unit.set_facing(path[path.size()-2].get_relative_dir(path[path.size()-1]));
 	animator.clear();
-	animator.add_animation(&temp_unit,"post_movement",path[path.size()-2],path[path.size()-1]);
+	animator.add_animation(&temp_unit,"post_movement",path[path.size()-1],map_location::null_location);
 	animator.start_animations();
 	animator.wait_for_end();
 	disp->remove_temporary_unit();

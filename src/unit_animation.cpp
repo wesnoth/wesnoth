@@ -45,6 +45,8 @@ struct tag_name_manager {
 		names.push_back("recruiting_anim");
 		names.push_back("standing_anim");
 		names.push_back("teleport_anim");
+		names.push_back("pre_movement_anim");
+		names.push_back("post_movement_anim");
 		names.push_back("victory_anim");
 	}
 	std::vector<std::string> names;
