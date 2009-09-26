@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: wesnoth-low\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-09-23 12:26+0200\n"
-"PO-Revision-Date: 2009-08-29 12:39+0200\n"
+"PO-Revision-Date: 2009-09-26 18:13+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
+"Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: sr\n"
-"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%"
-"10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Environment: wesnoth, wesnoth/noent\n"
 
 #. [campaign]: id=LOW
@@ -530,6 +530,8 @@ msgid ""
 "Velon has fallen. He counseled weakness, but did not deserved such an ugly "
 "death. We shall return with swords to avenge him!"
 msgstr ""
+"Велон је пао. Повлађивао је слабости, али није заслужио тако ружну смрт. "
+"Вратићемо се с мачевима да га осветимо!"
 
 #. [message]: race=orc
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:437
@@ -573,7 +575,6 @@ msgstr ""
 
 #. [side]
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:73
-#, fuzzy
 msgid "Neutrals"
 msgstr "Неутрални"
 
@@ -593,29 +594,27 @@ msgid ""
 "It should be rare sport to watch this ... just beware not to trespass on our "
 "land."
 msgstr ""
+"Биће редак ужитак посматрати ово. Само пазите да не зађете на нашу земљу."
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:327
-#, fuzzy
 msgid "Up axes, and death to elves!"
-msgstr "Смрт вилењацима!"
+msgstr "Дижи секире, смрт вилењацима!"
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:339
-#, fuzzy
 msgid "Up axes, and death to trolls!"
-msgstr "Смрт троловима!"
+msgstr "Дижи секире, смрт троловима!"
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:352
 msgid "Up axes, and kill all the interlopers!"
-msgstr ""
+msgstr "Дижи секире, смрт свим уљезима!"
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:366
-#, fuzzy
 msgid "Defend our bounds! Slay all who trespass them!"
-msgstr "Одбранимо своју земљу! Посеците све уљезе!"
+msgstr "Одбранимо своје међе! Посеците све упадице!"
 
 #. [side]: type=Troll Hero, type=Great Troll, id=Grugl
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:393
@@ -713,21 +712,27 @@ msgstr "Луди вилењаци! Али бар оборише понеког �
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:527
 msgid "Crazy elves!"
-msgstr ""
+msgstr "Луди вилењаци!"
 
+# well-spelled: Ууууррррггх
 #. [message]: id=Grugl
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:587
 msgid ""
 "Uuuurrrggghh! Grugl tried to eat dwarves, but choked in their sharp nasty "
 "axes."
 msgstr ""
+"Ууууррррггх! Гругл покуша да поједе патуљке, али се задави њиховим оштрим "
+"секирама."
 
+# well-spelled: Ууууррррггх
 #. [message]: id=Grugl
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:603
 msgid ""
 "Uuuurrrggghh! Grugl wanted tasty elf-meat, but choked on their nasty pointy "
 "spears!"
 msgstr ""
+"Ууууррррггх! Гругл хтеде укусног вилин-меса, али се задави њиховим шиљатим "
+"копљима."
 
 #. [scenario]: id=03_Kalian
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:16
@@ -740,8 +745,9 @@ msgid ""
 "Events at the Ka'lian took an ominous turn before Kalenz and his band could "
 "arrive there...."
 msgstr ""
+"Догађаји око Калијана добише злокобни обрт пре него што је Каленз могао "
+"стићи са својом дружином..."
 
-# |, no-check-spell
 #. [unit]: type=Orcish Slayer, id=Urudin
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:100
 msgid "Urudin"
@@ -750,7 +756,7 @@ msgstr "Урудин"
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:141
 msgid "Chief, the cursed tree-shaggers are defeating us!"
-msgstr ""
+msgstr "Поглавниче, проклети дрвољупци нас надјачавају!"
 
 # |, no-check-spell
 #. [unit]: type=Orcish Warlord, id=Murudin
@@ -772,7 +778,7 @@ msgstr "Умиремо, али још их стиже за нама, орков�
 #. [message]: id=Mutaf-uru
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:341
 msgid "Good, you are returned. What news is there?"
-msgstr ""
+msgstr "Добро је, вратио си се. Какве су вести?"
 
 #. [message]: id=Urudin
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:345
@@ -780,53 +786,53 @@ msgid ""
 "The elvish scum refused to surrender, Warlord. We have begun the attack, as "
 "planned."
 msgstr ""
+"Вилењачки олош одбија да се преда, ратовођу. Покренули смо напад, по плану."
 
 #. [message]: id=Mutaf-uru
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:349
 msgid "Were you able to breach their citadel?"
-msgstr ""
+msgstr "Јесте ли узмогли пробити њихову утврду?"
 
 #. [message]: id=Urudin
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:357
 msgid "Yes. We slaughtered them in great numbers."
-msgstr ""
+msgstr "Да. Посекли смо их у великом броју."
 
 #. [message]: id=Urudin
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:366
 msgid "No, our attack was repulsed."
-msgstr ""
+msgstr "Не, одбише нам напад."
 
 #. [message]: id=Urudin
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:372
 msgid "They resisted us fiercely; the battle is not yet done."
-msgstr ""
+msgstr "Опако су се опирали; битка још увек није готова."
 
 #. [message]: id=Mutaf-uru
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:388
 msgid "Go, report this news to the warlord Grubr."
-msgstr ""
+msgstr "Пођи, извести о овоме ратовођа Грубра."
 
 #. [message]: id=Urudin
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:392
 msgid "I obey."
-msgstr ""
+msgstr "Слушам."
 
 #. [message]
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:445
 msgid " $orc_battlefield_strategy changed to attack "
-msgstr ""
+msgstr " $orc_battlefield_strategy промењена на напад "
 
 #. [message]: id=Mutaf-uru
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:502
-#, fuzzy
 msgid "These elves are weak, mere meat for my wolves! Get them!"
-msgstr "Шта је то? Још меса за моје снаге? Држите их!"
+msgstr "Вилењаци су слабашни, колико месо за моје вукове! Држите их!"
 
 #. [message]: id=Mutaf-uru
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:526
 msgid ""
 "Cursed tree-shaggers and their filthy bows! We shall await the main army."
-msgstr ""
+msgstr "Проклети дрвољупци и њихови прљави лукови! Сачекајмо главнину снага."
 
 #. [objective]: condition=win
 #. [objectives]
@@ -849,7 +855,6 @@ msgstr "Настрада ли Галтрид"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:705
-#, fuzzy
 msgid ""
 "For days, Kalenz and his small host of followers traveled, moving nearer and "
 "yet nearer to the Ka'lian. Thanks to the dense fog and elvish woodscraft, "
@@ -857,10 +862,10 @@ msgid ""
 "arrived at their destination, the north wind blew, and the fog lifted to "
 "reveal a grim sight..."
 msgstr ""
-"Данима је Каленз путовао са својом малом скупином изабраника, све више се "
-"приближавајући Калијану. Захваљујући густој магли, успеше да измакну "
-"орковима који су покушавали да пресретну малу дружину. Напокон дуну северни "
-"ветар, и магла се развеја..."
+"Данима су Каленз и његова мала скупина изабраника путовали, све више се "
+"приближавајући Калијану. Захваљујући густој магли и вилењачком шумском "
+"умећу, успеше да измакну орковским потерама. Кад су били надомак одредишта, "
+"дуну северни ветар и развеја маглу, откривши суморан призор..."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:709
@@ -869,33 +874,34 @@ msgid ""
 "behind as they are fully engaged wit the defenders, we and they together "
 "might yet defeat them."
 msgstr ""
+"Велике скупине оркова крећу се ка Калијану! Али, ако их изненадимо с леђа "
+"док су потпуно заокупљени браниоцима, заједно их још можемо поразити."
 
 #. [message]: id=Galtrid
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:713
-#, fuzzy
 msgid "Are you our army's vanguard? Hurry, for we are sorely pressed here."
-msgstr "Јесте ли ви претходница наше војске? Брзо, под ударом смо!"
+msgstr ""
+"Јесте ли ви претходница наше војске? Пожурите, под тешким смо притиском."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:717
-#, fuzzy
 msgid ""
 "No, we are fleeing an attack on our home in the Lintanir. Time enough for "
 "talk later; we must defeat these orcs together, or at least hold them off "
 "long enough for the humans to come to our aid."
 msgstr ""
-"Не, избегли смо после напада на наш дом, североисточно одавде. Биће времена "
-"за причу касније; морамо заједно одбити ове оркове, или их бар задржати док "
-"нам људи не притекну у помоћ."
+"Не, избегли смо после напада на наш дом у Линтаниру. Биће времена за причу "
+"касније; морамо заједно одбити ове оркове, или их бар задржати док нам људи "
+"не притекну у помоћ."
 
 #. [message]: id=Galtrid
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:721
-#, fuzzy
 msgid ""
 "Then you have not heard the ill tidings. King Haldric has broken the treaty. "
 "The humans will not come to our help!"
 msgstr ""
-"Онда нисте чули. Краљ Халдрик је порекао споразум. Ништа од помоћи људи!"
+"Онда нисте чули рђаве новости. Краљ Халдрик је порекао споразум. Ништа од "
+"помоћи људи!"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:745
@@ -903,29 +909,29 @@ msgid ""
 "We have failed to relieve the defenders, and more orcish war-bands are "
 "arriving. All is lost!"
 msgstr ""
+"Не успесмо да одменимо браниоце, а пристиже још орковских ратних дружина. "
+"Све је изгубљено!"
 
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:762
 msgid "<span color='gold'>Bonus objective: Defeat Urudin </span>"
-msgstr ""
+msgstr "<span color='gold'>Бонус циљ: Поразиш ли Урудина</span>"
 
 #. [message]: id=guard
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:782
-#, fuzzy
 msgid "Hist! Someone is sneaking about in the mist."
 msgstr "Пази! Неко се шуња кроз измаглицу."
 
 #. [message]: id=Urudin
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:786
-#, fuzzy
 msgid ""
 "Ho, elves! Hand over the stone and we <i>might</i> not destroy your cute "
 "little playhouse, and we <i>might</i> spare you. Or, at the very least, we "
 "promise you a quick and painless death."
 msgstr ""
-"Предајте камен, и <i>можда</i> нећемо уништити вашу крхку вилин-тврђавицу и "
-"<i>можда</i> ћемо вас поштедети. Или ћемо вам бар подарити брзу и безболну "
-"смрт."
+"Ој, вилењаци! Предајте камен, и <i>можда</i> нећемо уништити вашу слатку "
+"малу тврђавицу и <i>можда</i> ћемо вас поштедети. У најмању руку вам "
+"обећавамо брзу и безболну смрт."
 
 #. [message]: id=Galtrid
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:790
@@ -934,6 +940,9 @@ msgid ""
 "citadel of the Ka'lian, for it has stood since before your kind crawled into "
 "sunlight and will endure long after you are forgotten!"
 msgstr ""
+" Какав то „камен“, погани и неспретни орку? Срам да те је да узимаш у уста "
+"утврду калијанску, која је стајала још пре него што је твоја сорта изгмизала "
+"под сунце и стајаће пошто будете давно заборављени!"
 
 #. [message]: id=Urudin
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:801
@@ -941,6 +950,8 @@ msgid ""
 "We will cram those arrogant words back down your throat before we kill you, "
 "wose-spawned worm of an elf!"
 msgstr ""
+"Сабићемо ти те надобудне речи назад у грло пре него што те убијемо, иверског "
+"изрода црву од вилењака!"
 
 #. [message]: id=Galtrid
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:852
@@ -948,6 +959,8 @@ msgid ""
 "To arms, elven-kin! They are many, but out army is returning and surely "
 "close at hand. We have but to hold until it arrives!."
 msgstr ""
+"На оружје, вилин-роде! Много их је, али се наша војска враћа и засигурно је "
+"већ близу. Треба само да издржимо док не стигну."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:905
@@ -956,6 +969,8 @@ msgid ""
 "may be expecting at the beginning of this scenario, as you will not start "
 "with Kalenz's army."
 msgstr ""
+"Списак сазивања и почетног злата биће различит од онога што сте можда "
+"очекивали на почетку овог сценарија, јер не почињете с Калензовом војском."
 
 # |, no-check-spell
 #. [message]: id=Kalenz
@@ -1070,14 +1085,13 @@ msgstr "Ларил"
 
 #. [message]: id=Cleodil
 #: data/campaigns/Legend_of_Wesmere/scenarios/04_Elvish_Treasury.cfg:223
-#, fuzzy
 msgid ""
 "We are free! My lord Kalenz, from this day forward I and my men are your "
 "sworn followers. And there is that which you should know about the treasure "
 "the orcs seek..."
 msgstr ""
-"Ослобођени! Господару Калензе, од овога смо дана твоји верни следбеници. А "
-"мораш почути и ово о благу."
+"Ослобођени! Господару Калензе, од овога смо дана ја и моји људи твоји верни "
+"следбеници. А мораш почути и ово о благу које оркови траже..."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/04_Elvish_Treasury.cfg:227
@@ -1086,6 +1100,8 @@ msgid ""
 "spell with which to defeat these invaders. There will be time for talk "
 "later; now, we must fight."
 msgstr ""
+"Захвално прихватам твоју службу, јер ће ми требати сваки мач и лук за победу "
+"над овим уљезима. Времена за причу ће бити касније; сада се морамо борити."
 
 #. [objective]: condition=lose
 #: data/campaigns/Legend_of_Wesmere/scenarios/04_Elvish_Treasury.cfg:249
@@ -1106,33 +1122,33 @@ msgstr "Настрада ли Клеодил"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/04_Elvish_Treasury.cfg:268
-#, fuzzy
 msgid ""
 "Without their leaders, the saurians flee in panic. Let us free the "
 "treasury's garrison before they can find it in them to rally and return."
-msgstr "Без вођа, сауријанци се панично расипају. Ослободите гарнизон!"
+msgstr ""
+"Без вођа, сауријанци се панично расипају. Ослободимо ризнички гарнизон пре "
+"него што смогну да се сакупе и наврате."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/04_Elvish_Treasury.cfg:279
-#, fuzzy
 msgid ""
 "We have defeated the saurians and freed the garrison, and that is no small "
 "thing...but our gold is gone. "
 msgstr ""
-"Поразили смо сауријанце и ослободили гарнизон, али нам је злато испарило."
+"Поразили смо сауријанце и ослободили гарнизон, што није мала ствар... али "
+"нам је злато испарило."
 
 #. [message]: id=Cleodil
 #: data/campaigns/Legend_of_Wesmere/scenarios/04_Elvish_Treasury.cfg:283
-#, fuzzy
 msgid ""
 "The saurians happily carried away the Treasury gold, but they had come here "
 "looking for something more specific...some individual object they called "
 "'dastone'. I am sorry, my lord Kalenz, I could not understand their "
 "distorted speech very well."
 msgstr ""
-"Сауријанци похараше ризницу. Посебно их је занимало да нађу нешто што "
-"називаше „тајкаменом“. Жао ми је, господару Калензе, али нисам најбоље "
-"разумела њихово изобличено пискање."
+"Сауријанци радо однесоше злато из ризнице, али су дошли у потрази за нечим "
+"посебнијим... некаквим објектом што назваше „тајкаменом“. Жао ми је, "
+"господару Калензе, али нисам најбоље разумела њихово изобличено пискање."
 
 #. [message]: race=elf
 #: data/campaigns/Legend_of_Wesmere/scenarios/04_Elvish_Treasury.cfg:287
@@ -1140,30 +1156,31 @@ msgid ""
 "The war with the Orcs goes poorly. The Ka'lian will need that gold back to "
 "buy arms and food, to hire artisans, to support its armies."
 msgstr ""
+"Рат против оркова лоше напредује. Калијану ће требати то злато за набавку "
+"оружја и хране, унајмљивање занатлија, подршку војскама."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/04_Elvish_Treasury.cfg:291
-#, fuzzy
 msgid ""
 "We will hunt down those saurians and retrieve our gold. More, we must teach "
 "them that it is lethal folly to raid us, else they will plague us like rats."
 msgstr ""
 "Половићемо те сауријанце и вратити наше злато. Даље, морамо им утувити да је "
-"смртоносна глупост опљачкати нас, јер ће нас иначе опседати као пацови. "
-"Пожуримо."
+"смртоносна глупост опљачкати нас, јер ће нас иначе опседати као пацови."
 
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/04_Elvish_Treasury.cfg:302
 msgid "I am ashamed to die at the hands of tree-shaggers!"
-msgstr ""
+msgstr "Срам ме је да умрем од руке дрвољубаца!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/04_Elvish_Treasury.cfg:306
-#, fuzzy
 msgid ""
 "When you meet your kin in the dry hells, tell them you perished at the hands "
 "of the Kalenz's elves!"
-msgstr "Знај да настрада од руке Калензових вилењака!"
+msgstr ""
+"Кад сусретнеш своје у гротлу пакла, реци им да настрада од руке Калензових "
+"вилењака!"
 
 #. [scenario]: id=05_Saurian_Treasury, (role=gold_carrier) white}, (role=gold_carrier) purple}
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_Saurian_Treasury.cfg:4
@@ -1200,14 +1217,13 @@ msgstr "Упаднеш ли у сауријанску ризницу и поку
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_Saurian_Treasury.cfg:141
-#, fuzzy
 msgid ""
 "There they are. They have dumped our gold in their own treasury. We must "
 "strike quickly and leave with the gold before they can summon their full "
 "host."
 msgstr ""
 "Ено их. Истоварили су наше злато у своју ризницу. Морамо ударити хитро и "
-"умаћи са златом пре него што призову појачања."
+"умаћи са златом пре него што сазову сво своје мноштво."
 
 #. [message]: id=Cleodil
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_Saurian_Treasury.cfg:145
@@ -1215,14 +1231,16 @@ msgid ""
 "Moving so much gold is no light matter. We will need horses to bear it back "
 "home."
 msgstr ""
+"Пребацити толико злато није лак посао. Требаће нам коња да га понесу назад."
 
+# well-spelled: нассс
 #. [message]: id=Hraurg
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_Saurian_Treasury.cfg:151
-#, fuzzy
 msgid ""
 "The elves have followed ussss! We must hold the gold until reinforcements "
 "arrive."
-msgstr "Вилењаци су нас пратили! Морамо сачувати злато док не стигне појачање."
+msgstr ""
+"Вилењаци су нассс пратили! Морамо сачувати злато док не стигне појачање."
 
 #. [object]
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_Saurian_Treasury.cfg:192
@@ -1259,14 +1277,14 @@ msgstr "Кфир"
 msgid "Hrish"
 msgstr "Криш"
 
+# well-spelled: помисссслили
 #. [message]: id=Swirh
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_Saurian_Treasury.cfg:312
-#, fuzzy
 msgid ""
 "Sssstupid elves thought the treasury would be unguarded! Guards, slay these "
 "intruders!"
 msgstr ""
-"Глупи вилењаци помислили да ће ризница бити небрањена! Стражо, посеците "
+"Глупи вилењаци помисссслили да ће ризница бити небрањена! Стражо, посеците "
 "уљезе!"
 
 #. [objective]: condition=win
@@ -1277,33 +1295,30 @@ msgstr "Нови циљ: Пренесеш ли благо јахачем до п
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_Saurian_Treasury.cfg:354
 msgid "Aargh! I shall never see the bright moon's face again!"
-msgstr ""
+msgstr "Аргх! Никад више нећу видети светло лице месечево!"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_Saurian_Treasury.cfg:391
-#, fuzzy
 msgid "We have recovered our gold; it is well."
-msgstr "Повратисмо своје злато."
+msgstr "Повратисмо своје злато; све је на броју."
 
 #. [message]: role=gold_carrier
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_Saurian_Treasury.cfg:395
-#, fuzzy
 msgid ""
 "We have recovered much more than our own treasure. These saurians would seem "
 "to have taken up robbery as a vocation!"
 msgstr ""
-"Измерисмо злата много више него што је нашег. Ови су се сауријанци изгледа "
+"Измерисмо блага много више него што је нашег. Ови су се сауријанци изгледа "
 "прихватили пљачке као позива!"
 
 #. [message]: id=Spahr
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_Saurian_Treasury.cfg:399
-#, fuzzy
 msgid ""
 "They took all our treasure! Quickly, place ambushers on all trails from here "
 "to Wesmere. I will give 500 gold to whoever kills their leader. They must "
 "not escape."
 msgstr ""
-"Похараше нам сво злато! Брзо, разместите бусијаше по свим стазама одавде до "
+"Похараше нам сво благо! Брзо, разместите бусијаше по свим стазама одавде до "
 "Весмера. Подаћу пет стотина златника ономе ко убије њиховог вођа. Не смеју "
 "избећи."
 
@@ -1691,7 +1706,6 @@ msgstr "Уруг-Пир"
 msgid "Truugl"
 msgstr "Тругл"
 
-# |, no-check-spell
 #. [side]: type=Orcish Warlord, id=Grubr
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:414
 msgid "Grubr"
@@ -1699,12 +1713,11 @@ msgstr "Грубр"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:494
-#, fuzzy
 msgid ""
 "The orcs are not defeated defeated, and our troops and supplies are "
 "exhausted. This is the end!"
 msgstr ""
-"Оркове још увек не савладасмо, а снаге и залихе су нам истрошене. Ово је "
+"Оркови још увек нису поражени, а снаге и залихе су нам истрошене. Ово је "
 "крај!"
 
 #. [message]: id=Kalenz
@@ -1737,13 +1750,12 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:529
-#, fuzzy
 msgid ""
 "In this scenario, you may change the behavior of an allied side's AI using a "
 "context menu brought up by clicking on the allied side's leader."
 msgstr ""
-"У овом сценарију, понашање ВИ-ја неке стране може се задати кроз контекстни "
-"мени на клик на вођа савезничке стране."
+"У овом сценарију, можете изменити понашање ВИ-ја савезничке стране кроз "
+"контекстни мени на клик на вођа савезничке стране."
 
 #. [message]: id=Galtrid
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:598
@@ -2217,9 +2229,8 @@ msgstr "Шар"
 #. [side]
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:188
 #: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:99
-#, fuzzy
 msgid "Creatures"
-msgstr "Велико дрво"
+msgstr "Створења"
 
 # |, no-check-spell
 #. [objective]: condition=win
@@ -2526,6 +2537,8 @@ msgid ""
 "I sense a presence that is not one of Aquagar's creatures. Who are you, and "
 "what is your purpose here?"
 msgstr ""
+"Осећам присуство које није једно од Аквагарових створења. Ко си ти, и која "
+"ти је сврха овде?"
 
 #. [message]: id=Cleodil
 #: data/campaigns/Legend_of_Wesmere/scenarios/11_Battle_of_the_book.cfg:116
@@ -2533,6 +2546,8 @@ msgid ""
 "That, I think, must be the mage of which Olurf spoke. But he is not the one "
 "I sensed as we approached this place..."
 msgstr ""
+"То, мислим, мора бити маг о којем је Олурф зборио. Али није он тај кога сам "
+"осетила док се приближавасмо овом месту..."
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/11_Battle_of_the_book.cfg:120
@@ -2540,11 +2555,13 @@ msgid ""
 "I feel the shadow of destiny on my soul. There is something I am fated to do "
 "here, but I know not what."
 msgstr ""
+"Осећам сенку судбине над својом душом. Усуд ми је да нешто учиним овде, али "
+"не знам шта."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/11_Battle_of_the_book.cfg:124
 msgid "If you are the mage Crelanu, we have come to seek your help."
-msgstr ""
+msgstr "Ако си ти маг Крелану, дошли смо да заискамо твоју помоћ."
 
 #. [message]: id=Crelanu
 #: data/campaigns/Legend_of_Wesmere/scenarios/11_Battle_of_the_book.cfg:128
@@ -2552,18 +2569,21 @@ msgid ""
 "I am Crelanu...but if you want my help you must begin by helping me, for I "
 "am besieged here and in no state to aid anyone else."
 msgstr ""
+"Ја сам Крелану... ако желите моју помоћ морате прво помоћи мени, јер сам "
+"овде под опсадом и ни у каквом стању да икоме помогнем."
 
+# well-spelled: Аааа
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/11_Battle_of_the_book.cfg:132
 msgid ""
 "Ahhh. A fight! Perhaps this is my fate. Come, Kalenz, let us make a rescue."
 msgstr ""
+"Аааа. Борба! Можда ми је то судбина. Хајдемо, Калензе, да избавимо мага."
 
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/11_Battle_of_the_book.cfg:146
-#, fuzzy
 msgid "Defeat Aquagar"
-msgstr "Поразиш ли Ландара"
+msgstr "Поразиш ли Аквагара"
 
 #. [objective]: condition=lose
 #: data/campaigns/Legend_of_Wesmere/scenarios/11_Battle_of_the_book.cfg:166
@@ -3231,26 +3251,24 @@ msgstr "Настрада ли Алдар"
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:270
 msgid "Tremble, orcs! The vengeance of the Elves is upon you!!"
-msgstr ""
+msgstr "Дрхтите, оркови! Освета вилењачка се надвија над вама!!"
 
 #. [message]: id=Aldar
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:274
-#, fuzzy
 msgid "So it is true! The elves have come to our aid!"
 msgstr "Тачно је дакле! Вилењаци нам стижу у помоћ!"
 
 #. [message]: race=orc
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:279
-#, fuzzy
 msgid ""
 "An elven army to the north? And they have dwarves with them? We must defeat "
 "them in detail before they combine, which means attacking before our "
 "reinforcements arrive. Maybe we can beat the humans before the elves can "
 "intervene. Overrun city and castle!"
 msgstr ""
-"Вилењачка војска са севера? И патуљци с њима? Лоше вести, то нас приморава "
-"да ударимо пре него што стигну наша појачања. Можда можемо потући људе пре "
-"него што вилењаци стигну да прискоче. Прегазите град и замак!"
+"Вилењачка војска са севера? И патуљци с њима? Морамо их поразити до ногу пре "
+"него што се удруже, што значи напасти пре него нам стигне појачање. Можда "
+"можемо потући људе пре него што се вилењаци умешају. Прегазите град и замак!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:284
@@ -3266,24 +3284,24 @@ msgstr "Алдун"
 
 #. [message]: id=Aldun
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:302
-#, fuzzy
 msgid ""
 "General Aldar has received your message. He asks that you engage the orcish "
 "reinforcements from the north, preventing them from joining with their "
 "fellows here. Those fresh troops must not be allowed to enter the battle! "
 "Our reinforcements should arrive in a few days."
 msgstr ""
-"Генерал Алдар је примио поруку да долазите. Тражи да одсечете орковска "
-"појачања са севера. Не сме им се допустити да ступе у битку! Наша појачања "
-"стижу за који дан."
+"Генерал Алдар је примио твоју поруку. Тражи да ударите на орковска појачања "
+"са севера, спречите их да се придруже овдашњим саборцима. Тим свежим снагама "
+"не сме се допустити да ступе у битку! Наша појачања стижу за који дан."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:306
-#, fuzzy
 msgid ""
 "Very well...but have you any word of the elvish troops marching to join us? "
 "We are too few to defeat the enemy without them."
-msgstr "Врло добро, али где су вилењачке снаге? Не можемо се одржати без њих!"
+msgstr ""
+"Врло добро... али има ли каквих вести о вилењачким снагама што хитају к "
+"нама? Премало нас је да бисмо сами надјачали непријатеља."
 
 #. [message]: id=Aldar
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:416
@@ -3308,26 +3326,24 @@ msgstr "Ха, ха, ха!"
 # |, no-check-spell
 #. [message]: role=l3_store
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:617
-#, fuzzy
 msgid "Kalenz has arrived!"
 msgstr "Каленз је стигао!"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:621
-#, fuzzy
 msgid ""
 "Where is the rest of the elvish army? They were promised and should be here!"
-msgstr "Где је остатак вилењачке војске? Треба да су већ овде!"
+msgstr ""
+"Где је остатак вилењачке војске? Обећани су нам и треба да су већ овде!"
 
 #. [message]: role=l3_store
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:625
-#, fuzzy
 msgid ""
 "The Great Council has decided it was too risky to send troops here. But some "
 "of us dissented and have come to fight beside you."
 msgstr ""
-"Веће је одлучило да је превише ризично послати снаге овамо. Али не могасмо "
-"допустити да се сами борите."
+"Велико веће је одлучило да је превише ризично послати снаге овамо. Али се "
+"неки од нас не повиноваше, те дођосмо да се боримо уз вас."
 
 # |, no-check-spell
 #. [unit]: type=Paladin, id=Kulrad
@@ -3338,19 +3354,18 @@ msgstr "Кулрад"
 #. [message]: id=Kulrad
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:653
 msgid "I see foul orcs to be ridden down! Charge!"
-msgstr ""
+msgstr "Видим поганих оркова којих се ваља отарасити! Јуриш!"
 
+# well-spelled: коњотимарача
 #. [message]: race=orc
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:658
-#, fuzzy
 msgid "More of the cursed horse-pokers!! Run, let's get out of here!"
-msgstr "Још коња!! Бежите, купимо се одавде!"
+msgstr "Још проклетих коњотимарача!! Бежите, купимо се одавде!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:664
-#, fuzzy
 msgid "The not-at-all-brazen cry of a war-horn is heard in the distance."
-msgstr "Дрчна јека ратног рога чује се у даљини."
+msgstr "Нимало дрчна јека ратног рога чује се у даљини."
 
 #. [message]: id=Aldar
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:681
@@ -3358,18 +3373,18 @@ msgid ""
 "This is only a pause in their onslaught. Reform, men, and bind your wounds "
 "as you may. They'll be back."
 msgstr ""
+"Ово је тек предах у њиховом налету. Престројте се, и подвежите ране колико "
+"можете. Само што нису опет."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:694
-#, fuzzy
 msgid "We have thwarted the orcs once again!"
-msgstr "Још једном заустависмо оркове!"
+msgstr "Још једном одбисмо оркове!"
 
 #. [message]: id=Cleodil
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:698
-#, fuzzy
 msgid "And we revived the alliance with the humans, which is no small thing."
-msgstr "Притом васпоставивши савез с људима!"
+msgstr "Притом васпоставивши савез с људима, што није мала ствар!"
 
 #. [message]: id=Aldar
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:702
@@ -4193,7 +4208,6 @@ msgstr ""
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/19_Costly_Revenge.cfg:269
-#, fuzzy
 msgid "Now is our chance to finish them off..."
 msgstr "Ово нам је прилика да их довршимо."
 
@@ -4288,11 +4302,9 @@ msgstr ""
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/19_Costly_Revenge.cfg:465
-#, fuzzy
 msgid ""
 "A shame we missed the opportunity to rid the forests of dwarves, as well."
-msgstr ""
-"<small>Штета што пропустисмо прилику да исто учинимо и с патуљцима.</small>"
+msgstr "Штета што пропустисмо прилику да очистимо шуме и од патуљака."
 
 #. [scenario]: id=20_Council_ruling
 #: data/campaigns/Legend_of_Wesmere/scenarios/20_Council_ruling.cfg:3
@@ -4441,11 +4453,13 @@ msgid ""
 "Kalenz begins this scenario in retirement, and is not able to recall his "
 "veteran troops."
 msgstr ""
+"Каленз започиње овај сценарио у мировнини, па не може да сазове своје "
+"прекаљене борце."
 
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/21_Elvish_Assassins.cfg:138
 msgid "As you command, my lord."
-msgstr ""
+msgstr "Како заповедате, господару."
 
 #. [message]: id=Cleodil
 #: data/campaigns/Legend_of_Wesmere/scenarios/21_Elvish_Assassins.cfg:142
@@ -4453,6 +4467,8 @@ msgid ""
 "You turn on us? I cannot believe it! How has elf come to strive against elf "
 "so bitterly?"
 msgstr ""
+"Окрећеш се против нас? Не могу да верујем! Како дође до тога да вилењак буде "
+"против вилењака тако огорчено?"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/21_Elvish_Assassins.cfg:146
@@ -4460,21 +4476,23 @@ msgid ""
 "Evil takes many forms, my love. Today we see another of its faces...and must "
 "defeat it again. Prepare to die, $betrayer|!"
 msgstr ""
+"Зло поприма многе облике, љубави. Данас видимо једно од његових лица... и "
+"морамо га поново поразити. Спреми се да умреш, $betrayer|!"
 
 #. [message]: role=betrayer
 #: data/campaigns/Legend_of_Wesmere/scenarios/21_Elvish_Assassins.cfg:150
 msgid "Only Landar has the will to do what must be done to save the Elves!"
-msgstr ""
+msgstr "Само Ландар има вољу да учини што се мора за спас вилењака!"
 
 #. [message]: role=betrayer
 #: data/campaigns/Legend_of_Wesmere/scenarios/21_Elvish_Assassins.cfg:192
 msgid "Hold, $unit.name|! Now we fight for Landar!"
-msgstr ""
+msgstr "Стој, $unit.name|! Сада се боримо за Ландара!"
 
 #. [message]
 #: data/campaigns/Legend_of_Wesmere/scenarios/21_Elvish_Assassins.cfg:215
 msgid "Hold your hand, $unit.name|! $second_unit.name| is on our side!"
-msgstr ""
+msgstr "Оружје доле, $unit.name|! $second_unit.name| је на нашој страни!"
 
 #. [message]: role=betrayer
 #: data/campaigns/Legend_of_Wesmere/scenarios/21_Elvish_Assassins.cfg:220
@@ -4482,6 +4500,8 @@ msgid ""
 "I will not stand by as Kalenz betrays us to the Humans and Dwarves. We "
 "follow Landar now!"
 msgstr ""
+"Нећу мирно стајати док нас Каленз издаје људима и патуљцима. Од сада слушамо "
+"Ландара!"
 
 # |, no-check-spell
 #. [side]: type=Elvish Ranger, id=Antaril
@@ -4585,16 +4605,20 @@ msgid ""
 "call, and Kalenz found that recruits came to him as readily as if he were "
 "still High Lord in name."
 msgstr ""
+"Беше јасно и Калензу и Клеодил да им неће бити спокоја док је год Ландар "
+"жив. Али током година њихове подвојености, глас о њиховим делима само је "
+"растао. Многа видарка и чаробница одазва се Клеодилином позиву, а Каленз "
+"увиде да му борци прилазе спремно као да је још увек високи господар по "
+"именовању."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/22_Northern_Battle.cfg:25
-#, fuzzy
 msgid ""
 "Kalenz's veterans joined the host of the Northern Elves under Uradredia. "
 "Very soon, Landar's army appeared..."
 msgstr ""
-"Каленз и Клеодил успеше да стигну до северних вилењака и затраже помоћ. "
-"Убрзо, појави се и Ландарова војска..."
+"Калензови ветерани придружише се главнини северњачких вилењака под "
+"Урадредијом. Убрзо, појави се и Ландарова војска..."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Legend_of_Wesmere/scenarios/22_Northern_Battle.cfg:89
@@ -4602,6 +4626,9 @@ msgid ""
 "Kalenz can only recall shamans and their advancements from his former army; "
 "the rest of his men joined Uradredia before he arrived."
 msgstr ""
+"Каленз може да сазива само врачарке и њихова напредовања из своје раније "
+"војске; остатак његових снага придружио се Урадредији пре него што је он сам "
+"стигао."
 
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/22_Northern_Battle.cfg:186
@@ -4672,9 +4699,9 @@ msgstr "Поразиш ли Ландара"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/23_End_of_War.cfg:111
-#, fuzzy
 msgid "Landar, let us spill no more elvish blood. Give up. We can help you!"
-msgstr "Ландаре, не просипајмо још вилењачке крви. Одустани. Можемо ти помоћи!"
+msgstr ""
+"Ландаре, не просипајмо још вилењачке крви. Предај се. Можемо ти помоћи!"
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/23_End_of_War.cfg:115
@@ -4685,32 +4712,30 @@ msgstr "Не! Овде је крај!"
 #: data/campaigns/Legend_of_Wesmere/scenarios/23_End_of_War.cfg:133
 msgid ""
 "Forgive me $unit.name|. I will sing your name in praise under the stars!"
-msgstr ""
+msgstr "Опрости ми, $unit.name|. Похвално ћу певати о твом имену под звездама!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/23_End_of_War.cfg:137
 msgid "We must all pass, $second_unit.name|. Make your song beautiful.."
-msgstr ""
+msgstr "Свима нам мора доћи крај, $second_unit.name|. Нека песма буде лепа..."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/23_End_of_War.cfg:153
 msgid "Forgive me, $unit.name|, this victory brings me no joy."
-msgstr ""
+msgstr "Опрости ми, $unit.name|, ова победа ми не причињава радост."
 
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/23_End_of_War.cfg:157
 msgid "Remember me to the trees, $second_unit.name|."
-msgstr ""
+msgstr "Памти ме кроз дрвеће, $second_unit.name|."
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/23_End_of_War.cfg:169
-#, fuzzy
 msgid "I fall. Perhaps now I can rest!"
-msgstr "Са мном је готово. Сад могу почивати!"
+msgstr "Падох. Можда сад могу почивати!"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/23_End_of_War.cfg:173
-#, fuzzy
 msgid ""
 "I am deeply grieved that it came to this, Landar. You were my best friend. I "
 "was blind to what the potion was doing to you. I was fighting it myself!"
@@ -4844,13 +4869,12 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:10
 msgid "I am defeated. Now the orcs will destroy us!"
-msgstr ""
+msgstr "Поражени смо. Сада ће нас оркови прегазити!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:44
-#, fuzzy
 msgid "It is finished! I can finally rest!"
-msgstr "Са мном је готово! Коначно могу да почивам!"
+msgstr "Готово је! Коначно могу да почивам!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:50
@@ -4864,7 +4888,6 @@ msgstr "Не! Не можемо продужити без Ландара!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:74
-#, fuzzy
 msgid "I'm sorry I failed you, Kalenz...my beloved..."
 msgstr "Жао ми је што те изневерих, Калензе... вољени..."
 
@@ -4876,19 +4899,20 @@ msgstr "Не! Клеодил! Без тебе ми нема живота!"
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:94
 msgid "I go to join my sires in the Halls of Death"
-msgstr ""
+msgstr "Идем својим парњацима у Дворанама смрти."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:108
-#, fuzzy
 msgid ""
 "Our cause is lost. With Uradredia gone, the North Elves will no longer fight!"
-msgstr "Без Урадредије, северни вилењаци се више неће борити!"
+msgstr ""
+"Наша ствар је изгубљена. Без Урадредије, северни вилењаци се више неће "
+"борити!"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:122
 msgid "I cannot fight the orcs alone! It's all over!"
-msgstr ""
+msgstr "Не могу сам против оркова! С нама је свршено!"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:140
@@ -4905,125 +4929,3 @@ msgstr "О, не! Закаснисмо..."
 #: data/campaigns/Legend_of_Wesmere/utils/low-macros.cfg:241
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "Прикупи $amount_gold златника."
-
-#~ msgid "I have been defeated!"
-#~ msgstr "Поражен сам!"
-
-#~ msgid "No! This is the end! We have been defeated!"
-#~ msgstr "Не! Ово је крај! Поражени смо!"
-
-#~ msgid "No! It's all over!"
-#~ msgstr "Не! Све је готово!"
-
-# well-spelled: Аааррггхх
-#, fuzzy
-#~ msgid ""
-#~ "This is a stub. Uuuurrrggghh! Dwarves had too many sharp axes for Grugl "
-#~ "to eat."
-#~ msgstr ""
-#~ "Аааррггхх! Вилењаци имају превише оштрих шиљака да би их Гругл прогутао."
-
-# well-spelled: Аааррггхх
-#~ msgid ""
-#~ "Uuuurrrggghh! Elves had too many sharp pointy things for Grugl to eat."
-#~ msgstr ""
-#~ "Аааррггхх! Вилењаци имају превише оштрих шиљака да би их Гругл прогутао."
-
-#, fuzzy
-#~ msgid "This is a stub. We come to ask your help."
-#~ msgstr "Велон пострада, тако сам тужан!"
-
-#, fuzzy
-#~ msgid "This is a stub. Let's hurry. Can't wait to see the loot."
-#~ msgstr ""
-#~ "Овај текст је заметак. Да се прво изборимо са сауријанцима, па ћемо "
-#~ "причати."
-
-#~ msgid "Defeat the drakes and trolls"
-#~ msgstr "Поразиш ли змагове и тролове"
-
-#~ msgid ""
-#~ "Looks like it would be fun to watch... Just take care to not step on our "
-#~ "territory"
-#~ msgstr ""
-#~ "Делује да ће бити забавно посматрати... Само пазите да не крочите на нашу "
-#~ "територију."
-
-#~ msgid "Kill them all!"
-#~ msgstr "Побијте их све!"
-
-#~ msgid ""
-#~ "Kalenz and his band finally were on their way to the Ka'lian, but things "
-#~ "were not as they had hoped..."
-#~ msgstr ""
-#~ "Каленз и дружина напокон се запутише ка Калијану, али околности не беху "
-#~ "каквим су се надали..."
-
-#~ msgid "Oh no! The Ka'lian is under attack! We must help them!"
-#~ msgstr "О, не! Калијан је под нападом! Морамо им помоћи!"
-
-#~ msgid "We have lost for some reason!"
-#~ msgstr "Како ли изгубисмо?!"
-
-#~ msgid ""
-#~ "What stone? The Ka'lian is older than you foul creatures walk under the "
-#~ "sun and it was never raided. It will still stand after the last of you "
-#~ "beasts have vanished and your wrongdoings are long forgotten."
-#~ msgstr ""
-#~ "Какав камен? Калијан је старији него што ви погана створења гмижете под "
-#~ "сунцем, и ниједном га не похараше. Стајаће и пошто и последња од вас "
-#~ "звери ишчезне и на злодела се ваша давно заборави."
-
-#~ msgid "Punch his arrogant words back down his throat!"
-#~ msgstr "Сабијте му надобудне речи назад у грло!"
-
-#~ msgid ""
-#~ "To arms, brothers and sisters! Hopefully, our army will return to aid us "
-#~ "soon."
-#~ msgstr ""
-#~ "На оружје, браћо и сестре! Надајмо се да ће нам наша војска убрзо притећи "
-#~ "у помоћ."
-
-#~ msgid ""
-#~ "The war with the Orcs goes poorly. We are going to need that gold back!"
-#~ msgstr "Рат против оркова лоше напредује. Морамо повратити то злато!"
-
-#~ msgid "Aargh! I'm gone!"
-#~ msgstr "Аргх! Готово је!"
-
-#~ msgid "I told you so!"
-#~ msgstr "Рекох ти!"
-
-#~ msgid "This is a stub. We will need horse riders to transport the treasure."
-#~ msgstr "Требаће нам јахачи да пренесемо благо."
-
-#~ msgid "Aargh! I'm dying!"
-#~ msgstr "Аргх! Умирем!"
-
-#~ msgid "Here we are! Prepare to fight!"
-#~ msgstr "Ево нас! Спремите се на бој!"
-
-#~ msgid "Here we are, men! Charge!"
-#~ msgstr "Стигли смо, људи! Јуриш!"
-
-#~ msgid "The *not* brazen at all cry of a war-horn is heard in the distance."
-#~ msgstr "Нимало дрчни писак ратног рога чује се у даљини."
-
-#~ msgid ""
-#~ "This is only a pause between their waves! Use the time to recollect a "
-#~ "formation."
-#~ msgstr ""
-#~ "Ово је само предах између њихових таласа! Утрошите време да саберете "
-#~ "редове."
-
-#~ msgid ""
-#~ "This is a stub. Forgive me $unit.name|. I will remember the good comrate "
-#~ "you have been!"
-#~ msgstr "Опрости, $unit.name|. Памтићу те као ваљаног садруга!"
-
-#~ msgid ""
-#~ "This is a stub. Whatever $second_unit.name|. I was bored of Live anyway."
-#~ msgstr "Нема везе, $second_unit.name|. И тако ми је живот досадио."
-
-#~ msgid "This is a stub."
-#~ msgstr "Заметак."
