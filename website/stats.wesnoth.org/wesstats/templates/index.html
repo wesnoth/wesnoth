@@ -30,7 +30,7 @@ import urllib
 <div id="global">
 ${header()}
 <div id="main">
-<h3 py:for="view in views"><a href="/wesstats/${urllib.quote(view[1])}">${view[0]} (${view[2].capitalize()} Graph)</a></h3>
+<h3 py:for="view in views"><a href="http://stats.wesnoth.org/${urllib.quote(view[1])}">${view[0]} (${view[2].capitalize()} Graph)</a></h3>
 </div> <!-- /main -->
 ${footer()}
 </div> <!-- /global -->

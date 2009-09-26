@@ -36,15 +36,11 @@ class KillGraphController(BaseController):
 		conn = MySQLdb.connect(configuration.DB_HOSTNAME,configuration.DB_USERNAME,configuration.DB_PASSWORD,configuration.DB_NAME,use_unicode=True)
 		curs = conn.cursor()
 	
-		curs.execute("SELECT title,xdata,ydata,xlabel,ylabel,filters,y_xform FROM _wsviews WHERE url = %s", (self.url,))
+		curs.execute("SELECT title,xdata,ydata,xlabel,ylabel,filters,y_xform,tbl FROM _wsviews WHERE url = %s", (self.url,))
 		view_data = curs.fetchall()[0]
 		log.debug("kill map request, here is SQL data for this view:")
 		log.debug(view_data)
-		#@TODO: overloaded information about what kind of game this is into ydata, there needs to be a better solution for this in the future
-		#use the correct GAMES table for singleplayer or multiplayer
-		games_tbl = "GAMES_SP"
-		if view_data[2] == "multiplayer":
-			games_tbl = "GAMES_MP"
+		games_tbl = view_data[7]
 		
 		#fetch the relevant filters for this template and their possible values
 		available_filters = view_data[5].split(',')
@@ -59,7 +55,7 @@ class KillGraphController(BaseController):
 			for i in raw_fdata:
 				fdata[filter].append(i[0])
 		for filter in available_filters_map:
-			curs.execute("SELECT DISTINCT "+filter+" FROM KILLMAP")
+			curs.execute("SELECT DISTINCT "+filter+" FROM KILLMAP WHERE game_type='"+view_data[2]+"'")
 			#curs.fetchall() returns a list of lists, we convert this to a plain list for ease of handling
 			raw_fdata = curs.fetchall()
 			fdata[filter] = []
@@ -103,12 +99,12 @@ class KillGraphController(BaseController):
 			used_filters.append("killed level range")
 			ufilters_vals["killed level range"] = [kw['minkilledlev'] + " to " + kw['maxkilledlev']]
 
-		curs.execute("SELECT DISTINCT scenario_name,map_id FROM `KILLMAP` GROUP BY map_id")
+		curs.execute("SELECT DISTINCT scenario_name,map_id FROM `KILLMAP` WHERE game_type='"+view_data[2]+"' GROUP BY map_id")
 		maps = curs.fetchall()
 		
-		cur_map = kw.setdefault("map","6f50ba078308f4ed29b8b79a0727fd9b")
+		cur_map = kw.setdefault("map","mWF1l_gRtBBQvkNoqpYBPY3z2idTMM493ck_YjEk_WU=")
 		#check for input sanity, we will be fetching map tiles based on this name
-		if not ( cur_map.isalnum() and len(cur_map) == 32):
+		if not ( cur_map.count("/") == 0 and cur_map.count(".") == 0 and len(cur_map) == 44):
 			cur_map = ""
 		cur_map_name = "None"
 		for map in maps:
@@ -150,4 +146,4 @@ class KillGraphController(BaseController):
 			minkilledlev=minkilledlev,maxkilledlev=minkilledlev,
 			used_filters=used_filters,ufilters_vals=ufilters_vals,
 			filters=available_filters+available_filters_map,
-			fdata=fdata,cur_map_name=cur_map_name)
+			fdata=fdata,cur_map_name=cur_map_name,title=view_data[0])

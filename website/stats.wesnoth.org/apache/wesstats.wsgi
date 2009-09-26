@@ -19,7 +19,7 @@ import sys
 prev_sys_path = list(sys.path)
 
 import site 
-site.addsitedir('/usr/local/pythonenv/BASELINE/lib/python2.5/site-packages')
+site.addsitedir('/home/corn/tg2env/lib/python2.5/site-packages')
 
 #Move just added item to the front of the python system path. 
 #Not needed if modwsgi>=3.0. Uncomment next 6 lines.

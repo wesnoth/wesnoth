@@ -2,6 +2,7 @@ import os
 import subprocess
 import Image
 import configuration
+import time
 
 #return closest multiple of k greater than n
 def multiple_k(n,k):
@@ -9,13 +10,25 @@ def multiple_k(n,k):
 
 map_path = configuration.MAP_DIR
 tile_path = configuration.TILE_DIR
+image_files = os.listdir(tile_path)
 for map in os.listdir(map_path):
+	if image_files.__contains__("%s.%d_%d_4.jpg" % (map,0,0)):
+		continue
 	print map_path
 	print tile_path
 	print map
-	process = subprocess.Popen(["/home/cornmander/wesnoth/wesnoth-debug","--screenshot",map_path+map,tile_path+map])
-	process.wait()
-	
+	process = subprocess.Popen(["wesnoth","--screenshot",map_path+map,tile_path+map])
+	deadlock = True
+	for i in range(20):
+		time.sleep(1)
+		process.poll()
+		if process.returncode != None:
+			deadlock = False
+			break
+	if deadlock:
+		os.kill(process.pid,9)
+		os.remove(map_path+map)	
+		continue
 	im = Image.open(tile_path+"/"+map)
 	#generate 1:2 scale tiles
 	img_width = im.size[0]
