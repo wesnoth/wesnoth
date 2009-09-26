@@ -6,57 +6,10 @@ add_custom_target(update-po4a)
 ############ Settings. ###########
 
 # Available languages.
-set(LANGUAGES
-	af
-	ar
-	bg
-	ca
-	ca_ES@valencia
-	cs
-	da
-	de
-	el
-	en_GB
-	es
-	eo
-	et
-	eu
-	fi
-	fr
-	fur_IT
-	gl
-	he
-	hr
-	hu
-	id
-	is
-	it
-	ja
-	ko
-	la
-	lt
-	lv
-	mk
-	mr
-	nl
-	nb_NO
-	pl
-	pt
-	pt_BR
-	racv
-	ro
-	ru
-	sk
-	sl
-	sr
-	sr@latin
-	sv
-	tl
-	tr
-	vi
-	zh_CN
-	zh_TW
-)
+#first read in the space separated list
+file(STRINGS LINGUAS LANGUAGES)
+#convert all spaces into ; to have a nice "set"
+separate_arguments(LANGUAGES)
 
 # The normal domains use cpp and cfg files.
 set(NORMAL_DOMAINS
