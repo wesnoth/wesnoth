@@ -1241,6 +1241,20 @@ static int intf_get_map_size(lua_State *L)
 }
 
 /**
+ * Returns the currently selected tile.
+ * - Ret 1: x.
+ * - Ret 2: y.
+ */
+static int intf_get_selected_tile(lua_State *L)
+{
+	const map_location &loc = resources::screen->selected_hex();
+	if (!resources::game_map->on_board(loc)) return 0;
+	lua_pushinteger(L, loc.x + 1);
+	lua_pushinteger(L, loc.y + 1);
+	return 2;
+}
+
+/**
  * Gets some game_config data (__index metamethod).
  * - Arg 1: userdata (ignored).
  * - Arg 2: string containing the name of the property.
@@ -1541,6 +1555,7 @@ LuaKernel::LuaKernel()
 		{ "eval_conditional",         &intf_eval_conditional         },
 		{ "find_path",                &intf_find_path                },
 		{ "get_map_size",             &intf_get_map_size             },
+		{ "get_selected_tile",        &intf_get_selected_tile        },
 		{ "get_side",                 &intf_get_side                 },
 		{ "get_terrain",              &intf_get_terrain              },
 		{ "get_terrain_info",         &intf_get_terrain_info         },
