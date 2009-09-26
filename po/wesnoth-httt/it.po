@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-09-20 15:42+0200\n"
-"PO-Revision-Date: 2009-04-21 01:03+0200\n"
+"POT-Creation-Date: 2009-09-23 12:26+0200\n"
+"PO-Revision-Date: 2009-09-17 01:18+0300\n"
 "Last-Translator: Antonio Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -59,11 +59,10 @@ msgstr "Campione"
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:21
 msgid "(Novice level, 25 scenarios.)"
-msgstr ""
+msgstr "(Livello per principianti, 25 scenari.)"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:21
-#, fuzzy
 msgid ""
 "Fight to regain the throne of Wesnoth, of which you are the legitimate "
 "heir.\n"
@@ -72,7 +71,6 @@ msgstr ""
 "Combatti per riprendere il tuo posto sul trono di Wesnoth, del quale sei il "
 "legittimo erede.\n"
 "\n"
-"(Livello per principianti, 25 scenari.)"
 
 #. [about]
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:29
@@ -569,15 +567,14 @@ msgstr "Sopravvivi sino alla fine dei turni"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:24
-#, fuzzy
 msgid ""
 "<span color='white'>Alternative objective:</span>\n"
 "<span color='#00ff00'>Defeat the enemy leader</span> <small>(special bonus)</"
 "small>"
 msgstr ""
-"<255,255,255>Obiettivo alternativo:\n"
-"@Sconfiggi il condottiero nemico\n"
-"`(bonus speciale)"
+"<span color='white'>Obiettivo alternativo:</span>\n"
+"<span color='#00ff00'>Sconfiggi il condottiero nemico</span> <small>(bonus "
+"speciale)</small>"
 
 #. [objective]: condition=lose
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:37
@@ -1092,15 +1089,14 @@ msgstr "Sconfiggi un comandante nemico e resisti fino alla fine dei turni"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:24
-#, fuzzy
 msgid ""
 "<span color='white'>Alternative objective:</span>\n"
 "<span color='#00ff00'>Defeat all enemy leaders</span> <small>(early finish "
 "bonus)</small>"
 msgstr ""
-"<255,255,255>Obiettivo alternativo:\n"
-"@Sconfiggi tutti i condottieri nemici\n"
-"`(Bonus conclusione anticipata)"
+"<span color='white'>Obiettivo alternativo:</span>\n"
+"<span color='#00ff00'>Sconfiggi tutti i condottieri nemici</span> <small>"
+"(Bonus conclusione anticipata)</small>"
 
 #. [side]: type=Orcish Warrior, id=Dwaba-Kukai
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:58
@@ -1131,7 +1127,6 @@ msgstr "Inalai"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:197
-#, fuzzy
 msgid ""
 "So this is the Bay of Pearls. It looks like they have those merfolk working "
 "hard!"
@@ -1140,15 +1135,14 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:201
-#, fuzzy
 msgid ""
 "Indeed it does. It also looks like they have many, many troops. I should go "
 "around the bay and distract some of them. You and the rest rescue the "
 "merfolk!"
 msgstr ""
-"Infatti. Pare che i nostri nemici abbiano molte truppe qui. Farò un giro "
-"intorno alla baia per distrarne alcune. Tu libera i nereidi con l'ausilio "
-"dei nostri uomini!"
+"Infatti. Sembra anche che i nostri nemici abbiano molte truppe qui. Farò un "
+"giro intorno alla baia per distrarne alcune. Tu libera i nereidi con "
+"l'ausilio dei nostri uomini!"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:205
@@ -1162,12 +1156,11 @@ msgstr "Ma capo, perché usiamo solo pipistrelli e naga?"
 
 #. [message]: speaker=Dwaba-Kukai
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:235
-#, fuzzy
 msgid ""
 "Because we need to control the seas and the merfolk, and nagas and bats are "
 "best for doing that!"
 msgstr ""
-"Perché dobbiamo controllare i mari e le popolazioni marine, naga e "
+"Perché dobbiamo controllare i mari e le popolazioni marine, quindi naga e "
 "pipistrelli sono i più adatti per questo compito!"
 
 #. [message]: speaker=Bugg
@@ -1453,7 +1446,6 @@ msgstr ""
 
 #. [option]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:748
-#, fuzzy
 msgid "Ships? Ugh! I have been seasick for the last time. We shall walk!"
 msgstr "Navi? Ugh! Ho avuto il mal di mare l'ultima volta. Andremo a piedi!"
 
@@ -1577,6 +1569,9 @@ msgid ""
 "<span color='#00ff00'>Defeat Muff Malal</span> <small>(early finish bonus)</"
 "small>"
 msgstr ""
+"<span color='white'>Obiettivo alternativo:</span>\n"
+"<span color='#00ff00'>Sconfiggi Muff Malal</span> <small>(bonus fine "
+"anticipata)</small>"
 
 #. [side]: type=Dark Sorcerer, id=Muff Malal
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:60
@@ -1711,15 +1706,14 @@ msgstr "L'Isola dei Dannati"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:24
-#, fuzzy
 msgid ""
 "<span color='white'>Alternative objective:</span>\n"
 "<span color='#00ff00'>Defeat all enemy leaders</span> <small>(special bonus)"
 "</small>"
 msgstr ""
-"<255,255,255>Obiettivo alternativo:\n"
-"@Sconfiggi tutti i condottieri nemici\n"
-"`(bonus speciale)"
+"<span color='white'>Obiettivo alternativo:\n"
+"<span color='#00ff00'>Sconfiggi tutti i condottieri nemici</span> <small>"
+"(bonus speciale)</small>"
 
 #. [objectives]
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:32
@@ -2271,14 +2265,14 @@ msgstr "Delfador! Finalmente sei tornato! Dove sei stato?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:561
-#, fuzzy
 msgid ""
 "I have been meeting with the Ka'lian, the Great Council of the Elves. This "
 "is Kalenz, a great lord of the Northern Elves who came to the Council to "
 "offer us the support of his people."
 msgstr ""
-"Sono stato al gran consiglio degli elfi. Questo è Kalenz, uno dei signori "
-"degli elfi del nord, ed è venuto a offrirci aiuto."
+"Sono stato al Ka'lian, il gran consiglio degli elfi. Costui è Kalenz, uno "
+"dei signori degli elfi del nord, ed è venuto dal concilio per offrirci "
+"l'aiuto del suo popolo."
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:570
@@ -2296,7 +2290,6 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:580
-#, fuzzy
 msgid "The Ka'lian has met and decided: we must capture the Scepter of Fire."
 msgstr ""
 "Il consiglio si è riunito e ha preso un'importante decisione: dobbiamo "
@@ -2724,7 +2717,6 @@ msgstr ""
 # XXX controllare duelist
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:305
-#, fuzzy
 msgid ""
 "I see that your forces draw near, impostor! I'll not be defeated in my own "
 "backyard so easily... Come forth and attack, my loyal duelist!"
@@ -2772,15 +2764,14 @@ msgstr "Sopravvivi per due giorni"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:23
-#, fuzzy
 msgid ""
 "<span color='white'>Alternative objective:</span>\n"
 "<span color='#00ff00'>Eradicate the liches</span> <small>(early finish bonus)"
 "</small>"
 msgstr ""
-"<255,255,255>Obiettivo alternativo:\n"
-"@Sradica i lich\n"
-"`(Bonus conclusione anticipata)"
+"<span color='white'>Obiettivo alternativo:\n"
+"<span color='#00ff00'>Sradica i lich</span> <small>(Bonus conclusione "
+"anticipata)</small>"
 
 #. [side]: type=Lich, id=Galga
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:75
@@ -2919,7 +2910,6 @@ msgstr ""
 
 #. [message]: speaker=Moremirmu
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:379
-#, fuzzy
 msgid ""
 "You must escape the clutches of that vile Queen, my lord. If you take a "
 "course bearing north-east, on past the mountain of gryphons, you will be "
@@ -2974,7 +2964,6 @@ msgstr ""
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:416
-#, fuzzy
 msgid ""
 "The land of Wesnoth is not safe for us. The Queen's forces reach every "
 "corner. We must make haste to the north lands, across the Great River. Let "
@@ -3420,7 +3409,6 @@ msgstr "Mi stai scacciando dal campo, ma non mi hai sconfitto, impostore!"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:363
-#, fuzzy
 msgid "Water Serpent"
 msgstr "Serpente di Mare"
 
@@ -3694,7 +3682,6 @@ msgstr "Le porte dei nani"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:28
-#, fuzzy
 msgid "Move Konrad to the entrance of the dwarven tunnels"
 msgstr "Muovi Konrad all'ingresso del regno dei nani"
 
@@ -3730,7 +3717,6 @@ msgstr "Guardia reale"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:181
-#, fuzzy
 msgid "At last, this is the entrance to the dwarven tunnels."
 msgstr "Finalmente, questo è l'ingresso al regno dei nani."
 
@@ -4034,7 +4020,6 @@ msgstr "Un mostro si nascondeva nel lago!"
 
 #. [message]: role=whiner
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:638
-#, fuzzy
 msgid ""
 "The legend was true! There are always tentacled creatures hiding in the "
 "lakes near the dwarven tunnels."
@@ -5059,7 +5044,6 @@ msgstr "Una decisione da prendere"
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:16
-#, fuzzy
 msgid ""
 "The Scepter, initially dulled from decades of dust and debris, began to glow "
 "from the ruby's inner fire. Dwarvish runes on the golden handle lit up in "
@@ -5173,7 +5157,6 @@ msgstr ""
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:209
-#, fuzzy
 msgid ""
 "No, I was thinking... I don't really want to kill you. I have what I came to "
 "get. So if you promise never to come south of the Great River, I will spare "
@@ -5232,7 +5215,6 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:237
-#, fuzzy
 msgid ""
 "Then perhaps we should head east along the river, and seek refuge and rest "
 "there for a time?"
@@ -5311,7 +5293,6 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:284
-#, fuzzy
 msgid ""
 "Prince Konrad, you and your friends keep talking about avoiding the Arkan-"
 "thoria. But we can lead you down this river. With the help of us merfolk, "
@@ -5320,16 +5301,16 @@ msgid ""
 "that it will be a safe journey, because I do not know what lies ahead, but "
 "it is an option and you should consider it, my lord."
 msgstr ""
-"Principe Konrad, tu e i tuoi amici continuate a discutere di alternative al "
-"fiume, ma noi possiamo farvelo risalire. Con l'aiuto di noi Nereidi potrai "
-"raggiungere la terra degli elfi del nord molto più velocemente di qualunque "
-"altro itinerario terrestre alternativo. Non posso prometterti un tragitto "
-"sicuro, perché non so cosa si nasconde più avanti, ma questa è una "
-"alternativa che tu dovresti tenere in considerazione, mio signore. "
+"Principe Konrad, tu e i tuoi amici continuate a discutere di alternative "
+"all'Arkan-thoria, ma noi possiamo farvelo risalire. Con l'aiuto di noi "
+"Nereidi potrai raggiungere la terra degli elfi del nord molto più "
+"velocemente di qualunque altro itinerario terrestre alternativo. Non posso "
+"prometterti un tragitto sicuro, perché non so cosa si nasconde più avanti, "
+"ma questa è una alternativa che tu dovresti tenere in considerazione, mio "
+"signore. "
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:294
-#, fuzzy
 msgid ""
 "Loyal merfolk, you have served far beyond what your debt of gratitude "
 "requires. I will trust your strength and loyalty through this tribulation "
@@ -5587,7 +5568,6 @@ msgstr "Faresti bene a imparare la lezione che lui non ha imparato."
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/19a_Snow_Plains.cfg:144
-#, fuzzy
 msgid ""
 "Move along, elf, unless you enjoy making camp in this icy waste. I, for one, "
 "do not!"
@@ -5689,6 +5669,8 @@ msgid ""
 "<span color='white'>Bonus objective:</span>\n"
 "<span color='#00ff00'>Defeat all Death Knights first</span>"
 msgstr ""
+"<span color='white'>Obiettivo bonus:</span>\n"
+"<span color='#00ff00'>Sconfiggi prima tutti i Cavalieri della Morte</span>"
 
 #. [side]: type=Death Knight, id=Clarustus
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:87
@@ -5797,7 +5779,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:305
-#, fuzzy
 msgid ""
 "A final blow destroys the lich, releasing a small shock wave of energy "
 "outwards. The last Death Knight silently falls to the ground, inanimate. A "
@@ -5812,7 +5793,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:312
-#, fuzzy
 msgid ""
 "A final blow destroys the lich, releasing a small shock wave of energy "
 "outwards. The Death Knights silently fall to the ground, inanimate. A giant "
@@ -5827,7 +5807,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:321
-#, fuzzy
 msgid ""
 "A final blow destroys the lich, releasing a small shock wave of energy "
 "outwards. A giant cloud of dust bellows out as the remnants of the Lich's "
@@ -5913,7 +5892,6 @@ msgstr "Warven"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:277
-#, fuzzy
 msgid ""
 "The party traveled down the river for days, sometimes walking through the "
 "shallow water, sometimes swimming, helped by the Merfolk."
@@ -5923,7 +5901,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:282
-#, fuzzy
 msgid ""
 "One day they saw a gruesome sight - a fleet of boats and rafts sunk or "
 "shattered among the river islands. Konrad sent some of the mermen to "
@@ -5935,7 +5912,6 @@ msgstr ""
 
 #. [message]: role=merman-advisor
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:286
-#, fuzzy
 msgid ""
 "These are not proper ships, but shallow-draft boats built only recently; "
 "much of their timber is green. They were sunk in battle, not by a storm. "
@@ -5943,16 +5919,16 @@ msgid ""
 "place not long ago, perhaps only a few weeks past. We've found no survivors. "
 "One more thing...all flew the banner of the Crown of Wesnoth."
 msgstr ""
-"Sembra proprio che le navi siano state affondate nel corso di una battaglia, "
-"non da una tempesta. Tutte quelle che non sono state rovesciate sono state "
-"date alle fiamme. La battaglia non deve essere finita da molto, forse "
-"soltanto da qualche settimana. Non ci sono stati sopravvissuti. Ah, ancora "
-"una cosa... tutte le navi affondate battevano bandiera della Corona di "
-"Wesnoth. "
+"Queste non sono esattamente navi, piuttosto barche da acque basse di recente "
+"costruzione: molto del fasciame ancora è verde. Sembra proprio che le navi "
+"siano state affondate nel corso di una battaglia, non da una tempesta. Tutte "
+"quelle che non sono state rovesciate sono state date alle fiamme. La "
+"battaglia non deve essere finita da molto, forse soltanto da qualche "
+"settimana. Non ci sono stati sopravvissuti. Ah, ancora una cosa... tutte le "
+"navi affondate battevano bandiera della Corona di Wesnoth. "
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:290
-#, fuzzy
 msgid ""
 "Haven't you found any enemy boats, ones the Wesnothians were fighting "
 "against?"
@@ -5967,7 +5943,6 @@ msgstr "No. Se ce n'erano, sono sparite da molto tempo."
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:298
-#, fuzzy
 msgid "Perhaps the monsters Lord Kalenz alluded to sunk the boats."
 msgstr "Forse i mostri a cui alludeva Kalenz hanno affondato le navi."
 
@@ -6005,7 +5980,6 @@ msgstr ""
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:318
-#, fuzzy
 msgid ""
 "Then we have only two choices: to proceed down the river or to go back where "
 "we came from and fight our way through the orcs or the undead."
@@ -6015,7 +5989,6 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:322
-#, fuzzy
 msgid ""
 "We certainly have no time to go back! We must hurry to the home of the North "
 "Elves, to meet with our elven allies."
@@ -6046,7 +6019,6 @@ msgstr "Un drago! È uno grosso!"
 
 #. [message]: speaker=Keh Ohn
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:363
-#, fuzzy
 msgid ""
 "I am Keh Ohn, leader of the drakes who have settled upon these cliffs. Who "
 "are you?"
@@ -6079,7 +6051,6 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:379
-#, fuzzy
 msgid ""
 "Here? But, drakes have never been seen in Wesnoth before... Are you certain "
 "of this?"
@@ -6109,7 +6080,6 @@ msgstr ""
 
 #. [message]: speaker=Keh Ohn
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:390
-#, fuzzy
 msgid ""
 "GRROAR!! Will you silly self-centered creatures show some manners and pay "
 "some attention to me?"
@@ -6119,7 +6089,6 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:394
-#, fuzzy
 msgid ""
 "Eh... well of course, sir drake. Let me introduce myself - I am Prince "
 "Konrad, leader of the group and heir to the throne of Wesnoth."
@@ -6150,7 +6119,6 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:410
-#, fuzzy
 msgid ""
 "No...There is an ongoing civil war amongst us humans. The boats were sent by "
 "our enemies, not by us, even if they were Wesnothian boats."
@@ -6166,7 +6134,6 @@ msgstr "Il principe dice la verità."
 
 #. [message]: speaker=Keh Ohn
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:418
-#, fuzzy
 msgid ""
 "I don't know. Maybe you are telling the truth, maybe not. We drakes don't "
 "trust you. Many of our warriors died in the battle and many more are still "
@@ -6191,7 +6158,6 @@ msgstr "Se ignorate il mio avvertimento - preparatevi per la battaglia. "
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:430
-#, fuzzy
 msgid ""
 "So be it. We have to go down the river; we have no choice. We'll fight our "
 "way through if necessary."
@@ -6232,7 +6198,6 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:739
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:768
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:797
-#, fuzzy
 msgid "We've found $random gold in the drake base."
 msgstr "Abbiamo trovato $random monete d'oro nella base dei draghi."
 
@@ -6383,6 +6348,8 @@ msgid ""
 "<span color='white'>Optional objective:</span>\n"
 "<span color='#00ff00'>Rescue the sergeant</span>"
 msgstr ""
+"<span color='white'>Obiettivo opzionale:</span>\n"
+"<span color='#00ff00'>Salva il sergente</span>"
 
 #. [message]: speaker=Warven
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1116
@@ -6932,13 +6899,13 @@ msgstr "Trova l'uscita dal sottosuolo e sposta Konrad su di essa"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:28
-#, fuzzy
 msgid ""
 "<span color='white'>Optional objective:</span>\n"
 "<span color='#00ff00'>Help the Wose fend off the undead attack</span>"
 msgstr ""
-"<255,255,255>Obiettivo facoltativo:\n"
-"@Aiuta i Wose a respingere l'attacco dei non-morti"
+"<span color='white'>Obiettivo facoltativo:</span>\n"
+"<span color='#00ff00'>Aiuta i Wose a respingere l'attacco dei non-morti</"
+"span>"
 
 #. [objective]: condition=lose
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:48
@@ -7592,9 +7559,8 @@ msgstr "La prova del clan"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:39
-#, fuzzy
 msgid "Defeat $units_to_slay enemy units"
-msgstr "Sconfiggi 25 unità"
+msgstr "Sconfiggi $units_to_slay unità"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:44
@@ -7602,6 +7568,8 @@ msgid ""
 "<span color='white'>Bonus objective:</span>\n"
 "<span color='green'>Defeat all enemy leaders</span>"
 msgstr ""
+"<span color='white'>Obiettivo bonus:</span>\n"
+"<span color='green'>Sconfiggi tutti i comandanti avversari</span>"
 
 #. [side]: type=Grand Knight, id=Sir Alric
 #. [side]: type=Grand Knight, id=Sir Ruga
@@ -7895,7 +7863,7 @@ msgstr ""
 #. [print]
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:469
 msgid "Still $units_to_slay clan members to defeat!"
-msgstr ""
+msgstr "Ci sono $units_to_slay membri del clan da sconfiggere!"
 
 #. [scenario]: id=24_Battle_for_Wesnoth
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:4
@@ -8163,7 +8131,6 @@ msgstr "Come ho ucciso i tuoi figli, così ucciderò te."
 
 #. [message]: speaker=Asheviere
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:352
-#, fuzzy
 msgid ""
 "You were always defiant, wizard, and no one has thwarted my plans as "
 "determinedly as you."
@@ -8173,14 +8140,13 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:356
-#, fuzzy
 msgid ""
 "I have always been a humble servant of the Crown, and remain such even now."
-msgstr "Sono sempre stato un umile servo della corona, anche ora."
+msgstr ""
+"Sono sempre stato un umile servo della corona, e tale mi ritengo tuttora."
 
 #. [message]: speaker=Asheviere
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:360
-#, fuzzy
 msgid ""
 "Delfador! You utterly disgust me, you sniveling worm. How dare you confront "
 "me, your queen?"
@@ -8190,27 +8156,24 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:365
-#, fuzzy
 msgid "How dare I? I High Provost of the Council of Archmagi..."
 msgstr ""
 "Come oso? Io sono Delfador, alto prevosto del consiglio degli arcimaghi..."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:370
-#, fuzzy
 msgid ""
 "... bearer of the staff of An-Usrukhar, guardian of the book of Crelanu ..."
 msgstr "...portatore del bastone di Emeric, custode del libro di Crelanu..."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:374
-#, fuzzy
 msgid ""
 "... Mage Protector of The Kingdom Of The Peoples Of The West-North, Chief "
 "Advisor to the <i>Crown</i>..."
 msgstr ""
 "...mago protettore del regno delle genti del nord-ovest, consigliere capo "
-"della CORONA..."
+"della <i>corona</i>..."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:378
@@ -8218,11 +8181,13 @@ msgid ""
 "... and personal counselor to my King and my <i>friend</i>, Garard the "
 "Second, who you most <i>foully</i> betrayed..."
 msgstr ""
+"... e consigliere personale del mio Re e mio <i>amico</i>, Garad secondo, "
+"che tu hai <i>slealmente</i> tradito..."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:382
 msgid "I am Delfador the Great and TODAY YOU MEET YOUR ATONEMENT!"
-msgstr ""
+msgstr "Io sono Delfador il grande e TU OGGI ESPIERAI TUTTE LE TUE COLPE!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:387
@@ -8371,7 +8336,6 @@ msgstr "sciabola"
 #: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:81
 #: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:195
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:164
-#, fuzzy
 msgid "sceptre of fire"
 msgstr "scettro di fuoco"
 
@@ -8695,7 +8659,6 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:413
-#, fuzzy
 msgid "Here it is at last, I have the Sceptre!"
 msgstr "È qui finalmente, ho lo scettro!"
 
@@ -8712,7 +8675,6 @@ msgstr "Credo che se viaggiando un po' più a nord dovremmo poter uscire."
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:444
-#, fuzzy
 msgid "At last! I have the Sceptre!"
 msgstr "Finalmente! Ho lo scettro!"
 
