@@ -1,96 +1,92 @@
-# #-#-#-#-#  wesnoth-editor.cpp.pot (Battle for Wesnoth VERSION)  #-#-#-#-#
-# Vietnamese translations for Battle for Wesnoth package.
-# Copyright (C) 2009 Wesnoth development team
-# This file is distributed under the same license as the Battle for Wesnoth package.
-# Automatically generated, 2009.
-#
+# Phạm Thành Nam <phamthanhnam.ptn@gmail.com>, 2009.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.5.7+svn\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-09-23 12:26+0200\n"
-"PO-Revision-Date: 2009-09-06 15:04+0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2009-09-24 10:23+0700\n"
+"Last-Translator: Phạm Thành Nam <phamthanhnam.ptn@gmail.com>\n"
+"Language-Team: Vietnamese <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:5
 msgid "Single Hex"
-msgstr ""
+msgstr "Lục giác đơn"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:15
 msgid "Radius 1 Hex"
-msgstr ""
+msgstr "Lục giác bán kính 1"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:25
 msgid "Radius 2 Hex"
-msgstr ""
+msgstr "Lục giác bán kính 2"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:55
 msgid "Hex Line NW-SE"
-msgstr ""
+msgstr "Đường lục giác TB-ĐN"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:10
 msgid "all"
-msgstr ""
+msgstr "tất cả"
 
 #. [editor_group]: id=water
 #: data/core/editor/terrain-groups.cfg:16
 msgid "water"
-msgstr ""
+msgstr "nước"
 
 #. [editor_group]: id=flat
 #: data/core/editor/terrain-groups.cfg:23
 msgid "flat"
-msgstr ""
+msgstr "đất phẳng"
 
 #. [editor_group]: id=desert
 #: data/core/editor/terrain-groups.cfg:30
 msgid "desert"
-msgstr ""
+msgstr "sa mạc"
 
 #. [editor_group]: id=forest
 #: data/core/editor/terrain-groups.cfg:37
 msgid "forest"
-msgstr ""
+msgstr "rừng"
 
 #. [editor_group]: id=frozen
 #: data/core/editor/terrain-groups.cfg:44
 msgid "frozen"
-msgstr ""
+msgstr "đóng băng"
 
 #. [editor_group]: id=rough
 #: data/core/editor/terrain-groups.cfg:51
 msgid "rough"
-msgstr ""
+msgstr "lởm chởm"
 
 #. [editor_group]: id=cave
 #: data/core/editor/terrain-groups.cfg:58
 msgid "cave"
-msgstr ""
+msgstr "hang động"
 
 #. [editor_group]: id=village
 #: data/core/editor/terrain-groups.cfg:65
 msgid "village"
-msgstr ""
+msgstr "làng"
 
 #. [editor_group]: id=castle
 #: data/core/editor/terrain-groups.cfg:72
 msgid "castle"
-msgstr ""
+msgstr "lâu đài"
 
 #. [editor_group]: id=special
 #: data/core/editor/terrain-groups.cfg:79
 msgid "special"
-msgstr ""
+msgstr "đặc biệt"
 
 #. [editor_tool_hint]: id=editor-tool-paint
 #. [editor_tool_hint]: id=editor-tool-fill
@@ -102,6 +98,8 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
+"Sử dụng nút chuột trái/phải để vẽ địa hình tiền/hậu cảnh. Nhấn Shift để chỉ "
+"vẽ lớp cơ sở. Ctrl+nhấn để lấy mẫu địa hình dưới con trỏ."
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
@@ -110,6 +108,8 @@ msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
 msgstr ""
+"Nút chuột trái chọn, nút chuột phải bỏ chọn. Giữ Shift để chọn bằng đũa thần "
+"các ô có cùng địa hình."
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
 #. [menu]: id=start_position_button_editor
@@ -119,6 +119,9 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
+"Nút chuột trái hiển thị vùng chọn đấu thủ, nút chuột phải xóa vùng chọn. Các "
+"phím số cuộn đến vị trí vị trí ban đầu, alt+số thiết lập vị trí ban đầu "
+"tương ứng dưới con trỏ, delete xóa."
 
 #. [editor_tool_hint]: id=editor-paste
 #: data/core/editor/tool-hints.cfg:30
@@ -126,224 +129,236 @@ msgid ""
 "Click to paste, zoom out for more accuracy when pasting large areas. Use the "
 "edit menu to transform the clipboard (rotate, mirror)."
 msgstr ""
+"Nhấn để dán, thu nhỏ để chính xác hơn khi dán những vùng lớn. Sử dụng trình "
+"đơn hiệu chỉnh để chuyển đổi bảng chọn (quay, lật)."
 
 #. [menu]: id=menu-editor-file
 #: data/themes/editor.cfg:120
 msgid "File"
-msgstr ""
+msgstr "Tập tin"
 
 #. [menu]: id=menu-editor-edit
 #: data/themes/editor.cfg:131
 msgid "Edit"
-msgstr ""
+msgstr "Hiệu chỉnh"
 
 #. [menu]: id=menu-editor-map
 #: data/themes/editor.cfg:141
 msgid "Map"
-msgstr ""
+msgstr "Bản đồ"
 
 #. [menu]: id=menu-editor-window
 #: data/themes/editor.cfg:151
 msgid "Window"
-msgstr ""
+msgstr "Cửa sổ"
 
 #. [label]: id=villages-icon
 #: data/themes/editor.cfg:270
 msgid "villages"
-msgstr ""
+msgstr "làng"
 
 #: src/editor/action.cpp:32
 msgid "Error creating action object"
-msgstr ""
+msgstr "Lỗi khi tạo đối tượng hành động"
 
 #: src/editor/action.cpp:36
 msgid "Action not implemented"
-msgstr ""
+msgstr "Hành động không được thực hiện"
 
 #: src/editor/editor_controller.cpp:120
 msgid "Quit Editor"
-msgstr ""
+msgstr "Thoát trình hiệu chỉnh"
 
 #: src/editor/editor_controller.cpp:275
 msgid "Fatal error"
-msgstr ""
+msgstr "Lỗi nghiêm trọng"
 
 #: src/editor/editor_controller.cpp:300 src/editor/editor_controller.cpp:1060
 msgid "(New Map)"
-msgstr ""
+msgstr "(Bản đồ mới)"
 
 #: src/editor/editor_controller.cpp:306
 msgid "Do you really want to quit?"
-msgstr ""
+msgstr "Bạn có thực sự muốn thoát không?"
 
 #: src/editor/editor_controller.cpp:308
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr ""
+"Bạn có thực sự muốn thoát không? Các thay đổi trong bản đồ kể từ lần lưu "
+"cuối cùng sẽ bị mất."
 
 #: src/editor/editor_controller.cpp:310
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr ""
+"Bạn có thực sự muốn thoát không? Các bản đồ sau đã bị sửa đổi và mọi thay "
+"đổi kể từ lần lưu cuối cùng sẽ bị mất:"
 
 #: src/editor/editor_controller.cpp:315
 msgid "Quit"
-msgstr ""
+msgstr "Thoát"
 
 #: src/editor/editor_controller.cpp:371
 msgid "No editor time-of-day found."
-msgstr ""
+msgstr "Không tìm thấy thời điểm trong ngày của trình hiệu chỉnh."
 
 #: src/editor/editor_controller.cpp:407
 msgid "Unsaved Changes"
-msgstr ""
+msgstr "Thay đổi không được lưu"
 
 #: src/editor/editor_controller.cpp:408
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
+"Bạn có thực sự muốn loại bỏ tất cả các thay đổi bạn đã thực hiện với bản đồ "
+"kể từ lần lưu cuối cùng không?"
 
 #: src/editor/editor_controller.cpp:426
 msgid "Choose a Map to Open"
-msgstr ""
+msgstr "Chọn bản đồ cần mở"
 
 #: src/editor/editor_controller.cpp:461
 msgid "Save the Map As"
-msgstr ""
+msgstr "Lưu bản đồ thành"
 
 #: src/editor/editor_controller.cpp:465
 msgid "The file already exists. Do you want to overwrite it?"
-msgstr ""
+msgstr "Tập tin đã tồn tại. Bạn có muốn ghi đè lên nó không?"
 
 #: src/editor/editor_controller.cpp:482
 msgid "No random map generators found."
-msgstr ""
+msgstr "Không tìm thấy trình tạo bản đồ ngẫu nhiên."
 
 #: src/editor/editor_controller.cpp:495 src/editor/editor_controller.cpp:499
 msgid "Map creation failed."
-msgstr ""
+msgstr "Tạo bản đồ thất bại."
 
 #: src/editor/editor_controller.cpp:514
 msgid "Choose a mask to apply"
-msgstr ""
+msgstr "Chọn mặt nạ cần áp dụng"
 
 #: src/editor/editor_controller.cpp:521
 msgid "Error loading mask"
-msgstr ""
+msgstr "Lỗi khi tải mặt nạ"
 
 #: src/editor/editor_controller.cpp:536
 msgid "Choose target map"
-msgstr ""
+msgstr "Chọn bản đồ đích"
 
 #: src/editor/editor_controller.cpp:543 src/editor/editor_controller.cpp:707
 msgid "Error loading map"
-msgstr ""
+msgstr "Lỗi khi tải bản đồ"
 
 #: src/editor/editor_controller.cpp:621 src/editor/editor_controller.cpp:663
 msgid "This map is already open."
-msgstr ""
+msgstr "Bản đồ này đã được mở."
 
 #: src/editor/editor_controller.cpp:642
 msgid "Map saved."
-msgstr ""
+msgstr "Đã lưu bản đồ."
 
 #: src/editor/editor_controller.cpp:686
 msgid "Loaded embedded map data"
-msgstr ""
+msgstr "Dữ liệu bản đồ nhúng đã tải"
 
 #: src/editor/editor_controller.cpp:687 src/editor/editor_controller.cpp:701
 msgid "Map loaded from scenario"
-msgstr ""
+msgstr "Bản đồ tải từ kịch bản"
 
 #: src/editor/editor_controller.cpp:697
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
 msgstr ""
+"Tập tin bản đồ tham chiếu đã tải:\n"
+"$new"
 
 #: src/editor/editor_controller.cpp:1090
 msgid "Undo"
-msgstr ""
+msgstr "Đảo ngược"
 
 #: src/editor/editor_controller.cpp:1092
 msgid "Can't Undo"
-msgstr ""
+msgstr "Không thể đảo ngược"
 
 #: src/editor/editor_controller.cpp:1096
 msgid "Redo"
-msgstr ""
+msgstr "Làm lại"
 
 #: src/editor/editor_controller.cpp:1098
 msgid "Can't Redo"
-msgstr ""
+msgstr "Không thể làm lại"
 
 #: src/editor/editor_controller.cpp:1103
 msgid "Auto-update Terrain Transitions: Yes"
-msgstr ""
+msgstr "Tự động cập nhật chuyển tiếp địa hình: Có"
 
 #: src/editor/editor_controller.cpp:1106
 msgid "Auto-update Terrain Transitions: Partial"
-msgstr ""
+msgstr "Tự động cập nhật chuyển tiếp địa hình: Một phần"
 
 #: src/editor/editor_controller.cpp:1110
 msgid "Auto-update Terrain Transitions: No"
-msgstr ""
+msgstr "Tự động cập nhật chuyển tiếp địa hình: Không"
 
 #: src/editor/editor_map.cpp:149 src/editor/mouse_action.cpp:439
 msgid "Player"
-msgstr ""
+msgstr "Đấu thủ"
 
 #: src/editor/editor_map.cpp:268
 msgid "The size of the target map is different from the current map"
-msgstr ""
+msgstr "Kích thước của bản đồ đích khác với bản đồ hiện thời"
 
 #: src/editor/editor_palettes.cpp:506
 msgid "(non-core)"
-msgstr ""
+msgstr "(không lõi)"
 
 #: src/editor/editor_palettes.cpp:507
 msgid "Will not work in game without extra care."
-msgstr ""
+msgstr "Sẽ không hoạt động trong trò chơi nếu không chú ý thêm."
 
 #: src/editor/editor_palettes.cpp:532
 msgid "FG"
-msgstr ""
+msgstr "TC"
 
 #: src/editor/editor_palettes.cpp:534
 msgid "BG"
-msgstr ""
+msgstr "HC"
 
 #: src/editor/map_context.cpp:70
 msgid "File not found"
-msgstr ""
+msgstr "Không tìm thấy tập tin"
 
 #: src/editor/map_context.cpp:84
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 msgstr ""
+"Tập tin bản đồ trông giống như một kịch bản, nhưng giá trị map_data không "
+"chỉ đến một tập tin tồn tại."
 
 #: src/editor/map_context.cpp:99
 msgid "Empty map file"
-msgstr ""
+msgstr "Tập tin bản đồ rỗng"
 
 #: src/editor/map_context.cpp:219
 msgid "Could not save into scenario"
-msgstr ""
+msgstr "Không thể lưu vào kịch bản"
 
 #: src/editor/map_context.cpp:226
 msgid "Could not save the map: $msg"
-msgstr ""
+msgstr "Không thể lưu bản đồ: $msg"
 
 #: src/editor/mouse_action.cpp:436
 msgid "(Player)^None"
-msgstr ""
+msgstr "Không có"
 
 #: src/editor/mouse_action.cpp:443
 msgid "Choose player"
-msgstr ""
+msgstr "Chọn đấu thủ"
 
 #: src/editor/mouse_action.cpp:444
 msgid ""
@@ -352,7 +367,10 @@ msgid ""
 "the cursor. Pressing a number key by itself will scroll to that player's "
 "starting position."
 msgstr ""
+"Đấu thủ nào sẽ bắt đầu ở đây? Bạn có thể sử dụng alt và một phím số để thiết "
+"lập vị trí ban đầu cho một đấu thủ, và del để xóa vị trí ban đầu dưới con "
+"trỏ. Ấn một phím số sẽ cuộn đến vị trí ban đầu của đấu thủ đó."
 
 #: src/gui/dialogs/editor_settings.cpp:161
 msgid "Custom setting"
-msgstr ""
+msgstr "Thiết lập tùy chỉnh"

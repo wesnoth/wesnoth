@@ -1,10 +1,11 @@
+# Vietnamese translation for Wesnoth
 # Phạm Thành Nam <phamthanhnam.ptn@gmail.com>, 2009.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-09-23 12:26+0200\n"
-"PO-Revision-Date: 2009-08-30 21:11+0700\n"
+"PO-Revision-Date: 2009-09-26 15:45+0700\n"
 "Last-Translator: Phạm Thành Nam <phamthanhnam.ptn@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
 "MIME-Version: 1.0\n"
@@ -388,7 +389,7 @@ msgstr "Đầm lầy"
 #. [terrain_type]: id=lit
 #: data/core/terrain.cfg:890
 msgid "Lit"
-msgstr "Được chiếu sáng"
+msgstr "Sáng"
 
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:900
@@ -408,7 +409,7 @@ msgstr "Lùm nấm"
 #. [terrain_type]: id=fungus_beam
 #: data/core/terrain.cfg:936
 msgid "Mushroom Grove Lit"
-msgstr "Lùm nấm được chiếu sáng"
+msgstr "Lùm nấm sáng"
 
 #. [terrain_type]: id=rocky_cave
 #: data/core/terrain.cfg:947
@@ -646,13 +647,13 @@ msgstr "Bản đồ mới"
 #. [label]
 #: data/gui/default/window/editor_new_map.cfg:46 src/mapgen_dialog.cpp:120
 msgid "Width:"
-msgstr "Chiều rộng"
+msgstr "Chiều rộng:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_new_map.cfg:73 src/mapgen_dialog.cpp:121
 msgid "Height:"
-msgstr "Chiều cao"
+msgstr "Chiều cao:"
 
 #. [button]: id=ok
 #: data/gui/default/window/editor_new_map.cfg:100
@@ -897,7 +898,7 @@ msgstr "Xóa"
 #. [toggle_button]: id=show_replay
 #: data/gui/default/window/game_load.cfg:370
 msgid "Show replay"
-msgstr "Hiện phát lại"
+msgstr "Hiện bản phát lại"
 
 #. [toggle_button]: id=cancel_orders
 #: data/gui/default/window/game_load.cfg:388
@@ -953,24 +954,22 @@ msgstr "Bản lưu đã tồn tại. Bạn có muốn ghi đè lên nó không?"
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:38
 msgid "Gamestate Inspector"
-msgstr ""
+msgstr "Trình kiểm tra trạng thái trò chơi"
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:92
-#, fuzzy
 msgid "Types"
 msgstr "Kiểu"
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:103
-#, fuzzy
 msgid "Content"
-msgstr "Kết nối"
+msgstr "Nội dung"
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:114
 msgid "Inspection window"
-msgstr ""
+msgstr "Cửa sổ kiểm tra"
 
 #. [label]: id=unit_type
 #. [label]: id=typename
@@ -982,7 +981,7 @@ msgstr "Kiểu"
 #. [label]: id=name
 #: data/gui/default/window/gamestate_inspector.cfg:206
 msgid "Variable"
-msgstr ""
+msgstr "Biến"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -1005,7 +1004,7 @@ msgstr "Ngôn ngữ"
 #. [label]
 #: data/gui/default/window/language_selection.cfg:50
 msgid "Choose your preferred language:"
-msgstr "Chọn ngôn ngữ của bạn:"
+msgstr "Chọn ngôn ngữ ưa thích của bạn:"
 
 #. [button]: id=ok
 #: data/gui/default/window/language_selection.cfg:118
@@ -1090,7 +1089,7 @@ msgstr "Phòng gặp gỡ"
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:335
 msgid "Other games"
-msgstr "Các trò chơi khác"
+msgstr "Trò chơi khác"
 
 #. [label]: id=room
 #: data/gui/default/window/lobby_main.cfg:357
@@ -1125,7 +1124,7 @@ msgstr "Không bỏ qua"
 #. [toggle_button]: id=filter_vacant_slots
 #: data/gui/default/window/lobby_main.cfg:482
 msgid "Vacant slots"
-msgstr "Số khe trống"
+msgstr "Khe trống"
 
 #. [toggle_button]: id=filter_invert
 #: data/gui/default/window/lobby_main.cfg:488
@@ -1189,7 +1188,7 @@ msgstr "Thông tin đấu thủ - "
 #. [button]: id=start_whisper
 #: data/gui/default/window/lobby_player_info.cfg:62
 msgid "Send private message"
-msgstr "Gửi tin nhắn bí mật"
+msgstr "Gửi tin nhắn riêng tư"
 
 #. [button]: id=add_to_friends
 #: data/gui/default/window/lobby_player_info.cfg:91
@@ -1219,7 +1218,7 @@ msgstr "Kiểm tra trạng thái"
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:147
 msgid "Kick / ban reason:"
-msgstr "Lý do đuổi / cấm:ý "
+msgstr "Lý do đuổi / cấm:"
 
 #. [button]: id=kick
 #: data/gui/default/window/lobby_player_info.cfg:160
@@ -1255,7 +1254,7 @@ msgstr "Tin nhắn:"
 #. [button]: id=ok
 #: data/gui/default/window/mp_cmd_wrapper.cfg:93
 msgid "Send a private message"
-msgstr "Gửi tin nhắn bí mật"
+msgstr "Gửi tin nhắn riêng tư"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:133
@@ -1296,7 +1295,7 @@ msgstr "Lý do:"
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:315
 msgid "Time:"
-msgstr "Thời gian"
+msgstr "Thời gian:"
 
 #. [button]: id=status
 #: data/gui/default/window/mp_cmd_wrapper.cfg:366
@@ -1379,7 +1378,7 @@ msgstr "Sương mù chiến tranh"
 #. [toggle_button]: id=random_start_time
 #: data/gui/default/window/mp_create_game.cfg:493
 msgid "Random start time"
-msgstr "Thời điểm bắt đầu ngẫu nhiên"
+msgstr "Thời điểm ban đầu ngẫu nhiên"
 
 #. [button]: id=ok
 #: data/gui/default/window/mp_create_game.cfg:535
@@ -1417,7 +1416,7 @@ msgstr "Lưu mật khẩu vào tùy thích (văn bản không mã hóa)"
 #. [button]: id=password_reminder
 #: data/gui/default/window/mp_login.cfg:248
 msgid "Password Reminder"
-msgstr "Nhắc nhở mật khẩu"
+msgstr "Trình nhắc nhở mật khẩu"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -1439,9 +1438,10 @@ msgid ""
 "The Battle for Wesnoth forum can be found at http://www.wesnoth.org/forum/"
 msgstr ""
 "Bạn phải đăng nhập vào máy chủ nhiều đấu thủ chính thức bằng tên người dùng "
-"trên diễn đàn và mật khẩu của bạn.\n"
+"và mật khẩu trên diễn đàn của bạn.\n"
 "Chú ý rằng đăng ký là không bắt buộc để tham gia máy chủ: bạn chỉ cần cung "
 "cấp mật khẩu nếu bạn muốn sử dụng một tên người dùng đã đăng ký.\n"
+"\n"
 "Diễn đàn Trận chiến giành Wesnoth ở http://www.wesnoth.org/forum/"
 
 #. [column]
@@ -1452,7 +1452,7 @@ msgstr "Tham gia máy chủ chính thức"
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:139
 msgid "Log on to the official Wesnoth multiplayer server"
-msgstr "Đăng nhập vào máy chủ Wesnoth nhiều đấu thủ chính thức"
+msgstr "Đăng nhập vào máy chủ nhiều đấu thủ Wesnoth chính thức"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:149
@@ -1477,9 +1477,7 @@ msgstr "Trò chơi cục bộ"
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:169
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
-msgstr ""
-"Chơi trò chơi nhiều đấu thủ với trí tuệ nhân tạo hoặc đấu thủ bình thường "
-"trên cùng một máy"
+msgstr "Chơi trò chơi nhiều đấu thủ với máy tính hoặc người trên cùng một máy"
 
 #. [label]: id=address
 #: data/gui/default/window/mp_server_list.cfg:113
@@ -1597,7 +1595,7 @@ msgstr "Toàn màn hình"
 
 #: src/game_preferences_display.cpp:157
 msgid "Enable scroll tracking of unit actions"
-msgstr "Cho hiệu lực theo dõi bằng cách cuộn các hành động của đơn vị"
+msgstr "Cho phép theo dõi hành động của đơn vị"
 
 #: src/game_preferences_display.cpp:158
 msgid "Accelerated Speed"
@@ -1621,7 +1619,7 @@ msgstr "Xóa bản lưu tự động khi chiến thắng 1ĐT/NĐT hoặc thua c
 
 #: src/game_preferences_display.cpp:163
 msgid "Do Not Show Lobby Joins"
-msgstr "Không hiện sự kiện tham gia trong phòng gặp gỡ"
+msgstr "Không hiện sự kiện tham gia phòng gặp gỡ"
 
 #: src/game_preferences_display.cpp:164
 msgid "Show Lobby Joins Of Friends Only"
@@ -1629,7 +1627,7 @@ msgstr "Chỉ hiện sự kiện tham gia phòng gặp gỡ của bạn bè"
 
 #: src/game_preferences_display.cpp:165
 msgid "Show All Lobby Joins"
-msgstr "Hiện mọi sự kiện tham gia trong phòng gặp gỡ"
+msgstr "Hiện mọi sự kiện tham gia phòng gặp gỡ"
 
 #: src/game_preferences_display.cpp:166
 msgid "Sort Lobby List"
@@ -1689,7 +1687,7 @@ msgstr "Phím nóng"
 
 #: src/game_preferences_display.cpp:184
 msgid "Reverse Time Graphics"
-msgstr "Hình ảnh thời gian đảo ngược "
+msgstr "Đảo ngược hình ảnh thời gian"
 
 #: src/game_preferences_display.cpp:186
 msgid "Sound effects"
@@ -1701,7 +1699,7 @@ msgstr "Âm nhạc"
 
 #: src/game_preferences_display.cpp:188
 msgid "Chat Timestamping"
-msgstr "Nhãn thời gian chat"
+msgstr "Nhãn thời gian tán gẫu"
 
 #: src/game_preferences_display.cpp:189
 msgid "sound^Advanced Options"
@@ -1801,11 +1799,11 @@ msgstr "Thay đổi tốc độ cuộn quanh bản đồ"
 
 #: src/game_preferences_display.cpp:287 src/game_preferences_display.cpp:289
 msgid "Set the amount of chat lines shown"
-msgstr "Thiết lập số dòng chat nhìn thấy"
+msgstr "Thiết lập số dòng tán gẫu được hiển thị"
 
 #: src/game_preferences_display.cpp:292
 msgid "Add a timestamp to chat messages"
-msgstr "Thêm nhãn thời gian vào tin nhắn chat"
+msgstr "Thêm nhãn thời gian vào tin nhắn tán gẫu"
 
 #: src/game_preferences_display.cpp:295
 msgid "Choose whether the game should run full screen or in a window"
@@ -1848,7 +1846,7 @@ msgstr "Phủ lưới lên trên bản đồ"
 
 #: src/game_preferences_display.cpp:347
 msgid "Sort the player list in the lobby by player groups"
-msgstr "Sắp xếp danh sách đấu thủ trong phòng gặp gỡ theo nhóm đấu thủ"
+msgstr "Sắp xếp danh sách đấu thủ trong phòng gặp gỡ theo từng nhóm"
 
 #: src/game_preferences_display.cpp:350
 msgid "Show icons in front of the player names in the lobby."
@@ -1860,23 +1858,21 @@ msgstr "Hủy đánh dấu để xóa mật khẩu đã lưu (khi thoát)."
 
 #: src/game_preferences_display.cpp:356
 msgid "Do not show messages about players joining the multiplayer lobby"
-msgstr ""
-"Không hiện tin nhắn về những đấu thủ tham gia phòng gặp gỡ nhiều đấu thủ"
+msgstr "Không hiện tin nhắn về những đấu thủ tham gia phòng gặp gỡ"
 
 #: src/game_preferences_display.cpp:358
 msgid "Show messages about your friends joining the multiplayer lobby"
-msgstr "Hiện tin nhắn về bạn bè của bạn tham gia phòng gặp gỡ nhiều đấu thủ"
+msgstr "Hiện tin nhắn về bạn bè của bạn tham gia phòng gặp gỡ"
 
 #: src/game_preferences_display.cpp:360
 msgid "Show messages about all players joining the multiplayer lobby"
-msgstr ""
-"Hiện tin nhắn về tất cả mọi đấu thủ tham gia phòng gặp gỡ nhiều đấu thủ"
+msgstr "Hiện tin nhắn về tất cả các đấu thủ tham gia phòng gặp gỡ"
 
 #: src/game_preferences_display.cpp:362
 msgid "Find and set path to MP server to host LAN games."
 msgstr ""
-"Tìm và thiết lập đường dẫn đến trình phục vụ NĐT để làm chủ các trò chơi "
-"trên mạng cục bộ."
+"Tìm và thiết lập đường dẫn đến trình phục vụ NĐT để làm chủ trò chơi trên "
+"mạng cục bộ."
 
 #: src/game_preferences_display.cpp:363
 msgid "View and edit your friends and ignores list"
@@ -1960,7 +1956,7 @@ msgstr "vô hạn"
 
 #: src/game_preferences_display.cpp:875
 msgid "Chat Lines: "
-msgstr "Số dòng chat: "
+msgstr "Số dòng tán gẫu: "
 
 #: src/game_preferences_display.cpp:897 src/game_preferences_display.cpp:905
 msgid "Invalid username"
@@ -2004,16 +2000,16 @@ msgstr "Tùy thích sắc thái đã lưu: "
 
 #: src/game_preferences_display.cpp:1209
 msgid "New theme will take effect on next new or loaded game."
-msgstr "Sắc thái mới sẽ có hiệu lực ở trò chơi mới hoặc tải lại kế tiếp"
+msgstr "Sắc thái mới sẽ có hiệu lực ở trò chơi mới hoặc tải lại kế tiếp."
 
 #: src/game_preferences_display.cpp:1213
 msgid "No known themes. Try changing from within an existing game."
 msgstr ""
-"Không có sắc thái nào. Thử thay đổi từ bên trong một trò chơi đang tồn tại."
+"Không có sắc thái nào. Thử thay đổi từ bên trong một trò chơi đang chạy."
 
 #: src/game_preferences_display.cpp:1256
 msgid "Find $filename server binary to host networked games"
-msgstr "Tìm trình phục vụ $filename để làm chủ trò chơi mạng"
+msgstr "Tìm trình phục vụ nhị phân $filename để làm chủ trò chơi mạng"
 
 #: src/gui/auxiliary/canvas.cpp:356
 msgid "Line doesn't fit on canvas."
@@ -2037,7 +2033,7 @@ msgstr "Nhóm '$id' đã liên kết có nhiều định nghĩa."
 
 #: src/gui/auxiliary/window_builder.cpp:198 src/gui/widgets/settings.cpp:445
 msgid "No resolution defined."
-msgstr "Không xác định được độ phân giải nào."
+msgstr "Không xác định được độ phân giải."
 
 #: src/gui/auxiliary/window_builder.cpp:305
 #: src/gui/auxiliary/window_builder/panel.cpp:35
@@ -2046,15 +2042,15 @@ msgstr "Không xác định được độ phân giải nào."
 #: src/gui/widgets/settings.cpp:901 src/gui/widgets/settings.cpp:944
 #: src/gui/widgets/settings.cpp:1059
 msgid "No grid defined."
-msgstr "Không xác định được lưới nào."
+msgstr "Không xác định được lưới."
 
 #: src/gui/auxiliary/window_builder.cpp:336
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
-msgstr "Nhóm '$id' đã liên kết cần khóa 'fixed_width' hoặc 'fixed_height'.."
+msgstr "Nhóm '$id' đã liên kết cần khóa 'fixed_width' hoặc 'fixed_height'."
 
 #: src/gui/auxiliary/window_builder.cpp:435
 msgid "A row must have a column."
-msgstr "Một hàng phải có một cột."
+msgstr "Hàng phải có cột."
 
 #: src/gui/auxiliary/window_builder.cpp:436
 msgid "Number of columns differ."
@@ -2064,7 +2060,7 @@ msgstr "Số cột sai khác."
 #: src/gui/auxiliary/window_builder/listbox.cpp:51
 #: src/gui/auxiliary/window_builder/scrollbar_panel.cpp:40
 msgid "No list defined."
-msgstr "Không xác định được danh sách nào."
+msgstr "Không xác định được danh sách."
 
 #: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:45
 #: src/gui/auxiliary/window_builder/listbox.cpp:55
@@ -2080,7 +2076,7 @@ msgstr "'list_data' phải có cùng số cột với 'list_definition'."
 
 #: src/gui/auxiliary/window_builder/multi_page.cpp:37
 msgid "No page defined."
-msgstr "Không xác định được trang nào."
+msgstr "Không xác định được trang."
 
 #: src/gui/auxiliary/window_builder/slider.cpp:66
 msgid "The number of value_labels and values don't match."
@@ -2088,7 +2084,7 @@ msgstr "Số value_labels và values không khớp nhau."
 
 #: src/gui/auxiliary/window_builder/stacked_widget.cpp:35
 msgid "No stack defined."
-msgstr "Không xác định được ngăn xếp nào."
+msgstr "Không xác định được ngăn xếp."
 
 #: src/gui/dialogs/game_load.cpp:232
 msgid "#(Invalid)"
@@ -2164,15 +2160,15 @@ msgstr "Phiên bản"
 
 #: src/gui/widgets/helper.cpp:170
 msgid "Mandatory widget '$id' hasn't been defined."
-msgstr "Không xác định widget bắt buộc '$id'."
+msgstr "Không xác định được widget bắt buộc '$id'."
 
 #: src/gui/widgets/settings.cpp:144
 msgid "No default gui defined."
-msgstr "Không xác định được GUI mặc định nào."
+msgstr "Không xác định được GDND mặc định."
 
 #: src/gui/widgets/settings.cpp:304
 msgid "Window not defined."
-msgstr "Không xác định cửa sổ."
+msgstr "Không xác định được cửa sổ."
 
 #: src/gui/widgets/settings.cpp:401
 msgid ""
@@ -2181,11 +2177,11 @@ msgstr "Định nghĩa widget '$definition' không chứa định nghĩa cho '$i
 
 #: src/gui/widgets/settings.cpp:471
 msgid "No state or draw section defined."
-msgstr "Không xác định được trạng thái hoặc vùng vẽ nào."
+msgstr "Không xác định được trạng thái hoặc vùng vẽ."
 
 #: src/gui/widgets/window.cpp:732
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
-msgstr ""
+msgstr "Nhấn thải hồi cần một nút 'click_dismiss' hoặc 'ok'."
 
 #: src/gui/widgets/window.cpp:757 src/gui/widgets/window.cpp:790
 #: src/tests/gui/test_gui2.cpp:232
@@ -2502,11 +2498,11 @@ msgstr "Tô vùng chọn"
 
 #: src/hotkeys.cpp:151
 msgid "Generate Tiles In Selection"
-msgstr "Tạo lát trong vùng chọn"
+msgstr "Tạo ô trong vùng chọn"
 
 #: src/hotkeys.cpp:153
 msgid "Randomize Tiles In Selection"
-msgstr "Tạo ngẫu nhiên lát trong vùng chọn"
+msgstr "Ngẫu nhiên hóa ô trong vùng chọn"
 
 #: src/hotkeys.cpp:157
 msgid "Rotate Map"
@@ -2574,7 +2570,7 @@ msgstr "Nói với tất cả"
 
 #: src/hotkeys.cpp:187
 msgid "View Chat Log"
-msgstr "Xem nhật ký chat"
+msgstr "Xem nhật ký tán gẫu"
 
 #: src/hotkeys.cpp:188
 msgid "Change the language"
@@ -2590,7 +2586,7 @@ msgstr "Lệnh tùy chỉnh"
 
 #: src/hotkeys.cpp:192
 msgid "Run AI formula"
-msgstr "Chạy công thức TTNT"
+msgstr "Chạy công thức máy tính"
 
 #: src/hotkeys.cpp:193
 msgid "Clear messages"
@@ -2656,7 +2652,7 @@ msgstr "Kích thước đồi tối đa:"
 
 #: src/mapgen_dialog.cpp:124
 msgid "Villages:"
-msgstr "Số ngôi làng:"
+msgstr "Số làng:"
 
 #: src/mapgen_dialog.cpp:125
 msgid "Castle Size:"
@@ -2672,7 +2668,7 @@ msgstr "Đường giữa các lâu đài"
 
 #: src/mapgen_dialog.cpp:304
 msgid "/1000 tiles"
-msgstr "/1000 lát"
+msgstr "/1000 ô"
 
 #: src/mapgen_dialog.cpp:314
 msgid "Coastal"
@@ -2705,8 +2701,8 @@ msgid ""
 "1024x768x16 to run the game full screen."
 msgstr ""
 "Không thể thay đổi chế độ video. Trình quản lý cửa sổ của bạn phải được "
-"thiết lập thành 16 bit mỗi điểm ảnh để có thể chạy trò chơi ở chế độ cửa sổ. "
-"Màn hình của bạn phải hỗ trợ 1024x768x16 để chạy trò chơi toàn màn hình."
+"thiết lập thành 16 bit mỗi điểm ảnh để chạy trò chơi ở chế độ cửa sổ. Màn "
+"hình của bạn phải hỗ trợ 1024x768x16 để chạy trò chơi toàn màn hình."
 
 #: src/preferences_display.cpp:212
 msgid "Hotkey Settings"
@@ -2745,7 +2741,7 @@ msgstr ""
 
 #: src/preferences_display.cpp:422
 msgid "There are no alternative video modes available"
-msgstr "Không có chế độ video dự bị nào"
+msgstr "Không có chế độ video thay thế"
 
 #: src/preferences_display.cpp:451
 msgid "Choose Resolution"
@@ -2763,7 +2759,7 @@ msgid ""
 "An error due to possibly invalid WML occurred\n"
 "The error message is :"
 msgstr ""
-"Lỗi có thể do WML không hợp lệ đã xảy ra\n"
+"Một lỗi có thể do WML không hợp lệ đã xảy ra\n"
 "Thông báo lỗi là:"
 
 #: src/wml_exception.cpp:55
