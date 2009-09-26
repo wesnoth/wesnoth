@@ -771,14 +771,21 @@ class Parser:
                     if state == name[1:]:
                         return
                     raise Error(self, "Mismatched closing tag [%s], expected [/%s]" % (name, state))
-                #TODO: make a [+tag] properly append to most recent [tag]
-                # The below is an ugly hack, but better than keeping the '+' in the tag name.
                 elif name[0] == '+':
                     name = name[1:]
-                subdata = wmldata.DataSub(name)
-                subdata.set_meta(self.filename, self.line)
-                self.parse_top(subdata, name)
-                data.insert(subdata)
+                    try:
+                        subdata = data.dict[name][-1]
+                        self.parse_top(subdata, name)
+                    except KeyError:
+                        subdata = wmldata.DataSub(name)
+                        subdata.set_meta(self.filename, self.line)
+                        self.parse_top(subdata, name)
+                        data.insert(subdata)
+                else:
+                    subdata = wmldata.DataSub(name)
+                    subdata.set_meta(self.filename, self.line)
+                    self.parse_top(subdata, name)
+                    data.insert(subdata)
             elif c == '{':
                 keep_macro = self.parse_macro()
                 if isinstance(keep_macro, wmldata.Data):
