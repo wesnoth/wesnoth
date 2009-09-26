@@ -369,7 +369,7 @@ void upload_log_dialog::show_beg_dialog(display& disp)
 		+ " \n`" + _("Summaries are stored here:")
 		+ " \n`~" + get_upload_dir() + "\n \n`"
 		+ _("You can view the results at:") + "\n`~"
-		+ "http://stats.wesnoth.org/?" + preferences::upload_id() + "\n \n";
+		+ "http://stats.wesnoth.org/?user_id=" + preferences::upload_id() + "\n \n";
 	gui::dialog d(disp, _("Help us make Wesnoth better for you!"), msg, gui::OK_ONLY);
 
 	d.add_option(_("Enable summary uploads"),
