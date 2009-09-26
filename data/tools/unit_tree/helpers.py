@@ -176,6 +176,7 @@ class WesnothList:
         For an era, list all factions and units in it.
         """
         eid = era.get_text_val("id")
+        if not eid: return
         self.era_lookup[eid] = era
         era.faction_lookup = {}
         for multiplayer_side in era.get_all("multiplayer_side"):
@@ -250,6 +251,7 @@ class WesnothList:
 
         for era in WML.find_all("era"):
             eid = self.add_era(era)
+            if not eid: continue
             image_collector.add_binary_pathes_from_WML(eid, WML)
             
         n = self.add_units(WML, "addons")
