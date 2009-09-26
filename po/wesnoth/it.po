@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-09-23 12:26+0200\n"
-"PO-Revision-Date: 2009-07-12 17:56+0200\n"
+"PO-Revision-Date: 2009-09-26 14:57+0200\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -598,9 +598,8 @@ msgstr "Armi speciali"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=factions_section
 #: data/core/help.cfg:67 src/help.cpp:1284 src/help.cpp:1286
-#, fuzzy
 msgid "Factions"
-msgstr "Fazione"
+msgstr "Fazioni"
 
 #. [section]: id=terrains
 #. [topic]: id=..terrains
@@ -2991,18 +2990,17 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:822
-#, fuzzy
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
 "\n"
 msgstr ""
 "\n"
-"Attiva/Disattiva la modalità silenziosa per tutti gli osservatori."
+"Attiva/Disattiva la modalità silenziosa per tutti gli osservatori.\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:825
-#, fuzzy
 msgid ""
 "\n"
 "Unban a user in a multiplayer game by the IP address used by that username. "
@@ -3010,22 +3008,21 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Mette al bando in una partita multigiocatore un utente usando l'indirizzo IP "
-"associato al suo nome utente e lo scaccia.\n"
+"Rimuove la messa al bando di un utente da una partita multigiocatore per "
+"indirizzo IP associato al nome utente. Può esser usato su utenti non in "
+"partita ma presenti sul server.\n"
 "\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:826
-#, fuzzy
 msgid ""
 "\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
 "observers is cleared."
 msgstr ""
 "\n"
-"Riduce al silenzio un dato osservatore. Se non viene specificato il nome "
-"verrà mostrato l'elenco degli utenti che non possono parlare.\n"
-"\n"
+"Ridà la parola a un dato osservatore. Se non viene specificato il nome "
+"l'elenco degli utenti che non possono parlare è vuotato."
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:833
@@ -3124,7 +3121,6 @@ msgstr ""
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:861
-#, fuzzy
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -3133,7 +3129,8 @@ msgid ""
 msgstr ""
 "\n"
 "Modifica la proprietà specificata dell'unità selezionata. Esempio: :unit "
-"hitpoints=100"
+"hitpoints=100\n"
+"\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:862
@@ -3141,6 +3138,8 @@ msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
 msgstr ""
+"\n"
+"Fa avanzare di livelli l'unità selezionata N volte. Esempio: :unit advances=2"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:51
@@ -3526,21 +3525,19 @@ msgstr ""
 
 #. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:615
-#, fuzzy
 msgid "petrifies"
-msgstr "Colpi"
+msgstr "pietrifica"
 
 #. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:617
-#, fuzzy
 msgid ""
 "Petrify:\n"
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
 msgstr ""
 "Pietrifica:\n"
-"Questo attacco trasforma il bersaglio in pietra. Le unità trasformate in "
-"pietra non possono muoversi o attaccare."
+"Questo attacco trasforma il bersaglio in pietra. Le unità pietrificate non "
+"possono muoversi o attaccare."
 
 #. [chance_to_hit]: id=marksman
 #: data/core/macros/abilities.cfg:626
@@ -3838,9 +3835,8 @@ msgid "No early finish bonus."
 msgstr "Nessun premio per turni risparmiati."
 
 #: data/core/macros/carryover-utils.cfg:15
-#, fuzzy
 msgid "<small>(early finish bonus)</small>"
-msgstr "`(premio per turni risparmiati)"
+msgstr "<small>(premio per turni risparmiati)</small>"
 
 #: data/core/macros/carryover-utils.cfg:18
 msgid "No gold carried over to the next scenario."
@@ -3873,9 +3869,8 @@ msgstr ""
 #. [objective]: description=<span color='white'>, condition=win
 #: data/core/macros/carryover-utils.cfg:34
 #: data/core/macros/carryover-utils.cfg:42
-#, fuzzy
 msgid "Alternative objective:"
-msgstr "Imposta obiettivo..."
+msgstr "Obiettivo alternativo:"
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:39
@@ -4065,7 +4060,6 @@ msgid "storm trident"
 msgstr "tridente delle tempeste"
 
 #: data/core/macros/names.cfg:18
-#, fuzzy
 msgid ""
 "Egar,Elch,Ga'ash,Gadé Ihn,Gakré Ohm,Galeck,Galsh,Garadin,Garchin,Gark,Garlan,"
 "Garlin Ohn,Garrutin,Gart'lo,Garushi,Gashinar,Gashol,Gaushii,Gaustun,Gegchi,"
@@ -4078,25 +4072,24 @@ msgid ""
 "Verath,Verditt,Verkon,Verlinn,Vermad,Vertick,Vladnir"
 msgstr ""
 "Egar,Elch,Ga'ash,Gadé Ihn,Gakré Ohm,Galeck,Galsh,Garadin,Garchin,Gark,Garlan,"
-"Garlin ohn,Garrutin,Gart'lo,Garushi,Gashinar,Gashöl,Gaushii,Gaustun,Gegchi,"
-"Gelka Kon,Gelknick,Gillan,Gisharri,Goyst,Grada,Græt Ihn,Grashen,Gravlan,Gray,"
-"Grelnit,Grenn ohn,Gretz,Gribbel,Gridda,Grish,Gron ih,Ka,Kahn Ih,Karigan,"
-"Karri Kon,Karron,Kasp,Kegrid,Kerath Ihn,Kerath Kor,Klash,Kon Garashé,Kraag,"
-"Krall Ohn,Kran Kor,Krash,Kraslar,Krenli,Kruggen,Kun,Mah Toa,Mal,Margian,"
-"Marhildian,Markan,Markinos,Mar Ohn,Marra Di'lek,Marrito,Marritos,Merkush,"
+"Garlin Ohn,Garrutin,Gart'lo,Garushi,Gashinar,Gashol,Gaushii,Gaustun,Gegchi,"
+"Gelka Kon,Gelknick,Gillan,Gisharri,Gost,Grada,Græt Ihn,Grashen,Gravlan,Grag,"
+"Grelnit,Grenn Ohn,Greth,Gribbel,Gridda,Grish,Gron Ihn,Ka,Kahn Ih,Karigan,"
+"Karri Kon,Karron,Kask,Kegrid,Kerath Ihn,Kerath Kor,Klash,Kon Garashé,Kraag,"
+"Krall Ohn,Kran Kor,Krash,Kraslar,Krenli,Kruggen,Kun,Mah Toa,Margian,"
+"Mar'Ildian,Markan,Markinos,Mar Ohn,Marra Di'lek,Marrito,Marritos,Merkush,"
 "Merritos Gark,Morusté,Murr,Omataké,Reshan,Vashitt,Velnick,Veralon,Veramo,"
-"Verath,Verditt,Verkon,Verlinn,Vermay,Vertick,Vladnir"
+"Verath,Verditt,Verkon,Verlinn,Vermad,Vertick,Vladnir"
 
 #: data/core/macros/names.cfg:19
-#, fuzzy
 msgid ""
 "Alen Ka,Alinash Mal,Ashirt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
 "Eshi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orrida,Oshibi,Vallin,Valnirra,"
 "Valnitt,Velisk,Verra,Vellin Ka,Veshtar,Vushtin"
 msgstr ""
-"Alen Ka,Alinash Mal,Ashijt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
-"Eshyi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orriday,Oshibi,Vallin,Valnirra,"
-"Valnitt,Velisp,Vellin Ka,Vushtin,Werra,Weshter,Wilniss"
+"Alen Ka,Alinash Mal,Ashirt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
+"Eshi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orrida,Oshibi,Vallin,Valnirra,"
+"Valnitt,Velisk,Verra,Vellin Ka,Veshtar,Vushtin"
 
 #: data/core/macros/names.cfg:23
 msgid ""
@@ -5253,9 +5246,8 @@ msgstr "scura"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:228
-#, fuzzy
 msgid "aged"
-msgstr "a distanza"
+msgstr "invecchiata"
 
 #. [color_range]: id=red
 #. [color_range]: id=1
@@ -5266,12 +5258,12 @@ msgstr "Rosso"
 #. [color_range]: id=lightred
 #: data/core/team-colors.cfg:20
 msgid "Light Red"
-msgstr ""
+msgstr "Rosso chiaro"
 
 #. [color_range]: id=darkred
 #: data/core/team-colors.cfg:26
 msgid "Dark Red"
-msgstr ""
+msgstr "Rosso scuro"
 
 #. [color_range]: id=blue
 #. [color_range]: id=2
@@ -6292,25 +6284,22 @@ msgstr "Lago $name"
 #. [language]
 #: data/hardwired/english.cfg:24
 msgid "$name's Peak,Mount $name"
-msgstr ""
+msgstr "Picco di $name,Monte $name"
 
 #. [language]
 #: data/hardwired/english.cfg:25
-#, fuzzy
 msgid "$name's Swamp,$name|marsh,$name|fen"
-msgstr "$name|ham,$name|ton,$name|field"
+msgstr "Palude di $name|,Acquitrino $name,Palude di $name"
 
 #. [language]
 #: data/hardwired/english.cfg:26
-#, fuzzy
 msgid "$name|bury,$name|ham,$name|ton,$name|bury"
-msgstr "$name|bury,$name|ham,$name|ton"
+msgstr "$name|burgo,$name|ia,$name|villa"
 
 #. [language]
 #: data/hardwired/english.cfg:27
-#, fuzzy
 msgid "$name|harbor,$name|port,$lake|port,$lake|harbor"
-msgstr "Porto $name,Porto di $name"
+msgstr "Porto $name|,Porto di $name|,Porto $lake|,Porto di $lake"
 
 #. [language]
 #: data/hardwired/english.cfg:28
@@ -6332,7 +6321,7 @@ msgstr "$river|ponte,$river|ponte,$river|ponte,$name|passo,$name|ponte"
 #. [language]
 #: data/hardwired/english.cfg:30
 msgid "$name|ham,$name|ton,$name|field"
-msgstr "$name|ham,$name|ton,$name|field"
+msgstr "Villa$name,$name|burgo,Campo$name|"
 
 #. [language]
 #: data/hardwired/english.cfg:31
@@ -7188,9 +7177,8 @@ msgstr "livello"
 
 #. [unit_moves]: id=unit-moves
 #: data/themes/default.cfg:459 data/themes/experimental.cfg:399
-#, fuzzy
 msgid "statuspanel^moves"
-msgstr "movimenti"
+msgstr "mosse"
 
 #. [unit_defense]: id=unit-defense
 #: data/themes/default.cfg:468 data/themes/experimental.cfg:408
@@ -7312,13 +7300,12 @@ msgid "female^poisoned"
 msgstr "avvelenata"
 
 #: src/actions.cpp:1111 src/actions.cpp:1384
-#, fuzzy
 msgid "female^petrified"
-msgstr "avvelenata"
+msgstr "pietrificata"
 
 #: src/actions.cpp:1111 src/actions.cpp:1384
 msgid "petrified"
-msgstr ""
+msgstr "pietrificato"
 
 #: src/actions.cpp:2366
 msgid "Ambushed!"
@@ -8060,7 +8047,7 @@ msgstr ""
 
 #: src/generate_report.cpp:140
 msgid "petrified: "
-msgstr ""
+msgstr "pietrificata: "
 
 #: src/generate_report.cpp:141
 #, fuzzy
@@ -8130,17 +8117,16 @@ msgid "Observers:"
 msgstr "Osservatori:"
 
 #: src/gui/dialogs/lobby_player_info.cpp:64
-#, fuzzy
 msgid "In game:"
-msgstr "Nome:"
+msgstr "In gioco:"
 
 #: src/gui/dialogs/lobby_player_info.cpp:66
 msgid "(observing)"
-msgstr ""
+msgstr "(osserva)"
 
 #: src/gui/dialogs/lobby_player_info.cpp:68
 msgid "(playing)"
-msgstr ""
+msgstr "(gioca)"
 
 #: src/gui/dialogs/lobby_player_info.cpp:71
 msgid "In lobby"
@@ -8159,27 +8145,24 @@ msgid "<header>text='Units having this ability'</header>"
 msgstr "<header>text='Unità con questa abilità'</header>"
 
 #: src/help.cpp:1246
-#, fuzzy
 msgid "Leaders:"
-msgstr "Condottiero: "
+msgstr "Condottieri:"
 
 #: src/help.cpp:1255
-#, fuzzy
 msgid "Recruits:"
-msgstr "Reclutamenti: "
+msgstr "Reclutamenti:"
 
 #: src/help.cpp:1269 src/multiplayer_create.cpp:78
 msgid "Era:"
 msgstr "Era:"
 
 #: src/help.cpp:1277
-#, fuzzy
 msgid "Factions:"
-msgstr "Fazione"
+msgstr "Fazioni:"
 
 #: src/help.cpp:1287
 msgid "Factions are only used in multiplayer"
-msgstr ""
+msgstr "Le fazioni si usano solo in multigiocatore"
 
 #: src/help.cpp:1362
 msgid "Advances from: "
@@ -8207,7 +8190,7 @@ msgstr "Aggiornamenti abilità: "
 
 #: src/help.cpp:1434
 msgid "Cost: "
-msgstr "Costo:"
+msgstr "Costo: "
 
 #: src/help.cpp:1435
 msgid "Alignment: "
@@ -8330,9 +8313,8 @@ msgid "Verifying cache..."
 msgstr "Verifica della cache"
 
 #: src/loadscreen.cpp:264
-#, fuzzy
 msgid "Reading unit files..."
-msgstr "Caricamento file delle unità."
+msgstr "Caricamento file delle unità..."
 
 #: src/loadscreen.cpp:283
 #, fuzzy
@@ -8690,6 +8672,8 @@ msgstr ""
 #: src/menu_events.cpp:2201
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr ""
+"Toglie la messa al bando per un utente. Non deve essere in partita ma sul "
+"server."
 
 #: src/menu_events.cpp:2204
 msgid "Kick a player or observer."
@@ -8709,9 +8693,8 @@ msgstr ""
 "zittiti."
 
 #: src/menu_events.cpp:2210
-#, fuzzy
 msgid "Mute/Unmute all observers. (toggles)"
-msgstr "Zittisci tutti gli osservatori."
+msgstr "Zittisci tutti gli osservatori (commuta)."
 
 #: src/menu_events.cpp:2220
 msgid "Send a message to the server admins currently online"
@@ -8778,25 +8761,24 @@ msgstr ""
 "registrato."
 
 #: src/menu_events.cpp:2255
-#, fuzzy
 msgid "Join a room."
-msgstr "Collegati al gioco"
+msgstr "Entra in una stanza."
 
 #: src/menu_events.cpp:2258
 msgid "Part a room."
-msgstr ""
+msgstr "Lascia una stanza."
 
 #: src/menu_events.cpp:2260
 msgid "List room members."
-msgstr ""
+msgstr "Mostra membri di una stanza."
 
 #: src/menu_events.cpp:2262
 msgid "List available rooms."
-msgstr ""
+msgstr "Elenca le stanze disponibili."
 
 #: src/menu_events.cpp:2264
 msgid "Room message."
-msgstr ""
+msgstr "Messaggio della stanza."
 
 #: src/menu_events.cpp:2266
 msgid "Room query."
@@ -9136,9 +9118,8 @@ msgid "(Reserved for $playername)"
 msgstr "(Riservata per $playername)"
 
 #: src/multiplayer_connect.cpp:682
-#, fuzzy
 msgid "(empty)"
-msgstr "Vuoto"
+msgstr "(vuoto)"
 
 #: src/multiplayer_connect.cpp:792
 msgid "Reserved"
@@ -9209,11 +9190,8 @@ msgid "Cannot find era $era"
 msgstr "Non è stato possibile trovare l'era $era"
 
 #: src/multiplayer_connect.cpp:1583
-#, fuzzy
 msgid "Defeat enemy leader(s)"
-msgstr ""
-"Vittoria:\n"
-"@Sconfiggi il o i condottieri nemici"
+msgstr "Sconfiggi il o i condottieri nemici"
 
 #: src/multiplayer_connect.cpp:1647
 msgid "Waiting for players to join..."
@@ -9464,12 +9442,11 @@ msgstr "Slot vuoto:"
 
 #: src/multiplayer_lobby.cpp:737
 msgid "Friends in Game"
-msgstr ""
+msgstr "Amici nella partita"
 
 #: src/multiplayer_lobby.cpp:738
-#, fuzzy
 msgid "Search:"
-msgstr "Cerca"
+msgstr "Cerca:"
 
 #: src/multiplayer_lobby.cpp:747
 msgid "Skip quickly to the active turn when observing"
@@ -9629,7 +9606,7 @@ msgstr "Scenario sconosciuto: «$scenario|»"
 
 #: src/playmp_controller.cpp:92
 msgid "$name has taken control"
-msgstr ""
+msgstr "$name ha preso il controllo"
 
 #: src/playmp_controller.cpp:94
 #, fuzzy
@@ -9738,13 +9715,12 @@ msgid "The game is over."
 msgstr "La partita è finita."
 
 #: src/playsingle_controller.cpp:487
-#, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game\n"
 "cannot continue. Do you want to save the game?"
 msgstr ""
-"Si è verificata una disconnessione dalla rete e la partita non potrà "
-"proseguire. Vuoi salvare la partita?"
+"Si è verificata una disconnessione dalla rete e la\n"
+"partita non potrà proseguire. Vuoi salvarla?"
 
 #: src/playsingle_controller.cpp:653
 msgid "It is now $name|'s turn"
@@ -9815,9 +9791,8 @@ msgid "This is not a multiplayer save"
 msgstr "Questo non è un salvataggio per multigiocatori"
 
 #: src/savegame.cpp:606
-#, fuzzy
 msgid "The game could not be saved: "
-msgstr "La partita non può essere salvata"
+msgstr "La partita non può essere salvata: "
 
 #: src/savegame.cpp:693
 msgid "Name: "

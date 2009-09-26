@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-09-23 12:26+0200\n"
-"PO-Revision-Date: 2009-03-31 22:24+0200\n"
+"PO-Revision-Date: 2009-09-26 12:46+0200\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -68,9 +68,8 @@ msgstr "Accampamento"
 
 #. [terrain_type]: id=orcish_fort
 #: data/core/terrain.cfg:173
-#, fuzzy
 msgid "Fort"
-msgstr "Foresta"
+msgstr "Forte"
 
 #. [terrain_type]: id=castle
 #. [terrain_type]: id=dwarven_castle
@@ -114,39 +113,36 @@ msgstr "Fortezza"
 
 #. [terrain_type]: id=encampment_keep
 #: data/core/terrain.cfg:256
-#, fuzzy
 msgid "Encampment Keep"
-msgstr "Accampamento"
+msgstr "Fortezza in accampamento"
 
 #. [terrain_type]: id=orcish_keep
 #: data/core/terrain.cfg:269
-#, fuzzy
 msgid "Fort Keep"
-msgstr "Fortezza"
+msgstr "Fortezza in forte"
 
 #. [terrain_type]: id=human_keep
 #. [terrain_type]: id=dwarven_keep
 #. [terrain_type]: id=swamp_keep
 #: data/core/terrain.cfg:282 data/core/terrain.cfg:308
 #: data/core/terrain.cfg:347
-#, fuzzy
 msgid "Castle Keep"
-msgstr "Castello"
+msgstr "Fortezza in castello"
 
 #. [terrain_type]: id=elven_keep
 #: data/core/terrain.cfg:295
 msgid "Elven Keep"
-msgstr ""
+msgstr "Fortezza elfica"
 
 #. [terrain_type]: id=ruined_keep
 #: data/core/terrain.cfg:321
 msgid "Ruined Castle Keep"
-msgstr ""
+msgstr "Fortezza in castello in rovina"
 
 #. [terrain_type]: id=sunken_keep
 #: data/core/terrain.cfg:334
 msgid "Sunken Castle Keep"
-msgstr ""
+msgstr "Fortezza in castello inabissato"
 
 #. [terrain_type]: id=crater
 #: data/core/terrain.cfg:387
@@ -208,9 +204,8 @@ msgstr "Foresta"
 
 #. [terrain_type]: id=forest
 #: data/core/terrain.cfg:464
-#, fuzzy
 msgid "Pine Forest"
-msgstr "Foresta innevata"
+msgstr "Foresta di conifere"
 
 #. [terrain_type]: id=tropical_forest
 #: data/core/terrain.cfg:473
@@ -220,44 +215,42 @@ msgstr "Foresta tropicale"
 #. [terrain_type]: id=deciduous_forest_summer
 #: data/core/terrain.cfg:484
 msgid "Summer Deciduous Forest"
-msgstr ""
+msgstr "Foresta decidua estiva"
 
 #. [terrain_type]: id=deciduous_forest_fall
 #: data/core/terrain.cfg:495
 msgid "Fall Deciduous Forest"
-msgstr ""
+msgstr "Foresta decidua autunnale"
 
 #. [terrain_type]: id=deciduous_forest_winter
 #: data/core/terrain.cfg:506
 msgid "Winter Deciduous Forest"
-msgstr ""
+msgstr "Foresta decidua invernale"
 
 #. [terrain_type]: id=deciduous_forest_winter_snow
 #: data/core/terrain.cfg:517
-#, fuzzy
 msgid "Snowy Deciduous Forest"
-msgstr "Foresta innevata"
+msgstr "Foresta decidua innevata"
 
 #. [terrain_type]: id=mixed_forest_summer
 #: data/core/terrain.cfg:529
 msgid "Summer Mixed Forest"
-msgstr ""
+msgstr "Foresta mista estiva"
 
 #. [terrain_type]: id=mixed_forest_fall
 #: data/core/terrain.cfg:540
 msgid "Fall Mixed Forest"
-msgstr ""
+msgstr "Foresta mista autunnale"
 
 #. [terrain_type]: id=mixed_forest_winter
 #: data/core/terrain.cfg:551
 msgid "Winter Mixed Forest"
-msgstr ""
+msgstr "Foresta mista invernale"
 
 #. [terrain_type]: id=mixed_forest_winter_snow
 #: data/core/terrain.cfg:562
-#, fuzzy
 msgid "Snowy Mixed Forest"
-msgstr "Foresta innevata"
+msgstr "Foresta mista innevata"
 
 #. [terrain_type]: id=forested_hills
 #. [terrain_type]: id=deciduous_forest_summer_hills
@@ -785,18 +778,17 @@ msgstr "Applica"
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:28
 msgid "Formula debugger"
-msgstr ""
+msgstr "Debugger di formule"
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:51
 msgid "Welcome"
-msgstr ""
+msgstr "Benvenuto"
 
 #. [label]: id=state
 #: data/gui/default/window/formula_debugger.cfg:63
-#, fuzzy
 msgid "state"
-msgstr "Incolla"
+msgstr "stato"
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:77
@@ -806,9 +798,8 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:86
 #: data/gui/default/window/gamestate_inspector.cfg:268
-#, fuzzy
 msgid "Actions"
-msgstr "Azione"
+msgstr "Azioni"
 
 #. [button]: id=step
 #: data/gui/default/window/formula_debugger.cfg:120
@@ -829,7 +820,6 @@ msgstr ""
 
 #. [button]: id=continue
 #: data/gui/default/window/formula_debugger.cfg:150
-#, fuzzy
 msgid "Continue"
 msgstr "Continua"
 
@@ -851,9 +841,8 @@ msgstr "Esci"
 
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_delete.cfg:32
-#, fuzzy
 msgid "Delete Save"
-msgstr "Elimina file"
+msgstr "Elimina salvataggio"
 
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_delete.cfg:52
@@ -864,7 +853,7 @@ msgstr "Vuoi davvero uscire?"
 #. [toggle_button]: id=dont_ask_again
 #: data/gui/default/window/game_delete.cfg:72
 msgid "Don't ask me again!"
-msgstr ""
+msgstr "Non me lo chiedere più!"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -904,9 +893,8 @@ msgstr ""
 
 #. [label]: id=lblFilter
 #: data/gui/default/window/game_load.cfg:203
-#, fuzzy
 msgid "Filter"
-msgstr "File: "
+msgstr "Filtro"
 
 #. [label]: id=name
 #. [label]: id=filename
@@ -917,16 +905,14 @@ msgstr "Nome"
 
 #. [label]: id=date
 #: data/gui/default/window/game_load.cfg:267
-#, fuzzy
 msgid "Date"
-msgstr "Incolla"
+msgstr "Data"
 
 #. [button]: id=delete
 #: data/gui/default/window/game_load.cfg:351
 #: data/gui/default/window/game_load.cfg:352
-#, fuzzy
 msgid "Delete"
-msgstr "Elimina file"
+msgstr "Elimina"
 
 #. [toggle_button]: id=show_replay
 #: data/gui/default/window/game_load.cfg:370
@@ -954,7 +940,7 @@ msgstr "Salva la partita"
 #: data/gui/default/window/game_save_oos.cfg:82
 #, fuzzy
 msgid "Name:"
-msgstr "Nome: "
+msgstr "Nome:"
 
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_save_message.cfg:52
@@ -994,9 +980,8 @@ msgstr ""
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:92
-#, fuzzy
 msgid "Types"
-msgstr "Sì"
+msgstr "Tipi"
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:103
@@ -1052,9 +1037,8 @@ msgstr "Cambia la lingua"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:108
-#, fuzzy
 msgid "Games"
-msgstr "Nome"
+msgstr "Partite"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:176
@@ -1070,14 +1054,13 @@ msgstr "Usa impostazioni della mappa"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:178
-#, fuzzy
 msgid "Reloaded game"
-msgstr "Crea partita"
+msgstr "Partita ricaricata"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:179
 msgid "Unknown era"
-msgstr ""
+msgstr "Era sconosciuta"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:181
@@ -1159,9 +1142,8 @@ msgstr "File: "
 
 #. [toggle_button]: id=filter_with_friends
 #: data/gui/default/window/lobby_main.cfg:470
-#, fuzzy
 msgid "Friends"
-msgstr "Elenco degli amici"
+msgstr "Amici"
 
 #. [toggle_button]: id=filter_without_ignored
 #: data/gui/default/window/lobby_main.cfg:476
@@ -1180,9 +1162,8 @@ msgstr ""
 
 #. [button]: id=send_message
 #: data/gui/default/window/lobby_main.cfg:527
-#, fuzzy
 msgid "Send"
-msgstr "Sabbia"
+msgstr "Invia"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_preferences
@@ -1603,26 +1584,23 @@ msgstr "Genera"
 
 #. [toggle_button]: id=male_toggle
 #: data/gui/default/window/unit_create.cfg:69
-#, fuzzy
 msgid "Male"
-msgstr "Castello"
+msgstr "Maschio"
 
 #. [toggle_button]: id=female_toggle
 #: data/gui/default/window/unit_create.cfg:79
 msgid "Female"
-msgstr ""
+msgstr "Femmina"
 
 #. [toggle_button]: id=namegen_toggle
 #: data/gui/default/window/unit_create.cfg:97
-#, fuzzy
 msgid "Generate name"
-msgstr "Genera mappa"
+msgstr "Genera nome"
 
 #. [label]: id=race
 #: data/gui/default/window/unit_create.cfg:126
-#, fuzzy
 msgid "Race"
-msgstr "Annulla"
+msgstr "Razza"
 
 #: src/filechooser.cpp:74
 msgid "File: "
@@ -2169,7 +2147,7 @@ msgstr ""
 
 #: src/gui/dialogs/game_load.cpp:252
 msgid "Campaign: $campaign_name"
-msgstr ""
+msgstr "Campagna: $campaign_name"
 
 #: src/gui/dialogs/game_load.cpp:271
 #, fuzzy
@@ -2177,9 +2155,8 @@ msgid "replay"
 msgstr "giocatore"
 
 #: src/gui/dialogs/game_load.cpp:273
-#, fuzzy
 msgid "Turn"
-msgstr "Fine del turno"
+msgstr "Turno"
 
 #: src/gui/dialogs/game_load.cpp:275
 #, fuzzy
@@ -2188,12 +2165,11 @@ msgstr "Obiettivi dello scenario"
 
 #: src/gui/dialogs/game_load.cpp:278
 msgid "Difficulty: "
-msgstr ""
+msgstr "Difficoltà: "
 
 #: src/gui/dialogs/game_load.cpp:282
-#, fuzzy
 msgid "Version: "
-msgstr "Versione"
+msgstr "Versione: "
 
 #: src/gui/dialogs/lobby_main.cpp:404
 msgid "Observers allowed"
@@ -2223,9 +2199,8 @@ msgid "Joining this game requires a password."
 msgstr ""
 
 #: src/gui/dialogs/lobby_main.cpp:1125
-#, fuzzy
 msgid "Password: "
-msgstr "Password:"
+msgstr "Password: "
 
 #: src/gui/dialogs/message.cpp:191
 msgid "Error"
