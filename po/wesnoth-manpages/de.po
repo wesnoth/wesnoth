@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "POT-Creation-Date: 2009-09-27 20:26+0300\n"
-"PO-Revision-Date: 2009-09-27 17:50+0200\n"
+"PO-Revision-Date: 2009-09-27 22:39+0200\n"
 "Last-Translator: Gerfried Fuchs <rhonda@deb.at>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -931,15 +931,13 @@ msgstr "[I<Element>]"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:103
-#, fuzzy
 msgid "I<key>=\"I<value>\""
-msgstr "Schlüssel=\"I<Wert>\""
+msgstr "I<Schlüssel>=\"I<Wert>\""
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:105
-#, fuzzy
 msgid "I<key>=\"I<value>,I<value>,...\""
-msgstr "Schlüssel=\"I<Wert>,I<Wert>,...\""
+msgstr "I<Schlüssel>=\"I<Wert>,I<Wert>,...\""
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:107
@@ -960,15 +958,14 @@ msgstr "B<allow_remote_shutdown>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:114
-#, fuzzy
 msgid ""
 "If set to B<no> (default), shut_down and restart requests are ignored unless "
 "they come from the fifo.  Set it to B<yes> to allow remote shutdown via a /"
 "query by an administrator."
 msgstr ""
-"Wenn es auf »no« (Voreinstellung) gestellt ist, werden Anfragen zum "
-"Herunterfahren und Neustart ignoriert, wenn sie nicht über die FIFO-Datei "
-"kommen. Ein Einstellen auf »yes« erlaubt es einem Administrator durch ein /"
+"Wenn es auf B<no> (Voreinstellung) gestellt ist, werden Anfragen zum "
+"Herunterfahren und Neustart ignoriert, falls sie nicht über die FIFO-Datei "
+"kommen. Ein Einstellen auf B<yes> erlaubt es einem Administrator durch ein /"
 "query ein entferntes Herunterfahren."
 
 # type: TP
@@ -995,13 +992,12 @@ msgstr "B<compress_stored_rooms>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:121
-#, fuzzy
 msgid ""
 "Determines whether the rooms file should be read and written to in "
 "compressed form. Defaults to B<yes>."
 msgstr ""
 "Legt fest, ob die Datei für die Räume in komprimierter Form gelesen und "
-"geschrieben werden soll. Die Voreinstellung ist »yes«."
+"geschrieben werden soll. Die Voreinstellung ist B<yes>."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:121
@@ -1026,14 +1022,13 @@ msgstr "B<disallow_names>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:131
-#, fuzzy
 msgid ""
 "Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
 "(used if nothing is specified) are: B<*admin*,*admln*,*server*,ai,ai?,"
 "computer,human,network,player>."
 msgstr ""
-"Namen/Spitznamen die der Server nicht akzeptiert. »*« und »?« sind als "
+"Namen/Spitznamen die der Server nicht akzeptiert. B<*> und B<?> sind als "
 "Platzhalter unterstützt. Siehe B<glob>(7) für mehr Details. Standardwerte "
 "(wenn sonst nichts angegeben wurde) sind: B<*admin*,*admln*,*server*,ai,ai?,"
 "computer,human,network,player>."
@@ -1046,7 +1041,6 @@ msgstr "B<fifo_path>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:135
-#, fuzzy
 msgid ""
 "The path to the fifo you can echo server commands into (same as /query ... "
 "from wesnoth).  If not specified defaults to the compile-time path (default: "
@@ -1054,8 +1048,8 @@ msgid ""
 msgstr ""
 "Der Pfad zur FIFO-Datei, in die Befehle für den Server geschrieben werden "
 "können (das gleiche wie /query ... aus Wesnoth selbst heraus). Falls nicht "
-"angegeben, wird die einkompilierte Voreinstellung verwendet (Standard: /var/"
-"run/socket/wesnothd/socket)."
+"angegeben, wird die einkompilierte Voreinstellung verwendet (Standard: B</"
+"var/run/socket/wesnothd/socket>)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:135
@@ -1105,7 +1099,6 @@ msgstr "B<new_room_policy>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:147
-#, fuzzy
 msgid ""
 "Determines who can create new rooms on the server. Available values are "
 "B<everyone>, B<registered>, B<admin> and B<nobody>, and give the permission "
@@ -1113,10 +1106,10 @@ msgid ""
 "creation. Default value is B<everyone>."
 msgstr ""
 "Legt fest, wer neue Räume auf dem Server erstellen kann. Verwendbare Werte "
-"sind »everyone«, »registered«, »admin« und »nobody« und erteilen die "
+"sind B<everyone>, B<registered>, B<admin> und B<nobody> und erteilen die "
 "Berechtigung entsprechend an jeden, registrierte Benutzer, Administratoren "
 "beziehungsweise deaktiviert die Erstellung neuer Räume. Der voreingestellte "
-"Wert ist »everyone« (jeder)."
+"Wert ist B<everyone> (jeder)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:147
@@ -1126,12 +1119,11 @@ msgstr "B<passwd>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:150
-#, fuzzy
 msgid ""
 "The password used to gain admin privileges (via B</query admin >I<password>)."
 msgstr ""
-"Das Passwort um auf dem Server Administratorrechte zu erhalten. Es beginnt "
-"per Konvention mit »admin «."
+"Das Passwort um auf dem Server Administratorrechte zu erhalten (über B</"
+"query admin >I<Passwort>)."
 
 #: ../../doc/man/wesnothd.6:150
 #, no-wrap
@@ -1156,14 +1148,14 @@ msgstr "B<restart_command>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:156
-#, fuzzy
 msgid ""
 "The command that the server uses to start a new server process via the "
 "B<restart> command. (Can only be issued via the fifo. See the "
 "B<allow_remote_shutdown> setting.)"
 msgstr ""
 "Der Befehl, den der Server verwendet, um einen neuen Server-Prozess über den "
-"»restart«-Befehl zu starten. (Kann nur über die FIFO angefordert werden.)"
+"B<restart>-Befehl zu starten. (Kann nur über die FIFO angefordert werden. "
+"Siehe die B<allow_remote_shutdown>-Einstellung.)"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:156
@@ -1204,15 +1196,14 @@ msgstr "B<versions_accepted>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:166
-#, fuzzy
 msgid ""
 "A comma separated list of version strings to be accepted by the server. B<*> "
 "and B<?> from wildcard patterns are supported.  (defaults to the "
 "corresponding wesnoth version)"
 msgstr ""
 "Eine durch Komma getrennte Liste der Programmversionen, die der Server "
-"zulässt. »*« und »?« sind erlaubt. (Standard: Die aktuell installierte Wesnoth "
-"Version)"
+"zulässt. B<*> und B<?> sind erlaubt. (Standard: Die aktuell installierte "
+"Wesnoth-Version)"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:168
@@ -1227,7 +1218,6 @@ msgstr "B<user_handler>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:173
-#, fuzzy
 msgid ""
 "The name of the user handler to use. Currently available user handlers are "
 "B<forum> (to connect wesnothd to a phpbb forum database) and B<sample> (a "
@@ -1236,11 +1226,11 @@ msgid ""
 "add a B<[user_handler]> section, see below."
 msgstr ""
 "Der Name der zu verwendenden Nutzerverwaltung. Momentan sind als "
-"Nutzerverwaltungen »forum« (um via wesnothd eine Verbindung zu einer phpbb "
-"Forum Datenbank aufzubauen) und »sample« (eine Beispielimplementierung der "
+"Nutzerverwaltungen B<forum> (um via wesnothd eine Verbindung zu einer phpbb "
+"Forum Datenbank aufzubauen) und B<sample> (eine Beispielimplementierung der "
 "Nutzerverwaltungsschnittstelle, diese dient nur als Beispiel und sollte "
 "nicht genutzt werden) verfügbar. Standardmäßig wird die Nutzerverwaltung "
-"»forum« verwendet. Außerdem muss ein B<[user_handler]> angelegt werden. Der "
+"B<forum> verwendet. Außerdem muss ein B<[user_handler]> angelegt werden. Der "
 "Aufbau von diesem ist weiter unten beschrieben."
 
 # type: SS
@@ -1323,7 +1313,6 @@ msgstr "B<time>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:207
-#, fuzzy
 msgid ""
 "The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s "
 "(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d "
@@ -1334,7 +1323,7 @@ msgstr ""
 "Die Zeitlängen-Definition. Das Format lautet: %d[%s[%d%s[...]]] wobei %s für "
 "s (Sekunden), m (Minuten), h (Stunden), D (Tage), M (Monate) oder Y (Jahre) "
 "und %d für eine Nummer steht. Falls keine Zeitdefinition verwendet wird, "
-"werden Minuten (m) angenommen. Beispiel: time=\"1D12h30m\" steht für eine "
+"werden Minuten (m) angenommen. Beispiel: B<time=\"1D12h30m\"> steht für eine "
 "Ban-Zeit von einem Tag, 12 Stunden und 30 Minuten."
 
 # type: Plain text
@@ -1351,7 +1340,6 @@ msgstr ""
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:221
-#, fuzzy
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
 "on which user handler is set with the B<user_handler> key. If no B<"
@@ -1360,7 +1348,7 @@ msgid ""
 msgstr ""
 "B<[user_handler]> Dies Konfiguriert die Nutzerverwaltung. Die verwendbaren "
 "Schlüssel hängen davon ab, welche Nutzerverwaltung beim B<user_handler> "
-"Schlüssel festgelegt wurde. Ist kein [user_handler] Bereich vorhanden, so "
+"Schlüssel festgelegt wurde. Ist kein B<[user_handler]>-Bereich vorhanden, so "
 "ist es nicht möglich registrierte Nutzernamen auf dem Server zu verwenden."
 
 # type: TP
@@ -1436,7 +1424,6 @@ msgstr "B<db_extra_table>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:241
-#, fuzzy
 msgid ""
 "(for user_handler=forum) The name of the table in which wesnothd will save "
 "its own data about users. You will have to create this table manually, e.g.: "
@@ -1446,10 +1433,10 @@ msgid ""
 msgstr ""
 "(für user_handler=forum) Der Name der Tabelle, in der wesnothd spezifische "
 "Nutzerdaten abgelegt werden sollen. Diese Tabelle muss manuell angelegt "
-"werden. Dies erfolgt z.B. mit einem Befehl wie diesem: CREATE TABLE "
+"werden. Dies erfolgt z.B. mit einem Befehl wie diesem: B<CREATE TABLE "
 "E<lt>table-nameE<gt>(username VARCHAR(255) PRIMARY KEY, user_lastvisit INT "
 "UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT "
-"0);"
+"0);>"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:241

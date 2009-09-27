@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4 Estonian translation\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-09-27 20:27+0200\n"
-"PO-Revision-Date: 2009-09-26 21:15+0300\n"
+"PO-Revision-Date: 2009-09-27 22:29+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: Kaido Kikkas <kakk@kakupesa.net>\n"
 "MIME-Version: 1.0\n"
@@ -545,9 +545,8 @@ msgstr "Valentsiakeelne (lõunakatalaani) tõlge"
 
 #. [about]
 #: data/core/about.cfg:2248
-#, fuzzy
 msgid "Vietnamese Translation"
-msgstr "Hiinakeelnetõlge"
+msgstr "Vietnamikeelne tõlge"
 
 #. [about]
 #: data/core/about.cfg:2255
@@ -3480,7 +3479,7 @@ msgstr ""
 #. [set_menu_item]: id=ai_controller_leader_control_{SIDE_CONTROLLED}
 #: data/core/macros/ai.cfg:408
 msgid "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
-msgstr ""
+msgstr "Kutsu $ally_leader.name (osapoole $ally_leader.side pealik) siia"
 
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:144
@@ -3668,42 +3667,36 @@ msgid "Exit"
 msgstr "Välju"
 
 #: data/core/macros/ai_controller.cfg:1047
-#, fuzzy
 msgid "Set special orders..."
-msgstr "Määra käitumine..."
+msgstr "Anna erikäsud..."
 
 #: data/core/macros/ai_controller.cfg:1048
 msgid "Move leader to..."
-msgstr ""
+msgstr "Vii pealik..."
 
 #: data/core/macros/ai_controller.cfg:1049
-#, fuzzy
 msgid "Right-click to select a location to move leader to"
-msgstr "Tee paremklõps kaitstaval kohal kaardil"
+msgstr "Tee paremklõps kohal, kuhu soovid pealiku saata"
 
 #: data/core/macros/ai_controller.cfg:1050
 msgid "Move leader here"
-msgstr ""
+msgstr "Too pealik siia"
 
 #: data/core/macros/ai_controller.cfg:1051
 msgid "moving leader to $x1|,$y1|."
-msgstr ""
+msgstr "viin pealiku kaardil asukohta $x1|,$y1|."
 
 #: data/core/macros/ai_controller.cfg:1052
-#, fuzzy
 msgid "Clear special orders"
-msgstr "Tühista kõik käsud"
+msgstr "Tühista erikäsud"
 
 #: data/core/macros/ai_controller.cfg:1053
-#, fuzzy
 msgid ""
 "Special: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_special_description"
 msgstr ""
-"Eesmärk: $ai_controller.side_$ally_side|_current_settings."
-"currently_doing_objective_description\n"
-"Käitumine: $ai_controller.side_$ally_side|_current_settings."
-"currently_doing_behaviour_description"
+"Erikäsk: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_special_description"
 
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
@@ -7392,7 +7385,7 @@ msgstr "Vali allalaetav lisamoodul."
 
 #: src/addon_management.cpp:1089
 msgid "Description"
-msgstr ""
+msgstr "Kirjeldus"
 
 #: src/addon_management.cpp:1093 src/dialogs.cpp:600 src/menu_events.cpp:898
 #: src/menu_events.cpp:1450

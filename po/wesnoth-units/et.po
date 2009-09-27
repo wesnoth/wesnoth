@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-09-27 20:31+0200\n"
-"PO-Revision-Date: 2009-09-27 00:30+0300\n"
+"PO-Revision-Date: 2009-09-27 23:27+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -150,7 +150,6 @@ msgstr "Otsustajalohe"
 
 #. [unit_type]: id=Drake Arbiter, race=drake
 #: data/core/units/drakes/Arbiter.cfg:19
-#, fuzzy
 msgid ""
 "Arbiters take their caste duty of enforcing order very seriously. In order "
 "to better execute their duties, they have abandoned the drakes' traditional "
@@ -160,10 +159,10 @@ msgid ""
 "protects them well against weapons that could slip between their scales."
 msgstr ""
 "Need 'otsustajateks' kutsutavad lohed võtavad oma kohustusi lohede "
-"vahekohtunikena tõsiselt - nad on loobunud lohede küüntest ja vahetanud oma "
-"oda hellebardi vastu. Nende jaoks on liikuvuse kaotamine mõistlik "
-"vahetuskaup selle tohutu tera vastu. Nende paks soomusrüü kaitseb neid hästi "
-"torkerelvade eest, mis muidu nende soomuste vahelt läbi pääseksid."
+"vahekohtunikena tõsiselt - nad on loobunud lohede tavapärastest küünistest "
+"ja vahetanud oma oda hellebardi vastu. Nende jaoks on liikuvuse kaotamine "
+"mõistlik vahetuskaup selle tohutu tera vastu. Nende paks soomusrüü kaitseb "
+"neid hästi torkerelvade eest, mis muidu nende soomuste vahelt läbi pääseksid."
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
@@ -181,7 +180,6 @@ msgstr "Viiimsepäevalohe"
 
 #. [unit_type]: id=Armageddon Drake, race=drake
 #: data/core/units/drakes/Armageddon.cfg:27
-#, fuzzy
 msgid ""
 "Were it not for the armor they wear, certain drakes might be "
 "indistinguishable from true dragons, at least to the lesser races for whom "
@@ -227,6 +225,11 @@ msgid ""
 "around; Blademasters fiercely protect their fellows' honor, and no-one would "
 "dispute their right to do so."
 msgstr ""
+"Mõõgalohede must soomus on selle parimate võitlejate vennaskonna tunnuseks. "
+"Sinna kuulumiseks vajaliku jõu ja oskusteni jõuavad  vaid vähesed. Kui vahel "
+"kipuvad teised lohed võitlejaid taga rääkima,  siis vaatavad nad alati kaks "
+"korda ringi, et mõnd mõõgalohet ligiduses pole - nad kaitsevad oma kaaslaste "
+"au ägedalt (ning neil on selleks ka täielik õigus)."
 
 #. [attack]: type=blade
 #: data/core/units/drakes/Blademaster.cfg:109
@@ -252,6 +255,12 @@ msgid ""
 "a Burner's preferred weapon is his fiery breath, he won't shy away from "
 "striking blows with his bared claws."
 msgstr ""
+"Põletajaks saada sooviv lohe peab tõestama oma sisemise tule jõudu, kuna see "
+"vennaskond armastab end uhkusega võrrelda oma vana aja eellaste "
+"draakonitega. Mõned rohkem ennasttäis põletajad (keda pole vähe) kipuvad "
+"vahel väitma, et ka neil voolab draakonite kombel soontes vere asemel puhas "
+"leek. Ehkki nende põhirelvaks on tulehingus, ei kohku ta ka küüniste "
+"kasutamise ees tagasi."
 
 #. [attack]: type=blade
 #: data/core/units/drakes/Burner.cfg:108
@@ -334,7 +343,6 @@ msgstr "Kohtumõistjalohe"
 
 #. [unit_type]: id=Drake Enforcer, race=drake
 #: data/core/units/drakes/Enforcer.cfg:21
-#, fuzzy
 msgid ""
 "Not for Enforcers are the tactics of maneuver and deception; rather, they "
 "charge in wherever the melee is the fiercest. At close range, it matters "
@@ -343,11 +351,11 @@ msgid ""
 "careful not to besmirch the honor of the Enforcers, and generally call upon "
 "them to combat only the most pernicious of enemies."
 msgstr ""
-"Kaugelt võitlemise asemel tormavad kohtumõistjalohed otse kõige paksemasse "
-"taplusmöllu. Lähedase maa pealt ei loe see, et nende paks soomus takistab "
-"neil tuld pursata - loeb tohutu jõud, mida nad oma löökidesse panevad. "
-"Lohede juhid hoiduvad nende au haavamast ning kutsuvad nad appi üksnes kõige "
-"hullemate vaenlaste vastu."
+"Põiklemise ja kavaldamise asemel tormavad kohtumõistjalohed otse kõige "
+"paksemasse taplusmöllu. Lähedase maa pealt ei loe see, et nende paks soomus "
+"takistab neil tuld pursata - loeb tohutu jõud, mida nad oma löökidesse "
+"panevad. Lohede juhid hoiduvad nende au haavamast ning kutsuvad nad appi "
+"üksnes kõige hullemate vaenlaste vastu."
 
 #. [attack]: type=impact
 #: data/core/units/drakes/Enforcer.cfg:45
@@ -377,6 +385,10 @@ msgid ""
 "constantly struggling to prove his worth to the more respected castes by "
 "sheer physical prowess. Sometimes, he succeeds."
 msgstr ""
+"Võitlejate põhiülesandeks lohede seas on võidelda ja surra oma hõimu eest. "
+"Nad ei ole eriti kiired ega suuda vägevat tuld pursata, seetõttu peavad nad "
+"teistele lohedele pidevalt end tõestama, enamasti toore jõu ja võitlusoskuse "
+"abil. Vahel see neil ka õnnestub."
 
 #. [attack]: type=blade
 #: data/core/units/drakes/Fighter.cfg:108
@@ -398,6 +410,10 @@ msgid ""
 "vitality emanates through their skin, scorching their scales to a reddish-"
 "gray."
 msgstr ""
+"Tulelohed kannavad hõbedaga palistatud soomust, kuna neil pole veel õigust "
+"kanda kõrgeima astme punakuldset rüüd. Ehkki nad on alles tuleoskuste "
+"meistriks saamise poole teel, on nende sisemine leek nende soomused "
+"punakashalliks kõrvetanud."
 
 #. [unit_type]: id=Drake Flameheart, race=drake
 #: data/core/units/drakes/Flameheart.cfg:4
@@ -415,6 +431,11 @@ msgid ""
 "leader for supremacy, and only if he is sure of the support of his fellow "
 "drakes."
 msgstr ""
+"Tulesüdametel pole jõudu võita teisi kõrgema astme lohesid üksikvõitluses, "
+"kuid nad üritavad ka muidu oma rahvaga tülitsemist vältida. Nende kogemused "
+"on õpetanud neile, millal enda võimu kasutada ja millal lasta teistel "
+"omaette olla. Nad ei astu oma ülematele vastu muidu, kui olles täiesti "
+"kindlad oma seljataguses."
 
 #. [attack]: type=blade
 #. [attack]: type=arcane
@@ -458,6 +479,10 @@ msgid ""
 "they are more often seen leading small war parties or mediating disputes "
 "with a subtle hand."
 msgstr ""
+"Leegilohed on hinnatud nii oma tuleoskuste kui ka juhivõimete poolest ning "
+"nad püüdlevad saama oma rahva suurteks juhtideks nii rahuajal kui sõjas. "
+"Ehkki vahel võivad nad saada ka väiksemate hõimude etteotsa, on nad "
+"sagedamini sõjasalkade juhid või vaidluste lahendajad."
 
 #. [unit_type]: id=Drake Glider, race=drake
 #: data/core/units/drakes/Glider.cfg:4
@@ -480,6 +505,16 @@ msgid ""
 "distance – and if all else fails, he will fight with his feet, keeping his "
 "precious wings as far from the enemy as possible."
 msgstr ""
+"Paljud lohed armastavad tunda tuulevihinat oma soomustel ning see toob neid "
+"hõljujate vennaskonda. Nende kirg on pikad jahiretked oma hõimu maadel  - "
+"ehkki teised lohed panevad sageli imeks, et keegi võib lahingukuulsusele "
+"eelistada nürivõitu jahipidamist.\n"
+"\n"
+"Enamasti kütivad hõljujad suuremaid saakloomi nagu hirved, sead või "
+"delfiinid.  Siin on neile hindamatuks abiks täpne tulesülgamine, millega "
+"saab loomi soovitavasse kohta ajada. Lahingus eelistavad nad kimbutada "
+"vaenlast kaugelt - kui miski muu  ei aita, võitleb selline lohe jalgade abil "
+"ning hoiab tiibu ohu eest nii kaugel kui võimalik."
 
 #. [attack]: type=impact
 #: data/core/units/drakes/Glider.cfg:112
@@ -503,6 +538,12 @@ msgid ""
 "other castes has increased their skill in combat, but their greatest "
 "strength still lies in their speed and flight."
 msgstr ""
+"Tormilohed on loobunud jahipidamisest ja saagikorjamisest, millega nende "
+"alamad suguvennad  tegelevad. Nad on lohevägede vajalik koostisosa, kes "
+"liiguvad koos eelväega, viivad lahingus sõnumeid või ründavad vaenlast "
+"ootamatult selja tagant. Neile on antud luba harjutada võitlemist koos "
+"teiste lohedega ning see on nende taplusoskusi parandanud, ent nende suurim "
+"eelis peitub siiski lennuvõimes ja kiiruses."
 
 #. [unit_type]: id=Inferno Drake, race=drake
 #: data/core/units/drakes/Inferno.cfg:4
@@ -518,6 +559,10 @@ msgid ""
 "from extensive use of their inner flame, their sculpted red-gold armor "
 "enhancing the illusion that they are, in fact, dragons."
 msgstr ""
+"Tulemöllulohed on tulesülgamise meistrid, keda austatakse ja kardetakse "
+"peaaegu sama palju kui vana aja draakoneid. Nad suudavad vuhiseda "
+"kahjustamatult läbi iseenda tekitatud tuletormi ning nende tulest punased "
+"soomused ja punakuldne kaitserüü teeb neid veelgi enam draakonite sarnasteks."
 
 #. [unit_type]: id=Sky Drake, race=drake
 #: data/core/units/drakes/Sky.cfg:4
@@ -534,6 +579,10 @@ msgid ""
 "of their tribe and, just possibly, time with one of the closely-guarded "
 "drake females."
 msgstr ""
+"Taevalohede kerge, hõbedaseks poleeritud soomusrüü on nende seisuse "
+"tunnuseks. Küttidena on nad sageli pikka aega kodust eemal ning igaüks neist "
+"püüab saada suurimat saaki, võisteldes teineteisega hõimu austuse ja "
+"emalohede tähelepanu nimel."
 
 #. [unit_type]: id=Drake Thrasher, race=drake
 #: data/core/units/drakes/Thrasher.cfg:4
@@ -593,6 +642,10 @@ msgid ""
 "plated leather with the traditional war blade mounted on the back of each "
 "hand."
 msgstr ""
+"Võitlejad on lohehõimu sõjaväe põhialus. Neil pole erilisi oskusi ega "
+"võimeid, üksnes nende suur jõud ja väljaõpe aitavad neil vastastest läbi "
+"murda. Nad võitlevad samamoodi kui vanasti - nahkses kaitseplaatidega rüüs "
+"ja kasutades kaht mõõka."
 
 #. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #: data/core/units/dwarves/Berserker.cfg:4
@@ -601,15 +654,14 @@ msgstr "Päkapike raevusõdalane"
 
 #. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #: data/core/units/dwarves/Berserker.cfg:20
-#, fuzzy
 msgid ""
 "Berserkers are a rare caste of Dwarves, who work themselves into a towering "
 "rage before combat. These warriors disdain all notion of defense, thinking "
 "only of the unrelenting assaults for which they are legendary."
 msgstr ""
-"Raevusõdalased on harv liik päkapikke, kellel tekib enne võitlust kohutav "
-"raevuseisund. Need sõdalased unustavad igasuguse kaitse ja mõtlevad ainult "
-"oma legendaarsele järelejätmatule rünnakule."
+"Raevusõdalased on harv liik päkapikke, kes ajavad end enne võitlust "
+"kohutavasse raevu. Need sõdalased unustavad igasuguse kaitse ja mõtlevad "
+"ainult oma legendaarsele järelejätmatule rünnakule."
 
 #. [attack]: type=blade
 #: data/core/units/dwarves/Berserker.cfg:44
@@ -624,7 +676,6 @@ msgstr "Päkapike lohevaht"
 
 #. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
 #: data/core/units/dwarves/Dragonguard.cfg:21
-#, fuzzy
 msgid ""
 "It is not clear why the Dragonguards are called what they are, a name given "
 "by their dwarven brethren. Some speculate that the name comes from their "
@@ -673,7 +724,6 @@ msgstr "Päkapike maadeuurija"
 
 #. [unit_type]: id=Dwarvish Explorer, race=dwarf
 #: data/core/units/dwarves/Explorer.cfg:27
-#, fuzzy
 msgid ""
 "Dwarvish Explorers are peerless survivalists. Using only the equipment they "
 "carry, they can range for months around the forests and mountains looking "
@@ -686,7 +736,7 @@ msgstr ""
 "varustusega kolavad nad kuude viisi metsades ja mägedes, otsides uusi "
 "maagisooni ja maavarade leiukohti. Kui nende lähivõitlusoskused jäävad "
 "mõnedele teistele päkapikkudele alla, siis on nad ületamatud kirveheitmises, "
-"millega nad oma mägedes jahti peavad. Nende liikumiskiirus teeb neist "
+"millega nad oma mägedes jahti peavad. Nende liikumisosavus teeb neist "
 "ohtlikud vastased."
 
 #. [attack]: type=blade
@@ -716,7 +766,6 @@ msgstr "Päkapike võitleja"
 
 #. [unit_type]: id=Dwarvish Fighter, race=dwarf
 #: data/core/units/dwarves/Fighter.cfg:20
-#, fuzzy
 msgid ""
 "Dwarvish Fighters wield mighty battle axes and hammers, which make them "
 "feared opponents in close-range combat. They are excellent in mountainous "
@@ -725,7 +774,8 @@ msgid ""
 msgstr ""
 "Päkapike võitlejad kasutavad vägevaid sõjakirveid ja vasaraid, mis teevad "
 "neist lähivõitluses kardetavad vastased. Nad on eriti head mägedes ja maa "
-"all. Nende jõud ja vastupidavus enam kui tasakaalustab nende vähema kiiruse."
+"all. Nende jõud ja vastupidavus enam kui tasakaalustab nende vähema "
+"liikuvuse."
 
 #. [attack]: type=impact
 #: data/core/units/dwarves/Fighter.cfg:55 data/core/units/dwarves/Lord.cfg:51
@@ -1090,7 +1140,6 @@ msgstr "Haldjavägilane"
 
 #. [unit_type]: id=Elvish Champion, race=elf
 #: data/core/units/elves/Champion.cfg:20
-#, fuzzy
 msgid ""
 "Those few elves who deliberately hone themselves into weapons of war become "
 "something which belies the peace-loving reputation of their race. Dedication "
@@ -1099,7 +1148,7 @@ msgid ""
 "pursuit, is masterfully executed."
 msgstr ""
 "Need vähesed haldjad, kes teadlikult teevad endist elavad relvad, on "
-"vastukaaluks selle rassi üldiselt eeldatavale haprusele. Pühendumine, "
+"vastukaaluks selle rassi üldiselt eeldatavale rahuarmastusele. Pühendumine, "
 "oskused ja tehnika annavad tulemuseks mõõgakunsti, millele vähestel on "
 "midagi vastu panna. Isegi kui vibu on neile alles teiseks relvaks, on nad ka "
 "selle kasutamises meistrid."
@@ -1111,7 +1160,6 @@ msgstr "Haldjatark"
 
 #. [unit_type]: id=Elvish Druid, race=elf
 #: data/core/units/elves/Druid.cfg:21
-#, fuzzy
 msgid ""
 "The magic of the wood-elves is poorly suited for combat, but effective "
 "nonetheless. The forests in which they thrive can become quickened by a word "
@@ -1196,7 +1244,6 @@ msgstr "Haldjasõdalane"
 
 #. [unit_type]: id=Elvish Fighter, race=elf
 #: data/core/units/elves/Fighter.cfg:20
-#, fuzzy
 msgid ""
 "Elves are not warlike by nature, but in times of need, their natural grace "
 "and agility serve them well, as does their skillful craftsmanship. An elf "
@@ -1205,7 +1252,7 @@ msgid ""
 "battlefield."
 msgstr ""
 "Haldjad pole loomult sõjakad, kuid vajaduse korral aitab neid nende loomulik "
-"graatsia ja väledus ning ka heal tasemel meisterdamiskunst.  Haldjas suudab "
+"graatsia ja väledus ning ka heal tasemel käsitöökunst.  Haldjas suudab "
 "omandada mõõgavõitluse ja vibulaskmise põhialused uskumatult lühikese ajaga "
 "ning rakendada neid edukalt lahinguväljal."
 
@@ -1216,16 +1263,15 @@ msgstr "Haldjasangar"
 
 #. [unit_type]: id=Elvish Hero, race=elf
 #: data/core/units/elves/Hero.cfg:19
-#, fuzzy
 msgid ""
 "Elves, though not warlike by nature, are swift to learn; a relatively small "
 "amount of experience will turn an elf from a competent fighter into a master "
 "of combat. Those who are honored as heroes are strong with both sword and "
 "bow, and their skill once acquired does not fade for lack of practice."
 msgstr ""
-"Ka üsna vähene kogemus muudab haldja lihtsalt heast võitlejast meistriks. "
-"Need sangarid on tugevad nii mõõga kui vibuga ning ka vähene kasutamine ei "
-"kahanda neid oskusi."
+"Ehkki haldjad pole loomult sõjakad, muudab ka üsna vähene kogemus haldja "
+"lihtsalt heast võitlejast meistersõdalaseks. Need sangarid on tugevad nii "
+"mõõga kui vibuga ning neid oskusi ei kahanda ka vähene kasutamine."
 
 #. [unit_type]: id=Elvish High Lord, race=elf
 #: data/core/units/elves/High_Lord.cfg:4
@@ -1234,16 +1280,15 @@ msgstr "Haldjate suurisand"
 
 #. [unit_type]: id=Elvish High Lord, race=elf
 #: data/core/units/elves/High_Lord.cfg:19
-#, fuzzy
 msgid ""
 "The leaders of elvenkind command an instinctive loyalty fronm their people "
 "that rulers of other races can only envy, and earn it with great mindfulness "
 "and wisdom. Quiet and contemplative in times of peace, a High Lord in the "
 "full of his wrath is an awesome sight indeed."
 msgstr ""
-"Haldjate pealikud ei muutu vananedes nõrgaks ja hapraks, vaid avavad enda "
-"tõelised võimed. Rahuajal vaikne ja mõtlik, on haldjate suurisand lahingus "
-"oma raevus hirmuäratav vaatepilt."
+"Teised rahvad võivad vaid kadestada haldjate ustavust oma pealikutele, kes "
+"teenivad selle ära suure tarkuse ja hoolivusega. Rahuajal vaikne ja mõtlik, "
+"on haldjate suurisand lahingus oma raevus hirmuäratav vaatepilt."
 
 #. [unit_type]: id=Elvish Lady, race=elf
 #: data/core/units/elves/Lady.cfg:5
@@ -1252,7 +1297,6 @@ msgstr "Haldjaemand"
 
 #. [unit_type]: id=Elvish Lady, race=elf
 #: data/core/units/elves/Lady.cfg:20
-#, fuzzy
 msgid ""
 "Elves choose their leaders for their wisdom and sensitivity to the balance "
 "of universal forces; foresight is what has protected them in times of "
@@ -1287,7 +1331,6 @@ msgstr "Haldjate täpsuskütt"
 
 #. [unit_type]: id=Elvish Marksman, race=elf
 #: data/core/units/elves/Marksman.cfg:20
-#, fuzzy
 msgid ""
 "Elves are wonerously keen-sighted, a gift whiuch contributes to their "
 "mastery of the bow. An elf practiced at archery can hit targets that a man "
@@ -1298,10 +1341,8 @@ msgstr ""
 "Üheks haldjate suure vibukunsti põhjuseks on nende ebatavaliselt terav "
 "nägemine.  Vibukunstis vilunud haldjas võib tabada märki, mida inimene isegi "
 "näe, ja seda ka öösel. Samuti võib haldjas saata lendu järgmise noole pea  "
-"kohe eelmise järel. \n"
-"\n"
-"See vibukunst aga saavutatakse ühe asja hinnaga, nimelt jääb mõõgakunsti "
-"õppimiseks vähem aega."
+"kohe eelmise järel. See vibukunst aga saavutatakse ühe asja hinnaga, nimelt "
+"jääb mõõgakunsti õppimiseks vähem aega."
 
 #. [attack]: type=pierce
 #: data/core/units/elves/Marksman.cfg:73
@@ -1323,7 +1364,6 @@ msgstr "Haldjamarssal"
 
 #. [unit_type]: id=Elvish Marshal, race=elf
 #: data/core/units/elves/Marshal.cfg:27
-#, fuzzy
 msgid ""
 "The longevity and natural intelligence of elves make them apt for military "
 "matters, enough even to counter their general distaste for war. Elves "
@@ -1371,7 +1411,6 @@ msgstr "Haldjate rajaleidja"
 
 #. [unit_type]: id=Elvish Ranger, race=elf
 #: data/core/units/elves/Ranger.cfg:20
-#, fuzzy
 msgid ""
 "Though a man might spend years in the forest, he will never shake the "
 "feeling that he is a guest in a realm of which he is not truly a part. With "
@@ -1486,7 +1525,6 @@ msgstr "Haldjate metsavaim"
 
 #. [unit_type]: id=Elvish Shyde, race=elf
 #: data/core/units/elves/Shyde.cfg:22
-#, fuzzy
 msgid ""
 "Devotion to the path of faerie may will eventually transform an elf maiden "
 "into a creature of both worlds. Guided by a nature which is little "
@@ -1560,7 +1598,6 @@ msgstr "Vargiratsanik"
 
 #. [unit_type]: id=Direwolf Rider, race=wolf
 #: data/core/units/goblins/Direwolf_Rider.cfg:22
-#, fuzzy
 msgid ""
 "'Dire wolves' differ from the common variety only in size and color. They "
 "typically stand taller than a horse at the shoulder, and have an appetite to "
@@ -1579,7 +1616,7 @@ msgstr ""
 "taltsutada ja kasutavad neid ratsudena. \n"
 "\n"
 "Hundi küüned ei ole harilikult eriti ohtlikud, kuid nii suure eluka puhul on "
-"need suuread kui raudnaelad. Lisaks sellele määrivad ratsanikud esikäppade "
+"need suuremad kui raudnaelad. Lisaks sellele määrivad ratsanikud esikäppade "
 "küüntele mürki, mis sarnaneb pussitajate poolt kasutatavatega. Nii võib ka  "
 "vargi käpahoop olla surmav."
 
@@ -1661,7 +1698,6 @@ msgstr "Mäekollide ässitaja"
 
 #. [unit_type]: id=Goblin Rouser, race=goblin
 #: data/core/units/goblins/Rouser.cfg:27
-#, fuzzy
 msgid ""
 "Standard-bearers are an oddity amongst goblins. A goblin who has survived "
 "enough battles to be considered a veteran is rare enough, and it is rarer "
@@ -1933,7 +1969,6 @@ msgstr "Vibumees"
 
 #. [unit_type]: id=Bowman, race=human
 #: data/core/units/humans/Loyalist_Bowman.cfg:21
-#, fuzzy
 msgid ""
 "The use of archery in shooting something other than game was seen from its "
 "inception, and archers have been indispensable in warfare since time "
@@ -1944,7 +1979,8 @@ msgstr ""
 "Vibukunsti kasulikkus lisaks jahile ka millegi muu laskmiseks avastati juba "
 "varakult ning vibukütid on aegade hämarusest olnud sõjas asendamatud. "
 "Enamasti madalast soost, värvatud talu- või metsameeste hulgast, on "
-"vibumehed õpetatud kasutama nii vibu kui ka lühikest mõõka. "
+"vibumehed õpetatud kasutama nii vibu kui ka lühikest mõõka ning neid võib "
+"lahinguväljal kohata väga sageli."
 
 #. [attack]: type=blade
 #: data/core/units/humans/Loyalist_Bowman.cfg:37
@@ -1959,7 +1995,6 @@ msgstr "Ratsalaskur"
 
 #. [unit_type]: id=Cavalier, race=human
 #: data/core/units/humans/Loyalist_Cavalier.cfg:21
-#, fuzzy
 msgid ""
 "Cavaliers are masters at the use of both sword and crossbow from horseback. "
 "Their combination of striking power and mobility is fearsome; and they have "
@@ -2021,7 +2056,6 @@ msgstr "Ratsaväelane"
 
 #. [unit_type]: id=Dragoon, race=human
 #: data/core/units/humans/Loyalist_Dragoon.cfg:20
-#, fuzzy
 msgid ""
 "The more talented cavalrymen in the armies of Wesnoth are trained in the use "
 "of the crossbow, and matched with much more powerful steeds. Well-armored, "
@@ -2041,7 +2075,6 @@ msgstr "Kahevõitleja"
 
 #. [unit_type]: id=Duelist, race=human
 #: data/core/units/humans/Loyalist_Duelist.cfg:20
-#, fuzzy
 msgid ""
 "It is a peculiar custom of Wesnoth's nobility that they typically enroll "
 "their sons into one of two orders of armigers, training them either in the "
@@ -2079,7 +2112,6 @@ msgstr "Vehkleja"
 
 #. [unit_type]: id=Fencer, race=human
 #: data/core/units/humans/Loyalist_Fencer.cfg:21
-#, fuzzy
 msgid ""
 "Fencers belong to a school of thought that considers the armor most soldiers "
 "wear in combat to be their own worst enemy. While armor can only soften a "
@@ -2140,7 +2172,6 @@ msgstr "Hellebardimees"
 
 #. [unit_type]: id=Halberdier, race=human
 #: data/core/units/humans/Loyalist_Halberdier.cfg:21
-#, fuzzy
 msgid ""
 "A halberd is a heavy weapon and difficult to use, but very powerful in the "
 "hands of an expert. It is also much more flexible than the spear from which "
@@ -2181,6 +2212,11 @@ msgid ""
 "positions. A few of these in battle line will stiffen it considerably, "
 "albeit at an obvious cost in tactical flexibility."
 msgstr ""
+"Raskejalaväe moodustavad tursked võitlejad, kes kannavad paksu soomusrüüd ja "
+"vägevaid löögiriistu. Lähivõitluses on neil vähe vastaseid, kuid nad "
+"liiguvad halvasti ning neid on kõige õigem kasutada kindlustatud punktide "
+"valveks. Paar rasket  sõdalast suudavad lahingurivi oluliselt tugevdada, "
+"ehkki see toob kaasa vähese paindlikkuse."
 
 #. [attack]: type=impact
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:37
@@ -2312,7 +2348,6 @@ msgstr "Vehklemismeister"
 
 #. [unit_type]: id=Master at Arms, race=human
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:21
-#, fuzzy
 msgid ""
 "Master fencers have an envied place in life. Though the journey to their "
 "station was a dangerous way of life, they have reached the time wherein they "
@@ -2845,7 +2880,6 @@ msgstr "Mõrtsukas"
 
 #. [unit_type]: id=Assassin, race=human
 #: data/core/units/humans/Outlaw_Assassin.cfg:20
-#, fuzzy
 msgid ""
 "The greatest of thieves are sometimes tasked to take far more than their "
 "victim's belongings. Masters of knife-fighting and uncannily light on their "
@@ -2934,7 +2968,6 @@ msgstr "Tagaotsitav"
 
 #. [unit_type]: id=Fugitive, race=human
 #: data/core/units/humans/Outlaw_Fugitive.cfg:21
-#, fuzzy
 msgid ""
 "Veteran criminals become notorious for both their ruthlessness and ability "
 "to elude capture. They can be dangerous in their element, though no match "
@@ -3002,7 +3035,6 @@ msgstr "Tolgus"
 
 #. [unit_type]: id=Ruffian, race=human
 #: data/core/units/humans/Outlaw_Ruffian.cfg:19
-#, fuzzy
 msgid ""
 "Some men without particular skills cannot or will not make an honest living. "
 "Those that attempt to make their way through life by the heavy end of a "
@@ -3012,7 +3044,8 @@ msgid ""
 msgstr ""
 "Mõned sellid, kel pole õigeid oskusi ega ka suutlikkust või tahtmist ausalt "
 "elatist teenida, lähevad tolgusteks kätte. Mõnel õnnelikumal ja kogenumal "
-"neist õnnestub isegi vältida trelle, mis enamikku nende kaaslastest ootavad."
+"neist õnnestub isegi vältida vanglat või surma, mis enamikku nende "
+"kaaslastest ootavad."
 
 #. [unit_type]: id=Thief, race=human
 #: data/core/units/humans/Outlaw_Thief.cfg:4
@@ -3237,7 +3270,6 @@ msgstr "Näkkide selgeltnägija"
 
 #. [unit_type]: id=Mermaid Diviner, race=merman
 #: data/core/units/merfolk/Diviner.cfg:25
-#, fuzzy
 msgid ""
 "Years of devotion may endow a priestess with great wisdom on the workings of "
 "the world, and grants some the favor of the light. The power thus given to "
@@ -3317,7 +3349,6 @@ msgstr "Näkkide võitleja"
 
 #. [unit_type]: id=Merman Fighter, race=merman
 #: data/core/units/merfolk/Fighter.cfg:20
-#, fuzzy
 msgid ""
 "Skilled denizens of the sea, Mermen are powerful and quick in any watery "
 "environment, but lose most of their mobility on land."
@@ -3367,7 +3398,6 @@ msgstr "Näkineid"
 
 #. [unit_type]: id=Mermaid Initiate, race=merman
 #: data/core/units/merfolk/Initiate.cfg:23
-#, fuzzy
 msgid ""
 "Young mermaids are often initiated into the water magics native to their "
 "people. The wondrous abilities this grants are inimitable by any other race, "
@@ -3457,7 +3487,6 @@ msgstr "Näkkide lummaja"
 
 #. [unit_type]: id=Mermaid Siren, race=merman
 #: data/core/units/merfolk/Siren.cfg:23
-#, fuzzy
 msgid ""
 "The faerie nature of the mermaids is strongest in the Sirens, whose "
 "connection to the currents of magic often causes them to be mistaken for "
@@ -3540,7 +3569,6 @@ msgstr "Hiidämblik"
 
 #. [unit_type]: id=Giant Spider, race=monster
 #: data/core/units/monsters/Cave_Spider.cfg:20
-#, fuzzy
 msgid ""
 "Giant Spiders are said to roam the depths of Knalga, devouring many victims. "
 "They have a vicious bite, made worse by the fact that it is poisoned, and "
@@ -3797,7 +3825,6 @@ msgstr "Nagavõitleja"
 
 #. [unit_type]: id=Naga Fighter, race=naga
 #: data/core/units/nagas/Fighter.cfg:21
-#, fuzzy
 msgid ""
 "The serpentine naga are one of the few races capable of any meaningful "
 "mobility in water, giving them mastery of a whole world effectively "
@@ -4115,7 +4142,6 @@ msgstr "Orkide ülemvalitseja"
 
 #. [unit_type]: id=Orcish Sovereign, race=orc
 #: data/core/units/orcs/Sovereign.cfg:19
-#, fuzzy
 msgid ""
 "From time to time, an orc will arise who has a natural charisma and command "
 "over his ilk. If he is also strong and cunning wnough to survive early "
@@ -4136,7 +4162,6 @@ msgstr "Orkide sõjapealik"
 
 #. [unit_type]: id=Orcish Warlord, race=orc
 #: data/core/units/orcs/Warlord.cfg:19
-#, fuzzy
 msgid ""
 "Only orcs with both great cunning and unsurpassed strength can become "
 "Warlords. Masters of the sword, and even possessing some skill with the bow, "
@@ -4144,7 +4169,7 @@ msgid ""
 msgstr ""
 "Ainult suure kavaluse ja ületamatu jõuga orkidest võivad saada sõjapealikud. "
 "Need mõõgameistritest orkisõdalased, kes aga suudavad ka vibu kasutada, "
-"juhivad oma suguvendi raudse rusikaga."
+"juhivad oma suguvendi raudse tahte ja rusikaga."
 
 #. [unit_type]: id=Orcish Warrior, race=orc
 #: data/core/units/orcs/Warrior.cfg:4
@@ -4169,7 +4194,6 @@ msgstr "Sisalaste varitseja"
 
 #. [unit_type]: id=Saurian Ambusher, race=lizard
 #: data/core/units/saurians/Ambusher.cfg:19
-#, fuzzy
 msgid ""
 "Saurians are light on their feet, and able at navigating terrain that often "
 "confounds their enemies. When this natural mobility is combined with "
@@ -4217,7 +4241,6 @@ msgstr "Sisalaste jälitaja"
 
 #. [unit_type]: id=Saurian Flanker, race=lizard
 #: data/core/units/saurians/Flanker.cfg:20
-#, fuzzy
 msgid ""
 "Saurian warriors are generally weaker in frame than their elven or human "
 "counterparts. This is of course a relative term, and they can still become "
@@ -4337,7 +4360,6 @@ msgstr "Kiviheitja-troll"
 
 #. [unit_type]: id=Troll Rocklobber, race=troll
 #: data/core/units/trolls/Rocklobber.cfg:20
-#, fuzzy
 msgid ""
 "The thought of throwing a boulder in combat has certainly occurred to many "
 "trolls, and some have taken to them as a weapon of choice. Because stones "
@@ -4379,7 +4401,6 @@ msgstr "Trollišamaan"
 
 #. [unit_type]: id=Troll Shaman, race=troll
 #: data/core/units/trolls/Troll_Shaman.cfg:24
-#, fuzzy
 msgid ""
 "Troll shamans are the mystical leaders of the trolls. Though not as strong "
 "or tough as other trolls, their true power lies in their fire magic, which "
@@ -4470,7 +4491,6 @@ msgstr "Surnusööja"
 
 #. [unit_type]: id=Necrophage, race=undead
 #: data/core/units/undead/Corpse_Necrophage.cfg:20
-#, fuzzy
 msgid ""
 "The necrophage, or 'devourer of the dead', is a monstrous, corpulent thing, "
 "which bears only a crude resemblance to a man. They appear to be quite "
@@ -4484,8 +4504,8 @@ msgstr ""
 "Surnusööja on koletu, paks peletis, kes meenutab väliselt vaid veidi "
 "inimest. Nad mädanevad, ehkki saavad liikuda, nende veri  on täis haigusi ja "
 "mürki ning viimaks - nad lehkavad jäledalt. Kõige kohutavam asi nende juures "
-"on aga see, et nad on mingil moel tehtud elavatest inimestest - kuidas "
-"täpselt, ei tea keegi, kuid see saab olla üksnes kujutlematult õudne."
+"on aga see, et nad on mingil jõledal moel tehtud elavatest inimestest - "
+"kuidas täpselt, ei tea keegi, kuid see saab olla üksnes kujutlematult õudne."
 
 #. [unit_type]: id=Soulless, race=undead
 #: data/core/units/undead/Corpse_Soulless.cfg:6
@@ -4494,7 +4514,6 @@ msgstr "Hingetu"
 
 #. [unit_type]: id=Soulless, race=undead
 #: data/core/units/undead/Corpse_Soulless.cfg:20
-#, fuzzy
 msgid ""
 "The technique of animating a dead body is unfortunately well-known in the "
 "dark arts; practitioners often use it to raise servants and soldiers from "
@@ -4609,7 +4628,6 @@ msgstr "Must nõid"
 
 #. [unit_type]: id=Dark Sorcerer, race=human
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:21
-#, fuzzy
 msgid ""
 "The dread inspired by black magic is enhanced by the sewcrecy and fell "
 "rumors which sourround. Dark sorcerers have begun to unlock the secrets of "
@@ -4741,7 +4759,6 @@ msgstr "Surmavibu"
 
 #. [unit_type]: id=Banebow, race=undead
 #: data/core/units/undead/Skele_Banebow.cfg:18
-#, fuzzy
 msgid ""
 "The most powerful of the undead archers invariably end up being those who "
 "were themselves archers in their previous life. They wander the fields of "
@@ -4854,7 +4871,6 @@ msgstr "Kalmuline"
 
 #. [unit_type]: id=Revenant, race=undead
 #: data/core/units/undead/Skele_Revenant.cfg:19
-#, fuzzy
 msgid ""
 "Given false life to do battle once more, the creatures known as Revenants "
 "were clearly great warriors in their time, though the memory of that time is "
@@ -4913,15 +4929,11 @@ msgstr "Tont"
 
 #. [unit_type]: id=Ghost, race=undead
 #: data/core/units/undead/Spirit_Ghost.cfg:19
-#, fuzzy
 msgid ""
 "Enslaved within a shroud of enchantments, a trapped spirit may be likened to "
 "the wind in the sails of a ship. This damned vessel becomes an unfailing "
 "servant which can be bound to whatever task their master sees fit."
 msgstr ""
-"On suur arm, et inimhing on loodud muutmatu ja hävimatuna. Siiiski, mitmed "
-"surnumanajate tehtavad asjad on sellest hoolimata kohutavad.\n"
-"\n"
 "Vangistatud nõiduste pilve sisse, sarnaneb selline vaim tuulega laeva "
 "purjedes. Temast saab kuulekas teener,  kes teeb kõike, mida isand käsib."
 
@@ -4976,7 +4988,6 @@ msgstr "Viirastus"
 
 #. [unit_type]: id=Spectre, race=undead
 #: data/core/units/undead/Spirit_Spectre.cfg:21
-#, fuzzy
 msgid ""
 "Sometimes called the 'hollow men', spectres form the right arm of their "
 "masters' powers. They are an unholy terror to the living, for they are quite "
