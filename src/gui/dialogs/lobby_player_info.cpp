@@ -12,6 +12,8 @@
    See the COPYING file for more details.
 */
 
+#define GETTEXT_DOMAIN "wesnoth-lib"
+
 #include "gui/dialogs/helper.hpp"
 #include "gui/dialogs/lobby_player_info.hpp"
 #include "gui/widgets/button.hpp"
