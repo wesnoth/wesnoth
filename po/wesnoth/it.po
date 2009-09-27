@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-09-27 15:48+0200\n"
-"PO-Revision-Date: 2009-09-26 14:57+0200\n"
+"PO-Revision-Date: 2009-09-27 15:25+0200\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -2976,7 +2976,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Scaccia un utente dal multigiocatore. Potrà riunirsi alla partita. In "
+"Espelli un utente dal multigiocatore. Potrà riunirsi alla partita. In "
 "generale è un modo cortese per eliminare qualcuno che ha delle difficoltà di "
 "collegamento o altro.\n"
 "\n"
@@ -5245,7 +5245,7 @@ msgstr "sana"
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:140
 msgid "Always rest heals"
-msgstr ""
+msgstr "Recupera sempre come se riposasse"
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:157 data/core/macros/traits.cfg:170
@@ -8187,7 +8187,7 @@ msgstr "(gioca)"
 
 #: src/gui/dialogs/lobby_player_info.cpp:71
 msgid "In lobby"
-msgstr ""
+msgstr "Nella lobby"
 
 #: src/help.cpp:46
 msgid "Help"
@@ -8734,7 +8734,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2201
 msgid "Kick a player or observer."
-msgstr "Scaccia un giocatore o un osservatore."
+msgstr "Espelli un giocatore o un osservatore."
 
 #: src/menu_events.cpp:2203
 msgid "Mute an observer. Without an argument displays the mute status."
@@ -8743,15 +8743,13 @@ msgstr ""
 "zittiti."
 
 #: src/menu_events.cpp:2205
-#, fuzzy
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr ""
-"Zittisci un osservatore. Senza argomenti mostra lo stato degli osservatori "
-"zittiti."
+"Dai la parola a  un osservatore. Senza argomenti rende la parola a tutti."
 
 #: src/menu_events.cpp:2207
 msgid "Mute/Unmute all observers. (toggles)"
-msgstr "Zittisci tutti gli osservatori (commuta)."
+msgstr "Zittisci/Dai la parola tutti gli osservatori (commuta)."
 
 #: src/menu_events.cpp:2217
 msgid "Send a message to the server admins currently online"
@@ -8900,7 +8898,7 @@ msgstr "Disattiva la modalità di debug."
 
 #: src/menu_events.cpp:2427
 msgid "Execute a Lua statement."
-msgstr ""
+msgstr "Esegui un'istruzione Lua."
 
 #: src/menu_events.cpp:2429
 msgid "Set the command used by the custom command hotkey"
@@ -8908,7 +8906,7 @@ msgstr "Imposta il comando usato dalla scorciatoia personalizzata"
 
 #: src/menu_events.cpp:2431
 msgid "Launch the gamestate inspector"
-msgstr ""
+msgstr "Avvia l'ispettore dello stato della partita"
 
 #: src/menu_events.cpp:2433
 msgid "Set or show alias to a command"
@@ -9164,7 +9162,7 @@ msgstr "Giocatore locale anonimo"
 
 #: src/multiplayer_connect.cpp:666
 msgid "$playername $side"
-msgstr ""
+msgstr "$playername $side"
 
 #: src/multiplayer_connect.cpp:670
 msgid "(Empty slot)"

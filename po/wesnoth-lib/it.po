@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-09-27 15:48+0200\n"
-"PO-Revision-Date: 2009-09-26 12:46+0200\n"
+"PO-Revision-Date: 2009-09-27 15:20+0200\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -796,7 +796,7 @@ msgstr "stato"
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:77
 msgid "Call stack"
-msgstr ""
+msgstr "Stack delle chiamate"
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:86
@@ -806,20 +806,18 @@ msgstr "Azioni"
 
 #. [button]: id=step
 #: data/gui/default/window/formula_debugger.cfg:120
-#, fuzzy
 msgid "Step operation"
-msgstr "Moderatore"
+msgstr "Operazione passo"
 
 #. [button]: id=next
 #: data/gui/default/window/formula_debugger.cfg:130
-#, fuzzy
 msgid "Next operation"
-msgstr "Generatore successivo"
+msgstr "Operazione successivo"
 
 #. [button]: id=stepout
 #: data/gui/default/window/formula_debugger.cfg:140
 msgid "Step out"
-msgstr ""
+msgstr "Passo fuori"
 
 #. [button]: id=continue
 #: data/gui/default/window/formula_debugger.cfg:150
@@ -829,7 +827,7 @@ msgstr "Continua"
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:166
 msgid "Execution trace"
-msgstr ""
+msgstr "Trace di esecuzione"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
@@ -849,9 +847,8 @@ msgstr "Elimina salvataggio"
 
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_delete.cfg:52
-#, fuzzy
 msgid "Do you really want to delete this game?"
-msgstr "Vuoi davvero uscire?"
+msgstr "Vuoi davvero eliminare questa partita?"
 
 #. [toggle_button]: id=dont_ask_again
 #: data/gui/default/window/game_delete.cfg:72
@@ -892,7 +889,7 @@ msgstr "Carica una partita"
 #. [label]: id=lblChoose
 #: data/gui/default/window/game_load.cfg:179
 msgid "Choose the game to load"
-msgstr ""
+msgstr "Scegli la partita da caricare"
 
 #. [label]: id=lblFilter
 #: data/gui/default/window/game_load.cfg:203
@@ -919,15 +916,13 @@ msgstr "Elimina"
 
 #. [toggle_button]: id=show_replay
 #: data/gui/default/window/game_load.cfg:370
-#, fuzzy
 msgid "Show replay"
-msgstr "giocatore"
+msgstr "Mostra replay"
 
 #. [toggle_button]: id=cancel_orders
 #: data/gui/default/window/game_load.cfg:388
-#, fuzzy
 msgid "Cancel orders"
-msgstr "Annulla"
+msgstr "Annulla gli ordini"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
@@ -941,24 +936,23 @@ msgstr "Salva la partita"
 #: data/gui/default/window/game_save.cfg:62
 #: data/gui/default/window/game_save_message.cfg:82
 #: data/gui/default/window/game_save_oos.cfg:82
-#, fuzzy
 msgid "Name:"
 msgstr "Nome:"
 
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_save_message.cfg:52
 msgid "x"
-msgstr ""
+msgstr "x"
 
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_save_oos.cfg:52
 msgid "OOS error"
-msgstr ""
+msgstr "Errore OOS"
 
 #. [toggle_button]: id=ignore_all
 #: data/gui/default/window/game_save_oos.cfg:134
 msgid "Ignore All"
-msgstr ""
+msgstr "Ignora tutti"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit_game
@@ -969,17 +963,17 @@ msgstr "Termina la partita"
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_save_overwrite.cfg:32
 msgid "Overwrite?"
-msgstr ""
+msgstr "Sovrascrivere?"
 
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_save_overwrite.cfg:52
 msgid "Save already exists. Do you want to overwrite it?"
-msgstr ""
+msgstr "Il salvataggio esiste già. Vuoi sovrascriverlo?"
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:38
 msgid "Gamestate Inspector"
-msgstr ""
+msgstr "Ispettore stato partita"
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:92
@@ -988,26 +982,25 @@ msgstr "Tipi"
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:103
-#, fuzzy
 msgid "Content"
-msgstr "Connetti"
+msgstr "Contenuti"
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:114
 msgid "Inspection window"
-msgstr ""
+msgstr "Finestra di ispezione"
 
 #. [label]: id=unit_type
 #. [label]: id=typename
 #: data/gui/default/window/gamestate_inspector.cfg:145
 #: data/gui/default/window/unit_create.cfg:138
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #. [label]: id=name
 #: data/gui/default/window/gamestate_inspector.cfg:206
 msgid "Variable"
-msgstr ""
+msgstr "Variabile"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -1046,7 +1039,7 @@ msgstr "Partite"
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:176
 msgid "Requires a password to join"
-msgstr ""
+msgstr "Richiede una password per connettersi"
 
 #. [toggle_button]: id=use_map_settings
 #. [row]
@@ -1068,7 +1061,7 @@ msgstr "Era sconosciuta"
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:181
 msgid "Gold per village"
-msgstr ""
+msgstr "Oro per villaggio"
 
 #. [label]
 #. [row]
@@ -1080,68 +1073,62 @@ msgstr "Modificatore dell'esperienza"
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:185
 msgid "Time limit"
-msgstr ""
+msgstr "Limite di tempo"
 
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:304
-#, fuzzy
 msgid "Sort players:"
-msgstr "Giocatori: "
+msgstr "Ordina giocatori:"
 
 #. [toggle_button]: id=player_list_sort_relation
 #: data/gui/default/window/lobby_main.cfg:312
 msgid "Friends first, ignored people last"
-msgstr ""
+msgstr "Amici per primi, persone ignorate per ultime"
 
 #. [toggle_button]: id=player_list_sort_name
 #: data/gui/default/window/lobby_main.cfg:320
 msgid "Alphabetically"
-msgstr ""
+msgstr "Alfabeticamente"
 
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:332
-#, fuzzy
 msgid "Selected game"
-msgstr "Elimina file"
+msgstr "Partita selezionata"
 
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:333
 msgid "Current room"
-msgstr ""
+msgstr "Stanza attuale"
 
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:334
 msgid "Lobby"
-msgstr ""
+msgstr "Lobby"
 
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:335
-#, fuzzy
 msgid "Other games"
-msgstr "Crea partita"
+msgstr "Altre partite"
 
 #. [label]: id=room
 #: data/gui/default/window/lobby_main.cfg:357
 msgid "Rooms"
-msgstr ""
+msgstr "Stanze"
 
 #. [image]: id=pending_messages
 #: data/gui/default/window/lobby_main.cfg:375
-#, fuzzy
 msgid "Messages waiting"
-msgstr "Messaggi"
+msgstr "Messaggi in attesa"
 
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:451
-#, fuzzy
 msgid "Multiplayer Lobby"
-msgstr "Multigiocatori"
+msgstr "Lobby multigiocatori"
 
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:459
-#, fuzzy
 msgid "Filter:"
-msgstr "File: "
+msgstr "Filtro:"
 
 #. [toggle_button]: id=filter_with_friends
 #: data/gui/default/window/lobby_main.cfg:470
@@ -1151,7 +1138,7 @@ msgstr "Amici"
 #. [toggle_button]: id=filter_without_ignored
 #: data/gui/default/window/lobby_main.cfg:476
 msgid "No ignored"
-msgstr ""
+msgstr "Nessun ignorato"
 
 #. [toggle_button]: id=filter_vacant_slots
 #: data/gui/default/window/lobby_main.cfg:482
@@ -1161,7 +1148,7 @@ msgstr ""
 #. [toggle_button]: id=filter_invert
 #: data/gui/default/window/lobby_main.cfg:488
 msgid "Invert filter"
-msgstr ""
+msgstr "Inverti il filtro"
 
 #. [button]: id=send_message
 #: data/gui/default/window/lobby_main.cfg:527
@@ -1179,9 +1166,8 @@ msgstr "Preferenze"
 
 #. [button]: id=refresh
 #: data/gui/default/window/lobby_main.cfg:551
-#, fuzzy
 msgid "Refresh"
-msgstr "Aggiorna schermo"
+msgstr "Aggiorna"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_help
@@ -1200,87 +1186,77 @@ msgstr "Crea partita"
 
 #. [button]: id=join_global
 #: data/gui/default/window/lobby_main.cfg:571
-#, fuzzy
 msgid "Join"
-msgstr "Login"
+msgstr "Entra"
 
 #. [button]: id=observe_global
 #: data/gui/default/window/lobby_main.cfg:577
 msgid "Observe"
-msgstr ""
+msgstr "Osserva"
 
 #. [toggle_button]: id=skip_replay
 #: data/gui/default/window/lobby_main.cfg:583
-#, fuzzy
 msgid "Quick replay"
-msgstr "giocatore"
+msgstr "Replay veloce"
 
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:30
-#, fuzzy
 msgid "Player Info - "
-msgstr "Giocatori: "
+msgstr "Informazione sul giocatore – "
 
 #. [button]: id=start_whisper
 #: data/gui/default/window/lobby_player_info.cfg:62
-#, fuzzy
 msgid "Send private message"
 msgstr "Invia un messaggio privato"
 
 #. [button]: id=add_to_friends
 #: data/gui/default/window/lobby_player_info.cfg:91
-#, fuzzy
 msgid "Add to friends list"
-msgstr "Aggiungi questo nome utente alla lista degli amici"
+msgstr "Aggiungi alla lista degli amici"
 
 #. [button]: id=add_to_ignores
 #: data/gui/default/window/lobby_player_info.cfg:100
-#, fuzzy
 msgid "Add to ignores list"
-msgstr "Aggiungi questo nome utente alla lista degli utenti da ignorare"
+msgstr "Aggiungi alla lista degli utenti da ignorare"
 
 #. [button]: id=remove_from_list
 #: data/gui/default/window/lobby_player_info.cfg:109
-#, fuzzy
 msgid "Remove from list"
-msgstr "Rimuovi questo nome utente dalla tua lista"
+msgstr "Rimuovi dalla tua lista"
 
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:133
-#, fuzzy
 msgid "Moderation"
-msgstr "Moderatore"
+msgstr "Moderazione"
 
 #. [button]: id=check_status
 #: data/gui/default/window/lobby_player_info.cfg:140
 msgid "Check status"
-msgstr ""
+msgstr "Controlla stato"
 
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:147
 msgid "Kick / ban reason:"
-msgstr ""
+msgstr "Ragione dell'espulsione/messa al bando"
 
 #. [button]: id=kick
 #: data/gui/default/window/lobby_player_info.cfg:160
 #: data/gui/default/window/mp_cmd_wrapper.cfg:381
 msgid "Kick"
-msgstr "Scaccia"
+msgstr "Espelli"
 
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:167
 msgid "Ban time:"
-msgstr ""
+msgstr "Tempo di messa al bando:"
 
 #. [button]: id=kick_ban
 #: data/gui/default/window/lobby_player_info.cfg:180
-#, fuzzy
 msgid "Kick/ban"
-msgstr "Scaccia"
+msgstr "Espelli/bandisci"
 
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
-#, fuzzy
 msgid "Multiplayer command dialog"
 msgstr "Finestra di comando multigiocatore"
 
@@ -1537,9 +1513,8 @@ msgstr "Seleziona"
 
 #. [button]: id=previous_tip
 #: data/gui/default/window/title_screen.cfg:124
-#, fuzzy
 msgid "Previous"
-msgstr "Unità precedente"
+msgstr "Precedente"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
@@ -1581,9 +1556,8 @@ msgstr "Crea unità (Debug!)"
 
 #. [label]
 #: data/gui/default/window/unit_create.cfg:59
-#, fuzzy
 msgid "Gender:"
-msgstr "Genera"
+msgstr "Sesso:"
 
 #. [toggle_button]: id=male_toggle
 #: data/gui/default/window/unit_create.cfg:69
@@ -1638,7 +1612,6 @@ msgid "player"
 msgstr "giocatore"
 
 #: src/game_preferences_display.cpp:156
-#, fuzzy
 msgid "Full Screen"
 msgstr "Schermo intero"
 
@@ -1668,15 +1641,15 @@ msgstr "Elimina i salvataggi automatici alla vittoria in SG/MG o sconfitta MG"
 
 #: src/game_preferences_display.cpp:163
 msgid "Do Not Show Lobby Joins"
-msgstr "Non mostrare i collegamenti alla lobby"
+msgstr "Non mostrare gli ingressi nella lobby"
 
 #: src/game_preferences_display.cpp:164
 msgid "Show Lobby Joins Of Friends Only"
-msgstr "Mostra solo i collegamenti degli amici alla lobby"
+msgstr "Mostra solo gli ingressi di amici nella lobby"
 
 #: src/game_preferences_display.cpp:165
 msgid "Show All Lobby Joins"
-msgstr "Mostra tutti i collegamenti alla lobby"
+msgstr "Mostra tutti gli ingressi nella lobby"
 
 #: src/game_preferences_display.cpp:166
 msgid "Sort Lobby List"
@@ -2131,31 +2104,28 @@ msgid ""
 msgstr "«list_data» deve avere lo stesso numero di colonne di «list_definition»."
 
 #: src/gui/auxiliary/window_builder/multi_page.cpp:37
-#, fuzzy
 msgid "No page defined."
-msgstr "Non è stata definita nessuna griglia."
+msgstr "Non è stata definita nessuna pagina."
 
 #: src/gui/auxiliary/window_builder/slider.cpp:66
 msgid "The number of value_labels and values don't match."
 msgstr "Il numero di value_labels e values non corrisponde."
 
 #: src/gui/auxiliary/window_builder/stacked_widget.cpp:35
-#, fuzzy
 msgid "No stack defined."
-msgstr "Non è stata definita nessuna lista."
+msgstr "Non è stata definita nessuno stack."
 
 #: src/gui/dialogs/game_load.cpp:232
 msgid "#(Invalid)"
-msgstr ""
+msgstr "#(Non valido)"
 
 #: src/gui/dialogs/game_load.cpp:252
 msgid "Campaign: $campaign_name"
 msgstr "Campagna: $campaign_name"
 
 #: src/gui/dialogs/game_load.cpp:271
-#, fuzzy
 msgid "replay"
-msgstr "giocatore"
+msgstr "replay"
 
 #: src/gui/dialogs/game_load.cpp:273
 msgid "Turn"
@@ -2176,11 +2146,11 @@ msgstr "Versione: "
 
 #: src/gui/dialogs/lobby_main.cpp:404
 msgid "Observers allowed"
-msgstr ""
+msgstr "Osservatori ammessi"
 
 #: src/gui/dialogs/lobby_main.cpp:407
 msgid "Observers not allowed"
-msgstr ""
+msgstr "Osservatori non ammessi"
 
 #: src/gui/dialogs/lobby_main.cpp:692
 msgid ""
@@ -2190,16 +2160,15 @@ msgstr ""
 
 #: src/gui/dialogs/lobby_main.cpp:698
 msgid "Room $name joined"
-msgstr ""
+msgstr "Sei entrato nella stanza $name"
 
 #: src/gui/dialogs/lobby_main.cpp:1123
-#, fuzzy
 msgid "Password Required"
-msgstr "Ricorda password"
+msgstr "Password necessaria"
 
 #: src/gui/dialogs/lobby_main.cpp:1124
 msgid "Joining this game requires a password."
-msgstr ""
+msgstr "Entrare in questa partita richiede una password."
 
 #: src/gui/dialogs/lobby_main.cpp:1125
 msgid "Password: "
@@ -2258,7 +2227,7 @@ msgstr "Unità precedente"
 
 #: src/hotkeys.cpp:48
 msgid "Add waypoint"
-msgstr ""
+msgstr "Aggiungi punto di via"
 
 #: src/hotkeys.cpp:49
 msgid "Hold Position"
@@ -2366,7 +2335,6 @@ msgid "Speak"
 msgstr "Parla"
 
 #: src/hotkeys.cpp:78
-#, fuzzy
 msgid "Change Side (Debug!)"
 msgstr "Cambia fronte dell'unità (Debug!)"
 
@@ -2690,7 +2658,7 @@ msgstr "Cattura schermata non riuscita"
 #. translate this message as "sv,da", while Danish as "da,sv".
 #: src/image.cpp:342
 msgid "language code for localized resources^en_US"
-msgstr ""
+msgstr "it"
 
 #: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:208
 msgid "Close Window"
