@@ -79,7 +79,7 @@ private:
 	 */
 	tstate state_;
 
- 	/**
+	/**
 	 * The return value of the button.
 	 *
 	 * If this value is not 0 and the button is clicked it sets the retval of
