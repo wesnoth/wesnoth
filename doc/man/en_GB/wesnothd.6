@@ -82,9 +82,9 @@ turns debug logging on.
 .P
 [\fItag\fP]
 .IP
-key="\fIvalue\fP"
+\fIkey\fP="\fIvalue\fP"
 .IP
-key="\fIvalue\fP,\fIvalue\fP,..."
+\fIkey\fP="\fIvalue\fP,\fIvalue\fP,..."
 .P
 [/\fItag\fP]
 .
@@ -92,8 +92,8 @@ key="\fIvalue\fP,\fIvalue\fP,..."
 .
 .TP 
 \fBallow_remote_shutdown\fP
-If set to `no' (default), shut_down and restart requests are ignored unless
-the come from the fifo.  Set it to `yes' to allow remote shutdown via a
+If set to \fBno\fP (default), shut_down and restart requests are ignored unless
+they come from the fifo.  Set it to \fByes\fP to allow remote shutdown via a
 /query by an administrator.
 .TP 
 \fBban_save_file\fP
@@ -102,22 +102,22 @@ and write.  Bans will be saved to this file and read again on server start.
 .TP 
 \fBcompress_stored_rooms\fP
 Determines whether the rooms file should be read and written to in
-compressed form. Defaults to `yes'.
+compressed form. Defaults to \fByes\fP.
 .TP 
 \fBconnections_allowed\fP
 The number of allowed connections from the same IP. \fB0\fP means
 infinite. (default: \fB5\fP)
 .TP 
 \fBdisallow_names\fP
-Names/nicks that are not accepted by the server. `*' and `?' from wildcard
+Names/nicks that are not accepted by the server. \fB*\fP and \fB?\fP from wildcard
 patterns are supported. See \fBglob\fP(7)  for more details.  Default values
 (used if nothing is specified) are:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
 The path to the fifo you can echo server commands into (same as /query
-\&... from wesnoth).  If not specified defaults to the compile\-time specified
-path (default: /var/run/socket/wesnothd/socket).
+\&... from wesnoth).  If not specified defaults to the compile\-time path
+(default: \fB/var/run/socket/wesnothd/socket\fP).
 .TP 
 \fBmax_messages\fP
 The number of allowed messages in \fBmessages_time_period\fP. (default: \fB4\fP)
@@ -131,12 +131,13 @@ The message of the day.
 .TP 
 \fBnew_room_policy\fP
 Determines who can create new rooms on the server. Available values are
-`everyone', `registered', `admin' and `nobody', and give the permission
+\fBeveryone\fP, \fBregistered\fP, \fBadmin\fP and \fBnobody\fP, and give the permission
 respectively to everyone, registered users, admin users or disables new room
-creation. Default value is `everyone'.
+creation. Default value is \fBeveryone\fP.
 .TP 
 \fBpasswd\fP
-The password used to gain admin privileges. Usually it starts with `admin '.
+The password used to gain admin privileges (via \fB/query admin
+\fP\fIpassword\fP).
 .TP 
 \fBreplay_save_path\fP
 The directory where the server stores game replays. (Don't forget the
@@ -145,7 +146,8 @@ in.
 .TP 
 \fBrestart_command\fP
 The command that the server uses to start a new server process via the
-`restart' command. (Can only be issued via the fifo.)
+\fBrestart\fP command. (Can only be issued via the fifo. See the
+\fBallow_remote_shutdown\fP setting.)
 .TP 
 \fBroom_save_file\fP
 Path to a file where the room info should be stored. This file is read on
@@ -157,17 +159,17 @@ Defines whether the server will automatically save replays of
 games. (default: \fBfalse\fP)
 .TP 
 \fBversions_accepted\fP
-A comma separated list of version strings to be accepted by the server. `*'
-and `?' from wildcard patterns are supported.  (defaults to the
+A comma separated list of version strings to be accepted by the server. \fB*\fP
+and \fB?\fP from wildcard patterns are supported.  (defaults to the
 corresponding wesnoth version)
 .br
 Example: versions_accepted="*" accepts any version string.
 .TP  
 \fBuser_handler\fP
 The name of the user handler to use. Currently available user handlers are
-\&'forum' (to connect wesnothd to a phpbb forum database) and 'sample' (a
+\fBforum\fP (to connect wesnothd to a phpbb forum database) and \fBsample\fP (a
 sample implementation of the user handler interface, if you use this on
-anything real you are insane). The default value is 'forum'. You must also
+anything real you are insane). The default value is \fBforum\fP. You must also
 add a \fB[user_handler]\fP section, see below.
 .
 .SS "Global tags:"
@@ -199,7 +201,7 @@ The name used to reference the ban time.
 The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s
 (seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d
 is a number.  If no time modifier is given minutes (m) are assumed.
-Example: time="1D12h30m" results in a ban time of 1 day, 12 hours and 30
+Example: \fBtime="1D12h30m"\fP results in a ban time of 1 day, 12 hours and 30
 minutes.
 .RE
 .P
@@ -210,8 +212,8 @@ as \fB[redirect]\fP.
 .P
 \fB[user_handler]\fP Configures the user handler. Available keys vary depending
 on which user handler is set with the \fBuser_handler\fP key. If no
-[user_handler] section is present in the configuration the server will run
-without any nick registration service.
+\fB[user_handler]\fP section is present in the configuration the server will
+run without any nick registration service.
 .RS
 .TP  
 \fBdb_host\fP
@@ -235,9 +237,9 @@ saves its user data. Most likely this will be <table\-prefix>_users
 \fBdb_extra_table\fP
 (for user_handler=forum) The name of the table in which wesnothd will save
 its own data about users. You will have to create this table manually, e.g.:
-CREATE TABLE <table\-name>(username VARCHAR(255) PRIMARY KEY,
+\fBCREATE TABLE <table\-name>(username VARCHAR(255) PRIMARY KEY,
 user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4)
-NOT NULL DEFAULT 0);
+NOT NULL DEFAULT 0);\fP
 .TP  
 \fBuser_expiration\fP
 (for user_handler=sample) The time after which a registered nick expires (in

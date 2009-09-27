@@ -82,9 +82,9 @@ Hata ayıklama günlüğünü açar.
 .P
 [\fIetiket\fP]
 .IP
-key="\fIdeğer\fP"
+\fIkey\fP="\fIvalue\fP"
 .IP
-key="\fIdeğer\fP,\fIdeğer\fP,..."
+\fIkey\fP="\fIvalue\fP,\fIvalue\fP,..."
 .P
 [/\fIetiket\fP]
 .
@@ -92,8 +92,8 @@ key="\fIdeğer\fP,\fIdeğer\fP,..."
 .
 .TP 
 \fBallow_remote_shutdown\fP
-If set to `no' (default), shut_down and restart requests are ignored unless
-the come from the fifo.  Set it to `yes' to allow remote shutdown via a
+If set to \fBno\fP (default), shut_down and restart requests are ignored unless
+they come from the fifo.  Set it to \fByes\fP to allow remote shutdown via a
 /query by an administrator.
 .TP 
 \fBban_save_file\fP
@@ -103,22 +103,22 @@ sunucu başlatılırken okunur.
 .TP 
 \fBcompress_stored_rooms\fP
 Determines whether the rooms file should be read and written to in
-compressed form. Defaults to `yes'.
+compressed form. Defaults to \fByes\fP.
 .TP 
 \fBconnections_allowed\fP
 Aynı IP adresinden izin verilen bağlantı sayısı. \fB0\fP sonsuz anlamına
 gelir. \fB5\fP öntanımlıdır.
 .TP 
 \fBdisallow_names\fP
-Sunucu tarafından kabul edilmeyen isimler/rumuzlar. Dosya ismi kalıp
-karakterlerinden `*' ve `?' desteklenir. Daha ayrıntılı bilgi için
-\fBglob\fP(7) sayfasına bakınız. Öntanımlı (bir şey belirtilmezse kullanılacak)
-değerler: \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP
+Names/nicks that are not accepted by the server. \fB*\fP and \fB?\fP from wildcard
+patterns are supported. See \fBglob\fP(7)  for more details.  Default values
+(used if nothing is specified) are:
+\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-Sunucu komutlarının yansılandığı fifo yolu (wesnoth'tan /query ... ile aynı)
-Yol belirtilmezse derleme sırasında belirtilen yol
-(/var/run/socket/wesnothd/socket) öntanımlıdır.
+The path to the fifo you can echo server commands into (same as /query
+\&... from wesnoth).  If not specified defaults to the compile\-time path
+(default: \fB/var/run/socket/wesnothd/socket\fP).
 .TP 
 \fBmax_messages\fP
  \fBmessages_time_period\fP süresince izin verilen ileti sayısı. \fB4\fP
@@ -133,21 +133,22 @@ Günün sözü.
 .TP 
 \fBnew_room_policy\fP
 Determines who can create new rooms on the server. Available values are
-`everyone', `registered', `admin' and `nobody', and give the permission
+\fBeveryone\fP, \fBregistered\fP, \fBadmin\fP and \fBnobody\fP, and give the permission
 respectively to everyone, registered users, admin users or disables new room
-creation. Default value is `everyone'.
+creation. Default value is \fBeveryone\fP.
 .TP 
 \fBpasswd\fP
-Yönetici yetkilerini kazanmak için kullanılacak parola. Genellikle `admin '
-ile başlar.
+The password used to gain admin privileges (via \fB/query admin
+\fP\fIpassword\fP).
 .TP 
 \fBreplay_save_path\fP
 Sunucunun oyun tekrarlarını sakladığı dizin. (dizini bir / ile sonlandırmayı
 unutmayın!) wesnothd'nin başlatıldığı dizin anlamına gelen `' öntanımlıdır.
 .TP 
 \fBrestart_command\fP
-`restart' komutu üzerinden yeni bir sunucu süreci başlatmak için sunucunun
-kullanacağı komut. (Sadece fifo üzerinden kullanılabilir.)
+The command that the server uses to start a new server process via the
+\fBrestart\fP command. (Can only be issued via the fifo. See the
+\fBallow_remote_shutdown\fP setting.)
 .TP 
 \fBroom_save_file\fP
 Path to a file where the room info should be stored. This file is read on
@@ -159,19 +160,18 @@ Sunucunun oyun tekrarlarını özdevinimli olarak kaydadip kaydatmayacağını
 belirler. Öntanımlı değeri: \fBfalse\fP
 .TP 
 \fBversions_accepted\fP
-Sunucu tarafından kabul edilen sürüm dizgelerinin virgül ayraçlı
-listesi. Dosya ismi kalıp karakterlerinden `*' ve `?'
-desteklenir. (Dağıtıldığı wesnoth sürümü öntanımlıdır.)
+A comma separated list of version strings to be accepted by the server. \fB*\fP
+and \fB?\fP from wildcard patterns are supported.  (defaults to the
+corresponding wesnoth version)
 .br
 Örnek: \fBversions_accepted="*"\fP her sürüm dizgesi kabul edilir..
 .TP  
 \fBuser_handler\fP
-Kullanılacak kullanıcı işlemcisinin ismi. Şu an kullanılabilecek kullanıcı
-işlemcisi isimleri: 'forum' (wesnothd ile bir phpbb forumu veritabanını
-bağlanmak için) ve 'sample' (kullanıcı işlemcisi arayüzü için örnek
-gerçeklenim; bunu gerçek bir uygulamada kullanmamalısınız). 'forum'
-öntanımlıdır. Ayrıca, bir \fB[user_handler]\fP bölümü eklemeniz gerekir;
-aşağıya bakınız.
+The name of the user handler to use. Currently available user handlers are
+\fBforum\fP (to connect wesnothd to a phpbb forum database) and \fBsample\fP (a
+sample implementation of the user handler interface, if you use this on
+anything real you are insane). The default value is \fBforum\fP. You must also
+add a \fB[user_handler]\fP section, see below.
 .
 .SS "Genel etiket isimleri:"
 .
@@ -199,11 +199,11 @@ tanımlandığı etiket.
 Yasaklama süresine atfedilen isim.
 .TP 
 \fBtime\fP
-Biçemi: %d[%s[%d%s[...]]]
-Burada %s yerine (saniye)s, (dakika)m, (saat)h, (gün)D, (ay)M, (sene)Y; %d
-yerine de bir numara belirtilebilir. Bir zaman birimi belirteci
-kullanılmamışsa dakika (m) öntanımlıdır. Örneğin time="1D12h30m"
-belirtilmişse 1 gün 12 saat 30 dakikalık yasak süresi konmuş olur.
+The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s
+(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d
+is a number.  If no time modifier is given minutes (m) are assumed.
+Example: \fBtime="1D12h30m"\fP results in a ban time of 1 day, 12 hours and 30
+minutes.
 .RE
 .P
 \fB[proxy]\fP Sunucuya bir vekil sunucu gibi çalışacağını ve bağlanan
@@ -211,10 +211,10 @@ istemcilerin isteklerini belirtilen sunucuya yönelteceğini söyleyen
 etiket. \fB[redirect]\fP için kullanılan değişkenler kullanılır.
 .RE
 .P
-\fB[user_handler]\fP Kullanıcı işlemcisini yapılandırır.  Kullanılabilecek
-anahtarlar \fBuser_handler\fP anahtarı ile hangi kullanıcı işlemcisinin
-tanımlandığına bağlıdır. Yapılandırmada bir [user_handler] bölümü yoksa
-sunucu herhangi bir kullanıcı kayıt hizmeti olmadan çalışacaktır.
+\fB[user_handler]\fP Configures the user handler. Available keys vary depending
+on which user handler is set with the \fBuser_handler\fP key. If no
+\fB[user_handler]\fP section is present in the configuration the server will
+run without any nick registration service.
 .RS
 .TP  
 \fBdb_host\fP
@@ -235,11 +235,11 @@ saklayacağı tablonun ismi. Bu tablo genellikle belirtilir:
 <tablo\-öneki>_users (örnek: phpbb3_users).
 .TP  
 \fBdb_extra_table\fP
-(user_handler=forum için) wesnothd'nin kullanıcıları hakkındaki verileri
-saklayacağı tablonun ismi. Bu tabloyu elle kendiniz oluşturmalısınız. Örnek:
-CREATE TABLE <tablo\-ismi>(kullanıcı VARCHAR(255) PRIMARY KEY,
-son_giren_kullanıcı INT UNSIGNED NOT NULL DEFAULT 0, yönetici_adı TINYINT(4)
-NOT NULL DEFAULT 0);
+(for user_handler=forum) The name of the table in which wesnothd will save
+its own data about users. You will have to create this table manually, e.g.:
+\fBCREATE TABLE <table\-name>(username VARCHAR(255) PRIMARY KEY,
+user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4)
+NOT NULL DEFAULT 0);\fP
 .TP  
 \fBuser_expiration\fP
 (user_handler=sample için) Kayıtlı bir oyuncu adının geçerli kalacağı gün

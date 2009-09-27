@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-10 17:58+0300\n"
+"POT-Creation-Date: 2009-09-27 20:26+0300\n"
 "PO-Revision-Date: 2009-09-23 23:14+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -32,8 +32,7 @@ msgid "WESNOTH"
 msgstr "WESNOTH"
 
 # type: TH
-#: ../../doc/man/wesnoth.6:16
-#: ../../doc/man/wesnothd.6:16
+#: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2009"
 msgstr "2009"
@@ -51,8 +50,7 @@ msgid "Battle for Wesnoth"
 msgstr "Bitva o Wesnoth"
 
 # type: SH
-#: ../../doc/man/wesnoth.6:18
-#: ../../doc/man/wesnothd.6:18
+#: ../../doc/man/wesnoth.6:18 ../../doc/man/wesnothd.6:18
 #, no-wrap
 msgid "NAME"
 msgstr "NÁZEV"
@@ -63,8 +61,7 @@ msgid "wesnoth - Battle for Wesnoth, a turn-based fantasy strategy game"
 msgstr "wesnoth - Bitva o Wesnoth, tahová fantasy strategická hra"
 
 # type: SH
-#: ../../doc/man/wesnoth.6:21
-#: ../../doc/man/wesnothd.6:24
+#: ../../doc/man/wesnoth.6:21 ../../doc/man/wesnothd.6:24
 #, no-wrap
 msgid "SYNOPSIS"
 msgstr "POUŽITÍ"
@@ -75,8 +72,7 @@ msgid "B<wesnoth> [I<OPTIONS>] [I<PATH_TO_DATA>]"
 msgstr "B<wesnoth> [I<VOLBY>] [I<CESTA_K_DATŮM>]"
 
 # type: SH
-#: ../../doc/man/wesnoth.6:27
-#: ../../doc/man/wesnothd.6:40
+#: ../../doc/man/wesnoth.6:27 ../../doc/man/wesnothd.6:40
 #, no-wrap
 msgid "DESCRIPTION"
 msgstr "POPIS"
@@ -88,12 +84,27 @@ msgstr "Bitva o B<Wesnoth> je tahová fantasy strategická hra."
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:42
-msgid "Defeat all enemy leaders using a well-chosen cadre of troops, taking care to manage your resources of gold and villages. All units have their own strengths and weaknesses; to win, deploy your forces to their best advantage while denying your foes the chance to do the same. As units gain experience, they acquire new abilities and become more powerful. Play in your own language and test your skill against a smart computer opponent, or join Wesnoth's large community of on-line players. Create your own custom units, scenarios or campaigns, and share them with others."
-msgstr "Poraz všechny vůdce nepřátel použitím vhodně zvolené sestavy jednotek, dbaje přitom na množství zlata a vesnic. Všechny jednotky mají své silné stránky i slabiny; cesta k vítězství vede i přes postupné posilování vlastních jednotek a zabránění soupeři v tomtéž. Tak jak jednotky získávají zkušenosti, získávají i nové schopnosti a stávají se silnějšími. Hraj ve svém rodném jazyce a otestuj si své schopnosti proti silnému počítači nebo se připoj k velké komunitě hráčů Wesnothu hrajících po síti hry více hráčů. Vytvoř si vlastní jednotky, scénáře a tažení a poděl se o ně s ostatními."
+msgid ""
+"Defeat all enemy leaders using a well-chosen cadre of troops, taking care to "
+"manage your resources of gold and villages. All units have their own "
+"strengths and weaknesses; to win, deploy your forces to their best advantage "
+"while denying your foes the chance to do the same. As units gain experience, "
+"they acquire new abilities and become more powerful. Play in your own "
+"language and test your skill against a smart computer opponent, or join "
+"Wesnoth's large community of on-line players. Create your own custom units, "
+"scenarios or campaigns, and share them with others."
+msgstr ""
+"Poraz všechny vůdce nepřátel použitím vhodně zvolené sestavy jednotek, dbaje "
+"přitom na množství zlata a vesnic. Všechny jednotky mají své silné stránky i "
+"slabiny; cesta k vítězství vede i přes postupné posilování vlastních "
+"jednotek a zabránění soupeři v tomtéž. Tak jak jednotky získávají "
+"zkušenosti, získávají i nové schopnosti a stávají se silnějšími. Hraj ve "
+"svém rodném jazyce a otestuj si své schopnosti proti silnému počítači nebo "
+"se připoj k velké komunitě hráčů Wesnothu hrajících po síti hry více hráčů. "
+"Vytvoř si vlastní jednotky, scénáře a tažení a poděl se o ně s ostatními."
 
 # type: SH
-#: ../../doc/man/wesnoth.6:43
-#: ../../doc/man/wesnothd.6:45
+#: ../../doc/man/wesnoth.6:43 ../../doc/man/wesnothd.6:45
 #, no-wrap
 msgid "OPTIONS"
 msgstr "VOLBY"
@@ -107,7 +118,8 @@ msgstr "B<--bpp>I<\\ číslo>"
 # type: Plain text
 #: ../../doc/man/wesnoth.6:49
 msgid "sets BitsPerPixel value. Example: B<--bpp 32>"
-msgstr "nastavuje hodnotu BitsPerPixel - počet bitů na bod. Příklad: B<--bpp 32>"
+msgstr ""
+"nastavuje hodnotu BitsPerPixel - počet bitů na bod. Příklad: B<--bpp 32>"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:49
@@ -128,8 +140,12 @@ msgstr "B<--config-dir>I<\\ jméno>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:57
-msgid "sets the user configuration directory to I<name> under $HOME or \"My Documents\\eMy Games\" for windows."
-msgstr "nastaví adresář s uživatelskými daty na I<jméno> v $HOME nebo \"Dokumenty\\eMy Games\" pod Windows."
+msgid ""
+"sets the user configuration directory to I<name> under $HOME or \"My "
+"Documents\\eMy Games\" for windows."
+msgstr ""
+"nastaví adresář s uživatelskými daty na I<jméno> v $HOME nebo \"Dokumenty"
+"\\eMy Games\" pod Windows."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:57
@@ -150,8 +166,12 @@ msgstr "B<-d, --debug>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:64
-msgid "enables additional command mode options in-game (see the wiki page at http://www.wesnoth.org/wiki/CommandMode for more information about command mode)."
-msgstr "umožňuje použít rozšiřující volby příkazového módu (více viz Wiki na  http://www.wesnoth.org/wiki/CommandMode)."
+msgid ""
+"enables additional command mode options in-game (see the wiki page at http://"
+"www.wesnoth.org/wiki/CommandMode for more information about command mode)."
+msgstr ""
+"umožňuje použít rozšiřující volby příkazového módu (více viz Wiki na  http://"
+"www.wesnoth.org/wiki/CommandMode)."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:64
@@ -162,8 +182,12 @@ msgstr "B<--dummy-locales>"
 # type: Plain text
 # locale - lokál? :D
 #: ../../doc/man/wesnoth.6:68
-msgid "use special dummy locales to switch to any language even if that language isn't installed system-wide."
-msgstr "použije speciální falešné locale pro umožnění přepínání do jakéhokoliv jazyka, i pokud není nainstalován v systému."
+msgid ""
+"use special dummy locales to switch to any language even if that language "
+"isn't installed system-wide."
+msgstr ""
+"použije speciální falešné locale pro umožnění přepínání do jakéhokoliv "
+"jazyka, i pokud není nainstalován v systému."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:68
@@ -173,8 +197,12 @@ msgstr "B<-e, --editor>I<\\ soubor>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:74
-msgid "start the in-game map editor directly. If I<file> is specified, equivalent to B<-e --load>"
-msgstr "spustí vestavěný editor map. Pokud je udán I<soubor>, příkaz je ekvivalentem B<-e --load>"
+msgid ""
+"start the in-game map editor directly. If I<file> is specified, equivalent "
+"to B<-e --load>"
+msgstr ""
+"spustí vestavěný editor map. Pokud je udán I<soubor>, příkaz je ekvivalentem "
+"B<-e --load>"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:74
@@ -184,8 +212,12 @@ msgstr "B<--fps>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:78
-msgid "displays the number of frames per second the game is currently running at, in a corner of the screen."
-msgstr "zobrazuje počet fps, tedy počet zobrazení za sekundu, během hry v rohu obrazovky."
+msgid ""
+"displays the number of frames per second the game is currently running at, "
+"in a corner of the screen."
+msgstr ""
+"zobrazuje počet fps, tedy počet zobrazení za sekundu, během hry v rohu "
+"obrazovky."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:78
@@ -206,8 +238,12 @@ msgstr "B<--gunzip>I<\\ soubor_se_hrou>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:87
-msgid "decompresses a file which should be in gzip format and stores it without the .gz suffix. The I<infile.gz> will be removed."
-msgstr "dekomprimuje soubor s uloženou hrou (soubor_se_hrou) ve formátu gzip a uloží jej bez koncovky .gz. Následně je I<soubor_se_hrou> smazán."
+msgid ""
+"decompresses a file which should be in gzip format and stores it without "
+"the .gz suffix. The I<infile.gz> will be removed."
+msgstr ""
+"dekomprimuje soubor s uloženou hrou (soubor_se_hrou) ve formátu gzip a uloží "
+"jej bez koncovky .gz. Následně je I<soubor_se_hrou> smazán."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:87
@@ -217,20 +253,24 @@ msgstr "B<--gzip>I<\\ soubor_se_hrou>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:93
-msgid "compresses a file in gzip format, stores it as I<infile>.gz and removes I<infile>."
-msgstr "komprimuje soubor s uloženou hrou (soubor_se_hrou) do formátu gzip a uloží jej jako I<soubor_se_hrou>.gz a odstraní I<soubor_se_hrou>."
+msgid ""
+"compresses a file in gzip format, stores it as I<infile>.gz and removes "
+"I<infile>."
+msgstr ""
+"komprimuje soubor s uloženou hrou (soubor_se_hrou) do formátu gzip a uloží "
+"jej jako I<soubor_se_hrou>.gz a odstraní I<soubor_se_hrou>."
 
 # pův.: "zobrazuje nápovědu k parametrům příkazové řádky." -- co?
 # type: TP
-#: ../../doc/man/wesnoth.6:93
-#: ../../doc/man/wesnothd.6:55
+#: ../../doc/man/wesnoth.6:93 ../../doc/man/wesnothd.6:55
 #, no-wrap
 msgid "B<-h, --help>"
 msgstr "B<-h, --help>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:96
-msgid "displays a summary of command line options to standard output, and exits."
+msgid ""
+"displays a summary of command line options to standard output, and exits."
 msgstr "zobrazuje nápovědu k parametrům příkazové řádky."
 
 # type: TP
@@ -241,20 +281,34 @@ msgstr "B<-l,\\ --load>I<\\ soubor>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:108
-msgid "loads the savegame I<file> from the standard save game directory.  If the B<-e> or B<--editor> option is used as well, starts the editor with the map from I<file> open. If it is a directory, the editor will start with a load map dialog opened there."
-msgstr "načte uloženou hru I<soubor> ze standardního adresáře pro uložené hry. Pokud je použit i přepínač B<-e> nebo B<--editor>, otevře editor s načtenou mapou ze I<soubor>. Pokud je to adresář, editor zobrazí okno pro načtení mapy s touto složkou jako výchozí."
+msgid ""
+"loads the savegame I<file> from the standard save game directory.  If the B<-"
+"e> or B<--editor> option is used as well, starts the editor with the map "
+"from I<file> open. If it is a directory, the editor will start with a load "
+"map dialog opened there."
+msgstr ""
+"načte uloženou hru I<soubor> ze standardního adresáře pro uložené hry. Pokud "
+"je použit i přepínač B<-e> nebo B<--editor>, otevře editor s načtenou mapou "
+"ze I<soubor>. Pokud je to adresář, editor zobrazí okno pro načtení mapy s "
+"touto složkou jako výchozí."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:108
-#: ../../doc/man/wesnothd.6:58
+#: ../../doc/man/wesnoth.6:108 ../../doc/man/wesnothd.6:58
 #, no-wrap
 msgid "B<--log->I<level>B<=>I<domain1>B<,>I<domain2>B<,>I<...>"
 msgstr "B<--log->I<level>B<=>I<kategorie1>B<,>I<kategorie2>B<,>I<...>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:117
-msgid "sets the severity level of the log domains.  B<all> can be used to match any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>.  By default the B<error> level is used."
-msgstr "nastavuje úroveň závažnosti pro jednotlivé kategorie. B<all> znamená, že budou vypisovány všechny kategorie. Dostupné kategorie: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>. Implicitně je aktivována kategorie B<error>."
+msgid ""
+"sets the severity level of the log domains.  B<all> can be used to match any "
+"log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
+"B<debug>.  By default the B<error> level is used."
+msgstr ""
+"nastavuje úroveň závažnosti pro jednotlivé kategorie. B<all> znamená, že "
+"budou vypisovány všechny kategorie. Dostupné kategorie: B<error>,\\ "
+"B<warning>,\\ B<info>,\\ B<debug>. Implicitně je aktivována kategorie "
+"B<error>."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:117
@@ -275,8 +329,12 @@ msgstr "B<--max-fps>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:125
-msgid "the number of frames per second the game can show, the value should be between the 1 and 1000, the default is B<50>."
-msgstr "počet snímků za sekundu které může hra zobrazit, hodnota by měla náležet do rozsahu 1 až 1000, implicitně B<50>."
+msgid ""
+"the number of frames per second the game can show, the value should be "
+"between the 1 and 1000, the default is B<50>."
+msgstr ""
+"počet snímků za sekundu které může hra zobrazit, hodnota by měla náležet do "
+"rozsahu 1 až 1000, implicitně B<50>."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:125
@@ -286,8 +344,14 @@ msgstr "B<-m, --multiplayer>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:132
-msgid "runs a multiplayer game. There are additional options that can be used together with B<--multiplayer> as explained below. Only these additional options can follow B<--multiplayer>."
-msgstr "spouští hru více hráčů. Další volby, které se k této volbě váží, souvisí s B<--multiplayer> viz popis níže. Za B<--multiplyayer> mohou následovat pouze tyto další volby."
+msgid ""
+"runs a multiplayer game. There are additional options that can be used "
+"together with B<--multiplayer> as explained below. Only these additional "
+"options can follow B<--multiplayer>."
+msgstr ""
+"spouští hru více hráčů. Další volby, které se k této volbě váží, souvisí s "
+"B<--multiplayer> viz popis níže. Za B<--multiplyayer> mohou následovat pouze "
+"tyto další volby."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:132
@@ -297,8 +361,12 @@ msgstr "B<--no-delay>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:136
-msgid "runs the game without any delays for graphic benchmarking. This is automatically enabled by B<--nogui>."
-msgstr "vypustí testování grafiky během startu. Tato volba je automaticky použita použitím B<--nogui>."
+msgid ""
+"runs the game without any delays for graphic benchmarking. This is "
+"automatically enabled by B<--nogui>."
+msgstr ""
+"vypustí testování grafiky během startu. Tato volba je automaticky použita "
+"použitím B<--nogui>."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:136
@@ -363,8 +431,12 @@ msgstr "B<--smallgui>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:155
-msgid "allows to use screen resolutions down to 800x480 and resizes a few interface elements."
-msgstr "umožní změnu rozlišení obrazovky až k 800x480 a změní velikost některých prvků grafického rozhraní."
+msgid ""
+"allows to use screen resolutions down to 800x480 and resizes a few interface "
+"elements."
+msgstr ""
+"umožní změnu rozlišení obrazovky až k 800x480 a změní velikost některých "
+"prvků grafického rozhraní."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:155
@@ -374,8 +446,12 @@ msgstr "B<-s,\\ --server\\ [hostitel]>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:159
-msgid "connects to the specified host if any, otherwise connect to the first server in preferences. Example: B<--server server.wesnoth.org>"
-msgstr "přeskočí menu, připojí se k určenému hostiteli (pokud byl určen) nebo prvnímu serveru v nastavení. Příklad: B<--server server.wesnoth.org>"
+msgid ""
+"connects to the specified host if any, otherwise connect to the first server "
+"in preferences. Example: B<--server server.wesnoth.org>"
+msgstr ""
+"přeskočí menu, připojí se k určenému hostiteli (pokud byl určen) nebo "
+"prvnímu serveru v nastavení. Příklad: B<--server server.wesnoth.org>"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:159
@@ -440,8 +516,14 @@ msgstr "Volby pro --multiplayer"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:184
-msgid "The side-specific multiplayer options are marked with I<number>.  I<number> has to be replaced by a side number. It usually is 1 or 2 but depends on the number of players possible in the chosen scenario."
-msgstr "Volby s platností pouze pro jednu stranu jsou označeny I<strana>, kde I<strana> je třeba nahradit za číslo konkrétní strany. Obvykle je to 1 nebo 2, ale záleží to vždy od konkrétního scénáře a od počtu hráčů."
+msgid ""
+"The side-specific multiplayer options are marked with I<number>.  I<number> "
+"has to be replaced by a side number. It usually is 1 or 2 but depends on the "
+"number of players possible in the chosen scenario."
+msgstr ""
+"Volby s platností pouze pro jednu stranu jsou označeny I<strana>, kde "
+"I<strana> je třeba nahradit za číslo konkrétní strany. Obvykle je to 1 nebo "
+"2, ale záleží to vždy od konkrétního scénáře a od počtu hráčů."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:184
@@ -451,7 +533,8 @@ msgstr "B<--ai_config>I<strana>B<=>I<hodnota>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:187
-msgid "selects a configuration file to load for the AI controller for this side."
+msgid ""
+"selects a configuration file to load for the AI controller for this side."
 msgstr "vybere konfigurační soubor k načtení pro AI dané strany."
 
 # type: TP
@@ -462,8 +545,12 @@ msgstr "B<--algorithm>I<strana>B<=>I<hodnota>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:194
-msgid "selects a non-standard algorithm to be used by the AI controller for this side. Available values: B<idle_ai> and B<sample_ai>."
-msgstr "vybírá nestandardní algoritmus, který bude použit pro umělou inteligenci této strany. Momentálně jsou k dispozici hodnoty: B<idle_ai> a B<sample_ai>."
+msgid ""
+"selects a non-standard algorithm to be used by the AI controller for this "
+"side. Available values: B<idle_ai> and B<sample_ai>."
+msgstr ""
+"vybírá nestandardní algoritmus, který bude použit pro umělou inteligenci "
+"této strany. Momentálně jsou k dispozici hodnoty: B<idle_ai> a B<sample_ai>."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:194
@@ -473,7 +560,8 @@ msgstr "B<--controller>I<strana>B<=>I<hodnota>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:200
-msgid "selects the controller for this side. Available values: B<human> and B<ai>."
+msgid ""
+"selects the controller for this side. Available values: B<human> and B<ai>."
 msgstr "vybírá druh ovládání strany. Použitelné hodnoty jsou B<human> a B<ai>."
 
 # type: TP
@@ -484,8 +572,14 @@ msgstr "B<--era=>I<hodnota>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:207
-msgid "use this option to play in the selected era instead of the B<Default> era. The era is chosen by an id. Eras are described in the B<data/multiplayer/eras.cfg> file."
-msgstr "použij tuto volbu pro hraní ve specifické éře místo éry B<Default>. Éra je vybrána pomocí svého id. Všechny éry jsou popsány v souboru B<data/multiplayer.cfg>."
+msgid ""
+"use this option to play in the selected era instead of the B<Default> era. "
+"The era is chosen by an id. Eras are described in the B<data/multiplayer/"
+"eras.cfg> file."
+msgstr ""
+"použij tuto volbu pro hraní ve specifické éře místo éry B<Default>. Éra je "
+"vybrána pomocí svého id. Všechny éry jsou popsány v souboru B<data/"
+"multiplayer.cfg>."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:207
@@ -495,8 +589,14 @@ msgstr "B<--exit-at-end>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:211
-msgid "exits once the scenario is over, without displaying victory/defeat dialog which requires the user to click OK.  This is also used for scriptable benchmarking."
-msgstr "skončí hru při konci scénáře, tedy bez zobrazení okénka s informací o vítězství/prohře, které vyžaduje uživatelskou akci - stisk tlačítka OK. Tato volba se používá při ruzných měřeních."
+msgid ""
+"exits once the scenario is over, without displaying victory/defeat dialog "
+"which requires the user to click OK.  This is also used for scriptable "
+"benchmarking."
+msgstr ""
+"skončí hru při konci scénáře, tedy bez zobrazení okénka s informací o "
+"vítězství/prohře, které vyžaduje uživatelskou akci - stisk tlačítka OK. Tato "
+"volba se používá při ruzných měřeních."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:211
@@ -506,8 +606,12 @@ msgstr "B<--nogui>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:216
-msgid "runs the game without the GUI. Must appear before B<--multiplayer> to have the desired effect."
-msgstr "spouští hru bez GUI. Musí být použito před B<--multiplayer> pro docílení kýženého efektu."
+msgid ""
+"runs the game without the GUI. Must appear before B<--multiplayer> to have "
+"the desired effect."
+msgstr ""
+"spouští hru bez GUI. Musí být použito před B<--multiplayer> pro docílení "
+"kýženého efektu."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:216
@@ -517,8 +621,14 @@ msgstr "B<--parm>I<strana>B<=>I<jméno>B<:>I<hodnota>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:225
-msgid "sets additional parameters for this side. This parameter depends on the options used with B<--controller> and B<--algorithm>.  It should only be useful for people designing their own AI. (not yet documented completely)"
-msgstr "nastavuje další parametry pro tuto stranu. Jméno a hodnota parametru závisí na hodnotách voleb B<--controller> a B<--algorithm.> Mělo by být použito pouze lidmi vyvíjejícími si vlastní umělou inteligenci (není zdokumentováno)."
+msgid ""
+"sets additional parameters for this side. This parameter depends on the "
+"options used with B<--controller> and B<--algorithm>.  It should only be "
+"useful for people designing their own AI. (not yet documented completely)"
+msgstr ""
+"nastavuje další parametry pro tuto stranu. Jméno a hodnota parametru závisí "
+"na hodnotách voleb B<--controller> a B<--algorithm.> Mělo by být použito "
+"pouze lidmi vyvíjejícími si vlastní umělou inteligenci (není zdokumentováno)."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:225
@@ -528,8 +638,12 @@ msgstr "B<--scenario=>I<hodnota>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:229
-msgid "selects a multiplayer scenario by id. The default scenario id is B<multiplayer_The_Freelands>."
-msgstr "vybírá scénář pro hru více hráčů podle id. Implicitní scénář je B<multiplayer_The_Freelands>."
+msgid ""
+"selects a multiplayer scenario by id. The default scenario id is "
+"B<multiplayer_The_Freelands>."
+msgstr ""
+"vybírá scénář pro hru více hráčů podle id. Implicitní scénář je "
+"B<multiplayer_The_Freelands>."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:229
@@ -539,8 +653,12 @@ msgstr "B<--side>I<strana>B<=>I<hodnota>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:234
-msgid "selects a faction of the current era for this side. The faction is chosen by an id. Factions are described in the data/multiplayer.cfg file."
-msgstr "vybírá frakci současné éry pro vybranou stranu. Frakce je vybrána na základě ID. Frakce jsou popsány v souboru data/multiplayer.cfg"
+msgid ""
+"selects a faction of the current era for this side. The faction is chosen by "
+"an id. Factions are described in the data/multiplayer.cfg file."
+msgstr ""
+"vybírá frakci současné éry pro vybranou stranu. Frakce je vybrána na základě "
+"ID. Frakce jsou popsány v souboru data/multiplayer.cfg"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:234
@@ -554,8 +672,7 @@ msgid "sets the number of turns for the chosen scenario. The default is B<50>."
 msgstr "nastavuje počet kol pro vybraný scénář, implicitně je B<50>."
 
 # type: SH
-#: ../../doc/man/wesnoth.6:239
-#: ../../doc/man/wesnothd.6:261
+#: ../../doc/man/wesnoth.6:239 ../../doc/man/wesnothd.6:265
 #, no-wrap
 msgid "AUTHOR"
 msgstr "AUTOŘI"
@@ -567,42 +684,54 @@ msgstr "Vytvořil David White E<lt>davidnwhite@verizon.netE<gt>."
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:244
-msgid "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
-msgstr "Upravili Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt> a Soliton E<lt>soliton.de@gmail.comE<gt>."
+msgid ""
+"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
+"netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
+msgstr ""
+"Upravili Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
+"netE<gt> a Soliton E<lt>soliton.de@gmail.comE<gt>."
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:246
-msgid "This manual page was originally written by Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
-msgstr "Tuto manovou stránku původně vytvořil Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>. Překlad Oto 'tapik' Buchta E<lt>tapik@buchtovi.czE<gt>"
+msgid ""
+"This manual page was originally written by Cyril Bouthors "
+"E<lt>cyril@bouthors.orgE<gt>."
+msgstr ""
+"Tuto manovou stránku původně vytvořil Cyril Bouthors E<lt>cyril@bouthors."
+"orgE<gt>. Překlad Oto 'tapik' Buchta E<lt>tapik@buchtovi.czE<gt>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:248
-#: ../../doc/man/wesnothd.6:268
+#: ../../doc/man/wesnoth.6:248 ../../doc/man/wesnothd.6:272
 msgid "Visit the official homepage: http://www.wesnoth.org/"
-msgstr "Navštivte oficiální stránky: http://www.wesnoth.org/ a oficiální české stránky http://www.wesnoth.wz.cz/"
+msgstr ""
+"Navštivte oficiální stránky: http://www.wesnoth.org/ a oficiální české "
+"stránky http://www.wesnoth.wz.cz/"
 
 # type: SH
-#: ../../doc/man/wesnoth.6:249
-#: ../../doc/man/wesnothd.6:269
+#: ../../doc/man/wesnoth.6:249 ../../doc/man/wesnothd.6:273
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr "COPYRIGHT"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:252
-#: ../../doc/man/wesnothd.6:272
+#: ../../doc/man/wesnoth.6:252 ../../doc/man/wesnothd.6:276
 msgid "Copyright \\(co 2003-2009 David White E<lt>davidnwhite@verizon.netE<gt>"
-msgstr "Copyright \\(co 2003-2009 David White E<lt>davidnwhite@verizon.netE<gt>"
+msgstr ""
+"Copyright \\(co 2003-2009 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:255
-#: ../../doc/man/wesnothd.6:275
-msgid "This is Free Software; this software is licensed under the GPL version 2, as published by the Free Software Foundation.  There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
-msgstr "Toto je Svobodný Software; je licencován pod licencí GPL verze 2, tak jak je publikována nadací Free Software Foundation. Tento program je bez záruky, a to i co se týká obchodovatelnosti a použitelnosti."
+#: ../../doc/man/wesnoth.6:255 ../../doc/man/wesnothd.6:279
+msgid ""
+"This is Free Software; this software is licensed under the GPL version 2, as "
+"published by the Free Software Foundation.  There is NO warranty; not even "
+"for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
+msgstr ""
+"Toto je Svobodný Software; je licencován pod licencí GPL verze 2, tak jak je "
+"publikována nadací Free Software Foundation. Tento program je bez záruky, a "
+"to i co se týká obchodovatelnosti a použitelnosti."
 
 # type: SH
-#: ../../doc/man/wesnoth.6:256
-#: ../../doc/man/wesnothd.6:276
+#: ../../doc/man/wesnoth.6:256 ../../doc/man/wesnothd.6:280
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "VIZ TAKÉ"
@@ -637,8 +766,12 @@ msgstr "Bitva o B<Wesnoth> - síťový server pro hru více hráčů"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:36
-msgid "B<wesnothd> [\\|B<-dv>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|] [\\|B<-t> I<number>\\|] [\\|B<-T> I<number>\\|]"
-msgstr "B<wesnothd> [\\|B<-dv>\\|] [\\|B<-c> I<cesta>\\|] [\\|B<-p> I<port>\\|] [\\|B<-t> I<počet_vláken>\\|] [\\|B<-T> I<počet_vláken>\\|]"
+msgid ""
+"B<wesnothd> [\\|B<-dv>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|] [\\|"
+"B<-t> I<number>\\|] [\\|B<-T> I<number>\\|]"
+msgstr ""
+"B<wesnothd> [\\|B<-dv>\\|] [\\|B<-c> I<cesta>\\|] [\\|B<-p> I<port>\\|] [\\|"
+"B<-t> I<počet_vláken>\\|] [\\|B<-T> I<počet_vláken>\\|]"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:39
@@ -647,8 +780,14 @@ msgstr "B<wesnothd> B<-V>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:44
-msgid "Manages Battle for Wesnoth multiplayer games. See http://www.wesnoth.org/wiki/ServerAdministration on what commands the server accepts via the wesnoth client (/query ...) or the fifo."
-msgstr "Součást Bitvy o Wesnoth spravující hry více hráčů. Na http://www.wesnoth.org/wiki/ServerAdministration lze nalézt příkazy, které server akceptuje, a to jak přes fifo, tak přímo od klienta wesnoth."
+msgid ""
+"Manages Battle for Wesnoth multiplayer games. See http://www.wesnoth.org/"
+"wiki/ServerAdministration on what commands the server accepts via the "
+"wesnoth client (/query ...) or the fifo."
+msgstr ""
+"Součást Bitvy o Wesnoth spravující hry více hráčů. Na http://www.wesnoth.org/"
+"wiki/ServerAdministration lze nalézt příkazy, které server akceptuje, a to "
+"jak přes fifo, tak přímo od klienta wesnoth."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:47
@@ -658,8 +797,14 @@ msgstr "B<-c\\ >I<cesta>B<,\\ --config>I<\\ cesta>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:52
-msgid "tells wesnothd where to find the config file to use. See the section B<SERVER CONFIG> below for the syntax. You can reload the config with sending SIGHUP to the server process."
-msgstr "specifikuje cestu, kde má wesnothd hledat konfigurační soubor. Syntaxe souboru je popsána v sekci B<KONFIGURACE SERVERU> níže. Konfiguraci je možno znovu načíst posláním SIGHUP procesu serveru."
+msgid ""
+"tells wesnothd where to find the config file to use. See the section "
+"B<SERVER CONFIG> below for the syntax. You can reload the config with "
+"sending SIGHUP to the server process."
+msgstr ""
+"specifikuje cestu, kde má wesnothd hledat konfigurační soubor. Syntaxe "
+"souboru je popsána v sekci B<KONFIGURACE SERVERU> níže. Konfiguraci je možno "
+"znovu načíst posláním SIGHUP procesu serveru."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:52
@@ -679,8 +824,16 @@ msgstr "zobrazuje nápovědu k parametrům příkazové řádky."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:72
-msgid "sets the severity level of the log domains.  B<all> can be used to match any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>.  By default the B<error> level is used and the B<info> level for the B<server> domain."
-msgstr "nastavuje úroveň závažnosti pro jednotlivé kategorie. B<all> znamená, že budou vypisovány všechny kategorie. Dostupné kategorie: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>.\\ Implicitně je aktivována kategorie B<error> a pro kategorii B<server> také B<info>."
+msgid ""
+"sets the severity level of the log domains.  B<all> can be used to match any "
+"log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
+"B<debug>.  By default the B<error> level is used and the B<info> level for "
+"the B<server> domain."
+msgstr ""
+"nastavuje úroveň závažnosti pro jednotlivé kategorie. B<all> znamená, že "
+"budou vypisovány všechny kategorie. Dostupné kategorie: B<error>,\\ "
+"B<warning>,\\ B<info>,\\ B<debug>.\\ Implicitně je aktivována kategorie "
+"B<error> a pro kategorii B<server> také B<info>."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:72
@@ -690,7 +843,9 @@ msgstr "B<-p\\ >I<port>B<,\\ --port>I<\\ port>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:77
-msgid "binds the server to the specified port. If no port is specified, port B<15000> will be used."
+msgid ""
+"binds the server to the specified port. If no port is specified, port "
+"B<15000> will be used."
 msgstr "určuje, který port má server používat. Implicitní hodnota je B<15000>."
 
 # type: TP
@@ -701,8 +856,12 @@ msgstr "B<-t,\\ >I<počet>B<,\\ --threads>I<\\ počet>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:81
-msgid "sets the maximum number of waiting worker threads for network I/O to n (default: B<5>,\\ max:\\ B<30>)."
-msgstr "nastavuje limit pro počet nečinných vláken čekajících na síťová spojení (implicitně: B<5>,\\ max:\\ B<30>)."
+msgid ""
+"sets the maximum number of waiting worker threads for network I/O to n "
+"(default: B<5>,\\ max:\\ B<30>)."
+msgstr ""
+"nastavuje limit pro počet nečinných vláken čekajících na síťová spojení "
+"(implicitně: B<5>,\\ max:\\ B<30>)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:81
@@ -712,8 +871,12 @@ msgstr "B<-T,\\ >I<počet>B<,\\ --max-threads>I<\\ počet>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:88
-msgid "sets the maximum number of worker threads that will be created.  If set to B<0> there will be no limit (default: B<0>)."
-msgstr "nastavuje nejvyšší počet vláken, které wesnothd vytvoří; B<0> znamená bez omezení (implicitně: B<0>)."
+msgid ""
+"sets the maximum number of worker threads that will be created.  If set to "
+"B<0> there will be no limit (default: B<0>)."
+msgstr ""
+"nastavuje nejvyšší počet vláken, které wesnothd vytvoří; B<0> znamená bez "
+"omezení (implicitně: B<0>)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:88
@@ -756,12 +919,14 @@ msgstr "[I<značka>]"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:103
-msgid "key=\"I<value>\""
+#, fuzzy
+msgid "I<key>=\"I<value>\""
 msgstr "klíč=\"I<hodnota>\""
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:105
-msgid "key=\"I<value>,I<value>,...\""
+#, fuzzy
+msgid "I<key>=\"I<value>,I<value>,...\""
 msgstr "klíč=\"I<hodnota>,I<hodnota>\""
 
 # type: Plain text
@@ -783,8 +948,15 @@ msgstr "B<allow_remote_shutdown>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:114
-msgid "If set to `no' (default), shut_down and restart requests are ignored unless the come from the fifo.  Set it to `yes' to allow remote shutdown via a /query by an administrator."
-msgstr "Při nastavení na `no' (výchozí), požadavky shut_down a restart jsouignorovány, pokud nepocházejí z fifo. Při nastavení `yes' může správce vzdáleně vypnout server pomocí /query."
+#, fuzzy
+msgid ""
+"If set to B<no> (default), shut_down and restart requests are ignored unless "
+"they come from the fifo.  Set it to B<yes> to allow remote shutdown via a /"
+"query by an administrator."
+msgstr ""
+"Při nastavení na `no' (výchozí), požadavky shut_down a restart "
+"jsouignorovány, pokud nepocházejí z fifo. Při nastavení `yes' může správce "
+"vzdáleně vypnout server pomocí /query."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:114
@@ -794,8 +966,13 @@ msgstr "B<ban_save_file>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:118
-msgid "Full or relative path to a (gzip compressed) file that the server can read and write.  Bans will be saved to this file and read again on server start."
-msgstr "Plná či relativní cesta k souboru (komprese gzip), jenž může server číst a přepisovat. Do tohoto souboru jsou ukládány zákazy přístupu (ban) a načítány při spuštění."
+msgid ""
+"Full or relative path to a (gzip compressed) file that the server can read "
+"and write.  Bans will be saved to this file and read again on server start."
+msgstr ""
+"Plná či relativní cesta k souboru (komprese gzip), jenž může server číst a "
+"přepisovat. Do tohoto souboru jsou ukládány zákazy přístupu (ban) a načítány "
+"při spuštění."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:118
@@ -805,8 +982,13 @@ msgstr "B<compress_stored_rooms>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:121
-msgid "Determines whether the rooms file should be read and written to in compressed form. Defaults to `yes'."
-msgstr "Určuje, zda je soubor s místnostmi čten a zapisován jako komprimovaný. Výchozí hodnota `yes'."
+#, fuzzy
+msgid ""
+"Determines whether the rooms file should be read and written to in "
+"compressed form. Defaults to B<yes>."
+msgstr ""
+"Určuje, zda je soubor s místnostmi čten a zapisován jako komprimovaný. "
+"Výchozí hodnota `yes'."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:121
@@ -816,8 +998,12 @@ msgstr "B<connections_allowed>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:124
-msgid "The number of allowed connections from the same IP. B<0> means infinite. (default: B<5>)"
-msgstr "Počet povolených spojení z jedné IP adresy. B<0> znamená nekonečno. (implicitně B<5>)"
+msgid ""
+"The number of allowed connections from the same IP. B<0> means infinite. "
+"(default: B<5>)"
+msgstr ""
+"Počet povolených spojení z jedné IP adresy. B<0> znamená nekonečno. "
+"(implicitně B<5>)"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:124
@@ -827,8 +1013,16 @@ msgstr "B<disallow_names>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:131
-msgid "Names/nicks that are not accepted by the server. `*' and `?' from wildcard patterns are supported. See B<glob>(7)  for more details.  Default values (used if nothing is specified) are: B<*admin*,*admln*,*server*,ai,ai?,computer,human,network,player>."
-msgstr "Jména/přezdívky, které nejsou serverem akceptována. Je možno použít metaznaky `*' a `?'. Více viz. B<glob>(7). Implicitní hodnota je: B<*admin*,*admln*,*server*,ai,ai?,computer,human,network,player>."
+#, fuzzy
+msgid ""
+"Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
+"patterns are supported. See B<glob>(7)  for more details.  Default values "
+"(used if nothing is specified) are: B<*admin*,*admln*,*server*,ai,ai?,"
+"computer,human,network,player>."
+msgstr ""
+"Jména/přezdívky, které nejsou serverem akceptována. Je možno použít "
+"metaznaky `*' a `?'. Více viz. B<glob>(7). Implicitní hodnota je: B<*admin*,"
+"*admln*,*server*,ai,ai?,computer,human,network,player>."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:131
@@ -838,8 +1032,15 @@ msgstr "B<fifo_path>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:135
-msgid "The path to the fifo you can echo server commands into (same as /query ... from wesnoth).  If not specified defaults to the compile-time specified path (default: /var/run/socket/wesnothd/socket)."
-msgstr "Cesta k fifo, do nějž můžete posílat příkazy serveru (stejně jako pomocí /query z klienta). Pokud není explicitně určena, je použita výchozí hodnota určená při kompilaci (běžně /var/run/socket/wesnothd/socket)."
+#, fuzzy
+msgid ""
+"The path to the fifo you can echo server commands into (same as /query ... "
+"from wesnoth).  If not specified defaults to the compile-time path (default: "
+"B</var/run/socket/wesnothd/socket>)."
+msgstr ""
+"Cesta k fifo, do nějž můžete posílat příkazy serveru (stejně jako pomocí /"
+"query z klienta). Pokud není explicitně určena, je použita výchozí hodnota "
+"určená při kompilaci (běžně /var/run/socket/wesnothd/socket)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:135
@@ -849,8 +1050,11 @@ msgstr "B<max_messages>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:138
-msgid "The number of allowed messages in B<messages_time_period>. (default: B<4>)"
-msgstr "Maximální počet zpráv, které jsou přijaty během B<messages_time_period>. (implicitně B<4>)"
+msgid ""
+"The number of allowed messages in B<messages_time_period>. (default: B<4>)"
+msgstr ""
+"Maximální počet zpráv, které jsou přijaty během B<messages_time_period>. "
+"(implicitně B<4>)"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:138
@@ -860,8 +1064,12 @@ msgstr "B<messages_time_period>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:141
-msgid "The time period (in seconds) message flooding is detected in. (default: B<10> seconds)"
-msgstr "Časová perioda (ve vteřinách), po které se nuluje počítadlo přjatých zpráv. (implicitně B<10> sekund)"
+msgid ""
+"The time period (in seconds) message flooding is detected in. (default: "
+"B<10> seconds)"
+msgstr ""
+"Časová perioda (ve vteřinách), po které se nuluje počítadlo přjatých zpráv. "
+"(implicitně B<10> sekund)"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:141
@@ -882,8 +1090,17 @@ msgstr "B<new_room_policy>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:147
-msgid "Determines who can create new rooms on the server. Available values are `everyone', `registered', `admin' and `nobody', and give the permission respectively to everyone, registered users, admin users or disables new room creation. Default value is `everyone'."
-msgstr "Určuje, kdo může vytvářet na serveru nové místnosti. Dostupné hodnoty zahrnují `everyone', `registered', `admin' a `nobody' - místosti pak může vytvářek každý, registrovaní uživatelé, pouze správci nebo nikdo. Výchozí hodnota je `everyone'."
+#, fuzzy
+msgid ""
+"Determines who can create new rooms on the server. Available values are "
+"B<everyone>, B<registered>, B<admin> and B<nobody>, and give the permission "
+"respectively to everyone, registered users, admin users or disables new room "
+"creation. Default value is B<everyone>."
+msgstr ""
+"Určuje, kdo může vytvářet na serveru nové místnosti. Dostupné hodnoty "
+"zahrnují `everyone', `registered', `admin' a `nobody' - místosti pak může "
+"vytvářek každý, registrovaní uživatelé, pouze správci nebo nikdo. Výchozí "
+"hodnota je `everyone'."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:147
@@ -893,7 +1110,9 @@ msgstr "B<passwd>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:150
-msgid "The password used to gain admin privileges. Usually it starts with `admin '."
+#, fuzzy
+msgid ""
+"The password used to gain admin privileges (via B</query admin >I<password>)."
 msgstr "Heslo pro získání administrátorských práv. Obvykle začíná na „admin“."
 
 #: ../../doc/man/wesnothd.6:150
@@ -902,8 +1121,13 @@ msgid "B<replay_save_path>"
 msgstr "B<replay_save_path>"
 
 #: ../../doc/man/wesnothd.6:153
-msgid "The directory where the server stores game replays. (Don't forget the trailing /!) Defaults to `' which means the directory wesnothd was started in."
-msgstr "Adresář, do nějž server ukládá záznamy her (nezapomeňte na / na konci!). Výchozí hodnota je `', neboli adresář v němž byl server spuštěn."
+msgid ""
+"The directory where the server stores game replays. (Don't forget the "
+"trailing /!) Defaults to `' which means the directory wesnothd was started "
+"in."
+msgstr ""
+"Adresář, do nějž server ukládá záznamy her (nezapomeňte na / na konci!). "
+"Výchozí hodnota je `', neboli adresář v němž byl server spuštěn."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:153
@@ -913,8 +1137,14 @@ msgstr "B<restart_command>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:156
-msgid "The command that the server uses to start a new server process via the `restart' command. (Can only be issued via the fifo.)"
-msgstr "Příkaz, který server použije pro spuštění nového procesu sebe sama při příkazu \"restart\" (lze nastavit pouze přes fifo)."
+#, fuzzy
+msgid ""
+"The command that the server uses to start a new server process via the "
+"B<restart> command. (Can only be issued via the fifo. See the "
+"B<allow_remote_shutdown> setting.)"
+msgstr ""
+"Příkaz, který server použije pro spuštění nového procesu sebe sama při "
+"příkazu \"restart\" (lze nastavit pouze přes fifo)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:156
@@ -924,8 +1154,14 @@ msgstr "B<room_save_file>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:159
-msgid "Path to a file where the room info should be stored. This file is read on server startup and written to later. If empty or not set, rooms are not loaded and not saved."
-msgstr "Cesta k souboru, v němž jsou ukládány informace o místnostech. Tento soubor je načten při spuštění serveru a poté přepisován. Pokud je prázdný nebo není nastaven, ukládání a načítání místností nebude aktivní."
+msgid ""
+"Path to a file where the room info should be stored. This file is read on "
+"server startup and written to later. If empty or not set, rooms are not "
+"loaded and not saved."
+msgstr ""
+"Cesta k souboru, v němž jsou ukládány informace o místnostech. Tento soubor "
+"je načten při spuštění serveru a poté přepisován. Pokud je prázdný nebo není "
+"nastaven, ukládání a načítání místností nebude aktivní."
 
 #: ../../doc/man/wesnothd.6:159
 #, no-wrap
@@ -933,8 +1169,12 @@ msgid "B<save_replays>"
 msgstr "B<save_replays>"
 
 #: ../../doc/man/wesnothd.6:162
-msgid "Defines whether the server will automatically save replays of games. (default: B<false>)"
-msgstr "Určuje, zda bude server automaticky ukládat záznamy her (výchozí hodnota: B<false>)."
+msgid ""
+"Defines whether the server will automatically save replays of games. "
+"(default: B<false>)"
+msgstr ""
+"Určuje, zda bude server automaticky ukládat záznamy her (výchozí hodnota: "
+"B<false>)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:162
@@ -944,8 +1184,15 @@ msgstr "B<versions_accepted>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:166
-msgid "A comma separated list of version strings to be accepted by the server. `*' and `?' from wildcard patterns are supported.  (defaults to the corresponding wesnoth version)"
-msgstr "Seznam čárkou oddělených řetězců verzí Wesnothu, které jsou serverem akceptovány. Je možno použít zástupné znaky `*' a `?'. Implicitní hodnota odpovídá příslušné verzi wesnothu."
+#, fuzzy
+msgid ""
+"A comma separated list of version strings to be accepted by the server. B<*> "
+"and B<?> from wildcard patterns are supported.  (defaults to the "
+"corresponding wesnoth version)"
+msgstr ""
+"Seznam čárkou oddělených řetězců verzí Wesnothu, které jsou serverem "
+"akceptovány. Je možno použít zástupné znaky `*' a `?'. Implicitní hodnota "
+"odpovídá příslušné verzi wesnothu."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:168
@@ -960,8 +1207,18 @@ msgstr "B<user_handler>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:173
-msgid "The name of the user handler to use. Currently available user handlers are 'forum' (to connect wesnothd to a phpbb forum database) and 'sample' (a sample implementation of the user handler interface, if you use this on anything real you are insane). The default value is 'forum'. You must also add a B<[user_handler]> section, see below."
-msgstr "Název handleru uživatelů, jenž má být použit. V tuto chvíli jsou dostupné handlery 'forum' (propojení s databází phpbb) a 'sample' (vzorová implementace rozhraní, prakticky nepoužitelná). Výchozí hodnota je 'forum'. Handler musí být dále konfigurován v sekci B<[user_handler]> - viz níže."
+#, fuzzy
+msgid ""
+"The name of the user handler to use. Currently available user handlers are "
+"B<forum> (to connect wesnothd to a phpbb forum database) and B<sample> (a "
+"sample implementation of the user handler interface, if you use this on "
+"anything real you are insane). The default value is B<forum>. You must also "
+"add a B<[user_handler]> section, see below."
+msgstr ""
+"Název handleru uživatelů, jenž má být použit. V tuto chvíli jsou dostupné "
+"handlery 'forum' (propojení s databází phpbb) a 'sample' (vzorová "
+"implementace rozhraní, prakticky nepoužitelná). Výchozí hodnota je 'forum'. "
+"Handler musí být dále konfigurován v sekci B<[user_handler]> - viz níže."
 
 # type: SS
 #: ../../doc/man/wesnothd.6:174
@@ -971,8 +1228,12 @@ msgstr "Globální značky:"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:179
-msgid "B<[redirect]> A tag to specify a server to redirect certain client versions to."
-msgstr "B<[redirect]> Značka udávající server, na který bude přesměrován požadavek pro konkrétní verzi klienta."
+msgid ""
+"B<[redirect]> A tag to specify a server to redirect certain client versions "
+"to."
+msgstr ""
+"B<[redirect]> Značka udávající server, na který bude přesměrován požadavek "
+"pro konkrétní verzi klienta."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:180
@@ -1004,13 +1265,22 @@ msgstr "B<version>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:191
-msgid "A comma separated list of versions to redirect. Behaves the same way as B<versions_accepted> in regard to wildcard patterns."
-msgstr "Seznam čárkou oddělených řetězců verzí Wesnothu, pro které jsou požadavky přesměrovány na tento vzdálený server. Obdobný zápis jako u B<versions_accepted>."
+msgid ""
+"A comma separated list of versions to redirect. Behaves the same way as "
+"B<versions_accepted> in regard to wildcard patterns."
+msgstr ""
+"Seznam čárkou oddělených řetězců verzí Wesnothu, pro které jsou požadavky "
+"přesměrovány na tento vzdálený server. Obdobný zápis jako u "
+"B<versions_accepted>."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:195
-msgid "B<[ban_time]> A tag to define convenient keywords for temporary ban time lengths."
-msgstr "B<[ban_time]> Tag umožňující definovat klíčová slova pro délky zákazů přístupu (ban)."
+msgid ""
+"B<[ban_time]> A tag to define convenient keywords for temporary ban time "
+"lengths."
+msgstr ""
+"B<[ban_time]> Tag umožňující definovat klíčová slova pro délky zákazů "
+"přístupu (ban)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:196
@@ -1030,164 +1300,227 @@ msgid "B<time>"
 msgstr "B<time>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:205
-msgid "The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s (seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d is a number.  If no time modifier is given minutes (m) are assumed.  Example: time=\"1D12h30m\" results in a ban time of 1 day, 12 hours and 30 minutes."
-msgstr "Definice doby. Formát je %d[%s[%d%s[...]]] kde %s je \"s\" (sekundy), \"m\" (minuty), \"h\" (hodiny), \"D\" (dny), \"M\" (měsíce) nebo \"Y\" (roky) a %d je číslo. Pokud není zadán druh délky, jsou předpokládány minuty (m). Například \"1D12H30m\" představuje zákaz pro jeden den, 12 hodin a 30 minut."
+#: ../../doc/man/wesnothd.6:207
+#, fuzzy
+msgid ""
+"The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s "
+"(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d "
+"is a number.  If no time modifier is given minutes (m) are assumed.  "
+"Example: B<time=\"1D12h30m\"> results in a ban time of 1 day, 12 hours and "
+"30 minutes."
+msgstr ""
+"Definice doby. Formát je %d[%s[%d%s[...]]] kde %s je \"s\" (sekundy), \"m"
+"\" (minuty), \"h\" (hodiny), \"D\" (dny), \"M\" (měsíce) nebo \"Y\" (roky) a "
+"%d je číslo. Pokud není zadán druh délky, jsou předpokládány minuty (m). "
+"Například \"1D12H30m\" představuje zákaz pro jeden den, 12 hodin a 30 minut."
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:211
-msgid "B<[proxy]> A tag to tell the server to act as a proxy and forward the connected client's requests to the specified server.  Accepts the same keys as B<[redirect]>."
-msgstr "B<[proxy]> Značka říkající serveru, aby se choval jako proxy a přesměrovával na určený server klientské požadavky. Akceptuje stejné klíče jako B<[redirect]>."
+#: ../../doc/man/wesnothd.6:213
+msgid ""
+"B<[proxy]> A tag to tell the server to act as a proxy and forward the "
+"connected client's requests to the specified server.  Accepts the same keys "
+"as B<[redirect]>."
+msgstr ""
+"B<[proxy]> Značka říkající serveru, aby se choval jako proxy a přesměrovával "
+"na určený server klientské požadavky. Akceptuje stejné klíče jako B<"
+"[redirect]>."
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:217
-msgid "B<[user_handler]> Configures the user handler. Available keys vary depending on which user handler is set with the B<user_handler> key. If no [user_handler] section is present in the configuration the server will run without any nick registration service."
-msgstr "B<[user_handler]> Knfiguruje uživatelský handler. Dostupné klíče se liší podle toho, který handler je použit - nastaveno klíčem B<user_handler>. Pokud není v konfiguraci nalezena žádná sekce [user_handler], server poběží bez služeb správy přezdívek."
+#: ../../doc/man/wesnothd.6:221
+#, fuzzy
+msgid ""
+"B<[user_handler]> Configures the user handler. Available keys vary depending "
+"on which user handler is set with the B<user_handler> key. If no B<"
+"[user_handler]> section is present in the configuration the server will run "
+"without any nick registration service."
+msgstr ""
+"B<[user_handler]> Knfiguruje uživatelský handler. Dostupné klíče se liší "
+"podle toho, který handler je použit - nastaveno klíčem B<user_handler>. "
+"Pokud není v konfiguraci nalezena žádná sekce [user_handler], server poběží "
+"bez služeb správy přezdívek."
 
 # type: TP
-#: ../../doc/man/wesnothd.6:218
+#: ../../doc/man/wesnothd.6:222
 #, no-wrap
 msgid "B<db_host>"
 msgstr "B<db_host>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:221
+#: ../../doc/man/wesnothd.6:225
 msgid "(for user_handler=forum) The hostname of the database server"
 msgstr "(pro user_handler=forum) Hostitelský databázový server"
 
 # type: TP
-#: ../../doc/man/wesnothd.6:221
+#: ../../doc/man/wesnothd.6:225
 #, no-wrap
 msgid "B<db_name>"
 msgstr "B<db_name>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:224
+#: ../../doc/man/wesnothd.6:228
 msgid "(for user_handler=forum) The name of the database"
 msgstr "(pro user_handler=forum) Jméno databáze"
 
 # type: TP
-#: ../../doc/man/wesnothd.6:224
+#: ../../doc/man/wesnothd.6:228
 #, no-wrap
 msgid "B<db_user>"
 msgstr "B<db_user>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:227
-msgid "(for user_handler=forum) The name of the user under which to log into the database"
+#: ../../doc/man/wesnothd.6:231
+msgid ""
+"(for user_handler=forum) The name of the user under which to log into the "
+"database"
 msgstr "(pro user_handler=forum) Uživatelské jméno pro přihlášení k databázi"
 
 # type: TP
-#: ../../doc/man/wesnothd.6:227
+#: ../../doc/man/wesnothd.6:231
 #, no-wrap
 msgid "B<db_password>"
 msgstr "B<db_password>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:230
+#: ../../doc/man/wesnothd.6:234
 msgid "(for user_handler=forum) This user's password"
 msgstr "(pro user_handler=forum) Heslo pro databázi"
 
 # type: TP
-#: ../../doc/man/wesnothd.6:230
+#: ../../doc/man/wesnothd.6:234
 #, no-wrap
 msgid "B<db_users_table>"
 msgstr "B<db_users_table>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:233
-msgid "(for user_handler=forum) The name of the table in which your phpbb forums saves its user data. Most likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
-msgstr "(pro user_handler=forum) Název tabulky, v níž ukládá vaše fórum (typu phpbb) data o uživatelích. Pravděpodobně to je E<lt>prefixE<gt>_users (například phpbb3_users)."
+#: ../../doc/man/wesnothd.6:237
+msgid ""
+"(for user_handler=forum) The name of the table in which your phpbb forums "
+"saves its user data. Most likely this will be E<lt>table-prefixE<gt>_users "
+"(e.g. phpbb3_users)."
+msgstr ""
+"(pro user_handler=forum) Název tabulky, v níž ukládá vaše fórum (typu phpbb) "
+"data o uživatelích. Pravděpodobně to je E<lt>prefixE<gt>_users (například "
+"phpbb3_users)."
 
 # type: TP
-#: ../../doc/man/wesnothd.6:233
+#: ../../doc/man/wesnothd.6:237
 #, no-wrap
 msgid "B<db_extra_table>"
 msgstr "B<db_extra_table>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:237
-msgid "(for user_handler=forum) The name of the table in which wesnothd will save its own data about users. You will have to create this table manually, e.g.: CREATE TABLE E<lt>table-nameE<gt>(username VARCHAR(255) PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);"
-msgstr "(pro user_handler=forum) Název tabulky, v níž bude wesnothd ukládat svá vlastní data o uživatelích. Tuto tabulku budete muset vytvořit ručně - například: CREATE TABLE E<lt>jméno_tabulkyE<gt>(username VARCHAR(255) PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);"
+#: ../../doc/man/wesnothd.6:241
+#, fuzzy
+msgid ""
+"(for user_handler=forum) The name of the table in which wesnothd will save "
+"its own data about users. You will have to create this table manually, e.g.: "
+"B<CREATE TABLE E<lt>table-nameE<gt>(username VARCHAR(255) PRIMARY KEY, "
+"user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) "
+"NOT NULL DEFAULT 0);>"
+msgstr ""
+"(pro user_handler=forum) Název tabulky, v níž bude wesnothd ukládat svá "
+"vlastní data o uživatelích. Tuto tabulku budete muset vytvořit ručně - "
+"například: CREATE TABLE E<lt>jméno_tabulkyE<gt>(username VARCHAR(255) "
+"PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, "
+"user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);"
 
 # type: TP
-#: ../../doc/man/wesnothd.6:237
+#: ../../doc/man/wesnothd.6:241
 #, no-wrap
 msgid "B<user_expiration>"
 msgstr "B<user_expiration>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:240
-msgid "(for user_handler=sample) The time after which a registered nick expires (in days)."
-msgstr "(pro user_handler=sample) Čas, po němž vyprší platnost registrovaného uživatelského jména (dny)."
+#: ../../doc/man/wesnothd.6:244
+msgid ""
+"(for user_handler=sample) The time after which a registered nick expires (in "
+"days)."
+msgstr ""
+"(pro user_handler=sample) Čas, po němž vyprší platnost registrovaného "
+"uživatelského jména (dny)."
 
 # handler?
-#: ../../doc/man/wesnothd.6:244
-msgid "B<[mail]> Configures an SMTP server through which the user handler can send mail. Currently only used by the sample user handler."
-msgstr "B<[mail]> Konfiguruje SMTP server skrz nějž je možno odesílat poštu uživatelského handleru. V tuto chvíli jej používá pouze vzorový handler."
+#: ../../doc/man/wesnothd.6:248
+msgid ""
+"B<[mail]> Configures an SMTP server through which the user handler can send "
+"mail. Currently only used by the sample user handler."
+msgstr ""
+"B<[mail]> Konfiguruje SMTP server skrz nějž je možno odesílat poštu "
+"uživatelského handleru. V tuto chvíli jej používá pouze vzorový handler."
 
 # type: TP
-#: ../../doc/man/wesnothd.6:245
+#: ../../doc/man/wesnothd.6:249
 #, no-wrap
 msgid "B<server>"
 msgstr "B<server>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:248
+#: ../../doc/man/wesnothd.6:252
 msgid "The hostname of the mail server"
 msgstr "Hostitelský server emailu"
 
 # type: TP
-#: ../../doc/man/wesnothd.6:248
+#: ../../doc/man/wesnothd.6:252
 #, no-wrap
 msgid "B<username>"
 msgstr "B<username>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:251
+#: ../../doc/man/wesnothd.6:255
 msgid "The user name under which to log into the mail server."
 msgstr "Uživatelské jméno pro emailový server."
 
 # type: TP
-#: ../../doc/man/wesnothd.6:251
+#: ../../doc/man/wesnothd.6:255
 #, no-wrap
 msgid "B<password>"
 msgstr "B<password>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:254
+#: ../../doc/man/wesnothd.6:258
 msgid "This user's password."
 msgstr "Heslo pro emailový server."
 
 # type: TP
-#: ../../doc/man/wesnothd.6:254
+#: ../../doc/man/wesnothd.6:258
 #, no-wrap
 msgid "B<from_address>"
 msgstr "B<from_address>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:257
+#: ../../doc/man/wesnothd.6:261
 msgid "The reply-to address of you mail."
 msgstr "Adresa vložená do hlavičky Reply-To odesílaných mailů."
 
 # type: TP
-#: ../../doc/man/wesnothd.6:257
+#: ../../doc/man/wesnothd.6:261
 #, no-wrap
 msgid "B<mail_port>"
 msgstr "B<mail_port>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:260
+#: ../../doc/man/wesnothd.6:264
 msgid "The port on which your mail server is running. Default is 25."
 msgstr "Port, na němž běží emailový server. Výchozí hodnota 25."
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:266
-msgid "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer E<lt>thomas.baumhauer@gmail.comE<gt>.  This manual page was originally written by Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
-msgstr "Vytvořil David White E<lt>davidnwhite@verizon.netE<gt>. Upravili Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, Soliton E<lt>soliton@sonnenkinder.orgE<gt>a Thomas Baumhauer E<lt>thomas.baumhauer@gmail.comE<gt>. Tuto manovou stránku původně vytvořil Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>. Překlad Oto 'tapik' Buchta E<lt>tapik@buchtovi.czE<gt> a Vladimír Slávik E<lt>slavik.vladimir@seznam.czE<gt>."
+#: ../../doc/man/wesnothd.6:270
+msgid ""
+"Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
+"Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
+"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer E<lt>thomas."
+"baumhauer@gmail.comE<gt>.  This manual page was originally written by Cyril "
+"Bouthors E<lt>cyril@bouthors.orgE<gt>."
+msgstr ""
+"Vytvořil David White E<lt>davidnwhite@verizon.netE<gt>. Upravili Nils "
+"Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
+"Soliton E<lt>soliton@sonnenkinder.orgE<gt>a Thomas Baumhauer E<lt>thomas."
+"baumhauer@gmail.comE<gt>. Tuto manovou stránku původně vytvořil Cyril "
+"Bouthors E<lt>cyril@bouthors.orgE<gt>. Překlad Oto 'tapik' Buchta "
+"E<lt>tapik@buchtovi.czE<gt> a Vladimír Slávik E<lt>slavik.vladimir@seznam."
+"czE<gt>."
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:279
+#: ../../doc/man/wesnothd.6:283
 msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
 msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
-

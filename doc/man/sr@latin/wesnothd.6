@@ -82,9 +82,9 @@ uključuje ispravljačko beleženje.
 .P
 [\fIoznaka\fP]
 .IP
-ključ="\fIvrednost\fP"
+\fIkey\fP="\fIvalue\fP"
 .IP
-ključ="\fIvrednost\fP,\fIvrednost\fP,..."
+\fIkey\fP="\fIvalue\fP,\fIvalue\fP,..."
 .P
 [/\fIoznaka\fP]
 .
@@ -92,9 +92,9 @@ ključ="\fIvrednost\fP,\fIvrednost\fP,..."
 .
 .TP 
 \fBallow_remote_shutdown\fP
-ako se zada 'no' (podrazumevano), zahtevi za gašenje i ponovno pokretanje se
-ignorišu osim ako stižu iz fifoa. Zadajte 'yes' da dozvolite udaljeno
-gašenje na /query administratora.
+If set to \fBno\fP (default), shut_down and restart requests are ignored unless
+they come from the fifo.  Set it to \fByes\fP to allow remote shutdown via a
+/query by an administrator.
 .TP 
 \fBban_save_file\fP
 Puna ili relativna putanja do (gzipovane) datoteke koju server može da čita
@@ -102,23 +102,23 @@ i piše. Zabrane će biti zapisivane u nju, i čitane po narednom pokretanju
 servera.
 .TP 
 \fBcompress_stored_rooms\fP
-određuje da li fajl soba treba čitati i pisati u kompresovanom
-obliku. Podrazumevano 'yes'.
+Determines whether the rooms file should be read and written to in
+compressed form. Defaults to \fByes\fP.
 .TP 
 \fBconnections_allowed\fP
 broj dozvoljenih veza sa iste IP adrese, \fB0\fP znači bezbroj (podrazumevno:
 \fB5\fP)
 .TP 
 \fBdisallow_names\fP
-imena/nadimci koje server ne prihvata. Prihvataju se '*' i '?' kao džokeri
-(pogledajte \fBglob\fP(7) za više detalja). Podrazumevane vrednosti, koje se
-koriste ako se ništa ne zada, su:
+Names/nicks that are not accepted by the server. \fB*\fP and \fB?\fP from wildcard
+patterns are supported. See \fBglob\fP(7)  for more details.  Default values
+(used if nothing is specified) are:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-putanja do fifoa iz kojeg server može da čita naredbe (iste kao /query
-\&... iz igre). Ako nije zadato, spada na podrazumevanu ugrađenu
-(/var/run/socket/wesnothd/socket).
+The path to the fifo you can echo server commands into (same as /query
+\&... from wesnoth).  If not specified defaults to the compile\-time path
+(default: \fB/var/run/socket/wesnothd/socket\fP).
 .TP 
 \fBmax_messages\fP
 broj dozvoljenih poruka za vreme \fBmessages_time_period\fP (podrazumevano:
@@ -132,14 +132,14 @@ vremenski period u sekundama koji se razmatra za otkrivanje poplave poruka
 poruka dana
 .TP 
 \fBnew_room_policy\fP
-određuje ko može da stvara nove sobe na serveru. Moguće vrednosti su
-\&'everyone', 'registered', 'admin' i 'nobody', dajući dozvolu, redom, svima,
-registrovanim korisnicima, administratorima i nikome. Podrazumevana vrednost
-je 'everyone'.
+Determines who can create new rooms on the server. Available values are
+\fBeveryone\fP, \fBregistered\fP, \fBadmin\fP and \fBnobody\fP, and give the permission
+respectively to everyone, registered users, admin users or disables new room
+creation. Default value is \fBeveryone\fP.
 .TP 
 \fBpasswd\fP
-lozinka za sticanje administratorskih ovlašćenja. Obično počinje sa 'admin
-\&'
+The password used to gain admin privileges (via \fB/query admin
+\fP\fIpassword\fP).
 .TP 
 \fBreplay_save_path\fP
 Direktorijum gde server smešta snimke partija (ne zaboravite prateće
@@ -147,8 +147,9 @@ Direktorijum gde server smešta snimke partija (ne zaboravite prateće
 wesnothd pokrenut.
 .TP 
 \fBrestart_command\fP
-Naredba kojom server pokreće novi serverski proces pri naredbi
-\&'restart'. (Može se izdati samo preko fifoa.)
+The command that the server uses to start a new server process via the
+\fBrestart\fP command. (Can only be issued via the fifo. See the
+\fBallow_remote_shutdown\fP setting.)
 .TP 
 \fBroom_save_file\fP
 putanja do fajla gde se skladište podaci sobe. Ovaj fajl čita server pri
@@ -160,18 +161,18 @@ Određuje da li server automatski upisuje snimke partija (podrazumevno:
 \fBfalse\fP).
 .TP 
 \fBversions_accepted\fP
-Zapetama razdvojen spisak niski verzija koje server prihvata. Prihvataju se
-\&'*' i '?' kao džokeri (podrazumevana je verzija klijenta koja odgovara
-verziji servera)
+A comma separated list of version strings to be accepted by the server. \fB*\fP
+and \fB?\fP from wildcard patterns are supported.  (defaults to the
+corresponding wesnoth version)
 .br
 Primer: \fBversions_accepted="*"\fP prihvata bilo koju nisku verzije.
 .TP  
 \fBuser_handler\fP
-Ime rukovaoca korisnicima. Trenutno dostupni su 'forum' (server se povezuje
-sa phpBB bazom podataka foruma) i 'sample' (primerna izvedba sučelja
-rukovaoca korisnicima, ludi ste ako ovo upotrebite negde
-zaozbiljno). Podrazumevana vrednost je 'forum'. Takođe morate dodati odeljak
-\fB[user_handler]\fP, v. ispod.
+The name of the user handler to use. Currently available user handlers are
+\fBforum\fP (to connect wesnothd to a phpbb forum database) and \fBsample\fP (a
+sample implementation of the user handler interface, if you use this on
+anything real you are insane). The default value is \fBforum\fP. You must also
+add a \fB[user_handler]\fP section, see below.
 .
 .SS "Globalne oznake:"
 .
@@ -199,10 +200,11 @@ zabrane.
 Ime koje upućuje na trajanje zabrane.
 .TP 
 \fBtime\fP
-Trajanje. Format je %d[%s[%d%s[...]]] gde s iz %s označava sekunde, m
-minute, h sate, D dane, M mesece, Y godine, a d je broj. Ako nije dat
-modifikator, pretpostavljaju se minuti (m). Primer: time="1D12h30m" znači
-zabranu u trajanju od jednog dana, 12 sati i 30 minuta.
+The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s
+(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d
+is a number.  If no time modifier is given minutes (m) are assumed.
+Example: \fBtime="1D12h30m"\fP results in a ban time of 1 day, 12 hours and 30
+minutes.
 .RE
 .P
 \fB[proxy]\fP oznaka koja govori serveru da se ponaša kao posrednik i
@@ -210,10 +212,10 @@ prosleđuje zahteve povezanih klijenata na određeni server. Prihvata iste
 ključeve kao i \fB[redirect]\fP
 .RE
 .P
-\fB[user_handler]\fP podešava rukovalac korisnicima. Dostupnost ključeva zavisi
-od toga koji je rukovalac postavljen ključem \fBuser_handler\fP. Ako u postavi
-nema odeljka [user_handler], server neće pružati uslugu registrovanja
-nadimaka.
+\fB[user_handler]\fP Configures the user handler. Available keys vary depending
+on which user handler is set with the \fBuser_handler\fP key. If no
+\fB[user_handler]\fP section is present in the configuration the server will
+run without any nick registration service.
 .RS
 .TP  
 \fBdb_host\fP
@@ -235,11 +237,11 @@ korisnicima. Najverovatnije će to biti <prefiks\-tabele>_users
 (npr. phpbb3_users).
 .TP  
 \fBdb_extra_table\fP
-(za user_handler=forum) ime tabele u koju wesnothd upisuje svoje podatke o
-korisnicima. Ovu tabelu moraćete ručno da napravite, npr.: CREATE TABLE
-<ime\-tabele>(username VARCHAR(255) PRIMARY KEY, user_lastvisit INT
-UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT
-0);
+(for user_handler=forum) The name of the table in which wesnothd will save
+its own data about users. You will have to create this table manually, e.g.:
+\fBCREATE TABLE <table\-name>(username VARCHAR(255) PRIMARY KEY,
+user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4)
+NOT NULL DEFAULT 0);\fP
 .TP  
 \fBuser_expiration\fP
 (za user_handler=sample) vreme po kojem registrovani nadimak ističe (u
