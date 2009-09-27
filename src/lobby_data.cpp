@@ -12,8 +12,6 @@
    See the COPYING file for more details.
 */
 
-#define GETTEXT_DOMAIN "wesnoth-lib"
-
 #include "lobby_data.hpp"
 
 #include "config.hpp"
