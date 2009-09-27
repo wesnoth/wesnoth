@@ -16,6 +16,8 @@ Version 1.7.5+svn:
    * New portraits for Merman Spearman, Bat, Merman Netcaster, Nightgaunt,
      Spectre, Shadow
    * Added a couple of missing frames for the Inferno Drake
+   * Show HP/XP bars during leveling animation.
+   * When a unit reach a new level, a floating label indicates it.
  * Language and i18n:
    * Updated translations: Czech, Dutch, Estonian, Finnish, French, German,
      Italian, Lithuanian, Serbian, Spanish.
@@ -43,6 +45,8 @@ Version 1.7.5+svn:
    * The Remove and Update add-ons options are disabled when there are no
      add-ons installed
    * Add a Description button to the add-ons downloader
+   * For move+attack mouse click, now show the attack dialog before the move.
+   * In sidebar, add current bonus/malus info from alignement.
  * WML engine:
    * Fix silent=yes for objectives
    * Allow [story] [part] blocks to specify the title box alignment
