@@ -21,7 +21,30 @@
 #include "gui/widgets/event_handler.hpp"
 #include "gui/widgets/window.hpp" // Needed for invalidate_layout()
 
+#include <boost/bind.hpp>
+
 namespace gui2 {
+
+tscrollbar_::tscrollbar_()
+	: tcontrol(COUNT)
+	, state_(ENABLED)
+	, item_count_(0)
+	, item_position_(0)
+	, visible_items_(1)
+	, step_size_(1)
+	, pixels_per_step_(0.0)
+	, mouse_(0, 0)
+	, positioner_offset_(0)
+	, positioner_length_(0)
+	, callback_positioner_move_(0)
+{
+	connect_signal<event::MOUSE_ENTER>(boost::bind(
+				&tscrollbar_::signal_handler_mouse_enter, this, _1, _2));
+	connect_signal<event::MOUSE_MOTION>(boost::bind(
+				&tscrollbar_::signal_handler_mouse_motion, this, _1, _2, _4));
+	connect_signal<event::MOUSE_LEAVE>(boost::bind(
+				&tscrollbar_::signal_handler_mouse_leave, this, _1, _2));
+}
 
 void tscrollbar_::scroll(const tscroll scroll)
 {
@@ -347,6 +370,67 @@ void tscrollbar_::load_config_extra()
 		tmp.set_variable("offset_before", variant(offset_before()));
 		tmp.set_variable("offset_after", variant(offset_after()));
 	}
+}
+
+void tscrollbar_::signal_handler_mouse_enter(
+		const event::tevent event, bool& handled)
+{
+	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+
+	// Send the motion under our event id to make debugging easier.
+	signal_handler_mouse_motion(event, handled, get_mouse_position());
+}
+
+void tscrollbar_::signal_handler_mouse_motion(
+		const event::tevent event, bool& handled, const tpoint& coordinate)
+{
+	DBG_GUI_E << get_control_type()
+			<< "[" << id() << "]: " << event << " at " << coordinate << ".\n";
+
+	tpoint mouse = coordinate;
+	mouse.x -= get_x();
+	mouse.y -= get_y();
+
+	switch(state_) {
+		case ENABLED :
+			if(on_positioner(mouse)) {
+				set_state(FOCUSSED);
+			}
+
+			break;
+
+		case PRESSED : {
+				const int distance = get_length_difference(mouse_, mouse);
+				mouse_ = mouse;
+				move_positioner(distance);
+			}
+			break;
+
+		case FOCUSSED :
+			if(!on_positioner(mouse)) {
+				set_state(ENABLED);
+			}
+			break;
+
+		case DISABLED :
+			// Shouldn't be possible.
+
+			/* FALL DOWN */
+		default :
+			assert(false);
+	}
+	handled = true;
+}
+
+void tscrollbar_::signal_handler_mouse_leave(
+		const event::tevent event, bool& handled)
+{
+	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+
+	if(state_ == FOCUSSED) {
+		set_state(ENABLED);
+	}
+	handled = true;
 }
 
 } // namespace gui2

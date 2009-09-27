@@ -35,20 +35,7 @@ class tscrollbar_ : public tcontrol
 	friend class tslider;
 public:
 
-	tscrollbar_() :
-		tcontrol(COUNT),
-		state_(ENABLED),
-		item_count_(0),
-		item_position_(0),
-		visible_items_(1),
-		step_size_(1),
-		pixels_per_step_(0.0),
-		mouse_(0, 0),
-		positioner_offset_(0),
-		positioner_length_(0),
-		callback_positioner_move_(0)
-	{
-	}
+	tscrollbar_();
 
 	/**
 	 * scroll 'step size'.
@@ -323,6 +310,15 @@ private:
 
 	/** Inherited from tcontrol. */
 	void load_config_extra();
+
+	/***** ***** ***** signal handlers ***** ****** *****/
+
+	void signal_handler_mouse_enter(const event::tevent event, bool& handled);
+
+	void signal_handler_mouse_motion(
+			const event::tevent event, bool& handled, const tpoint& coordinate);
+
+	void signal_handler_mouse_leave(const event::tevent event, bool& handled);
 };
 
 } // namespace gui2
