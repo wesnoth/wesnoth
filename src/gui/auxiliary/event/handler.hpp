@@ -52,6 +52,20 @@ enum tevent {
 
 	, SDL_LEFT_BUTTON_DOWN        /**< A SDL left mouse button down event. */
 	, SDL_LEFT_BUTTON_UP          /**< A SDL left mouse button up event. */
+	, LEFT_BUTTON_DOWN            /**<
+	                               * A left mouse button down event for a wiget.
+	                               */
+	, LEFT_BUTTON_UP              /**<
+	                               * A left mouse button up event for a wiget.
+	                               */
+	, LEFT_BUTTON_CLICK           /**<
+	                               * A left mouse button click event for a
+	                               * wiget.
+	                               */
+	, LEFT_BUTTON_DOUBLE_CLICK    /**<
+	                               * A left mouse button double click event for
+	                               * a wiget.
+	                               */
 
 	, SDL_MIDDLE_BUTTON_DOWN      /**< A SDL middle mouse button down event. */
 	, SDL_MIDDLE_BUTTON_UP        /**< A SDL middle mouse button up event. */
@@ -83,6 +97,10 @@ typedef
 			  boost::mpl::int_<DRAW>
 			, boost::mpl::int_<MOUSE_ENTER>
 			, boost::mpl::int_<MOUSE_LEAVE>
+			, boost::mpl::int_<LEFT_BUTTON_DOWN>
+			, boost::mpl::int_<LEFT_BUTTON_UP>
+			, boost::mpl::int_<LEFT_BUTTON_CLICK>
+			, boost::mpl::int_<LEFT_BUTTON_DOUBLE_CLICK>
 			, boost::mpl::int_<SDL_WHEEL_LEFT>
 			, boost::mpl::int_<SDL_WHEEL_RIGHT>
 			, boost::mpl::int_<SDL_WHEEL_UP>
