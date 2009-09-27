@@ -1036,6 +1036,8 @@ attack::attack(const map_location &attacker, const map_location &defender,
 
 	LOG_NG << "Fight: (" << a_.loc_ << ") vs (" << d_.loc_ << ") ATT: " << a_stats_->weapon->name() << " " << a_stats_->damage << "-" << a_stats_->num_blows << "(" << a_stats_->chance_to_hit << "%) vs DEF: " << (d_stats_->weapon ? d_stats_->weapon->name() : "none") << " " << d_stats_->damage << "-" << d_stats_->num_blows << "(" << d_stats_->chance_to_hit << "%)" << (defender_strikes_first ? " defender first-strike" : "") << "\n";
 
+	// Play the pre-fight animation
+	unit_display::unit_draw_weapon(a_.loc_,a_.get_unit(),a_stats_->weapon,d_stats_->weapon,d_.loc_,&d_.get_unit());
 	while(a_.n_attacks_ > 0 || d_.n_attacks_ > 0) {
 		DBG_NG << "start of attack loop...\n";
 		abs_n_attack_++;
@@ -1622,6 +1624,8 @@ attack::attack(const map_location &attacker, const map_location &defender,
 		if(d_.xp_)
 			d_.get_unit().get_experience(d_.xp_);
 	}
+	unit_display::unit_sheath_weapon(a_.loc_,a_.valid()?&a_.get_unit():NULL,a_stats_->weapon,
+			d_stats_->weapon,d_.loc_,d_.valid()?&d_.get_unit():NULL);
 
 	if (update_display_){
 		resources::screen->invalidate_unit();

@@ -47,6 +47,8 @@ struct tag_name_manager {
 		names.push_back("teleport_anim");
 		names.push_back("pre_movement_anim");
 		names.push_back("post_movement_anim");
+		names.push_back("draw_weapon_anim");
+		names.push_back("sheath_weapon_anim");
 		names.push_back("victory_anim");
 	}
 	std::vector<std::string> names;
@@ -623,6 +625,25 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 			}
 		}
 	}
+
+	expanded_cfg = unit_animation::prepare_animation(cfg,"draw_weapon_anim");
+	foreach (config &anim, expanded_cfg.child_range("draw_weapon_anim"))
+	{
+		anim["apply_to"] = "draw_weapon";
+		if (anim["layer"].empty()) anim["layer"] = move_layer;
+		animations.push_back(unit_animation(anim));
+	}
+
+
+
+	expanded_cfg = unit_animation::prepare_animation(cfg,"sheath_weapon_anim");
+	foreach (config &anim, expanded_cfg.child_range("sheath_weapon_anim"))
+	{
+		anim["apply_to"] = "sheath_weapon";
+		if (anim["layer"].empty()) anim["layer"] = move_layer;
+		animations.push_back(unit_animation(anim));
+	}
+
 
 	expanded_cfg = unit_animation::prepare_animation(cfg,"attack_anim");
 	foreach (config &anim, expanded_cfg.child_range("attack_anim"))

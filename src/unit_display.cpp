@@ -215,6 +215,52 @@ void move_unit(const std::vector<map_location>& path, unit& u, const std::vector
 	}
 }
 
+
+void unit_draw_weapon(const map_location& loc, unit& attacker,
+		const attack_type* attack,const attack_type* secondary_attack, const map_location& defender_loc,unit* defender)
+{
+	game_display* disp = game_display::get_singleton();
+	if(!disp ||disp->video().update_locked() || disp->video().faked() || disp->fogged(loc) || preferences::show_combat() == false) {
+		return;
+	}
+	unit_animator animator;
+	animator.add_animation(&attacker,"draw_weapon",loc,defender_loc,0,false,false,"",0,unit_animation::HIT,attack,secondary_attack,0);
+	animator.add_animation(defender,"draw_weapon",defender_loc,loc,0,false,false,"",0,unit_animation::MISS,secondary_attack,attack,0);
+	animator.start_animations();
+	animator.wait_for_end();
+
+}
+
+
+void unit_sheath_weapon(const map_location& primary_loc, unit* primary_unit,
+		const attack_type* primary_attack,const attack_type* secondary_attack, const map_location& secondary_loc,unit* secondary_unit)
+{
+	game_display* disp = game_display::get_singleton();
+	if(!disp ||disp->video().update_locked() || disp->video().faked() || disp->fogged(primary_loc) || preferences::show_combat() == false) {
+		return;
+	}
+	unit_animator animator;
+	if(primary_unit) {
+		animator.add_animation(primary_unit,"sheath_weapon",primary_loc,secondary_loc,0,false,false,"",0,unit_animation::INVALID,primary_attack,secondary_attack,0);
+	}
+	if(secondary_unit) {
+		animator.add_animation(secondary_unit,"sheath_weapon",secondary_loc,primary_loc,0,false,false,"",0,unit_animation::INVALID,secondary_attack,primary_attack,0);
+	}
+
+	if(primary_unit || secondary_unit) {
+		animator.start_animations();
+		animator.wait_for_end();
+	}
+	if(primary_unit) {
+		primary_unit->set_standing();
+	}
+	if(secondary_unit) {
+		secondary_unit->set_standing();
+	}
+
+}
+
+
 void unit_die(const map_location& loc, unit& loser,
 		const attack_type* attack,const attack_type* secondary_attack, const map_location& winner_loc,unit* winner)
 {

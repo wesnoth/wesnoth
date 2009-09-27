@@ -41,6 +41,18 @@ namespace unit_display
 void move_unit(const std::vector<map_location>& path, unit& u, const std::vector<team>& teams);
 
 /**
+ * Play a pre-fight animation
+ * First unit is the attacker, second unit the defender
+ */
+void unit_draw_weapon( const map_location& loc, unit& u, const attack_type* attack=NULL, const attack_type*secondary_attack=NULL,const map_location& defender_loc = map_location::null_location, unit * defender=NULL);
+
+/**
+ * Play a post-fight animation
+ * Both unit can be set to null, only valid units will play their animation
+ */
+void unit_sheath_weapon( const map_location& loc, unit* u=NULL, const attack_type* attack=NULL, const attack_type*secondary_attack=NULL,const map_location& defender_loc = map_location::null_location, unit * defender=NULL);
+
+/**
  * Show a unit fading out.
  *
  * Note: this only shows the effect, it doesn't actually kill the unit.
