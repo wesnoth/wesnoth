@@ -31,9 +31,9 @@ tbutton::tbutton()
 	, callback_mouse_left_click_(0)
 {
 	connect_signal<event::MOUSE_ENTER>(boost::bind(
-				&tbutton::signal_handler_mouse_enter, this, _2));
+				&tbutton::signal_handler_mouse_enter, this, _1, _2));
 	connect_signal<event::MOUSE_LEAVE>(boost::bind(
-				&tbutton::signal_handler_mouse_leave, this, _2));
+				&tbutton::signal_handler_mouse_leave, this, _1, _2));
 }
 
 void tbutton::mouse_enter(tevent_handler&)
@@ -100,17 +100,19 @@ const std::string& tbutton::get_control_type() const
 	return type;
 }
 
-void tbutton::signal_handler_mouse_enter(bool& handled)
+void tbutton::signal_handler_mouse_enter(
+		const event::tevent event, bool& handled)
 {
-	DBG_GUI_E << "Button: mouse enter.\n";
+	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
 
 	set_state(FOCUSSED);
 	handled = true;
 }
 
-void tbutton::signal_handler_mouse_leave(bool& handled)
+void tbutton::signal_handler_mouse_leave(
+		const event::tevent event, bool& handled)
 {
-	DBG_GUI_E << "Button: mouse leave.\n";
+	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
 
 	set_state(ENABLED);
 	handled = true;

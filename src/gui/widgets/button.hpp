@@ -98,9 +98,9 @@ private:
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 
-	void signal_handler_mouse_enter(bool& handled);
+	void signal_handler_mouse_enter(const event::tevent event, bool& handled);
 
-	void signal_handler_mouse_leave(bool& handled);
+	void signal_handler_mouse_leave(const event::tevent event, bool& handled);
 };
 
 
