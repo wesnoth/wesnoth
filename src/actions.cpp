@@ -2278,20 +2278,11 @@ size_t move_unit(move_unit_spectator *move_spectator,
 		return 0;
 	}
 
-	if (next_unit != NULL)
+	if(next_unit != NULL)
 		*next_unit = steps.back();
 
-	if (show_move) {
-		// Move the unit on the screen. Hide the unit in its current location,
-		// but don't actually remove it until the move is done,
-		// so that while the unit is moving status etc.
-		// will still display the correct number of units.
-		unit_display::move_unit(steps,ui->second,teams);
-	} else {
-		// not showing move but still need to invalidate changes
-		disp.invalidate(steps.front());
-		disp.invalidate(steps.back());
-	}
+	map_location::DIRECTION orig_dir = ui->second.facing();
+	unit_display::move_unit(steps, ui->second, teams, show_move);
 
 	// move the real unit
 	units.move(ui->first, steps.back());
@@ -2358,7 +2349,9 @@ size_t move_unit(move_unit_spectator *move_spectator,
 			undo_stack->clear();
 		} else {
 			// MP_COUNTDOWN: added param
-			undo_stack->push_back(undo_action(ui->second,steps,starting_moves,action_time_bonus,orig_village_owner));
+			undo_stack->push_back(
+				undo_action(ui->second,steps, starting_moves, action_time_bonus,
+				orig_village_owner, orig_dir));
 		}
 	}
 

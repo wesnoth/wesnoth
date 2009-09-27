@@ -333,11 +333,11 @@ int combat_modifier(const unit_map &units, const map_location &loc,
 
 /** Records information to be able to undo a movement. */
 struct undo_action {
-	enum ACTION_TYPE { NONE, RECRUIT, RECALL, DISMISS};
+	enum ACTION_TYPE { NONE, RECRUIT, RECALL, DISMISS };
 
-	undo_action(const unit& u,
-		const std::vector<map_location>& rt,
-		int sm, int timebonus = 0, int orig = -1) :
+	undo_action(const unit& u, const std::vector<map_location>& rt, int sm,
+ 	 	int timebonus=0, int orig=-1, 
+		map_location::DIRECTION dir=map_location::NDIRECTIONS) :
 			route(rt),
 			starting_moves(sm),
 			original_village_owner(orig),
@@ -345,16 +345,22 @@ struct undo_action {
 			type(NONE),
 			affected_unit(u),
 			countdown_time_bonus(timebonus)
-			{}
+		{
+			if(dir == map_location::NDIRECTIONS)
+				dir = u.facing();
+			starting_dir = dir;
+		}
 
-	undo_action(const unit& u, const map_location& loc, const ACTION_TYPE action_type=NONE) :
-		route(),
-		starting_moves(),
-		original_village_owner(),
-		recall_loc(loc),
-		type(action_type),
-		affected_unit(u),
-		countdown_time_bonus(1)
+	undo_action(const unit& u, const map_location& loc,
+		const ACTION_TYPE action_type=NONE) :
+			route(),
+			starting_moves(),
+			original_village_owner(),
+			recall_loc(loc),
+			type(action_type),
+			affected_unit(u),
+			countdown_time_bonus(1),
+			starting_dir(u.facing())
 		{}
 
 	std::vector<map_location> route;
@@ -364,6 +370,8 @@ struct undo_action {
 	ACTION_TYPE type;
 	unit affected_unit;
 	int countdown_time_bonus;
+	map_location::DIRECTION starting_dir;
+	
 	bool is_dismiss() const { return type == DISMISS; }
 	bool is_recall() const { return type == RECALL; }
 	bool is_recruit() const { return type == RECRUIT; }

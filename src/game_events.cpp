@@ -652,15 +652,11 @@ WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 
 	const map_location src_loc = u->first;
 
-	if (utils::string_bool(cfg["animate"])) {
-		std::vector<map_location> teleport_path;
-		teleport_path.push_back(src_loc);
-		teleport_path.push_back(vacant_dst);
-		unit_display::move_unit(teleport_path, u->second, *resources::teams);
-	} else {
-		resources::screen->invalidate(src_loc);
-		resources::screen->invalidate(dst);
-	}
+	std::vector<map_location> teleport_path;
+	teleport_path.push_back(src_loc);
+	teleport_path.push_back(vacant_dst);
+	bool animate = utils::string_bool(cfg["animate"]);
+	unit_display::move_unit(teleport_path, u->second, *resources::teams, animate);
 
 	resources::units->move(src_loc, vacant_dst);
 	unit::clear_status_caches();

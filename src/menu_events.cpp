@@ -1041,7 +1041,7 @@ void menu_handler::undo(int side_num)
 
 		action.starting_moves = u->second.movement_left();
 
-		unit_display::move_unit(route,u->second,teams_);
+		unit_display::move_unit(route, u->second, teams_, true, action.starting_dir);
 
 		units_.move(u->first, route.back());
 		unit::clear_status_caches();
@@ -1052,7 +1052,6 @@ void menu_handler::undo(int side_num)
 		u->second.set_standing();
 
 		gui_->invalidate_unit_after_move(route.front(), route.back());
-		gui_->invalidate(route.back());
 		gui_->draw();
 	}
 
@@ -1159,7 +1158,6 @@ void menu_handler::redo(int side_num)
 			//MP_COUNTDOWN: restore recruitment bonus
 			current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
 
-			gui_->invalidate(loc);
 			gui_->draw();
 			//gui_.invalidate_game_status();
 			//gui_.invalidate_all();
@@ -1200,7 +1198,6 @@ void menu_handler::redo(int side_num)
 		}
 
 		gui_->invalidate_unit_after_move(route.front(), route.back());
-		gui_->invalidate(route.back());
 		gui_->draw();
 
 		recorder.add_movement(action.route);

@@ -37,8 +37,25 @@ class unit;
 namespace unit_display
 {
 
-/** Display a unit moving along a given path. */
-void move_unit(const std::vector<map_location>& path, unit& u, const std::vector<team>& teams);
+/** 
+ * Display a unit moving along a given path. 
+ *
+ * Note: Hide the unit in its current location,
+ * but don't actually remove it until the move is done,
+ * so that while the unit is moving status etc.
+ * will still display the correct number of units.
+ *
+ * @param path
+ * @param u
+ * @param teams
+ * @param animate If set to false, only side-effects of move
+ *        are applied (correct unit facing, path hexes redrawing).
+ * @param dir Unit will be set facing this direction after move.
+ *        If nothing passed, direction will be set based on path.
+ */
+void move_unit(const std::vector<map_location>& path, unit& u,
+	const std::vector<team>& teams, bool animate=true,
+	map_location::DIRECTION dir=map_location::NDIRECTIONS);
 
 /**
  * Play a pre-fight animation
@@ -57,7 +74,11 @@ void unit_sheath_weapon( const map_location& loc, unit* u=NULL, const attack_typ
  *
  * Note: this only shows the effect, it doesn't actually kill the unit.
  */
-void unit_die( const map_location& loc, unit& u, const attack_type* attack=NULL, const attack_type*secondary_attack=NULL,const map_location& winner_loc = map_location::null_location, unit * winner=NULL);
+ void unit_die( const map_location& loc, unit& u,
+ 	const attack_type* attack=NULL, const attack_type* secondary_attack=NULL,
+ 	const map_location& winner_loc=map_location::null_location,
+ 	unit* winner=NULL);
+  
 
 /**
  *  Make the unit on tile 'a' attack the unit on tile 'b'.
@@ -68,28 +89,32 @@ void unit_die( const map_location& loc, unit& u, const attack_type* attack=NULL,
  *  @retval	true                  if the defending unit is dead, should be
  *                                removed from the playing field.
  */
-void unit_attack(
-                 const map_location& a, const map_location& b, int damage,
-                 const attack_type& attack, const attack_type* secondary_attack,
-		 int swing,std::string hit_text,bool drain,std::string att_text);
+void unit_attack(const map_location& a, const map_location& b, int damage,
+	const attack_type& attack, const attack_type* secondary_attack,
+	int swing, std::string hit_text, bool drain, std::string att_text);
 
 
-void unit_recruited(const map_location& loc,const map_location& leader_loc=map_location::null_location);
-
-/**
- *  Set healer_loc to an invalid location if there are no healers.
- *
- *  This will use a poisoning anim if healing<0.
- */
-void unit_healing(unit& healed,map_location& healed_loc, std::vector<unit_map::iterator> healers, int healing);
-
+void unit_recruited(const map_location& loc,
+	const map_location& leader_loc=map_location::null_location);
 
 /**
- * parse a standard WML for animations and play the corresponding animation, returns once animation is played
- * this is used for the animate_unit action, but can easily be generalized if other wml-decribed animations are needed
+ * Set healer_loc to an invalid location if there are no healers.
  *
+ * This will use a poisoning anim if healing<0.
  */
-void wml_animation(const vconfig &cfg, const map_location &default_location = map_location::null_location);
+void unit_healing(unit& healed, map_location& healed_loc,
+	std::vector<unit_map::iterator> healers, int healing);
+
+
+/**
+ * Parse a standard WML for animations and play the corresponding animation.
+ * Returns once animation is played.
+ * 
+ * This is used for the animate_unit action, but can easily be generalized if
+ * other wml-decribed animations are needed.
+ */
+void wml_animation(const vconfig &cfg,
+	const map_location& default_location=map_location::null_location);
 
 }
 

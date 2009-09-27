@@ -68,8 +68,6 @@ static void move_unit_between(const map_location& a, const map_location& b, unit
 		return;
 	}
 
-
-
 	temp_unit.set_location(a);
 	disp->place_temporary_unit(temp_unit);
 	temp_unit.set_facing(a.get_relative_dir(b));
@@ -114,22 +112,32 @@ static void move_unit_between(const map_location& a, const map_location& b, unit
 namespace unit_display
 {
 
-void move_unit(const std::vector<map_location>& path, unit& u, const std::vector<team>& teams)
+void move_unit(const std::vector<map_location>& path, unit& u,
+		const std::vector<team>& teams, bool animate,
+		map_location::DIRECTION dir)
 {
 	game_display* disp = game_display::get_singleton();
 	assert(!path.empty());
 	assert(disp);
-	if(!disp || disp->video().update_locked() || disp->video().faked() ) {
+	if(!disp || disp->video().update_locked() || disp->video().faked())
+		return;
+	// One hex path (strange), nothing to do
+	if(path.size() == 1)
+		return;
+	if(dir == map_location::NDIRECTIONS)
+		dir = path[path.size()-2].get_relative_dir(path.back());
+	// Don't animate, only set facing and redraw path ends
+	if(!animate) {
+		u.set_facing(dir);
+		disp->invalidate(path.front());
+		disp->invalidate(path.back());
 		return;
 	}
-	// One hex path (strange), nothing to do
-	if (path.size()==1) return;
 
 	const unit_map& units = disp->get_units();
 
 	bool invisible = teams[u.side()-1].is_enemy(int(disp->viewing_team()+1)) &&
 		u.invisible(path[0],units,teams);
-
 
 	bool was_hidden = u.get_hidden();
 	// Original unit is usually hidden (but still on map, so count is correct)
@@ -206,13 +214,16 @@ void move_unit(const std::vector<map_location>& path, unit& u, const std::vector
 	animator.wait_for_end();
 	disp->remove_temporary_unit();
 
-	u.set_facing(path[path.size()-2].get_relative_dir(path[path.size()-1]));
+	u.set_facing(dir);
 	u.set_hidden(was_hidden);
 
 	events::mouse_handler* mousehandler = events::mouse_handler::get_singleton();
 	if (mousehandler) {
 		mousehandler->invalidate_reachmap();
 	}
+
+	disp->invalidate(path.front());
+	disp->invalidate(path.back());
 }
 
 
