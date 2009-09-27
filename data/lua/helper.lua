@@ -12,6 +12,46 @@ end
 local helper = {}
 wesnoth.package.helper = helper
 
+--! Interrupts the current execution and displays a chat message that looks like a WML error.
+function helper.wml_error(m)
+	error("~wml:" .. m, 0)
+end
+
+--! Returns an iterator over teams that can be used in a for-in loop.
+function helper.all_teams()
+	local function f(s)
+		local i = s.i
+		local team = wesnoth.get_side(i)
+		s.i = i + 1
+		return team
+	end
+	return f, { i = 1 }
+end
+
+--! Returns the first subtag of @a cfg with the given @a name.
+function helper.get_child(cfg, name)
+	-- ipairs cannot be used on a vconfig object
+	for i = 1, #cfg do
+		local v = cfg[i]
+		if v[1] == name then return v[2] end
+	end
+end
+
+--! Returns an iterator over all the subtags of @a cfg with the given @a name.
+function helper.child_range(cfg, tag)
+	local function f(s)
+		local c
+		repeat
+			local i = s.i
+			c = cfg[i]
+			if not c then return end
+			s.i = i + 1
+		until c[1] == tag
+		return c[2]
+	end
+	return f, { i = 1 }
+end
+
 --! Modifies all the units satisfying the given @a filter.
 --! @param vars key/value pairs that need changing.
 --! @note Usable only during WML actions.
@@ -138,7 +178,7 @@ end
 
 local fire_action_mt = {
 	__index = function(t, n)
-		return function(...) wesnoth.fire(n, ...) end
+		return function(cfg) wesnoth.fire(n, cfg) end
 	end
 }
 
@@ -150,6 +190,22 @@ local fire_action_mt = {
 --! @endcode
 function helper.set_wml_action_metatable(t)
 	return setmetatable(t, fire_action_mt)
+end
+
+local create_tag_mt = {
+	__index = function(t, n)
+		return function(cfg) return { n, cfg } end
+	end
+}
+
+--! Sets the metable of @a t so that it can be used to create subtags with less brackets.
+--! @return @a t.
+--! @code
+--! T = helper.set_wml_tag_metatable {}
+--! W.event { name = "new turn", T.message { speaker = "narrator", message = "?" } }
+--! @endcode
+function helper.set_wml_tag_metatable(t)
+	return setmetatable(t, create_tag_mt)
 end
 
 return helper
