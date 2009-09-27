@@ -2031,8 +2031,8 @@ void server::process_data_game(const network::connection sock,
 		if (!data["mp_shroud"].to_bool()) {
 			desc.set_attr_dup("map_data", data["map_data"]);
 		}
-		if(data.child("era")) {
-			if(!(utils::string_bool(data.child("era")->attr("require_era").to_string(),true))) {
+		if (const simple_wml::node* e = data.child("era")) {
+			if (!e->attr("require_era").to_bool(true)) {
 				desc.set_attr("require_era", "no");
 			}
 		}
