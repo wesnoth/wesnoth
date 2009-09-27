@@ -1,16 +1,4 @@
--- Ensure the package is shared between all its users.
--- TODO: consider using the "package" module instead, if this code structure gets common.
-if wesnoth.package then
-	local helper = wesnoth.package.helper
-	if helper then
-		return helper
-	end
-else
-	wesnoth.package = {}
-end
-
 local helper = {}
-wesnoth.package.helper = helper
 
 --! Interrupts the current execution and displays a chat message that looks like a WML error.
 function helper.wml_error(m)

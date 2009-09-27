@@ -1,4 +1,4 @@
-local helper = wesnoth.dofile "lua/helper.lua"
+local helper = wesnoth.require "lua/helper.lua"
 
 local function trim(s)
 	local r = string.gsub(s, "^%s*(.-)%s*$", "%1")
