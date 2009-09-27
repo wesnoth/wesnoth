@@ -196,5 +196,13 @@ game_logic::map_formula_callable get_screen_size_variables()
 	return result;
 }
 
+tpoint get_mouse_position()
+{
+	int x, y;
+	SDL_GetMouseState(&x, &y);
+
+	return tpoint(x, y);
+}
+
 } // namespace gui2
 

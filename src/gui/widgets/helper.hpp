@@ -188,6 +188,9 @@ struct tconst_duplicator<const T, U>
 	typedef const U type;
 };
 
+/** Returns the current mouse position. */
+tpoint get_mouse_position();
+
 } // namespace gui2
 
 #endif
