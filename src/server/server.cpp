@@ -1988,7 +1988,7 @@ void server::process_data_game(const network::connection sock,
 			delete_game(itor);
 			std::stringstream msg;
 			msg << "This server does not support games with more than "
-				<< gamemap::MAX_PLAYERS << " sides.";
+				<< gamemap::MAX_PLAYERS << " sides. Game aborted.";
 			rooms_.lobby().send_server_message(msg.str().c_str(), sock);
 			return;
 		}
@@ -2009,10 +2009,18 @@ void server::process_data_game(const network::connection sock,
 			assert(gamelist != NULL);
 			simple_wml::node& desc = gamelist->add_child("game");
 			g->level().root().copy_into(desc);
-			if (data.root().child("multiplayer"))
-				data.root().child("multiplayer")->copy_into(desc);
-			else
-				ERR_SERVER << "server.cpp, process_data_game: Expected child 'multiplayer' was not found in level WML.\n";
+			if (const simple_wml::node* m = data.root().child("multiplayer")) {
+				m->copy_into(desc);
+			} else {
+				WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
+					<< "\tsent scenario data in game:\t\"" << g->name() << "\" ("
+					<< g->id() << ") without a 'multiplayer' child.\n";
+				// Set the description so it can be removed in delete_game().
+				g->set_description(&desc);
+				delete_game(itor);
+				rooms_.lobby().send_server_message("The scenario data is missing the [multiplayer] tag which contains the game settings. Game aborted.", sock);
+				return;
+			}
 			g->set_description(&desc);
 			desc.set_attr_dup("id", lexical_cast<std::string>(g->id()).c_str());
 		} else {
@@ -2084,38 +2092,45 @@ void server::process_data_game(const network::connection sock,
 			rooms_.lobby().send_server_message(msg.str().c_str(), sock);
 			return;
 		}
-		// Remember the era id since the client does not send it again (yet?).
-		std::string era_id;
-		if (simple_wml::node* e = g->level().root().child("era")) {
-			era_id = e->attr("id").to_string();
-		}
 		// Record the full scenario in g->level()
 		g->level().clear();
 		data.child("store_next_scenario")->copy_into(g->level().root());
-		g->start_game(pl);
+
 		if (g->description() == NULL) {
 			ERR_SERVER << network::ip_address(sock) << "\tERROR: \""
 				<< g->name() << "\" (" << g->id()
 				<< ") is initialized but has no description_.\n";
 			return;
 		}
-		const simple_wml::node& s = g->level().root();
 		simple_wml::node& desc = *g->description();
 		// Update the game's description.
+		if (const simple_wml::node* m = data.root().child("multiplayer")) {
+			m->copy_into(desc);
+		} else {
+			WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
+				<< "\tsent scenario data in game:\t\"" << g->name() << "\" ("
+				<< g->id() << ") without a 'multiplayer' child.\n";
+			delete_game(itor);
+			rooms_.lobby().send_server_message("The scenario data is missing the [multiplayer] tag which contains the game settings. Game aborted.", sock);
+			return;
+		}
 		// If there is no shroud, then tell players in the lobby
 		// what the map looks like.
+		const simple_wml::node& s = g->level().root();
 		if (s["mp_shroud"].to_bool()) {
 			desc.set_attr_dup("map_data", s["map_data"]);
 		} else {
 			desc.set_attr("map_data", "");
 		}
-		if (data.root().child("multiplayer"))
-			data.root().child("multiplayer")->copy_into(desc);
-		else
-			ERR_SERVER << "server.cpp, process_data_game: Expected child 'multiplayer' was not found in level WML.\n";
-
+		if (const simple_wml::node* e = data.child("era")) {
+			if (!e->attr("require_era").to_bool(true)) {
+				desc.set_attr("require_era", "no");
+			}
+		}
 		// Send the update of the game description to the lobby.
 		update_game_in_lobby(g);
+
+		g->start_game(pl);
 		return;
 	// If a player advances to the next scenario of a mp campaign. (deprecated)
 	} else if(data.child("notify_next_scenario")) {
