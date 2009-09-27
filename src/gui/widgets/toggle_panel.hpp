@@ -30,15 +30,7 @@ namespace gui2 {
 class ttoggle_panel : public tpanel, public tselectable_
 {
 public:
-	ttoggle_panel()
-		: tpanel(COUNT)
-		, state_(ENABLED)
-		, retval_(0)
-		, callback_state_change_(0)
-		, callback_mouse_left_double_click_()
-	{
-		set_wants_mouse_left_double_click();
-	}
+	ttoggle_panel();
 
 	/**
 	 * Sets the members of the child controls.
@@ -188,6 +180,11 @@ private:
 	/** Inherited from tpanel. */
 	const std::string& get_control_type() const;
 
+	/***** ***** ***** signal handlers ***** ****** *****/
+
+	void signal_handler_mouse_enter(const event::tevent event, bool& handled);
+
+	void signal_handler_mouse_leave(const event::tevent event, bool& handled);
 };
 
 } // namespace gui2
