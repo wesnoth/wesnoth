@@ -277,7 +277,14 @@ private:
 	 * @param mouse_over          The widget that should receive the event.
 	 */
 	void mouse_enter(const SDL_Event& event, twidget* mouse_over);
-
+private:
+	/**
+	 * Called when the mouse enters a widget.
+	 *
+	 * @param mouse_over          The widget that should receive the event.
+	 */
+	void mouse_enter(twidget* mouse_over);
+public:
 	/**
 	 * Called when the mouse moves over a widget.
 	 *
@@ -285,7 +292,15 @@ private:
 	 * @param mouse_over          The widget that should receive the event.
 	 */
 	void mouse_move(const SDL_Event& event, twidget* mouse_over);
-
+private:
+	/**
+	 * Called when the mouse moves over a widget.
+	 *
+	 * @param mouse_over          The widget that should receive the event.
+	 * @param coordinate          The current screen coordinate of the mouse.
+	 */
+	void mouse_motion(twidget* mouse_over, const tpoint& coordinate);
+public:
 	/**
 	 * Called when a widget should raises a hover event.
 	 *
@@ -301,7 +316,10 @@ private:
 	 * @param mouse_over          The widget that should receive the event.
 	 */
 	void mouse_leave(const SDL_Event& event, twidget* mouse_over);
-
+private:
+	/** Called when the mouse leaves the current widget. */
+	void mouse_leave();
+public:
 	/**
 	 * Called when a mouse button is pressed on a widget.
 	 *

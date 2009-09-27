@@ -21,6 +21,7 @@
 #include "gui/auxiliary/event/dispatcher.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/widgets/helper.hpp"
+#include "gui/widgets/widget.hpp"
 
 #include <cassert>
 
@@ -320,7 +321,7 @@ void thandler::draw()
 
 	/** @todo Need to evaluate which windows really to redraw. */
 	foreach(tdispatcher* dispatcher, dispatchers_) {
-		dispatcher->fire(DRAW);
+		dispatcher->fire(DRAW, dynamic_cast<twidget&>(*dispatcher));
 	}
 }
 
@@ -329,22 +330,27 @@ void thandler::mouse(const tevent event, const tpoint& position)
 	DBG_GUI_E << "Firing: " << event << ".\n";
 
 	if(mouse_focus) {
-		mouse_focus->fire(event, position);
-
+		mouse_focus->fire(event
+				, dynamic_cast<twidget&>(*mouse_focus)
+				, position);
 	} else {
 
 		for(std::vector<tdispatcher*>::reverse_iterator ritor =
 				dispatchers_.rbegin(); ritor != dispatchers_.rend(); ++ritor) {
 
 			if((**ritor).get_mouse_behaviour() == tdispatcher::all) {
-				(**ritor).fire(event, position);
+				(**ritor).fire(event
+						, dynamic_cast<twidget&>(**ritor)
+						, position);
 				break;
 			}
 			if((**ritor).get_mouse_behaviour() == tdispatcher::none) {
 				continue;
 			}
 			if((**ritor).is_at(position)) {
-				(**ritor).fire(event, position);
+				(**ritor).fire(event
+						, dynamic_cast<twidget&>(**ritor)
+						, position);
 				break;
 			}
 		}
@@ -414,8 +420,10 @@ void thandler::mouse_button_down(const tpoint& position, const Uint8 button)
 	}
 }
 
-void thandler::keyboard(const tevent event)
+void thandler::keyboard(const tevent //event
+		)
 {
+	/*
 	DBG_GUI_E << "Firing: " << event << ".\n";
 
 	assert(!dispatchers_.empty());
@@ -425,6 +433,7 @@ void thandler::keyboard(const tevent event)
 	} else {
 		dispatchers_.back()->fire(event);
 	}
+	*/
 }
 
 /***** tmanager class. *****/

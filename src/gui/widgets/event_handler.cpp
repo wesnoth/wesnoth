@@ -470,6 +470,16 @@ void tevent_handler::mouse_enter(const SDL_Event& /*event*/, twidget* mouse_over
 	set_hover();
 }
 
+void tevent_handler::mouse_enter(twidget* mouse_over)
+{
+	DBG_GUI_E << "tevent_handler: mouse enter.\n";
+
+	assert(mouse_over);
+
+	mouse_focus_ = mouse_over;
+	get_window().fire(event::MOUSE_ENTER, *mouse_over);
+}
+
 void tevent_handler::mouse_move(const SDL_Event& event, twidget* mouse_over)
 {
 	if(mouse_captured_) {
@@ -491,6 +501,15 @@ void tevent_handler::mouse_move(const SDL_Event& event, twidget* mouse_over)
 			assert(!mouse_focus_ && !mouse_over);
 		}
 	}
+}
+
+void tevent_handler::mouse_motion(twidget* mouse_over, const tpoint& coordinate)
+{
+	DBG_GUI_E << "tevent_handler: mouse motion.\n";
+
+	assert(mouse_over);
+
+	get_window().fire(event::MOUSE_MOTION, *mouse_over, coordinate);
 }
 
 void tevent_handler::mouse_hover(
@@ -527,6 +546,15 @@ void tevent_handler::mouse_leave(
 	if(control && control->get_active()) {
 		mouse_focus_->mouse_leave(*this);
 	}
+	mouse_focus_ = 0;
+}
+
+void tevent_handler::mouse_leave()
+{
+	DBG_GUI_E << "tevent_handler: mouse leave.\n";
+
+	get_window().fire(event::MOUSE_LEAVE, *mouse_focus_);
+
 	mouse_focus_ = 0;
 }
 
@@ -778,30 +806,27 @@ void tevent_handler::connect()
 
 void tevent_handler::sdl_mouse_motion(const tpoint& coordinate)
 {
-	SDL_Event event;
-	twidget* mouse_over = find_at(coordinate, true);
-
 	if(mouse_captured_) {
-		mouse_focus_->mouse_move(*this);
-		set_hover(true);
+		mouse_motion(mouse_focus_, coordinate);
 	} else {
+		twidget* mouse_over = find_at(coordinate, true);
+
 		if(!mouse_focus_ && mouse_over) {
-			mouse_enter(event, mouse_over);
+			mouse_enter(mouse_over);
 		} else if (mouse_focus_ && !mouse_over) {
-			mouse_leave(event, mouse_over);
+			mouse_leave();
 		} else if(mouse_focus_ && mouse_focus_ == mouse_over) {
-			mouse_over->mouse_move(*this);
-			set_hover();
+			mouse_motion(mouse_over, coordinate);
 		} else if(mouse_focus_ && mouse_over) {
 			// moved from one widget to the next
-			mouse_leave(event, mouse_over);
-			mouse_enter(event, mouse_over);
+			mouse_leave();
+			mouse_enter(mouse_over);
 		} else {
 			assert(!mouse_focus_ && !mouse_over);
 		}
 	}
-
 }
+
 void tevent_handler::sdl_left_button_down(const tpoint& coordinate)
 {
 	SDL_Event event;

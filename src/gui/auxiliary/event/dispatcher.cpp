@@ -14,12 +14,10 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/auxiliary/event/dispatcher.hpp"
+#include "gui/auxiliary/event/dispatcher_private.hpp"
 
 #include "foreach.hpp"
 #include "gui/auxiliary/log.hpp"
-
-#include <string>
 
 namespace gui2 {
 
@@ -50,105 +48,77 @@ void tdispatcher::connect()
 	connect_dispatcher(this);
 }
 
-template<class T>
-static void dispatch_signal(const tevent event
-		, tdispatcher::tsignal<T>& queue)
+bool tdispatcher::has_event(const tevent event
+		, const tevent_type event_type
+		)
 {
-	std::vector<std::pair<
-		  typename std::vector<T>::iterator
-		, typename std::vector<T>::iterator> > queues;
+	return find<tset_event>(event, tdispatcher_implementation
+				::thas_handler(event_type, *this))
+			|| find<tset_event_mouse>(event, tdispatcher_implementation
+					::thas_handler(event_type, *this))
+			|| find<tset_event_keyboard>(event, tdispatcher_implementation
+					::thas_handler(event_type, *this));
+}
 
-	queues.push_back(
-			std::make_pair(queue.pre_child.begin(), queue.pre_child.end()));
-	queues.push_back(
-			std::make_pair(queue.child.begin(), queue.child.end()));
-	queues.push_back(
-			std::make_pair(queue.post_child.begin(), queue.post_child.end()));
-
-	bool handled = false;
-	bool halt = false;
-
-	for(typename
-				std::vector<std::pair<
-					  typename std::vector<T>::iterator
-					, typename std::vector<T>::iterator> >::iterator
-				queue_itor = queues.begin();
-				queue_itor != queues.end();
-				++queue_itor) {
-
-		for(typename std::vector<T>::iterator itor = queue_itor->first;
-				itor != queue_itor->second; ++itor) {
-
-			(*itor)(event, handled, halt);
-			if(halt) {
-				assert(handled);
-				break;
-			}
-
-		}
-
-		if(handled) {
-			return;
-		}
+/**
+ * Helper struct to wrap the functor call.
+ *
+ * The template function @ref fire_event needs to call a functor with extra
+ * parameter. In order to facilitate this we send the parameter in the
+ * constructor of the class and let operator() call the functor with the
+ * default parameters and the stored parameters. This allows the core part of
+ * @ref fire to be generic.
+ */
+class ttrigger
+{
+public:
+	void operator()(tsignal_function functor
+			, const tevent event
+			, bool& handled, bool& halt)
+	{
+		functor(event, handled, halt);
 	}
+};
+
+bool tdispatcher::fire(const tevent event, twidget& target)
+{
+	return fire_event<tsignal_function>(event
+			, dynamic_cast<twidget*>(this)
+			, &target
+			, ttrigger());
 }
 
-void tdispatcher::fire(const tevent event)
+/** Helper struct to wrap the functor call. */
+class ttrigger_mouse
 {
-	dispatch_signal<tsignal_function>(event, signal_queue_.queue[event]);
-}
+public:
+	ttrigger_mouse(const tpoint& coordinate)
+		: coordinate_(coordinate)
+	{
 
-// These templates look a lot alike one had extra parameters which are send
-// to the functor, see how that can be "solved"
-template<class T>
-static void dispatch_signal(const tevent event
-		, tdispatcher::tsignal<T>& queue
-		, const tpoint& coordinate)
-{
-	std::vector<std::pair<
-		  typename std::vector<T>::iterator
-		, typename std::vector<T>::iterator> > queues;
-
-	queues.push_back(
-			std::make_pair(queue.pre_child.begin(), queue.pre_child.end()));
-	queues.push_back(
-			std::make_pair(queue.child.begin(), queue.child.end()));
-	queues.push_back(
-			std::make_pair(queue.post_child.begin(), queue.post_child.end()));
-
-	bool handled = false;
-	bool halt = false;
-
-	for(typename
-				std::vector<std::pair<
-					  typename std::vector<T>::iterator
-					, typename std::vector<T>::iterator> >::iterator
-				queue_itor = queues.begin();
-				queue_itor != queues.end();
-				++queue_itor) {
-
-		for(typename std::vector<T>::iterator itor = queue_itor->first;
-				itor != queue_itor->second; ++itor) {
-
-			(*itor)(event, handled, halt, coordinate);
-			if(halt) {
-				assert(handled);
-				break;
-			}
-
-		}
-
-		if(handled) {
-			return;
-		}
 	}
-}
 
-void tdispatcher::fire(const tevent event, const tpoint& coordinate)
+	void operator()(tsignal_mouse_function functor
+			, const tevent event
+			, bool& handled, bool& halt)
+	{
+		functor(event, handled, halt, coordinate_);
+	}
+
+private:
+	tpoint coordinate_;
+};
+
+
+bool tdispatcher::fire(const tevent event
+		, twidget& target
+		, const tpoint& coordinate
+		)
 {
-	dispatch_signal<tsignal_mouse_function>(event
-			, signal_mouse_queue_.queue[event]
-			, coordinate);
+	return fire_event<tsignal_mouse_function>(event
+			, dynamic_cast<twidget*>(this)
+			, &target
+			, ttrigger_mouse(coordinate));
 }
 
 } // namespace event

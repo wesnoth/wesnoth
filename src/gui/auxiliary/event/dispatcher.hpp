@@ -27,6 +27,7 @@
 namespace gui2 {
 
 struct tpoint;
+class twidget;
 
 namespace event {
 
@@ -85,6 +86,7 @@ typedef
  */
 class tdispatcher
 {
+	friend struct tdispatcher_implementation;
 public:
 	tdispatcher();
 	virtual ~tdispatcher();
@@ -114,15 +116,24 @@ public:
 	 */
 	virtual bool is_at(const tpoint& coordinate) const = 0;
 
+	enum tevent_type
+	{
+		  pre   = 1
+		, child = 2
+		, post  = 4
+	};
+
+	bool has_event(const tevent event, const tevent_type event_type);
+
 	/** Fires an event which has no extra parameters. */
-	void fire(const tevent event);
+	bool fire(const tevent event, twidget& target);
 
 	/**
 	 * Fires an event which takes a coordinate parameter.
 	 *
 	 * @param coordinate             The mouse position for the event.
 	 */
-	void fire(const tevent event, const tpoint& coordinate);
+	bool fire(const tevent event, twidget& target, const tpoint& coordinate);
 
 	/**
 	 * The position where to add a new callback in the signal handler.
@@ -191,7 +202,7 @@ public:
 	typename boost::enable_if<boost::mpl::has_key<
 			tset_event, boost::mpl::int_<E> > >::type
 	connect_signal(const tsignal_function& signal
-			, const tposition position = back_pre_child)
+			, const tposition position = back_child)
 	{
 		signal_queue_.connect_signal(E, position, signal);
 	}
@@ -207,7 +218,7 @@ public:
 	typename boost::enable_if<boost::mpl::has_key<
 			tset_event_mouse, boost::mpl::int_<E> > >::type
 	connect_signal(const tsignal_mouse_function& signal
-			, const tposition position = back_pre_child)
+			, const tposition position = back_child)
 	{
 		signal_mouse_queue_.connect_signal(E, position, signal);
 	}
@@ -223,7 +234,7 @@ public:
 	typename boost::enable_if<boost::mpl::has_key<
 			tset_event_keyboard, boost::mpl::int_<E> > >::type
 	connect_signal(const tsignal_keyboard_function& signal
-			, const tposition position = back_pre_child)
+			, const tposition position = back_child)
 	{
 		signal_keyboard_queue_.connect_signal(E, position, signal);
 	}
