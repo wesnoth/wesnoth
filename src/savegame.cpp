@@ -711,9 +711,9 @@ void savegame::check_filename(const std::string& filename, CVideo& video)
 bool savegame::is_illegal_file_char(char c)
 {
 	return c == '/' || c == '\\' || c == ':'
- 	#ifdef _WIN32
+#ifdef _WIN32
 	|| c == '?' || c == '|' || c == '<' || c == '>' || c == '*' || c == '"'
-	#endif
+#endif
 	;
 }
 
