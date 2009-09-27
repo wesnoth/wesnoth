@@ -131,7 +131,10 @@ bool string_span::to_bool(bool default_value) const
 		return default_value;
 	}
 
-	return operator==("yes") || operator==("on") || operator==("true") || operator==("1");
+	if (operator==("no") || operator==("off") || operator==("false") || operator==("0") || operator==("0.0"))
+		return false;
+
+	return true;
 }
 
 int string_span::to_int() const
