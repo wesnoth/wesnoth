@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4 Estonian translation\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-09-23 12:26+0200\n"
-"PO-Revision-Date: 2009-09-05 09:42+0300\n"
+"PO-Revision-Date: 2009-09-26 21:15+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: Kaido Kikkas <kakk@kakupesa.net>\n"
 "MIME-Version: 1.0\n"
@@ -94,14 +94,13 @@ msgstr "Ava ooteruumis sosinaaknad automaatselt"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:93
-#, fuzzy
 msgid "Group players in lobby"
-msgstr "Ära rühmita ooteruumis olevaid mängijaid"
+msgstr "Rühmita ooteruumis olevaid mängijad"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:100
 msgid "Lobby sounds"
-msgstr ""
+msgstr "Ooteruumi helid"
 
 #. [message]: speaker=narrator
 #: data/ai/scenarios/ai_arena_small/0002-poisoning.cfg:17
@@ -2811,7 +2810,6 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:813
-#, fuzzy
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -2825,12 +2823,11 @@ msgstr ""
 "Määra osapoole (kirjuta siia number) eest mängijaks (kirjuta siia mängija "
 "või vaatleja kasutajanimi). Osapooli ja nende mängijaid saad näha "
 "'Stsenaariumi seadete' alt (vajuta 'Olekutabeli' (vaikimisi Alt-s) juures "
-"'veel'-nuppu).\n"
+"'veel'-nuppu). Mängu omanik saab muuta kõiki osapooli.\n"
 "\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:816
-#, fuzzy
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. If you "
@@ -2840,8 +2837,7 @@ msgid ""
 msgstr ""
 "\n"
 "Viska mängija mitmemängija mängust välja. Ta võib mänguga uuesti liituda.  "
-"Seda loetakse sõbralikuks tegevuseks mängija puhul, kel on mängus kas "
-"ühenduse- või muu probleem.\n"
+"Kui soovid mängija osapoolt muuta, kasuta parem :control -käsku.\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -2859,18 +2855,17 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:822
-#, fuzzy
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
 "\n"
 msgstr ""
 "\n"
-"Lülita kõigi vaatlejate vaigistamine sisse/välja."
+"Lülita kõigi vaatlejate vaigistamine sisse/välja.\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:825
-#, fuzzy
 msgid ""
 "\n"
 "Unban a user in a multiplayer game by the IP address used by that username. "
@@ -2878,9 +2873,9 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Keela mängija osalemine mitmemängija mängus kasutajanime ja IP-aadressi "
-"järgi ja viska ta välja. Saab kasutada ka nende puhul, kes pole mängus, kuid "
-"on serveriga ühenduses (sel juhul nad lihtsalt blokeeritakse).\n"
+"Luba mängija osalemine mitmemängija mängus kasutajanime ja IP-aadressi "
+"järgi. Saab kasutada ka nende puhul, kes pole mängus, kuid on serveriga "
+"ühenduses.\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -2990,7 +2985,6 @@ msgstr ""
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:861
-#, fuzzy
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -2998,7 +2992,8 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Muudab valitud üksuse määratud omadust.Näiteks: :unit hitpoints=100"
+"Muudab valitud üksuse määratud omadust. Näiteks: :unit hitpoints=100\n"
+"\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:862
@@ -3384,7 +3379,6 @@ msgstr "kivistav"
 
 #. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:617
-#, fuzzy
 msgid ""
 "Petrify:\n"
 "This attack petrifies the target, turning it to stone. Units that have been "
@@ -3720,9 +3714,8 @@ msgstr ""
 #. [objective]: description=<span color='white'>, condition=win
 #: data/core/macros/carryover-utils.cfg:34
 #: data/core/macros/carryover-utils.cfg:42
-#, fuzzy
 msgid "Alternative objective:"
-msgstr "Määra eesmärk..."
+msgstr "Alternatiivne eesmärk: "
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:39
@@ -3906,7 +3899,6 @@ msgid "storm trident"
 msgstr "tormikolmhark"
 
 #: data/core/macros/names.cfg:18
-#, fuzzy
 msgid ""
 "Egar,Elch,Ga'ash,Gadé Ihn,Gakré Ohm,Galeck,Galsh,Garadin,Garchin,Gark,Garlan,"
 "Garlin Ohn,Garrutin,Gart'lo,Garushi,Gashinar,Gashol,Gaushii,Gaustun,Gegchi,"
@@ -3919,25 +3911,24 @@ msgid ""
 "Verath,Verditt,Verkon,Verlinn,Vermad,Vertick,Vladnir"
 msgstr ""
 "Egar,Elch,Ga'ash,Gadé Ihn,Gakré Ohm,Galeck,Galsh,Garadin,Garchin,Gark,Garlan,"
-"Garlin ohn,Garrutin,Gart'lo,Garushi,Gashinar,Gashöl,Gaushii,Gaustun,Gegchi,"
-"Gelka Kon,Gelknick,Gillan,Gisharri,Goyst,Grada,Græt Ihn,Grashen,Gravlan,Gray,"
-"Grelnit,Grenn ohn,Gretz,Gribbel,Gridda,Grish,Gron ih,Ka,Kahn Ih,Karigan,"
-"Karri Kon,Karron,Kasp,Kegrid,Kerath Ihn,Kerath Kor,Klash,Kon Garashé,Kraag,"
-"Krall Ohn,Kran Kor,Krash,Kraslar,Krenli,Kruggen,Kun,Mah Toa,Mal,Margian,"
-"Marhildian,Markan,Markinos,Mar Ohn,Marra Di'lek,Marrito,Marritos,Merkush,"
+"Garlin Ohn,Garrutin,Gart'lo,Garushi,Gashinar,Gashol,Gaushii,Gaustun,Gegchi,"
+"Gelka Kon,Gelknick,Gillan,Gisharri,Gost,Grada,Græt Ihn,Grashen,Gravlan,Grag,"
+"Grelnit,Grenn Ohn,Greth,Gribbel,Gridda,Grish,Gron Ihn,Ka,Kahn Ih,Karigan,"
+"Karri Kon,Karron,Kask,Kegrid,Kerath Ihn,Kerath Kor,Klash,Kon Garashé,Kraag,"
+"Krall Ohn,Kran Kor,Krash,Kraslar,Krenli,Kruggen,Kun,Mah Toa,Margian,"
+"Mar'Ildian,Markan,Markinos,Mar Ohn,Marra Di'lek,Marrito,Marritos,Merkush,"
 "Merritos Gark,Morusté,Murr,Omataké,Reshan,Vashitt,Velnick,Veralon,Veramo,"
-"Verath,Verditt,Verkon,Verlinn,Vermay,Vertick,Vladnir"
+"Verath,Verditt,Verkon,Verlinn,Vermad,Vertick,Vladnir"
 
 #: data/core/macros/names.cfg:19
-#, fuzzy
 msgid ""
 "Alen Ka,Alinash Mal,Ashirt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
 "Eshi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orrida,Oshibi,Vallin,Valnirra,"
 "Valnitt,Velisk,Verra,Vellin Ka,Veshtar,Vushtin"
 msgstr ""
-"Alen Ka,Alinash Mal,Ashijt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
-"Eshyi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orriday,Oshibi,Vallin,Valnirra,"
-"Valnitt,Velisp,Vellin Ka,Vushtin,Werra,Weshter,Wilniss"
+"Alen Ka,Alinash Mal,Ashirt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
+"Eshi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orrida,Oshibi,Vallin,Valnirra,"
+"Valnitt,Velisk,Verra,Vellin Ka,Veshtar,Vushtin"
 
 #: data/core/macros/names.cfg:23
 msgid ""
@@ -5027,7 +5018,7 @@ msgstr "turske"
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:140
 msgid "Always rest heals"
-msgstr ""
+msgstr "Puhkamine ravib alati"
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:157 data/core/macros/traits.cfg:170
@@ -5088,12 +5079,12 @@ msgstr "Punane"
 #. [color_range]: id=lightred
 #: data/core/team-colors.cfg:20
 msgid "Light Red"
-msgstr ""
+msgstr "Helepunane"
 
 #. [color_range]: id=darkred
 #: data/core/team-colors.cfg:26
 msgid "Dark Red"
-msgstr ""
+msgstr "Tumepunane"
 
 #. [color_range]: id=blue
 #. [color_range]: id=2
@@ -5535,7 +5526,6 @@ msgstr "Inimesed"
 
 #. [race]: id=human
 #: data/core/units.cfg:169
-#, fuzzy
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -5580,13 +5570,13 @@ msgstr ""
 "kultuurideks ja alamrassideks. Nad pole küll sündinud võluvõimega nagu mõned "
 "teised olevused, kuid suudavad õppida seda kasutama ja isegi erinevamaid "
 "võlukunste kui enamik teisi olendeid. Neil pole erilisi võimeid ega "
-"soodumusi peale nende paindlikkuse ja teotahte. Ehkki nad on tihti vastuolus "
-"teiste rassidega, võivad nad vahel sõlmida liite teiste vähem sõjakate "
-"rassidega nagu haldjad ja päkapikud. Vähenõudlikumad neist ei põlga aga ära "
-"ka orkidest palgasõdurite värbamist. Neil pole looduslikke vaenlasi, ehkki "
-"teiste rasside kombel tunneb enamik inimesi vastumeelsust kooljate suhtes. "
-"Inimesed on lühemad kui haldjad, ent pikemad kui päkapikud. Nende nahavärv "
-"võib olla erinev - peaaegu valgest kuni tumepruunini.\n"
+"soodumusi peale nende paindlikkuse ja teotahte. Ehkki nad satuvad tihti "
+"teiste rassidega vastuollu, võivad nad vahel sõlmida liite teiste vähem "
+"sõjakate rassidega nagu haldjad ja päkapikud. Vähenõudlikumad neist ei põlga "
+"aga ära ka orkidest palgasõdurite värbamist. Neil pole looduslikke vaenlasi, "
+"ehkki teiste rasside kombel tunneb enamik inimesi vastumeelsust kooljate "
+"suhtes. Inimesed on lühemad kui haldjad, ent pikemad kui päkapikud. Nende "
+"nahavärv võib olla erinev - peaaegu valgest kuni tumepruunini.\n"
 "\n"
 "<header>text='Krooni alamad'</header>\n"
 "Inimesi on eri sorti, kuid Suurel Mandril elab enamik neist Wesnothi krooni "
@@ -6081,26 +6071,22 @@ msgstr "$name soo,$name raba,$name nõmm"
 
 #. [language]
 #: data/hardwired/english.cfg:26
-#, fuzzy
 msgid "$name|bury,$name|ham,$name|ton,$name|bury"
 msgstr "$name küla, $name"
 
 #. [language]
 #: data/hardwired/english.cfg:27
-#, fuzzy
 msgid "$name|harbor,$name|port,$lake|port,$lake|harbor"
 msgstr "$name sadam"
 
 #. [language]
 #: data/hardwired/english.cfg:28
-#, fuzzy
 msgid ""
 "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross,$name on river"
 msgstr "$name koole,$name ülekäik"
 
 #. [language]
 #: data/hardwired/english.cfg:29
-#, fuzzy
 msgid ""
 "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge,$bridge|ham,"
 "$bridge|ton"
@@ -6931,15 +6917,13 @@ msgstr "tase"
 
 #. [unit_moves]: id=unit-moves
 #: data/themes/default.cfg:459 data/themes/experimental.cfg:399
-#, fuzzy
 msgid "statuspanel^moves"
-msgstr "liikumine"
+msgstr "käigud"
 
 #. [unit_defense]: id=unit-defense
 #: data/themes/default.cfg:468 data/themes/experimental.cfg:408
-#, fuzzy
 msgid "statuspanel^terrain def."
-msgstr "tase"
+msgstr "maastiku kaitsemäär"
 
 #. [change]: id=actions-menu
 #: data/themes/default.cfg:998
@@ -7162,7 +7146,6 @@ msgid "Dependencies"
 msgstr "Sõltuvused"
 
 #: src/addon_management.cpp:466
-#, fuzzy
 msgid ""
 "$addon_title depends upon the following add-on which you have not installed "
 "yet:"
@@ -7175,13 +7158,12 @@ msgstr[1] ""
 "$addon_title vajab lisaks järgmisi mooduleid, mida pole seni paigaldatud:"
 
 #: src/addon_management.cpp:469
-#, fuzzy
 msgid ""
 "Do you still want to download $addon_title|? (You will have to install all "
 "the dependencies in order to play.)"
 msgstr ""
-"Kas sa soovid selle lisamooduli alla laadida? (Mängimiseks pead paigaldama "
-"ka kõik teised vajaminevad lisamoodulid.)"
+"Kas sa soovid lisamooduli $addon_title| alla laadida? (Mängimiseks pead "
+"paigaldama ka kõik teised vajaminevad lisamoodulid.)"
 
 #: src/addon_management.cpp:487 src/addon_management.cpp:559
 #: src/multiplayer.cpp:213 src/multiplayer.cpp:268 src/multiplayer_ui.cpp:78
@@ -7738,11 +7720,10 @@ msgid "[unit_worth]'s filter didn't match any units!"
 msgstr "[unit_worth] - filter ei klapi ühegi üksusega!"
 
 #: src/gamestatus.cpp:740
-#, fuzzy
 msgid ""
 "Leader position not empty - duplicate side definition for side '$side|' "
 "found."
-msgstr "Kahekordselt määratletud osapool '$side|'."
+msgstr "Pealiku asukoht pole tühi -  osapool '$side|' on defineeritud topelt."
 
 #: src/generate_report.cpp:128
 msgid "invisible: "
@@ -7787,7 +7768,6 @@ msgid "petrified: "
 msgstr "kivistunud:"
 
 #: src/generate_report.cpp:141
-#, fuzzy
 msgid "This unit has been petrified. It may not move or attack."
 msgstr "See üksus on kivistatud. Ta ei või liikuda ega rünnata."
 
@@ -8045,19 +8025,16 @@ msgid "?"
 msgstr "?"
 
 #: src/loadscreen.cpp:245
-#, fuzzy
 msgid "Verifying cache..."
-msgstr "Vahemälu kontroll"
+msgstr "Vahemälu kontroll..."
 
 #: src/loadscreen.cpp:264
-#, fuzzy
 msgid "Reading unit files..."
-msgstr "Üksusefailide lugemine."
+msgstr "Üksusefailide lugemine..."
 
 #: src/loadscreen.cpp:283
-#, fuzzy
 msgid "Reading files and creating cache..."
-msgstr "Failide lugemine ja vahemälu loomine."
+msgstr "Failide lugemine ja vahemälu loomine..."
 
 #: src/lobby_data.cpp:238 src/multiplayer_lobby.cpp:431
 msgid "Unknown era: $era_id"
@@ -8426,9 +8403,8 @@ msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr "Luba vaatlejal rääkida. Ilma argumendita lubab rääkida kõigil."
 
 #: src/menu_events.cpp:2210
-#, fuzzy
 msgid "Mute/Unmute all observers. (toggles)"
-msgstr "Vaigista kõik vaatlejad."
+msgstr "Vaigista kõik vaatlejad. (sisse-välja)"
 
 #: src/menu_events.cpp:2220
 msgid "Send a message to the server admins currently online"
@@ -8580,7 +8556,7 @@ msgstr "Määra kasutaja kiirklahvi väärtus"
 
 #: src/menu_events.cpp:2434
 msgid "Launch the gamestate inspector"
-msgstr ""
+msgstr "Käivita mängu oleku jälgija"
 
 #: src/menu_events.cpp:2436
 msgid "Set or show alias to a command"
@@ -8823,7 +8799,7 @@ msgstr "Anonüümne kohalik mängija"
 
 #: src/multiplayer_connect.cpp:666
 msgid "$playername $side"
-msgstr ""
+msgstr "$playername $side"
 
 #: src/multiplayer_connect.cpp:670
 msgid "(Empty slot)"
@@ -8906,11 +8882,8 @@ msgid "Cannot find era $era"
 msgstr "Ei leia ajastut $era"
 
 #: src/multiplayer_connect.cpp:1583
-#, fuzzy
 msgid "Defeat enemy leader(s)"
-msgstr ""
-"Võit:\n"
-"@Alista vaenlase pealik(ud)"
+msgstr "Alista vaenlase pealik(ud)"
 
 #: src/multiplayer_connect.cpp:1647
 msgid "Waiting for players to join..."
@@ -9427,13 +9400,12 @@ msgid "The game is over."
 msgstr "Mäng on läbi."
 
 #: src/playsingle_controller.cpp:487
-#, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game\n"
 "cannot continue. Do you want to save the game?"
 msgstr ""
-"Võrguühendus katkes ja mäng ei saa jätkuda.  Kas soovid seda mängu "
-"salvestada?"
+"Võrguühendus katkes ja mäng ei saa jätkuda.\n"
+"  Kas soovid mängu salvestada?"
 
 #: src/playsingle_controller.cpp:653
 msgid "It is now $name|'s turn"
@@ -9500,9 +9472,8 @@ msgid "This is not a multiplayer save"
 msgstr "See ei ole mitmemängija mängu salvestus"
 
 #: src/savegame.cpp:606
-#, fuzzy
 msgid "The game could not be saved: "
-msgstr "Mängu salvestamine ebaõnnestus"
+msgstr "Mängu salvestamine ebaõnnestus: "
 
 #: src/savegame.cpp:693
 msgid "Name: "

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-09-23 12:26+0200\n"
-"PO-Revision-Date: 2009-07-12 18:25+0200\n"
+"PO-Revision-Date: 2009-09-27 11:20+0200\n"
 "Last-Translator: Brivido <brivido(at)gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -54,11 +54,10 @@ msgstr "Signore della guerra"
 #. [campaign]: id=Son_Of_The_Black_Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:22
 msgid "(Expert level, 18 scenarios.)"
-msgstr ""
+msgstr "(Livello per esperti, 18 scenari)"
 
 #. [campaign]: id=Son_Of_The_Black_Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:22
-#, fuzzy
 msgid ""
 "Your father Karun Black-Eye was the greatest orcish leader that ever lived. "
 "Now, as his son, it's up to you to thwart the selfish designs of the humans "
@@ -69,13 +68,12 @@ msgid ""
 "\n"
 msgstr ""
 "Tuo padre Karun Occhionero è stato il più grande comandante della storia "
-"degli orchi. Ora spetta a te, come suo figlio, rovesciare le brame "
-"egoistiche degli uomini che hanno rotto i vecchi trattati con gli orchi e "
-"stanno conquistando le tue terre. Unisci le tribù in conflitto, rimetti "
-"insieme il consiglio degli orchi e convoca la Grande Orda per spedire i "
-"vermi umani e i loro alleati figli di wose nel regno dei morti!\n"
+"degli orchi. Ora spetta a te, suo figlio, rovesciare le brame egoistiche "
+"degli uomini che hanno rotto i vecchi trattati con gli orchi e stanno "
+"conquistando le tue terre. Unisci le tribù in conflitto, rimetti insieme il "
+"consiglio degli orchi e convoca la Grande Orda per spedire i vermi umani e i "
+"loro alleati figli di wose nel regno dei morti!\n"
 "\n"
-"(Livello per esperti, 18 scenari.)"
 
 #. [about]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:27
@@ -689,6 +687,9 @@ msgid ""
 "<span color='#00ff00'>Defeat the enemy leader</span> <small>(early finish "
 "bonus)</small>"
 msgstr ""
+"<span color='white'>Obiettivo con premio:</span>\n"
+"<span color='#00ff00'>Sconfiggi il comandante nemico</span> <small>(premio "
+"per completamento rapido)</small>"
 
 #. [side]: type=Dwarvish Lord, id=Kwili
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:85
@@ -857,15 +858,14 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:278
-#, fuzzy
 msgid ""
 "<b>Bonus objective:</b>\n"
 "Defeat the enemy leader\n"
 "<span size='small'>(early finish bonus)</span>"
 msgstr ""
-"<255,255,255>Obiettivo con premio:\n"
-"@Sconfiggi il comandante nemico\n"
-"`(premio per completamento rapido)"
+"<b>Obiettivo con premio:</b>\n"
+"Sconfiggi il comandante nemico\n"
+"<span size='small'>(premio per completamento rapido)</span>"
 
 #. [objective]: condition=lose
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:286
@@ -1724,16 +1724,15 @@ msgstr "Gli sciamani sono al sicuro?"
 
 #. [message]: speaker=Affman
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:296
-#, fuzzy
 msgid ""
 "When we realized that there was no way we could hold the humans off, we sent "
 "them east to a place near the Mourned Hills along with most of our women and "
 "children. The rest of us remained here to buy them some time."
 msgstr ""
 "Quando ci siamo resi conto che non saremmo riusciti a respingere gli uomini, "
-"li abbiamo mandati verso est in un luogo vicino alle Colline Luttuose con la "
-"maggior parte delle nostre donne e bambini. Il resto di noi è rimasto qui "
-"per guadagnare un po' di tempo."
+"li abbiamo mandati a est presso alle Colline Luttuose con la maggior parte "
+"delle nostre donne e bambini. Il resto di noi è rimasto qui per guadagnare "
+"un po' di tempo."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:301
@@ -2164,7 +2163,6 @@ msgstr ""
 
 #. [message]: speaker=Gork
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:165
-#, fuzzy
 msgid ""
 "It has not always been like this. A lot of hunters from the tribes used to "
 "hunt here and fish in the River Bork. But that all changed a few years ago. "
@@ -2234,13 +2232,12 @@ msgstr ""
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:223
 msgid "Now we're going to have some some answers out of you."
-msgstr ""
+msgstr "Ora ci darai delle risposte."
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:228
 msgid "You might as well go ahead and kill me, I'm not telling you anything."
-msgstr ""
-"Per quel che mi riguarda potete anche uccidermi, ma io non vi dirò nulla."
+msgstr "Potete anche uccidermi, non vi dirò nulla."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:233
@@ -2250,7 +2247,7 @@ msgstr "Benissimo allora..."
 #. [message]: speaker=narrator
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:238
 msgid "Some time later..."
-msgstr " Poco dopo..."
+msgstr "Poco dopo..."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:244
@@ -2313,13 +2310,11 @@ msgstr ""
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:279
-#, fuzzy
 msgid "With pleasure. But what should I do with this weakling?"
-msgstr "Con piacere. Ma che ne facciamo di questo tipo?"
+msgstr "Con piacere. Ma che ne facciamo di questo smidollato?"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:284
-#, fuzzy
 msgid "Behead it."
 msgstr "Decapitatelo."
 
@@ -2372,6 +2367,9 @@ msgid ""
 "<span color='#00ff00'>Defeat Shan Taum</span> <small>(early finish bonus)</"
 "small>"
 msgstr ""
+"<span color='white'>Obiettivo alternativo:</span>\n"
+"<span color='#00ff00'>Sconfiggi Shan Taum</span> <small>(premio per "
+"completamento anticipato)</small>"
 
 #. [side]: type=Orcish Warlord, id=Shan Taum
 #. [unit]: type=Orcish Warlord, id=Shan Taum
@@ -2635,7 +2633,6 @@ msgstr "Torre meridionale"
 
 #. [message]: speaker=Plonk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:186
-#, fuzzy
 msgid ""
 "Reinforcements, at last! Whoever you are, you are welcome in Prestim! The "
 "fortified bridge over the River Bork was taken this morning by a small "
@@ -3244,7 +3241,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:103
-#, fuzzy
 msgid ""
 "After a few weeks of putting down minor rebellions and clearing out the last "
 "human strongholds, the first snows of the long northern winter began to "
@@ -3252,12 +3248,12 @@ msgid ""
 "exhaustion - raced into Dorset with the news that Borstep was under siege by "
 "a large force of dwarves, outlaws and elves."
 msgstr ""
-"Dopo settimane trascorse a soffocare spietatamente la ribellione ed "
-"eliminare le ultime fortezze degli uomini, cominciarono a cadere i primi "
-"fiocchi di neve del lungo inverno del nord. Pochi giorni dopo la prima "
-"nevicata, un cavaliere goblin, mezzo morto per lo sfinimento, corse a Dorset "
-"portando la notizia che Borstep era sotto assedio di una grossa forza "
-"composta di nani, fuorilegge ed elfi."
+"Dopo settimane trascorse a soffocare la ribellione ed eliminare le ultime "
+"fortezze degli uomini, cominciarono a cadere i primi fiocchi di neve del "
+"lungo inverno del nord. Pochi giorni dopo la prima nevicata, un cavaliere "
+"goblin, mezzo morto per lo sfinimento, corse a Dorset portando la notizia "
+"che Borstep era sotto assedio di una grossa forza composta di nani, "
+"fuorilegge ed elfi."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:108
@@ -3290,7 +3286,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:118
-#, fuzzy
 msgid ""
 "Rushing to reach Borstep before the river froze up for the winter, the orcs "
 "sailed up the River Bork. Paddling day and night the horde barely managed to "
@@ -3417,9 +3412,8 @@ msgstr ""
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:307
-#, fuzzy
 msgid "Victory...Grüü, what <i>is</i> that you are eating?"
-msgstr "Vittoria... Grüü, che *cosa* stai mangiando?"
+msgstr "Vittoria... Grüü, che <it>cosa</i> stai mangiando?"
 
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:312
@@ -3715,9 +3709,8 @@ msgstr "No. I loro corpi sono ghiacciati nel lago proprio laggiù."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:675
-#, fuzzy
 msgid "We had better go look."
-msgstr "Faresti meglio ad andare a controllare."
+msgstr "È meglio andare a controllare."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:681
@@ -3929,7 +3922,6 @@ msgstr "Giusto!"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:250
-#, fuzzy
 msgid ""
 "It's been a chilly winter. How about we warm ourselves up a bit by giving "
 "these traitors a good whupping, boys?"

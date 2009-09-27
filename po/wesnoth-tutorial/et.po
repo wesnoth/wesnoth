@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-09-20 15:45+0200\n"
-"PO-Revision-Date: 2009-09-05 09:51+0300\n"
+"POT-Creation-Date: 2009-09-23 12:26+0200\n"
+"PO-Revision-Date: 2009-09-27 00:21+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -84,9 +84,8 @@ msgstr "Li'sar"
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:194
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:201
-#, fuzzy
 msgid "<big>Welcome to Wesnoth!</big>"
-msgstr "*Tere tulemast Wesnothi!"
+msgstr "<big>Tere tulemast Wesnothi!</big>"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:196
@@ -134,22 +133,20 @@ msgstr "Tee vasakklõps Li'saril"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:228
-#, fuzzy
 msgid ""
 "<big>You have selected Konrad.</big>\n"
 "The places he can move to are highlighted."
 msgstr ""
-"*Sa valisid Konradi.\n"
+"<big>Sa valisid Konradi.</big>\n"
 "Kohad, kuhu ta saab liikuda, on kaardil heledamad."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:235
-#, fuzzy
 msgid ""
 "<big>You have selected Li'sar.</big>\n"
 "The places she can move to are highlighted."
 msgstr ""
-"*Sa valisid Li'sari.\n"
+"<big>Sa valisid Li'sari.</big>\n"
 "Kohad, kuhu ta saab liikuda, on kaardil heledamad."
 
 #. [event]
@@ -176,13 +173,12 @@ msgstr "Tee vasakklõps väljal SIIA"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:282
-#, fuzzy
 msgid ""
 "<big>Oops!</big>\n"
 "You moved to the wrong place! After this message, you can press 'u' to undo, "
 "then try again."
 msgstr ""
-"*Oih!\n"
+"<big>Oih!</big>\n"
 "Sa läksid valesse kohta! Selle teate järel võid vajutada 'u' (tühistamine) "
 "ja proovida uuesti."
 
@@ -303,7 +299,6 @@ msgstr "Kahjuks oled oma käigu ära kulutanud. Nüüd on puusliku kord."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:450
-#, fuzzy
 msgid ""
 "female^Unfortunately, you've used up your turn attacking the quintain. The "
 "quintain will now get a turn."
@@ -355,7 +350,6 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:498
-#, fuzzy
 msgid ""
 "female^There is a village on the other side of the river. Visiting villages "
 "is a good idea, and ending your turn in one will heal you. To the village!"
@@ -438,7 +432,6 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:593
-#, fuzzy
 msgid ""
 "female^A splendid idea. You can recruit two units if you return to the keep. "
 "You have plenty of gold for that."
@@ -508,12 +501,12 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:732
-#, fuzzy
 msgid ""
 "Had the quintain survived your onslaught, it would have regained two "
 "hitpoints. If a unit doesn't do anything for a turn, it will slowly heal."
 msgstr ""
-"Jah, kui üksus käigu jooksul midagi ei tee, siis paraneb ta pikkamööda."
+"Kui puuslik oleks su rünnaku üle elanud, oleks ta saanud tagasi kaks "
+"elupunkti. Kui üksus käigu jooksul midagi ei tee, siis paraneb ta pikkamööda."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:745
@@ -706,9 +699,8 @@ msgstr ""
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1032
-#, fuzzy
 msgid "The quintain is dead, and I have gained more experience!"
-msgstr "Härrased, puuslik on võidetud ja mina sain kogemust juurde!"
+msgstr "Puuslik on võidetud ja mina sain kogemust juurde!"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1037
@@ -777,12 +769,11 @@ msgstr ""
 "stsenaarium' -nuppu."
 
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:27
-#, fuzzy
 msgid ""
 "<big>Remember:</big>\n"
 "You can press 'u' to undo most things; useful for correcting mistakes."
 msgstr ""
-"*Jäta meelde:\n"
+"<big>Jäta meelde:</big>\n"
 "Enamikku tegevusi saab 'u' vajutusega tagasi võtta - nii saad oma vigu "
 "parandada."
 
@@ -837,7 +828,6 @@ msgstr "Kas üksainus üksus suudab kõigile neile vaenlastele vastu panna?"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:28
-#, fuzzy
 msgid ""
 "With a little help, yes. If you move your Shaman next to the defending unit, "
 "she will heal it 4 hitpoints per turn. Just be careful not to expose the "
@@ -1034,7 +1024,6 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:530
-#, fuzzy
 msgid ""
 "During your tutorial, both $recall_name1 and $recall_name2 gained "
 "$recall_xp1 experience points. You should recall them now so they can gain "
@@ -1325,7 +1314,6 @@ msgstr "Orkidel pole kaugrünnakut, nii et kasuta nende vastu vibukütte."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:921
-#, fuzzy
 msgid ""
 "Attack the orc with an Archer\n"
 "(move mouse over units to see description on right)"
@@ -1666,7 +1654,6 @@ msgstr ""
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1357
-#, fuzzy
 msgid ""
 "We will miss $deadguy.name| because she had $deadguy.experience experience "
 "points, meaning she would have advanced to level 2 soon."
@@ -1732,15 +1719,14 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1430
-#, fuzzy
 msgid ""
 "female^Advancing a level has fully healed me!\n"
 "I always have a 60% chance of hitting with my Marksman ability, and I deal 9 "
 "damage each for 4 attacks. Use me to dislodge hard-to-hit units."
 msgstr ""
 "Uue taseme saavutamine tegi mu täiesti terveks!\n"
-"Mul on oma vibuga alati 60% tabamistõenäosus ning neli 9-punktilist "
-"rünnakut. Kasuta mind raskelttabatavate vaenlaste vastu."
+"Mul on täpsuslaskurina oma vibuga alati 60% tabamistõenäosus ning neli 9-"
+"punktilist rünnakut. Kasuta mind raskelttabatavate vaenlaste vastu."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1446

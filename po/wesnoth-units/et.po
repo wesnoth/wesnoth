@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-09-20 15:45+0200\n"
-"PO-Revision-Date: 2009-09-05 09:57+0300\n"
+"POT-Creation-Date: 2009-09-23 12:26+0200\n"
+"PO-Revision-Date: 2009-09-27 00:30+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,6 @@ msgstr "Vereimeja"
 
 #. [unit_type]: id=Blood Bat, race=bats
 #: data/core/units/bats/Bat_Blood.cfg:20
-#, fuzzy
 msgid ""
 "Blood Bats are so named because of their ruddy hue, which some mark as a "
 "symbol of their preferred diet. These creatures are fast and can drain the "
@@ -90,7 +89,6 @@ msgstr "Paat"
 
 #. [unit_type]: id=Boat, race=mechanical
 #: data/core/units/boats/Boat.cfg:18
-#, fuzzy
 msgid ""
 "Propelled by oars or small sails, boats are used to travel short distances "
 "and in shallows where large ships cannot navigate."
@@ -138,7 +136,6 @@ msgstr "Sõjagaleoon"
 
 #. [unit_type]: id=Transport Galleon, race=mechanical
 #: data/core/units/boats/Transport_Galleon.cfg:18
-#, fuzzy
 msgid ""
 "Transport Galleons are well-armed ships that carry troops. If they reach the "
 "shore, they can land the troops to attack."
@@ -196,9 +193,8 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/drakes/Armageddon.cfg:85
 #: data/core/units/drakes/Fire.cfg:110 data/core/units/drakes/Inferno.cfg:111
-#, fuzzy
 msgid "battle claws"
-msgstr "sõjakirves"
+msgstr "küüned"
 
 #. [attack]: type=fire
 #: data/core/units/drakes/Armageddon.cfg:94
@@ -221,7 +217,6 @@ msgstr "Mõõgalohe"
 
 #. [unit_type]: id=Drake Blademaster, race=drake
 #: data/core/units/drakes/Blademaster.cfg:20
-#, fuzzy
 msgid ""
 "The drakes who master the use of war blades are sworn into a special order. "
 "The mark of their initiation is the black-and-white warpaint they display in "
@@ -236,7 +231,7 @@ msgstr ""
 #: data/core/units/drakes/Enforcer.cfg:36
 #: data/core/units/drakes/Thrasher.cfg:23
 msgid "war talon"
-msgstr ""
+msgstr "küünis"
 
 #. [unit_type]: id=Drake Burner, race=drake
 #: data/core/units/drakes/Burner.cfg:4
@@ -354,7 +349,7 @@ msgstr ""
 #: data/core/units/drakes/Enforcer.cfg:45
 #: data/core/units/drakes/Thrasher.cfg:41
 msgid "ram"
-msgstr ""
+msgstr "ramm"
 
 #. [attack]: type=pierce
 #. [attack]: type=blade
@@ -372,7 +367,6 @@ msgstr "Võitlejalohe"
 
 #. [unit_type]: id=Drake Fighter, race=drake
 #: data/core/units/drakes/Fighter.cfg:20
-#, fuzzy
 msgid ""
 "Drake Fighters wield curved war blades, and possess the fire-breathing "
 "skills of their ancestors. They can also fly, which is troubling to any foe. "
@@ -387,9 +381,8 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/drakes/Fighter.cfg:108
 #: data/core/units/drakes/Warrior.cfg:107
-#, fuzzy
 msgid "war blade"
-msgstr "tera"
+msgstr "mõõk"
 
 #. [unit_type]: id=Fire Drake, race=drake
 #: data/core/units/drakes/Fire.cfg:4
@@ -398,7 +391,6 @@ msgstr "Tulelohe"
 
 #. [unit_type]: id=Fire Drake, race=drake
 #: data/core/units/drakes/Fire.cfg:19
-#, fuzzy
 msgid ""
 "The great fire-drakes are masters of their internal flame. Clad in shining "
 "armor, they belch columns of flame at any who oppose them, a testament to "
@@ -539,7 +531,6 @@ msgstr "Taevalohe"
 
 #. [unit_type]: id=Sky Drake, race=drake
 #: data/core/units/drakes/Sky.cfg:19
-#, fuzzy
 msgid ""
 "Sky drakes are truly the kings of the sky. The momentum of their terrible "
 "stooping dive and their fire breath combine into a terrible weapon. By "
@@ -553,13 +544,11 @@ msgstr ""
 
 #. [unit_type]: id=Drake Thrasher, race=drake
 #: data/core/units/drakes/Thrasher.cfg:4
-#, fuzzy
 msgid "Drake Thrasher"
 msgstr "Taplejalohe"
 
 #. [unit_type]: id=Drake Thrasher, race=drake
 #: data/core/units/drakes/Thrasher.cfg:19
-#, fuzzy
 msgid ""
 "Instead of letting themselves be bound by their armor, Thrashers have "
 "learned to redirect its weight to supplement their bodies' momentum, adding "
@@ -603,7 +592,6 @@ msgstr "Sõjalohe"
 
 #. [unit_type]: id=Drake Warrior, race=drake
 #: data/core/units/drakes/Warrior.cfg:19
-#, fuzzy
 msgid ""
 "Drake Warriors wield war blades with great skill, and possess the fire "
 "breathing skills of their ancestors. The great strength of their kind allows "
@@ -3303,6 +3291,15 @@ msgid ""
 "effective chase over land, and are at a great disadvantage in hand-to-hand "
 "combat."
 msgstr ""
+"Näkid kalduvad kasutama nii võrke kui nuie - võrguga püütakse kalad kinni ja "
+"nuiaga lüüakse maha. Mõlemad neist tööriistadest on kujundatud ka relvad "
+"ning need on piisavalt tõhusad, et neid hästi valdavad näkid on sõdalastena "
+"väga hinnas.\n"
+"\n"
+"Näkid leiavad end sageli vastamisi kuival maal elavate vaenlastega. Näkid on "
+"vees liiga tugevad ja maal jälle liiga nõrgad. Võrgud aitavad siin veidi, "
+"võimaldades vastast jälitada ka kuival maal ja seab nad lähivõitluses "
+"raskesse seisu."
 
 #. [unit_type]: id=Merman Fighter, race=merman
 #: data/core/units/merfolk/Fighter.cfg:4
@@ -3412,6 +3409,16 @@ msgid ""
 "close to shore. Clubs were used in combat with little or no adaptation from "
 "fishing, since they were already quite deadly."
 msgstr ""
+"Näkkide viis kala püüda tähendab enamasti suurte kalaparvede ajamist "
+"ootavasse võrku, kus neid siis aerusarnaste nuiadega materdatakse. Nende "
+"kohandamine vaenlase vastu on osutunud edukaks - enamik kuivamaaelanikke on "
+"juba vööst saadik vees olles kehvas seisus ning võrku sattumine võib nad "
+"kergesti päris abituks muuta.\n"
+"\n"
+"Selle viisi tõhusus viis väiksemate, raskustega varustatud võrkude "
+"loomiseni, mida saab ka läbi õhu heita. Ehkki kalapüügiks nad ei sobi, on "
+"nad head nii lahinguks kui ka kaldale liiga lähedale tulnud kuivamaaloomade "
+"püüdmiseks. Nuiasid pole kuigivõrd muudetud, need on niigi üsna tapvad."
 
 #. [unit_type]: id=Mermaid Priestess, race=merman
 #: data/core/units/merfolk/Priestess.cfg:4
@@ -3922,7 +3929,6 @@ msgstr "Orkide vibukütt"
 
 #. [unit_type]: id=Orcish Archer, race=orc
 #: data/core/units/orcs/Archer.cfg:19
-#, fuzzy
 msgid ""
 "Amongst orcs, bows are often regarded as a cowardly weapon; but even orcs, "
 "especially youths and those of slight build, are pragmatic enough to use "
