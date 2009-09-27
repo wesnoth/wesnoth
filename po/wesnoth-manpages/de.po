@@ -1,12 +1,12 @@
 # Translators:
-#  Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>, 2006, 2007, 2008
-#  Gerfried Fuchs <rhonda@deb.at>, 2008
+#  Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>, 2006, 2007, 2008, 2009
+#  Gerfried Fuchs <rhonda@deb.at>, 2008, 2009
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "POT-Creation-Date: 2009-08-10 17:58+0300\n"
-"PO-Revision-Date: 2009-07-28 11:59+0100\n"
-"Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
+"PO-Revision-Date: 2009-09-27 17:50+0200\n"
+"Last-Translator: Gerfried Fuchs <rhonda@deb.at>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -178,9 +178,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:68
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-e,\\ --editor>I<\\ file>"
-msgstr "B<-e, --editor \\ Datei>"
+msgstr "B<-e,\\ --editor>I<\\ Datei>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:74
@@ -331,15 +331,15 @@ msgstr "B<-m, --multiplayer>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:132
-#, fuzzy
 msgid ""
 "runs a multiplayer game. There are additional options that can be used "
 "together with B<--multiplayer> as explained below. Only these additional "
 "options can follow B<--multiplayer>."
 msgstr ""
-"Startet das Spiel im Mehrspieler-Modus. Es gibt noch zusätzliche Optionen "
-"die zusammen mit B<--multiplayer> verwendet werden können. Diese werden "
-"weiter unten näher erklärt."
+"Startet das Spiel im Mehrspieler-Modus. Es gibt noch weitere Optionen, die, "
+"wie weiter unten beschrieben, gemeinsam mit B<--multiplayer> verwendet "
+"werden können. Nur diese zusätzlichen Optionen können B<--multiplayer> "
+"folgen."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:132
@@ -954,7 +954,7 @@ msgstr "Globale Schlüssel:"
 #: ../../doc/man/wesnothd.6:110
 #, no-wrap
 msgid "B<allow_remote_shutdown>"
-msgstr ""
+msgstr "B<allow_remote_shutdown>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:114
@@ -963,6 +963,10 @@ msgid ""
 "the come from the fifo.  Set it to `yes' to allow remote shutdown via a /"
 "query by an administrator."
 msgstr ""
+"Wenn es auf »no« (Voreinstellung) gestellt ist, werden Anfragen zum "
+"Herunterfahren und Neustart ignoriert, wenn sie nicht über die FIFO-Datei "
+"kommen. Ein Einstellen auf »yes« erlaubt es einem Administrator durch ein /"
+"query ein entferntes Herunterfahren."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:114
@@ -984,7 +988,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:118
 #, no-wrap
 msgid "B<compress_stored_rooms>"
-msgstr ""
+msgstr "B<compress_stored_rooms>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:121
@@ -992,6 +996,8 @@ msgid ""
 "Determines whether the rooms file should be read and written to in "
 "compressed form. Defaults to `yes'."
 msgstr ""
+"Legt fest, ob die Datei für die Räume in komprimierter Form gelesen und "
+"geschrieben werden soll. Die Voreinstellung ist »yes«."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:121
@@ -1022,7 +1028,7 @@ msgid ""
 "(used if nothing is specified) are: B<*admin*,*admln*,*server*,ai,ai?,"
 "computer,human,network,player>."
 msgstr ""
-"Namen/Spitznamen die der Server nicht akzeptiert. `*' und `?' sind als "
+"Namen/Spitznamen die der Server nicht akzeptiert. »*« und »?« sind als "
 "Platzhalter unterstützt. Siehe B<glob>(7) für mehr Details. Standardwerte "
 "(wenn sonst nichts angegeben wurde) sind: B<*admin*,*admln*,*server*,ai,ai?,"
 "computer,human,network,player>."
@@ -1089,7 +1095,7 @@ msgstr "Die \"Nachricht des Tages\"."
 #: ../../doc/man/wesnothd.6:144
 #, no-wrap
 msgid "B<new_room_policy>"
-msgstr ""
+msgstr "B<new_room_policy>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:147
@@ -1099,6 +1105,11 @@ msgid ""
 "respectively to everyone, registered users, admin users or disables new room "
 "creation. Default value is `everyone'."
 msgstr ""
+"Legt fest, wer neue Räume auf dem Server erstellen kann. Verwendbare Werte "
+"sind »everyone«, »registered«, »admin« und »nobody« und erteilen die "
+"Berechtigung entsprechend an jeden, registrierte Benutzer, Administratoren "
+"beziehungsweise deaktiviert die Erstellung neuer Räume. Der voreingestellte "
+"Wert ist »everyone« (jeder)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:147
@@ -1112,7 +1123,7 @@ msgid ""
 "The password used to gain admin privileges. Usually it starts with `admin '."
 msgstr ""
 "Das Passwort um auf dem Server Administratorrechte zu erhalten. Es beginnt "
-"per Konvention mit `admin '."
+"per Konvention mit »admin «."
 
 #: ../../doc/man/wesnothd.6:150
 #, no-wrap
@@ -1126,7 +1137,7 @@ msgid ""
 "in."
 msgstr ""
 "Legt den Ordner fest, in dem der Server Wiederholungen abspeichert. "
-"(Vergesst das abschließende /! nicht) Standardmäßig wird `' verwendet, was "
+"(Vergesst das abschließende /! nicht) Standardmäßig wird »« verwendet, was "
 "für den Ordner steht, in dem wesnothd gestartet wurde."
 
 # type: TP
@@ -1146,9 +1157,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnothd.6:156
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<room_save_file>"
-msgstr "B<ban_save_file>"
+msgstr "B<room_save_file>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:159
@@ -1157,6 +1168,10 @@ msgid ""
 "server startup and written to later. If empty or not set, rooms are not "
 "loaded and not saved."
 msgstr ""
+"Pfad zu einer Datei, in die die Rauminformationen gespeichert werden sollen. "
+"Die Datei wird beim Starten des Servers gelesen und später beschrieben. "
+"Falls der Wert leer oder nicht gesetzt ist, werden Räume weder geladen noch "
+"gespeichert."
 
 #: ../../doc/man/wesnothd.6:159
 #, no-wrap
@@ -1185,8 +1200,8 @@ msgid ""
 "corresponding wesnoth version)"
 msgstr ""
 "Eine durch Komma getrennte Liste der Programmversionen, die der Server "
-"zulässt. `*' und `?' sind erlaubt. (Standard: Die aktuell installierte "
-"Wesnoth Version)"
+"zulässt. »*« und »?« sind erlaubt. (Standard: Die aktuell installierte Wesnoth "
+"Version)"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:168
