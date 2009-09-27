@@ -20,16 +20,6 @@
 #include "video.hpp"
 
 
-static bool rectangles_overlap(const SDL_Rect& a, const SDL_Rect& b)
-{
-	const bool xoverlap = (a.x >= b.x && a.x < b.x + b.w) ||
-	                      (b.x >= a.x && b.x < a.x + a.w);
-
-	const bool yoverlap = (a.y >= b.y && a.y < b.y + b.h) ||
-	                      (b.y >= a.y && b.y < a.y + a.h);
-
-	return xoverlap && yoverlap;
-}
 
 namespace {
 
@@ -133,7 +123,7 @@ void clear_tooltips()
 void clear_tooltips(const SDL_Rect& rect)
 {
 	for(std::vector<tooltip>::iterator i = tips.begin(); i != tips.end(); ) {
-		if(rectangles_overlap(i->rect,rect)) {
+		if(rects_overlap(i->rect,rect)) {
 			if (i==current_tooltip) {
 				clear_tooltip();
 			}
@@ -148,7 +138,7 @@ void clear_tooltips(const SDL_Rect& rect)
 void add_tooltip(const SDL_Rect& rect, const std::string& message, const SDL_Color& color)
 {
 	for(std::vector<tooltip>::iterator i = tips.begin(); i != tips.end(); ++i) {
-		if(rectangles_overlap(i->rect,rect)) {
+		if(rects_overlap(i->rect,rect)) {
 			*i = tooltip(rect, message, color);
 			return;
 		}
