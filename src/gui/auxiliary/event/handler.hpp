@@ -43,28 +43,28 @@ public:
  * children.
  */
 enum tevent {
-	  DRAW
+	  DRAW                        /**< Periodic redraw request. */
 
-	, SDL_MOUSE_MOTION
-	, MOUSE_ENTER
-	, MOUSE_MOTION
-	, MOUSE_LEAVE
+	, SDL_MOUSE_MOTION            /**< A SDL mouse motion event. */
+	, MOUSE_ENTER                 /**< A mouse enter event for a widget. */
+	, MOUSE_MOTION                /**< A mouse motion event for a widget. */
+	, MOUSE_LEAVE                 /**< A mouse leave event for a widget. */
 
-	, SDL_LEFT_BUTTON_DOWN
-	, SDL_LEFT_BUTTON_UP
+	, SDL_LEFT_BUTTON_DOWN        /**< A SDL left mouse button down event. */
+	, SDL_LEFT_BUTTON_UP          /**< A SDL left mouse button up event. */
 
-	, SDL_MIDDLE_BUTTON_DOWN
-	, SDL_MIDDLE_BUTTON_UP
+	, SDL_MIDDLE_BUTTON_DOWN      /**< A SDL middle mouse button down event. */
+	, SDL_MIDDLE_BUTTON_UP        /**< A SDL middle mouse button up event. */
 
-	, SDL_RIGHT_BUTTON_DOWN
-	, SDL_RIGHT_BUTTON_UP
+	, SDL_RIGHT_BUTTON_DOWN       /**< A SDL right mouse button down event. */
+	, SDL_RIGHT_BUTTON_UP         /**< A SDL right mouse button up event. */
 
-	, SDL_WHEEL_LEFT
-	, SDL_WHEEL_RIGHT
-	, SDL_WHEEL_UP
-	, SDL_WHEEL_DOWN
+	, SDL_WHEEL_LEFT              /**< A SDL wheel left event. */
+	, SDL_WHEEL_RIGHT             /**< A SDL wheel right event. */
+	, SDL_WHEEL_UP                /**< A SDL wheel up event. */
+	, SDL_WHEEL_DOWN              /**< A SDL wheel down event. */
 
-	, SDL_KEY_DOWN
+	, SDL_KEY_DOWN                /**< A SDL key down event. */
 };
 
 /**
