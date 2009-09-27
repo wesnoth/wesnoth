@@ -2153,7 +2153,31 @@ size_t move_unit(move_unit_spectator *move_spectator,
 		const t_translation::t_terrain terrain = map[*step];
 
 		const int cost = ui->second.movement_cost(terrain);
-		if(cost >moves_left || discovered_unit || (continue_move == false && seen_units.empty() == false)) {
+
+		//check whether a unit was sighted and whether it should interrupt move
+		bool sighted_interrupts = false;
+		if (continue_move == false && preferences::interrupt_when_ally_sighted() == false) {
+			//check whether any sighted unit is an enemy
+			for (std::set<map_location>::iterator it = seen_units.begin(); it != seen_units.end(); ++it)
+			{
+				const unit_map::const_iterator u = units.find(*it);
+
+				// Unit may have been removed by an event.
+				if(u == units.end()) {
+					DBG_NG << "was removed\n";
+					continue;
+				}
+
+				if (tm->is_enemy(u->second.side())) {
+					sighted_interrupts = true;
+					break;
+				}
+			}
+		}
+		else
+			sighted_interrupts = seen_units.empty() == false; //interrupt if any unit was sighted
+
+		if(cost >moves_left || discovered_unit || (continue_move == false && sighted_interrupts)) {
 			if ((!is_replay) || (!skirmisher))
 				break; // not enough MP or spotted new enemies
 		}

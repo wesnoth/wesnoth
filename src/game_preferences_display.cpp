@@ -99,6 +99,7 @@ private:
 	  buffer_size_slider_, idle_anim_slider_, autosavemax_slider_, advanced_slider_;
 	gui::list_slider<double> turbo_slider_;
 	gui::button fullscreen_button_, scroll_to_action_button_,turbo_button_, show_ai_moves_button_,
+			interrupt_when_ally_sighted_button_,
 			show_grid_button_, save_replays_button_, delete_saves_button_,
 			show_lobby_joins_button1_,
 			show_lobby_joins_button2_,
@@ -157,6 +158,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  scroll_to_action_button_(disp.video(), _("Enable scroll tracking of unit actions"), gui::button::TYPE_CHECK),
 	  turbo_button_(disp.video(), _("Accelerated Speed"), gui::button::TYPE_CHECK),
 	  show_ai_moves_button_(disp.video(), _("Skip AI Moves"), gui::button::TYPE_CHECK),
+	  interrupt_when_ally_sighted_button_(disp.video(), _("Interrupt move when an ally is sighted"), gui::button::TYPE_CHECK),
 	  show_grid_button_(disp.video(), _("Show Grid"), gui::button::TYPE_CHECK),
 	  save_replays_button_(disp.video(), _("Save Replay on SP/MP Victory or MP Defeat"), gui::button::TYPE_CHECK),
 	  delete_saves_button_(disp.video(), _("Delete Auto-Saves on SP/MP Victory or MP Defeat"), gui::button::TYPE_CHECK),
@@ -221,7 +223,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 #ifdef USE_TINY_GUI
 	set_measurements(180, 180);		  // FIXME: should compute this, but using what data ?
 #else
-	set_measurements(440, 405);
+	set_measurements(440, 425);
 #endif
 
 
@@ -335,6 +337,9 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	show_ai_moves_button_.set_check(!show_ai_moves());
 	show_ai_moves_button_.set_help_string(_("Do not animate AI units moving"));
 
+	interrupt_when_ally_sighted_button_.set_check(interrupt_when_ally_sighted());
+	interrupt_when_ally_sighted_button_.set_help_string(("Sighting an allied unit interrupts your unit's movement"));
+
 	save_replays_button_.set_check(save_replays());
 	save_replays_button_.set_help_string(_("Save Replay on SP/MP Victory or MP Defeat"));
 
@@ -418,6 +423,7 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&turbo_button_);
 	h.push_back(&idle_anim_button_);
 	h.push_back(&show_ai_moves_button_);
+	h.push_back(&interrupt_when_ally_sighted_button_);
 	h.push_back(&save_replays_button_);
 	h.push_back(&delete_saves_button_);
 	h.push_back(&show_grid_button_);
@@ -508,6 +514,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	turbo_slider_.set_location(turbo_rect);
 	ypos += item_interline; show_ai_moves_button_.set_location(rect.x, ypos);
 	ypos += short_interline; turn_dialog_button_.set_location(rect.x, ypos);
+	ypos += short_interline; interrupt_when_ally_sighted_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_team_colours_button_.set_location(rect.x, ypos);
 	ypos += short_interline; show_grid_button_.set_location(rect.x, ypos);
 	ypos += item_interline; save_replays_button_.set_location(rect.x, ypos);
@@ -668,6 +675,8 @@ void preferences_dialog::process_event()
 		}
 		if (show_ai_moves_button_.pressed())
 			set_show_ai_moves(!show_ai_moves_button_.checked());
+		if (interrupt_when_ally_sighted_button_.pressed())
+			set_interrupt_when_ally_sighted(interrupt_when_ally_sighted_button_.checked());
 		if (show_grid_button_.pressed())
 			set_grid(show_grid_button_.checked());
 		if (save_replays_button_.pressed())
@@ -1063,6 +1072,7 @@ void preferences_dialog::set_selection(int index)
 	turbo_slider_.enable(turbo());
 	show_ai_moves_button_.hide(hide_general);
 	turn_dialog_button_.hide(hide_general);
+	interrupt_when_ally_sighted_button_.hide(hide_general);
 	hotkeys_button_.hide(hide_general);
 	show_team_colours_button_.hide(hide_general);
 	show_grid_button_.hide(hide_general);

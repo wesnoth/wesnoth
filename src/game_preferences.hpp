@@ -160,6 +160,9 @@ namespace preferences {
 	void set_ask_delete_saves(bool value);
 	bool ask_delete_saves();
 
+    void set_interrupt_when_ally_sighted(bool value);
+    bool interrupt_when_ally_sighted();
+
 	void set_autosavemax(int value);
 	int autosavemax();
 

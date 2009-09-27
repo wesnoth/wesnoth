@@ -645,6 +645,16 @@ bool ask_delete_saves()
 	return utils::string_bool(preferences::get("ask_delete"), true);
 }
 
+void set_interrupt_when_ally_sighted(bool value)
+{
+	preferences::set("ally_sighted_interrupts", value ? "yes" : "no");
+}
+
+bool interrupt_when_ally_sighted()
+{
+	return utils::string_bool(preferences::get("ally_sighted_interrupts"), true);
+}
+
 int autosavemax()
 {
 	return lexical_cast_default<int>(preferences::get("auto_save_max"), 10);
