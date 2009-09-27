@@ -91,9 +91,9 @@ klíč="\fIhodnota\fP,\fIhodnota\fP"
 .
 .TP 
 \fBallow_remote_shutdown\fP
-If set to `no' (default), shut_down and restart requests are ignored unless
-the come from the fifo.  Set it to `yes' to allow remote shutdown via a
-/query by an administrator.
+Při nastavení na `no' (výchozí), požadavky shut_down a restart
+jsouignorovány, pokud nepocházejí z fifo. Při nastavení `yes' může správce
+vzdáleně vypnout server pomocí /query.
 .TP 
 \fBban_save_file\fP
 Plná či relativní cesta k souboru (komprese gzip), jenž může server číst a
@@ -101,8 +101,8 @@ přepisovat. Do tohoto souboru jsou ukládány zákazy přístupu (ban) a načí
 při spuštění.
 .TP 
 \fBcompress_stored_rooms\fP
-Determines whether the rooms file should be read and written to in
-compressed form. Defaults to `yes'.
+Určuje, zda je soubor s místnostmi čten a zapisován jako
+komprimovaný. Výchozí hodnota `yes'.
 .TP 
 \fBconnections_allowed\fP
 Počet povolených spojení z jedné IP adresy. \fB0\fP znamená
@@ -130,10 +130,10 @@ zpráv. (implicitně \fB10\fP sekund)
 Zpráva dne.
 .TP 
 \fBnew_room_policy\fP
-Determines who can create new rooms on the server. Available values are
-`everyone', `registered', `admin' and `nobody', and give the permission
-respectively to everyone, registered users, admin users or disables new room
-creation. Default value is `everyone'.
+Určuje, kdo může vytvářet na serveru nové místnosti. Dostupné hodnoty
+zahrnují `everyone', `registered', `admin' a `nobody' \- místosti pak může
+vytvářek každý, registrovaní uživatelé, pouze správci nebo nikdo. Výchozí
+hodnota je `everyone'.
 .TP 
 \fBpasswd\fP
 Heslo pro získání administrátorských práv. Obvykle začíná na „admin“.
@@ -147,9 +147,9 @@ Příkaz, který server použije pro spuštění nového procesu sebe sama při
 příkazu "restart" (lze nastavit pouze přes fifo).
 .TP 
 \fBroom_save_file\fP
-Path to a file where the room info should be stored. This file is read on
-server startup and written to later. If empty or not set, rooms are not
-loaded and not saved.
+Cesta k souboru, v němž jsou ukládány informace o místnostech. Tento soubor
+je načten při spuštění serveru a poté přepisován. Pokud je prázdný nebo není
+nastaven, ukládání a načítání místností nebude aktivní.
 .TP 
 \fBsave_replays\fP
 Určuje, zda bude server automaticky ukládat záznamy her (výchozí hodnota:

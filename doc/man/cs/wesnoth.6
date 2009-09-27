@@ -65,7 +65,7 @@ http://www.wesnoth.org/wiki/CommandMode).
 použije speciální falešné locale pro umožnění přepínání do jakéhokoliv
 jazyka, i pokud není nainstalován v systému.
 .TP 
-\fB\-e,\ \-\-editor\fP\fI\ file\fP
+\fB\-e, \-\-editor\fP\fI\ soubor\fP
 spustí vestavěný editor map. Pokud je udán \fIsoubor\fP, příkaz je ekvivalentem
 \fB\-e \-\-load\fP
 .TP 
@@ -107,9 +107,9 @@ počet snímků za sekundu které může hra zobrazit, hodnota by měla náleže
 rozsahu 1 až 1000, implicitně \fB50\fP.
 .TP 
 \fB\-m, \-\-multiplayer\fP
-runs a multiplayer game. There are additional options that can be used
-together with \fB\-\-multiplayer\fP as explained below. Only these additional
-options can follow \fB\-\-multiplayer\fP.
+spouští hru více hráčů. Další volby, které se k této volbě váží, souvisí s
+\fB\-\-multiplayer\fP viz popis níže. Za \fB\-\-multiplyayer\fP mohou následovat pouze
+tyto další volby.
 .TP 
 \fB\-\-no\-delay\fP
 vypustí testování grafiky během startu. Tato volba je automaticky použita
@@ -159,8 +159,8 @@ Volby s platností pouze pro jednu stranu jsou označeny \fIstrana\fP, kde
 \fIstrana\fP je třeba nahradit za číslo konkrétní strany. Obvykle je to 1 nebo
 2, ale záleží to vždy od konkrétního scénáře a od počtu hráčů.
 .TP 
-\fB\-\-ai_config\fP\fInumber\fP\fB=\fP\fIvalue\fP
-selects a configuration file to load for the AI controller for this side.
+\fB\-\-ai_config\fP\fIstrana\fP\fB=\fP\fIhodnota\fP
+vybere konfigurační soubor k načtení pro AI dané strany.
 .TP 
 \fB\-\-algorithm\fP\fIstrana\fP\fB=\fP\fIhodnota\fP
 vybírá nestandardní algoritmus, který bude použit pro umělou inteligenci

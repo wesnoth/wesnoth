@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-09-23 12:26+0200\n"
+"POT-Creation-Date: 2009-09-27 15:48+0200\n"
 "PO-Revision-Date: 2005-12-14 12:40+0200\n"
 "Last-Translator: \n"
 "Language-Team: Afrikaans\n"
@@ -116,7 +116,7 @@ msgstr "Ondergronds"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:304
-#: src/actions.cpp:1099 src/actions.cpp:1372
+#: src/actions.cpp:1101 src/actions.cpp:1374
 msgid "poisoned"
 msgstr "vergiftig"
 
@@ -177,7 +177,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1241
-#: src/actions.cpp:1104 src/actions.cpp:1377
+#: src/actions.cpp:1106 src/actions.cpp:1379
 #, fuzzy
 msgid "female^slowed"
 msgstr "Misdadiger"
@@ -185,7 +185,7 @@ msgstr "Misdadiger"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [else]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1244
-#: src/actions.cpp:1104 src/actions.cpp:1377
+#: src/actions.cpp:1106 src/actions.cpp:1379
 msgid "slowed"
 msgstr "vertraag"
 
@@ -275,348 +275,354 @@ msgid "Programming"
 msgstr ""
 
 #. [about]
-#: data/core/about.cfg:201
+#: data/core/about.cfg:205
 #, fuzzy
 msgid "General Purpose Administration and Coordination"
 msgstr "+Algemene Administrateurs"
 
 #. [about]
-#: data/core/about.cfg:219
+#: data/core/about.cfg:223
 #, fuzzy
 msgid "Artwork and Graphics"
 msgstr "+Kunswerk en grafiese ontwerpers"
 
 #. [about]
-#: data/core/about.cfg:547
+#: data/core/about.cfg:551
 #, fuzzy
 msgid "Music"
 msgstr "+Musiek"
 
 #. [about]
-#: data/core/about.cfg:581
+#: data/core/about.cfg:585
 msgid "Sound Effects"
 msgstr ""
 
 #. [about]
-#: data/core/about.cfg:597
+#: data/core/about.cfg:601
 #, fuzzy
 msgid "Campaign Design"
 msgstr "Veldtog"
 
 #. [about]
-#: data/core/about.cfg:664
+#: data/core/about.cfg:668
 #, fuzzy
 msgid "Multiplayer Maps and Balancing"
 msgstr "+Veelspeler Kaarte"
 
 #. [about]
-#: data/core/about.cfg:705
+#: data/core/about.cfg:709
 #, fuzzy
 msgid "Packagers"
 msgstr "+Verpakkers"
 
 #. [about]
-#: data/core/about.cfg:771
+#: data/core/about.cfg:775
 #, fuzzy
 msgid "Miscellaneous contributors"
 msgstr "+Algemeen"
 
 #. [about]
-#: data/core/about.cfg:974
+#: data/core/about.cfg:982
 #, fuzzy
 msgid "Internationalization Managers"
 msgstr "+Internasionalisering Bestuurders"
 
 #. [about]
-#: data/core/about.cfg:999
+#: data/core/about.cfg:1007
 #, fuzzy
 msgid "English strings edition"
 msgstr "+Engelse (Britse) Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1006
+#: data/core/about.cfg:1014
 #, fuzzy
 msgid "Afrikaans Translation"
 msgstr "+Afrikaanse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1022
+#: data/core/about.cfg:1030
 #, fuzzy
 msgid "Arabic Translation"
 msgstr "+Serwiese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1029
+#: data/core/about.cfg:1037
 #, fuzzy
 msgid "Basque Translation"
 msgstr "+Baskiese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1042
+#: data/core/about.cfg:1050
 #, fuzzy
 msgid "Bulgarian Translation"
 msgstr "+Bulgaarse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1061
+#: data/core/about.cfg:1069
 #, fuzzy
 msgid "Catalan Translation"
 msgstr "+Katalaniese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1099
+#: data/core/about.cfg:1107
 #, fuzzy
 msgid "Chinese Translation"
 msgstr "+Sjinese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1137
+#: data/core/about.cfg:1145
 #, fuzzy
 msgid "Chinese (Taiwan) Translation"
 msgstr "+Sjinese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1159
+#: data/core/about.cfg:1167
 #, fuzzy
 msgid "Croatian Translation"
 msgstr "+Katalaniese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1166
+#: data/core/about.cfg:1174
 #, fuzzy
 msgid "Czech Translation"
 msgstr "+Tsjeggiese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1226
+#: data/core/about.cfg:1234
 #, fuzzy
 msgid "Danish Translation"
 msgstr "+Deense Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1257
+#: data/core/about.cfg:1265
 #, fuzzy
 msgid "Dutch Translation"
 msgstr "+Nederlandse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1315
+#: data/core/about.cfg:1323
 #, fuzzy
 msgid "English (GB) Translation"
 msgstr "+Engelse (Britse) Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1328
+#: data/core/about.cfg:1336
 #, fuzzy
 msgid "Esperanto Translation"
 msgstr "+Duitse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1347
+#: data/core/about.cfg:1355
 #, fuzzy
 msgid "Estonian Translation"
 msgstr "+Estniese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1357
+#: data/core/about.cfg:1365
 #, fuzzy
 msgid "Filipino Translation"
 msgstr "+Finse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1367
+#: data/core/about.cfg:1375
 #, fuzzy
 msgid "Finnish Translation"
 msgstr "+Finse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1407
+#: data/core/about.cfg:1415
 #, fuzzy
 msgid "French Translation"
 msgstr "+Franse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1545
+#: data/core/about.cfg:1553
 #, fuzzy
 msgid "Friulian Translation"
 msgstr "+Finse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1552
+#: data/core/about.cfg:1560
 #, fuzzy
 msgid "Galician Translation"
 msgstr "+Sloweense Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1587
+#: data/core/about.cfg:1595
 #, fuzzy
 msgid "German Translation"
 msgstr "+Duitse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1642
+#: data/core/about.cfg:1650
 #, fuzzy
 msgid "Greek Translation"
 msgstr "+Griekse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1673
+#: data/core/about.cfg:1681
 #, fuzzy
 msgid "Hebrew Translation"
 msgstr "+Hebreeuse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1686
+#: data/core/about.cfg:1694
 #, fuzzy
 msgid "Hungarian Translation"
 msgstr "+Hongaarse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1747
+#: data/core/about.cfg:1755
 #, fuzzy
 msgid "Icelandic translation"
 msgstr "+Italiaanse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1757
+#: data/core/about.cfg:1765
 #, fuzzy
 msgid "Indonesian Translation"
 msgstr "+Estniese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1764
+#: data/core/about.cfg:1772
 #, fuzzy
 msgid "Italian Translation"
 msgstr "+Italiaanse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1799
+#: data/core/about.cfg:1807
 #, fuzzy
 msgid "Japanese Translation"
 msgstr "+Japannese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1825
+#: data/core/about.cfg:1833
 #, fuzzy
 msgid "Korean Translation"
 msgstr "+Noorweegse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1832
+#: data/core/about.cfg:1840
 #, fuzzy
 msgid "Latin Translation"
 msgstr "+Latynse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1839
+#: data/core/about.cfg:1847
 #, fuzzy
 msgid "Latvian Translation"
 msgstr "+Latynse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1846
+#: data/core/about.cfg:1854
 #, fuzzy
 msgid "Lithuanian Translation"
 msgstr "+Italiaanse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1863
+#: data/core/about.cfg:1871
 #, fuzzy
 msgid "Macedonian Translation"
 msgstr "+Estniese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1871
+#: data/core/about.cfg:1879
 #, fuzzy
 msgid "Marathi Translation"
 msgstr "+Latynse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1880
+#: data/core/about.cfg:1888
 #, fuzzy
 msgid "Norwegian Translation"
 msgstr "+Noorweegse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1905
+#: data/core/about.cfg:1913
 #, fuzzy
 msgid "Polish Translation"
 msgstr "+Poolse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1954
+#: data/core/about.cfg:1962
 #, fuzzy
 msgid "Portuguese Translation"
 msgstr "+Portugese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1961
+#: data/core/about.cfg:1969
 #, fuzzy
 msgid "Portuguese (Brazil) Translation"
 msgstr "+Portugese (Brasiliaanse) Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1996
+#: data/core/about.cfg:2004
 #, fuzzy
 msgid "Romanian Translation"
 msgstr "+Estniese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:2004
+#: data/core/about.cfg:2012
 #, fuzzy
 msgid "Russian Translation"
 msgstr "+Russiese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:2061
+#: data/core/about.cfg:2069
 #, fuzzy
 msgid "Serbian Translation"
 msgstr "+Serwiese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:2076
+#: data/core/about.cfg:2084
 #, fuzzy
 msgid "Slovak Translation"
 msgstr "+Slowaakse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:2102
+#: data/core/about.cfg:2110
 #, fuzzy
 msgid "Slovenian Translation"
 msgstr "+Sloweense Vertaling"
 
 #. [about]
-#: data/core/about.cfg:2115
+#: data/core/about.cfg:2123
 #, fuzzy
 msgid "Spanish Translation"
 msgstr "+Spaanse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:2173
+#: data/core/about.cfg:2181
 #, fuzzy
 msgid "Swedish Translation"
 msgstr "+Sweedse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:2202
+#: data/core/about.cfg:2210
 #, fuzzy
 msgid "Turkish Translation"
 msgstr "+Turkse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:2224
+#: data/core/about.cfg:2232
 #, fuzzy
 msgid "Valencian (southern Catalan) Translation"
 msgstr "+Sloweense Vertaling"
 
 #. [about]
-#: data/core/about.cfg:2237
+#: data/core/about.cfg:2245
+#, fuzzy
+msgid "Vietnamese Translation"
+msgstr "+Sjinese Vertaling"
+
+#. [about]
+#: data/core/about.cfg:2252
 #, fuzzy
 msgid "RACV's Translation"
 msgstr "+Sjinese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:2244
+#: data/core/about.cfg:2259
 #, fuzzy
 msgid "Bots"
 msgstr "+Internet Robot"
@@ -3495,6 +3501,11 @@ msgstr ""
 "Hierdie aanval vergiftig die teiken. Vergiftigde eenhede verloor 8 LP met "
 "elke beurt totdat hulle genees word of na 1 LP verminder het."
 
+#. [set_menu_item]: id=ai_controller_leader_control_{SIDE_CONTROLLED}
+#: data/core/macros/ai.cfg:408
+msgid "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
+msgstr ""
+
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:144
 msgid "Be more aggressive"
@@ -3680,6 +3691,37 @@ msgstr ""
 #. [literal]
 #: data/core/macros/ai_controller.cfg:920
 msgid "Exit"
+msgstr ""
+
+#: data/core/macros/ai_controller.cfg:1047
+msgid "Set special orders..."
+msgstr ""
+
+#: data/core/macros/ai_controller.cfg:1048
+msgid "Move leader to..."
+msgstr ""
+
+#: data/core/macros/ai_controller.cfg:1049
+msgid "Right-click to select a location to move leader to"
+msgstr ""
+
+#: data/core/macros/ai_controller.cfg:1050
+msgid "Move leader here"
+msgstr ""
+
+#: data/core/macros/ai_controller.cfg:1051
+msgid "moving leader to $x1|,$y1|."
+msgstr ""
+
+#: data/core/macros/ai_controller.cfg:1052
+#, fuzzy
+msgid "Clear special orders"
+msgstr "Kanselleer"
+
+#: data/core/macros/ai_controller.cfg:1053
+msgid ""
+"Special: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_special_description"
 msgstr ""
 
 #. [advancement]: id=amla_default
@@ -6294,7 +6336,7 @@ msgstr "Eindig Beurt"
 #. [change]: id=button-endturn
 #. [menu]: id=button-endturn2
 #: data/themes/default.cfg:154 data/themes/default.cfg:773
-#: data/themes/default.cfg:1027 data/themes/dfool.cfg:161
+#: data/themes/default.cfg:1032 data/themes/dfool.cfg:161
 #, fuzzy
 msgid "End Scenario"
 msgstr "Onbekende scenario: '"
@@ -6364,13 +6406,13 @@ msgid "statuspanel^terrain def."
 msgstr "vlak"
 
 #. [change]: id=actions-menu
-#: data/themes/default.cfg:998
+#: data/themes/default.cfg:1003
 msgid "Act."
 msgstr "Episode."
 
 #. [remove]: id=button-endturn
 #. [menu]: id=button-endturn2
-#: data/themes/default.cfg:1018 data/themes/default.cfg:1026
+#: data/themes/default.cfg:1023 data/themes/default.cfg:1031
 #, fuzzy
 msgid "short end-turn^E."
 msgstr "Eindig"
@@ -6477,132 +6519,137 @@ msgstr "Ongeldige tydperk gekies"
 msgid "An invalid defender weapon got selected."
 msgstr "Ongeldige tydperk gekies"
 
-#: src/actions.cpp:1099 src/actions.cpp:1372
+#: src/actions.cpp:1101 src/actions.cpp:1374
 #, fuzzy
 msgid "female^poisoned"
 msgstr "Uitvaagsel"
 
-#: src/actions.cpp:1111 src/actions.cpp:1384
+#: src/actions.cpp:1113 src/actions.cpp:1386
 #, fuzzy
 msgid "female^petrified"
 msgstr "Uitvaagsel"
 
-#: src/actions.cpp:1111 src/actions.cpp:1384
+#: src/actions.cpp:1113 src/actions.cpp:1386
 msgid "petrified"
 msgstr ""
 
-#: src/actions.cpp:2366
+#: src/actions.cpp:2363
 msgid "Ambushed!"
 msgstr "Lokval!"
 
-#: src/actions.cpp:2373
+#: src/actions.cpp:2370
 msgid "Failed teleport! Exit not empty"
 msgstr ""
 
-#: src/actions.cpp:2418
+#: src/actions.cpp:2415
 #, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Goedgesinde eenheid opgemerk"
 msgstr[1] "Goedgesinde eenheid opgemerk"
 
-#: src/actions.cpp:2421
+#: src/actions.cpp:2418
 #, fuzzy
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Vyandige eenheid opgemerk!"
 msgstr[1] "Vyandige eenheid opgemerk!"
 
-#: src/actions.cpp:2426
+#: src/actions.cpp:2423
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2427
+#: src/actions.cpp:2424
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2428
+#: src/actions.cpp:2425
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Eenhede opgemerk! ($friends vriende, $enemies vyande)"
 
-#: src/actions.cpp:2437
+#: src/actions.cpp:2434
 #, fuzzy
 msgid "(press $hotkey to keep moving)"
 msgstr "(druk $hotkey om voort te gaan)"
 
-#: src/addon_management.cpp:372
+#: src/addon_management.cpp:336 src/unit_types.cpp:951
+#, fuzzy
+msgid "No description available."
+msgstr "Geen doelwitte beskikbaar nie"
+
+#: src/addon_management.cpp:409
 msgid "B"
 msgstr "B"
 
-#: src/addon_management.cpp:375 src/dialogs.cpp:1056
+#: src/addon_management.cpp:412 src/dialogs.cpp:1056
 msgid "KB"
 msgstr "KB"
 
-#: src/addon_management.cpp:378
+#: src/addon_management.cpp:415
 msgid "MB"
 msgstr "MB"
 
-#: src/addon_management.cpp:381
+#: src/addon_management.cpp:418
 #, fuzzy
 msgid "GB"
 msgstr "B"
 
-#: src/addon_management.cpp:414
+#: src/addon_management.cpp:451
 msgid "addon_type^Campaign"
 msgstr ""
 
-#: src/addon_management.cpp:416
+#: src/addon_management.cpp:453
 msgid "addon_type^Scenario"
 msgstr ""
 
-#: src/addon_management.cpp:418
+#: src/addon_management.cpp:455
 #, fuzzy
 msgid "addon_type^MP era"
 msgstr "Onbekende scenario: '"
 
-#: src/addon_management.cpp:420
+#: src/addon_management.cpp:457
 #, fuzzy
 msgid "addon_type^MP faction"
 msgstr "Onbekende scenario: '"
 
-#: src/addon_management.cpp:422
+#: src/addon_management.cpp:459
 #, fuzzy
 msgid "addon_type^MP map-pack"
 msgstr "Onbekende scenario: '"
 
-#: src/addon_management.cpp:424
+#: src/addon_management.cpp:461
 #, fuzzy
 msgid "addon_type^MP scenario"
 msgstr "Onbekende scenario: '"
 
-#: src/addon_management.cpp:426
+#: src/addon_management.cpp:463
 msgid "addon_type^MP campaign"
 msgstr ""
 
-#: src/addon_management.cpp:428
+#: src/addon_management.cpp:465
 msgid "addon_type^Resources"
 msgstr ""
 
-#: src/addon_management.cpp:430
+#: src/addon_management.cpp:467
 #, fuzzy
 msgid "addon_type^Other"
 msgstr "Onbekende scenario: '"
 
-#: src/addon_management.cpp:432
+#: src/addon_management.cpp:469
 msgid "addon_type^(unknown)"
 msgstr ""
 
-#: src/addon_management.cpp:462
+#: src/addon_management.cpp:499
 #, fuzzy
 msgid "Dependencies"
 msgstr "Prinses"
 
-#: src/addon_management.cpp:466
+#: src/addon_management.cpp:503
 msgid ""
 "$addon_title depends upon the following add-on which you have not installed "
 "yet:"
@@ -6612,66 +6659,66 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/addon_management.cpp:469
+#: src/addon_management.cpp:506
 msgid ""
 "Do you still want to download $addon_title|? (You will have to install all "
 "the dependencies in order to play.)"
 msgstr ""
 
-#: src/addon_management.cpp:487 src/addon_management.cpp:559
+#: src/addon_management.cpp:524 src/addon_management.cpp:596
 #: src/multiplayer.cpp:213 src/multiplayer.cpp:268 src/multiplayer_ui.cpp:78
 msgid "Connection timed out"
 msgstr "Verbindingtyd het verstryk"
 
-#: src/addon_management.cpp:490
+#: src/addon_management.cpp:527
 #, fuzzy
 msgid "The server responded with an error: \"$error|\""
 msgstr "Die bediener het 'n foutboodskap gestuur: \""
 
-#: src/addon_management.cpp:498
+#: src/addon_management.cpp:535
 msgid "Terms"
 msgstr "Voorwaardes"
 
-#: src/addon_management.cpp:532
+#: src/addon_management.cpp:569
 #, fuzzy
 msgid "Sending add-on"
 msgstr "Besig om veldtog af te laai..."
 
-#: src/addon_management.cpp:536 src/addon_management.cpp:561
+#: src/addon_management.cpp:573 src/addon_management.cpp:598
 msgid "The server responded with an error: \""
 msgstr "Die bediener het 'n foutboodskap gestuur: \""
 
-#: src/addon_management.cpp:539 src/addon_management.cpp:564
+#: src/addon_management.cpp:576 src/addon_management.cpp:601
 #: src/multiplayer_wait.cpp:403
 msgid "Response"
 msgstr "Antwoord"
 
-#: src/addon_management.cpp:591
+#: src/addon_management.cpp:628
 #, fuzzy
 msgid "Downloading add-on: $addon_title|..."
 msgstr "Besig om veldtog af te laai..."
 
-#: src/addon_management.cpp:606
+#: src/addon_management.cpp:643
 msgid ""
 "The add-on has an invalid file or directory name and can not be installed."
 msgstr ""
 
-#: src/addon_management.cpp:655
+#: src/addon_management.cpp:692
 #, fuzzy
 msgid "The add-on '$addon_title|' has been successfully installed."
 msgstr "Die veldtog is geïnstalleer"
 
-#: src/addon_management.cpp:656
+#: src/addon_management.cpp:693
 #, fuzzy
 msgid "Add-on Installed"
 msgstr "Veldtog geïnstalleer"
 
-#: src/addon_management.cpp:714
+#: src/addon_management.cpp:751
 #, fuzzy
 msgid "Outdated add-ons"
 msgstr "Besig om veldtog af te laai..."
 
-#: src/addon_management.cpp:716
+#: src/addon_management.cpp:753
 msgid ""
 "An outdated local add-on has publishing information attached. It will not be "
 "offered for updating."
@@ -6681,57 +6728,57 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/addon_management.cpp:725
+#: src/addon_management.cpp:762
 msgid "Could not find any updated add-ons on this server."
 msgstr ""
 
-#: src/addon_management.cpp:725
+#: src/addon_management.cpp:762
 msgid "No add-ons to update"
 msgstr ""
 
-#: src/addon_management.cpp:739 src/addon_management.cpp:942
+#: src/addon_management.cpp:776 src/addon_management.cpp:979
 #: src/dialogs.cpp:575 src/menu_events.cpp:203 src/menu_events.cpp:839
 msgid "Name"
 msgstr "Naam"
 
-#: src/addon_management.cpp:739
+#: src/addon_management.cpp:776
 #, fuzzy
 msgid "New version"
 msgstr "Uitgawe"
 
-#: src/addon_management.cpp:739
+#: src/addon_management.cpp:776
 #, fuzzy
 msgid "Old version"
 msgstr "Uitgawe"
 
-#: src/addon_management.cpp:740 src/addon_management.cpp:943
+#: src/addon_management.cpp:777 src/addon_management.cpp:980
 msgid "Author"
 msgstr "Skepper"
 
-#: src/addon_management.cpp:740 src/addon_management.cpp:943
+#: src/addon_management.cpp:777 src/addon_management.cpp:980
 msgid "Size"
 msgstr "Grootte"
 
-#: src/addon_management.cpp:794
+#: src/addon_management.cpp:831
 #, fuzzy
 msgid "Update add-ons"
 msgstr "Besig om veldtog af te laai..."
 
-#: src/addon_management.cpp:795
+#: src/addon_management.cpp:832
 msgid "Select an add-on to update:"
 msgstr ""
 
-#: src/addon_management.cpp:809
+#: src/addon_management.cpp:846
 #, fuzzy
 msgid "Update all"
 msgstr "Grot Muur"
 
-#: src/addon_management.cpp:866
+#: src/addon_management.cpp:903
 #, fuzzy
 msgid "Update failed"
 msgstr "Grot Muur"
 
-#: src/addon_management.cpp:868
+#: src/addon_management.cpp:905
 #, fuzzy
 msgid "The following add-on could not be downloaded or updated successfully:"
 msgid_plural ""
@@ -6741,92 +6788,96 @@ msgstr[0] ""
 msgstr[1] ""
 "Die volgende bykomende veldtogte kon nie gelaai word nie weens foute:"
 
-#: src/addon_management.cpp:877
+#: src/addon_management.cpp:914
 #, fuzzy
 msgid "Update succeeded"
 msgstr "Besig om veldtog af te laai..."
 
-#: src/addon_management.cpp:878
+#: src/addon_management.cpp:915
 msgid "Add-on updated successfully."
 msgstr ""
 
-#: src/addon_management.cpp:879
+#: src/addon_management.cpp:916
 msgid "All add-ons updated successfully."
 msgstr ""
 
-#: src/addon_management.cpp:903
+#: src/addon_management.cpp:940
 #, fuzzy
 msgid "Connecting to add-ons server..."
 msgstr "Besig om te konnekteer aan Bediener..."
 
-#: src/addon_management.cpp:906
+#: src/addon_management.cpp:943
 msgid "Could not connect to host."
 msgstr "Kon nie aan gasheer koppel nie."
 
-#: src/addon_management.cpp:914
+#: src/addon_management.cpp:951
 msgid "Requesting list of add-ons"
 msgstr ""
 
-#: src/addon_management.cpp:926
+#: src/addon_management.cpp:963
 #, fuzzy
 msgid "An error occurred while communicating with the server."
 msgstr "Kommunikasie probleme met die bediener."
 
-#: src/addon_management.cpp:942 src/titlescreen.cpp:342
+#: src/addon_management.cpp:979 src/titlescreen.cpp:342
 msgid "Version"
 msgstr "Uitgawe"
 
-#: src/addon_management.cpp:943
+#: src/addon_management.cpp:980
 msgid "Downloads"
 msgstr "Aflaai"
 
-#: src/addon_management.cpp:943 src/help.cpp:1458 src/menu_events.cpp:202
-#: src/menu_events.cpp:838 src/menu_events.cpp:1417
+#: src/addon_management.cpp:980 src/help.cpp:1458 src/menu_events.cpp:202
+#: src/menu_events.cpp:838 src/menu_events.cpp:1414
 msgid "Type"
 msgstr "Tipe"
 
-#: src/addon_management.cpp:1009
+#: src/addon_management.cpp:1050
 #, fuzzy
 msgid "Publish add-on: "
 msgstr "Publiseer veldtog: "
 
-#: src/addon_management.cpp:1015
+#: src/addon_management.cpp:1056
 #, fuzzy
 msgid "Delete add-on: "
 msgstr "Vee veldtog uit: "
 
-#: src/addon_management.cpp:1021
+#: src/addon_management.cpp:1062
 #, fuzzy
 msgid "There are no add-ons available for download from this server."
 msgstr ""
 "Daar is geen veldtogte beskikbaar op hierdie bediener wat kan afgelaai word "
 "nie."
 
-#: src/addon_management.cpp:1034
+#: src/addon_management.cpp:1075
 #, fuzzy
 msgid "Get add-ons"
 msgstr "Besig om veldtog af te laai..."
 
-#: src/addon_management.cpp:1035
+#: src/addon_management.cpp:1076
 #, fuzzy
 msgid "Choose the add-on to download."
 msgstr "Kies 'n veldtog om af te laai."
 
-#: src/addon_management.cpp:1047 src/dialogs.cpp:600 src/menu_events.cpp:898
-#: src/menu_events.cpp:1453
+#: src/addon_management.cpp:1089
+msgid "Description"
+msgstr ""
+
+#: src/addon_management.cpp:1093 src/dialogs.cpp:600 src/menu_events.cpp:898
+#: src/menu_events.cpp:1450
 #, fuzzy
 msgid "Filter: "
 msgstr "Vermoëns: "
 
-#: src/addon_management.cpp:1084
+#: src/addon_management.cpp:1130
 msgid "Network communication error."
 msgstr "Netwerk kommunikasie fout."
 
-#: src/addon_management.cpp:1087
+#: src/addon_management.cpp:1133
 msgid "Remote host disconnected."
 msgstr "Afgeleë bediener het ontkoppel."
 
-#: src/addon_management.cpp:1090
+#: src/addon_management.cpp:1136
 #, fuzzy
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
@@ -6835,40 +6886,40 @@ msgstr ""
 "Daar was 'n probleem tydens die skep van die benodigde lêers om hierdie "
 "veldtog te installeer."
 
-#: src/addon_management.cpp:1108
+#: src/addon_management.cpp:1154
 #, fuzzy
 msgid "You have no add-ons installed."
 msgstr "Die veldtog is geïnstalleer"
 
-#: src/addon_management.cpp:1120
+#: src/addon_management.cpp:1166
 #, fuzzy
 msgid "Choose the add-on to remove."
 msgstr "Kies 'n veldtog om af te laai."
 
-#: src/addon_management.cpp:1120
+#: src/addon_management.cpp:1166
 #, fuzzy
 msgid "Uninstall add-ons"
 msgstr "Besig om veldtog af te laai..."
 
-#: src/addon_management.cpp:1132
+#: src/addon_management.cpp:1178
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr ""
 
-#: src/addon_management.cpp:1137 src/multiplayer.cpp:225
+#: src/addon_management.cpp:1183 src/multiplayer.cpp:225
 msgid "Confirm"
 msgstr ""
 
-#: src/addon_management.cpp:1149
+#: src/addon_management.cpp:1195
 #, fuzzy
 msgid "Add-on '$addon|' deleted."
 msgstr "Veldtog geïnstalleer"
 
-#: src/addon_management.cpp:1154
+#: src/addon_management.cpp:1200
 #, fuzzy
 msgid "Add-on deleted"
 msgstr "Veldtog geïnstalleer"
 
-#: src/addon_management.cpp:1162
+#: src/addon_management.cpp:1208
 msgid "Add-on could not be deleted properly:"
 msgstr ""
 
@@ -6976,11 +7027,11 @@ msgstr "Veelspeler"
 msgid "Tutorial"
 msgstr "Onderrig"
 
-#: src/dialogs.cpp:483 src/savegame.cpp:947
+#: src/dialogs.cpp:483 src/savegame.cpp:948
 msgid "replay"
 msgstr "wys weer"
 
-#: src/dialogs.cpp:485 src/savegame.cpp:1020
+#: src/dialogs.cpp:485 src/savegame.cpp:1021
 msgid "Turn"
 msgstr "Beurt"
 
@@ -7211,15 +7262,15 @@ msgstr ""
 msgid "Info: "
 msgstr ""
 
-#: src/game_events.cpp:1207 src/multiplayer_connect.cpp:1581
+#: src/game_events.cpp:1203 src/multiplayer_connect.cpp:1582
 msgid "Victory:"
 msgstr "Oorwinning:"
 
-#: src/game_events.cpp:1210
+#: src/game_events.cpp:1206
 msgid "Defeat:"
 msgstr "Nederlaag:"
 
-#: src/game_events.cpp:3503
+#: src/game_events.cpp:3499
 msgid "[unit_worth]'s filter didn't match any units!"
 msgstr ""
 
@@ -7535,7 +7586,7 @@ msgstr "Die Einde"
 msgid "System default language"
 msgstr "Standaard stelseltaal"
 
-#: src/leader_list.cpp:139 src/menu_events.cpp:1443
+#: src/leader_list.cpp:139 src/menu_events.cpp:1440
 #: src/multiplayer_connect.cpp:216 src/multiplayer_connect.cpp:268
 #, fuzzy
 msgid "gender^Random"
@@ -7875,392 +7926,392 @@ msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] "Jy moet ten minste $cost goudstukke hê om 'n eenheid te herroep"
 msgstr[1] "Jy moet ten minste $cost goudstukke hê om 'n eenheid te herroep"
 
-#: src/menu_events.cpp:1287
+#: src/menu_events.cpp:1284
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "Jy het nog nie jou beurt begin nie. Wil jy rerig jou beurt stop?"
 
-#: src/menu_events.cpp:1295 src/menu_events.cpp:1300
+#: src/menu_events.cpp:1292 src/menu_events.cpp:1297
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "Sommige eenhede het bewegings oor. Wil jy rerig jou beurt stop?"
 
-#: src/menu_events.cpp:1335
+#: src/menu_events.cpp:1332
 msgid "Rename Unit"
 msgstr "Herdoop Eenheid"
 
-#: src/menu_events.cpp:1416
+#: src/menu_events.cpp:1413
 #, fuzzy
 msgid "Race"
 msgstr "knuppel"
 
-#: src/menu_events.cpp:1440
+#: src/menu_events.cpp:1437
 msgid "Create Unit (Debug!)"
 msgstr ""
 
-#: src/menu_events.cpp:1443 src/multiplayer_wait.cpp:128
+#: src/menu_events.cpp:1440 src/multiplayer_wait.cpp:128
 #, fuzzy
 msgid "Gender: "
 msgstr "Leier: "
 
-#: src/menu_events.cpp:1534
+#: src/menu_events.cpp:1531
 msgid "Place Label"
 msgstr "Plaas Plakker"
 
-#: src/menu_events.cpp:1536
+#: src/menu_events.cpp:1533
 #, fuzzy
 msgid "Label: "
 msgstr "Plakker:"
 
-#: src/menu_events.cpp:1537
+#: src/menu_events.cpp:1534
 #, fuzzy
 msgid "Team only"
 msgstr "Span"
 
-#: src/menu_events.cpp:1738
+#: src/menu_events.cpp:1735
 msgid "Search"
 msgstr "Soek"
 
-#: src/menu_events.cpp:1919
+#: src/menu_events.cpp:1916
 #, fuzzy
 msgid "This command is currently unavailable."
 msgstr "Geen doelwitte beskikbaar nie"
 
-#: src/menu_events.cpp:1930
+#: src/menu_events.cpp:1927
 msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
 msgstr ""
 
-#: src/menu_events.cpp:2035
+#: src/menu_events.cpp:2032
 #, fuzzy
 msgid " No help available."
 msgstr "Geen doelwitte beskikbaar nie"
 
-#: src/menu_events.cpp:2194
+#: src/menu_events.cpp:2191
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
 msgstr ""
 
-#: src/menu_events.cpp:2198
+#: src/menu_events.cpp:2195
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
 msgstr ""
 
-#: src/menu_events.cpp:2201
+#: src/menu_events.cpp:2198
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr ""
 
-#: src/menu_events.cpp:2204
+#: src/menu_events.cpp:2201
 msgid "Kick a player or observer."
 msgstr ""
 
-#: src/menu_events.cpp:2206
+#: src/menu_events.cpp:2203
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr ""
 
-#: src/menu_events.cpp:2208
+#: src/menu_events.cpp:2205
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr ""
 
-#: src/menu_events.cpp:2210
+#: src/menu_events.cpp:2207
 msgid "Mute/Unmute all observers. (toggles)"
 msgstr ""
 
-#: src/menu_events.cpp:2220
+#: src/menu_events.cpp:2217
 msgid "Send a message to the server admins currently online"
 msgstr ""
 
-#: src/menu_events.cpp:2222
+#: src/menu_events.cpp:2219
 msgid "Send an emotion or personal action in chat."
 msgstr ""
 
-#: src/menu_events.cpp:2225
+#: src/menu_events.cpp:2222
 msgid ""
 "Sends a private message. You can't send messages to players that don't "
 "control a side in a running game you are in."
 msgstr ""
 
-#: src/menu_events.cpp:2231
+#: src/menu_events.cpp:2228
 msgid "Change the log level of a log domain."
 msgstr ""
 
-#: src/menu_events.cpp:2233
+#: src/menu_events.cpp:2230
 msgid "Add a nick to your ignores list."
 msgstr ""
 
-#: src/menu_events.cpp:2235
+#: src/menu_events.cpp:2232
 msgid "Add a nick to your friends list."
 msgstr ""
 
-#: src/menu_events.cpp:2237
+#: src/menu_events.cpp:2234
 msgid "Remove a nick from your ignores or friends list."
 msgstr ""
 
-#: src/menu_events.cpp:2239
+#: src/menu_events.cpp:2236
 msgid "Show your ignores and friends list."
 msgstr ""
 
-#: src/menu_events.cpp:2242
+#: src/menu_events.cpp:2239
 #, fuzzy
 msgid "Display version information."
 msgstr "Geen tydperke gevind"
 
-#: src/menu_events.cpp:2244
+#: src/menu_events.cpp:2241
 msgid "Register your nick"
 msgstr ""
 
-#: src/menu_events.cpp:2246
+#: src/menu_events.cpp:2243
 msgid "Drop your nick."
 msgstr ""
 
-#: src/menu_events.cpp:2248
+#: src/menu_events.cpp:2245
 msgid "Update details for your nick. For possible details see '/details'."
 msgstr ""
 
-#: src/menu_events.cpp:2251
+#: src/menu_events.cpp:2248
 #, fuzzy
 msgid "Request information about a nick."
 msgstr "Geen tydperke gevind"
 
-#: src/menu_events.cpp:2253
+#: src/menu_events.cpp:2250
 msgid "Request a list of details you can set for your registered nick."
 msgstr ""
 
-#: src/menu_events.cpp:2255
+#: src/menu_events.cpp:2252
 #, fuzzy
 msgid "Join a room."
 msgstr "Sluit aan by 'n spel"
 
-#: src/menu_events.cpp:2258
+#: src/menu_events.cpp:2255
 msgid "Part a room."
 msgstr ""
 
-#: src/menu_events.cpp:2260
+#: src/menu_events.cpp:2257
 #, fuzzy
 msgid "List room members."
 msgstr "Konnekteer aan Bediener"
 
-#: src/menu_events.cpp:2262
+#: src/menu_events.cpp:2259
 msgid "List available rooms."
 msgstr ""
 
-#: src/menu_events.cpp:2264
+#: src/menu_events.cpp:2261
 msgid "Room message."
 msgstr ""
 
-#: src/menu_events.cpp:2266
+#: src/menu_events.cpp:2263
 msgid "Room query."
 msgstr ""
 
-#: src/menu_events.cpp:2395
+#: src/menu_events.cpp:2392
 msgid "Refresh gui."
 msgstr ""
 
-#: src/menu_events.cpp:2397
+#: src/menu_events.cpp:2394
 msgid "Switch a side to/from AI control."
 msgstr ""
 
-#: src/menu_events.cpp:2400
+#: src/menu_events.cpp:2397
 msgid "Assign control of a side to a different player or observer."
 msgstr ""
 
-#: src/menu_events.cpp:2402
+#: src/menu_events.cpp:2399
 msgid "Clear chat history."
 msgstr ""
 
-#: src/menu_events.cpp:2404
+#: src/menu_events.cpp:2401
 msgid "Visualize the screen refresh procedure."
 msgstr ""
 
-#: src/menu_events.cpp:2407
+#: src/menu_events.cpp:2404
 #, fuzzy
 msgid "Save game."
 msgstr "Stoor Spel"
 
-#: src/menu_events.cpp:2409
+#: src/menu_events.cpp:2406
 #, fuzzy
 msgid "Quit game."
 msgstr "Verlaat die spel"
 
-#: src/menu_events.cpp:2413
+#: src/menu_events.cpp:2410
 msgid "Save and quit."
 msgstr ""
 
-#: src/menu_events.cpp:2416
+#: src/menu_events.cpp:2413
 msgid "Ignore replay errors."
 msgstr ""
 
-#: src/menu_events.cpp:2418
+#: src/menu_events.cpp:2415
 msgid "Disable autosaves."
 msgstr ""
 
-#: src/menu_events.cpp:2420
+#: src/menu_events.cpp:2417
 #, fuzzy
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr "Wag vir spel om te begin..."
 
-#: src/menu_events.cpp:2423
+#: src/menu_events.cpp:2420
 #, fuzzy
 msgid "Choose next scenario"
 msgstr "Besig om die volgende vlak af te laai"
 
-#: src/menu_events.cpp:2426
+#: src/menu_events.cpp:2423
 #, fuzzy
 msgid "Turn debug mode on."
 msgstr "Generaal"
 
-#: src/menu_events.cpp:2428
+#: src/menu_events.cpp:2425
 msgid "Turn debug mode off."
 msgstr ""
 
-#: src/menu_events.cpp:2430
+#: src/menu_events.cpp:2427
 msgid "Execute a Lua statement."
 msgstr ""
 
-#: src/menu_events.cpp:2432
+#: src/menu_events.cpp:2429
 msgid "Set the command used by the custom command hotkey"
 msgstr ""
 
-#: src/menu_events.cpp:2434
+#: src/menu_events.cpp:2431
 msgid "Launch the gamestate inspector"
 msgstr ""
 
-#: src/menu_events.cpp:2436
+#: src/menu_events.cpp:2433
 msgid "Set or show alias to a command"
 msgstr ""
 
-#: src/menu_events.cpp:2438
+#: src/menu_events.cpp:2435
 msgid "Set a scenario variable."
 msgstr ""
 
-#: src/menu_events.cpp:2440
+#: src/menu_events.cpp:2437
 msgid "Show a scenario variable."
 msgstr ""
 
-#: src/menu_events.cpp:2442
+#: src/menu_events.cpp:2439
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr ""
 
-#: src/menu_events.cpp:2449
+#: src/menu_events.cpp:2446
 msgid "Discover all units in help."
 msgstr ""
 
-#: src/menu_events.cpp:2454
+#: src/menu_events.cpp:2451
 #, fuzzy
 msgid "Create a unit."
 msgstr "Skep Spel"
 
-#: src/menu_events.cpp:2456
+#: src/menu_events.cpp:2453
 msgid "Toggle fog for the current player."
 msgstr ""
 
-#: src/menu_events.cpp:2458
+#: src/menu_events.cpp:2455
 msgid "Toggle shroud for the current player."
 msgstr ""
 
-#: src/menu_events.cpp:2460
+#: src/menu_events.cpp:2457
 msgid "Give gold to the current player."
 msgstr ""
 
-#: src/menu_events.cpp:2462
+#: src/menu_events.cpp:2459
 msgid "Fire a game event."
 msgstr ""
 
-#: src/menu_events.cpp:2465
+#: src/menu_events.cpp:2462
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr ""
 
-#: src/menu_events.cpp:2468
+#: src/menu_events.cpp:2465
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr ""
 
-#: src/menu_events.cpp:2512
+#: src/menu_events.cpp:2509
 msgid "Unknown debug level: '$level'."
 msgstr ""
 
-#: src/menu_events.cpp:2514 src/menu_events.cpp:2523
+#: src/menu_events.cpp:2511 src/menu_events.cpp:2520
 #, fuzzy
 msgid "error"
 msgstr "Fout"
 
-#: src/menu_events.cpp:2521
+#: src/menu_events.cpp:2518
 msgid "Unknown debug domain: '$domain'."
 msgstr ""
 
-#: src/menu_events.cpp:2530
+#: src/menu_events.cpp:2527
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr ""
 
-#: src/menu_events.cpp:2704
+#: src/menu_events.cpp:2701
 msgid "Added to ignore list: "
 msgstr ""
 
-#: src/menu_events.cpp:2707 src/menu_events.cpp:2724
+#: src/menu_events.cpp:2704 src/menu_events.cpp:2721
 #, fuzzy
 msgid "Invalid username: "
 msgstr "Onwettige tag naam"
 
-#: src/menu_events.cpp:2722
+#: src/menu_events.cpp:2719
 msgid "Added to friends list: "
 msgstr ""
 
-#: src/menu_events.cpp:2736
+#: src/menu_events.cpp:2733
 msgid "Removed from list: "
 msgstr ""
 
-#: src/menu_events.cpp:2754
+#: src/menu_events.cpp:2751
 msgid "There are no players on your friends or ignore list."
 msgstr ""
 
-#: src/menu_events.cpp:2924
+#: src/menu_events.cpp:2921
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Kon nie die plakker of eenheid met die string '$search' kry nie."
 
-#: src/menu_events.cpp:2953
+#: src/menu_events.cpp:2950
 msgid "Can't droid invalid side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2958
+#: src/menu_events.cpp:2955
 msgid "Can't droid networked side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2995
+#: src/menu_events.cpp:2992
 msgid "Can't change control of invalid side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:3001
+#: src/menu_events.cpp:2998
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:3076
+#: src/menu_events.cpp:3073
 msgid "Choose Scenario (Debug!)"
 msgstr ""
 
-#: src/menu_events.cpp:3097
+#: src/menu_events.cpp:3094
 #, fuzzy
 msgid "Debug mode activated!"
 msgstr "Generaal"
 
-#: src/menu_events.cpp:3100
+#: src/menu_events.cpp:3097
 msgid "Debug mode not available in network games"
 msgstr ""
 
-#: src/menu_events.cpp:3105
+#: src/menu_events.cpp:3102
 #, fuzzy
 msgid "Debug mode deactivated!"
 msgstr "Generaal"
 
-#: src/menu_events.cpp:3287
+#: src/menu_events.cpp:3284
 msgid "ai"
 msgstr ""
 
-#: src/menu_events.cpp:3297 src/menu_events.cpp:3312
+#: src/menu_events.cpp:3294 src/menu_events.cpp:3309
 msgid "prompt^Command:"
 msgstr "Bevel:"
 
-#: src/menu_events.cpp:3332
+#: src/menu_events.cpp:3329
 #, fuzzy
 msgid "User-Command#3"
 msgstr "Bevelvoerder"
@@ -8458,18 +8509,18 @@ msgstr "Rekenaar Speler"
 msgid "Empty"
 msgstr "Leeg"
 
-#: src/multiplayer_connect.cpp:1558
+#: src/multiplayer_connect.cpp:1559
 msgid "Cannot find era $era"
 msgstr "Kan nie die $era|-era vind nie"
 
-#: src/multiplayer_connect.cpp:1583
+#: src/multiplayer_connect.cpp:1584
 #, fuzzy
 msgid "Defeat enemy leader(s)"
 msgstr ""
 "Oorwinning\n"
 "@Verslaan vyandige leier(s)"
 
-#: src/multiplayer_connect.cpp:1647
+#: src/multiplayer_connect.cpp:1648
 msgid "Waiting for players to join..."
 msgstr "Wag vir spelers om aan te sluit"
 
@@ -8768,12 +8819,12 @@ msgstr ""
 msgid "Joining this game requires a password."
 msgstr ""
 
-#: src/multiplayer_ui.cpp:194
+#: src/multiplayer_ui.cpp:195
 #, fuzzy
 msgid "Invalid Color"
 msgstr "Ongeldige kleur"
 
-#: src/multiplayer_ui.cpp:426
+#: src/multiplayer_ui.cpp:427
 #, fuzzy
 msgid "Selected user: "
 msgstr "Kies eenheid:"
@@ -8860,7 +8911,7 @@ msgid "Starting game"
 msgstr "Skop op"
 
 #: src/play_controller.cpp:929 src/savegame.cpp:290 src/savegame.cpp:302
-#: src/savegame.cpp:973 src/savegame.cpp:975
+#: src/savegame.cpp:974 src/savegame.cpp:976
 msgid "Auto-Save"
 msgstr "Outo-stoor"
 
@@ -9013,15 +9064,15 @@ msgstr ""
 msgid "It is now $name|'s turn"
 msgstr "Dis nou jou beurt"
 
-#: src/playsingle_controller.cpp:869
+#: src/playsingle_controller.cpp:868
 msgid "Scenario Report"
 msgstr "Scenarioverslag"
 
-#: src/playsingle_controller.cpp:871
+#: src/playsingle_controller.cpp:870
 msgid "Victory"
 msgstr "Oorwinning"
 
-#: src/playsingle_controller.cpp:872
+#: src/playsingle_controller.cpp:871
 msgid "You have emerged victorious!"
 msgstr "Jy het die oorwinning behaal!"
 
@@ -9081,54 +9132,54 @@ msgstr ""
 msgid "This is not a multiplayer save"
 msgstr "Hierdie is nie 'n veelspeler gestoorde lêer nie"
 
-#: src/savegame.cpp:606
+#: src/savegame.cpp:607
 #, fuzzy
 msgid "The game could not be saved: "
 msgstr "Die spel kon nie gestoor word nie"
 
-#: src/savegame.cpp:693
+#: src/savegame.cpp:694
 #, fuzzy
 msgid "Name: "
 msgstr "Naam:"
 
-#: src/savegame.cpp:693
+#: src/savegame.cpp:694
 #, fuzzy
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Lêer bestaan reeds. Wil jy daar bo-oor skryf?"
 
-#: src/savegame.cpp:694
+#: src/savegame.cpp:695
 msgid "Overwrite?"
 msgstr "Stoor bo-oor?"
 
-#: src/savegame.cpp:704
+#: src/savegame.cpp:705
 #, fuzzy
 msgid "Save names should not end on '.gz'. Please choose a different name."
 msgstr ""
 "Gestoorde name mag nie deeltekens of skuinsstrepe bevat nie. Kies asseblief "
 "'n ander naam."
 
-#: src/savegame.cpp:766
+#: src/savegame.cpp:767
 msgid "Saved"
 msgstr "Gestoor"
 
-#: src/savegame.cpp:766
+#: src/savegame.cpp:767
 msgid "The game has been saved"
 msgstr "Die spel is gestoor"
 
-#: src/savegame.cpp:800 src/savegame.cpp:825
+#: src/savegame.cpp:801 src/savegame.cpp:826
 msgid "Could not write to file"
 msgstr "Kon nie die lêer stoor nie"
 
-#: src/savegame.cpp:938
+#: src/savegame.cpp:939
 #, fuzzy
 msgid "Save Replay"
 msgstr "Wys weer"
 
-#: src/savegame.cpp:956
+#: src/savegame.cpp:957
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Kon nie die spel outo-stoor nie. Stoor die spel self, asseblief."
 
-#: src/savegame.cpp:1008
+#: src/savegame.cpp:1009
 msgid "Save Game"
 msgstr "Stoor Spel"
 
@@ -9461,11 +9512,6 @@ msgstr "totale skade"
 #, no-c-format
 msgid "% parry"
 msgstr ""
-
-#: src/unit_types.cpp:951
-#, fuzzy
-msgid "No description available."
-msgstr "Geen doelwitte beskikbaar nie"
 
 #: src/unit_types.cpp:1007
 msgid "chaotic"

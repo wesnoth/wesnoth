@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-09-23 12:26+0200\n"
+"POT-Creation-Date: 2009-09-27 15:48+0200\n"
 "PO-Revision-Date: 2008-12-09 21:18+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -74,6 +74,7 @@ msgid "Fort"
 msgstr "Bosque"
 
 #. [terrain_type]: id=castle
+#. [terrain_type]: id=elven_castle
 #. [terrain_type]: id=dwarven_castle
 #. [terrain_type]: id=castle_overlay
 #: data/core/terrain.cfg:184 data/core/terrain.cfg:194
@@ -445,8 +446,10 @@ msgstr "Cova rochosa"
 #. [terrain_type]: id=orcish_snow_hills_village
 #. [terrain_type]: id=orcish_hill_village
 #. [terrain_type]: id=elven_snow_village
-#. [terrain_type]: id=village
+#. [terrain_type]: id=elven_village
 #. [terrain_type]: id=snow_village
+#. [terrain_type]: id=village
+#. [terrain_type]: id=city_village
 #. [terrain_type]: id=hill_village
 #. [terrain_type]: id=snow-hill_village
 #. [terrain_type]: id=snow-mountain_village
@@ -570,21 +573,21 @@ msgstr "Vaise conectar a un servidor para descargar complementos."
 msgid "Server:"
 msgstr "Servidor:"
 
-#. [button]
-#: data/gui/default/window/addon_connect.cfg:135
-#: data/gui/default/window/addon_connect.cfg:136
+#. [button]: id=update_addons
+#: data/gui/default/window/addon_connect.cfg:137
+#: data/gui/default/window/addon_connect.cfg:138
 msgid "Update add-ons"
 msgstr "Actualizar os complementos"
 
-#. [button]
-#: data/gui/default/window/addon_connect.cfg:168
-#: data/gui/default/window/addon_connect.cfg:169
+#. [button]: id=remove_addons
+#: data/gui/default/window/addon_connect.cfg:172
+#: data/gui/default/window/addon_connect.cfg:173
 msgid "Remove Add-ons"
 msgstr "Eliminar os complementos"
 
 #. [button]: id=ok
-#: data/gui/default/window/addon_connect.cfg:201
-#: data/gui/default/window/addon_connect.cfg:202
+#: data/gui/default/window/addon_connect.cfg:205
+#: data/gui/default/window/addon_connect.cfg:206
 #: data/gui/default/window/mp_connect.cfg:175
 #: data/gui/default/window/mp_connect.cfg:176
 msgid "Connect"
@@ -592,7 +595,7 @@ msgstr "Conectar"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
-#: data/gui/default/window/addon_connect.cfg:216
+#: data/gui/default/window/addon_connect.cfg:220
 #: data/gui/default/window/campaign_dialog.cfg:315
 #: data/gui/default/window/editor_generate_map.cfg:111
 #: data/gui/default/window/editor_new_map.cfg:111
