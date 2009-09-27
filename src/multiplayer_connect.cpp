@@ -1536,6 +1536,7 @@ void connect::load_game()
 			level_["random_start_time"] = "no";
 		}
 
+		level_["experience_modifier"] = lexical_cast<std::string>(params_.xp_modifier);
 		level_["random_seed"] = lexical_cast<std::string>(state_.rng().get_random_seed());
 	}
 
