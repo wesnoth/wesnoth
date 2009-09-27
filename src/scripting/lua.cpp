@@ -833,13 +833,14 @@ static int intf_dofile(lua_State *L)
 		error_call_destructors_2:
 		return lua_error(L);
 		continue_call_destructor:
-		lua_call(L, 0, 1);
-		return 1;
+		lua_call(L, 0, LUA_MULTRET);
+		return lua_gettop(L);
 	}
 	std::string p = get_wml_location(m);
 	if (p.empty())
 		goto error_call_destructors_1;
 
+	lua_settop(L, 0);
 	if (luaL_loadfile(L, p.c_str()))
 		goto error_call_destructors_2;
 
