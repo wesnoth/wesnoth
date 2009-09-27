@@ -21,7 +21,22 @@
 #include "gui/widgets/window.hpp"
 #include "sound.hpp"
 
+#include <boost/bind.hpp>
+
 namespace gui2 {
+
+ttoggle_button::ttoggle_button()
+	: tcontrol(COUNT)
+	, state_(ENABLED)
+	, retval_(0)
+	, callback_state_change_()
+	, icon_name_()
+{
+	connect_signal<event::MOUSE_ENTER>(boost::bind(
+				&ttoggle_button::signal_handler_mouse_enter, this, _1, _2));
+	connect_signal<event::MOUSE_LEAVE>(boost::bind(
+				&ttoggle_button::signal_handler_mouse_leave, this, _1, _2));
+}
 
 void ttoggle_button::set_members(const string_map& data)
 {
@@ -151,6 +166,32 @@ const std::string& ttoggle_button::get_control_type() const
 {
 	static const std::string type = "toggle_button";
 	return type;
+}
+
+void ttoggle_button::signal_handler_mouse_enter(
+		const event::tevent event, bool& handled)
+{
+	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+
+	if(get_value()) {
+		set_state(FOCUSSED_SELECTED);
+	} else {
+		set_state(FOCUSSED);
+	}
+	handled = true;
+}
+
+void ttoggle_button::signal_handler_mouse_leave(
+		const event::tevent event, bool& handled)
+{
+	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+
+	if(get_value()) {
+		set_state(ENABLED_SELECTED);
+	} else {
+		set_state(ENABLED);
+	}
+	handled = true;
 }
 
 } // namespace gui2

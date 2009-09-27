@@ -29,14 +29,7 @@ namespace gui2 {
 class ttoggle_button : public tcontrol, public tselectable_
 {
 public:
-	ttoggle_button() :
-		tcontrol(COUNT),
-		state_(ENABLED),
-		retval_(0),
-		callback_state_change_(),
-		icon_name_()
-	{
-	}
+	ttoggle_button();
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
@@ -135,6 +128,11 @@ private:
 	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const;
 
+	/***** ***** ***** signal handlers ***** ****** *****/
+
+	void signal_handler_mouse_enter(const event::tevent event, bool& handled);
+
+	void signal_handler_mouse_leave(const event::tevent event, bool& handled);
 };
 
 } // namespace gui2
