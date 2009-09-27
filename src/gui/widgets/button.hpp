@@ -25,13 +25,7 @@ namespace gui2 {
 class tbutton : public tcontrol
 {
 public:
-	tbutton() :
-		tcontrol(COUNT),
-		state_(ENABLED),
-		retval_(0),
-		callback_mouse_left_click_(0)
-	{
-	}
+	tbutton();
 
 	void set_callback_mouse_left_click(void (*callback) (twidget*))
 		{ callback_mouse_left_click_ = callback; }
@@ -43,7 +37,6 @@ public:
 
 	/** Inherted from tevent_executor. */
 	void mouse_leave(tevent_handler&);
-
 
 	/** Inherted from tevent_executor. */
 	void mouse_left_button_down(tevent_handler& event);
@@ -102,6 +95,12 @@ private:
 
 	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const;
+
+	/***** ***** ***** signal handlers ***** ****** *****/
+
+	void signal_handler_mouse_enter(bool& handled);
+
+	void signal_handler_mouse_leave(bool& handled);
 };
 
 

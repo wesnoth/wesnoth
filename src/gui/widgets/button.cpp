@@ -20,7 +20,21 @@
 #include "gui/widgets/window.hpp"
 #include "sound.hpp"
 
+#include <boost/bind.hpp>
+
 namespace gui2 {
+
+tbutton::tbutton()
+	: tcontrol(COUNT)
+	, state_(ENABLED)
+	, retval_(0)
+	, callback_mouse_left_click_(0)
+{
+	connect_signal<event::MOUSE_ENTER>(boost::bind(
+				&tbutton::signal_handler_mouse_enter, this, _2));
+	connect_signal<event::MOUSE_LEAVE>(boost::bind(
+				&tbutton::signal_handler_mouse_leave, this, _2));
+}
 
 void tbutton::mouse_enter(tevent_handler&)
 {
@@ -84,6 +98,22 @@ const std::string& tbutton::get_control_type() const
 {
 	static const std::string type = "button";
 	return type;
+}
+
+void tbutton::signal_handler_mouse_enter(bool& handled)
+{
+	DBG_GUI_E << "Button: mouse enter.\n";
+
+	set_state(FOCUSSED);
+	handled = true;
+}
+
+void tbutton::signal_handler_mouse_leave(bool& handled)
+{
+	DBG_GUI_E << "Button: mouse leave.\n";
+
+	set_state(ENABLED);
+	handled = true;
 }
 
 } // namespace gui2
