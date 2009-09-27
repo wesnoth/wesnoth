@@ -196,6 +196,8 @@ stringfixes = {
 ("mater what race they come from - even orcs.", "matter what race they come from - even orcs."),
 ("I think we have a chance to make new some allies here...", "I think we have a chance to make some new allies here..."),
 ("Such were the last words of of Rakshas the great!", "Such were the last words of Rakshas the great!"),
+('and wounded being cared for,','and wounded having been cared for,'),
+('roving around praying on','roving around preying on'),
 ),
 
 "wesnoth-low" :(
@@ -205,6 +207,7 @@ stringfixes = {
 ('I told ye I\'d be here"', 'I told ye I\'d be here."'),
 ('is bringing with him, though"','is bringing with him, though."'),
 ('I an defeated.','I am defeated.'),
+('The orcs are not defeated defeated,','The orcs are not defeated,'),
 ),
 
 "wesnoth-sotbe" :(
