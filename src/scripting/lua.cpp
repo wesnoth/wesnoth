@@ -847,6 +847,64 @@ static int intf_dofile(lua_State *L)
 }
 
 /**
+ * Loads and executes a Lua file, if there is no corresponding entry in wesnoth.package.
+ * Stores the result of the script in wesnoth.package and returns it.
+ * - Arg 1: string containing the file name.
+ * - Ret 1: value returned by the script.
+ */
+static int intf_require(lua_State *L)
+{
+	char const *m = luaL_checkstring(L, 1);
+	if (false) {
+		error_call_destructors_1:
+		return luaL_argerror(L, 1, "file not found");
+	}
+
+	// Check if there is already an entry.
+	lua_getglobal(L, "wesnoth");
+	lua_getfield(L, -1, "package");
+	lua_pushvalue(L, 1);
+	lua_gettable(L, -2);
+	if (!lua_isnil(L, -1)) return 1;
+	lua_pop(L, 1);
+
+	std::string p = get_wml_location(m);
+	if (p.empty())
+		goto error_call_destructors_1;
+
+	// Load the error handler.
+	lua_pushlightuserdata(L, (void *)&executeKey);
+	lua_rawget(L, LUA_REGISTRYINDEX);
+
+	// Compile the file.
+	int res = luaL_loadfile(L, p.c_str());
+	if (res)
+	{
+		char const *m = lua_tostring(L, -1);
+		chat_message("Lua error", m);
+		ERR_LUA << m << '\n';
+		return 0;
+	}
+
+	// Execute it.
+	res = lua_pcall(L, 0, 1, -2);
+	if (res)
+	{
+		char const *m = lua_tostring(L, -1);
+		chat_message("Lua error", m);
+		ERR_LUA << m << '\n';
+		return 0;
+	}
+	lua_remove(L, -2);
+
+	// Add the return value to the table.
+	lua_pushvalue(L, 1);
+	lua_pushvalue(L, -2);
+	lua_settable(L, -4);
+	return 1;
+}
+
+/**
  * Calls a WML action handler (__call metamethod).
  * - Arg 1: userdata containing the handler.
  * - Arg 2: optional WML config.
@@ -1566,6 +1624,7 @@ LuaKernel::LuaKernel()
 		{ "get_village_owner",        &intf_get_village_owner        },
 		{ "message",                  &intf_message                  },
 		{ "register_wml_action",      &intf_register_wml_action      },
+		{ "require",                  &intf_require                  },
 		{ "set_terrain",              &intf_set_terrain              },
 		{ "set_variable",             &intf_set_variable             },
 		{ "set_village_owner",        &intf_set_village_owner        },
@@ -1674,6 +1733,12 @@ LuaKernel::LuaKernel()
 	lua_setfield(L, -2, "__metatable");
 	lua_setmetatable(L, -2);
 	lua_setfield(L, -2, "game_config");
+	lua_pop(L, 1);
+
+	// Create the package table.
+	lua_getglobal(L, "wesnoth");
+	lua_newtable(L);
+	lua_setfield(L, -2, "package");
 	lua_pop(L, 1);
 
 	// Store the error handler, then close debug.
