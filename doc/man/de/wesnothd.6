@@ -83,9 +83,9 @@ aktiviert mehr Details in der Logausgabe.
 .P
 [\fIElement\fP]
 .IP
-\fIkey\fP="\fIvalue\fP"
+\fISchlüssel\fP="\fIWert\fP"
 .IP
-\fIkey\fP="\fIvalue\fP,\fIvalue\fP,..."
+\fISchlüssel\fP="\fIWert\fP,\fIWert\fP,..."
 .P
 [/\fIElement\fP]
 .
@@ -93,9 +93,10 @@ aktiviert mehr Details in der Logausgabe.
 .
 .TP 
 \fBallow_remote_shutdown\fP
-If set to \fBno\fP (default), shut_down and restart requests are ignored unless
-they come from the fifo.  Set it to \fByes\fP to allow remote shutdown via a
-/query by an administrator.
+Wenn es auf \fBno\fP (Voreinstellung) gestellt ist, werden Anfragen zum
+Herunterfahren und Neustart ignoriert, falls sie nicht über die FIFO\-Datei
+kommen. Ein Einstellen auf \fByes\fP erlaubt es einem Administrator durch ein
+/query ein entferntes Herunterfahren.
 .TP 
 \fBban_save_file\fP
 Kompletter oder relativer Pfad zu einer (gzip\-komprimierten) Datei, die der
@@ -103,23 +104,24 @@ Server lesen und schreiben kann. Bans werden in diese Datei gespeichert und
 beim Start vom Server eingelesen.
 .TP 
 \fBcompress_stored_rooms\fP
-Determines whether the rooms file should be read and written to in
-compressed form. Defaults to \fByes\fP.
+Legt fest, ob die Datei für die Räume in komprimierter Form gelesen und
+geschrieben werden soll. Die Voreinstellung ist \fByes\fP.
 .TP 
 \fBconnections_allowed\fP
 Die Anzahl zulässiger Verbindungen von der gleichen IP Adresse. \fB0\fP heißt
 unendlich. (Standard: \fB5\fP)
 .TP 
 \fBdisallow_names\fP
-Names/nicks that are not accepted by the server. \fB*\fP and \fB?\fP from wildcard
-patterns are supported. See \fBglob\fP(7)  for more details.  Default values
-(used if nothing is specified) are:
+Namen/Spitznamen die der Server nicht akzeptiert. \fB*\fP und \fB?\fP sind als
+Platzhalter unterstützt. Siehe \fBglob\fP(7) für mehr Details. Standardwerte
+(wenn sonst nichts angegeben wurde) sind:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-The path to the fifo you can echo server commands into (same as /query
-\&... from wesnoth).  If not specified defaults to the compile\-time path
-(default: \fB/var/run/socket/wesnothd/socket\fP).
+Der Pfad zur FIFO\-Datei, in die Befehle für den Server geschrieben werden
+können (das gleiche wie /query ... aus Wesnoth selbst heraus). Falls nicht
+angegeben, wird die einkompilierte Voreinstellung verwendet (Standard:
+\fB/var/run/socket/wesnothd/socket\fP).
 .TP 
 \fBmax_messages\fP
 Die Anzahl der erlaubten Nachrichten in \fBmessages_time_period\fP. (Standard:
@@ -133,14 +135,15 @@ wird. (Standard: \fB10\fP)
 Die "Nachricht des Tages".
 .TP 
 \fBnew_room_policy\fP
-Determines who can create new rooms on the server. Available values are
-\fBeveryone\fP, \fBregistered\fP, \fBadmin\fP and \fBnobody\fP, and give the permission
-respectively to everyone, registered users, admin users or disables new room
-creation. Default value is \fBeveryone\fP.
+Legt fest, wer neue Räume auf dem Server erstellen kann. Verwendbare Werte
+sind \fBeveryone\fP, \fBregistered\fP, \fBadmin\fP und \fBnobody\fP und erteilen die
+Berechtigung entsprechend an jeden, registrierte Benutzer, Administratoren
+beziehungsweise deaktiviert die Erstellung neuer Räume. Der voreingestellte
+Wert ist \fBeveryone\fP (jeder).
 .TP 
 \fBpasswd\fP
-The password used to gain admin privileges (via \fB/query admin
-\fP\fIpassword\fP).
+Das Passwort um auf dem Server Administratorrechte zu erhalten (über
+\fB/query admin \fP\fIPasswort\fP).
 .TP 
 \fBreplay_save_path\fP
 Legt den Ordner fest, in dem der Server Wiederholungen
@@ -148,9 +151,9 @@ abspeichert. (Vergesst das abschließende /! nicht) Standardmäßig wird »«
 verwendet, was für den Ordner steht, in dem wesnothd gestartet wurde.
 .TP 
 \fBrestart_command\fP
-The command that the server uses to start a new server process via the
-\fBrestart\fP command. (Can only be issued via the fifo. See the
-\fBallow_remote_shutdown\fP setting.)
+Der Befehl, den der Server verwendet, um einen neuen Server\-Prozess über den
+\fBrestart\fP\-Befehl zu starten. (Kann nur über die FIFO angefordert
+werden. Siehe die \fBallow_remote_shutdown\fP\-Einstellung.)
 .TP 
 \fBroom_save_file\fP
 Pfad zu einer Datei, in die die Rauminformationen gespeichert werden
@@ -163,18 +166,20 @@ Legt fest, ob vom Server automatisch Wiederholungen gespeichert werden
 sollen. (Standard: \fBfalse\fP)
 .TP 
 \fBversions_accepted\fP
-A comma separated list of version strings to be accepted by the server. \fB*\fP
-and \fB?\fP from wildcard patterns are supported.  (defaults to the
-corresponding wesnoth version)
+Eine durch Komma getrennte Liste der Programmversionen, die der Server
+zulässt. \fB*\fP und \fB?\fP sind erlaubt. (Standard: Die aktuell installierte
+Wesnoth\-Version)
 .br
 Beispiel: \fBversions_accepted="*"\fP akzeptiert alle Versionen.
 .TP  
 \fBuser_handler\fP
-The name of the user handler to use. Currently available user handlers are
-\fBforum\fP (to connect wesnothd to a phpbb forum database) and \fBsample\fP (a
-sample implementation of the user handler interface, if you use this on
-anything real you are insane). The default value is \fBforum\fP. You must also
-add a \fB[user_handler]\fP section, see below.
+Der Name der zu verwendenden Nutzerverwaltung. Momentan sind als
+Nutzerverwaltungen \fBforum\fP (um via wesnothd eine Verbindung zu einer phpbb
+Forum Datenbank aufzubauen) und \fBsample\fP (eine Beispielimplementierung der
+Nutzerverwaltungsschnittstelle, diese dient nur als Beispiel und sollte
+nicht genutzt werden) verfügbar. Standardmäßig wird die Nutzerverwaltung
+\fBforum\fP verwendet. Außerdem muss ein \fB[user_handler]\fP angelegt werden. Der
+Aufbau von diesem ist weiter unten beschrieben.
 .
 .SS "Globale Elemente:"
 .
@@ -203,11 +208,11 @@ temporary ban time lengths.
 Der Name, um die Ban\-Zeit zu referenzieren.
 .TP 
 \fBtime\fP
-The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s
-(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d
-is a number.  If no time modifier is given minutes (m) are assumed.
-Example: \fBtime="1D12h30m"\fP results in a ban time of 1 day, 12 hours and 30
-minutes.
+Die Zeitlängen\-Definition. Das Format lautet: %d[%s[%d%s[...]]] wobei %s für
+s (Sekunden), m (Minuten), h (Stunden), D (Tage), M (Monate) oder Y (Jahre)
+und %d für eine Nummer steht. Falls keine Zeitdefinition verwendet wird,
+werden Minuten (m) angenommen. Beispiel: \fBtime="1D12h30m"\fP steht für eine
+Ban\-Zeit von einem Tag, 12 Stunden und 30 Minuten.
 .RE
 .P
 \fB[proxy]\fP Ein Element, das benutzt wird um dem Server mitzuteilen, wie ein
@@ -216,10 +221,10 @@ den angegebenen Server weiterzuleiten. Es werden die gleichen Schlüssel wie
 bei \fB[redirect]\fP akzeptiert.
 .RE
 .P
-\fB[user_handler]\fP Configures the user handler. Available keys vary depending
-on which user handler is set with the \fBuser_handler\fP key. If no
-\fB[user_handler]\fP section is present in the configuration the server will
-run without any nick registration service.
+\fB[user_handler]\fP Dies Konfiguriert die Nutzerverwaltung. Die verwendbaren
+Schlüssel hängen davon ab, welche Nutzerverwaltung beim \fBuser_handler\fP
+Schlüssel festgelegt wurde. Ist kein \fB[user_handler]\fP\-Bereich vorhanden, so
+ist es nicht möglich registrierte Nutzernamen auf dem Server zu verwenden.
 .RS
 .TP  
 \fBdb_host\fP
@@ -241,11 +246,12 @@ Nutzerdaten ablegt. Dies ist höchstwahrscheinlich
 <table\-prefix>_users (z.B. phpbb3_users).
 .TP  
 \fBdb_extra_table\fP
-(for user_handler=forum) The name of the table in which wesnothd will save
-its own data about users. You will have to create this table manually, e.g.:
-\fBCREATE TABLE <table\-name>(username VARCHAR(255) PRIMARY KEY,
-user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4)
-NOT NULL DEFAULT 0);\fP
+(für user_handler=forum) Der Name der Tabelle, in der wesnothd spezifische
+Nutzerdaten abgelegt werden sollen. Diese Tabelle muss manuell angelegt
+werden. Dies erfolgt z.B. mit einem Befehl wie diesem: \fBCREATE TABLE
+<table\-name>(username VARCHAR(255) PRIMARY KEY, user_lastvisit INT
+UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT
+0);\fP
 .TP  
 \fBuser_expiration\fP
 (für user_handler=sample) Zeit (in Tagen) nach der ein registrierter
