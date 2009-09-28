@@ -34,6 +34,13 @@ tbutton::tbutton()
 				&tbutton::signal_handler_mouse_enter, this, _1, _2));
 	connect_signal<event::MOUSE_LEAVE>(boost::bind(
 				&tbutton::signal_handler_mouse_leave, this, _1, _2));
+
+	connect_signal<event::LEFT_BUTTON_DOWN>(boost::bind(
+				&tbutton::signal_handler_left_button_down, this, _1, _2));
+	connect_signal<event::LEFT_BUTTON_UP>(boost::bind(
+				&tbutton::signal_handler_left_button_up, this, _1, _2));
+	connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(
+				&tbutton::signal_handler_left_button_click, this, _1, _2));
 }
 
 void tbutton::mouse_enter(tevent_handler&)
@@ -115,6 +122,51 @@ void tbutton::signal_handler_mouse_leave(
 	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
 
 	set_state(ENABLED);
+	handled = true;
+}
+
+void tbutton::signal_handler_left_button_down(
+		const event::tevent event, bool& handled)
+{
+	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+
+	twindow* window = get_window();
+	if(window) {
+		window->mouse_capture();
+	}
+
+	set_state(PRESSED);
+	handled = true;
+}
+
+void tbutton::signal_handler_left_button_up(
+		const event::tevent event, bool& handled)
+{
+	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+
+	set_state(FOCUSSED);
+	handled = true;
+}
+
+void tbutton::signal_handler_left_button_click(
+		const event::tevent event, bool& handled)
+{
+	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+
+	sound::play_UI_sound(settings::sound_button_click);
+
+	// If a button has a retval do the default handling.
+	if(retval_ != 0) {
+		twindow* window = get_window();
+		if(window) {
+			window->set_retval(retval_);
+			return;
+		}
+	}
+
+	if(callback_mouse_left_click_) {
+		callback_mouse_left_click_(this);
+	}
 	handled = true;
 }
 
