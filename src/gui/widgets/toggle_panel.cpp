@@ -38,6 +38,13 @@ ttoggle_panel::ttoggle_panel()
 				&ttoggle_panel::signal_handler_mouse_enter, this, _1, _2));
 	connect_signal<event::MOUSE_LEAVE>(boost::bind(
 				&ttoggle_panel::signal_handler_mouse_leave, this, _1, _2));
+
+	connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(
+				&ttoggle_panel::signal_handler_left_button_click
+					, this, _1, _2));
+	connect_signal<event::LEFT_BUTTON_DOUBLE_CLICK>(boost::bind(
+				&ttoggle_panel::signal_handler_left_button_double_click
+					, this, _1, _2));
 }
 
 void ttoggle_panel::set_child_members(const std::map<std::string /* widget id */, string_map>& data)
@@ -213,6 +220,42 @@ void ttoggle_panel::signal_handler_mouse_leave(
 	handled = true;
 }
 
-} // namespace gui2
+void ttoggle_panel::signal_handler_left_button_click(
+		const event::tevent event, bool& handled)
+{
+	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
 
+	sound::play_UI_sound(settings::sound_toggle_panel_click);
+
+	if(get_value()) {
+		set_state(ENABLED);
+	} else {
+		set_state(ENABLED_SELECTED);
+	}
+
+	if(callback_state_change_) {
+		callback_state_change_(this);
+	}
+	handled = true;
+}
+
+void ttoggle_panel::signal_handler_left_button_double_click(
+		const event::tevent event, bool& handled)
+{
+	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+
+	if (retval_) {
+		twindow* window = get_window();
+		assert(window);
+
+		window->set_retval(retval_);
+	}
+
+	if (callback_mouse_left_double_click_) {
+		callback_mouse_left_double_click_(this);
+	}
+	handled = true;
+}
+
+} // namespace gui2
 

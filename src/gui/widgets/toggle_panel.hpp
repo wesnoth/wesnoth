@@ -195,6 +195,12 @@ private:
 	void signal_handler_mouse_enter(const event::tevent event, bool& handled);
 
 	void signal_handler_mouse_leave(const event::tevent event, bool& handled);
+
+	void signal_handler_left_button_click(
+			const event::tevent event, bool& handled);
+
+	void signal_handler_left_button_double_click(
+			const event::tevent event, bool& handled);
 };
 
 } // namespace gui2
