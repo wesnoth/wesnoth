@@ -170,9 +170,6 @@ class WesnothList:
 
         n = 0
         for terrain in WML.get_all("terrain"):
-            tid = terrain.get_text_val("id")
-            self.terrain_lookup[tid] = terrain
-        for terrain in WML.get_all("terrain"):
             tstring = terrain.get_text_val("string")
             self.terrain_lookup[tstring] = terrain
             n += 1
