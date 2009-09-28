@@ -829,18 +829,102 @@ void tevent_handler::sdl_mouse_motion(const tpoint& coordinate)
 
 void tevent_handler::sdl_left_button_down(const tpoint& coordinate)
 {
-	SDL_Event event;
 	twidget* mouse_over = find_at(coordinate, true);
+	button_down(mouse_over, left_);
+}
 
-	mouse_button_down(event, mouse_over, left_);
+void tevent_handler::button_down(twidget* mouse_over, tmouse_button& button)
+{
+	if(button.is_down) {
+		WRN_GUI_E << "In 'button down' for button '" << button.name
+			<< "' but the mouse button is already down, we missed an event.\n";
+		return;
+	}
+	button.is_down = true;
+
+	if(mouse_captured_) {
+		button.focus = mouse_focus_;
+		get_window().fire(event::LEFT_BUTTON_DOWN, *mouse_focus_);
+	} else {
+		if(!mouse_over) {
+			return;
+		}
+
+		if(mouse_over != mouse_focus_) {
+			WRN_GUI_E << "Mouse down event on non focussed widget "
+				<< "and mouse not captured, we missed events.\n";
+			mouse_focus_ = mouse_over;
+		}
+
+		button.focus = mouse_over;
+		get_window().fire(event::LEFT_BUTTON_DOWN, *mouse_over);
+	}
 }
 
 void tevent_handler::sdl_left_button_up(const tpoint& coordinate)
 {
-	SDL_Event event;
 	twidget* mouse_over = find_at(coordinate, true);
+	button_up(mouse_over, left_);
+}
 
-	mouse_button_up(event, mouse_over, left_);
+void tevent_handler::button_up(twidget* mouse_over, tmouse_button& button)
+{
+	if(!button.is_down) {
+		WRN_GUI_E << "In 'button up' for button '" << button.name
+			<< "' but the mouse button is already up, we missed an event.\n";
+		return;
+	}
+
+	button.is_down = false;
+	if(button.focus) {
+		get_window().fire(event::LEFT_BUTTON_UP, *mouse_over);
+	}
+
+	if(mouse_captured_) {
+		if (!left_.is_down && !middle_.is_down && !right_.is_down) {
+			mouse_captured_ = false;
+		}
+
+		if(mouse_focus_ != mouse_over) {
+			mouse_leave();
+
+			if(mouse_over) {
+				mouse_enter(mouse_over);
+			}
+		} else {
+			mouse_button_click(mouse_focus_, button);
+		}
+	} else if(button.focus && button.focus == mouse_over) {
+		mouse_button_click(button.focus, button);
+	}
+
+	button.focus = 0;
+//	set_hover();
+//	click_dismiss();
+}
+
+void tevent_handler::mouse_button_click(twidget* widget, tmouse_button& button)
+{
+	if((widget->*button.wants_double_click)()) {
+		Uint32 stamp = SDL_GetTicks();
+		if(button.last_click_stamp + settings::double_click_time >= stamp
+				&& button.last_clicked_widget == widget) {
+
+			get_window().fire(event::LEFT_BUTTON_DOUBLE_CLICK, *widget);
+			button.last_click_stamp = 0;
+			button.last_clicked_widget = NULL;
+
+		} else {
+
+			get_window().fire(event::LEFT_BUTTON_CLICK, *widget);
+			button.last_click_stamp = stamp;
+			button.last_clicked_widget = widget;
+		}
+
+	} else {
+
+		get_window().fire(event::LEFT_BUTTON_CLICK, *widget);
+	}
 }
 
 /**

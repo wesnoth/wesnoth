@@ -452,6 +452,9 @@ private:
 	void sdl_left_button_down(const tpoint& coordinate);
 	void sdl_left_button_up(const tpoint& coordinate);
 
+	void button_down(twidget* widget, tmouse_button& button);
+	void button_up(twidget* widget, tmouse_button& button);
+	void mouse_button_click(twidget* widget, tmouse_button& button);
 
 };
 
