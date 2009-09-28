@@ -174,8 +174,9 @@ struct tdispatcher_implementation
 		 * 
 		 * @returns               Whether or not the handler is found.
 		 */
+		// not called operator() to work around a problem in MSVC 2008.
 		template<class T>
-		bool operator()(tevent event)
+		bool oper(tevent event)
 		{
 			if((event_type_ & tdispatcher::pre)
 					&& !event_signal<T>(dispatcher_, event).pre_child.empty()) {
@@ -246,7 +247,8 @@ struct find<false>
 		boost::value_initialized<arg> x;
 
 		if(boost::get(x) == event) {
-			return functor.template operator()<item>(event);
+			// MSVC 2008 doesn't like operator() here so changed the name.
+			return functor.template oper<item>(event);
 		} else {
 			typedef typename boost::mpl::next<itor>::type itor;
 			return find<boost::is_same<itor, end>::value>
