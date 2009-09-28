@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: comp\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-09-20 15:45+0200\n"
+"POT-Creation-Date: 2009-09-27 20:30+0200\n"
 "PO-Revision-Date: 2009-06-20 16:23+0400\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team: Russian <bugs.wesnoth.org>\n"
@@ -26,7 +26,7 @@ msgid ""
 "<big>Click a mouse button or press spacebar to continue...</big>"
 msgstr ""
 "\n"
-"*Нажмите левую кнопку мышки или пробел, чтобы продолжить..."
+"*Нажмите левую кнопку мышки или пробел..."
 
 #. [tutorial]: id=tutorial
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:49
@@ -113,7 +113,8 @@ msgid ""
 "You are standing in the keep, and your mentor Delfador is on the east side "
 "of the river."
 msgstr ""
-"Вы находитесь в укрытии, а ваш наставник Делфадор — на восточном берегу реки."
+"Вы находитесь в цитадели, а ваш наставник Делфадор — на восточном берегу "
+"реки."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:203
@@ -150,7 +151,7 @@ msgid ""
 "The places he can move to are highlighted."
 msgstr ""
 "*Вы выбрали Конрада.\n"
-"Места, куда он может пойти, подсвечены."
+"На карте подсвечены места, до которых он может дойти"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:235
@@ -160,7 +161,7 @@ msgid ""
 "The places she can move to are highlighted."
 msgstr ""
 "*Вы выбрали Лисар.\n"
-"Места, куда она может пойти, подсвечены."
+"На карте подсвечены места, до которых она может дойти"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:240
@@ -171,14 +172,14 @@ msgstr "СЮДА"
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:246
 msgid "Move Konrad next to Delfador by clicking on the tile marked 'HERE'."
 msgstr ""
-"Чтобы поместить Конрада рядом с Делфадором, кликните на поле, на котором "
+"поставьте Конрада рядом с Делфадором. Для этого кликните на поле, на котором "
 "написано «СЮДА»."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:250
 msgid "Move Li'sar next to Delfador by clicking on the tile marked 'HERE'."
 msgstr ""
-"Чтобы поместить Лисар рядом с Делфадором, кликните на поле, на котором "
+"поставьте Лисар рядом с Делфадором. Для этого кликните на поле, на котором "
 "написано «СЮДА»."
 
 #. [event]
@@ -482,9 +483,9 @@ msgid ""
 "right-clicking and selecting 'Recruit'. This time you will only be given one "
 "type of unit to choose: the Elvish Fighter."
 msgstr ""
-"Когда вы в своём лагере, вы можете нанимать воинов на окружающих клетках "
-"замка. Для этого вам надо щёлкнуть правой кнопкой мышки и выбрать пункт "
-"«Вербовать». Сейчас вы можете выбрать лишь один тип солдат: эльфийских воинов."
+"Когда вы в цитадели, вы можете нанимать воинов на окружающих клетках замка. "
+"Для этого нажмите правую кнопку мышки, и выберите пункт «Вербовать». Сейчас "
+"вы можете выбрать лишь один тип солдат: эльфийских воинов."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:622
@@ -682,8 +683,8 @@ msgid ""
 msgstr ""
 "Примечание:\n"
 "Не забывайте отводить раненых к деревням и, если нужно, вербовать новых "
-"бойцов. Особое внимание уделяйте тем, у кого наиболее высок уровень опыта "
-"(ОП), они могут скоро продвинуться на следующий уровень!"
+"бойцов. Особенно заботьтесь о бойцах с высоким уровнем опыта (ОП), они могут "
+"скоро продвинуться на следующий уровень!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:973
@@ -709,7 +710,7 @@ msgstr ""
 "Примечание:\n"
 "Когда боец наберёт достаточно опыта (небольшая полоса справа), он "
 "продвигается на следующий уровень. Эльфийские воины могут развиваться двумя "
-"способами; какой из них выбрать — решать вам. Заметим, что солдаты второго "
+"путями; какой из них выбрать — решать вам. Заметим, что солдаты второго "
 "уровня требуют в два раза больше содержания, чем бойцы первого уровня."
 
 #. [message]: speaker=narrator
@@ -798,7 +799,7 @@ msgid ""
 "scenario."
 msgstr ""
 "После сообщения о победе карта будет затемнена, это обозначает, что сценарий "
-"завершен. Вы, однако, сможете изучить конечное расположение и состояние "
+"завершён. Вы, однако, сможете изучить конечное расположение и состояние "
 "ваших войск. Затем нажмите «Закончить сценарий», чтобы перейти к следующему."
 
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:27
@@ -851,7 +852,7 @@ msgid ""
 "Now put an unwounded unit, preferably a fighter, in that patch of forest on "
 "the south-east of the island; a nice, defensible spot."
 msgstr ""
-"А теперь приведи здорового воина, желательно воина, к участку леса на юго-"
+"А теперь приведи здорового бойца, желательно воина, к участку леса на юго-"
 "востоке острова — это хорошее, защищённое место. "
 
 #. [then]
@@ -982,7 +983,7 @@ msgstr "Теперь всё серьёзно, Лисар! "
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:421
 msgid "What should I do?"
-msgstr "Что мне нужно делать?"
+msgstr "Что мне следует сделать?"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:426
@@ -1120,7 +1121,7 @@ msgid ""
 "them. Instead we must recruit a new Elvish Fighter."
 msgstr ""
 "Если бы у тебя после прошлой битвы остались воины, мы бы призвали их и на "
-"эту битвы. А так придётся вербовать нового воина."
+"эту битву. А так придётся вербовать нового воина."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:558
@@ -1306,8 +1307,8 @@ msgid ""
 "The village supports one unit and pays 1 gold per turn. You're only losing 1 "
 "gold per turn now."
 msgstr ""
-"Деревня позволяет содержать одного бойца и платит одну золотую монету за "
-"ход. Теперь ты теряешь только одну монету за ход."
+"Деревня позволяет содержать одного бойца и даёт одну золотую монету за ход. "
+"Теперь ты теряешь только одну монету за ход."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:887
@@ -1352,8 +1353,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:918
 msgid "Orcs have no ranged attack, so use your archers against them."
 msgstr ""
-"У орков нет оружия дальнего действия, поэтому используй против них своих "
-"лучников."
+"У орков нет метательного оружия, поэтому используй против них своих лучников."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:921
