@@ -504,6 +504,12 @@ std::ostream& operator<<(std::ostream& stream, const tevent event)
 		case MOUSE_MOTION           : stream << "mouse motion"; break;
 		case SDL_LEFT_BUTTON_DOWN   : stream << "SDL left button down"; break;
 		case SDL_LEFT_BUTTON_UP     : stream << "SDL left button up"; break;
+		case LEFT_BUTTON_DOWN       : stream << "left button down"; break;
+		case LEFT_BUTTON_UP         : stream << "left button up"; break;
+		case LEFT_BUTTON_CLICK      : stream << "left button click"; break;
+		case LEFT_BUTTON_DOUBLE_CLICK
+		                            : stream << "left button double click";
+		                              break;
 		case SDL_MIDDLE_BUTTON_DOWN : stream << "SDL middle button down"; break;
 		case SDL_MIDDLE_BUTTON_UP   : stream << "SDL middle button up"; break;
 		case SDL_RIGHT_BUTTON_DOWN  : stream << "SDL right button down"; break;
@@ -513,7 +519,6 @@ std::ostream& operator<<(std::ostream& stream, const tevent event)
 		case SDL_WHEEL_UP           : stream << "SDL wheel up"; break;
 		case SDL_WHEEL_DOWN         : stream << "SDL wheel down"; break;
 		case SDL_KEY_DOWN           : stream << "SDL key down"; break;
-		default                     : assert(false);
 	}
 
 	return stream;
