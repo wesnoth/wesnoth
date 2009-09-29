@@ -13,7 +13,7 @@ local function insert_before_nl(s, t)
 	return string.gsub(tostring(s), "[^\n]*", "%0" .. t, 1)
 end
 
-local function generate_objectives(cfg, team, silent)
+local function generate_objectives(cfg)
 	local _ = wesnoth.textdomain("wesnoth")
 	local objectives = ""
 	local win_objectives = ""
