@@ -20,7 +20,10 @@
 #include "foreach.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/widgets/event_handler.hpp"
+#include "gui/widgets/window.hpp"
 #include "game_preferences.hpp"
+
+#include <boost/bind.hpp>
 
 namespace gui2 {
 
@@ -81,6 +84,24 @@ std::string ttext_history::get_value() const
 	} else {
 		return history_->at(pos_);
 	}
+}
+
+ttext_box::ttext_box()
+	: ttext_()
+	, history_()
+	, text_x_offset_(0)
+	, text_y_offset_(0)
+	, text_height_(0)
+	, dragging_(false)
+{
+	set_wants_mouse_left_double_click();
+
+	connect_signal<event::LEFT_BUTTON_DOWN>(boost::bind(
+				&ttext_box::signal_handler_left_button_down, this, _1, _2));
+	connect_signal<event::LEFT_BUTTON_UP>(boost::bind(
+				&ttext_box::signal_handler_left_button_up, this, _1, _2));
+	connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(&ttext_box
+				::signal_handler_left_button_double_click, this, _1, _2));
 }
 
 void ttext_box::set_size(const tpoint& origin, const tpoint& size)
@@ -344,6 +365,42 @@ const std::string& ttext_box::get_control_type() const
 {
 	static const std::string type = "text_box";
 	return type;
+}
+
+void ttext_box::signal_handler_left_button_down(
+		const event::tevent event, bool& handled)
+{
+	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+
+	/*
+	 * Copied from the base class see how we can do inheritance with the new
+	 * system...
+	 */
+	get_window()->keyboard_capture(this);
+	get_window()->mouse_capture();
+
+	/** @todo enable this part as well. */
+//	handle_mouse_selection(event, true);
+
+	handled = true;
+}
+
+void ttext_box::signal_handler_left_button_up(
+		const event::tevent event, bool& handled)
+{
+	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+
+	dragging_ = false;
+	handled = true;
+}
+
+void ttext_box::signal_handler_left_button_double_click(
+		const event::tevent event, bool& handled)
+{
+	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+
+	select_all();
+	handled = true;
 }
 
 } //namespace gui2

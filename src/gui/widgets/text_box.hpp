@@ -113,16 +113,7 @@ private:
 class ttext_box : public ttext_
 {
 public:
-	ttext_box() :
-		ttext_(),
-		history_(),
-		text_x_offset_(0),
-		text_y_offset_(0),
-		text_height_(0),
-		dragging_(false)
-	{
-		set_wants_mouse_left_double_click();
-	}
+	ttext_box();
 
 	/** Saves the text in the widget to the history. */
 	void save_to_history() { history_.push(get_value()); }
@@ -254,6 +245,16 @@ private:
 	/** Inherited from tcontrol. */
 	void load_config_extra();
 
+	/***** ***** ***** signal handlers ***** ****** *****/
+
+	void signal_handler_left_button_down(
+			const event::tevent event, bool& handled);
+
+	void signal_handler_left_button_up(
+			const event::tevent event, bool& handled);
+
+	void signal_handler_left_button_double_click(
+			const event::tevent event, bool& handled);
 };
 
 } //namespace gui2
