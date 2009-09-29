@@ -208,6 +208,8 @@ stringfixes = {
 ('is bringing with him, though"','is bringing with him, though."'),
 ('I an defeated.','I am defeated.'),
 ('The orcs are not defeated defeated,','The orcs are not defeated,'),
+("but out army", "but our army"),
+("arrives!.", "arrives!"),
 ),
 
 "wesnoth-sotbe" :(
