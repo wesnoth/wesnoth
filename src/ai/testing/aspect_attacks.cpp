@@ -35,6 +35,12 @@ static lg::log_domain log_ai_testing_aspect_attacks("ai/aspect/attacks");
 aspect_attacks::aspect_attacks(readonly_context &context, const config &cfg, const std::string &id)
 	: typesafe_aspect<attacks_vector>(context,cfg,id)
 {
+	if (const config &filter_own = cfg.child("filter_own")) {
+		filter_own_ = filter_own;
+	}
+	if (const config &filter_enemy = cfg.child("filter_enemy")) {
+		filter_enemy_ = filter_enemy;
+	}
 }
 
 aspect_attacks::~aspect_attacks()
@@ -60,6 +66,9 @@ boost::shared_ptr<attacks_vector> aspect_attacks::analyze_targets() const
 		std::vector<map_location> unit_locs;
 		for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
 			if(i->second.side() == get_side() && i->second.attacks_left()) {
+				if (!i->second.matches_filter(vconfig(filter_own_),i->first)) {
+					continue;
+				}
 				unit_locs.push_back(i->first);
 			}
 		}
@@ -79,6 +88,9 @@ boost::shared_ptr<attacks_vector> aspect_attacks::analyze_targets() const
 		// and who is not invisible or petrified.
 		if(current_team().is_enemy(j->second.side()) && !j->second.incapacitated() &&
 		   j->second.invisible(j->first,units_,get_info().teams) == false) {
+			if (!j->second.matches_filter(vconfig(filter_enemy_),j->first)) {
+				continue;
+			}
 			map_location adjacent[6];
 			get_adjacent_tiles(j->first,adjacent);
 			attack_analysis analysis;

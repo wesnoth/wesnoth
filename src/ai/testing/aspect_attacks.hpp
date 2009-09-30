@@ -67,6 +67,8 @@ protected:
 
 	int rate_terrain(const unit& u, const map_location& loc) const;
 	double power_projection(const map_location& loc, const move_map& dstsrc) const;
+	config filter_own_;
+	config filter_enemy_;
 };
 
 
