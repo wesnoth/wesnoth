@@ -51,6 +51,9 @@ public:
 	virtual void recalculate() const;
 
 
+	virtual config to_config() const;
+
+
 protected:
 	boost::shared_ptr<attacks_vector> analyze_targets() const;
 

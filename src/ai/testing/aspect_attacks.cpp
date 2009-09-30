@@ -392,6 +392,18 @@ int aspect_attacks::rate_terrain(const unit& u, const map_location& loc) const
 }
 
 
+config aspect_attacks::to_config() const
+{
+	config cfg = typesafe_aspect<attacks_vector>::to_config();
+	if (!filter_own_.empty()) {
+		cfg.add_child("filter_own",filter_own_);
+	}
+	if (!filter_enemy_.empty()) {
+		cfg.add_child("filter_enemy",filter_enemy_);
+	}
+	return cfg;
+}
+
 double aspect_attacks::power_projection(const map_location& loc, const move_map& dstsrc) const
 {
 	map_location used_locs[6];
