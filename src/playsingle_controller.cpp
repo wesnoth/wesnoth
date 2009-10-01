@@ -480,7 +480,8 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		}
 
 		savegame::game_savegame save(gamestate_, *gui_, to_config(), preferences::compress_saves());
-		save.save_game_interactive((*gui_).video(), _("A network disconnection has occurred, and the game\ncannot continue. Do you want to save the game?"), gui::YES_NO);
+		/** @todo FIXME: remove the odd linebreak after the string freeze */
+		save.save_game_interactive(_("A network disconnection has occurred, and the game\ncannot continue. Do you want to save the game?"), gui::YES_NO);
 		if(disconnect) {
 			throw network::error();
 		} else {

@@ -316,7 +316,7 @@ void play_controller::save_game(){
 	if(save_blocker::try_block()) {
 		save_blocker::save_unblocker unblocker;
 		savegame::game_savegame save(gamestate_, *gui_, to_config(), preferences::compress_saves());
-		save.save_game_interactive((*gui_).video(), "", gui::OK_CANCEL);
+		save.save_game_interactive("", gui::OK_CANCEL);
 	} else {
 		save_blocker::on_unblock(this,&play_controller::save_game);
 	}
@@ -326,7 +326,7 @@ void play_controller::save_replay(){
 	if(save_blocker::try_block()) {
 		save_blocker::save_unblocker unblocker;
 		savegame::replay_savegame save(gamestate_, preferences::compress_saves());
-		save.save_game_interactive((*gui_).video(), "", gui::OK_CANCEL);
+		save.save_game_interactive("", gui::OK_CANCEL);
 	} else {
 		save_blocker::on_unblock(this,&play_controller::save_replay);
 	}
@@ -1193,7 +1193,7 @@ void play_controller::process_oos(const std::string& msg) const
 	message << "The game is out of sync. It might not make much sense to continue.\n\nDo you want to save your game?";
 	message << "Error details:\n\n" << msg;
 
-	savegame::oos_savegame save(*resources::state_of_game, *resources::screen, to_config(), preferences::compress_saves());
-	save.save_game_interactive(resources::screen->video(), message.str(), gui::YES_NO); // can throw end_level_exception
+	savegame::oos_savegame save(to_config());
+	save.save_game_interactive(message.str(), gui::YES_NO); // can throw end_level_exception
 }
 

@@ -19,6 +19,7 @@
 #include "foreach.hpp"
 #include "game_display.hpp"
 #include "game_end_exceptions.hpp"
+#include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/game_load.hpp"
 #include "gui/dialogs/game_save.hpp"
@@ -28,6 +29,7 @@
 #include "map.hpp"
 #include "map_label.hpp"
 #include "replay.hpp"
+#include "resources.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 #include "statistics.hpp"
@@ -622,15 +624,16 @@ bool savegame::save_game_automatic(CVideo& video, bool ask_for_overwrite, const 
 		overwrite = check_overwrite(video);
 
 		if (!overwrite)
-			return save_game_interactive(video, "", gui::OK_CANCEL);
+			return save_game_interactive("", gui::OK_CANCEL);
 	}
 
 	return save_game(&video);
 }
 
-bool savegame::save_game_interactive(CVideo& video, const std::string& message,
+bool savegame::save_game_interactive(const std::string& message,
 									 gui::DIALOG_TYPE dialog_type)
 {
+	CVideo& video = resources::screen->video();
 	show_confirmation_ = true;
 	create_filename();
 
@@ -978,9 +981,8 @@ void autosave_savegame::create_filename()
 	set_filename(filename);
 }
 
-oos_savegame::oos_savegame(game_state &gamestate,
-					game_display& gui, const config& snapshot_cfg, const bool compress_saves)
-	: game_savegame(gamestate, gui, snapshot_cfg, compress_saves)
+oos_savegame::oos_savegame(const config& snapshot_cfg)
+	: game_savegame(*resources::state_of_game, *resources::screen, snapshot_cfg, preferences::compress_saves())
 {}
 
 int oos_savegame::show_save_dialog(CVideo& video, const std::string& message, const gui::DIALOG_TYPE /*dialog_type*/)

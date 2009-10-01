@@ -157,7 +157,7 @@ public:
 
 	/** Save a game interactively through the savegame dialog. Used for manual midgame and replay
 		saves. The return value denotes, if the save was successful or not. */
-	bool save_game_interactive(CVideo& video, const std::string& message,
+	bool save_game_interactive(const std::string& message,
 		gui::DIALOG_TYPE dialog_type);
 
 	const std::string& filename() const { return filename_; }
@@ -277,8 +277,7 @@ private:
 class oos_savegame : public game_savegame
 {
 public:
-	oos_savegame(game_state &gamestate,
-				 game_display& gui, const config& snapshot_cfg, const bool compress_saves);
+	oos_savegame(const config& snapshot_cfg);
 
 private:
 	/** Display the save game dialog. */

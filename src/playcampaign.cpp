@@ -586,9 +586,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 				while(retry) {
 					retry = false;
-					retry = !save.save_game_interactive(disp,
-						_("Do you want to save your game?"),
-						gui::YES_NO)
+					retry = !save.save_game_interactive(_("Do you want to save your game?"), gui::YES_NO)
 				}
 #else
 				save.save_game_automatic(disp.video());
