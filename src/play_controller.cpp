@@ -487,8 +487,6 @@ void play_controller::do_init_side(const unsigned int team_index){
 			game_events::fire("new turn");
 			previous_turn_ = turn();
 		}
-		// Fire side turn event only if real side change occurs,
-		// not counting changes from void to a side
 		game_events::fire("side turn");
 	}
 
@@ -496,7 +494,7 @@ void play_controller::do_init_side(const unsigned int team_index){
 	// and the player should get income now.
 	// Healing/income happen if it's not the first turn of processing,
 	// or if we are loading a game.
-	if (!loading_game_ && turn() > 1) {
+	if (!loading_game_ && turn() > start_turn_) {
 		for(unit_map::iterator i = units_.begin(); i != units_.end(); ++i) {
 			if (i->second.side() == player_number_) {
 				i->second.new_turn();
