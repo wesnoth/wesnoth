@@ -25,7 +25,6 @@
 #include "unit_types.hpp"
 #include "unit_map.hpp"
 
-class config_writer;
 class game_display;
 class game_state;
 class vconfig;
@@ -180,7 +179,6 @@ public:
 	 * */
 	void read(const config& cfg, bool use_traits=true, game_state* state = 0);
 	void write(config& cfg) const;
-//	void write(config_writer& out) const;
 
 	void set_role(const std::string& role) { role_ = role; }
 	const std::string &get_role() const { return role_; }
