@@ -2255,6 +2255,9 @@ void server::process_data_game(const network::connection sock,
 		if (!g->is_player(sock)) return;
 		if ((*info)["type"] == "termination") {
 			g->set_termination_reason((*info)["condition"].to_string());
+			if ((*info)["condition"].to_string() == "out of sync") {
+				g->send_server_message_to_all((pl->second.name() + " reports out of sync errors.").c_str());
+			}
 		}
 		return;
 	} else if (data.child("turn")) {
