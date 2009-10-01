@@ -194,8 +194,8 @@ protected:
 
 	const unit_type::experience_accelerator xp_mod_;
 	//if a team is specified whose turn it is, it means we're loading a game
-	//instead of starting a fresh one
-	const bool loading_game_;
+	//instead of starting a fresh one. Gets reset to false after init_side
+	bool loading_game_;
 
 	int first_human_team_;
 	int player_number_;

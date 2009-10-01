@@ -475,8 +475,8 @@ void play_controller::do_init_side(const unsigned int team_index){
 	log_scope("player turn");
 	team& current_team = teams_[team_index];
 
-	bool real_side_change = true;
-	if (!loading_game_ || int(team_index) + 1 != first_player_ || turn() > start_turn_) {
+	// If this is right after loading a game we don't need to fire events and such. It was already done before saving.
+	if (!loading_game_) {
 		if (turn() != previous_turn_)
 		{
 			std::stringstream event_stream;
@@ -490,21 +490,13 @@ void play_controller::do_init_side(const unsigned int team_index){
 		// Fire side turn event only if real side change occurs,
 		// not counting changes from void to a side
 		game_events::fire("side turn");
-	} else {
-		real_side_change = false;
 	}
 
 	// We want to work out if units for this player should get healed,
 	// and the player should get income now.
 	// Healing/income happen if it's not the first turn of processing,
-	// or if we are loading a game, and this is not the player it started with.
-	bool turn_refresh =
-		(turn() > start_turn_ ||
-			(loading_game_ && int(team_index) + 1 != first_player_))
-								&& (turn() > 1);
-
-
-	if(turn_refresh) {
+	// or if we are loading a game.
+	if (!loading_game_ && turn() > 1) {
 		for(unit_map::iterator i = units_.begin(); i != units_.end(); ++i) {
 			if (i->second.side() == player_number_) {
 				i->second.new_turn();
@@ -523,8 +515,6 @@ void play_controller::do_init_side(const unsigned int team_index){
 
 		calculate_healing(player_number_, !skip_replay_);
 		reset_resting(units_, player_number_);
-	}
-	if(turn_refresh || real_side_change) {
 		game_events::fire("turn refresh");
 	}
 
@@ -541,6 +531,7 @@ void play_controller::do_init_side(const unsigned int team_index){
 	if (!recorder.is_skipping() && !skip_replay_){
 		gui_->scroll_to_leader(units_, player_number_,game_display::ONSCREEN,false);
 	}
+	loading_game_ = false;
 }
 
 //builds the snapshot config from its members and their configs respectively
