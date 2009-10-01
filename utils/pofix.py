@@ -113,6 +113,7 @@ stringfixes = {
 ("have good defences in water", "have good defenses in water"),
 ("have a low defence", "have a low defense"),
 ("characers", "characters"),
+("That will let you chose which hex you put a new unit in.", "That will let you choose which hex you put a new unit in."),
 ),
 
 "wesnoth-trow" :(
@@ -267,7 +268,7 @@ stringfixes = {
 # Speak, if all argument files are newer than this timestamp
 # Try to use UTC here
 # date --utc "+%s  # %c"
-timecheck = 1250986724  # Sun 23 Aug 2009 12:18:44 AM UTC
+timecheck = 1254427151  # Thu 01 Oct 2009 07:59:11 PM UTC
 
 
 import os, sys, time, stat
