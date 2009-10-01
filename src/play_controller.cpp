@@ -464,7 +464,7 @@ void play_controller::init_side(const unsigned int team_index, bool is_replay){
 	if (!current_team.is_local()
 		|| is_replay)
 		return;
-	recorder.init_side();
+	if (!loading_game_) recorder.init_side();
 	do_init_side(team_index);
 }
 
