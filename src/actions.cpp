@@ -297,7 +297,7 @@ void place_recruit(const unit &u, const map_location &recruit_location,
 			config cfg_unit1;
 			new_unit.write(cfg_unit1);
 			DBG_NG << cfg_unit1;
-			replay::throw_error(error_msg.str());
+			replay::process_error(error_msg.str());
 		}
 
 	} else if(wml_triggered == false) {
@@ -1643,7 +1643,7 @@ attack::attack(const map_location &attacker, const map_location &defender,
 	if(OOS_error_) {
 		delete bc_;
 		bc_ = NULL;
-		replay::throw_error(errbuf_.str());
+		replay::process_error(errbuf_.str());
 	}
 }
 

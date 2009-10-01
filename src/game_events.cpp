@@ -1493,7 +1493,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 				do_replay_handle(side, "random_number");
 				const config* const action = get_replay_source().get_next_action();
 				if(action == NULL || action->get_children("random_number").empty()) {
-					replay::throw_error("random_number expected but none found\n");
+					replay::process_error("random_number expected but none found\n");
 					return;
 				}
 
@@ -3319,7 +3319,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 				do_replay_handle(side, "choose");
 				const config* action = get_replay_source().get_next_action();
 				if (!action || !*(action = &action->child("choose"))) {
-					replay::throw_error("choice expected but none found\n");
+					replay::process_error("choice expected but none found\n");
 					return;
 				}
 				const std::string &val = (*action)["value"];
@@ -3329,7 +3329,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 				do_replay_handle(side, "input");
 				const config* action = get_replay_source().get_next_action();
 				if (!action || !*(action = &action->child("input"))) {
-					replay::throw_error("input expected but none found\n");
+					replay::process_error("input expected but none found\n");
 					return;
 				}
 				text_input_result = (*action)["text"];
@@ -3343,7 +3343,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 				errbuf << "invalid choice (" << option_chosen
 					<< ") was specified, choice 0 to " << (menu_items.size() - 1)
 					<< " was expected.\n";
-				replay::throw_error(errbuf.str());
+				replay::process_error(errbuf.str());
 				return;
 			}
 

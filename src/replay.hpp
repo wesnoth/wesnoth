@@ -125,7 +125,7 @@ public:
 
 	int ncommands();
 
-	static void throw_error(const std::string& msg);
+	static void process_error(const std::string& msg);
 
 private:
 	//generic for add_movement and add_attack

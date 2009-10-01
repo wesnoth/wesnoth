@@ -78,7 +78,7 @@ static void verify(const unit_map& units, const config& cfg) {
 					   << " but none in data source\n";
 			}
 		}
-		replay::throw_error(errbuf.str());
+		replay::process_error(errbuf.str());
 		errbuf.clear();
 	}
 
@@ -90,7 +90,7 @@ static void verify(const unit_map& units, const config& cfg) {
 			errbuf << "SYNC VERIFICATION FAILED: data source says there is a '"
 				   << un["type"] << "' (side " << un["side"] << ") at "
 				   << loc << " but there is no local record of it\n";
-			replay::throw_error(errbuf.str());
+			replay::process_error(errbuf.str());
 			errbuf.clear();
 		}
 
@@ -110,7 +110,7 @@ static void verify(const unit_map& units, const config& cfg) {
 
 		if(!is_ok) {
 			errbuf << "(SYNC VERIFICATION FAILED)\n";
-			replay::throw_error(errbuf.str());
+			replay::process_error(errbuf.str());
 			errbuf.clear();
 		}
 	}
@@ -146,11 +146,11 @@ void replay::append(const config& cfg)
 	cfg_.append(cfg);
 }
 
-void replay::throw_error(const std::string& msg)
+void replay::process_error(const std::string& msg)
 {
 	ERR_REPLAY << msg;
 
-	resources::controller->process_oos(msg);
+	resources::controller->process_oos(msg); // might throw end_level_exception(QUIT)
 }
 
 void replay::set_skip(bool skip)
@@ -885,7 +885,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				if(u->second.unrenamable()) {
 					std::stringstream errbuf;
 					errbuf << "renaming unrenamable unit " << u->second.id() << "\n";
-					replay::throw_error(errbuf.str());
+					replay::process_error(errbuf.str());
 					continue;
 				}
 				u->second.rename(name);
@@ -928,7 +928,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				errbuf << "recruitment index is illegal: " << val
 				       << " while this side only has " << recruits.size()
 				       << " units available for recruitment\n";
-				replay::throw_error(errbuf.str());
+				replay::process_error(errbuf.str());
 				continue;
 			}
 
@@ -938,7 +938,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			if(u_type == unit_type_data::types().end()) {
 				std::stringstream errbuf;
 				errbuf << "recruiting illegal unit: '" << *itor << "'\n";
-				replay::throw_error(errbuf.str());
+				replay::process_error(errbuf.str());
 				continue;
 			}
 
@@ -949,14 +949,14 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			} else {
 				std::stringstream errbuf;
 				errbuf << "cannot recruit unit: " << res << "\n";
-				replay::throw_error(errbuf.str());
+				replay::process_error(errbuf.str());
 			}
 
 			if(u_type->second.cost() > current_team.gold()) {
 				std::stringstream errbuf;
 				errbuf << "unit '" << u_type->second.id() << "' is too expensive to recruit: "
 				       << u_type->second.cost() << "/" << current_team.gold() << "\n";
-				replay::throw_error(errbuf.str());
+				replay::process_error(errbuf.str());
 			}
 			LOG_REPLAY << "recruit: team=" << side_num << " '" << u_type->second.id() << "' at (" << loc
 			       << ") cost=" << u_type->second.cost() << " from gold=" << current_team.gold() << ' ';
@@ -986,7 +986,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				current_team.spend_gold(game_config::recall_cost);
 				fix_shroud = !get_replay_source().is_skipping();
 			} else {
-				replay::throw_error("illegal recall: unit_id '" + unit_id + "' could not be found within the recall list.\n");
+				replay::process_error("illegal recall: unit_id '" + unit_id + "' could not be found within the recall list.\n");
 			}
 			check_checksums(*cfg);
 		}
@@ -1000,7 +1000,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			if(disband_unit != current_team.recall_list().end()) {
 				current_team.recall_list().erase(disband_unit);
 			} else {
-				replay::throw_error("illegal disband\n");
+				replay::process_error("illegal disband\n");
 			}
 		}
 		else if (const config &child = cfg->child("countdown_update"))
@@ -1015,7 +1015,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 					<< "Received update for :" << tval << " Current user :"
 					<< side_num << "\n" << " Updated value :" << val;
 
-				replay::throw_error(errbuf.str());
+				replay::process_error(errbuf.str());
 			} else {
 				(*resources::teams)[tval - 1].set_countdown_time(val);
 			}
@@ -1044,7 +1044,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				std::stringstream errbuf;
 				errbuf << "destination already occupied: "
 				       << dst << '\n';
-				replay::throw_error(errbuf.str());
+				replay::process_error(errbuf.str());
 				continue;
 			}
 			u = resources::units->find(src);
@@ -1052,7 +1052,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				std::stringstream errbuf;
 				errbuf << "unfound location for source of movement: "
 				       << src << " -> " << dst << '\n';
-				replay::throw_error(errbuf.str());
+				replay::process_error(errbuf.str());
 				continue;
 			}
 
@@ -1078,7 +1078,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			check_checksums(*cfg);
 
 			if (!destination || !source) {
-				replay::throw_error("no destination/source found in attack\n");
+				replay::process_error("no destination/source found in attack\n");
 				continue;
 			}
 
@@ -1101,12 +1101,12 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 
 			unit_map::iterator u = resources::units->find(src);
 			if (!u.valid()) {
-				replay::throw_error("unfound location for source of attack\n");
+				replay::process_error("unfound location for source of attack\n");
 				continue;
 			}
 
 			if(size_t(weapon_num) >= u->second.attacks().size()) {
-				replay::throw_error("illegal weapon type in attack\n");
+				replay::process_error("illegal weapon type in attack\n");
 				continue;
 			}
 
@@ -1115,14 +1115,14 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			if (!tgt.valid()) {
 				std::stringstream errbuf;
 				errbuf << "unfound defender for attack: " << src << " -> " << dst << '\n';
-				replay::throw_error(errbuf.str());
+				replay::process_error(errbuf.str());
 				continue;
 			}
 
 			if(def_weapon_num >=
 					static_cast<int>(tgt->second.attacks().size())) {
 
-				replay::throw_error("illegal defender weapon type in attack\n");
+				replay::process_error("illegal defender weapon type in attack\n");
 				continue;
 			}
 
@@ -1179,7 +1179,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 
 		} else {
 			if(! cfg->child("checksum")) {
-				replay::throw_error("unrecognized action:\n" + cfg->debug());
+				replay::process_error("unrecognized action:\n" + cfg->debug());
 			} else {
 				check_checksums(*cfg);
 			}
