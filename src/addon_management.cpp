@@ -344,8 +344,8 @@ namespace {
 				text = desc_[uchoice];
 			}
 
-			gui::dialog dlg(disp_, title, text, gui::MESSAGE);
-			dlg.show();
+			gui2::ttransient_message dlg(title, false, text, false);
+			dlg.show(disp_.video());
 
 			return gui::CONTINUE_DIALOG;
 		}
