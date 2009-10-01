@@ -1179,8 +1179,8 @@ void play_controller::process_oos(const std::string& msg) const
 
 	/** @todo FIXME: activate translation support after string freeze */
 	std::stringstream message;
-	message << "The game is out of sync. It might not make much sense to continue.\n\nDo you want to save your game?";
-	message << "Error details:\n\n" << msg;
+	message << "The game is out of sync. It might not make much sense to continue. Do you want to save your game?";
+	message << "\n\nError details:\n\n" << msg;
 
 	savegame::oos_savegame save(to_config());
 	save.save_game_interactive(message.str(), gui::YES_NO); // can throw end_level_exception
