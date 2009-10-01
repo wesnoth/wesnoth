@@ -316,16 +316,20 @@ namespace {
 	{
 		display& disp_;
 		std::vector<std::string> titles_, desc_;
+		gui::filter_textbox* filter_;
 
 	public:
-		display_description(display& disp, std::vector<std::string> const& titles, std::vector<std::string> const& descriptions)
+		display_description(display& disp, std::vector<std::string> const& titles, std::vector<std::string> const& descriptions, gui::filter_textbox* filter)
 			: disp_(disp)
 			, titles_(titles)
 			, desc_(descriptions)
+			, filter_(filter)
 		{}
 
-		virtual gui::dialog_button_action::RESULT button_pressed(int menu_selection)
+		virtual gui::dialog_button_action::RESULT button_pressed(int filter_choice)
 		{
+			assert(filter_ != NULL);
+			const int menu_selection = filter_->get_index(filter_choice);
 			if(menu_selection < 0) { return gui::CONTINUE_DIALOG; }
 			size_t const uchoice = static_cast<size_t>(menu_selection);
 
@@ -1084,14 +1088,14 @@ namespace {
 													  &addon_style, false);
 				addon_dialog.set_menu(addon_menu);
 
-				display_description description_helper(disp, titles, descriptions);
-
-				gui::dialog_button* description = new gui::dialog_button(disp.video(), _("Description"), gui::button::TYPE_PRESS, gui::CONTINUE_DIALOG, &description_helper);
-				addon_dialog.add_button(description, gui::dialog::BUTTON_EXTRA);
-
 				gui::filter_textbox* filter = new gui::filter_textbox(disp.video(),
 				_("Filter: "), options, options_to_filter, 1, addon_dialog, 300);
 				addon_dialog.set_textbox(filter);
+
+				display_description description_helper(disp, titles, descriptions, filter);
+
+				gui::dialog_button* description = new gui::dialog_button(disp.video(), _("Description"), gui::button::TYPE_PRESS, gui::CONTINUE_DIALOG, &description_helper);
+				addon_dialog.add_button(description, gui::dialog::BUTTON_EXTRA);
 
 				// Scroll the menu to the previous selection
 				addon_menu->move_selection(old_index);
