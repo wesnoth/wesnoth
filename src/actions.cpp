@@ -287,17 +287,17 @@ void place_recruit(const unit &u, const map_location &recruit_location,
 		assert(!wml_triggered);
 		const std::string rc = (*ran_results)["checksum"];
 		if(rc != checksum) {
-			ERR_NG << "SYNC: In recruit " << new_unit.type_id() <<
+			std::stringstream error_msg;
+			error_msg << "SYNC: In recruit " << new_unit.type_id() <<
 				": has checksum " << checksum <<
 				" while datasource has checksum " <<
 				rc << "\n";
+			ERR_NG << error_msg.str();
 
 			config cfg_unit1;
 			new_unit.write(cfg_unit1);
 			DBG_NG << cfg_unit1;
-			if (!game_config::ignore_replay_errors) {
-				throw replay::error("OOS while recruiting.");
-			}
+			replay::throw_error(error_msg.str());
 		}
 
 	} else if(wml_triggered == false) {
