@@ -1152,12 +1152,15 @@ attack::attack(const map_location &attacker, const map_location &defender,
 				const bool results_dies = (*ran_results)["dies"] == "yes";
 				if(results_dies != dies) {
 					errbuf_ << "SYNC: In attack " << a_.dump() << " vs " << d_.dump()
-						<< ": the data source the unit "
+						<< ": the data source says the defender "
 						<< (results_dies ? "perished" : "survived")
-						<< " while in-game calculations show the unit "
+						<< " while in-game calculations show the defender "
 						<< (dies ? "perished" : "survived")
 						<< " (over-riding game calculations with data source results)\n";
 					dies = results_dies;
+					// Set hitpoints to 0 so later checks don't invalidate the death.
+					// Maybe set to > 0 for the else case to avoid more errors?
+					if (results_dies) d_.get_unit().set_hitpoints(0);
 					OOS_error_ = true;
 				}
 			}
@@ -1417,12 +1420,15 @@ attack::attack(const map_location &attacker, const map_location &defender,
 				const bool results_dies = (*ran_results)["dies"] == "yes";
 				if(results_dies != dies) {
 					errbuf_ << "SYNC: In defend " << a_.dump() << " vs " << d_.dump()
-						<< ": the data source the unit "
+						<< ": the data source says the attacker "
 						<< (results_dies ? "perished" : "survived")
 						<< " while in-game calculations show the unit "
 						<< (dies ? "perished" : "survived")
 						<< " (over-riding game calculations with data source results)\n";
 					dies = results_dies;
+					// Set hitpoints to 0 so later checks don't invalidate the death.
+					// Maybe set to > 0 for the else case to avoid more errors?
+					if (results_dies) a_.get_unit().set_hitpoints(0);
 					OOS_error_ = true;
 				}
 			}

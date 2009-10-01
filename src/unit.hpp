@@ -145,6 +145,7 @@ public:
 	/** Called on every draw */
 	void refresh();
 
+	void set_hitpoints(int hitpoints) { hit_points_ = hitpoints; }
 	bool take_hit(int damage) { hit_points_ -= damage; return hit_points_ <= 0; }
 	void heal(int amount);
 	void heal_all() { hit_points_ = max_hitpoints(); }
