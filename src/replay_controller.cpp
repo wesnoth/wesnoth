@@ -79,7 +79,7 @@ replay_controller::~replay_controller(){
 
 bool replay_controller::continue_replay() {
 	return gui::dialog(*gui_,"",_("The file you have tried to load is corrupt."
-			" Continue playing?"),gui::OK_CANCEL).show();
+			" Continue playing?"),gui::OK_CANCEL).show() == 0;
 }
 
 void replay_controller::init(){
@@ -334,11 +334,14 @@ void replay_controller::play_side(const unsigned int /*team_index*/, bool){
 				play_controller::init_side(player_number_ - 1, true);
 
 				DBG_REPLAY << "doing replay " << player_number_ << "\n";
+continue_replay:
 				try {
 					::do_replay(*gui_, map_, units_, teams_,
 							player_number_, status_, gamestate_);
 				} catch(replay::error&) {
-					if(!continue_replay()) {
+					if (continue_replay()) {
+						goto continue_replay;
+					} else {
 						throw;
 					}
 				}
