@@ -32,7 +32,7 @@ static lg::log_domain log_network("network");
 
 turn_info::turn_info(unsigned team_num, replay_network_sender &replay_sender, undo_list &undo_stack) :
 	team_num_(team_num), undo_stack_(undo_stack),
-	replay_sender_(replay_sender), replay_error_("network_replay_error"),
+	replay_sender_(replay_sender),
 	host_transfer_("host_transfer"), replay_()
 {
 	/**
@@ -124,20 +124,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			replay_.append(t);
 			replay_.set_skip(skip_replay);
 
-			try{
-				turn_end = do_replay(team_num_, &replay_);
-			}
-			catch (replay::error& e){
-				//notify remote hosts of out of sync error
-				config cfg;
-				config& info = cfg.add_child("info");
-				info["type"] = "termination";
-				info["condition"] = "out of sync";
-				network::send_data(cfg, 0, true);
-
-				replay::last_replay_error = e.message; //FIXME: some better way to pass this?
-				replay_error_.notify_observers();
-			}
+			turn_end = do_replay(team_num_, &replay_);
 			recorder.add_config(t, replay::MARK_AS_SENT);
 		} else {
 

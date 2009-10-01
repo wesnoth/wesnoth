@@ -472,10 +472,6 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			return VICTORY;
 		}
 	} // end catch
-	catch(replay::error&) {
-		gui2::show_transient_message(gui_->video(),"",_("The file you have tried to load is corrupt"));
-		return QUIT;
-	}
 	catch(network::error& e) {
 		bool disconnect = false;
 		if(e.socket) {
@@ -525,13 +521,7 @@ void playsingle_controller::play_turn(bool save)
 
 		if (replaying_) {
 			LOG_NG << "doing replay " << player_number_ << "\n";
-			try {
-				replaying_ = ::do_replay(player_number_);
-			} catch(replay::error&) {
-				gui2::show_transient_message(gui_->video(),"",_("The file you have tried to load is corrupt"));
-
-				replaying_ = false;
-			}
+			replaying_ = ::do_replay(player_number_);
 			LOG_NG << "result of replay: " << (replaying_?"true":"false") << "\n";
 		} else {
 			// If a side is dead end the turn.

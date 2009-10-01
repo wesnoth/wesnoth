@@ -48,7 +48,6 @@ static lg::log_domain log_random("random");
 #define WRN_RND LOG_STREAM(warn, log_random)
 #define ERR_RND LOG_STREAM(err, log_random)
 
-std::string replay::last_replay_error;
 
 //functions to verify that the unit structure on both machines is identical
 
@@ -150,8 +149,8 @@ void replay::append(const config& cfg)
 void replay::throw_error(const std::string& msg)
 {
 	ERR_REPLAY << msg;
-	last_replay_error = msg;
-	if (!game_config::ignore_replay_errors) throw replay::error(msg);
+
+	resources::controller->process_oos(msg);
 }
 
 void replay::set_skip(bool skip)

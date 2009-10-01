@@ -56,7 +56,6 @@ public:
 	//which case data will not be forwarded
 	PROCESS_DATA_RESULT process_network_data(const config& cfg,network::connection from,std::deque<config>& backlog, bool skip_replay);
 
-	events::generic_event& replay_error() { return replay_error_; }
 	events::generic_event& host_transfer() { return host_transfer_; }
 private:
 	static void change_controller(const std::string& side, const std::string& controller);
@@ -68,7 +67,6 @@ private:
 
 	replay_network_sender& replay_sender_;
 
-	events::generic_event replay_error_;
 	events::generic_event host_transfer_;
 
 	replay replay_;

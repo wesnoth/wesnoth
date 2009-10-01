@@ -1184,3 +1184,16 @@ void play_controller::check_victory()
 	throw end_level_exception(found_player ? VICTORY : DEFEAT);
 }
 
+void play_controller::process_oos(const std::string& msg) const
+{
+	if (game_config::ignore_replay_errors) return;
+
+	/** @todo FIXME: activate translation support after string freeze */
+	std::stringstream message;
+	message << "The game is out of sync. It might not make much sense to continue.\n\nDo you want to save your game?";
+	message << "Error details:\n\n" << msg;
+
+	savegame::oos_savegame save(*resources::state_of_game, *resources::screen, to_config(), preferences::compress_saves());
+	save.save_game_interactive(resources::screen->video(), message.str(), gui::YES_NO); // can throw end_level_exception
+}
+

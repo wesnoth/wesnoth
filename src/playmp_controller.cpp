@@ -148,7 +148,6 @@ void playmp_controller::before_human_turn(bool save){
 	playsingle_controller::before_human_turn(save);
 
 	turn_data_ = new turn_info(player_number_, replay_sender_, undo_stack_);
-	turn_data_->replay_error().attach_handler(this);
 	turn_data_->host_transfer().attach_handler(this);
 }
 
@@ -219,30 +218,24 @@ void playmp_controller::play_human_turn(){
 			std::deque<config> backlog;
 
 			if(res != network::null_connection) {
-				try{
-					if (turn_data_->process_network_data(cfg,res,backlog,skip_replay_) == turn_info::PROCESS_RESTART_TURN)
+				if (turn_data_->process_network_data(cfg, res, backlog, skip_replay_) == turn_info::PROCESS_RESTART_TURN)
+				{
+					// Clean undo stack if turn has to be restarted (losing control)
+					if (!undo_stack_.empty())
 					{
-						// Clean undo stack if turn has to be restarted (losing control)
-						if (!undo_stack_.empty())
-						{
-							const std::string msg =_("Undoing moves not yet transmitted to the server.");
-							const int size = 20;
-							const int lifetime = 150;
-							SDL_Color colour = {255,255,255,255};
+						const std::string msg =_("Undoing moves not yet transmitted to the server.");
+						const int size = 20;
+						const int lifetime = 150;
+						SDL_Color colour = {255,255,255,255};
 
-							SDL_Rect rect = gui_->map_area();
-							font::add_floating_label(msg,size, colour,
+						SDL_Rect rect = gui_->map_area();
+						font::add_floating_label(msg,size, colour,
 								rect.w/2,rect.h/2,0.0,0.0,lifetime,rect,font::CENTER_ALIGN);
-						}
-
-						while(!undo_stack_.empty())
-							menu_handler_.undo(gui_->get_playing_team() + 1);
-						throw end_turn_exception(gui_->get_playing_team() + 1);
 					}
-				}
-				catch (replay::error& e){
-					process_oos(e.message);
-					throw e;
+
+					while(!undo_stack_.empty())
+						menu_handler_.undo(gui_->get_playing_team() + 1);
+					throw end_turn_exception(gui_->get_playing_team() + 1);
 				}
 			}
 
@@ -353,7 +346,6 @@ void playmp_controller::linger(upload_log& log)
 			// reimplement parts of play_side()
 			player_number_ = first_player_;
 			turn_data_ = new turn_info(player_number_, replay_sender_, undo_stack_);
-			turn_data_->replay_error().attach_handler(this);
 			turn_data_->host_transfer().attach_handler(this);
 
 			play_human_turn();
@@ -397,7 +389,6 @@ void playmp_controller::wait_for_upload()
 	const bool set_turn_data = (turn_data_ == 0);
 	if(set_turn_data) {
 		turn_data_ = new turn_info(player_number_, replay_sender_, undo_stack_);
-		turn_data_->replay_error().attach_handler(this);
 		turn_data_->host_transfer().attach_handler(this);
 	}
 
@@ -409,15 +400,9 @@ void playmp_controller::wait_for_upload()
 
 			std::deque<config> backlog;
 			if(res != network::null_connection) {
-				try{
-					if(turn_data_->process_network_data(cfg,res,backlog,skip_replay_)
-							== turn_info::PROCESS_END_LINGER) {
-						break;
-					}
-				}
-				catch (replay::error& e){
-					process_oos(e.message);
-					throw e;
+				if (turn_data_->process_network_data(cfg, res, backlog, skip_replay_)
+						== turn_info::PROCESS_END_LINGER) {
+					break;
 				}
 			}
 
@@ -451,7 +436,6 @@ void playmp_controller::after_human_turn(){
 	turn_data_->send_data();
 	playsingle_controller::after_human_turn();
 	if (turn_data_ != NULL){
-		turn_data_->replay_error().detach_handler(this);
 		turn_data_->host_transfer().detach_handler(this);
 		delete turn_data_;
 		turn_data_ = NULL;
@@ -475,7 +459,6 @@ void playmp_controller::play_network_turn(){
 
 	gui_->enable_menu("endturn", false);
 	turn_info turn_data(player_number_, replay_sender_, undo_stack_);
-	turn_data.replay_error().attach_handler(this);
 	turn_data.host_transfer().attach_handler(this);
 
 	for(;;) {
@@ -499,20 +482,13 @@ void playmp_controller::play_network_turn(){
 				if (skip_replay_ && replay_last_turn_ <= turn()){
 						skip_replay_ = false;
 				}
-				try{
-					const turn_info::PROCESS_DATA_RESULT result = turn_data.process_network_data(cfg,from,data_backlog_,skip_replay_);
-					if(result == turn_info::PROCESS_RESTART_TURN) {
-						player_type_changed_ = true;
-						return;
-					} else if(result == turn_info::PROCESS_END_TURN) {
-						break;
-					}
+				const turn_info::PROCESS_DATA_RESULT result = turn_data.process_network_data(cfg, from, data_backlog_, skip_replay_);
+				if (result == turn_info::PROCESS_RESTART_TURN) {
+					player_type_changed_ = true;
+					return;
+				} else if (result == turn_info::PROCESS_END_TURN) {
+					break;
 				}
-				catch (replay::error e){
-					process_oos(e.message);
-					throw e;
-				}
-
 			}
 		}
 
@@ -525,13 +501,19 @@ void playmp_controller::play_network_turn(){
 		gui_->draw();
 	}
 
-	turn_data.replay_error().detach_handler(this);
 	turn_data.host_transfer().detach_handler(this);
 	LOG_NG << "finished networked...\n";
 	return;
 }
 
-void playmp_controller::process_oos(const std::string& err_msg){
+void playmp_controller::process_oos(const std::string& err_msg) const {
+	// Notify the server of the oos error.
+	config cfg;
+	config& info = cfg.add_child("info");
+	info["type"] = "termination";
+	info["condition"] = "out of sync";
+	network::send_data(cfg, 0, true);
+
 	std::stringstream temp_buf;
 	std::vector<std::string> err_lines = utils::split(err_msg,'\n');
 	temp_buf << _("The game is out of sync, and cannot continue. There are a number of reasons this could happen: this can occur if you or another player have modified their game settings. This may mean one of the players is attempting to cheat. It could also be due to a bug in the game, but this is less likely.\n\nDo you want to save an error log of your game?");
@@ -557,9 +539,6 @@ void playmp_controller::handle_generic_event(const std::string& name){
 	}
 	else if ((name == "ai_gamestate_changed") || (name == "ai_sync_network")){
 		turn_data.sync_network();
-	}
-	else if (name == "network_replay_error"){
-		process_oos(replay::last_replay_error);
 	}
 	else if (name == "host_transfer"){
 		is_host_ = true;

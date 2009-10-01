@@ -40,6 +40,7 @@ public:
 	void stop_replay();
 	void replay_next_turn();
 	void replay_next_side();
+	void process_oos(const std::string& msg) const;
 	void replay_show_everything();
 	void replay_show_each();
 	void replay_show_team1();
@@ -55,7 +56,6 @@ protected:
 	virtual void init_gui();
 
 private:
-	bool continue_replay();
 	void init();
 	virtual void play_turn();
 	virtual void play_side(const unsigned int team_index, bool save);

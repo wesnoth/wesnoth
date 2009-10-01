@@ -83,6 +83,11 @@ public:
 	virtual void force_end_turn() = 0;
 	virtual void force_end_level(LEVEL_RESULT res) = 0;
 	virtual void check_end_level() = 0;
+	/**
+	 * Asks the user whether to continue on an OOS error.
+	 * @throw end_level_exception If the user wants to abort.
+	 */
+	virtual void process_oos(const std::string& msg) const;
 
 	void set_victory_when_enemies_defeated(bool e)
 	{ victory_when_enemies_defeated_ = e; }

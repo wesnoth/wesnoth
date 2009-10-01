@@ -19,6 +19,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "replay_controller.hpp"
+#include "savegame.hpp"
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
@@ -45,7 +46,6 @@ LEVEL_RESULT play_replay_level(const config& game_config,
 	}
 	catch(end_level_exception&){
 		DBG_NG << "play_replay_level: end_level_exception\n";
-	} catch (replay::error&) {
 	}
 
 	return VICTORY;
@@ -77,11 +77,6 @@ replay_controller::~replay_controller()
 	gui_->get_theme().theme_reset().detach_handler(this);
 }
 
-bool replay_controller::continue_replay() {
-	return gui::dialog(*gui_,"",_("The file you have tried to load is corrupt."
-			" Continue playing?"),gui::OK_CANCEL).show() != 0;
-}
-
 void replay_controller::init(){
 	DBG_REPLAY << "in replay_controller::init()...\n";
 
@@ -89,13 +84,7 @@ void replay_controller::init(){
 	const cursor::setter cursor_setter(cursor::NORMAL);
 	init_replay_display();
 
-	try {
-		fire_prestart(true);
-	} catch (replay::error&) {
-		if(!continue_replay()) {
-			throw;
-		}
-	}
+	fire_prestart(true);
 	init_gui();
 	statistics::fresh_stats();
 	set_victory_when_enemies_defeated(
@@ -103,13 +92,7 @@ void replay_controller::init(){
 
 	DBG_REPLAY << "first_time..." << (recorder.is_skipping() ? "skipping" : "no skip") << "\n";
 
-	try {
-		fire_start(!loading_game_);
-	} catch (replay::error&) {
-		if(!continue_replay()) {
-			throw;
-		}
-	}
+	fire_start(!loading_game_);
 	update_gui();
 
 	units_start_ = units_;
@@ -183,14 +166,8 @@ void replay_controller::reset_replay(){
 	(*gui_).invalidate_all();
 	(*gui_).draw();
 
-	try {
-		fire_prestart(true);
-		fire_start(!loading_game_);
-	} catch (replay::error&) {
-		if(!continue_replay()) {
-			throw;
-		}
-	}
+	fire_prestart(true);
+	fire_start(!loading_game_);
 	gui_->new_turn();
 	gui_->invalidate_game_status();
 	events::raise_draw_event();
@@ -236,6 +213,19 @@ void replay_controller::replay_next_side(){
 	if (b != NULL) { b->release(); }
 }
 
+void replay_controller::process_oos(const std::string& msg) const
+{
+	if (game_config::ignore_replay_errors) return;
+
+	/** @todo FIXME: activate translation support after string freeze */
+	std::stringstream message;
+	message << "The replay is corrupt/out of sync. It might not make much sense to continue.\n\nDo you want to save the game?";
+	message << "Error details:\n\n" << msg;
+
+	savegame::oos_savegame save(*resources::state_of_game, *resources::screen, to_config(), preferences::compress_saves());
+	save.save_game_interactive(resources::screen->video(), message.str(), gui::YES_NO); // can throw end_level_exception
+}
+
 void replay_controller::replay_show_everything(){
 	show_everything_ = true;
 	show_team_ = 0;
@@ -274,13 +264,7 @@ void replay_controller::play_replay(){
 
 		DBG_REPLAY << "starting main loop\n" << (SDL_GetTicks() - ticks_) << "\n";
 		for(; !recorder.at_end() && is_playing_; first_player_ = 1) {
-			try{
-				play_turn();
-			}
-			catch (replay::error&) //when user due to error want stop playing
-			{
-				is_playing_ = false;
-			}
+			play_turn();
 		} //end for loop
 		is_playing_ = false;
 	}
@@ -326,13 +310,7 @@ void replay_controller::play_side(const unsigned int /*team_index*/, bool){
 			play_controller::init_side(player_number_ - 1, true);
 
 			DBG_REPLAY << "doing replay " << player_number_ << "\n";
-			try {
-				::do_replay(player_number_);
-			} catch(replay::error&) {
-				if(!continue_replay()) {
-					throw;
-				}
-			}
+			do_replay(player_number_);
 
 			finish_side_turn();
 
@@ -355,10 +333,6 @@ void replay_controller::play_side(const unsigned int /*team_index*/, bool){
 
 		update_teams();
 		update_gui();
-	}
-	catch (replay::error&) //if replay throws an error, we don't want to get thrown out completely
-	{
-		is_playing_ = false;
 	}
 	catch(end_level_exception& e){
 		//VICTORY/DEFEAT end_level_exception shall not return to title screen

@@ -45,6 +45,7 @@ public:
 	void linger(upload_log& log);
 	/** Wait for the host to upload the next scenario. */
 	void wait_for_upload();
+	void process_oos(const std::string& err_msg) const;
 
 protected:
 	virtual void handle_generic_event(const std::string& name);
@@ -69,7 +70,6 @@ protected:
 	int beep_warning_time_;
 	mutable bool network_processing_stopped_;
 private:
-	void process_oos(const std::string& err_msg);
 	void set_end_scenario_button();
 	void reset_end_scenario_button();
 	static unsigned int replay_last_turn_;
