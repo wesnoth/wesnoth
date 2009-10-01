@@ -2189,7 +2189,8 @@ void display::refresh_report(reports::TYPE report_num, reports::report report,
 			text.set_font_size(item->font_size());
 			text.set_text(t, true);
 			text.set_maximum_width(area.w);
-			text.set_maximum_height(area.h);
+			// This will force the use of ellipsis
+			text.set_maximum_height(0);
 			surface s = text.render();
 			screen_.blit_surface(x, y, s);
 			area.w = s->w;
