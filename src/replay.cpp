@@ -887,6 +887,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 					std::stringstream errbuf;
 					errbuf << "renaming unrenamable unit " << u->second.id() << "\n";
 					replay::throw_error(errbuf.str());
+					continue;
 				}
 				u->second.rename(name);
 			} else {
@@ -929,6 +930,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				       << " while this side only has " << recruits.size()
 				       << " units available for recruitment\n";
 				replay::throw_error(errbuf.str());
+				continue;
 			}
 
 			std::set<std::string>::const_iterator itor = recruits.begin();
@@ -938,6 +940,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				std::stringstream errbuf;
 				errbuf << "recruiting illegal unit: '" << *itor << "'\n";
 				replay::throw_error(errbuf.str());
+				continue;
 			}
 
 			const std::string res = find_recruit_location(side_num, loc);
@@ -970,10 +973,6 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 
 		else if (const config &child = cfg->child("recall"))
 		{
-			if(current_team.recall_list().empty()) {
-				replay::throw_error("illegal recall\n");
-			}
-
 			const std::string& unit_id = child["value"];
 			map_location loc(child, resources::state_of_game);
 
@@ -986,19 +985,15 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				place_recruit(*recall_unit, loc, true, !get_replay_source().is_skipping());
 				current_team.recall_list().erase(recall_unit);
 				current_team.spend_gold(game_config::recall_cost);
+				fix_shroud = !get_replay_source().is_skipping();
 			} else {
 				replay::throw_error("illegal recall: unit_id '" + unit_id + "' could not be found within the recall list.\n");
 			}
-			fix_shroud = !get_replay_source().is_skipping();
 			check_checksums(*cfg);
 		}
 
 		else if (const config &child = cfg->child("disband"))
 		{
-			if(current_team.recall_list().empty()) {
-				replay::throw_error("illegal disband\n");
-			}
-
 			const std::string& unit_id = child["value"];
 			std::vector<unit>::iterator disband_unit = std::find_if(current_team.recall_list().begin(),
 				current_team.recall_list().end(), boost::bind(&unit::matches_id, _1, unit_id));
@@ -1051,6 +1046,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				errbuf << "destination already occupied: "
 				       << dst << '\n';
 				replay::throw_error(errbuf.str());
+				continue;
 			}
 			u = resources::units->find(src);
 			if (!u.valid()) {
@@ -1058,6 +1054,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				errbuf << "unfound location for source of movement: "
 				       << src << " -> " << dst << '\n';
 				replay::throw_error(errbuf.str());
+				continue;
 			}
 
 			bool show_move = preferences::show_ai_moves() || !(current_team.is_ai() || current_team.is_network_ai());
@@ -1083,6 +1080,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 
 			if (!destination || !source) {
 				replay::throw_error("no destination/source found in attack\n");
+				continue;
 			}
 
 			//we must get locations by value instead of by references, because the iterators
@@ -1105,10 +1103,12 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			unit_map::iterator u = resources::units->find(src);
 			if (!u.valid()) {
 				replay::throw_error("unfound location for source of attack\n");
+				continue;
 			}
 
 			if(size_t(weapon_num) >= u->second.attacks().size()) {
 				replay::throw_error("illegal weapon type in attack\n");
+				continue;
 			}
 
 			unit_map::const_iterator tgt = resources::units->find(dst);
@@ -1117,12 +1117,14 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				std::stringstream errbuf;
 				errbuf << "unfound defender for attack: " << src << " -> " << dst << '\n';
 				replay::throw_error(errbuf.str());
+				continue;
 			}
 
 			if(def_weapon_num >=
 					static_cast<int>(tgt->second.attacks().size())) {
 
 				replay::throw_error("illegal defender weapon type in attack\n");
+				continue;
 			}
 
 			rand_rng::seed_t seed = lexical_cast<rand_rng::seed_t>(child["seed"]);
