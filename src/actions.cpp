@@ -1641,7 +1641,8 @@ attack::attack(const map_location &attacker, const map_location &defender,
 	}
 
 	if(OOS_error_) {
-		// Memory leak on bc_.
+		delete bc_;
+		bc_ = NULL;
 		replay::throw_error(errbuf_.str());
 	}
 }
