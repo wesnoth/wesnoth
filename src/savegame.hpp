@@ -141,7 +141,7 @@ class savegame
 public:
 	/** The only constructor of savegame. The title parameter is only necessary if you
 		intend to do interactive saves. */
-	savegame(game_state& gamestate, const bool compress_saves, const std::string title = "Save");
+	savegame(game_state& gamestate, const bool compress_saves, const std::string& title = "Save");
 
 	virtual ~savegame() {}
 

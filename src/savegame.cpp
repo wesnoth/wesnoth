@@ -601,7 +601,7 @@ void loadgame::copy_era(config &cfg)
 	snapshot.add_child("era", era);
 }
 
-savegame::savegame(game_state& gamestate, const bool compress_saves, const std::string title)
+savegame::savegame(game_state& gamestate, const bool compress_saves, const std::string& title)
 	: gamestate_(gamestate)
 	, snapshot_()
 	, filename_()
