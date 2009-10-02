@@ -1308,7 +1308,7 @@ std::string game::debug_player_info() const {
 	std::stringstream result;
 	result << "game id: " << id_ << "\n";
 //	result << "players_.size: " << players_.size() << "\n";
-	for (user_vector::const_iterator p = players_.begin(); p != players_.end(); p++){
+	for (user_vector::const_iterator p = players_.begin(); p != players_.end(); ++p){
 		const player_map::const_iterator user = player_info_->find(*p);
 		if (user != player_info_->end()){
 			result << "player: " << user->second.name().c_str() << "\n";
@@ -1318,7 +1318,7 @@ std::string game::debug_player_info() const {
 		}
 	}
 //	result << "observers_.size: " << observers_.size() << "\n";
-	for (user_vector::const_iterator o = observers_.begin(); o != observers_.end(); o++){
+	for (user_vector::const_iterator o = observers_.begin(); o != observers_.end(); ++o){
 		const player_map::const_iterator user = player_info_->find(*o);
 		if (user != player_info_->end()){
 			result << "observer: " << user->second.name().c_str() << "\n";
