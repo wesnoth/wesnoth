@@ -58,18 +58,18 @@ void file_menu::display_current_files() {
 		to_show.push_back(path_up);
 	}
 	std::vector<std::string>::iterator it;
-	for (it = dirs_in_current_dir_.begin(); it != dirs_in_current_dir_.end(); it++) {
+	for (it = dirs_in_current_dir_.begin(); it != dirs_in_current_dir_.end(); ++it) {
 		// Add an image to show that these are directories.
 		std::stringstream ss;
 		ss << font::IMAGE << dir_picture << COLUMN_SEPARATOR << *it;
 		to_show.push_back(ss.str());
 	}
-	for (it = files_in_current_dir_.begin(); it != files_in_current_dir_.end(); it++) {
+	for (it = files_in_current_dir_.begin(); it != files_in_current_dir_.end(); ++it) {
 		const std::string display_string = COLUMN_SEPARATOR + *it;
 		to_show.push_back(display_string);
 	}
 	const int menu_font_size = font::SIZE_NORMAL; // Known from menu.cpp.
-	for (it = to_show.begin(); it != to_show.end(); it++) {
+	for (it = to_show.begin(); it != to_show.end(); ++it) {
 		// Make sure that all lines fit.
 		// Guess the width of the scrollbar to be 30 since it is not accessible from here.
 		// -25 to compensate for the picture column.
