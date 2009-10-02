@@ -1527,7 +1527,7 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 				// simple username was used to prevent accidental bans.
 				if (utils::isvalid_username(target)) {
 					for (std::deque<connection_log>::const_iterator i = ip_log_.begin();
-							i != ip_log_.end(); i++) {
+							i != ip_log_.end(); ++i) {
 						if (i->nick == target) {
 							banned = true;
 							out << ban_manager_.ban(i->ip, parsed_time, reason, issuer_name, group, target);
