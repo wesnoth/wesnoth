@@ -363,7 +363,7 @@ void game::transfer_side_control(const network::connection sock, const simple_wm
 	}
 	//find the player that is passed control
 	player_map::iterator newplayer;
-	for (newplayer = player_info_->begin(); newplayer != player_info_->end(); newplayer++) {
+	for (newplayer = player_info_->begin(); newplayer != player_info_->end(); ++newplayer) {
 		if (newplayer_name == newplayer->second.name().c_str()) {
 			break;
 		}
