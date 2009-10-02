@@ -209,8 +209,7 @@ upload_log::~upload_log()
 	if (game_finished(game_))
 		config_.add_child("game", *game_);
 
-	if (game_)
-		delete game_;
+	delete game_;
 
 	if (enabled_ && !config_.empty() && !game_config::debug) {
 		config_["version"] = VERSION;
