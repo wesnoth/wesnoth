@@ -552,7 +552,8 @@ game_state::game_state(const game_state& state) :
 	variables(),
 	temporaries(),
 	generator_setter(&recorder),
-	classification_()
+	classification_(),
+	mp_settings_()
 {
 	*this = state;
 }
