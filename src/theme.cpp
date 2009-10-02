@@ -766,13 +766,13 @@ void theme::set_known_themes(const config* cfg)
 }
 
 std::vector<std::string> theme::get_known_themes(){
-        std::vector<std::string> names;
+    std::vector<std::string> names;
 
 
-        for(std::map<std::string, config>::iterator p_thm=known_themes.begin();p_thm!=known_themes.end();p_thm++){
-	  names.push_back(p_thm->first);
-	}
-        return(names);
+    for(std::map<std::string, config>::iterator p_thm=known_themes.begin();p_thm!=known_themes.end();++p_thm){
+        names.push_back(p_thm->first);
+    }
+    return(names);
 }
 
 theme::menu* theme::refresh_title(const std::string& id, const std::string& new_title){
