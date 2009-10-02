@@ -41,47 +41,28 @@ namespace ai {
 struct move_cost_calculator : cost_calculator
 {
 	move_cost_calculator(const unit& u, const gamemap& map,
-			     const unit_map& units,
-			     const map_location& loc,
-			     const move_map& enemy_dstsrc)
+			const unit_map& units, const move_map& enemy_dstsrc)
 	  : unit_(u), map_(map), units_(units),
-	    loc_(loc), enemy_dstsrc_(enemy_dstsrc),
+	    enemy_dstsrc_(enemy_dstsrc),
 		avoid_enemies_(u.usage() == "scout")
 	{}
 
-	virtual double cost(const map_location& loc, const double) const
+	double cost(const map_location& loc, const double) const
 	{
-		/*
-		if(!map_.on_board(loc))
-			return 1000.0;
-
-		// if this unit can move to that location this turn, it has a very very low cost
-		typedef std::multimap<map_location,map_location>::const_iterator Itor;
-		std::pair<Itor,Itor> range = dstsrc_.equal_range(loc);
-		while(range.first != range.second) {
-			if(range.first->second == loc_) {
-				return 0.01;
-			}
-			++range.first;
-		}
-		*/
-		assert(map_.on_board(loc));
-
 		const t_translation::t_terrain terrain = map_[loc];
 
-		const double modifier = 1.0; //move_type_.defense_modifier(map_,terrain);
-		const double move_cost = unit_.movement_cost(terrain);//move_type_[terrain];
+		const double move_cost = unit_.movement_cost(terrain);
 
-		const int enemies = 1 + (avoid_enemies_ ? enemy_dstsrc_.count(loc) : 0);
-		double res = modifier*move_cost*double(enemies);
+		double res = move_cost;
+		if(avoid_enemies_){
+			res *= 1.0 + enemy_dstsrc_.count(loc);
+		}
 
 		//if there is a unit (even a friendly one) on this tile, we increase the cost to
 		//try discourage going through units, to thwart the 'single file effect'
 		if (units_.count(loc))
 			res *= 4.0;
 
-		VALIDATE(res > 0,
-			_("Movement cost is 0, probably a terrain with movement cost of 0."));
 		return res;
 	}
 
@@ -89,8 +70,6 @@ private:
 	const unit& unit_;
 	const gamemap& map_;
 	const unit_map& units_;
-//	mutable std::map<t_translation::t_terrain,int> move_type_;
-	const map_location loc_;
 	const move_map& enemy_dstsrc_;
 	const bool avoid_enemies_;
 };
@@ -326,7 +305,7 @@ std::pair<map_location,map_location> ai_default::choose_move(std::vector<target>
 		return std::pair<location,location>(u->first,u->first);
 	}
 
-	const move_cost_calculator cost_calc(u->second, map_, units_, u->first, enemy_dstsrc);
+	const move_cost_calculator cost_calc(u->second, map_, units_, enemy_dstsrc);
 
 	//choose the best target for that unit
 	for(std::vector<target>::iterator tg = targets.begin(); tg != targets.end(); ++tg) {
@@ -429,7 +408,7 @@ std::pair<map_location,map_location> ai_default::choose_move(std::vector<target>
 
 			raise_user_interact();
 
-			const move_cost_calculator calc(u->second, map_, units_, u->first, enemy_dstsrc);
+			const move_cost_calculator calc(u->second, map_, units_, enemy_dstsrc);
 			const double locStopValue = std::min(best_target->value / best_rating, 100.0);
 			plain_route cur_route = a_star_search(u->first, best_target->loc, locStopValue, &calc, map_.w(), map_.h());
 
