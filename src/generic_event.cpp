@@ -83,7 +83,7 @@ void generic_event::notify_observers(){
 		notify_active_ = true;
 		try{
 			for (std::vector<observer*>::const_iterator it = observers_.begin();
-				it != observers_.end(); it++){
+				it != observers_.end(); ++it){
 				(*it)->handle_generic_event(name_);
 			}
 		}
