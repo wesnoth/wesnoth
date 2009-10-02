@@ -46,7 +46,7 @@ std::map<Uint32, Uint32> recolor_range(const color_range& new_range, const std::
 	Uint16 reference_avg = (( old_r + old_g + old_b) / 3);
 
 	for(std::vector< Uint32 >::const_iterator temp_rgb2 = old_rgb.begin();
-	      temp_rgb2 != old_rgb.end(); temp_rgb2++)
+	      temp_rgb2 != old_rgb.end(); ++temp_rgb2)
 	{
 		Uint16 old_r=((*temp_rgb2) & 0X00FF0000)>>16;
 		Uint16 old_g=((*temp_rgb2) & 0X0000FF00)>>8;
