@@ -601,7 +601,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 	set_dirty();
 }
 
-void gamebrowser::select_game(const std::string id) {
+void gamebrowser::select_game(const std::string& id) {
 	if (id.empty()) return;
 
 	for (unsigned int i=0; i < games_.size(); i++) {
