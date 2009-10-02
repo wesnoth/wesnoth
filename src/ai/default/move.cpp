@@ -43,10 +43,9 @@ struct move_cost_calculator : cost_calculator
 	move_cost_calculator(const unit& u, const gamemap& map,
 			     const unit_map& units,
 			     const map_location& loc,
-						 const move_map& dstsrc,
-						 const move_map& enemy_dstsrc)
+			     const move_map& enemy_dstsrc)
 	  : unit_(u), map_(map), units_(units),
-	    loc_(loc), dstsrc_(dstsrc), enemy_dstsrc_(enemy_dstsrc),
+	    loc_(loc), enemy_dstsrc_(enemy_dstsrc),
 		avoid_enemies_(u.usage() == "scout")
 	{}
 
@@ -92,7 +91,7 @@ private:
 	const unit_map& units_;
 //	mutable std::map<t_translation::t_terrain,int> move_type_;
 	const map_location loc_;
-	const move_map dstsrc_, enemy_dstsrc_;
+	const move_map& enemy_dstsrc_;
 	const bool avoid_enemies_;
 };
 
@@ -327,7 +326,7 @@ std::pair<map_location,map_location> ai_default::choose_move(std::vector<target>
 		return std::pair<location,location>(u->first,u->first);
 	}
 
-	const move_cost_calculator cost_calc(u->second, map_, units_, u->first, dstsrc, enemy_dstsrc);
+	const move_cost_calculator cost_calc(u->second, map_, units_, u->first, enemy_dstsrc);
 
 	//choose the best target for that unit
 	for(std::vector<target>::iterator tg = targets.begin(); tg != targets.end(); ++tg) {
@@ -430,7 +429,7 @@ std::pair<map_location,map_location> ai_default::choose_move(std::vector<target>
 
 			raise_user_interact();
 
-			const move_cost_calculator calc(u->second, map_, units_, u->first, dstsrc, enemy_dstsrc);
+			const move_cost_calculator calc(u->second, map_, units_, u->first, enemy_dstsrc);
 			const double locStopValue = std::min(best_target->value / best_rating, 100.0);
 			plain_route cur_route = a_star_search(u->first, best_target->loc, locStopValue, &calc, map_.w(), map_.h());
 
