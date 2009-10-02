@@ -284,27 +284,32 @@ std::string t_string_base::to_serialized() const
 t_string_base& t_string_base::operator=(const t_string_base& string)
 {
 	value_ = string.value_;
+	translated_value_ = string.translated_value_;
+	translation_timestamp_ = string.translation_timestamp_;
 	translatable_ = string.translatable_;
 	last_untranslatable_ = string.last_untranslatable_;
-	translated_value_ = string.translated_value_;
 
 	return *this;
 }
 
 t_string_base& t_string_base::operator=(const std::string& string)
 {
-	translatable_ = false;
-	value_ =  string;
+	value_ = string;
 	translated_value_ = "";
+	translation_timestamp_ = 0;
+	translatable_ = false;
+	last_untranslatable_ = false;
 
 	return *this;
 }
 
 t_string_base& t_string_base::operator=(const char* string)
 {
-	translatable_ = false;
 	value_ = string;
 	translated_value_ = "";
+	translation_timestamp_ = 0;
+	translatable_ = false;
+	last_untranslatable_ = false;
 
 	return *this;
 }
