@@ -237,15 +237,14 @@ void loadscreen::dump_counters() const
 #define PRCNT_BY_PARSER      20
 
 void increment_filesystem_progress () {
-	unsigned newpct, oldpct;
 	// Only do something if the variable is filled in.
 	// I am assuming non parallel access here!
 	if (loadscreen::global_loadscreen != 0) {
 		if (loadscreen::global_loadscreen->filesystem_counter == 0) {
 			loadscreen::global_loadscreen->increment_progress(0, _("Verifying cache..."));
 		}
-		oldpct = (PRCNT_BY_FILESYSTEM * loadscreen::global_loadscreen->filesystem_counter) / CALLS_TO_FILESYSTEM;
-		newpct = (PRCNT_BY_FILESYSTEM * ++(loadscreen::global_loadscreen->filesystem_counter)) / CALLS_TO_FILESYSTEM;
+		const unsigned oldpct = (PRCNT_BY_FILESYSTEM * loadscreen::global_loadscreen->filesystem_counter) / CALLS_TO_FILESYSTEM;
+		const unsigned newpct = (PRCNT_BY_FILESYSTEM * ++(loadscreen::global_loadscreen->filesystem_counter)) / CALLS_TO_FILESYSTEM;
 		//std::cerr << "Calls " << num;
 		if(oldpct != newpct) {
 			//std::cerr << " percent " << newpct;
@@ -256,15 +255,14 @@ void increment_filesystem_progress () {
 }
 
 void increment_set_config_progress () {
-	unsigned newpct, oldpct;
 	// Only do something if the variable is filled in.
 	// I am assuming non parallel access here!
 	if (loadscreen::global_loadscreen != 0) {
 		if (loadscreen::global_loadscreen->setconfig_counter == 0) {
 			loadscreen::global_loadscreen->increment_progress(0, _("Reading unit files..."));
 		}
-		oldpct = (PRCNT_BY_SETCONFIG * loadscreen::global_loadscreen->setconfig_counter) / CALLS_TO_SETCONFIG;
-		newpct = (PRCNT_BY_SETCONFIG * ++(loadscreen::global_loadscreen->setconfig_counter)) / CALLS_TO_SETCONFIG;
+		const unsigned oldpct = (PRCNT_BY_SETCONFIG * loadscreen::global_loadscreen->setconfig_counter) / CALLS_TO_SETCONFIG;
+		const unsigned newpct = (PRCNT_BY_SETCONFIG * ++(loadscreen::global_loadscreen->setconfig_counter)) / CALLS_TO_SETCONFIG;
 		//std::cerr << "Calls " << num;
 		if(oldpct != newpct) {
 			//std::cerr << " percent " << newpct;
@@ -275,15 +273,14 @@ void increment_set_config_progress () {
 }
 
 void increment_parser_progress () {
-	unsigned newpct, oldpct;
 	// Only do something if the variable is filled in.
 	// I am assuming non parallel access here!
 	if (loadscreen::global_loadscreen != 0) {
 		if (loadscreen::global_loadscreen->parser_counter == 0) {
 			loadscreen::global_loadscreen->increment_progress(0, _("Reading files and creating cache..."));
 		}
-		oldpct = (PRCNT_BY_PARSER * loadscreen::global_loadscreen->parser_counter) / CALLS_TO_PARSER;
-		newpct = (PRCNT_BY_PARSER * ++(loadscreen::global_loadscreen->parser_counter)) / CALLS_TO_PARSER;
+		const unsigned oldpct = (PRCNT_BY_PARSER * loadscreen::global_loadscreen->parser_counter) / CALLS_TO_PARSER;
+		const unsigned newpct = (PRCNT_BY_PARSER * ++(loadscreen::global_loadscreen->parser_counter)) / CALLS_TO_PARSER;
 		//std::cerr << "Calls " << loadscreen::global_loadscreen->parser_counter;
 		if(oldpct != newpct) {
 		//	std::cerr << " percent " << newpct;
