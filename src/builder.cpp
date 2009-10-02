@@ -472,13 +472,13 @@ void terrain_builder::replace_token(terrain_builder::building_rule &rule, const 
 		// Transforms attributes
 		std::vector<std::string>::iterator flag;
 
-		for(flag = cons->second.set_flag.begin(); flag != cons->second.set_flag.end(); flag++) {
+		for(flag = cons->second.set_flag.begin(); flag != cons->second.set_flag.end(); ++flag) {
 			replace_token(*flag, token, replacement);
 		}
-		for(flag = cons->second.no_flag.begin(); flag != cons->second.no_flag.end(); flag++) {
+		for(flag = cons->second.no_flag.begin(); flag != cons->second.no_flag.end(); ++flag) {
 			replace_token(*flag, token, replacement);
 		}
-		for(flag = cons->second.has_flag.begin(); flag != cons->second.has_flag.end(); flag++) {
+		for(flag = cons->second.has_flag.begin(); flag != cons->second.has_flag.end(); ++flag) {
 			replace_token(*flag, token, replacement);
 		}
 		replace_token(cons->second.images, token, replacement);
