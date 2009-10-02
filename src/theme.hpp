@@ -186,7 +186,7 @@ public:
 
 		const std::vector<std::string>& items() const { return items_; }
 
-		void set_title(const std::string new_title) { title_ = new_title; }
+		void set_title(const std::string& new_title) { title_ = new_title; }
 	private:
 		bool context_;
 		std::string title_, tooltip_, image_, type_;
