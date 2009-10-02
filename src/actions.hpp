@@ -336,19 +336,17 @@ struct undo_action {
 	enum ACTION_TYPE { NONE, RECRUIT, RECALL, DISMISS };
 
 	undo_action(const unit& u, const std::vector<map_location>& rt, int sm,
- 	 	int timebonus=0, int orig=-1, 
-		map_location::DIRECTION dir=map_location::NDIRECTIONS) :
+		int timebonus=0, int orig=-1, 
+		const map_location::DIRECTION dir=map_location::NDIRECTIONS) :
 			route(rt),
 			starting_moves(sm),
 			original_village_owner(orig),
 			recall_loc(),
 			type(NONE),
 			affected_unit(u),
-			countdown_time_bonus(timebonus)
+			countdown_time_bonus(timebonus),
+			starting_dir(dir == map_location::NDIRECTIONS ? u.facing() : dir)
 		{
-			if(dir == map_location::NDIRECTIONS)
-				dir = u.facing();
-			starting_dir = dir;
 		}
 
 	undo_action(const unit& u, const map_location& loc,
