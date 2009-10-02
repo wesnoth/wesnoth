@@ -305,13 +305,16 @@ public:
 	typedef std::vector< boost::shared_ptr<single_mode_controller> > sm_controller_ptr_vector;
 	controller(model &m)
 		: model_(m)
+		, sm_controllers_()
 	{
-		sm_controllers_.push_back( boost::shared_ptr<single_mode_controller>(new variable_mode_controller("variables",model_)));
+		sm_controllers_.push_back(
+				boost::shared_ptr<single_mode_controller>(new variable_mode_controller("variables",model_)));
 		//foreach team
 		int sides = static_cast<int>((*resources::teams).size());
 		for( int side = 1; side<=sides; ++side) {
 			std::string side_str = str_cast(side);
-			sm_controllers_.push_back( boost::shared_ptr<single_mode_controller>(new team_mode_controller(std::string("team ")+side_str,model_,side)));
+			sm_controllers_.push_back(boost::shared_ptr<single_mode_controller>(
+					new team_mode_controller(std::string("team ")+side_str,model_,side)));
 		}
 	}
 
