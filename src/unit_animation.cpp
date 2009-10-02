@@ -142,7 +142,7 @@ unit_animation::unit_animation(int start_time,
 	add_frame(frame.duration(),frame,!frame.does_not_change());
 }
 
-unit_animation::unit_animation(const config& cfg,const std::string frame_string ) :
+unit_animation::unit_animation(const config& cfg,const std::string& frame_string ) :
 	terrain_types_(t_translation::read_list(cfg["terrain_type"])),
 	unit_filter_(),
 	secondary_unit_filter_(),
