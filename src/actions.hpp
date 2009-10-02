@@ -36,7 +36,7 @@ class unit;
 #include <deque>
 #include <sstream>
 
-bool can_recruit_on(const gamemap& map, const map_location& leader, const map_location loc);
+bool can_recruit_on(const gamemap& map, const map_location& leader, const map_location& loc);
 
 /**
  * Finds a location to place a unit.

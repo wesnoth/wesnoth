@@ -149,7 +149,7 @@ void move_unit_spectator::set_unit(const unit_map::const_iterator &u)
 	unit_ = u;
 }
 
-bool can_recruit_on(const gamemap& map, const map_location& leader, const map_location loc)
+bool can_recruit_on(const gamemap& map, const map_location& leader, const map_location& loc)
 {
 	if(!map.on_board(loc))
 		return false;
