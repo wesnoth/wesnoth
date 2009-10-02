@@ -1110,7 +1110,7 @@ void unit_type::add_advancement(const unit_type &to_unit,int xp)
 	}
 }
 
-static void advancement_tree_internal(const std::string id, std::set<std::string>& tree)
+static void advancement_tree_internal(const std::string& id, std::set<std::string>& tree)
 {
 	unit_type_data::unit_type_map::const_iterator ut =
 			unit_type_data::types().find_unit_type(id);
