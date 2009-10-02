@@ -197,7 +197,7 @@ static std::string create_random_sendfile(size_t size)
 	return filename;
 }
 
-static void delete_random_sendfile(const std::string file)
+static void delete_random_sendfile(const std::string& file)
 {
 	delete_directory(file);
 }
