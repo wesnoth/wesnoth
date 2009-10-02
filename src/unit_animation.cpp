@@ -61,7 +61,7 @@ const std::vector<std::string>& unit_animation::all_tag_names() {
 	return anim_tags.names;
 }
 
-config unit_animation::prepare_animation(const config &cfg,const std::string animation_tag)
+config unit_animation::prepare_animation(const config &cfg,const std::string& animation_tag)
 {
 	config expanded_animations;
 	std::vector<config> unexpanded_anims;

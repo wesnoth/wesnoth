@@ -69,7 +69,7 @@ class unit_animation
 	// reserved to class unit, for the special case of redrawing the unit base frame
 	const frame_parameters get_current_params(const frame_parameters & default_val = frame_parameters(),bool primary = true) const { return unit_anim_.parameters(default_val,primary); };
 	private:
-		static config prepare_animation(const config &cfg,const std::string animation_tag);
+		static config prepare_animation(const config &cfg,const std::string& animation_tag);
 		explicit unit_animation(const config& cfg,const std::string frame_string ="");
 		explicit unit_animation(int start_time,const unit_frame &frame,const std::string& event="",const int variation=DEFAULT_ANIM);
 		class particule:public animated<unit_frame>
