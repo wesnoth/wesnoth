@@ -191,7 +191,7 @@ void handler::join()
 	//instruct members to join
 	handler_vector members = handler_members();
 	if(!members.empty()) {
-		for(handler_vector::iterator i = members.begin(); i != members.end(); i++) {
+		for(handler_vector::iterator i = members.begin(); i != members.end(); ++i) {
 			(*i)->join();
 		}
 	}
@@ -201,7 +201,7 @@ void handler::leave()
 {
 	handler_vector members = handler_members();
 	if(!members.empty()) {
-		for(handler_vector::iterator i = members.begin(); i != members.end(); i++) {
+		for(handler_vector::iterator i = members.begin(); i != members.end(); ++i) {
 			(*i)->leave();
 		}
 	} else {
