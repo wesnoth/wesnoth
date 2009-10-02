@@ -322,7 +322,7 @@ void config::clear_children(const std::string& key)
 
 	child_map::iterator i = children.find(key);
 	if (i != children.end()) {
-		for (child_list::iterator c = i->second.begin(); c != i->second.end(); c++) {
+		for (child_list::iterator c = i->second.begin(); c != i->second.end(); ++c) {
 			delete *c;
 		}
 		children.erase(i);
