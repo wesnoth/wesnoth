@@ -60,7 +60,7 @@ bool suh::user_exists(const std::string& name) {
 
 std::vector<std::string> suh::users() {
 	std::vector<std::string> users;
-	for(std::map<std::string,user>::const_iterator u = users_.begin(); u != users_.end(); u++) {
+	for(std::map<std::string,user>::const_iterator u = users_.begin(); u != users_.end(); ++u) {
 		users.push_back(u->first);
 	}
 	return users;
