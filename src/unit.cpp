@@ -1738,7 +1738,7 @@ void unit::start_animation(int start_time, const unit_animation *animation,
 	}
 	state_ =state;
 	draw_bars_ =  with_bars;
-	if(anim_) delete anim_;
+	delete anim_;
 	anim_ = new unit_animation(*animation);
 	const int real_start_time = start_time == INT_MAX ? anim_->get_begin_time() : start_time;
 	anim_->start_animation(real_start_time, loc_, loc_.get_direction(facing_),
