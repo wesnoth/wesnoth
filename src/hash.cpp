@@ -51,9 +51,9 @@ bool is_valid_hash(const std::string& hash) {
 std::string encode_hash(unsigned char* input) {
 	std::string encoded_hash;
 
-	unsigned int i = 0, value;
+	unsigned int i = 0;
 	do {
-		value = input[i++];
+		unsigned value = input[i++];
 		encoded_hash.append(itoa64.substr(value & 0x3f,1));
 		if(i < 16)
 			value |= (int)input[i] << 8;
