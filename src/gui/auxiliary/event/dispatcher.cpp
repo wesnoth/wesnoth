@@ -73,10 +73,12 @@ class ttrigger
 {
 public:
 	void operator()(tsignal_function functor
+			, tdispatcher& dispatcher
 			, const tevent event
-			, bool& handled, bool& halt)
+			, bool& handled
+			, bool& halt)
 	{
-		functor(event, handled, halt);
+		functor(dispatcher, event, handled, halt);
 	}
 };
 
@@ -99,10 +101,12 @@ public:
 	}
 
 	void operator()(tsignal_mouse_function functor
+			, tdispatcher& dispatcher
 			, const tevent event
-			, bool& handled, bool& halt)
+			, bool& handled
+			, bool& halt)
 	{
-		functor(event, handled, halt, coordinate_);
+		functor(dispatcher, event, handled, halt, coordinate_);
 	}
 
 private:
@@ -112,8 +116,7 @@ private:
 
 bool tdispatcher::fire(const tevent event
 		, twidget& target
-		, const tpoint& coordinate
-		)
+		, const tpoint& coordinate)
 {
 	return fire_event<tsignal_mouse_function>(event
 			, dynamic_cast<twidget*>(this)

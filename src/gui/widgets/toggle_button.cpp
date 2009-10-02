@@ -33,16 +33,16 @@ ttoggle_button::ttoggle_button()
 	, icon_name_()
 {
 	connect_signal<event::MOUSE_ENTER>(boost::bind(
-				&ttoggle_button::signal_handler_mouse_enter, this, _1, _2));
+				&ttoggle_button::signal_handler_mouse_enter, this, _2, _3));
 	connect_signal<event::MOUSE_LEAVE>(boost::bind(
-				&ttoggle_button::signal_handler_mouse_leave, this, _1, _2));
+				&ttoggle_button::signal_handler_mouse_leave, this, _2, _3));
 
 	connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(
 				&ttoggle_button::signal_handler_left_button_click
-					, this, _1, _2));
+					, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_DOUBLE_CLICK>(boost::bind(
 				&ttoggle_button::signal_handler_left_button_double_click
-					, this, _1, _2));
+					, this, _2, _3));
 }
 
 void ttoggle_button::set_members(const string_map& data)

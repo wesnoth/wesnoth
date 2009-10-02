@@ -40,7 +40,9 @@ namespace event {
  * This function is used for the callbacks in tset_event.
  */
 typedef
-		boost::function<void(const tevent event
+		boost::function<void(
+			  tdispatcher& dispatcher
+			, const tevent event
 			, bool& handled
 			, bool& halt)>
 		tsignal_function;
@@ -51,7 +53,9 @@ typedef
  * This function is used for the callbacks in tset_event_mouse.
  */
 typedef
-		boost::function<void(const tevent event
+		boost::function<void(
+			  tdispatcher& dispatcher
+			, const tevent event
 			, bool& handled
 			, bool& halt
 			, const tpoint& coordinate)>
@@ -63,7 +67,9 @@ typedef
  * This function is used for the callbacks in tset_event_keyboard.
  */
 typedef
-		boost::function<void(const tevent event
+		boost::function<void(
+			  tdispatcher& dispatcher
+			, const tevent event
 			, bool& handled
 			, bool& halt) >
 		tsignal_keyboard_function;

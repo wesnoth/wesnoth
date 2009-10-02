@@ -97,11 +97,11 @@ ttext_box::ttext_box()
 	set_wants_mouse_left_double_click();
 
 	connect_signal<event::LEFT_BUTTON_DOWN>(boost::bind(
-				&ttext_box::signal_handler_left_button_down, this, _1, _2));
+				&ttext_box::signal_handler_left_button_down, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_UP>(boost::bind(
-				&ttext_box::signal_handler_left_button_up, this, _1, _2));
+				&ttext_box::signal_handler_left_button_up, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(&ttext_box
-				::signal_handler_left_button_double_click, this, _1, _2));
+				::signal_handler_left_button_double_click, this, _2, _3));
 }
 
 void ttext_box::set_size(const tpoint& origin, const tpoint& size)

@@ -35,16 +35,16 @@ ttoggle_panel::ttoggle_panel()
 	set_wants_mouse_left_double_click();
 
 	connect_signal<event::MOUSE_ENTER>(boost::bind(
-				&ttoggle_panel::signal_handler_mouse_enter, this, _1, _2));
+				&ttoggle_panel::signal_handler_mouse_enter, this, _2, _3));
 	connect_signal<event::MOUSE_LEAVE>(boost::bind(
-				&ttoggle_panel::signal_handler_mouse_leave, this, _1, _2));
+				&ttoggle_panel::signal_handler_mouse_leave, this, _2, _3));
 
 	connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(
 				&ttoggle_panel::signal_handler_left_button_click
-					, this, _1, _2));
+					, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_DOUBLE_CLICK>(boost::bind(
 				&ttoggle_panel::signal_handler_left_button_double_click
-					, this, _1, _2));
+					, this, _2, _3));
 }
 
 void ttoggle_panel::set_child_members(const std::map<std::string /* widget id */, string_map>& data)

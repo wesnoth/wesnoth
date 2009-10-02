@@ -31,16 +31,16 @@ tbutton::tbutton()
 	, callback_mouse_left_click_(0)
 {
 	connect_signal<event::MOUSE_ENTER>(boost::bind(
-				&tbutton::signal_handler_mouse_enter, this, _1, _2));
+				&tbutton::signal_handler_mouse_enter, this, _2, _3));
 	connect_signal<event::MOUSE_LEAVE>(boost::bind(
-				&tbutton::signal_handler_mouse_leave, this, _1, _2));
+				&tbutton::signal_handler_mouse_leave, this, _2, _3));
 
 	connect_signal<event::LEFT_BUTTON_DOWN>(boost::bind(
-				&tbutton::signal_handler_left_button_down, this, _1, _2));
+				&tbutton::signal_handler_left_button_down, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_UP>(boost::bind(
-				&tbutton::signal_handler_left_button_up, this, _1, _2));
+				&tbutton::signal_handler_left_button_up, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(
-				&tbutton::signal_handler_left_button_click, this, _1, _2));
+				&tbutton::signal_handler_left_button_click, this, _2, _3));
 }
 
 void tbutton::mouse_enter(tevent_handler&)

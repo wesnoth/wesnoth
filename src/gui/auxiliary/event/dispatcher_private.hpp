@@ -385,7 +385,7 @@ inline bool fire_event(const tevent event
 				itor != signal.pre_child.end();
 				++itor) {
 
-			functor(*itor, event, handled, halt);
+			functor(*itor, *dispatcher, event, handled, halt);
 			if(halt) {
 				assert(handled);
 				break;
@@ -407,7 +407,7 @@ inline bool fire_event(const tevent event
 				itor != signal.child.end();
 				++itor) {
 
-			functor(*itor, event, handled, halt);
+			functor(*itor, *dispatcher, event, handled, halt);
 
 			if(halt) {
 				assert(handled);
@@ -433,7 +433,7 @@ inline bool fire_event(const tevent event
 				itor != signal.post_child.end();
 				++itor) {
 
-			functor(*itor, event, handled, halt);
+			functor(*itor, *dispatcher, event, handled, halt);
 			if(halt) {
 				assert(handled);
 				break;

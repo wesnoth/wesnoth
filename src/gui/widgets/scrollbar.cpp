@@ -39,11 +39,11 @@ tscrollbar_::tscrollbar_()
 	, callback_positioner_move_(0)
 {
 	connect_signal<event::MOUSE_ENTER>(boost::bind(
-				&tscrollbar_::signal_handler_mouse_enter, this, _1, _2));
+				&tscrollbar_::signal_handler_mouse_enter, this, _2, _3));
 	connect_signal<event::MOUSE_MOTION>(boost::bind(
-				&tscrollbar_::signal_handler_mouse_motion, this, _1, _2, _4));
+				&tscrollbar_::signal_handler_mouse_motion, this, _2, _3, _5));
 	connect_signal<event::MOUSE_LEAVE>(boost::bind(
-				&tscrollbar_::signal_handler_mouse_leave, this, _1, _2));
+				&tscrollbar_::signal_handler_mouse_leave, this, _2, _3));
 }
 
 void tscrollbar_::scroll(const tscroll scroll)

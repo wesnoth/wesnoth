@@ -797,11 +797,11 @@ void tevent_handler::connect()
 	w.event::tdispatcher::connect();
 	w.connect_signal<event::DRAW>(boost::bind(&twindow::draw, &get_window()));
 	w.connect_signal<event::SDL_MOUSE_MOTION>(
-			boost::bind(&tevent_handler::sdl_mouse_motion, this, _4));
+			boost::bind(&tevent_handler::sdl_mouse_motion, this, _5));
 	w.connect_signal<event::SDL_LEFT_BUTTON_DOWN>(
-			boost::bind(&tevent_handler::sdl_left_button_down, this, _4));
+			boost::bind(&tevent_handler::sdl_left_button_down, this, _5));
 	w.connect_signal<event::SDL_LEFT_BUTTON_UP>(
-			boost::bind(&tevent_handler::sdl_left_button_up, this, _4));
+			boost::bind(&tevent_handler::sdl_left_button_up, this, _5));
 }
 
 void tevent_handler::sdl_mouse_motion(const tpoint& coordinate)
