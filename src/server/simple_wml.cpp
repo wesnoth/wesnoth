@@ -16,9 +16,7 @@ namespace simple_wml {
 namespace {
 
 void debug_delete(node* n) {
-	if(n) {
-		delete n;
-	}
+	delete n;
 }
 
 char* uncompress_buffer(const string_span& input, string_span* span)
