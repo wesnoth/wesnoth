@@ -128,7 +128,7 @@ public:
 class attack_type_callable : public game_logic::formula_callable {
 public:
 	typedef map_location location;
-	attack_type_callable(const attack_type attack)
+	attack_type_callable(const attack_type& attack)
 	  : att_(attack)
 	{
 		type_ = ATTACK_TYPE_C;
