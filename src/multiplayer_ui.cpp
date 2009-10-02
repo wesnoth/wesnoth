@@ -782,7 +782,7 @@ void ui::gamelist_updated(bool silent)
 	set_user_menu_items(menu_strings);
 }
 
-void ui::set_selected_game(const std::string game_id)
+void ui::set_selected_game(const std::string& game_id)
 {
 	// reposition the player list to show the players in the selected game
 	if (preferences::sort_list() && (selected_game_ != game_id)) {
