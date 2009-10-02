@@ -339,6 +339,7 @@ std::pair<map_location,map_location> ai_default::choose_move(std::vector<target>
 			while (locRange.first != locRange.second) {
 				if (locRange.first->second == u->first) {
 					cur_route.move_cost = 0;
+					break;
 				}
 				++locRange.first;
 			}
@@ -425,6 +426,7 @@ std::pair<map_location,map_location> ai_default::choose_move(std::vector<target>
 				while (locRange.first != locRange.second) {
 					if (locRange.first->second == u->first) {
 						cur_route.move_cost = 0;
+						break;
 					}
 					++locRange.first;
 				}
