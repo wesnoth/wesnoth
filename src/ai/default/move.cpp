@@ -44,6 +44,7 @@ struct move_cost_calculator : cost_calculator
 			const unit_map& units, const move_map& enemy_dstsrc)
 	  : unit_(u), map_(map), units_(units),
 	    enemy_dstsrc_(enemy_dstsrc),
+		max_moves_(u.total_movement()),
 		avoid_enemies_(u.usage() == "scout")
 	{}
 
@@ -52,6 +53,9 @@ struct move_cost_calculator : cost_calculator
 		const t_translation::t_terrain terrain = map_[loc];
 
 		const double move_cost = unit_.movement_cost(terrain);
+
+		if(move_cost > max_moves_) // impassable
+			return getNoPathValue();
 
 		double res = move_cost;
 		if(avoid_enemies_){
@@ -71,6 +75,7 @@ private:
 	const gamemap& map_;
 	const unit_map& units_;
 	const move_map& enemy_dstsrc_;
+	const int max_moves_;
 	const bool avoid_enemies_;
 };
 
