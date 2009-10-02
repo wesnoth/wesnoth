@@ -1193,9 +1193,10 @@ class mock_party : public formula_callable {
 int main()
 {
 	srand(time(NULL));
-	mock_char c;
-	mock_party p;
 	try {
+		mock_char c;
+		mock_party p;
+
 		assert(formula("strength").execute(c).as_int() == 15);
 		assert(formula("17").execute(c).as_int() == 17);
 		assert(formula("strength/2 + agility").execute(c).as_int() == 19);
