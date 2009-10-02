@@ -131,7 +131,7 @@ void map_labels::set_team(const team* team)
 
 const terrain_label* map_labels::set_label(const map_location& loc,
 					   const std::string& text,
-					   const std::string team_name,
+					   const std::string& team_name,
 					   const SDL_Color colour,
 					   const bool visible_in_fog,
 					   const bool visible_in_shroud)
