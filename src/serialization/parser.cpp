@@ -98,9 +98,7 @@ parser::parser(config &cfg, std::istream &in) :
 
 parser::~parser()
 {
-	if(tok_) {
-		delete tok_;
-	}
+	delete tok_;
 }
 
 void parser::operator()(std::string* error_log)
