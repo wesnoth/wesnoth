@@ -474,7 +474,7 @@ namespace game_events {
 	}
 
 	bool conditional_passed(const unit_map* units,
-			const vconfig cond, bool backwards_compat)
+			const vconfig& cond, bool backwards_compat)
 	{
 		bool allow_backwards_compat = backwards_compat = backwards_compat &&
 			utils::string_bool(cond["backwards_compat"],true);
