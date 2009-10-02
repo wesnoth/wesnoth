@@ -29,7 +29,7 @@ class twml_message_
 {
 public:
 	twml_message_(const std::string& title, const std::string& message,
-			const std::string portrait, const bool mirror)
+			const std::string& portrait, const bool mirror)
 		: title_(title)
 		, image_("")
 		, message_(message)
@@ -115,7 +115,7 @@ class twml_message_left : public twml_message_
 {
 public:
 	twml_message_left(const std::string& title, const std::string& message,
-			const std::string portrait, const bool mirror)
+			const std::string& portrait, const bool mirror)
 		: twml_message_(title, message, portrait, mirror)
 	{
 	}
@@ -129,7 +129,7 @@ class twml_message_right : public twml_message_
 {
 public:
 	twml_message_right(const std::string& title, const std::string& message,
-			const std::string portrait, const bool mirror)
+			const std::string& portrait, const bool mirror)
 		: twml_message_(title, message, portrait, mirror)
 	{
 	}
