@@ -383,7 +383,7 @@ namespace game_events {
 	static bool matches_special_filter(const config &cfg, const vconfig& filter);
 
 	static bool internal_conditional_passed(const unit_map* units,
-			const vconfig cond, bool& backwards_compat)
+			const vconfig& cond, bool& backwards_compat)
 	{
 		static std::vector<std::pair<int,int> > default_counts = utils::parse_ranges("1-99999");
 
@@ -569,7 +569,7 @@ static map_location cfg_to_loc(const vconfig& cfg,int defaultx = 0, int defaulty
 	return map_location(x, y);
 }
 
-static std::vector<map_location> multiple_locs(const vconfig cfg)
+static std::vector<map_location> multiple_locs(const vconfig& cfg)
 {
 	return parse_location_range(cfg["x"],cfg["y"]);
 }
@@ -3480,7 +3480,7 @@ WML_HANDLER_FUNCTION(unit_worth, /*event_info*/, cfg)
 		const int xp = u->second.experience() * 1000 / u->second.max_experience();
 		const std::vector<std::string>& advances = u->second.advances_to();
 		int best_advance = cost;
-		foreach(const std::string new_type, advances) {
+		foreach(const std::string& new_type, advances) {
 			const unit_type_data::unit_type_map::const_iterator
 				t = unit_type_data::types().find_unit_type(new_type);
 			if (t != unit_type_data::types().end()) {
