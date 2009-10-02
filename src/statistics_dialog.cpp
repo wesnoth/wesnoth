@@ -101,7 +101,7 @@ void statistics_dialog::action(gui::dialog_process_info &dp_info)
 statistics_dialog::statistics_dialog(game_display &disp,
 		const std::string& title,
 		const unsigned int team,
-		const std::string team_id,
+		const std::string& team_id,
 		const std::string& player) :
 	dialog(disp, title, "", gui::NULL_DIALOG),
 	detail_btn_(new gui::standard_dialog_button(disp.video(), _("Details"), 0 , false)),
