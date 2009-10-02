@@ -1407,6 +1407,7 @@ struct lua_calculator : cost_calculator
 
 lua_calculator::lua_calculator(lua_State *L_, int index)
 	: L(L_)
+	, num(0)
 {
 	lua_pushvalue(L, index);
 
