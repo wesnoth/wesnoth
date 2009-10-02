@@ -158,7 +158,7 @@ namespace game_events
 	void write_events(config& cfg);
 	void add_events(const config::const_child_itors &cfgs,const std::string& id);
 
-	bool unit_matches_filter(unit_map::const_iterator itor, const vconfig filter);
+	bool unit_matches_filter(unit_map::const_iterator itor, const vconfig& filter);
 
 	/** Used for [wml_message]. */
 	void handle_wml_log_message(const config& cfg);

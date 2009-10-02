@@ -379,8 +379,8 @@ namespace game_events {
 		}
 	}
 
-	static bool unit_matches_filter(const unit& u, const vconfig filter,const map_location& loc);
-	static bool matches_special_filter(const config &cfg, const vconfig filter);
+	static bool unit_matches_filter(const unit& u, const vconfig& filter,const map_location& loc);
+	static bool matches_special_filter(const config &cfg, const vconfig& filter);
 
 	static bool internal_conditional_passed(const unit_map* units,
 			const vconfig cond, bool& backwards_compat)
@@ -3758,7 +3758,7 @@ namespace game_events {
 		return false;
 	}
 
-	bool matches_special_filter(const config &cfg, const vconfig filter)
+	bool matches_special_filter(const config &cfg, const vconfig& filter)
 	{
 		if (!cfg) {
 			WRN_NG << "attempt to filter attack for an event with no attack data.\n";
@@ -3796,12 +3796,12 @@ namespace game_events {
 		return matches;
 	}
 
-	bool unit_matches_filter(const unit& u, const vconfig filter,const map_location& loc)
+	bool unit_matches_filter(const unit& u, const vconfig& filter,const map_location& loc)
 	{
 		return u.matches_filter(filter,loc);
 	}
 
-	bool unit_matches_filter(unit_map::const_iterator itor, const vconfig filter)
+	bool unit_matches_filter(unit_map::const_iterator itor, const vconfig& filter)
 	{
 		return itor->second.matches_filter(filter,itor->first);
 	}
