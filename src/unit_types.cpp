@@ -1295,10 +1295,10 @@ void unit_type_data::unit_type_map_wrapper::build_all(unit_type::BUILD_STATUS st
 {
     assert(unit_cfg_ != NULL);
 
-    for (unit_type_map::const_iterator u = types_.begin(); u != types_.end(); u++){
+    for (unit_type_map::const_iterator u = types_.begin(); u != types_.end(); ++u){
         build_unit_type(u->first, status);
     }
-    for (unit_type_map::iterator u = types_.begin(); u != types_.end(); u++){
+    for (unit_type_map::iterator u = types_.begin(); u != types_.end(); ++u){
         add_advancement(u->second);
     }
 }
