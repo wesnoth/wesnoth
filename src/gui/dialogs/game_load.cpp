@@ -137,7 +137,7 @@ void tgame_load::list_item_clicked(twindow& window)
 	display_savegame(window);
 }
 
-bool tgame_load::filter_text_changed(ttext_* textbox, const std::string text)
+bool tgame_load::filter_text_changed(ttext_* textbox, const std::string& text)
 {
 	twindow& window = *textbox->get_window();
 
