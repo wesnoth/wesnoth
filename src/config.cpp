@@ -838,7 +838,7 @@ bool config::matches(const config &filter) const
 		if(!found) return false;
 	}
 	child_list negative_children = filter.get_children("not");
-	for(child_list::iterator j3 = negative_children.begin() ; j3 != negative_children.end() ; j3++) {
+	for(child_list::iterator j3 = negative_children.begin() ; j3 != negative_children.end() ; ++j3) {
 		if(matches(**j3)) return false;
 	}
 	return true;
