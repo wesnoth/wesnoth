@@ -343,7 +343,7 @@ void animated<T,T_void_value>::set_begin_time(int new_begin_time)
 {
         const int variation = new_begin_time - starting_frame_time_;
         starting_frame_time_ += variation;
-        for(typename std::vector<frame>::iterator itor = frames_.begin(); itor != frames_.end() ; itor++) {
+        for(typename std::vector<frame>::iterator itor = frames_.begin(); itor != frames_.end() ; ++itor) {
                 itor->start_time_ += variation;
         }
 }
