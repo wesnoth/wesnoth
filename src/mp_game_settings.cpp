@@ -46,35 +46,57 @@ mp_game_settings::mp_game_settings() :
 
 { reset(); }
 
-mp_game_settings::mp_game_settings(const config& cfg)
+mp_game_settings::mp_game_settings(const config& cfg) :
+	name(),
+	password(),
+	hash(),
+	mp_era(),
+	mp_scenario(),
+	num_turns(0),
+	village_gold(0),
+	xp_modifier(0),
+	mp_countdown_init_time(0),
+	mp_countdown_reservoir_time(0),
+	mp_countdown_turn_bonus(0),
+	mp_countdown_action_bonus(0),
+	mp_countdown(false),
+	use_map_settings(false),
+	random_start_time(false),
+	fog_game(false),
+	shroud_game(false),
+	allow_observers(false),
+	share_view(false),
+	share_maps(false),
+	saved_game(false),
+	scenario_data()
 {
 	set_from_config(cfg);
 }
 
 mp_game_settings::mp_game_settings(const mp_game_settings& settings)
+	: name(settings.name)
+	, password(settings.password)
+	, hash(settings.hash)
+	, mp_era(settings.mp_era)
+	, mp_scenario(settings.mp_scenario)
+	, num_turns(settings.num_turns)
+	, village_gold(settings.village_gold)
+	, xp_modifier(settings.xp_modifier)
+	, mp_countdown_init_time(settings.mp_countdown_init_time)
+	, mp_countdown_reservoir_time(settings.mp_countdown_reservoir_time)
+	, mp_countdown_turn_bonus(settings.mp_countdown_turn_bonus)
+	, mp_countdown_action_bonus(settings.mp_countdown_action_bonus)
+	, mp_countdown(settings.mp_countdown)
+	, use_map_settings(settings.use_map_settings)
+	, random_start_time(settings.random_start_time)
+	, fog_game(settings.fog_game)
+	, shroud_game(settings.shroud_game)
+	, allow_observers(settings.allow_observers)
+	, share_view(settings.share_view)
+	, share_maps(settings.share_maps)
+	, saved_game(settings.saved_game)
+	, scenario_data(settings.scenario_data)
 {
-	name = settings.name;
-	password = settings.password;
-	hash = settings.hash;
-	mp_era = settings.mp_era;
-	mp_scenario = settings.mp_scenario;
-	num_turns = settings.num_turns;
-	village_gold = settings.village_gold;
-	xp_modifier = settings.xp_modifier;
-	mp_countdown = settings.mp_countdown;
-	mp_countdown_init_time = settings.mp_countdown_init_time;
-	mp_countdown_reservoir_time = settings.mp_countdown_reservoir_time;
-	mp_countdown_turn_bonus = settings.mp_countdown_turn_bonus;
-	mp_countdown_action_bonus = settings.mp_countdown_action_bonus;
-	use_map_settings = settings.use_map_settings;
-	random_start_time = settings.random_start_time;
-	fog_game = settings.fog_game;
-	shroud_game = settings.shroud_game;
-	allow_observers = settings.allow_observers;
-	share_view = settings.share_view;
-	share_maps = settings.share_maps;
-	saved_game = settings.saved_game;
-	scenario_data = settings.scenario_data;
 }
 
 void mp_game_settings::set_from_config(const config& game_cfg)
