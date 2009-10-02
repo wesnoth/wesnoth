@@ -336,7 +336,7 @@ struct undo_action {
 	enum ACTION_TYPE { NONE, RECRUIT, RECALL, DISMISS };
 
 	undo_action(const unit& u, const std::vector<map_location>& rt, int sm,
-		int timebonus=0, int orig=-1, 
+		int timebonus=0, int orig=-1,
 		const map_location::DIRECTION dir=map_location::NDIRECTIONS) :
 			route(rt),
 			starting_moves(sm),
@@ -369,7 +369,7 @@ struct undo_action {
 	unit affected_unit;
 	int countdown_time_bonus;
 	map_location::DIRECTION starting_dir;
-	
+
 	bool is_dismiss() const { return type == DISMISS; }
 	bool is_recall() const { return type == RECALL; }
 	bool is_recruit() const { return type == RECRUIT; }

@@ -37,8 +37,8 @@ class unit;
 namespace unit_display
 {
 
-/** 
- * Display a unit moving along a given path. 
+/**
+ * Display a unit moving along a given path.
  *
  * Note: Hide the unit in its current location,
  * but don't actually remove it until the move is done,
@@ -78,7 +78,7 @@ void unit_sheath_weapon( const map_location& loc, unit* u=NULL, const attack_typ
  	const attack_type* attack=NULL, const attack_type* secondary_attack=NULL,
  	const map_location& winner_loc=map_location::null_location,
  	unit* winner=NULL);
-  
+
 
 /**
  *  Make the unit on tile 'a' attack the unit on tile 'b'.
@@ -109,7 +109,7 @@ void unit_healing(unit& healed, map_location& healed_loc,
 /**
  * Parse a standard WML for animations and play the corresponding animation.
  * Returns once animation is played.
- * 
+ *
  * This is used for the animate_unit action, but can easily be generalized if
  * other wml-decribed animations are needed.
  */

@@ -142,7 +142,7 @@ bool tdispatcher::fire(const tevent event
  * @section handling_solution The implementation solutions.
  *
  * For the event handling we use a few use case scenarios and show the possible
- * solutions. 
+ * solutions.
  *
  * @subsection sample The sample window
  *
@@ -150,15 +150,15 @@ bool tdispatcher::fire(const tevent event
  * window W, a container C and a button B. These are arranged accordingly.
  *
  * @code
- *  
- *   --------------------- 
+ *
+ *   ---------------------
  *  |W                     |
  *  |                      |
  *  |  -----------------   |
  *  | |C              |^|  |
  *  | |               |-|  |
  *  | |  ----------   |#|  |
- *  | | |B         |  | |  | 
+ *  | | |B         |  | |  |
  *  | |  ----------   | |  |
  *  | |               |-|  |
  *  | |               |v|  |
@@ -169,7 +169,7 @@ bool tdispatcher::fire(const tevent event
  * @endcode
  *
  * @subsection scenarios Possible scenarios
- * 
+ *
  * The scenarios are:
  * * An event that is wanted by none.
  * * A mouse down event that should focus C and set the pressed state in B.

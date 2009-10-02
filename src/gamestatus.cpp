@@ -289,7 +289,7 @@ game_state::game_state(const config& cfg, bool show_replay) :
 	if(classification_.campaign_type.empty()) {
 		classification_.campaign_type = "scenario";
 	}
-	
+
 	//priority of populating wml variables:
 	//snapshot -> replay_start -> root
 	if (const config &vars = snapshot.child("variables")) {

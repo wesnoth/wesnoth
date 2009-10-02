@@ -171,7 +171,7 @@ struct tdispatcher_implementation
 		 * @tparam T              A key from an event set used to instanciate
 		 *                        the proper @ref event_signal function.
 	     * @param event           The event to get the signal for.
-		 * 
+		 *
 		 * @returns               Whether or not the handler is found.
 		 */
 		// not called operator() to work around a problem in MSVC 2008.
@@ -301,7 +301,7 @@ inline bool find(E event, F functor)
  * will be tested whether they have either a pre or post handler for the event.
  * This ways there will be list of widgets to try to send the events to.
  * If there's no line from widget to parent the result is undefined.
- * (If widget == dispatcher the result will always be empty.) 
+ * (If widget == dispatcher the result will always be empty.)
  *
  * @pre                           dispatcher != NULL
  * @pre                           widget != NULL
@@ -311,7 +311,7 @@ inline bool find(E event, F functor)
  *                                dispatcher the sends the event.
  * @param widget                  The widget should parent(s) to check.
  *
- * @returns                       The list of widgets with a handler. 
+ * @returns                       The list of widgets with a handler.
  */
 inline std::vector<twidget*> build_event_chain(const tevent event
 		, twidget* dispatcher

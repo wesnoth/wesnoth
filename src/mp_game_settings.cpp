@@ -121,7 +121,7 @@ void mp_game_settings::set_from_config(const config& game_cfg)
 	saved_game = utils::string_bool(cfg["savegame"]);
 }
 
-void mp_game_settings::reset() 
+void mp_game_settings::reset()
 {
 	name = "";
 	password = "";
