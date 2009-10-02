@@ -449,7 +449,7 @@ void play_controller::init_side(const unsigned int team_index, bool is_replay){
 		&& !current_team.get_disallow_observers()) {
 		gui_->set_team(size_t(team_index));
 	}
-		gui_->set_playing_team(size_t(team_index));
+	gui_->set_playing_team(size_t(team_index));
 
 	std::stringstream player_number_str;
 	player_number_str << player_number_;
@@ -494,7 +494,7 @@ void play_controller::do_init_side(const unsigned int team_index){
 	// and the player should get income now.
 	// Healing/income happen if it's not the first turn of processing,
 	// or if we are loading a game.
-	if (!loading_game_ && turn() > start_turn_) {
+	if (!loading_game_ && turn() > 1) {
 		for(unit_map::iterator i = units_.begin(); i != units_.end(); ++i) {
 			if (i->second.side() == player_number_) {
 				i->second.new_turn();
