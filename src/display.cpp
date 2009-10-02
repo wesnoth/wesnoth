@@ -646,7 +646,7 @@ std::vector<std::string> display::get_fog_shroud_graphics(const map_location& lo
 }
 
 std::vector<surface> display::get_terrain_images(const map_location &loc,
-						     const std::string timeid,
+						     const std::string& timeid,
 		image::TYPE image_type,
 		ADJACENT_TERRAIN_TYPE terrain_type)
 {
@@ -1281,7 +1281,7 @@ void display::enable_menu(const std::string& item, bool enable)
 	}
 }
 
-void display::announce(const std::string message, const SDL_Color& colour)
+void display::announce(const std::string& message, const SDL_Color& colour)
 {
 	font::add_floating_label(message,
 				 font::SIZE_XLARGE,

@@ -449,7 +449,7 @@ public:
 	const map_labels& labels() const;
 
 	/** Announce a message prominently. */
-	void announce(const std::string msg,
+	void announce(const std::string& msg,
 		       const SDL_Color& colour = font::GOOD_COLOUR);
 
 	/**
@@ -545,7 +545,7 @@ protected:
 	enum ADJACENT_TERRAIN_TYPE { ADJACENT_BACKGROUND, ADJACENT_FOREGROUND, ADJACENT_FOGSHROUD };
 
 	std::vector<surface> get_terrain_images(const map_location &loc,
-					const std::string timeid,
+					const std::string& timeid,
 					image::TYPE type,
 					ADJACENT_TERRAIN_TYPE terrain_type);
 
