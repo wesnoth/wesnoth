@@ -177,7 +177,7 @@ protected:
 	void check_filename(const std::string& filename, CVideo& video);
 
 	/** Customize the standard error message */
-	void set_error_message(const std::string error_message) { error_message_ = error_message; }
+	void set_error_message(const std::string& error_message) { error_message_ = error_message; }
 
 	const std::string& title() const { return title_; }
 	game_state& gamestate() const { return gamestate_; }
