@@ -34,6 +34,8 @@ static lg::log_domain log_ai_testing_aspect_attacks("ai/aspect/attacks");
 
 aspect_attacks::aspect_attacks(readonly_context &context, const config &cfg, const std::string &id)
 	: typesafe_aspect<attacks_vector>(context,cfg,id)
+	, filter_own_()
+	, filter_enemy_()
 {
 	if (const config &filter_own = cfg.child("filter_own")) {
 		filter_own_ = filter_own;
