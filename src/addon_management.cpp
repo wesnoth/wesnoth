@@ -1288,12 +1288,12 @@ void refresh_addon_version_info_cache()
 	foreach(std::string const& info_file, addon_info_files) {
 		assert(i < addons.size());
 
-		config cfg;
 		std::string const& addon = addons[i];
 		++i;
 
 		if(file_exists(info_file)) {
 			scoped_istream stream = istream_file(info_file);
+			config cfg;
 			read(cfg, *stream);
 
 			config const &info_cfg = cfg.child("info");
