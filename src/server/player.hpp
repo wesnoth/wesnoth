@@ -43,7 +43,7 @@ public:
 	void set_status(STATUS status);
 
 	// mark a player as member of the game 'game_id' or as located in the lobby
-	void mark_available(const int game_id=0, const std::string location="");
+	void mark_available(const int game_id=0, const std::string& location="");
 
 	//Mark a player as registered if he has authorized
 	void mark_registered(bool registered =true);

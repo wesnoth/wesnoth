@@ -58,7 +58,7 @@ void wesnothd::player::set_status(wesnothd::player::STATUS status)
 
 // keep 'available' and game name ('location') for backward compatibility
 void wesnothd::player::mark_available(const int game_id,
-                                      const std::string location)
+                                      const std::string& location)
 {
 	if (game_id == 0) {
 		cfg_.set_attr("available", "yes");
