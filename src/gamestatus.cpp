@@ -189,7 +189,7 @@ void write_players(game_state& gamestate, config& cfg, const bool use_snapshot, 
 		tags.push_back("side");
 		tags.push_back("player"); //merge [player] tags for backwards compatibility of saves
 
-		foreach (const std::string side_tag, tags) {
+		foreach (const std::string& side_tag, tags) {
 			foreach (config* carryover_side, source->get_children(side_tag)) {
 				config *scenario_side = NULL;
 
