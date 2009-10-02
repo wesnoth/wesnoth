@@ -57,25 +57,20 @@ static SDL_Cursor* create_cursor(surface surf)
 	const Uint32* const pixels = reinterpret_cast<Uint32*>(lock.pixels());
 	for(int y = 0; y != nsurf->h; ++y) {
 		for(int x = 0; x != nsurf->w; ++x) {
-			Uint8 r,g,b,a;
-			Uint8 trans = 0;
-			Uint8 black = 0;
-
-			const size_t index = y*cursor_width + x;
 
 			if (static_cast<size_t>(x) < cursor_width) {
+				Uint8 r,g,b,a;
 				SDL_GetRGBA(pixels[y*nsurf->w + x],nsurf->format,&r,&g,&b,&a);
 
+				const size_t index = y*cursor_width + x;
 				const size_t shift = 7 - (index % 8);
 
-				trans = (a < 128 ? 0 : 1) << shift;
-				black = (trans == 0 || (r+g + b) / 3 > 128 ? 0 : 1) << shift;
+				const Uint8 trans = (a < 128 ? 0 : 1) << shift;
+				const Uint8 black = (trans == 0 || (r+g + b) / 3 > 128 ? 0 : 1) << shift;
 
 				data[index/8] |= black;
 				mask[index/8] |= trans;
 			}
-
-
 		}
 	}
 
