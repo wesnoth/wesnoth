@@ -250,7 +250,7 @@ namespace game_config
 					DBG_NG << "color palette creation:\n";
 					std::stringstream str;
 					str << id <<" = ";
-					for(std::vector<Uint32>::const_iterator r=tp.begin();r!=tp.end();r++){
+					for(std::vector<Uint32>::const_iterator r=tp.begin(); r!=tp.end(); ++r){
 						int red = ((*r) & 0x00FF0000)>>16;
 						int green = ((*r) & 0x0000FF00)>>8;
 						int blue = ((*r) & 0x000000FF);
