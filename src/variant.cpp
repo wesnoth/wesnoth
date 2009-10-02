@@ -345,7 +345,7 @@ const variant& variant::operator[](size_t n) const
 	return list_->elements[n];
 }
 
-const variant& variant::operator[](const variant v) const
+const variant& variant::operator[](const variant& v) const
 {
 	if(type_ == TYPE_CALLABLE) {
 		assert(v.as_int() == 0);
