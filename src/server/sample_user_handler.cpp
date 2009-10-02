@@ -189,7 +189,7 @@ void suh::clean_up() {
 	time_t limit = user_expiration_ * 60 * 60 * 24;
 
 	std::vector<std::string> us = users();
-	for(std::vector<std::string>::const_iterator u = us.begin(); u != us.end(); u++) {
+	for(std::vector<std::string>::const_iterator u = us.begin(); u != us.end(); ++u) {
 		if((now - get_lastlogin(*u)) > limit) {
 			std::cout << "User '" << *u << "' exceeds expiration limit.\n";
 			remove_user(*u);
