@@ -900,8 +900,8 @@ void tlobby_main::close_window(size_t idx)
 
 void tlobby_main::network_handler()
 {
-	config data;
 	try {
+		config data;
 		const network::connection sock = network::receive_data(data);
 		if(sock) {
 			process_network_data(data);
