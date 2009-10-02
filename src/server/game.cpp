@@ -36,8 +36,8 @@ namespace wesnothd {
 int game::id_num = 1;
 
 game::game(player_map& players, const network::connection host,
-		const std::string name, bool save_replays,
-		const std::string replay_save_path) :
+		const std::string& name, bool save_replays,
+		const std::string& replay_save_path) :
 	player_info_(&players),
 	id_(id_num++),
 	name_(name),

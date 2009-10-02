@@ -35,8 +35,8 @@ class game
 {
 public:
 	game(player_map& players, const network::connection host=0,
-			const std::string name="", bool save_replays=false,
-			const std::string replay_save_path="");
+			const std::string& name="", bool save_replays=false,
+			const std::string& replay_save_path="");
 	~game();
 
 	int id() const { return id_; }
