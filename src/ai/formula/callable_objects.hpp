@@ -184,7 +184,7 @@ class set_unit_var_callable : public formula_callable {
 
 	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
 public:
-	set_unit_var_callable(const std::string& key, const variant& value, const map_location loc)
+	set_unit_var_callable(const std::string& key, const variant& value, const map_location& loc)
 	  : key_(key), value_(value), loc_(loc)
 	{}
 
