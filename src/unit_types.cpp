@@ -1139,7 +1139,7 @@ const std::vector<std::string> unit_type::advances_from() const
 
 	std::vector<std::string> adv_from;
 	for(unit_type_data::unit_type_map::const_iterator ut = unit_type_data::types().begin();
-	    ut != unit_type_data::types().end(); ut++) {
+	    ut != unit_type_data::types().end(); ++ut) {
 
 		foreach(const std::string& adv, ut->second.advances_to()) {
 			if (adv == id_)
