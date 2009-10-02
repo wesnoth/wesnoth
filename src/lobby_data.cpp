@@ -172,7 +172,7 @@ game_info::game_info() :
 
 namespace {
 
-std::string make_short_name(const std::string long_name)
+std::string make_short_name(const std::string& long_name)
 {
 	if (long_name.empty()) return "";
 	std::string sh;
