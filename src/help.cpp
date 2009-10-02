@@ -351,8 +351,8 @@ private:
 	/// that should be blitted along with some other information.
 	struct item {
 
-		item(surface surface, int x, int y, const std::string text="",
-			 const std::string reference_to="", bool floating=false,
+		item(surface surface, int x, int y, const std::string& text="",
+			 const std::string& reference_to="", bool floating=false,
 			 bool box=false, ALIGNMENT alignment=HERE);
 
 		item(surface surface, int x, int y,
@@ -408,13 +408,13 @@ private:
 	/// is a cross-reference. The item will also remember what the
 	/// reference points to. If font_size is below zero, the default
 	/// will be used.
-	void add_text_item(const std::string text, const std::string ref_dst="",
+	void add_text_item(const std::string& text, const std::string& ref_dst="",
 					   bool broken_link = false,
 					   int font_size=-1, bool bold=false, bool italic=false,
 					   SDL_Color color=font::NORMAL_COLOUR);
 
 	/// Add an image item with the specified attributes.
-	void add_img_item(const std::string path, const std::string alignment, const bool floating,
+	void add_img_item(const std::string& path, const std::string& alignment, const bool floating,
 					  const bool box);
 
 	/// Move the current input point to the next line.
@@ -2151,8 +2151,8 @@ void help_text_area::show_topic(const topic &t)
 }
 
 
-help_text_area::item::item(surface surface, int x, int y, const std::string _text,
-						   const std::string reference_to, bool _floating,
+help_text_area::item::item(surface surface, int x, int y, const std::string& _text,
+						   const std::string& reference_to, bool _floating,
 						   bool _box, ALIGNMENT alignment) :
 	rect(),
 	surf(surface),
@@ -2388,7 +2388,7 @@ void help_text_area::handle_format_cfg(const config &cfg)
 	add_text_item(text, "", false, font_size, bold, italic, color);
 }
 
-void help_text_area::add_text_item(const std::string text, const std::string ref_dst,
+void help_text_area::add_text_item(const std::string& text, const std::string& ref_dst,
 								   bool broken_link, int _font_size, bool bold, bool italic,
 								   SDL_Color text_color
 )
@@ -2459,7 +2459,7 @@ void help_text_area::add_text_item(const std::string text, const std::string ref
 	}
 }
 
-void help_text_area::add_img_item(const std::string path, const std::string alignment,
+void help_text_area::add_img_item(const std::string& path, const std::string& alignment,
 								  const bool floating, const bool box)
 {
 	surface surf(image::get_image(path));
