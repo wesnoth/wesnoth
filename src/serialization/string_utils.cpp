@@ -556,23 +556,19 @@ void utf8_iterator::update()
 
 std::string wstring_to_string(const wide_string &src)
 {
-	wchar_t ch;
-	wide_string::const_iterator i;
-	Uint32 bitmask;
 	std::string ret;
 
 	try {
-
-		for(i = src.begin(); i != src.end(); ++i) {
+		for(wide_string::const_iterator i = src.begin(); i != src.end(); ++i) {
 			unsigned int count;
-			ch = *i;
+			wchar_t ch = *i;
 
 			// Determine the bytes required
 			count = 1;
 			if(ch >= 0x80)
 				count++;
 
-			bitmask = 0x800;
+			Uint32 bitmask = 0x800;
 			for(unsigned int j = 0; j < 5; ++j) {
 				if(static_cast<Uint32>(ch) >= bitmask) {
 					count++;
