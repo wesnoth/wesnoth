@@ -68,7 +68,7 @@ template <typename T> variant convert_vector( const std::vector<T>& input_vector
 class terrain_callable : public game_logic::formula_callable {
 public:
 	typedef map_location location;
-	terrain_callable(const terrain_type& t, const location loc)
+	terrain_callable(const terrain_type& t, const location& loc)
 	  : loc_(loc), t_(t)
 	{
 		type_ = TERRAIN_C;
