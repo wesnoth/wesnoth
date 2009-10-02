@@ -1599,7 +1599,7 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 		// Otherwise look for the last IP the nick used to connect
 		const bool match_ip = (std::count(parameters.begin(), parameters.end(), '.') >= 1);
 		for (std::deque<connection_log>::const_iterator i = ip_log_.begin();
-				i != ip_log_.end(); i++) {
+				i != ip_log_.end(); ++i) {
 			const std::string& username = i->nick;
 			const std::string& ip = i->ip;
 			if ((match_ip && utils::wildcard_string_match(ip, parameters))
