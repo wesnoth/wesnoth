@@ -44,7 +44,7 @@ player_map::const_iterator find_user(const player_map& all_players,
 									 const simple_wml::string_span& name)
 {
 	player_map::const_iterator pl;
-	for (pl = all_players.begin(); pl != all_players.end(); pl++) {
+	for (pl = all_players.begin(); pl != all_players.end(); ++pl) {
 		if (name == pl->second.name().c_str()) {
 			return pl;
 		}
