@@ -552,7 +552,7 @@ private:
                     visited_locs.erase(starting_loc);
 
                 std::vector<variant> res;
-                foreach( const map_location ml, visited_locs) {
+                foreach( const map_location& ml, visited_locs) {
                     res.push_back( variant(new location_callable( ml ) ) );
                 }
 
