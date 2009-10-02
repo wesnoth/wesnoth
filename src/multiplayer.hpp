@@ -44,7 +44,7 @@ void start_local_game(game_display& disp, const config& game_config,
  * @param host        The host to connect to.
  */
 void start_client(game_display& disp, const config& game_config,
-		const std::string host);
+		const std::string& host);
 
 
 }

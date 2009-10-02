@@ -593,7 +593,7 @@ void start_local_game(game_display& disp, const config& game_config,
 }
 
 void start_client(game_display& disp, const config& game_config,
-		const std::string host)
+		const std::string& host)
 {
 	const rand_rng::set_random_generator generator_setter(&recorder);
 	const network::manager net_manager(1,1);
