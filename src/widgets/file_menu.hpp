@@ -40,15 +40,15 @@ public:
 	std::string get_directory() const { return current_dir_; }
 
 	/// Return path with to_add added, using a path delimiter between them.
-	std::string add_path(const std::string path, const std::string to_add) const;
+	std::string add_path(const std::string& path, const std::string& to_add) const;
 
 	/// Return the string with the last path delimiter removed, if one
 	/// was there.
-	std::string strip_last_delim(const std::string path) const;
+	std::string strip_last_delim(const std::string& path) const;
 
 	bool is_directory(const std::string& fname) const;
 
-	void change_directory(const std::string path);
+	void change_directory(const std::string& path);
 	bool make_directory(const std::string& subdir_name);
 
 	/**
@@ -66,18 +66,18 @@ private:
 	/// If file_or_dir is a file, return the directory the file is in,
 	/// if it is a directory, return the directory name. If no path
 	/// delimiters could be found, return the unchanged argument.
-	std::string get_path(const std::string file_or_dir) const;
+	std::string get_path(const std::string& file_or_dir) const;
 
 	/// Return the path that is the specified number of levels up from
 	/// the path. If the movement could not proceed due to being at the
 	/// root or having an invalid argument, return the path that the
 	/// movement ended on.
-	std::string get_path_up(const std::string path,
+	std::string get_path_up(const std::string& path,
 							const unsigned levels=1) const;
 
 
 	/// Return true if the path is the root of the filesystem.
-	bool is_root(const std::string path) const;
+	bool is_root(const std::string& path) const;
 
 	/// Show the files in the current directory.
 	void display_current_files();

@@ -147,7 +147,7 @@ bool file_menu::is_directory(const std::string& fname) const {
 	return ::is_directory(fname);
 }
 
-void file_menu::change_directory(const std::string path) {
+void file_menu::change_directory(const std::string& path) {
 	if(path == path_up)
 	{
 		// Parent dir wanted.
@@ -174,7 +174,7 @@ std::string file_menu::get_choice() const {
 }
 
 
-std::string file_menu::get_path(const std::string file_or_dir) const {
+std::string file_menu::get_path(const std::string& file_or_dir) const {
 	std::string res_path = file_or_dir;
 	if (!::is_directory(file_or_dir)) {
 		size_t index = file_or_dir.find_last_of(path_delim);
@@ -185,7 +185,7 @@ std::string file_menu::get_path(const std::string file_or_dir) const {
 	return res_path;
 }
 
-std::string file_menu::get_path_up(const std::string path, const unsigned levels) const {
+std::string file_menu::get_path_up(const std::string& path, const unsigned levels) const {
 	std::string curr_path = get_path(path);
 	for (unsigned i = 0; i < levels; i++) {
 		if (is_root(curr_path)) {
@@ -214,7 +214,7 @@ std::string file_menu::get_path_up(const std::string path, const unsigned levels
 	return curr_path;
 }
 
-std::string file_menu::strip_last_delim(const std::string path) const {
+std::string file_menu::strip_last_delim(const std::string& path) const {
 	std::string res_string = path;
 	if (path[path.size() - 1] == path_delim) {
 		res_string = path.substr(0, path.size() - 1);
@@ -222,7 +222,7 @@ std::string file_menu::strip_last_delim(const std::string path) const {
 	return res_string;
 }
 
-bool file_menu::is_root(const std::string path) const {
+bool file_menu::is_root(const std::string& path) const {
 #ifdef __AMIGAOS4__
 	return path.size() == 0 || path[path.size()-1] == ':';
 #else
@@ -230,7 +230,7 @@ bool file_menu::is_root(const std::string path) const {
 #endif
 }
 
-std::string file_menu::add_path(const std::string path, const std::string to_add) const
+std::string file_menu::add_path(const std::string& path, const std::string& to_add) const
 {
 	std::string joined_path = strip_last_delim(path);
 	if (to_add.size() > 0) {
