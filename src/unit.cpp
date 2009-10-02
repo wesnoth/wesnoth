@@ -1405,16 +1405,16 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 
 		if (const config &ai_vars = ai.child("vars"))
 		{
-                    formula_vars_ = new game_logic::map_formula_callable;
+			formula_vars_ = new game_logic::map_formula_callable;
 
-                    variant var;
+			variant var;
 			foreach (const config::attribute &i, ai_vars.attribute_range()) {
 				var.serialize_from_string(i.second);
 				formula_vars_->add(i.first, var);
-                    }
-            } else {
-                    formula_vars_ = game_logic::map_formula_callable_ptr();
-            }
+			}
+		} else {
+			formula_vars_ = game_logic::map_formula_callable_ptr();
+		}
 
         }
 
