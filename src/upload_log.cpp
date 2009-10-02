@@ -270,7 +270,7 @@ config &upload_log::add_game_result(const std::string &str, int turn)
 void upload_log::start(game_state &state, const team &team,
 					   const t_string &turn,
 					   int num_turns,
-					   const std::string map_data)
+					   const std::string& map_data)
 {
 	std::vector<const unit*> all_units;
 
@@ -304,7 +304,7 @@ void upload_log::start(game_state &state, const team &team,
 	(*game_)["num_turns"] = lexical_cast<std::string>(num_turns);
 }
 
-void upload_log::start(game_state &state, const std::string map_data)
+void upload_log::start(game_state &state, const std::string& map_data)
 {
 	// If we have a previous game which is finished, add it.
 	if (game_finished(game_)) {
