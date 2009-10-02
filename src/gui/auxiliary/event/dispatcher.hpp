@@ -299,6 +299,11 @@ public:
 	template<class T>
 	struct tsignal_queue
 	{
+		tsignal_queue()
+			: queue()
+		{
+		}
+
 		std::map<tevent, tsignal<T> > queue;
 
 		void connect_signal(const tevent event
