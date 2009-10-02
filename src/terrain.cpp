@@ -278,7 +278,7 @@ void merge_alias_lists(t_translation::t_list& first, const t_translation::t_list
 	bool revert = (first.front() == t_translation::MINUS ? true : false);
 	t_translation::t_list::iterator i;
 
-	for(i = first.begin(); i != first.end(); i++) {
+	for(i = first.begin(); i != first.end(); ++i) {
 		if(*i == t_translation::PLUS) {
 			revert = false;
 			continue;
