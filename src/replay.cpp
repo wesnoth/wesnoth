@@ -207,7 +207,7 @@ void replay::add_recall(const std::string& unit_id, const map_location& loc)
 	cmd->add_child("recall",val);
 }
 
-void replay::add_disband(const std::string unit_id)
+void replay::add_disband(const std::string& unit_id)
 {
 	config* const cmd = add_command();
 
