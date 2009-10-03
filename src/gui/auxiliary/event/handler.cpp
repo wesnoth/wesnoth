@@ -164,6 +164,17 @@ private:
 	void mouse_button_down(const tpoint& position, const Uint8 button);
 
 	/**
+	 * Fires a key down event.
+	 *
+	 * @param key                    The SDL key code of the key pressed.
+	 * @param modifier               The SDL key modifiers used.
+	 * @param unicode                The unicode value for the key pressed.
+	 */
+	void key_down(const SDLKey key
+			, const SDLMod modifier
+			, const Uint16 unicode);
+
+	/**
 	 * Fires a keyboard event which has no parameters.
 	 *
 	 * This can happen for example when the mouse wheel is used.
@@ -253,10 +264,10 @@ void thandler::handle_event(const SDL_Event& event)
 			break;
 
 		case SDL_KEYDOWN:
-/*			key_down(event.key.keysym.sym
+			key_down(event.key.keysym.sym
 					, event.key.keysym.mod
 					, event.key.keysym.unicode);
-*/			break;
+			break;
 
 		case SDL_VIDEORESIZE:
 //			video_resize();
@@ -420,6 +431,29 @@ void thandler::mouse_button_down(const tpoint& position, const Uint8 button)
 			WRN_GUI_E << "Unhandled 'mouse button down' event for button "
 					<< static_cast<Uint32>(button) << ".\n";
 			break;
+	}
+}
+
+void thandler::key_down(const SDLKey key
+		, const SDLMod modifier
+		, const Uint16 unicode)
+{
+	DBG_GUI_E << "Firing: " << SDL_KEY_DOWN << ".\n";
+
+	assert(!dispatchers_.empty());
+
+	if(keyboard_focus_) {
+		keyboard_focus_->fire(SDL_KEY_DOWN
+				, dynamic_cast<twidget&>(*keyboard_focus_)
+				, key
+				, modifier
+				, unicode);
+	} else {
+		dispatchers_.back()->fire(SDL_KEY_DOWN
+				, dynamic_cast<twidget&>(*dispatchers_.back())
+				, key
+				, modifier
+				, unicode);
 	}
 }
 

@@ -456,6 +456,10 @@ private:
 	void button_up(twidget* widget, tmouse_button& button);
 	void mouse_button_click(twidget* widget, tmouse_button& button);
 
+	void sdl_key_down(const SDLKey key
+			, const SDLMod modifier
+			, const Uint16 unicode);
+
 };
 
 } // namespace gui2

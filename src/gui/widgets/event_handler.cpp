@@ -802,6 +802,9 @@ void tevent_handler::connect()
 			boost::bind(&tevent_handler::sdl_left_button_down, this, _5));
 	w.connect_signal<event::SDL_LEFT_BUTTON_UP>(
 			boost::bind(&tevent_handler::sdl_left_button_up, this, _5));
+
+	w.connect_signal<event::SDL_KEY_DOWN>(
+			boost::bind(&tevent_handler::sdl_key_down, this, _5, _6, _7));
 }
 
 void tevent_handler::sdl_mouse_motion(const tpoint& coordinate)
@@ -924,6 +927,44 @@ void tevent_handler::mouse_button_click(twidget* widget, tmouse_button& button)
 	} else {
 
 		get_window().fire(event::LEFT_BUTTON_CLICK, *widget);
+	}
+}
+
+void tevent_handler::sdl_key_down(const SDLKey key
+		, const SDLMod modifier
+		, const Uint16 unicode)
+{
+	if(keyboard_focus_) {
+		if(get_window().fire(event::SDL_KEY_DOWN
+				, *keyboard_focus_, key, modifier, unicode)) {
+			return;
+		}
+	}
+
+	for(std::vector<twidget*>::reverse_iterator
+				ritor = keyboard_focus_chain_.rbegin()
+			; ritor != keyboard_focus_chain_.rend()
+			; ++ritor) {
+
+		if(*ritor == keyboard_focus_) {
+			continue;
+		}
+
+		if(*ritor == dynamic_cast<twidget*>(this)) {
+			/**
+			 * @todo Make sure we're not in the event chain.
+			 *
+			 * No idea why we're here, but needs to be fixed, otherwise we keep
+			 * calling this function recursively upon unhandled events...
+			 */
+			continue;
+		}
+
+		if(get_window().fire(event::SDL_KEY_DOWN
+				, **ritor, key, modifier, unicode)) {
+
+			return;
+		}
 	}
 }
 
