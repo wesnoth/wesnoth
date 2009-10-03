@@ -66,7 +66,7 @@ public:
 		 * intended button on the addon panel. So we need to chain mouse events
 		 * as well and also add a handled flag for them.
 		 */
-#ifdef GUI2_NEW_EVENT_HANDLING
+#ifndef GUI2_OLD_EVENT_HANDLING
 		twidget* result = tcontainer_::find_at(coordinate, must_be_active);
 		return result ? result : tcontrol::find_at(coordinate, must_be_active);
 #else
@@ -78,7 +78,7 @@ public:
 	const twidget* find_at(
 			const tpoint& coordinate, const bool must_be_active) const
 	{
-#ifdef GUI2_NEW_EVENT_HANDLING
+#ifndef GUI2_OLD_EVENT_HANDLING
 		const twidget* result =
 				tcontainer_::find_at(coordinate, must_be_active);
 		return result ? result : tcontrol::find_at(coordinate, must_be_active);

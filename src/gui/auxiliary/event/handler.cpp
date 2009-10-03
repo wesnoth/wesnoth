@@ -309,7 +309,7 @@ void thandler::connect(tdispatcher* dispatcher)
 {
 	assert(std::find(dispatchers_.begin(), dispatchers_.end(), dispatcher)
 			== dispatchers_.end());
-#ifdef GUI2_NEW_EVENT_HANDLING
+#ifndef GUI2_OLD_EVENT_HANDLING
 	// Need to join unconditionally to get the events.
 	join();
 #endif
@@ -333,7 +333,7 @@ void thandler::disconnect(tdispatcher* dispatcher)
 
 	assert(std::find(dispatchers_.begin(), dispatchers_.end(), dispatcher)
 			== dispatchers_.end());
-#ifdef GUI2_NEW_EVENT_HANDLING
+#ifndef GUI2_OLD_EVENT_HANDLING
 	if(dispatchers_.empty()) {
 		// When we're the last dispatcher really leave.
 		leave();

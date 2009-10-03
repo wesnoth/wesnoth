@@ -259,7 +259,7 @@ twindow::twindow(CVideo& video,
 	help_popup_.set_visible(twidget::HIDDEN);
 
 	tmanager::instance().add(*this);
-#ifdef GUI2_NEW_EVENT_HANDLING
+#ifndef GUI2_OLD_EVENT_HANDLING
 	tevent_handler::connect();
 #endif
 
