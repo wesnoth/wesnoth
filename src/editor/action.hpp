@@ -448,23 +448,6 @@ class editor_action_create_mask : public editor_action
 		gamemap target_;
 };
 
-//plot a route between two points
-class editor_action_plot_route : public editor_action_location_terrain
-{
-	public:
-		editor_action_plot_route(map_location l1,
-			t_translation::t_terrain t, map_location l2)
-		: editor_action_location_terrain(l1, t)
-		, loc2_(l2)
-		{
-		}
-		editor_action_paste* perform(map_context& mc) const;
-		void perform_without_undo(map_context& mc) const;
-		const char* get_name() const { return "plot_route"; }
-	protected:
-		map_location loc2_;
-};
-
 /**
  * Randomize terrain in an area
  */
