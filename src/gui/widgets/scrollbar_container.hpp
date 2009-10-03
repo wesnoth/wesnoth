@@ -404,6 +404,13 @@ private:
 
 	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const;
+
+	/***** ***** ***** signal handlers ***** ****** *****/
+
+	void signal_handler_sdl_key_down(const event::tevent event
+			, bool& handled
+			, const SDLKey key
+			, SDLMod modifier);
 };
 
 } // namespace gui2

@@ -24,6 +24,8 @@
 #include "gui/widgets/spacer.hpp"
 #include "gui/widgets/window.hpp"
 
+#include <boost/bind.hpp>
+
 namespace gui2 {
 
 namespace {
@@ -95,6 +97,9 @@ tscrollbar_container::tscrollbar_container(const unsigned canvas_count)
 	, content_(NULL)
 	, content_visible_area_()
 {
+	connect_signal<event::SDL_KEY_DOWN>(boost::bind(
+			&tscrollbar_container::signal_handler_sdl_key_down
+				, this, _2, _3, _5, _6));
 }
 
 void tscrollbar_container::layout_init(const bool full_initialization)
@@ -366,44 +371,8 @@ void tscrollbar_container::key_press(tevent_handler& /*event*/,
 {
 	DBG_GUI_E << "Scrollbar container: key press.\n";
 
-	switch(key) {
-		case SDLK_HOME :
-			handle_key_home(modifier, handled);
-			break;
-
-		case SDLK_END :
-			handle_key_end(modifier, handled);
-			break;
-
-
-		case SDLK_PAGEUP :
-			handle_key_page_up(modifier, handled);
-			break;
-
-		case SDLK_PAGEDOWN :
-			handle_key_page_down(modifier, handled);
-			break;
-
-
-		case SDLK_UP :
-			handle_key_up_arrow(modifier, handled);
-			break;
-
-		case SDLK_DOWN :
-			handle_key_down_arrow(modifier, handled);
-			break;
-
-		case SDLK_LEFT :
-			handle_key_left_arrow(modifier, handled);
-			break;
-
-		case SDLK_RIGHT :
-			handle_key_right_arrow(modifier, handled);
-			break;
-		default:
-			/* ignore */
-			break;
-		}
+	signal_handler_sdl_key_down(
+			event::SDL_KEY_DOWN, handled, key, modifier);
 }
 
 void tscrollbar_container::focus(tevent_handler&)
@@ -850,6 +819,54 @@ const std::string& tscrollbar_container::get_control_type() const
 {
 	static const std::string type = "scrollbar_container";
 	return type;
+}
+
+void tscrollbar_container::signal_handler_sdl_key_down(
+		const event::tevent event
+		, bool& handled
+		, const SDLKey key
+		, SDLMod modifier)
+{
+	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+
+	switch(key) {
+		case SDLK_HOME :
+			handle_key_home(modifier, handled);
+			break;
+
+		case SDLK_END :
+			handle_key_end(modifier, handled);
+			break;
+
+
+		case SDLK_PAGEUP :
+			handle_key_page_up(modifier, handled);
+			break;
+
+		case SDLK_PAGEDOWN :
+			handle_key_page_down(modifier, handled);
+			break;
+
+
+		case SDLK_UP :
+			handle_key_up_arrow(modifier, handled);
+			break;
+
+		case SDLK_DOWN :
+			handle_key_down_arrow(modifier, handled);
+			break;
+
+		case SDLK_LEFT :
+			handle_key_left_arrow(modifier, handled);
+			break;
+
+		case SDLK_RIGHT :
+			handle_key_right_arrow(modifier, handled);
+			break;
+		default:
+			/* ignore */
+			break;
+		}
 }
 
 } // namespace gui2
