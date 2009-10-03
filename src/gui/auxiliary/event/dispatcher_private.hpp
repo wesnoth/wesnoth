@@ -368,7 +368,7 @@ inline std::vector<twidget*> build_event_chain(const tevent event
  * @pre                           widget != NULL
  *
  * @tparam T                      The signal type of the event to handle.
- * @tparem F                      The type of the functor.
+ * @tparam F                      The type of the functor.
  *
  *
  * @param event                   The event to fire.
