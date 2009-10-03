@@ -583,6 +583,9 @@ public:
 	void signal_handler_sdl_video_resize(
 			const event::tevent event, bool& handled, const tpoint& new_size);
 
+	void signal_handler_click_dismiss(
+			const event::tevent event, bool& handled, bool& halt);
+
 	void signal_handler_sdl_key_down(
 			const event::tevent event, bool& handled, const SDLKey key);
 };

@@ -269,6 +269,19 @@ twindow::twindow(CVideo& video,
 			  boost::bind(&twindow::signal_handler_sdl_video_resize
 				  , this, _2, _3, _5));
 
+	connect_signal<event::SDL_LEFT_BUTTON_DOWN>(
+			  boost::bind(
+				  &twindow::signal_handler_click_dismiss, this, _2, _3, _4)
+			, event::tdispatcher::front_child);
+	connect_signal<event::SDL_MIDDLE_BUTTON_DOWN>(
+			  boost::bind(
+				  &twindow::signal_handler_click_dismiss, this, _2, _3, _4)
+			, event::tdispatcher::front_child);
+	connect_signal<event::SDL_RIGHT_BUTTON_DOWN>(
+			  boost::bind(
+				  &twindow::signal_handler_click_dismiss, this, _2, _3, _4)
+			, event::tdispatcher::front_child);
+
 	connect_signal<event::SDL_KEY_DOWN>(
 			  boost::bind(&twindow::signal_handler_sdl_key_down
 				  , this, _2, _3, _5)
@@ -1130,6 +1143,14 @@ void twindow::signal_handler_sdl_video_resize(
 	invalidate_layout();
 
 	handled = true;
+}
+
+void twindow::signal_handler_click_dismiss(
+		const event::tevent event, bool& handled, bool& halt)
+{
+	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+
+	handled = halt = click_dismiss();
 }
 
 void twindow::signal_handler_sdl_key_down(
