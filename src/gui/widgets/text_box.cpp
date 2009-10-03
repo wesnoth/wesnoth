@@ -96,6 +96,8 @@ ttext_box::ttext_box()
 {
 	set_wants_mouse_left_double_click();
 
+	connect_signal<event::MOUSE_MOTION>(boost::bind(
+				&ttext_box::signal_handler_mouse_motion, this, _2, _3, _5));
 	connect_signal<event::LEFT_BUTTON_DOWN>(boost::bind(
 				&ttext_box::signal_handler_left_button_down, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_UP>(boost::bind(
@@ -369,6 +371,18 @@ const std::string& ttext_box::get_control_type() const
 {
 	static const std::string type = "text_box";
 	return type;
+}
+
+void ttext_box::signal_handler_mouse_motion(
+		const event::tevent event, bool& handled, const tpoint& coordinate)
+{
+	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+
+	if(dragging_) {
+		handle_mouse_selection(coordinate, false);
+	}
+
+	handled = true;
 }
 
 void ttext_box::signal_handler_left_button_down(

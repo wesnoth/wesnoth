@@ -248,6 +248,9 @@ private:
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 
+	void signal_handler_mouse_motion(
+			const event::tevent event, bool& handled, const tpoint& coordinate);
+
 	void signal_handler_left_button_down(
 			const event::tevent event, bool& handled);
 
