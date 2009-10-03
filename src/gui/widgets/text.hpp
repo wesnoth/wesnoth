@@ -33,16 +33,7 @@ class ttext_ : public tcontrol
 {
 
 public:
-	ttext_()
-		: tcontrol(COUNT)
-		, state_(ENABLED)
-		, text_()
-		, selection_start_(0)
-		, selection_length_(0)
-		, key_press_callback_()
-		, text_changed_callback_()
-	{
-	}
+	ttext_();
 
 	/** Inherited from tevent_executor. */
 	void mouse_move(tevent_handler&);
@@ -427,6 +418,11 @@ protected:
 	 * - The new text of the textbox.
 	 */
 	boost::function< void (ttext_* textbox, const std::string text) > text_changed_callback_;
+
+	/***** ***** ***** signal handlers ***** ****** *****/
+
+	void signal_handler_sdl_key_down(const event::tevent event, bool& handled
+			, const SDLKey key, SDLMod modifier, const Uint16 unicode);
 };
 
 } // namespace gui2

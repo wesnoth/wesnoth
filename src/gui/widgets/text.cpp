@@ -20,7 +20,22 @@
 #include "gui/auxiliary/log.hpp"
 #include "gui/widgets/event_handler.hpp"
 
+#include <boost/bind.hpp>
+
 namespace gui2 {
+
+ttext_::ttext_()
+	: tcontrol(COUNT)
+	, state_(ENABLED)
+	, text_()
+	, selection_start_(0)
+	, selection_length_(0)
+	, key_press_callback_()
+	, text_changed_callback_()
+{
+	connect_signal<event::SDL_KEY_DOWN>(boost::bind(
+			&ttext_::signal_handler_sdl_key_down, this, _2, _3, _5, _6, _7));
+}
 
 void ttext_::mouse_move(tevent_handler&)
 {
@@ -81,132 +96,8 @@ void ttext_::key_press(tevent_handler& /*event*/,
 {
 	DBG_GUI_E << "Text: key press.\n";
 
-// For copy/paste we use a different key on the MAC. Other ctrl modifiers won't
-// be modifed seems not to be required when I read the comment in
-// widgets/textbox.cpp:516. Would be nice if somebody on a MAC would test it.
-#ifdef __APPLE__
-	const unsigned copypaste_modifier = KMOD_LMETA | KMOD_RMETA;
-#else
-	const unsigned copypaste_modifier = KMOD_CTRL;
-#endif
-
-	if(key_press_callback_) {
-		if((handled = key_press_callback_(this, key, modifier, unicode))) {
-			return;
-		}
-	}
-
-	switch(key) {
-
-		case SDLK_LEFT :
-			handle_key_left_arrow(modifier, handled);
-			break;
-
-		case SDLK_RIGHT :
-			handle_key_right_arrow(modifier, handled);
-			break;
-
-		case SDLK_UP :
-			handle_key_up_arrow(modifier, handled);
-			break;
-
-		case SDLK_DOWN :
-			handle_key_down_arrow(modifier, handled);
-			break;
-
-		case SDLK_PAGEUP :
-			handle_key_page_up(modifier, handled);
-			break;
-
-		case SDLK_PAGEDOWN :
-			handle_key_page_down(modifier, handled);
-			break;
-
-		case SDLK_a :
-			if(!(modifier & KMOD_CTRL)) {
-				handle_key_default(handled, key, modifier, unicode);
-				break;
-			}
-
-			// If ctrl-a is used for home drop the control modifier
-			modifier = static_cast<SDLMod>(modifier &~ KMOD_CTRL);
-			/* FALL DOWN */
-
-		case SDLK_HOME :
-			handle_key_home(modifier, handled);
-			break;
-
-		case SDLK_e :
-			if(!(modifier & KMOD_CTRL)) {
-				handle_key_default(handled, key, modifier, unicode);
-				break;
-			}
-
-			// If ctrl-e is used for end drop the control modifier
-			modifier = static_cast<SDLMod>(modifier &~ KMOD_CTRL);
-			/* FALL DOWN */
-
-		case SDLK_END :
-			handle_key_end(modifier, handled);
-			break;
-
-		case SDLK_BACKSPACE :
-			handle_key_backspace(modifier, handled);
-			break;
-
-		case SDLK_u :
-			if(modifier & KMOD_CTRL) {
-				handle_key_clear_line(modifier, handled);
-			} else {
-				handle_key_default(handled, key, modifier, unicode);
-			}
-			break;
-
-		case SDLK_DELETE :
-			handle_key_delete(modifier, handled);
-			break;
-
-		case SDLK_c :
-			if(!(modifier & copypaste_modifier)) {
-				handle_key_default(handled, key, modifier, unicode);
-				break;
-			}
-
-			// atm we don't care whether there is something to copy or paste
-			// if nothing is there we still don't want to be chained.
-			copy_selection(false);
-			handled = true;
-			break;
-
-		case SDLK_x :
-			if(!(modifier & copypaste_modifier)) {
-				handle_key_default(handled, key, modifier, unicode);
-				break;
-			}
-
-			copy_selection(false);
-			delete_selection();
-			handled = true;
-			break;
-
-		case SDLK_v :
-			if(!(modifier & copypaste_modifier)) {
-				handle_key_default(handled, key, modifier, unicode);
-				break;
-			}
-
-			paste_selection(false);
-			handled = true;
-			break;
-
-		default :
-			handle_key_default(handled, key, modifier, unicode);
-
-	}
-
-	if(text_changed_callback_) {
-		text_changed_callback_(this, this->text());
-	}
+	signal_handler_sdl_key_down(
+			event::SDL_KEY_DOWN, handled, key, modifier, unicode);
 }
 
 void ttext_::set_maximum_length(const size_t maximum_length)
@@ -421,6 +312,144 @@ void ttext_::handle_key_default(
 		handled = true;
 		insert_char(unicode);
 	}
+}
+
+void ttext_::signal_handler_sdl_key_down(const event::tevent event
+		, bool& handled
+		, const SDLKey key
+		, SDLMod modifier
+		, const Uint16 unicode)
+{
+
+	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+
+// For copy/paste we use a different key on the MAC. Other ctrl modifiers won't
+// be modifed seems not to be required when I read the comment in
+// widgets/textbox.cpp:516. Would be nice if somebody on a MAC would test it.
+#ifdef __APPLE__
+	const unsigned copypaste_modifier = KMOD_LMETA | KMOD_RMETA;
+#else
+	const unsigned copypaste_modifier = KMOD_CTRL;
+#endif
+
+	if(key_press_callback_) {
+		if((handled = key_press_callback_(this, key, modifier, unicode))) {
+			return;
+		}
+	}
+
+	switch(key) {
+
+		case SDLK_LEFT :
+			handle_key_left_arrow(modifier, handled);
+			break;
+
+		case SDLK_RIGHT :
+			handle_key_right_arrow(modifier, handled);
+			break;
+
+		case SDLK_UP :
+			handle_key_up_arrow(modifier, handled);
+			break;
+
+		case SDLK_DOWN :
+			handle_key_down_arrow(modifier, handled);
+			break;
+
+		case SDLK_PAGEUP :
+			handle_key_page_up(modifier, handled);
+			break;
+
+		case SDLK_PAGEDOWN :
+			handle_key_page_down(modifier, handled);
+			break;
+
+		case SDLK_a :
+			if(!(modifier & KMOD_CTRL)) {
+				handle_key_default(handled, key, modifier, unicode);
+				break;
+			}
+
+			// If ctrl-a is used for home drop the control modifier
+			modifier = static_cast<SDLMod>(modifier &~ KMOD_CTRL);
+			/* FALL DOWN */
+
+		case SDLK_HOME :
+			handle_key_home(modifier, handled);
+			break;
+
+		case SDLK_e :
+			if(!(modifier & KMOD_CTRL)) {
+				handle_key_default(handled, key, modifier, unicode);
+				break;
+			}
+
+			// If ctrl-e is used for end drop the control modifier
+			modifier = static_cast<SDLMod>(modifier &~ KMOD_CTRL);
+			/* FALL DOWN */
+
+		case SDLK_END :
+			handle_key_end(modifier, handled);
+			break;
+
+		case SDLK_BACKSPACE :
+			handle_key_backspace(modifier, handled);
+			break;
+
+		case SDLK_u :
+			if(modifier & KMOD_CTRL) {
+				handle_key_clear_line(modifier, handled);
+			} else {
+				handle_key_default(handled, key, modifier, unicode);
+			}
+			break;
+
+		case SDLK_DELETE :
+			handle_key_delete(modifier, handled);
+			break;
+
+		case SDLK_c :
+			if(!(modifier & copypaste_modifier)) {
+				handle_key_default(handled, key, modifier, unicode);
+				break;
+			}
+
+			// atm we don't care whether there is something to copy or paste
+			// if nothing is there we still don't want to be chained.
+			copy_selection(false);
+			handled = true;
+			break;
+
+		case SDLK_x :
+			if(!(modifier & copypaste_modifier)) {
+				handle_key_default(handled, key, modifier, unicode);
+				break;
+			}
+
+			copy_selection(false);
+			delete_selection();
+			handled = true;
+			break;
+
+		case SDLK_v :
+			if(!(modifier & copypaste_modifier)) {
+				handle_key_default(handled, key, modifier, unicode);
+				break;
+			}
+
+			paste_selection(false);
+			handled = true;
+			break;
+
+		default :
+			handle_key_default(handled, key, modifier, unicode);
+
+	}
+
+	if(text_changed_callback_) {
+		text_changed_callback_(this, this->text());
+	}
+
 }
 
 } // namespace gui2
