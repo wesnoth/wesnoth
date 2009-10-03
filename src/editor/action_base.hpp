@@ -106,12 +106,6 @@ struct editor_action_exception : public editor_exception
 	}
 };
 
-//thrown instead of a "todo" debug message
-struct editor_action_not_implemented : public editor_action_exception
-{
-	editor_action_not_implemented();
-};
-
 } //end namespace editor
 
 #endif
