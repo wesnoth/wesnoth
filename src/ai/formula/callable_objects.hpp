@@ -293,20 +293,6 @@ public:
 	};
 
 	void swap_position(ai::formula_ai& ai);
-
-	class swapper {
-	public:
-		ai::formula_ai& ai;
-		unit_map& a;
-		unit_map& b;
-		move_map_backup backup;
-		void swap();
-
-		swapper(ai::formula_ai& ai, position_callable& pos);
-
-		~swapper();
-	};
-	friend class swapper;
 };
 
 

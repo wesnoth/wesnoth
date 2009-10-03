@@ -94,24 +94,6 @@ void position_callable::swap_position(ai::formula_ai& ai) {
 	ai.get_info().units.swap(units_);
 }
 
-void position_callable::swapper::swap() {
-	a.swap(b);
-	//ai.swap_move_map(backup);
-}
-position_callable::swapper::swapper(ai::formula_ai& ai, position_callable& pos) :
-	ai(ai),
-	a(ai.get_info().units),
-	b(pos.units_),
-	backup()
-{
-  swap();
-}
-
-position_callable::swapper::~swapper() {
-	swap();
-}
-
-
 variant outcome_callable::get_value(const std::string& key) const {
 	if(key == "hitpoints_left") {
 		return variant(new std::vector<variant>(hitLeft_));
