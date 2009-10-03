@@ -13,10 +13,9 @@
 */
 
 /**
- * @file ai/formula_ai.cpp
+ * @file ai/formula/ai.cpp
  * Defines formula ai candidate actions - headers
- * */
-
+ */
 
 #include <boost/lexical_cast.hpp>
 #include <stack>
