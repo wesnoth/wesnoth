@@ -130,8 +130,8 @@ public:
 	 *
 	 * @param id                  The id of the widget to free.
 	 * @param widget              The widget to put in the grid.
-	 * @parem recurse             Do we want to decent into the child grids.
-	 * @parem new_parent          The new parent for the swapped out widget.
+	 * @param recurse             Do we want to decent into the child grids.
+	 * @param new_parent          The new parent for the swapped out widget.
 	 *
 	 * returns                    The widget which got removed (the parent of
 	 *                            the widget is cleared). If no widget found
