@@ -324,12 +324,6 @@ public:
 	 **/
 	unit& clone(bool is_temporary=true);
 
-	/**
-	 * Make sure that invisibility cache is revalidate
-	 * after ambush;
-	 **/
-	void ambush() const;
-
 	unit_race::GENDER generate_gender(const unit_type& type, bool gen, game_state* state = 0);
 	std::string image_mods() const;
 

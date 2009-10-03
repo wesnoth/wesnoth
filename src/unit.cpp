@@ -2695,17 +2695,6 @@ void unit::apply_modifications()
 	max_experience_ = std::max<int>(1, (max_experience_ * exp_accel + 50)/100);
 }
 
-void unit::ambush() const
-{
-	clear_visibility_cache();
-	std::vector<const unit *>::iterator itor =
-	std::find(units_with_cache.begin(), units_with_cache.end(), this);
-
-	if(itor != units_with_cache.end()) {
-		units_with_cache.erase(itor);
-	}
-}
-
 bool unit::invisible(const map_location& loc,
 		const unit_map& units,const std::vector<team>& teams, bool see_all) const
 {
