@@ -80,15 +80,9 @@ bool candidate_action_evaluation_loop::do_play_stage()
 			}
 
 			double score = STOP_VALUE;
-			try {
-				DBG_AI_TESTING_RCA_DEFAULT << "Evaluating candidate action: "<< *ca_ptr << std::endl;
-				score = ca_ptr->evaluate();
-				DBG_AI_TESTING_RCA_DEFAULT << "Evaluated candidate action to score "<< score << " : " << *ca_ptr << std::endl;
-			} catch (candidate_action_evaluation_exception &caee) {
-				ERR_AI_TESTING_RCA_DEFAULT << "Candidate action evaluation threw an exception: " << caee << std::endl;
-				ca_ptr->disable();
-				continue;
-			}
+			DBG_AI_TESTING_RCA_DEFAULT << "Evaluating candidate action: "<< *ca_ptr << std::endl;
+			score = ca_ptr->evaluate();
+			DBG_AI_TESTING_RCA_DEFAULT << "Evaluated candidate action to score "<< score << " : " << *ca_ptr << std::endl;
 
 			if (score>best_score) {
 				best_score = score;
