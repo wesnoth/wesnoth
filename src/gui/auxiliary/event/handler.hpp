@@ -72,12 +72,19 @@ enum tevent {
 	                               * A left mouse button double click event for
 	                               * a wiget.
 	                               */
-
 	, SDL_MIDDLE_BUTTON_DOWN      /**< A SDL middle mouse button down event. */
 	, SDL_MIDDLE_BUTTON_UP        /**< A SDL middle mouse button up event. */
+	, MIDDLE_BUTTON_DOWN          /**< See LEFT_BUTTON_DOWN. */
+	, MIDDLE_BUTTON_UP            /**< See LEFT_BUTTON_UP. */
+	, MIDDLE_BUTTON_CLICK         /**< See LEFT_BUTTON_CLICK. */
+	, MIDDLE_BUTTON_DOUBLE_CLICK  /**< See LEFT_BUTTON_DOUBLE_CLICK. */
 
 	, SDL_RIGHT_BUTTON_DOWN       /**< A SDL right mouse button down event. */
 	, SDL_RIGHT_BUTTON_UP         /**< A SDL right mouse button up event. */
+	, RIGHT_BUTTON_DOWN           /**< See LEFT_BUTTON_DOWN. */
+	, RIGHT_BUTTON_UP             /**< See LEFT_BUTTON_UP. */
+	, RIGHT_BUTTON_CLICK          /**< See LEFT_BUTTON_CLICK. */
+	, RIGHT_BUTTON_DOUBLE_CLICK   /**< See LEFT_BUTTON_DOUBLE_CLICK. */
 
 	, SDL_WHEEL_LEFT              /**< A SDL wheel left event. */
 	, SDL_WHEEL_RIGHT             /**< A SDL wheel right event. */
@@ -108,6 +115,14 @@ typedef
 			, boost::mpl::int_<LEFT_BUTTON_UP>
 			, boost::mpl::int_<LEFT_BUTTON_CLICK>
 			, boost::mpl::int_<LEFT_BUTTON_DOUBLE_CLICK>
+			, boost::mpl::int_<MIDDLE_BUTTON_DOWN>
+			, boost::mpl::int_<MIDDLE_BUTTON_UP>
+			, boost::mpl::int_<MIDDLE_BUTTON_CLICK>
+			, boost::mpl::int_<MIDDLE_BUTTON_DOUBLE_CLICK>
+			, boost::mpl::int_<RIGHT_BUTTON_DOWN>
+			, boost::mpl::int_<RIGHT_BUTTON_UP>
+			, boost::mpl::int_<RIGHT_BUTTON_CLICK>
+			, boost::mpl::int_<RIGHT_BUTTON_DOUBLE_CLICK>
 			, boost::mpl::int_<SDL_WHEEL_LEFT>
 			, boost::mpl::int_<SDL_WHEEL_RIGHT>
 			, boost::mpl::int_<SDL_WHEEL_UP>

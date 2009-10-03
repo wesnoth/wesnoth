@@ -577,8 +577,20 @@ std::ostream& operator<<(std::ostream& stream, const tevent event)
 		                              break;
 		case SDL_MIDDLE_BUTTON_DOWN : stream << "SDL middle button down"; break;
 		case SDL_MIDDLE_BUTTON_UP   : stream << "SDL middle button up"; break;
+		case MIDDLE_BUTTON_DOWN     : stream << "middle button down"; break;
+		case MIDDLE_BUTTON_UP       : stream << "middle button up"; break;
+		case MIDDLE_BUTTON_CLICK    : stream << "middle button click"; break;
+		case MIDDLE_BUTTON_DOUBLE_CLICK
+		                            : stream << "middle button double click";
+		                              break;
 		case SDL_RIGHT_BUTTON_DOWN  : stream << "SDL right button down"; break;
 		case SDL_RIGHT_BUTTON_UP    : stream << "SDL right button up"; break;
+		case RIGHT_BUTTON_DOWN      : stream << "right button down"; break;
+		case RIGHT_BUTTON_UP        : stream << "right button up"; break;
+		case RIGHT_BUTTON_CLICK     : stream << "right button click"; break;
+		case RIGHT_BUTTON_DOUBLE_CLICK
+		                            : stream << "right button double click";
+		                              break;
 		case SDL_WHEEL_LEFT         : stream << "SDL wheel left"; break;
 		case SDL_WHEEL_RIGHT        : stream << "SDL wheel right"; break;
 		case SDL_WHEEL_UP           : stream << "SDL wheel up"; break;
