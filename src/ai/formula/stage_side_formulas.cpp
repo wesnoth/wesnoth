@@ -13,9 +13,9 @@
 */
 
 /**
- * @file ai/formula/stage_stage_formulas.cpp
+ * @file ai/formula/stage_side_formulas.cpp
  * Defines formula ai side formulas stage
- * */
+ */
 
 
 #include "stage_side_formulas.hpp"
