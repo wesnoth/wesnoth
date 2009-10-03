@@ -20,17 +20,12 @@
 #ifndef AI_REGISTRY_HPP_INCLUDED
 #define AI_REGISTRY_HPP_INCLUDED
 
-#include "../global.hpp"
-
 namespace ai {
+namespace registry {
 
-class registry{
-public:
-	static void init();
-private:
-	registry();
-};
+void init();
 
+}
 } //end of namespace ai
 
 #endif

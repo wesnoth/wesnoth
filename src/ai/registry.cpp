@@ -307,8 +307,4 @@ void registry::init()
 {
 }
 
-registry::registry()
-{
-}
-
 } //end of namespace ai
