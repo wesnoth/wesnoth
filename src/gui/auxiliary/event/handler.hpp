@@ -45,6 +45,7 @@ public:
 enum tevent {
 	  DRAW                        /**< Periodic redraw request. */
 
+	, CLOSE_WINDOW                /**< A request to close the current window. */
 	, SDL_VIDEO_RESIZE            /**<
 	                               * A SDL resize request, coordinate is the
 	                               * new window size.
@@ -100,6 +101,7 @@ enum tevent {
 typedef
 		boost::mpl::set<
 			  boost::mpl::int_<DRAW>
+			, boost::mpl::int_<CLOSE_WINDOW>
 			, boost::mpl::int_<MOUSE_ENTER>
 			, boost::mpl::int_<MOUSE_LEAVE>
 			, boost::mpl::int_<LEFT_BUTTON_DOWN>

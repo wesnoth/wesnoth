@@ -22,6 +22,7 @@
 #include "gui/auxiliary/log.hpp"
 #include "gui/widgets/helper.hpp"
 #include "gui/widgets/widget.hpp"
+#include "gui/widgets/window.hpp"
 
 #include <cassert>
 
@@ -266,7 +267,15 @@ void thandler::handle_event(const SDL_Event& event)
 			break;
 
 		case CLOSE_WINDOW_EVENT:
-//			close_window();
+				{
+					/** @todo Convert this to a proper new style event. */
+					DBG_GUI_E << "Firing " << CLOSE_WINDOW << ".\n";
+
+					twindow* window = twindow::window_instance(event.user.code);
+					if(window) {
+						window->set_retval(twindow::AUTO_CLOSE);
+					}
+				}
 			break;
 
 		case SDL_KEYDOWN:
@@ -552,6 +561,7 @@ std::ostream& operator<<(std::ostream& stream, const tevent event)
 {
 	switch(event) {
 		case DRAW                   : stream << "draw"; break;
+		case CLOSE_WINDOW           : stream << "close window"; break;
 		case SDL_VIDEO_RESIZE       : stream << "SDL video resize"; break;
 		case SDL_MOUSE_MOTION       : stream << "SDL mouse motion"; break;
 		case MOUSE_ENTER            : stream << "mouse enter"; break;
