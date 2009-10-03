@@ -421,6 +421,9 @@ protected:
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 
+	void signal_handler_middle_button_click(
+			const event::tevent event, bool& handled);
+
 	void signal_handler_sdl_key_down(const event::tevent event, bool& handled
 			, const SDLKey key, SDLMod modifier, const Uint16 unicode);
 };

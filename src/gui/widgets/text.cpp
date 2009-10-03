@@ -35,6 +35,13 @@ ttext_::ttext_()
 {
 	connect_signal<event::SDL_KEY_DOWN>(boost::bind(
 			&ttext_::signal_handler_sdl_key_down, this, _2, _3, _5, _6, _7));
+
+#ifdef __unix__
+		// pastes on UNIX systems.
+	connect_signal<event::MIDDLE_BUTTON_CLICK>(boost::bind(
+			&ttext_::signal_handler_middle_button_click, this, _2, _3));
+
+#endif
 }
 
 void ttext_::mouse_move(tevent_handler&)
@@ -312,6 +319,16 @@ void ttext_::handle_key_default(
 		handled = true;
 		insert_char(unicode);
 	}
+}
+
+void ttext_::signal_handler_middle_button_click(
+			const event::tevent event, bool& handled)
+{
+	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+
+	paste_selection(true);
+
+	handled = true;
 }
 
 void ttext_::signal_handler_sdl_key_down(const event::tevent event
