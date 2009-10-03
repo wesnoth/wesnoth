@@ -303,18 +303,6 @@ void command_history_item::set_command( const std::string& command )
 // =======================================================================
 
 
-manager::manager()
-{
-
-}
-
-
-manager::~manager()
-{
-
-}
-
-
 manager::AI_map_of_stacks manager::ai_map_;
 game_info *manager::ai_info_;
 events::generic_event manager::user_interact_("ai_user_interact");

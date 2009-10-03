@@ -240,14 +240,12 @@ public:
 	static void remove_turn_started_observer( events::observer* event_observer );
 
 
-protected:
+private:
 
 	manager();
 
 
 public:
-
-	virtual ~manager();
 
 	// =======================================================================
 	// EVALUATION
