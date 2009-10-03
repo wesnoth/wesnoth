@@ -36,6 +36,8 @@
 #include "titlescreen.hpp"
 #include "video.hpp"
 
+#include <boost/bind.hpp>
+
 namespace gui2{
 
 unsigned twindow::sunset_ = 0;
@@ -260,6 +262,10 @@ twindow::twindow(CVideo& video,
 #ifdef GUI2_NEW_EVENT_HANDLING
 	tevent_handler::connect();
 #endif
+	connect_signal<event::SDL_KEY_DOWN>(
+			  boost::bind(&twindow::signal_handler_sdl_key_down
+				  , this, _2, _3, _5)
+			, event::tdispatcher::back_pre_child);
 }
 
 twindow::~twindow()
@@ -627,22 +633,7 @@ void twindow::window_resize(tevent_handler&,
 void twindow::key_press(tevent_handler& /*event_handler*/, bool& handled,
 		SDLKey key, SDLMod /*modifier*/, Uint16 /*unicode*/)
 {
-	if(!enter_disabled_ && (key == SDLK_KP_ENTER || key == SDLK_RETURN)) {
-		set_retval(OK);
-		handled = true;
-	} else if(key == SDLK_ESCAPE && !escape_disabled_) {
-		set_retval(CANCEL);
-		handled = true;
-	} else if(key == SDLK_SPACE) {
-		handled = click_dismiss();
-	}
-#ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
-	if(key == SDLK_F12) {
-		debug_layout_->generate_dot_file(
-				"manual", tdebug_layout_graph::MANUAL);
-		handled = true;
-	}
-#endif
+	signal_handler_sdl_key_down(event::SDL_KEY_DOWN, handled, key);
 }
 
 void twindow::init_linked_size_group(const std::string& id,
@@ -1119,6 +1110,29 @@ void twindow_implementation::layout(twindow& window,
 		layout(window, maximum_width, maximum_height);
 		return;
 	}
+}
+
+void twindow::signal_handler_sdl_key_down(
+		const event::tevent event, bool& handled, SDLKey key)
+{
+	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+
+	if(!enter_disabled_ && (key == SDLK_KP_ENTER || key == SDLK_RETURN)) {
+		set_retval(OK);
+		handled = true;
+	} else if(key == SDLK_ESCAPE && !escape_disabled_) {
+		set_retval(CANCEL);
+		handled = true;
+	} else if(key == SDLK_SPACE) {
+		handled = click_dismiss();
+	}
+#ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
+	if(key == SDLK_F12) {
+		debug_layout_->generate_dot_file(
+				"manual", tdebug_layout_graph::MANUAL);
+		handled = true;
+	}
+#endif
 }
 
 } // namespace gui2

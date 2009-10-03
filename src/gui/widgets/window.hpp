@@ -577,6 +577,11 @@ public:
 	void generate_dot_file(const std::string&,
 			const unsigned) {}
 #endif
+
+	/***** ***** ***** signal handlers ***** ****** *****/
+
+	void signal_handler_sdl_key_down(
+			const event::tevent event, bool& handled, const SDLKey key);
 };
 
 } // namespace gui2
