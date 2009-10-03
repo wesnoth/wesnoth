@@ -238,23 +238,6 @@ class editor_action_paste : public editor_action_extendable
 };
 
 /**
- * Draw -- replace a hex at a given location with a given terrain. Since this is
-  * a lot simpler than a brush paint, it is separate at least for now
- * (it is somewhat redundant)
- */
-class editor_action_paint_hex : public editor_action_location_terrain
-{
-	public:
-		editor_action_paint_hex(const map_location& loc, t_translation::t_terrain t)
-		: editor_action_location_terrain(loc, t)
-		{
-		}
-		editor_action_paint_hex* perform(map_context& mc) const;
-		void perform_without_undo(map_context& mc) const;
-		const char* get_name() const { return "paint_hex"; }
-};
-
-/**
  * Paint the same terrain on a number of locations on the map.
  */
 class editor_action_paint_area : public editor_action_area

@@ -158,18 +158,6 @@ void editor_action_paste::perform_without_undo(map_context& mc) const
 	mc.set_needs_terrain_rebuild();
 }
 
-editor_action_paint_hex* editor_action_paint_hex::perform(map_context& mc) const
-{
-	std::auto_ptr<editor_action_paint_hex> undo(new editor_action_paint_hex(loc_, mc.get_map().get_terrain(loc_)));
-	perform_without_undo(mc);
-	return undo.release();
-}
-void editor_action_paint_hex::perform_without_undo(map_context& mc) const
-{
-	mc.draw_terrain(t_, loc_);
-	mc.set_needs_terrain_rebuild();
-}
-
 editor_action_paste* editor_action_paint_area::perform(map_context& mc) const
 {
 	map_fragment mf(mc.get_map(), area_);
