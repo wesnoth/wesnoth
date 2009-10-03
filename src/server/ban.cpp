@@ -78,15 +78,6 @@ static lg::log_domain log_server("server");
 		return a->get_mask_ip(b->mask()) < b->get_mask_ip(a->mask());
 	}
 
-	subnet_compare_setter::subnet_compare_setter()
-	{
-		banned_compare_subnet::set_use_subnet_mask(true);
-	}
-
-	subnet_compare_setter::~subnet_compare_setter()
-	{
-		banned_compare_subnet::set_use_subnet_mask(false);
-	}
 	const std::string banned::who_banned_default_ = "system";
 
 	banned_ptr banned::create_dummy(const std::string& ip)
