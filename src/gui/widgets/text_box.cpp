@@ -100,7 +100,7 @@ ttext_box::ttext_box()
 				&ttext_box::signal_handler_left_button_down, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_UP>(boost::bind(
 				&ttext_box::signal_handler_left_button_up, this, _2, _3));
-	connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(&ttext_box
+	connect_signal<event::LEFT_BUTTON_DOUBLE_CLICK>(boost::bind(&ttext_box
 				::signal_handler_left_button_double_click, this, _2, _3));
 }
 
