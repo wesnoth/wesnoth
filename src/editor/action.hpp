@@ -387,24 +387,6 @@ class editor_action_resize_map : public editor_action
 		t_translation::t_terrain fill_;
 };
 
-/**
- * Basic rotations. angle is multiplied by 90 degrees so 2 does a 180 turn
- * @todo implement
- */
-class editor_action_rotate_map : public editor_action
-{
-	public:
-		editor_action_rotate_map(int angle)
-		: angle_(angle)
-		{
-		}
-		editor_action_rotate_map* perform(map_context& mc) const;
-		void perform_without_undo(map_context& mc) const;
-		const char* get_name() const { return "rotate"; }
-	protected:
-		int angle_;
-};
-
 class editor_action_apply_mask : public editor_action
 {
 	public:

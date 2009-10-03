@@ -339,11 +339,6 @@ void editor_action_create_mask::perform_without_undo(map_context& mc) const
 	mc.set_needs_terrain_rebuild();
 }
 
-void editor_action_rotate_map::perform_without_undo(map_context& /*mc*/) const
-{
-	throw editor_action_not_implemented();
-}
-
 editor_action_paste* editor_action_shuffle_area::perform(map_context& mc) const
 {
 	map_fragment mf(mc.get_map(), area_);
