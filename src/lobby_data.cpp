@@ -91,16 +91,6 @@ void room_info::process_room_members(const config& data)
 	}
 }
 
-user_info::user_info()
-	: name()
-	, game_id()
-	, relation(ME)
-	, state(LOBBY)
-	, registered()
-	, observing()
-{
-}
-
 user_info::user_info(const config& c)
 	: name(c["name"])
 	, game_id(lexical_cast_default<int>(c["game_id"]))

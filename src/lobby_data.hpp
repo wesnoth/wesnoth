@@ -83,7 +83,6 @@ private:
  */
 struct user_info
 {
-	user_info();
 	user_info(const config& c);
 
 	void update_state(int selected_game_id, const room_info* current_room = NULL);
