@@ -210,8 +210,6 @@ class editor_action_area : public editor_action_extendable
 		: area_(area)
 		{
 		}
-		bool add_location(const map_location& loc);
-		void add_locations(const std::set<map_location>& locs);
 		void extend(const editor_map& map, const std::set<map_location>& locs);
 		const char* get_name() const { return "area"; }
 	protected:

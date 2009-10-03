@@ -121,14 +121,6 @@ void editor_action_chain::perform_without_undo(map_context& mc) const
 	}
 }
 
-bool editor_action_area::add_location(const map_location& loc)
-{
-	return area_.insert(loc).second;
-}
-void editor_action_area::add_locations(const std::set<map_location>& locs)
-{
-	area_.insert(locs.begin(), locs.end());
-}
 void editor_action_area::extend(const editor_map& /*map*/, const std::set<map_location>& locs)
 {
 	area_.insert(locs.begin(), locs.end());
