@@ -320,29 +320,29 @@ size_t hash_value(const locator::value& val) {
 static std::set<std::string> uptodate_localized_files;
 static bool localized_file_uptodate (const std::string& loc_file)
 {
-    if (uptodate_localized_files.size() == 0) {
-        // First call, parse track index to collect uptodate files by path.
-        std::string fsep = "\xC2\xA6"; // UTF-8 for "broken bar"
-        std::string trackpath = get_binary_file_location("", "l10n-track");
-        std::string contents = read_file(trackpath);
-        std::vector<std::string> lines = utils::split(contents, '\n');
-        foreach (const std::string &line, lines) {
-            size_t p1 = line.find(fsep);
-            if (p1 == std::string::npos)
-                continue;
-            std::string state = line.substr(0, p1);
-            utils::strip(state);
-            if (state == "ok") {
-                size_t p2 = line.find(fsep, p1 + fsep.length());
-                if (p2 == std::string::npos)
-                    continue;
-                std::string relpath = line.substr(p1 + fsep.length(), p2 - p1 - fsep.length());
-                uptodate_localized_files.insert(game_config::path + '/' + relpath);
-            }
-        }
-        uptodate_localized_files.insert(""); // make sure not empty any more
-    }
-    return uptodate_localized_files.count(loc_file) == 1;
+	if (uptodate_localized_files.size() == 0) {
+		// First call, parse track index to collect uptodate files by path.
+		std::string fsep = "\xC2\xA6"; // UTF-8 for "broken bar"
+		std::string trackpath = get_binary_file_location("", "l10n-track");
+		std::string contents = read_file(trackpath);
+		std::vector<std::string> lines = utils::split(contents, '\n');
+		foreach (const std::string &line, lines) {
+			size_t p1 = line.find(fsep);
+			if (p1 == std::string::npos)
+				continue;
+			std::string state = line.substr(0, p1);
+			utils::strip(state);
+			if (state == "ok") {
+				size_t p2 = line.find(fsep, p1 + fsep.length());
+				if (p2 == std::string::npos)
+					continue;
+				std::string relpath = line.substr(p1 + fsep.length(), p2 - p1 - fsep.length());
+				uptodate_localized_files.insert(game_config::path + '/' + relpath);
+			}
+		}
+		uptodate_localized_files.insert(""); // make sure not empty any more
+	}
+	return uptodate_localized_files.count(loc_file) == 1;
 }
 
 // Return path to localized counterpart of the given file, if any, or empty string.
