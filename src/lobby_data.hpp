@@ -106,7 +106,6 @@ struct user_info
  */
 struct game_info
 {
-	game_info();
 	game_info(const config& c, const config& game_config);
 
 	bool can_join() const;

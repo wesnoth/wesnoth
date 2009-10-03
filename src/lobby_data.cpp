@@ -137,39 +137,6 @@ void user_info::update_state(int selected_game_id, const room_info* current_room
 	}
 }
 
-
-game_info::game_info() :
-	mini_map(),
-	id(),
-	map_data(),
-	name(),
-	scenario(),
-	remote_scenario(false),
-	map_info(),
-	map_size_info(),
-	era(),
-	era_short(),
-	gold(),
-	xp(),
-	vision(),
-	status(),
-	time_limit(),
-	vacant_slots(0),
-	current_turn(0),
-	reloaded(false),
-	started(false),
-	fog(false),
-	shroud(false),
-	observers(false),
-	use_map_settings(false),
-	verified(false),
-	password_required(false),
-	have_era(false),
-	has_friends(false),
-	has_ignored(false)
-{
-}
-
 namespace {
 
 std::string make_short_name(const std::string& long_name)
