@@ -483,20 +483,18 @@ void thandler::key_down(const SDLKey key
 	}
 }
 
-void thandler::keyboard(const tevent //event
-		)
+void thandler::keyboard(const tevent event)
 {
-	/*
 	DBG_GUI_E << "Firing: " << event << ".\n";
 
 	assert(!dispatchers_.empty());
 
 	if(keyboard_focus_) {
-		keyboard_focus_->fire(event);
+		keyboard_focus_->fire(event, dynamic_cast<twidget&>(*keyboard_focus_));
 	} else {
-		dispatchers_.back()->fire(event);
+		dispatchers_.back()->fire(event
+				, dynamic_cast<twidget&>(*dispatchers_.back()));
 	}
-	*/
 }
 
 /***** tmanager class. *****/
