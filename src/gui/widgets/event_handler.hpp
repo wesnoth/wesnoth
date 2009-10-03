@@ -22,6 +22,7 @@
 
 #include "events.hpp"
 #include "gui/widgets/event_executor.hpp"
+#include "gui/auxiliary/event/handler.hpp"
 
 #include <string>
 #include <SDL.h>
@@ -165,23 +166,37 @@ private:
 	 * */
 	struct tmouse_button {
 
-		tmouse_button(const std::string& name,
-			void (tevent_executor::*down) (tevent_handler&),
-			void (tevent_executor::*up) (tevent_handler&),
-			void (tevent_executor::*click) (tevent_handler&),
-			void (tevent_executor::*double_click) (tevent_handler&),
-			bool (tevent_executor::*wants_double_click) () const) :
-				last_click_stamp(0),
-				last_clicked_widget(NULL),
-				focus(0),
-				name(name),
-				down(down),
-				up(up),
-				click(click),
-				double_click(double_click),
-				wants_double_click(wants_double_click),
-				is_down(false)
-			{}
+		tmouse_button(
+				  const std::string& name
+				, void (tevent_executor::*down) (tevent_handler&)
+				, void (tevent_executor::*up) (tevent_handler&)
+				, void (tevent_executor::*click) (tevent_handler&)
+				, void (tevent_executor::*double_click) (tevent_handler&)
+				, bool (tevent_executor::*wants_double_click) () const
+				, const event::tevent sdl_button_down
+				, const event::tevent sdl_button_up
+				, const event::tevent button_down
+				, const event::tevent button_up
+				, const event::tevent button_click
+				, const event::tevent button_double_click)
+			: last_click_stamp(0)
+			, last_clicked_widget(NULL)
+			, focus(0)
+			, name(name)
+			, down(down)
+			, up(up)
+			, click(click)
+			, double_click(double_click)
+			, wants_double_click(wants_double_click)
+			, is_down(false)
+			, sdl_button_down_(sdl_button_down)
+			, sdl_button_up_(sdl_button_up)
+			, button_down_(button_down)
+			, button_up_(button_up)
+			, button_click_(button_click)
+			, button_double_click_(button_double_click)
+		{
+		}
 
 		/** The time of the last click used for double clicking. */
 		Uint32 last_click_stamp;
@@ -212,6 +227,14 @@ private:
 
 		/** Is the button down? */
 		bool is_down;
+
+		/** Events to fire. */
+		const event::tevent sdl_button_down_;
+		const event::tevent sdl_button_up_;
+		const event::tevent button_down_;
+		const event::tevent button_up_;
+		const event::tevent button_click_;
+		const event::tevent button_double_click_;
 	};
 
 	/**
@@ -451,6 +474,10 @@ private:
 	void sdl_mouse_motion(const tpoint& coordinate);
 	void sdl_left_button_down(const tpoint& coordinate);
 	void sdl_left_button_up(const tpoint& coordinate);
+	void sdl_middle_button_down(const tpoint& coordinate);
+	void sdl_middle_button_up(const tpoint& coordinate);
+	void sdl_right_button_down(const tpoint& coordinate);
+	void sdl_right_button_up(const tpoint& coordinate);
 
 	void button_down(twidget* widget, tmouse_button& button);
 	void button_up(twidget* widget, tmouse_button& button);

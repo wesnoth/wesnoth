@@ -95,39 +95,58 @@ static Uint32 popup_callback(Uint32 /*interval*/, void* /*param*/)
  */
 tevent_handler::tevent_handler() :
 #ifndef GUI2_NEW_EVENT_HANDLING
-	events::handler(false), // don't join we haven't created a context yet
+	  events::handler(false) // don't join we haven't created a context yet
+	,
 #endif
-	event_context_(),
-	mouse_x_(-1),
-	mouse_y_(-1),
-	left_("left",
-		&tevent_executor::mouse_left_button_down,
-		&tevent_executor::mouse_left_button_up,
-		&tevent_executor::mouse_left_button_click,
-		&tevent_executor::mouse_left_button_double_click,
-		&tevent_executor::wants_mouse_left_double_click),
-	middle_("middle",
-		&tevent_executor::mouse_middle_button_down,
-		&tevent_executor::mouse_middle_button_up,
-		&tevent_executor::mouse_middle_button_click,
-		&tevent_executor::mouse_middle_button_double_click,
-		&tevent_executor::wants_mouse_middle_double_click),
-	right_("right",
-		&tevent_executor::mouse_right_button_down,
-		&tevent_executor::mouse_right_button_up,
-		&tevent_executor::mouse_right_button_click,
-		&tevent_executor::mouse_right_button_double_click,
-		&tevent_executor::wants_mouse_right_double_click),
-	hover_pending_(false),
-	hover_id_(0),
-	hover_box_(),
-	had_hover_(false),
-	tooltip_(0),
-	help_popup_(0),
-	mouse_focus_(0),
-	mouse_captured_(false),
-	keyboard_focus_(0),
-	keyboard_focus_chain_()
+	  event_context_()
+	, mouse_x_(-1)
+	, mouse_y_(-1)
+	, left_("left"
+			, &tevent_executor::mouse_left_button_down
+			, &tevent_executor::mouse_left_button_up
+			, &tevent_executor::mouse_left_button_click
+			, &tevent_executor::mouse_left_button_double_click
+			, &tevent_executor::wants_mouse_left_double_click
+			, event::SDL_LEFT_BUTTON_DOWN
+			, event::SDL_LEFT_BUTTON_UP
+			, event::LEFT_BUTTON_DOWN
+			, event::LEFT_BUTTON_UP
+			, event::LEFT_BUTTON_CLICK
+			, event::LEFT_BUTTON_DOUBLE_CLICK)
+	, middle_("middle"
+			, &tevent_executor::mouse_middle_button_down
+			, &tevent_executor::mouse_middle_button_up
+			, &tevent_executor::mouse_middle_button_click
+			, &tevent_executor::mouse_middle_button_double_click
+			, &tevent_executor::wants_mouse_middle_double_click
+			, event::SDL_MIDDLE_BUTTON_DOWN
+			, event::SDL_MIDDLE_BUTTON_UP
+			, event::MIDDLE_BUTTON_DOWN
+			, event::MIDDLE_BUTTON_UP
+			, event::MIDDLE_BUTTON_CLICK
+			, event::MIDDLE_BUTTON_DOUBLE_CLICK)
+	, right_("right"
+			, &tevent_executor::mouse_right_button_down
+			, &tevent_executor::mouse_right_button_up
+			, &tevent_executor::mouse_right_button_click
+			, &tevent_executor::mouse_right_button_double_click
+			, &tevent_executor::wants_mouse_right_double_click
+			, event::SDL_RIGHT_BUTTON_DOWN
+			, event::SDL_RIGHT_BUTTON_UP
+			, event::RIGHT_BUTTON_DOWN
+			, event::RIGHT_BUTTON_UP
+			, event::RIGHT_BUTTON_CLICK
+			, event::RIGHT_BUTTON_DOUBLE_CLICK)
+	, hover_pending_(false)
+	, hover_id_(0)
+	, hover_box_()
+	, had_hover_(false)
+	, tooltip_(0)
+	, help_popup_(0)
+	, mouse_focus_(0)
+	, mouse_captured_(false)
+	, keyboard_focus_(0)
+	, keyboard_focus_chain_()
 {
 	if(SDL_WasInit(SDL_INIT_TIMER) == 0) {
 		if(SDL_InitSubSystem(SDL_INIT_TIMER) == -1) {
@@ -795,12 +814,26 @@ void tevent_handler::connect()
 {
 	twindow& w = get_window();
 	w.event::tdispatcher::connect();
+
 	w.connect_signal<event::SDL_MOUSE_MOTION>(
 			boost::bind(&tevent_handler::sdl_mouse_motion, this, _5));
+
+
 	w.connect_signal<event::SDL_LEFT_BUTTON_DOWN>(
 			boost::bind(&tevent_handler::sdl_left_button_down, this, _5));
 	w.connect_signal<event::SDL_LEFT_BUTTON_UP>(
 			boost::bind(&tevent_handler::sdl_left_button_up, this, _5));
+
+	w.connect_signal<event::SDL_MIDDLE_BUTTON_DOWN>(
+			boost::bind(&tevent_handler::sdl_middle_button_down, this, _5));
+	w.connect_signal<event::SDL_MIDDLE_BUTTON_UP>(
+			boost::bind(&tevent_handler::sdl_middle_button_up, this, _5));
+
+	w.connect_signal<event::SDL_RIGHT_BUTTON_DOWN>(
+			boost::bind(&tevent_handler::sdl_right_button_down, this, _5));
+	w.connect_signal<event::SDL_RIGHT_BUTTON_UP>(
+			boost::bind(&tevent_handler::sdl_right_button_up, this, _5));
+
 
 	w.connect_signal<event::SDL_KEY_DOWN>(
 			boost::bind(&tevent_handler::sdl_key_down, this, _5, _6, _7));
@@ -835,6 +868,18 @@ void tevent_handler::sdl_left_button_down(const tpoint& coordinate)
 	button_down(mouse_over, left_);
 }
 
+void tevent_handler::sdl_middle_button_down(const tpoint& coordinate)
+{
+	twidget* mouse_over = find_at(coordinate, true);
+	button_down(mouse_over, middle_);
+}
+
+void tevent_handler::sdl_right_button_down(const tpoint& coordinate)
+{
+	twidget* mouse_over = find_at(coordinate, true);
+	button_down(mouse_over, right_);
+}
+
 void tevent_handler::button_down(twidget* mouse_over, tmouse_button& button)
 {
 	if(button.is_down) {
@@ -846,7 +891,7 @@ void tevent_handler::button_down(twidget* mouse_over, tmouse_button& button)
 
 	if(mouse_captured_) {
 		button.focus = mouse_focus_;
-		get_window().fire(event::LEFT_BUTTON_DOWN, *mouse_focus_);
+		get_window().fire(button.button_down_, *mouse_focus_);
 	} else {
 		if(!mouse_over) {
 			return;
@@ -859,7 +904,7 @@ void tevent_handler::button_down(twidget* mouse_over, tmouse_button& button)
 		}
 
 		button.focus = mouse_over;
-		get_window().fire(event::LEFT_BUTTON_DOWN, *mouse_over);
+		get_window().fire(button.button_down_, *mouse_over);
 	}
 }
 
@@ -867,6 +912,18 @@ void tevent_handler::sdl_left_button_up(const tpoint& coordinate)
 {
 	twidget* mouse_over = find_at(coordinate, true);
 	button_up(mouse_over, left_);
+}
+
+void tevent_handler::sdl_middle_button_up(const tpoint& coordinate)
+{
+	twidget* mouse_over = find_at(coordinate, true);
+	button_up(mouse_over, middle_);
+}
+
+void tevent_handler::sdl_right_button_up(const tpoint& coordinate)
+{
+	twidget* mouse_over = find_at(coordinate, true);
+	button_up(mouse_over, right_);
 }
 
 void tevent_handler::button_up(twidget* mouse_over, tmouse_button& button)
@@ -879,7 +936,7 @@ void tevent_handler::button_up(twidget* mouse_over, tmouse_button& button)
 
 	button.is_down = false;
 	if(button.focus) {
-		get_window().fire(event::LEFT_BUTTON_UP, *mouse_over);
+		get_window().fire(button.button_up_, *mouse_over);
 	}
 
 	if(mouse_captured_) {
@@ -912,20 +969,20 @@ void tevent_handler::mouse_button_click(twidget* widget, tmouse_button& button)
 		if(button.last_click_stamp + settings::double_click_time >= stamp
 				&& button.last_clicked_widget == widget) {
 
-			get_window().fire(event::LEFT_BUTTON_DOUBLE_CLICK, *widget);
+			get_window().fire(button.button_double_click_, *widget);
 			button.last_click_stamp = 0;
 			button.last_clicked_widget = NULL;
 
 		} else {
 
-			get_window().fire(event::LEFT_BUTTON_CLICK, *widget);
+			get_window().fire(button.button_click_, *widget);
 			button.last_click_stamp = stamp;
 			button.last_clicked_widget = widget;
 		}
 
 	} else {
 
-		get_window().fire(event::LEFT_BUTTON_CLICK, *widget);
+		get_window().fire(button.button_click_, *widget);
 	}
 }
 
