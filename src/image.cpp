@@ -317,11 +317,13 @@ size_t hash_value(const locator::value& val) {
 }
 
 // Check if localized file is uptodate according to l10n track index.
-static std::set<std::string> uptodate_localized_files;
+// Make sure only that the image is not explicitly recorded as fuzzy,
+// in order to be able to use non-tracked images (e.g. from UMC).
+static std::set<std::string> fuzzy_localized_files;
 static bool localized_file_uptodate (const std::string& loc_file)
 {
-	if (uptodate_localized_files.size() == 0) {
-		// First call, parse track index to collect uptodate files by path.
+	if (fuzzy_localized_files.size() == 0) {
+		// First call, parse track index to collect fuzzy files by path.
 		std::string fsep = "\xC2\xA6"; // UTF-8 for "broken bar"
 		std::string trackpath = get_binary_file_location("", "l10n-track");
 		std::string contents = read_file(trackpath);
@@ -332,17 +334,17 @@ static bool localized_file_uptodate (const std::string& loc_file)
 				continue;
 			std::string state = line.substr(0, p1);
 			utils::strip(state);
-			if (state == "ok") {
+			if (state == "fuzzy") {
 				size_t p2 = line.find(fsep, p1 + fsep.length());
 				if (p2 == std::string::npos)
 					continue;
 				std::string relpath = line.substr(p1 + fsep.length(), p2 - p1 - fsep.length());
-				uptodate_localized_files.insert(game_config::path + '/' + relpath);
+				fuzzy_localized_files.insert(game_config::path + '/' + relpath);
 			}
 		}
-		uptodate_localized_files.insert(""); // make sure not empty any more
+		fuzzy_localized_files.insert(""); // make sure not empty any more
 	}
-	return uptodate_localized_files.count(loc_file) == 1;
+	return fuzzy_localized_files.count(loc_file) == 0;
 }
 
 // Return path to localized counterpart of the given file, if any, or empty string.
