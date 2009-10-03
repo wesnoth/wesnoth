@@ -14,7 +14,7 @@
 
 /**
  * Stage: fallback to other AI
- * @file ai/testing/rca_default.cpp
+ * @file ai/testing/stage_fallback.cpp
  */
 
 #include "stage_fallback.hpp"
