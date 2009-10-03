@@ -28,10 +28,6 @@ namespace editor {
 int editor_action::next_id_ = 1;
 int editor_action::instance_count_ = 0;
 
-editor_action_creation_fail::editor_action_creation_fail()
-: editor_action_exception(_("Error creating action object"))
-{
-}
 editor_action_not_implemented::editor_action_not_implemented()
 : editor_action_exception(_("Action not implemented"))
 {

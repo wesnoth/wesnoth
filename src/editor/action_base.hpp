@@ -112,12 +112,6 @@ struct editor_action_not_implemented : public editor_action_exception
 	editor_action_not_implemented();
 };
 
-//used when e.g. passed parameters are invalid
-struct editor_action_creation_fail : public editor_action_exception
-{
-	editor_action_creation_fail();
-};
-
 } //end namespace editor
 
 #endif
