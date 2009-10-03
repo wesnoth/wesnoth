@@ -795,7 +795,6 @@ void tevent_handler::connect()
 {
 	twindow& w = get_window();
 	w.event::tdispatcher::connect();
-	w.connect_signal<event::DRAW>(boost::bind(&twindow::draw, &get_window()));
 	w.connect_signal<event::SDL_MOUSE_MOTION>(
 			boost::bind(&tevent_handler::sdl_mouse_motion, this, _5));
 	w.connect_signal<event::SDL_LEFT_BUTTON_DOWN>(

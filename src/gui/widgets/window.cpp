@@ -262,6 +262,9 @@ twindow::twindow(CVideo& video,
 #ifdef GUI2_NEW_EVENT_HANDLING
 	tevent_handler::connect();
 #endif
+
+	connect_signal<event::DRAW>(boost::bind(&twindow::draw, this));
+
 	connect_signal<event::SDL_VIDEO_RESIZE>(
 			  boost::bind(&twindow::signal_handler_sdl_video_resize
 				  , this, _2, _3, _5));
