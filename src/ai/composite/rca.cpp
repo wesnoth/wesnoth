@@ -99,16 +99,7 @@ candidate_action_evaluation_exception::candidate_action_evaluation_exception(con
 {
 }
 
-candidate_action_execution_exception::candidate_action_execution_exception(const std::string &message)
-	: message_(message)
-{
-}
-
 candidate_action_evaluation_exception::~candidate_action_evaluation_exception()
-{
-}
-
-candidate_action_execution_exception::~candidate_action_execution_exception()
 {
 }
 
@@ -116,12 +107,6 @@ const std::string& candidate_action_evaluation_exception::get_message() const
 {
 	return message_;
 }
-
-const std::string& candidate_action_execution_exception::get_message() const
-{
-	return message_;
-}
-
 
 //============================================================================
 
@@ -132,13 +117,6 @@ std::ostream &operator<<(std::ostream &s, ai::candidate_action_evaluation_except
 	s << "candidate action evaluation exception :"<< caee.get_message();
 	return s;
 }
-
-
-std::ostream &operator<<(std::ostream &s, ai::candidate_action_execution_exception const &caee) {
-	s << "candidate action execution exception :"<< caee.get_message();
-	return s;
-}
-
 
 std::ostream &operator<<(std::ostream &s, ai::candidate_action const &ca) {
 	s << "candidate action with name ["<< ca.get_name() <<"]";

@@ -138,19 +138,6 @@ private:
 	std::string message_;
 };
 
-
-class candidate_action_execution_exception{
-public:
-	candidate_action_execution_exception(const std::string& message);
-
-	~candidate_action_execution_exception();
-
-	// get the message associated with this exception
-	const std::string& get_message() const;
-private:
-	std::string message_;
-};
-
 typedef boost::shared_ptr<candidate_action> candidate_action_ptr;
 
 class candidate_action_factory;
@@ -202,8 +189,6 @@ public:
 std::ostream &operator<<(std::ostream &s, ai::candidate_action const &ca);
 
 std::ostream &operator<<(std::ostream &s, ai::candidate_action_evaluation_exception const &caee);
-
-std::ostream &operator<<(std::ostream &s, ai::candidate_action_execution_exception const &caee);
 
 #ifdef _MSC_VER
 #pragma warning(pop)

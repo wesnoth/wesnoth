@@ -98,13 +98,8 @@ bool candidate_action_evaluation_loop::do_play_stage()
 
 		//Execution
 		if (best_score>candidate_action::BAD_SCORE) {
-			try {
-				DBG_AI_TESTING_RCA_DEFAULT << "Best candidate action: "<< *best_ptr << std::endl;
-				executed = best_ptr->execute();
-			} catch (candidate_action_execution_exception &caee) {
-				ERR_AI_TESTING_RCA_DEFAULT << "Candidate action execution threw an exception: " << caee << std::endl;
-				executed = false;
-			}
+			DBG_AI_TESTING_RCA_DEFAULT << "Best candidate action: "<< *best_ptr << std::endl;
+			executed = best_ptr->execute();
 			if (!executed) {
 				//this means that this CA has lied to us in evaluate()
 				//we punish it by disabling it
