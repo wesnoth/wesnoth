@@ -339,6 +339,9 @@ if(ENABLE_SERVER AND FIFO_DIR)
   endif()
 endif()
 
+# Index for checking states of localized images at runtime.
+install(FILES l10n-track DESTINATION ${DATADIR})
+
 #
 # uninstall
 #

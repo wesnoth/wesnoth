@@ -8,7 +8,7 @@ bin_SCRIPTS =
 findfilterflags=! \( -name .svn -prune -o -name ".\#*" -o -name "*~" -o -name "*bak" -o -name 'Makefile' -o -name '*Makefile' -o -type d -o -regex "data/test/*" \)
 
 # List all datafiles, ignoring junk
-finddata=(cd $(top_srcdir) && find data fonts icons images sounds $(findfilterflags) -print )
+finddata=(cd $(top_srcdir) && find data fonts icons images sounds l10n-track $(findfilterflags) -print )
 # List all data subdirectories
 finddatadirs=(cd $(top_srcdir) && find data fonts icons images sounds -type d \! \( -name .svn -prune \) -print )
 # List non-installable utility files

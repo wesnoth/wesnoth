@@ -534,6 +534,7 @@ env.InstallData("datadir", "wesnoth", map(Dir, installable_subs))
 env.InstallData("docdir",  "wesnoth", [Glob("doc/manual/*.html"), Dir("doc/manual/styles"), Dir("doc/manual/images")])
 if env["nls"]:
     env.InstallData("localedir", "wesnoth", Dir("translations"))
+    env.InstallData("datadir", "wesnoth", "l10n-track")
 InstallManpages(env, "wesnoth")
 if have_client_prereqs and have_X and env["desktop_entry"]:
      if sys.platform == "darwin":
