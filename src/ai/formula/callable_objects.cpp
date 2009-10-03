@@ -90,10 +90,6 @@ void position_callable::get_inputs(std::vector<game_logic::formula_input>* input
 	inputs->push_back(game_logic::formula_input("chance", game_logic::FORMULA_READ_ONLY));
 }
 
-void position_callable::swap_position(ai::formula_ai& ai) {
-	ai.get_info().units.swap(units_);
-}
-
 variant outcome_callable::get_value(const std::string& key) const {
 	if(key == "hitpoints_left") {
 		return variant(new std::vector<variant>(hitLeft_));

@@ -291,8 +291,6 @@ public:
 		ai::move_map srcdst, dstsrc, full_srcdst, full_dstsrc, enemy_srcdst, enemy_dstsrc;
 		variant attacks_cache;
 	};
-
-	void swap_position(ai::formula_ai& ai);
 };
 
 
