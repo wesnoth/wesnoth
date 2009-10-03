@@ -286,6 +286,9 @@ twindow::twindow(CVideo& video,
 			  boost::bind(&twindow::signal_handler_sdl_key_down
 				  , this, _2, _3, _5)
 			, event::tdispatcher::back_pre_child);
+	connect_signal<event::SDL_KEY_DOWN>(
+			  boost::bind(&twindow::signal_handler_sdl_key_down
+				  , this, _2, _3, _5));
 }
 
 twindow::~twindow()
