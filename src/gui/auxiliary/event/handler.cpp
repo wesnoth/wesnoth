@@ -16,6 +16,7 @@
 
 #include "gui/auxiliary/event/handler.hpp"
 
+#include "clipboard.hpp"
 #include "foreach.hpp"
 #include "video.hpp"
 #include "gui/auxiliary/event/dispatcher.hpp"
@@ -290,10 +291,10 @@ void thandler::handle_event(const SDL_Event& event)
 
 #if defined(_X11) && !defined(__APPLE__)
 			case SDL_SYSWMEVENT: {
-/*				DBG_GUI_E << "Event: System event.\n";
+				DBG_GUI_E << "Event: System event.\n";
 				//clipboard support for X11
-				system_wm_event(event);
-*/				break;
+				handle_system_event(event);
+				break;
 			}
 #endif
 
