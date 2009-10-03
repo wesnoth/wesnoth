@@ -21,6 +21,8 @@
 #include <boost/mpl/int.hpp>
 #include <boost/utility/enable_if.hpp>
 
+#include <SDL.h>
+
 #include <vector>
 #include <map>
 
@@ -71,9 +73,11 @@ typedef
 			  tdispatcher& dispatcher
 			, const tevent event
 			, bool& handled
-			, bool& halt) >
+			, bool& halt
+			, const SDLKey key
+			, const SDLMod modifier
+			, const Uint16 unicode) >
 		tsignal_keyboard_function;
-
 
 /**
  * Base class for event handling.
@@ -140,6 +144,19 @@ public:
 	 * @param coordinate             The mouse position for the event.
 	 */
 	bool fire(const tevent event, twidget& target, const tpoint& coordinate);
+
+	/**
+	 * Fires an event which takes keyboard parameters.
+	 *
+	 * @param key                    The SDL key code of the key pressed.
+	 * @param modifier               The SDL key modifiers used.
+	 * @param unicode                The unicode value for the key pressed.
+	 */
+	bool fire(const tevent event
+			, twidget& target
+			, const SDLKey key
+			, const SDLMod modifier
+			, const Uint16 unicode);
 
 	/**
 	 * The position where to add a new callback in the signal handler.

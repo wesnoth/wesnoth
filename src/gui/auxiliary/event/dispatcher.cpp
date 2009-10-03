@@ -124,6 +124,46 @@ bool tdispatcher::fire(const tevent event
 			, ttrigger_mouse(coordinate));
 }
 
+/** Helper struct to wrap the functor call. */
+class ttrigger_keyboard
+{
+public:
+	ttrigger_keyboard(const SDLKey key
+			, const SDLMod modifier
+			, const Uint16 unicode)
+		: key_(key)
+		, modifier_(modifier)
+		, unicode_(unicode)
+	{
+	}
+
+	void operator()(tsignal_keyboard_function functor
+			, tdispatcher& dispatcher
+			, const tevent event
+			, bool& handled
+			, bool& halt)
+	{
+		functor(dispatcher, event, handled, halt, key_, modifier_, unicode_);
+	}
+
+private:
+	SDLKey key_;
+	SDLMod modifier_;
+	Uint16 unicode_;
+};
+
+bool tdispatcher::fire(const tevent event
+		, twidget& target
+		, const SDLKey key
+		, const SDLMod modifier
+		, const Uint16 unicode)
+{
+	return fire_event<tsignal_keyboard_function>(event
+			, dynamic_cast<twidget*>(this)
+			, &target
+			, ttrigger_keyboard(key, modifier, unicode));
+}
+
 } // namespace event
 
 } // namespace gui2

@@ -120,6 +120,29 @@ struct tdispatcher_implementation
 	}
 
 	/**
+	 * Returns the signal structure for a tsignal_keyboard_function.
+	 *
+	 * There are several functions that only overload the return value, in
+	 * order to do so they use SFINAE.
+	 *
+	 * @tparam F                  tsignal_keyboard_function.
+	 * @param dispatcher          The dispatcher whose signal queue is used.
+	 * @param event               The event to get the signal for.
+	 *
+	 * @returns                   The signal of the type tdispatcher
+	 *                            ::tsignal<tsignal_keyboard_function>
+	 */
+	template<class F>
+	static typename boost::enable_if<
+			  boost::is_same<F, tsignal_keyboard_function>
+			, tdispatcher::tsignal<tsignal_keyboard_function>
+			>::type&
+	event_signal(tdispatcher& dispatcher, const tevent event)
+	{
+		return dispatcher.signal_keyboard_queue_.queue[event];
+	}
+
+	/**
 	 * Returns the signal structure for a key in tset_event_keyboard.
 	 *
 	 * There are several functions that only overload the return value, in
