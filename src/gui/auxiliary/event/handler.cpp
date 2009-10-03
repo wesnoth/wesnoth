@@ -349,12 +349,11 @@ void thandler::video_resize(const tpoint& new_size)
 {
 	DBG_GUI_E << "Firing: " << SDL_VIDEO_RESIZE << ".\n";
 
-	assert(!dispatchers_.empty());
-
-	/** @todo Need to evaluate who should get this event. */
-	dispatchers_.back()->fire(SDL_VIDEO_RESIZE
-			, dynamic_cast<twidget&>(*dispatchers_.back())
-			, new_size);
+	foreach(tdispatcher* dispatcher, dispatchers_) {
+		dispatcher->fire(SDL_VIDEO_RESIZE
+				, dynamic_cast<twidget&>(*dispatcher)
+				, new_size);
+	}
 }
 
 void thandler::mouse(const tevent event, const tpoint& position)

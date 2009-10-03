@@ -262,6 +262,10 @@ twindow::twindow(CVideo& video,
 #ifdef GUI2_NEW_EVENT_HANDLING
 	tevent_handler::connect();
 #endif
+	connect_signal<event::SDL_VIDEO_RESIZE>(
+			  boost::bind(&twindow::signal_handler_sdl_video_resize
+				  , this, _2, _3, _5));
+
 	connect_signal<event::SDL_KEY_DOWN>(
 			  boost::bind(&twindow::signal_handler_sdl_key_down
 				  , this, _2, _3, _5)
@@ -623,11 +627,10 @@ void twindow::draw()
 void twindow::window_resize(tevent_handler&,
 		const unsigned new_width, const unsigned new_height)
 {
-	settings::gamemap_width += new_width - settings::screen_width ;
-	settings::gamemap_height += new_height - settings::screen_height ;
-	settings::screen_width = new_width;
-	settings::screen_height = new_height;
-	invalidate_layout();
+	bool handled = false;
+	signal_handler_sdl_video_resize(event::SDL_VIDEO_RESIZE
+			, handled
+			, tpoint(new_width, new_height));
 }
 
 void twindow::key_press(tevent_handler& /*event_handler*/, bool& handled,
@@ -1110,6 +1113,20 @@ void twindow_implementation::layout(twindow& window,
 		layout(window, maximum_width, maximum_height);
 		return;
 	}
+}
+
+void twindow::signal_handler_sdl_video_resize(
+			const event::tevent event, bool& handled, const tpoint& new_size)
+{
+	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+
+	settings::gamemap_width += new_size.x - settings::screen_width ;
+	settings::gamemap_height += new_size.y - settings::screen_height ;
+	settings::screen_width = new_size.x;
+	settings::screen_height = new_size.y;
+	invalidate_layout();
+
+	handled = true;
 }
 
 void twindow::signal_handler_sdl_key_down(
