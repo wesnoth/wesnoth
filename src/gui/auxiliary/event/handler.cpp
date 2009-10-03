@@ -134,6 +134,12 @@ private:
 	/** Fires a draw event. */
 	void draw();
 
+	/**
+	 * Fires a video resize event.
+	 *
+	 * @param new_size               The new size of the window.
+	 */
+	void video_resize(const tpoint& new_size);
 
 	/**
 	 * Fires a generic mouse event.
@@ -270,7 +276,7 @@ void thandler::handle_event(const SDL_Event& event)
 			break;
 
 		case SDL_VIDEORESIZE:
-//			video_resize();
+			video_resize(tpoint(event.resize.w, event.resize.h));
 			break;
 
 #if defined(_X11) && !defined(__APPLE__)
@@ -337,6 +343,18 @@ void thandler::draw()
 	foreach(tdispatcher* dispatcher, dispatchers_) {
 		dispatcher->fire(DRAW, dynamic_cast<twidget&>(*dispatcher));
 	}
+}
+
+void thandler::video_resize(const tpoint& new_size)
+{
+	DBG_GUI_E << "Firing: " << SDL_VIDEO_RESIZE << ".\n";
+
+	assert(!dispatchers_.empty());
+
+	/** @todo Need to evaluate who should get this event. */
+	dispatchers_.back()->fire(SDL_VIDEO_RESIZE
+			, dynamic_cast<twidget&>(*dispatchers_.back())
+			, new_size);
 }
 
 void thandler::mouse(const tevent event, const tpoint& position)
@@ -535,6 +553,7 @@ std::ostream& operator<<(std::ostream& stream, const tevent event)
 {
 	switch(event) {
 		case DRAW                   : stream << "draw"; break;
+		case SDL_VIDEO_RESIZE       : stream << "SDL video resize"; break;
 		case SDL_MOUSE_MOTION       : stream << "SDL mouse motion"; break;
 		case MOUSE_ENTER            : stream << "mouse enter"; break;
 		case MOUSE_LEAVE            : stream << "mouse leave"; break;

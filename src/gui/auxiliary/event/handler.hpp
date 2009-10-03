@@ -45,6 +45,11 @@ public:
 enum tevent {
 	  DRAW                        /**< Periodic redraw request. */
 
+	, SDL_VIDEO_RESIZE            /**<
+	                               * A SDL resize request, coordinate is the
+	                               * new window size.
+	                               */
+
 	, SDL_MOUSE_MOTION            /**< A SDL mouse motion event. */
 	, MOUSE_ENTER                 /**< A mouse enter event for a widget. */
 	, MOUSE_MOTION                /**< A mouse motion event for a widget. */
@@ -115,7 +120,8 @@ typedef
  */
 typedef
 		boost::mpl::set<
-			  boost::mpl::int_<SDL_MOUSE_MOTION>
+			  boost::mpl::int_<SDL_VIDEO_RESIZE>
+			, boost::mpl::int_<SDL_MOUSE_MOTION>
 			, boost::mpl::int_<MOUSE_MOTION>
 			, boost::mpl::int_<SDL_LEFT_BUTTON_DOWN>
 			, boost::mpl::int_<SDL_LEFT_BUTTON_UP>
