@@ -411,6 +411,15 @@ private:
 			, bool& handled
 			, const SDLKey key
 			, SDLMod modifier);
+
+	void signal_handler_sdl_wheel_up(const event::tevent event
+			, bool& handled);
+	void signal_handler_sdl_wheel_down(const event::tevent event
+			, bool& handled);
+	void signal_handler_sdl_wheel_left(const event::tevent event
+			, bool& handled);
+	void signal_handler_sdl_wheel_right(const event::tevent event
+			, bool& handled);
 };
 
 } // namespace gui2

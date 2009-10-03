@@ -100,6 +100,21 @@ tscrollbar_container::tscrollbar_container(const unsigned canvas_count)
 	connect_signal<event::SDL_KEY_DOWN>(boost::bind(
 			&tscrollbar_container::signal_handler_sdl_key_down
 				, this, _2, _3, _5, _6));
+
+	connect_signal<event::SDL_WHEEL_UP>(boost::bind(
+			&tscrollbar_container::signal_handler_sdl_wheel_up
+				, this, _2, _3));
+	connect_signal<event::SDL_WHEEL_DOWN>(boost::bind(
+			&tscrollbar_container::signal_handler_sdl_wheel_down
+				, this, _2, _3));
+	connect_signal<event::SDL_WHEEL_LEFT>(boost::bind(
+			&tscrollbar_container::signal_handler_sdl_wheel_left
+				, this, _2, _3));
+	connect_signal<event::SDL_WHEEL_RIGHT>(boost::bind(
+			&tscrollbar_container::signal_handler_sdl_wheel_right
+				, this, _2, _3));
+
+
 }
 
 void tscrollbar_container::layout_init(const bool full_initialization)
@@ -867,6 +882,67 @@ void tscrollbar_container::signal_handler_sdl_key_down(
 			/* ignore */
 			break;
 		}
+}
+
+void tscrollbar_container::signal_handler_sdl_wheel_up(
+		  const event::tevent event
+		, bool& handled)
+{
+	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+
+	assert(vertical_scrollbar_grid_ && vertical_scrollbar_);
+
+	if(vertical_scrollbar_grid_->get_visible() == twidget::VISIBLE) {
+		vertical_scrollbar_->scroll(tscrollbar_::HALF_JUMP_BACKWARDS);
+		scrollbar_moved();
+		handled = true;
+	}
+}
+
+void tscrollbar_container::signal_handler_sdl_wheel_down(
+		  const event::tevent event
+		, bool& handled)
+{
+	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+
+	assert(vertical_scrollbar_grid_ && vertical_scrollbar_);
+
+	if(vertical_scrollbar_grid_->get_visible() == twidget::VISIBLE) {
+		vertical_scrollbar_->scroll(tscrollbar_::HALF_JUMP_FORWARD);
+		scrollbar_moved();
+		handled = true;
+	}
+}
+
+void tscrollbar_container::signal_handler_sdl_wheel_left(
+		  const event::tevent event
+		, bool& handled)
+{
+	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+
+	assert(horizontal_scrollbar_grid_ && horizontal_scrollbar_);
+
+	if(horizontal_scrollbar_grid_->get_visible() == twidget::VISIBLE) {
+		horizontal_scrollbar_->scroll(tscrollbar_::HALF_JUMP_BACKWARDS);
+		scrollbar_moved();
+		handled = true;
+	}
+}
+
+void tscrollbar_container::signal_handler_sdl_wheel_right(
+		  const event::tevent event
+		, bool& handled)
+{
+	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+
+	assert(horizontal_scrollbar_grid_ && horizontal_scrollbar_);
+
+	if(horizontal_scrollbar_grid_->get_visible() == twidget::VISIBLE) {
+		horizontal_scrollbar_->scroll(tscrollbar_::HALF_JUMP_FORWARD);
+		scrollbar_moved();
+		handled = true;
+	}
+
 }
 
 } // namespace gui2
