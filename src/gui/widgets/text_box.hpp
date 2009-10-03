@@ -165,6 +165,7 @@ protected:
 	void handle_mouse_selection(
 		tevent_handler& event, const bool start_selection);
 
+	void handle_mouse_selection(tpoint mouse, const bool start_selection);
 private:
 
 	/** The history text for this widget. */

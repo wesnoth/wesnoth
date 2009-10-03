@@ -241,7 +241,11 @@ void ttext_box::delete_selection()
 void ttext_box::handle_mouse_selection(
 		tevent_handler& event, const bool start_selection)
 {
-	tpoint mouse = event.get_mouse();
+	handle_mouse_selection(event.get_mouse(), start_selection);
+}
+
+void ttext_box::handle_mouse_selection(tpoint mouse, const bool start_selection)
+{
 	mouse.x -= get_x();
 	mouse.y -= get_y();
 	// FIXME we dont test for overflow in width
@@ -379,8 +383,7 @@ void ttext_box::signal_handler_left_button_down(
 	get_window()->keyboard_capture(this);
 	get_window()->mouse_capture();
 
-	/** @todo enable this part as well. */
-//	handle_mouse_selection(event, true);
+	handle_mouse_selection(get_mouse_position(), true);
 
 	handled = true;
 }
