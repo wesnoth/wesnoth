@@ -44,6 +44,10 @@ tscrollbar_::tscrollbar_()
 				&tscrollbar_::signal_handler_mouse_motion, this, _2, _3, _5));
 	connect_signal<event::MOUSE_LEAVE>(boost::bind(
 				&tscrollbar_::signal_handler_mouse_leave, this, _2, _3));
+	connect_signal<event::LEFT_BUTTON_DOWN>(boost::bind(
+				&tscrollbar_::signal_handler_left_button_down, this, _2, _3));
+	connect_signal<event::LEFT_BUTTON_UP>(boost::bind(
+				&tscrollbar_::signal_handler_left_button_up, this, _2, _3));
 }
 
 void tscrollbar_::scroll(const tscroll scroll)
@@ -430,6 +434,67 @@ void tscrollbar_::signal_handler_mouse_leave(
 	if(state_ == FOCUSSED) {
 		set_state(ENABLED);
 	}
+	handled = true;
+}
+
+
+void tscrollbar_::signal_handler_left_button_down(
+		const event::tevent event, bool& handled)
+{
+	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+
+	tpoint mouse = get_mouse_position();
+	mouse.x -= get_x();
+	mouse.y -= get_y();
+
+	if(on_positioner(mouse)) {
+		assert(get_window());
+		mouse_ = mouse;
+		get_window()->mouse_capture();
+		set_state(PRESSED);
+	}
+
+	const int bar = on_bar(mouse);
+
+	if(bar == -1) {
+		scroll(HALF_JUMP_BACKWARDS);
+		if(callback_positioner_move_) {
+			callback_positioner_move_(this);
+		}
+	} else if(bar == 1) {
+		scroll(HALF_JUMP_FORWARD);
+		if(callback_positioner_move_) {
+			callback_positioner_move_(this);
+		}
+	} else {
+		assert(bar == 0);
+	}
+
+	handled = true;
+}
+
+void tscrollbar_::signal_handler_left_button_up(
+		const event::tevent event, bool& handled)
+{
+	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+
+	tpoint mouse = get_mouse_position();
+	mouse.x -= get_x();
+	mouse.y -= get_y();
+
+	if(state_ != PRESSED) {
+		return;
+	}
+
+	assert(get_window());
+	get_window()->mouse_capture(false);
+
+	if(on_positioner(mouse)) {
+		set_state(FOCUSSED);
+	} else {
+		set_state(ENABLED);
+	}
+
 	handled = true;
 }
 

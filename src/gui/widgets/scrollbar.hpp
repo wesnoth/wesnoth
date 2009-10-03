@@ -319,6 +319,13 @@ private:
 			const event::tevent event, bool& handled, const tpoint& coordinate);
 
 	void signal_handler_mouse_leave(const event::tevent event, bool& handled);
+
+	void signal_handler_left_button_down(
+			const event::tevent event, bool& handled);
+
+	void signal_handler_left_button_up(
+			const event::tevent event, bool& handled);
+
 };
 
 } // namespace gui2
