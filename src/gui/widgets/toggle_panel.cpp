@@ -42,9 +42,13 @@ ttoggle_panel::ttoggle_panel()
 	connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(
 				&ttoggle_panel::signal_handler_left_button_click
 					, this, _2, _3));
+	connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(
+				  &ttoggle_panel::signal_handler_left_button_click
+				, this, _2, _3)
+			, event::tdispatcher::back_post_child);
 	connect_signal<event::LEFT_BUTTON_DOUBLE_CLICK>(boost::bind(
-				&ttoggle_panel::signal_handler_left_button_double_click
-					, this, _2, _3));
+				  &ttoggle_panel::signal_handler_left_button_double_click
+				, this, _2, _3));
 }
 
 void ttoggle_panel::set_child_members(const std::map<std::string /* widget id */, string_map>& data)
