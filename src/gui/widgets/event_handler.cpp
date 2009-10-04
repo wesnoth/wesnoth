@@ -96,10 +96,10 @@ static Uint32 popup_callback(Uint32 /*interval*/, void* /*param*/)
 tevent_handler::tevent_handler() :
 #ifdef GUI2_OLD_EVENT_HANDLING
 	  events::handler(false) // don't join we haven't created a context yet
+	, event_context_()
 	,
 #endif
-	  event_context_()
-	, mouse_x_(-1)
+	  mouse_x_(-1)
 	, mouse_y_(-1)
 	, left_("left"
 #ifdef GUI2_OLD_EVENT_HANDLING

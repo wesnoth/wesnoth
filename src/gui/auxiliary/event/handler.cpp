@@ -310,8 +310,9 @@ void thandler::connect(tdispatcher* dispatcher)
 	assert(std::find(dispatchers_.begin(), dispatchers_.end(), dispatcher)
 			== dispatchers_.end());
 #ifndef GUI2_OLD_EVENT_HANDLING
-	// Need to join unconditionally to get the events.
-	join();
+	if(dispatchers_.empty()) {
+		join();
+	}
 #endif
 	dispatchers_.push_back(dispatcher);
 }
@@ -335,11 +336,7 @@ void thandler::disconnect(tdispatcher* dispatcher)
 			== dispatchers_.end());
 #ifndef GUI2_OLD_EVENT_HANDLING
 	if(dispatchers_.empty()) {
-		// When we're the last dispatcher really leave.
 		leave();
-	} else {
-		// Else join again in order to get the events to the previous window.
-		join();
 	}
 #endif
 }

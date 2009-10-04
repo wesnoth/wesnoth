@@ -20,7 +20,9 @@
 #ifndef GUI_WIDGETS_EVENT_INFO_HPP_INCLUDED
 #define GUI_WIDGETS_EVENT_INFO_HPP_INCLUDED
 
+#ifdef GUI2_OLD_EVENT_HANDLING
 #include "events.hpp"
+#endif
 #include "gui/widgets/event_executor.hpp"
 #include "gui/auxiliary/event/handler.hpp"
 
@@ -245,11 +247,13 @@ private:
 		const event::tevent button_double_click_;
 	};
 
+#ifdef GUI2_OLD_EVENT_HANDLING
 	/**
 	 * We create a new event context so we're always modal. Maybe this has to
 	 * change, but not sure yet.
 	 */
 	events::event_context event_context_;
+#endif
 
 	int mouse_x_;                      /**< The current mouse x. */
 	int mouse_y_;                      /**< The current mouse y. */
