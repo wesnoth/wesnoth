@@ -62,15 +62,41 @@ editor_action* editor_action::perform(map_context& mc) const
 	return undo.release();
 }
 
+editor_action_whole_map* editor_action_whole_map::clone() const
+{
+	return new editor_action_whole_map(*this);
+}
 void editor_action_whole_map::perform_without_undo(map_context& mc) const {
 	mc.set_map(m_);
 }
 
+editor_action_chain::editor_action_chain(const editor::editor_action_chain &other)
+{
+	foreach (editor_action* a, other.actions_) {
+		actions_.push_back(a->clone());
+	}
+}
+editor_action_chain& editor_action_chain::operator=(const editor_action_chain& other)
+{
+	if (this == &other) return *this;
+	foreach (editor_action* a, actions_) {
+		delete a;
+	}
+	actions_.clear();
+	foreach (editor_action* a, other.actions_) {
+		actions_.push_back(a->clone());
+	}
+	return *this;
+}
 editor_action_chain::~editor_action_chain()
 {
 	foreach (editor_action* a, actions_) {
 		delete a;
 	}
+}
+editor_action_chain* editor_action_chain::clone() const
+{
+	return new editor_action_chain(*this);
 }
 int editor_action_chain::action_count() const {
 	int count = 0;
@@ -126,6 +152,10 @@ void editor_action_area::extend(const editor_map& /*map*/, const std::set<map_lo
 	area_.insert(locs.begin(), locs.end());
 }
 
+editor_action_paste* editor_action_paste::clone() const
+{
+	return new editor_action_paste(*this);
+}
 void editor_action_paste::extend(const editor_map& map, const std::set<map_location>& locs)
 {
 	paste_.add_tiles(map, locs);
@@ -144,6 +174,11 @@ void editor_action_paste::perform_without_undo(map_context& mc) const
 	mc.set_needs_terrain_rebuild();
 }
 
+
+editor_action_paint_area* editor_action_paint_area::clone() const
+{
+	return new editor_action_paint_area(*this);
+}
 editor_action_paste* editor_action_paint_area::perform(map_context& mc) const
 {
 	map_fragment mf(mc.get_map(), area_);
@@ -157,6 +192,10 @@ void editor_action_paint_area::perform_without_undo(map_context& mc) const
 	mc.set_needs_terrain_rebuild();
 }
 
+editor_action_fill* editor_action_fill::clone() const
+{
+	return new editor_action_fill(*this);
+}
 editor_action_paint_area* editor_action_fill::perform(map_context& mc) const
 {
 	std::set<map_location> to_fill = mc.get_map().get_contigious_terrain_tiles(loc_);
@@ -172,6 +211,10 @@ void editor_action_fill::perform_without_undo(map_context& mc) const
 	mc.set_needs_terrain_rebuild();
 }
 
+editor_action_starting_position* editor_action_starting_position::clone() const
+{
+	return new editor_action_starting_position(*this);
+}
 editor_action* editor_action_starting_position::perform(map_context& mc) const
 {
 	std::auto_ptr<editor_action> undo;
@@ -204,6 +247,10 @@ void editor_action_starting_position::perform_without_undo(map_context& mc) cons
 	mc.set_needs_labels_reset();
 }
 
+editor_action_select* editor_action_select::clone() const
+{
+	return new editor_action_select(*this);
+}
 void editor_action_select::extend(const editor_map& map, const std::set<map_location>& locs)
 {
 	foreach (const map_location& loc, locs) {
@@ -234,6 +281,10 @@ void editor_action_select::perform_without_undo(map_context& mc) const
 	}
 }
 
+editor_action_deselect* editor_action_deselect::clone() const
+{
+	return new editor_action_deselect(*this);
+}
 void editor_action_deselect::extend(const editor_map& map, const std::set<map_location>& locs)
 {
 	foreach (const map_location& loc, locs) {
@@ -264,6 +315,10 @@ void editor_action_deselect::perform_without_undo(map_context& mc) const
 	}
 }
 
+editor_action_select_all* editor_action_select_all::clone() const
+{
+	return new editor_action_select_all(*this);
+}
 editor_action_deselect* editor_action_select_all::perform(map_context& mc) const
 {
 	std::set<map_location> current = mc.get_map().selection();
@@ -282,6 +337,10 @@ void editor_action_select_all::perform_without_undo(map_context& mc) const
 	mc.set_everything_changed();
 }
 
+editor_action_select_none* editor_action_select_none::clone() const
+{
+	return new editor_action_select_none(*this);
+}
 editor_action_select* editor_action_select_none::perform(map_context& mc) const
 {
 	std::set<map_location> current = mc.get_map().selection();
@@ -295,7 +354,10 @@ void editor_action_select_none::perform_without_undo(map_context& mc) const
 	mc.set_everything_changed();
 }
 
-
+editor_action_select_inverse* editor_action_select_inverse::clone() const
+{
+	return new editor_action_select_inverse(*this);
+}
 editor_action_select_inverse* editor_action_select_inverse::perform(map_context& mc) const
 {
 	perform_without_undo(mc);
@@ -307,24 +369,40 @@ void editor_action_select_inverse::perform_without_undo(map_context& mc) const
 	mc.set_everything_changed();
 }
 
+editor_action_resize_map* editor_action_resize_map::clone() const
+{
+	return new editor_action_resize_map(*this);
+}
 void editor_action_resize_map::perform_without_undo(map_context& mc) const
 {
 	mc.get_map().resize(x_size_, y_size_, x_offset_, y_offset_, fill_);
 	mc.set_needs_reload();
 }
 
+editor_action_apply_mask* editor_action_apply_mask::clone() const
+{
+	return new editor_action_apply_mask(*this);
+}
 void editor_action_apply_mask::perform_without_undo(map_context& mc) const
 {
 	mc.get_map().overlay(mask_, config(), 0, 0, true);
 	mc.set_needs_terrain_rebuild();
 }
 
+editor_action_create_mask* editor_action_create_mask::clone() const
+{
+	return new editor_action_create_mask(*this);
+}
 void editor_action_create_mask::perform_without_undo(map_context& mc) const
 {
 	mc.get_map() = editor_map(mc.get_map().mask_to(target_));
 	mc.set_needs_terrain_rebuild();
 }
 
+editor_action_shuffle_area* editor_action_shuffle_area::clone() const
+{
+	return new editor_action_shuffle_area(*this);
+}
 editor_action_paste* editor_action_shuffle_area::perform(map_context& mc) const
 {
 	map_fragment mf(mc.get_map(), area_);

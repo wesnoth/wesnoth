@@ -47,6 +47,11 @@ class editor_action
 		virtual ~editor_action();
 
 		/**
+		 * Action cloning
+		 */
+		virtual editor_action* clone() const = 0;
+
+		/**
 		 * Perform the action, returning an undo action that,
 		 * when performed, shall reverse any effects of this
 		 * action.  The undo action object is owned by the

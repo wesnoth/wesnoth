@@ -47,6 +47,7 @@ class editor_action_whole_map : public editor_action
 		: m_(m)
 		{
 		}
+		editor_action_whole_map* clone() const;
 		void perform_without_undo(map_context& m) const;
 		const char* get_name() const { return "whole_map"; }
 	protected:
@@ -90,6 +91,12 @@ class editor_action_chain : public editor_action
 			actions_()
 		{
 		}
+
+		editor_action_chain(const editor_action_chain& other);
+
+		editor_action_chain& operator=(const editor_action_chain& other);
+
+		editor_action_chain* clone() const;
 
 		/**
 		 * Create an action chain from a deque of action pointers.
@@ -226,6 +233,7 @@ class editor_action_paste : public editor_action_extendable
 		: offset_(offset), paste_(paste)
 		{
 		}
+		editor_action_paste* clone() const;
 		editor_action_paste* perform(map_context& mc) const;
 		void perform_without_undo(map_context& mc) const;
 		void extend(const editor_map& map, const std::set<map_location>& locs);
@@ -246,6 +254,7 @@ class editor_action_paint_area : public editor_action_area
 		: editor_action_area(area), t_(t), one_layer_(one_layer)
 		{
 		}
+		editor_action_paint_area* clone() const;
 		editor_action_paste* perform(map_context& mc) const;
 		void perform_without_undo(map_context& mc) const;
 		const char* get_name() const { return "paint_area"; }
@@ -255,7 +264,7 @@ class editor_action_paint_area : public editor_action_area
 };
 
 /**
- * Flood fill. Somewhat redundand with paint_area.
+ * Flood fill. Somewhat redundant with paint_area.
  */
 class editor_action_fill : public editor_action_location_terrain
 {
@@ -265,6 +274,7 @@ class editor_action_fill : public editor_action_location_terrain
 		: editor_action_location_terrain(loc, t), one_layer_(one_layer)
 		{
 		}
+		editor_action_fill* clone() const;
 		editor_action_paint_area* perform(map_context& mc) const;
 		void perform_without_undo(map_context& mc) const;
 		const char* get_name() const { return "fill"; }
@@ -282,6 +292,7 @@ class editor_action_starting_position : public editor_action_location
 		: editor_action_location(loc), player_(player)
 		{
 		}
+		editor_action_starting_position* clone() const;
 		editor_action* perform(map_context& mc) const;
 		void perform_without_undo(map_context& mc) const;
 		const char* get_name() const { return "starting_pos"; }
@@ -299,6 +310,7 @@ class editor_action_select : public editor_action_area
 		: editor_action_area(area)
 		{
 		}
+		editor_action_select* clone() const;
 		void extend(const editor_map& map, const std::set<map_location>& locs);
 		editor_action* perform(map_context& mc) const;
 		void perform_without_undo(map_context& mc) const;
@@ -315,6 +327,7 @@ class editor_action_deselect : public editor_action_area
 		: editor_action_area(area)
 		{
 		}
+		editor_action_deselect* clone() const;
 		void extend(const editor_map& map, const std::set<map_location>& locs);
 		editor_action* perform(map_context& mc) const;
 		void perform_without_undo(map_context& mc) const;
@@ -330,6 +343,7 @@ class editor_action_select_all : public editor_action
 		editor_action_select_all()
 		{
 		}
+		editor_action_select_all* clone() const;
 		editor_action_deselect* perform(map_context& mc) const;
 		void perform_without_undo(map_context& mc) const;
 		const char* get_name() const { return "select_all"; }
@@ -344,6 +358,7 @@ class editor_action_select_none : public editor_action
 		editor_action_select_none()
 		{
 		}
+		editor_action_select_none* clone() const;
 		editor_action_select* perform(map_context& mc) const;
 		void perform_without_undo(map_context& mc) const;
 		const char* get_name() const { return "select_none"; }
@@ -358,6 +373,7 @@ class editor_action_select_inverse : public editor_action
 		editor_action_select_inverse()
 		{
 		}
+		editor_action_select_inverse* clone() const;
 		editor_action_select_inverse* perform(map_context& mc) const;
 		void perform_without_undo(map_context& mc) const;
 		const char* get_name() const { return "select_inverse"; }
@@ -375,6 +391,7 @@ class editor_action_resize_map : public editor_action
 		: x_size_(x_size), y_size_(y_size), x_offset_(x_offset), y_offset_(y_offset), fill_(fill)
 		{
 		}
+		editor_action_resize_map* clone() const;
 		void perform_without_undo(map_context& mc) const;
 		const char* get_name() const { return "resize"; }
 	protected:
@@ -392,6 +409,7 @@ class editor_action_apply_mask : public editor_action
 		: mask_(mask)
 		{
 		}
+		editor_action_apply_mask* clone() const;
 		void perform_without_undo(map_context& mc) const;
 		const char* get_name() const { return "apply_mask"; }
 	private:
@@ -405,6 +423,7 @@ class editor_action_create_mask : public editor_action
 		: target_(target)
 		{
 		}
+		editor_action_create_mask* clone() const;
 		void perform_without_undo(map_context& mc) const;
 		const char* get_name() const { return "create_mask"; }
 	private:
@@ -421,6 +440,7 @@ class editor_action_shuffle_area : public editor_action_area
 		: editor_action_area(area)
 		{
 		}
+		editor_action_shuffle_area* clone() const;
 		editor_action_paste* perform(map_context& mc) const;
 		void perform_without_undo(map_context& mc) const;
 		const char* get_name() const { return "shuffle_area"; }
