@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-09-23 12:26+0200\n"
-"PO-Revision-Date: 2009-04-19 15:11+0200\n"
+"POT-Creation-Date: 2009-09-28 18:23+0200\n"
+"PO-Revision-Date: 2009-10-04 19:53+0100\n"
 "Last-Translator: Alexander van Gessel (AI/AI0867) <AI0867@gmail.com>\n"
 "Language-Team: Dutch <AI0867@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -16,13 +16,13 @@ msgstr ""
 "X-Poedit-Language: Dutch\n"
 
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:40
-#, fuzzy
 msgid ""
 "\n"
 "<big>Click a mouse button or press spacebar to continue...</big>"
 msgstr ""
 "\n"
-"*Klik met je linkermuisknop of druk op de spatiebalk om verder te gaan..."
+"<big>Klik met je linkermuisknop of druk op de spatiebalk om verder te gaan..."
+"</big>"
 
 #. [tutorial]: id=tutorial
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:49
@@ -89,9 +89,8 @@ msgstr "Li'sar"
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:194
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:201
-#, fuzzy
 msgid "<big>Welcome to Wesnoth!</big>"
-msgstr "*Welkom in Wesnoth!"
+msgstr "<big>Welkom in Wesnoth!</big>"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:196
@@ -141,22 +140,20 @@ msgstr "Klik op Li'sar"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:228
-#, fuzzy
 msgid ""
 "<big>You have selected Konrad.</big>\n"
 "The places he can move to are highlighted."
 msgstr ""
-"*Je hebt Konrad geselecteerd.\n"
+"<big>Je hebt Konrad geselecteerd.</big>\n"
 "De vakjes waar hij naartoe kan bewegen lichten op."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:235
-#, fuzzy
 msgid ""
 "<big>You have selected Li'sar.</big>\n"
 "The places she can move to are highlighted."
 msgstr ""
-"*Je hebt Li'sar geselecteerd.\n"
+"<big>Je hebt Li'sar geselecteerd.</big>\n"
 "De vakjes waar ze naartoe kan bewegen lichten op."
 
 #. [event]
@@ -185,13 +182,12 @@ msgstr "Klik met je linkermuisknop op het vakje 'HIER'"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:282
-#, fuzzy
 msgid ""
 "<big>Oops!</big>\n"
 "You moved to the wrong place! After this message, you can press 'u' to undo, "
 "then try again."
 msgstr ""
-"*Oeps!\n"
+"<big>Oeps!</big>\n"
 "Je bent naar het verkeerde vakje gegaan! Na dit bericht kun je op 'u' "
 "drukken om je zet ongedaan te maken en het opnieuw te proberen."
 
@@ -316,7 +312,6 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:450
-#, fuzzy
 msgid ""
 "female^Unfortunately, you've used up your turn attacking the quintain. The "
 "quintain will now get a turn."
@@ -372,7 +367,6 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:498
-#, fuzzy
 msgid ""
 "female^There is a village on the other side of the river. Visiting villages "
 "is a good idea, and ending your turn in one will heal you. To the village!"
@@ -455,7 +449,6 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:593
-#, fuzzy
 msgid ""
 "female^A splendid idea. You can recruit two units if you return to the keep. "
 "You have plenty of gold for that."
@@ -530,13 +523,13 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:732
-#, fuzzy
 msgid ""
 "Had the quintain survived your onslaught, it would have regained two "
 "hitpoints. If a unit doesn't do anything for a turn, it will slowly heal."
 msgstr ""
-"Ja, als een eenheid een beurt land niets doet, zal het een beetje sterker "
-"worden"
+"Zou de stropop je offensief overleefd hebben, zou het twee hitpoints hebben "
+"teruggekregen. Als een eenheid een beurt land niets doet, zal het langzaam "
+"herstellen."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:745
@@ -732,9 +725,8 @@ msgstr ""
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1032
-#, fuzzy
 msgid "The quintain is dead, and I have gained more experience!"
-msgstr "Heer, de stropop is dood en ik heb ervaring opgedaan!"
+msgstr "De stropop is dood en ik heb ervaring opgedaan!"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1037
@@ -804,12 +796,11 @@ msgstr ""
 "scenario te gaan."
 
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:27
-#, fuzzy
 msgid ""
 "<big>Remember:</big>\n"
 "You can press 'u' to undo most things; useful for correcting mistakes."
 msgstr ""
-"*Onthoud:\n"
+"<big>Onthoud:</big>\n"
 "Door op 'u' te drukken kunnen de meeste zetten ongedaan worden gemaakt."
 
 #. [unit]: id=Galdrad, type=Elvish Captain
@@ -863,15 +854,14 @@ msgstr "Kan een enkele eenheid standhouden tegen al die vijanden?"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:28
-#, fuzzy
 msgid ""
 "With a little help, yes. If you move your Shaman next to the defending unit, "
 "she will heal it 4 hitpoints per turn. Just be careful not to expose the "
 "Shaman to attack since she is fairly weak herself."
 msgstr ""
-"Met een beetje hulp wel. Als je je sjamaan naast de verdedigende eenheid "
-"zet, zal hij met 4 hitpoints per beurt genezen. Maar stel de sjamaan niet "
-"bloot aan een aanval: ze is niet sterk."
+"Met een beetje hulp wel. Als je je Sjamaan naast de verdedigende eenheid "
+"zet, zal ze deze met 4 hitpoints per beurt genezen. Maar stel de sjamaan "
+"niet bloot aan een aanval: ze is zelf niet sterk."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:29
@@ -1060,15 +1050,14 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:530
-#, fuzzy
 msgid ""
 "During your tutorial, both $recall_name1 and $recall_name2 gained "
 "$recall_xp1 experience points. You should recall them now so they can gain "
 "more experience, rather than recruiting new ones."
 msgstr ""
-"Tijdens de cursus heeft $recall_name1 $recall_xp1 ervaringspunten opgedaan, "
-"en $recall_name2 $recall_xp2. Roep ze nu weer op zodat ze meer ervaring "
-"kunnen opdoen."
+"Tijdens de cursus hebben zowel $recall_name1 als $recall_name2 $recall_xp1 "
+"ervaringspunten opgedaan. Roep ze nu weer op zodat ze meer ervaring kunnen "
+"opdoen, in plaats van nieuwe te rekruteren."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:533
@@ -1361,13 +1350,12 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:921
-#, fuzzy
 msgid ""
 "Attack the orc with an Archer\n"
 "(move mouse over units to see description on right)"
 msgstr ""
-"Val de ork aan met een boogschutter (beweeg de muiscursor over eenheden voor "
-"een beschrijving aan de rechterkant)"
+"Val de ork aan met een Boogschutter\n"
+"(beweeg de muiscursor over eenheden voor een beschrijving aan de rechterkant)"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:929
@@ -1713,13 +1701,12 @@ msgstr ""
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1357
-#, fuzzy
 msgid ""
 "We will miss $deadguy.name| because she had $deadguy.experience experience "
 "points, meaning she would have advanced to level 2 soon."
 msgstr ""
-"We zullen $deadguy.name| missen, die $deadguy.experience ervaringspunten had "
-"en spoedig zou zijn gepromoveerd."
+"We zullen $deadguy.name| missen, ze had $deadguy.experience ervaringspunten, "
+"dus ze zou spoedig zijn gepromoveerd naar level 2."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1368
@@ -1780,7 +1767,6 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1430
-#, fuzzy
 msgid ""
 "female^Advancing a level has fully healed me!\n"
 "I always have a 60% chance of hitting with my Marksman ability, and I deal 9 "
