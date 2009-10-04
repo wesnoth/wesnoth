@@ -954,7 +954,7 @@ void tevent_handler::button_up(twidget* mouse_over, tmouse_button& button)
 
 	button.is_down = false;
 	if(button.focus) {
-		get_window().fire(button.button_up_, *mouse_over);
+		get_window().fire(button.button_up_, *button.focus);
 	}
 
 	if(mouse_captured_) {
