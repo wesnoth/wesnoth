@@ -506,8 +506,12 @@ private:
 	void sdl_right_button_down(const tpoint& coordinate);
 	void sdl_right_button_up(const tpoint& coordinate);
 
-	void button_down(twidget* widget, tmouse_button& button);
-	void button_up(twidget* widget, tmouse_button& button);
+	void button_down(twidget* widget
+			, tmouse_button& button
+			, const tpoint& coordinate);
+	void button_up(twidget* widget
+			, tmouse_button& button
+			, const tpoint& coordinate);
 	void mouse_button_click(twidget* widget, tmouse_button& button);
 
 	void sdl_key_down(const SDLKey key

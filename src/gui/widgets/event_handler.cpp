@@ -890,22 +890,24 @@ void tevent_handler::sdl_mouse_motion(
 void tevent_handler::sdl_left_button_down(const tpoint& coordinate)
 {
 	twidget* mouse_over = find_at(coordinate, true);
-	button_down(mouse_over, left_);
+	button_down(mouse_over, left_, coordinate);
 }
 
 void tevent_handler::sdl_middle_button_down(const tpoint& coordinate)
 {
 	twidget* mouse_over = find_at(coordinate, true);
-	button_down(mouse_over, middle_);
+	button_down(mouse_over, middle_, coordinate);
 }
 
 void tevent_handler::sdl_right_button_down(const tpoint& coordinate)
 {
 	twidget* mouse_over = find_at(coordinate, true);
-	button_down(mouse_over, right_);
+	button_down(mouse_over, right_, coordinate);
 }
 
-void tevent_handler::button_down(twidget* mouse_over, tmouse_button& button)
+void tevent_handler::button_down(twidget* mouse_over
+		, tmouse_button& button
+		, const tpoint& coordinate)
 {
 	if(button.is_down) {
 		WRN_GUI_E << "In 'button down' for button '" << button.name
@@ -915,8 +917,13 @@ void tevent_handler::button_down(twidget* mouse_over, tmouse_button& button)
 	button.is_down = true;
 
 	if(mouse_captured_) {
+		assert(mouse_focus_);
 		button.focus = mouse_focus_;
-		get_window().fire(button.button_down_, *mouse_focus_);
+		if(!get_window().fire(
+				button.sdl_button_down_, *button.focus, coordinate)) {
+
+			get_window().fire(button.button_down_, *button.focus);
+		}
 	} else {
 		if(!mouse_over) {
 			return;
@@ -929,29 +936,35 @@ void tevent_handler::button_down(twidget* mouse_over, tmouse_button& button)
 		}
 
 		button.focus = mouse_over;
-		get_window().fire(button.button_down_, *mouse_over);
+		if(!get_window().fire(
+				button.sdl_button_down_, *button.focus, coordinate)) {
+
+			get_window().fire(button.button_down_, *button.focus);
+		}
 	}
 }
 
 void tevent_handler::sdl_left_button_up(const tpoint& coordinate)
 {
 	twidget* mouse_over = find_at(coordinate, true);
-	button_up(mouse_over, left_);
+	button_up(mouse_over, left_, coordinate);
 }
 
 void tevent_handler::sdl_middle_button_up(const tpoint& coordinate)
 {
 	twidget* mouse_over = find_at(coordinate, true);
-	button_up(mouse_over, middle_);
+	button_up(mouse_over, middle_, coordinate);
 }
 
 void tevent_handler::sdl_right_button_up(const tpoint& coordinate)
 {
 	twidget* mouse_over = find_at(coordinate, true);
-	button_up(mouse_over, right_);
+	button_up(mouse_over, right_, coordinate);
 }
 
-void tevent_handler::button_up(twidget* mouse_over, tmouse_button& button)
+void tevent_handler::button_up(twidget* mouse_over
+		, tmouse_button& button
+		, const tpoint& coordinate)
 {
 	if(!button.is_down) {
 		WRN_GUI_E << "In 'button up' for button '" << button.name
@@ -961,7 +974,11 @@ void tevent_handler::button_up(twidget* mouse_over, tmouse_button& button)
 
 	button.is_down = false;
 	if(button.focus) {
-		get_window().fire(button.button_up_, *button.focus);
+		if(!get_window().fire(
+				button.sdl_button_up_, *button.focus, coordinate)) {
+
+			get_window().fire(button.button_up_, *button.focus);
+		}
 	}
 
 	if(mouse_captured_) {
