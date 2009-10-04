@@ -834,7 +834,7 @@ void tevent_handler::connect()
 	w.event::tdispatcher::connect();
 
 	w.connect_signal<event::SDL_MOUSE_MOTION>(
-			boost::bind(&tevent_handler::sdl_mouse_motion, this, _5));
+			boost::bind(&tevent_handler::sdl_mouse_motion, this, _2, _5));
 
 
 	w.connect_signal<event::SDL_LEFT_BUTTON_DOWN>(
@@ -857,12 +857,22 @@ void tevent_handler::connect()
 			boost::bind(&tevent_handler::sdl_key_down, this, _5, _6, _7));
 }
 
-void tevent_handler::sdl_mouse_motion(const tpoint& coordinate)
+void tevent_handler::sdl_mouse_motion(
+		  const event::tevent event
+		, const tpoint& coordinate)
 {
 	if(mouse_captured_) {
-		mouse_motion(mouse_focus_, coordinate);
+		assert(mouse_focus_);
+		if(!get_window().fire(event, *mouse_focus_, coordinate)) {
+			mouse_motion(mouse_focus_, coordinate);
+		}
 	} else {
 		twidget* mouse_over = find_at(coordinate, true);
+		if(mouse_over
+				&& get_window().fire(event, *mouse_over, coordinate)) {
+
+			return;
+		}
 
 		if(!mouse_focus_ && mouse_over) {
 			mouse_enter(mouse_over);

@@ -493,7 +493,7 @@ public:
 
 private:
 
-	void sdl_mouse_motion(const tpoint& coordinate);
+	void sdl_mouse_motion(const event::tevent event, const tpoint& coordinate);
 	void sdl_left_button_down(const tpoint& coordinate);
 	void sdl_left_button_up(const tpoint& coordinate);
 	void sdl_middle_button_down(const tpoint& coordinate);
