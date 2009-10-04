@@ -2161,7 +2161,7 @@ void display::refresh_report(reports::TYPE report_num, reports::report report,
 	}
 
 	// Loop through and display each report element.
-	size_t tallest = 0;
+	int tallest = 0;
 	int image_count = 0;
 	bool used_ellipsis = false;
 	std::ostringstream ellipsis_tooltip;
@@ -2170,6 +2170,7 @@ void display::refresh_report(reports::TYPE report_num, reports::report report,
 	foreach (const reports::element &e, report)
 	{
 		SDL_Rect area = { x, y, rect.w + rect.x - x, rect.h + rect.y - y };
+		if (area.h <= 0) break;
 
 		if (!e.text.empty())
 		{
@@ -2189,21 +2190,18 @@ void display::refresh_report(reports::TYPE report_num, reports::report report,
 			text.set_font_size(item->font_size());
 			text.set_text(t, true);
 			text.set_maximum_width(area.w);
-			// This will force the use of ellipsis
-			text.set_maximum_height(0);
+			text.set_maximum_height(area.h);
 			surface s = text.render();
 			screen_.blit_surface(x, y, s);
-			area.w = s->w;
-			area.h = s->h;
-			if (area.h > tallest) {
-				tallest = area.h;
+			if (s->h > tallest) {
+				tallest = s->h;
 			}
 			if (eol) {
 				x = rect.x;
 				y += tallest;
 				tallest = 0;
 			} else {
-				x += area.w;
+				x += s->w;
 			}
 		}
 		else if (!e.image.get_filename().empty())

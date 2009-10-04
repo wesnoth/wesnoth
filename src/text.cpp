@@ -473,8 +473,10 @@ void ttext::rerender(const bool force) const
 		recalculate(force);
 		surface_dirty_ = false;
 
-		const unsigned width = rect_.x + rect_.width;
-		const unsigned height = rect_.y + rect_.height;
+		int width = rect_.x + rect_.width;
+		int height = rect_.y + rect_.height;
+		if (maximum_width_  > 0 && width  > maximum_width_ ) width  = maximum_width_;
+		if (maximum_height_ > 0 && height > maximum_height_) height = maximum_height_;
 		const unsigned stride = width * 4;
 		create_surface_buffer(stride * height);
 
@@ -497,9 +499,9 @@ void ttext::rerender(const bool force) const
 		// The cairo surface is in CAIRO_FORMAT_ARGB32 which uses
 		// pre-multiplied alpha. SDL doesn't use that so the pixels need to be
 		// decoded again.
-		for(size_t y = 0; y < height; ++y) {
-			for(size_t x = 0; x < width; ++x) {
-
+		for (int y = 0; y < height; ++y) {
+			for (int x = 0; x < width; ++x)
+			{
 				unsigned char *pixel = &surface_buffer_[(y * width + x) * 4];
 
 // Assume everything not compiled with gcc to be on a little endian platform.
