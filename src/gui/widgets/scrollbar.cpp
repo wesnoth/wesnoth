@@ -102,6 +102,7 @@ void tscrollbar_::set_size(const tpoint& origin, const tpoint& size)
 	recalculate();
 }
 
+#ifdef GUI2_OLD_EVENT_HANDLING
 void tscrollbar_::mouse_move(tevent_handler& event)
 {
 	tpoint mouse = event.get_mouse();
@@ -199,6 +200,7 @@ void tscrollbar_::mouse_left_button_up(tevent_handler& event)
 		set_state(ENABLED);
 	}
 }
+#endif
 
 void tscrollbar_::set_item_position(const unsigned item_position)
 {

@@ -194,6 +194,7 @@ void tcontrol::set_size(const tpoint& origin, const tpoint& size)
 	update_canvas();
 }
 
+#ifdef GUI2_OLD_EVENT_HANDLING
 void tcontrol::mouse_hover(tevent_handler& event)
 {
 	DBG_GUI_E << "Control: mouse hover.\n";
@@ -205,6 +206,7 @@ void tcontrol::help_key(tevent_handler& event)
 	DBG_GUI_E << "Control: help key.\n";
 	event.show_help_popup(help_message_, settings::help_show_time);
 }
+#endif
 
 void tcontrol::load_config()
 {

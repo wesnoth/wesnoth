@@ -44,6 +44,7 @@ ttext_::ttext_()
 #endif
 }
 
+#ifdef GUI2_OLD_EVENT_HANDLING
 void ttext_::mouse_move(tevent_handler&)
 {
 	DBG_GUI_E << "Text: mouse move.\n";
@@ -83,6 +84,7 @@ void ttext_::mouse_middle_button_click(tevent_handler&)
 #endif
 
 }
+#endif
 
 void ttext_::receive_keyboard_focus(tevent_handler& /*event_handler*/)
 {
@@ -98,6 +100,7 @@ void ttext_::lose_keyboard_focus(tevent_handler& /*event_handler*/)
 	set_state(ENABLED);
 }
 
+#ifdef GUI2_OLD_EVENT_HANDLING
 void ttext_::key_press(tevent_handler& /*event*/,
 		bool& handled, SDLKey key, SDLMod modifier, Uint16 unicode)
 {
@@ -106,6 +109,7 @@ void ttext_::key_press(tevent_handler& /*event*/,
 	signal_handler_sdl_key_down(
 			event::SDL_KEY_DOWN, handled, key, modifier, unicode);
 }
+#endif
 
 void ttext_::set_maximum_length(const size_t maximum_length)
 {

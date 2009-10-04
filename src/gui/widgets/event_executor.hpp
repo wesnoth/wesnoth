@@ -46,6 +46,7 @@ public:
 
 	/***** ***** ***** ***** mouse movement ***** ***** ***** *****/
 
+#ifdef GUI2_OLD_EVENT_HANDLING
 	/**
 	 * The mouse 'enters' the widget.
 	 *
@@ -66,6 +67,7 @@ public:
 	 */
 	virtual void mouse_move(tevent_handler& /*event_handler*/) {}
 
+
 	/**
 	 * The mouse 'hovers' over a widget.
 	 *
@@ -75,6 +77,7 @@ public:
 	 * @param event_handler       The event handler that send the event.
 	 */
 	virtual void mouse_hover(tevent_handler& /*event_handler*/) {}
+
 
 	/**
 	 * The mouse 'leaves' the widget.
@@ -191,6 +194,7 @@ public:
 	 * event. This can be used to capture the keyboard.
 	 */
 	virtual void focus(tevent_handler&) {}
+#endif
 
 	/***** ***** ***** ***** keyboard ***** ***** ***** *****/
 
@@ -215,6 +219,7 @@ public:
 	 */
 	virtual void lose_keyboard_focus(tevent_handler& /*event_handler*/) {}
 
+#ifdef GUI2_OLD_EVENT_HANDLING
 	/**
 	 * A key is pressed.
 	 *
@@ -254,6 +259,7 @@ public:
 	 */
 	virtual void window_resize(tevent_handler&, const unsigned /* new_width */,
 		const unsigned /* new_height */) {}
+#endif
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 

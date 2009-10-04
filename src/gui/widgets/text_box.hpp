@@ -135,6 +135,7 @@ protected:
 	/** Inherited from tcontrol. */
 	void update_canvas();
 
+#ifdef GUI2_OLD_EVENT_HANDLING
 	/** Inherited from ttext_. */
 	void mouse_move(tevent_handler& event);
 
@@ -146,6 +147,7 @@ protected:
 
 	/** Inherited from ttext_. */
 	void mouse_left_button_double_click(tevent_handler&);
+#endif
 
 	/** Inherited from ttext_. */
 	void goto_end_of_line(const bool select = false)

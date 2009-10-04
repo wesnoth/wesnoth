@@ -102,10 +102,12 @@ tevent_handler::tevent_handler() :
 	, mouse_x_(-1)
 	, mouse_y_(-1)
 	, left_("left"
+#ifdef GUI2_OLD_EVENT_HANDLING
 			, &tevent_executor::mouse_left_button_down
 			, &tevent_executor::mouse_left_button_up
 			, &tevent_executor::mouse_left_button_click
 			, &tevent_executor::mouse_left_button_double_click
+#endif
 			, &tevent_executor::wants_mouse_left_double_click
 			, event::SDL_LEFT_BUTTON_DOWN
 			, event::SDL_LEFT_BUTTON_UP
@@ -114,10 +116,12 @@ tevent_handler::tevent_handler() :
 			, event::LEFT_BUTTON_CLICK
 			, event::LEFT_BUTTON_DOUBLE_CLICK)
 	, middle_("middle"
+#ifdef GUI2_OLD_EVENT_HANDLING
 			, &tevent_executor::mouse_middle_button_down
 			, &tevent_executor::mouse_middle_button_up
 			, &tevent_executor::mouse_middle_button_click
 			, &tevent_executor::mouse_middle_button_double_click
+#endif
 			, &tevent_executor::wants_mouse_middle_double_click
 			, event::SDL_MIDDLE_BUTTON_DOWN
 			, event::SDL_MIDDLE_BUTTON_UP
@@ -126,10 +130,12 @@ tevent_handler::tevent_handler() :
 			, event::MIDDLE_BUTTON_CLICK
 			, event::MIDDLE_BUTTON_DOUBLE_CLICK)
 	, right_("right"
+#ifdef GUI2_OLD_EVENT_HANDLING
 			, &tevent_executor::mouse_right_button_down
 			, &tevent_executor::mouse_right_button_up
 			, &tevent_executor::mouse_right_button_click
 			, &tevent_executor::mouse_right_button_double_click
+#endif
 			, &tevent_executor::wants_mouse_right_double_click
 			, event::SDL_RIGHT_BUTTON_DOWN
 			, event::SDL_RIGHT_BUTTON_UP
@@ -160,6 +166,7 @@ tevent_handler::tevent_handler() :
 #endif
 }
 
+#ifdef GUI2_OLD_EVENT_HANDLING
 void tevent_handler::handle_event(const SDL_Event& event)
 {
 
@@ -317,6 +324,7 @@ void tevent_handler::handle_event(const SDL_Event& event)
 			break;
 		}
 }
+#endif
 
 void tevent_handler::mouse_capture(const bool capture)
 {
@@ -472,6 +480,7 @@ void tevent_handler::remove_widget(const twidget* widget)
 	}
 }
 
+#ifdef GUI2_OLD_EVENT_HANDLING
 void tevent_handler::mouse_enter(const SDL_Event& /*event*/, twidget* mouse_over)
 {
 	tcontrol* control = dynamic_cast<tcontrol*>(mouse_focus_);
@@ -488,6 +497,7 @@ void tevent_handler::mouse_enter(const SDL_Event& /*event*/, twidget* mouse_over
 
 	set_hover();
 }
+#endif
 
 void tevent_handler::mouse_enter(twidget* mouse_over)
 {
@@ -499,6 +509,7 @@ void tevent_handler::mouse_enter(twidget* mouse_over)
 	get_window().fire(event::MOUSE_ENTER, *mouse_over);
 }
 
+#ifdef GUI2_OLD_EVENT_HANDLING
 void tevent_handler::mouse_move(const SDL_Event& event, twidget* mouse_over)
 {
 	if(mouse_captured_) {
@@ -521,6 +532,7 @@ void tevent_handler::mouse_move(const SDL_Event& event, twidget* mouse_over)
 		}
 	}
 }
+#endif
 
 void tevent_handler::mouse_motion(twidget* mouse_over, const tpoint& coordinate)
 {
@@ -531,6 +543,7 @@ void tevent_handler::mouse_motion(twidget* mouse_over, const tpoint& coordinate)
 	get_window().fire(event::MOUSE_MOTION, *mouse_over, coordinate);
 }
 
+#ifdef GUI2_OLD_EVENT_HANDLING
 void tevent_handler::mouse_hover(
 		const SDL_Event& event, twidget* /*mouse_over*/)
 {
@@ -567,6 +580,7 @@ void tevent_handler::mouse_leave(
 	}
 	mouse_focus_ = 0;
 }
+#endif
 
 void tevent_handler::mouse_leave()
 {
@@ -577,6 +591,7 @@ void tevent_handler::mouse_leave()
 	mouse_focus_ = 0;
 }
 
+#ifdef GUI2_OLD_EVENT_HANDLING
 void tevent_handler::mouse_button_down(
 		const SDL_Event& /*event*/, twidget* mouse_over, tmouse_button& button)
 {
@@ -742,6 +757,7 @@ void tevent_handler::focus_parent_window(twidget* widget)
 		window->focus(*this);
 	}
 }
+#endif
 
 void tevent_handler::set_hover(const bool test_on_widget)
 {
@@ -783,6 +799,7 @@ void tevent_handler::set_hover(const bool test_on_widget)
 	SDL_AddTimer(settings::popup_show_delay, hover_callback, hover);
 }
 
+#ifdef GUI2_OLD_EVENT_HANDLING
 void tevent_handler::key_down(const SDL_Event& event)
 {
 	// We capture the F! for the help, but only if the mouse is on an object.
@@ -809,6 +826,7 @@ void tevent_handler::key_down(const SDL_Event& event)
 			event.key.keysym.sym, event.key.keysym.mod, event.key.keysym.unicode);
 	}
 }
+#endif
 
 void tevent_handler::connect()
 {

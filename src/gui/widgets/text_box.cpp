@@ -171,6 +171,7 @@ void ttext_box::update_canvas()
 	}
 }
 
+#ifdef GUI2_OLD_EVENT_HANDLING
 void ttext_box::mouse_move(tevent_handler& event)
 {
 	DBG_GUI_E << "Text box: mouse move.\n";
@@ -205,6 +206,7 @@ void ttext_box::mouse_left_button_double_click(tevent_handler&)
 
 	select_all();
 }
+#endif
 
 void ttext_box::delete_char(const bool before_cursor)
 {

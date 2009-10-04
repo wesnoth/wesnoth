@@ -120,6 +120,7 @@ void tslider::set_maximum_value(const int maximum_value)
 	}
 }
 
+#ifdef GUI2_OLD_EVENT_HANDLING
 void tslider::mouse_left_button_down(tevent_handler& event)
 {
 	tpoint mouse = event.get_mouse();
@@ -145,6 +146,7 @@ void tslider::mouse_left_button_down(tevent_handler& event)
 		}
 	}
 }
+#endif
 
 t_string tslider::get_value_label() const
 {

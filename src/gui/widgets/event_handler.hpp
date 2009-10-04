@@ -50,11 +50,13 @@ public:
 	~tevent_handler() { leave(); }
 #endif
 
+#ifdef GUI2_OLD_EVENT_HANDLING
 	/** Inherited from events::handler. */
 	void process_events() { events::pump(); }
 
 	/** Inherited from events::handler. */
 	void handle_event(const SDL_Event& event);
+#endif
 
 	/** Returns the main window. */
 	virtual twindow& get_window() = 0;
@@ -168,10 +170,12 @@ private:
 
 		tmouse_button(
 				  const std::string& name
+#ifdef GUI2_OLD_EVENT_HANDLING
 				, void (tevent_executor::*down) (tevent_handler&)
 				, void (tevent_executor::*up) (tevent_handler&)
 				, void (tevent_executor::*click) (tevent_handler&)
 				, void (tevent_executor::*double_click) (tevent_handler&)
+#endif
 				, bool (tevent_executor::*wants_double_click) () const
 				, const event::tevent sdl_button_down
 				, const event::tevent sdl_button_up
@@ -183,10 +187,12 @@ private:
 			, last_clicked_widget(NULL)
 			, focus(0)
 			, name(name)
+#ifdef GUI2_OLD_EVENT_HANDLING
 			, down(down)
 			, up(up)
 			, click(click)
 			, double_click(double_click)
+#endif
 			, wants_double_click(wants_double_click)
 			, is_down(false)
 			, sdl_button_down_(sdl_button_down)
@@ -219,10 +225,12 @@ private:
 		 * function indirect without writing a case for which button to
 		 * use.
 		 */
+#ifdef GUI2_OLD_EVENT_HANDLING
 		void (tevent_executor::*down) (tevent_handler&);
 		void (tevent_executor::*up) (tevent_handler&);
 		void (tevent_executor::*click) (tevent_handler&);
 		void (tevent_executor::*double_click) (tevent_handler&);
+#endif
 		bool (tevent_executor::*wants_double_click) () const;
 
 		/** Is the button down? */
@@ -293,6 +301,7 @@ private:
 	 * widget. These functions are called by the SDL event handling functions.
 	 */
 
+#ifdef GUI2_OLD_EVENT_HANDLING
 	/**
 	 * Called when the mouse enters a widget.
 	 *
@@ -300,6 +309,7 @@ private:
 	 * @param mouse_over          The widget that should receive the event.
 	 */
 	void mouse_enter(const SDL_Event& event, twidget* mouse_over);
+#endif
 private:
 	/**
 	 * Called when the mouse enters a widget.
@@ -308,6 +318,7 @@ private:
 	 */
 	void mouse_enter(twidget* mouse_over);
 public:
+#ifdef GUI2_OLD_EVENT_HANDLING
 	/**
 	 * Called when the mouse moves over a widget.
 	 *
@@ -315,6 +326,7 @@ public:
 	 * @param mouse_over          The widget that should receive the event.
 	 */
 	void mouse_move(const SDL_Event& event, twidget* mouse_over);
+#endif
 private:
 	/**
 	 * Called when the mouse moves over a widget.
@@ -324,6 +336,7 @@ private:
 	 */
 	void mouse_motion(twidget* mouse_over, const tpoint& coordinate);
 public:
+#ifdef GUI2_OLD_EVENT_HANDLING
 	/**
 	 * Called when a widget should raises a hover event.
 	 *
@@ -339,10 +352,12 @@ public:
 	 * @param mouse_over          The widget that should receive the event.
 	 */
 	void mouse_leave(const SDL_Event& event, twidget* mouse_over);
+#endif
 private:
 	/** Called when the mouse leaves the current widget. */
 	void mouse_leave();
 public:
+#ifdef GUI2_OLD_EVENT_HANDLING
 	/**
 	 * Called when a mouse button is pressed on a widget.
 	 *
@@ -416,6 +431,7 @@ public:
 	 * @param widget              The widget that generated the event.
 	 */
 	 void focus_parent_window(twidget* widget);
+#endif
 
 	/**
 	 * Raises a hover request.
@@ -424,12 +440,14 @@ public:
 	 */
 	void set_hover(const bool test_on_widget = false);
 
+#ifdef GUI2_OLD_EVENT_HANDLING
 	/**
 	 * A key has been pressed.
 	 *
 	 * @param event               The SDL_Event which was triggered.
 	 */
 	void key_down(const SDL_Event& event);
+#endif
 
 	/**
 	 * The function to do the real job of showing the tooltip.

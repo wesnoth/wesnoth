@@ -380,6 +380,7 @@ void tscrollbar_container::set_visible_area(const SDL_Rect& area)
 	content_grid_->set_visible_area(content_visible_area_);
 }
 
+#ifdef GUI2_OLD_EVENT_HANDLING
 void tscrollbar_container::key_press(tevent_handler& /*event*/,
 		bool& handled, SDLKey key,
 		SDLMod modifier, Uint16 /*unicode*/)
@@ -396,6 +397,7 @@ void tscrollbar_container::focus(tevent_handler&)
 	assert(window);
 	window->keyboard_capture(this);
 }
+#endif
 
 twidget* tscrollbar_container::find_at(
 		const tpoint& coordinate, const bool must_be_active)
@@ -663,6 +665,7 @@ void tscrollbar_container::set_scrollbar_button_status()
 	}
 }
 
+#ifdef GUI2_OLD_EVENT_HANDLING
 void tscrollbar_container::
 		mouse_wheel_up(tevent_handler& /*event_handler*/, bool& handled)
 {
@@ -710,6 +713,7 @@ void tscrollbar_container::
 		handled = true;
 	}
 }
+#endif
 
 void tscrollbar_container::handle_key_home(SDLMod /*modifier*/, bool& handled)
 {

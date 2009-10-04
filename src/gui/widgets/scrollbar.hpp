@@ -80,6 +80,7 @@ public:
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
+#ifdef GUI2_OLD_EVENT_HANDLING
 	/**
 	 * Inherited from tevent_executor.
 	 *
@@ -104,6 +105,7 @@ public:
 
 	/** Inherited from tevent_executor. */
 	void mouse_left_button_up(tevent_handler& event);
+#endif
 
 	/** Inherited from tcontrol. */
 	void set_active(const bool active)

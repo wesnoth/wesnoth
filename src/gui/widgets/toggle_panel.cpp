@@ -59,6 +59,7 @@ void ttoggle_panel::set_child_members(const std::map<std::string /* widget id */
 	}
 }
 
+#ifdef GUI2_OLD_EVENT_HANDLING
 void ttoggle_panel::mouse_enter(tevent_handler&)
 {
 	DBG_GUI_E << "Toggle panel: mouse enter.\n";
@@ -113,6 +114,7 @@ void ttoggle_panel::mouse_left_button_double_click(tevent_handler&)
 		callback_mouse_left_double_click_(this);
 	}
 }
+#endif
 
 void ttoggle_panel::set_active(const bool active)
 {

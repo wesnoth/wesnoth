@@ -56,6 +56,7 @@ void ttoggle_button::set_members(const string_map& data)
 	}
 }
 
+#ifdef GUI2_OLD_EVENT_HANDLING
 void ttoggle_button::mouse_enter(tevent_handler&)
 {
 	DBG_GUI_E << "Toggle button: mouse enter.\n";
@@ -106,6 +107,7 @@ void ttoggle_button::mouse_left_button_double_click(tevent_handler&)
 
 	window->set_retval(retval_);
 }
+#endif
 
 void ttoggle_button::set_active(const bool active)
 {

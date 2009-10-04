@@ -132,11 +132,13 @@ public:
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
+#ifdef GUI2_OLD_EVENT_HANDLING
 	/** Inherted from tevent_executor. */
 	void mouse_hover(tevent_handler& event);
 
 	/** Inherted from tevent_executor. */
 	void help_key(tevent_handler& event);
+#endif
 
 	/**
 	 * Inherited from twidget.

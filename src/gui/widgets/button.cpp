@@ -43,6 +43,7 @@ tbutton::tbutton()
 				&tbutton::signal_handler_left_button_click, this, _2, _3));
 }
 
+#ifdef GUI2_OLD_EVENT_HANDLING
 void tbutton::mouse_enter(tevent_handler&)
 {
 	DBG_GUI_E << "Button: mouse enter.\n";
@@ -92,6 +93,7 @@ void tbutton::mouse_left_button_click(tevent_handler&)
 		callback_mouse_left_click_(this);
 	}
 }
+#endif
 
 void tbutton::set_state(const tstate state)
 {

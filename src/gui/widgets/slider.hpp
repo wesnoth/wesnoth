@@ -65,8 +65,10 @@ public:
 		// The number of items needs to include the begin and end so count - 1.
 		{ return minimum_value_ + get_item_count() - 1; }
 
+#ifdef GUI2_OLD_EVENT_HANDLING
 	/** Inherited from tscroll_bar_. */
 	void mouse_left_button_down(tevent_handler& event);
+#endif
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
