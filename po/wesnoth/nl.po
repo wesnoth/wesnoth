@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-09-28 18:23+0200\n"
-"PO-Revision-Date: 2009-07-20 01:55+0100\n"
+"PO-Revision-Date: 2009-10-04 19:26+0100\n"
 "Last-Translator: Alexander van Gessel (AI/AI0867) <AI0867@gmail.com>\n"
 "Language-Team: Dutch <AI0867@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr "Gecomprimeerde opgeslagen bestanden"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:12
 msgid "Confirm deleting saves"
-msgstr ""
+msgstr "Bevestig het verwijderen van opgeslagen bestanden"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:19
@@ -70,30 +70,31 @@ msgstr ""
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:69
+#, fuzzy
 msgid ""
 "Number of seconds to wait for a ping reply before we time out. Disable with "
 "0."
-msgstr ""
+msgstr "Aantal seconden te wachten op een ping antwoord voordat we . "
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:79
 msgid "Accept whisper messages from friends only"
-msgstr ""
+msgstr "Accepteer fluisterberichten alleen van vrienden"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:86
 msgid "Auto-open whisper windows in lobby"
-msgstr ""
+msgstr "Open fluistersvensters in lobby automatisch"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:93
 msgid "Group players in lobby"
-msgstr ""
+msgstr "Groepeer spelers in lobby"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:100
 msgid "Lobby sounds"
-msgstr ""
+msgstr "Lobby geluiden"
 
 #. [message]: speaker=narrator
 #: data/ai/scenarios/ai_arena_small/0002-poisoning.cfg:17
@@ -541,9 +542,8 @@ msgstr "Valenciaanse (zuid Catalaans) Vertaling"
 
 #. [about]
 #: data/core/about.cfg:2248
-#, fuzzy
 msgid "Vietnamese Translation"
-msgstr "Chinese Vertaling"
+msgstr "Vietnamese Vertaling"
 
 #. [about]
 #: data/core/about.cfg:2255
@@ -595,9 +595,8 @@ msgstr "Wapenbijzonderheden"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=factions_section
 #: data/core/help.cfg:67 src/help.cpp:1284 src/help.cpp:1286
-#, fuzzy
 msgid "Factions"
-msgstr "Factie"
+msgstr "Facties"
 
 #. [section]: id=terrains
 #. [topic]: id=..terrains
@@ -3082,6 +3081,8 @@ msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
 msgstr ""
+"\n"
+"Laat de geselecteerde eenheid N keer promoveren. Voorbeeld: :unit advances=2"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:51
@@ -3466,21 +3467,19 @@ msgstr ""
 
 #. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:615
-#, fuzzy
 msgid "petrifies"
-msgstr "Aanvallen"
+msgstr "versteent"
 
 #. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:617
-#, fuzzy
 msgid ""
 "Petrify:\n"
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
 msgstr ""
 "Versteent:\n"
-"Deze aanval verandert het slachtoffer in steen. Eenheden die in steen zijn "
-"veranderd kunnen bewegen noch aanvallen."
+"Deze aanval verandert het slachtoffer in steen. Eenheden die versteend zijn "
+"kunnen bewegen noch aanvallen."
 
 #. [chance_to_hit]: id=marksman
 #: data/core/macros/abilities.cfg:626
@@ -3572,6 +3571,8 @@ msgstr ""
 #: data/core/macros/ai.cfg:408
 msgid "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
 msgstr ""
+"Vraag $ally_leader.name (leider van zijde $ally_leader.side) hierheen te "
+"bewegen"
 
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:144
@@ -3759,13 +3760,12 @@ msgid "Exit"
 msgstr "Sluit af"
 
 #: data/core/macros/ai_controller.cfg:1047
-#, fuzzy
 msgid "Set special orders..."
-msgstr "Gedrag instellen..."
+msgstr "Speciale orders instellen..."
 
 #: data/core/macros/ai_controller.cfg:1048
 msgid "Move leader to..."
-msgstr ""
+msgstr "Verplaats leider naar..."
 
 #: data/core/macros/ai_controller.cfg:1049
 #, fuzzy
@@ -3774,16 +3774,15 @@ msgstr "Gebruik de rechtermuisknop om een te verdedigen locatie te selecteren"
 
 #: data/core/macros/ai_controller.cfg:1050
 msgid "Move leader here"
-msgstr ""
+msgstr "Verplaats leider hierheen"
 
 #: data/core/macros/ai_controller.cfg:1051
 msgid "moving leader to $x1|,$y1|."
-msgstr ""
+msgstr "leider aan het verplaatsen naar $x1|,$y1|."
 
 #: data/core/macros/ai_controller.cfg:1052
-#, fuzzy
 msgid "Clear special orders"
-msgstr "Alle bevelen annuleren"
+msgstr "Speciale bevelen annuleren"
 
 #: data/core/macros/ai_controller.cfg:1053
 #, fuzzy
@@ -3855,9 +3854,8 @@ msgstr ""
 #. [objective]: description=<span color='white'>, condition=win
 #: data/core/macros/carryover-utils.cfg:34
 #: data/core/macros/carryover-utils.cfg:42
-#, fuzzy
 msgid "Alternative objective:"
-msgstr "Stel doel in..."
+msgstr "Alternatief doel:"
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:39
@@ -5229,9 +5227,8 @@ msgstr "dom"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:228
-#, fuzzy
 msgid "aged"
-msgstr "afstand"
+msgstr "verouderd"
 
 #. [color_range]: id=red
 #. [color_range]: id=1
@@ -5242,12 +5239,12 @@ msgstr "Rood"
 #. [color_range]: id=lightred
 #: data/core/team-colors.cfg:20
 msgid "Light Red"
-msgstr ""
+msgstr "Licht Rood"
 
 #. [color_range]: id=darkred
 #: data/core/team-colors.cfg:26
 msgid "Dark Red"
-msgstr ""
+msgstr "Donker Rood"
 
 #. [color_range]: id=blue
 #. [color_range]: id=2
@@ -6274,7 +6271,7 @@ msgstr "$name Meer"
 #. [language]
 #: data/hardwired/english.cfg:24
 msgid "$name's Peak,Mount $name"
-msgstr ""
+msgstr "$name|top,Berg $name"
 
 #. [language]
 #: data/hardwired/english.cfg:25
@@ -6329,8 +6326,9 @@ msgstr "$name|gem,$name|steen,$name|ton,$name|heuvel,$name|rug"
 
 #. [language]
 #: data/hardwired/english.cfg:33
+#, fuzzy
 msgid "$mountain|mont,$mountain|cliff,$mountain|bury,$mountain|ham"
-msgstr ""
+msgstr "$mountain|berg,$mountain|klif,$mountain|bergen"
 
 #. [language]
 #: data/hardwired/english.cfg:34
@@ -7162,15 +7160,13 @@ msgstr "rang"
 
 #. [unit_moves]: id=unit-moves
 #: data/themes/default.cfg:459 data/themes/experimental.cfg:399
-#, fuzzy
 msgid "statuspanel^moves"
 msgstr "zetten"
 
 #. [unit_defense]: id=unit-defense
 #: data/themes/default.cfg:468 data/themes/experimental.cfg:408
-#, fuzzy
 msgid "statuspanel^terrain def."
-msgstr "rang"
+msgstr "terrein verd."
 
 #. [change]: id=actions-menu
 #: data/themes/default.cfg:1003
@@ -7286,13 +7282,12 @@ msgid "female^poisoned"
 msgstr "vergiftigd"
 
 #: src/actions.cpp:1113 src/actions.cpp:1386
-#, fuzzy
 msgid "female^petrified"
-msgstr "vergiftigd"
+msgstr "versteend"
 
 #: src/actions.cpp:1113 src/actions.cpp:1386
 msgid "petrified"
-msgstr ""
+msgstr "versteend"
 
 #: src/actions.cpp:2387
 msgid "Ambushed!"
@@ -7387,9 +7382,8 @@ msgid "addon_type^Resources"
 msgstr "Middelen"
 
 #: src/addon_management.cpp:467
-#, fuzzy
 msgid "addon_type^Other"
-msgstr "MP tijdperk"
+msgstr "Anders"
 
 #: src/addon_management.cpp:469
 msgid "addon_type^(unknown)"
@@ -7601,7 +7595,7 @@ msgstr "Kies een add-on om te downloaden."
 
 #: src/addon_management.cpp:1089
 msgid "Description"
-msgstr ""
+msgstr "Beschrijving"
 
 #: src/addon_management.cpp:1093 src/dialogs.cpp:600 src/menu_events.cpp:898
 #: src/menu_events.cpp:1450
@@ -7986,8 +7980,9 @@ msgid "Defeat:"
 msgstr "Nederlaag:"
 
 #: src/game_events.cpp:3499
+#, fuzzy
 msgid "[unit_worth]'s filter didn't match any units!"
-msgstr ""
+msgstr "[unit_worth]'s filter "
 
 #: src/gamestatus.cpp:740
 #, fuzzy
@@ -8040,7 +8035,7 @@ msgstr ""
 
 #: src/generate_report.cpp:140
 msgid "petrified: "
-msgstr ""
+msgstr "versteend:"
 
 #: src/generate_report.cpp:141
 #, fuzzy
@@ -8110,21 +8105,20 @@ msgid "Observers:"
 msgstr "Toeschouwers:"
 
 #: src/gui/dialogs/lobby_player_info.cpp:64
-#, fuzzy
 msgid "In game:"
-msgstr "Naam:"
+msgstr "In spel:"
 
 #: src/gui/dialogs/lobby_player_info.cpp:66
 msgid "(observing)"
-msgstr ""
+msgstr "(observeert)"
 
 #: src/gui/dialogs/lobby_player_info.cpp:68
 msgid "(playing)"
-msgstr ""
+msgstr "(speelt)"
 
 #: src/gui/dialogs/lobby_player_info.cpp:71
 msgid "In lobby"
-msgstr ""
+msgstr "In lobby"
 
 #: src/help.cpp:46
 msgid "Help"
@@ -8139,27 +8133,24 @@ msgid "<header>text='Units having this ability'</header>"
 msgstr "<header>text='Eenheden met dit vermogen'</header>"
 
 #: src/help.cpp:1246
-#, fuzzy
 msgid "Leaders:"
-msgstr "Leider: "
+msgstr "Leiders:"
 
 #: src/help.cpp:1255
-#, fuzzy
 msgid "Recruits:"
-msgstr "Rekruten: "
+msgstr "Rekruten:"
 
 #: src/help.cpp:1269 src/multiplayer_create.cpp:78
 msgid "Era:"
 msgstr "Tijdperk:"
 
 #: src/help.cpp:1277
-#, fuzzy
 msgid "Factions:"
-msgstr "Factie"
+msgstr "Facties:"
 
 #: src/help.cpp:1287
 msgid "Factions are only used in multiplayer"
-msgstr ""
+msgstr "Facties worden alleen gebruikt in multiplayer"
 
 #: src/help.cpp:1362
 msgid "Advances from: "
@@ -8305,19 +8296,16 @@ msgid "?"
 msgstr "?"
 
 #: src/loadscreen.cpp:245
-#, fuzzy
 msgid "Verifying cache..."
-msgstr "Controleren cache"
+msgstr "Controleren cache..."
 
 #: src/loadscreen.cpp:264
-#, fuzzy
 msgid "Reading unit files..."
-msgstr "Inlezen eenhedenbestanden."
+msgstr "Inlezen eenhedenbestanden..."
 
 #: src/loadscreen.cpp:283
-#, fuzzy
 msgid "Reading files and creating cache..."
-msgstr "Inlezen bestanden en aanmaken cache."
+msgstr "Inlezen bestanden en aanmaken cache..."
 
 #: src/lobby_data.cpp:238 src/multiplayer_lobby.cpp:431
 msgid "Unknown era: $era_id"
@@ -8680,9 +8668,8 @@ msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr "Demp een observator. Zonder argument geeft dit de dempstatus weer."
 
 #: src/menu_events.cpp:2207
-#, fuzzy
 msgid "Mute/Unmute all observers. (toggles)"
-msgstr "Demp alle observators."
+msgstr "Demp/Ontdemp alle observators."
 
 #: src/menu_events.cpp:2217
 msgid "Send a message to the server admins currently online"
@@ -8748,22 +8735,20 @@ msgstr ""
 "bijnaam."
 
 #: src/menu_events.cpp:2252
-#, fuzzy
 msgid "Join a room."
-msgstr "Meedoen met een netwerkspel"
+msgstr "Ga een kamer binnen."
 
 #: src/menu_events.cpp:2255
 msgid "Part a room."
-msgstr ""
+msgstr "Verlaat een ruimte."
 
 #: src/menu_events.cpp:2257
-#, fuzzy
 msgid "List room members."
-msgstr "Lijst van servers"
+msgstr "Lijst van ruimtegebruikers"
 
 #: src/menu_events.cpp:2259
 msgid "List available rooms."
-msgstr ""
+msgstr "Lijst van beschikbare ruimtes."
 
 #: src/menu_events.cpp:2261
 msgid "Room message."
@@ -8832,7 +8817,7 @@ msgstr "Zet debugmodus uit."
 
 #: src/menu_events.cpp:2427
 msgid "Execute a Lua statement."
-msgstr ""
+msgstr "Een Lua commando uitvoeren."
 
 #: src/menu_events.cpp:2429
 msgid "Set the command used by the custom command hotkey"
@@ -8862,7 +8847,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2446
 msgid "Discover all units in help."
-msgstr ""
+msgstr "Ontdek alle eenheden in hulp."
 
 #: src/menu_events.cpp:2451
 msgid "Create a unit."
@@ -9088,7 +9073,7 @@ msgstr "Anonieme lokale speler"
 
 #: src/multiplayer_connect.cpp:666
 msgid "$playername $side"
-msgstr ""
+msgstr "$playername $side"
 
 #: src/multiplayer_connect.cpp:670
 msgid "(Empty slot)"
@@ -9099,9 +9084,8 @@ msgid "(Reserved for $playername)"
 msgstr "(Gereserveerd voor $playername)"
 
 #: src/multiplayer_connect.cpp:682
-#, fuzzy
 msgid "(empty)"
-msgstr "Niemand"
+msgstr "(leeg)"
 
 #: src/multiplayer_connect.cpp:792
 msgid "Reserved"
@@ -9172,11 +9156,8 @@ msgid "Cannot find era $era"
 msgstr "Kan tijdperk $era niet vinden"
 
 #: src/multiplayer_connect.cpp:1585
-#, fuzzy
 msgid "Defeat enemy leader(s)"
-msgstr ""
-"Overwinning\n"
-"@Dood de vijandelijke leider(s)"
+msgstr "Dood de vijandelijke leider(s)"
 
 #: src/multiplayer_connect.cpp:1649
 msgid "Waiting for players to join..."
@@ -9416,21 +9397,19 @@ msgstr ""
 
 #: src/multiplayer_lobby.cpp:735
 msgid "Invert"
-msgstr ""
+msgstr "Inverteer"
 
 #: src/multiplayer_lobby.cpp:736
-#, fuzzy
 msgid "Vacant Slots"
-msgstr "Vrije plaats:"
+msgstr "Vrije Plaatsen"
 
 #: src/multiplayer_lobby.cpp:737
 msgid "Friends in Game"
-msgstr ""
+msgstr "Vrienden in Spel"
 
 #: src/multiplayer_lobby.cpp:738
-#, fuzzy
 msgid "Search:"
-msgstr "Zoeken"
+msgstr "Zoek:"
 
 #: src/multiplayer_lobby.cpp:747
 msgid "Skip quickly to the active turn when observing"
@@ -9590,12 +9569,11 @@ msgstr "Onbekend scenario: '$scenario|'"
 
 #: src/playmp_controller.cpp:92
 msgid "$name has taken control"
-msgstr ""
+msgstr "$name heeft de controle overgenomen"
 
 #: src/playmp_controller.cpp:94
-#, fuzzy
 msgid "Turn changed"
-msgstr "afstand"
+msgstr "Beurt veranderd"
 
 #: src/playmp_controller.cpp:228
 msgid "Undoing moves not yet transmitted to the server."
@@ -9776,9 +9754,8 @@ msgid "This is not a multiplayer save"
 msgstr "Dit is geen multiplayer opgeslagen spel."
 
 #: src/savegame.cpp:607
-#, fuzzy
 msgid "The game could not be saved: "
-msgstr "Het spel kon niet worden opgeslagen"
+msgstr "Het spel kon niet worden opgeslagen: "
 
 #: src/savegame.cpp:694
 msgid "Name: "
