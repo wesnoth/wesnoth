@@ -670,12 +670,12 @@ bool editor_controller::check_switch_open_map(const std::string& fn)
 
 void editor_controller::load_map(const std::string& filename, bool new_context)
 {
-	if (check_switch_open_map(filename)) return;
+	if (new_context && check_switch_open_map(filename)) return;
 	LOG_ED << "Load map: " << filename << (new_context ? " (new)" : " (same)") << "\n";
 	try {
 		std::auto_ptr<map_context> mc(new map_context(game_config_, filename));
 		if (mc->get_filename() != filename) {
-			if (check_switch_open_map(mc->get_filename())) return;
+			if (new_context && check_switch_open_map(mc->get_filename())) return;
 		}
 		if (new_context) {
 			int new_id = add_map_context(mc.release());
@@ -713,7 +713,7 @@ void editor_controller::load_map(const std::string& filename, bool new_context)
 void editor_controller::revert_map()
 {
 	if (!confirm_discard()) return;
-	const std::string& filename = get_map_context().get_filename();
+	std::string filename = get_map_context().get_filename();
 	if (filename.empty()) {
 		ERR_ED << "Empty filename in map revert\n";
 		return;
