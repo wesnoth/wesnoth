@@ -31,7 +31,7 @@ namespace editor {
  * as e.g. the undo stack is part of the map, not the editor as a whole. This might allow many
  * maps to be open at the same time.
  */
-class map_context
+class map_context : private boost::noncopyable
 {
 public:
 	/**

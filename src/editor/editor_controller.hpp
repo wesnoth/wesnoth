@@ -347,7 +347,7 @@ class editor_controller : public controller_base,
 		/**
 		 * Replace the current map context and refresh accordingly
 		 */
-		void replace_map_context(const map_context& new_mc);
+		void replace_map_context(map_context* new_mc);
 
 		/**
 		 * Callback function passed to display to be called on each redraw_everything run.

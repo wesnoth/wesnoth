@@ -358,10 +358,11 @@ void editor_controller::switch_context(const int index)
 	current_context_index_ = index;
 }
 
-void editor_controller::replace_map_context(const map_context& new_mc)
+void editor_controller::replace_map_context(map_context* new_mc)
 {
-	map_context_refresher mcr(*this, new_mc);
-	get_map_context() = new_mc;
+	std::auto_ptr<map_context> del(map_contexts_[current_context_index_]);
+	map_context_refresher mcr(*this, *new_mc);
+	map_contexts_[current_context_index_] = new_mc;
 }
 
 void editor_controller::editor_settings_dialog()
@@ -680,7 +681,7 @@ void editor_controller::load_map(const std::string& filename, bool new_context)
 			int new_id = add_map_context(mc.release());
 			switch_context(new_id);
 		} else {
-			replace_map_context(*mc);
+			replace_map_context(mc.release());
 		}
 		if (get_map_context().is_embedded()) {
 			const char* msg = _("Loaded embedded map data");
@@ -727,7 +728,7 @@ void editor_controller::new_map(int width, int height, t_translation::t_terrain 
 		int new_id = add_map_context(new map_context(m));
 		switch_context(new_id);
 	} else {
-		replace_map_context(map_context(m));
+		replace_map_context(new map_context(m));
 	}
 }
 
