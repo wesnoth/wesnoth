@@ -2190,7 +2190,7 @@ void display::refresh_report(reports::TYPE report_num, reports::report report,
 			text.set_font_size(item->font_size());
 			text.set_text(t, true);
 			text.set_maximum_width(area.w);
-			text.set_maximum_height(area.h);
+			text.set_maximum_height(area.h, false);
 			surface s = text.render();
 			screen_.blit_surface(x, y, s);
 			if (s->h > tallest) {

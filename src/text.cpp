@@ -335,10 +335,11 @@ ttext& ttext::set_maximum_width(int width)
 	return *this;
 }
 
-ttext& ttext::set_maximum_height(int height)
+ttext& ttext::set_maximum_height(int height, bool multiline)
 {
 	if(height <= 0) {
 		height = -1;
+		multiline = false;
 	}
 
 	if(height != maximum_height_) {
@@ -350,7 +351,7 @@ ttext& ttext::set_maximum_height(int height)
  */
 #if defined(PANGO_VERSION_CHECK)
 #if PANGO_VERSION_CHECK(1,20,0)
-		pango_layout_set_height(layout_, height == -1 ? -1 : height * PANGO_SCALE);
+		pango_layout_set_height(layout_, !multiline ? -1 : height * PANGO_SCALE);
 #endif
 #endif
 		maximum_height_ = height;

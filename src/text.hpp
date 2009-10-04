@@ -173,7 +173,7 @@ public:
 
 	ttext& set_maximum_width(int width);
 
-	ttext& set_maximum_height(int height);
+	ttext& set_maximum_height(int height, bool multiline = true);
 
 	ttext& set_ellipse_mode(const PangoEllipsizeMode ellipse_mode);
 
