@@ -828,11 +828,8 @@ void tevent_handler::key_down(const SDL_Event& event)
 }
 #endif
 
-void tevent_handler::connect()
+void tevent_handler::connect_signals(twidget& w)
 {
-	twindow& w = get_window();
-	w.event::tdispatcher::connect();
-
 	w.connect_signal<event::SDL_MOUSE_MOTION>(
 			boost::bind(&tevent_handler::sdl_mouse_motion, this, _2, _5));
 

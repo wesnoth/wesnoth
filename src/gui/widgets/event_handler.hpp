@@ -489,7 +489,12 @@ public:
 
 
 public:
-	void connect();
+	/**
+	 * Connects the internal signals for the handler.
+	 *
+	 * @param widget              The widget to connect the signals to.
+	 */
+	void connect_signals(twidget& w);
 
 private:
 

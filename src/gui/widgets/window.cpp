@@ -260,8 +260,10 @@ twindow::twindow(CVideo& video,
 
 	tmanager::instance().add(*this);
 #ifndef GUI2_OLD_EVENT_HANDLING
-	tevent_handler::connect();
+	connect();
 #endif
+
+	connect_signals(*this);
 
 	connect_signal<event::DRAW>(boost::bind(&twindow::draw, this));
 
