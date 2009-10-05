@@ -35,12 +35,8 @@ static bool is_shrouded(const display& disp, const map_location& loc)
 	return disp.shrouded(loc) || disp.shrouded(map_location(loc.x,loc.y+1));
 }
 
-map_labels::map_labels(const display& disp,
-					   const team* team) :
-		disp_(disp),
-		team_(team),
-		labels_(),
-		label_cache_()
+map_labels::map_labels(const display &disp, const team *team) :
+	disp_(disp), team_(team), labels_()
 {
 }
 

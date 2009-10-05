@@ -79,7 +79,6 @@ private:
 	const team* team_;
 
 	team_label_map labels_;
-	label_map label_cache_;
 };
 
 /// To store label data
