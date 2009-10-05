@@ -2193,15 +2193,17 @@ void display::refresh_report(reports::TYPE report_num, reports::report report,
 			text.set_maximum_height(area.h, false);
 			surface s = text.render();
 			screen_.blit_surface(x, y, s);
-			if (s->h > tallest) {
-				tallest = s->h;
+			area.w = s->w;
+			area.h = s->h;
+			if (area.h > tallest) {
+				tallest = area.h;
 			}
 			if (eol) {
 				x = rect.x;
 				y += tallest;
 				tallest = 0;
 			} else {
-				x += s->w;
+				x += area.w;
 			}
 		}
 		else if (!e.image.get_filename().empty())
