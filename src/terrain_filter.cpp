@@ -152,8 +152,6 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 		for (i = i_begin, i_end = adj_cfgs.end(); i != i_end; ++i) {
 			int match_count = 0;
 			vconfig::child_list::difference_type index = i - i_begin;
-			std::string adj_dirs = (*i).has_attribute("adjacent") ? (*i)["adjacent"]
-				: "n,ne,se,s,sw,nw";
 			static std::vector<map_location::DIRECTION> default_dirs
 				= map_location::parse_directions("n,ne,se,s,sw,nw");
 			std::vector<map_location::DIRECTION> dirs = (*i).has_attribute("adjacent")
