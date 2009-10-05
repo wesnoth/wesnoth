@@ -273,22 +273,91 @@ double ai_default::compare_groups(const std::set<location>& our_group, const std
 	return a/b;
 }
 
+// structure storing the maximal possible rating of a target
+struct rated_target{
+	rated_target(const std::vector<target>::iterator& t, double r) : tg(t), max_rating(r) {};
+	std::vector<target>::iterator tg;
+	double max_rating;
+};
+
+// compare maximal possible rating of targets
+// we can be smarter about the equal case, but keep old behavior for the moment
+struct rated_target_comparer {
+	bool operator()(const rated_target& a, const rated_target& b) const {
+		return a.max_rating > b.max_rating;
+	}
+};
+
+double ai_default::rate_target(const target& tg, const unit_map::iterator& u,
+			const move_map& dstsrc, const move_map& enemy_dstsrc,
+			const plain_route& rt)
+{
+	double move_cost = rt.move_cost;
+
+	if(move_cost > 0) {
+		// if this unit can move to that location this turn, it has a very very low cost
+		typedef std::multimap<map_location,map_location>::const_iterator multimapItor;
+		std::pair<multimapItor,multimapItor> locRange = dstsrc.equal_range(u->first);
+		while (locRange.first != locRange.second) {
+			if (locRange.first->second == u->first) {
+				move_cost = 0;
+				break;
+			}
+			++locRange.first;
+		}
+	}
+
+	double rating = tg.value;
+
+	if(rating == 0)
+		return rating; // all following operations are only multiplications of 0
+
+	// far target have a lower rating
+	if(move_cost > 0) {
+		rating /= move_cost;
+	}
+
+	//for 'support' targets, they are rated much higher if we can get there within two turns,
+	//otherwise they are worthless to go for at all.
+	if(tg.type == target::SUPPORT) {
+		if(move_cost <= u->second.movement_left()*2) {
+			rating *= 10.0;
+		} else {
+			rating = 0.0;
+			return rating;
+		}
+	}
+
+	//scouts do not like encountering enemies on their paths
+	if(u->second.usage() == "scout") {
+		//scouts get a bonus for going after villages
+		if(tg.type == target::VILLAGE) {
+				rating *= get_scout_village_targeting();
+		}
+
+		std::set<location> enemies_guarding;
+		enemies_along_path(rt.steps,enemy_dstsrc,enemies_guarding);
+		// note that an empty route means no guardian and thus optimal rating
+
+		if(enemies_guarding.size() > 1) {
+			rating /= enemies_guarding.size();
+		} else {
+			//scouts who can travel on their route without coming in range of many enemies
+			//get a massive bonus, so that they can be processed first, and avoid getting
+			//bogged down in lots of grouping
+			rating *= 100;
+		}
+	}
+
+	return rating;
+}
+
+
 std::pair<map_location,map_location> ai_default::choose_move(std::vector<target>& targets, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc)
 {
 	log_scope2(log_ai, "choosing move");
 
 	raise_user_interact();
-
-	std::vector<target>::const_iterator ittg;
-	for(ittg = targets.begin(); ittg != targets.end(); ++ittg) {
-		assert(map_.on_board(ittg->loc));
-	}
-
-	plain_route best_route;
-	unit_map::iterator best = units_.end();
-	double best_rating = 0.1;
-
-	std::vector<target>::iterator best_target = targets.end();
 
 	unit_map::iterator u;
 
@@ -310,93 +379,84 @@ std::pair<map_location,map_location> ai_default::choose_move(std::vector<target>
 		return std::pair<location,location>(u->first,u->first);
 	}
 
+	const plain_route dummy_route;
+	assert(dummy_route.steps.empty() && dummy_route.move_cost == 0);
+
+	// We will sort all targets by a quick maximal possible rating,
+	// so we will be able to start real work by the most promising ones
+	// and if its real value is better than other maximal values
+	// then we can skip them.
+
+	std::vector<rated_target> rated_targets;
+	for(std::vector<target>::iterator tg = targets.begin(); tg != targets.end(); ++tg) {
+		// passing a dummy route to have the maximal rating
+		double max_rating = rate_target(*tg, u, dstsrc, enemy_dstsrc, dummy_route);
+		rated_targets.push_back( rated_target(tg, max_rating) );
+	}
+
+	//use stable_sort for the moment to preserve old AI behavior
+	std::stable_sort(rated_targets.begin(), rated_targets.end(), rated_target_comparer());
+	
 	const move_cost_calculator cost_calc(u->second, map_, units_, enemy_dstsrc);
 
-	//choose the best target for that unit
-	for(std::vector<target>::iterator tg = targets.begin(); tg != targets.end(); ++tg) {
-		LOG_AI << "Considering target at: " << tg->loc <<"\n";
+	plain_route best_route;
+	unit_map::iterator best = units_.end();
+	double best_rating = -1.0;
+
+	std::vector<rated_target>::iterator best_rated_target = rated_targets.end();
+
+	std::vector<rated_target>::iterator rated_tg = rated_targets.begin();
+
+	for(; rated_tg != rated_targets.end(); ++rated_tg) {
+		const target& tg = *(rated_tg->tg);
+
+		LOG_AI << "Considering target at: " << tg.loc <<"\n";
+		assert(map_.on_board(tg.loc));
 
 		raise_user_interact();
-
-		assert(map_.on_board(tg->loc));
 
 		// locStopValue controls how quickly we give up on the A* search, due
 		// to it seeming futile. Be very cautious about changing this value,
 		// as it can cause the AI to give up on searches and just do nothing.
 		const double locStopValue = 500.0;
-		plain_route cur_route = a_star_search(u->first, tg->loc, locStopValue, &cost_calc, map_.w(), map_.h());
+		plain_route real_route = a_star_search(u->first, tg.loc, locStopValue, &cost_calc, map_.w(), map_.h());
 
-		if (cur_route.steps.empty()) {
-			LOG_AI << "Can't reach target: " << locStopValue << " = " << tg->value << "/" << best_rating << "\n";
+		if(real_route.steps.empty()) {
+			LOG_AI << "Can't reach target: " << locStopValue << " = " << tg.value << "/" << best_rating << "\n";
 			continue;
 		}
 
-		if (cur_route.move_cost < locStopValue)
-		{
-			// if this unit can move to that location this turn, it has a very very low cost
-			typedef std::multimap<map_location,map_location>::const_iterator multimapItor;
-			std::pair<multimapItor,multimapItor> locRange = dstsrc.equal_range(u->first);
-			while (locRange.first != locRange.second) {
-				if (locRange.first->second == u->first) {
-					cur_route.move_cost = 0;
-					break;
-				}
-				++locRange.first;
-			}
-		}
+		double real_rating = rate_target(tg, u, dstsrc, enemy_dstsrc, real_route);
 
-		double rating = tg->value / std::max<int>(1, cur_route.move_cost);
+		LOG_AI << tg.value << "/" << real_route.move_cost << " = " << real_rating << "\n";
 
-		//for 'support' targets, they are rated much higher if we can get there within two turns,
-		//otherwise they are worthless to go for at all.
-		if(tg->type == target::SUPPORT) {
-			if(cur_route.move_cost <= u->second.movement_left()*2) {
-				rating *= 10.0;
-			} else {
-				rating = 0.0;
-			}
-		}
-
-		//scouts do not like encountering enemies on their paths
-		if(u->second.usage() == "scout") {
-			std::set<location> enemies_guarding;
-			enemies_along_path(cur_route.steps,enemy_dstsrc,enemies_guarding);
-
-			if(enemies_guarding.size() > 1) {
-				rating /= enemies_guarding.size();
-			} else {
-				//scouts who can travel on their route without coming in range of many enemies
-				//get a massive bonus, so that they can be processed first, and avoid getting
-				//bogged down in lots of grouping
-				rating *= 100;
-			}
-
-			//scouts also get a bonus for going after villages
-			if(tg->type == target::VILLAGE) {
-					rating *= get_scout_village_targeting();
-			}
-		}
-
-		LOG_AI << tg->value << "/" << cur_route.move_cost << " = " << rating << "\n";
-		if(best_target == targets.end() || rating > best_rating) {
-			best_rating = rating;
-			best_target = tg;
+		if(real_rating > best_rating){
+			best_rating = real_rating;
+			best_rated_target = rated_tg;
+			best_route = real_route;
 			best = u;
-			best_route = cur_route;
+			//prevent divivion by zero
+			//FIXME: stupid, should fix it at the division
 			if(best_rating == 0)
-			{
-				best_rating = 0.000000001; //prevent divivion by zero
-			}
+				best_rating = 0.000000001; 
+
+			// if already higher than the maximal values of the next ratings
+			// (which are sorted, so only need to check the next one)
+			// then we have found the best target.
+			if(rated_tg+1 != rated_targets.end() && best_rating >= (rated_tg+1)->max_rating)
+				break;
 		}
 	}
 
 	LOG_AI << "choose target...\n";
 
-
-	if(best_target == targets.end()) {
+	if(best_rated_target == rated_targets.end()) {
 		LOG_AI << "no eligible targets found\n";
 		return std::pair<location,location>();
 	}
+
+	assert(best_rating >= 0);
+	std::vector<target>::iterator best_target = best_rated_target->tg;
 
 	//if we have the 'simple_targeting' flag set, then we don't
 	//see if any other units can put a better bid forward for this
@@ -470,11 +530,7 @@ std::pair<map_location,map_location> ai_default::choose_move(std::vector<target>
 
 	LOG_AI << "best unit: " << best->first << '\n';
 
-	assert(best_target >= targets.begin() && best_target < targets.end());
-
-	for(ittg = targets.begin(); ittg != targets.end(); ++ittg) {
-		assert(map_.on_board(ittg->loc));
-	}
+	assert(best_target != targets.end());
 
 	//if our target is a position to support, then we
 	//see if we can move to a position in support of this target

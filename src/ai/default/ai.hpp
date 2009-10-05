@@ -252,6 +252,14 @@ private:
 		const std::map<map_location,paths>& possible_moves,
 		const std::multimap<map_location,map_location>& enemy_dstsrc) const;
 
+	/**
+	 * rate a target, but can also return the maximal possible rating
+	 * by passing a dummy route
+	*/
+	double rate_target(const target& tg, const unit_map::iterator& u,
+			const move_map& dstsrc, const move_map& enemy_dstsrc,
+			const plain_route& rt);
+
 	int recruiting_preferred_;
 	static const int min_recruiting_value_to_force_recruit = 28;
 protected:
