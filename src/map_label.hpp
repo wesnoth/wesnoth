@@ -30,7 +30,7 @@ class terrain_label;
 class map_labels
 {
 public:
-	typedef std::map<map_location,const terrain_label*> label_map;
+	typedef std::map<map_location, terrain_label *> label_map;
 	typedef std::map<std::string,label_map> team_label_map;
 
 	map_labels(const display& disp, const team*);
@@ -51,8 +51,7 @@ public:
 							   const bool visible_in_fog = true,
 							   const bool visible_in_shroud = false);
 
-	void add_label(const map_location&,
-				   const terrain_label*);
+	void add_label(const map_location &, terrain_label *);
 
 	void clear(const std::string&);
 
@@ -71,7 +70,7 @@ public:
 
 	void clear_all();
 private:
-	void clear_map(const label_map&);
+	void clear_map(label_map &);
 	map_labels(const map_labels&);
 	void operator=(const map_labels&);
 

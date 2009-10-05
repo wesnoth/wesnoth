@@ -133,8 +133,8 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 					   const bool visible_in_shroud)
 {
 	terrain_label* res = 0;
-	const team_label_map::const_iterator current_label_map = labels_.find(team_name);
-	label_map::const_iterator current_label;
+	team_label_map::iterator current_label_map = labels_.find(team_name);
+	label_map::iterator current_label;
 
 	if ( current_label_map != labels_.end()
 			&& (current_label = current_label_map->second.find(loc)) != current_label_map->second.end() )
@@ -142,10 +142,10 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 		// Found old checking if need to erase it
 		if(text.empty())
 		{
-			const_cast<terrain_label*>(current_label->second)->set_text("");
+			current_label->second->set_text("");
 			res = new terrain_label("",team_name,loc,*this,colour,visible_in_fog,visible_in_shroud);
 			delete current_label->second;
-			const_cast<label_map&>(current_label_map->second).erase(loc);
+			current_label_map->second.erase(loc);
 
 			team_label_map::iterator global_label_map = labels_.find("");
 			label_map::iterator itor;
@@ -156,16 +156,14 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 			}
 			if (update)
 			{
-				const_cast<terrain_label*>(itor->second)->recalculate();
+				itor->second->recalculate();
 			}
 
 		}
 		else
 		{
-			const_cast<terrain_label*>(current_label->second)->update_info(text,
-																		   team_name,
-																		    colour);
-			res = const_cast<terrain_label*>(current_label->second);
+			current_label->second->update_info(text, team_name, colour);
+			res = current_label->second;
 		}
 	}
 	else if(!text.empty())
@@ -191,15 +189,14 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 
 		if (update)
 		{
-			const_cast<terrain_label*>(itor->second)->recalculate();
+			itor->second->recalculate();
 		}
 
 	}
 	return res;
 }
 
-void map_labels::add_label(const map_location& loc,
-	const terrain_label* new_label)
+void map_labels::add_label(const map_location &loc, terrain_label *new_label)
 {
 	labels_[new_label->team_name()][loc] = new_label;
 }
@@ -219,20 +216,20 @@ void map_labels::clear(const std::string& team_name)
 	}
 }
 
-void map_labels::clear_map(const label_map& m)
+void map_labels::clear_map(label_map &m)
 {
-	for (label_map::const_iterator j = m.begin(); j != m.end(); ++j)
+	foreach (label_map::value_type &v, m)
 	{
-		delete j->second;
+		delete v.second;
 	}
-	const_cast<label_map&>(m).clear();
+	m.clear();
 }
 
 void map_labels::clear_all()
 {
-	for(team_label_map::const_iterator i = labels_.begin(); i != labels_.end(); ++i)
+	foreach (team_label_map::value_type &m, labels_)
 	{
-		clear_map(i->second);
+		clear_map(m.second);
 	}
 	labels_.clear();
 }
@@ -250,11 +247,11 @@ void map_labels::scroll(double xmove, double ymove)
 
 void map_labels::recalculate_labels()
 {
-	for(team_label_map::const_iterator i = labels_.begin(); i != labels_.end(); ++i)
+	foreach (team_label_map::value_type &m, labels_)
 	{
-		for (label_map::const_iterator j = i->second.begin(); j != i->second.end(); ++j)
+		foreach (label_map::value_type &l, m.second)
 		{
-			const_cast<terrain_label*>(j->second)->recalculate();
+			l.second->recalculate();
 		}
 	}
 }
@@ -268,11 +265,11 @@ bool map_labels::visible_global_label(const map_location& loc) const
 
 void map_labels::recalculate_shroud()
 {
-	for(team_label_map::const_iterator i = labels_.begin(); i != labels_.end(); ++i)
+	foreach (team_label_map::value_type &m, labels_)
 	{
-		for (label_map::const_iterator j = i->second.begin(); j != i->second.end(); ++j)
+		foreach (label_map::value_type &l, m.second)
 		{
-			const_cast<terrain_label*>(j->second)->calculate_shroud();
+			l.second->calculate_shroud();
 		}
 	}
 }
