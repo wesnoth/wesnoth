@@ -205,16 +205,7 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 void map_labels::add_label(const map_location& loc,
 	const terrain_label* new_label)
 {
-	team_label_map::const_iterator labs = labels_.find(new_label->team_name());
-	if(labs == labels_.end())
-	{
-		labels_.insert(std::pair<std::string,label_map>(new_label->team_name(), label_map()));
-		labs = labels_.find(new_label->team_name());
-
-		assert(labs != labels_.end());
-	}
-
-	const_cast<label_map&>(labs->second).insert(std::pair<map_location,const terrain_label*>(loc,new_label));
+	labels_[new_label->team_name()][loc] = new_label;
 }
 
 void map_labels::clear(const std::string& team_name)
