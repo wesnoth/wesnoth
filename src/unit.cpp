@@ -237,6 +237,7 @@ unit::unit(unit_map* unitmap, const config& cfg,
 	units_(unitmap),
 	invisibility_cache_()
 {
+	set_state(STATE_HIDDEN,true);
 	read(cfg, use_traits, state);
 	/** @todo Are these modified by read? if not they can be removed. */
 	getsHit_=0;
@@ -315,6 +316,7 @@ unit::unit(const config& cfg,bool use_traits) :
 	units_(NULL),
 	invisibility_cache_()
 {
+	set_state(STATE_HIDDEN,true);
 	read(cfg,use_traits);
 	/** @todo Are these modified by read? if not they can be removed. */
 	getsHit_=0;
@@ -443,6 +445,7 @@ unit::unit(unit_map *unitmap, const unit_type *t, int side,
 	getsHit_=0;
 	end_turn_ = false;
 	hold_position_ = false;
+	set_state(STATE_HIDDEN,true);
 	next_idling_ = 0;
 	frame_begin_time_ = 0;
 	unit_halo_ = halo::NO_HALO;
