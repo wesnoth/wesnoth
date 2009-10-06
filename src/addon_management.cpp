@@ -702,6 +702,31 @@ namespace {
 		return true;
 	}
 
+	void do_addon_icon_fixups(std::string& icon, const std::string& addon_name)
+	{
+		static const std::string default_icon = "misc/blank-hex.png";
+		static const std::string debug_default_icon = "misc/missing-image.png";
+
+		if(icon.empty()) {
+			ERR_CFG << "remote add-on '" << addon_name << "' has no icon\n";
+			icon = default_icon;
+		}
+		else if(!image::exists(icon)) {
+			ERR_CFG << "remote add-on '" << addon_name << "' has an icon which cannot be found: '" << icon << "'\n";
+			if(game_config::debug) {
+				icon = debug_default_icon;
+			}
+			else {
+				icon = default_icon;
+			}
+		}
+		else if(icon.find("units/") != std::string::npos && icon.find_first_of('~') == std::string::npos) {
+			// a hack to prevent magenta icons, because they look awful
+			ERR_CFG << "remote add-on '" << addon_name << "' has an icon without TC/RC specification\n";
+			icon.append("~RC(magenta>red)");
+		}
+	}
+
 	void addons_update_dlg(game_display &disp, config &cfg, const config::const_child_itors &remote_addons_list,
 	                       const network::manager& net_manager, const network::connection& sock,
 	                       bool* do_refresh)
@@ -815,12 +840,7 @@ namespace {
 			newversions.push_back(newver);
 
 			std::string icon = c["icon"];
-			if(icon.empty() || image::get_image(icon).null()) {
-				icon = "misc/blank-hex.png";
-			}
-			else if(icon.find("units/") != std::string::npos && icon.find_first_of('~') == std::string::npos) {
-				icon.append("~RC(magenta>red)");
-			}
+			do_addon_icon_fixups(icon, name);
 
 			const std::string text_columns =
 				title + COLUMN_SEPARATOR +
@@ -1028,13 +1048,8 @@ namespace {
 				sizes.push_back(-atoi(size.c_str()));
 
 				std::string icon = c["icon"];
-				if(icon.empty() || image::get_image(icon).null()) {
-					icon = "misc/blank-hex.png";
-				}
-				else if(icon.find("units/") != std::string::npos && icon.find_first_of('~') == std::string::npos) {
-					//a hack to prevent magenta icons, because they look awful
-					icon.append("~RC(magenta>red)");
-				}
+				do_addon_icon_fixups(icon, name);
+
 				const std::string text_columns =
 					title + COLUMN_SEPARATOR +
 					version + COLUMN_SEPARATOR +
