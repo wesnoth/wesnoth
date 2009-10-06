@@ -2315,6 +2315,17 @@ size_t move_unit(move_unit_spectator *move_spectator,
 	map_location::DIRECTION orig_dir = ui->second.facing();
 	unit_display::move_unit(steps, ui->second, teams, show_move);
 
+	// before moving the real unit, check if it may uncover invisible units
+	// and, if any, invalidate their hexes to show their visibility's change
+	map_location adjacent[6];
+	get_adjacent_tiles(steps.back(), adjacent);
+	for(int i = 0; i != 6; ++i) {
+		const unit_map::const_iterator it = units.find(adjacent[i]);
+		if (it != units.end() && tm->is_enemy(it->second.side()) &&
+				it->second.invisible(it->first, units, teams))
+			disp.invalidate(adjacent[i]);
+	}
+
 	// move the real unit
 	units.move(ui->first, steps.back());
 	unit::clear_status_caches();
