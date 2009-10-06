@@ -815,8 +815,10 @@ namespace {
 			newversions.push_back(newver);
 
 			std::string icon = c["icon"];
-			if(icon.find("units/") != std::string::npos &&
-				icon.find_first_of('~') == std::string::npos) {
+			if(icon.empty() || image::get_image(icon).null()) {
+				icon = "misc/blank-hex.png";
+			}
+			else if(icon.find("units/") != std::string::npos && icon.find_first_of('~') == std::string::npos) {
 				icon.append("~RC(magenta>red)");
 			}
 
@@ -1029,8 +1031,7 @@ namespace {
 				if(icon.empty() || image::get_image(icon).null()) {
 					icon = "misc/blank-hex.png";
 				}
-				if(icon.find("units/") != std::string::npos &&
-				   icon.find_first_of('~') == std::string::npos) {
+				else if(icon.find("units/") != std::string::npos && icon.find_first_of('~') == std::string::npos) {
 					//a hack to prevent magenta icons, because they look awful
 					icon.append("~RC(magenta>red)");
 				}
