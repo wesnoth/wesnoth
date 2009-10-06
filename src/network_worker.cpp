@@ -512,7 +512,7 @@ static SOCKET_STATE send_file(buffer* buf)
 		buffer.resize(4);
 		SDLNet_Write32(filesize,&buffer[0]);
 		int socket = reinterpret_cast<_TCPsocket*>(buf->sock)->channel;
-		const scoped_fd in_file(open(buf->config_error.c_str(),O_NOATIME | O_RDONLY));
+		const scoped_fd in_file(open(buf->config_error.c_str(), O_RDONLY));
 		cork_setter set_socket_cork(socket);
 		int poll_res;
 		struct pollfd fd = {socket, POLLOUT, 0 };
