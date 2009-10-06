@@ -478,43 +478,11 @@ std::pair<map_location,map_location> ai_default::choose_move(std::vector<target>
 			const double locStopValue = std::min(best_target->value / best_rating, 100.0);
 			plain_route cur_route = a_star_search(u->first, best_target->loc, locStopValue, &calc, map_.w(), map_.h());
 
-			if (cur_route.move_cost < locStopValue)
-			{
-				// if this unit can move to that location this turn, it has a very very low cost
-				typedef std::multimap<map_location,map_location>::const_iterator multimapItor;
-				std::pair<multimapItor,multimapItor> locRange = dstsrc.equal_range(u->first);
-				while (locRange.first != locRange.second) {
-					if (locRange.first->second == u->first) {
-						cur_route.move_cost = 0;
-						break;
-					}
-					++locRange.first;
-				}
+			if(cur_route.steps.empty()) {
+				continue;
 			}
 
-			double rating = best_target->value / std::max<int>(1, cur_route.move_cost);
-
-			//for 'support' targets, they are rated much higher if we can get there within two turns,
-			//otherwise they are worthless to go for at all.
-			if(best_target->type == target::SUPPORT) {
-				if (cur_route.move_cost <= u->second.movement_left()*2) {
-					rating *= 10.0;
-				} else {
-					rating = 0.0;
-				}
-			}
-
-			//scouts do not like encountering enemies on their paths
-			if(u->second.usage() == "scout") {
-				std::set<location> enemies_guarding;
-				enemies_along_path(cur_route.steps,enemy_dstsrc,enemies_guarding);
-
-				if(enemies_guarding.size() > 1) {
-					rating /= enemies_guarding.size();
-				} else {
-					rating *= 100;
-				}
-			}
+			double rating = rate_target(*best_target, u, dstsrc, enemy_dstsrc, cur_route);
 
 			if(best == units_.end() || rating > best_rating) {
 				best_rating = rating;
