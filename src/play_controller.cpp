@@ -477,17 +477,23 @@ void play_controller::do_init_side(const unsigned int team_index){
 
 	// If this is right after loading a game we don't need to fire events and such. It was already done before saving.
 	if (!loading_game_) {
+		std::stringstream event_stream;
+		event_stream << turn();
+		const std::string turn_num = event_stream.str();
+		std::stringstream side_num_stream;
+		side_num_stream << (team_index+1);
+		const std::string side_num = side_num_stream.str();
+
 		if (turn() != previous_turn_)
 		{
-			std::stringstream event_stream;
-			event_stream << turn();
-			const std::string turn_num = event_stream.str();
-
 			game_events::fire("turn " + turn_num);
 			game_events::fire("new turn");
 			previous_turn_ = turn();
 		}
+
 		game_events::fire("side turn");
+		game_events::fire("side " + side_num + " turn");
+		game_events::fire("side " + side_num + " turn " + turn_num);
 	}
 
 	// We want to work out if units for this player should get healed,
