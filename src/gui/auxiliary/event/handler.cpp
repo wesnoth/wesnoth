@@ -408,21 +408,21 @@ void thandler::mouse_button_up(const tpoint& position, const Uint8 button)
 			mouse(SDL_RIGHT_BUTTON_UP, position);
 			break;
 
-		case SDL_WHEEL_LEFT :
+		case SDL_BUTTON_WHEELLEFT :
 			keyboard(SDL_WHEEL_LEFT);
 			break;
-		case SDL_WHEEL_RIGHT :
+		case SDL_BUTTON_WHEELRIGHT :
 			keyboard(SDL_WHEEL_RIGHT);
 			break;
-		case SDL_WHEEL_UP :
+		case SDL_BUTTON_WHEELUP :
 			keyboard(SDL_WHEEL_UP);
 			break;
-		case SDL_WHEEL_DOWN :
+		case SDL_BUTTON_WHEELDOWN :
 			keyboard(SDL_WHEEL_DOWN);
 			break;
 
 		default:
-			WRN_GUI_E << "Unhandled 'mouse button down' event for button "
+			WRN_GUI_E << "Unhandled 'mouse button up' event for button "
 					<< static_cast<Uint32>(button) << ".\n";
 			break;
 	}
