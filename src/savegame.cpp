@@ -624,16 +624,15 @@ bool savegame::save_game_automatic(CVideo& video, bool ask_for_overwrite, const 
 		overwrite = check_overwrite(video);
 
 		if (!overwrite)
-			return save_game_interactive("", gui::OK_CANCEL);
+			return save_game_interactive(video, "", gui::OK_CANCEL);
 	}
 
 	return save_game(&video);
 }
 
-bool savegame::save_game_interactive(const std::string& message,
+bool savegame::save_game_interactive(CVideo& video, const std::string& message,
 									 gui::DIALOG_TYPE dialog_type)
 {
-	CVideo& video = resources::screen->video();
 	show_confirmation_ = true;
 	create_filename();
 

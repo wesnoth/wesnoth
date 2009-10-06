@@ -20,6 +20,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "playturn.hpp"
+#include "resources.hpp"
 #include "savegame.hpp"
 #include "sound.hpp"
 #include "upload_log.hpp"
@@ -527,7 +528,7 @@ void playmp_controller::process_oos(const std::string& err_msg) const {
 	}
 
 	savegame::oos_savegame save(to_config());
-	save.save_game_interactive(temp_buf.str(), gui::YES_NO);
+	save.save_game_interactive(resources::screen->video(), temp_buf.str(), gui::YES_NO);
 }
 
 void playmp_controller::handle_generic_event(const std::string& name){

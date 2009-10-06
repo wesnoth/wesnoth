@@ -19,6 +19,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "replay_controller.hpp"
+#include "resources.hpp"
 #include "savegame.hpp"
 
 static lg::log_domain log_engine("engine");
@@ -223,7 +224,7 @@ void replay_controller::process_oos(const std::string& msg) const
 	message << "\n\nError details:\n\n" << msg;
 
 	savegame::oos_savegame save(to_config());
-	save.save_game_interactive(message.str(), gui::YES_NO); // can throw end_level_exception
+	save.save_game_interactive(resources::screen->video(), message.str(), gui::YES_NO); // can throw end_level_exception
 }
 
 void replay_controller::replay_show_everything(){

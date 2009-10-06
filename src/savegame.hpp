@@ -157,7 +157,7 @@ public:
 
 	/** Save a game interactively through the savegame dialog. Used for manual midgame and replay
 		saves. The return value denotes, if the save was successful or not. */
-	bool save_game_interactive(const std::string& message,
+	bool save_game_interactive(CVideo& video, const std::string& message,
 		gui::DIALOG_TYPE dialog_type);
 
 	const std::string& filename() const { return filename_; }
