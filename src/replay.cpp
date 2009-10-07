@@ -1161,14 +1161,10 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				resources::state_of_game->set_variable(v["name"], v["value"]);
 			}
 			const std::string &event = child["raise"];
-			//exclude these events here, because in a replay proper time of execution can't be
-			//established and therefore we fire those events inside play_controller::init_side
-			if ((event != "side turn") && (event != "turn 1") && (event != "new turn") && (event != "turn refresh")){
-				if (const config &source = child.child("source")) {
-					game_events::fire(event, map_location(source, resources::state_of_game));
-				} else {
-					game_events::fire(event);
-				}
+			if (const config &source = child.child("source")) {
+				game_events::fire(event, map_location(source, resources::state_of_game));
+			} else {
+				game_events::fire(event);
 			}
 
 		}
