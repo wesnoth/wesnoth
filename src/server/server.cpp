@@ -2069,7 +2069,7 @@ void server::process_data_game(const network::connection sock,
 			<< ") while the scenario wasn't yet initialized.\n" << data.output();
 		return;
 	// If the host is sending the next scenario data.
-	} else if (data.child("store_next_scenario")) {
+	} else if (const simple_wml::node* scenario = data.child("store_next_scenario")) {
 		if (!g->is_owner(sock)) return;
 		if (!g->level_init()) {
 			WRN_SERVER << network::ip_address(sock) << "\tWarning: "
@@ -2080,7 +2080,7 @@ void server::process_data_game(const network::connection sock,
 		}
 		g->save_replay();
 		size_t nsides = 0;
-		const simple_wml::node::child_list& sides = data.root().children("side");
+		const simple_wml::node::child_list& sides = scenario->children("side");
 		for (simple_wml::node::child_list::const_iterator s = sides.begin(); s != sides.end(); ++s) {
 	        	++nsides;
 		}
@@ -2094,7 +2094,7 @@ void server::process_data_game(const network::connection sock,
 		}
 		// Record the full scenario in g->level()
 		g->level().clear();
-		data.child("store_next_scenario")->copy_into(g->level().root());
+		scenario->copy_into(g->level().root());
 
 		if (g->description() == NULL) {
 			ERR_SERVER << network::ip_address(sock) << "\tERROR: \""
@@ -2104,7 +2104,7 @@ void server::process_data_game(const network::connection sock,
 		}
 		simple_wml::node& desc = *g->description();
 		// Update the game's description.
-		if (const simple_wml::node* m = data.root().child("store_next_scenario")->child("multiplayer")) {
+		if (const simple_wml::node* m = scenario->child("multiplayer")) {
 			m->copy_into(desc);
 		} else {
 			WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
