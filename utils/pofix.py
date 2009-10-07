@@ -295,8 +295,9 @@ if __name__ == '__main__':
                         #complain loudly
                         print "pofix: old string\n\t\"%s\"\n equals new string\n\t\"%s\"\nexiting." % (old, new)
                         sys.exit(1)
-                    elif new in after and old in after:
-                        print "pofix: %s has a msgid \n\t\"%s\"\nand a typoed version \n\t\"%s\"\nthis needs handfixing for now." % (path, old, new)
+                    #this check is problematic and breaks if 'new' is an exact substring of 'old', commenting it out for the moment
+                    #elif new in after and old in after:
+                    #    print "pofix: %s has a msgid \n\t\"%s\"\nand a typoed version \n\t\"%s\"\nthis needs handfixing for now." % (path, old, new)
                     else:
                         after = after.replace(old, new)
             if after != before:
