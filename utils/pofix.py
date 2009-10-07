@@ -31,6 +31,18 @@
 
 stringfixes = {
 
+# Changes in the wesnoth domain make consistent the use of the American
+# spelling "defense" in key strings.
+#
+"wesnoth" : (
+("have good defences in water", "have good defenses in water"),
+("have a low defence", "have a low defense"),
+("characers", "characters"),
+("That will let you chose which hex you put a new unit in.", "That will let you choose which hex you put a new unit in."),
+("that have a least one", "that have at least one"),
+("Apply Filer", "Apply Filter"),
+),
+
 "wesnoth-aoi" : (
 # Typo fix.
 #
@@ -70,6 +82,12 @@ stringfixes = {
 ("and all but the  true people!", "and all but the true people!"),
 ),
 
+"wesnoth-ei" : (
+("Wait - What just happened?", "Wait - what just happened?"),
+("attack ME?", "attack <i>me?</i>"),
+("passage way", "passageway"),
+),
+
 "wesnoth-httt" : (
 # Missing comma clarifies that Lisar is ordering her duelist to attack,
 # not ordering someone to attack him!  Translators will probably have picked
@@ -89,6 +107,21 @@ stringfixes = {
 ("Elven allies", "elven allies"),
 ("Drake base", "drake base"),
 ("grime and and gristle", "grime and gristle"),
+# See the explanation of the changes for TROW.
+("A final blow destroys the Lich,", "A final blow destroys the lich,"),
+("back yard", "back-yard"),
+),
+
+"wesnoth-low" : (
+("offensive war. This is the council's decision\"", "offensive war. This is the council's decision.\""),
+('bring in reinforcements"', 'bring in reinforcements."'),
+('Sure, minus expenses"', 'Sure, minus expenses."'),
+('I told ye I\'d be here"', 'I told ye I\'d be here."'),
+('is bringing with him, though"','is bringing with him, though."'),
+('I an defeated.','I am defeated.'),
+('The orcs are not defeated defeated,','The orcs are not defeated,'),
+("but out army", "but our army"),
+("arrives!.", "arrives!"),
 ),
 
 "wesnoth-manual" : (
@@ -99,71 +132,7 @@ stringfixes = {
 ("chop pieces of meat", "chop pieces of flesh"),
 ),
 
-"wesnoth-thot" : (
-# These are typo fixes not caught by the spell checker
-#
-("It sees that guard", "It seems that guard"),
-("Go thorough that rubble", "Go through that rubble"),
-),
-
-# Changes in the wesnoth domain make consistent the use of the American
-# spelling "defense" in key strings.
-#
-"wesnoth" : (
-("have good defences in water", "have good defenses in water"),
-("have a low defence", "have a low defense"),
-("characers", "characters"),
-("That will let you chose which hex you put a new unit in.", "That will let you choose which hex you put a new unit in."),
-),
-
-"wesnoth-trow" :(
-# Most changes to TROW simply fix inconsistent capitalization
-# of the word "lich" and the phrase "lich-lord", applying the
-# following rules:
-# 1) "lich" and "lich-lord" as the name of type of monster is a common noun
-#    and should not be capitalized.
-# 2) Lich-Lord as a title of address should be capitalized.
-# 3) "Lich-Lords" as the proper name of a particular set of lich-lords
-#    (e.g. those of the Wesfolk) should be capitalized.
-#
-("funny that the lich-Lord", "funny that the lich-lord"),
-("evil Lich in the catacombs", "evil lich in the catacombs"),
-("The Lich was carrying", "The lich was carrying"),
-("defeated the Lich and returned", "defeated the lich and returned",), 
-("know that Lich you",  "know that lich you"),
-("Lich. Maybe you", "lich. Maybe you"),
-("Young Prince Haldric.", "young Prince Haldric."),
-("Kill the Lich to get his book and", "Kill the lich to get his book and"),
-("The Lich is free!", "The lich is free!"),
-("before we free that Lich","before we free that lich"),
-# Banish an Earth-human name.
-("Edmond", "Edren"),
-#("great river", "Great River"),
-),
-
-"wesnoth-httt" :(
-# See the explanation of the changes for TROW.
-("A final blow destroys the Lich,", "A final blow destroys the lich,"),
-("back yard", "back-yard"),
-),
-
-"wesnoth-tsg" :(
-# In The South Guard, one change fixes comma placement.
-#
-# One other change (marked "#*") places a question mark where needed.
-# This may imply a translation change in languages with question
-# inflections in their grammar.
-#
-# One other change replaces "menfolk" with "humans"; the former 
-# has an idiomatic sense in American English that you don't want.
-#
-("Now Deoran, take", "Now, Deoran, take"),
-("can you do against the dead!", "can you do against the dead?"),
-("undead are hiding in the forest.", "undead are hiding in the forest?"), #*
-("menfolk", "humans"),
-),
-
-"wesnoth-nr" :(
+"wesnoth-nr" : (
 # Most NR changes are comma-placement or typo fixes.  The first two
 # are exceptions, required by our policy of not allowing anything in
 # Wesnoth to resemble real-world religious behavior.
@@ -201,25 +170,55 @@ stringfixes = {
 ('roving around praying on','roving around preying on'),
 ),
 
-"wesnoth-low" :(
-("offensive war. This is the council's decision\"", "offensive war. This is the council's decision.\""),
-('bring in reinforcements"', 'bring in reinforcements."'),
-('Sure, minus expenses"', 'Sure, minus expenses."'),
-('I told ye I\'d be here"', 'I told ye I\'d be here."'),
-('is bringing with him, though"','is bringing with him, though."'),
-('I an defeated.','I am defeated.'),
-('The orcs are not defeated defeated,','The orcs are not defeated,'),
-("but out army", "but our army"),
-("arrives!.", "arrives!"),
+"wesnoth-thot" : (
+# These are typo fixes not caught by the spell checker
+#
+("It sees that guard", "It seems that guard"),
+("Go thorough that rubble", "Go through that rubble"),
 ),
 
-"wesnoth-sotbe" :(
-("can from from each", "can from each"),
-("go check it out.", "go look."),
-("Shan Taum doesn't seem to have to many of his", "Shan Taum doesn't seem to have too many of his"),
+"wesnoth-trow" : (
+# Most changes to TROW simply fix inconsistent capitalization
+# of the word "lich" and the phrase "lich-lord", applying the
+# following rules:
+# 1) "lich" and "lich-lord" as the name of type of monster is a common noun
+#    and should not be capitalized.
+# 2) Lich-Lord as a title of address should be capitalized.
+# 3) "Lich-Lords" as the proper name of a particular set of lich-lords
+#    (e.g. those of the Wesfolk) should be capitalized.
+#
+("funny that the lich-Lord", "funny that the lich-lord"),
+("evil Lich in the catacombs", "evil lich in the catacombs"),
+("The Lich was carrying", "The lich was carrying"),
+("defeated the Lich and returned", "defeated the lich and returned",), 
+("know that Lich you",  "know that lich you"),
+("Lich. Maybe you", "lich. Maybe you"),
+("Young Prince Haldric.", "young Prince Haldric."),
+("Kill the Lich to get his book and", "Kill the lich to get his book and"),
+("The Lich is free!", "The lich is free!"),
+("before we free that Lich","before we free that lich"),
+# Banish an Earth-human name.
+("Edmond", "Edren"),
+#("great river", "Great River"),
 ),
 
-"wesnoth-sof" :(
+"wesnoth-tsg" : (
+# In The South Guard, one change fixes comma placement.
+#
+# One other change (marked "#*") places a question mark where needed.
+# This may imply a translation change in languages with question
+# inflections in their grammar.
+#
+# One other change replaces "menfolk" with "humans"; the former 
+# has an idiomatic sense in American English that you don't want.
+#
+("Now Deoran, take", "Now, Deoran, take"),
+("can you do against the dead!", "can you do against the dead?"),
+("undead are hiding in the forest.", "undead are hiding in the forest?"), #*
+("menfolk", "humans"),
+),
+
+"wesnoth-sof" : (
 ("Not all of us Elves are", "Not all of us elves are"),
 ("to make an sceptre out", "to make a sceptre out"),
 ("us to the Eastern", "us to the eastern"),
@@ -234,33 +233,29 @@ stringfixes = {
 ("his scepter intact", "his sceptre intact"),
 ),
 
-"wesnoth-tb" :(
+"wesnoth-sotbe" :(
+("can from from each", "can from each"),
+("go check it out.", "go look."),
+("Shan Taum doesn't seem to have to many of his", "Shan Taum doesn't seem to have too many of his"),
+),
+
+
+"wesnoth-tb" : (
 ("mage Bjarn send for", "mage Bjarn sends for"),
 ),
 
-"wesnoth-ei" :(
-("Wait - What just happened?", "Wait - what just happened?"),
-("attack ME?", "attack <i>me?</i>"),
-("passage way", "passageway"),
+"wesnoth-tutorial" : (
+# typo fixes
+("effecient", "efficient"),
 ),
 
-"wesnoth-utbs" :(
-# "Yanqui" is an ethnic slur in Spanish
-("Yanqui", "Zhangor"),
-),
-
-"wesnoth" :(
-("that have a least one", "that have at least one"),
-("Apply Filer", "Apply Filter"),
-),
-
-"wesnoth-units" :(
+"wesnoth-units" : (
 (" and and ", " and "),
 ),
 
-"wesnoth-tutorial" :(
-# typo fixes
-("effecient", "efficient"),
+"wesnoth-utbs" : (
+# "Yanqui" is an ethnic slur in Spanish
+("Yanqui", "Zhangor"),
 ),
 
 }
