@@ -298,9 +298,10 @@ if __name__ == '__main__':
                     #this check is problematic and the last clause is added to prevent false 
                     #positives in case that new is a substring of old, though this can also
                     #lead to "real" probs not found, the real check would be "does replacing
-                    #old with new lead to duplicate msgids?" which is not easily done...
+                    #old with new lead to duplicate msgids? (including old ones marked with #~)"
+                    #which is not easily done in the current design...
                     elif new in after and old in after and not new in old:
-                        print "pofix: %s has a msgid \n\t\"%s\"\nand a typoed version \n\t\"%s\"\nthis needs handfixing for now." % (path, old, new)
+                        print "pofix: %s already includes the new string\n\t\"%s\"\nbut also the old\n\t\"%s\"\nthis needs handfixing for now since it likely creates duplicate msgids." % (path, new, old)
                     else:
                         after = after.replace(old, new)
             if after != before:
