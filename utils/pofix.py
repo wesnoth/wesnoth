@@ -295,9 +295,12 @@ if __name__ == '__main__':
                         #complain loudly
                         print "pofix: old string\n\t\"%s\"\n equals new string\n\t\"%s\"\nexiting." % (old, new)
                         sys.exit(1)
-                    #this check is problematic and breaks if 'new' is an exact substring of 'old', commenting it out for the moment
-                    #elif new in after and old in after:
-                    #    print "pofix: %s has a msgid \n\t\"%s\"\nand a typoed version \n\t\"%s\"\nthis needs handfixing for now." % (path, old, new)
+                    #this check is problematic and the last clause is added to prevent false 
+                    #positives in case that new is a substring of old, though this can also
+                    #lead to "real" probs not found, the real check would be "does replacing
+                    #old with new lead to duplicate msgids?" which is not easily done...
+                    elif new in after and old in after and not new in old:
+                        print "pofix: %s has a msgid \n\t\"%s\"\nand a typoed version \n\t\"%s\"\nthis needs handfixing for now." % (path, old, new)
                     else:
                         after = after.replace(old, new)
             if after != before:
