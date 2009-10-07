@@ -2104,7 +2104,7 @@ void server::process_data_game(const network::connection sock,
 		}
 		simple_wml::node& desc = *g->description();
 		// Update the game's description.
-		if (const simple_wml::node* m = data.root().child("multiplayer")) {
+		if (const simple_wml::node* m = data.root().child("store_next_scenario")->child("multiplayer")) {
 			m->copy_into(desc);
 		} else {
 			WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
