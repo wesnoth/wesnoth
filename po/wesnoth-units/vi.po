@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-09-27 20:31+0200\n"
+"POT-Creation-Date: 2009-10-07 15:42+0200\n"
 "PO-Revision-Date: 2009-09-26 23:19+0700\n"
 "Last-Translator: Phạm Thành Nam <phamthanhnam.ptn@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
@@ -191,21 +191,20 @@ msgstr ""
 "hữu một ngọn lửa khủng khiếp."
 
 #. [attack]: type=blade
-#: data/core/units/drakes/Armageddon.cfg:85
-#: data/core/units/drakes/Fire.cfg:110 data/core/units/drakes/Inferno.cfg:112
+#: data/core/units/drakes/Armageddon.cfg:85 data/core/units/drakes/Fire.cfg:42
+#: data/core/units/drakes/Inferno.cfg:44
 msgid "battle claws"
 msgstr "móng vuốt"
 
 #. [attack]: type=fire
 #: data/core/units/drakes/Armageddon.cfg:94
-#: data/core/units/drakes/Blademaster.cfg:118
-#: data/core/units/drakes/Burner.cfg:117
-#: data/core/units/drakes/Fighter.cfg:117 data/core/units/drakes/Fire.cfg:119
-#: data/core/units/drakes/Flameheart.cfg:88
-#: data/core/units/drakes/Flare.cfg:92 data/core/units/drakes/Glider.cfg:121
-#: data/core/units/drakes/Hurricane.cfg:118
-#: data/core/units/drakes/Inferno.cfg:121 data/core/units/drakes/Sky.cfg:116
-#: data/core/units/drakes/Warrior.cfg:116
+#: data/core/units/drakes/Blademaster.cfg:50
+#: data/core/units/drakes/Burner.cfg:49 data/core/units/drakes/Fighter.cfg:165
+#: data/core/units/drakes/Fire.cfg:51 data/core/units/drakes/Flameheart.cfg:88
+#: data/core/units/drakes/Flare.cfg:92 data/core/units/drakes/Glider.cfg:53
+#: data/core/units/drakes/Hurricane.cfg:117
+#: data/core/units/drakes/Inferno.cfg:53 data/core/units/drakes/Sky.cfg:116
+#: data/core/units/drakes/Warrior.cfg:48
 #: data/core/units/monsters/Fire_Dragon.cfg:49
 msgid "fire breath"
 msgstr "hơi thở lửa"
@@ -227,7 +226,7 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=blade
-#: data/core/units/drakes/Blademaster.cfg:109
+#: data/core/units/drakes/Blademaster.cfg:41
 #: data/core/units/drakes/Clasher.cfg:38
 #: data/core/units/drakes/Enforcer.cfg:36
 #: data/core/units/drakes/Thrasher.cfg:23
@@ -242,17 +241,18 @@ msgstr "Rồng thiêu đốt"
 #. [unit_type]: id=Drake Burner, race=drake
 #: data/core/units/drakes/Burner.cfg:20
 msgid ""
-"Before a drake is even considered for acceptance into the Burner caste, he "
-"must prove the strength of his inner fire; the caste prides itself on its "
-"similarity to the drakes' powerful ancestors: the dragons. Arrogant Burners "
-"(and there are many such) can often be overheard claiming to be so like the "
-"dragons that their veins flow not with blood, but with pure flame. Although "
-"a Burner's preferred weapon is his fiery breath, he won't shy away from "
-"striking blows with his bared claws."
+"Drake Burners are the proud few in whom the blood and strength of their "
+"remote ancestors runs truest, giving them the ability to breathe fire. This, "
+"coupled with their sheer size and fearsome claws, makes them deadly foes in "
+"combat."
 msgstr ""
+"Rồng thiêu đốt tự hào vì dòng máu và sức mạnh của tổ tiên xa xưa đang chảy "
+"thật nhất trong cơ thể, cho chúng khả năng phun ra lửa. Khả năng này, cùng "
+"với kích thước lớn và những móng vuốt đáng sợ, khiến chúng trở thành những "
+"địch thủ nguy hiểm khi chiến đấu."
 
 #. [attack]: type=blade
-#: data/core/units/drakes/Burner.cfg:108
+#: data/core/units/drakes/Burner.cfg:40
 #: data/core/units/goblins/Direwolf_Rider.cfg:55
 #: data/core/units/gryphons/Gryphon.cfg:41
 #: data/core/units/gryphons/Gryphon_Master.cfg:42
@@ -373,15 +373,19 @@ msgstr "Đấu sĩ rồng"
 #. [unit_type]: id=Drake Fighter, race=drake
 #: data/core/units/drakes/Fighter.cfg:20
 msgid ""
-"A Fighter's only purpose in drake society is to fight and die for his tribe. "
-"Not being particularly swift, nor possessed of a strong inner flame, he is "
-"constantly struggling to prove his worth to the more respected castes by "
-"sheer physical prowess. Sometimes, he succeeds."
+"Drake Fighters wield curved war blades, and possess the fire-breathing "
+"skills of their ancestors. They can also fly, which is troubling to any foe. "
+"Their great strength, coupled with their hardened scales, is rightly "
+"frightening to swordsman of any other race."
 msgstr ""
+"Các đấu sĩ rồng sử dụng những lưỡi kiếm cong và có năng lực phun lửa của tổ "
+"tiên. Chúng cũng có thể bay, đó là điều khiến mọi địch thủ phải lo lắng. Sức "
+"mạnh lớn, cùng với lớp vảy cứng của chúng là điều khủng khiếp với lính kiếm "
+"của bất kỳ loài nào khác."
 
 #. [attack]: type=blade
-#: data/core/units/drakes/Fighter.cfg:108
-#: data/core/units/drakes/Warrior.cfg:107
+#: data/core/units/drakes/Fighter.cfg:156
+#: data/core/units/drakes/Warrior.cfg:39
 msgid "war blade"
 msgstr "kiếm"
 
@@ -483,8 +487,8 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=impact
-#: data/core/units/drakes/Glider.cfg:112
-#: data/core/units/drakes/Hurricane.cfg:109 data/core/units/drakes/Sky.cfg:107
+#: data/core/units/drakes/Glider.cfg:44
+#: data/core/units/drakes/Hurricane.cfg:108 data/core/units/drakes/Sky.cfg:107
 msgid "slam"
 msgstr "đâm sầm"
 
@@ -2246,7 +2250,7 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:37
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:33
 #: data/core/units/humans/Outlaw.cfg:36
-#: data/core/units/humans/Outlaw_Bandit.cfg:47
+#: data/core/units/humans/Outlaw_Bandit.cfg:35
 #: data/core/units/humans/Outlaw_Fugitive.cfg:41
 #: data/core/units/humans/Outlaw_Highwayman.cfg:37
 #: data/core/units/humans/Royal_Warrior.cfg:35
@@ -5278,28 +5282,6 @@ msgstr ""
 #~ "Những cá thể rồng sử dụng kiếm thành thạo bị bắt thề theo một mệnh lệnh "
 #~ "đặc biệt. Dấu hiệu cho lễ kết nạp là bức họa chiến tranh đen trắng chúng "
 #~ "thể hiện khi chiến đấu."
-
-#~ msgid ""
-#~ "Drake Burners are the proud few in whom the blood and strength of their "
-#~ "remote ancestors runs truest, giving them the ability to breathe fire. "
-#~ "This, coupled with their sheer size and fearsome claws, makes them deadly "
-#~ "foes in combat."
-#~ msgstr ""
-#~ "Rồng thiêu đốt tự hào vì dòng máu và sức mạnh của tổ tiên xa xưa đang "
-#~ "chảy thật nhất trong cơ thể, cho chúng khả năng phun ra lửa. Khả năng "
-#~ "này, cùng với kích thước lớn và những móng vuốt đáng sợ, khiến chúng trở "
-#~ "thành những địch thủ nguy hiểm khi chiến đấu."
-
-#~ msgid ""
-#~ "Drake Fighters wield curved war blades, and possess the fire-breathing "
-#~ "skills of their ancestors. They can also fly, which is troubling to any "
-#~ "foe. Their great strength, coupled with their hardened scales, is rightly "
-#~ "frightening to swordsman of any other race."
-#~ msgstr ""
-#~ "Các đấu sĩ rồng sử dụng những lưỡi kiếm cong và có năng lực phun lửa của "
-#~ "tổ tiên. Chúng cũng có thể bay, đó là điều khiến mọi địch thủ phải lo "
-#~ "lắng. Sức mạnh lớn, cùng với lớp vảy cứng của chúng là điều khủng khiếp "
-#~ "với lính kiếm của bất kỳ loài nào khác."
 
 #~ msgid ""
 #~ "The great fire-drakes are masters of their internal flame. Clad in "

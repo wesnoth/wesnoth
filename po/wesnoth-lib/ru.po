@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-09-27 20:28+0200\n"
+"POT-Creation-Date: 2009-10-07 15:42+0200\n"
 "PO-Revision-Date: 2009-08-17 16:02+0200\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team:  <http://bugs.wesnoth.org>\n"
@@ -2272,11 +2272,11 @@ msgstr "Описание виджетов '$definition' не содержит о
 msgid "No state or draw section defined."
 msgstr "Не определёно состояние или секция отрисовки"
 
-#: src/gui/widgets/window.cpp:732
+#: src/gui/widgets/window.cpp:749
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr ""
 
-#: src/gui/widgets/window.cpp:757 src/gui/widgets/window.cpp:790
+#: src/gui/widgets/window.cpp:774 src/gui/widgets/window.cpp:807
 #: src/tests/gui/test_gui2.cpp:232
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Не могу показать диалог, он не помещается на экране."
@@ -2721,7 +2721,7 @@ msgstr "Скриншот не удался"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/image.cpp:342
+#: src/image.cpp:373
 msgid "language code for localized resources^en_US"
 msgstr ""
 

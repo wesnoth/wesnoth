@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-09-28 18:23+0200\n"
+"POT-Creation-Date: 2009-10-07 15:42+0200\n"
 "PO-Revision-Date: 2009-07-13 00:55+0300\n"
 "Last-Translator: Oron Peled <oron@actcom.co.il>\n"
 "Language-Team: Hebrew\n"
@@ -99,16 +99,6 @@ msgstr ""
 msgid "Lobby sounds"
 msgstr ""
 
-#. [message]: speaker=narrator
-#: data/ai/scenarios/ai_arena_small/0002-poisoning.cfg:17
-msgid "This situation should test the ability of AI to spread poison around..."
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/ai/scenarios/ai_arena_small/0003-simple_combat.cfg:17
-msgid "This situation should test the ability of AI to make an attack..."
-msgstr ""
-
 #. [time]: id=underground
 #. [illuminated_time]: id=underground_illum
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:523
@@ -119,7 +109,7 @@ msgstr "תת קרקעי"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:304
-#: src/actions.cpp:1101 src/actions.cpp:1374
+#: src/actions.cpp:1101 src/actions.cpp:1377
 msgid "poisoned"
 msgstr "מורעל"
 
@@ -178,14 +168,14 @@ msgstr ""
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1241
-#: src/actions.cpp:1106 src/actions.cpp:1379
+#: src/actions.cpp:1106 src/actions.cpp:1382
 msgid "female^slowed"
 msgstr "מואטת"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [else]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1244
-#: src/actions.cpp:1106 src/actions.cpp:1379
+#: src/actions.cpp:1106 src/actions.cpp:1382
 msgid "slowed"
 msgstr "מואט"
 
@@ -6191,7 +6181,7 @@ msgstr "פעולות"
 
 #. [menu]: id=button-endturn
 #. [change]: id=button-endturn
-#: data/themes/default.cfg:153 data/themes/default.cfg:772
+#: data/themes/default.cfg:153 data/themes/default.cfg:774
 #: data/themes/dfool.cfg:160
 msgid "End Turn"
 msgstr "סיים תור"
@@ -6199,16 +6189,16 @@ msgstr "סיים תור"
 #. [menu]: id=button-endturn
 #. [change]: id=button-endturn
 #. [menu]: id=button-endturn2
-#: data/themes/default.cfg:154 data/themes/default.cfg:773
-#: data/themes/default.cfg:1032 data/themes/dfool.cfg:161
+#: data/themes/default.cfg:154 data/themes/default.cfg:775
+#: data/themes/default.cfg:1033 data/themes/dfool.cfg:161
 msgid "End Scenario"
 msgstr "סיים התקלות"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:205 src/unit.cpp:2381
-#: src/unit.cpp:2535
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:205 src/unit.cpp:2384
+#: src/unit.cpp:2538
 msgid "HP"
 msgstr "נק\"פ"
 
@@ -6269,13 +6259,13 @@ msgid "statuspanel^terrain def."
 msgstr "רמה"
 
 #. [change]: id=actions-menu
-#: data/themes/default.cfg:1003
+#: data/themes/default.cfg:1004
 msgid "Act."
 msgstr "פעל."
 
 #. [remove]: id=button-endturn
 #. [menu]: id=button-endturn2
-#: data/themes/default.cfg:1023 data/themes/default.cfg:1031
+#: data/themes/default.cfg:1024 data/themes/default.cfg:1032
 msgid "short end-turn^E."
 msgstr "סוף תור"
 
@@ -6376,125 +6366,125 @@ msgstr "נבחרה תקופה לא חוקית"
 msgid "An invalid defender weapon got selected."
 msgstr "נבחרה תקופה לא חוקית"
 
-#: src/actions.cpp:1101 src/actions.cpp:1374
+#: src/actions.cpp:1101 src/actions.cpp:1377
 msgid "female^poisoned"
 msgstr "מורעלת"
 
-#: src/actions.cpp:1113 src/actions.cpp:1386
+#: src/actions.cpp:1113 src/actions.cpp:1389
 #, fuzzy
 msgid "female^petrified"
 msgstr "מורעלת"
 
-#: src/actions.cpp:1113 src/actions.cpp:1386
+#: src/actions.cpp:1113 src/actions.cpp:1389
 msgid "petrified"
 msgstr ""
 
-#: src/actions.cpp:2387
+#: src/actions.cpp:2405
 msgid "Ambushed!"
 msgstr "נכנסנו למארב!"
 
-#: src/actions.cpp:2394
+#: src/actions.cpp:2412
 msgid "Failed teleport! Exit not empty"
 msgstr "טלפורטציה נכשלה! היציאה חסומה!"
 
-#: src/actions.cpp:2439
+#: src/actions.cpp:2457
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "יחידה ידידותית נראתה."
 msgstr[1] "$friends יחידות ידידותיות נראו."
 
-#: src/actions.cpp:2442
+#: src/actions.cpp:2460
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "יחידת אויב נראתה!"
 msgstr[1] "$friends יחידות אויב נראו!"
 
-#: src/actions.cpp:2447
+#: src/actions.cpp:2465
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "ידידותית"
 msgstr[1] "$friends ידידותיות"
 
-#: src/actions.cpp:2448
+#: src/actions.cpp:2466
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "עוינת"
 msgstr[1] "עוינות"
 
-#: src/actions.cpp:2449
+#: src/actions.cpp:2467
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "יחידות נראו! ($friends ידידותיות, $enemies  עוינות)"
 
-#: src/actions.cpp:2458
+#: src/actions.cpp:2476
 msgid "(press $hotkey to keep moving)"
 msgstr "(להמשיך לחץ על $hotkey)"
 
-#: src/addon_management.cpp:336 src/unit_types.cpp:951
+#: src/addon_management.cpp:340 src/unit_types.cpp:951
 msgid "No description available."
 msgstr "לא קיים ציאור כעת"
 
-#: src/addon_management.cpp:409
+#: src/addon_management.cpp:413
 msgid "B"
 msgstr ""
 
-#: src/addon_management.cpp:412 src/dialogs.cpp:1056
+#: src/addon_management.cpp:416 src/dialogs.cpp:1056
 msgid "KB"
 msgstr "kiB"
 
-#: src/addon_management.cpp:415
+#: src/addon_management.cpp:419
 msgid "MB"
 msgstr "MiB"
 
-#: src/addon_management.cpp:418
+#: src/addon_management.cpp:422
 msgid "GB"
 msgstr "GiB"
 
-#: src/addon_management.cpp:451
+#: src/addon_management.cpp:455
 msgid "addon_type^Campaign"
 msgstr "מערכה"
 
-#: src/addon_management.cpp:453
+#: src/addon_management.cpp:457
 msgid "addon_type^Scenario"
 msgstr "התקלות"
 
-#: src/addon_management.cpp:455
+#: src/addon_management.cpp:459
 msgid "addon_type^MP era"
 msgstr "עידן לרב-משתתפים"
 
-#: src/addon_management.cpp:457
+#: src/addon_management.cpp:461
 msgid "addon_type^MP faction"
 msgstr "צבא לרב-משתתפים"
 
-#: src/addon_management.cpp:459
+#: src/addon_management.cpp:463
 msgid "addon_type^MP map-pack"
 msgstr "חבילת מפות לרב-משתתפים"
 
-#: src/addon_management.cpp:461
+#: src/addon_management.cpp:465
 msgid "addon_type^MP scenario"
 msgstr "התקלות לרב-משתתפים"
 
-#: src/addon_management.cpp:463
+#: src/addon_management.cpp:467
 msgid "addon_type^MP campaign"
 msgstr "מערכה לרב-משתתפים"
 
-#: src/addon_management.cpp:465
+#: src/addon_management.cpp:469
 msgid "addon_type^Resources"
 msgstr "ספרייה"
 
-#: src/addon_management.cpp:467
+#: src/addon_management.cpp:471
 #, fuzzy
 msgid "addon_type^Other"
 msgstr "עידן לרב-משתתפים"
 
-#: src/addon_management.cpp:469
+#: src/addon_management.cpp:473
 msgid "addon_type^(unknown)"
 msgstr "לא ידוע"
 
-#: src/addon_management.cpp:499
+#: src/addon_management.cpp:503
 msgid "Dependencies"
 msgstr "תלויה"
 
-#: src/addon_management.cpp:503
+#: src/addon_management.cpp:507
 #, fuzzy
 msgid ""
 "$addon_title depends upon the following add-on which you have not installed "
@@ -6505,60 +6495,60 @@ msgid_plural ""
 msgstr[0] "תוסף זה תלוי בתוסף שמצויין להלן ושעדיין לא הותקן על מחשבך: "
 msgstr[1] "חבילה זו תלויה בחבילות אלו שעדיין לא הותקנו על מחשבך: "
 
-#: src/addon_management.cpp:506
+#: src/addon_management.cpp:510
 msgid ""
 "Do you still want to download $addon_title|? (You will have to install all "
 "the dependencies in order to play.)"
 msgstr ""
 
-#: src/addon_management.cpp:524 src/addon_management.cpp:596
+#: src/addon_management.cpp:528 src/addon_management.cpp:600
 #: src/multiplayer.cpp:213 src/multiplayer.cpp:268 src/multiplayer_ui.cpp:78
 msgid "Connection timed out"
 msgstr "תם זמן ההמתנה לחיבור"
 
-#: src/addon_management.cpp:527
+#: src/addon_management.cpp:531
 msgid "The server responded with an error: \"$error|\""
 msgstr "השרת הגיב בהודעת שגיאה: \"$error|\""
 
-#: src/addon_management.cpp:535
+#: src/addon_management.cpp:539
 msgid "Terms"
 msgstr "תנאים"
 
-#: src/addon_management.cpp:569
+#: src/addon_management.cpp:573
 msgid "Sending add-on"
 msgstr "שולח תוסף"
 
-#: src/addon_management.cpp:573 src/addon_management.cpp:598
+#: src/addon_management.cpp:577 src/addon_management.cpp:602
 msgid "The server responded with an error: \""
 msgstr "השרת הגיב בהודעת שגיאה: \"$error|\""
 
-#: src/addon_management.cpp:576 src/addon_management.cpp:601
+#: src/addon_management.cpp:580 src/addon_management.cpp:605
 #: src/multiplayer_wait.cpp:403
 msgid "Response"
 msgstr "תגובה"
 
-#: src/addon_management.cpp:628
+#: src/addon_management.cpp:632
 msgid "Downloading add-on: $addon_title|..."
 msgstr "מוריד את $addon_title|..."
 
-#: src/addon_management.cpp:643
+#: src/addon_management.cpp:647
 msgid ""
 "The add-on has an invalid file or directory name and can not be installed."
 msgstr "תוסף זה כולל שם קובץ או תיקייה לא-חוקי ואינו ניתן להתקנה."
 
-#: src/addon_management.cpp:692
+#: src/addon_management.cpp:696
 msgid "The add-on '$addon_title|' has been successfully installed."
 msgstr "התוסף '$addon_title|' הותקן בהצלחה."
 
-#: src/addon_management.cpp:693
+#: src/addon_management.cpp:697
 msgid "Add-on Installed"
 msgstr "התוסף הותקן"
 
-#: src/addon_management.cpp:751
+#: src/addon_management.cpp:780
 msgid "Outdated add-ons"
 msgstr "תוספים מיושנים"
 
-#: src/addon_management.cpp:753
+#: src/addon_management.cpp:782
 msgid ""
 "An outdated local add-on has publishing information attached. It will not be "
 "offered for updating."
@@ -6569,177 +6559,173 @@ msgstr[0] "לתוסף מקומי מיושן מצורף מידע לפרסום. ע
 msgstr[1] ""
 "לתוספים מקומיים מיושנים מצורף מידע לפרסום. עקב כך לא יוצעו עדכונים עבורם."
 
-#: src/addon_management.cpp:762
+#: src/addon_management.cpp:791
 msgid "Could not find any updated add-ons on this server."
 msgstr "אף גרסא מעודכנת לא נמצאה על השרת."
 
-#: src/addon_management.cpp:762
+#: src/addon_management.cpp:791
 msgid "No add-ons to update"
 msgstr "אין תוספים ברי-עדכון."
 
-#: src/addon_management.cpp:776 src/addon_management.cpp:979
+#: src/addon_management.cpp:805 src/addon_management.cpp:1005
 #: src/dialogs.cpp:575 src/menu_events.cpp:203 src/menu_events.cpp:839
 msgid "Name"
 msgstr "שם"
 
-#: src/addon_management.cpp:776
+#: src/addon_management.cpp:805
 msgid "New version"
 msgstr "גרסא חדשה"
 
-#: src/addon_management.cpp:776
+#: src/addon_management.cpp:805
 msgid "Old version"
 msgstr "גרסא ישנה"
 
-#: src/addon_management.cpp:777 src/addon_management.cpp:980
+#: src/addon_management.cpp:806 src/addon_management.cpp:1006
 msgid "Author"
 msgstr "מחבר"
 
-#: src/addon_management.cpp:777 src/addon_management.cpp:980
+#: src/addon_management.cpp:806 src/addon_management.cpp:1006
 msgid "Size"
 msgstr "גודל"
 
-#: src/addon_management.cpp:831
+#: src/addon_management.cpp:857
 msgid "Update add-ons"
 msgstr "עדכן תוספים"
 
-#: src/addon_management.cpp:832
+#: src/addon_management.cpp:858
 msgid "Select an add-on to update:"
 msgstr "נא לבחור תוסף לעדכון:"
 
-#: src/addon_management.cpp:846
+#: src/addon_management.cpp:872
 msgid "Update all"
 msgstr "עדכן הכל"
 
-#: src/addon_management.cpp:903
+#: src/addon_management.cpp:929
 msgid "Update failed"
 msgstr "העדכון נכשל"
 
-#: src/addon_management.cpp:905
+#: src/addon_management.cpp:931
 msgid "The following add-on could not be downloaded or updated successfully:"
 msgid_plural ""
 "The following add-ons could not be downloaded or updated successfully:"
 msgstr[0] "נכשלה הורדת/עדכון התוסף דלהלן:"
 msgstr[1] "בתוספים אלו היו שגיאות שמנעו את עדכונם/הורדתם:"
 
-#: src/addon_management.cpp:914
+#: src/addon_management.cpp:940
 msgid "Update succeeded"
 msgstr "העדכון הושלם בהצלחה."
 
-#: src/addon_management.cpp:915
+#: src/addon_management.cpp:941
 msgid "Add-on updated successfully."
 msgstr "עדכון התוספים הושלם בהצלחה."
 
-#: src/addon_management.cpp:916
+#: src/addon_management.cpp:942
 msgid "All add-ons updated successfully."
 msgstr "כל התוספים עודכנו בהצלחה."
 
-#: src/addon_management.cpp:940
+#: src/addon_management.cpp:966
 msgid "Connecting to add-ons server..."
 msgstr "מתחבר לשרת התוספים..."
 
-#: src/addon_management.cpp:943
+#: src/addon_management.cpp:969
 msgid "Could not connect to host."
 msgstr "כישלון בחיבור לשרת."
 
-#: src/addon_management.cpp:951
+#: src/addon_management.cpp:977
 msgid "Requesting list of add-ons"
 msgstr "מבקש רשימת תוספים"
 
-#: src/addon_management.cpp:963
+#: src/addon_management.cpp:989
 msgid "An error occurred while communicating with the server."
 msgstr "שגיאה בתקשורת עם השרת."
 
-#: src/addon_management.cpp:979 src/titlescreen.cpp:342
+#: src/addon_management.cpp:1005 src/titlescreen.cpp:342
 msgid "Version"
 msgstr "גרסא"
 
-#: src/addon_management.cpp:980
+#: src/addon_management.cpp:1006
 msgid "Downloads"
 msgstr "הורדות"
 
-#: src/addon_management.cpp:980 src/help.cpp:1458 src/menu_events.cpp:202
+#: src/addon_management.cpp:1006 src/help.cpp:1458 src/menu_events.cpp:202
 #: src/menu_events.cpp:838 src/menu_events.cpp:1414
 msgid "Type"
 msgstr "סוג"
 
-#: src/addon_management.cpp:1050
+#: src/addon_management.cpp:1070
 msgid "Publish add-on: "
 msgstr "פרסם תוסף"
 
-#: src/addon_management.cpp:1056
+#: src/addon_management.cpp:1076
 msgid "Delete add-on: "
 msgstr "מחק תוסף: "
 
-#: src/addon_management.cpp:1062
+#: src/addon_management.cpp:1082
 msgid "There are no add-ons available for download from this server."
 msgstr "אין תוספים זמינים להורדה משרת זה."
 
-#: src/addon_management.cpp:1075
+#: src/addon_management.cpp:1095
 msgid "Get add-ons"
 msgstr "קבלת תוספים"
 
-#: src/addon_management.cpp:1076
+#: src/addon_management.cpp:1096
 msgid "Choose the add-on to download."
 msgstr "בחירת תוסף להורדה."
 
-#: src/addon_management.cpp:1089
-msgid "Description"
-msgstr ""
-
-#: src/addon_management.cpp:1093 src/dialogs.cpp:600 src/menu_events.cpp:898
+#: src/addon_management.cpp:1108 src/dialogs.cpp:600 src/menu_events.cpp:898
 #: src/menu_events.cpp:1450
 msgid "Filter: "
 msgstr "סינון: "
 
-#: src/addon_management.cpp:1130
+#: src/addon_management.cpp:1113
+msgid "Description"
+msgstr ""
+
+#: src/addon_management.cpp:1150
 msgid "Network communication error."
 msgstr "תקלת בתקשורת רשת."
 
-#: src/addon_management.cpp:1133
+#: src/addon_management.cpp:1153
 msgid "Remote host disconnected."
 msgstr "המארח המרוחק התנתק."
 
-#: src/addon_management.cpp:1136
+#: src/addon_management.cpp:1156
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
 msgstr "הייתה בעיה ביצירת הקבצים הדרושים להתקנת תוסף זה."
 
-#: src/addon_management.cpp:1154
+#: src/addon_management.cpp:1174
 msgid "You have no add-ons installed."
 msgstr "אין ברשותך תוספים מותקנים"
 
-#: src/addon_management.cpp:1166
+#: src/addon_management.cpp:1186
 msgid "Choose the add-on to remove."
 msgstr "בחר תוסף למחיקה."
 
-#: src/addon_management.cpp:1166
+#: src/addon_management.cpp:1186
 msgid "Uninstall add-ons"
 msgstr "מחק תוספים"
 
-#: src/addon_management.cpp:1178
+#: src/addon_management.cpp:1198
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr "אתה בטוח שברצונך למחוק את התוסף  '$addon|'?"
 
-#: src/addon_management.cpp:1183 src/multiplayer.cpp:225
+#: src/addon_management.cpp:1203 src/multiplayer.cpp:225
 msgid "Confirm"
 msgstr "אשר"
 
-#: src/addon_management.cpp:1195
+#: src/addon_management.cpp:1215
 msgid "Add-on '$addon|' deleted."
 msgstr "התוסף '$addon|' נמחק"
 
-#: src/addon_management.cpp:1200
+#: src/addon_management.cpp:1220
 msgid "Add-on deleted"
 msgstr "התוסף נמחק"
 
-#: src/addon_management.cpp:1208
+#: src/addon_management.cpp:1228
 msgid "Add-on could not be deleted properly:"
 msgstr "לא ניתן היה למחוק את התוסף"
-
-#: src/ai/default/move.cpp:85
-msgid "Movement cost is 0, probably a terrain with movement cost of 0."
-msgstr "מחלק מהירות 0. כנראה שטח עם מחלק מהירות 0."
 
 #: src/attack_prediction_display.cpp:107 src/attack_prediction_display.cpp:217
 msgid "Attacker"
@@ -6814,7 +6800,7 @@ msgstr "האם אתה בטוח שברצונך למחוק משחק זה?"
 msgid "Don't ask me again!"
 msgstr "אל תשאל שוב!"
 
-#: src/dialogs.cpp:432 src/savegame.cpp:130
+#: src/dialogs.cpp:432 src/savegame.cpp:132
 msgid "%a %b %d %H:%M %Y"
 msgstr "%A %d/%m/%G %H:%M"
 
@@ -6834,11 +6820,11 @@ msgstr "רב משתתפים"
 msgid "Tutorial"
 msgstr "הדרכה"
 
-#: src/dialogs.cpp:483 src/savegame.cpp:948
+#: src/dialogs.cpp:483 src/savegame.cpp:950
 msgid "replay"
 msgstr "הקלטת משחק"
 
-#: src/dialogs.cpp:485 src/savegame.cpp:1021
+#: src/dialogs.cpp:485 src/savegame.cpp:1022
 msgid "Turn"
 msgstr "תור"
 
@@ -6854,20 +6840,20 @@ msgstr "רמת קושי:"
 msgid "Version: "
 msgstr "גרסא: "
 
-#: src/dialogs.cpp:516 src/dialogs.cpp:532 src/savegame.cpp:159
-#: src/savegame.cpp:175
+#: src/dialogs.cpp:516 src/dialogs.cpp:532 src/savegame.cpp:161
+#: src/savegame.cpp:177
 msgid "%b %d %y"
 msgstr "%d/%m/%G"
 
-#: src/dialogs.cpp:522 src/savegame.cpp:165
+#: src/dialogs.cpp:522 src/savegame.cpp:167
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/dialogs.cpp:525 src/savegame.cpp:168
+#: src/dialogs.cpp:525 src/savegame.cpp:170
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-#: src/dialogs.cpp:528 src/savegame.cpp:171
+#: src/dialogs.cpp:528 src/savegame.cpp:173
 msgid "%b %d"
 msgstr "%b/%d"
 
@@ -6942,12 +6928,11 @@ msgstr "מהלכים: "
 msgid "The Battle for Wesnoth"
 msgstr "הקרב על ווסנות'"
 
-#: src/game.cpp:995 src/game.cpp:1003 src/playsingle_controller.cpp:476
-#: src/playsingle_controller.cpp:531
+#: src/game.cpp:995 src/game.cpp:1003
 msgid "The file you have tried to load is corrupt"
 msgstr "הקובץ, אותו ניסית לטעון, פגום"
 
-#: src/game.cpp:998 src/game.cpp:1006 src/savegame.cpp:535
+#: src/game.cpp:998 src/game.cpp:1006 src/savegame.cpp:537
 msgid "The file you have tried to load is corrupt: '"
 msgstr "הקובץ, אותו ניסית לטעון, פגום: '"
 
@@ -7064,11 +7049,11 @@ msgstr "ניצחון:"
 msgid "Defeat:"
 msgstr "תבוסה:"
 
-#: src/game_events.cpp:3499
+#: src/game_events.cpp:3503
 msgid "[unit_worth]'s filter didn't match any units!"
 msgstr ""
 
-#: src/gamestatus.cpp:740
+#: src/gamestatus.cpp:741
 #, fuzzy
 msgid ""
 "Leader position not empty - duplicate side definition for side '$side|' "
@@ -7379,71 +7364,71 @@ msgstr "אקראי"
 msgid "?"
 msgstr "?"
 
-#: src/loadscreen.cpp:245
+#: src/loadscreen.cpp:244
 #, fuzzy
 msgid "Verifying cache..."
 msgstr "מוודא מטמון..."
 
-#: src/loadscreen.cpp:264
+#: src/loadscreen.cpp:262
 #, fuzzy
 msgid "Reading unit files..."
 msgstr "קורא תכונות יחידות..."
 
-#: src/loadscreen.cpp:283
+#: src/loadscreen.cpp:280
 #, fuzzy
 msgid "Reading files and creating cache..."
 msgstr "קורא קבצים ומייצר מטמון..."
 
-#: src/lobby_data.cpp:238 src/multiplayer_lobby.cpp:431
+#: src/lobby_data.cpp:195 src/multiplayer_lobby.cpp:431
 #, fuzzy
 msgid "Unknown era: $era_id"
 msgstr "עידן לא ידוע: "
 
-#: src/lobby_data.cpp:243 src/multiplayer_lobby.cpp:435
+#: src/lobby_data.cpp:200 src/multiplayer_lobby.cpp:435
 msgid "Unknown era"
 msgstr "עידן לא ידוע: "
 
-#: src/lobby_data.cpp:298 src/multiplayer_lobby.cpp:497
+#: src/lobby_data.cpp:255 src/multiplayer_lobby.cpp:497
 #, fuzzy
 msgid "Remote scenario"
 msgstr "תרחיש לא ידוע"
 
-#: src/lobby_data.cpp:306 src/multiplayer_lobby.cpp:504
+#: src/lobby_data.cpp:263 src/multiplayer_lobby.cpp:504
 #, fuzzy
 msgid "Unknown scenario: $scenario_id"
 msgstr "תרחיש לא ידוע: "
 
-#: src/lobby_data.cpp:311 src/multiplayer_lobby.cpp:508
+#: src/lobby_data.cpp:268 src/multiplayer_lobby.cpp:508
 msgid "Unknown scenario"
 msgstr "תרחיש לא ידוע"
 
-#: src/lobby_data.cpp:317 src/multiplayer_lobby.cpp:513
+#: src/lobby_data.cpp:274 src/multiplayer_lobby.cpp:513
 #, fuzzy
 msgid "Reloaded game"
 msgstr "טען מחדש משחק לשחקן אחד"
 
-#: src/lobby_data.cpp:328 src/multiplayer_lobby.cpp:529
+#: src/lobby_data.cpp:285 src/multiplayer_lobby.cpp:529
 #, fuzzy
 msgid "Turn "
 msgstr "תור"
 
-#: src/lobby_data.cpp:332 src/multiplayer_lobby.cpp:533
+#: src/lobby_data.cpp:289 src/multiplayer_lobby.cpp:533
 #, fuzzy
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "מקום פנוי:"
 msgstr[1] "מקום פנוי:"
 
-#: src/lobby_data.cpp:338 src/multiplayer_lobby.cpp:544
+#: src/lobby_data.cpp:295 src/multiplayer_lobby.cpp:544
 msgid "Fog"
 msgstr "ערפל"
 
-#: src/lobby_data.cpp:341 src/lobby_data.cpp:344 src/multiplayer_create.cpp:83
+#: src/lobby_data.cpp:298 src/lobby_data.cpp:301 src/multiplayer_create.cpp:83
 #: src/multiplayer_lobby.cpp:548 src/multiplayer_lobby.cpp:554
 msgid "Shroud"
 msgstr "ממוסך"
 
-#: src/lobby_data.cpp:346 src/multiplayer_lobby.cpp:558
+#: src/lobby_data.cpp:303 src/multiplayer_lobby.cpp:558
 msgid "none"
 msgstr "אין"
 
@@ -8640,12 +8625,12 @@ msgstr ""
 msgid "Starting game"
 msgstr "נטוש את המשחק"
 
-#: src/play_controller.cpp:929 src/savegame.cpp:290 src/savegame.cpp:302
-#: src/savegame.cpp:974 src/savegame.cpp:976
+#: src/play_controller.cpp:924 src/savegame.cpp:292 src/savegame.cpp:304
+#: src/savegame.cpp:976 src/savegame.cpp:978
 msgid "Auto-Save"
 msgstr "שמירה אוטומטית"
 
-#: src/play_controller.cpp:936
+#: src/play_controller.cpp:931
 msgid "Back to turn "
 msgstr ""
 
@@ -8671,40 +8656,40 @@ msgstr ""
 msgid "Downloading next scenario..."
 msgstr "מוריד את השלב הבא..."
 
-#: src/playcampaign.cpp:590
+#: src/playcampaign.cpp:589
 #, fuzzy
 msgid "Do you want to save your game?"
 msgstr "האם אתה רוצה לשמור את המשחק שלך?"
 
-#: src/playcampaign.cpp:609
+#: src/playcampaign.cpp:607
 #, fuzzy
 msgid "Unknown scenario: '$scenario|'"
 msgstr "תרחיש לא ידוע: "
 
-#: src/playmp_controller.cpp:92
+#: src/playmp_controller.cpp:93
 msgid "$name has taken control"
 msgstr ""
 
-#: src/playmp_controller.cpp:94
+#: src/playmp_controller.cpp:95
 #, fuzzy
 msgid "Turn changed"
 msgstr "טווח רחוק"
 
-#: src/playmp_controller.cpp:228
+#: src/playmp_controller.cpp:227
 msgid "Undoing moves not yet transmitted to the server."
 msgstr ""
 
-#: src/playmp_controller.cpp:307
+#: src/playmp_controller.cpp:301
 #, fuzzy
 msgid "End scenario"
 msgstr "תרחיש לא ידוע"
 
-#: src/playmp_controller.cpp:408
+#: src/playmp_controller.cpp:400
 #, fuzzy
 msgid "Waiting for next scenario..."
 msgstr "ממתין לתחילת המשחק..."
 
-#: src/playmp_controller.cpp:537
+#: src/playmp_controller.cpp:520
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -8780,176 +8765,172 @@ msgstr "המשחק נגמר"
 msgid "The game is over."
 msgstr "המשחק הסתיים."
 
-#: src/playsingle_controller.cpp:487
+#: src/playsingle_controller.cpp:484
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game\n"
 "cannot continue. Do you want to save the game?"
 msgstr "התרחש ניתוק מהרשת, והמשחק אינו יכול להמשך. האם ברצונך לשמור את המשחק?"
 
-#: src/playsingle_controller.cpp:653
+#: src/playsingle_controller.cpp:644
 msgid "It is now $name|'s turn"
 msgstr "עכשיו הגיע תורו של $name|"
 
-#: src/playsingle_controller.cpp:868
+#: src/playsingle_controller.cpp:859
 msgid "Scenario Report"
 msgstr "דו\"ח תרחיש"
 
-#: src/playsingle_controller.cpp:870
+#: src/playsingle_controller.cpp:861
 msgid "Victory"
 msgstr "נצחון"
 
-#: src/playsingle_controller.cpp:871
+#: src/playsingle_controller.cpp:862
 msgid "You have emerged victorious!"
 msgstr "יצאת מנצח!"
 
-#: src/playturn.cpp:230
+#: src/playturn.cpp:217
 msgid "Replace with AI"
 msgstr "החלף בשחקן ממוחשב"
 
-#: src/playturn.cpp:231
+#: src/playturn.cpp:218
 msgid "Replace with local player"
 msgstr "החלף בשחקן מקומי"
 
-#: src/playturn.cpp:232
+#: src/playturn.cpp:219
 msgid "Abort game"
 msgstr "נטוש את המשחק"
 
-#: src/playturn.cpp:238 src/playturn.cpp:252
+#: src/playturn.cpp:225 src/playturn.cpp:239
 msgid "Replace with $player"
 msgstr "החלף ב $player"
 
-#: src/playturn.cpp:258
+#: src/playturn.cpp:245
 msgid "$player has left the game. What do you want to do?"
 msgstr "$player נטש את המשחק. מה ברצונך לעשות ?"
 
-#: src/replay_controller.cpp:81
-msgid "The file you have tried to load is corrupt. Continue playing?"
-msgstr "הקובץ, אותו ניסית לטעון, פגום. המשך לשחק?"
-
-#: src/savegame.cpp:202 src/savegame.cpp:204
+#: src/savegame.cpp:204 src/savegame.cpp:206
 msgid " replay"
 msgstr " מהתחלה"
 
-#: src/savegame.cpp:445 src/savegame.cpp:449
+#: src/savegame.cpp:447 src/savegame.cpp:451
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "אזהרה: הקובץ, אותו ניסית לטעון, פגום. טוען בכל זאת.\n"
 
-#: src/savegame.cpp:488
+#: src/savegame.cpp:490
 msgid "This save is from a version too old to be loaded."
 msgstr "משחק שמור זה שייך לגרסה ישנה מדי ואי אפשר לטעון אותו."
 
-#: src/savegame.cpp:492
+#: src/savegame.cpp:494
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr "משחק שמור זה שייך לגרסה שונה של המשחק. האם ברצונך לטעון אותו?"
 
-#: src/savegame.cpp:541
+#: src/savegame.cpp:543
 msgid "This is not a multiplayer save"
 msgstr "זה לא שמירה של משחק רב משתתפים"
 
-#: src/savegame.cpp:607
+#: src/savegame.cpp:609
 #, fuzzy
 msgid "The game could not be saved: "
 msgstr "שמירת המשחק נכשלה"
 
-#: src/savegame.cpp:694
+#: src/savegame.cpp:696
 msgid "Name: "
 msgstr "שם:"
 
-#: src/savegame.cpp:694
+#: src/savegame.cpp:696
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "המשחק השמור כבר קיים. האם לדרוס אותו?"
 
-#: src/savegame.cpp:695
+#: src/savegame.cpp:697
 msgid "Overwrite?"
 msgstr "דרוס?"
 
-#: src/savegame.cpp:705
+#: src/savegame.cpp:707
 #, fuzzy
 msgid "Save names should not end on '.gz'. Please choose a different name."
 msgstr "אסור שהשם יגמר ב-'.gz'. יש לבחור שם אחר."
 
-#: src/savegame.cpp:767
+#: src/savegame.cpp:769
 msgid "Saved"
 msgstr "נשמר"
 
-#: src/savegame.cpp:767
+#: src/savegame.cpp:769
 msgid "The game has been saved"
 msgstr "המשחק נשמר"
 
-#: src/savegame.cpp:801 src/savegame.cpp:826
+#: src/savegame.cpp:803 src/savegame.cpp:828
 msgid "Could not write to file"
 msgstr "כתיבה לקובץ נכשלה"
 
-#: src/savegame.cpp:939
+#: src/savegame.cpp:941
 #, fuzzy
 msgid "Save Replay"
 msgstr "הקלטת משחק"
 
-#: src/savegame.cpp:957
+#: src/savegame.cpp:959
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "שמירת משחק אוטומטית נכשלה. יש לבצע שמירה ידנית."
 
-#: src/savegame.cpp:1009
+#: src/savegame.cpp:1010
 msgid "Save Game"
 msgstr "שמור משחק"
 
-#: src/serialization/parser.cpp:131
+#: src/serialization/parser.cpp:129
 msgid "Unexpected characters at line start"
 msgstr "תווים לא צפויים בתחילת שורה"
 
-#: src/serialization/parser.cpp:161
+#: src/serialization/parser.cpp:159
 msgid "Missing closing tag for tag $tag at $pos"
 msgstr "חסר תג סוגר לתג $tag ב $pos"
 
-#: src/serialization/parser.cpp:176
+#: src/serialization/parser.cpp:174
 msgid "Unterminated [element] tag"
 msgstr "תג  [element]  ללא סוגר"
 
-#: src/serialization/parser.cpp:186 src/serialization/parser.cpp:224
+#: src/serialization/parser.cpp:184 src/serialization/parser.cpp:222
 msgid "Invalid tag name"
 msgstr "שם תג לא חוקי "
 
-#: src/serialization/parser.cpp:189
+#: src/serialization/parser.cpp:187
 msgid "Unterminated [+element] tag"
 msgstr "תג  [+element]  ללא סוגר"
 
-#: src/serialization/parser.cpp:205
+#: src/serialization/parser.cpp:203
 msgid "Invalid closing tag name"
 msgstr "שם תג סוגר לא חוקי"
 
-#: src/serialization/parser.cpp:208
+#: src/serialization/parser.cpp:206
 msgid "Unterminated closing tag"
 msgstr "תג סוגר ללא סוגר"
 
-#: src/serialization/parser.cpp:210
+#: src/serialization/parser.cpp:208
 msgid "Unexpected closing tag"
 msgstr "תג סוגר לא צפוי"
 
-#: src/serialization/parser.cpp:218
+#: src/serialization/parser.cpp:216
 #, fuzzy
 msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
 msgstr "נמצא תג סוגר לא חוקי $tag2 לתג $tag (נפתח ב $pos)"
 
-#: src/serialization/parser.cpp:243 src/serialization/parser.cpp:255
+#: src/serialization/parser.cpp:241 src/serialization/parser.cpp:253
 msgid "Empty variable name"
 msgstr "שם משתנה ריק"
 
-#: src/serialization/parser.cpp:249
+#: src/serialization/parser.cpp:247
 msgid "Unexpected characters after variable name (expected , or =)"
 msgstr "תווים לא צפויים אחרי שם משתנה (מצפה ל , או =)"
 
-#: src/serialization/parser.cpp:284 src/serialization/parser.cpp:308
+#: src/serialization/parser.cpp:282 src/serialization/parser.cpp:306
 msgid "Unterminated quoted string"
 msgstr " מחרוזת עם ציטוט ללא סוגר "
 
-#: src/serialization/parser.cpp:350
+#: src/serialization/parser.cpp:348
 msgid "$error, value '$value', previous '$previous_value' at $pos"
 msgstr "$error, מידע '$value', קודם '$previous_value' ב $pos"
 
-#: src/serialization/parser.cpp:354
+#: src/serialization/parser.cpp:352
 msgid "$error, value '$value' at $pos"
 msgstr "$error, מידע '$value' ב $pos"
 
@@ -9147,41 +9128,41 @@ msgstr "עזור לווסנות' על ידי שליחת מידע אלינו"
 msgid "No time of day has been defined."
 msgstr "שום קטגורית זמן לא הוגדרה. "
 
-#: src/unit.cpp:506
+#: src/unit.cpp:509
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "נמצא כלי לא ידוע '$type|' בזמן יצירת כשרונות"
 
-#: src/unit.cpp:688
+#: src/unit.cpp:691
 msgid "Unknown unit type '$type|'"
 msgstr "כלי לא ידוע '$type|'"
 
-#: src/unit.cpp:2338 src/unit.cpp:2523 src/unit.cpp:2596
+#: src/unit.cpp:2341 src/unit.cpp:2526 src/unit.cpp:2599
 msgid " and "
 msgstr " ו "
 
-#: src/unit.cpp:2349
+#: src/unit.cpp:2352
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
 # NOT TO GET THE "UNTRANSLATED"
 # MESSAGE
-#: src/unit.cpp:2414
+#: src/unit.cpp:2417
 msgid "moves"
 msgstr "מהירות"
 
-#: src/unit.cpp:2432 src/unit.cpp:2550
+#: src/unit.cpp:2435 src/unit.cpp:2553
 msgid "XP to advance"
 msgstr "נק\"נ לרמה הבאה"
 
-#: src/unit.cpp:2542
+#: src/unit.cpp:2545
 msgid " move"
 msgstr " תנועה"
 
-#: src/unit.cpp:2558
+#: src/unit.cpp:2561
 msgid "$effect_description per level"
 msgstr "$effect_description/דרגה"
 
-#: src/unit.cpp:2605
+#: src/unit.cpp:2608
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 
@@ -9233,7 +9214,7 @@ msgstr "סדר"
 msgid "female^neutral"
 msgstr "ניטרלי"
 
-#: src/upload_log.cpp:368
+#: src/upload_log.cpp:367
 msgid ""
 "Wesnoth relies on volunteers like yourself for feedback, especially "
 "beginners and new players. Wesnoth keeps summaries of your games: you can "
@@ -9244,21 +9225,27 @@ msgstr ""
 "ווסנות' שומר סיכומים של המשחק שלך: אתה יכול לעזור לנו לשפר את המשחקיות על "
 "ידי הרשאת שליחת סיכומים אלו (בצורה אנונימית) ל wesnoth.org.\n"
 
-#: src/upload_log.cpp:369
+#: src/upload_log.cpp:368
 msgid "Summaries are stored here:"
 msgstr "הסיכומים מאוכסנים כאן:"
 
-#: src/upload_log.cpp:371
+#: src/upload_log.cpp:370
 msgid "You can view the results at:"
 msgstr "אתה יכול לראות את התוצאות ב "
 
-#: src/upload_log.cpp:373
+#: src/upload_log.cpp:372
 msgid "Help us make Wesnoth better for you!"
 msgstr "עזור לנו להפוך את ווסנות' לטוב יותר בשבילך!"
 
-#: src/upload_log.cpp:375
+#: src/upload_log.cpp:374
 msgid "Enable summary uploads"
 msgstr "אפשר העלאות סיכומיפ"
+
+#~ msgid "Movement cost is 0, probably a terrain with movement cost of 0."
+#~ msgstr "מחלק מהירות 0. כנראה שטח עם מחלק מהירות 0."
+
+#~ msgid "The file you have tried to load is corrupt. Continue playing?"
+#~ msgstr "הקובץ, אותו ניסית לטעון, פגום. המשך לשחק?"
 
 #~ msgid "Can rest while moving, takes a quarter less poison damage"
 #~ msgstr "יכול לנוך בזמן הליכה, מקבל רק 6 (במקום 8) נזק/תור מרעל."

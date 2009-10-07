@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-09-27 20:28+0200\n"
+"POT-Creation-Date: 2009-10-07 15:42+0200\n"
 "PO-Revision-Date: 2009-09-23 19:35+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -2253,11 +2253,11 @@ msgstr "Definice ovladače '$definition' neobsahuje definici pro '$id'."
 msgid "No state or draw section defined."
 msgstr "Není definován stav či region vykreslení."
 
-#: src/gui/widgets/window.cpp:732
+#: src/gui/widgets/window.cpp:749
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr ""
 
-#: src/gui/widgets/window.cpp:757 src/gui/widgets/window.cpp:790
+#: src/gui/widgets/window.cpp:774 src/gui/widgets/window.cpp:807
 #: src/tests/gui/test_gui2.cpp:232
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Nebyl zobrazen dialog, který se nevejde na obrazovku."
@@ -2704,7 +2704,7 @@ msgstr "Screenshot selhal"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/image.cpp:342
+#: src/image.cpp:373
 msgid "language code for localized resources^en_US"
 msgstr "cs"
 

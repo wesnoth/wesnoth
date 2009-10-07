@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.6.0+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-09-27 20:31+0200\n"
+"POT-Creation-Date: 2009-10-07 15:42+0200\n"
 "PO-Revision-Date: 2009-03-22 08:50+0100\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
@@ -198,22 +198,21 @@ msgstr ""
 "immunes com posseïdes per un foc de força descomunal."
 
 #. [attack]: type=blade
-#: data/core/units/drakes/Armageddon.cfg:85
-#: data/core/units/drakes/Fire.cfg:110 data/core/units/drakes/Inferno.cfg:112
+#: data/core/units/drakes/Armageddon.cfg:85 data/core/units/drakes/Fire.cfg:42
+#: data/core/units/drakes/Inferno.cfg:44
 #, fuzzy
 msgid "battle claws"
 msgstr "destral de guerra"
 
 #. [attack]: type=fire
 #: data/core/units/drakes/Armageddon.cfg:94
-#: data/core/units/drakes/Blademaster.cfg:118
-#: data/core/units/drakes/Burner.cfg:117
-#: data/core/units/drakes/Fighter.cfg:117 data/core/units/drakes/Fire.cfg:119
-#: data/core/units/drakes/Flameheart.cfg:88
-#: data/core/units/drakes/Flare.cfg:92 data/core/units/drakes/Glider.cfg:121
-#: data/core/units/drakes/Hurricane.cfg:118
-#: data/core/units/drakes/Inferno.cfg:121 data/core/units/drakes/Sky.cfg:116
-#: data/core/units/drakes/Warrior.cfg:116
+#: data/core/units/drakes/Blademaster.cfg:50
+#: data/core/units/drakes/Burner.cfg:49 data/core/units/drakes/Fighter.cfg:165
+#: data/core/units/drakes/Fire.cfg:51 data/core/units/drakes/Flameheart.cfg:88
+#: data/core/units/drakes/Flare.cfg:92 data/core/units/drakes/Glider.cfg:53
+#: data/core/units/drakes/Hurricane.cfg:117
+#: data/core/units/drakes/Inferno.cfg:53 data/core/units/drakes/Sky.cfg:116
+#: data/core/units/drakes/Warrior.cfg:48
 #: data/core/units/monsters/Fire_Dragon.cfg:49
 msgid "fire breath"
 msgstr "alè de foc"
@@ -235,7 +234,7 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=blade
-#: data/core/units/drakes/Blademaster.cfg:109
+#: data/core/units/drakes/Blademaster.cfg:41
 #: data/core/units/drakes/Clasher.cfg:38
 #: data/core/units/drakes/Enforcer.cfg:36
 #: data/core/units/drakes/Thrasher.cfg:23
@@ -250,17 +249,18 @@ msgstr "Cremador drac"
 #. [unit_type]: id=Drake Burner, race=drake
 #: data/core/units/drakes/Burner.cfg:20
 msgid ""
-"Before a drake is even considered for acceptance into the Burner caste, he "
-"must prove the strength of his inner fire; the caste prides itself on its "
-"similarity to the drakes' powerful ancestors: the dragons. Arrogant Burners "
-"(and there are many such) can often be overheard claiming to be so like the "
-"dragons that their veins flow not with blood, but with pure flame. Although "
-"a Burner's preferred weapon is his fiery breath, he won't shy away from "
-"striking blows with his bared claws."
+"Drake Burners are the proud few in whom the blood and strength of their "
+"remote ancestors runs truest, giving them the ability to breathe fire. This, "
+"coupled with their sheer size and fearsome claws, makes them deadly foes in "
+"combat."
 msgstr ""
+"Els dracs cremadors són pocs però orgullosos d'haver heretat la sang i la "
+"més autèntica força dels seus remots antecessors, particularment l'alè de "
+"foc. Si a això se li afegeix la seva forta constitució i les seves temibles "
+"urpes, el resultat no és pas menyspreable."
 
 #. [attack]: type=blade
-#: data/core/units/drakes/Burner.cfg:108
+#: data/core/units/drakes/Burner.cfg:40
 #: data/core/units/goblins/Direwolf_Rider.cfg:55
 #: data/core/units/gryphons/Gryphon.cfg:41
 #: data/core/units/gryphons/Gryphon_Master.cfg:42
@@ -362,16 +362,22 @@ msgstr "Lluitador drac"
 
 #. [unit_type]: id=Drake Fighter, race=drake
 #: data/core/units/drakes/Fighter.cfg:20
+#, fuzzy
 msgid ""
-"A Fighter's only purpose in drake society is to fight and die for his tribe. "
-"Not being particularly swift, nor possessed of a strong inner flame, he is "
-"constantly struggling to prove his worth to the more respected castes by "
-"sheer physical prowess. Sometimes, he succeeds."
+"Drake Fighters wield curved war blades, and possess the fire-breathing "
+"skills of their ancestors. They can also fly, which is troubling to any foe. "
+"Their great strength, coupled with their hardened scales, is rightly "
+"frightening to swordsman of any other race."
 msgstr ""
+"Els lluitadors dracs empunyen unes simitarres corbades i també posseeixen "
+"l'alè de foc dels seus avantpassats, a més de volar, que ja suposa per sí "
+"mateixa un problema. Tot açò i la seua força, acompanyada de les seues dures "
+"escames, formen un conjunt realment paorós per a qualsevol espadatxí de cap "
+"altra raça."
 
 #. [attack]: type=blade
-#: data/core/units/drakes/Fighter.cfg:108
-#: data/core/units/drakes/Warrior.cfg:107
+#: data/core/units/drakes/Fighter.cfg:156
+#: data/core/units/drakes/Warrior.cfg:39
 #, fuzzy
 msgid "war blade"
 msgstr "fulla maleïda"
@@ -474,8 +480,8 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=impact
-#: data/core/units/drakes/Glider.cfg:112
-#: data/core/units/drakes/Hurricane.cfg:109 data/core/units/drakes/Sky.cfg:107
+#: data/core/units/drakes/Glider.cfg:44
+#: data/core/units/drakes/Hurricane.cfg:108 data/core/units/drakes/Sky.cfg:107
 msgid "slam"
 msgstr "cop"
 
@@ -2230,7 +2236,7 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:37
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:33
 #: data/core/units/humans/Outlaw.cfg:36
-#: data/core/units/humans/Outlaw_Bandit.cfg:47
+#: data/core/units/humans/Outlaw_Bandit.cfg:35
 #: data/core/units/humans/Outlaw_Fugitive.cfg:41
 #: data/core/units/humans/Outlaw_Highwayman.cfg:37
 #: data/core/units/humans/Royal_Warrior.cfg:35
@@ -5262,30 +5268,6 @@ msgstr ""
 #~ "Els dracs especialitzats en l'ús de l'espasa juren fidelitat a un orde "
 #~ "especial. La seva marca d'iniciació és el símbol de guerra negre i blanc "
 #~ "que mostren en combat."
-
-#~ msgid ""
-#~ "Drake Burners are the proud few in whom the blood and strength of their "
-#~ "remote ancestors runs truest, giving them the ability to breathe fire. "
-#~ "This, coupled with their sheer size and fearsome claws, makes them deadly "
-#~ "foes in combat."
-#~ msgstr ""
-#~ "Els dracs cremadors són pocs però orgullosos d'haver heretat la sang i la "
-#~ "més autèntica força dels seus remots antecessors, particularment l'alè de "
-#~ "foc. Si a això se li afegeix la seva forta constitució i les seves "
-#~ "temibles urpes, el resultat no és pas menyspreable."
-
-#, fuzzy
-#~ msgid ""
-#~ "Drake Fighters wield curved war blades, and possess the fire-breathing "
-#~ "skills of their ancestors. They can also fly, which is troubling to any "
-#~ "foe. Their great strength, coupled with their hardened scales, is rightly "
-#~ "frightening to swordsman of any other race."
-#~ msgstr ""
-#~ "Els lluitadors dracs empunyen unes simitarres corbades i també posseeixen "
-#~ "l'alè de foc dels seus avantpassats, a més de volar, que ja suposa per sí "
-#~ "mateixa un problema. Tot açò i la seua força, acompanyada de les seues "
-#~ "dures escames, formen un conjunt realment paorós per a qualsevol "
-#~ "espadatxí de cap altra raça."
 
 #, fuzzy
 #~ msgid ""

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-09-28 18:23+0200\n"
+"POT-Creation-Date: 2009-10-07 15:42+0200\n"
 "PO-Revision-Date: 2009-09-02 00:02+0200\n"
 "Last-Translator: Mikko Nikkilä <miccoh@gmail.com>\n"
 "Language-Team: Finnish\n"
@@ -94,16 +94,6 @@ msgstr ""
 msgid "Lobby sounds"
 msgstr ""
 
-#. [message]: speaker=narrator
-#: data/ai/scenarios/ai_arena_small/0002-poisoning.cfg:17
-msgid "This situation should test the ability of AI to spread poison around..."
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/ai/scenarios/ai_arena_small/0003-simple_combat.cfg:17
-msgid "This situation should test the ability of AI to make an attack..."
-msgstr ""
-
 #. [time]: id=underground
 #. [illuminated_time]: id=underground_illum
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:523
@@ -114,7 +104,7 @@ msgstr "maan alla"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:304
-#: src/actions.cpp:1101 src/actions.cpp:1374
+#: src/actions.cpp:1101 src/actions.cpp:1377
 msgid "poisoned"
 msgstr "myrkytetty"
 
@@ -174,14 +164,14 @@ msgstr ""
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1241
-#: src/actions.cpp:1106 src/actions.cpp:1379
+#: src/actions.cpp:1106 src/actions.cpp:1382
 msgid "female^slowed"
 msgstr "hidastettu"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [else]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1244
-#: src/actions.cpp:1106 src/actions.cpp:1379
+#: src/actions.cpp:1106 src/actions.cpp:1382
 msgid "slowed"
 msgstr "hidastettu"
 
@@ -7109,7 +7099,7 @@ msgstr "Toiminnot"
 
 #. [menu]: id=button-endturn
 #. [change]: id=button-endturn
-#: data/themes/default.cfg:153 data/themes/default.cfg:772
+#: data/themes/default.cfg:153 data/themes/default.cfg:774
 #: data/themes/dfool.cfg:160
 msgid "End Turn"
 msgstr "Lopeta vuoro"
@@ -7117,16 +7107,16 @@ msgstr "Lopeta vuoro"
 #. [menu]: id=button-endturn
 #. [change]: id=button-endturn
 #. [menu]: id=button-endturn2
-#: data/themes/default.cfg:154 data/themes/default.cfg:773
-#: data/themes/default.cfg:1032 data/themes/dfool.cfg:161
+#: data/themes/default.cfg:154 data/themes/default.cfg:775
+#: data/themes/default.cfg:1033 data/themes/dfool.cfg:161
 msgid "End Scenario"
 msgstr "Päätä skenaario"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:205 src/unit.cpp:2381
-#: src/unit.cpp:2535
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:205 src/unit.cpp:2384
+#: src/unit.cpp:2538
 msgid "HP"
 msgstr "EP"
 
@@ -7187,13 +7177,13 @@ msgid "statuspanel^terrain def."
 msgstr "kokemustaso"
 
 #. [change]: id=actions-menu
-#: data/themes/default.cfg:1003
+#: data/themes/default.cfg:1004
 msgid "Act."
 msgstr "Toimi."
 
 #. [remove]: id=button-endturn
 #. [menu]: id=button-endturn2
-#: data/themes/default.cfg:1023 data/themes/default.cfg:1031
+#: data/themes/default.cfg:1024 data/themes/default.cfg:1032
 msgid "short end-turn^E."
 msgstr "L."
 
@@ -7295,125 +7285,125 @@ msgstr "Virheellinen aikakausi valittu."
 msgid "An invalid defender weapon got selected."
 msgstr "Virheellinen aikakausi valittu."
 
-#: src/actions.cpp:1101 src/actions.cpp:1374
+#: src/actions.cpp:1101 src/actions.cpp:1377
 msgid "female^poisoned"
 msgstr "myrkytetty"
 
-#: src/actions.cpp:1113 src/actions.cpp:1386
+#: src/actions.cpp:1113 src/actions.cpp:1389
 #, fuzzy
 msgid "female^petrified"
 msgstr "myrkytetty"
 
-#: src/actions.cpp:1113 src/actions.cpp:1386
+#: src/actions.cpp:1113 src/actions.cpp:1389
 msgid "petrified"
 msgstr ""
 
-#: src/actions.cpp:2387
+#: src/actions.cpp:2405
 msgid "Ambushed!"
 msgstr "Väijytys!"
 
-#: src/actions.cpp:2394
+#: src/actions.cpp:2412
 msgid "Failed teleport! Exit not empty"
 msgstr "Epäonnistunut teleportti! Kohdekylä ei ole tyhjä"
 
-#: src/actions.cpp:2439
+#: src/actions.cpp:2457
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Ystävä havaittu"
 msgstr[1] "$friends ystävää havaittu"
 
-#: src/actions.cpp:2442
+#: src/actions.cpp:2460
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Vihollinen havaittu!"
 msgstr[1] "$enemies vihollista havaittu!"
 
-#: src/actions.cpp:2447
+#: src/actions.cpp:2465
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "1 ystävällinen"
 msgstr[1] "$friends ystävällistä"
 
-#: src/actions.cpp:2448
+#: src/actions.cpp:2466
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "1 vihollinen"
 msgstr[1] "$enemies vihollista"
 
-#: src/actions.cpp:2449
+#: src/actions.cpp:2467
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Yksiköitä näköpiirissä! ($friendphrase, $enemyphrase)"
 
-#: src/actions.cpp:2458
+#: src/actions.cpp:2476
 msgid "(press $hotkey to keep moving)"
 msgstr "(paina $hotkey jatkaaksesi)"
 
-#: src/addon_management.cpp:336 src/unit_types.cpp:951
+#: src/addon_management.cpp:340 src/unit_types.cpp:951
 msgid "No description available."
 msgstr "Kuvausta ei ole saatavilla."
 
-#: src/addon_management.cpp:409
+#: src/addon_management.cpp:413
 msgid "B"
 msgstr "t"
 
-#: src/addon_management.cpp:412 src/dialogs.cpp:1056
+#: src/addon_management.cpp:416 src/dialogs.cpp:1056
 msgid "KB"
 msgstr "Kt"
 
-#: src/addon_management.cpp:415
+#: src/addon_management.cpp:419
 msgid "MB"
 msgstr "Mt"
 
-#: src/addon_management.cpp:418
+#: src/addon_management.cpp:422
 msgid "GB"
 msgstr "IB"
 
-#: src/addon_management.cpp:451
+#: src/addon_management.cpp:455
 msgid "addon_type^Campaign"
 msgstr "kampanja"
 
-#: src/addon_management.cpp:453
+#: src/addon_management.cpp:457
 msgid "addon_type^Scenario"
 msgstr "skenaario"
 
-#: src/addon_management.cpp:455
+#: src/addon_management.cpp:459
 msgid "addon_type^MP era"
 msgstr "MP-aikakausi"
 
-#: src/addon_management.cpp:457
+#: src/addon_management.cpp:461
 msgid "addon_type^MP faction"
 msgstr "MP-liittouma"
 
-#: src/addon_management.cpp:459
+#: src/addon_management.cpp:463
 msgid "addon_type^MP map-pack"
 msgstr "MP-karttapakkaus"
 
-#: src/addon_management.cpp:461
+#: src/addon_management.cpp:465
 msgid "addon_type^MP scenario"
 msgstr "MP-skenaario"
 
-#: src/addon_management.cpp:463
+#: src/addon_management.cpp:467
 msgid "addon_type^MP campaign"
 msgstr "MP-kampanja"
 
-#: src/addon_management.cpp:465
+#: src/addon_management.cpp:469
 msgid "addon_type^Resources"
 msgstr "apuvälineet"
 
-#: src/addon_management.cpp:467
+#: src/addon_management.cpp:471
 #, fuzzy
 msgid "addon_type^Other"
 msgstr "MP-aikakausi"
 
-#: src/addon_management.cpp:469
+#: src/addon_management.cpp:473
 msgid "addon_type^(unknown)"
 msgstr "(tuntematon)"
 
-#: src/addon_management.cpp:499
+#: src/addon_management.cpp:503
 msgid "Dependencies"
 msgstr "Riippuvuudet"
 
-#: src/addon_management.cpp:503
+#: src/addon_management.cpp:507
 #, fuzzy
 msgid ""
 "$addon_title depends upon the following add-on which you have not installed "
@@ -7426,7 +7416,7 @@ msgstr[0] ""
 msgstr[1] ""
 "Tämä lisäosa tarvitsee seuraavat lisäosat, joita ei ole vielä asennettu:"
 
-#: src/addon_management.cpp:506
+#: src/addon_management.cpp:510
 #, fuzzy
 msgid ""
 "Do you still want to download $addon_title|? (You will have to install all "
@@ -7435,56 +7425,56 @@ msgstr ""
 "Haluatko ladata tämän lisäosan? (Pelatakseen on tästä huolimatta asennettava "
 "tarvittavat riippuvuudet.)"
 
-#: src/addon_management.cpp:524 src/addon_management.cpp:596
+#: src/addon_management.cpp:528 src/addon_management.cpp:600
 #: src/multiplayer.cpp:213 src/multiplayer.cpp:268 src/multiplayer_ui.cpp:78
 msgid "Connection timed out"
 msgstr "Yhteys katkaistiin odotuksen jälkeen."
 
-#: src/addon_management.cpp:527
+#: src/addon_management.cpp:531
 msgid "The server responded with an error: \"$error|\""
 msgstr "Palvelin vastasi virheellä: \"$error|\""
 
-#: src/addon_management.cpp:535
+#: src/addon_management.cpp:539
 msgid "Terms"
 msgstr "Ehdot"
 
-#: src/addon_management.cpp:569
+#: src/addon_management.cpp:573
 msgid "Sending add-on"
 msgstr "Lähetetään lisäosaa"
 
-#: src/addon_management.cpp:573 src/addon_management.cpp:598
+#: src/addon_management.cpp:577 src/addon_management.cpp:602
 msgid "The server responded with an error: \""
 msgstr "Palvelin vastasi virheellä: \""
 
-#: src/addon_management.cpp:576 src/addon_management.cpp:601
+#: src/addon_management.cpp:580 src/addon_management.cpp:605
 #: src/multiplayer_wait.cpp:403
 msgid "Response"
 msgstr "Vastaus"
 
-#: src/addon_management.cpp:628
+#: src/addon_management.cpp:632
 msgid "Downloading add-on: $addon_title|..."
 msgstr "Ladataan lisäosaa: $addon_title|..."
 
-#: src/addon_management.cpp:643
+#: src/addon_management.cpp:647
 msgid ""
 "The add-on has an invalid file or directory name and can not be installed."
 msgstr ""
 "Tässä lisäosassa on on epäkelpo tiedosto- tai hakemistonimi, eikä sitä voida "
 "asentaa."
 
-#: src/addon_management.cpp:692
+#: src/addon_management.cpp:696
 msgid "The add-on '$addon_title|' has been successfully installed."
 msgstr "Lisäosa ”$addon_title|” on asennettu."
 
-#: src/addon_management.cpp:693
+#: src/addon_management.cpp:697
 msgid "Add-on Installed"
 msgstr "Lisäosa asennettu"
 
-#: src/addon_management.cpp:751
+#: src/addon_management.cpp:780
 msgid "Outdated add-ons"
 msgstr "Vanhentuneet lisäosat"
 
-#: src/addon_management.cpp:753
+#: src/addon_management.cpp:782
 msgid ""
 "An outdated local add-on has publishing information attached. It will not be "
 "offered for updating."
@@ -7498,52 +7488,52 @@ msgstr[1] ""
 "Joissakin vanhentuneissa paikallisissa lisäosissa on mukana julkistustietoa. "
 "Niitä ei tarjota päivitettäväksi."
 
-#: src/addon_management.cpp:762
+#: src/addon_management.cpp:791
 msgid "Could not find any updated add-ons on this server."
 msgstr "Päivitettyjä lisäosia ei löytynyt tältä palvelimelta."
 
-#: src/addon_management.cpp:762
+#: src/addon_management.cpp:791
 msgid "No add-ons to update"
 msgstr "Yksikään lisäosa ei vaadi päivittämistä"
 
-#: src/addon_management.cpp:776 src/addon_management.cpp:979
+#: src/addon_management.cpp:805 src/addon_management.cpp:1005
 #: src/dialogs.cpp:575 src/menu_events.cpp:203 src/menu_events.cpp:839
 msgid "Name"
 msgstr "Nimi"
 
-#: src/addon_management.cpp:776
+#: src/addon_management.cpp:805
 msgid "New version"
 msgstr "Uusi versio"
 
-#: src/addon_management.cpp:776
+#: src/addon_management.cpp:805
 msgid "Old version"
 msgstr "Vanha versio"
 
-#: src/addon_management.cpp:777 src/addon_management.cpp:980
+#: src/addon_management.cpp:806 src/addon_management.cpp:1006
 msgid "Author"
 msgstr "tekijä"
 
-#: src/addon_management.cpp:777 src/addon_management.cpp:980
+#: src/addon_management.cpp:806 src/addon_management.cpp:1006
 msgid "Size"
 msgstr "koko"
 
-#: src/addon_management.cpp:831
+#: src/addon_management.cpp:857
 msgid "Update add-ons"
 msgstr "Päivitä lisäosat"
 
-#: src/addon_management.cpp:832
+#: src/addon_management.cpp:858
 msgid "Select an add-on to update:"
 msgstr "Valitse lisäosa päivitettäväksi:"
 
-#: src/addon_management.cpp:846
+#: src/addon_management.cpp:872
 msgid "Update all"
 msgstr "Päivitä kaikki"
 
-#: src/addon_management.cpp:903
+#: src/addon_management.cpp:929
 msgid "Update failed"
 msgstr "Päivitys epäonnistui"
 
-#: src/addon_management.cpp:905
+#: src/addon_management.cpp:931
 msgid "The following add-on could not be downloaded or updated successfully:"
 msgid_plural ""
 "The following add-ons could not be downloaded or updated successfully:"
@@ -7552,127 +7542,121 @@ msgstr[0] ""
 msgstr[1] ""
 "Seuraavissa lisäosissa oli virheitä, eikä niitä voitu asentaa tai päivittää:"
 
-#: src/addon_management.cpp:914
+#: src/addon_management.cpp:940
 msgid "Update succeeded"
 msgstr "Päivitys onnistui"
 
-#: src/addon_management.cpp:915
+#: src/addon_management.cpp:941
 msgid "Add-on updated successfully."
 msgstr "Lisäosa päivitetty onnistuneesti."
 
-#: src/addon_management.cpp:916
+#: src/addon_management.cpp:942
 msgid "All add-ons updated successfully."
 msgstr "Kaikki lisäosat päivitetty onnistuneesti."
 
-#: src/addon_management.cpp:940
+#: src/addon_management.cpp:966
 msgid "Connecting to add-ons server..."
 msgstr "Yhdistetään lisäosapalvelimeen..."
 
-#: src/addon_management.cpp:943
+#: src/addon_management.cpp:969
 msgid "Could not connect to host."
 msgstr "Yhteyttä koneeseen ei saatu."
 
-#: src/addon_management.cpp:951
+#: src/addon_management.cpp:977
 msgid "Requesting list of add-ons"
 msgstr "Pyydetään listaa lisäosista"
 
-#: src/addon_management.cpp:963
+#: src/addon_management.cpp:989
 msgid "An error occurred while communicating with the server."
 msgstr "Virhe kommunikoidessa palvelimen kanssa."
 
-#: src/addon_management.cpp:979 src/titlescreen.cpp:342
+#: src/addon_management.cpp:1005 src/titlescreen.cpp:342
 msgid "Version"
 msgstr "versio"
 
-#: src/addon_management.cpp:980
+#: src/addon_management.cpp:1006
 msgid "Downloads"
 msgstr "latauksia"
 
-#: src/addon_management.cpp:980 src/help.cpp:1458 src/menu_events.cpp:202
+#: src/addon_management.cpp:1006 src/help.cpp:1458 src/menu_events.cpp:202
 #: src/menu_events.cpp:838 src/menu_events.cpp:1414
 msgid "Type"
 msgstr "tyyppi"
 
-#: src/addon_management.cpp:1050
+#: src/addon_management.cpp:1070
 msgid "Publish add-on: "
 msgstr "Julkaise lisäosa: "
 
-#: src/addon_management.cpp:1056
+#: src/addon_management.cpp:1076
 msgid "Delete add-on: "
 msgstr "Poista lisäosa: "
 
-#: src/addon_management.cpp:1062
+#: src/addon_management.cpp:1082
 msgid "There are no add-ons available for download from this server."
 msgstr "Tällä palvelimella ei ole yhtään lisäosaa."
 
-#: src/addon_management.cpp:1075
+#: src/addon_management.cpp:1095
 msgid "Get add-ons"
 msgstr "Hae lisäosia"
 
-#: src/addon_management.cpp:1076
+#: src/addon_management.cpp:1096
 msgid "Choose the add-on to download."
 msgstr "Valitse ladattava lisäosa."
 
-#: src/addon_management.cpp:1089
-msgid "Description"
-msgstr ""
-
-#: src/addon_management.cpp:1093 src/dialogs.cpp:600 src/menu_events.cpp:898
+#: src/addon_management.cpp:1108 src/dialogs.cpp:600 src/menu_events.cpp:898
 #: src/menu_events.cpp:1450
 msgid "Filter: "
 msgstr "Suodatin: "
 
-#: src/addon_management.cpp:1130
+#: src/addon_management.cpp:1113
+msgid "Description"
+msgstr ""
+
+#: src/addon_management.cpp:1150
 msgid "Network communication error."
 msgstr "Verkkoviestintävirhe."
 
-#: src/addon_management.cpp:1133
+#: src/addon_management.cpp:1153
 msgid "Remote host disconnected."
 msgstr "Toinen kone katkaisi yhteyden."
 
-#: src/addon_management.cpp:1136
+#: src/addon_management.cpp:1156
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
 msgstr "Lisäosan tarvitsemien tiedostojen luonnissa oli ongelmia. "
 
-#: src/addon_management.cpp:1154
+#: src/addon_management.cpp:1174
 msgid "You have no add-ons installed."
 msgstr "Sinulla ei ole yhtään lisäosaa."
 
-#: src/addon_management.cpp:1166
+#: src/addon_management.cpp:1186
 msgid "Choose the add-on to remove."
 msgstr "Valitse poistettava lisäosa."
 
-#: src/addon_management.cpp:1166
+#: src/addon_management.cpp:1186
 msgid "Uninstall add-ons"
 msgstr "Poista lisäosia"
 
-#: src/addon_management.cpp:1178
+#: src/addon_management.cpp:1198
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr "Haluatko varmasti poistaa lisäosan '$addon|'?"
 
-#: src/addon_management.cpp:1183 src/multiplayer.cpp:225
+#: src/addon_management.cpp:1203 src/multiplayer.cpp:225
 msgid "Confirm"
 msgstr "Varmista"
 
-#: src/addon_management.cpp:1195
+#: src/addon_management.cpp:1215
 msgid "Add-on '$addon|' deleted."
 msgstr "Lisäosa '$addon|' poistettu."
 
-#: src/addon_management.cpp:1200
+#: src/addon_management.cpp:1220
 msgid "Add-on deleted"
 msgstr "Lisäosa poistettu"
 
-#: src/addon_management.cpp:1208
+#: src/addon_management.cpp:1228
 msgid "Add-on could not be deleted properly:"
 msgstr "Lisäosaa ei voitu poistaa:"
-
-#: src/ai/default/move.cpp:85
-msgid "Movement cost is 0, probably a terrain with movement cost of 0."
-msgstr ""
-"Liikkumiskustannus on 0, mahdollisesti maastoa tyhjällä "
-"liikkumiskustannuksella."
 
 #: src/attack_prediction_display.cpp:107 src/attack_prediction_display.cpp:217
 msgid "Attacker"
@@ -7746,7 +7730,7 @@ msgstr "Haluatko todellakin tuhota tämän tallennuksen?"
 msgid "Don't ask me again!"
 msgstr "Älä kysy tätä uudelleen!"
 
-#: src/dialogs.cpp:432 src/savegame.cpp:130
+#: src/dialogs.cpp:432 src/savegame.cpp:132
 msgid "%a %b %d %H:%M %Y"
 msgstr "%d.%m.%Y %H:%M"
 
@@ -7766,11 +7750,11 @@ msgstr "Moninpeli"
 msgid "Tutorial"
 msgstr "Tutoriaali"
 
-#: src/dialogs.cpp:483 src/savegame.cpp:948
+#: src/dialogs.cpp:483 src/savegame.cpp:950
 msgid "replay"
 msgstr " – uusinta"
 
-#: src/dialogs.cpp:485 src/savegame.cpp:1021
+#: src/dialogs.cpp:485 src/savegame.cpp:1022
 msgid "Turn"
 msgstr "vuoro"
 
@@ -7786,20 +7770,20 @@ msgstr "Vaikeustaso: "
 msgid "Version: "
 msgstr "Versio: "
 
-#: src/dialogs.cpp:516 src/dialogs.cpp:532 src/savegame.cpp:159
-#: src/savegame.cpp:175
+#: src/dialogs.cpp:516 src/dialogs.cpp:532 src/savegame.cpp:161
+#: src/savegame.cpp:177
 msgid "%b %d %y"
 msgstr "%b %d %y"
 
-#: src/dialogs.cpp:522 src/savegame.cpp:165
+#: src/dialogs.cpp:522 src/savegame.cpp:167
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/dialogs.cpp:525 src/savegame.cpp:168
+#: src/dialogs.cpp:525 src/savegame.cpp:170
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-#: src/dialogs.cpp:528 src/savegame.cpp:171
+#: src/dialogs.cpp:528 src/savegame.cpp:173
 msgid "%b %d"
 msgstr "%b %d"
 
@@ -7875,12 +7859,11 @@ msgstr "Liikepisteitä: "
 msgid "The Battle for Wesnoth"
 msgstr "Taistelu Wesnothista"
 
-#: src/game.cpp:995 src/game.cpp:1003 src/playsingle_controller.cpp:476
-#: src/playsingle_controller.cpp:531
+#: src/game.cpp:995 src/game.cpp:1003
 msgid "The file you have tried to load is corrupt"
 msgstr "Tiedosto, jonka yritit avata, on korruptoitunut"
 
-#: src/game.cpp:998 src/game.cpp:1006 src/savegame.cpp:535
+#: src/game.cpp:998 src/game.cpp:1006 src/savegame.cpp:537
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Tiedosto, jonka yritit ladata, on vahingoittunut: '"
 
@@ -7998,11 +7981,11 @@ msgstr "Voitto:"
 msgid "Defeat:"
 msgstr "Tappio:"
 
-#: src/game_events.cpp:3499
+#: src/game_events.cpp:3503
 msgid "[unit_worth]'s filter didn't match any units!"
 msgstr ""
 
-#: src/gamestatus.cpp:740
+#: src/gamestatus.cpp:741
 #, fuzzy
 msgid ""
 "Leader position not empty - duplicate side definition for side '$side|' "
@@ -8315,65 +8298,65 @@ msgstr "Satunnainen"
 msgid "?"
 msgstr "?"
 
-#: src/loadscreen.cpp:245
+#: src/loadscreen.cpp:244
 #, fuzzy
 msgid "Verifying cache..."
 msgstr "Tarkistetaan välimuistia"
 
-#: src/loadscreen.cpp:264
+#: src/loadscreen.cpp:262
 #, fuzzy
 msgid "Reading unit files..."
 msgstr "Luetaan yksikkötiedostoja."
 
-#: src/loadscreen.cpp:283
+#: src/loadscreen.cpp:280
 #, fuzzy
 msgid "Reading files and creating cache..."
 msgstr "Luetaan tiedostoja ja luodaan väliaikaistiedostoa."
 
-#: src/lobby_data.cpp:238 src/multiplayer_lobby.cpp:431
+#: src/lobby_data.cpp:195 src/multiplayer_lobby.cpp:431
 msgid "Unknown era: $era_id"
 msgstr "Tuntematon aikakausi: $era_id"
 
-#: src/lobby_data.cpp:243 src/multiplayer_lobby.cpp:435
+#: src/lobby_data.cpp:200 src/multiplayer_lobby.cpp:435
 msgid "Unknown era"
 msgstr "Tuntematon aikakausi"
 
-#: src/lobby_data.cpp:298 src/multiplayer_lobby.cpp:497
+#: src/lobby_data.cpp:255 src/multiplayer_lobby.cpp:497
 msgid "Remote scenario"
 msgstr "Toisella koneella oleva skenaario"
 
-#: src/lobby_data.cpp:306 src/multiplayer_lobby.cpp:504
+#: src/lobby_data.cpp:263 src/multiplayer_lobby.cpp:504
 msgid "Unknown scenario: $scenario_id"
 msgstr "Tuntematon skenaario: $scenario_id"
 
-#: src/lobby_data.cpp:311 src/multiplayer_lobby.cpp:508
+#: src/lobby_data.cpp:268 src/multiplayer_lobby.cpp:508
 msgid "Unknown scenario"
 msgstr "Tuntematon skenaario"
 
-#: src/lobby_data.cpp:317 src/multiplayer_lobby.cpp:513
+#: src/lobby_data.cpp:274 src/multiplayer_lobby.cpp:513
 msgid "Reloaded game"
 msgstr "Uudelleenladattu peli"
 
-#: src/lobby_data.cpp:328 src/multiplayer_lobby.cpp:529
+#: src/lobby_data.cpp:285 src/multiplayer_lobby.cpp:529
 msgid "Turn "
 msgstr "Vuoro"
 
-#: src/lobby_data.cpp:332 src/multiplayer_lobby.cpp:533
+#: src/lobby_data.cpp:289 src/multiplayer_lobby.cpp:533
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Vapaa paikka:"
 msgstr[1] "Vapaita paikkoja:"
 
-#: src/lobby_data.cpp:338 src/multiplayer_lobby.cpp:544
+#: src/lobby_data.cpp:295 src/multiplayer_lobby.cpp:544
 msgid "Fog"
 msgstr "Sumu"
 
-#: src/lobby_data.cpp:341 src/lobby_data.cpp:344 src/multiplayer_create.cpp:83
+#: src/lobby_data.cpp:298 src/lobby_data.cpp:301 src/multiplayer_create.cpp:83
 #: src/multiplayer_lobby.cpp:548 src/multiplayer_lobby.cpp:554
 msgid "Shroud"
 msgstr "Huntu"
 
-#: src/lobby_data.cpp:346 src/multiplayer_lobby.cpp:558
+#: src/lobby_data.cpp:303 src/multiplayer_lobby.cpp:558
 msgid "none"
 msgstr "Ei mitään"
 
@@ -9567,12 +9550,12 @@ msgstr "Alustetaan näyttöä"
 msgid "Starting game"
 msgstr "Käynnistetään peliä"
 
-#: src/play_controller.cpp:929 src/savegame.cpp:290 src/savegame.cpp:302
-#: src/savegame.cpp:974 src/savegame.cpp:976
+#: src/play_controller.cpp:924 src/savegame.cpp:292 src/savegame.cpp:304
+#: src/savegame.cpp:976 src/savegame.cpp:978
 msgid "Auto-Save"
 msgstr "Automaattinen tallennus"
 
-#: src/play_controller.cpp:936
+#: src/play_controller.cpp:931
 msgid "Back to turn "
 msgstr "Takaisin vuoron alkuun"
 
@@ -9596,36 +9579,36 @@ msgstr "Skenaario on loppunut. Haluatko jatkaa kampanjaa?"
 msgid "Downloading next scenario..."
 msgstr "Haetaan seuraavaa tasoa..."
 
-#: src/playcampaign.cpp:590
+#: src/playcampaign.cpp:589
 msgid "Do you want to save your game?"
 msgstr "Haluatko tallentaa pelisi?"
 
-#: src/playcampaign.cpp:609
+#: src/playcampaign.cpp:607
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Tuntematon skenaario: '$scenario|'"
 
-#: src/playmp_controller.cpp:92
+#: src/playmp_controller.cpp:93
 msgid "$name has taken control"
 msgstr ""
 
-#: src/playmp_controller.cpp:94
+#: src/playmp_controller.cpp:95
 #, fuzzy
 msgid "Turn changed"
 msgstr "kaukotaistelu"
 
-#: src/playmp_controller.cpp:228
+#: src/playmp_controller.cpp:227
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "Siirtojen peruutuksia ei ole vielä toimitettu palvelimelle."
 
-#: src/playmp_controller.cpp:307
+#: src/playmp_controller.cpp:301
 msgid "End scenario"
 msgstr "Päätä skenaario"
 
-#: src/playmp_controller.cpp:408
+#: src/playmp_controller.cpp:400
 msgid "Waiting for next scenario..."
 msgstr "Odotetaan seuraavaa skenaariota..."
 
-#: src/playmp_controller.cpp:537
+#: src/playmp_controller.cpp:520
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -9714,7 +9697,7 @@ msgstr "Loppu"
 msgid "The game is over."
 msgstr "Peli on ohitse."
 
-#: src/playsingle_controller.cpp:487
+#: src/playsingle_controller.cpp:484
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game\n"
@@ -9722,170 +9705,166 @@ msgid ""
 msgstr ""
 "Verkkoyhteys on katkennut, eikä peli voi jatkua. Haluatko tallentaa pelin?"
 
-#: src/playsingle_controller.cpp:653
+#: src/playsingle_controller.cpp:644
 msgid "It is now $name|'s turn"
 msgstr "Nyt on vuorossa $name"
 
-#: src/playsingle_controller.cpp:868
+#: src/playsingle_controller.cpp:859
 msgid "Scenario Report"
 msgstr "Taisteluraportti"
 
-#: src/playsingle_controller.cpp:870
+#: src/playsingle_controller.cpp:861
 msgid "Victory"
 msgstr "Voitto!"
 
-#: src/playsingle_controller.cpp:871
+#: src/playsingle_controller.cpp:862
 msgid "You have emerged victorious!"
 msgstr "Olet voittaja!"
 
-#: src/playturn.cpp:230
+#: src/playturn.cpp:217
 msgid "Replace with AI"
 msgstr "Korvaa tietokoneella"
 
-#: src/playturn.cpp:231
+#: src/playturn.cpp:218
 msgid "Replace with local player"
 msgstr "Korvaa paikallisella pelaajalla"
 
-#: src/playturn.cpp:232
+#: src/playturn.cpp:219
 msgid "Abort game"
 msgstr "Keskeytä peli"
 
-#: src/playturn.cpp:238 src/playturn.cpp:252
+#: src/playturn.cpp:225 src/playturn.cpp:239
 msgid "Replace with $player"
 msgstr "Korvaa pelaajalla $player"
 
-#: src/playturn.cpp:258
+#: src/playturn.cpp:245
 msgid "$player has left the game. What do you want to do?"
 msgstr "$player on poistunut pelistä. Mitä haluat tehdä?"
 
-#: src/replay_controller.cpp:81
-msgid "The file you have tried to load is corrupt. Continue playing?"
-msgstr "Tiedosto, jonka yritit avata on korruptoitunut. Jatka pelaamista?"
-
-#: src/savegame.cpp:202 src/savegame.cpp:204
+#: src/savegame.cpp:204 src/savegame.cpp:206
 msgid " replay"
 msgstr " – uusinta"
 
-#: src/savegame.cpp:445 src/savegame.cpp:449
+#: src/savegame.cpp:447 src/savegame.cpp:451
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Varoitus: Tiedosto, jonka yritit ladata, on vahingoittunut. Ladataan siitä "
 "huolimatta.\n"
 
-#: src/savegame.cpp:488
+#: src/savegame.cpp:490
 msgid "This save is from a version too old to be loaded."
 msgstr "Tämä tallenne on aivan liian antiikkinen."
 
-#: src/savegame.cpp:492
+#: src/savegame.cpp:494
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr "Tämä tallenne on pelin eri versiosta. Haluatko yrittää ladata sen?"
 
-#: src/savegame.cpp:541
+#: src/savegame.cpp:543
 msgid "This is not a multiplayer save"
 msgstr "Tämä ei ole moninpelin tallenne"
 
-#: src/savegame.cpp:607
+#: src/savegame.cpp:609
 #, fuzzy
 msgid "The game could not be saved: "
 msgstr "Peliä ei voitu tallentaa."
 
-#: src/savegame.cpp:694
+#: src/savegame.cpp:696
 msgid "Name: "
 msgstr "Nimi: "
 
-#: src/savegame.cpp:694
+#: src/savegame.cpp:696
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Tallenne on jo olemassa. Haluatko ylikirjoittaa sen?"
 
-#: src/savegame.cpp:695
+#: src/savegame.cpp:697
 msgid "Overwrite?"
 msgstr "Kirjoita päälle?"
 
-#: src/savegame.cpp:705
+#: src/savegame.cpp:707
 msgid "Save names should not end on '.gz'. Please choose a different name."
 msgstr "Tallenteen nimi ei saa loppua ”.gz”:aan. Valitse toinen nimi."
 
-#: src/savegame.cpp:767
+#: src/savegame.cpp:769
 msgid "Saved"
 msgstr "Tallennettu"
 
-#: src/savegame.cpp:767
+#: src/savegame.cpp:769
 msgid "The game has been saved"
 msgstr "Peli on tallennettu."
 
-#: src/savegame.cpp:801 src/savegame.cpp:826
+#: src/savegame.cpp:803 src/savegame.cpp:828
 msgid "Could not write to file"
 msgstr "Ei voitu kirjoittaa tiedostoon"
 
-#: src/savegame.cpp:939
+#: src/savegame.cpp:941
 msgid "Save Replay"
 msgstr "Tallenna uusinta"
 
-#: src/savegame.cpp:957
+#: src/savegame.cpp:959
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 "Automaattinen tallennus epäonnistui. Yritä tallentaa peli manuaalisesti."
 
-#: src/savegame.cpp:1009
+#: src/savegame.cpp:1010
 msgid "Save Game"
 msgstr "Tallenna peli"
 
-#: src/serialization/parser.cpp:131
+#: src/serialization/parser.cpp:129
 msgid "Unexpected characters at line start"
 msgstr "Odottamattomia kirjaimia rivin alussa"
 
-#: src/serialization/parser.cpp:161
+#: src/serialization/parser.cpp:159
 msgid "Missing closing tag for tag $tag at $pos"
 msgstr "Sulkemistagi puuttuu tagille $tag paikassa $pos"
 
-#: src/serialization/parser.cpp:176
+#: src/serialization/parser.cpp:174
 msgid "Unterminated [element] tag"
 msgstr "Sulkematon [element] -tagi"
 
-#: src/serialization/parser.cpp:186 src/serialization/parser.cpp:224
+#: src/serialization/parser.cpp:184 src/serialization/parser.cpp:222
 msgid "Invalid tag name"
 msgstr "Virheellinen tagin nimi"
 
-#: src/serialization/parser.cpp:189
+#: src/serialization/parser.cpp:187
 msgid "Unterminated [+element] tag"
 msgstr "Sulkematon [+element] -tagi"
 
-#: src/serialization/parser.cpp:205
+#: src/serialization/parser.cpp:203
 msgid "Invalid closing tag name"
 msgstr "Virheellinen sulkevan tagin nimi"
 
-#: src/serialization/parser.cpp:208
+#: src/serialization/parser.cpp:206
 msgid "Unterminated closing tag"
 msgstr "Päättämätön sulkeva tagi"
 
-#: src/serialization/parser.cpp:210
+#: src/serialization/parser.cpp:208
 msgid "Unexpected closing tag"
 msgstr "Odottamaton sulkeva tagi"
 
-#: src/serialization/parser.cpp:218
+#: src/serialization/parser.cpp:216
 msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
 msgstr ""
 "Löytynyt virheellinen sulkeva tagi $tag2 tagille $tag (avattu paikassa $pos)"
 
-#: src/serialization/parser.cpp:243 src/serialization/parser.cpp:255
+#: src/serialization/parser.cpp:241 src/serialization/parser.cpp:253
 msgid "Empty variable name"
 msgstr "Tyhjä muuttujan nimi"
 
-#: src/serialization/parser.cpp:249
+#: src/serialization/parser.cpp:247
 msgid "Unexpected characters after variable name (expected , or =)"
 msgstr "Odottamaton kirjain muuttujan nimen jälkeen (odotettu , tai =)"
 
-#: src/serialization/parser.cpp:284 src/serialization/parser.cpp:308
+#: src/serialization/parser.cpp:282 src/serialization/parser.cpp:306
 msgid "Unterminated quoted string"
 msgstr "Päättämätön lainaus"
 
-#: src/serialization/parser.cpp:350
+#: src/serialization/parser.cpp:348
 msgid "$error, value '$value', previous '$previous_value' at $pos"
 msgstr "$error, arvo ”$value”, edellinen ”$previous_value” sijainnissa $pos"
 
-#: src/serialization/parser.cpp:354
+#: src/serialization/parser.cpp:352
 msgid "$error, value '$value' at $pos"
 msgstr "$error (arvo ”$value”) paikassa $pos"
 
@@ -10082,39 +10061,39 @@ msgstr "Auta Wesnothia lähettämällä meille tietoa"
 msgid "No time of day has been defined."
 msgstr "Vuorokaudenaikaa ei ole määritelty."
 
-#: src/unit.cpp:506
+#: src/unit.cpp:509
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "Tuntematon yksikkötyyppi ”$type|” generoidessa piirteitä"
 
-#: src/unit.cpp:688
+#: src/unit.cpp:691
 msgid "Unknown unit type '$type|'"
 msgstr "Tuntematon yksikkötyyppi '$type|'"
 
-#: src/unit.cpp:2338 src/unit.cpp:2523 src/unit.cpp:2596
+#: src/unit.cpp:2341 src/unit.cpp:2526 src/unit.cpp:2599
 msgid " and "
 msgstr " ja "
 
-#: src/unit.cpp:2349
+#: src/unit.cpp:2352
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2414
+#: src/unit.cpp:2417
 msgid "moves"
 msgstr "siirrot"
 
-#: src/unit.cpp:2432 src/unit.cpp:2550
+#: src/unit.cpp:2435 src/unit.cpp:2553
 msgid "XP to advance"
 msgstr "KP:tä ylenemiseen"
 
-#: src/unit.cpp:2542
+#: src/unit.cpp:2545
 msgid " move"
 msgstr "siirto"
 
-#: src/unit.cpp:2558
+#: src/unit.cpp:2561
 msgid "$effect_description per level"
 msgstr "$effect_description tasoa kohden"
 
-#: src/unit.cpp:2605
+#: src/unit.cpp:2608
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 
@@ -10164,7 +10143,7 @@ msgstr "lainkuuliainen"
 msgid "female^neutral"
 msgstr "neutraali"
 
-#: src/upload_log.cpp:368
+#: src/upload_log.cpp:367
 msgid ""
 "Wesnoth relies on volunteers like yourself for feedback, especially "
 "beginners and new players. Wesnoth keeps summaries of your games: you can "
@@ -10176,21 +10155,29 @@ msgstr ""
 "peleistäsi: voit auttaa meitä parantamaan Wesnothia antamalla luvan lähettää "
 "tietoja peleistäsi (nimettömästi) wesnoth.org-sivustolle.\n"
 
-#: src/upload_log.cpp:369
+#: src/upload_log.cpp:368
 msgid "Summaries are stored here:"
 msgstr "Yhteenvetoja pidetään täällä:"
 
-#: src/upload_log.cpp:371
+#: src/upload_log.cpp:370
 msgid "You can view the results at:"
 msgstr "Voit selata tuloksia täällä:"
 
-#: src/upload_log.cpp:373
+#: src/upload_log.cpp:372
 msgid "Help us make Wesnoth better for you!"
 msgstr "Auta meitä kehittämään Wesnothista parempi sinulle!"
 
-#: src/upload_log.cpp:375
+#: src/upload_log.cpp:374
 msgid "Enable summary uploads"
 msgstr "Salli yhteenvetojen lähettäminen"
+
+#~ msgid "Movement cost is 0, probably a terrain with movement cost of 0."
+#~ msgstr ""
+#~ "Liikkumiskustannus on 0, mahdollisesti maastoa tyhjällä "
+#~ "liikkumiskustannuksella."
+
+#~ msgid "The file you have tried to load is corrupt. Continue playing?"
+#~ msgstr "Tiedosto, jonka yritit avata on korruptoitunut. Jatka pelaamista?"
 
 #~ msgid "Can rest while moving, takes a quarter less poison damage"
 #~ msgstr ""

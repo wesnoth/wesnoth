@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-09-23 12:26+0200\n"
+"POT-Creation-Date: 2009-10-07 15:42+0200\n"
 "PO-Revision-Date: 2009-09-24 10:23+0700\n"
 "Last-Translator: Phạm Thành Nam <phamthanhnam.ptn@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
@@ -157,14 +157,6 @@ msgstr "Cửa sổ"
 msgid "villages"
 msgstr "làng"
 
-#: src/editor/action.cpp:32
-msgid "Error creating action object"
-msgstr "Lỗi khi tạo đối tượng hành động"
-
-#: src/editor/action.cpp:36
-msgid "Action not implemented"
-msgstr "Hành động không được thực hiện"
-
 #: src/editor/editor_controller.cpp:120
 msgid "Quit Editor"
 msgstr "Thoát trình hiệu chỉnh"
@@ -173,7 +165,7 @@ msgstr "Thoát trình hiệu chỉnh"
 msgid "Fatal error"
 msgstr "Lỗi nghiêm trọng"
 
-#: src/editor/editor_controller.cpp:300 src/editor/editor_controller.cpp:1060
+#: src/editor/editor_controller.cpp:300 src/editor/editor_controller.cpp:1061
 msgid "(New Map)"
 msgstr "(Bản đồ mới)"
 
@@ -201,74 +193,74 @@ msgstr ""
 msgid "Quit"
 msgstr "Thoát"
 
-#: src/editor/editor_controller.cpp:371
+#: src/editor/editor_controller.cpp:372
 msgid "No editor time-of-day found."
 msgstr "Không tìm thấy thời điểm trong ngày của trình hiệu chỉnh."
 
-#: src/editor/editor_controller.cpp:407
+#: src/editor/editor_controller.cpp:408
 msgid "Unsaved Changes"
 msgstr "Thay đổi không được lưu"
 
-#: src/editor/editor_controller.cpp:408
+#: src/editor/editor_controller.cpp:409
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
 "Bạn có thực sự muốn loại bỏ tất cả các thay đổi bạn đã thực hiện với bản đồ "
 "kể từ lần lưu cuối cùng không?"
 
-#: src/editor/editor_controller.cpp:426
+#: src/editor/editor_controller.cpp:427
 msgid "Choose a Map to Open"
 msgstr "Chọn bản đồ cần mở"
 
-#: src/editor/editor_controller.cpp:461
+#: src/editor/editor_controller.cpp:462
 msgid "Save the Map As"
 msgstr "Lưu bản đồ thành"
 
-#: src/editor/editor_controller.cpp:465
+#: src/editor/editor_controller.cpp:466
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Tập tin đã tồn tại. Bạn có muốn ghi đè lên nó không?"
 
-#: src/editor/editor_controller.cpp:482
+#: src/editor/editor_controller.cpp:483
 msgid "No random map generators found."
 msgstr "Không tìm thấy trình tạo bản đồ ngẫu nhiên."
 
-#: src/editor/editor_controller.cpp:495 src/editor/editor_controller.cpp:499
+#: src/editor/editor_controller.cpp:496 src/editor/editor_controller.cpp:500
 msgid "Map creation failed."
 msgstr "Tạo bản đồ thất bại."
 
-#: src/editor/editor_controller.cpp:514
+#: src/editor/editor_controller.cpp:515
 msgid "Choose a mask to apply"
 msgstr "Chọn mặt nạ cần áp dụng"
 
-#: src/editor/editor_controller.cpp:521
+#: src/editor/editor_controller.cpp:522
 msgid "Error loading mask"
 msgstr "Lỗi khi tải mặt nạ"
 
-#: src/editor/editor_controller.cpp:536
+#: src/editor/editor_controller.cpp:537
 msgid "Choose target map"
 msgstr "Chọn bản đồ đích"
 
-#: src/editor/editor_controller.cpp:543 src/editor/editor_controller.cpp:707
+#: src/editor/editor_controller.cpp:544 src/editor/editor_controller.cpp:708
 msgid "Error loading map"
 msgstr "Lỗi khi tải bản đồ"
 
-#: src/editor/editor_controller.cpp:621 src/editor/editor_controller.cpp:663
+#: src/editor/editor_controller.cpp:622 src/editor/editor_controller.cpp:664
 msgid "This map is already open."
 msgstr "Bản đồ này đã được mở."
 
-#: src/editor/editor_controller.cpp:642
+#: src/editor/editor_controller.cpp:643
 msgid "Map saved."
 msgstr "Đã lưu bản đồ."
 
-#: src/editor/editor_controller.cpp:686
+#: src/editor/editor_controller.cpp:687
 msgid "Loaded embedded map data"
 msgstr "Dữ liệu bản đồ nhúng đã tải"
 
-#: src/editor/editor_controller.cpp:687 src/editor/editor_controller.cpp:701
+#: src/editor/editor_controller.cpp:688 src/editor/editor_controller.cpp:702
 msgid "Map loaded from scenario"
 msgstr "Bản đồ tải từ kịch bản"
 
-#: src/editor/editor_controller.cpp:697
+#: src/editor/editor_controller.cpp:698
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -276,31 +268,31 @@ msgstr ""
 "Tập tin bản đồ tham chiếu đã tải:\n"
 "$new"
 
-#: src/editor/editor_controller.cpp:1090
+#: src/editor/editor_controller.cpp:1091
 msgid "Undo"
 msgstr "Đảo ngược"
 
-#: src/editor/editor_controller.cpp:1092
+#: src/editor/editor_controller.cpp:1093
 msgid "Can't Undo"
 msgstr "Không thể đảo ngược"
 
-#: src/editor/editor_controller.cpp:1096
+#: src/editor/editor_controller.cpp:1097
 msgid "Redo"
 msgstr "Làm lại"
 
-#: src/editor/editor_controller.cpp:1098
+#: src/editor/editor_controller.cpp:1099
 msgid "Can't Redo"
 msgstr "Không thể làm lại"
 
-#: src/editor/editor_controller.cpp:1103
+#: src/editor/editor_controller.cpp:1104
 msgid "Auto-update Terrain Transitions: Yes"
 msgstr "Tự động cập nhật chuyển tiếp địa hình: Có"
 
-#: src/editor/editor_controller.cpp:1106
+#: src/editor/editor_controller.cpp:1107
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr "Tự động cập nhật chuyển tiếp địa hình: Một phần"
 
-#: src/editor/editor_controller.cpp:1110
+#: src/editor/editor_controller.cpp:1111
 msgid "Auto-update Terrain Transitions: No"
 msgstr "Tự động cập nhật chuyển tiếp địa hình: Không"
 
@@ -374,3 +366,9 @@ msgstr ""
 #: src/gui/dialogs/editor_settings.cpp:161
 msgid "Custom setting"
 msgstr "Thiết lập tùy chỉnh"
+
+#~ msgid "Error creating action object"
+#~ msgstr "Lỗi khi tạo đối tượng hành động"
+
+#~ msgid "Action not implemented"
+#~ msgstr "Hành động không được thực hiện"

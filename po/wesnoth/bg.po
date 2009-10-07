@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-09-28 18:23+0200\n"
+"POT-Creation-Date: 2009-10-07 15:42+0200\n"
 "PO-Revision-Date: 2007-08-21 17:39+0300\n"
 "Last-Translator: Denica <dmincheva2002@gmail.com>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -104,16 +104,6 @@ msgstr ""
 msgid "Lobby sounds"
 msgstr ""
 
-#. [message]: speaker=narrator
-#: data/ai/scenarios/ai_arena_small/0002-poisoning.cfg:17
-msgid "This situation should test the ability of AI to spread poison around..."
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/ai/scenarios/ai_arena_small/0003-simple_combat.cfg:17
-msgid "This situation should test the ability of AI to make an attack..."
-msgstr ""
-
 #. [time]: id=underground
 #. [illuminated_time]: id=underground_illum
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:523
@@ -124,7 +114,7 @@ msgstr "Подземие"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:304
-#: src/actions.cpp:1101 src/actions.cpp:1374
+#: src/actions.cpp:1101 src/actions.cpp:1377
 msgid "poisoned"
 msgstr "отровен"
 
@@ -184,7 +174,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1241
-#: src/actions.cpp:1106 src/actions.cpp:1379
+#: src/actions.cpp:1106 src/actions.cpp:1382
 #, fuzzy
 msgid "female^slowed"
 msgstr "лоялна"
@@ -192,7 +182,7 @@ msgstr "лоялна"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [else]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1244
-#: src/actions.cpp:1106 src/actions.cpp:1379
+#: src/actions.cpp:1106 src/actions.cpp:1382
 msgid "slowed"
 msgstr "забавен"
 
@@ -6457,7 +6447,7 @@ msgstr "Действия"
 
 #. [menu]: id=button-endturn
 #. [change]: id=button-endturn
-#: data/themes/default.cfg:153 data/themes/default.cfg:772
+#: data/themes/default.cfg:153 data/themes/default.cfg:774
 #: data/themes/dfool.cfg:160
 msgid "End Turn"
 msgstr "Край на хода"
@@ -6465,8 +6455,8 @@ msgstr "Край на хода"
 #. [menu]: id=button-endturn
 #. [change]: id=button-endturn
 #. [menu]: id=button-endturn2
-#: data/themes/default.cfg:154 data/themes/default.cfg:773
-#: data/themes/default.cfg:1032 data/themes/dfool.cfg:161
+#: data/themes/default.cfg:154 data/themes/default.cfg:775
+#: data/themes/default.cfg:1033 data/themes/dfool.cfg:161
 #, fuzzy
 msgid "End Scenario"
 msgstr "Отдалечена мисия"
@@ -6474,8 +6464,8 @@ msgstr "Отдалечена мисия"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:205 src/unit.cpp:2381
-#: src/unit.cpp:2535
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:205 src/unit.cpp:2384
+#: src/unit.cpp:2538
 msgid "HP"
 msgstr "Здраве"
 
@@ -6536,13 +6526,13 @@ msgid "statuspanel^terrain def."
 msgstr "ниво"
 
 #. [change]: id=actions-menu
-#: data/themes/default.cfg:1003
+#: data/themes/default.cfg:1004
 msgid "Act."
 msgstr "Действ."
 
 #. [remove]: id=button-endturn
 #. [menu]: id=button-endturn2
-#: data/themes/default.cfg:1023 data/themes/default.cfg:1031
+#: data/themes/default.cfg:1024 data/themes/default.cfg:1032
 msgid "short end-turn^E."
 msgstr "К."
 
@@ -6646,132 +6636,132 @@ msgstr "Избрана е невалидна ера"
 msgid "An invalid defender weapon got selected."
 msgstr "Избрана е невалидна ера"
 
-#: src/actions.cpp:1101 src/actions.cpp:1374
+#: src/actions.cpp:1101 src/actions.cpp:1377
 #, fuzzy
 msgid "female^poisoned"
 msgstr "немъртва"
 
-#: src/actions.cpp:1113 src/actions.cpp:1386
+#: src/actions.cpp:1113 src/actions.cpp:1389
 #, fuzzy
 msgid "female^petrified"
 msgstr "немъртва"
 
-#: src/actions.cpp:1113 src/actions.cpp:1386
+#: src/actions.cpp:1113 src/actions.cpp:1389
 msgid "petrified"
 msgstr ""
 
-#: src/actions.cpp:2387
+#: src/actions.cpp:2405
 msgid "Ambushed!"
 msgstr "Засада!"
 
-#: src/actions.cpp:2394
+#: src/actions.cpp:2412
 msgid "Failed teleport! Exit not empty"
 msgstr ""
 
-#: src/actions.cpp:2439
+#: src/actions.cpp:2457
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Забелязана приятелска единица"
 msgstr[1] "$friends приятелски единици забелязани"
 
-#: src/actions.cpp:2442
+#: src/actions.cpp:2460
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Забелязана вражеска единица!"
 msgstr[1] "$enemies вражески единици забелязани"
 
-#: src/actions.cpp:2447
+#: src/actions.cpp:2465
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "1 приятелска"
 msgstr[1] "$friends приятелски"
 
-#: src/actions.cpp:2448
+#: src/actions.cpp:2466
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "1 вражеска"
 msgstr[1] "$enemies вражески"
 
-#: src/actions.cpp:2449
+#: src/actions.cpp:2467
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Забелязани единици! ($friendphrase, $enemyphrase)"
 
-#: src/actions.cpp:2458
+#: src/actions.cpp:2476
 msgid "(press $hotkey to keep moving)"
 msgstr "(натиснете $hotkey , за да продължите)"
 
-#: src/addon_management.cpp:336 src/unit_types.cpp:951
+#: src/addon_management.cpp:340 src/unit_types.cpp:951
 #, fuzzy
 msgid "No description available."
 msgstr "Няма цели"
 
-#: src/addon_management.cpp:409
+#: src/addon_management.cpp:413
 msgid "B"
 msgstr "Б"
 
-#: src/addon_management.cpp:412 src/dialogs.cpp:1056
+#: src/addon_management.cpp:416 src/dialogs.cpp:1056
 msgid "KB"
 msgstr "КБ"
 
-#: src/addon_management.cpp:415
+#: src/addon_management.cpp:419
 msgid "MB"
 msgstr "МБ"
 
-#: src/addon_management.cpp:418
+#: src/addon_management.cpp:422
 #, fuzzy
 msgid "GB"
 msgstr "Б"
 
-#: src/addon_management.cpp:451
+#: src/addon_management.cpp:455
 msgid "addon_type^Campaign"
 msgstr ""
 
-#: src/addon_management.cpp:453
+#: src/addon_management.cpp:457
 msgid "addon_type^Scenario"
 msgstr ""
 
-#: src/addon_management.cpp:455
+#: src/addon_management.cpp:459
 #, fuzzy
 msgid "addon_type^MP era"
 msgstr "Отдалечена мисия"
 
-#: src/addon_management.cpp:457
+#: src/addon_management.cpp:461
 #, fuzzy
 msgid "addon_type^MP faction"
 msgstr "Отдалечена мисия"
 
-#: src/addon_management.cpp:459
+#: src/addon_management.cpp:463
 #, fuzzy
 msgid "addon_type^MP map-pack"
 msgstr "Отдалечена мисия"
 
-#: src/addon_management.cpp:461
+#: src/addon_management.cpp:465
 #, fuzzy
 msgid "addon_type^MP scenario"
 msgstr "Отдалечена мисия"
 
-#: src/addon_management.cpp:463
+#: src/addon_management.cpp:467
 msgid "addon_type^MP campaign"
 msgstr ""
 
-#: src/addon_management.cpp:465
+#: src/addon_management.cpp:469
 msgid "addon_type^Resources"
 msgstr ""
 
-#: src/addon_management.cpp:467
+#: src/addon_management.cpp:471
 #, fuzzy
 msgid "addon_type^Other"
 msgstr "Отдалечена мисия"
 
-#: src/addon_management.cpp:469
+#: src/addon_management.cpp:473
 msgid "addon_type^(unknown)"
 msgstr ""
 
-#: src/addon_management.cpp:499
+#: src/addon_management.cpp:503
 msgid "Dependencies"
 msgstr "Зависимости"
 
-#: src/addon_management.cpp:503
+#: src/addon_management.cpp:507
 #, fuzzy
 msgid ""
 "$addon_title depends upon the following add-on which you have not installed "
@@ -6782,64 +6772,64 @@ msgid_plural ""
 msgstr[0] "Допълнението има следните зависимости:"
 msgstr[1] "Допълнението има следните зависимости:"
 
-#: src/addon_management.cpp:506
+#: src/addon_management.cpp:510
 msgid ""
 "Do you still want to download $addon_title|? (You will have to install all "
 "the dependencies in order to play.)"
 msgstr ""
 
-#: src/addon_management.cpp:524 src/addon_management.cpp:596
+#: src/addon_management.cpp:528 src/addon_management.cpp:600
 #: src/multiplayer.cpp:213 src/multiplayer.cpp:268 src/multiplayer_ui.cpp:78
 msgid "Connection timed out"
 msgstr "Времето за връзката е просрочено"
 
-#: src/addon_management.cpp:527
+#: src/addon_management.cpp:531
 #, fuzzy
 msgid "The server responded with an error: \"$error|\""
 msgstr "Сървърът отвърна с грешка: \""
 
-#: src/addon_management.cpp:535
+#: src/addon_management.cpp:539
 msgid "Terms"
 msgstr "Условия"
 
-#: src/addon_management.cpp:569
+#: src/addon_management.cpp:573
 msgid "Sending add-on"
 msgstr "Пращане на допълнението"
 
-#: src/addon_management.cpp:573 src/addon_management.cpp:598
+#: src/addon_management.cpp:577 src/addon_management.cpp:602
 msgid "The server responded with an error: \""
 msgstr "Сървърът отвърна с грешка: \""
 
-#: src/addon_management.cpp:576 src/addon_management.cpp:601
+#: src/addon_management.cpp:580 src/addon_management.cpp:605
 #: src/multiplayer_wait.cpp:403
 msgid "Response"
 msgstr "Отговор"
 
-#: src/addon_management.cpp:628
+#: src/addon_management.cpp:632
 #, fuzzy
 msgid "Downloading add-on: $addon_title|..."
 msgstr "Сваляне на допълнение..."
 
-#: src/addon_management.cpp:643
+#: src/addon_management.cpp:647
 msgid ""
 "The add-on has an invalid file or directory name and can not be installed."
 msgstr ""
 
-#: src/addon_management.cpp:692
+#: src/addon_management.cpp:696
 #, fuzzy
 msgid "The add-on '$addon_title|' has been successfully installed."
 msgstr "Допълнението бе инсталирано."
 
-#: src/addon_management.cpp:693
+#: src/addon_management.cpp:697
 msgid "Add-on Installed"
 msgstr "Инсталирано допълнение"
 
-#: src/addon_management.cpp:751
+#: src/addon_management.cpp:780
 #, fuzzy
 msgid "Outdated add-ons"
 msgstr "Пращане на допълнението"
 
-#: src/addon_management.cpp:753
+#: src/addon_management.cpp:782
 msgid ""
 "An outdated local add-on has publishing information attached. It will not be "
 "offered for updating."
@@ -6849,57 +6839,57 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/addon_management.cpp:762
+#: src/addon_management.cpp:791
 msgid "Could not find any updated add-ons on this server."
 msgstr ""
 
-#: src/addon_management.cpp:762
+#: src/addon_management.cpp:791
 msgid "No add-ons to update"
 msgstr ""
 
-#: src/addon_management.cpp:776 src/addon_management.cpp:979
+#: src/addon_management.cpp:805 src/addon_management.cpp:1005
 #: src/dialogs.cpp:575 src/menu_events.cpp:203 src/menu_events.cpp:839
 msgid "Name"
 msgstr "Име"
 
-#: src/addon_management.cpp:776
+#: src/addon_management.cpp:805
 #, fuzzy
 msgid "New version"
 msgstr "Версия"
 
-#: src/addon_management.cpp:776
+#: src/addon_management.cpp:805
 #, fuzzy
 msgid "Old version"
 msgstr "Версия"
 
-#: src/addon_management.cpp:777 src/addon_management.cpp:980
+#: src/addon_management.cpp:806 src/addon_management.cpp:1006
 msgid "Author"
 msgstr "Автор"
 
-#: src/addon_management.cpp:777 src/addon_management.cpp:980
+#: src/addon_management.cpp:806 src/addon_management.cpp:1006
 msgid "Size"
 msgstr "Размер"
 
-#: src/addon_management.cpp:831
+#: src/addon_management.cpp:857
 #, fuzzy
 msgid "Update add-ons"
 msgstr "Пращане на допълнението"
 
-#: src/addon_management.cpp:832
+#: src/addon_management.cpp:858
 msgid "Select an add-on to update:"
 msgstr ""
 
-#: src/addon_management.cpp:846
+#: src/addon_management.cpp:872
 #, fuzzy
 msgid "Update all"
 msgstr "Пещерна стена"
 
-#: src/addon_management.cpp:903
+#: src/addon_management.cpp:929
 #, fuzzy
 msgid "Update failed"
 msgstr "Пещерна стена"
 
-#: src/addon_management.cpp:905
+#: src/addon_management.cpp:931
 #, fuzzy
 msgid "The following add-on could not be downloaded or updated successfully:"
 msgid_plural ""
@@ -6907,91 +6897,91 @@ msgid_plural ""
 msgstr[0] "Следните допълнителни кампании имаха грешки и не бяха заредени:"
 msgstr[1] "Следните допълнителни кампании имаха грешки и не бяха заредени:"
 
-#: src/addon_management.cpp:914
+#: src/addon_management.cpp:940
 #, fuzzy
 msgid "Update succeeded"
 msgstr "Свали допълнения"
 
-#: src/addon_management.cpp:915
+#: src/addon_management.cpp:941
 msgid "Add-on updated successfully."
 msgstr ""
 
-#: src/addon_management.cpp:916
+#: src/addon_management.cpp:942
 msgid "All add-ons updated successfully."
 msgstr ""
 
-#: src/addon_management.cpp:940
+#: src/addon_management.cpp:966
 #, fuzzy
 msgid "Connecting to add-ons server..."
 msgstr "Свързване към сървър..."
 
-#: src/addon_management.cpp:943
+#: src/addon_management.cpp:969
 msgid "Could not connect to host."
 msgstr "Свързването към сървъра бе неуспешно."
 
-#: src/addon_management.cpp:951
+#: src/addon_management.cpp:977
 #, fuzzy
 msgid "Requesting list of add-ons"
 msgstr "Запитване за списък с допълнения"
 
-#: src/addon_management.cpp:963
+#: src/addon_management.cpp:989
 #, fuzzy
 msgid "An error occurred while communicating with the server."
 msgstr "Грешка при комуникацията със сървъра."
 
-#: src/addon_management.cpp:979 src/titlescreen.cpp:342
+#: src/addon_management.cpp:1005 src/titlescreen.cpp:342
 msgid "Version"
 msgstr "Версия"
 
-#: src/addon_management.cpp:980
+#: src/addon_management.cpp:1006
 msgid "Downloads"
 msgstr "Сваляния"
 
-#: src/addon_management.cpp:980 src/help.cpp:1458 src/menu_events.cpp:202
+#: src/addon_management.cpp:1006 src/help.cpp:1458 src/menu_events.cpp:202
 #: src/menu_events.cpp:838 src/menu_events.cpp:1414
 msgid "Type"
 msgstr "Тип"
 
-#: src/addon_management.cpp:1050
+#: src/addon_management.cpp:1070
 msgid "Publish add-on: "
 msgstr "Публикувай допълнение: "
 
-#: src/addon_management.cpp:1056
+#: src/addon_management.cpp:1076
 msgid "Delete add-on: "
 msgstr "Изтрий допълнение: "
 
-#: src/addon_management.cpp:1062
+#: src/addon_management.cpp:1082
 msgid "There are no add-ons available for download from this server."
 msgstr "Няма допълнения за сваляне на този сървър."
 
-#: src/addon_management.cpp:1075
+#: src/addon_management.cpp:1095
 #, fuzzy
 msgid "Get add-ons"
 msgstr "Свали допълнения"
 
-#: src/addon_management.cpp:1076
+#: src/addon_management.cpp:1096
 msgid "Choose the add-on to download."
 msgstr "Избери допълнение за сваляне."
 
-#: src/addon_management.cpp:1089
-msgid "Description"
-msgstr ""
-
-#: src/addon_management.cpp:1093 src/dialogs.cpp:600 src/menu_events.cpp:898
+#: src/addon_management.cpp:1108 src/dialogs.cpp:600 src/menu_events.cpp:898
 #: src/menu_events.cpp:1450
 #, fuzzy
 msgid "Filter: "
 msgstr "Умения: "
 
-#: src/addon_management.cpp:1130
+#: src/addon_management.cpp:1113
+msgid "Description"
+msgstr ""
+
+#: src/addon_management.cpp:1150
 msgid "Network communication error."
 msgstr "Грешка при мрежовата комуникация."
 
-#: src/addon_management.cpp:1133
+#: src/addon_management.cpp:1153
 msgid "Remote host disconnected."
 msgstr "Връзката с отдалечения сървър е прекъсната."
 
-#: src/addon_management.cpp:1136
+#: src/addon_management.cpp:1156
 #, fuzzy
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
@@ -7000,45 +6990,41 @@ msgstr ""
 "Възникна проблем при създаването на файловете, необходими за инсталирането "
 "на кампанията."
 
-#: src/addon_management.cpp:1154
+#: src/addon_management.cpp:1174
 #, fuzzy
 msgid "You have no add-ons installed."
 msgstr "Допълнения не бяха инсталирани."
 
-#: src/addon_management.cpp:1166
+#: src/addon_management.cpp:1186
 msgid "Choose the add-on to remove."
 msgstr "Избери допълнение за сваляне."
 
-#: src/addon_management.cpp:1166
+#: src/addon_management.cpp:1186
 #, fuzzy
 msgid "Uninstall add-ons"
 msgstr "Пращане на допълнението"
 
-#: src/addon_management.cpp:1178
+#: src/addon_management.cpp:1198
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr ""
 
-#: src/addon_management.cpp:1183 src/multiplayer.cpp:225
+#: src/addon_management.cpp:1203 src/multiplayer.cpp:225
 msgid "Confirm"
 msgstr "Потвърди"
 
-#: src/addon_management.cpp:1195
+#: src/addon_management.cpp:1215
 #, fuzzy
 msgid "Add-on '$addon|' deleted."
 msgstr "Допълнение изтрито"
 
-#: src/addon_management.cpp:1200
+#: src/addon_management.cpp:1220
 msgid "Add-on deleted"
 msgstr "Допълнение изтрито"
 
-#: src/addon_management.cpp:1208
+#: src/addon_management.cpp:1228
 #, fuzzy
 msgid "Add-on could not be deleted properly:"
 msgstr "Допълнението не беше изтрито - липсва файл."
-
-#: src/ai/default/move.cpp:85
-msgid "Movement cost is 0, probably a terrain with movement cost of 0."
-msgstr ""
 
 #: src/attack_prediction_display.cpp:107 src/attack_prediction_display.cpp:217
 msgid "Attacker"
@@ -7112,7 +7098,7 @@ msgstr "Наистина ли искате ли да изтриете запис
 msgid "Don't ask me again!"
 msgstr "Не ме питай отново."
 
-#: src/dialogs.cpp:432 src/savegame.cpp:130
+#: src/dialogs.cpp:432 src/savegame.cpp:132
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %Y"
 
@@ -7133,11 +7119,11 @@ msgstr "Игра в мрежа"
 msgid "Tutorial"
 msgstr "Обучение"
 
-#: src/dialogs.cpp:483 src/savegame.cpp:948
+#: src/dialogs.cpp:483 src/savegame.cpp:950
 msgid "replay"
 msgstr "повторение"
 
-#: src/dialogs.cpp:485 src/savegame.cpp:1021
+#: src/dialogs.cpp:485 src/savegame.cpp:1022
 msgid "Turn"
 msgstr "Ход"
 
@@ -7153,20 +7139,20 @@ msgstr "Трудност: "
 msgid "Version: "
 msgstr "Версия: "
 
-#: src/dialogs.cpp:516 src/dialogs.cpp:532 src/savegame.cpp:159
-#: src/savegame.cpp:175
+#: src/dialogs.cpp:516 src/dialogs.cpp:532 src/savegame.cpp:161
+#: src/savegame.cpp:177
 msgid "%b %d %y"
 msgstr "%b %d %y"
 
-#: src/dialogs.cpp:522 src/savegame.cpp:165
+#: src/dialogs.cpp:522 src/savegame.cpp:167
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/dialogs.cpp:525 src/savegame.cpp:168
+#: src/dialogs.cpp:525 src/savegame.cpp:170
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-#: src/dialogs.cpp:528 src/savegame.cpp:171
+#: src/dialogs.cpp:528 src/savegame.cpp:173
 msgid "%b %d"
 msgstr "%b %d"
 
@@ -7243,12 +7229,11 @@ msgstr "Ходове: "
 msgid "The Battle for Wesnoth"
 msgstr "Битката за Уеснот"
 
-#: src/game.cpp:995 src/game.cpp:1003 src/playsingle_controller.cpp:476
-#: src/playsingle_controller.cpp:531
+#: src/game.cpp:995 src/game.cpp:1003
 msgid "The file you have tried to load is corrupt"
 msgstr "Файлът е повреден"
 
-#: src/game.cpp:998 src/game.cpp:1006 src/savegame.cpp:535
+#: src/game.cpp:998 src/game.cpp:1006 src/savegame.cpp:537
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Файлът който се опитвате да заредите е повреден: '"
 
@@ -7373,11 +7358,11 @@ msgstr "Победа:"
 msgid "Defeat:"
 msgstr "Загуба:"
 
-#: src/game_events.cpp:3499
+#: src/game_events.cpp:3503
 msgid "[unit_worth]'s filter didn't match any units!"
 msgstr ""
 
-#: src/gamestatus.cpp:740
+#: src/gamestatus.cpp:741
 msgid ""
 "Leader position not empty - duplicate side definition for side '$side|' "
 "found."
@@ -7706,70 +7691,70 @@ msgstr "Случайна"
 msgid "?"
 msgstr "?"
 
-#: src/loadscreen.cpp:245
+#: src/loadscreen.cpp:244
 #, fuzzy
 msgid "Verifying cache..."
 msgstr "Проверяване на кеша."
 
-#: src/loadscreen.cpp:264
+#: src/loadscreen.cpp:262
 #, fuzzy
 msgid "Reading unit files..."
 msgstr "Четена на файловете с единици."
 
-#: src/loadscreen.cpp:283
+#: src/loadscreen.cpp:280
 #, fuzzy
 msgid "Reading files and creating cache..."
 msgstr "Четене на файлове и създаване на кеш."
 
-#: src/lobby_data.cpp:238 src/multiplayer_lobby.cpp:431
+#: src/lobby_data.cpp:195 src/multiplayer_lobby.cpp:431
 #, fuzzy
 msgid "Unknown era: $era_id"
 msgstr "Непозната ера"
 
-#: src/lobby_data.cpp:243 src/multiplayer_lobby.cpp:435
+#: src/lobby_data.cpp:200 src/multiplayer_lobby.cpp:435
 msgid "Unknown era"
 msgstr "Непозната ера"
 
-#: src/lobby_data.cpp:298 src/multiplayer_lobby.cpp:497
+#: src/lobby_data.cpp:255 src/multiplayer_lobby.cpp:497
 msgid "Remote scenario"
 msgstr "Отдалечена мисия"
 
-#: src/lobby_data.cpp:306 src/multiplayer_lobby.cpp:504
+#: src/lobby_data.cpp:263 src/multiplayer_lobby.cpp:504
 #, fuzzy
 msgid "Unknown scenario: $scenario_id"
 msgstr "Непозната мисия: '"
 
-#: src/lobby_data.cpp:311 src/multiplayer_lobby.cpp:508
+#: src/lobby_data.cpp:268 src/multiplayer_lobby.cpp:508
 msgid "Unknown scenario"
 msgstr "Непозната мисия"
 
-#: src/lobby_data.cpp:317 src/multiplayer_lobby.cpp:513
+#: src/lobby_data.cpp:274 src/multiplayer_lobby.cpp:513
 #, fuzzy
 msgid "Reloaded game"
 msgstr "Зареждане на запазена игра за един играч"
 
-#: src/lobby_data.cpp:328 src/multiplayer_lobby.cpp:529
+#: src/lobby_data.cpp:285 src/multiplayer_lobby.cpp:529
 #, fuzzy
 msgid "Turn "
 msgstr "Ход"
 
-#: src/lobby_data.cpp:332 src/multiplayer_lobby.cpp:533
+#: src/lobby_data.cpp:289 src/multiplayer_lobby.cpp:533
 #, fuzzy
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Свободно място:"
 msgstr[1] "Свободно място:"
 
-#: src/lobby_data.cpp:338 src/multiplayer_lobby.cpp:544
+#: src/lobby_data.cpp:295 src/multiplayer_lobby.cpp:544
 msgid "Fog"
 msgstr "Мъгла"
 
-#: src/lobby_data.cpp:341 src/lobby_data.cpp:344 src/multiplayer_create.cpp:83
+#: src/lobby_data.cpp:298 src/lobby_data.cpp:301 src/multiplayer_create.cpp:83
 #: src/multiplayer_lobby.cpp:548 src/multiplayer_lobby.cpp:554
 msgid "Shroud"
 msgstr "Було"
 
-#: src/lobby_data.cpp:346 src/multiplayer_lobby.cpp:558
+#: src/lobby_data.cpp:303 src/multiplayer_lobby.cpp:558
 msgid "none"
 msgstr "няма"
 
@@ -9001,12 +8986,12 @@ msgstr ""
 msgid "Starting game"
 msgstr "Прекъсване на играта"
 
-#: src/play_controller.cpp:929 src/savegame.cpp:290 src/savegame.cpp:302
-#: src/savegame.cpp:974 src/savegame.cpp:976
+#: src/play_controller.cpp:924 src/savegame.cpp:292 src/savegame.cpp:304
+#: src/savegame.cpp:976 src/savegame.cpp:978
 msgid "Auto-Save"
 msgstr "Автоматично запазване"
 
-#: src/play_controller.cpp:936
+#: src/play_controller.cpp:931
 msgid "Back to turn "
 msgstr "Обратно към ход"
 
@@ -9030,39 +9015,39 @@ msgstr ""
 msgid "Downloading next scenario..."
 msgstr "Сваляне на следващата мисия..."
 
-#: src/playcampaign.cpp:590
+#: src/playcampaign.cpp:589
 msgid "Do you want to save your game?"
 msgstr "Искате ли да запазите играта?"
 
-#: src/playcampaign.cpp:609
+#: src/playcampaign.cpp:607
 #, fuzzy
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Непозната мисия: '"
 
-#: src/playmp_controller.cpp:92
+#: src/playmp_controller.cpp:93
 msgid "$name has taken control"
 msgstr ""
 
-#: src/playmp_controller.cpp:94
+#: src/playmp_controller.cpp:95
 #, fuzzy
 msgid "Turn changed"
 msgstr "далечен бой"
 
-#: src/playmp_controller.cpp:228
+#: src/playmp_controller.cpp:227
 msgid "Undoing moves not yet transmitted to the server."
 msgstr ""
 
-#: src/playmp_controller.cpp:307
+#: src/playmp_controller.cpp:301
 #, fuzzy
 msgid "End scenario"
 msgstr "Отдалечена мисия"
 
-#: src/playmp_controller.cpp:408
+#: src/playmp_controller.cpp:400
 #, fuzzy
 msgid "Waiting for next scenario..."
 msgstr "Изчакване началото на играта..."
 
-#: src/playmp_controller.cpp:537
+#: src/playmp_controller.cpp:520
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -9138,7 +9123,7 @@ msgstr "Край на Играта"
 msgid "The game is over."
 msgstr "Играта приключи."
 
-#: src/playsingle_controller.cpp:487
+#: src/playsingle_controller.cpp:484
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game\n"
@@ -9146,179 +9131,174 @@ msgid ""
 msgstr ""
 "Мрежата бе прекъсната и играта не може да продължи. Искате ли да я запазите?"
 
-#: src/playsingle_controller.cpp:653
+#: src/playsingle_controller.cpp:644
 #, fuzzy
 msgid "It is now $name|'s turn"
 msgstr "Вие сте на ход"
 
-#: src/playsingle_controller.cpp:868
+#: src/playsingle_controller.cpp:859
 msgid "Scenario Report"
 msgstr "Доклад от мисията"
 
-#: src/playsingle_controller.cpp:870
+#: src/playsingle_controller.cpp:861
 msgid "Victory"
 msgstr "Победа"
 
-#: src/playsingle_controller.cpp:871
+#: src/playsingle_controller.cpp:862
 msgid "You have emerged victorious!"
 msgstr "Вие сте победител!"
 
-#: src/playturn.cpp:230
+#: src/playturn.cpp:217
 msgid "Replace with AI"
 msgstr "Замяна с компютър"
 
-#: src/playturn.cpp:231
+#: src/playturn.cpp:218
 msgid "Replace with local player"
 msgstr "Замяна с локален играч"
 
-#: src/playturn.cpp:232
+#: src/playturn.cpp:219
 msgid "Abort game"
 msgstr "Прекъсване на играта"
 
-#: src/playturn.cpp:238 src/playturn.cpp:252
+#: src/playturn.cpp:225 src/playturn.cpp:239
 #, fuzzy
 msgid "Replace with $player"
 msgstr "Замяна с локален играч"
 
-#: src/playturn.cpp:258
+#: src/playturn.cpp:245
 #, fuzzy
 msgid "$player has left the game. What do you want to do?"
 msgstr "излезе от играта. Как ще постъпите?"
 
-#: src/replay_controller.cpp:81
-#, fuzzy
-msgid "The file you have tried to load is corrupt. Continue playing?"
-msgstr "Файлът е повреден"
-
-#: src/savegame.cpp:202 src/savegame.cpp:204
+#: src/savegame.cpp:204 src/savegame.cpp:206
 msgid " replay"
 msgstr " повторение"
 
-#: src/savegame.cpp:445 src/savegame.cpp:449
+#: src/savegame.cpp:447 src/savegame.cpp:451
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Внимание: Файлът, който се опитвате да заредите е повреден. Зареждане. \n"
 
-#: src/savegame.cpp:488
+#: src/savegame.cpp:490
 msgid "This save is from a version too old to be loaded."
 msgstr "Записът е от прекалено стара версия на играта, за да бъде зареден. "
 
-#: src/savegame.cpp:492
+#: src/savegame.cpp:494
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr "Записът е от друга версия на играта, Искате ли да го заредите?"
 
-#: src/savegame.cpp:541
+#: src/savegame.cpp:543
 msgid "This is not a multiplayer save"
 msgstr "Това не е игра за мрежова игра"
 
-#: src/savegame.cpp:607
+#: src/savegame.cpp:609
 #, fuzzy
 msgid "The game could not be saved: "
 msgstr "Играта не бе запазена"
 
-#: src/savegame.cpp:694
+#: src/savegame.cpp:696
 #, fuzzy
 msgid "Name: "
 msgstr "Име:"
 
-#: src/savegame.cpp:694
+#: src/savegame.cpp:696
 #, fuzzy
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Записът съществува. Желаете ли да го заместите с нов?"
 
-#: src/savegame.cpp:695
+#: src/savegame.cpp:697
 msgid "Overwrite?"
 msgstr "Заместване?"
 
-#: src/savegame.cpp:705
+#: src/savegame.cpp:707
 #, fuzzy
 msgid "Save names should not end on '.gz'. Please choose a different name."
 msgstr ""
 "Имената на игрите не могат да съдържат специални символи като кавички и "
 "наклонени черти. Моля изберете друго име."
 
-#: src/savegame.cpp:767
+#: src/savegame.cpp:769
 msgid "Saved"
 msgstr "Запазена"
 
-#: src/savegame.cpp:767
+#: src/savegame.cpp:769
 msgid "The game has been saved"
 msgstr "Играта бе запазена"
 
-#: src/savegame.cpp:801 src/savegame.cpp:826
+#: src/savegame.cpp:803 src/savegame.cpp:828
 msgid "Could not write to file"
 msgstr "Записът невъзможен "
 
-#: src/savegame.cpp:939
+#: src/savegame.cpp:941
 #, fuzzy
 msgid "Save Replay"
 msgstr "Повторение"
 
-#: src/savegame.cpp:957
+#: src/savegame.cpp:959
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 "Автоматичното запазване на играта е невъзможно. Моля запазете играта ръчно."
 
-#: src/savegame.cpp:1009
+#: src/savegame.cpp:1010
 msgid "Save Game"
 msgstr "Запази играта"
 
-#: src/serialization/parser.cpp:131
+#: src/serialization/parser.cpp:129
 msgid "Unexpected characters at line start"
 msgstr "Неочаквани знаци в началото на реда"
 
-#: src/serialization/parser.cpp:161
+#: src/serialization/parser.cpp:159
 msgid "Missing closing tag for tag $tag at $pos"
 msgstr "Липсващ затварящ маркер за маркер $tag на $pos"
 
-#: src/serialization/parser.cpp:176
+#: src/serialization/parser.cpp:174
 msgid "Unterminated [element] tag"
 msgstr "Неопределен [element] маркер"
 
-#: src/serialization/parser.cpp:186 src/serialization/parser.cpp:224
+#: src/serialization/parser.cpp:184 src/serialization/parser.cpp:222
 msgid "Invalid tag name"
 msgstr "Невалидно име на маркер"
 
-#: src/serialization/parser.cpp:189
+#: src/serialization/parser.cpp:187
 msgid "Unterminated [+element] tag"
 msgstr "Неопределен [+element] маркер"
 
-#: src/serialization/parser.cpp:205
+#: src/serialization/parser.cpp:203
 msgid "Invalid closing tag name"
 msgstr "Невалидно име на затварящ маркер"
 
-#: src/serialization/parser.cpp:208
+#: src/serialization/parser.cpp:206
 msgid "Unterminated closing tag"
 msgstr "Неприключен затварящ маркер"
 
-#: src/serialization/parser.cpp:210
+#: src/serialization/parser.cpp:208
 msgid "Unexpected closing tag"
 msgstr "Неочакван затварящ маркер"
 
-#: src/serialization/parser.cpp:218
+#: src/serialization/parser.cpp:216
 #, fuzzy
 msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
 msgstr "Невалиден затварящ маркер $tag2 за маркер $tag (отворен на $pos)"
 
-#: src/serialization/parser.cpp:243 src/serialization/parser.cpp:255
+#: src/serialization/parser.cpp:241 src/serialization/parser.cpp:253
 msgid "Empty variable name"
 msgstr "Празно име на променлива"
 
-#: src/serialization/parser.cpp:249
+#: src/serialization/parser.cpp:247
 msgid "Unexpected characters after variable name (expected , or =)"
 msgstr "Неочаквани знаци след име на променлива(очаква се , или =)"
 
-#: src/serialization/parser.cpp:284 src/serialization/parser.cpp:308
+#: src/serialization/parser.cpp:282 src/serialization/parser.cpp:306
 msgid "Unterminated quoted string"
 msgstr "Незатворен цитат"
 
-#: src/serialization/parser.cpp:350
+#: src/serialization/parser.cpp:348
 msgid "$error, value '$value', previous '$previous_value' at $pos"
 msgstr ""
 
-#: src/serialization/parser.cpp:354
+#: src/serialization/parser.cpp:352
 #, fuzzy
 msgid "$error, value '$value' at $pos"
 msgstr "$error на $pos"
@@ -9524,42 +9504,42 @@ msgstr "Помогнете на Уеснот, като ни пращате ин�
 msgid "No time of day has been defined."
 msgstr "Произволно време на денонощието в началото"
 
-#: src/unit.cpp:506
+#: src/unit.cpp:509
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr ""
 
-#: src/unit.cpp:688
+#: src/unit.cpp:691
 msgid "Unknown unit type '$type|'"
 msgstr ""
 
-#: src/unit.cpp:2338 src/unit.cpp:2523 src/unit.cpp:2596
+#: src/unit.cpp:2341 src/unit.cpp:2526 src/unit.cpp:2599
 #, fuzzy
 msgid " and "
 msgstr "Песъчлив терен"
 
-#: src/unit.cpp:2349
+#: src/unit.cpp:2352
 msgid "$attack_list|: $effect_description"
 msgstr ""
 
-#: src/unit.cpp:2414
+#: src/unit.cpp:2417
 #, fuzzy
 msgid "moves"
 msgstr "Ходове"
 
-#: src/unit.cpp:2432 src/unit.cpp:2550
+#: src/unit.cpp:2435 src/unit.cpp:2553
 msgid "XP to advance"
 msgstr "Опит, оставащ до повишение"
 
-#: src/unit.cpp:2542
+#: src/unit.cpp:2545
 #, fuzzy
 msgid " move"
 msgstr "Ходове"
 
-#: src/unit.cpp:2558
+#: src/unit.cpp:2561
 msgid "$effect_description per level"
 msgstr ""
 
-#: src/unit.cpp:2605
+#: src/unit.cpp:2608
 msgid "$trait_name|: $trait_description "
 msgstr ""
 
@@ -9614,7 +9594,7 @@ msgstr "лоялна"
 msgid "female^neutral"
 msgstr "немъртва"
 
-#: src/upload_log.cpp:368
+#: src/upload_log.cpp:367
 #, fuzzy
 msgid ""
 "Wesnoth relies on volunteers like yourself for feedback, especially "
@@ -9627,21 +9607,25 @@ msgstr ""
 "подобрим играта, като позволите да се изпратят тези обобщения(анонимно) на "
 "wesnoth.org.\n"
 
-#: src/upload_log.cpp:369
+#: src/upload_log.cpp:368
 msgid "Summaries are stored here:"
 msgstr "Обобщенията е пазят тук:"
 
-#: src/upload_log.cpp:371
+#: src/upload_log.cpp:370
 msgid "You can view the results at:"
 msgstr "Може да разгледате резултатите на:"
 
-#: src/upload_log.cpp:373
+#: src/upload_log.cpp:372
 msgid "Help us make Wesnoth better for you!"
 msgstr "Помогнете ни да направим Уеснот по-добър за Вас!"
 
-#: src/upload_log.cpp:375
+#: src/upload_log.cpp:374
 msgid "Enable summary uploads"
 msgstr "Позволи качване на обобщения"
+
+#, fuzzy
+#~ msgid "The file you have tried to load is corrupt. Continue playing?"
+#~ msgstr "Файлът е повреден"
 
 #, fuzzy
 #~ msgid "Can rest while moving, takes a quarter less poison damage"
