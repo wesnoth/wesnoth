@@ -2230,7 +2230,7 @@ void display::refresh_report(reports::TYPE report_num, reports::report report,
 
 			if (brighten) {
 				surface tod_bright(image::get_image(game_config:: tod_bright_image));
-				if (!tod_bright)
+				if (tod_bright)
 					draw_image_for_report(tod_bright, area);
 			}
 
