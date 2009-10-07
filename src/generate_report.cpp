@@ -68,7 +68,7 @@ report generate_report(TYPE type,
                        const config& level, bool show_everything)
 {
 	unit_map &units = *resources::units;
-	gamemap map = *resources::game_map;
+	gamemap &map = *resources::game_map;
 	std::vector<team> &teams = *resources::teams;
 
 	const unit *u = NULL;
