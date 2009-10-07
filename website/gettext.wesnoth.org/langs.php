@@ -14,6 +14,7 @@ $langs['fr'] = 'French';
 $langs['fur_IT'] = 'Friulian';
 $langs['el'] = 'Greek';
 $langs['en_GB'] = 'British English';
+$langs['en@shaw'] = 'Shavian';
 $langs['eo'] = 'Esperanto';
 $langs['et'] = 'Estonian';
 $langs['gl'] = 'Galician';
