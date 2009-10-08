@@ -425,8 +425,6 @@ void game_display::redraw_units(const std::vector<map_location>& invalidated_uni
 
 void game_display::draw_report(reports::TYPE report_num)
 {
-	bool brighten;
-
 	if(!team_valid()) {
 		return;
 	}
@@ -437,7 +435,7 @@ void game_display::draw_report(reports::TYPE report_num)
 							  selectedHex_, mouseoverHex_, displayedUnitHex_,
 		observers_, level_, !viewpoint_);
 
-	brighten = false;
+	bool brighten = false;
 	if(report_num == reports::TIME_OF_DAY) {
 		time_of_day tod = tod_manager_.time_of_day_at(units_,mouseoverHex_,get_map());
 		// Don't show illuminated time on fogged/shrouded tiles
