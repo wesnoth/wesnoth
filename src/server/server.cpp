@@ -164,11 +164,11 @@ void make_add_diff(const simple_wml::node& src, const char* gamelist,
                    const char* type,
                    simple_wml::document& out, int index=-1)
 {
-	if(out.root().child("gamelist_diff") == NULL) {
+	if (!out.child("gamelist_diff")) {
 		out.root().add_child("gamelist_diff");
 	}
 
-	simple_wml::node* top = out.root().child("gamelist_diff");
+	simple_wml::node* top = out.child("gamelist_diff");
 	if(gamelist) {
 		top = &top->add_child("change_child");
 		top->set_attr_int("index", 0);
@@ -193,11 +193,11 @@ bool make_delete_diff(const simple_wml::node& src,
                       const simple_wml::node* remove,
 					  simple_wml::document& out)
 {
-	if(out.root().child("gamelist_diff") == NULL) {
+	if (!out.child("gamelist_diff")) {
 		out.root().add_child("gamelist_diff");
 	}
 
-	simple_wml::node* top = out.root().child("gamelist_diff");
+	simple_wml::node* top = out.child("gamelist_diff");
 	if(gamelist) {
 		top = &top->add_child("change_child");
 		top->set_attr_int("index", 0);
@@ -223,11 +223,11 @@ bool make_change_diff(const simple_wml::node& src,
 					  const simple_wml::node* item,
 					  simple_wml::document& out)
 {
-	if(out.root().child("gamelist_diff") == NULL) {
+	if (!out.child("gamelist_diff")) {
 		out.root().add_child("gamelist_diff");
 	}
 
-	simple_wml::node* top = out.root().child("gamelist_diff");
+	simple_wml::node* top = out.child("gamelist_diff");
 	if(gamelist) {
 		top = &top->add_child("change_child");
 		top->set_attr_int("index", 0);
@@ -360,7 +360,7 @@ void server::send_error(network::connection sock, const char* msg, const char* e
 {
 	simple_wml::document doc;
 	doc.root().add_child("error").set_attr("message", msg);
-	if(strlen(error_code)) (*(doc.root().child("error"))).set_attr("error_code", error_code);
+	if (strlen(error_code)) doc.child("error")->set_attr("error_code", error_code);
 	send_doc(doc, sock, "error");
 }
 
@@ -387,14 +387,13 @@ void server::send_password_request(network::connection sock, const char* msg,
 	seeds_.insert(std::pair<network::connection,std::string>(sock, salt));
 
 	simple_wml::document doc;
-	doc.root().add_child("error").set_attr("message", msg);
-	(*(doc.root().child("error"))).set_attr("password_request", "yes");
-	(*(doc.root().child("error"))).set_attr("phpbb_encryption",
-			user_handler_->use_phpbb_encryption() ? "yes" : "no");
-	(*(doc.root().child("error"))).set_attr("salt", (pepper + salt).c_str());
-	(*(doc.root().child("error"))).set_attr("force_confirmation",
-			force_confirmation ? "yes" : "no");
-	if(strlen(error_code)) (*(doc.root().child("error"))).set_attr("error_code", error_code);
+	simple_wml::node& e = doc.root().add_child("error");
+	e.set_attr("message", msg);
+	e.set_attr("password_request", "yes");
+	e.set_attr("phpbb_encryption", user_handler_->use_phpbb_encryption() ? "yes" : "no");
+	e.set_attr("salt", (pepper + salt).c_str());
+	e.set_attr("force_confirmation", force_confirmation ? "yes" : "no");
+	if (strlen(error_code)) e.set_attr("error_code", error_code);
 
 	send_doc(doc, sock, "error");
 }
@@ -1815,7 +1814,7 @@ void server::process_data_lobby(const network::connection sock,
 		return;
 	}
 
-	if (data.root().child("create_game")) {
+	if (const simple_wml::node* create_game = data.child("create_game")) {
 		if (graceful_restart) {
 			static simple_wml::document leave_game_doc("[leave_game]\n[/leave_game]\n", simple_wml::INIT_COMPRESSED);
 			send_doc(leave_game_doc, sock);
@@ -1823,8 +1822,8 @@ void server::process_data_lobby(const network::connection sock,
 			send_doc(games_and_users_list_, sock);
 			return;
 		}
-		const std::string game_name = (*data.root().child("create_game"))["name"].to_string();
-		const std::string game_password = (*data.root().child("create_game"))["password"].to_string();
+		const std::string game_name = (*create_game)["name"].to_string();
+		const std::string game_password = (*create_game)["password"].to_string();
 		DBG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
 			<< "\tcreates a new game: \"" << game_name << "\".\n";
 		// Create the new game, remove the player from the lobby
@@ -1835,7 +1834,7 @@ void server::process_data_lobby(const network::connection sock,
 			g.set_password(game_password);
 		}
 
-		data.root().child("create_game")->copy_into(g.level().root());
+		create_game->copy_into(g.level().root());
 		rooms_.exit_lobby(sock);
 		simple_wml::document diff;
 		if(make_change_diff(games_and_users_list_.root(), NULL,
@@ -1846,10 +1845,10 @@ void server::process_data_lobby(const network::connection sock,
 	}
 
 	// See if the player is joining a game
-	if (data.root().child("join")) {
-		const bool observer = data.root().child("join")->attr("observe").to_bool();
-		const std::string& password = (*data.root().child("join"))["password"].to_string();
-		int game_id = (*data.root().child("join"))["id"].to_int();
+	if (const simple_wml::node* join = data.child("join")) {
+		const bool observer = join->attr("observe").to_bool();
+		const std::string& password = (*join)["password"].to_string();
+		int game_id = (*join)["id"].to_int();
 
 		const std::vector<wesnothd::game*>::iterator g =
 			std::find_if(games_.begin(),games_.end(), wesnothd::game_id_matches(game_id));
@@ -1916,7 +1915,7 @@ void server::process_data_lobby(const network::connection sock,
 
 		//send notification of changes to the game and user
 		simple_wml::document diff;
-		bool diff1 = make_change_diff(*games_and_users_list_.root().child("gamelist"),
+		bool diff1 = make_change_diff(*games_and_users_list_.child("gamelist"),
 					      "gamelist", "game", (*g)->description(), diff);
 		bool diff2 = make_change_diff(games_and_users_list_.root(), NULL,
 					      "user", pl->second.config_address(), diff);
@@ -1975,7 +1974,7 @@ void server::process_data_game(const network::connection sock,
 	wesnothd::game* g = *itor;
 
 	// If this is data describing the level for a game.
-	if (data.root().child("side")) {
+	if (data.child("side")) {
 		if (!g->is_owner(sock)) {
 			return;
 		}
@@ -2009,7 +2008,7 @@ void server::process_data_game(const network::connection sock,
 			assert(gamelist != NULL);
 			simple_wml::node& desc = gamelist->add_child("game");
 			g->level().root().copy_into(desc);
-			if (const simple_wml::node* m = data.root().child("multiplayer")) {
+			if (const simple_wml::node* m = data.child("multiplayer")) {
 				m->copy_into(desc);
 			} else {
 				WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
@@ -2166,7 +2165,7 @@ void server::process_data_game(const network::connection sock,
 
 			// Send all other players in the lobby the update to the gamelist.
 			simple_wml::document diff;
-			bool diff1 = make_change_diff(*games_and_users_list_.root().child("gamelist"),
+			bool diff1 = make_change_diff(*games_and_users_list_.child("gamelist"),
 						      "gamelist", "game", g->description(), diff);
 			bool diff2 = make_change_diff(games_and_users_list_.root(), NULL,
 						      "user", pl->second.config_address(), diff);
@@ -2232,7 +2231,7 @@ void server::process_data_game(const network::connection sock,
 			}
 			// Send all other players in the lobby the update to the gamelist.
 			simple_wml::document diff;
-			make_change_diff(*games_and_users_list_.root().child("gamelist"),
+			make_change_diff(*games_and_users_list_.child("gamelist"),
 						      "gamelist", "game", g->description(), diff);
 			const wesnothd::player_map::iterator pl2 = players_.find(user);
 			if (pl2 == players_.end()) {
@@ -2348,7 +2347,7 @@ void server::delete_game(std::vector<wesnothd::game*>::iterator game_it) {
 void server::update_game_in_lobby(const wesnothd::game* g, network::connection exclude)
 {
 	simple_wml::document diff;
-	if(make_change_diff(*games_and_users_list_.root().child("gamelist"), "gamelist", "game", g->description(), diff)) {
+	if (make_change_diff(*games_and_users_list_.child("gamelist"), "gamelist", "game", g->description(), diff)) {
 		rooms_.lobby().send_data(diff, exclude);
 	}
 }
