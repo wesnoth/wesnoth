@@ -237,6 +237,9 @@ public:
 	virtual std::vector<goal_ptr>& get_goals() = 0;
 
 
+	virtual double get_leader_aggression() const = 0;
+
+
 	virtual config get_leader_goal() const = 0;
 
 
@@ -655,6 +658,13 @@ public:
 	{
 		return target_->get_goals();
 	}
+
+
+	virtual double get_leader_aggression() const
+	{
+		return target_->get_leader_aggression();
+	}
+
 
 
 	virtual config get_leader_goal() const
@@ -1188,6 +1198,9 @@ public:
 	virtual double get_number_of_possible_recruits_to_force_recruit() const;
 
 
+	virtual double get_leader_aggression() const;
+
+
 	virtual config get_leader_goal() const;
 
 
@@ -1311,6 +1324,7 @@ private:
 	aspect_type< std::string >::typesafe_ptr grouping_;
 	std::vector< goal_ptr > goals_;
 	mutable std::set<map_location> keeps_;
+	aspect_type<double>::typesafe_ptr leader_aggression_;
 	aspect_type< config >::typesafe_ptr leader_goal_;
 	aspect_type< double >::typesafe_ptr leader_value_;
 	mutable bool move_maps_enemy_valid_;

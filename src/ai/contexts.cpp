@@ -158,6 +158,7 @@ readonly_context_impl::readonly_context_impl(side_context &context, const config
 		grouping_(),
 		goals_(),
 		keeps_(),
+		leader_aggression_(),
 		leader_goal_(),
 		leader_value_(),
 		move_maps_enemy_valid_(false),
@@ -188,6 +189,7 @@ readonly_context_impl::readonly_context_impl(side_context &context, const config
 		add_known_aspect("avoid",avoid_);
 		add_known_aspect("caution",caution_);
 		add_known_aspect("grouping",grouping_);
+		add_known_aspect("leader_aggression",leader_aggression_);
 		add_known_aspect("leader_goal",leader_goal_);
 		add_known_aspect("leader_value",leader_value_);
 		add_known_aspect("number_of_possible_recruits_to_force_recruit",number_of_possible_recruits_to_force_recruit_);
@@ -608,6 +610,14 @@ std::vector<goal_ptr>& readonly_context_impl::get_goals()
 }
 
 
+
+double readonly_context_impl::get_leader_aggression() const
+{
+	if (leader_aggression_) {
+		return leader_aggression_->get();
+	}
+	return 0;
+}
 
 
 config readonly_context_impl::get_leader_goal() const

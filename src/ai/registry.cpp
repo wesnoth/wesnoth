@@ -137,6 +137,9 @@ static register_aspect_factory< composite_aspect<double> >
 static register_aspect_factory< composite_aspect<std::string> >
 	grouping__composite_aspect_factory("grouping*composite_aspect");
 
+static register_aspect_factory< composite_aspect<double> >
+	leader_aggression__composite_aspect_factory("leader_aggression*composite_aspect");
+
 static register_aspect_factory< composite_aspect<config> >
 	leader_goal__composite_aspect_factory("leader_goal*composite_aspect");
 
@@ -199,6 +202,9 @@ static register_aspect_factory< standard_aspect<double> >
 static register_aspect_factory< standard_aspect<std::string> >
 	grouping__standard_aspect_factory("grouping*standard_aspect");
 
+static register_aspect_factory< standard_aspect<double> >
+	leader_aggression__standard_aspect_factory("leader_aggression*standard_aspect");
+
 static register_aspect_factory< standard_aspect<config> >
 	leader_goal__standard_aspect_factory("leader_goal*standard_aspect");
 
@@ -260,6 +266,9 @@ static register_aspect_factory< standard_aspect<double> >
 
 static register_aspect_factory< standard_aspect<std::string> >
 	grouping__standard_aspect_factory2("grouping*");
+
+static register_aspect_factory< standard_aspect<double> >
+	leader_aggression__standard_aspect_factory2("leader_aggression*");
 
 static register_aspect_factory< standard_aspect<config> >
 	leader_goal__standard_aspect_factory2("leader_goal*");
