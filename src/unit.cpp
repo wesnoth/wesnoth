@@ -353,7 +353,7 @@ unit_race::GENDER unit::generate_gender(const unit_type& type, bool gen, game_st
 }
 
 unit::unit(unit_map *unitmap, const unit_type *t, int side,
-		bool use_traits, bool dummy_unit, unit_race::GENDER gender, std::string variation, bool force_gender, bool force_generate_name) :
+		bool use_traits, unit_race::GENDER gender, std::string variation) :
 	cfg_(),
 	loc_(),
 	advances_to_(),
@@ -375,7 +375,7 @@ unit::unit(unit_map *unitmap, const unit_type *t, int side,
 	image_mods_(),
 	unrenamable_(false),
 	side_(side),
-	gender_(dummy_unit||force_gender ? gender : generate_gender(*t,use_traits)),
+	gender_(gender != unit_race::NUM_GENDERS ? gender : generate_gender(*t,true)),
 	alpha_(),
 	unit_formula_(),
 	unit_loop_formula_(),
@@ -424,12 +424,12 @@ unit::unit(unit_map *unitmap, const unit_type *t, int side,
 {
 	cfg_["upkeep"]="full";
 	advance_to(t);
-	if(dummy_unit == false) validate_side(side_);
-	if(use_traits || force_generate_name) {
+
+	if(use_traits) {
 		// Units that don't have traits generated are just
 		// generic units, so they shouldn't get a description
 		// either.
-		name_ = generate_name();
+		generate_name();
 	}
 	generate_traits(!use_traits);
 	reset_modifications();
@@ -1518,7 +1518,7 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 		alignment_ = unit_type::NEUTRAL;
 	}
 	if(utils::string_bool(cfg["generate_name"])) {
-		name_ = generate_name(state ? &(state->rng()) : 0);
+		generate_name(state ? &(state->rng()) : 0);
 		cfg_["generate_name"] = "";
 	}
 

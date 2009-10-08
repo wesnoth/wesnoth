@@ -67,7 +67,7 @@ public:
 	unit(unit_map* unitmap,
 		const config& cfg, bool use_traits=false, game_state* state = 0);
 	/** Initializes a unit from a unit type */
-	unit(unit_map* unitmap, const unit_type* t, int side, bool use_traits=false, bool dummy_unit=false, unit_race::GENDER gender=unit_race::MALE, std::string variation="", bool force_gender=false, bool force_generate_name=false);
+	unit(unit_map* unitmap, const unit_type* t, int side, bool use_traits=false, unit_race::GENDER gender=unit_race::NUM_GENDERS, std::string variation="");
 	virtual ~unit();
 	unit& operator=(const unit&);
 
@@ -312,8 +312,8 @@ public:
 	void remove_temporary_modifications();
 	void generate_traits(bool musthaveonly=false, game_state* state = 0);
 	void generate_traits_description();
-	std::string generate_name(rand_rng::simple_rng *rng = 0) const
-	{ return race_->generate_name(gender_, rng); }
+	void generate_name(rand_rng::simple_rng *rng = 0) 
+	{ name_ = race_->generate_name(gender_, rng); }
 
 	// Only see_all=true use caching
 	bool invisible(const map_location& loc,

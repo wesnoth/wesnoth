@@ -1382,7 +1382,10 @@ void menu_handler::create_unit_2(mouse_handler& mousehandler)
 		gender = ut.genders().front();
 	}
 
-	unit chosen(&units_, &ut, 1, false, false, gender, "", true, generate_name);
+	unit chosen(&units_, &ut, 1, false, gender, "");
+	if(generate_name)
+		chosen.generate_name();
+	
 	chosen.new_turn();
 
 	const map_location& loc = mousehandler.get_last_hex();
@@ -1471,11 +1474,9 @@ void menu_handler::create_unit(mouse_handler& mousehandler)
 		last_selection = choice;
 		random_gender  = random_gender_choice;
 
-		const std::vector<unit_race::GENDER>& genders = (*unit_choices[choice]).genders();
-		const unit_race::GENDER gender =
-			(!genders.empty() ? genders[gamestate_.rng().get_random() % genders.size()] : unit_race::MALE);
+		const unit_race::GENDER gender = random_gender ? unit_race::NUM_GENDERS : unit_race::MALE;
 
-		unit chosen(&units_, unit_choices[choice], 1, false, false, gender, "", random_gender);
+		unit chosen(&units_, unit_choices[choice], 1, false, gender, "");
 		chosen.new_turn();
 
 		const map_location& loc = mousehandler.get_last_hex();

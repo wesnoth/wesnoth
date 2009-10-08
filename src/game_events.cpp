@@ -1081,7 +1081,7 @@ WML_HANDLER_FUNCTION(move_unit_fake, /*event_info*/, cfg)
 		const unit_race::GENDER gender = string_gender(cfg["gender"]);
 		const unit_type_data::unit_type_map::const_iterator itor = unit_type_data::types().find_unit_type(type);
 		if(itor != unit_type_data::types().end()) {
-			unit dummy_unit(resources::units, &itor->second, side_num + 1, false, true, gender, variation);
+			unit dummy_unit(resources::units, &itor->second, side_num + 1, false, gender, variation);
 			const std::vector<std::string> xvals = utils::split(x);
 			const std::vector<std::string> yvals = utils::split(y);
 			std::vector<map_location> path;

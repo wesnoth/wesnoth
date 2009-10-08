@@ -1257,7 +1257,7 @@ attack::attack(const map_location &attacker, const map_location &defender,
 					LOG_NG << "found unit type:" << reanimitor->second.id() << std::endl;
 					if(reanimitor != unit_type_data::types().end()) {
 						unit newunit(&units_, &reanimitor->second,
-						             a_.get_unit().side(), true, true);
+						             a_.get_unit().side(), true, unit_race::MALE);
 						newunit.set_attacks(0);
 						// Apply variation
 						if(strcmp(undead_variation.c_str(), "null")) {
@@ -1530,7 +1530,7 @@ attack::attack(const map_location &attacker, const map_location &defender,
 					LOG_NG << "found unit type:" << reanimitor->second.id() << std::endl;
 					if(reanimitor != unit_type_data::types().end()) {
 						unit newunit(&units_, &reanimitor->second,
-						             d_.get_unit().side(), true, true);
+						             d_.get_unit().side(), true, unit_race::MALE);
 						// Apply variation
 						if(strcmp(undead_variation.c_str(),"null")){
 							config mod;
