@@ -252,7 +252,7 @@ void game::update_side_data() {
 	if (!lg::debug.dont_log(log_server)) {
 		for (simple_wml::node::child_list::const_iterator side = level_sides.begin();
 				side != level_sides.end(); ++side)
-			DBG_GAME << "[side]\n" << (**side).output() << "[/side]\n";
+			DBG_GAME << "[side]\n" << simple_wml::node_to_string(**side) << "[/side]\n";
 	}
 	// For each user:
 	// * Find the username.
@@ -763,7 +763,7 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 		if (!is_current_player(user->first)
 		&& !is_legal_command(**command, player)) {
 			LOG_GAME << "ILLEGAL COMMAND in game: " << id_ << " ((("
-				<< (**command).output() << ")))\n";
+				<< simple_wml::node_to_string(**command) << ")))\n";
 			std::stringstream msg;
 			msg << "Removing illegal command '" << (**command).first_child().to_string()
 				<< "' from: " << user->second.name()
@@ -942,7 +942,6 @@ bool game::add_player(const network::connection player, bool observer) {
 	user->second.set_status((observer || became_observer) ? player::OBSERVING : player::PLAYING);
 	DBG_GAME << debug_player_info();
 	// Send the user the game data.
-	//std::cerr << "SENDING LEVEL {{{" << level_.output() << "}}}\n";
 	if (!wesnothd::send_to_one(level_, player)) return false;
 
 	if(started_) {
@@ -1224,7 +1223,7 @@ void game::save_replay() {
 		const simple_wml::node::child_list& turn_list = (*i)->root().children("turn");
 		for (simple_wml::node::child_list::const_iterator turn = turn_list.begin();
 				turn != turn_list.end(); ++turn) {
-			replay_commands += (*turn)->output();
+			replay_commands += simple_wml::node_to_string(**turn);
 		}
 		delete *i;
 	}

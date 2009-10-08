@@ -140,9 +140,10 @@ public:
 
 	bool is_dirty() const { return output_cache_.is_null(); }
 
+	enum CACHE_STATUS { REFRESH_CACHE, DO_NOT_MODIFY_CACHE };
+
 	int output_size() const;
-	void output(char*& buf);
-	const char* output();
+	void output(char*& buf, CACHE_STATUS status=DO_NOT_MODIFY_CACHE);
 
 	void copy_into(node& n) const;
 
@@ -202,6 +203,8 @@ private:
 
 	string_span output_cache_;
 };
+
+std::string node_to_string(const node& n);
 
 enum INIT_BUFFER_CONTROL { INIT_TAKE_OWNERSHIP };
 

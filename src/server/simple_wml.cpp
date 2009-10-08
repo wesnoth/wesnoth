@@ -691,11 +691,13 @@ void node::shift_buffers(ptrdiff_t offset)
 	}
 }
 
-void node::output(char*& buf)
+void node::output(char*& buf, CACHE_STATUS cache_status)
 {
 	if(output_cache_.empty() == false) {
 		memcpy(buf, output_cache_.begin(), output_cache_.size());
-		shift_buffers(buf - output_cache_.begin());
+		if(cache_status == REFRESH_CACHE) {
+			shift_buffers(buf - output_cache_.begin());
+		}
 		buf += output_cache_.size();
 		return;
 	}
@@ -726,7 +728,7 @@ void node::output(char*& buf)
 		buf += attr.size();
 		*buf++ = ']';
 		*buf++ = '\n';
-		children_[i->child_map_index].second[i->child_list_index]->output(buf);
+		children_[i->child_map_index].second[i->child_list_index]->output(buf, cache_status);
 		*buf++ = '[';
 		*buf++ = '/';
 		memcpy(buf, attr.begin(), attr.size());
@@ -735,20 +737,21 @@ void node::output(char*& buf)
 		*buf++ = '\n';
 	}
 
-	output_cache_ = string_span(begin, buf - begin);
+	if(cache_status == REFRESH_CACHE) {
+		output_cache_ = string_span(begin, buf - begin);
+	}
 }
-const char* node::output() {
-	const char* out;
 
-	const int buf_size = output_size() + 1;
-	char* buf = new char[buf_size];
-	out = buf;
-
-	output(buf);
-	*buf++ = 0;
-	assert(buf == out + buf_size);
-
-	return out;
+std::string node_to_string(const node& n)
+{
+	//calling output with status=DO_NOT_MODIFY_CACHE really doesn't modify the
+	//node, so we can do it safely
+	node& mutable_node = const_cast<node&>(n);
+	std::vector<char> v(mutable_node.output_size());
+	char* ptr = &v[0];
+	mutable_node.output(ptr, node::DO_NOT_MODIFY_CACHE);
+	assert(ptr == &v[0] + v.size());
+	return std::string(v.begin(), v.end());
 }
 
 void node::copy_into(node& n) const
@@ -1004,7 +1007,7 @@ const char* document::output()
 	buffers_.push_back(buf);
 	output_ = buf;
 
-	root_->output(buf);
+	root_->output(buf, node::REFRESH_CACHE);
 	*buf++ = 0;
 	assert(buf == output_ + buf_size);
 
