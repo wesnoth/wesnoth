@@ -852,6 +852,16 @@ void tevent_handler::connect_signals(twidget& w)
 
 	w.connect_signal<event::SDL_KEY_DOWN>(
 			boost::bind(&tevent_handler::sdl_key_down, this, _5, _6, _7));
+
+
+	w.connect_signal<event::SDL_WHEEL_UP>(
+			boost::bind(&tevent_handler::sdl_wheel, this, _2));
+	w.connect_signal<event::SDL_WHEEL_DOWN>(
+			boost::bind(&tevent_handler::sdl_wheel, this, _2));
+	w.connect_signal<event::SDL_WHEEL_LEFT>(
+			boost::bind(&tevent_handler::sdl_wheel, this, _2));
+	w.connect_signal<event::SDL_WHEEL_RIGHT>(
+			boost::bind(&tevent_handler::sdl_wheel, this, _2));
 }
 
 void tevent_handler::sdl_mouse_motion(
@@ -1063,6 +1073,13 @@ void tevent_handler::sdl_key_down(const SDLKey key
 
 			return;
 		}
+	}
+}
+
+void tevent_handler::sdl_wheel(const event::tevent event)
+{
+	if(keyboard_focus_) {
+		get_window().fire(event, *keyboard_focus_);
 	}
 }
 

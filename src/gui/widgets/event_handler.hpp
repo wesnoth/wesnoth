@@ -518,6 +518,7 @@ private:
 			, const SDLMod modifier
 			, const Uint16 unicode);
 
+	void sdl_wheel(const event::tevent event);
 };
 
 } // namespace gui2
