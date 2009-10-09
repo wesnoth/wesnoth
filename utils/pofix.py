@@ -41,6 +41,10 @@ stringfixes = {
 ("That will let you chose which hex you put a new unit in.", "That will let you choose which hex you put a new unit in."),
 ("that have a least one", "that have at least one"),
 ("Apply Filer", "Apply Filter"),
+("DejaVuSans.ttf,wqy-zenhei.ttc", "DejaVuSans.ttf,Andagii.ttf,wqy-zenhei.ttc"),
+("DejaVu Sans,WenQuanYi Zen Hei", "DejaVu Sans,Andagii,WenQuanYi Zen Hei"),
+("wqy-zenhei.ttc,DejaVuSans.ttf", "wqy-zenhei.ttc,DejaVuSans.ttf,Andagii.ttf"),
+("WenQuanYi Zen Hei,DejaVu Sans,", "WenQuanYi Zen Hei,DejaVu Sans,Andagii"),
 ),
 
 "wesnoth-aoi" : (
