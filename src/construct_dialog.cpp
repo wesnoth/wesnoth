@@ -248,6 +248,7 @@ void dialog::set_menu_items(const std::vector<std::string> &menu_items)
 		set_menu(menu_items);
 	} else {
 		menu_->set_items(menu_items);
+		menu_->reset_selection();
 
 		for(pp_iterator i = preview_panes_.begin(); i != preview_panes_.end(); ++i) {
 			(**i).set_selection(menu_->selection());
@@ -905,7 +906,6 @@ void filter_textbox::handle_text_changed(const wide_string& text) {
 	}
 
 	dialog_.set_menu_items(filtered_items_);
-	dialog_.get_menu().reset_selection();
 }
 
 int message_dialog::show(msecs minimum_lifetime)
