@@ -335,20 +335,19 @@ void unit::clear_status_caches()
 	units_with_cache.clear();
 }
 
-unit_race::GENDER unit::generate_gender(const unit_type& type, bool gen, game_state* state)
+void unit::generate_gender(const unit_type& type, bool random_gender, game_state* state)
 {
 	const std::vector<unit_race::GENDER>& genders = type.genders();
 	// Once random gender is used, don't do it again.
 	// Such as when restoring a saved character.
 	cfg_["random_gender"] = "no";
-	if(genders.empty() == false) {
-		if(state) {
-			return gen ? genders[state->rng().get_random() % genders.size()] : genders.front();
-		} else {
-			return gen ? genders[get_random() % genders.size()] : genders.front();
-		}
+	if(genders.empty()) {
+		gender_ = unit_race::MALE;
+	} else if(random_gender == false || genders.size() == 1) {
+		gender_ = genders.front();
 	} else {
-		return unit_race::MALE;
+		int random = state ? state->rng().get_random() : get_random();
+		gender_ = genders[random % genders.size()];
 	}
 }
 
@@ -375,11 +374,11 @@ unit::unit(unit_map *unitmap, const unit_type *t, int side,
 	image_mods_(),
 	unrenamable_(false),
 	side_(side),
-	gender_(gender != unit_race::NUM_GENDERS ? gender : generate_gender(*t,real_unit)),
+	gender_(gender),
 	alpha_(),
 	unit_formula_(),
 	unit_loop_formula_(),
-        unit_priority_formula_(),
+    unit_priority_formula_(),
 	formula_vars_(),
 	recruits_(),
 	movement_(0),
@@ -422,6 +421,10 @@ unit::unit(unit_map *unitmap, const unit_type *t, int side,
 	units_(unitmap),
 	invisibility_cache_()
 {
+	if(gender_ == unit_race::NUM_GENDERS) {
+		generate_gender(*t, real_unit);
+	}
+	
 	cfg_["upkeep"]="full";
 	advance_to(t);
 
@@ -637,7 +640,8 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 	bool do_heal = false; // Track whether unit should get fully healed.
 
 	if(utils::string_bool(cfg_["random_gender"], false)) {
-		cfg_["gender"] = gender_string(generate_gender(*t,true));
+		generate_gender(*t, true);
+		cfg_["gender"] = gender_string(gender_);
 	}
 
 	if(type_id()!=t->id()) {
@@ -1306,7 +1310,8 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	hit_points_=1;
 
 	if(cfg["gender"].empty()) {
-		gender_ = generate_gender(*type(), utils::string_bool(cfg_["random_gender"], false), state);
+		bool random_gender = utils::string_bool(cfg_["random_gender"], false);
+		generate_gender(*type(), random_gender, state);
 	} else {
 		gender_ = string_gender(cfg["gender"]);
 	}

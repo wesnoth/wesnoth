@@ -328,7 +328,8 @@ public:
 	 **/
 	unit& clone(bool is_temporary=true);
 
-	unit_race::GENDER generate_gender(const unit_type& type, bool gen, game_state* state = 0);
+	void generate_gender(const unit_type& type, bool random_gender,
+			game_state* state = 0);
 	std::string image_mods() const;
 
 	/**
