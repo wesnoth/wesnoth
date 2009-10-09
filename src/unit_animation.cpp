@@ -1002,6 +1002,26 @@ void unit_animator::add_animation(unit* animated_unit,const std::string& event,
 	start_time_ = std::max<int>(start_time_,tmp.animation->get_begin_time());
 	animated_units_.push_back(tmp);
 }
+void unit_animator::add_animation(unit* animated_unit,const unit_animation* anim,
+		const map_location &src , bool with_bars,bool cycles,
+		const std::string text,const Uint32 text_color)
+{
+	if(!animated_unit) return;
+	anim_elem tmp;
+	tmp.my_unit = animated_unit;
+	tmp.text = text;
+	tmp.text_color = text_color;
+	tmp.src = src;
+	tmp.with_bars= with_bars;
+	tmp.cycles = cycles;
+	tmp.animation = anim;
+	if(!tmp.animation) return;
+
+
+
+	start_time_ = std::max<int>(start_time_,tmp.animation->get_begin_time());
+	animated_units_.push_back(tmp);
+}
 void unit_animator::replace_anim_if_invalid(unit* animated_unit,const std::string& event,
 		const map_location &src , const map_location & dst,
 		const int value,bool with_bars,bool cycles,

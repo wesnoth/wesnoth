@@ -33,7 +33,7 @@ class unit_animation
 		/** Shouldn't be used so only declared. */
 		unit_animation();
 	public:
-		typedef enum { MATCH_FAIL=-2 , DEFAULT_ANIM=-1} variation_type;
+		typedef enum { MATCH_FAIL=-10 , DEFAULT_ANIM=-9} variation_type;
 		typedef enum { HIT, MISS, KILL, INVALID} hit_type;
 
 		static const std::vector<std::string>& all_tag_names();
@@ -141,6 +141,10 @@ class unit_animator
 		}
 
 
+		void add_animation(unit* animated_unit,const unit_animation * animation,
+				const map_location &src = map_location::null_location,
+				bool with_bars = false,bool cycles = false,
+				const std::string text="",const Uint32 text_color=0);
 		void add_animation(unit* animated_unit,const std::string& event,
 				const map_location &src = map_location::null_location,
 				const map_location &dst = map_location::null_location,

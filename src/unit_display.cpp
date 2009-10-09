@@ -226,6 +226,7 @@ void move_unit(const std::vector<map_location>& path, unit& u,
 	disp->invalidate(path.back());
 }
 
+void reset_helpers(const unit *attacker,const unit *defender);
 
 void unit_draw_weapon(const map_location& loc, unit& attacker,
 		const attack_type* attack,const attack_type* secondary_attack, const map_location& defender_loc,unit* defender)
@@ -268,6 +269,7 @@ void unit_sheath_weapon(const map_location& primary_loc, unit* primary_unit,
 	if(secondary_unit) {
 		secondary_unit->set_standing();
 	}
+	reset_helpers(primary_unit,secondary_unit);
 
 }
 
@@ -288,6 +290,7 @@ void unit_die(const map_location& loc, unit& loser,
 	animator.start_animations();
 	animator.wait_for_end();
 
+	reset_helpers(winner,&loser);
 	events::mouse_handler* mousehandler = events::mouse_handler::get_singleton();
 	if (mousehandler) {
 		mousehandler->invalidate_reachmap();
@@ -335,50 +338,51 @@ void unit_attack(
 	unit_ability_list leaders = attacker.get_abilities("leadership");
 	unit_ability_list helpers = defender.get_abilities("resistance");
 
-	{
-		std::string text ;
-		if(damage) text = lexical_cast<std::string>(damage);
-		if(!hit_text.empty()) {
-			text.insert(text.begin(),hit_text.size()/2,' ');
-			text = text + "\n" + hit_text;
-		}
-
-		std::string text_2 ;
-		if(drain && damage) text_2 = lexical_cast<std::string>(std::min<int>(damage,defender.hitpoints())/2);
-		if(!att_text.empty()) {
-			text_2.insert(text_2.begin(),att_text.size()/2,' ');
-			text_2 = text_2 + "\n" + att_text;
-		}
-
-		unit_animation::hit_type hit_type;
-		if(damage >= defender.hitpoints()) {
-			hit_type = unit_animation::KILL;
-		} else if(damage > 0) {
-			hit_type = unit_animation::HIT;
-		}else {
-			hit_type = unit_animation::MISS;
-		}
-		animator.add_animation(&attacker,"attack",att->first,def->first,damage,true,false,text_2,display::rgb(0,255,0),hit_type,&attack,secondary_attack,swing);
-		animator.add_animation(&defender,"defend",def->first,att->first,damage,true,false,text  ,display::rgb(255,0,0),hit_type,&attack,secondary_attack,swing);
-
-		for (std::vector<std::pair<const config *, map_location> >::iterator itor = leaders.cfgs.begin(); itor != leaders.cfgs.end(); itor++) {
-			if(itor->second == a) continue;
-			if(itor->second == b) continue;
-			unit_map::iterator leader = units.find(itor->second);
-			assert(leader != units.end());
-			leader->second.set_facing(itor->second.get_relative_dir(a));
-			animator.add_animation(&leader->second,"leading",itor->second,att->first,damage,true,false,"",0,hit_type,&attack,secondary_attack,swing);
-		}
-		for (std::vector<std::pair<const config *, map_location> >::iterator itor = helpers.cfgs.begin(); itor != helpers.cfgs.end(); itor++) {
-			if(itor->second == a) continue;
-			if(itor->second == b) continue;
-			unit_map::iterator helper = units.find(itor->second);
-			assert(helper != units.end());
-			helper->second.set_facing(itor->second.get_relative_dir(b));
-			animator.add_animation(&helper->second,"resistance",itor->second,def->first,damage,true,false,"",0,hit_type,&attack,secondary_attack,swing);
-		}
-
+	std::string text ;
+	if(damage) text = lexical_cast<std::string>(damage);
+	if(!hit_text.empty()) {
+		text.insert(text.begin(),hit_text.size()/2,' ');
+		text = text + "\n" + hit_text;
 	}
+
+	std::string text_2 ;
+	if(drain && damage) text_2 = lexical_cast<std::string>(std::min<int>(damage,defender.hitpoints())/2);
+	if(!att_text.empty()) {
+		text_2.insert(text_2.begin(),att_text.size()/2,' ');
+		text_2 = text_2 + "\n" + att_text;
+	}
+
+	unit_animation::hit_type hit_type;
+	if(damage >= defender.hitpoints()) {
+		hit_type = unit_animation::KILL;
+	} else if(damage > 0) {
+		hit_type = unit_animation::HIT;
+	}else {
+		hit_type = unit_animation::MISS;
+	}
+	animator.add_animation(&attacker,"attack",att->first,def->first,damage,true,false,text_2,display::rgb(0,255,0),hit_type,&attack,secondary_attack,swing);
+
+	// note that we take an anim from the real unit, we'll use it later
+	const unit_animation * defender_anim = def->second.choose_animation(*disp,def->first,"defend",att->first,damage,hit_type,&attack,secondary_attack,swing);
+	animator.add_animation(&defender,defender_anim,def->first,true,false,text  ,display::rgb(255,0,0));;
+
+	for (std::vector<std::pair<const config *, map_location> >::iterator itor = leaders.cfgs.begin(); itor != leaders.cfgs.end(); itor++) {
+		if(itor->second == a) continue;
+		if(itor->second == b) continue;
+		unit_map::iterator leader = units.find(itor->second);
+		assert(leader != units.end());
+		leader->second.set_facing(itor->second.get_relative_dir(a));
+		animator.add_animation(&leader->second,"leading",itor->second,att->first,damage,true,false,"",0,hit_type,&attack,secondary_attack,swing);
+	}
+	for (std::vector<std::pair<const config *, map_location> >::iterator itor = helpers.cfgs.begin(); itor != helpers.cfgs.end(); itor++) {
+		if(itor->second == a) continue;
+		if(itor->second == b) continue;
+		unit_map::iterator helper = units.find(itor->second);
+		assert(helper != units.end());
+		helper->second.set_facing(itor->second.get_relative_dir(b));
+		animator.add_animation(&helper->second,"resistance",itor->second,def->first,damage,true,false,"",0,hit_type,&attack,secondary_attack,swing);
+	}
+
 
 	animator.start_animations();
 	animator.wait_until(0);
@@ -393,12 +397,36 @@ void unit_attack(
 		animator.wait_until(animator.get_animation_time_potential() +50);
 	}
 	animator.wait_for_end();
-	animator.set_all_standing();
+	// pass the animation back to the real unit
+	def->second.start_animation(animator.get_end_time(),defender_anim,true);
+	reset_helpers(&att->second,&def->second);
 	disp->remove_temporary_unit();
 	def->second.set_hidden(was_hidden);
-	def->second.set_standing();
 }
 
+// private helper function, set all helpers to default position
+void reset_helpers(const unit *attacker,const unit *defender) 
+{
+	game_display* disp = game_display::get_singleton();
+	unit_map& units = disp->get_units();
+	if(attacker) {
+		unit_ability_list leaders = attacker->get_abilities("leadership");
+		for (std::vector<std::pair<const config *, map_location> >::iterator itor = leaders.cfgs.begin(); itor != leaders.cfgs.end(); itor++) {
+			unit_map::iterator leader = units.find(itor->second);
+			assert(leader != units.end());
+			leader->second.set_standing();
+		}
+	}
+
+	if(defender) {
+		unit_ability_list helpers = defender->get_abilities("resistance");
+		for (std::vector<std::pair<const config *, map_location> >::iterator itor = helpers.cfgs.begin(); itor != helpers.cfgs.end(); itor++) {
+			unit_map::iterator helper = units.find(itor->second);
+			assert(helper != units.end());
+			helper->second.set_standing();
+		}
+	}
+}
 
 void unit_recruited(const map_location& loc,const map_location& leader_loc)
 {
