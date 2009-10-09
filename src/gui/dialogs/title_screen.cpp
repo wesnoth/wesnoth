@@ -83,6 +83,8 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 	video_ = &video;
 
 	set_restore(false);
+	window.set_click_dismiss(false);
+	window.set_escape_disabled(true);
 
 	window.canvas()[0].set_variable("revision_number",
 		variant(_("Version") + std::string(" ") + game_config::revision));
