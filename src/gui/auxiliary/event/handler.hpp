@@ -200,6 +200,13 @@ std::ostream& operator<<(std::ostream& stream, const tevent event);
 
 } // namespace event
 
+/**
+ * Is a dialog open?
+ *
+ * @note added as backwards compatibility for gui::is_in_dialog.
+ */
+bool is_in_dialog();
+
 } // namespace gui2
 
 #endif

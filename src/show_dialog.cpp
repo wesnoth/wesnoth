@@ -18,6 +18,7 @@
 
 #include "display.hpp"
 #include "gettext.hpp"
+#include "gui/auxiliary/event/handler.hpp"
 #include "help.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
@@ -48,7 +49,10 @@ const int dialog_frame::title_border_h = 5;
 
 
 
-bool in_dialog() { return is_in_dialog; }
+bool in_dialog()
+{
+	return is_in_dialog || gui2::is_in_dialog();
+}
 
 dialog_manager::dialog_manager() : cursor::setter(cursor::NORMAL), reset_to(is_in_dialog)
 {

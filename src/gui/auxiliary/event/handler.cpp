@@ -104,6 +104,7 @@ static Uint32 timer_sdl_poll_events(Uint32, void*)
 class thandler
 	: public events::handler
 {
+	friend bool gui2::is_in_dialog();
 public:
 	thandler();
 
@@ -598,6 +599,11 @@ std::ostream& operator<<(std::ostream& stream, const tevent event)
 }
 
 } // namespace event
+
+bool is_in_dialog()
+{
+	return event::handler && !event::handler->dispatchers_.empty();
+}
 
 } // namespace gui2
 
