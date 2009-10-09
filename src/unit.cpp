@@ -353,7 +353,7 @@ unit_race::GENDER unit::generate_gender(const unit_type& type, bool gen, game_st
 }
 
 unit::unit(unit_map *unitmap, const unit_type *t, int side,
-		bool use_traits, unit_race::GENDER gender, std::string variation) :
+		bool real_unit, unit_race::GENDER gender, std::string variation) :
 	cfg_(),
 	loc_(),
 	advances_to_(),
@@ -375,7 +375,7 @@ unit::unit(unit_map *unitmap, const unit_type *t, int side,
 	image_mods_(),
 	unrenamable_(false),
 	side_(side),
-	gender_(gender != unit_race::NUM_GENDERS ? gender : generate_gender(*t,true)),
+	gender_(gender != unit_race::NUM_GENDERS ? gender : generate_gender(*t,real_unit)),
 	alpha_(),
 	unit_formula_(),
 	unit_loop_formula_(),
@@ -425,13 +425,11 @@ unit::unit(unit_map *unitmap, const unit_type *t, int side,
 	cfg_["upkeep"]="full";
 	advance_to(t);
 
-	if(use_traits) {
-		// Units that don't have traits generated are just
-		// generic units, so they shouldn't get a description
-		// either.
+	if(real_unit) {
 		generate_name();
 	}
-	generate_traits(!use_traits);
+	// if not a real unit give only the 'musthave' traits
+	generate_traits(!real_unit);
 	reset_modifications();
 	apply_modifications();
 	set_underlying_id();

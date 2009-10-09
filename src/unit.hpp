@@ -66,8 +66,12 @@ public:
 	unit(const config& cfg, bool use_traits=false);
 	unit(unit_map* unitmap,
 		const config& cfg, bool use_traits=false, game_state* state = 0);
-	/** Initializes a unit from a unit type */
-	unit(unit_map* unitmap, const unit_type* t, int side, bool use_traits=false, unit_race::GENDER gender=unit_race::NUM_GENDERS, std::string variation="");
+	/**
+	  * Initializes a unit from a unit type
+	  * only real_unit may have random traits, name and gender
+	  * (to prevent OOS caused by RNG calls)
+	  */
+	unit(unit_map* unitmap, const unit_type* t, int side, bool real_unit, unit_race::GENDER gender=unit_race::NUM_GENDERS, std::string variation="");
 	virtual ~unit();
 	unit& operator=(const unit&);
 

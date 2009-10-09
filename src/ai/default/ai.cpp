@@ -1433,7 +1433,9 @@ void ai_default_recruitment_stage::analyze_potential_recruit_movements()
 			continue;
 		}
 
-		const unit temp_unit(&get_info().units, &info->second, get_side());
+		//create unit without traits (no random calls)
+		//note that it make the AI never rely on 'quick'
+		const unit temp_unit(&get_info().units, &info->second, get_side(), false);
 		// since we now use the ignore_units switch, no need to use a empty unit_map
 		// unit_map units;
 		// const temporary_unit_placer placer(units,start,temp_unit);

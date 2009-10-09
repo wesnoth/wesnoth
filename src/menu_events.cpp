@@ -1382,9 +1382,11 @@ void menu_handler::create_unit_2(mouse_handler& mousehandler)
 		gender = ut.genders().front();
 	}
 
-	unit chosen(&units_, &ut, 1, false, gender, "");
-	if(generate_name)
-		chosen.generate_name();
+	unit chosen(&units_, &ut, 1, true, gender, "");
+
+	//FIXME: the generate name option seems useless now, remove it
+	if(!generate_name)
+		chosen.set_name("");
 	
 	chosen.new_turn();
 
@@ -1476,7 +1478,7 @@ void menu_handler::create_unit(mouse_handler& mousehandler)
 
 		const unit_race::GENDER gender = random_gender ? unit_race::NUM_GENDERS : unit_race::MALE;
 
-		unit chosen(&units_, unit_choices[choice], 1, false, gender, "");
+		unit chosen(&units_, unit_choices[choice], 1, true, gender);
 		chosen.new_turn();
 
 		const map_location& loc = mousehandler.get_last_hex();
@@ -3242,7 +3244,7 @@ void console_handler::do_create() {
 
 		menu_handler_.units_.erase(loc);
 		menu_handler_.units_.add(loc,
-			unit(&menu_handler_.units_, &i->second, 1, false));
+			unit(&menu_handler_.units_, &i->second, 1, true));
 		menu_handler_.gui_->invalidate(loc);
 		menu_handler_.gui_->invalidate_unit();
 	} else {
