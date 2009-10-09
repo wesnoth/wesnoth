@@ -30,19 +30,19 @@ void ttransient_message::pre_show(CVideo& /*video*/, twindow& window)
 {
 	tlabel& title = find_widget<tlabel>(&window, "title", false);
 	title.set_label(title_);
-	title.set_markup_mode(title_markup_mode_);
+	title.set_use_markup(title_use_markup_);
 
 	tlabel& message = find_widget<tlabel>(&window, "message", false);
 	message.set_label(message_);
-	message.set_markup_mode(message_markup_mode_);
+	message.set_use_markup(message_use_markup_);
 	message.set_can_wrap(true);
 }
 
 void show_transient_message(CVideo& video, const std::string& title,
-	const std::string& message, bool message_markup_mode, bool title_markup_mode)
+	const std::string& message, bool message_use_markup, bool title_use_markup)
 {
-	ttransient_message dlg(title, title_markup_mode,
-			message, message_markup_mode);
+	ttransient_message dlg(title, title_use_markup,
+			message, message_use_markup);
 	dlg.show(video);
 }
 

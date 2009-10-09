@@ -427,11 +427,9 @@ void tlobby_main::update_gamelist()
 		gamelistbox_->add_row(data);
 		tgrid* grid = gamelistbox_->get_row_grid(gamelistbox_->get_item_count() - 1);
 
-		find_widget<tcontrol>(grid, "name", false)
-				.set_markup_mode(true);
+		find_widget<tcontrol>(grid, "name", false).set_use_markup(true);
 
-		find_widget<tcontrol>(grid, "status", false)
-				.set_markup_mode(true);
+		find_widget<tcontrol>(grid, "status", false).set_use_markup(true);
 
 		ttoggle_panel& row_panel =
 				find_widget<ttoggle_panel>(grid, "panel", false);
@@ -549,8 +547,7 @@ void tlobby_main::update_playerlist()
 
 		tgrid* grid = target_list->list->get_row_grid(target_list->list->get_item_count() - 1);
 
-		find_widget<tlabel>(grid, "player", false)
-				.set_markup_mode(true);
+		find_widget<tlabel>(grid, "player", false).set_use_markup(true);
 
 		find_widget<ttoggle_panel>(grid, "userpanel", false)
 				.set_callback_mouse_left_double_click(boost::bind(
@@ -730,7 +727,7 @@ void tlobby_main::increment_waiting_whsipers(const std::string& name)
 			tgrid* grid = roomlistbox_->get_row_grid(t - &open_windows_[0]);
 			//this breaks for some reason
 			//tlabel& label = grid->get_widget<tlabel>("room", false);
-			//label.set_markup_mode(tcontrol::PANGO_MARKUP);
+			//label.set_use_markup(true);
 			//label.set_label(colorize("<" + t->name + ">", "red"));
 			find_widget<timage>(grid, "pending_messages", false)
 					.set_visible(twidget::VISIBLE);
@@ -749,7 +746,7 @@ void tlobby_main::increment_waiting_messages(const std::string& room)
 			tgrid* grid = roomlistbox_->get_row_grid(idx);
 			//this breaks for some reason
 			//tlabel& label = grid->get_widget<tlabel>("room", false);
-			//label.set_markup_mode(tcontrol::PANGO_MARKUP);
+			//label.set_use_markup(true);
 			//label.set_label(colorize(t->name, "red"));
 			find_widget<timage>(grid, "pending_messages", false)
 					.set_visible(twidget::VISIBLE);

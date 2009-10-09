@@ -44,7 +44,7 @@ public:
 	void set_label(const t_string& label);
 
 	/** Inherited from tcontrol. */
-	void set_markup_mode(bool markup_mode);
+	void set_use_markup(bool use_markup);
 
 	/** Inherited from tcontainer_. */
 	void set_self_active(const bool active)

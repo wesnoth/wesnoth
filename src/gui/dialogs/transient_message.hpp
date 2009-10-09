@@ -26,13 +26,13 @@ class ttransient_message
 {
 public:
 	ttransient_message(const std::string& title,
-			bool title_markup_mode,
+			bool title_use_markup,
 			const std::string& message,
-			bool message_markup_mode)
+			bool message_use_markup)
 		: title_(title)
-		, title_markup_mode_(title_markup_mode)
+		, title_use_markup_(title_use_markup)
 		, message_(message)
-		, message_markup_mode_(message_markup_mode)
+		, message_use_markup_(message_use_markup)
 	{}
 
 protected:
@@ -43,14 +43,14 @@ private:
 	/** The title for the dialog. */
 	std::string title_;
 
-	/** The markup mode for the title. */
-	bool title_markup_mode_;
+	/** Use  markup for the title. */
+	bool title_use_markup_;
 
 	/** The message to show to the user. */
 	std::string message_;
 
-	/** The markup mode for the message. */
-	bool message_markup_mode_;
+	/** Use  markup for the message. */
+	bool message_use_markup_;
 
 	/** Inherited from tdialog. */
 	twindow* build_window(CVideo& video);
@@ -69,13 +69,13 @@ private:
  *                            upon.
  * @param title               The title of the dialog.
  * @param message             The message to show in the dialog.
- * @param message_markup_mode The markup mode used for the title.
- * @param title_markup_mod    The markup mode used for the title.
+ * @param message_use_markup  Use markup for the message?
+ * @param title_markup_mod    Use markup for the title?
  */
 void show_transient_message(CVideo& video, const std::string& title,
 	const std::string& message,
-	bool message_markup_mode = false,
-	bool title_markup_mode = false);
+	bool message_use_markup = false,
+	bool title_use_markup = false);
 
 } // namespace gui2
 

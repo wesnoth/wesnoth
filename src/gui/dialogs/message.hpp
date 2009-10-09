@@ -157,15 +157,15 @@ void show_message(CVideo& video, const std::string& title,
  * @param title               The title of the dialog.
  * @param message             The message to show in the dialog.
  * @param button_style        The style of the button(s) shown.
- * @param message_markup_mode The markup mode used for the title.
- * @param title_markup_mod    The markup mode used for the title.
+ * @param message_use_markup  Use markup for the message?
+ * @param title_use_markup    Use markup for the title?
  *
  * @returns                   The retval of the dialog shown.
  */
 int show_message(CVideo& video, const std::string& title,
 	const std::string& message, const tmessage::tbutton_style button_style,
-	bool message_markup_mode = false,
-	bool title_markup_mode = false);
+	bool message_use_markup = false,
+	bool title_use_markup = false);
 
 /**
  * Shows an error message to the user.
@@ -173,10 +173,10 @@ int show_message(CVideo& video, const std::string& title,
  * @param video               The video which contains the surface to draw
  *                            upon.
  * @param message             The message to show in the dialog.
- * @param message_markup_mode The markup mode used for the title.
+ * @param message_use_markup  Use markup for the message?
  */
 void show_error_message(CVideo& video, const std::string& message,
-	bool message_markup_mode = false);
+	bool message_use_markup = false);
 
 } // namespace gui2
 

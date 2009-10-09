@@ -28,7 +28,7 @@ namespace gui2 {
 
 tcontrol::tcontrol(const unsigned canvas_count)
 	: label_()
-	, markup_mode_(false)
+	, use_markup_(false)
 	, use_tooltip_on_label_overflow_(true)
 	, tooltip_()
 	, help_message_()
@@ -71,7 +71,7 @@ void tcontrol::set_members(const string_map& data)
 
 	itor = data.find("use_markup");
 	if(itor != data.end()) {
-		set_markup_mode(utils::string_bool(itor->second));
+		set_use_markup(utils::string_bool(itor->second));
 	}
 }
 
@@ -248,13 +248,13 @@ void tcontrol::set_label(const t_string& label)
 	set_dirty();
 }
 
-void tcontrol::set_markup_mode(bool markup_mode)
+void tcontrol::set_use_markup(bool use_markup)
 {
-	if(markup_mode == markup_mode_) {
+	if(use_markup == use_markup_) {
 		return;
 	}
 
-	markup_mode_ = markup_mode;
+	use_markup_ = use_markup;
 	update_canvas();
 	set_dirty();
 }
@@ -267,7 +267,7 @@ void tcontrol::update_canvas()
 	// set label in canvases
 	foreach(tcanvas& canvas, canvas_) {
 		canvas.set_variable("text", variant(label_));
-		canvas.set_variable("text_markup", variant(markup_mode_));
+		canvas.set_variable("text_markup", variant(use_markup_));
 		canvas.set_variable("text_maximum_width", variant(max_width));
 		canvas.set_variable("text_maximum_height", variant(max_height));
 		canvas.set_variable("text_wrap_mode", variant(can_wrap()
@@ -310,7 +310,7 @@ tpoint tcontrol::get_best_text_size(const tpoint& minimum_size, const tpoint& ma
 	const tpoint border(config_->text_extra_width, config_->text_extra_height);
 	tpoint size = minimum_size - border;
 
-	renderer_.set_text(label_, markup_mode_);
+	renderer_.set_text(label_, use_markup_);
 
 	renderer_.set_font_size(config_->text_font_size);
 	renderer_.set_font_style(config_->text_font_style);

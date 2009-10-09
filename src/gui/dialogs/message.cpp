@@ -149,7 +149,7 @@ void show_message(CVideo& video, const std::string& title,
 
 int show_message(CVideo& video, const std::string& title,
 	const std::string& message, const tmessage::tbutton_style button_style,
-	bool /*message_markup_mode*/,
+	bool /*message_use_markup*/,
 	bool /*message_title_mode*/)
 {
 	/** @todo implement the markup mode. */
@@ -185,11 +185,11 @@ int show_message(CVideo& video, const std::string& title,
 }
 
 void show_error_message(CVideo& video, const std::string& message,
-	bool message_markup_mode)
+	bool message_use_markup)
 {
 	LOG_STREAM(err, lg::general) << message << '\n';
 	show_message(video, _("Error"), message,
-			tmessage::ok_button, message_markup_mode);
+			tmessage::ok_button, message_use_markup);
 }
 
 } // namespace gui2

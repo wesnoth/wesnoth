@@ -200,8 +200,8 @@ public:
 	const t_string& label() const { return label_; }
 	virtual void set_label(const t_string& label);
 
-	virtual void set_markup_mode(bool use_markup);
-	bool get_markup_mode() const { return markup_mode_; }
+	virtual void set_use_markup(bool use_markup);
+	bool get_use_markup() const { return use_markup_; }
 
 	const t_string& tooltip() const { return tooltip_; }
 	// Note setting the tooltip_ doesn't dirty an object.
@@ -253,8 +253,8 @@ private:
 	/** Contain the non-editable text associated with control. */
 	t_string label_;
 
-	/** The markup mode of the label_. */
-	bool markup_mode_;
+	/** Use markup for the label? */
+	bool use_markup_;
 
 	/**
 	 * If the text doesn't fit on the label should the text be used as tooltip?

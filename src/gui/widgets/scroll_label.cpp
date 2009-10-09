@@ -39,15 +39,15 @@ void tscroll_label::set_label(const t_string& label)
 	}
 }
 
-void tscroll_label::set_markup_mode(bool markup_mode)
+void tscroll_label::set_use_markup(bool use_markup)
 {
 	// Inherit.
-	tcontrol::set_markup_mode(markup_mode);
+	tcontrol::set_use_markup(use_markup);
 
 	if(content_grid()) {
 		tlabel* widget =
 				find_widget<tlabel>(content_grid(), "_label", false, true);
-		widget->set_markup_mode(markup_mode);
+		widget->set_use_markup(use_markup);
 	}
 }
 
