@@ -68,6 +68,11 @@ void tcontrol::set_members(const string_map& data)
 	if(itor != data.end()) {
 		set_help_message(itor->second);
 	}
+
+	itor = data.find("use_markup");
+	if(itor != data.end()) {
+		set_markup_mode(utils::string_bool(itor->second));
+	}
 }
 
 bool tcontrol::disable_click_dismiss() const

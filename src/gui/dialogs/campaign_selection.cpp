@@ -112,6 +112,7 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 		std::map<std::string, string_map> detail_page;
 
 		detail_item["label"] = c["description"];
+		detail_item["use_markup"] = "true";
 		detail_page.insert(std::make_pair("description", detail_item));
 
 		detail_item["label"] = c["image"];
