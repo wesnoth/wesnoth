@@ -242,11 +242,13 @@ void ttext_box::delete_selection()
 	set_cursor(start, false);
 }
 
+#ifdef GUI2_OLD_EVENT_HANDLING
 void ttext_box::handle_mouse_selection(
 		tevent_handler& event, const bool start_selection)
 {
 	handle_mouse_selection(event.get_mouse(), start_selection);
 }
+#endif
 
 void ttext_box::handle_mouse_selection(tpoint mouse, const bool start_selection)
 {

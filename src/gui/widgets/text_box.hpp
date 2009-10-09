@@ -163,9 +163,11 @@ protected:
 	/** Inherited from ttext_. */
 	void delete_selection();
 
+#ifdef GUI2_OLD_EVENT_HANDLING
 	/** Handles the selection in a mouse down or mouse move event. */
 	void handle_mouse_selection(
 		tevent_handler& event, const bool start_selection);
+#endif
 
 	void handle_mouse_selection(tpoint mouse, const bool start_selection);
 private:
