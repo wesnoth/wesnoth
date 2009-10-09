@@ -669,7 +669,7 @@ public:
 		minimum_selection::create_item(item_index);
 		placement::create_item(item_index);
 		if(!is_selected(item_index)) {
-				select_action::select(item->grid, false);
+			select_action::select(item->grid, false);
 		}
 	}
 
