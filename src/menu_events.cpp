@@ -199,18 +199,19 @@ void menu_handler::show_statistics(int side_num)
 void menu_handler::unit_list()
 {
 	const std::string heading = std::string(1,HEADING_PREFIX) +
-								_("Type")          + COLUMN_SEPARATOR +
-								_("Name")          + COLUMN_SEPARATOR +
-								_("Level^Lvl.")    + COLUMN_SEPARATOR +
-								_("HP")            + COLUMN_SEPARATOR +
-								_("XP")            + COLUMN_SEPARATOR +
-								_("unit list^Traits") + COLUMN_SEPARATOR +
-								_("Moves")         + COLUMN_SEPARATOR +
-								_("Status");
+								_("Type")          + COLUMN_SEPARATOR + // 0
+								_("Name")          + COLUMN_SEPARATOR + // 1
+								_("Moves")         + COLUMN_SEPARATOR + // 2
+								_("Status")        + COLUMN_SEPARATOR + // 3
+								_("HP")            + COLUMN_SEPARATOR + // 4
+								_("Level^Lvl.")    + COLUMN_SEPARATOR + // 5
+								_("XP")            + COLUMN_SEPARATOR + // 6
+								_("unit list^Traits");                  // 7
 
 	gui::menu::basic_sorter sorter;
-	sorter.set_alpha_sort(0).set_alpha_sort(1).set_numeric_sort(2).set_numeric_sort(3)
-		  .set_xp_sort(4).set_alpha_sort(5).set_numeric_sort(6);
+	sorter.set_alpha_sort(0).set_alpha_sort(1).set_numeric_sort(2);
+	sorter.set_alpha_sort(3).set_numeric_sort(4).set_numeric_sort(5);
+	sorter.set_xp_sort(6).set_alpha_sort(7);
 
 	std::vector<std::string> items;
 	items.push_back(heading);
@@ -242,37 +243,6 @@ void menu_handler::unit_list()
 		}
 		row << i->second.name()   << COLUMN_SEPARATOR;
 
-		// Show units of level (0=gray, 1 normal, 2 bold, 2+ bold&wbright)
-		const int level = i->second.level();
-		if(level < 1) {
-			row << "<150,150,150>";
-		} else if(level == 1) {
-			row << font::NORMAL_TEXT;
-		} else if(level == 2) {
-			row << font::BOLD_TEXT;
-		} if(i->second.level() > 2 ) {
-			row << font::BOLD_TEXT << "<255,255,255>";
-		}
-		row << level << COLUMN_SEPARATOR;
-
-		// Display HP
-		// see also unit_preview_pane in dialogs.cpp
-		row << font::color2markup(i->second.hp_color());
-		row << i->second.hitpoints()  << "/" << i->second.max_hitpoints() << COLUMN_SEPARATOR;
-
-		// Display XP
-		row << font::color2markup(i->second.xp_color());
-		row << i->second.experience() << "/";
-		if(i->second.can_advance()) {
-			row << i->second.max_experience();
-		} else {
-			row << "-";
-		}
-		row << COLUMN_SEPARATOR;
-
-		// TODO: show 'loyal' in green / xxx in red  //  how to handle translations ??
-		row << i->second.traits_description() << COLUMN_SEPARATOR;
-
 		// display move left (0=red, moved=yellow, not moved=green)
 		if(i->second.movement_left() == 0) {
 			row << font::RED_TEXT;
@@ -295,6 +265,39 @@ void menu_handler::unit_list()
 		//if(utils::string_bool(i->second.get_state("hides")))	// "hides" gives ability, not status
 		if(utils::string_bool(i->second.get_state("invisible")))
 			row << IMAGE_PREFIX << "misc/invisible.png";
+
+		row << COLUMN_SEPARATOR;
+
+		// Display HP
+		// see also unit_preview_pane in dialogs.cpp
+		row << font::color2markup(i->second.hp_color());
+		row << i->second.hitpoints()  << "/" << i->second.max_hitpoints() << COLUMN_SEPARATOR;
+
+		// Show units of level (0=gray, 1 normal, 2 bold, 2+ bold&wbright)
+		const int level = i->second.level();
+		if(level < 1) {
+			row << "<150,150,150>";
+		} else if(level == 1) {
+			row << font::NORMAL_TEXT;
+		} else if(level == 2) {
+			row << font::BOLD_TEXT;
+		} if(i->second.level() > 2 ) {
+			row << font::BOLD_TEXT << "<255,255,255>";
+		}
+		row << level << COLUMN_SEPARATOR;
+
+		// Display XP
+		row << font::color2markup(i->second.xp_color());
+		row << i->second.experience() << "/";
+		if(i->second.can_advance()) {
+			row << i->second.max_experience();
+		} else {
+			row << "-";
+		}
+		row << COLUMN_SEPARATOR;
+
+		// TODO: show 'loyal' in green / xxx in red  //  how to handle translations ??
+		row << i->second.traits_description();
 		items.push_back(row.str());
 
 		locations_list.push_back(i->first);
@@ -308,6 +311,9 @@ void menu_handler::unit_list()
 		gui::dialog umenu(*gui_, _("Unit List"), "", gui::NULL_DIALOG);
 		umenu.set_menu(items, &sorter);
 		umenu.add_pane(&unit_preview);
+		//sort by type name
+		umenu.get_menu().sort_by(0);
+
 		umenu.add_button(new gui::standard_dialog_button(gui_->video(), _("Scroll To"), 0, false),
 						 gui::dialog::BUTTON_STANDARD);
 		umenu.add_button(new gui::standard_dialog_button(gui_->video(), _("Close"), 1, true),
