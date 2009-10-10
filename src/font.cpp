@@ -20,14 +20,15 @@
 #include "config.hpp"
 #include "filesystem.hpp"
 #include "font.hpp"
+#include "foreach.hpp"
 #include "game_config.hpp"
 #include "log.hpp"
+#include "marked-up_text.hpp"
+#include "text.hpp"
 #include "tooltips.hpp"
 #include "video.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
-#include "marked-up_text.hpp"
-#include "foreach.hpp"
 
 #include <list>
 #include <set>
@@ -948,7 +949,11 @@ int floating_label::xpos(size_t width) const
 surface floating_label::create_surface()
 {
 	if (surf_.null()) {
-		surface foreground = font::render_text(text_, font_size_, colour_, 0, true);
+		font::ttext text;
+		text.set_foreground_colour((colour_.r << 24) | (colour_.g << 16) | (colour_.b << 8) | 255);
+		text.set_font_size(font_size_);
+		text.set_text(text_, true);
+		surface foreground = text.render();
 
 		if(foreground == NULL) {
 			ERR_FT << "could not create floating label's text" << std::endl;
