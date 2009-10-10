@@ -449,21 +449,49 @@ void ttext::recalculate(const bool force) const
 	}
 }
 
-/**
- * Helper function to decode pixels.
- *
- * @param alpha                   The value of the alpha channel, this value
- *                                must not be zero.
- * @param sub_pixel               The address of a sub pixel, either red,
- *                                green or blue.
- */
-static void decode_pixel(const unsigned char alpha, unsigned char *sub_pixel)
+struct decode_table
 {
-	unsigned colour = *sub_pixel;
-	// Saturate at 255.
-	*sub_pixel = colour >= alpha
-			? 255
-			: static_cast<unsigned char>((colour << 8) / alpha);
+	// 1-based, from 1 to 255.
+	unsigned values[255];
+	decode_table()
+	{
+		for (int i = 1; i < 256; ++i) values[i - 1] = (255 * 256) / i;
+	}
+};
+
+static decode_table decode_table;
+
+/**
+ * Converts from premultiplied alpha to plain alpha.
+ * @param p pointer to a 4-byte endian-dependent color.
+ */
+static void decode_pixel(unsigned char *p)
+{
+// Assume everything not compiled with gcc to be on a little endian platform.
+#if defined(__GNUC__) && defined(__BIG_ENDIAN__)
+	int alpha = p[0];
+#else
+	int alpha = p[3];
+#endif
+	if (alpha == 0) return;
+
+	int div = decode_table.values[alpha - 1];
+
+#define DECODE(i) \
+	do { \
+		unsigned color = p[i]; \
+		color = color * div / 256; \
+		if (color > 255) color = 255; \
+		p[i] = color; \
+	} while (0)
+
+#if defined(__GNUC__) && defined(__BIG_ENDIAN__)
+	DECODE(3);
+#else
+	DECODE(0);
+#endif
+	DECODE(1);
+	DECODE(2);
 }
 
 void ttext::rerender(const bool force) const
@@ -504,25 +532,7 @@ void ttext::rerender(const bool force) const
 			for (int x = 0; x < width; ++x)
 			{
 				unsigned char *pixel = &surface_buffer_[(y * width + x) * 4];
-
-// Assume everything not compiled with gcc to be on a little endian platform.
-#if defined(__GNUC__) && defined(__BIG_ENDIAN__)
-				const unsigned char alpha = *(pixel + 0);
-#else
-				const unsigned char alpha = *(pixel + 3);
-#endif
-				if(alpha == 0) {
-					continue;
-				}
-
-// Assume everything not compiled with gcc to be on a little endian platform.
-#if defined(__GNUC__) && defined(__BIG_ENDIAN__)
-				decode_pixel(alpha, pixel + 3);
-#else
-				decode_pixel(alpha, pixel + 0);
-#endif
-				decode_pixel(alpha, pixel + 1);
-				decode_pixel(alpha, pixel + 2);
+				decode_pixel(pixel);
 			}
 		}
 #else
