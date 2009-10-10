@@ -277,7 +277,7 @@ void menu_handler::unit_list()
 			row << font::NORMAL_TEXT;
 		} else if(level == 2) {
 			row << font::BOLD_TEXT;
-		} if(i->second.level() > 2 ) {
+		} else if(level > 2 ) {
 			row << font::BOLD_TEXT << "<255,255,255>";
 		}
 		row << level << COLUMN_SEPARATOR;
@@ -864,9 +864,22 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 #endif
 		option << COLUMN_SEPARATOR
 			<< u.type_name() << COLUMN_SEPARATOR
-			<< name << COLUMN_SEPARATOR
-			<< u.level() << COLUMN_SEPARATOR
-			<< font::color2markup(u.xp_color()) << u.experience() << "/";
+			<< name << COLUMN_SEPARATOR;
+
+		// Show units of level (0=gray, 1 normal, 2 bold, 2+ bold&wbright)
+		const int level = u.level();
+		if(level < 1) {
+			option << "<150,150,150>";
+		} else if(level == 1) {
+			option << font::NORMAL_TEXT;
+		} else if(level == 2) {
+			option << font::BOLD_TEXT;
+		} else if(level > 2 ) {
+			option << font::BOLD_TEXT << "<255,255,255>";
+		}
+		option << level << COLUMN_SEPARATOR;
+
+		option << font::color2markup(u.xp_color()) << u.experience() << "/";
 		if (u.can_advance())
 			option << u.max_experience();
 		else
