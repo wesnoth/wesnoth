@@ -58,6 +58,7 @@ bool fallback_to_other_ai::do_play_stage()
 {
 	if (fallback_ai_) {
 		LOG_AI_TESTING_STAGE_FALLBACK << "side "<<get_side()<<" : falling back to "<<fallback_ai_->describe_self()<<std::endl;
+		fallback_ai_->new_turn();
 		fallback_ai_->play_turn();
 	} else {
 		ERR_AI_TESTING_STAGE_FALLBACK << "side "<<get_side()<<" : UNABLE TO FALLBACK, fallback ai is NULL"<<std::endl;

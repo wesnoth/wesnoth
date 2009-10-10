@@ -318,12 +318,8 @@ void ai_default::switch_side(side_number side){
 
 void ai_default::new_turn()
 {
-	invalidate_defensive_position_cache();
 	threats_found_ = false;
 	consider_combat_ = true;
-	clear_additional_targets();
-	invalidate_keeps_cache();
-	unit_stats_cache().clear();
 }
 
 std::string ai_default::describe_self(){

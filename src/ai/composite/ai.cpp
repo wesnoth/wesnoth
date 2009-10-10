@@ -125,6 +125,7 @@ void ai_composite::new_turn()
 	recalculate_move_maps();
 	invalidate_defensive_position_cache();
 	invalidate_keeps_cache();
+	clear_additional_targets();
 	unit_stats_cache().clear();
 }
 
