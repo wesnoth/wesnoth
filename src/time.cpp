@@ -22,8 +22,7 @@ namespace ntime {
 
 	source::source() : frame_time_(20),
 			current_time_(SDL_GetTicks()),
-			index_(0),
-			mode_(REAL_TIME)
+			index_(0)
 	{
 		for (int i = 0; i < frames_to_remember; ++i)
 		{
@@ -53,31 +52,7 @@ namespace ntime {
 		// Advance index only in begin of frame
 		index_ = next_index();
 		time_[index_] = current_time;
-		if (mode_ == REAL_TIME)
-		{
-			current_time_ = current_time;
-		}
-		else
-		{
-			// Check if we have allready enought frames
-			// for smooth time calculation
-			if (time_[next_index()])
-			{
-				// smooth calcuations uses rounding to
-				// keep time as near of real time as possible
-				// @todo There should be error correction
-				//		Maybe should use 3 bits shifted values
-
-				size_t average = ((current_time - time_[next_index()]))/((frames_to_remember - 1));
-
-
-				current_time_ += average;
-			}
-			else
-			{
-				current_time_ = current_time;
-			}
-		}
+		current_time_ = current_time;
 		return frame_used;
 	}
 
@@ -94,16 +69,6 @@ namespace ntime {
 	size_t source::get_time() const
 	{
 		return current_time_;
-	}
-
-	void source::set_time_mode(const time_mode& mode)
-	{
-		mode_ = mode;
-	}
-
-	source::time_mode source::get_time_mode() const
-	{
-		return mode_;
 	}
 
 	source& source::get_source()
