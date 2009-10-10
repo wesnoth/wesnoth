@@ -593,6 +593,8 @@ std::ostream& operator<<(std::ostream& stream, const tevent event)
 		case SDL_WHEEL_UP           : stream << "SDL wheel up"; break;
 		case SDL_WHEEL_DOWN         : stream << "SDL wheel down"; break;
 		case SDL_KEY_DOWN           : stream << "SDL key down"; break;
+
+		case NOTIFY_REMOVAL         : stream << "notify removal"; break;
 	}
 
 	return stream;

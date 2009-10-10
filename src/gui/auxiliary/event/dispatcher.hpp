@@ -80,6 +80,22 @@ typedef
 		tsignal_keyboard_function;
 
 /**
+ * Callback function signature.
+ *
+ * This function is used for the callbacks in tset_event_notification.
+ * Added the dummy void* parameter which will be NULL to get a different
+ * signature as tsignal_function's callback.
+ */
+typedef
+		boost::function<void(
+			  tdispatcher& dispatcher
+			, const tevent event
+			, bool& handled
+			, bool& halt
+			, void*)>
+		tsignal_notification_function;
+
+/**
  * Base class for event handling.
  *
  * A dispatcher has slots for events, when an event arrives it looks for the
@@ -157,6 +173,11 @@ public:
 			, const SDLKey key
 			, const SDLMod modifier
 			, const Uint16 unicode);
+
+	/** Fires an event which takes notification parameters. */
+	bool fire(const tevent event
+			, twidget& target
+			, void*);
 
 	/**
 	 * The position where to add a new callback in the signal handler.
@@ -260,6 +281,25 @@ public:
 			, const tposition position = back_child)
 	{
 		signal_keyboard_queue_.connect_signal(E, position, signal);
+	}
+
+	/**
+	 * Connect a signal for callback in tset_event_notification.
+	 *
+	 * @tparam E                     The event the callback needs to react to.
+	 * @param signal                 The callback function.
+	 * @param position               The position to place the callback. Since
+	 *                               the message is send to a widget directly
+	 *                               the pre and post positions make no sense
+	 *                               and shouldn't be used.
+	 */
+	template<tevent E>
+	typename boost::enable_if<boost::mpl::has_key<
+			tset_event_notification, boost::mpl::int_<E> > >::type
+	connect_signal(const tsignal_notification_function& signal
+			, const tposition position = back_child)
+	{
+		signal_notification_queue_.connect_signal(E, position, signal);
 	}
 
 	/**
@@ -378,6 +418,9 @@ private:
 
 	/** Signal queue for callbacks in tset_event_keyboard. */
 	tsignal_queue<tsignal_keyboard_function> signal_keyboard_queue_;
+
+	/** Signal queue for callbacks in tset_event_notification. */
+	tsignal_queue<tsignal_notification_function> signal_notification_queue_;
 
 	/** Are we connected to the event handler. */
 	bool connected_;

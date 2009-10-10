@@ -167,6 +167,52 @@ struct tdispatcher_implementation
 	}
 
 	/**
+	 * Returns the signal structure for a tsignal_notification_function.
+	 *
+	 * There are several functions that only overload the return value, in
+	 * order to do so they use SFINAE.
+	 *
+	 * @tparam F                  tsignal_notification_function.
+	 * @param dispatcher          The dispatcher whose signal queue is used.
+	 * @param event               The event to get the signal for.
+	 *
+	 * @returns                   The signal of the type tdispatcher
+	 *                            ::tsignal<tsignal_notification_function>
+	 */
+	template<class F>
+	static typename boost::enable_if<
+			  boost::is_same<F, tsignal_notification_function>
+			, tdispatcher::tsignal<tsignal_notification_function>
+			>::type&
+	event_signal(tdispatcher& dispatcher, const tevent event)
+	{
+		return dispatcher.signal_notification_queue_.queue[event];
+	}
+
+	/**
+	 * Returns the signal structure for a key in tset_event_notification.
+	 *
+	 * There are several functions that only overload the return value, in
+	 * order to do so they use SFINAE.
+	 *
+	 * @tparam K                  A key in tset_event_notification.
+	 * @param dispatcher          The dispatcher whose signal queue is used.
+	 * @param event               The event to get the signal for.
+	 *
+	 * @returns                   The signal of the type tdispatcher
+	 *                            ::tsignal<tsignal_notification_function>
+	 */
+	template<class K>
+	static typename boost::enable_if<
+			  boost::mpl::has_key<tset_event_notification, K>
+			, tdispatcher::tsignal<tsignal_notification_function>
+			>::type&
+	event_signal(tdispatcher& dispatcher, const tevent event)
+	{
+		return dispatcher.signal_notification_queue_.queue[event];
+	}
+
+	/**
 	 * A helper class to find out wheter dispatcher has an handler for a
 	 * certain event.
 	 */

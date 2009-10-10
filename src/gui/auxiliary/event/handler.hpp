@@ -92,6 +92,11 @@ enum tevent {
 	, SDL_WHEEL_DOWN              /**< A SDL wheel down event. */
 
 	, SDL_KEY_DOWN                /**< A SDL key down event. */
+
+	, NOTIFY_REMOVAL              /**<
+	                               * Send by a widget to notify others it's
+	                               * being destroyed.
+	                               */
 };
 
 /**
@@ -160,6 +165,19 @@ typedef
 			boost::mpl::int_<SDL_KEY_DOWN>
 		>
 		tset_event_keyboard;
+
+/**
+ * Helper for catching use error of tdispatcher::connect_signal.
+ *
+ * This version is for callbacks with a sender aka notification messages. Like the
+ * onces in tset_event it has no extra parameters, but this version is only
+ * send to the target and not using the pre and post queue.
+ */
+typedef
+		boost::mpl::set<
+			boost::mpl::int_<NOTIFY_REMOVAL>
+		>
+		tset_event_notification;
 
 /**
  * Connects a dispatcher to the event handler.

@@ -49,6 +49,12 @@ twidget::~twidget()
 	DBG_GUI_LF << "widget destroy: " << (void*)this
 		<< " (id: " << id_ << ", definition: " << definition_ << ")\n";
 
+	twidget* p = parent();
+	while(p) {
+		fire(event::NOTIFY_REMOVAL, *p, NULL);
+		p = p->parent();
+	}
+
 	twindow* window = get_window();
 	if(!window) {
 		return;
