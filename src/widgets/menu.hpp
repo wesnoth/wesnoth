@@ -140,7 +140,7 @@ public:
 
 		basic_sorter& set_alpha_sort(int column);
 		basic_sorter& set_numeric_sort(int column);
-		basic_sorter& set_xp_sort(int xp_column, int level_column);
+		basic_sorter& set_xp_sort(int column);
 		basic_sorter& set_id_sort(int column);
 		basic_sorter& set_redirect_sort(int column, int to);
 		basic_sorter& set_position_sort(int column, const std::vector<int>& pos);
@@ -152,7 +152,6 @@ public:
 		std::set<int> alpha_sort_, numeric_sort_, id_sort_, xp_sort_;
 		std::map<int,int> redirect_sort_;
 		std::map<int,std::vector<int> > pos_sort_;
-		int level_col_; //used by xp sort
 	};
 
 	menu(CVideo& video, const std::vector<std::string>& items,

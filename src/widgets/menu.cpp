@@ -47,10 +47,9 @@ menu::basic_sorter& menu::basic_sorter::set_numeric_sort(int column)
 	return *this;
 }
 
-menu::basic_sorter& menu::basic_sorter::set_xp_sort(int xp_column, int level_column)
+menu::basic_sorter& menu::basic_sorter::set_xp_sort(int column)
 {
-	xp_sort_.insert(xp_column);
-	level_col_ = level_column;
+	xp_sort_.insert(column);
 	return *this;
 }
 
@@ -139,13 +138,11 @@ bool menu::basic_sorter::less(int column, const item& row1, const item& row2) co
 	} else if(xp_sort_.count(column) == 1) {
 		const std::string& item1 = font::del_tags(row1.fields[column]);
 		const std::string& item2 = font::del_tags(row2.fields[column]);
-		const std::string& item1_lev = font::del_tags(row1.fields[level_col_]);
-		const std::string& item2_lev = font::del_tags(row2.fields[level_col_]);
 
-		const char* digits[4] = {item1.c_str(),item2.c_str(),item1_lev.c_str(),item2_lev.c_str()};
+		const char* digits[2] = {item1.c_str(),item2.c_str()};
 		//we must move past any non-digit characters for atoi() to work later
 		//outer loop iterates over the strings we have to fix, inner loop over characters
-		for(int i = 0; i < 4; i++) {
+		for(int i = 0; i < 2; i++) {
 			while(*digits[i] != 0 && !isdigit(*digits[i])) {
 				++digits[i];
 			}
@@ -168,12 +165,6 @@ bool menu::basic_sorter::less(int column, const item& row1, const item& row2) co
 		int xp1_x = atoi(digits[0]); //atoi stops at the first invalid char, which is slash character
 		int xp2_x = atoi(digits[1]);
 
-		int level1 = atoi(digits[2]);
-		int level2 = atoi(digits[3]);
-		if(level1 > level2)
-			return true;
-		if(level1 < level2)
-			return false;
 		return (xp1_y - xp1_x) < (xp2_y - xp2_x);
 	}
 
