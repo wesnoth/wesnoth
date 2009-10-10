@@ -981,9 +981,8 @@ bool attack::unit_info::valid() {
 
 std::string attack::unit_info::dump()
 {
-	const std::pair<map_location, unit>& u = *iter_;
 	std::stringstream s;
-	s << u.second.type_id() << " (" << u.first.x + 1 << ',' << u.first.y + 1 << ')';
+	s << get_unit().type_id() << " (" << loc_.x + 1 << ',' << loc_.y + 1 << ')';
 	return s.str();
 }
 
@@ -1255,7 +1254,7 @@ void attack::perform()
 			if(dies) { // attacker kills defender
 				a_.xp_ = game_config::kill_xp(d_.get_unit().level());
 				d_.xp_ = 0;
-				resources::screen->invalidate(a_.iter_->first);
+				resources::screen->invalidate(a_.loc_);
 
 				game_events::entity_location death_loc(d_.loc_, d_.id_);
 				game_events::entity_location attacker_loc(a_.loc_, a_.id_);
@@ -1283,9 +1282,9 @@ void attack::perform()
 
 				refresh_bc();
 				if(!a_.valid()) {
-					unit_display::unit_die(d_.iter_->first, d_.get_unit(), NULL, d_stats_->weapon);
+					unit_display::unit_die(d_.loc_, d_.get_unit(), NULL, d_stats_->weapon);
 				} else {
-					unit_display::unit_die(d_.iter_->first, d_.get_unit(),a_stats_->weapon,d_stats_->weapon,a_.iter_->first, &(a_.get_unit()));
+					unit_display::unit_die(d_.loc_, d_.get_unit(), a_stats_->weapon, d_stats_->weapon, a_.loc_, &a_.get_unit());
 				}
 
 				game_events::fire("die", death_loc, attacker_loc, dat);
@@ -1294,7 +1293,7 @@ void attack::perform()
 					// WML has invalidated the dying unit, abort
 					break;
 				} else if(d_.get_unit().hitpoints() <= 0) {
-					units_.erase(d_.iter_);
+					units_.erase(d_.loc_);
 				}
 
 				if(!a_.valid()) {
@@ -1356,7 +1355,7 @@ void attack::perform()
 					update_def_fog = true;
 					a_.n_attacks_ = 0;
 					d_.n_attacks_ = 0;
-					game_events::fire(petrify_string, d_.iter_->first, a_.iter_->first);
+					game_events::fire(petrify_string, d_.loc_, a_.loc_);
 					refresh_bc();
 
 				}
@@ -1526,7 +1525,7 @@ void attack::perform()
 			if(dies) { // defender kills attacker
 				d_.xp_ = game_config::kill_xp(a_.get_unit().level());
 				a_.xp_ = 0;
-				resources::screen->invalidate(d_.iter_->first);
+				resources::screen->invalidate(d_.loc_);
 
 				std::string undead_variation = a_.get_unit().undead_variation();
 
@@ -1570,7 +1569,7 @@ void attack::perform()
 					// WML has invalidated the dying unit, abort
 					break;
 				} else if(a_.get_unit().hitpoints() <= 0) {
-					units_.erase(a_.iter_);
+					units_.erase(a_.loc_);
 				}
 
 				if(!d_.valid()) {
@@ -1629,7 +1628,7 @@ void attack::perform()
 					d_.n_attacks_ = 0;
 					a_.n_attacks_ = 0;
 
-					game_events::fire(petrify_string, a_.iter_->first, d_.iter_->first);
+					game_events::fire(petrify_string, a_.loc_, d_.loc_);
 					refresh_bc();
 				}
 			}
