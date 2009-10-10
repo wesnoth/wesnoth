@@ -32,13 +32,6 @@ public:
 	music_track(const music_track& mt);
 	music_track(const config& node);
 	music_track(const std::string& v_name);
-	music_track(const std::string& v_name,
-	            unsigned int v_ms_before,
-	            unsigned int v_ms_after,
-	            bool v_once = false,
-	            bool v_append = false,
-	            bool v_immediate = false
-	           );
 	void write(config& parent_node, bool append);
 
 	bool valid() const { return file_path_.empty() != true; }

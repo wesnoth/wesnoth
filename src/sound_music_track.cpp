@@ -77,22 +77,6 @@ music_track::music_track(const std::string& v_name) :
 	}
 }
 
-music_track::music_track(const std::string& v_name, unsigned int v_ms_before, unsigned int v_ms_after, bool v_once, bool v_append, bool v_immediate) :
-	id_(v_name),
-	file_path_(""),
-	ms_before_(v_ms_before),
-	ms_after_(v_ms_after),
-	once_(v_once),
-	append_(v_append),
-	immediate_(v_immediate)
-{
-	if(id_.empty()) {
-		ERR_AUDIO << "empty track filename specified\n";
-	} else {
-		this->resolve();
-	}
-}
-
 music_track::music_track(const music_track& mt) :
 	id_(mt.id_),
 	file_path_(mt.file_path_),
