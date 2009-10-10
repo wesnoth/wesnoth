@@ -86,27 +86,6 @@ struct text_chunk
 	{
 	}
 
-	text_chunk(subset_id subset, std::string const & text) :
-		subset(subset),
-		text(text),
-		ucs2_text()
-	{
-	}
-
-	text_chunk(subset_id subset, ucs2_string const & ucs2_text) :
-		subset(subset),
-		text(),
-		ucs2_text(ucs2_text)
-	{
-	}
-
-	text_chunk(subset_id subset, std::string const & text, ucs2_string const & ucs2_text) :
-		subset(subset),
-		text(text),
-		ucs2_text(ucs2_text)
-	{
-	}
-
 	bool operator==(text_chunk const & t) const { return subset == t.subset && ucs2_text == t.ucs2_text; }
 	bool operator!=(text_chunk const & t) const { return !operator==(t); }
 
