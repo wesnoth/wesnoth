@@ -95,16 +95,6 @@ void manager::update_positions()
 	}
 }
 
-void manager::add_location(const std::string &id, const map_location &loc)
-{
-	positional_source_iterator it = sources_.find(id);
-
-	if(it == sources_.end())
-		return;
-	else
-		(*it).second->add_location(loc);
-}
-
 void manager::write_sourcespecs(config& cfg) const
 {
 	for(positional_source_const_iterator i = sources_.begin(); i != sources_.end(); ++i) {
@@ -221,11 +211,6 @@ int positional_source::calculate_volume(const map_location &loc, const display &
 
 	return static_cast<int>((((distance - range_)
 			/ static_cast<double>(faderange_)) * DISTANCE_SILENT));
-}
-
-void positional_source::add_location(const map_location &loc)
-{
-	locations_.push_back(loc);
 }
 
 void positional_source::write_config(config& cfg) const

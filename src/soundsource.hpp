@@ -67,10 +67,6 @@ public:
 	void update(unsigned int time, const display &disp);
 	void update_positions(unsigned int time, const display &disp);
 
-	void add_location(const map_location &loc);
-	void remove_location(const map_location &loc);
-	void replace_location(const map_location &oldloc, const map_location &newloc);
-
 	int calculate_volume(const map_location &loc, const display &disp);
 
 	/**
@@ -100,8 +96,6 @@ public:
 	void add(const sourcespec &source);
 	void remove(const std::string &id);
 	void update();
-
-	void add_location(const std::string &id, const map_location &loc);
 
 	// checks which sound sources are visible
 	void update_positions();
@@ -179,10 +173,6 @@ public:
 
 	const std::vector<map_location>& get_locations() const {
 		return locations_;
-	}
-
-	void add_location(const map_location& loc) {
-		locations_.push_back(loc);
 	}
 
 	int full_range() const { return range_; }
