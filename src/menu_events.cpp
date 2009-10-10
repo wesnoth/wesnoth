@@ -256,16 +256,12 @@ void menu_handler::unit_list()
 		// show icons if unit is slowed, poisoned, petrified, invisible:
 		if(i->second.get_state(unit::STATE_PETRIFIED))
 			row << IMAGE_PREFIX << "misc/petrified.png"    << IMG_TEXT_SEPARATOR;
-		if(i->second.get_state(unit::STATE_SLOWED))
-			row << IMAGE_PREFIX << "misc/slowed.png"   << IMG_TEXT_SEPARATOR;
 		if(i->second.get_state(unit::STATE_POISONED))
 			row << IMAGE_PREFIX << "misc/poisoned.png" << IMG_TEXT_SEPARATOR;
-
-		/** @todo FIXME: condition for "invisible" does not work */
-		//if(utils::string_bool(i->second.get_state("hides")))	// "hides" gives ability, not status
-		if(utils::string_bool(i->second.get_state("invisible")))
+		if(i->second.get_state(unit::STATE_SLOWED))
+			row << IMAGE_PREFIX << "misc/slowed.png"   << IMG_TEXT_SEPARATOR;
+		if(i->second.invisible(i->first, units_, teams_ ,false))
 			row << IMAGE_PREFIX << "misc/invisible.png";
-
 		row << COLUMN_SEPARATOR;
 
 		// Display HP
