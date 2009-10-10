@@ -16,19 +16,6 @@
 #include "key.hpp"
 
 CKey::CKey() :
-	key_list(0),
-	is_enabled(true)
+	key_list(SDL_GetKeyState(NULL))
 {
-	static int num_keys = 300;
-	key_list = SDL_GetKeyState( &num_keys );
-}
-
-int CKey::operator[]( int code ) const
-{
-	return int(key_list[code]);
-}
-
-void CKey::SetEnabled( bool enable )
-{
-	is_enabled = enable;
 }

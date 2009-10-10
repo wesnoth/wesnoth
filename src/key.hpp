@@ -17,20 +17,20 @@
 
 #include "SDL.h"
 
-//object which keeps track of all the keys on the keyboard, and
-//whether any key is pressed or not can be found by using its
-//operator[]. Note though that it is generally better to use
-//key events to see when keys are pressed rather than poll using
-//this object.
-class CKey {
+/**
+ * Class that keeps track of all the keys on the keyboard.
+ * Whether any key is pressed or not can be found by using its
+ * operator[]. Note though that it is generally better to use
+ * key events to see when keys are pressed rather than to poll using
+ * this object.
+ */
+class CKey
+{
+	Uint8 *key_list;
+
 public:
 	CKey();
-
-	int operator[](int) const;
-	void SetEnabled(bool enable);
-private:
-	Uint8 *key_list;
-	bool is_enabled;
+	bool operator[](int k) const { return key_list[k]; }
 };
 
 #endif
