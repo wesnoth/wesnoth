@@ -460,17 +460,34 @@ int twindow::show(const bool restore, const unsigned auto_close_timeout)
 
 		delay_event(event, auto_close_timeout);
 	}
-
-	// Start our loop drawing will happen here as well.
-	for(status_ = SHOWING; status_ != REQUEST_CLOSE; ) {
-		// process installed callback if valid, to allow e.g. network polling
-		// @todo use a cleaner way of getting external events
-		if (event_loop_pre_cb_) {
-			event_loop_pre_cb_();
+	try {
+		// Start our loop drawing will happen here as well.
+		for(status_ = SHOWING; status_ != REQUEST_CLOSE; ) {
+			// process installed callback if valid, to allow e.g. network polling
+			// @todo use a cleaner way of getting external events
+			if (event_loop_pre_cb_) {
+				event_loop_pre_cb_();
+			}
+			events::pump();
+			// Add a delay so we don't keep spinning if there's no event.
+			SDL_Delay(10);
 		}
-		events::pump();
-		// Add a delay so we don't keep spinning if there's no event.
-		SDL_Delay(10);
+	} catch(...) {
+		/**
+		 * @todo Clean up the code duplication.
+		 *
+		 * In the future the restoring shouldn't be needed so the duplication
+		 * doesn't hurt too much but keep this todo as a reminder.
+		 */
+		suspend_drawing_ = true;
+
+		// restore area
+		if(restore) {
+			SDL_Rect rect = get_rect();
+			SDL_BlitSurface(restorer_, 0, video_.getSurface(), &rect);
+			update_rect(get_rect());
+		}
+		throw;
 	}
 
 	suspend_drawing_ = true;
