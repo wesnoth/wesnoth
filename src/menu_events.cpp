@@ -864,7 +864,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 			<< u.type_name() << COLUMN_SEPARATOR
 			<< name << COLUMN_SEPARATOR
 			<< u.level() << COLUMN_SEPARATOR
-			<< u.experience() << "/";
+			<< font::color2markup(u.xp_color()) << u.experience() << "/";
 		if (u.can_advance())
 			option << u.max_experience();
 		else
