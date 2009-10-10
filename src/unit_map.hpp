@@ -174,47 +174,6 @@ public:
 		bool valid(const iterator_type& i, const unit_map* map) const { return i != map->map_.end() && i->second.valid(); }
 	};
 
-	template <typename iter_types>
-	struct xy_accessor_base {
-		typedef typename iter_types::map_type map_type;
-		typedef typename iter_types::iterator_type iterator_type;
-		typedef typename iter_types::reference_type reference_type;
-
-		xy_accessor_base() : counter_(), loc_(), map_(NULL) { }
-		xy_accessor_base(const iterator_type& iter, const unit_map* map) : counter_(), loc_(iter->second.get_location()), map_(map) { }
-
-		template <typename that_types>
-		xy_accessor_base(const xy_accessor_base<that_types>& that) :
-			counter_(that.counter_),
-			loc_(that.loc_),
-			map_(that.map_)
-		{
-			BOOST_STATIC_ASSERT(sizeof(convertible<that_types, iter_types>) != 0);
-		}
-
-		template <typename that_types>
-		xy_accessor_base(const iterator_base<unit_policy, that_types>& that) :
-			counter_(that.get_map()),
-			loc_(),
-			map_(that.get_map())
-		{
-			BOOST_STATIC_ASSERT(sizeof(convertible<that_types, iter_types>) != 0);
-			if (that.valid()) loc_ = that->first;
-		}
-
-		iterator_base<unit_policy, iter_types> operator->() const { assert(valid()); return map_->find(loc_); }
-		reference_type operator*() const { assert(valid()); return *map_->find(loc_); }
-
-		bool operator==(const xy_accessor_base& rhs) { return loc_ == rhs.loc_; }
-		bool operator!=(const xy_accessor_base& rhs) { return !operator==(rhs); }
-
-		bool valid() const { return map_->find(loc_) != map_->end(); }
-	private:
-		iterator_counter counter_;
-		map_location loc_;
-		map_type* map_;
-	};
-
 // ~~~ End iterator code ~~~
 
 
@@ -224,8 +183,6 @@ public:
 	 * Several implicit conversion are supplied, you can convert from more restrictive to less restrictive.
 	 * That is:
 	 * non-const -> const
-	 * unit_iter -> xy_unit_iter
-	 * unit_iter -> xy_accessor
 	 */
 
 	/**
@@ -237,13 +194,6 @@ public:
 	 */
 	typedef iterator_base<unit_policy, standard_iter_types> unit_iterator;
 	typedef iterator_base<unit_policy, const_iter_types> const_unit_iterator;
-
-	/**
-	 * xy_accessors cannot be incremented or decremented. An xy_accessor is valid as long as there is a unit at
-	 * the map_location that it is created at, and it allows access to the unit at that location.
-	 */
-	typedef xy_accessor_base<standard_iter_types> xy_accessor;
-	typedef xy_accessor_base<const_iter_types> const_xy_accessor;
 
 	/** provided as a convenience as unit_map used to be an std::map */
 	typedef unit_iterator iterator;
