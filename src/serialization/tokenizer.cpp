@@ -19,6 +19,7 @@
 #include "wesconfig.h"
 #include "serialization/tokenizer.hpp"
 
+#include <cstdio>
 
 tokenizer::tokenizer(std::istream& in) :
 	current_(EOF),
