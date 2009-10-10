@@ -801,6 +801,53 @@ bool battle_context::better_attack(class battle_context &that, double harm_weigh
 			that.get_attacker_combatant(), that.get_defender_combatant(), harm_weight);
 }
 
+/** Helper class for performing an attack. */
+class attack
+{
+	friend void attack_unit(const map_location &, const map_location &,
+		int, int, bool);
+
+	attack(const map_location &attacker, const map_location &defender,
+		int attack_with, int defend_with, bool update_display = true);
+	~attack();
+
+	class attack_end_exception {};
+	void fire_event(const std::string& n);
+	void refresh_bc();
+
+	/** Structure holding unit info used in the attack action. */
+	struct unit_info
+	{
+		const map_location loc_;
+		int weapon_;
+		const unit_map::xy_accessor iter_;
+		size_t id_; /**< unit.underlying_id() */
+		std::string weap_id_;
+		int orig_attacks_;
+		int n_attacks_; /**< Number of attacks left. */
+		int cth_;
+		int damage_;
+		int xp_;
+
+		unit_info(const map_location &loc, int weapon, unit_map &units);
+		unit &get_unit();
+		bool valid();
+
+		std::string dump();
+	};
+
+	battle_context *bc_;
+	const battle_context::unit_stats *a_stats_;
+	const battle_context::unit_stats *d_stats_;
+
+	unit_info a_, d_;
+	unit_map &units_;
+	std::ostringstream errbuf_;
+
+	bool update_display_;
+	bool OOS_error_;
+};
+
 void attack::fire_event(const std::string& n)
 {
 	LOG_NG << "firing " << n << " event\n";
