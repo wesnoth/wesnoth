@@ -18,19 +18,15 @@
 
 namespace ntime {
 
-	const int frames_to_remember = 6;
 	class source
 	{
-		size_t time_[frames_to_remember];
 		size_t frame_time_;
 		size_t current_time_;
-		int index_;
 		static source time_source_;
 		source();
 		source(const source&);
 		void operator=(const source&);
 
-		int next_index();
 	public:
 		/**
 		 * Called in begin of each frame

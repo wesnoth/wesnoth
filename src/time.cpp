@@ -21,18 +21,8 @@ namespace ntime {
 	source source::time_source_;
 
 	source::source() : frame_time_(20),
-			current_time_(SDL_GetTicks()),
-			index_(0)
+			current_time_(SDL_GetTicks())
 	{
-		for (int i = 0; i < frames_to_remember; ++i)
-		{
-			time_[i] = 0;
-		}
-	}
-
-	int source::next_index()
-	{
-		return (index_ + 1) % frames_to_remember;
 	}
 
 	size_t source::start_frame(const bool limit)
@@ -47,11 +37,6 @@ namespace ntime {
 			SDL_Delay(wait_time);
 			current_time += wait_time;
 		}
-
-
-		// Advance index only in begin of frame
-		index_ = next_index();
-		time_[index_] = current_time;
 		current_time_ = current_time;
 		return frame_used;
 	}
