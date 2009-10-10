@@ -50,7 +50,6 @@ public:
 
 	/** Inherited from tevent_executor. */
 	void mouse_middle_button_click(tevent_handler&);
-#endif
 
 	/** Inherited from tevent_executor. */
 	void receive_keyboard_focus(tevent_handler& event_handler);
@@ -58,7 +57,6 @@ public:
 	/** Inherited from tevent_executor. */
 	void lose_keyboard_focus(tevent_handler& event_handler);
 
-#ifdef GUI2_OLD_EVENT_HANDLING
 	/** Inherited from tevent_executor. */
 	void key_press(tevent_handler& event,
 		bool& handled, SDLKey key, SDLMod modifier, Uint16 unicode);
@@ -430,6 +428,9 @@ protected:
 
 	void signal_handler_sdl_key_down(const event::tevent event, bool& handled
 			, const SDLKey key, SDLMod modifier, const Uint16 unicode);
+
+	void signal_handler_receive_keyboard_focus(const event::tevent event);
+	void signal_handler_lose_keyboard_focus(const event::tevent event);
 };
 
 } // namespace gui2

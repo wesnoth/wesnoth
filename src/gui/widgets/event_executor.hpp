@@ -194,7 +194,6 @@ public:
 	 * event. This can be used to capture the keyboard.
 	 */
 	virtual void focus(tevent_handler&) {}
-#endif
 
 	/***** ***** ***** ***** keyboard ***** ***** ***** *****/
 
@@ -219,7 +218,6 @@ public:
 	 */
 	virtual void lose_keyboard_focus(tevent_handler& /*event_handler*/) {}
 
-#ifdef GUI2_OLD_EVENT_HANDLING
 	/**
 	 * A key is pressed.
 	 *

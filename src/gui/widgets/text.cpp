@@ -33,15 +33,20 @@ ttext_::ttext_()
 	, key_press_callback_()
 	, text_changed_callback_()
 {
-	connect_signal<event::SDL_KEY_DOWN>(boost::bind(
-			&ttext_::signal_handler_sdl_key_down, this, _2, _3, _5, _6, _7));
-
 #ifdef __unix__
 		// pastes on UNIX systems.
 	connect_signal<event::MIDDLE_BUTTON_CLICK>(boost::bind(
 			&ttext_::signal_handler_middle_button_click, this, _2, _3));
 
 #endif
+
+	connect_signal<event::SDL_KEY_DOWN>(boost::bind(
+			&ttext_::signal_handler_sdl_key_down, this, _2, _3, _5, _6, _7));
+
+	connect_signal<event::RECEIVE_KEYBOARD_FOCUS>(boost::bind(
+			&ttext_::signal_handler_receive_keyboard_focus, this, _2));
+	connect_signal<event::LOSE_KEYBOARD_FOCUS>(boost::bind(
+			&ttext_::signal_handler_lose_keyboard_focus, this, _2));
 }
 
 #ifdef GUI2_OLD_EVENT_HANDLING
@@ -84,7 +89,6 @@ void ttext_::mouse_middle_button_click(tevent_handler&)
 #endif
 
 }
-#endif
 
 void ttext_::receive_keyboard_focus(tevent_handler& /*event_handler*/)
 {
@@ -100,7 +104,6 @@ void ttext_::lose_keyboard_focus(tevent_handler& /*event_handler*/)
 	set_state(ENABLED);
 }
 
-#ifdef GUI2_OLD_EVENT_HANDLING
 void ttext_::key_press(tevent_handler& /*event*/,
 		bool& handled, SDLKey key, SDLMod modifier, Uint16 unicode)
 {
@@ -471,6 +474,20 @@ void ttext_::signal_handler_sdl_key_down(const event::tevent event
 		text_changed_callback_(this, this->text());
 	}
 
+}
+
+void ttext_::signal_handler_receive_keyboard_focus(const event::tevent event)
+{
+	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+
+	set_state(FOCUSSED);
+}
+
+void ttext_::signal_handler_lose_keyboard_focus(const event::tevent event)
+{
+	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+
+	set_state(ENABLED);
 }
 
 } // namespace gui2

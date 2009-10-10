@@ -335,13 +335,15 @@ void tevent_handler::mouse_capture(const bool capture)
 void tevent_handler::keyboard_capture(twidget* widget)
 {
 	if(keyboard_focus_) {
-		keyboard_focus_->lose_keyboard_focus(*this);
+		get_window().fire(event::LOSE_KEYBOARD_FOCUS, *keyboard_focus_, NULL);
 	}
 
 	keyboard_focus_ = widget;
 
 	if(keyboard_focus_) {
-		keyboard_focus_->receive_keyboard_focus(*this);
+		get_window().fire(event::RECEIVE_KEYBOARD_FOCUS
+				, *keyboard_focus_
+				, NULL);
 	}
 }
 

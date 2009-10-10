@@ -97,6 +97,8 @@ enum tevent {
 	                               * Send by a widget to notify others it's
 	                               * being destroyed.
 	                               */
+	, RECEIVE_KEYBOARD_FOCUS     /**< Widget gets keyboard focus. */
+	, LOSE_KEYBOARD_FOCUS        /**< Widget loses keyboard focus. */
 };
 
 /**
@@ -175,7 +177,9 @@ typedef
  */
 typedef
 		boost::mpl::set<
-			boost::mpl::int_<NOTIFY_REMOVAL>
+			  boost::mpl::int_<NOTIFY_REMOVAL>
+			, boost::mpl::int_<RECEIVE_KEYBOARD_FOCUS>
+			, boost::mpl::int_<LOSE_KEYBOARD_FOCUS>
 		>
 		tset_event_notification;
 
