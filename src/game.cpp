@@ -1108,7 +1108,12 @@ bool game_controller::new_campaign()
 
 	gui2::tcampaign_selection dlg(campaigns);
 
-	dlg.show(disp().video());
+	try {
+		dlg.show(disp().video());
+	} catch(twml_exception& e) {
+		e.show(disp());
+		return false;
+	}
 
 	if(dlg.get_retval() != gui2::twindow::OK) {
 		return false;
