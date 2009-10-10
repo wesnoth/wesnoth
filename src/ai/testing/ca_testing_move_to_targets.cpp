@@ -211,7 +211,7 @@ double testing_move_to_targets_phase::rate_target(const target& tg, const unit_m
 	if(move_cost > 0) {
 		// if this unit can move to that location this turn, it has a very very low cost
 		typedef std::multimap<map_location,map_location>::const_iterator multimapItor;
-		std::pair<multimapItor,multimapItor> locRange = dstsrc.equal_range(u->first);
+		std::pair<multimapItor,multimapItor> locRange = dstsrc.equal_range(tg.loc);
 		while (locRange.first != locRange.second) {
 			if (locRange.first->second == u->first) {
 				move_cost = 0;
@@ -392,7 +392,14 @@ std::pair<map_location,map_location> testing_move_to_targets_phase::choose_move(
 			raise_user_interact();
 
 			const move_cost_calculator calc(u->second, map_, units_, enemy_dstsrc);
-			const double locStopValue = std::min(best_target->value / best_rating, 100.0);
+
+			//TODO : lower this value for perf,
+			// but best_rating is too big for scout and support
+			// which give a too small locStopValue
+			// so keep costy A* for the moment.
+			//const double locStopValue = std::min(best_target->value / best_rating, 100.0);
+			
+			const double locStopValue = 500.0;
 			plain_route cur_route = a_star_search(u->first, best_target->loc, locStopValue, &calc, map_.w(), map_.h());
 
 			if(cur_route.steps.empty()) {
