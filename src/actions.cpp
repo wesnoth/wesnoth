@@ -930,11 +930,14 @@ void attack::refresh_bc()
 	}
 	if(!a_.valid() || !d_.valid()) {
 		// Fix pointer to weapons
-		if (a_.valid() && a_.weapon_ >= 0)
-			const_cast<battle_context::unit_stats*>(a_stats_)->weapon = &a_.get_unit().attacks()[a_.weapon_];
+		const_cast<battle_context::unit_stats*>(a_stats_)->weapon =
+			a_.valid() && a_.weapon_ >= 0
+				? &a_.get_unit().attacks()[a_.weapon_] : NULL;
 
-		if (d_.valid() && d_.weapon_ >= 0)
-			const_cast<battle_context::unit_stats*>(d_stats_)->weapon = &d_.get_unit().attacks()[d_.weapon_];
+		const_cast<battle_context::unit_stats*>(d_stats_)->weapon =
+			d_.valid() && d_.weapon_ >= 0
+				? &d_.get_unit().attacks()[d_.weapon_] : NULL;
+
 		return;
 	}
 
