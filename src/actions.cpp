@@ -809,6 +809,7 @@ class attack
 
 	attack(const map_location &attacker, const map_location &defender,
 		int attack_with, int defend_with, bool update_display = true);
+	void perform();
 	~attack();
 
 	class attack_end_exception {};
@@ -990,6 +991,7 @@ void attack_unit(const map_location &attacker, const map_location &defender,
 	int attack_with, int defend_with, bool update_display)
 {
 	attack dummy(attacker, defender, attack_with, defend_with, update_display);
+	dummy.perform();
 }
 
 attack::attack(const map_location &attacker, const map_location &defender,
@@ -1006,6 +1008,10 @@ attack::attack(const map_location &attacker, const map_location &defender,
 	update_display_(update_display),
 	OOS_error_(false)
 {
+}
+
+void attack::perform()
+{
 	// Stop the user from issuing any commands while the units are fighting
 	const events::command_disabler disable_commands;
 
@@ -1021,9 +1027,10 @@ attack::attack(const map_location &attacker, const map_location &defender,
 	}
 
 	a_.get_unit().set_attacks(a_.get_unit().attacks_left()-1);
-	VALIDATE(attack_with < static_cast<int>(a_.get_unit().attacks().size()),
+	VALIDATE(a_.weapon_ < static_cast<int>(a_.get_unit().attacks().size()),
 		_("An invalid attacker weapon got selected."));
-	a_.get_unit().set_movement(a_.get_unit().movement_left()-a_.get_unit().attacks()[attack_with].movement_used());
+	a_.get_unit().set_movement(a_.get_unit().movement_left() -
+		a_.get_unit().attacks()[a_.weapon_].movement_used());
 	a_.get_unit().set_state(unit::STATE_NOT_MOVED,false);
 	d_.get_unit().set_resting(false);
 
@@ -1682,14 +1689,12 @@ attack::attack(const map_location &attacker, const map_location &defender,
 
 	if (update_display_){
 		resources::screen->invalidate_unit();
-		resources::screen->invalidate(attacker);
-		resources::screen->invalidate(defender);
+		resources::screen->invalidate(a_.loc_);
+		resources::screen->invalidate(d_.loc_);
 		resources::screen->draw(true, true);
 	}
 
 	if(OOS_error_) {
-		delete bc_;
-		bc_ = NULL;
 		replay::process_error(errbuf_.str());
 	}
 }
