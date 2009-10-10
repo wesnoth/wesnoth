@@ -90,7 +90,8 @@ opts.AddVariables(
     BoolVariable('distcc', 'Use distcc', False),
     BoolVariable('ccache', "Use ccache", False),
     ('cxxtool', 'Set c++ compiler command if not using standard compiler.'),
-    BoolVariable("fast", "Make scons faster at cost of less precise dependency tracking.", False)
+    BoolVariable("fast", "Make scons faster at cost of less precise dependency tracking.", False),
+    BoolVariable("lockfile", "Create a lockfile to prevent multiple instances of scons from being run at the same time on this working copy.", False)
     )
 
 #
@@ -99,6 +100,13 @@ opts.AddVariables(
 
 sys.path.insert(0, "./scons")
 env = Environment(tools=["tar", "gettext", "install", "python_devel", "scanreplace"], options = opts, toolpath = ["scons"])
+
+if env["lockfile"]:
+    print "Creating lockfile"
+    lockfile = os.path.abspath("scons.lock")
+    open(lockfile, "wx").write(str(os.getpid()))
+    import atexit
+    atexit.register(os.remove, lockfile)
 
 opts.Save('.scons-option-cache', env)
 env.SConsignFile("$build_dir/sconsign.dblite")
