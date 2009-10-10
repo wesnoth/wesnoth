@@ -821,7 +821,7 @@ class attack
 	{
 		const map_location loc_;
 		int weapon_;
-		const unit_map::xy_accessor iter_;
+		unit_map &units_;
 		size_t id_; /**< unit.underlying_id() */
 		std::string weap_id_;
 		int orig_attacks_;
@@ -955,7 +955,7 @@ attack::~attack()
 attack::unit_info::unit_info(const map_location& loc, int weapon, unit_map& units) :
 	loc_(loc),
 	weapon_(weapon),
-	iter_(units.find(loc)),
+	units_(units),
 	id_(),
 	weap_id_(),
 	orig_attacks_(0),
@@ -964,19 +964,22 @@ attack::unit_info::unit_info(const map_location& loc, int weapon, unit_map& unit
 	damage_(0),
 	xp_(0)
 {
-	if (!valid()) {
-		return;
-	}
-
-	id_ = get_unit().underlying_id();
+	unit_map::iterator i = units_.find(loc_);
+	if (!i.valid()) return;
+	id_ = i->second.underlying_id();
 }
 
-unit& attack::unit_info::get_unit() {
-	return iter_->second;
+unit &attack::unit_info::get_unit()
+{
+	unit_map::iterator i = units_.find(loc_);
+	assert(i.valid() && i->second.underlying_id() == id_);
+	return i->second;
 }
 
-bool attack::unit_info::valid() {
-	return iter_.valid();
+bool attack::unit_info::valid()
+{
+	unit_map::iterator i = units_.find(loc_);
+	return i.valid() && i->second.underlying_id() == id_;
 }
 
 std::string attack::unit_info::dump()
