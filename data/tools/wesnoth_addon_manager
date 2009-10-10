@@ -178,9 +178,11 @@ if __name__ == "__main__":
         version = info.get_or_create_sub("info").get_text_val("version", "")
         return uploads, version
 
+    campaign_list = None
+
     if options.list:
         cs = CampaignClient(address)
-        data = cs.list_campaigns()
+        campaign_list = data = cs.list_campaigns()
         if data:
             campaigns = data.get_or_create_sub("campaigns")
             if options.wml:
@@ -220,7 +222,7 @@ if __name__ == "__main__":
     elif options.download:
         cs = CampaignClient(address)
         fetchlist = []
-        data = cs.list_campaigns()
+        campaign_list = data = cs.list_campaigns()
         if data:
             campaigns = data.get_or_create_sub("campaigns")
             for campaign in campaigns.get_all("campaign"):
@@ -337,7 +339,7 @@ if __name__ == "__main__":
         dirs = glob.glob(os.path.join(cdir, "*"))
         dirs = [x for x in dirs if os.path.isdir(x)]
         cs = CampaignClient(address)
-        data = cs.list_campaigns()
+        campaign_list = data = cs.list_campaigns()
         if not data:
             sys.stderr.write("Could not connect to the add-on server.\n")
             sys.exit(-1)
@@ -385,13 +387,14 @@ if __name__ == "__main__":
     else:
         optionparser.print_help()
 
-    # This is independent, so a single call to the script can also do the
-    # HTML output.
     if options.html:
-        cs = CampaignClient(address)
-        data = cs.list_campaigns()
-        if data:
+        if not campaign_list:
+            cs = CampaignClient(address)
+            campaign_list = cs.list_campaigns()
+        if campaign_list:
             import addon_manager.html
-            addon_manager.html.output(options.html, options.url, data)
+            addon_manager.html.output(options.html, options.url,
+                campaign_list)
         else:
-            sys.stderr.write("Could not connect.\n")
+            sys.stderr.write("Could not retrieve campaign list " +
+                "for HTML output.\n")
