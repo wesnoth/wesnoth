@@ -810,6 +810,7 @@ class attack
 	attack(const map_location &attacker, const map_location &defender,
 		int attack_with, int defend_with, bool update_display = true);
 	void perform();
+	bool perform_hit(bool, statistics::attack_context &);
 	~attack();
 
 	class attack_end_exception {};
@@ -840,6 +841,9 @@ class attack
 	battle_context *bc_;
 	const battle_context::unit_stats *a_stats_;
 	const battle_context::unit_stats *d_stats_;
+
+	int abs_n_attack_, abs_n_defend_;
+	bool update_att_fog_, update_def_fog_, update_minimap_;
 
 	unit_info a_, d_;
 	unit_map &units_;
@@ -1006,6 +1010,11 @@ attack::attack(const map_location &attacker, const map_location &defender,
 	bc_(0),
 	a_stats_(0),
 	d_stats_(0),
+	abs_n_attack_(0),
+	abs_n_defend_(0),
+	update_att_fog_(false),
+	update_def_fog_(false),
+	update_minimap_(false),
 	a_(attacker, attack_with, *resources::units),
 	d_(defender, defend_with, *resources::units),
 	units_(*resources::units),
@@ -1013,6 +1022,302 @@ attack::attack(const map_location &attacker, const map_location &defender,
 	update_display_(update_display),
 	OOS_error_(false)
 {
+}
+
+bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
+{
+	unit_info
+		&attacker = *(attacker_turn ? &a_ : &d_),
+		&defender = *(attacker_turn ? &d_ : &a_);
+	const battle_context::unit_stats
+		*&attacker_stats = *(attacker_turn ? &a_stats_ : &d_stats_),
+		*&defender_stats = *(attacker_turn ? &d_stats_ : &a_stats_);
+	int &abs_n = *(attacker_turn ? &abs_n_attack_ : &abs_n_defend_);
+	bool &update_fog = *(attacker_turn ? &update_def_fog_ : &update_att_fog_);
+
+	int ran_num = get_random();
+	bool hits = (ran_num % 100) < attacker.cth_;
+
+	int damage = 0;
+	if (hits) {
+		damage = attacker.damage_;
+		resources::state_of_game->set_variable("damage_inflicted", str_cast<int>(damage));
+	}
+
+	// Make sure that if we're serializing a game here,
+	// we got the same results as the game did originally.
+	const config *ran_results = get_random_results();
+	if (ran_results)
+	{
+		int results_chance = atoi((*ran_results)["chance"].c_str());
+		bool results_hits = (*ran_results)["hits"] == "yes";
+		int results_damage = atoi((*ran_results)["damage"].c_str());
+
+		if (results_chance != attacker.cth_)
+		{
+			errbuf_ << "SYNC: In attack " << a_.dump() << " vs " << d_.dump()
+				<< ": chance to hit is inconsistent. Data source: "
+				<< results_chance << "; Calculation: " << attacker.cth_
+				<< " (over-riding game calculations with data source results)\n";
+			attacker.cth_ = results_chance;
+			OOS_error_ = true;
+		}
+
+		if (results_hits != hits)
+		{
+			errbuf_ << "SYNC: In attack " << a_.dump() << " vs " << d_.dump()
+				<< ": the data source says the hit was "
+				<< (results_hits ? "successful" : "unsuccessful")
+				<< ", while in-game calculations say the hit was "
+				<< (hits ? "successful" : "unsuccessful")
+				<< " random number: " << ran_num << " = "
+				<< (ran_num % 100) << "/" << results_chance
+				<< " (over-riding game calculations with data source results)\n";
+			hits = results_hits;
+			OOS_error_ = true;
+		}
+
+		if (results_damage != damage)
+		{
+			errbuf_ << "SYNC: In attack " << a_.dump() << " vs " << d_.dump()
+				<< ": the data source says the hit did " << results_damage
+				<< " damage, while in-game calculations show the hit doing "
+				<< damage
+				<< " damage (over-riding game calculations with data source results)\n";
+			damage = results_damage;
+			OOS_error_ = true;
+		}
+	}
+
+	if (update_display_)
+	{
+		std::ostringstream float_text;
+		if (hits)
+		{
+			const unit &defender_unit = defender.get_unit();
+			if (attacker_stats->poisons && !defender_unit.get_state(unit::STATE_POISONED)) {
+				float_text << (defender_unit.gender() == unit_race::FEMALE ?
+					_("female^poisoned") : _("poisoned")) << '\n';
+			}
+
+			if (attacker_stats->slows && !defender_unit.get_state(unit::STATE_SLOWED)) {
+				float_text << (defender_unit.gender() == unit_race::FEMALE ?
+					_("female^slowed") : _("slowed")) << '\n';
+			}
+
+			if (attacker_stats->petrifies) {
+				float_text << (defender_unit.gender() == unit_race::FEMALE ?
+					_("female^petrified") : _("petrified")) << '\n';
+			}
+		}
+
+		unit_display::unit_attack(attacker.loc_, defender.loc_, damage,
+			*attacker_stats->weapon, defender_stats->weapon,
+			abs_n, float_text.str(), attacker_stats->drains, "");
+	}
+
+	int drains_damage = 0;
+	if (attacker_stats->drains) {
+		// don't drain so much that the attacker gets more than his maximum hitpoints
+		drains_damage = std::min<int>(damage / 2, attacker.get_unit().max_hitpoints() - attacker.get_unit().hitpoints());
+		// don't drain more than the defenders remaining hitpoints
+		drains_damage = std::min<int>(drains_damage, defender.get_unit().hitpoints() / 2);
+	}
+
+	int damage_done = std::min<int>(defender.get_unit().hitpoints(), attacker.damage_);
+	bool dies = defender.get_unit().take_hit(damage);
+	LOG_NG << "defender took " << damage << (dies ? " and died\n" : "\n");
+	if (attacker_turn) {
+		stats.attack_result(hits
+			? (dies ? statistics::attack_context::KILLS : statistics::attack_context::HITS)
+			: statistics::attack_context::MISSES, damage_done, drains_damage);
+	} else {
+		stats.defend_result(hits
+			? (dies ? statistics::attack_context::KILLS : statistics::attack_context::HITS)
+			: statistics::attack_context::MISSES, damage_done, drains_damage);
+	}
+
+	if (!ran_results)
+	{
+		log_scope2(log_engine, "setting random results");
+		config cfg;
+		cfg["hits"] = hits ? "yes" : "no";
+		cfg["dies"] = dies ? "yes" : "no";
+		cfg["unit_hit"] = "defender";
+		cfg["damage"] = lexical_cast<std::string>(damage);
+		cfg["chance"] = lexical_cast<std::string>(attacker.cth_);
+
+		set_random_results(cfg);
+	}
+	else
+	{
+		bool results_dies = (*ran_results)["dies"] == "yes";
+		if (results_dies != dies)
+		{
+			errbuf_ << "SYNC: In attack " << a_.dump() << " vs " << d_.dump()
+				<< ": the data source says the "
+				<< (attacker_turn ? "defender" : "attacker")
+				<< (results_dies ? "perished" : "survived")
+				<< " while in-game calculations show it "
+				<< (dies ? "perished" : "survived")
+				<< " (over-riding game calculations with data source results)\n";
+			dies = results_dies;
+			// Set hitpoints to 0 so later checks don't invalidate the death.
+			// Maybe set to > 0 for the else case to avoid more errors?
+			if (results_dies) defender.get_unit().set_hitpoints(0);
+			OOS_error_ = true;
+		}
+	}
+
+	if (hits)
+	{
+		try {
+			fire_event(attacker_turn ? "attacker_hits" : "defender_hits");
+		} catch (attack_end_exception) {
+			refresh_bc();
+			return false;
+		}
+	}
+	else
+	{
+		try {
+			fire_event(attacker_turn ? "attacker_misses" : "defender_misses");
+		} catch (attack_end_exception) {
+			refresh_bc();
+			return false;
+		}
+	}
+	refresh_bc();
+
+	if (drains_damage > 0) {
+		attacker.get_unit().heal(drains_damage);
+	}
+
+	if (dies)
+	{
+		attacker.xp_ = game_config::kill_xp(defender.get_unit().level());
+		defender.xp_ = 0;
+		resources::screen->invalidate(attacker.loc_);
+
+		game_events::entity_location death_loc(defender.loc_, defender.id_);
+		game_events::entity_location attacker_loc(attacker.loc_, attacker.id_);
+		std::string undead_variation = defender.get_unit().undead_variation();
+		fire_event("attack_end");
+		refresh_bc();
+
+		// get weapon info for last_breath and die events
+		config dat;
+		config a_weapon_cfg = attacker_stats->weapon && attacker.valid() ?
+			attacker_stats->weapon->get_cfg() : config();
+		config d_weapon_cfg = defender_stats->weapon && defender.valid() ?
+			defender_stats->weapon->get_cfg() : config();
+		if (a_weapon_cfg["name"].empty())
+			a_weapon_cfg["name"] = "none";
+		if (d_weapon_cfg["name"].empty())
+			d_weapon_cfg["name"] = "none";
+		dat.add_child("first",  d_weapon_cfg);
+		dat.add_child("second", a_weapon_cfg);
+
+		game_events::fire("last breath", death_loc, attacker_loc, dat);
+		refresh_bc();
+
+		if (!defender.valid() || defender.get_unit().hitpoints() > 0) {
+			// WML has invalidated the dying unit, abort
+			return false;
+		}
+
+		if (!attacker.valid()) {
+			unit_display::unit_die(defender.loc_, defender.get_unit(),
+				NULL, defender_stats->weapon);
+		} else {
+			unit_display::unit_die(defender.loc_, defender.get_unit(),
+				attacker_stats->weapon, defender_stats->weapon,
+				attacker.loc_, &attacker.get_unit());
+		}
+
+		game_events::fire("die", death_loc, attacker_loc, dat);
+		refresh_bc();
+
+		if (!defender.valid()) {
+			// WML has invalidated the dying unit, abort
+			return false;
+		}
+		if (defender.get_unit().hitpoints() <= 0) {
+			units_.erase(defender.loc_);
+		}
+
+		if (!attacker.valid()) {
+			// WML has invalidated the killing unit, abort
+			return false;
+		}
+
+		if (attacker_stats->plagues)
+		{
+			// plague units make new units on the target hex
+			unit_type_data::unit_type_map::const_iterator reanimitor;
+			LOG_NG << "trying to reanimate " << attacker_stats->plague_type << '\n';
+			reanimitor = unit_type_data::types().find_unit_type(attacker_stats->plague_type);
+			LOG_NG << "found unit type:" << reanimitor->second.id() << '\n';
+			if (reanimitor != unit_type_data::types().end())
+			{
+				unit newunit(&units_, &reanimitor->second,
+					attacker.get_unit().side(), true, unit_race::MALE);
+				newunit.set_attacks(0);
+				// Apply variation
+				if (undead_variation != "null")
+				{
+					config mod;
+					config &variation = mod.add_child("effect");
+					variation["apply_to"] = "variation";
+					variation["name"] = undead_variation;
+					newunit.add_modification("variation",mod);
+					newunit.heal_all();
+				}
+				units_.add(death_loc, newunit);
+				preferences::encountered_units().insert(newunit.type_id());
+				if (update_display_) {
+					resources::screen->invalidate(death_loc);
+				}
+			}
+		}
+		else
+		{
+			LOG_NG << "unit not reanimated\n";
+		}
+
+		update_fog = true;
+		update_minimap_ = true;
+		return false;
+	}
+
+	if (hits)
+	{
+		unit &defender_unit = defender.get_unit();
+		if (attacker_stats->poisons && !defender_unit.get_state(unit::STATE_POISONED)) {
+			defender_unit.set_state(unit::STATE_POISONED, true);
+			LOG_NG << "defender poisoned\n";
+		}
+
+		if (attacker_stats->slows && !defender_unit.get_state(unit::STATE_SLOWED)) {
+			defender_unit.set_state(unit::STATE_SLOWED, true);
+			update_fog = true;
+			defender.damage_ = defender_stats->slow_damage;
+			LOG_NG << "defender slowed\n";
+		}
+
+		// If the defender is petrified, the fight stops immediately
+		if (attacker_stats->petrifies) {
+			defender_unit.set_state(unit::STATE_PETRIFIED, true);
+			update_fog = true;
+			attacker.n_attacks_ = 0;
+			defender.n_attacks_ = 0;
+			game_events::fire("petrified", defender.loc_, attacker.loc_);
+			refresh_bc();
+		}
+	}
+
+	--attacker.n_attacks_;
+	return true;
 }
 
 void attack::perform()
@@ -1082,12 +1387,6 @@ void attack::perform()
 
 	bool defender_strikes_first = (d_stats_->firststrike && !a_stats_->firststrike);
 	unsigned int rounds = std::max<unsigned int>(a_stats_->rounds, d_stats_->rounds) - 1;
-	int abs_n_attack_ = 0;
-	int abs_n_defend_ = 0;
-
-	bool update_att_fog = false;
-	bool update_def_fog = false;
-	bool update_minimap = false;
 	const int attacker_side = a_.get_unit().side();
 	const int defender_side = d_.get_unit().side();
 
@@ -1101,545 +1400,16 @@ void attack::perform()
 		DBG_NG << "start of attack loop...\n";
 		abs_n_attack_++;
 
-		if(a_.n_attacks_ > 0 && defender_strikes_first == false) {
-			const int ran_num = get_random();
-			bool hits = (ran_num%100) < a_.cth_;
-
-			int damage_defender_takes;
-			if(hits) {
-				damage_defender_takes = a_.damage_;
-				resources::state_of_game->set_variable("damage_inflicted",
-							 str_cast<int>(damage_defender_takes));
-			} else {
-				damage_defender_takes = 0;
-			}
-			// Make sure that if we're serializing a game here,
-			// we got the same results as the game did originally.
-			const config* ran_results = get_random_results();
-			if(ran_results != NULL) {
-				const int results_chance = atoi((*ran_results)["chance"].c_str());
-				const bool results_hits = (*ran_results)["hits"] == "yes";
-				const int results_damage = atoi((*ran_results)["damage"].c_str());
-
-				if(results_chance != a_.cth_) {
-					errbuf_ << "SYNC: In attack " << a_.dump() << " vs " << d_.dump()
-						<< ": chance to hit defender is inconsistent. Data source: "
-						<< results_chance << "; Calculation: " << a_.cth_
-						<< " (over-riding game calculations with data source results)\n";
-					a_.cth_ = results_chance;
-					OOS_error_ = true;
-				}
-				if(hits != results_hits) {
-					errbuf_ << "SYNC: In attack " << a_.dump() << " vs " << d_.dump()
-						<< ": the data source says the hit was "
-						<< (results_hits ? "successful" : "unsuccessful")
-						<< ", while in-game calculations say the hit was "
-						<< (hits ? "successful" : "unsuccessful")
-						<< " random number: " << ran_num << " = "
-						<< (ran_num%100) << "/" << results_chance
-						<< " (over-riding game calculations with data source results)\n";
-					hits = results_hits;
-					OOS_error_ = true;
-				}
-				if(results_damage != damage_defender_takes) {
-					errbuf_ << "SYNC: In attack " << a_.dump() << " vs " << d_.dump()
-						<< ": the data source says the hit did " << results_damage
-						<< " damage, while in-game calculations show the hit doing "
-						<< damage_defender_takes
-						<< " damage (over-riding game calculations with data source results)\n";
-					damage_defender_takes = results_damage;
-					OOS_error_ = true;
-				}
-			}
-
-			if(update_display_) {
-				std::string float_text = "";
-				if(hits) {
-					if (a_stats_->poisons &&
-							!(d_.get_unit().get_state(unit::STATE_POISONED))) {
-						float_text += (d_.get_unit().gender() == unit_race::FEMALE ?  _("female^poisoned") : _("poisoned"));
-						float_text += '\n';
-					}
-
-					if(a_stats_->slows && !(d_.get_unit().get_state(unit::STATE_SLOWED))) {
-						float_text += (d_.get_unit().gender() == unit_race::FEMALE ?  _("female^slowed") : _("slowed"));
-						float_text += '\n';
-					}
-
-					// If the defender is petrified, the fight stops immediately
-					static const std::string petrify_string("petrified");
-					if (a_stats_->petrifies) {
-						float_text += (d_.get_unit().gender() == unit_race::FEMALE ?  _("female^petrified") : _("petrified"));
-						float_text += '\n';
-					}
-				}
-
-				unit_display::unit_attack(a_.loc_,d_.loc_,
-						damage_defender_takes,
-						*a_stats_->weapon,d_stats_->weapon,
-						abs_n_attack_,float_text,a_stats_->drains,"");
-			}
-
-			// Used for stat calcualtion
-			int drains_damage = 0;
-			if (a_stats_->drains){
-                // don't drain so much that the attacker gets more than his maximum hitpoints
-                drains_damage = std::min<int>(damage_defender_takes / 2, a_.get_unit().max_hitpoints() - a_.get_unit().hitpoints());
-                // don't drain more than the defenders remaining hitpoints
-                drains_damage = std::min<int>(drains_damage, d_.get_unit().hitpoints() / 2);
-			}
-			const int damage_done = std::min<int>(d_.get_unit().hitpoints(), a_.damage_);
-			bool dies = d_.get_unit().take_hit(damage_defender_takes);
-			LOG_NG << "defender took " << damage_defender_takes << (dies ? " and died" : "") << "\n";
-			attack_stats.attack_result(hits ?
-					(dies ?
-						statistics::attack_context::KILLS
-						: statistics::attack_context::HITS)
-					: statistics::attack_context::MISSES, damage_done, drains_damage);
-
-			if(ran_results == NULL) {
-				log_scope2(log_engine, "setting random results");
-				config cfg;
-				cfg["hits"] = (hits ? "yes" : "no");
-				cfg["dies"] = (dies ? "yes" : "no");
-				cfg["unit_hit"] = "defender";
-				cfg["damage"] = lexical_cast<std::string>(damage_defender_takes);
-				cfg["chance"] = lexical_cast<std::string>(a_.cth_);
-
-				set_random_results(cfg);
-			} else {
-				const bool results_dies = (*ran_results)["dies"] == "yes";
-				if(results_dies != dies) {
-					errbuf_ << "SYNC: In attack " << a_.dump() << " vs " << d_.dump()
-						<< ": the data source says the defender "
-						<< (results_dies ? "perished" : "survived")
-						<< " while in-game calculations show the defender "
-						<< (dies ? "perished" : "survived")
-						<< " (over-riding game calculations with data source results)\n";
-					dies = results_dies;
-					// Set hitpoints to 0 so later checks don't invalidate the death.
-					// Maybe set to > 0 for the else case to avoid more errors?
-					if (results_dies) d_.get_unit().set_hitpoints(0);
-					OOS_error_ = true;
-				}
-			}
-			if(hits) {
-				try {
-					fire_event("attacker_hits");
-				} catch (attack_end_exception) {
-					refresh_bc();
-					break;
-				}
-				refresh_bc();
-			} else {
-				try {
-					fire_event("attacker_misses");
-				} catch (attack_end_exception) {
-					refresh_bc();
-					break;
-				}
-				refresh_bc();
-			}
-
-			DBG_NG << "done attacking\n";
-			if(dies || hits) {
-				int amount_drained = 0;
-				if (a_stats_->drains){
-                    // don't drain so much that the attacker gets more than his maximum hitpoints
-                    amount_drained = std::min<int>(a_.damage_ / 2, a_.get_unit().max_hitpoints() - a_.get_unit().hitpoints());
-                    // don't drain more than the defenders remaining hitpoints
-                    // + attacker_damage accounts for the unit already being hit
-                    amount_drained = std::min<int>(amount_drained, (d_.get_unit().hitpoints() + a_.damage_) / 2);
-				}
-
-				if(amount_drained > 0) {
-					a_.get_unit().heal(amount_drained);
-				}
-			}
-
-			if(dies) { // attacker kills defender
-				a_.xp_ = game_config::kill_xp(d_.get_unit().level());
-				d_.xp_ = 0;
-				resources::screen->invalidate(a_.loc_);
-
-				game_events::entity_location death_loc(d_.loc_, d_.id_);
-				game_events::entity_location attacker_loc(a_.loc_, a_.id_);
-				std::string undead_variation = d_.get_unit().undead_variation();
-				fire_event("attack_end");
-				refresh_bc();
-
-				// get weapon info for last_breath and die events
-				config dat;
-				config a_weapon_cfg = (a_stats_->weapon != NULL && a_.valid()) ? a_stats_->weapon->get_cfg() : config();
-				config d_weapon_cfg = (d_stats_->weapon != NULL && d_.valid()) ? d_stats_->weapon->get_cfg() : config();
-				if(a_weapon_cfg["name"].empty())
-					a_weapon_cfg["name"] = "none";
-				if(d_weapon_cfg["name"].empty())
-					d_weapon_cfg["name"] = "none";
-				dat.add_child("first",  d_weapon_cfg);
-				dat.add_child("second", a_weapon_cfg);
-
-				game_events::fire("last breath", death_loc, attacker_loc, dat);
-
-				if(!d_.valid() || d_.get_unit().hitpoints() > 0) {
-					// WML has invalidated the dying unit, abort
-					break;
-				}
-
-				refresh_bc();
-				if(!a_.valid()) {
-					unit_display::unit_die(d_.loc_, d_.get_unit(), NULL, d_stats_->weapon);
-				} else {
-					unit_display::unit_die(d_.loc_, d_.get_unit(), a_stats_->weapon, d_stats_->weapon, a_.loc_, &a_.get_unit());
-				}
-
-				game_events::fire("die", death_loc, attacker_loc, dat);
-
-				if(!d_.valid()) {
-					// WML has invalidated the dying unit, abort
-					break;
-				} else if(d_.get_unit().hitpoints() <= 0) {
-					units_.erase(d_.loc_);
-				}
-
-				if(!a_.valid()) {
-					// WML has invalidated the killing unit, abort
-					break;
-				}
-				refresh_bc();
-
-				if(a_stats_->plagues) {
-					// plague units make new units on the target hex
-					unit_type_data::unit_type_map::const_iterator reanimitor;
-					LOG_NG << "trying to reanimate " << a_stats_->plague_type << std::endl;
-					reanimitor = unit_type_data::types().find_unit_type(a_stats_->plague_type);
-					LOG_NG << "found unit type:" << reanimitor->second.id() << std::endl;
-					if(reanimitor != unit_type_data::types().end()) {
-						unit newunit(&units_, &reanimitor->second,
-						             a_.get_unit().side(), true, unit_race::MALE);
-						newunit.set_attacks(0);
-						// Apply variation
-						if(strcmp(undead_variation.c_str(), "null")) {
-							config mod;
-							config& variation=mod.add_child("effect");
-							variation["apply_to"]="variation";
-							variation["name"]=undead_variation;
-							newunit.add_modification("variation",mod);
-							newunit.heal_all();
-						}
-						units_.add(death_loc, newunit);
-						preferences::encountered_units().insert(newunit.type_id());
-						if (update_display_){
-							resources::screen->invalidate(death_loc);
-						}
-					}
-				} else {
-					LOG_NG << "unit not reanimated" << std::endl;
-				}
-
-				update_def_fog = true;
-				update_minimap = true;
-				break;
-			} else if(hits) {
-				if (a_stats_->poisons &&
-						!(d_.get_unit().get_state(unit::STATE_POISONED))) {
-					d_.get_unit().set_state(unit::STATE_POISONED,true);
-					LOG_NG << "defender poisoned\n";
-				}
-
-				if(a_stats_->slows && !(d_.get_unit().get_state(unit::STATE_SLOWED))) {
-					d_.get_unit().set_state(unit::STATE_SLOWED,true);
-					update_def_fog = true;
-					d_.damage_ = d_stats_->slow_damage;
-					LOG_NG << "defender slowed\n";
-				}
-
-				// If the defender is petrified, the fight stops immediately
-				static const std::string petrify_string("petrified");
-				if (a_stats_->petrifies) {
-					d_.get_unit().set_state(unit::STATE_PETRIFIED,true);
-					update_def_fog = true;
-					a_.n_attacks_ = 0;
-					d_.n_attacks_ = 0;
-					game_events::fire(petrify_string, d_.loc_, a_.loc_);
-					refresh_bc();
-
-				}
-			}
-
-			--a_.n_attacks_;
+		if (a_.n_attacks_ > 0 && !defender_strikes_first) {
+			if (!perform_hit(true, attack_stats)) break;
 		}
 
 		// If the defender got to strike first, they use it up here.
 		defender_strikes_first = false;
 		abs_n_defend_++;
 
-		if(d_.n_attacks_ > 0) {
-			DBG_NG << "doing defender attack...\n";
-
-			const int ran_num = get_random();
-			bool hits = (ran_num%100) < d_.cth_;
-
-			int damage_attacker_takes;
-			if(hits) {
-				damage_attacker_takes = d_.damage_;
-
-				resources::state_of_game->set_variable("damage_inflicted",
-							 str_cast<int>(damage_attacker_takes));
-			} else {
-				damage_attacker_takes = 0;
-			}
-			// Make sure that if we're serializing a game here,
-			// we got the same results as the game did originally.
-			const config* ran_results = get_random_results();
-			if(ran_results != NULL) {
-				const int results_chance = atoi((*ran_results)["chance"].c_str());
-				const bool results_hits = (*ran_results)["hits"] == "yes";
-				const int results_damage = atoi((*ran_results)["damage"].c_str());
-
-				if(results_chance != d_.cth_) {
-					errbuf_ << "SYNC: In defend " << a_.dump() << " vs " << d_.dump()
-						<< ": chance to hit attacker is inconsistent. Data source: "
-						<< results_chance << "; Calculation: " << d_.cth_
-						<< " (over-riding game calculations with data source results)\n";
-					d_.cth_ = results_chance;
-					OOS_error_ = true;
-				}
-				if(hits != results_hits) {
-					errbuf_ << "SYNC: In defend " << a_.dump() << " vs " << d_.dump()
-						<< ": the data source says the hit was "
-						<< (results_hits ? "successful" : "unsuccessful")
-						<< ", while in-game calculations say the hit was "
-						<< (hits ? "successful" : "unsuccessful")
-						<< " random number: " << ran_num << " = " << (ran_num%100) << "/"
-						<< results_chance
-						<< " (over-riding game calculations with data source results)\n";
-					hits = results_hits;
-					OOS_error_ = true;
-				}
-				if(results_damage != damage_attacker_takes) {
-					errbuf_ << "SYNC: In defend " << a_.dump() << " vs " << d_.dump()
-						<< ": the data source says the hit did " << results_damage
-						<< " damage, while in-game calculations show the hit doing "
-						<< damage_attacker_takes
-						<< " damage (over-riding game calculations with data source results)\n";
-					damage_attacker_takes = results_damage;
-					OOS_error_ = true;
-				}
-			}
-
-			if(update_display_) {
-				std::string float_text = "";
-				if(hits) {
-					if (d_stats_->poisons &&
-							!(a_.get_unit().get_state(unit::STATE_POISONED))) {
-						float_text += (a_.get_unit().gender() == unit_race::FEMALE ?  _("female^poisoned") : _("poisoned"));
-						float_text += '\n';
-					}
-
-					if(d_stats_->slows && !(a_.get_unit().get_state(unit::STATE_SLOWED))) {
-						float_text += (a_.get_unit().gender() == unit_race::FEMALE ?  _("female^slowed") : _("slowed"));
-						float_text += '\n';
-					}
-
-					// If the attacker is petrified, the fight stops immediately
-					static const std::string petrify_string("petrified");
-					if (d_stats_->petrifies) {
-						float_text += (a_.get_unit().gender() == unit_race::FEMALE ?  _("female^petrified") : _("petrified"));
-						float_text += '\n';
-					}
-				}
-				unit_display::unit_attack(d_.loc_,a_.loc_,
-						damage_attacker_takes,
-						*d_stats_->weapon,a_stats_->weapon,
-						abs_n_defend_,float_text,d_stats_->drains,"");
-			}
-
-			// used for stats calculation
-			int drains_damage = 0;
-			if (d_stats_->drains){
-				// don't drain so much that the defender gets more than his maximum hitpoints
-				drains_damage = std::min<int>(damage_attacker_takes / 2, d_.get_unit().max_hitpoints() - d_.get_unit().hitpoints());
-				// don't drain more than the attackers remaining hitpoints
-                drains_damage = std::min<int>(drains_damage, a_.get_unit().hitpoints() / 2);
-			}
-			const int damage_done   = std::min<int>(a_.get_unit().hitpoints(), d_.damage_);
-			bool dies = a_.get_unit().take_hit(damage_attacker_takes);
-			LOG_NG << "attacker took " << damage_attacker_takes << (dies ? " and died" : "") << "\n";
-			if(ran_results == NULL) {
-				config cfg;
-				cfg["hits"] = (hits ? "yes" : "no");
-				cfg["dies"] = (dies ? "yes" : "no");
-				cfg["unit_hit"] = "attacker";
-				cfg["damage"] = lexical_cast<std::string>(damage_attacker_takes);
-				cfg["chance"] = lexical_cast<std::string>(d_.cth_);
-
-				set_random_results(cfg);
-			} else {
-				const bool results_dies = (*ran_results)["dies"] == "yes";
-				if(results_dies != dies) {
-					errbuf_ << "SYNC: In defend " << a_.dump() << " vs " << d_.dump()
-						<< ": the data source says the attacker "
-						<< (results_dies ? "perished" : "survived")
-						<< " while in-game calculations show the unit "
-						<< (dies ? "perished" : "survived")
-						<< " (over-riding game calculations with data source results)\n";
-					dies = results_dies;
-					// Set hitpoints to 0 so later checks don't invalidate the death.
-					// Maybe set to > 0 for the else case to avoid more errors?
-					if (results_dies) a_.get_unit().set_hitpoints(0);
-					OOS_error_ = true;
-				}
-			}
-			if(hits) {
-				try {
-					fire_event("defender_hits");
-				} catch (attack_end_exception) {
-					refresh_bc();
-					break;
-				}
-				refresh_bc();
-			} else {
-				try {
-					fire_event("defender_misses");
-				} catch (attack_end_exception) {
-					refresh_bc();
-					break;
-				}
-				refresh_bc();
-			}
-			attack_stats.defend_result(hits ?
-					(dies ?
-						statistics::attack_context::KILLS :
-						statistics::attack_context::HITS) :
-					statistics::attack_context::MISSES, damage_done, drains_damage);
-			if(hits || dies){
-				int amount_drained = 0;
-				if (d_stats_->drains){
-                    // don't drain so much that the defender gets more than his maximum hitpoints
-                    amount_drained = std::min<int>(d_.damage_ / 2, d_.get_unit().max_hitpoints() - d_.get_unit().hitpoints());
-                    // don't drain more than the attackers remaining hitpoints
-                    // + defender_damage accounts for the unit already being hit
-                    amount_drained = std::min<int>(amount_drained, (a_.get_unit().hitpoints() + d_.damage_) / 2);
-				}
-
-				if(amount_drained > 0) {
-					d_.get_unit().heal(amount_drained);
-				}
-			}
-
-			if(dies) { // defender kills attacker
-				d_.xp_ = game_config::kill_xp(a_.get_unit().level());
-				a_.xp_ = 0;
-				resources::screen->invalidate(d_.loc_);
-
-				std::string undead_variation = a_.get_unit().undead_variation();
-
-				game_events::entity_location death_loc(a_.loc_, a_.id_);
-				game_events::entity_location defender_loc(d_.loc_, d_.id_);
-				fire_event("attack_end");
-				refresh_bc();
-
-				// get weapon info for last_breath and die events
-				config dat;
-				config a_weapon_cfg = (a_stats_->weapon != NULL && a_.valid()) ? a_stats_->weapon->get_cfg() : config();
-				config d_weapon_cfg = (d_stats_->weapon != NULL && d_.valid()) ? d_stats_->weapon->get_cfg() : config();
-				if(a_weapon_cfg["name"].empty())
-					a_weapon_cfg["name"] = "none";
-				if(d_weapon_cfg["name"].empty())
-					d_weapon_cfg["name"] = "none";
-				dat.add_child("first" , a_weapon_cfg);
-				dat.add_child("second", d_weapon_cfg);
-
-				game_events::fire("last breath", death_loc, defender_loc, dat);
-
-				if(!a_.valid() || a_.get_unit().hitpoints() > 0) {
-					// WML has invalidated the dying unit, abort
-					break;
-				}
-
-				refresh_bc();
-				if(!d_.valid()) {
-					unit_display::unit_die(a_.loc_, a_.get_unit(),a_stats_->weapon);
-				} else {
-					unit_display::unit_die(a_.loc_, a_.get_unit(),a_stats_->weapon,d_stats_->weapon,d_.loc_, &(d_.get_unit()));
-				}
-
-				game_events::fire("die", death_loc, defender_loc, dat);
-
-				// Don't try to call refresh_bc() here the attacker or defender might have
-				// been replaced by another unit, which might have a lower number of weapons.
-                // In that case refresh_bc() will terminate with an invalid selected weapon.
-
-				if(!a_.valid()) {
-					// WML has invalidated the dying unit, abort
-					break;
-				} else if(a_.get_unit().hitpoints() <= 0) {
-					units_.erase(a_.loc_);
-				}
-
-				if(!d_.valid()) {
-					// WML has invalidated the killing unit, abort
-					break;
-				} else if(d_stats_->plagues) {
-					// plague units make new units on the target hex.
-					unit_type_data::unit_type_map::const_iterator reanimitor;
-					LOG_NG << "trying to reanimate " << d_stats_->plague_type << std::endl;
-					reanimitor = unit_type_data::types().find_unit_type(d_stats_->plague_type);
-					LOG_NG << "found unit type:" << reanimitor->second.id() << std::endl;
-					if(reanimitor != unit_type_data::types().end()) {
-						unit newunit(&units_, &reanimitor->second,
-						             d_.get_unit().side(), true, unit_race::MALE);
-						// Apply variation
-						if(strcmp(undead_variation.c_str(),"null")){
-							config mod;
-							config& variation=mod.add_child("effect");
-							variation["apply_to"]="variation";
-							variation["name"]=undead_variation;
-							newunit.add_modification("variation",mod);
-						}
-						units_.add(death_loc, newunit);
-						preferences::encountered_units().insert(newunit.type_id());
-						if (update_display_){
-							resources::screen->invalidate(death_loc);
-						}
-					}
-				} else {
-					LOG_NG<<"unit not reanimated"<<std::endl;
-				}
-
-				update_att_fog = true;
-				update_minimap = true;
-				break;
-			} else if(hits) {
-				if (d_stats_->poisons &&
-						!(a_.get_unit().get_state(unit::STATE_POISONED))) {
-					a_.get_unit().set_state(unit::STATE_POISONED,true);
-					LOG_NG << "attacker poisoned\n";
-				}
-
-				if(d_stats_->slows && !(a_.get_unit().get_state(unit::STATE_SLOWED))) {
-					a_.get_unit().set_state(unit::STATE_SLOWED,true);
-					update_att_fog = true;
-					a_.damage_ = a_stats_->slow_damage;
-					LOG_NG << "attacker slowed\n";
-				}
-
-
-				// If the attacker is petrified, the fight stops immediately
-				static const std::string petrify_string("petrified");
-				if (d_stats_->petrifies) {
-					a_.get_unit().set_state(unit::STATE_PETRIFIED,true);
-					update_att_fog = true;
-					d_.n_attacks_ = 0;
-					a_.n_attacks_ = 0;
-
-					game_events::fire(petrify_string, a_.loc_, d_.loc_);
-					refresh_bc();
-				}
-			}
-
-			--d_.n_attacks_;
+		if (d_.n_attacks_ > 0) {
+			if (!perform_hit(false, attack_stats)) break;
 		}
 
 		// Continue the fight to death; if one of the units got petrified,
@@ -1657,7 +1427,7 @@ void attack::perform()
 	}
 
 	// TODO: if we knew the viewing team, we could skip some of these display update
-	if (update_att_fog && (*resources::teams)[attacker_side - 1].uses_fog())
+	if (update_att_fog_ && (*resources::teams)[attacker_side - 1].uses_fog())
 	{
 		recalculate_fog(attacker_side);
 		if (update_display_) {
@@ -1665,7 +1435,7 @@ void attack::perform()
 			resources::screen->recalculate_minimap();
 		}
 	}
-	if (update_def_fog && (*resources::teams)[defender_side - 1].uses_fog())
+	if (update_def_fog_ && (*resources::teams)[defender_side - 1].uses_fog())
 	{
 		recalculate_fog(defender_side);
 		if (update_display_) {
@@ -1674,7 +1444,7 @@ void attack::perform()
 		}
 	}
 
-	if(update_minimap && update_display_) {
+	if (update_minimap_ && update_display_) {
 		resources::screen->recalculate_minimap();
 	}
 
