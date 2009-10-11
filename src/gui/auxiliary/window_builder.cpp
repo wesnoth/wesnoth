@@ -129,6 +129,7 @@ twindow* build(CVideo& video, const std::string& type)
 			, definition->maximum_height
 			, definition->definition);
 	assert(window);
+	window->set_id(type);
 
 	foreach(const twindow_builder::tresolution::tlinked_group& lg,
 			definition->linked_groups) {
