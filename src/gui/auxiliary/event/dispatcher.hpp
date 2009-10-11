@@ -473,9 +473,6 @@ public:
 				case back_post_child :
 					queue[event].post_child.push_back(signal);
 					break;
-
-				default :
-					assert(false);
 			}
 
 		}
