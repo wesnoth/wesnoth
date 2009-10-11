@@ -252,6 +252,25 @@ public:
 	}
 
 	/**
+	 * Disconnect a signal for callback in tset_event.
+	 *
+	 * @tparam E                     The event the callback was used for.
+	 * @param signal                 The callback function.
+	 * @param position               The place where the function was added.
+	 *                               Needed remove the event from the right
+	 *                               place. (The function doesn't care whether
+	 *                               was added in front or back.)
+	 */
+	template<tevent E>
+	typename boost::enable_if<boost::mpl::has_key<
+			tset_event, boost::mpl::int_<E> > >::type
+	disconnect_signal(const tsignal_function& signal
+			, const tposition position = back_child)
+	{
+		signal_queue_.disconnect_signal(E, position, signal);
+	}
+
+	/**
 	 * Connect a signal for callback in tset_event_mouse.
 	 *
 	 * @tparam E                     The event the callback needs to react to.
@@ -265,6 +284,25 @@ public:
 			, const tposition position = back_child)
 	{
 		signal_mouse_queue_.connect_signal(E, position, signal);
+	}
+
+	/**
+	 * Disconnect a signal for callback in tset_event_mouse.
+	 *
+	 * @tparam E                     The event the callback was used for.
+	 * @param signal                 The callback function.
+	 * @param position               The place where the function was added.
+	 *                               Needed remove the event from the right
+	 *                               place. (The function doesn't care whether
+	 *                               was added in front or back.)
+	 */
+	template<tevent E>
+	typename boost::enable_if<boost::mpl::has_key<
+			tset_event_mouse, boost::mpl::int_<E> > >::type
+	disconnect_signal(const tsignal_mouse_function& signal
+			, const tposition position = back_child)
+	{
+		signal_mouse_queue_.disconnect_signal(E, position, signal);
 	}
 
 	/**
@@ -284,6 +322,25 @@ public:
 	}
 
 	/**
+	 * Disconnect a signal for callback in tset_event_keyboard.
+	 *
+	 * @tparam E                     The event the callback was used for.
+	 * @param signal                 The callback function.
+	 * @param position               The place where the function was added.
+	 *                               Needed remove the event from the right
+	 *                               place. (The function doesn't care whether
+	 *                               was added in front or back.)
+	 */
+	template<tevent E>
+	typename boost::enable_if<boost::mpl::has_key<
+			tset_event_keyboard, boost::mpl::int_<E> > >::type
+	disconnect_signal(const tsignal_keyboard_function& signal
+			, const tposition position = back_child)
+	{
+		signal_keyboard_queue_.disconnect_signal(E, position, signal);
+	}
+
+	/**
 	 * Connect a signal for callback in tset_event_notification.
 	 *
 	 * @tparam E                     The event the callback needs to react to.
@@ -300,6 +357,25 @@ public:
 			, const tposition position = back_child)
 	{
 		signal_notification_queue_.connect_signal(E, position, signal);
+	}
+
+	/**
+	 * Disconnect a signal for callback in tset_event_notification.
+	 *
+	 * @tparam E                     The event the callback was used for.
+	 * @param signal                 The callback function.
+	 * @param position               The place where the function was added.
+	 *                               Needed remove the event from the right
+	 *                               place. (The function doesn't care whether
+	 *                               was added in front or back.)
+	 */
+	template<tevent E>
+	typename boost::enable_if<boost::mpl::has_key<
+			tset_event_notification, boost::mpl::int_<E> > >::type
+	disconnect_signal(const tsignal_notification_function& signal
+			, const tposition position = back_child)
+	{
+		signal_notification_queue_.disconnect_signal(E, position, signal);
 	}
 
 	/**
@@ -402,6 +478,65 @@ public:
 					assert(false);
 			}
 
+		}
+
+		void disconnect_signal(const tevent event
+				, const tposition position
+				, const T& signal)
+		{
+			/*
+			 * The function doesn't differenciate between front and back
+			 * position so fall down from front to back.
+			 */
+			switch(position) {
+				case front_pre_child :
+				case back_pre_child : {
+						tsignal<T>& signal_queue = queue[event];
+						for(typename std::vector<T>::iterator itor =
+									signal_queue.child.begin()
+								; itor != signal_queue.child.end()
+								; ++itor) {
+
+							if(signal.target_type() == itor->target_type()) {
+								signal_queue.child.erase(itor);
+								return;
+							}
+						}
+					}
+					break;
+
+				case front_child :
+				case back_child : {
+						tsignal<T>& signal_queue = queue[event];
+						for(typename std::vector<T>::iterator itor =
+									signal_queue.child.begin()
+								; itor != signal_queue.child.end()
+								; ++itor) {
+
+							if(signal.target_type() == itor->target_type()) {
+								signal_queue.child.erase(itor);
+								return;
+							}
+						}
+					}
+					break;
+
+				case front_post_child :
+				case back_post_child : {
+						tsignal<T>& signal_queue = queue[event];
+						for(typename std::vector<T>::iterator itor =
+									signal_queue.child.begin()
+								; itor != signal_queue.child.end()
+								; ++itor) {
+
+							if(signal.target_type() == itor->target_type()) {
+								signal_queue.child.erase(itor);
+								return;
+							}
+						}
+					}
+					break;
+			}
 		}
 	};
 
