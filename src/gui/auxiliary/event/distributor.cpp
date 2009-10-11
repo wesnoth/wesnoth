@@ -1,0 +1,853 @@
+/* $Id$ */
+/*
+   Copyright (C) 2009 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License version 2
+   or at your option any later version.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY.
+
+   See the COPYING file for more details.
+*/
+
+#define GETTEXT_DOMAIN "wesnoth-lib"
+
+#include "gui/auxiliary/event/distributor.hpp"
+
+#include "gui/auxiliary/log.hpp"
+#include "gui/widgets/settings.hpp"
+#include "gui/widgets/widget.hpp"
+
+#include <boost/bind.hpp>
+
+namespace gui2{
+
+namespace event {
+#if 0
+/**
+ * SDL_AddTimer() callback for the hover event.
+ *
+ * When this callback is called it pushes a new hover event in the event queue.
+ *
+ * @param interval                The time parameter of SDL_AddTimer.
+ * @param param                   Pointer to parameter structure.
+ *
+ * @returns                       The new timer interval, 0 to stop.
+ */
+static Uint32 hover_callback(Uint32 /*interval*/, void *param)
+{
+	DBG_GUI_E << "Pushing hover event in queue.\n";
+
+	SDL_Event event;
+	SDL_UserEvent data;
+
+	data.type = HOVER_EVENT;
+	data.code = 0;
+	data.data1 = param;
+	data.data2 = 0;
+
+	event.type = HOVER_EVENT;
+	event.user = data;
+
+	SDL_PushEvent(&event);
+	return 0;
+}
+
+/**
+ * SDL_AddTimer() callback for the popup event.
+ *
+ * This event makes sure the popup is removed again.
+ *
+ * @param interval                The time parameter of SDL_AddTimer.
+ * @param param                   Pointer to parameter structure.
+ *
+ * @returns                       The new timer interval, 0 to stop.
+ */
+static Uint32 popup_callback(Uint32 /*interval*/, void* /*param*/)
+{
+	DBG_GUI_E << "Pushing popup removal event in queue.\n";
+
+	SDL_Event event;
+	SDL_UserEvent data;
+
+	data.type = HOVER_REMOVE_POPUP_EVENT;
+	data.code = 0;
+	data.data1 = 0;
+	data.data2 = 0;
+
+	event.type = HOVER_REMOVE_POPUP_EVENT;
+	event.user = data;
+
+	SDL_PushEvent(&event);
+	return 0;
+}
+#endif
+
+/**
+ * Small helper to keep a resource (boolean) locked.
+ */
+class tlock
+{
+public:
+	tlock(bool& locked)
+		: locked_(locked)
+	{
+		assert(!locked_);
+		locked_ = true;
+	}
+
+	~tlock()
+	{
+		assert(locked_);
+		locked_ = false;
+	}
+private:
+	bool& locked_;
+};
+
+
+/***** ***** ***** ***** tmouse_motion ***** ***** ***** ***** *****/
+
+#define LOG_HEADER "distributor mouse motion [" << owner_.id() << "]: "
+
+tmouse_motion::tmouse_motion(twidget& owner
+		, const tdispatcher::tposition queue_position)
+	: mouse_focus_(NULL)
+	, mouse_captured_(false)
+	, owner_(owner)
+{
+	owner.connect_signal<event::SDL_MOUSE_MOTION>(
+		  boost::bind(&tmouse_motion::signal_handler_sdl_mouse_motion
+			  , this, _2, _3, _5)
+		, queue_position);
+}
+
+void tmouse_motion::capture_mouse(//twidget* widget)
+			const bool capture)
+{
+	assert(mouse_focus_);
+	mouse_captured_ = capture;
+}
+
+void tmouse_motion::signal_handler_sdl_mouse_motion(
+		  const event::tevent event
+		, bool& handled
+		, const tpoint& coordinate)
+{
+	/*
+	 * Avoid recursion since we fire our own event which will cause ourselves
+	 * to enter an infinite recursion. If we're called while entered leave
+	 * directly to avoid the recursion. If not entered use a RAII helper to
+	 * control the flag.
+	 */
+	static bool entered = false;
+	if(entered) {
+		return;
+	}
+	tlock lock(entered);
+
+	DBG_GUI_E << LOG_HEADER << event << ".\n";
+
+	if(mouse_captured_) {
+		assert(mouse_focus_);
+		if(!owner_.fire(event, *mouse_focus_, coordinate)) {
+			mouse_motion(mouse_focus_, coordinate);
+		}
+	} else {
+		twidget* mouse_over = owner_.find_at(coordinate, true);
+		if(mouse_over) {
+			DBG_GUI_E << LOG_HEADER << "Firing: " << event << ".\n";
+			if(owner_.fire(event, *mouse_over, coordinate)) {
+				return;
+			}
+		}
+
+		if(!mouse_focus_ && mouse_over) {
+			mouse_enter(mouse_over);
+		} else if (mouse_focus_ && !mouse_over) {
+			mouse_leave();
+		} else if(mouse_focus_ && mouse_focus_ == mouse_over) {
+			mouse_motion(mouse_over, coordinate);
+		} else if(mouse_focus_ && mouse_over) {
+			// moved from one widget to the next
+			mouse_leave();
+			mouse_enter(mouse_over);
+		} else {
+			assert(!mouse_focus_ && !mouse_over);
+		}
+	}
+	handled = true;
+}
+
+void tmouse_motion::mouse_enter(twidget* mouse_over)
+{
+	DBG_GUI_E << LOG_HEADER << "Firing: " << event::MOUSE_ENTER << ".\n";
+
+	assert(mouse_over);
+
+	mouse_focus_ = mouse_over;
+	owner_.fire(event::MOUSE_ENTER, *mouse_over);
+}
+
+void tmouse_motion::mouse_motion(twidget* mouse_over, const tpoint& coordinate)
+{
+	DBG_GUI_E << LOG_HEADER << "Firing: " << event::MOUSE_MOTION << ".\n";
+
+	assert(mouse_over);
+
+	owner_.fire(event::MOUSE_MOTION, *mouse_over, coordinate);
+}
+
+void tmouse_motion::mouse_leave()
+{
+	DBG_GUI_E << LOG_HEADER << "Firing: " << event::MOUSE_LEAVE << ".\n";
+
+	owner_.fire(event::MOUSE_LEAVE, *mouse_focus_);
+
+	mouse_focus_ = NULL;
+}
+
+/***** ***** ***** ***** tmouse_button ***** ***** ***** ***** *****/
+
+#undef LOG_HEADER
+#define LOG_HEADER "distributor mouse button " \
+		<< name_ << " [" << owner_.id() << "]: "
+
+template<
+		  tevent sdl_button_down
+		, tevent sdl_button_up
+		, tevent button_down
+		, tevent button_up
+		, tevent button_click
+		, tevent button_double_click
+		, bool(tevent_executor::*wants_double_click) () const
+> tmouse_button<
+		  sdl_button_down
+		, sdl_button_up
+		, button_down
+		, button_up
+		, button_click
+		, button_double_click
+		, wants_double_click
+>::tmouse_button(
+			  const std::string& name_
+			, twidget& owner
+			, const tdispatcher::tposition queue_position)
+	: tmouse_motion(owner, queue_position)
+	, last_click_stamp_(0)
+	, last_clicked_widget_(NULL)
+	, focus_(0)
+	, name_(name_)
+	, is_down_(false)
+{
+	owner_.connect_signal<sdl_button_down>(
+			  boost::bind(&tmouse_button<
+				  sdl_button_down
+				, sdl_button_up
+				, button_down
+				, button_up
+				, button_click
+				, button_double_click
+				, wants_double_click
+				>::signal_handler_sdl_button_down, this, _2, _3, _5)
+			, queue_position);
+	owner_.connect_signal<sdl_button_up>(
+			  boost::bind(&tmouse_button<
+				  sdl_button_down
+				, sdl_button_up
+				, button_down
+				, button_up
+				, button_click
+				, button_double_click
+				, wants_double_click
+				>::signal_handler_sdl_button_up, this, _2, _3, _5)
+			, queue_position);
+}
+
+template<
+		  tevent sdl_button_down
+		, tevent sdl_button_up
+		, tevent button_down
+		, tevent button_up
+		, tevent button_click
+		, tevent button_double_click
+		, bool(tevent_executor::*wants_double_click) () const
+> void tmouse_button<
+		  sdl_button_down
+		, sdl_button_up
+		, button_down
+		, button_up
+		, button_click
+		, button_double_click
+		, wants_double_click
+>::signal_handler_sdl_button_down(
+		  const event::tevent event
+		, bool& handled
+		, const tpoint& coordinate)
+{
+	/*
+	 * Avoid recursion since we fire our own event which will cause ourselves
+	 * to enter an infinite recursion. If we're called while entered leave
+	 * directly to avoid the recursion. If not entered use a RAII helper to
+	 * control the flag.
+	 */
+	static bool entered = false;
+	if(entered) {
+		return;
+	}
+	tlock lock(entered);
+
+	DBG_GUI_E << LOG_HEADER << event << ".\n";
+
+	if(is_down_) {
+		WRN_GUI_E << LOG_HEADER << event
+				<< ". The mouse button is already down, "
+				<< "we missed an event.\n";
+		return;
+	}
+	is_down_ = true;
+
+	if(mouse_captured_) {
+		assert(mouse_focus_);
+		focus_ = mouse_focus_;
+		DBG_GUI_E << LOG_HEADER << "Firing: " << sdl_button_down << ".\n";
+		if(!owner_.fire(sdl_button_down, *focus_, coordinate)) {
+			DBG_GUI_E << LOG_HEADER << "Firing: " << button_down << ".\n";
+			owner_.fire(button_down, *mouse_focus_);
+		}
+	} else {
+		twidget* mouse_over = owner_.find_at(coordinate, true);
+		if(!mouse_over) {
+			return;
+		}
+
+		if(mouse_over != mouse_focus_) {
+			WRN_GUI_E << LOG_HEADER
+					<< ". Mouse down on non focussed widget "
+					<< "and mouse not captured, we missed events.\n";
+			mouse_focus_ = mouse_over;
+		}
+
+		focus_ = mouse_over;
+		DBG_GUI_E << LOG_HEADER << "Firing: " << sdl_button_down << ".\n";
+		if(!owner_.fire(sdl_button_down, *focus_, coordinate)) {
+			DBG_GUI_E << LOG_HEADER << "Firing: " << button_down << ".\n";
+			owner_.fire(button_down, *focus_);
+		}
+	}
+	handled = true;
+}
+
+template<
+		  tevent sdl_button_down
+		, tevent sdl_button_up
+		, tevent button_down
+		, tevent button_up
+		, tevent button_click
+		, tevent button_double_click
+		, bool(tevent_executor::*wants_double_click) () const
+> void tmouse_button<
+		  sdl_button_down
+		, sdl_button_up
+		, button_down
+		, button_up
+		, button_click
+		, button_double_click
+		, wants_double_click
+>::signal_handler_sdl_button_up(
+		  const event::tevent event
+		, bool& handled
+		, const tpoint& coordinate)
+{
+	/*
+	 * Avoid recursion since we fire our own event which will cause ourselves
+	 * to enter an infinite recursion. If we're called while entered leave
+	 * directly to avoid the recursion. If not entered use a RAII helper to
+	 * control the flag.
+	 */
+	static bool entered = false;
+	if(entered) {
+		return;
+	}
+	tlock lock(entered);
+
+	DBG_GUI_E << LOG_HEADER << event << ".\n";
+
+	if(!is_down_) {
+		WRN_GUI_E << LOG_HEADER << event
+				<< ". The mouse button is already up, we missed an event.\n";
+		return;
+	}
+	is_down_ = false;
+
+	if(focus_) {
+		DBG_GUI_E << LOG_HEADER << "Firing: " << sdl_button_up << ".\n";
+		if(!owner_.fire(sdl_button_up, *focus_, coordinate)) {
+			DBG_GUI_E << LOG_HEADER << "Firing: " << button_up << ".\n";
+			owner_.fire(button_up, *focus_);
+		}
+	}
+
+	twidget* mouse_over = owner_.find_at(coordinate, true);
+	if(mouse_captured_) {
+		const unsigned mask =
+				SDL_BUTTON_LMASK | SDL_BUTTON_MMASK | SDL_BUTTON_RMASK;
+
+		if((SDL_GetMouseState(NULL, NULL) & mask ) == 0) {
+			mouse_captured_ = false;
+		}
+
+		if(mouse_focus_ != mouse_over) {
+			mouse_leave();
+
+			if(mouse_over) {
+				mouse_enter(mouse_over);
+			}
+		} else {
+			mouse_button_click(mouse_focus_);
+		}
+	} else if(focus_ && focus_ == mouse_over) {
+		mouse_button_click(focus_);
+	}
+
+	focus_ = NULL;
+	handled = true;
+}
+
+template<
+		  tevent sdl_button_down
+		, tevent sdl_button_up
+		, tevent button_down
+		, tevent button_up
+		, tevent button_click
+		, tevent button_double_click
+		, bool(tevent_executor::*wants_double_click) () const
+> void tmouse_button<
+		  sdl_button_down
+		, sdl_button_up
+		, button_down
+		, button_up
+		, button_click
+		, button_double_click
+		, wants_double_click
+>::mouse_button_click(twidget* widget)
+{
+	if((widget->*wants_double_click)()) {
+		Uint32 stamp = SDL_GetTicks();
+		if(last_click_stamp_ + settings::double_click_time >= stamp
+				&& last_clicked_widget_ == widget) {
+
+			DBG_GUI_E << LOG_HEADER << "Firing: "
+					<< button_double_click << ".\n";
+
+			owner_.fire(button_double_click, *widget);
+			last_click_stamp_ = 0;
+			last_clicked_widget_ = NULL;
+
+		} else {
+
+			DBG_GUI_E << LOG_HEADER << "Firing: " << button_click << ".\n";
+			owner_.fire(button_click, *widget);
+			last_click_stamp_ = stamp;
+			last_clicked_widget_ = widget;
+		}
+
+	} else {
+
+		DBG_GUI_E << LOG_HEADER << "Firing: " << button_click << ".\n";
+		owner_.fire(button_click, *widget);
+	}
+}
+
+/***** ***** ***** ***** tdistributor ***** ***** ***** ***** *****/
+
+#undef LOG_HEADER
+#define LOG_HEADER "distributor mouse motion [" << owner_.id() << "]: "
+
+/**
+ * @todo At construction we should get the state and from that moment on we
+ * keep track of the changes ourselves, not yet sure what happens when an input
+ * blocker is used.
+ */
+tdistributor::tdistributor(twidget& owner
+		, const tdispatcher::tposition queue_position)
+	: tmouse_motion(owner, queue_position)
+	, tmouse_button_left("left"
+			, owner
+			, queue_position)
+	, tmouse_button_middle("middle"
+			, owner
+			, queue_position)
+	, tmouse_button_right("right"
+			, owner
+			, queue_position)
+	, hover_pending_(false)
+	, hover_id_(0)
+	, hover_box_()
+	, had_hover_(false)
+	, tooltip_(0)
+	, help_popup_(0)
+	, keyboard_focus_(0)
+	, keyboard_focus_chain_()
+{
+	if(SDL_WasInit(SDL_INIT_TIMER) == 0) {
+		if(SDL_InitSubSystem(SDL_INIT_TIMER) == -1) {
+			assert(false);
+		}
+	}
+
+	owner_.connect_signal<event::SDL_KEY_DOWN>(
+			boost::bind(&tdistributor::signal_handler_sdl_key_down
+				, this, _5, _6, _7));
+
+
+	owner_.connect_signal<event::SDL_WHEEL_UP>(
+			boost::bind(
+				  &tdistributor::signal_handler_sdl_wheel<event::SDL_WHEEL_UP>
+				, this));
+	owner_.connect_signal<event::SDL_WHEEL_DOWN>(
+			boost::bind(
+				  &tdistributor::signal_handler_sdl_wheel<event::SDL_WHEEL_DOWN>
+				, this));
+	owner_.connect_signal<event::SDL_WHEEL_LEFT>(
+			boost::bind(
+				  &tdistributor::signal_handler_sdl_wheel<event::SDL_WHEEL_LEFT>
+				, this));
+	owner_.connect_signal<event::SDL_WHEEL_RIGHT>(
+			boost::bind(
+				  &tdistributor::signal_handler_sdl_wheel<
+					  event::SDL_WHEEL_RIGHT>
+				, this));
+
+
+	owner_.connect_signal<event::NOTIFY_REMOVAL>(
+			boost::bind(
+				  &tdistributor::signal_handler_notify_removal
+				, this
+				, _1
+				, _2));
+}
+
+tdistributor::~tdistributor()
+{
+	owner_.disconnect_signal<event::SDL_KEY_DOWN>(
+			boost::bind(&tdistributor::signal_handler_sdl_key_down
+				, this, _5, _6, _7));
+
+
+	owner_.disconnect_signal<event::SDL_WHEEL_UP>(
+			boost::bind(
+				  &tdistributor::signal_handler_sdl_wheel<event::SDL_WHEEL_UP>
+				, this));
+	owner_.disconnect_signal<event::SDL_WHEEL_DOWN>(
+			boost::bind(
+				  &tdistributor::signal_handler_sdl_wheel<event::SDL_WHEEL_DOWN>
+				, this));
+	owner_.disconnect_signal<event::SDL_WHEEL_LEFT>(
+			boost::bind(
+				  &tdistributor::signal_handler_sdl_wheel<event::SDL_WHEEL_LEFT>
+				, this));
+	owner_.disconnect_signal<event::SDL_WHEEL_RIGHT>(
+			boost::bind(
+				  &tdistributor::signal_handler_sdl_wheel<
+					  event::SDL_WHEEL_RIGHT>
+				, this));
+
+
+	owner_.disconnect_signal<event::NOTIFY_REMOVAL>(
+			boost::bind(
+				  &tdistributor::signal_handler_notify_removal
+				, this
+				, _1
+				, _2));
+}
+
+void tdistributor::keyboard_capture(twidget* widget)
+{
+	if(keyboard_focus_) {
+		DBG_GUI_E << LOG_HEADER << "Firing: "
+				<< event::LOSE_KEYBOARD_FOCUS << ".\n";
+
+		owner_.fire(event::LOSE_KEYBOARD_FOCUS, *keyboard_focus_, NULL);
+	}
+
+	keyboard_focus_ = widget;
+
+	if(keyboard_focus_) {
+		DBG_GUI_E << LOG_HEADER << "Firing: "
+				<< event::RECEIVE_KEYBOARD_FOCUS << ".\n";
+
+		owner_.fire(event::RECEIVE_KEYBOARD_FOCUS, *keyboard_focus_, NULL);
+	}
+}
+
+void tdistributor::init_mouse_location()
+{
+	// Fix the mouse location by pushing a dummy event.
+	int x;
+	int y;
+	SDL_GetMouseState(&x, &y);
+
+	SDL_Event event;
+	event.type = SDL_MOUSEMOTION;
+	event.motion.type = SDL_MOUSEMOTION;
+	event.motion.x = x;
+	event.motion.y = y;
+
+	SDL_PushEvent(&event);
+}
+
+void tdistributor::keyboard_add_to_chain(twidget* widget)
+{
+	assert(widget);
+	assert(std::find(keyboard_focus_chain_.begin()
+				, keyboard_focus_chain_.end()
+				, widget)
+			== keyboard_focus_chain_.end());
+
+	keyboard_focus_chain_.push_back(widget);
+}
+
+void tdistributor::keyboard_remove_from_chain(twidget* widget)
+{
+	assert(widget);
+	std::vector<twidget*>::iterator itor = std::find(
+		keyboard_focus_chain_.begin(), keyboard_focus_chain_.end(), widget);
+
+	if(itor != keyboard_focus_chain_.end()) {
+		keyboard_focus_chain_.erase(itor);
+	}
+}
+#if 0
+void tdistributor::show_tooltip(const t_string& message, const unsigned timeout)
+{
+	DBG_GUI_E << "Event: show tooltip.\n";
+
+	assert(!tooltip_);
+
+	if(help_popup_) {
+		remove_help_popup();
+	}
+
+	tooltip_ = mouse_focus_;
+
+	do_show_tooltip(tpoint(mouse_x_, mouse_y_), message);
+
+	if(timeout) {
+		SDL_AddTimer(timeout, popup_callback, 0);
+	}
+}
+
+void tdistributor::remove_tooltip()
+{
+	if(!tooltip_) {
+		return;
+	}
+
+	tooltip_ = 0;
+
+	do_remove_tooltip();
+}
+
+void tdistributor::show_help_popup(const t_string& message, const unsigned timeout)
+{
+	DBG_GUI_E << "Event: show help popup.\n";
+
+	if(help_popup_) {
+		DBG_GUI_E << "Help is already there, bailing out.\n";
+		return;
+	}
+
+	if(tooltip_) {
+		remove_tooltip();
+	}
+
+	// Kill hover events FIXME not documented.
+	had_hover_ = true;
+	hover_pending_ = false;
+
+	help_popup_ = mouse_focus_;
+
+	do_show_help_popup(tpoint(mouse_x_, mouse_y_), message);
+
+	if(timeout) {
+		SDL_AddTimer(timeout, popup_callback, 0);
+	}
+}
+
+void tdistributor::remove_help_popup()
+{
+	if(!help_popup_) {
+		return;
+	}
+
+	help_popup_ = 0;
+
+	do_remove_help_popup();
+}
+
+void tdistributor::set_hover(const bool test_on_widget)
+{
+	// Only one hover event.
+	if(had_hover_) {
+		return;
+	}
+
+	// Don't want a hover.
+	if(!mouse_focus_ || !mouse_focus_->wants_mouse_hover()) {
+		return;
+	}
+
+	// Have an hover and still in the bounding rect.
+	if(hover_pending_ && point_in_rect(mouse_x_, mouse_y_, hover_box_)) {
+		return;
+	}
+
+	// Mouse down, no hovering
+	if(left_.is_down_ || middle_.is_down_ || right_.is_down_) {
+		return;
+	}
+
+	if(test_on_widget) {
+		// FIXME implement
+	}
+
+	static unsigned hover_id = 0;
+
+	hover_pending_ = true;
+	// FIXME hover dimentions should be from the settings
+	// also should check the entire box is on the widget???
+	hover_box_ = ::create_rect(mouse_x_ - 5, mouse_y_ - 5, 10, 10);
+
+	unsigned *hover = new unsigned;
+	*hover = hover_id;
+	hover_id_ = hover_id++;
+
+	SDL_AddTimer(settings::popup_show_delay, hover_callback, hover);
+}
+#endif
+
+void tdistributor::signal_handler_sdl_key_down(const SDLKey key
+		, const SDLMod modifier
+		, const Uint16 unicode)
+{
+	DBG_GUI_E << LOG_HEADER << event::SDL_KEY_DOWN << ".\n";
+
+	if(keyboard_focus_) {
+		DBG_GUI_E << LOG_HEADER << "Firing: " << event::SDL_KEY_DOWN << ".\n";
+		if(owner_.fire(event::SDL_KEY_DOWN
+				, *keyboard_focus_, key, modifier, unicode)) {
+			return;
+		}
+	}
+
+	for(std::vector<twidget*>::reverse_iterator
+				ritor = keyboard_focus_chain_.rbegin()
+			; ritor != keyboard_focus_chain_.rend()
+			; ++ritor) {
+
+		if(*ritor == keyboard_focus_) {
+			continue;
+		}
+
+		if(*ritor == &owner_) {
+			/**
+			 * @todo Make sure we're not in the event chain.
+			 *
+			 * No idea why we're here, but needs to be fixed, otherwise we keep
+			 * calling this function recursively upon unhandled events...
+			 *
+			 * Probably added to make sure the window can grab the events and
+			 * handle + block them when needed, this is no longer needed with
+			 * the chain.
+			 */
+			continue;
+		}
+
+		DBG_GUI_E << LOG_HEADER << "Firing: " << event::SDL_KEY_DOWN << ".\n";
+		if(owner_.fire(event::SDL_KEY_DOWN
+				, **ritor, key, modifier, unicode)) {
+
+			return;
+		}
+	}
+}
+
+template<tevent event>
+void tdistributor::signal_handler_sdl_wheel()
+{
+	/*
+	 * Avoid recursion since we fire our own event which will cause ourselves
+	 * to enter an infinite recursion. If we're called while entered leave
+	 * directly to avoid the recursion. If not entered use a RAII helper to
+	 * control the flag.
+	 */
+	static bool entered = false;
+	if(entered) {
+		return;
+	}
+	tlock lock(entered);
+
+	DBG_GUI_E << LOG_HEADER << event << ".\n";
+
+	if(keyboard_focus_) {
+		DBG_GUI_E << LOG_HEADER << "Firing: " << event  << ".\n";
+		owner_.fire(event, *keyboard_focus_);
+	}
+}
+
+void tdistributor::signal_handler_notify_removal(
+			tdispatcher& widget, const tevent event)
+{
+	DBG_GUI_E << LOG_HEADER << event << ".\n";
+
+	/** 
+	 * @todo Evaluate whether moving the cleanup parts in the subclasses.
+	 *
+	 * It might be cleaner to do it that way, but creates extra small
+	 * functions...
+	 */
+
+	if(tmouse_button_left::last_clicked_widget_ == &widget) {
+		tmouse_button_left::last_clicked_widget_ = NULL;
+	}
+	if(tmouse_button_left::focus_ == &widget) {
+		tmouse_button_left::focus_ = NULL;
+	}
+
+	if(tmouse_button_middle::last_clicked_widget_ == &widget) {
+		tmouse_button_middle::last_clicked_widget_ = NULL;
+	}
+	if(tmouse_button_middle::focus_ == &widget) {
+		tmouse_button_middle::focus_ = NULL;
+	}
+
+	if(tmouse_button_right::last_clicked_widget_ == &widget) {
+		tmouse_button_right::last_clicked_widget_ = NULL;
+	}
+	if(tmouse_button_right::focus_ == &widget) {
+		tmouse_button_right::focus_ = NULL;
+	}
+
+	if(mouse_focus_ == &widget) {
+		mouse_focus_ = NULL;
+	}
+
+	if(keyboard_focus_ == &widget) {
+		keyboard_focus_ = NULL;
+	}
+	const std::vector<twidget*>::iterator itor = std::find(
+			  keyboard_focus_chain_.begin()
+			, keyboard_focus_chain_.end()
+			, &widget);
+	if(itor != keyboard_focus_chain_.end()) {
+		keyboard_focus_chain_.erase(itor);
+	}
+}
+
+} // namespace event
+
+} // namespace gui2
+

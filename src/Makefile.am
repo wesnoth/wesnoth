@@ -101,6 +101,7 @@ wesnoth_source = \
 	generic_event.cpp \
 	gui/auxiliary/canvas.cpp \
 	gui/auxiliary/event/dispatcher.cpp \
+	gui/auxiliary/event/distributor.cpp \
 	gui/auxiliary/event/handler.cpp \
 	gui/auxiliary/log.cpp \
 	gui/auxiliary/widget_definition.cpp \
