@@ -42,13 +42,20 @@ namespace gui2{
 class tdialog;
 class tdebug_layout_graph;
 
+#ifndef GUI2_OLD_EVENT_DISPATCHER
+namespace event {
+	class tdistributor;
+} // namespace event
+#endif
 /**
  * base class of top level items, the only item
  * which needs to store the final canvase to draw on
  */
 class twindow
 	: public tpanel
+#ifdef GUI2_OLD_EVENT_DISPATCHER
 	, public tevent_handler
+#endif
 	, public cursor::setter
 {
 	friend class tdebug_layout_graph;
@@ -582,6 +589,36 @@ public:
 			const unsigned) {}
 #endif
 
+#ifndef GUI2_OLD_EVENT_DISPATCHER
+	event::tdistributor* event_distributor_;
+
+public:
+	// mouse and keyboard_capture should be renamed and stored in the
+	// dispatcher. Chaining probably should remain exclusive to windows.
+	void mouse_capture(const bool capture = true);
+	void keyboard_capture(twidget* widget);
+
+	/**
+	 * Adds the widget to the keyboard chain.
+	 *
+	 * @todo rename to keyboard_add_to_chain.
+	 * @param widget              The widget to add to the chain. The widget
+	 *                            should be valid widget, which hasn't been
+	 *                            added to the chain yet.
+	 */
+	void add_to_keyboard_chain(twidget* widget);
+
+	/**
+	 * Remove the widget from the keyborad chain.
+	 *
+	 * @todo rename to keyboard_remove_from_chain.
+	 *
+	 * @parameter widget          The widget to be removed from the chain.
+	 */
+	void remove_from_keyboard_chain(twidget* widget);
+
+private:
+#endif
 	/***** ***** ***** signal handlers ***** ****** *****/
 
 	void signal_handler_sdl_video_resize(

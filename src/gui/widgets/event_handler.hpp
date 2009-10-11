@@ -20,6 +20,8 @@
 #ifndef GUI_WIDGETS_EVENT_INFO_HPP_INCLUDED
 #define GUI_WIDGETS_EVENT_INFO_HPP_INCLUDED
 
+#ifdef GUI2_OLD_EVENT_DISPATCHER
+
 #ifdef GUI2_OLD_EVENT_HANDLING
 #include "events.hpp"
 #endif
@@ -523,4 +525,5 @@ private:
 
 } // namespace gui2
 
+#endif
 #endif

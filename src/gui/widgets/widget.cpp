@@ -55,6 +55,7 @@ twidget::~twidget()
 		p = p->parent();
 	}
 
+#ifdef GUI2_OLD_EVENT_DISPATCHER
 	twindow* window = get_window();
 	if(!window) {
 		return;
@@ -64,6 +65,13 @@ twidget::~twidget()
 	if(!linked_group_.empty()) {
 		window->remove_linked_widget(linked_group_, this);
 	}
+#else
+	if(!linked_group_.empty()) {
+		if(twindow* window = get_window()) {
+			window->remove_linked_widget(linked_group_, this);
+		}
+	}
+#endif
 }
 
 void twidget::set_id(const std::string& id)

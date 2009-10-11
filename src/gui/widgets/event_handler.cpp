@@ -21,6 +21,8 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
+#ifdef GUI2_OLD_EVENT_DISPATCHER
+
 #include "clipboard.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/widgets/widget.hpp"
@@ -1291,4 +1293,5 @@ void tevent_handler::sdl_wheel(const event::tevent event)
  */
 
 } // namespace gui2
+#endif
 
