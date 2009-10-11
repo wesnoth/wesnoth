@@ -87,6 +87,10 @@ static Uint32 popup_callback(Uint32 /*interval*/, void* /*param*/)
 
 /**
  * Small helper to keep a resource (boolean) locked.
+ *
+ * @todo This locking breaks the window clicks in a nested window.
+ *
+ * Disabled for now fix properly later.
  */
 class tlock
 {
@@ -95,13 +99,13 @@ public:
 		: locked_(locked)
 	{
 		assert(!locked_);
-		locked_ = true;
+//		locked_ = true;
 	}
 
 	~tlock()
 	{
-		assert(locked_);
-		locked_ = false;
+//		assert(locked_);
+//		locked_ = false;
 	}
 private:
 	bool& locked_;
