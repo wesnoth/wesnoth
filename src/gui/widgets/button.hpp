@@ -27,8 +27,30 @@ class tbutton : public tcontrol
 public:
 	tbutton();
 
+	/** @deprecated use (dis)connect_signal_mouse_left_click instead. */
 	void set_callback_mouse_left_click(void (*callback) (twidget*))
 		{ callback_mouse_left_click_ = callback; }
+
+	/**
+	 * Connects a signal handler for a left mouse button click.
+	 *
+	 * @todo Implement everywhere.
+	 *
+	 * The signal should be used for all common cases (which now have
+	 * set_callback_xxx). The those set functions can be removed.
+	 *
+	 * @param signal              The signal to connect.
+	 */
+	void connect_signal_mouse_left_click(const event::tsignal_function& signal);
+
+	/**
+	 * Disconnects a signal handler for a left mouse button click.
+	 *
+	 * @param signal              The signal to disconnect (should be the same
+	 *                            as send to the connect call.
+	 */
+	void disconnect_signal_mouse_left_click(
+			const event::tsignal_function& signal);
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
