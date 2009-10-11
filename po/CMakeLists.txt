@@ -65,6 +65,11 @@ if(NOT GETTEXT_MSGCAT_EXECUTABLE )
       message(FATAL_ERROR "msgcat not found")
 endif(NOT GETTEXT_MSGCAT_EXECUTABLE )
 
+find_program(GETTEXT_MSGATTRIB_EXECUTABLE msgattrib)
+if(NOT GETTEXT_MSGATTRIB_EXECUTABLE)
+      message(FATAL_ERROR "msgattrib not found")
+endif(NOT GETTEXT_MSGATTRIB_EXECUTABLE)
+
 set(WMLXGETTEXT ${PROJECT_SOURCE_DIR}/utils/wmlxgettext)
 
 ############ pot update. ###########
@@ -229,15 +234,22 @@ if(ENABLE_POT_UPDATE_TARGET)
 				# make. We don't make this dummy file but the pot-update
 				# still works.
 				OUTPUT ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${LANG}.po.lang.dummy
-				COMMAND ${GETTEXT_MSGMERGE_EXECUTABLE} 
+				# After the po file is updated it might look not entirely as
+				# wanted, for example poedit reorders the file. Use msgattrib
+				# to reformat the file, use a helper file to do so.
+				COMMAND ${GETTEXT_MSGATTRIB_EXECUTABLE}
+						--output ${LANG}.po.tmp
 						${LANG}.po
-						${DOMAIN}.pot
-						-o ${LANG}.po.tmp
 				COMMAND ${CMAKE_COMMAND} -E copy
 						${LANG}.po.tmp
 						${LANG}.po
 				COMMAND ${CMAKE_COMMAND} -E remove
 						${LANG}.po.tmp
+				# Now merge with the pot file.
+				COMMAND ${GETTEXT_MSGMERGE_EXECUTABLE}
+						--backup=none
+						-U ${LANG}.po
+						${DOMAIN}.pot
 				WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/po/${DOMAIN}
 				COMMENT "po-update [${DOMAIN}-${LANG}]: Updated po file."
 			)
