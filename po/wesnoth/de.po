@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-10-07 15:42+0200\n"
-"PO-Revision-Date: 2009-09-16 10:43+0100\n"
+"PO-Revision-Date: 2009-10-12 20:53+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,7 @@ msgstr "Komprimierte Spielstände"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:12
 msgid "Confirm deleting saves"
-msgstr ""
+msgstr "Löschen der Spielstände bestätigen"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:19
@@ -67,7 +67,7 @@ msgstr "Kampf zeigen"
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:68
 msgid "Ping Timeout"
-msgstr ""
+msgstr "Wartezeit des Verbindungstests"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:69
@@ -75,26 +75,30 @@ msgid ""
 "Number of seconds to wait for a ping reply before we time out. Disable with "
 "0."
 msgstr ""
+"Anzahl von Sekunden, welche gewartet werden soll, bis der Verbindungsaufbau "
+"abgebrochen wird. Deaktiviert wenn 0."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:79
 msgid "Accept whisper messages from friends only"
-msgstr ""
+msgstr "Private Nachrichten nur von Freunden akzeptieren"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:86
 msgid "Auto-open whisper windows in lobby"
 msgstr ""
+"Automatisches Öffnen von Fenstern für private Nachrichten in der "
+"Eingangshalle"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:93
 msgid "Group players in lobby"
-msgstr ""
+msgstr "Spieler in Eingangshalle gruppieren"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:100
 msgid "Lobby sounds"
-msgstr ""
+msgstr "Klänge der Eingangshalle"
 
 #. [time]: id=underground
 #. [illuminated_time]: id=underground_illum
@@ -536,9 +540,8 @@ msgstr "Valencianische (südliches Katalonien) Übersetzung"
 
 #. [about]
 #: data/core/about.cfg:2248
-#, fuzzy
 msgid "Vietnamese Translation"
-msgstr "Chinesische Übersetzung"
+msgstr "Vietnamesische Übersetzung"
 
 #. [about]
 #: data/core/about.cfg:2255
@@ -590,9 +593,8 @@ msgstr "Waffenfähigkeiten"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=factions_section
 #: data/core/help.cfg:67 src/help.cpp:1284 src/help.cpp:1286
-#, fuzzy
 msgid "Factions"
-msgstr "Fraktion"
+msgstr "Fraktionen"
 
 #. [section]: id=terrains
 #. [topic]: id=..terrains
@@ -3556,9 +3558,8 @@ msgstr ""
 
 #. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:615
-#, fuzzy
 msgid "petrifies"
-msgstr "Attacken"
+msgstr "versteinert"
 
 #. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:617
@@ -3873,20 +3874,16 @@ msgid "moving leader to $x1|,$y1|."
 msgstr ""
 
 #: data/core/macros/ai_controller.cfg:1052
-#, fuzzy
 msgid "Clear special orders"
-msgstr "Alle Befehle verwerfen"
+msgstr "Spezielle Befehle verwerfen"
 
 #: data/core/macros/ai_controller.cfg:1053
-#, fuzzy
 msgid ""
 "Special: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_special_description"
 msgstr ""
-"Ziel: $ai_controller.side_$ally_side|_current_settings."
-"currently_doing_objective_description\n"
-"Verhalten: $ai_controller.side_$ally_side|_current_settings."
-"currently_doing_behaviour_description"
+"Spezial: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_special_description"
 
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
@@ -4034,13 +4031,12 @@ msgstr ""
 "In diesem Augenblick beginnt Gift durch die Adern dieser Einheit zu kriechen."
 
 #: data/core/macros/items.cfg:287
-#, fuzzy
 msgid ""
 "Sprinkling this water on melee weapons grants them the 'arcane' damage type "
 "until the end of the current scenario. Should $unit.name use it?"
 msgstr ""
 "Jedwede Waffe, die mit diesem Wasser übergossen wird, gilt bis zum Ende des "
-"Szenarios als »arkane« Waffe"
+"Szenarios als »arkane« Waffe. Soll $unit.name das Wasser verwenden?"
 
 #: data/core/macros/items.cfg:288
 msgid "I am not suited to the use of this item! Let another take it."
@@ -5343,9 +5339,8 @@ msgstr "tumb"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:228
-#, fuzzy
 msgid "aged"
-msgstr "Fernkampf"
+msgstr "gealtert"
 
 #. [color_range]: id=red
 #. [color_range]: id=1
@@ -5823,7 +5818,6 @@ msgstr "Menschen"
 
 #. [race]: id=human
 #: data/core/units.cfg:169
-#, fuzzy
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -7425,14 +7419,12 @@ msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Es gibt keine freien Burgfelder zum Rekrutieren von Einheiten."
 
 #: src/actions.cpp:352 src/actions.cpp:411 src/actions.cpp:978
-#, fuzzy
 msgid "An invalid attacker weapon got selected."
-msgstr "Ungültige Epoche ausgewählt"
+msgstr "Für den Angreifer wurde eine ungültige Waffe ausgewählt."
 
 #: src/actions.cpp:357
-#, fuzzy
 msgid "An invalid defender weapon got selected."
-msgstr "Ungültige Epoche ausgewählt"
+msgstr "Für den Verteidiger wurde eine ungültige Waffe ausgewählt."
 
 #: src/actions.cpp:1101 src/actions.cpp:1377
 msgid "female^poisoned"
@@ -7444,7 +7436,7 @@ msgstr "versteinert"
 
 #: src/actions.cpp:1113 src/actions.cpp:1389
 msgid "petrified"
-msgstr ""
+msgstr "versteinert"
 
 #: src/actions.cpp:2405
 msgid "Ambushed!"
@@ -7539,9 +7531,8 @@ msgid "addon_type^Resources"
 msgstr "Ressourcen"
 
 #: src/addon_management.cpp:471
-#, fuzzy
 msgid "addon_type^Other"
-msgstr "MS Epoche"
+msgstr "Verschiedenes"
 
 #: src/addon_management.cpp:473
 msgid "addon_type^(unknown)"
@@ -7764,7 +7755,7 @@ msgstr "Filter: "
 
 #: src/addon_management.cpp:1113
 msgid "Description"
-msgstr ""
+msgstr "Beschreibung"
 
 #: src/addon_management.cpp:1150
 msgid "Network communication error."
@@ -8194,7 +8185,7 @@ msgstr ""
 
 #: src/generate_report.cpp:140
 msgid "petrified: "
-msgstr ""
+msgstr "versteinert: "
 
 #: src/generate_report.cpp:141
 msgid "This unit has been petrified. It may not move or attack."
@@ -8271,15 +8262,15 @@ msgstr "Name:"
 
 #: src/gui/dialogs/lobby_player_info.cpp:66
 msgid "(observing)"
-msgstr ""
+msgstr "(beobachtend)"
 
 #: src/gui/dialogs/lobby_player_info.cpp:68
 msgid "(playing)"
-msgstr ""
+msgstr "(spielend)"
 
 #: src/gui/dialogs/lobby_player_info.cpp:71
 msgid "In lobby"
-msgstr ""
+msgstr "In der Eingangshalle"
 
 #: src/help.cpp:46
 msgid "Help"
@@ -8298,9 +8289,8 @@ msgid "Leaders:"
 msgstr "Heerführer: "
 
 #: src/help.cpp:1255
-#, fuzzy
 msgid "Recruits:"
-msgstr "Einheiten: "
+msgstr "Rekrutierbar: "
 
 #: src/help.cpp:1269 src/multiplayer_create.cpp:78
 msgid "Era:"
@@ -8312,7 +8302,7 @@ msgstr "Fraktionen:"
 
 #: src/help.cpp:1287
 msgid "Factions are only used in multiplayer"
-msgstr ""
+msgstr "Fraktionen werden nur im Mehrspielermodus verwendet"
 
 #: src/help.cpp:1362
 msgid "Advances from: "
@@ -8913,25 +8903,24 @@ msgstr ""
 "Benutzernamen setzen könnt."
 
 #: src/menu_events.cpp:2252
-#, fuzzy
 msgid "Join a room."
-msgstr "Spiel beitreten"
+msgstr "Betritt einen Raum."
 
 #: src/menu_events.cpp:2255
 msgid "Part a room."
-msgstr ""
+msgstr "Verlässt einen Raum."
 
 #: src/menu_events.cpp:2257
 msgid "List room members."
-msgstr ""
+msgstr "Gibt alle Besucher eines Raumes aus."
 
 #: src/menu_events.cpp:2259
 msgid "List available rooms."
-msgstr ""
+msgstr "Gibt alle verfügbaren Räume aus."
 
 #: src/menu_events.cpp:2261
 msgid "Room message."
-msgstr ""
+msgstr "Sendet eine Nachricht an einen Raum."
 
 #: src/menu_events.cpp:2263
 msgid "Room query."
@@ -8998,7 +8987,7 @@ msgstr "Schaltet den Debugmodus aus."
 
 #: src/menu_events.cpp:2427
 msgid "Execute a Lua statement."
-msgstr ""
+msgstr "Führt eine Lua Anweisung aus."
 
 #: src/menu_events.cpp:2429
 msgid "Set the command used by the custom command hotkey"
@@ -9026,7 +9015,7 @@ msgstr "Modifiziert eine Einheitenvariable. "
 
 #: src/menu_events.cpp:2446
 msgid "Discover all units in help."
-msgstr ""
+msgstr "Markiert alle Einheiten in der Hilfe als bekannt."
 
 #: src/menu_events.cpp:2451
 msgid "Create a unit."
@@ -9265,7 +9254,7 @@ msgstr "Anonymer lokaler Spieler"
 
 #: src/multiplayer_connect.cpp:666
 msgid "$playername $side"
-msgstr ""
+msgstr "$playername $side"
 
 #: src/multiplayer_connect.cpp:670
 msgid "(Empty slot)"
@@ -9588,11 +9577,11 @@ msgstr "Beenden"
 
 #: src/multiplayer_lobby.cpp:734
 msgid "Apply Filter"
-msgstr ""
+msgstr "Filter aktivieren"
 
 #: src/multiplayer_lobby.cpp:735
 msgid "Invert"
-msgstr ""
+msgstr "Invertieren"
 
 #: src/multiplayer_lobby.cpp:736
 msgid "Vacant Slots"
@@ -9600,7 +9589,7 @@ msgstr "Verfügbare Plätze"
 
 #: src/multiplayer_lobby.cpp:737
 msgid "Friends in Game"
-msgstr ""
+msgstr "Freunde im Spiel"
 
 #: src/multiplayer_lobby.cpp:738
 msgid "Search:"
@@ -9615,25 +9604,33 @@ msgid ""
 "Enable the games filter. If unchecked all games are shown, regardless of any "
 "filter."
 msgstr ""
+"Aktiviert den Spielefilter. Ist dieser deaktiviert, werden alle Spiele "
+"angezeigt."
 
 #: src/multiplayer_lobby.cpp:754
 msgid ""
 "Show all games that do *not* match your filter. Useful for hiding games you "
 "are not interested in."
 msgstr ""
+"Alle Spiele anzeigen, die nicht dem Filter entsprechen. Nützlich um Spiele "
+"auszublenden, an denen Ihr nicht interessiert seid."
 
 #: src/multiplayer_lobby.cpp:758
 msgid "Only show games that have at least one vacant slot"
-msgstr ""
+msgstr "Nur Spiele zeigen, die über mindestens einen freien Platz verfügen"
 
 #: src/multiplayer_lobby.cpp:762
 msgid ""
 "Only show games that are played or observed by at least one of your friends"
 msgstr ""
+"Nur Spiele zeigen, an denen mindestens einer Eurer Freunder als Spieler oder "
+"Beobachter teilnimmt"
 
 #: src/multiplayer_lobby.cpp:766
 msgid "Only show games whose title or description contain the entered text"
 msgstr ""
+"Nur Spiele zeigen, deren Titel oder Beschreibung den eingegebenen Text "
+"enthalten"
 
 #: src/multiplayer_lobby.cpp:900
 msgid "Joining this game requires a password."
@@ -9764,7 +9761,7 @@ msgstr "Unbekanntes Szenario: '$scenario|'"
 
 #: src/playmp_controller.cpp:93
 msgid "$name has taken control"
-msgstr ""
+msgstr "$name hat die Kontrolle übernommen"
 
 #: src/playmp_controller.cpp:95
 #, fuzzy
