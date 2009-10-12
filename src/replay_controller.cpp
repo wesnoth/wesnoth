@@ -365,7 +365,6 @@ void replay_controller::update_gui(){
 
 void replay_controller::preferences(){
 	play_controller::preferences();
-	init_replay_display();
 	update_gui();
 }
 
