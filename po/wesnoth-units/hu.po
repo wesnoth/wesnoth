@@ -12,14 +12,14 @@ msgstr ""
 "Project-Id-Version: hu-units_1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-10-07 15:42+0200\n"
-"PO-Revision-Date: 2009-02-06 22:44+0100\n"
+"PO-Revision-Date: 2009-10-11 21:05+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
-"Language-Team: Hungarian <>\n"
+"Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 0.2\n"
+"X-Generator: Lokalize 1.0\n"
 "X-Poedit-Bookmarks: 232,-1,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
 #. [unit_type]: id=Blood Bat, race=bats
@@ -29,7 +29,6 @@ msgstr "Vérdenevér"
 
 #. [unit_type]: id=Blood Bat, race=bats
 #: data/core/units/bats/Bat_Blood.cfg:20
-#, fuzzy
 msgid ""
 "Blood Bats are so named because of their ruddy hue, which some mark as a "
 "symbol of their preferred diet. These creatures are fast and can drain the "
@@ -69,6 +68,9 @@ msgid ""
 "Bats, gaining the ability to drain not merely the blood but the very life "
 "energy of their victims."
 msgstr ""
+"A vérdenevérek közül a legördögibbek, a legvérszomjasabbak és legügyesebbek "
+"rettenetes denevérekké válnak: már nem csupán áldozataik vérét szívják, "
+"hanem egyenesen az életerejüket."
 
 #. [unit_type]: id=Vampire Bat, race=bats
 #: data/core/units/bats/Bat_Vampire.cfg:4
@@ -93,14 +95,12 @@ msgstr "Csónak"
 
 #. [unit_type]: id=Boat, race=mechanical
 #: data/core/units/boats/Boat.cfg:18
-#, fuzzy
 msgid ""
 "Propelled by oars or small sails, boats are used to travel short distances "
 "and in shallows where large ships cannot navigate."
 msgstr ""
-"A gyakran evezőkkel vagy kis vitorlákkal meghajtott csónakokat rövid "
-"távolságokra és sekély vizekben használják, ahol a nagy hajók nem tudnak "
-"közlekedni."
+"Az evezőkkel vagy kis vitorlákkal meghajtott csónakokat rövid távolságokra "
+"és sekély vizekben használják, ahol a nagy hajók nem tudnak közlekedni."
 
 #. [unit_type]: id=Galleon, race=mechanical
 #: data/core/units/boats/Galleon.cfg:6
@@ -141,20 +141,18 @@ msgstr "Szállítógálya"
 
 #. [unit_type]: id=Transport Galleon, race=mechanical
 #: data/core/units/boats/Transport_Galleon.cfg:18
-#, fuzzy
 msgid ""
 "Transport Galleons are well-armed ships that carry troops. If they reach the "
 "shore, they can land the troops to attack."
 msgstr ""
 "A szállítógályák jól felfegyverzett hajók, melyek katonákat szállítanak. Ha "
-"elérik a partot, kirakhatják magukból a csapatokat, hogy azok támadásba "
+"elérik a partot, kirakhatják a csapatokat, hogy azok támadásba "
 "lendülhessenek."
 
 #. [unit_type]: id=Drake Arbiter, race=drake
 #: data/core/units/drakes/Arbiter.cfg:4
-#, fuzzy
 msgid "Drake Arbiter"
-msgstr "Perzsekény verekedő"
+msgstr "Perzsekény zsarnok"
 
 #. [unit_type]: id=Drake Arbiter, race=drake
 #: data/core/units/drakes/Arbiter.cfg:19
@@ -166,6 +164,13 @@ msgid ""
 "raw heft the massive metal head provides. The thick plate these drakes wear "
 "protects them well against weapons that could slip between their scales."
 msgstr ""
+"A zsarnokok nagyon komolyan veszik kasztjuk feladatát, mely a rend "
+"fenntartása. Annak érdekében, hogy még jobban tudják ellátni "
+"kötelességeiket, levedlették a perzsekények hagyományos karmait, a lándzsát "
+"pedig hegyes és éles alabárdra cserélték. Véleményük szerint a mozgékonyság "
+"csökkenése csekély ár azért a nyers erőért, melyet a súlyos fémbunkó jelent "
+"a fegyverük végén. E perzsekények vastag lemezes páncélja kiváló védelmet "
+"nyújt azon fegyverek ellen, melyek amúgy átcsúszhatnának a pikkelyeik között."
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
@@ -183,7 +188,6 @@ msgstr "Végítélet perzsekény"
 
 #. [unit_type]: id=Armageddon Drake, race=drake
 #: data/core/units/drakes/Armageddon.cfg:27
-#, fuzzy
 msgid ""
 "Were it not for the armor they wear, certain drakes might be "
 "indistinguishable from true dragons, at least to the lesser races for whom "
@@ -192,16 +196,16 @@ msgid ""
 msgstr ""
 "Ha nem lenne rajtuk páncél, akkor bizonyos perzsekények "
 "megkülönböztethetetlenek lennének az igazi sárkányoktól, legalábbis a "
-"hétköznapi ember számára. A teremtmények, akiket \"végítélet perzsekény\"-"
-"ként ismerünk, bámulatos lények, ellenállnak a tűznek, és képesek is "
-"borzasztó lángokat okádni."
+"kevésbé jelentős fajok számára, akik a sárkányokat csupán legendákból "
+"ismerik. A teremtmények, akiket \"végítélet perzsekény\"-ként ismerünk, "
+"bámulatos lények, ellenállnak a tűznek, és képesek is borzasztó lángokat "
+"okádni."
 
 #. [attack]: type=blade
 #: data/core/units/drakes/Armageddon.cfg:85 data/core/units/drakes/Fire.cfg:42
 #: data/core/units/drakes/Inferno.cfg:44
-#, fuzzy
 msgid "battle claws"
-msgstr "csatabárd"
+msgstr "harci karmok"
 
 #. [attack]: type=fire
 #: data/core/units/drakes/Armageddon.cfg:94
@@ -231,6 +235,14 @@ msgid ""
 "around; Blademasters fiercely protect their fellows' honor, and no-one would "
 "dispute their right to do so."
 msgstr ""
+"A harcosok kasztjának elitjét a csillogó fekete páncélról lehet felismerni: "
+"ők a pengeforgatók. Csak néhány perzsekénynek sikerül szert tennie arra a "
+"tudásra és erőre, mely szükséges ahhoz, hogy ezt az igen magas rangot "
+"elérje; a legtöbben ugyanis még ezelőtt halálukat lelik a csatában. Habár "
+"más perzsekények hajlamosak lekicsinylő megjegyzéseket tenni a harcosok "
+"kasztjára, azért mindig kétszer is ellenőrzik, hogy nincs-e egy pengeforgató "
+"a közelben... ők ugyanis rendkívül hevesen védelmezik bajtársaik becsületét, "
+"és ezen jogukat senki sem kérdőjelezi meg."
 
 #. [attack]: type=blade
 #: data/core/units/drakes/Blademaster.cfg:41
@@ -238,7 +250,7 @@ msgstr ""
 #: data/core/units/drakes/Enforcer.cfg:36
 #: data/core/units/drakes/Thrasher.cfg:23
 msgid "war talon"
-msgstr ""
+msgstr "acélkarom"
 
 #. [unit_type]: id=Drake Burner, race=drake
 #: data/core/units/drakes/Burner.cfg:4
@@ -292,6 +304,19 @@ msgid ""
 "particularly good at \"resolving\" territorial disputes with other drakes "
 "and enforcing the laws of their tribe."
 msgstr ""
+"A szembeszállók egy sajátos kaszt tagjai a perzsekények között. Vastag "
+"páncéljuk - mely bár jó szolgálatot tesz azáltal, hogy védelmet jelent a "
+"perzsekények testfelépítéséből adódó lándzsákkal és nyilakkal szembeni "
+"gyengeségre - oly nehéz és hátráltató, hogy emiatt nem képesek repülni, sem "
+"pedig akkora levegőt venni, mely fölszíthatná belső tüzüket. A szembeszállók "
+"előnyt kovácsoltak ezen hátrányukból: teljesen páncéllal vonták be "
+"szárnyaikat, ezzel is hangsúlyozva, hogy nincs szükségük a repülésre ahhoz, "
+"hogy győzedelmeskedjenek a csatában.\n"
+"\n"
+"Ez az egyetlen kaszt továbbá, melynek a perzsekények hagyományos acél "
+"karmain túl megengedett a lándzsák használata is. E tulajdonságuk "
+"kifejezetten alkalmassá teszi őket a más perzsekényekkel szembeni területi "
+"viták \"megoldására\", és a törvény betartatására a törzsükön belül."
 
 #. [attack]: type=pierce
 #: data/core/units/drakes/Clasher.cfg:47
@@ -338,12 +363,19 @@ msgid ""
 "careful not to besmirch the honor of the Enforcers, and generally call upon "
 "them to combat only the most pernicious of enemies."
 msgstr ""
+"A hajcsároknak nem valók sem a manőverezési taktikák, sem a cselek; rájuk "
+"akkor vár feladat, amikor a közelharc a legádázabb. Közelharcban vajmi "
+"keveset számít, hogy a páncéljuk miatt képtelenek tüzet okádni; csak az a "
+"nyers erő számít, melyet megtanultak minden egyes ütésbe összpontosítani. A "
+"perzsekény vezérek nagyon óvatosak, nehogy a hajcsárok becsületébe "
+"gázoljanak, és általában csak akkor hívják őket csatába, ha a leghalálosabb "
+"ellenfelekkel van dolguk."
 
 #. [attack]: type=impact
 #: data/core/units/drakes/Enforcer.cfg:45
 #: data/core/units/drakes/Thrasher.cfg:41
 msgid "ram"
-msgstr ""
+msgstr "buzogány"
 
 #. [attack]: type=pierce
 #. [attack]: type=blade
@@ -376,9 +408,8 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/drakes/Fighter.cfg:156
 #: data/core/units/drakes/Warrior.cfg:39
-#, fuzzy
 msgid "war blade"
-msgstr "mérgezett pengéjű kard"
+msgstr "harci penge"
 
 #. [unit_type]: id=Fire Drake, race=drake
 #: data/core/units/drakes/Fire.cfg:4
@@ -394,6 +425,11 @@ msgid ""
 "vitality emanates through their skin, scorching their scales to a reddish-"
 "gray."
 msgstr ""
+"Mivel a tűzperzsekények számára még nem engedélyezett, hogy a tűzokádók "
+"kasztján belül a legmagasabb rangot kifejező arany-vörös színeket viseljék, "
+"ezüsttel díszítik páncélzatukat. Habár csak nem rég szánták rá magukat, hogy "
+"életüket a bennük égő belső tűznek szenteljék, ezen tűz életereje átsugárzik "
+"a bőrükön, és szürkésvörös színűre festi pikkelyeiket."
 
 #. [unit_type]: id=Drake Flameheart, race=drake
 #: data/core/units/drakes/Flameheart.cfg:4
@@ -411,6 +447,14 @@ msgid ""
 "leader for supremacy, and only if he is sure of the support of his fellow "
 "drakes."
 msgstr ""
+"A lángszívű perzsekények híján vannak az erőnek, mellyel megverhetnének más "
+"magas rangú perzsekényeket egy párbajban, de bármely helyzetben inkább "
+"elkerülik az összetűzéseket a törzsön belül. A tapasztalat megtanította e "
+"tiszteletreméltó perzsekényeknek, hogy hol vannak a tudásuk határai: hogy "
+"mikor lehet az általuk vezetetteket lelkesíteni, és mikor érdemes inkább a "
+"saját belátásukra bízni őket. A lángszívű perzsekények csak nagyon ritkán "
+"mennek ölre a törzsük vezetőjével a legfőbb hatalom gyakorlásáért, és csakis "
+"akkor, ha biztosak a követőik támogatásában."
 
 #. [attack]: type=blade
 #. [attack]: type=arcane
@@ -454,6 +498,12 @@ msgid ""
 "they are more often seen leading small war parties or mediating disputes "
 "with a subtle hand."
 msgstr ""
+"A tűzmestereket tisztelik a forró belső tűzért és felnéznek rájuk a magával "
+"ragadó személyiségük miatt. E perzsekények azért dolgoznak, hogy népük nagy "
+"vezetői lehessenek békében és háborúban egyaránt. Habár egy kisebb, "
+"elszigetelten élő törzs néha elfogad egy tűzmestert vezetőjéül, legtöbbször "
+"mégis inkább kisebb harci alakulatok vezetőjeként vagy vitás ügyek "
+"rendezőjeként látni e perzsekényeket."
 
 #. [unit_type]: id=Drake Glider, race=drake
 #: data/core/units/drakes/Glider.cfg:4
@@ -476,6 +526,20 @@ msgid ""
 "distance – and if all else fails, he will fight with his feet, keeping his "
 "precious wings as far from the enemy as possible."
 msgstr ""
+"Sok perzsekény leli örömét abban, ha a levegő suhan a pikkelyei körül; ez "
+"készteti őket, hogy felöltsék a surranók kasztjának könnyű ruházatát. "
+"Legfőbb szenvedélyük a törzsi területek távoli részeire vezető hosszú "
+"portyázás... annak ellenére, hogy más perzsekények gyakran töprengenek, "
+"vajon mi késztet egyeseket a becserkészés szolgai munkájára, amikor a "
+"csatatéren sokkal több dicsőség teremhet.\n"
+"\n"
+"A surranók leggyakrabban nagyobb állatokra vadásznak, például szarvasra, "
+"disznóra vagy delfinre. A perzsekények ősi tűzokádási képessége, melyet más "
+"kasztokban a páncél hátráltat, felbecsülhetetlenül értékes, hiszen anélkül "
+"lehet terelni a célpontokat, hogy akár csak egy hajuk szála is meggörbülne. "
+"Ha a surranókat a csatatérre hívják, szívesen zaklatják az ellenséget a "
+"távolból... ha pedig minden más kudarcot vallott, lábaikkal harcolnak, "
+"miközben a lehető legtávolabb tartják értékes szárnyaikat az ellenségtől."
 
 #. [attack]: type=impact
 #: data/core/units/drakes/Glider.cfg:44
@@ -499,6 +563,14 @@ msgid ""
 "other castes has increased their skill in combat, but their greatest "
 "strength still lies in their speed and flight."
 msgstr ""
+"A hurrikán perzsekények felülemelkedtek a szolgai gyűjtögetésen és "
+"vadászaton, mely a kasztjuk alacsonyabb rangú tagjainak feladata. Ehelyett a "
+"perzsekény hadsereg szerves részét képezik, a fő sereg előtti terület "
+"felderítését végzik, üzeneteket visznek a csatatéren és ott csapnak le az "
+"ellenségre, ahol az a legkevésbé számít rá. Engedélyezték számukra - bár "
+"meglehetősen vonakodva - hogy más kasztok újoncaival közösen eddzenek, mely "
+"harci tudományukat tovább növelte; legnagyobb erősségük azonban továbbra is "
+"a szélsebes repülés maradt."
 
 #. [unit_type]: id=Inferno Drake, race=drake
 #: data/core/units/drakes/Inferno.cfg:4
@@ -514,6 +586,11 @@ msgid ""
 "from extensive use of their inner flame, their sculpted red-gold armor "
 "enhancing the illusion that they are, in fact, dragons."
 msgstr ""
+"A pokoli perzsekények a tűzokádás mesterei, és majdnem annyira tisztelik és "
+"félik őket a törzseik, mint magukat a sárkány elődöket. Képesek sértetlenül "
+"átkelni a maguk keltette tűzviharon, pikkelyeik pedig vörösen csillognak a "
+"belső tűz intenzív használatától. Kiválóan megmunkált arany-vörös "
+"páncélzatuk tovább erősíti azt az illúziót, hogy ők valóban sárkányok."
 
 #. [unit_type]: id=Sky Drake, race=drake
 #: data/core/units/drakes/Sky.cfg:4
@@ -530,12 +607,17 @@ msgid ""
 "of their tribe and, just possibly, time with one of the closely-guarded "
 "drake females."
 msgstr ""
+"A fellegperzsekények könnyű kerámiapáncélja a rangjuk szimbóluma, ezüstös "
+"csillogása pedig a levegővel való kapcsolatukat jelképezi. A vadászatok "
+"vezetőiként gyakran hosszú időre távol maradnak otthonuktól. Minden "
+"fellegperzsekény igyekszik ilyenkor a lehető legtöbb vadhúst hazahozni, hogy "
+"versenyre kelhessen a törzs megbecsüléséért, és esetleg a nagy óvatossággal "
+"őrzött perzsekény nőstényekért."
 
 #. [unit_type]: id=Drake Thrasher, race=drake
 #: data/core/units/drakes/Thrasher.cfg:4
-#, fuzzy
 msgid "Drake Thrasher"
-msgstr "Perzsekény szembeszálló"
+msgstr "Perzsekény vagdalkozó"
 
 #. [unit_type]: id=Drake Thrasher, race=drake
 #: data/core/units/drakes/Thrasher.cfg:19
@@ -547,6 +629,13 @@ msgid ""
 "are weapons. A Thrasher will gladly fulfill his caste duties, as long as it "
 "can be done on the battlefield."
 msgstr ""
+"A perzsekény vagdalkozók ahelyett, hogy engednék, hogy a páncélzatuk "
+"megbéklyózza őket, megtanulták, hogy miként irányíthatják át annak súlyát, "
+"hogy így fokozzák testük lendületét. E módszerrel tovább növelhetik "
+"fegyvereik csapásának erejét. A fegyver és a test eggyé válik; még a vastag "
+"sisakok és az alattuk lévő kemény koponyák is fegyverré válnak. A "
+"vagdalkozók örömmel teljesítik kasztjuk kötelességeit mindaddig, amíg ezt a "
+"csatamezőn tehetik."
 
 #. [unit_type]: id=Drake Warden, race=drake
 #: data/core/units/drakes/Warden.cfg:4
@@ -564,6 +653,14 @@ msgid ""
 "bronze plate is the strongest work from the Drake forges, and their halberds "
 "can cleave a human in half."
 msgstr ""
+"A felügyelőket két dolog különbözteti meg a szembeszállók kasztjának más "
+"tagjaitól: díszes sisakjuk, melyet a sárkány ősök után mintáztak, és a "
+"gondosság, hogy élénk színű szövetbe csavarják páncélozott szárnyaikat "
+"minden egyes alkalommal, mielőtt szolgálatra jelentkeznek. Bár ez a fajta "
+"öltözködés a perzsekény társadalomban betöltött szerepük miatti büszkeségből "
+"fakad, közel sem ünnepélyes. Súlyos bronz vértezetük a perzsekény "
+"kovácsműhelyek legkiválóbb munkája, alabárdjaik pedig képesek félbevágni egy "
+"embert."
 
 #. [unit_type]: id=Drake Warrior, race=drake
 #: data/core/units/drakes/Warrior.cfg:4
@@ -580,6 +677,11 @@ msgid ""
 "plated leather with the traditional war blade mounted on the back of each "
 "hand."
 msgstr ""
+"A harcosok kasztjának tagjai képezik minden törzs hadseregének alapját. A "
+"harcosoknak nincsenek különleges képességeik; csupán a természet adta nyers "
+"erejük és a katonai kiképzésük segít nekik, hogy keresztülvájják magukat az "
+"ellenséges vonalakon. Pontosan úgy harcolnak, ahogy évszázadok óta: "
+"kerámialemezes bőrpáncélba öltözve, kezeikben a hagyományos harci pengékkel."
 
 #. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #: data/core/units/dwarves/Berserker.cfg:4
@@ -588,14 +690,13 @@ msgstr "Megszállott törp"
 
 #. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #: data/core/units/dwarves/Berserker.cfg:20
-#, fuzzy
 msgid ""
 "Berserkers are a rare caste of Dwarves, who work themselves into a towering "
 "rage before combat. These warriors disdain all notion of defense, thinking "
 "only of the unrelenting assaults for which they are legendary."
 msgstr ""
 "A megszállott törpök a törp faj egy különleges kasztját alkotják: ők a "
-"csaták előtt a végsőkig felhergelik magukat. Ezek a harcosok elfeledték a "
+"csaták előtt a végsőkig felhergelik magukat. Ezek a harcosok megvetik a "
 "védekezés minden formáját, és egyedül csak a kegyetlen ostromra képesek "
 "gondolni, melynek híre messzeföldön legendássá vált."
 
@@ -612,7 +713,6 @@ msgstr "Törp sárkányőr"
 
 #. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
 #: data/core/units/dwarves/Dragonguard.cfg:21
-#, fuzzy
 msgid ""
 "It is not clear why the Dragonguards are called what they are, a name given "
 "by their dwarven brethren. Some speculate that the name comes from their "
@@ -656,9 +756,8 @@ msgstr "sárkánybot"
 
 #. [unit_type]: id=Dwarvish Explorer, race=dwarf
 #: data/core/units/dwarves/Explorer.cfg:4
-#, fuzzy
 msgid "Dwarvish Explorer"
-msgstr "Törp dühöngő"
+msgstr "Törp felfedező"
 
 #. [unit_type]: id=Dwarvish Explorer, race=dwarf
 #: data/core/units/dwarves/Explorer.cfg:27
@@ -670,6 +769,13 @@ msgid ""
 "having practiced this skill hunting in the mountains. Their maneuverability "
 "makes them dangerous and tricky foes."
 msgstr ""
+"A törp felfedezők páratlan túlélőbajnokok. Csupán a náluk lévő "
+"felszereléssel is képesek hónapokig az erdőket és a hegyeket járni "
+"érctelérek és ásványlelőhelyek után kutatva. Habár a közelharcban kevéssé "
+"járatosak, mint néhány törp társuk, ha bárdhajításra kerül a sor, nem akad "
+"vetélytársuk, hiszen ezt gyakorolják minden egyes alkalommal, mikor vadászni "
+"indulnak a hegyekben. Mozgékonyságuk veszélyes és ravasz ellenféllé teszi "
+"őket."
 
 #. [attack]: type=blade
 #: data/core/units/dwarves/Explorer.cfg:45 data/core/units/dwarves/Lord.cfg:42
@@ -698,7 +804,6 @@ msgstr "Törp harcos"
 
 #. [unit_type]: id=Dwarvish Fighter, race=dwarf
 #: data/core/units/dwarves/Fighter.cfg:20
-#, fuzzy
 msgid ""
 "Dwarvish Fighters wield mighty battle axes and hammers, which make them "
 "feared opponents in close-range combat. They are excellent in mountainous "
@@ -707,8 +812,8 @@ msgid ""
 msgstr ""
 "A törp harcosok erős bárdokat és pörölyöket forgatnak, amelyek félelmetes "
 "ellenféllé teszik őket a közelharcban. Kiválóan küzdenek hegyes vidéken és a "
-"föld alatt. Habár nem gyorsak, erejük és kitartásuk ezt a hátrányt bőségesen "
-"kiegyenlíti."
+"föld alatt. Habár nem valami gyorsak, erejük és kitartásuk ezt a hátrányt "
+"bőségesen kiegyenlíti."
 
 #. [attack]: type=impact
 #: data/core/units/dwarves/Fighter.cfg:55 data/core/units/dwarves/Lord.cfg:51
@@ -721,7 +826,7 @@ msgstr "pöröly"
 #. [unit_type]: id=Dwarvish Guardsman, race=dwarf
 #: data/core/units/dwarves/Guardsman.cfg:4
 msgid "Dwarvish Guardsman"
-msgstr "Törp őrmester"
+msgstr "Törp őr"
 
 #. [unit_type]: id=Dwarvish Guardsman, race=dwarf
 #: data/core/units/dwarves/Guardsman.cfg:20
@@ -733,11 +838,10 @@ msgid ""
 "it. As the line marches forward, they act to secure its hard-won advance."
 msgstr ""
 "A törp faj mindig is a szilárd testfelépítéséről volt híres, és harcosaik "
-"közül sokan ezt ki is használják a felszerelésükkel. A törp őrmesterek "
-"toronymagas pajzsokkal és lándzsákkal vonulnak harcba. A szerepük "
-"legtöbbször a vonalak tartása, és nagy veszteséget okozni azoknak, akik át "
-"akarnak törni. Ahogy a vonal halad előre, feladatuk a nehezen megszerzett "
-"előny biztosítása."
+"közül sokan ezt ki is használják a felszerelésükkel. A törp őrök toronymagas "
+"pajzsokkal és lándzsákkal vonulnak harcba. A szerepük legtöbbször a vonalak "
+"tartása, és nagy veszteséget okozni azoknak, akik át akarnak törni. Ahogy a "
+"vonal halad előre, feladatuk a nehezen megszerzett előny biztosítása."
 
 #. [attack]: type=pierce
 #: data/core/units/dwarves/Guardsman.cfg:52
@@ -773,9 +877,8 @@ msgstr "balta"
 
 #. [unit_type]: id=Dwarvish Pathfinder, race=dwarf
 #: data/core/units/dwarves/Pathfinder.cfg:4
-#, fuzzy
 msgid "Dwarvish Pathfinder"
-msgstr "Törp mennydörgő"
+msgstr "Törp nyomolvasó"
 
 #. [unit_type]: id=Dwarvish Pathfinder, race=dwarf
 #: data/core/units/dwarves/Pathfinder.cfg:22
@@ -786,6 +889,12 @@ msgid ""
 "territory. They are powerful fighters in a melee, and from a distance their "
 "deftly thrown axes can rival the power and accuracy of a human archer."
 msgstr ""
+"Ezek a keménykötésű törpök sokszor hosszú időre is távol maradnak a "
+"barlangjuktól, ha a határon járőröznek vagy felderítést végeznek. Ilyenkor "
+"betolakodókra lesnek, vagy banditákkal és tolvajokkal harcolnak, akik a törp "
+"területekre merészkednek. Igen erős ellenfelek közelharcban, pontosan dobott "
+"bárdjaik pedig még az emberi íjászok erejével és ügyességével is versenyre "
+"kelhetnek."
 
 #. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #: data/core/units/dwarves/Runemaster.cfg:4
@@ -819,9 +928,8 @@ msgstr "villámcsapás"
 
 #. [unit_type]: id=Dwarvish Scout, race=dwarf
 #: data/core/units/dwarves/Scout.cfg:4
-#, fuzzy
 msgid "Dwarvish Scout"
-msgstr "Tünde felderítő"
+msgstr "Törp felderítő"
 
 #. [unit_type]: id=Dwarvish Scout, race=dwarf
 #: data/core/units/dwarves/Scout.cfg:22
@@ -835,11 +943,20 @@ msgid ""
 "However, they pay for their speed with the poorer protection provided by "
 "their lighter armor."
 msgstr ""
+"Bár a törpök sprintelésben nem ellenfelei a nagyobb növésű fajoknak, ha nem "
+"húzza vissza őket a súlyos páncélzat, páratlan állóképességük és kitartásuk "
+"lehetővé teszi, hogy - a leggyorsabbakat leszámítva - gyalogszerrel bárkivel "
+"versenyre keljenek. A törp felderítők a hasznukra fordítják e "
+"tulajdonságaikat, habár a sebességükért a könnyebb páncél nyújtotta gyengébb "
+"ellenállással fizetnek. A fő haderő előtt járva jelentést tudnak tenni az "
+"ellenséges csapatok mozgásáról és helyzetéről, vagy képesek kulcsfontosságú "
+"helyek biztosítására. A harcmezőn kívül gyakran jut szerep nekik a törp "
+"közösségek közötti üzenetek továbbításában."
 
 #. [unit_type]: id=Dwarvish Sentinel, race=dwarf
 #: data/core/units/dwarves/Sentinel.cfg:4
 msgid "Dwarvish Sentinel"
-msgstr "Törp őr"
+msgstr "Rettenthetetlen törp"
 
 #. [unit_type]: id=Dwarvish Sentinel, race=dwarf
 #: data/core/units/dwarves/Sentinel.cfg:20
@@ -851,7 +968,7 @@ msgid ""
 "can hold a patch of earth with the singleminded tenacity of an oak."
 msgstr ""
 "Ők a bajnokok harcostársaik között, akik a harcvonal védőbástyájául "
-"szolgálnak. Nyílt támadást vezetni egy olyan vonal ellen, amit ők "
+"szolgálnak. Nyílt támadást vezetni egy olyan vonal ellen, melyet ők "
 "erősítenek, gyakran szóba sem jöhet, inkább öngyilkos próbálkozásnak "
 "mondhatnánk, nem csupán eredménytelennek. Ezen törpök mesterei a "
 "közelharcnak, valamint a föld egy kis darabját is egy tölgy szívósságával "
@@ -860,7 +977,7 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Stalwart, race=dwarf
 #: data/core/units/dwarves/Stalwart.cfg:4
 msgid "Dwarvish Stalwart"
-msgstr "Rettenthetetlen törp"
+msgstr "Törp őrmester"
 
 #. [unit_type]: id=Dwarvish Stalwart, race=dwarf
 #: data/core/units/dwarves/Stalwart.cfg:19
@@ -1080,7 +1197,6 @@ msgstr "Tünde bajnok"
 
 #. [unit_type]: id=Elvish Champion, race=elf
 #: data/core/units/elves/Champion.cfg:20
-#, fuzzy
 msgid ""
 "Those few elves who deliberately hone themselves into weapons of war become "
 "something which belies the peace-loving reputation of their race. Dedication "
@@ -1090,7 +1206,7 @@ msgid ""
 msgstr ""
 "Az a néhány tünde, akik kitartóan fejlesztették magukat a "
 "fegyverforgatásban, olyan harcosokká váltak, akik meghazudtolják a "
-"nemzetségük puhányságáról szóló híreszteléseket. Az elkötelezettség és a "
+"nemzetségük békeszeretetéről szóló híreszteléseket. Az elkötelezettség és a "
 "képesség tiszta formával párosul, és az eredmény egy olyan kardforgató, "
 "akivel csak kevesen versenyezhetnek. Még az íjászatot is, melyet "
 "másodlagosnak tartanak, mesterien művelik."
@@ -1102,7 +1218,6 @@ msgstr "Tünde druida"
 
 #. [unit_type]: id=Elvish Druid, race=elf
 #: data/core/units/elves/Druid.cfg:21
-#, fuzzy
 msgid ""
 "The magic of the wood-elves is poorly suited for combat, but effective "
 "nonetheless. The forests in which they thrive can become quickened by a word "
@@ -1112,11 +1227,11 @@ msgid ""
 "they are revered by their people."
 msgstr ""
 "Csak kevés tünde varázslat használható a harcban, de azok vitathatatlanul "
-"hatékonyak. Az erdő, amelyben élnek egy parancsszóval életre kelthető, és "
+"hatékonyak. Az erdő, amelyben élnek, egy parancsszóval életre kelthető, és "
 "lecsap arra, aki veszélyezteti nyugalmát.\n"
 "\n"
-"Legfőbb képességük a gyógyítás, amelynek köszönhetően nagyra becsüli őket "
-"nemzetségük."
+"A tünde druidák legfőbb képessége a gyógyítás, amelynek köszönhetően nagyra "
+"becsüli őket nemzetségük."
 
 #. [attack]: type=impact
 #: data/core/units/elves/Druid.cfg:40 data/core/units/elves/Enchantress.cfg:38
@@ -1188,7 +1303,6 @@ msgstr "Tünde harcos"
 
 #. [unit_type]: id=Elvish Fighter, race=elf
 #: data/core/units/elves/Fighter.cfg:20
-#, fuzzy
 msgid ""
 "Elves are not warlike by nature, but in times of need, their natural grace "
 "and agility serve them well, as does their skillful craftsmanship. An elf "
@@ -1198,9 +1312,10 @@ msgid ""
 msgstr ""
 "A tündék természetüknél fogva békés nép, de szükséghelyzetben veleszületett "
 "kecsességük és kitartásuk jó szolgálatot tesz, mint ahogy fejlett "
-"kézművességük is. Egy tünde hihetetlenül rövid idő alatt el tudja sajátítani "
-"a kardforgatás és az íjászat alapjait, és hatékonyan tudja használni őket a "
-"csatatéren. Gyorslábúak, és legjobban az erdőben képesek harcolni."
+"kézművességük is. Egy tünde - más fajok mércéjével mérve - hihetetlenül "
+"rövid idő alatt el tudja sajátítani a kardforgatás és az íjászat alapjait, "
+"és hatékonyan tudja használni őket a csatatéren. Gyorslábúak, és legjobban "
+"az erdőben képesek harcolni."
 
 #. [unit_type]: id=Elvish Hero, race=elf
 #: data/core/units/elves/Hero.cfg:4
@@ -1209,14 +1324,14 @@ msgstr "Tünde hős"
 
 #. [unit_type]: id=Elvish Hero, race=elf
 #: data/core/units/elves/Hero.cfg:19
-#, fuzzy
 msgid ""
 "Elves, though not warlike by nature, are swift to learn; a relatively small "
 "amount of experience will turn an elf from a competent fighter into a master "
 "of combat. Those who are honored as heroes are strong with both sword and "
 "bow, and their skill once acquired does not fade for lack of practice."
 msgstr ""
-"Viszonylag kevés tapasztalattal egy képzett tünde harcosból a csata mestere "
+"Bár a tündék természete nem hajlik a háborúskodásra, gyorsan tanulnak; egy "
+"képzett tünde harcosból viszonylag kevés tapasztalattal is a csata mestere "
 "válhat. Azok, akiket hősként tisztelnek, a karddal és az íjjal is egyformán "
 "jól bánnak, és ha már képességüket egyszer megszerezték, az gyakorlás híján "
 "sem halványul."
@@ -1228,16 +1343,16 @@ msgstr "Tünde nagyúr"
 
 #. [unit_type]: id=Elvish High Lord, race=elf
 #: data/core/units/elves/High_Lord.cfg:19
-#, fuzzy
 msgid ""
 "The leaders of elvenkind command an instinctive loyalty fronm their people "
 "that rulers of other races can only envy, and earn it with great mindfulness "
 "and wisdom. Quiet and contemplative in times of peace, a High Lord in the "
 "full of his wrath is an awesome sight indeed."
 msgstr ""
-"A tündék vezetői nem sápadnak és gyengülnek a korral. Sőt, inkább egyre "
-"jobban kiteljesednek valódi képességeik. A nagyúr békeidőben csendes és "
-"elmélkedő, de haragtól fűtve, teljes dühében igazán félelmetes látvány."
+"A tündék vezetőit a nép belülről fakadó, ösztönös hűsége övezi, melyet más "
+"fajok vezérei csak irigyelhetnek, és csupán nagy bölcsességgel érdemelhetnek "
+"ki. A nagyúr békeidőben csendes és elmélkedő, de haragtól fűtve, teljes "
+"dühében igazán félelmetes látvány."
 
 #. [unit_type]: id=Elvish Lady, race=elf
 #: data/core/units/elves/Lady.cfg:5
@@ -1246,14 +1361,14 @@ msgstr "Tünde úrnő"
 
 #. [unit_type]: id=Elvish Lady, race=elf
 #: data/core/units/elves/Lady.cfg:20
-#, fuzzy
 msgid ""
 "Elves choose their leaders for their wisdom and sensitivity to the balance "
 "of universal forces; foresight is what has protected them in times of "
 "uncertainty. Their just reign is rewarded by the unflagging fealty of their "
 "people, which is the greatest gift for which any ruler could ask."
 msgstr ""
-"A tündék vezetőiket erejükért és bölcsességükért választják; az előrelátás "
+"A tündék vezetőiket bölcsességükért és azon érzékükért választják, hogy "
+"képesek felismerni a mindenség erőinek törékeny egyensúlyát; az előrelátás "
 "az, ami védi őket a bizonytalanság időiben. Uralkodásukat népük lankadatlan "
 "hűsége jutalmazza, amely a lehető legnagyobb megtiszteltetés, melyet egy "
 "vezető kaphat."
@@ -1281,7 +1396,6 @@ msgstr "Tünde mesterlövész"
 
 #. [unit_type]: id=Elvish Marksman, race=elf
 #: data/core/units/elves/Marksman.cfg:20
-#, fuzzy
 msgid ""
 "Elves are wonerously keen-sighted, a gift whiuch contributes to their "
 "mastery of the bow. An elf practiced at archery can hit targets that a man "
@@ -1295,7 +1409,7 @@ msgstr ""
 "éjjel is képesek, és máris egy következő nyílvesszőt feszítenek a húrra "
 "szinte abban a pillanatban, ahogy az előzőt útjára engedték.\n"
 "\n"
-"Ennek az egyedülálló képességnek a felismerése áldozattal jár, mégpedig a "
+"Ennek az egyedülálló képességnek a fejlesztése áldozattal jár, mégpedig a "
 "kardforgatás gyakorlásának elhanyagolásával."
 
 #. [attack]: type=pierce
@@ -1318,7 +1432,6 @@ msgstr "Tünde marsall"
 
 #. [unit_type]: id=Elvish Marshal, race=elf
 #: data/core/units/elves/Marshal.cfg:27
-#, fuzzy
 msgid ""
 "The longevity and natural intelligence of elves make them apt for military "
 "matters, enough even to counter their general distaste for war. Elves "
@@ -1328,11 +1441,12 @@ msgid ""
 "master."
 msgstr ""
 "A tündék hosszú élete, és természetes intelligenciája rátermetté teszi őket "
-"a katonai dolgokra, még arra is, hogy leküzdjék általános utálatukat az "
-"ilyen dolgok iránt. A tündék tisztábban emlékeznek a dolgokra, mint az "
-"emberiség, és gyakran olyan dolgokat sejtenek meg ösztönösen, amikre másokat "
-"csak kiképezni lehet. Természetesen azokban a ritka pillanatokban, mikor egy "
-"tünde harcra adja a fejét, a stratégia, amit használ, egy mester remekműve.\n"
+"a katonai dolgokra, még arra is, hogy leküzdjék általános utálatukat a "
+"háború iránt. A tündék tisztábban emlékeznek a dolgokra, mint az emberiség, "
+"és gyakran olyan dolgokat sejtenek meg ösztönösen, amikre másokat csak "
+"kiképezni lehet. Természetesen azokban a ritka pillanatokban, mikor egy "
+"tünde harcra adja a fejét, a stratégia, melyet használ, gyakran egy mester "
+"remekműve.\n"
 "\n"
 "A marsalli rang az egyik legmagasabb a tünde hadseregben. A marsall a "
 "körülötte álló első és második szintű egységeket is képes irányítani a "
@@ -1341,7 +1455,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Outrider, race=elf
 #: data/core/units/elves/Outrider.cfg:4
 msgid "Elvish Outrider"
-msgstr "Tünde portyázó"
+msgstr "Tünde kalandozó"
 
 #. [unit_type]: id=Elvish Outrider, race=elf
 #: data/core/units/elves/Outrider.cfg:23
@@ -1356,7 +1470,7 @@ msgid ""
 "choose when fighting on their home ground, a fact that has saved many of "
 "their number from death."
 msgstr ""
-"A tünde portyázókat a tünde birodalom hírvivőinek képezték ki. Népük "
+"A tünde kalandozókat a tünde birodalom hírvivőinek képezték ki. Népük "
 "békeszerető természete ellenére tapasztalatuk elég halálossá teszi őket a "
 "harcban. Egyetlen ember sem ért még közelükbe azon tudományuk terén, ahogy "
 "az íjukat használják lóháton - gyakorlatilag legtöbbjüknek ez még szilárd "
@@ -1373,7 +1487,6 @@ msgstr "Tünde vadász"
 
 #. [unit_type]: id=Elvish Ranger, race=elf
 #: data/core/units/elves/Ranger.cfg:20
-#, fuzzy
 msgid ""
 "Though a man might spend years in the forest, he will never shake the "
 "feeling that he is a guest in a realm of which he is not truly a part. With "
@@ -1384,8 +1497,9 @@ msgstr ""
 "Habár az ember éveket is eltölthet az erdőben, mégsem tud szabadulni az "
 "érzéstől, hogy csak egy vendége, nem pedig igazi része annak. A tündéknél ez "
 "teljesen fordítva van. Bármely tünde, aki tanulmányozza az erdők tudományát, "
-"teljesen ura lesz környezetének. Ez, párosítva figyelemre méltó íjlövő "
-"képességükkel és kardforgató tehetségükkel, nagyon hasznos harc idején."
+"villámgyorsan teljesen ura lesz környezetének. Ez, párosítva figyelemre "
+"méltó íjlövő képességükkel és kardforgató tehetségükkel, nagyon hasznos harc "
+"idején."
 
 #. [female]
 #: data/core/units/elves/Ranger.cfg:189
@@ -1496,14 +1610,13 @@ msgstr "Erdőtündér"
 
 #. [unit_type]: id=Elvish Shyde, race=elf
 #: data/core/units/elves/Shyde.cfg:22
-#, fuzzy
 msgid ""
 "Devotion to the path of faerie may will eventually transform an elf maiden "
 "into a creature of both worlds. Guided by a nature which is little "
 "understood, these beautiful stewards of the elven forests epitomize the "
 "grace and mystery of their people."
 msgstr ""
-"A tündér mivoltának való elkötelezettség egy tünde hajadont a két világ "
+"A tündérré válás útjához való elkötelezettség egy tünde hajadont a két világ "
 "között létező teremtménnyé változtat. Egy kevéssé megértett természet által "
 "vezetve a tünde erdők gyönyörű úrnői a tünde nemzetség nagyságának és "
 "misztikusságának példaképeivé válnak."
@@ -1573,7 +1686,6 @@ msgstr "Farkasszörny-lovas"
 
 #. [unit_type]: id=Direwolf Rider, race=wolf
 #: data/core/units/goblins/Direwolf_Rider.cfg:22
-#, fuzzy
 msgid ""
 "'Dire wolves' differ from the common variety only in size and color. They "
 "typically stand taller than a horse at the shoulder, and have an appetite to "
@@ -1588,8 +1700,8 @@ msgid ""
 msgstr ""
 "A \"farkasszörnyek\" csak méretben és színben különböznek hétköznapi "
 "változatuktól. Jellemzően nagyobbak egy ló marmagasságánál, és hasonlóan "
-"nagy az étvágyuk is. Csak egy őrült akarna találkozni velük, a koboldoknak "
-"nagy áldozatok árán sikerült megszelídíteni és meglovagolni őket.\n"
+"nagy az étvágyuk is. Csak egy őrült akarna találkozni velük; a koboldoknak "
+"azonban nagy áldozatok árán sikerült megszelídíteni és meglovagolni őket.\n"
 "\n"
 "A farkas karmait általában nem a legveszélyesebb részének tartják, de egy "
 "ilyen hatalmas szörnynél ezek vastagabbak és hosszabbak, mint a vastűk. "
@@ -1677,7 +1789,6 @@ msgstr "Kobold felbujtó"
 
 #. [unit_type]: id=Goblin Rouser, race=goblin
 #: data/core/units/goblins/Rouser.cfg:27
-#, fuzzy
 msgid ""
 "Standard-bearers are an oddity amongst goblins. A goblin who has survived "
 "enough battles to be considered a veteran is rare enough, and it is rarer "
@@ -1826,9 +1937,8 @@ msgstr ""
 #: data/core/units/humans/Loyalist_General.cfg:56
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:52
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:40
-#, fuzzy
 msgid "longsword"
-msgstr "kard"
+msgstr "pallos"
 
 #. [attack]: type=pierce
 #: data/core/units/humans/Horse_Grand_Knight.cfg:45
@@ -1958,7 +2068,6 @@ msgstr "Íjlövész"
 
 #. [unit_type]: id=Bowman, race=human
 #: data/core/units/humans/Loyalist_Bowman.cfg:21
-#, fuzzy
 msgid ""
 "The use of archery in shooting something other than game was seen from its "
 "inception, and archers have been indispensable in warfare since time "
@@ -1970,9 +2079,7 @@ msgstr ""
 "ejtsenek el vele, és az íjászok már időtlen idők óta nélkülözhetetlenek a "
 "háborúkban. Múltjuk gyakran ködös, a parasztok vagy favágók közül kerülnek "
 "ki. Az íjlövészek képzettek mind az íj, mind a rövid kard használatában, és "
-"nagyon gyakran látni őket a csatatéren. Ezen egységeknek nem olyan szigorú a "
-"kiképzésük, mint egy lándzsásnak vagy egy nehézgyalogosnak, mert "
-"taktikájukhoz több ravaszságot, mint nyers erőt használnak fel."
+"nagyon gyakran látni őket a csatatéren."
 
 #. [attack]: type=blade
 #: data/core/units/humans/Loyalist_Bowman.cfg:37
@@ -1987,7 +2094,6 @@ msgstr "Vitéz"
 
 #. [unit_type]: id=Cavalier, race=human
 #: data/core/units/humans/Loyalist_Cavalier.cfg:21
-#, fuzzy
 msgid ""
 "Cavaliers are masters at the use of both sword and crossbow from horseback. "
 "Their combination of striking power and mobility is fearsome; and they have "
@@ -2050,7 +2156,6 @@ msgstr "Dragonyos"
 
 #. [unit_type]: id=Dragoon, race=human
 #: data/core/units/humans/Loyalist_Dragoon.cfg:20
-#, fuzzy
 msgid ""
 "The more talented cavalrymen in the armies of Wesnoth are trained in the use "
 "of the crossbow, and matched with much more powerful steeds. Well-armored, "
@@ -2071,7 +2176,6 @@ msgstr "Párbajhős"
 
 #. [unit_type]: id=Duelist, race=human
 #: data/core/units/humans/Loyalist_Duelist.cfg:20
-#, fuzzy
 msgid ""
 "It is a peculiar custom of Wesnoth's nobility that they typically enroll "
 "their sons into one of two orders of armigers, training them either in the "
@@ -2091,10 +2195,9 @@ msgstr ""
 "kapták a nevüket, ami során a sértés valódi vagy beképzelt tüskéje a "
 "veleszületett joguk azonnali bizonyítására ösztönözheti őket.\n"
 "\n"
-"Tapasztalt vívóknak számítanak, nemesi külsővel rendelkeznek, még ha "
-"származásuk nem is éppen nemesi, kis számszeríjat hordanak maguknál, amit "
+"Tapasztalt vívóknak számítanak, kis számszeríjat hordanak maguknál, melyet "
 "könnyen el tudnak rejteni a kabátjuk vagy köpenyük alá. Lassan lehet csak "
-"megtölteni, és gyakran erkölcstelennek tekintik a használatát, de "
+"megtölteni, és néha erkölcstelennek tekintik a használatát, de "
 "tulajdonképpen nagyon hasznos. Az ilyen rangú veteránok jellemzően azért "
 "érnek meg hosszú életet, mert a túlélés érdekében nem haboznak használni azt."
 
@@ -2112,7 +2215,6 @@ msgstr "Vívó"
 
 #. [unit_type]: id=Fencer, race=human
 #: data/core/units/humans/Loyalist_Fencer.cfg:21
-#, fuzzy
 msgid ""
 "Fencers belong to a school of thought that considers the armor most soldiers "
 "wear in combat to be their own worst enemy. While armor can only soften a "
@@ -2176,7 +2278,6 @@ msgstr "Alabárdos"
 
 #. [unit_type]: id=Halberdier, race=human
 #: data/core/units/humans/Loyalist_Halberdier.cfg:21
-#, fuzzy
 msgid ""
 "A halberd is a heavy weapon and difficult to use, but very powerful in the "
 "hands of an expert. It is also much more flexible than the spear from which "
@@ -2192,13 +2293,14 @@ msgid ""
 "customary only to grant these weapons to veteran pikemen, who have proven "
 "that they have the skill to employ them properly on the field of war."
 msgstr ""
-"Az alabárd nem egyszerű, és nagyon súlyos fegyver, de erőteljes a szakértő "
-"kezekben. Sokkal sokoldalúbb, mint a lándzsa, amiből származik. Ahogy "
-"bármelyik alabárdos elmondhatja, a fegyver négy elsődleges támadó ponttal "
-"bír, kettővel többel, mint a lándzsa vagy a pika: ezek a csúcs, a penge, a "
-"nyél alján található tüske és a penge belső tüskéje, amit egy, a fegyvert "
-"használó felé irányuló visszahúzó mozdulattal lehet kihasználni. Mindez "
-"nagyon hasznos fegyverré teszi közelharcban, különösen a lovasság ellen.\n"
+"Az alabárd súlyos fegyver és nehéz a használata, de igen erőteljes a "
+"szakértő kezekben. Sokkal sokoldalúbb, mint a lándzsa, amiből származik. "
+"Ahogy bármelyik alabárdos elmondhatja, a fegyver négy elsődleges támadó "
+"ponttal bír, kettővel többel, mint a lándzsa vagy a pika: ezek a csúcs, a "
+"penge, a nyél alján található tüske és a penge belső tüskéje, amit egy, a "
+"fegyvert használó felé irányuló visszahúzó mozdulattal lehet kihasználni. "
+"Mindez nagyon hasznos fegyverré teszi közelharcban, különösen a lovasság "
+"ellen.\n"
 "\n"
 "Bárhogy is, az alabárdot drágább kovácsolni, mint a lándzsát, és egy újonc "
 "kezében sokkal hatástalanabb. Wesnoth seregeiben az a szokás, hogy ezeket a "
@@ -2219,6 +2321,12 @@ msgid ""
 "positions. A few of these in battle line will stiffen it considerably, "
 "albeit at an obvious cost in tactical flexibility."
 msgstr ""
+"A nehézgyalogosok teljes vértezetet viselő, súlyos ütőfegyvereket hordó "
+"izmos harcosok. Habár erejük páratlan a közelharcban, meglehetősen lassan "
+"mozognak, ezért leginkább állandó, erődített védelmi vonalak megtartására a "
+"legalkalmasabbak. Ha van néhány nehézgyalogos a csatasorban, akkor az "
+"igencsak megszilárdul, de ennek nyilván hátrányos hatásai vannak a taktikai "
+"rugalmasságra."
 
 #. [attack]: type=impact
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:37
@@ -2354,7 +2462,6 @@ msgstr "Vívómester"
 
 #. [unit_type]: id=Master at Arms, race=human
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:21
-#, fuzzy
 msgid ""
 "Master fencers have an envied place in life. Though the journey to their "
 "station was a dangerous way of life, they have reached the time wherein they "
@@ -2477,9 +2584,8 @@ msgstr ""
 
 #. [attack]: type=impact
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:36
-#, fuzzy
 msgid "flail"
-msgstr "farok"
+msgstr "láncos buzogány"
 
 #. [unit_type]: id=Spearman, race=human
 #: data/core/units/humans/Loyalist_Spearman.cfg:4
@@ -2905,7 +3011,6 @@ msgstr "Orgyilkos"
 
 #. [unit_type]: id=Assassin, race=human
 #: data/core/units/humans/Outlaw_Assassin.cfg:20
-#, fuzzy
 msgid ""
 "The greatest of thieves are sometimes tasked to take far more than their "
 "victim's belongings. Masters of knife-fighting and uncannily light on their "
@@ -2997,7 +3102,6 @@ msgstr "Szökevény"
 
 #. [unit_type]: id=Fugitive, race=human
 #: data/core/units/humans/Outlaw_Fugitive.cfg:21
-#, fuzzy
 msgid ""
 "Veteran criminals become notorious for both their ruthlessness and ability "
 "to elude capture. They can be dangerous in their element, though no match "
@@ -3026,6 +3130,11 @@ msgid ""
 "attacking on lonely roads or in the dead of night. Their experience with "
 "such encounters makes them deadly foes in hand to hand combat."
 msgstr ""
+"A körözött banditák hírhedtek az erőszakos alvilági tetteik miatt. Készek "
+"bárkinek a szolgálatába szegődni, aki hajlandó eleget fizetni. Kevésbé "
+"ismert haramiák csoportjait vezetik a megbízójuk ellenségei ellen, gyakran "
+"kietlen utakon vagy az éjjeli sötétben támadva. Az efféle ütközetekben "
+"szerezett tapasztalataik halálos ellenfelekké teszi őket a közelharcban."
 
 #. [unit_type]: id=Rogue, race=human
 #: data/core/units/humans/Outlaw_Rogue.cfg:4
@@ -3060,7 +3169,6 @@ msgstr "Csirkefogó"
 
 #. [unit_type]: id=Ruffian, race=human
 #: data/core/units/humans/Outlaw_Ruffian.cfg:19
-#, fuzzy
 msgid ""
 "Some men without particular skills cannot or will not make an honest living. "
 "Those that attempt to make their way through life by the heavy end of a "
@@ -3070,8 +3178,8 @@ msgid ""
 msgstr ""
 "Néhány ember bizonyos szakértelem hiányában nem tud, vagy nem akar "
 "becsületes életet élni: ők a \"csirkefogók\". Kemény végű botokkal "
-"harcolnak. Elég szerencsével és tapasztalattal néhányuk elkerüli a börtönt, "
-"amely a legtöbb társukra vár. "
+"harcolnak. Elég szerencsével és tapasztalattal néhányuk elkerüli a börtönt "
+"vagy a halált, amely a legtöbb társukra vár."
 
 #. [unit_type]: id=Thief, race=human
 #: data/core/units/humans/Outlaw_Thief.cfg:4
@@ -3308,7 +3416,6 @@ msgstr "Sellő jósnő"
 
 #. [unit_type]: id=Mermaid Diviner, race=merman
 #: data/core/units/merfolk/Diviner.cfg:25
-#, fuzzy
 msgid ""
 "Years of devotion may endow a priestess with great wisdom on the workings of "
 "the world, and grants some the favor of the light. The power thus given to "
@@ -3318,7 +3425,7 @@ msgid ""
 "wrought the downfall of the crimson duke."
 msgstr ""
 "A sok évnyi áldozatos munka a papnőt a világ dolgainak hatalmas "
-"bölcsességével áldja meg, és megajándékozza a fény pártfogásával. A vízi "
+"bölcsességével áldhatja meg, és megajándékozza a fény pártfogásával. A vízi "
 "világ hölgyeinek így adományozott ereje visszatérő motívuma a meséknek és "
 "daloknak: olyanoknak, mint az ezüst hegy lovagjainak meséje, akiket "
 "bekerítettek, és egytől egyig lemészárolták őket az Alavynne partjainál, de "
@@ -3373,6 +3480,17 @@ msgid ""
 "effective chase over land, and are at a great disadvantage in hand-to-hand "
 "combat."
 msgstr ""
+"A sellők hálókat és fütykösöket egyaránt használnak halászatkor; a hálókkal "
+"gyűjtik össze a halakat, a fütykösökkel pedig bevégzik a munkát. Mindkét "
+"eszköz alkalmazkodott a háborús használathoz, és eléggé értékessé vált "
+"ahhoz, hogy az ügyes forgatóit szándékosan csatába vigyék.\n"
+"\n"
+"A sellők gyakran találják magukat patthelyzetekben a szárazföldi "
+"ellenfelekkel vívott csaták során; miközben a vízben páratlanul erősek, a "
+"szárazföldön túl gyengék ahhoz, hogy támadást indítsanak arrafelé. A hálók "
+"kulcsfontosságú eszközök; nélkülük a sellők képtelenek hatásos üldözésbe "
+"kezdeni a szárazföldön, ráadásul a közelharcban is hátrányba kerülnek hálók "
+"híján."
 
 #. [unit_type]: id=Merman Fighter, race=merman
 #: data/core/units/merfolk/Fighter.cfg:4
@@ -3381,13 +3499,12 @@ msgstr "Sellő verekedő"
 
 #. [unit_type]: id=Merman Fighter, race=merman
 #: data/core/units/merfolk/Fighter.cfg:20
-#, fuzzy
 msgid ""
 "Skilled denizens of the sea, Mermen are powerful and quick in any watery "
 "environment, but lose most of their mobility on land."
 msgstr ""
-"A sellők a tengerek ügyes teremtményei, gyorsak és erősek a vízben, de ha "
-"beljebb merészkednek a szárazföldre, elvesztik fürgeségüket."
+"A sellők a tengerek ügyes lakói, gyorsak és erősek a vízben, de ha beljebb "
+"merészkednek a szárazföldre, elvesztik fürgeségüket."
 
 #. [unit_type]: id=Merman Hoplite, race=merman
 #: data/core/units/merfolk/Hoplite.cfg:4
@@ -3433,7 +3550,6 @@ msgstr "Sellő varázstanonc"
 
 #. [unit_type]: id=Mermaid Initiate, race=merman
 #: data/core/units/merfolk/Initiate.cfg:23
-#, fuzzy
 msgid ""
 "Young mermaids are often initiated into the water magics native to their "
 "people. The wondrous abilities this grants are inimitable by any other race, "
@@ -3489,6 +3605,18 @@ msgid ""
 "close to shore. Clubs were used in combat with little or no adaptation from "
 "fishing, since they were already quite deadly."
 msgstr ""
+"A halászat - ahogy azt a sellők végzik - tulajdonképpen nem más, mint hogy a "
+"felállított hálókba üldözik a halrajokat, ahol aztán evezőszerű fütykösökkel "
+"végeznek a zsákmánnyal. Ezen módszer ötletszerű alkalmazása a katonák ellen "
+"igencsak hatásosnak bizonyult; a legtöbb szárazföldi élőlény már akkor is "
+"meglehetősen esetlen, ha derékig gázol a vízben, ha pedig hálóba fut, akkor "
+"teljesen tehetetlenné válik.\n"
+"\n"
+"Ezen módszer eredményessége kisebb, kiegyensúlyozott hálók megjelenéséhez "
+"vezetett, melyeket a levegőbe lehetett hajítani; ezekkel nem lehetett "
+"halászni, de harcban és a parthoz túl közel merészkedő vadak elfogásában "
+"egyaránt jól lehetett használni őket. A fütykösöket átalakítás nélkül is jól "
+"tudták használni a harcban, mert már amúgy is halálos erejűek voltak."
 
 #. [unit_type]: id=Mermaid Priestess, race=merman
 #: data/core/units/merfolk/Priestess.cfg:4
@@ -3517,7 +3645,6 @@ msgstr "Sellő szirén"
 
 #. [unit_type]: id=Mermaid Siren, race=merman
 #: data/core/units/merfolk/Siren.cfg:23
-#, fuzzy
 msgid ""
 "The faerie nature of the mermaids is strongest in the Sirens, whose "
 "connection to the currents of magic often causes them to be mistaken for "
@@ -3530,11 +3657,11 @@ msgid ""
 "regard it with wonder."
 msgstr ""
 "A tündéri természet a sellők közül a szirénekben a legerősebb, akiknek a "
-"habokkal való kapcsolata sokakat megtéveszt, és ezért hableányoknak tartják "
-"őket. Habár ez nyilvánvalóan távol áll az igazságtól, a tévedés érthető, "
-"hiszen a hableányok még a sellők szeme elé is csak ritkán kerülnek. Mágiájuk "
-"megtestesülése nyilvánvalóan nagyon hasonló; a szirént körülvevő víznek úgy "
-"parancsol a szirén, mint egy rajta lévő testrésznek.\n"
+"mágia áramlataival való kapcsolata sokakat megtéveszt, és ezért "
+"hableányoknak tartják őket. Habár ez nyilvánvalóan távol áll az igazságtól, "
+"a tévedés érthető, hiszen a hableányok még a sellők szeme elé is csak ritkán "
+"kerülnek. Mágiájuk megtestesülése nyilvánvalóan nagyon hasonló; a szirént "
+"körülvevő víznek úgy parancsol a szirén, mint egy rajta lévő testrésznek.\n"
 "\n"
 "Ennek ezernyi használata ritkán látható a szárazföld lakóinak, akik "
 "egyszerűen csodálattal tisztelik az ilyen jelenségeket."
@@ -3603,7 +3730,6 @@ msgstr "Óriáspók"
 
 #. [unit_type]: id=Giant Spider, race=monster
 #: data/core/units/monsters/Cave_Spider.cfg:20
-#, fuzzy
 msgid ""
 "Giant Spiders are said to roam the depths of Knalga, devouring many victims. "
 "They have a vicious bite, made worse by the fact that it is poisoned, and "
@@ -3810,9 +3936,8 @@ msgstr ""
 
 #. [unit_type]: id=Water Serpent, race=monster
 #: data/core/units/monsters/Water_Serpent.cfg:5
-#, fuzzy
 msgid "Water Serpent"
-msgstr "Tengeri kígyó"
+msgstr "Vízi kígyó"
 
 #. [unit_type]: id=Water Serpent, race=monster
 #: data/core/units/monsters/Water_Serpent.cfg:38
@@ -3822,6 +3947,10 @@ msgid ""
 "up as a primitive offshoot of the Nagas. What is certain is that it is wise "
 "to avoid waters where they are known to congregate."
 msgstr ""
+"Az írástudók véleménye megoszlik a vízi kígyók eredetét illetően. Egyesek "
+"úgy tartják, hogy a tengeri kígyók kicsinyei, vagy felnőtt unokatestvérei. "
+"Mások szerint a nagák kései leszármazottjai. Az azonban biztos, hogy bölcs "
+"dolog elkerülni azokat a vizeket, ahol tanyáznak."
 
 #. [unit_type]: id=Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:4
@@ -3860,7 +3989,6 @@ msgstr "Naga verekedő"
 
 #. [unit_type]: id=Naga Fighter, race=naga
 #: data/core/units/nagas/Fighter.cfg:21
-#, fuzzy
 msgid ""
 "The serpentine naga are one of the few races capable of any meaningful "
 "mobility in water, giving them mastery of a whole world effectively "
@@ -3870,10 +3998,10 @@ msgid ""
 "nimble than their opponents."
 msgstr ""
 "A kígyószerű naga egy azon lények közül, amelyek képesek a vízben gyorsan "
-"haladni, ami egy olyan világot adományoz nekik, ami a szárazföldi lényeknek "
-"tiltott. Még mindig nem a tenger teremtményei igazán, és az, hogy nem "
-"képesek a vízben lélegezni, izgatottá és kapkodóvá teszi őket a "
-"mélységekben. Kicsik és törékenyek is, de gyakran sokkal fürgébbek "
+"haladni, ami egy olyan világot adományoz nekik, amely gyakorlatilag tiltott "
+"a szárazföldi lények számára. Még mindig nem a tenger teremtményei igazán, "
+"és az, hogy nem képesek a vízben lélegezni, izgatottá és kapkodóvá teszi "
+"őket a mélységekben. Kicsik és törékenyek is, de gyakran sokkal fürgébbek "
 "ellenfelüknél."
 
 #. [female]
@@ -4012,7 +4140,6 @@ msgstr "Ork íjász"
 
 #. [unit_type]: id=Orcish Archer, race=orc
 #: data/core/units/orcs/Archer.cfg:19
-#, fuzzy
 msgid ""
 "Amongst orcs, bows are often regarded as a cowardly weapon; but even orcs, "
 "especially youths and those of slight build, are pragmatic enough to use "
@@ -4188,7 +4315,6 @@ msgstr "Ork felsőbbség"
 
 #. [unit_type]: id=Orcish Sovereign, race=orc
 #: data/core/units/orcs/Sovereign.cfg:19
-#, fuzzy
 msgid ""
 "From time to time, an orc will arise who has a natural charisma and command "
 "over his ilk. If he is also strong and cunning wnough to survive early "
@@ -4198,7 +4324,8 @@ msgid ""
 "to slay this rare orc who can hold it together."
 msgstr ""
 "Időről-időre felemelkedik egy-egy ork, akinek természetes kisugárzása van, "
-"és uralkodni tud népe felett. Hogyha még erős és ravasz is, akkor "
+"és uralkodni tud népe felett. Hogyha még elég erős és ravasz is ahhoz, hogy "
+"túlélje a vezérségből fakadó korai megpróbáltatásokat, akkor "
 "elkerülhetetlen, hogy hatalmas harcos hordák élén találja magát, és ugyanígy "
 "elkerülhetetlen, hogy óriási gondot okozzon a világ civilizált népeinek. A "
 "legbiztosabb út, hogy egy ilyen csoportot szétoszlassunk az, hogy "
@@ -4211,15 +4338,14 @@ msgstr "Ork hadúr"
 
 #. [unit_type]: id=Orcish Warlord, race=orc
 #: data/core/units/orcs/Warlord.cfg:19
-#, fuzzy
 msgid ""
 "Only orcs with both great cunning and unsurpassed strength can become "
 "Warlords. Masters of the sword, and even possessing some skill with the bow, "
 "these beast-warriors lead their brethren with iron will and iron hand."
 msgstr ""
 "Csak a legfortélyosabb és legerősebb orkok válhatnak hadurakká. Ezek a "
-"kardot jól forgató és az íjjal is jól célzó vad harcosok vezetik csatába az "
-"ork csapatokat."
+"kardot jól forgató és az íjjal is jól célzó vad harcosok acél akarattal és "
+"vasököllel vezetik csatába az ork csapatokat."
 
 #. [unit_type]: id=Orcish Warrior, race=orc
 #: data/core/units/orcs/Warrior.cfg:4
@@ -4244,7 +4370,6 @@ msgstr "Gyík rajtaütő"
 
 #. [unit_type]: id=Saurian Ambusher, race=lizard
 #: data/core/units/saurians/Ambusher.cfg:19
-#, fuzzy
 msgid ""
 "Saurians are light on their feet, and able at navigating terrain that often "
 "confounds their enemies. When this natural mobility is combined with "
@@ -4255,12 +4380,13 @@ msgid ""
 "make the enemy regret tactical mistakes."
 msgstr ""
 "A gyíkok gyorsan tudnak menetelni, és képesek tájékozódni olyan területeken, "
-"amelyek gyakran zavarba ejtik az ellenségeiket. Hogyha ezt kombinálják "
-"tapasztalattal, erővel és felszereléssel, akkor ezek a harcosok kifejezetten "
-"fenyegetőek lehetnek a harcban, nagyrészt azért, mert őket sokkal nehezebb "
-"legyőzni, mint bármely másik ellenséget. A gyík rajtaütők még páncélban is "
-"képesek kihasználni a legkisebb lyukat is az ellenséges harcvonalban, és van "
-"erejük hozzá, hogy az ellenséget a taktikai hibák megbánására kényszerítsék."
+"amelyek gyakran zavarba ejtik az ellenségeiket. Hogyha ezt a természetes "
+"mozgékonyságot kombinálják tapasztalattal, erővel és megfelelő "
+"felszereléssel, akkor ezek a harcosok kifejezetten fenyegetőek lehetnek a "
+"harcban, nagyrészt azért, mert őket sokkal nehezebb legyőzni, mint bármely "
+"másik ellenséget. A gyík rajtaütők még páncélban is képesek kihasználni a "
+"legkisebb lyukat is az ellenséges harcvonalban, és van erejük hozzá, hogy az "
+"ellenséget a taktikai hibák megbánására kényszerítsék."
 
 #. [unit_type]: id=Saurian Augur, race=lizard
 #: data/core/units/saurians/Augur.cfg:4
@@ -4292,7 +4418,6 @@ msgstr "Gyík megkerülő"
 
 #. [unit_type]: id=Saurian Flanker, race=lizard
 #: data/core/units/saurians/Flanker.cfg:20
-#, fuzzy
 msgid ""
 "Saurian warriors are generally weaker in frame than their elven or human "
 "counterparts. This is of course a relative term, and they can still become "
@@ -4415,7 +4540,6 @@ msgstr "Troll kőhajító"
 
 #. [unit_type]: id=Troll Rocklobber, race=troll
 #: data/core/units/trolls/Rocklobber.cfg:20
-#, fuzzy
 msgid ""
 "The thought of throwing a boulder in combat has certainly occurred to many "
 "trolls, and some have taken to them as a weapon of choice. Because stones "
@@ -4425,16 +4549,18 @@ msgid ""
 msgstr ""
 "Megadatván számukra fajtájuk ereje, a trollok kifejezetten otromba "
 "fegyverekkel is halálos csapásokat mérhetnek ellenfeleikre. Néhányuk durva "
-"parittyaszíjakat használ, amely kissé különbözik azoktól, amit a gyermekek "
+"parittyaszíjakat használ, amely kissé különbözik azoktól, melyet a gyermekek "
 "használnak, tekintve hogy kavicsok helyett egész szikladarabokat hajítanak "
-"velük. Bár nem túl pontosak, egy ilyen szörnyeteg által útjára indított "
-"szikla egyben szétroppanthat egy embert. A troll kőhajítók mindig "
-"termetesebbek, erősebbek, és talán még rondábbak is a suhancoknál, akik "
-"régen voltak, s egy troll ököl felér egy kalapáccsal a harcban. Továbbá az, "
-"hogy visszalőhetnek az íjászok támadására, kockázatossá teszi bármilyen "
-"módon történő megtámadásukat, hacsak nem kifejezetten kedvezőek a "
-"terepviszonyok. Regenerációs képességük segítségével kigyógyulnak a "
-"mérgezésből és segítség nélkül felépülnek sebeikből."
+"velük. Mivel megfelelő formájú, jól repülő köveket nem mindig egyszerű "
+"találni, a troll kőhajítók a vállukra csapott tarisznyában szállítanak "
+"néhányat szükség esetére. Bár a parittyák nem túl pontosak, egy ilyen "
+"szörnyeteg által útjára indított szikla egyben szétroppanthat egy embert. A "
+"troll kőhajítók mindig termetesebbek, erősebbek, és talán még rondábbak is a "
+"suhancoknál, akik régen voltak, s egy troll ököl felér egy kalapáccsal a "
+"harcban. Továbbá az, hogy visszalőhetnek az íjászok támadására, kockázatossá "
+"teszi bármilyen módon történő megtámadásukat, hacsak nem kifejezetten "
+"kedvezőek a terepviszonyok. Regenerációs képességük segítségével "
+"kigyógyulnak a mérgezésből és segítség nélkül felépülnek sebeikből."
 
 #. [unit_type]: id=Troll, race=troll
 #: data/core/units/trolls/Troll.cfg:4
@@ -4469,7 +4595,6 @@ msgstr "Troll sámán"
 
 #. [unit_type]: id=Troll Shaman, race=troll
 #: data/core/units/trolls/Troll_Shaman.cfg:24
-#, fuzzy
 msgid ""
 "Troll shamans are the mystical leaders of the trolls. Though not as strong "
 "or tough as other trolls, their true power lies in their fire magic, which "
@@ -4570,7 +4695,6 @@ msgstr "Hullafaló"
 
 #. [unit_type]: id=Necrophage, race=undead
 #: data/core/units/undead/Corpse_Necrophage.cfg:20
-#, fuzzy
 msgid ""
 "The necrophage, or 'devourer of the dead', is a monstrous, corpulent thing, "
 "which bears only a crude resemblance to a man. They appear to be quite "
@@ -4582,12 +4706,12 @@ msgid ""
 "but nightmarish."
 msgstr ""
 "A hullafaló, vagy a \"halál élvezője\" egy szörnyű, testes lény, amely csak "
-"durván hasonlít egy emberre. Azt a képességüket figyelembe véve, ahogy "
-"mozognak, bomlott test benyomását keltik, vérük színültig van ragályokkal, "
-"méreggel, és ehhez hasonló bűzük is van. A leghihetetlenebb tény - már "
-"amennyire ténynek tekinthető - róluk az, hogy valahogy élő emberekből lettek "
-"átalakítva egy eljárással, amiről szinte semmit nem tudunk, de nem lehet "
-"más, csak rémálmokba illő."
+"durván hasonlít egy emberre. Külsőre teljesen rothadtnak tűnnek, bár ennek "
+"ellenére képesek mozogni; vérük színültig van ragályokkal, méreggel, és "
+"ehhez hasonló bűzük is van. A leghihetetlenebb tény - már amennyire ténynek "
+"tekinthető - róluk az, hogy valahogy élő emberekből lettek átalakítva egy "
+"eljárással, amiről szinte semmit nem tudunk, de nem lehet más, csak "
+"rémálmokba illő."
 
 #. [unit_type]: id=Soulless, race=undead
 #: data/core/units/undead/Corpse_Soulless.cfg:6
@@ -4596,7 +4720,6 @@ msgstr "Lelketlen"
 
 #. [unit_type]: id=Soulless, race=undead
 #: data/core/units/undead/Corpse_Soulless.cfg:20
-#, fuzzy
 msgid ""
 "The technique of animating a dead body is unfortunately well-known in the "
 "dark arts; practitioners often use it to raise servants and soldiers from "
@@ -4716,7 +4839,6 @@ msgstr "Sötét varázsló"
 
 #. [unit_type]: id=Dark Sorcerer, race=human
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:21
-#, fuzzy
 msgid ""
 "The dread inspired by black magic is enhanced by the sewcrecy and fell "
 "rumors which sourround. Dark sorcerers have begun to unlock the secrets of "
@@ -4734,7 +4856,7 @@ msgid ""
 "a loyalty any tyrant would dream of, and it is tempting to those with even "
 "the slightest desire for power."
 msgstr ""
-"A rettegés, amit a sötét mágia táplál nagyrészt abból ered, hogy nagyon "
+"A rettegés, melyet a sötét mágia táplál, nagyrészt abból ered, hogy nagyon "
 "keveset tudunk róla. A sötét varázslók már megkezdték az élet és a halál "
 "titkainak feltárását, az utóbbit nagyon könnyű magunkra haragítani. Ez a "
 "munka adja az első találgatásokat a lélek és a belső szervek kapcsolatáról, "
@@ -4746,9 +4868,9 @@ msgstr ""
 "természet szorításából, munkájuk első eredményeinek azonnali és kellemetlen "
 "következményei vannak. Az élet, amelyet a halott lényekbe lehelnek, "
 "szolgáikká változtatják őket, akik dolgoznak, de még ölnek is, és soha nem "
-"kérdőjelezik meg mesterük szándékát. Ezeknek a teremtményeknek a hűségét egy "
-"zsarnok is megirigyelhetné, és hízelgő azok számára, akik csak álmodnak egy "
-"ilyen hatalomról."
+"kérdőjelezik meg mesterük szándékát. Ezeknek a teremtményeknek a hűsége "
+"olyan, melyről bármely zsarnok álmodik, és ez vonzza azokat, akikben "
+"akárcsak egy csöppnyi hatalomvágy is van."
 
 #. [female]
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:243
@@ -4865,7 +4987,6 @@ msgstr "Sorscsapás-íjász"
 
 #. [unit_type]: id=Banebow, race=undead
 #: data/core/units/undead/Skele_Banebow.cfg:18
-#, fuzzy
 msgid ""
 "The most powerful of the undead archers invariably end up being those who "
 "were themselves archers in their previous life. They wander the fields of "
@@ -4875,7 +4996,7 @@ msgid ""
 msgstr ""
 "A legjobb élőholt íjászok kétségtelenül azokból lesznek, akik előző "
 "életükben is íjászok voltak. A harcteret járva régi, foszladozó tudásuk "
-"irányítja őket, nem tudva küldetésüket és nem is törődve vele, vagy "
+"irányítja őket, nem tudják küldetésüket... de nem is törődnek ezzel, vagy "
 "ellenségeik kilétével. Csak üres és széteső létük gyötrelmes terhének "
 "rosszindulatú cipelése vezeti őket tovább."
 
@@ -4981,7 +5102,6 @@ msgstr "Bosszúálló"
 
 #. [unit_type]: id=Revenant, race=undead
 #: data/core/units/undead/Skele_Revenant.cfg:19
-#, fuzzy
 msgid ""
 "Given false life to do battle once more, the creatures known as Revenants "
 "were clearly great warriors in their time, though the memory of that time is "
@@ -4992,10 +5112,11 @@ msgid ""
 msgstr ""
 "A bosszúállóknak azért adtak hamis életet újra, hogy még egyszer "
 "harcolhassanak. Ezek a lények egyértelműen koruk legnagyobb harcosai voltak, "
-"azonban azok az idők már régen letűntek. Még azok a boszorkányok is, akik "
-"újraélesztik őket csak találgatni tudnak múltjukra. Ilyen kérdéseket "
-"leszámítva a bosszúálló félelmetes eszköz a csatában: egy félelem nélküli "
-"harcos, aki nem ismeri a fájdalmat és a végsőkig fog küzdeni."
+"azonban azok az idők élőholt önmaguk számára már majdnem teljesen feledésbe "
+"merültek. Még azok a boszorkányok is, akik újraélesztik őket, csak "
+"találgatni tudnak múltjukra. Ilyen kérdéseket leszámítva a bosszúálló "
+"félelmetes eszköz a csatában: egy félelem nélküli harcos, aki nem ismeri a "
+"fájdalmat és a végsőkig fog küzdeni."
 
 #. [unit_type]: id=Skeleton, race=undead
 #: data/core/units/undead/Skeleton.cfg:4
@@ -5041,7 +5162,6 @@ msgstr "Szellem"
 
 #. [unit_type]: id=Ghost, race=undead
 #: data/core/units/undead/Spirit_Ghost.cfg:19
-#, fuzzy
 msgid ""
 "Enslaved within a shroud of enchantments, a trapped spirit may be likened to "
 "the wind in the sails of a ship. This damned vessel becomes an unfailing "
@@ -5110,7 +5230,6 @@ msgstr "Lidérc"
 
 #. [unit_type]: id=Spectre, race=undead
 #: data/core/units/undead/Spirit_Spectre.cfg:21
-#, fuzzy
 msgid ""
 "Sometimes called the 'hollow men', spectres form the right arm of their "
 "masters' powers. They are an unholy terror to the living, for they are quite "
@@ -5127,9 +5246,9 @@ msgstr ""
 "rettegést hoznak az élőkre, mivel legalább annyira halálosak, mint ahogy azt "
 "a külsejük sugallja.\n"
 "\n"
-"Megalkotni egy ilyen lényt nem egy hatalmas dolog. A találkozás egy ilyen "
-"lénnyel azért nagyon félelmetes, mert jelenléte egy sokkal nagyobb veszélyt "
-"jelez."
+"Megalkotni egy ilyen lényt nem egy hatalmas dolog... no de a találkozás egy "
+"ilyen lénnyel azért nagyon félelmetes, mert jelenléte egy sokkal nagyobb "
+"veszélyt jelez."
 
 #. [attack]: type=arcane
 #: data/core/units/undead/Spirit_Spectre.cfg:59
@@ -5259,6 +5378,37 @@ msgstr ""
 "A fapásztorok a végletekig békések, de hatalmas erő birtokosai. Amikor "
 "helyet kell változtatniuk, mindig kiderül, hogy mennyire lassan teszik ezt a "
 "számukra szokatlan műveletet."
+
+#~ msgid ""
+#~ "Before a drake is even considered for acceptance into the Burner caste, "
+#~ "he must prove the strength of his inner fire; the caste prides itself on "
+#~ "its similarity to the drakes' powerful ancestors: the dragons. Arrogant "
+#~ "Burners (and there are many such) can often be overheard claiming to be "
+#~ "so like the dragons that their veins flow not with blood, but with pure "
+#~ "flame. Although a Burner's preferred weapon is his fiery breath, he won't "
+#~ "shy away from striking blows with his bared claws."
+#~ msgstr ""
+#~ "Mielőtt egyáltalán fontolóra vennék, hogy egy perzsekényt befogadjanak a "
+#~ "tűzokádók kasztjába, bizonyítania kell a belső tüzének erejét; a kaszt "
+#~ "tagjainak legfőbb büszkesége ugyanis az, hogy mennyire hasonlítanak a "
+#~ "perzsekények hatalmas őseire: a sárkányokra. A pökhendi tűzokádók "
+#~ "(márpedig sok ilyen akad) szájából gyakran lehet hallani azt a "
+#~ "kijelentést, hogy annyira hasonlítanak a sárkányokra, hogy az ereikben "
+#~ "nem is vér folyik, hanem forró lángok. Bár a tűzokádók leginkább tüzes "
+#~ "leheletükkel szeretnek harcra kelni, éles karmaikkal is magabiztosan "
+#~ "sújtanak le."
+
+#~ msgid ""
+#~ "A Fighter's only purpose in drake society is to fight and die for his "
+#~ "tribe. Not being particularly swift, nor possessed of a strong inner "
+#~ "flame, he is constantly struggling to prove his worth to the more "
+#~ "respected castes by sheer physical prowess. Sometimes, he succeeds."
+#~ msgstr ""
+#~ "A verekedő életének célja a perzsekény társadalomban, hogy harcoljon, és "
+#~ "ha kell, akkor haljon meg a törzséért. Mivel a verekedő nem különösebben "
+#~ "gyors és a belső tüze sem túlzottan erős, folyamatosan küzdenie kell, "
+#~ "hogy nyers fizikai erejével bizonyítsa hasznosságát a nagyobb "
+#~ "tiszteletnek örvendő kasztoknak. Néha siker koronázza erőfeszítéseit."
 
 #, fuzzy
 #~ msgid ""
