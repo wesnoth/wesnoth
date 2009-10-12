@@ -399,7 +399,6 @@ void loadgame::show_dialog(bool show_replay, bool cancel_orders)
 			filename_ = load_dialog.filename();
 			show_replay_ = load_dialog.show_replay();
 			cancel_orders_ = load_dialog.cancel_orders();
-			gamestate_ = game_state();
 		}
 	}
 	else
@@ -409,9 +408,6 @@ void loadgame::show_dialog(bool show_replay, bool cancel_orders)
 		filename_ = dialogs::load_game_dialog(gui_, game_config_, &show_replay_dialog, &cancel_orders_dialog);
 		show_replay_ = show_replay_dialog;
 		cancel_orders_ = cancel_orders_dialog;
-
-		if (filename_ != "")
-			gamestate_ = game_state();
 	}
 }
 
