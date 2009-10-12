@@ -102,6 +102,7 @@ private:
 	 */
 	void mouse_motion(twidget* mouse_over, const tpoint& coordinate);
 
+	bool signal_handler_sdl_mouse_motion_entered_;
 	void signal_handler_sdl_mouse_motion(
 			  const event::tevent event
 			, bool& handled
@@ -150,11 +151,13 @@ private:
 	/** Is the button down? */
 	bool is_down_;
 
+	bool signal_handler_sdl_button_down_entered_;
 	void signal_handler_sdl_button_down(
 		  const event::tevent event
 		, bool& handled
 		, const tpoint& coordinate);
 
+	bool signal_handler_sdl_button_up_entered_;
 	void signal_handler_sdl_button_up(
 		  const event::tevent event
 		, bool& handled

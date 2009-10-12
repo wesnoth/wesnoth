@@ -88,9 +88,13 @@ static Uint32 popup_callback(Uint32 /*interval*/, void* /*param*/)
 /**
  * Small helper to keep a resource (boolean) locked.
  *
- * @todo This locking breaks the window clicks in a nested window.
+ * Some of the event handling routines can't be called recursively, this due to
+ * the fact that they are attached to the pre queue and when the forward an
+ * event the pre queue event gets triggered recursively causing infinite
+ * recursion. 
  *
- * Disabled for now fix properly later.
+ * To prevent that those functions check the lock and exit when the lock is
+ * held otherwise grab the lock here.
  */
 class tlock
 {
@@ -99,13 +103,13 @@ public:
 		: locked_(locked)
 	{
 		assert(!locked_);
-//		locked_ = true;
+		locked_ = true;
 	}
 
 	~tlock()
 	{
-//		assert(locked_);
-//		locked_ = false;
+		assert(locked_);
+		locked_ = false;
 	}
 private:
 	bool& locked_;
@@ -121,6 +125,7 @@ tmouse_motion::tmouse_motion(twidget& owner
 	: mouse_focus_(NULL)
 	, mouse_captured_(false)
 	, owner_(owner)
+	, signal_handler_sdl_mouse_motion_entered_(false)
 {
 	owner.connect_signal<event::SDL_MOUSE_MOTION>(
 		  boost::bind(&tmouse_motion::signal_handler_sdl_mouse_motion
@@ -140,17 +145,10 @@ void tmouse_motion::signal_handler_sdl_mouse_motion(
 		, bool& handled
 		, const tpoint& coordinate)
 {
-	/*
-	 * Avoid recursion since we fire our own event which will cause ourselves
-	 * to enter an infinite recursion. If we're called while entered leave
-	 * directly to avoid the recursion. If not entered use a RAII helper to
-	 * control the flag.
-	 */
-	static bool entered = false;
-	if(entered) {
+	if(signal_handler_sdl_mouse_motion_entered_) {
 		return;
 	}
-	tlock lock(entered);
+	tlock lock(signal_handler_sdl_mouse_motion_entered_);
 
 	DBG_GUI_E << LOG_HEADER << event << ".\n";
 
@@ -245,6 +243,8 @@ template<
 	, focus_(0)
 	, name_(name_)
 	, is_down_(false)
+	, signal_handler_sdl_button_down_entered_(false)
+	, signal_handler_sdl_button_up_entered_(false)
 {
 	owner_.connect_signal<sdl_button_down>(
 			  boost::bind(&tmouse_button<
@@ -291,17 +291,10 @@ template<
 		, bool& handled
 		, const tpoint& coordinate)
 {
-	/*
-	 * Avoid recursion since we fire our own event which will cause ourselves
-	 * to enter an infinite recursion. If we're called while entered leave
-	 * directly to avoid the recursion. If not entered use a RAII helper to
-	 * control the flag.
-	 */
-	static bool entered = false;
-	if(entered) {
+	if(signal_handler_sdl_button_down_entered_) {
 		return;
 	}
-	tlock lock(entered);
+	tlock lock(signal_handler_sdl_button_down_entered_);
 
 	DBG_GUI_E << LOG_HEADER << event << ".\n";
 
@@ -365,17 +358,10 @@ template<
 		, bool& handled
 		, const tpoint& coordinate)
 {
-	/*
-	 * Avoid recursion since we fire our own event which will cause ourselves
-	 * to enter an infinite recursion. If we're called while entered leave
-	 * directly to avoid the recursion. If not entered use a RAII helper to
-	 * control the flag.
-	 */
-	static bool entered = false;
-	if(entered) {
+	if(signal_handler_sdl_button_up_entered_) {
 		return;
 	}
-	tlock lock(entered);
+	tlock lock(signal_handler_sdl_button_up_entered_);
 
 	DBG_GUI_E << LOG_HEADER << event << ".\n";
 
@@ -737,6 +723,8 @@ void tdistributor::signal_handler_sdl_key_down(const SDLKey key
 		, const SDLMod modifier
 		, const Uint16 unicode)
 {
+	/** @todo Test whether recursion protection is needed. */
+
 	DBG_GUI_E << LOG_HEADER << event::SDL_KEY_DOWN << ".\n";
 
 	if(keyboard_focus_) {
@@ -782,17 +770,7 @@ void tdistributor::signal_handler_sdl_key_down(const SDLKey key
 template<tevent event>
 void tdistributor::signal_handler_sdl_wheel()
 {
-	/*
-	 * Avoid recursion since we fire our own event which will cause ourselves
-	 * to enter an infinite recursion. If we're called while entered leave
-	 * directly to avoid the recursion. If not entered use a RAII helper to
-	 * control the flag.
-	 */
-	static bool entered = false;
-	if(entered) {
-		return;
-	}
-	tlock lock(entered);
+	/** @todo Test whether recursion protection is needed. */
 
 	DBG_GUI_E << LOG_HEADER << event << ".\n";
 
