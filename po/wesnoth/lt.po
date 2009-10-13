@@ -24,7 +24,7 @@ msgstr "Suspausti išsaugojimai"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:12
 msgid "Confirm deleting saves"
-msgstr ""
+msgstr "Paklausti prieš trinant išsaugojimą"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:19
@@ -517,9 +517,8 @@ msgstr "Valensų (pietų Katalonų) vertimas"
 
 #. [about]
 #: data/core/about.cfg:2266
-#, fuzzy
 msgid "Vietnamese Translation"
-msgstr "Kinų vertimas"
+msgstr "Vietnamiečių vertimas"
 
 #. [about]
 #: data/core/about.cfg:2273
@@ -2940,7 +2939,7 @@ msgstr ""
 #. [set_menu_item]: id=ai_controller_leader_control_{SIDE_CONTROLLED}
 #: data/core/macros/ai.cfg:408
 msgid "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
-msgstr ""
+msgstr "Paprašykite $ally_leader.name ($ally_leader.side vadą) ateiti čia"
 
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:144
@@ -3128,13 +3127,12 @@ msgid "Exit"
 msgstr "Išeiti"
 
 #: data/core/macros/ai_controller.cfg:1047
-#, fuzzy
 msgid "Set special orders..."
-msgstr "Nustatyti elgesį..."
+msgstr "Nustatyti ypatingus nurodymus..."
 
 #: data/core/macros/ai_controller.cfg:1048
 msgid "Move leader to..."
-msgstr ""
+msgstr "Nuvesti vadą į..."
 
 #: data/core/macros/ai_controller.cfg:1049
 msgid "Right-click to select a location to move leader to"
@@ -3142,27 +3140,23 @@ msgstr ""
 
 #: data/core/macros/ai_controller.cfg:1050
 msgid "Move leader here"
-msgstr ""
+msgstr "Atveskite vadą čia"
 
 #: data/core/macros/ai_controller.cfg:1051
 msgid "moving leader to $x1|,$y1|."
 msgstr ""
 
 #: data/core/macros/ai_controller.cfg:1052
-#, fuzzy
 msgid "Clear special orders"
-msgstr "Atšaukti visus nurodymus"
+msgstr "Atšaukti ypatingus nurodymus"
 
 #: data/core/macros/ai_controller.cfg:1053
-#, fuzzy
 msgid ""
 "Special: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_special_description"
 msgstr ""
-"Tikslas: $ai_controller.side_$ally_side|_current_settings."
-"currently_doing_objective_description\n"
-"Elgesys: $ai_controller.side_$ally_side|_current_settings."
-"currently_doing_behaviour_description"
+"Ypatingas: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_special_description"
 
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
@@ -3309,6 +3303,8 @@ msgid ""
 "Sprinkling this water on melee weapons grants them the 'arcane' damage type "
 "until the end of the current scenario. Should $unit.name use it?"
 msgstr ""
+"Apšlaksčius kontaktinius ginklus šiuo vandeniu, jie iki scenarijaus pabaigos "
+"darys „paslaptingą“ žalą. Ar norite, kad $unit.name paimtų vandenį?"
 
 #: data/core/macros/items.cfg:288
 msgid "I am not suited to the use of this item! Let another take it."
@@ -3325,6 +3321,8 @@ msgid ""
 "This water will make melee weapons have the 'arcane' damage type until the "
 "end of the current scenario."
 msgstr ""
+"Šiuo vandeniu apšlakstyti kontaktiniai ginklai darys „paslaptingą“ žalą iki "
+"scenarijaus pabaigos. "
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:322
@@ -4359,7 +4357,7 @@ msgstr "sveika"
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:140
 msgid "Always rest heals"
-msgstr ""
+msgstr "Visuomet pagyja kaip besiilsint"
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:157 data/core/macros/traits.cfg:170
@@ -5345,7 +5343,7 @@ msgstr "DejaVuSans.ttf,Andagii.ttf,wqy-zenhei.ttc"
 #. [fonts]
 #: data/hardwired/fonts.cfg:8
 msgid "DejaVu Sans,Andagii,WenQuanYi Zen Hei"
-msgstr "DejaVu Sans,Andagii,WenQuanYi Zen Hei"
+msgstr "DejaVu Sans,Andagii.ttf,WenQuanYi Zen Hei"
 
 #. [tip]
 #: data/hardwired/tips.cfg:3
@@ -6199,7 +6197,7 @@ msgstr ""
 
 #: src/addon_management.cpp:340 src/unit_types.cpp:951
 msgid "No description available."
-msgstr "Nėra kokio aprašymo."
+msgstr "Nėra jokio aprašymo."
 
 #: src/addon_management.cpp:412
 msgid "B"
@@ -6464,7 +6462,7 @@ msgstr "Filtras: "
 
 #: src/addon_management.cpp:1112
 msgid "Description"
-msgstr ""
+msgstr "Aprašymas"
 
 #: src/addon_management.cpp:1149
 msgid "Network communication error."

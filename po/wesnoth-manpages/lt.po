@@ -902,15 +902,13 @@ msgstr "[I<elementas>]"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:103
-#, fuzzy
 msgid "I<key>=\"I<value>\""
-msgstr "raktas=\"I<vertė>\""
+msgstr "I<raktas>=\"I<vertė>\""
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:105
-#, fuzzy
 msgid "I<key>=\"I<value>,I<value>,...\""
-msgstr "raktas=„I<vertė>,I<vertė>,...“"
+msgstr "I<raktas>=„I<vertė>,I<vertė>,...“"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:107
@@ -1074,7 +1072,7 @@ msgstr "B<passwd>"
 msgid ""
 "The password used to gain admin privileges (via B</query admin >I<password>)."
 msgstr ""
-"Slaptažodis naudojamas gauti administratoriaus teises. Paparstai jis "
+"Slaptažodis naudojamas gauti administratoriaus teises. Paprastai jis "
 "prasideda „admin “."
 
 #: ../../doc/man/wesnothd.6:150
@@ -1144,15 +1142,14 @@ msgstr "B<versions_accepted>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:166
-#, fuzzy
 msgid ""
 "A comma separated list of version strings to be accepted by the server. B<*> "
 "and B<?> from wildcard patterns are supported.  (defaults to the "
 "corresponding wesnoth version)"
 msgstr ""
 "Kableliais atskirtų versijų, kurias pripažįsta serveris, sąrašas. Leidžia "
-"naudoti „*“ ir „?“ kaip pakaitos šablonus.  (numatytoji reikšmė: tokia pati "
-"versija, kaip ir serverio)"
+"naudoti B<*> ir B<?> kaip pakaitos šablonus.  (numatytoji reikšmė: tokia "
+"pati versija, kaip ir serverio)"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:168
@@ -1354,7 +1351,6 @@ msgstr "B<db_extra_table>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:241
-#, fuzzy
 msgid ""
 "(for user_handler=forum) The name of the table in which wesnothd will save "
 "its own data about users. You will have to create this table manually, e.g.: "
@@ -1364,9 +1360,9 @@ msgid ""
 msgstr ""
 "(skirtas user_handler=forum) Lentelės pavadinimas, kurioje wesnothd saugos "
 "savo duomenis apie vartotojus. Lentelę turėsite sukurti patys. Pavyzdžiui, "
-"šitaip: CREATE TABLE E<lt>table-nameE<gt>(username VARCHAR(255) PRIMARY KEY, "
-"user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) "
-"NOT NULL DEFAULT 0);"
+"šitaip: B<CREATE TABLE E<lt>table-nameE<gt>(username VARCHAR(255) PRIMARY "
+"KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator "
+"TINYINT(4) NOT NULL DEFAULT 0);>"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:241

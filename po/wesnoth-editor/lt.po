@@ -49,7 +49,7 @@ msgstr "vanduo"
 #. [editor_group]: id=flat
 #: data/core/editor/terrain-groups.cfg:23
 msgid "flat"
-msgstr "plokščios"
+msgstr "plokštumos"
 
 #. [editor_group]: id=desert
 #: data/core/editor/terrain-groups.cfg:30
@@ -109,6 +109,8 @@ msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
 msgstr ""
+"Kairys pelės klavišas pažymi, dešinys atžymi. Laikykite nuspaustą Shift, kad "
+"pažymėti to paties landšafto bloką."
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
 #. [menu]: id=start_position_button_editor
@@ -259,6 +261,8 @@ msgid ""
 "Loaded referenced map file:\n"
 "$new"
 msgstr ""
+"Užkrautas priklausomas žemėlapis:\n"
+"$new"
 
 #: src/editor/editor_controller.cpp:1091
 msgid "Undo"
@@ -278,15 +282,15 @@ msgstr "Negalima pakartoti"
 
 #: src/editor/editor_controller.cpp:1104
 msgid "Auto-update Terrain Transitions: Yes"
-msgstr ""
+msgstr "Automatiškai atnaujinti perėjimus tarp langelių: Taip"
 
 #: src/editor/editor_controller.cpp:1107
 msgid "Auto-update Terrain Transitions: Partial"
-msgstr ""
+msgstr "Automatiškai atnaujinti perėjimus tarp langelių: Dalinai"
 
 #: src/editor/editor_controller.cpp:1111
 msgid "Auto-update Terrain Transitions: No"
-msgstr ""
+msgstr "Automatiškai atnaujinti perėjimus tarp langelių: Ne"
 
 #: src/editor/editor_map.cpp:149 src/editor/mouse_action.cpp:439
 msgid "Player"
@@ -298,11 +302,11 @@ msgstr "Pritaikomo žemėlapio dydis skiriasi nuo dabartinio žemėlapio dydžio
 
 #: src/editor/editor_palettes.cpp:506
 msgid "(non-core)"
-msgstr ""
+msgstr "(ne visur)"
 
 #: src/editor/editor_palettes.cpp:507
 msgid "Will not work in game without extra care."
-msgstr ""
+msgstr "Be papildomų pastangų neveiks."
 
 #: src/editor/editor_palettes.cpp:532
 msgid "FG"
