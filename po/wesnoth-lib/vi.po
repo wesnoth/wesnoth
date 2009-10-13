@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-10-07 15:42+0200\n"
+"POT-Creation-Date: 2009-10-13 22:59+0200\n"
 "PO-Revision-Date: 2009-09-26 15:45+0700\n"
 "Last-Translator: Phạm Thành Nam <phamthanhnam.ptn@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
@@ -2034,15 +2034,15 @@ msgstr "Văn bản có kích thước phông bằng 0."
 msgid "Text doesn't start on canvas."
 msgstr "Văn bản không bắt đầu trên họa tiết nền."
 
-#: src/gui/auxiliary/window_builder.cpp:140
+#: src/gui/auxiliary/window_builder.cpp:141
 msgid "Linked '$id' group has multiple definitions."
 msgstr "Nhóm '$id' đã liên kết có nhiều định nghĩa."
 
-#: src/gui/auxiliary/window_builder.cpp:198 src/gui/widgets/settings.cpp:445
+#: src/gui/auxiliary/window_builder.cpp:199 src/gui/widgets/settings.cpp:445
 msgid "No resolution defined."
 msgstr "Không xác định được độ phân giải."
 
-#: src/gui/auxiliary/window_builder.cpp:305
+#: src/gui/auxiliary/window_builder.cpp:306
 #: src/gui/auxiliary/window_builder/panel.cpp:35
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:38
 #: src/gui/widgets/settings.cpp:709 src/gui/widgets/settings.cpp:808
@@ -2051,15 +2051,15 @@ msgstr "Không xác định được độ phân giải."
 msgid "No grid defined."
 msgstr "Không xác định được lưới."
 
-#: src/gui/auxiliary/window_builder.cpp:336
+#: src/gui/auxiliary/window_builder.cpp:337
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgstr "Nhóm '$id' đã liên kết cần khóa 'fixed_width' hoặc 'fixed_height'."
 
-#: src/gui/auxiliary/window_builder.cpp:435
+#: src/gui/auxiliary/window_builder.cpp:436
 msgid "A row must have a column."
 msgstr "Hàng phải có cột."
 
-#: src/gui/auxiliary/window_builder.cpp:436
+#: src/gui/auxiliary/window_builder.cpp:437
 msgid "Number of columns differ."
 msgstr "Số cột sai khác."
 
@@ -2129,7 +2129,7 @@ msgstr "Cho phép người quan sát"
 msgid "Observers not allowed"
 msgstr "Không cho phép người quan sát"
 
-#: src/gui/dialogs/lobby_main.cpp:692
+#: src/gui/dialogs/lobby_main.cpp:689
 msgid ""
 "Whisper session with $name started. If you don't want to receive messages "
 "from this user, type /ignore $name\n"
@@ -2137,19 +2137,19 @@ msgstr ""
 "Phiên thì thầm với $name đã khởi chạy. Nếu bạn không muốn nhận tin nhắn từ "
 "người dùng này, đánh /ignore $name\n"
 
-#: src/gui/dialogs/lobby_main.cpp:698
+#: src/gui/dialogs/lobby_main.cpp:695
 msgid "Room $name joined"
 msgstr "Đã tham gia phòng $name"
 
-#: src/gui/dialogs/lobby_main.cpp:1123
+#: src/gui/dialogs/lobby_main.cpp:1120
 msgid "Password Required"
 msgstr "Cần mật khẩu"
 
-#: src/gui/dialogs/lobby_main.cpp:1124
+#: src/gui/dialogs/lobby_main.cpp:1121
 msgid "Joining this game requires a password."
 msgstr "Tham gia trò chơi này cần mật khẩu."
 
-#: src/gui/dialogs/lobby_main.cpp:1125
+#: src/gui/dialogs/lobby_main.cpp:1122
 msgid "Password: "
 msgstr "Mật khẩu: "
 
@@ -2161,7 +2161,7 @@ msgstr "Lỗi"
 msgid "Load Game..."
 msgstr "Tải trò chơi..."
 
-#: src/gui/dialogs/title_screen.cpp:88
+#: src/gui/dialogs/title_screen.cpp:90
 msgid "Version"
 msgstr "Phiên bản"
 
@@ -2186,11 +2186,11 @@ msgstr "Định nghĩa widget '$definition' không chứa định nghĩa cho '$i
 msgid "No state or draw section defined."
 msgstr "Không xác định được trạng thái hoặc vùng vẽ."
 
-#: src/gui/widgets/window.cpp:749
+#: src/gui/widgets/window.cpp:781
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "Nhấn thải hồi cần một nút 'click_dismiss' hoặc 'ok'."
 
-#: src/gui/widgets/window.cpp:774 src/gui/widgets/window.cpp:807
+#: src/gui/widgets/window.cpp:806 src/gui/widgets/window.cpp:839
 #: src/tests/gui/test_gui2.cpp:232
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Thất bại khi hiện hộp thoại, nó không vừa với màn hình."
