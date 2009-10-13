@@ -362,6 +362,8 @@ inline bool find(E event, F functor)
 		::execute((begin*)0, (end*)0, event, functor);
 }
 
+namespace implementation {
+
 /**
  * Build the event chain.
  *
@@ -382,14 +384,15 @@ inline bool find(E event, F functor)
  *
  * @returns                       The list of widgets with a handler.
  */
-inline std::vector<twidget*> build_event_chain(const tevent event
+inline std::vector<std::pair<twidget*, tevent> > build_event_chain(
+		  const tevent event
 		, twidget* dispatcher
 		, twidget* widget)
 {
 	assert(dispatcher);
 	assert(widget);
 
-	std::vector<twidget*> result;
+	std::vector<std::pair<twidget*, tevent> > result;
 
 	while(widget != dispatcher) {
 		widget = widget->parent();
@@ -398,63 +401,43 @@ inline std::vector<twidget*> build_event_chain(const tevent event
 		if(widget->has_event(event, tdispatcher::tevent_type(
 				tdispatcher::pre | tdispatcher::post))) {
 
-			result.push_back(widget);
+			result.push_back(std::make_pair(widget, event));
 		}
 	}
 
 	return result;
 }
+
 /**
- * Fires an event.
+ * Helper function for fire_event.
  *
- * A helper to allow the common event firing code to be shared between the
- * different signal function types.
- *
- * @pre                           dispatcher != NULL
- * @pre                           widget != NULL
- *
- * @tparam T                      The signal type of the event to handle.
- * @tparam F                      The type of the functor.
- *
- *
- * @param event                   The event to fire.
- * @param dispatcher              The dispatcher that handles the event.
- * @param widget                  The widget that should receive the event.
- * @param functor                 The functor to execute the actual event.
- *                                Since some functions need different
- *                                parameters this functor stores them before
- *                                firing the event.
- *
- * @returns                       Whether or not the event was handled.
+ * This is called with the same parameters as fire_event except for the
+ * event_chain, which contains the widgets with the events to call for them.
  */
 template<class T, class F>
 inline bool fire_event(const tevent event
+		, std::vector<std::pair<twidget*, tevent> >& event_chain
 		, twidget* dispatcher
 		, twidget* widget
 		, F functor)
 {
-	assert(dispatcher);
-	assert(widget);
-
-	std::vector<twidget*> event_chain =
-			build_event_chain(event, dispatcher, widget);
-
 	bool handled = false;
 	bool halt = false;
 
 	/***** ***** ***** Pre ***** ***** *****/
-	for(std::vector<twidget*>::iterator itor_widget = event_chain.begin();
+	for(std::vector<std::pair<twidget*, tevent> >
+				::iterator itor_widget = event_chain.begin();
 			itor_widget != event_chain.end();
 			++itor_widget) {
 
 		tdispatcher::tsignal<T>& signal = tdispatcher_implementation
-				::event_signal<T>(**itor_widget, event);
+				::event_signal<T>(*itor_widget->first, itor_widget->second);
 
 		for(typename std::vector<T>::iterator itor = signal.pre_child.begin();
 				itor != signal.pre_child.end();
 				++itor) {
 
-			functor(*itor, *dispatcher, event, handled, halt);
+			functor(*itor, *dispatcher, itor_widget->second, handled, halt);
 			if(halt) {
 				assert(handled);
 				break;
@@ -490,19 +473,19 @@ inline bool fire_event(const tevent event
 	}
 
 	/***** ***** ***** Post ***** ***** *****/
-	for(std::vector<twidget*>::reverse_iterator ritor_widget
-				= event_chain.rbegin();
+	for(std::vector<std::pair<twidget*, tevent> >
+				::reverse_iterator ritor_widget = event_chain.rbegin();
 			ritor_widget != event_chain.rend();
 			++ritor_widget) {
 
 		tdispatcher::tsignal<T>& signal = tdispatcher_implementation
-				::event_signal<T>(**ritor_widget, event);
+				::event_signal<T>(*ritor_widget->first, ritor_widget->second);
 
 		for(typename std::vector<T>::iterator itor = signal.post_child.begin();
 				itor != signal.post_child.end();
 				++itor) {
 
-			functor(*itor, *dispatcher, event, handled, halt);
+			functor(*itor, *dispatcher, ritor_widget->second, handled, halt);
 			if(halt) {
 				assert(handled);
 				break;
@@ -517,6 +500,50 @@ inline bool fire_event(const tevent event
 	/**** ***** ***** Unhandled ***** ***** *****/
 	assert(handled == false);
 	return false;
+}
+
+} // namespace implementation
+
+/**
+ * Fires an event.
+ *
+ * A helper to allow the common event firing code to be shared between the
+ * different signal function types.
+ *
+ * @pre                           dispatcher != NULL
+ * @pre                           widget != NULL
+ *
+ * @tparam T                      The signal type of the event to handle.
+ * @tparam F                      The type of the functor.
+ *
+ *
+ * @param event                   The event to fire.
+ * @param dispatcher              The dispatcher that handles the event.
+ * @param widget                  The widget that should receive the event.
+ * @param functor                 The functor to execute the actual event.
+ *                                Since some functions need different
+ *                                parameters this functor stores them before
+ *                                firing the event.
+ *
+ * @returns                       Whether or not the event was handled.
+ */
+template<class T, class F>
+inline bool fire_event(const tevent event
+		, twidget* dispatcher
+		, twidget* widget
+		, F functor)
+{
+	assert(dispatcher);
+	assert(widget);
+
+	std::vector<std::pair<twidget*, tevent> > event_chain =
+			implementation::build_event_chain(event, dispatcher, widget);
+
+	return implementation::fire_event<T>(event
+			, event_chain
+			, dispatcher
+			, widget
+			, functor);
 }
 
 } // namespace event
