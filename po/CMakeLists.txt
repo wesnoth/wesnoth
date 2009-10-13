@@ -228,7 +228,7 @@ if(ENABLE_POT_UPDATE_TARGET)
 
 	##### po update per language #####
 	foreach(LANG ${LANGUAGES})
-		foreach(DOMAIN ${NORMAL_DOMAINS})
+		foreach(DOMAIN ${DOMAINS})
 			add_custom_command(
 				# The pot-update depends on a dummy file which we promise to
 				# make. We don't make this dummy file but the pot-update
@@ -258,7 +258,7 @@ if(ENABLE_POT_UPDATE_TARGET)
 				${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${LANG}.po.lang.dummy
 			)
 
-		endforeach(DOMAIN ${NORMAL_DOMAINS})
+		endforeach(DOMAIN ${DOMAINS})
 		add_custom_target(po-update2-${LANG}
 			COMMENT "po-update ${LANG}: Done."
 			DEPENDS ${po-update-LANG-SRC}
