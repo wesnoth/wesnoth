@@ -126,6 +126,15 @@ std::string describe_turns(int turn, const simple_wml::string_span& num_turns)
 
 }//anon namespace
 
+std::string game::username(const player_map::const_iterator pl) const
+{
+	if (pl != player_info_->end()) {
+		return pl->second.name();
+	}
+
+	return "(unknown)";
+}
+
 void game::start_game(const player_map::const_iterator starter) {
 	// If the game was already started we're actually advancing.
 	const bool advance = started_;
@@ -330,7 +339,7 @@ void game::transfer_side_control(const network::connection sock, const simple_wm
 	const network::connection old_player = sides_[side_num - 1];
 	const player_map::iterator oldplayer = player_info_->find(old_player);
 	if (oldplayer == player_info_->end()) missing_user(old_player, __func__);
-	const std::string old_player_name(oldplayer != player_info_->end() ? oldplayer->second.name() : "(unknown)");
+	const std::string old_player_name = username(oldplayer);
 
 	// A player (un)droids his side.
 	if (newplayer_name.empty()) {
@@ -454,9 +463,7 @@ void game::change_controller(const size_t side_num,
 }
 
 void game::notify_new_host(){
-	const std::string owner_name =
-			(player_info_->find(owner_) != player_info_->end()
-			? player_info_->find(owner_)->second.name() : "");
+	const std::string owner_name = username(player_info_->find(owner_));
 	simple_wml::document cfg;
 	simple_wml::node& cfg_host_transfer = cfg.root().add_child("host_transfer");
 
@@ -760,9 +767,7 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 			msg << "Removing illegal command '" << (**command).first_child().to_string()
 				<< "' from: " << user->second.name()
 				<< ". Current player is: "
-				<< (player_info_->find(current_player()) != player_info_->end()
-					? player_info_->find(current_player())->second.name()
-					: "(unfound)")
+				<< username(player_info_->find(current_player()))
 				<< " (" << end_turn_ + 1 << "/" << nsides_ << ").";
 			LOG_GAME << msg.str() << " (socket: " << current_player()
 				<< ") (game id: " << id_ << ")\n";
@@ -1021,8 +1026,7 @@ bool game::remove_player(const network::connection player, const bool disconnect
 		if (side_controllers_[side_num] == "ai") ai_transfer = true;
 
 		player_map::iterator o = player_info_->find(owner_);
-		const std::string owner_name = (o != player_info_->end() ? o->second.name() : "(unknown)");
-		change_controller(side_num, owner_, owner_name);
+		change_controller(side_num, owner_, username(o));
 		// Check whether the host is actually a player and make him one if not.
 		if (!is_player(owner_)) {
 			DBG_GAME << "making the owner a player...\n";
