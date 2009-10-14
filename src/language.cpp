@@ -101,7 +101,8 @@ bool language_def::available() const
 	return true;
 #endif
 
-	if (game_config::use_dummylocales)
+	//if (game_config::use_dummylocales)
+	if (true)
 	{
 		// Dummy has every language available.
 		return true;
@@ -264,8 +265,18 @@ static void wesnoth_setlocale(int category, std::string const &slocale,
 
 	if (res)
 		LOG_G << "Set locale to '" << locale << "' result: '" << res <<"'.\n";
-	else
+	else {
 		WRN_G << "setlocale() failed for '" << slocale << "'.\n";
+#ifndef _WIN32
+#ifndef __AMIGAOS4__
+		if(category == LC_MESSAGES) {
+			WRN_G << "Setting LANGUAGE to '" << slocale << "'.\n";
+			setenv("LANGUAGE", slocale.c_str(), 1);
+			std::setlocale(LC_MESSAGES, "");
+		}
+#endif
+#endif
+	}
 
 	DBG_G << "Numeric locale: " << std::setlocale(LC_NUMERIC, NULL) << '\n';
 	DBG_G << "Full locale: " << std::setlocale(LC_ALL, NULL) << '\n';
@@ -282,9 +293,9 @@ bool set_language(const language_def& locale)
 	config cfg;
 
 	current_language = locale;
-	wesnoth_setlocale(LC_MESSAGES, locale.localename, &locale.alternates);
 	wesnoth_setlocale(LC_COLLATE, locale.localename, &locale.alternates);
 	wesnoth_setlocale(LC_TIME, locale.localename, &locale.alternates);
+	wesnoth_setlocale(LC_MESSAGES, locale.localename, &locale.alternates);
 
 	// fill string_table (should be moved somwhere else some day)
 	try {
