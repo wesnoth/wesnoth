@@ -35,6 +35,12 @@ static lg::log_domain log_config("config");
 namespace wesnothd {
 int game::id_num = 1;
 
+void game::missing_user(network::connection socket, const std::string& func) const
+{
+	WRN_GAME << func << "(): Could not find user (socket:\t" << socket
+		<< ") in player_info_ in game:\t\"" << name_ << "\" (" << id_ << ")\n";
+}
+
 game::game(player_map& players, const network::connection host,
 		const std::string& name, bool save_replays,
 		const std::string& replay_save_path) :
@@ -64,8 +70,7 @@ game::game(player_map& players, const network::connection host,
 	players_.push_back(owner_);
 	const player_map::iterator pl = player_info_->find(owner_);
 	if (pl == player_info_->end()) {
-		ERR_GAME << "ERROR: Could not find host in player_info_. (socket: "
-			<< owner_ << ")\n";
+		missing_user(owner_, __func__);
 		return;
 	}
 	// Mark the host as unavailable in the lobby.
@@ -260,9 +265,7 @@ void game::update_side_data() {
 	for (user_vector::const_iterator user = users.begin(); user != users.end(); ++user) {
 		player_map::iterator info = player_info_->find(*user);
 		if (info == player_info_->end()) {
-			ERR_GAME << "Game: " << id_
-				<< " ERROR: unable to find user info for connection: "
-				<< *user << "\n";
+			missing_user(*user, __func__);
 			continue;
 		}
 
@@ -326,10 +329,7 @@ void game::transfer_side_control(const network::connection sock, const simple_wm
 	const simple_wml::string_span& newplayer_name = cfg["player"];
 	const network::connection old_player = sides_[side_num - 1];
 	const player_map::iterator oldplayer = player_info_->find(old_player);
-	if (oldplayer == player_info_->end()) {
-		WRN_GAME << "Could not find old player in player_info_. (socket: "
-			<< old_player << ")\n";
-	}
+	if (oldplayer == player_info_->end()) missing_user(old_player, __func__);
 	const std::string old_player_name(oldplayer != player_info_->end() ? oldplayer->second.name() : "(unknown)");
 
 	// A player (un)droids his side.
@@ -901,8 +901,7 @@ bool game::add_player(const network::connection player, bool observer) {
 	}
 	const player_map::iterator user = player_info_->find(player);
 	if (user == player_info_->end()) {
-		ERR_GAME << "ERROR: Could not find user in player_info_. (socket: "
-			<< owner_ << ")\n";
+		missing_user(player, __func__);
 		return false;
 	}
 	DBG_GAME << debug_player_info();
@@ -978,8 +977,7 @@ bool game::remove_player(const network::connection player, const bool disconnect
 	const bool game_ended = players_.empty() || (host && !started_);
 	const player_map::iterator user = player_info_->find(player);
 	if (user == player_info_->end()) {
-		ERR_GAME << "ERROR: Could not find user in player_info_. (socket: "
-			<< player << ")\n";
+		missing_user(player, __func__);
 		return game_ended;
 	}
 	LOG_GAME << network::ip_address(user->first) << "\t" << user->second.name()
@@ -1139,9 +1137,7 @@ void game::send_observerjoins(const network::connection sock) const {
 		if (*ob == sock) continue;
 		const player_map::const_iterator obs = player_info_->find(*ob);
 		if (obs == player_info_->end()) {
-			ERR_GAME << "Game: " << id_
-				<< " ERROR: Can not find observer in player_info_. (socket: "
-				<< *ob << ")\n";
+			missing_user(*ob, __func__);
 			continue;
 		}
 

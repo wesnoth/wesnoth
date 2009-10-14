@@ -260,6 +260,9 @@ private:
 	 */
 	void send_user_list(const network::connection exclude=0) const;
 
+	/** Function to log when we don't find a connection in player_info_. */
+	void missing_user(network::connection socket, const std::string& func) const;
+
 	/** Helps debugging player and observer lists. */
 	std::string debug_player_info() const;
 
