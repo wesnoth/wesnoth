@@ -60,6 +60,7 @@ BUILD_DIR="$HOME/$BUILD"
 set -x
 mkdir -p "$BUILD_DIR"
 
+BUILD_FLAGS=
 if [ $SCONS = yes ]; then
 	if [ $TYPE = wesnothd ]; then
 		BUILD_FLAGS="fifodir=$BUILD_DIR/var/run raw_sockets=1 forum_user_handler=1"
@@ -100,5 +101,5 @@ fi
 ln -s ../../"$BUILD" build
 
 cd "$HOME"/bin || exit 1
-ln -sf "../$BUILD/$TYPE-$VERSION" "$TYPE-$VERSION"
+ln -sf "../$BUILD/bin/$TYPE-$VERSION" "$TYPE-$VERSION"
 set +x
