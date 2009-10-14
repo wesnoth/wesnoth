@@ -359,25 +359,6 @@ tpoint tcontrol::get_best_text_size(const tpoint& minimum_size, const tpoint& ma
 
 namespace {
 
-/** Converts a SDL_Color to a pango colour prefix. */
-std::string colour_prefix(const SDL_Color& colour)
-{
-	std::stringstream result;
-
-	// Cast to unsigned is needed to avoid being interpreted as a char.
-	result << "<span foreground=\"#"
-			<< std::hex
-			<< std::setfill('0') << std::setw(2)
-			<< static_cast<unsigned>(colour.r)
-			<< std::setfill('0') << std::setw(2)
-			<< static_cast<unsigned>(colour.g)
-			<< std::setfill('0') << std::setw(2)
-			<< static_cast<unsigned>(colour.b)
-			<< "\">";
-
-	return result.str();
-}
-
 /**
  * Escapes a string to be used in a pango formatted string.
  *
