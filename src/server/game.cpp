@@ -697,10 +697,6 @@ void game::unban_user(const simple_wml::node& unban,
 		send_server_message(("User '" + username.to_string() + "' not found.").c_str(), unbanner->first);
 		return;
 	}
-	if (user->first == unbanner->first) {
-		send_server_message("Don't ban yourself, silly.", unbanner->first);
-		return;
-	}
 	if (!player_is_banned(user->first)) {
 		send_server_message(("'" + username.to_string() + "' is not banned.").c_str(), unbanner->first);
 		return;
