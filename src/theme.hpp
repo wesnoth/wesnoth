@@ -113,6 +113,7 @@ public:
 		using object::location;
 
 		const std::string& text() const { return text_; }
+		void set_text(const std::string& text) { text_ = text; }
 		const std::string& icon() const { return icon_; }
 
 		bool empty() const { return text_.empty() && icon_.empty(); }
@@ -208,6 +209,7 @@ public:
 	//If no menu entry is found, an empty menu object is returned.
 	menu* refresh_title(const std::string& id, const std::string& new_title);
 	menu* refresh_title2(const std::string& id, const std::string& title_tag);
+	void modify_label(const std::string& id, const std::string& text);
 
 	const status_item* get_status_item(const std::string& item) const;
 

@@ -131,6 +131,7 @@ void replay_controller::rebuild_replay_theme()
 	{
 		if (const config &replay_theme_cfg = res.child("replay"))
 			gui_->get_theme().modify(replay_theme_cfg);
+		gui_->get_theme().modify_label("time-icon", _ ("system time"));
 		//Make sure we get notified if the theme is redrawn completely. That way we have
 		//a chance to restore the replay controls of the theme as well.
 		gui_->invalidate_theme();
