@@ -226,6 +226,7 @@ private:
 	void notify_new_host();
 
 	/** Shortcut to a convenience function for finding a user by name. */
+	player_map::iterator find_user(const simple_wml::string_span& name);
 	player_map::const_iterator find_user(const simple_wml::string_span& name) const;
 
 	bool observers_can_label() const { return false; }

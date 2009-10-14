@@ -362,12 +362,8 @@ void game::transfer_side_control(const network::connection sock, const simple_wm
 		return;
 	}
 	//find the player that is passed control
-	player_map::iterator newplayer;
-	for (newplayer = player_info_->begin(); newplayer != player_info_->end(); ++newplayer) {
-		if (newplayer_name == newplayer->second.name().c_str()) {
-			break;
-		}
-	}
+	player_map::iterator newplayer = find_user(newplayer_name);
+
 	// Is he in this game?
 	if (newplayer == player_info_->end() || !is_member(newplayer->first)) {
 		send_server_message((newplayer_name.to_string() + " is not in this game").c_str(), sock);
@@ -1328,6 +1324,17 @@ std::string game::debug_player_info() const {
 	}
 	result << "player_info_: end\n";*/
 	return result.str();
+}
+
+player_map::iterator game::find_user(const simple_wml::string_span& name)
+{
+	player_map::iterator pl;
+	for (pl = player_info_->begin(); pl != player_info_->end(); ++pl) {
+		if (name == pl->second.name().c_str()) {
+			break;
+		}
+	}
+	return pl;
 }
 
 player_map::const_iterator game::find_user(const simple_wml::string_span& name) const {
