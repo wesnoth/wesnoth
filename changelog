@@ -4,6 +4,7 @@ Version 1.7.6+svn:
    * Fix a serious enough bug in default ai targeting. The bug caused the AI,
      in certain situations, to make weird shuffle-doing-nothing moves and not
      seek enemies or their villages
+   * Optimize AI targeting phase.
  * Language and i18n:
    * New translations: Shavian
    * Updated translations: Dutch, Finnish, Estonian, German, Hungarian,
@@ -14,8 +15,11 @@ Version 1.7.6+svn:
    * Enabled the new event handler by default now
    * Allow markup in a campaign description (bug #14435)
    * Escape no longer closes the new title screen
+   * In recall dialog, use different color and brightness for XP and level
+   * In unit list, display invisibility status and change order of columns
  * WML engine:
    * Added 'side Y turn' and 'side Y turn X' events
+   * Make status "hidden=yes" default, no need to do it manually in WML anymore
  * Miscellaneous and bugfixes:
    * Add-ons download list now takes filtering into account for
      displaying descriptions
@@ -26,6 +30,10 @@ Version 1.7.6+svn:
    * gui2 dialogs are now shown in an exception safe way
    * Improve cmake po-update so it doesn't add too many dummy updates
    * po-update2-xx now properly updates all domains
+   * Fixed sometimes incorrect update of unit/savegame view when using filter
+   * Debug-created units now also have traits and name
+   * Fixed broken ambush/invisibility at first turn or at unit creation
+   * Fixed ambushing unit not directly visible when discovered
 
 Version 1.7.6:
  * AI:
