@@ -357,41 +357,5 @@ tpoint tcontrol::get_best_text_size(const tpoint& minimum_size, const tpoint& ma
 	return size;
 }
 
-namespace {
-
-/**
- * Escapes a string to be used in a pango formatted string.
- *
- * This function also changes every "\x" to "x" thus also "\\" to "\". This
- * is used to mimic the old dialog behaviour.
- */
-std::string escape_string(std::string str)
-{
-	struct tconverter
-	{
-		tconverter(const std::string& string)
-			: str(g_markup_escape_text(string.c_str(), -1))
-		{
-		}
-
-		~tconverter()
-		{
-			g_free(str);
-		}
-
-		gchar* str;
-	};
-
-	size_t offset = str.find('\\', 0);
-	while (offset != std::string::npos) {
-		str.erase(offset, 1);
-		++offset;
-		offset = str.find('\\', offset);
-	}
-
-	tconverter converter(str);
-	return std::string(converter.str);
-}
-
-} // namespace
 } // namespace gui2
+
