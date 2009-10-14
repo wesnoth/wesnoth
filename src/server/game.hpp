@@ -263,6 +263,9 @@ private:
 	/** Returns the name of the user or "(unfound)". */
 	std::string username(const player_map::const_iterator pl) const;
 
+	/** Returns a comma seperated list of user names. */
+	std::string list_users(user_vector users, const std::string& func) const;
+
 	/** Function to log when we don't find a connection in player_info_. */
 	void missing_user(network::connection socket, const std::string& func) const;
 

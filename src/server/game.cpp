@@ -135,6 +135,21 @@ std::string game::username(const player_map::const_iterator pl) const
 	return "(unknown)";
 }
 
+std::string game::list_users(user_vector users, const std::string& func) const
+{
+	std::string list;
+
+	for (user_vector::const_iterator user = users.begin(); user != users.end(); ++user) {
+		const player_map::const_iterator pl = player_info_->find(*user);
+		if (pl != player_info_->end()) {
+			if (!list.empty()) list += ", ";
+			list += pl->second.name();
+		} else missing_user(*user, func);
+	}
+
+	return list;
+}
+
 void game::start_game(const player_map::const_iterator starter) {
 	// If the game was already started we're actually advancing.
 	const bool advance = started_;
@@ -145,7 +160,7 @@ void game::start_game(const player_map::const_iterator starter) {
 	LOG_GAME << network::ip_address(starter->first) << "\t"
 		<< starter->second.name() << "\t" << (advance ? "advanced" : "started")
 		<< (save ? " reloaded" : "") << " game:\t\"" << name_ << "\" (" << id_
-		<< "). Settings: map: " << s["id"]
+		<< ") with: " << list_users(players_, __func__) << ". Settings: map: " << s["id"]
 		<< "\tera: "       << (s.child("era") ? (*s.child("era"))["id"] : "")
 		<< "\tXP: "        << s["experience_modifier"]
 		<< "\tGPV: "       << s["mp_village_gold"]
@@ -524,16 +539,7 @@ void game::send_muted_observers(const player_map::const_iterator user) const
 		send_server_message("All observers are muted.", user->first);
 		return;
 	}
-	std::string muted_nicks = "";
-	for (user_vector::const_iterator muted_obs = muted_observers_.begin();
-			muted_obs != muted_observers_.end(); ++muted_obs)
-	{
-		if (muted_nicks != "") {
-			muted_nicks += ", ";
-		}
-		muted_nicks += (player_info_->find(*muted_obs) != player_info_->end()
-				? player_info_->find(*muted_obs)->second.name() : "");
-	}
+	std::string muted_nicks = list_users(muted_observers_, __func__);
 
 	send_server_message(("Muted observers: " + muted_nicks).c_str(), user->first);
 }
