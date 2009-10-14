@@ -440,7 +440,7 @@ void server::load_config() {
 	save_replays_ = utils::string_bool(cfg_["save_replays"], false);
 	replay_save_path_ = cfg_["replay_save_path"];
 
-	tor_ip_list_ = utils::split(read_file(cfg_["tor_ip_list_path"]), '\n');
+	tor_ip_list_ = utils::split(cfg_["tor_ip_list_path"].empty() ? "" : read_file(cfg_["tor_ip_list_path"]), '\n');
 
 	admin_passwd_ = cfg_["passwd"];
 	motd_ = cfg_["motd"];
