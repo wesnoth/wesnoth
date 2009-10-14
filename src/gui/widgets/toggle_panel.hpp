@@ -15,6 +15,7 @@
 #ifndef GUI_WIDGETS_TOGGLE_PANEL_HPP_INCLUDED
 #define GUI_WIDGETS_TOGGLE_PANEL_HPP_INCLUDED
 
+#include "gui/auxiliary/event/distributor.hpp"
 #include "gui/widgets/panel.hpp"
 #include "gui/widgets/selectable.hpp"
 
@@ -171,7 +172,12 @@ private:
 
 	/** Mouse left double click callback */
 	boost::function<void (twidget*)> callback_mouse_left_double_click_;
-
+// define if want to use the new event distributor
+//#define DISTRIBUTOR
+#ifdef DISTRIBUTOR
+	/** The event distributor for us. */
+	event::tdistributor event_distributor_;
+#endif
 	/** Inherited from tpanel. */
 	void impl_draw_background(surface& frame_buffer)
 	{
