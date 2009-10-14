@@ -71,7 +71,6 @@ option(ENABLE_EDITOR "Enable compilation of the new map editor into the game exe
 option(ENABLE_TOOLS "Enable building and installation of tools for artists and WML maintainers")
 option(ENABLE_TESTS "Build unit tests")
 option(ENABLE_NLS "Enable building of translations" ON)
-option(ENABLE_DUMMY_LOCALES "Enable installation of Wesnoth own private locales" OFF)
 option(ENABLE_POOL_ALLOC "Enable custom pool malloc" OFF)
 option(ENABLE_LOW_MEM "Reduce memory usage by removing extra functionality" OFF)
 if (UNIX AND NOT APPLE AND NOT CYGWIN)
@@ -223,40 +222,6 @@ add_subdirectory(doc)
 
 if (GETTEXT_FOUND AND ENABLE_NLS)
   add_subdirectory(po)
-  find_program (LOCALEDEF localedef)
-  if (LOCALEDEF AND ENABLE_DUMMY_LOCALES)
-    #
-    #create dummy-locales
-    #
-  	add_definitions(-DUSE_DUMMYLOCALES)
-    
-    set(DUMMY_LOCALE_C_DIR ${CMAKE_SOURCE_DIR}/locales/C)
-  
-    add_custom_command(OUTPUT ${DUMMY_LOCALE_C_DIR}
-                       COMMAND mkdir -p ${DUMMY_LOCALE_C_DIR} 
-                       && echo | LOCALEDEF -c ${DUMMY_LOCALE_C_DIR} 2> /dev/null || true)
-
-    file(GLOB_RECURSE LANGS RELATIVE ${CMAKE_SOURCE_DIR}/data/languages data/languages/*.cfg)
-
-    set(DUMMY_LOCALES)
-    foreach(LANGFILE ${LANGS})
-      string(REGEX REPLACE "(.*)\\.cfg" "\\1" LANG ${LANGFILE})
-      if(NOT LANG STREQUAL "C")
-        set(DUMMY_LOCALE_DIR ${CMAKE_SOURCE_DIR}/locales/${LANG})
-        add_custom_command(OUTPUT ${DUMMY_LOCALE_DIR}
-                           COMMAND ln -s 
-                           ARGS ${DUMMY_LOCALE_C_DIR} ${DUMMY_LOCALE_DIR}
-                           DEPENDS ${DUMMY_LOCALE_C_DIR})
-
-        set(DUMMY_LOCALES ${DUMMY_LOCALES} ${DUMMY_LOCALE_DIR})
-      endif()
-    endforeach()
-    add_custom_target(dummy-locales ALL DEPENDS ${DUMMY_LOCALES})
-
-    # this is a workaround for a bug in 2.4-7
-    file(MAKE_DIRECTORY locales)
-    install(DIRECTORY locales DESTINATION ${DATADIR} USE_SOURCE_PERMISSIONS )
-  endif (LOCALEDEF AND ENABLE_DUMMY_LOCALES)
 endif (GETTEXT_FOUND AND ENABLE_NLS)
 add_subdirectory(src)
 
