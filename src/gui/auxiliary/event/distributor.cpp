@@ -224,7 +224,6 @@ template<
 		, tevent button_up
 		, tevent button_click
 		, tevent button_double_click
-		, bool(tevent_executor::*wants_double_click) () const
 > tmouse_button<
 		  sdl_button_down
 		, sdl_button_up
@@ -232,7 +231,6 @@ template<
 		, button_up
 		, button_click
 		, button_double_click
-		, wants_double_click
 >::tmouse_button(
 			  const std::string& name_
 			, twidget& owner
@@ -254,7 +252,6 @@ template<
 				, button_up
 				, button_click
 				, button_double_click
-				, wants_double_click
 				>::signal_handler_sdl_button_down, this, _2, _3, _5)
 			, queue_position);
 	owner_.connect_signal<sdl_button_up>(
@@ -265,7 +262,6 @@ template<
 				, button_up
 				, button_click
 				, button_double_click
-				, wants_double_click
 				>::signal_handler_sdl_button_up, this, _2, _3, _5)
 			, queue_position);
 }
@@ -277,7 +273,6 @@ template<
 		, tevent button_up
 		, tevent button_click
 		, tevent button_double_click
-		, bool(tevent_executor::*wants_double_click) () const
 > void tmouse_button<
 		  sdl_button_down
 		, sdl_button_up
@@ -285,7 +280,6 @@ template<
 		, button_up
 		, button_click
 		, button_double_click
-		, wants_double_click
 >::signal_handler_sdl_button_down(
 		  const event::tevent event
 		, bool& handled
@@ -344,7 +338,6 @@ template<
 		, tevent button_up
 		, tevent button_click
 		, tevent button_double_click
-		, bool(tevent_executor::*wants_double_click) () const
 > void tmouse_button<
 		  sdl_button_down
 		, sdl_button_up
@@ -352,7 +345,6 @@ template<
 		, button_up
 		, button_click
 		, button_double_click
-		, wants_double_click
 >::signal_handler_sdl_button_up(
 		  const event::tevent event
 		, bool& handled
@@ -413,7 +405,6 @@ template<
 		, tevent button_up
 		, tevent button_click
 		, tevent button_double_click
-		, bool(tevent_executor::*wants_double_click) () const
 > void tmouse_button<
 		  sdl_button_down
 		, sdl_button_up
@@ -421,33 +412,25 @@ template<
 		, button_up
 		, button_click
 		, button_double_click
-		, wants_double_click
 >::mouse_button_click(twidget* widget)
 {
-	if((widget->*wants_double_click)()) {
-		Uint32 stamp = SDL_GetTicks();
-		if(last_click_stamp_ + settings::double_click_time >= stamp
-				&& last_clicked_widget_ == widget) {
+	Uint32 stamp = SDL_GetTicks();
+	if(last_click_stamp_ + settings::double_click_time >= stamp
+			&& last_clicked_widget_ == widget) {
 
-			DBG_GUI_E << LOG_HEADER << "Firing: "
-					<< button_double_click << ".\n";
+		DBG_GUI_E << LOG_HEADER << "Firing: "
+				<< button_double_click << ".\n";
 
-			owner_.fire(button_double_click, *widget);
-			last_click_stamp_ = 0;
-			last_clicked_widget_ = NULL;
-
-		} else {
-
-			DBG_GUI_E << LOG_HEADER << "Firing: " << button_click << ".\n";
-			owner_.fire(button_click, *widget);
-			last_click_stamp_ = stamp;
-			last_clicked_widget_ = widget;
-		}
+		owner_.fire(button_double_click, *widget);
+		last_click_stamp_ = 0;
+		last_clicked_widget_ = NULL;
 
 	} else {
 
 		DBG_GUI_E << LOG_HEADER << "Firing: " << button_click << ".\n";
 		owner_.fire(button_click, *widget);
+		last_click_stamp_ = stamp;
+		last_clicked_widget_ = widget;
 	}
 }
 

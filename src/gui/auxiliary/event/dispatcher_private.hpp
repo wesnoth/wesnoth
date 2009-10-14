@@ -546,6 +546,58 @@ inline bool fire_event(const tevent event
 			, functor);
 }
 
+template<
+	  tevent click
+	, tevent double_click
+	, bool(tevent_executor::*wants_double_click) () const
+	, class T
+	, class F
+	>
+inline bool fire_event_double_click(
+		  twidget* dispatcher
+		, twidget* widget
+		, F functor)
+{
+	assert(dispatcher);
+	assert(widget);
+
+	std::vector<std::pair<twidget*, tevent> > event_chain;
+	twidget* w = widget;
+	while(w!= dispatcher) {
+		w = w->parent();
+		assert(w);
+
+		if((w->*wants_double_click)()) {
+
+			if(w->has_event(double_click, tdispatcher::tevent_type(
+					tdispatcher::pre | tdispatcher::post))) {
+
+				event_chain.push_back(std::make_pair(w, double_click));
+			}
+		} else {
+			if(w->has_event(click, tdispatcher::tevent_type(
+					tdispatcher::pre | tdispatcher::post))) {
+
+				event_chain.push_back(std::make_pair(w, click));
+			}
+		}
+	}
+
+	if((widget->*wants_double_click)()) {
+		return implementation::fire_event<T>(double_click
+				, event_chain
+				, dispatcher
+				, widget
+				, functor);
+	} else {
+		return implementation::fire_event<T>(click
+				, event_chain
+				, dispatcher
+				, widget
+				, functor);
+	}
+}
+
 } // namespace event
 
 } // namespace gui2

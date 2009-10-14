@@ -105,10 +105,47 @@ public:
 
 bool tdispatcher::fire(const tevent event, twidget& target)
 {
-	return fire_event<tsignal_function>(event
-			, dynamic_cast<twidget*>(this)
-			, &target
-			, ttrigger());
+
+	switch(event) {
+		case LEFT_BUTTON_DOUBLE_CLICK :
+			return fire_event_double_click<
+					  LEFT_BUTTON_CLICK
+					, LEFT_BUTTON_DOUBLE_CLICK
+					, &tevent_executor::wants_mouse_left_double_click
+					, tsignal_function
+					>(
+					  dynamic_cast<twidget*>(this)
+					, &target
+					, ttrigger());
+
+		case MIDDLE_BUTTON_DOUBLE_CLICK :
+			return fire_event_double_click<
+					  MIDDLE_BUTTON_CLICK
+					, MIDDLE_BUTTON_DOUBLE_CLICK
+					, &tevent_executor::wants_mouse_middle_double_click
+					, tsignal_function
+					>(
+					  dynamic_cast<twidget*>(this)
+					, &target
+					, ttrigger());
+
+		case RIGHT_BUTTON_DOUBLE_CLICK :
+			return fire_event_double_click<
+					  RIGHT_BUTTON_CLICK
+					, RIGHT_BUTTON_DOUBLE_CLICK
+					, &tevent_executor::wants_mouse_right_double_click
+					, tsignal_function
+					>(
+					  dynamic_cast<twidget*>(this)
+					, &target
+					, ttrigger());
+
+		default :
+			return fire_event<tsignal_function>(event
+				, dynamic_cast<twidget*>(this)
+				, &target
+				, ttrigger());
+	}
 }
 
 /** Helper struct to wrap the functor call. */

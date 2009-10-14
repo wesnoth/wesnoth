@@ -119,7 +119,6 @@ template<
 		, tevent button_up
 		, tevent button_click
 		, tevent button_double_click
-		, bool(tevent_executor::*wants_double_click) () const
 >
 class tmouse_button
 	: public virtual tmouse_motion
@@ -176,7 +175,6 @@ typedef	tmouse_button<
 		, LEFT_BUTTON_UP
 		, LEFT_BUTTON_CLICK
 		, LEFT_BUTTON_DOUBLE_CLICK
-		, &tevent_executor::wants_mouse_left_double_click
 		> tmouse_button_left;
 
 typedef	tmouse_button<
@@ -186,7 +184,6 @@ typedef	tmouse_button<
 		, MIDDLE_BUTTON_UP
 		, MIDDLE_BUTTON_CLICK
 		, MIDDLE_BUTTON_DOUBLE_CLICK
-		, &tevent_executor::wants_mouse_middle_double_click
 		> tmouse_button_middle;
 
 typedef	tmouse_button<
@@ -196,7 +193,6 @@ typedef	tmouse_button<
 		, RIGHT_BUTTON_UP
 		, RIGHT_BUTTON_CLICK
 		, RIGHT_BUTTON_DOUBLE_CLICK
-		, &tevent_executor::wants_mouse_right_double_click
 		> tmouse_button_right;
 
 
