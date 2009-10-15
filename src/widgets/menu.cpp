@@ -88,7 +88,7 @@ bool menu::basic_sorter::column_sortable(int column) const
 static std::pair<int, int> parse_fraction(const std::string& s)
 {
 	std::vector<std::string> parts = utils::split(s, '/', 0);
-	parts.resize(2, 0); // insert default=0 for missing values
+	parts.resize(2);
 	int num = lexical_cast_default<int>(parts[0], 0);
 	int denom = lexical_cast_default<int>(parts[1], 0);
 	return std::make_pair(num, denom);
