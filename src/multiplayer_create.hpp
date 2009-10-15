@@ -34,6 +34,7 @@ public:
 	~create();
 
 	mp_game_settings& get_parameters();
+	const int num_turns() { return num_turns_; }
 
 protected:
 	virtual void layout_children(const SDL_Rect& rect);
@@ -101,6 +102,7 @@ private:
 
 	util::scoped_ptr<map_generator> generator_;
 
+	int num_turns_;
 	mp_game_settings parameters_;
 };
 

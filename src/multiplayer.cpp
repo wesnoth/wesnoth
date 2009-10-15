@@ -417,7 +417,7 @@ static void enter_create_mode(game_display& disp, const config& game_config, mp:
 
 static void enter_connect_mode(game_display& disp, const config& game_config,
 		mp::chat& chat, config& gamelist, const mp_game_settings& params,
-		mp::controller default_controller, bool local_players_only = false)
+		const int num_turns, mp::controller default_controller, bool local_players_only = false)
 {
 	mp::ui::result res;
 	game_state state;
@@ -429,7 +429,7 @@ static void enter_connect_mode(game_display& disp, const config& game_config,
 	statistics::fresh_stats();
 
 	{
-		mp::connect ui(disp, game_config, chat, gamelist, params, default_controller, local_players_only);
+		mp::connect ui(disp, game_config, chat, gamelist, params, num_turns, default_controller, local_players_only);
 		run_lobby_loop(disp, ui);
 
 		res = ui.get_result();
@@ -471,17 +471,19 @@ static void enter_create_mode(game_display& disp, const config& game_config, mp:
 
 		mp::ui::result res;
 		mp_game_settings params;
+		int num_turns;
 
 		{
 			mp::create ui(disp, game_config, chat, gamelist);
 			run_lobby_loop(disp, ui);
 			res = ui.get_result();
 			params = ui.get_parameters();
+			num_turns = ui.num_turns();
 		}
 
 		switch (res) {
 		case mp::ui::CREATE:
-			enter_connect_mode(disp, game_config, chat, gamelist, params, default_controller, local_players_only);
+			enter_connect_mode(disp, game_config, chat, gamelist, params, num_turns, default_controller, local_players_only);
 			break;
 		case mp::ui::QUIT:
 		default:

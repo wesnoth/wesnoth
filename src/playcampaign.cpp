@@ -155,8 +155,8 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 		io_type_t& io_type, end_level_data &end_level)
 {
 	const int ticks = SDL_GetTicks();
-	//const int num_turns = atoi((*level)["turns"].c_str());
-	playmp_controller playcontroller(*level, state_of_game, ticks, state_of_game.mp_settings().num_turns,
+	const int num_turns = atoi((*level)["turns"].c_str());
+	playmp_controller playcontroller(*level, state_of_game, ticks, num_turns,
 		game_config, disp.video(), skip_replay, io_type == IO_SERVER);
 	LEVEL_RESULT res = playcontroller.play_scenario(story, log, skip_replay);
 	log.read_replay();

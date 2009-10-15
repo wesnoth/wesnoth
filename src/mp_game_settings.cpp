@@ -26,7 +26,6 @@ mp_game_settings::mp_game_settings() :
 	hash(),
 	mp_era(),
 	mp_scenario(),
-	num_turns(0),
 	village_gold(0),
 	xp_modifier(0),
 	mp_countdown_init_time(0),
@@ -52,7 +51,6 @@ mp_game_settings::mp_game_settings(const config& cfg) :
 	hash(),
 	mp_era(),
 	mp_scenario(),
-	num_turns(0),
 	village_gold(0),
 	xp_modifier(0),
 	mp_countdown_init_time(0),
@@ -79,7 +77,6 @@ mp_game_settings::mp_game_settings(const mp_game_settings& settings)
 	, hash(settings.hash)
 	, mp_era(settings.mp_era)
 	, mp_scenario(settings.mp_scenario)
-	, num_turns(settings.num_turns)
 	, village_gold(settings.village_gold)
 	, xp_modifier(settings.xp_modifier)
 	, mp_countdown_init_time(settings.mp_countdown_init_time)
@@ -107,7 +104,6 @@ void mp_game_settings::set_from_config(const config& game_cfg)
 	mp_era = cfg["mp_era"];
 	mp_scenario = cfg["mp_scenario"];
 	xp_modifier = lexical_cast_default<int>(cfg["experience_modifier"]);
-	num_turns = lexical_cast_default<int>(cfg["turns"]);
 	use_map_settings = utils::string_bool(cfg["mp_use_map_settings"]);
 	fog_game = utils::string_bool(cfg["mp_fog"]);
 	shroud_game = utils::string_bool(cfg["mp_shroud"]);
@@ -128,7 +124,6 @@ void mp_game_settings::reset()
 	hash = "";
 	mp_era = "";
 	mp_scenario = "";
-	num_turns = 0;
 	village_gold = 0;
 	xp_modifier = 0;
 	mp_countdown_init_time=0;
@@ -149,7 +144,6 @@ config mp_game_settings::to_config() const
 	cfg["hash"] = hash;
 	cfg["mp_era"] = mp_era;
 	cfg["mp_scenario"] = mp_scenario;
-	cfg["turns"] = lexical_cast_default<std::string>(num_turns, "20");
 	cfg["experience_modifier"] = lexical_cast<std::string>(xp_modifier);
 	cfg["mp_countdown"] = mp_countdown ? "yes" : "no";
 	cfg["mp_countdown_init_time"] = lexical_cast_default<std::string>(mp_countdown_init_time, "270");

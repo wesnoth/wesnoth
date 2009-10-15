@@ -93,7 +93,8 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist)
 	minimap_restorer_(NULL),
 	minimap_rect_(null_rect),
 	generator_(NULL),
-	parameters_()
+	parameters_(),
+	num_turns_(0)
 {
 	// Build the list of scenarios to play
 
@@ -252,7 +253,7 @@ create::~create()
 	if(!parameters_.use_map_settings) {
 		preferences::set_fog(parameters_.fog_game);
 		preferences::set_shroud(parameters_.shroud_game);
-		preferences::set_turns(parameters_.num_turns);
+		preferences::set_turns(num_turns_);
 		preferences::set_random_start_time(parameters_.random_start_time);
 		preferences::set_village_gold(parameters_.village_gold);
 		preferences::set_xp_modifier(parameters_.xp_modifier);
@@ -261,7 +262,7 @@ create::~create()
 
 mp_game_settings& create::get_parameters()
 {
-	const int turns = turns_slider_.value() < turns_slider_.max_value() ?
+	num_turns_ = turns_slider_.value() < turns_slider_.max_value() ?
 		turns_slider_.value() : -1;
 
 	const int mp_countdown_turn_bonus_val = countdown_turn_bonus_slider_.value() <= countdown_turn_bonus_slider_.max_value() ?
@@ -288,7 +289,6 @@ mp_game_settings& create::get_parameters()
 	}
 
 	parameters_.mp_era = (*era_list.first)["id"];
-	parameters_.num_turns = turns;
 	// CHECK
 	parameters_.mp_countdown_init_time = mp_countdown_init_time_val;
 	parameters_.mp_countdown_turn_bonus = mp_countdown_turn_bonus_val;

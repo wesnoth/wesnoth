@@ -39,7 +39,6 @@ struct mp_game_settings : public savegame::savegame_config
 	std::string mp_era;
 	std::string mp_scenario;
 
-	int num_turns;
 	int village_gold;
 	int xp_modifier;
 	int mp_countdown_init_time;
