@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-09-27 20:26+0300\n"
-"PO-Revision-Date: 2009-09-23 23:14+0100\n"
+"PO-Revision-Date: 2009-09-29 08:46+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -919,15 +919,13 @@ msgstr "[I<značka>]"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:103
-#, fuzzy
 msgid "I<key>=\"I<value>\""
-msgstr "klíč=\"I<hodnota>\""
+msgstr "I<klíč>=\"I<hodnota>\""
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:105
-#, fuzzy
 msgid "I<key>=\"I<value>,I<value>,...\""
-msgstr "klíč=\"I<hodnota>,I<hodnota>\""
+msgstr "I<klíč>=\"I<hodnota>,I<hodnota>,...\""
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:107
@@ -948,14 +946,13 @@ msgstr "B<allow_remote_shutdown>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:114
-#, fuzzy
 msgid ""
 "If set to B<no> (default), shut_down and restart requests are ignored unless "
 "they come from the fifo.  Set it to B<yes> to allow remote shutdown via a /"
 "query by an administrator."
 msgstr ""
-"Při nastavení na `no' (výchozí), požadavky shut_down a restart "
-"jsouignorovány, pokud nepocházejí z fifo. Při nastavení `yes' může správce "
+"Při nastavení na B<no> (výchozí), požadavky shut_down a restart "
+"jsouignorovány, pokud nepocházejí z fifo. Při nastavení B<yes> může správce "
 "vzdáleně vypnout server pomocí /query."
 
 # type: TP
@@ -982,13 +979,12 @@ msgstr "B<compress_stored_rooms>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:121
-#, fuzzy
 msgid ""
 "Determines whether the rooms file should be read and written to in "
 "compressed form. Defaults to B<yes>."
 msgstr ""
 "Určuje, zda je soubor s místnostmi čten a zapisován jako komprimovaný. "
-"Výchozí hodnota `yes'."
+"Výchozí hodnota B<yes>."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:121
@@ -1013,7 +1009,6 @@ msgstr "B<disallow_names>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:131
-#, fuzzy
 msgid ""
 "Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
@@ -1021,8 +1016,8 @@ msgid ""
 "computer,human,network,player>."
 msgstr ""
 "Jména/přezdívky, které nejsou serverem akceptována. Je možno použít "
-"metaznaky `*' a `?'. Více viz. B<glob>(7). Implicitní hodnota je: B<*admin*,"
-"*admln*,*server*,ai,ai?,computer,human,network,player>."
+"metaznaky B<*> a B<?>. Více viz. B<glob>(7). Implicitní hodnota je: "
+"B<*admin*,*admln*,*server*,ai,ai?,computer,human,network,player>."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:131
@@ -1032,7 +1027,6 @@ msgstr "B<fifo_path>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:135
-#, fuzzy
 msgid ""
 "The path to the fifo you can echo server commands into (same as /query ... "
 "from wesnoth).  If not specified defaults to the compile-time path (default: "
@@ -1040,7 +1034,7 @@ msgid ""
 msgstr ""
 "Cesta k fifo, do nějž můžete posílat příkazy serveru (stejně jako pomocí /"
 "query z klienta). Pokud není explicitně určena, je použita výchozí hodnota "
-"určená při kompilaci (běžně /var/run/socket/wesnothd/socket)."
+"určená při kompilaci (běžně B</var/run/socket/wesnothd/socket>)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:135
@@ -1090,7 +1084,6 @@ msgstr "B<new_room_policy>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:147
-#, fuzzy
 msgid ""
 "Determines who can create new rooms on the server. Available values are "
 "B<everyone>, B<registered>, B<admin> and B<nobody>, and give the permission "
@@ -1098,9 +1091,9 @@ msgid ""
 "creation. Default value is B<everyone>."
 msgstr ""
 "Určuje, kdo může vytvářet na serveru nové místnosti. Dostupné hodnoty "
-"zahrnují `everyone', `registered', `admin' a `nobody' - místosti pak může "
-"vytvářek každý, registrovaní uživatelé, pouze správci nebo nikdo. Výchozí "
-"hodnota je `everyone'."
+"zahrnují B<everyone>, B<registered>, B<admin> a B<nobody> - místosti pak "
+"může vytvářet každý, registrovaní uživatelé, pouze správci nebo nikdo. "
+"Výchozí hodnota je B<everyone>."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:147
@@ -1110,10 +1103,11 @@ msgstr "B<passwd>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:150
-#, fuzzy
 msgid ""
 "The password used to gain admin privileges (via B</query admin >I<password>)."
-msgstr "Heslo pro získání administrátorských práv. Obvykle začíná na „admin“."
+msgstr ""
+"Heslo pro získání administrátorských práv. (Přes B</query admin "
+">I<password>.)"
 
 #: ../../doc/man/wesnothd.6:150
 #, no-wrap
@@ -1137,14 +1131,14 @@ msgstr "B<restart_command>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:156
-#, fuzzy
 msgid ""
 "The command that the server uses to start a new server process via the "
 "B<restart> command. (Can only be issued via the fifo. See the "
 "B<allow_remote_shutdown> setting.)"
 msgstr ""
 "Příkaz, který server použije pro spuštění nového procesu sebe sama při "
-"příkazu \"restart\" (lze nastavit pouze přes fifo)."
+"příkazu B<restart>. (Lze nastavit pouze přes fifo. Více viz "
+"B<allow_remote_shutdown>.)"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:156
@@ -1184,14 +1178,13 @@ msgstr "B<versions_accepted>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:166
-#, fuzzy
 msgid ""
 "A comma separated list of version strings to be accepted by the server. B<*> "
 "and B<?> from wildcard patterns are supported.  (defaults to the "
 "corresponding wesnoth version)"
 msgstr ""
 "Seznam čárkou oddělených řetězců verzí Wesnothu, které jsou serverem "
-"akceptovány. Je možno použít zástupné znaky `*' a `?'. Implicitní hodnota "
+"akceptovány. Je možno použít zástupné znaky B<*> a B<?>. Implicitní hodnota "
 "odpovídá příslušné verzi wesnothu."
 
 # type: Plain text
@@ -1207,7 +1200,6 @@ msgstr "B<user_handler>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:173
-#, fuzzy
 msgid ""
 "The name of the user handler to use. Currently available user handlers are "
 "B<forum> (to connect wesnothd to a phpbb forum database) and B<sample> (a "
@@ -1216,8 +1208,8 @@ msgid ""
 "add a B<[user_handler]> section, see below."
 msgstr ""
 "Název handleru uživatelů, jenž má být použit. V tuto chvíli jsou dostupné "
-"handlery 'forum' (propojení s databází phpbb) a 'sample' (vzorová "
-"implementace rozhraní, prakticky nepoužitelná). Výchozí hodnota je 'forum'. "
+"handlery B<forum> (propojení s databází phpbb) a B<sample> (vzorová "
+"implementace rozhraní, prakticky nepoužitelná). Výchozí hodnota je B<forum>. "
 "Handler musí být dále konfigurován v sekci B<[user_handler]> - viz níže."
 
 # type: SS
@@ -1301,7 +1293,6 @@ msgstr "B<time>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:207
-#, fuzzy
 msgid ""
 "The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s "
 "(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d "
@@ -1309,10 +1300,11 @@ msgid ""
 "Example: B<time=\"1D12h30m\"> results in a ban time of 1 day, 12 hours and "
 "30 minutes."
 msgstr ""
-"Definice doby. Formát je %d[%s[%d%s[...]]] kde %s je \"s\" (sekundy), \"m"
-"\" (minuty), \"h\" (hodiny), \"D\" (dny), \"M\" (měsíce) nebo \"Y\" (roky) a "
-"%d je číslo. Pokud není zadán druh délky, jsou předpokládány minuty (m). "
-"Například \"1D12H30m\" představuje zákaz pro jeden den, 12 hodin a 30 minut."
+"Definice doby trvání. Formát je %d[%s[%d%s[...]]] kde %s je \"s\" (sekundy), "
+"\"m\" (minuty), \"h\" (hodiny), \"D\" (dny), \"M\" (měsíce) nebo \"Y"
+"\" (roky) a %d je číslo. Pokud není zadán druh délky, jsou předpokládány "
+"minuty (m). Například B<time=\"1D12H30m\"> představuje zákaz pro jeden den, "
+"12 hodin a 30 minut."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:213
@@ -1327,17 +1319,16 @@ msgstr ""
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:221
-#, fuzzy
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
 "on which user handler is set with the B<user_handler> key. If no B<"
 "[user_handler]> section is present in the configuration the server will run "
 "without any nick registration service."
 msgstr ""
-"B<[user_handler]> Knfiguruje uživatelský handler. Dostupné klíče se liší "
+"B<[user_handler]> Kpnfiguruje uživatelský handler. Dostupné klíče se liší "
 "podle toho, který handler je použit - nastaveno klíčem B<user_handler>. "
-"Pokud není v konfiguraci nalezena žádná sekce [user_handler], server poběží "
-"bez služeb správy přezdívek."
+"Pokud není v konfiguraci nalezena žádná sekce B<[user_handler]>, server "
+"poběží bez služeb správy přezdívek."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:222
@@ -1410,7 +1401,6 @@ msgstr "B<db_extra_table>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:241
-#, fuzzy
 msgid ""
 "(for user_handler=forum) The name of the table in which wesnothd will save "
 "its own data about users. You will have to create this table manually, e.g.: "
@@ -1420,9 +1410,9 @@ msgid ""
 msgstr ""
 "(pro user_handler=forum) Název tabulky, v níž bude wesnothd ukládat svá "
 "vlastní data o uživatelích. Tuto tabulku budete muset vytvořit ručně - "
-"například: CREATE TABLE E<lt>jméno_tabulkyE<gt>(username VARCHAR(255) "
+"například: B<CREATE TABLE E<lt>jméno_tabulkyE<gt>(username VARCHAR(255) "
 "PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, "
-"user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);"
+"user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);>"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:241

@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-10-13 22:59+0200\n"
-"PO-Revision-Date: 2009-09-22 20:09+0100\n"
+"PO-Revision-Date: 2009-10-15 13:51+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -34,7 +34,7 @@ msgstr "Dědic trůnu"
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:12
 msgid "HttT"
-msgstr "Dt"
+msgstr "DT"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:16
@@ -1119,14 +1119,14 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:201
-#, fuzzy
 msgid ""
 "Indeed it does. It also looks like they have many, many troops. I should go "
 "around the bay and distract some of them. You and the rest rescue the "
 "merfolk!"
 msgstr ""
 "Skutečně. Vypadá to také, že skřeti mají opravdu mnoho tlup. Půjdu kolem "
-"zátoky a odvedu jejich pozornost. Ty spolu s ostatními osvobodíte vodní lid."
+"zátoky a pokusím se odvést jejich pozornost. Ty spolu s ostatními zatím "
+"osvobodíte vodní lid."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:205
@@ -1140,7 +1140,6 @@ msgstr "Ale šéfe, proč používáme jenom netopejry a vodní rejpaly?"
 
 #. [message]: speaker=Dwaba-Kukai
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:235
-#, fuzzy
 msgid ""
 "Because we need to control the seas and the merfolk, and nagas and bats are "
 "best for doing that!"
@@ -1449,13 +1448,12 @@ msgstr "Přeji ti bezpečnou plavbu Konráde. Snad bude pěkné počasí."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:818
-#, fuzzy
 msgid ""
 "Have you not been able to defeat our foes in all these days? They have "
 "summoned reinforcements. Surely now our doom is upon us!"
 msgstr ""
-"Tys nebyl schopen zabít všechny naše nepřátele za celou tu dobu? Oni si "
-"zavolali pro posily. Sami jsme si způsobili zkázu!"
+"Tys nebyl schopen zabít všechny naše nepřátele za celou tu dobu? Zavolali "
+"pro posily. Blíží se naše zkáza!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:830
@@ -1551,6 +1549,9 @@ msgid ""
 "<span color='#00ff00'>Defeat Muff Malal</span> <small>(early finish bonus)</"
 "small>"
 msgstr ""
+"<span color='white'>Alternativní cíl:</span>\n"
+"<span color='#00ff00'>Poraz Muff Malala</span> <small>(bonus za rychlé "
+"dokončení)</small>"
 
 #. [side]: type=Dark Sorcerer, id=Muff Malal
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:60
@@ -1682,15 +1683,14 @@ msgstr "Ostrov zatracení"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:24
-#, fuzzy
 msgid ""
 "<span color='white'>Alternative objective:</span>\n"
 "<span color='#00ff00'>Defeat all enemy leaders</span> <small>(special bonus)"
 "</small>"
 msgstr ""
-"<255,255,255>Alternativní cíl:\n"
-"@Poraz všechny nepřátelské vůdce\n"
-"`(zvláštní bonus)"
+"<span color='white'>Alternativní cíl:</span>\n"
+"<span color='#00ff00'>Poraz všechny nepřátelské vůdce</span> <small>"
+"(zvláštní bonus)</small>"
 
 #. [objectives]
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:32
@@ -2231,14 +2231,13 @@ msgstr "Delfadore! Jak rád tě vidím! Kde jsi byl?"
 # !!!! tohle by ještě chtělo nějakou revizi
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:561
-#, fuzzy
 msgid ""
 "I have been meeting with the Ka'lian, the Great Council of the Elves. This "
 "is Kalenz, a great lord of the Northern Elves who came to the Council to "
 "offer us the support of his people."
 msgstr ""
-"Setkal jsem se s Velkou elfskou radou. Toto je Kalenz, pán severních elfů, "
-"který přišel k Radě nabídnout nám podporu severních elfů."
+"Setkal jsem se s Ka'lianem, Velkou elfskou radou. Toto je Kalenz, pán "
+"severních elfů, který přišel k Radě nabídnout nám podporu jeho lidu."
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:570
@@ -2256,9 +2255,8 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:580
-#, fuzzy
 msgid "The Ka'lian has met and decided: we must capture the Scepter of Fire."
-msgstr "Rada se sešla a rozhodla se: musíme získat Ohnivé žezlo!"
+msgstr "Ka'lian se sešel a rozhodl: musíme získat Ohnivé žezlo."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:585
@@ -2340,6 +2338,9 @@ msgid ""
 "about with steel; Kalenz and I barely escaped, and Chantal cannot get out. "
 "Until we are stronger, we must go where the orcs are not."
 msgstr ""
+"Nemůžeme jít do Wesmérie, Ašvířini skřeti neprostupně obklíčili přístupové "
+"cesty. Kalenz a já jsme stěží unikli a Chantal se nemůže dostat pryč. Dokud "
+"nebudeme silnější, musíme se skřetům vyhnout."
 
 #. [message]: speaker=Muff Jaanal
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:652
@@ -2679,13 +2680,12 @@ msgstr ""
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:305
-#, fuzzy
 msgid ""
 "I see that your forces draw near, impostor! I'll not be defeated in my own "
 "backyard so easily... Come forth and attack, my loyal duelist!"
 msgstr ""
 "Vidím, že se tvé síly blíží, podvodníku! Nedojde k mé porážce na mém "
-"vlastním území tak jednoduše... vylez a utkej se s mým duelistou!"
+"vlastním území tak jednoduše... kupředu a zaútoč, můj věrný duelisto!"
 
 #. [then]
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:319
@@ -2871,7 +2871,6 @@ msgstr ""
 
 #. [message]: speaker=Moremirmu
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:379
-#, fuzzy
 msgid ""
 "You must escape the clutches of that vile Queen, my lord. If you take a "
 "course bearing north-east, on past the mountain of gryphons, you will be "
@@ -2923,14 +2922,13 @@ msgstr ""
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:416
-#, fuzzy
 msgid ""
 "The land of Wesnoth is not safe for us. The Queen's forces reach every "
 "corner. We must make haste to the north lands, across the Great River. Let "
 "us go quickly!"
 msgstr ""
 "Země Wesnothu pro nás nejsou bezpečné. Královniny síly prohledají každý "
-"kout. Musíme si pospíšit do severních zemí, přes velkou řeku. Jděme rychle!"
+"kout. Musíme si pospíšit do severních zemí, přes Velkou řeku. Jděme rychle!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:420
@@ -5110,13 +5108,12 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:237
-#, fuzzy
 msgid ""
 "Then perhaps we should head east along the river, and seek refuge and rest "
 "there for a time?"
 msgstr ""
 "Pak bychom tedy mohli jít na východ podél řeky a najít tam na čas útočiště a "
-"odpočinek."
+"odpočinek?"
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:241
@@ -5130,8 +5127,8 @@ msgstr ""
 "Skutečně bychom tam měli hledat útočiště, můj pane, ale ne když půjdeme na "
 "východ podél řeky. Její jméno totiž znamená 'Řeka kostí'. Na jejích březích "
 "číhají ohromné a hnusné příšery a její vody se nedají pít. Nadto teče přes "
-"útesy Thorie: jimi po staletí neprošel žádný člověk ani elf, aniž zahynul. "
-"Ne, princi, musíme si vybrat jinou cestu."
+"útesy Thorie: jimi po staletí neprošel žádný člověk ani elf, aniž by "
+"zahynul. Ne, princi, musíme si vybrat jinou cestu."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:245
@@ -5185,7 +5182,6 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:284
-#, fuzzy
 msgid ""
 "Prince Konrad, you and your friends keep talking about avoiding the Arkan-"
 "thoria. But we can lead you down this river. With the help of us merfolk, "
@@ -5194,23 +5190,22 @@ msgid ""
 "that it will be a safe journey, because I do not know what lies ahead, but "
 "it is an option and you should consider it, my lord."
 msgstr ""
-"Princi Konráde, neustále se v hovoru vracíš k tomu, že řece je třeba vyhnout "
-"se. Ale my tě můžeme vést řekou. S pomocí mořského lidu bys mohl dosáhnout "
-"domova severních elfů podél řeky mnohem rychleji než pozemní cestou. Nemohu "
-"ti slíbit, že to bude cesta bezpečná, nevím co nás čeká, ale je to možnost, "
-"kterou není radno nezvážit, můj pane."
+"Princi Konráde, neustále se v hovoru vracíš k tomu, že je třeba vyhnout se "
+"Arkan-thorii. Ale my tě můžeme vést řekou. S pomocí mořského lidu bys mohl "
+"dosáhnout domova severních elfů podél řeky mnohem rychleji než pozemní "
+"cestou. Nemohu ti slíbit, že to bude cesta bezpečná, nevím co nás čeká, ale "
+"je to možnost, kterou není radno nezvážit, můj pane."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:294
-#, fuzzy
 msgid ""
 "Loyal merfolk, you have served far beyond what your debt of gratitude "
 "requires. I will trust your strength and loyalty through this tribulation "
 "even as you trusted us to lead you through the heart of a volcano."
 msgstr ""
 "Věrný mořský lide, sloužili jste mi mnohem více, než váš čestný dluh "
-"vyžadoval. Věřím vaší síle a oddanosti, tak jako vy jste věřili mně při "
-"průchodu srdcem vulkánu."
+"vyžadoval. Budu věřit vaší síle a oddanosti v této zkoušce, tak jako vy jste "
+"věřili nám při průchodu srdcem vulkánu."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:300
@@ -5542,6 +5537,8 @@ msgid ""
 "<span color='white'>Bonus objective:</span>\n"
 "<span color='#00ff00'>Defeat all Death Knights first</span>"
 msgstr ""
+"<span color='white'>Bonusový cíl:</span>\n"
+"<span color='#00ff00'>Nejprve poraz všechny rytíře smrti</span>"
 
 #. [side]: type=Death Knight, id=Clarustus
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:87
@@ -5767,19 +5764,17 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:282
-#, fuzzy
 msgid ""
 "One day they saw a gruesome sight - a fleet of boats and rafts sunk or "
 "shattered among the river islands. Konrad sent some of the mermen to "
 "investigate."
 msgstr ""
-"Jednoho dne se jim naskytl strašlivý pohled - flotila lodí, potopených nebo "
-"rozbitých na ostrůvcích. Konrád vyslal pár mořských lidí, aby to prozkoumali "
-"blíže."
+"Jednoho dne se jim naskytl strašlivý pohled - flotila lodí a vorů, "
+"potopených nebo rozbitých na ostrůvcích. Konrád vyslal pár mořských lidí, "
+"aby to prozkoumali blíže."
 
 #. [message]: role=merman-advisor
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:286
-#, fuzzy
 msgid ""
 "These are not proper ships, but shallow-draft boats built only recently; "
 "much of their timber is green. They were sunk in battle, not by a storm. "
@@ -5787,10 +5782,12 @@ msgid ""
 "place not long ago, perhaps only a few weeks past. We've found no survivors. "
 "One more thing...all flew the banner of the Crown of Wesnoth."
 msgstr ""
-"Vypadá to, že ty lodě nepotopila bouře; jsou tu četné známky boje. Ty "
-"nerozbité byly spáleny. Bitva se musela odehrát nedávno, jen o několik týdnů "
-"dříve. Nenašli jsme nikoho, kdo by přežil. Ale hlavně - všechny lodě nesou "
-"královskou vlajku Wesnothu."
+"Nejsou to opravdové lodě, ale jenom lodice pro mělké vody a nadto nedávno "
+"postavené. Většina jejich dřeva je ještě zelená. Vypadá to, že ty lodě "
+"nepotopila bouře; jsou tu četné známky boje. Ty nerozbité byly spáleny. "
+"Bitva se musela odehrát nedávno, jen o několik týdnů dříve. Nenašli jsme "
+"nikoho, kdo by přežil. Ale hlavně - všechny lodě nesou královskou vlajku "
+"Wesnothu."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:290
@@ -5814,6 +5811,7 @@ msgstr "Třeba ty lodě potopily nestvůry, o kterých se zmiňoval Lord Kalenz.
 msgid ""
 "That is possible. I would guess they were seeking a way east, just as we are."
 msgstr ""
+"To je možné. Hádal bych že se snažili cestovat na východ, stejně jako my."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:306
@@ -5842,13 +5840,12 @@ msgstr ""
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:318
-#, fuzzy
 msgid ""
 "Then we have only two choices: to proceed down the river or to go back where "
 "we came from and fight our way through the orcs or the undead."
 msgstr ""
-"Pak máme jen dvě možnosti: buď pokračovat po březích Longlieru, nebo se "
-"vrátit nazpět a probojovat se skřety a nemrtvými."
+"Pak máme jen dvě možnosti: buď pokračovat po březích řeky, nebo se vrátit "
+"nazpět a probojovat se skřety a nemrtvými."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:322
@@ -5940,7 +5937,6 @@ msgstr ""
 
 #. [message]: speaker=Keh Ohn
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:390
-#, fuzzy
 msgid ""
 "GRROAR!! Will you silly self-centered creatures show some manners and pay "
 "some attention to me?"
@@ -5950,13 +5946,12 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:394
-#, fuzzy
 msgid ""
 "Eh... well of course, sir drake. Let me introduce myself - I am Prince "
 "Konrad, leader of the group and heir to the throne of Wesnoth."
 msgstr ""
-"Ah... omlouvám se, dračí pane. Jsem princ Konrád, vůdce této skupiny a dědic "
-"trůnu Wesnothu."
+"Ah... omlouvám se, dračí pane. Dovolte mi představit se - jsem princ Konrád, "
+"vůdce této skupiny a dědic trůnu Wesnothu."
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:398
@@ -6200,6 +6195,8 @@ msgid ""
 "<span color='white'>Optional objective:</span>\n"
 "<span color='#00ff00'>Rescue the sergeant</span>"
 msgstr ""
+"<span color='white'>Vedlejší cíl:</span>\n"
+"<span color='#00ff00'>Zachraň seržanta</span>"
 
 #. [message]: speaker=Warven
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1116
@@ -6245,6 +6242,10 @@ msgid ""
 "spume, it must drop several hundred feet at least. We must leave the river "
 "before we are swept into it, or we will surely perish!"
 msgstr ""
+"Před námi je vodopád! Podle hromového zvuku padající vody a množství a "
+"velikosti pěny musí padat ze strašlivé výše, aspoň několik set stop. Musíme "
+"na břeh dříve, než nás do něj zanesou proudy - pokud nás pohltí, nemáme "
+"šanci přežít!"
 
 #. [message]: role=merman-advisor
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1157
@@ -6734,7 +6735,7 @@ msgid ""
 "<span color='white'>Optional objective:</span>\n"
 "<span color='#00ff00'>Help the Wose fend off the undead attack</span>"
 msgstr ""
-"<span color='white'>Bonusový cíl:</span>\n"
+"<span color='white'>Vedlejší cíl:</span>\n"
 "<span color='#00ff00'>Pomoz stromovému lidu odrazit útok nemrtvých</span>"
 
 #. [objective]: condition=lose
@@ -7931,11 +7932,12 @@ msgstr "Tak jako jsem zničil tvého syna, zničím teď i tebe."
 
 #. [message]: speaker=Asheviere
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:352
-#, fuzzy
 msgid ""
 "You were always defiant, wizard, and no one has thwarted my plans as "
 "determinedly as you."
-msgstr "Vždy jsi byl vzpurný, čaroději, a nikdo mi nekřížil plány tak jako ty."
+msgstr ""
+"Vždy jsi byl vzpurný, čaroději, a nikdo mi nekřížil plány tak rozhodně jako "
+"ty."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:356
@@ -7945,7 +7947,6 @@ msgstr "Vždy jsem byl pokorný služebník Koruny, dokonce i nyní."
 
 #. [message]: speaker=Asheviere
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:360
-#, fuzzy
 msgid ""
 "Delfador! You utterly disgust me, you sniveling worm. How dare you confront "
 "me, your queen?"
@@ -7955,7 +7956,6 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:365
-#, fuzzy
 msgid "How dare I? I High Provost of the Council of Archmagi..."
 msgstr "Jak se opovažuji? Jsem Delfador, Vysoký představený rady arcimágů..."
 
@@ -7980,11 +7980,13 @@ msgid ""
 "... and personal counselor to my King and my <i>friend</i>, Garard the "
 "Second, who you most <i>foully</i> betrayed..."
 msgstr ""
+"...a osobní rádce mého krále a <i>přítele</i>, Gararda druhého, kterého jsi "
+"<i>velmi odporně</i> zradila..."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:382
 msgid "I am Delfador the Great and TODAY YOU MEET YOUR ATONEMENT!"
-msgstr ""
+msgstr "Jsem Delador Velký a DNES BUDEŠ LITOVAT SVÝCH ČINŮ!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:387
@@ -8424,15 +8426,14 @@ msgstr "Ohnivé žezlo"
 
 #. [object]: id=object_scepter
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:387
-#, fuzzy
 msgid ""
 "This ancient Sceptre was forged by the great Dwarves of the Heart Mountains. "
 "A symbol of the kingship of Wesnoth, the Sceptre has the power to shoot "
 "fireballs at enemies of the bearer!"
 msgstr ""
-"Toto starodávné žezlo bylo ukuto trpaslíky z Hlubokých hor. Žezlo, symbol "
-"vládcovství ve Wesnothu, má moc vrhat na nepřátele jeho držitele ohnivé "
-"koule!"
+"Toto starodávné žezlo bylo ukuto trpasličími mistry z hlubin hor. Žezlo, "
+"symbol vládcovství ve Wesnothu, má moc vrhat na nepřátele jeho držitele "
+"ohnivé koule!"
 
 #. [object]: id=object_scepter
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:388
@@ -8623,72 +8624,3 @@ msgstr ""
 "Unikl s Konrádem do lesů jihozápadně od hranic Wesnothu, kde ho vychovával "
 "pod ochranu elfů. Přitom však musel smutně přihlížet, jak začala Ašvířina "
 "strašná vláda strachu..."
-
-#~ msgid "The Queen is Dead"
-#~ msgstr "Královna je mrtvá"
-
-#~ msgid "That is possible..."
-#~ msgstr "To je možné..."
-
-#, fuzzy
-#~ msgid ""
-#~ "There is a waterfall ahead. It is so high I can barely see the top of it! "
-#~ "Neither the merfolk, even less the land dwellers can swim up the "
-#~ "waterfall. Even gryphons might have trouble flying up so far! I am "
-#~ "afraid, Your Highness, that we are stuck."
-#~ msgstr ""
-#~ "Před námi je vodopád, tak vysoký, že nedohlédnu na konec! Tam se "
-#~ "nedostanou ani mořští lidé, možná ani gryfoni tak vysoko nedoletí! Obávám "
-#~ "se, veličenstvo, že jsme uvízli."
-
-#~ msgid ""
-#~ "Young and brash, Fighters fight with a sword, and are vulnerable to "
-#~ "attack from enemies. However they have the potential to become great "
-#~ "warriors one day."
-#~ msgstr ""
-#~ "Mladí a neomalení, Bojovníci používají k boji meč, vůči útokům "
-#~ "nepřátelských jednotek jsou zranitelní. Dřímá v nich však potenciál stát "
-#~ "se jednoho dne velkými válečníky."
-
-#~ msgid "Princess"
-#~ msgstr "Princezna"
-
-#~ msgid ""
-#~ "<255,255,255>Alternative objective:\n"
-#~ "@Defeat Muff Malal\n"
-#~ "`(early finish bonus)"
-#~ msgstr ""
-#~ "<255,255,255>Alternativní cíl:\n"
-#~ "@Poraz Muff Malala\n"
-#~ "`(bonus za rychlé dokončení)"
-
-#~ msgid ""
-#~ "<255,255,255>Bonus objective:\n"
-#~ "@Defeat all Death Knights first"
-#~ msgstr ""
-#~ "<255,255,255>Bonusový cíl:\n"
-#~ "@Poraz nejprve všechny rytíře smrit"
-
-#~ msgid ""
-#~ "<255,255,255>Optional objective:\n"
-#~ "@Rescue the sergeant"
-#~ msgstr ""
-#~ "<255,255,255>Bonusový cíl:\n"
-#~ "@Zachraň seržanta"
-
-#~ msgid ""
-#~ "<255,255,255>Bonus objective:\n"
-#~ "@Defeat all enemy leaders"
-#~ msgstr ""
-#~ "<255,255,255>Bonusový cíl:\n"
-#~ "@Poraz všechny nepřátelské vůdce"
-
-#~ msgid ""
-#~ "... AND PERSONAL COUNSELOR TO MY FRIEND AND KING, GARARD THE SECOND! "
-#~ "TODAY YOU MEET YOUR ATONEMENT!"
-#~ msgstr ""
-#~ ".. A OSOBNÍ PORADCE MÉHO PŘÍTELE A KRÁLE, GARARDA DRUHÉHO! DNES POTKÁŠ "
-#~ "SVŮJ OSUD!"
-
-#~ msgid "And so it has begun!"
-#~ msgstr "A tak to začalo!"

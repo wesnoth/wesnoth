@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-10-13 22:59+0200\n"
-"PO-Revision-Date: 2009-09-22 11:24+0100\n"
+"PO-Revision-Date: 2009-10-15 13:20+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -34,7 +34,7 @@ msgstr "Ukládat hry v komprimovaném formátu"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:12
 msgid "Confirm deleting saves"
-msgstr ""
+msgstr "Potvrzovat smazání uložených her"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:19
@@ -74,7 +74,7 @@ msgstr "Ukazovat boj"
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:68
 msgid "Ping Timeout"
-msgstr ""
+msgstr "Doba vypršení pingu"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:69
@@ -82,26 +82,28 @@ msgid ""
 "Number of seconds to wait for a ping reply before we time out. Disable with "
 "0."
 msgstr ""
+"Počet sekund, po něž se čeká na odpověď na ping. Pokud je překročen, je "
+"detekováno odpojení. Tuto kontrolu deaktivuje hodnota 0."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:79
 msgid "Accept whisper messages from friends only"
-msgstr ""
+msgstr "Přijímat soukromé zprávy pouze od přátel"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:86
 msgid "Auto-open whisper windows in lobby"
-msgstr ""
+msgstr "Otevírat v čekárně automaticky okna se soukromými zprávami"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:93
 msgid "Group players in lobby"
-msgstr ""
+msgstr "Seskupovat hráče v čeárně"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:100
 msgid "Lobby sounds"
-msgstr ""
+msgstr "Zvuky v čekárně"
 
 #. [time]: id=underground
 #. [illuminated_time]: id=underground_illum
@@ -546,9 +548,8 @@ msgstr "Valencijský překlad (jižní Katalánie)"
 
 #. [about]
 #: data/core/about.cfg:2266
-#, fuzzy
 msgid "Vietnamese Translation"
-msgstr "Čínský překlad"
+msgstr "Vietnamský překlad"
 
 # RACV je nějaká univerzita vydávající direktivy ohledně vývoje jazyka, v rozporu se státem nebo něco takového, je kolem toho dost politiky, víc nevím.
 # Každopádně RACV představuje zkratku instituce, proto tato forma.
@@ -602,7 +603,6 @@ msgstr "Speciální druhy útoků"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=factions_section
 #: data/core/help.cfg:67 src/help.cpp:1284 src/help.cpp:1286
-#, fuzzy
 msgid "Factions"
 msgstr "Frakce"
 
@@ -2858,7 +2858,6 @@ msgstr "Příkazy pro hru více hráčů"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:810
-#, fuzzy
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -2867,13 +2866,13 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Odpojí a úplně vyhodí hráče ze hry více hráčů včetně zakázání přístupu z "
-"jeho IP adresy.\n"
+"Zakáže hráče ve hře podle jeho IP adresy a poté jej vyhodí. Lze použít i na "
+"hráče, kteří nejsou přímo ve hře, ale jen na serveru. (V tom případě "
+"pochopitelně nebudou vyhozeni, není odkud.)\n"
 "\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:813
-#, fuzzy
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -2884,16 +2883,15 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Změní vlastníka strany (číslo strany jako <italic>text=side</italic>) na "
-"uživatele nebo pozorovatele (jméno hráče nebo pozorovatele jako "
-"<italic>text=username</italic>).Která strana patří kterému hráči lze snadno "
-"zjistit v dialogu „Nastavení scénáře“ - dostanete se tam tlačítkem „Více“ v "
-"„Přehledové tabulce“ (při výchozím nastavení alt+s).\n"
+"Změní vlastníka strany (číslo strany jako <i>side</i>) na uživatele nebo "
+"pozorovatele (jméno hráče nebo pozorovatele jako <i>username</i>). Která "
+"strana patří kterému hráči lze snadno zjistit v dialogu „Nastavení scénáře“ "
+"- dostanete se tam tlačítkem „Více“ v „Přehledové tabulce“ (při výchozím "
+"nastavení alt+s). Hostitel může změnit vlastníka jakékoliv strany.\n"
 "\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:816
-#, fuzzy
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. If you "
@@ -2902,9 +2900,9 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Odpojí uživatele ze hry více hráčů, přičemž se může kdykoli znovu připojit. "
-"Obecně je to přátelský způsob, jak odstranit někoho, kdo má potíže se "
-"spojením.\n"
+"Vyhodí uživatele ze hry více hráčů, přičemž se může kdykoli znovu připojit. "
+"Pokud si přejete pouze změnit, kdo ovládá některé strany ve hře, použijte "
+"příkaz :control.\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -2922,18 +2920,17 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:822
-#, fuzzy
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
 "\n"
 msgstr ""
 "\n"
-"Zapíná/vypíná umlčení všech pozorovatelů."
+"Zapíná/vypíná umlčení všech pozorovatelů.\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:825
-#, fuzzy
 msgid ""
 "\n"
 "Unban a user in a multiplayer game by the IP address used by that username. "
@@ -2941,22 +2938,20 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Odpojí a úplně vyhodí hráče ze hry více hráčů včetně zakázání přístupu z "
-"jeho IP adresy.\n"
+"Zruší zákaz pro IP adresu kterou současně používá dané jméno. Hráč nemusí "
+"být přímo ve hře, stačí jeho přítomnost na serveru.\n"
 "\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:826
-#, fuzzy
 msgid ""
 "\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
 "observers is cleared."
 msgstr ""
 "\n"
-"Zapíná/vypíná umlčení vybraného pozorovatele. Pokud není zadáno uživatelské "
-"jméno, je zobrazen jejich seznam.\n"
-"\n"
+"Vypíná umlčení vybraného pozorovatele. Pokud není zadáno žádné uživatelské "
+"jméno, je zrušeno umlčení všech pozorovatelů a smazán jejich seznam."
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:833
@@ -3055,7 +3050,6 @@ msgstr ""
 # do uvozovek nebo ne?
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:861
-#, fuzzy
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -3064,7 +3058,8 @@ msgid ""
 msgstr ""
 "\n"
 "Upravuje určenou vlastnost vybrané jednotky. Příklad použití: :unit "
-"hitpoints=100"
+"hitpoints=100\n"
+"\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:862
@@ -3072,6 +3067,8 @@ msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
 msgstr ""
+"\n"
+"Povýší vybranou jednotku N-krát. Příklad: :unit advances=2"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:51
@@ -3450,13 +3447,11 @@ msgstr ""
 
 #. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:615
-#, fuzzy
 msgid "petrifies"
-msgstr "Údery"
+msgstr "zkamenění"
 
 #. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:617
-#, fuzzy
 msgid ""
 "Petrify:\n"
 "This attack petrifies the target, turning it to stone. Units that have been "
@@ -3742,29 +3737,28 @@ msgstr "Konec"
 #: data/core/macros/ai_controller.cfg:1047
 #, fuzzy
 msgid "Set special orders..."
-msgstr "Nastavit chování..."
+msgstr "Nastavit zváštní příkazy..."
 
 #: data/core/macros/ai_controller.cfg:1048
 msgid "Move leader to..."
-msgstr ""
+msgstr "Přesunout vůdce na..."
 
 #: data/core/macros/ai_controller.cfg:1049
-#, fuzzy
 msgid "Right-click to select a location to move leader to"
-msgstr "Klikni pravým tlačítkem pro výběr lokace k obraně"
+msgstr "Klikni pravým tlačítkem pro výběr lokace k přesunu vůdce"
 
 #: data/core/macros/ai_controller.cfg:1050
 msgid "Move leader here"
-msgstr ""
+msgstr "Přesunout vůdce sem"
 
 #: data/core/macros/ai_controller.cfg:1051
 msgid "moving leader to $x1|,$y1|."
-msgstr ""
+msgstr "přesouvám vůdce na $x1|,$y1|."
 
 #: data/core/macros/ai_controller.cfg:1052
 #, fuzzy
 msgid "Clear special orders"
-msgstr "Zrušit všechny příkazy"
+msgstr "Zrušit zvláštní příkazy"
 
 #: data/core/macros/ai_controller.cfg:1053
 #, fuzzy
@@ -3772,10 +3766,8 @@ msgid ""
 "Special: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_special_description"
 msgstr ""
-"Cíl: $ai_controller.side_$ally_side|_current_settings."
-"currently_doing_objective_description\n"
-"Chování: $ai_controller.side_$ally_side|_current_settings."
-"currently_doing_behaviour_description"
+"Zvláštní příkaz: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_special_description"
 
 # Tohle myslím není vidět, takže je stejně jedno jak je to přeložené (?)
 #. [advancement]: id=amla_default
@@ -3836,9 +3828,8 @@ msgstr ""
 #. [objective]: description=<span color='white'>, condition=win
 #: data/core/macros/carryover-utils.cfg:34
 #: data/core/macros/carryover-utils.cfg:42
-#, fuzzy
 msgid "Alternative objective:"
-msgstr "Nastavit cíl..."
+msgstr "Alternativní cíl:"
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:39
@@ -3923,13 +3914,12 @@ msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr "Jed právě vniká do žil této jednotky."
 
 #: data/core/macros/items.cfg:287
-#, fuzzy
 msgid ""
 "Sprinkling this water on melee weapons grants them the 'arcane' damage type "
 "until the end of the current scenario. Should $unit.name use it?"
 msgstr ""
-"Tato voda změní druh útoku všech zbraní na blízko na „nezemský“ do konce "
-"současného scénáře."
+"Pokud touto vodou pokropíme zbraně pro boj na blízko, změní se jejich druh "
+"útoku na „nezemský“ do konce současného scénáře. Má ji $unit.name použít?"
 
 #: data/core/macros/items.cfg:288
 msgid "I am not suited to the use of this item! Let another take it."
@@ -4030,7 +4020,6 @@ msgid "storm trident"
 msgstr "trojzubec bouře"
 
 #: data/core/macros/names.cfg:18
-#, fuzzy
 msgid ""
 "Egar,Elch,Ga'ash,Gadé Ihn,Gakré Ohm,Galeck,Galsh,Garadin,Garchin,Gark,Garlan,"
 "Garlin Ohn,Garrutin,Gart'lo,Garushi,Gashinar,Gashol,Gaushii,Gaustun,Gegchi,"
@@ -4043,25 +4032,24 @@ msgid ""
 "Verath,Verditt,Verkon,Verlinn,Vermad,Vertick,Vladnir"
 msgstr ""
 "Egar,Elch,Ga'ash,Gadé Ihn,Gakré Ohm,Galeck,Galsh,Garadin,Garchin,Gark,Garlan,"
-"Garlin ohn,Garrutin,Gart'lo,Garushi,Gashinar,Gashöl,Gaushii,Gaustun,Gegchi,"
-"Gelka Kon,Gelknick,Gillan,Gisharri,Goyst,Grada,Græt Ihn,Grashen,Gravlan,Gray,"
-"Grelnit,Grenn ohn,Gretz,Gribbel,Gridda,Grish,Gron ih,Ka,Kahn Ih,Karigan,"
-"Karri Kon,Karron,Kasp,Kegrid,Kerath Ihn,Kerath Kor,Klash,Kon Garashé,Kraag,"
-"Krall Ohn,Kran Kor,Krash,Kraslar,Krenli,Kruggen,Kun,Mah Toa,Mal,Margian,"
-"Marhildian,Markan,Markinos,Mar Ohn,Marra Di'lek,Marrito,Marritos,Merkush,"
+"Garlin Ohn,Garrutin,Gart'lo,Garushi,Gashinar,Gashol,Gaushii,Gaustun,Gegchi,"
+"Gelka Kon,Gelknick,Gillan,Gisharri,Gost,Grada,Græt Ihn,Grashen,Gravlan,Grag,"
+"Grelnit,Grenn Ohn,Greth,Gribbel,Gridda,Grish,Gron Ihn,Ka,Kahn Ih,Karigan,"
+"Karri Kon,Karron,Kask,Kegrid,Kerath Ihn,Kerath Kor,Klash,Kon Garashé,Kraag,"
+"Krall Ohn,Kran Kor,Krash,Kraslar,Krenli,Kruggen,Kun,Mah Toa,Margian,"
+"Mar'Ildian,Markan,Markinos,Mar Ohn,Marra Di'lek,Marrito,Marritos,Merkush,"
 "Merritos Gark,Morusté,Murr,Omataké,Reshan,Vashitt,Velnick,Veralon,Veramo,"
-"Verath,Verditt,Verkon,Verlinn,Vermay,Vertick,Vladnir"
+"Verath,Verditt,Verkon,Verlinn,Vermad,Vertick,Vladnir"
 
 #: data/core/macros/names.cfg:19
-#, fuzzy
 msgid ""
 "Alen Ka,Alinash Mal,Ashirt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
 "Eshi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orrida,Oshibi,Vallin,Valnirra,"
 "Valnitt,Velisk,Verra,Vellin Ka,Veshtar,Vushtin"
 msgstr ""
-"Alen Ka,Alinash Mal,Ashijt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
-"Eshyi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orriday,Oshibi,Vallin,Valnirra,"
-"Valnitt,Velisp,Vellin Ka,Vushtin,Werra,Weshter,Wilniss"
+"Alen Ka,Alinash Mal,Ashirt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
+"Eshi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orrida,Oshibi,Vallin,Valnirra,"
+"Valnitt,Velisk,Verra,Vellin Ka,Veshtar,Vushtin"
 
 #: data/core/macros/names.cfg:23
 msgid ""
@@ -5161,8 +5149,9 @@ msgstr "zdravá"
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:140
+#, fuzzy
 msgid "Always rest heals"
-msgstr ""
+msgstr "Vždy odpočívá a uzdravuje se odpočinkem"
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:157 data/core/macros/traits.cfg:170
@@ -5211,9 +5200,8 @@ msgstr "hloupá"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:228
-#, fuzzy
 msgid "aged"
-msgstr "na dálku"
+msgstr "starý"
 
 #. [color_range]: id=red
 #. [color_range]: id=1
@@ -5224,12 +5212,12 @@ msgstr "Červená"
 #. [color_range]: id=lightred
 #: data/core/team-colors.cfg:20
 msgid "Light Red"
-msgstr ""
+msgstr "Světle červená"
 
 #. [color_range]: id=darkred
 #: data/core/team-colors.cfg:26
 msgid "Dark Red"
-msgstr ""
+msgstr "Tmavě červená"
 
 #. [color_range]: id=blue
 #. [color_range]: id=2
@@ -6230,7 +6218,7 @@ msgstr "Jezero $name"
 #. [language]
 #: data/hardwired/english.cfg:24
 msgid "$name's Peak,Mount $name"
-msgstr ""
+msgstr "$name's Peak,Mount $name"
 
 #. [language]
 #: data/hardwired/english.cfg:25
@@ -6285,7 +6273,7 @@ msgstr "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 #. [language]
 #: data/hardwired/english.cfg:33
 msgid "$mountain|mont,$mountain|cliff,$mountain|bury,$mountain|ham"
-msgstr ""
+msgstr "$mountain|mont,$mountain|cliff,$mountain|bury,$mountain|ham"
 
 #. [language]
 #: data/hardwired/english.cfg:34
@@ -6298,6 +6286,7 @@ msgstr ""
 #: data/hardwired/english.cfg:35
 msgid "$road's Rest,$road's Waypoint,$road|bury,$road|ham,$name|bury,$name|ham"
 msgstr ""
+"$road's Rest,$road's Waypoint,$road|bury,$road|ham,$name|bury,$name|ham"
 
 #. [language]
 #: data/hardwired/english.cfg:36
@@ -7105,15 +7094,13 @@ msgstr "úroveň"
 
 #. [unit_moves]: id=unit-moves
 #: data/themes/default.cfg:459 data/themes/experimental.cfg:399
-#, fuzzy
 msgid "statuspanel^moves"
 msgstr "pohyby"
 
 #. [unit_defense]: id=unit-defense
 #: data/themes/default.cfg:468 data/themes/experimental.cfg:408
-#, fuzzy
 msgid "statuspanel^terrain def."
-msgstr "úroveň"
+msgstr ""
 
 # pův.: "Hrát", což je blbost, protože je to místo "actions" pro malé rozlišení
 #. [change]: id=actions-menu
@@ -7216,14 +7203,12 @@ msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Nejsou žádné volné hrady, ve kterých by se daly verbovat jednotky."
 
 #: src/actions.cpp:352 src/actions.cpp:411 src/actions.cpp:1341
-#, fuzzy
 msgid "An invalid attacker weapon got selected."
-msgstr "Vybral jsi neplatný věk"
+msgstr "Byla vybrána neplatná zbraň útočníka."
 
 #: src/actions.cpp:357
-#, fuzzy
 msgid "An invalid defender weapon got selected."
-msgstr "Vybral jsi neplatný věk"
+msgstr "Byla vybrána neplatná zbraň obránce."
 
 #: src/actions.cpp:1100
 msgid "female^poisoned"
@@ -7235,7 +7220,7 @@ msgstr "zkamenělá"
 
 #: src/actions.cpp:1110
 msgid "petrified"
-msgstr ""
+msgstr "zkamenělý"
 
 #: src/actions.cpp:2232
 msgid "Ambushed!"
@@ -7347,7 +7332,6 @@ msgid "Dependencies"
 msgstr "Závislosti"
 
 #: src/addon_management.cpp:506
-#, fuzzy
 msgid ""
 "$addon_title depends upon the following add-on which you have not installed "
 "yet:"
@@ -7355,23 +7339,23 @@ msgid_plural ""
 "$addon_title depends upon the following add-ons which you have not installed "
 "yet:"
 msgstr[0] ""
-"Toto rozšíření je závislé na následujícím rozšíření, které není "
+"Rozšíření $addon_title je závislé na následujícím rozšíření, které není "
 "nainstalované:"
 msgstr[1] ""
-"Toto rozšíření je závislé na následujících rozšířeních, která nejsou "
+"Rozšíření $addon_title je závislé na následujících rozšířeních, která nejsou "
 "nainstalována:"
 msgstr[2] ""
-"Toto rozšíření je závislé na následujících rozšířeních, která nejsou "
+"Rozšíření $addon_title je závislé na následujících rozšířeních, která nejsou "
 "nainstalována:"
 
 #: src/addon_management.cpp:509
-#, fuzzy
 msgid ""
 "Do you still want to download $addon_title|? (You will have to install all "
 "the dependencies in order to play.)"
 msgstr ""
-"Přejete si toto rozšíření nainstalovat? (Budete muset ještě nainstalovat "
-"ostatní rozšíření, na nichž je toto závislé, aby s ním bylo možno hrát.)"
+"Přejete si přesto $addon_title stáhnout a nainstalovat? (Budete muset ještě "
+"nainstalovat ostatní rozšíření, na nichž je toto závislé, aby s ním bylo "
+"možno hrát.)"
 
 #: src/addon_management.cpp:527 src/addon_management.cpp:599
 #: src/multiplayer.cpp:213 src/multiplayer.cpp:268 src/multiplayer_ui.cpp:78
@@ -7559,7 +7543,7 @@ msgstr "Filtr: "
 
 #: src/addon_management.cpp:1112
 msgid "Description"
-msgstr ""
+msgstr "Popis"
 
 #: src/addon_management.cpp:1149
 msgid "Network communication error."
@@ -7664,9 +7648,8 @@ msgid "What should our victorious unit become?"
 msgstr "Čím se má stát vítězná jednotka?"
 
 #: src/dialogs.cpp:216
-#, fuzzy
 msgid "Level"
-msgstr "úroveň"
+msgstr "Úroveň"
 
 #: src/dialogs.cpp:235
 msgid "No objectives available"
@@ -7934,14 +7917,13 @@ msgstr "Prohra:"
 
 #: src/game_events.cpp:3503
 msgid "[unit_worth]'s filter didn't match any units!"
-msgstr ""
+msgstr "Filtr [unit_worth] nevybral žádné jednotky!"
 
 #: src/gamestatus.cpp:741
-#, fuzzy
 msgid ""
 "Leader position not empty - duplicate side definition for side '$side|' "
 "found."
-msgstr "Nalezena duplikovaná definice pro stranu „$side|“."
+msgstr "Pozie vůdce není prázdná - duplikovaná definice pro stranu „$side|“."
 
 #: src/generate_report.cpp:128
 msgid "invisible: "
@@ -7967,7 +7949,7 @@ msgstr ""
 
 #: src/generate_report.cpp:136
 msgid "poisoned: "
-msgstr "otrávený:"
+msgstr "otrávený: "
 
 #: src/generate_report.cpp:137
 msgid ""
@@ -7987,7 +7969,7 @@ msgstr ""
 
 #: src/generate_report.cpp:140
 msgid "petrified: "
-msgstr ""
+msgstr "zkamenění: "
 
 #: src/generate_report.cpp:141
 msgid "This unit has been petrified. It may not move or attack."
@@ -8059,21 +8041,20 @@ msgid "Observers:"
 msgstr "Pozorovatelé:"
 
 #: src/gui/dialogs/lobby_player_info.cpp:64
-#, fuzzy
 msgid "In game:"
-msgstr "Jméno:"
+msgstr "Ve hře:"
 
 #: src/gui/dialogs/lobby_player_info.cpp:66
 msgid "(observing)"
-msgstr ""
+msgstr "(pozoruje)"
 
 #: src/gui/dialogs/lobby_player_info.cpp:68
 msgid "(playing)"
-msgstr ""
+msgstr "(hraje)"
 
 #: src/gui/dialogs/lobby_player_info.cpp:71
 msgid "In lobby"
-msgstr ""
+msgstr "V čekárně"
 
 #: src/help.cpp:46
 msgid "Help"
@@ -8088,27 +8069,24 @@ msgid "<header>text='Units having this ability'</header>"
 msgstr "<header>text='Jednotky s touto schopností'</header>"
 
 #: src/help.cpp:1246
-#, fuzzy
 msgid "Leaders:"
-msgstr "Vůdce: "
+msgstr "Vůdci:"
 
 #: src/help.cpp:1255
-#, fuzzy
 msgid "Recruits:"
-msgstr "Verbuje: "
+msgstr "Verbují:"
 
 #: src/help.cpp:1269 src/multiplayer_create.cpp:78
 msgid "Era:"
 msgstr "Věk:"
 
 #: src/help.cpp:1277
-#, fuzzy
 msgid "Factions:"
-msgstr "Frakce"
+msgstr "Frakce:"
 
 #: src/help.cpp:1287
 msgid "Factions are only used in multiplayer"
-msgstr ""
+msgstr "Frakce jsou používány pouze ve hře více hráčů"
 
 #: src/help.cpp:1362
 msgid "Advances from: "
@@ -8257,19 +8235,16 @@ msgid "?"
 msgstr "?"
 
 #: src/loadscreen.cpp:244
-#, fuzzy
 msgid "Verifying cache..."
-msgstr "Prověřuji dočasná úložiště"
+msgstr "Prověřuji dočasná úložiště..."
 
 #: src/loadscreen.cpp:262
-#, fuzzy
 msgid "Reading unit files..."
-msgstr "Načítám soubory s jednotkami."
+msgstr "Načítám soubory s jednotkami..."
 
 #: src/loadscreen.cpp:280
-#, fuzzy
 msgid "Reading files and creating cache..."
-msgstr "Načítám soubory a vytvářím dočasná úložiště."
+msgstr "Načítám soubory a vytvářím dočasná úložiště..."
 
 #: src/lobby_data.cpp:195 src/multiplayer_lobby.cpp:431
 msgid "Unknown era: $era_id"
@@ -8624,30 +8599,30 @@ msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
 msgstr ""
-"Zakáže přístup a odpojí hráče nebo pozorovatele.\n"
-"Pokud není ve hře, ale jen na serveru, bude mu pouze zakázán přístup."
+"Zakáže přístup a vyhodí hráče nebo pozorovatele. Pokud není ve hře, ale jen "
+"na serveru, bude mu pouze zakázán přístup."
 
 #: src/menu_events.cpp:2216
 msgid "Unban a user. He does not have to be in the game but on the server."
-msgstr ""
+msgstr "Zruší zákaz hráče. Nemusí být přímo ve hře, ale na serveru ano."
 
 #: src/menu_events.cpp:2219
 msgid "Kick a player or observer."
-msgstr "Odpojí hráče nebo pozorovatele."
+msgstr "Vyhodí hráče nebo pozorovatele."
 
 #: src/menu_events.cpp:2221
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr "Umlčí pozorovatele. Bez parametru vypíše stav umlčení."
 
 #: src/menu_events.cpp:2223
-#, fuzzy
 msgid "Unmute an observer. Without an argument unmutes everyone."
-msgstr "Umlčí pozorovatele. Bez parametru vypíše stav umlčení."
+msgstr ""
+"Odumlčí pozorovatele. Bez parametru je akce provedena pro všechny "
+"pozorovatele."
 
 #: src/menu_events.cpp:2225
-#, fuzzy
 msgid "Mute/Unmute all observers. (toggles)"
-msgstr "Umlčí všechny pozorovatele."
+msgstr "Umlčí všechny pozorovatele. (přepínač)"
 
 #: src/menu_events.cpp:2235
 msgid "Send a message to the server admins currently online"
@@ -8716,21 +8691,20 @@ msgstr ""
 "přezdívku."
 
 #: src/menu_events.cpp:2270
-#, fuzzy
 msgid "Join a room."
-msgstr "Přidej se ke hře"
+msgstr "Vstup do místnosti."
 
 #: src/menu_events.cpp:2273
 msgid "Part a room."
-msgstr ""
+msgstr "Rozdělí místnost."
 
 #: src/menu_events.cpp:2275
 msgid "List room members."
-msgstr ""
+msgstr "Vypíše hráče v místnosti."
 
 #: src/menu_events.cpp:2277
 msgid "List available rooms."
-msgstr ""
+msgstr "Vypíše dostupné místnosti."
 
 #: src/menu_events.cpp:2279
 msgid "Room message."
@@ -8798,7 +8772,7 @@ msgstr "Vypne ladící mód."
 
 #: src/menu_events.cpp:2445
 msgid "Execute a Lua statement."
-msgstr ""
+msgstr "Spustí příkaz v jazyce Lua."
 
 #: src/menu_events.cpp:2447
 msgid "Set the command used by the custom command hotkey"
@@ -8806,7 +8780,7 @@ msgstr "Nastaví příkaz připojený ke klávesové zkratce."
 
 #: src/menu_events.cpp:2449
 msgid "Launch the gamestate inspector"
-msgstr ""
+msgstr "Spustit inspektor herního stavu"
 
 #: src/menu_events.cpp:2451
 msgid "Set or show alias to a command"
@@ -9047,7 +9021,7 @@ msgstr "Anonymní lokální hráč"
 
 #: src/multiplayer_connect.cpp:666
 msgid "$playername $side"
-msgstr ""
+msgstr "$playername $side"
 
 #: src/multiplayer_connect.cpp:670
 msgid "(Empty slot)"
@@ -9058,9 +9032,8 @@ msgid "(Reserved for $playername)"
 msgstr "(Vyhrazeno pro $playername)"
 
 #: src/multiplayer_connect.cpp:682
-#, fuzzy
 msgid "(empty)"
-msgstr "Prázdný"
+msgstr "(prázdný)"
 
 #: src/multiplayer_connect.cpp:792
 msgid "Reserved"
@@ -9133,11 +9106,8 @@ msgid "Cannot find era $era"
 msgstr "Nemohu najít následující věk - $era"
 
 #: src/multiplayer_connect.cpp:1585
-#, fuzzy
 msgid "Defeat enemy leader(s)"
-msgstr ""
-"Vítězství:\n"
-"@Znič nepřátelské(ho) vůdce"
+msgstr "Znič nepřátelské(ho) vůdce"
 
 #: src/multiplayer_connect.cpp:1649
 msgid "Waiting for players to join..."
@@ -9375,28 +9345,25 @@ msgid "Quit"
 msgstr "Konec"
 
 #: src/multiplayer_lobby.cpp:734
-#, fuzzy
 msgid "Apply Filter"
-msgstr "Filtr: "
+msgstr "Použít filtr"
 
 #: src/multiplayer_lobby.cpp:735
 msgid "Invert"
-msgstr ""
+msgstr "Invertovat"
 
 # nebylo by jednodušší jenom "prázdné pozice"?
 #: src/multiplayer_lobby.cpp:736
-#, fuzzy
 msgid "Vacant Slots"
-msgstr "Prázdná pozice:"
+msgstr "Prázdné pozice"
 
 #: src/multiplayer_lobby.cpp:737
 msgid "Friends in Game"
-msgstr ""
+msgstr "Přátelé ve hře"
 
 #: src/multiplayer_lobby.cpp:738
-#, fuzzy
 msgid "Search:"
-msgstr "Najdi popisek nebo jednotku"
+msgstr "Hledej:"
 
 #: src/multiplayer_lobby.cpp:747
 msgid "Skip quickly to the active turn when observing"
@@ -9407,12 +9374,16 @@ msgid ""
 "Enable the games filter. If unchecked all games are shown, regardless of any "
 "filter."
 msgstr ""
+"Zapíná filtr her. Pokud není aktivní, jsou vidět všechny hry bez ohledu jeho "
+"na nastavení."
 
 #: src/multiplayer_lobby.cpp:754
 msgid ""
 "Show all games that do *not* match your filter. Useful for hiding games you "
 "are not interested in."
 msgstr ""
+"Zobrazí pouze hry, které nesouhlasí s filtrem. Vhodné pro skrytí her, které "
+"nejsou zajímavé."
 
 #: src/multiplayer_lobby.cpp:758
 msgid "Only show games that have at least one vacant slot"
@@ -9558,12 +9529,11 @@ msgstr "Neznámý scénář: „$scenario|“"
 
 #: src/playmp_controller.cpp:93
 msgid "$name has taken control"
-msgstr ""
+msgstr "$name převzal(a) kontrolu"
 
 #: src/playmp_controller.cpp:95
-#, fuzzy
 msgid "Turn changed"
-msgstr "na dálku"
+msgstr ""
 
 # chybové hlášení nebo jenom upozornění?
 #: src/playmp_controller.cpp:227
@@ -9669,12 +9639,12 @@ msgid "The game is over."
 msgstr "Hra skončila."
 
 #: src/playsingle_controller.cpp:488
-#, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game\n"
 "cannot continue. Do you want to save the game?"
 msgstr ""
-"Síťové spojení bylo přerušeno a hra nemůže pokračovat. Chcete ji uložit?"
+"Síťové spojení bylo přerušeno a hra\n"
+"nemůže pokračovat. Chcete ji uložit?"
 
 #: src/playsingle_controller.cpp:648
 msgid "It is now $name|'s turn"
@@ -9738,9 +9708,8 @@ msgid "This is not a multiplayer save"
 msgstr "Toto není uložená hra více hráčů"
 
 #: src/savegame.cpp:605
-#, fuzzy
 msgid "The game could not be saved: "
-msgstr "Hru se nepodařilo uložit"
+msgstr "Hru se nepodařilo uložit: "
 
 #: src/savegame.cpp:692
 msgid "Name: "
@@ -9870,7 +9839,6 @@ msgid "Damage"
 msgstr "Zranění"
 
 #: src/statistics_dialog.cpp:176
-#, fuzzy
 msgid "Overall"
 msgstr "Celkem"
 
@@ -10149,79 +10117,3 @@ msgstr "Pomozte nám vylepšit Wesnoth!"
 #: src/upload_log.cpp:374
 msgid "Enable summary uploads"
 msgstr "Povolit posílání souhrnů"
-
-#~ msgid "Movement cost is 0, probably a terrain with movement cost of 0."
-#~ msgstr "Cena pohybu je 0, nejspíše terén s cenou 0."
-
-#~ msgid "The file you have tried to load is corrupt. Continue playing?"
-#~ msgstr "Soubor, který se snažíš načíst, je poškozený. Pokračovat ve hře?"
-
-#~ msgid "Can rest while moving, takes a quarter less poison damage"
-#~ msgstr "Odpočívá i při pohybu, zranění jedem pouze tři čtvrtiny"
-
-#~ msgid "Location^Loc."
-#~ msgstr "Místo"
-
-#~ msgid "Play a campaign"
-#~ msgstr "Hraj tažení"
-
-#~ msgid "Computer player"
-#~ msgstr "Počítačový hráč"
-
-#~ msgid "Default AI"
-#~ msgstr "Standardní"
-
-#~ msgid "stones"
-#~ msgstr "zkamenění"
-
-#~ msgid "An invalid weapon is selected, possibly by the Python AI."
-#~ msgstr "Vybrána neplatná zbraň, pravděpodobně kvůli Pythonové AI."
-
-#~ msgid "female^stone"
-#~ msgstr "zkamenění"
-
-#~ msgid "stone"
-#~ msgstr "zkamenění"
-
-#~ msgid "Unknown unit type : "
-#~ msgstr "Neznámý druh jednotky : "
-
-#~ msgid "Quit Game"
-#~ msgstr "Ukončit hru"
-
-#~ msgid "Ignore All"
-#~ msgstr "Ignoruj vše"
-
-#~ msgid ""
-#~ "Save names may not contain colons, slashes, or backslashes. Please choose "
-#~ "a different name."
-#~ msgstr ""
-#~ "Jména uložených her nemohou obsahovat dvojtečky, lomítka nebo zpětná "
-#~ "lomítka. Zvol prosím jiné jméno."
-
-#~ msgid "stone: "
-#~ msgstr "zkamenění: "
-
-#~ msgid "Remove a trait from a unit. (Does not work yet.)"
-#~ msgstr "Odebere jednotce vlastnost. (Zatím nefunkční!)"
-
-#~ msgid "The replay could not be saved"
-#~ msgstr "Záznam se nepodařilo uložit"
-
-#~ msgid "Do you still want to download it?"
-#~ msgstr "Chceš jej i přesto stáhnout?"
-
-#~ msgid " included from "
-#~ msgstr "zahrnuté z"
-
-#~ msgid "Mute an observer."
-#~ msgstr "Umlčí daného pozorovatele."
-
-#~ msgid "Unchecked script files found:"
-#~ msgstr "Nalezeny nezkontrolované skripty:"
-
-#~ msgid "Reading cache"
-#~ msgstr "Načítám dočasná úložiště"
-
-#~ msgid "Back to start"
-#~ msgstr "Zpátky na start"
