@@ -823,6 +823,8 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 
 	//sort the available units into order by value
 	//so that the most valuable units are shown first
+	//FIXME: this is bad! The dialog directly sort the recall list itself.
+	//and is now useless because level's column sorting is used later
 	sort_units(recall_list_team);
 
 	gui_->draw(); //clear the old menu
@@ -846,7 +848,8 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 #endif
 
 	gui::menu::basic_sorter sorter;
-	sorter.set_alpha_sort(1).set_alpha_sort(2).set_id_sort(3).set_xp_sort(4).set_alpha_sort(5);
+	sorter.set_alpha_sort(1).set_alpha_sort(2);
+	sorter.set_level_sort(3,4).set_xp_sort(4).set_alpha_sort(5);
 
 	options.push_back(heading.str());
 	options_to_filter.push_back(options.back());
@@ -922,6 +925,9 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 
 		dialogs::units_list_preview_pane unit_preview(recall_list_team, filter);
 		rmenu.add_pane(&unit_preview);
+
+		//sort by level
+		rmenu.get_menu().sort_by(3);
 
 		res = rmenu.show();
 		res = filter->get_index(res);
