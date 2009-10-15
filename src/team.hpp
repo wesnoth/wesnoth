@@ -41,12 +41,12 @@ class team : public viewpoint, public savegame::savegame_config
 	public:
 		shroud_map() : enabled_(false), data_() {}
 
-		void place(size_t x, size_t y);
-		bool clear(size_t x, size_t y);
+		void place(int x, int y);
+		bool clear(int x, int y);
 		void reset();
 
-		bool value(size_t x, size_t y) const;
-		bool shared_value(const std::vector<const shroud_map*>& maps, size_t x, size_t y) const;
+		bool value(int x, int y) const;
+		bool shared_value(const std::vector<const shroud_map*>& maps, int x, int y) const;
 
 		bool copy_from(const std::vector<const shroud_map*>& maps);
 

@@ -27,6 +27,7 @@
 #include "resources.hpp"
 
 static lg::log_domain log_engine("engine");
+#define DBG_NG LOG_STREAM(debug, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define WRN_NG LOG_STREAM(warn, log_engine)
 
@@ -592,15 +593,15 @@ void validate_side(int side)
 	}
 }
 
-bool team::shroud_map::clear(size_t x, size_t y)
+bool team::shroud_map::clear(int x, int y)
 {
-	if(enabled_ == false)
+	if(enabled_ == false || x < 0 || y < 0)
 		return false;
 
-	if(x >= data_.size())
+	if(x >= static_cast<int>(data_.size()))
 		data_.resize(x+1);
 
-	if(y >= data_[x].size())
+	if(y >= static_cast<int>(data_[x].size()))
 		data_[x].resize(y+1);
 
 	if(data_[x][y] == false) {
@@ -611,12 +612,18 @@ bool team::shroud_map::clear(size_t x, size_t y)
 	}
 }
 
-void team::shroud_map::place(size_t x, size_t y)
+void team::shroud_map::place(int x, int y)
 {
-	if(enabled_ == false)
+	if(enabled_ == false || x < 0 || y < 0)
 		return;
 
-	if(x < data_.size() && y < data_[x].size()) {
+	if (x >= static_cast<int>(data_.size())) {
+		DBG_NG << "Couldn't place shroud on invalid x coordinate: ("
+			<< x << ", " << y << ") - max x: " << data_.size() - 1 << "\n";
+	} else if (y >= static_cast<int>(data_[x].size())) {
+		DBG_NG << "Couldn't place shroud on invalid y coordinate: ("
+			<< x << ", " << y << ") - max y: " << data_[x].size() - 1 << "\n";
+	} else {
 		data_[x][y] = false;
 	}
 }
@@ -631,15 +638,15 @@ void team::shroud_map::reset()
 	}
 }
 
-bool team::shroud_map::value(size_t x, size_t y) const
+bool team::shroud_map::value(int x, int y) const
 {
-	if(enabled_ == false)
+	if(enabled_ == false || x < 0 || y < 0)
 		return false;
 
-	if(x >= data_.size())
+	if(x >= static_cast<int>(data_.size()))
 		return true;
 
-	if(y >= data_[x].size())
+	if(y >= static_cast<int>(data_[x].size()))
 		return true;
 
 	if(data_[x][y])
@@ -648,9 +655,9 @@ bool team::shroud_map::value(size_t x, size_t y) const
 		return true;
 }
 
-bool team::shroud_map::shared_value(const std::vector<const shroud_map*>& maps, size_t x, size_t y) const
+bool team::shroud_map::shared_value(const std::vector<const shroud_map*>& maps, int x, int y) const
 {
-	if(enabled_ == false)
+	if(enabled_ == false || x < 0 || y < 0)
 		return false;
 
 	for(std::vector<const shroud_map*>::const_iterator i = maps.begin(); i != maps.end(); ++i) {
