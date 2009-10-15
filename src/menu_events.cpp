@@ -210,7 +210,7 @@ void menu_handler::unit_list()
 
 	gui::menu::basic_sorter sorter;
 	sorter.set_alpha_sort(0).set_alpha_sort(1).set_numeric_sort(2);
-	sorter.set_alpha_sort(3).set_numeric_sort(4).set_numeric_sort(5);
+	sorter.set_alpha_sort(3).set_numeric_sort(4).set_level_sort(5, 6);
 	sorter.set_xp_sort(6).set_alpha_sort(7);
 
 	std::vector<std::string> items;
