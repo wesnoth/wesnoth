@@ -85,6 +85,25 @@ bool menu::basic_sorter::column_sortable(int column) const
 		   pos_sort_.count(column) == 1 || id_sort_.count(column) == 1 || xp_sort_.count(column) == 1;
 }
 
+std::pair<int, int> parse_fraction(const std::string& s)
+{
+	std::vector<std::string> parts = utils::split(s, '/', 0);
+	parts.resize(2, 0); // insert default=0 for missing values
+	int num = lexical_cast_default<int>(parts[0], 0);
+	int denom = lexical_cast_default<int>(parts[1], 0);
+	return std::make_pair(num, denom);
+}
+
+int xp_to_advance(const std::string& s) {
+	std::pair<int,int> xp_frac = parse_fraction(s);
+
+	//consider units without AMLA or advancement as having xp_max=1000000
+	if(xp_frac.second == 0)
+		xp_frac.second = 1000000;
+
+	return xp_frac.second - xp_frac.first;
+}
+
 bool menu::basic_sorter::less(int column, const item& row1, const item& row2) const
 {
 	const std::map<int,int>::const_iterator redirect = redirect_sort_.find(column);
@@ -104,10 +123,10 @@ bool menu::basic_sorter::less(int column, const item& row1, const item& row2) co
 		return true;
 	}
 
-	if(alpha_sort_.count(column) == 1) {
-		const std::string& item1 = font::del_tags(row1.fields[column]);
-		const std::string& item2 = font::del_tags(row2.fields[column]);
+	const std::string& item1 = font::del_tags(row1.fields[column]);
+	const std::string& item2 = font::del_tags(row2.fields[column]);
 
+	if(alpha_sort_.count(column) == 1) {
 		std::string::const_iterator begin1 = item1.begin(), end1 = item1.end(),
 		                            begin2 = item2.begin(), end2 = item2.end();
 		while(begin1 != end1 && is_wml_separator(*begin1)) {
@@ -120,52 +139,12 @@ bool menu::basic_sorter::less(int column, const item& row1, const item& row2) co
 
 		return std::lexicographical_compare(begin1,end1,begin2,end2,chars_less_insensitive);
 	} else if(numeric_sort_.count(column) == 1) {
-		const std::string& item1 = font::del_tags(row1.fields[column]);
-		const std::string& item2 = font::del_tags(row2.fields[column]);
+		int val_1 = lexical_cast_default<int>(item1, 0);
+		int val_2 = lexical_cast_default<int>(item2, 0);
 
-		const char* a = item1.c_str();
-		const char* b = item2.c_str();
-
-		while(*a != 0 && !isdigit(*a)) {
-			++a;
-		}
-
-		while(*b != 0 && !isdigit(*b)) {
-			++b;
-		}
-
-		return atoi(a) > atoi(b);
+		return val_1 > val_2;
 	} else if(xp_sort_.count(column) == 1) {
-		const std::string& item1 = font::del_tags(row1.fields[column]);
-		const std::string& item2 = font::del_tags(row2.fields[column]);
-
-		const char* digits[2] = {item1.c_str(),item2.c_str()};
-		//we must move past any non-digit characters for atoi() to work later
-		//outer loop iterates over the strings we have to fix, inner loop over characters
-		for(int i = 0; i < 2; i++) {
-			while(*digits[i] != 0 && !isdigit(*digits[i])) {
-				++digits[i];
-			}
-		}
-
-		//we need to further parse xp into x and y components instead of x/y
-		//so we grab the position of slash character
-		const char *slash1 = strchr(digits[0],'/');
-		const char *slash2 = strchr(digits[1],'/');
-
-		int xp1_y,xp2_y;
-		if(slash1)
-			xp1_y = atoi(slash1+1);
-		else
-			xp1_y = 0;
-		if(slash2)
-			xp2_y = atoi(slash2+1);
-		else
-			xp2_y = 0;
-		int xp1_x = atoi(digits[0]); //atoi stops at the first invalid char, which is slash character
-		int xp2_x = atoi(digits[1]);
-
-		return (xp1_y - xp1_x) < (xp2_y - xp2_x);
+		return xp_to_advance(item1) < xp_to_advance(item2);
 	}
 
 	const std::map<int,std::vector<int> >::const_iterator itor = pos_sort_.find(column);
