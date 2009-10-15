@@ -85,7 +85,7 @@ bool menu::basic_sorter::column_sortable(int column) const
 		   pos_sort_.count(column) == 1 || id_sort_.count(column) == 1 || xp_sort_.count(column) == 1;
 }
 
-std::pair<int, int> parse_fraction(const std::string& s)
+static std::pair<int, int> parse_fraction(const std::string& s)
 {
 	std::vector<std::string> parts = utils::split(s, '/', 0);
 	parts.resize(2, 0); // insert default=0 for missing values
@@ -94,7 +94,7 @@ std::pair<int, int> parse_fraction(const std::string& s)
 	return std::make_pair(num, denom);
 }
 
-int xp_to_advance(const std::string& s) {
+static int xp_to_advance(const std::string& s) {
 	std::pair<int,int> xp_frac = parse_fraction(s);
 
 	//consider units without AMLA or advancement as having xp_max=1000000
