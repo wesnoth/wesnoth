@@ -323,14 +323,17 @@ bool terrain_filter::match(const map_location& loc) const
 	return false;
 }
 
-void terrain_filter::get_locations(std::set<map_location>& locs) const
+void terrain_filter::get_locations(std::set<map_location>& locs, bool with_border) const
 {
 	std::vector<map_location> xy_vector = parse_location_range(cfg_["x"],cfg_["y"], resources::game_map);
 	std::set<map_location> xy_set(xy_vector.begin(), xy_vector.end());
 	if(xy_set.empty()) {
 		//consider all locations on the map
-		for(int x=0; x < resources::game_map->w(); x++) {
-			for(int y=0; y < resources::game_map->h(); y++) {
+		int bs = resources::game_map->border_size();
+		int w = with_border ? resources::game_map->w() + bs : resources::game_map->w();
+		int h = with_border ? resources::game_map->h() + bs : resources::game_map->h();
+		for (int x = with_border ? 0 - bs : 0; x < w; ++x) {
+			for (int y = with_border ? 0 - bs : 0; y < h; ++y) {
 				xy_set.insert(map_location(x,y));
 			}
 		}

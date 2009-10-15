@@ -582,24 +582,29 @@ namespace {
 
 static void toggle_shroud(const bool remove, const vconfig& cfg)
 {
-		std::string side = cfg["side"];
-		const int side_num = lexical_cast_default<int>(side,1);
-		const size_t index = side_num-1;
+	std::string side = cfg["side"];
+	const int side_num = lexical_cast_default<int>(side,1);
+	const size_t index = side_num-1;
 
 	if (index < resources::teams->size()) {
 		std::set<map_location> locs;
 		terrain_filter filter(cfg, *resources::units);
-			filter.restrict_size(game_config::max_loop);
-			filter.get_locations(locs);
+		filter.restrict_size(game_config::max_loop);
+		filter.get_locations(locs, true);
 
-			for(std::set<map_location>::const_iterator j = locs.begin(); j != locs.end(); ++j) {
-				if(remove) {
-					(*resources::teams)[index].clear_shroud(*j);
-				} else {
-					(*resources::teams)[index].place_shroud(*j);
-				}
+		for(std::set<map_location>::const_iterator j = locs.begin(); j != locs.end(); ++j) {
+			if (j->x + 1 < 0 || j->y + 1 < 0) {
+				LOG_NG << "invalid shroud location: (" << *j
+					<< ") - border_size = " << resources::game_map->border_size() << std::endl;
+				continue;
+			}
+			if(remove) {
+				(*resources::teams)[index].clear_shroud(*j);
+			} else {
+				(*resources::teams)[index].place_shroud(*j);
 			}
 		}
+	}
 
 	resources::screen->labels().recalculate_shroud();
 	resources::screen->invalidate_all();
