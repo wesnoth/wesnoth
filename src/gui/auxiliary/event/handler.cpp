@@ -320,10 +320,12 @@ void thandler::connect(tdispatcher* dispatcher)
 
 void thandler::disconnect(tdispatcher* dispatcher)
 {
+	/***** Validate pre conditions. *****/
 	std::vector<tdispatcher*>::iterator itor =
 			std::find(dispatchers_.begin(), dispatchers_.end(), dispatcher);
 	assert(itor != dispatchers_.end());
 
+	/***** Remove dispatcher. *****/
 	dispatchers_.erase(itor);
 
 	if(dispatcher == mouse_focus) {
@@ -333,6 +335,12 @@ void thandler::disconnect(tdispatcher* dispatcher)
 		keyboard_focus_ = NULL;
 	}
 
+	/***** Set proper state for the other dispatchers. *****/
+	foreach(tdispatcher* dispatcher, dispatchers_) {
+		dynamic_cast<twidget&>(*dispatcher).set_dirty();
+	}
+
+	/***** Validate post conditions. *****/
 	assert(std::find(dispatchers_.begin(), dispatchers_.end(), dispatcher)
 			== dispatchers_.end());
 #ifndef GUI2_OLD_EVENT_HANDLING
