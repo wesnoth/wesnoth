@@ -93,8 +93,8 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist)
 	minimap_restorer_(NULL),
 	minimap_rect_(null_rect),
 	generator_(NULL),
-	parameters_(),
-	num_turns_(0)
+	num_turns_(0),
+	parameters_()
 {
 	// Build the list of scenarios to play
 
