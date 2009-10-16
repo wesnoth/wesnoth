@@ -2316,7 +2316,7 @@ void server::delete_game(std::vector<wesnothd::game*>::iterator game_it) {
 	const wesnothd::user_vector& users = (*game_it)->all_game_users();
 	// Set the availability status for all quitting users.
 	for (wesnothd::user_vector::const_iterator user = users.begin();
-		user != users.end(); user++)
+		user != users.end(); ++user)
 	{
 		const wesnothd::player_map::iterator pl = players_.find(*user);
 		if (pl != players_.end()) {
