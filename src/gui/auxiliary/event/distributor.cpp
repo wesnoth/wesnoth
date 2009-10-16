@@ -556,22 +556,6 @@ void tdistributor::keyboard_capture(twidget* widget)
 	}
 }
 
-void tdistributor::init_mouse_location()
-{
-	// Fix the mouse location by pushing a dummy event.
-	int x;
-	int y;
-	SDL_GetMouseState(&x, &y);
-
-	SDL_Event event;
-	event.type = SDL_MOUSEMOTION;
-	event.motion.type = SDL_MOUSEMOTION;
-	event.motion.x = x;
-	event.motion.y = y;
-
-	SDL_PushEvent(&event);
-}
-
 void tdistributor::keyboard_add_to_chain(twidget* widget)
 {
 	assert(widget);

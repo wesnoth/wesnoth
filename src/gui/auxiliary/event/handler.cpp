@@ -546,6 +546,19 @@ void disconnect_dispatcher(tdispatcher* dispatcher)
 	handler->disconnect(dispatcher);
 }
 
+void init_mouse_location()
+{
+	tpoint mouse = get_mouse_position();
+
+	SDL_Event event;
+	event.type = SDL_MOUSEMOTION;
+	event.motion.type = SDL_MOUSEMOTION;
+	event.motion.x = mouse.x;
+	event.motion.y = mouse.y;
+
+	SDL_PushEvent(&event);
+}
+
 void capture_mouse(tdispatcher* dispatcher)
 {
 	assert(handler);

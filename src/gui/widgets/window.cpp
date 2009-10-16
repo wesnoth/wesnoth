@@ -894,8 +894,7 @@ void twindow::layout()
 	// The widgets might have moved so set the mouse location properly.
 	init_mouse_location();
 #else
-	assert(event_distributor_);
-	event_distributor_->init_mouse_location();
+	event::init_mouse_location();
 #endif
 }
 

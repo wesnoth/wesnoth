@@ -197,6 +197,14 @@ void connect_dispatcher(tdispatcher* dispatcher);
  */
 void disconnect_dispatcher(tdispatcher* dispatcher);
 
+/**
+ * Initializes the location of the mouse.
+ *
+ * After a layout of the window the mouse location needs to be updated to
+ * test whether it entered or left a widget. Also after closing a window it's
+ * needed to send a dummy mouse move.
+ */
+void init_mouse_location();
 
 /**
  * Captures the mouse.
@@ -216,7 +224,6 @@ void capture_mouse(tdispatcher* dispatcher);
  *                                capture.
  */
 void release_mouse(tdispatcher* dispatcher);
-
 
 std::ostream& operator<<(std::ostream& stream, const tevent event);
 
