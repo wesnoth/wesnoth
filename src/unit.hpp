@@ -316,7 +316,7 @@ public:
 	void remove_temporary_modifications();
 	void generate_traits(bool musthaveonly=false, game_state* state = 0);
 	void generate_traits_description();
-	void generate_name(rand_rng::simple_rng *rng = 0) 
+	void generate_name(rand_rng::simple_rng *rng = 0)
 	{ name_ = race_->generate_name(gender_, rng); }
 
 	// Only see_all=true use caching

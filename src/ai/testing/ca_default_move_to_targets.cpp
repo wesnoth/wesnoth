@@ -313,7 +313,7 @@ std::pair<map_location,map_location> default_move_to_targets_phase::choose_move(
 
 	//use stable_sort for the moment to preserve old AI behavior
 	std::stable_sort(rated_targets.begin(), rated_targets.end(), rated_target_comparer());
-	
+
 	const move_cost_calculator cost_calc(u->second, map_, units_, enemy_dstsrc);
 
 	plain_route best_route;
@@ -355,7 +355,7 @@ std::pair<map_location,map_location> default_move_to_targets_phase::choose_move(
 			//prevent divivion by zero
 			//FIXME: stupid, should fix it at the division
 			if(best_rating == 0)
-				best_rating = 0.000000001; 
+				best_rating = 0.000000001;
 
 			// if already higher than the maximal values of the next ratings
 			// (which are sorted, so only need to check the next one)

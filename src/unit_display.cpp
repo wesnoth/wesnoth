@@ -405,7 +405,7 @@ void unit_attack(
 }
 
 // private helper function, set all helpers to default position
-void reset_helpers(const unit *attacker,const unit *defender) 
+void reset_helpers(const unit *attacker,const unit *defender)
 {
 	game_display* disp = game_display::get_singleton();
 	unit_map& units = disp->get_units();

@@ -424,7 +424,7 @@ unit::unit(unit_map *unitmap, const unit_type *t, int side,
 	if(gender_ == unit_race::NUM_GENDERS) {
 		generate_gender(*t, real_unit);
 	}
-	
+
 	cfg_["upkeep"]="full";
 	advance_to(t);
 

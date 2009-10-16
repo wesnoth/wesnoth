@@ -179,7 +179,7 @@ public:
 	typedef std::vector<side> side_list;
 
 
-	connect(game_display& disp, const config& game_config, chat& c, 
+	connect(game_display& disp, const config& game_config, chat& c,
 			config& gamelist, const mp_game_settings& params, const int num_turns,
 			mp::controller default_controller, bool local_players_only = false);
 

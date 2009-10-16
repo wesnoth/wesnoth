@@ -1408,7 +1408,7 @@ void menu_handler::create_unit_2(mouse_handler& mousehandler)
 	//FIXME: the generate name option seems useless now, remove it
 	if(!generate_name)
 		chosen.set_name("");
-	
+
 	chosen.new_turn();
 
 	const map_location& loc = mousehandler.get_last_hex();

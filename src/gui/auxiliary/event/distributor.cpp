@@ -91,7 +91,7 @@ static Uint32 popup_callback(Uint32 /*interval*/, void* /*param*/)
  * Some of the event handling routines can't be called recursively, this due to
  * the fact that they are attached to the pre queue and when the forward an
  * event the pre queue event gets triggered recursively causing infinite
- * recursion. 
+ * recursion.
  *
  * To prevent that those functions check the lock and exit when the lock is
  * held otherwise grab the lock here.
@@ -768,7 +768,7 @@ void tdistributor::signal_handler_notify_removal(
 {
 	DBG_GUI_E << LOG_HEADER << event << ".\n";
 
-	/** 
+	/**
 	 * @todo Evaluate whether moving the cleanup parts in the subclasses.
 	 *
 	 * It might be cleaner to do it that way, but creates extra small
