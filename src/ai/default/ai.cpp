@@ -956,7 +956,7 @@ bool ai_default::get_healing()
 	return false;
 }
 
-bool ai_default::should_retreat(const map_location& loc, const unit_map::const_iterator un,
+bool ai_default::should_retreat(const map_location& loc, const unit_map::const_iterator& un,
 		const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc,
 		double caution)
 {
@@ -978,7 +978,7 @@ bool ai_default::should_retreat(const map_location& loc, const unit_map::const_i
 	return caution*their_power*(1.0+exposure) > our_power;
 }
 
-bool ai_default::retreat_units(unit_map::const_iterator leader)
+bool ai_default::retreat_units(const unit_map::const_iterator& leader)
 {
 	if (get_caution()<=0) {
 		return false;//note: this speeds up the evaluation - per-unit caution is not implemented anyway
@@ -1122,7 +1122,7 @@ private:
 
 };
 
-bool ai_default::move_to_targets(unit_map::const_iterator leader)
+bool ai_default::move_to_targets(const unit_map::const_iterator& leader)
 {
 	LOG_AI << "finding targets...\n";
 	std::vector<target> targets;
@@ -1574,7 +1574,7 @@ private:
 
 class bad_recalls_remover {
 public:
-	bad_recalls_remover(const std::map<std::string, int> unit_combat_scores)
+	bad_recalls_remover(const std::map<std::string, int>& unit_combat_scores)
 		: allow_any_(false), best_combat_score_()
 	{
 		std::map<std::string, int>::const_iterator cs = std::min_element(unit_combat_scores.begin(),unit_combat_scores.end(),unit_combat_scores.value_comp());
@@ -1585,7 +1585,7 @@ public:
 			best_combat_score_ = cs->second;
 		}
 	}
-	bool operator()(const std::pair<std::string,double> p) {
+	bool operator()(const std::pair<std::string,double>& p) {
 		if (allow_any_) {
 			return false;
 		}

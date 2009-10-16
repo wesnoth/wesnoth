@@ -74,7 +74,7 @@ protected:
 			const move_map& dstsrc, const move_map& enemy_dstsrc,
 			const plain_route& rt);
 
-	bool should_retreat(const map_location& loc, const unit_map::const_iterator un,
+	bool should_retreat(const map_location& loc, const unit_map::const_iterator& un,
 			    const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc,
 			    double caution);
 };

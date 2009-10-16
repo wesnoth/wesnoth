@@ -149,12 +149,12 @@ protected:
 		const move_map& dstsrc, const move_map& enemy_dstsrc,
 		unit_map::iterator &leader);
 	virtual bool get_healing();
-	virtual bool retreat_units(const unit_map::const_iterator leader);
-	virtual bool move_to_targets(const unit_map::const_iterator leader);
+	virtual bool retreat_units(const unit_map::const_iterator& leader);
+	virtual bool move_to_targets(const unit_map::const_iterator& leader);
 	unit_map::const_iterator leader;
 
 	virtual bool should_retreat(const map_location& loc,
-			const unit_map::const_iterator un, const move_map& srcdst,
+			const unit_map::const_iterator& un, const move_map& srcdst,
 			const move_map& dstsrc, const move_map& enemy_dstsrc, double caution);
 
 	virtual bool do_recruitment();

@@ -1900,7 +1900,7 @@ bool retreat_phase::execute()
 
 
 
-bool retreat_phase::should_retreat(const map_location& loc, const unit_map::const_iterator un,  const move_map &srcdst, const move_map &dstsrc, double caution)
+bool retreat_phase::should_retreat(const map_location& loc, const unit_map::const_iterator& un,  const move_map &srcdst, const move_map &dstsrc, double caution)
 {
 	const move_map &enemy_dstsrc = get_enemy_dstsrc();
 
