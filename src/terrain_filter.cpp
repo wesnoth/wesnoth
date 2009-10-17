@@ -328,7 +328,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 	std::vector<map_location> xy_vector =
 		parse_location_range(cfg_["x"], cfg_["y"], with_border);
 	std::set<map_location> xy_set(xy_vector.begin(), xy_vector.end());
-	if(xy_set.empty()) {
+	if (!cfg_.has_attribute("x") && !cfg_.has_attribute("y")) {
 		//consider all locations on the map
 		int bs = resources::game_map->border_size();
 		int w = with_border ? resources::game_map->w() + bs : resources::game_map->w();
