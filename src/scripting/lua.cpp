@@ -19,7 +19,9 @@
  * @warning Lua's error handling is done by setjmp/longjmp, so be careful
  *   never to call a Lua error function that will jump while in the scope
  *   of a C++ object with a destructor. This is why this file uses goto-s
- *   to force object unscoping before erroring out.
+ *   to force object unscoping before erroring out. This is also why
+ *   lua_getglobal, lua_setglobal, lua_gettable, lua_settable, lua_getfield,
+ *   and lua_setfield, should not be called in tainted context.
  *
  * @note Naming conventions:
  *   - intf_ functions are exported in the wesnoth domain,
@@ -862,10 +864,12 @@ static int intf_require(lua_State *L)
 	}
 
 	// Check if there is already an entry.
-	lua_getglobal(L, "wesnoth");
-	lua_getfield(L, -1, "package");
+	lua_pushstring(L, "wesnoth");
+	lua_rawget(L, LUA_GLOBALSINDEX);
+	lua_pushstring(L, "package");
+	lua_rawget(L, -2);
 	lua_pushvalue(L, 1);
-	lua_gettable(L, -2);
+	lua_rawget(L, -2);
 	if (!lua_isnil(L, -1)) return 1;
 	lua_pop(L, 1);
 
@@ -1533,15 +1537,15 @@ static int intf_find_path(lua_State *L)
 	if (lua_istable(L, arg))
 	{
 		lua_pushstring(L, "ignore_units");
-		lua_gettable(L, arg);
+		lua_rawget(L, arg);
 		ignore_units = lua_toboolean(L, -1);
 		lua_pop(L, 1);
 		lua_pushstring(L, "ignore_teleport");
-		lua_gettable(L, arg);
+		lua_rawget(L, arg);
 		ignore_teleport = lua_toboolean(L, -1);
 		lua_pop(L, 1);
 		lua_pushstring(L, "viewing_side");
-		lua_gettable(L, arg);
+		lua_rawget(L, arg);
 		if (!lua_isnil(L, -1)) {
 			int i = lua_tointeger(L, -1);
 			if (i >= 1 && i <= int(teams.size())) viewing_side = i;
@@ -1816,7 +1820,8 @@ bool LuaKernel::run_filter(char const *name, unit const &u)
 	// Load the error handler and get the user filter
 	lua_pushlightuserdata(L, (void *)&executeKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
-	lua_getglobal(L, name);
+	lua_pushstring(L, name);
+	lua_rawget(L, LUA_GLOBALSINDEX);
 
 	// Pass the unit as argument.
 	size_t *p = static_cast<size_t *>(lua_newuserdata(L, sizeof(size_t)));
