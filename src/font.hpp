@@ -145,7 +145,8 @@ int add_floating_label(const std::string& text, int font_size, const SDL_Color& 
 		double xpos, double ypos, double xmove, double ymove, int lifetime,
 		const SDL_Rect& clip_rect, ALIGN alignment=CENTER_ALIGN,
 		const SDL_Color* bg_colour=NULL, int border_size=0,
-		LABEL_SCROLL_MODE scroll_mode=ANCHOR_LABEL_SCREEN);
+		LABEL_SCROLL_MODE scroll_mode = ANCHOR_LABEL_SCREEN,
+		bool use_markup = true);
 
 /// moves the floating label given by 'handle' by (xmove,ymove)
 void move_floating_label(int handle, double xmove, double ymove);

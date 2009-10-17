@@ -1290,8 +1290,7 @@ void game_display::add_chat_message(const time_t& time, const std::string& speak
 
 	bool action = false;
 
-	// We also need to disable markup for the message itself
-	std::string msg(1, font::NULL_MARKUP);
+	std::string msg;
 
 	if (message.find("/me ") == 0) {
 		msg.assign(message, 4, message.size());
@@ -1344,20 +1343,21 @@ void game_display::add_chat_message(const time_t& time, const std::string& speak
 		}
 	}
 
-	// prepend message with timestamp and disable markup
+	// Prepend message with timestamp.
 	std::stringstream message_complete;
-	message_complete << font::NULL_MARKUP;
-	message_complete << preferences::get_chat_timestamp(time);
-	message_complete << str.str();
+	message_complete << preferences::get_chat_timestamp(time) << str.str();
 
 	const SDL_Rect rect = map_outside_area();
-	const int speaker_handle = font::add_floating_label(message_complete.str(),font::SIZE_SMALL,speaker_colour,
-		rect.x+chat_message_x,rect.y+ypos,
-		0,0,-1,rect,font::LEFT_ALIGN,&chat_message_bg,chat_message_border);
+	int speaker_handle = font::add_floating_label(message_complete.str(),
+		font::SIZE_SMALL, speaker_colour, rect.x + chat_message_x,
+		rect.y + ypos, 0, 0, -1, rect, font::LEFT_ALIGN, &chat_message_bg,
+		chat_message_border, font::ANCHOR_LABEL_SCREEN, false);
 
-	const int message_handle = font::add_floating_label(message_str.str(),font::SIZE_SMALL,message_colour,
-		rect.x + chat_message_x + font::get_floating_label_rect(speaker_handle).w,rect.y+ypos,
-		0,0,-1,rect,font::LEFT_ALIGN,&chat_message_bg,chat_message_border);
+	int message_handle = font::add_floating_label(message_str.str(),
+		font::SIZE_SMALL, message_colour,
+		rect.x + chat_message_x + font::get_floating_label_rect(speaker_handle).w,
+		rect.y + ypos, 0, 0, -1, rect, font::LEFT_ALIGN, &chat_message_bg,
+		chat_message_border, font::ANCHOR_LABEL_SCREEN, false);
 
 	// Send system notification if appropriate.
 	send_notification(speaker, message);

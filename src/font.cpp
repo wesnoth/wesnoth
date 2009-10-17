@@ -882,11 +882,12 @@ class floating_label
 public:
 	floating_label(const std::string& text, int font_size, const SDL_Color& colour, const SDL_Color& bgcolour,
 			double xpos, double ypos, double xmove, double ymove, int lifetime, const SDL_Rect& clip_rect,
-			font::ALIGN align, int border_size, bool scroll_with_map)
+			font::ALIGN align, int border_size, bool scroll_with_map, bool use_markup)
 		: surf_(NULL), buf_(NULL), text_(text), font_size_(font_size), colour_(colour),
 		bgcolour_(bgcolour), bgalpha_(bgcolour.unused), xpos_(xpos), ypos_(ypos),
 		xmove_(xmove), ymove_(ymove), lifetime_(lifetime), clip_rect_(clip_rect),
-		alpha_change_(-255/lifetime), visible_(true), align_(align), border_(border_size), scroll_(scroll_with_map)
+		alpha_change_(-255 / lifetime), visible_(true), align_(align),
+		border_(border_size), scroll_(scroll_with_map), use_markup_(use_markup)
 	{}
 
 	void move(double xmove, double ymove);
@@ -919,7 +920,7 @@ private:
 	bool visible_;
 	font::ALIGN align_;
 	int border_;
-	bool scroll_;
+	bool scroll_, use_markup_;
 };
 
 typedef std::map<int,floating_label> label_map;
@@ -952,7 +953,7 @@ surface floating_label::create_surface()
 		font::ttext text;
 		text.set_foreground_colour((colour_.r << 24) | (colour_.g << 16) | (colour_.b << 8) | 255);
 		text.set_font_size(font_size_);
-		text.set_text(text_, true);
+		text.set_text(text_, use_markup_);
 		surface foreground = text.render();
 
 		if(foreground == NULL) {
@@ -1067,7 +1068,8 @@ void floating_label::undraw(surface screen)
 namespace font {
 int add_floating_label(const std::string& text, int font_size, const SDL_Color& colour,
 		double xpos, double ypos, double xmove, double ymove, int lifetime, const SDL_Rect& clip_rect, ALIGN align,
-		const SDL_Color* bg_colour, int border_size, LABEL_SCROLL_MODE scroll_mode)
+		const SDL_Color *bg_colour, int border_size, LABEL_SCROLL_MODE scroll_mode,
+		bool use_markup)
 {
 	if(label_contexts.empty()) {
 		return 0;
@@ -1083,7 +1085,9 @@ int add_floating_label(const std::string& text, int font_size, const SDL_Color& 
 	}
 
 	++label_id;
-	labels.insert(std::pair<int,floating_label>(label_id,floating_label(text,font_size,colour,bg,xpos,ypos,xmove,ymove,lifetime,clip_rect,align,border_size,scroll_mode == ANCHOR_LABEL_MAP)));
+	labels.insert(std::pair<int, floating_label>(label_id, floating_label(
+		text, font_size, colour, bg, xpos, ypos, xmove, ymove, lifetime, clip_rect,
+		align, border_size, scroll_mode == ANCHOR_LABEL_MAP, use_markup)));
 	label_contexts.top().insert(label_id);
 	return label_id;
 }
