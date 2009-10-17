@@ -567,7 +567,8 @@ static int impl_vconfig_collect(lua_State *L)
 static int impl_unit_type_get(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 2);
-	lua_getfield(L, 1, "id");
+	lua_pushstring(L, "id");
+	lua_rawget(L, 1);
 	unit_type_data::unit_type_map_wrapper &ut_map = unit_type_data::types();
 	unit_type_data::unit_type_map::const_iterator
 		uti = ut_map.find_unit_type(lua_tostring(L, -1));
