@@ -300,7 +300,7 @@ void thandler::handle_event(const SDL_Event& event)
 #endif
 
 		// Silently ignored events.
-		case SDL_KEYDOWN:
+		case SDL_KEYUP:
 			break;
 
 		default:
