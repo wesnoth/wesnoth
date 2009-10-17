@@ -283,9 +283,12 @@ bool tdispatcher::fire(const tevent event
  *
  * @subsection sample The sample window
  *
- * In our samples we use this sample window with the following components; a
- * window W, a container C and a button B. These are arranged accordingly.
+ * In our samples we use this sample window with the following components:
+ * - a window W
+ * - a container C
+ * - a button B
  *
+ * These are arranged accordingly:
  * @code
  *
  *   ---------------------
@@ -308,9 +311,9 @@ bool tdispatcher::fire(const tevent event
  * @subsection scenarios Possible scenarios
  *
  * The scenarios are:
- * * An event that is wanted by none.
- * * A mouse down event that should focus C and set the pressed state in B.
- * * A mouse wheel event, which first should be offered to B and if not handled
+ * - An event that is wanted by none.
+ * - A mouse down event that should focus C and set the pressed state in B.
+ * - A mouse wheel event, which first should be offered to B and if not handled
  *   by B should be handled by C.
  *
  * @subsection all_queues Pass the event through all queues
@@ -321,32 +324,32 @@ bool tdispatcher::fire(const tevent event
  *
  * @subsubsection unhandled Unhandled event
  *
- * * W pre child
- * * C pre child
- * * B pre child
- * * W child
- * * C child
- * * B child
- * * W post child
- * * C post child
- * * B post child
+ * - W pre child
+ * - C pre child
+ * - B pre child
+ * - W child
+ * - C child
+ * - B child
+ * - W post child
+ * - C post child
+ * - B post child
  *
  * @subsubsection mouse_down Mouse down
  *
- * * W pre child
- * * C pre child -> set focus -> !handled
- * * B pre child -> set pressed state -> handled
+ * - W pre child
+ * - C pre child -> set focus -> !handled
+ * - B pre child -> set pressed state -> handled
  *
  * @subsubsection mouse_wheel Mouse wheel
  *
- * * W pre child
- * * C pre child
- * * B pre child -> We can't scroll so ignore
- * * W child
- * * C child
- * * B child
- * * W post child
- * * C post child -> Scroll -> handled
+ * - W pre child
+ * - C pre child
+ * - B pre child -> We can't scroll so ignore
+ * - W child
+ * - C child
+ * - B child
+ * - W post child
+ * - C post child -> Scroll -> handled
  *
  * @subsection chain Pass the events in a chain like fashion
  *
@@ -356,25 +359,24 @@ bool tdispatcher::fire(const tevent event
  *
  * @subsubsection unhandled Unhandled event
  *
- * * W pre child
- * * C pre child
- * * B child
- * * C post child
- * * W post child
+ * - W pre child
+ * - C pre child
+ * - B child
+ * - C post child
+ * - W post child
  *
  * @subsubsection mouse_down Mouse down
  *
- * * W pre child
- * * C pre child -> set focus -> !handled
- * * B child -> set pressed state -> handled
+ * - W pre child
+ * - C pre child -> set focus -> !handled
+ * - B child -> set pressed state -> handled
  *
  * @subsubsection mouse_wheel Mouse wheel
  *
- * * W pre child
- * * C pre child
- * * B child -> We can't scroll so ignore
- * * W post child
- * * C post child -> Scroll -> handled
+ * - W pre child
+ * - C pre child
+ * - B child -> We can't scroll so ignore
+ * - C post child -> Scroll -> handled
  *
  * @section evaluation Evaluation
  *
@@ -384,19 +386,20 @@ bool tdispatcher::fire(const tevent event
  *
  * Assume there is a listbox with toggle panels and on the panel there are a
  * few buttons, the wanted behaviour is:
- * * if clicked on the panel it should toggle, which may or may not be allowed.
- * * if clicked on a button in the panel, we want to make sure the panel is
+ * - if clicked on the panel it should toggle, which may or may not be allowed.
+ * - if clicked on a button in the panel, we want to make sure the panel is
  *   selected, which again may or may not be allowed.
  *
  * With solution 2 it's rather easy:
  *
  * Click on panel:
- * * W pre child
- * * C child -> Test whether we can toggle -> handled, halt = !toggled
+ * - W pre child
+ * - C child -> Test whether we can toggle -> handled, halt = !toggled
  *
- * * W pre child
- * * C pre child -> Test whether we can select -> handled = halt = !selected
- * * B child -> do button stuff -> handled
+ * Click on button in panel:
+ * - W pre child
+ * - C pre child -> Test whether we can select -> handled = halt = !selected
+ * - B child -> do button stuff -> handled
  *
  * Since for the different clicks, different queues are triggered it's easy to
  * add a different handler there.
@@ -404,10 +407,13 @@ bool tdispatcher::fire(const tevent event
  * With solution 1:
  *
  * Click on panel:
- * * W pre child
- * * C pre child -> handler 1 -> if last in queue -> solution 2 C child
- * * C pre child -> handler 2 -> if !last in queue -> solution 2 C pre child
- * * B pre child -> do button stuff -> handled
+ * - W pre child
+ * - C pre child -> handler 1 -> if last in queue -> solution 2 C child
+ *
+ * Click on button in panel:
+ * - W pre child  
+ * - C pre child -> handler 2 -> if !last in queue -> solution 2 C pre child
+ * - B pre child -> do button stuff -> handled
  *
  * Not that different from solution 2, the two handlers are installed in the C
  * pre event. But we need to manually check whether we're really the last,
