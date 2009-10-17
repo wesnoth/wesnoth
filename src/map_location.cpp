@@ -353,13 +353,22 @@ size_t distance_between(const map_location& a, const map_location& b)
 	return std::max<int>(hdistance, abs(a.y - b.y) + vpenalty + hdistance/2);
 }
 
-std::vector<map_location> parse_location_range(const std::string &x, const std::string &y)
+std::vector<map_location> parse_location_range(const std::string &x, const std::string &y,
+	bool with_border)
 {
 	std::vector<map_location> res;
 	const std::vector<std::string> xvals = utils::split(x);
 	const std::vector<std::string> yvals = utils::split(y);
 	gamemap *map = resources::game_map;
 	assert(map);
+	int xmin = 1, xmax = map->w(), ymin = 1, ymax = map->h();
+	if (with_border) {
+		int bs = map->border_size();
+		xmin -= bs;
+		xmax += bs;
+		ymin -= bs;
+		ymax += bs;
+	}
 
 	for (unsigned i = 0; i < xvals.size() || i < yvals.size(); ++i)
 	{
@@ -367,20 +376,20 @@ std::vector<map_location> parse_location_range(const std::string &x, const std::
 
 		if (i < xvals.size()) {
 			xrange = utils::parse_range(xvals[i]);
-			if (xrange.first < 1) xrange.first = 1;
-			if (xrange.second > map->w()) xrange.second = map->w();
+			if (xrange.first < xmin) xrange.first = xmin;
+			if (xrange.second > xmax) xrange.second = xmax;
 		} else {
-			xrange.first = 1;
-			xrange.second = map->w();
+			xrange.first = xmin;
+			xrange.second = xmax;
 		}
 
 		if (i < yvals.size()) {
 			yrange = utils::parse_range(yvals[i]);
-			if (yrange.first < 1) yrange.first = 1;
-			if (yrange.second > map->h()) yrange.second = map->h();
+			if (yrange.first < ymin) yrange.first = ymin;
+			if (yrange.second > ymax) yrange.second = ymax;
 		} else {
-			yrange.first = 1;
-			yrange.second = map->h();
+			yrange.first = ymin;
+			yrange.second = ymax;
 		}
 
 		for(int x = xrange.first; x <= xrange.second; ++x) {
