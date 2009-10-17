@@ -853,7 +853,7 @@ double testing_move_to_targets_phase::rate_group(const std::set<map_location>& g
 
 
 
-bool testing_move_to_targets_phase::should_retreat(const map_location& loc, const unit_map::const_iterator un,
+bool testing_move_to_targets_phase::should_retreat(const map_location& loc, const unit_map::const_iterator& un,
 		const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc,
 		double caution)
 {
