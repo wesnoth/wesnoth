@@ -291,13 +291,17 @@ void thandler::handle_event(const SDL_Event& event)
 			break;
 
 #if defined(_X11) && !defined(__APPLE__)
-			case SDL_SYSWMEVENT: {
-				DBG_GUI_E << "Event: System event.\n";
-				//clipboard support for X11
-				handle_system_event(event);
-				break;
-			}
+		case SDL_SYSWMEVENT: {
+			DBG_GUI_E << "Event: System event.\n";
+			//clipboard support for X11
+			handle_system_event(event);
+			break;
+		}
 #endif
+
+		// Silently ignored events.
+		case SDL_KEYDOWN:
+			break;
 
 		default:
 			WRN_GUI_E << "Unhandled event "
