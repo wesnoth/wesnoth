@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-10-13 22:59+0200\n"
-"PO-Revision-Date: 2009-09-27 15:25+0200\n"
+"PO-Revision-Date: 2009-10-17 12:45+0200\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -33,7 +33,7 @@ msgstr "Salvataggi compressi"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:12
 msgid "Confirm deleting saves"
-msgstr ""
+msgstr "Conferma l'eliminazione dei salvataggi"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:19
@@ -73,7 +73,7 @@ msgstr "Mostra i combattimenti"
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:68
 msgid "Ping Timeout"
-msgstr ""
+msgstr "Scadenza del tempo di ping"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:69
@@ -81,6 +81,8 @@ msgid ""
 "Number of seconds to wait for a ping reply before we time out. Disable with "
 "0."
 msgstr ""
+"Numero di secondi di attesa per le risposte a un ping prima della scadenza. "
+"Disabilita con 0."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:79
@@ -95,12 +97,12 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:93
 msgid "Group players in lobby"
-msgstr ""
+msgstr "Raggruppa i giocatory nella lobby"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:100
 msgid "Lobby sounds"
-msgstr ""
+msgstr "Suoni nella lobby"
 
 #. [time]: id=underground
 #. [illuminated_time]: id=underground_illum
@@ -370,9 +372,8 @@ msgstr "Traduzione in inglese britannico"
 
 #. [about]
 #: data/core/about.cfg:1339
-#, fuzzy
 msgid "English (Shaw) Translation"
-msgstr "Traduzione in inglese britannico"
+msgstr "Traduzione in inglese (Shaw)"
 
 #. [about]
 #: data/core/about.cfg:1357
@@ -546,9 +547,8 @@ msgstr "Traduzione in valenciano (catalano del sud)"
 
 #. [about]
 #: data/core/about.cfg:2266
-#, fuzzy
 msgid "Vietnamese Translation"
-msgstr "Traduzione in cinese"
+msgstr "Traduzione in vietnamita"
 
 #. [about]
 #: data/core/about.cfg:2273
@@ -2928,7 +2928,6 @@ msgstr "Comandi per il multigiocatore"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:810
-#, fuzzy
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -2938,7 +2937,8 @@ msgid ""
 msgstr ""
 "\n"
 "Mette al bando in una partita multigiocatore un utente usando l'indirizzo IP "
-"associato al suo nome utente e lo scaccia.\n"
+"associato al suo nome utente e lo scaccia. Può essere usata su utenti non in "
+"partita ma sul server (In tal caso non saranno scacciati, ovviamente).\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -3631,6 +3631,8 @@ msgstr ""
 #: data/core/macros/ai.cfg:408
 msgid "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
 msgstr ""
+"Chiedi a $ally_leader.name (condottiero della fazione $ally_leader.side) di "
+"spostarsi qui"
 
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:144
@@ -3819,42 +3821,38 @@ msgid "Exit"
 msgstr "Esci"
 
 #: data/core/macros/ai_controller.cfg:1047
-#, fuzzy
 msgid "Set special orders..."
-msgstr "Imposta comportamento..."
+msgstr "Imposta ordini speciali..."
 
 #: data/core/macros/ai_controller.cfg:1048
 msgid "Move leader to..."
-msgstr ""
+msgstr "Muovi il condottiero in..."
 
 #: data/core/macros/ai_controller.cfg:1049
-#, fuzzy
 msgid "Right-click to select a location to move leader to"
-msgstr "Fai clic col tasto destro per selezionare una posizione da difendere"
+msgstr ""
+"Fai clic col tasto destro per selezionare la posizione dove muovere il "
+"condottiero"
 
 #: data/core/macros/ai_controller.cfg:1050
 msgid "Move leader here"
-msgstr ""
+msgstr "Muovi il condottiero qui"
 
 #: data/core/macros/ai_controller.cfg:1051
 msgid "moving leader to $x1|,$y1|."
 msgstr ""
 
 #: data/core/macros/ai_controller.cfg:1052
-#, fuzzy
 msgid "Clear special orders"
-msgstr "Annulla tutti gli ordini"
+msgstr "Annulla gli ordini speciali"
 
 #: data/core/macros/ai_controller.cfg:1053
-#, fuzzy
 msgid ""
 "Special: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_special_description"
 msgstr ""
-"Obiettivo: $ai_controller.side_$ally_side|_current_settings."
-"currently_doing_objective_description\n"
-"Comportamento: $ai_controller.side_$ally_side|_current_settings."
-"currently_doing_behaviour_description"
+"Specialie: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_special_description"
 
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
@@ -5810,7 +5808,7 @@ msgstr ""
 "vecchio continente, gli uomini si sono sparsi per tutto il mondo in culture "
 "e razze diverse. Anche se non sono infusi di magia come altre creature, gli "
 "uomini possono imparare a usarla e possono apprenderne più tipi che le altre "
-"razze. Non hanno nessuna abilità speciale tranne la loro versatilità e "
+"razze. Non hanno nessun'abilità speciale tranne la loro versatilità e "
 "passione. Anche se spesso sono in disaccordo con tutte le razze, "
 "occasionalmente formano alleanze con le razze meno aggressive come elfi e "
 "nani. Gli uomini con meno scrupoli non disdegnano nemmeno di assumere "
@@ -6656,7 +6654,7 @@ msgstr ""
 #: data/hardwired/tips.cfg:52 data/hardwired/tips.cfg:76
 #: data/hardwired/tips.cfg:124 data/hardwired/tips.cfg:132
 msgid "- Handbook of Tactical Analysis Volume I - Haldric II, 42YW"
-msgstr "- Manuale di analisi tattica volume I - Haldric II, 42AW"
+msgstr "- Manuale di analisi tattica volume I – Haldric II, 42AW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:55
@@ -6758,7 +6756,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:80
 msgid "- Handbook of Tactical Analysis Volume II - Haldric II, 43YW"
-msgstr "- Manuale di analisi tattica volume II - Haldric II, 43AW"
+msgstr "- Manuale di analisi tattica volume II – Haldric II, 43AW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:83
@@ -7227,9 +7225,8 @@ msgstr "mosse"
 
 #. [unit_defense]: id=unit-defense
 #: data/themes/default.cfg:468 data/themes/experimental.cfg:408
-#, fuzzy
 msgid "statuspanel^terrain def."
-msgstr "livello"
+msgstr "dif. terreno"
 
 #. [change]: id=actions-menu
 #: data/themes/default.cfg:1004
@@ -7331,14 +7328,12 @@ msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Non ci sono spazi vuoti nel castello per reclutare un'unità."
 
 #: src/actions.cpp:352 src/actions.cpp:411 src/actions.cpp:1341
-#, fuzzy
 msgid "An invalid attacker weapon got selected."
-msgstr "Selezionata un'era non valida."
+msgstr "È stata selezionata un'arma di attacco non valida."
 
 #: src/actions.cpp:357
-#, fuzzy
 msgid "An invalid defender weapon got selected."
-msgstr "Selezionata un'era non valida."
+msgstr "È stata selezionata un'arma di difesa non valida."
 
 #: src/actions.cpp:1100
 msgid "female^poisoned"
@@ -7445,9 +7440,8 @@ msgid "addon_type^Resources"
 msgstr "Risorse"
 
 #: src/addon_management.cpp:470
-#, fuzzy
 msgid "addon_type^Other"
-msgstr "Era MG"
+msgstr "Altro"
 
 #: src/addon_management.cpp:472
 msgid "addon_type^(unknown)"
@@ -7458,7 +7452,6 @@ msgid "Dependencies"
 msgstr "Dipendenze"
 
 #: src/addon_management.cpp:506
-#, fuzzy
 msgid ""
 "$addon_title depends upon the following add-on which you have not installed "
 "yet:"
@@ -7466,20 +7459,19 @@ msgid_plural ""
 "$addon_title depends upon the following add-ons which you have not installed "
 "yet:"
 msgstr[0] ""
-"Questa estensione richiede la seguente dipendenza aggiuntiva che non è "
-"ancora installata:"
+"$addon_title richiede la seguente dipendenza aggiuntiva che non è ancora "
+"installata:"
 msgstr[1] ""
-"Questa estensione richiede le seguenti dipendenze aggiuntive che non sono "
-"ancora installate:"
+"$addon_title richiede le seguenti dipendenze aggiuntive che non sono ancora "
+"installate:"
 
 #: src/addon_management.cpp:509
-#, fuzzy
 msgid ""
 "Do you still want to download $addon_title|? (You will have to install all "
 "the dependencies in order to play.)"
 msgstr ""
-"Vuoi scaricare questa estensione (Dovrai comunque installare le dipendenze "
-"per giocare)?"
+"Vuoi scaricare $addon_title|? (Dovrai installare tutte le dipendenze per "
+"giocare)?"
 
 #: src/addon_management.cpp:527 src/addon_management.cpp:599
 #: src/multiplayer.cpp:213 src/multiplayer.cpp:268 src/multiplayer_ui.cpp:78
@@ -7665,7 +7657,7 @@ msgstr "Filtro: "
 
 #: src/addon_management.cpp:1112
 msgid "Description"
-msgstr ""
+msgstr "Descrizione"
 
 #: src/addon_management.cpp:1149
 msgid "Network communication error."
@@ -7772,7 +7764,6 @@ msgid "What should our victorious unit become?"
 msgstr "Come vuoi far avanzare l'unità vittoriosa?"
 
 #: src/dialogs.cpp:216
-#, fuzzy
 msgid "Level"
 msgstr "Livello"
 
@@ -8042,14 +8033,15 @@ msgstr "Sconfitta:"
 
 #: src/game_events.cpp:3503
 msgid "[unit_worth]'s filter didn't match any units!"
-msgstr ""
+msgstr "Il filtro di [unit_worth] non corrisponde a nessun'unità!"
 
 #: src/gamestatus.cpp:741
-#, fuzzy
 msgid ""
 "Leader position not empty - duplicate side definition for side '$side|' "
 "found."
-msgstr "Trovata una definizione di side duplicata per la fazione «$side|»."
+msgstr ""
+"Posizione del condottiero non vuota – definizione di side duplicata per la "
+"fazione «$side|»."
 
 #: src/generate_report.cpp:128
 msgid "invisible: "
@@ -8096,9 +8088,8 @@ msgid "petrified: "
 msgstr "pietrificata: "
 
 #: src/generate_report.cpp:141
-#, fuzzy
 msgid "This unit has been petrified. It may not move or attack."
-msgstr "Questa unità è stata pietrificata. Non può muoversi né attaccare."
+msgstr "Quest'unità è stata pietrificata. Non può muoversi né attaccare."
 
 #: src/generate_report.cpp:195
 msgid "Resistances: "
@@ -8354,18 +8345,16 @@ msgid "?"
 msgstr "?"
 
 #: src/loadscreen.cpp:244
-#, fuzzy
 msgid "Verifying cache..."
-msgstr "Verifica della cache"
+msgstr "Verifica della cache..."
 
 #: src/loadscreen.cpp:262
 msgid "Reading unit files..."
 msgstr "Caricamento file delle unità..."
 
 #: src/loadscreen.cpp:280
-#, fuzzy
 msgid "Reading files and creating cache..."
-msgstr "Lettura dei file e creazione della cache."
+msgstr "Lettura dei file e creazione della cache..."
 
 #: src/lobby_data.cpp:195 src/multiplayer_lobby.cpp:431
 msgid "Unknown era: $era_id"
@@ -8398,8 +8387,8 @@ msgstr "Turno "
 #: src/lobby_data.cpp:289 src/multiplayer_lobby.cpp:533
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
-msgstr[0] "Slot vuoto:"
-msgstr[1] "Slot vuoti:"
+msgstr[0] "Casella vuota:"
+msgstr[1] "Caselle vuote:"
 
 #: src/lobby_data.cpp:295 src/multiplayer_lobby.cpp:544
 msgid "Fog"
@@ -8746,7 +8735,7 @@ msgstr "Invia un messaggio agli amministratori del server attualmente in linea"
 
 #: src/menu_events.cpp:2237
 msgid "Send an emotion or personal action in chat."
-msgstr "Invia un'emozione o una azione personale in chat."
+msgstr "Invia un'emozione o un'azione personale in chat."
 
 #: src/menu_events.cpp:2240
 msgid ""
@@ -8917,7 +8906,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2464
 msgid "Discover all units in help."
-msgstr ""
+msgstr "Scopri tutte le unità nell'aiuto."
 
 #: src/menu_events.cpp:2469
 msgid "Create a unit."
@@ -9473,16 +9462,15 @@ msgstr "Esci"
 
 #: src/multiplayer_lobby.cpp:734
 msgid "Apply Filter"
-msgstr ""
+msgstr "Applica filtro"
 
 #: src/multiplayer_lobby.cpp:735
 msgid "Invert"
-msgstr ""
+msgstr "Inverti"
 
 #: src/multiplayer_lobby.cpp:736
-#, fuzzy
 msgid "Vacant Slots"
-msgstr "Slot vuoto:"
+msgstr "Caselle vuote:"
 
 #: src/multiplayer_lobby.cpp:737
 msgid "Friends in Game"
@@ -9501,6 +9489,8 @@ msgid ""
 "Enable the games filter. If unchecked all games are shown, regardless of any "
 "filter."
 msgstr ""
+"Attiva il filtro sulle partite. Se la casella non è marcata verranno "
+"mostrate tutte le partite, indipendentemente da qualsiasi filtro."
 
 #: src/multiplayer_lobby.cpp:754
 msgid ""
@@ -9510,20 +9500,24 @@ msgstr ""
 
 #: src/multiplayer_lobby.cpp:758
 msgid "Only show games that have at least one vacant slot"
-msgstr ""
+msgstr "Mostra solo le partite che hanno almeno una casella libera"
 
 #: src/multiplayer_lobby.cpp:762
 msgid ""
 "Only show games that are played or observed by at least one of your friends"
 msgstr ""
+"Mostra solo le partite che sono giocate o osservate da almeno uno dei tuoi "
+"amici"
 
 #: src/multiplayer_lobby.cpp:766
 msgid "Only show games whose title or description contain the entered text"
 msgstr ""
+"Mostra solo le partite il cui titolo o descrizione contengono il testo "
+"immesso"
 
 #: src/multiplayer_lobby.cpp:900
 msgid "Joining this game requires a password."
-msgstr "Collegarsi al gioco richiede la parola d'ordine."
+msgstr "Collegarsi a questa partita richiede la parola d'ordine."
 
 #: src/multiplayer_ui.cpp:195
 msgid "Invalid Color"
@@ -9653,9 +9647,8 @@ msgid "$name has taken control"
 msgstr "$name ha preso il controllo"
 
 #: src/playmp_controller.cpp:95
-#, fuzzy
 msgid "Turn changed"
-msgstr "a distanza"
+msgstr "Turno cambiato"
 
 #: src/playmp_controller.cpp:227
 msgid "Undoing moves not yet transmitted to the server."

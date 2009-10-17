@@ -4,13 +4,13 @@
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Automatically generated, 2004.
-# Luciano Montanaro <mikelima@cirulla.net>, 2007, 2008.
+# Luciano Montanaro <mikelima@cirulla.net>, 2007, 2008, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-10-13 22:59+0200\n"
-"PO-Revision-Date: 2009-09-27 15:20+0200\n"
+"PO-Revision-Date: 2009-10-17 12:52+0200\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -180,9 +180,8 @@ msgstr "Foresta innevata"
 
 #. [terrain_type]: id=snow_forest
 #: data/core/terrain.cfg:442
-#, fuzzy
 msgid "Snowy Pine Forest"
-msgstr "Foresta innevata"
+msgstr "Foresta di conifere innevata"
 
 #. [terrain_type]: id=great_tree
 #: data/core/terrain.cfg:453
@@ -277,45 +276,38 @@ msgstr "Colline boscose innevate"
 
 #. [terrain_type]: id=deciduous_forest_summer_hills
 #: data/core/terrain.cfg:598
-#, fuzzy
 msgid "Summer Deciduous Forested Hills"
-msgstr "Colline boscose"
+msgstr "Colline d'estate con boschi di latifoglie"
 
 #. [terrain_type]: id=deciduous_forest_fall_hills
 #: data/core/terrain.cfg:609
-#, fuzzy
 msgid "Fall Deciduous Forested Hills"
-msgstr "Colline boscose"
+msgstr "Colline di primavera con boschi di latifoglie"
 
 #. [terrain_type]: id=deciduous_forest_winter_hills
 #: data/core/terrain.cfg:620
-#, fuzzy
 msgid "Winter Deciduous Forested Hills"
-msgstr "Colline boscose"
+msgstr "Colline d'inverno con boschi di latifoglie"
 
 #. [terrain_type]: id=deciduous_forest_winter_snow_hills
 #: data/core/terrain.cfg:631
-#, fuzzy
 msgid "Snowy Deciduous Forested Hills"
-msgstr "Colline boscose"
+msgstr "Colline innevate con boschi di latifoglie"
 
 #. [terrain_type]: id=mixed_forest_summer_hills
 #: data/core/terrain.cfg:642
-#, fuzzy
 msgid "Summer Mixed Forested Hills"
-msgstr "Colline boscose"
+msgstr "Colline d'estate con boschi misti"
 
 #. [terrain_type]: id=mixed_forest_winter_hills
 #: data/core/terrain.cfg:663
-#, fuzzy
 msgid "Winter Mixed Forested Hills"
-msgstr "Colline boscose"
+msgstr "Colline d'inverno con boschi misti"
 
 #. [terrain_type]: id=mixed_forest_winter_snow_hills
 #: data/core/terrain.cfg:674
-#, fuzzy
 msgid "Snowy Mixed Forested Hills"
-msgstr "Colline boscose"
+msgstr "Colline innevate con boschi misti"
 
 #. [terrain_type]: id=grassland
 #. [terrain_type]: id=grassland_flowers
@@ -355,15 +347,13 @@ msgstr "Montagne"
 
 #. [terrain_type]: id=desert_mountains
 #: data/core/terrain.cfg:761
-#, fuzzy
 msgid "Desert Mountains"
-msgstr "Montagne invalicabili del deserto"
+msgstr "Montagne desertiche"
 
 #. [terrain_type]: id=snow_mountains
 #: data/core/terrain.cfg:779
-#, fuzzy
 msgid "Snowy Mountains"
-msgstr "Montagne"
+msgstr "Montagne innevate"
 
 #. [terrain_type]: id=canyon
 #: data/core/terrain.cfg:793
@@ -611,9 +601,8 @@ msgstr "Annulla"
 
 #. [label]
 #: data/gui/default/window/campaign_dialog.cfg:44
-#, fuzzy
 msgid "Play a campaign"
-msgstr "Campagna"
+msgstr "Gioca una campagna"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -1143,7 +1132,7 @@ msgstr "Nessun ignorato"
 #. [toggle_button]: id=filter_vacant_slots
 #: data/gui/default/window/lobby_main.cfg:482
 msgid "Vacant slots"
-msgstr ""
+msgstr "Caselle vuote"
 
 #. [toggle_button]: id=filter_invert
 #: data/gui/default/window/lobby_main.cfg:488
@@ -1629,7 +1618,7 @@ msgstr "Salta mosse IA"
 
 #: src/game_preferences_display.cpp:161
 msgid "Interrupt move when an ally is sighted"
-msgstr ""
+msgstr "Interrompi quando un alleato è avvistato"
 
 #: src/game_preferences_display.cpp:162
 msgid "Show Grid"
@@ -2136,9 +2125,8 @@ msgid "Turn"
 msgstr "Turno"
 
 #: src/gui/dialogs/game_load.cpp:275
-#, fuzzy
 msgid "Scenario Start"
-msgstr "Obiettivi dello scenario"
+msgstr "Inizio dello scenario"
 
 #: src/gui/dialogs/game_load.cpp:278
 msgid "Difficulty: "
@@ -2314,9 +2302,8 @@ msgid "End Turn"
 msgstr "Fine del turno"
 
 #: src/hotkeys.cpp:71
-#, fuzzy
 msgid "Toggle Ellipses"
-msgstr "Mostra la griglia"
+msgstr "Mostra il disco"
 
 #: src/hotkeys.cpp:72
 msgid "Toggle Grid"
