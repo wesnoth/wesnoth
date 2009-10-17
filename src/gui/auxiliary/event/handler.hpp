@@ -99,6 +99,8 @@ enum tevent {
 	                               */
 	, RECEIVE_KEYBOARD_FOCUS     /**< Widget gets keyboard focus. */
 	, LOSE_KEYBOARD_FOCUS        /**< Widget loses keyboard focus. */
+	, SHOW_HOVER_TOOLTIP         /**< Request to show the hover tooltip. */
+	, REMOVE_TOOLTIP             /**< Request to remove a tooltip. */
 };
 
 /**
@@ -180,6 +182,8 @@ typedef
 			  boost::mpl::int_<NOTIFY_REMOVAL>
 			, boost::mpl::int_<RECEIVE_KEYBOARD_FOCUS>
 			, boost::mpl::int_<LOSE_KEYBOARD_FOCUS>
+			, boost::mpl::int_<SHOW_HOVER_TOOLTIP>
+			, boost::mpl::int_<REMOVE_TOOLTIP>
 		>
 		tset_event_notification;
 

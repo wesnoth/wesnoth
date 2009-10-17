@@ -45,12 +45,12 @@
 
 #include "gui/auxiliary/event/dispatcher.hpp"
 #include "gui/widgets/event_executor.hpp"
+#include "gui/widgets/helper.hpp"
 
 class t_string;
 
 namespace gui2{
 
-struct tpoint;
 class twidget;
 
 namespace event {
@@ -62,6 +62,8 @@ class tmouse_motion
 public:
 
 	tmouse_motion(twidget& owner, const tdispatcher::tposition queue_position);
+
+	~tmouse_motion();
 
 	/**
 	 * Captures the mouse input.
@@ -83,6 +85,35 @@ protected:
 	/** The widget that owns us. */
 	twidget& owner_;
 
+	/** The timer for the hover event. */
+	SDL_TimerID hover_timer_;
+
+	/** The widget which should get the hover event. */
+	twidget* hover_widget_;
+
+	/** The anchor point of the hover event. */
+	tpoint hover_position_;
+
+	/**
+	 * Has the hover been shown for the widget?
+	 *
+	 * A widget won't get a second hover event after the tooltip has been
+	 * triggered. Only after (shortly) entering another widget it will be shown
+	 * again for this widget.
+	 */
+	bool hover_shown_;
+
+	/**
+	 * Starts the hover timer.
+	 *
+	 * @param widget                 The widget that wants the tooltip.
+	 * @param coordinate             The anchor coordinate.
+	 */
+	void start_hover_timer(twidget* widget, const tpoint& coordinate);
+
+	/** Stops the current hover timer. */
+	void stop_hover_timer();
+
 	/**
 	 * Called when the mouse enters a widget.
 	 *
@@ -94,6 +125,7 @@ protected:
 	void mouse_leave();
 
 private:
+
 	/**
 	 * Called when the mouse moves over a widget.
 	 *
@@ -107,6 +139,8 @@ private:
 			  const event::tevent event
 			, bool& handled
 			, const tpoint& coordinate);
+
+	void signal_handler_show_hover_tooltip(const event::tevent event);
 
 };
 

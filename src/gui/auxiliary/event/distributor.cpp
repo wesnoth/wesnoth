@@ -16,23 +16,26 @@
 
 #include "gui/auxiliary/event/distributor.hpp"
 
+#include "events.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/widget.hpp"
+#include "gui/widgets/window.hpp"
 
 #include <boost/bind.hpp>
 
 namespace gui2{
 
 namespace event {
-#if 0
+
 /**
  * SDL_AddTimer() callback for the hover event.
  *
  * When this callback is called it pushes a new hover event in the event queue.
  *
  * @param interval                The time parameter of SDL_AddTimer.
- * @param param                   Pointer to parameter structure.
+ * @param param                   Pointer to a widget that's able to show the
+ *                                tooltip (will be used as a dispatcher).
  *
  * @returns                       The new timer interval, 0 to stop.
  */
@@ -46,7 +49,7 @@ static Uint32 hover_callback(Uint32 /*interval*/, void *param)
 	data.type = HOVER_EVENT;
 	data.code = 0;
 	data.data1 = param;
-	data.data2 = 0;
+	data.data2 = NULL;
 
 	event.type = HOVER_EVENT;
 	event.user = data;
@@ -54,7 +57,7 @@ static Uint32 hover_callback(Uint32 /*interval*/, void *param)
 	SDL_PushEvent(&event);
 	return 0;
 }
-
+#if 0
 /**
  * SDL_AddTimer() callback for the popup event.
  *
@@ -125,12 +128,26 @@ tmouse_motion::tmouse_motion(twidget& owner
 	: mouse_focus_(NULL)
 	, mouse_captured_(false)
 	, owner_(owner)
+	, hover_timer_(NULL)
+	, hover_widget_(NULL)
+	, hover_position_(0, 0)
+	, hover_shown_(true)
 	, signal_handler_sdl_mouse_motion_entered_(false)
 {
 	owner.connect_signal<event::SDL_MOUSE_MOTION>(
 		  boost::bind(&tmouse_motion::signal_handler_sdl_mouse_motion
 			  , this, _2, _3, _5)
 		, queue_position);
+
+	owner.connect_signal<event::SHOW_HOVER_TOOLTIP>(
+		  boost::bind(&tmouse_motion::signal_handler_show_hover_tooltip
+			  , this, _2)
+		, queue_position);
+}
+
+tmouse_motion::~tmouse_motion()
+{
+	stop_hover_timer();
 }
 
 void tmouse_motion::capture_mouse(//twidget* widget)
@@ -191,6 +208,9 @@ void tmouse_motion::mouse_enter(twidget* mouse_over)
 
 	mouse_focus_ = mouse_over;
 	owner_.fire(event::MOUSE_ENTER, *mouse_over);
+
+	hover_shown_ = false;
+	start_hover_timer(mouse_over, get_mouse_position());
 }
 
 void tmouse_motion::mouse_motion(twidget* mouse_over, const tpoint& coordinate)
@@ -200,6 +220,15 @@ void tmouse_motion::mouse_motion(twidget* mouse_over, const tpoint& coordinate)
 	assert(mouse_over);
 
 	owner_.fire(event::MOUSE_MOTION, *mouse_over, coordinate);
+
+	if(hover_timer_) {
+		if((abs(hover_position_.x - coordinate.x) > 5)
+				|| (abs(hover_position_.y - coordinate.y) > 5)) {
+
+			stop_hover_timer();
+			start_hover_timer(mouse_over, coordinate);
+		}
+	}
 }
 
 void tmouse_motion::mouse_leave()
@@ -209,6 +238,73 @@ void tmouse_motion::mouse_leave()
 	owner_.fire(event::MOUSE_LEAVE, *mouse_focus_);
 
 	mouse_focus_ = NULL;
+
+	/** @todo also a bit ugly. */
+	owner_.get_window()->do_remove_tooltip();
+	stop_hover_timer();
+}
+
+void tmouse_motion::start_hover_timer(twidget* widget, const tpoint& coordinate)
+{
+	assert(widget);
+	stop_hover_timer();
+
+	if(hover_shown_ || !widget->wants_mouse_hover()) {
+		return;
+	}
+
+	DBG_GUI_E << LOG_HEADER << "Start hover timer for widget '"
+			<< widget->id() << "' at address " << widget << ".\n";
+
+
+	hover_timer_ = SDL_AddTimer(50, hover_callback, &owner_);
+	if(hover_timer_) {
+		hover_widget_ = widget;
+		hover_position_ = coordinate;
+	} else {
+		ERR_GUI_E << LOG_HEADER << "Failed to add hover timer.\n";
+	}
+}
+
+void tmouse_motion::stop_hover_timer()
+{
+	if(hover_timer_) {
+		assert(hover_widget_);
+		DBG_GUI_E << LOG_HEADER << "Stop hover timer for widget '"
+				<< hover_widget_->id() << "' at address "
+				<< hover_widget_ << ".\n";
+
+		if(SDL_RemoveTimer(hover_timer_) == SDL_FALSE) {
+			ERR_GUI_E << LOG_HEADER << "Failed to remove hover timer.\n";
+		}
+
+		hover_timer_ = NULL;
+		hover_widget_ = NULL;
+		hover_position_ = tpoint(0, 0);
+	}
+}
+
+void tmouse_motion::signal_handler_show_hover_tooltip(const event::tevent event)
+{
+	DBG_GUI_E << LOG_HEADER << event << ".\n";
+
+	if(!hover_widget_) {
+		ERR_GUI_E << LOG_HEADER << event << " bailing out, no hover widget.\n";
+	}
+
+	/**
+	 * @todo See whether this code can be cleanup a bit.
+	 *
+	 * It now feels a bit hacky with all the casts. It should work but just is
+	 * a bit ugly.
+	 */
+	owner_.get_window()->do_show_tooltip(hover_position_
+			, dynamic_cast<tcontrol&>(*hover_widget_).tooltip());
+	hover_shown_ = true;
+
+	hover_timer_ = NULL;
+	hover_widget_ = NULL;
+	hover_position_ = tpoint(0, 0);
 }
 
 /***** ***** ***** ***** tmouse_button ***** ***** ***** ***** *****/
@@ -758,6 +854,10 @@ void tdistributor::signal_handler_notify_removal(
 	 * It might be cleaner to do it that way, but creates extra small
 	 * functions...
 	 */
+
+	if(hover_widget_ == &widget) {
+		stop_hover_timer();
+	}
 
 	if(tmouse_button_left::last_clicked_widget_ == &widget) {
 		tmouse_button_left::last_clicked_widget_ = NULL;

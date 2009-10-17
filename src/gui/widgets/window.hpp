@@ -528,11 +528,13 @@ private:
 	 */
 	void layout_linked_widgets();
 
+public:
 	/** Inherited from tevent_handler. */
 	void do_show_tooltip(const tpoint& location, const t_string& tooltip);
 
 	/** Inherited from tevent_handler. */
 	void do_remove_tooltip();
+private:
 
 	/** Inherited from tevent_handler. */
 	void do_show_help_popup(const tpoint& location, const t_string& help_popup);
