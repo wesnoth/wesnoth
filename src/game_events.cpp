@@ -586,27 +586,26 @@ static void toggle_shroud(const bool remove, const vconfig& cfg)
 	const int side_num = lexical_cast_default<int>(side,1);
 	const size_t index = side_num-1;
 
-	if (index < resources::teams->size()) {
+	if (index < resources::teams->size())
+	{
+		team &t = (*resources::teams)[index];
 		std::set<map_location> locs;
 		terrain_filter filter(cfg, *resources::units);
 		filter.restrict_size(game_config::max_loop);
 		filter.get_locations(locs, true);
 
-		for(std::set<map_location>::const_iterator j = locs.begin(); j != locs.end(); ++j) {
-			if (j->x + 1 < 0 || j->y + 1 < 0) {
-				LOG_NG << "invalid shroud location: (" << *j
-					<< ") - border_size = " << resources::game_map->border_size() << std::endl;
-				continue;
-			}
-			if(remove) {
-				(*resources::teams)[index].clear_shroud(*j);
+		foreach (map_location const &loc, locs)
+		{
+			if (remove) {
+				t.clear_shroud(loc);
 			} else {
-				(*resources::teams)[index].place_shroud(*j);
+				t.place_shroud(loc);
 			}
 		}
 	}
 
 	resources::screen->labels().recalculate_shroud();
+	resources::screen->recalculate_minimap();
 	resources::screen->invalidate_all();
 }
 
