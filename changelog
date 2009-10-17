@@ -21,6 +21,7 @@ Version 1.7.6+svn:
    * Update the mouse position after closing a dialog, so the dialog below
      'knows' the proper mouse location
    * Fix double click events to be send to the wrong window
+   * Fix scrollbars to show up when not needed (bug #13996)
  * WML engine:
    * Added 'side Y turn' and 'side Y turn X' events
    * Make status "hidden=yes" default, no need to do it manually in WML anymore

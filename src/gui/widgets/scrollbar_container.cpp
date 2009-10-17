@@ -167,7 +167,7 @@ void tscrollbar_container::request_reduce_height(
 	assert(vertical_scrollbar_grid_);
 
 	tpoint size = get_best_size();
-	if(static_cast<unsigned>(size.y) < maximum_height) {
+	if(static_cast<unsigned>(size.y) <= maximum_height) {
 		return;
 	}
 
@@ -216,7 +216,7 @@ void tscrollbar_container::request_reduce_width(
 	assert(horizontal_scrollbar_grid_);
 
 	tpoint size = get_best_size();
-	if(static_cast<unsigned>(size.x) < maximum_width) {
+	if(static_cast<unsigned>(size.x) <= maximum_width) {
 		return;
 	}
 
