@@ -477,14 +477,14 @@ template<
 			mouse_captured_ = false;
 		}
 
-		if(mouse_focus_ != mouse_over) {
+		if(mouse_focus_ == mouse_over) {
+			mouse_button_click(mouse_focus_);
+		} else if(!mouse_captured_) {
 			mouse_leave();
 
 			if(mouse_over) {
 				mouse_enter(mouse_over);
 			}
-		} else {
-			mouse_button_click(mouse_focus_);
 		}
 	} else if(focus_ && focus_ == mouse_over) {
 		mouse_button_click(focus_);
