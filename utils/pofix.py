@@ -255,6 +255,7 @@ stringfixes = {
 
 "wesnoth-units" : (
 (" and and ", " and "),
+("instinctive loyalty fronm ", "instinctive loyalty from "),
 ),
 
 "wesnoth-utbs" : (
@@ -267,7 +268,7 @@ stringfixes = {
 # Speak, if all argument files are newer than this timestamp
 # Try to use UTC here
 # date --utc "+%s  # %c"
-timecheck = 1254427151  # Thu 01 Oct 2009 07:59:11 PM UTC
+timecheck = 1255776414  # Sat Oct 17 10:47:29 UTC 2009
 
 
 import os, sys, time, stat
