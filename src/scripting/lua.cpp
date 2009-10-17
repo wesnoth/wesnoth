@@ -1531,7 +1531,7 @@ static int intf_find_path(lua_State *L)
 	gamemap &map = *resources::game_map;
 	int viewing_side = u->side();
 	bool ignore_units = false, see_all = false, ignore_teleport = false;
-
+	double stop_at = 10000;
 	cost_calculator *calc = NULL;
 
 	if (lua_istable(L, arg))
@@ -1540,10 +1540,18 @@ static int intf_find_path(lua_State *L)
 		lua_rawget(L, arg);
 		ignore_units = lua_toboolean(L, -1);
 		lua_pop(L, 1);
+
 		lua_pushstring(L, "ignore_teleport");
 		lua_rawget(L, arg);
 		ignore_teleport = lua_toboolean(L, -1);
 		lua_pop(L, 1);
+
+		lua_pushstring(L, "max_cost");
+		lua_rawget(L, arg);
+		if (!lua_isnil(L, -1))
+			stop_at = lua_tonumber(L, -1);
+		lua_pop(L, 1);
+
 		lua_pushstring(L, "viewing_side");
 		lua_rawget(L, arg);
 		if (!lua_isnil(L, -1)) {
@@ -1571,7 +1579,7 @@ static int intf_find_path(lua_State *L)
 			units, teams, map, ignore_units);
 	}
 
-	plain_route res = a_star_search(src, dst, 10000.0, calc, map.w(), map.h(),
+	plain_route res = a_star_search(src, dst, stop_at, calc, map.w(), map.h(),
 		&teleport_locations);
 	delete calc;
 
