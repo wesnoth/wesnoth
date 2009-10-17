@@ -120,7 +120,7 @@ size_t distance_between(const map_location& a, const map_location& b);
 
 /** Parses ranges of locations into a vector of locations. */
 std::vector<map_location> parse_location_range(const std::string& xvals,
-	const std::string& yvals, const gamemap *const map=NULL);
+	const std::string &yvals);
 
 /** Write a vector of locations into a config
  *  adding keys x=x1,x2,..,xn and y=y1,y2,..,yn */

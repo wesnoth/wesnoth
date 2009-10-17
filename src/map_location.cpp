@@ -21,9 +21,12 @@
 
 #include <cassert>
 
+#include "map_location.hpp"
+
 #include "config.hpp"
-#include "map.hpp"
 #include "formula_string_utils.hpp"
+#include "map.hpp"
+#include "resources.hpp"
 
 
 #define ERR_CF LOG_STREAM(err, config)
@@ -350,34 +353,34 @@ size_t distance_between(const map_location& a, const map_location& b)
 	return std::max<int>(hdistance, abs(a.y - b.y) + vpenalty + hdistance/2);
 }
 
-std::vector<map_location> parse_location_range(const std::string& x, const std::string& y,
-													const gamemap *const map)
+std::vector<map_location> parse_location_range(const std::string &x, const std::string &y)
 {
 	std::vector<map_location> res;
 	const std::vector<std::string> xvals = utils::split(x);
 	const std::vector<std::string> yvals = utils::split(y);
+	gamemap *map = resources::game_map;
+	assert(map);
 
-	for(unsigned int i = 0; i < xvals.size() || i < yvals.size(); ++i) {
+	for (unsigned i = 0; i < xvals.size() || i < yvals.size(); ++i)
+	{
 		std::pair<int,int> xrange, yrange;
 
-		// x
-		if(i < xvals.size()) {
+		if (i < xvals.size()) {
 			xrange = utils::parse_range(xvals[i]);
-		} else if (map != NULL) {
+			if (xrange.first < 1) xrange.first = 1;
+			if (xrange.second > map->w()) xrange.second = map->w();
+		} else {
 			xrange.first = 1;
 			xrange.second = map->w();
-		} else {
-			break;
 		}
 
-		// y
-		if(i < yvals.size()) {
+		if (i < yvals.size()) {
 			yrange = utils::parse_range(yvals[i]);
-		} else if (map != NULL) {
+			if (yrange.first < 1) yrange.first = 1;
+			if (yrange.second > map->h()) yrange.second = map->h();
+		} else {
 			yrange.first = 1;
 			yrange.second = map->h();
-		} else {
-			break;
 		}
 
 		for(int x = xrange.first; x <= xrange.second; ++x) {
