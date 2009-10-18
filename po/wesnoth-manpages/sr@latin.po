@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-09-27 20:26+0300\n"
-"PO-Revision-Date: 2009-08-26 17:28+0200\n"
+"PO-Revision-Date: 2009-10-11 12:58+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
+"Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: sr\n"
-"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%"
-"10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Environment: wesnoth, wesnoth/noent\n"
 
 #: ../../doc/man/wesnoth.6:16
@@ -778,14 +778,12 @@ msgid "[I<tag>]"
 msgstr "[I<oznaka>]"
 
 #: ../../doc/man/wesnothd.6:103
-#, fuzzy
 msgid "I<key>=\"I<value>\""
-msgstr "ključ=\"I<vrednost>\""
+msgstr "I<ključ>=\"I<vrednost>\""
 
 #: ../../doc/man/wesnothd.6:105
-#, fuzzy
 msgid "I<key>=\"I<value>,I<value>,...\""
-msgstr "ključ=\"I<vrednost>,I<vrednost>,...\""
+msgstr "I<ključ>=\"I<vrednost>,I<vrednost>,...\""
 
 #: ../../doc/man/wesnothd.6:107
 msgid "[/I<tag>]"
@@ -802,14 +800,13 @@ msgid "B<allow_remote_shutdown>"
 msgstr "B<allow_remote_shutdown>"
 
 #: ../../doc/man/wesnothd.6:114
-#, fuzzy
 msgid ""
 "If set to B<no> (default), shut_down and restart requests are ignored unless "
 "they come from the fifo.  Set it to B<yes> to allow remote shutdown via a /"
 "query by an administrator."
 msgstr ""
-"ako se zada 'no' (podrazumevano), zahtevi za gašenje i ponovno pokretanje se "
-"ignorišu osim ako stižu iz fifoa. Zadajte 'yes' da dozvolite udaljeno "
+"ako se zada B<no> (podrazumevano), zahtevi za gašenje i ponovno pokretanje "
+"se ignorišu osim ako stižu iz fifoa. Zadajte B<yes> da dozvolite udaljeno "
 "gašenje na /query administratora."
 
 #: ../../doc/man/wesnothd.6:114
@@ -832,13 +829,12 @@ msgid "B<compress_stored_rooms>"
 msgstr "B<compress_stored_rooms>"
 
 #: ../../doc/man/wesnothd.6:121
-#, fuzzy
 msgid ""
 "Determines whether the rooms file should be read and written to in "
 "compressed form. Defaults to B<yes>."
 msgstr ""
 "određuje da li fajl soba treba čitati i pisati u kompresovanom obliku. "
-"Podrazumevano 'yes'."
+"Podrazumevano B<yes>."
 
 #: ../../doc/man/wesnothd.6:121
 #, no-wrap
@@ -859,14 +855,13 @@ msgid "B<disallow_names>"
 msgstr "B<disallow_names>"
 
 #: ../../doc/man/wesnothd.6:131
-#, fuzzy
 msgid ""
 "Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
 "(used if nothing is specified) are: B<*admin*,*admln*,*server*,ai,ai?,"
 "computer,human,network,player>."
 msgstr ""
-"imena/nadimci koje server ne prihvata. Prihvataju se '*' i '?' kao džokeri "
+"imena/nadimci koje server ne prihvata. Prihvataju se B<*> i B<?> kao džokeri "
 "(pogledajte B<glob>(7) za više detalja). Podrazumevane vrednosti, koje se "
 "koriste ako se ništa ne zada, su: B<*admin*,*admln*,*server*,ai,ai?,computer,"
 "human,network,player>."
@@ -877,15 +872,14 @@ msgid "B<fifo_path>"
 msgstr "B<fifo_path>"
 
 #: ../../doc/man/wesnothd.6:135
-#, fuzzy
 msgid ""
 "The path to the fifo you can echo server commands into (same as /query ... "
 "from wesnoth).  If not specified defaults to the compile-time path (default: "
 "B</var/run/socket/wesnothd/socket>)."
 msgstr ""
 "putanja do fifoa iz kojeg server može da čita naredbe (iste kao /query ... "
-"iz igre). Ako nije zadato, spada na podrazumevanu ugrađenu (/var/run/socket/"
-"wesnothd/socket)."
+"iz igre). Ako nije zadata, spada na ugrađenu (podrazumevano: B</var/run/"
+"socket/wesnothd/socket>)."
 
 #: ../../doc/man/wesnothd.6:135
 #, no-wrap
@@ -927,7 +921,6 @@ msgid "B<new_room_policy>"
 msgstr "B<new_room_policy>"
 
 #: ../../doc/man/wesnothd.6:147
-#, fuzzy
 msgid ""
 "Determines who can create new rooms on the server. Available values are "
 "B<everyone>, B<registered>, B<admin> and B<nobody>, and give the permission "
@@ -935,9 +928,9 @@ msgid ""
 "creation. Default value is B<everyone>."
 msgstr ""
 "određuje ko može da stvara nove sobe na serveru. Moguće vrednosti su "
-"'everyone', 'registered', 'admin' i 'nobody', dajući dozvolu, redom, svima, "
-"registrovanim korisnicima, administratorima i nikome. Podrazumevana vrednost "
-"je 'everyone'."
+"B<everyone>, B<registered>, B<admin> i B<nobody>, dajući dozvolu, redom, "
+"svima, registrovanim korisnicima, administratorima i nikome. Podrazumevana "
+"vrednost je B<everyone>."
 
 #: ../../doc/man/wesnothd.6:147
 #, no-wrap
@@ -945,11 +938,11 @@ msgid "B<passwd>"
 msgstr "B<passwd>"
 
 #: ../../doc/man/wesnothd.6:150
-#, fuzzy
 msgid ""
 "The password used to gain admin privileges (via B</query admin >I<password>)."
 msgstr ""
-"lozinka za sticanje administratorskih ovlašćenja. Obično počinje sa 'admin  '"
+"lozinka za sticanje administratorskih ovlašćenja (putem B</query admin "
+">I<lozinka>)."
 
 #: ../../doc/man/wesnothd.6:150
 #, no-wrap
@@ -972,14 +965,13 @@ msgid "B<restart_command>"
 msgstr "B<restart_command>"
 
 #: ../../doc/man/wesnothd.6:156
-#, fuzzy
 msgid ""
 "The command that the server uses to start a new server process via the "
 "B<restart> command. (Can only be issued via the fifo. See the "
 "B<allow_remote_shutdown> setting.)"
 msgstr ""
-"Naredba kojom server pokreće novi serverski proces pri naredbi 'restart'. "
-"(Može se izdati samo preko fifoa.)"
+"Naredba kojom server pokreće novi serverski proces pri naredbi B<restart>. "
+"(Može se izdati samo preko fifoa. Vidi postavku B<allow_remote_shutdown>.)"
 
 #: ../../doc/man/wesnothd.6:156
 #, no-wrap
@@ -1015,14 +1007,13 @@ msgid "B<versions_accepted>"
 msgstr "B<versions_accepted>"
 
 #: ../../doc/man/wesnothd.6:166
-#, fuzzy
 msgid ""
 "A comma separated list of version strings to be accepted by the server. B<*> "
 "and B<?> from wildcard patterns are supported.  (defaults to the "
 "corresponding wesnoth version)"
 msgstr ""
 "Zapetama razdvojen spisak niski verzija koje server prihvata. Prihvataju se "
-"'*' i '?' kao džokeri (podrazumevana je verzija klijenta koja odgovara "
+"B<*> i B<?> kao džokeri (podrazumevana je verzija klijenta koja odgovara "
 "verziji servera)"
 
 #: ../../doc/man/wesnothd.6:168
@@ -1035,7 +1026,6 @@ msgid "B<user_handler>"
 msgstr "B<user_handler>"
 
 #: ../../doc/man/wesnothd.6:173
-#, fuzzy
 msgid ""
 "The name of the user handler to use. Currently available user handlers are "
 "B<forum> (to connect wesnothd to a phpbb forum database) and B<sample> (a "
@@ -1043,10 +1033,10 @@ msgid ""
 "anything real you are insane). The default value is B<forum>. You must also "
 "add a B<[user_handler]> section, see below."
 msgstr ""
-"Ime rukovaoca korisnicima. Trenutno dostupni su 'forum' (server se povezuje "
-"sa phpBB bazom podataka foruma) i 'sample' (primerna izvedba sučelja "
+"Ime rukovaoca korisnicima. Trenutno dostupni su B<forum> (server se povezuje "
+"sa phpBB bazom podataka foruma) i B<sample> (primerna izvedba sučelja "
 "rukovaoca korisnicima, ludi ste ako ovo upotrebite negde zaozbiljno). "
-"Podrazumevana vrednost je 'forum'. Takođe morate dodati odeljak B<"
+"Podrazumevana vrednost je B<forum>. Takođe morate dodati odeljak B<"
 "[user_handler]>, v. ispod."
 
 #: ../../doc/man/wesnothd.6:174
@@ -1116,7 +1106,6 @@ msgid "B<time>"
 msgstr "B<time>"
 
 #: ../../doc/man/wesnothd.6:207
-#, fuzzy
 msgid ""
 "The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s "
 "(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d "
@@ -1126,8 +1115,8 @@ msgid ""
 msgstr ""
 "Trajanje. Format je %d[%s[%d%s[...]]] gde s iz %s označava sekunde, m "
 "minute, h sate, D dane, M mesece, Y godine, a d je broj. Ako nije dat "
-"modifikator, pretpostavljaju se minuti (m). Primer: time=\"1D12h30m\" znači "
-"zabranu u trajanju od jednog dana, 12 sati i 30 minuta."
+"modifikator, pretpostavljaju se minuti (m). Primer: B<time=\"1D12h30m\"> "
+"znači zabranu u trajanju od jednog dana, 12 sati i 30 minuta."
 
 #: ../../doc/man/wesnothd.6:213
 msgid ""
@@ -1140,7 +1129,6 @@ msgstr ""
 "ključeve kao i B<[redirect]>"
 
 #: ../../doc/man/wesnothd.6:221
-#, fuzzy
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
 "on which user handler is set with the B<user_handler> key. If no B<"
@@ -1149,7 +1137,7 @@ msgid ""
 msgstr ""
 "B<[user_handler]> podešava rukovalac korisnicima. Dostupnost ključeva zavisi "
 "od toga koji je rukovalac postavljen ključem B<user_handler>. Ako u postavi "
-"nema odeljka [user_handler], server neće pružati uslugu registrovanja "
+"nema odeljka B<[user_handler]>, server neće pružati uslugu registrovanja "
 "nadimaka."
 
 #: ../../doc/man/wesnothd.6:222
@@ -1213,7 +1201,6 @@ msgid "B<db_extra_table>"
 msgstr "B<db_extra_table>"
 
 #: ../../doc/man/wesnothd.6:241
-#, fuzzy
 msgid ""
 "(for user_handler=forum) The name of the table in which wesnothd will save "
 "its own data about users. You will have to create this table manually, e.g.: "
@@ -1222,10 +1209,10 @@ msgid ""
 "NOT NULL DEFAULT 0);>"
 msgstr ""
 "(za user_handler=forum) ime tabele u koju wesnothd upisuje svoje podatke o "
-"korisnicima. Ovu tabelu moraćete ručno da napravite, npr.: CREATE TABLE "
+"korisnicima. Ovu tabelu moraćete ručno da napravite, npr.: B<CREATE TABLE "
 "E<lt>ime-tabeleE<gt>(username VARCHAR(255) PRIMARY KEY, user_lastvisit INT "
 "UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT "
-"0);"
+"0);>"
 
 #: ../../doc/man/wesnothd.6:241
 #, no-wrap
