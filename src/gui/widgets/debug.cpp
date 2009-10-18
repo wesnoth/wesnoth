@@ -169,8 +169,14 @@ void tdebug_layout_graph::generate_dot_file(
 		return;
 	}
 
-	const std::string filename = filename_base_ +
-		lexical_cast<std::string>(++sequence_number_) + "-" + generator + ".dot";
+	std::string id = window_->id();
+	if(!id.empty()) {
+		id += '_';
+	}
+	const std::string filename = filename_base_ + id
+			+ lexical_cast<std::string>(++sequence_number_)
+			+ "-" + generator + ".dot";
+
 	std::ofstream file(filename.c_str());
 
 	file << "//Basic layout graph for window id '" << window_->id()
