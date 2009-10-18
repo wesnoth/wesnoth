@@ -416,6 +416,10 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.back().sub_anims_["_death_sound"].add_frame(1,frame_builder());
 		animations.back().sub_anims_["_death_sound"].add_frame(1,frame_builder().sound(cfg["die_sound"]),true);
 
+		tmp_anim = *itor;
+		tmp_anim.unit_anim_.override(0,1,"","",0,"");
+		tmp_anim.event_ = utils::split("victory");
+		animations.push_back(tmp_anim);
 
 		tmp_anim = *itor;
 		tmp_anim.unit_anim_.override(0,150,"1~0:150");
