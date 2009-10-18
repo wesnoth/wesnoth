@@ -7,23 +7,22 @@ msgstr ""
 "Project-Id-Version: hu-tutorial\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-10-13 22:59+0200\n"
-"PO-Revision-Date: 2009-04-27 21:59+0200\n"
-"Last-Translator: Barthalos Márton <barthalosmarton@yahoo.com>\n"
-"Language-Team: Hungarian <kde-i18n-doc@lists.kde.org>\n"
+"PO-Revision-Date: 2009-10-17 23:05+0200\n"
+"Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
+"Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 0.2\n"
+"X-Generator: Lokalize 1.0\n"
 
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:40
-#, fuzzy
 msgid ""
 "\n"
 "<big>Click a mouse button or press spacebar to continue...</big>"
 msgstr ""
 "\n"
-"*Bal kattintás vagy szóköz billentyű a folytatáshoz..."
+"<big>Egérkattintás vagy szóköz billentyű a folytatáshoz...</big>"
 
 #. [tutorial]: id=tutorial
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:49
@@ -92,9 +91,8 @@ msgstr "Li'sar"
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:194
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:201
-#, fuzzy
 msgid "<big>Welcome to Wesnoth!</big>"
-msgstr "*Üdvözlet a Wesnoth játékban!"
+msgstr "<big>Üdvözlet a Wesnoth játékban!</big>"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:196
@@ -143,22 +141,20 @@ msgstr "Kattints a bal egérgombbal Li'sarra"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:228
-#, fuzzy
 msgid ""
 "<big>You have selected Konrad.</big>\n"
 "The places he can move to are highlighted."
 msgstr ""
-"*Kijelölted Konradot.\n"
+"<big>Kijelölted Konradot.</big>\n"
 "A mezők, ahová Konraddal léphetsz, világosabbak."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:235
-#, fuzzy
 msgid ""
 "<big>You have selected Li'sar.</big>\n"
 "The places she can move to are highlighted."
 msgstr ""
-"*Kijelölted Li'sart.\n"
+"<big>Kijelölted Li'sart.</big>\n"
 "A mezők, ahová Li'sarral léphetsz, világosabbak."
 
 #. [event]
@@ -187,13 +183,12 @@ msgstr "Kattints bal egérgombbal az „IDE” címkéjű mezőre"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:282
-#, fuzzy
 msgid ""
 "<big>Oops!</big>\n"
 "You moved to the wrong place! After this message, you can press 'u' to undo, "
 "then try again."
 msgstr ""
-"*Hopsz!\n"
+"<big>Hopsz!</big>\n"
 "Rossz helyre léptél! Ezután az üzenet után megnyomhatod az „u” gombot a "
 "billentyűzeten, amivel visszavonhatod a lépést; utána próbáld újra."
 
@@ -321,7 +316,6 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:450
-#, fuzzy
 msgid ""
 "female^Unfortunately, you've used up your turn attacking the quintain. The "
 "quintain will now get a turn."
@@ -375,7 +369,6 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:498
-#, fuzzy
 msgid ""
 "female^There is a village on the other side of the river. Visiting villages "
 "is a good idea, and ending your turn in one will heal you. To the village!"
@@ -458,7 +451,6 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:593
-#, fuzzy
 msgid ""
 "female^A splendid idea. You can recruit two units if you return to the keep. "
 "You have plenty of gold for that."
@@ -528,12 +520,12 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:732
-#, fuzzy
 msgid ""
 "Had the quintain survived your onslaught, it would have regained two "
 "hitpoints. If a unit doesn't do anything for a turn, it will slowly heal."
 msgstr ""
-"Igen, ha egy egység semmit sem csinál egy körben, lassan gyógyulni kezd."
+"Ha a homokzsák túlélte volna a támadásodat, két életerőpontot gyógyult "
+"volna. Ha egy egység semmit sem csinál egy körben, lassan gyógyulni kezd."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:745
@@ -729,9 +721,8 @@ msgstr ""
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1032
-#, fuzzy
 msgid "The quintain is dead, and I have gained more experience!"
-msgstr "A homokzsák halott, uraim, és tapasztalati pontokat is szereztem!"
+msgstr "A homokzsák halott, és tapasztalati pontokat is szereztem!"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1037
@@ -801,12 +792,11 @@ msgstr ""
 "lépnél."
 
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:27
-#, fuzzy
 msgid ""
 "<big>Remember:</big>\n"
 "You can press 'u' to undo most things; useful for correcting mistakes."
 msgstr ""
-"*Ne felejtsd el:\n"
+"<big>Ne felejtsd el:</big>\n"
 "Használd az 'u' gombot a lépések visszavonására: hasznos a hibák javításában."
 
 #. [unit]: id=Galdrad, type=Elvish Captain
@@ -860,15 +850,14 @@ msgstr "Túlélheti az ott álló egyetlen egységem annyi ellenség támadásá
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:28
-#, fuzzy
 msgid ""
 "With a little help, yes. If you move your Shaman next to the defending unit, "
 "she will heal it 4 hitpoints per turn. Just be careful not to expose the "
 "Shaman to attack since she is fairly weak herself."
 msgstr ""
 "Egy kis segítséggel igen. Ha a sámánnőt a védekező egység mellé mozgatod, "
-"csillapítani fogja sebeit körönként 4 életerőpontot visszaadva. Csak "
-"vigyázz, nehogy támadásnak tedd ki a sámánnőt, mert önmagában elég gyenge."
+"gyógyítani fogja sebeit körönként 4 életerőpontot visszaadva. Csak vigyázz, "
+"nehogy támadásnak tedd ki a sámánnőt, mert önmagában elég gyenge."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:29
@@ -1061,15 +1050,14 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:530
-#, fuzzy
 msgid ""
 "During your tutorial, both $recall_name1 and $recall_name2 gained "
 "$recall_xp1 experience points. You should recall them now so they can gain "
 "more experience, rather than recruiting new ones."
 msgstr ""
-"A gyakorlásod közben $recall_name1 $recall_xp1 tapasztalati pontot szerzett, "
-"$recall_name2 pedig $recall_xp2 pontot. Új harcosok toborzása helyett inkább "
-"őket kéne visszahívnod, hogy több tapasztalatot szerezhessenek."
+"A gyakorlásod közben $recall_name1 és $recall_name2 egyaránt $recall_xp1 "
+"tapasztalati pontot szerzett. Új harcosok toborzása helyett inkább őket kéne "
+"visszahívnod, hogy több tapasztalatot szerezhessenek."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:533
@@ -1154,7 +1142,7 @@ msgid ""
 "they do!"
 msgstr ""
 "A sámánnő egy viszonylag gyenge egység, azonban képes a mellette álló "
-"egységek sebeit csillapítani. Ezenkívül van egy speciális támadása, ami "
+"egységek sebeit gyógyítani. Ezenkívül van egy speciális támadása, amely "
 "lelassítja az ellenfelet, és megfelezi az általa okozható sebzést is!"
 
 #. [else]
@@ -1366,13 +1354,12 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:921
-#, fuzzy
 msgid ""
 "Attack the orc with an Archer\n"
 "(move mouse over units to see description on right)"
 msgstr ""
-"Támadd meg az orkot egy íjásszal (vidd az egeret az egység fölé, hogy "
-"jobboldalt lásd a leírását)"
+"Támadd meg az orkot egy íjásszal\n"
+"(vidd az egeret az egység fölé, hogy jobboldalt lásd a leírását)"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:929
@@ -1541,7 +1528,7 @@ msgid ""
 "it at the beginning of the next turn."
 msgstr ""
 "Igen. Ráadásul ha a sámánnő közvetlenül a hídon álló egységed mögött áll, "
-"akkor csillapítani fogja sebeit a következő köröd elején."
+"akkor gyógyítani fogja sebeit a következő köröd elején."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1078
@@ -1613,9 +1600,9 @@ msgid ""
 "Remember to retreat your wounded units to villages. Healers can only heal 4 "
 "hitpoints at a time, while villages can heal 8 (the maximum for any unit)."
 msgstr ""
-"Ne felejtsd el visszavonni a sérült egységeidet a falvakba. A csillapítók "
-"csak 4 életerőpontot tudnak gyógyítani, a falvak viszont 8-at (ez a legtöbb "
-"egy egységnél)."
+"Ne felejtsd el visszavonni a sérült egységeidet a falvakba. A gyógyítók csak "
+"4 életerőpontot tudnak gyógyítani, a falvak viszont 8-at (ez a legtöbb egy "
+"egységnél)."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1180
@@ -1719,7 +1706,6 @@ msgstr ""
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1357
-#, fuzzy
 msgid ""
 "We will miss $deadguy.name| because she had $deadguy.experience experience "
 "points, meaning she would have advanced to level 2 soon."
@@ -1787,7 +1773,6 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1430
-#, fuzzy
 msgid ""
 "female^Advancing a level has fully healed me!\n"
 "I always have a 60% chance of hitting with my Marksman ability, and I deal 9 "

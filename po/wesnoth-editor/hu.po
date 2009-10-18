@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: hu-editor_1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-10-07 15:42+0200\n"
-"PO-Revision-Date: 2009-05-03 12:37+0200\n"
+"PO-Revision-Date: 2009-10-17 21:52+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 0.3\n"
+"X-Generator: Lokalize 1.0\n"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:5
@@ -292,15 +292,15 @@ msgstr "Nem ismételhető meg"
 
 #: src/editor/editor_controller.cpp:1104
 msgid "Auto-update Terrain Transitions: Yes"
-msgstr ""
+msgstr "Terepáttűnések automatikus frissítése: Igen"
 
 #: src/editor/editor_controller.cpp:1107
 msgid "Auto-update Terrain Transitions: Partial"
-msgstr ""
+msgstr "Terepáttűnések automatikus frissítése: Részleges"
 
 #: src/editor/editor_controller.cpp:1111
 msgid "Auto-update Terrain Transitions: No"
-msgstr ""
+msgstr "Terepáttűnések automatikus frissítése: Nem"
 
 #: src/editor/editor_map.cpp:149 src/editor/mouse_action.cpp:439
 msgid "Player"
@@ -312,11 +312,12 @@ msgstr "A célpálya mérete különbözik a jelenlegi pálya méretétől"
 
 #: src/editor/editor_palettes.cpp:506
 msgid "(non-core)"
-msgstr ""
+msgstr "(speciális terep)"
 
 #: src/editor/editor_palettes.cpp:507
 msgid "Will not work in game without extra care."
 msgstr ""
+"Külön odafigyelést igényel, ellenkező esetben nem fog működni a játékban"
 
 #: src/editor/editor_palettes.cpp:532
 msgid "FG"
