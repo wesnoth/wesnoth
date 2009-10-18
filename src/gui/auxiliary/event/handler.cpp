@@ -55,6 +55,7 @@ namespace event {
 /***** Static data. *****/
 class thandler;
 static thandler* handler = NULL;
+static events::event_context* event_context = NULL;
 
 #ifdef MAIN_EVENT_HANDLER
 static unsigned draw_interval = 0;
@@ -336,6 +337,7 @@ void thandler::connect(tdispatcher* dispatcher)
 			== dispatchers_.end());
 #ifndef GUI2_OLD_EVENT_HANDLING
 	if(dispatchers_.empty()) {
+		event_context = new events::event_context();
 		join();
 	}
 #endif
@@ -372,6 +374,8 @@ void thandler::disconnect(tdispatcher* dispatcher)
 #ifndef GUI2_OLD_EVENT_HANDLING
 	if(dispatchers_.empty()) {
 		leave();
+		delete event_context;
+		event_context = NULL;
 	}
 #endif
 }
