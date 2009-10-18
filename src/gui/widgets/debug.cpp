@@ -261,6 +261,18 @@ void tdebug_layout_graph::widget_generate_info(std::ostream& out,
 	}
 }
 
+static std::string format_label(std::string label)
+{
+	if(label.size() > 50) {
+		label = label.substr(0, 50) + "...";
+	}
+
+	// Replace characters that break the dot file/
+	std::replace(label.begin(), label.end(), '>', '_');
+
+	return label;
+}
+
 void tdebug_layout_graph::widget_generate_basic_info(
 		std::ostream& out, const twidget* widget) const
 {
@@ -284,12 +296,8 @@ void tdebug_layout_graph::widget_generate_basic_info(
 		<< "parent=" << widget->parent_ << '\n'
 		<< "</td></tr>" << '\n';
 		if(control) {
-			std::string label = control->label();
-			if(label.size() > 50) {
-				label = label.substr(0, 50) + "...";
-			}
 			out << "<tr><td" << header_background << ">" << '\n'
-				<< "label=" << label << '\n'
+				<< "label=" << format_label(control->label()) << '\n'
 				<< "</td></tr>\n";
 		}
 }
