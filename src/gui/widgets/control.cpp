@@ -24,6 +24,9 @@
 
 #include <iomanip>
 
+#define LOG_HEADER "tcontrol(" + get_control_type() + ") [" \
+		<< id() << "] " << __func__ << ":"
+
 namespace gui2 {
 
 tcontrol::tcontrol(const unsigned canvas_count)
@@ -86,9 +89,7 @@ tpoint tcontrol::get_config_minimum_size() const
 
 	tpoint result(config_->min_width, config_->min_height);
 
-	DBG_GUI_L << "tcontrol(" + get_control_type() + ") " + __func__ + ":"
-		<< " result " << result
-		<< ".\n";
+	DBG_GUI_L << LOG_HEADER << " result " << result << ".\n";
 	return result;
 }
 
@@ -98,9 +99,7 @@ tpoint tcontrol::get_config_default_size() const
 
 	tpoint result(config_->default_width, config_->default_height);
 
-	DBG_GUI_L << "tcontrol(" + get_control_type() + ") " + __func__ + ":"
-		<< " result " << result
-		<< ".\n";
+	DBG_GUI_L << LOG_HEADER << " result " << result << ".\n";
 	return result;
 }
 
@@ -110,9 +109,7 @@ tpoint tcontrol::get_config_maximum_size() const
 
 	tpoint result(config_->max_width, config_->max_height);
 
-	DBG_GUI_L << "tcontrol(" + get_control_type() + ") " + __func__ + ":"
-		<< " result " << result
-		<< ".\n";
+	DBG_GUI_L << LOG_HEADER << " result " << result << ".\n";
 	return result;
 }
 
@@ -144,14 +141,16 @@ void tcontrol::request_reduce_width(const unsigned maximum_width)
 
 		set_layout_size(size);
 
-		DBG_GUI_L << "tcontrol(" + get_control_type() + ") " + __func__ + ":"
-				<< " maximum_width " << maximum_width
+		DBG_GUI_L << LOG_HEADER
+				<< " label '" << debug_truncate(label_)
+				<< "' maximum_width " << maximum_width
 				<< " result " << size
 				<< ".\n";
 
 	} else {
-		DBG_GUI_L << "tcontrol(" + get_control_type() + ") " + __func__ + ":"
-				<< " failed; either no label or wrapping not allowed.\n";
+		DBG_GUI_L << LOG_HEADER
+				<< " label '" << debug_truncate(label_)
+				<< "' failed; either no label or wrapping not allowed.\n";
 	}
 }
 
@@ -169,10 +168,10 @@ tpoint tcontrol::calculate_best_size() const
 		result = get_best_text_size(result);
 	}
 
-	DBG_GUI_L << "tcontrol(" + get_control_type() + ") " + __func__ + ":"
-		<< " empty label " << label_.empty()
-		<< " result " << result
-		<< ".\n";
+	DBG_GUI_L << LOG_HEADER
+			<< " label '" << debug_truncate(label_)
+			<< "' result " << result
+			<< ".\n";
 	return result;
 }
 
@@ -293,8 +292,8 @@ int tcontrol::get_text_maximum_height() const
 
 void tcontrol::impl_draw_background(surface& frame_buffer)
 {
-	DBG_GUI_D << "tcontrol(" + get_control_type() + ") " + __func__ + ": "
-			<< " id " << id()
+	DBG_GUI_D << LOG_HEADER
+			<< " label '" << debug_truncate(label_)
 			<< " size " << get_rect()
 			<< ".\n";
 
@@ -303,7 +302,8 @@ void tcontrol::impl_draw_background(surface& frame_buffer)
 
 tpoint tcontrol::get_best_text_size(const tpoint& minimum_size, const tpoint& maximum_size) const
 {
-	log_scope2(log_gui_layout, "tcontrol(" + get_control_type() + ") " + __func__);
+	log_scope2(log_gui_layout
+			, "tcontrol(" + get_control_type() + ") [" + id() + "]" + __func__);
 
 	assert(!label_.empty());
 
@@ -326,21 +326,25 @@ tpoint tcontrol::get_best_text_size(const tpoint& minimum_size, const tpoint& ma
 		renderer_.set_ellipse_mode(PANGO_ELLIPSIZE_NONE);
 	}
 
-	DBG_GUI_L << "tcontrol(" + get_control_type() + ") status:\n";
-	DBG_GUI_L << "minimum_size " << minimum_size
-		<< " maximum_size " << maximum_size
-		<< " text_maximum_width_ " << text_maximum_width_
-		<< " can_wrap " << can_wrap()
-		<< " truncated " << renderer_.is_truncated()
-		<< " renderer size " << renderer_.get_size()
-		<< ".\n";
+	DBG_GUI_L << LOG_HEADER
+			<< " label '" << debug_truncate(label_)
+			<< "' status: "
+			<< " minimum_size " << minimum_size
+			<< " maximum_size " << maximum_size
+			<< " text_maximum_width_ " << text_maximum_width_
+			<< " can_wrap " << can_wrap()
+			<< " truncated " << renderer_.is_truncated()
+			<< " renderer size " << renderer_.get_size()
+			<< ".\n";
 
 	// If doesn't fit try the maximum.
 	if(renderer_.is_truncated() && !can_wrap()) {
 		// FIXME if maximum size is defined we should look at that
 		// but also we don't adjust for the extra text space yet!!!
 		const tpoint maximum_size(config_->max_width, config_->max_height);
-		renderer_.set_maximum_width(maximum_size.x ? maximum_size.x - border.x : -1);
+		renderer_.set_maximum_width(maximum_size.x
+				? maximum_size.x - border.x
+				: -1);
 	}
 
 	size = renderer_.get_size() + border;
@@ -353,7 +357,10 @@ tpoint tcontrol::get_best_text_size(const tpoint& minimum_size, const tpoint& ma
 		size.y = minimum_size.y;
 	}
 
-	DBG_GUI_L << "tcontrol(" + get_control_type() + ") result " << size << ".\n";
+	DBG_GUI_L << LOG_HEADER
+			<< " label '" << debug_truncate(label_)
+			<< "' result " << size
+			<< ".\n";
 	return size;
 }
 
