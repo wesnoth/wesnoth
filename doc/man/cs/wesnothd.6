@@ -81,9 +81,9 @@ zapíná výpis rozšířených logovacích informací.
 .P
 [\fIznačka\fP]
 .IP
-\fIkey\fP="\fIvalue\fP"
+\fIklíč\fP="\fIhodnota\fP"
 .IP
-\fIkey\fP="\fIvalue\fP,\fIvalue\fP,..."
+\fIklíč\fP="\fIhodnota\fP,\fIhodnota\fP,..."
 .P
 [/\fIznačka\fP]
 .
@@ -91,9 +91,9 @@ zapíná výpis rozšířených logovacích informací.
 .
 .TP 
 \fBallow_remote_shutdown\fP
-If set to \fBno\fP (default), shut_down and restart requests are ignored unless
-they come from the fifo.  Set it to \fByes\fP to allow remote shutdown via a
-/query by an administrator.
+Při nastavení na \fBno\fP (výchozí), požadavky shut_down a restart
+jsouignorovány, pokud nepocházejí z fifo. Při nastavení \fByes\fP může správce
+vzdáleně vypnout server pomocí /query.
 .TP 
 \fBban_save_file\fP
 Plná či relativní cesta k souboru (komprese gzip), jenž může server číst a
@@ -101,23 +101,22 @@ přepisovat. Do tohoto souboru jsou ukládány zákazy přístupu (ban) a načí
 při spuštění.
 .TP 
 \fBcompress_stored_rooms\fP
-Determines whether the rooms file should be read and written to in
-compressed form. Defaults to \fByes\fP.
+Určuje, zda je soubor s místnostmi čten a zapisován jako
+komprimovaný. Výchozí hodnota \fByes\fP.
 .TP 
 \fBconnections_allowed\fP
 Počet povolených spojení z jedné IP adresy. \fB0\fP znamená
 nekonečno. (implicitně \fB5\fP)
 .TP 
 \fBdisallow_names\fP
-Names/nicks that are not accepted by the server. \fB*\fP and \fB?\fP from wildcard
-patterns are supported. See \fBglob\fP(7)  for more details.  Default values
-(used if nothing is specified) are:
+Jména/přezdívky, které nejsou serverem akceptována. Je možno použít
+metaznaky \fB*\fP a \fB?\fP. Více viz. \fBglob\fP(7). Implicitní hodnota je:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-The path to the fifo you can echo server commands into (same as /query
-\&... from wesnoth).  If not specified defaults to the compile\-time path
-(default: \fB/var/run/socket/wesnothd/socket\fP).
+Cesta k fifo, do nějž můžete posílat příkazy serveru (stejně jako pomocí
+/query z klienta). Pokud není explicitně určena, je použita výchozí hodnota
+určená při kompilaci (běžně \fB/var/run/socket/wesnothd/socket\fP).
 .TP 
 \fBmax_messages\fP
 Maximální počet zpráv, které jsou přijaty během
@@ -131,23 +130,23 @@ zpráv. (implicitně \fB10\fP sekund)
 Zpráva dne.
 .TP 
 \fBnew_room_policy\fP
-Determines who can create new rooms on the server. Available values are
-\fBeveryone\fP, \fBregistered\fP, \fBadmin\fP and \fBnobody\fP, and give the permission
-respectively to everyone, registered users, admin users or disables new room
-creation. Default value is \fBeveryone\fP.
+Určuje, kdo může vytvářet na serveru nové místnosti. Dostupné hodnoty
+zahrnují \fBeveryone\fP, \fBregistered\fP, \fBadmin\fP a \fBnobody\fP \- místosti pak
+může vytvářet každý, registrovaní uživatelé, pouze správci nebo
+nikdo. Výchozí hodnota je \fBeveryone\fP.
 .TP 
 \fBpasswd\fP
-The password used to gain admin privileges (via \fB/query admin
-\fP\fIpassword\fP).
+Heslo pro získání administrátorských práv. (Přes \fB/query admin
+\fP\fIpassword\fP.)
 .TP 
 \fBreplay_save_path\fP
 Adresář, do nějž server ukládá záznamy her (nezapomeňte na / na
 konci!). Výchozí hodnota je `', neboli adresář v němž byl server spuštěn.
 .TP 
 \fBrestart_command\fP
-The command that the server uses to start a new server process via the
-\fBrestart\fP command. (Can only be issued via the fifo. See the
-\fBallow_remote_shutdown\fP setting.)
+Příkaz, který server použije pro spuštění nového procesu sebe sama při
+příkazu \fBrestart\fP. (Lze nastavit pouze přes fifo. Více viz
+\fBallow_remote_shutdown\fP.)
 .TP 
 \fBroom_save_file\fP
 Cesta k souboru, v němž jsou ukládány informace o místnostech. Tento soubor
@@ -159,18 +158,18 @@ Určuje, zda bude server automaticky ukládat záznamy her (výchozí hodnota:
 \fBfalse\fP).
 .TP 
 \fBversions_accepted\fP
-A comma separated list of version strings to be accepted by the server. \fB*\fP
-and \fB?\fP from wildcard patterns are supported.  (defaults to the
-corresponding wesnoth version)
+Seznam čárkou oddělených řetězců verzí Wesnothu, které jsou serverem
+akceptovány. Je možno použít zástupné znaky \fB*\fP a \fB?\fP. Implicitní hodnota
+odpovídá příslušné verzi wesnothu.
 .br
 Příklad: \fBversions_accepted="*"\fP akceptuje všechny verze.
 .TP  
 \fBuser_handler\fP
-The name of the user handler to use. Currently available user handlers are
-\fBforum\fP (to connect wesnothd to a phpbb forum database) and \fBsample\fP (a
-sample implementation of the user handler interface, if you use this on
-anything real you are insane). The default value is \fBforum\fP. You must also
-add a \fB[user_handler]\fP section, see below.
+Název handleru uživatelů, jenž má být použit. V tuto chvíli jsou dostupné
+handlery \fBforum\fP (propojení s databází phpbb) a \fBsample\fP (vzorová
+implementace rozhraní, prakticky nepoužitelná). Výchozí hodnota je
+\fBforum\fP. Handler musí být dále konfigurován v sekci \fB[user_handler]\fP \- viz
+níže.
 .
 .SS "Globální značky:"
 .
@@ -199,11 +198,10 @@ přístupu (ban).
 Název pro období.
 .TP 
 \fBtime\fP
-The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s
-(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d
-is a number.  If no time modifier is given minutes (m) are assumed.
-Example: \fBtime="1D12h30m"\fP results in a ban time of 1 day, 12 hours and 30
-minutes.
+Definice doby trvání. Formát je %d[%s[%d%s[...]]] kde %s je "s" (sekundy),
+"m" (minuty), "h" (hodiny), "D" (dny), "M" (měsíce) nebo "Y" (roky) a %d je
+číslo. Pokud není zadán druh délky, jsou předpokládány minuty (m). Například
+\fBtime="1D12H30m"\fP představuje zákaz pro jeden den, 12 hodin a 30 minut.
 .RE
 .P
 \fB[proxy]\fP Značka říkající serveru, aby se choval jako proxy a přesměrovával
@@ -211,10 +209,10 @@ na určený server klientské požadavky. Akceptuje stejné klíče jako
 \fB[redirect]\fP.
 .RE
 .P
-\fB[user_handler]\fP Configures the user handler. Available keys vary depending
-on which user handler is set with the \fBuser_handler\fP key. If no
-\fB[user_handler]\fP section is present in the configuration the server will
-run without any nick registration service.
+\fB[user_handler]\fP Kpnfiguruje uživatelský handler. Dostupné klíče se liší
+podle toho, který handler je použit \- nastaveno klíčem
+\fBuser_handler\fP. Pokud není v konfiguraci nalezena žádná sekce
+\fB[user_handler]\fP, server poběží bez služeb správy přezdívek.
 .RS
 .TP  
 \fBdb_host\fP
@@ -235,11 +233,11 @@ data o uživatelích. Pravděpodobně to je <prefix>_users (například
 phpbb3_users).
 .TP  
 \fBdb_extra_table\fP
-(for user_handler=forum) The name of the table in which wesnothd will save
-its own data about users. You will have to create this table manually, e.g.:
-\fBCREATE TABLE <table\-name>(username VARCHAR(255) PRIMARY KEY,
-user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4)
-NOT NULL DEFAULT 0);\fP
+(pro user_handler=forum) Název tabulky, v níž bude wesnothd ukládat svá
+vlastní data o uživatelích. Tuto tabulku budete muset vytvořit ručně \-
+například: \fBCREATE TABLE <jméno_tabulky>(username VARCHAR(255)
+PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0,
+user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);\fP
 .TP  
 \fBuser_expiration\fP
 (pro user_handler=sample) Čas, po němž vyprší platnost registrovaného

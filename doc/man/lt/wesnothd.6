@@ -82,9 +82,9 @@ parodo versijos numerį ir išsijungia.
 .P
 [\fIelementas\fP]
 .IP
-\fIkey\fP="\fIvalue\fP"
+\fIraktas\fP="\fIvertė\fP"
 .IP
-\fIkey\fP="\fIvalue\fP,\fIvalue\fP,..."
+\fIraktas\fP=„\fIvertė\fP,\fIvertė\fP,...“
 .P
 [/\fIelementas\fP]
 .
@@ -159,9 +159,9 @@ Nurodo ar serveris automatiškai saugos žaidimų pakartojimus. (numatyta:
 \fBfalse\fP)
 .TP 
 \fBversions_accepted\fP
-A comma separated list of version strings to be accepted by the server. \fB*\fP
-and \fB?\fP from wildcard patterns are supported.  (defaults to the
-corresponding wesnoth version)
+Kableliais atskirtų versijų, kurias pripažįsta serveris, sąrašas. Leidžia
+naudoti \fB*\fP ir \fB?\fP kaip pakaitos šablonus.  (numatytoji reikšmė: tokia
+pati versija, kaip ir serverio)
 .br
 Pavyzdys: \fBversions_accepted="*"\fP priima bet kokią versiją.
 .TP  
@@ -235,11 +235,11 @@ forumas saugo savo naudotojų duomenis. Labiausiai tikėtina, kad tai bus
 <lentelės\-priešdėlis>_users (pavyzdžiui, phpbb3_users).
 .TP  
 \fBdb_extra_table\fP
-(for user_handler=forum) The name of the table in which wesnothd will save
-its own data about users. You will have to create this table manually, e.g.:
-\fBCREATE TABLE <table\-name>(username VARCHAR(255) PRIMARY KEY,
-user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4)
-NOT NULL DEFAULT 0);\fP
+(skirtas user_handler=forum) Lentelės pavadinimas, kurioje wesnothd saugos
+savo duomenis apie vartotojus. Lentelę turėsite sukurti patys. Pavyzdžiui,
+šitaip: \fBCREATE TABLE <table\-name>(username VARCHAR(255) PRIMARY
+KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator
+TINYINT(4) NOT NULL DEFAULT 0);\fP
 .TP  
 \fBuser_expiration\fP
 (skirtas user_handler=sample) Laikas, per kiek pasensta vartotojo
