@@ -141,7 +141,9 @@ void play_controller::init(CVideo& video){
 		place_sides_in_preferred_locations(map_,unit_cfg);
 	}
 
-
+	foreach (const config &t, level_.child_range("time_area")) {
+		add_time_area(t);
+	}
 
 	LOG_NG << "initialized teams... "    << (SDL_GetTicks() - ticks_) << "\n";
 	loadscreen::global_loadscreen->set_progress(60, _("Initializing teams"));

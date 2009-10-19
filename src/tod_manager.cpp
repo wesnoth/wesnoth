@@ -46,10 +46,6 @@ tod_manager::tod_manager(const config& time_cfg, int num_turns, game_state* stat
 	time_of_day::parse_times(time_cfg,times_);
 
 	set_start_ToD(const_cast<config&>(time_cfg), turn_);
-
-	foreach (const config &t, time_cfg.child_range("time_area")) {
-		this->add_time_area(t);
-	}
 }
 
 tod_manager& tod_manager::operator=(const tod_manager& manager)
