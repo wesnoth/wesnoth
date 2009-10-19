@@ -84,6 +84,13 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	victory_music_(),
 	defeat_music_()
 {
+	resources::game_map = &map_;
+	resources::units = &units_;
+	resources::teams = &teams_;
+	resources::state_of_game = &gamestate_;
+	resources::controller = this;
+	resources::tod_manager = &tod_manager_;
+
 	// Setup victory and defeat music
 	set_victory_music_list(level_["victory_music"]);
 	set_defeat_music_list(level_["defeat_music"]);
@@ -138,13 +145,6 @@ void play_controller::init(CVideo& video){
 
 	LOG_NG << "initialized teams... "    << (SDL_GetTicks() - ticks_) << "\n";
 	loadscreen::global_loadscreen->set_progress(60, _("Initializing teams"));
-
-	resources::game_map = &map_;
-	resources::units = &units_;
-	resources::teams = &teams_;
-	resources::state_of_game = &gamestate_;
-	resources::controller = this;
-	resources::tod_manager = &tod_manager_;
 
 	// This *needs* to be created before the show_intro and show_map_scene
 	// as that functions use the manager state_of_game
