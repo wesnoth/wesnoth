@@ -191,6 +191,18 @@ struct tconst_duplicator<const T, U>
 /** Returns the current mouse position. */
 tpoint get_mouse_position();
 
+/**
+ * Returns a truncated version of the text.
+ *
+ * For debugging it's sometimes useful to get a part of the label of the
+ * widget. This function shows the first part.
+ *
+ * @param text                    The text to truncate.
+ *
+ * @returns                       The truncated text.
+ */
+std::string debug_truncate(const std::string& text);
+
 } // namespace gui2
 
 #endif

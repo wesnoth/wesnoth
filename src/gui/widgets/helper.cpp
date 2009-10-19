@@ -204,5 +204,10 @@ tpoint get_mouse_position()
 	return tpoint(x, y);
 }
 
+std::string debug_truncate(const std::string& text)
+{
+	return text.substr(0, 15);
+}
+
 } // namespace gui2
 
