@@ -220,7 +220,7 @@ if(ENABLE_POT_UPDATE_TARGET)
 	endforeach(DOMAIN ${NORMAL_DOMAINS})
 
 	# The target to call
-	add_custom_target(pot-update2
+	add_custom_target(pot-update
 		COMMENT "pot-update: Done."
 		DEPENDS ${pot-update-SRC}
 	)
@@ -259,7 +259,7 @@ if(ENABLE_POT_UPDATE_TARGET)
 			)
 
 		endforeach(DOMAIN ${DOMAINS})
-		add_custom_target(po-update2-${LANG}
+		add_custom_target(po-update-${LANG}
 			COMMENT "po-update ${LANG}: Done."
 			DEPENDS ${po-update-LANG-SRC}
 		)
@@ -311,7 +311,7 @@ if(ENABLE_NLS)
 		endforeach(DOMAIN ${DOMAINS})
 
 		if(ENABLE_POT_UPDATE_TARGET)
-			add_custom_target(mo-update2-${LANG}
+			add_custom_target(mo-update-${LANG}
 				COMMENT "mo-update ${LANG}: Done."
 				DEPENDS ${mo-update-LANG-SRC}
 			)
@@ -321,7 +321,7 @@ if(ENABLE_NLS)
 	endforeach(LANG ${LANGUAGES})
 
 	# The target to call
-	add_custom_target(mo-update2 ALL
+	add_custom_target(mo-update ALL
 		COMMENT "mo-update: Done."
 		DEPENDS ${mo-update-SRC}
 	)
