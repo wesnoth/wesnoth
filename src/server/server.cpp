@@ -1424,25 +1424,23 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 		if (!found_something) out << "\nNo match found. You may want to check with 'searchlog'.";
 	} else if (command == "clones") {
 		out << "CLONES STATUS REPORT";
-		bool found_something = false;
 		std::set<std::string> clones;
 		for (wesnothd::player_map::const_iterator pl = players_.begin(); pl != players_.end(); ++pl) {
 			if (clones.find(network::ip_address(pl->first)) != clones.end()) continue;
 			bool found = false;
-			for (wesnothd::player_map::const_iterator clone = players_.begin(); clone != players_.end(); ++clone) {
+			for (wesnothd::player_map::const_iterator clone = pl; clone != players_.end(); ++clone) {
 				if (pl->first == clone->first) continue;
 				if (network::ip_address(pl->first) == network::ip_address(clone->first)) {
 					if (!found) {
 						found = true;
 						clones.insert(network::ip_address(pl->first));
 						out << std::endl << player_status(pl);
-						found_something = true;
 					}
 					out << std::endl << player_status(clone);
 				}
 			}
 		}
-		if (!found_something) return "No clones found.";
+		if (clones.empty()) return "No clones found.";
 	} else if (command == "bans") {
 		if (parameters.empty()) {
 			ban_manager_.list_bans(out);
