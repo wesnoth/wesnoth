@@ -437,6 +437,11 @@ unit::unit(unit_map *unitmap, const unit_type *t, int side,
 	apply_modifications();
 	set_underlying_id();
 
+	// fill those after traits and modifs to have correct max
+	movement_ = max_movement_;
+	hit_points_ = max_hit_points_;
+	attacks_left_ = max_attacks_;
+
 	/**
 	 * @todo Test whether the calls above modify these values if not they can
 	 * removed, since already set in the initialization list.

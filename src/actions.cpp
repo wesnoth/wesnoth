@@ -1263,6 +1263,7 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
 				unit newunit(&units_, &reanimitor->second,
 					attacker.get_unit().side(), true, unit_race::MALE);
 				newunit.set_attacks(0);
+				newunit.set_movement(0);
 				// Apply variation
 				if (undead_variation != "null")
 				{
