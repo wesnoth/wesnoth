@@ -17,6 +17,7 @@
 #include "text.hpp"
 
 #include "gui/widgets/helper.hpp"
+#include "gui/auxiliary/log.hpp"
 #include "font.hpp"
 
 #include <cassert>
@@ -326,7 +327,21 @@ ttext& ttext::set_maximum_width(int width)
 	if(width != maximum_width_) {
 		assert(context_);
 
-		pango_layout_set_width(layout_, width == -1 ? -1 : width * PANGO_SCALE);
+		/**
+		 * @todo Adding 4 extra pixels feels a bit hacky.
+		 *
+		 * For some reason it's needed since the following scenario fails:
+		 * - pango_layout_set_width(value)
+		 * - pango_layout_get_pixel_extents() -> max_width_1
+		 * - pango_layout_set_width(max_width_1)
+		 * - pango_layout_get_pixel_extents() -> max_width_2
+		 *
+		 * Now it can happen max_width_2 < max_width_1. Adding the 4 seems to
+		 * "fix" the problem.
+		 */
+		pango_layout_set_width(layout_, width == -1
+				? -1
+				: (width + 4) * PANGO_SCALE);
 		maximum_width_ = width;
 		calculation_dirty_ = true;
 		surface_dirty_ = true;
@@ -446,6 +461,25 @@ void ttext::recalculate(const bool force) const
 		pango_layout_set_font_description(layout_, font.get());
 
 		pango_layout_get_pixel_extents(layout_, NULL, &rect_);
+
+		DBG_GUI_L << "ttext::" << __func__
+				<< " text '" << gui2::debug_truncate(text_)
+				<< "' font_size " << font_size_
+				<< " markedup_text " << markedup_text_
+				<< " font_style " << std::hex << font_style_ << std::dec
+				<< " maximum_width " << maximum_width_
+				<< " maximum_height " << maximum_height_
+				<< " result " <<  rect_
+				<< ".\n";
+
+		if(rect_.width > maximum_width_) {
+			DBG_GUI_L << "ttext::" << __func__
+					<< " text '" << gui2::debug_truncate(text_)
+					<< " ' width " << rect_.width
+					<< " greater as the wanted maximum of " << maximum_width_
+					<< ".\n";
+		}
+
 	}
 }
 
