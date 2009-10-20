@@ -70,7 +70,7 @@ game_classification::game_classification(const config& cfg):
 	label(cfg["label"]),
 	parent(cfg["parent"]),
 	version(cfg["version"]),
-	campaign_type(cfg["campaign_type"]),
+	campaign_type(cfg["campaign_type"].empty() ? "scenario" : cfg["campaign_type"]),
 	campaign_define(cfg["campaign_define"]),
 	campaign_xtra_defines(utils::split(cfg["campaign_extra_defines"])),
 	campaign(cfg["campaign"]),
@@ -81,7 +81,7 @@ game_classification::game_classification(const config& cfg):
 	completion(cfg["completion"]),
 	end_text(cfg["end_text"]),
 	end_text_duration(lexical_cast_default<unsigned int>(cfg["end_text_duration"])),
-	difficulty(cfg["difficulty"])
+	difficulty(cfg["difficulty"].empty() ? "NORMAL" : cfg["difficulty"])
 	{}
 
 game_classification::game_classification(const game_classification& gc):
@@ -267,14 +267,6 @@ game_state::game_state(const config& cfg, bool show_replay) :
 
 	LOG_NG << "scenario: '" << classification_.scenario << "'\n";
 	LOG_NG << "next_scenario: '" << classification_.next_scenario << "'\n";
-
-	if(classification_.difficulty.empty()) {
-		classification_.difficulty = "NORMAL";
-	}
-
-	if(classification_.campaign_type.empty()) {
-		classification_.campaign_type = "scenario";
-	}
 
 	//priority of populating wml variables:
 	//snapshot -> replay_start -> root
