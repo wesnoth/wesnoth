@@ -766,7 +766,7 @@ void unit_preview_pane::draw_contents()
 	std::stringstream text;
 	text << font::unit_type << det.type_name << "\n"
 		<< font::race
-		<< (right_align ? det.race+"  " : "  "+det.race) << "\n"
+		<< (right_align && !weapons_ ? det.race+"  " : "  "+det.race) << "\n"
 		<< _("level") << " " << det.level << "\n"
 		<< det.alignment << "\n"
 		<< det.traits << "\n";
