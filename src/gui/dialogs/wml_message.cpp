@@ -148,17 +148,10 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 			// Add the data.
 			data["icon"]["label"] = icon;
 			data["label"]["label"] = label;
+			data["label"]["use_markup"] = "true";
 			data["description"]["label"] = description;
+			data["description"]["use_markup"] = "true";
 			options.add_row(data);
-
-			// Set the markup flag.
-			tgrid* grid = options.get_row_grid(i);
-			assert(grid);
-
-			find_widget<tcontrol>(grid, "label", false).set_use_markup(true);
-
-			find_widget<tcontrol>(grid, "description", false)
-				.set_use_markup(true);
 		}
 
 		// Avoid negetive and 0 since item 0 is already selected.
