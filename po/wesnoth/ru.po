@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-10-19 17:50+0200\n"
-"PO-Revision-Date: 2009-08-17 13:45+0200\n"
+"PO-Revision-Date: 2009-10-20 18:16+0200\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team:  <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -33,7 +33,7 @@ msgstr "Паковать сохранения"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:12
 msgid "Confirm deleting saves"
-msgstr ""
+msgstr "Подтверждать удаление сохранений"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:19
@@ -73,34 +73,34 @@ msgstr "Показывать бой"
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:68
 msgid "Ping Timeout"
-msgstr ""
+msgstr "Таймаут пинга"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:69
 msgid ""
 "Number of seconds to wait for a ping reply before we time out. Disable with "
 "0."
-msgstr ""
+msgstr "Сколько секунд ждать ответа на пинг. 0 - отключить."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:79
 msgid "Accept whisper messages from friends only"
-msgstr ""
+msgstr "Получать шёпоты только от друзей"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:86
 msgid "Auto-open whisper windows in lobby"
-msgstr ""
+msgstr "Автоматически открывать окна шёпотов в холле"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:93
 msgid "Group players in lobby"
-msgstr ""
+msgstr "Группировать игроков в холле"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:100
 msgid "Lobby sounds"
-msgstr ""
+msgstr "Звуки холла"
 
 #. [time]: id=underground
 #. [illuminated_time]: id=underground_illum
@@ -363,9 +363,8 @@ msgstr "Британский английский перевод"
 
 #. [about]
 #: data/core/about.cfg:1339
-#, fuzzy
 msgid "English (Shaw) Translation"
-msgstr "Британский английский перевод"
+msgstr "Английский перевод – \"Шоу\""
 
 #. [about]
 #: data/core/about.cfg:1357
@@ -539,9 +538,8 @@ msgstr "Валенсийский (южнокаталанский) перевод
 
 #. [about]
 #: data/core/about.cfg:2266
-#, fuzzy
 msgid "Vietnamese Translation"
-msgstr "Китайский перевод"
+msgstr "Вьетнамский перевод"
 
 #. [about]
 #: data/core/about.cfg:2273
@@ -593,9 +591,8 @@ msgstr "Особенности оружия"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=factions_section
 #: data/core/help.cfg:67 src/help.cpp:1284 src/help.cpp:1286
-#, fuzzy
 msgid "Factions"
-msgstr "Фракция"
+msgstr "Фракции"
 
 #. [section]: id=terrains
 #. [topic]: id=..terrains
@@ -3050,6 +3047,8 @@ msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
 msgstr ""
+"\n"
+"Поднимает выбранного бойца на N уровней. Например: :unit advances=2"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:51
@@ -3424,19 +3423,17 @@ msgstr ""
 
 #. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:615
-#, fuzzy
 msgid "petrifies"
-msgstr "Удары"
+msgstr "окаменение"
 
 #. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:617
-#, fuzzy
 msgid ""
 "Petrify:\n"
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
 msgstr ""
-"Камень:\n"
+"Окаменение:\n"
 "Данный вид атаки превращает цель в камень. Бойцы, превращённые в камень, не "
 "могут перемещаться и атаковать."
 
@@ -3715,42 +3712,36 @@ msgid "Exit"
 msgstr "Выйти"
 
 #: data/core/macros/ai_controller.cfg:1047
-#, fuzzy
 msgid "Set special orders..."
-msgstr "Установить поведение..."
+msgstr "Даль специальные приказы..."
 
 #: data/core/macros/ai_controller.cfg:1048
 msgid "Move leader to..."
-msgstr ""
+msgstr "Привести лидера к..."
 
 #: data/core/macros/ai_controller.cfg:1049
-#, fuzzy
 msgid "Right-click to select a location to move leader to"
-msgstr "Кликните правой кнопкой в месте, которое будем защищать"
+msgstr "Кликните правой кнопкой в месте, куда привести лидера"
 
 #: data/core/macros/ai_controller.cfg:1050
 msgid "Move leader here"
-msgstr ""
+msgstr "Привести лидера сюда"
 
 #: data/core/macros/ai_controller.cfg:1051
 msgid "moving leader to $x1|,$y1|."
-msgstr ""
+msgstr "Веду лидера в $x1|,$y1|."
 
 #: data/core/macros/ai_controller.cfg:1052
-#, fuzzy
 msgid "Clear special orders"
-msgstr "Отменить все приказы"
+msgstr "Отменить специальные приказы"
 
 #: data/core/macros/ai_controller.cfg:1053
-#, fuzzy
 msgid ""
 "Special: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_special_description"
 msgstr ""
-"Цель: $ai_controller.side_$ally_side|_current_settings."
-"currently_doing_objective_description\n"
-"Манера: $ai_controller.side_$ally_side|_current_settings."
-"currently_doing_behaviour_description"
+"Специальный: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_special_description"
 
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
@@ -3776,9 +3767,8 @@ msgid "No early finish bonus."
 msgstr "Нет бонуса за быстрый финиш."
 
 #: data/core/macros/carryover-utils.cfg:15
-#, fuzzy
 msgid "<small>(early finish bonus)</small>"
-msgstr "`(бонус за быстрый финиш)"
+msgstr "<small>(бонус за быстрое прохождение)</small>"
 
 #: data/core/macros/carryover-utils.cfg:18
 msgid "No gold carried over to the next scenario."
@@ -3811,9 +3801,8 @@ msgstr ""
 #. [objective]: description=<span color='white'>, condition=win
 #: data/core/macros/carryover-utils.cfg:34
 #: data/core/macros/carryover-utils.cfg:42
-#, fuzzy
 msgid "Alternative objective:"
-msgstr "Задать цель..."
+msgstr "Альтернативная цель:"
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:39
@@ -5154,7 +5143,7 @@ msgstr "живучая"
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:140
 msgid "Always rest heals"
-msgstr ""
+msgstr "Всегда отдыхает, чтобы лечиться"
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:157 data/core/macros/traits.cfg:170
@@ -5216,12 +5205,12 @@ msgstr "Красный"
 #. [color_range]: id=lightred
 #: data/core/team-colors.cfg:20
 msgid "Light Red"
-msgstr ""
+msgstr "Светло-красный"
 
 #. [color_range]: id=darkred
 #: data/core/team-colors.cfg:26
 msgid "Dark Red"
-msgstr ""
+msgstr "Тёмно-красный"
 
 #. [color_range]: id=blue
 #. [color_range]: id=2
@@ -6217,7 +6206,7 @@ msgstr "Озеро $name"
 #. [language]
 #: data/hardwired/english.cfg:24
 msgid "$name's Peak,Mount $name"
-msgstr ""
+msgstr "Пик $name,гора $name"
 
 #. [language]
 #: data/hardwired/english.cfg:25
@@ -6273,7 +6262,7 @@ msgstr "$name|гем,$name|берри,$name|тон,$name|хилл,$name|крес
 #. [language]
 #: data/hardwired/english.cfg:33
 msgid "$mountain|mont,$mountain|cliff,$mountain|bury,$mountain|ham"
-msgstr ""
+msgstr "$mountain|горье,$mountain|клифф,$mountain|бери,$mountain|гэм"
 
 #. [language]
 #: data/hardwired/english.cfg:34
@@ -7098,15 +7087,13 @@ msgstr "уровень"
 
 #. [unit_moves]: id=unit-moves
 #: data/themes/default.cfg:459 data/themes/experimental.cfg:399
-#, fuzzy
 msgid "statuspanel^moves"
 msgstr "ходов"
 
 #. [unit_defense]: id=unit-defense
 #: data/themes/default.cfg:468 data/themes/experimental.cfg:408
-#, fuzzy
 msgid "statuspanel^terrain def."
-msgstr "уровень"
+msgstr "защита здесь"
 
 #. [change]: id=actions-menu
 #: data/themes/default.cfg:1004
@@ -7209,27 +7196,24 @@ msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "В замке нет свободных полей для нового бойца."
 
 #: src/actions.cpp:352 src/actions.cpp:411 src/actions.cpp:1341
-#, fuzzy
 msgid "An invalid attacker weapon got selected."
-msgstr "Выбрана неправильная эра"
+msgstr "Выбрано неправильное оружие атакующего"
 
 #: src/actions.cpp:357
-#, fuzzy
 msgid "An invalid defender weapon got selected."
-msgstr "Выбрана неправильная эра"
+msgstr "Выбрано неправильное оружие обороняющегося"
 
 #: src/actions.cpp:1100
 msgid "female^poisoned"
 msgstr "отравлена"
 
 #: src/actions.cpp:1110
-#, fuzzy
 msgid "female^petrified"
-msgstr "отравлена"
+msgstr "окаменела"
 
 #: src/actions.cpp:1110
 msgid "petrified"
-msgstr ""
+msgstr "окаменел"
 
 #: src/actions.cpp:2232
 msgid "Ambushed!"
@@ -7330,9 +7314,8 @@ msgid "addon_type^Resources"
 msgstr "Ресурсы"
 
 #: src/addon_management.cpp:470
-#, fuzzy
 msgid "addon_type^Other"
-msgstr "Эра для МП"
+msgstr "Другой"
 
 #: src/addon_management.cpp:472
 msgid "addon_type^(unknown)"
@@ -7343,24 +7326,26 @@ msgid "Dependencies"
 msgstr "Зависимости"
 
 #: src/addon_management.cpp:506
-#, fuzzy
 msgid ""
 "$addon_title depends upon the following add-on which you have not installed "
 "yet:"
 msgid_plural ""
 "$addon_title depends upon the following add-ons which you have not installed "
 "yet:"
-msgstr[0] "Этому аддону необходим следующий, ещё не установленный аддон:"
-msgstr[1] "Этому аддону необходимы следующие, ещё не установленные аддоны:"
-msgstr[2] "Этому аддону необходимы следующие, ещё не установленные аддоны:"
+msgstr[0] ""
+"Аддону $addon_title необходим следующий, ещё не установленный аддон:"
+msgstr[1] ""
+"Аддону $addon_title необходимы следующие, ещё не установленные аддоны:"
+msgstr[2] ""
+"Аддону $addon_title необходимы следующие, ещё не установленные аддоны:"
 
 #: src/addon_management.cpp:509
-#, fuzzy
 msgid ""
 "Do you still want to download $addon_title|? (You will have to install all "
 "the dependencies in order to play.)"
 msgstr ""
-"Скачать этот аддон? (Вам ещё понадобятся аддоны, от которых он зависит)"
+"Точно скачать $addon_title|? (Вам ещё понадобятся все аддоны, от которых он "
+"зависит)"
 
 #: src/addon_management.cpp:527 src/addon_management.cpp:599
 #: src/multiplayer.cpp:213 src/multiplayer.cpp:268 src/multiplayer_ui.cpp:78
@@ -7547,7 +7532,7 @@ msgstr "Фильтр: "
 
 #: src/addon_management.cpp:1112
 msgid "Description"
-msgstr ""
+msgstr "Описание"
 
 #: src/addon_management.cpp:1149
 msgid "Network communication error."
@@ -7921,14 +7906,14 @@ msgstr "Поражение:"
 
 #: src/game_events.cpp:3507
 msgid "[unit_worth]'s filter didn't match any units!"
-msgstr ""
+msgstr "Фильтр [unit_worth] не нашёл ни одного бойца!"
 
 #: src/gamestatus.cpp:741
-#, fuzzy
 msgid ""
 "Leader position not empty - duplicate side definition for side '$side|' "
 "found."
-msgstr "Обнаружено дублирующее описание для стороны '$side|'."
+msgstr ""
+"Место лидера занято – обнаружено дублирующее описание для стороны '$side|'."
 
 #: src/generate_report.cpp:128
 msgid "invisible: "
@@ -7970,12 +7955,11 @@ msgstr ""
 
 #: src/generate_report.cpp:140
 msgid "petrified: "
-msgstr ""
+msgstr "окаменел:"
 
 #: src/generate_report.cpp:141
-#, fuzzy
 msgid "This unit has been petrified. It may not move or attack."
-msgstr "Данный боец превращён в камень. Он не может двигаться или атаковать."
+msgstr "Этот боец окаменел. Он не может двигаться или атаковать."
 
 #: src/generate_report.cpp:195
 msgid "Resistances: "
@@ -8042,21 +8026,20 @@ msgid "Observers:"
 msgstr "Наблюдатели:"
 
 #: src/gui/dialogs/lobby_player_info.cpp:64
-#, fuzzy
 msgid "In game:"
-msgstr "Название:"
+msgstr "В игре:"
 
 #: src/gui/dialogs/lobby_player_info.cpp:66
 msgid "(observing)"
-msgstr ""
+msgstr "(наблюдает)"
 
 #: src/gui/dialogs/lobby_player_info.cpp:68
 msgid "(playing)"
-msgstr ""
+msgstr "(играет)"
 
 #: src/gui/dialogs/lobby_player_info.cpp:71
 msgid "In lobby"
-msgstr ""
+msgstr "В холле"
 
 #: src/help.cpp:46
 msgid "Help"
@@ -8071,27 +8054,24 @@ msgid "<header>text='Units having this ability'</header>"
 msgstr "<header>text='Бойцы с такой способностью'</header>"
 
 #: src/help.cpp:1246
-#, fuzzy
 msgid "Leaders:"
-msgstr "Лидер: "
+msgstr "Лидеры:"
 
 #: src/help.cpp:1255
-#, fuzzy
 msgid "Recruits:"
-msgstr "Новобранцы: "
+msgstr "Новобранцы:"
 
 #: src/help.cpp:1269 src/multiplayer_create.cpp:78
 msgid "Era:"
 msgstr "Эра:"
 
 #: src/help.cpp:1277
-#, fuzzy
 msgid "Factions:"
-msgstr "Фракция"
+msgstr "Фракции:"
 
 #: src/help.cpp:1287
 msgid "Factions are only used in multiplayer"
-msgstr ""
+msgstr "Фракции есть только в мультиплеере"
 
 #: src/help.cpp:1362
 msgid "Advances from: "
@@ -8237,19 +8217,16 @@ msgid "?"
 msgstr "?"
 
 #: src/loadscreen.cpp:244
-#, fuzzy
 msgid "Verifying cache..."
-msgstr "Проверяю кэш"
+msgstr "Проверяю кэш..."
 
 #: src/loadscreen.cpp:262
-#, fuzzy
 msgid "Reading unit files..."
-msgstr "Читаю файлы бойцов."
+msgstr "Читаю файлы бойцов..."
 
 #: src/loadscreen.cpp:280
-#, fuzzy
 msgid "Reading files and creating cache..."
-msgstr "Читаю файлы и создаю кэш"
+msgstr "Читаю файлы и создаю кэш..."
 
 #: src/lobby_data.cpp:195 src/multiplayer_lobby.cpp:431
 msgid "Unknown era: $era_id"
@@ -8608,6 +8585,7 @@ msgstr ""
 #: src/menu_events.cpp:2222
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr ""
+"Разбанить пользователя. Он не обязан быть в игре, но должен быть на сервере."
 
 #: src/menu_events.cpp:2225
 msgid "Kick a player or observer."
@@ -8619,15 +8597,14 @@ msgstr ""
 "Отключить реплики наблюдателей. Без параметра — отключает всех наблюдателей."
 
 #: src/menu_events.cpp:2229
-#, fuzzy
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr ""
-"Отключить реплики наблюдателей. Без параметра — отключает всех наблюдателей."
+"Разрешить наблюдателю говорить. Без параметра — разрешает говорить всем "
+"наблюдателям."
 
 #: src/menu_events.cpp:2231
-#, fuzzy
 msgid "Mute/Unmute all observers. (toggles)"
-msgstr "Запретить всем зрителям говорить."
+msgstr "Запретить/разрешить всем зрителям говорить. (переключить)"
 
 #: src/menu_events.cpp:2241
 msgid "Send a message to the server admins currently online"
@@ -8690,30 +8667,28 @@ msgid "Request a list of details you can set for your registered nick."
 msgstr "Запросить, какие данные можно менять в своём нике."
 
 #: src/menu_events.cpp:2276
-#, fuzzy
 msgid "Join a room."
-msgstr "Подключиться к игре"
+msgstr "Зайти в комнату"
 
 #: src/menu_events.cpp:2279
 msgid "Part a room."
-msgstr ""
+msgstr "Разделить комнату."
 
 #: src/menu_events.cpp:2281
-#, fuzzy
 msgid "List room members."
-msgstr "Список серверов"
+msgstr "Список игроков в комнате"
 
 #: src/menu_events.cpp:2283
 msgid "List available rooms."
-msgstr ""
+msgstr "Список доступных комнат."
 
 #: src/menu_events.cpp:2285
 msgid "Room message."
-msgstr ""
+msgstr "Сообщение для комнаты."
 
 #: src/menu_events.cpp:2287
 msgid "Room query."
-msgstr ""
+msgstr "Запрос к комнате."
 
 #: src/menu_events.cpp:2416
 msgid "Refresh gui."
@@ -8773,7 +8748,7 @@ msgstr "Отключить режим отладки."
 
 #: src/menu_events.cpp:2451
 msgid "Execute a Lua statement."
-msgstr ""
+msgstr "Выполнить выражение Lua."
 
 #: src/menu_events.cpp:2453
 msgid "Set the command used by the custom command hotkey"
@@ -8781,7 +8756,7 @@ msgstr "Сменить команду на горячей клавише."
 
 #: src/menu_events.cpp:2455
 msgid "Launch the gamestate inspector"
-msgstr ""
+msgstr "Запустить Инспектор состояния игры"
 
 #: src/menu_events.cpp:2457
 msgid "Set or show alias to a command"
@@ -8802,7 +8777,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2470
 msgid "Discover all units in help."
-msgstr ""
+msgstr "Раскройте всех бойцов в справке"
 
 #: src/menu_events.cpp:2475
 msgid "Create a unit."
@@ -9026,7 +9001,7 @@ msgstr "Анонимный локальный игрок"
 
 #: src/multiplayer_connect.cpp:666
 msgid "$playername $side"
-msgstr ""
+msgstr "$playername $side"
 
 #: src/multiplayer_connect.cpp:670
 msgid "(Empty slot)"
@@ -9037,9 +9012,8 @@ msgid "(Reserved for $playername)"
 msgstr "(Занято для $playername)"
 
 #: src/multiplayer_connect.cpp:682
-#, fuzzy
 msgid "(empty)"
-msgstr "Пусто"
+msgstr "(пусто)"
 
 #: src/multiplayer_connect.cpp:792
 msgid "Reserved"
@@ -9110,11 +9084,8 @@ msgid "Cannot find era $era"
 msgstr "Не могу найти эру $era"
 
 #: src/multiplayer_connect.cpp:1587
-#, fuzzy
 msgid "Defeat enemy leader(s)"
-msgstr ""
-"Победа\n"
-"@Убейте лидера(ов) противника"
+msgstr "Убейте лидера(ов) противника"
 
 #: src/multiplayer_connect.cpp:1651
 msgid "Waiting for players to join..."
@@ -9351,25 +9322,23 @@ msgstr "Выйти"
 
 #: src/multiplayer_lobby.cpp:734
 msgid "Apply Filter"
-msgstr ""
+msgstr "Фильтровать"
 
 #: src/multiplayer_lobby.cpp:735
 msgid "Invert"
-msgstr ""
+msgstr "Инвертировать"
 
 #: src/multiplayer_lobby.cpp:736
-#, fuzzy
 msgid "Vacant Slots"
-msgstr "Свободных слотов:"
+msgstr "Свободных мест"
 
 #: src/multiplayer_lobby.cpp:737
 msgid "Friends in Game"
-msgstr ""
+msgstr "Друзья в игре"
 
 #: src/multiplayer_lobby.cpp:738
-#, fuzzy
 msgid "Search:"
-msgstr "Поиск"
+msgstr "Поиск:"
 
 #: src/multiplayer_lobby.cpp:747
 msgid "Skip quickly to the active turn when observing"
@@ -9389,16 +9358,17 @@ msgstr ""
 
 #: src/multiplayer_lobby.cpp:758
 msgid "Only show games that have at least one vacant slot"
-msgstr ""
+msgstr "Показывать только игры со свободными местами"
 
 #: src/multiplayer_lobby.cpp:762
 msgid ""
 "Only show games that are played or observed by at least one of your friends"
 msgstr ""
+"Показывать только игры, в которых участвует или наблюдает кто-то из друзей"
 
 #: src/multiplayer_lobby.cpp:766
 msgid "Only show games whose title or description contain the entered text"
-msgstr ""
+msgstr "Показывать только игры с указанным текстом в названии или описании"
 
 #: src/multiplayer_lobby.cpp:900
 msgid "Joining this game requires a password."
@@ -9489,12 +9459,11 @@ msgstr "Инициализация дисплея"
 
 #: src/play_controller.cpp:182
 msgid "time left for current turn"
-msgstr ""
+msgstr "осталось времени на этот ход"
 
 #: src/play_controller.cpp:184 src/replay_controller.cpp:134
-#, fuzzy
 msgid "current local time"
-msgstr "Текущий разработчик"
+msgstr "местное время"
 
 #: src/play_controller.cpp:221
 msgid "Starting game"
@@ -9539,12 +9508,11 @@ msgstr "Неизвестный сценарий:  '$scenario|'"
 
 #: src/playmp_controller.cpp:93
 msgid "$name has taken control"
-msgstr ""
+msgstr "$name принял управление"
 
 #: src/playmp_controller.cpp:95
-#, fuzzy
 msgid "Turn changed"
-msgstr "дальний"
+msgstr "Ход сменился"
 
 #: src/playmp_controller.cpp:227
 msgid "Undoing moves not yet transmitted to the server."
@@ -9653,12 +9621,12 @@ msgid "The game is over."
 msgstr "Игра окончена."
 
 #: src/playsingle_controller.cpp:488
-#, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game\n"
 "cannot continue. Do you want to save the game?"
 msgstr ""
-"Произошло отключение, игра не может быть продолжена. Хотите сохранить игру?"
+"Произошло отключение, игра не может быть\n"
+" продолжена. Хотите сохранить игру?"
 
 #: src/playsingle_controller.cpp:648
 msgid "It is now $name|'s turn"
@@ -9719,9 +9687,8 @@ msgid "This is not a multiplayer save"
 msgstr "Это не сетевое сохранение"
 
 #: src/savegame.cpp:605
-#, fuzzy
 msgid "The game could not be saved: "
-msgstr "Игра не может быть сохранена"
+msgstr "Игра не может быть сохранена:"
 
 #: src/savegame.cpp:692
 msgid "Name: "
