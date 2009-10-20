@@ -252,11 +252,10 @@ game_state::game_state(const config& cfg, bool show_replay) :
 
 	const config &snapshot = cfg.child("snapshot");
 	const config &replay_start = cfg.child("replay_start");
+	// We're loading a snapshot if we have it and the user didn't request a replay.
+	bool load_snapshot = !show_replay && snapshot && !snapshot.empty();
 
-	// We have to load era id for MP games so they can load correct era.
-
-
-	if (snapshot && !snapshot.empty() && !show_replay) {
+	if (load_snapshot) {
 		this->snapshot = snapshot;
 
 		rng_.seed_random(lexical_cast_default<unsigned>(snapshot["random_calls"]));
@@ -269,8 +268,12 @@ game_state::game_state(const config& cfg, bool show_replay) :
 
 	//priority of populating wml variables:
 	//snapshot -> replay_start -> root
-	if (const config &vars = snapshot.child("variables")) {
-		set_variables(vars);
+	if (load_snapshot) {
+		if (const config &vars = snapshot.child("variables")) {
+			set_variables(vars);
+		} else if (const config &vars = cfg.child("variables")) {
+			set_variables(vars);
+		}
 	}
 	else if (const config &vars = replay_start.child("variables")) {
 		set_variables(vars);
