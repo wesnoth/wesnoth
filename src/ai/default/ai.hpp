@@ -255,7 +255,7 @@ private:
 	/**
 	 * rate a target, but can also return the maximal possible rating
 	 * by passing a dummy route
-	*/
+	 */
 	double rate_target(const target& tg, const unit_map::iterator& u,
 			const move_map& dstsrc, const move_map& enemy_dstsrc,
 			const plain_route& rt);
