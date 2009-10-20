@@ -88,6 +88,7 @@
 
 #include "wesconfig.h"
 
+#include <cerrno>
 #include <clocale>
 #include <cmath>
 #include <cstdlib>
@@ -1971,19 +1972,19 @@ static int do_gameloop(int argc, char** argv)
 	res = font::load_font_config();
 	if(res == false) {
 		std::cerr << "could not initialize fonts\n";
-		return 0;
+		return 1;
 	}
 
 	res = game.init_language();
 	if(res == false) {
 		std::cerr << "could not initialize the language\n";
-		return 0;
+		return 1;
 	}
 
 	res = game.init_video();
 	if(res == false) {
 		std::cerr << "could not initialize display\n";
-		return 0;
+		return 1;
 	}
 
 	const cursor::manager cursor_manager;
@@ -1998,14 +1999,14 @@ static int do_gameloop(int argc, char** argv)
 	res = game.init_config();
 	if(res == false) {
 		std::cerr << "could not initialize game config\n";
-		return 0;
+		return 1;
 	}
 	loadscreen::global_loadscreen->increment_progress(10, _("Re-initialize fonts for the current language."));
 
 	res = font::load_font_config();
 	if(res == false) {
 		std::cerr << "could not re-initialize fonts for the current language\n";
-		return 0;
+		return 1;
 	}
 
 	loadscreen::global_loadscreen->increment_progress(0, _("Searching for installed add-ons."));
@@ -2197,8 +2198,10 @@ int main(int argc, char** argv)
 		safe_exit(res);
 	} catch(CVideo::error&) {
 		std::cerr << "Could not initialize video. Exiting.\n";
+		return 1;
 	} catch(font::manager::error&) {
 		std::cerr << "Could not initialize fonts. Exiting.\n";
+		return 1;
 	} catch(config::error& e) {
 		std::cerr << e.message << "\n";
 	} catch(gui::button::error&) {
@@ -2209,6 +2212,7 @@ int main(int argc, char** argv)
 		std::cerr << "caught end_level_exception (quitting)\n";
 	} catch(std::bad_alloc&) {
 		std::cerr << "Ran out of memory. Aborted.\n";
+		return ENOMEM;
 	} catch(twml_exception& e) {
 		std::cerr << "WML exception:\nUser message: "
 			<< e.user_message << "\nDev message: " << e.dev_message << '\n';
