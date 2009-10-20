@@ -149,7 +149,7 @@ void advance_unit(const map_location &loc, bool random_choice, bool add_replay_e
 		// Level 10 unit gives 80 XP and the highest mainline is level 5
 		if(u->second.experience() < 81) {
 			// For all leveling up we have to add advancement to replay here because replay
-			// doesn't handle multi advancemnet
+			// doesn't handle cascading advancement since it just calls animate_unit_advancement().
 			advance_unit(loc, random_choice, true);
 		} else {
 			ERR_CF << "Unit has an too high amount of " << u->second.experience()

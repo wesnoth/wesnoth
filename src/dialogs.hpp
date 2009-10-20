@@ -40,7 +40,7 @@ namespace dialogs {
  * map (when replacing the unit that is being advanced) will possibly
  * invalidate the reference.
  *
- * The game only expects an advancement to be triggered by a fight, it the
+ * The game only expects an advancement to be triggered by a fight, if the
  * cause for advancement is different (eg unstore_unit) the add_replay_event
  * should be set.
  */
