@@ -232,10 +232,9 @@ static void find_routes(const gamemap& map, const unit_map& units,
 
 			bool next_visited = next.in - search_counter <= 1u;
 
-			// if we already visited this node, then the first path is always
-			// better, because we explore shorter path first and the local cost
-			// can not be smaller when we try with following new longer paths
-			if (next_visited) continue;
+			// test if the current path to locs[i] is better than this one could possibly be.
+			// we do this a couple more times below
+			if (next_visited && !(n < next)) continue;
 
 			const int move_cost = u.movement_cost(map[locs[i]]);
 
@@ -249,6 +248,8 @@ static void find_routes(const gamemap& map, const unit_map& units,
 
 			t.movement_left -= move_cost;
 
+			if (next_visited && !(t < next)) continue;
+
 			if (!ignore_units) {
 				const unit *v =
 					get_visible_unit(units, locs[i], viewing_team, see_all);
@@ -260,15 +261,20 @@ static void find_routes(const gamemap& map, const unit_map& units,
 						&& !u.get_ability_bool("skirmisher", locs[i])) {
 					t.movement_left = 0;
 				}
+
+				if (next_visited && !(t < next)) continue;
 			}
 
-			++nb_dest;
-			int x = locs[i].x;
-			if (x < xmin) xmin = x;
-			if (xmax < x) xmax = x;
-			int y = locs[i].y;
-			if (y < ymin) ymin = y;
-			if (ymax < y) ymax = y;
+			if (!next_visited)
+			{
+				++nb_dest;
+				int x = locs[i].x;
+				if (x < xmin) xmin = x;
+				if (xmax < x) xmax = x;
+				int y = locs[i].y;
+				if (y < ymin) ymin = y;
+				if (ymax < y) ymax = y;
+			}
 
 			bool in_list = next.in == search_counter + 1;
 			t.in = search_counter + 1;
