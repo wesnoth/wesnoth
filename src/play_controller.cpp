@@ -178,10 +178,12 @@ void play_controller::init(CVideo& video){
 
 	const config &theme_cfg = get_theme(game_config_, level_["theme"]);
 	gui_.reset(new game_display(units_, video, map_, tod_manager_, teams_, theme_cfg, game_config_, level_));
-	if (gamestate_.mp_settings().mp_countdown)
-		gui_->get_theme().modify_label("time-icon", _ ("time left for current turn"));
-	else
-		gui_->get_theme().modify_label("time-icon", _ ("current local time"));
+	if (!gui_->video().faked()) {
+		if (gamestate_.mp_settings().mp_countdown)
+			gui_->get_theme().modify_label("time-icon", _ ("time left for current turn"));
+		else
+			gui_->get_theme().modify_label("time-icon", _ ("current local time"));
+	}
 	loadscreen::global_loadscreen->set_progress(90, _("Initializing display"));
 	mouse_handler_.set_gui(gui_.get());
 	menu_handler_.set_gui(gui_.get());
