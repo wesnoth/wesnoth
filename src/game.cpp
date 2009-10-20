@@ -944,6 +944,8 @@ bool game_controller::play_multiplayer_mode()
 	} catch(twml_exception& e) {
 		e.show(disp());
 		return false;
+	} catch(std::exception& e) {
+		std::cerr << "caught exception: " << e.what() << "\n";
 	} catch(...) {
 		std::cerr << "caught unknown error playing level...\n";
 	}
