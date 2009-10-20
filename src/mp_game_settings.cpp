@@ -98,7 +98,10 @@ mp_game_settings::mp_game_settings(const mp_game_settings& settings)
 
 void mp_game_settings::set_from_config(const config& game_cfg)
 {
-	const config& cfg = game_cfg.child("multiplayer") ? game_cfg.child("multiplayer") : game_cfg;
+	const config& mp = game_cfg.child("multiplayer");
+	const config& rs = game_cfg.child("replay_start");
+	// if it's a replay the multiplayer section can be in the replay_start tag else fallback to top level
+	const config& cfg = mp ? mp : rs ? (rs.child("multiplayer") ? rs.child("multiplayer") : game_cfg) : game_cfg;
 	name = cfg["scenario"];
 	hash = cfg["hash"];
 	mp_era = cfg["mp_era"];
