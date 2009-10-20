@@ -261,8 +261,7 @@ game_state::game_state(const config& cfg, bool show_replay) :
 
 		rng_.seed_random(lexical_cast_default<unsigned>(snapshot["random_calls"]));
 	} else {
-		assert(replay_start != NULL);
-
+		assert(replay_start);
 	}
 
 	LOG_NG << "scenario: '" << classification_.scenario << "'\n";
