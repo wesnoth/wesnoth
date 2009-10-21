@@ -471,7 +471,7 @@ void ttext::recalculate(const bool force) const
 				<< " maximum_height " << maximum_height_
 				<< " result " <<  rect_
 				<< ".\n";
-
+#if 0
 		if(maximum_width_ != -1 && rect_.width > maximum_width_) {
 			ERR_GUI_L << "ttext::" << __func__
 					<< " text '" << gui2::debug_truncate(text_)
@@ -479,7 +479,7 @@ void ttext::recalculate(const bool force) const
 					<< " greater as the wanted maximum of " << maximum_width_
 					<< ".\n";
 		}
-
+#endif
 	}
 }
 
