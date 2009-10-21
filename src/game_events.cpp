@@ -1490,9 +1490,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 
 			// Otherwise get the random value from the replay data
 			else {
-				/** @todo FIXME: get player_number_ from the play_controller, not from the WML vars. */
-				const t_string& side_str = resources::state_of_game->get_variable("side_number");
-				const int side = lexical_cast_default<int>(side_str.base_str(), -1);
+				const int side = resources::controller->current_side();
 
 				do_replay_handle(side, "random_number");
 				const config* const action = get_replay_source().get_next_action();
@@ -2559,13 +2557,9 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 					}
 				}
 
+				const int side = controller->current_side();
 				if(utils::string_bool(cfg["advance"], true) && get_replay_source().at_end()) {
 					// Try to advance the unit
-
-					/** @todo FIXME: get player_number_ from the play_controller, not from the WML vars. */
-					const t_string& side_str = resources::state_of_game->get_variable("side_number");
-					const int side = lexical_cast_default<int>(side_str.base_str(), -1);
-
 					// Select advancement if it is on the playing side and the player is a human
 					const bool sel = (side == static_cast<int>(u.side())
 							&& (*resources::teams)[side-1].is_human());
@@ -3313,11 +3307,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 
 			// Otherwise if an input has to be made, get it from the replay data
 		} else {
-			/** @todo FIXME: get player_number_ from the play_controller, not from the WML vars. */
-			const t_string& side_str = resources::state_of_game->get_variable("side_number");
-			const int side = lexical_cast_default<int>(side_str.base_str(), -1);
-
-
+			const int side = controller->current_side();
 
 			if(!options.empty()) {
 				do_replay_handle(side, "choose");
