@@ -4,11 +4,11 @@
 #  HaJo Gurt <gurt@gmx.de>, 2007
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.6\n"
+"Project-Id-Version: Battle for Wesnoth 1.7\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-10-13 22:59+0200\n"
-"PO-Revision-Date: 2009-10-12 22:12+0100\n"
-"Last-Translator: Crommy\n"
+"PO-Revision-Date: 2009-10-17 19:16+0100\n"
+"Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -235,7 +235,7 @@ msgstr "Verschneiter Laubwald"
 #. [terrain_type]: id=mixed_forest_summer
 #: data/core/terrain.cfg:529
 msgid "Summer Mixed Forest"
-msgstr "Sommerlicher Mischwald "
+msgstr "Sommerlicher Mischwald"
 
 #. [terrain_type]: id=mixed_forest_fall
 #: data/core/terrain.cfg:540
@@ -787,7 +787,7 @@ msgstr "Einfügen"
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:77
 msgid "Call stack"
-msgstr ""
+msgstr "Aufrufstapel"
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:86
@@ -890,9 +890,8 @@ msgstr ""
 
 #. [label]: id=lblFilter
 #: data/gui/default/window/game_load.cfg:203
-#, fuzzy
 msgid "Filter"
-msgstr "Datei: "
+msgstr "Filter"
 
 #. [label]: id=name
 #. [label]: id=filename
@@ -996,12 +995,12 @@ msgstr ""
 #: data/gui/default/window/gamestate_inspector.cfg:145
 #: data/gui/default/window/unit_create.cfg:138
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
 #. [label]: id=name
 #: data/gui/default/window/gamestate_inspector.cfg:206
 msgid "Variable"
-msgstr ""
+msgstr "Variable"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -1118,7 +1117,7 @@ msgstr "Partie eröffnen"
 #. [label]: id=room
 #: data/gui/default/window/lobby_main.cfg:357
 msgid "Rooms"
-msgstr ""
+msgstr "Räume"
 
 #. [image]: id=pending_messages
 #: data/gui/default/window/lobby_main.cfg:375
@@ -1152,7 +1151,7 @@ msgstr ""
 #. [toggle_button]: id=filter_vacant_slots
 #: data/gui/default/window/lobby_main.cfg:482
 msgid "Vacant slots"
-msgstr ""
+msgstr "Freie Plätze"
 
 #. [toggle_button]: id=filter_invert
 #: data/gui/default/window/lobby_main.cfg:488
@@ -1481,7 +1480,7 @@ msgstr ""
 "Nutzernamen verwenden möchtet.\n"
 "\n"
 "Das Battle for Wesnoth Forum ist unter http://www.wesnoth.org/forum/ zu "
-"finden.\" "
+"finden."
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:138
@@ -2839,21 +2838,10 @@ msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
 msgstr ""
-"Im Abschnitt »[$section|]«, in dem »$primary_key| = $primary_value« gilt,  ist "
+"Im Abschnitt »[$section|]«, in dem »$primary_key| = $primary_value« gilt, ist "
 "der benötigte Schlüssel »$key|« nicht gesetzt."
 
 #: src/wml_exception.cpp:76
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
 "Im Abschnitt »[$section|]« ist der benötigte Schlüssel »$key|« nicht gesetzt."
-
-#~ msgid "Save The Map"
-#~ msgstr "Karte speichern"
-
-#, fuzzy
-#~ msgid ""
-#~ "'stack_data' must have the same number of columns as the "
-#~ "'list_definition'."
-#~ msgstr ""
-#~ "Die Anzahl von Spalten eines »Listeneintrags« muss jener der "
-#~ "»Listendefinition« entsprechen."
