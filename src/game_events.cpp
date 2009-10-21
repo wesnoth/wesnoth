@@ -2558,7 +2558,8 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 				}
 
 				const int side = controller->current_side();
-				if(utils::string_bool(cfg["advance"], true) && get_replay_source().at_end()) {
+				if (utils::string_bool(cfg["advance"], true) && get_replay_source().at_end()
+				&& (*resources::teams)[side-1].is_local()) {
 					// Try to advance the unit
 					// Select advancement if it is on the playing side and the player is a human
 					const bool sel = (side == static_cast<int>(u.side())
