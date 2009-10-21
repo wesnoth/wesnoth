@@ -15,6 +15,7 @@
 #include "log.hpp"
 #include "thread.hpp"
 
+#include <memory>
 #include <new>
 #include <iostream>
 #include <vector>

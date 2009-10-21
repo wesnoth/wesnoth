@@ -15,6 +15,7 @@
 #include "global.hpp"
 
 #include <cstdio>
+#include <cstdlib>
 
 #include "config.hpp"
 #include "random.hpp"

@@ -21,6 +21,8 @@
 #include "util.hpp"
 #include "serialization/string_utils.hpp"
 
+#include <climits>
+
 template<typename T, typename T_void_value>
 const T animated<T,T_void_value>::void_value_ = T_void_value()();
 
