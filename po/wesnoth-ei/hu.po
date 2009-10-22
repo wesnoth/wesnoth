@@ -14,14 +14,14 @@ msgstr ""
 "Project-Id-Version: wesnoth-ei 1.4 branch\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-10-13 22:59+0200\n"
-"PO-Revision-Date: 2009-03-11 07:59+0100\n"
+"PO-Revision-Date: 2009-10-20 23:10+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 0.2\n"
+"X-Generator: Lokalize 1.0\n"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:11
@@ -66,11 +66,10 @@ msgstr "Udvari testőr"
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:21
 msgid "(Intermediate level, 18 scenarios.)"
-msgstr ""
+msgstr "(Közepes szint, 18 pálya)"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:21
-#, fuzzy
 msgid ""
 "There are rumors of undead attacks on the eastern border of Wesnoth. You, an "
 "officer in the Royal Army, have been sent to the eastern front to protect "
@@ -81,7 +80,6 @@ msgstr ""
 "meg. Téged, a Királyi Hadsereg egyik tisztjét, a helyszínre küldtek, hogy "
 "megvédd a helyi lakosokat és fényt deríts a történtekre.\n"
 "\n"
-"(Középhaladó szint, 18 pálya.)"
 
 #. [about]
 #: data/campaigns/Eastern_Invasion/_main.cfg:25
@@ -159,7 +157,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:36
-#, fuzzy
 msgid ""
 "In the days of the king Garard I, two strong-points had been built along the "
 "near bank of the Weldyn, south of Soradoc, to stop bandits and orcish "
@@ -170,7 +167,7 @@ msgstr ""
 "I. Garard király idejében két állást építettek ki Weldyn közelében "
 "Soradoctól délre, hogy megállítsák az Estmark-hegységen túl portyázó "
 "banditákat és orkokat, még mielőtt Wesnoth földjére lépnének. Ám a későbbi "
-"években feladták a folyómenti őrhelyeket, ahogy a telepesek felköltöztek az "
+"években feladták a folyó menti őrhelyeket, ahogy a telepesek felköltöztek az "
 "Estmark-hegységbe, és az orkok visszaszorultak a Nagy-folyótól északra eső "
 "területekre."
 
@@ -542,7 +539,7 @@ msgstr "Dacyn elesik"
 #. [objective]: condition=lose
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:325
 msgid "Turns run out"
-msgstr "Túlléped a körök számát"
+msgstr "Kifutsz az időből"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:341
@@ -724,7 +721,7 @@ msgid ""
 "There is a great fortune in this chest of treasure! I can count two hundred "
 "pieces of gold."
 msgstr ""
-"Egy nagy halom kincs van ebben a ládában! Öszesen 200 aranyat számolok!"
+"Egy nagy halom kincs van ebben a ládában! Összesen 200 aranyat számolok!"
 
 #. [message]: speaker=Mal-Bakral
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:318
@@ -841,7 +838,7 @@ msgstr "Nem! Legyőztetek engem, és most visszatérhettek Wesnothba!"
 #: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:209
 msgid "You have defeated my brother, but I will follow you and kill you!"
 msgstr ""
-"Legyőztétek a tesvéremet, de én követni foglak titeket és mindannyiótokat "
+"Legyőztétek a testvéremet, de én követni foglak titeket és mindnyájatokat "
 "megöllek!"
 
 #. [scenario]: id=Elven_Alliance
@@ -1103,7 +1100,7 @@ msgid ""
 "They run from me! Still, it will not help them, the border patrol will "
 "destroy them. I may even be promoted!"
 msgstr ""
-"Elfutnak előlem, de ez se segít rajtuk! A határmenti járőrök el fogják "
+"Elfutnak előlem, de ez se segít rajtuk! A határ menti járőrök el fogják "
 "pusztítani őket. Talán elő is fognak léptetni ezért!"
 
 #. [message]: speaker=Mal-Skraat
@@ -1292,7 +1289,7 @@ msgid ""
 "we escape from here."
 msgstr ""
 "Ez veszélyes játéknak tűnik. Megpróbáljuk a többieket is kiszabadítani, "
-"mielőtt itthagyjuk ezt a helyet."
+"mielőtt itt hagyjuk ezt a helyet."
 
 #. [message]: speaker=$freed_prisoner.id
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:404
@@ -1305,9 +1302,8 @@ msgstr ""
 
 #. [message]: speaker=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:531
-#, fuzzy
 msgid "You dare to attack <i>me</i>!? Go back to your master!"
-msgstr "Hogy mertél megtámadni ENGEM?!? Takarodj vissza a mesteredhez!"
+msgstr "Hogy mertél megtámadni <i>engem</i>?!? Takarodj vissza a mesteredhez!"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:535
@@ -1534,7 +1530,7 @@ msgstr "Ő a banditák vezére! Öljétek meg, és teljesítettük a feladatunka
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:454
 msgid "No outlaws in this village."
-msgstr "Nincsen törvényen kivüli ebben a faluban."
+msgstr "Nincsen törvényen kívüli ebben a faluban."
 
 #. [message]: speaker=Shodrano
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:465
@@ -1554,7 +1550,7 @@ msgid ""
 "I have fulfilled my duty to the villages. Now I suppose I can join you in "
 "your quest."
 msgstr ""
-"Teljesítettem a kötelességemet, amivel tartoztam a településeknek. Mostmár "
+"Teljesítettem a kötelességemet, amivel tartoztam a településeknek. Most már "
 "csatlakozhatok hozzád, és segíthetem küldetésedet."
 
 #. [message]: speaker=Dacyn
@@ -1668,30 +1664,22 @@ msgstr ""
 
 #. [message]: speaker=Wak-Rano
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:134
-#, fuzzy
 msgid ""
 "Hmm... I know. We will make a pact to destroy these men, and continue our "
 "fight later. "
 msgstr ""
 "Hmm... hogyan is? Kössünk szövetséget az emberek ellen, és majd később "
-"folytatjuk a saját harcunkat. (Talán elpusztul, és így csata nélkül "
-"győzhetünk.)"
+"folytatjuk a saját harcunkat. "
 
 #. [message]: speaker=Mal-Arnai
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:138
-#, fuzzy
 msgid "This foolish orc will surely perish."
-msgstr ""
-"Rendben van, akkor egy időre szövetségesek lettünk. (Ez a bolond ork úgyis "
-"megdöglik)"
+msgstr "Ez a bolond ork úgyis megdöglik..."
 
 #. [message]: speaker=Mal-Arnai
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:138
-#, fuzzy
 msgid "Very well, we are allies, for now. "
-msgstr ""
-"Rendben van, akkor egy időre szövetségesek lettünk. (Ez a bolond ork úgyis "
-"megdöglik)"
+msgstr "Rendben van, akkor egy időre szövetségesek lettünk. "
 
 #. [message]: speaker=Wak-Rano
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:149
@@ -1701,7 +1689,7 @@ msgstr "Ááhh! Képtelen voltam megvédeni északi otthonunkat!"
 #. [message]: speaker=Mal-Arnai
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:170
 msgid "I was supposed to kill you all! I have failed."
-msgstr "Az volt a feladatom, hogy mindannyiótokkal végezzek! Elbuktam."
+msgstr "Az volt a feladatom, hogy mindnyájatokkal végezzek! Elbuktam."
 
 #. [scenario]: id=Crossing
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:4
@@ -2002,9 +1990,8 @@ msgstr ""
 
 #. [message]: speaker=Prok-Bak
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:146
-#, fuzzy
 msgid "You human! Call us foul, will you!?"
-msgstr "Te ember! Minket merészeltél ocsmánynak nevezni?!?!"
+msgstr "Te ember! Minket merészeltél ocsmánynak nevezni!?"
 
 #. [message]: speaker=Pelathsil
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:150
@@ -2082,7 +2069,7 @@ msgid ""
 "will have to kill these elves, and these dwarves, before they do the same to "
 "us."
 msgstr ""
-"Ám legyen. Nem szeretek orkokon és élőholtakon kivül másokkal végezni, de "
+"Ám legyen. Nem szeretek orkokon és élőholtakon kívül másokkal végezni, de "
 "most rá vagyunk kényszerítve, hogy tündéket és törpöket öljünk, különben ők "
 "ölnek meg minket."
 
@@ -2437,12 +2424,11 @@ msgstr "Lerombolod a hidat VAGY legyőzöl minden ellenséget"
 
 #. [objectives]
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:188
-#, fuzzy
 msgid ""
 "Note: every unit not on the south side of the river when the bridge is "
 "destroyed will be lost (including non-recalled units)"
 msgstr ""
-"Megjegyzés: minden egység, ami a híd lerombolásakor nincs a folyó déli "
+"Megjegyzés: minden egység, amely a híd lerombolásakor nincs a folyó déli "
 "oldalán, elpusztul (a vissza nem hívott egységek is)."
 
 #. [unit]: id=Engineer, type=Red Mage
@@ -2452,13 +2438,12 @@ msgstr "Mérnök"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:209
-#, fuzzy
 msgid ""
 "All is lost! We have to get out of the Northlands as quickly as possible! "
 "Run for your - what the...!? Who are you?"
 msgstr ""
 "Minden elveszett! Ki kell jutnunk Északföldéről, amilyen gyorsan csak lehet! "
-"Fussatok az - mi a manó?!? Ki vagy te?"
+"Fussatok az - mi a manó!? Ki vagy te?"
 
 #. [message]: speaker=Engineer
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:214
@@ -2837,7 +2822,7 @@ msgid ""
 "face. He was at first a mage of light, like me, and his fall began during "
 "the reign of Haldric VII..."
 msgstr ""
-"Mielőtt megkezdenénk a tanácskozást, mindannyiótoknak el kell mondanom a "
+"Mielőtt megkezdenénk a tanácskozást, mindnyájatoknak el kell mondanom a "
 "velünk szemben álló delevény történetét. Valamikor fénymágus volt, mint "
 "amilyen én is, de VII. Haldric uralkodása idején elidegenedett a "
 "többiektől..."
@@ -2926,7 +2911,7 @@ msgid ""
 "Ravanal."
 msgstr ""
 "Majd egy napon újra feltűnt. Megtámadta Gweddryt a keleti határon lévő "
-"őrposztnál. Ez az a delevény, akivel szembe kell néznük: Mal-Ravanal."
+"őrposztnál. Ez az a delevény, akivel szembe kell néznünk: Mal-Ravanal."
 
 #. [message]: speaker=Konrad II
 #: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:103
@@ -3152,7 +3137,7 @@ msgid ""
 "actual combat. And my master seeks to prove this. He challenges you, "
 "Gweddry, to a contest, a battle."
 msgstr ""
-"A lényeg az, hogy Gweddry nem tudta volna legyőzni az uram teretményeit "
+"A lényeg az, hogy Gweddry nem tudta volna legyőzni az uram teremtményeit "
 "szolgáinak segítsége nélkül. Nem hiszem, hogy Gweddry akárcsak egy percig is "
 "bírna egy igazi küzdelmet. A mesterem ezt be is akarja bizonyítani. Kihív "
 "téged egy küzdelemre, egy párbajra, Gweddry!"
@@ -3179,7 +3164,6 @@ msgstr ""
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:279
-#, fuzzy
 msgid ""
 "Gweddry, I don't think you should accept. He is bound to bring more than six "
 "undead to the battle; he will bring an army!"
@@ -3205,7 +3189,7 @@ msgid ""
 "lord's hordes at dawn tomorrow!"
 msgstr ""
 "Leegyszerűsítem a döntésedet. Fogadd el, gyáva, vagy nézz szembe az uram "
-"megszámlálhatlan hordáival holnap hajnalban!"
+"megszámlálhatatlan hordáival holnap hajnalban!"
 
 #. [option]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:293
@@ -3245,8 +3229,8 @@ msgid ""
 "I have waited a long time for this day to come. Prepare to die, Gweddry of "
 "Wesnoth!"
 msgstr ""
-"Régóta várom már, hogy eljöjjön ez a nap. Készülj a halálodra, Gweddry "
-"Wesnothból!"
+"Régóta várom már, hogy eljöjjön ez a nap. Készülj a halálodra, wesnothi "
+"Gweddry!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:89
@@ -3259,13 +3243,12 @@ msgid ""
 msgstr ""
 "A párbaj szabályai a következők:\n"
 "Mindössze hat egységet toborozhatsz, illetve hívhatsz vissza.\n"
-"Az első kör után a vár el fog tűnni, így az éppen meglévő egységeidel kell "
-"végigiküzdened a csatát.\n"
+"Az első kör után a vár el fog tűnni, így az éppen meglévő egységeiddel kell "
+"végigküzdened a csatát.\n"
 "Amelyik vezér először elesik, az elvesztette a párbajt."
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:137
-#, fuzzy
 msgid ""
 "Wait - what just happened? He called more warriors out of the ground! That's "
 "not allowed!"
@@ -3404,7 +3387,7 @@ msgstr ""
 #. [scenario]: id=Epilog
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:4
 msgid "Epilog"
-msgstr "Végszó"
+msgstr "Utószó"
 
 #. [part]
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:18
@@ -3551,8 +3534,8 @@ msgid ""
 "And arise, Gweddry, Earl of Estmark. The land for which you shed your blood "
 "shall be put under your hand to be made green again."
 msgstr ""
-"És állj fel Gweddry, Eastmark grófja. A föld, amelyért a véredet hullattad, "
-"a te kormányzásod alatt legyen újra virágzó terület."
+"És állj fel Gweddry, Estmark grófja. A föld, amelyért a véredet hullattad, a "
+"te kormányzásod alatt legyen újra virágzó terület."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:209
@@ -3665,6 +3648,9 @@ msgid ""
 "to see the grim tide of undead sweeping westward into Wesnoth, laying waste "
 "to all in its path."
 msgstr ""
+"Talán még Gweddry katonái sem élték meg, hogy lássák, amint a rettenetes "
+"élőholt áradat végigsöpör Wesnothon nyugat felé, s nyomában csak pusztaság "
+"marad."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Eastern_Invasion/utils/deaths.cfg:85
@@ -3673,6 +3659,9 @@ msgid ""
 "would suffer the rage and malice of marauding orcs and undead in a war that "
 "would end only in misery and death."
 msgstr ""
+"Sosem derült ki, hogy mi lett Gweddry csapatának a sorsa... de Wesnoth "
+"nagyon hamar megtapasztalta a martalóc orkok és élőholtak dühöngését és "
+"rosszakaratát egy olyan háborúban, mely csak nyomorúsághoz és halálhoz vezet."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Eastern_Invasion/utils/deaths.cfg:97
@@ -3681,6 +3670,9 @@ msgid ""
 "more would it for the inhabitants of Wesnoth as foes pressed them on all "
 "sides to a final defense of the doomed kingdom."
 msgstr ""
+"Gweddry kimerült embereinek nem tudott menedéket nyújtani a hazájuk... ahogy "
+"Wesnoth lakóinak sem, miközben az ellenségek minden oldalról az utolsó "
+"védelmi vonalakig nyomultak be a pusztulásra ítélt királyságba."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Eastern_Invasion/utils/deaths.cfg:109
@@ -3689,3 +3681,6 @@ msgid ""
 "once-great kingdom was plunged into final darkness under the vengeful hand "
 "of Mal-Ravanal."
 msgstr ""
+"Ahogy Wesnoth legelszántabb védői is elestek hazájuk drága földjén, az "
+"egykor oly hatalmas királyság elmerült a végső sötétségben Mal-Ravanal "
+"bosszúéhes karmai között."
