@@ -232,9 +232,15 @@ static void find_routes(const gamemap& map, const unit_map& units,
 
 			bool next_visited = next.in - search_counter <= 1u;
 
-			// test if the current path to locs[i] is better than this one could possibly be.
-			// we do this a couple more times below
-			if (next_visited && !(n < next)) continue;
+			// Classic Dijkstra allow to skip chosen nodes (with next.in==search_counter)
+			// But the cost function and hex grid allow to also skip visited nodes:
+			// if next was visited, then we already have a path 'src-..-n2-next'
+			// - n2 was chosen before n, meaning that it is nearer to src.
+			// - the cost of 'n-next' can't be smaller than 'n2-next' because
+			//   cost is independent of direction and we don't have more MP at n
+			//   (important because more MP may allow to avoid waiting next turn)
+			// Thus, 'src-..-n-next' can't be shorter.
+			if (next_visited) continue;
 
 			const int move_cost = u.movement_cost(map[locs[i]]);
 
@@ -248,8 +254,6 @@ static void find_routes(const gamemap& map, const unit_map& units,
 
 			t.movement_left -= move_cost;
 
-			if (next_visited && !(t < next)) continue;
-
 			if (!ignore_units) {
 				const unit *v =
 					get_visible_unit(units, locs[i], viewing_team, see_all);
@@ -261,27 +265,22 @@ static void find_routes(const gamemap& map, const unit_map& units,
 						&& !u.get_ability_bool("skirmisher", locs[i])) {
 					t.movement_left = 0;
 				}
-
-				if (next_visited && !(t < next)) continue;
 			}
 
-			if (!next_visited)
-			{
-				++nb_dest;
-				int x = locs[i].x;
-				if (x < xmin) xmin = x;
-				if (xmax < x) xmax = x;
-				int y = locs[i].y;
-				if (y < ymin) ymin = y;
-				if (ymax < y) ymax = y;
-			}
+			++nb_dest;
+			int x = locs[i].x;
+			if (x < xmin) xmin = x;
+			if (xmax < x) xmax = x;
+			int y = locs[i].y;
+			if (y < ymin) ymin = y;
+			if (ymax < y) ymax = y;
 
 			bool in_list = next.in == search_counter + 1;
 			t.in = search_counter + 1;
 			next = t;
 
 			// if already in the priority queue then we just update it, else push it.
-			if (in_list) {
+			if (in_list) { // never happen see next_visited above
 				std::push_heap(pq.begin(), std::find(pq.begin(), pq.end(), index(locs[i])) + 1, node_comp);
 			} else {
 				pq.push_back(index(locs[i]));
