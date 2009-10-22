@@ -817,21 +817,24 @@ void unit_preview_pane::draw_contents()
 	const std::vector<std::string> lines = utils::split(text.str(), '\n',
 		utils::STRIP_SPACES & !utils::REMOVE_EMPTY);
 
-	SDL_Rect cur_area = area;
+
+	int ypos = area.y;
 
 	if(weapons_) {
-		cur_area.y += image_rect.h + description_rect.h + details_button_.location().h;
+		ypos += image_rect.h + description_rect.h + details_button_.location().h;
 	}
 
 	for(std::vector<std::string>::const_iterator line = lines.begin(); line != lines.end(); ++line) {
-		int xpos = cur_area.x;
+		int xpos = area.x;
 		if(right_align && !weapons_) {
 			const SDL_Rect& line_area = font::text_area(*line,font::SIZE_SMALL);
-			xpos = cur_area.x + cur_area.w - line_area.w;
+			// right align, but if too long, don't hide line's beginning
+			if (line_area.w < area.w)
+				xpos = area.x + area.w - line_area.w;
 		}
 
-		cur_area = font::draw_text(&video(),location(),font::SIZE_SMALL,font::NORMAL_COLOUR,*line,xpos,cur_area.y);
-		cur_area.y += cur_area.h;
+		SDL_Rect cur_area = font::draw_text(&video(),location(),font::SIZE_SMALL,font::NORMAL_COLOUR,*line,xpos,ypos);
+		ypos += cur_area.h;
 	}
 }
 
