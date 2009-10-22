@@ -277,4 +277,16 @@ Meh.
 How about a funny cookie once in a while? :|
   -- zookeeper on the unfunniness of these fortunes.
 %
+<Crab_> looks like a simple patch to play_controller::do_init_side will do it..
+<zookeeper> so it's "turn Y", "side turn", "side X turn" and "side X turn Y". nice.
+<Soliton> yep. too late for 1.8 though.
+<zookeeper> ssh.
+<Crab_> Soliton: why too late ?
+<Crab_> Soliton: we aren't breaking anything
+<Soliton> the f-word?
+<Crab_> Soliton: feature-completeness ?
+<Soliton> well, i personally won't stand in your way... ;-)
+<Crab_> I think that the change is simple enough to not cause multiple bugs :)
 
+  -- #wesnoth-dev, 2009-10-06, during the feature-freeze period for 1.8
+%
