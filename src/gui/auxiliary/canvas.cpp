@@ -884,11 +884,7 @@ void ttext::draw(surface& canvas,
 	}
 
 	static font::ttext text_renderer;
-	if(!text_renderer.set_text(text, text_markup_(variables))) {
-		ERR_GUI_D << "Text: Invalid markup in '"
-				<< text << "' rendered as is.\n";
-		text_renderer.set_text(text, false);
-	}
+	text_renderer.set_text(text, text_markup_(variables));
 
 	text_renderer.set_font_size(font_size_).
 		set_font_style(font_style_).
