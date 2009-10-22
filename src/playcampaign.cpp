@@ -581,7 +581,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 				savegame::scenariostart_savegame save(gamestate, preferences::compress_saves());
 
-#ifdef TINY_GUI
+#ifdef USE_TINY_GUI
 				bool retry = true;
 
 				while(retry) {
@@ -590,7 +590,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				}
 #else
 				save.save_game_automatic(disp.video());
-#endif /* TINY_GUI */
+#endif /* USE_TINY_GUI */
 			}
 
 			if (gamestate.classification().campaign_type != "multiplayer"){
