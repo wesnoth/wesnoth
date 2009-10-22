@@ -333,9 +333,9 @@ ttext& ttext::set_maximum_width(int width)
 
 	if(width != maximum_width_) {
 		assert(context_);
-
+#if 0
 		/**
-		 * @todo Adding 4 extra pixels feels a bit hacky.
+		 * todo Adding 4 extra pixels feels a bit hacky.
 		 *
 		 * For some reason it's needed since the following scenario fails:
 		 * - pango_layout_set_width(value)
@@ -349,6 +349,7 @@ ttext& ttext::set_maximum_width(int width)
 		pango_layout_set_width(layout_, width == -1
 				? -1
 				: (width + 4) * PANGO_SCALE);
+#endif
 		maximum_width_ = width;
 		calculation_dirty_ = true;
 		surface_dirty_ = true;
@@ -467,7 +468,31 @@ void ttext::recalculate(const bool force) const
 		tfont font(get_font_families(), font_size_, font_style_);
 		pango_layout_set_font_description(layout_, font.get());
 
-		pango_layout_get_pixel_extents(layout_, NULL, &rect_);
+		/*
+		 * See set_maximum_width for some more background info as well.
+		 * In order to fix the problem first set a width which seems to render
+		 * correctly then lower it to fit. For the campaigns the 4 does "the
+		 * right thing" for the terrain labels it should use the value 0 to set
+		 * the ellipse properly. Need to see whether this is a bug in pango or
+		 * a bug in my understanding of the pango api.
+		 */
+		int hack = 4;
+		do {
+			pango_layout_set_width(layout_, maximum_width_ == -1
+					? -1
+					: (maximum_width_ + hack) * PANGO_SCALE);
+			pango_layout_get_pixel_extents(layout_, NULL, &rect_);
+
+			DBG_GUI_L << "ttext::" << __func__
+					<< " text '" << gui2::debug_truncate(text_)
+					<< "' maximum_width " << maximum_width_
+					<< " hack " << hack
+					<< " width " << rect_.width
+					<< ".\n";
+
+			--hack;
+		} while(maximum_width_ != -1
+				&& hack >= 0 && rect_.width > maximum_width_);
 
 		DBG_GUI_L << "ttext::" << __func__
 				<< " text '" << gui2::debug_truncate(text_)
