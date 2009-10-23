@@ -549,12 +549,12 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day)
 			}
 		}
 
-		if(previous_tip_button.pressed()) {
+		if(previous_tip_button.pressed() || (key[SDLK_RETURN] && keyboard_button == TIP_PREVIOUS - TUTORIAL)) {
 			next_tip_of_day(tips_of_day, true);
 			draw_tip_of_day(screen, tips_of_day, gui::dialog_frame::titlescreen_style,
 						&previous_tip_button, &next_tip_button, &help_tip_button, &main_dialog_area, tip_of_day_restorer);
 		}
-		if(next_tip_button.pressed()) {
+		if(next_tip_button.pressed() || (key[SDLK_RETURN] && keyboard_button == TIP_NEXT - TUTORIAL)) {
 			next_tip_of_day(tips_of_day, false);
 			draw_tip_of_day(screen, tips_of_day, gui::dialog_frame::titlescreen_style,
 						&previous_tip_button, &next_tip_button, &help_tip_button, &main_dialog_area, tip_of_day_restorer);
@@ -602,7 +602,9 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day)
 		if (key[SDLK_F5])
 			return RELOAD_GAME_DATA;
 
-		if (key[SDLK_RETURN] && keyboard_button < nbuttons) {
+		if (key[SDLK_RETURN] && keyboard_button < nbuttons
+		&& keyboard_button != TIP_PREVIOUS - TUTORIAL
+		&& keyboard_button != TIP_NEXT - TUTORIAL) {
 			return static_cast<TITLE_RESULT>(keyboard_button + TUTORIAL);
 		}
 
