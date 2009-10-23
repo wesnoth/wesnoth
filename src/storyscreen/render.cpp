@@ -171,6 +171,9 @@ void part_ui::prepare_geometry()
 	next_button_.set_location(buttons_x_, buttons_y_ - 30);
 	skip_button_.set_location(buttons_x_, buttons_y_);
 #endif
+
+    next_button_.set_volatile(true);
+    skip_button_.set_volatile(true);
 }
 
 void part_ui::prepare_floating_images()
