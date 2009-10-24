@@ -992,6 +992,7 @@ bool game_controller::load_game()
 		load.set_gamestate();
 
 	} catch(load_game_cancelled_exception&) {
+		loaded_game_ = "";
 		return false;
 	} catch(config::error& e) {
 		if(e.message.empty()) {
@@ -2096,6 +2097,7 @@ static int do_gameloop(int argc, char** argv)
 			return 0;
 		} else if(res == gui::LOAD_GAME) {
 			if(game.load_game() == false) {
+				res = gui::NOTHING;
 				continue;
 			}
 
