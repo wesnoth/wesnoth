@@ -490,6 +490,14 @@ void unit::set_game_context(unit_map *unitmap)
 	game_events::add_events(cfg_.child_range("event"), type_);
 }
 
+void unit::generate_name(rand_rng::simple_rng* rng)
+{
+	if (!name_.empty() || !utils::string_bool(cfg_["generate_name"], true)) return;
+
+	name_ = race_->generate_name(gender_, rng);
+	cfg_["generate_name"] = "no";
+}
+
 // Apply mandatory traits (e.g. undead, mechanical) to a unit and then
 // fill out with avaiable (leaders have a restircted set of available traits)
 // traits until no more are available or the unit has its maximum number
@@ -1521,10 +1529,8 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	} else if(cfg["type"]=="") {
 		alignment_ = unit_type::NEUTRAL;
 	}
-	if(utils::string_bool(cfg["generate_name"])) {
-		generate_name(state ? &(state->rng()) : 0);
-		cfg_["generate_name"] = "";
-	}
+
+	generate_name(state ? &(state->rng()) : 0);
 
 	game_events::add_events(cfg_.child_range("event"), type_);
 	// Make the default upkeep "full"
