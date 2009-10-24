@@ -426,15 +426,11 @@ unit::unit(unit_map *unitmap, const unit_type *t, int side,
 	}
 
 	cfg_["upkeep"]="full";
-	advance_to(t);
+	advance_to(t, real_unit);
 
 	if(real_unit) {
 		generate_name();
 	}
-	// if not a real unit give only the 'musthave' traits
-	generate_traits(!real_unit);
-	reset_modifications();
-	apply_modifications();
 	set_underlying_id();
 
 	// fill those after traits and modifs to have correct max
