@@ -22,6 +22,9 @@
 #include "gui/widgets/event_handler.hpp"
 #include "sound.hpp"
 
+#define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
+#define LOG_HEADER LOG_SCOPE_HEADER + ':'
+
 namespace gui2 {
 
 static int distance(const int a, const int b)
@@ -37,7 +40,7 @@ static int distance(const int a, const int b)
 
 tpoint tslider::calculate_best_size() const
 {
-	log_scope2(log_gui_layout, std::string("tslider ") + __func__);
+	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 
 	// Inherited.
 	tpoint result = tcontrol::calculate_best_size();
@@ -53,7 +56,7 @@ tpoint tslider::calculate_best_size() const
 		result.x = conf->left_offset + best_slider_length_ + conf->right_offset;
 	}
 
-	DBG_GUI_L << "tslider " << __func__ << ":"
+	DBG_GUI_L << LOG_HEADER
 		<< " best_slider_length " << best_slider_length_
 		<< " result " << result
 		<< ".\n";
