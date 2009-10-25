@@ -18,6 +18,10 @@
 
 #include "gui/auxiliary/log.hpp"
 
+#define LOG_SCOPE_HEADER "tcontainer(" + get_control_type() + ") [" \
+		+ id() + "] " + __func__
+#define LOG_HEADER LOG_SCOPE_HEADER + ':'
+
 namespace gui2 {
 
 void tcontainer_::layout_init(const bool full_initialization)
@@ -70,8 +74,7 @@ void tcontainer_::set_size(const tpoint& origin, const tpoint& size)
 
 tpoint tcontainer_::calculate_best_size() const
 {
-	log_scope2(log_gui_layout, "tcontainer(" +
-		get_control_type() + ") " + __func__);
+	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 
 	tpoint result(grid_.get_best_size());
 	const tpoint border_size = border_space();
@@ -86,10 +89,10 @@ tpoint tcontainer_::calculate_best_size() const
 		result.y += border_size.y;
 	}
 
-	DBG_GUI_L << "tcontainer(" + get_control_type() + "):"
-		<< " border size " << border_size
-		<< " returning " << result
-		<< ".\n";
+	DBG_GUI_L << LOG_HEADER
+			<< " border size " << border_size
+			<< " returning " << result
+			<< ".\n";
 
 	return result;
 }
@@ -150,7 +153,7 @@ bool tcontainer_::disable_click_dismiss() const
 void tcontainer_::init_grid(
 		const boost::intrusive_ptr<tbuilder_grid>& grid_builder)
 {
-	log_scope2(log_gui_general, "tcontainer: Building initial grid.");
+	log_scope2(log_gui_general, LOG_SCOPE_HEADER);
 
 	assert(initial_grid().get_rows() == 0 && initial_grid().get_cols() == 0);
 
