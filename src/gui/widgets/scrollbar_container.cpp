@@ -26,6 +26,9 @@
 
 #include <boost/bind.hpp>
 
+#define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
+#define LOG_HEADER LOG_SCOPE_HEADER + ':'
+
 namespace gui2 {
 
 namespace {
@@ -251,8 +254,7 @@ void tscrollbar_container::request_reduce_width(
 
 tpoint tscrollbar_container::calculate_best_size() const
 {
-	log_scope2(log_gui_layout,
-		std::string("tscrollbar_container ") + __func__);
+	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 
 	/***** get vertical scrollbar size *****/
 	const tpoint vertical_scrollbar =
@@ -276,7 +278,7 @@ tpoint tscrollbar_container::calculate_best_size() const
 			horizontal_scrollbar.y +
 				std::max(vertical_scrollbar.y,  content.y));
 
-	DBG_GUI_L << "tscrollbar_container"
+	DBG_GUI_L << LOG_HEADER
 		<< " vertical_scrollbar " << vertical_scrollbar
 		<< " horizontal_scrollbar " << horizontal_scrollbar
 		<< " content " << content
@@ -846,7 +848,7 @@ void tscrollbar_container::signal_handler_sdl_key_down(
 		, const SDLKey key
 		, SDLMod modifier)
 {
-	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << event << ".\n";
 
 	switch(key) {
 		case SDLK_HOME :
@@ -892,7 +894,7 @@ void tscrollbar_container::signal_handler_sdl_wheel_up(
 		  const event::tevent event
 		, bool& handled)
 {
-	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << event << ".\n";
 
 	assert(vertical_scrollbar_grid_ && vertical_scrollbar_);
 
@@ -907,7 +909,7 @@ void tscrollbar_container::signal_handler_sdl_wheel_down(
 		  const event::tevent event
 		, bool& handled)
 {
-	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << event << ".\n";
 
 	assert(vertical_scrollbar_grid_ && vertical_scrollbar_);
 
@@ -922,7 +924,7 @@ void tscrollbar_container::signal_handler_sdl_wheel_left(
 		  const event::tevent event
 		, bool& handled)
 {
-	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << event << ".\n";
 
 	assert(horizontal_scrollbar_grid_ && horizontal_scrollbar_);
 
@@ -937,7 +939,7 @@ void tscrollbar_container::signal_handler_sdl_wheel_right(
 		  const event::tevent event
 		, bool& handled)
 {
-	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << event << ".\n";
 
 	assert(horizontal_scrollbar_grid_ && horizontal_scrollbar_);
 
