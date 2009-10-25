@@ -24,8 +24,9 @@
 
 #include <iomanip>
 
-#define LOG_HEADER "tcontrol(" + get_control_type() + ") [" \
-		<< id() << "] " << __func__ << ":"
+#define LOG_SCOPE_HEADER "tcontrol(" + get_control_type() + ") [" \
+		+ id() + "] " + __func__
+#define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
 namespace gui2 {
 
@@ -302,8 +303,7 @@ void tcontrol::impl_draw_background(surface& frame_buffer)
 
 tpoint tcontrol::get_best_text_size(const tpoint& minimum_size, const tpoint& maximum_size) const
 {
-	log_scope2(log_gui_layout
-			, "tcontrol(" + get_control_type() + ") [" + id() + "]" + __func__);
+	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 
 	assert(!label_.empty());
 
