@@ -163,17 +163,29 @@ void tscrollbar_container::layout_init(const bool full_initialization)
 void tscrollbar_container::request_reduce_height(
 		const unsigned maximum_height)
 {
-	if(vertical_scrollbar_mode_ == always_invisible) {
-		return;
-	}
+	/*
+	 * First ask the content to reduce it's height. This seems to work for now,
+	 * but maybe some sizing hints will be required later.
+	 */
+	/** @todo Evaluate whether sizing hints are required. */
+	assert(content_grid_);
+	const unsigned offset = horizontal_scrollbar_grid_
+			&& horizontal_scrollbar_grid_->get_visible() != twidget::INVISIBLE
+				?  horizontal_scrollbar_grid_->get_best_size().y
+				: 0;
+	content_grid_->request_reduce_height(maximum_height - offset);
 
-	assert(vertical_scrollbar_grid_);
-
+	// Did we manage to achieve the wanted size?
 	tpoint size = get_best_size();
 	if(static_cast<unsigned>(size.y) <= maximum_height) {
 		return;
 	}
 
+	if(vertical_scrollbar_mode_ == always_invisible) {
+		return;
+	}
+
+	assert(vertical_scrollbar_grid_);
 	const bool resized =
 		vertical_scrollbar_grid_->get_visible() == twidget::INVISIBLE;
 
@@ -216,8 +228,6 @@ void tscrollbar_container::request_reduce_width(
 	content_grid_->request_reduce_width(maximum_width - offset);
 
 	// Did we manage to achieve the wanted size?
-	assert(horizontal_scrollbar_grid_);
-
 	tpoint size = get_best_size();
 	if(static_cast<unsigned>(size.x) <= maximum_width) {
 		return;
@@ -228,6 +238,7 @@ void tscrollbar_container::request_reduce_width(
 	}
 
 	// Always set the bar visible, is a nop when it's already visible.
+	assert(horizontal_scrollbar_grid_);
 	horizontal_scrollbar_grid_->set_visible(twidget::VISIBLE);
 	size = get_best_size();
 
