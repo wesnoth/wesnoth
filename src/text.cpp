@@ -504,7 +504,7 @@ void ttext::recalculate(const bool force) const
 				<< " result " <<  rect_
 				<< ".\n";
 		if(maximum_width_ != -1 && rect_.width > maximum_width_) {
-			ERR_GUI_L << "ttext::" << __func__
+			DBG_GUI_L << "ttext::" << __func__
 					<< " text '" << gui2::debug_truncate(text_)
 					<< " ' width " << rect_.width
 					<< " greater as the wanted maximum of " << maximum_width_
