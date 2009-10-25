@@ -195,10 +195,11 @@ if(!$nostats){
 	<li><a href="http://www.wesnoth.org/">Home</a></li>
 	<li><a href="http://www.wesnoth.org/wiki/Play">Play</a></li>
 	<li><a href="http://www.wesnoth.org/wiki/Create">Create</a></li>
-	<li><a href="http://www.wesnoth.org/forum/">Forums</a></li>
+	<li><a href="http://forums.wesnoth.org/">Forums</a></li>
 	<li><a href="http://www.wesnoth.org/wiki/Support">Support</a></li>
 	<li><a href="http://www.wesnoth.org/wiki/Project">Project</a></li>
 	<li><a href="http://www.wesnoth.org/wiki/Credits">Credits</a></li>
+	<li><a href="http://www.wesnoth.org/wiki/UsefulLinks">Links</a></li>
 </ul>
 </div>
 
