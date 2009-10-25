@@ -42,6 +42,13 @@
 #include "gui/auxiliary/event/distributor.hpp"
 #endif
 
+#define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
+#define LOG_HEADER LOG_SCOPE_HEADER + ':'
+
+#define LOG_IMPL_SCOPE_HEADER window.get_control_type() \
+		+ " [" + window.id() + "] " + __func__
+#define LOG_IMPL_HEADER LOG_IMPL_SCOPE_HEADER + ':'
+
 namespace gui2{
 
 unsigned twindow::sunset_ = 0;
@@ -441,7 +448,7 @@ int twindow::show(const bool restore, const unsigned auto_close_timeout)
 		int interval_;
 	};
 
-	log_scope2(log_gui_draw, "Window: show.");
+	log_scope2(log_gui_draw, LOG_SCOPE_HEADER);
 
 	generate_dot_file("show", SHOW);
 
@@ -747,7 +754,7 @@ void twindow::layout()
 		(config());
 	assert(conf);
 
-	log_scope2(log_gui_layout, "Window: Recalculate size");
+	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 
 	const game_logic::map_formula_callable variables =
 		get_screen_size_variables();
@@ -938,7 +945,7 @@ void twindow::layout_linked_widgets()
 
 void twindow::do_show_tooltip(const tpoint& location, const t_string& tooltip)
 {
-	DBG_GUI_G << "Showing tooltip message: '" << tooltip << "'.\n";
+	DBG_GUI_G << LOG_HEADER << " message: '" << tooltip << "'.\n";
 
 	assert(!tooltip.empty());
 
@@ -997,7 +1004,7 @@ void twindow::do_remove_tooltip()
 void twindow::do_show_help_popup(const tpoint& location, const t_string& help_popup)
 {
 	// Note copy past of twindow::do_show_tooltip except that the help may be empty.
-	DBG_GUI_G << "Showing help message: '" << help_popup << "'.\n";
+	DBG_GUI_G << LOG_HEADER << " message: '" << help_popup << "'.\n";
 
 	if(help_popup.empty()) {
 		return;
@@ -1108,7 +1115,7 @@ void twindow::generate_dot_file(const std::string& generator,
 void twindow_implementation::layout(twindow& window,
 		const unsigned maximum_width, const unsigned maximum_height)
 {
-	log_scope2(log_gui_layout, std::string("Window: ") + __func__);
+	log_scope2(log_gui_layout, LOG_IMPL_SCOPE_HEADER);
 
 	/*
 	 * For now we return the status, need to test later whether this can
@@ -1119,14 +1126,14 @@ void twindow_implementation::layout(twindow& window,
 	try {
 		tpoint size = window.get_best_size();
 
-		DBG_GUI_L << "Best size : " << size
-				<< " maximum size : " << maximum_width
-				<< ',' << maximum_height
+		DBG_GUI_L << LOG_IMPL_HEADER
+				<< " best size : " << size
+				<< " maximum size : " << maximum_width << ',' << maximum_height
 				<< ".\n";
 		if(size.x <= static_cast<int>(maximum_width)
 				&& size.y <= static_cast<int>(maximum_height)) {
 
-			DBG_GUI_L << "Result: Fits, nothing to do.\n";
+			DBG_GUI_L << LOG_IMPL_HEADER << " Result: Fits, nothing to do.\n";
 			return;
 		}
 
@@ -1135,13 +1142,15 @@ void twindow_implementation::layout(twindow& window,
 
 			size = window.get_best_size();
 			if(size.x > static_cast<int>(maximum_width)) {
-				DBG_GUI_L << "Result: Resize width failed."
-					<< " Wanted width " << maximum_width
-					<< " resulting width " << size.x
-					<< ".\n";
+				DBG_GUI_L << LOG_IMPL_HEADER
+						<< " Result: Resize width failed."
+						<< " Wanted width " << maximum_width
+						<< " resulting width " << size.x
+						<< ".\n";
 				throw tlayout_exception_width_resize_failed();
 			}
-			DBG_GUI_L << "Status: Resize width succeeded.\n";
+			DBG_GUI_L << LOG_IMPL_HEADER
+					<< " Status: Resize width succeeded.\n";
 		}
 
 		if(size.y > static_cast<int>(maximum_height)) {
@@ -1149,24 +1158,27 @@ void twindow_implementation::layout(twindow& window,
 
 			size = window.get_best_size();
 			if(size.y > static_cast<int>(maximum_height)) {
-				DBG_GUI_L << "Result: Resize height failed."
+				DBG_GUI_L << LOG_IMPL_HEADER << " Result: Resize height failed."
 					<< " Wanted height " << maximum_height
 					<< " resulting height " << size.y
 					<< ".\n";
 				throw tlayout_exception_height_resize_failed();
 			}
-			DBG_GUI_L << "Status: Resize height succeeded.\n";
+			DBG_GUI_L << LOG_IMPL_HEADER
+					<< " Status: Resize height succeeded.\n";
 		}
 
 		assert(size.x <= static_cast<int>(maximum_width)
 				&& size.y <= static_cast<int>(maximum_height));
 
 
-		DBG_GUI_L << "Result: Resizing succeeded.\n";
+		DBG_GUI_L << LOG_IMPL_HEADER << " Result: Resizing succeeded.\n";
 		return;
 
 	} catch (tlayout_exception_width_modified&) {
-		DBG_GUI_L << "Status: Width has been modified, rerun.\n";
+		DBG_GUI_L << LOG_IMPL_HEADER
+				<< " Status: Width has been modified, rerun.\n";
+
 		window.layout_init(false);
 		window.layout_linked_widgets();
 		layout(window, maximum_width, maximum_height);
@@ -1204,7 +1216,7 @@ void twindow::remove_from_keyboard_chain(twidget* widget)
 void twindow::signal_handler_sdl_video_resize(
 			const event::tevent event, bool& handled, const tpoint& new_size)
 {
-	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
 	settings::gamemap_width += new_size.x - settings::screen_width ;
 	settings::gamemap_height += new_size.y - settings::screen_height ;
@@ -1218,7 +1230,7 @@ void twindow::signal_handler_sdl_video_resize(
 void twindow::signal_handler_click_dismiss(
 		const event::tevent event, bool& handled, bool& halt)
 {
-	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
 	handled = halt = click_dismiss();
 }
@@ -1226,7 +1238,7 @@ void twindow::signal_handler_click_dismiss(
 void twindow::signal_handler_sdl_key_down(
 		const event::tevent event, bool& handled, SDLKey key)
 {
-	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
 	if(!enter_disabled_ && (key == SDLK_KP_ENTER || key == SDLK_RETURN)) {
 		set_retval(OK);
