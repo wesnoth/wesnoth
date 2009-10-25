@@ -1735,7 +1735,7 @@ void calculate_healing(int side, bool update_display)
 
           /* next unit to be healed is nearest from uhs left in list l */
           while (!l.empty()) {
-            
+
             std::list<struct unit_healing_struct>::iterator nearest;
             int min_d = INT_MAX;
 
@@ -1757,7 +1757,7 @@ void calculate_healing(int side, bool update_display)
                                        *uhs.healers, uhs.healing);
           }
         }
-        
+
 	DBG_NG << "end of healing calculations\n";
 }
 
