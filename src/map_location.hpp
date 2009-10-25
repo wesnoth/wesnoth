@@ -75,7 +75,7 @@ struct map_location {
 	int do_compare(const map_location& a) const {return x == a.x ? y - a.y : x - a.x; }
 
 	// Adds an absolute location to a "delta" location
-	// This is not the mathematically correct behviour, it is neither
+	// This is not the mathematically correct behaviour, it is neither
 	// commutative nor associative. Negative coordinates may give strange
 	// results. It is retained because terain builder code relies in this
 	// broken behaviour. Best avoid.

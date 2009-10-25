@@ -41,6 +41,8 @@
 
 
 #include <boost/scoped_ptr.hpp>
+#include <list>
+
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
@@ -1535,10 +1537,21 @@ void reset_resting(unit_map& units, int side)
 	}
 }
 
+/* Contains all the data used to display healing */
+struct unit_healing_struct {
+  unit *healed;
+  map_location *healed_loc;
+  std::vector<unit_map::iterator> *healers;
+  int healing;
+};
+
 void calculate_healing(int side, bool update_display)
 {
 	DBG_NG << "beginning of healing calculations\n";
 	unit_map &units = *resources::units;
+
+        /* list used to display healing after having computed it */
+        std::list<struct unit_healing_struct> l;
 
 	// We look for all allied units, then we see if our healer is near them.
 	for (unit_map::iterator i = units.begin(); i != units.end(); ++i) {
@@ -1695,7 +1708,13 @@ void calculate_healing(int side, bool update_display)
 		    !(i->second.invisible(i->first, units, *resources::teams) &&
 		      (*resources::teams)[resources::screen->viewing_team()].is_enemy(side)))
 		{
-			unit_display::unit_healing(i->second,i->first,healers,healing);
+                  struct unit_healing_struct uhs = {
+                    &i->second,
+                    &i->first,
+                    &healers,
+                    healing
+                  };
+                  l.push_front(uhs);
 		}
 		if (healing > 0)
 			i->second.heal(healing);
@@ -1703,6 +1722,42 @@ void calculate_healing(int side, bool update_display)
 			i->second.take_hit(-healing);
 		resources::screen->invalidate_unit();
 	}
+
+        /* display healing with nearest first algorithm */
+        if (!l.empty()) {
+
+          /* the first unit to be healed is chosen arbitrarily */
+          struct unit_healing_struct uhs = l.front();
+          l.pop_front();
+
+          unit_display::unit_healing(*uhs.healed, *uhs.healed_loc,
+                                     *uhs.healers, uhs.healing);
+
+          /* next unit to be healed is nearest from uhs left in list l */
+          while (!l.empty()) {
+            
+            std::list<struct unit_healing_struct>::iterator nearest;
+            int min_d = INT_MAX;
+
+            /* for each unit in l, remember nearest */
+            for (std::list<struct unit_healing_struct>::iterator i = l.begin();
+                 i != l.end() ; i++) {
+              //int d = uhs.square_dist(*i);
+              int d = distance_between(*uhs.healed_loc, *i->healed_loc);
+              if (d < min_d) {
+                min_d = d;
+                nearest = i;
+              }
+            }
+
+            uhs = *nearest;
+            l.erase(nearest);
+
+            unit_display::unit_healing(*uhs.healed, *uhs.healed_loc,
+                                       *uhs.healers, uhs.healing);
+          }
+        }
+        
 	DBG_NG << "end of healing calculations\n";
 }
 
