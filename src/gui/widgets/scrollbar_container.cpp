@@ -163,6 +163,9 @@ void tscrollbar_container::layout_init(const bool full_initialization)
 void tscrollbar_container::request_reduce_height(
 		const unsigned maximum_height)
 {
+	DBG_GUI_L << LOG_HEADER
+			<< " requested height " << maximum_height
+			<< ".\n";
 	/*
 	 * First ask the content to reduce it's height. This seems to work for now,
 	 * but maybe some sizing hints will be required later.
@@ -178,10 +181,14 @@ void tscrollbar_container::request_reduce_height(
 	// Did we manage to achieve the wanted size?
 	tpoint size = get_best_size();
 	if(static_cast<unsigned>(size.y) <= maximum_height) {
+		DBG_GUI_L << LOG_HEADER
+				<< " child honoured request, height " << size.y
+				<< ".\n";
 		return;
 	}
 
 	if(vertical_scrollbar_mode_ == always_invisible) {
+		DBG_GUI_L << LOG_HEADER << " request failed due to scrollbar mode.\n";
 		return;
 	}
 
@@ -197,6 +204,10 @@ void tscrollbar_container::request_reduce_height(
 	// If showing the scrollbar increased the height, hide and abort.
 	if(resized && scrollbar_size.y > size.y) {
 		vertical_scrollbar_grid_->set_visible(twidget::INVISIBLE);
+		DBG_GUI_L << LOG_HEADER
+				<< " request failed, showing the scrollbar"
+			    << " increased the height to " << scrollbar_size.y
+				<< ".\n";
 		return;
 	}
 
@@ -209,8 +220,14 @@ void tscrollbar_container::request_reduce_height(
 	// FIXME adjust for the step size of the scrollbar
 
 	set_layout_size(size);
+	DBG_GUI_L << LOG_HEADER
+			<< " resize resulted in " << size.y
+			<< ".\n";
 
 	if(resized) {
+		DBG_GUI_L << LOG_HEADER
+				<< " resize modified the width, throw notification.\n";
+
 		throw tlayout_exception_width_modified();
 	}
 }
@@ -218,6 +235,10 @@ void tscrollbar_container::request_reduce_height(
 void tscrollbar_container::request_reduce_width(
 		const unsigned maximum_width)
 {
+	DBG_GUI_L << LOG_HEADER
+			<< " requested width " << maximum_width
+			<< ".\n";
+
 	// First ask our content, it might be able to wrap which looks better as
 	// a scrollbar.
 	assert(content_grid_);
@@ -230,10 +251,14 @@ void tscrollbar_container::request_reduce_width(
 	// Did we manage to achieve the wanted size?
 	tpoint size = get_best_size();
 	if(static_cast<unsigned>(size.x) <= maximum_width) {
+		DBG_GUI_L << LOG_HEADER
+				<< " child honoured request, width " << size.x
+				<< ".\n";
 		return;
 	}
 
 	if(horizontal_scrollbar_mode_ == always_invisible) {
+		DBG_GUI_L << LOG_HEADER << " request failed due to scrollbar mode.\n";
 		return;
 	}
 
@@ -249,6 +274,10 @@ void tscrollbar_container::request_reduce_width(
 			&& scrollbar_size.x > size.x) {
 
 		horizontal_scrollbar_grid_->set_visible(twidget::INVISIBLE);
+		DBG_GUI_L << LOG_HEADER
+				<< " request failed, showing the scrollbar"
+			    << " increased the width to " << scrollbar_size.x
+				<< ".\n";
 		return;
 	}
 
@@ -261,6 +290,9 @@ void tscrollbar_container::request_reduce_width(
 	// FIXME adjust for the step size of the scrollbar
 
 	set_layout_size(size);
+	DBG_GUI_L << LOG_HEADER
+			<< " resize resulted in " << size.x
+			<< ".\n";
 }
 
 tpoint tscrollbar_container::calculate_best_size() const
@@ -290,11 +322,11 @@ tpoint tscrollbar_container::calculate_best_size() const
 				std::max(vertical_scrollbar.y,  content.y));
 
 	DBG_GUI_L << LOG_HEADER
-		<< " vertical_scrollbar " << vertical_scrollbar
-		<< " horizontal_scrollbar " << horizontal_scrollbar
-		<< " content " << content
-		<< " result " << result
-		<< ".\n";
+			<< " vertical_scrollbar " << vertical_scrollbar
+			<< " horizontal_scrollbar " << horizontal_scrollbar
+			<< " content " << content
+			<< " result " << result
+			<< ".\n";
 
 	return result;
 }
