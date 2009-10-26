@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-10-07 15:42+0200\n"
-"PO-Revision-Date: 2009-03-11 12:05-0400\n"
+"POT-Creation-Date: 2009-10-22 19:33+0200\n"
+"PO-Revision-Date: 2009-10-20 23:36-0300\n"
 "Last-Translator: Rainer Oliveira <rainercoliveira@gmail.com>\n"
 "Language-Team: Portuguese/Brazil\n"
 "MIME-Version: 1.0\n"
@@ -98,13 +98,13 @@ msgstr "especial"
 #. [menu]: id=flood_button_editor
 #: data/core/editor/tool-hints.cfg:7 data/core/editor/tool-hints.cfg:13
 #: data/themes/editor.cfg:179 data/themes/editor.cfg:192
-#, fuzzy
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
-"Use o botão do mouse esquerda/direita para desenhar o terreno da frente/de "
-"fundo. Segure Shift para pintar apenas a camada base."
+"Use o botão esquerdo/direito do mouse para desenhar o terreno da frente/de "
+"fundo. Segure Shift para pintar apenas a camada base.·Ctrl+click·para pegar "
+"uma amostra do terreno sob o cursor."
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
@@ -114,7 +114,7 @@ msgid ""
 "selection of tiles with same terrain."
 msgstr ""
 "O botão esquerdo do mouse seleciona, o direito deseleciona. Segure Shift "
-"para seleção 'varinha mágica' de quadros com mesmo terreno."
+"para seleção 'varinha mágica' de ladrilhos com o mesmo terreno."
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
 #. [menu]: id=start_position_button_editor
@@ -234,12 +234,10 @@ msgid "Map creation failed."
 msgstr "Criação de mapa mal-sucedida."
 
 #: src/editor/editor_controller.cpp:515
-#, fuzzy
 msgid "Choose a mask to apply"
 msgstr "Escolha uma máscara para aplicar"
 
 #: src/editor/editor_controller.cpp:522
-#, fuzzy
 msgid "Error loading mask"
 msgstr "Erro carregando a máscara"
 
@@ -261,17 +259,19 @@ msgstr "Mapa salvo."
 
 #: src/editor/editor_controller.cpp:687
 msgid "Loaded embedded map data"
-msgstr ""
+msgstr "Dados de mapa embutido carregados"
 
 #: src/editor/editor_controller.cpp:688 src/editor/editor_controller.cpp:702
 msgid "Map loaded from scenario"
-msgstr ""
+msgstr "Mapa carregado do cenário"
 
 #: src/editor/editor_controller.cpp:698
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
 msgstr ""
+"Arquivo de mapa referência carregado:\n"
+"$new"
 
 #: src/editor/editor_controller.cpp:1091
 msgid "Undo"
@@ -291,16 +291,15 @@ msgstr "Não pode refazer"
 
 #: src/editor/editor_controller.cpp:1104
 msgid "Auto-update Terrain Transitions: Yes"
-msgstr ""
+msgstr "Auto-atualizar transições de terreno: Sim"
 
 #: src/editor/editor_controller.cpp:1107
 msgid "Auto-update Terrain Transitions: Partial"
-msgstr ""
+msgstr "Auto-atualizar transições de terreno: Parcial"
 
 #: src/editor/editor_controller.cpp:1111
-#, fuzzy
 msgid "Auto-update Terrain Transitions: No"
-msgstr "Atualizar transições"
+msgstr "Auto-atualizar transições de terreno: Não"
 
 #: src/editor/editor_map.cpp:149 src/editor/mouse_action.cpp:439
 msgid "Player"
@@ -312,11 +311,11 @@ msgstr "O tamanho do mapa alvo é diferente do mapa atual"
 
 #: src/editor/editor_palettes.cpp:506
 msgid "(non-core)"
-msgstr ""
+msgstr "(não-central)"
 
 #: src/editor/editor_palettes.cpp:507
 msgid "Will not work in game without extra care."
-msgstr ""
+msgstr "Não vai trabalhar no jogo sem cuidado extra."
 
 #: src/editor/editor_palettes.cpp:532
 msgid "FG"
@@ -328,23 +327,23 @@ msgstr "Fundo"
 
 #: src/editor/map_context.cpp:70
 msgid "File not found"
-msgstr ""
+msgstr "Arquivo não encontrado"
 
 #: src/editor/map_context.cpp:84
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 msgstr ""
+"O arquivo de mapa parece um cenário, mas o valor map_data aponta para um "
+"arquivo não-existente"
 
 #: src/editor/map_context.cpp:99
-#, fuzzy
 msgid "Empty map file"
-msgstr "Arquivo de mapa vazio ou arquivo não encontrado"
+msgstr "Arquivo de mapa vazio"
 
 #: src/editor/map_context.cpp:219
-#, fuzzy
 msgid "Could not save into scenario"
-msgstr "Não foi possível salvar o mapa: $msg"
+msgstr "Não foi possível salvar no cenário"
 
 #: src/editor/map_context.cpp:226
 msgid "Could not save the map: $msg"
