@@ -32,7 +32,7 @@ namespace gui2 {
  * construction and only used with --new-widgets.
  *
  * @start_table = grid
- *     (addon_list) (listbox) ()  A listbox that will contain the info about
+ *     (addons) (listbox) ()      A listbox that will contain the info about
  *                                all addons on the server.
  *     -[name] (control) ()       The name of the addon.
  *     -[version] (control) ()    The version number of the addon.
@@ -50,7 +50,7 @@ twindow* taddon_list::build_window(CVideo& video)
 
 void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
 {
-	tlistbox& list = find_widget<tlistbox>(&window, "addon_list", false);
+	tlistbox& list = find_widget<tlistbox>(&window, "addons", false);
 
 	/**
 	 * @todo do we really want to keep the length limit for the various
