@@ -1085,12 +1085,18 @@ void swap_grid(tgrid* grid,
 	}
 	if(!parent_grid) {
 		parent_grid = find_widget<tgrid>(content_grid, id, true, false);
+		assert(parent_grid);
 	}
-	parent_grid = dynamic_cast<tgrid*>(parent_grid->parent());
-	assert(parent_grid);
+	if(tgrid* g = dynamic_cast<tgrid*>(parent_grid->parent())) {
+		widget = g->swap_child(id, widget, false);
+	} else if(tcontainer_* c
+			= dynamic_cast<tcontainer_*>(parent_grid->parent())) {
 
-	// Replace the child.
-	widget = parent_grid->swap_child(id, widget, false);
+		widget = c->grid().swap_child(id, widget, true);
+	} else {
+		assert(false);
+	}
+
 	assert(widget);
 
 	delete widget;
@@ -1100,7 +1106,7 @@ void swap_grid(tgrid* grid,
 
 void twindow::finalize(const boost::intrusive_ptr<tbuilder_grid>& content_grid)
 {
-	swap_grid(NULL, &grid(), content_grid->build(), "_content_grid");
+	swap_grid(NULL, &grid(), content_grid->build(), "_window_content_grid");
 }
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS

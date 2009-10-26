@@ -180,9 +180,11 @@ public:
 	void set_col_grow_factor(const unsigned col, const unsigned factor)
 		{ grid_.set_col_grow_factor(col, factor); }
 
-protected:
+public:
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
+	// Public due to the fact that window needs to be able to swap the
+	// children, might be protected again later.
 	const tgrid& grid() const { return grid_; }
 	tgrid& grid() { return grid_; }
 
