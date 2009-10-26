@@ -506,30 +506,24 @@ static void enter_lobby_mode(game_display& disp, const config& game_config, mp::
 	lobby_info li(game_config);
 
 	while (true) {
-		if(gui2::new_widgets) {
-			gui2::tlobby_main dlg(game_config, li, disp);
-			dlg.set_preferences_callback(
-				boost::bind(do_preferences_dialog,
-					boost::ref(disp), boost::ref(game_config)));
-			dlg.show(disp.video());
-			//ugly kludge for launching other dialogs like the old lobby
-			switch (dlg.get_legacy_result()) {
-				case gui2::tlobby_main::CREATE:
-					res = mp::ui::CREATE;
-					break;
-				case gui2::tlobby_main::JOIN:
-					res = mp::ui::JOIN;
-					break;
-				case gui2::tlobby_main::OBSERVE:
-					res = mp::ui::OBSERVE;
-					break;
-				default:
-					res = mp::ui::QUIT;
-			}
-		} else {
-			mp::lobby ui(disp, game_config, chat, gamelist);
-			run_lobby_loop(disp, ui);
-			res = ui.get_result();
+		gui2::tlobby_main dlg(game_config, li, disp);
+		dlg.set_preferences_callback(
+			boost::bind(do_preferences_dialog,
+				boost::ref(disp), boost::ref(game_config)));
+		dlg.show(disp.video());
+		//ugly kludge for launching other dialogs like the old lobby
+		switch (dlg.get_legacy_result()) {
+			case gui2::tlobby_main::CREATE:
+				res = mp::ui::CREATE;
+				break;
+			case gui2::tlobby_main::JOIN:
+				res = mp::ui::JOIN;
+				break;
+			case gui2::tlobby_main::OBSERVE:
+				res = mp::ui::OBSERVE;
+				break;
+			default:
+				res = mp::ui::QUIT;
 		}
 
 		switch (res) {
