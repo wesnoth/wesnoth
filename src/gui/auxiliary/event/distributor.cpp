@@ -290,6 +290,7 @@ void tmouse_motion::signal_handler_show_hover_tooltip(const event::tevent event)
 
 	if(!hover_widget_) {
 		ERR_GUI_E << LOG_HEADER << event << " bailing out, no hover widget.\n";
+		return;
 	}
 
 	/**
