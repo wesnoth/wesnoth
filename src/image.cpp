@@ -884,7 +884,7 @@ void set_zoom(int amount)
 	}
 }
 
-static surface get_hexed(const locator i_locator)
+static surface get_hexed(const locator& i_locator)
 {
 	surface image(get_image(i_locator, UNSCALED));
 	// Re-cut scaled tiles according to a mask.
@@ -893,7 +893,7 @@ static surface get_hexed(const locator i_locator)
 	return mask_surface(image, hex);
 }
 
-static surface get_unmasked(const locator i_locator)
+static surface get_unmasked(const locator& i_locator)
 {
 	// If no scaling needed at this zoom level,
 	// we just use the hexed image.
@@ -904,7 +904,7 @@ static surface get_unmasked(const locator i_locator)
 		return image;
 }
 
-static surface get_scaled_to_hex(const locator i_locator)
+static surface get_scaled_to_hex(const locator& i_locator)
 {
 	surface res(get_image(i_locator, UNMASKED));
 
@@ -918,7 +918,7 @@ static surface get_scaled_to_hex(const locator i_locator)
 	return res;
 }
 
-static surface get_scaled_to_zoom(const locator i_locator)
+static surface get_scaled_to_zoom(const locator& i_locator)
 {
 	assert(zoom != tile_size);
 	assert(tile_size != 0);
@@ -932,13 +932,13 @@ static surface get_scaled_to_zoom(const locator i_locator)
 	}
 }
 
-static surface get_brightened(const locator i_locator)
+static surface get_brightened(const locator& i_locator)
 {
 	surface image(get_image(i_locator, SCALED_TO_HEX));
 	return surface(brighten_image(image, ftofxp(1.5)));
 }
 
-static surface get_semi_brightened(const locator i_locator)
+static surface get_semi_brightened(const locator& i_locator)
 {
 	surface image(get_image(i_locator, SCALED_TO_HEX));
 	return surface(brighten_image(image, ftofxp(1.25)));
