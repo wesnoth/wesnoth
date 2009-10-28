@@ -132,7 +132,7 @@ public:
 
 class single_mode_controller {
 public:
-	single_mode_controller(const std::string name, tgamestate_inspector::model &m)
+	single_mode_controller(const std::string& name, tgamestate_inspector::model &m)
 		:model_(m), name_(name)
 	{
 	}
@@ -155,7 +155,7 @@ protected:
 
 class variable_mode_controller : public single_mode_controller{
 public:
-	variable_mode_controller(const std::string name, tgamestate_inspector::model &m)
+	variable_mode_controller(const std::string& name, tgamestate_inspector::model &m)
 		:single_mode_controller(name,m)
 	{
 	}
@@ -216,7 +216,7 @@ public:
 
 class team_mode_controller : public single_mode_controller{
 public:
-	team_mode_controller(const std::string name, tgamestate_inspector::model &m, int side)
+	team_mode_controller(const std::string& name, tgamestate_inspector::model &m, int side)
 		:single_mode_controller(name,m), side_(side)
 	{
 	}
