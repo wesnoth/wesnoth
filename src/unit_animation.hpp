@@ -56,7 +56,13 @@ class unit_animation
                 int time_to_tick(int animation_time) const { return unit_anim_.time_to_tick(animation_time); };
 		int get_animation_time() const{ return unit_anim_.get_animation_time() ; };
 		int get_animation_time_potential() const{ return unit_anim_.get_animation_time_potential() ; };
-		void start_animation(int start_time,const map_location &src = map_location::null_location, const map_location &dst = map_location::null_location , bool cycles=false, const std::string text="", const Uint32 text_color=0,const bool accelerate = true);
+		void start_animation(int start_time
+				, const map_location &src = map_location::null_location
+				, const map_location &dst = map_location::null_location
+				, bool cycles = false
+				, const std::string& text = ""
+				, const Uint32 text_color = 0
+				, const bool accelerate = true);
 		void update_parameters(const map_location &src, const map_location &dst);
                 void pause_animation();
                 void restart_animation();
@@ -90,11 +96,19 @@ class unit_animation
 				halo_id_(0),
 				last_frame_begin_time_(0)
 				{};
-			explicit particule(const config& cfg,const std::string frame_string ="frame");
+			explicit particule(const config& cfg
+					, const std::string& frame_string ="frame");
+
 			virtual ~particule();
 			bool need_update() const;
 			bool need_minimal_update() const;
-			void override(int start_time,int duration, const std::string highlight="", const std::string blend_ratio ="",Uint32 blend_color = 0,const std::string offset="",const std::string layer="");
+			void override(int start_time
+					, int duration
+					, const std::string& highlight = ""
+					, const std::string& blend_ratio =""
+					, Uint32 blend_color = 0
+					, const std::string& offset = ""
+					, const std::string& layer = "");
 			void redraw( const frame_parameters& value,const map_location &src, const map_location &dst, const bool primary=false);
 			std::set<map_location> get_overlaped_hex(const frame_parameters& value,const map_location &src, const map_location &dst, const bool primary = false);
 			void start_animation(int start_time, bool cycles=false);
@@ -141,26 +155,41 @@ class unit_animator
 		}
 
 
-		void add_animation(unit* animated_unit,const unit_animation * animation,
-				const map_location &src = map_location::null_location,
-				bool with_bars = false,bool cycles = false,
-				const std::string text="",const Uint32 text_color=0);
-		void add_animation(unit* animated_unit,const std::string& event,
-				const map_location &src = map_location::null_location,
-				const map_location &dst = map_location::null_location,
-				const int value=0,bool with_bars = false,bool cycles = false,
-				const std::string text="",const Uint32 text_color=0,
-				const unit_animation::hit_type hit_type = unit_animation::INVALID,
-				const attack_type* attack=NULL, const attack_type* second_attack = NULL,
-				int value2 =0);
-		void replace_anim_if_invalid(unit* animated_unit,const std::string& event,
-				const map_location &src = map_location::null_location,
-				const map_location &dst = map_location::null_location,
-				const int value=0,bool with_bars = false,bool cycles = false,
-				const std::string text="",const Uint32 text_color=0,
-				const unit_animation::hit_type hit_type = unit_animation::INVALID,
-				const attack_type* attack=NULL, const attack_type* second_attack = NULL,
-				int value2 =0);
+		void add_animation(unit* animated_unit
+				, const unit_animation * animation
+				, const map_location &src = map_location::null_location
+				, bool with_bars = false
+				, bool cycles = false
+				, const std::string& text = ""
+				, const Uint32 text_color = 0);
+		void add_animation(unit* animated_unit
+				, const std::string& event
+				, const map_location &src = map_location::null_location
+				, const map_location &dst = map_location::null_location
+				, const int value = 0
+				, bool with_bars = false
+				, bool cycles = false
+				, const std::string& text = ""
+				, const Uint32 text_color = 0
+				, const unit_animation::hit_type hit_type =
+					unit_animation::INVALID
+				, const attack_type* attack = NULL
+				, const attack_type* second_attack = NULL
+				, int value2 = 0);
+		void replace_anim_if_invalid(unit* animated_unit
+				, const std::string& event
+				, const map_location &src = map_location::null_location
+				, const map_location &dst = map_location::null_location
+				, const int value = 0
+				, bool with_bars = false
+				, bool cycles = false
+				, const std::string& text = ""
+				, const Uint32 text_color = 0
+				, const unit_animation::hit_type hit_type =
+					unit_animation::INVALID
+				, const attack_type* attack = NULL
+				, const attack_type* second_attack = NULL
+				, int value2 = 0);
 		void start_animations();
                 void pause_animation();
                 void restart_animation();

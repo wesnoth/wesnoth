@@ -714,7 +714,13 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	}
 }
 
-void unit_animation::particule::override( int start_time,int duration, const std::string highlight,const std::string blend_ratio ,Uint32 blend_color ,const std::string offset,const std::string layer)
+void unit_animation::particule::override(int start_time
+		, int duration
+		, const std::string& highlight
+		, const std::string& blend_ratio
+		, Uint32 blend_color
+		, const std::string& offset
+		, const std::string& layer)
 {
 	set_begin_time(start_time);
 	if(!highlight.empty()) parameters_.highlight(highlight);
@@ -752,7 +758,7 @@ bool unit_animation::particule::need_minimal_update() const
 }
 
 unit_animation::particule::particule(
-	const config& cfg, const std::string frame_string ) :
+	const config& cfg, const std::string& frame_string ) :
 		animated<unit_frame>(),
 		accelerate(true),
 		parameters_(cfg,frame_string),
@@ -853,7 +859,13 @@ int unit_animation::get_begin_time() const
 	return result;
 }
 
-void unit_animation::start_animation(int start_time,const map_location &src, const map_location &dst, bool cycles, const std::string text, const Uint32 text_color,const bool accelerate)
+void unit_animation::start_animation(int start_time
+		, const map_location &src
+		, const map_location &dst
+		, bool cycles
+		, const std::string& text
+		, const Uint32 text_color
+		, const bool accelerate)
 {
 	unit_anim_.accelerate = accelerate;
 	src_ = src;
@@ -982,12 +994,19 @@ void unit_animation::particule::start_animation(int start_time, bool cycles)
 	last_frame_begin_time_ = get_begin_time() -1;
 }
 
-void unit_animator::add_animation(unit* animated_unit,const std::string& event,
-		const map_location &src , const map_location &dst ,
-		const int value,bool with_bars,bool cycles,
-		const std::string text,const Uint32 text_color,
-		const unit_animation::hit_type hit_type,
-		const attack_type* attack, const attack_type* second_attack, int value2)
+void unit_animator::add_animation(unit* animated_unit
+		, const std::string& event
+		, const map_location &src
+		, const map_location &dst
+		, const int value
+		, bool with_bars
+		, bool cycles
+		, const std::string& text
+		, const Uint32 text_color
+		, const unit_animation::hit_type hit_type
+		, const attack_type* attack
+		, const attack_type* second_attack
+		, int value2)
 {
 	if(!animated_unit) return;
 	anim_elem tmp;
@@ -1006,9 +1025,13 @@ void unit_animator::add_animation(unit* animated_unit,const std::string& event,
 	start_time_ = std::max<int>(start_time_,tmp.animation->get_begin_time());
 	animated_units_.push_back(tmp);
 }
-void unit_animator::add_animation(unit* animated_unit,const unit_animation* anim,
-		const map_location &src , bool with_bars,bool cycles,
-		const std::string text,const Uint32 text_color)
+void unit_animator::add_animation(unit* animated_unit
+		, const unit_animation* anim
+		, const map_location &src
+		, bool with_bars
+		, bool cycles
+		, const std::string& text
+		, const Uint32 text_color)
 {
 	if(!animated_unit) return;
 	anim_elem tmp;
@@ -1026,12 +1049,19 @@ void unit_animator::add_animation(unit* animated_unit,const unit_animation* anim
 	start_time_ = std::max<int>(start_time_,tmp.animation->get_begin_time());
 	animated_units_.push_back(tmp);
 }
-void unit_animator::replace_anim_if_invalid(unit* animated_unit,const std::string& event,
-		const map_location &src , const map_location & dst,
-		const int value,bool with_bars,bool cycles,
-		const std::string text,const Uint32 text_color,
-		const unit_animation::hit_type hit_type,
-		const attack_type* attack, const attack_type* second_attack, int value2)
+void unit_animator::replace_anim_if_invalid(unit* animated_unit
+		, const std::string& event
+		, const map_location &src
+		, const map_location & dst
+		, const int value
+		, bool with_bars
+		, bool cycles
+		, const std::string& text
+		, const Uint32 text_color
+		, const unit_animation::hit_type hit_type
+		, const attack_type* attack
+		, const attack_type* second_attack
+		, int value2)
 {
 	if(!animated_unit) return;
 	game_display*disp = game_display::get_singleton();
