@@ -71,6 +71,7 @@ void editor_action_whole_map::perform_without_undo(map_context& mc) const {
 }
 
 editor_action_chain::editor_action_chain(const editor::editor_action_chain &other)
+	: actions_()
 {
 	foreach (editor_action* a, other.actions_) {
 		actions_.push_back(a->clone());
