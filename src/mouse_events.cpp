@@ -787,10 +787,10 @@ void mouse_handler::perform_attack(
 	current_team().set_action_bonus_count(1 + current_team().action_bonus_count());
 
 	try {
+		events::command_disabler disabler; // Rather than decrementing for every possible exception, use RAII
+		commands_disabled--;
 		attack_unit(attacker_loc, defender_loc, attacker_weapon, defender_weapon);
-		commands_disabled--;
 	} catch(end_level_exception&) {
-		commands_disabled--;
 		//if the level ends due to a unit being killed, still see if
 		//either the attacker or defender should advance
 		dialogs::advance_unit(attacker_loc);
