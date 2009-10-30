@@ -59,7 +59,7 @@ if __name__ == "__main__":
                 # Mask email names from spammers
                 email = email.replace("@", "&#x40;").replace(".", "&#x2E;")
                 # Interpret our local conventions for obfuscsting in SVN files
-                email = email.replace("_AT_", "&#x40;").replace("_dot_", "&#x2E;")
+                email = email.replace("_AT_", "&#x40;").replace("_DOT_", "&#x2E;")
                 section.lines.append((name, comment, wikiuser, email))
             if section.title: sections.append(section)
         chapters.append((arg, sections))
