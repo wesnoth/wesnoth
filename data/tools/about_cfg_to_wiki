@@ -56,6 +56,10 @@ if __name__ == "__main__":
                 comment = entry.get_text_val("comment", "")
                 wikiuser = entry.get_text_val("wikiuser", "")
                 email = entry.get_text_val("email", "")
+                # Mask email names from spammers
+                email = email.replace("@", "&#x40;").replace(".", "&#x2E;")
+                # Interpret our local conventions for obfuscsting in SVN files
+                email = email.replace("_AT_", "&#x40;").replace("_dot_", "&#x2E;")
                 section.lines.append((name, comment, wikiuser, email))
             if section.title: sections.append(section)
         chapters.append((arg, sections))
