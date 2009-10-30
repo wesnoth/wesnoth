@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-10-13 22:59+0200\n"
-"PO-Revision-Date: 2009-10-15 12:29+0100\n"
+"PO-Revision-Date: 2009-10-30 00:57+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -1191,7 +1191,6 @@ msgstr "Vytvoř hru"
 
 #. [button]: id=join_global
 #: data/gui/default/window/lobby_main.cfg:571
-#, fuzzy
 msgid "Join"
 msgstr "Přidej se ke hře"
 
@@ -1207,7 +1206,6 @@ msgstr "Rychlý záznam"
 
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:30
-#, fuzzy
 msgid "Player Info - "
 msgstr "Informace o hráči - "
 
@@ -2222,6 +2220,8 @@ msgstr "Není definován stav či region vykreslení."
 #: src/gui/widgets/window.cpp:781
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr ""
+"Zavření kliknutím kamkoliv vyžaduje přítomnost parametru nebo tlačítkas id "
+"nastaveným na 'click_dismiss' nebo 'ok'."
 
 #: src/gui/widgets/window.cpp:806 src/gui/widgets/window.cpp:839
 #: src/tests/gui/test_gui2.cpp:232

@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-10-22 19:33+0200\n"
-"PO-Revision-Date: 2009-10-15 13:20+0100\n"
+"PO-Revision-Date: 2009-10-30 00:57+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -374,7 +374,7 @@ msgstr "Anglický překlad (VB)"
 #: data/core/about.cfg:1339
 #, fuzzy
 msgid "English (Shaw) Translation"
-msgstr "Anglický překlad (VB)"
+msgstr "Anglický překlad (Shawovský fonetický přepis)"
 
 #. [about]
 #: data/core/about.cfg:1357
@@ -3549,6 +3549,7 @@ msgstr ""
 #: data/core/macros/ai.cfg:408
 msgid "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
 msgstr ""
+"Požádej vůdce strany $ally_leader.side ($ally_leader.name|) o přesun sem"
 
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:144
@@ -3735,9 +3736,8 @@ msgid "Exit"
 msgstr "Konec"
 
 #: data/core/macros/ai_controller.cfg:1047
-#, fuzzy
 msgid "Set special orders..."
-msgstr "Nastavit zváštní příkazy..."
+msgstr "Nastavit zvláštní příkazy..."
 
 #: data/core/macros/ai_controller.cfg:1048
 msgid "Move leader to..."
@@ -3756,12 +3756,10 @@ msgid "moving leader to $x1|,$y1|."
 msgstr "přesouvám vůdce na $x1|,$y1|."
 
 #: data/core/macros/ai_controller.cfg:1052
-#, fuzzy
 msgid "Clear special orders"
 msgstr "Zrušit zvláštní příkazy"
 
 #: data/core/macros/ai_controller.cfg:1053
-#, fuzzy
 msgid ""
 "Special: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_special_description"
@@ -5149,9 +5147,8 @@ msgstr "zdravá"
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:140
-#, fuzzy
 msgid "Always rest heals"
-msgstr "Vždy odpočívá a uzdravuje se odpočinkem"
+msgstr "Vždy odpočívá a uzdravuje se"
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:157 data/core/macros/traits.cfg:170
@@ -5663,7 +5660,6 @@ msgstr "Lidé"
 # Poslední věta sice není přesná, ale je to snad jediný možný hezký a smysluplný překlad
 #. [race]: id=human
 #: data/core/units.cfg:169
-#, fuzzy
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -5731,13 +5727,13 @@ msgstr ""
 "kopci. Obývají je klany jezdců, kteří pomáhají Koruně, ale zachovávají si "
 "téměř absolutní nezávislost. Existují názory, že jde vlastně o autonomní "
 "stát, který vyměňuje s Korunou vojáky a potravu za ochranu. Jiné názory ale "
-"tvrdí, že jde prostě o východní část království Wesnothu. Ať již pravda leží "
-"kdekoliv, faktem je, že východní provincie nemají takovou pravidelnou armádu "
-"s brannou službou, jaká je na západě. Bojový trénink je nedílnou součástí "
-"tamní kultury. Rodiče učí děti jezdit na koni, bojovat a střílet už od "
-"útlého věku. Klanoví bojovníci jsou tedy obecně méně organizovaní, než "
-"pravidelná armáda. Díky tomu se mohou tyto dvě složky vojska doplňovat ve "
-"svých výhodách a vyvažovat své nevýhody."
+"tvrdí, že jde prostě o východní část království Wesnothu se stejnými právy "
+"jako západ. Ať již pravda leží kdekoliv, faktem je, že východní provincie "
+"nemají takovou pravidelnou armádu s brannou službou, jaká je na západě. "
+"Bojový trénink je nedílnou součástí zdejší kultury. Rodiče učí děti jezdit "
+"na koni, bojovat a střílet už od útlého věku. Klanoví bojovníci jsou tedy "
+"obecně méně organizovaní, než pravidelná armáda. Díky tomu se mohou tyto dvě "
+"složky vojska doplňovat ve svých výhodách a vyvažovat své nevýhody."
 
 # Nágy? Hadí lid?
 #. [race]: id=lizard, description=
@@ -8800,7 +8796,7 @@ msgstr "Upraví vlastnost jednotky (pouze na svrchní úrovni)."
 
 #: src/menu_events.cpp:2469
 msgid "Discover all units in help."
-msgstr ""
+msgstr "Odhalí v nápovědě všechny jednotky."
 
 #: src/menu_events.cpp:2474
 msgid "Create a unit."
@@ -9387,16 +9383,17 @@ msgstr ""
 
 #: src/multiplayer_lobby.cpp:758
 msgid "Only show games that have at least one vacant slot"
-msgstr ""
+msgstr "Zobrazí pouze hry, které mají alespoň jednu volnou pozici"
 
 #: src/multiplayer_lobby.cpp:762
 msgid ""
 "Only show games that are played or observed by at least one of your friends"
 msgstr ""
+"Zobrazí pouze hry, v nichž hraje či jimž přihlíží alespoň jeden tvůj přítel"
 
 #: src/multiplayer_lobby.cpp:766
 msgid "Only show games whose title or description contain the entered text"
-msgstr ""
+msgstr "Zobrazí pouze hry, jejichž název nebo popis obsahuje zvolený text"
 
 #: src/multiplayer_lobby.cpp:900
 msgid "Joining this game requires a password."
@@ -9488,11 +9485,11 @@ msgstr "Připravuji zobrazení"
 
 #: src/play_controller.cpp:183
 msgid "time left for current turn"
-msgstr ""
+msgstr "zbývající čas do konce tohoto tahu"
 
 #: src/play_controller.cpp:185 src/replay_controller.cpp:134
 msgid "current local time"
-msgstr ""
+msgstr "skutečný čas (hodiny)"
 
 #: src/play_controller.cpp:223
 msgid "Starting game"
@@ -9539,9 +9536,10 @@ msgstr "Neznámý scénář: „$scenario|“"
 msgid "$name has taken control"
 msgstr "$name převzal(a) kontrolu"
 
+# když se změní vlastník strany nebo tak něco
 #: src/playmp_controller.cpp:95
 msgid "Turn changed"
-msgstr ""
+msgstr "Změna tahu"
 
 # chybové hlášení nebo jenom upozornění?
 #: src/playmp_controller.cpp:227
