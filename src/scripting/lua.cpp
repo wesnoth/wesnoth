@@ -1295,13 +1295,15 @@ static int intf_set_village_owner(lua_State *L)
  * Returns the map size.
  * - Ret 1: width.
  * - Ret 2: height.
+ * - Ret 3: border size.
  */
 static int intf_get_map_size(lua_State *L)
 {
 	const gamemap &map = *resources::game_map;
 	lua_pushinteger(L, map.w());
 	lua_pushinteger(L, map.h());
-	return 2;
+	lua_pushinteger(L, map.border_size());
+	return 3;
 }
 
 /**
