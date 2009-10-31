@@ -332,11 +332,13 @@ class CrossRef:
         self.noxref = False
         self.properties = {}
         self.unit_ids = {}
+        all_in = []
         ignoreflag = False
         conditionalsflag = False
         if warnlevel >=2:
             print "*** Beginning definition-gathering pass..."
         for (namespace, filename) in self.filelist.generator():
+            all_in.append((namespace, filename))
             if warnlevel > 1:
                 print filename + ":"
             if isresource(filename):
@@ -482,7 +484,7 @@ class CrossRef:
         formals = []
         if warnlevel >=2:
             print "*** Beginning reference-gathering pass..."
-        for (ns, fn) in self.filelist.generator():
+        for (ns, fn) in all_in:
             if iswml(fn):
                 rfp = open(fn)
                 attack_name = None

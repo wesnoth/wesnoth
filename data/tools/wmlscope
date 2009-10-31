@@ -427,7 +427,10 @@ Usage: macroscope [options] dirpath
             print "# Wmlscope reporting on %s" % time.ctime()
             print "# Invocation: %s" % " ".join(sys.argv)
             print "# Working directory: %s" % os.getcwd()
+            starttime = time.time()
         xref = CrossRefLister(dirpath, "|".join(exclude), warnlevel)
+        if not extracthelp:
+            print "#Cross-reference time: %d seconds" % (time.time()-starttime)
         if extracthelp:
             xref.extracthelp(dirpath[0], sys.stdout)
         elif unchecked:
