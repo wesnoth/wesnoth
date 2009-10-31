@@ -255,11 +255,6 @@ AC_ARG_WITH([fribidi],
 	      [fribidi=$withval],
 	      [fribidi=yes])
 
-AC_ARG_ENABLE([dummy-locales],
-              AS_HELP_STRING([--enable-dummy-locales], [enable installation of Wesnoth own private locales]),
-              [dummylocales=$enableval],
-              [dummylocales=no])
-
 AC_ARG_ENABLE([pool-alloc],
               AS_HELP_STRING([--enable-pool-alloc], [enable the pool allocator]),
 	      [poolalloc=$enableval],
@@ -329,17 +324,12 @@ AM_CONDITIONAL([TOOLS], [test x$tools = xyes])
 AM_CONDITIONAL([GCC], [test x$GXX = xyes])
 AM_CONDITIONAL([INCLUDEDINTL], [test x$nls_cv_use_gnu_gettext = xyes])
 AM_CONDITIONAL([INSTALLDATA], [test [ x$game = xyes || test x$editor = xyes ]])
-AM_CONDITIONAL([DUMMYLOCALES], [test x$dummylocales = xyes])
 AM_CONDITIONAL([POOLALLOC], [test x$poolalloc = xyes])
 
 if test x$editor = xno
 then
 	CFLAGS="$CFLAGS -DDISABLE_EDITOR"
 	CXXFLAGS="$CXXFLAGS -DDISABLE_EDITOR"
-fi
-
-if test x$dummylocales = xyes; then
-  AC_DEFINE([USE_DUMMYLOCALES],,[Define if the game should not use system locales])
 fi
 
 if test x$poolalloc = xno
