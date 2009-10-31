@@ -62,7 +62,6 @@ opts.AddVariables(
     BoolVariable('lua', 'Enable Lua support', True),
     BoolVariable('notifications', 'Enable support for desktop notifications', True),
     BoolVariable('nls','enable compile/install of gettext message catalogs',True),
-    BoolVariable('dummy_locales','enable support for dummy locales',False),
     PathVariable('prefix', 'autotools-style installation prefix', "/usr/local", PathVariable.PathAccept),
     PathVariable('prefsdir', 'user preferences directory', ".wesnoth$version_suffix", PathVariable.PathAccept),
     PathVariable('destdir', 'prefix to add to all installation paths.', "/", PathVariable.PathAccept),
@@ -354,9 +353,6 @@ if not have_msgfmt:
 if not env['nls']:
      print "NLS catalogue installation is disabled."
 
-env["LOCALEDEF"] = WhereIs("localedef")
-env["dummy_locales"] = env["dummy_locales"] and env["nls"] and env["LOCALEDEF"]
-
 #
 # Implement configuration switches
 #
@@ -392,9 +388,6 @@ for env in [test_env, client_env, env]:
 
     if not env['lua']:
         env.Append(CPPDEFINES = "DISABLE_LUA")
-
-    if env["dummy_locales"]:
-        env.Append(CPPDEFINES = "USE_DUMMYLOCALES")
 
     if env["PLATFORM"] == "win32":
         env["pool_alloc"] = False
@@ -470,8 +463,6 @@ env.Default(map(Alias, env["default_targets"]))
 
 if have_client_prereqs and env["nls"]:
     env.Requires("wesnoth", Dir("translations"))
-    if env["dummy_locales"]:
-        env.Requires(wesnoth, Dir("locales"))
 
 #
 # Utility productions (Unix-like systems only)
@@ -481,23 +472,6 @@ if have_client_prereqs and env["nls"]:
 # Exuberant Ctags doesn't understand the -l c++ flag so if the etags fails try the ctags version
 env.Command("TAGS", sources, 'etags -l c++ $SOURCES.srcpath || (ctags --tag-relative=yes -f src/tags $SOURCES.srcpath)')
 env.Clean(all, 'TAGS')
-
-#
-# Dummy locales
-#
-
-if env["dummy_locales"]:
-    env.Command(Dir("locales/C"), [], "-mkdir -p locales;echo | $LOCALEDEF -c \"$TARGET\" 2> /dev/null")
-    language_cfg_re = re.compile(r"data/languages/(.*)\.cfg")
-    language_cfgs = glob("data/languages/*.cfg")
-    languages = Flatten(map(language_cfg_re.findall, language_cfgs))
-    languages = map(lambda x: x + "@wesnoth", languages)
-    for language in languages:
-        env.Command(
-            Dir(os.path.join("locales", language)),
-            "locales/C",
-            "ln -sf $SOURCE.filebase $TARGET"
-            )
 
 #
 # Unix installation productions
@@ -515,8 +489,6 @@ if os.path.isabs(env["localedirname"]):
 else:
     env["localedir"] = "$datadir/$localedirname"
         
-if env["dummy_locales"]:
-    installable_subs.append("locales")
 pythontools = Split("wmlscope wmllint wmlindent wesnoth_addon_manager")
 pythonmodules = Split("wmltools.py wmlparser.py wmldata.py wmliterator.py campaignserver_client.py libsvn.py __init__.py")
 
