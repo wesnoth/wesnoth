@@ -10,14 +10,12 @@
  * before and after each release.
  */
 
-// without this ifdef DUMMYLOCALES break, so leave it in even though is seems
-// to not have any real purpose...
 #ifdef HAVE_CONFIG_H
-# include "config.h"
-#else
-# ifndef LOCALEDIR
+#  include "config.h"
+#endif
+
+#ifndef LOCALEDIR
 #  define LOCALEDIR "translations"
-# endif
 #endif
 
 //always use the version string in here, otherwise autotools can override in

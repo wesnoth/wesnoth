@@ -59,8 +59,6 @@ void tlanguage_selection::pre_show(CVideo& /*video*/, twindow& window)
 		if(lang == current_language) {
 			list->select_row(list->get_item_count() - 1);
 		}
-
-		list->set_row_active(list->get_item_count() - 1, lang.available());
 	}
 }
 

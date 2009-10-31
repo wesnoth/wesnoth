@@ -51,8 +51,6 @@ namespace game_config
 	std::string wesnoth_program_dir;
 	bool debug = false, editor = false, ignore_replay_errors = false, mp_debug = false, exit_at_end = false, no_delay = false, small_gui = false, disable_autosave = false;
 
-	bool use_dummylocales = false;
-
 	int cache_compression_level = 6;
 
 	std::string game_icon = "wesnoth-icon-small.png", game_title, game_logo, title_music, lobby_music;

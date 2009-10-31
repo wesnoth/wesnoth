@@ -440,12 +440,6 @@ game_controller::game_controller(int argc, char** argv) :
 				}
 			}
 #endif
-		} else if(val == "--dummy-locales") {
-#ifdef USE_DUMMYLOCALES
-			game_config::use_dummylocales = true;
-#else
-			std::cerr << "Option --dummy-locales ignored: support was not compiled in.\n";
-#endif
 		} else if(val == "--no-srng") {
 			rand_rng::disable_server_rng();
 		} else if(val[0] == '-') {
@@ -1747,8 +1741,6 @@ static int process_command_args(int argc, char** argv) {
 			<< "                               The data can also be generated when the F12 is\n"
 			<< "                               pressed in a dialog.\n"
 #endif
-			<< "  --dummy-locales              enables dummy locales for switching to non-system\n"
-			<< "                               locales.\n"
 #ifndef DISABLE_EDITOR
 			<< "  -e, --editor [<file>]        starts the in-game map editor directly. If <file>\n"
 			<< "                               is specified, equivalent to -e --load <file>.\n"

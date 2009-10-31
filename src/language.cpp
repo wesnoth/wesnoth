@@ -43,39 +43,6 @@ extern "C" int _putenv(const char*);
 #define WRN_G LOG_STREAM(warn, lg::general)
 #define ERR_G LOG_STREAM(err, lg::general)
 
-
-/** Tests one locale to be available. */
-static bool has_locale(const char* s) {
-	try {
-		// The way to find out whether a locale is available is to set it and
-		// hope not runtime error gets thrown.
-		std::locale dummy(s);
-		return true;
-	} catch (std::runtime_error&) {
-		return false;
-	}
-}
-
-/** Test the locale for a language and it's utf-8 variations. */
-static bool has_language(const std::string& language)
-{
-	if(has_locale(language.c_str())) {
-		return true;
-	}
-
-	std::string utf = language + ".utf-8";
-	if(has_locale(utf.c_str())) {
-		return true;
-	}
-
-	utf = language + ".UTF-8";
-	if(has_locale(utf.c_str())) {
-		return true;
-	}
-
-	return false;
-}
-
 namespace {
 	language_def current_language;
 	string_map strings_;
@@ -91,34 +58,6 @@ bool current_language_rtl()
 bool language_def::operator== (const language_def& a) const
 {
 	return ((language == a.language) /* && (localename == a.localename) */ );
-}
-
-bool language_def::available() const
-{
-#if defined(_WIN32) || defined(__APPLE__)
-	// Under windows and OSX all locales are available and testing for it seems
-	// to fail so just return true.
-	return true;
-#endif
-
-	//if (game_config::use_dummylocales)
-	if (true)
-	{
-		// Dummy has every language available.
-		return true;
-	} else {
-		if(has_language(localename)) {
-			return true;
-		} else {
-			foreach(const std::string& lang, alternates) {
-				if(has_language(lang)) {
-					return true;
-				}
-			}
-		}
-
-		return false;
-	}
 }
 
 symbol_table string_table;
@@ -209,37 +148,6 @@ static void wesnoth_setlocale(int category, std::string const &slocale,
 #endif
 
 	std::string extra;
-
-#ifdef USE_DUMMYLOCALES
-	if (game_config::use_dummylocales)
-	{
-		static enum { UNINIT, NONE, PRESENT } status = UNINIT;
-		static std::string locpath;
-		if (status == UNINIT) {
-			if (char const *p = getenv("LOCPATH")) {
-				locpath = p;
-				status = PRESENT;
-			} else status = NONE;
-		}
-		if (locale.empty())
-			if (status == NONE)
-				unsetenv("LOCPATH");
-			else
-				setenv("LOCPATH", locpath.c_str(), 1);
-		else {
-			std::string path = game_config::path + "/locales";
-			setenv("LOCPATH", path.c_str(), 1);
-			DBG_G << "LOCPATH set to '" << path << "'\n";
-		}
-		std::string xlocale;
-		if (!locale.empty()) {
-			// dummy suffix to prevent locale aliasing from kicking in
-			extra = "@wesnoth";
-			xlocale = locale + "@wesnoth";
-			locale = xlocale.c_str();
-		}
-	}
-#endif
 
 	char *res = NULL;
 	std::vector<std::string>::const_iterator i;

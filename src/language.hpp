@@ -55,13 +55,6 @@ struct language_def
 	bool operator== (const language_def&) const;
 	bool operator< (const language_def& a) const
 		{ return sort_name < a.sort_name; }
-
-	/**
-	 * Is the locale available on the system?
-	 *
-	 * If the dummy locales are selected we always return true.
-	 */
-	bool available() const;
 };
 
 typedef std::vector<language_def> language_list;
