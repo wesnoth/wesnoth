@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-10-13 22:59+0200\n"
-"PO-Revision-Date: 2009-10-17 19:16+0100\n"
+"PO-Revision-Date: 2009-10-31 14:50+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -601,9 +601,8 @@ msgstr "Abbrechen"
 
 #. [label]
 #: data/gui/default/window/campaign_dialog.cfg:44
-#, fuzzy
 msgid "Play a campaign"
-msgstr "Kampagne"
+msgstr "Eine Kampagne spielen"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -822,7 +821,7 @@ msgstr "Bewegung fortsetzen"
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:166
 msgid "Execution trace"
-msgstr ""
+msgstr "Aufrufstapel"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
@@ -837,20 +836,18 @@ msgstr "Beenden"
 
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_delete.cfg:32
-#, fuzzy
 msgid "Delete Save"
-msgstr "Datei löschen"
+msgstr "Spielstand löschen"
 
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_delete.cfg:52
-#, fuzzy
 msgid "Do you really want to delete this game?"
-msgstr "Möchtet Ihr das Spiel wirklich beenden?"
+msgstr "Möchtet Ihr diesen Spielstand wirklich löschen?"
 
 #. [toggle_button]: id=dont_ask_again
 #: data/gui/default/window/game_delete.cfg:72
 msgid "Don't ask me again!"
-msgstr ""
+msgstr "Nicht nochmal fragen!"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -886,7 +883,7 @@ msgstr "Spielstand laden"
 #. [label]: id=lblChoose
 #: data/gui/default/window/game_load.cfg:179
 msgid "Choose the game to load"
-msgstr ""
+msgstr "Wählt den zu ladenden Spielstand"
 
 #. [label]: id=lblFilter
 #: data/gui/default/window/game_load.cfg:203
@@ -918,9 +915,8 @@ msgstr "Spielverlauf anzeigen"
 
 #. [toggle_button]: id=cancel_orders
 #: data/gui/default/window/game_load.cfg:388
-#, fuzzy
 msgid "Cancel orders"
-msgstr "Abbrechen"
+msgstr "Befehle verwerfen"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
@@ -961,12 +957,12 @@ msgstr "Spiel beenden"
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_save_overwrite.cfg:32
 msgid "Overwrite?"
-msgstr ""
+msgstr "Überschreiben?"
 
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_save_overwrite.cfg:52
 msgid "Save already exists. Do you want to overwrite it?"
-msgstr ""
+msgstr "Der Spielstand existiert bereits. Möchtet Ihr ihn überschreiben?"
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:38
@@ -1039,7 +1035,7 @@ msgstr "Spiele"
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:176
 msgid "Requires a password to join"
-msgstr ""
+msgstr "Passwort benötigt, um beizutreten"
 
 #. [toggle_button]: id=use_map_settings
 #. [row]
@@ -1062,7 +1058,7 @@ msgstr ""
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:181
 msgid "Gold per village"
-msgstr ""
+msgstr "Steuereinnahmen pro Dorf"
 
 #. [label]
 #. [row]
@@ -1074,45 +1070,42 @@ msgstr "Erfahrungsmodifikator:"
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:185
 msgid "Time limit"
-msgstr ""
+msgstr "Zeitbegrenzung"
 
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:304
-#, fuzzy
 msgid "Sort players:"
-msgstr "Spieler:"
+msgstr "Spieler sortieren:"
 
 #. [toggle_button]: id=player_list_sort_relation
 #: data/gui/default/window/lobby_main.cfg:312
 msgid "Friends first, ignored people last"
-msgstr ""
+msgstr "Zuerst Freunde, dann Ignorierte"
 
 #. [toggle_button]: id=player_list_sort_name
 #: data/gui/default/window/lobby_main.cfg:320
 msgid "Alphabetically"
-msgstr ""
+msgstr "Alphabetisch"
 
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:332
-#, fuzzy
 msgid "Selected game"
-msgstr "Datei löschen"
+msgstr "Ausgewähltes Spiel"
 
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:333
 msgid "Current room"
-msgstr ""
+msgstr "Derzeitiger Raum"
 
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:334
 msgid "Lobby"
-msgstr ""
+msgstr "Eingangshalle"
 
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:335
-#, fuzzy
 msgid "Other games"
-msgstr "Partie eröffnen"
+msgstr "Andere Partien"
 
 #. [label]: id=room
 #: data/gui/default/window/lobby_main.cfg:357
@@ -1127,21 +1120,18 @@ msgstr "Nachrichten"
 
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:451
-#, fuzzy
 msgid "Multiplayer Lobby"
-msgstr "Mehrspieler"
+msgstr "Mehrspielereingangshalle"
 
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:459
-#, fuzzy
 msgid "Filter:"
-msgstr "Datei: "
+msgstr "Filter:"
 
 #. [toggle_button]: id=filter_with_friends
 #: data/gui/default/window/lobby_main.cfg:470
-#, fuzzy
 msgid "Friends"
-msgstr "Freundesliste"
+msgstr "Freunde"
 
 #. [toggle_button]: id=filter_without_ignored
 #: data/gui/default/window/lobby_main.cfg:476
@@ -1156,13 +1146,12 @@ msgstr "Freie Plätze"
 #. [toggle_button]: id=filter_invert
 #: data/gui/default/window/lobby_main.cfg:488
 msgid "Invert filter"
-msgstr ""
+msgstr "Filter invertieren"
 
 #. [button]: id=send_message
 #: data/gui/default/window/lobby_main.cfg:527
-#, fuzzy
 msgid "Send"
-msgstr "Sand"
+msgstr "Senden"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_preferences
@@ -1175,9 +1164,8 @@ msgstr "Einstellungen"
 
 #. [button]: id=refresh
 #: data/gui/default/window/lobby_main.cfg:551
-#, fuzzy
 msgid "Refresh"
-msgstr "Anzeige aktualisieren"
+msgstr "Aktualisieren"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_help
@@ -1196,20 +1184,18 @@ msgstr "Partie eröffnen"
 
 #. [button]: id=join_global
 #: data/gui/default/window/lobby_main.cfg:571
-#, fuzzy
 msgid "Join"
-msgstr "Anmelden"
+msgstr "Beitreten"
 
 #. [button]: id=observe_global
 #: data/gui/default/window/lobby_main.cfg:577
 msgid "Observe"
-msgstr ""
+msgstr "Beobachten"
 
 #. [toggle_button]: id=skip_replay
 #: data/gui/default/window/lobby_main.cfg:583
-#, fuzzy
 msgid "Quick replay"
-msgstr "Spieler"
+msgstr "Schneller Verlauf"
 
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:30
@@ -1219,9 +1205,8 @@ msgstr "Spieler: "
 
 #. [button]: id=start_whisper
 #: data/gui/default/window/lobby_player_info.cfg:62
-#, fuzzy
 msgid "Send private message"
-msgstr "Sendet eine private Nachricht"
+msgstr "Private Nachricht senden"
 
 #. [button]: id=add_to_friends
 #: data/gui/default/window/lobby_player_info.cfg:91
@@ -1235,9 +1220,8 @@ msgstr "Zu Eurer Ignorierliste hinzufügen"
 
 #. [button]: id=remove_from_list
 #: data/gui/default/window/lobby_player_info.cfg:109
-#, fuzzy
 msgid "Remove from list"
-msgstr "Entfernt den Spieler von Eurer Liste"
+msgstr "Von Liste entfernen"
 
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:133
@@ -1247,7 +1231,7 @@ msgstr "Moderation"
 #. [button]: id=check_status
 #: data/gui/default/window/lobby_player_info.cfg:140
 msgid "Check status"
-msgstr ""
+msgstr "Status überprüfen"
 
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:147
@@ -1589,15 +1573,13 @@ msgstr "Weiblich"
 
 #. [toggle_button]: id=namegen_toggle
 #: data/gui/default/window/unit_create.cfg:97
-#, fuzzy
 msgid "Generate name"
-msgstr "Karte erzeugen"
+msgstr "Namen generieren"
 
 #. [label]: id=race
 #: data/gui/default/window/unit_create.cfg:126
-#, fuzzy
 msgid "Race"
-msgstr "Abbrechen"
+msgstr "Rasse"
 
 #: src/filechooser.cpp:74
 msgid "File: "
@@ -2148,7 +2130,7 @@ msgstr "Kein Stapel definiert."
 
 #: src/gui/dialogs/game_load.cpp:232
 msgid "#(Invalid)"
-msgstr ""
+msgstr "#(Ungültig)"
 
 #: src/gui/dialogs/game_load.cpp:252
 msgid "Campaign: $campaign_name"
@@ -2178,17 +2160,19 @@ msgstr "Version: "
 
 #: src/gui/dialogs/lobby_main.cpp:404
 msgid "Observers allowed"
-msgstr ""
+msgstr "Beobachter zugelassen"
 
 #: src/gui/dialogs/lobby_main.cpp:407
 msgid "Observers not allowed"
-msgstr ""
+msgstr "Beobachter nicht zugelassen"
 
 #: src/gui/dialogs/lobby_main.cpp:689
 msgid ""
 "Whisper session with $name started. If you don't want to receive messages "
 "from this user, type /ignore $name\n"
 msgstr ""
+"Private Nachrichtensitzung mit $name gestartet. Wenn Ihr von diesem Benutzer "
+"keine Nachrichten mehr erhalten wollt, führt den Befehl »/ignore $name« aus\n"
 
 #: src/gui/dialogs/lobby_main.cpp:695
 msgid "Room $name joined"
@@ -2345,9 +2329,8 @@ msgid "End Turn"
 msgstr "Zug beenden"
 
 #: src/hotkeys.cpp:71
-#, fuzzy
 msgid "Toggle Ellipses"
-msgstr "Gitternetz einblenden"
+msgstr "Teammarkierungen anzeigen"
 
 #: src/hotkeys.cpp:72
 msgid "Toggle Grid"
