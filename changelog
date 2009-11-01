@@ -22,6 +22,8 @@ Version 1.7.7+svn:
    * Add fallback scrollbars if a window doesn't fit (bug #13180)
    * Switch to the new MP lobby
    * Fix a NULL pointer deferring in the hover code
+   * Protect against widgets being smaller as expected causing images with
+     negative sizes (bug #14525)
  * WML engine:
    * Added two array element lookup macros, LOOKUP_INDEX and LOOKUP_VALUE.
  * Miscellaneous and bugfixes:

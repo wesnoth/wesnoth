@@ -705,7 +705,22 @@ void timage::draw(surface& canvas,
 	local_variables.add("image_original_height", variant(image_->h));
 
 	unsigned w = w_(local_variables);
+	if(w && static_cast<int>(w) < 0) {
+		ERR_GUI_D << "Image: file '"
+				<< image_name_(variables)
+				<< "' won't be drawn due to a negative width of "
+				<< static_cast<int>(w) << ".\n";
+		return;
+	}
+
 	unsigned h = h_(local_variables);
+	if(h && static_cast<int>(h) < 0) {
+		ERR_GUI_D << "Image: file '"
+				<< image_name_(variables)
+				<< "' won't be drawn due to a negative height of "
+				<< static_cast<int>(h) << ".\n";
+		return;
+	}
 
 	local_variables.add("image_width", variant(w ? w : image_->w));
 	local_variables.add("image_height", variant(h ? h : image_->h));
