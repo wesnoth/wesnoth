@@ -1799,7 +1799,7 @@ void LuaKernel::run_event(vconfig const &cfg, game_events::queued_event const &e
 	if (const config &weapon = ev.data.child("first")) {
 		args.add_child("weapon", weapon);
 	}
-	if (const config &weapon = ev.data.child("first")) {
+	if (const config &weapon = ev.data.child("second")) {
 		args.add_child("second_weapon", weapon);
 	}
 	if (ev.loc1.valid()) {
