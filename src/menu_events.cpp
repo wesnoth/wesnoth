@@ -954,7 +954,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 		gui2::show_transient_message(gui_->video(), "", err);
 		return;
 	}
-	unit &un = recall_list_team[res];
+	unit un = recall_list_team[res];
 	recorder.add_recall(un.id(), loc);
 	un.set_game_context(&units_);
 	place_recruit(un, loc, true, true);
