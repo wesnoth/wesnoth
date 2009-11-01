@@ -114,6 +114,17 @@ static void chat_message(std::string const &caption, std::string const &msg)
 }
 
 /**
+ * Pushes a config as a volatile vconfig on the top of the stack.
+ */
+static void luaW_pushvconfig(lua_State *L, config const &cfg)
+{
+	new(lua_newuserdata(L, sizeof(vconfig))) vconfig(cfg, true);
+	lua_pushlightuserdata(L, (void *)&vconfigKey);
+	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_setmetatable(L, -2);
+}
+
+/**
  * Pushes a t_string on the top of the stack.
  */
 static void luaW_pushtstring(lua_State *L, t_string const &v)
@@ -966,10 +977,7 @@ static int cfun_wml_action_proxy(lua_State *L)
 			config cfg;
 			if (!luaW_toconfig(L, 1, cfg))
 				goto error_call_destructors;
-			new(lua_newuserdata(L, sizeof(vconfig))) vconfig(cfg, true);
-			lua_pushlightuserdata(L, (void *)&vconfigKey);
-			lua_rawget(L, LUA_REGISTRYINDEX);
-			lua_setmetatable(L, -2);
+			luaW_pushvconfig(L, cfg);
 			break;
 		}
 		case LUA_TUSERDATA:
