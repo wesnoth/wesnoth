@@ -1794,7 +1794,7 @@ void LuaKernel::run_event(vconfig const &cfg, game_events::queued_event const &e
 	config args;
 	vconfig vargs = cfg.child("args");
 	if (!vargs.null()) {
-		args = vargs.get_parsed_config();
+		args = vargs.get_config();
 	}
 	if (const config &weapon = ev.data.child("first")) {
 		args.add_child("weapon", weapon);
@@ -1802,19 +1802,13 @@ void LuaKernel::run_event(vconfig const &cfg, game_events::queued_event const &e
 	if (const config &weapon = ev.data.child("first")) {
 		args.add_child("second_weapon", weapon);
 	}
-	lua_newtable(L);
-	table_of_wml_config(L, args);
 	if (ev.loc1.valid()) {
-		lua_pushinteger(L, ev.loc1.x + 1);
-		lua_setfield(L, -2, "x1");
-		lua_pushinteger(L, ev.loc1.y + 1);
-		lua_setfield(L, -2, "y1");
+		args["x1"] = str_cast(ev.loc1.x + 1);
+		args["y1"] = str_cast(ev.loc1.y + 1);
 	}
 	if (ev.loc2.valid()) {
-		lua_pushinteger(L, ev.loc2.x + 1);
-		lua_setfield(L, -2, "x2");
-		lua_pushinteger(L, ev.loc2.y + 1);
-		lua_setfield(L, -2, "y2");
+		args["x2"] = str_cast(ev.loc2.x + 1);
+		args["y2"] = str_cast(ev.loc2.y + 1);
 	}
 
 	// Get the code from the uninterpolated config object, so that $ symbols
@@ -1822,6 +1816,7 @@ void LuaKernel::run_event(vconfig const &cfg, game_events::queued_event const &e
 	const std::string &prog = cfg.get_config()["code"];
 
 	queued_event_context dummy(&ev);
+	luaW_pushvconfig(L, args);
 	execute(prog.c_str(), 1, 0);
 }
 
