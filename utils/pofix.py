@@ -255,6 +255,15 @@ stringfixes = {
 
 "wesnoth-units" : (
 (" and and ", " and "),
+("whuich", "which"),
+("mAtch", "match"),
+("wonerously", "wonderously"),
+("agrssiveness", "aggressiveness"),
+("wnough", "enough"),
+("humself", "himself"),
+("simetimes", "sometimes"),
+("sewcrecy", "secrecy"),
+("sourround", "surround it"),
 ("instinctive loyalty fronm ", "instinctive loyalty from "),
 ("wekll-shaped to flie true", "well-shaped to fly true"),
 ),
@@ -269,8 +278,7 @@ stringfixes = {
 # Speak, if all argument files are newer than this timestamp
 # Try to use UTC here
 # date --utc "+%s  # %c"
-timecheck = 1256127774  # Wed 21 Oct 2009 12:22:54 PM UTC
-
+timecheck = 1257179853  # Mon 02 Nov 2009 04:37:33 PM UTC
 
 import os, sys, time, stat
 
