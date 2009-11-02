@@ -92,25 +92,25 @@ void tlobby_player_info::update_relation(twindow& w)
 	remove_from_list_->set_active(false);
 	switch (info_.relation) {
 		case user_info::FRIEND:
-			relation_->set_label("On friends list");
+			relation_->set_label(_("On friends list"));
 			add_to_ignores_->set_active(true);
 			remove_from_list_->set_active(true);
 			break;
 		case user_info::IGNORED:
-			relation_->set_label("On ignores list");
+			relation_->set_label(_("On ignores list"));
 			add_to_friends_->set_active(true);
 			remove_from_list_->set_active(true);
 			break;
 		case user_info::NEUTRAL:
-			relation_->set_label("Neither a friend nor ignored");
+			relation_->set_label(_("Neither a friend nor ignored"));
 			add_to_friends_->set_active(true);
 			add_to_ignores_->set_active(true);
 			break;
 		case user_info::ME:
-			relation_->set_label("You");
+			relation_->set_label(_("You"));
 			break;
 		default:
-			relation_->set_label("Error");
+			relation_->set_label(_("Error"));
 	}
 	w.invalidate_layout();
 }
