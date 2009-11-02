@@ -323,154 +323,157 @@ class CrossRef:
             # coloring logic to simulate include path interpretation.
             # If that logic ever gets built, it will go here.
             return True
+    def scan_for_definitions(self, namespace, filename):
+        ignoreflag = False
+        conditionalsflag = False
+        dfp = open(filename)
+        state = "outside"
+        latch_unit = in_base_unit = in_theme = False
+        for (n, line) in enumerate(dfp):
+            if self.warnlevel > 1:
+                print `line`[1:-1]
+            if line.strip().startswith("#textdomain"):
+                continue
+            m = re.search("# *wmlscope: warnlevel ([0-9]*)", line)
+            if m:
+                self.warnlevel = int(m.group(1))
+                print '"%s", line %d: warnlevel set to %d (definition-gathering pass)' \
+                     % (filename, n+1, self.warnlevel)
+                continue
+            m = re.search("# *wmlscope: set *([^=]*)=(.*)", line)
+            if m:
+                prop = m.group(1).strip()
+                value = m.group(2).strip()
+                if namespace not in self.properties:
+                    self.properties[namespace] = {}
+                self.properties[namespace][prop] = value
+            m = re.search("# *wmlscope: prune (.*)", line)
+            if m:
+                name = m.group(1)
+                if self.warnlevel >= 2:
+                    print '"%s", line %d: pruning definitions of %s' \
+                          % (filename, n+1, name )
+                if name not in self.xref:
+                    print >>sys.stderr, "wmlscope: can't prune undefined macro %s" % name
+                else:
+                    self.xref[name] = self.xref[name][:1]
+                continue
+            if "# wmlscope: start conditionals" in line:
+                if self.warnlevel > 1:
+                    print '"%s", line %d: starting conditionals' \
+                          % (filename, n+1)
+                conditionalsflag = True
+            elif "# wmlscope: stop conditionals" in line:
+                if self.warnlevel > 1:
+                    print '"%s", line %d: stopping conditionals' \
+                          % (filename, n+1)
+                conditionalsflag = False
+            if "# wmlscope: start ignoring" in line:
+                if self.warnlevel > 1:
+                    print '"%s", line %d: starting ignoring (definition pass)' \
+                          % (filename, n+1)
+                ignoreflag = True
+            elif "# wmlscope: stop ignoring" in line:
+                if self.warnlevel > 1:
+                    print '"%s", line %d: stopping ignoring (definition pass)' \
+                          % (filename, n+1)
+                ignoreflag = False
+            elif ignoreflag:
+                continue
+            if line.strip().startswith("#define"):
+                tokens = line.split()
+                if len(tokens) < 2:
+                    print >>sys.stderr, \
+                          '"%s", line %d: malformed #define' \
+                          % (filename, n+1)
+                else:
+                    name = tokens[1]
+                    here = Reference(namespace, filename, n+1, line, args=tokens[2:])
+                    here.hash = hashlib.md5()
+                    here.docstring = line.lstrip()[8:]	# Strip off #define_
+                    state = "macro_header"
+                continue
+            elif state != 'outside' and line.strip().endswith("#enddef"):
+                here.hash.update(line)
+                here.hash = here.hash.digest()
+                if name in self.xref:
+                    for defn in self.xref[name]:
+                        if not self.visible_from(defn, filename, n+1):
+                            continue
+                        elif conditionalsflag:
+                            continue
+                        elif defn.hash != here.hash:
+                            print >>sys.stderr, \
+                                    "%s: overrides different %s definition at %s" \
+                                    % (here, name, defn)
+                        elif self.warnlevel > 0:
+                            print >>sys.stderr, \
+                                    "%s: duplicates %s definition at %s" \
+                                    % (here, name, defn)
+                if name not in self.xref:
+                    self.xref[name] = []
+                self.xref[name].append(here)
+                state = "outside"
+            elif state == "macro_header" and line.strip() and line.strip()[0] != "#":
+                state = "macro_body"
+            if state == "macro_header":
+                # Ignore macro header commends that are pragmas
+                if "wmlscope" not in line and "wmllint:" not in line:
+                    here.docstring += line.lstrip()[1:]
+            if state in ("macro_header", "macro_body"):
+                here.hash.update(line)
+            elif line.strip().startswith("#undef"):
+                tokens = line.split()
+                name = tokens[1]
+                if name in self.xref and self.xref[name]:
+                    self.xref[name][-1].undef = n+1
+                else:
+                    print "%s: unbalanced #undef on %s" \
+                          % (Reference(namespace, filename, n+1), name)
+            if state == 'outside':
+                if '[unit_type]' in line:
+                    latch_unit = True
+                elif '[/unit_type]' in line:
+                    latch_unit = False
+                elif '[base_unit]' in line:
+                    in_base_unit = True
+                elif '[/base_unit]' in line:
+                    in_base_unit = False
+                elif '[theme]' in line:
+                    in_theme = True
+                elif '[/theme]' in line:
+                    in_theme = False
+                elif latch_unit and not in_base_unit and not in_theme and "id" in line:
+                    m = CrossRef.tag_parse.search(line)
+                    if m and m.group(1) == "id":
+                        uid = m.group(2)
+                        if uid not in self.unit_ids:
+                            self.unit_ids[uid] = []
+                        self.unit_ids[uid].append(Reference(namespace, filename, n+1))
+                        latch_unit= False
+        dfp.close()
     def __init__(self, dirpath=[], exclude="", warnlevel=0):
         "Build cross-reference object from the specified filelist."
         self.filelist = Forest(dirpath, exclude)
         self.dirpath = filter(lambda x: not re.search(exclude, x), dirpath)
+        self.warnlevel = warnlevel
         self.xref = {}
         self.fileref = {}
         self.noxref = False
         self.properties = {}
         self.unit_ids = {}
         all_in = []
-        ignoreflag = False
-        conditionalsflag = False
-        if warnlevel >=2:
+        if self.warnlevel >=2:
             print "*** Beginning definition-gathering pass..."
         for (namespace, filename) in self.filelist.generator():
             all_in.append((namespace, filename))
-            if warnlevel > 1:
+            if self.warnlevel > 1:
                 print filename + ":"
             if isresource(filename):
                 self.fileref[filename] = Reference(namespace, filename)
             elif iswml(filename):
                 # It's a WML file, scan for macro definitions
-                dfp = open(filename)
-                state = "outside"
-                latch_unit = in_base_unit = in_theme = False
-                for (n, line) in enumerate(dfp):
-                    if warnlevel > 1:
-                        print `line`[1:-1]
-                    if line.strip().startswith("#textdomain"):
-                        continue
-                    m = re.search("# *wmlscope: warnlevel ([0-9]*)", line)
-                    if m:
-                        warnlevel = int(m.group(1))
-                        print '"%s", line %d: warnlevel set to %d (definition-gathering pass)' \
-                             % (filename, n+1, warnlevel)
-                        continue
-                    m = re.search("# *wmlscope: set *([^=]*)=(.*)", line)
-                    if m:
-                        prop = m.group(1).strip()
-                        value = m.group(2).strip()
-                        if namespace not in self.properties:
-                            self.properties[namespace] = {}
-                        self.properties[namespace][prop] = value
-                    m = re.search("# *wmlscope: prune (.*)", line)
-                    if m:
-                        name = m.group(1)
-                        if warnlevel >= 2:
-                            print '"%s", line %d: pruning definitions of %s' \
-                                  % (filename, n+1, name )
-                        if name not in self.xref:
-                            print >>sys.stderr, "wmlscope: can't prune undefined macro %s" % name
-                        else:
-                            self.xref[name] = self.xref[name][:1]
-                        continue
-                    if "# wmlscope: start conditionals" in line:
-                        if warnlevel > 1:
-                            print '"%s", line %d: starting conditionals' \
-                                  % (filename, n+1)
-                        conditionalsflag = True
-                    elif "# wmlscope: stop conditionals" in line:
-                        if warnlevel > 1:
-                            print '"%s", line %d: stopping conditionals' \
-                                  % (filename, n+1)
-                        conditionalsflag = False
-                    if "# wmlscope: start ignoring" in line:
-                        if warnlevel > 1:
-                            print '"%s", line %d: starting ignoring (definition pass)' \
-                                  % (filename, n+1)
-                        ignoreflag = True
-                    elif "# wmlscope: stop ignoring" in line:
-                        if warnlevel > 1:
-                            print '"%s", line %d: stopping ignoring (definition pass)' \
-                                  % (filename, n+1)
-                        ignoreflag = False
-                    elif ignoreflag:
-                        continue
-                    if line.strip().startswith("#define"):
-                        tokens = line.split()
-                        if len(tokens) < 2:
-                            print >>sys.stderr, \
-                                  '"%s", line %d: malformed #define' \
-                                  % (filename, n+1)
-                        else:
-                            name = tokens[1]
-                            here = Reference(namespace, filename, n+1, line, args=tokens[2:])
-                            here.hash = hashlib.md5()
-                            here.docstring = line.lstrip()[8:]	# Strip off #define_
-                            state = "macro_header"
-                        continue
-                    elif state != 'outside' and line.strip().endswith("#enddef"):
-                        here.hash.update(line)
-                        here.hash = here.hash.digest()
-                        if name in self.xref:
-                            for defn in self.xref[name]:
-                                if not self.visible_from(defn, filename, n+1):
-                                    continue
-                                elif conditionalsflag:
-                                    continue
-                                elif defn.hash != here.hash:
-                                    print >>sys.stderr, \
-                                            "%s: overrides different %s definition at %s" \
-                                            % (here, name, defn)
-                                elif warnlevel > 0:
-                                    print >>sys.stderr, \
-                                            "%s: duplicates %s definition at %s" \
-                                            % (here, name, defn)
-                        if name not in self.xref:
-                            self.xref[name] = []
-                        self.xref[name].append(here)
-                        state = "outside"
-                    elif state == "macro_header" and line.strip() and line.strip()[0] != "#":
-                        state = "macro_body"
-                    if state == "macro_header":
-                        # Ignore macro header commends that are pragmas
-                        if "wmlscope" not in line and "wmllint:" not in line:
-                            here.docstring += line.lstrip()[1:]
-                    if state in ("macro_header", "macro_body"):
-                        here.hash.update(line)
-                    elif line.strip().startswith("#undef"):
-                        tokens = line.split()
-                        name = tokens[1]
-                        if name in self.xref and self.xref[name]:
-                            self.xref[name][-1].undef = n+1
-                        else:
-                            print "%s: unbalanced #undef on %s" \
-                                  % (Reference(namespace, filename, n+1), name)
-                    if state == 'outside':
-                        if '[unit_type]' in line:
-                            latch_unit = True
-                        elif '[/unit_type]' in line:
-                            latch_unit = False
-                        elif '[base_unit]' in line:
-                            in_base_unit = True
-                        elif '[/base_unit]' in line:
-                            in_base_unit = False
-                        elif '[theme]' in line:
-                            in_theme = True
-                        elif '[/theme]' in line:
-                            in_theme = False
-                        elif latch_unit and not in_base_unit and not in_theme and "id" in line:
-                            m = CrossRef.tag_parse.search(line)
-                            if m and m.group(1) == "id":
-                                uid = m.group(2)
-                                if uid not in self.unit_ids:
-                                    self.unit_ids[uid] = []
-                                self.unit_ids[uid].append(Reference(namespace, filename, n+1))
-                                latch_unit= False
-                dfp.close()
+                self.scan_for_definitions(namespace, filename)
             elif filename.endswith(".def"):
                 # It's a list of names to be considered defined
                 self.noxref = True
@@ -482,7 +485,8 @@ class CrossRef:
         self.unresolved = []
         self.missing = []
         formals = []
-        if warnlevel >=2:
+        state = "outside"
+        if self.warnlevel >=2:
             print "*** Beginning reference-gathering pass..."
         for (ns, fn) in all_in:
             if iswml(fn):
@@ -498,20 +502,20 @@ class CrossRef:
                     comment = ""
                     if '#' in line:
                         if "# wmlscope: start ignoring" in line:
-                            if warnlevel > 1:
+                            if self.warnlevel > 1:
                                 print '"%s", line %d: starting ignoring (reference pass)' \
                                       % (fn, n+1)
                             ignoreflag = True
                         elif "# wmlscope: stop ignoring" in line:
-                            if warnlevel > 1:
+                            if self.warnlevel > 1:
                                 print '"%s", line %d: stopping ignoring (reference pass)' \
                                       % (fn, n+1)
                             ignoreflag = False
-                        m = re.search("# *wmlscope: warnlevel ([0-9]*)", line)
+                        m = re.search("# *wmlscope: self.warnlevel ([0-9]*)", line)
                         if m:
-                            warnlevel = int(m.group(1))
-                            print '"%s", line %d: warnlevel set to %d (reference-gathering pass)' \
-                                 % (fn, n+1, warnlevel)
+                            self.warnlevel = int(m.group(1))
+                            print '"%s", line %d: self.warnlevel set to %d (reference-gathering pass)' \
+                                 % (fn, n+1, self.warnlevel)
                             continue
                         fields = line.split('#')
                         line = fields[0]
@@ -523,7 +527,7 @@ class CrossRef:
                     for match in re.finditer(CrossRef.macro_reference, line):
                         name = match.group(1)
                         candidates = 0
-                        if warnlevel >=2:
+                        if self.warnlevel >=2:
                             print '"%s", line %d: seeking definition of %s' \
                                   % (fn, n+1, name)
                         if name in formals:
