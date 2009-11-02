@@ -745,6 +745,17 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
     # Most tags are not allowed with [part]
     if "[part]" in ancestors and parent not in ("[part]", "[image]", "[insert_tag]", "[if]", "[then]", "[else]", "[switch]", "[case]", "[variable]", "[deprecated_message]"):
         print errlead + '%s not permitted within [part] tag' % parent
+    # Most tags are not permitted inside [if]
+    if len(ancestors) >= 2 and ancestors[-1] == "[if]":
+        if parent not in ("[and]", "[attack_sound_frame]", "[else]", 
+                          "[flame_burst_1_frame]", "[flame_burst_2_frame]",
+                          "[flame_burst_3_frame]", "[flame_burst_4_frame]",
+                          "[flame_burst_5_frame]", "[flame_burst_6_frame]",
+                          "[frame]", "[have_location]", "[have_unit]",
+                          "[missile_frame]", "[not]", "[or]",
+                          "[poisoned_sound_frame]", "[sling_stone_frame]",
+                          "[slowed_sound_frame]", "[then]", "[variable]"):
+            print errlead + 'illegal child of [if]'
     # Check for fluky credit parts
     if parent == "[entry]":
         if key == "email" and " " in value:
