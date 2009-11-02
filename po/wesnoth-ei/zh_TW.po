@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-10-13 22:59+0200\n"
+"POT-Creation-Date: 2009-11-02 12:29+0100\n"
 "PO-Revision-Date: 2009-05-15 20:37+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -262,7 +262,7 @@ msgstr "韋諾人"
 #. [unit]: type=White Mage, id=Dacyn
 #. [message]
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:71
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:437
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:443
 msgid "Dacyn"
 msgstr "戴森"
 
@@ -344,18 +344,18 @@ msgid "Mal-Uldhar"
 msgstr "麥爾-阿靼"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:178
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:184
 msgid "Resist until Dacyn's return tomorrow night"
 msgstr "堅守直到戴森回來(預估明晚)"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:180
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:186
 msgid "Resist until Dacyn's return in two days"
 msgstr "堅守直到戴森回來(兩日內)"
 
 #. [objective]: condition=lose
-#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:185
-#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:317
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:191
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:350
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:92
 #: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:130
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:78
@@ -379,12 +379,12 @@ msgid "Death of Gweddry"
 msgstr "柯維卓死亡"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:208
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:214
 msgid "What? What is going on?"
 msgstr "什麼？發生什麼事？"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:212
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:218
 msgid ""
 "Look. To the east. Undead approach! But wait... I sense something... They "
 "must not see me..."
@@ -395,7 +395,7 @@ msgstr "看，不死族，從東方來了！等一下...我發現一件事情...
 #. [side]: type=Lich, id=Mal-Ravanal
 #. [side]: type=Ancient Lich, id=Mal-Ravanal
 #. [unit]: type=Ancient Lich, id=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:231
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:237
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:107
 #: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:30
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:201
@@ -404,7 +404,7 @@ msgid "Mal-Ravanal"
 msgstr "麥爾-諾曼鈉"
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:239
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:245
 msgid ""
 "Hm. I do not sense anything out of the ordinary here. My scouts must have "
 "deceived me. Very well; destroy them."
@@ -412,24 +412,24 @@ msgstr ""
 "嗯，我在這兒並沒感到什麼不尋常的事情，我的斥候一定是騙了我。很好，消滅他們。"
 
 #. [message]: speaker=Mal-Sakkat
-#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:244
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:250
 msgid "Very well, Dark Archon. They will die. And then?"
 msgstr "好的，黑暗執政官。殺掉他們，然後要做什麼呢？"
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:248
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:254
 msgid ""
 "On with the search. I trust you can defeat these men yourself? I have no "
 "time to waste here."
 msgstr "開始搜索，我想你可以自己解決他們吧？我在這裡可不能浪費任何時間。"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:261
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:267
 msgid "What?! Men, to arms! And where did Dacyn go?!"
 msgstr "什麼？！所有人，準備戰鬥！戴森在哪？"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:265
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:271
 msgid ""
 "There are too many undead, I cannot defeat them... but my orders are to hold "
 "this outpost at all costs. It may be we will die this day."
@@ -438,48 +438,53 @@ msgstr ""
 "死在這兒了。"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:269
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:275
 msgid ""
 "But... somehow, I do not think Dacyn has abandoned us. He must have had a "
 "reason for leaving."
 msgstr "但...不曉得為什麼，我不認為戴森拋棄了我們，他一定有離開的理由。"
 
+#. [message]: speaker=Gweddry
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:285
+msgid "Follow me, men! Through the trapdoor!"
+msgstr "大伙們，跟著我！通過這個暗門！"
+
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:292
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:316
 msgid "Gweddry? Good! You are still alive. Quickly, we must leave this place!"
 msgstr "柯維卓？太好了！你還活著。快，我們必須離開這個地方！"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:296
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:320
 msgid "Where did you go?! And where did you come from?"
 msgstr "你到哪去了？現在又是從哪冒出來的？"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:300
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:324
 msgid ""
 "There is no time to explain. If you wish to survive, you will escape through "
 "this trapdoor."
 msgstr "沒有時間解釋了，如果你想活下去，你就要從這個暗門逃脫。"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:304
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:328
 msgid "But what about the outpost?"
 msgstr "可是前哨怎麼辦？"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:308
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:332
 msgid ""
 "It is pointless to try to defend it. Now, come on, we do not have much time "
 "to spare!"
 msgstr "試圖保衛它是沒有意義的，快點,我們沒有多餘的時間了!"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:313
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:346
 msgid "Move Gweddry to the trapdoor"
 msgstr "讓柯維卓抵達暗門"
 
 #. [objective]: condition=lose
-#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:321
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:354
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:96
 #: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:134
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:82
@@ -501,17 +506,12 @@ msgid "Death of Dacyn"
 msgstr "戴森死亡"
 
 #. [objective]: condition=lose
-#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:325
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:358
 msgid "Turns run out"
 msgstr "回合耗盡"
 
-#. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:341
-msgid "Follow me, men! Through the trapdoor!"
-msgstr "大伙們，跟著我！通過這個暗門！"
-
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:356
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:383
 msgid ""
 "Hurry! Before long enemy reinforcements will arrive, and we will all die! Go "
 "to the trapdoor!"
@@ -2464,7 +2464,7 @@ msgstr "溺死平原"
 #. [unit]: type=Skeletal Dragon, id=Khrakrahs
 #. [message]
 #: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:126
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:392
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:398
 msgid "Khrakrahs"
 msgstr "奎客斯"
 
@@ -2474,21 +2474,21 @@ msgid "Defeat Khrakrahs"
 msgstr "打敗奎客斯"
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:374
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:380
 msgid ""
 "Now, we have reached the Horse Plains, the fair homeland of my people. They "
 "may be able to help us in - "
 msgstr "現在，我們到達我們美麗的祖國，他們可能會幫我們進去-"
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:378
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:384
 msgid ""
 "What?! Swamps?! Those undead have destroyed the grasslands of my House, and "
 "they shall pay for it!"
 msgstr "什麼？！沼澤？！不死族破壞了我家園的土地，他們要付出代價！"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:382
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:388
 msgid ""
 "The lich-lord must have flooded the valley. The undead like the swamp. It is "
 "death, decay, everything that they are themselves. I can sense them lurking "
@@ -2498,22 +2498,22 @@ msgstr ""
 "切。我能感知到它們潛伏在沼澤中準備襲擊我們。"
 
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:386
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:392
 msgid "I s'ppose we'll hav' to wade across it anyway... ugh."
 msgstr "我想我們無論如何都得通過...呃。"
 
 #. [message]
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:394
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:400
 msgid "Findshhhh... slayhhhh... killhhhh..."
 msgstr "找到哈哈啊......撕碎哈哈啊......殺死哈哈啊......"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:398
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:404
 msgid "What is that sound?!?"
 msgstr "那是什麼聲音？！？"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:402
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:408
 msgid ""
 "I do not know, but my guess is the dragon Khrakrahs. He was a powerful beast "
 "indeed, in the time of Haldric, living in the Northern Mountains. But he "
@@ -2524,7 +2524,7 @@ msgstr ""
 "物。但是他聽起來不像是還活著。我不知道怎麼回事，但我們一定要消滅他。"
 
 #. [message]
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:439
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:445
 msgid ""
 "Aha! I see what they have done. They have raised him as an undead dragon. "
 "But he does not appear to be weak to my arcane senses... this is strange "
