@@ -207,6 +207,20 @@ surface adjust_surface_colour(const surface &surf, int r, int g, int b, bool opt
 surface greyscale_image(const surface &surf, bool optimize=true);
 /** create an heavy shadow of the image, by blurring, increasing alpha and darkening */
 surface shadow_image(const surface &surf, bool optimize=true);
+
+/**
+ * Recolors a surface using a map with source and converted palette values.
+ * This is most often used for team-coloring.
+ *
+ * @param surf               The source surface.
+ * @param map_rgb            Map of color values, with the keys corresponding to the
+ *                           source palette, and the values to the recolored palette.
+ * @param optimize           Whether the new surface should be RLE encoded. Only
+ *                           useful when the source is not the screen and it is
+ *                           going to be used multiple times.
+ * @return                   A recolored surface, or a null surface if there are
+ *                           problems with the source.
+ */
 surface recolor_image(surface surf, const std::map<Uint32, Uint32>& map_rgb,
 	bool optimize=true);
 

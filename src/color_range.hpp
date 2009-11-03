@@ -111,7 +111,8 @@ std::vector<Uint32> palette(color_range cr);
 
 /**
  * Converts a source palette using the specified color_range object.
- * This holds the main interface for range-based team coloring.
+ * This holds the main interface for range-based team coloring. The output is
+ * used with the recolor_image() method to do the actual recoloring.
  * @param new_rgb Specifies parameters for the conversion.
  * @param old_rgb Source palette.
  * @return A STL map of colors, with the keys being source palette elements, and the values
