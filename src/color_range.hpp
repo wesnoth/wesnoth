@@ -33,10 +33,38 @@
 /** Convert comma separated string into rgb values. */
 std::vector<Uint32> string2rgb(std::string s);
 
+/**
+ * A color range definition is made of four reference RGB colors, used
+ * for calculating conversions from a source/key palette.
+ *
+ *   1) The average shade of a unit's team-color portions
+ *      (default: gray #808080)
+ *   2) The maximum highlight shade of a unit's team-color portions
+ *      (default: white)
+ *   3) The minimum shadow shade of a unit's team-color portions
+ *      (default: black)
+ *   4) A plain high-contrast color, used for the markers on the mini-ma
+ *      (default: same as the provided average shade, or gray #808080)
+ *
+ * The first three reference colors are used for converting a source palette
+ * with the external recolor_range() method.
+ */
 class color_range
 {
 public:
+ /**
+  * Constructor, which expects four reference RGB colors.
+  * @param mid Average color shade.
+  * @param max Maximum (highlight) color shade
+  * @param min Minimum color shade
+  * @param rep High-contrast reference color
+  */
   color_range(Uint32 mid , Uint32 max = 0x00FFFFFF , Uint32 min = 0x00000000 , Uint32 rep = 0x00808080):mid_(mid),max_(max),min_(min),rep_(rep){};
+
+  /**
+   * Constructor, which expects four reference RGB colors.
+   * @param v STL vector with the four reference colors in order.
+   */
   color_range(const std::vector<Uint32>& v)
     : mid_(v.size()     ? v[0] : 0x00808080),
       max_(v.size() > 1 ? v[1] : 0x00FFFFFF),
@@ -44,12 +72,19 @@ public:
       rep_(v.size() > 3 ? v[3] : mid_)
   {
   };
+
+  /** Default constructor. */
   color_range() : mid_(0x00808080), max_(0x00FFFFFF), min_(0x00000000), rep_(0x00808080) {};
+
+  /** Average color shade. */
   Uint32 mid() const{return(mid_);};
+  /** Maximum color shade. */
   Uint32 max() const{return(max_);};
+  /** Minimum color shade. */
   Uint32 min() const{return(min_);};
-//note: use mid() instead of rep() unless high contrast is needed over a map or minimap!
+  /** High-contrast shade, intended for the minimap markers. */
   Uint32 rep() const{return(rep_);};
+
   bool operator<(const color_range& b) const
   {
     if(mid_ != b.mid()) return(mid_ < b.mid());
@@ -57,16 +92,36 @@ public:
     if(min_ != b.min()) return(min_ < b.min());
     return(rep_ < b.rep());
   }
+
   bool operator==(const color_range& b) const
   {
     return(mid_ == b.mid() && max_ == b.max() && min_ == b.min() && rep_ == b.rep());
   }
+
   int index() const; // the default team index for this color, or 0 for none
+
 private:
   Uint32 mid_ , max_ , min_ , rep_;
 };
 
-std::vector<Uint32> palette(color_range cr); //return color palette from color range
+/**
+ * Creates a reference color palette from a color range.
+ */
+std::vector<Uint32> palette(color_range cr);
+
+/**
+ * Converts a source palette using the specified color_range object.
+ * This holds the main interface for range-based team coloring.
+ * @param new_rgb Specifies parameters for the conversion.
+ * @param old_rgb Source palette.
+ * @return A STL map of colors, with the keys being source palette elements, and the values
+ *         are the result of applying the color range conversion on it.
+ */
 std::map<Uint32, Uint32> recolor_range(const color_range& new_rgb, const std::vector<Uint32>& old_rgb);
+
+/**
+ * Converts a color value to WML text markup syntax for highlighting.
+ * For example, 0x00CC00CC becomes "<204,0,204>".
+ */
 std::string rgb2highlight(Uint32 rgb);
 #endif
