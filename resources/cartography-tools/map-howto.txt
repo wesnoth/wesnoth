@@ -87,9 +87,33 @@ main Wesnoth map:
 Now you've got your base map.  The rest is pasting bits from old
 Forest, swamp, and Workshop layers, or using the custom brushes.
 
+== Text ==
+
+As mentioned before, the text on the map uses Monotype Corsiva (mostly at 13-point).
+Before you go crazy with the text tool, make sure that the following options are enabled:
+hinting, force auto-hinter, and antialiasing.
+
+Color values are presented in the following order: HTML notation, HSV, RGB.
+
+The text that is not overlayed on the parchment labels uses the default color, pure black (000000, 0/0/0, 0/0/0).
+Finally, the text that is overlayed on the parchment labels uses this color: 413422, 35/48/25, 65/52/34.
+
+== Parchment Labels and Text ==
+
+The parchment labels and the text that is overlayed onto them are stored in different layers.
+The parchment labels are stored in layers like this: "<insert head name here> (overlay)", while
+the text is stored in layers like this: "<insert head name here> text (overlay)".
+
+The text overlayed onto parchment labels is to be set to 13-point and is to use this color: 413422, 35/48/25, 65/52/34.
+
+The parchment layers that are to be overlayed onto forest pieces are to have their layer opacities set to 90%, while other
+parchment layers are to have their opacities set to 75%.
+
 == Brushes ==
 
-In order to install the cartography brushes just go to File >Preferences >Folders > Brushes
+Note: Aside from the city/town/fort/signpost marker brushes, the trail dot brush, and the swamp brush, do not bother with these.
+
+In order to install the cartography brushes, just go to File >Preferences >Folders > Brushes
 Then hit the button that is to the leftmost on the second pane; then type the path to the brushes or hit
 the button next to the area where one would type the file path; then direct it to the directory where
 the brushes are.
@@ -109,58 +133,66 @@ a description of the layers of great-continent.xcf used to compose each.
 All campaigns (Wesnoth early labels):
    Border
    Border BG
+   Wesnoth early labels text
    Wesnoth early labels
    Wesnoth Forests
    Wesnoth Marsh
    Wesnoth topography
 
 All campaigns after 25YW (Wesnoth late labels - this is what's in wesnoth.png):
+   Wesnoth late labels text
    Wesnoth late labels
-   Wesnoth Human Towns
+   Wesnoth Human Names
    Wesnoth Roads
 
 An_Orcish_Incursion (8YW):
-   No overlays on this map.
+   Wesnoth An Orcish Incursion text overlay
+   Wesnoth An Orcish Incursion overlay
 
 Descent_Into_Darkness (389):
+   Wesnoth late labels text
    Wesnoth late labels
    Wesnoth Descent Into Darkness overlay
 
 Eastern_Invasion (625YW):
+   Wesnoth late labels text
    Wesnoth late labels
    Wesnoth Eastern Invasion overlay
 
 Heir_To_The_Throne (518YW):
+   Wesnoth late labels text
    Wesnoth late labels
 
 Legend_of_Wesmere (12YW):
+   Wesnoth early labels text
    Wesnoth early labels
    Wesnoth Legend of Wesmere overlay
 
 Liberty (501YW):
+   Wesnoth late labels text
    Wesnoth late labels
    Wesnoth Liberty overlay
 
 Northern_Rebirth (534YW):
-   Wesnoth late labels
+   No overlays.
 
 Sceptre_of_Fire (25YW):
-   Wesnoth late labels (this should be fixed -- not all cities would be settled then)
+   No overlays.
 
 Son_Of_The_Black_Eye (842YW):
    All Layers named "Far North".
 
 The_Hammer_of_Thursagan (550YW):
-   Wesnoth late labels
+   No overlays.
 
 The_Rise_Of_Wesnoth (1YW):
    No overlays.
 
 The_South_Guard (607YW):
-   Wesnoth late labels
+   No overlays.
 
 Two_Brothers (353YW):
-   Wesnoth late labels
+   No overlays.
 
 Under_the_Burning_Suns (??):
    Has no map.
