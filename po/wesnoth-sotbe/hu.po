@@ -4,21 +4,21 @@
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Máthé Katalin <katkadu@gmail.com>, 2008., 2009.
-# Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2008.
+# Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2008, 2009.
 # Pintér Csaba <piere-d-siorac@freemail.hu>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: hu-sotbe\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-11-02 12:29+0100\n"
-"PO-Revision-Date: 2009-03-13 03:32+0100\n"
-"Last-Translator: Pintér Csaba <piere-d-siorac@freemail.hu>\n"
-"Language-Team: Hungarian\n"
+"PO-Revision-Date: 2009-11-03 18:30+0100\n"
+"Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
+"Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 1.0\n"
 
 #. [campaign]: id=Son_Of_The_Black_Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:9
@@ -63,11 +63,10 @@ msgstr "hadúr"
 #. [campaign]: id=Son_Of_The_Black_Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:22
 msgid "(Expert level, 18 scenarios.)"
-msgstr ""
+msgstr "(Gyakorlott szint, 18 pálya)"
 
 #. [campaign]: id=Son_Of_The_Black_Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:22
-#, fuzzy
 msgid ""
 "Your father Karun Black-Eye was the greatest orcish leader that ever lived. "
 "Now, as his son, it's up to you to thwart the selfish designs of the humans "
@@ -84,7 +83,6 @@ msgstr ""
 "hívd össze az Ork Nagytanácsot, hívd újra életre a Nagy Hordát és küld a "
 "pokolba az ember-férgeket és szövetségeseiket!\n"
 "\n"
-"(Nehéz szint, 18 küldetés.)"
 
 #. [about]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:27
@@ -166,7 +164,7 @@ msgstr "Kapou'e elesik"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:462
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:48
 msgid "Turns run out"
-msgstr "Túlléped a körök számát"
+msgstr "Kifutsz az időből"
 
 #. [side]: type=Orcish Leader, id=Kapou'e
 #. [side]: type=Orcish Warlord, id=Al'Brock
@@ -471,7 +469,7 @@ msgid ""
 msgstr ""
 "Barag Górba megyünk a szabad törzsek földjére, és a Nagy Tanács segítségét "
 "kérjük. Segítségükkel csapatokat toborozhatunk a szabadok közül és "
-"szétmorzsolhatjuk ezeket az embereket. "
+"szétmorzsolhatjuk ezeket az embereket."
 
 #. [message]: role=second
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:256
@@ -695,6 +693,9 @@ msgid ""
 "<span color='#00ff00'>Defeat the enemy leader</span> <small>(early finish "
 "bonus)</small>"
 msgstr ""
+"<span color='white'>Bónusz:</span>\n"
+"<span color='#00ff00'>Legyőzöd az ellenség vezérét</span> <small>(jutalom a "
+"gyors befejezésért)</small>"
 
 #. [side]: type=Dwarvish Lord, id=Kwili
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:85
@@ -731,7 +732,7 @@ msgid ""
 "Oh, so it's another group o' stinkin' orcs, eh. Begone, or we shall wash our "
 "axes in yer blood."
 msgstr ""
-"Megen egy rakás ostoba ork. Tünés innend vagy a véretekkel fessük meg a "
+"Megen egy rakás ostoba ork. Tűnés innend vagy a véretekkel fessük meg a "
 "baltánk!"
 
 #. [message]: speaker=Kapou'e
@@ -863,15 +864,14 @@ msgstr ""
 # Nem tudom, ebből mi az, amit fordítatlanul kell hagyni. Úgy sejtem, hogy az első parancssort, de lehet, hogy azt sem.
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:278
-#, fuzzy
 msgid ""
 "<b>Bonus objective:</b>\n"
 "Defeat the enemy leader\n"
 "<span size='small'>(early finish bonus)</span>"
 msgstr ""
-"<255,255,255>Bónusz:\n"
-"@Legyőzöd az ellenség vezérét\n"
-"`(gyors befejezés bónusz)"
+"<b>Bónusz:</b>\n"
+"Legyőzöd az ellenség vezérét\n"
+"<span size='small'>(jutalom a gyors befejezésért)</span>"
 
 #. [objective]: condition=lose
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:286
@@ -1167,7 +1167,7 @@ msgid ""
 "instead of cowering in your dung-spattered forests."
 msgstr ""
 "Hagyd a kérkedést, hosszú-fül! A vezér tudni szeretné, hogy mit akartok itt, "
-"és miért nem a sáros erdeitekben bújkáltok."
+"és miért nem a sáros erdeitekben bujkáltok."
 
 #. [message]: speaker=Etheliel
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:309
@@ -1713,7 +1713,6 @@ msgstr "Biztonságban vannak a sámánok?"
 
 #. [message]: speaker=Affman
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:296
-#, fuzzy
 msgid ""
 "When we realized that there was no way we could hold the humans off, we sent "
 "them east to a place near the Mourned Hills along with most of our women and "
@@ -1931,7 +1930,7 @@ msgid ""
 "won't meet them."
 msgstr ""
 "Azt hallottam úgy a legkönnyebb legyőzni őket, ha éles pengékkel támadjuk a "
-"szemüket, felgyújtuk őket, vagy nyilakat fúrunk beléjük. De én is azt "
+"szemüket, felgyújtjuk őket, vagy nyilakat fúrunk beléjük. De én is azt "
 "remélem, hogy nem találkozunk velük."
 
 #. [message]: speaker=Pirk
@@ -2151,14 +2150,13 @@ msgstr "Ez a köd és csend kezd nyugtalanítani. Egyébként is, mi ez a hely?"
 
 #. [message]: speaker=Gork
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:165
-#, fuzzy
 msgid ""
 "It has not always been like this. A lot of hunters from the tribes used to "
 "hunt here and fish in the River Bork. But that all changed a few years ago. "
 "Now, few would enter here unless forced."
 msgstr ""
 "Nem volt ez mindig ilyen. A törzsek vadászainak sokasága kergette a vadakat "
-"itt, és halászott a Bork folyó partján. De ez mind megváltozott néhány éve. "
+"itt, és halászott a Bork-folyó partján. De ez mind megváltozott néhány éve. "
 "Most senki sem térne ide vissza, hacsak nem kényszerítik rá."
 
 #. [message]: speaker=Vraurk
@@ -2220,12 +2218,12 @@ msgstr ""
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:223
 msgid "Now we're going to have some some answers out of you."
-msgstr ""
+msgstr "Na most aztán kiszedünk belőled egy-két dolgot..."
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:228
 msgid "You might as well go ahead and kill me, I'm not telling you anything."
-msgstr "Jobb ha most azonnal megölsz, mert mondok én neked semmit."
+msgstr "Jobb ha most azonnal megölsz, mert nem mondok én neked semmit."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:233
@@ -2298,13 +2296,11 @@ msgstr ""
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:279
-#, fuzzy
 msgid "With pleasure. But what should I do with this weakling?"
-msgstr "Örömmel. De mi legyen ezzel a fickóval?"
+msgstr "Örömmel. De mi legyen ezzel a nyomorulttal?"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:284
-#, fuzzy
 msgid "Behead it."
 msgstr "Fejezzétek le."
 
@@ -2334,7 +2330,7 @@ msgstr ""
 #. [unit]: type=Elvish Scout, id=Linduilas
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:325
 msgid "Linduilas"
-msgstr "Lindulias"
+msgstr "Linduilas"
 
 #. [message]: speaker=Linduilas
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:330
@@ -2358,6 +2354,9 @@ msgid ""
 "<span color='#00ff00'>Defeat Shan Taum</span> <small>(early finish bonus)</"
 "small>"
 msgstr ""
+"<span color='white'>Másik lehetőség a győzelemre:</span>\n"
+"<span color='#00ff00'>Legyőzöd Shan Taumot</span> <small>(jutalom a korai "
+"befejezésért)</small>"
 
 #. [side]: type=Orcish Warlord, id=Shan Taum
 #. [unit]: type=Orcish Warlord, id=Shan Taum
@@ -2620,14 +2619,13 @@ msgstr "Déli torony"
 
 #. [message]: speaker=Plonk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:186
-#, fuzzy
 msgid ""
 "Reinforcements, at last! Whoever you are, you are welcome in Prestim! The "
 "fortified bridge over the River Bork was taken this morning by a small "
 "commando of elves, we have already tried to assault it twice without success."
 msgstr ""
 "Utánpótlás! Végre! Akárki vagy, légy üdvözölve Prestimben! A megerősített "
-"hidat a Bork folyó felett egy kis tünde kommandó elfoglalta ma reggel, már "
+"hidat a Bork-folyó felett egy kis tünde kommandó elfoglalta ma reggel, már "
 "kétszer is megpróbáltuk visszafoglalni, de nem jártunk sikerrel."
 
 #. [message]: speaker=Grüü
@@ -3046,7 +3044,7 @@ msgstr "Nem! Prestim falai összeomlottak, végünk van!"
 #. [scenario]: id=Giving_Some_Back
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:5
 msgid "Giving Some Back"
-msgstr "Visszajáró"
+msgstr "Ellencsapás"
 
 #. [objective]: condition=lose
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:33
@@ -3055,9 +3053,8 @@ msgstr "Visszajáró"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:44
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:40
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:32
-#, fuzzy
 msgid "Death of Al'Brock"
-msgstr "Al'Brock"
+msgstr "Al'Brock elesik"
 
 #. [objective]: condition=lose
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:37
@@ -3066,9 +3063,8 @@ msgstr "Al'Brock"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:48
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:44
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:36
-#, fuzzy
 msgid "Death of Flar'Tar"
-msgstr "Kapou'e elesik"
+msgstr "Flar'Tar elesik"
 
 #. [objectives]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:45
@@ -3239,7 +3235,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:111
-#, fuzzy
 msgid ""
 "After a few weeks of putting down minor rebellions and clearing out the last "
 "human strongholds, the first snows of the long northern winter began to "
@@ -3280,7 +3275,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:126
-#, fuzzy
 msgid ""
 "Rushing to reach Borstep before the river froze up for the winter, the orcs "
 "sailed up the River Bork. Paddling day and night the horde barely managed to "
@@ -3289,7 +3283,7 @@ msgid ""
 "snow of the Mourned Hills."
 msgstr ""
 "Sietve, hogy elérjék Borstepet, mielőtt a folyó befagy, az orkok felfelé "
-"vitorláztak a Bork folyón. Éjjel-nappal evezve a hordának épp csak sikerült "
+"vitorláztak a Bork-folyón. Éjjel-nappal evezve a hordának épp csak sikerült "
 "átjutnia a Néma-erdőn a fagyás előtt. A partraszállás után a maradék távot a "
 "Gyászoló-dombok mélyülő haván keresztül gyalog tették meg."
 
@@ -3401,9 +3395,8 @@ msgstr "Bosszuljuk meg, amit a népünkkel tettek! Vér és acél!"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:315
-#, fuzzy
 msgid "Victory...Grüü, what <i>is</i> that you are eating?"
-msgstr "Győzelem...Grüü, mit eszel?"
+msgstr "Győzelem... Grüü, mi <i>ez</i>, amit eszel?"
 
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:320
@@ -3696,13 +3689,11 @@ msgstr "Nem hazudok. A testük a mellettünk lévő tóba fagyott."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:683
-#, fuzzy
 msgid "We had better go look."
-msgstr "Jobb lesz, ha utánanézel."
+msgstr "Jobb lesz, ha utánanézünk."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:689
-#, fuzzy
 msgid "You had better go look."
 msgstr "Jobb lesz, ha utánanézel."
 
@@ -3805,7 +3796,7 @@ msgid ""
 "implications of the shamans' deaths begin to sink in."
 msgstr ""
 "A sámánok halálán feldühödve az ork horda lemészárolta az embereket és "
-"szövetségeseiket. Örjöngésükben órákig meneteltek a hóban túlélők után "
+"szövetségeseiket. Őrjöngésükben órákig meneteltek a hóban túlélők után "
 "kutatva. Mikor a haragjuk csillapodott, akkor értették meg teljesen, mit is "
 "jelent a sámánok halála."
 
@@ -3909,7 +3900,6 @@ msgstr "Na persze!"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:258
-#, fuzzy
 msgid ""
 "It's been a chilly winter. How about we warm ourselves up a bit by giving "
 "these traitors a good whupping, boys?"
@@ -4396,7 +4386,7 @@ msgid ""
 msgstr ""
 "Kapou'e beleegyezett, hogy találkozzon III. Howgarth-tal. A találkozóra "
 "magával vitte Grüüt és egy megbízható katonáját, mivel nem bízott az "
-"emberekben. Lanbec'h gróf visszautasította, hogy résztvegyen a találkozón. "
+"emberekben. Lanbec'h gróf visszautasította, hogy részt vegyen a találkozón. "
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:168
@@ -4670,7 +4660,7 @@ msgstr ""
 "hogy más országbeli konfliktusokban zsoldos seregként tevékenykedjenek, így "
 "csökkentve a hadsereg fenntartási költségét. Sok nép használta ki ezt, és "
 "így a harcéhes orkok is több, mint elég csatát láttak ahhoz, hogy bármikor "
-"iskedvük támadjon megtámadni a legközelebbi szomszédjukat."
+"is kedvük támadjon megtámadni a legközelebbi szomszédjukat."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/19_Epilogue.cfg:54

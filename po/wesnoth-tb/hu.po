@@ -7,14 +7,14 @@ msgstr ""
 "Project-Id-Version: hu-tb\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-09-28 18:23+0200\n"
-"PO-Revision-Date: 2009-06-20 11:48+0200\n"
+"PO-Revision-Date: 2009-10-23 11:39+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 0.3\n"
+"X-Generator: Lokalize 1.0\n"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:12
@@ -53,11 +53,12 @@ msgid ""
 "(Novice level, 4 scenarios; the 'Hard' version may challenge more "
 "experienced players.)"
 msgstr ""
+"(Kezdő nehézségi szint, 4 pálya; a nehézséget magasabbra állítva a "
+"tapasztaltabb játékosoknak is kihívást jelenthet.)"
 
 # túl szabad volt a fordítás, vagy az eredeti szöveget írták nagyon át
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:21
-#, fuzzy
 msgid ""
 "An evil mage is threatening the small village of Maghre and its inhabitants. "
 "The village's mage Bjarn sends for his brother to help, but not all goes as "
@@ -68,8 +69,6 @@ msgstr ""
 "mágusa, Bjarn, segítségért küldet testvéréhez, Arnehoz, csakhogy a dolgok "
 "kissé másképp alakulnak, mint tervezte. Segíts helyreállítani a rendet!\n"
 "\n"
-"(Kezdő nehézségi szint, 4 pálya; a nehézséget magasabbra állítva a "
-"tapasztaltabb játékosoknak is kihívást jelenthet)"
 
 #. [about]
 #: data/campaigns/Two_Brothers/_main.cfg:28
@@ -180,7 +179,7 @@ msgid ""
 "hurried to Maghre to help Bjarn."
 msgstr ""
 "Az amulett hívását meghallva Arne annyi embert gyűjtött össze, amennyit csak "
-"tudott, és Bjarn segítségére sietett. "
+"tudott, és Bjarn segítségére sietett."
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:80
@@ -211,7 +210,7 @@ msgstr "Arne elesik"
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:45
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:197
 msgid "Turns run out"
-msgstr "Túlléped a körök számát"
+msgstr "Kifutsz az időből"
 
 #. [side]: type=Knight, id=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:105
@@ -406,7 +405,7 @@ msgstr "Hogy merészelik! Üldözőbe vesszük őket, de azonnal!"
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:361
 msgid "Your brother's plan to ambush me has failed. He is our prisoner now."
 msgstr ""
-"A testvéred terve, hogy rajtamüssön megbukott. Ő most már a mi foglyunk."
+"A testvéred terve, hogy rajtam üssön, megbukott. Ő most már a mi foglyunk."
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:365
@@ -442,7 +441,6 @@ msgstr "A hajsza"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:31
-#, fuzzy
 msgid ""
 "The pursuit had already run for several days when the pursuers came to the "
 "bounds of the huge forest known as the Grey Woods. Ancient tales warned of "
@@ -461,7 +459,7 @@ msgid ""
 "horsemen would be at disadvantage if attacked in the forest."
 msgstr ""
 "Ezen híresztelésekkel mit sem törődve Arne utánuk ment az erdőbe. Egyedül "
-"amiatt agódott, hogy lovasai hátrányban vannak a fák közt, ha megtámadják "
+"amiatt aggódott, hogy lovasai hátrányban vannak a fák közt, ha megtámadják "
 "őket."
 
 #. [objective]: condition=win
@@ -549,7 +547,7 @@ msgid ""
 msgstr ""
 "Pah, maradjatok az úton. Lándzsásaink és íjlövészeink harcolhatnak a "
 "rengeteg mélyében is. Szembenéztünk már ennél nagyobb kihívással is és akkor "
-"is győztünk. "
+"is győztünk."
 
 #. [unit]: type=Dark Adept, id=Muff Toras
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:268
@@ -589,7 +587,7 @@ msgid ""
 msgstr ""
 "Hah! Elfogtatok, de nem sokra mentek vele. A mágus testvéredet északra "
 "küldtem egy nappal ezelőtt a fele embereimmel. Mostanra már biztosan "
-"elzárták a mesterem börtönébe. "
+"elzárták a mesterem börtönébe."
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:360
@@ -711,7 +709,7 @@ msgstr "Köszönöm. A társaim és én segíteni fogunk nemes küldetésetekben
 #. [option]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:435
 msgid "I am sorry. We have not the time to spare."
-msgstr "Sajnálom. Nincs vesztegetnivaló időnk."
+msgstr "Sajnálom. Nincs vesztegetni való időnk."
 
 #. [message]: speaker=Brena
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:439
@@ -987,7 +985,6 @@ msgstr "Megtaláltam Bjarnt! Ebben a cellában van."
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:733
-#, fuzzy
 msgid "Good to see you, Arne. Now can you get me out of this dungeon, please?"
 msgstr ""
 "Jó újra látni téged, Arne. Kérlek, segíts kijutni ebből a várbörtönből!"
@@ -1006,7 +1003,7 @@ msgid ""
 "enhanced iron gate. It can only be opened with the correct key. You must get "
 "it from him to free me."
 msgstr ""
-"Az átkozott Rotharik fekete mágus tömlöcbe vetett emögé a varázslattal "
+"Az átkozott Rotharik fekete mágus tömlöcbe vetett e mögé a varázslattal "
 "megerősített vaskapu mögé. Csak a megfelelő kulcs képes kinyitni a zárat. "
 "Meg kell szereznetek tőle a kulcsot, hogy kiszabadíthassatok."
 
@@ -1026,8 +1023,8 @@ msgid ""
 "Oh it was nothing, a few elves, one or two dark sorcerers, a bunch of orcs "
 "and some undead. Really just a day's work for us mercenaries."
 msgstr ""
-"Ó, igazán semmiség, néhány tünde, egy-két sötét mágus, egy halom ork, meg "
-"jópár élőholt. Csak egy átlagos napi tennivaló nekünk, zsoldosoknak."
+"Ó, igazán semmiség, néhány tünde, egy-két sötét mágus, egy halom ork, meg jó "
+"pár élőholt. Csak egy átlagos napi tennivaló nekünk, zsoldosoknak."
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:804
@@ -1160,7 +1157,7 @@ msgid ""
 "and undead have wrecked. And they could come again."
 msgstr ""
 "Annyi minden elpusztult. Nehéz idők következnek, amíg helyrehozzuk, amit az "
-"orkok és az élőholtak tönkretettek. Remélem ez nem fog újra megtörténi."
+"orkok és az élőholtak tönkretettek. Remélem ez nem fog újra megtörténni."
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:215

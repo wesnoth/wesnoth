@@ -1,4 +1,4 @@
-# translation of hu.manpages_1.6.po to Hungarian
+# translation of hu-mapages_1.7.po to Hungarian
 # Hungarian translations for Battle for Wesnoth package
 # Copyright (C) 2006 Wesnoth development team.
 #
@@ -9,16 +9,16 @@
 # Gabor Udvari <gabor.udvari@gmail.com>, 2009.
 msgid ""
 msgstr ""
-"Project-Id-Version: hu.manpages_1.6\n"
+"Project-Id-Version: hu-mapages_1.7\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-11-02 12:29+0100\n"
-"PO-Revision-Date: 2009-05-03 12:50+0200\n"
-"Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
-"Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
+"PO-Revision-Date: 2009-10-20 16:51+0000\n"
+"Last-Translator: Gabor Udvari <gabor.udvari@gmail.com>\n"
+"Language-Team: Hungarian <en@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 0.3\n"
+"X-Generator: KBabel 1.11.4\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 # type: TH
@@ -176,9 +176,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:64
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-e,\\ --editor>I<\\ file>"
-msgstr "B<-e,\\ --editor>I<\\ file>"
+msgstr "B<-e,\\ --editor>I<\\ fájl>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:70
@@ -329,14 +329,14 @@ msgstr "B<-m, --multiplayer>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:128
-#, fuzzy
 msgid ""
 "runs a multiplayer game. There are additional options that can be used "
 "together with B<--multiplayer> as explained below. Only these additional "
 "options can follow B<--multiplayer>."
 msgstr ""
 "a játékot többjátékos üzemmódban indítja el. A B<--multiplayer> kapcsolóval "
-"használható egyéb opciókat bővebben lásd később."
+"használható egyéb opciókat bővebben lásd később. Kizárólag ezek az egyéb "
+"opciók követhetik a B<--multiplayer--> kapcsolót."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:128
@@ -513,15 +513,17 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:180
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--ai_config>I<number>B<=>I<value>"
-msgstr "B<--side>I<szám>B<=>I<érték>"
+msgstr "B<--ai_config>I<szám>B<=>I<érték>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:183
 msgid ""
 "selects a configuration file to load for the AI controller for this side."
 msgstr ""
+"kiválaszt egy konfigurációs fájlt a számmal jelölt fél mesterséges "
+"intelligenciájának."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:183
@@ -921,15 +923,13 @@ msgstr "[I<nyitó tag>]"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:103
-#, fuzzy
 msgid "I<key>=\"I<value>\""
-msgstr "kulcs=\"I<érték>\""
+msgstr "I<kulcs>=\"I<érték>\""
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:105
-#, fuzzy
 msgid "I<key>=\"I<value>,I<value>,...\""
-msgstr "kulcs=\"I<érték>,I<érték>,...\""
+msgstr "I<kulcs>=\"I<érték>,I<érték>,...\""
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:107
@@ -946,7 +946,7 @@ msgstr "Globális kulcsok:"
 #: ../../doc/man/wesnothd.6:110
 #, no-wrap
 msgid "B<allow_remote_shutdown>"
-msgstr ""
+msgstr "B<allow_remote_shutdown>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:114
@@ -955,6 +955,10 @@ msgid ""
 "they come from the fifo.  Set it to B<yes> to allow remote shutdown via a /"
 "query by an administrator."
 msgstr ""
+"Ha B<no> értékre van állítva (alapértelmezetten így van), akkor a shut_down "
+"és restart kéréseket figyelmen kívül hagyja, hacsak azok nem a fifon "
+"keresztül érkeznek. Állítsd B<yes> értékre, ha engedélyezni akarod a távoli "
+"leállítást egy rendszergazdai /query kérésen keresztül."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:114
@@ -976,7 +980,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:118
 #, no-wrap
 msgid "B<compress_stored_rooms>"
-msgstr ""
+msgstr "B<compress_stored_rooms>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:121
@@ -984,6 +988,8 @@ msgid ""
 "Determines whether the rooms file should be read and written to in "
 "compressed form. Defaults to B<yes>."
 msgstr ""
+"Meghatározza, hogy a szobákat tároló fájlba tömörítetten írjon és olvasson. "
+"Alapértelmezetten B<yes> értéken van."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:121
@@ -1008,14 +1014,13 @@ msgstr "B<disallow_names>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:131
-#, fuzzy
 msgid ""
 "Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
 "(used if nothing is specified) are: B<*admin*,*admln*,*server*,ai,ai?,"
 "computer,human,network,player>."
 msgstr ""
-"Azok a nevek/becenevek, melyeket a kiszolgáló visszautasít. A '*' és '?' "
+"Azok a nevek/becenevek, melyeket a kiszolgáló visszautasít. A <*> és <?> "
 "jelzések is használhatóak. Lásd a B<glob>(7) részt a részletekért. "
 "Alapértelmezett értékek (ha más nincsen megadva): B<*admin*, *admln*,"
 "*server*,ai,ai?,computer,human,network,player>."
@@ -1028,7 +1033,6 @@ msgstr "B<fifo_path>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:135
-#, fuzzy
 msgid ""
 "The path to the fifo you can echo server commands into (same as /query ... "
 "from wesnoth).  If not specified defaults to the compile-time path (default: "
@@ -1036,8 +1040,8 @@ msgid ""
 msgstr ""
 "A fifo elérési útvonala, amibe szerver parancsokat irathatsz ki (ugyanaz "
 "mint /query ... a wesnothban). Ha nincs meghatározva, alapértelmezettként a "
-"forgatásnál meghatározott értékkel egyezik meg (/var/run/socket/wesnothd/"
-"socket)."
+"forgatásnál meghatározott értékkel egyezik meg (</var/run/socket/wesnothd/"
+"socket>)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:135
@@ -1084,7 +1088,7 @@ msgstr "Az aznapra szánt üzenet."
 #: ../../doc/man/wesnothd.6:144
 #, no-wrap
 msgid "B<new_room_policy>"
-msgstr ""
+msgstr "B<new_room_policy>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:147
@@ -1094,6 +1098,11 @@ msgid ""
 "respectively to everyone, registered users, admin users or disables new room "
 "creation. Default value is B<everyone>."
 msgstr ""
+"Meghatározza, hogy ki hozhat létre új szobákat a kiszolgálón. Lehetséges "
+"értékek: B<everyone>, B<registered>, B<admin> és B<nobody>, és ennek "
+"megfelelően mindenkinek, a regisztrált felhasználóknak, admin "
+"felhasználóknak vagy senkinek nem engedélyezi új szobák létrehozását. "
+"Alapértelmezetten ez B<everyone>."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:147
@@ -1103,12 +1112,11 @@ msgstr "B<passwd>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:150
-#, fuzzy
 msgid ""
 "The password used to gain admin privileges (via B</query admin >I<password>)."
 msgstr ""
-"A jelszó, amivel adminisztrátori jogok nyerhetőek. Általában az 'admin' "
-"szóval kezdődik."
+"A jelszó, amivel adminisztrátori jogok nyerhetőek (a B</query "
+"admin>I<password> lekérdezésen keresztül)."
 
 #: ../../doc/man/wesnothd.6:150
 #, no-wrap
@@ -1133,20 +1141,20 @@ msgstr "B<restart_command>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:156
-#, fuzzy
 msgid ""
 "The command that the server uses to start a new server process via the "
 "B<restart> command. (Can only be issued via the fifo. See the "
 "B<allow_remote_shutdown> setting.)"
 msgstr ""
-"A parancs, amivel a szerver új kiszolgálói folyamatot indít a 'restart' "
-"paranccsal. (Csak a fifon keresztül adható ki.)"
+"A parancs, amivel a szerver új kiszolgálói folyamatot indít a B<restart> "
+"paranccsal. (Csak a fifon keresztül adható ki. Lásd a "
+"B<allow_remote_shutdown> beállításokat.)"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:156
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<room_save_file>"
-msgstr "B<ban_save_file>"
+msgstr "B<room_save_file>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:159
@@ -1155,6 +1163,9 @@ msgid ""
 "server startup and written to later. If empty or not set, rooms are not "
 "loaded and not saved."
 msgstr ""
+"Útvonal ahhoz a fájlhoz, amiben a szobák információi lesznek tárolva. Ezt a "
+"fájlt a kiszolgáló induláskor olvassa és később ír bele. Ha üres vagy nincs "
+"meghatározva a szobák nem lesznek betöltve és mentve."
 
 #: ../../doc/man/wesnothd.6:159
 #, no-wrap
@@ -1177,15 +1188,14 @@ msgstr "B<versions_accepted>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:166
-#, fuzzy
 msgid ""
 "A comma separated list of version strings to be accepted by the server. B<*> "
 "and B<?> from wildcard patterns are supported.  (defaults to the "
 "corresponding wesnoth version)"
 msgstr ""
 "Egy vesszőkkel elválasztott lista azokról a verziószámokról, amelyeket a "
-"kiszolgáló elfogad. A '*' és '?' jelzések is használhatóak(alapértelmezetten "
-"csak az adott verzióval megegyező elfogadott)."
+"kiszolgáló elfogad. A B<*> és B<?> jelzések is használhatóak "
+"(alapértelmezetten csak az adott verzióval megegyező elfogadott)."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:168
@@ -1200,7 +1210,6 @@ msgstr "B<user_handler>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:173
-#, fuzzy
 msgid ""
 "The name of the user handler to use. Currently available user handlers are "
 "B<forum> (to connect wesnothd to a phpbb forum database) and B<sample> (a "
@@ -1208,11 +1217,12 @@ msgid ""
 "anything real you are insane). The default value is B<forum>. You must also "
 "add a B<[user_handler]> section, see below."
 msgstr ""
-"A használandó felhasználókezelő neve. Jelenleg elérhető kezelők a 'forum' (a "
-"wesnothd egy phpbb fórum adatbázishoz való csatlakozástatásához) és a "
-"'sample' (a felhasználókezelő felület minta megvalósítása, ha ezt bármilyen "
+"A használandó felhasználókezelő neve. Jelenleg elérhető kezelők a B<forum> "
+"(a wesnothd egy phpbb fórum adatbázishoz való csatlakoztatásához) és a "
+"B<sample> (a felhasználókezelő felület minta megvalósítása, ha ezt bármilyen "
 "valós környezetben használod, őrült vagy). Alapértelmezetten az értéke a "
-"'forum'. Emellett meg kell adnod egy B<user_handler> részt is, lásd később."
+"B<forum>. Emellett meg kell adnod egy B<[user_handler]> részt is, lásd "
+"később."
 
 # type: SS
 #: ../../doc/man/wesnothd.6:174
@@ -1295,7 +1305,6 @@ msgstr "B<time>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:207
-#, fuzzy
 msgid ""
 "The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s "
 "(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d "
@@ -1306,7 +1315,7 @@ msgstr ""
 "Az időhossz meghatározás. A formátum a következő: %d[%s[%d%s[...]]], ahol %s "
 "lehet: s (másodpercek), m (percek), h (órák), D (napok), M (hónapok) vagy Y "
 "(évek), és %d egy szám. Ha nincs meghatározva a mértékegység, akkor "
-"percekként (m) lesz értelmezve. Példa: time=\"1D12h30m\" egy 1 napos, 12 "
+"percekként (m) lesz értelmezve. Példa: B<time=\"1D12h30m\"> egy 1 napos, 12 "
 "órás és 30 perces tiltási időt határoz meg."
 
 # type: Plain text
@@ -1322,17 +1331,16 @@ msgstr ""
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:221
-#, fuzzy
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
 "on which user handler is set with the B<user_handler> key. If no B<"
 "[user_handler]> section is present in the configuration the server will run "
 "without any nick registration service."
 msgstr ""
-"B<user_handler> Beállítja a felhasználókezelőt. Az elérhető változók a "
-"B<user_handler> kapcsolóban meghatározott értékektől függnek. Ha nincs "
-"[user_handler] rész a szerver konfigurálásában, akkor felhasználónév "
-"kezelés  nélkül fog futni."
+"B<[user_handler]> Beállítja a felhasználókezelőt. Az elérhető változók a "
+"B<user_handler> kapcsolóban meghatározott értékektől függnek. Ha nincs B<"
+"[user_handler]> rész a szerver konfigurálásában, akkor felhasználónév "
+"kezelés nélkül fog futni."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:222
@@ -1407,7 +1415,6 @@ msgstr "B<db_extra_table>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:241
-#, fuzzy
 msgid ""
 "(for user_handler=forum) The name of the table in which wesnothd will save "
 "its own data about users. You will have to create this table manually, e.g.: "
@@ -1417,9 +1424,9 @@ msgid ""
 msgstr ""
 "(user_handler=forum esetén) Az adattábla neve, amiben a wesnothd fogja "
 "eltárolni a felhasználókról készített saját adatait. Ezt a táblát magadtól "
-"kell létrehoznod, pl.: CREATE TABLE E<lt>table-nameE<gt>(username VARCHAR"
+"kell létrehoznod, pl.: B<CREATE TABLE E<lt>table-nameE<gt>(username VARCHAR"
 "(255) PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, "
-"user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);"
+"user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);>"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:241
@@ -1535,7 +1542,3 @@ msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
 #~ msgstr ""
 #~ "ál-lokalizációk használata bármilyen nyelvre váltáshoz, még ha az adott "
 #~ "nyelv nincs is telepítve a rendszerre"
-
-# type: Plain text
-#~ msgid "start the in-game map editor directly."
-#~ msgstr "közvetlenül a játékban található térképszerkesztőt indítja el."
