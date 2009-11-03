@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-lib.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-11-02 12:29+0100\n"
-"PO-Revision-Date: 2009-10-20 18:29+0200\n"
+"PO-Revision-Date: 2009-11-03 11:13+0200\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team:  <http://bugs.wesnoth.org>\n"
 "MIME-Version: 1.0\n"
@@ -786,7 +786,7 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:51
 msgid "Welcome"
-msgstr ""
+msgstr "Добро пожаловать"
 
 #. [label]: id=state
 #: data/gui/default/window/formula_debugger.cfg:63
@@ -853,7 +853,7 @@ msgstr "Вы действительно хотите удалить сохран
 #. [toggle_button]: id=dont_ask_again
 #: data/gui/default/window/game_delete.cfg:72
 msgid "Don't ask me again!"
-msgstr ""
+msgstr "И больше меня не спрашивай."
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -889,7 +889,7 @@ msgstr "Загрузить игру"
 #. [label]: id=lblChoose
 #: data/gui/default/window/game_load.cfg:179
 msgid "Choose the game to load"
-msgstr ""
+msgstr "Какое сохранение загрузим?"
 
 #. [label]: id=lblFilter
 #: data/gui/default/window/game_load.cfg:203
@@ -952,7 +952,7 @@ msgstr ""
 #. [toggle_button]: id=ignore_all
 #: data/gui/default/window/game_save_oos.cfg:134
 msgid "Ignore All"
-msgstr ""
+msgstr "Игнорировать все"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit_game
@@ -1039,7 +1039,7 @@ msgstr "Игры"
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:176
 msgid "Requires a password to join"
-msgstr ""
+msgstr "Присоединяться только с паролем"
 
 #. [toggle_button]: id=use_map_settings
 #. [row]
@@ -1073,7 +1073,7 @@ msgstr "Модификатор опыта"
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:185
 msgid "Time limit"
-msgstr ""
+msgstr "Лимит времени"
 
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:304
@@ -1083,7 +1083,7 @@ msgstr "Сортировать игроков:"
 #. [toggle_button]: id=player_list_sort_relation
 #: data/gui/default/window/lobby_main.cfg:312
 msgid "Friends first, ignored people last"
-msgstr ""
+msgstr "Сначала друзья, игнор в конце"
 
 #. [toggle_button]: id=player_list_sort_name
 #: data/gui/default/window/lobby_main.cfg:320
@@ -1138,7 +1138,7 @@ msgstr "Друзья"
 #. [toggle_button]: id=filter_without_ignored
 #: data/gui/default/window/lobby_main.cfg:476
 msgid "No ignored"
-msgstr ""
+msgstr "Нет игнорируемых"
 
 #. [toggle_button]: id=filter_vacant_slots
 #: data/gui/default/window/lobby_main.cfg:482
@@ -1237,7 +1237,7 @@ msgstr "Проверить состояние"
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:147
 msgid "Kick / ban reason:"
-msgstr ""
+msgstr "Причина кика / бана:"
 
 #. [button]: id=kick
 #: data/gui/default/window/lobby_player_info.cfg:160
@@ -1248,7 +1248,7 @@ msgstr "Кикнуть"
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:167
 msgid "Ban time:"
-msgstr ""
+msgstr "Время бана:"
 
 #. [button]: id=kick_ban
 #: data/gui/default/window/lobby_player_info.cfg:180
@@ -1626,7 +1626,7 @@ msgstr "Пропускать ходы компьютера"
 
 #: src/game_preferences_display.cpp:161
 msgid "Interrupt move when an ally is sighted"
-msgstr ""
+msgstr "Прерывать движение, если замечен союзник"
 
 #: src/game_preferences_display.cpp:162
 msgid "Show Grid"
@@ -2152,6 +2152,8 @@ msgid ""
 "Whisper session with $name started. If you don't want to receive messages "
 "from this user, type /ignore $name\n"
 msgstr ""
+"Открылась сессия шёпотов с $name. Если Вы не хотите получать сообщения от "
+"этого пользователя, наберите /ignore $name\n"
 
 #: src/gui/dialogs/lobby_main.cpp:695
 msgid "Room $name joined"
@@ -2163,7 +2165,7 @@ msgstr "Необходим пароль"
 
 #: src/gui/dialogs/lobby_main.cpp:1121
 msgid "Joining this game requires a password."
-msgstr ""
+msgstr "Чтобы присоединиться к игре, нужен пароль."
 
 #: src/gui/dialogs/lobby_main.cpp:1122
 msgid "Password: "
