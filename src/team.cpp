@@ -341,13 +341,11 @@ void team::set_recruits(const std::set<std::string>& recruits)
 	info_.average_price = 0;
 }
 
-void team::add_recruits(const std::set<std::string>& recruits)
+void team::add_recruit(const std::string &recruit)
 {
-	std::copy(recruits.begin(),recruits.end(),
-			std::inserter(info_.can_recruit, info_.can_recruit.end()));
+	info_.can_recruit.insert(recruit);
 	info_.average_price = 0;
 }
-
 
 namespace {
 	struct count_average {

@@ -701,38 +701,26 @@ WML_HANDLER_FUNCTION(unpetrify, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(allow_recruit, /*event_info*/, cfg)
 {
-		std::string side = cfg["side"];
-		const int side_num = lexical_cast_default<int>(side,1);
-		const size_t index = side_num-1;
+	int side_num = lexical_cast_default<int>(cfg["side"], 1);
+	unsigned index = side_num - 1;
+	if (index >= resources::teams->size()) return;
 
-		if (index >= resources::teams->size())
-			return;
-
-		const std::string type = cfg["type"];
-
-		const std::vector<std::string>& types = utils::split(type);
-		const std::set<std::string> recruits(types.begin(), types.end());
-		(*resources::teams)[index].add_recruits(recruits);
-		for(std::vector<std::string>::const_iterator i = types.begin(); i != types.end(); ++i) {
-			preferences::encountered_units().insert(*i);
-		}
+	foreach (const std::string &r, utils::split(cfg["type"])) {
+		(*resources::teams)[index].add_recruit(r);
+		preferences::encountered_units().insert(r);
 	}
+}
 
 WML_HANDLER_FUNCTION(disallow_recruit, /*event_info*/, cfg)
 {
-		std::string side = cfg["side"];
-		const int side_num = lexical_cast_default<int>(side,1);
-		const size_t index = side_num-1;
+	int side_num = lexical_cast_default<int>(cfg["side"], 1);
+	unsigned index = side_num - 1;
+	if (index >= resources::teams->size()) return;
 
-		if (index >= resources::teams->size())
-			return;
-
-		const std::string type = cfg["type"];
-		const std::vector<std::string>& types = utils::split(type);
-		for(std::vector<std::string>::const_iterator i = types.begin(); i != types.end(); ++i) {
-			(*resources::teams)[index].remove_recruit(*i);
-		}
+	foreach (const std::string &r, utils::split(cfg["type"])) {
+		(*resources::teams)[index].remove_recruit(r);
 	}
+}
 
 WML_HANDLER_FUNCTION(set_recruit, /*event_info*/, cfg)
 {

@@ -153,8 +153,7 @@ public:
 
 	const std::set<std::string>& recruits() const
 		{ return info_.can_recruit; }
-	void add_recruits(const std::set<std::string>& recruits);
-	void add_recruit(const std::string& s) { info_.can_recruit.insert(s); }
+	void add_recruit(const std::string &);
 	void remove_recruit(const std::string& recruits);
 	void set_recruits(const std::set<std::string>& recruits);
 	const std::string& name() const
