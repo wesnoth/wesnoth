@@ -1136,6 +1136,18 @@ static int impl_side_get(lua_State *L)
 	return_bool_attrib("objectives_changed", t.objectives_changed());
 	return_tstring_attrib("user_team_name", t.user_team_name());
 	return_string_attrib("team_name", t.team_name());
+
+	if (strcmp(m, "recruit") == 0) {
+		std::set<std::string> const &recruits = t.recruits();
+		lua_createtable(L, recruits.size(), 0);
+		int i = 1;
+		foreach (std::string const &r, t.recruits()) {
+			lua_pushstring(L, r.c_str());
+			lua_rawseti(L, -2, i++);
+		}
+		return 1;
+	}
+
 	return_cfg_attrib("__cfg", t.write(cfg));
 	return 0;
 }
@@ -1161,6 +1173,19 @@ static int impl_side_set(lua_State *L)
 	modify_bool_attrib("objectives_changed", t.set_objectives_changed(value != 0));
 	modify_tstring_attrib("user_team_name", t.change_team(t.team_name(), value));
 	modify_string_attrib("team_name", t.change_team(value, t.user_team_name()));
+
+	if (strcmp(m, "recruit") == 0) {
+		t.set_recruits(std::set<std::string>());
+		if (!lua_istable(L, 3)) return 0;
+		for (int i = 1;; ++i) {
+			lua_rawgeti(L, 3, i);
+			if (lua_isnil(L, -1)) break;
+			t.add_recruit(lua_tostring(L, -1));
+			lua_pop(L, 1);
+		}
+		return 0;
+	}
+
 	return 0;
 }
 
