@@ -1686,6 +1686,31 @@ static int intf_put_unit(lua_State *L)
 	return 0;
 }
 
+/**
+ * Finds a vacant tile.
+ * Args 1,2: location.
+ * Arg 3: optional unit for checking movement type.
+ */
+static int intf_find_vacant_tile(lua_State *L)
+{
+	int x = lua_tointeger(L, 1), y = lua_tointeger(L, 2);
+
+	const unit *u = NULL;
+	if (luaW_hasmetatable(L, 3, getunitKey)) {
+		size_t id = *static_cast<size_t *>(lua_touserdata(L, 3));
+		unit_map::const_unit_iterator ui = resources::units->find(id);
+		if (ui.valid()) u = &ui->second;
+	}
+
+	map_location res = find_vacant_tile(*resources::game_map,
+		*resources::units, map_location(x -1, y - 1), VACANT_ANY, u);
+	if (!res.valid()) return 0;
+
+	lua_pushinteger(L, res.x + 1);
+	lua_pushinteger(L, res.y + 1);
+	return 2;
+}
+
 LuaKernel::LuaKernel()
 	: mState(luaL_newstate())
 {
@@ -1713,6 +1738,7 @@ LuaKernel::LuaKernel()
 		{ "fire",                     &intf_fire                     },
 		{ "eval_conditional",         &intf_eval_conditional         },
 		{ "find_path",                &intf_find_path                },
+		{ "find_vacant_tile",         &intf_find_vacant_tile         },
 		{ "get_map_size",             &intf_get_map_size             },
 		{ "get_selected_tile",        &intf_get_selected_tile        },
 		{ "get_side",                 &intf_get_side                 },
