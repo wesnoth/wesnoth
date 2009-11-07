@@ -37,8 +37,6 @@ enum VACANT_TILE_TYPE { VACANT_CASTLE, VACANT_ANY };
 /**
  * Function which will find a location on the board that is
  * as near to loc as possible, but which is unoccupied by any units.
- * If terrain is not 0, then the location found must be of the given terrain type,
- * and must have a path of that terrain type to loc.
  * If no valid location can be found, it will return a null location.
  */
 map_location find_vacant_tile(const gamemap& map,
