@@ -1488,41 +1488,39 @@ int village_owner(const map_location& loc, const std::vector<team>& teams)
 	return -1;
 }
 
-bool get_village(const map_location& loc, game_display& disp,
-		std::vector<team>& teams, size_t team_num,
-		const unit_map& units, int *action_timebonus)
+bool get_village(const map_location& loc, int side, int *action_timebonus)
 {
-	if(team_num < teams.size() && teams[team_num].owns_village(loc)) {
+	std::vector<team> &teams = *resources::teams;
+	team *t = unsigned(side - 1) < teams.size() ? &teams[side - 1] : NULL;
+	if (t && t->owns_village(loc)) {
 		return false;
 	}
 
-	const bool has_leader = units.find_leader(team_num + 1) != units.end();
+	bool has_leader = resources::units->find_leader(side).valid();
 	bool grants_timebonus = false;
 
 	// We strip the village off all other sides, unless it is held by an ally
 	// and we don't have a leader (and thus can't occupy it)
 	for(std::vector<team>::iterator i = teams.begin(); i != teams.end(); ++i) {
-		const unsigned int side = i - teams.begin() + 1;
-		if(team_num >= teams.size() || has_leader || teams[team_num].is_enemy(side)) {
+		int i_side = i - teams.begin() + 1;
+		if (!t || has_leader || t->is_enemy(i_side)) {
 			i->lose_village(loc);
-			if(team_num + 1 != side && action_timebonus) {
+			if (side != i_side && action_timebonus) {
 				grants_timebonus = true;
 			}
 		}
 	}
 
+	if (!t) return false;
+
 	if(grants_timebonus) {
-		teams[team_num].set_action_bonus_count(1 + teams[team_num].action_bonus_count());
+		t->set_action_bonus_count(1 + t->action_bonus_count());
 		*action_timebonus = 1;
 	}
 
-	if(team_num >= teams.size()) {
-		return false;
-	}
-
 	if(has_leader) {
-		disp.invalidate(loc);
-		return teams[team_num].get_village(loc);
+		resources::screen->invalidate(loc);
+		return t->get_village(loc);
 	}
 
 	return false;
@@ -2233,7 +2231,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 
 		if(size_t(orig_village_owner) != team_num) {
 			ui->second.set_movement(0);
-			event_mutated = get_village(steps.back(), disp, teams, team_num, units, &action_time_bonus);
+			event_mutated = get_village(steps.back(), team_num + 1, &action_time_bonus);
 		}
 	}
 

@@ -234,13 +234,10 @@ private:
 int village_owner(const map_location& loc, const std::vector<team>& teams);
 
 /**
- * Makes it so the village at the given location
- * is owned by the given 0-based team number.
+ * Makes it so the village at the given location is owned by the given side.
  * Returns true if getting the village triggered a mutating event.
  */
-bool get_village(const map_location& loc, game_display& disp,
-                 std::vector<team>& teams, size_t team_num,
-                 const unit_map& units, int *time_bonus = NULL);
+bool get_village(const map_location& loc, int side, int *time_bonus = NULL);
 
 /**
  * Resets resting for all units on this side: should be called after calculate_healing().

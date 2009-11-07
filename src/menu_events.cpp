@@ -1052,7 +1052,7 @@ void menu_handler::undo(int side_num)
 		}
 
 		if(map_.is_village(route.front())) {
-			get_village(route.front(),*gui_,teams_,action.original_village_owner,units_);
+			get_village(route.front(), action.original_village_owner + 1);
 			//MP_COUNTDOWN take away capture bonus
 			if(action.countdown_time_bonus)
 			{
@@ -1210,7 +1210,7 @@ void menu_handler::redo(int side_num)
 		u->second.set_standing();
 
 		if(map_.is_village(route.back())) {
-			get_village(route.back(),*gui_,teams_,u->second.side()-1,units_);
+			get_village(route.back(), u->second.side());
 			//MP_COUNTDOWN restore capture bonus
 			if(action.countdown_time_bonus)
 			{
@@ -1414,8 +1414,7 @@ void menu_handler::create_unit_2(mouse_handler& mousehandler)
 	units_.replace(loc, chosen);
 
 	if(map_.is_village(loc)) {
-		int team = chosen.side() - 1; // translate to 0-based team number
-		get_village(loc, *gui_, teams_, team, units_);
+		get_village(loc, chosen.side());
 	}
 
 	gui_->invalidate(loc);
@@ -1505,8 +1504,7 @@ void menu_handler::create_unit(mouse_handler& mousehandler)
 		units_.replace(loc, chosen);
 
 		if(map_.is_village(loc)) {
-			int team = chosen.side() - 1; // translate to 0-based team number
-			get_village(loc, *gui_, teams_, team, units_);
+			get_village(loc, chosen.side());
 		}
 
 		gui_->invalidate(loc);
@@ -1529,7 +1527,7 @@ void menu_handler::change_side(mouse_handler& mousehandler)
 		if(team > team::nteams()) {
 			team = 0;
 		}
-		get_village(loc, *gui_, teams_, team, units_);
+		get_village(loc, team + 1);
 	} else {
 		int side = i->second.side();
 		++side;
@@ -1539,8 +1537,7 @@ void menu_handler::change_side(mouse_handler& mousehandler)
 		i->second.set_side(side);
 
 		if(map_.is_village(loc)) {
-			int team = side - 1; // translate to 0-based team number
-			get_village(loc, *gui_, teams_, team, units_);
+			get_village(loc, side);
 		}
 	}
 }

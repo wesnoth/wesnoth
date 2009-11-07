@@ -669,7 +669,7 @@ WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 	u->second.set_standing();
 
 	if (resources::game_map->is_village(vacant_dst)) {
-		get_village(vacant_dst, *resources::screen, *resources::teams, side - 1, *resources::units);
+		get_village(vacant_dst, side);
 	}
 
 	resources::screen->invalidate_unit_after_move(src_loc, dst);
@@ -2022,7 +2022,7 @@ WML_HANDLER_FUNCTION(unit, /*event_info*/, cfg)
 	resources::units->add(loc, new_unit);
 
 	if (resources::game_map->is_village(loc)) {
-		get_village(loc, *resources::screen, *resources::teams, new_unit.side() - 1, *resources::units);
+		get_village(loc, new_unit.side());
 	}
 
 	resources::screen->invalidate(loc);
@@ -2745,20 +2745,15 @@ WML_HANDLER_FUNCTION(store_locations, /*event_info*/, cfg)
 // Command to take control of a village for a certain side
 WML_HANDLER_FUNCTION(capture_village, /*event_info*/, cfg)
 {
-		std::string side = cfg["side"];
-		const int side_num = lexical_cast_default<int>(side);
-		// If 'side' is 0, then it will become an invalid index,
-		// and so the village will become neutral.
-		const size_t team_num = size_t(side_num-1);
+	int side_num = lexical_cast_default<int>(cfg["side"]);
+	std::vector<map_location> locs(multiple_locs(cfg));
 
-		const std::vector<map_location> locs(multiple_locs(cfg));
-
-		for(std::vector<map_location>::const_iterator i = locs.begin(); i != locs.end(); ++i) {
-			if (resources::game_map->is_village(*i)) {
-				get_village(*i, *resources::screen, *resources::teams, team_num, *resources::units);
-			}
+	foreach (const map_location &loc, multiple_locs(cfg)) {
+		if (resources::game_map->is_village(loc)) {
+			get_village(loc, side_num);
 		}
 	}
+}
 
 // Command to remove a variable
 WML_HANDLER_FUNCTION(clear_variable, /*event_info*/, cfg)
