@@ -131,7 +131,6 @@ public:
 
 	bool can_recruit() const { return utils::string_bool(cfg_["canrecruit"]); }
 	bool incapacitated() const { return get_state(STATE_PETRIFIED); }
-	const std::vector<std::string>& recruits() const { return recruits_; }
 	int total_movement() const { return max_movement_; }
 	int movement_left() const { return (movement_ == 0 || incapacitated()) ? 0 : movement_; }
 	void set_hold_position(bool value) { hold_position_ = value; }
@@ -392,8 +391,6 @@ private:
 	std::string unit_loop_formula_;
 	std::string unit_priority_formula_;
 	game_logic::map_formula_callable_ptr formula_vars_;
-
-	std::vector<std::string> recruits_;
 
 	int movement_;
 	int max_movement_;

@@ -114,8 +114,6 @@ unit::unit(const unit& o):
            unit_priority_formula_(o.unit_priority_formula_),
            formula_vars_(o.formula_vars_ ? new game_logic::map_formula_callable(*o.formula_vars_) : o.formula_vars_),
 
-           recruits_(o.recruits_),
-
            movement_(o.movement_),
            max_movement_(o.max_movement_),
            movement_costs_(o.movement_costs_),
@@ -196,7 +194,6 @@ unit::unit(unit_map* unitmap, const config& cfg,
 	unit_loop_formula_(),
         unit_priority_formula_(),
 	formula_vars_(),
-	recruits_(),
 	movement_(0),
 	max_movement_(0),
 	movement_costs_(),
@@ -275,7 +272,6 @@ unit::unit(const config& cfg,bool use_traits) :
 	unit_loop_formula_(),
         unit_priority_formula_(),
 	formula_vars_(),
-	recruits_(),
 	movement_(0),
 	max_movement_(0),
 	movement_costs_(),
@@ -380,7 +376,6 @@ unit::unit(unit_map *unitmap, const unit_type *t, int side,
 	unit_loop_formula_(),
     unit_priority_formula_(),
 	formula_vars_(),
-	recruits_(),
 	movement_(0),
 	max_movement_(0),
 	movement_costs_(),
@@ -1350,11 +1345,6 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	facing_ = map_location::parse_direction(cfg["facing"]);
 	if(facing_ == map_location::NDIRECTIONS) facing_ = map_location::SOUTH_EAST;
 
-	recruits_ = utils::split(cfg["recruits"]);
-	if(recruits_.size() == 1 && recruits_.front() == "") {
-		recruits_.clear();
-	}
-
 	if (const config &mods = cfg.child("modifications")) {
 		modifications_ = mods;
 		cfg_.remove_child("modifications",0);
@@ -1670,7 +1660,6 @@ void unit::write(config& cfg) const
 	cfg["unrenamable"] = unrenamable_ ? "yes" : "no";
 	cfg["alpha"] = lexical_cast_default<std::string>(alpha_);
 
-	cfg["recruits"] = utils::join(recruits_);
 	cfg["attacks_left"] = lexical_cast_default<std::string>(attacks_left_);
 	cfg["max_attacks"] = lexical_cast_default<std::string>(max_attacks_);
 	cfg["zoc"] = emit_zoc_ ? "yes" : "no";
