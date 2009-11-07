@@ -1654,7 +1654,7 @@ static int intf_put_unit(lua_State *L)
 
 	unit *u = NULL;
 	int x = 0, y = 0;
-	if (lua_type(L, 1) == LUA_TNUMBER) {
+	if (lua_isnumber(L, 1)) {
 		unit_arg = 3;
 		x = lua_tointeger(L, 1);
 		y = lua_tointeger(L, 2);
