@@ -1485,7 +1485,7 @@ lua_calculator::~lua_calculator()
  * - Args 1,2: source location. (Or Arg 1: unit.)
  * - Args 3,4: destination.
  * - Arg 5: optional cost function or
- *          table (optional fields: ignore_units, viewing_side)
+ *          table (optional fields: ignore_units, ignore_teleport, max_cost, viewing_side).
  * - Ret 1: array of pairs containing path steps.
  * - Ret 2: path cost.
  */
