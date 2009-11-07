@@ -1610,6 +1610,57 @@ static int intf_find_path(lua_State *L)
 	return 2;
 }
 
+/**
+ * Places a unit on the map.
+ * Args 1,2: (optional) location.
+ * Arg 3: WML table describing a unit, or nothing/nil to delete.
+ */
+static int intf_put_unit(lua_State *L)
+{
+	int unit_arg = 1;
+	if (false) {
+		error_call_destructors_1:
+		return luaL_typerror(L, unit_arg, "WML table");
+		error_call_destructors_2:
+		return luaL_argerror(L, unit_arg, "missing 'type' field");
+		error_call_destructors_3:
+		return luaL_argerror(L, 1, "invalid location");
+	}
+
+	unit *u = NULL;
+	int x = 0, y = 0;
+	if (lua_type(L, 1) == LUA_TNUMBER) {
+		unit_arg = 3;
+		x = lua_tointeger(L, 1);
+		y = lua_tointeger(L, 2);
+	}
+
+	if (!lua_isnoneornil(L, unit_arg)) {
+		config cfg;
+		if (!luaW_toconfig(L, unit_arg, cfg))
+			goto error_call_destructors_1;
+		if (cfg["type"].empty())
+			goto error_call_destructors_2;
+		if (unit_arg == 1) {
+			x = lexical_cast_default(cfg["x"], 0);
+			y = lexical_cast_default(cfg["y"], 0);
+		}
+		u = new unit(resources::units, cfg, true, resources::state_of_game);
+	}
+
+	map_location loc(x - 1, y - 1);
+	if (!resources::game_map->on_board(loc)) {
+		delete u;
+		goto error_call_destructors_3;
+	}
+
+	resources::units->erase(loc);
+	if (u) resources::units->add(loc, *u);
+	delete u;
+
+	return 0;
+}
+
 LuaKernel::LuaKernel()
 	: mState(luaL_newstate())
 {
@@ -1648,6 +1699,7 @@ LuaKernel::LuaKernel()
 		{ "get_variable",             &intf_get_variable             },
 		{ "get_village_owner",        &intf_get_village_owner        },
 		{ "message",                  &intf_message                  },
+		{ "put_unit",                 &intf_put_unit                 },
 		{ "register_wml_action",      &intf_register_wml_action      },
 		{ "require",                  &intf_require                  },
 		{ "set_terrain",              &intf_set_terrain              },
