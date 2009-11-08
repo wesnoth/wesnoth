@@ -452,170 +452,6 @@ class CrossRef:
                         self.unit_ids[uid].append(Reference(namespace, filename, n+1))
                         latch_unit= False
         dfp.close()
-    def scan_for_references(self, ns, fn):
-        rfp = open(fn)
-        attack_name = None
-        beneath = 0
-        ignoreflag = False
-        state = "outside"
-        formals = []
-        for (n, line) in enumerate(rfp):
-            if line.strip().startswith("#define"):
-                formals = line.strip().split()[2:]
-            elif line.startswith("#enddef"):
-                formals = []
-            comment = ""
-            if '#' in line:
-                if "# wmlscope: start ignoring" in line:
-                    if self.warnlevel > 1:
-                        print '"%s", line %d: starting ignoring (reference pass)' \
-                              % (fn, n+1)
-                    ignoreflag = True
-                elif "# wmlscope: stop ignoring" in line:
-                    if self.warnlevel > 1:
-                        print '"%s", line %d: stopping ignoring (reference pass)' \
-                              % (fn, n+1)
-                    ignoreflag = False
-                m = re.search("# *wmlscope: self.warnlevel ([0-9]*)", line)
-                if m:
-                    self.warnlevel = int(m.group(1))
-                    print '"%s", line %d: self.warnlevel set to %d (reference-gathering pass)' \
-                         % (fn, n+1, self.warnlevel)
-                    continue
-                fields = line.split('#')
-                line = fields[0]
-                if len(fields) > 1:
-                    comment = fields[1]
-            if ignoreflag or not line:
-                continue
-            # Find references to macros
-            for match in re.finditer(CrossRef.macro_reference, line):
-                name = match.group(1)
-                candidates = 0
-                if self.warnlevel >=2:
-                    print '"%s", line %d: seeking definition of %s' \
-                          % (fn, n+1, name)
-                if name in formals:
-                    continue
-                elif name in self.xref:
-                    # Count the number of actual arguments.
-                    # Set args to None if the call doesn't
-                    # close on this line
-                    brackdepth = parendepth = 0
-                    instring = False
-                    args = []
-                    arg = ""
-                    for i in range(match.start(0), len(line)):
-                        if instring:
-                            if line[i] == '"':
-                                instring = False
-                            else:
-                                arg += line[i]
-                        elif line[i] == '"':
-                            instring = not instring
-                        elif line[i] == "{":
-                            if brackdepth > 0:
-                                arg += line[i]
-                            brackdepth += 1
-                        elif line[i] == "}":
-                            brackdepth -= 1
-                            if brackdepth == 0:
-                                if not line[i-1].isspace():
-                                    args.append(arg)
-                                    arg = ""
-                                break
-                            else:
-                                arg += line[i]
-                        elif line[i] == "(":
-                            parendepth += 1
-                        elif line[i] == ")":
-                            parendepth -= 1
-                        elif not line[i-1].isspace() and \
-                             line[i].isspace() and \
-                             brackdepth == 1 and \
-                             parendepth == 0:
-                            args.append(arg)
-                            arg = ""
-                        elif not line[i].isspace():
-                            arg += line[i]
-                    if brackdepth > 0 or parendepth > 0:
-                        args = None
-                    else:
-                        args.pop(0)
-                    #if args:
-                    #    print '"%s", line %d: args of %s is %s' \
-                    #          % (fn, n+1, name, args)
-                    # Figure out which macros might resolve this
-                    for defn in self.xref[name]:
-                        if self.visible_from(defn, fn, n+1):
-                            candidates += 1
-                            defn.append(fn, n+1, args)
-                    if candidates > 1:
-                        print "%s: more than one definition of %s is visible here." % (Reference(ns, fn, n), name)
-                if candidates == 0:
-                    self.unresolved.append((name,Reference(ns,fn,n+1,args=args)))
-            # Don't be fooled by HTML image references in help strings.
-            if "<img>" in line:
-                continue
-            # Find references to resource files
-            for match in re.finditer(CrossRef.file_reference, line):
-                name = match.group(0)
-                # Catches maps that look like macro names.
-                if (name.endswith(".map") or name.endswith(".mask")) and name[0] == '{':
-                    name = name[1:]
-                key = None
-                # If name is already in our resource list, it's easy.
-                if name in self.fileref and self.visible_from(name, fn, n):
-                    self.fileref[name].append(fn, n+1)
-                    continue
-                # If the name contains subtitutable parts, count
-                # it as a reference to everything the substitutions
-                # could potentially match.
-                elif '{' in name:
-                    pattern = re.sub(r"\{[^}]*\}", '.*', name)
-                    key = self.mark_matching_resources(pattern, fn,n+1)
-                    if key:
-                        self.fileref[key].append(fn, n+1)
-                else:
-                    candidates = []
-                    for trial in self.fileref:
-                        if trial.endswith(os.sep + name) and self.visible_from(trial, fn, n):
-                            key = trial
-                            self.fileref[trial].append(fn, n+1)
-                            candidates.append(trial)
-                    if len(candidates) > 1:
-                        print "%s: more than one definition of %s is visible here (%s)." % (Reference(ns,fn, n), name, ", ".join(candidates))
-                if not key:
-                    self.missing.append((name, Reference(ns,fn,n+1)))
-            # Notice implicit references through attacks
-            if state == "outside":
-                if "[attack]" in line:
-                    beneath = 0
-                    attack_name = default_icon = None
-                    have_icon = False
-                elif "name=" in line and not "no-icon" in comment:
-                    attack_name = line[line.find("name=")+5:].strip()
-                    default_icon = os.path.join("attacks", attack_name  + ".png")
-                elif "icon=" in line and beneath == 0:
-                    have_icon = True
-                elif "[/attack]" in line:
-                    key = None
-                    if attack_name and not have_icon:
-                         candidates = []
-                         for trial in self.fileref:
-                            if trial.endswith(os.sep + default_icon) and self.visible_from(trial, fn, n):
-                                key = trial
-                                self.fileref[trial].append(fn, n+1)
-                                candidates.append(trial)
-                         if len(candidates) > 1:
-                             print "%s: more than one definition of %s is visible here (%s)." % (Reference(ns,fn, n), name, ", ".join(candidates))
-                    if not key:
-                        self.missing.append((default_icon, Reference(ns,fn,n+1)))
-                elif line.strip().startswith("[/"):
-                    beneath -= 1
-                elif line.strip().startswith("["):
-                    beneath += 1
-        rfp.close()
     def __init__(self, dirpath=[], exclude="", warnlevel=0):
         "Build cross-reference object from the specified filelist."
         self.filelist = Forest(dirpath, exclude)
@@ -648,11 +484,173 @@ class CrossRef:
         # Next, decorate definitions with all references from the filelist.
         self.unresolved = []
         self.missing = []
+        formals = []
+        state = "outside"
         if self.warnlevel >=2:
             print "*** Beginning reference-gathering pass..."
         for (ns, fn) in all_in:
             if iswml(fn):
-                self.scan_for_references(ns, fn)
+                rfp = open(fn)
+                attack_name = None
+                beneath = 0
+                ignoreflag = False
+                for (n, line) in enumerate(rfp):
+                    if line.strip().startswith("#define"):
+                        formals = line.strip().split()[2:]
+                    elif line.startswith("#enddef"):
+                        formals = []
+                    comment = ""
+                    if '#' in line:
+                        if "# wmlscope: start ignoring" in line:
+                            if self.warnlevel > 1:
+                                print '"%s", line %d: starting ignoring (reference pass)' \
+                                      % (fn, n+1)
+                            ignoreflag = True
+                        elif "# wmlscope: stop ignoring" in line:
+                            if self.warnlevel > 1:
+                                print '"%s", line %d: stopping ignoring (reference pass)' \
+                                      % (fn, n+1)
+                            ignoreflag = False
+                        m = re.search("# *wmlscope: self.warnlevel ([0-9]*)", line)
+                        if m:
+                            self.warnlevel = int(m.group(1))
+                            print '"%s", line %d: self.warnlevel set to %d (reference-gathering pass)' \
+                                 % (fn, n+1, self.warnlevel)
+                            continue
+                        fields = line.split('#')
+                        line = fields[0]
+                        if len(fields) > 1:
+                            comment = fields[1]
+                    if ignoreflag or not line:
+                        continue
+                    # Find references to macros
+                    for match in re.finditer(CrossRef.macro_reference, line):
+                        name = match.group(1)
+                        candidates = 0
+                        if self.warnlevel >=2:
+                            print '"%s", line %d: seeking definition of %s' \
+                                  % (fn, n+1, name)
+                        if name in formals:
+                            continue
+                        elif name in self.xref:
+                            # Count the number of actual arguments.
+                            # Set args to None if the call doesn't
+                            # close on this line
+                            brackdepth = parendepth = 0
+                            instring = False
+                            args = []
+                            arg = ""
+                            for i in range(match.start(0), len(line)):
+                                if instring:
+                                    if line[i] == '"':
+                                        instring = False
+                                    else:
+                                        arg += line[i]
+                                elif line[i] == '"':
+                                    instring = not instring
+                                elif line[i] == "{":
+                                    if brackdepth > 0:
+                                        arg += line[i]
+                                    brackdepth += 1
+                                elif line[i] == "}":
+                                    brackdepth -= 1
+                                    if brackdepth == 0:
+                                        if not line[i-1].isspace():
+                                            args.append(arg)
+                                            arg = ""
+                                        break
+                                    else:
+                                        arg += line[i]
+                                elif line[i] == "(":
+                                    parendepth += 1
+                                elif line[i] == ")":
+                                    parendepth -= 1
+                                elif not line[i-1].isspace() and \
+                                     line[i].isspace() and \
+                                     brackdepth == 1 and \
+                                     parendepth == 0:
+                                    args.append(arg)
+                                    arg = ""
+                                elif not line[i].isspace():
+                                    arg += line[i]
+                            if brackdepth > 0 or parendepth > 0:
+                                args = None
+                            else:
+                                args.pop(0)
+                            #if args:
+                            #    print '"%s", line %d: args of %s is %s' \
+                            #          % (fn, n+1, name, args)
+                            # Figure out which macros might resolve this
+                            for defn in self.xref[name]:
+                                if self.visible_from(defn, fn, n+1):
+                                    candidates += 1
+                                    defn.append(fn, n+1, args)
+                            if candidates > 1:
+                                print "%s: more than one definition of %s is visible here." % (Reference(ns, fn, n), name)
+                        if candidates == 0:
+                            self.unresolved.append((name,Reference(ns,fn,n+1,args=args)))
+                    # Don't be fooled by HTML image references in help strings.
+                    if "<img>" in line:
+                        continue
+                    # Find references to resource files
+                    for match in re.finditer(CrossRef.file_reference, line):
+                        name = match.group(0)
+                        # Catches maps that look like macro names.
+                        if (name.endswith(".map") or name.endswith(".mask")) and name[0] == '{':
+                            name = name[1:]
+                        key = None
+                        # If name is already in our resource list, it's easy.
+                        if name in self.fileref and self.visible_from(name, fn, n):
+                            self.fileref[name].append(fn, n+1)
+                            continue
+                        # If the name contains subtitutable parts, count
+                        # it as a reference to everything the substitutions
+                        # could potentially match.
+                        elif '{' in name:
+                            pattern = re.sub(r"\{[^}]*\}", '.*', name)
+                            key = self.mark_matching_resources(pattern, fn,n+1)
+                            if key:
+                                self.fileref[key].append(fn, n+1)
+                        else:
+                            candidates = []
+                            for trial in self.fileref:
+                                if trial.endswith(os.sep + name) and self.visible_from(trial, fn, n):
+                                    key = trial
+                                    self.fileref[trial].append(fn, n+1)
+                                    candidates.append(trial)
+                            if len(candidates) > 1:
+                                print "%s: more than one definition of %s is visible here (%s)." % (Reference(ns,fn, n), name, ", ".join(candidates))
+                        if not key:
+                            self.missing.append((name, Reference(ns,fn,n+1)))
+                    # Notice implicit references through attacks
+                    if state == "outside":
+                        if "[attack]" in line:
+                            beneath = 0
+                            attack_name = default_icon = None
+                            have_icon = False
+                        elif "name=" in line and not "no-icon" in comment:
+                            attack_name = line[line.find("name=")+5:].strip()
+                            default_icon = os.path.join("attacks", attack_name  + ".png")
+                        elif "icon=" in line and beneath == 0:
+                            have_icon = True
+                        elif "[/attack]" in line:
+                            if attack_name and not have_icon:
+                                candidates = []
+                                key = None
+                                for trial in self.fileref:
+                                    if trial.endswith(os.sep + default_icon) and self.visible_from(trial, fn, n):
+                                        key = trial
+                                        self.fileref[trial].append(fn, n+1)
+                                        candidates.append(trial)
+                                if len(candidates) > 1:
+                                    print "%s: more than one definition of %s is visible here (%s)." % (Reference(ns,fn, n), name, ", ".join(candidates))
+                            if not key:
+                                self.missing.append((default_icon, Reference(ns,fn,n+1)))
+                        elif line.strip().startswith("[/"):
+                            beneath -= 1
+                        elif line.strip().startswith("["):
+                            beneath += 1
+                rfp.close()
         # Check whether each namespace has a defined export property
         for namespace in self.dirpath:
             if namespace not in self.properties or "export" not in self.properties[namespace]:
