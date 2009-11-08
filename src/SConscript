@@ -420,11 +420,7 @@ wesnothd_sources = Split("""
     server/sample_user_handler.cpp
     server/simple_wml.cpp
     server/user_handler.cpp
-    server/mail.cpp
     time.cpp
-    server/jwsmtp/mailer.cpp
-    server/jwsmtp/compat.cpp
-    server/jwsmtp/base64.cpp
     """)
 wesnothd_sources.extend(env.Object("server/server.cpp", EXTRA_DEFINE = env['fifodir'] and "FIFODIR='\"$fifodir\"'" or None))
 

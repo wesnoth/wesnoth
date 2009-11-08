@@ -504,7 +504,6 @@ SET(wesnothd_SRC
 	server/ban.cpp
     server/game.cpp
     server/input_stream.cpp
-    server/mail.cpp
     server/metrics.cpp
     server/player.cpp
     server/player_network.cpp
@@ -520,9 +519,6 @@ SET(wesnothd_SRC
 	time.cpp
     network_worker.cpp
     loadscreen_empty.cpp 
-    server/jwsmtp/mailer.cpp
-    server/jwsmtp/compat.cpp
-    server/jwsmtp/base64.cpp
 )
 
 add_executable(wesnothd ${wesnothd_SRC})

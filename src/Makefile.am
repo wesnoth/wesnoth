@@ -296,7 +296,6 @@ wesnothd_SOURCES = \
 	server/ban.cpp \
 	server/game.cpp \
 	server/input_stream.cpp \
-	server/mail.cpp \
 	server/metrics.cpp \
 	server/player.cpp \
 	server/player_network.cpp \
@@ -308,9 +307,6 @@ wesnothd_SOURCES = \
 	server/user_handler.cpp \
 	server/forum_user_handler.cpp \
 	server/sample_user_handler.cpp \
-	server/jwsmtp/mailer.cpp \
-	server/jwsmtp/compat.cpp \
-	server/jwsmtp/base64.cpp \
 	network.cpp \
 	network_worker.cpp \
 	time.cpp \

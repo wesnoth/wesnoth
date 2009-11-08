@@ -13,8 +13,7 @@
 */
 
 #include "user_handler.hpp"
-
-#include "mail.hpp"
+#include "../config.hpp"
 
 #include <ctime>
 
@@ -31,23 +30,10 @@ bool user_handler::send_mail(const std::string& to_user,
 		throw error("Could not send email. The email address of the user '" + to_user + "' is empty.");
 	}
 
-	if(!mailer_) {
-		throw user_handler::error("This server is configured not to send email.");
-	}
-
-	if(!(mailer_->send_mail(get_mail(to_user), subject, message))) {
-		throw user_handler::error("There was an error sending the email.");
-	}
-
-	return true;
+	throw user_handler::error("This server is configured not to send email.");
 }
 
-void user_handler::init_mailer(const config &c) {
-	if (c) {
-		mailer_ = new mailer(c);
-	} else {
-		mailer_ = NULL;
-	}
+void user_handler::init_mailer(const config &) {
 }
 
 std::string user_handler::create_salt(int length) {

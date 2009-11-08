@@ -17,8 +17,6 @@
 
 class config;
 
-#include "mail.hpp"
-
 #include "../global.hpp"
 
 #include <string>
@@ -38,16 +36,11 @@ class user_handler {
 
 	public:
 		user_handler()
-			: mailer_(NULL)
 		{
 		}
 
 		virtual ~user_handler()
 		{
-			if(mailer_) {
-				delete mailer_;
-				mailer_ = NULL;
-			}
 		}
 
 		/**
@@ -162,8 +155,6 @@ class user_handler {
 		 * Should return an empty string when not used.
 		 */
 		virtual std::string get_mail(const std::string& user) =0;
-
-		mailer* mailer_;
 };
 
 #endif //USER_HANDLER_HPP_INCLUDED
