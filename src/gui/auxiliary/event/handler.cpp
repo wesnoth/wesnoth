@@ -18,12 +18,12 @@
 
 #include "clipboard.hpp"
 #include "foreach.hpp"
-#include "video.hpp"
 #include "gui/auxiliary/event/dispatcher.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/widgets/helper.hpp"
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
+#include "video.hpp"
 
 #include <cassert>
 
