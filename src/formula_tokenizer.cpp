@@ -42,10 +42,10 @@ token get_token(iterator& i1, iterator i2) {
 	iterator it = i1;
 	if( *i1 >= 'A' ) {
 		//current character is >= 'A', limit search to the upper-half of the ASCII table
-		
+
 		// check if we parse now TOKEN_IDENTIFIER or TOKEN_OPERATOR/KEYWORD based on string
 		if( *i1 <= 'Z' || ( *i1 >= 'a' && *it <= 'z' ) || *i1 == '_' ) {
-			
+
 			while( i1 != i2 && ( ( *i1 >= 'a' && *i1 <= 'z' ) || *i1 == '_' || ( *i1 >= 'A' && *i1 <= 'Z' ) ) )
 				++i1;
 
@@ -112,7 +112,7 @@ token get_token(iterator& i1, iterator i2) {
 
 				while( i1 != i2 && *i1 <= ' ' && *i1 != '\n' )
 					++i1;
-	
+
 				return token( it, i1, TOKEN_WHITESPACE );
 			}
 		//try to further limit number of characters that we need to check:
@@ -161,7 +161,7 @@ token get_token(iterator& i1, iterator i2) {
 							return token( it, ++i1, TOKEN_OPERATOR);
 						else
 							return token( it, i1, TOKEN_OPERATOR);
-					} else 
+					} else
 						return token( it, i1, TOKEN_OPERATOR);
 				} else if( *i1 == '>' ) {
 					++i1;
@@ -170,7 +170,7 @@ token get_token(iterator& i1, iterator i2) {
 							return token( it, ++i1, TOKEN_OPERATOR);
 						else
 							return token( it, i1, TOKEN_OPERATOR);
-					} else 
+					} else
 						return token( it, i1, TOKEN_OPERATOR);
 				}
 			}
