@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: Wesnoth Latin 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-11-02 12:30+0100\n"
-"PO-Revision-Date: 2006-06-27 13:27+0200\n"
-"Last-Translator: Mark Polo <markpolo@gmail.com>\n"
+"PO-Revision-Date: 2009-11-08 08:38-0500\n"
+"Last-Translator: Michael Babich (Aethaeryn) <michaelbabich7@gmail.com>\n"
 "Language-Team: Latin\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -52,9 +52,8 @@ msgstr "dentes"
 
 #. [unit_type]: id=Dread Bat, race=bats
 #: data/core/units/bats/Bat_Dread.cfg:4
-#, fuzzy
 msgid "Dread Bat"
-msgstr "Vespertilio Vampiricus"
+msgstr "Vespertilio Formidinis"
 
 #. [unit_type]: id=Dread Bat, race=bats
 #: data/core/units/bats/Bat_Dread.cfg:26
@@ -67,7 +66,7 @@ msgstr ""
 #. [unit_type]: id=Vampire Bat, race=bats
 #: data/core/units/bats/Bat_Vampire.cfg:4
 msgid "Vampire Bat"
-msgstr "Vespertilio Vampiricus"
+msgstr "Vespertilio Strigum"
 
 #. [unit_type]: id=Vampire Bat, race=bats
 #: data/core/units/bats/Bat_Vampire.cfg:20
@@ -85,9 +84,8 @@ msgstr ""
 
 #. [unit_type]: id=Boat, race=mechanical
 #: data/core/units/boats/Boat.cfg:4
-#, fuzzy
 msgid "Boat"
-msgstr "Vespertilio Sanguinis"
+msgstr "Ratis"
 
 #. [unit_type]: id=Boat, race=mechanical
 #: data/core/units/boats/Boat.cfg:18
@@ -99,7 +97,7 @@ msgstr ""
 #. [unit_type]: id=Galleon, race=mechanical
 #: data/core/units/boats/Galleon.cfg:6
 msgid "Galleon"
-msgstr "Navis Veligera"
+msgstr "Navis Mercaturae"
 
 #. [unit_type]: id=Galleon, race=mechanical
 #: data/core/units/boats/Galleon.cfg:21
@@ -109,7 +107,7 @@ msgstr ""
 #. [unit_type]: id=Pirate Galleon, race=mechanical
 #: data/core/units/boats/Pirate_Galleon.cfg:4
 msgid "Pirate Galleon"
-msgstr "Navis Veligera Praedonum"
+msgstr "Navis Piratae"
 
 #. [unit_type]: id=Pirate Galleon, race=mechanical
 #: data/core/units/boats/Pirate_Galleon.cfg:18
@@ -126,13 +124,14 @@ msgstr ""
 #. [attack]: type=pierce
 #: data/core/units/boats/Pirate_Galleon.cfg:21
 #: data/core/units/boats/Transport_Galleon.cfg:22
+#, fuzzy
 msgid "ballista"
 msgstr "ballista"
 
 #. [unit_type]: id=Transport Galleon, race=mechanical
 #: data/core/units/boats/Transport_Galleon.cfg:4
 msgid "Transport Galleon"
-msgstr "Navis Veligera Transportis"
+msgstr "Navis Caudicarius"
 
 #. [unit_type]: id=Transport Galleon, race=mechanical
 #: data/core/units/boats/Transport_Galleon.cfg:18
@@ -146,9 +145,8 @@ msgstr ""
 
 #. [unit_type]: id=Drake Arbiter, race=drake
 #: data/core/units/drakes/Arbiter.cfg:4
-#, fuzzy
 msgid "Drake Arbiter"
-msgstr "Pugnator Draculorum"
+msgstr "Arbiter Draculorum"
 
 #. [unit_type]: id=Drake Arbiter, race=drake
 #: data/core/units/drakes/Arbiter.cfg:19
@@ -168,13 +166,12 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Halberdier.cfg:41
 #: data/core/units/humans/Loyalist_Halberdier.cfg:53
 msgid "halberd"
-msgstr "bipennis"
+msgstr "tripennis"
 
 #. [unit_type]: id=Armageddon Drake, race=drake
 #: data/core/units/drakes/Armageddon.cfg:4
-#, fuzzy
 msgid "Armageddon Drake"
-msgstr "Draculus Ignis"
+msgstr "Draculus Annulatans"
 
 #. [unit_type]: id=Armageddon Drake, race=drake
 #: data/core/units/drakes/Armageddon.cfg:27
@@ -188,9 +185,8 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/drakes/Armageddon.cfg:85 data/core/units/drakes/Fire.cfg:42
 #: data/core/units/drakes/Inferno.cfg:44
-#, fuzzy
 msgid "battle claws"
-msgstr "bipennis"
+msgstr "ungues proelii"
 
 #. [attack]: type=fire
 #: data/core/units/drakes/Armageddon.cfg:94
@@ -203,12 +199,12 @@ msgstr "bipennis"
 #: data/core/units/drakes/Warrior.cfg:48
 #: data/core/units/monsters/Fire_Dragon.cfg:49
 msgid "fire breath"
-msgstr "halitus ignis"
+msgstr "aura ignis"
 
 #. [unit_type]: id=Drake Blademaster, race=drake
 #: data/core/units/drakes/Blademaster.cfg:4
 msgid "Drake Blademaster"
-msgstr "Dominus Laminarum Draculorum"
+msgstr "Dominus Ferrorum Draculorum"
 
 #. [unit_type]: id=Drake Blademaster, race=drake
 #: data/core/units/drakes/Blademaster.cfg:21
@@ -227,10 +223,11 @@ msgstr ""
 #: data/core/units/drakes/Enforcer.cfg:36
 #: data/core/units/drakes/Thrasher.cfg:23
 msgid "war talon"
-msgstr ""
+msgstr "ungues belli"
 
 #. [unit_type]: id=Drake Burner, race=drake
 #: data/core/units/drakes/Burner.cfg:4
+#, fuzzy
 msgid "Drake Burner"
 msgstr "Incenditor Draculorum"
 
@@ -258,11 +255,13 @@ msgstr ""
 #: data/core/units/undead/Corpse_Necrophage.cfg:28
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:67
 #: data/core/units/undead/Spirit_Shadow.cfg:135
+#, fuzzy
 msgid "claws"
 msgstr "ungues"
 
 #. [unit_type]: id=Drake Clasher, race=drake
 #: data/core/units/drakes/Clasher.cfg:4
+#, fuzzy
 msgid "Drake Clasher"
 msgstr "Concursor Draculorum"
 
@@ -309,6 +308,7 @@ msgstr ""
 #: data/core/units/saurians/Skirmisher.cfg:133
 #: data/core/units/saurians/Skirmisher.cfg:142
 #: data/core/units/undead/Skele_Chocobone.cfg:26
+#, fuzzy
 msgid "spear"
 msgstr "hasta"
 
@@ -332,7 +332,7 @@ msgstr ""
 #: data/core/units/drakes/Enforcer.cfg:45
 #: data/core/units/drakes/Thrasher.cfg:41
 msgid "ram"
-msgstr ""
+msgstr "arieta"
 
 #. [attack]: type=pierce
 #. [attack]: type=blade
@@ -340,11 +340,13 @@ msgstr ""
 #: data/core/units/merfolk/Fighter.cfg:37
 #: data/core/units/merfolk/Triton.cfg:38 data/core/units/merfolk/Triton.cfg:46
 #: data/core/units/merfolk/Warrior.cfg:36
+#, fuzzy
 msgid "trident"
 msgstr "tridens"
 
 #. [unit_type]: id=Drake Fighter, race=drake
 #: data/core/units/drakes/Fighter.cfg:4
+#, fuzzy
 msgid "Drake Fighter"
 msgstr "Pugnator Draculorum"
 
@@ -363,12 +365,12 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/drakes/Fighter.cfg:156
 #: data/core/units/drakes/Warrior.cfg:39
-#, fuzzy
 msgid "war blade"
-msgstr "lamina"
+msgstr "ferrum belli"
 
 #. [unit_type]: id=Fire Drake, race=drake
 #: data/core/units/drakes/Fire.cfg:4
+#, fuzzy
 msgid "Fire Drake"
 msgstr "Draculus Ignis"
 
@@ -385,7 +387,7 @@ msgstr ""
 #. [unit_type]: id=Drake Flameheart, race=drake
 #: data/core/units/drakes/Flameheart.cfg:4
 msgid "Drake Flameheart"
-msgstr "Cor Flammae Draculorum"
+msgstr "Draculus Cordis Flammarum"
 
 #. [unit_type]: id=Drake Flameheart, race=drake
 #: data/core/units/drakes/Flameheart.cfg:26
@@ -424,11 +426,13 @@ msgstr ""
 #: data/core/units/nagas/Fighter.cfg:102 data/core/units/nagas/Myrmidon.cfg:43
 #: data/core/units/nagas/Warrior.cfg:41 data/core/units/orcs/Grunt.cfg:71
 #: data/core/units/orcs/Leader.cfg:28
+#, fuzzy
 msgid "sword"
 msgstr "gladius"
 
 #. [unit_type]: id=Drake Flare, race=drake
 #: data/core/units/drakes/Flare.cfg:4
+#, fuzzy
 msgid "Drake Flare"
 msgstr "Flamma Draculorum"
 
@@ -444,6 +448,7 @@ msgstr ""
 
 #. [unit_type]: id=Drake Glider, race=drake
 #: data/core/units/drakes/Glider.cfg:4
+#, fuzzy
 msgid "Drake Glider"
 msgstr "Labens Draculorum"
 
@@ -468,10 +473,11 @@ msgstr ""
 #: data/core/units/drakes/Glider.cfg:44
 #: data/core/units/drakes/Hurricane.cfg:127 data/core/units/drakes/Sky.cfg:126
 msgid "slam"
-msgstr "adfligere"
+msgstr "adfligi"
 
 #. [unit_type]: id=Hurricane Drake, race=drake
 #: data/core/units/drakes/Hurricane.cfg:4
+#, fuzzy
 msgid "Hurricane Drake"
 msgstr "Draculus Procellae"
 
@@ -490,7 +496,7 @@ msgstr ""
 #. [unit_type]: id=Inferno Drake, race=drake
 #: data/core/units/drakes/Inferno.cfg:4
 msgid "Inferno Drake"
-msgstr "Infernus Draculorum"
+msgstr "Draculus Fervens"
 
 #. [unit_type]: id=Inferno Drake, race=drake
 #: data/core/units/drakes/Inferno.cfg:21
@@ -504,6 +510,7 @@ msgstr ""
 
 #. [unit_type]: id=Sky Drake, race=drake
 #: data/core/units/drakes/Sky.cfg:4
+#, fuzzy
 msgid "Sky Drake"
 msgstr "Draculus Caeli"
 
@@ -520,9 +527,8 @@ msgstr ""
 
 #. [unit_type]: id=Drake Thrasher, race=drake
 #: data/core/units/drakes/Thrasher.cfg:4
-#, fuzzy
 msgid "Drake Thrasher"
-msgstr "Concursor Draculorum"
+msgstr "Draculus Mulcatans"
 
 #. [unit_type]: id=Drake Thrasher, race=drake
 #: data/core/units/drakes/Thrasher.cfg:19
@@ -537,6 +543,7 @@ msgstr ""
 
 #. [unit_type]: id=Drake Warden, race=drake
 #: data/core/units/drakes/Warden.cfg:4
+#, fuzzy
 msgid "Drake Warden"
 msgstr "Praefectus Draculorum"
 
@@ -555,7 +562,7 @@ msgstr ""
 #. [unit_type]: id=Drake Warrior, race=drake
 #: data/core/units/drakes/Warrior.cfg:4
 msgid "Drake Warrior"
-msgstr "Pugnator Draculorum"
+msgstr "Bellator Draculorum"
 
 #. [unit_type]: id=Drake Warrior, race=drake
 #: data/core/units/drakes/Warrior.cfg:19
@@ -571,7 +578,7 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #: data/core/units/dwarves/Berserker.cfg:4
 msgid "Dwarvish Berserker"
-msgstr "Nanus Saevissimus"
+msgstr "Nanus Vesanus"
 
 #. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #: data/core/units/dwarves/Berserker.cfg:20
@@ -589,6 +596,7 @@ msgstr "saevitia"
 
 #. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
 #: data/core/units/dwarves/Dragonguard.cfg:4
+#, fuzzy
 msgid "Dwarvish Dragonguard"
 msgstr "Custos Draconis Nanorum"
 
@@ -632,14 +640,14 @@ msgstr "sica"
 
 #. [attack]: type=pierce
 #: data/core/units/dwarves/Dragonguard.cfg:48
+#, fuzzy
 msgid "dragonstaff"
 msgstr "virga draconis"
 
 #. [unit_type]: id=Dwarvish Explorer, race=dwarf
 #: data/core/units/dwarves/Explorer.cfg:4
-#, fuzzy
 msgid "Dwarvish Explorer"
-msgstr "Nanus Saevus"
+msgstr "Explorantor Nanorum"
 
 #. [unit_type]: id=Dwarvish Explorer, race=dwarf
 #: data/core/units/dwarves/Explorer.cfg:27
@@ -656,6 +664,7 @@ msgstr ""
 #: data/core/units/dwarves/Explorer.cfg:45 data/core/units/dwarves/Lord.cfg:52
 #: data/core/units/dwarves/Steelclad.cfg:52
 #: data/core/units/undead/Skele_Death_Knight.cfg:59
+#, fuzzy
 msgid "battle axe"
 msgstr "bipennis"
 
@@ -669,11 +678,13 @@ msgstr "bipennis"
 #: data/core/units/undead/Skele_Draug.cfg:30
 #: data/core/units/undead/Skele_Revenant.cfg:43
 #: data/core/units/undead/Skeleton.cfg:119
+#, fuzzy
 msgid "axe"
 msgstr "securis"
 
 #. [unit_type]: id=Dwarvish Fighter, race=dwarf
 #: data/core/units/dwarves/Fighter.cfg:4
+#, fuzzy
 msgid "Dwarvish Fighter"
 msgstr "Pugnator Nanorum"
 
@@ -695,11 +706,13 @@ msgstr ""
 #: data/core/units/dwarves/Steelclad.cfg:61
 #: data/core/units/trolls/Great.cfg:27 data/core/units/trolls/Hero.cfg:27
 #: data/core/units/trolls/Warrior.cfg:27
+#, fuzzy
 msgid "hammer"
 msgstr "malleus"
 
 #. [unit_type]: id=Dwarvish Guardsman, race=dwarf
 #: data/core/units/dwarves/Guardsman.cfg:4
+#, fuzzy
 msgid "Dwarvish Guardsman"
 msgstr "Custos Nanorum"
 
@@ -725,11 +738,13 @@ msgstr "Pilatus"
 
 #. [unit_type]: id=Dwarvish Lord, race=dwarf
 #: data/core/units/dwarves/Lord.cfg:4
+#, fuzzy
 msgid "Dwarvish Lord"
 msgstr "Dominus Nanorum"
 
 #. [unit_type]: id=Dwarvish Lord, race=dwarf
 #: data/core/units/dwarves/Lord.cfg:20
+#, fuzzy
 msgid ""
 "Clad in shining armor, these dwarves look like kings from under the "
 "mountains. They wield axe and hammer with masterful skill, and can hit a "
@@ -743,13 +758,12 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/dwarves/Lord.cfg:70
 msgid "hatchet"
-msgstr "dolabra"
+msgstr "securicula"
 
 #. [unit_type]: id=Dwarvish Pathfinder, race=dwarf
 #: data/core/units/dwarves/Pathfinder.cfg:4
-#, fuzzy
 msgid "Dwarvish Pathfinder"
-msgstr "Tonator Nanorum"
+msgstr "Repertor Nanorum"
 
 #. [unit_type]: id=Dwarvish Pathfinder, race=dwarf
 #: data/core/units/dwarves/Pathfinder.cfg:22
@@ -764,7 +778,7 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #: data/core/units/dwarves/Runemaster.cfg:4
 msgid "Dwarvish Runemaster"
-msgstr "Dominus Litterarum Nanorum"
+msgstr "Dominus Typorum Nanorum"
 
 #. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #: data/core/units/dwarves/Runemaster.cfg:21
@@ -783,19 +797,17 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/dwarves/Runemaster.cfg:38
 msgid "runic hammer"
-msgstr "malleum litterarum"
+msgstr "malleum typorum"
 
 #. [attack]: type=fire
 #: data/core/units/dwarves/Runemaster.cfg:47
-#, fuzzy
 msgid "lightning bolt"
-msgstr "Fulgor"
+msgstr "fulgur"
 
 #. [unit_type]: id=Dwarvish Scout, race=dwarf
 #: data/core/units/dwarves/Scout.cfg:4
-#, fuzzy
 msgid "Dwarvish Scout"
-msgstr "Explorator Dryadalis"
+msgstr "Speculator Nanorum"
 
 #. [unit_type]: id=Dwarvish Scout, race=dwarf
 #: data/core/units/dwarves/Scout.cfg:22
@@ -813,7 +825,7 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Sentinel, race=dwarf
 #: data/core/units/dwarves/Sentinel.cfg:4
 msgid "Dwarvish Sentinel"
-msgstr "Vigil Nanorum"
+msgstr "Excubitor Nanorum"
 
 #. [unit_type]: id=Dwarvish Sentinel, race=dwarf
 #: data/core/units/dwarves/Sentinel.cfg:20
@@ -827,6 +839,7 @@ msgstr ""
 
 #. [unit_type]: id=Dwarvish Stalwart, race=dwarf
 #: data/core/units/dwarves/Stalwart.cfg:4
+#, fuzzy
 msgid "Dwarvish Stalwart"
 msgstr "Nanus Robustus"
 
@@ -842,10 +855,11 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Steelclad, race=dwarf
 #: data/core/units/dwarves/Steelclad.cfg:4
 msgid "Dwarvish Steelclad"
-msgstr "Chalybi Vestitus Nanorum"
+msgstr "Nanus Chalybi Vestitus"
 
 #. [unit_type]: id=Dwarvish Steelclad, race=dwarf
 #: data/core/units/dwarves/Steelclad.cfg:20
+#, fuzzy
 msgid ""
 "The more experienced Dwarvish Steelclad fighters wear heavy chain mail and "
 "plate armor, for which they are rightly famous."
@@ -855,6 +869,7 @@ msgstr ""
 
 #. [unit_type]: id=Dwarvish Thunderer, race=dwarf
 #: data/core/units/dwarves/Thunderer.cfg:4
+#, fuzzy
 msgid "Dwarvish Thunderer"
 msgstr "Tonator Nanorum"
 
@@ -878,11 +893,13 @@ msgstr ""
 #. [attack]: type=pierce
 #: data/core/units/dwarves/Thunderer.cfg:120
 #: data/core/units/dwarves/Thunderguard.cfg:49
+#, fuzzy
 msgid "thunderstick"
 msgstr "fustis tonitrus"
 
 #. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
 #: data/core/units/dwarves/Thunderguard.cfg:4
+#, fuzzy
 msgid "Dwarvish Thunderguard"
 msgstr "Custos Tonitrus Nanorum"
 
@@ -913,7 +930,7 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
 #: data/core/units/dwarves/Ulfserker.cfg:4
 msgid "Dwarvish Ulfserker"
-msgstr "Nanus Saevus"
+msgstr "Nanus Insanus"
 
 #. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
 #: data/core/units/dwarves/Ulfserker.cfg:21
@@ -933,10 +950,11 @@ msgstr ""
 #. [unit_type]: id=Elvish Archer, race=elf
 #: data/core/units/elves/Archer.cfg:4
 msgid "Elvish Archer"
-msgstr "Saggitarius Dryadalis"
+msgstr "Saggitarius Dryadalum"
 
 #. [unit_type]: id=Elvish Archer, race=elf
 #: data/core/units/elves/Archer.cfg:21
+#, fuzzy
 msgid ""
 "Elves have always had a reputation for archery, a skill that, for many "
 "reasons, comes naturally to them. Even the frail of body can be deadly with "
@@ -970,18 +988,19 @@ msgstr ""
 #: data/core/units/undead/Skele_Banebow.cfg:40
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:38
 #: data/core/units/undead/Skeleton_Archer.cfg:41
+#, fuzzy
 msgid "bow"
 msgstr "arcus"
 
 #. [female]
 #: data/core/units/elves/Archer.cfg:183
 msgid "female^Elvish Archer"
-msgstr "Sagittaria Dryadalis"
+msgstr "Sagittaria Dryadalum"
 
 #. [unit_type]: id=Elvish Avenger, race=elf
 #: data/core/units/elves/Avenger.cfg:4
 msgid "Elvish Avenger"
-msgstr "Vindex Dryadalis"
+msgstr "Vindex Dryadalum"
 
 #. [unit_type]: id=Elvish Avenger, race=elf
 #: data/core/units/elves/Avenger.cfg:23
@@ -1011,12 +1030,12 @@ msgstr ""
 #. [female]
 #: data/core/units/elves/Avenger.cfg:192
 msgid "female^Elvish Avenger"
-msgstr "Vindicatrix Dryadalis"
+msgstr "Vindicatrix Dryadalum"
 
 #. [unit_type]: id=Elvish Captain, race=elf
 #: data/core/units/elves/Captain.cfg:4
 msgid "Elvish Captain"
-msgstr "Praefectus Dryadalis"
+msgstr "Capitaneus Dryadalum"
 
 #. [unit_type]: id=Elvish Captain, race=elf
 #: data/core/units/elves/Captain.cfg:26
@@ -1040,7 +1059,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Champion, race=elf
 #: data/core/units/elves/Champion.cfg:4
 msgid "Elvish Champion"
-msgstr "Propugnator Dryadalis"
+msgstr "Propugnator Dryadalum"
 
 #. [unit_type]: id=Elvish Champion, race=elf
 #: data/core/units/elves/Champion.cfg:20
@@ -1061,7 +1080,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Druid, race=elf
 #: data/core/units/elves/Druid.cfg:4
 msgid "female^Elvish Druid"
-msgstr "Druida Dryadalis"
+msgstr "Druida Dryadalum"
 
 #. [unit_type]: id=Elvish Druid, race=elf
 #: data/core/units/elves/Druid.cfg:21
@@ -1100,23 +1119,25 @@ msgstr ""
 #: data/core/units/saurians/Oracle.cfg:78
 #: data/core/units/saurians/Soothsayer.cfg:78
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:95
+#, fuzzy
 msgid "staff"
 msgstr "virga"
 
 #. [attack]: type=impact
 #: data/core/units/elves/Druid.cfg:49 data/core/units/elves/Shyde.cfg:54
 msgid "ensnare"
-msgstr "inlaqueare"
+msgstr "inlaquea"
 
 #. [attack]: type=pierce
 #: data/core/units/elves/Druid.cfg:61 data/core/units/elves/Shyde.cfg:66
+#, fuzzy
 msgid "thorns"
 msgstr "spinae"
 
 #. [unit_type]: id=Elvish Enchantress, race=elf
 #: data/core/units/elves/Enchantress.cfg:4
 msgid "female^Elvish Enchantress"
-msgstr "Incantatrix Oreadalis"
+msgstr "Incantatrix Nymphae"
 
 #. [unit_type]: id=Elvish Enchantress, race=elf
 #: data/core/units/elves/Enchantress.cfg:19
@@ -1132,19 +1153,20 @@ msgstr ""
 #: data/core/units/elves/Enchantress.cfg:48
 #: data/core/units/elves/Shaman.cfg:51 data/core/units/elves/Sorceress.cfg:50
 msgid "entangle"
-msgstr "impedire"
+msgstr "irreti"
 
 #. [attack]: type=arcane
 #: data/core/units/elves/Enchantress.cfg:59
 #: data/core/units/elves/High_Lord.cfg:82 data/core/units/elves/Lord.cfg:48
 #: data/core/units/elves/Sorceress.cfg:61 data/core/units/elves/Sylph.cfg:65
+#, fuzzy
 msgid "faerie fire"
 msgstr "ignis orealis"
 
 #. [unit_type]: id=Elvish Fighter, race=elf
 #: data/core/units/elves/Fighter.cfg:4
 msgid "Elvish Fighter"
-msgstr "Pugnator Dryadalis"
+msgstr "Pugnator Dryadalum"
 
 #. [unit_type]: id=Elvish Fighter, race=elf
 #: data/core/units/elves/Fighter.cfg:20
@@ -1164,7 +1186,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Hero, race=elf
 #: data/core/units/elves/Hero.cfg:4
 msgid "Elvish Hero"
-msgstr "Heroes Dryadalis"
+msgstr "Heroes Dryadalum"
 
 #. [unit_type]: id=Elvish Hero, race=elf
 #: data/core/units/elves/Hero.cfg:19
@@ -1182,9 +1204,8 @@ msgstr ""
 
 #. [unit_type]: id=Elvish High Lord, race=elf
 #: data/core/units/elves/High_Lord.cfg:4
-#, fuzzy
 msgid "Elvish High Lord"
-msgstr "Pugnator Dryadalis"
+msgstr "Optimas Dryadalum"
 
 #. [unit_type]: id=Elvish High Lord, race=elf
 #: data/core/units/elves/High_Lord.cfg:19
@@ -1197,9 +1218,8 @@ msgstr ""
 
 #. [unit_type]: id=Elvish Lady, race=elf
 #: data/core/units/elves/Lady.cfg:5
-#, fuzzy
 msgid "female^Elvish Lady"
-msgstr "Druida Dryadalis"
+msgstr "Domina Dryadalum"
 
 #. [unit_type]: id=Elvish Lady, race=elf
 #: data/core/units/elves/Lady.cfg:20
@@ -1212,9 +1232,8 @@ msgstr ""
 
 #. [unit_type]: id=Elvish Lord, race=elf
 #: data/core/units/elves/Lord.cfg:4
-#, fuzzy
 msgid "Elvish Lord"
-msgstr "Dominus Nanorum"
+msgstr "Magnas Dryadalum"
 
 #. [unit_type]: id=Elvish Lord, race=elf
 #: data/core/units/elves/Lord.cfg:18
@@ -1227,7 +1246,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Marksman, race=elf
 #: data/core/units/elves/Marksman.cfg:4
 msgid "Elvish Marksman"
-msgstr "Peritus Arcus Dryadales"
+msgstr "Peritus Arci Dryadalum"
 
 #. [unit_type]: id=Elvish Marksman, race=elf
 #: data/core/units/elves/Marksman.cfg:20
@@ -1253,18 +1272,19 @@ msgstr ""
 #: data/core/units/elves/Sharpshooter.cfg:72
 #: data/core/units/humans/Loyalist_Longbowman.cfg:48
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:48
+#, fuzzy
 msgid "longbow"
 msgstr "arcus longus"
 
 #. [female]
 #: data/core/units/elves/Marksman.cfg:183
 msgid "female^Elvish Marksman"
-msgstr "Perita Arcus Dryadalis"
+msgstr "Perita Arci Dryadalum"
 
 #. [unit_type]: id=Elvish Marshal, race=elf
 #: data/core/units/elves/Marshal.cfg:4
 msgid "Elvish Marshal"
-msgstr "Imperator Dryadalis"
+msgstr "Legatus Dryadalum"
 
 #. [unit_type]: id=Elvish Marshal, race=elf
 #: data/core/units/elves/Marshal.cfg:27
@@ -1288,7 +1308,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Outrider, race=elf
 #: data/core/units/elves/Outrider.cfg:4
 msgid "Elvish Outrider"
-msgstr "Eques Electus Dryadalis"
+msgstr "Eques Electus Dryadalum"
 
 #. [unit_type]: id=Elvish Outrider, race=elf
 #: data/core/units/elves/Outrider.cfg:23
@@ -1315,7 +1335,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Ranger, race=elf
 #: data/core/units/elves/Ranger.cfg:3
 msgid "Elvish Ranger"
-msgstr "Vagus Dryadalis"
+msgstr "Indagator Dryadalum"
 
 #. [unit_type]: id=Elvish Ranger, race=elf
 #: data/core/units/elves/Ranger.cfg:20
@@ -1337,12 +1357,12 @@ msgstr ""
 #. [female]
 #: data/core/units/elves/Ranger.cfg:189
 msgid "female^Elvish Ranger"
-msgstr "Vaga Dryadalis"
+msgstr "Indagatrix Dryadalis"
 
 #. [unit_type]: id=Elvish Rider, race=elf
 #: data/core/units/elves/Rider.cfg:4
 msgid "Elvish Rider"
-msgstr "Eques Dryadalis"
+msgstr "Eques Dryadalum"
 
 #. [unit_type]: id=Elvish Rider, race=elf
 #: data/core/units/elves/Rider.cfg:24
@@ -1367,7 +1387,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Scout, race=elf
 #: data/core/units/elves/Scout.cfg:4
 msgid "Elvish Scout"
-msgstr "Explorator Dryadalis"
+msgstr "Speculator Dryadalum"
 
 #. [unit_type]: id=Elvish Scout, race=elf
 #: data/core/units/elves/Scout.cfg:23
@@ -1388,7 +1408,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Shaman, race=elf
 #: data/core/units/elves/Shaman.cfg:4
 msgid "female^Elvish Shaman"
-msgstr "Flamen Dryadalis"
+msgstr "Flamen Dryadalum"
 
 #. [unit_type]: id=Elvish Shaman, race=elf
 #: data/core/units/elves/Shaman.cfg:23
@@ -1415,7 +1435,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Sharpshooter, race=elf
 #: data/core/units/elves/Sharpshooter.cfg:4
 msgid "Elvish Sharpshooter"
-msgstr "Manuballistarius Tectus Dryadalis"
+msgstr "Dryadalis Potens Arci"
 
 #. [unit_type]: id=Elvish Sharpshooter, race=elf
 #: data/core/units/elves/Sharpshooter.cfg:21
@@ -1436,10 +1456,11 @@ msgstr ""
 #. [female]
 #: data/core/units/elves/Sharpshooter.cfg:182
 msgid "female^Elvish Sharpshooter"
-msgstr "Manuballistaria Tecta Dryadalis"
+msgstr "Dryadalis Potens Arci"
 
 #. [unit_type]: id=Elvish Shyde, race=elf
 #: data/core/units/elves/Shyde.cfg:4
+#, fuzzy
 msgid "female^Elvish Shyde"
 msgstr "Hamadryas"
 
@@ -1461,13 +1482,14 @@ msgstr ""
 
 #. [attack]: type=impact
 #: data/core/units/elves/Shyde.cfg:41 data/core/units/elves/Sylph.cfg:40
+#, fuzzy
 msgid "faerie touch"
 msgstr "tactus nymphalis"
 
 #. [unit_type]: id=Elvish Sorceress, race=elf
 #: data/core/units/elves/Sorceress.cfg:4
 msgid "female^Elvish Sorceress"
-msgstr "Striga Oreadalis"
+msgstr "Saga Dryadalum"
 
 #. [unit_type]: id=Elvish Sorceress, race=elf
 #: data/core/units/elves/Sorceress.cfg:21
@@ -1484,7 +1506,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Sylph, race=elf
 #: data/core/units/elves/Sylph.cfg:4
 msgid "female^Elvish Sylph"
-msgstr "Hamaoreas"
+msgstr "Vatis Nymphae"
 
 #. [unit_type]: id=Elvish Sylph, race=elf
 #: data/core/units/elves/Sylph.cfg:21
@@ -1498,15 +1520,16 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/elves/Sylph.cfg:53
 msgid "gossamer"
-msgstr "araneum"
+msgstr "rete Nymphae"
 
 #. [unit_type]: id=Fog Clearer, race=monster
 #: data/core/units/fake/Fog_Clearer.cfg:7
 msgid "dummy_unit^Fog Clearer"
-msgstr ""
+msgstr "Destructor Nebulae"
 
 #. [unit_type]: id=Direwolf Rider, race=wolf
 #: data/core/units/goblins/Direwolf_Rider.cfg:4
+#, fuzzy
 msgid "Direwolf Rider"
 msgstr "Lupes Dirus"
 
@@ -1540,7 +1563,7 @@ msgstr ""
 #. [unit_type]: id=Goblin Impaler, race=goblin
 #: data/core/units/goblins/Impaler.cfg:4
 msgid "Goblin Impaler"
-msgstr "Cobalus Infigens"
+msgstr "Orculis Infigens"
 
 #. [unit_type]: id=Goblin Impaler, race=goblin
 #: data/core/units/goblins/Impaler.cfg:21
@@ -1561,7 +1584,7 @@ msgstr ""
 #. [unit_type]: id=Goblin Knight, race=wolf
 #: data/core/units/goblins/Knight.cfg:4
 msgid "Goblin Knight"
-msgstr "Lupes Ordinis Cobalorum"
+msgstr "Lupes Ordinis Orculum"
 
 #. [unit_type]: id=Goblin Knight, race=wolf
 #: data/core/units/goblins/Knight.cfg:21
@@ -1586,7 +1609,7 @@ msgstr ""
 #. [unit_type]: id=Goblin Pillager, race=wolf
 #: data/core/units/goblins/Pillager.cfg:4
 msgid "Goblin Pillager"
-msgstr "Expilator Cobalorum"
+msgstr "Depradator Orculum"
 
 #. [unit_type]: id=Goblin Pillager, race=wolf
 #: data/core/units/goblins/Pillager.cfg:20
@@ -1605,6 +1628,7 @@ msgstr ""
 
 #. [attack]: type=fire
 #: data/core/units/goblins/Pillager.cfg:56
+#, fuzzy
 msgid "torch"
 msgstr "fax"
 
@@ -1612,13 +1636,14 @@ msgstr "fax"
 #: data/core/units/goblins/Pillager.cfg:65
 #: data/core/units/merfolk/Entangler.cfg:35
 #: data/core/units/merfolk/Netcaster.cfg:46
+#, fuzzy
 msgid "net"
 msgstr "rete"
 
 #. [unit_type]: id=Goblin Rouser, race=goblin
 #: data/core/units/goblins/Rouser.cfg:4
 msgid "Goblin Rouser"
-msgstr "Cobalus Adrigens"
+msgstr "Concitator Orculum"
 
 #. [unit_type]: id=Goblin Rouser, race=goblin
 #: data/core/units/goblins/Rouser.cfg:28
@@ -1640,7 +1665,7 @@ msgstr ""
 #. [unit_type]: id=Goblin Spearman, race=goblin
 #: data/core/units/goblins/Spearman.cfg:4
 msgid "Goblin Spearman"
-msgstr "Hastatus Cobalorum"
+msgstr "Hastatus Orculum"
 
 #. [unit_type]: id=Goblin Spearman, race=goblin
 #: data/core/units/goblins/Spearman.cfg:22
@@ -1666,6 +1691,7 @@ msgstr ""
 
 #. [unit_type]: id=Wolf Rider, race=wolf
 #: data/core/units/goblins/Wolf_Rider.cfg:4
+#, fuzzy
 msgid "Wolf Rider"
 msgstr "Lupes"
 
@@ -1700,6 +1726,7 @@ msgstr "Gryps"
 
 #. [unit_type]: id=Gryphon, race=gryphon
 #: data/core/units/gryphons/Gryphon.cfg:19
+#, fuzzy
 msgid ""
 "These majestic and powerful creatures are masters of the sky. Gryphons are "
 "both dangerous and wary of other intelligent creatures, and thus should not "
@@ -1711,7 +1738,7 @@ msgstr ""
 #. [unit_type]: id=Gryphon Master, race=gryphon
 #: data/core/units/gryphons/Gryphon_Master.cfg:4
 msgid "Gryphon Master"
-msgstr "Dominus Grypum"
+msgstr "Magister Grypum"
 
 #. [unit_type]: id=Gryphon Master, race=gryphon
 #: data/core/units/gryphons/Gryphon_Master.cfg:20
@@ -1728,10 +1755,11 @@ msgstr ""
 #. [unit_type]: id=Gryphon Rider, race=gryphon
 #: data/core/units/gryphons/Gryphon_Rider.cfg:4
 msgid "Gryphon Rider"
-msgstr "Grypes"
+msgstr "Eques Grypum"
 
 #. [unit_type]: id=Gryphon Rider, race=gryphon
 #: data/core/units/gryphons/Gryphon_Rider.cfg:20
+#, fuzzy
 msgid ""
 "Only a few are able to bond with the mighty Gryphons. Those who do may "
 "become Gryphon Riders, and discover the world of the skies upon the backs of "
@@ -1743,10 +1771,11 @@ msgstr ""
 #. [unit_type]: id=Grand Knight, race=human
 #: data/core/units/humans/Horse_Grand_Knight.cfg:4
 msgid "Grand Knight"
-msgstr "Optimatus"
+msgstr "Eques Optimatis"
 
 #. [unit_type]: id=Grand Knight, race=human
 #: data/core/units/humans/Horse_Grand_Knight.cfg:20
+#, fuzzy
 msgid ""
 "Grand Knights have reached the acme of skill with sword and lance. Wearing "
 "full plate, and riding steeds bred more for power than for speed, these "
@@ -1766,20 +1795,21 @@ msgstr ""
 #: data/core/units/humans/Loyalist_General.cfg:56
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:52
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:40
-#, fuzzy
 msgid "longsword"
-msgstr "gladius"
+msgstr "spatha"
 
 #. [attack]: type=pierce
 #: data/core/units/humans/Horse_Grand_Knight.cfg:45
 #: data/core/units/humans/Horse_Knight.cfg:44
 #: data/core/units/humans/Horse_Lancer.cfg:36
 #: data/core/units/humans/Horse_Paladin.cfg:61
+#, fuzzy
 msgid "lance"
 msgstr "lancea"
 
 #. [unit_type]: id=Knight, race=human
 #: data/core/units/humans/Horse_Knight.cfg:4
+#, fuzzy
 msgid "Knight"
 msgstr "Eques Ordinis"
 
@@ -1805,7 +1835,7 @@ msgstr ""
 #. [unit_type]: id=Lancer, race=human
 #: data/core/units/humans/Horse_Lancer.cfg:4
 msgid "Lancer"
-msgstr "Lanceatus"
+msgstr "Contatus Equitis"
 
 #. [unit_type]: id=Lancer, race=human
 #: data/core/units/humans/Horse_Lancer.cfg:20
@@ -1828,7 +1858,7 @@ msgstr ""
 #. [unit_type]: id=Paladin, race=human
 #: data/core/units/humans/Horse_Paladin.cfg:4
 msgid "Paladin"
-msgstr "Paladinus"
+msgstr "Eques Sanctus"
 
 #. [unit_type]: id=Paladin, race=human
 #: data/core/units/humans/Horse_Paladin.cfg:22
@@ -1853,6 +1883,7 @@ msgstr ""
 
 #. [unit_type]: id=Horseman, race=human
 #: data/core/units/humans/Horseman.cfg:4
+#, fuzzy
 msgid "Horseman"
 msgstr "Eques"
 
@@ -1877,6 +1908,7 @@ msgstr ""
 
 #. [unit_type]: id=Bowman, race=human
 #: data/core/units/humans/Loyalist_Bowman.cfg:4
+#, fuzzy
 msgid "Bowman"
 msgstr "Sagittarius"
 
@@ -1898,11 +1930,13 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/humans/Loyalist_Bowman.cfg:37
 #: data/core/units/orcs/Crossbowman.cfg:24 data/core/units/orcs/Slurbow.cfg:29
+#, fuzzy
 msgid "short sword"
 msgstr "gladius brevis"
 
 #. [unit_type]: id=Cavalier, race=human
 #: data/core/units/humans/Loyalist_Cavalier.cfg:4
+#, fuzzy
 msgid "Cavalier"
 msgstr "Eques Magnus Armatus"
 
@@ -1935,11 +1969,13 @@ msgstr ""
 #: data/core/units/orcs/Ruler.cfg:36 data/core/units/orcs/Slurbow.cfg:38
 #: data/core/units/orcs/Slurbow.cfg:47 data/core/units/orcs/Sovereign.cfg:37
 #: data/core/units/undead/Skele_Death_Knight.cfg:68
+#, fuzzy
 msgid "crossbow"
 msgstr "scorpio"
 
 #. [unit_type]: id=Cavalryman, race=human
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:4
+#, fuzzy
 msgid "Cavalryman"
 msgstr "Eques Armatus"
 
@@ -1966,6 +2002,7 @@ msgstr ""
 
 #. [unit_type]: id=Dragoon, race=human
 #: data/core/units/humans/Loyalist_Dragoon.cfg:4
+#, fuzzy
 msgid "Dragoon"
 msgstr "Eques Nobilis Armatus"
 
@@ -1987,7 +2024,7 @@ msgstr ""
 #. [unit_type]: id=Duelist, race=human
 #: data/core/units/humans/Loyalist_Duelist.cfg:4
 msgid "Duelist"
-msgstr "Certatior"
+msgstr "Duelator"
 
 #. [unit_type]: id=Duelist, race=human
 #: data/core/units/humans/Loyalist_Duelist.cfg:20
@@ -2021,14 +2058,13 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Duelist.cfg:85
 #: data/core/units/humans/Loyalist_Fencer.cfg:140
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:44
-#, fuzzy
 msgid "saber"
-msgstr "acinaces"
+msgstr "gladius tenuis"
 
 #. [unit_type]: id=Fencer, race=human
 #: data/core/units/humans/Loyalist_Fencer.cfg:4
 msgid "Fencer"
-msgstr "Lanista"
+msgstr "Battuens"
 
 #. [unit_type]: id=Fencer, race=human
 #: data/core/units/humans/Loyalist_Fencer.cfg:21
@@ -2098,7 +2134,7 @@ msgstr ""
 #. [unit_type]: id=Halberdier, race=human
 #: data/core/units/humans/Loyalist_Halberdier.cfg:4
 msgid "Halberdier"
-msgstr "Bipennatus"
+msgstr "Tripennatus"
 
 #. [unit_type]: id=Halberdier, race=human
 #: data/core/units/humans/Loyalist_Halberdier.cfg:21
@@ -2134,6 +2170,7 @@ msgstr ""
 
 #. [unit_type]: id=Heavy Infantryman, race=human
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:4
+#, fuzzy
 msgid "Heavy Infantryman"
 msgstr "Pedes Armatus"
 
@@ -2156,10 +2193,11 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Highwayman.cfg:37
 #: data/core/units/humans/Royal_Warrior.cfg:35
 msgid "mace"
-msgstr "scipio"
+msgstr "macea"
 
 #. [unit_type]: id=Iron Mauler, race=human
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:4
+#, fuzzy
 msgid "Iron Mauler"
 msgstr "Contundor Ferreus"
 
@@ -2190,6 +2228,7 @@ msgstr ""
 
 #. [unit_type]: id=Javelineer, race=human
 #: data/core/units/humans/Loyalist_Javelineer.cfg:4
+#, fuzzy
 msgid "Javelineer"
 msgstr "Pilatus"
 
@@ -2216,7 +2255,7 @@ msgstr ""
 #. [unit_type]: id=Lieutenant, race=human
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:4
 msgid "Lieutenant"
-msgstr "Centurio"
+msgstr "Optio"
 
 #. [unit_type]: id=Lieutenant, race=human
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:25
@@ -2232,6 +2271,7 @@ msgstr ""
 
 #. [unit_type]: id=Longbowman, race=human
 #: data/core/units/humans/Loyalist_Longbowman.cfg:4
+#, fuzzy
 msgid "Longbowman"
 msgstr "Sagittarius Maior"
 
@@ -2254,7 +2294,7 @@ msgstr ""
 #. [unit_type]: id=Master Bowman, race=human
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:4
 msgid "Master Bowman"
-msgstr "Sagittarius Peritus"
+msgstr "Potens Sagittarii"
 
 #. [unit_type]: id=Master Bowman, race=human
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:21
@@ -2280,7 +2320,7 @@ msgstr ""
 #. [unit_type]: id=Master at Arms, race=human
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:4
 msgid "Master at Arms"
-msgstr "Magister Telorum"
+msgstr "Magister Armorum"
 
 #. [unit_type]: id=Master at Arms, race=human
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:21
@@ -2313,7 +2353,7 @@ msgstr ""
 #. [unit_type]: id=Pikeman, race=human
 #: data/core/units/humans/Loyalist_Pikeman.cfg:4
 msgid "Pikeman"
-msgstr "Dolatus"
+msgstr "Contatus"
 
 #. [unit_type]: id=Pikeman, race=human
 #: data/core/units/humans/Loyalist_Pikeman.cfg:18
@@ -2337,15 +2377,17 @@ msgstr ""
 #. [attack]: type=pierce
 #: data/core/units/humans/Loyalist_Pikeman.cfg:65
 msgid "pike"
-msgstr "hasta longa"
+msgstr "contus"
 
 #. [unit_type]: id=Royal Guard, race=human
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:4
+#, fuzzy
 msgid "Royal Guard"
 msgstr "Bucellarius"
 
 #. [unit_type]: id=Royal Guard, race=human
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:19
+#, fuzzy
 msgid ""
 "Royal Guards are picked from the best swordsmen in Wesnoth. Serving under "
 "any of the higher nobility, they function as bodyguards, and partly as a "
@@ -2383,6 +2425,7 @@ msgstr ""
 
 #. [unit_type]: id=Shock Trooper, race=human
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:4
+#, fuzzy
 msgid "Shock Trooper"
 msgstr "Concursor Gravis"
 
@@ -2410,12 +2453,12 @@ msgstr ""
 
 #. [attack]: type=impact
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:36
-#, fuzzy
 msgid "flail"
-msgstr "cauda"
+msgstr "flagellum ferreum"
 
 #. [unit_type]: id=Spearman, race=human
 #: data/core/units/humans/Loyalist_Spearman.cfg:4
+#, fuzzy
 msgid "Spearman"
 msgstr "Hastatus"
 
@@ -2439,6 +2482,7 @@ msgstr ""
 
 #. [unit_type]: id=Swordsman, race=human
 #: data/core/units/humans/Loyalist_Swordsman.cfg:4
+#, fuzzy
 msgid "Swordsman"
 msgstr "Gladiator"
 
@@ -2514,7 +2558,7 @@ msgstr "telum magicum"
 #. [female]
 #: data/core/units/humans/Mage.cfg:174
 msgid "female^Mage"
-msgstr "Striga"
+msgstr "Saga"
 
 #. [unit_type]: id=Arch Mage, race=human
 #: data/core/units/humans/Mage_Arch.cfg:4
@@ -2561,13 +2605,12 @@ msgstr "globus ignis"
 #. [female]
 #: data/core/units/humans/Mage_Arch.cfg:171
 msgid "female^Arch Mage"
-msgstr "Striga Princeps"
+msgstr "Saga Princeps"
 
 #. [unit_type]: id=Elder Mage, race=human
 #: data/core/units/humans/Mage_Elder.cfg:4
-#, fuzzy
 msgid "Elder Mage"
-msgstr "Magus Argenteus"
+msgstr "Magus Vetus"
 
 #. [unit_type]: id=Elder Mage, race=human
 #: data/core/units/humans/Mage_Elder.cfg:22
@@ -2579,9 +2622,8 @@ msgstr ""
 
 #. [attack]: type=fire
 #: data/core/units/humans/Mage_Elder.cfg:34
-#, fuzzy
 msgid "lightning"
-msgstr "Fulgor"
+msgstr "fulmen"
 
 #. [unit_type]: id=Great Mage, race=human
 #: data/core/units/humans/Mage_Great.cfg:4
@@ -2619,7 +2661,7 @@ msgstr ""
 #. [female]
 #: data/core/units/humans/Mage_Great.cfg:132
 msgid "female^Great Mage"
-msgstr "Striga Magna"
+msgstr "Saga Magna"
 
 #. [unit_type]: id=Red Mage, race=human
 #: data/core/units/humans/Mage_Red.cfg:4
@@ -2659,7 +2701,7 @@ msgstr ""
 #. [female]
 #: data/core/units/humans/Mage_Red.cfg:157
 msgid "female^Red Mage"
-msgstr "Striga Rubra"
+msgstr "Saga Rubra"
 
 #. [unit_type]: id=Silver Mage, race=human
 #: data/core/units/humans/Mage_Silver.cfg:4
@@ -2718,12 +2760,12 @@ msgstr ""
 #. [female]
 #: data/core/units/humans/Mage_Silver.cfg:283
 msgid "female^Silver Mage"
-msgstr "Striga Argentea"
+msgstr "Saga Argentea"
 
 #. [unit_type]: id=White Mage, race=human
 #: data/core/units/humans/Mage_White.cfg:4
 msgid "White Mage"
-msgstr "Magus Albus"
+msgstr "Magus Albatus"
 
 #. [unit_type]: id=White Mage, race=human
 #: data/core/units/humans/Mage_White.cfg:21
@@ -2756,18 +2798,19 @@ msgstr ""
 #: data/core/units/humans/Mage_of_Light.cfg:120
 #: data/core/units/merfolk/Diviner.cfg:109
 #: data/core/units/merfolk/Priestess.cfg:106
+#, fuzzy
 msgid "lightbeam"
 msgstr "radius lucis"
 
 #. [female]
 #: data/core/units/humans/Mage_White.cfg:277
 msgid "female^White Mage"
-msgstr "Striga Alba"
+msgstr "Saga Albata"
 
 #. [unit_type]: id=Mage of Light, race=human
 #: data/core/units/humans/Mage_of_Light.cfg:4
 msgid "Mage of Light"
-msgstr "Magus Luminis"
+msgstr "Magus Lucis"
 
 #. [unit_type]: id=Mage of Light, race=human
 #: data/core/units/humans/Mage_of_Light.cfg:23
@@ -2792,12 +2835,12 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/humans/Mage_of_Light.cfg:111
 msgid "morning star"
-msgstr "aspergillum"
+msgstr "macea cum vinculo"
 
 #. [female]
 #: data/core/units/humans/Mage_of_Light.cfg:245
 msgid "female^Mage of Light"
-msgstr "Striga Luminis"
+msgstr "Saga Lucis"
 
 #. [unit_type]: id=Outlaw, race=human
 #: data/core/units/humans/Outlaw.cfg:4
@@ -2806,6 +2849,7 @@ msgstr "Proscriptus"
 
 #. [unit_type]: id=Outlaw, race=human
 #: data/core/units/humans/Outlaw.cfg:19
+#, fuzzy
 msgid ""
 "After some years of service, former 'footpads' rise up in the ranks of their "
 "fellow outlaws. Having proven themselves in combat, they are given more "
@@ -2827,6 +2871,7 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Footpad.cfg:47
 #: data/core/units/humans/Outlaw_Fugitive.cfg:50
 #: data/core/units/trolls/Rocklobber.cfg:36
+#, fuzzy
 msgid "sling"
 msgstr "funda"
 
@@ -2837,6 +2882,7 @@ msgstr "Proscripta"
 
 #. [unit_type]: id=Assassin, race=human
 #: data/core/units/humans/Outlaw_Assassin.cfg:4
+#, fuzzy
 msgid "Assassin"
 msgstr "Sicarius"
 
@@ -2862,20 +2908,23 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Assassin.cfg:52
 #: data/core/units/humans/Outlaw_Rogue.cfg:51
 msgid "knife"
-msgstr "culter"
+msgstr "pugio"
 
 #. [female]
 #: data/core/units/humans/Outlaw_Assassin.cfg:179
+#, fuzzy
 msgid "female^Assassin"
 msgstr "Sicaria"
 
 #. [unit_type]: id=Bandit, race=human
 #: data/core/units/humans/Outlaw_Bandit.cfg:4
+#, fuzzy
 msgid "Bandit"
 msgstr "Latro"
 
 #. [unit_type]: id=Bandit, race=human
 #: data/core/units/humans/Outlaw_Bandit.cfg:18
+#, fuzzy
 msgid ""
 "Bandits are a motley collection of men, most of dubious background. They are "
 "the strong arm of any organized group of criminals, and though they may lack "
@@ -2890,6 +2939,7 @@ msgstr ""
 
 #. [unit_type]: id=Footpad, race=human
 #: data/core/units/humans/Outlaw_Footpad.cfg:4
+#, fuzzy
 msgid "Footpad"
 msgstr "Grassator"
 
@@ -2922,13 +2972,14 @@ msgstr "fustis"
 
 #. [female]
 #: data/core/units/humans/Outlaw_Footpad.cfg:176
+#, fuzzy
 msgid "female^Footpad"
 msgstr "Grassatrix"
 
 #. [unit_type]: id=Fugitive, race=human
 #: data/core/units/humans/Outlaw_Fugitive.cfg:5
 msgid "Fugitive"
-msgstr ""
+msgstr "Fugitivus"
 
 #. [unit_type]: id=Fugitive, race=human
 #: data/core/units/humans/Outlaw_Fugitive.cfg:21
@@ -2940,14 +2991,13 @@ msgstr ""
 
 #. [female]
 #: data/core/units/humans/Outlaw_Fugitive.cfg:122
-#, fuzzy
 msgid "female^Fugitive"
-msgstr "Striga"
+msgstr "Fugitiva"
 
 #. [unit_type]: id=Highwayman, race=human
 #: data/core/units/humans/Outlaw_Highwayman.cfg:5
 msgid "Highwayman"
-msgstr ""
+msgstr "Praedator"
 
 #. [unit_type]: id=Highwayman, race=human
 #: data/core/units/humans/Outlaw_Highwayman.cfg:20
@@ -2961,6 +3011,7 @@ msgstr ""
 
 #. [unit_type]: id=Rogue, race=human
 #: data/core/units/humans/Outlaw_Rogue.cfg:4
+#, fuzzy
 msgid "Rogue"
 msgstr "Veterator"
 
@@ -2985,14 +3036,14 @@ msgstr ""
 
 #. [female]
 #: data/core/units/humans/Outlaw_Rogue.cfg:153
+#, fuzzy
 msgid "female^Rogue"
 msgstr "Veteratrix"
 
 #. [unit_type]: id=Ruffian, race=human
 #: data/core/units/humans/Outlaw_Ruffian.cfg:4
-#, fuzzy
 msgid "Ruffian"
-msgstr "Ruina"
+msgstr "Nebulo"
 
 #. [unit_type]: id=Ruffian, race=human
 #: data/core/units/humans/Outlaw_Ruffian.cfg:19
@@ -3006,6 +3057,7 @@ msgstr ""
 
 #. [unit_type]: id=Thief, race=human
 #: data/core/units/humans/Outlaw_Thief.cfg:4
+#, fuzzy
 msgid "Thief"
 msgstr "Fur"
 
@@ -3033,13 +3085,14 @@ msgstr ""
 
 #. [female]
 #: data/core/units/humans/Outlaw_Thief.cfg:377
+#, fuzzy
 msgid "female^Thief"
 msgstr "Fur"
 
 #. [unit_type]: id=Thug, race=human
 #: data/core/units/humans/Outlaw_Thug.cfg:4
 msgid "Thug"
-msgstr "Percussor"
+msgstr "Brutum"
 
 #. [unit_type]: id=Thug, race=human
 #: data/core/units/humans/Outlaw_Thug.cfg:20
@@ -3059,7 +3112,7 @@ msgstr ""
 #. [unit_type]: id=Peasant, race=human
 #: data/core/units/humans/Peasant.cfg:4
 msgid "Peasant"
-msgstr "Colonus"
+msgstr "Rusticus"
 
 #. [unit_type]: id=Peasant, race=human
 #: data/core/units/humans/Peasant.cfg:20
@@ -3081,9 +3134,8 @@ msgstr "furca"
 
 #. [unit_type]: id=Royal Warrior, race=human
 #: data/core/units/humans/Royal_Warrior.cfg:8
-#, fuzzy
 msgid "Royal Warrior"
-msgstr "Bellator Troglodytarum"
+msgstr "Bellator Regalis"
 
 #. [unit_type]: id=Royal Warrior, race=human
 #: data/core/units/humans/Royal_Warrior.cfg:31
@@ -3108,9 +3160,8 @@ msgstr ""
 
 #. [unit_type]: id=Huntsman, race=human
 #: data/core/units/humans/Woodsman_Huntsman.cfg:5
-#, fuzzy
 msgid "Huntsman"
-msgstr "Eques"
+msgstr "Captor"
 
 #. [unit_type]: id=Huntsman, race=human
 #: data/core/units/humans/Woodsman_Huntsman.cfg:23
@@ -3134,7 +3185,7 @@ msgstr ""
 #. [unit_type]: id=Poacher, race=human
 #: data/core/units/humans/Woodsman_Poacher.cfg:4
 msgid "Poacher"
-msgstr "Surripior"
+msgstr "Auceps"
 
 #. [unit_type]: id=Poacher, race=human
 #: data/core/units/humans/Woodsman_Poacher.cfg:22
@@ -3150,9 +3201,8 @@ msgstr ""
 
 #. [unit_type]: id=Ranger, race=human
 #: data/core/units/humans/Woodsman_Ranger.cfg:5
-#, fuzzy
 msgid "Ranger"
-msgstr "sica"
+msgstr "Indagator"
 
 #. [unit_type]: id=Ranger, race=human
 #: data/core/units/humans/Woodsman_Ranger.cfg:23
@@ -3173,7 +3223,7 @@ msgstr ""
 #. [unit_type]: id=Trapper, race=human
 #: data/core/units/humans/Woodsman_Trapper.cfg:4
 msgid "Trapper"
-msgstr "Inlaqueator"
+msgstr "Praedator Ferinae"
 
 #. [unit_type]: id=Trapper, race=human
 #: data/core/units/humans/Woodsman_Trapper.cfg:21
@@ -3190,7 +3240,7 @@ msgstr ""
 #. [unit_type]: id=Mermaid Diviner, race=merman
 #: data/core/units/merfolk/Diviner.cfg:4
 msgid "female^Mermaid Diviner"
-msgstr "Augur Nereia"
+msgstr "Ariola Nereia"
 
 #. [unit_type]: id=Mermaid Diviner, race=merman
 #: data/core/units/merfolk/Diviner.cfg:25
@@ -3205,6 +3255,7 @@ msgstr ""
 
 #. [unit_type]: id=Mermaid Enchantress, race=merman
 #: data/core/units/merfolk/Enchantress.cfg:4
+#, fuzzy
 msgid "female^Mermaid Enchantress"
 msgstr "Incantatrix Nereia"
 
@@ -3233,12 +3284,12 @@ msgstr ""
 #: data/core/units/merfolk/Initiate.cfg:49
 #: data/core/units/merfolk/Siren.cfg:54
 msgid "water spray"
-msgstr "aspergo aquae"
+msgstr "saliens aquae"
 
 #. [unit_type]: id=Merman Entangler, race=merman
 #: data/core/units/merfolk/Entangler.cfg:4
 msgid "Merman Entangler"
-msgstr "Impeditor Nereius"
+msgstr "Nereid Irretiens"
 
 #. [unit_type]: id=Merman Entangler, race=merman
 #: data/core/units/merfolk/Entangler.cfg:22
@@ -3258,7 +3309,7 @@ msgstr ""
 #. [unit_type]: id=Merman Fighter, race=merman
 #: data/core/units/merfolk/Fighter.cfg:4
 msgid "Merman Fighter"
-msgstr "Pugnator Nereius"
+msgstr "Pugnator Nereidum"
 
 #. [unit_type]: id=Merman Fighter, race=merman
 #: data/core/units/merfolk/Fighter.cfg:20
@@ -3272,6 +3323,7 @@ msgstr ""
 
 #. [unit_type]: id=Merman Hoplite, race=merman
 #: data/core/units/merfolk/Hoplite.cfg:4
+#, fuzzy
 msgid "Merman Hoplite"
 msgstr "Hoplomachus Nereius"
 
@@ -3293,11 +3345,13 @@ msgstr ""
 
 #. [unit_type]: id=Merman Hunter, race=merman
 #: data/core/units/merfolk/Hunter.cfg:4
+#, fuzzy
 msgid "Merman Hunter"
 msgstr "Venator Nereius"
 
 #. [unit_type]: id=Merman Hunter, race=merman
 #: data/core/units/merfolk/Hunter.cfg:20
+#, fuzzy
 msgid ""
 "The skills employed by mermen in spear-fishing are easily translated into "
 "warfare, especially against those who are not at home in the water. In times "
@@ -3311,6 +3365,7 @@ msgstr ""
 
 #. [unit_type]: id=Mermaid Initiate, race=merman
 #: data/core/units/merfolk/Initiate.cfg:4
+#, fuzzy
 msgid "female^Mermaid Initiate"
 msgstr "Initiata Nereia"
 
@@ -3336,6 +3391,7 @@ msgstr ""
 
 #. [unit_type]: id=Merman Javelineer, race=merman
 #: data/core/units/merfolk/Javelineer.cfg:4
+#, fuzzy
 msgid "Merman Javelineer"
 msgstr "Pilatus Nereius"
 
@@ -3355,6 +3411,7 @@ msgstr ""
 
 #. [unit_type]: id=Merman Netcaster, race=merman
 #: data/core/units/merfolk/Netcaster.cfg:4
+#, fuzzy
 msgid "Merman Netcaster"
 msgstr "Retiarius Nereius"
 
@@ -3376,6 +3433,7 @@ msgstr ""
 
 #. [unit_type]: id=Mermaid Priestess, race=merman
 #: data/core/units/merfolk/Priestess.cfg:4
+#, fuzzy
 msgid "female^Mermaid Priestess"
 msgstr "Sacerdos Nereia"
 
@@ -3399,6 +3457,7 @@ msgstr ""
 
 #. [unit_type]: id=Mermaid Siren, race=merman
 #: data/core/units/merfolk/Siren.cfg:4
+#, fuzzy
 msgid "Mermaid Siren"
 msgstr "Siren Nereia"
 
@@ -3435,6 +3494,7 @@ msgstr "tactus naiadis"
 
 #. [unit_type]: id=Merman Spearman, race=merman
 #: data/core/units/merfolk/Spearman.cfg:4
+#, fuzzy
 msgid "Merman Spearman"
 msgstr "Hastatus Nereius"
 
@@ -3458,7 +3518,7 @@ msgstr ""
 #. [unit_type]: id=Merman Triton, race=merman
 #: data/core/units/merfolk/Triton.cfg:4
 msgid "Merman Triton"
-msgstr "Triton Nereius"
+msgstr "Nereid Tritoniacus"
 
 #. [unit_type]: id=Merman Triton, race=merman
 #: data/core/units/merfolk/Triton.cfg:21
@@ -3475,10 +3535,11 @@ msgstr ""
 #. [unit_type]: id=Merman Warrior, race=merman
 #: data/core/units/merfolk/Warrior.cfg:4
 msgid "Merman Warrior"
-msgstr "Bellator Nereius"
+msgstr "Bellator Nereidum"
 
 #. [unit_type]: id=Merman Warrior, race=merman
 #: data/core/units/merfolk/Warrior.cfg:19
+#, fuzzy
 msgid ""
 "The Mermen Warriors form the core of the mermen armies. Wielding powerful "
 "tridents, they are a bane to any who dare enter their waters."
@@ -3488,6 +3549,7 @@ msgstr ""
 
 #. [unit_type]: id=Giant Spider, race=monster
 #: data/core/units/monsters/Cave_Spider.cfg:4
+#, fuzzy
 msgid "Giant Spider"
 msgstr "Aranea Ingens"
 
@@ -3507,11 +3569,13 @@ msgstr ""
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Cave_Spider.cfg:49
+#, fuzzy
 msgid "web"
 msgstr "araneum"
 
 #. [unit_type]: id=Cuttle Fish, race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:4
+#, fuzzy
 msgid "Cuttle Fish"
 msgstr "Sepia"
 
@@ -3533,18 +3597,19 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/monsters/Cuttle_Fish.cfg:35
 #: data/core/units/monsters/Tentacle.cfg:62
+#, fuzzy
 msgid "tentacle"
 msgstr "bracchium"
 
 #. [attack]: type=pierce
 #: data/core/units/monsters/Cuttle_Fish.cfg:46
 msgid "ink"
-msgstr "atramentum"
+msgstr "sepiae"
 
 #. [unit_type]: id=Fire Dragon, race=monster
 #: data/core/units/monsters/Fire_Dragon.cfg:4
 msgid "Fire Dragon"
-msgstr "Draco Ardens"
+msgstr "Draco Ignis"
 
 #. [unit_type]: id=Fire Dragon, race=monster
 #: data/core/units/monsters/Fire_Dragon.cfg:24
@@ -3564,7 +3629,7 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/monsters/Fire_Dragon.cfg:31
 msgid "bite"
-msgstr "morsus"
+msgstr "morde"
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Fire_Dragon.cfg:40
@@ -3574,7 +3639,7 @@ msgstr "cauda"
 #. [unit_type]: id=Giant Mudcrawler, race=monster
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:4
 msgid "Giant Mudcrawler"
-msgstr "Repens Luti Ingente"
+msgstr "Repens Caenum Ingente"
 
 #. [unit_type]: id=Giant Mudcrawler, race=monster
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:18
@@ -3595,6 +3660,7 @@ msgstr ""
 #: data/core/units/trolls/Troll_Shaman.cfg:31
 #: data/core/units/trolls/Whelp.cfg:39
 #: data/core/units/undead/Skeleton_Archer.cfg:32
+#, fuzzy
 msgid "fist"
 msgstr "pugnus"
 
@@ -3606,6 +3672,7 @@ msgstr "globus luti"
 
 #. [unit_type]: id=Giant Scorpion, race=monster
 #: data/core/units/monsters/Giant_Scorpion.cfg:4
+#, fuzzy
 msgid "Giant Scorpion"
 msgstr "Nepa Ingens"
 
@@ -3634,10 +3701,11 @@ msgstr "forceps"
 #. [unit_type]: id=Mudcrawler, race=monster
 #: data/core/units/monsters/Mudcrawler.cfg:4
 msgid "Mudcrawler"
-msgstr "Repens Luti"
+msgstr "Repens Caenum"
 
 #. [unit_type]: id=Mudcrawler, race=monster
 #: data/core/units/monsters/Mudcrawler.cfg:19
+#, fuzzy
 msgid ""
 "Mudcrawlers are magical constructs of soil and water. They attack by "
 "belching lumps of mud at their foes."
@@ -3648,21 +3716,24 @@ msgstr ""
 #. [unit_type]: id=Sea Serpent, race=monster
 #: data/core/units/monsters/Sea_Serpent.cfg:4
 msgid "Sea Serpent"
-msgstr "Serpens Maris"
+msgstr "Serpens ex Gurgite"
 
 #. [unit_type]: id=Sea Serpent, race=monster
 #: data/core/units/monsters/Sea_Serpent.cfg:22
+#, fuzzy
 msgid ""
 "Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
 msgstr "Serpentes Maris ingentes sunt beluae, qui soli naves evertere possunt."
 
 #. [unit_type]: id=Skeletal Dragon, race=undead
 #: data/core/units/monsters/Skeletal_Dragon.cfg:4
+#, fuzzy
 msgid "Skeletal Dragon"
 msgstr "Draco Osseus"
 
 #. [unit_type]: id=Skeletal Dragon, race=undead
 #: data/core/units/monsters/Skeletal_Dragon.cfg:26
+#, fuzzy
 msgid ""
 "Long ago one of the mightiest living creatures, the feared Dragon has become "
 "only bones and dark sinew. Long after its death, it was raised through the "
@@ -3683,6 +3754,7 @@ msgstr "fauces"
 
 #. [unit_type]: id=Tentacle of the Deep, race=monster
 #: data/core/units/monsters/Tentacle.cfg:4
+#, fuzzy
 msgid "Tentacle of the Deep"
 msgstr "Bracchium ex Gurgite"
 
@@ -3700,9 +3772,8 @@ msgstr ""
 
 #. [unit_type]: id=Water Serpent, race=monster
 #: data/core/units/monsters/Water_Serpent.cfg:5
-#, fuzzy
 msgid "Water Serpent"
-msgstr "Serpens Maris"
+msgstr "Serpens Aquae"
 
 #. [unit_type]: id=Water Serpent, race=monster
 #: data/core/units/monsters/Water_Serpent.cfg:38
@@ -3716,7 +3787,7 @@ msgstr ""
 #. [unit_type]: id=Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:4
 msgid "Wolf"
-msgstr ""
+msgstr "Lupus"
 
 #. [unit_type]: id=Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:35
@@ -3728,10 +3799,11 @@ msgstr ""
 #. [unit_type]: id=Yeti, race=monster
 #: data/core/units/monsters/Yeti.cfg:4
 msgid "Yeti"
-msgstr "Ietium"
+msgstr "Simius Nivis"
 
 #. [unit_type]: id=Yeti, race=monster
 #: data/core/units/monsters/Yeti.cfg:18
+#, fuzzy
 msgid ""
 "Little is known about Yetis, ape-like creatures said to live in remote and "
 "snow-covered mountains. Few profess to have seen one, and their existence is "
@@ -3744,7 +3816,7 @@ msgstr ""
 #. [unit_type]: id=Naga Fighter, race=naga
 #: data/core/units/nagas/Fighter.cfg:4
 msgid "Naga Fighter"
-msgstr "Pugnator Nagarum"
+msgstr "Pugnator Gentum Anguinarum"
 
 #. [unit_type]: id=Naga Fighter, race=naga
 #: data/core/units/nagas/Fighter.cfg:21
@@ -3766,12 +3838,12 @@ msgstr ""
 #. [female]
 #: data/core/units/nagas/Fighter.cfg:153
 msgid "Nagini Fighter"
-msgstr "Pugnatrix Nagarum"
+msgstr "Pugnatrix Genum Anguinsarum"
 
 #. [unit_type]: id=Naga Myrmidon, race=naga
 #: data/core/units/nagas/Myrmidon.cfg:4
 msgid "Naga Myrmidon"
-msgstr "Dimachaerus Nagarum"
+msgstr "Dimachaeris Gentum Anguinarum"
 
 #. [unit_type]: id=Naga Myrmidon, race=naga
 #: data/core/units/nagas/Myrmidon.cfg:22
@@ -3792,7 +3864,7 @@ msgstr ""
 #. [female]
 #: data/core/units/nagas/Myrmidon.cfg:95
 msgid "Nagini Myrmidon"
-msgstr "Dimachaera Nagarum"
+msgstr "Dimachaera Gentum Anguinarum"
 
 #. [female]
 #: data/core/units/nagas/Myrmidon.cfg:97
@@ -3813,7 +3885,7 @@ msgstr ""
 #. [unit_type]: id=Naga Warrior, race=naga
 #: data/core/units/nagas/Warrior.cfg:4
 msgid "Naga Warrior"
-msgstr "Bellator Nagarum"
+msgstr "Bellator Gentum Anguinarum"
 
 #. [unit_type]: id=Naga Warrior, race=naga
 #: data/core/units/nagas/Warrior.cfg:20
@@ -3836,7 +3908,7 @@ msgstr ""
 #. [female]
 #: data/core/units/nagas/Warrior.cfg:92
 msgid "Nagini Warrior"
-msgstr "Bellatrix Nagarum"
+msgstr "Bellatrix Gentum Anguinarum"
 
 #. [female]
 #: data/core/units/nagas/Warrior.cfg:94
@@ -3859,10 +3931,11 @@ msgstr ""
 #. [unit_type]: id=Ogre, race=ogre
 #: data/core/units/ogres/Ogre.cfg:4
 msgid "Ogre"
-msgstr "Immane"
+msgstr "Vir Immanis"
 
 #. [unit_type]: id=Ogre, race=ogre
 #: data/core/units/ogres/Ogre.cfg:22
+#, fuzzy
 msgid ""
 "Ogres are giant creatures that usually live alone in the wilderness, "
 "remarkably similar to humans in form, though large and misshapen. While they "
@@ -3876,12 +3949,12 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/ogres/Ogre.cfg:38 data/core/units/ogres/Young_Ogre.cfg:38
 msgid "cleaver"
-msgstr "dolabra"
+msgstr "clava ferrea"
 
 #. [unit_type]: id=Young Ogre, race=ogre
 #: data/core/units/ogres/Young_Ogre.cfg:4
 msgid "Young Ogre"
-msgstr "Immane Juvene"
+msgstr "Catulus Immanus"
 
 #. [unit_type]: id=Young Ogre, race=ogre
 #: data/core/units/ogres/Young_Ogre.cfg:22
@@ -3897,7 +3970,7 @@ msgstr ""
 #. [unit_type]: id=Orcish Archer, race=orc
 #: data/core/units/orcs/Archer.cfg:4
 msgid "Orcish Archer"
-msgstr "Sagittarius Orcorum"
+msgstr "Sagittarius Orcum"
 
 #. [unit_type]: id=Orcish Archer, race=orc
 #: data/core/units/orcs/Archer.cfg:19
@@ -3912,7 +3985,7 @@ msgstr ""
 #. [unit_type]: id=Orcish Assassin, race=orc
 #: data/core/units/orcs/Assassin.cfg:4
 msgid "Orcish Assassin"
-msgstr "Sicarius Orcarum"
+msgstr "Sicarius Orcum"
 
 #. [unit_type]: id=Orcish Assassin, race=orc
 #: data/core/units/orcs/Assassin.cfg:22
@@ -3940,7 +4013,7 @@ msgstr "cultri iacti"
 #. [unit_type]: id=Orcish Crossbowman, race=orc
 #: data/core/units/orcs/Crossbowman.cfg:4
 msgid "Orcish Crossbowman"
-msgstr "Scorpiarius Orcorum"
+msgstr "Scorpiator Orcum"
 
 #. [unit_type]: id=Orcish Crossbowman, race=orc
 #: data/core/units/orcs/Crossbowman.cfg:18
@@ -3954,10 +4027,11 @@ msgstr ""
 #. [unit_type]: id=Orcish Grunt, race=orc
 #: data/core/units/orcs/Grunt.cfg:4
 msgid "Orcish Grunt"
-msgstr "Manipularis Orcorum"
+msgstr "Armatus Orcum"
 
 #. [unit_type]: id=Orcish Grunt, race=orc
 #: data/core/units/orcs/Grunt.cfg:19
+#, fuzzy
 msgid ""
 "Orcish Grunts form the core of the orcish forces. Although slower than human "
 "or elven fighters, Grunts can deliver much more powerful blows, and take "
@@ -3970,7 +4044,7 @@ msgstr ""
 #. [unit_type]: id=Orcish Leader, race=orc
 #: data/core/units/orcs/Leader.cfg:4
 msgid "Orcish Leader"
-msgstr "Dux Orcorum"
+msgstr "Dux Orcum"
 
 #. [unit_type]: id=Orcish Leader, race=orc
 #: data/core/units/orcs/Leader.cfg:19
@@ -3992,7 +4066,7 @@ msgstr ""
 #. [unit_type]: id=Orcish Ruler, race=orc
 #: data/core/units/orcs/Ruler.cfg:4
 msgid "Orcish Ruler"
-msgstr "Dominus Orcorum"
+msgstr "Dominator Orcum"
 
 #. [unit_type]: id=Orcish Ruler, race=orc
 #: data/core/units/orcs/Ruler.cfg:18
@@ -4008,12 +4082,12 @@ msgstr ""
 #: data/core/units/orcs/Ruler.cfg:27 data/core/units/orcs/Sovereign.cfg:28
 #: data/core/units/orcs/Warlord.cfg:25 data/core/units/orcs/Warrior.cfg:23
 msgid "greatsword"
-msgstr "gladius magnus"
+msgstr "spatha magna"
 
 #. [unit_type]: id=Orcish Slayer, race=orc
 #: data/core/units/orcs/Slayer.cfg:4
 msgid "Orcish Slayer"
-msgstr "Interfector Orcorum"
+msgstr "Occisor Orcum"
 
 #. [unit_type]: id=Orcish Slayer, race=orc
 #: data/core/units/orcs/Slayer.cfg:22
@@ -4036,7 +4110,7 @@ msgstr ""
 #. [unit_type]: id=Orcish Slurbow, race=orc
 #: data/core/units/orcs/Slurbow.cfg:4
 msgid "Orcish Slurbow"
-msgstr "Scorpiarius Magnus Orcorum"
+msgstr "Manuballistor Orcum"
 
 #. [unit_type]: id=Orcish Slurbow, race=orc
 #: data/core/units/orcs/Slurbow.cfg:23
@@ -4055,7 +4129,7 @@ msgstr ""
 #. [unit_type]: id=Orcish Sovereign, race=orc
 #: data/core/units/orcs/Sovereign.cfg:4
 msgid "Orcish Sovereign"
-msgstr "Rex Orcorum"
+msgstr "Dynastes Orcum"
 
 #. [unit_type]: id=Orcish Sovereign, race=orc
 #: data/core/units/orcs/Sovereign.cfg:19
@@ -4071,7 +4145,7 @@ msgstr ""
 #. [unit_type]: id=Orcish Warlord, race=orc
 #: data/core/units/orcs/Warlord.cfg:4
 msgid "Orcish Warlord"
-msgstr "Dominus Belli Orcorum"
+msgstr "Dominus Belli Orcum"
 
 #. [unit_type]: id=Orcish Warlord, race=orc
 #: data/core/units/orcs/Warlord.cfg:19
@@ -4088,10 +4162,11 @@ msgstr ""
 #. [unit_type]: id=Orcish Warrior, race=orc
 #: data/core/units/orcs/Warrior.cfg:4
 msgid "Orcish Warrior"
-msgstr "Bellator Orcorum"
+msgstr "Bellator Orcum"
 
 #. [unit_type]: id=Orcish Warrior, race=orc
 #: data/core/units/orcs/Warrior.cfg:18
+#, fuzzy
 msgid ""
 "Having mastered the art of dual-sword fighting, Orcish Warriors are highly "
 "respected among the Orcs, and highly feared by their foes. Their only "
@@ -4103,6 +4178,7 @@ msgstr ""
 
 #. [unit_type]: id=Saurian Ambusher, race=lizard
 #: data/core/units/saurians/Ambusher.cfg:4
+#, fuzzy
 msgid "Saurian Ambusher"
 msgstr "Insidiator Lacertarum"
 
@@ -4120,6 +4196,7 @@ msgstr ""
 
 #. [unit_type]: id=Saurian Augur, race=lizard
 #: data/core/units/saurians/Augur.cfg:4
+#, fuzzy
 msgid "Saurian Augur"
 msgstr "Augur Lacertarum"
 
@@ -4135,11 +4212,13 @@ msgstr ""
 #: data/core/units/saurians/Augur.cfg:87
 #: data/core/units/saurians/Oracle.cfg:87
 #: data/core/units/saurians/Soothsayer.cfg:87
+#, fuzzy
 msgid "curse"
 msgstr "maledictum"
 
 #. [unit_type]: id=Saurian Flanker, race=lizard
 #: data/core/units/saurians/Flanker.cfg:4
+#, fuzzy
 msgid "Saurian Flanker"
 msgstr "Circumeuns Lacertarum"
 
@@ -4155,6 +4234,7 @@ msgstr ""
 
 #. [unit_type]: id=Saurian Oracle, race=lizard
 #: data/core/units/saurians/Oracle.cfg:4
+#, fuzzy
 msgid "Saurian Oracle"
 msgstr "Oraculum Lacertarum"
 
@@ -4172,7 +4252,7 @@ msgstr ""
 #. [unit_type]: id=Saurian Skirmisher, race=lizard
 #: data/core/units/saurians/Skirmisher.cfg:4
 msgid "Saurian Skirmisher"
-msgstr "Excursor Lacertarum"
+msgstr "Veles Lacertarum"
 
 #. [unit_type]: id=Saurian Skirmisher, race=lizard
 #: data/core/units/saurians/Skirmisher.cfg:22
@@ -4189,7 +4269,7 @@ msgstr ""
 #. [unit_type]: id=Saurian Soothsayer, race=lizard
 #: data/core/units/saurians/Soothsayer.cfg:4
 msgid "Saurian Soothsayer"
-msgstr "Vates Lacertarum"
+msgstr "Haruspex Lacertarum"
 
 #. [unit_type]: id=Saurian Soothsayer, race=lizard
 #: data/core/units/saurians/Soothsayer.cfg:21
@@ -4203,7 +4283,7 @@ msgstr ""
 #. [unit_type]: id=Great Troll, race=troll
 #: data/core/units/trolls/Great.cfg:4
 msgid "Great Troll"
-msgstr "Troglodyta Magnus"
+msgstr "Troglodyta Princeps"
 
 #. [unit_type]: id=Great Troll, race=troll
 #: data/core/units/trolls/Great.cfg:19
@@ -4224,6 +4304,7 @@ msgstr ""
 
 #. [unit_type]: id=Troll Hero, race=troll
 #: data/core/units/trolls/Hero.cfg:4
+#, fuzzy
 msgid "Troll Hero"
 msgstr "Heros Troglodytarum"
 
@@ -4242,6 +4323,7 @@ msgstr ""
 
 #. [unit_type]: id=Troll Rocklobber, race=troll
 #: data/core/units/trolls/Rocklobber.cfg:4
+#, fuzzy
 msgid "Troll Rocklobber"
 msgstr "Iactor Saxorum Troglodytarum"
 
@@ -4289,9 +4371,8 @@ msgstr ""
 
 #. [unit_type]: id=Troll Shaman, race=troll
 #: data/core/units/trolls/Troll_Shaman.cfg:4
-#, fuzzy
 msgid "Troll Shaman"
-msgstr "Catulus Troglodytarum"
+msgstr "Flamen Troglodytarum"
 
 #. [unit_type]: id=Troll Shaman, race=troll
 #: data/core/units/trolls/Troll_Shaman.cfg:24
@@ -4304,10 +4385,11 @@ msgstr ""
 #. [attack]: type=fire
 #: data/core/units/trolls/Troll_Shaman.cfg:41
 msgid "flame blast"
-msgstr ""
+msgstr "flamen ignis"
 
 #. [unit_type]: id=Troll Warrior, race=troll
 #: data/core/units/trolls/Warrior.cfg:4
+#, fuzzy
 msgid "Troll Warrior"
 msgstr "Bellator Troglodytarum"
 
@@ -4335,6 +4417,7 @@ msgstr ""
 
 #. [unit_type]: id=Troll Whelp, race=troll
 #: data/core/units/trolls/Whelp.cfg:4
+#, fuzzy
 msgid "Troll Whelp"
 msgstr "Catulus Troglodytarum"
 
@@ -4358,7 +4441,7 @@ msgstr ""
 #. [unit_type]: id=Ghoul, race=undead
 #: data/core/units/undead/Corpse_Ghoul.cfg:4
 msgid "Ghoul"
-msgstr "Pallidus"
+msgstr "Monstrum Hominum"
 
 #. [unit_type]: id=Ghoul, race=undead
 #: data/core/units/undead/Corpse_Ghoul.cfg:22
@@ -4386,7 +4469,7 @@ msgstr ""
 #. [unit_type]: id=Necrophage, race=undead
 #: data/core/units/undead/Corpse_Necrophage.cfg:4
 msgid "Necrophage"
-msgstr "Necrophagus"
+msgstr "Consumptor Mortibus"
 
 #. [unit_type]: id=Necrophage, race=undead
 #: data/core/units/undead/Corpse_Necrophage.cfg:20
@@ -4403,6 +4486,7 @@ msgstr ""
 
 #. [unit_type]: id=Soulless, race=undead
 #: data/core/units/undead/Corpse_Soulless.cfg:6
+#, fuzzy
 msgid "Soulless"
 msgstr "Carens Anima"
 
@@ -4422,11 +4506,13 @@ msgstr ""
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:48
 #: data/core/units/undead/Necro_Lich.cfg:48
 #: data/core/units/undead/Spirit_Ghost.cfg:130
+#, fuzzy
 msgid "touch"
 msgstr "tactus"
 
 #. [unit_type]: id=Walking Corpse, race=undead
 #: data/core/units/undead/Corpse_Walking.cfg:6
+#, fuzzy
 msgid "Walking Corpse"
 msgstr "Cadaver Ambulans"
 
@@ -4447,7 +4533,7 @@ msgstr ""
 #. [unit_type]: id=Ancient Lich, race=undead
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:4
 msgid "Ancient Lich"
-msgstr "Ossa Magi Vetusta"
+msgstr "Mortis Fraudator Anticissimus"
 
 #. [unit_type]: id=Ancient Lich, race=undead
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:25
@@ -4464,6 +4550,7 @@ msgstr ""
 #. [attack]: type=cold
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:60
 #: data/core/units/undead/Necro_Lich.cfg:60
+#, fuzzy
 msgid "chill tempest"
 msgstr "tempestas gelida"
 
@@ -4473,13 +4560,14 @@ msgstr "tempestas gelida"
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:116
 #: data/core/units/undead/Necro_Lich.cfg:72
 #: data/core/units/undead/Necromancer.cfg:63
+#, fuzzy
 msgid "shadow wave"
 msgstr "unda tenebrarum"
 
 #. [unit_type]: id=Dark Adept, race=human
 #: data/core/units/undead/Necro_Dark_Adept.cfg:4
 msgid "Dark Adept"
-msgstr "Peritus Obscurus"
+msgstr "Adsecula in Venefucium"
 
 #. [unit_type]: id=Dark Adept, race=human
 #: data/core/units/undead/Necro_Dark_Adept.cfg:26
@@ -4511,28 +4599,29 @@ msgstr ""
 #: data/core/units/undead/Necro_Dark_Adept.cfg:43
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:104
 #: data/core/units/undead/Necromancer.cfg:51
+#, fuzzy
 msgid "chill wave"
 msgstr "unda gelida"
 
 #. [female]
 #: data/core/units/undead/Necro_Dark_Adept.cfg:212
 msgid "female^Dark Adept"
-msgstr "Perita Obscura"
+msgstr "Adsecula in Venefucium"
 
 #. [unit_type]: id=Dark Sorcerer, race=human
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:4
 msgid "Dark Sorcerer"
-msgstr "Veneficus Tenebrosus"
+msgstr "Magister in Veneficium"
 
 #. [unit_type]: id=Dark Sorcerer, race=human
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:21
 msgid ""
-"The dread inspired by black magic is enhanced by the secrecy and fell "
-"rumors which surround it. Dark sorcerers have begun to unlock the secrets of "
-"life and death, the latter of which is all too easy to inflict. This labor "
-"gives the first glimmerings of the connection between the soul and inert "
-"matter, and the first successful experiments in manipulating this bond. The "
-"terrible unknown that lurks beyond death is glimpsed, and will inevitably be "
+"The dread inspired by black magic is enhanced by the secrecy and fell rumors "
+"which surround it. Dark sorcerers have begun to unlock the secrets of life "
+"and death, the latter of which is all too easy to inflict. This labor gives "
+"the first glimmerings of the connection between the soul and inert matter, "
+"and the first successful experiments in manipulating this bond. The terrible "
+"unknown that lurks beyond death is glimpsed, and will inevitably be "
 "fathomed.\n"
 "\n"
 "Despite any design they may have of using this to wrest their own "
@@ -4546,9 +4635,8 @@ msgstr ""
 
 #. [female]
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:247
-#, fuzzy
 msgid "Dark Sorceress"
-msgstr "Veneficus Tenebrosus"
+msgstr "Magistra in Veneficium"
 
 #. [female]
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:253
@@ -4573,7 +4661,7 @@ msgstr ""
 #. [unit_type]: id=Lich, race=undead
 #: data/core/units/undead/Necro_Lich.cfg:4
 msgid "Lich"
-msgstr "Ossa Magi"
+msgstr "Mortis Fraudator"
 
 #. [unit_type]: id=Lich, race=undead
 #: data/core/units/undead/Necro_Lich.cfg:25
@@ -4604,7 +4692,7 @@ msgstr ""
 #. [unit_type]: id=Necromancer, race=human
 #: data/core/units/undead/Necromancer.cfg:4
 msgid "Necromancer"
-msgstr "Mortuorum Evocator"
+msgstr "Evocator Mortum"
 
 #. [unit_type]: id=Necromancer, race=human
 #: data/core/units/undead/Necromancer.cfg:22
@@ -4634,19 +4722,17 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/undead/Necromancer.cfg:39
 msgid "plague staff"
-msgstr "virga pestilentiae"
+msgstr "virga pestis"
 
 #. [female]
 #: data/core/units/undead/Necromancer.cfg:251
-#, fuzzy
 msgid "female^Necromancer"
-msgstr "Mortuorum Evocator"
+msgstr "Evocatrix Mortum"
 
 #. [unit_type]: id=Banebow, race=undead
 #: data/core/units/undead/Skele_Banebow.cfg:5
-#, fuzzy
 msgid "Banebow"
-msgstr "arcus"
+msgstr "Sagitarrius Cladis"
 
 #. [unit_type]: id=Banebow, race=undead
 #: data/core/units/undead/Skele_Banebow.cfg:18
@@ -4668,7 +4754,7 @@ msgstr ""
 #. [unit_type]: id=Bone Shooter, race=undead
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:4
 msgid "Bone Shooter"
-msgstr "Coniector Ossium"
+msgstr "Coniactor Ossium"
 
 #. [unit_type]: id=Bone Shooter, race=undead
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:16
@@ -4709,7 +4795,7 @@ msgstr ""
 #. [unit_type]: id=Death Knight, race=undead
 #: data/core/units/undead/Skele_Death_Knight.cfg:4
 msgid "Death Knight"
-msgstr "Dux Ossium"
+msgstr "Dux Mortum"
 
 #. [unit_type]: id=Death Knight, race=undead
 #: data/core/units/undead/Skele_Death_Knight.cfg:40
@@ -4730,7 +4816,7 @@ msgstr ""
 #. [unit_type]: id=Deathblade, race=undead
 #: data/core/units/undead/Skele_Deathblade.cfg:4
 msgid "Deathblade"
-msgstr "Lamina Mortis"
+msgstr "Ferrum Mortis"
 
 #. [unit_type]: id=Deathblade, race=undead
 #: data/core/units/undead/Skele_Deathblade.cfg:19
@@ -4752,7 +4838,7 @@ msgstr ""
 #. [unit_type]: id=Draug, race=undead
 #: data/core/units/undead/Skele_Draug.cfg:4
 msgid "Draug"
-msgstr "Draugrus"
+msgstr "Propugnator Animatus"
 
 #. [unit_type]: id=Draug, race=undead
 #: data/core/units/undead/Skele_Draug.cfg:18
@@ -4775,7 +4861,7 @@ msgstr ""
 #. [unit_type]: id=Revenant, race=undead
 #: data/core/units/undead/Skele_Revenant.cfg:4
 msgid "Revenant"
-msgstr "Reveniens"
+msgstr "Miles Osseus"
 
 #. [unit_type]: id=Revenant, race=undead
 #: data/core/units/undead/Skele_Revenant.cfg:19
@@ -4799,7 +4885,7 @@ msgstr ""
 #. [unit_type]: id=Skeleton, race=undead
 #: data/core/units/undead/Skeleton.cfg:4
 msgid "Skeleton"
-msgstr "Ossa"
+msgstr "Vir Osseus"
 
 #. [unit_type]: id=Skeleton, race=undead
 #: data/core/units/undead/Skeleton.cfg:19
@@ -4842,7 +4928,7 @@ msgstr ""
 #. [unit_type]: id=Ghost, race=undead
 #: data/core/units/undead/Spirit_Ghost.cfg:4
 msgid "Ghost"
-msgstr "Larva"
+msgstr "Phasma"
 
 #. [unit_type]: id=Ghost, race=undead
 #: data/core/units/undead/Spirit_Ghost.cfg:19
@@ -4867,12 +4953,12 @@ msgstr ""
 #: data/core/units/undead/Spirit_Spectre.cfg:70
 #: data/core/units/undead/Spirit_Wraith.cfg:32
 msgid "wail"
-msgstr "eiulatus"
+msgstr "geme"
 
 #. [unit_type]: id=Nightgaunt, race=undead
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:4
 msgid "Nightgaunt"
-msgstr "Macer Noctis"
+msgstr "Devorator Noctivagus"
 
 #. [unit_type]: id=Nightgaunt, race=undead
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:19
@@ -4891,6 +4977,7 @@ msgstr ""
 
 #. [unit_type]: id=Shadow, race=undead
 #: data/core/units/undead/Spirit_Shadow.cfg:4
+#, fuzzy
 msgid "Shadow"
 msgstr "Umbra"
 
@@ -4914,6 +5001,7 @@ msgstr ""
 
 #. [unit_type]: id=Spectre, race=undead
 #: data/core/units/undead/Spirit_Spectre.cfg:4
+#, fuzzy
 msgid "Spectre"
 msgstr "Spectrum"
 
@@ -4943,12 +5031,12 @@ msgstr ""
 #: data/core/units/undead/Spirit_Spectre.cfg:59
 #: data/core/units/undead/Spirit_Wraith.cfg:21
 msgid "baneblade"
-msgstr "lamina perniciosa"
+msgstr "ferrum cladis"
 
 #. [unit_type]: id=Wraith, race=undead
 #: data/core/units/undead/Spirit_Wraith.cfg:4
 msgid "Wraith"
-msgstr "Idolon"
+msgstr "Lemure"
 
 #. [unit_type]: id=Wraith, race=undead
 #: data/core/units/undead/Spirit_Wraith.cfg:17
@@ -4973,7 +5061,7 @@ msgstr ""
 #. [unit_type]: id=Ancient Wose, race=wose
 #: data/core/units/wose/Ancient.cfg:4
 msgid "Ancient Wose"
-msgstr "Vosium Vetustum"
+msgstr "Vosis Vetus"
 
 #. [unit_type]: id=Ancient Wose, race=wose
 #: data/core/units/wose/Ancient.cfg:21
@@ -5002,12 +5090,12 @@ msgstr ""
 #: data/core/units/wose/Ancient.cfg:105 data/core/units/wose/Elder.cfg:104
 #: data/core/units/wose/Wose.cfg:43
 msgid "crush"
-msgstr "obterere"
+msgstr "calca"
 
 #. [unit_type]: id=Elder Wose, race=wose
 #: data/core/units/wose/Elder.cfg:4
 msgid "Elder Wose"
-msgstr "Vosium Senex"
+msgstr "Vosium Grandis"
 
 #. [unit_type]: id=Elder Wose, race=wose
 #: data/core/units/wose/Elder.cfg:20
@@ -5039,7 +5127,7 @@ msgstr ""
 #. [unit_type]: id=Wose, race=wose
 #: data/core/units/wose/Wose.cfg:4
 msgid "Wose"
-msgstr "Vosium"
+msgstr "Vosis"
 
 #. [unit_type]: id=Wose, race=wose
 #: data/core/units/wose/Wose.cfg:21
