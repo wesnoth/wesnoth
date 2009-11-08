@@ -280,6 +280,7 @@ int main()
 		assert(t.type == types[n]);
 
 	}
+	return 0;
 }
 
 #endif
