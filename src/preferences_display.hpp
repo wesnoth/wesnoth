@@ -19,6 +19,8 @@
 
 #include "game_preferences.hpp"
 
+class CVideo;
+
 namespace preferences {
 
 	struct display_manager
@@ -30,6 +32,19 @@ namespace preferences {
 	void set_fullscreen(bool ison);
 	void set_scroll_to_action(bool ison);
 	void set_resolution(const std::pair<int,int>& res);
+
+	/**
+	 * Set the resolution.
+	 *
+	 * @param video               The video 'holding' the framebuffer.
+	 * @param width               The new width.
+	 * @param height              The new height.
+	 *
+	 * @returns                   The status true if width and height are the
+	 *                            size of the framebuffer, false otherwise.
+	 */
+	bool set_resolution(CVideo& video
+			, const unsigned width, const unsigned height);
 	void set_turbo(bool ison);
 	void set_ellipses(bool ison);
 	void set_grid(bool ison);

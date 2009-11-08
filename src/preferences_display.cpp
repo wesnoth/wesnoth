@@ -86,8 +86,14 @@ void set_scroll_to_action(bool ison)
 }
 void set_resolution(const std::pair<int,int>& resolution)
 {
-	std::pair<int,int> res = resolution;
+	if(disp) {
+		set_resolution(disp->video(), resolution.first, resolution.second);
+	}
+}
 
+bool set_resolution(CVideo& video
+		, const unsigned width, const unsigned height)
+{
 	// - Ayin: disabled the following code. Why would one want to enforce that?
 	// Some 16:9, or laptop screens, may have resolutions which do not
 	// comply to this rule (see bug 10630).
@@ -97,28 +103,34 @@ void set_resolution(const std::pair<int,int>& resolution)
 	//res.first &= ~3;
 	//res.second &= ~3;
 
-	bool write_resolution = true;
+	SDL_Rect rect;
+	SDL_GetClipRect(video.getSurface(), &rect);
+	if(rect.w == width && rect.h == height) {
+		return true;
+	}
 
-	if(disp != NULL) {
-		CVideo& video = disp->video();
-		const int flags = fullscreen() ? FULL_SCREEN : 0;
-		int bpp = video.modePossible(res.first,res.second,32,flags);
-		if (bpp == 0) bpp = video.modePossible(res.first,res.second, 16, flags);
-		if(bpp != 0) {
-			video.setMode(res.first,res.second,bpp,flags);
+	const int flags = fullscreen() ? FULL_SCREEN : 0;
+	int bpp = video.modePossible(width, height, 32, flags);
+	if(bpp == 0) {
+		bpp = video.modePossible(width, height, 16, flags);
+	}
+	if(bpp != 0) {
+		video.setMode(width, height, bpp, flags);
+
+		if(disp) {
 			disp->redraw_everything();
-
-		} else {
-			write_resolution = false;
-			gui2::show_transient_message(video,"",_("The video mode could not be changed. Your window manager must be set to 16 bits per pixel to run the game in windowed mode. Your display must support 1024x768x16 to run the game full screen."));
 		}
+
+	} else {
+		gui2::show_transient_message(video,"",_("The video mode could not be changed. Your window manager must be set to 16 bits per pixel to run the game in windowed mode. Your display must support 1024x768x16 to run the game full screen."));
+		return false;
 	}
 
-	if(write_resolution) {
-		const std::string postfix = fullscreen() ? "resolution" : "windowsize";
-		preferences::set('x' + postfix, lexical_cast<std::string>(res.first));
-		preferences::set('y' + postfix, lexical_cast<std::string>(res.second));
-	}
+	const std::string postfix = fullscreen() ? "resolution" : "windowsize";
+	preferences::set('x' + postfix, lexical_cast<std::string>(width));
+	preferences::set('y' + postfix, lexical_cast<std::string>(height));
+
+	return true;
 }
 
 void set_turbo(bool ison)
