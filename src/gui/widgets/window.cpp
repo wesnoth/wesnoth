@@ -33,6 +33,7 @@
 #include "gui/widgets/debug.hpp"
 #endif
 #include "preferences.hpp"
+#include "preferences_display.hpp"
 #include "titlescreen.hpp"
 #include "video.hpp"
 
@@ -1223,7 +1224,30 @@ void twindow::signal_handler_sdl_video_resize(
 			const event::tevent event, bool& handled, const tpoint& new_size)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+#if 0
+	/** @todo enable when gui2 becomes the master event handler. */
+	if(new_size.x < preferences::min_allowed_width()
+			|| new_size.y < preferences::min_allowed_height()) {
 
+		DBG_GUI_E << LOG_HEADER << " resize aborted, too small.\n";
+		return;
+	}
+
+	if(new_size.x == static_cast<int>(settings::screen_width)
+			&& new_size.y == static_cast<int>(settings::screen_height)) {
+
+		DBG_GUI_E << LOG_HEADER << " resize not needed.\n";
+		handled = true;
+		return;
+	}
+
+	if(!preferences::set_resolution(video_ , new_size.x, new_size.y)) {
+
+		LOG_GUI_E << LOG_HEADER
+				<< " resize aborted, resize failed.\n";
+		return;
+	}
+#endif
 	settings::gamemap_width += new_size.x - settings::screen_width ;
 	settings::gamemap_height += new_size.y - settings::screen_height ;
 	settings::screen_width = new_size.x;
