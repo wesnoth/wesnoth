@@ -2417,7 +2417,8 @@ void help_text_area::add_text_item(const std::string& text, const std::string& r
 		// The first word does not fit, and we are not at the start of
 		// the line. Move down.
 		down_one_line();
-		add_text_item(text, ref_dst, broken_link, _font_size, bold, italic, text_color);
+		std::string s = remove_first_space(text);
+		add_text_item(s, ref_dst, broken_link, _font_size, bold, italic, text_color);
 	}
 	else {
 		std::vector<std::string> parts = split_in_width(text, font_size, remaining_width);
