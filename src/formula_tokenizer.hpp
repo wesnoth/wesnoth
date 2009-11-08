@@ -40,6 +40,15 @@ struct token {
 	{
 	}
 
+	token(iterator& i1, iterator i2, TOKEN_TYPE type) :
+		type(type),
+		begin(i1),
+		end(i2),
+		line_number(1),
+		filename()
+	{
+	}
+
 	TOKEN_TYPE type;
 	iterator begin, end;
 	int line_number;
