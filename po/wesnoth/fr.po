@@ -8,13 +8,14 @@
 # French Wesnoth translation team <wesnoth@ml.free.fr>, 2004.
 #
 # Guillaume Melquiond <guillaume.melquiond@gmail.com>, 2009.
+# Guillaume Melquiond <guillaume.melquiond@gmail.com>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-11-02 12:29+0100\n"
-"PO-Revision-Date: 2009-09-05 16:07+0200\n"
-"Last-Translator: Damien J\n"
+"PO-Revision-Date: 2009-11-08 09:58+0100\n"
+"Last-Translator: Guillaume Melquiond <guillaume.melquiond@gmail.com>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -540,9 +541,8 @@ msgstr "Traduction valencienne (Catalan du sud)"
 
 #. [about]
 #: data/core/about.cfg:2277
-#, fuzzy
 msgid "Vietnamese Translation"
-msgstr "Traduction chinoise"
+msgstr "Traduction vietnamienne"
 
 #. [about]
 #: data/core/about.cfg:2284
@@ -2944,14 +2944,14 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:822
-#, fuzzy
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
 "\n"
 msgstr ""
 "\n"
-"Bascule entre ignorer/ne pas ignorer les messages de tous les observateurs."
+"Bascule entre ignorer/ne pas ignorer les messages de tous les observateurs.\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:825
@@ -3077,7 +3077,6 @@ msgstr ""
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:861
-#, fuzzy
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -3086,7 +3085,8 @@ msgid ""
 msgstr ""
 "\n"
 "Modifie une propriété de l'unité sélectionnée. Par exemple : :unit "
-"hitpoints=100"
+"hitpoints=100\n"
+"\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:862
@@ -3478,7 +3478,6 @@ msgstr "pétrification"
 
 #. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:617
-#, fuzzy
 msgid ""
 "Petrify:\n"
 "This attack petrifies the target, turning it to stone. Units that have been "
@@ -3946,13 +3945,12 @@ msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr "Du poison s'écoule lentement dans les veines de cette unité."
 
 #: data/core/macros/items.cfg:287
-#, fuzzy
 msgid ""
 "Sprinkling this water on melee weapons grants them the 'arcane' damage type "
 "until the end of the current scenario. Should $unit.name use it?"
 msgstr ""
 "Cette eau bénira les armes de corps à corps, qui feront des dégâts de type "
-"« sacré » jusqu'à la fin du scénario."
+"« arcane » jusqu'à la fin du scénario. Est-ce que $unit.name doit l'utiliser ?"
 
 #: data/core/macros/items.cfg:288
 msgid "I am not suited to the use of this item! Let another take it."
@@ -5253,12 +5251,12 @@ msgstr "Rouge"
 #. [color_range]: id=lightred
 #: data/core/team-colors.cfg:20
 msgid "Light Red"
-msgstr ""
+msgstr "Rouge clair"
 
 #. [color_range]: id=darkred
 #: data/core/team-colors.cfg:26
 msgid "Dark Red"
-msgstr ""
+msgstr "Rouge sombre"
 
 #. [color_range]: id=blue
 #. [color_range]: id=2
@@ -5705,7 +5703,6 @@ msgstr "Humains"
 
 #. [race]: id=human
 #: data/core/units.cfg:169
-#, fuzzy
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -5776,13 +5773,13 @@ msgstr ""
 "alliés de la Couronne mais agissant en toute indépendance et développant "
 "leur propre culture ; certains les considèrent comme un état vassal qui "
 "envoie de la nourriture et des troupes en échange de protection ; d'autres "
-"disent qu'ils traitent d'égal à égal avec Wesnoth. Dans tous les cas, les "
-"provinces de l'est n'ont pas d'armée régulière similaire à celle de Wesnoth. "
-"S'entraîner en combattant fait partie du mode de vie des clans : les parents "
-"enseignent dès le plus jeune âge à leurs enfants la façon de monter à "
-"cheval, de combattre et de tirer à l'arc. En général, les guerriers des "
-"différents clans sont moins organisés que les professionnels, mais leurs "
-"forces et leurs faiblesses se compensent mutuellement."
+"disent qu'ils traitent d'égal à égal avec Wesnoth. Quoi qu'il en soit, les "
+"provinces de l'est n'entretiennent pas une armée régulière comme le fait "
+"Wesnoth. S'entraîner à combattre fait partie du mode de vie des clans : les "
+"parents enseignent dès le plus jeune âge à leurs enfants la façon de monter "
+"à cheval, de combattre et de tirer à l'arc. En général, les guerriers des "
+"clans sont moins organisés que ceux de Wesnoth, mais les forces et les "
+"faiblesses des différents clans se compensent mutuellement."
 
 #. [race]: id=lizard, description=
 #: data/core/units.cfg:177
@@ -6273,59 +6270,53 @@ msgstr "Lac $name|,Étang $name|,Mare $name|,Mer de $name|,Bassin du $name|"
 #: data/hardwired/english.cfg:24
 msgid "$name's Peak,Mount $name"
 msgstr ""
+"Mont $mountain,Aiguille du $mountain,Pic du $mountain,Puy du $mountain,Piton "
+"de $mountain,Dent de $mountain,Sommet de $mountain"
 
 # Noms de villages dans des plaines
 #. [language]
 #: data/hardwired/english.cfg:25
-#, fuzzy
 msgid "$name's Swamp,$name|marsh,$name|fen"
-msgstr ""
-"Ker-$name|,$name|-le-Bas,$name|-le-Haut,$name|champs, $name|champ,Saint-"
-"$name|-des-Champs,Plou-$name,$name|ouse,$name|ville,$name|bourg,$name|pré,"
-"Moulin-$name|,$name|heim,$name|ar,Le Pas-du-$name|,$name|-le-Bel,$name|-la-"
-"Blanche,$name|-la-Friche"
+msgstr "Marais de $name,$name|fange,$name|boue"
 
 # Noms de villages
 #. [language]
 #: data/hardwired/english.cfg:26
-#, fuzzy
 msgid "$name|bury,$name|ham,$name|ton,$name|bury"
 msgstr ""
-"Saint-$name|,Ker $name|,$name|-le-Bas,$name|-le-Haut,$name|ville,$name|bourg,"
-"$name|ange,$name|ey,$name|ac,Castel-$name|,Château-$name|,$name|heim,$name|"
-"ar,Terre-$name|,Ville-$name|,$name|-la-Noire,$name|-le-Grand,$name|-le-Vif,"
-"$name|-la-Vive"
+"Saint-$name,Ker $name,$name|-le-Bas,$name|-le-Haut,$name|ville,$name|bourg,"
+"$name|ange,$name|ey,$name|ac,Castel-$name,Château-$name,$name|heim,$name|ar,"
+"Terre-$name,Ville-$name,$name|-la-Noire,$name|-le-Grand,$name|-le-Vif,$name|-"
+"la-Vive"
 
 # Noms de villages avec un lac
 #. [language]
 #: data/hardwired/english.cfg:27
-#, fuzzy
 msgid "$name|harbor,$name|port,$lake|port,$lake|harbor"
 msgstr ""
-"Port $name|,$name|-sur-Mer,Fos-sur-$name|,Baie-de-$name|,$name|-sur-Berge,"
-"Cap-de-$name|,$name|-les-Flots"
+"Port $name|$name|-sur-Mer,Fos-sur-$name,Baie-de-$name,$name|-sur-Berge,Cap-"
+"de-$name,$name|-les-Flots,Port $lake|$lake|-sur-Mer,Fos-sur-$lake,Baie-de-"
+"$lake,$lake|-sur-Berge,Cap-de-$lake,$lake|-les-Flots"
 
 # Noms de villages avec une rivière
 #. [language]
 #: data/hardwired/english.cfg:28
-#, fuzzy
 msgid ""
 "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross,$name on river"
 msgstr ""
-"Bord-$name|,Croix-Saint-$name|,Fond-de-$river|,Rive-de-$river|,Croix-sur-"
-"$river|,$name|-le-Port,Val-$river|,$name|-sur-$river|,$name|-sur-Berge,"
-"$name|-la-Bièvre,$name|-le-Moulin,$name|-la-Chute,$name|-les-Cascades"
+"Bord-$name,Croix-Saint-$name,Fond-de-$river,Rive-de-$river,Croix-sur-$river,"
+"$name|-le-Port,Val-$river,$name|-sur-$river,$name|-sur-Berge,$name|-la-"
+"Bièvre,$name|-le-Moulin,$name|-la-Chute,$name|-les-Cascades"
 
 # Noms de villages avec une rivière et un pont
 #. [language]
 #: data/hardwired/english.cfg:29
-#, fuzzy
 msgid ""
 "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge,$bridge|ham,"
 "$bridge|ton"
 msgstr ""
-"Pont-de-$river|,Bac-sur-$river|,Saint-$name|-du-pont,Pont de $river|,"
-"Traverse-du-$name|"
+"Pont-de-$river,Bac-sur-$river,Saint-$name|-du-pont,Pont de $river,Traverse-"
+"du-$name"
 
 # Noms de villages dans des plaines
 #. [language]
@@ -6340,14 +6331,14 @@ msgstr ""
 # Noms de villages dans une forêt
 #. [language]
 #: data/hardwired/english.cfg:31
-#, fuzzy
 msgid ""
 "$name|ham,$name|ton,$name|wood,$name Forest,$forest|wood,$forest|ham,$forest|"
 "ton"
 msgstr ""
-"Ker-$name|,$name|-le-Bas,$name|-le-Haut,Saint-$name|-du-Bois,Forêt-de-$name|,"
+"Ker-$name|,$name|-le-Bas,$name|-le-Haut,Saint-$name|-du-Bois,Forêt-de-$name,"
 "Saint-$name|-les-Chênes,$name|ange,$name|ey,$name|ac,$name|-le-Bosquet,"
-"$name|-des-Futaies,$name|-en-Taillis,$name|-sous-Bois"
+"$name|-des-Futaies,$name|-en-Taillis,$name|-sous-Bois,$forest|-le-Bosquet,"
+"$forest|-des-Futaies,$forest|-en-Taillis,$forest|-sous-Bois"
 
 # Noms de villages dans des collines
 #. [language]
@@ -6363,6 +6354,8 @@ msgstr ""
 #: data/hardwired/english.cfg:33
 msgid "$mountain|mont,$mountain|cliff,$mountain|bury,$mountain|ham"
 msgstr ""
+"Saint-$mountain|-du-Mont,$mountain|-le-Haut,Mont-Saint-$mountain,Haute-"
+"$mountain,$mountain|-les-Cieux"
 
 # Noms de villages dans des montagnes
 #. [language]
@@ -6370,25 +6363,26 @@ msgstr ""
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
-"Saint-$name|-du-Mont,$name|-le-Haut,Mont-Saint-$name|,Haute-$name|,Aiguille "
-"du $name|,Pic du $name|,Col du $name|,Puy du $name|,Piton de $name|,Percée "
-"de $name|,Gouffre de $name|,Dent de $name|,Sommet du $name|,$name|-les-Cieux"
+"Saint-$name|-du-Mont,$name|-le-Haut,Mont-Saint-$name,Haute-$name,$name|-les-"
+"Cieux"
 
 #. [language]
 #: data/hardwired/english.cfg:35
 msgid "$road's Rest,$road's Waypoint,$road|bury,$road|ham,$name|bury,$name|ham"
 msgstr ""
+"Auberge de $road,Croisée de $road,Halte de $road,$road|ville,$road|bourg,"
+"$road|heim,Ville-$road,Saint-$name,$name|-le-Bas,$name|ville,$name|bourg,"
+"$name|ange,$name|ey,$name|ac,$name|heim,$name|ar,Ville-$name,$name|-la-Noire,"
+"$name|-le-Grand"
 
 # Noms de villages
 #. [language]
 #: data/hardwired/english.cfg:36
-#, fuzzy
 msgid "$name|bury,$name|ham,$name|ton,$swamp|bury,$swamp|ham,$swamp|ton,"
 msgstr ""
-"Saint-$name|,Ker $name|,$name|-le-Bas,$name|-le-Haut,$name|ville,$name|bourg,"
-"$name|ange,$name|ey,$name|ac,Castel-$name|,Château-$name|,$name|heim,$name|"
-"ar,Terre-$name|,Ville-$name|,$name|-la-Noire,$name|-le-Grand,$name|-le-Vif,"
-"$name|-la-Vive"
+"Saint-$name,$name|-le-Bas,$name|ville,$name|bourg,$name|heim,$name|ar,Ville-"
+"$name,$name|-la-Noire,$swamp|-le-Bas,$swamp|ville,$swamp|bourg,$swamp|heim,"
+"$swamp|ar,Ville-$swamp,$swamp|-la-Noire"
 
 #. [language]
 #: data/hardwired/english.cfg:39
@@ -6428,7 +6422,7 @@ msgstr "froid"
 #. [language]
 #: data/hardwired/english.cfg:48
 msgid "arcane"
-msgstr "sacré"
+msgstr "arcane"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:7
@@ -7211,15 +7205,13 @@ msgstr "niveau"
 
 #. [unit_moves]: id=unit-moves
 #: data/themes/default.cfg:459 data/themes/experimental.cfg:399
-#, fuzzy
 msgid "statuspanel^moves"
 msgstr "mouvement"
 
 #. [unit_defense]: id=unit-defense
 #: data/themes/default.cfg:468 data/themes/experimental.cfg:408
-#, fuzzy
 msgid "statuspanel^terrain def."
-msgstr "niveau"
+msgstr "défense"
 
 #. [change]: id=actions-menu
 #: data/themes/default.cfg:1004
@@ -7340,7 +7332,7 @@ msgstr "pétrifiée"
 
 #: src/actions.cpp:1112
 msgid "petrified"
-msgstr ""
+msgstr "pétrifié"
 
 #: src/actions.cpp:2288
 msgid "Ambushed!"
@@ -7655,7 +7647,7 @@ msgstr "Filtre : "
 
 #: src/addon_management.cpp:1112
 msgid "Description"
-msgstr ""
+msgstr "Description"
 
 #: src/addon_management.cpp:1149
 msgid "Network communication error."
@@ -8086,7 +8078,7 @@ msgstr ""
 
 #: src/generate_report.cpp:140
 msgid "petrified: "
-msgstr ""
+msgstr "pétrifié : "
 
 #: src/generate_report.cpp:141
 msgid "This unit has been petrified. It may not move or attack."
@@ -8224,7 +8216,7 @@ msgstr "Factions :"
 
 #: src/help.cpp:1287
 msgid "Factions are only used in multiplayer"
-msgstr ""
+msgstr "Les factions ne sont utilisées qu'en mode multijoueur."
 
 #: src/help.cpp:1362
 msgid "Advances from: "
@@ -8902,7 +8894,7 @@ msgstr "Désactive le mode débug."
 
 #: src/menu_events.cpp:2450
 msgid "Execute a Lua statement."
-msgstr ""
+msgstr "Exécute une commande Lua."
 
 #: src/menu_events.cpp:2452
 msgid "Set the command used by the custom command hotkey"
@@ -9615,12 +9607,11 @@ msgstr "Initialisation de l'affichage"
 
 #: src/play_controller.cpp:183
 msgid "time left for current turn"
-msgstr ""
+msgstr "temps restant pour ce tour"
 
 #: src/play_controller.cpp:185 src/replay_controller.cpp:134
-#, fuzzy
 msgid "current local time"
-msgstr "Mainteneur actuel"
+msgstr "heure locale"
 
 #: src/play_controller.cpp:223
 msgid "Starting game"
@@ -9665,12 +9656,11 @@ msgstr "Scénario inconnu : « $scenario| »"
 
 #: src/playmp_controller.cpp:93
 msgid "$name has taken control"
-msgstr ""
+msgstr "$name commence à jouer"
 
 #: src/playmp_controller.cpp:95
-#, fuzzy
 msgid "Turn changed"
-msgstr "à distance"
+msgstr "Changement"
 
 #: src/playmp_controller.cpp:227
 msgid "Undoing moves not yet transmitted to the server."
@@ -9774,13 +9764,12 @@ msgid "The game is over."
 msgstr "La partie est terminée."
 
 #: src/playsingle_controller.cpp:488
-#, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game\n"
 "cannot continue. Do you want to save the game?"
 msgstr ""
-"Une déconnexion réseau est survenue. Le jeu ne peut pas continuer. Voulez-"
-"vous sauvegarder la partie ?"
+"Une déconnexion réseau est survenue. Le jeu ne peut\n"
+"pas continuer. Voulez-vous sauvegarder la partie ?"
 
 #: src/playsingle_controller.cpp:648
 msgid "It is now $name|'s turn"
