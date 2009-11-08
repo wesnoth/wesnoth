@@ -992,8 +992,12 @@ surface floating_label::create_surface()
 		}
 		else {
 			// background is blurred shadow of the text
-			//TODO add a little extra space for the blur of letters with a lower part
-			surface background = shadow_image(foreground, false);
+			surface background = create_neutral_surface
+				(foreground->w + 4, foreground->h + 4);
+			SDL_FillRect(background, NULL, 0);
+			SDL_Rect r = { 2, 2, 0, 0 };
+			blit_surface(foreground, NULL, background, &r);
+			background = shadow_image(background, false);
 
 			if (background == NULL) {
 				ERR_FT << "could not create floating label's shadow" << std::endl;
@@ -1001,7 +1005,7 @@ surface floating_label::create_surface()
 				return surf_;
 			}
 			SDL_SetAlpha(foreground,SDL_SRCALPHA,SDL_ALPHA_OPAQUE);
-			blit_surface(foreground, NULL, background, NULL);
+			blit_surface(foreground, NULL, background, &r);
 			surf_ = create_optimized_surface(background);
 		}
 	}
