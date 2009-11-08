@@ -82,9 +82,9 @@ bekapcsolja a debug szintű naplózást.
 .P
 [\fInyitó tag\fP]
 .IP
-\fIkey\fP="\fIvalue\fP"
+\fIkulcs\fP="\fIérték\fP"
 .IP
-\fIkey\fP="\fIvalue\fP,\fIvalue\fP,..."
+\fIkulcs\fP="\fIérték\fP,\fIérték\fP,..."
 .P
 [/\fIzáró tag\fP]
 .
@@ -92,9 +92,10 @@ bekapcsolja a debug szintű naplózást.
 .
 .TP 
 \fBallow_remote_shutdown\fP
-If set to \fBno\fP (default), shut_down and restart requests are ignored unless
-they come from the fifo.  Set it to \fByes\fP to allow remote shutdown via a
-/query by an administrator.
+Ha \fBno\fP értékre van állítva (alapértelmezetten így van), akkor a shut_down
+és restart kéréseket figyelmen kívül hagyja, hacsak azok nem a fifon
+keresztül érkeznek. Állítsd \fByes\fP értékre, ha engedélyezni akarod a távoli
+leállítást egy rendszergazdai /query kérésen keresztül.
 .TP 
 \fBban_save_file\fP
 Teljes, vagy relatív elérési út egy gzippel tömörített fájlhoz, amit a
@@ -102,23 +103,24 @@ szerver olvasni és írni is tud. A tiltások ebbe a fájlba mentődnek és inne
 lesznek kiolvasva szerver indításánál.
 .TP 
 \fBcompress_stored_rooms\fP
-Determines whether the rooms file should be read and written to in
-compressed form. Defaults to \fByes\fP.
+Meghatározza, hogy a szobákat tároló fájlba tömörítetten írjon és
+olvasson. Alapértelmezetten \fByes\fP értéken van.
 .TP 
 \fBconnections_allowed\fP
 Az azonos IP címről engedélyezett párhuzamos kapcsolatok száma. \fB0\fP esetén
 korlátlan.(alapértelmezett: \fB5\fP)
 .TP 
 \fBdisallow_names\fP
-Names/nicks that are not accepted by the server. \fB*\fP and \fB?\fP from wildcard
-patterns are supported. See \fBglob\fP(7)  for more details.  Default values
-(used if nothing is specified) are:
-\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
+Azok a nevek/becenevek, melyeket a kiszolgáló visszautasít. A \fB*\fP és \fB?\fP
+jelzések is használhatóak. Lásd a \fBglob\fP(7) részt a
+részletekért. Alapértelmezett értékek (ha más nincsen megadva): \fB*admin*,
+*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-The path to the fifo you can echo server commands into (same as /query
-\&... from wesnoth).  If not specified defaults to the compile\-time path
-(default: \fB/var/run/socket/wesnothd/socket\fP).
+A fifo elérési útvonala, amibe szerver parancsokat irathatsz ki (ugyanaz
+mint /query ... a wesnothban). Ha nincs meghatározva, alapértelmezettként a
+forgatásnál meghatározott értékkel egyezik meg
+(\fB/var/run/socket/wesnothd/socket\fP).
 .TP 
 \fBmax_messages\fP
 A megadott időtartam (\fBmessages_time_period\fP) alatt küldhető üzenetek
@@ -133,14 +135,15 @@ másodperc)
 Az aznapra szánt üzenet.
 .TP 
 \fBnew_room_policy\fP
-Determines who can create new rooms on the server. Available values are
-\fBeveryone\fP, \fBregistered\fP, \fBadmin\fP and \fBnobody\fP, and give the permission
-respectively to everyone, registered users, admin users or disables new room
-creation. Default value is \fBeveryone\fP.
+Meghatározza, hogy ki hozhat létre új szobákat a kiszolgálón. Lehetséges
+értékek: \fBeveryone\fP, \fBregistered\fP, \fBadmin\fP és \fBnobody\fP, és ennek
+megfelelően mindenkinek, a regisztrált felhasználóknak, admin
+felhasználóknak vagy senkinek nem engedélyezi új szobák
+létrehozását. Alapértelmezetten ez \fBeveryone\fP.
 .TP 
 \fBpasswd\fP
-The password used to gain admin privileges (via \fB/query admin
-\fP\fIpassword\fP).
+A jelszó, amivel adminisztrátori jogok nyerhetőek (a \fB/query
+admin\fP\fIpassword\fP lekérdezésen keresztül).
 .TP 
 \fBvisszajátszások_mentési_helye\fP
 A könyvtár, ahol a kiszolgáló a játékok visszajátszásait tárolja. (Ne
@@ -148,32 +151,33 @@ feledkezz meg a záró "/" jelről!) Alapértelmezetten ez az a könyvtár,
 ahonnan a wesnothd elindult.
 .TP 
 \fBrestart_command\fP
-The command that the server uses to start a new server process via the
-\fBrestart\fP command. (Can only be issued via the fifo. See the
-\fBallow_remote_shutdown\fP setting.)
+A parancs, amivel a szerver új kiszolgálói folyamatot indít a \fBrestart\fP
+paranccsal. (Csak a fifon keresztül adható ki. Lásd a
+\fBallow_remote_shutdown\fP beállításokat.)
 .TP 
 \fBroom_save_file\fP
-Path to a file where the room info should be stored. This file is read on
-server startup and written to later. If empty or not set, rooms are not
-loaded and not saved.
+Útvonal ahhoz a fájlhoz, amiben a szobák információi lesznek tárolva. Ezt a
+fájlt a kiszolgáló induláskor olvassa és később ír bele. Ha üres vagy nincs
+meghatározva a szobák nem lesznek betöltve és mentve.
 .TP 
 \fBvisszajátszások_mentése\fP
 Meghatározza, hogy a kiszolgáló elmenti\-e automatikusan a játékokról készült
 visszajátszást (alapértelmezett: \fBfalse\fP).
 .TP 
 \fBversions_accepted\fP
-A comma separated list of version strings to be accepted by the server. \fB*\fP
-and \fB?\fP from wildcard patterns are supported.  (defaults to the
-corresponding wesnoth version)
+Egy vesszőkkel elválasztott lista azokról a verziószámokról, amelyeket a
+kiszolgáló elfogad. A \fB*\fP és \fB?\fP jelzések is használhatóak
+(alapértelmezetten csak az adott verzióval megegyező elfogadott).
 .br
 Példa: \fBversions_accepted="*"\fP bármilyen verziót elfogad.
 .TP  
 \fBuser_handler\fP
-The name of the user handler to use. Currently available user handlers are
-\fBforum\fP (to connect wesnothd to a phpbb forum database) and \fBsample\fP (a
-sample implementation of the user handler interface, if you use this on
-anything real you are insane). The default value is \fBforum\fP. You must also
-add a \fB[user_handler]\fP section, see below.
+A használandó felhasználókezelő neve. Jelenleg elérhető kezelők a \fBforum\fP
+(a wesnothd egy phpbb fórum adatbázishoz való csatlakoztatásához) és a
+\fBsample\fP (a felhasználókezelő felület minta megvalósítása, ha ezt bármilyen
+valós környezetben használod, őrült vagy). Alapértelmezetten az értéke a
+\fBforum\fP. Emellett meg kell adnod egy \fB[user_handler]\fP részt is, lásd
+később.
 .
 .SS "Globális tagek:"
 .
@@ -202,11 +206,11 @@ meghatározásához.
 A név, amivel a tiltási időre hivatkozunk.
 .TP 
 \fBtime\fP
-The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s
-(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d
-is a number.  If no time modifier is given minutes (m) are assumed.
-Example: \fBtime="1D12h30m"\fP results in a ban time of 1 day, 12 hours and 30
-minutes.
+Az időhossz meghatározás. A formátum a következő: %d[%s[%d%s[...]]], ahol %s
+lehet: s (másodpercek), m (percek), h (órák), D (napok), M (hónapok) vagy Y
+(évek), és %d egy szám. Ha nincs meghatározva a mértékegység, akkor
+percekként (m) lesz értelmezve. Példa: \fBtime="1D12h30m"\fP egy 1 napos, 12
+órás és 30 perces tiltási időt határoz meg.
 .RE
 .P
 \fB[proxy]\fP Proxyként való viselkedés, azaz a bejövő kliens kapcsolatok
@@ -214,10 +218,10 @@ továbbítása a megadott kiszolgáló felé. Ugyanazokat az értékeket fogadja
 mint a \fB[redirect]\fP.
 .RE
 .P
-\fB[user_handler]\fP Configures the user handler. Available keys vary depending
-on which user handler is set with the \fBuser_handler\fP key. If no
-\fB[user_handler]\fP section is present in the configuration the server will
-run without any nick registration service.
+\fB[user_handler]\fP Beállítja a felhasználókezelőt. Az elérhető változók a
+\fBuser_handler\fP kapcsolóban meghatározott értékektől függnek. Ha nincs
+\fB[user_handler]\fP rész a szerver konfigurálásában, akkor felhasználónév
+kezelés nélkül fog futni.
 .RS
 .TP  
 \fBdb_host\fP
@@ -239,11 +243,11 @@ felhasználó adatait. Ez valószínűséggel <tábla\-előtag>_users lesz
 (pl. phpbb3_users).
 .TP  
 \fBdb_extra_table\fP
-(for user_handler=forum) The name of the table in which wesnothd will save
-its own data about users. You will have to create this table manually, e.g.:
-\fBCREATE TABLE <table\-name>(username VARCHAR(255) PRIMARY KEY,
-user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4)
-NOT NULL DEFAULT 0);\fP
+(user_handler=forum esetén) Az adattábla neve, amiben a wesnothd fogja
+eltárolni a felhasználókról készített saját adatait. Ezt a táblát magadtól
+kell létrehoznod, pl.: \fBCREATE TABLE <table\-name>(username
+VARCHAR(255) PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0,
+user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);\fP
 .TP  
 \fBuser_expiration\fP
 (user_handle=sample esetén) Az idő, miután egy regisztrált felhasználónév

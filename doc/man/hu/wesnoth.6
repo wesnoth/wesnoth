@@ -64,7 +64,7 @@ kibővített parancssori beállításokat tesz lehetővé a játékban (további
 információkért a parancssori módról lásd a Wikit a
 http://www.wesnoth.org/CommandMode címen).
 .TP 
-\fB\-e,\ \-\-editor\fP\fI\ file\fP
+\fB\-e,\ \-\-editor\fP\fI\ fájl\fP
 közvetlenül indítja a játékon belüli térképszerkesztőt. Ha a \fIfile\fP változó
 meg van adva, az egyenértékű az \fB\-e \-\-load\fP opcióval.
 .TP 
@@ -106,9 +106,9 @@ a másodpercenkénti képkockák száma, ennek értéke 1 és 1000 között kell
 legyen, alapértelmezetten \fB50\fP.
 .TP 
 \fB\-m, \-\-multiplayer\fP
-runs a multiplayer game. There are additional options that can be used
-together with \fB\-\-multiplayer\fP as explained below. Only these additional
-options can follow \fB\-\-multiplayer\fP.
+a játékot többjátékos üzemmódban indítja el. A \fB\-\-multiplayer\fP kapcsolóval
+használható egyéb opciókat bővebben lásd később. Kizárólag ezek az egyéb
+opciók követhetik a \fB\-\-multiplayer\-\-\fP kapcsolót.
 .TP 
 \fB\-\-no\-delay\fP
 a játékot minden késleltetés nélkül indítja el grafikai teljesítménymérés
@@ -160,8 +160,9 @@ A csapatokra vonatkozó többjátékos opciókat a következőképpen jelöljük
 \fIszám\fP, ahol a \fIszám\fP helyére a csapat számát kell beírni. Ez általában 1
 vagy 2, de függ a kiválasztott pályán lévő játékosok maximális számától.
 .TP 
-\fB\-\-ai_config\fP\fInumber\fP\fB=\fP\fIvalue\fP
-selects a configuration file to load for the AI controller for this side.
+\fB\-\-ai_config\fP\fIszám\fP\fB=\fP\fIérték\fP
+kiválaszt egy konfigurációs fájlt a számmal jelölt fél mesterséges
+intelligenciájának.
 .TP 
 \fB\-\-algorithm\fP\fIszám\fP\fB=\fP\fIérték\fP
 egy nem szabványos MI algoritmust választ a csapat irányítására. Lehetséges
