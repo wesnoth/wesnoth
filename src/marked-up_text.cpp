@@ -411,7 +411,8 @@ inline bool break_after(const wchar_t ch)
 
 } // end of anon namespace
 
-std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int max_width, int max_height, int max_lines)
+std::string word_wrap_text(const std::string& unwrapped_text, int font_size,
+	int max_width, int max_height, int max_lines, bool partial_line)
 {
 	VALIDATE(max_width > 0, _("The maximum text width is less than 1."));
 
@@ -489,7 +490,7 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int
 			line_width += word_width;
 
 			if(static_cast<long>(line_width) > max_width) {
-				if(static_cast<long>(word_width) > max_width) {
+				if (!partial_line && static_cast<long>(word_width) > max_width) {
 					cut_word(current_line,
 						current_word, font_sz, style, max_width);
 				}

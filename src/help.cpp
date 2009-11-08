@@ -3039,7 +3039,7 @@ std::vector<std::string> split_in_width(const std::string &s, const int font_siz
 {
 	std::vector<std::string> res;
 	try {
-	const std::string& first_line = font::word_wrap_text(s, font_size, width, -1, 1);
+	const std::string& first_line = font::word_wrap_text(s, font_size, width, -1, 1, true);
 	res.push_back(first_line);
 	if(s.size() > first_line.size()) {
 		res.push_back(s.substr(first_line.size()));

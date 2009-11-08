@@ -107,7 +107,8 @@ std::string color2hexa(const SDL_Color &color);
  * - If this is not possible, e.g. the word is too big to fit, wrap it on a
  * - char basis.
  */
-std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int max_width, int max_height=-1, int max_lines=-1);
+std::string word_wrap_text(const std::string& unwrapped_text, int font_size,
+	int max_width, int max_height = -1, int max_lines = -1, bool partial_line = false);
 
 /**
  * Draw text on the screen, fit text to maximum width, no markup, no tooltips.
