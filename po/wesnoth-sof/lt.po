@@ -44,7 +44,7 @@ msgstr "(Iššaukiantis)"
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:17
 msgid "Steelclad"
-msgstr ""
+msgstr "Šarvuotis"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:18
@@ -88,7 +88,7 @@ msgstr "Kampanijos priežiūra"
 #. [about]
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:45
 msgid "WML Assistance"
-msgstr ""
+msgstr "Pagalba su WML"
 
 #. [about]
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:60
@@ -98,7 +98,7 @@ msgstr "Grafikos kūrimas"
 #. [scenario]: id=1_A_Bargain_is_Struck
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:3
 msgid "A Bargain is Struck"
-msgstr ""
+msgstr "Susitarimas pasiektas"
 
 #. [side]: type=Dwarvish Fighter, id=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:18
@@ -134,6 +134,10 @@ msgid ""
 "and the challenge he set, or that of Konrad, king of Wesnoth by virtue of "
 "the Sceptre."
 msgstr ""
+"Mmm, ugnies skeptras. Skeptras turi ilgą, šlovingą ir bauginančią istoriją. "
+"Bet čia aš nepasakosiu nei apie tai, kaip Haldrikas Didysis atgabeno "
+"brangakmenį per vandenyną, nei apie Garardo I istoriją ir jo nustatytą "
+"tvarką, nei apie Konradą, skeptro valia tapusį Vesnoto karaliumi."
 
 #. [part]
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:95
@@ -142,6 +146,10 @@ msgid ""
 "dwarfdom. And of the dwarves who made it; for they were great, they were. "
 "They are counted among the greatest of the heroes of ancient Knalga."
 msgstr ""
+"Čia aš papasakosiu apie tai, iš kur jis atsirado. Apie skeptro sutvėrimą "
+"giliai dvarfų karalystės požemiuose. Ir apie dvarfus, kurie jį sutvėrė. Nes "
+"jį sutvėrę dvarfai buvo išties nagingi. Jie minimi tarpe pačių žymiausių "
+"senovės Knalgos didvyrių."
 
 #. [part]
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:98
@@ -151,21 +159,24 @@ msgid ""
 "of Wesnoth, Haldric II, riding up the road from the Ford of Abez with an "
 "army behind him..."
 msgstr ""
+"Mūsų istorija prasideda nedideliame pasienio poste pietinės Knalgos kalvose. "
+"Postą saugojo jaunas dvarfas vardu Rugnuras. Keliu nuo Abezo brastos atjojo "
+"antrasis Vesnoto karalius Haldrikas II su armija užnugary..."
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:119
 msgid "Transport 5 caravans full of silver back to the dwarvish castle"
-msgstr ""
+msgstr "Nugabenkite 5 sidabro vežimus į dvarfų pilį"
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:121
 msgid "Transport 4 caravans full of silver back to the dwarvish castle"
-msgstr ""
+msgstr "Nugabenkite 4 sidabro vežimus į dvarfų pilį"
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:126
 msgid "Bring Alanin, who has the Ruby of Fire, to the dwarvish castle"
-msgstr ""
+msgstr "Nuveskite Alaniną su ugnies rubinu iki dvarfų pilies"
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:131
@@ -174,6 +185,9 @@ msgid ""
 "<span color='#00ff00'>Defeat Glildur</span> <small>(early finish bonus)</"
 "small>"
 msgstr ""
+"<span color='white'>Alternatyvus tikslas:</span>\n"
+"<span color='#00ff00'>Nugalėkite Glildurą</span> <small>(ankstyvo pabaigimo "
+"premija)</small>"
 
 #. [objective]: condition=lose
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:135
@@ -245,12 +259,12 @@ msgstr "Pasibaigia laikas"
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:188
 msgid "Humans, halt! Who dares bring an army into the dwarvish hills?"
-msgstr ""
+msgstr "Žmonės! Stot! Kas drįsta atsivesti armiją į dvarfų kalvas?"
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:192
 msgid "We come to make a bargain with you."
-msgstr ""
+msgstr "Mes atvykome vesti su jumis derybų."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:196
@@ -258,26 +272,30 @@ msgid ""
 "Well, state your business and be done with it. And if we don't like what you "
 "say, you leave!"
 msgstr ""
+"Na, tuomet sakykit ką siūlot ir baigta kalba. Ir jei mums tai nepatiks, "
+"grįžkite!"
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:200
 msgid "Have you heard of the Ruby of Fire?"
-msgstr "Ar jūs girdėjote apie Ugnies rubiną?"
+msgstr "Ar girdėjote apie ugnies rubiną?"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:204
 msgid "Yes... your first king brought it from over the sea, right? You own it."
 msgstr ""
+"Taip... Pirmasis jūsų karalius atsivežė jį iš už jūros, taip? Jis priklauso "
+"jums."
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:208
 msgid "Correct. However, we have a problem with it."
-msgstr "Teisingai. Tačiau mes su juo turime problemą."
+msgstr "Teisingai. Tačiau mes turime su juo bėdų."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:212
 msgid "What sort of problem?"
-msgstr ""
+msgstr "Kokių bėdų"
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:216
@@ -286,12 +304,15 @@ msgid ""
 "noticed it with my father. The longer he stayed near the stone, the more "
 "arrogant, almost evil, he became."
 msgstr ""
+"Kažkokia keista magiška aura verčia aplinkinius elgtis... Keistai. "
+"Pastebėjau tai su tėvu. Kuo daugiau laiko jis praleido šalia akmens, tuo "
+"labiau jame kilo arogancija, kartais net blogis."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:220
 msgid ""
 "So, what do you want me to do? I don't see how this relates to us dwarves."
-msgstr ""
+msgstr "Ir ko jūs norit iš manęs? Nematau kaip tai susiję su mumis, dvarfais."
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:224
@@ -301,6 +322,10 @@ msgid ""
 "of the stone could be contained, and that doing so would stop the stone's "
 "effect."
 msgstr ""
+"Kai į Veldyną atvyko elfai, maždaug prieš dešimt metų, jie papasakojo apie "
+"magą vardu Krelanu ir apie jo patarimą dėl rubino. Jis sakė, kad akmens "
+"spinduliuojama jėga gali būti pažabota, ir taip padarius, akmens poveikis "
+"bus sutramdytas."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:228
@@ -308,6 +333,8 @@ msgid ""
 "And what... you want us to do this, contain the radiance of the stone? By "
 "making an artifact of some kind?"
 msgstr ""
+"Ir ką?.. Jūs norit, kad mes atliktume šitą darbą, pažabotume akmens galią, "
+"įkaldindami jį į kažkokį artefaktą?"
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:232
@@ -315,6 +342,8 @@ msgid ""
 "Exactly. I want you to craft it into a mighty artifact, that will leverage "
 "the stone's power, but contain it also."
 msgstr ""
+"Būtent. Noriu, kad nukaltumėte galingą artefaktą, kuris atskleistų akmens "
+"jėgą, bet kartu ją pažabotų."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:236
@@ -322,6 +351,8 @@ msgid ""
 "Well... I think we can make a deal, but I'm not sure. I'll have to ask the "
 "tribal leaders."
 msgstr ""
+"Na, aš manau, kad galim susitarti, bet negaliu pažadėti. Man reikia "
+"pasitarti su giminės vadais."
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:240
@@ -329,6 +360,8 @@ msgid ""
 "If you are not authorized to make a deal, send out someone who is, and I "
 "will bargain with him."
 msgstr ""
+"Jei tau neleista sudarinėti tokių sandėrių, atsiųsk ką nors, kam leista, ir "
+"aš derėsiuosi su juo."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:244
@@ -336,6 +369,8 @@ msgid ""
 "They would refuse to come. You must come into the caves, and go to the city "
 "in person, or send a representative."
 msgstr ""
+"Jie nesutiks išeiti. Turi nusileisti į urvus ir eiti į miestą pats, arba "
+"pasiųsti savo atstovą."
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:248
@@ -343,6 +378,8 @@ msgid ""
 "I can always take my offer to another tribe more friendly to its potential "
 "patrons. You are not the only smiths in the Northlands!"
 msgstr ""
+"Man niekas netrukdo eiti pas kitą gentį, kuri draugiškiau pažvelgs į galimą "
+"užsakovą. Jūs ne vieninteliai kalviai šiaurės žemėse!"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:252
@@ -350,11 +387,12 @@ msgid ""
 "Uh, no, wait! Lets talk business - how much will you pay us to do this for "
 "you?"
 msgstr ""
+"Oi, ne, palauk! Kalbėkime dalykiškai – kiek žadi sumokėti už šitą darbą?"
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:256
 msgid "Five thousand pieces of silver."
-msgstr "Penki tūkstančiai sidabro gabalų."
+msgstr "Penkis tūkstančius sidabrinių."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:261
@@ -363,6 +401,9 @@ msgid ""
 "So... twenty thousand, minimum. The crafting of this will take us many "
 "years, you must pay us well."
 msgstr ""
+"Sakei, kad nori galingo magiško artefakto, o ne vaikiško žaislo! Dvidešimt "
+"tūkstančių, minimum. Šitoks darbas užtruks daugelį metų, tai kainuos "
+"brangiai."
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:265
@@ -378,19 +419,19 @@ msgstr "Ne mažiau penkiolikos!"
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:273
 msgid ""
 "Then no deal. I'll gather my things and go to another dwarvish clan now."
-msgstr ""
+msgstr "Nieko nebus. Susirenku daiktus ir keliauju pas kitą dvarfų klaną."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:277
 msgid ""
 "Fine then - ten thousand... now, what exactly do you want us to make the "
 "stone into?"
-msgstr ""
+msgstr "Na gerai – dešimt tūkstančių... Kokio pavidalo daikto tu tikiesi?"
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:281
 msgid "I want you to make it into a sceptre, a sceptre of fire."
-msgstr ""
+msgstr "Noriu, kad nukaltumėte skeptrą. Ugnies skeptrą."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:285
@@ -398,6 +439,8 @@ msgid ""
 "I'll see what I can do. But I will need five thousand silver in advance, to "
 "pay for the materials."
 msgstr ""
+"Pažiūrėsiu ką galiu padaryti. Bet man prireiks penkių tūkstančių auksinių "
+"avanso, susimokėti už medžiagas."
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:289
@@ -407,6 +450,10 @@ msgid ""
 "and make sure you are going to get it done on time. I expect it done before "
 "my reign as king is ended."
 msgstr ""
+"Labai gerai. Sidabrą turiu čia, paruoštą, ir pasiųsiu ką nors su pačiu "
+"rubinu. Pasiuntinys pasiliks su jumis kol darysite skeptrą ir prižiūrės, kad "
+"padarytumėte jį laiku. Man reikia, kad jį padarytumėte iki mano valdymo "
+"pabaigos."
 
 #. [unit]: type=Dragoon, id=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:296
@@ -416,7 +463,7 @@ msgstr "Alaninas"
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:306
 msgid "Thats right. I'll be coming over along with the silver."
-msgstr ""
+msgstr "Gerai, aš atvežu sidabrą."
 
 #. [message]: speaker=Glildur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:310
@@ -424,21 +471,23 @@ msgid ""
 "Hey! You can't do that - this road is an elvish road. We're not letting you "
 "transport gold and jewels on it without paying a toll."
 msgstr ""
+"Ei! Negalima – tai elfų kelias. Mes neleisime jums vežti juo aukso ir "
+"brangakmenių, nesumokėjus mokesčio."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:314
 msgid "What are you talking about?! This road has always been open to all."
-msgstr ""
+msgstr "Ką tu kalbi?! Šis kelias visuomet buvo atviras visiems."
 
 #. [message]: speaker=Glildur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:318
 msgid "Yes, we have allowed people to use it, but it is our road."
-msgstr ""
+msgstr "Taip, mes leisdavome juo naudotis, bet jis priklauso mums."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:322
 msgid "Not true! This is dwarvish land; if anything, it's our road!"
-msgstr ""
+msgstr "Netiesa! Tai dvarfų žemė, tad jei kelias kam ir priklauso, tai mums!"
 
 #. [message]: speaker=Glildur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:326
@@ -446,6 +495,8 @@ msgid ""
 "Nevertheless, if you try to move your caravans here you have to pay the "
 "toll, or face our wrath!"
 msgstr ""
+"Ir visgi, jeigu bandysite gabenti juo savo prekes, turite sumokėti mokestį, "
+"arba užsitrauksite mūsų rūstybę."
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:330
@@ -453,6 +504,8 @@ msgid ""
 "We Wesnothians and you elves have a treaty! Do you really mean to break it "
 "in defense of a road that is not even yours?!"
 msgstr ""
+"Vesnotas turi sutartį su elfais! Negi nori sulaužyti sutartį gindamas kelią, "
+"kuris net ne tavo?!"
 
 #. [message]: speaker=Glildur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:334
@@ -460,6 +513,8 @@ msgid ""
 "I was never among those who agreed to that treaty. Not all of us elves are "
 "as low as Kalenz, or make deals with those who betrayed us."
 msgstr ""
+"Niekada nebuvau tarp tų, kurie pasirašė sutartį. Ne visi elfai ritasi taip "
+"žemai kaip Kalenzas ir sudarinėja sutartis su išdavikais."
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:338
@@ -468,6 +523,9 @@ msgid ""
 "apply to you, so I have no problem with slaying you if you stand in our way. "
 "Rugnur, we will proceed with the shipment."
 msgstr ""
+"A, supratau – jūs vieni iš tų maištininkų. Mūsų sutartis su elfais jums "
+"negalioja, tad jeigu mums trukdysit, turim teisę jūsų atsikratyti. Rugnurai, "
+"mūsų susitarimas galioja."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:342
@@ -475,6 +533,8 @@ msgid ""
 "Very well. Glildur, if the high elvish council has made an alliance with the "
 "men, I would advise you to follow it, but not doing so is your choice."
 msgstr ""
+"Puiku. Glildurai, jeigu aukščiausioji elfų taryba sudarė sutartį su "
+"žmonėmis, patarčiau tau jos laikytis, bet pasirinkimas, žinoma, tavo."
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:390
@@ -482,37 +542,39 @@ msgid ""
 "Here's the stone, for you dwarves! Now, if you'll excuse me, I think I'll be "
 "taking refuge in this castle here... I don't much like fighting."
 msgstr ""
+"Štai akmuo, dvarfai. O dabar, jei leisite, aš pasišalinsiu į štai tą pilį... "
+"Nesu didelis kautynių mėgėjas."
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:411
 msgid "All the gold is there too. Proceed with the task, Rugnur!"
-msgstr ""
+msgstr "Visas reikalingas auksas taip pat ten. Imkis darbo, Rugnurai!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:452
 msgid "Cargo unloaded."
-msgstr ""
+msgstr "Krovinys pristatytas."
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:462
 msgid "You only need $incominggold more, then you can begin work."
-msgstr ""
+msgstr "Trūksta tik $incominggold ir galėsite pradėti darbą."
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:468
 msgid ""
 "You only need $incominggold more, and the stone, then you can begin work."
-msgstr ""
+msgstr "Trūksta tik $incominggold ir akmens, ir galėsite pradėti darbą."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:482
 msgid "That's the last caravan! We will commence work immediately."
-msgstr ""
+msgstr "Tai paskutinis vežimas! Tuojau pat imsimės darbo."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:496
 msgid "We have all of the silver, now all we need is the stone."
-msgstr "Turime visą sidabrą, viskas, ko mums dabar reikia, yra akmuo."
+msgstr "Turime visą sidabrą, dabar mums tetrūksta tik akmens."
 
 #. [message]: speaker=Glildur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:511
@@ -520,18 +582,19 @@ msgid ""
 "Ha! Our reinforcements have arrived. There is no way you can withstand our "
 "combined strength!"
 msgstr ""
+"Cha! Atvyko mūsų pastiprinimas. Jums neatsilaikyti prieš mūsų bendras jėgas!"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:515
 msgid ""
 "We cannot match you above ground, but in the caves we may still defeat you."
-msgstr ""
+msgstr "Mes jums ne priešas paviršiuje, bet olose mes jus nugalėsim."
 
 #. [message]: speaker=Glildur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:519
 msgid ""
 "We will see about that - if you ever get underground, which I doubt. Ha!"
-msgstr ""
+msgstr "Pažiūrėsim – jei tik nusigausite iki olų, kuo aš abejoju. Cha!"
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:527
@@ -540,6 +603,8 @@ msgid ""
 "resistance to the treaty was smaller than this. Hurry up and move those "
 "caravans!"
 msgstr ""
+"Elfų pastiprinimas! Iš kur jie? Maniau, kad mažiau elfų nepaklūsta "
+"sutarčiai. Paskubėkite su tais vežimais!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:547
@@ -549,7 +614,7 @@ msgstr "Mirkite, žmonės, Landaro vardu!"
 #. [message]: speaker=second_unit
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:551
 msgid "Landar? Who is this 'Landar' you speak of?"
-msgstr "Landaro? Kas tas „Landaras“, apie kurį kalbi?"
+msgstr "Landaro? Apie kokį „Landarą“ tu kalbi?"
 
 #. [message]: speaker=unit
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:568
@@ -567,6 +632,8 @@ msgid ""
 "You just let a caravan, with MY money loaded in it, get captured! If I can't "
 "trust you to keep my property secure, the deal's off."
 msgstr ""
+"Tu ką tik leidai užgrobti vežimą su MANO pinigais! Jei negaliu tau patikėti "
+"savo nuosavybės, sutartis nutraukiama."
 
 #. [scenario]: id=2_Closing_the_Gates
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:3
@@ -3244,6 +3311,8 @@ msgid ""
 "Caravans are used to carry gold or supplies long distances. Because of the "
 "immense weight of the cargo this caravan carries, it moves very slowly."
 msgstr ""
+"Vežimai naudojami gabenti auksui ar atsargoms į tolimas vietas. Dėl didelio "
+"krovinio svorio, tenkančio vežimui, jis juda labai lėtai."
 
 #. [unit_type]: id=Dwarvish Arcanister, race=dwarf
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Arcanister.cfg:4
@@ -3278,11 +3347,13 @@ msgid ""
 "precious ores out of the ground, but do not ever take part in the crafting "
 "of weapons or artifacts."
 msgstr ""
+"Kalnakasiai yra dvarfų bendruomenės darbiniai arkliukai. Jie išgauna rūdą, "
+"bet niekada nedalyvauja ginklų ar artefaktų gamyboje."
 
 #. [attack]: type=pierce
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Miner.cfg:42
 msgid "pick"
-msgstr ""
+msgstr "kirtiklis"
 
 #. [unit_type]: id=Dwarvish Runemaster_alt, race=dwarf
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Runemaster.cfg:4
@@ -3332,19 +3403,19 @@ msgstr "kalavijas"
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/utils/utils.cfg:22
 msgid "Gahahh..."
-msgstr ""
+msgstr "Gharr..."
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/utils/utils.cfg:35
 msgid "Maghah..."
-msgstr ""
+msgstr "Agh..."
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/utils/utils.cfg:48
 msgid "Ahhgg..."
-msgstr ""
+msgstr "Ach..."
 
 #. [message]: speaker=Krawg
 #: data/campaigns/Sceptre_of_Fire/utils/utils.cfg:71
 msgid "Kraa..."
-msgstr ""
+msgstr "Hr..."
