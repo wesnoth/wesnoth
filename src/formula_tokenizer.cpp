@@ -251,6 +251,7 @@ token get_token(iterator& i1, iterator i2) {
 		}
 	}
 	raise_exception(it, i2, std::string() );
+	return token();
 }
 
 }
