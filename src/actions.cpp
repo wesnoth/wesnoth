@@ -1539,7 +1539,7 @@ void reset_resting(unit_map& units, int side)
 struct unit_healing_struct {
   unit *healed;
   map_location *healed_loc;
-  std::vector<unit_map::iterator> *healers;
+  std::vector<unit_map::iterator> healers;
   int healing;
 };
 
@@ -1709,7 +1709,7 @@ void calculate_healing(int side, bool update_display)
                   struct unit_healing_struct uhs = {
                     &i->second,
                     &i->first,
-                    &healers,
+                    healers,
                     healing
                   };
                   l.push_front(uhs);
@@ -1729,7 +1729,7 @@ void calculate_healing(int side, bool update_display)
           l.pop_front();
 
           unit_display::unit_healing(*uhs.healed, *uhs.healed_loc,
-                                     *uhs.healers, uhs.healing);
+                                     uhs.healers, uhs.healing);
 
           /* next unit to be healed is nearest from uhs left in list l */
           while (!l.empty()) {
@@ -1752,7 +1752,7 @@ void calculate_healing(int side, bool update_display)
             l.erase(nearest);
 
             unit_display::unit_healing(*uhs.healed, *uhs.healed_loc,
-                                       *uhs.healers, uhs.healing);
+                                       uhs.healers, uhs.healing);
           }
         }
 
