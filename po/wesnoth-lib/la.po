@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-11-08 15:46+0100\n"
-"PO-Revision-Date: 2006-06-15 17:19+0200\n"
-"Last-Translator: Mark Polo <markpolo@gmail.com>\n"
+"PO-Revision-Date: 2009-11-08 20:08-0500\n"
+"Last-Translator: Michael Babich (Aethaeryn) <michaelbabich7@gmail.com>\n"
 "Language-Team: Latin\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,25 +22,24 @@ msgstr ""
 
 #. [terrain_type]: id=off_map
 #: data/core/terrain.cfg:13
-#, fuzzy
 msgid "None"
-msgstr "Non"
+msgstr "Nullus"
 
 #. [toggle_button]: id=shroud
 #. [terrain_type]: id=shroud
 #: data/core/terrain.cfg:22 data/gui/default/window/mp_create_game.cfg:471
 msgid "Shroud"
-msgstr "Integumentum"
+msgstr "Absconsus"
 
 #. [terrain_type]: id=fog
 #: data/core/terrain.cfg:31
 msgid "Fog"
-msgstr "Caligo"
+msgstr "Nebula"
 
 #. [terrain_type]: id=ice
 #: data/core/terrain.cfg:43
 msgid "Ice"
-msgstr "Glacies"
+msgstr "Crystallus"
 
 #. [terrain_type]: id=snow
 #: data/core/terrain.cfg:53
@@ -70,9 +69,8 @@ msgstr "Castra"
 
 #. [terrain_type]: id=orcish_fort
 #: data/core/terrain.cfg:173
-#, fuzzy
 msgid "Fort"
-msgstr "Silva"
+msgstr "Burgus"
 
 #. [terrain_type]: id=castle
 #. [terrain_type]: id=elven_castle
@@ -85,16 +83,19 @@ msgstr "Castellum"
 
 #. [terrain_type]: id=ruin
 #: data/core/terrain.cfg:216
+#, fuzzy
 msgid "Ruin"
 msgstr "Ruina"
 
 #. [terrain_type]: id=sunkenruin
 #: data/core/terrain.cfg:227
+#, fuzzy
 msgid "Sunken Ruin"
 msgstr "Ruina Demersa"
 
 #. [terrain_type]: id=swampruin
 #: data/core/terrain.cfg:239
+#, fuzzy
 msgid "Swamp Ruin"
 msgstr "Ruina Paludinis"
 
@@ -117,24 +118,21 @@ msgstr "Arx"
 
 #. [terrain_type]: id=encampment_keep
 #: data/core/terrain.cfg:256
-#, fuzzy
 msgid "Encampment Keep"
-msgstr "Castra"
+msgstr "Arx Castrorum"
 
 #. [terrain_type]: id=orcish_keep
 #: data/core/terrain.cfg:269
-#, fuzzy
 msgid "Fort Keep"
-msgstr "Arx"
+msgstr "Arx Burgi"
 
 #. [terrain_type]: id=human_keep
 #. [terrain_type]: id=dwarven_keep
 #. [terrain_type]: id=swamp_keep
 #: data/core/terrain.cfg:282 data/core/terrain.cfg:308
 #: data/core/terrain.cfg:347
-#, fuzzy
 msgid "Castle Keep"
-msgstr "Castellum"
+msgstr "Arx Castelli"
 
 #. [terrain_type]: id=elven_keep
 #: data/core/terrain.cfg:295
@@ -154,7 +152,7 @@ msgstr ""
 #. [terrain_type]: id=crater
 #: data/core/terrain.cfg:387
 msgid "Crater"
-msgstr ""
+msgstr "Crater"
 
 #. [terrain_type]: id=desert
 #: data/core/terrain.cfg:397
@@ -164,7 +162,7 @@ msgstr "Desertum"
 #. [terrain_type]: id=sand_rubble
 #: data/core/terrain.cfg:407
 msgid "Rubble"
-msgstr ""
+msgstr "Congeries"
 
 #. [terrain_type]: id=sand
 #: data/core/terrain.cfg:418
@@ -182,13 +180,12 @@ msgstr "Oasis"
 #: data/core/terrain.cfg:441 data/core/terrain.cfg:516
 #: data/core/terrain.cfg:561
 msgid "Snow Forest"
-msgstr "Silva Nivis"
+msgstr "Silva Nivea"
 
 #. [terrain_type]: id=snow_forest
 #: data/core/terrain.cfg:442
-#, fuzzy
 msgid "Snowy Pine Forest"
-msgstr "Silva Nivis"
+msgstr ""
 
 #. [terrain_type]: id=great_tree
 #: data/core/terrain.cfg:453
@@ -211,12 +208,12 @@ msgstr "Silva"
 
 #. [terrain_type]: id=forest
 #: data/core/terrain.cfg:464
-#, fuzzy
 msgid "Pine Forest"
-msgstr "Silva Nivis"
+msgstr ""
 
 #. [terrain_type]: id=tropical_forest
 #: data/core/terrain.cfg:473
+#, fuzzy
 msgid "Tropical Forest"
 msgstr "Silva Tropica"
 
@@ -237,9 +234,8 @@ msgstr ""
 
 #. [terrain_type]: id=deciduous_forest_winter_snow
 #: data/core/terrain.cfg:517
-#, fuzzy
 msgid "Snowy Deciduous Forest"
-msgstr "Silva Nivis"
+msgstr ""
 
 #. [terrain_type]: id=mixed_forest_summer
 #: data/core/terrain.cfg:529
@@ -258,9 +254,8 @@ msgstr ""
 
 #. [terrain_type]: id=mixed_forest_winter_snow
 #: data/core/terrain.cfg:562
-#, fuzzy
 msgid "Snowy Mixed Forest"
-msgstr "Silva Nivis"
+msgstr ""
 
 #. [terrain_type]: id=forested_hills
 #. [terrain_type]: id=deciduous_forest_summer_hills
@@ -273,60 +268,51 @@ msgstr "Silva Nivis"
 #: data/core/terrain.cfg:608 data/core/terrain.cfg:619
 #: data/core/terrain.cfg:641 data/core/terrain.cfg:652
 #: data/core/terrain.cfg:662
-#, fuzzy
 msgid "Forested Hills"
-msgstr "Silva"
+msgstr ""
 
 #. [terrain_type]: id=forested_snow_hills
 #. [terrain_type]: id=deciduous_forest_winter_snow_hills
 #. [terrain_type]: id=mixed_forest_winter_snow_hills
 #: data/core/terrain.cfg:587 data/core/terrain.cfg:630
 #: data/core/terrain.cfg:673
-#, fuzzy
 msgid "Forested Snow Hills"
-msgstr "Colles Nivium"
+msgstr ""
 
 #. [terrain_type]: id=deciduous_forest_summer_hills
 #: data/core/terrain.cfg:598
-#, fuzzy
 msgid "Summer Deciduous Forested Hills"
-msgstr "Silva"
+msgstr ""
 
 #. [terrain_type]: id=deciduous_forest_fall_hills
 #: data/core/terrain.cfg:609
-#, fuzzy
 msgid "Fall Deciduous Forested Hills"
-msgstr "Silva"
+msgstr ""
 
 #. [terrain_type]: id=deciduous_forest_winter_hills
 #: data/core/terrain.cfg:620
-#, fuzzy
 msgid "Winter Deciduous Forested Hills"
-msgstr "Silva"
+msgstr ""
 
 #. [terrain_type]: id=deciduous_forest_winter_snow_hills
 #: data/core/terrain.cfg:631
-#, fuzzy
 msgid "Snowy Deciduous Forested Hills"
-msgstr "Silva"
+msgstr ""
 
 #. [terrain_type]: id=mixed_forest_summer_hills
 #: data/core/terrain.cfg:642
-#, fuzzy
 msgid "Summer Mixed Forested Hills"
-msgstr "Silva"
+msgstr ""
 
 #. [terrain_type]: id=mixed_forest_winter_hills
 #: data/core/terrain.cfg:663
-#, fuzzy
 msgid "Winter Mixed Forested Hills"
-msgstr "Silva"
+msgstr ""
 
 #. [terrain_type]: id=mixed_forest_winter_snow_hills
 #: data/core/terrain.cfg:674
-#, fuzzy
 msgid "Snowy Mixed Forested Hills"
-msgstr "Silva"
+msgstr ""
 
 #. [terrain_type]: id=grassland
 #. [terrain_type]: id=grassland_flowers
@@ -334,20 +320,21 @@ msgstr "Silva"
 #: data/core/terrain.cfg:688 data/core/terrain.cfg:697
 #: data/core/terrain.cfg:706
 msgid "Grassland"
-msgstr "Campus"
+msgstr "Cespes"
 
 #. [terrain_type]: id=savanna
 #: data/core/terrain.cfg:715
 msgid "Savanna"
-msgstr "Campus Tropicus"
+msgstr "Cespes Ferus"
 
 #. [terrain_type]: id=snow_hills
 #: data/core/terrain.cfg:728
 msgid "Snow Hills"
-msgstr "Colles Nivium"
+msgstr "Colles Nivales"
 
 #. [terrain_type]: id=desert_hills
 #: data/core/terrain.cfg:738
+#, fuzzy
 msgid "Dunes"
 msgstr "Tumuli"
 
@@ -366,30 +353,28 @@ msgstr "Montes"
 
 #. [terrain_type]: id=desert_mountains
 #: data/core/terrain.cfg:761
-#, fuzzy
 msgid "Desert Mountains"
-msgstr "Montes"
+msgstr "Montes Deserti"
 
 #. [terrain_type]: id=snow_mountains
 #: data/core/terrain.cfg:779
-#, fuzzy
 msgid "Snowy Mountains"
-msgstr "Montes"
+msgstr "Montes Niveus"
 
 #. [terrain_type]: id=canyon
 #: data/core/terrain.cfg:793
 msgid "Chasm"
-msgstr "Fauces"
+msgstr "Profundum"
 
 #. [terrain_type]: id=lava_chasm
 #: data/core/terrain.cfg:802
 msgid "Lava chasm"
-msgstr ""
+msgstr "Lava in profundo"
 
 #. [terrain_type]: id=lava
 #: data/core/terrain.cfg:812
 msgid "Lava"
-msgstr "Saxa liquefacta"
+msgstr "Lava"
 
 #. [terrain_type]: id=road
 #. [terrain_type]: id=stone_path
@@ -406,7 +391,7 @@ msgstr "Humus"
 #. [terrain_type]: id=farm
 #: data/core/terrain.cfg:862
 msgid "Farmland"
-msgstr ""
+msgstr "Ager"
 
 #. [terrain_type]: id=swamp_water
 #: data/core/terrain.cfg:876
@@ -416,7 +401,7 @@ msgstr "Palus"
 #. [terrain_type]: id=lit
 #: data/core/terrain.cfg:890
 msgid "Lit"
-msgstr ""
+msgstr "Lucidus"
 
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:900
@@ -425,9 +410,8 @@ msgstr "Caverna"
 
 #. [terrain_type]: id=cave_path
 #: data/core/terrain.cfg:918
-#, fuzzy
 msgid "Cave path"
-msgstr "Caverna Illustrata"
+msgstr "Via in caverna"
 
 #. [terrain_type]: id=fungus
 #: data/core/terrain.cfg:927
@@ -490,12 +474,12 @@ msgstr "Caverna Saxosa"
 #: data/core/terrain.cfg:1268 data/core/terrain.cfg:1281
 #: data/core/terrain.cfg:1296 data/core/terrain.cfg:1307
 msgid "Village"
-msgstr "Pagus"
+msgstr "Viculus"
 
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:1322
 msgid "Deep Water"
-msgstr "Gurges"
+msgstr "Salum"
 
 #. [terrain_type]: id=shallow_water
 #: data/core/terrain.cfg:1332
@@ -504,6 +488,7 @@ msgstr "Aqua"
 
 #. [terrain_type]: id=ford
 #: data/core/terrain.cfg:1342
+#, fuzzy
 msgid "River Ford"
 msgstr "Vadum Fluminis"
 
@@ -530,31 +515,29 @@ msgstr "Murus Cavernae"
 
 #. [terrain_type]: id=wall_stone
 #: data/core/terrain.cfg:1394
-#, fuzzy
 msgid "Wall"
-msgstr "Murus Cavernae"
+msgstr "Murus"
 
 #. [terrain_type]: id=impassable_overlay
 #. [terrain_type]: id=impassable
 #: data/core/terrain.cfg:1404 data/core/terrain.cfg:1442
-#, fuzzy
 msgid "Impassable"
-msgstr "Montes Inexsuperabiles"
+msgstr "Impervius"
 
 #. [terrain_type]: id=void
 #: data/core/terrain.cfg:1415
 msgid "Void"
-msgstr ""
+msgstr "Inanis"
 
 #. [terrain_type]: id=flat
 #: data/core/terrain.cfg:1428
 msgid "Flat"
-msgstr ""
+msgstr "Planus"
 
 #. [terrain_type]: id=frozen
 #: data/core/terrain.cfg:1435
 msgid "Frozen"
-msgstr ""
+msgstr "Glacialis"
 
 #. [terrain_type]: id=unwalkable
 #: data/core/terrain.cfg:1449
@@ -601,7 +584,7 @@ msgstr "Factum Reddere"
 #: data/gui/default/window/mp_connect.cfg:175
 #: data/gui/default/window/mp_connect.cfg:176
 msgid "Connect"
-msgstr ""
+msgstr "Adplica"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
@@ -625,12 +608,12 @@ msgstr ""
 #: data/gui/default/window/unit_create.cfg:217 src/construct_dialog.cpp:134
 #: src/construct_dialog.cpp:137
 msgid "Cancel"
-msgstr "Abrogare"
+msgstr "Veta"
 
 #. [label]
 #: data/gui/default/window/campaign_dialog.cfg:44
 msgid "Play a campaign"
-msgstr ""
+msgstr "Lude Militia"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -649,10 +632,11 @@ msgstr ""
 #: src/construct_dialog.cpp:133 src/gui/dialogs/message.cpp:163
 #: src/gui/dialogs/message.cpp:170
 msgid "OK"
-msgstr "Sane"
+msgstr "Confirma"
 
 #. [label]
 #: data/gui/default/window/editor_generate_map.cfg:38
+#, fuzzy
 msgid "Generate Random Map"
 msgstr "Chartam Fortuitam Generare"
 
@@ -679,18 +663,21 @@ msgstr "Chartam Novam Generare"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:110
+#, fuzzy
 msgid "New Map"
 msgstr "Charta Nova"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_new_map.cfg:46 src/mapgen_dialog.cpp:120
+#, fuzzy
 msgid "Width:"
 msgstr "Amplitudo: "
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_new_map.cfg:73 src/mapgen_dialog.cpp:121
+#, fuzzy
 msgid "Height:"
 msgstr "Altitudo: "
 
@@ -704,6 +691,7 @@ msgstr "Novam Chartam Creare"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:155
+#, fuzzy
 msgid "Resize Map"
 msgstr "Magnitudinem Chartae Mutare"
 
@@ -781,19 +769,18 @@ msgstr ""
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:120
-#, fuzzy
 msgid "Red:"
-msgstr "Factum Reddere"
+msgstr "Ruber:"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:146
 msgid "Green:"
-msgstr ""
+msgstr "Viridis:"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:172
 msgid "Blue:"
-msgstr ""
+msgstr "Caeruleus:"
 
 #. [toggle_button]: id=use_mdi
 #: data/gui/default/window/editor_settings.cfg:208
@@ -872,7 +859,7 @@ msgstr ""
 #: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:643
 #: src/hotkeys.cpp:934
 msgid "Quit"
-msgstr "Relinquere"
+msgstr "Exi"
 
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_delete.cfg:32
@@ -920,7 +907,7 @@ msgstr "Non"
 #: data/gui/default/window/game_load.cfg:42
 #: src/gui/dialogs/mp_create_game.cpp:75 src/hotkeys.cpp:66
 msgid "Load Game"
-msgstr "Lusum Restituere"
+msgstr "Restitue Ludum"
 
 #. [label]: id=lblChoose
 #: data/gui/default/window/game_load.cfg:179
@@ -930,14 +917,14 @@ msgstr ""
 #. [label]: id=lblFilter
 #: data/gui/default/window/game_load.cfg:203
 msgid "Filter"
-msgstr ""
+msgstr "Filtrum"
 
 #. [label]: id=name
 #. [label]: id=filename
 #: data/gui/default/window/game_load.cfg:253
 #: data/gui/default/window/mp_server_list.cfg:96
 msgid "Name"
-msgstr ""
+msgstr "Nomen"
 
 #. [label]: id=date
 #: data/gui/default/window/game_load.cfg:267
@@ -969,6 +956,7 @@ msgstr "Abrogare"
 #: data/gui/default/window/game_save.cfg:32
 #: data/gui/default/window/game_save_message.cfg:32
 #: data/gui/default/window/game_save_oos.cfg:32 src/hotkeys.cpp:63
+#, fuzzy
 msgid "Save Game"
 msgstr "Lusum Servare"
 
@@ -983,7 +971,7 @@ msgstr "Modus Visivus"
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_save_message.cfg:52
 msgid "x"
-msgstr ""
+msgstr "x"
 
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_save_oos.cfg:52
@@ -993,13 +981,13 @@ msgstr ""
 #. [toggle_button]: id=ignore_all
 #: data/gui/default/window/game_save_oos.cfg:134
 msgid "Ignore All"
-msgstr ""
+msgstr "Ignora Omnem"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit_game
 #: data/gui/default/window/game_save_oos.cfg:159 src/hotkeys.cpp:85
 msgid "Quit Game"
-msgstr "Lusum Relinquere"
+msgstr "Exi Ludum"
 
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_save_overwrite.cfg:32
@@ -1054,26 +1042,25 @@ msgstr ""
 #: data/gui/default/window/lobby_player_info.cfg:192
 #: data/gui/default/window/message.cfg:122 src/construct_dialog.cpp:140
 msgid "Close"
-msgstr "Claudere"
+msgstr "Exi"
 
 #. [grid]
 #. [label]
 #: data/gui/default/window/language_selection.cfg:31
 #: data/gui/default/window/title_screen.cfg:188
 msgid "Language"
-msgstr ""
+msgstr "Lingua"
 
 #. [label]
 #: data/gui/default/window/language_selection.cfg:50
 msgid "Choose your preferred language:"
-msgstr ""
+msgstr "Opta linguam promotum tuum:"
 
 #. [button]: id=ok
 #: data/gui/default/window/language_selection.cfg:118
 #: data/gui/default/window/language_selection.cfg:119
-#, fuzzy
 msgid "Change language"
-msgstr "Linguam mutare"
+msgstr "Muta linguam"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:108
@@ -1151,7 +1138,7 @@ msgstr ""
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:334
 msgid "Lobby"
-msgstr ""
+msgstr "Atrium"
 
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:335
@@ -1162,7 +1149,7 @@ msgstr "Novam Chartam Creare"
 #. [label]: id=room
 #: data/gui/default/window/lobby_main.cfg:357
 msgid "Rooms"
-msgstr ""
+msgstr "Zetae"
 
 #. [image]: id=pending_messages
 #: data/gui/default/window/lobby_main.cfg:375
@@ -1171,42 +1158,38 @@ msgstr ""
 
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:451
-#, fuzzy
 msgid "Multiplayer Lobby"
-msgstr "lusor"
+msgstr "Atrium Lusores"
 
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:459
 msgid "Filter:"
-msgstr ""
+msgstr "Filtrum:"
 
 #. [toggle_button]: id=filter_with_friends
 #: data/gui/default/window/lobby_main.cfg:470
-#, fuzzy
 msgid "Friends"
-msgstr "Silva"
+msgstr "Amicae"
 
 #. [toggle_button]: id=filter_without_ignored
 #: data/gui/default/window/lobby_main.cfg:476
 msgid "No ignored"
-msgstr ""
+msgstr "Veta abrogationem"
 
 #. [toggle_button]: id=filter_vacant_slots
 #: data/gui/default/window/lobby_main.cfg:482
 msgid "Vacant slots"
-msgstr ""
+msgstr "Vacuus"
 
 #. [toggle_button]: id=filter_invert
 #: data/gui/default/window/lobby_main.cfg:488
-#, fuzzy
 msgid "Invert filter"
-msgstr "Electionem Implere"
+msgstr "Interverte filtrum"
 
 #. [button]: id=send_message
 #: data/gui/default/window/lobby_main.cfg:527
-#, fuzzy
 msgid "Send"
-msgstr "Harena"
+msgstr "Mitte"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_preferences
@@ -1215,13 +1198,12 @@ msgstr "Harena"
 #: data/gui/default/window/title_screen.cfg:189
 #: src/game_preferences_display.cpp:53 src/hotkeys.cpp:79
 msgid "Preferences"
-msgstr "Anteposita"
+msgstr "Electi"
 
 #. [button]: id=refresh
 #: data/gui/default/window/lobby_main.cfg:551
-#, fuzzy
 msgid "Refresh"
-msgstr "Scrinium"
+msgstr "Recupera"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_help
@@ -1229,25 +1211,24 @@ msgstr "Scrinium"
 #: data/gui/default/window/lobby_main.cfg:557
 #: data/gui/default/window/title_screen.cfg:109 src/hotkeys.cpp:186
 msgid "Help"
-msgstr "Subsidium"
+msgstr "Auxilium"
 
 #. [label]
 #. [button]: id=create
 #: data/gui/default/window/lobby_main.cfg:565
 #: data/gui/default/window/mp_create_game.cfg:33
-#, fuzzy
 msgid "Create Game"
-msgstr "Lusum Servare"
+msgstr "Crea Ludum"
 
 #. [button]: id=join_global
 #: data/gui/default/window/lobby_main.cfg:571
 msgid "Join"
-msgstr ""
+msgstr "Committe"
 
 #. [button]: id=observe_global
 #: data/gui/default/window/lobby_main.cfg:577
 msgid "Observe"
-msgstr ""
+msgstr "Observa"
 
 #. [toggle_button]: id=skip_replay
 #: data/gui/default/window/lobby_main.cfg:583
@@ -1513,9 +1494,8 @@ msgstr ""
 #: data/gui/default/window/mp_method_selection.cfg:31
 #: data/gui/default/window/title_screen.cfg:184
 #: src/gui/dialogs/game_load.cpp:259
-#, fuzzy
 msgid "Multiplayer"
-msgstr "lusor"
+msgstr "Plures Lusores"
 
 #. [text_box]: id=user_name
 #: data/gui/default/window/mp_method_selection.cfg:82
@@ -1555,9 +1535,8 @@ msgstr ""
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:168
-#, fuzzy
 msgid "Local Game"
-msgstr "Lusum Restituere"
+msgstr "Ludus Localis"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:169
@@ -1585,14 +1564,13 @@ msgstr "Unitas previa"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:182
 #: src/gui/dialogs/game_load.cpp:261
-#, fuzzy
 msgid "Tutorial"
-msgstr "Cesta Dialogi Tractus"
+msgstr "Rudimentum"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:183
 msgid "Campaign"
-msgstr ""
+msgstr "Militiae"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:185
@@ -1603,7 +1581,7 @@ msgstr "Via"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:186
 msgid "Add-ons"
-msgstr ""
+msgstr "Appendices"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:187
@@ -1614,30 +1592,29 @@ msgstr "Recensorem Relinquere"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:190
 msgid "Credits"
-msgstr ""
+msgstr "Agnitiones"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/unit_create.cfg:37 src/hotkeys.cpp:77
+#, fuzzy
 msgid "Create Unit (Debug!)"
 msgstr "Unitatem Creare (Emendare!)"
 
 #. [label]
 #: data/gui/default/window/unit_create.cfg:59
-#, fuzzy
 msgid "Gender:"
-msgstr "Chartam Novam Generare"
+msgstr "Sexus:"
 
 #. [toggle_button]: id=male_toggle
 #: data/gui/default/window/unit_create.cfg:69
-#, fuzzy
 msgid "Male"
-msgstr "Castellum"
+msgstr "Masculus"
 
 #. [toggle_button]: id=female_toggle
 #: data/gui/default/window/unit_create.cfg:79
 msgid "Female"
-msgstr ""
+msgstr "Femina"
 
 #. [toggle_button]: id=namegen_toggle
 #: data/gui/default/window/unit_create.cfg:97
@@ -1647,15 +1624,15 @@ msgstr "Chartam Novam Generare"
 
 #. [label]: id=race
 #: data/gui/default/window/unit_create.cfg:126
-#, fuzzy
 msgid "Race"
-msgstr "Abrogare"
+msgstr ""
 
 #: src/filechooser.cpp:74
 msgid "File: "
 msgstr ""
 
 #: src/filechooser.cpp:77
+#, fuzzy
 msgid "Delete File"
 msgstr "Pligam Delere"
 
@@ -1664,12 +1641,13 @@ msgid "New Folder"
 msgstr ""
 
 #: src/filechooser.cpp:192
+#, fuzzy
 msgid "Deletion of the file failed."
 msgstr "Deletio pligae fallitur."
 
 #: src/filechooser.cpp:205
 msgid "Name: "
-msgstr ""
+msgstr "Nomen: "
 
 #: src/filechooser.cpp:210
 #, fuzzy
@@ -1681,6 +1659,7 @@ msgid "No server has been defined."
 msgstr ""
 
 #: src/game_preferences.cpp:348
+#, fuzzy
 msgid "player"
 msgstr "lusor"
 
@@ -1694,10 +1673,12 @@ msgid "Enable scroll tracking of unit actions"
 msgstr ""
 
 #: src/game_preferences_display.cpp:159
+#, fuzzy
 msgid "Accelerated Speed"
 msgstr "Celerius"
 
 #: src/game_preferences_display.cpp:160
+#, fuzzy
 msgid "Skip AI Moves"
 msgstr "Tractus IA Praetermittere"
 
@@ -1706,6 +1687,7 @@ msgid "Interrupt move when an ally is sighted"
 msgstr ""
 
 #: src/game_preferences_display.cpp:162
+#, fuzzy
 msgid "Show Grid"
 msgstr "Rete Monstare"
 
@@ -1755,26 +1737,32 @@ msgid "Multiplayer Options"
 msgstr ""
 
 #: src/game_preferences_display.cpp:177
+#, fuzzy
 msgid "Show Floating Labels"
 msgstr "Titula Volitantia Monstrare"
 
 #: src/game_preferences_display.cpp:178
+#, fuzzy
 msgid "Turn Dialog"
 msgstr "Cesta Dialogi Tractus"
 
 #: src/game_preferences_display.cpp:179
+#, fuzzy
 msgid "Turn Bell"
 msgstr "Tintinnabulum Tractus"
 
 #: src/game_preferences_display.cpp:180
+#, fuzzy
 msgid "Show Team Colors"
 msgstr "Colores Partium Monstrare"
 
 #: src/game_preferences_display.cpp:181
+#, fuzzy
 msgid "Show Color Cursors"
 msgstr "Indicia Colorata Monstrare"
 
 #: src/game_preferences_display.cpp:182
+#, fuzzy
 msgid "Show Haloing Effects"
 msgstr "Iactationes Aureolae Monstrare"
 
@@ -1784,18 +1772,22 @@ msgid "Change Resolution"
 msgstr "Resolutionem Eligere"
 
 #: src/game_preferences_display.cpp:184
+#, fuzzy
 msgid "Theme"
 msgstr "Modus Visivus"
 
 #: src/game_preferences_display.cpp:185
+#, fuzzy
 msgid "Hotkeys"
 msgstr "Claves Notarum"
 
 #: src/game_preferences_display.cpp:186
+#, fuzzy
 msgid "Reverse Time Graphics"
 msgstr "Imagines Tempi Invertere"
 
 #: src/game_preferences_display.cpp:188
+#, fuzzy
 msgid "Sound effects"
 msgstr "Iactationes Aureolae"
 
@@ -1804,6 +1796,7 @@ msgid "Music"
 msgstr "Musica"
 
 #: src/game_preferences_display.cpp:190
+#, fuzzy
 msgid "Chat Timestamping"
 msgstr "Signa Temporis in Sermone"
 
@@ -1829,10 +1822,12 @@ msgid "Show Unit Idle Animations"
 msgstr ""
 
 #: src/game_preferences_display.cpp:200
+#, fuzzy
 msgid "Music Volume:"
 msgstr "Magnitudo Musicae:"
 
 #: src/game_preferences_display.cpp:200
+#, fuzzy
 msgid "SFX Volume:"
 msgstr "Magnitudo Sonitus:"
 
@@ -1847,6 +1842,7 @@ msgid "Bell Volume:"
 msgstr "Magnitudo Sonitus:"
 
 #: src/game_preferences_display.cpp:202
+#, fuzzy
 msgid "Scroll Speed:"
 msgstr "Velocitas Gyri:"
 
@@ -1859,18 +1855,22 @@ msgid "Frequency:"
 msgstr ""
 
 #: src/game_preferences_display.cpp:231
+#, fuzzy
 msgid "Sound effects on/off"
 msgstr "Iactationes Aureolas ponere/tollere"
 
 #: src/game_preferences_display.cpp:235
+#, fuzzy
 msgid "Change the sound effects volume"
 msgstr "Magnitudinem sonituum mutare"
 
 #: src/game_preferences_display.cpp:238
+#, fuzzy
 msgid "Music on/off"
 msgstr "Musicam ponere/tollere"
 
 #: src/game_preferences_display.cpp:242
+#, fuzzy
 msgid "Change the music volume"
 msgstr "Magnitudinem musicae mutare"
 
@@ -1907,18 +1907,22 @@ msgid "Buffer Size: "
 msgstr ""
 
 #: src/game_preferences_display.cpp:284
+#, fuzzy
 msgid "Change the speed of scrolling around the map"
 msgstr "Velocitatem gyri in charta mutare"
 
 #: src/game_preferences_display.cpp:289 src/game_preferences_display.cpp:291
+#, fuzzy
 msgid "Set the amount of chat lines shown"
 msgstr "Eligere numerum linearum sermonis monstratum"
 
 #: src/game_preferences_display.cpp:294
+#, fuzzy
 msgid "Add a timestamp to chat messages"
 msgstr "Signum temporis ad nuntios adiungere"
 
 #: src/game_preferences_display.cpp:297
+#, fuzzy
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Eligere si lusus in scrinio aut in fenestra mostratur"
 
@@ -1928,6 +1932,7 @@ msgid ""
 msgstr ""
 
 #: src/game_preferences_display.cpp:303
+#, fuzzy
 msgid "Make units move and fight faster"
 msgstr "Efficere ut unitates celerius moveantur et pugnent"
 
@@ -1950,10 +1955,12 @@ msgid "Set maximum number of automatic saves to be retained"
 msgstr ""
 
 #: src/game_preferences_display.cpp:338
+#, fuzzy
 msgid "Do not animate AI units moving"
 msgstr "Non animare tractus unitatum IA"
 
 #: src/game_preferences_display.cpp:349
+#, fuzzy
 msgid "Overlay a grid onto the map"
 msgstr "Rete monstrare super charta"
 
@@ -2018,27 +2025,33 @@ msgid "Insert a username"
 msgstr ""
 
 #: src/game_preferences_display.cpp:378
+#, fuzzy
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr ""
 "Titulum super unitate damnum inflictum ostendens monstrare cum percutitur"
 
 #: src/game_preferences_display.cpp:380
+#, fuzzy
 msgid "Change the resolution the game runs at"
 msgstr "Modum visivum lusi mutare"
 
 #: src/game_preferences_display.cpp:381
+#, fuzzy
 msgid "Change the theme the game runs with"
 msgstr "Modum visivum lusi mutare"
 
 #: src/game_preferences_display.cpp:384
+#, fuzzy
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Cestam dialogi in initio tractus tui monstrare"
 
 #: src/game_preferences_display.cpp:387
+#, fuzzy
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Tintinnabuli sonitum in initio tractus tui facere"
 
 #: src/game_preferences_display.cpp:390
+#, fuzzy
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
@@ -2047,19 +2060,23 @@ msgstr ""
 "monstrare."
 
 #: src/game_preferences_display.cpp:393
+#, fuzzy
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr ""
 "Eligere si sol movetur a sinistra ad dexteram aut a dextera ad sinistram"
 
 #: src/game_preferences_display.cpp:396
+#, fuzzy
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Indiciis muris coloratis uti (potest esse lentior)"
 
 #: src/game_preferences_display.cpp:399
+#, fuzzy
 msgid "Use graphical special effects (may be slower)"
 msgstr "Iactationibus graphicis uti (potest esse lentior)"
 
 #: src/game_preferences_display.cpp:401
+#, fuzzy
 msgid "View and configure keyboard shortcuts"
 msgstr "Aspicere et imponere claves notarum"
 
@@ -2074,9 +2091,10 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:705
 msgid "infinite"
-msgstr ""
+msgstr "infinitus"
 
 #: src/game_preferences_display.cpp:884
+#, fuzzy
 msgid "Chat Lines: "
 msgstr "Lineae Sermonis: "
 
@@ -2097,30 +2115,36 @@ msgid "(empty list)"
 msgstr ""
 
 #: src/game_preferences_display.cpp:1174
+#, fuzzy
 msgid "Prefs section^General"
 msgstr "Communes"
 
 #: src/game_preferences_display.cpp:1175
+#, fuzzy
 msgid "Prefs section^Display"
 msgstr "Scrinium"
 
 #: src/game_preferences_display.cpp:1176
+#, fuzzy
 msgid "Prefs section^Sound"
 msgstr "Sonitus"
 
 #: src/game_preferences_display.cpp:1177
 msgid "Prefs section^Multiplayer"
-msgstr "Plurum Lusorum"
+msgstr "Plures Lusores"
 
 #: src/game_preferences_display.cpp:1178
+#, fuzzy
 msgid "Advanced section^Advanced"
 msgstr "Provecta"
 
 #: src/game_preferences_display.cpp:1213
+#, fuzzy
 msgid "Saved Theme Preference: "
 msgstr "Impostatio Modi Visivi Servata:"
 
 #: src/game_preferences_display.cpp:1219
+#, fuzzy
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 "Novum modum visivum effectum habebit cum primum lusum restues vel incipies."
@@ -2155,9 +2179,8 @@ msgid "Linked '$id' group has multiple definitions."
 msgstr ""
 
 #: src/gui/auxiliary/window_builder.cpp:199 src/gui/widgets/settings.cpp:445
-#, fuzzy
 msgid "No resolution defined."
-msgstr "Creatio chartae fefellit."
+msgstr ""
 
 #: src/gui/auxiliary/window_builder.cpp:306
 #: src/gui/auxiliary/window_builder/panel.cpp:35
@@ -2183,9 +2206,8 @@ msgstr ""
 #: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:41
 #: src/gui/auxiliary/window_builder/listbox.cpp:51
 #: src/gui/auxiliary/window_builder/scrollbar_panel.cpp:40
-#, fuzzy
 msgid "No list defined."
-msgstr "Creatio chartae fefellit."
+msgstr ""
 
 #: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:45
 #: src/gui/auxiliary/window_builder/listbox.cpp:55
@@ -2200,18 +2222,16 @@ msgid ""
 msgstr ""
 
 #: src/gui/auxiliary/window_builder/multi_page.cpp:37
-#, fuzzy
 msgid "No page defined."
-msgstr "Creatio chartae fefellit."
+msgstr ""
 
 #: src/gui/auxiliary/window_builder/slider.cpp:66
 msgid "The number of value_labels and values don't match."
 msgstr ""
 
 #: src/gui/auxiliary/window_builder/stacked_widget.cpp:35
-#, fuzzy
 msgid "No stack defined."
-msgstr "Creatio chartae fefellit."
+msgstr ""
 
 #: src/gui/dialogs/game_load.cpp:232
 msgid "#(Invalid)"
@@ -2222,9 +2242,8 @@ msgid "Campaign: $campaign_name"
 msgstr ""
 
 #: src/gui/dialogs/game_load.cpp:271
-#, fuzzy
 msgid "replay"
-msgstr "lusor"
+msgstr ""
 
 #: src/gui/dialogs/game_load.cpp:273
 #, fuzzy
@@ -2275,13 +2294,13 @@ msgid "Password: "
 msgstr ""
 
 #: src/gui/dialogs/message.cpp:191
+#, fuzzy
 msgid "Error"
 msgstr "Mendum"
 
 #: src/gui/dialogs/mp_create_game.cpp:76
-#, fuzzy
 msgid "Load Game..."
-msgstr "Lusum Restituere"
+msgstr "Restitue Ludum..."
 
 #: src/gui/dialogs/title_screen.cpp:90
 msgid "Version"
@@ -2318,10 +2337,12 @@ msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr ""
 
 #: src/hotkeys.cpp:46
+#, fuzzy
 msgid "Next Unit"
 msgstr "Unitas proxima"
 
 #: src/hotkeys.cpp:47
+#, fuzzy
 msgid "Previous Unit"
 msgstr "Unitas previa"
 
@@ -2330,42 +2351,52 @@ msgid "Add waypoint"
 msgstr ""
 
 #: src/hotkeys.cpp:49
+#, fuzzy
 msgid "Hold Position"
 msgstr "Positionem Mantenere"
 
 #: src/hotkeys.cpp:50
+#, fuzzy
 msgid "End Unit Turn"
 msgstr "Tractum Unitatis Finire"
 
 #: src/hotkeys.cpp:51
+#, fuzzy
 msgid "Leader"
 msgstr "Dux"
 
 #: src/hotkeys.cpp:52
+#, fuzzy
 msgid "Undo"
 msgstr "Infectum Reddere"
 
 #: src/hotkeys.cpp:53
+#, fuzzy
 msgid "Redo"
 msgstr "Factum Reddere"
 
 #: src/hotkeys.cpp:54
+#, fuzzy
 msgid "Zoom In"
 msgstr "Amplificare"
 
 #: src/hotkeys.cpp:55
+#, fuzzy
 msgid "Zoom Out"
 msgstr "Minuere"
 
 #: src/hotkeys.cpp:56
+#, fuzzy
 msgid "Default Zoom"
 msgstr "Conspectus Solitus"
 
 #: src/hotkeys.cpp:57
+#, fuzzy
 msgid "Toggle Full Screen"
 msgstr "Scrinium Totum vel in Fenestra Permutare"
 
 #: src/hotkeys.cpp:58 src/hotkeys.cpp:889
+#, fuzzy
 msgid "Screenshot"
 msgstr "Imago Scrinii"
 
@@ -2375,14 +2406,17 @@ msgid "Map Screenshot"
 msgstr "Imago Scrinii"
 
 #: src/hotkeys.cpp:60
+#, fuzzy
 msgid "Accelerated"
 msgstr "Celerior"
 
 #: src/hotkeys.cpp:61
+#, fuzzy
 msgid "Unit Description"
 msgstr "Descriptio Unitatis"
 
 #: src/hotkeys.cpp:62
+#, fuzzy
 msgid "Rename Unit"
 msgstr "Unitatem Renominare"
 
@@ -2392,22 +2426,27 @@ msgid "Save Replay"
 msgstr "Claves Notarum Servare"
 
 #: src/hotkeys.cpp:65 src/hotkeys.cpp:112
+#, fuzzy
 msgid "Save Map"
 msgstr "Chartam Servare"
 
 #: src/hotkeys.cpp:67
+#, fuzzy
 msgid "Recruit"
 msgstr "Conscribere"
 
 #: src/hotkeys.cpp:68
+#, fuzzy
 msgid "Repeat Recruit"
 msgstr "Rursus Conscribere"
 
 #: src/hotkeys.cpp:69
+#, fuzzy
 msgid "Recall"
 msgstr "Revocare"
 
 #: src/hotkeys.cpp:70
+#, fuzzy
 msgid "End Turn"
 msgstr "Tractum Finire"
 
@@ -2417,22 +2456,27 @@ msgid "Toggle Ellipses"
 msgstr "Rete Ponere/Tollere"
 
 #: src/hotkeys.cpp:72
+#, fuzzy
 msgid "Toggle Grid"
 msgstr "Rete Ponere/Tollere"
 
 #: src/hotkeys.cpp:73
+#, fuzzy
 msgid "Mouse Scrolling"
 msgstr "Gyrum Muris"
 
 #: src/hotkeys.cpp:74
+#, fuzzy
 msgid "Status Table"
 msgstr "Index Statuum"
 
 #: src/hotkeys.cpp:75
+#, fuzzy
 msgid "Mute"
 msgstr "Musicam et sonum tollere"
 
 #: src/hotkeys.cpp:76
+#, fuzzy
 msgid "Speak"
 msgstr "Loqui"
 
@@ -2442,22 +2486,27 @@ msgid "Change Side (Debug!)"
 msgstr "Partem Unitatis Mutare (Emendare!)"
 
 #: src/hotkeys.cpp:80
+#, fuzzy
 msgid "Scenario Objectives"
 msgstr "Proposita Missionis"
 
 #: src/hotkeys.cpp:81
+#, fuzzy
 msgid "Unit List"
 msgstr "Index Unitatum"
 
 #: src/hotkeys.cpp:82
+#, fuzzy
 msgid "Statistics"
 msgstr "Census"
 
 #: src/hotkeys.cpp:83 src/hotkeys.cpp:93
+#, fuzzy
 msgid "Stop"
 msgstr "Sistere"
 
 #: src/hotkeys.cpp:84 src/hotkeys.cpp:91
+#, fuzzy
 msgid "Play"
 msgstr "Ludere"
 
@@ -2467,30 +2516,37 @@ msgid "Set Team Label"
 msgstr "Titulum Ponere"
 
 #: src/hotkeys.cpp:87
+#, fuzzy
 msgid "Set Label"
 msgstr "Titulum Ponere"
 
 #: src/hotkeys.cpp:88
+#, fuzzy
 msgid "Clear Labels"
 msgstr "Titula Tollere"
 
 #: src/hotkeys.cpp:89
+#, fuzzy
 msgid "Show Enemy Moves"
 msgstr "Motus Hostium Monstrare"
 
 #: src/hotkeys.cpp:90
+#, fuzzy
 msgid "Best Possible Enemy Moves"
 msgstr "Motus Optimos Hostium Monstrare"
 
 #: src/hotkeys.cpp:92
+#, fuzzy
 msgid "Reset"
 msgstr "Reponere"
 
 #: src/hotkeys.cpp:94
+#, fuzzy
 msgid "Next Turn"
 msgstr "Tractus Insequens"
 
 #: src/hotkeys.cpp:95
+#, fuzzy
 msgid "Next Side"
 msgstr "Pars proxima"
 
@@ -2508,6 +2564,7 @@ msgid "Team 1"
 msgstr ""
 
 #: src/hotkeys.cpp:102
+#, fuzzy
 msgid "Skip animation"
 msgstr "Animationem saltare"
 
@@ -2529,6 +2586,7 @@ msgid "Partial Undo"
 msgstr ""
 
 #: src/hotkeys.cpp:111
+#, fuzzy
 msgid "Load Map"
 msgstr "Chartam Restituere"
 
@@ -2583,14 +2641,17 @@ msgid "Default Brush"
 msgstr "Conspectus Solitus"
 
 #: src/hotkeys.cpp:126
+#, fuzzy
 msgid "Cut"
 msgstr "Excidere"
 
 #: src/hotkeys.cpp:127
+#, fuzzy
 msgid "Copy"
 msgstr "Exscribere"
 
 #: src/hotkeys.cpp:128
+#, fuzzy
 msgid "Paste"
 msgstr "Glutinare"
 
@@ -2599,6 +2660,7 @@ msgid "Export selected coordinates to system clipboard"
 msgstr ""
 
 #: src/hotkeys.cpp:131
+#, fuzzy
 msgid "Select All"
 msgstr "Omnia Eligere"
 
@@ -2638,6 +2700,7 @@ msgid "Flip Selection"
 msgstr "Electionem Implere"
 
 #: src/hotkeys.cpp:149
+#, fuzzy
 msgid "Fill Selection"
 msgstr "Electionem Implere"
 
@@ -2683,6 +2746,7 @@ msgid "Auto-update Terrain Transitions"
 msgstr ""
 
 #: src/hotkeys.cpp:171
+#, fuzzy
 msgid "Refresh Image Cache"
 msgstr "Thesaurum Imaginum Renovare"
 
@@ -2696,38 +2760,47 @@ msgid "Draw Terrain Codes"
 msgstr "Agros Pingere"
 
 #: src/hotkeys.cpp:180
+#, fuzzy
 msgid "Delay Shroud Updates"
 msgstr "Integumentum Tardius Ponere"
 
 #: src/hotkeys.cpp:181
+#, fuzzy
 msgid "Update Shroud Now"
 msgstr "Integumentum Nunc Ponere"
 
 #: src/hotkeys.cpp:182
+#, fuzzy
 msgid "Continue Move"
 msgstr "Tractum Pergere"
 
 #: src/hotkeys.cpp:183
+#, fuzzy
 msgid "Find Label or Unit"
 msgstr "Titulum aut Unitatem Invenire"
 
 #: src/hotkeys.cpp:184
+#, fuzzy
 msgid "Speak to Ally"
 msgstr "Socio Loqui"
 
 #: src/hotkeys.cpp:185
+#, fuzzy
 msgid "Speak to All"
 msgstr "Omnibus Loqui"
 
 #: src/hotkeys.cpp:187
+#, fuzzy
 msgid "View Chat Log"
 msgstr "Acta Colloquii Aspicere"
 
 #: src/hotkeys.cpp:188
+#, fuzzy
 msgid "Change the language"
 msgstr "Linguam mutare"
 
 #: src/hotkeys.cpp:190
+#, fuzzy
 msgid "Enter user command"
 msgstr "Imperium utentis dare"
 
@@ -2754,6 +2827,7 @@ msgid "User-Command#3"
 msgstr ""
 
 #: src/hotkeys.cpp:643 src/hotkeys.cpp:934
+#, fuzzy
 msgid "Do you really want to quit?"
 msgstr "Visne vere relinquere?"
 
@@ -2787,28 +2861,33 @@ msgid "language code for localized resources^en_US"
 msgstr "la"
 
 #: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:208
+#, fuzzy
 msgid "Close Window"
 msgstr "Fenestram Claudere"
 
 #: src/mapgen_dialog.cpp:112
+#, fuzzy
 msgid "Map Generator"
 msgstr "Generator Chartarum"
 
 #: src/mapgen_dialog.cpp:119
+#, fuzzy
 msgid "Players:"
 msgstr "Lusores:"
 
 #: src/mapgen_dialog.cpp:122
+#, fuzzy
 msgid "Number of Hills:"
 msgstr "Numerus Collum:"
 
 #: src/mapgen_dialog.cpp:123
+#, fuzzy
 msgid "Max Hill Size:"
 msgstr "Magnitudo Maxima Collum:"
 
 #: src/mapgen_dialog.cpp:124
 msgid "Villages:"
-msgstr "Pagi: "
+msgstr "Viculi:"
 
 #: src/mapgen_dialog.cpp:125
 #, fuzzy
@@ -2820,18 +2899,22 @@ msgid "Landform:"
 msgstr "Forma terrae: "
 
 #: src/mapgen_dialog.cpp:244
+#, fuzzy
 msgid "Roads Between Castles"
 msgstr "Viae Inter Castella"
 
 #: src/mapgen_dialog.cpp:304
+#, fuzzy
 msgid "/1000 tiles"
 msgstr "pro M tegulis"
 
 #: src/mapgen_dialog.cpp:314
+#, fuzzy
 msgid "Coastal"
 msgstr "Maritima"
 
 #: src/mapgen_dialog.cpp:314
+#, fuzzy
 msgid "Inland"
 msgstr "Mediterraneua"
 
@@ -2852,6 +2935,7 @@ msgid "Error creating or aquiring an image."
 msgstr ""
 
 #: src/preferences_display.cpp:75 src/preferences_display.cpp:113
+#, fuzzy
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -2863,6 +2947,7 @@ msgstr ""
 "in scrinio."
 
 #: src/preferences_display.cpp:212
+#, fuzzy
 msgid "Hotkey Settings"
 msgstr "Impostationes Clavium Notarum"
 
@@ -2872,14 +2957,17 @@ msgid "Press desired Hotkey (Esc cancels)"
 msgstr "Premere Clavem Notarum volutam"
 
 #: src/preferences_display.cpp:237
+#, fuzzy
 msgid "Action"
 msgstr "Actio"
 
 #: src/preferences_display.cpp:237
+#, fuzzy
 msgid "Binding"
 msgstr "Adligatio"
 
 #: src/preferences_display.cpp:249
+#, fuzzy
 msgid "Change Hotkey"
 msgstr "Clavem Notarum Mutare"
 
@@ -2889,6 +2977,7 @@ msgid "Clear Hotkey"
 msgstr "Clavem Notarum Mutare"
 
 #: src/preferences_display.cpp:320
+#, fuzzy
 msgid "This Hotkey is already in use."
 msgstr "Haec Clavis Notarum iam usum habet."
 
@@ -2898,10 +2987,12 @@ msgid ""
 msgstr ""
 
 #: src/preferences_display.cpp:422
+#, fuzzy
 msgid "There are no alternative video modes available"
 msgstr "Carent alteris modis visivis"
 
 #: src/preferences_display.cpp:451
+#, fuzzy
 msgid "Choose Resolution"
 msgstr "Resolutionem Eligere"
 
