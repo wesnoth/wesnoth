@@ -10,15 +10,16 @@
 #   Mark Polo (mpolo) <markpolo@gmail.com>
 msgid ""
 msgstr ""
-"Project-Id-Version: Wesnoth 1.2\n"
+"Project-Id-Version: Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-11-08 15:46+0100\n"
-"PO-Revision-Date: 2009-11-08 20:08-0500\n"
+"PO-Revision-Date: 2009-11-09 11:51-0500\n"
 "Last-Translator: Michael Babich (Aethaeryn) <michaelbabich7@gmail.com>\n"
 "Language-Team: Latin\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Latin\n"
 
 #. [terrain_type]: id=off_map
 #: data/core/terrain.cfg:13
@@ -185,7 +186,7 @@ msgstr "Silva Nivea"
 #. [terrain_type]: id=snow_forest
 #: data/core/terrain.cfg:442
 msgid "Snowy Pine Forest"
-msgstr ""
+msgstr "Silva Nivea Pini"
 
 #. [terrain_type]: id=great_tree
 #: data/core/terrain.cfg:453
@@ -209,7 +210,7 @@ msgstr "Silva"
 #. [terrain_type]: id=forest
 #: data/core/terrain.cfg:464
 msgid "Pine Forest"
-msgstr ""
+msgstr "Silva Pini"
 
 #. [terrain_type]: id=tropical_forest
 #: data/core/terrain.cfg:473
@@ -488,15 +489,13 @@ msgstr "Aqua"
 
 #. [terrain_type]: id=ford
 #: data/core/terrain.cfg:1342
-#, fuzzy
 msgid "River Ford"
 msgstr "Vadum Fluminis"
 
 #. [terrain_type]: id=reef
 #: data/core/terrain.cfg:1353
-#, fuzzy
 msgid "Coastal Reef"
-msgstr "Maritima"
+msgstr "Cotes"
 
 #. [terrain_type]: id=cloud
 #: data/core/terrain.cfg:1367
@@ -550,9 +549,8 @@ msgstr ""
 #: data/gui/default/window/mp_connect.cfg:31
 #: data/gui/default/window/mp_method_selection.cfg:148
 #: data/gui/default/window/mp_server_list.cfg:41
-#, fuzzy
 msgid "Connect to Server"
-msgstr "Tractum Pergere"
+msgstr "Adplica Credentario"
 
 #. [label]
 #: data/gui/default/window/addon_connect.cfg:51
@@ -563,20 +561,19 @@ msgstr ""
 #: data/gui/default/window/addon_connect.cfg:81
 #: data/gui/default/window/mp_connect.cfg:80
 msgid "Server:"
-msgstr ""
+msgstr "Credentarius:"
 
 #. [button]: id=update_addons
 #: data/gui/default/window/addon_connect.cfg:137
 #: data/gui/default/window/addon_connect.cfg:138
 msgid "Update add-ons"
-msgstr ""
+msgstr "Nova Appendices"
 
 #. [button]: id=remove_addons
 #: data/gui/default/window/addon_connect.cfg:172
 #: data/gui/default/window/addon_connect.cfg:173
-#, fuzzy
 msgid "Remove Add-ons"
-msgstr "Factum Reddere"
+msgstr "Dele Appendicem"
 
 #. [button]: id=ok
 #: data/gui/default/window/addon_connect.cfg:205
@@ -650,9 +647,8 @@ msgstr "Generator Chartarum"
 #. [button]: id=settings
 #: data/gui/default/window/editor_generate_map.cfg:90
 #: data/gui/default/window/editor_generate_map.cfg:91
-#, fuzzy
 msgid "Settings"
-msgstr "Impostationes Clavium Notarum"
+msgstr "Electi"
 
 #. [button]: id=ok
 #: data/gui/default/window/editor_generate_map.cfg:101
@@ -753,9 +749,8 @@ msgstr ""
 #: data/gui/default/window/editor_settings.cfg:75
 #: data/gui/default/window/editor_settings.cfg:76
 #: data/gui/default/window/title_screen.cfg:138
-#, fuzzy
 msgid "Next"
-msgstr "Unitas proxima"
+msgstr "Secundus"
 
 #. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:83
@@ -964,9 +959,8 @@ msgstr "Lusum Servare"
 #: data/gui/default/window/game_save.cfg:62
 #: data/gui/default/window/game_save_message.cfg:82
 #: data/gui/default/window/game_save_oos.cfg:82
-#, fuzzy
 msgid "Name:"
-msgstr "Modus Visivus"
+msgstr "Nomen:"
 
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_save_message.cfg:52
@@ -1006,9 +1000,8 @@ msgstr ""
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:92
-#, fuzzy
 msgid "Types"
-msgstr "ita"
+msgstr ""
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:103
@@ -1064,9 +1057,8 @@ msgstr "Muta linguam"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:108
-#, fuzzy
 msgid "Games"
-msgstr "Modus Visivus"
+msgstr "Ludi"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:176
@@ -1094,7 +1086,7 @@ msgstr ""
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:181
 msgid "Gold per village"
-msgstr ""
+msgstr "Aura per viculos"
 
 #. [label]
 #. [row]
@@ -1122,7 +1114,7 @@ msgstr ""
 #. [toggle_button]: id=player_list_sort_name
 #: data/gui/default/window/lobby_main.cfg:320
 msgid "Alphabetically"
-msgstr ""
+msgstr "Series Abecedaria"
 
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:332
@@ -1304,12 +1296,12 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:31
 msgid "Messaging"
-msgstr ""
+msgstr "Nuncius"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:61
 msgid "Message:"
-msgstr ""
+msgstr "Nuntium:"
 
 #. [button]: id=ok
 #: data/gui/default/window/mp_cmd_wrapper.cfg:93
@@ -1356,9 +1348,8 @@ msgstr ""
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:315
-#, fuzzy
 msgid "Time:"
-msgstr "Modus Visivus"
+msgstr "Tempus:"
 
 #. [button]: id=status
 #: data/gui/default/window/mp_cmd_wrapper.cfg:366
@@ -1369,7 +1360,7 @@ msgstr "Index Statuum"
 #. [button]: id=ban
 #: data/gui/default/window/mp_cmd_wrapper.cfg:396
 msgid "Ban"
-msgstr ""
+msgstr "Bannium"
 
 #. [label]
 #: data/gui/default/window/mp_connect.cfg:50
@@ -1392,7 +1383,6 @@ msgstr ""
 
 #. [label]: id=map_players
 #: data/gui/default/window/mp_create_game.cfg:140
-#, fuzzy
 msgid "Players: "
 msgstr "Lusores:"
 
@@ -1404,13 +1394,12 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:177
 msgid "Era:"
-msgstr ""
+msgstr "Aetas:"
 
 #. [button]: id=era
 #: data/gui/default/window/mp_create_game.cfg:196
-#, fuzzy
 msgid "Default"
-msgstr "Conspectus Solitus"
+msgstr "Defalta"
 
 #. [button]: id=password
 #: data/gui/default/window/mp_create_game.cfg:218
@@ -1435,14 +1424,13 @@ msgstr ""
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:372
-#, fuzzy
 msgid "Village gold"
-msgstr "Pagus"
+msgstr "Aura Viculorum"
 
 #. [toggle_button]: id=fog
 #: data/gui/default/window/mp_create_game.cfg:452
 msgid "Fog of War"
-msgstr ""
+msgstr "Caligo Belli"
 
 #. [toggle_button]: id=random_start_time
 #: data/gui/default/window/mp_create_game.cfg:493
@@ -1463,18 +1451,18 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/mp_login.cfg:31
 msgid "Login"
-msgstr ""
+msgstr "Identifica"
 
 #. [label]
 #: data/gui/default/window/mp_login.cfg:81
 #: data/gui/default/window/mp_method_selection.cfg:61
 msgid "Login:"
-msgstr ""
+msgstr "Identifica:"
 
 #. [label]
 #: data/gui/default/window/mp_login.cfg:134
 msgid "Password:"
-msgstr ""
+msgstr "Verbum Absconditum:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=remember_password
@@ -1511,7 +1499,7 @@ msgstr ""
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:138
 msgid "Join Official Server"
-msgstr ""
+msgstr "Adplica Credentario Publico"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:139
@@ -1526,7 +1514,7 @@ msgstr ""
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:158
 msgid "Host Networked Game"
-msgstr ""
+msgstr "Hospita Ludum Reticuli"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:159
@@ -1556,9 +1544,8 @@ msgstr "Omnia Eligere"
 
 #. [button]: id=previous_tip
 #: data/gui/default/window/title_screen.cfg:124
-#, fuzzy
 msgid "Previous"
-msgstr "Unitas previa"
+msgstr "Anterior"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
@@ -1574,9 +1561,8 @@ msgstr "Militiae"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:185
-#, fuzzy
 msgid "Load"
-msgstr "Via"
+msgstr ""
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:186
@@ -1659,7 +1645,6 @@ msgid "No server has been defined."
 msgstr ""
 
 #: src/game_preferences.cpp:348
-#, fuzzy
 msgid "player"
 msgstr "lusor"
 
@@ -2246,9 +2231,8 @@ msgid "replay"
 msgstr ""
 
 #: src/gui/dialogs/game_load.cpp:273
-#, fuzzy
 msgid "Turn"
-msgstr "Tractum Finire"
+msgstr "Vicis"
 
 #: src/gui/dialogs/game_load.cpp:275
 #, fuzzy
@@ -2261,7 +2245,7 @@ msgstr ""
 
 #: src/gui/dialogs/game_load.cpp:282
 msgid "Version: "
-msgstr ""
+msgstr "Versio:"
 
 #: src/gui/dialogs/lobby_main.cpp:404
 msgid "Observers allowed"
@@ -2291,7 +2275,7 @@ msgstr ""
 
 #: src/gui/dialogs/lobby_main.cpp:1122
 msgid "Password: "
-msgstr ""
+msgstr "Verbum Absconditum:"
 
 #: src/gui/dialogs/message.cpp:191
 #, fuzzy
@@ -2304,7 +2288,7 @@ msgstr "Restitue Ludum..."
 
 #: src/gui/dialogs/title_screen.cpp:90
 msgid "Version"
-msgstr ""
+msgstr "Versio"
 
 #: src/gui/widgets/helper.cpp:170
 msgid "Mandatory widget '$id' hasn't been defined."
@@ -2361,7 +2345,6 @@ msgid "End Unit Turn"
 msgstr "Tractum Unitatis Finire"
 
 #: src/hotkeys.cpp:51
-#, fuzzy
 msgid "Leader"
 msgstr "Dux"
 
@@ -2446,9 +2429,8 @@ msgid "Recall"
 msgstr "Revocare"
 
 #: src/hotkeys.cpp:70
-#, fuzzy
 msgid "End Turn"
-msgstr "Tractum Finire"
+msgstr "Vicem Finire"
 
 #: src/hotkeys.cpp:71
 #, fuzzy
@@ -2506,9 +2488,8 @@ msgid "Stop"
 msgstr "Sistere"
 
 #: src/hotkeys.cpp:84 src/hotkeys.cpp:91
-#, fuzzy
 msgid "Play"
-msgstr "Ludere"
+msgstr ""
 
 #: src/hotkeys.cpp:86
 #, fuzzy
@@ -2871,7 +2852,6 @@ msgid "Map Generator"
 msgstr "Generator Chartarum"
 
 #: src/mapgen_dialog.cpp:119
-#, fuzzy
 msgid "Players:"
 msgstr "Lusores:"
 
@@ -2957,7 +2937,6 @@ msgid "Press desired Hotkey (Esc cancels)"
 msgstr "Premere Clavem Notarum volutam"
 
 #: src/preferences_display.cpp:237
-#, fuzzy
 msgid "Action"
 msgstr "Actio"
 
