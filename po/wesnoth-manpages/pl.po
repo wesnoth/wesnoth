@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2009-11-02 12:29+0100\n"
-"PO-Revision-Date: 2009-05-07 13:13+0100\n"
+"PO-Revision-Date: 2009-11-09 13:39+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -171,7 +171,7 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:64
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-e,\\ --editor>I<\\ file>"
 msgstr "B<-e,\\ --editor>I<\\ plik>"
 
@@ -324,14 +324,14 @@ msgstr "B<-m, --multiplayer>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:128
-#, fuzzy
 msgid ""
 "runs a multiplayer game. There are additional options that can be used "
 "together with B<--multiplayer> as explained below. Only these additional "
 "options can follow B<--multiplayer>."
 msgstr ""
 "uruchamia grę wieloosobową. Wraz z przełącznikiem B<--multiplayer> można "
-"używać dodatkowych opcji, które zostały objaśnione poniżej."
+"używać objaśnionych poniżej opcji dodatkowych. Są to jedyne opcje dozwolone "
+"w połączeniu z B<--multiplayer>."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:128
@@ -510,15 +510,17 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:180
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--ai_config>I<number>B<=>I<value>"
-msgstr "B<--side>I<numer>B<=>I<wartość>"
+msgstr "B<--ai_config>I<numer>B<=>I<wartość>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:183
 msgid ""
 "selects a configuration file to load for the AI controller for this side."
 msgstr ""
+"wybiera plik konfiguracyjny, który zostanie załadowany dla kontrolera AI tej "
+"strony."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:183
@@ -909,15 +911,13 @@ msgstr "[I<tag>]"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:103
-#, fuzzy
 msgid "I<key>=\"I<value>\""
-msgstr "key=\"I<wartość>\""
+msgstr "I<klucz>=\"I<wartość>\""
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:105
-#, fuzzy
 msgid "I<key>=\"I<value>,I<value>,...\""
-msgstr "key=\"I<wartość>,I<wartość>,...\""
+msgstr "I<klucz>=\"I<wartość>,I<wartość>,...\""
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:107
@@ -934,7 +934,7 @@ msgstr "Klawisze globalne:"
 #: ../../doc/man/wesnothd.6:110
 #, no-wrap
 msgid "B<allow_remote_shutdown>"
-msgstr ""
+msgstr "B<allow_remote_shutdown>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:114
@@ -943,6 +943,10 @@ msgid ""
 "they come from the fifo.  Set it to B<yes> to allow remote shutdown via a /"
 "query by an administrator."
 msgstr ""
+"Wartość B<no> (nie - wartość domyślna) oznacza, że żądania shut_down i "
+"restart będą ignorowane, jeśli nie zostaną przesłane poprzez kolejkę. "
+"Ustawienie wartości B<yes> (tak) umożliwi administratorowi zdalne wyłączanie "
+"poprzez polecenie /query."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:114
@@ -964,7 +968,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:118
 #, no-wrap
 msgid "B<compress_stored_rooms>"
-msgstr ""
+msgstr "B<compress_stored_rooms>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:121
@@ -972,6 +976,8 @@ msgid ""
 "Determines whether the rooms file should be read and written to in "
 "compressed form. Defaults to B<yes>."
 msgstr ""
+"Określa, czy odczyty i zapisy pliku pokoi powinny być dokonywane w postaci "
+"skompresowanej. Wartość domyślna: B<yes> (tak)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:121
@@ -996,18 +1002,17 @@ msgstr "B<disallow_names>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:131
-#, fuzzy
 msgid ""
 "Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
 "(used if nothing is specified) are: B<*admin*,*admln*,*server*,ai,ai?,"
 "computer,human,network,player>."
 msgstr ""
-"Nazwy/ksywki, które nie są akceptowane przez serwer. '*' oraz '?' z wzorców "
-"wieloznacznych są obsługiwane. Zobacz stronę B<glob>(7), aby uzyskać "
-"szczegółowe informacje. Wartości domyślne (używane, gdy żadne inne wartości "
-"nie zostaną podane): B<*admin*,*admln*,*server*,ai,ai?,computer,human,"
-"network,player>."
+"Nazwy/pseudonimy, które nie są akceptowane przez serwer. Obsługiwane są "
+"symbole B<*> i B<?> z wzorców wieloznacznych. Zobacz stronę B<glob>(7), aby "
+"uzyskać szczegółowe informacje. Wartości domyślne (używane, gdy żadne inne "
+"wartości nie zostaną podane):B<*admin*,*admln*,*server*,ai,ai?,computer,"
+"human,network,player>."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:131
@@ -1017,16 +1022,15 @@ msgstr "B<fifo_path>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:135
-#, fuzzy
 msgid ""
 "The path to the fifo you can echo server commands into (same as /query ... "
 "from wesnoth).  If not specified defaults to the compile-time path (default: "
 "B</var/run/socket/wesnothd/socket>)."
 msgstr ""
-"Ścieżka do kolejki, do której można przesyłać polecenia serwera (działanie "
-"równoważne do polecenia /query ... z wesnoth). Jeśli nie zostanie podana, "
-"przyjmowana jest wartość określona podczas kompilacji (domyślnie: /var/run/"
-"socket/wesnothd/socket)."
+"Ścieżka do kolejki, do której można przesyłać echem polecenia serwera "
+"(działanie równoważne do polecenia /query ... z wesnoth). Jeśli nie zostanie "
+"podana, przyjmowana jest ścieżka określona podczas kompilacji (domyślnie: B</"
+"var/run/socket/wesnothd/socket>)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:135
@@ -1072,7 +1076,7 @@ msgstr "Wiadomość dnia."
 #: ../../doc/man/wesnothd.6:144
 #, no-wrap
 msgid "B<new_room_policy>"
-msgstr ""
+msgstr "B<new_room_policy>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:147
@@ -1082,6 +1086,10 @@ msgid ""
 "respectively to everyone, registered users, admin users or disables new room "
 "creation. Default value is B<everyone>."
 msgstr ""
+"Określa, kto ma uprawnienia do tworzenia nowych pokoi na serwerze. Możliwe "
+"wartości: B<everyone> (wszyscy użytkownicy), B<registered> (tylko "
+"zarejestrowani użytkownicy), B<admin> (tylko administratorzy) i B<nobody> "
+"(nikt). Wartość domyślna: B<everyone>."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:147
@@ -1091,12 +1099,11 @@ msgstr "B<passwd>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:150
-#, fuzzy
 msgid ""
 "The password used to gain admin privileges (via B</query admin >I<password>)."
 msgstr ""
-"Hasło służące do uzyskania uprawnień administratora. Zazwyczaj zaczyna się "
-"od \"admin \"."
+"Hasło używane do uzyskania uprawnień administratora (poprzez B</query admin "
+">I<hasło>)."
 
 #: ../../doc/man/wesnothd.6:150
 #, no-wrap
@@ -1121,20 +1128,20 @@ msgstr "B<restart_command>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:156
-#, fuzzy
 msgid ""
 "The command that the server uses to start a new server process via the "
 "B<restart> command. (Can only be issued via the fifo. See the "
 "B<allow_remote_shutdown> setting.)"
 msgstr ""
 "Polecenie używane przez serwer do uruchomienia nowego procesu serwera "
-"poleceniem \"restart\". (Może zostać wydane wyłącznie poprzez kolejkę)."
+"poleceniem B<restart>. (Może zostać wydane wyłącznie poprzez kolejkę - patrz "
+"ustawienie B<allow_remote_shutdown>)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:156
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<room_save_file>"
-msgstr "B<ban_save_file>"
+msgstr "B<room_save_file>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:159
@@ -1143,6 +1150,9 @@ msgid ""
 "server startup and written to later. If empty or not set, rooms are not "
 "loaded and not saved."
 msgstr ""
+"Ścieżka do pliku, w którym należy zapisać dane pokoju. Plik jest odczytywany "
+"przy uruchamianiu serwera i zapisywany podczas jego pracy. Jeśli parametr "
+"jest pusty lub zostanie pominięty, pokoje nie będą ładowane ani zapisywane."
 
 #: ../../doc/man/wesnothd.6:159
 #, no-wrap
@@ -1165,15 +1175,14 @@ msgstr "B<versions_accepted>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:166
-#, fuzzy
 msgid ""
 "A comma separated list of version strings to be accepted by the server. B<*> "
 "and B<?> from wildcard patterns are supported.  (defaults to the "
 "corresponding wesnoth version)"
 msgstr ""
-"Oddzielana przecinkami lista wersji akceptowanych przez serwer. `*' i `?' z "
-"wzorców wieloznacznych są akceptowane. (Domyślnie: dla odpowiedniej wersji "
-"wesnoth)."
+"Oddzielana przecinkami lista łańcuchów wersji akceptowanych przez serwer. "
+"Obsługiwane są symbole B<*> i B<?> ze wzorców wieloznacznych. (Domyślnie: "
+"odpowiednia wersja wesnoth)."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:168
@@ -1190,7 +1199,6 @@ msgstr "B<user_handler>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:173
-#, fuzzy
 msgid ""
 "The name of the user handler to use. Currently available user handlers are "
 "B<forum> (to connect wesnothd to a phpbb forum database) and B<sample> (a "
@@ -1199,11 +1207,11 @@ msgid ""
 "add a B<[user_handler]> section, see below."
 msgstr ""
 "Nazwa obiektu obsługi użytkowników, który ma być używany. Obecnie dostępne "
-"obiekty to 'forum' (aby podłączyć wesnothd do bazy danych forum phpbb) i "
-"'sample' (przykładowa implementacja interfejsu obiektu obsługi użytkowników, "
-"której nikt przy zdrowych zmysłach nie powinien używać w poważnych "
-"zastosowaniach). Wartość domyślna to 'forum'. Należy też dodać sekcję B<"
-"[user_handler]> (patrz poniżej)."
+"obiekty to B<forum> (aby podłączyć wesnothd do bazy danych forum phpbb) i "
+"B<sample> (przykładowa implementacja interfejsu obiektu obsługi "
+"użytkowników, której nikt przy zdrowych zmysłach nie powinien używać w "
+"poważnych zastosowaniach). Wartość domyślna to B<forum>. Należy też dodać "
+"sekcję B<[user_handler]> (patrz poniżej)."
 
 # type: SS
 #: ../../doc/man/wesnothd.6:174
@@ -1285,7 +1293,6 @@ msgstr "B<time>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:207
-#, fuzzy
 msgid ""
 "The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s "
 "(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d "
@@ -1296,8 +1303,8 @@ msgstr ""
 "Definicja przedziału czasowego. Format: %d[%s[%d%s[...]]], gdzie %s ma "
 "wartość s (sekundy), m (minuty), h (godziny), D (dni), M (miesiące) lub Y "
 "(lata), a %d jest liczbą. Jeśli nie zostanie podany żaden modyfikator czasu, "
-"przyjmowane są minuty (m). Przykład: time=\"1D12h30m\" spowoduje ustawienie "
-"blokady trwającej 1 dzień, 12 godzin i 30 minut."
+"przyjmowane są minuty (m). Przykład: B<time=\"1D12h30m\"> spowoduje "
+"nałożenie blokady trwającej 1 dzień, 12 godzin i 30 minut."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:213
@@ -1312,7 +1319,6 @@ msgstr ""
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:221
-#, fuzzy
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
 "on which user handler is set with the B<user_handler> key. If no B<"
@@ -1321,7 +1327,7 @@ msgid ""
 msgstr ""
 "B<[user_handler]> Konfiguruje obiekt obsługi użytkowników. Dostępne "
 "parametry zależą od obiektu ustawionego za pomocą parametru B<user_handler>. "
-"W przypadku braku sekcji [user_handler] w konfiguracji serwer zostanie "
+"W przypadku braku sekcji B<[user_handler]> w konfiguracji serwer zostanie "
 "uruchomiony bez żadnej usługi rejestrowania pseudonimów."
 
 # type: TP
@@ -1397,7 +1403,6 @@ msgstr "B<db_extra_table>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:241
-#, fuzzy
 msgid ""
 "(for user_handler=forum) The name of the table in which wesnothd will save "
 "its own data about users. You will have to create this table manually, e.g.: "
@@ -1407,9 +1412,9 @@ msgid ""
 msgstr ""
 "(dotyczy user_handler=forum) Nazwa tabeli, w której wesnothd będzie "
 "zapisywać własne dane o użytkownikach. Tabelę trzeba utworzyć ręcznie, np. "
-"poleceniem: CREATE TABLE E<lt>nazwa-tabeliE<gt>(username VARCHAR(255) "
+"poleceniem: B<CREATE TABLE E<lt>nazwa-tabeliE<gt>(username VARCHAR(255) "
 "PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, "
-"user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);"
+"user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);>"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:241
@@ -1510,15 +1515,3 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:283
 msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
 msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
-
-# type: TP
-#~ msgid "B<--dummy-locales>"
-#~ msgstr "B<--dummy-locales>"
-
-# type: Plain text
-#~ msgid ""
-#~ "use special dummy locales to switch to any language even if that language "
-#~ "isn't installed system-wide."
-#~ msgstr ""
-#~ "używa specjalnych atrap ustawień regionalnych, by umożliwić przełączenie "
-#~ "na dowolny język, nawet jeśli nie jest on zainstalowany w systemie."

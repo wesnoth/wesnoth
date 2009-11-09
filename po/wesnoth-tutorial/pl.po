@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-10-13 22:59+0200\n"
-"PO-Revision-Date: 2009-04-02 12:11+0100\n"
+"PO-Revision-Date: 2009-11-09 17:52+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
@@ -19,13 +19,12 @@ msgstr ""
 "X-Poedit-SearchPath-0: /usr/local/wesnoth\n"
 
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:40
-#, fuzzy
 msgid ""
 "\n"
 "<big>Click a mouse button or press spacebar to continue...</big>"
 msgstr ""
 "\n"
-"*Kliknij myszą lub naciśnij spację, by kontynuować..."
+"<big>Kliknij myszą lub naciśnij spację, by kontynuować...</big>"
 
 #. [tutorial]: id=tutorial
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:49
@@ -94,9 +93,8 @@ msgstr "Li'sar"
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:194
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:201
-#, fuzzy
 msgid "<big>Welcome to Wesnoth!</big>"
-msgstr "*Witaj w Wesnoth!"
+msgstr "<big>Witaj w Wesnoth!</big>"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:196
@@ -145,22 +143,20 @@ msgstr "Kliknij Li'sar lewym przyciskiem"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:228
-#, fuzzy
 msgid ""
 "<big>You have selected Konrad.</big>\n"
 "The places he can move to are highlighted."
 msgstr ""
-"*Wybrano Konrada.\n"
+"<big>Wybrano Konrada.</big>\n"
 "Miejsca, w które może się on udać, są podświetlone."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:235
-#, fuzzy
 msgid ""
 "<big>You have selected Li'sar.</big>\n"
 "The places she can move to are highlighted."
 msgstr ""
-"*Wybrano Li'sar.\n"
+"<big>Wybrano Li'sar.</big>\n"
 "Miejsca, w które może się ona udać, są podświetlone."
 
 #. [event]
@@ -185,13 +181,12 @@ msgstr "Kliknij lewym przyciskiem myszy pole oznaczone TUTAJ"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:282
-#, fuzzy
 msgid ""
 "<big>Oops!</big>\n"
 "You moved to the wrong place! After this message, you can press 'u' to undo, "
 "then try again."
 msgstr ""
-"*Źle!\n"
+"<big>Źle!</big>\n"
 "Nie na to pole masz się ruszyć. Po zamknięciu tej wiadomości możesz nacisnąć "
 "\"u\", by cofnąć ruch i spróbować ponownie."
 
@@ -313,7 +308,6 @@ msgstr "Niestety, atak na atrapę zużył całą Twoją turę. Teraz kolej na at
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:450
-#, fuzzy
 msgid ""
 "female^Unfortunately, you've used up your turn attacking the quintain. The "
 "quintain will now get a turn."
@@ -366,7 +360,6 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:498
-#, fuzzy
 msgid ""
 "female^There is a village on the other side of the river. Visiting villages "
 "is a good idea, and ending your turn in one will heal you. To the village!"
@@ -450,7 +443,6 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:593
-#, fuzzy
 msgid ""
 "female^A splendid idea. You can recruit two units if you return to the keep. "
 "You have plenty of gold for that."
@@ -523,13 +515,12 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:732
-#, fuzzy
 msgid ""
 "Had the quintain survived your onslaught, it would have regained two "
 "hitpoints. If a unit doesn't do anything for a turn, it will slowly heal."
 msgstr ""
-"Tak, jeśli jednostka nie będzie robiła niczego przez turę, to będzie się "
-"powoli leczyła."
+"Gdyby atrapa przeżyła Twój atak, odzyskałaby dwa punkty życia. Jeśli "
+"jednostka nic nie robi przez całą turę, będzie się powoli leczyć."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:745
@@ -727,7 +718,6 @@ msgstr ""
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1032
-#, fuzzy
 msgid "The quintain is dead, and I have gained more experience!"
 msgstr "Atrapa zginęła, a ja mam więcej doświadczenia!"
 
@@ -800,13 +790,12 @@ msgstr ""
 "przycisk \"Kończ scenariusz\"."
 
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:27
-#, fuzzy
 msgid ""
 "<big>Remember:</big>\n"
 "You can press 'u' to undo most things; useful for correcting mistakes."
 msgstr ""
-"*Zapamiętaj:\n"
-"Możesz nacisnąć 'u', by cofnąć większość działań - przydatne do cofania "
+"<big>Zapamiętaj:</big>\n"
+"Możesz nacisnąć \"u\", by cofnąć większość działań - przydatne do cofania "
 "pomyłek."
 
 #. [unit]: id=Galdrad, type=Elvish Captain
@@ -860,15 +849,14 @@ msgstr "Czy jedna jednostka przeżyje w walce z tyloma wrogami?"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:28
-#, fuzzy
 msgid ""
 "With a little help, yes. If you move your Shaman next to the defending unit, "
 "she will heal it 4 hitpoints per turn. Just be careful not to expose the "
 "Shaman to attack since she is fairly weak herself."
 msgstr ""
 "Tak, przy odrobinie pomocy. Jeżeli przesuniesz swoją szamankę na pole obok "
-"broniącej się jednostki, będzie ona odzyskiwała każdej tury 4 punkty życia. "
-"Uważaj tylko, by nie narazić szamanki na atak - jest dość delikatna."
+"broniącej się jednostki, będzie ją ona leczyć, przywracając co turę 4 punkty "
+"życia. Uważaj tylko, by nie narazić szamanki na atak - sama jest dość słaba."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:29
@@ -1059,16 +1047,14 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:530
-#, fuzzy
 msgid ""
 "During your tutorial, both $recall_name1 and $recall_name2 gained "
 "$recall_xp1 experience points. You should recall them now so they can gain "
 "more experience, rather than recruiting new ones."
 msgstr ""
-"$recall_name1 ma $recall_xp1 punktów doświadczenia zdobytych podczas "
-"samouczka, a $recall_name2 ma ich $recall_xp2. Zamiast rekrutować nowe "
-"jednostki, lepiej teraz przywołać tamte. W ten sposób będą mogły zdobyć "
-"jeszcze więcej doświadczenia."
+"Podczas samouczka $recall_name1 i $recall_name2 zdobyli tyle samo punktów "
+"doświadczenia ($recall_xp1). Zamiast rekrutować nowe jednostki, lepiej teraz "
+"przywołać tamte. W ten sposób będą mogły zdobyć jeszcze więcej doświadczenia."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:533
@@ -1363,13 +1349,12 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:921
-#, fuzzy
 msgid ""
 "Attack the orc with an Archer\n"
 "(move mouse over units to see description on right)"
 msgstr ""
-"Zaatakuj orka łucznikiem (najedź kursorem myszy na jednostkę, by zobaczyć "
-"jej opis z prawej strony)"
+"Zaatakuj orka łucznikiem\n"
+"(najedź kursorem myszy na jednostkę, by zobaczyć jej opis z prawej strony)"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:929
@@ -1719,13 +1704,12 @@ msgstr ""
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1357
-#, fuzzy
 msgid ""
 "We will miss $deadguy.name| because she had $deadguy.experience experience "
 "points, meaning she would have advanced to level 2 soon."
 msgstr ""
-"Tak ginie $deadguy.name|. Wielka szkoda - przy swoich $deadguy.experience "
-"punktach doświadczenia ta jednostka wkrótce osiągnęłaby 2 poziom."
+"Będzie nam brakować $deadguy.name| - przy swoich $deadguy.experience "
+"punktach doświadczenia wkrótce osiągnęłaby drugi poziom."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1368
@@ -1785,15 +1769,14 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1430
-#, fuzzy
 msgid ""
 "female^Advancing a level has fully healed me!\n"
 "I always have a 60% chance of hitting with my Marksman ability, and I deal 9 "
 "damage each for 4 attacks. Use me to dislodge hard-to-hit units."
 msgstr ""
 "Osiągnięcie następnego poziomu w pełni mnie uzdrowiło!\n"
-"Dzięki umiejętności Strzelec Wyborowy mam zawsze 60% szansy na trafienie z "
-"łuku i zadaję 9 punktów obrażeń każdym z moich 4 ataków. Używaj mnie do "
+"Dzięki umiejętnościom strzelca wyborowego mam zawsze 60% szansy na trafienie "
+"z łuku i zadaję 9 punktów obrażeń każdym z moich 4 ataków. Używaj mnie do "
 "unieszkodliwiania trudnych do trafienia jednostek."
 
 #. [message]: speaker=unit

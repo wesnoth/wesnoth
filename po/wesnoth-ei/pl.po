@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-11-02 12:29+0100\n"
-"PO-Revision-Date: 2009-03-13 19:34+0100\n"
+"PO-Revision-Date: 2009-11-09 18:26+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
@@ -59,22 +59,20 @@ msgstr "Królewski gwardzista"
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:21
 msgid "(Intermediate level, 18 scenarios.)"
-msgstr ""
+msgstr "(Poziom średni, 18 scenariuszy)"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:21
-#, fuzzy
 msgid ""
 "There are rumors of undead attacks on the eastern border of Wesnoth. You, an "
 "officer in the Royal Army, have been sent to the eastern front to protect "
 "the villagers and find out what is happening.\n"
 "\n"
 msgstr ""
-"Krążą plotki o atakach nieumarłych na wschodniej granicy królestwa Wesnoth. "
+"Chodzą słuchy o atakach nieumarłych na wschodniej granicy królestwa Wesnoth. "
 "Ciebie, oficera królewskiej armii, wysłano na wschodni front, by bronić "
 "chłopów i odkryć, co się tam dzieje.\n"
 "\n"
-"(Poziom średni, 18 scenariuszy)"
 
 #. [about]
 #: data/campaigns/Eastern_Invasion/_main.cfg:25
@@ -154,7 +152,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:36
-#, fuzzy
 msgid ""
 "In the days of the king Garard I, two strong-points had been built along the "
 "near bank of the Weldyn, south of Soradoc, to stop bandits and orcish "
@@ -166,7 +163,7 @@ msgstr ""
 "rzeki Weldyn, na południe od Soradoc. Umocnienia miały powstrzymywać najazdy "
 "orków i bandytów zza wschodniej granicy Wesnoth. Z biegiem czasu nadrzeczne "
 "strażnice zostały jednak porzucone, w miarę jak koloniści zaludniali coraz "
-"to większe obszary Marchii Wschodniej, a orki zepchnięto na północ od "
+"to większe obszary marchii wschodniej, a orki zepchnięto na północ od "
 "Wielkiej Rzeki."
 
 #. [part]
@@ -1293,9 +1290,8 @@ msgstr ""
 
 #. [message]: speaker=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:531
-#, fuzzy
 msgid "You dare to attack <i>me</i>!? Go back to your master!"
-msgstr "Ośmielasz się atakować MNIE?!? Wracaj do swego pana!"
+msgstr "Ośmielasz się atakować <i>mnie</i>!? Wracaj do swego pana!"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:535
@@ -1647,29 +1643,22 @@ msgstr ""
 
 #. [message]: speaker=Wak-Rano
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:134
-#, fuzzy
 msgid ""
 "Hmm... I know. We will make a pact to destroy these men, and continue our "
 "fight later. "
 msgstr ""
 "Hmm... Już wiem. Zawrzemy układ: wspólnie pokonamy tych ludzi, a potem "
-"dokończymy naszą bitwę. (Może śmierdziel zginie, a ja pokonam go bez walki)."
+"dokończymy naszą bitwę. "
 
 #. [message]: speaker=Mal-Arnai
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:138
-#, fuzzy
 msgid "This foolish orc will surely perish."
-msgstr ""
-"Doskonale, a więc póki co jesteśmy sojusznikami (ten durny ork na pewno "
-"zginie)."
+msgstr "Ten durny ork na pewno zginie."
 
 #. [message]: speaker=Mal-Arnai
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:138
-#, fuzzy
 msgid "Very well, we are allies, for now. "
-msgstr ""
-"Doskonale, a więc póki co jesteśmy sojusznikami (ten durny ork na pewno "
-"zginie)."
+msgstr "Doskonale, a więc póki co jesteśmy sojusznikami. "
 
 #. [message]: speaker=Wak-Rano
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:149
@@ -1982,9 +1971,8 @@ msgstr ""
 
 #. [message]: speaker=Prok-Bak
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:146
-#, fuzzy
 msgid "You human! Call us foul, will you!?"
-msgstr "Człowieczku ty! Nas nazywasz głupcami?!?"
+msgstr "Te, człowiek! Nas nazywasz plugawymi?!"
 
 #. [message]: speaker=Pelathsil
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:150
@@ -2416,12 +2404,11 @@ msgstr "Zniszcz most LUB pokonaj wszystkich wrogów"
 
 #. [objectives]
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:188
-#, fuzzy
 msgid ""
 "Note: every unit not on the south side of the river when the bridge is "
 "destroyed will be lost (including non-recalled units)"
 msgstr ""
-"Uwaga: stracisz wszystkie jednostki, które w chwili wysadzenia mostu nie "
+"Uwaga: Stracisz wszystkie jednostki, które w chwili zniszczenia mostu nie "
 "będą na południowym brzegu rzeki (w tym jednostki nieprzywołane)"
 
 #. [unit]: id=Engineer, type=Red Mage
@@ -2431,13 +2418,12 @@ msgstr "Saper"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:209
-#, fuzzy
 msgid ""
 "All is lost! We have to get out of the Northlands as quickly as possible! "
 "Run for your - what the...!? Who are you?"
 msgstr ""
 "Wszystko stracone! Musimy się wydostać z Północnych Ziem tak szybko, jak to "
-"możliwe! Ratuj się kto mo... co u licha... Kim ty jesteś?"
+"możliwe! Ratuj się kto mo... co u licha...?! Ktoś ty?"
 
 #. [message]: speaker=Engineer
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:214
@@ -3160,7 +3146,6 @@ msgstr ""
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:279
-#, fuzzy
 msgid ""
 "Gweddry, I don't think you should accept. He is bound to bring more than six "
 "undead to the battle; he will bring an army!"
@@ -3243,12 +3228,12 @@ msgstr ""
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:137
-#, fuzzy
 msgid ""
 "Wait - what just happened? He called more warriors out of the ground! That's "
 "not allowed!"
 msgstr ""
-"Zaraz, zaraz. Co to było? On wezwał wojowników spod ziemi! To niedozwolone!"
+"Zaraz, zaraz, co to było? Wezwał kolejnych wojowników spod ziemi! To "
+"niedozwolone!"
 
 #. [message]: speaker=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:141
@@ -3640,6 +3625,9 @@ msgid ""
 "to see the grim tide of undead sweeping westward into Wesnoth, laying waste "
 "to all in its path."
 msgstr ""
+"Może i lepiej było dla ludzi z oddziału Gweddry'ego, że nie dożyli widoku "
+"posępnej fali nieumarłych, która nieubłaganie parła na zachód w głąb "
+"Wesnoth, niszcząc wszystko na swej drodze."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Eastern_Invasion/utils/deaths.cfg:85
@@ -3648,6 +3636,9 @@ msgid ""
 "would suffer the rage and malice of marauding orcs and undead in a war that "
 "would end only in misery and death."
 msgstr ""
+"Nikt w Wesnoth nie dowiedział się o losie Gweddry'ego i jego ludzi, lecz "
+"wkrótce wszyscy mieli doświadczyć furii i okrucieństwa armii orków i "
+"nieumarłych, tocząc walkę z góry skazaną na porażkę, cierpienie i śmierć."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Eastern_Invasion/utils/deaths.cfg:97
@@ -3656,6 +3647,9 @@ msgid ""
 "more would it for the inhabitants of Wesnoth as foes pressed them on all "
 "sides to a final defense of the doomed kingdom."
 msgstr ""
+"Ojczyste strony nie przyniosły schronienia ludziom Gweddry'ego, podobnie jak "
+"innym mieszkańcom Wesnoth - ze wszech stron napierali wrogowie, zmuszając do "
+"stawienia ostatecznego oporu w obronie upadającego królestwa."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Eastern_Invasion/utils/deaths.cfg:109
@@ -3664,6 +3658,9 @@ msgid ""
 "once-great kingdom was plunged into final darkness under the vengeful hand "
 "of Mal-Ravanal."
 msgstr ""
+"Gdy najdzielniejsi z obrońców Wesnoth w końcu padli pokonani na ojczystą "
+"ziemię, niegdyś potężne królestwo ostatecznie popadło w mrok pod okrutnymi "
+"rządami mściwego Mal-Ravanala."
 
 #~ msgid "We have come all the way to Mal-Ravanal's capital!"
 #~ msgstr "Przeszliśmy całą drogę aż do samej stolicy Mal-Ravanala!"
