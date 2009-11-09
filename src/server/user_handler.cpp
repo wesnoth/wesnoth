@@ -18,7 +18,7 @@
 #include <ctime>
 
 bool user_handler::send_mail(const std::string& to_user,
-		const std::string& subject, const std::string& message) {
+		const std::string& /*subject*/, const std::string& /*message*/) {
 
 	//If this user is registerd at all
 	if(!user_exists(to_user)) {
