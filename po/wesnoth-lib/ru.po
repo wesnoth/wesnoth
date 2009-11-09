@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-11-08 15:46+0100\n"
+"POT-Creation-Date: 2009-11-09 18:26+0100\n"
 "PO-Revision-Date: 2009-11-03 11:13+0200\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team:  <http://bugs.wesnoth.org>\n"
@@ -2204,11 +2204,11 @@ msgstr "Описание виджетов '$definition' не содержит о
 msgid "No state or draw section defined."
 msgstr "Не определёно состояние или секция отрисовки"
 
-#: src/gui/widgets/window.cpp:788
+#: src/gui/widgets/window.cpp:789
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr ""
 
-#: src/gui/widgets/window.cpp:813 src/gui/widgets/window.cpp:846
+#: src/gui/widgets/window.cpp:814 src/gui/widgets/window.cpp:847
 #: src/tests/gui/test_gui2.cpp:232
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Не могу показать диалог, он не помещается на экране."
@@ -2655,7 +2655,7 @@ msgstr "Скриншот не удался"
 msgid "language code for localized resources^en_US"
 msgstr ""
 
-#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:208
+#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:220
 msgid "Close Window"
 msgstr "Закрыть окно"
 
@@ -2719,7 +2719,7 @@ msgstr "Не могу найти изображения для территор�
 msgid "Error creating or aquiring an image."
 msgstr "Ошибка при создании или получении изображения."
 
-#: src/preferences_display.cpp:75 src/preferences_display.cpp:113
+#: src/preferences_display.cpp:75 src/preferences_display.cpp:125
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -2729,46 +2729,46 @@ msgstr ""
 "установить 16 битный цвет. Чтобы запускать игру на весь экран, ваш монитор "
 "должен поддерживать разрешение не менее 1024x768x16."
 
-#: src/preferences_display.cpp:212
+#: src/preferences_display.cpp:224
 msgid "Hotkey Settings"
 msgstr "Настройка горячих клавиш"
 
-#: src/preferences_display.cpp:218 src/preferences_display.cpp:286
+#: src/preferences_display.cpp:230 src/preferences_display.cpp:298
 msgid "Press desired Hotkey (Esc cancels)"
 msgstr "Нажмите желаемую горячую клавишу (Esc отменяет)"
 
-#: src/preferences_display.cpp:237
+#: src/preferences_display.cpp:249
 msgid "Action"
 msgstr "Действие"
 
-#: src/preferences_display.cpp:237
+#: src/preferences_display.cpp:249
 msgid "Binding"
 msgstr "Клавиша"
 
-#: src/preferences_display.cpp:249
+#: src/preferences_display.cpp:261
 msgid "Change Hotkey"
 msgstr "Изменить"
 
-#: src/preferences_display.cpp:252
+#: src/preferences_display.cpp:264
 msgid "Clear Hotkey"
 msgstr "Сбросить горячую клавишу"
 
-#: src/preferences_display.cpp:320
+#: src/preferences_display.cpp:332
 msgid "This Hotkey is already in use."
 msgstr "Эта горячая клавиша уже занята."
 
-#: src/preferences_display.cpp:331
+#: src/preferences_display.cpp:343
 msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr ""
 "Предупреждение: клавише скриншота лучше бы использовать Control, Alt или "
 "Meta."
 
-#: src/preferences_display.cpp:422
+#: src/preferences_display.cpp:434
 msgid "There are no alternative video modes available"
 msgstr "Нет доступных альтернативных видео режимов"
 
-#: src/preferences_display.cpp:451
+#: src/preferences_display.cpp:463
 msgid "Choose Resolution"
 msgstr "Выберите разрешение"
 

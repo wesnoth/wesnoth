@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-11-08 15:46+0100\n"
+"POT-Creation-Date: 2009-11-09 18:26+0100\n"
 "PO-Revision-Date: 2009-05-16 11:34+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
@@ -2246,11 +2246,11 @@ msgstr "元件設定 '$definition' 沒有設定 '$id'."
 msgid "No state or draw section defined."
 msgstr "没有設定狀態或界線"
 
-#: src/gui/widgets/window.cpp:788
+#: src/gui/widgets/window.cpp:789
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr ""
 
-#: src/gui/widgets/window.cpp:813 src/gui/widgets/window.cpp:846
+#: src/gui/widgets/window.cpp:814 src/gui/widgets/window.cpp:847
 #: src/tests/gui/test_gui2.cpp:232
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "無法顯示對話框，畫面尺寸不符。"
@@ -2699,7 +2699,7 @@ msgstr "截圖失敗"
 msgid "language code for localized resources^en_US"
 msgstr ""
 
-#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:208
+#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:220
 msgid "Close Window"
 msgstr "關閉視窗"
 
@@ -2763,7 +2763,7 @@ msgstr "無法獲取該地形圖片: $terrain。"
 msgid "Error creating or aquiring an image."
 msgstr "創建或獲取圖像文件錯誤。"
 
-#: src/preferences_display.cpp:75 src/preferences_display.cpp:113
+#: src/preferences_display.cpp:75 src/preferences_display.cpp:125
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -2772,44 +2772,44 @@ msgstr ""
 "無法改變影像模式。以視窗模式執行遊戲需要將視窗解析度設為16位元，全螢幕模式需"
 "要您的顯示器支援1024x768解析度和16位元。"
 
-#: src/preferences_display.cpp:212
+#: src/preferences_display.cpp:224
 msgid "Hotkey Settings"
 msgstr "快捷鍵設定"
 
-#: src/preferences_display.cpp:218 src/preferences_display.cpp:286
+#: src/preferences_display.cpp:230 src/preferences_display.cpp:298
 msgid "Press desired Hotkey (Esc cancels)"
 msgstr "請輸入您要設定的快捷鍵（按Esc取消）"
 
-#: src/preferences_display.cpp:237
+#: src/preferences_display.cpp:249
 msgid "Action"
 msgstr "動作"
 
-#: src/preferences_display.cpp:237
+#: src/preferences_display.cpp:249
 msgid "Binding"
 msgstr "綁定鍵"
 
-#: src/preferences_display.cpp:249
+#: src/preferences_display.cpp:261
 msgid "Change Hotkey"
 msgstr "更改快捷鍵"
 
-#: src/preferences_display.cpp:252
+#: src/preferences_display.cpp:264
 msgid "Clear Hotkey"
 msgstr "更改快捷鍵"
 
-#: src/preferences_display.cpp:320
+#: src/preferences_display.cpp:332
 msgid "This Hotkey is already in use."
 msgstr "此快捷鍵已經被使用"
 
-#: src/preferences_display.cpp:331
+#: src/preferences_display.cpp:343
 msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr "警告:截圖快捷鍵不可以是Control、Alt和Meta keys。"
 
-#: src/preferences_display.cpp:422
+#: src/preferences_display.cpp:434
 msgid "There are no alternative video modes available"
 msgstr "没有其他可用的顯示模式"
 
-#: src/preferences_display.cpp:451
+#: src/preferences_display.cpp:463
 msgid "Choose Resolution"
 msgstr "選擇解析度"
 

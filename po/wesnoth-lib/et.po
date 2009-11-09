@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-11-08 15:46+0100\n"
+"POT-Creation-Date: 2009-11-09 18:26+0100\n"
 "PO-Revision-Date: 2009-09-27 22:29+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: none\n"
@@ -2191,11 +2191,11 @@ msgstr "Definitsioon '$definition' ei sisalda '$id' definitsiooni."
 msgid "No state or draw section defined."
 msgstr "Olekuid pole määratud."
 
-#: src/gui/widgets/window.cpp:788
+#: src/gui/widgets/window.cpp:789
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "Loobumiseks on vaja klõpsata vastavat nuppu."
 
-#: src/gui/widgets/window.cpp:813 src/gui/widgets/window.cpp:846
+#: src/gui/widgets/window.cpp:814 src/gui/widgets/window.cpp:847
 #: src/tests/gui/test_gui2.cpp:232
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Dialoogiaken ei mahu ekraanile."
@@ -2642,7 +2642,7 @@ msgstr "Ekraanitõmmise tegemine ebaõnnestus"
 msgid "language code for localized resources^en_US"
 msgstr "et_EE"
 
-#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:208
+#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:220
 msgid "Close Window"
 msgstr "Sulge aken"
 
@@ -2706,7 +2706,7 @@ msgstr "Maastiku $terrain jaoks ei leidu pildifaili."
 msgid "Error creating or aquiring an image."
 msgstr "Viga pildi loomisel või impordil."
 
-#: src/preferences_display.cpp:75 src/preferences_display.cpp:113
+#: src/preferences_display.cpp:75 src/preferences_display.cpp:125
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -2716,46 +2716,46 @@ msgstr ""
 "aknahaldur peab olema 16-biti režiimis. Üleekraanirežiimi jaoks peab sinu "
 "kuvar toetama 1024x768x16 režiimi."
 
-#: src/preferences_display.cpp:212
+#: src/preferences_display.cpp:224
 msgid "Hotkey Settings"
 msgstr "Kiirklahvide sätted"
 
-#: src/preferences_display.cpp:218 src/preferences_display.cpp:286
+#: src/preferences_display.cpp:230 src/preferences_display.cpp:298
 msgid "Press desired Hotkey (Esc cancels)"
 msgstr "Vajuta soovitud kiirklahvi (Esc tühistab)"
 
-#: src/preferences_display.cpp:237
+#: src/preferences_display.cpp:249
 msgid "Action"
 msgstr "Tegevus"
 
-#: src/preferences_display.cpp:237
+#: src/preferences_display.cpp:249
 msgid "Binding"
 msgstr "Klahviseos"
 
-#: src/preferences_display.cpp:249
+#: src/preferences_display.cpp:261
 msgid "Change Hotkey"
 msgstr "Muuda kiirklahvi"
 
-#: src/preferences_display.cpp:252
+#: src/preferences_display.cpp:264
 msgid "Clear Hotkey"
 msgstr "Puhasta kiirklahvi määrang"
 
-#: src/preferences_display.cpp:320
+#: src/preferences_display.cpp:332
 msgid "This Hotkey is already in use."
 msgstr "See kiirklahv on juba kasutusel."
 
-#: src/preferences_display.cpp:331
+#: src/preferences_display.cpp:343
 msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr ""
 "Hoiatus: ekraanitõmmise klahvikombinatsioonid Ctrl, Alt või Meta-klahviga ei "
 "toimi."
 
-#: src/preferences_display.cpp:422
+#: src/preferences_display.cpp:434
 msgid "There are no alternative video modes available"
 msgstr "Alternatiivsed videorežiimid puuduvad."
 
-#: src/preferences_display.cpp:451
+#: src/preferences_display.cpp:463
 msgid "Choose Resolution"
 msgstr "Muuda ekraani lahutusvõimet."
 

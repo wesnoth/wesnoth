@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-11-08 15:46+0100\n"
+"POT-Creation-Date: 2009-11-09 18:26+0100\n"
 "PO-Revision-Date: 2009-04-11 20:58+0200\n"
 "Last-Translator: Samu Voutilainen <samu.voutilainen@gmail.com>\n"
 "Language-Team: none\n"
@@ -2253,11 +2253,11 @@ msgstr "Widgetin määritelmä ”$definition” ei sisällä määritelmää id
 msgid "No state or draw section defined."
 msgstr "Tilannetta tai piirtoaluetta ei ole määritetty."
 
-#: src/gui/widgets/window.cpp:788
+#: src/gui/widgets/window.cpp:789
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr ""
 
-#: src/gui/widgets/window.cpp:813 src/gui/widgets/window.cpp:846
+#: src/gui/widgets/window.cpp:814 src/gui/widgets/window.cpp:847
 #: src/tests/gui/test_gui2.cpp:232
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Dialogin näyttäminen epäonnistui, koska se ei mahtunut ruudulle."
@@ -2706,7 +2706,7 @@ msgstr "Kuvankaappauksen ottaminen epäonnistui"
 msgid "language code for localized resources^en_US"
 msgstr ""
 
-#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:208
+#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:220
 msgid "Close Window"
 msgstr "Sulje ikkuna"
 
@@ -2770,7 +2770,7 @@ msgstr "Ei kuvaa maastolle: $terrain."
 msgid "Error creating or aquiring an image."
 msgstr "Virhe luodessa tai hankkiessa kuvaa."
 
-#: src/preferences_display.cpp:75 src/preferences_display.cpp:113
+#: src/preferences_display.cpp:75 src/preferences_display.cpp:125
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -2781,46 +2781,46 @@ msgstr ""
 "Näyttösi täytyy tukea 1024x768x16 -tilaa, jotta peli voidaan ajaa koko "
 "ruudun kokoisena."
 
-#: src/preferences_display.cpp:212
+#: src/preferences_display.cpp:224
 msgid "Hotkey Settings"
 msgstr "Pikanäppäinten asetukset"
 
-#: src/preferences_display.cpp:218 src/preferences_display.cpp:286
+#: src/preferences_display.cpp:230 src/preferences_display.cpp:298
 msgid "Press desired Hotkey (Esc cancels)"
 msgstr "Paina haluttua pikanäppäintä (Esc peruuttaa)"
 
-#: src/preferences_display.cpp:237
+#: src/preferences_display.cpp:249
 msgid "Action"
 msgstr "Toiminto"
 
-#: src/preferences_display.cpp:237
+#: src/preferences_display.cpp:249
 msgid "Binding"
 msgstr "Valinta"
 
-#: src/preferences_display.cpp:249
+#: src/preferences_display.cpp:261
 msgid "Change Hotkey"
 msgstr "Vaihda pikanäppäintä"
 
-#: src/preferences_display.cpp:252
+#: src/preferences_display.cpp:264
 msgid "Clear Hotkey"
 msgstr "Poista pikanäppäin"
 
-#: src/preferences_display.cpp:320
+#: src/preferences_display.cpp:332
 msgid "This Hotkey is already in use."
 msgstr "Tämä pikanäppäin on jo käytössä."
 
-#: src/preferences_display.cpp:331
+#: src/preferences_display.cpp:343
 msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr ""
 "Varoitus: kuvankaappauspikanäppäimiä ei yhdistetty Control, Alt tai Meta-"
 "näppäimen kanssa"
 
-#: src/preferences_display.cpp:422
+#: src/preferences_display.cpp:434
 msgid "There are no alternative video modes available"
 msgstr "Vaihtoehtoisia näyttötarkkuuksia ei ole käytettävissä."
 
-#: src/preferences_display.cpp:451
+#: src/preferences_display.cpp:463
 msgid "Choose Resolution"
 msgstr "Valitse näyttötarkkuus"
 
