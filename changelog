@@ -25,7 +25,8 @@ Version 1.7.8-beta1:
    * Protect against widgets being smaller as expected causing images with
      negative sizes (bug #14525)
  * WML engine:
-   * Added two array element lookup macros, LOOKUP_INDEX and LOOKUP_VALUE.
+   * Added two array element lookup macros, LOOKUP_INDEX and LOOKUP_VALUE
+   * Event "turn refresh" is now fired at turn 1 too
  * Miscellaneous and bugfixes:
    * Using a hotkey to reload during an attack no longer disables the mouse
      (http://www.wesnoth.org/forum/viewtopic.php?f=4&t=27616)
