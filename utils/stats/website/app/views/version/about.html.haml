@@ -1,9 +1,0 @@
-Version:
-= @obj_version.name
-
-Game count:
-= @obj_version.game_count
-
-%p
-
-.branch-section= render :partial => 'campaign', :collection => @obj_version.campaigns, :locals => { :version_name => @obj_version.name }
