@@ -200,9 +200,9 @@ void game::start_game(const player_map::const_iterator starter) {
 	int turn = 1;
 	int side = 0;
 	// Savegames have a snapshot that tells us which side starts.
-	if (s.child("snapshot")) {
-		turn = lexical_cast_default<int>((*s.child("snapshot"))["turn_at"], 1);
-		side = lexical_cast_default<int>((*s.child("snapshot"))["playing_team"], 0);
+	if (const simple_wml::node* snapshot = s.child("snapshot")) {
+		turn = lexical_cast_default<int>((*snapshot)["turn_at"], 1);
+		side = lexical_cast_default<int>((*snapshot)["playing_team"], 0);
 		LOG_GAME << "Reload from turn: " << turn
 			<< ". Current side is: " << side + 1 << ".\n";
 	}
@@ -925,7 +925,10 @@ bool game::add_player(const network::connection player, bool observer) {
 	} else if (!allow_observers() && !user->second.is_moderator()) {
 		return false;
 	} else {
-		if (!observer) became_observer = true;
+		if (!observer) {
+			became_observer = true;
+			observer = true;
+		}
 		DBG_GAME << "adding observer...\n";
 		observers_.push_back(player);
 		if (!allow_observers()) send_and_record_server_message((user->second.name() + " is now observing the game.").c_str(), player);
@@ -938,10 +941,10 @@ bool game::add_player(const network::connection player, bool observer) {
 	}
 	LOG_GAME << network::ip_address(player) << "\t" << user->second.name()
 		<< "\tjoined game:\t\"" << name_ << "\" (" << id_ << ")"
-		<< (observer || became_observer ? " as an observer" : "")
+		<< (observer ? " as an observer" : "")
 		<< ". (socket: " << player << ")\n";
 	user->second.mark_available(id_, name_);
-	user->second.set_status((observer || became_observer) ? player::OBSERVING : player::PLAYING);
+	user->second.set_status((observer) ? player::OBSERVING : player::PLAYING);
 	DBG_GAME << debug_player_info();
 	// Send the user the game data.
 	if (!wesnothd::send_to_one(level_, player)) return false;
@@ -960,7 +963,7 @@ bool game::add_player(const network::connection player, bool observer) {
 		send_user_list();
 	}
 
-	const std::string clones = has_same_ip(player, observer || became_observer);
+	const std::string clones = has_same_ip(player, observer);
 	if (!clones.empty()) {
 		send_and_record_server_message((user->second.name() + " has the same IP as: " + clones).c_str());
 	}
