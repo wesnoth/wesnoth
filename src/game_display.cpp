@@ -372,11 +372,6 @@ void game_display::draw_hex(const map_location& loc)
 
 	// Footsteps indicating a movement path
 	drawing_buffer_add(LAYER_TERRAIN_TMP_BG, loc, tblit(xpos, ypos, footsteps_images(loc)));
-	// Draw cross images for debug highlights
-	if(game_config::debug && debugHighlights_.count(loc)) {
-		drawing_buffer_add(LAYER_TERRAIN_TMP_BG, loc, tblit(xpos, ypos,
-			image::get_image(game_config::cross_image, image::UNMASKED)));
-	}
 	// Draw the attack direction indicator
 	if(on_map && loc == attack_indicator_src_) {
 		drawing_buffer_add(LAYER_ATTACK_INDICATOR, loc, tblit(xpos, ypos,
@@ -397,6 +392,14 @@ void game_display::draw_hex(const map_location& loc)
 	// Show def% and turn to reach infos
 	if(!is_shrouded && on_map) {
 		draw_movement_info(loc);
+	}
+
+	if(game_config::debug) {
+		int debugH = debugHighlights_[loc];
+		if (debugH) {
+			std::string txt = lexical_cast<std::string>(debugH);
+			draw_text_in_hex(loc, LAYER_MOVE_INFO, txt, 18, font::BAD_COLOUR);
+		}
 	}
 	//simulate_delay += 1;
 }
