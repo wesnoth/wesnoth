@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-11-09 18:26+0100\n"
-"PO-Revision-Date: 2009-10-30 00:57+0100\n"
+"PO-Revision-Date: 2009-11-07 15:00+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -370,9 +370,9 @@ msgstr "Holandský překlad"
 msgid "English (GB) Translation"
 msgstr "Anglický překlad (VB)"
 
+# dlouhé!
 #. [about]
 #: data/core/about.cfg:1346
-#, fuzzy
 msgid "English (Shaw) Translation"
 msgstr "Anglický překlad (Shawovský fonetický přepis)"
 
@@ -7096,7 +7096,7 @@ msgstr "pohyby"
 #. [unit_defense]: id=unit-defense
 #: data/themes/default.cfg:468 data/themes/experimental.cfg:408
 msgid "statuspanel^terrain def."
-msgstr ""
+msgstr "Obrana na terénu"
 
 # pův.: "Hrát", což je blbost, protože je to místo "actions" pro malé rozlišení
 #. [change]: id=actions-menu
@@ -8053,22 +8053,20 @@ msgid "In lobby"
 msgstr "V čekárně"
 
 #: src/gui/dialogs/lobby_player_info.cpp:95
-#, fuzzy
 msgid "On friends list"
-msgstr "Přidáni do seznamu přátel: "
+msgstr "V seznamu přátel"
 
 #: src/gui/dialogs/lobby_player_info.cpp:100
-#, fuzzy
 msgid "On ignores list"
-msgstr "Přidáni do seznamu otrapů: "
+msgstr "V seznamu otrapů"
 
 #: src/gui/dialogs/lobby_player_info.cpp:105
 msgid "Neither a friend nor ignored"
-msgstr ""
+msgstr "Ani přítel, ani otrapa"
 
 #: src/gui/dialogs/lobby_player_info.cpp:110
 msgid "You"
-msgstr ""
+msgstr "Ty"
 
 #: src/gui/dialogs/lobby_player_info.cpp:113 src/multiplayer_create.cpp:540
 msgid "Error"
@@ -8726,11 +8724,11 @@ msgstr "Vypíše dostupné místnosti."
 
 #: src/menu_events.cpp:2281
 msgid "Room message."
-msgstr ""
+msgstr "Pošle zprávu pro celou místnost."
 
 #: src/menu_events.cpp:2283
 msgid "Room query."
-msgstr ""
+msgstr "Odešle místnosti dotaz."
 
 #: src/menu_events.cpp:2412
 msgid "Refresh gui."
