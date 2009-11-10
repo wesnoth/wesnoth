@@ -343,8 +343,8 @@ static void set_scrollbar_mode(tgrid* scrollbar_grid, tscrollbar_* scrollbar,
 		return;
 	}
 
-
 	scrollbar->set_item_count(items);
+	scrollbar->set_item_position(0);
 	scrollbar->set_visible_items(visible_items);
 
 	if(scrollbar_mode == tscrollbar_container::auto_visible) {
