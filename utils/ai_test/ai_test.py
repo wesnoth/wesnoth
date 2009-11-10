@@ -58,7 +58,7 @@ def run_game(cfg,game_result):
 	command_line = construct_command_line(cfg,game_result.ai_config1,game_result.ai_config2, game_result.faction1, game_result.faction2, game_result.map)
 	print 'Running: '+command_line
 	start = time()
-	p = Popen(command_line, shell=True, stdout=PIPE, stderr=PIPE)
+	p = Popen(command_line, shell=True, bufsize=10000000, stdout=PIPE, stderr=PIPE)
 	# outlines = p.stdout.readlines()
 	outerrlines = p.stderr.readlines()
 	print 'Finished'
