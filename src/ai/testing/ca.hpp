@@ -49,7 +49,8 @@ public:
 	virtual double evaluate();
 
 	virtual bool execute();
-
+private:
+	move_result_ptr move_;
 };
 
 

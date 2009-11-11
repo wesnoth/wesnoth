@@ -52,14 +52,58 @@ goto_phase::~goto_phase()
 
 double goto_phase::evaluate()
 {
-	ERR_AI_TESTING_AI_DEFAULT << get_name() << ": evaluate - not yet implemented" << std::endl;
+	// Execute goto-movements - first collect gotos in a list
+	std::vector<map_location> gotos;
+	unit_map &units_ = get_info().units;
+	gamemap &map_ = get_info().map;
+
+	for(unit_map::iterator ui = units_.begin(); ui != units_.end(); ++ui) {
+		if(ui->second.get_goto() == ui->first) {
+			ui->second.set_goto(map_location());
+		} else if(ui->second.side() == get_side() && map_.on_board(ui->second.get_goto())) {
+			gotos.push_back(ui->first);
+		}
+	}
+
+	for(std::vector<map_location>::const_iterator g = gotos.begin(); g != gotos.end(); ++g) {
+		unit_map::const_iterator ui = units_.find(*g);
+		int closest_distance = -1;
+		std::pair<map_location,map_location> closest_move;
+		for(move_map::const_iterator i = get_dstsrc().begin(); i != get_dstsrc().end(); ++i) {
+			if(i->second != ui->first) {
+				continue;
+			}
+			const int distance = distance_between(i->first,ui->second.get_goto());
+			if(closest_distance == -1 || distance < closest_distance) {
+				closest_distance = distance;
+				closest_move = *i;
+			}
+		}
+
+		if(closest_distance != -1) {
+			move_ = check_move_action(ui->first,closest_move.first);
+			if (move_->is_ok()) {
+				return get_score();
+			}
+		}
+	}
+
 	return BAD_SCORE;
 }
 
 bool goto_phase::execute()
 {
-	ERR_AI_TESTING_AI_DEFAULT << get_name() << ": execute - not yet implemented" << std::endl;
-	return false;
+	bool gamestate_changed = false;
+	if (!move_) {
+		return gamestate_changed;
+	}
+
+	move_->execute();
+	if (!move_->is_ok()){
+		LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute not ok" << std::endl;
+	}
+	gamestate_changed |= move_->is_gamestate_changed();
+	return gamestate_changed;
 }
 
 //==============================================================
