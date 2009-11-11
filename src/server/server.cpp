@@ -644,13 +644,15 @@ void server::run() {
 							   simple_wml::INIT_COMPRESSED );
 				simple_wml::string_span s = ping.output_compressed();
 				foreach (network::connection sock, ghost_players_) {
-					wesnothd::player_map::const_iterator i = players_.find(sock);
-					if (i != players_.end()) {
-						DBG_SERVER << "Pinging " << i->second.name() << "(" << i->first << ").\n";
-						network::send_raw_data(s.begin(), s.size(), i->first, "ping") ;
-					} else {
-						ERR_SERVER << "Player " << sock << " is in ghost_players_ but not in players_\n";
+					if (!lg::debug.dont_log(log_server)) {
+						wesnothd::player_map::const_iterator i = players_.find(sock);
+						if (i != players_.end()) {
+							DBG_SERVER << "Pinging " << i->second.name() << "(" << i->first << ").\n";
+						} else {
+							ERR_SERVER << "Player " << sock << " is in ghost_players_ but not in players_.\n";
+						}
 					}
+					network::send_raw_data(s.begin(), s.size(), sock, "ping") ;
 				}
 
  				// Copy new player list on top of ghost_players_ list.
