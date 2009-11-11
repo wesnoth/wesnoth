@@ -13,13 +13,14 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-11-09 18:26+0100\n"
-"PO-Revision-Date: 2009-11-09 11:51-0500\n"
+"PO-Revision-Date: 2009-11-11 02:48-0500\n"
 "Last-Translator: Michael Babich (Aethaeryn) <michaelbabich7@gmail.com>\n"
 "Language-Team: Latin\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: Latin\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:5
@@ -613,7 +614,7 @@ msgstr "Praecipua Telorum"
 #. [section]: id=factions_section
 #: data/core/help.cfg:67 src/help.cpp:1284 src/help.cpp:1286
 msgid "Factions"
-msgstr "Factio"
+msgstr "Factiones"
 
 #. [section]: id=terrains
 #. [topic]: id=..terrains
@@ -1009,7 +1010,6 @@ msgstr ""
 
 #. [topic]: id=movement
 #: data/core/help.cfg:213
-#, fuzzy
 msgid "Movement"
 msgstr "Motus"
 
@@ -1435,42 +1435,36 @@ msgstr ""
 #. [time]: id=dawn
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:280 data/core/macros/schedules.cfg:6
-#, fuzzy
 msgid "Dawn"
 msgstr "Aurora"
 
 #. [time]: id=morning
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:281 data/core/macros/schedules.cfg:17
-#, fuzzy
 msgid "Morning"
 msgstr "Antemeridiem"
 
 #. [time]: id=afternoon
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:282 data/core/macros/schedules.cfg:26
-#, fuzzy
 msgid "Afternoon"
 msgstr "Postmeridiem"
 
 #. [time]: id=dusk
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:283 data/core/macros/schedules.cfg:35
-#, fuzzy
 msgid "Dusk"
 msgstr "Vesper"
 
 #. [time]: id=first_watch
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:284 data/core/macros/schedules.cfg:46
-#, fuzzy
 msgid "First Watch"
 msgstr "Vigilia Prima"
 
 #. [time]: id=second_watch
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:285 data/core/macros/schedules.cfg:58
-#, fuzzy
 msgid "Second Watch"
 msgstr "Vigilia Secunda"
 
@@ -2184,7 +2178,7 @@ msgstr ""
 #. [topic]: id=terrain_flat
 #: data/core/help.cfg:479
 msgid "Flat"
-msgstr ""
+msgstr "Planus"
 
 #. [topic]: id=terrain_flat
 #: data/core/help.cfg:484
@@ -2392,7 +2386,7 @@ msgstr ""
 #. [topic]: id=terrain_frozen
 #: data/core/help.cfg:575
 msgid "Frozen"
-msgstr ""
+msgstr "Glacialis"
 
 #. [topic]: id=terrain_frozen
 #: data/core/help.cfg:580
@@ -2694,7 +2688,7 @@ msgstr ""
 #. [topic]: id=terrain_reef
 #: data/core/help.cfg:727
 msgid "Coastal Reef"
-msgstr ""
+msgstr "Cotes"
 
 #. [topic]: id=terrain_reef
 #: data/core/help.cfg:732
@@ -3131,17 +3125,15 @@ msgstr ""
 #: data/core/macros/abilities.cfg:114 data/core/macros/abilities.cfg:137
 #: data/core/macros/abilities.cfg:172 data/core/macros/abilities.cfg:219
 #: data/core/macros/abilities.cfg:278
-#, fuzzy
 msgid "leadership"
-msgstr "ductus"
+msgstr "ducatus"
 
 #. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:115 data/core/macros/abilities.cfg:138
 #: data/core/macros/abilities.cfg:173 data/core/macros/abilities.cfg:220
 #: data/core/macros/abilities.cfg:279
-#, fuzzy
 msgid "female^leadership"
-msgstr "ductus"
+msgstr "ducatus"
 
 #. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:119 data/core/macros/abilities.cfg:142
@@ -3169,15 +3161,13 @@ msgstr ""
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:347
-#, fuzzy
 msgid "skirmisher"
-msgstr "excursor"
+msgstr "concursatorius"
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:348
-#, fuzzy
 msgid "female^skirmisher"
-msgstr "excursor"
+msgstr "concursatorius"
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:350
@@ -3306,15 +3296,13 @@ msgstr "insidiari in nocte"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:442 data/core/macros/abilities.cfg:448
-#, fuzzy
 msgid "concealment"
-msgstr "Castra"
+msgstr ""
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:443 data/core/macros/abilities.cfg:449
-#, fuzzy
 msgid "female^concealment"
-msgstr "Castra"
+msgstr ""
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:447 data/core/macros/abilities.cfg:453
@@ -3338,7 +3326,6 @@ msgstr ""
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:468 data/core/macros/abilities.cfg:474
-#, fuzzy
 msgid "submerge"
 msgstr "demergere"
 
@@ -3559,7 +3546,6 @@ msgstr ""
 
 #. [poison]: id=poison
 #: data/core/macros/abilities.cfg:700
-#, fuzzy
 msgid "poison"
 msgstr "venenum"
 
@@ -3598,9 +3584,8 @@ msgstr ""
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:191
-#, fuzzy
 msgid "defensive."
-msgstr "Defensus"
+msgstr ""
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:213
@@ -3659,7 +3644,7 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:870
 #: data/core/macros/ai_controller.cfg:905
 msgid "Back"
-msgstr ""
+msgstr "Anterior"
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:359
@@ -3705,21 +3690,18 @@ msgstr ""
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:601
-#, fuzzy
 msgid "Clear objective orders"
-msgstr "Abrogare"
+msgstr ""
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:625
-#, fuzzy
 msgid "Clear behavior orders"
-msgstr "Abrogare"
+msgstr ""
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:649
-#, fuzzy
 msgid "Clear all orders"
-msgstr "Abrogare"
+msgstr ""
 
 #. [then]
 #: data/core/macros/ai_controller.cfg:775
@@ -3765,7 +3747,7 @@ msgstr ""
 #. [literal]
 #: data/core/macros/ai_controller.cfg:920
 msgid "Exit"
-msgstr "Exi"
+msgstr "Exire"
 
 #: data/core/macros/ai_controller.cfg:1047
 msgid "Set special orders..."
@@ -3788,9 +3770,8 @@ msgid "moving leader to $x1|,$y1|."
 msgstr ""
 
 #: data/core/macros/ai_controller.cfg:1052
-#, fuzzy
 msgid "Clear special orders"
-msgstr "Abrogare"
+msgstr ""
 
 #: data/core/macros/ai_controller.cfg:1053
 msgid ""
@@ -3914,12 +3895,12 @@ msgstr "Non optare."
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:148
 msgid "Take it"
-msgstr ""
+msgstr "Capisse id"
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:166
 msgid "Leave it"
-msgstr ""
+msgstr "Linque id"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:226
@@ -3941,7 +3922,6 @@ msgstr "Non dignus es saluti."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:264
-#, fuzzy
 msgid "Poison"
 msgstr "Venenum"
 
@@ -4919,7 +4899,7 @@ msgstr ""
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:221
 msgid "aged"
-msgstr ""
+msgstr "vetus"
 
 #. [color_range]: id=red
 #. [color_range]: id=1
@@ -4930,12 +4910,12 @@ msgstr "Ruber"
 #. [color_range]: id=lightred
 #: data/core/team-colors.cfg:20
 msgid "Light Red"
-msgstr ""
+msgstr "Ruber Candidus"
 
 #. [color_range]: id=darkred
 #: data/core/team-colors.cfg:26
 msgid "Dark Red"
-msgstr ""
+msgstr "Ruber Opacus"
 
 #. [color_range]: id=blue
 #. [color_range]: id=2
@@ -5356,21 +5336,18 @@ msgstr "Gens Anguini"
 
 #. [race]: id=ogre, description=
 #: data/core/units.cfg:228
-#, fuzzy
 msgid "race^Ogre"
 msgstr "Vir Immanis"
 
 #. [race]: id=ogre, description=
 #: data/core/units.cfg:229
-#, fuzzy
 msgid "race+female^Ogre"
 msgstr "Vir Immanis"
 
 #. [race]: id=ogre, description=
 #: data/core/units.cfg:230
-#, fuzzy
 msgid "race^Ogres"
-msgstr "Vir Immani"
+msgstr "Vir Immanes"
 
 #. [race]: id=orc
 #: data/core/units.cfg:239
@@ -6457,9 +6434,8 @@ msgstr "Tabula"
 #. [menu]: id=actions-menu
 #: data/themes/default.cfg:131 data/themes/dfool.cfg:145
 #: data/themes/experimental.cfg:106
-#, fuzzy
 msgid "Actions"
-msgstr "Facinores"
+msgstr "Actiones"
 
 #. [menu]: id=button-endturn
 #. [change]: id=button-endturn
@@ -6504,9 +6480,8 @@ msgstr "aura"
 #. [label]: id=villages-icon
 #: data/themes/default.cfg:240 data/themes/dfool.cfg:270
 #: data/themes/experimental.cfg:208
-#, fuzzy
 msgid "villages"
-msgstr "pagi"
+msgstr "viculi"
 
 #. [label]: id=units-icon
 #: data/themes/default.cfg:249 data/themes/dfool.cfg:279
@@ -6525,16 +6500,14 @@ msgstr "impensa"
 #. [label]: id=income-icon
 #: data/themes/default.cfg:267 data/themes/dfool.cfg:297
 #: data/themes/experimental.cfg:235
-#, fuzzy
 msgid "income"
-msgstr "merces"
+msgstr "reditus"
 
 #. [unit_level]: id=unit-level
 #: data/themes/default.cfg:429 data/themes/dfool.cfg:467
 #: data/themes/experimental.cfg:369
-#, fuzzy
 msgid "statuspanel^level"
-msgstr "e gradu"
+msgstr "ordo"
 
 #. [unit_moves]: id=unit-moves
 #: data/themes/default.cfg:459 data/themes/experimental.cfg:399
@@ -6586,9 +6559,8 @@ msgstr " remonstratum continuum"
 
 #. [menu]: id=button-stopreplay, type=image
 #: data/themes/macros.cfg:92
-#, fuzzy
 msgid "Stop"
-msgstr "Sistere"
+msgstr "Consistere"
 
 #. [menu]: id=button-stopreplay, type=image
 #: data/themes/macros.cfg:93
@@ -6647,7 +6619,7 @@ msgstr "Animationem praeterire"
 #: src/about.cpp:198 src/help.cpp:3158 src/menu_events.cpp:315
 #: src/menu_events.cpp:342 src/statistics_dialog.cpp:114
 msgid "Close"
-msgstr "Exi"
+msgstr "Exire"
 
 #: src/actions.cpp:194
 #, fuzzy
@@ -6753,7 +6725,7 @@ msgstr "MB"
 
 #: src/addon_management.cpp:421
 msgid "GB"
-msgstr "B"
+msgstr "GB"
 
 #: src/addon_management.cpp:454
 msgid "addon_type^Campaign"
@@ -6864,11 +6836,11 @@ msgstr "Adiunctum inauguratum est."
 
 #: src/addon_management.cpp:696
 msgid "Add-on Installed"
-msgstr "Appendicem Inpono"
+msgstr "Appendicem Inposui"
 
 #: src/addon_management.cpp:779
 msgid "Outdated add-ons"
-msgstr "Appendix antiquum"
+msgstr "Appendices antiquum"
 
 #: src/addon_management.cpp:781
 msgid ""
@@ -6911,7 +6883,7 @@ msgstr "Magnitudo"
 
 #: src/addon_management.cpp:856
 msgid "Update add-ons"
-msgstr "Nova appendices"
+msgstr "Appendices novare"
 
 #: src/addon_management.cpp:857
 msgid "Select an add-on to update:"
@@ -6980,7 +6952,7 @@ msgstr "Quoties tractum"
 #: src/addon_management.cpp:1005 src/help.cpp:1458 src/menu_events.cpp:202
 #: src/menu_events.cpp:842 src/menu_events.cpp:1438
 msgid "Type"
-msgstr "Genus"
+msgstr "Species"
 
 #: src/addon_management.cpp:1069
 msgid "Publish add-on: "
@@ -7138,9 +7110,8 @@ msgid "What should our victorious unit become?"
 msgstr "Quid unitas victoriosa fiet?"
 
 #: src/dialogs.cpp:216
-#, fuzzy
 msgid "Level"
-msgstr "E gradu"
+msgstr "Ordo"
 
 #: src/dialogs.cpp:235
 #, fuzzy
@@ -7167,9 +7138,8 @@ msgid "#(Invalid)"
 msgstr "#(Inritus)"
 
 #: src/dialogs.cpp:466
-#, fuzzy
 msgid "Campaign: $campaign_name"
-msgstr "Inventor Stipendii"
+msgstr "Militia: $campaign_name"
 
 #: src/dialogs.cpp:473
 msgid "Multiplayer"
@@ -7194,7 +7164,6 @@ msgid "Scenario Start"
 msgstr "Initium Missionis"
 
 #: src/dialogs.cpp:490
-#, fuzzy
 msgid "Difficulty: "
 msgstr "Difficultas: "
 
@@ -7239,9 +7208,8 @@ msgstr ""
 "(Lusus automatice servantur sum missionem absolvis)"
 
 #: src/dialogs.cpp:575
-#, fuzzy
 msgid "Date"
-msgstr "Datum"
+msgstr "Tempus"
 
 #: src/dialogs.cpp:592 src/multiplayer_create.cpp:105
 msgid "Load Game"
@@ -7264,13 +7232,13 @@ msgstr "Abrogare"
 
 #: src/dialogs.cpp:614 src/multiplayer_create.cpp:86
 msgid "OK"
-msgstr "Confirma"
+msgstr "Confirmare"
 
 #: src/dialogs.cpp:615 src/dialogs.cpp:1030 src/dialogs.cpp:1137
 #: src/multiplayer_connect.cpp:1007 src/multiplayer_create.cpp:85
 #: src/multiplayer_wait.cpp:176
 msgid "Cancel"
-msgstr "Veta"
+msgstr "Vetare"
 
 #: src/dialogs.cpp:618
 #, fuzzy
@@ -7283,9 +7251,8 @@ msgid "Profile"
 msgstr "Lineamenta"
 
 #: src/dialogs.cpp:770 src/help.cpp:1330
-#, fuzzy
 msgid "level"
-msgstr "e gradu"
+msgstr "ordo"
 
 #: src/dialogs.cpp:783 src/help.cpp:1432
 #, fuzzy
@@ -7327,7 +7294,6 @@ msgid "No campaigns are available.\n"
 msgstr "Nullum propositum ad manum"
 
 #: src/game.cpp:1141
-#, fuzzy
 msgid "Difficulty"
 msgstr "Difficultas"
 
@@ -7437,7 +7403,7 @@ msgstr ""
 
 #: src/game_events.cpp:210
 msgid "Info: "
-msgstr ""
+msgstr "Informatio:"
 
 #: src/game_events.cpp:1195 src/multiplayer_connect.cpp:1585
 msgid "Victory:"
@@ -7459,9 +7425,8 @@ msgid ""
 msgstr ""
 
 #: src/generate_report.cpp:128
-#, fuzzy
 msgid "invisible: "
-msgstr "invisibilis: "
+msgstr "invisibil: "
 
 #: src/generate_report.cpp:129
 #, fuzzy
@@ -7583,7 +7548,7 @@ msgstr "Spectatores: "
 
 #: src/gui/dialogs/lobby_player_info.cpp:64
 msgid "In game:"
-msgstr ""
+msgstr "In ludo:"
 
 #: src/gui/dialogs/lobby_player_info.cpp:66
 msgid "(observing)"
@@ -7653,9 +7618,8 @@ msgid "Era:"
 msgstr "Aetas:"
 
 #: src/help.cpp:1277
-#, fuzzy
 msgid "Factions:"
-msgstr "Factio"
+msgstr "Factiones:"
 
 #: src/help.cpp:1287
 msgid "Factions are only used in multiplayer"
@@ -7774,14 +7738,12 @@ msgstr ""
 "<header>text='Probabilitas icti'</header>"
 
 #: src/help.cpp:2682 src/menu_events.cpp:567
-#, fuzzy
 msgid " < Back"
-msgstr " < Rursus"
+msgstr " < Anterior"
 
 #: src/help.cpp:2683
-#, fuzzy
 msgid "Forward >"
-msgstr "Proursus->"
+msgstr "Secundus >"
 
 #: src/help.cpp:2795
 #, fuzzy
@@ -7973,7 +7935,6 @@ msgid "Scroll To"
 msgstr ""
 
 #: src/menu_events.cpp:367
-#, fuzzy
 msgid "Leader"
 msgstr "Dux"
 
@@ -7982,9 +7943,8 @@ msgid "Team"
 msgstr "Manus"
 
 #: src/menu_events.cpp:369 src/multiplayer_connect.cpp:1003
-#, fuzzy
 msgid "Gold"
-msgstr "Aurum"
+msgstr "Aura"
 
 #: src/menu_events.cpp:370
 msgid "Villages"
@@ -8001,9 +7961,8 @@ msgstr "Impensa"
 
 #: src/menu_events.cpp:373 src/multiplayer_connect.cpp:1004
 #: src/multiplayer_wait.cpp:518
-#, fuzzy
 msgid "Income"
-msgstr "Merces"
+msgstr "Reditus"
 
 #: src/menu_events.cpp:474
 #, fuzzy
@@ -8091,7 +8050,6 @@ msgid "Chat Log"
 msgstr "Acta Colloquii"
 
 #: src/menu_events.cpp:632
-#, fuzzy
 msgid "Message:"
 msgstr "Nuntius: "
 
@@ -8106,11 +8064,10 @@ msgid "Send to observers only"
 msgstr "Mittere tantum sociis"
 
 #: src/menu_events.cpp:699
-#, fuzzy
 msgid "unit^Gold"
 msgid_plural "Gold"
-msgstr[0] "Nummis Auri"
-msgstr[1] "Nummis Auri"
+msgstr[0] "Aurum"
+msgstr[1] "Aura"
 
 #: src/menu_events.cpp:706
 #, fuzzy
@@ -8181,9 +8138,8 @@ msgid "Rename Unit"
 msgstr "Unitatem Renominare"
 
 #: src/menu_events.cpp:1437
-#, fuzzy
 msgid "Race"
-msgstr "scipio"
+msgstr ""
 
 #: src/menu_events.cpp:1461
 msgid "Create Unit (Debug!)"
@@ -8199,7 +8155,6 @@ msgid "Place Label"
 msgstr "Titulus Loci"
 
 #: src/menu_events.cpp:1553
-#, fuzzy
 msgid "Label: "
 msgstr "Titulus: "
 
@@ -8574,9 +8529,8 @@ msgid "prompt^Command:"
 msgstr "Imperium:"
 
 #: src/menu_events.cpp:3352
-#, fuzzy
 msgid "User-Command#3"
-msgstr "Imperii"
+msgstr ""
 
 #: src/mouse_events.cpp:712
 #, fuzzy
@@ -8682,37 +8636,32 @@ msgid "+"
 msgstr "+"
 
 #: src/multiplayer_connect.cpp:645
-#, fuzzy
 msgid "(Vacant slot)"
-msgstr "(Rima Vacua)"
+msgstr "(Locus vacua)"
 
 #: src/multiplayer_connect.cpp:653
-#, fuzzy
 msgid "Anonymous local player"
-msgstr "Lusor localis sine nomine"
+msgstr "Lusor localis anonymus"
 
 #: src/multiplayer_connect.cpp:666
 msgid "$playername $side"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:670
-#, fuzzy
 msgid "(Empty slot)"
-msgstr "(Rima vacua)"
+msgstr "(Locus inanis)"
 
 #: src/multiplayer_connect.cpp:677
 msgid "(Reserved for $playername)"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:682
-#, fuzzy
 msgid "(empty)"
-msgstr "Vacuus"
+msgstr "(inanis)"
 
 #: src/multiplayer_connect.cpp:792
-#, fuzzy
 msgid "Reserved"
-msgstr "Stagnum: "
+msgstr "Abstrusus"
 
 #: src/multiplayer_connect.cpp:793
 msgid "--give--"
@@ -8733,12 +8682,10 @@ msgid "Game Lobby: "
 msgstr "Atrium Ludi:"
 
 #: src/multiplayer_connect.cpp:999
-#, fuzzy
 msgid "Player/Type"
-msgstr "Lusor/Genus"
+msgstr "Lusor/Species"
 
 #: src/multiplayer_connect.cpp:1000
-#, fuzzy
 msgid "Faction"
 msgstr "Factio"
 
@@ -8751,7 +8698,6 @@ msgid "Color"
 msgstr "Color"
 
 #: src/multiplayer_connect.cpp:1006
-#, fuzzy
 msgid "I'm Ready"
 msgstr "Paratus Sum"
 
@@ -8766,19 +8712,16 @@ msgid "The scenario is invalid because it has no sides."
 msgstr "Missio invalida est quia non habet partes."
 
 #: src/multiplayer_connect.cpp:1413
-#, fuzzy
 msgid "Network Player"
 msgstr "Lusor ex Reti"
 
 #: src/multiplayer_connect.cpp:1415
-#, fuzzy
 msgid "Local Player"
 msgstr "Lusor Localis"
 
 #: src/multiplayer_connect.cpp:1416
-#, fuzzy
 msgid "Computer Player"
-msgstr "Lusor Computatri"
+msgstr "Lusor Ordinatralis"
 
 #: src/multiplayer_connect.cpp:1417
 msgid "Empty"
@@ -8830,9 +8773,8 @@ msgid "Random start time"
 msgstr "Charta fortuita (Hiems)"
 
 #: src/multiplayer_create.cpp:82
-#, fuzzy
 msgid "Fog Of War"
-msgstr "Caligo Belli"
+msgstr "Nebula Belli"
 
 #: src/multiplayer_create.cpp:84
 msgid "Observers"
@@ -8844,18 +8786,16 @@ msgid "Regenerate"
 msgstr "Regenera"
 
 #: src/multiplayer_create.cpp:88
-#, fuzzy
 msgid "Settings..."
-msgstr "Impostationes..."
+msgstr "Electiones..."
 
 #: src/multiplayer_create.cpp:89
 msgid "Set Password..."
 msgstr ""
 
 #: src/multiplayer_create.cpp:106
-#, fuzzy
 msgid "Load Game..."
-msgstr "Lusum Restituere"
+msgstr "Restitue Ludum..."
 
 #: src/multiplayer_create.cpp:142
 #, fuzzy
@@ -9058,11 +8998,11 @@ msgstr "Impostationes"
 
 #: src/multiplayer_lobby.cpp:732
 msgid "Quit"
-msgstr "Exi"
+msgstr "Exire"
 
 #: src/multiplayer_lobby.cpp:734
 msgid "Apply Filter"
-msgstr "Aptare Filtrum"
+msgstr "Filtrum Aptare"
 
 #: src/multiplayer_lobby.cpp:735
 msgid "Invert"
@@ -9646,19 +9586,16 @@ msgid "Skip"
 msgstr "Praeterire"
 
 #: src/terrain.cpp:153
-#, fuzzy
 msgid "Allied village"
-msgstr "Pagus socius"
+msgstr "Viculus socius"
 
 #: src/terrain.cpp:158
-#, fuzzy
 msgid "Enemy village"
-msgstr "Pagus inimicus"
+msgstr "Viculus inimicus"
 
 #: src/terrain.cpp:163
-#, fuzzy
 msgid "Owned village"
-msgstr "Pagus proprius"
+msgstr "Viculus proprius"
 
 #: src/theme.cpp:312
 msgid "border_size should be between 0.0 and 0.5."
@@ -9678,7 +9615,7 @@ msgstr "Plures Lusores"
 
 #: src/titlescreen.cpp:425
 msgid "TitleScreen button^Load"
-msgstr "Restitue"
+msgstr "Restituere"
 
 #: src/titlescreen.cpp:426
 msgid "TitleScreen button^Add-ons"
@@ -9694,7 +9631,7 @@ msgstr "Lingua"
 
 #: src/titlescreen.cpp:431
 msgid "TitleScreen button^Preferences"
-msgstr "Electi"
+msgstr "Electiones"
 
 #: src/titlescreen.cpp:432
 msgid "TitleScreen button^Credits"
@@ -9702,7 +9639,7 @@ msgstr "Agnitiones"
 
 #: src/titlescreen.cpp:433
 msgid "TitleScreen button^Quit"
-msgstr "Exi"
+msgstr "Exire"
 
 #: src/titlescreen.cpp:436
 msgid "TitleScreen button^Previous"
@@ -9718,7 +9655,7 @@ msgstr "Auxilium"
 
 #: src/titlescreen.cpp:440
 msgid "TitleScreen button^Help Wesnoth"
-msgstr "Auxilere Vesnotem"
+msgstr "Vesnotei Auxiliare"
 
 #: src/titlescreen.cpp:442
 msgid "Start a tutorial to familiarize yourself with the game"
@@ -9754,7 +9691,7 @@ msgstr "Muta linguam"
 
 #: src/titlescreen.cpp:451
 msgid "Configure the game's settings"
-msgstr "Muta electi ludi"
+msgstr "Muta electiones ludi"
 
 #: src/titlescreen.cpp:452
 msgid "View the credits"
@@ -9780,11 +9717,11 @@ msgstr "Census"
 
 #: src/titlescreen.cpp:515
 msgid "Help Wesnoth"
-msgstr "Auxilere Vesnotem"
+msgstr "Vesnotei Auxiliare"
 
 #: src/titlescreen.cpp:516
 msgid "Help Wesnoth by sending us information"
-msgstr "Auxiliere Vesnotem ab indiciis mittens"
+msgstr "Auxilia Vesnotei ab indiciis mittens"
 
 #: src/tod_manager.cpp:97 src/tod_manager.cpp:129 src/tod_manager.cpp:233
 #: src/tod_manager.cpp:246 src/tod_manager.cpp:296
