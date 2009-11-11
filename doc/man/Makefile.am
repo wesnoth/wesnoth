@@ -1,4 +1,4 @@
-MAN_LANG = cs da de en_GB es et fi fr gl hu it ja lt nl pl racv ru sk sr sr@latin sv tr zh_CN zh_TW
+MAN_LANG = af ar bg ca ca_ES@valencia cs da de el en_GB en@shaw es eo et eu fi fr fur_IT gl he hr hu id is it ja ko la lt lv mk mr nl nb_NO pl pt pt_BR racv ro ru sk sl sr sr@latin sv tl tr vi zh_CN zh_TW
 MAN_PAGES = wesnoth.6 wesnothd.6
 INSTALL_MAN_PAGES =
 
