@@ -53,6 +53,7 @@
 #include <boost/bind.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <boost/scoped_array.hpp>
+#include <boost/utility.hpp>
 #include <algorithm>
 #include <cassert>
 #include <cerrno>
@@ -1431,8 +1432,7 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 		for (wesnothd::player_map::const_iterator pl = players_.begin(); pl != players_.end(); ++pl) {
 			if (clones.find(network::ip_address(pl->first)) != clones.end()) continue;
 			bool found = false;
-			for (wesnothd::player_map::const_iterator clone = pl; clone != players_.end(); ++clone) {
-				if (pl->first == clone->first) continue;
+			for (wesnothd::player_map::const_iterator clone = boost::next(pl); clone != players_.end(); ++clone) {
 				if (network::ip_address(pl->first) == network::ip_address(clone->first)) {
 					if (!found) {
 						found = true;
