@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-11-02 12:29+0100\n"
-"PO-Revision-Date: 2009-06-19 12:16+0100\n"
+"PO-Revision-Date: 2009-11-10 13:58+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr "Syn Czarnego Oka"
 #. [campaign]: id=Son_Of_The_Black_Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:10
 msgid "SotBE"
-msgstr "SotBE"
+msgstr "SCzO"
 
 #. [campaign]: id=Son_Of_The_Black_Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:15
@@ -57,11 +57,10 @@ msgstr "Pogromca"
 #. [campaign]: id=Son_Of_The_Black_Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:22
 msgid "(Expert level, 18 scenarios.)"
-msgstr ""
+msgstr "(Poziom zaawansowany, 18 scenariuszy)"
 
 #. [campaign]: id=Son_Of_The_Black_Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:22
-#, fuzzy
 msgid ""
 "Your father Karun Black-Eye was the greatest orcish leader that ever lived. "
 "Now, as his son, it's up to you to thwart the selfish designs of the humans "
@@ -77,7 +76,6 @@ msgstr ""
 "plemiona orków, zwołaj Radę Orków i powołaj Wielką Hordę, by odesłać ludzkie "
 "robactwo i sprzymierzone z nim drzewoluby do Krainy Umarłych!\n"
 "\n"
-"(poziom zaawansowany, 18 scenariuszy)"
 
 #. [about]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:27
@@ -689,6 +687,9 @@ msgid ""
 "<span color='#00ff00'>Defeat the enemy leader</span> <small>(early finish "
 "bonus)</small>"
 msgstr ""
+"<span color='white'>Cel dodatkowy:</span>\n"
+"<span color='#00ff00'>Pokonaj przywódcę wroga</span> <small>(premia za "
+"wczesne zakończenie)</small>"
 
 #. [side]: type=Dwarvish Lord, id=Kwili
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:85
@@ -856,15 +857,14 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:278
-#, fuzzy
 msgid ""
 "<b>Bonus objective:</b>\n"
 "Defeat the enemy leader\n"
 "<span size='small'>(early finish bonus)</span>"
 msgstr ""
-"<255,255,255>Cel dodatkowy:\n"
-"@Pokonaj przywódcę wroga\n"
-"`(premia za wczesne zakończenie)"
+"<b>Cel dodatkowy:</b>\n"
+"Pokonaj przywódcę wroga\n"
+"<span size='small'>(premia za wczesne zakończenie)</span>"
 
 #. [objective]: condition=lose
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:286
@@ -1703,7 +1703,6 @@ msgstr "Czy szamani są bezpieczni?"
 
 #. [message]: speaker=Affman
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:296
-#, fuzzy
 msgid ""
 "When we realized that there was no way we could hold the humans off, we sent "
 "them east to a place near the Mourned Hills along with most of our women and "
@@ -2136,15 +2135,14 @@ msgstr ""
 
 #. [message]: speaker=Gork
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:165
-#, fuzzy
 msgid ""
 "It has not always been like this. A lot of hunters from the tribes used to "
 "hunt here and fish in the River Bork. But that all changed a few years ago. "
 "Now, few would enter here unless forced."
 msgstr ""
-"Nie zawsze tak tu było. Wielu plemiennych łowców kiedyś tam polowało i "
-"łowiło ryby w rzece Bork. Ale kilka lat temu coś się zmieniło i od tej pory "
-"nikt tam nie wchodzi z własnej woli."
+"Nie zawsze tak tu było. Wielu plemiennych łowców kiedyś tu polowało i łowiło "
+"ryby w rzece Bork. Ale kilka lat temu coś się zmieniło i od tej pory nikt "
+"tam nie wchodzi z własnej woli."
 
 #. [message]: speaker=Vraurk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:169
@@ -2207,7 +2205,7 @@ msgstr ""
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:223
 msgid "Now we're going to have some some answers out of you."
-msgstr ""
+msgstr "Teraz będziesz gadać."
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:228
@@ -2283,15 +2281,13 @@ msgstr ""
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:279
-#, fuzzy
 msgid "With pleasure. But what should I do with this weakling?"
-msgstr "Z przyjemnością. A co mam zrobić z tym tutaj?"
+msgstr "Z przyjemnością. A co mam zrobić z tym tutaj słabeuszem?"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:284
-#, fuzzy
 msgid "Behead it."
-msgstr "Pod topór z nim."
+msgstr "Pod topór."
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:289
@@ -2342,6 +2338,9 @@ msgid ""
 "<span color='#00ff00'>Defeat Shan Taum</span> <small>(early finish bonus)</"
 "small>"
 msgstr ""
+"<span color='white'>Cel alternatywny:</span>\n"
+"<span color='#00ff00'>Pokonaj Shan Tauma</span> <small>(premia za wczesne "
+"zakończenie)</small>"
 
 #. [side]: type=Orcish Warlord, id=Shan Taum
 #. [unit]: type=Orcish Warlord, id=Shan Taum
@@ -2605,7 +2604,6 @@ msgstr "Południowa Wieża"
 
 #. [message]: speaker=Plonk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:186
-#, fuzzy
 msgid ""
 "Reinforcements, at last! Whoever you are, you are welcome in Prestim! The "
 "fortified bridge over the River Bork was taken this morning by a small "
@@ -3041,9 +3039,8 @@ msgstr "Odwet"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:44
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:40
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:32
-#, fuzzy
 msgid "Death of Al'Brock"
-msgstr "Al'Brock"
+msgstr "Śmierć Al'Brocka"
 
 #. [objective]: condition=lose
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:37
@@ -3052,9 +3049,8 @@ msgstr "Al'Brock"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:48
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:44
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:36
-#, fuzzy
 msgid "Death of Flar'Tar"
-msgstr "Śmierć Inariksa"
+msgstr "Śmierć Flar'Tara"
 
 #. [objectives]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:45
@@ -3227,7 +3223,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:111
-#, fuzzy
 msgid ""
 "After a few weeks of putting down minor rebellions and clearing out the last "
 "human strongholds, the first snows of the long northern winter began to "
@@ -3269,7 +3264,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:126
-#, fuzzy
 msgid ""
 "Rushing to reach Borstep before the river froze up for the winter, the orcs "
 "sailed up the River Bork. Paddling day and night the horde barely managed to "
@@ -3392,7 +3386,6 @@ msgstr "Niech zapłacą za rzeź naszego ludu. Krew i stal!"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:315
-#, fuzzy
 msgid "Victory...Grüü, what <i>is</i> that you are eating?"
 msgstr "Zwycięstwo... Grüü, co ty u licha jesz?"
 
@@ -3689,9 +3682,8 @@ msgstr "Nie kłamię. Ich zamarznięte zwłoki znajdziecie tam, w jeziorze."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:683
-#, fuzzy
 msgid "We had better go look."
-msgstr "Idź sprawdzić."
+msgstr "Lepiej to sprawdźmy."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:689
@@ -3902,12 +3894,11 @@ msgstr "Właśnie!"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:258
-#, fuzzy
 msgid ""
 "It's been a chilly winter. How about we warm ourselves up a bit by giving "
 "these traitors a good whupping, boys?"
 msgstr ""
-"Zima była ostra w tym roku. Co wy na to, żeby na rozgrzewkę spuścić łomot "
+"Zima była chłodna w tym roku. Co wy na to, żeby na rozgrzewkę spuścić łomot "
 "tym zdrajcom, chłopaki?"
 
 #. [message]: speaker=Grüü
