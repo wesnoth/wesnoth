@@ -56,14 +56,25 @@ config candidate_action_evaluation_loop::to_config() const
 	return cfg;
 }
 
+
+class desc_sorter_of_candidate_actions {
+public:
+	bool operator()(const candidate_action_ptr &a, const candidate_action_ptr &b)
+	{
+		return a->get_max_score() > b->get_max_score();
+	}
+};
+
 bool candidate_action_evaluation_loop::do_play_stage()
 {
 	LOG_AI_TESTING_RCA_DEFAULT << "Starting candidate action evaluation loop for side "<< get_side() << std::endl;
-	const static double STOP_VALUE = 0;
 
 	foreach(candidate_action_ptr ca, candidate_actions_){
 		ca->enable();
 	}
+
+	//sort candidate actions by max_score DESC
+	std::sort(candidate_actions_.begin(),candidate_actions_.end(),desc_sorter_of_candidate_actions());
 
 	bool executed = false;
 	bool gamestate_changed = false;
@@ -79,9 +90,13 @@ bool candidate_action_evaluation_loop::do_play_stage()
 				continue;
 			}
 
-			double score = STOP_VALUE;
+			if (ca_ptr->get_max_score()<=best_score) {
+				DBG_AI_TESTING_RCA_DEFAULT << "Ending candidate action evaluation loop because current score "<<best_score<<" is greater than the upper bound of score for remaining candidate actions "<< ca_ptr->get_max_score()<< std::endl;
+				break;
+			}
+
 			DBG_AI_TESTING_RCA_DEFAULT << "Evaluating candidate action: "<< *ca_ptr << std::endl;
-			score = ca_ptr->evaluate();
+			double score = ca_ptr->evaluate();
 			DBG_AI_TESTING_RCA_DEFAULT << "Evaluated candidate action to score "<< score << " : " << *ca_ptr << std::endl;
 
 			if (score>best_score) {

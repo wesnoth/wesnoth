@@ -44,6 +44,9 @@ public:
 	//this is a score guaranteed to be <=0, thus candidate action with this score will not be selected for execution
 	static const double BAD_SCORE;
 
+	//this is a score guaranteed to be very high, higher than any 'normal' candidate action score
+	static const double HIGH_SCORE;
+
 	/**
 	 * Constructor
 	 * @param ai context of the candidate action
@@ -87,9 +90,15 @@ public:
 	void disable();
 
 	/**
-	 * Get the last score of the candidate action without re-evaluation
+	 * Get the usual score of the candidate action without re-evaluation
 	 */
 	double get_score() const;
+
+
+	/**
+	 * Get the upper bound of the score of the candidate action without re-evaluation
+	 */
+	double get_max_score() const;
 
 	/**
 	 * Get the name of the candidate action (useful for debug purposes)
@@ -119,6 +128,8 @@ private:
 	std::string engine_;
 
 	double score_;
+
+	double max_score_;
 
 	std::string name_;
 
