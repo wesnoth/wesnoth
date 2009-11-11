@@ -827,6 +827,7 @@ void server::run() {
 			}
 
 			players_.erase(pl_it);
+			ghost_players_.erase(e.socket);
 			if (lan_server_)
 			{
 				last_user_seen_time_ = time(0);
