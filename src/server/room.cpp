@@ -15,7 +15,6 @@
 #include "game.hpp"
 #include "player_network.hpp"
 #include "room.hpp"
-#include "../foreach.hpp"
 #include "../log.hpp"
 
 static lg::log_domain log_server("server");
