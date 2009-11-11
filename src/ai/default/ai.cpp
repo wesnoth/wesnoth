@@ -622,6 +622,8 @@ void ai_default::evaluate_recruiting_value(const map_location &leader_loc)
 	if (recruiting_preferred_ == 2)
 	{
 		recruiting_preferred_ = 0;
+		//give a learder a chance to fight
+		consider_combat_ = true;
 		return;
 	}
 	if (get_number_of_possible_recruits_to_force_recruit()< 0.01f)
@@ -645,6 +647,10 @@ void ai_default::evaluate_recruiting_value(const map_location &leader_loc)
                }
 	}
 	recruiting_preferred_ = (gold/unit_price) - free_slots > get_number_of_possible_recruits_to_force_recruit();
+	if (recruiting_preferred_==0) {
+		//give a learder a chance to fight
+		consider_combat_ = true;
+	}
 	DBG_AI << "recruiting preferred: " << (recruiting_preferred_?"yes":"no") <<
 		" units to recruit: " << (gold/unit_price) <<
 		" unit_price: " << unit_price <<
