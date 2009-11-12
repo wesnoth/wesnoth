@@ -137,7 +137,7 @@ static std::string do_interpolation(const std::string &str, const variable_set& 
 					break;
 				}
 			}
-			else if(!isdigit(c) && !isalpha(c) && c != '.' && c != '_') {
+			else if (!isascii(c) || (!isalnum(c) && c != '.' && c != '_')) {
 				break;
 			}
 		}
