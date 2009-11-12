@@ -82,18 +82,15 @@ struct text_chunk
 {
 	text_chunk(subset_id subset) :
 		subset(subset),
-		text(),
-		ucs2_text()
+		text()
 	{
 	}
 
-	bool operator==(text_chunk const & t) const { return subset == t.subset && ucs2_text == t.ucs2_text; }
+	bool operator==(text_chunk const & t) const { return subset == t.subset && text == t.text; }
 	bool operator!=(text_chunk const & t) const { return !operator==(t); }
 
 	subset_id subset;
-	//FIXME if we don't need the utf8 here remove it
 	std::string text;
-	ucs2_string ucs2_text;
 };
 
 std::vector<subset_id> font_map;
@@ -123,14 +120,10 @@ static std::vector<text_chunk> split_text(std::string const & utf8_text) {
 			if(size_t(*ch) < font_map.size() &&
 					font_map[size_t(*ch)] >= 0 &&
 					font_map[size_t(*ch)] != current_chunk.subset) {
-				//null-terminate ucs2_text so we can pass it to SDL_ttf later
-				current_chunk.ucs2_text.push_back(0);
 				chunks.push_back(current_chunk);
-				current_chunk.text = "";
-				current_chunk.ucs2_text.clear();
+				current_chunk.text.clear();
 				current_chunk.subset = font_map[size_t(*ch)];
 			}
-			current_chunk.ucs2_text.push_back(static_cast<Uint16>(*ch));
 			current_chunk.text.append(ch.substr().first, ch.substr().second);
 		}
 		if (!current_chunk.text.empty()) {
@@ -535,23 +528,15 @@ void text_surface::measure() const
 	w_ = 0;
 	h_ = 0;
 
-	for(std::vector<text_chunk>::iterator itor = chunks_.begin();
-			itor != chunks_.end(); ++itor) {
-
-		TTF_Font* ttfont = get_font(font_id(itor->subset, font_size_));
+	foreach (text_chunk const &chunk, chunks_)
+	{
+		TTF_Font* ttfont = get_font(font_id(chunk.subset, font_size_));
 		if(ttfont == NULL)
 			continue;
 		font_style_setter const style_setter(ttfont, style_);
 
-		int w;
-		int h;
-
-		if(itor->ucs2_text.back() != 0) {
-			itor->ucs2_text.push_back(0);
-		}
-
-		TTF_SizeUNICODE(ttfont,
-			static_cast<Uint16 const *>(&(itor->ucs2_text.front())), &w, &h);
+		int w, h;
+		TTF_SizeUTF8(ttfont, chunk.text.c_str(), &w, &h);
 		w_ += w;
 		h_ = std::max<int>(h_, h);
 	}
@@ -589,15 +574,14 @@ std::vector<surface> const &text_surface::get_surfaces() const
 	if(width() > max_text_line_width)
 		return surfs_;
 
-	for(std::vector<text_chunk>::const_iterator itor = chunks_.begin();
-			itor != chunks_.end(); ++itor) {
-		TTF_Font* ttfont = get_font(font_id(itor->subset, font_size_));
+	foreach (text_chunk const &chunk, chunks_)
+	{
+		TTF_Font* ttfont = get_font(font_id(chunk.subset, font_size_));
 		if (ttfont == NULL)
 			continue;
 		font_style_setter const style_setter(ttfont, style_);
 
-		surface s = surface(TTF_RenderUNICODE_Blended(ttfont,
-			static_cast<Uint16 const *>(&(itor->ucs2_text.front())), color_));
+		surface s = surface(TTF_RenderUTF8_Blended(ttfont, chunk.text.c_str(), color_));
 		if(!s.null())
 			surfs_.push_back(s);
 	}
