@@ -403,6 +403,7 @@ bool ai_default_recruitment_stage::recruit_usage(const std::string& usage)
 
 
 			std::map<std::string,int>::iterator imc = maximum_counts_.find(name);
+
 			if (imc != maximum_counts_.end()) {
 				int count_active = 0;
 				for (unit_map::iterator u = get_info().units.begin(); u != get_info().units.end(); u++) {
@@ -1410,6 +1411,7 @@ ai_default_recruitment_stage::ai_default_recruitment_stage(ai_context &context, 
 	  best_usage_(),
 	  unit_movement_scores_(),
 	  not_recommended_units_(),
+	  maximum_counts_(),
 	  unit_combat_scores_(),
 	  recall_list_scores_()
 {

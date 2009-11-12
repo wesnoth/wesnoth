@@ -83,9 +83,9 @@ private:
 
 	std::set<std::string> not_recommended_units_;
 
-	std::map<std::string,int> unit_combat_scores_;
-
 	std::map<std::string,int> maximum_counts_;
+
+	std::map<std::string,int> unit_combat_scores_;
 
 	std::vector<std::pair<std::string,double> > recall_list_scores_;
 
