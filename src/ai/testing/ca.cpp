@@ -128,9 +128,8 @@ double aspect_recruitment_phase::evaluate()
 		return BAD_SCORE;
 	}
 
-	std::set<map_location> checked_hexes;
-	checked_hexes.insert(leader->first);
-	if(count_free_hexes_in_castle(leader->first, checked_hexes)==0) {
+	map_location recruit_loc = find_vacant_tile(get_info().map, get_info().units, leader->first, VACANT_CASTLE);
+	if (!get_info().map.on_board(recruit_loc)) {
 		return BAD_SCORE;
 	}
 
