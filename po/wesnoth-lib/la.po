@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-11-09 18:26+0100\n"
-"PO-Revision-Date: 2009-11-11 02:50-0500\n"
+"PO-Revision-Date: 2009-11-12 00:39-0500\n"
 "Last-Translator: Michael Babich (Aethaeryn) <michaelbabich7@gmail.com>\n"
 "Language-Team: Latin\n"
 "MIME-Version: 1.0\n"
@@ -143,12 +143,12 @@ msgstr "Arx Dryadalum"
 #. [terrain_type]: id=ruined_keep
 #: data/core/terrain.cfg:321
 msgid "Ruined Castle Keep"
-msgstr ""
+msgstr "Arx Castelli Rutus"
 
 #. [terrain_type]: id=sunken_keep
 #: data/core/terrain.cfg:334
 msgid "Sunken Castle Keep"
-msgstr ""
+msgstr "Arx Castelli Summersus"
 
 #. [terrain_type]: id=crater
 #: data/core/terrain.cfg:387
@@ -221,42 +221,42 @@ msgstr "Silva Tropica"
 #. [terrain_type]: id=deciduous_forest_summer
 #: data/core/terrain.cfg:484
 msgid "Summer Deciduous Forest"
-msgstr ""
+msgstr "Silva Aestiva Decidua"
 
 #. [terrain_type]: id=deciduous_forest_fall
 #: data/core/terrain.cfg:495
 msgid "Fall Deciduous Forest"
-msgstr ""
+msgstr "Silva Autumna Decidua"
 
 #. [terrain_type]: id=deciduous_forest_winter
 #: data/core/terrain.cfg:506
 msgid "Winter Deciduous Forest"
-msgstr ""
+msgstr "Silva Hiberna Decidua"
 
 #. [terrain_type]: id=deciduous_forest_winter_snow
 #: data/core/terrain.cfg:517
 msgid "Snowy Deciduous Forest"
-msgstr ""
+msgstr "Silva Nivosa Decidua"
 
 #. [terrain_type]: id=mixed_forest_summer
 #: data/core/terrain.cfg:529
 msgid "Summer Mixed Forest"
-msgstr ""
+msgstr "Multigener Silvae Aestivae"
 
 #. [terrain_type]: id=mixed_forest_fall
 #: data/core/terrain.cfg:540
 msgid "Fall Mixed Forest"
-msgstr ""
+msgstr "Multigener Silvae Autumnae"
 
 #. [terrain_type]: id=mixed_forest_winter
 #: data/core/terrain.cfg:551
 msgid "Winter Mixed Forest"
-msgstr ""
+msgstr "Multigener Silvae Hibernae"
 
 #. [terrain_type]: id=mixed_forest_winter_snow
 #: data/core/terrain.cfg:562
 msgid "Snowy Mixed Forest"
-msgstr ""
+msgstr "Multigener Silvae Nivosae"
 
 #. [terrain_type]: id=forested_hills
 #. [terrain_type]: id=deciduous_forest_summer_hills
@@ -270,7 +270,7 @@ msgstr ""
 #: data/core/terrain.cfg:641 data/core/terrain.cfg:652
 #: data/core/terrain.cfg:662
 msgid "Forested Hills"
-msgstr ""
+msgstr "Colles Silvestes"
 
 #. [terrain_type]: id=forested_snow_hills
 #. [terrain_type]: id=deciduous_forest_winter_snow_hills
@@ -278,42 +278,42 @@ msgstr ""
 #: data/core/terrain.cfg:587 data/core/terrain.cfg:630
 #: data/core/terrain.cfg:673
 msgid "Forested Snow Hills"
-msgstr ""
+msgstr "Colles Silvestes Nivosi"
 
 #. [terrain_type]: id=deciduous_forest_summer_hills
 #: data/core/terrain.cfg:598
 msgid "Summer Deciduous Forested Hills"
-msgstr ""
+msgstr "Colles Silvestes Aestivi Decidui"
 
 #. [terrain_type]: id=deciduous_forest_fall_hills
 #: data/core/terrain.cfg:609
 msgid "Fall Deciduous Forested Hills"
-msgstr ""
+msgstr "Colles Silvestes Autumni Decidui"
 
 #. [terrain_type]: id=deciduous_forest_winter_hills
 #: data/core/terrain.cfg:620
 msgid "Winter Deciduous Forested Hills"
-msgstr ""
+msgstr "Colles Silvestes Hiberni Decidui"
 
 #. [terrain_type]: id=deciduous_forest_winter_snow_hills
 #: data/core/terrain.cfg:631
 msgid "Snowy Deciduous Forested Hills"
-msgstr ""
+msgstr "Colles Silvestes Nivosi Decidui"
 
 #. [terrain_type]: id=mixed_forest_summer_hills
 #: data/core/terrain.cfg:642
 msgid "Summer Mixed Forested Hills"
-msgstr ""
+msgstr "Colles Silvestium Aestivorum Multigenes"
 
 #. [terrain_type]: id=mixed_forest_winter_hills
 #: data/core/terrain.cfg:663
 msgid "Winter Mixed Forested Hills"
-msgstr ""
+msgstr "Colles Silvestium Hibernarum Multigenes"
 
 #. [terrain_type]: id=mixed_forest_winter_snow_hills
 #: data/core/terrain.cfg:674
 msgid "Snowy Mixed Forested Hills"
-msgstr ""
+msgstr "Colles Silvestium Nivosorum Multigenes"
 
 #. [terrain_type]: id=grassland
 #. [terrain_type]: id=grassland_flowers
@@ -505,7 +505,7 @@ msgstr "Montes Inexsuperabiles"
 #. [terrain_type]: id=clouddesert
 #: data/core/terrain.cfg:1376
 msgid "Impassable Desert Mountains"
-msgstr ""
+msgstr "Montes Impervii Desertorum"
 
 #. [terrain_type]: id=cavewall
 #: data/core/terrain.cfg:1385
@@ -541,7 +541,7 @@ msgstr "Glacialis"
 #. [terrain_type]: id=unwalkable
 #: data/core/terrain.cfg:1449
 msgid "Unwalkable"
-msgstr ""
+msgstr "Nonterra"
 
 #. [label]
 #. [column]
@@ -659,21 +659,18 @@ msgstr "Chartam Novam Generare"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:110
-#, fuzzy
 msgid "New Map"
 msgstr "Charta Nova"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_new_map.cfg:46 src/mapgen_dialog.cpp:120
-#, fuzzy
 msgid "Width:"
 msgstr "Amplitudo: "
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_new_map.cfg:73 src/mapgen_dialog.cpp:121
-#, fuzzy
 msgid "Height:"
 msgstr "Altitudo: "
 
@@ -693,27 +690,23 @@ msgstr "Magnitudinem Chartae Mutare"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:46
-#, fuzzy
 msgid "New width:"
-msgstr "Amplitudo: "
+msgstr "Amplitudo nova: "
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:70
-#, fuzzy
 msgid "Old width:"
-msgstr "Amplitudo: "
+msgstr "Amplitudo antica: "
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:95
-#, fuzzy
 msgid "New height:"
-msgstr "Altitudo: "
+msgstr "Altitudo nova: "
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:119
-#, fuzzy
 msgid "Old height:"
-msgstr "Altitudo: "
+msgstr "Altitudo antica: "
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:147
@@ -1326,9 +1319,8 @@ msgstr ""
 #. [button]: id=remove
 #: data/gui/default/window/mp_cmd_wrapper.cfg:192
 #: src/game_preferences_display.cpp:176
-#, fuzzy
 msgid "Remove"
-msgstr "Factum Reddere"
+msgstr "Summovere"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:233
@@ -1347,9 +1339,8 @@ msgstr "Tempus:"
 
 #. [button]: id=status
 #: data/gui/default/window/mp_cmd_wrapper.cfg:366
-#, fuzzy
 msgid "Status"
-msgstr "Index Statuum"
+msgstr "Status"
 
 #. [button]: id=ban
 #: data/gui/default/window/mp_cmd_wrapper.cfg:396
@@ -1360,20 +1351,19 @@ msgstr "Bannium"
 #: data/gui/default/window/mp_connect.cfg:50
 #: data/gui/default/window/mp_server_list.cfg:61
 msgid "You will now connect to the multiplayer server."
-msgstr ""
+msgstr "Credentario plurum lusorum nunc adplicabis."
 
 #. [button]: id=list
 #: data/gui/default/window/mp_connect.cfg:148
-#, fuzzy
 msgid "View List"
-msgstr "Index Unitatum"
+msgstr "Inventarium Videre"
 
 #. [label]
 #. [text_box]: id=game_name
 #: data/gui/default/window/mp_create_game.cfg:62
 #: data/gui/default/window/mp_create_game.cfg:77
 msgid "Name of game:"
-msgstr ""
+msgstr "Nomen ludi:"
 
 #. [label]: id=map_players
 #: data/gui/default/window/mp_create_game.cfg:140
@@ -1528,13 +1518,12 @@ msgstr ""
 #. [label]: id=address
 #: data/gui/default/window/mp_server_list.cfg:113
 msgid "Address"
-msgstr ""
+msgstr "Locus"
 
 #. [button]: id=ok
 #: data/gui/default/window/mp_server_list.cfg:215
-#, fuzzy
 msgid "Select"
-msgstr "Omnia Eligere"
+msgstr "Eligere"
 
 #. [button]: id=previous_tip
 #: data/gui/default/window/title_screen.cfg:124
@@ -1556,7 +1545,7 @@ msgstr "Militiae"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:185
 msgid "Load"
-msgstr ""
+msgstr "Restituere"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:186
@@ -1605,7 +1594,7 @@ msgstr "Chartam Novam Generare"
 #. [label]: id=race
 #: data/gui/default/window/unit_create.cfg:126
 msgid "Race"
-msgstr ""
+msgstr "Stirps"
 
 #: src/filechooser.cpp:74
 msgid "File: "
@@ -1618,7 +1607,7 @@ msgstr "Pligam Delere"
 
 #: src/filechooser.cpp:79 src/filechooser.cpp:204
 msgid "New Folder"
-msgstr ""
+msgstr "Collectorium Novum"
 
 #: src/filechooser.cpp:192
 #, fuzzy
@@ -1751,9 +1740,8 @@ msgid "Change Resolution"
 msgstr "Resolutionem Eligere"
 
 #: src/game_preferences_display.cpp:184
-#, fuzzy
 msgid "Theme"
-msgstr "Modus Visivus"
+msgstr "Thema"
 
 #: src/game_preferences_display.cpp:185
 #, fuzzy
@@ -2211,11 +2199,11 @@ msgstr ""
 
 #: src/gui/dialogs/game_load.cpp:232
 msgid "#(Invalid)"
-msgstr ""
+msgstr "#(Irritus)"
 
 #: src/gui/dialogs/game_load.cpp:252
 msgid "Campaign: $campaign_name"
-msgstr ""
+msgstr "Militia: $campaign_name"
 
 #: src/gui/dialogs/game_load.cpp:271
 msgid "replay"
@@ -2240,11 +2228,11 @@ msgstr "Versio:"
 
 #: src/gui/dialogs/lobby_main.cpp:404
 msgid "Observers allowed"
-msgstr ""
+msgstr "Spectatores concessi"
 
 #: src/gui/dialogs/lobby_main.cpp:407
 msgid "Observers not allowed"
-msgstr ""
+msgstr "Spectatores inconcessi"
 
 #: src/gui/dialogs/lobby_main.cpp:689
 msgid ""
@@ -2269,9 +2257,8 @@ msgid "Password: "
 msgstr "Verbum Absconditum:"
 
 #: src/gui/dialogs/message.cpp:191
-#, fuzzy
 msgid "Error"
-msgstr "Mendum"
+msgstr "Erratum"
 
 #: src/gui/dialogs/mp_create_game.cpp:76
 msgid "Load Game..."
@@ -2405,9 +2392,8 @@ msgid "Save Map"
 msgstr "Chartam Servare"
 
 #: src/hotkeys.cpp:67
-#, fuzzy
 msgid "Recruit"
-msgstr "Conscribere"
+msgstr "Adlegere"
 
 #: src/hotkeys.cpp:68
 #, fuzzy
@@ -2415,7 +2401,6 @@ msgid "Repeat Recruit"
 msgstr "Rursus Conscribere"
 
 #: src/hotkeys.cpp:69
-#, fuzzy
 msgid "Recall"
 msgstr "Revocare"
 
