@@ -937,6 +937,8 @@ surface floating_label::create_surface()
 		font::ttext text;
 		text.set_foreground_colour((colour_.r << 24) | (colour_.g << 16) | (colour_.b << 8) | 255);
 		text.set_font_size(font_size_);
+		text.set_maximum_width(clip_rect_.w);
+		text.set_maximum_height(clip_rect_.h);
 		text.set_text(text_, use_markup_);
 		surface foreground = text.render();
 
