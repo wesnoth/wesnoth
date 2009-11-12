@@ -1313,7 +1313,8 @@ void game_display::add_chat_message(const time_t& time, const std::string& speak
 
 	int ypos = chat_message_x;
 	for(std::vector<chat_message>::const_iterator m = chat_messages_.begin(); m != chat_messages_.end(); ++m) {
-		ypos += font::get_floating_label_rect(m->handle).h;
+		ypos += std::max(font::get_floating_label_rect(m->handle).h,
+			font::get_floating_label_rect(m->speaker_handle).h);
 	}
 	SDL_Color speaker_colour = {255,255,255,255};
 	if(side >= 1) {
