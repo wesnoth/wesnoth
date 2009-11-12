@@ -147,34 +147,36 @@ static void wesnoth_setlocale(int category, std::string const &slocale,
 	locale = win_locale;
 #endif
 
-	std::string extra;
-
 	char *res = NULL;
 	std::vector<std::string>::const_iterator i;
 	if (alternates) i = alternates->begin();
 
 	for (;;)
 	{
-		res = std::setlocale(category, locale.c_str());
-		if (res) break;
+		std::string lang = locale, extra;
+		std::string::size_type pos = locale.find('@');
+		if (pos != std::string::npos) {
+			lang.erase(pos);
+			extra = locale.substr(pos);
+		}
 
-		std::string utf8 = locale + ".utf-8";
-		res = std::setlocale(category, utf8.c_str());
-		if (res) break;
-
-		utf8 = locale + ".UTF-8";
-		res = std::setlocale(category, utf8.c_str());
-		if (res) break;
+		char const *encoding[] = { "", ".utf-8", ".UTF-8" };
+		for (int j = 0; j != 3; ++j)
+		{
+			locale = lang + encoding[j] + extra;
+			res = std::setlocale(category, locale.c_str());
+			if (res) {
+				LOG_G << "Set locale to '" << locale << "' result: '" << res << "'.\n";
+				goto done;
+			}
+		}
 
 		if (!alternates || i == alternates->end()) break;
-		locale = *i + extra;
+		locale = *i;
 		++i;
 	}
 
-	if (res)
-		LOG_G << "Set locale to '" << locale << "' result: '" << res <<"'.\n";
-	else {
-		WRN_G << "setlocale() failed for '" << slocale << "'.\n";
+	WRN_G << "setlocale() failed for '" << slocale << "'.\n";
 #ifndef _WIN32
 #ifndef __AMIGAOS4__
 		if(category == LC_MESSAGES) {
@@ -184,8 +186,8 @@ static void wesnoth_setlocale(int category, std::string const &slocale,
 		}
 #endif
 #endif
-	}
 
+	done:
 	DBG_G << "Numeric locale: " << std::setlocale(LC_NUMERIC, NULL) << '\n';
 	DBG_G << "Full locale: " << std::setlocale(LC_ALL, NULL) << '\n';
 }
