@@ -2281,7 +2281,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 	bool redraw = false;
 
 	// Show messages on the screen here
-	if(discovered_unit) {
+	if (discovered_unit && !disp.fogged(steps.back())) {
 		if (ambushed_string.empty())
 			ambushed_string = _("Ambushed!");
 		// We've been ambushed, display an appropriate message
