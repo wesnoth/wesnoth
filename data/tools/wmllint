@@ -453,9 +453,12 @@ linechanges = (
         # Changed just after 1.7 fork
         ("[stone]", "[petrify]"),
         ("[unstone]", "[unpetrify]"),
+        ("[/stone]", "[/petrify]"),
+        ("[/unstone]", "[/unpetrify]"),
         ("WEAPON_SPECIAL_STONE", "WEAPON_SPECIAL_PETRIFY"),
         ("SPECIAL_NOTE_STONE", "SPECIAL_NOTE_PETRIFY"),
         (".stoned", ".petrified"),
+        ("stoned=", "petrified="),
         # Changed at rev 37390
         ("swing=", "second_value="),
         # Changed just before 1.7.3
