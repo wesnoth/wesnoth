@@ -699,7 +699,7 @@ void playsingle_controller::linger(upload_log& log)
 	set_completion setter(gamestate_,"running");
 
 	// change the end-turn button text to its alternate label
-	gui_->get_theme().refresh_title2(std::string("button-endturn"), std::string("title2"));
+	gui_->get_theme().refresh_title2("button-endturn", "title2");
 	gui_->invalidate_theme();
 	gui_->redraw_everything();
 
@@ -727,7 +727,7 @@ void playsingle_controller::linger(upload_log& log)
 	}
 
 	// revert the end-turn button text to its normal label
-	gui_->get_theme().refresh_title2(std::string("button-endturn"), std::string("title"));
+	gui_->get_theme().refresh_title2("button-endturn", "title");
 	gui_->invalidate_theme();
 	gui_->redraw_everything();
 	gui_->set_game_mode(game_display::RUNNING);

@@ -298,7 +298,7 @@ void playmp_controller::set_end_scenario_button()
 		gui::button* btn_end = gui_->find_button("button-endturn");
 		btn_end->enable(false);
 	}
-	gui_->get_theme().refresh_title("button-endturn", _("End scenario"));
+	gui_->get_theme().refresh_title2("button-endturn", "title2");
 	gui_->invalidate_theme();
 	gui_->redraw_everything();
 }
