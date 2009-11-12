@@ -50,8 +50,6 @@ cave_map_generator::cave_map_generator(const config &cfg) :
 {
 	width_ = atoi(cfg_["map_width"].c_str());
 	height_ = atoi(cfg_["map_height"].c_str());
-	width_ += 2 * gamemap::default_border;
-	height_ += 2 * gamemap::default_border;
 
 	village_density_ = atoi(cfg_["village_density"].c_str());
 
@@ -95,7 +93,8 @@ std::string cave_map_generator::create_map(const std::vector<std::string>& args)
 
 config cave_map_generator::create_scenario(const std::vector<std::string>& /*args*/)
 {
-	map_ = t_translation::t_map(width_, t_translation::t_list(height_, wall_));
+	map_ = t_translation::t_map(width_ + 2 * gamemap::default_border,
+		t_translation::t_list(height_ + 2 * gamemap::default_border, wall_));
 	chambers_.clear();
 	passages_.clear();
 
@@ -238,8 +237,7 @@ void cave_map_generator::place_chamber(const chamber& c)
 		std::set<map_location>::const_iterator loc = c.locs.begin();
 		std::advance(loc,index);
 
-		char xbuf[50];
-		snprintf(xbuf,sizeof(xbuf),"%d",loc->x+1);
+		std::string xbuf = str_cast(loc->x + 1);
 		cfg["x"] = xbuf;
 		if (filter) {
 			filter["x"] = xbuf;
@@ -249,8 +247,7 @@ void cave_map_generator::place_chamber(const chamber& c)
 			(*object_filter)["x"] = xbuf;
 		}
 
-		char ybuf[50];
-		snprintf(ybuf,sizeof(ybuf),"%d",loc->y+1);
+		std::string ybuf = str_cast(loc->y + 1);
 		cfg["y"] = ybuf;
 		if (filter) {
 			filter["y"] = ybuf;
@@ -297,11 +294,8 @@ private:
 
 double passage_path_calculator::cost(const map_location& loc, const double) const
 {
-	assert(loc.x >= 0 && loc.y >= 0 && size_t(loc.x) < map_.size() &&
-	        !map_.empty() && size_t(loc.y) < map_.front().size());
-
 	double res = 1.0;
-	if(map_[loc.x][loc.y] == wall_) {
+	if (map_[loc.x + gamemap::default_border][loc.y + gamemap::default_border] == wall_) {
 		res = laziness_;
 	}
 
@@ -342,14 +336,12 @@ void cave_map_generator::place_passage(const passage& p)
 
 void cave_map_generator::set_terrain(map_location loc, t_translation::t_terrain t)
 {
-	if(on_board(loc)) {
-		if(t == clear_ &&
-                (rand() % 1000) < static_cast<long>(village_density_)) {
-
+	if (on_board(loc)) {
+		if (t == clear_ && (rand() % 1000) < village_density_) {
 			t = village_;
 		}
 
-		t_translation::t_terrain& c = map_[loc.x][loc.y];
+		t_translation::t_terrain& c = map_[loc.x + gamemap::default_border][loc.y + gamemap::default_border];
 		if(c == clear_ || c == wall_ || c == village_) {
 			c = t;
 		}
@@ -362,7 +354,8 @@ void cave_map_generator::place_castle(const std::string& side, map_location loc)
 	if(starting_position != -1) {
 		set_terrain(loc, keep_);
 
-		const struct t_translation::coordinate coord = {loc.x, loc.y};
+		t_translation::coordinate coord =
+			{ loc.x + gamemap::default_border, loc.y + gamemap::default_border };
 		starting_positions_[starting_position] = coord;
 	}
 

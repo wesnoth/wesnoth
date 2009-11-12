@@ -68,12 +68,9 @@ private:
 
 	void place_passage(const passage& p);
 
-	// Note we assume a border size of 1.
 	bool on_board(const map_location& loc) const
 	{
-		return loc.x > 0 && loc.y > 0 &&
-			loc.x < static_cast<long>(width_ - 2) &&
-			loc.y < static_cast<long>(height_ - 2);
+		return loc.x >= 0 && loc.y >= 0 && loc.x < width_ && loc.y < height_;
 	}
 
 	void set_terrain(map_location loc, t_translation::t_terrain t);
@@ -89,7 +86,7 @@ private:
 
 	config res_;
 	config cfg_;
-	size_t width_, height_, village_density_;
+	int width_, height_, village_density_;
 
 	// The scenario may have a chance to flip all x values or y values
 	// to make the scenario appear all random. This is kept track of here.
