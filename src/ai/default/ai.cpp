@@ -339,11 +339,22 @@ config ai_default::to_config() const
 
 void ai_default_recruitment_stage::on_create() {
 	stage::on_create();
+	foreach (const config &c, cfg_.child_range("limit")) {
+		if (c.has_attribute("type") && c.has_attribute("max") ) {
+			maximum_counts_.insert(std::make_pair(c["type"],lexical_cast_default<int>(c["max"],0)));
+		}
+	}
 }
 
 config ai_default_recruitment_stage::to_config() const
 {
 	config cfg = stage::to_config();
+	for (std::map<std::string,int>::const_iterator i = maximum_counts_.begin(); i!= maximum_counts_.end(); ++i) {
+		config lim;
+		lim["type"] = i->first;
+		lim["max"] = str_cast(i->second);
+		cfg.add_child("limit",lim);
+	}
 	return cfg;
 }
 
@@ -388,6 +399,22 @@ bool ai_default_recruitment_stage::recruit_usage(const std::string& usage)
 			{
 				LOG_AI << name << " rejected, bad terrain or combat\n";
 				continue;
+			}
+
+
+			std::map<std::string,int>::iterator imc = maximum_counts_.find(name);
+			if (imc != maximum_counts_.end()) {
+				int count_active = 0;
+				for (unit_map::iterator u = get_info().units.begin(); u != get_info().units.end(); u++) {
+					if ((u->second.side()==get_side()) && (!u->second.incapacitated()) && (u->second.type_id() == name)) {
+						count_active++;
+					}
+				}
+
+				if (count_active >= imc->second) {
+					LOG_AI << name << " rejected, too many in the field\n";
+					continue;
+				}
 			}
 
 			LOG_AI << "recommending '" << name << "'\n";
