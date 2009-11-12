@@ -137,7 +137,8 @@ static std::string do_interpolation(const std::string &str, const variable_set& 
 					break;
 				}
 			}
-			else if (!isascii(c) || (!isalnum(c) && c != '.' && c != '_')) {
+			// isascii() breaks on mingw with -std=c++0x
+			else if (!(((c) & ~0x7f) == 0)/*isascii(c)*/ || (!isalnum(c) && c != '.' && c != '_')) {
 				break;
 			}
 		}
