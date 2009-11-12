@@ -352,7 +352,7 @@ int CVideo::set_help_string(const std::string& str)
 {
 	font::remove_floating_label(help_string_);
 
-	const SDL_Color colour = {0x0,0x00,0x00,0x77};
+	const SDL_Color colour = { 0, 0, 0, 0xbb };
 
 #ifdef USE_TINY_GUI
 	int size = font::SIZE_NORMAL;
