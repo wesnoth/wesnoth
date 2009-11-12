@@ -955,7 +955,7 @@ void command_executor::show_menu(const std::vector<std::string>& items_arg, int 
 			return;
 		}
 
-		std::vector<std::string> menu = get_menu_images(items);
+		std::vector<std::string> menu = get_menu_images(gui, items);
 
 		int res = 0;
 		{
@@ -980,7 +980,7 @@ std::string command_executor::get_menu_image(hotkey::HOTKEY_COMMAND command, int
 	}
 }
 
-std::vector<std::string> command_executor::get_menu_images(const std::vector<std::string>& items){
+std::vector<std::string> command_executor::get_menu_images(display &disp, const std::vector<std::string>& items){
 	std::vector<std::string> result;
 	bool has_image = false;
 
@@ -999,7 +999,13 @@ std::vector<std::string> command_executor::get_menu_images(const std::vector<std
 		if (hk.get_id() == hotkey::HOTKEY_NULL) {
 			str << item.substr(0, item.find_last_not_of(' ') + 1) << COLUMN_SEPARATOR;
 		} else {
-			str << hk.get_description() << COLUMN_SEPARATOR << hk.get_name();
+			std::string desc = hk.get_description();
+			if (hk.get_id() == HOTKEY_ENDTURN) {
+				const theme::menu *b = disp.get_theme().get_menu_item("button-endturn");
+				assert(b);
+				desc = b->title();
+			}
+			str << desc << COLUMN_SEPARATOR << hk.get_name();
 		}
 
 		result.push_back(str.str());

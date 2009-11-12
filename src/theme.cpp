@@ -775,6 +775,15 @@ std::vector<std::string> theme::get_known_themes(){
     return(names);
 }
 
+const theme::menu *theme::get_menu_item(const std::string &key) const
+{
+	foreach (const theme::menu &m, menus_) {
+		if (m.get_id() == key) return &m;
+	}
+	return NULL;
+}
+
+
 theme::menu* theme::refresh_title(const std::string& id, const std::string& new_title){
 	theme::menu* res = NULL;
 
