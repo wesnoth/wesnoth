@@ -20,10 +20,10 @@
 #include "global.hpp"
 
 #include "race.hpp"
+
+#include "log.hpp"
 #include "random.hpp"
 #include "simple_rng.hpp"
-
-#include "wml_exception.hpp" // needed for validate
 
 static config empty_traits;
 
@@ -151,8 +151,12 @@ unit_race::unit_race(const config& cfg) :
 		global_traits_(!utils::string_bool(cfg["ignore_global_traits"]))
 
 {
-	VALIDATE(!id_.empty(), "[race] '" + (cfg["name"] != "" ? cfg["name"] : cfg["male_name"]) + "' is missing the required key 'id'\n");
-	VALIDATE(!plural_name_.empty(), "[race] '" + (cfg["name"] != "" ? cfg["name"] : cfg["id"]) + "' is missing the required key 'plural_name'\n");
+	if (id_.empty()) {
+		lg::wml_error << "[race] '" << cfg["name"] << "' is missing an id field.";
+	}
+	if (plural_name_.empty()) {
+		lg::wml_error << "[race] '" << cfg["name"] << "' is missing a plural_name field.";
+	}
 	// use "name" if "male_name" or "female_name" aren't available
 	name_[MALE] = cfg["male_name"];
 	if(name_[MALE].empty()) {
