@@ -106,9 +106,9 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 	if(!option_list_.empty()) {
 		std::map<std::string, string_map> data;
 		for(size_t i = 0; i < option_list_.size(); ++i) {
-			std::string icon = "";
+			std::string icon;
 			std::string label = option_list_[i];
-			std::string description = "";
+			std::string description;
 
 			// Handle selection.
 			if(!label.empty() && label[0] == '*') {
@@ -118,31 +118,10 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 			}
 
 			// Handle the special case with an image.
-			if(label.find('=') != std::string::npos) {
-				// We always assume the first item is an image if not it's
-				// still handled as an image. This is a hack but the code
-				// should be rewritten anyway.
-				if(label[0] == '&') {
-					label.erase(0, 1);
-				}
-
-				std::vector<std::string> row_data =
-						utils::split(label, '=', 0);
-				label = "";
-
-				assert(!row_data.empty());
-				icon = row_data[0];
-
-				if(row_data.size() > 1) {
-					label = row_data[1];
-
-					for(size_t j = 2; j < row_data.size(); ++j) {
-						description += row_data[j];
-						if(j +1  < row_data.size()) {
-							description += '=';
-						}
-					}
-				}
+			std::string::size_type pos = label.find("=");
+			if (pos != std::string::npos && label[0] == '&') {
+				icon = label.substr(1, pos);
+				label.erase(0, pos + 1);
 			}
 
 			// Add the data.
