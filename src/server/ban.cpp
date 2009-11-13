@@ -662,7 +662,8 @@ static lg::log_domain log_server("server");
 		}
 		ban_set::const_iterator ban = std::find_if(bans_.begin(), bans_.end(), boost::bind(&banned::match_ip, boost::bind(&banned_ptr::get, _1), pair));
 		if (ban == bans_.end()) return "";
-		return (*ban)->get_reason();
+		const std::string& nick = (*ban)->get_nick();
+		return (*ban)->get_reason() + (nick.empty() ? "" : " (" + nick + ")");
 	}
 
 	void ban_manager::init_ban_help()
