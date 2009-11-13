@@ -161,7 +161,9 @@ void tlobby_main::add_whisper_sent(const std::string& receiver, const std::strin
 		switch_to_window(t);
 		add_active_window_message(preferences::login(), message);
 	} else {
-		add_active_window_whisper("whisper to " + receiver, message);
+		utils::string_map symbols;
+		symbols["receiver"] = receiver;
+		add_active_window_whisper(vgettext("whisper to $receiver", symbols), message);
 	}
 	lobby_info_.get_whisper_log(receiver).add_message(preferences::login(), message);
 }
@@ -359,10 +361,11 @@ void tlobby_main::update_gamelist()
 {
 	gamelistbox_->clear();
 	lobby_info_.apply_game_filter();
-	std::stringstream ss;
-	ss << "Games: Showing " << lobby_info_.games_filtered().size()
-		<< " out of " << lobby_info_.games().size();
-	find_widget<tlabel>(gamelistbox_, "map", false).set_label(ss.str());
+	utils::string_map symbols;
+	symbols["num_shown"] = lexical_cast<std::string>(lobby_info_.games_filtered().size());
+	symbols["num_total"] = lexical_cast<std::string>(lobby_info_.games().size());
+	std::string games_string = vgettext("Games: showing $num_shown out of $num_total", symbols);
+	find_widget<tlabel>(gamelistbox_, "map", false).set_label(games_string);
 	for (unsigned i = 0; i < lobby_info_.games_filtered().size(); ++i) {
 		const game_info& game = *lobby_info_.games_filtered()[i];
 		std::map<std::string, string_map> data;
