@@ -23,6 +23,9 @@
 
 #include <boost/bind.hpp>
 
+#define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
+#define LOG_HEADER LOG_SCOPE_HEADER + ':'
+
 namespace gui2 {
 
 ttoggle_button::ttoggle_button()
@@ -127,7 +130,7 @@ const std::string& ttoggle_button::get_control_type() const
 void ttoggle_button::signal_handler_mouse_enter(
 		const event::tevent event, bool& handled)
 {
-	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
 	if(get_value()) {
 		set_state(FOCUSSED_SELECTED);
@@ -140,7 +143,7 @@ void ttoggle_button::signal_handler_mouse_enter(
 void ttoggle_button::signal_handler_mouse_leave(
 		const event::tevent event, bool& handled)
 {
-	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
 	if(get_value()) {
 		set_state(ENABLED_SELECTED);
@@ -153,7 +156,7 @@ void ttoggle_button::signal_handler_mouse_leave(
 void ttoggle_button::signal_handler_left_button_click(
 		const event::tevent event, bool& handled)
 {
-	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
 	sound::play_UI_sound(settings::sound_toggle_button_click);
 
@@ -172,7 +175,7 @@ void ttoggle_button::signal_handler_left_button_click(
 void ttoggle_button::signal_handler_left_button_double_click(
 		const event::tevent event, bool& handled)
 {
-	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
 	if(retval_ == 0) {
 		return;

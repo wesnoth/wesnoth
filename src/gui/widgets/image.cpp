@@ -19,6 +19,9 @@
 #include "../../image.hpp"
 #include "gui/auxiliary/log.hpp"
 
+#define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
+#define LOG_HEADER LOG_SCOPE_HEADER + ':'
+
 namespace gui2 {
 
 tpoint timage::calculate_best_size() const
@@ -30,7 +33,7 @@ tpoint timage::calculate_best_size() const
 		result = tpoint(image->w, image->h);
 	}
 
-	DBG_GUI_L << "timage " << __func__ << ":"
+	DBG_GUI_L << LOG_HEADER
 		<< " empty image " << !image
 		<< " result " << result
 		<< ".\n";

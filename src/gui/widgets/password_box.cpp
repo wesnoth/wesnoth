@@ -20,6 +20,9 @@
 #include "gui/auxiliary/log.hpp"
 #include "serialization/string_utils.hpp"
 
+#define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
+#define LOG_HEADER LOG_SCOPE_HEADER + ':'
+
 namespace gui2 {
 
 namespace {
@@ -53,7 +56,7 @@ void tpassword_box::handle_key_backspace(SDLMod /*modifier*/, bool& handled) {
 	pre_function();
 
 	// Copy & paste from ttext_::handle_key_backspace()
-	DBG_GUI_E << "Text: key press: backspace.\n";
+	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
 
 	handled = true;
 	if(get_selection_length() != 0) {
@@ -69,7 +72,7 @@ void tpassword_box::handle_key_delete(SDLMod /*modifier*/, bool& handled) {
 	pre_function();
 
 	// Copy & paste from ttext_::handle_key_delete()
-	DBG_GUI_E << "Text: key press: delete.\n";
+	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
 
 	handled = true;
 	if(get_selection_length() != 0) {

@@ -22,6 +22,9 @@
 
 #include <boost/bind.hpp>
 
+#define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
+#define LOG_HEADER LOG_SCOPE_HEADER + ':'
+
 namespace gui2 {
 
 tbutton::tbutton()
@@ -72,7 +75,7 @@ const std::string& tbutton::get_control_type() const
 void tbutton::signal_handler_mouse_enter(
 		const event::tevent event, bool& handled)
 {
-	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
 	set_state(FOCUSSED);
 	handled = true;
@@ -81,7 +84,7 @@ void tbutton::signal_handler_mouse_enter(
 void tbutton::signal_handler_mouse_leave(
 		const event::tevent event, bool& handled)
 {
-	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
 	set_state(ENABLED);
 	handled = true;
@@ -90,7 +93,7 @@ void tbutton::signal_handler_mouse_leave(
 void tbutton::signal_handler_left_button_down(
 		const event::tevent event, bool& handled)
 {
-	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
 	twindow* window = get_window();
 	if(window) {
@@ -104,7 +107,7 @@ void tbutton::signal_handler_left_button_down(
 void tbutton::signal_handler_left_button_up(
 		const event::tevent event, bool& handled)
 {
-	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
 	set_state(FOCUSSED);
 	handled = true;
@@ -113,7 +116,7 @@ void tbutton::signal_handler_left_button_up(
 void tbutton::signal_handler_left_button_click(
 		const event::tevent event, bool& handled)
 {
-	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
 	sound::play_UI_sound(settings::sound_button_click);
 

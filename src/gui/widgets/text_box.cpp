@@ -24,6 +24,9 @@
 
 #include <boost/bind.hpp>
 
+#define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
+#define LOG_HEADER LOG_SCOPE_HEADER + ':'
+
 namespace gui2 {
 
 ttext_history ttext_history::get_history(const std::string& id, const bool enabled)
@@ -346,7 +349,7 @@ void ttext_box::signal_handler_mouse_motion(
 void ttext_box::signal_handler_left_button_down(
 		const event::tevent event, bool& handled)
 {
-	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
 	/*
 	 * Copied from the base class see how we can do inheritance with the new
@@ -363,7 +366,7 @@ void ttext_box::signal_handler_left_button_down(
 void ttext_box::signal_handler_left_button_up(
 		const event::tevent event, bool& handled)
 {
-	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
 	dragging_ = false;
 	handled = true;
@@ -372,7 +375,7 @@ void ttext_box::signal_handler_left_button_up(
 void ttext_box::signal_handler_left_button_double_click(
 		const event::tevent event, bool& handled)
 {
-	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
 	select_all();
 	handled = true;

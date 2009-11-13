@@ -18,6 +18,9 @@
 
 #include "gui/auxiliary/log.hpp"
 
+#define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
+#define LOG_HEADER LOG_SCOPE_HEADER + ':'
+
 namespace gui2 {
 
 SDL_Rect tpanel::get_client_rect() const
@@ -37,8 +40,7 @@ SDL_Rect tpanel::get_client_rect() const
 
 void tpanel::impl_draw_background(surface& frame_buffer)
 {
-	DBG_GUI_D << "tpanel " << __func__ << ": "
-			<< " id " << id()
+	DBG_GUI_D << LOG_HEADER
 			<< " size " << get_rect()
 			<< ".\n";
 

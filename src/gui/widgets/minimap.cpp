@@ -24,6 +24,9 @@
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM_INDENT(err, log_config)
 
+#define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
+#define LOG_HEADER LOG_SCOPE_HEADER + ':'
+
 namespace gui2 {
 
 void tminimap::set_borders(const unsigned left,
@@ -41,8 +44,7 @@ void tminimap::impl_draw_background(surface& frame_buffer)
 {
 	assert(terrain_);
 
-	DBG_GUI_D << "tminimap " << __func__ << ": "
-			<< " id " << id()
+	DBG_GUI_D << LOG_HEADER
 			<< " size " << get_rect()
 			<< ".\n";
 

@@ -21,6 +21,9 @@
 
 #include <boost/bind.hpp>
 
+#define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
+#define LOG_HEADER LOG_SCOPE_HEADER + ':'
+
 namespace gui2 {
 
 ttext_::ttext_()
@@ -182,7 +185,7 @@ void ttext_::set_state(const tstate state)
 void ttext_::handle_key_left_arrow(SDLMod modifier, bool& handled)
 {
 	/** @todo implement the ctrl key. */
-	DBG_GUI_E << "Text: key press: left arrow.\n";
+	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
 
 	handled = true;
 	const int offset = selection_start_ - 1 + selection_length_;
@@ -194,7 +197,7 @@ void ttext_::handle_key_left_arrow(SDLMod modifier, bool& handled)
 void ttext_::handle_key_right_arrow(SDLMod modifier, bool& handled)
 {
 	/** @todo implement the ctrl key. */
-	DBG_GUI_E << "Text: key press: right arrow.\n";
+	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
 
 	handled = true;
 	const size_t offset = selection_start_ + 1 + selection_length_;
@@ -205,7 +208,7 @@ void ttext_::handle_key_right_arrow(SDLMod modifier, bool& handled)
 
 void ttext_::handle_key_home(SDLMod modifier, bool& handled)
 {
-	DBG_GUI_E << "Text: key press: home.\n";
+	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
 
 	handled = true;
 	if(modifier & KMOD_CTRL) {
@@ -217,7 +220,7 @@ void ttext_::handle_key_home(SDLMod modifier, bool& handled)
 
 void ttext_::handle_key_end(SDLMod modifier, bool& handled)
 {
-	DBG_GUI_E << "Text: key press: end.\n";
+	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
 
 	handled = true;
 	if(modifier & KMOD_CTRL) {
@@ -229,7 +232,7 @@ void ttext_::handle_key_end(SDLMod modifier, bool& handled)
 
 void ttext_::handle_key_backspace(SDLMod /*modifier*/, bool& handled)
 {
-	DBG_GUI_E << "Text: key press: backspace.\n";
+	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
 
 	handled = true;
 	if(selection_length_ != 0) {
@@ -241,7 +244,7 @@ void ttext_::handle_key_backspace(SDLMod /*modifier*/, bool& handled)
 
 void ttext_::handle_key_delete(SDLMod /*modifier*/, bool& handled)
 {
-	DBG_GUI_E << "Text: key press: delete.\n";
+	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
 
 	handled = true;
 	if(selection_length_ != 0) {
@@ -254,7 +257,7 @@ void ttext_::handle_key_delete(SDLMod /*modifier*/, bool& handled)
 void ttext_::handle_key_default(
 		bool& handled, SDLKey /*key*/, SDLMod /*modifier*/, Uint16 unicode)
 {
-	DBG_GUI_E << "Text: key press: default.\n";
+	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
 
 	if(unicode >= 32 && unicode != 127) {
 		handled = true;
@@ -265,7 +268,7 @@ void ttext_::handle_key_default(
 void ttext_::signal_handler_middle_button_click(
 			const event::tevent event, bool& handled)
 {
-	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
 	paste_selection(true);
 
@@ -279,7 +282,7 @@ void ttext_::signal_handler_sdl_key_down(const event::tevent event
 		, const Uint16 unicode)
 {
 
-	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
 // For copy/paste we use a different key on the MAC. Other ctrl modifiers won't
 // be modifed seems not to be required when I read the comment in
@@ -412,14 +415,14 @@ void ttext_::signal_handler_sdl_key_down(const event::tevent event
 
 void ttext_::signal_handler_receive_keyboard_focus(const event::tevent event)
 {
-	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
 	set_state(FOCUSSED);
 }
 
 void ttext_::signal_handler_lose_keyboard_focus(const event::tevent event)
 {
-	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
 	set_state(ENABLED);
 }

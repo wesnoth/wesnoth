@@ -22,6 +22,9 @@
 
 #include <boost/bind.hpp>
 
+#define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
+#define LOG_HEADER LOG_SCOPE_HEADER + ':'
+
 namespace gui2 {
 
 tscrollbar_::tscrollbar_()
@@ -166,7 +169,8 @@ void tscrollbar_::recalculate()
 		twindow* window = get_window();
 		assert(window);
 		window->invalidate_layout();
-		ERR_GUI_G << "Scrollbar: Can't recalculate size, force a Window layout phase.\n";
+		ERR_GUI_G << LOG_HEADER
+				<< " Can't recalculate size, force a Window layout phase.\n";
 		return;
 	}
 
@@ -280,7 +284,7 @@ void tscrollbar_::load_config_extra()
 void tscrollbar_::signal_handler_mouse_enter(
 		const event::tevent event, bool& handled)
 {
-	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
 	// Send the motion under our event id to make debugging easier.
 	signal_handler_mouse_motion(event, handled, get_mouse_position());
@@ -289,8 +293,7 @@ void tscrollbar_::signal_handler_mouse_enter(
 void tscrollbar_::signal_handler_mouse_motion(
 		const event::tevent event, bool& handled, const tpoint& coordinate)
 {
-	DBG_GUI_E << get_control_type()
-			<< "[" << id() << "]: " << event << " at " << coordinate << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << " at " << coordinate << ".\n";
 
 	tpoint mouse = coordinate;
 	mouse.x -= get_x();
@@ -330,7 +333,7 @@ void tscrollbar_::signal_handler_mouse_motion(
 void tscrollbar_::signal_handler_mouse_leave(
 		const event::tevent event, bool& handled)
 {
-	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
 	if(state_ == FOCUSSED) {
 		set_state(ENABLED);
@@ -342,7 +345,7 @@ void tscrollbar_::signal_handler_mouse_leave(
 void tscrollbar_::signal_handler_left_button_down(
 		const event::tevent event, bool& handled)
 {
-	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
 	tpoint mouse = get_mouse_position();
 	mouse.x -= get_x();
@@ -377,7 +380,7 @@ void tscrollbar_::signal_handler_left_button_down(
 void tscrollbar_::signal_handler_left_button_up(
 		const event::tevent event, bool& handled)
 {
-	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
 	tpoint mouse = get_mouse_position();
 	mouse.x -= get_x();
