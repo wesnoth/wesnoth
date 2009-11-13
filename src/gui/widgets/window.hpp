@@ -186,18 +186,6 @@ public:
 	 */
 	void close() { status_ = REQUEST_CLOSE; }
 
-#ifdef GUI2_OLD_EVENT_HANDLING
-	/**
-	 * Resize event for the window.
-	 *
-	 * @param event_handler       The handler sending the event.
-	 * @param new_width           The new width for the window.
-	 * @param new_height          The new height for the window.
-	 */
-	void window_resize(tevent_handler& event_handler,
-		const unsigned new_width, const unsigned new_height);
-#endif
-
 	/**
 	 * Updates the size of the window.
 	 *
@@ -206,12 +194,6 @@ public:
 	 * can have different sizes eg listboxes.
 	 */
 	void invalidate_layout() { need_layout_ = true; }
-
-#ifdef GUI2_OLD_EVENT_HANDLING
-	/** Inherited from tevent_executor. */
-	void key_press(tevent_handler& event_handler, bool& handled,
-		SDLKey key, SDLMod modifier, Uint16 unicode);
-#endif
 
 	/** Inherited from tevent_handler. */
 	twindow& get_window() { return *this; }

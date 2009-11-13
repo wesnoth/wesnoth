@@ -171,43 +171,6 @@ void ttext_box::update_canvas()
 	}
 }
 
-#ifdef GUI2_OLD_EVENT_HANDLING
-void ttext_box::mouse_move(tevent_handler& event)
-{
-	DBG_GUI_E << "Text box: mouse move.\n";
-
-	if(!dragging_) {
-		return;
-	}
-
-	handle_mouse_selection(event, false);
-}
-
-void ttext_box::mouse_left_button_down(tevent_handler& event)
-{
-	// Inherited.
-	ttext_::mouse_left_button_down(event);
-
-	DBG_GUI_E << "Text box: left mouse down.\n";
-
-	handle_mouse_selection(event, true);
-}
-
-void ttext_box::mouse_left_button_up(tevent_handler& /*event*/)
-{
-	DBG_GUI_E << "Text box: left mouse up.\n";
-
-	dragging_ = false;
-}
-
-void ttext_box::mouse_left_button_double_click(tevent_handler&)
-{
-	DBG_GUI_E << "Text box: left mouse double click.\n";
-
-	select_all();
-}
-#endif
-
 void ttext_box::delete_char(const bool before_cursor)
 {
 	if(before_cursor) {
@@ -241,14 +204,6 @@ void ttext_box::delete_selection()
 	set_value(text);
 	set_cursor(start, false);
 }
-
-#ifdef GUI2_OLD_EVENT_HANDLING
-void ttext_box::handle_mouse_selection(
-		tevent_handler& event, const bool start_selection)
-{
-	handle_mouse_selection(event.get_mouse(), start_selection);
-}
-#endif
 
 void ttext_box::handle_mouse_selection(tpoint mouse, const bool start_selection)
 {

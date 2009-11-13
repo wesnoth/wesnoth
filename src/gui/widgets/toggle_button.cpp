@@ -56,59 +56,6 @@ void ttoggle_button::set_members(const string_map& data)
 	}
 }
 
-#ifdef GUI2_OLD_EVENT_HANDLING
-void ttoggle_button::mouse_enter(tevent_handler&)
-{
-	DBG_GUI_E << "Toggle button: mouse enter.\n";
-
-	if(get_value()) {
-		set_state(FOCUSSED_SELECTED);
-	} else {
-		set_state(FOCUSSED);
-	}
-}
-
-void ttoggle_button::mouse_leave(tevent_handler&)
-{
-	DBG_GUI_E << "Toggle button: mouse leave.\n";
-
-	if(get_value()) {
-		set_state(ENABLED_SELECTED);
-	} else {
-		set_state(ENABLED);
-	}
-}
-
-void ttoggle_button::mouse_left_button_click(tevent_handler&)
-{
-	DBG_GUI_E << "Toggle button: left mouse button click.\n";
-
-	sound::play_UI_sound(settings::sound_toggle_button_click);
-
-	if(get_value()) {
-		set_state(ENABLED);
-	} else {
-		set_state(ENABLED_SELECTED);
-	}
-
-	if(callback_state_change_) {
-		callback_state_change_(this);
-	}
-}
-
-void ttoggle_button::mouse_left_button_double_click(tevent_handler&)
-{
-	DBG_GUI_E << "Toggle button: left mouse button double click.\n";
-
-	assert(retval_ != 0);
-
-	twindow* window = get_window();
-	assert(window);
-
-	window->set_retval(retval_);
-}
-#endif
-
 void ttoggle_button::set_active(const bool active)
 {
 	if(active) {

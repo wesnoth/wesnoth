@@ -35,33 +35,6 @@ class ttext_ : public tcontrol
 public:
 	ttext_();
 
-#ifdef GUI2_OLD_EVENT_HANDLING
-	/** Inherited from tevent_executor. */
-	void mouse_move(tevent_handler&);
-
-	/** Inherited from tevent_executor. */
-	void mouse_left_button_down(tevent_handler& event);
-
-	/** Inherited from tevent_executor. */
-	void mouse_left_button_up(tevent_handler&);
-
-	/** Inherited from tevent_executor. */
-	void mouse_left_button_double_click(tevent_handler&);
-
-	/** Inherited from tevent_executor. */
-	void mouse_middle_button_click(tevent_handler&);
-
-	/** Inherited from tevent_executor. */
-	void receive_keyboard_focus(tevent_handler& event_handler);
-
-	/** Inherited from tevent_executor. */
-	void lose_keyboard_focus(tevent_handler& event_handler);
-
-	/** Inherited from tevent_executor. */
-	void key_press(tevent_handler& event,
-		bool& handled, SDLKey key, SDLMod modifier, Uint16 unicode);
-#endif
-
 	/** Inherited from tcontrol. */
 	void set_active(const bool active)
 		{ if(get_active() != active) set_state(active ? ENABLED : DISABLED); };

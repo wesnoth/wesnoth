@@ -135,20 +135,6 @@ protected:
 	/** Inherited from tcontrol. */
 	void update_canvas();
 
-#ifdef GUI2_OLD_EVENT_HANDLING
-	/** Inherited from ttext_. */
-	void mouse_move(tevent_handler& event);
-
-	/** Inherited from ttext_. */
-	void mouse_left_button_down(tevent_handler& event);
-
-	/** Inherited from ttext_. */
-	void mouse_left_button_up(tevent_handler&);
-
-	/** Inherited from ttext_. */
-	void mouse_left_button_double_click(tevent_handler&);
-#endif
-
 	/** Inherited from ttext_. */
 	void goto_end_of_line(const bool select = false)
 		{ goto_end_of_data(select); }
@@ -162,12 +148,6 @@ protected:
 
 	/** Inherited from ttext_. */
 	void delete_selection();
-
-#ifdef GUI2_OLD_EVENT_HANDLING
-	/** Handles the selection in a mouse down or mouse move event. */
-	void handle_mouse_selection(
-		tevent_handler& event, const bool start_selection);
-#endif
 
 	void handle_mouse_selection(tpoint mouse, const bool start_selection);
 private:

@@ -336,12 +336,12 @@ void thandler::connect(tdispatcher* dispatcher)
 {
 	assert(std::find(dispatchers_.begin(), dispatchers_.end(), dispatcher)
 			== dispatchers_.end());
-#ifndef GUI2_OLD_EVENT_HANDLING
+
 	if(dispatchers_.empty()) {
 		event_context = new events::event_context();
 		join();
 	}
-#endif
+
 	dispatchers_.push_back(dispatcher);
 }
 
@@ -372,13 +372,12 @@ void thandler::disconnect(tdispatcher* dispatcher)
 	/***** Validate post conditions. *****/
 	assert(std::find(dispatchers_.begin(), dispatchers_.end(), dispatcher)
 			== dispatchers_.end());
-#ifndef GUI2_OLD_EVENT_HANDLING
+
 	if(dispatchers_.empty()) {
 		leave();
 		delete event_context;
 		event_context = NULL;
 	}
-#endif
 }
 
 void thandler::hover(void* caller)

@@ -114,15 +114,6 @@ public:
 
 	/***** ***** ***** inherited ****** *****/
 
-#ifdef GUI2_OLD_EVENT_HANDLING
-	/** Inherited from tevent_executor. */
-	void key_press(tevent_handler& event,
-		bool& handled, SDLKey key, SDLMod modifier, Uint16 unicode);
-
-	/** Inherted from tevent_executor. */
-	void focus(tevent_handler&);
-#endif
-
 	/** Inherited from tcontainer_. */
 	bool get_active() const { return state_ != DISABLED; }
 
@@ -210,22 +201,6 @@ protected:
 	 * will be active or inactive as needed.
 	 */
 	void set_scrollbar_button_status();
-
-	/***** ***** ***** ***** mouse wheel functions ***** ***** ***** *****/
-
-#ifdef GUI2_OLD_EVENT_HANDLING
-	/** Inherited from tevent_executor. */
-	void mouse_wheel_up(tevent_handler& event_handler, bool& handled);
-
-	/** Inherited from tevent_executor. */
-	void mouse_wheel_down(tevent_handler& event_handler, bool& handled);
-
-	/** Inherited from tevent_executor. */
-	void mouse_wheel_left(tevent_handler& event_handler, bool& handled);
-
-	/** Inherited from tevent_executor. */
-	void mouse_wheel_right(tevent_handler& event_handler, bool& handled);
-#endif
 
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 

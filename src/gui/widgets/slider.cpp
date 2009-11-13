@@ -123,34 +123,6 @@ void tslider::set_maximum_value(const int maximum_value)
 	}
 }
 
-#ifdef GUI2_OLD_EVENT_HANDLING
-void tslider::mouse_left_button_down(tevent_handler& event)
-{
-	tpoint mouse = event.get_mouse();
-	mouse.x -= get_x();
-	mouse.y -= get_y();
-
-	DBG_GUI_E << "Slider: mouse down at " << mouse << ".\n";
-
-	if(on_positioner(mouse)) {
-		mouse_ = mouse;
-		event.mouse_capture();
-		set_state(PRESSED);
-		return;
-	}
-
-	const int bar = on_bar(mouse);
-	if(bar != 0) {
-		const int distance = mouse.x - get_positioner_offset();
-		move_positioner(distance);
-
-		if(callback_positioner_move_) {
-			callback_positioner_move_(this);
-		}
-	}
-}
-#endif
-
 t_string tslider::get_value_label() const
 {
 	if(!value_labels_.empty()) {

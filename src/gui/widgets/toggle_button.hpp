@@ -33,20 +33,6 @@ public:
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-#ifdef GUI2_OLD_EVENT_HANDLING
-	/** Inherted from tevent_executor. */
-	void mouse_enter(tevent_handler&);
-
-	/** Inherted from tevent_executor. */
-	void mouse_leave(tevent_handler&);
-
-	/** Inherted from tevent_executor. */
-	void mouse_left_button_click(tevent_handler&);
-
-	/** Inherted from tevent_executor. */
-	void mouse_left_button_double_click(tevent_handler&);
-#endif
-
 	/**
 	 * Inherited from tcontrol.
 	 *

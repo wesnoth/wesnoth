@@ -109,20 +109,6 @@ void tmp_server_list::post_show(twindow& window)
 	}
 }
 
-#ifdef GUI2_OLD_EVENT_HANDLING
-void callback_view_list_button(twidget* caller)
-{
-	assert(caller);
-
-	tmp_connect* mp_connect = dynamic_cast<tmp_connect*>(caller->dialog());
-	assert(mp_connect);
-	twindow* window = dynamic_cast<twindow*>(caller->get_window());
-	assert(window);
-
-	mp_connect->show_server_list(*window);
-}
-#endif
-
 } // namespace
 
 /*WIKI
@@ -163,14 +149,10 @@ void tmp_connect::pre_show(CVideo& video, twindow& window)
 	// Set view list callback button.
 	if(tbutton* button = find_widget<tbutton>(&window, "list", false, false)) {
 
-#ifdef GUI2_OLD_EVENT_HANDLING
-		button->set_callback_mouse_left_click(callback_view_list_button);
-#else
 		button->connect_signal_mouse_left_click(boost::bind(
 				  &tmp_connect::show_server_list
 				, this
 				, boost::ref(window)));
-#endif
 	}
 
 }

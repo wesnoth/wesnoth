@@ -96,20 +96,9 @@ static Uint32 popup_callback(Uint32 /*interval*/, void* /*param*/)
  * blocker is used.
  */
 tevent_handler::tevent_handler() :
-#ifdef GUI2_OLD_EVENT_HANDLING
-	  events::handler(false) // don't join we haven't created a context yet
-	, event_context_()
-	,
-#endif
 	  mouse_x_(-1)
 	, mouse_y_(-1)
 	, left_("left"
-#ifdef GUI2_OLD_EVENT_HANDLING
-			, &tevent_executor::mouse_left_button_down
-			, &tevent_executor::mouse_left_button_up
-			, &tevent_executor::mouse_left_button_click
-			, &tevent_executor::mouse_left_button_double_click
-#endif
 			, &tevent_executor::wants_mouse_left_double_click
 			, event::SDL_LEFT_BUTTON_DOWN
 			, event::SDL_LEFT_BUTTON_UP
@@ -118,12 +107,6 @@ tevent_handler::tevent_handler() :
 			, event::LEFT_BUTTON_CLICK
 			, event::LEFT_BUTTON_DOUBLE_CLICK)
 	, middle_("middle"
-#ifdef GUI2_OLD_EVENT_HANDLING
-			, &tevent_executor::mouse_middle_button_down
-			, &tevent_executor::mouse_middle_button_up
-			, &tevent_executor::mouse_middle_button_click
-			, &tevent_executor::mouse_middle_button_double_click
-#endif
 			, &tevent_executor::wants_mouse_middle_double_click
 			, event::SDL_MIDDLE_BUTTON_DOWN
 			, event::SDL_MIDDLE_BUTTON_UP
@@ -132,12 +115,6 @@ tevent_handler::tevent_handler() :
 			, event::MIDDLE_BUTTON_CLICK
 			, event::MIDDLE_BUTTON_DOUBLE_CLICK)
 	, right_("right"
-#ifdef GUI2_OLD_EVENT_HANDLING
-			, &tevent_executor::mouse_right_button_down
-			, &tevent_executor::mouse_right_button_up
-			, &tevent_executor::mouse_right_button_click
-			, &tevent_executor::mouse_right_button_double_click
-#endif
 			, &tevent_executor::wants_mouse_right_double_click
 			, event::SDL_RIGHT_BUTTON_DOWN
 			, event::SDL_RIGHT_BUTTON_UP
@@ -161,172 +138,7 @@ tevent_handler::tevent_handler() :
 			assert(false);
 		}
 	}
-
-	// The event context is created now we join it.
-#ifdef GUI2_OLD_EVENT_HANDLING
-	join();
-#endif
 }
-
-#ifdef GUI2_OLD_EVENT_HANDLING
-void tevent_handler::handle_event(const SDL_Event& event)
-{
-
-	twidget* mouse_over = 0;
-	switch(event.type) {
-		case SDL_MOUSEMOTION:
-
-			mouse_x_ = event.motion.x;
-			mouse_y_ = event.motion.y;
-			mouse_over = find_at(tpoint(mouse_x_, mouse_y_), true);
-
-			mouse_move(event, mouse_over);
-
-			break;
-
-		case SDL_MOUSEBUTTONDOWN:
-
-			// The wheel buttons generate and up and down event we handle the
-			// up event so ignore the mouse if it's a down event. Handle it
-			// here to avoid a warning.
-			if(event.button.button == SDL_BUTTON_WHEELUP
-					|| event.button.button == SDL_BUTTON_WHEELDOWN
-					|| event.button.button == SDL_BUTTON_WHEELLEFT
-					|| event.button.button == SDL_BUTTON_WHEELRIGHT) {
-
-				break;
-			}
-
-			mouse_x_ = event.button.x;
-			mouse_y_ = event.button.y;
-			mouse_over = find_at(tpoint(mouse_x_, mouse_y_), true);
-
-			/**
-			 * @todo these two events aren't documented in the event overview
-			 * at the end of the file.
-			 */
-			if(!mouse_captured_) {
-				twidget* widget =
-						find_at(tpoint(mouse_x_, mouse_y_), false);
-				if(widget) {
-					focus_parent_container(widget);
-					focus_parent_window(widget);
-				}
-			}
-
-			switch(event.button.button) {
-				case SDL_BUTTON_LEFT :
-					DBG_GUI_E << "Event: Left button down.\n";
-					mouse_button_down(event, mouse_over, left_);
-					break;
-				case SDL_BUTTON_MIDDLE :
-					DBG_GUI_E << "Event: Middle button down.\n";
-					mouse_button_down(event, mouse_over, middle_);
-					break;
-				case SDL_BUTTON_RIGHT :
-					DBG_GUI_E << "Event: Right button down.\n";
-					mouse_button_down(event, mouse_over, right_);
-					break;
-				default:
-					// cast to avoid being printed as char.
-					WRN_GUI_E << "Unhandled 'mouse button down' event for button "
-						<< static_cast<Uint32>(event.button.button) << ".\n";
-					break;
-			}
-			break;
-
-		case SDL_MOUSEBUTTONUP:
-
-			mouse_x_ = event.button.x;
-			mouse_y_ = event.button.y;
-			mouse_over = find_at(tpoint(mouse_x_, mouse_y_), true);
-
-			switch(event.button.button) {
-
-				/*
-				 * All button clicks should trigger click_dismiss() This is done
-				 * in the mouse_button_up function since that also evaluates
-				 * the state of the mouse before handling the event.
-				 *
-				 * Note the engine makes sure easy close is disabled when a
-				 * widget needs to process the click so calling it
-				 * unconditionally is safe.
-				 */
-				case SDL_BUTTON_LEFT :
-					DBG_GUI_E << "Event: Left button up.\n";
-					mouse_button_up(event, mouse_over, left_);
-					break;
-				case SDL_BUTTON_MIDDLE :
-					DBG_GUI_E << "Event: Middle button up.\n";
-					mouse_button_up(event, mouse_over, middle_);
-					break;
-				case SDL_BUTTON_RIGHT :
-					DBG_GUI_E << "Event: Right button up.\n";
-					mouse_button_up(event, mouse_over, right_);
-					break;
-				case SDL_BUTTON_WHEELUP :
-				case SDL_BUTTON_WHEELDOWN :
-				case SDL_BUTTON_WHEELLEFT :
-				case SDL_BUTTON_WHEELRIGHT :
-					DBG_GUI_E << "Event: Wheel\n";
-					mouse_wheel(event,
-							find_at(tpoint(mouse_x_, mouse_y_), false));
-					break;
-				default:
-					// cast to avoid being printed as char.
-					WRN_GUI_E << "Unhandled 'mouse button up' event for button "
-						<< static_cast<Uint32>(event.button.button) << ".\n";
-					break;
-			}
-			break;
-
-		case HOVER_EVENT:
-			mouse_hover(event, 0);
-			break;
-
-		case HOVER_REMOVE_POPUP_EVENT:
-			remove_tooltip();
-			remove_help_popup();
-			break;
-
-		case DRAW_EVENT:
-			get_window().draw();
-			break;
-
-		case CLOSE_WINDOW_EVENT:
-			{
-				twindow* window = twindow::window_instance(event.user.code);
-				if(window) {
-					window->set_retval(twindow::AUTO_CLOSE);
-				}
-			}
-			break;
-
-		case SDL_KEYDOWN:
-			key_down(event);
-			break;
-
-		case SDL_VIDEORESIZE:
-			get_window().window_resize(*this, event.resize.w, event.resize.h);
-			break;
-
-#if defined(_X11) && !defined(__APPLE__)
-			case SDL_SYSWMEVENT: {
-				DBG_GUI_E << "Event: System event.\n";
-				//clipboard support for X11
-				handle_system_event(event);
-				break;
-			}
-#endif
-
-		default:
-
-			// cast to avoid being printed as char.
-			WRN_GUI_E << "Unhandled event " << static_cast<Uint32>(event.type) << ".\n";
-			break;
-		}
-}
-#endif
 
 void tevent_handler::mouse_capture(const bool capture)
 {
@@ -484,25 +296,6 @@ void tevent_handler::remove_widget(const twidget* widget)
 	}
 }
 
-#ifdef GUI2_OLD_EVENT_HANDLING
-void tevent_handler::mouse_enter(const SDL_Event& /*event*/, twidget* mouse_over)
-{
-	tcontrol* control = dynamic_cast<tcontrol*>(mouse_focus_);
-	if(control && !control->get_active()) {
-		return;
-	}
-
-	DBG_GUI_E << "Event: mouse enter.\n";
-
-	assert(mouse_over);
-
-	mouse_focus_ = mouse_over;
-	mouse_over->mouse_enter(*this);
-
-	set_hover();
-}
-#endif
-
 void tevent_handler::mouse_enter(twidget* mouse_over)
 {
 	DBG_GUI_E << "tevent_handler: mouse enter.\n";
@@ -513,31 +306,6 @@ void tevent_handler::mouse_enter(twidget* mouse_over)
 	get_window().fire(event::MOUSE_ENTER, *mouse_over);
 }
 
-#ifdef GUI2_OLD_EVENT_HANDLING
-void tevent_handler::mouse_move(const SDL_Event& event, twidget* mouse_over)
-{
-	if(mouse_captured_) {
-		mouse_focus_->mouse_move(*this);
-		set_hover(true);
-	} else {
-		if(!mouse_focus_ && mouse_over) {
-			mouse_enter(event, mouse_over);
-		} else if (mouse_focus_ && !mouse_over) {
-			mouse_leave(event, mouse_over);
-		} else if(mouse_focus_ && mouse_focus_ == mouse_over) {
-			mouse_over->mouse_move(*this);
-			set_hover();
-		} else if(mouse_focus_ && mouse_over) {
-			// moved from one widget to the next
-			mouse_leave(event, mouse_over);
-			mouse_enter(event, mouse_over);
-		} else {
-			assert(!mouse_focus_ && !mouse_over);
-		}
-	}
-}
-#endif
-
 void tevent_handler::mouse_motion(twidget* mouse_over, const tpoint& coordinate)
 {
 	DBG_GUI_E << "tevent_handler: mouse motion.\n";
@@ -547,45 +315,6 @@ void tevent_handler::mouse_motion(twidget* mouse_over, const tpoint& coordinate)
 	get_window().fire(event::MOUSE_MOTION, *mouse_over, coordinate);
 }
 
-#ifdef GUI2_OLD_EVENT_HANDLING
-void tevent_handler::mouse_hover(
-		const SDL_Event& event, twidget* /*mouse_over*/)
-{
-	const unsigned hover_id = *static_cast<unsigned*>(event.user.data1);
-	delete static_cast<unsigned*>(event.user.data1);
-
-	if(!hover_pending_ || hover_id != hover_id_) {
-		return;
-	}
-
-	assert(mouse_focus_);
-
-	mouse_focus_->mouse_hover(*this);
-
-	had_hover_ = true;
-}
-
-void tevent_handler::mouse_leave(
-		const SDL_Event& /*event*/, twidget* /*mouse_over*/)
-{
-	DBG_GUI_E << "Event: mouse leave.\n";
-
-	assert(mouse_focus_);
-
-	had_hover_ = false;
-	hover_pending_ =false;
-
-	remove_tooltip();
-	remove_help_popup();
-
-	tcontrol* control = dynamic_cast<tcontrol*>(mouse_focus_);
-	if(control && control->get_active()) {
-		mouse_focus_->mouse_leave(*this);
-	}
-	mouse_focus_ = 0;
-}
-#endif
-
 void tevent_handler::mouse_leave()
 {
 	DBG_GUI_E << "tevent_handler: mouse leave.\n";
@@ -594,174 +323,6 @@ void tevent_handler::mouse_leave()
 
 	mouse_focus_ = 0;
 }
-
-#ifdef GUI2_OLD_EVENT_HANDLING
-void tevent_handler::mouse_button_down(
-		const SDL_Event& /*event*/, twidget* mouse_over, tmouse_button& button)
-{
-	if(button.is_down) {
-		WRN_GUI_E << "In 'button down' for button '" << button.name
-			<< "' but the mouse button is already down, we missed an event.\n";
-		return;
-	}
-	button.is_down = true;
-	hover_pending_ = false;
-
-	if(mouse_captured_) {
-		button.focus = mouse_focus_;
-		(mouse_focus_->*button.down)(*this);
-	} else {
-		if(!mouse_over) {
-			return;
-		}
-
-		if(mouse_over != mouse_focus_) {
-			WRN_GUI_E << "Mouse down event on non focussed widget "
-				<< "and mouse not captured, we missed events.\n";
-			mouse_focus_ = mouse_over;
-		}
-
-		button.focus = mouse_over;
-		(mouse_over->*button.down)(*this);
-	}
-}
-
-void tevent_handler::mouse_button_up(
-	const SDL_Event& event, twidget* mouse_over, tmouse_button& button)
-{
-	if(!button.is_down) {
-		WRN_GUI_E << "In 'button up' for button '" << button.name
-			<< "' but the mouse button is already up, we missed an event.\n";
-		return;
-	}
-
-	button.is_down = false;
-	if(button.focus) {
-		(button.focus->*button.up)(*this);
-	}
-
-	if(mouse_captured_) {
-		if (!left_.is_down && !middle_.is_down && !right_.is_down) {
-			mouse_captured_ = false;
-		}
-
-		if(mouse_focus_ != mouse_over) {
-			mouse_leave(event, mouse_over);
-
-			if(mouse_over) {
-				mouse_enter(event, mouse_over);
-			}
-		} else {
-			mouse_click(mouse_focus_, button);
-		}
-	} else if(button.focus && button.focus == mouse_over) {
-		mouse_click(button.focus, button);
-	}
-
-	button.focus = 0;
-	set_hover();
-	click_dismiss();
-}
-
-void tevent_handler::mouse_click(twidget* widget, tmouse_button& button)
-{
-	if((widget->*button.wants_double_click)()) {
-		Uint32 stamp = SDL_GetTicks();
-		if(button.last_click_stamp + settings::double_click_time >= stamp
-				&& button.last_clicked_widget == widget) {
-
-			(widget->*button.double_click)(*this);
-			button.last_click_stamp = 0;
-			button.last_clicked_widget = NULL;
-
-		} else {
-
-			(widget->*button.click)(*this);
-			button.last_click_stamp = stamp;
-			button.last_clicked_widget = widget;
-		}
-
-	} else {
-
-		(widget->*button.click)(*this);
-	}
-}
-
-void tevent_handler::mouse_wheel(const SDL_Event& event, twidget* widget)
-{
-	// If widget == NULL the loop won't run so no need for an explicit test.
-	bool handled = false;
-	while(widget != NULL && !handled) {
-
-		tcontrol* control = dynamic_cast<tcontrol*>(widget);
-		if(!control || control->get_active()) {
-
-			switch(event.button.button) {
-				case SDL_BUTTON_WHEELUP :
-					DBG_GUI_E << "Event: Wheel up.\n";
-					widget->mouse_wheel_up(*this, handled);
-					break;
-				case SDL_BUTTON_WHEELDOWN :
-					DBG_GUI_E << "Event: Wheel down.\n";
-					widget->mouse_wheel_down(*this, handled);
-					break;
-				case SDL_BUTTON_WHEELLEFT :
-					DBG_GUI_E << "Event: Wheel left.\n";
-					widget->mouse_wheel_left(*this, handled);
-					break;
-				case SDL_BUTTON_WHEELRIGHT :
-					DBG_GUI_E << "Event: Wheel right.\n";
-					widget->mouse_wheel_right(*this, handled);
-					break;
-				default:
-					// cast to avoid being printed as char.
-					WRN_GUI_E << "Unhandled wheel event for button "
-						<< static_cast<Uint32>(event.button.button) << ".\n";
-					assert(false);
-					break;
-			}
-		}
-
-		// If we handled the window abort.
-		if(dynamic_cast<twindow*>(widget)) {
-			return;
-		}
-		widget = widget->parent();
-	}
-}
-
-void tevent_handler::focus_parent_container(twidget* widget)
-{
-	assert(widget);
-
-	twidget* parent = widget->parent();
-	while(parent) {
-
-		tcontainer_* container = dynamic_cast<tcontainer_*>(parent);
-		if(container) {
-			if(container != widget->get_window() && container->get_active()) {
-				container->focus(*this);
-			}
-			return;
-		}
-
-		parent = parent->parent();
-	}
-
-}
-
-void tevent_handler::focus_parent_window(twidget* widget)
-{
-	assert(widget);
-
-	twindow* window = widget->get_window();
-	assert(window);
-
-	if(window->get_active()) {
-		window->focus(*this);
-	}
-}
-#endif
 
 void tevent_handler::set_hover(const bool test_on_widget)
 {
@@ -802,35 +363,6 @@ void tevent_handler::set_hover(const bool test_on_widget)
 
 	SDL_AddTimer(settings::popup_show_delay, hover_callback, hover);
 }
-
-#ifdef GUI2_OLD_EVENT_HANDLING
-void tevent_handler::key_down(const SDL_Event& event)
-{
-	// We capture the F! for the help, but only if the mouse is on an object.
-	if(mouse_focus_/* && !mouse_captured_
-			&& event.key.keysym.mod == 0 */ && event.key.keysym.sym == SDLK_F1) {
-
-		mouse_focus_->help_key(*this);
-		return;
-	}
-
-	bool handled = false;
-	if(keyboard_focus_) {
-		keyboard_focus_->key_press(*this, handled,
-			event.key.keysym.sym, event.key.keysym.mod, event.key.keysym.unicode);
-	}
-
-	std::vector<twidget*>::reverse_iterator ritor = keyboard_focus_chain_.rbegin();
-	for(; !handled && ritor != keyboard_focus_chain_.rend(); ++ritor) {
-		if(*ritor == keyboard_focus_) {
-			continue;
-		}
-
-		(**ritor).key_press(*this, handled,
-			event.key.keysym.sym, event.key.keysym.mod, event.key.keysym.unicode);
-	}
-}
-#endif
 
 void tevent_handler::connect_signals(twidget& w)
 {

@@ -44,20 +44,6 @@ public:
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-#ifdef GUI2_OLD_EVENT_HANDLING
-	/** Inherted from tevent_executor. */
-	void mouse_enter(tevent_handler&);
-
-	/** Inherted from tevent_executor. */
-	void mouse_leave(tevent_handler&);
-
-	/** Inherted from tevent_executor. */
-	void mouse_left_button_click(tevent_handler&);
-
-	/** Inherted from tevent_executor. */
-	void mouse_left_button_double_click(tevent_handler&);
-#endif
-
 	/** Inherited from tcontainer_ */
 	twidget* find_at(const tpoint& coordinate, const bool must_be_active)
 	{
@@ -68,25 +54,18 @@ public:
 		 * intended button on the addon panel. So we need to chain mouse events
 		 * as well and also add a handled flag for them.
 		 */
-#ifndef GUI2_OLD_EVENT_HANDLING
+
 		twidget* result = tcontainer_::find_at(coordinate, must_be_active);
 		return result ? result : tcontrol::find_at(coordinate, must_be_active);
-#else
-		return tcontrol::find_at(coordinate, must_be_active);
-#endif
 	}
 
 	/** Inherited from tcontainer_ */
 	const twidget* find_at(
 			const tpoint& coordinate, const bool must_be_active) const
 	{
-#ifndef GUI2_OLD_EVENT_HANDLING
 		const twidget* result =
 				tcontainer_::find_at(coordinate, must_be_active);
 		return result ? result : tcontrol::find_at(coordinate, must_be_active);
-#else
-		return tcontrol::find_at(coordinate, must_be_active);
-#endif
 	}
 
 	/** Inherited from tpanel. */

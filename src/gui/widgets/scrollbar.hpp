@@ -80,33 +80,6 @@ public:
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-#ifdef GUI2_OLD_EVENT_HANDLING
-	/**
-	 * Inherited from tevent_executor.
-	 *
-	 * We only need to track the mouse if it's on the positioner so the normal
-	 * enter doesn't help so transfer the control.
-	 */
-	void mouse_enter(tevent_handler& event) { mouse_move(event); }
-
-	/** Inherited from tevent_executor. */
-	void mouse_move(tevent_handler& event);
-
-	/**
-	 * Inherited from tevent_executor.
-	 *
-	 * Leave doesn't have the problem which mouse_enter has so it does it's own
-	 * job.
-	 */
-	void mouse_leave(tevent_handler&);
-
-	/** Inherited from tevent_executor. */
-	void mouse_left_button_down(tevent_handler& event);
-
-	/** Inherited from tevent_executor. */
-	void mouse_left_button_up(tevent_handler& event);
-#endif
-
 	/** Inherited from tcontrol. */
 	void set_active(const bool active)
 		{ if(get_active() != active) set_state(active ? ENABLED : DISABLED); };

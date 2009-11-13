@@ -54,23 +54,6 @@ public:
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-#ifdef GUI2_OLD_EVENT_HANDLING
-	/** Inherted from tevent_executor. */
-	void mouse_enter(tevent_handler&);
-
-	/** Inherted from tevent_executor. */
-	void mouse_leave(tevent_handler&);
-
-	/** Inherted from tevent_executor. */
-	void mouse_left_button_down(tevent_handler& event);
-
-	/** Inherted from tevent_executor. */
-	void mouse_left_button_up(tevent_handler&);
-
-	/** Inherted from tevent_executor. */
-	void mouse_left_button_click(tevent_handler&);
-#endif
-
 	/** Inherited from tcontrol. */
 	void set_active(const bool active)
 		{ if(get_active() != active) set_state(active ? ENABLED : DISABLED); };

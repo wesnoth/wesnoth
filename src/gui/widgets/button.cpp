@@ -55,58 +55,6 @@ void tbutton::disconnect_signal_mouse_left_click(
 	disconnect_signal<event::LEFT_BUTTON_CLICK>(signal);
 }
 
-#ifdef GUI2_OLD_EVENT_HANDLING
-void tbutton::mouse_enter(tevent_handler&)
-{
-	DBG_GUI_E << "Button: mouse enter.\n";
-
-	set_state(FOCUSSED);
-}
-
-void tbutton::mouse_leave(tevent_handler&)
-{
-	DBG_GUI_E << "Button: mouse leave.\n";
-
-	set_state(ENABLED);
-}
-
-void tbutton::mouse_left_button_down(tevent_handler& event)
-{
-	DBG_GUI_E << "Button: left mouse button down.\n";
-
-	event.mouse_capture();
-
-	set_state(PRESSED);
-}
-
-void tbutton::mouse_left_button_up(tevent_handler&)
-{
-	DBG_GUI_E << "Button: left mouse button up.\n";
-
-	set_state(FOCUSSED);
-}
-
-void tbutton::mouse_left_button_click(tevent_handler&)
-{
-	DBG_GUI_E << "Button: left mouse button click.\n";
-
-	sound::play_UI_sound(settings::sound_button_click);
-
-	// If a button has a retval do the default handling.
-	if(retval_ != 0) {
-		twindow* window = get_window();
-		if(window) {
-			window->set_retval(retval_);
-			return;
-		}
-	}
-
-	if(callback_mouse_left_click_) {
-		callback_mouse_left_click_(this);
-	}
-}
-#endif
-
 void tbutton::set_state(const tstate state)
 {
 	if(state != state_) {

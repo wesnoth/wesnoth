@@ -277,9 +277,8 @@ twindow::twindow(CVideo& video,
 	help_popup_.set_visible(twidget::HIDDEN);
 
 	tmanager::instance().add(*this);
-#ifndef GUI2_OLD_EVENT_HANDLING
+
 	connect();
-#endif
 
 #ifdef GUI2_OLD_EVENT_DISPATCHER
 	connect_signals(*this);
@@ -684,23 +683,6 @@ void twindow::draw()
 	video_.flip();
 	cursor::undraw(frame_buffer);
 }
-
-#ifdef GUI2_OLD_EVENT_HANDLING
-void twindow::window_resize(tevent_handler&,
-		const unsigned new_width, const unsigned new_height)
-{
-	bool handled = false;
-	signal_handler_sdl_video_resize(event::SDL_VIDEO_RESIZE
-			, handled
-			, tpoint(new_width, new_height));
-}
-
-void twindow::key_press(tevent_handler& /*event_handler*/, bool& handled,
-		SDLKey key, SDLMod /*modifier*/, Uint16 /*unicode*/)
-{
-	signal_handler_sdl_key_down(event::SDL_KEY_DOWN, handled, key);
-}
-#endif
 
 void twindow::init_linked_size_group(const std::string& id,
 		const bool fixed_width, const bool fixed_height)
