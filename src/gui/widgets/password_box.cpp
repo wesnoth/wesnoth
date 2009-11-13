@@ -120,5 +120,11 @@ void tpassword_box::post_function() {
 	set_dirty();
 }
 
+const std::string& tpassword_box::get_control_type() const
+{
+	static const std::string type = "password_box";
+	return type;
+}
+
 } //namespace gui2
 

@@ -74,6 +74,8 @@ private:
 
 	std::string real_value_;
 
+	/** Inherited from ttext_box. */
+	const std::string& get_control_type() const;
 };
 
 } //namespace gui2
