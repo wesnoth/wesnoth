@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-11-09 18:26+0100\n"
-"PO-Revision-Date: 2009-11-12 00:39-0500\n"
+"PO-Revision-Date: 2009-11-12 20:06-0500\n"
 "Last-Translator: Michael Babich (Aethaeryn) <michaelbabich7@gmail.com>\n"
 "Language-Team: Latin\n"
 "MIME-Version: 1.0\n"
@@ -2620,7 +2620,7 @@ msgstr ""
 #. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:697
 msgid "Unwalkable"
-msgstr ""
+msgstr "Nonterra"
 
 #. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:700
@@ -2728,9 +2728,8 @@ msgstr ""
 
 #. [topic]: id=terrain_impassable
 #: data/core/help.cfg:751
-#, fuzzy
 msgid "Impassable"
-msgstr "Inexsuperabiles"
+msgstr "Impervius"
 
 #. [topic]: id=terrain_impassable
 #: data/core/help.cfg:754
@@ -5097,15 +5096,13 @@ msgstr "Nullae impensae"
 
 #. [trait]: id=undead
 #: data/core/macros/traits.cfg:22
-#, fuzzy
 msgid "undead"
-msgstr "inmortuus"
+msgstr "inmortus"
 
 #. [trait]: id=undead
 #: data/core/macros/traits.cfg:23
-#, fuzzy
 msgid "female^undead"
-msgstr "Veteratrix"
+msgstr "inmortus"
 
 #. [trait]: id=undead
 #. [trait]: id=mechanical
@@ -6761,14 +6758,12 @@ msgid ""
 msgstr ""
 
 #: data/temp-file_send_data_strings.cfg:15
-#, fuzzy
 msgid "Send"
-msgstr "Harena"
+msgstr "Mittere"
 
 #: data/temp-file_send_data_strings.cfg:16
-#, fuzzy
 msgid "Don't send"
-msgstr "Noli me rursus rogitare!"
+msgstr "Nolle mittere"
 
 #: data/temp-file_send_data_strings.cfg:18
 msgid "Do not ask every time before sending data"
@@ -6836,16 +6831,14 @@ msgstr "viculi"
 #. [label]: id=units-icon
 #: data/themes/default.cfg:249 data/themes/dfool.cfg:279
 #: data/themes/experimental.cfg:217
-#, fuzzy
 msgid "units"
-msgstr "unitates"
+msgstr "actores"
 
 #. [label]: id=upkeep-icon
 #: data/themes/default.cfg:258 data/themes/dfool.cfg:288
 #: data/themes/experimental.cfg:226
-#, fuzzy
 msgid "upkeep"
-msgstr "impensa"
+msgstr "impendium"
 
 #. [label]: id=income-icon
 #: data/themes/default.cfg:267 data/themes/dfool.cfg:297
@@ -6861,15 +6854,13 @@ msgstr "ordo"
 
 #. [unit_moves]: id=unit-moves
 #: data/themes/default.cfg:459 data/themes/experimental.cfg:399
-#, fuzzy
 msgid "statuspanel^moves"
 msgstr "motus"
 
 #. [unit_defense]: id=unit-defense
 #: data/themes/default.cfg:468 data/themes/experimental.cfg:408
-#, fuzzy
 msgid "statuspanel^terrain def."
-msgstr "e gradu"
+msgstr "terra def."
 
 #. [change]: id=actions-menu
 #: data/themes/default.cfg:1004
@@ -6920,9 +6911,8 @@ msgstr "mora in fine tractu"
 
 #. [menu]: id=button-resetreplay, type=image
 #: data/themes/macros.cfg:110
-#, fuzzy
 msgid "Reset"
-msgstr "Rursum Initium Facere"
+msgstr "Reponere"
 
 #. [menu]: id=button-resetreplay, type=image
 #: data/themes/macros.cfg:111
@@ -7150,7 +7140,6 @@ msgid "The server responded with an error: \"$error|\""
 msgstr "Moderatrum respondet cum mendo: \""
 
 #: src/addon_management.cpp:538
-#, fuzzy
 msgid "Terms"
 msgstr "Condicio"
 
@@ -7165,7 +7154,6 @@ msgstr "Moderatrum respondet cum mendo: \""
 
 #: src/addon_management.cpp:579 src/addon_management.cpp:604
 #: src/multiplayer_wait.cpp:403
-#, fuzzy
 msgid "Response"
 msgstr "Responsum"
 
@@ -7240,14 +7228,12 @@ msgid "Select an add-on to update:"
 msgstr ""
 
 #: src/addon_management.cpp:871
-#, fuzzy
 msgid "Update all"
-msgstr "Murus Cavernae"
+msgstr ""
 
 #: src/addon_management.cpp:928
-#, fuzzy
 msgid "Update failed"
-msgstr "Murus Cavernae"
+msgstr ""
 
 #: src/addon_management.cpp:930
 #, fuzzy
@@ -7258,9 +7244,8 @@ msgstr[0] "Haec stipendia errores continent et restitui non possunt: "
 msgstr[1] "Haec stipendia errores continent et restitui non possunt: "
 
 #: src/addon_management.cpp:939
-#, fuzzy
 msgid "Update succeeded"
-msgstr "Adiuncta Trahere"
+msgstr ""
 
 #: src/addon_management.cpp:940
 msgid "Add-on updated successfully."
@@ -7442,9 +7427,8 @@ msgid "Chance of being unscathed"
 msgstr "Probabilitas damnum effugendi"
 
 #: src/attack_prediction_display.cpp:547 src/mouse_events.cpp:702
-#, fuzzy
 msgid "Damage Calculations"
-msgstr "Rationes Damni"
+msgstr "Calculi Damnorum"
 
 #: src/dialogs.cpp:127
 #, fuzzy
@@ -7476,9 +7460,8 @@ msgid "Don't ask me again!"
 msgstr "Noli me rursus rogitare!"
 
 #: src/dialogs.cpp:432 src/savegame.cpp:132
-#, fuzzy
 msgid "%a %b %d %H:%M %Y"
-msgstr "%a·%b·%d·%H:%M·%Y"
+msgstr "%a %b %d %H:%M %Y"
 
 #: src/dialogs.cpp:448
 msgid "#(Invalid)"
@@ -7520,24 +7503,20 @@ msgstr "Versio: "
 
 #: src/dialogs.cpp:516 src/dialogs.cpp:532 src/savegame.cpp:161
 #: src/savegame.cpp:177
-#, fuzzy
 msgid "%b %d %y"
 msgstr "%b %d %y"
 
 #: src/dialogs.cpp:522 src/savegame.cpp:167
-#, fuzzy
 msgid "%H:%M"
 msgstr "%H:%M"
 
 #: src/dialogs.cpp:525 src/savegame.cpp:170
-#, fuzzy
 msgid "%A, %H:%M"
-msgstr "%A,·%H:%M"
+msgstr "%A, %H:%M"
 
 #: src/dialogs.cpp:528 src/savegame.cpp:173
-#, fuzzy
 msgid "%b %d"
-msgstr "%b·%d"
+msgstr "%b %d"
 
 #: src/dialogs.cpp:556
 #, fuzzy
@@ -7593,9 +7572,8 @@ msgid "Delete Save"
 msgstr "Servatum Delere"
 
 #: src/dialogs.cpp:674
-#, fuzzy
 msgid "Profile"
-msgstr "Lineamenta"
+msgstr "Informatio"
 
 #: src/dialogs.cpp:770 src/help.cpp:1330
 msgid "level"
@@ -7612,9 +7590,8 @@ msgid "XP: "
 msgstr "PE: "
 
 #: src/dialogs.cpp:790 src/help.cpp:1433
-#, fuzzy
 msgid "Moves: "
-msgstr "Puncta motus: "
+msgstr "Motus: "
 
 #: src/game.cpp:661 src/game.cpp:1398
 msgid "The Battle for Wesnoth"
@@ -7910,14 +7887,12 @@ msgid "In lobby"
 msgstr "In Atrio"
 
 #: src/gui/dialogs/lobby_player_info.cpp:95
-#, fuzzy
 msgid "On friends list"
-msgstr "Ad elenchum utentium ignoratorum adiunctus: "
+msgstr "In inventario amicorum"
 
 #: src/gui/dialogs/lobby_player_info.cpp:100
-#, fuzzy
 msgid "On ignores list"
-msgstr "Ad elenchum utentium ignoratorum adiunctus: "
+msgstr ""
 
 #: src/gui/dialogs/lobby_player_info.cpp:105
 msgid "Neither a friend nor ignored"
@@ -8022,9 +7997,8 @@ msgid "unit help^Attacks"
 msgstr ""
 
 #: src/help.cpp:1457
-#, fuzzy
 msgid "unit help^Name"
-msgstr "Lusum relinquere"
+msgstr "Nomen"
 
 #: src/help.cpp:1459
 #, fuzzy
@@ -8066,9 +8040,8 @@ msgid "Terrain"
 msgstr "Terra"
 
 #: src/help.cpp:1556
-#, fuzzy
 msgid "Defense"
-msgstr "Defensus"
+msgstr "Defensum"
 
 #: src/help.cpp:1557
 #, fuzzy
@@ -8253,9 +8226,8 @@ msgid "Statistics"
 msgstr "Rationum"
 
 #: src/menu_events.cpp:204
-#, fuzzy
 msgid "Moves"
-msgstr "Puncta motus"
+msgstr "Motus"
 
 #: src/menu_events.cpp:205
 msgid "Status"
@@ -8474,9 +8446,8 @@ msgstr ""
 "Nonnullis unitatibus puncta motus relicta sunt. Visne vere tractum finire?"
 
 #: src/menu_events.cpp:1353
-#, fuzzy
 msgid "Rename Unit"
-msgstr "Unitatem Renominare"
+msgstr "Actorem transnominare"
 
 #: src/menu_events.cpp:1437
 msgid "Race"
@@ -8491,9 +8462,8 @@ msgid "Gender: "
 msgstr "Sexus:"
 
 #: src/menu_events.cpp:1551
-#, fuzzy
 msgid "Place Label"
-msgstr "Titulus Loci"
+msgstr "Titulum Ponere"
 
 #: src/menu_events.cpp:1553
 msgid "Label: "
@@ -8802,9 +8772,8 @@ msgid "Added to ignore list: "
 msgstr "Ad elenchum utentium ignoratorum adiunctus: "
 
 #: src/menu_events.cpp:2724 src/menu_events.cpp:2741
-#, fuzzy
 msgid "Invalid username: "
-msgstr "Nomen utentis invalidum: "
+msgstr "Nomen irritum: "
 
 #: src/menu_events.cpp:2739
 #, fuzzy
@@ -8873,14 +8842,12 @@ msgid "User-Command#3"
 msgstr ""
 
 #: src/mouse_events.cpp:712
-#, fuzzy
 msgid "Attack Enemy"
 msgstr "Hostem Oppugnare"
 
 #: src/mouse_events.cpp:713
-#, fuzzy
 msgid "Choose weapon:"
-msgstr "Telum eligere: "
+msgstr "Opta ferrum:"
 
 #: src/multiplayer.cpp:135 src/multiplayer.cpp:172
 #, fuzzy
@@ -9073,11 +9040,8 @@ msgid "Cannot find era $era"
 msgstr "Saeculum $era non inventum"
 
 #: src/multiplayer_connect.cpp:1587
-#, fuzzy
 msgid "Defeat enemy leader(s)"
-msgstr ""
-"Victoria:\n"
-"@Ducem ducesve hostium vincere"
+msgstr "Vince ducem hostilem (aut duces hostiles)."
 
 #: src/multiplayer_connect.cpp:1651
 #, fuzzy
@@ -9098,14 +9062,12 @@ msgid "Name of game:"
 msgstr "Nomen lusus:"
 
 #: src/multiplayer_create.cpp:79
-#, fuzzy
 msgid "Map to play:"
-msgstr "Charta ludenda:"
+msgstr "Charta ludere:"
 
 #: src/multiplayer_create.cpp:80 src/multiplayer_lobby.cpp:272
-#, fuzzy
 msgid "Use map settings"
-msgstr "Impostationibus chartae uti"
+msgstr "Electiones chartae uti"
 
 #: src/multiplayer_create.cpp:81
 #, fuzzy
@@ -9203,19 +9165,16 @@ msgid "Allow users who are not playing to watch the game"
 msgstr "Utentes qui non ludent permittere lusum adspectare"
 
 #: src/multiplayer_create.cpp:199
-#, fuzzy
 msgid "Share View"
-msgstr "Vistum compartire"
+msgstr "Prospectum Partiri"
 
 #: src/multiplayer_create.cpp:200
-#, fuzzy
 msgid "Share Maps"
-msgstr "Chartas Compartire"
+msgstr "Chartas Partiri"
 
 #: src/multiplayer_create.cpp:201
-#, fuzzy
 msgid "Share None"
-msgstr "Nullum Compartire"
+msgstr "Nullum Partiri"
 
 #: src/multiplayer_create.cpp:211
 #, fuzzy
@@ -9497,9 +9456,8 @@ msgid "time left for current turn"
 msgstr ""
 
 #: src/play_controller.cpp:185 src/replay_controller.cpp:134
-#, fuzzy
 msgid "current local time"
-msgstr "Sustentor in hoc tempore"
+msgstr "tempus currens localis"
 
 #: src/play_controller.cpp:223
 #, fuzzy
@@ -9513,9 +9471,8 @@ msgid "Auto-Save"
 msgstr "Servatum-Automatarium"
 
 #: src/play_controller.cpp:939
-#, fuzzy
 msgid "Back to turn "
-msgstr "Rursus ad tractum "
+msgstr "Rursus ad vicem "
 
 #: src/playcampaign.cpp:132 src/playcampaign.cpp:170
 #, fuzzy
@@ -9891,9 +9848,8 @@ msgid "Details"
 msgstr "cauda"
 
 #: src/statistics_dialog.cpp:175
-#, fuzzy
 msgid "Damage"
-msgstr "damnum"
+msgstr "Damni"
 
 #: src/statistics_dialog.cpp:176
 #, fuzzy
@@ -10083,9 +10039,8 @@ msgid "$attack_list|: $effect_description"
 msgstr ""
 
 #: src/unit.cpp:2416
-#, fuzzy
 msgid "moves"
-msgstr "Puncta motus"
+msgstr "motus"
 
 #: src/unit.cpp:2434 src/unit.cpp:2552
 #, fuzzy
@@ -10093,9 +10048,8 @@ msgid "XP to advance"
 msgstr "PE ad promotionem"
 
 #: src/unit.cpp:2544
-#, fuzzy
 msgid " move"
-msgstr "Puncta motus"
+msgstr " motus"
 
 #: src/unit.cpp:2560
 msgid "$effect_description per level"
@@ -10106,11 +10060,10 @@ msgid "$trait_name|: $trait_description "
 msgstr ""
 
 #: src/unit_types.cpp:193 src/unit_types.cpp:259
-#, fuzzy
 msgid "damage"
 msgid_plural "damage"
 msgstr[0] "damnum"
-msgstr[1] "damnum"
+msgstr[1] "damni"
 
 #: src/unit_types.cpp:203 src/unit_types.cpp:266
 #, fuzzy
