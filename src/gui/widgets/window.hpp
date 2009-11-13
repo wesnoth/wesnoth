@@ -23,7 +23,6 @@
 
 #include "cursor.hpp"
 #include "gui/auxiliary/formula.hpp"
-#include "gui/widgets/event_handler.hpp"
 #include "gui/widgets/helper.hpp"
 #include "gui/widgets/panel.hpp"
 #include "gui/widgets/settings.hpp"
@@ -42,20 +41,16 @@ namespace gui2{
 class tdialog;
 class tdebug_layout_graph;
 
-#ifndef GUI2_OLD_EVENT_DISPATCHER
 namespace event {
 	class tdistributor;
 } // namespace event
-#endif
+
 /**
  * base class of top level items, the only item
  * which needs to store the final canvase to draw on
  */
 class twindow
 	: public tpanel
-#ifdef GUI2_OLD_EVENT_DISPATCHER
-	, public tevent_handler
-#endif
 	, public cursor::setter
 {
 	friend class tdebug_layout_graph;
@@ -573,7 +568,6 @@ public:
 			const unsigned) {}
 #endif
 
-#ifndef GUI2_OLD_EVENT_DISPATCHER
 	event::tdistributor* event_distributor_;
 
 public:
@@ -602,7 +596,7 @@ public:
 	void remove_from_keyboard_chain(twidget* widget);
 
 private:
-#endif
+
 	/***** ***** ***** signal handlers ***** ****** *****/
 
 	void signal_handler_sdl_video_resize(

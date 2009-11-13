@@ -26,6 +26,7 @@
 #include "game_display.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "gui/auxiliary/event/distributor.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/layout_exception.hpp"
 #include "gui/widgets/button.hpp"
@@ -38,10 +39,6 @@
 #include "video.hpp"
 
 #include <boost/bind.hpp>
-
-#ifndef GUI2_OLD_EVENT_DISPATCHER
-#include "gui/auxiliary/event/distributor.hpp"
-#endif
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -226,9 +223,6 @@ twindow::twindow(CVideo& video,
 		const unsigned maximum_height,
 		const std::string& definition)
 	: tpanel()
-#ifdef GUI2_OLD_EVENT_DISPATCHER
-	, tevent_handler()
-#endif
 	, cursor::setter(cursor::NORMAL)
 	, video_(video)
 	, status_(NEW)
@@ -258,10 +252,8 @@ twindow::twindow(CVideo& video,
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	, debug_layout_(new tdebug_layout_graph(this))
 #endif
-#ifndef GUI2_OLD_EVENT_DISPATCHER
 	, event_distributor_(new event::tdistributor(
 			*this, event::tdispatcher::front_child))
-#endif
 {
 	// We load the config in here as exception.
 	// Our caller did update the screen size so no need for us to do that again.
@@ -279,10 +271,6 @@ twindow::twindow(CVideo& video,
 	tmanager::instance().add(*this);
 
 	connect();
-
-#ifdef GUI2_OLD_EVENT_DISPATCHER
-	connect_signals(*this);
-#endif
 
 	connect_signal<event::DRAW>(boost::bind(&twindow::draw, this));
 
@@ -321,9 +309,7 @@ twindow::~twindow()
 	delete debug_layout_;
 
 #endif
-#ifndef GUI2_OLD_EVENT_DISPATCHER
 	delete event_distributor_;
-#endif
 }
 
 twindow* twindow::window_instance(const unsigned handle)
@@ -880,12 +866,7 @@ void twindow::layout()
 	generate_dot_file("layout_finished", LAYOUT);
 	need_layout_ = false;
 
-#ifdef GUI2_OLD_EVENT_DISPATCHER
-	// The widgets might have moved so set the mouse location properly.
-	init_mouse_location();
-#else
 	event::init_mouse_location();
-#endif
 }
 
 void twindow::layout_linked_widgets()
@@ -1175,7 +1156,6 @@ void twindow_implementation::layout(twindow& window,
 	}
 }
 
-#ifndef GUI2_OLD_EVENT_DISPATCHER
 void twindow::mouse_capture(const bool capture)
 {
 	assert(event_distributor_);
@@ -1199,8 +1179,6 @@ void twindow::remove_from_keyboard_chain(twidget* widget)
 	assert(event_distributor_);
 	event_distributor_->keyboard_remove_from_chain(widget);
 }
-
-#endif
 
 void twindow::signal_handler_sdl_video_resize(
 			const event::tevent event, bool& handled, const tpoint& new_size)

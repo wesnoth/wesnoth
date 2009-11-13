@@ -19,7 +19,6 @@
 #include "font.hpp"
 #include "foreach.hpp"
 #include "gui/auxiliary/log.hpp"
-#include "gui/widgets/event_handler.hpp"
 #include "gui/widgets/window.hpp"
 #include "game_preferences.hpp"
 

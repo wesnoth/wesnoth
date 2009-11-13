@@ -19,7 +19,6 @@
 #include "foreach.hpp"
 #include "formatter.hpp"
 #include "gui/auxiliary/log.hpp"
-#include "gui/widgets/event_handler.hpp"
 #include "sound.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__

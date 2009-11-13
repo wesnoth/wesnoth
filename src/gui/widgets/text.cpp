@@ -18,7 +18,6 @@
 
 #include "clipboard.hpp"
 #include "gui/auxiliary/log.hpp"
-#include "gui/widgets/event_handler.hpp"
 
 #include <boost/bind.hpp>
 
