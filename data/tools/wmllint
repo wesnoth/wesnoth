@@ -574,8 +574,6 @@ notepairs = [
     ("{WEAPON_SPECIAL_POISON}", "{SPECIAL_NOTES_POISON}"),
     ]
 
-trait_note = dict(notepairs)
-note_trait = dict(map(lambda p: (p[1], p[0]), notepairs))
 
 # This needs to match the list of usage types in ai_python.cpp
 usage_types = ("scout", "fighter", "mixed fighter", "archer", "healer")
@@ -790,6 +788,8 @@ def global_sanity_check(filename, lines):
     # Also, build dictionaries of unit movement types and races
     in_unit_type = None
     notecheck = True
+    trait_note = dict(notepairs)
+    note_trait = dict(map(lambda p: (p[1], p[0]), notepairs))
     for nav in WmllintIterator(lines, filename):
         if nav.text.startswith("wmllint: notecheck off"):
             notecheck = False
