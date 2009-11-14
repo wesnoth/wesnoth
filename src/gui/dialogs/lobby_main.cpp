@@ -840,9 +840,13 @@ void tlobby_main::active_window_changed()
 			<< header.label() << " vs " << expected_label << "\n";
 	}
 
+	bool close_button_active = (t.whisper || (t.name != "lobby"));
+
 	DBG_LB << "active window changed to " << active_window_ << " "
 		<< (t.whisper ? "w" : "r") << " "
-		<< t.name << " " << t.pending_messages << " : " << expected_label << "\n";
+		<< t.name << " " << t.pending_messages << " : "
+		<< expected_label
+	    << " close button:" << close_button_active << "\n";
 
 	//clear pending messages notification in room listbox
 	tgrid* grid = roomlistbox_->get_row_grid(active_window_);
@@ -854,7 +858,7 @@ void tlobby_main::active_window_changed()
 	t.pending_messages = 0;
 
 	find_widget<tbutton>(window_, "close_window", false)
-			.set_active(t.whisper || t.name != "lobby");
+			.set_active(close_button_active);
 	update_playerlist();
 }
 
