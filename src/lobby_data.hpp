@@ -63,6 +63,7 @@ public:
 	room_info(const std::string& name);
 
 	const std::string& name() const { return name_; }
+	const std::set<std::string>& members() const { return members_; }
 	bool is_member(const std::string& user) const;
 	void add_member(const std::string& user);
 	void remove_member(const std::string& user);
