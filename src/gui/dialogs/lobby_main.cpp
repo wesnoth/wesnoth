@@ -18,6 +18,7 @@
 #include "gui/dialogs/field.hpp"
 #include "gui/dialogs/helper.hpp"
 
+#include "gui/auxiliary/log.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
@@ -314,9 +315,50 @@ tlobby_main::~tlobby_main()
 {
 }
 
+static void signal_handler_sdl_video_resize(
+		  const event::tevent event
+		, bool& handled
+		, bool& halt
+		, const tpoint& new_size
+		, CVideo& video)
+{
+	DBG_GUI_E << __func__  << ": " << event << ".\n";
+
+	if(new_size.x < preferences::min_allowed_width()
+			|| new_size.y < preferences::min_allowed_height()) {
+
+		DBG_GUI_E << __func__ << ": resize aborted, too small.\n";
+		handled = true;
+		halt = true;
+		return;
+	}
+
+	if(new_size.x == static_cast<int>(settings::screen_width)
+			&& new_size.y == static_cast<int>(settings::screen_height)) {
+
+		DBG_GUI_E << __func__ << ": resize not needed.\n";
+		handled = true;
+		return;
+	}
+
+	if(!preferences::set_resolution(video , new_size.x, new_size.y)) {
+
+		LOG_GUI_E << __func__
+				<< ": resize aborted, resize failed.\n";
+	}
+}
+
 twindow* tlobby_main::build_window(CVideo& video)
 {
-	return build(video, get_id(LOBBY_MAIN));
+	twindow* window = build(video, get_id(LOBBY_MAIN));
+	assert(window);
+
+	/** @todo Remove this code once the resizing in twindow is finished. */
+	window->connect_signal<event::SDL_VIDEO_RESIZE>(
+			  boost::bind(&signal_handler_sdl_video_resize
+				  , _2, _3, _4, _5, boost::ref(video))
+			, event::tdispatcher::front_child);
+	return window;
 }
 
 namespace {
