@@ -542,7 +542,7 @@ def standard_unit_filter():
 
 # Associations for the ability sanity checks.
 # Note: Depends on ABILITY_EXTRA_HEAL not occurring outside ABILITY_CURES.
-notepairs = (
+notepairs = [
     ("movement_type=undeadspirit", "{SPECIAL_NOTES_SPIRIT}"),
     ("type=arcane", "{SPECIAL_NOTES_ARCANE}"),
     ("{ABILITY_HEALS}", "{SPECIAL_NOTES_HEALS}"),
@@ -572,7 +572,7 @@ notepairs = (
     ("{WEAPON_SPECIAL_DRAIN}", "{SPECIAL_NOTES_DRAIN}"),
     ("{WEAPON_SPECIAL_FIRSTSTRIKE}", "{SPECIAL_NOTES_FIRSTSTRIKE}"),
     ("{WEAPON_SPECIAL_POISON}", "{SPECIAL_NOTES_POISON}"),
-    )
+    ]
 
 trait_note = dict(notepairs)
 note_trait = dict(map(lambda p: (p[1], p[0]), notepairs))
