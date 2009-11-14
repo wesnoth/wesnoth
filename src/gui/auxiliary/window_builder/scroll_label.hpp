@@ -17,6 +17,8 @@
 
 #include "gui/auxiliary/window_builder/control.hpp"
 
+#include "gui/widgets/scrollbar_container.hpp"
+
 namespace gui2 {
 
 namespace implementation {
@@ -30,7 +32,9 @@ struct tbuilder_scroll_label
 
 private:
 
-	bool auto_hide_scrollbar_;
+	tscrollbar_container::tscrollbar_mode
+			vertical_scrollbar_mode,
+			horizontal_scrollbar_mode;
 };
 
 } // namespace implementation

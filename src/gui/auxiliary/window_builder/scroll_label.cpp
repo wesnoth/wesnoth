@@ -18,6 +18,7 @@
 
 #include "config.hpp"
 #include "gui/auxiliary/log.hpp"
+#include "gui/auxiliary/window_builder/helper.hpp"
 #include "gui/widgets/scroll_label.hpp"
 
 namespace gui2 {
@@ -26,8 +27,10 @@ namespace implementation {
 
 tbuilder_scroll_label::tbuilder_scroll_label(const config& cfg)
 	: implementation::tbuilder_control(cfg)
-	, auto_hide_scrollbar_(
-		utils::string_bool(cfg["auto_hide_scrollbar"], true))
+	, vertical_scrollbar_mode(
+			get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
+	, horizontal_scrollbar_mode(
+			get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
 {
 }
 
@@ -36,6 +39,9 @@ twidget* tbuilder_scroll_label::build() const
 	tscroll_label* widget = new tscroll_label();
 
 	init_control(widget);
+
+	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
+	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
 
 	boost::intrusive_ptr<const tscroll_label_definition::tresolution> conf =
 		boost::dynamic_pointer_cast
@@ -73,13 +79,20 @@ twidget* tbuilder_scroll_label::build() const
  *
  * @macro = scroll_label_description
  *
- * A scroll label has no special fields.
- *
+ * List with the scroll label specific variables:
  * @start_table = config
- *     auto_hide_scrollbar (bool = true)
- *                                     Automatically hide the scrollbar when
- *                                     the text can be shown without the
- *                                     scrollbar.
+ *     vertical_scrollbar_mode (scrollbar_mode = auto | initial_auto)
+ *                                     Determines whether or not to show the
+ *                                     scrollbar. The default of initial_auto
+ *                                     is used when --new-widgets is used.
+ *                                     In the future the default will be
+ *                                     auto.
+ *     horizontal_scrollbar_mode (scrollbar_mode = auto | initial_auto)
+ *                                     Determines whether or not to show the
+ *                                     scrollbar. The default of initial_auto
+ *                                     is used when --new-widgets is used.
+ *                                     In the future the default will be
+ *                                     initial_auto.
  * @end_table
  */
 
