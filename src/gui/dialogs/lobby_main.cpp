@@ -475,6 +475,7 @@ void tlobby_main::update_gamelist()
 
 void tlobby_main::update_playerlist()
 {
+	DBG_LB << "Playerlist update: " << lobby_info_.users().size() << "\n";
 	lobby_info_.update_user_statuses(selected_game_id_, active_window_room());
 	lobby_info_.sort_users(player_list_.sort_by_name->get_value(), player_list_.sort_by_relation->get_value());
 
@@ -865,6 +866,7 @@ void tlobby_main::active_window_changed()
 
 void tlobby_main::close_active_window()
 {
+	DBG_LB << "Close window button clicked\n";
 	return close_window(active_window_);
 }
 
@@ -872,6 +874,7 @@ void tlobby_main::close_window(size_t idx)
 {
 	const tlobby_chat_window& t = open_windows_[idx];
 	bool active_changed = idx == active_window_;
+	DBG_LB << "Close window " << idx << " - " << t.name << "\n";
 	if (t.name == "lobby" && t.whisper == false) return;
 	if (open_windows_.size() == 1) return;
 	if (t.whisper == false) {
@@ -984,6 +987,7 @@ void tlobby_main::process_room_join(const config &data)
 	const std::string& room = data["room"];
 	const std::string& player = data["player"];
 	room_info* r = lobby_info_.get_room(room);
+	DBG_LB << "room join: " << room << " " << player << " " << (void*)r << "\n";
 
 	if (r) {
 		if (player == preferences::login()) {
@@ -1022,9 +1026,13 @@ void tlobby_main::process_room_part(const config &data)
 	//todo close room window when the part message is sent
 	const std::string& room = data["room"];
 	const std::string& player = data["player"];
+	DBG_LB << "Room part: " << room << " " << player << "\n";
 	room_info* r = lobby_info_.get_room(room);
 	if (r) {
 		r->remove_member(player);
+        if (active_window_room() == r) {
+            update_playerlist();
+        }
 	} else {
 		LOG_LB << "Discarding part info for a room the player is not in\n";
 	}

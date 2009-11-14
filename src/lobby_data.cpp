@@ -114,7 +114,7 @@ void user_info::update_state(int selected_game_id, const room_info* current_room
 		} else {
 			state = GAME;
 		}
-	} else if (state == LOBBY) {
+	} else {
 		if (current_room != NULL && current_room->is_member(name)) {
 			state = SEL_ROOM;
 		} else {
