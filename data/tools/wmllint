@@ -110,6 +110,13 @@
 #
 # A comment containing "no spellcheck" disables spellchecking on the
 # line where it occurs.
+#
+# A comment of the form 
+#
+# #wmllint: match {ABILITY_FOO} with {SPECIAL_NOTES_IOO}
+#
+# will declare an ability macro and a special-notes macro to be tied
+# together for reference-checking purposes.
 
 import sys, os, re, getopt, string, copy, difflib, time, gzip
 from wesnoth.wmltools import *
@@ -565,8 +572,6 @@ notepairs = (
     ("{WEAPON_SPECIAL_DRAIN}", "{SPECIAL_NOTES_DRAIN}"),
     ("{WEAPON_SPECIAL_FIRSTSTRIKE}", "{SPECIAL_NOTES_FIRSTSTRIKE}"),
     ("{WEAPON_SPECIAL_POISON}", "{SPECIAL_NOTES_POISON}"),
-    # UMC (The Silver Lands)
-    ("{ABILITY_HEAT_ABSORPTION}", "{SPECIAL_NOTES_HEAT_ABSORPTION}"),
     )
 
 trait_note = dict(notepairs)
@@ -1711,6 +1716,11 @@ def translator(filename, mapxforms, textxform):
                 unbalanced = True
             if "wmllint: unbalanced-off" in comment:
                 unbalanced = False
+            if "wmllint: match" in comment:
+                comment = comment.strip()
+                fields = comment.split()
+                if len(fields) == 5 and fields[3] == "with":
+                    notepairs.append(fields[2], fields[4])
     # It's an error if the tag stack is nonempty at the end of any file:
     if tagstack:
         print '"%s", line %d: tag stack nonempty (%s) at end of file.' % (filename, lineno, tagstack)
