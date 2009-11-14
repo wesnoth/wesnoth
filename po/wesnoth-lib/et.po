@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-11-09 18:26+0100\n"
+"POT-Creation-Date: 2009-11-14 10:42+0100\n"
 "PO-Revision-Date: 2009-09-27 22:29+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: none\n"
@@ -2126,15 +2126,23 @@ msgstr "Raskusaste:"
 msgid "Version: "
 msgstr "Versioon: "
 
-#: src/gui/dialogs/lobby_main.cpp:404
+#: src/gui/dialogs/lobby_main.cpp:166
+msgid "whisper to $receiver"
+msgstr ""
+
+#: src/gui/dialogs/lobby_main.cpp:367
+msgid "Games: showing $num_shown out of $num_total"
+msgstr ""
+
+#: src/gui/dialogs/lobby_main.cpp:407
 msgid "Observers allowed"
 msgstr "Vaatlejad lubatud"
 
-#: src/gui/dialogs/lobby_main.cpp:407
+#: src/gui/dialogs/lobby_main.cpp:410
 msgid "Observers not allowed"
 msgstr "Vaatlejad keelatud"
 
-#: src/gui/dialogs/lobby_main.cpp:689
+#: src/gui/dialogs/lobby_main.cpp:693
 msgid ""
 "Whisper session with $name started. If you don't want to receive messages "
 "from this user, type /ignore $name\n"
@@ -2142,19 +2150,19 @@ msgstr ""
 "Alustasid sosistamist kasutajaga $name. Kui soovid selle kasutaja sõnumeid "
 "eirata, kirjuta  /ignore $name\n"
 
-#: src/gui/dialogs/lobby_main.cpp:695
+#: src/gui/dialogs/lobby_main.cpp:699
 msgid "Room $name joined"
 msgstr "Liitusid ruumiga $name"
 
-#: src/gui/dialogs/lobby_main.cpp:1120
+#: src/gui/dialogs/lobby_main.cpp:1155
 msgid "Password Required"
 msgstr "Parool"
 
-#: src/gui/dialogs/lobby_main.cpp:1121
+#: src/gui/dialogs/lobby_main.cpp:1156
 msgid "Joining this game requires a password."
 msgstr "Selle mänguga liitumiseks on vaja parooli."
 
-#: src/gui/dialogs/lobby_main.cpp:1122
+#: src/gui/dialogs/lobby_main.cpp:1157
 msgid "Password: "
 msgstr "Parool:"
 
@@ -2191,11 +2199,11 @@ msgstr "Definitsioon '$definition' ei sisalda '$id' definitsiooni."
 msgid "No state or draw section defined."
 msgstr "Olekuid pole määratud."
 
-#: src/gui/widgets/window.cpp:789
+#: src/gui/widgets/window.cpp:757
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "Loobumiseks on vaja klõpsata vastavat nuppu."
 
-#: src/gui/widgets/window.cpp:814 src/gui/widgets/window.cpp:847
+#: src/gui/widgets/window.cpp:782 src/gui/widgets/window.cpp:815
 #: src/tests/gui/test_gui2.cpp:232
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Dialoogiaken ei mahu ekraanile."
@@ -2642,7 +2650,7 @@ msgstr "Ekraanitõmmise tegemine ebaõnnestus"
 msgid "language code for localized resources^en_US"
 msgstr "et_EE"
 
-#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:220
+#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:227
 msgid "Close Window"
 msgstr "Sulge aken"
 
@@ -2706,7 +2714,7 @@ msgstr "Maastiku $terrain jaoks ei leidu pildifaili."
 msgid "Error creating or aquiring an image."
 msgstr "Viga pildi loomisel või impordil."
 
-#: src/preferences_display.cpp:75 src/preferences_display.cpp:125
+#: src/preferences_display.cpp:75 src/preferences_display.cpp:132
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -2716,46 +2724,46 @@ msgstr ""
 "aknahaldur peab olema 16-biti režiimis. Üleekraanirežiimi jaoks peab sinu "
 "kuvar toetama 1024x768x16 režiimi."
 
-#: src/preferences_display.cpp:224
+#: src/preferences_display.cpp:231
 msgid "Hotkey Settings"
 msgstr "Kiirklahvide sätted"
 
-#: src/preferences_display.cpp:230 src/preferences_display.cpp:298
+#: src/preferences_display.cpp:237 src/preferences_display.cpp:305
 msgid "Press desired Hotkey (Esc cancels)"
 msgstr "Vajuta soovitud kiirklahvi (Esc tühistab)"
 
-#: src/preferences_display.cpp:249
+#: src/preferences_display.cpp:256
 msgid "Action"
 msgstr "Tegevus"
 
-#: src/preferences_display.cpp:249
+#: src/preferences_display.cpp:256
 msgid "Binding"
 msgstr "Klahviseos"
 
-#: src/preferences_display.cpp:261
+#: src/preferences_display.cpp:268
 msgid "Change Hotkey"
 msgstr "Muuda kiirklahvi"
 
-#: src/preferences_display.cpp:264
+#: src/preferences_display.cpp:271
 msgid "Clear Hotkey"
 msgstr "Puhasta kiirklahvi määrang"
 
-#: src/preferences_display.cpp:332
+#: src/preferences_display.cpp:339
 msgid "This Hotkey is already in use."
 msgstr "See kiirklahv on juba kasutusel."
 
-#: src/preferences_display.cpp:343
+#: src/preferences_display.cpp:350
 msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr ""
 "Hoiatus: ekraanitõmmise klahvikombinatsioonid Ctrl, Alt või Meta-klahviga ei "
 "toimi."
 
-#: src/preferences_display.cpp:434
+#: src/preferences_display.cpp:441
 msgid "There are no alternative video modes available"
 msgstr "Alternatiivsed videorežiimid puuduvad."
 
-#: src/preferences_display.cpp:463
+#: src/preferences_display.cpp:470
 msgid "Choose Resolution"
 msgstr "Muuda ekraani lahutusvõimet."
 

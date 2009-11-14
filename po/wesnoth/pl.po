@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-11-09 18:26+0100\n"
+"POT-Creation-Date: 2009-11-14 10:42+0100\n"
 "PO-Revision-Date: 2009-11-08 20:22+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
@@ -3585,7 +3585,7 @@ msgstr ""
 "zabić jednostki."
 
 #. [set_menu_item]: id=ai_controller_leader_control_{SIDE_CONTROLLED}
-#: data/core/macros/ai.cfg:408
+#: data/core/macros/ai.cfg:493
 msgid "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
 msgstr ""
 "Poproś $ally_leader.name, przywódcę strony $ally_leader.side, by się tutaj "
@@ -7977,7 +7977,7 @@ msgstr "Szukanie zainstalowanych dodatków."
 msgid "Loading title screen."
 msgstr "Ładowanie ekranu tytułowego."
 
-#: src/game_config.cpp:289
+#: src/game_config.cpp:286
 msgid "Invalid color range: "
 msgstr "Niepoprawny zakres kolorów:"
 
@@ -8354,51 +8354,51 @@ msgstr "Odczytywanie plików jednostek..."
 msgid "Reading files and creating cache..."
 msgstr "Odczytywanie plików i tworzenie pamięci podręcznej..."
 
-#: src/lobby_data.cpp:195 src/multiplayer_lobby.cpp:431
+#: src/lobby_data.cpp:200 src/multiplayer_lobby.cpp:431
 msgid "Unknown era: $era_id"
 msgstr "Nieznana era: $era_id"
 
-#: src/lobby_data.cpp:200 src/multiplayer_lobby.cpp:435
+#: src/lobby_data.cpp:205 src/multiplayer_lobby.cpp:435
 msgid "Unknown era"
 msgstr "Nieznana era"
 
-#: src/lobby_data.cpp:255 src/multiplayer_lobby.cpp:497
+#: src/lobby_data.cpp:260 src/multiplayer_lobby.cpp:497
 msgid "Remote scenario"
 msgstr "Zdalny scenariusz"
 
-#: src/lobby_data.cpp:263 src/multiplayer_lobby.cpp:504
+#: src/lobby_data.cpp:268 src/multiplayer_lobby.cpp:504
 msgid "Unknown scenario: $scenario_id"
 msgstr "Nieznany scenariusz: $scenario_id"
 
-#: src/lobby_data.cpp:268 src/multiplayer_lobby.cpp:508
+#: src/lobby_data.cpp:273 src/multiplayer_lobby.cpp:508
 msgid "Unknown scenario"
 msgstr "Nieznany scenariusz"
 
-#: src/lobby_data.cpp:274 src/multiplayer_lobby.cpp:513
+#: src/lobby_data.cpp:279 src/multiplayer_lobby.cpp:513
 msgid "Reloaded game"
 msgstr "Gra wczytana ponownie"
 
-#: src/lobby_data.cpp:285 src/multiplayer_lobby.cpp:529
+#: src/lobby_data.cpp:290 src/multiplayer_lobby.cpp:529
 msgid "Turn "
 msgstr "Tura "
 
-#: src/lobby_data.cpp:289 src/multiplayer_lobby.cpp:533
+#: src/lobby_data.cpp:294 src/multiplayer_lobby.cpp:533
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Wolne miejsce:"
 msgstr[1] "Wolne miejsca:"
 msgstr[2] "Wolnych miejsc:"
 
-#: src/lobby_data.cpp:295 src/multiplayer_lobby.cpp:544
+#: src/lobby_data.cpp:300 src/multiplayer_lobby.cpp:544
 msgid "Fog"
 msgstr "Mgła"
 
-#: src/lobby_data.cpp:298 src/lobby_data.cpp:301 src/multiplayer_create.cpp:83
+#: src/lobby_data.cpp:303 src/lobby_data.cpp:306 src/multiplayer_create.cpp:83
 #: src/multiplayer_lobby.cpp:548 src/multiplayer_lobby.cpp:554
 msgid "Shroud"
 msgstr "Mgła"
 
-#: src/lobby_data.cpp:303 src/multiplayer_lobby.cpp:558
+#: src/lobby_data.cpp:308 src/multiplayer_lobby.cpp:558
 msgid "none"
 msgstr "brak"
 
@@ -9600,12 +9600,12 @@ msgstr "aktualny czas lokalny"
 msgid "Starting game"
 msgstr "Rozpoczynanie gry"
 
-#: src/play_controller.cpp:932 src/savegame.cpp:292 src/savegame.cpp:304
+#: src/play_controller.cpp:935 src/savegame.cpp:292 src/savegame.cpp:304
 #: src/savegame.cpp:972 src/savegame.cpp:974
 msgid "Auto-Save"
 msgstr "Autozapis"
 
-#: src/play_controller.cpp:939
+#: src/play_controller.cpp:942
 msgid "Back to turn "
 msgstr "Do tury "
 
@@ -9648,10 +9648,6 @@ msgstr "Zmiana tury"
 #: src/playmp_controller.cpp:227
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "Wycofywanie ruchów nie przesłanych do serwera."
-
-#: src/playmp_controller.cpp:301
-msgid "End scenario"
-msgstr "Kończ scenariusz"
 
 #: src/playmp_controller.cpp:400
 msgid "Waiting for next scenario..."
@@ -10233,6 +10229,9 @@ msgstr "Pomóż nam uczynić Wesnoth lepszym!"
 #: src/upload_log.cpp:374
 msgid "Enable summary uploads"
 msgstr "Włącz wysyłanie podsumowań"
+
+#~ msgid "End scenario"
+#~ msgstr "Kończ scenariusz"
 
 #~ msgid "Movement cost is 0, probably a terrain with movement cost of 0."
 #~ msgstr ""

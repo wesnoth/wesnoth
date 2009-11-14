@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-11-09 18:26+0100\n"
+"POT-Creation-Date: 2009-11-14 10:42+0100\n"
 "PO-Revision-Date: 2009-11-07 15:00+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -3546,7 +3546,7 @@ msgstr ""
 "nemůže jednotku zabít."
 
 #. [set_menu_item]: id=ai_controller_leader_control_{SIDE_CONTROLLED}
-#: data/core/macros/ai.cfg:408
+#: data/core/macros/ai.cfg:493
 msgid "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
 msgstr ""
 "Požádej vůdce strany $ally_leader.side ($ally_leader.name|) o přesun sem"
@@ -7883,7 +7883,7 @@ msgstr "Hledám instalovaná rozšíření."
 msgid "Loading title screen."
 msgstr "Načítám hlavní obrazovku."
 
-#: src/game_config.cpp:289
+#: src/game_config.cpp:286
 msgid "Invalid color range: "
 msgstr "Neplatná barva: "
 
@@ -8262,53 +8262,53 @@ msgstr "Načítám soubory s jednotkami..."
 msgid "Reading files and creating cache..."
 msgstr "Načítám soubory a vytvářím dočasná úložiště..."
 
-#: src/lobby_data.cpp:195 src/multiplayer_lobby.cpp:431
+#: src/lobby_data.cpp:200 src/multiplayer_lobby.cpp:431
 msgid "Unknown era: $era_id"
 msgstr "Neznámý věk: $era_id"
 
-#: src/lobby_data.cpp:200 src/multiplayer_lobby.cpp:435
+#: src/lobby_data.cpp:205 src/multiplayer_lobby.cpp:435
 msgid "Unknown era"
 msgstr "Neznámý věk"
 
-#: src/lobby_data.cpp:255 src/multiplayer_lobby.cpp:497
+#: src/lobby_data.cpp:260 src/multiplayer_lobby.cpp:497
 msgid "Remote scenario"
 msgstr "Vzdálený scénář"
 
-#: src/lobby_data.cpp:263 src/multiplayer_lobby.cpp:504
+#: src/lobby_data.cpp:268 src/multiplayer_lobby.cpp:504
 msgid "Unknown scenario: $scenario_id"
 msgstr "Neznámý scénář: '$scenario_id|'"
 
-#: src/lobby_data.cpp:268 src/multiplayer_lobby.cpp:508
+#: src/lobby_data.cpp:273 src/multiplayer_lobby.cpp:508
 msgid "Unknown scenario"
 msgstr "Neznámý scénář"
 
 # jako že nezačala teď, ale dřív, byla přerušena a teď je načtená a pokračuje
-#: src/lobby_data.cpp:274 src/multiplayer_lobby.cpp:513
+#: src/lobby_data.cpp:279 src/multiplayer_lobby.cpp:513
 msgid "Reloaded game"
 msgstr "Načtená hra"
 
-#: src/lobby_data.cpp:285 src/multiplayer_lobby.cpp:529
+#: src/lobby_data.cpp:290 src/multiplayer_lobby.cpp:529
 msgid "Turn "
 msgstr "Kolo"
 
 # nebylo by jednodušší jenom "prázdné pozice"?
-#: src/lobby_data.cpp:289 src/multiplayer_lobby.cpp:533
+#: src/lobby_data.cpp:294 src/multiplayer_lobby.cpp:533
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Prázdná pozice:"
 msgstr[1] "Prázdné pozice:"
 msgstr[2] "Prázdných pozic:"
 
-#: src/lobby_data.cpp:295 src/multiplayer_lobby.cpp:544
+#: src/lobby_data.cpp:300 src/multiplayer_lobby.cpp:544
 msgid "Fog"
 msgstr "Mlha"
 
-#: src/lobby_data.cpp:298 src/lobby_data.cpp:301 src/multiplayer_create.cpp:83
+#: src/lobby_data.cpp:303 src/lobby_data.cpp:306 src/multiplayer_create.cpp:83
 #: src/multiplayer_lobby.cpp:548 src/multiplayer_lobby.cpp:554
 msgid "Shroud"
 msgstr "Zahalení tmou"
 
-#: src/lobby_data.cpp:303 src/multiplayer_lobby.cpp:558
+#: src/lobby_data.cpp:308 src/multiplayer_lobby.cpp:558
 msgid "none"
 msgstr "žádná"
 
@@ -9511,12 +9511,12 @@ msgstr "skutečný čas (hodiny)"
 msgid "Starting game"
 msgstr "Zahajuji hru"
 
-#: src/play_controller.cpp:932 src/savegame.cpp:292 src/savegame.cpp:304
+#: src/play_controller.cpp:935 src/savegame.cpp:292 src/savegame.cpp:304
 #: src/savegame.cpp:972 src/savegame.cpp:974
 msgid "Auto-Save"
 msgstr "Automatické uložení"
 
-#: src/play_controller.cpp:939
+#: src/play_controller.cpp:942
 msgid "Back to turn "
 msgstr "Zpět na kolo "
 
@@ -9561,10 +9561,6 @@ msgstr "Změna tahu"
 #: src/playmp_controller.cpp:227
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "Vracení pohybu ještě nebylo odesláno na server."
-
-#: src/playmp_controller.cpp:301
-msgid "End scenario"
-msgstr "Ukončit scénář"
 
 #: src/playmp_controller.cpp:400
 msgid "Waiting for next scenario..."
@@ -10139,3 +10135,6 @@ msgstr "Pomozte nám vylepšit Wesnoth!"
 #: src/upload_log.cpp:374
 msgid "Enable summary uploads"
 msgstr "Povolit posílání souhrnů"
+
+#~ msgid "End scenario"
+#~ msgstr "Ukončit scénář"

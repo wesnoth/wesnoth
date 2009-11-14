@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-11-09 18:26+0100\n"
+"POT-Creation-Date: 2009-11-14 10:42+0100\n"
 "PO-Revision-Date: 2008-12-09 21:18+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -2203,34 +2203,42 @@ msgstr ""
 msgid "Version: "
 msgstr "Versión"
 
-#: src/gui/dialogs/lobby_main.cpp:404
-msgid "Observers allowed"
+#: src/gui/dialogs/lobby_main.cpp:166
+msgid "whisper to $receiver"
+msgstr ""
+
+#: src/gui/dialogs/lobby_main.cpp:367
+msgid "Games: showing $num_shown out of $num_total"
 msgstr ""
 
 #: src/gui/dialogs/lobby_main.cpp:407
+msgid "Observers allowed"
+msgstr ""
+
+#: src/gui/dialogs/lobby_main.cpp:410
 msgid "Observers not allowed"
 msgstr ""
 
-#: src/gui/dialogs/lobby_main.cpp:689
+#: src/gui/dialogs/lobby_main.cpp:693
 msgid ""
 "Whisper session with $name started. If you don't want to receive messages "
 "from this user, type /ignore $name\n"
 msgstr ""
 
-#: src/gui/dialogs/lobby_main.cpp:695
+#: src/gui/dialogs/lobby_main.cpp:699
 msgid "Room $name joined"
 msgstr ""
 
-#: src/gui/dialogs/lobby_main.cpp:1120
+#: src/gui/dialogs/lobby_main.cpp:1155
 #, fuzzy
 msgid "Password Required"
 msgstr "Definir o contrasinal"
 
-#: src/gui/dialogs/lobby_main.cpp:1121
+#: src/gui/dialogs/lobby_main.cpp:1156
 msgid "Joining this game requires a password."
 msgstr ""
 
-#: src/gui/dialogs/lobby_main.cpp:1122
+#: src/gui/dialogs/lobby_main.cpp:1157
 #, fuzzy
 msgid "Password: "
 msgstr "Definir o contrasinal"
@@ -2270,11 +2278,11 @@ msgstr ""
 msgid "No state or draw section defined."
 msgstr "Non se definiu un servidor."
 
-#: src/gui/widgets/window.cpp:789
+#: src/gui/widgets/window.cpp:757
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr ""
 
-#: src/gui/widgets/window.cpp:814 src/gui/widgets/window.cpp:847
+#: src/gui/widgets/window.cpp:782 src/gui/widgets/window.cpp:815
 #: src/tests/gui/test_gui2.cpp:232
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr ""
@@ -2737,7 +2745,7 @@ msgstr "Fallo ó capturar a pantalla"
 msgid "language code for localized resources^en_US"
 msgstr ""
 
-#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:220
+#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:227
 msgid "Close Window"
 msgstr "Pechar a ventá"
 
@@ -2801,7 +2809,7 @@ msgstr "Non se puido obter a imaxe do terreo: $terrain."
 msgid "Error creating or aquiring an image."
 msgstr "Erro ó crear ou adquirir unha imaxe."
 
-#: src/preferences_display.cpp:75 src/preferences_display.cpp:125
+#: src/preferences_display.cpp:75 src/preferences_display.cpp:132
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -2811,44 +2819,44 @@ msgstr ""
 "configurado con 16 bits por píxel para executar o xogo nunha ventá. A túa "
 "pantalla debe soportar 1024x768x16 para executar o xogo a pantalla completa."
 
-#: src/preferences_display.cpp:224
+#: src/preferences_display.cpp:231
 msgid "Hotkey Settings"
 msgstr "Preferencias de atallos de teclado"
 
-#: src/preferences_display.cpp:230 src/preferences_display.cpp:298
+#: src/preferences_display.cpp:237 src/preferences_display.cpp:305
 msgid "Press desired Hotkey (Esc cancels)"
 msgstr "Prema a tecla desexada (Esc para cancelar)"
 
-#: src/preferences_display.cpp:249
+#: src/preferences_display.cpp:256
 msgid "Action"
 msgstr "Acción"
 
-#: src/preferences_display.cpp:249
+#: src/preferences_display.cpp:256
 msgid "Binding"
 msgstr "Asociación"
 
-#: src/preferences_display.cpp:261
+#: src/preferences_display.cpp:268
 msgid "Change Hotkey"
 msgstr "Cambiar o atallo de teclado"
 
-#: src/preferences_display.cpp:264
+#: src/preferences_display.cpp:271
 msgid "Clear Hotkey"
 msgstr "Limpar o atallo"
 
-#: src/preferences_display.cpp:332
+#: src/preferences_display.cpp:339
 msgid "This Hotkey is already in use."
 msgstr "Este Atallo de teclado xa se está usando."
 
-#: src/preferences_display.cpp:343
+#: src/preferences_display.cpp:350
 msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr ""
 
-#: src/preferences_display.cpp:434
+#: src/preferences_display.cpp:441
 msgid "There are no alternative video modes available"
 msgstr "Non hai dispoñibles modos de vídeo alternativos"
 
-#: src/preferences_display.cpp:463
+#: src/preferences_display.cpp:470
 msgid "Choose Resolution"
 msgstr "Escoller a resolución"
 

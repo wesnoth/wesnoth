@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-11-09 18:26+0100\n"
+"POT-Creation-Date: 2009-11-14 10:42+0100\n"
 "PO-Revision-Date: 2005-08-23 11:08+0100\n"
 "Last-Translator: Alfredo Beaumont <ziberpunk@ziberghetto.dhis.org>\n"
 "Language-Team: Basque <ziberpunk@ziberghetto.dhis.org>\n"
@@ -2874,7 +2874,7 @@ msgstr ""
 "txanda bakoitzean osatuak izan arte edo BP 1 izan arte"
 
 #. [set_menu_item]: id=ai_controller_leader_control_{SIDE_CONTROLLED}
-#: data/core/macros/ai.cfg:408
+#: data/core/macros/ai.cfg:493
 msgid "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
 msgstr ""
 
@@ -6489,7 +6489,7 @@ msgstr "Kanpaina jeisten..."
 msgid "Loading title screen."
 msgstr ""
 
-#: src/game_config.cpp:289
+#: src/game_config.cpp:286
 #, fuzzy
 msgid "Invalid color range: "
 msgstr "Baliogabeko kolorea"
@@ -6894,58 +6894,58 @@ msgstr "Zerbitzarira konektatzen..."
 msgid "Reading files and creating cache..."
 msgstr ""
 
-#: src/lobby_data.cpp:195 src/multiplayer_lobby.cpp:431
+#: src/lobby_data.cpp:200 src/multiplayer_lobby.cpp:431
 #, fuzzy
 msgid "Unknown era: $era_id"
 msgstr "Guda leku ezezaguna: '"
 
-#: src/lobby_data.cpp:200 src/multiplayer_lobby.cpp:435
+#: src/lobby_data.cpp:205 src/multiplayer_lobby.cpp:435
 #, fuzzy
 msgid "Unknown era"
 msgstr "Guda leku ezezaguna: '"
 
-#: src/lobby_data.cpp:255 src/multiplayer_lobby.cpp:497
+#: src/lobby_data.cpp:260 src/multiplayer_lobby.cpp:497
 #, fuzzy
 msgid "Remote scenario"
 msgstr "Guda leku ezezaguna: '"
 
-#: src/lobby_data.cpp:263 src/multiplayer_lobby.cpp:504
+#: src/lobby_data.cpp:268 src/multiplayer_lobby.cpp:504
 #, fuzzy
 msgid "Unknown scenario: $scenario_id"
 msgstr "Guda leku ezezaguna: '"
 
-#: src/lobby_data.cpp:268 src/multiplayer_lobby.cpp:508
+#: src/lobby_data.cpp:273 src/multiplayer_lobby.cpp:508
 #, fuzzy
 msgid "Unknown scenario"
 msgstr "Guda leku ezezaguna: '"
 
-#: src/lobby_data.cpp:274 src/multiplayer_lobby.cpp:513
+#: src/lobby_data.cpp:279 src/multiplayer_lobby.cpp:513
 #, fuzzy
 msgid "Reloaded game"
 msgstr "Kargatu jokalari bakarreko gordetako jokua"
 
-#: src/lobby_data.cpp:285 src/multiplayer_lobby.cpp:529
+#: src/lobby_data.cpp:290 src/multiplayer_lobby.cpp:529
 #, fuzzy
 msgid "Turn "
 msgstr "Txanda"
 
-#: src/lobby_data.cpp:289 src/multiplayer_lobby.cpp:533
+#: src/lobby_data.cpp:294 src/multiplayer_lobby.cpp:533
 #, fuzzy
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "(Erreten hutsa)"
 msgstr[1] "(Erreten hutsa)"
 
-#: src/lobby_data.cpp:295 src/multiplayer_lobby.cpp:544
+#: src/lobby_data.cpp:300 src/multiplayer_lobby.cpp:544
 msgid "Fog"
 msgstr "Behelaino"
 
-#: src/lobby_data.cpp:298 src/lobby_data.cpp:301 src/multiplayer_create.cpp:83
+#: src/lobby_data.cpp:303 src/lobby_data.cpp:306 src/multiplayer_create.cpp:83
 #: src/multiplayer_lobby.cpp:548 src/multiplayer_lobby.cpp:554
 msgid "Shroud"
 msgstr "Ezkutua"
 
-#: src/lobby_data.cpp:303 src/multiplayer_lobby.cpp:558
+#: src/lobby_data.cpp:308 src/multiplayer_lobby.cpp:558
 msgid "none"
 msgstr "bat ere ez"
 
@@ -8181,12 +8181,12 @@ msgstr "Uneko helburua:"
 msgid "Starting game"
 msgstr "Jokoa bertan behera utzi"
 
-#: src/play_controller.cpp:932 src/savegame.cpp:292 src/savegame.cpp:304
+#: src/play_controller.cpp:935 src/savegame.cpp:292 src/savegame.cpp:304
 #: src/savegame.cpp:972 src/savegame.cpp:974
 msgid "Auto-Save"
 msgstr "Auto-Gorde"
 
-#: src/play_controller.cpp:939
+#: src/play_controller.cpp:942
 msgid "Back to turn "
 msgstr ""
 
@@ -8234,11 +8234,6 @@ msgstr "urrutira"
 #: src/playmp_controller.cpp:227
 msgid "Undoing moves not yet transmitted to the server."
 msgstr ""
-
-#: src/playmp_controller.cpp:301
-#, fuzzy
-msgid "End scenario"
-msgstr "Guda leku ezezaguna: '"
 
 #: src/playmp_controller.cpp:400
 #, fuzzy
@@ -8823,6 +8818,10 @@ msgstr ""
 #: src/upload_log.cpp:374
 msgid "Enable summary uploads"
 msgstr ""
+
+#, fuzzy
+#~ msgid "End scenario"
+#~ msgstr "Guda leku ezezaguna: '"
 
 #, fuzzy
 #~ msgid "The file you have tried to load is corrupt. Continue playing?"

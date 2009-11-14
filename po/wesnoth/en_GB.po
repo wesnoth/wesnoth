@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-11-09 18:26+0100\n"
+"POT-Creation-Date: 2009-11-14 10:42+0100\n"
 "PO-Revision-Date: 2009-11-02 10:07-0500\n"
 "Last-Translator: Eric S. Raymond <esr@thyrsus.com>\n"
 "Language-Team: English (British) <en@li.org>\n"
@@ -3522,7 +3522,7 @@ msgstr ""
 "unit."
 
 #. [set_menu_item]: id=ai_controller_leader_control_{SIDE_CONTROLLED}
-#: data/core/macros/ai.cfg:408
+#: data/core/macros/ai.cfg:493
 msgid "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
 msgstr "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
 
@@ -7851,7 +7851,7 @@ msgstr "Searching for installed add-ons."
 msgid "Loading title screen."
 msgstr "Loading title screen."
 
-#: src/game_config.cpp:289
+#: src/game_config.cpp:286
 msgid "Invalid color range: "
 msgstr "Invalid colour range: "
 
@@ -8224,50 +8224,50 @@ msgstr "Reading unit files..."
 msgid "Reading files and creating cache..."
 msgstr "Reading files and creating cache..."
 
-#: src/lobby_data.cpp:195 src/multiplayer_lobby.cpp:431
+#: src/lobby_data.cpp:200 src/multiplayer_lobby.cpp:431
 msgid "Unknown era: $era_id"
 msgstr "Unknown era: $era_id"
 
-#: src/lobby_data.cpp:200 src/multiplayer_lobby.cpp:435
+#: src/lobby_data.cpp:205 src/multiplayer_lobby.cpp:435
 msgid "Unknown era"
 msgstr "Unknown era"
 
-#: src/lobby_data.cpp:255 src/multiplayer_lobby.cpp:497
+#: src/lobby_data.cpp:260 src/multiplayer_lobby.cpp:497
 msgid "Remote scenario"
 msgstr "Remote scenario"
 
-#: src/lobby_data.cpp:263 src/multiplayer_lobby.cpp:504
+#: src/lobby_data.cpp:268 src/multiplayer_lobby.cpp:504
 msgid "Unknown scenario: $scenario_id"
 msgstr "Unknown scenario: $scenario_id"
 
-#: src/lobby_data.cpp:268 src/multiplayer_lobby.cpp:508
+#: src/lobby_data.cpp:273 src/multiplayer_lobby.cpp:508
 msgid "Unknown scenario"
 msgstr "Unknown scenario"
 
-#: src/lobby_data.cpp:274 src/multiplayer_lobby.cpp:513
+#: src/lobby_data.cpp:279 src/multiplayer_lobby.cpp:513
 msgid "Reloaded game"
 msgstr "Reloaded game"
 
-#: src/lobby_data.cpp:285 src/multiplayer_lobby.cpp:529
+#: src/lobby_data.cpp:290 src/multiplayer_lobby.cpp:529
 msgid "Turn "
 msgstr "Turn "
 
-#: src/lobby_data.cpp:289 src/multiplayer_lobby.cpp:533
+#: src/lobby_data.cpp:294 src/multiplayer_lobby.cpp:533
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Vacant Slot:"
 msgstr[1] "Vacant Slots:"
 
-#: src/lobby_data.cpp:295 src/multiplayer_lobby.cpp:544
+#: src/lobby_data.cpp:300 src/multiplayer_lobby.cpp:544
 msgid "Fog"
 msgstr "Fog"
 
-#: src/lobby_data.cpp:298 src/lobby_data.cpp:301 src/multiplayer_create.cpp:83
+#: src/lobby_data.cpp:303 src/lobby_data.cpp:306 src/multiplayer_create.cpp:83
 #: src/multiplayer_lobby.cpp:548 src/multiplayer_lobby.cpp:554
 msgid "Shroud"
 msgstr "Shroud"
 
-#: src/lobby_data.cpp:303 src/multiplayer_lobby.cpp:558
+#: src/lobby_data.cpp:308 src/multiplayer_lobby.cpp:558
 msgid "none"
 msgstr "none"
 
@@ -9450,12 +9450,12 @@ msgstr "current local time"
 msgid "Starting game"
 msgstr "Starting game"
 
-#: src/play_controller.cpp:932 src/savegame.cpp:292 src/savegame.cpp:304
+#: src/play_controller.cpp:935 src/savegame.cpp:292 src/savegame.cpp:304
 #: src/savegame.cpp:972 src/savegame.cpp:974
 msgid "Auto-Save"
 msgstr "Auto-Save"
 
-#: src/play_controller.cpp:939
+#: src/play_controller.cpp:942
 msgid "Back to turn "
 msgstr "Back to turn "
 
@@ -9498,10 +9498,6 @@ msgstr "Turn changed"
 #: src/playmp_controller.cpp:227
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "Undoing moves not yet transmitted to the server."
-
-#: src/playmp_controller.cpp:301
-msgid "End scenario"
-msgstr "End scenario"
 
 #: src/playmp_controller.cpp:400
 msgid "Waiting for next scenario..."
@@ -10065,6 +10061,9 @@ msgstr "Help us make Wesnoth better for you!"
 #: src/upload_log.cpp:374
 msgid "Enable summary uploads"
 msgstr "Enable summary uploads"
+
+#~ msgid "End scenario"
+#~ msgstr "End scenario"
 
 #~ msgid ""
 #~ "This situation should test the ability of AI to spread poison around..."

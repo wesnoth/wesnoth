@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-11-09 18:26+0100\n"
+"POT-Creation-Date: 2009-11-14 10:42+0100\n"
 "PO-Revision-Date: 2008-11-04 13:44+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -3556,7 +3556,7 @@ msgstr ""
 "dræbe en enhed."
 
 #. [set_menu_item]: id=ai_controller_leader_control_{SIDE_CONTROLLED}
-#: data/core/macros/ai.cfg:408
+#: data/core/macros/ai.cfg:493
 msgid "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
 msgstr ""
 
@@ -7935,7 +7935,7 @@ msgstr "Søger efter intallerede kampagner"
 msgid "Loading title screen."
 msgstr "Henter titelskærm."
 
-#: src/game_config.cpp:289
+#: src/game_config.cpp:286
 msgid "Invalid color range: "
 msgstr "Ugyldig farveskala: "
 
@@ -8318,50 +8318,50 @@ msgstr "Læser enhedsfiler."
 msgid "Reading files and creating cache..."
 msgstr "Læser filer og opretter mellemlager."
 
-#: src/lobby_data.cpp:195 src/multiplayer_lobby.cpp:431
+#: src/lobby_data.cpp:200 src/multiplayer_lobby.cpp:431
 msgid "Unknown era: $era_id"
 msgstr "Ukendt æra: $era_id"
 
-#: src/lobby_data.cpp:200 src/multiplayer_lobby.cpp:435
+#: src/lobby_data.cpp:205 src/multiplayer_lobby.cpp:435
 msgid "Unknown era"
 msgstr "Ukendt æra"
 
-#: src/lobby_data.cpp:255 src/multiplayer_lobby.cpp:497
+#: src/lobby_data.cpp:260 src/multiplayer_lobby.cpp:497
 msgid "Remote scenario"
 msgstr "Ekstern scenarie"
 
-#: src/lobby_data.cpp:263 src/multiplayer_lobby.cpp:504
+#: src/lobby_data.cpp:268 src/multiplayer_lobby.cpp:504
 msgid "Unknown scenario: $scenario_id"
 msgstr "Ukendt scenarie: $scenario_id"
 
-#: src/lobby_data.cpp:268 src/multiplayer_lobby.cpp:508
+#: src/lobby_data.cpp:273 src/multiplayer_lobby.cpp:508
 msgid "Unknown scenario"
 msgstr "Ukendt scenarie"
 
-#: src/lobby_data.cpp:274 src/multiplayer_lobby.cpp:513
+#: src/lobby_data.cpp:279 src/multiplayer_lobby.cpp:513
 msgid "Reloaded game"
 msgstr "Indlæst spil"
 
-#: src/lobby_data.cpp:285 src/multiplayer_lobby.cpp:529
+#: src/lobby_data.cpp:290 src/multiplayer_lobby.cpp:529
 msgid "Turn "
 msgstr "Runde "
 
-#: src/lobby_data.cpp:289 src/multiplayer_lobby.cpp:533
+#: src/lobby_data.cpp:294 src/multiplayer_lobby.cpp:533
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Ledig plads:"
 msgstr[1] "Ledige pladser:"
 
-#: src/lobby_data.cpp:295 src/multiplayer_lobby.cpp:544
+#: src/lobby_data.cpp:300 src/multiplayer_lobby.cpp:544
 msgid "Fog"
 msgstr "Tåge"
 
-#: src/lobby_data.cpp:298 src/lobby_data.cpp:301 src/multiplayer_create.cpp:83
+#: src/lobby_data.cpp:303 src/lobby_data.cpp:306 src/multiplayer_create.cpp:83
 #: src/multiplayer_lobby.cpp:548 src/multiplayer_lobby.cpp:554
 msgid "Shroud"
 msgstr "Sløring"
 
-#: src/lobby_data.cpp:303 src/multiplayer_lobby.cpp:558
+#: src/lobby_data.cpp:308 src/multiplayer_lobby.cpp:558
 msgid "none"
 msgstr "ingen"
 
@@ -9565,12 +9565,12 @@ msgstr ""
 msgid "Starting game"
 msgstr "Begynder spil"
 
-#: src/play_controller.cpp:932 src/savegame.cpp:292 src/savegame.cpp:304
+#: src/play_controller.cpp:935 src/savegame.cpp:292 src/savegame.cpp:304
 #: src/savegame.cpp:972 src/savegame.cpp:974
 msgid "Auto-Save"
 msgstr "Auto-gem"
 
-#: src/play_controller.cpp:939
+#: src/play_controller.cpp:942
 msgid "Back to turn "
 msgstr "Tilbage til runde "
 
@@ -9614,10 +9614,6 @@ msgstr "afstands"
 #: src/playmp_controller.cpp:227
 msgid "Undoing moves not yet transmitted to the server."
 msgstr ""
-
-#: src/playmp_controller.cpp:301
-msgid "End scenario"
-msgstr "Afslut scenarie"
 
 #: src/playmp_controller.cpp:400
 msgid "Waiting for next scenario..."
@@ -10193,6 +10189,9 @@ msgstr "Hjælp os med at gøre Wesnoth bedre for dig!"
 #: src/upload_log.cpp:374
 msgid "Enable summary uploads"
 msgstr "Slå sending af resumer til"
+
+#~ msgid "End scenario"
+#~ msgstr "Afslut scenarie"
 
 #~ msgid "Movement cost is 0, probably a terrain with movement cost of 0."
 #~ msgstr ""

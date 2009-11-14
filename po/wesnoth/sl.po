@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-11-09 18:26+0100\n"
+"POT-Creation-Date: 2009-11-14 10:42+0100\n"
 "PO-Revision-Date: 2006-08-14 19:33+0200\n"
 "Last-Translator: Jaka Kranjc <wesnoth@prinas.si>\n"
 "Language-Team: Slovenian\n"
@@ -3439,7 +3439,7 @@ msgstr ""
 "razen če so vmes ozdravljene ali poškodovane do 1 HP."
 
 #. [set_menu_item]: id=ai_controller_leader_control_{SIDE_CONTROLLED}
-#: data/core/macros/ai.cfg:408
+#: data/core/macros/ai.cfg:493
 msgid "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
 msgstr ""
 
@@ -7156,7 +7156,7 @@ msgstr "Pošiljanje dodatka"
 msgid "Loading title screen."
 msgstr "Nalaganje uvodnega zaslona."
 
-#: src/game_config.cpp:289
+#: src/game_config.cpp:286
 #, fuzzy
 msgid "Invalid color range: "
 msgstr "Neveljavna barva"
@@ -7563,39 +7563,39 @@ msgstr "Branje datotek enot."
 msgid "Reading files and creating cache..."
 msgstr "Branje datotek in ustvarjanje predpomnilnika."
 
-#: src/lobby_data.cpp:195 src/multiplayer_lobby.cpp:431
+#: src/lobby_data.cpp:200 src/multiplayer_lobby.cpp:431
 #, fuzzy
 msgid "Unknown era: $era_id"
 msgstr "Neznana era"
 
-#: src/lobby_data.cpp:200 src/multiplayer_lobby.cpp:435
+#: src/lobby_data.cpp:205 src/multiplayer_lobby.cpp:435
 msgid "Unknown era"
 msgstr "Neznana era"
 
-#: src/lobby_data.cpp:255 src/multiplayer_lobby.cpp:497
+#: src/lobby_data.cpp:260 src/multiplayer_lobby.cpp:497
 msgid "Remote scenario"
 msgstr "Oddaljen scenarij"
 
-#: src/lobby_data.cpp:263 src/multiplayer_lobby.cpp:504
+#: src/lobby_data.cpp:268 src/multiplayer_lobby.cpp:504
 #, fuzzy
 msgid "Unknown scenario: $scenario_id"
 msgstr "Neznan scenarij: '"
 
-#: src/lobby_data.cpp:268 src/multiplayer_lobby.cpp:508
+#: src/lobby_data.cpp:273 src/multiplayer_lobby.cpp:508
 msgid "Unknown scenario"
 msgstr "Neznan scenarij"
 
-#: src/lobby_data.cpp:274 src/multiplayer_lobby.cpp:513
+#: src/lobby_data.cpp:279 src/multiplayer_lobby.cpp:513
 #, fuzzy
 msgid "Reloaded game"
 msgstr "Naloži enoigralski shranjen položaj"
 
-#: src/lobby_data.cpp:285 src/multiplayer_lobby.cpp:529
+#: src/lobby_data.cpp:290 src/multiplayer_lobby.cpp:529
 #, fuzzy
 msgid "Turn "
 msgstr "Poteza"
 
-#: src/lobby_data.cpp:289 src/multiplayer_lobby.cpp:533
+#: src/lobby_data.cpp:294 src/multiplayer_lobby.cpp:533
 #, fuzzy
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
@@ -7604,16 +7604,16 @@ msgstr[1] "Prazno mesto:"
 msgstr[2] "Prazno mesto:"
 msgstr[3] "Prazno mesto:"
 
-#: src/lobby_data.cpp:295 src/multiplayer_lobby.cpp:544
+#: src/lobby_data.cpp:300 src/multiplayer_lobby.cpp:544
 msgid "Fog"
 msgstr "Megla"
 
-#: src/lobby_data.cpp:298 src/lobby_data.cpp:301 src/multiplayer_create.cpp:83
+#: src/lobby_data.cpp:303 src/lobby_data.cpp:306 src/multiplayer_create.cpp:83
 #: src/multiplayer_lobby.cpp:548 src/multiplayer_lobby.cpp:554
 msgid "Shroud"
 msgstr "Koprena"
 
-#: src/lobby_data.cpp:303 src/multiplayer_lobby.cpp:558
+#: src/lobby_data.cpp:308 src/multiplayer_lobby.cpp:558
 msgid "none"
 msgstr "brez"
 
@@ -8868,12 +8868,12 @@ msgstr "Trenutni vzdrževalec:"
 msgid "Starting game"
 msgstr "Prekini igro"
 
-#: src/play_controller.cpp:932 src/savegame.cpp:292 src/savegame.cpp:304
+#: src/play_controller.cpp:935 src/savegame.cpp:292 src/savegame.cpp:304
 #: src/savegame.cpp:972 src/savegame.cpp:974
 msgid "Auto-Save"
 msgstr "Samodejno shranjen položaj"
 
-#: src/play_controller.cpp:939
+#: src/play_controller.cpp:942
 msgid "Back to turn "
 msgstr "Nazaj k potezi "
 
@@ -8921,11 +8921,6 @@ msgstr "na daleč"
 #: src/playmp_controller.cpp:227
 msgid "Undoing moves not yet transmitted to the server."
 msgstr ""
-
-#: src/playmp_controller.cpp:301
-#, fuzzy
-msgid "End scenario"
-msgstr "Oddaljen scenarij"
 
 #: src/playmp_controller.cpp:400
 #, fuzzy
@@ -9530,6 +9525,10 @@ msgstr "Pomagajte nam izboljšati Wesnoth!"
 #: src/upload_log.cpp:374
 msgid "Enable summary uploads"
 msgstr "Omogoči pošiljanje povzetkov"
+
+#, fuzzy
+#~ msgid "End scenario"
+#~ msgstr "Oddaljen scenarij"
 
 #, fuzzy
 #~ msgid "The file you have tried to load is corrupt. Continue playing?"

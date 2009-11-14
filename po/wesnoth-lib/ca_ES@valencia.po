@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.5.5+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-11-09 18:26+0100\n"
+"POT-Creation-Date: 2009-11-14 10:42+0100\n"
 "PO-Revision-Date: 2008-10-25 11:30+0200\n"
 "Last-Translator: Robert Millan <rmh@aybabtu.com>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
@@ -2205,34 +2205,42 @@ msgstr ""
 msgid "Version: "
 msgstr "Versió"
 
-#: src/gui/dialogs/lobby_main.cpp:404
-msgid "Observers allowed"
+#: src/gui/dialogs/lobby_main.cpp:166
+msgid "whisper to $receiver"
+msgstr ""
+
+#: src/gui/dialogs/lobby_main.cpp:367
+msgid "Games: showing $num_shown out of $num_total"
 msgstr ""
 
 #: src/gui/dialogs/lobby_main.cpp:407
+msgid "Observers allowed"
+msgstr ""
+
+#: src/gui/dialogs/lobby_main.cpp:410
 msgid "Observers not allowed"
 msgstr ""
 
-#: src/gui/dialogs/lobby_main.cpp:689
+#: src/gui/dialogs/lobby_main.cpp:693
 msgid ""
 "Whisper session with $name started. If you don't want to receive messages "
 "from this user, type /ignore $name\n"
 msgstr ""
 
-#: src/gui/dialogs/lobby_main.cpp:695
+#: src/gui/dialogs/lobby_main.cpp:699
 msgid "Room $name joined"
 msgstr ""
 
-#: src/gui/dialogs/lobby_main.cpp:1120
+#: src/gui/dialogs/lobby_main.cpp:1155
 #, fuzzy
 msgid "Password Required"
 msgstr "Establix la contrasenya"
 
-#: src/gui/dialogs/lobby_main.cpp:1121
+#: src/gui/dialogs/lobby_main.cpp:1156
 msgid "Joining this game requires a password."
 msgstr ""
 
-#: src/gui/dialogs/lobby_main.cpp:1122
+#: src/gui/dialogs/lobby_main.cpp:1157
 #, fuzzy
 msgid "Password: "
 msgstr "Establix la contrasenya"
@@ -2270,11 +2278,11 @@ msgstr ""
 msgid "No state or draw section defined."
 msgstr ""
 
-#: src/gui/widgets/window.cpp:789
+#: src/gui/widgets/window.cpp:757
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr ""
 
-#: src/gui/widgets/window.cpp:814 src/gui/widgets/window.cpp:847
+#: src/gui/widgets/window.cpp:782 src/gui/widgets/window.cpp:815
 #: src/tests/gui/test_gui2.cpp:232
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr ""
@@ -2725,7 +2733,7 @@ msgid "language code for localized resources^en_US"
 msgstr ""
 
 # Hmm, cal el «Window» a l'original?
-#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:220
+#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:227
 msgid "Close Window"
 msgstr "Tanca"
 
@@ -2789,7 +2797,7 @@ msgstr "No s'ha pogut obtindre la imatge del terreny: $terrain."
 msgid "Error creating or aquiring an image."
 msgstr "S'ha produït un error en crear o adquirir una imatge."
 
-#: src/preferences_display.cpp:75 src/preferences_display.cpp:125
+#: src/preferences_display.cpp:75 src/preferences_display.cpp:132
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -2799,44 +2807,44 @@ msgstr ""
 "suportar una resolució de 1024x768x16 per tal de poder jugar a pantalla "
 "completa."
 
-#: src/preferences_display.cpp:224
+#: src/preferences_display.cpp:231
 msgid "Hotkey Settings"
 msgstr "Dreceres de teclat"
 
-#: src/preferences_display.cpp:230 src/preferences_display.cpp:298
+#: src/preferences_display.cpp:237 src/preferences_display.cpp:305
 msgid "Press desired Hotkey (Esc cancels)"
 msgstr "Premeu la tecla desitjada (o cancel·leu amb la tecla d'escapada)"
 
-#: src/preferences_display.cpp:249
+#: src/preferences_display.cpp:256
 msgid "Action"
 msgstr "Acció"
 
-#: src/preferences_display.cpp:249
+#: src/preferences_display.cpp:256
 msgid "Binding"
 msgstr "Drecera"
 
-#: src/preferences_display.cpp:261
+#: src/preferences_display.cpp:268
 msgid "Change Hotkey"
 msgstr "Canvia la tecla"
 
-#: src/preferences_display.cpp:264
+#: src/preferences_display.cpp:271
 msgid "Clear Hotkey"
 msgstr "Esborra la tecla"
 
-#: src/preferences_display.cpp:332
+#: src/preferences_display.cpp:339
 msgid "This Hotkey is already in use."
 msgstr "Esta tecla ja està en ús."
 
-#: src/preferences_display.cpp:343
+#: src/preferences_display.cpp:350
 msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr ""
 
-#: src/preferences_display.cpp:434
+#: src/preferences_display.cpp:441
 msgid "There are no alternative video modes available"
 msgstr "No hi ha modes de vídeo alternatius disponibles"
 
-#: src/preferences_display.cpp:463
+#: src/preferences_display.cpp:470
 msgid "Choose Resolution"
 msgstr "Tria la resolució"
 

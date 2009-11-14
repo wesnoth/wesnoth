@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-11-09 18:26+0100\n"
+"POT-Creation-Date: 2009-11-14 10:42+0100\n"
 "PO-Revision-Date: 2009-08-01 21:03+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
@@ -3502,7 +3502,7 @@ msgstr ""
 "osebe nemôže obeť zabiť."
 
 #. [set_menu_item]: id=ai_controller_leader_control_{SIDE_CONTROLLED}
-#: data/core/macros/ai.cfg:408
+#: data/core/macros/ai.cfg:493
 msgid "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
 msgstr ""
 
@@ -7852,7 +7852,7 @@ msgstr "Hľadám nainštalované doplnky"
 msgid "Loading title screen."
 msgstr "Načítava sa úvodná obrazovka."
 
-#: src/game_config.cpp:289
+#: src/game_config.cpp:286
 msgid "Invalid color range: "
 msgstr "Neplatný farebný rozsah: "
 
@@ -8236,51 +8236,51 @@ msgstr "Načítavajú sa súbory jednotiek."
 msgid "Reading files and creating cache..."
 msgstr "Načítavajú sa súbory a vytvára vyrovnávacia pamäť."
 
-#: src/lobby_data.cpp:195 src/multiplayer_lobby.cpp:431
+#: src/lobby_data.cpp:200 src/multiplayer_lobby.cpp:431
 msgid "Unknown era: $era_id"
 msgstr "Neznáma éra: $era_id"
 
-#: src/lobby_data.cpp:200 src/multiplayer_lobby.cpp:435
+#: src/lobby_data.cpp:205 src/multiplayer_lobby.cpp:435
 msgid "Unknown era"
 msgstr "Neznáma éra"
 
-#: src/lobby_data.cpp:255 src/multiplayer_lobby.cpp:497
+#: src/lobby_data.cpp:260 src/multiplayer_lobby.cpp:497
 msgid "Remote scenario"
 msgstr "Scéna z iného počítača"
 
-#: src/lobby_data.cpp:263 src/multiplayer_lobby.cpp:504
+#: src/lobby_data.cpp:268 src/multiplayer_lobby.cpp:504
 msgid "Unknown scenario: $scenario_id"
 msgstr "Neznáma scéna: $scenario_id"
 
-#: src/lobby_data.cpp:268 src/multiplayer_lobby.cpp:508
+#: src/lobby_data.cpp:273 src/multiplayer_lobby.cpp:508
 msgid "Unknown scenario"
 msgstr "Neznáma scéna"
 
-#: src/lobby_data.cpp:274 src/multiplayer_lobby.cpp:513
+#: src/lobby_data.cpp:279 src/multiplayer_lobby.cpp:513
 msgid "Reloaded game"
 msgstr "Znovunačítaná hra"
 
-#: src/lobby_data.cpp:285 src/multiplayer_lobby.cpp:529
+#: src/lobby_data.cpp:290 src/multiplayer_lobby.cpp:529
 msgid "Turn "
 msgstr "Kolo "
 
-#: src/lobby_data.cpp:289 src/multiplayer_lobby.cpp:533
+#: src/lobby_data.cpp:294 src/multiplayer_lobby.cpp:533
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Voľné miesta:"
 msgstr[1] "Voľné miesto:"
 msgstr[2] "Voľné miesta:"
 
-#: src/lobby_data.cpp:295 src/multiplayer_lobby.cpp:544
+#: src/lobby_data.cpp:300 src/multiplayer_lobby.cpp:544
 msgid "Fog"
 msgstr "Hmla"
 
-#: src/lobby_data.cpp:298 src/lobby_data.cpp:301 src/multiplayer_create.cpp:83
+#: src/lobby_data.cpp:303 src/lobby_data.cpp:306 src/multiplayer_create.cpp:83
 #: src/multiplayer_lobby.cpp:548 src/multiplayer_lobby.cpp:554
 msgid "Shroud"
 msgstr "Odkrývanie mapy"
 
-#: src/lobby_data.cpp:303 src/multiplayer_lobby.cpp:558
+#: src/lobby_data.cpp:308 src/multiplayer_lobby.cpp:558
 msgid "none"
 msgstr "nič"
 
@@ -9472,12 +9472,12 @@ msgstr ""
 msgid "Starting game"
 msgstr "Začínam hru"
 
-#: src/play_controller.cpp:932 src/savegame.cpp:292 src/savegame.cpp:304
+#: src/play_controller.cpp:935 src/savegame.cpp:292 src/savegame.cpp:304
 #: src/savegame.cpp:972 src/savegame.cpp:974
 msgid "Auto-Save"
 msgstr "Automatické uloženie"
 
-#: src/play_controller.cpp:939
+#: src/play_controller.cpp:942
 msgid "Back to turn "
 msgstr "Späť na ťah"
 
@@ -9521,10 +9521,6 @@ msgstr "na diaľku"
 #: src/playmp_controller.cpp:227
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "Odvolávam ťahy, ktoré ešte neboli odoslané na server."
-
-#: src/playmp_controller.cpp:301
-msgid "End scenario"
-msgstr "Ukončiť scénu"
 
 #: src/playmp_controller.cpp:400
 msgid "Waiting for next scenario..."
@@ -10098,6 +10094,9 @@ msgstr "Pomôž nám urobiť Wesnoth lepším pre teba!"
 #: src/upload_log.cpp:374
 msgid "Enable summary uploads"
 msgstr "Umožni posielanie štatistík"
+
+#~ msgid "End scenario"
+#~ msgstr "Ukončiť scénu"
 
 #~ msgid "Movement cost is 0, probably a terrain with movement cost of 0."
 #~ msgstr "Cena pohybu je 0, pravdepodobne terén s cenou pohybu 0."

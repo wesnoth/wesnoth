@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-11-09 18:26+0100\n"
+"POT-Creation-Date: 2009-11-14 10:42+0100\n"
 "PO-Revision-Date: 2009-04-05 12:15-0400\n"
 "Last-Translator: Ignacio R. Morelle <shikadilord@users.sourceforge.net>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -3648,7 +3648,7 @@ msgstr ""
 "mismo, matar a una unidad."
 
 #. [set_menu_item]: id=ai_controller_leader_control_{SIDE_CONTROLLED}
-#: data/core/macros/ai.cfg:408
+#: data/core/macros/ai.cfg:493
 msgid "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
 msgstr ""
 
@@ -8078,7 +8078,7 @@ msgstr "Buscando complementos instalados."
 msgid "Loading title screen."
 msgstr "Cargando pantalla inicial."
 
-#: src/game_config.cpp:289
+#: src/game_config.cpp:286
 msgid "Invalid color range: "
 msgstr "Rango de color inválido: "
 
@@ -8462,50 +8462,50 @@ msgstr "Leyendo archivos de unidades."
 msgid "Reading files and creating cache..."
 msgstr "Leyendo archivos y creando el caché."
 
-#: src/lobby_data.cpp:195 src/multiplayer_lobby.cpp:431
+#: src/lobby_data.cpp:200 src/multiplayer_lobby.cpp:431
 msgid "Unknown era: $era_id"
 msgstr "Era desconocida: $era_id"
 
-#: src/lobby_data.cpp:200 src/multiplayer_lobby.cpp:435
+#: src/lobby_data.cpp:205 src/multiplayer_lobby.cpp:435
 msgid "Unknown era"
 msgstr "Era desconocida"
 
-#: src/lobby_data.cpp:255 src/multiplayer_lobby.cpp:497
+#: src/lobby_data.cpp:260 src/multiplayer_lobby.cpp:497
 msgid "Remote scenario"
 msgstr "Escenario remoto"
 
-#: src/lobby_data.cpp:263 src/multiplayer_lobby.cpp:504
+#: src/lobby_data.cpp:268 src/multiplayer_lobby.cpp:504
 msgid "Unknown scenario: $scenario_id"
 msgstr "Escenario desconocido: $scenario_id"
 
-#: src/lobby_data.cpp:268 src/multiplayer_lobby.cpp:508
+#: src/lobby_data.cpp:273 src/multiplayer_lobby.cpp:508
 msgid "Unknown scenario"
 msgstr "Escenario desconocido"
 
-#: src/lobby_data.cpp:274 src/multiplayer_lobby.cpp:513
+#: src/lobby_data.cpp:279 src/multiplayer_lobby.cpp:513
 msgid "Reloaded game"
 msgstr "Partida recargada"
 
-#: src/lobby_data.cpp:285 src/multiplayer_lobby.cpp:529
+#: src/lobby_data.cpp:290 src/multiplayer_lobby.cpp:529
 msgid "Turn "
 msgstr "Turno "
 
-#: src/lobby_data.cpp:289 src/multiplayer_lobby.cpp:533
+#: src/lobby_data.cpp:294 src/multiplayer_lobby.cpp:533
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Plaza libre:"
 msgstr[1] "Plazas libres:"
 
-#: src/lobby_data.cpp:295 src/multiplayer_lobby.cpp:544
+#: src/lobby_data.cpp:300 src/multiplayer_lobby.cpp:544
 msgid "Fog"
 msgstr "Niebla"
 
-#: src/lobby_data.cpp:298 src/lobby_data.cpp:301 src/multiplayer_create.cpp:83
+#: src/lobby_data.cpp:303 src/lobby_data.cpp:306 src/multiplayer_create.cpp:83
 #: src/multiplayer_lobby.cpp:548 src/multiplayer_lobby.cpp:554
 msgid "Shroud"
 msgstr "Oscuro"
 
-#: src/lobby_data.cpp:303 src/multiplayer_lobby.cpp:558
+#: src/lobby_data.cpp:308 src/multiplayer_lobby.cpp:558
 msgid "none"
 msgstr "ninguna"
 
@@ -9714,12 +9714,12 @@ msgstr ""
 msgid "Starting game"
 msgstr "Empezando la partida"
 
-#: src/play_controller.cpp:932 src/savegame.cpp:292 src/savegame.cpp:304
+#: src/play_controller.cpp:935 src/savegame.cpp:292 src/savegame.cpp:304
 #: src/savegame.cpp:972 src/savegame.cpp:974
 msgid "Auto-Save"
 msgstr "Autoguardado"
 
-#: src/play_controller.cpp:939
+#: src/play_controller.cpp:942
 msgid "Back to turn "
 msgstr "Volver al turno "
 
@@ -9763,10 +9763,6 @@ msgstr "a distancia"
 #: src/playmp_controller.cpp:227
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "Deshaciendo movidas que no han sido transmitidas al servidor aún."
-
-#: src/playmp_controller.cpp:301
-msgid "End scenario"
-msgstr "Finalizar escenario"
 
 #: src/playmp_controller.cpp:400
 msgid "Waiting for next scenario..."
@@ -10348,6 +10344,9 @@ msgstr "¡Ayúdenos a hacer un mejor Wesnoth para todos!"
 #: src/upload_log.cpp:374
 msgid "Enable summary uploads"
 msgstr "Permitir envíos de resúmenes"
+
+#~ msgid "End scenario"
+#~ msgstr "Finalizar escenario"
 
 #~ msgid "Movement cost is 0, probably a terrain with movement cost of 0."
 #~ msgstr ""

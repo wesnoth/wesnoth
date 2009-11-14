@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-11-09 18:26+0100\n"
+"POT-Creation-Date: 2009-11-14 10:42+0100\n"
 "PO-Revision-Date: 2009-11-03 11:13+0200\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team:  <http://bugs.wesnoth.org>\n"
@@ -2139,15 +2139,23 @@ msgstr "Сложность: "
 msgid "Version: "
 msgstr "Версия:"
 
-#: src/gui/dialogs/lobby_main.cpp:404
+#: src/gui/dialogs/lobby_main.cpp:166
+msgid "whisper to $receiver"
+msgstr ""
+
+#: src/gui/dialogs/lobby_main.cpp:367
+msgid "Games: showing $num_shown out of $num_total"
+msgstr ""
+
+#: src/gui/dialogs/lobby_main.cpp:407
 msgid "Observers allowed"
 msgstr "Наблюдать разрешено"
 
-#: src/gui/dialogs/lobby_main.cpp:407
+#: src/gui/dialogs/lobby_main.cpp:410
 msgid "Observers not allowed"
 msgstr "Наблюдать запрещено"
 
-#: src/gui/dialogs/lobby_main.cpp:689
+#: src/gui/dialogs/lobby_main.cpp:693
 msgid ""
 "Whisper session with $name started. If you don't want to receive messages "
 "from this user, type /ignore $name\n"
@@ -2155,19 +2163,19 @@ msgstr ""
 "Открылась сессия шёпотов с $name. Если Вы не хотите получать сообщения от "
 "этого пользователя, наберите /ignore $name\n"
 
-#: src/gui/dialogs/lobby_main.cpp:695
+#: src/gui/dialogs/lobby_main.cpp:699
 msgid "Room $name joined"
 msgstr "Зашли в комнату $name"
 
-#: src/gui/dialogs/lobby_main.cpp:1120
+#: src/gui/dialogs/lobby_main.cpp:1155
 msgid "Password Required"
 msgstr "Необходим пароль"
 
-#: src/gui/dialogs/lobby_main.cpp:1121
+#: src/gui/dialogs/lobby_main.cpp:1156
 msgid "Joining this game requires a password."
 msgstr "Чтобы присоединиться к игре, нужен пароль."
 
-#: src/gui/dialogs/lobby_main.cpp:1122
+#: src/gui/dialogs/lobby_main.cpp:1157
 msgid "Password: "
 msgstr "Пароль: "
 
@@ -2204,11 +2212,11 @@ msgstr "Описание виджетов '$definition' не содержит о
 msgid "No state or draw section defined."
 msgstr "Не определёно состояние или секция отрисовки"
 
-#: src/gui/widgets/window.cpp:789
+#: src/gui/widgets/window.cpp:757
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr ""
 
-#: src/gui/widgets/window.cpp:814 src/gui/widgets/window.cpp:847
+#: src/gui/widgets/window.cpp:782 src/gui/widgets/window.cpp:815
 #: src/tests/gui/test_gui2.cpp:232
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Не могу показать диалог, он не помещается на экране."
@@ -2655,7 +2663,7 @@ msgstr "Скриншот не удался"
 msgid "language code for localized resources^en_US"
 msgstr ""
 
-#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:220
+#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:227
 msgid "Close Window"
 msgstr "Закрыть окно"
 
@@ -2719,7 +2727,7 @@ msgstr "Не могу найти изображения для территор�
 msgid "Error creating or aquiring an image."
 msgstr "Ошибка при создании или получении изображения."
 
-#: src/preferences_display.cpp:75 src/preferences_display.cpp:125
+#: src/preferences_display.cpp:75 src/preferences_display.cpp:132
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -2729,46 +2737,46 @@ msgstr ""
 "установить 16 битный цвет. Чтобы запускать игру на весь экран, ваш монитор "
 "должен поддерживать разрешение не менее 1024x768x16."
 
-#: src/preferences_display.cpp:224
+#: src/preferences_display.cpp:231
 msgid "Hotkey Settings"
 msgstr "Настройка горячих клавиш"
 
-#: src/preferences_display.cpp:230 src/preferences_display.cpp:298
+#: src/preferences_display.cpp:237 src/preferences_display.cpp:305
 msgid "Press desired Hotkey (Esc cancels)"
 msgstr "Нажмите желаемую горячую клавишу (Esc отменяет)"
 
-#: src/preferences_display.cpp:249
+#: src/preferences_display.cpp:256
 msgid "Action"
 msgstr "Действие"
 
-#: src/preferences_display.cpp:249
+#: src/preferences_display.cpp:256
 msgid "Binding"
 msgstr "Клавиша"
 
-#: src/preferences_display.cpp:261
+#: src/preferences_display.cpp:268
 msgid "Change Hotkey"
 msgstr "Изменить"
 
-#: src/preferences_display.cpp:264
+#: src/preferences_display.cpp:271
 msgid "Clear Hotkey"
 msgstr "Сбросить горячую клавишу"
 
-#: src/preferences_display.cpp:332
+#: src/preferences_display.cpp:339
 msgid "This Hotkey is already in use."
 msgstr "Эта горячая клавиша уже занята."
 
-#: src/preferences_display.cpp:343
+#: src/preferences_display.cpp:350
 msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr ""
 "Предупреждение: клавише скриншота лучше бы использовать Control, Alt или "
 "Meta."
 
-#: src/preferences_display.cpp:434
+#: src/preferences_display.cpp:441
 msgid "There are no alternative video modes available"
 msgstr "Нет доступных альтернативных видео режимов"
 
-#: src/preferences_display.cpp:463
+#: src/preferences_display.cpp:470
 msgid "Choose Resolution"
 msgstr "Выберите разрешение"
 

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-11-09 18:26+0100\n"
+"POT-Creation-Date: 2009-11-14 10:42+0100\n"
 "PO-Revision-Date: 2009-10-11 21:15-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -3444,7 +3444,7 @@ msgstr ""
 "𐑒𐑘𐑫𐑼𐑛 𐑹 𐑸 𐑮𐑦𐑛𐑿𐑕𐑑 𐑑 1 HP. 𐑐𐑶𐑟𐑩𐑯 𐑒𐑨𐑯 𐑯𐑪𐑑, 𐑝 𐑦𐑑𐑕𐑧𐑤𐑓, 𐑒𐑦𐑤 𐑩 𐑿𐑯𐑦𐑑."
 
 #. [set_menu_item]: id=ai_controller_leader_control_{SIDE_CONTROLLED}
-#: data/core/macros/ai.cfg:408
+#: data/core/macros/ai.cfg:493
 msgid "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
 msgstr "𐑭𐑕𐑒 $ally_leader.name (𐑤𐑰𐑛𐑻 𐑝 𐑕𐑲𐑛 $ally_leader.side) 𐑑 𐑥𐑵𐑝 𐑣𐑽"
 
@@ -7679,7 +7679,7 @@ msgstr "𐑕𐑻𐑗𐑦𐑙 𐑓𐑹 𐑦𐑯𐑕𐑑𐑷𐑤𐑛 𐑨𐑛-𐑭
 msgid "Loading title screen."
 msgstr "𐑤𐑴𐑛𐑦𐑙 𐑑𐑲𐑑𐑩𐑤 𐑕𐑒𐑮𐑰𐑯."
 
-#: src/game_config.cpp:289
+#: src/game_config.cpp:286
 msgid "Invalid color range: "
 msgstr "𐑦𐑯𐑝𐑨𐑤𐑦𐑛 𐑒𐑳𐑤𐑼 𐑮𐑱𐑯𐑡: "
 
@@ -8050,50 +8050,50 @@ msgstr "𐑮𐑰𐑛𐑦𐑙 𐑿𐑯𐑦𐑑 𐑓𐑲𐑤𐑟..."
 msgid "Reading files and creating cache..."
 msgstr "𐑮𐑰𐑛𐑦𐑙 𐑓𐑲𐑤𐑟 𐑯 𐑒𐑮𐑦𐑱𐑑𐑦𐑙 𐑒𐑨𐑖..."
 
-#: src/lobby_data.cpp:195 src/multiplayer_lobby.cpp:431
+#: src/lobby_data.cpp:200 src/multiplayer_lobby.cpp:431
 msgid "Unknown era: $era_id"
 msgstr "𐑳𐑯𐑯𐑴𐑯 𐑽𐑩: $era_id"
 
-#: src/lobby_data.cpp:200 src/multiplayer_lobby.cpp:435
+#: src/lobby_data.cpp:205 src/multiplayer_lobby.cpp:435
 msgid "Unknown era"
 msgstr "𐑳𐑯𐑯𐑴𐑯 𐑽𐑩"
 
-#: src/lobby_data.cpp:255 src/multiplayer_lobby.cpp:497
+#: src/lobby_data.cpp:260 src/multiplayer_lobby.cpp:497
 msgid "Remote scenario"
 msgstr "𐑮𐑦𐑥𐑴𐑑 𐑕𐑦𐑯𐑺𐑰𐑴"
 
-#: src/lobby_data.cpp:263 src/multiplayer_lobby.cpp:504
+#: src/lobby_data.cpp:268 src/multiplayer_lobby.cpp:504
 msgid "Unknown scenario: $scenario_id"
 msgstr "𐑳𐑯𐑯𐑴𐑯 𐑕𐑦𐑯𐑺𐑰𐑴: $scenario_id"
 
-#: src/lobby_data.cpp:268 src/multiplayer_lobby.cpp:508
+#: src/lobby_data.cpp:273 src/multiplayer_lobby.cpp:508
 msgid "Unknown scenario"
 msgstr "𐑳𐑯𐑯𐑴𐑯 𐑕𐑦𐑯𐑺𐑰𐑴"
 
-#: src/lobby_data.cpp:274 src/multiplayer_lobby.cpp:513
+#: src/lobby_data.cpp:279 src/multiplayer_lobby.cpp:513
 msgid "Reloaded game"
 msgstr "𐑮𐑰𐑤𐑴𐑛𐑦𐑛 𐑜𐑱𐑥"
 
-#: src/lobby_data.cpp:285 src/multiplayer_lobby.cpp:529
+#: src/lobby_data.cpp:290 src/multiplayer_lobby.cpp:529
 msgid "Turn "
 msgstr "𐑑𐑻𐑯 "
 
-#: src/lobby_data.cpp:289 src/multiplayer_lobby.cpp:533
+#: src/lobby_data.cpp:294 src/multiplayer_lobby.cpp:533
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "𐑝𐑱𐑒𐑩𐑯𐑑 𐑕𐑤𐑪𐑑:"
 msgstr[1] "𐑝𐑱𐑒𐑩𐑯𐑑 𐑕𐑤𐑭𐑑𐑕:"
 
-#: src/lobby_data.cpp:295 src/multiplayer_lobby.cpp:544
+#: src/lobby_data.cpp:300 src/multiplayer_lobby.cpp:544
 msgid "Fog"
 msgstr "𐑓𐑪𐑜"
 
-#: src/lobby_data.cpp:298 src/lobby_data.cpp:301 src/multiplayer_create.cpp:83
+#: src/lobby_data.cpp:303 src/lobby_data.cpp:306 src/multiplayer_create.cpp:83
 #: src/multiplayer_lobby.cpp:548 src/multiplayer_lobby.cpp:554
 msgid "Shroud"
 msgstr "𐑖𐑮𐑬𐑛"
 
-#: src/lobby_data.cpp:303 src/multiplayer_lobby.cpp:558
+#: src/lobby_data.cpp:308 src/multiplayer_lobby.cpp:558
 msgid "none"
 msgstr "𐑯𐑳𐑯"
 
@@ -9267,12 +9267,12 @@ msgstr ""
 msgid "Starting game"
 msgstr "𐑕𐑑𐑸𐑑𐑦𐑙 𐑜𐑱𐑥"
 
-#: src/play_controller.cpp:932 src/savegame.cpp:292 src/savegame.cpp:304
+#: src/play_controller.cpp:935 src/savegame.cpp:292 src/savegame.cpp:304
 #: src/savegame.cpp:972 src/savegame.cpp:974
 msgid "Auto-Save"
 msgstr "𐑷𐑑𐑴-𐑕𐑱𐑝"
 
-#: src/play_controller.cpp:939
+#: src/play_controller.cpp:942
 msgid "Back to turn "
 msgstr "𐑚𐑨𐑒 𐑑 𐑑𐑻𐑯 "
 
@@ -9315,10 +9315,6 @@ msgstr "𐑑𐑻𐑯 𐑗𐑱𐑯𐑡𐑛"
 #: src/playmp_controller.cpp:227
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "𐑳𐑯𐑛𐑵𐑦𐑙 𐑥𐑵𐑝𐑟 𐑯𐑪𐑑 𐑘𐑧𐑑 𐑑𐑮𐑨𐑯𐑕𐑥𐑦𐑑𐑩𐑛 𐑑 𐑞 𐑕𐑻𐑝𐑻."
-
-#: src/playmp_controller.cpp:301
-msgid "End scenario"
-msgstr "𐑧𐑯𐑛 𐑕𐑦𐑯𐑺𐑰𐑴"
 
 #: src/playmp_controller.cpp:400
 msgid "Waiting for next scenario..."
@@ -9875,3 +9871,6 @@ msgstr "𐑣𐑧𐑤𐑐 𐑳𐑕 𐑥𐑱𐑒 ·𐑢𐑧𐑕𐑯𐑷𐑔 𐑚�
 #: src/upload_log.cpp:374
 msgid "Enable summary uploads"
 msgstr "𐑦𐑯𐑱𐑚𐑩𐑤 𐑕𐑳𐑥𐑼𐑦 𐑳𐑐𐑤𐑴𐑛𐑟"
+
+#~ msgid "End scenario"
+#~ msgstr "𐑧𐑯𐑛 𐑕𐑦𐑯𐑺𐑰𐑴"

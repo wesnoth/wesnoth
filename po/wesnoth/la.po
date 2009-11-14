@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-11-09 18:26+0100\n"
+"POT-Creation-Date: 2009-11-14 10:42+0100\n"
 "PO-Revision-Date: 2009-11-12 20:06-0500\n"
 "Last-Translator: Michael Babich (Aethaeryn) <michaelbabich7@gmail.com>\n"
 "Language-Team: Latin\n"
@@ -3555,7 +3555,7 @@ msgstr ""
 "tractu amittunt donec sanantur aut ad I PS rediguntur."
 
 #. [set_menu_item]: id=ai_controller_leader_control_{SIDE_CONTROLLED}
-#: data/core/macros/ai.cfg:408
+#: data/core/macros/ai.cfg:493
 msgid "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
 msgstr ""
 
@@ -7708,7 +7708,7 @@ msgstr "Adiunctum mittitur"
 msgid "Loading title screen."
 msgstr "Revocans scrinium tituli."
 
-#: src/game_config.cpp:289
+#: src/game_config.cpp:286
 #, fuzzy
 msgid "Invalid color range: "
 msgstr "Color invalidus"
@@ -8129,55 +8129,55 @@ msgstr "Legens data unitatum."
 msgid "Reading files and creating cache..."
 msgstr "Legens data et creans thesaurum."
 
-#: src/lobby_data.cpp:195 src/multiplayer_lobby.cpp:431
+#: src/lobby_data.cpp:200 src/multiplayer_lobby.cpp:431
 msgid "Unknown era: $era_id"
 msgstr "Aetas incognita: $era_id"
 
-#: src/lobby_data.cpp:200 src/multiplayer_lobby.cpp:435
+#: src/lobby_data.cpp:205 src/multiplayer_lobby.cpp:435
 msgid "Unknown era"
 msgstr "Aetas incognita"
 
-#: src/lobby_data.cpp:255 src/multiplayer_lobby.cpp:497
+#: src/lobby_data.cpp:260 src/multiplayer_lobby.cpp:497
 #, fuzzy
 msgid "Remote scenario"
 msgstr "Missio remota"
 
-#: src/lobby_data.cpp:263 src/multiplayer_lobby.cpp:504
+#: src/lobby_data.cpp:268 src/multiplayer_lobby.cpp:504
 #, fuzzy
 msgid "Unknown scenario: $scenario_id"
 msgstr "Missio incognita: '"
 
-#: src/lobby_data.cpp:268 src/multiplayer_lobby.cpp:508
+#: src/lobby_data.cpp:273 src/multiplayer_lobby.cpp:508
 #, fuzzy
 msgid "Unknown scenario"
 msgstr "Missio incognita"
 
-#: src/lobby_data.cpp:274 src/multiplayer_lobby.cpp:513
+#: src/lobby_data.cpp:279 src/multiplayer_lobby.cpp:513
 #, fuzzy
 msgid "Reloaded game"
 msgstr "Lusum servatum unius lusoris restituere"
 
-#: src/lobby_data.cpp:285 src/multiplayer_lobby.cpp:529
+#: src/lobby_data.cpp:290 src/multiplayer_lobby.cpp:529
 msgid "Turn "
 msgstr "Vicis "
 
-#: src/lobby_data.cpp:289 src/multiplayer_lobby.cpp:533
+#: src/lobby_data.cpp:294 src/multiplayer_lobby.cpp:533
 #, fuzzy
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Rima Vacua:"
 msgstr[1] "Rima Vacua:"
 
-#: src/lobby_data.cpp:295 src/multiplayer_lobby.cpp:544
+#: src/lobby_data.cpp:300 src/multiplayer_lobby.cpp:544
 msgid "Fog"
 msgstr "Nebula"
 
-#: src/lobby_data.cpp:298 src/lobby_data.cpp:301 src/multiplayer_create.cpp:83
+#: src/lobby_data.cpp:303 src/lobby_data.cpp:306 src/multiplayer_create.cpp:83
 #: src/multiplayer_lobby.cpp:548 src/multiplayer_lobby.cpp:554
 msgid "Shroud"
 msgstr "Absconsus"
 
-#: src/lobby_data.cpp:303 src/multiplayer_lobby.cpp:558
+#: src/lobby_data.cpp:308 src/multiplayer_lobby.cpp:558
 msgid "none"
 msgstr "nullus"
 
@@ -9464,13 +9464,13 @@ msgstr "tempus currens localis"
 msgid "Starting game"
 msgstr "Lusum finire"
 
-#: src/play_controller.cpp:932 src/savegame.cpp:292 src/savegame.cpp:304
+#: src/play_controller.cpp:935 src/savegame.cpp:292 src/savegame.cpp:304
 #: src/savegame.cpp:972 src/savegame.cpp:974
 #, fuzzy
 msgid "Auto-Save"
 msgstr "Servatum-Automatarium"
 
-#: src/play_controller.cpp:939
+#: src/play_controller.cpp:942
 msgid "Back to turn "
 msgstr "Rursus ad vicem "
 
@@ -9519,11 +9519,6 @@ msgstr ""
 #: src/playmp_controller.cpp:227
 msgid "Undoing moves not yet transmitted to the server."
 msgstr ""
-
-#: src/playmp_controller.cpp:301
-#, fuzzy
-msgid "End scenario"
-msgstr "Missio remota"
 
 #: src/playmp_controller.cpp:400
 #, fuzzy
@@ -10138,6 +10133,10 @@ msgstr "Nos adiuva facientes Occidiseptentrionem meliorem tibi!"
 #, fuzzy
 msgid "Enable summary uploads"
 msgstr "Potestatem facere summaria mittendi"
+
+#, fuzzy
+#~ msgid "End scenario"
+#~ msgstr "Missio remota"
 
 #, fuzzy
 #~ msgid "The file you have tried to load is corrupt. Continue playing?"

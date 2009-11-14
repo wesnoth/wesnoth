@@ -63,7 +63,7 @@ wyświetla ścieżkę katalogu konfiguracyjnego użytkownika i kończy działani
 aktywuje dodatkowe opcje trybu poleceń w grze (więcej informacji o trybie
 poleceń można znaleźć na stronie http://www.wesnoth.org/wiki/CommandMode).
 .TP 
-\fB\-e,\ \-\-editor\fP\fI\ file\fP
+\fB\-e,\ \-\-editor\fP\fI\ plik\fP
 bezpośrednio uruchamia wbudowany edytor map. Jeśli podano parametr \fIplik\fP,
 działanie opcji jest równoważne \fB\-e \-\-load\fP
 .TP 
@@ -106,9 +106,9 @@ liczba klatek na sekundę wyświetlanych przez grę. Wartość ta powinna
 zawierać się między 1 a 1000, przy czym domyślna wartość to \fB50\fP.
 .TP 
 \fB\-m, \-\-multiplayer\fP
-runs a multiplayer game. There are additional options that can be used
-together with \fB\-\-multiplayer\fP as explained below. Only these additional
-options can follow \fB\-\-multiplayer\fP.
+uruchamia grę wieloosobową. Wraz z przełącznikiem \fB\-\-multiplayer\fP można
+używać objaśnionych poniżej opcji dodatkowych. Są to jedyne opcje dozwolone
+w połączeniu z \fB\-\-multiplayer\fP.
 .TP 
 \fB\-\-no\-delay\fP
 uruchamia grę bez opóźnień na wykonanie testów wydajności grafiki. Ta opcja
@@ -160,8 +160,9 @@ Opcje dostępne dla danej strony gry wieloosobowej są oznaczone przez
 strony. Zazwyczaj jest to 1 lub 2, ale zależy to od maksymalnej liczby
 graczy w danym scenariuszu.
 .TP 
-\fB\-\-ai_config\fP\fInumber\fP\fB=\fP\fIvalue\fP
-selects a configuration file to load for the AI controller for this side.
+\fB\-\-ai_config\fP\fInumer\fP\fB=\fP\fIwartość\fP
+wybiera plik konfiguracyjny, który zostanie załadowany dla kontrolera AI tej
+strony.
 .TP 
 \fB\-\-algorithm\fP\fInumer\fP\fB=\fP\fIwartość\fP
 pozwala wybrać niestandardowy algorytm, z którego ma korzystać AI

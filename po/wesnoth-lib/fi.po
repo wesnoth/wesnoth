@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-11-09 18:26+0100\n"
+"POT-Creation-Date: 2009-11-14 10:42+0100\n"
 "PO-Revision-Date: 2009-04-11 20:58+0200\n"
 "Last-Translator: Samu Voutilainen <samu.voutilainen@gmail.com>\n"
 "Language-Team: none\n"
@@ -2188,34 +2188,42 @@ msgstr ""
 msgid "Version: "
 msgstr "Versio"
 
-#: src/gui/dialogs/lobby_main.cpp:404
-msgid "Observers allowed"
+#: src/gui/dialogs/lobby_main.cpp:166
+msgid "whisper to $receiver"
+msgstr ""
+
+#: src/gui/dialogs/lobby_main.cpp:367
+msgid "Games: showing $num_shown out of $num_total"
 msgstr ""
 
 #: src/gui/dialogs/lobby_main.cpp:407
+msgid "Observers allowed"
+msgstr ""
+
+#: src/gui/dialogs/lobby_main.cpp:410
 msgid "Observers not allowed"
 msgstr ""
 
-#: src/gui/dialogs/lobby_main.cpp:689
+#: src/gui/dialogs/lobby_main.cpp:693
 msgid ""
 "Whisper session with $name started. If you don't want to receive messages "
 "from this user, type /ignore $name\n"
 msgstr ""
 
-#: src/gui/dialogs/lobby_main.cpp:695
+#: src/gui/dialogs/lobby_main.cpp:699
 msgid "Room $name joined"
 msgstr ""
 
-#: src/gui/dialogs/lobby_main.cpp:1120
+#: src/gui/dialogs/lobby_main.cpp:1155
 #, fuzzy
 msgid "Password Required"
 msgstr "Salasanamuistutus"
 
-#: src/gui/dialogs/lobby_main.cpp:1121
+#: src/gui/dialogs/lobby_main.cpp:1156
 msgid "Joining this game requires a password."
 msgstr ""
 
-#: src/gui/dialogs/lobby_main.cpp:1122
+#: src/gui/dialogs/lobby_main.cpp:1157
 #, fuzzy
 msgid "Password: "
 msgstr "Salasana:"
@@ -2253,11 +2261,11 @@ msgstr "Widgetin määritelmä ”$definition” ei sisällä määritelmää id
 msgid "No state or draw section defined."
 msgstr "Tilannetta tai piirtoaluetta ei ole määritetty."
 
-#: src/gui/widgets/window.cpp:789
+#: src/gui/widgets/window.cpp:757
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr ""
 
-#: src/gui/widgets/window.cpp:814 src/gui/widgets/window.cpp:847
+#: src/gui/widgets/window.cpp:782 src/gui/widgets/window.cpp:815
 #: src/tests/gui/test_gui2.cpp:232
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Dialogin näyttäminen epäonnistui, koska se ei mahtunut ruudulle."
@@ -2706,7 +2714,7 @@ msgstr "Kuvankaappauksen ottaminen epäonnistui"
 msgid "language code for localized resources^en_US"
 msgstr ""
 
-#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:220
+#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:227
 msgid "Close Window"
 msgstr "Sulje ikkuna"
 
@@ -2770,7 +2778,7 @@ msgstr "Ei kuvaa maastolle: $terrain."
 msgid "Error creating or aquiring an image."
 msgstr "Virhe luodessa tai hankkiessa kuvaa."
 
-#: src/preferences_display.cpp:75 src/preferences_display.cpp:125
+#: src/preferences_display.cpp:75 src/preferences_display.cpp:132
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -2781,46 +2789,46 @@ msgstr ""
 "Näyttösi täytyy tukea 1024x768x16 -tilaa, jotta peli voidaan ajaa koko "
 "ruudun kokoisena."
 
-#: src/preferences_display.cpp:224
+#: src/preferences_display.cpp:231
 msgid "Hotkey Settings"
 msgstr "Pikanäppäinten asetukset"
 
-#: src/preferences_display.cpp:230 src/preferences_display.cpp:298
+#: src/preferences_display.cpp:237 src/preferences_display.cpp:305
 msgid "Press desired Hotkey (Esc cancels)"
 msgstr "Paina haluttua pikanäppäintä (Esc peruuttaa)"
 
-#: src/preferences_display.cpp:249
+#: src/preferences_display.cpp:256
 msgid "Action"
 msgstr "Toiminto"
 
-#: src/preferences_display.cpp:249
+#: src/preferences_display.cpp:256
 msgid "Binding"
 msgstr "Valinta"
 
-#: src/preferences_display.cpp:261
+#: src/preferences_display.cpp:268
 msgid "Change Hotkey"
 msgstr "Vaihda pikanäppäintä"
 
-#: src/preferences_display.cpp:264
+#: src/preferences_display.cpp:271
 msgid "Clear Hotkey"
 msgstr "Poista pikanäppäin"
 
-#: src/preferences_display.cpp:332
+#: src/preferences_display.cpp:339
 msgid "This Hotkey is already in use."
 msgstr "Tämä pikanäppäin on jo käytössä."
 
-#: src/preferences_display.cpp:343
+#: src/preferences_display.cpp:350
 msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr ""
 "Varoitus: kuvankaappauspikanäppäimiä ei yhdistetty Control, Alt tai Meta-"
 "näppäimen kanssa"
 
-#: src/preferences_display.cpp:434
+#: src/preferences_display.cpp:441
 msgid "There are no alternative video modes available"
 msgstr "Vaihtoehtoisia näyttötarkkuuksia ei ole käytettävissä."
 
-#: src/preferences_display.cpp:463
+#: src/preferences_display.cpp:470
 msgid "Choose Resolution"
 msgstr "Valitse näyttötarkkuus"
 

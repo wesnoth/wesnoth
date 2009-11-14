@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-11-09 18:26+0100\n"
+"POT-Creation-Date: 2009-11-14 10:42+0100\n"
 "PO-Revision-Date: 2009-09-26 15:45+0700\n"
 "Last-Translator: Phạm Thành Nam <phamthanhnam.ptn@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
@@ -2121,15 +2121,23 @@ msgstr "Độ khó: "
 msgid "Version: "
 msgstr "Phiên bản: "
 
-#: src/gui/dialogs/lobby_main.cpp:404
+#: src/gui/dialogs/lobby_main.cpp:166
+msgid "whisper to $receiver"
+msgstr ""
+
+#: src/gui/dialogs/lobby_main.cpp:367
+msgid "Games: showing $num_shown out of $num_total"
+msgstr ""
+
+#: src/gui/dialogs/lobby_main.cpp:407
 msgid "Observers allowed"
 msgstr "Cho phép người quan sát"
 
-#: src/gui/dialogs/lobby_main.cpp:407
+#: src/gui/dialogs/lobby_main.cpp:410
 msgid "Observers not allowed"
 msgstr "Không cho phép người quan sát"
 
-#: src/gui/dialogs/lobby_main.cpp:689
+#: src/gui/dialogs/lobby_main.cpp:693
 msgid ""
 "Whisper session with $name started. If you don't want to receive messages "
 "from this user, type /ignore $name\n"
@@ -2137,19 +2145,19 @@ msgstr ""
 "Phiên thì thầm với $name đã khởi chạy. Nếu bạn không muốn nhận tin nhắn từ "
 "người dùng này, đánh /ignore $name\n"
 
-#: src/gui/dialogs/lobby_main.cpp:695
+#: src/gui/dialogs/lobby_main.cpp:699
 msgid "Room $name joined"
 msgstr "Đã tham gia phòng $name"
 
-#: src/gui/dialogs/lobby_main.cpp:1120
+#: src/gui/dialogs/lobby_main.cpp:1155
 msgid "Password Required"
 msgstr "Cần mật khẩu"
 
-#: src/gui/dialogs/lobby_main.cpp:1121
+#: src/gui/dialogs/lobby_main.cpp:1156
 msgid "Joining this game requires a password."
 msgstr "Tham gia trò chơi này cần mật khẩu."
 
-#: src/gui/dialogs/lobby_main.cpp:1122
+#: src/gui/dialogs/lobby_main.cpp:1157
 msgid "Password: "
 msgstr "Mật khẩu: "
 
@@ -2186,11 +2194,11 @@ msgstr "Định nghĩa widget '$definition' không chứa định nghĩa cho '$i
 msgid "No state or draw section defined."
 msgstr "Không xác định được trạng thái hoặc vùng vẽ."
 
-#: src/gui/widgets/window.cpp:789
+#: src/gui/widgets/window.cpp:757
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "Nhấn thải hồi cần một nút 'click_dismiss' hoặc 'ok'."
 
-#: src/gui/widgets/window.cpp:814 src/gui/widgets/window.cpp:847
+#: src/gui/widgets/window.cpp:782 src/gui/widgets/window.cpp:815
 #: src/tests/gui/test_gui2.cpp:232
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Thất bại khi hiện hộp thoại, nó không vừa với màn hình."
@@ -2637,7 +2645,7 @@ msgstr "Chụp màn hình thất bại"
 msgid "language code for localized resources^en_US"
 msgstr "vi"
 
-#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:220
+#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:227
 msgid "Close Window"
 msgstr "Đóng cửa sổ"
 
@@ -2701,7 +2709,7 @@ msgstr "Không thể lấy ảnh cho địa hình: $terrain."
 msgid "Error creating or aquiring an image."
 msgstr "Lỗi khi tạo hoặc lấy ảnh."
 
-#: src/preferences_display.cpp:75 src/preferences_display.cpp:125
+#: src/preferences_display.cpp:75 src/preferences_display.cpp:132
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -2711,46 +2719,46 @@ msgstr ""
 "thiết lập thành 16 bit mỗi điểm ảnh để chạy trò chơi ở chế độ cửa sổ. Màn "
 "hình của bạn phải hỗ trợ 1024x768x16 để chạy trò chơi toàn màn hình."
 
-#: src/preferences_display.cpp:224
+#: src/preferences_display.cpp:231
 msgid "Hotkey Settings"
 msgstr "Thiết lập phím nóng"
 
-#: src/preferences_display.cpp:230 src/preferences_display.cpp:298
+#: src/preferences_display.cpp:237 src/preferences_display.cpp:305
 msgid "Press desired Hotkey (Esc cancels)"
 msgstr "Ấn phím nóng mong muốn (Esc hủy bỏ)"
 
-#: src/preferences_display.cpp:249
+#: src/preferences_display.cpp:256
 msgid "Action"
 msgstr "Hành động"
 
-#: src/preferences_display.cpp:249
+#: src/preferences_display.cpp:256
 msgid "Binding"
 msgstr "Gán"
 
-#: src/preferences_display.cpp:261
+#: src/preferences_display.cpp:268
 msgid "Change Hotkey"
 msgstr "Thay đổi phím nóng"
 
-#: src/preferences_display.cpp:264
+#: src/preferences_display.cpp:271
 msgid "Clear Hotkey"
 msgstr "Xóa phím nóng"
 
-#: src/preferences_display.cpp:332
+#: src/preferences_display.cpp:339
 msgid "This Hotkey is already in use."
 msgstr "Phím nóng này đã được sử dụng."
 
-#: src/preferences_display.cpp:343
+#: src/preferences_display.cpp:350
 msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr ""
 "Cảnh báo: phím nóng chụp màn hình không được kết hợp với các phím Control, "
 "Alt hay Meta."
 
-#: src/preferences_display.cpp:434
+#: src/preferences_display.cpp:441
 msgid "There are no alternative video modes available"
 msgstr "Không có chế độ video thay thế"
 
-#: src/preferences_display.cpp:463
+#: src/preferences_display.cpp:470
 msgid "Choose Resolution"
 msgstr "Chọn độ phân giải"
 
