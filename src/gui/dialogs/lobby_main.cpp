@@ -1052,9 +1052,19 @@ void tlobby_main::process_room_query_response(const config& data)
 {
 	const std::string& room = data["room"];
 	const std::string& message = data["message"];
+	DBG_LB << "room query response: " << room << " " << message << "\n";
 	if (room.empty()) {
 		if (!message.empty()) {
 			add_active_window_message("server", message);
+		}
+		if (const config& rooms = data.child("rooms")) {
+			//TODO: this should really open a nice join room dialog instead
+			std::stringstream ss;
+			ss << "Rooms:";
+			foreach (const config& r, rooms.child_range("room")) {
+				ss << " " << r["name"];
+			}
+			add_active_window_message("server", ss.str());
 		}
 	} else {
 		if (room_window_open(room, false)) {
