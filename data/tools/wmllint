@@ -663,7 +663,7 @@ declared_spellings = {"GLOBAL":["I'm", "I've", "I'd", "I'll",
                                 "grandmam", "grandsire", "grandsires",
                                 "scry", "scrying", "scryed", "woodscraft",
                                 "princeling", "wilderlands", "ensorcels",
-                                # Sceptre of Fire gets speklled with -re.
+                                # Sceptre of Fire gets spelled with -re.
                                 "sceptre",
                                 ]}
 
@@ -1720,7 +1720,7 @@ def translator(filename, mapxforms, textxform):
                 comment = comment.strip()
                 fields = comment.split()
                 if len(fields) == 5 and fields[3] == "with":
-                    notepairs.append(fields[2], fields[4])
+                    notepairs.append((fields[2], fields[4]))
     # It's an error if the tag stack is nonempty at the end of any file:
     if tagstack:
         print '"%s", line %d: tag stack nonempty (%s) at end of file.' % (filename, lineno, tagstack)
