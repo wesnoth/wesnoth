@@ -31,6 +31,11 @@ static lg::log_domain log_config("config");
 static lg::log_domain log_engine("engine");
 #define WRN_NG LOG_STREAM(warn, log_engine)
 
+static lg::log_domain log_lobby("lobby");
+#define DBG_LB LOG_STREAM(info, log_lobby)
+#define LOG_LB LOG_STREAM(info, log_lobby)
+#define ERR_LB LOG_STREAM(err, log_lobby)
+
 chat_message::chat_message(const time_t& timestamp, const std::string& user, const std::string& message)
 : timestamp(timestamp), user(user), message(message)
 {
@@ -497,12 +502,15 @@ chat_log& lobby_info::get_whisper_log(const std::string &name)
 
 void lobby_info::open_room(const std::string &name)
 {
-	rooms_.push_back(room_info(name));
+	if (!has_room(name)) {
+		rooms_.push_back(room_info(name));
+	}
 }
 
 void lobby_info::close_room(const std::string &name)
 {
 	room_info* r = get_room(name);
+	DBG_LB << "lobby info: closing room " << name << " " << (void*)r << "\n";
 	if (r) {
 		rooms_.erase(rooms_.begin() + (r - &rooms_[0]));
 	}
