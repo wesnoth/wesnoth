@@ -460,6 +460,69 @@ bool tscrollbar_container::disable_click_dismiss() const
 			|| content_grid_->disable_click_dismiss();
 }
 
+void tscrollbar_container::content_resize_request()
+{
+	/**
+	 * @todo Try to handle auto_visible_first_run here as well.
+	 *
+	 * Handling it here makes the code a bit more complex but allows to not
+	 * reserve space for scrollbars, which will look nicer in the MP lobby.
+	 * But the extra complexity is no 1.8 material.
+	 */
+
+	assert(content_ && content_grid_);
+
+	tpoint best_size = content_grid_->get_best_size();
+	tpoint size = content_->get_size();
+
+	DBG_GUI_L << LOG_HEADER
+			<< " wanted size " << best_size
+			<< " available size " << size
+			<< ".\n";
+
+	if(size == tpoint(0, 0)) {
+		DBG_GUI_L << LOG_HEADER
+				<< " initial setup not done, bailing out.\n";
+		return;
+	}
+
+	if(best_size.x <= size.x && best_size.y <= size.y) {
+		DBG_GUI_L << LOG_HEADER << " fits, nothing to do.\n";
+		return;
+	}
+
+	if(best_size.x > size.x) {
+		DBG_GUI_L << LOG_HEADER << " content too wide.\n";
+		if(horizontal_scrollbar_mode_ == auto_visible_first_run
+				|| horizontal_scrollbar_mode_ == always_invisible) {
+
+			DBG_GUI_L << LOG_HEADER
+					<< " can't use horizontal scrollbar, ask window.\n";
+			twindow* window = get_window();
+			assert(window);
+			window->invalidate_layout();
+			return;
+		}
+	}
+
+	if(best_size.y > size.y) {
+		DBG_GUI_L << LOG_HEADER << " content too high.\n";
+		if(vertical_scrollbar_mode_ == auto_visible_first_run
+				|| vertical_scrollbar_mode_ == always_invisible) {
+
+			DBG_GUI_L << LOG_HEADER
+					<< " can't use vertical scrollbar, ask window.\n";
+			twindow* window = get_window();
+			assert(window);
+			window->invalidate_layout();
+			return;
+		}
+	}
+
+	DBG_GUI_L << LOG_HEADER << " handle resizing.\n";
+	set_size(get_origin(), get_size());
+}
+
 void tscrollbar_container::vertical_scrollbar_click(twidget* caller)
 {
 	const std::map<std::string, tscrollbar_::tscroll>::const_iterator

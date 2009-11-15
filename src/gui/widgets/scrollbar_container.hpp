@@ -202,6 +202,14 @@ protected:
 	 */
 	void set_scrollbar_button_status();
 
+	/**
+	 * Notification if the content of a child needs a resize.
+	 *
+	 * When a resize is required the container first can try to handle it
+	 * itself before asking the window to do the resize.
+	 */
+	void content_resize_request();
+
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
 	/**
