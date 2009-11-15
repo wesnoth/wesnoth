@@ -288,10 +288,14 @@ private:
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 
-	void signal_handler_mouse_enter(const event::tevent event, bool& handled);
+	void signal_handler_mouse_enter(
+			const event::tevent event, bool& handled, bool& halt);
 
 	void signal_handler_mouse_motion(
-			const event::tevent event, bool& handled, const tpoint& coordinate);
+			  const event::tevent event
+			, bool& handled
+			, bool& halt
+			, const tpoint& coordinate);
 
 	void signal_handler_mouse_leave(const event::tevent event, bool& handled);
 

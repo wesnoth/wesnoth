@@ -41,9 +41,14 @@ tscrollbar_::tscrollbar_()
 	, callback_positioner_move_(0)
 {
 	connect_signal<event::MOUSE_ENTER>(boost::bind(
-				&tscrollbar_::signal_handler_mouse_enter, this, _2, _3));
+				&tscrollbar_::signal_handler_mouse_enter, this, _2, _3, _4));
 	connect_signal<event::MOUSE_MOTION>(boost::bind(
-				&tscrollbar_::signal_handler_mouse_motion, this, _2, _3, _5));
+				  &tscrollbar_::signal_handler_mouse_motion
+				, this
+				, _2
+				, _3
+				, _4
+				, _5));
 	connect_signal<event::MOUSE_LEAVE>(boost::bind(
 				&tscrollbar_::signal_handler_mouse_leave, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_DOWN>(boost::bind(
@@ -282,16 +287,19 @@ void tscrollbar_::load_config_extra()
 }
 
 void tscrollbar_::signal_handler_mouse_enter(
-		const event::tevent event, bool& handled)
+		const event::tevent event, bool& handled, bool& halt)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
 	// Send the motion under our event id to make debugging easier.
-	signal_handler_mouse_motion(event, handled, get_mouse_position());
+	signal_handler_mouse_motion(event, handled, halt, get_mouse_position());
 }
 
 void tscrollbar_::signal_handler_mouse_motion(
-		const event::tevent event, bool& handled, const tpoint& coordinate)
+		  const event::tevent event
+		, bool& handled
+		, bool& halt
+		, const tpoint& coordinate)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << " at " << coordinate << ".\n";
 
@@ -321,9 +329,11 @@ void tscrollbar_::signal_handler_mouse_motion(
 			break;
 
 		case DISABLED :
-			// Shouldn't be possible.
+			// Shouldn't be possible, but seems to happen in the lobby
+			// if a resize layout happens during dragging.
+			halt = true;
+			break;
 
-			/* FALL DOWN */
 		default :
 			assert(false);
 	}
