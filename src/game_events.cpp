@@ -31,6 +31,7 @@
 #include "gui/dialogs/wml_message.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
+#include "help.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "map_label.hpp"
@@ -2985,7 +2986,13 @@ WML_HANDLER_FUNCTION(switch, event_info, cfg)
 		}
 	}
 }
-
+	
+WML_HANDLER_FUNCTION(open_help,  /*event_info*/, cfg)
+{
+	game_display &screen = *resources::screen;
+	t_string topic_id = cfg["topic"];
+	help::show_help(screen, topic_id.to_serialized());
+}
 // Helper namespace to do some subparts for message function
 namespace {
 
