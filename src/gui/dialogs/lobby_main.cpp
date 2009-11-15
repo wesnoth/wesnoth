@@ -603,8 +603,14 @@ void tlobby_main::update_playerlist()
 	player_list_.other_rooms.auto_hide();
 	player_list_.other_games.auto_hide();
 
-	// Invalidation seems no longer be needed.
-//	window_->invalidate_layout();
+	/**
+	 * @todo See whether this invalidate can be removed.
+	 *
+	 * It should be possible but once done the clicking on the sort oder of the
+	 * players in an empty lobby seems to crash with a not sized userpanel 
+	 * size {-1, -1, 0, 0}.
+	 */
+	window_->invalidate_layout();
 	player_list_dirty_ = false;
 }
 
