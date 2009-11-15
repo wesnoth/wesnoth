@@ -96,7 +96,10 @@ int main(int argc, char* argv[])
 
 	} catch(exploder_failure err) {
 		std::cerr << "Failed: " << err.message << "\n";
+		return 1;
 	}
+
+	return 0;
 }
 
 
