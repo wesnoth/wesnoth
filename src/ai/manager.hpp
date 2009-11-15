@@ -199,9 +199,22 @@ public:
 
 
 	/**
+	 * Notifies all observers of 'ai_recruit_list_changed' event.
+	 */
+	static void raise_recruit_list_changed();
+
+
+	/**
 	 * Notifies all observers of 'ai_turn_started' event.
 	 */
 	static void raise_turn_started();
+
+
+
+	/**
+	 * Adds an observer of 'ai_recruit_list_changed' event.
+	 */
+	static void add_recruit_list_changed_observer( events::observer* event_observer );
 
 
 	/**
@@ -220,6 +233,13 @@ public:
 	 * Adds an observer of 'ai_turn_started' event.
 	 */
 	static void add_turn_started_observer( events::observer* event_observer );
+
+
+
+	/**
+	 * Deletes an observer of 'ai_recruit_list_changed' event.
+	 */
+	static void remove_recruit_list_changed_observer( events::observer* event_observer );
 
 
 	/**
@@ -431,6 +451,7 @@ private:
 	static long history_item_counter_;
 	static game_info *ai_info_;
 
+	static events::generic_event recruit_list_changed_;
 	static events::generic_event user_interact_;
 	static events::generic_event sync_network_;
 	static events::generic_event gamestate_changed_;

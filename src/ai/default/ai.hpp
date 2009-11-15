@@ -61,12 +61,30 @@ public:
 	int get_combat_score(const unit_type& ut) const;
 
 private:
-	config cfg_;
-	std::map<std::string,int> best_usage_;
 
 	void get_combat_score_vs(const unit_type& ut, const std::string &enemy_type_id, int &score, int &weighting, int hitpoints, int max_hitpoints) const;
 
 	virtual bool recruit_usage(const std::string& usage);
+
+
+	class recruit_situation_change_observer : public events::observer {
+	public:
+		recruit_situation_change_observer();
+		~recruit_situation_change_observer();
+
+		void handle_generic_event(const std::string& /*event_name*/);
+
+		bool get_valid();
+		void set_valid(bool valid);
+	private:
+		bool valid_;
+
+	};
+
+	/**
+	 * initalize recruitment recommendations
+	 */
+	void analyze_all();
 
 	/**
 	 * Analyze all the units that this side can recruit
@@ -79,15 +97,21 @@ private:
 
 	std::string find_suitable_recall_id();
 
-	std::map<std::string,int> unit_movement_scores_;
+	std::map<std::string,int> best_usage_;
 
-	std::set<std::string> not_recommended_units_;
+	config cfg_;
 
 	std::map<std::string,int> maximum_counts_;
 
-	std::map<std::string,int> unit_combat_scores_;
+	std::set<std::string> not_recommended_units_;
 
 	std::vector<std::pair<std::string,double> > recall_list_scores_;
+
+	recruit_situation_change_observer recruit_situation_change_observer_;
+
+	std::map<std::string,int> unit_combat_scores_;
+
+	std::map<std::string,int> unit_movement_scores_;
 
 	/**
 	 * Analyze all the units that this side can recruit

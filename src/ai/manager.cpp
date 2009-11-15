@@ -310,6 +310,7 @@ events::generic_event manager::user_interact_("ai_user_interact");
 events::generic_event manager::sync_network_("ai_sync_network");
 events::generic_event manager::gamestate_changed_("ai_gamestate_changed");
 events::generic_event manager::turn_started_("ai_turn_started");
+events::generic_event manager::recruit_list_changed_("ai_recruit_list_changed");
 int manager::last_interact_ = 0;
 int manager::num_interact_ = 0;
 
@@ -360,6 +361,13 @@ void manager::remove_gamestate_observer(events::observer* event_observer){
 }
 
 
+
+void manager::add_recruit_list_changed_observer( events::observer* event_observer )
+{
+	recruit_list_changed_.attach_handler(event_observer);
+}
+
+
 void manager::add_user_interact_observer( events::observer* event_observer )
 {
 	user_interact_.attach_handler(event_observer);
@@ -375,6 +383,12 @@ void manager::add_sync_network_observer( events::observer* event_observer )
 void manager::add_turn_started_observer( events::observer* event_observer )
 {
 	turn_started_.attach_handler(event_observer);
+}
+
+
+void manager::remove_recruit_list_changed_observer( events::observer* event_observer )
+{
+	recruit_list_changed_.detach_handler(event_observer);
 }
 
 
@@ -421,6 +435,11 @@ void manager::raise_gamestate_changed() {
 
 void manager::raise_turn_started() {
 	turn_started_.notify_observers();
+}
+
+
+void manager::raise_recruit_list_changed() {
+	recruit_list_changed_.notify_observers();
 }
 
 

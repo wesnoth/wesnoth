@@ -337,6 +337,39 @@ config ai_default::to_config() const
 }
 
 
+ai_default_recruitment_stage::recruit_situation_change_observer::recruit_situation_change_observer()
+	: valid_(false)
+{
+	manager::add_recruit_list_changed_observer(this);
+	manager::add_turn_started_observer(this);
+}
+
+
+void ai_default_recruitment_stage::recruit_situation_change_observer::handle_generic_event(const std::string &/*event_name*/)
+{
+	valid_ = false;
+}
+
+
+ai_default_recruitment_stage::recruit_situation_change_observer::~recruit_situation_change_observer()
+{
+	manager::remove_recruit_list_changed_observer(this);
+	manager::remove_turn_started_observer(this);
+}
+
+
+bool ai_default_recruitment_stage::recruit_situation_change_observer::get_valid()
+{
+	return valid_;
+}
+
+
+void ai_default_recruitment_stage::recruit_situation_change_observer::set_valid(bool valid)
+{
+	valid_ = valid;
+}
+
+
 void ai_default_recruitment_stage::on_create() {
 	stage::on_create();
 	foreach (const config &c, cfg_.child_range("limit")) {
@@ -359,9 +392,22 @@ config ai_default_recruitment_stage::to_config() const
 }
 
 
+void ai_default_recruitment_stage::analyze_all()
+{
+	if (!recruit_situation_change_observer_.get_valid()) {
+		not_recommended_units_.clear();
+		unit_movement_scores_.clear();
+		unit_combat_scores_.clear();
+		analyze_potential_recruit_movements();
+		analyze_potential_recruit_combat();
+		recruit_situation_change_observer_.set_valid(true);
+	}
+}
+
 bool ai_default_recruitment_stage::recruit_usage(const std::string& usage)
 {
 	raise_user_interact();
+	analyze_all();
 
 	const int min_gold = 0;
 
@@ -1407,13 +1453,15 @@ private:
 
 ai_default_recruitment_stage::ai_default_recruitment_stage(ai_context &context, const config &cfg)
 	: stage(context,cfg),
-	  cfg_(cfg),
 	  best_usage_(),
-	  unit_movement_scores_(),
-	  not_recommended_units_(),
+	  cfg_(cfg),
 	  maximum_counts_(),
+	  not_recommended_units_(),
+	  recall_list_scores_(),
+	  recruit_situation_change_observer_(),
 	  unit_combat_scores_(),
-	  recall_list_scores_()
+	  unit_movement_scores_()
+
 {
 }
 
@@ -1426,6 +1474,7 @@ void ai_default_recruitment_stage::analyze_potential_recruit_movements()
 {
 	unit_map &units_ = get_info().units;
 	gamemap &map_ = get_info().map;
+
 	if(unit_movement_scores_.empty() == false ||
 			get_recruitment_ignore_bad_movement()) {
 		return;
@@ -1702,8 +1751,7 @@ bool ai_default_recruitment_stage::do_play_stage()
 
 	const map_location& start_pos = nearest_keep(leader->first);
 
-	analyze_potential_recruit_movements();
-	analyze_potential_recruit_combat();
+	analyze_all();
 
 	//handle recalls
 	//if there any recalls left which have a better combat score/cost ratio, get them
@@ -1780,7 +1828,6 @@ bool ai_default_recruitment_stage::do_play_stage()
 		while(unit_types["scout"] < scouts_wanted) {
 			if(recruit_usage("scout") == false)
 				break;
-
 			++unit_types["scout"];
 		}
 	}
