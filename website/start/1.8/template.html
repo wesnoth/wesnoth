@@ -28,13 +28,14 @@
 
 <h1>Battle for Wesnoth 1.8 Release Notes</h1>
 
-<p><em>Christmas, 2009</em>. Once again it's time for that epoch-making event,
-a Wesnoth stable release. The Battle for Wesnoth team is proud to release
-version 1.8 of <em>The Battle for Wesnoth</em>, a <a
-href='http://www.gnu.org/philosophy/philosophy.html'>Free</a>, turn-based
-strategy game with a fantasy theme and roleplaying elements. The game is <a
-href='#download'>available for download</a> now for Windows, Mac OS X and
-various GNU/Linux distributions.</p>
+<p><em>Christmas, 2009</em>. It is once again time for that thrill
+you've all been waiting for, a Wesnoth stable release. The Battle for
+Wesnoth team is proud to release version 1.8 of <em>The Battle for
+Wesnoth</em>, a <a
+href='http://www.opensource.org/'>open-source</a>
+turn-based strategy game with a fantasy theme and roleplaying
+elements. The game is <a href='#download'>available for download</a>
+now for Windows, Mac OS X and various GNU/Linux distributions.</p>
 
 <ul>
   <li>
@@ -59,73 +60,104 @@ various GNU/Linux distributions.</p>
 
 <h2 id='game'>What's New in Wesnoth 1.8</h2>
 
-<p>REALLY SHORT SUMMARY</p>
+<p>The improvements this time around include one entire new
+full-length campain, hundreds of new and revised unit portraits, four
+new music tracks, some UI redesign, and substantial improvements in the
+game's AI.</p>
 
 <h3 id='players'>For Players</h3>
 
 <h4 id='campaigns'>Campaigns</h4>
 
+<p>A new campaign, <cite>Delfador's Memoirs</cite>, tells the tale of
+how a mage-apprentice rose to become Delfador the Great. This campaign
+was imported from the <a
+href="http://wesnoth-umc-dev.sourceforge.net">Wesnoth-UMC-Dev
+project</a> project, where it spent almost a year being adapted for
+mainline.</p>
+
+<p>We've continued to polish and improve the mainline campaigns.  The
+hero Kaleh's cusdtom advancements in <cite>Under the Burning
+Suns</cite>, long a source of problems, have been debugged and
+streamlined. Significant continuity problems in <cite>Heir to the
+Throne's</cite> "Cliffs of Thoria" scenario have been fixed. Sonme
+later scenarios in <cite>Legend of Wesmere</cite> have been rewritten
+and significantly enhanced.</p>
+
 <div class='thumb tright'>
   <div><a href='images/start-2-full.jpg'><img src='images/start-2.jpg' alt='Wesnoth Screenshot'/></a></div>
 </div>
 
-<p>CAMPAIGN CHANGES (mention <a href="http://wesnoth-umc-dev.sourceforge.net">Wesnoth-UMC-Dev project</a>)</p>
+<p>There are four new full-orchestral music tracks: <cite>Casualties
+of War</cite>, <cite>Into the Shadows</cite>, <cite>Over the Northern
+Mountains</cite>, and <cite>Journey's End</cite>.
 
-<p>CAMPAIGN CHANGES</p>
-
-<p>CAMPAIGN CHANGES</p>
+<p>The game AI has been significantly debugged and improved; it
+chooses recriuits/recalls better, and does smarter target selection.</p>
 
 <h4 id='multiplayer'>Multiplayer</h4>
 
-<p>MULTIPLAYER CHANGES</p>
+<p>The multiplayer lobby has been completely redesigned for improved
+ease of play and better appearance.</p>
+
+<p>Random numbers are generated on the Wesnoth server during MP
+combats. This make certain kinds of cheats and out-of-sync conditions
+impossible, at the cost of breaking compatibility with versions before
+1.7.3.</p>
 
 <div class='thumb tright'>
   <div><a href='images/start-1-full.jpg'><img src='images/start-1.jpg' alt='Wesnoth Screenshot'/></a></div>
 </div>
 
-<p>MULTIPLAYER CHANGES</p>
-
-<p>MULTIPLAYER CHANGES (BALANCING)</p>
-<ul>
-<li>LISTENTRY</li>
-<li>LISTENTRY</li>
-<li>LISTENTRY</li>
-<li>LISTENTRY</li>
-<li>LISTENTRY</li>
-<li>LISTENTRY</li>
-<li>LISTENTRY</li>
-<li>LISTENTRY</li>
-</ul>
+<p>There have been no unit multiplayer unit balancing changes in this
+release.</p>
 
 <h4 id='general'>General</h4>
 
-<p>GENERAL CHANGES</p>
+<p>There is new monster unit: the Water Serpent.  Additionally, the
+Dwarvish Scout from Under the Burning Suns is now part of normal
+Dwarvish sides in campaigns. Several other unit lines - most notably
+the Drakes &mdash; have been completely redone with improved art and
+animations.</p>
+
+<p>Add-on descriptions are now visible on the download server.</p>
+
+<p>Most translations have been updated.  New translations include English
+in the Shavian alphabet and Vietnamese.</p>
 
 <div class='thumb tright'>
   <div><a href='images/start-4-full.jpg'><img src='images/start-4.jpg' alt='Wesnoth Screenshot'/></a></div>
 </div>
 
-<p>GENERAL CHANGES</p>
-
-<p>GENERAL CHANGES (songs with <em>SONGNAME</em>)</p>
-
-<p>GENERAL CHANGES</p>
-
-<p>GENERAL CHANGES</p>
-
 <h3 id='campdev'>For Content Developers</h3>
 
-<p>DEV CHANGES</p>
+<p>This year Wesnoth was once again a Google "Summer of Code" program;
+one of its major results was a complete rework of the Wesnoth map
+editor and its interface, making it a friendlier tool for content
+developers.</p>
+
+<p>Our "Summer of Art" program, working in concert with Google's "Summer
+of Code", produced big results.  There are hundreds of new and
+reworked unit portraits available for your add-ons. There are new
+terrain graphics as well, including the Orcish Village and Orcish
+Keep.</p>
 
 <div class='thumb tright'>
   <div><a href='images/start-3-full.jpg'><img src='images/start-3.jpg' alt='Wesnoth Screenshot'/></a></div>
 </div>
 
-<p>DEV CHANGES</p>
+<p>We paid a lot of attention to world continuity, from small details
+like replacing earth-human names for characters up through larger ones
+like putting many new placenames on the main map. The main Wesnoth
+history timeline has been tweaked to eliminate various minor
+inconsistencies.</p>
 
-<p>DEV CHANGES</p>
+<p>More of the AI's control parameters can now be modified
+from with WML, enabling campaign designers to give enemy sides more
+distinct tactical personalities.</p>
 
-<p>DEV CHANGES</p>
+<p>We kept the promise we made in 1.6 when we had to remove Python for
+technical reasons; WML events can now be written in lua.</p>
 
 <div class='visualClear'></div>
 
@@ -180,7 +212,7 @@ href='http://www.wesnoth.org/wiki/Download_Xdeltas'>xdelta</a> files only.</p>
   <li><a href='http://www.wesnoth.org'>Wesnoth Official Website</a> (English)</li>
 <!--
     The announcements from 1.0 and 1.2 were lost in a server crash, commenting it out from the release notes...
-    By now they are restored, but won't add them in anymore...
+    They have been restored, but won't add them in anymore...
 -->
 <!--  <li><a href='http://www.wesnoth.org/start/1.0'>Wesnoth 1.0 Release Notes</a></li> -->
 <!--  <li><a href='http://www.wesnoth.org/start/1.2'>Wesnoth 1.2 Release Notes</a></li> -->
