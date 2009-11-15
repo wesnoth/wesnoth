@@ -36,6 +36,8 @@ void tscroll_label::set_label(const t_string& label)
 		tlabel* widget =
 				find_widget<tlabel>(content_grid(), "_label", false, true);
 		widget->set_label(label);
+
+		content_resize_request();
 	}
 }
 
