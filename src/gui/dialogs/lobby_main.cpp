@@ -603,7 +603,8 @@ void tlobby_main::update_playerlist()
 	player_list_.other_rooms.auto_hide();
 	player_list_.other_games.auto_hide();
 
-	window_->invalidate_layout();
+	// Invalidation seems no longer be needed.
+//	window_->invalidate_layout();
 	player_list_dirty_ = false;
 }
 
