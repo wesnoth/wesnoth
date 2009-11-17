@@ -601,7 +601,18 @@ variant villages_from_set(const Container& villages,
 
 variant formula_ai::get_value(const std::string& key) const
 {
-	if(key == "attacks")
+	if(key == "aggression")
+	{
+		return variant(get_aggression()*1000,variant::DECIMAL_VARIANT);
+	} else if(key == "leader_aggression")
+	{
+		return variant(get_leader_aggression()*1000,variant::DECIMAL_VARIANT);
+
+	} else if(key == "caution")
+	{
+		return variant(get_caution()*1000,variant::DECIMAL_VARIANT);
+
+	} else if(key == "attacks")
 	{
 		return get_attacks_as_variant();
 
@@ -810,6 +821,9 @@ variant formula_ai::get_value(const std::string& key) const
 void formula_ai::get_inputs(std::vector<formula_input>* inputs) const
 {
 	using game_logic::FORMULA_READ_ONLY;
+	inputs->push_back(game_logic::formula_input("aggression", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("leader_aggression", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("caution", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("attacks", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("my_side", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("teams", FORMULA_READ_ONLY));
@@ -900,6 +914,18 @@ void formula_ai::on_create(){
 		}
 	}
 
+
+	vars_ = game_logic::map_formula_callable();
+	if (const config &ai_vars = cfg_.child("vars"))
+	{
+		variant var;
+		foreach (const config::attribute &i, ai_vars.attribute_range()) {
+			var.serialize_from_string(i.second);
+			vars_.add(i.first, var);
+		}
+	}
+
+
 }
 
 
@@ -966,7 +992,31 @@ config formula_ai::to_config() const
 		return config();
 	}
 	DBG_AI << "formula_ai::to_config(): "<< cfg_<<std::endl;
-	return cfg_;//@todo 1.7 add a proper serialization
+	config cfg = cfg_;
+
+	//formula AI variables
+	cfg.clear_children("vars");
+	if (vars_.empty() == false) {
+		config &ai_vars = cfg.add_child("vars");
+
+		std::string str;
+		for(game_logic::map_formula_callable::const_iterator i = vars_.begin(); i != vars_.end(); ++i)
+		{
+			try {
+				i->second.serialize_to_string(str);
+			} catch (type_error te) {
+				WRN_AI << "variable ["<< i->first <<"] is not serializable - it will not be persisted across savegames"<<std::endl;
+				continue;
+			}
+				if (!str.empty())
+				{
+					ai_vars[i->first] = str;
+					str.clear();
+				}
+		}
+	}
+
+	return cfg;
 }
 
 } // end of namespace ai
