@@ -888,6 +888,23 @@ private:
 
 
 
+class rate_action_function : public function_expression {
+public:
+	explicit rate_action_function(const args_list& args, const formula_ai &ai)
+		: function_expression("rate_action", args, 1, 1), ai_(ai)
+	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		variant act = args()[0]->evaluate(variables,add_debug_info(fdb,0,"rate_action:action"));
+		ai::attack_analysis* analysis = convert_variant<ai::attack_analysis>(act);
+
+		return variant(analysis->rating(ai_.get_aggression(),ai_)*1000,variant::DECIMAL_VARIANT);
+	}
+	const formula_ai &ai_;
+};
+
+
+
 class recall_function : public function_expression {
 public:
 	explicit recall_function(const args_list& args)
@@ -1649,6 +1666,8 @@ expression_ptr ai_function_symbol_table::create_function(const std::string &fn,
 		return expression_ptr(new move_partial_function(args));
 	} else if(fn == "attack") {
 		return expression_ptr(new attack_function(args, ai_));
+	} else if(fn == "rate_action") {
+		return expression_ptr(new rate_action_function(args, ai_));
 	} else if(fn == "recall") {
 		return expression_ptr(new recall_function(args));
 	} else if(fn == "recruit") {
