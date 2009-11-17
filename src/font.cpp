@@ -939,6 +939,9 @@ surface floating_label::create_surface()
 		text.set_font_size(font_size_);
 		text.set_maximum_width(clip_rect_.w);
 		text.set_maximum_height(clip_rect_.h);
+		// If a colour is specified don't allow to override it with markup. (prevents faking map labels for example)
+		// FIXME: @todo Better would be to only ignore colour markup or reset the colour after set_text().
+		if (colour_ != font::LABEL_COLOUR) use_markup_ = false;
 		text.set_text(text_, use_markup_);
 		surface foreground = text.render();
 
