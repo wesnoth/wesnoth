@@ -3,6 +3,16 @@ Version 1.7.8+svn:
    * new [limit] subtag of [value] of ai_default::recruitment implementation of
      recruitment aspect - allow easy limiting of number of concurrent recruits
      of specific type in the field
+   * new rate_action formula_ai function which returns a rating of 
+     attack analysis.
+   * values of most ai aspects are now readable from formula ai (aggression, avoid,
+     attacks, attack_depth, caution, grouping, leader_aggression, leader_value,
+     number_of_possible_recruits_to_force_recruit, passive_leader,
+     passive_leader_shares_keep, recruitment_ignore_bad_movement,
+     recruitment_ignore_bad_combat, recruitment_pattern, scout_village_targeting,
+     support_villages, village_value, villages_per_scout )
+   * Fixed Bug #14768: made AI observe changes in allowed recruits, preventing
+     situations where AI does not recruit because it thinks that it can not do so.
  * Language and i18n:
    * Updated translations: Czech, French, German, Latin, Polish,
      Portuguese (Brazil), Serbian.

@@ -34,6 +34,7 @@
 #include "../../formula_debugger.hpp"
 #include "../../log.hpp"
 #include "../../menu_events.hpp"
+#include "../../terrain_filter.hpp"
 
 static lg::log_domain log_formula_ai("ai/formula_ai");
 #define DBG_AI LOG_STREAM(debug, log_formula_ai)
@@ -604,13 +605,77 @@ variant formula_ai::get_value(const std::string& key) const
 	if(key == "aggression")
 	{
 		return variant(get_aggression()*1000,variant::DECIMAL_VARIANT);
-	} else if(key == "leader_aggression")
+
+	} else if(key == "attack_depth")
 	{
-		return variant(get_leader_aggression()*1000,variant::DECIMAL_VARIANT);
+		return variant(get_attack_depth());
+
+	} else if(key == "avoid")
+	{
+		std::set<map_location> av_locs;
+		get_avoid().get_locations(av_locs);
+		return villages_from_set(av_locs);
 
 	} else if(key == "caution")
 	{
 		return variant(get_caution()*1000,variant::DECIMAL_VARIANT);
+
+	} else if(key == "grouping")
+	{
+		return variant(get_grouping());
+
+	} else if(key == "leader_aggression")
+	{
+		return variant(get_leader_aggression()*1000,variant::DECIMAL_VARIANT);
+
+	} else if(key == "leader_value")
+	{
+		return variant(get_leader_value()*1000,variant::DECIMAL_VARIANT);
+
+	} else if(key == "number_of_possible_recruits_to_force_recruit")
+	{
+		return variant(get_number_of_possible_recruits_to_force_recruit()*1000,variant::DECIMAL_VARIANT);
+
+	} else if(key == "passive_leader")
+	{
+		return variant(get_passive_leader());
+
+	} else if(key == "passive_leader_shares_keep")
+	{
+		return variant(get_passive_leader_shares_keep());
+
+	} else if(key == "recruitment_ignore_bad_movement")
+	{
+		return variant(get_recruitment_ignore_bad_movement());
+
+	} else if(key == "recruitment_ignore_bad_combat")
+	{
+		return variant(get_recruitment_ignore_bad_combat());
+
+	} else if(key == "recruitment_pattern")
+	{
+		const std::vector<std::string> &rp = get_recruitment_pattern();
+		std::vector<variant> vars;
+		foreach (const std::string &i, rp) {
+			vars.push_back(variant(i));
+		}
+		return variant(&vars);
+
+	} else if(key == "scout_village_targeting")
+	{
+		return variant(get_scout_village_targeting()*1000,variant::DECIMAL_VARIANT);
+
+	} else if(key == "support_villages")
+	{
+		return variant(get_support_villages());
+
+	} else if(key == "village_value")
+	{
+		return variant(get_village_value()*1000,variant::DECIMAL_VARIANT);
+
+	} else if(key == "villages_per_scout")
+	{
+		return variant(get_villages_per_scout());
 
 	} else if(key == "attacks")
 	{
