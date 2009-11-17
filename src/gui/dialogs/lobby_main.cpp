@@ -955,6 +955,9 @@ void tlobby_main::close_window(size_t idx)
 
 void tlobby_main::network_handler()
 {
+	if (player_list_dirty_) {
+		update_gamelist();
+	}
 	try {
 		config data;
 		const network::connection sock = network::receive_data(data);
@@ -1356,7 +1359,10 @@ void tlobby_main::user_dialog_callback(user_info* info)
 		tlobby_chat_window* t = whisper_window_open(info->name, true);
 		switch_to_window(t);
 	}
-	update_gamelist();
+	//do not update here as it can cause issues with removing the widget
+	//from within it's event handler. Should get updated as soon as possible
+	//update_gamelist();
+	player_list_dirty_ = true;
 }
 
 void tlobby_main::skip_replay_changed_callback(twidget* w)
