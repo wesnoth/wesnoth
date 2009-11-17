@@ -87,6 +87,7 @@ struct user_info
 	user_info(const config& c);
 
 	void update_state(int selected_game_id, const room_info* current_room = NULL);
+	void update_relation();
 
 	enum user_relation { FRIEND, ME, NEUTRAL, IGNORED };
 	enum user_state    { LOBBY, SEL_ROOM, GAME, SEL_GAME };

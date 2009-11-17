@@ -104,6 +104,7 @@ user_info::user_info(const config& c)
 	, registered(utils::string_bool(c["registered"]))
 	, observing(c["status"] == "observing")
 {
+	update_relation();
 }
 
 void user_info::update_state(int selected_game_id, const room_info* current_room /*= NULL*/)
@@ -121,6 +122,11 @@ void user_info::update_state(int selected_game_id, const room_info* current_room
 			state = LOBBY;
 		}
 	}
+	update_relation();
+}
+
+void user_info::update_relation()
+{
 	if (name == preferences::login()) {
 		relation = ME;
 	} else if (preferences::is_ignored(name)) {
