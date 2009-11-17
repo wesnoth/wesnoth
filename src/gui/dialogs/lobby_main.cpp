@@ -665,7 +665,7 @@ void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
 
 	GUI2_EASY_BUTTON_CALLBACK(send_message, tlobby_main);
 	GUI2_EASY_BUTTON_CALLBACK(create, tlobby_main);
-	GUI2_EASY_BUTTON_CALLBACK(show_help, tlobby_main);
+//	GUI2_EASY_BUTTON_CALLBACK(show_help, tlobby_main);
 	GUI2_EASY_BUTTON_CALLBACK(refresh, tlobby_main);
 	GUI2_EASY_BUTTON_CALLBACK(show_preferences, tlobby_main);
 	GUI2_EASY_BUTTON_CALLBACK(join_global, tlobby_main);
