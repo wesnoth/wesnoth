@@ -120,7 +120,7 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 			// Handle the special case with an image.
 			std::string::size_type pos = label.find("=");
 			if (pos != std::string::npos && label[0] == '&') {
-				icon = label.substr(1, pos);
+				icon = label.substr(1, pos - 1);
 				label.erase(0, pos + 1);
 			}
 
