@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-11-14 10:42+0100\n"
-"PO-Revision-Date: 2009-10-31 14:50+0100\n"
+"PO-Revision-Date: 2009-11-18 19:42+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -111,9 +111,8 @@ msgstr "Burgfried"
 
 #. [terrain_type]: id=encampment_keep
 #: data/core/terrain.cfg:256
-#, fuzzy
 msgid "Encampment Keep"
-msgstr "Lager"
+msgstr "Anführerzelt"
 
 #. [terrain_type]: id=orcish_keep
 #: data/core/terrain.cfg:269
@@ -126,24 +125,23 @@ msgstr "Burgfried"
 #. [terrain_type]: id=swamp_keep
 #: data/core/terrain.cfg:282 data/core/terrain.cfg:308
 #: data/core/terrain.cfg:347
-#, fuzzy
 msgid "Castle Keep"
-msgstr "Burg"
+msgstr "Burgfried"
 
 #. [terrain_type]: id=elven_keep
 #: data/core/terrain.cfg:295
 msgid "Elven Keep"
-msgstr ""
+msgstr "Burgfried"
 
 #. [terrain_type]: id=ruined_keep
 #: data/core/terrain.cfg:321
 msgid "Ruined Castle Keep"
-msgstr ""
+msgstr "Burgfried"
 
 #. [terrain_type]: id=sunken_keep
 #: data/core/terrain.cfg:334
 msgid "Sunken Castle Keep"
-msgstr ""
+msgstr "Burgfried"
 
 #. [terrain_type]: id=crater
 #: data/core/terrain.cfg:387
@@ -770,18 +768,17 @@ msgstr "Anwenden"
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:28
 msgid "Formula debugger"
-msgstr ""
+msgstr "Formeldebugger"
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:51
 msgid "Welcome"
-msgstr ""
+msgstr "Willkommen"
 
 #. [label]: id=state
 #: data/gui/default/window/formula_debugger.cfg:63
-#, fuzzy
 msgid "state"
-msgstr "Einfügen"
+msgstr "Zustand"
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:77
@@ -791,32 +788,28 @@ msgstr "Aufrufstapel"
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:86
 #: data/gui/default/window/gamestate_inspector.cfg:268
-#, fuzzy
 msgid "Actions"
-msgstr "Aktion"
+msgstr "Aktionen"
 
 #. [button]: id=step
 #: data/gui/default/window/formula_debugger.cfg:120
-#, fuzzy
 msgid "Step operation"
-msgstr "Moderation"
+msgstr "Schritt über Ausdruck"
 
 #. [button]: id=next
 #: data/gui/default/window/formula_debugger.cfg:130
-#, fuzzy
 msgid "Next operation"
-msgstr "Nächster Zufallskartengenerator"
+msgstr "Schritt hinüber"
 
 #. [button]: id=stepout
 #: data/gui/default/window/formula_debugger.cfg:140
 msgid "Step out"
-msgstr ""
+msgstr "Schritt heraus"
 
 #. [button]: id=continue
 #: data/gui/default/window/formula_debugger.cfg:150
-#, fuzzy
 msgid "Continue"
-msgstr "Bewegung fortsetzen"
+msgstr "Forsetzen"
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:166
@@ -936,7 +929,7 @@ msgstr "Name: "
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_save_message.cfg:52
 msgid "x"
-msgstr ""
+msgstr "x"
 
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_save_oos.cfg:52
@@ -946,7 +939,7 @@ msgstr ""
 #. [toggle_button]: id=ignore_all
 #: data/gui/default/window/game_save_oos.cfg:134
 msgid "Ignore All"
-msgstr ""
+msgstr "Alle ignorieren"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit_game
@@ -967,19 +960,17 @@ msgstr "Der Spielstand existiert bereits. Möchtet Ihr ihn überschreiben?"
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:38
 msgid "Gamestate Inspector"
-msgstr ""
+msgstr "Spielzustandsanzeige"
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:92
-#, fuzzy
 msgid "Types"
-msgstr "Ja"
+msgstr "Typen"
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:103
-#, fuzzy
 msgid "Content"
-msgstr "Verbinden"
+msgstr "Wert"
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:114
@@ -1053,7 +1044,7 @@ msgstr "Partie eröffnen"
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:179
 msgid "Unknown era"
-msgstr ""
+msgstr "Unbekannte Epoche"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:181
@@ -1114,9 +1105,8 @@ msgstr "Räume"
 
 #. [image]: id=pending_messages
 #: data/gui/default/window/lobby_main.cfg:375
-#, fuzzy
 msgid "Messages waiting"
-msgstr "Nachrichten"
+msgstr "Neue Nachrichten"
 
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:451
@@ -1136,7 +1126,7 @@ msgstr "Freunde"
 #. [toggle_button]: id=filter_without_ignored
 #: data/gui/default/window/lobby_main.cfg:476
 msgid "No ignored"
-msgstr ""
+msgstr "Nicht ignoriert"
 
 #. [toggle_button]: id=filter_vacant_slots
 #: data/gui/default/window/lobby_main.cfg:482
@@ -1199,9 +1189,8 @@ msgstr "Schneller Verlauf"
 
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:30
-#, fuzzy
 msgid "Player Info - "
-msgstr "Spieler: "
+msgstr "Spielerinformationen - "
 
 #. [button]: id=start_whisper
 #: data/gui/default/window/lobby_player_info.cfg:62
@@ -1257,9 +1246,8 @@ msgstr "Vom Server werfen"
 
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
-#, fuzzy
 msgid "Multiplayer command dialog"
-msgstr "Mehrspielerkommandos"
+msgstr "Mehrspielerkommandodialog"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:31
@@ -1514,9 +1502,8 @@ msgstr "Auswählen"
 
 #. [button]: id=previous_tip
 #: data/gui/default/window/title_screen.cfg:124
-#, fuzzy
 msgid "Previous"
-msgstr "Vorherige Einheit"
+msgstr "Vorheriger"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
@@ -1631,7 +1618,7 @@ msgstr "Computerzüge überspringen"
 
 #: src/game_preferences_display.cpp:161
 msgid "Interrupt move when an ally is sighted"
-msgstr ""
+msgstr "Bewegung unterbrechen, wenn Verbündete gesichtet werden"
 
 #: src/game_preferences_display.cpp:162
 msgid "Show Grid"
@@ -2146,9 +2133,8 @@ msgid "Turn"
 msgstr "Runde"
 
 #: src/gui/dialogs/game_load.cpp:275
-#, fuzzy
 msgid "Scenario Start"
-msgstr "Missionsziele"
+msgstr "Szenariostart"
 
 #: src/gui/dialogs/game_load.cpp:278
 msgid "Difficulty: "
@@ -2164,7 +2150,7 @@ msgstr ""
 
 #: src/gui/dialogs/lobby_main.cpp:367
 msgid "Games: showing $num_shown out of $num_total"
-msgstr ""
+msgstr "Spiele: $num_shown von $num_total angezeigt"
 
 #: src/gui/dialogs/lobby_main.cpp:407
 msgid "Observers allowed"

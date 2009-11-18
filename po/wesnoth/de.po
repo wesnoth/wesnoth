@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-11-14 10:42+0100\n"
-"PO-Revision-Date: 2009-10-12 20:53+0100\n"
+"PO-Revision-Date: 2009-11-18 20:55+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -2967,7 +2967,6 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:813
-#, fuzzy
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -2979,13 +2978,15 @@ msgid ""
 msgstr ""
 "\n"
 "Übergibt die Kontrolle einer Fraktion (hier die Nummer der Fraktion "
-"eingeben) an Spieler (hier den Namen des Spielers/Beobachters eingeben). Ihr "
-"könnte überprüfen\n"
+"eingeben) an Spieler (hier den Namen des Spielers/Beobachters eingeben). In "
+"den »Szenarioeinstellungen« könnt Ihr prüfen, welche Fraktion von welchem "
+"Spieler geführt wird (Drückt die »Nächste Seite« Schaltfläche in der "
+"»Spielübersicht« (ALT+s standardmässig), um dort hin zu gelangen.). Der "
+"Gastgeber kann die Kontrolle jedweder Fraktion ändern.\n"
 "\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:816
-#, fuzzy
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. If you "
@@ -2995,8 +2996,9 @@ msgid ""
 msgstr ""
 "\n"
 "Wirft einen Spieler im Mehrspielermodus aus dem Spiel. Es ist diesem Spieler "
-"jedoch möglich, erneut dem Spiel beizutreten. Sollte verwendet werden, wenn "
-"jemand Verbindungsprobleme hat oder andere Schwierigkeiten auftreten.\n"
+"jedoch möglich, erneut dem Spiel beizutreten. Soll nur die Kontrolle einer "
+"oder mehrerer Fraktionen geändert werden, verwendet das :controll Kommando "
+"stattdessen.\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -3040,17 +3042,15 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:826
-#, fuzzy
 msgid ""
 "\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
 "observers is cleared."
 msgstr ""
 "\n"
-"Entzieht einem bestimmten Beobachter Redefreiheit. Wenn kein Benutzername "
-"angegeben wird, wird eine Liste aller Beobachter angezeigt, denen die "
-"Redefreiheit entzogen wurde.\n"
-"\n"
+"Erteilt einem bestimmten Beobachter Redefreiheit. Wenn kein Benutzername "
+"angegeben wird, wird allen Beobachtern, welchen die Redefreiheit entzogen "
+"wurde, diese wieder erteilt."
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:833
@@ -3167,6 +3167,8 @@ msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
 msgstr ""
+"\n"
+"Lässt die ausgewählte Einheit N Stufen aufsteigen. Beispiel: :unit advances=2"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:51
@@ -3856,9 +3858,8 @@ msgid "Exit"
 msgstr "Beenden"
 
 #: data/core/macros/ai_controller.cfg:1047
-#, fuzzy
 msgid "Set special orders..."
-msgstr "Verhalten beeinflussen..."
+msgstr "Spezielle Befehle erteilen..."
 
 #: data/core/macros/ai_controller.cfg:1048
 msgid "Move leader to..."
@@ -6403,9 +6404,8 @@ msgstr "$name|spitze,Berg $name"
 
 #. [language]
 #: data/hardwired/english.cfg:25
-#, fuzzy
 msgid "$name's Swamp,$name|marsh,$name|fen"
-msgstr "$name|heim,$name|hausen,$name|feld"
+msgstr "$name|s Sumpf,$name|marsch,$name|fenn"
 
 #. [language]
 #: data/hardwired/english.cfg:26
@@ -8261,9 +8261,8 @@ msgid "Observers:"
 msgstr "Beobachter:"
 
 #: src/gui/dialogs/lobby_player_info.cpp:64
-#, fuzzy
 msgid "In game:"
-msgstr "Name:"
+msgstr "Im Spiel:"
 
 #: src/gui/dialogs/lobby_player_info.cpp:66
 msgid "(observing)"
@@ -8278,22 +8277,20 @@ msgid "In lobby"
 msgstr "In der Eingangshalle"
 
 #: src/gui/dialogs/lobby_player_info.cpp:95
-#, fuzzy
 msgid "On friends list"
-msgstr "Zur Freundesliste hinzugefügt: "
+msgstr "Auf Eurer Freundesliste"
 
 #: src/gui/dialogs/lobby_player_info.cpp:100
-#, fuzzy
 msgid "On ignores list"
-msgstr "Zur Liste der zu ignorierenden Benutzer hinzugefügt: "
+msgstr "Von Euch ignoriert"
 
 #: src/gui/dialogs/lobby_player_info.cpp:105
 msgid "Neither a friend nor ignored"
-msgstr ""
+msgstr "Ist weder Freund noch wird ignoriert"
 
 #: src/gui/dialogs/lobby_player_info.cpp:110
 msgid "You"
-msgstr ""
+msgstr "Ihr selbst"
 
 #: src/gui/dialogs/lobby_player_info.cpp:113 src/multiplayer_create.cpp:540
 msgid "Error"
@@ -8623,7 +8620,7 @@ msgstr "Einkommen"
 
 #: src/menu_events.cpp:474
 msgid "Current Status"
-msgstr "Aktueller Zustand"
+msgstr "Spielübersicht"
 
 #: src/menu_events.cpp:475
 msgid "More >"
@@ -8852,16 +8849,15 @@ msgstr ""
 "zusätzliches Argument verwendet, wird der aktuelle Status ausgegeben."
 
 #: src/menu_events.cpp:2225
-#, fuzzy
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr ""
-"Deaktiviert Textnachrichten eines Beobachters. Wird der Befehl ohne "
-"zusätzliches Argument verwendet, wird der aktuelle Status ausgegeben."
+"Erteilt einem Beobachter Redefreiheit. Wird der Befehl ohne Argument "
+"verwendet, wird allen Beobachtern, denen derzeit die Redefreiheit entzogen "
+"ist, diese erteilt."
 
 #: src/menu_events.cpp:2227
-#, fuzzy
 msgid "Mute/Unmute all observers. (toggles)"
-msgstr "Entzieht allen Beobachtern ihre Redefreiheit."
+msgstr "Allen Beobachtern Redefreiheit entziehen/erteilen. (wechselt)"
 
 #: src/menu_events.cpp:2237
 msgid "Send a message to the server admins currently online"
@@ -9022,7 +9018,7 @@ msgstr "Weist einen Befehl dem Tastaturkürzel »Benutzerdefinierter Befehl« zu
 
 #: src/menu_events.cpp:2451
 msgid "Launch the gamestate inspector"
-msgstr ""
+msgstr "Spielzustandsanzeige starten"
 
 #: src/menu_events.cpp:2453
 msgid "Set or show alias to a command"
@@ -9743,7 +9739,7 @@ msgstr "Initialisiere Anzeige"
 
 #: src/play_controller.cpp:183
 msgid "time left for current turn"
-msgstr ""
+msgstr "Verbleibende Zeit für den aktuellen Zug"
 
 #: src/play_controller.cpp:185 src/replay_controller.cpp:134
 msgid "current local time"
@@ -9898,13 +9894,13 @@ msgid "The game is over."
 msgstr "Das Spiel ist vorbei."
 
 #: src/playsingle_controller.cpp:488
-#, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game\n"
 "cannot continue. Do you want to save the game?"
 msgstr ""
-"Das Spiel kann nicht fortgesetzt werden, da ein Verbindungsfehler "
-"aufgetreten ist. Möchtet Ihr den Spielstand speichern?"
+"Das Spiel kann nicht fortgesetzt werden, da ein\n"
+"Verbindungsfehler aufgetreten ist. Möchtet Ihr den\n"
+"Spielstand speichern?"
 
 #: src/playsingle_controller.cpp:648
 msgid "It is now $name|'s turn"
