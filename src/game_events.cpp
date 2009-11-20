@@ -2986,7 +2986,7 @@ WML_HANDLER_FUNCTION(switch, event_info, cfg)
 		}
 	}
 }
-	
+
 WML_HANDLER_FUNCTION(open_help,  /*event_info*/, cfg)
 {
 	game_display &screen = *resources::screen;

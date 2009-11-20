@@ -607,7 +607,7 @@ void tlobby_main::update_playerlist()
 	 * @todo See whether this invalidate can be removed.
 	 *
 	 * It should be possible but once done the clicking on the sort oder of the
-	 * players in an empty lobby seems to crash with a not sized userpanel 
+	 * players in an empty lobby seems to crash with a not sized userpanel
 	 * size {-1, -1, 0, 0}.
 	 */
 	window_->invalidate_layout();
