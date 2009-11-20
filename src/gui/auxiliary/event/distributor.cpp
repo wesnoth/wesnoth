@@ -235,7 +235,10 @@ void tmouse_motion::mouse_leave()
 {
 	DBG_GUI_E << LOG_HEADER << "Firing: " << event::MOUSE_LEAVE << ".\n";
 
-	owner_.fire(event::MOUSE_LEAVE, *mouse_focus_);
+	tcontrol* control = dynamic_cast<tcontrol*>(mouse_focus_);
+	if(!control || control->get_active()) {
+		owner_.fire(event::MOUSE_LEAVE, *mouse_focus_);
+	}
 
 	mouse_focus_ = NULL;
 
