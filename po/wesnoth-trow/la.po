@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-09-16 21:47+0200\n"
-"PO-Revision-Date: 2009-11-07 15:58-0500\n"
+"PO-Revision-Date: 2009-11-16 17:49-0500\n"
 "Last-Translator: Michael Babich (Aethaeryn) <michaelbabich7@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -35,7 +35,7 @@ msgstr "AV"
 #. [campaign]: id=The_Rise_Of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:16
 msgid "(Easy)"
-msgstr ""
+msgstr "(Facilis)"
 
 #. [campaign]: id=The_Rise_Of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:16
@@ -45,7 +45,7 @@ msgstr "Pugnator"
 #. [campaign]: id=The_Rise_Of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:17
 msgid "(Normal)"
-msgstr ""
+msgstr "(Normativus)"
 
 #. [campaign]: id=The_Rise_Of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:17
@@ -55,7 +55,7 @@ msgstr "Dux"
 #. [campaign]: id=The_Rise_Of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:18
 msgid "(Challenging)"
-msgstr ""
+msgstr "(Diffacilis)"
 
 #. [campaign]: id=The_Rise_Of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:18
@@ -65,7 +65,7 @@ msgstr "Dominus"
 #. [campaign]: id=The_Rise_Of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:22
 msgid "(Expert level, 25 scenarios.)"
-msgstr ""
+msgstr "(Ordo pertius, 25 scaenarii.)"
 
 #. [campaign]: id=The_Rise_Of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:22
@@ -133,12 +133,12 @@ msgstr ""
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:24
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:18
 msgid "Prince Haldric"
-msgstr ""
+msgstr "Haldric Regulus"
 
 #. [side]: type=Noble Youth, type=Noble Fighter, id=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:32
 msgid "Haldric"
-msgstr ""
+msgstr "Haldric"
 
 #. [side]: type=Wesfolk Outcast, id=Wesfolk Leader
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:42
@@ -150,12 +150,13 @@ msgstr ""
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:49
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:54
 msgid "Wesfolk"
-msgstr ""
+msgstr "Vesgens"
 
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:62
+#, fuzzy
 msgid "King Eldaric IV"
-msgstr ""
+msgstr "Eldaric IV Rex"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:68
@@ -218,6 +219,7 @@ msgstr ""
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:226
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:208
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:305
+#, fuzzy
 msgid "Turns run out"
 msgstr "Tempus exit"
 
@@ -883,7 +885,7 @@ msgstr ""
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:369
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:429
 msgid "Die, human."
-msgstr ""
+msgstr "Homo, morere!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:373
@@ -1612,7 +1614,7 @@ msgstr ""
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:45
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:84
 msgid "Undead"
-msgstr ""
+msgstr "Inmortus"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_of_the_Deep.cfg:111
@@ -5886,6 +5888,7 @@ msgstr "Globus ignis"
 
 #. [unit_type]: id=Fireball, race=mechanical
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:24
+#, fuzzy
 msgid ""
 "A Fireball. This is not to be used for anything else than a 'Move_Unit_Fake'!"
 msgstr "Globus ignis. Non utendus est nisi in 'Move_Unit_Fake'!"
@@ -5902,6 +5905,7 @@ msgstr "Dux Nobilis"
 
 #. [unit_type]: id=Noble Commander, race=human
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:21
+#, fuzzy
 msgid ""
 "The rank of a noble Commander is held by those who lead battle groups into "
 "combat. Possessing leadership skills, they give lower-level units in "
@@ -5935,6 +5939,7 @@ msgstr "Pugnator Nobilis"
 
 #. [unit_type]: id=Noble Fighter, race=human
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:20
+#, fuzzy
 msgid ""
 "Young and brash, Fighters fight with a sword, and are vulnerable to ranged "
 "attacks from enemies. However they have the potential to become great "
@@ -5950,6 +5955,7 @@ msgstr "Dominus Nobilis"
 
 #. [unit_type]: id=Noble Lord, race=human
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:22
+#, fuzzy
 msgid ""
 "The noble leaders of many troops, Lords are especially strong in melee "
 "combat, and also possess skill with the bow. Like Commanders, Lords possess "
@@ -5967,6 +5973,7 @@ msgstr "Adulescens Nobilis"
 
 #. [unit_type]: id=Noble Youth, race=human
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:20
+#, fuzzy
 msgid ""
 "Today he is a young man, by his devotion to the crown he is seeking to "
 "become a Lord -- to join the elite of humanity."
@@ -5986,6 +5993,7 @@ msgstr "Domina Vampirica"
 
 #. [unit_type]: id=Vampire Lady, race=undead
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:20
+#, fuzzy
 msgid ""
 "Cold and beautiful, she maintains her eternal youthful appearance drinking "
 "the blood of the living."
@@ -6009,6 +6017,7 @@ msgstr "Rex Bellator"
 
 #. [unit_type]: id=Warrior King
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Warrior_King.cfg:12
+#, fuzzy
 msgid ""
 "As the leaders of the human Kingdoms, Kings are responsible for ruling and "
 "protecting their subjects. Kings can coordinate the attacks of level 1 and 2 "
@@ -6020,9 +6029,8 @@ msgstr ""
 
 #. [unit_type]: id=Wesfolk Lady, race=human
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Lady.cfg:4
-#, fuzzy
 msgid "female^Wesfolk Lady"
-msgstr "Domina Vampirica"
+msgstr ""
 
 #. [unit_type]: id=Wesfolk Leader, race=human
 #. [unit_type]: id=Wesfolk Lady, race=human
@@ -6052,9 +6060,8 @@ msgstr "funda"
 
 #. [unit_type]: id=Wesfolk Leader, race=human
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Leader.cfg:4
-#, fuzzy
 msgid "female^Wesfolk Leader"
-msgstr "Domina Vampirica"
+msgstr ""
 
 #. [unit_type]: id=Wesfolk Outcast, race=human
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Outcast.cfg:4
@@ -6073,6 +6080,7 @@ msgstr ""
 
 #. [unit_type]: id=Wose Sapling, race=wose
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:4
+#, fuzzy
 msgid "Wose Sapling"
 msgstr "Surculum Vosiorum"
 
@@ -6106,6 +6114,7 @@ msgstr ""
 
 #. [attack]: type=impact
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:31
+#, fuzzy
 msgid "crush"
 msgstr "obterere"
 

@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-09-20 15:43+0200\n"
-"PO-Revision-Date: 2009-11-07 15:59-0500\n"
+"PO-Revision-Date: 2009-11-16 17:26-0500\n"
 "Last-Translator: Michael Babich (Aethaeryn) <michaelbabich7@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -33,17 +33,17 @@ msgstr "RB"
 #. [campaign]: id=Northern_Rebirth
 #: data/campaigns/Northern_Rebirth/_main.cfg:15
 msgid "(Normal)"
-msgstr ""
+msgstr "(Normativus)"
 
 #. [campaign]: id=Northern_Rebirth
 #: data/campaigns/Northern_Rebirth/_main.cfg:15
 msgid "Peasant"
-msgstr "Colonus"
+msgstr "Rusticus"
 
 #. [campaign]: id=Northern_Rebirth
 #: data/campaigns/Northern_Rebirth/_main.cfg:16
 msgid "(Challenging)"
-msgstr ""
+msgstr "(Provocatio)"
 
 #. [campaign]: id=Northern_Rebirth
 #: data/campaigns/Northern_Rebirth/_main.cfg:16
@@ -53,7 +53,7 @@ msgstr "Hastatus"
 #. [campaign]: id=Northern_Rebirth
 #: data/campaigns/Northern_Rebirth/_main.cfg:17
 msgid "(Difficult)"
-msgstr ""
+msgstr "(Difficilis)"
 
 #. [campaign]: id=Northern_Rebirth
 #: data/campaigns/Northern_Rebirth/_main.cfg:17
@@ -63,17 +63,17 @@ msgstr "Gladiator"
 #. [campaign]: id=Northern_Rebirth
 #: data/campaigns/Northern_Rebirth/_main.cfg:18
 msgid "(Nightmare)"
-msgstr ""
+msgstr "(Suppressio)"
 
 #. [campaign]: id=Northern_Rebirth
 #: data/campaigns/Northern_Rebirth/_main.cfg:18
 msgid "Royal Guard"
-msgstr ""
+msgstr "Bucellarius"
 
 #. [campaign]: id=Northern_Rebirth
 #: data/campaigns/Northern_Rebirth/_main.cfg:22
 msgid "(Expert level, 14 scenarios.)"
-msgstr ""
+msgstr "(Ordo peritus, 14 scaenarii.)"
 
 #. [campaign]: id=Northern_Rebirth
 #: data/campaigns/Northern_Rebirth/_main.cfg:22
@@ -104,7 +104,7 @@ msgstr ""
 #. [about]
 #: data/campaigns/Northern_Rebirth/_main.cfg:54
 msgid "Music"
-msgstr ""
+msgstr "Musica"
 
 #. [about]
 #: data/campaigns/Northern_Rebirth/_main.cfg:60
@@ -292,7 +292,7 @@ msgstr ""
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:21
 #: data/campaigns/Northern_Rebirth/utils/utils.cfg:76
 msgid "Tallin"
-msgstr ""
+msgstr "Tallin"
 
 #. [side]: type=Orcish Warlord, id=Al'Tar
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:98
@@ -347,6 +347,7 @@ msgstr ""
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:902
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1027
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:410
+#, fuzzy
 msgid "Turns run out"
 msgstr "Tempus exit"
 
@@ -503,7 +504,7 @@ msgstr ""
 #. [message]: speaker=second_unit
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:374
 msgid " *STAB*"
-msgstr ""
+msgstr "*TRANSIGET*"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:378
@@ -829,7 +830,7 @@ msgstr ""
 #. [message]: speaker=second_unit
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:322
 msgid "Ahhh! Fire!"
-msgstr ""
+msgstr "Ah! Ignis!"
 
 #. [message]: speaker=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:335
@@ -928,7 +929,7 @@ msgstr ""
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1833
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1856
 msgid " *SMASH*"
-msgstr ""
+msgstr "*EFFRINGET*"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:525
@@ -1566,7 +1567,7 @@ msgstr ""
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:440
 msgid "....!"
-msgstr ""
+msgstr "....!"
 
 #. [message]: speaker=Malifor
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:444
@@ -1629,7 +1630,7 @@ msgstr ""
 #. [message]: type=Necrophage
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:651
 msgid "FOOOOOOOD!"
-msgstr ""
+msgstr "CIBUUUUUUUS!"
 
 #. [message]: role=Supporter
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:656
@@ -1747,9 +1748,8 @@ msgstr ""
 
 #. [side]: type=Death Knight, id=Samlan
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:146
-#, fuzzy
 msgid "Samlan"
-msgstr "Hastatus"
+msgstr ""
 
 #. [side]: type=Death Knight, id=Boblin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:169
@@ -2465,9 +2465,8 @@ msgstr ""
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1600
-#, fuzzy
 msgid "What do you have there, Abhai?"
-msgstr "Quid in animo habes?"
+msgstr ""
 
 #. [message]: speaker=Abhai
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1604
@@ -2501,9 +2500,8 @@ msgstr ""
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1616
-#, fuzzy
 msgid "Why can't you wield it, Abhai?"
-msgstr "Quid in animo habes?"
+msgstr ""
 
 #. [message]: speaker=Abhai
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1620
@@ -3280,7 +3278,7 @@ msgstr ""
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2951
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:515
 msgid " *giggle* Sorry."
-msgstr ""
+msgstr "*ridet* Me paenitet."
 
 #. [scenario]: id=compelled
 #: data/campaigns/Northern_Rebirth/scenarios/05b_Compelled.cfg:4
@@ -3622,7 +3620,7 @@ msgstr ""
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:165
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:197
 msgid "Orcs"
-msgstr ""
+msgstr "Orces"
 
 #. [side]: type=Orcish Warlord, id=Drung
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:171
@@ -3643,9 +3641,8 @@ msgstr ""
 
 #. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:313
-#, fuzzy
 msgid "Who are you, what do you want?"
-msgstr "Quid in animo habes?"
+msgstr ""
 
 #. [message]: id=Rakshas
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:317
@@ -3975,7 +3972,7 @@ msgstr ""
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:297
 msgid ".........."
-msgstr ""
+msgstr ".........."
 
 #. [message]: speaker=Betrayed Friend
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:302
@@ -4585,7 +4582,7 @@ msgstr ""
 #. [message]: id=Ro'Sothian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:641
 msgid "Never!"
-msgstr ""
+msgstr "Numquam!"
 
 #. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:645
@@ -5993,7 +5990,7 @@ msgstr ""
 #. [message]: speaker=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:154
 msgid "Wow!"
-msgstr ""
+msgstr "Babae!"
 
 #. [message]: speaker=Elenia
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:158
@@ -6168,7 +6165,7 @@ msgstr ""
 #. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:263
 msgid "Peace! Peace!"
-msgstr ""
+msgstr "Pax! Pax!"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:267
@@ -6357,9 +6354,8 @@ msgstr ""
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/09b_Judgement.cfg:173
-#, fuzzy
 msgid "Matter, so you mean..."
-msgstr "Quid in animo habes?"
+msgstr ""
 
 #. [message]: speaker=Betrayed Friend
 #: data/campaigns/Northern_Rebirth/scenarios/09b_Judgement.cfg:178
@@ -6473,6 +6469,7 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:41
+#, fuzzy
 msgid "What do you mean?"
 msgstr "Quid in animo habes?"
 
@@ -7437,7 +7434,7 @@ msgstr ""
 #. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:326
 msgid " *wink wink*"
-msgstr ""
+msgstr "*annictat*"
 
 #. [message]: speaker=Hidel
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:330
@@ -8027,17 +8024,17 @@ msgstr ""
 #. [message]: id=Krash
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:884
 msgid "FOR FRIENDSHIP!!!"
-msgstr ""
+msgstr "PRO AMICITIA!!!"
 
 #. [message]: id=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:888
 msgid "FOR PEACE!!!"
-msgstr ""
+msgstr "PRO PACE!!!"
 
 #. [message]: id=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:892
 msgid "FOR FUN!"
-msgstr ""
+msgstr "PRO DELICIA!"
 
 #. [message]: id=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:896
@@ -8151,6 +8148,7 @@ msgstr ""
 
 #. [scenario]: id=epilogue
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:5
+#, fuzzy
 msgid "Epilogue"
 msgstr "Epilogus"
 
@@ -9019,8 +9017,9 @@ msgstr ""
 
 #. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:747
+#, fuzzy
 msgid "See?"
-msgstr ""
+msgstr "Videsne?"
 
 #. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:751

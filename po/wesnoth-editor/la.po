@@ -5,6 +5,7 @@
 # Current Translators:
 #   Michael Babich (Aethaeryn) <michaelbabich7@gmail.com> - Maintainer
 #   Thomas Hockings (Deusite) <elprofesh@gmail.com>
+#   Stephan Maus (Thanatos) <thanatologe@gmx.net>
 #
 # Former Translators:
 #   Mark Polo (mpolo) <markpolo@gmail.com>
@@ -13,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth-editor 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-10-07 15:42+0200\n"
-"PO-Revision-Date: 2009-11-12 13:39-0500\n"
+"PO-Revision-Date: 2009-11-16 22:50-0500\n"
 "Last-Translator: Michael Babich (Aethaeryn) <michaelbabich7@gmail.com>\n"
 "Language-Team: Latin\n"
 "MIME-Version: 1.0\n"
@@ -22,81 +23,83 @@ msgstr ""
 
 #. [brush]
 #: data/core/editor/brushes.cfg:5
+#, fuzzy
 msgid "Single Hex"
-msgstr ""
+msgstr "Sexangulum singularis"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:15
+#, fuzzy
 msgid "Radius 1 Hex"
-msgstr ""
+msgstr "Sexangula in spatio uno"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:25
+#, fuzzy
 msgid "Radius 2 Hex"
-msgstr ""
+msgstr "Sexangula in spatio duobus"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:55
+#, fuzzy
 msgid "Hex Line NW-SE"
-msgstr ""
+msgstr "Linea sexangularum SO-MO"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:10
 msgid "all"
-msgstr ""
+msgstr "omnes"
 
 #. [editor_group]: id=water
 #: data/core/editor/terrain-groups.cfg:16
-#, fuzzy
 msgid "water"
-msgstr "Glutinare"
+msgstr "aqua"
 
 #. [editor_group]: id=flat
 #: data/core/editor/terrain-groups.cfg:23
 msgid "flat"
-msgstr ""
+msgstr "planus"
 
 #. [editor_group]: id=desert
 #: data/core/editor/terrain-groups.cfg:30
+#, fuzzy
 msgid "desert"
-msgstr ""
+msgstr "arensentia"
 
 #. [editor_group]: id=forest
 #: data/core/editor/terrain-groups.cfg:37
 msgid "forest"
-msgstr ""
+msgstr "silva"
 
 #. [editor_group]: id=frozen
 #: data/core/editor/terrain-groups.cfg:44
 msgid "frozen"
-msgstr ""
+msgstr "frigidus"
 
 #. [editor_group]: id=rough
 #: data/core/editor/terrain-groups.cfg:51
 msgid "rough"
-msgstr ""
+msgstr "asper"
 
 #. [editor_group]: id=cave
 #: data/core/editor/terrain-groups.cfg:58
 msgid "cave"
-msgstr ""
+msgstr "caverna"
 
 #. [editor_group]: id=village
 #: data/core/editor/terrain-groups.cfg:65
-#, fuzzy
 msgid "village"
-msgstr "Pagi:"
+msgstr "viculus"
 
 #. [editor_group]: id=castle
 #: data/core/editor/terrain-groups.cfg:72
-#, fuzzy
 msgid "castle"
-msgstr "Glutinare"
+msgstr "castellum"
 
 #. [editor_group]: id=special
 #: data/core/editor/terrain-groups.cfg:79
 msgid "special"
-msgstr ""
+msgstr "specialis"
 
 #. [editor_tool_hint]: id=editor-tool-paint
 #. [editor_tool_hint]: id=editor-tool-fill
@@ -137,125 +140,131 @@ msgstr ""
 #: data/themes/editor.cfg:120
 #, fuzzy
 msgid "File"
-msgstr "Archivum"
+msgstr "|Archivum"
 
 #. [menu]: id=menu-editor-edit
 #: data/themes/editor.cfg:131
 #, fuzzy
 msgid "Edit"
-msgstr "Recensere"
+msgstr "Exercere"
 
 #. [menu]: id=menu-editor-map
 #: data/themes/editor.cfg:141
 msgid "Map"
-msgstr ""
+msgstr "Charta"
 
 #. [menu]: id=menu-editor-window
 #: data/themes/editor.cfg:151
-#, fuzzy
 msgid "Window"
-msgstr "Infectum reddere"
+msgstr "Fenestra"
 
 #. [label]: id=villages-icon
 #: data/themes/editor.cfg:270
-#, fuzzy
 msgid "villages"
-msgstr "Pagi:"
+msgstr "viculi"
 
 #: src/editor/editor_controller.cpp:120
-#, fuzzy
 msgid "Quit Editor"
-msgstr "Recensorem Relinquere"
+msgstr "Chartographiam Exire"
 
 #: src/editor/editor_controller.cpp:275
 msgid "Fatal error"
-msgstr ""
+msgstr "Error gravis"
 
 #: src/editor/editor_controller.cpp:300 src/editor/editor_controller.cpp:1061
 msgid "(New Map)"
-msgstr ""
+msgstr "(Charta Nova)"
 
 #: src/editor/editor_controller.cpp:306
 msgid "Do you really want to quit?"
-msgstr ""
+msgstr "Visne exire?"
 
 #: src/editor/editor_controller.cpp:308
+#, fuzzy
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr ""
+"Visne exire? Omnes commutationes in tabula geographica nonservatae "
+"amittentur."
 
 #: src/editor/editor_controller.cpp:310
+#, fuzzy
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr ""
+"Visne exire? Istae tabulae geographicae commutabantur et omnes commutationes "
+"nonservatae amittentur: "
 
 #: src/editor/editor_controller.cpp:315
 msgid "Quit"
-msgstr ""
+msgstr "Exire"
 
 #: src/editor/editor_controller.cpp:372
+#, fuzzy
 msgid "No editor time-of-day found."
-msgstr ""
+msgstr "Tempus initium non repertum est."
 
 #: src/editor/editor_controller.cpp:408
+#, fuzzy
 msgid "Unsaved Changes"
-msgstr ""
+msgstr "Commutationes nonservatae"
 
 #: src/editor/editor_controller.cpp:409
+#, fuzzy
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
-msgstr ""
+msgstr "Visne repudiare omnes commutationes nonservatas?"
 
 #: src/editor/editor_controller.cpp:427
-#, fuzzy
 msgid "Choose a Map to Open"
-msgstr "Chartam Restituendam Eligire"
+msgstr "Seligere Chartam"
 
 #: src/editor/editor_controller.cpp:462
-#, fuzzy
 msgid "Save the Map As"
-msgstr "Charta Servare Ut"
+msgstr "Chartam servare ut..."
 
 #: src/editor/editor_controller.cpp:466
 #, fuzzy
 msgid "The file already exists. Do you want to overwrite it?"
-msgstr "Charta iam adest. Visne eam superscribere?"
+msgstr "|Charta iam adest. Visne eam superscribere?"
 
 #: src/editor/editor_controller.cpp:483
+#, fuzzy
 msgid "No random map generators found."
-msgstr ""
+msgstr "Fabricatores tabulas geographicas fortuitas non reperti sunt."
 
 #: src/editor/editor_controller.cpp:496 src/editor/editor_controller.cpp:500
 msgid "Map creation failed."
-msgstr ""
+msgstr "Chartam creare male evenit."
 
 #: src/editor/editor_controller.cpp:515
 #, fuzzy
 msgid "Choose a mask to apply"
-msgstr "Chartam Restituendam Eligire"
+msgstr "|Chartam Restituendam Eligire"
 
 #: src/editor/editor_controller.cpp:522
+#, fuzzy
 msgid "Error loading mask"
-msgstr ""
+msgstr "|Error cum persona petivisse   eveniebat. ???"
 
 #: src/editor/editor_controller.cpp:537
 msgid "Choose target map"
-msgstr ""
+msgstr "Chartam deligere."
 
 #: src/editor/editor_controller.cpp:544 src/editor/editor_controller.cpp:708
+#, fuzzy
 msgid "Error loading map"
-msgstr ""
+msgstr "|Error cum tabulam geographicam ...???"
 
 #: src/editor/editor_controller.cpp:622 src/editor/editor_controller.cpp:664
 msgid "This map is already open."
-msgstr ""
+msgstr "Eadem chartam aperta est."
 
 #: src/editor/editor_controller.cpp:643
-#, fuzzy
 msgid "Map saved."
-msgstr "Charta servata."
+msgstr "Charta servata est."
 
 #: src/editor/editor_controller.cpp:687
 msgid "Loaded embedded map data"
@@ -272,22 +281,20 @@ msgid ""
 msgstr ""
 
 #: src/editor/editor_controller.cpp:1091
-#, fuzzy
 msgid "Undo"
-msgstr "Infectum reddere"
+msgstr "Recantare"
 
 #: src/editor/editor_controller.cpp:1093
 msgid "Can't Undo"
-msgstr ""
+msgstr "Nequit Recantare"
 
 #: src/editor/editor_controller.cpp:1097
-#, fuzzy
 msgid "Redo"
-msgstr "Rursus facere"
+msgstr "Reponere"
 
 #: src/editor/editor_controller.cpp:1099
 msgid "Can't Redo"
-msgstr ""
+msgstr "Nequit Reponere"
 
 #: src/editor/editor_controller.cpp:1104
 msgid "Auto-update Terrain Transitions: Yes"
@@ -302,7 +309,6 @@ msgid "Auto-update Terrain Transitions: No"
 msgstr ""
 
 #: src/editor/editor_map.cpp:149 src/editor/mouse_action.cpp:439
-#, fuzzy
 msgid "Player"
 msgstr "Lusor"
 
@@ -312,7 +318,7 @@ msgstr ""
 
 #: src/editor/editor_palettes.cpp:506
 msgid "(non-core)"
-msgstr ""
+msgstr "(non-nucleus)"
 
 #: src/editor/editor_palettes.cpp:507
 msgid "Will not work in game without extra care."
@@ -321,12 +327,12 @@ msgstr ""
 #: src/editor/editor_palettes.cpp:532
 #, fuzzy
 msgid "FG"
-msgstr "Eminentia"
+msgstr "stratum eminens"
 
 #: src/editor/editor_palettes.cpp:534
 #, fuzzy
 msgid "BG"
-msgstr "Recessus"
+msgstr "stratum recessum"
 
 #: src/editor/map_context.cpp:70
 msgid "File not found"
@@ -345,21 +351,20 @@ msgstr ""
 #: src/editor/map_context.cpp:219
 #, fuzzy
 msgid "Could not save into scenario"
-msgstr "Charta non servare potest: $msg"
+msgstr "|Charta non servare potest: $msg"
 
 #: src/editor/map_context.cpp:226
 #, fuzzy
 msgid "Could not save the map: $msg"
-msgstr "Charta non servare potest: $msg"
+msgstr "|Charta non servare potest: $msg"
 
 #: src/editor/mouse_action.cpp:436
-#, fuzzy
 msgid "(Player)^None"
-msgstr "Lusor"
+msgstr "(Lusor)^Nullus"
 
 #: src/editor/mouse_action.cpp:443
 msgid "Choose player"
-msgstr ""
+msgstr "Lusorem deligere"
 
 #: src/editor/mouse_action.cpp:444
 msgid ""
