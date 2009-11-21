@@ -128,5 +128,7 @@ void write_locations(const std::vector<map_location>& locs, config& cfg);
 
 /** Dumps a position on a stream, for debug purposes. */
 std::ostream &operator<<(std::ostream &s, map_location const &l);
+/** Dumps a vector of positions on a stream, for debug purposes. */
+std::ostream &operator<<(std::ostream &s, std::vector<map_location> const &v);
 
 #endif

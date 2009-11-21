@@ -37,6 +37,13 @@ std::ostream &operator<<(std::ostream &s, map_location const &l) {
 	s << (l.x + 1) << ',' << (l.y + 1);
 	return s;
 }
+std::ostream &operator<<(std::ostream &s, std::vector<map_location> const &v) {
+	std::vector<map_location>::const_iterator i = v.begin();
+	for(; i!= v.end(); ++i) {
+		s << "(" << *i << ") ";
+	}
+	return s;
+}
 
 const map_location map_location::null_location;
 
