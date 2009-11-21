@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-11-14 10:42+0100\n"
-"PO-Revision-Date: 2009-08-01 21:03+0100\n"
+"PO-Revision-Date: 2009-11-19 19:36+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr "Komprimovať uložené hry"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:12
 msgid "Confirm deleting saves"
-msgstr ""
+msgstr "Potvrdzovať mazanie uložených hier"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:19
@@ -66,34 +66,34 @@ msgstr "Zobrazovať súboj"
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:68
 msgid "Ping Timeout"
-msgstr ""
+msgstr "Vypršal čas na odozvu"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:69
 msgid ""
 "Number of seconds to wait for a ping reply before we time out. Disable with "
 "0."
-msgstr ""
+msgstr "Počet sekúnd, počas ktorých sa má čakať na odozvu. Vypni s 0."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:79
 msgid "Accept whisper messages from friends only"
-msgstr ""
+msgstr "Prijímaj súkromné správy len od priateľov"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:86
 msgid "Auto-open whisper windows in lobby"
-msgstr ""
+msgstr "Automaticky otvor okno so súkromnými správami v čakárni"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:93
 msgid "Group players in lobby"
-msgstr ""
+msgstr "Zoskupovať hráčov v čakárni"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:100
 msgid "Lobby sounds"
-msgstr ""
+msgstr "Zvuky v čakárni"
 
 #. [time]: id=underground
 #. [illuminated_time]: id=underground_illum
@@ -359,9 +359,8 @@ msgstr "Anglický (britský) preklad"
 
 #. [about]
 #: data/core/about.cfg:1346
-#, fuzzy
 msgid "English (Shaw) Translation"
-msgstr "Anglický (britský) preklad"
+msgstr "Anglický (Shaw) preklad"
 
 #. [about]
 #: data/core/about.cfg:1364
@@ -535,9 +534,8 @@ msgstr "Valencijský (Južné Katalánsko) preklad"
 
 #. [about]
 #: data/core/about.cfg:2306
-#, fuzzy
 msgid "Vietnamese Translation"
-msgstr "Čínsky preklad"
+msgstr "Vietnamský preklad"
 
 #. [about]
 #: data/core/about.cfg:2313
@@ -589,9 +587,8 @@ msgstr "Špeciálne zbrane"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=factions_section
 #: data/core/help.cfg:67 src/help.cpp:1284 src/help.cpp:1286
-#, fuzzy
 msgid "Factions"
-msgstr "Frakcia"
+msgstr "Frakcie"
 
 #. [section]: id=terrains
 #. [topic]: id=..terrains
@@ -2811,7 +2808,6 @@ msgstr "Príkazy na zápas"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:810
-#, fuzzy
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -2821,12 +2817,12 @@ msgid ""
 msgstr ""
 "\n"
 "Vyhodí a zakáže prístup hráčovi do sieťovej hry, na základe IP adresy, ktorú "
-"hráč s daným menom používa.\n"
+"hráč s daným menom používa. Môže byť použité aj na hráčov, ktorí nie sú v "
+"hre, ale len na serveri. (Vtedy samozrejme nebudú vykopnutí.)\n"
 "\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:813
-#, fuzzy
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -2838,14 +2834,14 @@ msgid ""
 msgstr ""
 "\n"
 "Priradí ovládanie danej strany (zadaj číslo bojovej strany) danému hráčovi "
-"(zadaj meno hráča alebo pozorovateľa). Zistiť ktorá strana patrí ktorému "
-"hráčovi je možné v 'Nastaveniach scény' (stlač tlačidlo 'Viac' v 'Aktuálnom "
-"stave' (štandardne skratka alt+s)).\n"
+"(zadaj meno hráča alebo pozorovateľa). Zistiť, ktorá strana patrí ktorému "
+"hráčovi, je možné v 'Nastaveniach scény' (stlač tlačidlo 'Viac' v 'Aktuálnom "
+"stave' (štandardne skratka alt+s)).Zakladateľ/hostiteľ hry môže meniť "
+"ovládanie ktorejkoľvek strany.\n"
 "\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:816
-#, fuzzy
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. If you "
@@ -2854,9 +2850,10 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Vyhodí hráča zo sieťovej hry. Hráč sa môže opäť pripojiť. Tento príkaz sa "
-"všeobecne používa na priateľské vypnutie niekoho, kto má napríklad problémy "
-"so spojením.\n"
+"Vyhodí hráča zo sieťovej hry. Hráč sa bude môcť opäť pripojiť. Tento príkaz "
+"sa všeobecne používa na priateľské vypnutie niekoho, kto má napríklad "
+"problémy so spojením. Ak chceš len nastaviť, kto bude ovládať jeho stranu, "
+"použi namiesto toho príkaz :control.\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -2874,18 +2871,17 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:822
-#, fuzzy
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
 "\n"
 msgstr ""
 "\n"
-"Zapne alebo vypne cenzúru správ všetkých pozorovateľov."
+"Zapne alebo vypne umlčanie všetkých pozorovateľov.\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:825
-#, fuzzy
 msgid ""
 "\n"
 "Unban a user in a multiplayer game by the IP address used by that username. "
@@ -2893,22 +2889,21 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Vyhodí a zakáže prístup hráčovi do sieťovej hry, na základe IP adresy, ktorú "
-"hráč s daným menom používa.\n"
+"Umožní prístup hráčovi do sieťovej hry, na základe IP adresy, ktorú hráč s "
+"daným menom používa (ak bol predtým zakázaný). Môže byť použité aj na "
+"hráčov, ktorí nie sú v hre, ale len na serveri.\n"
 "\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:826
-#, fuzzy
 msgid ""
 "\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
 "observers is cleared."
 msgstr ""
 "\n"
-"Cenzuruje konkrétneho pozorovateľa. Ak nie je zadané meno, vypíše sa zoznam "
-"mien cenzurovaných pozorovateľov.\n"
-"\n"
+"Umožní konkrétnemu pozorovateľovi hovoriť. Ak nie je zadané meno, vypíše sa "
+"zoznam mien umlčaných pozorovateľov."
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:833
@@ -3006,7 +3001,6 @@ msgstr ""
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:861
-#, fuzzy
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -3015,7 +3009,8 @@ msgid ""
 msgstr ""
 "\n"
 "Zmení zadanú vlastnosť vybranej jednotky. Príklad (nastaví 100 životov): :"
-"unit hitpoints=100"
+"unit hitpoints=100\n"
+"\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:862
@@ -3023,6 +3018,8 @@ msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
 msgstr ""
+"\n"
+"Povýši zvolenú jednotku o N úrovní. Príklad: :unit advances=2"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:51
@@ -3402,13 +3399,11 @@ msgstr ""
 
 #. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:615
-#, fuzzy
 msgid "petrifies"
-msgstr "Údery"
+msgstr "skamenie"
 
 #. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:617
-#, fuzzy
 msgid ""
 "Petrify:\n"
 "This attack petrifies the target, turning it to stone. Units that have been "
@@ -3505,6 +3500,8 @@ msgstr ""
 #: data/core/macros/ai.cfg:493
 msgid "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
 msgstr ""
+"Požiadaj $ally_leader.name (veliteľ strany $ally_leader.side), aby sa "
+"presunul sem"
 
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:144
@@ -3692,42 +3689,36 @@ msgid "Exit"
 msgstr "Koniec"
 
 #: data/core/macros/ai_controller.cfg:1047
-#, fuzzy
 msgid "Set special orders..."
-msgstr "Nastav správanie..."
+msgstr "Nastav špeciálne rozkazy..."
 
 #: data/core/macros/ai_controller.cfg:1048
 msgid "Move leader to..."
-msgstr ""
+msgstr "Presunúť veliteľa na..."
 
 #: data/core/macros/ai_controller.cfg:1049
-#, fuzzy
 msgid "Right-click to select a location to move leader to"
-msgstr "Klikni pravým tlačidlom na označenie bránenej pozície"
+msgstr "Klikni pravým tlačidlom na určenie pozície kam sa má presunúť veliteľ"
 
 #: data/core/macros/ai_controller.cfg:1050
 msgid "Move leader here"
-msgstr ""
+msgstr "Presunúť veliteľa sem"
 
 #: data/core/macros/ai_controller.cfg:1051
 msgid "moving leader to $x1|,$y1|."
-msgstr ""
+msgstr "presúvam veliteľa na $x1|,$y1|."
 
 #: data/core/macros/ai_controller.cfg:1052
-#, fuzzy
 msgid "Clear special orders"
-msgstr "Vymaž všetky rozkazy"
+msgstr "Vymaž špeciálne rozkazy"
 
 #: data/core/macros/ai_controller.cfg:1053
-#, fuzzy
 msgid ""
 "Special: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_special_description"
 msgstr ""
-"Cieľ: $ai_controller.side_$ally_side|_current_settings."
-"currently_doing_objective_description\n"
-"Správanie: $ai_controller.side_$ally_side|_current_settings."
-"currently_doing_behaviour_description"
+"Špeciálne: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_special_description"
 
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
@@ -3753,9 +3744,8 @@ msgid "No early finish bonus."
 msgstr "Žiadny bonus za rýchly koniec."
 
 #: data/core/macros/carryover-utils.cfg:15
-#, fuzzy
 msgid "<small>(early finish bonus)</small>"
-msgstr "`(bonus za rýchly koniec)"
+msgstr "<small>(bonus za rýchly koniec)</small>"
 
 #: data/core/macros/carryover-utils.cfg:18
 msgid "No gold carried over to the next scenario."
@@ -3788,9 +3778,8 @@ msgstr ""
 #. [objective]: description=<span color='white'>, condition=win
 #: data/core/macros/carryover-utils.cfg:34
 #: data/core/macros/carryover-utils.cfg:42
-#, fuzzy
 msgid "Alternative objective:"
-msgstr "Nastav cieľ..."
+msgstr "Alternatívny cieľ:"
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:39
@@ -3871,13 +3860,12 @@ msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr "Jed v tejto chvíli koluje v žilách jednotky."
 
 #: data/core/macros/items.cfg:287
-#, fuzzy
 msgid ""
 "Sprinkling this water on melee weapons grants them the 'arcane' damage type "
 "until the end of the current scenario. Should $unit.name use it?"
 msgstr ""
 "Táto voda spôsobí, že zbrane nablízko budú spôsobovať 'mystické' zranenia až "
-"do konca tejto scény."
+"do konca tejto scény. Má ju $unit.name použiť?"
 
 #: data/core/macros/items.cfg:288
 msgid "I am not suited to the use of this item! Let another take it."
@@ -3978,7 +3966,6 @@ msgid "storm trident"
 msgstr "hromový trojzubec"
 
 #: data/core/macros/names.cfg:18
-#, fuzzy
 msgid ""
 "Egar,Elch,Ga'ash,Gadé Ihn,Gakré Ohm,Galeck,Galsh,Garadin,Garchin,Gark,Garlan,"
 "Garlin Ohn,Garrutin,Gart'lo,Garushi,Gashinar,Gashol,Gaushii,Gaustun,Gegchi,"
@@ -3991,25 +3978,24 @@ msgid ""
 "Verath,Verditt,Verkon,Verlinn,Vermad,Vertick,Vladnir"
 msgstr ""
 "Egar,Elch,Ga'ash,Gadé Ihn,Gakré Ohm,Galeck,Galsh,Garadin,Garchin,Gark,Garlan,"
-"Garlin ohn,Garrutin,Gart'lo,Garushi,Gashinar,Gashöl,Gaushii,Gaustun,Gegchi,"
-"Gelka Kon,Gelknick,Gillan,Gisharri,Goyst,Grada,Græt Ihn,Grashen,Gravlan,Gray,"
-"Grelnit,Grenn ohn,Gretz,Gribbel,Gridda,Grish,Gron ih,Ka,Kahn Ih,Karigan,"
-"Karri Kon,Karron,Kasp,Kegrid,Kerath Ihn,Kerath Kor,Klash,Kon Garashé,Kraag,"
-"Krall Ohn,Kran Kor,Krash,Kraslar,Krenli,Kruggen,Kun,Mah Toa,Mal,Margian,"
-"Marhildian,Markan,Markinos,Mar Ohn,Marra Di'lek,Marrito,Marritos,Merkush,"
+"Garlin Ohn,Garrutin,Gart'lo,Garushi,Gashinar,Gashol,Gaushii,Gaustun,Gegchi,"
+"Gelka Kon,Gelknick,Gillan,Gisharri,Gost,Grada,Græt Ihn,Grashen,Gravlan,Grag,"
+"Grelnit,Grenn Ohn,Greth,Gribbel,Gridda,Grish,Gron Ihn,Ka,Kahn Ih,Karigan,"
+"Karri Kon,Karron,Kask,Kegrid,Kerath Ihn,Kerath Kor,Klash,Kon Garashé,Kraag,"
+"Krall Ohn,Kran Kor,Krash,Kraslar,Krenli,Kruggen,Kun,Mah Toa,Margian,"
+"Mar'Ildian,Markan,Markinos,Mar Ohn,Marra Di'lek,Marrito,Marritos,Merkush,"
 "Merritos Gark,Morusté,Murr,Omataké,Reshan,Vashitt,Velnick,Veralon,Veramo,"
-"Verath,Verditt,Verkon,Verlinn,Vermay,Vertick,Vladnir"
+"Verath,Verditt,Verkon,Verlinn,Vermad,Vertick,Vladnir"
 
 #: data/core/macros/names.cfg:19
-#, fuzzy
 msgid ""
 "Alen Ka,Alinash Mal,Ashirt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
 "Eshi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orrida,Oshibi,Vallin,Valnirra,"
 "Valnitt,Velisk,Verra,Vellin Ka,Veshtar,Vushtin"
 msgstr ""
-"Alen Ka,Alinash Mal,Ashijt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
-"Eshyi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orriday,Oshibi,Vallin,Valnirra,"
-"Valnitt,Velisp,Vellin Ka,Vushtin,Werra,Weshter,Wilniss"
+"Alen Ka,Alinash Mal,Ashirt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
+"Eshi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orriday,Oshibi,Vallin,Valnirra,"
+"Valnitt,Velisk,Verra,Vellin Ka,Veshtar,Vushtin"
 
 #: data/core/macros/names.cfg:23
 msgid ""
@@ -5110,7 +5096,7 @@ msgstr "životaschopná"
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:133
 msgid "Always rest heals"
-msgstr ""
+msgstr "Vždy sa lieči akoby odpočíval"
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:150 data/core/macros/traits.cfg:163
@@ -5159,9 +5145,8 @@ msgstr "hlúpa"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:221
-#, fuzzy
 msgid "aged"
-msgstr "na diaľku"
+msgstr "skúsený"
 
 #. [color_range]: id=red
 #. [color_range]: id=1
@@ -5172,12 +5157,12 @@ msgstr "Červená"
 #. [color_range]: id=lightred
 #: data/core/team-colors.cfg:20
 msgid "Light Red"
-msgstr ""
+msgstr "Svetločervená"
 
 #. [color_range]: id=darkred
 #: data/core/team-colors.cfg:26
 msgid "Dark Red"
-msgstr ""
+msgstr "Tmavočervená"
 
 #. [color_range]: id=blue
 #. [color_range]: id=2
@@ -5628,7 +5613,6 @@ msgstr "Ľudia"
 
 #. [race]: id=human
 #: data/core/units.cfg:169
-#, fuzzy
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -5671,27 +5655,28 @@ msgstr ""
 "Ľudská rasa je charakteristická svojou rôznorodosťou. Aj keď pôvodne prišli "
 "zo Starého Kontinentu, ľudia sa rozšírili po celom svete a založili mnoho "
 "kultúr a podrás. Na rozdiel od iných rás, ľudia nie sú od prírody magicky "
-"založení, ale dokážu sa naučiť používať rôzne druhy mágie. Rovnako ako s "
-"mágiou sa ľudia nevyznačujú nijakými zvláštnymi schopnosťami, okrem "
-"prispôsobivosti a cieľavedomosti. Zvyčajne sú v konflikte s inými rasami, no "
-"občas vytvoria vcelku úspešné aliancie s menej agresívnymi rasami ako sú "
-"elfovia alebo trpaslíci. Tí bez škrupulí sa nebránia ani najímaniu orkských "
-"žoldnierov. Ľudia nemajú ani výraznejšieho prirodzeného nepriateľa, ale "
-"väčšina ľudí sa nemá veľmi v láske s nemŕtvymi. Ľudia sú menšieho vzrastu "
-"než elfovia, ale sú vyšší než trpaslíci. Farba pokožky sa tiež môže líšiť - "
-"od viac menej bielej až po tmavo hnedú.\n"
+"založení, ale dokážu sa naučiť mágiu používať a to aj viac druhov ako "
+"ostatné rasy. Rovnako ako s mágiou sa ľudia nevyznačujú nijakými zvláštnymi "
+"schopnosťami, okrem prispôsobivosti a cieľavedomosti. Zvyčajne sú v "
+"konflikte s inými rasami, no občas vytvoria vcelku úspešné aliancie s menej "
+"agresívnymi rasami, ako sú elfovia alebo trpaslíci. Tí bez škrupulí sa "
+"nebránia ani najímaniu orkských žoldnierov. Ľudia nemajú ani výraznejšieho "
+"prirodzeného nepriateľa, ale väčšina ľudí sa nemá veľmi v láske s nemŕtvymi, "
+"tak ako aj väčšina ostatných rás. Ľudia sú menšieho vzrastu než elfovia, ale "
+"sú vyšší než trpaslíci. Farba pokožky sa tiež môže líšiť - od viac menej "
+"bielej až po tmavo hnedú.\n"
 "\n"
 "<header>text='Poddaní kráľovskej koruny'</header>\n"
 "Najväčšia časť ľudskej rasy na Veľkom Kontinente patrí pod Wesnotské "
 "kráľovstvo. Ľudia prišli na Veľký Kontinent zo Zeleného Ostrova v oceáne na "
-"západe a už v počiatkoch si založili hlavné mesto Weldyn. V nadchádzajúcich "
-"storočiach vybudovali ďalšie sídla na celom kontinente. Vojsko wesnotskej "
-"koruny ochraňuje toto územie a je prakticky najorganizovanejšou bojovou "
-"silou v známom svete. Bojovníci pochádzajú najmä z hlavnej provincie, kde je "
-"vojenská služba povinná pre všetkých mladíkov.\n"
+"západe a už v počiatkoch si založili vnútrozemské hlavné mesto Weldyn. V "
+"nadchádzajúcich storočiach vybudovali ďalšie sídla na celom kontinente. "
+"Vojsko wesnotskej koruny ochraňuje toto územie a je prakticky "
+"najorganizovanejšou bojovou silou v známom svete. Bojovníci pochádzajú najmä "
+"z hlavnej provincie, kde je vojenská služba povinná pre všetkých mladíkov.\n"
 "\n"
 "<header>text='Klany'</header>\n"
-"Východné provincie Wesnotu, známe ako domovina klanov, na rozdiel od "
+"Východné provincie Wesnotu, známe ako Domovina klanov, na rozdiel od "
 "civilizovanejších západných regiónov geograficky pozostávajú z otvorených "
 "plání a nízkych kopcov. Tieto oblasti sú domovom jazdeckých klanov, ktoré sú "
 "formálne nezávislé, no sú spojencom Wesnotu. Niektorí historici toto územie "
@@ -5699,10 +5684,10 @@ msgstr ""
 "za odplatu poskytnutia bezpečnosti a ochrany. Iní tvrdia, že sú útvarom "
 "rovnocenným západnému Wesnotu. Každopádne, východné provincie nemajú povinnú "
 "vojenskú službu v tej podobe, ako ju poznajú v západnom Wesnote. Bojový "
-"tréning je bežnou súčasťou životného štýlu klanov - rodičia učia deti "
-"jazdiť, bojovať a strieľať z luku už od útleho detstva. Vo všeobecnosti sú "
+"tréning je bežnou súčasťou životného štýlu klanov - rodičia učia deti jazdiť "
+"na koni, bojovať a strieľať z luku už od útleho detstva. Vo všeobecnosti sú "
 "bojovníci klanov menej organizovaní než bojovníci z civilizovanej časti "
-"Wesnotu, a tak silné stránky tejto podskupiny sú vyvážené ich slabosťami."
+"Wesnotu, ale silné a slabé stránky týchto skupín sa navzájom dopĺňajú."
 
 #. [race]: id=lizard, description=
 #: data/core/units.cfg:177
@@ -6178,44 +6163,42 @@ msgstr "Jazero $name"
 #. [language]
 #: data/hardwired/english.cfg:24
 msgid "$name's Peak,Mount $name"
-msgstr ""
+msgstr "$name'ov štít,Vrch $name"
 
 # Village + Grassland
 #. [language]
 #: data/hardwired/english.cfg:25
-#, fuzzy
 msgid "$name's Swamp,$name|marsh,$name|fen"
-msgstr "$name|ová,$name|ovka,$name|ovce,$name|ovo pole,$name|ova roľa"
+msgstr "$name|ovce,$name|ovo pole,$name|ova roľa"
 
 # Village
 #. [language]
 #: data/hardwired/english.cfg:26
-#, fuzzy
 msgid "$name|bury,$name|ham,$name|ton,$name|bury"
-msgstr "$name|ová,$name|ovka,$name|ovce"
+msgstr "$name|ová,$name|ovka,$name|ovce,$name|ov"
 
 #. [language]
 #: data/hardwired/english.cfg:27
-#, fuzzy
 msgid "$name|harbor,$name|port,$lake|port,$lake|harbor"
-msgstr "Prístav $name"
+msgstr "Prístav $name,$name|ský prístav,$lake|ský prístav,Prístav na $lake"
 
 # Village + River
 #. [language]
 #: data/hardwired/english.cfg:28
-#, fuzzy
 msgid ""
 "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross,$name on river"
-msgstr "$name|ová,$name|ovka,$name|ovce,$name|ov brod,Brod cez $river"
+msgstr ""
+"$name|ová,$name|ovka,$name|ov,$river|vský brod,Brod cez $river,$name na rieke"
 
 # Village + River + Bridge
 #. [language]
 #: data/hardwired/english.cfg:29
-#, fuzzy
 msgid ""
 "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge,$bridge|ham,"
 "$bridge|ton"
-msgstr "$name|ová,$name|ovka,$name|ovce,Most nad $river"
+msgstr ""
+"Most nad $river,$river|ský most,$river|ov most,$name|ov,$name|ský most,"
+"$bridge|ov,$bridge|ský most"
 
 # Village + Grassland
 #. [language]
@@ -6226,11 +6209,12 @@ msgstr "$name|ová,$name|ovka,$name|ovce,$name|ovo pole,$name|ova roľa"
 # Village + Forest
 #. [language]
 #: data/hardwired/english.cfg:31
-#, fuzzy
 msgid ""
 "$name|ham,$name|ton,$name|wood,$name Forest,$forest|wood,$forest|ham,$forest|"
 "ton"
-msgstr "$name|ová,$name|ovka,$name|ovce,$name|ov háj"
+msgstr ""
+"$name|ová,$name|ovka,$name|ovce,$name|ov háj,$forest|ov háj,$forest|ov les,"
+"$forest|ov"
 
 # Village + Hill
 #. [language]
@@ -6241,7 +6225,7 @@ msgstr "$name|ová,$name|ovka,$name|ovce,$name|ov kopec"
 #. [language]
 #: data/hardwired/english.cfg:33
 msgid "$mountain|mont,$mountain|cliff,$mountain|bury,$mountain|ham"
-msgstr ""
+msgstr "$mountain|ský vrch,$mountain|ský útes,$mountain|ovo,$mountain|a hoľa"
 
 # Village + Mountain
 #. [language]
@@ -6254,13 +6238,13 @@ msgstr "$name|ová,$name|ovka,$name|ovce,$name|ovo bralo"
 #: data/hardwired/english.cfg:35
 msgid "$road's Rest,$road's Waypoint,$road|bury,$road|ham,$name|bury,$name|ham"
 msgstr ""
+"$road|ská zastávka,$road|ský míľnik,$road|ovo,$road|ovka,$name|ovo,$name|ovka"
 
 # Village
 #. [language]
 #: data/hardwired/english.cfg:36
-#, fuzzy
 msgid "$name|bury,$name|ham,$name|ton,$swamp|bury,$swamp|ham,$swamp|ton,"
-msgstr "$name|ová,$name|ovka,$name|ovce"
+msgstr "$name|ová,$name|ovka,$name|ovce,$swamp|ová,$swamp|ovka,$swamp|ovce,"
 
 #. [language]
 #: data/hardwired/english.cfg:39
@@ -7057,15 +7041,13 @@ msgstr "úroveň"
 
 #. [unit_moves]: id=unit-moves
 #: data/themes/default.cfg:459 data/themes/experimental.cfg:399
-#, fuzzy
 msgid "statuspanel^moves"
-msgstr "pohyb"
+msgstr "pohyby"
 
 #. [unit_defense]: id=unit-defense
 #: data/themes/default.cfg:468 data/themes/experimental.cfg:408
-#, fuzzy
 msgid "statuspanel^terrain def."
-msgstr "úroveň"
+msgstr "obr. terénu"
 
 # Skratka z "Actions" = "Akcie".
 #. [change]: id=actions-menu
@@ -7169,27 +7151,24 @@ msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Nemáš v pevnosti miesto, kam by si naverboval jednotku."
 
 #: src/actions.cpp:354 src/actions.cpp:413 src/actions.cpp:1344
-#, fuzzy
 msgid "An invalid attacker weapon got selected."
-msgstr "Vybraná neplatná éra"
+msgstr "Vybraná neplatná útočná zbraň."
 
 #: src/actions.cpp:359
-#, fuzzy
 msgid "An invalid defender weapon got selected."
-msgstr "Vybraná neplatná éra"
+msgstr "Vybraná neplatná obranná zbraň."
 
 #: src/actions.cpp:1102
 msgid "female^poisoned"
 msgstr "otrávená"
 
 #: src/actions.cpp:1112
-#, fuzzy
 msgid "female^petrified"
-msgstr "otrávená"
+msgstr "skamenená"
 
 #: src/actions.cpp:1112
 msgid "petrified"
-msgstr ""
+msgstr "skamenený"
 
 #: src/actions.cpp:2286
 msgid "Ambushed!"
@@ -7288,9 +7267,8 @@ msgid "addon_type^Resources"
 msgstr "Zdroje"
 
 #: src/addon_management.cpp:470
-#, fuzzy
 msgid "addon_type^Other"
-msgstr "Éra pre zápas"
+msgstr "Iné"
 
 #: src/addon_management.cpp:472
 msgid "addon_type^(unknown)"
@@ -7301,25 +7279,28 @@ msgid "Dependencies"
 msgstr "Závisloti"
 
 #: src/addon_management.cpp:506
-#, fuzzy
 msgid ""
 "$addon_title depends upon the following add-on which you have not installed "
 "yet:"
 msgid_plural ""
 "$addon_title depends upon the following add-ons which you have not installed "
 "yet:"
-msgstr[0] "Tento doplnok ešte vyžaduje nasledovné závislosti:"
-msgstr[1] "Tento doplnok ešte vyžaduje nasledovné závislosti:"
-msgstr[2] "Tento doplnok ešte vyžaduje nasledovné závislosti:"
+msgstr[0] ""
+"$addon_title závisí na nasledovných doplnkoch, ktoré ešte nie sú "
+"nainštalované:"
+msgstr[1] ""
+"$addon_title závisí na nasledovnom doplnku, ktorý ešte nie je nainštalovaný:"
+msgstr[2] ""
+"$addon_title závisí na nasledovných doplnkoch, ktoré ešte nie sú "
+"nainštalované:"
 
 #: src/addon_management.cpp:509
-#, fuzzy
 msgid ""
 "Do you still want to download $addon_title|? (You will have to install all "
 "the dependencies in order to play.)"
 msgstr ""
-"Chceš stiahnuť tento doplnok? (Aj tak bude ešte pred hraním potrebné "
-"nainštalovať jeho závislosti.)"
+"Chceš ešte stále stiahnuť doplnok $addon_title|? (Aj tak bude ešte pred "
+"hraním potrebné nainštalovať jeho závislosti.)"
 
 #: src/addon_management.cpp:527 src/addon_management.cpp:599
 #: src/multiplayer.cpp:213 src/multiplayer.cpp:268 src/multiplayer_ui.cpp:78
@@ -7507,7 +7488,7 @@ msgstr "Filter: "
 
 #: src/addon_management.cpp:1112
 msgid "Description"
-msgstr ""
+msgstr "Popis"
 
 #: src/addon_management.cpp:1149
 msgid "Network communication error."
@@ -7882,14 +7863,15 @@ msgstr "Prehráš, ak:"
 
 #: src/game_events.cpp:3481
 msgid "[unit_worth]'s filter didn't match any units!"
-msgstr ""
+msgstr "[unit_worth]'s filter nevybral žiadnu jednotku!"
 
 #: src/gamestatus.cpp:721
-#, fuzzy
 msgid ""
 "Leader position not empty - duplicate side definition for side '$side|' "
 "found."
-msgstr "Našla sa duplicitná definícia strany '$side|'."
+msgstr ""
+"Pozícia veliteľa nie je prázdna - našla sa duplicitná definícia strany "
+"'$side|'."
 
 #: src/generate_report.cpp:128
 msgid "invisible: "
@@ -7933,10 +7915,9 @@ msgstr ""
 
 #: src/generate_report.cpp:140
 msgid "petrified: "
-msgstr ""
+msgstr "skamenený: "
 
 #: src/generate_report.cpp:141
-#, fuzzy
 msgid "This unit has been petrified. It may not move or attack."
 msgstr "Táto jednotka skamenela. Nemôže sa hýbať ani bojovať."
 
@@ -8005,39 +7986,36 @@ msgid "Observers:"
 msgstr "Diváci:"
 
 #: src/gui/dialogs/lobby_player_info.cpp:64
-#, fuzzy
 msgid "In game:"
-msgstr "Názov:"
+msgstr "V hre:"
 
 #: src/gui/dialogs/lobby_player_info.cpp:66
 msgid "(observing)"
-msgstr ""
+msgstr "(pozoruje)"
 
 #: src/gui/dialogs/lobby_player_info.cpp:68
 msgid "(playing)"
-msgstr ""
+msgstr "(hrá)"
 
 #: src/gui/dialogs/lobby_player_info.cpp:71
 msgid "In lobby"
-msgstr ""
+msgstr "V čakárni"
 
 #: src/gui/dialogs/lobby_player_info.cpp:95
-#, fuzzy
 msgid "On friends list"
-msgstr "Pridaný do zoznamu priateľov: "
+msgstr "Na zozname priateľov"
 
 #: src/gui/dialogs/lobby_player_info.cpp:100
-#, fuzzy
 msgid "On ignores list"
-msgstr "Pridaný do zoznamu ignorovaných: "
+msgstr "Na zozname ignorovaných"
 
 #: src/gui/dialogs/lobby_player_info.cpp:105
 msgid "Neither a friend nor ignored"
-msgstr ""
+msgstr "Ani priateľ ani ignorovaný"
 
 #: src/gui/dialogs/lobby_player_info.cpp:110
 msgid "You"
-msgstr ""
+msgstr "Ty"
 
 #: src/gui/dialogs/lobby_player_info.cpp:113 src/multiplayer_create.cpp:540
 msgid "Error"
@@ -8056,27 +8034,24 @@ msgid "<header>text='Units having this ability'</header>"
 msgstr "<header>text='Jednotky s touto schopnosťou'</header>"
 
 #: src/help.cpp:1246
-#, fuzzy
 msgid "Leaders:"
-msgstr "Veliteľ: "
+msgstr "Velitelia: "
 
 #: src/help.cpp:1255
-#, fuzzy
 msgid "Recruits:"
-msgstr "Naverbovaných: "
+msgstr "Naverbovaných:"
 
 #: src/help.cpp:1269 src/multiplayer_create.cpp:78
 msgid "Era:"
 msgstr "Éra:"
 
 #: src/help.cpp:1277
-#, fuzzy
 msgid "Factions:"
-msgstr "Frakcia"
+msgstr "Frakcie: "
 
 #: src/help.cpp:1287
 msgid "Factions are only used in multiplayer"
-msgstr ""
+msgstr "Frakcie sú používané iba v hre viacerých hráčov"
 
 #: src/help.cpp:1362
 msgid "Advances from: "
@@ -8222,19 +8197,16 @@ msgid "?"
 msgstr "?"
 
 #: src/loadscreen.cpp:244
-#, fuzzy
 msgid "Verifying cache..."
-msgstr "Kontroluje sa vyrovnávacia pamäť"
+msgstr "Kontroluje sa vyrovnávacia pamäť..."
 
 #: src/loadscreen.cpp:262
-#, fuzzy
 msgid "Reading unit files..."
-msgstr "Načítavajú sa súbory jednotiek."
+msgstr "Načítavajú sa súbory jednotiek..."
 
 #: src/loadscreen.cpp:280
-#, fuzzy
 msgid "Reading files and creating cache..."
-msgstr "Načítavajú sa súbory a vytvára vyrovnávacia pamäť."
+msgstr "Načítavajú sa súbory a vytvára vyrovnávacia pamäť..."
 
 #: src/lobby_data.cpp:200 src/multiplayer_lobby.cpp:431
 msgid "Unknown era: $era_id"
@@ -8586,7 +8558,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2218
 msgid "Unban a user. He does not have to be in the game but on the server."
-msgstr ""
+msgstr "Odblokuj hráča. Nemusí byť v hre, ale na serveri."
 
 #: src/menu_events.cpp:2221
 msgid "Kick a player or observer."
@@ -8597,14 +8569,12 @@ msgid "Mute an observer. Without an argument displays the mute status."
 msgstr "Umlčať diváka. Bez parametrov zobrazí stav umlčania."
 
 #: src/menu_events.cpp:2225
-#, fuzzy
 msgid "Unmute an observer. Without an argument unmutes everyone."
-msgstr "Umlčať diváka. Bez parametrov zobrazí stav umlčania."
+msgstr "Umožní hovoriť divákovi. Bez parametrov umožní všetkým."
 
 #: src/menu_events.cpp:2227
-#, fuzzy
 msgid "Mute/Unmute all observers. (toggles)"
-msgstr "Umlčať divákov."
+msgstr "Umlčať/umožniť hovoriť všetkým divákom. (prepína)"
 
 #: src/menu_events.cpp:2237
 msgid "Send a message to the server admins currently online"
@@ -8670,30 +8640,28 @@ msgstr ""
 "Vyžiadaj zoznam údajov, ktoré je možné nastaviť pre zaregistrovanú prezývku."
 
 #: src/menu_events.cpp:2272
-#, fuzzy
 msgid "Join a room."
-msgstr "Pridaj sa k hre"
+msgstr "Vstúpiť do miestnosti."
 
 #: src/menu_events.cpp:2275
 msgid "Part a room."
-msgstr ""
+msgstr "Opusti miestnosť"
 
 #: src/menu_events.cpp:2277
-#, fuzzy
 msgid "List room members."
-msgstr "Zoznam serverov"
+msgstr "Zoznam členov v miestnosti."
 
 #: src/menu_events.cpp:2279
 msgid "List available rooms."
-msgstr ""
+msgstr "Zobraz dostupné miestnosti."
 
 #: src/menu_events.cpp:2281
 msgid "Room message."
-msgstr ""
+msgstr "Správa do miestnosti."
 
 #: src/menu_events.cpp:2283
 msgid "Room query."
-msgstr ""
+msgstr "Dotaz v miestnosti."
 
 #: src/menu_events.cpp:2412
 msgid "Refresh gui."
@@ -8753,7 +8721,7 @@ msgstr "Vypnúť režim ladenia."
 
 #: src/menu_events.cpp:2447
 msgid "Execute a Lua statement."
-msgstr ""
+msgstr "Vykonaj príkaz v jazyku Lua."
 
 #: src/menu_events.cpp:2449
 msgid "Set the command used by the custom command hotkey"
@@ -8761,7 +8729,7 @@ msgstr "Zadaj príkaz použitý voliteľnou príkazovou klávesou"
 
 #: src/menu_events.cpp:2451
 msgid "Launch the gamestate inspector"
-msgstr ""
+msgstr "Spusti prieskumníka stavu hry"
 
 #: src/menu_events.cpp:2453
 msgid "Set or show alias to a command"
@@ -8782,7 +8750,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2466
 msgid "Discover all units in help."
-msgstr ""
+msgstr "Zobraz v návode všetky jednotky."
 
 #: src/menu_events.cpp:2471
 msgid "Create a unit."
@@ -9007,7 +8975,7 @@ msgstr "Anonymný lokálny hráč"
 
 #: src/multiplayer_connect.cpp:666
 msgid "$playername $side"
-msgstr ""
+msgstr "$playername $side"
 
 #: src/multiplayer_connect.cpp:670
 msgid "(Empty slot)"
@@ -9018,9 +8986,8 @@ msgid "(Reserved for $playername)"
 msgstr "(Vyhradené pre $playername)"
 
 #: src/multiplayer_connect.cpp:682
-#, fuzzy
 msgid "(empty)"
-msgstr "Nič"
+msgstr "(sprázdne)"
 
 #: src/multiplayer_connect.cpp:792
 msgid "Reserved"
@@ -9091,11 +9058,8 @@ msgid "Cannot find era $era"
 msgstr "Neviem nájsť éru $era"
 
 #: src/multiplayer_connect.cpp:1587
-#, fuzzy
 msgid "Defeat enemy leader(s)"
-msgstr ""
-"Vyhráš, ak:\n"
-"@Porazíš ostatných veliteľov"
+msgstr "Poraz ostatných veliteľov"
 
 #: src/multiplayer_connect.cpp:1651
 msgid "Waiting for players to join..."
@@ -9324,25 +9288,23 @@ msgstr "Koniec"
 
 #: src/multiplayer_lobby.cpp:734
 msgid "Apply Filter"
-msgstr ""
+msgstr "Použi filter"
 
 #: src/multiplayer_lobby.cpp:735
 msgid "Invert"
-msgstr ""
+msgstr "Invertuj"
 
 #: src/multiplayer_lobby.cpp:736
-#, fuzzy
 msgid "Vacant Slots"
-msgstr "Voľné miesta:"
+msgstr "Voľné miesta"
 
 #: src/multiplayer_lobby.cpp:737
 msgid "Friends in Game"
-msgstr ""
+msgstr "Priatelia v hre"
 
 #: src/multiplayer_lobby.cpp:738
-#, fuzzy
 msgid "Search:"
-msgstr "Hľadaj"
+msgstr "Hľadaj:"
 
 #: src/multiplayer_lobby.cpp:747
 msgid "Skip quickly to the active turn when observing"
@@ -9353,25 +9315,29 @@ msgid ""
 "Enable the games filter. If unchecked all games are shown, regardless of any "
 "filter."
 msgstr ""
+"Zapni filter hier. Ak nie je zvolené, zobrazia sa všetky hry, bez ohľadu na "
+"filter."
 
 #: src/multiplayer_lobby.cpp:754
 msgid ""
 "Show all games that do *not* match your filter. Useful for hiding games you "
 "are not interested in."
 msgstr ""
+"Zobraz všetky hry, ktoré nespĺňajú filter. Vhodné na skrytie hier, ktoré nie "
+"sú zaujímavé."
 
 #: src/multiplayer_lobby.cpp:758
 msgid "Only show games that have at least one vacant slot"
-msgstr ""
+msgstr "Zobraz len hry s aspoň jedným voľným miestom"
 
 #: src/multiplayer_lobby.cpp:762
 msgid ""
 "Only show games that are played or observed by at least one of your friends"
-msgstr ""
+msgstr "Zobraz len hry, kde hrá alebo pozoruje niektorý tvoj priateľ"
 
 #: src/multiplayer_lobby.cpp:766
 msgid "Only show games whose title or description contain the entered text"
-msgstr ""
+msgstr "Zobraz len hry, ktorých názov alebo popis obsahuje zadaný text"
 
 #: src/multiplayer_lobby.cpp:900
 msgid "Joining this game requires a password."
@@ -9462,11 +9428,11 @@ msgstr "Inicializuje sa obrazovka"
 
 #: src/play_controller.cpp:183
 msgid "time left for current turn"
-msgstr ""
+msgstr "čas zostávajúci na kolo"
 
 #: src/play_controller.cpp:185 src/replay_controller.cpp:134
 msgid "current local time"
-msgstr ""
+msgstr "aktuálny lokálny čas"
 
 #: src/play_controller.cpp:223
 msgid "Starting game"
@@ -9511,12 +9477,11 @@ msgstr "Neznáma scéna: '$scenario|'"
 
 #: src/playmp_controller.cpp:93
 msgid "$name has taken control"
-msgstr ""
+msgstr "$name prevzal kontrolu"
 
 #: src/playmp_controller.cpp:95
-#, fuzzy
 msgid "Turn changed"
-msgstr "na diaľku"
+msgstr "Zmena kola"
 
 #: src/playmp_controller.cpp:227
 msgid "Undoing moves not yet transmitted to the server."
@@ -9621,12 +9586,12 @@ msgid "The game is over."
 msgstr "Hra skončila."
 
 #: src/playsingle_controller.cpp:488
-#, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game\n"
 "cannot continue. Do you want to save the game?"
 msgstr ""
-"Prerušilo sa sieťové spojenie a hra nemôže pokračovať. Chceš ju uložiť?"
+"Prerušilo sa sieťové spojenie a hra\n"
+"nemôže pokračovať. Chceš ju uložiť?"
 
 #: src/playsingle_controller.cpp:648
 msgid "It is now $name|'s turn"
@@ -9688,9 +9653,8 @@ msgid "This is not a multiplayer save"
 msgstr "Toto nie je uložená sieťová hra"
 
 #: src/savegame.cpp:605
-#, fuzzy
 msgid "The game could not be saved: "
-msgstr "Nepodarilo sa uložiť hru"
+msgstr "Nepodarilo sa uložiť hru: "
 
 #: src/savegame.cpp:692
 msgid "Name: "
