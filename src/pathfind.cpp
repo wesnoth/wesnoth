@@ -398,7 +398,6 @@ marked_route mark_route(const plain_route &rt,
 	std::vector<map_location>::const_iterator i = rt.steps.begin();
 	std::list<map_location>::const_iterator w = waypoints.begin();
 
-	// TODO fix the name confusion with waypoints and route.waypoints
 	for (; i !=rt.steps.end(); i++) {
 		bool last_step = (i+1 == rt.steps.end());
 
@@ -424,7 +423,7 @@ marked_route mark_route(const plain_route &rt,
 
 			bool invisible = u.invisible(*i,units,teams,false);
 
-			res.waypoints[*i] = marked_route::waypoint(turns, pass_here, zoc, capture, invisible);
+			res.marks[*i] = marked_route::mark(turns, pass_here, zoc, capture, invisible);
 
 			if (last_step) break; // finished and we used dummy move_cost
 
@@ -434,7 +433,7 @@ marked_route mark_route(const plain_route &rt,
 			}
 		} else if (pass_here) {
 			bool invisible = u.invisible(*i,units,teams,false);
-			res.waypoints[*i] = marked_route::waypoint(0, pass_here, zoc, false, invisible);
+			res.marks[*i] = marked_route::mark(0, pass_here, zoc, false, invisible);
 		}
 
 		zoc = enemy_zoc(units, teams, *(i + 1), viewing_team,u.side())

@@ -597,11 +597,11 @@ void game_display::set_game_mode(const tgame_mode game_mode)
 
 void game_display::draw_movement_info(const map_location& loc)
 {
-	// Search if there is a waypoint here
-	marked_route::waypoint_map::iterator w = route_.waypoints.find(loc);
+	// Search if there is a mark here
+	marked_route::mark_map::iterator w = route_.marks.find(loc);
 
 	// Don't use empty route or the first step (the unit will be there)
-	if(w != route_.waypoints.end()
+	if(w != route_.marks.end()
 				&& !route_.steps.empty() && route_.steps.front() != loc) {
 		const unit_map::const_iterator un = units_.find(route_.steps.front());
 		if(un != units_.end()) {
@@ -612,7 +612,7 @@ void game_display::draw_movement_info(const map_location& loc)
 
 			SDL_Color color = int_to_color(game_config::red_to_green(def, false));
 
-			// simple waypoint (no turn point) use smaller font
+			// simple mark (no turn point) use smaller font
 			int def_font = w->second.turns > 0 ? 18 : 16;
 			draw_text_in_hex(loc, LAYER_MOVE_INFO, def_text.str(), def_font, color);
 
@@ -828,7 +828,7 @@ void game_display::set_route(const marked_route *route)
 		route_ = *route;
 	} else {
 		route_.steps.clear();
-		route_.waypoints.clear();
+		route_.marks.clear();
 	}
 
 	invalidate_route();

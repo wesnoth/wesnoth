@@ -1653,8 +1653,8 @@ void menu_handler::execute_gotos(mouse_handler &mousehandler, int side)
 
 			// look where we will stop this turn (turn_1 waypoint or goto)
 			map_location next_stop = goto_loc;
-			marked_route::waypoint_map::const_iterator w = route.waypoints.begin();
-			for(; w != route.waypoints.end(); ++w) {
+			marked_route::mark_map::const_iterator w = route.marks.begin();
+			for(; w != route.marks.end(); ++w) {
 				if (w->second.turns == 1) {
 					next_stop = w->first;
 					break;

@@ -107,18 +107,18 @@ struct paths
 	dest_vect destinations;
 };
 
-/** Structure which holds a single route and waypoints for special events. */
+/** Structure which holds a single route and marks for special events. */
 struct marked_route
 {
 	marked_route()
 		: steps()
-		, waypoints()
+		, marks()
 	{
 	}
 
-	struct waypoint
+	struct mark
 	{
-		waypoint(int turns_number = 0, bool pass = false,  bool in_zoc = false,
+		mark(int turns_number = 0, bool pass = false,  bool in_zoc = false,
 		         bool do_capture = false, bool is_invisible = false)
 			: turns(turns_number), pass_here(pass), zoc(in_zoc),
 			  capture(do_capture), invisible(is_invisible) {}
@@ -128,9 +128,9 @@ struct marked_route
 		bool capture;
 		bool invisible;
 	};
-	typedef std::map<map_location, waypoint> waypoint_map;
+	typedef std::map<map_location, mark> mark_map;
 	std::vector<map_location> steps;
-	waypoint_map waypoints;
+	mark_map marks;
 };
 
 /** Structure which holds a single route between one location and another. */
@@ -148,7 +148,7 @@ plain_route a_star_search(map_location const &src, map_location const &dst,
                            std::set<map_location> const *teleports = NULL);
 
 /**
- * Marks a route @a rt with waypoints assuming that a @unit u travels along it.
+ * Add marks on a route @a rt assuming that a @unit u travels along it.
  */
 marked_route mark_route(const plain_route &rt,
 	const std::list<map_location>& waypoints, const unit &u,
