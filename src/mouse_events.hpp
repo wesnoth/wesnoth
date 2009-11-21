@@ -122,7 +122,6 @@ private:
 	map_location selected_hex_;
 	map_location next_unit_;
 	marked_route current_route_;
-	std::vector<map_location> waypoints_;
 	paths current_paths_;
 	bool enemy_paths_;
 	int path_turns_;

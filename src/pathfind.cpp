@@ -381,7 +381,7 @@ paths::paths(gamemap const &map, unit_map const &units,
 }
 
 marked_route mark_route(const plain_route &rt,
-	const std::vector<map_location>& waypoints, const unit &u,
+	const std::list<map_location>& waypoints, const unit &u,
 	const team &viewing_team, const unit_map &units,
 	const std::vector<team> &teams, const gamemap &map)
 {
@@ -395,8 +395,8 @@ marked_route mark_route(const plain_route &rt,
 	const team& unit_team = teams[u.side()-1];
 	bool zoc = false;
 
-	std::vector<map_location>::const_iterator i = rt.steps.begin(),
-			w = waypoints.begin();
+	std::vector<map_location>::const_iterator i = rt.steps.begin();
+	std::list<map_location>::const_iterator w = waypoints.begin();
 
 	// TODO fix the name confusion with waypoints and route.waypoints
 	for (; i !=rt.steps.end(); i++) {

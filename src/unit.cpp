@@ -217,6 +217,7 @@ unit::unit(unit_map* unitmap, const config& cfg,
 	unit_value_(),
 	goto_(),
 	interrupted_move_(),
+	waypoints_(),
 	flying_(false),
 	is_fearless_(false),
 	is_healthy_(false),
@@ -295,6 +296,7 @@ unit::unit(const config& cfg,bool use_traits) :
 	unit_value_(),
 	goto_(),
 	interrupted_move_(),
+	waypoints_(),
 	flying_(false),
 	is_fearless_(false),
 	is_healthy_(false),
@@ -399,6 +401,7 @@ unit::unit(unit_map *unitmap, const unit_type *t, int side,
 	unit_value_(),
 	goto_(),
 	interrupted_move_(),
+	waypoints_(),
 	flying_(false),
 	is_fearless_(false),
 	is_healthy_(false),
@@ -820,7 +823,8 @@ void unit::new_scenario()
 
 	// Set the goto-command to be going to no-where
 	goto_ = map_location();
-
+	waypoints_.clear();
+	
 	remove_temporary_modifications();
 
 	heal_all();
@@ -1498,6 +1502,8 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	}
 	goto_.x = lexical_cast_default<int>(cfg["goto_x"]) - 1;
 	goto_.y = lexical_cast_default<int>(cfg["goto_y"]) - 1;
+	waypoints_.clear();
+
 	if(cfg["moves"] != "") {
 		movement_ = lexical_cast_default<int>(cfg["moves"]);
 		if(movement_ < 0) {

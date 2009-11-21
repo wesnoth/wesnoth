@@ -60,7 +60,6 @@ mouse_handler::mouse_handler(game_display* gui, std::vector<team>& teams,
 	selected_hex_(),
 	next_unit_(),
 	current_route_(),
-	waypoints_(),
 	current_paths_(),
 	enemy_paths_(false),
 	path_turns_(0),
@@ -324,11 +323,18 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc)
 }
 
 void mouse_handler::add_waypoint(const map_location& loc) {
-	if(!waypoints_.empty() && waypoints_.back() == loc) {
-		waypoints_.pop_back();
+	unit_map::iterator u = find_unit(selected_hex_);
+	if(u == units_.end() || u->second.side() != side_num_)
+		return;
+
+	std::list<map_location>& waypoints = u->second.waypoints();
+	std::list<map_location>::iterator i = std::find(waypoints.begin(), waypoints.end(), loc);
+	if(i != waypoints.end()){
+		waypoints.erase(i);
 	} else {
-		waypoints_.push_back(loc);
+		waypoints.push_back(loc);
 	}
+
 	// we need to update the route, simulate a mouse move for the moment
 	// (browse is supposed false here, 0,0 are dummy values)
 	mouse_motion(0,0, false, true);
@@ -343,8 +349,8 @@ marked_route mouse_handler::get_route(unit_map::const_iterator un, map_location 
 		un->second, units_, viewing_team());
 
 	plain_route route;
-
-	if (waypoints_.empty()) {
+	
+	if (un->second.waypoints().empty()) {
 		// standard shortest path
 		route = a_star_search(un->first, go_to, 10000.0, &calc, map_.w(), map_.h(), &allowed_teleports);
 	} else {
@@ -352,12 +358,16 @@ marked_route mouse_handler::get_route(unit_map::const_iterator un, map_location 
 		route.steps.push_back(un->first);
 		route.move_cost = 0;
 
-		const int wsize = waypoints_.size();
-		for(int w = -1; w < wsize; ++w){
-			const map_location& src = w < 0 ? un->first : waypoints_[w];
-			const map_location& dst = w+1 < wsize ? waypoints_[w+1] : go_to;
-			if (src==dst) continue;
-			plain_route inter_route = a_star_search(src, dst, 10000.0, &calc, map_.w(), map_.h(), &allowed_teleports);
+		//copy waypoints and add first source and last destination
+		std::list<map_location> waypoints = un->second.waypoints();
+		waypoints.push_front(un->first);
+		waypoints.push_back(go_to);
+
+		std::list<map_location>::iterator src = waypoints.begin(),
+			dst = ++waypoints.begin();
+		for(; dst != waypoints.end(); ++src,++dst){
+			if (*src == *dst) continue;
+			plain_route inter_route = a_star_search(*src, *dst, 10000.0, &calc, map_.w(), map_.h(), &allowed_teleports);
 			if(inter_route.steps.size()>=1) {
 				// add to the main route but skip the head (already in)
 				route.steps.insert(route.steps.end(),
@@ -367,7 +377,7 @@ marked_route mouse_handler::get_route(unit_map::const_iterator un, map_location 
 		}
 	}
 
-	return mark_route(route, waypoints_, un->second, viewing_team(), units_,teams_,map_);
+	return mark_route(route, un->second.waypoints(), un->second, viewing_team(), units_,teams_,map_);
 }
 
 void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool browse)
@@ -401,9 +411,10 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 	unit_map::iterator u = find_unit(selected_hex_);
 
 	//if the unit is selected and then itself clicked on,
-	//any goto command is cancelled
+	//any goto command and waypoints are cancelled
 	if(u != units_.end() && !browse && selected_hex_ == hex && u->second.side() == side_num_) {
 		u->second.set_goto(map_location());
+		u->second.waypoints().clear();
 	}
 
 	unit_map::iterator clicked_u = find_unit(hex);
@@ -505,7 +516,6 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 	gui().select_hex(hex);
 	gui().clear_attack_indicator();
 	gui().set_route(NULL);
-	waypoints_.clear();
 	show_partial_move_ = false;
 
 	unit_map::iterator u = find_unit(hex);

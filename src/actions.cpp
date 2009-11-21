@@ -2092,6 +2092,12 @@ size_t move_unit(move_unit_spectator *move_spectator,
 
 		moves_left -= cost;
 
+		//remove used waypoints
+		std::list<map_location>& waypoints = ui->second.waypoints();
+		if(!waypoints.empty() && waypoints.front() == *step) {
+			waypoints.pop_front();
+		}
+
 		// If we use fog or shroud, see if we have sighted an enemy unit,
 		// in which case we should stop immediately.
 		// Cannot use check shroud, because also need to check if delay shroud is on.
