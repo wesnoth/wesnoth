@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-11-14 10:42+0100\n"
-"PO-Revision-Date: 2009-11-01 22:16+0100\n"
+"PO-Revision-Date: 2009-11-22 11:52+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -2943,7 +2943,6 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:813
-#, fuzzy
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -2958,12 +2957,12 @@ msgstr ""
 "all'utente (scrivere qui il nome del giocatore o dell'osservatore). Puoi "
 "controllare quale fazione appartiene ad un giocatore dalla finestra di "
 "dialogoi «Impostazioni dello scenario» (premi il pulsante «Ancora» nella "
-"«Tabella di stato» per arrivarci).\n"
+"«Tabella di stato» [Alt+s] per arrivarci). L'ospitante può cambiare il "
+"controllo di qualunque fazione.\n"
 "\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:816
-#, fuzzy
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. If you "
@@ -2972,10 +2971,9 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Espelli un utente dal multigiocatore. Potrà riunirsi alla partita. In "
-"generale è un modo cortese per eliminare qualcuno che ha delle difficoltà di "
-"collegamento o altro.\n"
-"\n"
+"Espelli un utente dal multigiocatore. Potrà riunirsi alla partita. Se vuoi "
+"cambiare il controllo della sua fazione, usa il comando :control invece di "
+"questo.\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:819
@@ -3997,13 +3995,12 @@ msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr "Il veleno scorre nelle vene di questa unità proprio ora."
 
 #: data/core/macros/items.cfg:287
-#, fuzzy
 msgid ""
 "Sprinkling this water on melee weapons grants them the 'arcane' damage type "
 "until the end of the current scenario. Should $unit.name use it?"
 msgstr ""
 "Quest'acqua infonderà alle armi bianche il tipo di danno “esoterico” fino "
-"alla fine dello scenario."
+"alla fine dello scenario. Vuoi che $unit.name la usi?"
 
 #: data/core/macros/items.cfg:288
 msgid "I am not suited to the use of this item! Let another take it."
@@ -8171,22 +8168,20 @@ msgid "In lobby"
 msgstr "Nella lobby"
 
 #: src/gui/dialogs/lobby_player_info.cpp:95
-#, fuzzy
 msgid "On friends list"
-msgstr "Aggiunto all'elenco degli amici: "
+msgstr "Sull'elenco degli amici"
 
 #: src/gui/dialogs/lobby_player_info.cpp:100
-#, fuzzy
 msgid "On ignores list"
-msgstr "Aggiunto all'elenco degli utenti da ignorare:"
+msgstr "Sull'elenco degli utenti da ignorare"
 
 #: src/gui/dialogs/lobby_player_info.cpp:105
 msgid "Neither a friend nor ignored"
-msgstr ""
+msgstr "Né amico né ignorato"
 
 #: src/gui/dialogs/lobby_player_info.cpp:110
 msgid "You"
-msgstr ""
+msgstr "Tu"
 
 #: src/gui/dialogs/lobby_player_info.cpp:113 src/multiplayer_create.cpp:540
 msgid "Error"
@@ -9516,6 +9511,8 @@ msgid ""
 "Show all games that do *not* match your filter. Useful for hiding games you "
 "are not interested in."
 msgstr ""
+"Mostra tutte le partite che *non* corrispondono al filtro. Utile per "
+"nascondere le partite che non ti interessano."
 
 #: src/multiplayer_lobby.cpp:758
 msgid "Only show games that have at least one vacant slot"
@@ -9980,7 +9977,6 @@ msgid "Damage"
 msgstr "Danni"
 
 #: src/statistics_dialog.cpp:176
-#, fuzzy
 msgid "Overall"
 msgstr "Totale"
 
