@@ -1205,7 +1205,7 @@ void menu_handler::redo(int side_num)
 		u = units_.find(route.back());
 
 		unit::clear_status_caches();
-		u->second.set_goto(map_location());
+		u->second.set_goto(action.affected_unit.get_goto());
 		u->second.set_movement(starting_moves);
 		u->second.set_standing();
 
