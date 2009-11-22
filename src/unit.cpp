@@ -141,6 +141,7 @@ unit::unit(const unit& o):
            unit_value_(o.unit_value_),
            goto_(o.goto_),
            interrupted_move_(o.interrupted_move_),
+           waypoints_(o.waypoints_),
            flying_(o.flying_),
            is_fearless_(o.is_fearless_),
            is_healthy_(o.is_healthy_),

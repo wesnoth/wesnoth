@@ -1069,6 +1069,7 @@ void menu_handler::undo(int side_num)
 
 		u = units_.find(route.back());
 		u->second.set_goto(map_location());
+		std::swap(u->second.waypoints(), action.affected_unit.waypoints());
 		u->second.set_movement(starting_moves);
 		u->second.set_standing();
 
@@ -1206,6 +1207,7 @@ void menu_handler::redo(int side_num)
 
 		unit::clear_status_caches();
 		u->second.set_goto(action.affected_unit.get_goto());
+		std::swap(u->second.waypoints(), action.affected_unit.waypoints());
 		u->second.set_movement(starting_moves);
 		u->second.set_standing();
 
