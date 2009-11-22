@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-11-14 10:42+0100\n"
+"POT-Creation-Date: 2009-11-22 14:24+0100\n"
 "PO-Revision-Date: 2009-10-08 23:00-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -593,7 +593,7 @@ msgstr "𐑒𐑩𐑯𐑧𐑒𐑑"
 #: data/gui/default/window/mp_create_game.cfg:550
 #: data/gui/default/window/mp_login.cfg:262
 #: data/gui/default/window/mp_method_selection.cfg:218
-#: data/gui/default/window/mp_server_list.cfg:229
+#: data/gui/default/window/mp_server_list.cfg:232
 #: data/gui/default/window/unit_create.cfg:216
 #: data/gui/default/window/unit_create.cfg:217 src/construct_dialog.cpp:134
 #: src/construct_dialog.cpp:137
@@ -824,7 +824,7 @@ msgstr "𐑧𐑒𐑕𐑦𐑒𐑿𐑕𐑩𐑯 𐑑𐑮𐑱𐑕"
 #. [button]: id=quit
 #. [grid]
 #: data/gui/default/window/formula_debugger.cfg:222
-#: data/gui/default/window/lobby_main.cfg:539
+#: data/gui/default/window/lobby_main.cfg:550
 #: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:643
 #: src/hotkeys.cpp:934
 msgid "Quit"
@@ -889,7 +889,7 @@ msgstr "𐑓𐑦𐑤𐑑𐑼"
 #. [label]: id=name
 #. [label]: id=filename
 #: data/gui/default/window/game_load.cfg:253
-#: data/gui/default/window/mp_server_list.cfg:96
+#: data/gui/default/window/mp_server_list.cfg:99
 msgid "Name"
 msgstr "𐑯𐑱𐑥"
 
@@ -997,7 +997,7 @@ msgstr "𐑝𐑺𐑦𐑩𐑚𐑩𐑤"
 #. [button]: id=cancel
 #. [button]: id=close_window
 #: data/gui/default/window/gamestate_inspector.cfg:331
-#: data/gui/default/window/lobby_main.cfg:503
+#: data/gui/default/window/lobby_main.cfg:509
 #: data/gui/default/window/lobby_player_info.cfg:192
 #: data/gui/default/window/message.cfg:122 src/construct_dialog.cpp:140
 msgid "Close"
@@ -1066,126 +1066,118 @@ msgid "Time limit"
 msgstr "𐑑𐑲𐑥 𐑤𐑦𐑥𐑦𐑑"
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:304
+#: data/gui/default/window/lobby_main.cfg:305
 msgid "Sort players:"
 msgstr "𐑕𐑹𐑑 𐑐𐑤𐑱𐑻𐑟:"
 
 #. [toggle_button]: id=player_list_sort_relation
-#: data/gui/default/window/lobby_main.cfg:312
+#: data/gui/default/window/lobby_main.cfg:313
 msgid "Friends first, ignored people last"
 msgstr "𐑓𐑮𐑧𐑯𐑛𐑟 𐑓𐑻𐑕𐑑, 𐑦𐑜𐑯𐑹𐑛 𐑐𐑰𐑐𐑩𐑤 𐑤𐑭𐑕𐑑"
 
 #. [toggle_button]: id=player_list_sort_name
-#: data/gui/default/window/lobby_main.cfg:320
+#: data/gui/default/window/lobby_main.cfg:321
 msgid "Alphabetically"
 msgstr "𐑨𐑤𐑓𐑩𐑚𐑧𐑑𐑦𐑒𐑩𐑤𐑦"
 
 #. [definition]
-#: data/gui/default/window/lobby_main.cfg:332
+#: data/gui/default/window/lobby_main.cfg:334
 msgid "Selected game"
 msgstr "𐑕𐑩𐑤𐑧𐑒𐑑𐑩𐑛 𐑜𐑱𐑥"
 
 #. [definition]
-#: data/gui/default/window/lobby_main.cfg:333
+#: data/gui/default/window/lobby_main.cfg:335
 msgid "Current room"
 msgstr "𐑒𐑳𐑮𐑩𐑯𐑑 𐑮𐑵𐑥"
 
 #. [definition]
-#: data/gui/default/window/lobby_main.cfg:334
+#: data/gui/default/window/lobby_main.cfg:336
 msgid "Lobby"
 msgstr "𐑤𐑭𐑚𐑰"
 
 #. [definition]
-#: data/gui/default/window/lobby_main.cfg:335
+#: data/gui/default/window/lobby_main.cfg:337
 msgid "Other games"
 msgstr "𐑳𐑞𐑼 𐑜𐑱𐑥𐑟"
 
 #. [label]: id=room
-#: data/gui/default/window/lobby_main.cfg:357
+#: data/gui/default/window/lobby_main.cfg:369
 msgid "Rooms"
 msgstr "𐑮𐑵𐑥𐑟"
 
 #. [image]: id=pending_messages
-#: data/gui/default/window/lobby_main.cfg:375
+#: data/gui/default/window/lobby_main.cfg:387
 msgid "Messages waiting"
 msgstr "𐑥𐑧𐑕𐑦𐑡𐑩𐑟 𐑢𐑱𐑑𐑦𐑙"
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:451
+#: data/gui/default/window/lobby_main.cfg:457
 msgid "Multiplayer Lobby"
 msgstr "𐑥𐑩𐑤𐑑𐑰𐑐𐑤𐑱𐑻 𐑤𐑭𐑚𐑰"
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:459
+#: data/gui/default/window/lobby_main.cfg:465
 msgid "Filter:"
 msgstr "𐑓𐑦𐑤𐑑𐑼:"
 
 #. [toggle_button]: id=filter_with_friends
-#: data/gui/default/window/lobby_main.cfg:470
+#: data/gui/default/window/lobby_main.cfg:476
 msgid "Friends"
 msgstr "𐑓𐑮𐑧𐑯𐑛𐑟"
 
 #. [toggle_button]: id=filter_without_ignored
-#: data/gui/default/window/lobby_main.cfg:476
+#: data/gui/default/window/lobby_main.cfg:482
 msgid "No ignored"
 msgstr "𐑯𐑴 𐑦𐑜𐑯𐑹𐑛"
 
 #. [toggle_button]: id=filter_vacant_slots
-#: data/gui/default/window/lobby_main.cfg:482
+#: data/gui/default/window/lobby_main.cfg:488
 msgid "Vacant slots"
 msgstr "𐑝𐑱𐑒𐑩𐑯𐑑 𐑕𐑤𐑭𐑑𐑕"
 
 #. [toggle_button]: id=filter_invert
-#: data/gui/default/window/lobby_main.cfg:488
+#: data/gui/default/window/lobby_main.cfg:494
 msgid "Invert filter"
 msgstr "𐑦𐑯𐑝𐑻𐑑 𐑓𐑦𐑤𐑑𐑼"
 
 #. [button]: id=send_message
-#: data/gui/default/window/lobby_main.cfg:527
+#: data/gui/default/window/lobby_main.cfg:538
 msgid "Send"
 msgstr "𐑕𐑧𐑯𐑛"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_preferences
 #. [grid]
-#: data/gui/default/window/lobby_main.cfg:545
+#: data/gui/default/window/lobby_main.cfg:556
 #: data/gui/default/window/title_screen.cfg:189
 #: src/game_preferences_display.cpp:53 src/hotkeys.cpp:79
 msgid "Preferences"
 msgstr "𐑐𐑮𐑧𐑓𐑼𐑩𐑯𐑕𐑩𐑟"
 
 #. [button]: id=refresh
-#: data/gui/default/window/lobby_main.cfg:551
+#: data/gui/default/window/lobby_main.cfg:562
 msgid "Refresh"
 msgstr "𐑮𐑰𐑓𐑮𐑧𐑖"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=show_help
-#. [button]: id=help
-#: data/gui/default/window/lobby_main.cfg:557
-#: data/gui/default/window/title_screen.cfg:109 src/hotkeys.cpp:186
-msgid "Help"
-msgstr "𐑣𐑧𐑤𐑐"
-
 #. [label]
 #. [button]: id=create
-#: data/gui/default/window/lobby_main.cfg:565
+#: data/gui/default/window/lobby_main.cfg:576
 #: data/gui/default/window/mp_create_game.cfg:33
 msgid "Create Game"
 msgstr "𐑒𐑮𐑰𐑱𐑑 𐑜𐑱𐑥"
 
 #. [button]: id=join_global
-#: data/gui/default/window/lobby_main.cfg:571
+#: data/gui/default/window/lobby_main.cfg:582
 msgid "Join"
 msgstr "𐑡𐑶𐑯"
 
 #. [button]: id=observe_global
-#: data/gui/default/window/lobby_main.cfg:577
+#: data/gui/default/window/lobby_main.cfg:588
 msgid "Observe"
 msgstr "𐑩𐑚𐑟𐑻𐑝"
 
 #. [toggle_button]: id=skip_replay
-#: data/gui/default/window/lobby_main.cfg:583
+#: data/gui/default/window/lobby_main.cfg:594
 msgid "Quick replay"
 msgstr "𐑒𐑢𐑦𐑒 𐑮𐑰𐑐𐑤𐑱"
 
@@ -1488,14 +1480,20 @@ msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr "𐑐𐑤𐑱 𐑩 𐑥𐑩𐑤𐑑𐑰𐑐𐑤𐑱𐑻 𐑜𐑱𐑥 𐑢𐑦𐑞 𐑞 AI 𐑹 𐑣𐑿𐑥𐑩𐑯𐑟 𐑖𐑺𐑦𐑙 𐑞 𐑕𐑱𐑥 𐑥𐑩𐑖𐑰𐑯"
 
 #. [label]: id=address
-#: data/gui/default/window/mp_server_list.cfg:113
+#: data/gui/default/window/mp_server_list.cfg:116
 msgid "Address"
 msgstr "𐑩𐑛𐑮𐑧𐑕"
 
 #. [button]: id=ok
-#: data/gui/default/window/mp_server_list.cfg:215
+#: data/gui/default/window/mp_server_list.cfg:218
 msgid "Select"
 msgstr "𐑕𐑩𐑤𐑧𐑒𐑑"
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=help
+#: data/gui/default/window/title_screen.cfg:109 src/hotkeys.cpp:186
+msgid "Help"
+msgstr "𐑣𐑧𐑤𐑐"
 
 #. [button]: id=previous_tip
 #: data/gui/default/window/title_screen.cfg:124
@@ -2119,23 +2117,23 @@ msgstr "𐑛𐑦𐑓𐑦𐑒𐑩𐑤𐑑𐑦: "
 msgid "Version: "
 msgstr "𐑝𐑻𐑠𐑩𐑯: "
 
-#: src/gui/dialogs/lobby_main.cpp:166
+#: src/gui/dialogs/lobby_main.cpp:167
 msgid "whisper to $receiver"
 msgstr ""
 
-#: src/gui/dialogs/lobby_main.cpp:367
+#: src/gui/dialogs/lobby_main.cpp:408
 msgid "Games: showing $num_shown out of $num_total"
 msgstr ""
 
-#: src/gui/dialogs/lobby_main.cpp:407
+#: src/gui/dialogs/lobby_main.cpp:448
 msgid "Observers allowed"
 msgstr "𐑩𐑚𐑟𐑻𐑝𐑼𐑟 𐑩𐑤𐑬𐑛"
 
-#: src/gui/dialogs/lobby_main.cpp:410
+#: src/gui/dialogs/lobby_main.cpp:451
 msgid "Observers not allowed"
 msgstr "𐑩𐑚𐑟𐑻𐑝𐑼𐑟 𐑯𐑪𐑑 𐑩𐑤𐑬𐑛"
 
-#: src/gui/dialogs/lobby_main.cpp:693
+#: src/gui/dialogs/lobby_main.cpp:741
 msgid ""
 "Whisper session with $name started. If you don't want to receive messages "
 "from this user, type /ignore $name\n"
@@ -2143,19 +2141,19 @@ msgstr ""
 "𐑢𐑦𐑕𐑐𐑻 𐑕𐑧𐑖𐑩𐑯 𐑢𐑦𐑞 $name 𐑕𐑑𐑸𐑑𐑩𐑛. 𐑦𐑓 𐑿 𐑛𐑴𐑯𐑑 𐑢𐑪𐑯𐑑 𐑑 𐑮𐑦𐑕𐑰𐑝 𐑥𐑧𐑕𐑦𐑡𐑩𐑟 𐑓𐑮𐑪𐑥 𐑞𐑦𐑕 𐑿𐑟𐑼, "
 "𐑑𐑲𐑐 /ignore $name\n"
 
-#: src/gui/dialogs/lobby_main.cpp:699
+#: src/gui/dialogs/lobby_main.cpp:747
 msgid "Room $name joined"
 msgstr "𐑮𐑵𐑥 $name 𐑡𐑶𐑯𐑛"
 
-#: src/gui/dialogs/lobby_main.cpp:1155
+#: src/gui/dialogs/lobby_main.cpp:1206
 msgid "Password Required"
 msgstr "𐑐𐑭𐑕𐑢𐑻𐑛 𐑮𐑦𐑒𐑢𐑲𐑼𐑛"
 
-#: src/gui/dialogs/lobby_main.cpp:1156
+#: src/gui/dialogs/lobby_main.cpp:1207
 msgid "Joining this game requires a password."
 msgstr "𐑡𐑶𐑯𐑦𐑙 𐑞𐑦𐑕 𐑜𐑱𐑥 𐑮𐑦𐑒𐑢𐑲𐑼𐑟 𐑩 𐑐𐑭𐑕𐑢𐑻𐑛."
 
-#: src/gui/dialogs/lobby_main.cpp:1157
+#: src/gui/dialogs/lobby_main.cpp:1208
 msgid "Password: "
 msgstr "𐑐𐑭𐑕𐑢𐑻𐑛: "
 

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-11-14 10:42+0100\n"
+"POT-Creation-Date: 2009-11-22 14:24+0100\n"
 "PO-Revision-Date: 2009-11-21 12:05+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -605,7 +605,7 @@ msgstr "Připojit"
 #: data/gui/default/window/mp_create_game.cfg:550
 #: data/gui/default/window/mp_login.cfg:262
 #: data/gui/default/window/mp_method_selection.cfg:218
-#: data/gui/default/window/mp_server_list.cfg:229
+#: data/gui/default/window/mp_server_list.cfg:232
 #: data/gui/default/window/unit_create.cfg:216
 #: data/gui/default/window/unit_create.cfg:217 src/construct_dialog.cpp:134
 #: src/construct_dialog.cpp:137
@@ -840,7 +840,7 @@ msgstr "Běhová stopa"
 #. [button]: id=quit
 #. [grid]
 #: data/gui/default/window/formula_debugger.cfg:222
-#: data/gui/default/window/lobby_main.cfg:539
+#: data/gui/default/window/lobby_main.cfg:550
 #: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:643
 #: src/hotkeys.cpp:934
 msgid "Quit"
@@ -905,7 +905,7 @@ msgstr "Filtr"
 #. [label]: id=name
 #. [label]: id=filename
 #: data/gui/default/window/game_load.cfg:253
-#: data/gui/default/window/mp_server_list.cfg:96
+#: data/gui/default/window/mp_server_list.cfg:99
 msgid "Name"
 msgstr "Název"
 
@@ -1013,7 +1013,7 @@ msgstr "Proměnná"
 #. [button]: id=cancel
 #. [button]: id=close_window
 #: data/gui/default/window/gamestate_inspector.cfg:331
-#: data/gui/default/window/lobby_main.cfg:503
+#: data/gui/default/window/lobby_main.cfg:509
 #: data/gui/default/window/lobby_player_info.cfg:192
 #: data/gui/default/window/message.cfg:122 src/construct_dialog.cpp:140
 msgid "Close"
@@ -1082,126 +1082,118 @@ msgid "Time limit"
 msgstr "Časový limit"
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:304
+#: data/gui/default/window/lobby_main.cfg:305
 msgid "Sort players:"
 msgstr "Řazení hráčů:"
 
 #. [toggle_button]: id=player_list_sort_relation
-#: data/gui/default/window/lobby_main.cfg:312
+#: data/gui/default/window/lobby_main.cfg:313
 msgid "Friends first, ignored people last"
 msgstr "Nejprve přátelé, naposled otrapové"
 
 #. [toggle_button]: id=player_list_sort_name
-#: data/gui/default/window/lobby_main.cfg:320
+#: data/gui/default/window/lobby_main.cfg:321
 msgid "Alphabetically"
 msgstr "Abecedně"
 
 #. [definition]
-#: data/gui/default/window/lobby_main.cfg:332
+#: data/gui/default/window/lobby_main.cfg:334
 msgid "Selected game"
 msgstr "Vybraná hra"
 
 #. [definition]
-#: data/gui/default/window/lobby_main.cfg:333
+#: data/gui/default/window/lobby_main.cfg:335
 msgid "Current room"
 msgstr "Současná místnost"
 
 #. [definition]
-#: data/gui/default/window/lobby_main.cfg:334
+#: data/gui/default/window/lobby_main.cfg:336
 msgid "Lobby"
 msgstr "Čekárna"
 
 #. [definition]
-#: data/gui/default/window/lobby_main.cfg:335
+#: data/gui/default/window/lobby_main.cfg:337
 msgid "Other games"
 msgstr "Ostatní hry"
 
 #. [label]: id=room
-#: data/gui/default/window/lobby_main.cfg:357
+#: data/gui/default/window/lobby_main.cfg:369
 msgid "Rooms"
 msgstr "Místnosti"
 
 #. [image]: id=pending_messages
-#: data/gui/default/window/lobby_main.cfg:375
+#: data/gui/default/window/lobby_main.cfg:387
 msgid "Messages waiting"
 msgstr "Čekající zprávy"
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:451
+#: data/gui/default/window/lobby_main.cfg:457
 msgid "Multiplayer Lobby"
 msgstr "Čekárna hry více hráčů"
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:459
+#: data/gui/default/window/lobby_main.cfg:465
 msgid "Filter:"
 msgstr "Filtr:"
 
 #. [toggle_button]: id=filter_with_friends
-#: data/gui/default/window/lobby_main.cfg:470
+#: data/gui/default/window/lobby_main.cfg:476
 msgid "Friends"
 msgstr "Přátelé"
 
 #. [toggle_button]: id=filter_without_ignored
-#: data/gui/default/window/lobby_main.cfg:476
+#: data/gui/default/window/lobby_main.cfg:482
 msgid "No ignored"
 msgstr "Bez ignorovaných"
 
 #. [toggle_button]: id=filter_vacant_slots
-#: data/gui/default/window/lobby_main.cfg:482
+#: data/gui/default/window/lobby_main.cfg:488
 msgid "Vacant slots"
 msgstr "Prázdné pozice"
 
 #. [toggle_button]: id=filter_invert
-#: data/gui/default/window/lobby_main.cfg:488
+#: data/gui/default/window/lobby_main.cfg:494
 msgid "Invert filter"
 msgstr "Invertovat filtr"
 
 #. [button]: id=send_message
-#: data/gui/default/window/lobby_main.cfg:527
+#: data/gui/default/window/lobby_main.cfg:538
 msgid "Send"
 msgstr "Odeslat"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_preferences
 #. [grid]
-#: data/gui/default/window/lobby_main.cfg:545
+#: data/gui/default/window/lobby_main.cfg:556
 #: data/gui/default/window/title_screen.cfg:189
 #: src/game_preferences_display.cpp:53 src/hotkeys.cpp:79
 msgid "Preferences"
 msgstr "Nastavení"
 
 #. [button]: id=refresh
-#: data/gui/default/window/lobby_main.cfg:551
+#: data/gui/default/window/lobby_main.cfg:562
 msgid "Refresh"
 msgstr "Obnovit"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=show_help
-#. [button]: id=help
-#: data/gui/default/window/lobby_main.cfg:557
-#: data/gui/default/window/title_screen.cfg:109 src/hotkeys.cpp:186
-msgid "Help"
-msgstr "Nápověda"
-
 #. [label]
 #. [button]: id=create
-#: data/gui/default/window/lobby_main.cfg:565
+#: data/gui/default/window/lobby_main.cfg:576
 #: data/gui/default/window/mp_create_game.cfg:33
 msgid "Create Game"
 msgstr "Vytvoř hru"
 
 #. [button]: id=join_global
-#: data/gui/default/window/lobby_main.cfg:571
+#: data/gui/default/window/lobby_main.cfg:582
 msgid "Join"
 msgstr "Přidej se ke hře"
 
 #. [button]: id=observe_global
-#: data/gui/default/window/lobby_main.cfg:577
+#: data/gui/default/window/lobby_main.cfg:588
 msgid "Observe"
 msgstr "Pozoruj hru"
 
 #. [toggle_button]: id=skip_replay
-#: data/gui/default/window/lobby_main.cfg:583
+#: data/gui/default/window/lobby_main.cfg:594
 msgid "Quick replay"
 msgstr "Rychlý záznam"
 
@@ -1507,14 +1499,20 @@ msgstr ""
 "Hrej hru více hráčů s lidmi nebo počítačovými protivníky na jednom stroji"
 
 #. [label]: id=address
-#: data/gui/default/window/mp_server_list.cfg:113
+#: data/gui/default/window/mp_server_list.cfg:116
 msgid "Address"
 msgstr "Adresa"
 
 #. [button]: id=ok
-#: data/gui/default/window/mp_server_list.cfg:215
+#: data/gui/default/window/mp_server_list.cfg:218
 msgid "Select"
 msgstr "Vybrat"
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=help
+#: data/gui/default/window/title_screen.cfg:109 src/hotkeys.cpp:186
+msgid "Help"
+msgstr "Nápověda"
 
 #. [button]: id=previous_tip
 #: data/gui/default/window/title_screen.cfg:124
@@ -2154,23 +2152,23 @@ msgid "Version: "
 msgstr "Verze: "
 
 # v chatu, "levá část tabulky" (jméno) - nesmí být příliš dlouhé!
-#: src/gui/dialogs/lobby_main.cpp:166
+#: src/gui/dialogs/lobby_main.cpp:167
 msgid "whisper to $receiver"
 msgstr "soukr. zpr. pro $receiver"
 
-#: src/gui/dialogs/lobby_main.cpp:367
+#: src/gui/dialogs/lobby_main.cpp:408
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "Hry: zobrazeno $num_shown ze $num_total"
 
-#: src/gui/dialogs/lobby_main.cpp:407
+#: src/gui/dialogs/lobby_main.cpp:448
 msgid "Observers allowed"
 msgstr "Pozorovatelé povoleni"
 
-#: src/gui/dialogs/lobby_main.cpp:410
+#: src/gui/dialogs/lobby_main.cpp:451
 msgid "Observers not allowed"
 msgstr "Pozorovatelé zakázáni"
 
-#: src/gui/dialogs/lobby_main.cpp:693
+#: src/gui/dialogs/lobby_main.cpp:741
 msgid ""
 "Whisper session with $name started. If you don't want to receive messages "
 "from this user, type /ignore $name\n"
@@ -2178,19 +2176,19 @@ msgstr ""
 "Zahájena soukromá konverzace s $name|. Pokud si nepřejete přijímat od tohoto "
 "človka zprávy, napište /ignore $name|.\n"
 
-#: src/gui/dialogs/lobby_main.cpp:699
+#: src/gui/dialogs/lobby_main.cpp:747
 msgid "Room $name joined"
 msgstr "Vstoupil(a) jsi do místnosti $name"
 
-#: src/gui/dialogs/lobby_main.cpp:1155
+#: src/gui/dialogs/lobby_main.cpp:1206
 msgid "Password Required"
 msgstr "Je zapotřebí heslo"
 
-#: src/gui/dialogs/lobby_main.cpp:1156
+#: src/gui/dialogs/lobby_main.cpp:1207
 msgid "Joining this game requires a password."
 msgstr "Ke vstupu do této hry je zapotřebí heslo."
 
-#: src/gui/dialogs/lobby_main.cpp:1157
+#: src/gui/dialogs/lobby_main.cpp:1208
 msgid "Password: "
 msgstr "Heslo: "
 

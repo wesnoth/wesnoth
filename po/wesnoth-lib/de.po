@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-11-14 10:42+0100\n"
+"POT-Creation-Date: 2009-11-22 14:24+0100\n"
 "PO-Revision-Date: 2009-11-18 19:42+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -590,7 +590,7 @@ msgstr "Verbinden"
 #: data/gui/default/window/mp_create_game.cfg:550
 #: data/gui/default/window/mp_login.cfg:262
 #: data/gui/default/window/mp_method_selection.cfg:218
-#: data/gui/default/window/mp_server_list.cfg:229
+#: data/gui/default/window/mp_server_list.cfg:232
 #: data/gui/default/window/unit_create.cfg:216
 #: data/gui/default/window/unit_create.cfg:217 src/construct_dialog.cpp:134
 #: src/construct_dialog.cpp:137
@@ -821,7 +821,7 @@ msgstr "Aufrufstapel"
 #. [button]: id=quit
 #. [grid]
 #: data/gui/default/window/formula_debugger.cfg:222
-#: data/gui/default/window/lobby_main.cfg:539
+#: data/gui/default/window/lobby_main.cfg:550
 #: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:643
 #: src/hotkeys.cpp:934
 msgid "Quit"
@@ -886,7 +886,7 @@ msgstr "Filter"
 #. [label]: id=name
 #. [label]: id=filename
 #: data/gui/default/window/game_load.cfg:253
-#: data/gui/default/window/mp_server_list.cfg:96
+#: data/gui/default/window/mp_server_list.cfg:99
 msgid "Name"
 msgstr "Name"
 
@@ -994,7 +994,7 @@ msgstr "Variable"
 #. [button]: id=cancel
 #. [button]: id=close_window
 #: data/gui/default/window/gamestate_inspector.cfg:331
-#: data/gui/default/window/lobby_main.cfg:503
+#: data/gui/default/window/lobby_main.cfg:509
 #: data/gui/default/window/lobby_player_info.cfg:192
 #: data/gui/default/window/message.cfg:122 src/construct_dialog.cpp:140
 msgid "Close"
@@ -1064,126 +1064,118 @@ msgid "Time limit"
 msgstr "Zeitbegrenzung"
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:304
+#: data/gui/default/window/lobby_main.cfg:305
 msgid "Sort players:"
 msgstr "Spieler sortieren:"
 
 #. [toggle_button]: id=player_list_sort_relation
-#: data/gui/default/window/lobby_main.cfg:312
+#: data/gui/default/window/lobby_main.cfg:313
 msgid "Friends first, ignored people last"
 msgstr "Zuerst Freunde, dann Ignorierte"
 
 #. [toggle_button]: id=player_list_sort_name
-#: data/gui/default/window/lobby_main.cfg:320
+#: data/gui/default/window/lobby_main.cfg:321
 msgid "Alphabetically"
 msgstr "Alphabetisch"
 
 #. [definition]
-#: data/gui/default/window/lobby_main.cfg:332
+#: data/gui/default/window/lobby_main.cfg:334
 msgid "Selected game"
 msgstr "Ausgewähltes Spiel"
 
 #. [definition]
-#: data/gui/default/window/lobby_main.cfg:333
+#: data/gui/default/window/lobby_main.cfg:335
 msgid "Current room"
 msgstr "Derzeitiger Raum"
 
 #. [definition]
-#: data/gui/default/window/lobby_main.cfg:334
+#: data/gui/default/window/lobby_main.cfg:336
 msgid "Lobby"
 msgstr "Eingangshalle"
 
 #. [definition]
-#: data/gui/default/window/lobby_main.cfg:335
+#: data/gui/default/window/lobby_main.cfg:337
 msgid "Other games"
 msgstr "Andere Partien"
 
 #. [label]: id=room
-#: data/gui/default/window/lobby_main.cfg:357
+#: data/gui/default/window/lobby_main.cfg:369
 msgid "Rooms"
 msgstr "Räume"
 
 #. [image]: id=pending_messages
-#: data/gui/default/window/lobby_main.cfg:375
+#: data/gui/default/window/lobby_main.cfg:387
 msgid "Messages waiting"
 msgstr "Neue Nachrichten"
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:451
+#: data/gui/default/window/lobby_main.cfg:457
 msgid "Multiplayer Lobby"
 msgstr "Mehrspielereingangshalle"
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:459
+#: data/gui/default/window/lobby_main.cfg:465
 msgid "Filter:"
 msgstr "Filter:"
 
 #. [toggle_button]: id=filter_with_friends
-#: data/gui/default/window/lobby_main.cfg:470
+#: data/gui/default/window/lobby_main.cfg:476
 msgid "Friends"
 msgstr "Freunde"
 
 #. [toggle_button]: id=filter_without_ignored
-#: data/gui/default/window/lobby_main.cfg:476
+#: data/gui/default/window/lobby_main.cfg:482
 msgid "No ignored"
 msgstr "Nicht ignoriert"
 
 #. [toggle_button]: id=filter_vacant_slots
-#: data/gui/default/window/lobby_main.cfg:482
+#: data/gui/default/window/lobby_main.cfg:488
 msgid "Vacant slots"
 msgstr "Freie Plätze"
 
 #. [toggle_button]: id=filter_invert
-#: data/gui/default/window/lobby_main.cfg:488
+#: data/gui/default/window/lobby_main.cfg:494
 msgid "Invert filter"
 msgstr "Filter invertieren"
 
 #. [button]: id=send_message
-#: data/gui/default/window/lobby_main.cfg:527
+#: data/gui/default/window/lobby_main.cfg:538
 msgid "Send"
 msgstr "Senden"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_preferences
 #. [grid]
-#: data/gui/default/window/lobby_main.cfg:545
+#: data/gui/default/window/lobby_main.cfg:556
 #: data/gui/default/window/title_screen.cfg:189
 #: src/game_preferences_display.cpp:53 src/hotkeys.cpp:79
 msgid "Preferences"
 msgstr "Einstellungen"
 
 #. [button]: id=refresh
-#: data/gui/default/window/lobby_main.cfg:551
+#: data/gui/default/window/lobby_main.cfg:562
 msgid "Refresh"
 msgstr "Aktualisieren"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=show_help
-#. [button]: id=help
-#: data/gui/default/window/lobby_main.cfg:557
-#: data/gui/default/window/title_screen.cfg:109 src/hotkeys.cpp:186
-msgid "Help"
-msgstr "Hilfe"
-
 #. [label]
 #. [button]: id=create
-#: data/gui/default/window/lobby_main.cfg:565
+#: data/gui/default/window/lobby_main.cfg:576
 #: data/gui/default/window/mp_create_game.cfg:33
 msgid "Create Game"
 msgstr "Partie eröffnen"
 
 #. [button]: id=join_global
-#: data/gui/default/window/lobby_main.cfg:571
+#: data/gui/default/window/lobby_main.cfg:582
 msgid "Join"
 msgstr "Beitreten"
 
 #. [button]: id=observe_global
-#: data/gui/default/window/lobby_main.cfg:577
+#: data/gui/default/window/lobby_main.cfg:588
 msgid "Observe"
 msgstr "Beobachten"
 
 #. [toggle_button]: id=skip_replay
-#: data/gui/default/window/lobby_main.cfg:583
+#: data/gui/default/window/lobby_main.cfg:594
 msgid "Quick replay"
 msgstr "Schneller Verlauf"
 
@@ -1491,14 +1483,20 @@ msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr "Eine Mehrspielerpartie am selben Rechner gegen KI/Menschen spielen"
 
 #. [label]: id=address
-#: data/gui/default/window/mp_server_list.cfg:113
+#: data/gui/default/window/mp_server_list.cfg:116
 msgid "Address"
 msgstr "Adresse"
 
 #. [button]: id=ok
-#: data/gui/default/window/mp_server_list.cfg:215
+#: data/gui/default/window/mp_server_list.cfg:218
 msgid "Select"
 msgstr "Auswählen"
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=help
+#: data/gui/default/window/title_screen.cfg:109 src/hotkeys.cpp:186
+msgid "Help"
+msgstr "Hilfe"
 
 #. [button]: id=previous_tip
 #: data/gui/default/window/title_screen.cfg:124
@@ -2144,23 +2142,23 @@ msgstr "Schwierigkeitsgrad: "
 msgid "Version: "
 msgstr "Version: "
 
-#: src/gui/dialogs/lobby_main.cpp:166
+#: src/gui/dialogs/lobby_main.cpp:167
 msgid "whisper to $receiver"
 msgstr ""
 
-#: src/gui/dialogs/lobby_main.cpp:367
+#: src/gui/dialogs/lobby_main.cpp:408
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "Spiele: $num_shown von $num_total angezeigt"
 
-#: src/gui/dialogs/lobby_main.cpp:407
+#: src/gui/dialogs/lobby_main.cpp:448
 msgid "Observers allowed"
 msgstr "Beobachter zugelassen"
 
-#: src/gui/dialogs/lobby_main.cpp:410
+#: src/gui/dialogs/lobby_main.cpp:451
 msgid "Observers not allowed"
 msgstr "Beobachter nicht zugelassen"
 
-#: src/gui/dialogs/lobby_main.cpp:693
+#: src/gui/dialogs/lobby_main.cpp:741
 msgid ""
 "Whisper session with $name started. If you don't want to receive messages "
 "from this user, type /ignore $name\n"
@@ -2168,19 +2166,19 @@ msgstr ""
 "Private Nachrichtensitzung mit $name gestartet. Wenn Ihr von diesem Benutzer "
 "keine Nachrichten mehr erhalten wollt, führt den Befehl »/ignore $name« aus\n"
 
-#: src/gui/dialogs/lobby_main.cpp:699
+#: src/gui/dialogs/lobby_main.cpp:747
 msgid "Room $name joined"
 msgstr "Raum $name betreten"
 
-#: src/gui/dialogs/lobby_main.cpp:1155
+#: src/gui/dialogs/lobby_main.cpp:1206
 msgid "Password Required"
 msgstr "Passwort benötigt"
 
-#: src/gui/dialogs/lobby_main.cpp:1156
+#: src/gui/dialogs/lobby_main.cpp:1207
 msgid "Joining this game requires a password."
 msgstr "Um diesem Spiel beizutreten, wird ein Passwort benötigt."
 
-#: src/gui/dialogs/lobby_main.cpp:1157
+#: src/gui/dialogs/lobby_main.cpp:1208
 msgid "Password: "
 msgstr "Passwort:"
 
