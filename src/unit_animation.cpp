@@ -342,107 +342,90 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		//no event, providing a catch all anim
 		//animations.push_back(tmp_anim);
 
-		tmp_anim = *itor;
-		tmp_anim.event_ = utils::split("standing");
-		tmp_anim.play_offscreen_ = false;
-		animations.push_back(tmp_anim);
+		animations.push_back(*itor);
+		animations.back().event_ = utils::split("standing");
+		animations.back().play_offscreen_ = false;
 
-		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(0,300,"","0.0~0.3:100,0.3~0.0:200",display::rgb(255,255,255));
-		tmp_anim.event_ = utils::split("selected");
-		animations.push_back(tmp_anim);
+		animations.push_back(*itor);
+		animations.back().unit_anim_.override(0,300,"","0.0~0.3:100,0.3~0.0:200",display::rgb(255,255,255));
+		animations.back().event_ = utils::split("selected");
 
-		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(0,600,"0~1:600");
-		tmp_anim.event_ = utils::split("recruited");
-		animations.push_back(tmp_anim);
+		animations.push_back(*itor);
+		animations.back().unit_anim_.override(0,600,"0~1:600");
+		animations.back().event_ = utils::split("recruited");
 
-		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(0,600,"","1~0:600",display::rgb(255,255,255));
-		tmp_anim.event_ = utils::split("levelin");
-		animations.push_back(tmp_anim);
+		animations.push_back(*itor);
+		animations.back().unit_anim_.override(0,600,"","1~0:600",display::rgb(255,255,255));
+		animations.back().event_ = utils::split("levelin");
 
-		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(0,600,"","0~1:600,1",display::rgb(255,255,255));
-		tmp_anim.event_ = utils::split("levelout");
-		animations.push_back(tmp_anim);
+		animations.push_back(*itor);
+		animations.back().unit_anim_.override(0,600,"","0~1:600,1",display::rgb(255,255,255));
+		animations.back().event_ = utils::split("levelout");
 
-		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(0,1,"","",0,"");
-		tmp_anim.event_ = utils::split("pre_movement");
-		animations.push_back(tmp_anim);
+		animations.push_back(*itor);
+		animations.back().unit_anim_.override(0,1,"","",0,"");
+		animations.back().event_ = utils::split("pre_movement");
 
-		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(0,1,"","",0,"");
-		tmp_anim.event_ = utils::split("post_movement");
-		animations.push_back(tmp_anim);
+		animations.push_back(*itor);
+		animations.back().unit_anim_.override(0,1,"","",0,"");
+		animations.back().event_ = utils::split("post_movement");
 
-		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(0,5100,"","",0,"0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,",lexical_cast<std::string>(display::LAYER_UNIT_MOVE_DEFAULT-display::LAYER_UNIT_FIRST));
-		tmp_anim.event_ = utils::split("movement");
-		animations.push_back(tmp_anim);
+		animations.push_back(*itor);
+		animations.back().unit_anim_.override(0,5100,"","",0,"0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,",lexical_cast<std::string>(display::LAYER_UNIT_MOVE_DEFAULT-display::LAYER_UNIT_FIRST));
+		animations.back().event_ = utils::split("movement");
 
-		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(0,225,"","0.0,0.5:75,0.0:75,0.5:75,0.0",game_display::rgb(255,0,0));
-		tmp_anim.hits_.push_back(HIT);
-		tmp_anim.hits_.push_back(KILL);
-		tmp_anim.event_ = utils::split("defend");
-		animations.push_back(tmp_anim);
+		animations.push_back(*itor);
+		animations.back().unit_anim_.override(0,225,"","0.0,0.5:75,0.0:75,0.5:75,0.0",game_display::rgb(255,0,0));
+		animations.back().hits_.push_back(HIT);
+		animations.back().hits_.push_back(KILL);
+		animations.back().event_ = utils::split("defend");
 
-		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(0,1,"");
-		tmp_anim.event_ = utils::split("defend");
-		animations.push_back(tmp_anim);
+		animations.push_back(*itor);
+		animations.back().unit_anim_.override(0,1,"");
+		animations.back().event_ = utils::split("defend");
 
-		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(-150,300,"","",0,"0~0.6:150,0.6~0:150",lexical_cast<std::string>(display::LAYER_UNIT_MOVE_DEFAULT-display::LAYER_UNIT_FIRST));
-		tmp_anim.event_ = utils::split("attack");
-		tmp_anim.primary_attack_filter_.push_back(config());
-		tmp_anim.primary_attack_filter_.back()["range"] = "melee";
-		animations.push_back(tmp_anim);
+		animations.push_back(*itor);
+		animations.back().unit_anim_.override(-150,300,"","",0,"0~0.6:150,0.6~0:150",lexical_cast<std::string>(display::LAYER_UNIT_MOVE_DEFAULT-display::LAYER_UNIT_FIRST));
+		animations.back().event_ = utils::split("attack");
+		animations.back().primary_attack_filter_.push_back(config());
+		animations.back().primary_attack_filter_.back()["range"] = "melee";
 
-		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(-150,150);
-		tmp_anim.event_ = utils::split("attack");
-		tmp_anim.primary_attack_filter_.push_back(config());
-		tmp_anim.primary_attack_filter_.back()["range"] = "ranged";
-		animations.push_back(tmp_anim);
+		animations.push_back(*itor);
+		animations.back().unit_anim_.override(-150,150);
+		animations.back().event_ = utils::split("attack");
+		animations.back().primary_attack_filter_.push_back(config());
+		animations.back().primary_attack_filter_.back()["range"] = "ranged";
 
-		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(0,600,"1~0:600");
-		tmp_anim.event_ = utils::split("death");
-		animations.push_back(tmp_anim);
+		animations.push_back(*itor);
+		animations.back().unit_anim_.override(0,600,"1~0:600");
+		animations.back().event_ = utils::split("death");
 		animations.back().sub_anims_["_death_sound"] = particule();
 		animations.back().sub_anims_["_death_sound"].add_frame(1,frame_builder());
 		animations.back().sub_anims_["_death_sound"].add_frame(1,frame_builder().sound(cfg["die_sound"]),true);
 
-		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(0,1,"","",0,"");
-		tmp_anim.event_ = utils::split("victory");
+		animations.push_back(*itor);
+		animations.back().unit_anim_.override(0,1,"","",0,"");
+		animations.back().event_ = utils::split("victory");
+
+		animations.push_back(*itor);
+		animations.back().unit_anim_.override(0,150,"1~0:150");
+		animations.back().event_ = utils::split("pre_teleport");
 		animations.push_back(tmp_anim);
 
-		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(0,150,"1~0:150");
-		tmp_anim.event_ = utils::split("pre_teleport");
-		animations.push_back(tmp_anim);
+		animations.push_back(*itor);
+		animations.back().unit_anim_.override(0,150,"0~1:150,1");
+		animations.back().event_ = utils::split("post_teleport");
 
-		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(0,150,"0~1:150,1");
-		tmp_anim.event_ = utils::split("post_teleport");
-		animations.push_back(tmp_anim);
-
-		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(0,300,"","0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30",display::rgb(255,255,255));
-		tmp_anim.event_ = utils::split("healed");
-		animations.push_back(tmp_anim);
+		animations.push_back(*itor);
+		animations.back().unit_anim_.override(0,300,"","0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30",display::rgb(255,255,255));
+		animations.back().event_ = utils::split("healed");
 		animations.back().sub_anims_["_healed_sound"] = particule();
 		animations.back().sub_anims_["_healed_sound"].add_frame(1,frame_builder());
 		animations.back().sub_anims_["_healed_sound"].add_frame(1,frame_builder().sound("heal.wav"),true);
 
-		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(0,300,"","0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30",display::rgb(0,255,0));
-		tmp_anim.event_ = utils::split("poisoned");
-		animations.push_back(tmp_anim);
+		animations.push_back(*itor);
+		animations.back().unit_anim_.override(0,300,"","0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30",display::rgb(0,255,0));
+		animations.back().event_ = utils::split("poisoned");
 		animations.back().sub_anims_["_poison_sound"] = particule();
 		animations.back().sub_anims_["_poison_sound"].add_frame(1,frame_builder());
 		animations.back().sub_anims_["_poison_sound"].add_frame(1,frame_builder().sound("poison.ogg"),true);
