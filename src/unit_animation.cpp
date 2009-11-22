@@ -730,7 +730,6 @@ void unit_animation::particule::override(int start_time
 
 
 	parameters_.duration(duration);
-	parameters_.recalculate_duration();
 	if(get_animation_duration() < duration) {
 		const unit_frame & last_frame = get_last_frame();
 		add_frame(duration -get_animation_duration(), last_frame);
