@@ -1488,8 +1488,6 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 		set_state("guardian","yes");
 	}
 
-	// Attach animations for this unit to the in-core object
-	unit_animation::fill_initial_animations(animations_,cfg_);
 	// Remove animations from private cfg, they're not needed there now
 	foreach(const std::string& tag_name, unit_animation::all_tag_names()) {
 		cfg_.clear_children(tag_name);
