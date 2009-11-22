@@ -1272,10 +1272,18 @@ void tlobby_main::refresh_button_callback(gui2::twindow& /*window*/)
 }
 
 
-void tlobby_main::show_preferences_button_callback(gui2::twindow& /*window*/)
+void tlobby_main::show_preferences_button_callback(gui2::twindow& window)
 {
 	if (preferences_callback_) {
 		preferences_callback_();
+
+		/**
+		 * The screen size might have changed force an update of the size.
+		 *
+		 * @todo This might no longer be needed when gui2 is done.
+		 */
+		window.invalidate_layout();
+
 		network::send_data(config("refresh_lobby"), 0, true);
 	}
 }
