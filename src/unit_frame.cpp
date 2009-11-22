@@ -72,29 +72,21 @@ progressive_<T>::progressive_(const std::string &data, int duration) :
 	data_(),
 	input_(data)
 {
-	const std::vector<std::string> first_split = utils::split(data);
-	const int time_chunk = std::max<int>(duration / (first_split.size()?first_split.size():1),1);
+	int split_flag = utils::REMOVE_EMPTY; // useless to strip spaces
+	const std::vector<std::string> comma_split = utils::split(data,',',split_flag);
+	const int time_chunk = std::max<int>(1, duration / std::max<int>(comma_split.size(),1));
 
-	std::vector<std::string>::const_iterator tmp;
-	std::vector<std::pair<std::string,int> > first_pass;
-	for(tmp=first_split.begin();tmp != first_split.end() ; tmp++) {
-		std::vector<std::string> second_pass = utils::split(*tmp,':');
-		if(second_pass.size() > 1) {
-			first_pass.push_back(std::pair<std::string,int>(second_pass[0],atoi(second_pass[1].c_str())));
-		} else {
-			first_pass.push_back(std::pair<std::string,int>(second_pass[0],time_chunk));
-		}
-	}
-	std::vector<std::pair<std::string,int> >::const_iterator tmp2;
-	for(tmp2=first_pass.begin();tmp2 != first_pass.end() ; tmp2++) {
-		std::vector<std::string> range = utils::split(tmp2->first,'~');
-		data_.push_back(std::pair<std::pair<T, T>,int> (
-			std::pair<T, T>(
-				lexical_cast<T>(range[0].c_str()),
-				lexical_cast<T>(range.size() > 1 ? range[1].c_str() : range[0].c_str())),
-				tmp2->second));
-	}
+	std::vector<std::string>::const_iterator com_it = comma_split.begin();
+	for(; com_it != comma_split.end(); ++com_it) {
+		std::vector<std::string> colon_split = utils::split(*com_it,':',split_flag);
+		int time = (colon_split.size() > 1) ? atoi(colon_split[1].c_str()) : time_chunk;
 
+		std::vector<std::string> range = utils::split(colon_split[0],'~',split_flag);
+		T range0 = lexical_cast<T>(range[0]);
+		T range1 = (range.size() > 1) ? lexical_cast<T>(range[1]) : range0;
+		typedef std::pair<T,T> range_pair;
+		data_.push_back(std::pair<range_pair,int>(range_pair(range0, range1), time));
+	}
 }
 
 template <class T>
