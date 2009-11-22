@@ -29,8 +29,13 @@ Version 1.7.8+svn:
  * User interface:
    * Show selected item after a listbox resize (bug #13995)
    * Increasing the size of the MP lobby works properly (bug #14759)
- * WML Engine
+   * Fix waypoints ignored for multi-turns moves
+   * Toggle waypoint now works for each one, not just the last.
+   * Reclick on the selected unit now clear all waypoints
+ * WML Engine:
    * Added [open_help], fixes Bug #11061 (forgot to commit that one long time ago)
+ * Miscellaneous and bugfixes:
+   * Optimize "Initializing teams" loading phase
 
 Version 1.7.8-beta1:
  * Campaigns:
