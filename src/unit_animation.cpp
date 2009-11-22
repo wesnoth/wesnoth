@@ -337,7 +337,7 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 	animations.push_back(unit_animation(0,frame_builder().image(default_image).duration(1).
 					blend("0.0~0.3:100,0.3~0.0:200",display::rgb(255,255,255)),"_disabled_selected_",0));
 	for(itor = animation_base.begin() ; itor != animation_base.end() ; itor++ ) {
-		unit_animation tmp_anim = *itor;
+		//unit_animation tmp_anim = *itor;
 		// provide all default anims
 		//no event, providing a catch all anim
 		//animations.push_back(tmp_anim);
@@ -410,7 +410,6 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.push_back(*itor);
 		animations.back().unit_anim_.override(0,150,"1~0:150");
 		animations.back().event_ = utils::split("pre_teleport");
-		animations.push_back(tmp_anim);
 
 		animations.push_back(*itor);
 		animations.back().unit_anim_.override(0,150,"0~1:150,1");
