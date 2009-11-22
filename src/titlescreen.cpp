@@ -67,20 +67,23 @@ static lg::log_domain log_config("config");
  *  Used only once, after the game is started.
  *
  *  @param	screen	surface to operate on
- *  @param	xpos	x-position of logo
- *  @param	ypos	y-position of logo
+ *  @param	xcpos	x-position of center of the logo
+ *  @param	ycpos	y-position of center of the logo
  *
  *  @return		Result of running the routine
  *  @retval true	operation finished (successful or not)
  *  @retval false	operation failed (because modeChanged), need to retry
  */
-static bool fade_logo(game_display& screen, int xpos, int ypos)
+static bool fade_logo(game_display& screen, int xcpos, int ycpos)
 {
 	const surface logo(image::get_image(game_config::game_logo));
 	if(logo == NULL) {
 		ERR_DP << "Could not find game logo\n";
 		return true;
 	}
+
+	int xpos = xcpos - logo->w / 2;
+	int ypos = ycpos - logo->h / 2;
 
 	surface const fb = screen.video().getSurface();
 
