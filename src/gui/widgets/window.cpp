@@ -494,6 +494,7 @@ int twindow::show(const bool restore, const unsigned auto_close_timeout)
 			SDL_Rect rect = get_rect();
 			SDL_BlitSurface(restorer_, 0, video_.getSurface(), &rect);
 			update_rect(get_rect());
+			font::undraw_floating_labels(video_.getSurface());
 		}
 		throw;
 	}
@@ -505,6 +506,7 @@ int twindow::show(const bool restore, const unsigned auto_close_timeout)
 		SDL_Rect rect = get_rect();
 		SDL_BlitSurface(restorer_, 0, video_.getSurface(), &rect);
 		update_rect(get_rect());
+		font::undraw_floating_labels(video_.getSurface());
 	}
 
 	return retval_;
