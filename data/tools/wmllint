@@ -706,7 +706,7 @@ def pangoize(message, filename, line):
             continue
         # This is the common, simple case we can fix automatically
         message = message[:where] + newstart + message[where+1:]
-        endq = lines[where].rfind('"')
+        endq = line[where].rfind('"')
         message = message[:endq] + newend + message[endq+1:]
     # Check for unescaped < and >
     if "<" in message or ">" in message:
@@ -1971,11 +1971,12 @@ Usage: wmllint [options] [dir]
     -s, --stripcr              Convert DOS-style CR/LF to Unix-style LF.
     -f, --future               Enable experimental WML conversions.
     -S, --nospellcheck         Suppress spellchecking
+    -Z, --stringfreeze         Suppress warnings about newlines in messages
 """)
 
 if __name__ == '__main__':
     try:
-        (options, arguments) = getopt.getopt(sys.argv[1:], "cdDfhnrsvS", [
+        (options, arguments) = getopt.getopt(sys.argv[1:], "cdDfhnrsvSZ", [
             "clean",
             "diffs",
             "dryrun",
@@ -2015,7 +2016,7 @@ if __name__ == '__main__':
             revert = True
         elif switch in ('-s', '--stripcr'):
             stripcr = True
-        elif switch in ('-S', '--stringfreeze'):
+        elif switch in ('-Z', '--stringfreeze'):
             stringfreeze = True
         elif switch in ('-v', '--verbose'):
             verbose += 1
