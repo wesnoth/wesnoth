@@ -1407,7 +1407,7 @@ def hack_syntax(filename, lines):
         elif lines[i].count("'") % 2 == 1:
             try:
                 (key, prefix, value, comment) = parse_attribute(lines[i])
-                if "'" in value and value[0].isalpha() and value[-1].isalpha():
+                if  "'" in value and value[0].isalpha() and value[-1].isalpha() and not '"'+value+'"' in lines[i]:
                     newtext = prefix + '"' + value + '"' + comment + "\n"
                     if lines[i] != newtext:
                         lines[i] = newtext
