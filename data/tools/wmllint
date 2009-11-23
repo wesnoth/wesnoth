@@ -665,11 +665,11 @@ declared_spellings = {"GLOBAL":["I'm", "I've", "I'd", "I'll",
                                 "sceptre",
                                 ]}
 
-pango_conversions = (("~", '<b>', '</b>'),
-                     ("@", '<span color="green">', "</span>"),
-                     ("#", '<span color="red">', "</span>"),
-                     ("*", '<span size="big">', "</span>"),
-                     ("`", '<span size="small">', "</span>"),
+pango_conversions = (("~", "<b>", "</b>"),
+                     ("@", "<span color='green'>", "</span>"),
+                     ("#", "<span color='red'>", "</span>"),
+                     ("*", "<span size='big'>", "</span>"),
+                     ("`", "<span size='small'>", "</span>"),
                      )
 
 def pangostrip(message):
@@ -1805,7 +1805,8 @@ def inner_spellcheck(nav, value, spelldict):
         if d.check(lowered):
             continue
         # Strip leading punctuation and grotty Wesnoth highlighters
-        while lowered and lowered[0] in " \t(`@*'%_":
+        # Last char in this regexp is to ignore concatenation signs.
+        while lowered and lowered[0] in " \t(`@*'%_+":
             lowered = lowered[1:]
         # Not interested in interpolations or numeric literals
         if not lowered or lowered.startswith("$"):
