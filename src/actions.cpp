@@ -2028,6 +2028,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 	// See how far along the given path we can move.
 	const int starting_moves = ui->second.movement_left();
 	int moves_left = starting_moves;
+	std::list<map_location> starting_waypoints = ui->second.waypoints();
 	std::set<map_location> seen_units;
 	std::set<map_location> petrified_units;
 	bool discovered_unit = false;
@@ -2091,6 +2092,10 @@ size_t move_unit(move_unit_spectator *move_spectator,
 		}
 
 		moves_left -= cost;
+		std::list<map_location>& waypoints = ui->second.waypoints();
+		if(!waypoints.empty() && waypoints.front() == *step) {
+			waypoints.pop_front();
+		}
 
 		// If we use fog or shroud, see if we have sighted an enemy unit,
 		// in which case we should stop immediately.
@@ -2273,20 +2278,9 @@ size_t move_unit(move_unit_spectator *move_spectator,
 		} else {
 			// MP_COUNTDOWN: added param
 			undo_stack->push_back(
-				undo_action(ui->second,steps, starting_moves, action_time_bonus,
-				orig_village_owner, orig_dir));
-		}
-	}
-
-	//remove used waypoints
-	//TODO:deal with the other case too
-	if(ui != units.end()) {
-		std::list<map_location>& waypoints = ui->second.waypoints();
-		foreach(const map_location& loc, steps) {
-				if(waypoints.empty())
-					break;
-				if(waypoints.front() == loc)
-					waypoints.pop_front();
+				undo_action(ui->second, steps,
+						starting_waypoints, starting_moves,
+						action_time_bonus, orig_village_owner, orig_dir));
 		}
 	}
 
