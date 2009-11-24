@@ -826,7 +826,7 @@ def global_sanity_check(filename, lines):
                 if (notes or traits) and not has_special_notes:
                     missing_notes = ["{SPECIAL_NOTES}"] + missing_notes
                 # If the unit didn't specify hitpoints, there is some wacky
-                # stuff going on (possibly psuedo-[base_unit] behavior via
+                # stuff going on (possibly pseudo-[base_unit] behavior via
                 # macro generation) so disable some of the consistency checks.
                 if not hitpoints_specified:
                     continue
