@@ -2279,11 +2279,14 @@ size_t move_unit(move_unit_spectator *move_spectator,
 	}
 
 	//remove used waypoints
-	std::list<map_location>& waypoints = ui->second.waypoints();
-	if(!waypoints.empty()) {
+	//TODO:deal with the other case too
+	if(ui != units.end()) {
+		std::list<map_location>& waypoints = ui->second.waypoints();
 		foreach(const map_location& loc, steps) {
-			if(waypoints.front() == loc)
-				waypoints.pop_front();
+				if(waypoints.empty())
+					break;
+				if(waypoints.front() == loc)
+					waypoints.pop_front();
 		}
 	}
 
