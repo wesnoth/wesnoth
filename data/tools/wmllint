@@ -706,8 +706,8 @@ def pangoize(message, filename, line):
             continue
         # This is the common, simple case we can fix automatically
         message = message[:where] + newstart + message[where+1:]
-        endq = line[where].rfind('"')
-        message = message[:endq] + newend + message[endq+1:]
+        endq = message.rfind('"')
+        message = message[:endq] + newend + message[endq:]
     # Check for unescaped < and >
     if "<" in message or ">" in message:
         reduced = pangostrip(message)
@@ -1132,8 +1132,13 @@ def global_sanity_check(filename, lines):
             present.append(string_strip(m.group(1)).strip())
         if '=' not in lines[i] or ignoreable:
             continue
+        parseable = False
         try:
             (key, prefix, value, comment) = parse_attribute(lines[i])
+            parseable = True
+        except TypeError:
+            pass
+        if parseable:
             if "wmllint: ignore" in comment:
                 continue
             has_tr_mark = translation_mark.search(value)
@@ -1188,8 +1193,6 @@ def global_sanity_check(filename, lines):
                     print '"%s", line %d: %s should not have a translation mark' \
                               % (filename, i+1, key)                
                     lines[i] = lines[i].replace("_", "", 1)
-        except TypeError:
-            pass
     # Now that we know who's present, register all these names as spellings
     declared_spellings[filename] = map(lambda x: x.lower(), present)
     # Check for textdomain strings; should be exactly one, on line 1
