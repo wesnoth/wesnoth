@@ -2266,19 +2266,21 @@ size_t move_unit(move_unit_spectator *move_spectator,
 
 	event_mutated |= game_events::pump();
 
-	ui = units.find(steps.back());
+	//NOTE: an wml event may have removed the unit pointed by ui
+	unit_map::iterator maybe_ui = units.find(steps.back());
+	
 	if (move_spectator!=NULL) {
-		move_spectator->set_unit(ui);
+		move_spectator->set_unit(maybe_ui);
 	}
 
 	if(undo_stack != NULL) {
-		if(event_mutated || should_clear_stack || ui == units.end()) {
+		if(event_mutated || should_clear_stack || maybe_ui == units.end()) {
 			apply_shroud_changes(*undo_stack, team_num + 1);
 			undo_stack->clear();
 		} else {
 			// MP_COUNTDOWN: added param
 			undo_stack->push_back(
-				undo_action(ui->second, steps,
+				undo_action(maybe_ui->second, steps,
 						starting_waypoints, starting_moves,
 						action_time_bonus, orig_village_owner, orig_dir));
 		}
@@ -2331,41 +2333,41 @@ size_t move_unit(move_unit_spectator *move_spectator,
 			tm->see(u->second.side() - 1);
 		}
 
-			// The message we display is different depending on
-			// whether the units sighted were enemies or friends,
-			// and their respective number.
-			utils::string_map symbols;
-			symbols["friends"] = lexical_cast<std::string>(nfriends);
-			symbols["enemies"] = lexical_cast<std::string>(nenemies);
-			std::string message;
-			SDL_Color msg_colour;
-			if(nfriends == 0 || nenemies == 0) {
-				if(nfriends > 0) {
-					message = vngettext("Friendly unit sighted", "$friends friendly units sighted", nfriends, symbols);
-					msg_colour = font::GOOD_COLOUR;
-				} else if(nenemies > 0) {
-					message = vngettext("Enemy unit sighted!", "$enemies enemy units sighted!", nenemies, symbols);
-					msg_colour = font::BAD_COLOUR;
-				}
+		// The message we display is different depending on
+		// whether the units sighted were enemies or friends,
+		// and their respective number.
+		utils::string_map symbols;
+		symbols["friends"] = lexical_cast<std::string>(nfriends);
+		symbols["enemies"] = lexical_cast<std::string>(nenemies);
+		std::string message;
+		SDL_Color msg_colour;
+		if(nfriends == 0 || nenemies == 0) {
+			if(nfriends > 0) {
+				message = vngettext("Friendly unit sighted", "$friends friendly units sighted", nfriends, symbols);
+				msg_colour = font::GOOD_COLOUR;
+			} else if(nenemies > 0) {
+				message = vngettext("Enemy unit sighted!", "$enemies enemy units sighted!", nenemies, symbols);
+				msg_colour = font::BAD_COLOUR;
 			}
-			else {
-				symbols["friendphrase"] = vngettext("Part of 'Units sighted! (...)' sentence^1 friendly", "$friends friendly", nfriends, symbols);
-				symbols["enemyphrase"] = vngettext("Part of 'Units sighted! (...)' sentence^1 enemy", "$enemies enemy", nenemies, symbols);
-				message = vgettext("Units sighted! ($friendphrase, $enemyphrase)", symbols);
-				msg_colour = font::NORMAL_COLOUR;
-			}
+		}
+		else {
+			symbols["friendphrase"] = vngettext("Part of 'Units sighted! (...)' sentence^1 friendly", "$friends friendly", nfriends, symbols);
+			symbols["enemyphrase"] = vngettext("Part of 'Units sighted! (...)' sentence^1 enemy", "$enemies enemy", nenemies, symbols);
+			message = vgettext("Units sighted! ($friendphrase, $enemyphrase)", symbols);
+			msg_colour = font::NORMAL_COLOUR;
+		}
 
-			if(steps.size() < route.size()) {
-				// See if the "Continue Move" action has an associated hotkey
-				const hotkey::hotkey_item& hk = hotkey::get_hotkey(hotkey::HOTKEY_CONTINUE_MOVE);
-				if(!hk.null()) {
-					symbols["hotkey"] = hk.get_name();
-					message += "\n" + vgettext("(press $hotkey to keep moving)", symbols);
-				}
+		if(steps.size() < route.size()) {
+			// See if the "Continue Move" action has an associated hotkey
+			const hotkey::hotkey_item& hk = hotkey::get_hotkey(hotkey::HOTKEY_CONTINUE_MOVE);
+			if(!hk.null()) {
+				symbols["hotkey"] = hk.get_name();
+				message += "\n" + vgettext("(press $hotkey to keep moving)", symbols);
 			}
+		}
 
-			disp.announce(message, msg_colour);
-			redraw = true;
+		disp.announce(message, msg_colour);
+		redraw = true;
 	}
 
 	if (redraw) {
