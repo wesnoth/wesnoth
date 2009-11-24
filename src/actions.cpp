@@ -2268,7 +2268,9 @@ size_t move_unit(move_unit_spectator *move_spectator,
 
 	//NOTE: an wml event may have removed the unit pointed by ui
 	unit_map::iterator maybe_ui = units.find(steps.back());
-	
+	// and always disable the previous iterator
+	ui = units.end();
+
 	if (move_spectator!=NULL) {
 		move_spectator->set_unit(maybe_ui);
 	}
