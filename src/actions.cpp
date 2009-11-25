@@ -2092,6 +2092,8 @@ size_t move_unit(move_unit_spectator *move_spectator,
 		}
 
 		moves_left -= cost;
+
+		// remove passed waypoints
 		std::list<map_location>& waypoints = ui->second.waypoints();
 		if(!waypoints.empty() && waypoints.front() == *step) {
 			waypoints.pop_front();
