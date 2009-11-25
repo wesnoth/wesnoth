@@ -146,6 +146,7 @@ template class progressive_<double>;
 #undef UNIT_FRAME_H_PART2
 
 frame_parameters::frame_parameters() :
+	duration(0),
 	image(),
 	image_diagonal(),
 	image_mod(""),
@@ -156,7 +157,6 @@ frame_parameters::frame_parameters() :
 	sound(""),
 	text(""),
 	text_color(0),
-	duration(0),
 	blend_with(0),
 	blend_ratio(0.0),
 	highlight_ratio(1.0),
@@ -170,6 +170,7 @@ frame_parameters::frame_parameters() :
 {}
 
 frame_builder::frame_builder() :
+	duration_(1),
 	image_(),
 	image_diagonal_(),
 	image_mod_(""),
@@ -180,7 +181,6 @@ frame_builder::frame_builder() :
 	sound_(""),
 	text_(""),
 	text_color_(0),
-	duration_(1),
 	blend_with_(0),
 	blend_ratio_(""),
 	highlight_ratio_(""),
@@ -192,6 +192,7 @@ frame_builder::frame_builder() :
 {}
 
 frame_builder::frame_builder(const config& cfg,const std::string& frame_string) :
+	duration_(1),
 	image_(),
 	image_diagonal_(),
 	image_mod_(""),
@@ -202,7 +203,6 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string) 
 	sound_(""),
 	text_(""),
 	text_color_(0),
-	duration_(1),
 	blend_with_(0),
 	blend_ratio_(""),
 	highlight_ratio_(""),
@@ -243,30 +243,6 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string) 
 	drawing_layer(cfg[frame_string+"layer"]);
 }
 
-const frame_parameters frame_builder::parameters(int current_time) const
-{
-	frame_parameters result;
-	result.duration = duration_;
-	result.image = image_;
-	result.image_diagonal = image_diagonal_;
-	result.image_mod = image_mod_;
-	result.halo = halo_.get_current_element(current_time);
-	result.halo_x = halo_x_.get_current_element(current_time);
-	result.halo_y = halo_y_.get_current_element(current_time);
-	result.halo_mod = halo_mod_;
-	result.sound = sound_;
-	result.text = text_;
-	result.text_color = text_color_;
-	result.blend_with = blend_with_;
-	result.blend_ratio = blend_ratio_.get_current_element(current_time);
-	result.highlight_ratio = highlight_ratio_.get_current_element(current_time,1.0);
-	result.offset = offset_.get_current_element(current_time,-1000);
-	result.submerge = submerge_.get_current_element(current_time);
-	result.x = x_.get_current_element(current_time);
-	result.y = y_.get_current_element(current_time);
-	result.drawing_layer = drawing_layer_.get_current_element(current_time,display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
-	return result;
-}
 frame_builder & frame_builder::image(const image::locator& image ,const std::string & image_mod)
 {
 	image_ = image;
@@ -292,69 +268,79 @@ frame_builder & frame_builder::text(const std::string& text,const  Uint32 text_c
 }
 frame_builder & frame_builder::halo(const std::string &halo, const std::string &halo_x, const std::string& halo_y,const std::string & halo_mod)
 {
-	halo_ = progressive_string(halo,duration_);
-	halo_x_ = progressive_int(halo_x,duration_);
-	halo_y_ = progressive_int(halo_y,duration_);
+	halo_ = halo;
+	halo_x_ = halo_x;
+	halo_y_ = halo_y;
 	halo_mod_= halo_mod;
 	return *this;
 }
 frame_builder & frame_builder::duration(const int duration)
 {
 	duration_= duration;
-	recalculate_duration();
 	return *this;
-}
-void frame_builder::recalculate_duration()
-{
-	halo_ = progressive_string(halo_.get_original(),duration_);
-	halo_x_ = progressive_int(halo_x_.get_original(),duration_);
-	halo_y_ = progressive_int(halo_y_.get_original(),duration_);
-	blend_ratio_=progressive_double(blend_ratio_.get_original(),duration_);
-	highlight_ratio_=progressive_double(highlight_ratio_.get_original(),duration_);
-	offset_=progressive_double(offset_.get_original(),duration_);
-	submerge_=progressive_double(submerge_.get_original(),duration_);
-	x_=progressive_int(x_.get_original(),duration_);
-	y_=progressive_int(y_.get_original(),duration_);
-	drawing_layer_=progressive_int(drawing_layer_.get_original(),duration_);
 }
 frame_builder & frame_builder::blend(const std::string& blend_ratio,const Uint32 blend_color)
 {
 	blend_with_=blend_color;
-	blend_ratio_=progressive_double(blend_ratio,duration_);
+	blend_ratio_=blend_ratio;
 	return *this;
 }
 frame_builder & frame_builder::highlight(const std::string& highlight)
 {
-	highlight_ratio_=progressive_double(highlight,duration_);
+	highlight_ratio_=highlight;
 	return *this;
 }
 frame_builder & frame_builder::offset(const std::string& offset)
 {
-	offset_=progressive_double(offset,duration_);
+	offset_=offset;
 	return *this;
 }
 frame_builder & frame_builder::submerge(const std::string& submerge)
 {
-	submerge_=progressive_double(submerge,duration_);
+	submerge_=submerge;
 	return *this;
 }
 frame_builder & frame_builder::x(const std::string& x)
 {
-	x_=progressive_int(x,duration_);
+	x_=x;
 	return *this;
 }
 frame_builder & frame_builder::y(const std::string& y)
 {
-	y_=progressive_int(y,duration_);
+	y_=y;
 	return *this;
 }
 frame_builder & frame_builder::drawing_layer(const std::string& drawing_layer)
 {
-	drawing_layer_=progressive_int(drawing_layer,duration_);
+	drawing_layer_=drawing_layer;
 	return *this;
 }
 
-bool frame_builder::does_not_change() const
+
+frame_parsed_parameters::frame_parsed_parameters(const frame_builder & builder, int duration) :
+	duration_(duration ? duration :builder.duration_),
+	image_(builder.image_),
+	image_diagonal_(builder.image_diagonal_),
+	image_mod_(builder.image_mod_),
+	halo_(builder.halo_,duration_),
+	halo_x_(builder.halo_x_,duration_),
+	halo_y_(builder.halo_y_,duration_),
+	halo_mod_(builder.halo_mod_),
+	sound_(builder.sound_),
+	text_(builder.text_),
+	text_color_(builder.text_color_),
+	blend_with_(builder.blend_with_),
+	blend_ratio_(builder.blend_ratio_,duration_),
+	highlight_ratio_(builder.highlight_ratio_,duration_),
+	offset_(builder.offset_,duration_),
+	submerge_(builder.submerge_,duration_),
+	x_(builder.x_,duration_),
+	y_(builder.y_,duration_),
+	drawing_layer_(builder.drawing_layer_,duration_)
+{}
+
+
+bool frame_parsed_parameters::does_not_change() const
 {
 	return halo_.does_not_change() &&
 		halo_x_.does_not_change() &&
@@ -367,7 +353,7 @@ bool frame_builder::does_not_change() const
 		y_.does_not_change() &&
 		drawing_layer_.does_not_change();
 }
-bool frame_builder::need_update() const
+bool frame_parsed_parameters::need_update() const
 {
 	if(!halo_.does_not_change() ||
 			!halo_x_.does_not_change() ||
@@ -383,6 +369,73 @@ bool frame_builder::need_update() const
 	}
 	return false;
 }
+
+const frame_parameters frame_parsed_parameters::parameters(int current_time) const
+{
+	frame_parameters result;
+	result.duration = duration_;
+	result.image = image_;
+	result.image_diagonal = image_diagonal_;
+	result.image_mod = image_mod_;
+	result.halo = halo_.get_current_element(current_time);
+	result.halo_x = halo_x_.get_current_element(current_time);
+	result.halo_y = halo_y_.get_current_element(current_time);
+	result.halo_mod = halo_mod_;
+	result.sound = sound_;
+	result.text = text_;
+	result.text_color = text_color_;
+	result.blend_with = blend_with_;
+	result.blend_ratio = blend_ratio_.get_current_element(current_time);
+	result.highlight_ratio = highlight_ratio_.get_current_element(current_time,1.0);
+	result.offset = offset_.get_current_element(current_time,-1000);
+	result.submerge = submerge_.get_current_element(current_time);
+	result.x = x_.get_current_element(current_time);
+	result.y = y_.get_current_element(current_time);
+	result.drawing_layer = drawing_layer_.get_current_element(current_time,display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
+	return result;
+}
+
+void frame_parsed_parameters::override( int duration
+		, const std::string& highlight
+		, const std::string& blend_ratio
+		, Uint32 blend_color
+		, const std::string& offset
+		, const std::string& layer)
+{
+
+	if(!highlight.empty()) {
+		highlight_ratio_ = progressive_double(highlight,duration);
+	} else if(duration != duration_){
+		highlight_ratio_=progressive_double(highlight_ratio_.get_original(),duration);
+	}
+	if(!offset.empty()) {
+		offset_= progressive_double(offset,duration);
+	} else  if(duration != duration_){
+		offset_=progressive_double(offset_.get_original(),duration);
+	}
+	if(!blend_ratio.empty()) {
+		blend_ratio_ = progressive_double(blend_ratio,duration);
+		blend_with_  = blend_color;
+	} else  if(duration != duration_){
+		blend_ratio_=progressive_double(blend_ratio_.get_original(),duration);
+	}
+	if(!layer.empty()) {
+		drawing_layer_ = progressive_int(layer,duration);
+	} else  if(duration != duration_){
+		drawing_layer_=progressive_int(drawing_layer_.get_original(),duration);
+	}
+
+	if(duration != duration_) {
+		halo_ = progressive_string(halo_.get_original(),duration);
+		halo_x_ = progressive_int(halo_x_.get_original(),duration);
+		halo_y_ = progressive_int(halo_y_.get_original(),duration);
+		submerge_=progressive_double(submerge_.get_original(),duration);
+		x_=progressive_int(x_.get_original(),duration);
+		y_=progressive_int(y_.get_original(),duration);
+		duration_ = duration;
+	}
+}
+
 
 void unit_frame::redraw(const int frame_time,bool first_time,const map_location & src,const map_location & dst,int*halo_id,const frame_parameters & animation_val,const frame_parameters & engine_val,const bool primary)const
 {

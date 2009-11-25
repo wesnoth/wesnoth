@@ -68,6 +68,7 @@ class frame_parameters{
 	public:
 	frame_parameters();
 
+	int duration;
 	image::locator image;
 	image::locator image_diagonal;
 	std::string image_mod;
@@ -78,7 +79,6 @@ class frame_parameters{
 	std::string sound;
 	std::string text;
 	Uint32 text_color;
-	int duration;
 	Uint32 blend_with;
 	double blend_ratio;
 	double highlight_ratio;
@@ -91,20 +91,20 @@ class frame_parameters{
 	bool diagonal_in_hex;
 } ;
 /**
- * keep most parameters in a separate class to simplify handling of large
- * number of parameters
+ * easily build frame parameters with the serialized constructors
  */
+class frame_parsed_parameters;
 class frame_builder {
 	public:
 		frame_builder();
 		frame_builder(const config& cfg,const std::string &frame_string = "");
 		/** allow easy chained modifications will raised assert if used after initialization */
+		frame_builder & duration(const int duration);
 		frame_builder & image(const image::locator& image ,const std::string & image_mod="");
 		frame_builder & image_diagonal(const image::locator& image_diagonal,const std::string & image_mod="");
 		frame_builder & sound(const std::string& sound);
 		frame_builder & text(const std::string& text,const  Uint32 text_color);
 		frame_builder & halo(const std::string &halo, const std::string &halo_x, const std::string& halo_y,const std::string& halo_mod);
-		frame_builder & duration(const int duration);
 		frame_builder & blend(const std::string& blend_ratio,const Uint32 blend_color);
 		frame_builder & highlight(const std::string& highlight);
 		frame_builder & offset(const std::string& offset);
@@ -113,13 +113,50 @@ class frame_builder {
 		frame_builder & y(const std::string& y);
 		frame_builder & drawing_layer(const std::string& drawing_layer);
 		/** getters for the different parameters */
+	private:
+		friend class frame_parsed_parameters;
+		int duration_;
+		image::locator image_;
+		image::locator image_diagonal_;
+		std::string image_mod_;
+		std::string halo_;
+		std::string halo_x_;
+		std::string halo_y_;
+		std::string halo_mod_;
+		std::string sound_;
+		std::string text_;
+		Uint32 text_color_;
+		Uint32 blend_with_;
+		std::string blend_ratio_;
+		std::string highlight_ratio_;
+		std::string offset_;
+		std::string submerge_;
+		std::string x_;
+		std::string y_;
+		std::string drawing_layer_;
+};
+/**
+ * keep most parameters in a separate class to simplify handling of large
+ * number of parameters hanling is common for frame level and animation level
+ */
+class frame_parsed_parameters {
+	public:
+		frame_parsed_parameters(const frame_builder& builder=frame_builder(),int override_duration = 0);
+		/** allow easy chained modifications will raised assert if used after initialization */
+		void override( int duration
+				, const std::string& highlight = ""
+				, const std::string& blend_ratio =""
+				, Uint32 blend_color = 0
+				, const std::string& offset = ""
+				, const std::string& layer = "");
+		/** getters for the different parameters */
 		const frame_parameters parameters(int current_time) const ;
 
 		int duration() const{ return duration_;};
-		void recalculate_duration();
 		bool does_not_change() const;
 		bool need_update() const;
 	private:
+		int duration_;
 		image::locator image_;
 		image::locator image_diagonal_;
 		std::string image_mod_;
@@ -130,7 +167,6 @@ class frame_builder {
 		std::string sound_;
 		std::string text_;
 		Uint32 text_color_;
-		int duration_;
 		Uint32 blend_with_;
 		progressive_double blend_ratio_;
 		progressive_double highlight_ratio_;
@@ -140,7 +176,6 @@ class frame_builder {
 		progressive_int y_;
 		progressive_int drawing_layer_;
 };
-
 /** Describe a unit's animation sequence. */
 class unit_frame {
 	public:
@@ -155,7 +190,7 @@ class unit_frame {
 		bool need_update() const{ return builder_.need_update();};
 		std::set<map_location> get_overlaped_hex(const int frame_time,const map_location & src,const map_location & dst,const frame_parameters & animation_val,const frame_parameters & engine_val,const bool primary) const;
 	private:
-		frame_builder builder_;
+		frame_parsed_parameters builder_;
 
 };
 

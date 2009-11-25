@@ -705,20 +705,14 @@ void unit_animation::particule::override(int start_time
 		, const std::string& layer)
 {
 	set_begin_time(start_time);
-	if(!highlight.empty()) parameters_.highlight(highlight);
-	if(!offset.empty()) parameters_.offset(offset);
-	if(!blend_ratio.empty()) parameters_.blend(blend_ratio,blend_color);
-	if(!layer.empty()) parameters_.drawing_layer(layer);
+	parameters_.override(duration,highlight,blend_ratio,blend_color,offset,layer);
 
-
-	parameters_.duration(duration);
 	if(get_animation_duration() < duration) {
 		const unit_frame & last_frame = get_last_frame();
 		add_frame(duration -get_animation_duration(), last_frame);
 	} else if(get_animation_duration() > duration) {
 		remove_frames_after(duration);
 	}
-
 
 }
 
@@ -742,7 +736,7 @@ unit_animation::particule::particule(
 	const config& cfg, const std::string& frame_string ) :
 		animated<unit_frame>(),
 		accelerate(true),
-		parameters_(cfg,frame_string),
+		parameters_(),
 		halo_id_(0),
 		last_frame_begin_time_(0)
 {
@@ -761,7 +755,7 @@ unit_animation::particule::particule(
 		unit_frame tmp_frame(frame);
 		add_frame(tmp_frame.duration(),tmp_frame,!tmp_frame.does_not_change());
 	}
-	parameters_.duration(get_animation_duration());
+	parameters_ = frame_parsed_parameters(frame_builder(cfg,frame_string),get_animation_duration());
 	if(!parameters_.does_not_change()  ) {
 			force_change();
 	}
@@ -970,7 +964,7 @@ void unit_animation::particule::start_animation(int start_time, bool cycles)
 {
 	halo::remove(halo_id_);
 	halo_id_ = halo::NO_HALO;
-	parameters_.duration(get_animation_duration());
+	parameters_.override(get_animation_duration());
 	animated<unit_frame>::start_animation(start_time,cycles);
 	last_frame_begin_time_ = get_begin_time() -1;
 }

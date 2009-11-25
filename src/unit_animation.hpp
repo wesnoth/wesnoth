@@ -117,7 +117,7 @@ class unit_animation
 		private:
 
 			//animation params that can be locally overridden by frames
-			frame_builder parameters_;
+			frame_parsed_parameters parameters_;
 			int halo_id_;
 			int last_frame_begin_time_;
 
