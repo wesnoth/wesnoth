@@ -1636,8 +1636,10 @@ void menu_handler::execute_gotos(mouse_handler &mousehandler, int side)
 			const map_location& current_loc = ui->first;
 			const map_location& goto_loc = ui->second.get_goto();
 
-			if(goto_loc == current_loc)
+			if(goto_loc == current_loc){
 				ui->second.set_goto(map_location());
+				continue;
+			}
 
 			if(!map_.on_board(goto_loc))
 				continue;
