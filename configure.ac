@@ -6,7 +6,7 @@
 
 AC_PREREQ([2.60])
 
-define([WESNOTH_VERSION],[1.7.9])
+define([WESNOTH_VERSION],[1.7.9+svn])
 define([WESNOTH_BUGS],[http://bugs.wesnoth.org])
 
 AC_INIT([Battle for Wesnoth], WESNOTH_VERSION, WESNOTH_BUGS, [wesnoth])
