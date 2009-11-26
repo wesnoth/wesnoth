@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-09-28 18:23+0200\n"
+"POT-Creation-Date: 2009-11-26 15:38+0100\n"
 "PO-Revision-Date: 2008-11-28 09:20+0100\n"
 "Last-Translator: Foppe Benedictus <foppe.benedictus@gmail.com>\n"
 "Language-Team: none <foppe.benedictus@gmail.com>\n"
@@ -104,16 +104,6 @@ msgstr ""
 
 #. [about]
 #: data/campaigns/Northern_Rebirth/_main.cfg:54
-msgid "Music"
-msgstr "Muziek"
-
-#. [about]
-#: data/campaigns/Northern_Rebirth/_main.cfg:60
-msgid "Translators"
-msgstr "Vertalers"
-
-#. [about]
-#: data/campaigns/Northern_Rebirth/_main.cfg:82
 msgid "Code and Translation Assistance"
 msgstr ""
 
@@ -309,7 +299,7 @@ msgstr ""
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:124
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:42
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:21
-#: data/campaigns/Northern_Rebirth/utils/utils.cfg:76
+#: data/campaigns/Northern_Rebirth/utils/utils.cfg:75
 msgid "Tallin"
 msgstr "Tallin"
 
@@ -323,13 +313,18 @@ msgstr "Al'Tar"
 msgid "Garrugch"
 msgstr "Garrugch"
 
+#. [unit]: type=Peasant, id=Zlex, role=Supporter
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:164
+msgid "Zlex"
+msgstr "Zlex"
+
 #. [objective]: condition=win
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:160
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:178
 msgid "Defeat enemy leaders"
 msgstr "Versla de vijandige leiders"
 
 #. [objective]: condition=lose
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:164
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:182
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:185
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:601
 #: data/campaigns/Northern_Rebirth/scenarios/03_To_The_Mines.cfg:163
@@ -356,7 +351,7 @@ msgstr "Dood van Tallin"
 
 #. [objective]: condition=lose
 #. [objective]: condition=win
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:168
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:186
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:193
 #: data/campaigns/Northern_Rebirth/scenarios/03_To_The_Mines.cfg:171
 #: data/campaigns/Northern_Rebirth/scenarios/05b_Compelled.cfg:92
@@ -369,13 +364,8 @@ msgstr "Dood van Tallin"
 msgid "Turns run out"
 msgstr "Overschrijding van het aantal beurten"
 
-#. [unit]: type=Peasant, id=Zlex, role=Supporter
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:186
-msgid "Zlex"
-msgstr "Zlex"
-
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:198
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:197
 #, fuzzy
 msgid ""
 "The orcs have gotten careless - look how easily I stole these weapons and "
@@ -387,7 +377,7 @@ msgstr ""
 "van dit tuig voor eens en voor altijd af te komen. Pak ze!"
 
 #. [message]: speaker=Zlex
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:202
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:201
 #, fuzzy
 msgid ""
 "Brave words, Tallin, but moon-touched crazy ones. You have weapons for fewer "
@@ -398,7 +388,7 @@ msgstr ""
 "geen pantser en geen ervaring. Waarmee gaan we ze bevechten, rieken?"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:206
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:205
 #, fuzzy
 msgid ""
 "There's nothing wrong with pitchforks, I'll give these orcish weapons to any "
@@ -411,14 +401,14 @@ msgstr ""
 "afslachten."
 
 #. [message]: speaker=Zlex
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:210
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:209
 msgid ""
 "But their wolves run faster than we can walk, and their swords are sharper "
 "than our farm tools."
 msgstr ""
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:214
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:213
 msgid ""
 "We must use our strength of numbers. Stay shoulder-to shoulder with the man "
 "next to you; never get isolated, especially not on open ground. Swarm them "
@@ -426,12 +416,12 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Zlex
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:218
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:217
 msgid "But still, Tallin, this is going to be a slaughter."
 msgstr "Maar toch Tallin, het zal een slachtpartij worden."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:222
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:221
 msgid ""
 " *sigh* Yes, well I know it. But would you rather live as slaves to the orcs "
 "forever?"
@@ -440,22 +430,22 @@ msgstr ""
 "de Orks."
 
 #. [message]: speaker=Zlex
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:226
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:225
 msgid "Never! I would rather die!"
 msgstr "Nooit! Ik sterf liever!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:230
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:229
 msgid "Then it's time to fight!"
 msgstr "Dan is het tijd om te vechten!"
 
 #. [message]: speaker=Al'Tar
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:234
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:233
 msgid "You clod of dung! How dare you step onto my land!"
 msgstr "Jij vuil stuk vreten! Hoe durf je op mijn land te komen!"
 
 #. [message]: speaker=Garrugch
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:238
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:237
 msgid ""
 "You puny weakling, this land now belongs to my master! Surrender now and he "
 "might let you be his slave."
@@ -464,7 +454,7 @@ msgstr ""
 "en misschien mag je als zijn slaaf werken."
 
 #. [message]: speaker=Al'Tar
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:243
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:242
 msgid ""
 "Pahh! Grunts, attack! Whoever brings me the head of Garrugch will get five "
 "villages!"
@@ -473,42 +463,42 @@ msgstr ""
 "krijgen!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:260
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:259
 msgid ""
 "Ack! These bloody slaves are always getting in the way. Let's give them a "
 "beating!"
 msgstr ""
 
 #. [message]: speaker=Garrugch
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:264
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:263
 msgid ""
 "Haha! Look boys, that weakling Al'Tar can't even keep his slaves under "
 "control."
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:281
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:280
 #, fuzzy
 msgid "This is one of the entrances to the dwarven caves."
 msgstr "Dit lijkt op de ingang naar de grotten van de Dwergen."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:286
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:285
 msgid "Aaaaah! Trolls! The caves are infested with trolls!"
 msgstr "Aaaaah! Trollen! De grotten zitten vol Trollen!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:300
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:299
 msgid "YES! We did it! We are free!"
 msgstr "JA! Het is gelukt! We zijn vrij!"
 
 #. [unit]: type=Orcish Grunt, id=Khrulg
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:310
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:309
 msgid "Khrulg"
 msgstr "Khrulg"
 
 #. [message]: speaker=Khrulg
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:318
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:317
 #, fuzzy
 msgid ""
 "Garrugch failed in mission, but Al'tar dead by peasant slaves. Better tell "
@@ -518,12 +508,12 @@ msgstr ""
 "meester."
 
 #. [message]: speaker=Khrulg
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:322
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:321
 msgid "Master needs more meat for wolves. Peasants good meat."
 msgstr "Meester wil meer vlees voor wolven. Boeren goed vlees."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:345
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:344
 #, fuzzy
 msgid ""
 "I die now, you orcish scum, but I die free! More will come after me. We will "
@@ -531,38 +521,38 @@ msgid ""
 msgstr "Ik sterf nu Orks tuig, maar als een vrij man!"
 
 #. [message]: speaker=Al'Tar
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:355
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:354
 msgid "Pahh! Grunts, put the rest of those peasant rabble back in chains."
 msgstr "Pff! Grunts neem de rest van die boeren geketent mee."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:370
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:369
 msgid "What the... *gurgle* Hey! Look... a slave... uprising!"
 msgstr "Wel alle... *gorgel* Hey! Kijk... een slaaf... opstand!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:374
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:373
 msgid " *STAB*"
 msgstr "*STEEK*"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:378
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:377
 msgid "Ugh!"
 msgstr "Ugh!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:388
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:387
 #, fuzzy
 msgid "Not a very bright one, was he?"
 msgstr "Niet een heldere geest, of wel?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:400
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:399
 msgid "No! I have failed in my mission!"
 msgstr "Nee! Ik heb gefaald in mijn missie!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:410
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:409
 msgid "Mission? What mission?"
 msgstr "Missie? Welke missie?"
 
@@ -700,7 +690,7 @@ msgstr "Krog"
 #: data/campaigns/Northern_Rebirth/scenarios/03_To_The_Mines.cfg:95
 #: data/campaigns/Northern_Rebirth/scenarios/03_To_The_Mines.cfg:140
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:241
-#: data/campaigns/Northern_Rebirth/utils/utils.cfg:72
+#: data/campaigns/Northern_Rebirth/utils/utils.cfg:71
 msgid "Hamel"
 msgstr "Hamel"
 
@@ -2021,7 +2011,7 @@ msgstr "Succes mijn vriend."
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:401
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:609
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:669
-#: data/campaigns/Northern_Rebirth/utils/utils.cfg:84
+#: data/campaigns/Northern_Rebirth/utils/utils.cfg:83
 #, fuzzy
 msgid "Father Morvin"
 msgstr "Vader Marcus"
@@ -4773,7 +4763,7 @@ msgstr ""
 #. [side]: type=Dwarvish Lord, id=Stalrag
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:215
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:225
-#: data/campaigns/Northern_Rebirth/utils/utils.cfg:88
+#: data/campaigns/Northern_Rebirth/utils/utils.cfg:87
 msgid "Stalrag"
 msgstr "Stalrag"
 
@@ -9693,10 +9683,16 @@ msgstr ""
 msgid "He was stark raving mad, but I am sure going to miss him."
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/utils/utils.cfg:80
+#: data/campaigns/Northern_Rebirth/utils/utils.cfg:79
 #, fuzzy
 msgid "Arthian"
 msgstr "Ro'Arthian"
+
+#~ msgid "Music"
+#~ msgstr "Muziek"
+
+#~ msgid "Translators"
+#~ msgstr "Vertalers"
 
 #~ msgid "Sam"
 #~ msgstr "Sam"

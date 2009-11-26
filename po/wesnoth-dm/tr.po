@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-dm\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-11-03 01:52+0100\n"
+"POT-Creation-Date: 2009-11-26 15:38+0100\n"
 "PO-Revision-Date: 2009-05-29 16:19+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
@@ -20,7 +20,7 @@ msgstr ""
 #. [campaign]: id=Delfadors_Memoirs
 #. [editor_group]: id=dm
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:25
-#: data/campaigns/Delfadors_Memoirs/_main.cfg:126
+#: data/campaigns/Delfadors_Memoirs/_main.cfg:99
 msgid "Delfador's Memoirs"
 msgstr "Delfador’un Biyografisi"
 
@@ -86,12 +86,6 @@ msgstr "Çizgeler"
 
 #. [about]
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:85
-#, fuzzy
-msgid "Translations"
-msgstr "Çeviriler:"
-
-#. [about]
-#: data/campaigns/Delfadors_Memoirs/_main.cfg:112
 #, fuzzy
 msgid "Additional thanks to"
 msgstr "Ayrıca müteşşekkir olduklarım:"
@@ -399,7 +393,7 @@ msgstr "Grogor-Tuk'u yen"
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_houses_of_the_dead.cfg:290
 #: data/campaigns/Delfadors_Memoirs/scenarios/10_the_gate_between_worlds.cfg:61
 #: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:113
-#: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:233
+#: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:232
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_terror_at_the_ford_of_parthyn.cfg:35
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_terror_at_the_ford_of_parthyn.cfg:60
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_terror_at_the_ford_of_parthyn.cfg:659
@@ -424,7 +418,7 @@ msgstr "Delfador'un ölümü"
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_houses_of_the_dead.cfg:294
 #: data/campaigns/Delfadors_Memoirs/scenarios/10_the_gate_between_worlds.cfg:65
 #: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:117
-#: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:241
+#: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:240
 #: data/campaigns/Delfadors_Memoirs/scenarios/17_a_new_ally.cfg:120
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_the_portal_of_doom.cfg:158
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_the_portal_of_doom.cfg:297
@@ -540,7 +534,7 @@ msgstr "Miryen Kalesi"
 
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:82
-#: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:229
+#: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:228
 msgid "Defeat enemy leader"
 msgstr "Düşman liderini yen"
 
@@ -1884,12 +1878,12 @@ msgid "Find Delfador shelter before he freezes to death"
 msgstr "Delfador soğuktan donmadan ona bir sığınak bul"
 
 #. [message]: speaker=unit
-#: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:148
+#: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:147
 msgid "What are you doing in our forests, stranger?"
 msgstr "Ormanımızda ne arıyorsun, yabancı?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:152
+#: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:151
 msgid ""
 "It's a long story... but I wonder whether I might first ask for your "
 "hospitality? I'm lost, and freezing to death here!"
@@ -1898,7 +1892,7 @@ msgstr ""
 "isterim. Ben kayboldum ve soğuktan donmak üzereyim!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:156
+#: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:155
 msgid ""
 "I suppose there can be little harm in one half-frozen human... Our nearest "
 "post is to the northeast; I'll lead you there. But we must not tarry! There "
@@ -1909,17 +1903,17 @@ msgstr ""
 "ölümcül düşmanlar var, etrafımızda."
 
 #. [message]: speaker=Chantal
-#: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:175
+#: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:174
 msgid "Welcome, Delfador!"
 msgstr "Hoş Geldin, Delfador!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:180
+#: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:179
 msgid "Er, hello... you know my name, then...?"
 msgstr "Eh, merhaba... ismimi nereden biliyorsunuz?"
 
 #. [message]: speaker=Chantal
-#: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:184
+#: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:183
 msgid ""
 "Yes. I am Chantal, and I know many things. I know you come from the great "
 "human kingdom of the south, and are a master of magic. You have faced great "
@@ -1934,7 +1928,7 @@ msgstr ""
 "bir cilvesi olarak bizim yardımımıza hak kazandınız."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:188
+#: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:187
 msgid ""
 "Oh... well... very nice of you, but I don't feel very fated. In fact, I've "
 "been positively blundering! I was just trying to defend my master Methor's "
@@ -1947,7 +1941,7 @@ msgstr ""
 "ikisinde de başarılı olamadım."
 
 #. [message]: speaker=Chantal
-#: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:192
+#: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:191
 msgid ""
 "But you have not failed. The southlands have not yet fallen to the orcish "
 "army, and have you not learned more about the undead than any man alive? It "
@@ -1962,17 +1956,17 @@ msgstr ""
 "korkuyor."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:196
+#: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:195
 msgid "You mean Iliah-Malal?"
 msgstr "İhlah-Malal'dan mı bahsediyorsunuz?"
 
 #. [message]: speaker=Chantal
-#: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:200
+#: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:199
 msgid "Yes, that is who I mean."
 msgstr "Evet, ondan bahsediyorum."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:204
+#: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:203
 msgid ""
 "If I might ask, where am I? And what of Lionel, and King Garard? What has "
 "befallen them?"
@@ -1981,7 +1975,7 @@ msgstr ""
 "geldiğini biliyor musunuz? "
 
 #. [message]: speaker=Chantal
-#: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:208
+#: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:207
 msgid ""
 "You are among the North Elves, in the Lintanir Forest. Our arts hold back "
 "the winter cold within these woods. To the south and west of here lies a "
@@ -1994,7 +1988,7 @@ msgstr ""
 "güneyde büyük nehir ve sizin ülkeniz var. Dostlarınız hakkında bilgim yok."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:212
+#: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:211
 msgid ""
 "I am deeply grateful for your aid, Chantal. I see now what I must do... I "
 "have lost Iliah-Malal, but I must at least try to report back to the King or "
@@ -2005,7 +1999,7 @@ msgstr ""
 "Leolin'e durumu rapor etmem lazım. Hemen güneye gitmeliyim!"
 
 #. [message]: speaker=Chantal
-#: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:216
+#: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:215
 msgid ""
 "It will not be easy. The orcish army lies between here and your destination. "
 "We are under attack even here, by an orcish warband encamped in the "
@@ -2016,7 +2010,7 @@ msgstr ""
 "saldırısı altındayız."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:220
+#: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:219
 msgid ""
 "Attacked by orcs? Then I might perhaps help you to defeat them, and repay "
 "your assistance and kindness!"
@@ -2025,7 +2019,7 @@ msgstr ""
 "borcumu bir nebze olsun azaltmış olurum!"
 
 #. [objective]: condition=lose
-#: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:237
+#: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:236
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_terror_at_the_ford_of_parthyn.cfg:39
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_terror_at_the_ford_of_parthyn.cfg:64
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_terror_at_the_ford_of_parthyn.cfg:663
@@ -2040,7 +2034,7 @@ msgid "Death of Chantal"
 msgstr "Çantal'ın ölümü"
 
 #. [message]: speaker=Chantal
-#: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:256
+#: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:255
 msgid ""
 "With your help, Delfador, we have overrun the orcish warlord of this area, "
 "and our forests are secure. Secure enough that I can even join you in your "
@@ -3390,10 +3384,10 @@ msgstr ""
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:61
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:70
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:78
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:94
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:106
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:118
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:130
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:93
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:105
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:117
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:129
 #, fuzzy
 msgid "King Garard"
 msgstr "Garard"
@@ -3416,9 +3410,9 @@ msgstr ""
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:28
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:44
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:52
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:102
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:110
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:122
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:101
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:109
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:121
 #: data/campaigns/Delfadors_Memoirs/utils/characters.cfg:23
 msgid "Delfador"
 msgstr "Delfador"
@@ -3441,9 +3435,9 @@ msgstr ""
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:66
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:74
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:82
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:98
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:114
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:126
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:97
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:113
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:125
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_showdown_in_the_northern_swamp.cfg:55
 #: data/campaigns/Delfadors_Memoirs/utils/characters.cfg:70
 msgid "Lionel"
@@ -3626,7 +3620,7 @@ msgstr ""
 "Emredersiniz, majesteleri!"
 
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:90
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:89
 msgid ""
 "And so it was that the Wesnothian army left Weldyn to seek out and crush "
 "Iliah-Malal's forces. But the campaign proved a disaster. Less than a "
@@ -3641,7 +3635,7 @@ msgstr ""
 "kalmamıştı.."
 
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:94
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:93
 #, fuzzy
 msgid ""
 "This is a disaster. I should have led the army myself and died with them. "
@@ -3653,7 +3647,7 @@ msgstr ""
 "ölmeliydim. Seni dinlemeliydim, Delfador."
 
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:98
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:97
 #, fuzzy
 msgid "We will fight till the last man, my King."
 msgstr ""
@@ -3662,7 +3656,7 @@ msgstr ""
 "Kralım, son adamımıza kadar döğüşeceğiz."
 
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:102
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:101
 #, fuzzy
 msgid ""
 "My Lord, things are very grave indeed, but all is not yet lost. There is "
@@ -3674,7 +3668,7 @@ msgstr ""
 "yine yetmez. Eğer tereddüte düşmezsek hala bir umut var."
 
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:106
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:105
 #, fuzzy
 msgid "Yes, Delfador. This time we will follow your advice."
 msgstr ""
@@ -3683,7 +3677,7 @@ msgstr ""
 "Evet, Delfador. Artık senin önerilerini dinlememizin vakti geldi."
 
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:110
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:109
 #, fuzzy
 msgid ""
 "There are three things we must do. First, we must organize our defenses as "
@@ -3704,7 +3698,7 @@ msgstr ""
 "öğrenmek için kendimi eğitmeliyim."
 
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:114
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:113
 #, fuzzy
 msgid "My Lord, I can arrange the defenses around the city."
 msgstr ""
@@ -3713,7 +3707,7 @@ msgstr ""
 "Majesteleri, şehrin savunmasını ben üstlenebilirim."
 
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:118
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:117
 #, fuzzy
 msgid "Very well, Lionel, take command."
 msgstr ""
@@ -3722,7 +3716,7 @@ msgstr ""
 "Çok iyi, Lionel, komuta sende."
 
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:122
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:121
 #, fuzzy
 msgid ""
 "These are only the first steps. If we are to defeat the undead, we need to "
@@ -3738,7 +3732,7 @@ msgstr ""
 "çağırmalı ve çok daha fazla ağır piyade eğitmeliyiz."
 
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:126
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:125
 #, fuzzy
 msgid ""
 "But heavy infantry is too slow! And mages in the army? Who can command these "
@@ -3750,7 +3744,7 @@ msgstr ""
 "onlara kim komuta edecek?"
 
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:130
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:129
 #, fuzzy
 msgid ""
 "Delfador could. You will command the heavy infantry. Make sure to shield the "
@@ -5156,6 +5150,10 @@ msgstr "Droni"
 #: data/campaigns/Delfadors_Memoirs/utils/sides.cfg:285
 msgid "Artor"
 msgstr "Artor"
+
+#, fuzzy
+#~ msgid "Translations"
+#~ msgstr "Çeviriler:"
 
 #~ msgid "Crown Prince of Wesnoth"
 #~ msgstr "Wesnoth Veliaht Prensi"
