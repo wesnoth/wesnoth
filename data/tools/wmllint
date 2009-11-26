@@ -1790,6 +1790,7 @@ def inner_spellcheck(nav, value, spelldict):
     value = string_strip(value)
     # Discard extraneous stuff 
     value = value.replace("...", " ")
+    value = value.replace("\xe2\x80\xa6", " ")	# UTF-8 ellipsis
     value = value.replace("''", "")
     value = value.replace("female^", " ")
     value = value.replace("male^", " ")
