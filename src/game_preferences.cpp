@@ -873,19 +873,19 @@ void encounter_start_units(unit_map& units){
 void encounter_recallable_units(std::vector<team>& teams){
 	for (std::vector<team>::iterator help_team_it = teams.begin();
 		help_team_it != teams.end(); ++help_team_it) {
-		for(std::vector<unit>::iterator help_recall_it = help_team_it->recall_list().begin(); help_recall_it != help_team_it->recall_list().end(); help_recall_it++) {
+		for(std::vector<unit>::iterator help_recall_it = help_team_it->recall_list().begin(); help_recall_it != help_team_it->recall_list().end(); ++help_recall_it) {
 			encountered_units_set.insert(help_recall_it->type_id());
 		}
 	}
 }
 
 void encounter_map_terrain(gamemap& map){
-	for (int map_x = 0; map_x < map.w(); map_x++) {
-		for (int map_y = 0; map_y < map.h(); map_y++) {
+	for (int map_x = 0; map_x < map.w(); ++map_x) {
+		for (int map_y = 0; map_y < map.h(); ++map_y) {
 			const t_translation::t_terrain t = map.get_terrain(map_location(map_x, map_y));
 			preferences::encountered_terrains().insert(t);
 			const t_translation::t_list& underlaying_list = map.underlying_union_terrain(map_location(map_x, map_y));
-			for (std::vector<t_translation::t_terrain>::const_iterator ut = underlaying_list.begin(); ut != underlaying_list.end(); ut++) {
+			for (std::vector<t_translation::t_terrain>::const_iterator ut = underlaying_list.begin(); ut != underlaying_list.end(); ++ut) {
 				preferences::encountered_terrains().insert(*ut);
 			};
 		}
