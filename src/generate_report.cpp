@@ -412,7 +412,7 @@ report generate_report(TYPE type,
 		if (current_team.uses_shroud()) {
 			int unshrouded_villages = 0;
 			std::vector<map_location>::const_iterator i = map.villages().begin();
-			for (; i != map.villages().end(); i++) {
+			for (; i != map.villages().end(); ++i) {
 				if (!current_team.shrouded(*i))
 					unshrouded_villages++;
 			}
