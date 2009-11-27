@@ -855,7 +855,7 @@ bool confirm_no_moves()
 
 void encounter_recruitable_units(std::vector<team>& teams){
 	for (std::vector<team>::iterator help_team_it = teams.begin();
-		help_team_it != teams.end(); help_team_it++) {
+		help_team_it != teams.end(); ++help_team_it) {
 		help_team_it->log_recruitable();
 		std::copy(help_team_it->recruits().begin(), help_team_it->recruits().end(),
 				  std::inserter(encountered_units_set, encountered_units_set.begin()));
@@ -864,7 +864,7 @@ void encounter_recruitable_units(std::vector<team>& teams){
 
 void encounter_start_units(unit_map& units){
 	for (unit_map::const_iterator help_unit_it = units.begin();
-		 help_unit_it != units.end(); help_unit_it++) {
+		 help_unit_it != units.end(); ++help_unit_it) {
 		const std::string name = help_unit_it->second.type_id();
 		encountered_units_set.insert(name);
 	}
@@ -872,7 +872,7 @@ void encounter_start_units(unit_map& units){
 
 void encounter_recallable_units(std::vector<team>& teams){
 	for (std::vector<team>::iterator help_team_it = teams.begin();
-		help_team_it != teams.end(); help_team_it++) {
+		help_team_it != teams.end(); ++help_team_it) {
 		for(std::vector<unit>::iterator help_recall_it = help_team_it->recall_list().begin(); help_recall_it != help_team_it->recall_list().end(); help_recall_it++) {
 			encountered_units_set.insert(help_recall_it->type_id());
 		}
