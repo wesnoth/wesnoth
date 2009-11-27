@@ -140,7 +140,7 @@ const std::deque<debug_info>& formula_debugger::get_execution_trace() const
 
 void formula_debugger::check_breakpoints()
 {
-	for( std::deque< breakpoint_ptr >::iterator b = breakpoints_.begin(); b!= breakpoints_.end(); b++) {
+	for( std::deque< breakpoint_ptr >::iterator b = breakpoints_.begin(); b!= breakpoints_.end(); ++b) {
 		if ((*b)->is_break_now()){
 			current_breakpoint_ = (*b);
 			show_gui();
