@@ -25,11 +25,9 @@
 #include <vector>
 
 
-class team;
 class unit;
 class unit_ability_list;
 class unit_map;
-class unit_type;
 class unit_type_data;
 
 
