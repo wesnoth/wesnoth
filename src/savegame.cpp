@@ -291,7 +291,7 @@ void manager::clean_saves(const std::string &label)
 	std::vector<save_info> games = get_saves_list();
 	std::string prefix = label + "-" + _("Auto-Save");
 	std::cerr << "Cleaning saves with prefix '" << prefix << "'\n";
-	for (std::vector<save_info>::iterator i = games.begin(); i != games.end(); i++) {
+	for (std::vector<save_info>::iterator i = games.begin(); i != games.end(); ++i) {
 		if (i->name.compare(0, prefix.length(), prefix) == 0) {
 			std::cerr << "Deleting savegame '" << i->name << "'\n";
 			delete_game(i->name);
