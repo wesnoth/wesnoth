@@ -195,7 +195,7 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 
 	std::vector<std::string> hits_str = utils::split(cfg["hits"]);
 	std::vector<std::string>::iterator hit;
-	for(hit=hits_str.begin() ; hit != hits_str.end() ; hit++) {
+	for(hit=hits_str.begin() ; hit != hits_str.end() ; ++hit) {
 		if(*hit == "yes" || *hit == "hit") {
 			hits_.push_back(HIT);
 		}
