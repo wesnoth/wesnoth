@@ -58,6 +58,7 @@ class map_labels;
 #include <boost/function.hpp>
 #include <boost/scoped_ptr.hpp>
 
+class gamemap;
 
 class display
 {

@@ -22,6 +22,8 @@
 #include <cassert>
 #include <boost/static_assert.hpp>
 
+#include <map>
+
 class unit;
 
 // unit_map is used primarily as a map<location, unit>, but we need to be able to move a unit

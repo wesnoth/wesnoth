@@ -18,12 +18,8 @@
 #define MAP_LOCATION_H_INCLUDED
 
 class config;
-class gamemap;
 class variable_set;
 
-#include "terrain.hpp"
-
-#include <iosfwd>
 #include <string>
 #include <vector>
 

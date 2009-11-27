@@ -25,6 +25,7 @@
 #include <vector>
 
 
+class gamemap;
 class unit;
 class unit_ability_list;
 class unit_map;

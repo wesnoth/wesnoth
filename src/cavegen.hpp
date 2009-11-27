@@ -19,6 +19,7 @@
 
 #include "config.hpp"
 #include "mapgen.hpp"
+#include "terrain_translation.hpp"
 
 #include <set>
 

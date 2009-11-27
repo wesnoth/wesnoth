@@ -28,6 +28,7 @@
 #include <set>
 
 class config;
+class gamemap;
 
 /**
  * The class terrain_builder is constructed from a config object, and a

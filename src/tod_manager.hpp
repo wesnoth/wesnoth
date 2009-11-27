@@ -23,6 +23,7 @@
 #include <vector>
 
 class game_state;
+class gamemap;
 class unit_map;
 
 //time of day and turn functionality

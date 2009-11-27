@@ -17,6 +17,7 @@
 
 #include "map_location.hpp"
 #include "sdl_utils.hpp"
+#include "terrain_translation.hpp"
 
 #include "SDL.h"
 #include "cassert"
