@@ -1090,7 +1090,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 	std::map<t_string, std::set<std::string> > special_units;
 
 	for(unit_type_data::unit_type_map::const_iterator i = unit_type_data::types().begin();
-	    i != unit_type_data::types().end(); i++) {
+	    i != unit_type_data::types().end(); ++i) {
 		const unit_type &type = (*i).second;
 		// Only show the weapon special if we find it on a unit that
 		// detailed description should be shown about.
@@ -1099,7 +1099,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 
 		std::vector<attack_type> attacks = type.attacks();
 		for (std::vector<attack_type>::const_iterator it = attacks.begin();
-					it != attacks.end(); it++) {
+					it != attacks.end(); ++it) {
 
 			std::vector<t_string> specials = (*it).special_tooltips(true);
 			for (std::vector<t_string>::iterator sp_it = specials.begin();
@@ -1129,14 +1129,14 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 	}
 
 	for (std::map<t_string, std::string>::iterator s = special_description.begin();
-			s != special_description.end(); s++) {
+			s != special_description.end(); ++s) {
 		// use untranslated name to have universal topic id
 		std::string id = "weaponspecial_" + s->first.base_str();
 		std::stringstream text;
 		text << s->second;
 		text << "\n\n" << _("<header>text='Units having this special attack'</header>") << "\n";
 		std::set<std::string>& units = special_units[s->first];
-		for (std::set<std::string>::iterator u = units.begin(); u != units.end();u++) {
+		for (std::set<std::string>::iterator u = units.begin(); u != units.end();++u) {
 			text << (*u) << "\n";
 		}
 
@@ -1205,14 +1205,14 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 		}
 	}
 
-	for (std::map<t_string, std::string>::iterator a = ability_description.begin(); a != ability_description.end(); a++) {
+	for (std::map<t_string, std::string>::iterator a = ability_description.begin(); a != ability_description.end(); ++a) {
 		// we generate topic's id using the untranslated version of the ability's name
 		std::string id = "ability_" + a->first.base_str();
 		std::stringstream text;
 		text << a->second;  //description
 		text << "\n\n" << _("<header>text='Units having this ability'</header>") << "\n";
 		std::set<std::string>& units = ability_units[a->first];
-		for (std::set<std::string>::iterator u = units.begin(); u != units.end();u++) {
+		for (std::set<std::string>::iterator u = units.begin(); u != units.end();++u) {
 			text << (*u) << "\n";
 		}
 
@@ -1486,7 +1486,7 @@ public:
 				{
 					std::string lang_special = "";
 					std::vector<t_string>::iterator sp_it;
-					for (sp_it = specials.begin(); sp_it != specials.end(); sp_it++) {
+					for (sp_it = specials.begin(); sp_it != specials.end(); ++sp_it) {
 						const std::string ref_id = std::string("weaponspecial_")
 							+ sp_it->base_str();
 						lang_special = (*sp_it);
@@ -1496,7 +1496,7 @@ public:
 						{
 							attack_ss << ", "; //comma placed before next special
 						}
-						sp_it++; //skip description
+						++sp_it; //skip description
 					}
 					row.push_back(std::make_pair(attack_ss.str(),
 						font::line_width(lang_special, normal_font_size)));
@@ -1561,7 +1561,7 @@ public:
 				preferences::encountered_terrains().begin();
 
 			for (; terrain_it != preferences::encountered_terrains().end();
-				terrain_it++) {
+				++terrain_it) {
 				const t_translation::t_terrain terrain = *terrain_it;
 				if (terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || terrain == t_translation::OFF_MAP_USER)
 					continue;
@@ -1676,7 +1676,7 @@ void generate_races_sections(const config *help_cfg, section &sec, int level)
 	std::set<std::string> visible_races;
 
 	for(unit_type_data::unit_type_map::const_iterator i = unit_type_data::types().begin();
-	    i != unit_type_data::types().end(); i++) {
+	    i != unit_type_data::types().end(); ++i) {
 		const unit_type &type = (*i).second;
 		UNIT_DESCRIPTION_TYPE desc_type = description_type(type);
 		if (desc_type == FULL_DESCRIPTION) {
@@ -1688,7 +1688,7 @@ void generate_races_sections(const config *help_cfg, section &sec, int level)
 
 	std::stringstream text;
 
-	for(std::set<std::string>::iterator it = races.begin(); it != races.end(); it++) {
+	for(std::set<std::string>::iterator it = races.begin(); it != races.end(); ++it) {
 		section race_section;
 		config section_cfg;
 
@@ -1719,7 +1719,7 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 	std::set<std::string> race_units;
 
 	for(unit_type_data::unit_type_map::const_iterator i = unit_type_data::types().begin();
-	    i != unit_type_data::types().end(); i++) {
+	    i != unit_type_data::types().end(); ++i) {
 		const unit_type &type = (*i).second;
 
 		if (type.race() != race)
@@ -1759,7 +1759,7 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 	std::stringstream text;
 	text << race_description;
 	text << "\n\n" << _("<header>text='Units of this race'</header>") << "\n";
-	for (std::set<std::string>::iterator u = race_units.begin(); u != race_units.end();u++) {
+	for (std::set<std::string>::iterator u = race_units.begin(); u != race_units.end();++u) {
 		text << (*u) << "\n";
 	}
 	topics.push_back(topic(race_name, race_id, text.str()) );
@@ -1810,7 +1810,7 @@ std::string generate_contents_links(const std::string& section_name, config cons
 
 		std::vector<std::string>::iterator t;
 		// Find all topics in this section.
-		for (t = topics.begin(); t != topics.end(); t++) {
+		for (t = topics.begin(); t != topics.end(); ++t) {
 			if (config const &topic_cfg = help_cfg->find_child("topic", "id", *t)) {
 				std::string id = topic_cfg["id"];
 				if (is_visible_id(id))
@@ -1823,7 +1823,7 @@ std::string generate_contents_links(const std::string& section_name, config cons
 		}
 
 		std::vector<link>::iterator l;
-		for (l = topics_links.begin(); l != topics_links.end(); l++) {
+		for (l = topics_links.begin(); l != topics_links.end(); ++l) {
 			std::string link =  "<ref>text='" + escape(l->first) + "' dst='" + escape(l->second) + "'</ref>";
 			res << link <<"\n";
 		}
@@ -1836,7 +1836,7 @@ std::string generate_contents_links(const section &sec, const std::vector<topic>
 		std::stringstream res;
 
 		section_list::const_iterator s;
-		for (s = sec.sections.begin(); s != sec.sections.end(); s++) {
+		for (s = sec.sections.begin(); s != sec.sections.end(); ++s) {
 			if (is_visible_id((*s)->id)) {
 				std::string link =  "<ref>text='" + escape((*s)->title) + "' dst='.." + escape((*s)->id) + "'</ref>";
 				res << link <<"\n";
@@ -1844,7 +1844,7 @@ std::string generate_contents_links(const section &sec, const std::vector<topic>
 		}
 
 		std::vector<topic>::const_iterator t;
-		for (t = topics.begin(); t != topics.end(); t++) {
+		for (t = topics.begin(); t != topics.end(); ++t) {
 			if (is_visible_id(t->id)) {
 				std::string link =  "<ref>text='" + escape(t->title) + "' dst='" + escape(t->id) + "'</ref>";
 				res << link <<"\n";
@@ -1957,7 +1957,7 @@ void help_menu::update_visible_items(const section &sec, unsigned level)
 		visible_items_.clear();
 	}
 	section_list::const_iterator sec_it;
-	for (sec_it = sec.sections.begin(); sec_it != sec.sections.end(); sec_it++) {
+	for (sec_it = sec.sections.begin(); sec_it != sec.sections.end(); ++sec_it) {
 		if (is_visible_id((*sec_it)->id)) {
 			const std::string vis_string = get_string_to_show(*(*sec_it), level + 1);
 			visible_items_.push_back(visible_item(*sec_it, vis_string));
@@ -1967,7 +1967,7 @@ void help_menu::update_visible_items(const section &sec, unsigned level)
 		}
 	}
 	topic_list::const_iterator topic_it;
-	for (topic_it = sec.topics.begin(); topic_it != sec.topics.end(); topic_it++) {
+	for (topic_it = sec.topics.begin(); topic_it != sec.topics.end(); ++topic_it) {
 		if (is_visible_id(topic_it->id)) {
 			const std::string vis_string = get_string_to_show(*topic_it, level + 1);
 			visible_items_.push_back(visible_item(&(*topic_it), vis_string));
@@ -1977,7 +1977,7 @@ void help_menu::update_visible_items(const section &sec, unsigned level)
 
 std::string help_menu::indented_icon(const std::string& icon, const unsigned level) {
 	std::stringstream to_show;
-	for (unsigned i = 1; i < level; i++) 	{
+	for (unsigned i = 1; i < level; ++i) 	{
 		to_show << IMAGE_PREFIX << indentation_img << IMG_TEXT_SEPARATOR;
 	}
 
@@ -2013,7 +2013,7 @@ bool help_menu::select_topic_internal(const topic &t, const section &sec)
 		return true;
 	}
 	section_list::const_iterator sit;
-	for (sit = sec.sections.begin(); sit != sec.sections.end(); sit++) {
+	for (sit = sec.sections.begin(); sit != sec.sections.end(); ++sit) {
 		if (select_topic_internal(t, *(*sit))) {
 			expand(sec);
 			return true;
@@ -2031,7 +2031,7 @@ void help_menu::select_topic(const topic &t)
 	if (select_topic_internal(t, toplevel_)) {
 		update_visible_items(toplevel_);
 		for (std::vector<visible_item>::const_iterator it = visible_items_.begin();
-			 it != visible_items_.end(); it++) {
+			 it != visible_items_.end(); ++it) {
 			if (*it == t) {
 				selected_item_ = *it;
 				break;
@@ -2203,7 +2203,7 @@ void help_text_area::set_items()
 	// Parse and add the text.
 	std::vector<std::string> const &parsed_items = shown_topic_->text.parsed_text();
 	std::vector<std::string>::const_iterator it;
-	for (it = parsed_items.begin(); it != parsed_items.end(); it++) {
+	for (it = parsed_items.begin(); it != parsed_items.end(); ++it) {
 		if (*it != "" && (*it)[0] == '[') {
 			// Should be parsed as WML.
 			try {
@@ -2509,7 +2509,7 @@ void help_text_area::add_img_item(const std::string& path, const std::string& al
 int help_text_area::get_y_for_floating_img(const int width, const int x, const int desired_y)
 {
 	int min_y = desired_y;
-	for (std::list<item>::const_iterator it = items_.begin(); it != items_.end(); it++) {
+	for (std::list<item>::const_iterator it = items_.begin(); it != items_.end(); ++it) {
 		const item& itm = *it;
 		if (itm.floating) {
 			if ((itm.rect.x + itm.rect.w > x && itm.rect.x < x + width)
@@ -2524,7 +2524,7 @@ int help_text_area::get_y_for_floating_img(const int width, const int x, const i
 int help_text_area::get_min_x(const int y, const int height)
 {
 	int min_x = 0;
-	for (std::list<item>::const_iterator it = items_.begin(); it != items_.end(); it++) {
+	for (std::list<item>::const_iterator it = items_.begin(); it != items_.end(); ++it) {
 		const item& itm = *it;
 		if (itm.floating) {
 			if (itm.rect.y < y + height && itm.rect.y + itm.rect.h > y && itm.align == LEFT) {
@@ -2539,7 +2539,7 @@ int help_text_area::get_max_x(const int y, const int height)
 {
 	int text_width = inner_location().w;
 	int max_x = text_width;
-	for (std::list<item>::const_iterator it = items_.begin(); it != items_.end(); it++) {
+	for (std::list<item>::const_iterator it = items_.begin(); it != items_.end(); ++it) {
 		const item& itm = *it;
 		if (itm.floating) {
 			if (itm.rect.y < y + height && itm.rect.y + itm.rect.h > y) {
@@ -2600,7 +2600,7 @@ void help_text_area::down_one_line()
 
 void help_text_area::adjust_last_row()
 {
-	for (std::list<item *>::iterator it = last_row_.begin(); it != last_row_.end(); it++) {
+	for (std::list<item *>::iterator it = last_row_.begin(); it != last_row_.end(); ++it) {
 		item &itm = *(*it);
 		const int gap = curr_row_height_ - itm.rect.h;
 		itm.rect.y += gap / 2;
@@ -2626,11 +2626,11 @@ void help_text_area::draw_contents()
 			dst.x += loc.x;
 			dst.y += loc.y;
 			if (it->box) {
-				for (int i = 0; i < box_width; i++) {
+				for (int i = 0; i < box_width; ++i) {
 					draw_rectangle(dst.x, dst.y, it->rect.w - i * 2, it->rect.h - i * 2,
 					                    0, screen);
-					dst.x++;
-					dst.y++;
+					++dst.x;
+					++dst.y;
 				}
 			}
 			SDL_BlitSurface(it->surf, NULL, screen, &dst);
@@ -2832,7 +2832,7 @@ const topic *find_topic(const section &sec, const std::string &id)
 		return &(*tit);
 	}
 	section_list::const_iterator sit;
-	for (sit = sec.sections.begin(); sit != sec.sections.end(); sit++) {
+	for (sit = sec.sections.begin(); sit != sec.sections.end(); ++sit) {
 		const topic *t = find_topic(*(*sit), id);
 		if (t != NULL) {
 			return t;
@@ -2848,7 +2848,7 @@ const section *find_section(const section &sec, const std::string &id)
 	if (sit != sec.sections.end()) {
 		return *sit;
 	}
-	for (sit = sec.sections.begin(); sit != sec.sections.end(); sit++) {
+	for (sit = sec.sections.begin(); sit != sec.sections.end(); ++sit) {
 		const section *s = find_section(*(*sit), id);
 		if (s != NULL) {
 			return s;
@@ -2899,7 +2899,7 @@ std::vector<std::string> parse_text(const std::string &text)
 	std::stringstream ss;
 	size_t pos;
 	enum { ELEMENT_NAME, OTHER } state = OTHER;
-	for (pos = 0; pos < text.size(); pos++) {
+	for (pos = 0; pos < text.size(); ++pos) {
 		const char c = text[pos];
 		if (c == escape_char && !last_char_escape) {
 			last_char_escape = true;
@@ -2975,7 +2975,7 @@ std::string convert_to_wml(const std::string &element_name, const std::string &c
 	// No checks are made for the equal sign or something like that.
 	// Attributes are just separated by spaces or newlines.
 	// Attributes that contain spaces must be in single quotes.
-	for (size_t pos = 0; pos < contents.size(); pos++) {
+	for (size_t pos = 0; pos < contents.size(); ++pos) {
 		const char c = contents[pos];
 		if (c == escape_char && !last_char_escape) {
 			last_char_escape = true;
@@ -3008,7 +3008,7 @@ std::string convert_to_wml(const std::string &element_name, const std::string &c
 	// Create the WML.
 	ss << "[" << element_name << "]\n";
 	for (std::vector<std::string>::const_iterator it = attributes.begin();
-		 it != attributes.end(); it++) {
+		 it != attributes.end(); ++it) {
 		ss << *it << "\n";
 	}
 	ss << "[/" << element_name << "]\n";
@@ -3202,7 +3202,7 @@ void show_help(display &disp, const section &toplevel_sec,
 				return;
 			}
 			for (std::vector<gui::button*>::iterator button_it = buttons_ptr.begin();
-				 button_it != buttons_ptr.end(); button_it++) {
+				 button_it != buttons_ptr.end(); ++button_it) {
 				if ((*button_it)->pressed()) {
 					// There is only one button, close.
 					return;
