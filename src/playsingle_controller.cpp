@@ -704,7 +704,7 @@ void playsingle_controller::linger(upload_log& log)
 	gui_->redraw_everything();
 
 	// End all unit moves
-	for (unit_map::iterator u = units_.begin(); u != units_.end(); u++) {
+	for (unit_map::iterator u = units_.begin(); u != units_.end(); ++u) {
 		u->second.set_user_end_turn(true);
 	}
 	try {
