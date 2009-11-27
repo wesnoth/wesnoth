@@ -255,7 +255,7 @@ int unit_animation::matches(const game_display &disp,const map_location& loc,con
 			}
 		}
 		std::vector<config>::const_iterator myitor;
-		for(myitor = unit_filter_.begin(); myitor != unit_filter_.end(); myitor++) {
+		for(myitor = unit_filter_.begin(); myitor != unit_filter_.end(); ++myitor) {
 			if (!my_unit->matches_filter(vconfig(*myitor), loc)) return MATCH_FAIL;
 			result++;
 		}
@@ -264,7 +264,7 @@ int unit_animation::matches(const game_display &disp,const map_location& loc,con
 			for(unit=disp.get_const_units().begin() ; unit != disp.get_const_units().end() ; unit++) {
 				if(unit->first == second_loc) {
 					std::vector<config>::const_iterator second_itor;
-					for(second_itor = secondary_unit_filter_.begin(); second_itor != secondary_unit_filter_.end(); second_itor++) {
+					for(second_itor = secondary_unit_filter_.begin(); second_itor != secondary_unit_filter_.end(); ++second_itor) {
 						if (!unit->second.matches_filter(vconfig(*second_itor), second_loc)) return MATCH_FAIL;
 						result++;
 					}
