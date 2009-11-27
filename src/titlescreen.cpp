@@ -212,7 +212,7 @@ const config* get_tip_of_day(config& tips_of_day)
 		// test if one of the listed unit types is already encountered
 		// if if's a number, test if we have encountered more than this
 		for (std::vector<std::string>::const_iterator i = needed_units.begin();
-				i != needed_units.end(); i++) {
+				i != needed_units.end(); ++i) {
 			int needed_units_nb = lexical_cast_default<int>(*i,-1);
 			if (needed_units_nb !=-1) {
 				if (needed_units_nb <= static_cast<int>(seen_units.size())) {
