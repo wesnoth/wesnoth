@@ -17,6 +17,7 @@
 #include "foreach.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "serialization/string_utils.hpp"
 #include "terrain.hpp"
 
 #include <set>

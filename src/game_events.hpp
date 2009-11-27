@@ -18,6 +18,7 @@
 #include "config.hpp"
 #include "map.hpp"
 #include "map_location.hpp"
+#include "serialization/string_utils.hpp"
 #include "soundsource.hpp"
 #include "variable.hpp"
 #include "unit_map.hpp"

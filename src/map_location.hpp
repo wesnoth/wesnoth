@@ -19,6 +19,7 @@
 
 class config;
 class gamemap;
+class variable_set;
 
 #include "terrain.hpp"
 

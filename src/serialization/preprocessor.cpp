@@ -26,6 +26,7 @@
 #include "log.hpp"
 #include "wesconfig.h"
 #include "serialization/binary_or_text.hpp"
+#include "serialization/string_utils.hpp"
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)

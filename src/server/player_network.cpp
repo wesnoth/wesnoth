@@ -15,6 +15,7 @@
 
 #include "player_network.hpp"
 #include "../log.hpp"
+#include "serialization/string_utils.hpp"
 
 static lg::log_domain log_config("config");
 #define WRN_CONFIG LOG_STREAM(warn, log_config)

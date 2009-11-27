@@ -17,6 +17,7 @@
 #include "foreach.hpp"
 #include "game_preferences.hpp"
 #include "log.hpp"
+#include "serialization/string_utils.hpp"
 #include "sound.hpp"
 #include "sound_music_track.hpp"
 

@@ -44,6 +44,7 @@
 #include "network.hpp"
 #include "random.hpp"
 #include "rng.hpp"
+#include "serialization/string_utils.hpp"
 #include "simple_rng.hpp"
 
 static lg::log_domain log_random("random");

@@ -35,6 +35,7 @@
 
 #include <cerrno>
 #include <deque>
+#include <sstream>
 
 #ifdef HAVE_SENDFILE
 #include <sys/sendfile.h>

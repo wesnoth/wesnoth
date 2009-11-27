@@ -29,6 +29,7 @@
 #include "wesconfig.h"
 #include "serialization/preprocessor.hpp"
 #include "serialization/tokenizer.hpp"
+#include "serialization/string_utils.hpp"
 #include "foreach.hpp"
 
 #include <stack>

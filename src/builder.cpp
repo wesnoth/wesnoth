@@ -24,6 +24,7 @@
 #include "foreach.hpp"
 #include "log.hpp"
 #include "map.hpp"
+#include "serialization/string_utils.hpp"
 
 #include <climits>
 

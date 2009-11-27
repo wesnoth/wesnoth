@@ -29,6 +29,7 @@
 #include "image_function.hpp"
 #include "log.hpp"
 #include "gettext.hpp"
+#include "serialization/string_utils.hpp"
 
 #include "SDL_image.h"
 

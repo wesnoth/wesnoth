@@ -18,6 +18,7 @@
 
 #include "../foreach.hpp"
 #include "../pathutils.hpp"
+#include "serialization/string_utils.hpp"
 
 
 namespace editor {

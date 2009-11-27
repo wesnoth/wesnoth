@@ -17,6 +17,7 @@
 
 #include "../serialization/parser.hpp"
 #include "../serialization/binary_or_text.hpp"
+#include "../serialization/string_utils.hpp"
 #include "../filesystem.hpp"
 #include "../foreach.hpp"
 #include "../log.hpp"

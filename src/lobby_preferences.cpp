@@ -14,6 +14,7 @@
 
 #include "lobby_preferences.hpp"
 #include "game_preferences.hpp"
+#include "serialization/string_utils.hpp"
 
 namespace preferences {
 

@@ -15,6 +15,7 @@
 #include "sample_user_handler.hpp"
 
 #include "config.hpp"
+#include "serialization/string_utils.hpp"
 
 #include <iostream>
 

@@ -26,6 +26,7 @@
 #include "serialization/binary_or_text.hpp"
 #include "serialization/binary_wml.hpp"
 #include "serialization/parser.hpp"
+#include "serialization/string_utils.hpp"
 #include "game_config.hpp"
 #include "addon_checks.hpp"
 #include "version.hpp"

@@ -22,6 +22,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "network_worker.hpp"
+#include "serialization/string_utils.hpp"
 #include "thread.hpp"
 
 #include "filesystem.hpp"

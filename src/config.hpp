@@ -39,7 +39,6 @@
 
 #include "game_errors.hpp"
 #include "tstring.hpp"
-#include "serialization/string_utils.hpp"
 
 #include "shared_string.hpp"
 

@@ -19,8 +19,8 @@
 #include <string>
 #include <vector>
 
-#include "serialization/string_utils.hpp"
 #include "config.hpp"
+#include "serialization/string_utils.hpp"
 
 namespace rand_rng {
 	class simple_rng;

@@ -16,6 +16,7 @@
 #include "player_network.hpp"
 #include "room.hpp"
 #include "../log.hpp"
+#include "serialization/string_utils.hpp"
 
 static lg::log_domain log_server("server");
 #define ERR_ROOM LOG_STREAM(err, log_server)
