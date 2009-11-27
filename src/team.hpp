@@ -23,7 +23,6 @@
 #include "unit.hpp"
 
 class gamemap;
-struct time_of_day;
 
 #include <set>
 #include <string>
