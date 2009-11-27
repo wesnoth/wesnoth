@@ -22,6 +22,7 @@
 #include "game.hpp"
 #include "player_network.hpp"
 #include "serialization/string_utils.hpp"
+#include "util.hpp"
 
 #include <boost/bind.hpp>
 

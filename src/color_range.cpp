@@ -22,6 +22,7 @@
 #include "global.hpp"
 #include "map.hpp"
 #include "serialization/string_utils.hpp"
+#include "util.hpp"
 
 #include <cassert>
 #include <set>

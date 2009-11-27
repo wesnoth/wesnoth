@@ -19,6 +19,7 @@
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "terrain.hpp"
+#include "util.hpp"
 
 #include <set>
 

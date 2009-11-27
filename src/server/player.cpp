@@ -16,6 +16,7 @@
 
 #include "player.hpp"
 #include "serialization/string_utils.hpp"
+#include "util.hpp"
 
 wesnothd::player::player(const std::string& n, simple_wml::node& cfg,
                          bool registered, const size_t max_messages,

@@ -20,6 +20,7 @@
 
 #include "mp_game_settings.hpp"
 #include "serialization/string_utils.hpp"
+#include "util.hpp"
 
 mp_game_settings::mp_game_settings() :
 	name(),

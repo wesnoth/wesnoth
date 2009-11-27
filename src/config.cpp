@@ -24,6 +24,7 @@
 #include "foreach.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
+#include "util.hpp"
 
 #include <cstring>
 #include <deque>

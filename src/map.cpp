@@ -28,6 +28,7 @@
 #include "log.hpp"
 #include "map_exception.hpp"
 #include "serialization/parser.hpp"
+#include "util.hpp"
 #include "wml_exception.hpp"
 
 static lg::log_domain log_config("config");

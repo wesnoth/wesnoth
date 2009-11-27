@@ -24,6 +24,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
+#include "../util.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_GENERAL LOG_STREAM(err, lg::general)

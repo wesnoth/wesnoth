@@ -20,6 +20,7 @@
 #include "serialization/string_utils.hpp"
 #include "sound.hpp"
 #include "sound_music_track.hpp"
+#include "util.hpp"
 
 #include "SDL_mixer.h"
 

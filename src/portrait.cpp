@@ -17,6 +17,7 @@
 #include "config.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
+#include "util.hpp"
 #include "wml_exception.hpp"
 
 static lg::log_domain log_config("config");

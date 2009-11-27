@@ -16,6 +16,7 @@
 
 #include "config.hpp"
 #include "serialization/string_utils.hpp"
+#include "util.hpp"
 
 #include <iostream>
 

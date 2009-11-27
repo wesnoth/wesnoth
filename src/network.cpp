@@ -24,6 +24,7 @@
 #include "network_worker.hpp"
 #include "serialization/string_utils.hpp"
 #include "thread.hpp"
+#include "util.hpp"
 
 #include "filesystem.hpp"
 

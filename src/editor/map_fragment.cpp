@@ -16,7 +16,7 @@
 #include "map_fragment.hpp"
 
 #include "../foreach.hpp"
-#include "serialization/string_utils.hpp"
+#include "util.hpp"
 
 namespace editor {
 

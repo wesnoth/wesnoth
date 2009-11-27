@@ -31,6 +31,7 @@
 #include "addon_checks.hpp"
 #include "version.hpp"
 #include "server/input_stream.hpp"
+#include "util.hpp"
 
 #include <csignal>
 

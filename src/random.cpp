@@ -46,6 +46,7 @@
 #include "rng.hpp"
 #include "serialization/string_utils.hpp"
 #include "simple_rng.hpp"
+#include "util.hpp"
 
 static lg::log_domain log_random("random");
 #define DBG_RND LOG_STREAM(debug, log_random)

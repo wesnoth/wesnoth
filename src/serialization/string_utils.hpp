@@ -25,7 +25,8 @@
 #include <vector>
 #include <boost/next_prior.hpp>
 #include "../tstring.hpp"
-#include "../util.hpp"
+
+#include "SDL_types.h"
 
 class variable_set
 {

@@ -33,6 +33,7 @@
 #include "../serialization/parser.hpp"
 #include "../serialization/preprocessor.hpp"
 #include "../serialization/string_utils.hpp"
+#include "../util.hpp"
 
 #include "game.hpp"
 #include "input_stream.hpp"
