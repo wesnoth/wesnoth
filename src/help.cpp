@@ -699,37 +699,37 @@ static std::string generate_table(const table_spec &tab, const unsigned int spac
 		table_spec::const_iterator row_it;
 		std::vector<std::pair<std::string, unsigned> >::const_iterator col_it;
 		unsigned int num_cols = 0;
-		for (row_it = tab.begin(); row_it != tab.end(); row_it++) {
+		for (row_it = tab.begin(); row_it != tab.end(); ++row_it) {
 			if (row_it->size() > num_cols) {
 				num_cols = row_it->size();
 			}
 		}
 		std::vector<unsigned int> col_widths(num_cols, 0);
 		// Calculate the width of all columns, including spacing.
-		for (row_it = tab.begin(); row_it != tab.end(); row_it++) {
+		for (row_it = tab.begin(); row_it != tab.end(); ++row_it) {
 			unsigned int col = 0;
-			for (col_it = row_it->begin(); col_it != row_it->end(); col_it++) {
+			for (col_it = row_it->begin(); col_it != row_it->end(); ++col_it) {
 				if (col_widths[col] < col_it->second + spacing) {
 					col_widths[col] = col_it->second + spacing;
 				}
-				col++;
+				++col;
 			}
 		}
 		std::vector<unsigned int> col_starts(num_cols);
 		// Calculate the starting positions of all columns
-		for (unsigned int i = 0; i < num_cols; i++) {
+		for (unsigned int i = 0; i < num_cols; ++i) {
 			unsigned int this_col_start = 0;
-			for (unsigned int j = 0; j < i; j++) {
+			for (unsigned int j = 0; j < i; ++j) {
 				this_col_start += col_widths[j];
 			}
 			col_starts[i] = this_col_start;
 		}
 		std::stringstream ss;
-		for (row_it = tab.begin(); row_it != tab.end(); row_it++) {
+		for (row_it = tab.begin(); row_it != tab.end(); ++row_it) {
 			unsigned int col = 0;
-			for (col_it = row_it->begin(); col_it != row_it->end(); col_it++) {
+			for (col_it = row_it->begin(); col_it != row_it->end(); ++col_it) {
 				ss << jump_to(col_starts[col]) << col_it->first;
-				col++;
+				++col;
 			}
 			ss << "\n";
 		}
