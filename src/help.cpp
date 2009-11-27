@@ -952,7 +952,7 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 		std::vector<topic> topics;
 
 		// Find all topics in this section.
-		for (it = topics_id.begin(); it != topics_id.end(); it++) {
+		for (it = topics_id.begin(); it != topics_id.end(); ++it) {
 			if (const config &topic_cfg = help_cfg->find_child("topic", "id", *it))
 			{
 				std::string text = topic_cfg["text"];
