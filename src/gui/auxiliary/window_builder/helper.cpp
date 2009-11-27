@@ -115,15 +115,14 @@ tscrollbar_container::tscrollbar_mode
 		return tscrollbar_container::always_visible;
 	} else if(scrollbar_mode == "never") {
 		return tscrollbar_container::always_invisible;
-	} else if(scrollbar_mode == "initial_auto"
-			|| (gui2::new_widgets && scrollbar_mode.empty())) {
-		return tscrollbar_container::auto_visible_first_run;
-	} else {
-		if(!scrollbar_mode.empty() && scrollbar_mode != "auto") {
-			ERR_GUI_E << "Invalid scrollbar mode '"
-				<< scrollbar_mode << "' falling back to 'auto'.\n";
-		}
+	} else if(scrollbar_mode == "auto") {
 		return tscrollbar_container::auto_visible;
+	} else {
+		if(!scrollbar_mode.empty() && scrollbar_mode != "initial_auto") {
+			ERR_GUI_E << "Invalid scrollbar mode '"
+				<< scrollbar_mode << "' falling back to 'initial_auto'.\n";
+		}
+		return tscrollbar_container::auto_visible_first_run;
 	}
 }
 
