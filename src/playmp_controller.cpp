@@ -325,7 +325,7 @@ void playmp_controller::linger(upload_log& log)
 	// stay stuck in linger state when the *next* scenario is over.
 	gamestate_.classification().completion = "running";
 	// End all unit moves
-	for (unit_map::iterator u = units_.begin(); u != units_.end(); u++) {
+	for (unit_map::iterator u = units_.begin(); u != units_.end(); ++u) {
 		u->second.set_user_end_turn(true);
 	}
 	//current_team().set_countdown_time(0);
