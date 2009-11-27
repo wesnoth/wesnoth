@@ -923,7 +923,7 @@ void menu::draw_row(const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
 		std::string str = row[i];
 		std::vector<std::string> img_text_items = utils::split(str, IMG_TEXT_SEPARATOR, utils::REMOVE_EMPTY);
 		for (std::vector<std::string>::const_iterator it = img_text_items.begin();
-			 it != img_text_items.end(); it++) {
+			 it != img_text_items.end(); ++it) {
 			str = *it;
 			if (!str.empty() && str[0] == IMAGE_PREFIX) {
 				const std::string image_name(str.begin()+1,str.end());
