@@ -398,7 +398,7 @@ marked_route mark_route(const plain_route &rt,
 	std::vector<map_location>::const_iterator i = rt.steps.begin();
 	std::list<map_location>::const_iterator w = waypoints.begin();
 
-	for (; i !=rt.steps.end(); i++) {
+	for (; i !=rt.steps.end(); ++i) {
 		bool last_step = (i+1 == rt.steps.end());
 
 		// move_cost of the next step is irrelevant for the last step
