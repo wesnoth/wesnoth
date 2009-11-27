@@ -189,7 +189,7 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 
 	std::vector<std::string> value_str = utils::split(cfg["value"]);
 	std::vector<std::string>::iterator value;
-	for(value=value_str.begin() ; value != value_str.end() ; value++) {
+	for(value=value_str.begin() ; value != value_str.end() ; ++value) {
 		value_.push_back(atoi(value->c_str()));
 	}
 
@@ -208,7 +208,7 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 	}
 	std::vector<std::string> value2_str = utils::split(cfg["value_second"]);
 	std::vector<std::string>::iterator value2;
-	for(value2=value2_str.begin() ; value2 != value2_str.end() ; value2++) {
+	for(value2=value2_str.begin() ; value2 != value2_str.end() ; ++value2) {
 		value2_.push_back(atoi(value2->c_str()));
 	}
 	foreach (const config &filter, cfg.child_range("filter_attack")) {
