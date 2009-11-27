@@ -257,11 +257,11 @@ int unit_animation::matches(const game_display &disp,const map_location& loc,con
 		std::vector<config>::const_iterator myitor;
 		for(myitor = unit_filter_.begin(); myitor != unit_filter_.end(); ++myitor) {
 			if (!my_unit->matches_filter(vconfig(*myitor), loc)) return MATCH_FAIL;
-			result++;
+			++result;
 		}
 		if(!secondary_unit_filter_.empty()) {
 			unit_map::const_iterator unit;
-			for(unit=disp.get_const_units().begin() ; unit != disp.get_const_units().end() ; unit++) {
+			for(unit=disp.get_const_units().begin() ; unit != disp.get_const_units().end() ; ++unit) {
 				if(unit->first == second_loc) {
 					std::vector<config>::const_iterator second_itor;
 					for(second_itor = secondary_unit_filter_.begin(); second_itor != secondary_unit_filter_.end(); ++second_itor) {
@@ -298,7 +298,7 @@ int unit_animation::matches(const game_display &disp,const map_location& loc,con
 			return MATCH_FAIL;
 	}
 	std::vector<config>::const_iterator myitor;
-	for(myitor = primary_attack_filter_.begin(); myitor != primary_attack_filter_.end(); myitor++) {
+	for(myitor = primary_attack_filter_.begin(); myitor != primary_attack_filter_.end(); ++myitor) {
 		if(!attack->matches_filter(*myitor)) return MATCH_FAIL;
 		result++;
 	}
@@ -306,7 +306,7 @@ int unit_animation::matches(const game_display &disp,const map_location& loc,con
 		if(!secondary_attack_filter_.empty())
 			return MATCH_FAIL;
 	}
-	for(myitor = secondary_attack_filter_.begin(); myitor != secondary_attack_filter_.end(); myitor++) {
+	for(myitor = secondary_attack_filter_.begin(); myitor != secondary_attack_filter_.end(); ++myitor) {
 		if(!second_attack->matches_filter(*myitor)) return MATCH_FAIL;
 		result++;
 	}
@@ -321,7 +321,7 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 	std::vector<unit_animation>  animation_base;
 	std::vector<unit_animation>::const_iterator itor;
 	add_anims(animations,cfg);
-	for(itor = animations.begin(); itor != animations.end() ; itor++) {
+	for(itor = animations.begin(); itor != animations.end() ; ++itor) {
 		if (std::find(itor->event_.begin(),itor->event_.end(),std::string("default"))!= itor->event_.end()) {
 			animation_base.push_back(*itor);
 			animation_base.back().base_score_ = unit_animation::DEFAULT_ANIM;
@@ -765,7 +765,7 @@ bool unit_animation::need_update() const
 {
 	if(unit_anim_.need_update()) return true;
 	std::map<std::string,particule>::const_iterator anim_itor =sub_anims_.begin();
-	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
+	for( /*null*/; anim_itor != sub_anims_.end() ; ++anim_itor) {
 		if(anim_itor->second.need_update()) return true;
 	}
 	return false;
@@ -778,7 +778,7 @@ bool unit_animation::need_minimal_update() const
 	}
 	if(unit_anim_.need_minimal_update()) return true;
 	std::map<std::string,particule>::const_iterator anim_itor =sub_anims_.begin();
-	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
+	for( /*null*/; anim_itor != sub_anims_.end() ; ++anim_itor) {
 		if(anim_itor->second.need_minimal_update()) return true;
 	}
 	return false;
@@ -788,7 +788,7 @@ bool unit_animation::animation_finished() const
 {
 	if(!unit_anim_.animation_finished()) return false;
 	std::map<std::string,particule>::const_iterator anim_itor =sub_anims_.begin();
-	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
+	for( /*null*/; anim_itor != sub_anims_.end() ; ++anim_itor) {
 		if(!anim_itor->second.animation_finished()) return false;
 	}
 	return true;
@@ -798,7 +798,7 @@ bool unit_animation::animation_finished_potential() const
 {
 	if(!unit_anim_.animation_finished_potential()) return false;
 	std::map<std::string,particule>::const_iterator anim_itor =sub_anims_.begin();
-	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
+	for( /*null*/; anim_itor != sub_anims_.end() ; ++anim_itor) {
 		if(!anim_itor->second.animation_finished_potential()) return false;
 	}
 	return true;
@@ -809,7 +809,7 @@ void unit_animation::update_last_draw_time()
 	double acceleration = unit_anim_.accelerate ? game_display::get_singleton()->turbo_speed() : 1.0;
 	unit_anim_.update_last_draw_time(acceleration);
 	std::map<std::string,particule>::iterator anim_itor =sub_anims_.begin();
-	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
+	for( /*null*/; anim_itor != sub_anims_.end() ; ++anim_itor) {
 		anim_itor->second.update_last_draw_time(acceleration);
 	}
 }
@@ -818,7 +818,7 @@ int unit_animation::get_end_time() const
 {
 	int result = unit_anim_.get_end_time();
 	std::map<std::string,particule>::const_iterator anim_itor =sub_anims_.end();
-	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
+	for( /*null*/; anim_itor != sub_anims_.end() ; ++anim_itor) {
 		result= std::max<int>(result,anim_itor->second.get_end_time());
 	}
 	return result;
@@ -828,7 +828,7 @@ int unit_animation::get_begin_time() const
 {
 	int result = unit_anim_.get_begin_time();
 	std::map<std::string,particule>::const_iterator anim_itor =sub_anims_.begin();
-	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
+	for( /*null*/; anim_itor != sub_anims_.end() ; ++anim_itor) {
 		result= std::min<int>(result,anim_itor->second.get_begin_time());
 	}
 	return result;
@@ -853,7 +853,7 @@ void unit_animation::start_animation(int start_time
 		sub_anims_["_add_text"] = crude_build;
 	}
 	std::map<std::string,particule>::iterator anim_itor =sub_anims_.begin();
-	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
+	for( /*null*/; anim_itor != sub_anims_.end() ; ++anim_itor) {
 		anim_itor->second.accelerate = accelerate;
 		anim_itor->second.start_animation(start_time,cycles);
 	}
@@ -869,7 +869,7 @@ void unit_animation::pause_animation()
 
 	std::map<std::string,particule>::iterator anim_itor =sub_anims_.begin();
 	unit_anim_.pause_animation();
-	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
+	for( /*null*/; anim_itor != sub_anims_.end() ; ++anim_itor) {
 		anim_itor->second.pause_animation();
 	}
 }
@@ -878,7 +878,7 @@ void unit_animation::restart_animation()
 
 	std::map<std::string,particule>::iterator anim_itor =sub_anims_.begin();
 	unit_anim_.restart_animation();
-	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
+	for( /*null*/; anim_itor != sub_anims_.end() ; ++anim_itor) {
 		anim_itor->second.restart_animation();
 	}
 }
@@ -889,7 +889,7 @@ void unit_animation::redraw(const frame_parameters& value)
 	overlaped_hex_.clear();
 	std::map<std::string,particule>::iterator anim_itor =sub_anims_.begin();
 	unit_anim_.redraw(value,src_,dst_,true);
-	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
+	for( /*null*/; anim_itor != sub_anims_.end() ; ++anim_itor) {
 		anim_itor->second.redraw( value,src_,dst_);
 	}
 }
@@ -902,7 +902,7 @@ bool unit_animation::invalidate(const frame_parameters& value)
 		if(complete_redraw) {
 			std::map<std::string,particule>::iterator anim_itor =sub_anims_.begin();
 			overlaped_hex_ = unit_anim_.get_overlaped_hex(value,src_,dst_,true);
-			for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
+			for( /*null*/; anim_itor != sub_anims_.end() ; ++anim_itor) {
 				std::set<map_location> tmp = anim_itor->second.get_overlaped_hex(value,src_,dst_,true);
 				overlaped_hex_.insert(tmp.begin(),tmp.end());
 			}
@@ -1060,7 +1060,7 @@ void unit_animator::start_animations()
 {
 	int begin_time = INT_MAX;
 	std::vector<anim_elem>::iterator anim;
-	for(anim = animated_units_.begin(); anim != animated_units_.end();anim++) {
+	for(anim = animated_units_.begin(); anim != animated_units_.end();++anim) {
 		if(anim->my_unit->get_animation()) {
 			if(anim->animation) {
 				begin_time = std::min<int>(begin_time,anim->animation->get_begin_time());
@@ -1069,7 +1069,7 @@ void unit_animator::start_animations()
 			}
 		}
 	}
-	for(anim = animated_units_.begin(); anim != animated_units_.end();anim++) {
+	for(anim = animated_units_.begin(); anim != animated_units_.end();++anim) {
 		if(anim->animation) {
 			anim->my_unit->start_animation(begin_time, anim->animation,
 				anim->with_bars, anim->cycles, anim->text, anim->text_color);
@@ -1084,7 +1084,7 @@ void unit_animator::start_animations()
 bool unit_animator::would_end() const
 {
 	bool finished = true;
-	for(std::vector<anim_elem>::const_iterator anim = animated_units_.begin(); anim != animated_units_.end();anim++) {
+	for(std::vector<anim_elem>::const_iterator anim = animated_units_.begin(); anim != animated_units_.end();++anim) {
 		finished &= anim->my_unit->get_animation()->animation_finished_potential();
 	}
 	return finished;
@@ -1119,7 +1119,7 @@ void unit_animator::wait_for_end() const
 		events::pump();
 		disp->delay(10);
 		finished = true;
-		for(std::vector<anim_elem>::const_iterator anim = animated_units_.begin(); anim != animated_units_.end();anim++) {
+		for(std::vector<anim_elem>::const_iterator anim = animated_units_.begin(); anim != animated_units_.end();++anim) {
 			finished &= anim->my_unit->get_animation()->animation_finished_potential();
 		}
 	}
@@ -1135,7 +1135,7 @@ int unit_animator::get_animation_time_potential() const{
 int unit_animator::get_end_time() const
 {
         int end_time = INT_MIN;
-        for(std::vector<anim_elem>::const_iterator anim = animated_units_.begin(); anim != animated_units_.end();anim++) {
+        for(std::vector<anim_elem>::const_iterator anim = animated_units_.begin(); anim != animated_units_.end();++anim) {
 	       if(anim->my_unit->get_animation()) {
                 end_time = std::max<int>(end_time,anim->my_unit->get_animation()->get_end_time());
 	       }
@@ -1144,7 +1144,7 @@ int unit_animator::get_end_time() const
 }
 void unit_animator::pause_animation()
 {
-        for(std::vector<anim_elem>::iterator anim = animated_units_.begin(); anim != animated_units_.end();anim++) {
+        for(std::vector<anim_elem>::iterator anim = animated_units_.begin(); anim != animated_units_.end();++anim) {
 	       if(anim->my_unit->get_animation()) {
                 anim->my_unit->get_animation()->pause_animation();
 	       }
@@ -1152,7 +1152,7 @@ void unit_animator::pause_animation()
 }
 void unit_animator::restart_animation()
 {
-        for(std::vector<anim_elem>::iterator anim = animated_units_.begin(); anim != animated_units_.end();anim++) {
+        for(std::vector<anim_elem>::iterator anim = animated_units_.begin(); anim != animated_units_.end();++anim) {
 	       if(anim->my_unit->get_animation()) {
                 anim->my_unit->get_animation()->restart_animation();
 	       }
@@ -1160,7 +1160,7 @@ void unit_animator::restart_animation()
 }
 void unit_animator::set_all_standing()
 {
-        for(std::vector<anim_elem>::iterator anim = animated_units_.begin(); anim != animated_units_.end();anim++) {
+        for(std::vector<anim_elem>::iterator anim = animated_units_.begin(); anim != animated_units_.end();++anim) {
 		anim->my_unit->set_standing();
         }
 }
