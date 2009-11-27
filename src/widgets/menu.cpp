@@ -785,7 +785,7 @@ SDL_Rect menu::style::item_size(const std::string& item) const {
 	SDL_Rect res = {0,0,0,0};
 	std::vector<std::string> img_text_items = utils::split(item, IMG_TEXT_SEPARATOR, utils::REMOVE_EMPTY);
 	for (std::vector<std::string>::const_iterator it = img_text_items.begin();
-		 it != img_text_items.end(); it++) {
+		 it != img_text_items.end(); ++it) {
 		if (res.w > 0 || res.h > 0) {
 			// Not the first item, add the spacing.
 			res.w += 5;
