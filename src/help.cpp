@@ -906,7 +906,7 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 		sec.title = title;
 		std::vector<std::string>::const_iterator it;
 		// Find all child sections.
-		for (it = sections.begin(); it != sections.end(); it++) {
+		for (it = sections.begin(); it != sections.end(); ++it) {
 			if (const config &child_cfg = help_cfg->find_child("section", "id", *it))
 			{
 				section child_section;
