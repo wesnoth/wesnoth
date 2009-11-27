@@ -43,6 +43,7 @@ namespace testing_ai_default {
 
 goto_phase::goto_phase( rca_context &context, const config &cfg )
 	: candidate_action(context,cfg)
+	, move_()
 {
 }
 
