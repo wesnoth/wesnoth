@@ -32,7 +32,7 @@ progressive_string::progressive_string(const std::string & data,int duration) :
 		const int time_chunk = std::max<int>(duration / (first_pass.size()?first_pass.size():1),1);
 
 		std::vector<std::string>::const_iterator tmp;
-		for(tmp=first_pass.begin();tmp != first_pass.end() ; tmp++) {
+		for(tmp=first_pass.begin();tmp != first_pass.end() ; ++tmp) {
 			std::vector<std::string> second_pass = utils::split(*tmp,':');
 			if(second_pass.size() > 1) {
 				data_.push_back(std::pair<std::string,int>(second_pass[0],atoi(second_pass[1].c_str())));
