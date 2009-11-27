@@ -18,9 +18,6 @@
 #define MAP_H_INCLUDED
 
 class config;
-class unit;
-class unit_map;
-class vconfig;
 
 #include "terrain.hpp"
 #include "map_location.hpp"
