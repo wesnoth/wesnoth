@@ -566,7 +566,7 @@ void replay::undo()
 			const map_location dst = steps.back();
 
 			for (std::vector<config::child_list::const_iterator>::iterator async_cmd =
-				 async_cmds.begin(); async_cmd != async_cmds.end(); async_cmd++)
+				 async_cmds.begin(); async_cmd != async_cmds.end(); ++async_cmd)
 			{
 				if (config &async_child = (***async_cmd).child("rename"))
 				{
