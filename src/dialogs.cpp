@@ -771,7 +771,7 @@ void unit_preview_pane::draw_contents()
 		<< det.alignment << "\n"
 		<< det.traits << "\n";
 
-	for(std::vector<t_string>::const_iterator a = det.abilities.begin(); a != det.abilities.end(); a++) {
+	for(std::vector<t_string>::const_iterator a = det.abilities.begin(); a != det.abilities.end(); ++a) {
 		if(a != det.abilities.begin()) {
 			text << ", ";
 		}
