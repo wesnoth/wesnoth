@@ -781,7 +781,7 @@ std::string team::get_side_highlight(int side)
 void team::log_recruitable(){
 	LOG_NG << "Adding recruitable units: \n";
 	for (std::set<std::string>::const_iterator it = info_.can_recruit.begin();
-		 it != info_.can_recruit.end(); it++) {
+		 it != info_.can_recruit.end(); ++it) {
 		LOG_NG << *it << std::endl;
 	}
 	LOG_NG << "Added all recruitable units\n";
