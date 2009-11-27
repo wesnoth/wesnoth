@@ -108,7 +108,7 @@ static int upload_logs(void *_ti)
 
 		if (SDLNet_ResolveHost(&ip, TARGET_HOST.c_str(), TARGET_PORT) == 0) {
 			std::vector<std::string>::iterator i;
-			for (i = files.begin(); i!=files.end() && *i!=ti->lastfile; i++) {
+			for (i = files.begin(); i!=files.end() && *i!=ti->lastfile; ++i) {
 				std::string contents;
 				char response[10]; //This needs to be strlen("HTTP/1.1 2");
 
