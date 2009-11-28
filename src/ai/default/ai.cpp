@@ -1513,15 +1513,11 @@ void ai_default_recruitment_stage::analyze_potential_recruit_movements()
 			continue;
 		}
 
-		//create unit without traits (no random calls)
-		//note that it make the AI never rely on 'quick'
-		const unit temp_unit(&get_info().units, &info->second, get_side(), false);
-		// since we now use the ignore_units switch, no need to use a empty unit_map
-		// unit_map units;
-		// const temporary_unit_placer placer(units,start,temp_unit);
-
+		const unit_type& ut = info->second;
+		//TODO: we give max movement, but recruited will get 0? Seems inaccurate
+		//but keep it like that for now
 		// pathfinding ignoring other units and terrain defense
-		const shortest_path_calculator calc(temp_unit,current_team(),get_info().units,get_info().teams,map_,true,true);
+		const move_type_path_calculator calc(ut.movement_type(), ut.movement(), ut.movement(), current_team(),map_);
 
 		int cost = 0;
 		int targets_reached = 0;
@@ -1550,9 +1546,9 @@ void ai_default_recruitment_stage::analyze_potential_recruit_movements()
 			const int score = (average_cost * (targets_reached+targets_missed))/targets_reached;
 			unit_movement_scores_[*i] = score;
 
-			const std::map<std::string,int>::const_iterator current_best = best_scores.find(temp_unit.usage());
+			const std::map<std::string,int>::const_iterator current_best = best_scores.find(ut.usage());
 			if(current_best == best_scores.end() || score < current_best->second) {
-				best_scores[temp_unit.usage()] = score;
+				best_scores[ut.usage()] = score;
 			}
 		}
 	}
