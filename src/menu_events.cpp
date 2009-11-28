@@ -3217,8 +3217,11 @@ void console_handler::do_unit() {
 	} else {
 		config cfg;
 		i->second.write(cfg);
+		const map_location loc = i->first;
+		menu_handler_.units_.erase(loc);
 		cfg[name] = value;
-		i->second.read(cfg);
+		unit new_u(&menu_handler_.units_, cfg, true);
+		menu_handler_.units_.add(loc, new_u);
 	}
 	menu_handler_.gui_->invalidate(i->first);
 	menu_handler_.gui_->invalidate_unit();
