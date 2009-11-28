@@ -665,7 +665,8 @@ void game_state::build_team(const config& side_cfg,
 			if (u["x"].empty() && u["y"].empty() && !utils::string_bool(u["find_vacant"],false)) {
 				config temp_cfg(u); //copy ctor, as player_cfg is const
 				temp_cfg["side"] = str_cast<int>(side);
-				unit un(temp_cfg, false);
+				//FIXME should probably pass &units here
+				unit un(NULL, temp_cfg, false);
 				teams.back().recall_list().push_back(un);
 			}
 		}

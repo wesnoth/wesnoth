@@ -64,7 +64,6 @@ public:
 	// Copy constructor
 	unit(const unit& u);
 	/** Initilizes a unit from a config */
-	unit(const config& cfg, bool use_traits=false);
 	unit(unit_map* unitmap,
 		const config& cfg, bool use_traits=false, game_state* state = 0);
 	/**
