@@ -237,7 +237,241 @@ unit::unit(unit_map* unitmap, const config& cfg,
 	invisibility_cache_()
 {
 	set_state(STATE_HIDDEN,true);
-	read(cfg, use_traits, state);
+
+	if(cfg["type"].empty()) {
+		throw game::load_game_failed("Attempt to de-serialize a unit with an empty 'type' field:\n" + cfg.debug());
+	}
+
+	cfg_ = cfg;
+
+	cfg_.clear_children("unit"); //remove underlying unit definitions from scenario files
+
+	type_ = cfg_["type"];
+	side_ = lexical_cast_default<int>(cfg["side"]);
+	if(side_ <= 0) {
+		side_ = 1;
+	}
+
+	validate_side(side_);
+
+	// Prevent un-initialized variables
+	hit_points_=1;
+
+	if(cfg["gender"].empty()) {
+		bool random_gender = utils::string_bool(cfg_["random_gender"], false);
+		generate_gender(*type(), random_gender, state);
+	} else {
+		gender_ = string_gender(cfg["gender"]);
+	}
+
+	variation_ = cfg["variation"];
+
+	name_ = cfg["name"];
+	std::string custom_unit_desc = cfg["description"];
+
+	id_ = cfg["id"];
+	underlying_id_ = lexical_cast_default<size_t>(cfg["underlying_id"],0);
+	set_underlying_id();
+
+	role_ = cfg["role"];
+	ai_special_ = cfg["ai_special"];
+	overlays_ = utils::split(cfg["overlays"]);
+	if(overlays_.size() == 1 && overlays_.front() == "") {
+		overlays_.clear();
+	}
+	if (const config &variables = cfg.child("variables")) {
+		variables_ = variables;
+		cfg_.remove_child("variables",0);
+	} else {
+		variables_.clear();
+	}
+
+	facing_ = map_location::parse_direction(cfg["facing"]);
+	if(facing_ == map_location::NDIRECTIONS) facing_ = map_location::SOUTH_EAST;
+
+	if (const config &mods = cfg.child("modifications")) {
+		modifications_ = mods;
+		cfg_.remove_child("modifications",0);
+	}
+
+	advance_to(type(), use_traits, state);
+	if(cfg["race"] != "") {
+		const race_map::const_iterator race_it = unit_type_data::types().races().find(cfg["race"]);
+		if(race_it != unit_type_data::types().races().end()) {
+			race_ = &race_it->second;
+		} else {
+			static const unit_race dummy_race;
+			race_ = &dummy_race;
+		}
+	}
+	level_ = lexical_cast_default<int>(cfg["level"], level_);
+	if(cfg["undead_variation"] != "") {
+		undead_variation_ = cfg["undead_variation"];
+	}
+	if(cfg["max_attacks"] != "") {
+		max_attacks_ = std::max<int>(0,lexical_cast_default<int>(cfg["max_attacks"],1));
+	}
+	attacks_left_ = std::max<int>(0,lexical_cast_default<int>(cfg["attacks_left"], max_attacks_));
+
+	if(cfg["alpha"] != "") {
+		alpha_ = lexical_cast_default<fixed_t>(cfg["alpha"]);
+	}
+	if(cfg["zoc"] != "") {
+		emit_zoc_ = utils::string_bool(cfg["zoc"]);
+	}
+	if(cfg["flying"] != "") {
+		flying_ = utils::string_bool(cfg["flying"]);
+	}
+	if(custom_unit_desc != "") {
+		cfg_["description"] = custom_unit_desc;
+	}
+	if(cfg["cost"] != "") {
+		unit_value_ = lexical_cast_default<int>(cfg["cost"]);
+	}
+	if(cfg["halo"] != "") {
+		clear_haloes();
+		cfg_["halo"] = cfg["halo"];
+	}
+	if(cfg["profile"] != "") {
+		cfg_["profile"] = cfg["profile"];
+	}
+	max_hit_points_ = std::max<int>(1,lexical_cast_default<int>(cfg["max_hitpoints"], max_hit_points_));
+	max_movement_ = std::max<int>(0,lexical_cast_default<int>(cfg["max_moves"], max_movement_));
+	max_experience_ = std::max<int>(1,lexical_cast_default<int>(cfg["max_experience"], max_experience_));
+
+	std::vector<std::string> temp_advances = utils::split(cfg["advances_to"]);
+	if(temp_advances.size() == 1 && temp_advances.front() == "null") {
+		advances_to_.clear();
+	}else if(temp_advances.size() >= 1 && temp_advances.front() != "") {
+		advances_to_ = temp_advances;
+	}
+
+	if (const config &ai = cfg.child("ai"))
+	{
+		unit_formula_ = ai["formula"];
+		unit_loop_formula_ = ai["loop_formula"];
+		unit_priority_formula_ = ai["priority"];
+
+		if (const config &ai_vars = ai.child("vars"))
+		{
+			formula_vars_ = new game_logic::map_formula_callable;
+
+			variant var;
+			foreach (const config::attribute &i, ai_vars.attribute_range()) {
+				var.serialize_from_string(i.second);
+				formula_vars_->add(i.first, var);
+			}
+		} else {
+			formula_vars_ = game_logic::map_formula_callable_ptr();
+		}
+
+        }
+
+        //remove ai from private cfg
+	cfg_.clear_children("ai");
+
+	//dont use the unit_type's attacks if this config has its own defined
+	config::const_child_itors cfg_range = cfg.child_range("attack");
+	if(cfg_range.first != cfg_range.second) {
+		attacks_.clear();
+		do {
+			attacks_.push_back(attack_type(*cfg_range.first));
+		} while(++cfg_range.first != cfg_range.second);
+	}
+	cfg_.clear_children("attack");
+
+	//dont use the unit_type's abilities if this config has its own defined
+	cfg_range = cfg.child_range("abilities");
+	if(cfg_range.first != cfg_range.second) {
+		cfg_.clear_children("abilities");
+		config &target = cfg_.add_child("abilities");
+		do {
+			target.append(*cfg_range.first);
+		} while(++cfg_range.first != cfg_range.second);
+	}
+
+	//adjust the unit_type's defense if this config has its own defined
+	cfg_range = cfg.child_range("defense");
+	if(cfg_range.first != cfg_range.second) {
+		config &target = cfg_.child_or_add("defense");
+		do {
+			target.append(*cfg_range.first);
+		} while(++cfg_range.first != cfg_range.second);
+	}
+
+	//adjust the unit_type's movement costs if this config has its own defined
+	cfg_range = cfg.child_range("movement_costs");
+	if(cfg_range.first != cfg_range.second) {
+		config &target = cfg_.child_or_add("movement_costs");
+		do {
+			target.append(*cfg_range.first);
+		} while(++cfg_range.first != cfg_range.second);
+	}
+
+	//adjust the unit_type's resistance if this config has its own defined
+	cfg_range = cfg.child_range("resistance");
+	if(cfg_range.first != cfg_range.second) {
+		config &target = cfg_.child_or_add("resistance");
+		do {
+			target.append(*cfg_range.first);
+		} while(++cfg_range.first != cfg_range.second);
+	}
+
+	if (const config &status_flags = cfg.child("status"))
+	{
+		foreach (const config::attribute &st, status_flags.attribute_range()) {
+			set_state(st.first,st.second);
+		}
+		cfg_.remove_child("status",0);
+	}
+	if(cfg["ai_special"] == "guardian") {
+		set_state("guardian","yes");
+	}
+
+	// Remove animations from private cfg, they're not needed there now
+	foreach(const std::string& tag_name, unit_animation::all_tag_names()) {
+		cfg_.clear_children(tag_name);
+	}
+
+	if(cfg["hitpoints"] != "") {
+		hit_points_ = lexical_cast_default<int>(cfg["hitpoints"]);
+	} else {
+		hit_points_ = max_hit_points_;
+	}
+	goto_.x = lexical_cast_default<int>(cfg["goto_x"]) - 1;
+	goto_.y = lexical_cast_default<int>(cfg["goto_y"]) - 1;
+	waypoints_.clear();
+
+	if(cfg["moves"] != "") {
+		movement_ = lexical_cast_default<int>(cfg["moves"]);
+		if(movement_ < 0) {
+			attacks_left_ = 0;
+			movement_ = 0;
+		}
+	} else {
+		movement_ = max_movement_;
+	}
+	experience_ = lexical_cast_default<int>(cfg["experience"]);
+	resting_ = utils::string_bool(cfg["resting"]);
+	unrenamable_ = utils::string_bool(cfg["unrenamable"]);
+	if(cfg["alignment"]=="lawful") {
+		alignment_ = unit_type::LAWFUL;
+	} else if(cfg["alignment"]=="neutral") {
+		alignment_ = unit_type::NEUTRAL;
+	} else if(cfg["alignment"]=="chaotic") {
+		alignment_ = unit_type::CHAOTIC;
+	} else if(cfg["type"]=="") {
+		alignment_ = unit_type::NEUTRAL;
+	}
+
+	generate_name(state ? &(state->rng()) : 0);
+
+	game_events::add_events(cfg_.child_range("event"), type_);
+	// Make the default upkeep "full"
+	if(cfg_["upkeep"].empty()) {
+		cfg_["upkeep"] = "full";
+	}
+
 	/** @todo Are these modified by read? if not they can be removed. */
 	getsHit_=0;
 	end_turn_ = false;
@@ -1214,242 +1448,6 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 	return true;
 }
 
-void unit::read(const config& cfg, bool use_traits, game_state* state)
-{
-	if(cfg["type"].empty()) {
-		throw game::load_game_failed("Attempt to de-serialize a unit with an empty 'type' field:\n" + cfg.debug());
-	}
-
-	cfg_ = cfg;
-
-	cfg_.clear_children("unit"); //remove underlying unit definitions from scenario files
-
-	type_ = cfg_["type"];
-	side_ = lexical_cast_default<int>(cfg["side"]);
-	if(side_ <= 0) {
-		side_ = 1;
-	}
-
-	validate_side(side_);
-
-	// Prevent un-initialized variables
-	hit_points_=1;
-
-	if(cfg["gender"].empty()) {
-		bool random_gender = utils::string_bool(cfg_["random_gender"], false);
-		generate_gender(*type(), random_gender, state);
-	} else {
-		gender_ = string_gender(cfg["gender"]);
-	}
-
-	variation_ = cfg["variation"];
-
-	name_ = cfg["name"];
-	std::string custom_unit_desc = cfg["description"];
-
-	id_ = cfg["id"];
-	underlying_id_ = lexical_cast_default<size_t>(cfg["underlying_id"],0);
-	set_underlying_id();
-
-	role_ = cfg["role"];
-	ai_special_ = cfg["ai_special"];
-	overlays_ = utils::split(cfg["overlays"]);
-	if(overlays_.size() == 1 && overlays_.front() == "") {
-		overlays_.clear();
-	}
-	if (const config &variables = cfg.child("variables")) {
-		variables_ = variables;
-		cfg_.remove_child("variables",0);
-	} else {
-		variables_.clear();
-	}
-
-	facing_ = map_location::parse_direction(cfg["facing"]);
-	if(facing_ == map_location::NDIRECTIONS) facing_ = map_location::SOUTH_EAST;
-
-	if (const config &mods = cfg.child("modifications")) {
-		modifications_ = mods;
-		cfg_.remove_child("modifications",0);
-	}
-
-	advance_to(type(), use_traits, state);
-	if(cfg["race"] != "") {
-		const race_map::const_iterator race_it = unit_type_data::types().races().find(cfg["race"]);
-		if(race_it != unit_type_data::types().races().end()) {
-			race_ = &race_it->second;
-		} else {
-			static const unit_race dummy_race;
-			race_ = &dummy_race;
-		}
-	}
-	level_ = lexical_cast_default<int>(cfg["level"], level_);
-	if(cfg["undead_variation"] != "") {
-		undead_variation_ = cfg["undead_variation"];
-	}
-	if(cfg["max_attacks"] != "") {
-		max_attacks_ = std::max<int>(0,lexical_cast_default<int>(cfg["max_attacks"],1));
-	}
-	attacks_left_ = std::max<int>(0,lexical_cast_default<int>(cfg["attacks_left"], max_attacks_));
-
-	if(cfg["alpha"] != "") {
-		alpha_ = lexical_cast_default<fixed_t>(cfg["alpha"]);
-	}
-	if(cfg["zoc"] != "") {
-		emit_zoc_ = utils::string_bool(cfg["zoc"]);
-	}
-	if(cfg["flying"] != "") {
-		flying_ = utils::string_bool(cfg["flying"]);
-	}
-	if(custom_unit_desc != "") {
-		cfg_["description"] = custom_unit_desc;
-	}
-	if(cfg["cost"] != "") {
-		unit_value_ = lexical_cast_default<int>(cfg["cost"]);
-	}
-	if(cfg["halo"] != "") {
-		clear_haloes();
-		cfg_["halo"] = cfg["halo"];
-	}
-	if(cfg["profile"] != "") {
-		cfg_["profile"] = cfg["profile"];
-	}
-	max_hit_points_ = std::max<int>(1,lexical_cast_default<int>(cfg["max_hitpoints"], max_hit_points_));
-	max_movement_ = std::max<int>(0,lexical_cast_default<int>(cfg["max_moves"], max_movement_));
-	max_experience_ = std::max<int>(1,lexical_cast_default<int>(cfg["max_experience"], max_experience_));
-
-	std::vector<std::string> temp_advances = utils::split(cfg["advances_to"]);
-	if(temp_advances.size() == 1 && temp_advances.front() == "null") {
-		advances_to_.clear();
-	}else if(temp_advances.size() >= 1 && temp_advances.front() != "") {
-		advances_to_ = temp_advances;
-	}
-
-	if (const config &ai = cfg.child("ai"))
-	{
-		unit_formula_ = ai["formula"];
-		unit_loop_formula_ = ai["loop_formula"];
-		unit_priority_formula_ = ai["priority"];
-
-		if (const config &ai_vars = ai.child("vars"))
-		{
-			formula_vars_ = new game_logic::map_formula_callable;
-
-			variant var;
-			foreach (const config::attribute &i, ai_vars.attribute_range()) {
-				var.serialize_from_string(i.second);
-				formula_vars_->add(i.first, var);
-			}
-		} else {
-			formula_vars_ = game_logic::map_formula_callable_ptr();
-		}
-
-        }
-
-        //remove ai from private cfg
-	cfg_.clear_children("ai");
-
-	//dont use the unit_type's attacks if this config has its own defined
-	config::const_child_itors cfg_range = cfg.child_range("attack");
-	if(cfg_range.first != cfg_range.second) {
-		attacks_.clear();
-		do {
-			attacks_.push_back(attack_type(*cfg_range.first));
-		} while(++cfg_range.first != cfg_range.second);
-	}
-	cfg_.clear_children("attack");
-
-	//dont use the unit_type's abilities if this config has its own defined
-	cfg_range = cfg.child_range("abilities");
-	if(cfg_range.first != cfg_range.second) {
-		cfg_.clear_children("abilities");
-		config &target = cfg_.add_child("abilities");
-		do {
-			target.append(*cfg_range.first);
-		} while(++cfg_range.first != cfg_range.second);
-	}
-
-	//adjust the unit_type's defense if this config has its own defined
-	cfg_range = cfg.child_range("defense");
-	if(cfg_range.first != cfg_range.second) {
-		config &target = cfg_.child_or_add("defense");
-		do {
-			target.append(*cfg_range.first);
-		} while(++cfg_range.first != cfg_range.second);
-	}
-
-	//adjust the unit_type's movement costs if this config has its own defined
-	cfg_range = cfg.child_range("movement_costs");
-	if(cfg_range.first != cfg_range.second) {
-		config &target = cfg_.child_or_add("movement_costs");
-		do {
-			target.append(*cfg_range.first);
-		} while(++cfg_range.first != cfg_range.second);
-	}
-
-	//adjust the unit_type's resistance if this config has its own defined
-	cfg_range = cfg.child_range("resistance");
-	if(cfg_range.first != cfg_range.second) {
-		config &target = cfg_.child_or_add("resistance");
-		do {
-			target.append(*cfg_range.first);
-		} while(++cfg_range.first != cfg_range.second);
-	}
-
-	if (const config &status_flags = cfg.child("status"))
-	{
-		foreach (const config::attribute &st, status_flags.attribute_range()) {
-			set_state(st.first,st.second);
-		}
-		cfg_.remove_child("status",0);
-	}
-	if(cfg["ai_special"] == "guardian") {
-		set_state("guardian","yes");
-	}
-
-	// Remove animations from private cfg, they're not needed there now
-	foreach(const std::string& tag_name, unit_animation::all_tag_names()) {
-		cfg_.clear_children(tag_name);
-	}
-
-	if(cfg["hitpoints"] != "") {
-		hit_points_ = lexical_cast_default<int>(cfg["hitpoints"]);
-	} else {
-		hit_points_ = max_hit_points_;
-	}
-	goto_.x = lexical_cast_default<int>(cfg["goto_x"]) - 1;
-	goto_.y = lexical_cast_default<int>(cfg["goto_y"]) - 1;
-	waypoints_.clear();
-
-	if(cfg["moves"] != "") {
-		movement_ = lexical_cast_default<int>(cfg["moves"]);
-		if(movement_ < 0) {
-			attacks_left_ = 0;
-			movement_ = 0;
-		}
-	} else {
-		movement_ = max_movement_;
-	}
-	experience_ = lexical_cast_default<int>(cfg["experience"]);
-	resting_ = utils::string_bool(cfg["resting"]);
-	unrenamable_ = utils::string_bool(cfg["unrenamable"]);
-	if(cfg["alignment"]=="lawful") {
-		alignment_ = unit_type::LAWFUL;
-	} else if(cfg["alignment"]=="neutral") {
-		alignment_ = unit_type::NEUTRAL;
-	} else if(cfg["alignment"]=="chaotic") {
-		alignment_ = unit_type::CHAOTIC;
-	} else if(cfg["type"]=="") {
-		alignment_ = unit_type::NEUTRAL;
-	}
-
-	generate_name(state ? &(state->rng()) : 0);
-
-	game_events::add_events(cfg_.child_range("event"), type_);
-	// Make the default upkeep "full"
-	if(cfg_["upkeep"].empty()) {
-		cfg_["upkeep"] = "full";
-	}
-}
 void unit::write(config& cfg) const
 {
 	// If a location has been saved in the config, keep it

@@ -174,13 +174,6 @@ public:
 	void remove_overlay(const std::string& overlay) { overlays_.erase(std::remove(overlays_.begin(),overlays_.end(),overlay),overlays_.end()); }
 	const std::vector<std::string>& overlays() const { return overlays_; }
 
-	/**
-	 * Initialize this unit from a cfg object.
-	 *
-	 * @param cfg                 Configuration object from which to read the unit.
-	 * @param use_traits          ??
-	 * */
-	void read(const config& cfg, bool use_traits=true, game_state* state = 0);
 	void write(config& cfg) const;
 
 	void set_role(const std::string& role) { role_ = role; }
