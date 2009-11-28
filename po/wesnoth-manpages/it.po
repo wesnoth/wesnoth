@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "POT-Creation-Date: 2009-11-02 12:29+0100\n"
-"PO-Revision-Date: 2009-10-17 12:53+0200\n"
+"PO-Revision-Date: 2009-11-28 17:14+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -321,14 +321,14 @@ msgstr "B<-m, --multiplayer>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:128
-#, fuzzy
 msgid ""
 "runs a multiplayer game. There are additional options that can be used "
 "together with B<--multiplayer> as explained below. Only these additional "
 "options can follow B<--multiplayer>."
 msgstr ""
 "esegue una partita multigiocatore. Ci sono opzioni aggiuntive che possono "
-"essere usate con B<--mutiplayer>, come spiegato di seguito."
+"essere usate con B<--mutiplayer>, come spiegato di seguito. Solo queste "
+"opzioni aggiuntive possono seguire B<--multiplayer>."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:128
@@ -1088,12 +1088,11 @@ msgstr "B<passwd>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:150
-#, fuzzy
 msgid ""
 "The password used to gain admin privileges (via B</query admin >I<password>)."
 msgstr ""
-"La password da usare per dare i privilegi di amministratore. Di solito "
-"inizia con «admin »."
+"La password da usare per ottenere i privilegi di amministratore (con B</"
+"query admin >I<password>)."
 
 #: ../../doc/man/wesnothd.6:150
 #, no-wrap
@@ -1159,15 +1158,14 @@ msgstr "B<versions_accepted>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:166
-#, fuzzy
 msgid ""
 "A comma separated list of version strings to be accepted by the server. B<*> "
 "and B<?> from wildcard patterns are supported.  (defaults to the "
 "corresponding wesnoth version)"
 msgstr ""
 "Un elenco separato da virgole delle stringhe di versione che il server deve "
-"accettare. I caratteri jolly `*' e `?' sono ammessi (il valore predefinito è "
-"lo stesso della versione di wesnoth corrispondente)."
+"accettare. I caratteri jolly B<*> e B<?> sono ammessi (il valore predefinito "
+"è lo stesso della versione di wesnoth corrispondente)."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:168
