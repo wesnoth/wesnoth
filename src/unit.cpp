@@ -647,11 +647,6 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 
 	bool do_heal = false; // Track whether unit should get fully healed.
 
-	if(utils::string_bool(cfg_["random_gender"], false)) {
-		generate_gender(*t, true);
-		cfg_["gender"] = gender_string(gender_);
-	}
-
 	if(type_id()!=t->id()) {
 		do_heal = true; // Can't heal until after mods applied.
 		type_ = t->id();
