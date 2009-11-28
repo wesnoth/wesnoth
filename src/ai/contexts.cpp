@@ -340,6 +340,12 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 									current_team(),0,see_all)));
 	}
 
+	// deactivate terrain filtering if it's just the dummy 'matches nothing'
+	static const config only_not_tag("not");
+	if(remove_destinations && remove_destinations->to_config() == only_not_tag) {
+		remove_destinations = NULL;
+	}
+
 	for(std::map<map_location,paths>::iterator m = res.begin(); m != res.end(); ++m) {
 		foreach (const paths::step &dest, m->second.destinations)
 		{
