@@ -19,7 +19,7 @@
 #include "foreach.hpp"
 #include "time_of_day.hpp"
 
-
+#include <cstdio>
 
 time_of_day::time_of_day(const config& cfg)
                  : lawful_bonus(atoi(cfg["lawful_bonus"].c_str())),
