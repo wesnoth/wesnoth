@@ -22,6 +22,7 @@
 
 class unit;
 class unit_map;
+class unit_movement_type;
 
 #include "map_location.hpp"
 #include "team.hpp"
@@ -172,6 +173,19 @@ private:
 	int const total_movement_;
 	bool const ignore_unit_;
 	bool const ignore_defense_;
+};
+
+struct move_type_path_calculator : cost_calculator
+{
+	move_type_path_calculator(const unit_movement_type& mt, int movement_left, int total_movement, const team& t, const gamemap& map);
+	virtual double cost(const map_location& loc, const double so_far) const;
+
+private:
+	const unit_movement_type &movement_type_;
+	const int movement_left_;
+	const int total_movement_;
+	team const &viewing_team_;
+	gamemap const &map_;
 };
 
 /**

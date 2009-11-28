@@ -539,6 +539,40 @@ double shortest_path_calculator::cost(const map_location& loc, const double so_f
 	return move_cost + (defense_subcost + other_unit_subcost) / 10000.0;
 }
 
+move_type_path_calculator::move_type_path_calculator(const unit_movement_type& mt, int movement_left, int total_movement, team const &t, gamemap const &map)
+	: movement_type_(mt), movement_left_(movement_left),
+	  total_movement_(total_movement), viewing_team_(t), map_(map)
+{}
+
+// This is an simplified version of shortest_path_calculator (see above for explanation)
+double move_type_path_calculator::cost(const map_location& loc, const double so_far) const
+{
+	assert(map_.on_board(loc));
+	if (viewing_team_.shrouded(loc))
+		return getNoPathValue();
+
+	const t_translation::t_terrain terrain = map_[loc];
+	int const terrain_cost = movement_type_.movement_cost(map_, terrain);
+
+	if (total_movement_ < terrain_cost)
+		return getNoPathValue();
+
+	int remaining_movement = movement_left_ - static_cast<int>(so_far);
+	if (remaining_movement < 0)
+		remaining_movement = total_movement_ - (-remaining_movement) % total_movement_;
+
+	int move_cost = 0;
+
+	if (remaining_movement < terrain_cost) {
+		move_cost += remaining_movement;
+	}
+
+	move_cost += terrain_cost;
+
+	return move_cost;
+}
+
+
 emergency_path_calculator::emergency_path_calculator(const unit& u, const gamemap& map)
 	: unit_(u), map_(map)
 {}
