@@ -1801,6 +1801,7 @@ def inner_spellcheck(nav, value, spelldict):
     value = value.replace("male^", " ")
     value = value.replace("teamname^", " ")
     value = value.replace("team_name^", " ")
+    value = value.replace("weapon^", " ")
     value = value.replace("UI^", " ")
     if '<' in value:
         value = re.sub("<[^>]+>text='([^']*)'<[^>]+>", r"\1", value)
