@@ -507,7 +507,7 @@ void unit::generate_gender(const unit_type& type, bool random_gender, game_state
 }
 
 unit::unit(unit_map *unitmap, const unit_type *t, int side,
-		bool real_unit, unit_race::GENDER gender, std::string variation) :
+		bool real_unit, unit_race::GENDER gender) :
 	cfg_(),
 	loc_(),
 	advances_to_(),
@@ -518,7 +518,7 @@ unit::unit(unit_map *unitmap, const unit_type *t, int side,
 	underlying_id_(0),
 	type_name_(),
 	undead_variation_(),
-	variation_(variation),
+	variation_(),
 	hit_points_(0),
 	max_hit_points_(0),
 	experience_(0),

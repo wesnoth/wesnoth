@@ -1405,7 +1405,7 @@ void menu_handler::create_unit_2(mouse_handler& mousehandler)
 		gender = ut.genders().front();
 	}
 
-	unit chosen(&units_, &ut, 1, true, gender, "");
+	unit chosen(&units_, &ut, 1, true, gender);
 	chosen.new_turn();
 
 	//FIXME: the generate name option seems useless now, remove it
