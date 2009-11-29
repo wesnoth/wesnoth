@@ -84,6 +84,8 @@ public:
 	/** The type id of the unit */
 	const std::string& type_id() const { return type_; }
 	const unit_type* type() const;
+	/** throw an error about unknown unit type */
+	void unknown_unit_type_error(const std::string& type_id) const;
 
 	/** id assigned by wml */
 	const std::string& id() const { if (id_.empty()) return type_name(); else return id_; }
@@ -321,8 +323,9 @@ public:
 	 **/
 	unit& clone(bool is_temporary=true);
 
-	void generate_gender(const unit_type& type, bool random_gender,
-			game_state* state = 0);
+	unit_race::GENDER generate_gender(const std::string& type_id, bool random_gender, game_state* state = NULL);
+	unit_race::GENDER generate_gender(const config& cfg, game_state* state);
+
 	std::string image_mods() const;
 
 	/**
@@ -378,7 +381,7 @@ private:
 
 	bool unrenamable_;
 	int side_;
-	unit_race::GENDER gender_;
+	const unit_race::GENDER gender_;
 
 	fixed_t alpha_;
 

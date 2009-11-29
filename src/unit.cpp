@@ -189,7 +189,7 @@ unit::unit(unit_map* unitmap, const config& cfg,
 	image_mods_(),
 	unrenamable_(false),
 	side_(0),
-	gender_(),
+	gender_(generate_gender(cfg, state)),
 	alpha_(),
 	unit_formula_(),
 	unit_loop_formula_(),
@@ -256,13 +256,6 @@ unit::unit(unit_map* unitmap, const config& cfg,
 
 	// Prevent un-initialized variables
 	hit_points_=1;
-
-	if(cfg["gender"].empty()) {
-		bool random_gender = utils::string_bool(cfg_["random_gender"], false);
-		generate_gender(*type(), random_gender, state);
-	} else {
-		gender_ = string_gender(cfg["gender"]);
-	}
 
 	variation_ = cfg["variation"];
 
@@ -490,20 +483,34 @@ void unit::clear_status_caches()
 	units_with_cache.clear();
 }
 
-void unit::generate_gender(const unit_type& type, bool random_gender, game_state* state)
+unit_race::GENDER unit::generate_gender(const std::string& type_id, bool random_gender, game_state* state)
 {
-	const std::vector<unit_race::GENDER>& genders = type.genders();
-	// Once random gender is used, don't do it again.
-	// Such as when restoring a saved character.
-	cfg_["random_gender"] = "no";
-	if(genders.empty()) {
-		gender_ = unit_race::MALE;
-	} else if(random_gender == false || genders.size() == 1) {
-		gender_ = genders.front();
-	} else {
-		int random = state ? state->rng().get_random() : get_random();
-		gender_ = genders[random % genders.size()];
+	unit_type_data::unit_type_map::const_iterator i = unit_type_data::types().find_unit_type(type_id);
+	if (i == unit_type_data::types().end()) {
+		unknown_unit_type_error(type_id);
 	}
+	const unit_type& type = i->second;
+	const std::vector<unit_race::GENDER>& genders = type.genders();
+
+	if(genders.empty()) {
+		return unit_race::MALE;
+	} else if(random_gender == false || genders.size() == 1) {
+		return genders.front();
+	} else {
+		std::cout << genders.size() << "   genders \n";
+		int random = state ? state->rng().get_random() : get_random();
+		return genders[random % genders.size()];
+	}
+}
+
+unit_race::GENDER unit::generate_gender(const config& cfg, game_state* state)
+{
+	const std::string& gender = cfg["gender"];
+	if(!gender.empty())
+		return string_gender(gender);
+
+	bool random_gender = utils::string_bool(cfg_["random_gender"], false);
+	return generate_gender(cfg["type"], random_gender, state);
 }
 
 unit::unit(unit_map *unitmap, const unit_type *t, int side,
@@ -529,7 +536,8 @@ unit::unit(unit_map *unitmap, const unit_type *t, int side,
 	image_mods_(),
 	unrenamable_(false),
 	side_(side),
-	gender_(gender),
+	gender_(gender != unit_race::NUM_GENDERS ?
+			gender : generate_gender(t->id(), real_unit)),
 	alpha_(),
 	unit_formula_(),
 	unit_loop_formula_(),
@@ -576,9 +584,6 @@ unit::unit(unit_map *unitmap, const unit_type *t, int side,
 	units_(unitmap),
 	invisibility_cache_()
 {
-	if(gender_ == unit_race::NUM_GENDERS) {
-		generate_gender(*t, real_unit);
-	}
 
 	cfg_["upkeep"]="full";
 	advance_to(t, real_unit);
@@ -848,12 +853,19 @@ const unit_type* unit::type() const
 	if (i != unit_type_data::types().end()) {
 		return &i->second.get_gender_unit_type(gender_).get_variation(variation_);
 	}
+	//thow error
+	unknown_unit_type_error(type_id());
+	//shouldn't be reached
+	return NULL; 
+}
 
+void unit::unknown_unit_type_error(const std::string& type_id) const
+{
 	std::string error_message = _("Unknown unit type '$type|'");
 	utils::string_map symbols;
-	symbols["type"] = type_id();
+	symbols["type"] = type_id;
 	error_message = utils::interpolate_variables_into_string(error_message, &symbols);
-	ERR_NG << "unit of type " << type_id() << " not found!\n";
+	ERR_NG << "unit of type " << type_id << " not found!\n";
 	throw game::game_error(error_message);
 }
 
