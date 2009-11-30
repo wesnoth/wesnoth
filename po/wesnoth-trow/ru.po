@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: ru-trow\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-11-26 15:38+0100\n"
-"PO-Revision-Date: 2009-06-20 16:22+0400\n"
+"PO-Revision-Date: 2009-11-22 15:03+0300\n"
 "Last-Translator: Fedor Khod'kov <fedor76@istra.ru>\n"
 "Language-Team:\n"
 "MIME-Version: 1.0\n"
@@ -36,12 +36,12 @@ msgstr ""
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:10
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:4
 msgid "The Rise of Wesnoth"
-msgstr "Зарождение Веснота"
+msgstr "На заре Веснота"
 
 #. [campaign]: id=The_Rise_Of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:11
 msgid "TRoW"
-msgstr "ЗВ"
+msgstr "НЗВ"
 
 #. [campaign]: id=The_Rise_Of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:16
@@ -76,11 +76,10 @@ msgstr "Лорд"
 #. [campaign]: id=The_Rise_Of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:22
 msgid "(Expert level, 25 scenarios.)"
-msgstr ""
+msgstr "(Для опытных игроков, 25 сценариев.)"
 
 #. [campaign]: id=The_Rise_Of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:22
-#, fuzzy
 msgid ""
 "Lead Prince Haldric through the destruction of the Green Isle and across the "
 "Ocean to establish the very kingdom of Wesnoth itself. The confrontation "
@@ -91,7 +90,6 @@ msgstr ""
 "помогите основать не что-нибудь, а само королевство Веснот. Вас ждёт "
 "противостояние с Жевьяном, Владыкой личем...\n"
 "\n"
-"(Для опытных игроков, 25 сценариев.)"
 
 #. [about]
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:26
@@ -263,14 +261,14 @@ msgstr "Отец, я уже взрослый. Позволь мне возгла
 
 #. [message]: speaker=King Eldaric IV
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:105
-#, fuzzy
 msgid ""
 "You're showing initiative, son! I'm proud of you! Yes, you may lead our "
 "forces to battle, it is time - but I'll stay near to keep an eye on you. "
 "There is more to this raid than meets the eye, I think."
 msgstr ""
-"Ты берёшь быка за рога, сын мой! Горжусь тобой! Веди наше войско, но я "
-"останусь рядом и пригляжу за тобой."
+"Ты берёшь быка за рога, сын мой! Горжусь тобой! Веди наше войско — твоё "
+"время пришло, но я останусь рядом и пригляжу за тобой. Думаю, этот налёт — "
+"больше, чем кажется на первый взгляд."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:111
@@ -278,6 +276,8 @@ msgid ""
 "They're Wesfolk, reavers and thieves by nature; rare is the summer they do "
 "not raid us. What mystery is in it now?"
 msgstr ""
+"Это Весфольки, они прирождённые воры и разбойники; я не помню ни одного "
+"лета, чтоб они не нападали на нас. Что непонятного на этот раз?"
 
 #. [message]: speaker=King Eldaric IV
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:115
@@ -286,11 +286,14 @@ msgid ""
 "that could utterly destroy them, why would they compound their troubles by "
 "raising a quarrel with another king?"
 msgstr ""
+"Времена сейчас не самые обычные. Принц Саутбея собрал целое войско, чтобы "
+"смести их с лица земли; зачем же им умножать свои несчастья, ссорясь с ещё "
+"одним королём?"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:120
 msgid "Perhaps these are refugees fleeing his advance?"
-msgstr ""
+msgstr "Возможно они бегут от него?"
 
 #. [message]: speaker=King Eldaric IV
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:124
@@ -300,12 +303,16 @@ msgid ""
 "Even supposing they could win through us, why court the wrath of the greater "
 "kingdoms?"
 msgstr ""
+"Вряд ли. От Принца можно убежать в дикие земли; земли же к югу и востоку "
+"отсюда куда плотнее заселены нашим народом, они куда опаснее. Даже "
+"предположив, что они победят нас — зачем им гневить более сильные "
+"королевства?"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:129
 msgid ""
 "We must inquire of the survivors after we defeat them. Onward to victory!"
-msgstr ""
+msgstr "Как разобьём их — допросим выживших. Вперёд к победе!"
 
 #. [message]: speaker=Wesfolk Leader
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:133
@@ -2158,19 +2165,17 @@ msgstr "Ба! Будь по-твоему!"
 
 #. [unit]: id=Lady Jessene, type=$lady_store.type
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:256
-#, fuzzy
 msgid "Lady Jessene"
-msgstr "Леди Джессика"
+msgstr "Леди Джессен"
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:287
-#, fuzzy
 msgid ""
 "I am the Lady Jessene, a noble, a princess of the Wesfolk! I was betrayed by "
 "the Lich-Lords' dark pact with the orcs, in no small part because your fool "
 "Prince of Southbay convinced them that their immortal un-lives were over!"
 msgstr ""
-"Я — Джессика, весфолькская принцесса из знатного рода! Владыки личи предали "
+"Я — Джессен, весфолькская принцесса из знатного рода! Владыки личи предали "
 "меня ради союза с орками. Кстати, не последнюю роль в этом сыграло то, что "
 "ваш глупый Принц Саутбея решил их убедить, что их бессмертью пришёл конец!"
 
@@ -2299,9 +2304,8 @@ msgstr "А ещё лучше: Победите всех лидеров прот�
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:462
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:200
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:293
-#, fuzzy
 msgid "Death of Lady Jessene"
-msgstr "Смерть леди Джессики"
+msgstr "Смерть леди Джессен"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:253
@@ -2742,7 +2746,6 @@ msgstr ""
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:265
-#, fuzzy
 msgid ""
 "Okay. Let's un-petrify that lich and take his book, then get into the "
 "sewers. Umm, what language would that book be in?"
@@ -2800,15 +2803,14 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:340
-#, fuzzy
 msgid ""
 "INSCRIPTION: This monolith was erected by me, &lt;CHIPPED AWAY&gt;, first "
 "Mage of the good people of the Green Isle. By its power the Lich-Lord is "
 "bound in stone. To end the spell a noble of the line of Kings should utter "
 "the following..."
 msgstr ""
-"НАДПИСЬ: Этот монолит возведён мной, <СКОЛОТО>, первым Магом добрых людей "
-"Зелёного Острова. Его силой владыка лич обращён в камень. Чтобы снять "
+"НАДПИСЬ: Этот монолит возведён мной, &lt;СКОЛОТО&lt;, первым Магом добрых "
+"людей Зелёного Острова. Его силой владыка лич обращён в камень. Чтобы снять "
 "заклятие, потомок королевского рода должен сказать следующее..."
 
 #. [option]: speaker=Prince Haldric
@@ -2818,13 +2820,12 @@ msgstr "Ну что ж, произношу заклятье."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:399
-#, fuzzy
 msgid ""
 "The lich is free! Let's bash him and grab that book. That sounds like a job "
 "for you, Lady Jessene!"
 msgstr ""
 "Лич свободен! Теперь убьём его и утащим книгу. Похоже, это работа для тебя, "
-"леди Джессика!"
+"леди Джессен!"
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:403
@@ -3370,13 +3371,12 @@ msgstr ""
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:203
-#, fuzzy
 msgid ""
 "If there is no other way. May the bards forever sing of the valor of the "
 "Kings of Southbay! Jessene, about that book?"
 msgstr ""
 "Похоже, другого пути нет. Пусть барды всегда поют о доблести королей "
-"Саутбея! Джессика, что с книгой?"
+"Саутбея! Джессен, что с книгой?"
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:207
@@ -3434,13 +3434,12 @@ msgstr "Смерть короля Аддрорана IX"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:292
-#, fuzzy
 msgid ""
 "Several months pass. Jessene has translated Lich-Lord Caror's Book of Fire "
 "and Darkness. Prince Haldric is busy probing the secrets of the Ruby of Fire."
 msgstr ""
-"Прошло несколько месяцев. Джессика перевела Книгу Огня и Тьмы владыки "
-"Карора. Принц Хальдрик пытался постичь тайны Огненного Рубина."
+"Прошло несколько месяцев. Джессен перевела Книгу Огня и Тьмы владыки Карора. "
+"Принц Хальдрик пытался постичь тайны Огненного Рубина."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:297
@@ -3658,7 +3657,6 @@ msgstr "На Клируотер"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:589
-#, fuzzy
 msgid "To the Midlands &amp; Oldwood"
 msgstr "К Срединным землям и Древнему лесу"
 
@@ -3771,7 +3769,7 @@ msgstr "Кегрид"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:66
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:96
 msgid "Drakes"
-msgstr "Драки"
+msgstr "Дрейки"
 
 #. [side]: type=Drake Flameheart, id=Gerrick
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:60
@@ -3804,7 +3802,7 @@ msgid ""
 "pacifying the Drakes who live here. Oh my, it looks like they've rearmed!"
 msgstr ""
 "Все верно, это остров Старшего принца. Мы потратили кучу времени, укрощая "
-"драков, живущих здесь. О нет, они, похоже, снова взялись за оружие!"
+"дрейков, живущих здесь. О нет, они, похоже, снова взялись за оружие!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:209
@@ -4258,14 +4256,13 @@ msgstr ""
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:316
-#, fuzzy
 msgid ""
 "May the currents carry you swiftly, my friend. (whispered) Jessene, send "
 "word that a third of the fleet is to return to the Green Isle, to look for "
 "more survivors. If they return tell them to keep returning until no more "
 "survivors are found."
 msgstr ""
-"Попутных Вам течений, друг мой! (шёпотом) Джессика, распорядись, чтобы треть "
+"Попутных Вам течений, друг мой! (шёпотом) Джессен, распорядись, чтобы треть "
 "флота вернулась на Зелёный Остров, пусть посмотрят, не осталось ли ещё "
 "выживших. Если вернутся — скажи, пусть продолжают, пока не останется никого, "
 "кого можно спасти."
@@ -4527,7 +4524,6 @@ msgstr ""
 
 #. [message]: speaker=Lady Dionli
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:405
-#, fuzzy
 msgid ""
 "I suggest that we grant these humans the plains to the north and south of "
 "the Great River."
@@ -4744,7 +4740,7 @@ msgstr "Мухи, фу, везде! Аааах!"
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:260
 msgid "'Prince Haldric the Dragonbane' sounds rather nice."
-msgstr "«Принц Хальдрик, Убийца дракона» — звучит неплохо."
+msgstr "«Принц Хальдрик Драконобоец» — звучит неплохо."
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:265
@@ -4763,7 +4759,7 @@ msgstr ""
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:278
 msgid "I'm still not calling you 'the Dragonbane'."
-msgstr "Я все равно не буду звать тебя «Убийцей драконов»."
+msgstr "Я все равно не буду звать тебя «Драконобойцем»."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:317
@@ -5168,9 +5164,8 @@ msgstr "Лазутчик в чаще леса."
 
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:90
-#, fuzzy
 msgid "Jessene in Hiding"
-msgstr "Джессика в укрытии"
+msgstr "Джессен в укрытии"
 
 #. [message]: speaker=Lord Logalmier
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:115
@@ -5260,14 +5255,13 @@ msgstr "Труф"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:238
-#, fuzzy
 msgid ""
 "Haldric and his companions race across the plains to confront the resurgent "
 "orcish threat. On the eve of battle, Lady Jessene catches up with Haldric on "
 "a fog-covered plain."
 msgstr ""
 "Хальдрик со спутниками поспешили через равнину, чтобы противостоять новой "
-"орочьей угрозе. В канун битвы Леди Джессика нагнала Хальдрика в покрытом "
+"орочьей угрозе. В канун битвы Леди Джессен нагнала Хальдрика в покрытом "
 "туманом поле."
 
 #. [message]: speaker=Lady Jessene
@@ -5318,13 +5312,12 @@ msgstr ""
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:268
-#, fuzzy
 msgid ""
 "I have a plan. Jessene, remember that troll-hole? Here, take the Ruby of "
 "Fire, hide it in the hole."
 msgstr ""
-"У меня есть мысль. Джессика, помнишь нору троллей? Вот, держи Огненный "
-"Рубин, спрячь его там."
+"У меня есть мысль. Джессен, помнишь нору троллей? Вот, держи Огненный Рубин, "
+"спрячь его там."
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:272
@@ -5366,9 +5359,8 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:315
-#, fuzzy
 msgid "Lady Jessene soon departs. In the distance a voice booms:"
-msgstr "Леди Джессика вскоре ушла. Вдалеке гудел голос:"
+msgstr "Леди Джессен вскоре ушла. Вдалеке гудел голос:"
 
 #. [message]: speaker=Tan-Gagar
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:321
@@ -5434,13 +5426,12 @@ msgstr "Подкрепления! Нельзя пустить их к месту
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:464
-#, fuzzy
 msgid ""
 "We've defeated their vanguard. We have to meet the fleet before Jevyan "
 "destroys them and captures the ships. I hope Jessene makes it back soon."
 msgstr ""
 "Мы победили авангард. Надо встретить флот прежде, чем Жевьян его уничтожит и "
-"захватит корабли. Надеюсь, Джессика скоро вернется."
+"захватит корабли. Надеюсь, Джессен скоро вернется."
 
 #. [message]: speaker=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:485
@@ -5745,7 +5736,6 @@ msgstr "ЧТО?"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:138
-#, fuzzy
 msgid ""
 "I'll be dead. I mean we can't just say that we gave away the Ruby of Fire, "
 "or send Jevyan a letter. Well, we are going to say it - but that's not the "
@@ -5754,7 +5744,7 @@ msgid ""
 msgstr ""
 "Я буду мертв. Понимаешь, мы же не можем просто взять и сказать, что отдали "
 "Огненный Рубин, или написать Жевьяну письмо. Нет, мы, конечно, это скажем — "
-"но не в этом суть. Джессика, надо написать официально выглядящий договор, в "
+"но не в этом суть. Джессен, надо написать официально выглядящий договор, в "
 "которой говорится, что мы уступаем Огненный Рубин эльфам в обмен на эти "
 "земли."
 
@@ -5773,14 +5763,13 @@ msgstr ""
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:146
-#, fuzzy
 msgid ""
 "Haldric! I won't do it... I won't help. What is it with your kind, always "
 "rushing to a fool's death? Who'll lead these people? I...<i>we</i> need you "
 "alive"
 msgstr ""
 "Хальдрик! Я этого не сделаю... Я не помогу тебе. Такие, как ты, всегда ищут "
-"глупой смерти. А кто поведет этих людей?"
+"глупой смерти. А кто поведет этих людей? Ты нужен мне... <i>нам</i> живым."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:150
@@ -5789,6 +5778,8 @@ msgid ""
 "everything turns on convincing Jevyan, it's the only way we can possibly "
 "keep the orc hordes off our necks."
 msgstr ""
+"Ты и поведёшь. Без тебя я бы не спрвился, Джессен. Но всё зависит от того, "
+"сможем ли мы убедить Жевьяна. Иначе орки не оставят нас в покое."
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:154
@@ -5797,13 +5788,12 @@ msgstr "Хальдрик, это нелепо! Я..."
 
 #. [message]: speaker=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:187
-#, fuzzy
 msgid ""
 "There is no way I'm letting you go through with this, sir! Over our dead "
 "bodies, right Jessene?"
 msgstr ""
 "Я ни в коем случае не дам Вам поступить так, сэр! Только через наши трупы, "
-"правильно, Джессика?"
+"правильно, Джессен?"
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:191
@@ -5859,14 +5849,13 @@ msgstr ""
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:221
-#, fuzzy
 msgid ""
 "Very well, if you can't be deterred. Remember, you <i>must</i> be slain by "
 "the hand of Jevyan himself. We can't have an illiterate orc or mindless "
 "skeleton getting the treaty. We will honor your sacrifice."
 msgstr ""
-"Хорошо, если тебя невозможно отговорить. Запомните, Вы ДОЛЖНЫ пасть от рук "
-"самого Жевьяна. Нельзя, чтобы договор достался неграмотному орку или "
+"Хорошо, если тебя невозможно отговорить. Запомните, Вы <i>должны</i> пасть "
+"от рук самого Жевьяна. Нельзя, чтобы договор достался неграмотному орку или "
 "безмозглому скелету. Мы почтим Вашу жертву."
 
 #. [message]: speaker=Commander Aethyr
@@ -6406,13 +6395,12 @@ msgstr ""
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:163
-#, fuzzy
 msgid ""
 "But dark deeds have been done on all sides. There is now a secret that only "
 "Jessene and I share. I must have your word that what I say will never be "
 "uttered again."
 msgstr ""
-"Но темные деяния совершались со всех сторон. Только мы с Джессикой знаем "
+"Но темные деяния совершались со всех сторон. Только мы с Джессен знаем "
 "тайну. Дайте мне слово, что сказанное мной никогда не будет произнесено "
 "вновь."
 
@@ -6473,10 +6461,9 @@ msgstr "Пусть Боги Света смилостивятся над тоб�
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:202
-#, fuzzy
 msgid "Jessene, you hid the ruby away in that vile Troll Hole? Didn't you?"
 msgstr ""
-"Джессика, ты спрятала Рубин в этой отвратительной норе троллей? Ведь так?"
+"Джессен, ты спрятала Рубин в этой отвратительной норе троллей? Ведь так?"
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:206
@@ -6615,7 +6602,6 @@ msgstr "А что будет со мной?"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:293
-#, fuzzy
 msgid ""
 "There are many Wesfolk amongst the remains of my people. We must stay united "
 "under one banner. I will need you by my side if there is any hope of "
@@ -6624,12 +6610,13 @@ msgid ""
 msgstr ""
 "Среди остатков моего народа — много весфольков. Мы должны остаться едины, "
 "под одним флагом. Оставайся со мной, ты понадобишься мне, чтобы построить "
-"настоящее «Королевство Веснот». Пойдём, у нас впереди много дел."
+"настоящее «Королевство Веснот». Я... я думаю, корона будет неплохо смотреться "
+"с твоими огненными волосами, Джессен."
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:297
 msgid "I am not to be bought with trinkets, Haldric."
-msgstr ""
+msgstr "Меня не купишь побрякушками, Хальдрик."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:301
@@ -6638,6 +6625,9 @@ msgid ""
 "earned both. We can't make this work without your people...and I don't think "
 "I can make it work without <i>you</i>."
 msgstr ""
+"Тогда возьми мою руку, Джессен, если ты не примешь корону или королевство. "
+"Ты заслужила и то, и другое. Мы не справимся без твоих людей... и я не "
+"думаю, что справлюсь без <i>тебя</i>."
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:306
@@ -6646,6 +6636,9 @@ msgid ""
 "Dragonbane, will need someone to remind him that he does not eat lighting "
 "and fart thunder. I...accept."
 msgstr ""
+"Возможно. И потом, героическому королю Веснота, Хальдрику Драконобойцу, "
+"понадобится кто-то, кто напомнит ему, что он не есть молнии и не "
+"испражняется громом. Я... согласна."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:310
@@ -6657,6 +6650,11 @@ msgid ""
 "refugee peoples from the Green Isles became fused into one in the new "
 "kingdom."
 msgstr ""
+"Потом никто не мог сказать, что брак Хальдрика и Джессен был таким уж "
+"мирным. Но все соглашались: ни один из них не мог долго вынести без другого. "
+"Она родила ему крепких детей, в которых смешалась кровь столь разношёрстных "
+"предков. Их примеру последовали многие, и два народа-беженца с Зелёного "
+"Острова сплавились в единый народ нового королевства."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:315
@@ -7018,12 +7016,11 @@ msgstr "Эй, можешь поносить троллей, но НЕ норы!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-nlmsg.cfg:54
-#, fuzzy
 msgid ""
 "Well, at least we don't have to contend with the undead. No offense Jessene."
 msgstr ""
 "Во всяком случае, не приходится иметь дело с мертвецами. Не обижайся, "
-"Джессика."
+"Джессен."
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-nlmsg.cfg:58
@@ -7241,7 +7238,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-story.cfg:127
-#, fuzzy
 msgid ""
 "Several days later Prince Haldric departs in his ship, the Eldaric, his home "
 "and the Green Isle lost to him forever. Before him lay a vast expanse of "
@@ -7250,7 +7246,7 @@ msgid ""
 msgstr ""
 "Через несколько дней принц Хальдрик отплыл на корабле, «Элдарике», и навсегда "
 "покинул свой дом и Зелёный остров. Перед ним лежали просторы бушующего моря, "
-"загадочная суша, о которой говорила леди Джессика, и еще более экзотические "
+"загадочная суша, о которой говорила леди Джессен, и еще более экзотические "
 "земли далеко на востоке."
 
 #. [part]

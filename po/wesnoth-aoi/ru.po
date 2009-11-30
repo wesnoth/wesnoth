@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-09-27 20:27+0200\n"
-"PO-Revision-Date: 2009-10-20 18:36+0200\n"
-"Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
+"PO-Revision-Date: 2009-11-22 15:19+0300\n"
+"Last-Translator: Fedor Khod'kov <fedor76@istra.ru>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -59,7 +59,6 @@ msgstr "(для новичков, 7 сценариев)"
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:22
-#, fuzzy
 msgid ""
 "Defend the forests of the elves against the first orcs to reach the Great "
 "Continent, learning valuable tactics as you do so.\n"
@@ -68,7 +67,6 @@ msgstr ""
 "Защитите леса эльфов от первых орков Большого Континента и научитесь ценным "
 "военным хитростям.\n"
 "\n"
-"(Для новичков, 7 сценариев)"
 
 #. [about]
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:35
@@ -134,17 +132,16 @@ msgstr "Орки"
 
 #. [part]
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:63
-#, fuzzy
 msgid ""
 "The arrival of humans and orcs caused turmoil among the nations of the Great "
 "Continent. Elves, previously in uneasy balance with dwarves and others, had "
 "for centuries fought nothing more than an occasional skirmish. They were to "
 "find themselves facing conflicts of a long-forgotten intensity."
 msgstr ""
-"Появление людей и орков нарушило покой жителей Большого Континента. Эльфы не "
-"без труда сохраняли мир с гномами и другими расами, и веками не знали ничего "
-"крупнее случайных стычек. И вот они оказались перед лицом столкновений давно "
-"забытого размаха."
+"Появление людей и орков вызвало смятение промеж жителей Большого Континента. "
+"Эльфы не без труда сохраняли мир с гномами и другими расами, и веками не "
+"знали ничего крупнее случайных стычек. И вот они оказались перед лицом "
+"столкновений давно забытого размаха."
 
 #. [part]
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:67
@@ -543,7 +540,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/An_Orcish_Incursion/scenarios/3_Wasteland.cfg:66
-#, fuzzy
 msgid ""
 "Erlornas was near-certain they would find orcs there. No clan of dwarves "
 "would break their ancient treaties with the elves in this way; humans were "
@@ -773,15 +769,14 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/An_Orcish_Incursion/scenarios/3_Wasteland.cfg:328
-#, fuzzy
 msgid ""
 "The expected relief caught up with them a few days later. The following "
 "morning they took the field against a far larger host of orcs. The battle "
 "ended in a draw; the war raged on for years..."
 msgstr ""
-"Они ждали ещё несколько дней, пока наконец не пришла долгожданная помощь. "
-"Следующим же утром они вышли против значительно превосходящих сил орков. Ни "
-"одна из сторон не смогла выиграть битву; долгие годы полыхало пламя войны..."
+"Долгожданная подмога догнала их несколько дней спустя. Следующим же утром "
+"они вышли против значительно превосходящих сил орков. Ни одна из сторон не "
+"смогла выиграть битву; долгие годы полыхало пламя войны..."
 
 #. [scenario]: id=4_Valley_of_Trolls
 #: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:9
@@ -869,7 +864,6 @@ msgstr ""
 
 #. [message]: id=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:181
-#, fuzzy
 msgid ""
 "You know well enough... Rualsha. That name sounds everywhere we go since the "
 "incursion began. That orc is much more than a mere marauding bandit in "
@@ -879,7 +873,7 @@ msgid ""
 msgstr ""
 "Ты ведь всё понимаешь... Руалша — имя, что звучит везде, где бы мы ни шли, с "
 "самого начала вторжения. Этот орк не просто грабитель, что ищет лёгкой "
-"наживы. Ему нужна эта земля. *НАША* земля. Он собрался завоевать её. Я "
+"наживы. Ему нужна эта земля. <i>НАША</i> земля. Он собрался завоевать её. Я "
 "убеждён в этом. Прежде, чем вернуться, мы должны узнать как можно больше о "
 "его намерениях."
 
@@ -994,7 +988,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:291
-#, fuzzy
 msgid ""
 "During their retreat, the pass was crossed by another army moving in the "
 "opposite direction. Orcs were back south of the pass, and this time they "
@@ -1006,13 +999,12 @@ msgstr ""
 
 #. [message]: role=Advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:301
-#, fuzzy
 msgid ""
 "We can't get through, my Lord. These whelps are not individually very "
 "dangerous, but there are huge numbers of them."
 msgstr ""
-"Мы не можем прорваться, господин. Поодиночке их молодняк не очень силён, но "
-"число их слишком велико."
+"Мы не можем прорваться, мой господин. Поодиночке их молодняк не очень силён, "
+"но число их слишком велико."
 
 #. [message]: id=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:305
@@ -1045,7 +1037,7 @@ msgid ""
 "some cavalry support. When they attempted the pass again, they found not "
 "trolls but something worse - an orcish army approaching from the north."
 msgstr ""
-"Несколько дней спустя прибыло подкрепление — ударный отряд пограничников при "
+"Несколько дней спустя прибыло подкрепление — ударный отряд егерей при "
 "поддержке конницы. Они снова попытались пройти перевал, но обнаружили там не "
 "только троллей, но нечто худшее — армию орков, идущую с севера."
 
@@ -1067,7 +1059,6 @@ msgstr "Линаера Быстрая"
 
 #. [part]
 #: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:24
-#, fuzzy
 msgid ""
 "After a day of hard-earned rest the elves marched north again. This was "
 "unknown country, not frequented even by Wesmere's furthermost-faring scouts."
@@ -1411,9 +1402,9 @@ msgid ""
 "Ka'lian has deliberated, and asks you to defeat Rualsha quickly before he "
 "can muster a full invasion force."
 msgstr ""
-"Мой господин! Мы скакали пять дней и наконец догнали Вас! Совет переговорил "
-"и пожелал, чтобы Вы победили Руалшу, пока он не собрал все силы для "
-"вторжения."
+"Мой господин! Мы скакали пять дней и наконец догнали Вас! Ка-лиан "
+"переговорил и пожелал, чтобы Вы победили Руалшу, пока он не собрал все силы "
+"для вторжения."
 
 #. [message]: speaker=Rualsha
 #: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:224
