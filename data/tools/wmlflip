@@ -3,11 +3,13 @@
 wmlflip -- coordinate transformation for .cfg macro calls.
 
 Modify macro coordinate arguments in a .cfg file.  Use this if you've
-mirror-reversed a map and need to change coordinate-using macros.
+mirror-reversed a map and need to change coordinate-using macros, or
+cropped one and need to translate map coordinates.
+
 Takes a cross-reference of all known macros and looks for formals that
 are either X, Y, *_X, or _Y, so it's guaranteed to catch everything.
 
-Note: will not transform coorinates given as bare attribute values in, say,
+Note: will not transform coordinates given as bare attribute values in, say,
 UnitWML. This should be fixed.
 
 Options:
@@ -16,6 +18,8 @@ Options:
               map dimensions.
 
     -x        Coordinate transformation for a horizontally flipped map.
+
+    -t        Translate - shift coordinates by specified xd,yd offsets
 
     -v        Enable debugging output.
 
@@ -215,7 +219,8 @@ if __name__ == '__main__':
     flip_x = flip_y = False
     verbose = 0
     mapfile = None
-    (options, arguments) = getopt.getopt(sys.argv[1:], "m:xyv")
+    translate = False
+    (options, arguments) = getopt.getopt(sys.argv[1:], "m:txyv")
     
     for (switch, val) in options:
         if switch in ('-h', '--help'):
@@ -223,6 +228,8 @@ if __name__ == '__main__':
             sys.exit(0)
         elif switch in ('-m'):
             mapfile = val
+        elif switch in ('-t'):
+            translate = True
         elif switch in ('-x'):
             flip_x = True
         elif switch in ('-y'):
@@ -245,6 +252,10 @@ if __name__ == '__main__':
         print >>sys.stderr, "X flip transformation needs to know the map size.."
         sys.exit(0)
 
+    if translate:
+        dx = int(arguments[0])
+        dy = int(arguments[0])
+
     # Are we doing file transformations?
     if arguments:
         relevant = relevant_macros()
@@ -255,7 +266,7 @@ if __name__ == '__main__':
 
             (content, pairs) = transformables(filename, relevant, verbose > 1)
 
-            # Extract the existing coordimates as numbers
+            # Extract the existing coordinates as numbers
             source = []
             for ((xs, xe), (ys, ye)) in pairs:
                 x = int(content[xs:xe])
@@ -268,12 +279,16 @@ if __name__ == '__main__':
     
                 # Note: This is the *only* part of this code that is
                 # specific to a particular transform.  The rest of the
-                # code doesn't care how the target pairs are derives from
-                # the source ones.  We could do matrix algebra here, but
-                # beware the effects of hex-grid transformation.
+                # code doesn't care how the target pairs are derived
+                # from the source ones.  We could do arbitrary matrix
+                # algebra here, but beware the effects of hex-grid
+                # transformation.
                 if flip_x:
                     yn = y
                     xn = mx - x - 1
+                if translate:
+                    yn += yd
+                    xn += xd
 
                 # This is generic again
                 target.append((xn, yn))
@@ -282,7 +297,7 @@ if __name__ == '__main__':
 
             # Perform the actual transformation
             for (((xs, xe), (ys, ye)), (xn, yn)) in zip(pairs, target):
-                content = content[:ys] +`yn` + content[ye:]
+                content = content[:ys] + `yn` + content[ye:]
                 content = content[:xs] + `xn` + content[xe:]
 
             fp = open(filename, "w")
