@@ -433,12 +433,6 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 		}
 		else {
 			// we will now temporary move next to the enemy
-			int movement_left = u->second.movement_left();
-			units_.move(src, attack_from);
-			// status can be different there
-			unit::clear_status_caches();
-			u = units_.find(attack_from);
-
 			paths::dest_vect::const_iterator itor =
 					current_paths_.destinations.find(attack_from);
 			if(itor == current_paths_.destinations.end()) {
@@ -447,14 +441,19 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 				return false;
 			}
 			// update movement_left as if we did the move
-			u->second.set_movement(itor->move_left);
+			int move_left_dst = itor->move_left;
+			int move_left_src = u->second.movement_left();
+			u->second.set_movement(move_left_dst);
 
-			int choice = show_attack_dialog(attack_from, clicked_u->first);
-
-			// revert the temporary move
-			units_.move(attack_from, src);
+			int choice = -1;
+			// block where we temporary move the unit
+			{
+				temporary_unit_mover temp_mover(units_, src, attack_from);
+				choice = show_attack_dialog(attack_from, clicked_u->first);
+			}
+			// restore unit as before
 			u = units_.find(src);
-			u->second.set_movement(movement_left);
+			u->second.set_movement(move_left_src);
 			u->second.set_standing();
 
 			if (choice < 0) {
