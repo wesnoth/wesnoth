@@ -12,6 +12,9 @@ macro arguments.  Also catches WML-fragment arguments of the form
 (x,y=mmm,nnn), and x= y= pairs on adjacent lines as in UnitWML
 declrations (but will fail if the x= line has a comment).
 
+Two cases this will *not* handle: Interleaved coordinate list
+literals like x=1,2,3,4,5, and ranges like x=4-6.
+
 Options:
     -m        Argument of this switch should name the map file.
               Required, because the coordinate transform needs to know the
