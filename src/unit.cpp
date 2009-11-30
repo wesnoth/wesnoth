@@ -497,7 +497,6 @@ unit_race::GENDER unit::generate_gender(const std::string& type_id, bool random_
 	} else if(random_gender == false || genders.size() == 1) {
 		return genders.front();
 	} else {
-		std::cout << genders.size() << "   genders \n";
 		int random = state ? state->rng().get_random() : get_random();
 		return genders[random % genders.size()];
 	}
