@@ -7,10 +7,10 @@ mirror-reversed a map and need to change coordinate-using macros, or
 cropped one and need to translate map coordinates.
 
 Takes a cross-reference of all known macros and looks for formals that
-are either X, Y, *_X, or _Y, so it's guaranteed to catch everything.
-
-Note: will not transform coordinates given as bare attribute values in, say,
-UnitWML. This should be fixed.
+are either X, Y, *_X, or _Y, so it's guaranteed to catch all relevant
+macro arguments.  Also catches WML-fragment arguments of the form
+(x,y=mmm,nnn), and x= y= pairs on adjacent lines as in UnitWML
+declrations (but will fail if the x= line has a comment).
 
 Options:
     -m        Argument of this switch should name the map file.
@@ -25,10 +25,13 @@ Options:
 
     -h        Emit a help message and quit.
 
+If your offsets are negative (and thus led with '-') insert -- after the
+options to pacify the argument parser.
+
 More transformations would be easy to write.
 """
 
-import sys, os, time, getopt, cStringIO
+import sys, os, time, getopt, cStringIO, re
 from wesnoth.wmltools import *
 
 class ParseArgs:
@@ -190,22 +193,33 @@ def transformables(filename, relevant, verbose):
     # Filter out irrelevant calls.
     parsed = filter(lambda x: x[0] in relevant, calls.parsed)
 
-    # Derive list of coordinate pair locations.
+    # Extract coordinate pair locations from macro arguments.
     pairs = []
     for (name, arglocs) in parsed:
         (have_x, have_y) = relevant[name]
         pairs.append((arglocs[have_x], arglocs[have_y]))
 
-    # FIXME: extract spans associated with x,y  attributes, too.
+    # Extract spans associated with x,y attributes.
+    for m in re.finditer("x,y=([0-9]+),([0-9]+)", content):
+        pairs.append(((m.start(1), m.end(1)), (m.start(2), m.end(2))))
 
-    # Transform these back to front so later changes won't screw up earlier ones
+    # Extract spans associated with x= y= on adjacent lines.
+    for m in re.finditer(r"x=([0-9]+)\s+y=([0-9]+)", content):
+        pairs.append(((m.start(1), m.end(1)), (m.start(2), m.end(2))))
+
+    # More pair extractions can go here.
+
+    # Sort by start of the x coordinate, then reverse the list,
+    # so later changes won't screw up earlier ones.
+    # Presumes that coordinate pairs are never interleaved.
+    pairs.sort(lambda p, q: cmp(p[0][0], q[0][0]))
     pairs.reverse()
 
     # Return the file content as a string and the transformable extents in it.
     return (content, pairs)
 
 def mapsize(filename):
-    "Return the size of a specified mappfile."
+    "Return the size of a specified mapfile."
     x = y = 0
     for line in open(filename):
         if "," in line:
@@ -244,7 +258,7 @@ if __name__ == '__main__':
         (mx, my) = mapsize(mapfile)
         print >>sys.stderr, "%s is %d wide by %d high" % (mapfile, mx, my)
 
-    if arguments and not flip_x:
+    if arguments and not flip_x and not translate:
         print >>sys.stderr, "No coordinate transform is specified."
         sys.exit(0)
 
@@ -253,8 +267,8 @@ if __name__ == '__main__':
         sys.exit(0)
 
     if translate:
-        dx = int(arguments[0])
-        dy = int(arguments[0])
+        dx = int(arguments.pop(0))
+        dy = int(arguments.pop(0))
 
     # Are we doing file transformations?
     if arguments:
@@ -287,8 +301,8 @@ if __name__ == '__main__':
                     yn = y
                     xn = mx - x - 1
                 if translate:
-                    yn += yd
-                    xn += xd
+                    yn = y + dy
+                    xn = x + dx
 
                 # This is generic again
                 target.append((xn, yn))
