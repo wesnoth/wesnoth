@@ -2830,6 +2830,20 @@ temporary_unit_placer::~temporary_unit_placer()
 	}
 }
 
+temporary_unit_mover::temporary_unit_mover(unit_map& m, const map_location& src,  const map_location& dst)
+	: m_(m), src_(src), dst_(dst), temp_(m.extract(dst))
+{
+	m.move(src_, dst_);
+}
+
+temporary_unit_mover::~temporary_unit_mover()
+{
+	m_.move(dst_, src_);
+	if(temp_) {
+		m_.insert(temp_);
+	}
+}
+
 std::string unit::image_mods() const{
 	std::stringstream modifier;
 	if(flag_rgb_.size()){

@@ -523,6 +523,23 @@ private:
 };
 
 /**
+ * This object is used to temporary move a unit in the unit map, swapping out
+ * any unit that is already there.  On destruction, it restores the unit map to
+ * its original.
+ */
+struct temporary_unit_mover
+{
+	temporary_unit_mover(unit_map& m, const map_location& src,  const map_location& dst);
+	~temporary_unit_mover();
+
+private:
+	unit_map& m_;
+	const map_location& src_;
+	const map_location& dst_;
+	std::pair<map_location,unit> *temp_;
+};
+
+/**
  * Gets a checksum for a unit.
  *
  * In MP games the descriptions are locally generated and might differ, so it
