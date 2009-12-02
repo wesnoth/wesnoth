@@ -6,17 +6,19 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth\n"
+"Project-Id-Version: Battle for Wesnoth 1.7.9\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-11-26 15:38+0100\n"
-"PO-Revision-Date: 2008-07-05 19:54+0300\n"
-"Last-Translator: Artis Rozentāls <artis.rozentals@gmail.com>\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2009-12-02 17:55+0300\n"
+"Last-Translator: Reinis Danne <rei4dan@gmail.com>\n"
+"Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
+"X-Poedit-Language: Latvian\n"
+"X-Poedit-Country: LATVIA\n"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:5
@@ -26,7 +28,7 @@ msgstr "Saspiesti saglabāšanas faili"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:12
 msgid "Confirm deleting saves"
-msgstr ""
+msgstr "Apstiprināt saglabāto spēļu izdzēšanu"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:19
@@ -35,14 +37,13 @@ msgstr "Ritināt ar peli"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:26
-#, fuzzy
 msgid "Middle-click Scrolling"
-msgstr "Ritināt ar peli"
+msgstr "Vidējā peles taustiņa klikšķa ritināšana"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:33
 msgid "Keep scrolling when mouse leaves window"
-msgstr ""
+msgstr "Turpināt ritināšanu, kad peles kursors atstāj logu"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:40
@@ -57,7 +58,7 @@ msgstr "Kustīgs titulekrāns"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:54
 msgid "Unit Standing Animations"
-msgstr "Kustība stāvošās vienībās"
+msgstr "Kustības stāvošās vienībās"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:61
@@ -67,14 +68,14 @@ msgstr "Rādīt kaujas"
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:68
 msgid "Ping Timeout"
-msgstr ""
+msgstr "Ehotesta noildze"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:69
 msgid ""
 "Number of seconds to wait for a ping reply before we time out. Disable with "
 "0."
-msgstr ""
+msgstr "Cik sekundes gaidīt pirms iestājas ehotesta noildze? Atslēgt ar 0."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:79
@@ -125,7 +126,7 @@ msgid ""
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
 "Cīņasspars:\n"
-"Vienalga vai šis uzbrukums tiek lietots ofensīvā vai aizsardzībā, cīņa "
+"Vienalga vai šis uzbrukums tiek lietots uzbrukumā vai aizsardzībā, cīņa "
 "turpināsies līdz viena no vienībām uzvarēs vai tiks veikti 30 uzbrukumi."
 
 #. [chance_to_hit]: id=magical
@@ -150,7 +151,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:781
 #: data/core/macros/abilities.cfg:689
 msgid "firststrike"
-msgstr "pirmais uzbrukums"
+msgstr "pirmais sitiens"
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:784
@@ -166,9 +167,8 @@ msgstr ""
 #. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1240
 #: src/actions.cpp:1107
-#, fuzzy
 msgid "female^slowed"
-msgstr "lojāla"
+msgstr "sapīta"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [else]
@@ -186,9 +186,8 @@ msgstr "dziedē +4"
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
 #: data/core/macros/abilities.cfg:11
-#, fuzzy
 msgid "female^heals +4"
-msgstr "veselīga"
+msgstr "dziedē +4"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
@@ -212,9 +211,8 @@ msgstr "dziedē"
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
 #: data/core/macros/abilities.cfg:31
-#, fuzzy
 msgid "female^heals +8"
-msgstr "veselīga"
+msgstr "dziedē +8"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:51
@@ -333,12 +331,12 @@ msgstr "Tulkojums čehu valodā"
 #. [about]
 #: data/core/about.cfg:1245
 msgid "Danish Translation"
-msgstr "Dāņu valodas tulkojums"
+msgstr "Tulkojums dāņu valodā"
 
 #. [about]
 #: data/core/about.cfg:1276
 msgid "Dutch Translation"
-msgstr "Nīderlandiešu valodas tulkojums"
+msgstr "Tulkojums nīderlandiešu valodā"
 
 #. [about]
 #: data/core/about.cfg:1337
@@ -347,9 +345,8 @@ msgstr "Tulkojums angļu valodā (GB)"
 
 #. [about]
 #: data/core/about.cfg:1350
-#, fuzzy
 msgid "English (Shaw) Translation"
-msgstr "Tulkojums angļu valodā (GB)"
+msgstr "Tulkojums angļu valodā (Shaw)"
 
 #. [about]
 #: data/core/about.cfg:1368
@@ -408,9 +405,8 @@ msgstr "Tulkojums ungāru valodā"
 
 #. [about]
 #: data/core/about.cfg:1790
-#, fuzzy
 msgid "Icelandic translation"
-msgstr "Tulkojums itāļu valodā"
+msgstr "Tulkojums īslandiešu valodā"
 
 #. [about]
 #: data/core/about.cfg:1800
@@ -454,9 +450,8 @@ msgstr "Tulkojums maķedoniešu valodā"
 
 #. [about]
 #: data/core/about.cfg:1934
-#, fuzzy
 msgid "Marathi Translation"
-msgstr "Tulkojums latīņu valodā"
+msgstr "Tulkojums marati valodā"
 
 #. [about]
 #: data/core/about.cfg:1943
@@ -525,15 +520,13 @@ msgstr "Tulkojums valensiešu valodā (Katalānas dienvidu)"
 
 #. [about]
 #: data/core/about.cfg:2313
-#, fuzzy
 msgid "Vietnamese Translation"
-msgstr "Tulkojums ķīniešu valodā"
+msgstr "Tulkojums vjetnamiešu valodā"
 
 #. [about]
 #: data/core/about.cfg:2320
-#, fuzzy
 msgid "RACV's Translation"
-msgstr "Tulkojums ķīniešu valodā"
+msgstr "RACVa tulkojums"
 
 #. [about]
 #: data/core/about.cfg:2327
@@ -580,15 +573,14 @@ msgstr "Ieroču īpašības"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=factions_section
 #: data/core/help.cfg:67 src/help.cpp:1284 src/help.cpp:1286
-#, fuzzy
 msgid "Factions"
-msgstr "Frakcija"
+msgstr "Frakcijas"
 
 #. [section]: id=terrains
 #. [topic]: id=..terrains
 #: data/core/help.cfg:74 data/core/help.cfg:469
 msgid "Terrains"
-msgstr "Apgabali"
+msgstr "Apvidi"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
@@ -616,7 +608,7 @@ msgid ""
 "attacking with them.\n"
 "\n"
 msgstr ""
-"Dažiem ieročiem ir īpašības kas palielina to efektivitāti.\n"
+"Dažiem ieročiem ir īpašības, kas palielina to uzbrukuma efektivitāti.\n"
 "\n"
 
 #. [topic]: id=.unknown_unit
@@ -634,8 +626,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Par šo vienību pašlaik nav informācijas. Tās apraksts būs pieejams, kad "
-"būsiet to sastapuši spēlē."
+"Šī vienība pašlaik ir nezināma. Tā ir jāatrod spēlē, lai varētu apskatīt tās "
+"aprakstu."
 
 #. [topic]: id=introduction_topic
 #: data/core/help.cfg:126
@@ -675,9 +667,9 @@ msgid ""
 "of the game. For more detailed information on special situations and "
 "exceptions, please follow the links included."
 msgstr ""
-"Šīs lappuses satur visu, ko nepieciešams zināt lai spēlētu \"Kauju par "
+"Šīs lapaspuses satur visu, ko nepieciešams zināt, lai spēlētu \"Kauju par "
 "Vesnotu\". Spēlējot tās tiks papildinātas ar jaunu informāciju, kad jūs "
-"saskarsieties ar jauniem spēles elementiem. Detalizētāku īpašu situāciju un "
+"saskarsieties ar jauniem spēles elementiem. Detalizētāki īpašu situāciju un "
 "izņēmumu apraksti pieejami sekojot iekļautajām saitēm."
 
 #. [topic]: id=fundamentals
@@ -694,7 +686,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Vislabāk spēles pamatus iespējams apgūt izmantojot <italic>text=Pamācību</"
+"Vislabāk spēles pamatus iespējams apgūt izmantojot <italic>text=Apmācību</"
 "italic>, kas pieejama no  galvenās izvēlnes. Pēc tam ieteicams spēlēt "
 "kampaņu \"Troņa mantinieks\" - galvenajā izvēlnē izvēlieties "
 "<italic>text=Kampaņa</italic> pēc tam <italic>text=\"Troņa mantinieks\"</"
@@ -703,7 +695,6 @@ msgstr ""
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:147
-#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
 "such as the information displayed in the status pane, a brief description "
@@ -713,8 +704,8 @@ msgid ""
 msgstr ""
 "Spēlējot paturiet prātā, ka ja Jūs novietosiet peles kursoru virs spēles "
 "elementiem daudzos gadījumos īss to aprakts tiks parādīts statusa joslā. Tas "
-"ir īpaši noderīgi pirmo reizi saskaroties ar jaunām <ref>dst=.."
-"abilities_section text='spējām'</ref>."
+"ir īpaši noderīgi pirmo reizi saskaroties ar jaunām <ref>dst='.."
+"abilities_section' text='spējām'</ref>."
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:152
@@ -733,11 +724,11 @@ msgid ""
 "other people across the Internet."
 msgstr ""
 "Spēles darbība norisinās virknē kauju, sauktām par scenārijiem. Katrā "
-"scenārijā Jūsu kareivji cīnās pret viena vai vairāku pretinieku kareivji. "
+"scenārijā jūsu kareivji cīnās pret viena vai vairāku pretinieku kareivjiem. "
 "Jūs varat spēlēt pret datoru vai ar draugiem, katrs no kuriem pēc kārtas "
-"sēžas pie datora (karstā krēsla spēle). Ja Jūsu dators ir pievienots tīklam, "
-"Jūs varat spēlēt pret citiem cilvēkiem šajā tīklā. Ja Jūsu datoram ir "
-"interneta pieslēgums, Jūs varat spēlēt ar citiem cilvēkiem caur internetu."
+"sēžas pie datora (\"karstā krēsla spēle\"). Ja Jūsu dators ir pievienots "
+"tīklam, varat spēlēt pret citiem cilvēkiem šajā tīklā. Ja datoram ir "
+"interneta pieslēgums, varat spēlēt ar citiem cilvēkiem caur internetu."
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:155
@@ -752,8 +743,8 @@ msgstr ""
 "\n"
 "\n"
 "Kampaņas sastāv no vairākiem scenārijiem, kuri seko cits citam, veidojot "
-"kopēju stāstu. Kampaņa Jums bieži jāspēlē uzmanīgāk saglabājot savas labākos "
-"kareivjus, tā lai tos varētu likt lietā sekojošajos scenārijos."
+"kopēju stāstu. Kampaņa jums bieži jāspēlē uzmanīgāk saglabājot savus labākos "
+"kareivjus tā, lai tos varētu likt lietā sekojošajos scenārijos."
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:161
@@ -771,7 +762,7 @@ msgid ""
 "a certain number of turns have elapsed."
 msgstr ""
 "Uzmanīgi izlasiet uzdevumu logu katra scenārija sākumā. Parasti uzvarēt var "
-"nogalinot visus pretinieku līderus un zaudēt tikai ja nogalina Jūsu līderi. "
+"nogalinot visus pretinieku līderus un zaudēt tikai, ja nogalina jūsu līderi. "
 "Taču dažos scenārijos var būt citi uzvaras nosacījumi - nogādāt Jūsu līderi "
 "noteiktā punktā, kādu izglābt, atrisināt problēmu vai izturēt aplenkumu "
 "noteiktu gājienu skaitu."
@@ -789,8 +780,8 @@ msgstr ""
 "\n"
 "\n"
 "Pēc uzvaras scenārijā karte kļūs pelēka un poga \"Beigt gājienu\" kļūs par "
-"\"Beigt scenāriju\". Tagad Jūs varat izmainīt saglabāšanas iestatījumus vai "
-"(ja spēlējat daudzspēlētāju spēli) parunāt ar pārējiem spēlētājiem pirms "
+"\"Beigt scenāriju\". Tagad varat izmainīt saglabāšanas iestatījumus vai (ja "
+"spēlējat daudzspēlētāju spēli) parunāt ar pārējiem spēlētājiem pirms "
 "nospiest šo pogu, lai turpinātu spēli."
 
 #. [topic]: id=recruit_and_recall
@@ -800,7 +791,6 @@ msgstr "Iesaukšana un atskaukšana"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:172
-#, fuzzy
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -814,14 +804,15 @@ msgid ""
 "recruit it."
 msgstr ""
 "Katra puse sāk ar vienu līderi galvenajā tornī. Katras kaujas sākumā, un "
-"reizēm arī tās vidū, Jums būs jāiesauc <ref>dst=..units text='vienības'</"
-"ref> jūsu armijā. Lai iesauktu, jūsu līderim (kā piemēram, Konrādam kampaņā "
-"\"Troņa mantnieks\") jūsu <ref>dst=terrain_castle text=pils</ref> galvenajā "
-"tornī. Pēc tam Jūs varat iesaukt izvēloties punktu Iesaukt no pavēļu "
-"izvēlnes vai klikšķinot labo peles pogu uz attiecīgā sešstūra un izvēloties "
-"<italic>text=Iesaukt</italic>. Tas parāda izsaukšanas izvēlni, uzskaita "
-"pieejamās vienības un to cenas. Klikšķiniet uz vienības, lai redzētu tās "
-"statistiskos rādītājus, pēc tam spiediet pogu Iesaukt lai iesauktu vienību."
+"reizēm arī tās vidū, jums būs jāiesauc <ref>dst='..units' text='vienības'</"
+"ref> jūsu armijā. Lai iesauktu, jūsu līderim (piemēram, Konrādam kampaņā "
+"\"Troņa mantnieks\") jāatrodas jūsu <ref>dst='terrain_castle' text='pils'</"
+"ref> galvenajā tornī. Tad jūs varat iesaukt izvēloties punktu 'Iesaukt' no "
+"komandu izvēlnes vai klikšķinot labo peles pogu uz attiecīgās šūnas un "
+"izvēloties <italic>text=Iesaukt</italic>. Tas atvērs izsaukšanas izvēlni, "
+"kur uzskaitītas pieejamās vienības un to izmaksas. Klikšķiniet uz vienības, "
+"lai redzētu tās statistiskos rādītājus, pēc tam spiediet pogu 'Iesaukt', lai "
+"iesauktu vienību."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:174
@@ -835,14 +826,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Ja jūs izmantojāt labo peles klikšķi, lai izsauktu vienību, tā parādīsies "
-"sešstūrī kuru klikšķinājāt. Pretējā gadījumā brīvā lauciņā tuvu galvenajam "
-"tornim. Jūs varat iesaukt tikai tik daudz vienību, cik ir brīvu lauciņu jūsu "
-"pilī, un nevarat iztērēt vairāk zelta nekā Jums ir iesaukšanai."
+"Ja jūs iesaucāt vienību klikšķinot ar labo peles taustiņu pils šunā, tad tā "
+"parādīsies attiecīgajā šūnā. Pretējā gadījumā brīvā - lauciņā tuvu "
+"galvenajam tornim. Jūs varat iesaukt tikai tik daudz vienību, cik ir brīvu "
+"lauciņu jūsu pilī, un nevarat iesaukšanai iztērēt vairāk zelta nekā jums ir."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:176
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -851,8 +841,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Iesauktām vienībām tiek nejaušības kārtā piešķirtas divas <ref>dst=.."
-"traits_section text='iezīmes'</ref>, kas izmaina to statistiskos rādītājus."
+"Iesauktajām vienībām tiek nejaušības kārtā piešķirtas divas <ref>dst='.."
+"traits_section' text='iezīmes'</ref>, kas izmaina to statistiskos rādītājus."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:178
@@ -866,12 +856,11 @@ msgstr ""
 "\n"
 "\n"
 "Vēlākos scenārijos jūs arī varēsiet atsaukt iepriekšējās kaujās izdzīvojušās "
-"vienības. Atsaukšana maksā 20 zelta monētas un ļauj izvēlēties no "
+"vienības. Atsaukšana maksā 20 zelta monētas un ļauj izvēlēties no visām "
 "iepriekšējos scenārijos izdzīvojušām vienībām."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:180
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -881,9 +870,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Ne tikai izsaukšana un atsaukšana maksā zeltu - vienībām arī nepieciešama "
-"uzturnauda. Papildus informācijai skatīt <ref>dst=income_and_upkeep "
-"text='ienākumi un uzturēšana'</ref>."
+"Ne tikai vienību iesaukšana un atsaukšana maksā zeltu - vienībām arī "
+"nepieciešama uzturnauda. Papildus informācijai skatīt "
+"<ref>dst='income_and_upkeep' text='ienākumi un uzturēšana'</ref>."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:187
@@ -896,7 +885,7 @@ msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
 msgstr ""
-"Virs katras Jūsu vienības veselības stabiņa atrodas lode. Jūsu kontrolē "
+"Virs katra jūsu vienības veselības stabiņa atrodas lode. Jūsu kontrolē "
 "esošām vienībām tā ir:"
 
 #. [topic]: id=orbs
@@ -913,13 +902,13 @@ msgstr ""
 #. [topic]: id=orbs
 #: data/core/help.cfg:191
 msgid "red if it has used all its movement this turn."
-msgstr "sarkana, ja vienība ir izmantojusi visas kustības."
+msgstr "sarkana, ja vienība ir izmantojusi visus gājienus."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:192
 msgid "The orb is blue if the unit is an ally you do not control."
 msgstr ""
-"Lode ir zila ja tā atrodas pie sabiedrotas vienības, kura nav jūsu kontrolē."
+"Lode ir zila ja tā atrodas pie sabiedrotā vienības, kura nav jūsu kontrolē."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:193
@@ -939,9 +928,9 @@ msgid ""
 "experience points (XP). A freshly recruited unit starts with no experience "
 "points, and gains experience by fighting enemies."
 msgstr ""
-"Katrai vienībai ir noteikts veselības daudzums. Ja tas nokrīt zem 1, vienība "
-"mirst. Tāpat katrai vienībai ir noteikts pieredzes daudzums. Tikko iesauktai "
-"vienībai nav pieredzes, to gūst cīnoties ar pretiniekiem."
+"Katrai vienībai ir noteikts veselības daudzums (HP). Ja tas nokrīt zem 1, "
+"vienība mirst. Tāpat katrai vienībai ir noteikts pieredzes daudzums (XP). "
+"Tikko iesauktai vienībai nav pieredzes, to gūst cīnoties ar pretiniekiem."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:205
@@ -951,21 +940,21 @@ msgid ""
 "have)."
 msgstr ""
 "Veselība un pieredze parādīta statusa panelī ar diviem numuriem "
-"(pašreizējais daudzums un maksimālais iespējamais)."
+"(pašreizējais daudzums un vienības maksimāli iespējamais)."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:206
-#, fuzzy
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
 "is green, yellow or red. A unit with at least 1 experience point has a blue "
 "experience bar, which turns white as the unit is about to "
 "<ref>dst='experience_and_advancement' text='advance'</ref>."
 msgstr ""
-"Papildus tam veselība tiek ilustrēta ar veselības stabiņa palīdzību, kas "
-"atrodas blakus katrai vienībai. Vienībai, kurai ir vismaz 1 pieredzes "
-"punkts, ir arī pieredzes stabiņš, kurš kļūst balts īsi pirms vienības "
-"<ref>dst=experience_and_advancement text=attīstības</ref>."
+"Veselība tiek ilustrēta arī ar veselības stabiņa palīdzību, kas atrodas "
+"blakus katrai vienībai, un ir zaļā, dzeltenā vai sarkanā krāsā. Vienībai, "
+"kurai ir vismaz 1 pieredzes punkts, ir arī pieredzes stabiņš, kurš kļūst "
+"balts īsi pirms vienības <ref>dst=experience_and_advancement "
+"text=attīstības</ref>."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:213
@@ -1214,7 +1203,7 @@ msgstr ""
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:273
 msgid "Time of Day"
-msgstr "Dienas daļas"
+msgstr "Diennakts laiks"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:277
@@ -1323,7 +1312,7 @@ msgstr ""
 #. [topic]: id=healing
 #: data/core/help.cfg:306
 msgid "Healing"
-msgstr "Atveseļošanās"
+msgstr "Dziedēšana"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:307
@@ -1722,7 +1711,7 @@ msgstr ""
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:447
 msgid "Dim"
-msgstr ""
+msgstr "Bāls"
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:448
@@ -1741,9 +1730,8 @@ msgstr ""
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:455
-#, fuzzy
 msgid "Slow"
-msgstr "Sapīts/-a"
+msgstr "Gauss/-a"
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:456
@@ -1811,7 +1799,7 @@ msgstr ""
 #. [topic]: id=terrain_forest
 #: data/core/help.cfg:501
 msgid "Forest"
-msgstr "Mežš"
+msgstr "Mežs"
 
 #. [topic]: id=terrain_forest
 #: data/core/help.cfg:508
@@ -1873,7 +1861,7 @@ msgstr ""
 #. [topic]: id=terrain_swamp_water
 #: data/core/help.cfg:539
 msgid "Swamp"
-msgstr "Purvi"
+msgstr "Purvs"
 
 #. [topic]: id=terrain_swamp_water
 #: data/core/help.cfg:544
@@ -1891,7 +1879,7 @@ msgstr ""
 #. [topic]: id=terrain_shallow_water
 #: data/core/help.cfg:551
 msgid "Shallow Water"
-msgstr "Seklumi"
+msgstr "Sekls ūdens"
 
 #. [topic]: id=terrain_shallow_water
 #: data/core/help.cfg:556
@@ -2041,7 +2029,7 @@ msgstr ""
 #. [topic]: id=terrain_fungus
 #: data/core/help.cfg:657
 msgid "Mushroom Grove"
-msgstr "Sēņu biežņa"
+msgstr "Sēņu birzs"
 
 #. [topic]: id=terrain_fungus
 #: data/core/help.cfg:662
@@ -2146,9 +2134,8 @@ msgstr ""
 
 #. [topic]: id=terrain_reef
 #: data/core/help.cfg:727
-#, fuzzy
 msgid "Coastal Reef"
-msgstr "Pils"
+msgstr "Piekrastes rifs"
 
 #. [topic]: id=terrain_reef
 #: data/core/help.cfg:732
@@ -2184,9 +2171,8 @@ msgstr ""
 
 #. [topic]: id=terrain_impassable
 #: data/core/help.cfg:751
-#, fuzzy
 msgid "Impassable"
-msgstr "Nepārvarams kalns"
+msgstr "Nepārejams"
 
 #. [topic]: id=terrain_impassable
 #: data/core/help.cfg:754
@@ -2291,7 +2277,7 @@ msgstr ""
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:806
 msgid "Multiplayer commands"
-msgstr "Daudzpersonu spēļu darbības"
+msgstr "Daudzspēlētāju darbības"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:810
@@ -2452,9 +2438,8 @@ msgstr "ārstē"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:52
-#, fuzzy
 msgid "female^cures"
-msgstr "bezbailīga"
+msgstr "ārstē"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:54
@@ -2471,7 +2456,6 @@ msgstr "atjaunojas"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:77
-#, fuzzy
 msgid "female^regenerates"
 msgstr "atjaunojas"
 
@@ -2486,13 +2470,12 @@ msgstr ""
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:98
 msgid "steadfast"
-msgstr "nelokas"
+msgstr "nelokās"
 
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:99
-#, fuzzy
 msgid "female^steadfast"
-msgstr "nelokas"
+msgstr "nelokās"
 
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:101
@@ -2513,7 +2496,6 @@ msgstr "vada"
 #: data/core/macros/abilities.cfg:115 data/core/macros/abilities.cfg:138
 #: data/core/macros/abilities.cfg:173 data/core/macros/abilities.cfg:220
 #: data/core/macros/abilities.cfg:279
-#, fuzzy
 msgid "female^leadership"
 msgstr "vada"
 
@@ -2535,13 +2517,12 @@ msgstr ""
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:347
 msgid "skirmisher"
-msgstr "lavās"
+msgstr "strēlnieks"
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:348
-#, fuzzy
 msgid "female^skirmisher"
-msgstr "lavās"
+msgstr "strēlniece"
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:350
@@ -2558,7 +2539,6 @@ msgstr "apgaismo"
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:364
-#, fuzzy
 msgid "female^illuminates"
 msgstr "apgaismo"
 
@@ -2580,9 +2560,8 @@ msgstr "teleportējas"
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:379
-#, fuzzy
 msgid "female^teleport"
-msgstr "inteliģenta"
+msgstr "teleportējas"
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:381
@@ -2595,13 +2574,12 @@ msgstr ""
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:390 data/core/macros/abilities.cfg:392
 msgid "ambush"
-msgstr "slēpjas mežā"
+msgstr "uzbrūk no slēpņa"
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:391 data/core/macros/abilities.cfg:393
-#, fuzzy
 msgid "female^ambush"
-msgstr "veselīga"
+msgstr "uzbrūk no slēpņa"
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:397 data/core/macros/abilities.cfg:401
@@ -2633,20 +2611,18 @@ msgstr ""
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:423
-#, fuzzy
 msgid "female^nightstalk"
 msgstr "slēpjas tumsā"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:442 data/core/macros/abilities.cfg:448
 msgid "concealment"
-msgstr "slēpjas ciemos"
+msgstr "maskējas"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:443 data/core/macros/abilities.cfg:449
-#, fuzzy
 msgid "female^concealment"
-msgstr "slēpjas ciemos"
+msgstr "maskējas"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:447 data/core/macros/abilities.cfg:453
@@ -2667,9 +2643,8 @@ msgstr "nirst"
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:469 data/core/macros/abilities.cfg:475
-#, fuzzy
 msgid "female^submerge"
-msgstr "spēcīga"
+msgstr "nirst"
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:473 data/core/macros/abilities.cfg:479
@@ -2689,9 +2664,8 @@ msgstr "barošanās"
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:498
-#, fuzzy
 msgid "female^feeding"
-msgstr "bezbailīga"
+msgstr "barošanās"
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:500
@@ -2920,9 +2894,8 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:479
 #: data/core/macros/ai_controller.cfg:870
 #: data/core/macros/ai_controller.cfg:905
-#, fuzzy
 msgid "Back"
-msgstr "Melna"
+msgstr "Atpakaļ"
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:359
@@ -2942,7 +2915,7 @@ msgstr ""
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:511
 msgid "Defend a location..."
-msgstr ""
+msgstr "Aizstāvēt vietu..."
 
 #. [print]
 #: data/core/macros/ai_controller.cfg:527
@@ -2952,7 +2925,7 @@ msgstr ""
 #. [set_menu_item]: id=ai_controller_defend_location_picker
 #: data/core/macros/ai_controller.cfg:534
 msgid "Defend this location"
-msgstr ""
+msgstr "Aizstāvēt šo vietu"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:551
@@ -2967,17 +2940,17 @@ msgstr ""
 #. [option]
 #: data/core/macros/ai_controller.cfg:601
 msgid "Clear objective orders"
-msgstr ""
+msgstr "Atcelt uzdevuma komandas"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:625
 msgid "Clear behavior orders"
-msgstr ""
+msgstr "Atcelt uzvedības komandas"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:649
 msgid "Clear all orders"
-msgstr ""
+msgstr "Atcelt visas komandas"
 
 #. [then]
 #: data/core/macros/ai_controller.cfg:775
@@ -3046,7 +3019,7 @@ msgstr ""
 
 #: data/core/macros/ai_controller.cfg:1052
 msgid "Clear special orders"
-msgstr ""
+msgstr "Atcelt speciālās komandas"
 
 #: data/core/macros/ai_controller.cfg:1053
 msgid ""
@@ -3106,9 +3079,8 @@ msgstr ""
 #. [objective]: description=<span color='white'>, condition=win
 #: data/core/macros/carryover-utils.cfg:34
 #: data/core/macros/carryover-utils.cfg:42
-#, fuzzy
 msgid "Alternative objective:"
-msgstr "Alternatīvs Vesnotas serveris"
+msgstr "Alternatīvs uzdevums:"
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:39
@@ -3154,9 +3126,8 @@ msgstr ""
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:148
-#, fuzzy
 msgid "Take it"
-msgstr "Iezīmes"
+msgstr "Paņemt"
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:166
@@ -3289,7 +3260,6 @@ msgid "storm trident"
 msgstr ""
 
 #: data/core/macros/names.cfg:18
-#, fuzzy
 msgid ""
 "Egar,Elch,Ga'ash,Gadé Ihn,Gakré Ohm,Galeck,Galsh,Garadin,Garchin,Gark,Garlan,"
 "Garlin Ohn,Garrutin,Gart'lo,Garushi,Gashinar,Gashol,Gaushii,Gaustun,Gegchi,"
@@ -3302,25 +3272,24 @@ msgid ""
 "Verath,Verditt,Verkon,Verlinn,Vermad,Vertick,Vladnir"
 msgstr ""
 "Egar,Elch,Ga'ash,Gadé Ihn,Gakré Ohm,Galeck,Galsh,Garadin,Garchin,Gark,Garlan,"
-"Garlin ohn,Garrutin,Gart'lo,Garushi,Gashinar,Gashöl,Gaushii,Gaustun,Gegchi,"
-"Gelka Kon,Gelknick,Gillan,Gisharri,Goyst,Grada,Græt Ihn,Grashen,Gravlan,Gray,"
-"Grelnit,Grenn ohn,Gretz,Gribbel,Gridda,Grish,Gron ih,Ka,Kahn Ih,Karigan,"
-"Karri Kon,Karron,Kasp,Kegrid,Kerath Ihn,Kerath Kor,Klash,Kon Garashé,Kraag,"
-"Krall Ohn,Kran Kor,Krash,Kraslar,Krenli,Kruggen,Kun,Mah Toa,Mal,Margian,"
-"Marhildian,Markan,Markinos,Mar Ohn,Marra Di'lek,Marrito,Marritos,Merkush,"
+"Garlin Ohn,Garrutin,Gart'lo,Garushi,Gashinar,Gashol,Gaushii,Gaustun,Gegchi,"
+"Gelka Kon,Gelknick,Gillan,Gisharri,Gost,Grada,Græt Ihn,Grashen,Gravlan,Grag,"
+"Grelnit,Grenn Ohn,Greth,Gribbel,Gridda,Grish,Gron Ihn,Ka,Kahn Ih,Karigan,"
+"Karri Kon,Karron,Kask,Kegrid,Kerath Ihn,Kerath Kor,Klash,Kon Garashé,Kraag,"
+"Krall Ohn,Kran Kor,Krash,Kraslar,Krenli,Kruggen,Kun,Mah Toa,Margian,"
+"Mar'Ildian,Markan,Markinos,Mar Ohn,Marra Di'lek,Marrito,Marritos,Merkush,"
 "Merritos Gark,Morusté,Murr,Omataké,Reshan,Vashitt,Velnick,Veralon,Veramo,"
-"Verath,Verditt,Verkon,Verlinn,Vermay,Vertick,Vladnir"
+"Verath,Verditt,Verkon,Verlinn,Vermad,Vertick,Vladnir"
 
 #: data/core/macros/names.cfg:19
-#, fuzzy
 msgid ""
 "Alen Ka,Alinash Mal,Ashirt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
 "Eshi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orrida,Oshibi,Vallin,Valnirra,"
 "Valnitt,Velisk,Verra,Vellin Ka,Veshtar,Vushtin"
 msgstr ""
-"Alen Ka,Alinash Mal,Ashijt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
-"Eshyi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orriday,Oshibi,Vallin,Valnirra,"
-"Valnitt,Velisp,Vellin Ka,Vushtin,Werra,Weshter,Wilniss"
+"Alen Ka,Alinash Mal,Ashirt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
+"Eshi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orrida,Oshibi,Vallin,Valnirra,"
+"Valnitt,Velisk,Verra,Vellin Ka,Veshtar,Vushtin"
 
 #: data/core/macros/names.cfg:23
 msgid ""
@@ -3671,7 +3640,6 @@ msgid "Kaasa,Kayya,Keyya,Kiira,Korra"
 msgstr "Kaasa,Kayya,Keyya,Kiira,Korra"
 
 #: data/core/macros/names.cfg:38
-#, fuzzy
 msgid ""
 "Addraecyn,Addraenvan,Addraer,Addraercyn,Addraryn,Addreddry,Addredry,"
 "Addregwyn,Addrenyc,Addreoddry,Addreoddyn,Addreonyc,Addreorcyn,Addreran,"
@@ -3730,8 +3698,8 @@ msgstr ""
 "Aethonnyn,Aethuc,Aethudry,Aethugwyn,Aethun,Aethunry,Aethydry,Aethynyc,Blac,"
 "Bladoc,Blaec,Blaedry,Blanry,Blebryn,Bledoc,Blemyr,Blennyn,Blenvan,Bleollyn,"
 "Blercyn,Blidd,Bliddry,Blillyn,Blinvan,Blollyn,Blubryn,Blucyn,Bludry,Blullyn,"
-"Bluran,Blybryn,Blydd,Blygwyn,Blymyr,Blyr,Cac,Cadry,Caebryn,Caedry,Caeran,"
-"Caercyn,Car,Carac,Caraddry,Caradoc,Caraedry,Caraennyn,Cararyn,Caredd,"
+"Bluran,Blybryn,Blydd,Blygwyn,Blymyr,Blyr,Bucyn,Cac,Cadry,Caebryn,Caedry,"
+"Caeran,Caercyn,Car,Carac,Caraddry,Caradoc,Caraedry,Caraennyn,Cararyn,Caredd,"
 "Careddry,Caregwyn,Caren,Careobryn,Careogwyn,Careonvan,Careorraent,Careoryn,"
 "Carercyn,Caric,Cariddry,Carocyn,Caroddyn,Caror,Caroran,Carraent,Carudoc,"
 "Carullyn,Carygwyn,Caryn,Cebryn,Cemyr,Cennyn,Ceoc,Ceoddry,Ceoddyn,Ceomyr,"
@@ -3743,34 +3711,33 @@ msgstr ""
 "Glircyn,Gloddry,Gloddyn,Glonry,Glonvan,Glumyr,Glun,Glunry,Glunvan,Glyc,Glydd,"
 "Glydoc,Glynry,Glynvan,Glyran,Goc,Gor,Gubryn,Gudd,Gullyn,Gumyr,Gur,Gwadoc,"
 "Gwaec,Gwaeddyn,Gwan,Gweddyn,Gwegwyn,Gwellyn,Gwennyn,Gwenyc,Gweocyn,Gweodd,"
-"Gweodoc,Gweodry,Gweogwyn,Gweoran,Gwidoc,Gwodd,Gwoddyn,Gwollyn,Gwor,Gwucyn,"
-"Gwudoc,Gwumyr,Gwuran,Gwybryn,Gwycyn,Gwyddry,Gwydoc,Gwymyr,Gwynnyn,Gydoc,"
-"Gyllyn,Gymyr,Labryn,Ladoc,Laellyn,Lan,Lannyn,Laran,Lec,Lemyr,Lenvan,Leogwyn,"
-"Lercyn,Ligwyn,Lin,Liryn,Lonnyn,Lorraent,Luddry,Ludoc,Lunnyn,Lunvan,Lurraent,"
-"Mac,Maddyn,Maennyn,Manry,Manyc,Marcyn,Mec,Menvan,Meollyn,Meon,Meonnyn,"
-"Meorraent,Middry,Midry,Mimyr,Modd,Moddry,Monry,Moran,Morcyn,Mubryn,Mudoc,"
-"Mugwyn,Murcyn,Mydoc,Mygwyn,Myn,Myrraent,Owac,Owadd,Owaddyn,Owaecyn,Owaedry,"
-"Owarcyn,Owaryn,Owecyn,Owedry,Oweomyr,Oweor,Oweorcyn,Oweran,Owercyn,Owidry,"
-"Owinvan,Owinyc,Owodd,Owoddry,Owogwyn,Owollyn,Oworan,Oworcyn,Oworraent,"
-"Owuddry,Owuddyn,Owugwyn,Owur,Owyran,Rabryn,Radd,Ranvan,Rar,Reoddyn,Reodry,"
-"Rhaecyn,Rhaedoc,Rhaemyr,Rhaerraent,Rhanry,Rharcyn,Rhenry,Rhenvan,Rhenyc,"
-"Rheodd,Rheoddyn,Rheollyn,Rheor,Rheoran,Rheorraent,Rheran,Rherraent,Rhobryn,"
-"Rhodry,Rhollyn,Rhonvan,Rhubryn,Rhugwyn,Rhunyc,Rhur,Rhygwyn,Rhyllyn,Rhynyc,"
-"Rhyrcyn,Rhyrraent,Rocyn,Roddyn,Romyr,Ron,Ronry,Rubryn,Ruddry,Rumyr,Run,"
-"Rurcyn,Rybryn,Rycyn,Ryddry,Rygwyn,Rynnyn,Rynry,Saec,Saellyn,Saemyr,Saenvan,"
-"Saercyn,Sanyc,Saran,Sarraent,Secyn,Seddyn,Sedry,Sellyn,Sennyn,Seoddry,"
-"Seorcyn,Sercyn,Siddry,Simyr,Siryn,Sodd,Sodry,Soran,Suc,Sudd,Surcyn,Sydd,"
-"Syran,Syryn,Tabryn,Taec,Taedd,Taedoc,Taemyr,Taenvan,Taercyn,Tanry,Tarcyn,"
-"Teddyn,Tegwyn,Ten,Tennyn,Tenvan,Teobryn,Teoddyn,Teor,Teorcyn,Terraent,Tinry,"
-"Tinvan,Tiryn,Todd,Tudd,Tuddry,Tudoc,Tunvan,Turraent,Tyddyn,Vaddyn,Vaeddyn,"
-"Vaedry,Vaennyn,Varcyn,Ven,Vennyn,Veocyn,Veoddyn,Veodry,Veogwyn,Veomyr,Vinvan,"
-"Vinyc,Virraent,Vobryn,Vogwyn,Vonry,Vuddyn,Vugwyn,Vyc,Vygwyn,Vyrcyn,Yracyn,"
-"Yraec,Yran,Yrannyn,Yranvan,Yraryn,Yredd,Yreddyn,Yregwyn,Yreryn,Yrinvan,"
-"Yrirraent,Yroddry,Yrullyn,Yrumyr,Yrunnyn,Yrunvan,Yryllyn,Yrymyr,Yrynyc,"
-"Yryrcyn"
+"Gweodoc,Gweodry,Gweogwyn,Gweoran,Gwidoc,Gwilam,Gwodd,Gwoddyn,Gwollyn,Gwor,"
+"Gwucyn,Gwudoc,Gwumyr,Gwuran,Gwybryn,Gwycyn,Gwyddry,Gwydoc,Gwymyr,Gwynnyn,"
+"Gydoc,Gyllyn,Gymyr,Haldar,Labryn,Ladoc,Laellyn,Lan,Lannyn,Laran,Lec,Lemyr,"
+"Lenvan,Leogwyn,Lercyn,Ligwyn,Lin,Liryn,Lonnyn,Lorraent,Luddry,Ludoc,Lunnyn,"
+"Lunvan,Lurraent,Mac,Maddyn,Maennyn,Manry,Manyc,Marcyn,Mec,Menvan,Meollyn,"
+"Meon,Meonnyn,Meorraent,Middry,Midry,Mimyr,Modd,Moddry,Monry,Moran,Morcyn,"
+"Mubryn,Mudoc,Mugwyn,Murcyn,Mydoc,Mygwyn,Myn,Myrraent,Owac,Owadd,Owaddyn,"
+"Owaecyn,Owaedry,Owain,Owarcyn,Owaryn,Owecyn,Owedry,Oweomyr,Oweor,Oweorcyn,"
+"Oweran,Owercyn,Owidry,Owinvan,Owinyc,Owodd,Owoddry,Owogwyn,Owollyn,Oworan,"
+"Oworcyn,Oworraent,Owuddry,Owuddyn,Owugwyn,Owur,Owyran,Rabryn,Radd,Ranvan,Rar,"
+"Reoddyn,Reodry,Rhaecyn,Rhaedoc,Rhaemyr,Rhaerraent,Rhanry,Rharcyn,Rhenry,"
+"Rhenvan,Rhenyc,Rheodd,Rheoddyn,Rheollyn,Rheor,Rheoran,Rheorraent,Rheran,"
+"Rherraent,Rhobryn,Rhodry,Rhollyn,Rhonvan,Rhubryn,Rhugwyn,Rhunyc,Rhur,Rhygwyn,"
+"Rhyllyn,Rhynyc,Rhyrcyn,Rhyrraent,Rocyn,Roddyn,Romyr,Ron,Ronry,Rubryn,Ruddry,"
+"Rumyr,Run,Rurcyn,Rybryn,Rycyn,Ryddry,Rygwyn,Rynnyn,Rynry,Saec,Saellyn,Saemyr,"
+"Saenvan,Saercyn,Sanyc,Saran,Sarraent,Secyn,Seddyn,Sedry,Sellyn,Sennyn,"
+"Seoddry,Seorcyn,Sercyn,Siddry,Simyr,Siryn,Sodd,Sodry,Soran,Suc,Sudd,Surcyn,"
+"Sydd,Syran,Syryn,Tabryn,Taec,Taedd,Taedoc,Taemyr,Taenvan,Taercyn,Tanry,"
+"Tarcyn,Teddyn,Tegwyn,Ten,Tennyn,Tenvan,Teobryn,Teoddyn,Teor,Teorcyn,Terraent,"
+"Tinry,Tinvan,Tiryn,Todd,Tudd,Tuddry,Tudoc,Tunvan,Turraent,Tyddyn,Vaddyn,"
+"Vaeddyn,Vaedry,Vaennyn,Varcyn,Ven,Vennyn,Veocyn,Veoddyn,Veodry,Veogwyn,"
+"Veomyr,Vinvan,Vinyc,Virraent,Vobryn,Vogwyn,Vonry,Vuddyn,Vugwyn,Vyc,Vygwyn,"
+"Vyrcyn,Yracyn,Yraec,Yran,Yrannyn,Yranvan,Yraryn,Yredd,Yreddyn,Yregwyn,Yreryn,"
+"Yrinvan,Yrirraent,Yroddry,Yrullyn,Yrumyr,Yrunnyn,Yrunvan,Yryllyn,Yrymyr,"
+"Yrynyc,Yryrcyn"
 
 #: data/core/macros/names.cfg:39
-#, fuzzy
 msgid ""
 "Alabrylla,Alaebrylla,Alaeniver,Alalla,Alalonna,Alaryan,Aleacla,Aleaniver,"
 "Aleara,Alearka,Alena,Alengwen,Alilonna,Alingwen,Alolla,Alolonna,Alora,"
@@ -3837,8 +3804,8 @@ msgstr ""
 "Eleanoic,Elearka,Elenoic,Elerka,Elivyan,Elulonna,Elurka,Elwllyra,Elwlonna,"
 "Elwngwen,Elwra,Elycla,Elyllyra,Elyngwen,Elyniver,Elyrka,Gwaera,Gwaessa,"
 "Gwangwen,Gweacla,Gwedda,Gwerka,Gwicla,Gwirka,Gwobrylla,Gwoll,Gwona,Gwongwen,"
-"Gwonoic,Gworyan,Gwullyra,Gwussa,Gwwcla,Gwwna,Gwwvyan,Gwycla,Gwydda,Jacla,"
-"Jaena,Jaerka,Jaevyan,Jalyan,Jana,Jarka,Jassa,Jeabrylla,Jealla,Jeanoic,"
+"Gwonoic,Gworyan,Gwullyra,Gwussa,Gwwcla,Gwwna,Gwwvyan,Gwycla,Gwydda,Heldra,"
+"Jacla,Jaena,Jaerka,Jaevyan,Jalyan,Jana,Jarka,Jassa,Jeabrylla,Jealla,Jeanoic,"
 "Jeniver,Jiryan,Jissa,Joll,Jolla,Jona,Jongwen,Jonoic,Jora,Jorka,Jovyan,Judda,"
 "Jull,Julonna,Jura,Jwll,Jwlyan,Jycla,Jyniver,Jynoic,Jyrka,Jyvyan,Laeniver,"
 "Laenoic,Laeryan,Langwen,Larka,Lassa,Lealonna,Lealyan,Ledda,Lelonna,Lelyan,"
@@ -4293,7 +4260,7 @@ msgstr "nedzīva"
 #. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:24 data/core/macros/traits.cfg:39
 msgid "Immune to drain, poison and plague"
-msgstr "Neitekmē izsūkšana, inde vai inficēšāna"
+msgstr "Neitekmē izsūkšana, inde un inficēšāna"
 
 #. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:37
@@ -4383,7 +4350,7 @@ msgstr "bezbailīga"
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:152 data/core/macros/traits.cfg:165
 msgid "Fights normally during unfavorable times of day/night"
-msgstr "Bez grūtībām cīnās arī nelabvēlīgā dienas vai nakts periodā"
+msgstr "Bez grūtībām cīnās arī nelabvēlīgā diennakts periodā"
 
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:173
@@ -4392,39 +4359,33 @@ msgstr ""
 
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:174
-#, fuzzy
 msgid "female^weak"
-msgstr "nedzīva"
+msgstr "vāja"
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:191
-#, fuzzy
 msgid "slow"
-msgstr "sapīšana"
+msgstr "gauss"
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:192
-#, fuzzy
 msgid "female^slow"
-msgstr "lojāla"
+msgstr "gausa"
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:208
-#, fuzzy
 msgid "dim"
-msgstr "Vidēja"
+msgstr "bāls"
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:209
-#, fuzzy
 msgid "female^dim"
-msgstr "ātra"
+msgstr "bāla"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:221
-#, fuzzy
 msgid "aged"
-msgstr "lādiņš"
+msgstr "gados"
 
 #. [color_range]: id=red
 #. [color_range]: id=1
@@ -4852,7 +4813,7 @@ msgstr "Nāga"
 #. [race]: id=naga, description=
 #: data/core/units.cfg:219
 msgid "race^Nagani"
-msgstr "Nāga"
+msgstr "Nāgans"
 
 #. [race]: id=naga, description=
 #: data/core/units.cfg:220
@@ -5049,15 +5010,13 @@ msgstr ""
 
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:296
-#, fuzzy
 msgid "race^Wolf"
-msgstr "Elfs"
+msgstr "Vilks"
 
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:297
-#, fuzzy
 msgid "race^Wolves"
-msgstr "Elfi"
+msgstr "Vilki"
 
 #. [race]: id=wose, description=
 #: data/core/units.cfg:306
@@ -5262,9 +5221,8 @@ msgstr "mistisks"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:7
-#, fuzzy
 msgid "DejaVuSans.ttf,Andagii.ttf,wqy-zenhei.ttc"
-msgstr "DejaVuSans.ttf,sazanami-gothic.ttf,wqy-zenhei-gb2312.ttf"
+msgstr "DejaVuSans.ttf,Andagii.ttf,wqy-zenhei.ttc"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:8
@@ -5773,9 +5731,10 @@ msgid ""
 msgstr ""
 
 #: data/temp-file_send_data_strings.cfg:12
-#, fuzzy
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
-msgstr "Palīdziet mums izveidot jums labāku Vesnotu!"
+msgstr ""
+"Gatavojas augšupielādēt statistiku - Palīdziet mums izveidot jums labāku "
+"Vesnotu!"
 
 #: data/temp-file_send_data_strings.cfg:13
 msgid "Save my reply and do not ask again"
@@ -5787,9 +5746,8 @@ msgid ""
 msgstr ""
 
 #: data/temp-file_send_data_strings.cfg:15
-#, fuzzy
 msgid "Send"
-msgstr "Smiltis"
+msgstr "Sūtīt"
 
 #: data/temp-file_send_data_strings.cfg:16
 msgid "Don't send"
@@ -5809,7 +5767,7 @@ msgstr "Izvēlne"
 #: data/themes/default.cfg:131 data/themes/dfool.cfg:145
 #: data/themes/experimental.cfg:106
 msgid "Actions"
-msgstr "Pavēles"
+msgstr "Darbības"
 
 #. [menu]: id=button-endturn
 #. [change]: id=button-endturn
@@ -5876,19 +5834,17 @@ msgstr "ienākumi"
 #: data/themes/default.cfg:429 data/themes/dfool.cfg:467
 #: data/themes/experimental.cfg:369
 msgid "statuspanel^level"
-msgstr "pakāpe"
+msgstr "līmenis"
 
 #. [unit_moves]: id=unit-moves
 #: data/themes/default.cfg:459 data/themes/experimental.cfg:399
-#, fuzzy
 msgid "statuspanel^moves"
-msgstr "kustības"
+msgstr "gājieni"
 
 #. [unit_defense]: id=unit-defense
 #: data/themes/default.cfg:468 data/themes/experimental.cfg:408
-#, fuzzy
 msgid "statuspanel^terrain def."
-msgstr "pakāpe"
+msgstr "apvidus aizsardzība"
 
 #. [change]: id=actions-menu
 #: data/themes/default.cfg:1004
@@ -5997,14 +5953,12 @@ msgid "An invalid defender weapon got selected."
 msgstr ""
 
 #: src/actions.cpp:1102
-#, fuzzy
 msgid "female^poisoned"
-msgstr "nedzīva"
+msgstr "saindēta"
 
 #: src/actions.cpp:1112
-#, fuzzy
 msgid "female^petrified"
-msgstr "izturīga"
+msgstr "pārakmeņojusies"
 
 #: src/actions.cpp:1112
 msgid "petrified"
@@ -6207,14 +6161,12 @@ msgid "Name"
 msgstr "Nosaukums"
 
 #: src/addon_management.cpp:804
-#, fuzzy
 msgid "New version"
-msgstr "Versija"
+msgstr "Jaunā versija"
 
 #: src/addon_management.cpp:804
-#, fuzzy
 msgid "Old version"
-msgstr "Versija"
+msgstr "Vecā versija"
 
 #: src/addon_management.cpp:805 src/addon_management.cpp:1005
 msgid "Author"
@@ -6226,20 +6178,19 @@ msgstr ""
 
 #: src/addon_management.cpp:856
 msgid "Update add-ons"
-msgstr ""
+msgstr "Atjaunināt papildinājumus"
 
 #: src/addon_management.cpp:857
 msgid "Select an add-on to update:"
 msgstr ""
 
 #: src/addon_management.cpp:871
-#, fuzzy
 msgid "Update all"
-msgstr "Alas siena"
+msgstr "Atjaunināt visu"
 
 #: src/addon_management.cpp:928
 msgid "Update failed"
-msgstr ""
+msgstr "Atjaunināšana neizdevās"
 
 #: src/addon_management.cpp:930
 msgid "The following add-on could not be downloaded or updated successfully:"
@@ -6263,7 +6214,7 @@ msgstr ""
 
 #: src/addon_management.cpp:965
 msgid "Connecting to add-ons server..."
-msgstr ""
+msgstr "Pieslēdzas papildinājumu serverim..."
 
 #: src/addon_management.cpp:968
 msgid "Could not connect to host."
@@ -6391,7 +6342,7 @@ msgstr "Sapīts/-a"
 
 #: src/attack_prediction_display.cpp:236
 msgid "Time of day"
-msgstr "Dienas daļa"
+msgstr "Diennakts laiks"
 
 #: src/attack_prediction_display.cpp:246
 msgid "Leadership"
@@ -6423,7 +6374,7 @@ msgstr ""
 
 #: src/dialogs.cpp:216
 msgid "Level"
-msgstr ""
+msgstr "Līmenis"
 
 #: src/dialogs.cpp:235
 msgid "No objectives available"
@@ -6525,9 +6476,8 @@ msgid "Show replay"
 msgstr "Parādīt atkārtojumu"
 
 #: src/dialogs.cpp:611
-#, fuzzy
 msgid "Cancel orders"
-msgstr "Atcelt"
+msgstr "Atcelt komandas"
 
 #: src/dialogs.cpp:614 src/multiplayer_create.cpp:86
 msgid "OK"
@@ -6561,7 +6511,7 @@ msgstr "Pieredze:"
 
 #: src/dialogs.cpp:790 src/help.cpp:1433
 msgid "Moves: "
-msgstr "Kustības:"
+msgstr "Gājieni:"
 
 #: src/game.cpp:661 src/game.cpp:1398
 msgid "The Battle for Wesnoth"
@@ -6669,9 +6619,8 @@ msgid "Error: "
 msgstr ""
 
 #: src/game_events.cpp:205
-#, fuzzy
 msgid "Warning: "
-msgstr "Rīts"
+msgstr "Brīdinājums:"
 
 #: src/game_events.cpp:208
 msgid "Debug: "
@@ -6852,9 +6801,8 @@ msgid "<header>text='Units having this ability'</header>"
 msgstr ""
 
 #: src/help.cpp:1246
-#, fuzzy
 msgid "Leaders:"
-msgstr "Vadība"
+msgstr "Līderi:"
 
 #: src/help.cpp:1255
 msgid "Recruits:"
@@ -6865,9 +6813,8 @@ msgid "Era:"
 msgstr ""
 
 #: src/help.cpp:1277
-#, fuzzy
 msgid "Factions:"
-msgstr "Frakcija"
+msgstr "Frakcijas:"
 
 #: src/help.cpp:1287
 msgid "Factions are only used in multiplayer"
@@ -6894,9 +6841,8 @@ msgid "Abilities: "
 msgstr ""
 
 #: src/help.cpp:1416
-#, fuzzy
 msgid "Ability Upgrades: "
-msgstr "Spējas"
+msgstr "Spēju uzlabojumi:"
 
 #: src/help.cpp:1434
 msgid "Cost: "
@@ -7022,9 +6968,8 @@ msgid "Verifying cache..."
 msgstr ""
 
 #: src/loadscreen.cpp:262
-#, fuzzy
 msgid "Reading unit files..."
-msgstr "Saņem datus no servera..."
+msgstr "Lasa vienību failus..."
 
 #: src/loadscreen.cpp:280
 msgid "Reading files and creating cache..."
@@ -7451,9 +7396,8 @@ msgid "Part a room."
 msgstr ""
 
 #: src/menu_events.cpp:2281
-#, fuzzy
 msgid "List room members."
-msgstr "Serveru saraksts"
+msgstr "Parādīt istabas dalībniekus."
 
 #: src/menu_events.cpp:2283
 msgid "List available rooms."
@@ -7488,14 +7432,12 @@ msgid "Visualize the screen refresh procedure."
 msgstr ""
 
 #: src/menu_events.cpp:2428
-#, fuzzy
 msgid "Save game."
-msgstr "Nav saglabātu spēļu"
+msgstr "Saglabāt spēli."
 
 #: src/menu_events.cpp:2430
-#, fuzzy
 msgid "Quit game."
-msgstr "Pamest spēli"
+msgstr "Pamest spēli."
 
 #: src/menu_events.cpp:2434
 msgid "Save and quit."
@@ -7518,9 +7460,8 @@ msgid "Choose next scenario"
 msgstr ""
 
 #: src/menu_events.cpp:2447
-#, fuzzy
 msgid "Turn debug mode on."
-msgstr "Atkļūdošanas darbības"
+msgstr "Ieslēgt atkļūdošanas režimu."
 
 #: src/menu_events.cpp:2449
 msgid "Turn debug mode off."
@@ -7698,9 +7639,8 @@ msgid "Server-side redirect loop"
 msgstr "Servera puses pārvirzīšanas cilpa"
 
 #: src/multiplayer.cpp:292
-#, fuzzy
 msgid "You must login first."
-msgstr "Ir nepieciešams pieteikties šim serverim"
+msgstr "Vispirms ir jāautorizējas."
 
 #: src/multiplayer.cpp:294
 msgid "The nick '$nick' is already taken."
@@ -7788,9 +7728,8 @@ msgid "(Reserved for $playername)"
 msgstr "(Rezervēts priekš $playername)"
 
 #: src/multiplayer_connect.cpp:682
-#, fuzzy
 msgid "(empty)"
-msgstr "Tukšs"
+msgstr "(tukšs)"
 
 #: src/multiplayer_connect.cpp:792
 msgid "Reserved"
@@ -7810,7 +7749,7 @@ msgstr "Nav atrasts līdera tips frakcijai $faction"
 
 #: src/multiplayer_connect.cpp:978
 msgid "Game Lobby: "
-msgstr "Spēles priekštelpa:"
+msgstr "Spēles priekšnams:"
 
 #: src/multiplayer_connect.cpp:999
 msgid "Player/Type"
@@ -7833,9 +7772,8 @@ msgid "I'm Ready"
 msgstr "Esmu gatavs"
 
 #: src/multiplayer_connect.cpp:1016
-#, fuzzy
 msgid "The scenario is invalid because it has no id."
-msgstr "Scenārijs ir nederīgs jo tajā nav neviena puse."
+msgstr "Scenārijs ir nederīgs, jo tam nav id."
 
 #: src/multiplayer_connect.cpp:1020
 msgid "The scenario is invalid because it has no sides."
@@ -7859,14 +7797,11 @@ msgstr "Tukšs"
 
 #: src/multiplayer_connect.cpp:1562
 msgid "Cannot find era $era"
-msgstr "Nav atrasta ēra"
+msgstr "Nav atrasta ēra $era"
 
 #: src/multiplayer_connect.cpp:1587
-#, fuzzy
 msgid "Defeat enemy leader(s)"
-msgstr ""
-"Uzvara:\n"
-"@Sakaut pretinieku līderi/-us"
+msgstr "Sakaut pretinieku līderi/-us"
 
 #: src/multiplayer_connect.cpp:1651
 msgid "Waiting for players to join..."
@@ -8062,9 +7997,8 @@ msgid "--no games open--"
 msgstr ""
 
 #: src/multiplayer_lobby.cpp:153
-#, fuzzy
 msgid " (Unknown Era)"
-msgstr "Nezināma vienība"
+msgstr "(Nezināma ēra)"
 
 #: src/multiplayer_lobby.cpp:536 src/multiplayer_lobby.cpp:899
 msgid "Password Required"
@@ -8095,18 +8029,16 @@ msgid "Quit"
 msgstr ""
 
 #: src/multiplayer_lobby.cpp:734
-#, fuzzy
 msgid "Apply Filter"
-msgstr "Filtrēt: "
+msgstr ""
 
 #: src/multiplayer_lobby.cpp:735
 msgid "Invert"
 msgstr ""
 
 #: src/multiplayer_lobby.cpp:736
-#, fuzzy
 msgid "Vacant Slots"
-msgstr "(Brīva vieta)"
+msgstr "Brīvas vietas"
 
 #: src/multiplayer_lobby.cpp:737
 msgid "Friends in Game"
@@ -8182,9 +8114,8 @@ msgid "No multiplayer sides found"
 msgstr ""
 
 #: src/multiplayer_wait.cpp:299
-#, fuzzy
 msgid "Choose your faction:"
-msgstr "Izvēlieties uzbrukuma veidu:"
+msgstr "Izvēlieties jūsu frakciju:"
 
 #: src/multiplayer_wait.cpp:299
 msgid "Starting position: "
@@ -8287,9 +8218,8 @@ msgid "$name has taken control"
 msgstr ""
 
 #: src/playmp_controller.cpp:95
-#, fuzzy
 msgid "Turn changed"
-msgstr "lādiņš"
+msgstr "Gājiens mainīts"
 
 #: src/playmp_controller.cpp:227
 msgid "Undoing moves not yet transmitted to the server."
@@ -8445,7 +8375,7 @@ msgstr ""
 
 #: src/savegame.cpp:692
 msgid "Name: "
-msgstr ""
+msgstr "Nosaukums:"
 
 #: src/savegame.cpp:692
 msgid "Save already exists. Do you want to overwrite it?"
@@ -8453,7 +8383,7 @@ msgstr ""
 
 #: src/savegame.cpp:693
 msgid "Overwrite?"
-msgstr ""
+msgstr "Pārrakstīt?"
 
 #: src/savegame.cpp:703
 msgid "Save names should not end on '.gz'. Please choose a different name."
@@ -8461,7 +8391,7 @@ msgstr ""
 
 #: src/savegame.cpp:765
 msgid "Saved"
-msgstr ""
+msgstr "Saglabāts"
 
 #: src/savegame.cpp:765
 msgid "The game has been saved"
@@ -8473,7 +8403,7 @@ msgstr ""
 
 #: src/savegame.cpp:937
 msgid "Save Replay"
-msgstr ""
+msgstr "Saglabāt atkārtojumu"
 
 #: src/savegame.cpp:955
 msgid "Could not auto save the game. Please save the game manually."
@@ -8568,9 +8498,8 @@ msgid "Damage"
 msgstr ""
 
 #: src/statistics_dialog.cpp:176
-#, fuzzy
 msgid "Overall"
-msgstr "Alas siena"
+msgstr "Vispārējs"
 
 #: src/statistics_dialog.cpp:178
 msgid "This Turn"
@@ -8610,7 +8539,7 @@ msgstr ""
 
 #: src/titlescreen.cpp:425
 msgid "TitleScreen button^Tutorial"
-msgstr "Pamācība"
+msgstr "Apmācība"
 
 #: src/titlescreen.cpp:426
 msgid "TitleScreen button^Campaign"
@@ -8629,9 +8558,8 @@ msgid "TitleScreen button^Add-ons"
 msgstr "Papildinājumi"
 
 #: src/titlescreen.cpp:431
-#, fuzzy
 msgid "TitleScreen button^Map Editor"
-msgstr "Redaktors"
+msgstr "Karšu redaktors"
 
 #: src/titlescreen.cpp:433
 msgid "TitleScreen button^Language"
@@ -8667,7 +8595,7 @@ msgstr "Vesnotas palīdzība"
 
 #: src/titlescreen.cpp:445
 msgid "Start a tutorial to familiarize yourself with the game"
-msgstr "Izmantojiet pamācību, lai iepazītos ar spēli"
+msgstr "Izmantojiet apmācību, lai iepazītos ar spēli"
 
 #: src/titlescreen.cpp:446
 msgid "Start a new single player campaign"
@@ -8678,8 +8606,8 @@ msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
 msgstr ""
-"Spēlēt daudzspēlētāju (karstā krēsla, lokālā tīkla vai interneta) spēli vai "
-"vienu scenāriju pret datoru"
+"Spēlēt daudzspēlētāju (\"karstā krēsla\", lokālā tīkla vai interneta) spēli "
+"vai vienu scenāriju pret datoru"
 
 #: src/titlescreen.cpp:448
 msgid "Load a saved game"
@@ -8782,17 +8710,17 @@ msgid "strike"
 msgid_plural "strikes"
 msgstr[0] "uzbrukums"
 msgstr[1] "uzbrukumi"
-msgstr[2] ""
+msgstr[2] "uzbrukumu"
 
 #: src/unit_types.cpp:214
 #, no-c-format
 msgid "% accuracy"
-msgstr ""
+msgstr "% precizitāte"
 
 #: src/unit_types.cpp:224
 #, no-c-format
 msgid "% parry"
-msgstr ""
+msgstr "% atvairīšana"
 
 #: src/unit_types.cpp:1007
 msgid "chaotic"
@@ -8807,19 +8735,16 @@ msgid "neutral"
 msgstr "neitrāls/-a"
 
 #: src/unit_types.cpp:1008
-#, fuzzy
 msgid "female^chaotic"
-msgstr "mehāniska"
+msgstr "haotiska"
 
 #: src/unit_types.cpp:1008
-#, fuzzy
 msgid "female^lawful"
-msgstr "lojāla"
+msgstr "likumpaklausīga"
 
 #: src/unit_types.cpp:1008
-#, fuzzy
 msgid "female^neutral"
-msgstr "nedzīva"
+msgstr "neitrāla"
 
 #: src/upload_log.cpp:367
 msgid ""
@@ -8828,6 +8753,10 @@ msgid ""
 "help us improve game play by giving permission to send these summaries "
 "(anonymously) to wesnoth.org.\n"
 msgstr ""
+"Vesnota atgriezeniskās saites veidošanai paļaujas uz tādiem brīvprātīgajiem "
+"kā jūs, īpaši iesācējiem un jauniem spēlētājiem. Vesnota saglabā spēļu "
+"kopsavilkumus, jūs varat mums palīdzēt uzlabot spēli, dodot atļauju sūtīt "
+"šos kopsavilkumus (anonīmi) uz 'wesnoth.org'.\n"
 
 #: src/upload_log.cpp:368
 msgid "Summaries are stored here:"
@@ -8845,6 +8774,61 @@ msgstr "Palīdziet mums izveidot jums labāku Vesnotu!"
 msgid "Enable summary uploads"
 msgstr "Atļaut kopsavilkumu augšupielādi"
 
+#, fuzzy
+#~ msgid "Can rest while moving, takes a quarter less poison damage"
+#~ msgstr "Var atpūsties kustoties"
+
+#~ msgid "Computer player"
+#~ msgstr "Dators"
+
+#~ msgid "Default AI"
+#~ msgstr "Noklusētais mākslīgais intelekts"
+
+#, fuzzy
+#~ msgid "Landar"
+#~ msgstr "Smiltis"
+
+#, fuzzy
+#~ msgid "Thursagan"
+#~ msgstr "Gājiens"
+
+#~ msgid "stones"
+#~ msgstr "pārakmeņošana"
+
+#, fuzzy
+#~ msgid "female^stone"
+#~ msgstr "spēcīga"
+
+#~ msgid "stone"
+#~ msgstr "akmens"
+
+#~ msgid "Back to start"
+#~ msgstr "Atsākt scenāriju"
+
+#~ msgid "Only Run Safe Python AIs"
+#~ msgstr "Izmantot tikai drošus Python mākslīgos intelektus"
+
+#, fuzzy
+#~ msgid "Unknown error."
+#~ msgstr "Nezināma darbība."
+
+#~ msgid "Abilites"
+#~ msgstr "Spējas"
+
+#, fuzzy
+#~ msgid "Location name?"
+#~ msgstr "Ielādēt spēli"
+
+#, fuzzy
+#~ msgid "Give new orders"
+#~ msgstr "Atcelt"
+
+#, fuzzy
+#~ msgid "Defeat an enemy Leader!"
+#~ msgstr ""
+#~ "Uzvara:\n"
+#~ "@Sakaut pretinieku līderi/-us"
+
 #~ msgid "Grassland"
 #~ msgstr "Līdzenums"
 
@@ -8860,23 +8844,20 @@ msgstr "Atļaut kopsavilkumu augšupielādi"
 #~ msgid "Chasm"
 #~ msgstr "Plaisa"
 
-#~ msgid "stones"
-#~ msgstr "pārakmeņošana"
+#, fuzzy
+#~ msgid "testing translation reset."
+#~ msgstr "Tulkojums igauņu valodā"
 
-#~ msgid "Can rest while moving"
-#~ msgstr "Var atpūsties kustoties"
+#, fuzzy
+#~ msgid "Connect to add-ons server"
+#~ msgstr "Pievienoties saimniekam"
 
-#~ msgid "stone"
-#~ msgstr "akmens"
+#, fuzzy
+#~ msgid "Host Networked Game"
+#~ msgstr "Par spēli"
 
 #~ msgid "Language"
 #~ msgstr "Valoda"
-
-#~ msgid "Unknown command."
-#~ msgstr "Nezināma darbība."
-
-#~ msgid "Unknown command: "
-#~ msgstr "Nezināma darbība:"
 
 #~ msgid "View List"
 #~ msgstr "Skatīt sarakstu"
@@ -8893,17 +8874,20 @@ msgstr "Atļaut kopsavilkumu augšupielādi"
 #~ msgid "Choose host to connect to: "
 #~ msgstr "Izvēlēties saimnieku pie kura pievienoties:"
 
-#~ msgid "Default AI"
-#~ msgstr "Noklusētais mākslīgais intelekts"
+#, fuzzy
+#~ msgid "testing translation reset"
+#~ msgstr "Tulkojums igauņu valodā"
 
-#~ msgid "Computer player"
-#~ msgstr "Dators"
+#, fuzzy
+#~ msgid "test translation reset"
+#~ msgstr "Tulkojums portugāļu valodā"
 
-#~ msgid "Back to start"
-#~ msgstr "Atsākt scenāriju"
-
-#~ msgid "Only Run Safe Python AIs"
-#~ msgstr "Izmantot tikai drošus Python mākslīgos intelektus"
+#, fuzzy
+#~ msgid "File"
+#~ msgstr "Filtrēt: "
 
 #~ msgid "--move--"
 #~ msgstr "--pārvietot--"
+
+#~ msgid "Unknown command: "
+#~ msgstr "Nezināma darbība:"
