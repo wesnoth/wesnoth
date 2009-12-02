@@ -22,6 +22,7 @@ class variable_set;
 
 #include <string>
 #include <vector>
+#include <set>
 
 #define MAX_MAP_AREA	65536
 
@@ -118,6 +119,12 @@ size_t distance_between(const map_location& a, const map_location& b);
 /** Parses ranges of locations into a vector of locations. */
 std::vector<map_location> parse_location_range(const std::string& xvals,
 	const std::string &yvals, bool with_border = false);
+
+/**
+ * Write a set of locations into a config using ranges,
+ * adding keys x=x1,..,xn and y=y1a-y1b,..,yna-ynb
+ */
+void write_location_range(const std::set<map_location>& locs, config& cfg);
 
 /** Write a vector of locations into a config
  *  adding keys x=x1,x2,..,xn and y=y1,y2,..,yn */

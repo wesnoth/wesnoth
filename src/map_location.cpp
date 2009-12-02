@@ -409,6 +409,43 @@ std::vector<map_location> parse_location_range(const std::string &x, const std::
 	return res;
 }
 
+void write_location_range(const std::set<map_location>& locs, config& cfg)
+{
+	if(locs.empty()){
+		cfg["x"] = "";
+		cfg["y"] = "";
+		return;
+	}
+
+	// need that operator< uses x first
+	assert(map_location(0,1) < map_location(1,0));
+
+	std::stringstream x, y;
+	std::set<map_location>::const_iterator
+			i = locs.begin(),
+			first = i,
+			last = i;
+	x << (i->x + 1);
+	y << (i->y + 1);
+
+	for(++i; i != locs.end(); ++i) {
+		if(i->x != first->x || i->y != last->y+1){
+			if(last->y != first->y)
+				y << "-" << (last->y + 1);
+			x << "," << (i->x + 1);
+			y << "," << (i->y + 1);
+			first = i;
+		}
+		last = i;
+	}
+	// finish last range
+	if(last->y != first->y)
+		y << "-" << (last->y + 1);
+
+	cfg["x"] = x.str();
+	cfg["y"] = y.str();
+}
+
 void write_locations(const std::vector<map_location>& locs, config& cfg)
 {
 	std::stringstream x, y;

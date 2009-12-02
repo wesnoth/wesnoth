@@ -83,13 +83,13 @@ config tod_manager::to_config() const
 	}
 	for(std::vector<area_time_of_day>::const_iterator i = areas_.begin(); i != areas_.end(); ++i) {
 		config& area = cfg.add_child("time_area");
-
-		//TODO: improve this inefficient writing by using ranges
- 		std::vector<map_location> locs(i->hexes.begin(),i->hexes.end());
-		write_locations(locs, area);
-		
- 		area["x"] += ", "+ i->xsrc;
- 		area["y"] += ", "+ i->ysrc;
+		// if no ranges, then use hexes to generate ranges
+		if(i->xsrc.empty() && i->ysrc.empty()) {
+			write_location_range(i->hexes, area);
+		} else {
+			area["x"] = i->xsrc;
+			area["y"] = i->ysrc;
+		}
 		for(t = i->times.begin(); t != i->times.end(); ++t) {
 			t->write(area.add_child("time"));
 		}
