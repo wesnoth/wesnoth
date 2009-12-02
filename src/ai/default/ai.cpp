@@ -2010,12 +2010,18 @@ void ai_default::move_leader_after_recruit()
 				    leader_paths.destinations.contains(adj[n]) &&
 				    !is_accessible(adj[n], get_enemy_dstsrc()))
 				{
+					move_result_ptr move_res = check_move_action(keep,adj[n],true);
+					if (!move_res->is_ok())
+					{
+						continue;
+					}
 					bool gamestate_changed = false;
-					map_location new_loc = move_unit(keep,adj[n],gamestate_changed);
+					move_res->execute();
+					gamestate_changed |= move_res->is_gamestate_changed();
 					if (!gamestate_changed) {
 						ERR_AI << "moving leader after recruit failed" << std::endl;
 					}
-					if (new_loc!=keep) {
+					if (!move_res->is_ok()) {
 						return;
 					}
 				}

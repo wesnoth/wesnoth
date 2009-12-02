@@ -210,6 +210,17 @@ public:
 	static void raise_turn_started();
 
 
+	/**
+	 * Notifies all observers of 'ai_map_changed' event.
+	 */
+	static void raise_map_changed();
+
+
+	/**
+	 * Adds an observer of 'ai_map_changed' event.
+	 */
+	static void add_map_changed_observer( events::observer* event_observer );
+
 
 	/**
 	 * Adds an observer of 'ai_recruit_list_changed' event.
@@ -233,6 +244,12 @@ public:
 	 * Adds an observer of 'ai_turn_started' event.
 	 */
 	static void add_turn_started_observer( events::observer* event_observer );
+
+
+	/**
+	 * Deletes an observer of 'ai_map_changed' event.
+	 */
+	static void remove_map_changed_observer( events::observer* event_observer );
 
 
 
@@ -451,6 +468,7 @@ private:
 	static long history_item_counter_;
 	static game_info *ai_info_;
 
+	static events::generic_event map_changed_;
 	static events::generic_event recruit_list_changed_;
 	static events::generic_event user_interact_;
 	static events::generic_event sync_network_;

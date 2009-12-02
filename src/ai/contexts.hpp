@@ -96,6 +96,20 @@ struct defensive_position {
 	double vulnerability, support;
 };
 
+// keeps cache
+class keeps_cache : public events::observer
+{
+public:
+	keeps_cache();
+	~keeps_cache();
+	void handle_generic_event(const std::string& event_name);
+	void clear();
+	const std::set<map_location>& get();
+	void init(gamemap &map);
+private:
+	gamemap *map_;
+	std::set<map_location> keeps_;
+};
 
 // side context
 
@@ -1323,7 +1337,7 @@ private:
 	mutable move_map enemy_srcdst_;
 	aspect_type< std::string >::typesafe_ptr grouping_;
 	std::vector< goal_ptr > goals_;
-	mutable std::set<map_location> keeps_;
+	mutable keeps_cache keeps_;
 	aspect_type<double>::typesafe_ptr leader_aggression_;
 	aspect_type< config >::typesafe_ptr leader_goal_;
 	aspect_type< double >::typesafe_ptr leader_value_;

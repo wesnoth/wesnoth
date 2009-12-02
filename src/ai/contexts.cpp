@@ -204,6 +204,7 @@ readonly_context_impl::readonly_context_impl(side_context &context, const config
 		add_known_aspect("support_villages",support_villages_);
 		add_known_aspect("village_value",village_value_);
 		add_known_aspect("villages_per_scout",villages_per_scout_);
+		keeps_.init(get_info().map);
 
 	}
 
@@ -797,6 +798,12 @@ void readonly_context_impl::invalidate_keeps_cache() const
 }
 
 
+void keeps_cache::handle_generic_event(const std::string &/*event_name*/)
+{
+	clear();
+}
+
+
 void readonly_context_impl::invalidate_move_maps() const
 {
 	move_maps_valid_ = false;
@@ -806,18 +813,47 @@ void readonly_context_impl::invalidate_move_maps() const
 
 const std::set<map_location>& readonly_context_impl::keeps() const
 {
-	gamemap &map_ = get_info().map;
+	return keeps_.get();
+}
+
+
+keeps_cache::keeps_cache()
+{
+	ai::manager::add_turn_started_observer(this);
+	ai::manager::add_map_changed_observer(this);
+}
+
+
+keeps_cache::~keeps_cache()
+{
+	ai::manager::remove_turn_started_observer(this);
+	ai::manager::remove_map_changed_observer(this);
+}
+
+void keeps_cache::clear()
+{
+	keeps_.clear();
+}
+
+
+void keeps_cache::init(gamemap &map)
+{
+	map_ = &map;
+}
+
+const std::set<map_location>& keeps_cache::get()
+{
 	if(keeps_.empty()) {
 		// Generate the list of keeps:
 		// iterate over the entire map and find all keeps.
-		for(size_t x = 0; x != size_t(map_.w()); ++x) {
-			for(size_t y = 0; y != size_t(map_.h()); ++y) {
+		for(size_t x = 0; x != size_t(map_->w()); ++x) {
+			for(size_t y = 0; y != size_t(map_->h()); ++y) {
 				const map_location loc(x,y);
-				if(map_.is_keep(loc)) {
+				if(map_->is_keep(loc)) {
 					map_location adj[6];
 					get_adjacent_tiles(loc,adj);
 					for(size_t n = 0; n != 6; ++n) {
-						if(map_.is_castle(adj[n])) {
+						if(map_->is_castle(adj[n])) {
 							keeps_.insert(loc);
 							break;
 						}

@@ -3446,6 +3446,7 @@ WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
 		*game_map = map;
 		resources::screen->reload_map();
 		screen_needs_rebuild = true;
+		ai::manager::raise_map_changed();
 	}
 
 WML_HANDLER_FUNCTION(unit_worth, /*event_info*/, cfg)
