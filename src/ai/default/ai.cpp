@@ -1611,17 +1611,18 @@ public:
 	std::pair<std::string, double> operator()(const unit &u) {
 		std::pair<std::string,int> p;
 		p.first = u.id();
-		assert(u.type()!=NULL);
+		const unit_type* u_type = u.type();
+		assert(u_type!=NULL);
 
 		double xp_ratio = 0;
 		if (u.can_advance() && (u.max_experience()>0)) {
 			xp_ratio = u.experience()/u.max_experience();
 		}
 
-		p.second = (1-xp_ratio) * stage_.get_combat_score(*u.type());
+		p.second = (1-xp_ratio) * stage_.get_combat_score(*u_type);
 		double recall_cost = game_config::recall_cost != 0 ? game_config::recall_cost : 1;
 
-		p.second *= static_cast<double>(u.type()->cost())/recall_cost;
+		p.second *= static_cast<double>(u_type->cost())/recall_cost;
 		if (u.can_advance() && (xp_ratio>0) ) {
 		        double best_combat_score_of_advancement = 0;
 			bool best_combat_score_of_advancement_found = false;
