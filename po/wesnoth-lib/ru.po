@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: wesnoth-lib.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-11-26 15:38+0100\n"
-"PO-Revision-Date: 2009-11-30 11:07+0200\n"
-"Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
+"PO-Revision-Date: 2009-12-03 00:42+0300\n"
+"Last-Translator: Andrey Tikhonov <tiacorpo@gmail.com>\n"
 "Language-Team:  <http://bugs.wesnoth.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -231,7 +231,7 @@ msgstr "Летний лиственный лес"
 #. [terrain_type]: id=deciduous_forest_fall
 #: data/core/terrain.cfg:495
 msgid "Fall Deciduous Forest"
-msgstr "Осенний смешанный лес"
+msgstr "Осенний лиственный лес"
 
 #. [terrain_type]: id=deciduous_forest_winter
 #: data/core/terrain.cfg:506
@@ -283,7 +283,7 @@ msgstr "Лесистые холмы"
 #: data/core/terrain.cfg:587 data/core/terrain.cfg:630
 #: data/core/terrain.cfg:673
 msgid "Forested Snow Hills"
-msgstr "Лесистые заснеженные холмы"
+msgstr "Заснеженные лесистые холмы"
 
 #. [terrain_type]: id=deciduous_forest_summer_hills
 #: data/core/terrain.cfg:598
@@ -374,7 +374,7 @@ msgstr "Пропасть"
 #. [terrain_type]: id=lava_chasm
 #: data/core/terrain.cfg:802
 msgid "Lava chasm"
-msgstr "Пропасть с лавой"
+msgstr "Расщелина с лавой"
 
 #. [terrain_type]: id=lava
 #: data/core/terrain.cfg:812
@@ -396,7 +396,7 @@ msgstr "Грязь"
 #. [terrain_type]: id=farm
 #: data/core/terrain.cfg:862
 msgid "Farmland"
-msgstr "Фермы"
+msgstr "Ферма"
 
 #. [terrain_type]: id=swamp_water
 #: data/core/terrain.cfg:876
@@ -406,7 +406,7 @@ msgstr "Болото"
 #. [terrain_type]: id=lit
 #: data/core/terrain.cfg:890
 msgid "Lit"
-msgstr "Освещена"
+msgstr "Освещённая пещера"
 
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:900
@@ -524,7 +524,7 @@ msgstr "Стена"
 #. [terrain_type]: id=impassable
 #: data/core/terrain.cfg:1404 data/core/terrain.cfg:1442
 msgid "Impassable"
-msgstr "Непроходимо"
+msgstr "Непроходимая местность"
 
 #. [terrain_type]: id=void
 #: data/core/terrain.cfg:1415
@@ -539,12 +539,12 @@ msgstr "Равнина"
 #. [terrain_type]: id=frozen
 #: data/core/terrain.cfg:1435
 msgid "Frozen"
-msgstr "Замёрзшая"
+msgstr "Мерзлота"
 
 #. [terrain_type]: id=unwalkable
 #: data/core/terrain.cfg:1449
 msgid "Unwalkable"
-msgstr "Непроходимая"
+msgstr "Непроходимая местность"
 
 #. [label]
 #. [column]
@@ -558,7 +558,7 @@ msgstr "Подключиться к серверу"
 #. [label]
 #: data/gui/default/window/addon_connect.cfg:51
 msgid "You will now connect to a server to download add-ons."
-msgstr "Теперь подключимся к серверу и загрузим аддоны."
+msgstr "Сейчас подключимся к серверу и загрузим аддоны."
 
 #. [label]
 #: data/gui/default/window/addon_connect.cfg:81
@@ -781,7 +781,7 @@ msgstr "Применить"
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:28
 msgid "Formula debugger"
-msgstr ""
+msgstr "Отладчик Formula"
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:51
@@ -796,7 +796,7 @@ msgstr "состояние"
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:77
 msgid "Call stack"
-msgstr ""
+msgstr "Содержимое стека"
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:86
@@ -817,7 +817,7 @@ msgstr "Следующая операция"
 #. [button]: id=stepout
 #: data/gui/default/window/formula_debugger.cfg:140
 msgid "Step out"
-msgstr ""
+msgstr "Пропустить шаг"
 
 #. [button]: id=continue
 #: data/gui/default/window/formula_debugger.cfg:150
@@ -853,7 +853,7 @@ msgstr "Вы действительно хотите удалить сохран
 #. [toggle_button]: id=dont_ask_again
 #: data/gui/default/window/game_delete.cfg:72
 msgid "Don't ask me again!"
-msgstr "И больше меня не спрашивай."
+msgstr "И больше меня не спрашивай!"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -889,7 +889,7 @@ msgstr "Загрузить игру"
 #. [label]: id=lblChoose
 #: data/gui/default/window/game_load.cfg:179
 msgid "Choose the game to load"
-msgstr "Какое сохранение загрузим?"
+msgstr "Какое сохранение загрузить?"
 
 #. [label]: id=lblFilter
 #: data/gui/default/window/game_load.cfg:203
@@ -947,7 +947,7 @@ msgstr ""
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_save_oos.cfg:52
 msgid "OOS error"
-msgstr ""
+msgstr "Ошибка OOS"
 
 #. [toggle_button]: id=ignore_all
 #: data/gui/default/window/game_save_oos.cfg:134
@@ -983,7 +983,7 @@ msgstr "Типы"
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:103
 msgid "Content"
-msgstr "Содержание"
+msgstr "Содержимое"
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:114
@@ -995,12 +995,12 @@ msgstr ""
 #: data/gui/default/window/gamestate_inspector.cfg:145
 #: data/gui/default/window/unit_create.cfg:138
 msgid "Type"
-msgstr ""
+msgstr "Тип"
 
 #. [label]: id=name
 #: data/gui/default/window/gamestate_inspector.cfg:206
 msgid "Variable"
-msgstr ""
+msgstr "Переменная"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -1083,7 +1083,7 @@ msgstr "Сортировать игроков:"
 #. [toggle_button]: id=player_list_sort_relation
 #: data/gui/default/window/lobby_main.cfg:313
 msgid "Friends first, ignored people last"
-msgstr "Сначала друзья, игнор в конце"
+msgstr "Сначала друзья, игнорируемые в конце"
 
 #. [toggle_button]: id=player_list_sort_name
 #: data/gui/default/window/lobby_main.cfg:321
@@ -1209,7 +1209,7 @@ msgstr "Добавить в список друзей"
 #. [button]: id=add_to_ignores
 #: data/gui/default/window/lobby_player_info.cfg:100
 msgid "Add to ignores list"
-msgstr "Добавить в список игнора"
+msgstr "Добавить в список игнорируемых"
 
 #. [button]: id=remove_from_list
 #: data/gui/default/window/lobby_player_info.cfg:109
@@ -1322,7 +1322,7 @@ msgstr "Забанить"
 #: data/gui/default/window/mp_connect.cfg:50
 #: data/gui/default/window/mp_server_list.cfg:61
 msgid "You will now connect to the multiplayer server."
-msgstr "Теперь подключимся к мультиплеерному серверу"
+msgstr "Сейчас подключимся к мультиплеерному серверу"
 
 #. [button]: id=list
 #: data/gui/default/window/mp_connect.cfg:148
@@ -1364,7 +1364,7 @@ msgstr "Установить пароль"
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:246
 msgid "Map to play:"
-msgstr "Играем на карте:"
+msgstr "Играть на карте:"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:331
@@ -1422,7 +1422,7 @@ msgstr "Пароль:"
 #: data/gui/default/window/mp_login.cfg:190
 #: src/game_preferences_display.cpp:170
 msgid "Save password to preferences (clear text)"
-msgstr "Сохранять пароль в настройках (в чистом тексте)"
+msgstr "Сохранять пароль в настройках (в незашифрованном виде)"
 
 #. [button]: id=password_reminder
 #: data/gui/default/window/mp_login.cfg:248
@@ -1436,7 +1436,7 @@ msgstr "Напомнить пароль"
 #: data/gui/default/window/title_screen.cfg:184
 #: src/gui/dialogs/game_load.cpp:259
 msgid "Multiplayer"
-msgstr "Многопользовательская"
+msgstr "Многопользовательская игра"
 
 #. [text_box]: id=user_name
 #: data/gui/default/window/mp_method_selection.cfg:82
@@ -1463,7 +1463,7 @@ msgstr "Подключиться к официальному серверу"
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:139
 msgid "Log on to the official Wesnoth multiplayer server"
-msgstr "Войти на к официальный мультиплеерный сервер Веснота"
+msgstr "Войти на официальный мультиплеерный сервер Веснота"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:149
@@ -1526,7 +1526,7 @@ msgstr "Кампания"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:185
 msgid "Load"
-msgstr "Дорога"
+msgstr "Загрузить"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:186
@@ -1567,7 +1567,7 @@ msgstr "Женщина"
 #. [toggle_button]: id=namegen_toggle
 #: data/gui/default/window/unit_create.cfg:97
 msgid "Generate name"
-msgstr "Создать имя"
+msgstr "Случайно создать имя"
 
 #. [label]: id=race
 #: data/gui/default/window/unit_create.cfg:126
@@ -1736,7 +1736,7 @@ msgstr "Звуки интерфейса"
 
 #: src/game_preferences_display.cpp:196
 msgid "Custom"
-msgstr "Другие"
+msgstr "Другая"
 
 #: src/game_preferences_display.cpp:198
 msgid "Show Unit Idle Animations"
@@ -1764,7 +1764,7 @@ msgstr "Скорость прокрутки:"
 
 #: src/game_preferences_display.cpp:205
 msgid "Sample Rate (Hz):"
-msgstr "Размер сэмпла (Гц):"
+msgstr "Частота сэмпла (Гц):"
 
 #: src/game_preferences_display.cpp:206
 msgid "Frequency:"
@@ -1796,15 +1796,15 @@ msgstr "Включить/Выключить звуки меню и кнопок"
 
 #: src/game_preferences_display.cpp:255
 msgid "Change the sound volume for button clicks, etc."
-msgstr "Изменить громкость звука, при нажатии на кнопки и т.п."
+msgstr "Изменить громкость звука при нажатии на кнопки и т.п."
 
 #: src/game_preferences_display.cpp:257
 msgid "Change the sample rate"
-msgstr "Изменить размер сэмпла"
+msgstr "Изменить частоту сэмпла"
 
 #: src/game_preferences_display.cpp:266
 msgid "User defined sample rate"
-msgstr "Пользовательский размер сэмпла"
+msgstr "Пользовательская частота сэмпла"
 
 #: src/game_preferences_display.cpp:275 src/game_preferences_display.cpp:279
 msgid "Change the buffer size"
@@ -1820,34 +1820,34 @@ msgstr "Изменить скорость прокрутки карты"
 
 #: src/game_preferences_display.cpp:289 src/game_preferences_display.cpp:291
 msgid "Set the amount of chat lines shown"
-msgstr "Установите количество показываемых линий в чате"
+msgstr "Установите количество показываемых строк в чате"
 
 #: src/game_preferences_display.cpp:294
 msgid "Add a timestamp to chat messages"
-msgstr "Добавьте отметку времени сообщениями в чате"
+msgstr "Добавить отметку времени сообщениями в чате"
 
 #: src/game_preferences_display.cpp:297
 msgid "Choose whether the game should run full screen or in a window"
-msgstr "Выберите режим игры, на весь экран, или в окне"
+msgstr "Выберите режим игры: полноэкранный или оконный"
 
 #: src/game_preferences_display.cpp:300
 msgid ""
 "Should the map view scroll to a unit when an action or move is animated."
 msgstr ""
-"Будет ли карта смещаться, чтобы держать в фокусе его перемещения или другие "
-"действия."
+"Будет ли карта смещаться, чтобы держать в фокусе перемещения или другие "
+"действия отряда"
 
 #: src/game_preferences_display.cpp:303
 msgid "Make units move and fight faster"
-msgstr "Ускорить движение и битвы"
+msgstr "Увеличить скорость движения и битвы"
 
 #: src/game_preferences_display.cpp:320
 msgid "Units move and fight speed"
-msgstr "Скорость движения и битв"
+msgstr "Скорость движения и битвы"
 
 #: src/game_preferences_display.cpp:323
 msgid "Show unit idle animations"
-msgstr "Показывать анимацию стоящих бойцов"
+msgstr "Анимировать бездействующих бойцов"
 
 #: src/game_preferences_display.cpp:329
 msgid "Set the frequency of unit idle animations"
@@ -1893,7 +1893,7 @@ msgstr "Показывать сообщения о всех игроках, по
 msgid "Find and set path to MP server to host LAN games."
 msgstr ""
 "Найти и указать путь к МП-серверу, который будет хостить игры в локальной "
-"сети."
+"сети"
 
 #: src/game_preferences_display.cpp:368
 msgid "View and edit your friends and ignores list"
@@ -1905,19 +1905,19 @@ msgstr "Назад к параметрам многопользовательс�
 
 #: src/game_preferences_display.cpp:370
 msgid "Add this username to your friends list"
-msgstr "Добавить имя в список друзей"
+msgstr "Добавить игрока в список друзей"
 
 #: src/game_preferences_display.cpp:371
 msgid "Add this username to your ignores list"
-msgstr "Добавить имя в список игнорируемых"
+msgstr "Добавить игрока в список игнорируемых"
 
 #: src/game_preferences_display.cpp:372
 msgid "Remove this username from your list"
-msgstr "Удалить это имя из списка"
+msgstr "Удалить этого игрока из списка"
 
 #: src/game_preferences_display.cpp:375
 msgid "Insert a username"
-msgstr "Вставить имя"
+msgstr "Вставить игрока"
 
 #: src/game_preferences_display.cpp:378
 msgid "Show text above a unit when it is hit to display damage inflicted"
@@ -1949,7 +1949,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:393
 msgid "Choose whether the sun moves left-to-right or right-to-left"
-msgstr "Выберите передвижение солнца, слева-направо или справа-налево"
+msgstr "Выберите передвижение солнца, слева направо или справа налево"
 
 #: src/game_preferences_display.cpp:396
 msgid "Use colored mouse cursors (may be slower)"
@@ -2119,7 +2119,7 @@ msgstr "Кампания: $campaign_name"
 
 #: src/gui/dialogs/game_load.cpp:271
 msgid "replay"
-msgstr "реплей"
+msgstr "повтор"
 
 #: src/gui/dialogs/game_load.cpp:273
 msgid "Turn"
@@ -2147,20 +2147,18 @@ msgstr "Игры: показано $num_shown из $num_total"
 
 #: src/gui/dialogs/lobby_main.cpp:448
 msgid "Observers allowed"
-msgstr "Наблюдать разрешено"
+msgstr "Наблюдение разрешено"
 
 #: src/gui/dialogs/lobby_main.cpp:451
 msgid "Observers not allowed"
-msgstr "Наблюдать запрещено"
+msgstr "Наблюдение запрещено"
 
 #: src/gui/dialogs/lobby_main.cpp:741
 msgid ""
 "Whisper session with $name started. If you don't want to receive messages "
 "from this user, type /ignore $name\n"
 msgstr ""
-"Открылась сессия шёпотов с $name. Если Вы не хотите получать сообщения от "
-"этого пользователя, наберите /ignore $name\n"
-"Открылась сессия шёпотов с $name. Если Вы не хотите получать сообщения от "
+"Открылся приватный чат с $name. Если Вы не хотите получать сообщения от "
 "этого пользователя, наберите /ignore $name\n"
 
 #: src/gui/dialogs/lobby_main.cpp:747
@@ -2197,7 +2195,7 @@ msgstr "Обязательный виджет '$id' не определён"
 
 #: src/gui/widgets/settings.cpp:144
 msgid "No default gui defined."
-msgstr "GUI пол умолчанию не определён."
+msgstr "GUI по умолчанию не определён."
 
 #: src/gui/widgets/settings.cpp:304
 msgid "Window not defined."
@@ -2255,15 +2253,15 @@ msgstr "Повторить"
 
 #: src/hotkeys.cpp:54
 msgid "Zoom In"
-msgstr "Увеличить"
+msgstr "Увеличить масштаб"
 
 #: src/hotkeys.cpp:55
 msgid "Zoom Out"
-msgstr "Уменьшить"
+msgstr "Уменьшить масштаб"
 
 #: src/hotkeys.cpp:56
 msgid "Default Zoom"
-msgstr "Увеличение по умолчанию"
+msgstr "Масштаб по умолчанию"
 
 #: src/hotkeys.cpp:57
 msgid "Toggle Full Screen"
@@ -2271,11 +2269,11 @@ msgstr "На весь экран"
 
 #: src/hotkeys.cpp:58 src/hotkeys.cpp:889
 msgid "Screenshot"
-msgstr "Скриншот"
+msgstr "Сделать скриншот"
 
 #: src/hotkeys.cpp:59
 msgid "Map Screenshot"
-msgstr "Скриншот карты"
+msgstr "Сделать скриншот карты"
 
 #: src/hotkeys.cpp:60
 msgid "Accelerated"
@@ -2439,7 +2437,7 @@ msgstr "Просмотреть все изменения"
 
 #: src/hotkeys.cpp:115
 msgid "Map Information"
-msgstr "Данные карты"
+msgstr "Информация о карте"
 
 #: src/hotkeys.cpp:117
 msgid "Swap fore- and background terrains"
@@ -2547,7 +2545,7 @@ msgstr "Создать карту"
 
 #: src/hotkeys.cpp:161
 msgid "Apply a Mask"
-msgstr "Маложить маску"
+msgstr "Применить маску"
 
 #: src/hotkeys.cpp:163
 msgid "Create Mask"
@@ -2721,7 +2719,7 @@ msgstr "Максимальная ширина текста меньше 1"
 
 #: src/minimap.cpp:87
 msgid "Could not get image for terrain: $terrain."
-msgstr "Не могу найти изображения для территории $terrain."
+msgstr "Не могу найти изображения для местности $terrain."
 
 #: src/minimap.cpp:116 src/minimap.cpp:128
 msgid "Error creating or aquiring an image."
@@ -2769,12 +2767,12 @@ msgstr "Эта горячая клавиша уже занята."
 msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr ""
-"Предупреждение: клавише скриншота лучше бы использовать Control, Alt или "
-"Meta."
+"Предупреждение: для скриншота лучше бы использовать комбинацию с клавишами "
+"Control, Alt или Meta."
 
 #: src/preferences_display.cpp:441
 msgid "There are no alternative video modes available"
-msgstr "Нет доступных альтернативных видео режимов"
+msgstr "Нет доступных альтернативных видеорежимов"
 
 #: src/preferences_display.cpp:470
 msgid "Choose Resolution"
@@ -2784,14 +2782,14 @@ msgstr "Выберите разрешение"
 msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is :"
-msgstr "Найдена территория со строкой из более чем 4 символов, это: "
+msgstr "Найдена  со строкой из более чем 4 символов, это: "
 
 #: src/wml_exception.cpp:53
 msgid ""
 "An error due to possibly invalid WML occurred\n"
 "The error message is :"
 msgstr ""
-"Произошла ошибка, возможно связанная с неверным WML кодом\n"
+"Произошла ошибка, возможно, связанная с неверным WML кодом\n"
 "Сообщение об ошибке :"
 
 #: src/wml_exception.cpp:55
