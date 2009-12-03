@@ -375,7 +375,7 @@ public:
 			std::pair<unit_type_map::iterator, bool> insert(const std::pair<std::string,unit_type>& utype) { return types_.insert(utype); }
 			void clear();
 
-            unit_type& build_unit_type(const std::string& key, unit_type::BUILD_STATUS status) const;
+            unit_type& build_unit_type(const unit_type_map::iterator& ut, unit_type::BUILD_STATUS status) const;
             void add_advancefrom(const config& unit_cfg) const;
             void add_advancement(unit_type& to_unit) const;
 

@@ -1250,7 +1250,7 @@ unit_type_data::unit_type_map::const_iterator unit_type_data::unit_type_map_wrap
         return types_.end();
 
 	DBG_CF << "trying to find " << key  << " in unit_type list (unit_type_data.unit_types)\n";
-    const unit_type_map::const_iterator itor = types_.find(key);
+    const unit_type_map::iterator itor = types_.find(key);
 
     //This might happen if units of another era are requested (for example for savegames)
     if (itor == types_.end()){
@@ -1262,9 +1262,10 @@ unit_type_data::unit_type_map::const_iterator unit_type_data::unit_type_map_wrap
     }
 
     //check if the unit_type is constructed and build it if necessary
-    build_unit_type(key, status);
+    build_unit_type(itor, status);
 
-    return types_.find(key);
+    //return unit_type_data::unit_type_map::const_iterator();
+    return itor;
 }
 
 const config& unit_type_data::unit_type_map_wrapper::find_config(const std::string& key) const
@@ -1295,23 +1296,21 @@ void unit_type_data::unit_type_map_wrapper::build_all(unit_type::BUILD_STATUS st
 {
     assert(unit_cfg_ != NULL);
 
-    for (unit_type_map::const_iterator u = types_.begin(); u != types_.end(); ++u){
-        build_unit_type(u->first, status);
+    for (unit_type_map::iterator u = types_.begin(); u != types_.end(); ++u){
+        build_unit_type(u, status);
     }
     for (unit_type_map::iterator u = types_.begin(); u != types_.end(); ++u){
         add_advancement(u->second);
     }
 }
 
-unit_type& unit_type_data::unit_type_map_wrapper::build_unit_type(const std::string& key, unit_type::BUILD_STATUS status) const
+unit_type& unit_type_data::unit_type_map_wrapper::build_unit_type(const unit_type_map::iterator& ut, unit_type::BUILD_STATUS status) const
 {
-    unit_type_map::iterator ut = types_.find(key);
-
     DBG_UT << "Building unit type " << ut->first << ", level " << status << "\n";
 
     switch (status){
         case unit_type::CREATED: {
-			const config& unit_cfg = find_config(key);
+			const config& unit_cfg = find_config(ut->first);
             ut->second.set_config(unit_cfg);
 			ut->second.build_created(unit_cfg, movement_types_, races_, unit_cfg_->child_range("trait"));
             break;
@@ -1319,7 +1318,7 @@ unit_type& unit_type_data::unit_type_map_wrapper::build_unit_type(const std::str
         case unit_type::HELP_INDEX: {
             //build the stuff that is needed to feed the help index
             if ( (ut->second.build_status() == unit_type::NOT_BUILT) || (ut->second.build_status() == unit_type::CREATED) ) {
-				const config& unit_cfg = find_config(key);
+				const config& unit_cfg = find_config(ut->first);
 				ut->second.build_help_index(unit_cfg, movement_types_, races_, unit_cfg_->child_range("trait"));
 			}
             break;
@@ -1330,7 +1329,7 @@ unit_type& unit_type_data::unit_type_map_wrapper::build_unit_type(const std::str
                 (ut->second.build_status() == unit_type::CREATED) ||
                 (ut->second.build_status() == unit_type::HELP_INDEX) )
             {
-				const config& unit_cfg = find_config(key);
+				const config& unit_cfg = find_config(ut->first);
 				ut->second.build_full(unit_cfg, movement_types_, races_, unit_cfg_->child_range("trait"));
             }
             break;
