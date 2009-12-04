@@ -330,7 +330,6 @@ private:
 			constraints(),
 			location_constraints(),
 			probability(0),
-			precedence(0),
 			local(false)
 		{}
 
@@ -352,14 +351,6 @@ private:
 		 * [terrain_graphics] element is set.
 		 */
 		int probability;
-
-		/**
-		 * The precedence of this rule. Used to order rules differently
-		 * that the order in which they appear.
-		 * Defined if the "precedence" parameter of the
-		 * [terrain_graphics] element is set.
-		 */
-		int precedence;
 
 		/**
 		 * Indicate if the rule is only for this scenario
@@ -639,10 +630,11 @@ private:
 	/**
 	 * Adds a rule to a ruleset. Checks for validity before adding the rule.
 	 *
-	 * @param rules   The ruleset into which to add the rules.
-	 * @param rule    The rule to add.
+	 * @param rules      The ruleset into which to add the rules.
+	 * @param rule       The rule to add.
+	 * @param precedence The precedence specified in [terrain_graphics].
 	 */
-	void add_rule(building_ruleset& rules, building_rule &rule);
+	void add_rule(building_ruleset& rules, building_rule &rule, int precedence);
 
 	/**
 	 * Adds a set of rules to a ruleset, from a template rule which spans
@@ -650,11 +642,13 @@ private:
 	 *
 	 * @param rules      The ruleset into which to add the rules.
 	 * @param tpl        The template rule
+	 * @param precedence The precedence specified in [terrain_graphics].
 	 * @param rotations  A comma-separated string containing the
 	 *					 6 values for replacing rotation
 	 *					 template strings @verbatim (@Rn) @endverbatim
 	 */
-	void add_rotated_rules(building_ruleset& rules, building_rule& tpl, const std::string &rotations);
+	void add_rotated_rules(building_ruleset& rules, building_rule& tpl,
+			int precedence, const std::string &rotations);
 
 	/**
 	 * Parses a configuration object containing [terrain_graphics] rules,

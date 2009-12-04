@@ -524,7 +524,6 @@ terrain_builder::building_rule terrain_builder::rotate_rule(const terrain_builde
 	}
 	ret.location_constraints = rule.location_constraints;
 	ret.probability = rule.probability;
-	ret.precedence = rule.precedence;
 	ret.local = rule.local;
 
 	constraint_set tmp_cons;
@@ -702,26 +701,26 @@ void terrain_builder::parse_mapstring(const std::string &mapstring,
 	}
 }
 
-void terrain_builder::add_rule(building_ruleset& rules, building_rule &rule)
+void terrain_builder::add_rule(building_ruleset& rules, building_rule &rule, int precedence)
 {
 	if(rule_valid(rule)) {
 		start_animation(rule);
-		rules.insert(std::pair<int, building_rule>(rule.precedence, rule));
+		rules.insert(std::pair<int, building_rule>(precedence, rule));
 	}
 }
 
-void terrain_builder::add_rotated_rules(building_ruleset& rules, building_rule& tpl, const std::string &rotations)
+void terrain_builder::add_rotated_rules(building_ruleset& rules, building_rule& tpl, int precedence, const std::string &rotations )
 {
 	if(rotations.empty()) {
 		// Adds the parsed built terrain to the list
 
-		add_rule(rules, tpl);
+		add_rule(rules, tpl, precedence);
 	} else {
 		const std::vector<std::string>& rot = utils::split(rotations, ',');
 
 		for(size_t angle = 0; angle < rot.size(); angle++) {
 			building_rule rule = rotate_rule(tpl, angle, rot);
-			add_rule(rules, rule);
+			add_rule(rules, rule, precedence);
 		}
 	}
 }
@@ -743,7 +742,6 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 				map_location(atoi(br["x"].c_str()) - 1, atoi(br["y"].c_str()) - 1);
 
 		pbr.probability = br["probability"].empty() ? -1 : atoi(br["probability"].c_str());
-		pbr.precedence = br["precedence"].empty() ? 0 : atoi(br["precedence"].c_str());
 
 		// Mapping anchor indices to anchor locations.
 		anchormap anchors;
@@ -811,7 +809,10 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 		// Handles rotations
 		const std::string &rotations = br["rotations"];
 
-		add_rotated_rules(building_rules_, pbr, rotations);
+		const std::string preced = br["precedence"];
+		int precedence = preced.empty() ? 0 : atoi(preced.c_str());
+
+		add_rotated_rules(building_rules_, pbr, precedence, rotations);
 
 	}
 
@@ -824,7 +825,6 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 		std::cerr << ">> New rule: image_background = "
 			<< "\n>> Location " << rule->second.location_constraints
 			<< "\n>> Probability " << rule->second.probability
-			<< "\n>> Precedence " << rule->second.precedence << '\n';
 
 		for(constraint_set::const_iterator constraint = rule->second.constraints.begin();
 		    constraint != rule->second.constraints.end(); ++constraint) {
