@@ -25,6 +25,7 @@
 #include "log.hpp"
 #include "map.hpp"
 #include "serialization/string_utils.hpp"
+#include "image.hpp"
 
 #include <climits>
 

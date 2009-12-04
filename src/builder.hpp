@@ -21,15 +21,15 @@
 #define BUILDER_H_INCLUDED
 
 #include "animated.hpp"
-#include "image.hpp"
 #include "map_location.hpp"
+#include "terrain_translation.hpp"
 
 #include <map>
 #include <set>
 
 class config;
 class gamemap;
-
+namespace image{ class locator; }
 /**
  * The class terrain_builder is constructed from a config object, and a
  * gamemap object. On construction, it parses the configuration and extracts
