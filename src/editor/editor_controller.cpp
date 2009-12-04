@@ -142,7 +142,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video, m
 void editor_controller::init_gui(CVideo& video)
 {
 	const config &theme_cfg = get_theme(game_config_, "editor");
-	gui_.reset(new editor_display(video, get_map(), theme_cfg, game_config_, config()));
+	gui_.reset(new editor_display(video, get_map(), theme_cfg, config()));
 	gui_->set_grid(preferences::grid());
 	prefs_disp_manager_.reset(new preferences::display_manager(&gui()));
 	gui_->add_redraw_observer(boost::bind(&editor_controller::display_redraw_callback, this, _1));

@@ -64,8 +64,6 @@ public:
 
 	/** Constructor for the terrain_builder class.
 	 *
-	 * @param cfg			The main grame configuration object, where the
-	 *						[terrain_graphics] rule reside.
 	 * @param level		A level (scenario)-specific configuration file,
 	 *		    containing scenario-specific [terrain_graphics] rules.
 	 * @param map			A properly-initialized gamemap object representing
@@ -75,8 +73,16 @@ public:
 	 *						This image automatically gets the 'terrain/' prefix
 	 *						and '.png' suffix
 	 */
-	terrain_builder(const config& cfg, const config &level,
-		const gamemap* map, const std::string& offmap_image);
+	terrain_builder(const config &level, const gamemap* map,
+			const std::string& offmap_image);
+
+	/**  Set the config where we will parse the global terrain rules.
+	 *   This also flushes the terrain rules cache.
+	 *
+	 * @param cfg			The main grame configuration object, where the
+	 *						[terrain_graphics] rule reside.
+	 */
+	static void set_terrain_rules_cfg(const config& cfg);
 
 	const gamemap& map() const { return *map_; }
 
@@ -324,7 +330,8 @@ private:
 			constraints(),
 			location_constraints(),
 			probability(0),
-			precedence(0)
+			precedence(0),
+			local(false)
 		{}
 
 		/**
@@ -353,6 +360,11 @@ private:
 		 * [terrain_graphics] element is set.
 		 */
 		int precedence;
+
+		/**
+		 * Indicate if the rule is only for this scenario
+		 */
+		bool local;
 	};
 
 	/**
@@ -649,9 +661,12 @@ private:
 	 * and fills the building_rules_ member of the current class according
 	 * to those.
 	 *
-	 * @param cfg		The configuration object to parse.
+	 * @param cfg       The configuration object to parse.
+	 * @param local     Mark the rules as local only.
 	 */
-	void parse_config(const config &cfg);
+	void parse_config(const config &cfg, bool local = true);
+
+	void parse_global_config(const config &cfg) { parse_config(cfg, false); }
 
 	/**
 	 * Adds a builder rule for the _off^_usr tile, this tile only has 1 image.
@@ -659,6 +674,8 @@ private:
 	 * @param image		The filename of the image
 	 */
 	void add_off_map_rule(const std::string& image);
+
+	void flush_local_rules();
 
 	/**
 	 * Checks whether a terrain code matches a given list of terrain codes.
@@ -742,8 +759,11 @@ private:
 	 */
 	terrain_by_type_map terrain_by_type_;
 
-	building_ruleset building_rules_;
+	/** Parsed terrain rules. Cached between instances */
+	static building_ruleset building_rules_;
 
+	/** Config used to parse global terrain rules */
+	static const config* rules_cfg_;
 };
 
 #endif

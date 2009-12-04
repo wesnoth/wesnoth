@@ -77,7 +77,7 @@ namespace {
 
 int display::last_zoom_ = SmallZoom;
 
-display::display(CVideo& video, const gamemap* map, const config& theme_cfg, const config& cfg, const config& level) :
+display::display(CVideo& video, const gamemap* map, const config& theme_cfg, const config& level) :
 	screen_(video),
 	map_(map),
 	viewpoint_(NULL),
@@ -85,7 +85,7 @@ display::display(CVideo& video, const gamemap* map, const config& theme_cfg, con
 	ypos_(0),
 	theme_(theme_cfg, screen_area()),
 	zoom_(DefaultZoom),
-	builder_(new terrain_builder(cfg, level, map, theme_.border().tile_image)),
+	builder_(new terrain_builder(level, map, theme_.border().tile_image)),
 	minimap_(NULL),
 	minimap_location_(empty_rect),
 	redrawMinimap_(false),

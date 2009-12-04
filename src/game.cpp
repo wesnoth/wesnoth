@@ -30,6 +30,7 @@
 #include "dialogs.hpp"
 #include "foreach.hpp"
 #include "game_display.hpp"
+#include "builder.hpp"
 #include "filesystem.hpp"
 #include "font.hpp"
 #include "formula.hpp"
@@ -1540,6 +1541,8 @@ void game_controller::load_game_cfg(const bool force)
 		}
 
 		set_unit_data();
+
+		terrain_builder::set_terrain_rules_cfg(game_config_);
 
 	} catch(game::error& e) {
 		ERR_CONFIG << "Error loading game configuration files\n";

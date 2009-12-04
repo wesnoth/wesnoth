@@ -53,8 +53,8 @@ std::map<map_location,fixed_t> game_display::debugHighlights_;
 
 game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 		const tod_manager& tod, const std::vector<team>& t,
-		const config& theme_cfg, const config& cfg, const config& level) :
-		display(video, &map, theme_cfg, cfg, level),
+		const config& theme_cfg, const config& level) :
+		display(video, &map, theme_cfg, level),
 		units_(units),
 		temp_unit_(NULL),
 		attack_indicator_src_(),
@@ -141,7 +141,7 @@ game_display* game_display::create_dummy_display(CVideo& video)
 	static tod_manager dummy_tod(dummy_cfg, 0);
 	static std::vector<team> dummy_teams;
 	return new game_display(dummy_umap, video, dummy_map, dummy_tod,
-			dummy_teams, dummy_cfg, dummy_cfg, dummy_cfg);
+			dummy_teams, dummy_cfg, dummy_cfg);
 }
 
 game_display::~game_display()

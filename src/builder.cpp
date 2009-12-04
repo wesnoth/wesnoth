@@ -48,6 +48,9 @@ static const int UNITPOS = 36 + 18;
  */
 static const int BASE_Y_INTERVAL = 100000;
 
+terrain_builder::building_ruleset terrain_builder::building_rules_;
+const config* terrain_builder::rules_cfg_ = NULL;
+
 terrain_builder::rule_image::rule_image(int layer, int x, int y, bool global_image, int cx, int cy) :
 	layer(layer),
 	basex(x),
@@ -150,24 +153,47 @@ const terrain_builder::tile& terrain_builder::tilemap::operator[] (const map_loc
 	return tiles_[(loc.x + 2) + (loc.y + 2) * (x_ + 4)];
 }
 
-terrain_builder::terrain_builder(const config& cfg, const config& level,
+terrain_builder::terrain_builder(const config& level,
 		const gamemap* m, const std::string& offmap_image) :
 	map_(m),
 	tile_map_(map().w(), map().h()),
-	terrain_by_type_(),
-	building_rules_()
+	terrain_by_type_()
 {
-	// Make sure there's nothing left in the cache,
-	// since it might give problems (or not?)
-	//image::flush_cache();
-
 	image::precache_file_existence("terrain/");
 
-	parse_config(cfg);
+	if(building_rules_.empty() && rules_cfg_){
+		// parse global terrain rules
+		parse_global_config(*rules_cfg_);
+	} else {
+		// use cached global rules but clear local rules
+		flush_local_rules();
+	}
+
+	// parse local rules
 	parse_config(level);
 	add_off_map_rule(offmap_image);
 
 	build_terrains();
+}
+
+void terrain_builder::flush_local_rules()
+{
+	building_ruleset::iterator i = building_rules_.begin();
+	for(; i != building_rules_.end();){
+		if(i->second.local)
+			building_rules_.erase(i++);
+		else
+			++i;
+	}
+}
+
+void terrain_builder::set_terrain_rules_cfg(const config& cfg)
+{
+	rules_cfg_ = &cfg;
+	// use the swap trick to clear the rules cache and get a fresh one.
+	// because simple clear() seems to cause some progressive memory degradation.
+	building_ruleset empty;
+	std::swap(building_rules_, empty);
 }
 
 void terrain_builder::reload_map()
@@ -499,6 +525,7 @@ terrain_builder::building_rule terrain_builder::rotate_rule(const terrain_builde
 	ret.location_constraints = rule.location_constraints;
 	ret.probability = rule.probability;
 	ret.precedence = rule.precedence;
+	ret.local = rule.local;
 
 	constraint_set tmp_cons;
 	constraint_set::const_iterator cons;
@@ -699,7 +726,7 @@ void terrain_builder::add_rotated_rules(building_ruleset& rules, building_rule& 
 	}
 }
 
-void terrain_builder::parse_config(const config &cfg)
+void terrain_builder::parse_config(const config &cfg, bool local)
 {
 	log_scope("terrain_builder::parse_config");
 
@@ -707,6 +734,7 @@ void terrain_builder::parse_config(const config &cfg)
 	foreach (const config &br, cfg.child_range("terrain_graphics"))
 	{
 		building_rule pbr; // Parsed Building rule
+		pbr.local = local;
 
 		// add_images_from_config(pbr.images, **br);
 

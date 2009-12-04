@@ -64,7 +64,7 @@ class display
 {
 public:
 	display(CVideo& video, const gamemap* map, const config& theme_cfg,
-			const config& cfg, const config& level);
+			const config& level);
 	virtual ~display();
 
 	/**
