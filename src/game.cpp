@@ -635,17 +635,17 @@ bool game_controller::init_config(const bool force)
 
 	load_game_cfg(force);
 
-	const config &cfg = game_config_.child("game_config");
+	const config &cfg = game_config().child("game_config");
 	game_config::load_config(cfg ? &cfg : NULL);
 	hotkey::deactivate_all_scopes();
 	hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
 	hotkey::set_scope_active(hotkey::SCOPE_GAME);
 
-	hotkey::load_hotkeys(game_config_);
-	paths_manager_.set_paths(game_config_);
-	::init_textdomains(game_config_);
-	about::set_about(game_config_);
-	ai::configuration::init(game_config_);
+	hotkey::load_hotkeys(game_config());
+	paths_manager_.set_paths(game_config());
+	::init_textdomains(game_config());
+	about::set_about(game_config());
+	ai::configuration::init(game_config());
 
 	return true;
 }
@@ -689,11 +689,11 @@ bool game_controller::play_test()
 
 	load_game_cfg();
 
-	paths_manager_.set_paths(game_config_);
+	paths_manager_.set_paths(game_config());
 
 	try {
 		upload_log nolog(false);
-		play_game(disp(),state_,game_config_,nolog);
+		play_game(disp(),state_,game_config(),nolog);
 	} catch(game::load_game_exception& e) {
 		loaded_game_ = e.game;
 		loaded_game_show_replay_ = e.show_replay;
@@ -715,10 +715,10 @@ bool game_controller::play_screenshot_mode()
 	cache_.clear_defines();
 	cache_.add_define("EDITOR");
 	load_game_cfg();
-	const binary_paths_manager bin_paths_manager(game_config_);
-	::init_textdomains(game_config_);
+	const binary_paths_manager bin_paths_manager(game_config());
+	::init_textdomains(game_config());
 
-	editor::start(game_config_, video_, screenshot_map_, true, screenshot_filename_);
+	editor::start(game_config(), video_, screenshot_map_, true, screenshot_filename_);
 	return false;
 #else
 	return false;
@@ -801,7 +801,7 @@ bool game_controller::play_multiplayer_mode()
 		}
 	}
 
-	const config &lvl = game_config_.find_child("multiplayer", "id", scenario);
+	const config &lvl = game_config().find_child("multiplayer", "id", scenario);
 	if (!lvl) {
 		std::cerr << "Could not find scenario '" << scenario << "'\n";
 		return false;
@@ -814,7 +814,7 @@ bool game_controller::play_multiplayer_mode()
 	config level = lvl;
 	std::vector<config*> story;
 
-	const config &era_cfg = game_config_.find_child("era","id",era);
+	const config &era_cfg = game_config().find_child("era","id",era);
 	if (!era_cfg) {
 		std::cerr << "Could not find era '" << era << "'\n";
 		return false;
@@ -928,7 +928,7 @@ bool game_controller::play_multiplayer_mode()
 		recorder.add_log_data("ai_log","ai_label",label);
 
 		state_.snapshot = level;
-		play_game(disp(),state_,game_config_,log);
+		play_game(disp(), state_, game_config(), log);
 	} catch(game::error& e) {
 		std::cerr << "caught error: '" << e.message << "'\n";
 	} catch(game::load_game_exception& e) {
@@ -956,7 +956,7 @@ bool game_controller::is_loading() const
 
 bool game_controller::load_game()
 {
-	savegame::loadgame load(disp(), game_config_, state_);
+	savegame::loadgame load(disp(), game_config(), state_);
 
 	try {
 		load.load_game(loaded_game_, loaded_game_show_replay_, loaded_game_cancel_orders_);
@@ -983,7 +983,7 @@ bool game_controller::load_game()
 			return false;
 		}
 
-		paths_manager_.set_paths(game_config_);
+		paths_manager_.set_paths(game_config());
 		load.set_gamestate();
 
 	} catch(load_game_cancelled_exception&) {
@@ -1093,7 +1093,7 @@ bool game_controller::new_campaign()
 	state_ = game_state();
 	state_.classification().campaign_type = "scenario";
 
-	const config::const_child_itors &ci = game_config_.child_range("campaign");
+	const config::const_child_itors &ci = game_config().child_range("campaign");
 	std::vector<config> campaigns(ci.first, ci.second);
 	mark_completed_campaigns(campaigns);
 	std::sort(campaigns.begin(),campaigns.end(),less_campaigns_rank);
@@ -1325,7 +1325,7 @@ bool game_controller::play_multiplayer()
 			events::discard(INPUT_MASK); // prevent the "keylogger" effect
 			cursor::set(cursor::NORMAL);
 			// update binary paths
-			paths_manager_.set_paths(game_config_);
+			paths_manager_.set_paths(game_config());
 			clear_binary_paths_cache();
 		}
 
@@ -1335,7 +1335,7 @@ bool game_controller::play_multiplayer()
 
 			const mp::controller cntr = mp::CNTR_LOCAL;
 
-			mp::start_local_game(disp(), game_config_, cntr);
+			mp::start_local_game(disp(), game_config(), cntr);
 
 		} else if((res >= 0 && res <= 2) || res == 4) {
 			std::string host;
@@ -1347,7 +1347,7 @@ bool game_controller::play_multiplayer()
 				host = multiplayer_server_;
 				multiplayer_server_ = "";
 			}
-			mp::start_client(disp(), game_config_, host);
+			mp::start_client(disp(), game_config(), host);
 		}
 
 	} catch(game::mp_server_error& e) {
@@ -1410,7 +1410,7 @@ bool game_controller::change_language()
 void game_controller::show_preferences()
 {
 	const preferences::display_manager disp_manager(&disp());
-	preferences::show_preferences_dialog(disp(),game_config_);
+	preferences::show_preferences_dialog(disp(),game_config());
 
 	disp().redraw_everything();
 }
@@ -1542,7 +1542,7 @@ void game_controller::load_game_cfg(const bool force)
 
 		set_unit_data();
 
-		terrain_builder::set_terrain_rules_cfg(game_config_);
+		terrain_builder::set_terrain_rules_cfg(game_config());
 
 	} catch(game::error& e) {
 		ERR_CONFIG << "Error loading game configuration files\n";
@@ -1577,7 +1577,7 @@ void game_controller::launch_game(RELOAD_GAME_DATA reload)
 
 	loadscreen::global_loadscreen->set_progress(60);
 
-	const binary_paths_manager bin_paths_manager(game_config_);
+	const binary_paths_manager bin_paths_manager(game_config());
 
 	try {
 		// Only record log for single-player games & tutorial.
@@ -1585,7 +1585,7 @@ void game_controller::launch_game(RELOAD_GAME_DATA reload)
 					   || state_.classification().campaign_type == "scenario"
 					   || state_.classification().campaign_type == "tutorial");
 
-		const LEVEL_RESULT result = play_game(disp(),state_,game_config_, log);
+		const LEVEL_RESULT result = play_game(disp(),state_,game_config(), log);
 		// don't show The End for multiplayer scenario
 		// change this if MP campaigns are implemented
 		if(result == VICTORY && (state_.classification().campaign_type.empty() || state_.classification().campaign_type != "multiplayer")) {
@@ -1613,10 +1613,10 @@ void game_controller::launch_game(RELOAD_GAME_DATA reload)
 
 void game_controller::play_replay()
 {
-	const binary_paths_manager bin_paths_manager(game_config_);
+	const binary_paths_manager bin_paths_manager(game_config());
 
 	try {
-		::play_replay(disp(),state_,game_config_,video_);
+		::play_replay(disp(),state_,game_config(),video_);
 
 		loaded_game_ = "";
 		loaded_game_show_replay_ = false;
@@ -1639,9 +1639,9 @@ editor::EXIT_STATUS game_controller::start_editor(const std::string& filename)
     cache_.clear_defines();
     cache_.add_define("EDITOR");
 	load_game_cfg();
-    const binary_paths_manager bin_paths_manager(game_config_);
-	::init_textdomains(game_config_);
-	return editor::start(game_config_, video_, filename);
+    const binary_paths_manager bin_paths_manager(game_config());
+	::init_textdomains(game_config());
+	return editor::start(game_config(), video_, filename);
 }
 #endif
 
