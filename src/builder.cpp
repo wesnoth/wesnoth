@@ -809,8 +809,7 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 		// Handles rotations
 		const std::string &rotations = br["rotations"];
 
-		const std::string preced = br["precedence"];
-		int precedence = preced.empty() ? 0 : atoi(preced.c_str());
+		int precedence = lexical_cast_default<int>(br["precedence"],0);
 
 		add_rotated_rules(building_rules_, pbr, precedence, rotations);
 
