@@ -23,10 +23,8 @@
 #define FORMULA_DEBUGGER_FWD_HPP_INCLUDED
 
 #include "global.hpp"
-#include "variant.hpp"
 
 #include <boost/shared_ptr.hpp>
-#include <deque>
 
 
 class variant;
