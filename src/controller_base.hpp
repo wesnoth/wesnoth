@@ -18,13 +18,13 @@
 
 #include "global.hpp"
 
-#include "generic_event.hpp"
 #include "hotkeys.hpp"
 #include "key.hpp"
-#include "preferences_display.hpp"
-#include "sdl_utils.hpp"
 
 #include <vector>
+
+class CVideo;
+
 namespace events {
 class mouse_handler_base;
 }

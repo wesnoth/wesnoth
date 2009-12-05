@@ -51,6 +51,10 @@ class rng;
 struct set_random_generator;
 }
 
+namespace preferences {
+	struct display_manager;
+} // namespace preferences
+
 namespace editor {
 
 class brush_bar;

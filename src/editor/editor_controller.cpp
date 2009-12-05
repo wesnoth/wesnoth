@@ -35,6 +35,7 @@
 #include "../gettext.hpp"
 #include "../map_create.hpp"
 #include "../mapgen.hpp"
+#include "../preferences_display.hpp"
 #include "../rng.hpp"
 #include "../sound.hpp"
 

@@ -18,6 +18,7 @@
 #include "display.hpp"
 #include "mouse_handler_base.hpp"
 #include "foreach.hpp"
+#include "preferences_display.hpp"
 
 controller_base::controller_base(
 		int ticks, const config& game_config, CVideo& /*video*/) :
