@@ -24,7 +24,6 @@
 
 #include "SDL.h"
 #include "animated.hpp"
-#include "serialization/string_utils.hpp"
 
 namespace {
 	int current_ticks = 0;
