@@ -26,6 +26,7 @@
 #include "hash.hpp"
 #include "multiplayer.hpp"
 #include "multiplayer_connect.hpp"
+#include "multiplayer_create.hpp"
 #include "multiplayer_error_codes.hpp"
 #include "multiplayer_wait.hpp"
 #include "multiplayer_lobby.hpp"

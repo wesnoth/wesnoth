@@ -21,9 +21,9 @@
 #include "gamestatus.hpp"
 #include "leader_list.hpp"
 #include "multiplayer_ui.hpp"
-#include "multiplayer_create.hpp"
 #include "network.hpp"
 #include "widgets/scrollpane.hpp"
+#include "widgets/slider.hpp"
 #include "widgets/combo_drag.hpp"
 
 #include <string>
