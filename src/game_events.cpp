@@ -40,6 +40,7 @@
 #include "resources.hpp"
 #include "scripting/lua.hpp"
 #include "sound.hpp"
+#include "soundsource.hpp"
 #include "terrain_filter.hpp"
 #include "unit_display.hpp"
 #include "wml_exception.hpp"
