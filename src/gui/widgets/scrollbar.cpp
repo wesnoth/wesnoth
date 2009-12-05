@@ -112,8 +112,9 @@ void tscrollbar_::set_size(const tpoint& origin, const tpoint& size)
 void tscrollbar_::set_item_position(const unsigned item_position)
 {
 	// Set the value always execute since we update a part of the state.
-	item_position_ = item_position + visible_items_ > item_count_ ?
-		item_count_ - visible_items_ : item_position;
+	item_position_ = item_position > item_count_ - visible_items_
+			? item_count_ - visible_items_
+			: item_position;
 
 	item_position_ = (item_position_ + step_size_ - 1) / step_size_;
 
@@ -121,6 +122,8 @@ void tscrollbar_::set_item_position(const unsigned item_position)
 	positioner_offset_ = static_cast<unsigned>(item_position_ * pixels_per_step_);
 
 	update_canvas();
+
+	assert(item_position_ <= item_count_ - visible_items_);
 }
 
 void tscrollbar_::update_canvas() {
