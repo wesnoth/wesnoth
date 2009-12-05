@@ -21,12 +21,9 @@ class display;
 
 #include "cursor.hpp"
 #include "font.hpp"
-#include "network.hpp"
 #include "tooltips.hpp"
 
 #include "widgets/menu.hpp"
-
-#include "SDL.h"
 
 #include <string>
 #include <vector>

@@ -25,6 +25,7 @@ class unit_type;
 #include "map_location.hpp"
 #include "construct_dialog.hpp"
 #include "events.hpp"
+#include "network.hpp"
 
 #include "widgets/button.hpp"
 

@@ -29,6 +29,7 @@
 #include "gamestatus.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "network.hpp"
 #include "replay.hpp"
 #include "serialization/parser.hpp"
 #include "unit.hpp"
