@@ -23,7 +23,6 @@
 #include "widgets/button.hpp"
 #include "widgets/menu.hpp"
 #include "key.hpp"
-#include "sdl_utils.hpp"
 
 namespace gui {
 
