@@ -809,6 +809,10 @@ theme::menu* theme::refresh_title2(const std::string& id, const std::string& tit
 
 void theme::modify_label(const std::string& id, const std::string& text)
 {
-	theme::label& label = dynamic_cast<theme::label&>(find_element(id));
-	label.set_text(text);
+	theme::label *label = dynamic_cast<theme::label *>(&find_element(id));
+	if (!label) {
+		ERR_DP << "Theme contains no label called '" << id << "'.\n";
+		return;
+	}
+	label->set_text(text);
 }
