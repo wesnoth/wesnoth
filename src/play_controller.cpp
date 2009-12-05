@@ -429,6 +429,7 @@ void play_controller::fire_prestart(bool execute){
 void play_controller::fire_start(bool execute){
 	if(execute) {
 		game_events::fire("start");
+		check_end_level();
 		// start event may modify start turn with WML, reflect any changes.
 		start_turn_ = turn();
 		gamestate_.set_variable("turn_number", str_cast<size_t>(start_turn_));
