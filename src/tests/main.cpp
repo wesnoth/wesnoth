@@ -26,6 +26,8 @@
 #include "filesystem.hpp"
 #include "game_config.hpp"
 #include "game_errors.hpp"
+#include "gui/auxiliary/event/handler.hpp"
+#include "gui/widgets/helper.hpp"
 #include "network.hpp"
 #include "config.hpp"
 #include "log.hpp"
@@ -62,6 +64,10 @@ struct wesnoth_global_fixture {
 		// Initialize unit tests
 		SDL_Init(SDL_INIT_TIMER);
 		test_utils::get_fake_display(1024, 768);
+
+		gui2::init();
+		static const gui2::event::tmanager gui_event_manager;
+
 
 
 		// Set more report as default

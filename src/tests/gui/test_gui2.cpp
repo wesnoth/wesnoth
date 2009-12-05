@@ -43,7 +43,6 @@
 #include "gui/dialogs/title_screen.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/dialogs/wml_message.hpp"
-#include "gui/widgets/helper.hpp"
 #include "gui/widgets/settings.hpp"
 #include "language.hpp"
 #include "map_create.hpp"
@@ -196,8 +195,6 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 		const config &cfg = main_config.child("game_config");
 		game_config::load_config(cfg ? &cfg : NULL);
 	}
-
-	gui2::init();
 
 	/**** Run the tests. *****/
 	test<gui2::taddon_connect>();
