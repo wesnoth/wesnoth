@@ -29,6 +29,7 @@ namespace preferences {
 		~display_manager();
 	};
 
+	void set_fullscreen(CVideo& video, const bool ison);
 	void set_fullscreen(bool ison);
 	void set_scroll_to_action(bool ison);
 	void set_resolution(const std::pair<int,int>& res);

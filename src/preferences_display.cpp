@@ -55,28 +55,40 @@ display_manager::~display_manager()
 	disp = NULL;
 }
 
+
+void set_fullscreen(CVideo& video, const bool ison)
+{
+	_set_fullscreen(ison);
+
+	const std::pair<int,int>& res = resolution();
+	if(video.isFullScreen() != ison) {
+		const int flags = ison ? FULL_SCREEN : 0;
+		int bpp = video.modePossible(res.first,res.second,32,flags);
+		if (bpp <= 0) {
+			bpp = video.modePossible(res.first,res.second,16,flags);
+		}
+
+		if(bpp > 0) {
+			video.setMode(res.first,res.second,bpp,flags);
+			if(disp) {
+				disp->redraw_everything();
+			}
+		} else if(video.modePossible(1024,768,16,flags)) {
+			set_resolution(video, 1024, 768);
+		} else {
+			gui2::show_transient_message(video,"",_("The video mode could not be changed. Your window manager must be set to 16 bits per pixel to run the game in windowed mode. Your display must support 1024x768x16 to run the game full screen."));
+		}
+		// We reinit color cursors, because SDL on Mac seems to forget the SDL_Cursor
+		set_colour_cursors(utils::string_bool(preferences::get("colour_cursors")));
+	}
+}
+
 void set_fullscreen(bool ison)
 {
 	_set_fullscreen(ison);
 
 	if(disp != NULL) {
-		const std::pair<int,int>& res = resolution();
-		CVideo& video = disp->video();
-		if(video.isFullScreen() != ison) {
-			const int flags = ison ? FULL_SCREEN : 0;
-			int bpp = video.modePossible(res.first,res.second,32,flags);
-			if (bpp <= 0) bpp = video.modePossible(res.first,res.second,16,flags);
-			if(bpp > 0) {
-				video.setMode(res.first,res.second,bpp,flags);
-				disp->redraw_everything();
-			} else if(video.modePossible(1024,768,16,flags)) {
-				set_resolution(std::pair<int,int>(1024,768));
-			} else {
-				gui2::show_transient_message(video,"",_("The video mode could not be changed. Your window manager must be set to 16 bits per pixel to run the game in windowed mode. Your display must support 1024x768x16 to run the game full screen."));
-			}
-			// We reinit color cursors, because SDL on Mac seems to forget the SDL_Cursor
-			set_colour_cursors(utils::string_bool(preferences::get("colour_cursors")));
-		}
+		set_fullscreen(disp->video(), ison);
 	}
 }
 
