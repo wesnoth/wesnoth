@@ -18,6 +18,8 @@
  * Used e.g. to color HP, XP.
  */
 
+#include "color_range.hpp"
+
 #include "game_config.hpp"
 #include "global.hpp"
 #include "map.hpp"

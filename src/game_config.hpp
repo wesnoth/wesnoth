@@ -16,9 +16,11 @@
 
 class config;
 class version_info;
+class color_range;
 
-#include "color_range.hpp"
 #include "tstring.hpp"
+
+#include <SDL_types.h>
 
 #include <string>
 #include <vector>

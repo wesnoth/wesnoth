@@ -15,6 +15,7 @@
 #include "global.hpp"
 #include "game_config.hpp"
 
+#include "color_range.hpp"
 #include "config.hpp"
 #include "foreach.hpp"
 #include "gettext.hpp"
