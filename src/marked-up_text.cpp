@@ -25,6 +25,7 @@
 #include "font.hpp"
 #include "gettext.hpp"
 #include "marked-up_text.hpp"
+#include "serialization/string_utils.hpp"
 #include "video.hpp"
 #include "wml_exception.hpp"
 

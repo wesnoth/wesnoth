@@ -20,10 +20,8 @@
 class CVideo;
 class t_string;
 #include "sdl_utils.hpp"
-#include "serialization/string_utils.hpp"
 
 #include <string>
-#include <vector>
 
 namespace font {
 

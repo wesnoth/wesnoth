@@ -20,6 +20,7 @@
 #include "gui/widgets/helper.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "font.hpp"
+#include "serialization/string_utils.hpp"
 
 #include <cassert>
 #include <cstring>

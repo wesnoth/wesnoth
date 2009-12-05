@@ -18,6 +18,7 @@
 #include "display.hpp"
 #include "foreach.hpp"
 #include "log.hpp"
+#include "serialization/string_utils.hpp"
 #include "sound.hpp"
 #include "soundsource.hpp"
 

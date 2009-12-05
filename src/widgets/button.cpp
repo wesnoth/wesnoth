@@ -22,6 +22,7 @@
 #include "marked-up_text.hpp"
 #include "image.hpp"
 #include "log.hpp"
+#include "serialization/string_utils.hpp"
 #include "sound.hpp"
 #include "video.hpp"
 #include "wml_separators.hpp"

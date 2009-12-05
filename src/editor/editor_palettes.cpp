@@ -24,8 +24,8 @@
 
 #include "../foreach.hpp"
 #include "../gettext.hpp"
+#include "../serialization/string_utils.hpp"
 #include "../tooltips.hpp"
-
 
 namespace editor {
 

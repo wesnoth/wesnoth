@@ -23,7 +23,7 @@
 #include "display.hpp"
 #include "game_preferences.hpp"
 #include "halo.hpp"
-
+#include "serialization/string_utils.hpp"
 
 namespace halo
 {
