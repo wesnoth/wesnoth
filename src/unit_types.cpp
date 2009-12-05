@@ -1017,14 +1017,6 @@ const char* unit_type::alignment_id(unit_type::ALIGNMENT align)
 	return (aligns[align]);
 }
 
-bool unit_type::has_ability(const std::string& ability) const
-{
-	const config &abil = cfg_.child("abilities");
-	if (!abil) return false;
-	config::const_child_itors a = abil.child_range(ability);
-	return a.first != a.second;
-}
-
 bool unit_type::has_ability_by_id(const std::string& ability) const
 {
 	if (const config &abil = cfg_.child("abilities"))

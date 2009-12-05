@@ -252,7 +252,6 @@ public:
 
 	bool has_zoc() const { return zoc_; }
 
-	bool has_ability(const std::string& ability) const;
 	bool has_ability_by_id(const std::string& ability) const;
 	std::vector<std::string> get_ability_list() const;
 
