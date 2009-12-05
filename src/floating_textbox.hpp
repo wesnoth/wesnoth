@@ -19,13 +19,18 @@
 #include "global.hpp"
 
 #include "scoped_resource.hpp"
-#include "widgets/textbox.hpp"
+
+#include <string>
+#include <vector>
 
 class game_display;
 class team;
 class unit_map;
 
 namespace gui{
+
+	class textbox;
+	class button;
 
 	enum TEXTBOX_MODE { TEXTBOX_NONE, TEXTBOX_SEARCH, TEXTBOX_MESSAGE,
 		        TEXTBOX_COMMAND, TEXTBOX_AI };
