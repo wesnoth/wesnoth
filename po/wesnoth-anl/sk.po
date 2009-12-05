@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-11-26 15:38+0100\n"
-"PO-Revision-Date: 2007-10-01 20:03+0100\n"
-"Last-Translator: Viliam Búr <viliam@bur.sk>\n"
+"POT-Creation-Date: 2009-12-03 17:48+0100\n"
+"PO-Revision-Date: 2009-12-05 22:07+0100\n"
+"Last-Translator: Martin Plavala <martin@komplet.sk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,7 +20,6 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:4
-#, fuzzy
 msgid "4p - A New Land"
 msgstr "(4) - Zátoka"
 
@@ -30,6 +29,8 @@ msgid ""
 "This 4p survival scenario allows you to construct buildings and terraform "
 "the land. Use map settings. Recommended starting gold=100."
 msgstr ""
+"Tento scenár pre 4 hráčov ti umožňuje stavať budovy a meniť zem. Použi "
+"predvolené nastavenia mapy. Odporúčané začiatočné zlato je 100."
 
 #. [part]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:25
@@ -39,16 +40,19 @@ msgid ""
 "armies that had crushed their homeland, the leaders of the resistance hoped "
 "only for enough time to rebuild their forces."
 msgstr ""
+"Po skončení veľkej vojny zvyšky ľudí utiekli do neznámeho údolia. Aj keď "
+"vedeli, že sa tu neschovajú pred obrovskými armádami, ktoré zničili ich "
+"domovinu, dúfali v dostatok času na znovuvybudovanie svojich armád."
 
 #. [objectives]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:33
 msgid "Right-click on your leader during your turn for help"
-msgstr ""
+msgstr "Klikni pravým tlačidlom myši na tvojho veliteľa pre pomoc."
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:35
 msgid "You must survive until turn 25."
-msgstr ""
+msgstr "Preži do 25. kola."
 
 #. [side]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:52
@@ -72,31 +76,33 @@ msgstr "Tím 2"
 msgid ""
 "You destroy the mushroom mine. The northwest undead now have 10 less income."
 msgstr ""
+"Zničil si baňu na hríby. Severozápadným nemŕtvym sa znížil príjem o 10."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:456
 msgid ""
 "You destroy the mushroom mine. The northeast orcs now have 10 less income."
-msgstr ""
+msgstr "Zničil si baňu na hríby. Severovýchodným orkom sa znížil príjem o 10."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:476
 msgid ""
 "You destroy the mushroom mine. The southwest orcs now have 10 less income."
-msgstr ""
+msgstr "Zničil si baňu na hríby. Severozápadným orkom sa znížil príjem o 10."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:496
 msgid ""
 "You destroy the mushroom mine. The southeast undead now have 10 less income."
 msgstr ""
+"Zničil si baňu na hríby. Severovýchodným nemŕtvym sa znížil príjem o 10."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:588
 msgid ""
 "One of your peasants has happened upon some spider's nests in the north and "
 "south."
-msgstr ""
+msgstr "Jeden z roľníkov natrafil na hniezdo pavúkov na severe a na juhu."
 
 #. [message]: type=Peasant
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:594
@@ -104,6 +110,8 @@ msgid ""
 "I swear I saw somebody trapped in the spider's web. Maybe we should rescue "
 "them?"
 msgstr ""
+"Prisahám, že som videl niekoho chyteného v pavúčej sieti. Možno by sme im "
+"mali pomôcť."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:606
@@ -112,12 +120,17 @@ msgid ""
 "spiders guarding each captive are currently wounded, the sooner you get "
 "there the better chance you have of killing them."
 msgstr ""
+"Presuň hociktorú tvoju jednotku k zajatým a oni sa k tebe pridajú. Pavúci "
+"strážiaci každého zajatca sú momentálne zranení, takže čím skôr sa k nim "
+"dostaneš, o to väčšiu máš šancu na ich zničenie."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:617
 msgid ""
 "Your men report strange sounds coming from some caves to the east and west."
 msgstr ""
+"Tvoji muži hlásia zvláštne zvuky vychádzajúce z niektorých jaskýň na východe "
+"a západe."
 
 #. [message]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:623
@@ -126,6 +139,8 @@ msgid ""
 "it must be where the mainstay of their resources are produced. If we could "
 "destroy them our chances wouldn't nearly be so slim."
 msgstr ""
+"Vyzerá to tak, že nepriateľ postavil podzemné bane na hríby - práve tie sú "
+"asi oporou ich ekonomiky. Ak ich zničíme, naše šance na víťazstvo narastú."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:635
@@ -133,60 +148,62 @@ msgid ""
 "Move any unit onto these villages to destroy the mine. Each one you destroy "
 "will reduce the enemy's income by 10."
 msgstr ""
+"Premiestni hociktorú z tvojich jednotiek do týchto dedín aby si zničil baňu. "
+"Každá, ktorú zničíš zníži príjem nepriateľa o 10."
 
 #. [message]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:647
 msgid "This battle is nearly at an end. Victory is close at hand!"
-msgstr ""
+msgstr "Bitka sa blíži ku koncu. Víťazstvo je na dosah!"
 
 #. [message]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:658
 msgid ""
 "We have survived the onslaught! The tide of the battle has turned, victory "
 "cannot elude us now!"
-msgstr ""
+msgstr "Prežili sme útok! Víťazstvo je už skoro naše!"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:662
 msgid "You have won the game, but you may continue if you wish..."
-msgstr ""
+msgstr "Vyhral si hru. Ak chceš môžeš ale pokračovať ďalej..."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:677
 msgid "I have fallen, but all is not lost!"
-msgstr ""
+msgstr "Umieram, ale nie všetko je stratené!"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:689
 msgid "I am done for, but we have yet to lose this battle!"
-msgstr ""
+msgstr "Toto je môj koniec, ale bitka pokračuje ďalej!"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:701
 msgid "Comrades, avenge me!"
-msgstr ""
+msgstr "Priatelia, pomstite ma!"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:713
 msgid "Do not fear, there is hope for us still!"
-msgstr ""
+msgstr "Ešte stále máme nádej na víťazstvo!"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_general_macros.cfg:73
 msgid "The chest contains $oc_treasure gold."
-msgstr ""
+msgstr "Truhlica obsahuje $oc_treasure zlata."
 
 #. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:5
 msgid "Return to menu"
-msgstr ""
+msgstr "Návrat do menu"
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:16
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:114
 msgid "Peasants"
-msgstr ""
+msgstr "Roľníci"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:19
@@ -195,13 +212,15 @@ msgid ""
 "peasant allows you to terraform the landscape and/or build castles, mines, "
 "farms, villages and universities."
 msgstr ""
+"Roľníci sú tvoji robotníci. Klikni pravým tlačidlom myši na roľníka pre "
+"výber akcie, ktorú má vykonať. Ponuka závisí od terénu, na ktorom stojí."
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:27
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:121
 msgid "Mages"
-msgstr ""
+msgstr "Mágovia"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:29
@@ -209,13 +228,16 @@ msgid ""
 "Mages are your wise men. They can study at universities, pursuing advances "
 "in mining, farming and recruitment."
 msgstr ""
+"Mágovia predstavujú najmúdrejšiu časť populácie. Môžu študovať v "
+"univerzitách, získavajúc vylepšenia ťažby hornín, poľnohospodárstva a "
+"verbovania."
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:37
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:128
 msgid "Farms"
-msgstr ""
+msgstr "Farmy"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:39
@@ -223,13 +245,15 @@ msgid ""
 "Farms can only be planted on grassland. Move a peasant onto a farm and he "
 "will begin to automatically harvest the cash crop."
 msgstr ""
+"Farmy môžu byť postavené len na lúke. Presuň roľníka na farmu aby začal "
+"automaticky zbierať úrodu."
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:47
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:135
 msgid "Villages"
-msgstr ""
+msgstr "Dediny"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:49
@@ -238,14 +262,16 @@ msgid ""
 "usual. Right-click on a peasant in a village and you can establish a "
 "university."
 msgstr ""
+"Dediny môžu byť postavené len na lúke. Poskytujú liečenie a príjem tak. ako "
+"normálne. Klikni pravým tlačidlom na roľníka v dedine, aby tam založil "
+"univerzitu."
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:57
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:142
-#, fuzzy
 msgid "Mines"
-msgstr "Potvory"
+msgstr "Bane"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:59
@@ -253,13 +279,15 @@ msgid ""
 "Mines can be built on hills or mountains. A peasant on a mine will "
 "automatically dig for gold at the start of your turn."
 msgstr ""
+"Bane môžu byť postavené v kopcoch. Roľník stojaci na bani začne automaticky "
+"ťažiť zlato na začiatku tvojho kola."
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:67
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:149
 msgid "Universities"
-msgstr ""
+msgstr "Univerzity"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:69
@@ -269,6 +297,10 @@ msgid ""
 "your chosen research target. Right-click on a mage in a university to change "
 "research target."
 msgstr ""
+"Každá 'elfská' dedina reprezentuje univerzitu. Na začiatku tvojho kola "
+"mágovia v univerzitách automaticky pokročia zo štúdiom tebou vybranej veci. "
+"Klikni pravým tlačidlom na mága v univerzite, aby si mohol zmeniť cieľ "
+"štúdia."
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
@@ -277,7 +309,7 @@ msgstr ""
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:156
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:135
 msgid "Diplomacy"
-msgstr ""
+msgstr "Diplomacia"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:79
@@ -285,32 +317,33 @@ msgid ""
 "Right-clicking on your leader when in a university allows you to select "
 "special diplomatic options."
 msgstr ""
+"Klikni pravým tlačidlo myši na tvojho veliteľa stojaceho v univerzite, aby "
+"si mohol použiť diplomatické možnosti."
 
 #. [set_menu_item]: id=anl_help
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:87
 msgid "Help"
-msgstr ""
+msgstr "Nápoveda"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:103
-#, fuzzy
 msgid "A New Land - Help"
-msgstr "(4) - Zátoka"
+msgstr "Zátoka - pomoc"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:104
 msgid "Select a topic."
-msgstr ""
+msgstr "Vyber tému."
 
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:107
 msgid "Done"
-msgstr ""
+msgstr "Hotovo"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:19
 msgid "I hereby donate 20 gold to the coffers of $df_player_name|."
-msgstr ""
+msgstr "Týmto darujem 20 zlata $df_player_name|."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:59
@@ -318,6 +351,9 @@ msgid ""
 "$sf_player_name|, since our wisdom exceeds yours I have instructed my "
 "scholars to further your understanding of agriculture."
 msgstr ""
+"$sf_player_name|, nakoľko naše znalosti prevyšujú tie vaše v oblasti "
+"poľnohospodárstva, prikázal som mojim učencom rozšíriť váš obzor v tejto "
+"oblasti."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:91
@@ -326,6 +362,9 @@ msgid ""
 "instructed my scholars to aid you in your efforts to learn the science of "
 "mining."
 msgstr ""
+"$sm_player_name|, keďže znalosti môjho ľudu v ťažbe hornín sú na vyššej "
+"úrovni ako tie vaše, nakázal som mojim učencom pomôcť vám pochopiť fyziku "
+"dobývania hornín."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:123
@@ -333,6 +372,8 @@ msgid ""
 "You know worryingly little about the arts of war, $sw_player_name|. I feel "
 "an obligation to instruct you in this vital matter."
 msgstr ""
+"Nevieš skoro nič o umení taktiky, $sw_player_name|. Cítim sa povinný ťa "
+"poučiť v tejto významnej oblasti."
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:190
@@ -340,6 +381,8 @@ msgid ""
 "$player_name\n"
 "Share knowledge of agriculture"
 msgstr ""
+"$player_name\n"
+"Zdieľať úroveň poľnohospodárstva"
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:197
@@ -347,6 +390,8 @@ msgid ""
 "$player_name\n"
 "Share knowledge of mining"
 msgstr ""
+"$player_name\n"
+"Zdieľať úroveň ťažby"
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:204
@@ -354,24 +399,26 @@ msgid ""
 "$player_name\n"
 "Share knowledge of warfare"
 msgstr ""
+"$player_name\n"
+"Zdieľať úroveň umenia taktiky"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:221
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:248
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:282
 msgid "Diplomatic Options"
-msgstr ""
+msgstr "Diplomatické možnosti."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:224
 msgid "What shall I do?"
-msgstr ""
+msgstr "Čo mám robiť?"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:230
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:47
 msgid "Nothing"
-msgstr ""
+msgstr "Nič"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:241
@@ -379,17 +426,19 @@ msgid ""
 "Donate Funds\n"
 "Give 20 gold to another player"
 msgstr ""
+"Daruj zlato\n"
+"Daruj 20 zlata inému hráčovi"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:251
 msgid "Who will you donate funds to?"
-msgstr ""
+msgstr "Komu poskytneš finančné zdroje?"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:254
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:288
 msgid "Back"
-msgstr ""
+msgstr "Späť"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:275
@@ -397,11 +446,13 @@ msgid ""
 "Share Knowledge\n"
 "Help an ally with their research"
 msgstr ""
+"Zdieľať vedomosti\n"
+"Pomôž spojencovi s ich výskumom"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:285
 msgid "Who will you share knowledge with?"
-msgstr ""
+msgstr "S kým budeš zdieľať vedomosti?"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:323
@@ -411,6 +462,10 @@ msgid ""
 "Negotiation Progress: $player_$side_number|.leader_option_1.progress|/"
 "$player_$side_number|.leader_option_1.target"
 msgstr ""
+"Vyjednávať s Trpaslíkmi\n"
+"Umožňuje najímanie Trpasličích jednotiek\n"
+"Stav vyjednávania: $player_$side_number|.leader_option_1.progress|/$player_"
+"$side_number|.leader_option_1.target"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:350
@@ -420,12 +475,16 @@ msgid ""
 "Negotiation Progress: $player_$side_number|.leader_option_2.progress|/"
 "$player_$side_number|.leader_option_2.target"
 msgstr ""
+"Vyjednávať s Elfmi\n"
+"Umožňuje najímanie Elfských jednotiek\n"
+"Stav vyjednávania: $player_$side_number|.leader_option_2.progress|/$player_"
+"$side_number|.leader_option_2.target"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:383
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:407
 msgid "Negotiation Complete"
-msgstr ""
+msgstr "Vyjednávanie hotové"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:386
@@ -433,6 +492,8 @@ msgid ""
 "Our talks are complete - the Dwarves will gladly fight by your side. Which "
 "of our brethren do you want to recruit?"
 msgstr ""
+"Naše poslanie je splnené - Trpaslíci budú radi bojovať po tvojom boku. "
+"Ktorých z našich bratov chceš najímať?"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:410
@@ -440,11 +501,13 @@ msgid ""
 "Our talks are complete - the Elves shall aid you in this battle. Which our "
 "of kin do you wish to recruit?"
 msgstr ""
+"Naše poslanie je splnené - Elfovia ti pomôžu v tejto bitke. Ktorých z našich "
+"priateľov chceš najímať?"
 
 #. [set_menu_item]: id=anl_choose_new_recruit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:9
 msgid "Choose New Recruit"
-msgstr ""
+msgstr "Vyber si novú jednotku"
 
 #. [message]: speaker=unit
 #. [message]: speaker=narrator
@@ -453,22 +516,22 @@ msgstr ""
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:231
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:247
 msgid "Study Complete"
-msgstr ""
+msgstr "Výskum dokončený"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:35
 msgid "Which type of unit would you like to be able to recruit?"
-msgstr ""
+msgstr "Ktorý typ jednotky chceš najímať?"
 
 #. [set_menu_item]: id=anl_oversee_research
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:56
 msgid "Oversee Research"
-msgstr ""
+msgstr "Skontrolovať výskum"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:95
 msgid "Research"
-msgstr ""
+msgstr "Výskum"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:101
@@ -479,11 +542,16 @@ msgid ""
 "Our farms produce $player_$side_number|.farming.gold|g\n"
 "Our mines produce $player_$side_number|.mining.gold|g\n"
 msgstr ""
+"Práve skúmame $player_$side_number|.research.current_target|. Čím chceš aby "
+"sa naši učenci zaoberali?\n"
+"\n"
+"Poľnohospodárstvo produkuje $player_$side_number|.farming.gold| zlatých\n"
+"Ťažba hornín produkuje $player_$side_number|.mining.gold| zlatých\n"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:105
 msgid "Continue as before"
-msgstr ""
+msgstr "Pokračovať ako predtým"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:118
@@ -493,6 +561,10 @@ msgid ""
 "Study Progress: $player_$side_number|.farming.progress|/$player_"
 "$side_number|.farming.target"
 msgstr ""
+"Poľnohospodárstvo\n"
+"Farmári produkujú +1 zlata\n"
+"Stav výskumu: $player_$side_number|.farming.progress|/$player_$side_number|."
+"farming.target"
 
 #. [command]
 #. [if]
@@ -509,6 +581,10 @@ msgid ""
 "Study Progress: $player_$side_number|.mining.progress|/$player_$side_number|."
 "mining.target"
 msgstr ""
+"Ťažba\n"
+"Baníci produkujú +1 zlata\n"
+"Stav vyskumu: $player_$side_number|.mining.progress|/$player_$side_number|."
+"mining.target"
 
 #. [command]
 #. [if]
@@ -525,6 +601,10 @@ msgid ""
 "Study Progress: $player_$side_number|.warfare.progress|/$player_"
 "$side_number|.warfare.target"
 msgstr ""
+"Vojenstvo\n"
+"Umožňuje najímať nové druhy jednotiek\n"
+"Stav výskumu: $player_$side_number|.warfare.progress|/$player_$side_number|."
+"warfare.target"
 
 #. [command]
 #. [if]
@@ -539,6 +619,8 @@ msgid ""
 "$player_$side_number|.name|'s farms now produce $player_$side_number|."
 "farming.gold gold."
 msgstr ""
+"Farmy veliteľa $player_$side_number|.name| produkujú $player_$side_number|."
+"farming.gold zlata."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:233
@@ -546,6 +628,8 @@ msgid ""
 "$player_$side_number|.name|'s mines now produce $player_$side_number|.mining."
 "gold gold."
 msgstr ""
+"Bane veliteľa $player_$side_number|.name| produkujú $player_$side_number|."
+"mining.gold zlata."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:249
@@ -553,31 +637,34 @@ msgid ""
 "$player_$side_number|.name|, we have finished researching warfare. Right-"
 "click on a mage in a university to select a unit to recruit."
 msgstr ""
+"$player_$side_number|.name|, dokončili sme výskum taktiky boja. Klikni "
+"pravým tlačidlom na mága v univerzite pre vybranie nového druhu jednotiek, "
+"ktoré chceš najímať."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:149
 msgid "Let's cut you free!"
-msgstr ""
+msgstr "Oslobodím ťa!"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:153
 msgid "You release the creature from the web and it agrees to help you."
-msgstr ""
+msgstr "Vyslobodíš bytosť z pavučiny a ona ti za odmenu pomôže."
 
 #. [set_menu_item]: id=anl_get_to_work
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:6
 msgid "Get to Work!"
-msgstr ""
+msgstr "Pracuj!"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:43
 msgid "What shall I do my liege?"
-msgstr ""
+msgstr "Čo mám urobiť pane?"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:59
 msgid "Convert to Grassland"
-msgstr ""
+msgstr "Zmeň na lúku"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:59
@@ -585,145 +672,144 @@ msgstr ""
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:266
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:402
 msgid "Cost: 0g"
-msgstr ""
+msgstr "Stojí: 0 zlatých"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:74
 msgid "Plant Farm"
-msgstr ""
+msgstr "Vysaď farmu"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:86
 msgid "Build Village"
-msgstr ""
+msgstr "Postav dedinu"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:86
 msgid "Cost: 15g"
-msgstr ""
+msgstr "Stojí: 15 zlatých"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:104
 msgid "Build Castle"
-msgstr ""
+msgstr "Postav hrad"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:104
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:361
 msgid "Cost: 6g"
-msgstr ""
+msgstr "Stojí: 6 zlatých"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:121
 msgid "Cost: 4g"
-msgstr ""
+msgstr "Stojí: 4 zlaté"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:121
 msgid "Flood the Field"
-msgstr ""
+msgstr "Zaplav pole"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:138
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:281
 msgid "Cost: 1g"
-msgstr ""
+msgstr "Stojí: 1 zlatú"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:138
 msgid "Plant Saplings"
-msgstr ""
+msgstr "Vysaď les"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:158
 msgid "Chop Down Forest"
-msgstr ""
+msgstr "Vyrúb les"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:158
 msgid "Earns: 1g"
-msgstr ""
+msgstr "Zarobí: 1 zlatku"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:185
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:206
 msgid "Build Mine"
-msgstr ""
+msgstr "Postav baňu"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:185
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:206
 msgid "Cost: 25g"
-msgstr ""
+msgstr "Stojí: 25 zlatých"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:227
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:319
 msgid "Cost: 3g"
-msgstr ""
+msgstr "Stojí: 3 zlaté"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:227
 msgid "Make a Ford"
-msgstr ""
+msgstr "Vytvor brod"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:245
 msgid "Cost: 5g"
-msgstr ""
+msgstr "Stojí: 5 zlatých"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:245
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:281
 msgid "Landfill"
-msgstr ""
+msgstr "Vyplň zemou"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:266
 msgid "Destroy the Ford"
-msgstr ""
+msgstr "Znič brod"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:302
 msgid "Cost: 2g"
-msgstr ""
+msgstr "Stojí: 2 zlaté"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:302
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:319
 msgid "Smash Cave Floor"
-msgstr ""
+msgstr "Znič dno jaskyne"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:336
 msgid "Earns: 3g"
-msgstr ""
+msgstr "Zarobí: 3 zlaté"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:336
 msgid "Harvest Mushrooms"
-msgstr ""
+msgstr "Pozberaj hríby"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:361
 msgid "Build a Keep"
-msgstr ""
+msgstr "Postav pevnosť"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:381
 msgid "Cost: 7g"
-msgstr ""
+msgstr "Stojí: 7 zlatých"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:381
 msgid "Establish University"
-msgstr ""
+msgstr "Založ univerzitu"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:402
-#, fuzzy
 msgid "Clear the Ground"
-msgstr "Hlboká voda"
+msgstr "Vyčisti zem"
 
 #~ msgid "User Map"
 #~ msgstr "Užívateľská mapa"
