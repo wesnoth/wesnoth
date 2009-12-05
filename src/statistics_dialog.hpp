@@ -14,12 +14,12 @@
 */
 
 #include "construct_dialog.hpp"
-#include "game_display.hpp"
 #include "statistics.hpp"
 
 #include <vector>
 #include <string>
 
+class game_display;
 
 class statistics_dialog : public gui::dialog
 {

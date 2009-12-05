@@ -21,6 +21,7 @@
 
 #include "foreach.hpp"
 #include "gettext.hpp"
+#include "game_display.hpp"
 #include "construct_dialog.hpp"
 #include "settings.hpp"
 #include "map.hpp"

@@ -15,6 +15,7 @@
 
 #include "controller_base.hpp"
 #include "dialogs.hpp"
+#include "display.hpp"
 #include "mouse_handler_base.hpp"
 #include "foreach.hpp"
 

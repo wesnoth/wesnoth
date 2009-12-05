@@ -17,6 +17,7 @@
 #include "construct_dialog.hpp"
 #include "foreach.hpp"
 #include "gamestatus.hpp"
+#include "game_display.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/mp_cmd_wrapper.hpp"
 #include "lobby_preferences.hpp"

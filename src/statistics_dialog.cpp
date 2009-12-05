@@ -18,6 +18,7 @@
 #include "statistics_dialog.hpp"
 #include "unit_types.hpp"
 #include "wml_separators.hpp"
+#include "game_display.hpp"
 
 
 namespace {

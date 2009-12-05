@@ -17,6 +17,7 @@
 #include "dialogs.hpp"
 #include "foreach.hpp"
 #include "gettext.hpp"
+#include "game_display.hpp"
 #include "leader_list.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"

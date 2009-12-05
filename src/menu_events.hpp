@@ -19,8 +19,6 @@
 #include "global.hpp"
 #include "actions.hpp"
 #include "chat_events.hpp"
-#include "display.hpp"
-#include "game_display.hpp"
 #include "show_dialog.hpp"
 #include "floating_textbox.hpp"
 #include "widgets/textbox.hpp"

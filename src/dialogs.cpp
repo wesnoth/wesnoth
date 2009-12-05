@@ -22,6 +22,7 @@
 #include "dialogs.hpp"
 #include "foreach.hpp"
 #include "game_events.hpp"
+#include "game_display.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "help.hpp"
