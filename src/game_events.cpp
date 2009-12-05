@@ -831,18 +831,6 @@ WML_HANDLER_FUNCTION(store_time_of_day, /*event_info*/, cfg)
 		(*store.vars).add_child(store.key, tod_cfg);
 	}
 
-WML_HANDLER_FUNCTION(gold, /*event_info*/, cfg)
-{
-		std::string side = cfg["side"];
-		std::string amount = cfg["amount"];
-		const int side_num = lexical_cast_default<int>(side,1);
-		const int amount_num = atoi(amount.c_str());
-		const size_t team_index = side_num-1;
-		if (team_index < resources::teams->size()) {
-			(*resources::teams)[team_index].spend_gold(-amount_num);
-		}
-	}
-
 WML_HANDLER_FUNCTION(inspect, /*event_info*/, cfg)
 {
 	if (game_config::debug) {
@@ -970,55 +958,36 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 		}
 	}
 
-static void store_gold_side(bool store_side, const vconfig &cfg)
+WML_HANDLER_FUNCTION(store_side, /*event_info*/, cfg)
 {
 	game_state *state_of_game = resources::state_of_game;
 	std::vector<team> &teams = *resources::teams;
 
-		t_string *gold_store;
-		std::string side = cfg["side"];
-		std::string var_name = cfg["variable"];
-		if(var_name.empty()) {
-			var_name = (store_side?"side":"gold");
-		}
-		const int side_num = lexical_cast_default<int>(side,1);
-		const size_t team_index = side_num-1;
-		if (team_index < teams.size())
-		{
-			if(store_side) {
-				config side_data;
-				teams[team_index].write(side_data);
-				state_of_game->get_variable(var_name+".controller") = side_data["controller"];
-				state_of_game->get_variable(var_name+".recruit") = side_data["recruit"];
-				state_of_game->get_variable(var_name+".fog") = side_data["fog"];
-				state_of_game->get_variable(var_name+".shroud") = side_data["shroud"];
-				state_of_game->get_variable(var_name+".hidden") = side_data["hidden"];
+	std::string side = cfg["side"];
+	std::string var_name = cfg["variable"];
+	if (var_name.empty()) var_name = "side";
 
-				state_of_game->get_variable(var_name+".income") = str_cast(teams[team_index].total_income());
-				state_of_game->get_variable(var_name+".village_gold") = str_cast(teams[team_index].village_gold());
-				state_of_game->get_variable(var_name+".name") = teams[team_index].name();
-				state_of_game->get_variable(var_name+".team_name") = teams[team_index].team_name();
-				state_of_game->get_variable(var_name+".user_team_name") = teams[team_index].user_team_name();
-				state_of_game->get_variable(var_name+".colour") = teams[team_index].map_colour_to();
+	int side_num = lexical_cast_default<int>(side, 1);
+	size_t team_index = side_num - 1;
+	if (team_index >= teams.size()) return;
 
-				gold_store = &state_of_game->get_variable(var_name+".gold");
-			} else {
-				gold_store = &state_of_game->get_variable(var_name);
-			}
-			*gold_store = lexical_cast_default<std::string>(teams[team_index].gold());
-		}
-	}
+	config side_data;
+	teams[team_index].write(side_data);
+	state_of_game->get_variable(var_name+".controller") = side_data["controller"];
+	state_of_game->get_variable(var_name+".recruit") = side_data["recruit"];
+	state_of_game->get_variable(var_name+".fog") = side_data["fog"];
+	state_of_game->get_variable(var_name+".shroud") = side_data["shroud"];
+	state_of_game->get_variable(var_name+".hidden") = side_data["hidden"];
 
+	state_of_game->get_variable(var_name+".income") = str_cast(teams[team_index].total_income());
+	state_of_game->get_variable(var_name+".village_gold") = str_cast(teams[team_index].village_gold());
+	state_of_game->get_variable(var_name+".name") = teams[team_index].name();
+	state_of_game->get_variable(var_name+".team_name") = teams[team_index].team_name();
+	state_of_game->get_variable(var_name+".user_team_name") = teams[team_index].user_team_name();
+	state_of_game->get_variable(var_name+".colour") = teams[team_index].map_colour_to();
 
-WML_HANDLER_FUNCTION(store_side, /*event_info*/, cfg)
-	{
-		store_gold_side(true, cfg);
-	}
-
-WML_HANDLER_FUNCTION(store_gold, /*event_info*/, cfg)
-	{
-		store_gold_side(false, cfg);
-	}
+	state_of_game->get_variable(var_name+".gold") = str_cast(teams[team_index].gold());
+}
 
 WML_HANDLER_FUNCTION(modify_turns, /*event_info*/, cfg)
 {
@@ -1139,121 +1108,6 @@ WML_HANDLER_FUNCTION(move_unit_fake, /*event_info*/, cfg)
 				src = dst;
 			}
 			if (!path.empty()) unit_display::move_unit(path, dummy_unit, *resources::teams);
-		}
-	}
-
-	/**
-	 * Provide a means of specifying win/loss conditions:
-	 * \verbatim
-[event]
-	name=prestart
-	[objectives]
-		side=1
-		summary="Escape the forest alive"
-		victory_string="Victory:"
-		defeat_string="Defeat:"
-		[objective]
-			condition=win
-			description="Defeat all enemies"
-		[/objective]
-		[objective]
-			description="Death of Konrad"
-			condition=lose
-		[/objective]
-	[/objectives]
-[/event]
-\endverbatim
-	 * instead of the current (but still supported):
-\verbatim
-	objectives= _ "
-Victory:
-@Move Konrad to the signpost in the north-west
-Defeat:
-#Death of Konrad
-#Death of Delfador
-#Turns run out"
-\endverbatim
-	 *
-	 * If side is set to 0, the new objectives are added to each player.
-	 *
-	 * The new objectives will be automatically displayed,
-	 * but only to the player whose objectives did change,
-	 * and only when it's this player's turn.
-	 **/
-WML_HANDLER_FUNCTION(objectives, /*event_info*/, cfg)
-{
-		const std::string win_start = "<span color='green'>";
-		const std::string lose_start = "<span color='red'>";
-		const std::string win_end = "</span>";
-		const std::string lose_end = "</span>";
-
-		const t_string summary = cfg["summary"];
-		const t_string note = cfg["note"];
-		std::string side = cfg["side"];
-		bool silent = utils::string_bool(cfg["silent"]);
-		const size_t side_num = lexical_cast_default<size_t>(side,0);
-
-		if(side_num != 0 && (side_num - 1) >= resources::teams->size()) {
-			ERR_NG << "Invalid side: " << cfg["side"] << " in objectives event\n";
-			return;
-		}
-
-		t_string win_string = cfg["victory_string"];
-		if(win_string.empty())
-			win_string = t_string(N_("Victory:"), "wesnoth");
-		t_string lose_string = cfg["defeat_string"];
-		if(lose_string.empty())
-			lose_string = t_string(N_("Defeat:"), "wesnoth");
-
-		t_string win_objectives;
-		t_string lose_objectives;
-
-		const vconfig::child_list objectives = cfg.get_children("objective");
-		for(vconfig::child_list::const_iterator obj_it = objectives.begin();
-				obj_it != objectives.end(); ++obj_it) {
-
-			t_string description = (*obj_it)["description"];
-			std::string condition = (*obj_it)["condition"];
-			LOG_NG << condition << " objective: " << description << "\n";
-			if(condition == "win") {
-				win_objectives += "\n";
-				win_objectives += win_start;
-				win_objectives += description;
-				// Note: this ending markup is not at the correct place; it
-				// should be placed before the first newline of the description
-				// in order to match the behavior of Wesnoth 1.6, 1.7.0, 1.7+lua.
-				win_objectives += win_end;
-			} else if(condition == "lose") {
-				lose_objectives += "\n";
-				lose_objectives += lose_start;
-				lose_objectives += description;
-				// Note: same here.
-				lose_objectives += lose_end;
-			} else {
-				ERR_NG << "unknown condition '" << condition << "', ignoring\n";
-			}
-		}
-
-		t_string objs;
-		if(!summary.empty())
-			objs += "*" + summary + "\n";
-		if(!win_objectives.empty()) {
-			objs += "*" + win_string + "\n";
-			objs += win_objectives + "\n";
-		}
-		if(!lose_objectives.empty()) {
-			objs += "*" + lose_string + "\n";
-			objs += lose_objectives + "\n";
-		}
-		if(!note.empty())
-			objs += note + "\n";
-
-		if(side_num == 0) {
-			foreach (team &t, *resources::teams) {
-				t.set_objectives(objs, silent);
-			}
-		} else {
-			(*resources::teams)[side_num - 1].set_objectives(objs, silent);
 		}
 	}
 
@@ -2396,57 +2250,6 @@ WML_HANDLER_FUNCTION(set_menu_item, /*event_info*/, cfg)
 		}
 	}
 
-// store all [unit_type] id= attributes as a comma-separated string
-WML_HANDLER_FUNCTION(store_unit_type_ids, /*event_info*/, cfg)
-{
-	std::string variable = cfg["variable"];
-	if(variable.empty()) {
-		variable="unit_type_ids";
-	}
-	unit_type_data::unit_type_map_wrapper &ut_map = unit_type_data::types();
-	std::string unit_types;
-	unit_type_data::unit_type_map::const_iterator uti,
-		uti_begin = ut_map.begin(),
-		uti_end = ut_map.end();
-	for(uti = uti_begin; uti != uti_end; ++uti)
-	{
-		if(uti == uti_begin) {
-			unit_types += uti->first;
-		} else {
-			unit_types += "," + uti->first;
-		}
-	}
-	resources::state_of_game->set_variable(variable, unit_types);
-}
-
-// store a [unit_type] config into a WML variable
-WML_HANDLER_FUNCTION(store_unit_type, /*event_info*/, cfg)
-{
-	const t_string& type_name = cfg["type"];
-	if(type_name.empty()) {
-		lg::wml_error << "[store_unit_type] missing required type= attribute\n";
-	}
-	std::string variable = cfg["variable"];
-	if(variable.empty()) {
-		variable="unit_type";
-	}
-
-	std::vector<std::string> types_to_store = utils::split(type_name);
-	unit_type_data::unit_type_map_wrapper &ut_map = unit_type_data::types();
-
-	resources::state_of_game->clear_variable_cfg(variable);
-	for(unsigned int i=0; i < types_to_store.size() && i < game_config::max_loop; ++i) {
-		const unit_type_data::unit_type_map::const_iterator
-			ut = ut_map.find_unit_type(types_to_store[i], unit_type::NOT_BUILT);
-		if(ut != ut_map.end()) {
-			resources::state_of_game->add_variable_cfg(variable, ut->second.get_cfg());
-		} else {
-			lg::wml_error << "attempt to store nonexistent unit_type \""
-				<< types_to_store[i] << "\"\n";
-		}
-	}
-}
-
 // Unit serialization to and from variables
 /** @todo FIXME: Check that store is automove bug safe */
 WML_HANDLER_FUNCTION(store_unit, /*event_info*/, cfg)
@@ -2750,17 +2553,6 @@ WML_HANDLER_FUNCTION(capture_village, /*event_info*/, cfg)
 		}
 	}
 }
-
-// Command to remove a variable
-WML_HANDLER_FUNCTION(clear_variable, /*event_info*/, cfg)
-	{
-		const std::string name = cfg["name"];
-		std::vector<std::string> vars_to_clear =
-			utils::split(name, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
-		foreach(const std::string& var, vars_to_clear) {
-			resources::state_of_game->clear_variable(var);
-		}
-	}
 
 WML_HANDLER_FUNCTION(end_turn, /*event_info*/, /*cfg*/)
 {
