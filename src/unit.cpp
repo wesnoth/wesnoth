@@ -23,6 +23,7 @@
 
 #include "actions.hpp"
 #include "callable_objects.hpp"
+#include "foreach.hpp"
 #include "formula.hpp"
 #include "game_display.hpp"
 #include "game_events.hpp"

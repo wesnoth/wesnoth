@@ -18,6 +18,7 @@
 
 #include "ai.hpp"
 #include "candidates.hpp"
+#include "foreach.hpp"
 #include "../../log.hpp"
 
 static lg::log_domain log_formula_ai("ai/formula_ai");

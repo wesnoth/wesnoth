@@ -21,7 +21,6 @@
 #include "map.hpp"
 #include "unit.hpp"
 #include "team.hpp"
-#include "foreach.hpp"
 
 #define CALLABLE_WRAPPER_START(klass) \
 class klass##_callable : public game_logic::formula_callable { \
