@@ -118,10 +118,28 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 			}
 
 			// Handle the special case with an image.
-			std::string::size_type pos = label.find("=");
-			if (pos != std::string::npos && label[0] == '&') {
-				icon = label.substr(1, pos - 1);
+			std::string::size_type pos = label.find('=');
+			if (pos != std::string::npos && (label[0] == '&' || pos == 0)) {
+				if (pos) icon = label.substr(1, pos - 1);
 				label.erase(0, pos + 1);
+			}
+
+			// Search for an '=' symbol that is not inside markup.
+			std::string::size_type prev = 0;
+			bool open = false;
+			while ((pos = label.find('=', prev)) != std::string::npos) {
+				for (std::string::size_type i = prev; i != pos; ++i) {
+					switch (label[i]) {
+					case '<': open = true; break;
+					case '>': open = false; break;
+					}
+				}
+				if (!open) break;
+				prev = pos + 1;
+			}
+			if (pos != std::string::npos) {
+				description = label.substr(pos + 1);
+				label.erase(pos);
 			}
 
 			// Add the data.
