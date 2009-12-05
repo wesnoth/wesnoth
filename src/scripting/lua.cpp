@@ -30,18 +30,6 @@
  *   - luaW_ functions are helpers in Lua style.
  */
 
-#ifdef DISABLE_LUA
-#include "log.hpp"
-#include "scripting/lua.hpp"
-static lg::log_domain lua("scripting/lua");
-LuaKernel::LuaKernel() {LOG_STREAM(err, lua) << "Lua support disabled in this build";}
-LuaKernel::~LuaKernel() {}
-void LuaKernel::run_event(vconfig const&, game_events::queued_event const&) {}
-bool LuaKernel::run_filter(char const *name, unit const &u) { return false; }
-void LuaKernel::run(char const *prog) {}
-void LuaKernel::execute(char const *prog, int nArgs, int nRets) {}
-#else  // HAVE LUA
-
 extern "C" {
 #include <lualib.h>
 #include <lauxlib.h>
@@ -2010,5 +1998,3 @@ void LuaKernel::execute(char const *prog, int nArgs, int nRets)
 
 	lua_remove(L, -1 - nRets);
 }
-
-#endif // HAVE LUA
