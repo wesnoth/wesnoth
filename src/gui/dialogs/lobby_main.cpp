@@ -38,6 +38,7 @@
 #include "log.hpp"
 #include "network.hpp"
 #include "playmp_controller.hpp"
+#include "preferences_display.hpp"
 #include "sound.hpp"
 
 #include <boost/bind.hpp>
@@ -347,10 +348,32 @@ static void signal_handler_sdl_video_resize(
 	}
 }
 
+static bool fullscreen(CVideo& video)
+{
+	preferences::set_fullscreen(video , !preferences::fullscreen());
+
+	// Setting to fullscreen doesn't seem to generate a resize event.
+	const SDL_Rect& rect = screen_area();
+
+	SDL_Event event;
+	event.type = SDL_VIDEORESIZE;
+	event.resize.type = SDL_VIDEORESIZE;
+	event.resize.w = rect.w;
+	event.resize.h = rect.h;
+
+	SDL_PushEvent(&event);
+
+	return true;
+}
+
 twindow* tlobby_main::build_window(CVideo& video)
 {
 	twindow* window = build(video, get_id(LOBBY_MAIN));
 	assert(window);
+
+	/** @todo Should become a global hotkey after 1.8, then remove it here. */
+	window->register_hotkey(hotkey::HOTKEY_FULLSCREEN
+			, boost::bind(fullscreen, boost::ref(video)));
 
 	/** @todo Remove this code once the resizing in twindow is finished. */
 	window->connect_signal<event::SDL_VIDEO_RESIZE>(
