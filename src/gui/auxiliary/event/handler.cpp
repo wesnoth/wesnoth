@@ -23,6 +23,7 @@
 #include "gui/widgets/helper.hpp"
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
+#include "hotkeys.hpp"
 #include "video.hpp"
 
 #include <cassert>
@@ -196,6 +197,22 @@ private:
 	/**
 	 * Fires a key down event.
 	 *
+	 * @param event                  The SDL keyboard event triggered.
+	 */
+	void key_down(const SDL_KeyboardEvent& event);
+
+	/**
+	 * Handles the pressing of a hotkey.
+	 *
+	 * @param key                 The hotkey item pressed.
+	 *
+	 * @returns                   True if the hotkey is handled false otherwise.
+	 */
+	bool hotkey_pressed(const hotkey::hotkey_item& key);
+
+	/**
+	 * Fires a key down event.
+	 *
 	 * @param key                    The SDL key code of the key pressed.
 	 * @param modifier               The SDL key modifiers used.
 	 * @param unicode                The unicode value for the key pressed.
@@ -302,9 +319,7 @@ void thandler::handle_event(const SDL_Event& event)
 			break;
 
 		case SDL_KEYDOWN:
-			key_down(event.key.keysym.sym
-					, event.key.keysym.mod
-					, event.key.keysym.unicode);
+			key_down(event.key);
 			break;
 
 		case SDL_VIDEORESIZE:
@@ -520,6 +535,30 @@ void thandler::mouse_button_down(const tpoint& position, const Uint8 button)
 					<< static_cast<Uint32>(button) << ".\n";
 			break;
 	}
+}
+
+void thandler::key_down(const SDL_KeyboardEvent& event)
+{
+	const hotkey::hotkey_item& hk = hotkey::get_hotkey(event);
+	bool done = false;
+	if(!hk.null()) {
+		done = hotkey_pressed(hk);
+	}
+	if(!done) {
+		key_down(event.keysym.sym, event.keysym.mod, event.keysym.unicode);
+	}
+}
+
+bool thandler::hotkey_pressed(const hotkey::hotkey_item& key)
+{
+	tdispatcher* focus = keyboard_focus_
+			? keyboard_focus_
+			: dispatchers_.back();
+	if(!focus) {
+		return false;
+	}
+
+	return focus->execute_hotkey(key.get_id());
 }
 
 void thandler::key_down(const SDLKey key

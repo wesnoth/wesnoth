@@ -16,6 +16,7 @@
 #define GUI_WIDGETS_AUXILIARY_EVENT_DISPATCHER_HPP_INCLUDED
 
 #include "gui/auxiliary/event/handler.hpp"
+#include "hotkeys.hpp"
 
 #include <boost/function.hpp>
 #include <boost/mpl/int.hpp>
@@ -94,6 +95,14 @@ typedef
 			, bool& halt
 			, void*)>
 		tsignal_notification_function;
+
+
+/** Hotkey function handler signature. */
+typedef
+		boost::function<bool(
+				  tdispatcher& dispatcher
+				, hotkey::HOTKEY_COMMAND id)>
+		thotkey_function;
 
 /**
  * Base class for event handling.
@@ -537,6 +546,30 @@ public:
 		}
 	};
 
+	/**
+	 * Registers a hotkey.
+	 *
+	 * @todo add a static function register_global_hotkey.
+	 *
+	 * Once that's done execute_hotkey will first try to execute a global
+	 * hotkey and if that fails tries the hotkeys in this dispatcher.
+	 *
+	 * @param id                  The hotkey to register.
+	 * @param function            The callback function to call.
+	 */
+	void register_hotkey(const hotkey::HOTKEY_COMMAND id
+			, const thotkey_function& function);
+
+	/**
+	 * Executes a hotkey.
+	 *
+	 * @param id                  The hotkey to execute.
+	 *
+	 * @returns                   true if the hotkey is handled, false
+	 *                            otherwise.
+	 */
+	bool execute_hotkey(const hotkey::HOTKEY_COMMAND id);
+
 private:
 
 	/** The mouse behaviour for the dispatcher. */
@@ -556,6 +589,9 @@ private:
 
 	/** Are we connected to the event handler. */
 	bool connected_;
+
+	/** The registered hotkeys for this dispatcher. */
+	std::map<hotkey::HOTKEY_COMMAND, thotkey_function> hotkeys_;
 };
 
 } // namespace event

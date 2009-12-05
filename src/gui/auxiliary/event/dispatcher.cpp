@@ -32,6 +32,7 @@ tdispatcher::tdispatcher()
 	, signal_keyboard_queue_()
 	, signal_notification_queue_()
 	, connected_(false)
+	, hotkeys_()
 {
 }
 
@@ -256,6 +257,24 @@ bool tdispatcher::fire(const tevent event
 		}
 	}
 	return handled;
+}
+
+void tdispatcher::register_hotkey(const hotkey::HOTKEY_COMMAND id
+		, const thotkey_function& function)
+{
+	hotkeys_[id] = function;
+}
+
+bool tdispatcher::execute_hotkey(const hotkey::HOTKEY_COMMAND id)
+{
+	std::map<hotkey::HOTKEY_COMMAND, thotkey_function>::iterator
+			itor = hotkeys_.find(id);
+
+	if(itor == hotkeys_.end()) {
+		return false;
+	}
+
+	return itor->second(*this, id);
 }
 
 } // namespace event
