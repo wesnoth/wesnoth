@@ -21,7 +21,6 @@
 #include "chat_events.hpp"
 #include "show_dialog.hpp"
 #include "floating_textbox.hpp"
-#include "widgets/textbox.hpp"
 
 class game_state;
 class tod_manager;
