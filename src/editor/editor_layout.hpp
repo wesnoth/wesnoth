@@ -19,7 +19,7 @@
 
 #include "global.hpp"
 
-#include "display.hpp"
+class display;
 
 namespace editor {
 

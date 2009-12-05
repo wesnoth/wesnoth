@@ -19,6 +19,7 @@
  * Set various sizes for the screen-layout of the map editor.
  */
 
+#include "display.hpp"
 #include "editor_layout.hpp"
 
 

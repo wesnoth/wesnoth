@@ -14,18 +14,19 @@
 #ifndef MULTIPLAYER_UI_HPP_INCLUDED
 #define MULTIPLAYER_UI_HPP_INCLUDED
 
+#include "chat_events.hpp"
 #include "hotkeys.hpp"
 #include "network.hpp"
 #include "preferences_display.hpp"
 #include "widgets/label.hpp"
 #include "widgets/menu.hpp"
 #include "widgets/textbox.hpp"
-#include "menu_events.hpp"
 
 #include <deque>
 #include <string>
 
 class display;
+class game_display;
 class config;
 class game_state;
 

@@ -19,7 +19,6 @@
 #include "global.hpp"
 
 #include "actions.hpp"
-#include "display.hpp"
 #include "show_dialog.hpp"
 #include "unit_map.hpp"
 
