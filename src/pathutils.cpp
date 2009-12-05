@@ -21,6 +21,8 @@
 
 #include "pathutils.hpp"
 
+#include "map.hpp"
+
 void get_tile_ring(const map_location& a, const int r, std::vector<map_location>& res)
 {
 	if(r <= 0) {

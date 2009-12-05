@@ -18,8 +18,9 @@
 #define PATHUTILS_H_INCLUDED
 
 #include "map_location.hpp"
-#include "map.hpp"
 #include <set>
+
+class gamemap;
 
 /**
  * Function which, given a location, will place all locations in a ring of
