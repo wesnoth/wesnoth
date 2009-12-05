@@ -20,21 +20,19 @@
 #ifndef ACTIONS_H_INCLUDED
 #define ACTIONS_H_INCLUDED
 
+class attack_type;
 class game_display;
 class replay;
 struct combatant;
 class team;
 struct time_of_day;
-class unit;
 
 #include "global.hpp"
 #include "map_location.hpp"
 #include "unit.hpp"
 #include "unit_map.hpp"
-#include "unit_types.hpp"
 
 #include <deque>
-#include <sstream>
 
 bool can_recruit_on(const gamemap& map, const map_location& leader, const map_location& loc);
 
