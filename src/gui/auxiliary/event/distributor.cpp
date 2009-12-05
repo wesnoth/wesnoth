@@ -277,9 +277,14 @@ void tmouse_motion::stop_hover_timer()
 				<< hover_widget_->id() << "' at address "
 				<< hover_widget_ << ".\n";
 
-		if(SDL_RemoveTimer(hover_timer_) == SDL_FALSE) {
-			ERR_GUI_E << LOG_HEADER << "Failed to remove hover timer.\n";
-		}
+		/*
+		 * The situation can happen if the timer pushes the hover event in the
+		 * queue but before that event is processed the remove request has
+		 * come. Need to see whether there is a better way to fix the issue.
+		 */
+//		if(SDL_RemoveTimer(hover_timer_) == SDL_FALSE) {
+//			ERR_GUI_E << LOG_HEADER << "Failed to remove hover timer.\n";
+//		}
 
 		hover_timer_ = NULL;
 		hover_widget_ = NULL;
@@ -292,7 +297,8 @@ void tmouse_motion::signal_handler_show_hover_tooltip(const event::tevent event)
 	DBG_GUI_E << LOG_HEADER << event << ".\n";
 
 	if(!hover_widget_) {
-		ERR_GUI_E << LOG_HEADER << event << " bailing out, no hover widget.\n";
+		// See tmouse_motion::stop_hover_timer.
+//		ERR_GUI_E << LOG_HEADER << event << " bailing out, no hover widget.\n";
 		return;
 	}
 
