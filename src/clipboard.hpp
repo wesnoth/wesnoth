@@ -19,7 +19,6 @@
 
 #include <string>
 #include "SDL.h"
-#include "serialization/string_utils.hpp"
 
 /**
  * Copies text to the clipboard.
