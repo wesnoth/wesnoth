@@ -16,7 +16,6 @@
 
 #include "events.hpp"
 #include "tstring.hpp"
-#include "SDL.h"
 
 #include <string>
 #include <vector>
