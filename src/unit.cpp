@@ -856,7 +856,7 @@ const unit_type* unit::type() const
 	//thow error
 	unknown_unit_type_error(type_id());
 	//shouldn't be reached
-	return NULL; 
+	return NULL;
 }
 
 void unit::unknown_unit_type_error(const std::string& type_id) const
@@ -988,7 +988,7 @@ void unit::new_scenario()
 	// Set the goto-command to be going to no-where
 	goto_ = map_location();
 	waypoints_.clear();
-	
+
 	remove_temporary_modifications();
 
 	heal_all();

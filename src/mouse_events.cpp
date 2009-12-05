@@ -347,7 +347,7 @@ marked_route mouse_handler::get_route(unit_map::const_iterator un, map_location 
 		un->second, units_, viewing_team());
 
 	plain_route route;
-	
+
 	if (waypoints.empty()) {
 		// standard shortest path
 		route = a_star_search(un->first, go_to, 10000.0, &calc, map_.w(), map_.h(), &allowed_teleports);
