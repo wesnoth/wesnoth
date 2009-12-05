@@ -23,6 +23,7 @@
 #include "language.hpp"
 #include "marked-up_text.hpp"
 #include "sound.hpp"
+#include "text.hpp"
 #include "video.hpp"
 #include "wml_separators.hpp"
 
@@ -799,11 +800,11 @@ SDL_Rect menu::style::item_size(const std::string& item) const {
 				res.h = std::max<int>(img->h, res.h);
 			}
 		} else {
-			const SDL_Rect area = {0,0,10000,10000};
-			const SDL_Rect font_size =
-				font::draw_text(NULL,area,get_font_size(),font::NORMAL_COLOUR,str,0,0);
-			res.w += font_size.w;
-			res.h = std::max<int>(font_size.h, res.h);
+			font::ttext t;
+			t.set_text(str, true);
+			t.set_font_size(get_font_size());
+			res.w += t.get_width();
+			res.h = std::max<int>(t.get_height(), res.h);
 		}
 	}
 	return res;
@@ -951,7 +952,15 @@ void menu::draw_row(const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
 						: str;
 				const SDL_Rect& text_size = font::text_area(str,style_->get_font_size());
 				const size_t y = rect.y + (rect.h - text_size.h)/2;
-				font::draw_text(&video(),column,style_->get_font_size(),font::NORMAL_COLOUR,to_show,xpos,y);
+
+				font::ttext t;
+				t.set_text(to_show, true);
+				t.set_font_size(style_->get_font_size());
+				t.set_foreground_colour(0xDDDDDDFF);
+				t.set_maximum_width(column.w);
+				t.set_maximum_height(column.h);
+				surface s = t.render();
+				video().blit_surface(xpos, y, s);
 
 				if(type == HEADING_ROW && sortby_ == int(i)) {
 					const surface sort_img = image::get_image(sortreversed_ ? "misc/sort-arrow.png" :
