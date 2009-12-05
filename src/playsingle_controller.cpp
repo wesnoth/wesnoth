@@ -27,6 +27,8 @@
 #include "ai/testing.hpp"
 #include "foreach.hpp"
 #include "game_end_exceptions.hpp"
+#include "game_events.hpp"
+#include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "log.hpp"
@@ -40,6 +42,7 @@
 #include "formula_string_utils.hpp"
 #include "events.hpp"
 #include "save_blocker.hpp"
+#include "soundsource.hpp"
 #include "storyscreen/interface.hpp"
 
 static lg::log_domain log_engine("engine");

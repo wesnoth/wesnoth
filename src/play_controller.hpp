@@ -19,20 +19,12 @@
 #include "global.hpp"
 #include "controller_base.hpp"
 #include "game_end_exceptions.hpp"
-#include "game_events.hpp"
-#include "gamestatus.hpp"
-#include "generic_event.hpp"
-#include "halo.hpp"
 #include "help.hpp"
 #include "hotkeys.hpp"
 #include "map.hpp"
 #include "menu_events.hpp"
 #include "mouse_events.hpp"
-#include "preferences_display.hpp"
-#include "replay.hpp"
-#include "soundsource.hpp"
 #include "statistics.hpp"
-#include "tooltips.hpp"
 #include "tod_manager.hpp"
 #include "savegame_config.hpp"
 
@@ -41,7 +33,29 @@
 #include <boost/scoped_ptr.hpp>
 
 class game_display;
+class game_state;
 class team;
+struct wml_menu_item;
+
+namespace game_events {
+	struct manager;
+} // namespace game_events
+
+namespace halo {
+	struct manager;
+} // namespace halo
+
+namespace preferences {
+	struct display_manager;
+}
+
+namespace soundsource {
+	class manager;
+} // namespace soundsource
+
+namespace tooltips {
+	struct manager;
+} // namespace tooltips
 
 class play_controller : public controller_base, public events::observer, public savegame::savegame_config
 {

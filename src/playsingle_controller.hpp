@@ -20,6 +20,7 @@
 
 #include "cursor.hpp"
 #include "play_controller.hpp"
+#include "replay.hpp"
 
 struct upload_log;
 

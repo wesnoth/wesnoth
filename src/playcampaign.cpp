@@ -21,6 +21,7 @@
 #include "global.hpp"
 
 #include "foreach.hpp"
+#include "game_preferences.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "playcampaign.hpp"

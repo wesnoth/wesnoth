@@ -20,6 +20,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "playturn.hpp"
+#include "preferences.hpp"
 #include "resources.hpp"
 #include "savegame.hpp"
 #include "sound.hpp"
