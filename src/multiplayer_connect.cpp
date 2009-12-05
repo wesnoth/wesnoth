@@ -23,6 +23,7 @@
 #include "ai/configuration.hpp"
 #include "dialogs.hpp"
 #include "foreach.hpp"
+#include "game_display.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map.hpp"

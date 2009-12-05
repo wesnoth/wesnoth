@@ -24,6 +24,9 @@
 
 #include "../global.hpp"
 
+#include "../config.hpp"
+#include "../generic_event.hpp"
+
 #include "game_info.hpp"
 
 #include <map>

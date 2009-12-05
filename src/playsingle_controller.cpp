@@ -32,6 +32,7 @@
 #include "log.hpp"
 #include "map_label.hpp"
 #include "marked-up_text.hpp"
+#include "playturn.hpp"
 #include "resources.hpp"
 #include "savegame.hpp"
 #include "sound.hpp"

@@ -20,15 +20,19 @@
 #ifndef AI_GAME_INFO_HPP_INCLUDED
 #define AI_GAME_INFO_HPP_INCLUDED
 
-class gamemap;
-
-#include "../game_display.hpp"
-#include "../gamestatus.hpp"
-#include "../tod_manager.hpp"
-#include "../playturn.hpp"
+#include <boost/shared_ptr.hpp>
+#include "../map_location.hpp"
 
 #include <set>
+#include <vector>
+#include <map>
 
+class game_display;
+class game_state;
+class gamemap;
+class unit_map;
+class team;
+class tod_manager;
 struct paths;
 
 /**

@@ -22,6 +22,7 @@
 #include "../contexts.hpp"
 #include "../../foreach.hpp"
 #include "../../log.hpp"
+#include "../../tod_manager.hpp"
 #include <map>
 #include <string>
 

@@ -22,6 +22,7 @@
 #include "../manager.hpp"
 #include "../../foreach.hpp"
 #include "../../log.hpp"
+#include "../../tod_manager.hpp"
 
 namespace ai {
 

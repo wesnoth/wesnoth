@@ -35,6 +35,7 @@
 #include "../../log.hpp"
 #include "../../menu_events.hpp"
 #include "../../terrain_filter.hpp"
+#include "../../tod_manager.hpp"
 
 static lg::log_domain log_formula_ai("ai/formula_ai");
 #define DBG_AI LOG_STREAM(debug, log_formula_ai)
