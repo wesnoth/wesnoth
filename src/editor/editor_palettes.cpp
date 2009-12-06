@@ -573,11 +573,6 @@ unsigned int brush_bar::selected_brush_size() {
 	return selected_;
 }
 
-void brush_bar::select_brush(int index) {
-	assert(static_cast<size_t>(index) < brushes_.size());
-	selected_ = index;
-}
-
 void brush_bar::left_mouse_click(const int mousex, const int mousey) {
 	int index = selected_index(mousex, mousey);
 	if(index >= 0) {
