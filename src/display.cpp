@@ -2334,26 +2334,6 @@ bool display::invalidate_locations_in_rect(const SDL_Rect& rect)
 	return result;
 }
 
-bool display::rectangle_need_update(const SDL_Rect& rect) const
-{
-	SDL_Rect visible_rect = intersect_rects(map_area(), rect);
-
-	// check if rectangle is visible
-	if(visible_rect.w <=0 || visible_rect.h <=0)
-		return false;
-
-	// invalidateAll_ is about visible hexes, so only check if visible
-	if(invalidateAll_)
-		return true;
-
-	foreach (const map_location &loc, hexes_under_rect(visible_rect)) {
-		if (invalidated_.find(loc) != invalidated_.end())
-			return true;
-	}
-
-	return false;
-}
-
 void display::invalidate_animations()
 {
 	if (!preferences::animate_map()) {
