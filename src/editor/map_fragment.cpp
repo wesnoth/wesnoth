@@ -115,15 +115,6 @@ map_location map_fragment::center_of_mass() const
 	return sum;
 }
 
-void map_fragment::center_by_bounds()
-{
-	shift(center_of_bounds().vector_negation());
-	area_.clear();
-	foreach (tile_info& ti, items_) {
-		area_.insert(ti.offset);
-	}
-}
-
 void map_fragment::center_by_mass()
 {
 	shift(center_of_mass().vector_negation());
