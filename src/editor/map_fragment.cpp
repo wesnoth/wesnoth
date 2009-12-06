@@ -76,23 +76,6 @@ void map_fragment::shift(const map_location& offset)
 	}
 }
 
-map_location map_fragment::center_of_bounds() const
-{
-	if (empty()) return map_location();
-	map_location top_left = items_[0].offset;
-	map_location bottom_right = items_[0].offset;
-	for (size_t i = 1; i < items_.size(); ++i) {
-		const map_location& loc = items_[i].offset;
-		if (loc.x < top_left.x) top_left.x = loc.x;
-		else if (loc.x > bottom_right.x) bottom_right.x = loc.x;
-		if (loc.y < top_left.y) top_left.y = loc.y;
-		else if (loc.y > bottom_right.y) bottom_right.y = loc.y;
-	}
-	map_location c((top_left.x + bottom_right.x) / 2,
-		(top_left.y + bottom_right.y) / 2);
-	return c;
-}
-
 map_location map_fragment::center_of_mass() const
 {
 	map_location sum(0, 0);

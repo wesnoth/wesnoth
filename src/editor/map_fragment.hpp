@@ -94,11 +94,6 @@ class map_fragment
 		void shift(const map_location& offset);
 
 		/**
-		 * Get the center of the map fragment, bounds-wise.
-		 */
-		map_location center_of_bounds() const;
-
-		/**
 		 * Get the center of the map fragment, mass-wise.
 		 */
 		map_location center_of_mass() const;
