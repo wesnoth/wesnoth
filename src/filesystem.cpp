@@ -1150,10 +1150,10 @@ std::string normalize_path(const std::string &p1)
 #endif
 
 	std::vector<std::string> components(1);
-	for (int i = 0, i_end = p2.size(); i < i_end; ++i)
+	for (int i = 0, i_end = p2.size(); i <= i_end; ++i)
 	{
 		std::string &last = components[components.size() - 1];
-		char c = p2[i];
+		char c = p2.c_str()[i];
 		if (is_path_sep(c) || c == 0)
 		{
 			if (last == ".")
