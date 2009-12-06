@@ -41,11 +41,6 @@ chat_message::chat_message(const time_t& timestamp, const std::string& user, con
 {
 }
 
-chat_message::chat_message(const std::string& user, const std::string& message)
-: timestamp(time(0)), user(user), message(message)
-{
-}
-
 chat_log::chat_log()
 : history_()
 {

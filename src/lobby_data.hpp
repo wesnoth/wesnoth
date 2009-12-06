@@ -29,9 +29,6 @@ struct chat_message
 	/** Create a chat message */
 	chat_message(const time_t& timestamp, const std::string& user, const std::string& message);
 
-	/** Create a chat message, assume the time is "now" */
-	chat_message(const std::string& user, const std::string& message);
-
 	time_t timestamp;
 	std::string user;
 	std::string message;
