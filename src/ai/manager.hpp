@@ -93,11 +93,8 @@ private:
  */
 class command_history_item{
 public:
-	command_history_item();
 
 	command_history_item(int number, const std::string& command);
-
-	virtual ~command_history_item();
 
 	int get_number() const;
 	void set_number(int number);
