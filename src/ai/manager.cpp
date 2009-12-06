@@ -257,21 +257,8 @@ const std::string holder::get_ai_identifier() const
 // AI COMMAND HISTORY ITEM
 // =======================================================================
 
-command_history_item::command_history_item()
-	: number_(0), command_()
-{
-
-}
-
-
 command_history_item::command_history_item( side_number number, const std::string& command )
 	: number_(number), command_(command)
-{
-
-}
-
-
-command_history_item::~command_history_item()
 {
 
 }
@@ -283,20 +270,9 @@ int command_history_item::get_number() const
 }
 
 
-void command_history_item::set_number( int number )
-{
-	this->number_ = number;
-}
-
 const std::string& command_history_item::get_command() const
 {
 	return this->command_;
-}
-
-
-void command_history_item::set_command( const std::string& command )
-{
-	this->command_ = command;
 }
 
 // =======================================================================

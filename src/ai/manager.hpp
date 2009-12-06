@@ -97,10 +97,8 @@ public:
 	command_history_item(int number, const std::string& command);
 
 	int get_number() const;
-	void set_number(int number);
 
 	const std::string& get_command() const;
-	void set_command(const std::string& command);
 
 private:
 	int number_;
