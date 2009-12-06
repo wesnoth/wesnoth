@@ -292,8 +292,7 @@ ui::ui(game_display& disp, const std::string& title, const config& cfg, chat& c,
 	users_menu_(disp.video(), std::vector<std::string>(), false, -1, -1, NULL, &umenu_style),
 
 	user_list_(),
-	selected_user_(""),
-	selected_user_changed_(false),
+	selected_user_(),
 
 	result_(CONTINUE),
 	gamelist_refresh_(false),
@@ -467,7 +466,6 @@ void ui::handle_event(const SDL_Event& event)
 	if(users_menu_.selection() > 0 // -1 indicates an invalid selection
 			&& selected_user_ != user_list_[users_menu_.selection()]) {
 		selected_user_ = user_list_[users_menu_.selection()];
-		selected_user_changed_ = true;
 	}
 }
 
