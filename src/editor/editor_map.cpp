@@ -273,18 +273,6 @@ bool editor_map::same_size_as(const gamemap& other) const
 		&& w() == other.w();
 }
 
-void editor_map::swap_starting_position(int x1, int y1, int x2, int y2)
-{
-	int pos1 = is_starting_position(map_location(x1, y1));
-	int pos2 = is_starting_position(map_location(x2, y2));
-	if(pos1 != -1) {
-		set_starting_position(pos1 + 1, map_location(x2, y2));
-	}
-	if(pos2 != -1) {
-		set_starting_position(pos2 + 1, map_location(x1, y1));
-	}
-}
-
 t_translation::t_list editor_map::clone_column(int x, t_translation::t_terrain filler)
 {
 	int h = tiles_[1].size();

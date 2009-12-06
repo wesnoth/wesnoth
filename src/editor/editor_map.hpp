@@ -184,7 +184,6 @@ public:
 	bool same_size_as(const gamemap& other) const;
 
 protected:
-	void swap_starting_position(int x1, int y1, int x2, int y2);
 	t_translation::t_list clone_column(int x, t_translation::t_terrain filler);
 
 	//helper functions for resizing
