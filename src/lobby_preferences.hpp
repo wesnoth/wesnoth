@@ -42,21 +42,6 @@ namespace preferences {
 
 	bool playerlist_group_players();
 	void set_playerlist_group_players(bool v);
-
-	bool filter_lobby();
-	void set_filter_lobby(bool value);
-
-	bool fi_invert();
-	void set_fi_invert(bool value);
-
-	bool fi_vacant_slots();
-	void set_fi_vacant_slots(bool value);
-
-	bool fi_friends_in_game();
-	void set_fi_friends_in_game(bool value);
-
-	std::string fi_text();
-	void set_fi_text(const std::string& search_string);
 } //end namespace preferences
 
 
