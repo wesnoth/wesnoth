@@ -202,18 +202,6 @@ bool editor_map::everything_selected() const
 	return static_cast<int>(selection_.size()) == total_width() * total_height();
 }
 
-void editor_map::sanitize_selection()
-{
-	std::set<map_location>::iterator it = selection_.begin();
-	while (it != selection_.end()) {
-		if (on_board_with_border(*it)) {
-			++it;
-		} else {
-			selection_.erase(it++);
-		}
-	}
-}
-
 void editor_map::resize(int width, int height, int x_offset, int y_offset,
 	t_translation::t_terrain filler)
 {
