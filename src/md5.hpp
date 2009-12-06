@@ -39,27 +39,13 @@ documentation and/or software.
 
 */
 
-#include <stdio.h>
-#include <fstream>
-#include <iosfwd>
-
 class MD5 {
 
 public:
 // methods for controlled operation:
   MD5              ();  // simple initializer
   void  update     (unsigned char *input, unsigned int input_length);
-  void  update     (std::istream& stream);
-  void  update     (FILE *file);
-  void  update     (std::ifstream& stream);
   void  finalize   ();
-
-// constructors for special circumstances.  All these constructors finalize
-// the MD5 context.
-  MD5              (unsigned char *string); // digest string, finalize
-  MD5              (std::istream& stream);       // digest stream, finalize
-  MD5              (FILE *file);            // digest file, close, finalize
-  MD5              (std::ifstream& stream);      // digest stream, close, finalize
 
 // methods to acquire finalized result
   unsigned char    *raw_digest ();  // digest as a 16-byte binary array

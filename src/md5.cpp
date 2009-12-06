@@ -112,68 +112,6 @@ void MD5::update (uint1 *input, uint4 input_length) {
 
 
 
-// MD5 update for files.
-// Like above, except that it works on files (and uses above as a primitive.)
-
-void MD5::update(FILE *file){
-
-  unsigned char buffer[1024];
-  int len;
-
-  while ((len=fread(buffer, 1, 1024, file)))
-    update(buffer, len);
-
-  fclose (file);
-
-}
-
-
-
-
-
-
-// MD5 update for istreams.
-// Like update for files; see above.
-
-void MD5::update(std::istream& stream){
-
-  unsigned char buffer[1024];
-  int len;
-
-  while (stream.good()){
-    stream.read((char *)(buffer), 1024); // note that return value of read is unusable.
-    len=stream.gcount();
-    update(buffer, len);
-  }
-
-}
-
-
-
-
-
-
-// MD5 update for ifstreams.
-// Like update for files; see above.
-
-void MD5::update(std::ifstream& stream){
-
-  unsigned char buffer[1024];
-  int len;
-
-  while (stream.good()){
-    stream.read((char *)(buffer), 1024); // note that return value of read is unusable.
-    len=stream.gcount();
-    update(buffer, len);
-  }
-
-}
-
-
-
-
-
-
 // MD5 finalization. Ends an MD5 message-digest operation, writing the
 // the message digest and zeroizing the context.
 
@@ -212,44 +150,6 @@ void MD5::finalize (){
 
   finalized=1;
 
-}
-
-MD5::MD5(unsigned char *string)
-	: finalized(0)
-{
-  init();
-  update(string, strlen((char *)(string)));
-  finalize();
-}
-
-
-MD5::MD5(FILE *file)
-	: finalized(0)
-{
-  init();  // must be called be all constructors
-  update(file);
-  finalize ();
-}
-
-
-
-
-MD5::MD5(std::istream& stream)
-	: finalized(0)
-{
-  init();  // must called by all constructors
-  update (stream);
-  finalize();
-}
-
-
-
-MD5::MD5(std::ifstream& stream)
-	: finalized(0)
-{
-  init();  // must called by all constructors
-  update (stream);
-  finalize();
 }
 
 
