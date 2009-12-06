@@ -171,24 +171,9 @@ locator::locator(const std::string &filename) :
 	init_index();
 }
 
-locator::locator(const char *filename, const std::string& modifications) :
-	index_(-1),
-	val_(filename, modifications)
-{
-	init_index();
-}
-
 locator::locator(const std::string &filename, const std::string& modifications) :
 	index_(-1),
 	val_(filename, modifications)
-{
-	init_index();
-}
-
-locator::locator(const std::string &filename,
-		const map_location &loc, const std::string& modifications) :
-	index_(-1),
-	val_(filename, loc, modifications)
 {
 	init_index();
 }
@@ -229,14 +214,6 @@ locator::value::value(const char *filename) :
 {
 }
 
-
-locator::value::value(const char *filename, const std::string& modifications) :
-  type_(SUB_FILE), filename_(filename), loc_(), modifications_(modifications),
-  center_x_(0), center_y_(0)
-
-{
-}
-
 locator::value::value(const std::string& filename) :
   type_(FILE), filename_(filename),  loc_(), modifications_(),
   center_x_(0), center_y_(0)
@@ -246,13 +223,6 @@ locator::value::value(const std::string& filename) :
 
 locator::value::value(const std::string& filename, const std::string& modifications) :
   type_(SUB_FILE), filename_(filename), loc_(), modifications_(modifications),
-  center_x_(0), center_y_(0)
-
-{
-}
-
-locator::value::value(const std::string& filename, const map_location& loc, const std::string& modifications) :
-  type_(SUB_FILE), filename_(filename), loc_(loc), modifications_(modifications),
   center_x_(0), center_y_(0)
 
 {

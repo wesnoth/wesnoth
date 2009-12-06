@@ -109,10 +109,8 @@ namespace image {
 			value();
 			value(const value &a);
 			value(const char *filename);
-			value(const char *filename, const std::string& modifications);
 			value(const std::string& filename);
 			value(const std::string& filename, const std::string& modifications);
-			value(const std::string& filename, const map_location& loc, const std::string& modifications);
 			value(const std::string& filename, const map_location& loc, int center_x, int center_y, const std::string& modifications);
 
 			bool operator==(const value& a) const;
@@ -145,10 +143,8 @@ namespace image {
 	        locator();
 		locator(const locator &a, const std::string &mods ="");
 		locator(const char *filename);
-		locator(const char *filename, const std::string& modifications);
 		locator(const std::string& filename);
 		locator(const std::string& filename, const std::string& modifications);
-		locator(const std::string& filename, const map_location& loc, const std::string& modifications="");
 		locator(const std::string& filename, const map_location& loc, int center_x, int center_y, const std::string& modifications="");
 
 		locator& operator=(const locator &a);
