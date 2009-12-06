@@ -203,6 +203,28 @@ tpoint get_mouse_position();
  */
 std::string debug_truncate(const std::string& text);
 
+/**
+ * Helper for function wrappers.
+ *
+ * For boost bind the a function sometimes needs to return a value althought
+ * the function called doesn't return one. This wrapper function can return a
+ * fixed result for a certain functor.
+ *
+ * @tparam R                      The return type.
+ * @tparam F                      The type of the functor.
+ *
+ * @param result                  The result value.
+ * @param function                The functor to call.
+ *
+ * @returns                       result.
+ */
+template<class R, class F>
+R function_wrapper(const R result, const F& function)
+{
+	function();
+	return result;
+}
+
 } // namespace gui2
 
 #endif

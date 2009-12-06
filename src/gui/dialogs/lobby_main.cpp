@@ -302,7 +302,9 @@ tlobby_main::tlobby_main(const config& game_config
 	, filter_text_(NULL)
 	, selected_game_id_()
 	, player_list_()
-	, player_list_dirty_(false), disp_(disp)
+	, player_list_dirty_(false)
+	, disp_(disp)
+	, preferences_wrapper_()
 {
 }
 
@@ -375,11 +377,25 @@ twindow* tlobby_main::build_window(CVideo& video)
 	window->register_hotkey(hotkey::HOTKEY_FULLSCREEN
 			, boost::bind(fullscreen, boost::ref(video)));
 
+
 	/** @todo Remove this code once the resizing in twindow is finished. */
 	window->connect_signal<event::SDL_VIDEO_RESIZE>(
 			  boost::bind(&signal_handler_sdl_video_resize
 				  , _2, _3, _4, _5, boost::ref(video))
 			, event::tdispatcher::front_child);
+
+	/*** Local hotkeys. ***/
+	preferences_wrapper_ = boost::bind(
+			  &tlobby_main::show_preferences_button_callback
+			, this
+			, boost::ref(*window));
+
+	window->register_hotkey(
+			  hotkey::HOTKEY_PREFERENCES
+			, boost::bind(function_wrapper<bool, boost::function<void()> >
+				, true
+				, boost::cref(preferences_wrapper_)));
+
 	return window;
 }
 

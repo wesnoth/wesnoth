@@ -359,6 +359,9 @@ private:
 	bool player_list_dirty_;
 
 	display& disp_;
+
+	/** Wrapper for the preferences hotkey. */
+	boost::function<void()> preferences_wrapper_;
 };
 
 } // namespace gui2
