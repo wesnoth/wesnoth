@@ -254,28 +254,6 @@ const std::string holder::get_ai_identifier() const
 }
 
 // =======================================================================
-// AI COMMAND HISTORY ITEM
-// =======================================================================
-
-command_history_item::command_history_item( side_number number, const std::string& command )
-	: number_(number), command_(command)
-{
-
-}
-
-
-int command_history_item::get_number() const
-{
-	return this->number_;
-}
-
-
-const std::string& command_history_item::get_command() const
-{
-	return this->command_;
-}
-
-// =======================================================================
 // LIFECYCLE
 // =======================================================================
 

@@ -94,11 +94,13 @@ private:
 class command_history_item{
 public:
 
-	command_history_item(int number, const std::string& command);
+	command_history_item(int number, const std::string &command)
+		: number_(number), command_(command)
+	{}
 
-	int get_number() const;
+	int get_number() const { return number_; }
 
-	const std::string& get_command() const;
+	const std::string& get_command() const { return command_; }
 
 private:
 	int number_;
