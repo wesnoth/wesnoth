@@ -111,15 +111,11 @@ void suh::set_realname(const std::string& user, const std::string& realname) {
 }
 
 //--
-// set_lastlogin() and set_registrationdate() are not called by the server via set_user_detail()
+// set_lastlogin() is not called by the server via set_user_detail()
 // and thus must not throw user_handler::error
 
 void suh::set_lastlogin(const std::string& user, const time_t& lastlogin) {
 	users_[user].lastlogin = lastlogin;
-}
-
-void suh::set_registrationdate(const std::string& user, const time_t& registrationdate) {
-	users_[user].registrationdate = registrationdate;
 }
 
 //---

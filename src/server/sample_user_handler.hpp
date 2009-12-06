@@ -86,7 +86,6 @@ class suh : public user_handler {
 		void set_realname(const std::string& user, const std::string& realname);
 
 		void set_lastlogin(const std::string& user, const time_t& lastlogin);
-		void set_registrationdate(const std::string& user, const time_t& registrationdate);
 
 		int user_expiration_;
 
