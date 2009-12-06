@@ -229,12 +229,6 @@ public:
 
 
 	/**
-	 * Adds an observer of 'ai_sync_network' event.
-	 */
-	static void add_sync_network_observer( events::observer* event_observer );
-
-
-	/**
 	 * Adds an observer of 'ai_turn_started' event.
 	 */
 	static void add_turn_started_observer( events::observer* event_observer );
@@ -251,12 +245,6 @@ public:
 	 * Deletes an observer of 'ai_recruit_list_changed' event.
 	 */
 	static void remove_recruit_list_changed_observer( events::observer* event_observer );
-
-
-	/**
-	 * Deletes an observer of 'ai_sync_network' event.
-	 */
-	static void delete_sync_network_observer( events::observer* event_observer );
 
 
 	/**

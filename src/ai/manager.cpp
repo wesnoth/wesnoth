@@ -331,12 +331,6 @@ void manager::add_recruit_list_changed_observer( events::observer* event_observe
 }
 
 
-void manager::add_sync_network_observer( events::observer* event_observer )
-{
-	sync_network_.attach_handler(event_observer);
-}
-
-
 void manager::add_turn_started_observer( events::observer* event_observer )
 {
 	turn_started_.attach_handler(event_observer);
@@ -352,12 +346,6 @@ void manager::remove_recruit_list_changed_observer( events::observer* event_obse
 void manager::remove_map_changed_observer( events::observer* event_observer )
 {
 	map_changed_.detach_handler(event_observer);
-}
-
-
-void manager::delete_sync_network_observer( events::observer* event_observer )
-{
-	sync_network_.detach_handler(event_observer);
 }
 
 
