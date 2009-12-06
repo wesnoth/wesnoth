@@ -805,13 +805,6 @@ void ui::set_user_list(const std::vector<std::string>& list, bool silent)
 	user_list_ = list;
 }
 
-std::string ui::get_selected_user_game()
-{
-	const config &u = gamelist_.find_child("user", "name", selected_user_);
-	if (u) return u["game_id"];
-	return std::string();
-}
-
 void ui::append_to_title(const std::string& text) {
 	title_.set_text(title_.get_text() + text);
 }

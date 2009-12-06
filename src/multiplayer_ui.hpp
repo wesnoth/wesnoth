@@ -190,7 +190,6 @@ protected:
 	void append_to_title(const std::string& name);
 	const gui::label& title() const;
 
-	std::string get_selected_user_game();
 	bool selected_user_changed() const { return selected_user_changed_; }
 	void set_selected_user_changed(const bool& changed) { selected_user_changed_ = changed; }
 
