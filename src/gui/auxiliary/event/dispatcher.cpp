@@ -83,6 +83,31 @@ bool tdispatcher::has_event(const tevent event
 }
 
 /**
+ * Helper class to do a runtime test whether an event is in a set.
+ *
+ * The class is supposed to be used in combination with find function. This
+ * function is used in the fire functions to make sure an event is send to the
+ * proper handler. If not there will be a run-time assertion failure. This
+ * makes developing and testing the code easier, a wrong handler terminates
+ * Wesnoth instead of silently not working.
+ */
+class tevent_in_set
+{
+public:
+
+	/**
+	 * If found we get executed to set the result.
+	 *
+	 * Since we need to return true if found we always return true.
+	 */
+	template<class T>
+	bool oper(tevent)
+	{
+		return true;
+	}
+};
+
+/**
  * Helper struct to wrap the functor call.
  *
  * The template function @ref fire_event needs to call a functor with extra
@@ -106,7 +131,7 @@ public:
 
 bool tdispatcher::fire(const tevent event, twidget& target)
 {
-
+	assert(find<tset_event>(event, tevent_in_set()));
 	switch(event) {
 		case LEFT_BUTTON_DOUBLE_CLICK :
 			return fire_event_double_click<
@@ -176,6 +201,7 @@ bool tdispatcher::fire(const tevent event
 		, twidget& target
 		, const tpoint& coordinate)
 {
+	assert(find<tset_event_mouse>(event, tevent_in_set()));
 	return fire_event<tsignal_mouse_function>(event
 			, dynamic_cast<twidget*>(this)
 			, &target
@@ -216,6 +242,7 @@ bool tdispatcher::fire(const tevent event
 		, const SDLMod modifier
 		, const Uint16 unicode)
 {
+	assert(find<tset_event_keyboard>(event, tevent_in_set()));
 	return fire_event<tsignal_keyboard_function>(event
 			, dynamic_cast<twidget*>(this)
 			, &target
@@ -226,7 +253,7 @@ bool tdispatcher::fire(const tevent event
 		, twidget& target
 		, void*)
 {
-
+	assert(find<tset_event_notification>(event, tevent_in_set()));
 	/**
 	 * @todo The firing needs some polishing.
 	 *
