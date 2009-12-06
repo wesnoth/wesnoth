@@ -1150,7 +1150,7 @@ std::string normalize_path(const std::string &p1)
 #endif
 
 	std::vector<std::string> components(1);
-	for (int i = 0, i_end = p2.size(); i <= i_end; ++i)
+	for (int i = 0, i_end = p2.size(); i < i_end; ++i)
 	{
 		std::string &last = components[components.size() - 1];
 		char c = p2[i];
