@@ -49,18 +49,6 @@ std::set<map_location> mouse_action::affected_hexes(
 	return res;
 }
 
-editor_action* mouse_action::click_left(
-		editor_display& /*disp*/, int /*x*/, int /*y*/)
-{
-	return NULL;
-}
-
-editor_action* mouse_action::click_right(
-		editor_display& /*disp*/, int /*x*/, int /*y*/)
-{
-	return NULL;
-}
-
 editor_action* mouse_action::drag_left(editor_display& /*disp*/,
 		int /*x*/, int /*y*/, bool& /*partial*/, editor_action* /*last_undo*/)
 {
