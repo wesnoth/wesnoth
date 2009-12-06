@@ -3132,7 +3132,7 @@ void console_handler::do_lua() {
 	game_events::commit();
 }
 void console_handler::do_custom() {
-	preferences::set("custom_command", get_data());
+	preferences::set_custom_command(get_data());
 }
 void console_handler::do_set_alias() {
 	const std::string data = get_data();

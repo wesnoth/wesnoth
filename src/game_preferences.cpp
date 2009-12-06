@@ -818,7 +818,7 @@ std::string custom_command() {
 }
 
 void set_custom_command(const std::string& command) {
-	return preferences::set("custom_command", command);
+	preferences::set("custom_command", command);
 }
 
 /**
