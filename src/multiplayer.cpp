@@ -29,7 +29,6 @@
 #include "multiplayer_create.hpp"
 #include "multiplayer_error_codes.hpp"
 #include "multiplayer_wait.hpp"
-#include "multiplayer_lobby.hpp"
 #include "playmp_controller.hpp"
 #include "playcampaign.hpp"
 #include "upload_log.hpp"

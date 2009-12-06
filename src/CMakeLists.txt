@@ -314,7 +314,6 @@ set(wesnoth-main_SRC
     multiplayer_wait.cpp
     multiplayer_connect.cpp
     multiplayer_create.cpp
-    multiplayer_lobby.cpp
     network.cpp
     network_worker.cpp
     pathfind.cpp
