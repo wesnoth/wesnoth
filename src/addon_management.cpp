@@ -1039,17 +1039,13 @@ namespace {
 
 				std::string version = c["version"], author = c["author"];
 
-				utils::truncate_as_wstring(title, 20);
-				utils::truncate_as_wstring(version, 12);
-				utils::truncate_as_wstring(author, 16);
-
 				//add negative sizes to reverse the sort order
 				sizes.push_back(-atoi(size.c_str()));
 
 				std::string icon = c["icon"];
 				do_addon_icon_fixups(icon, name);
 
-				const std::string text_columns =
+				std::string text_columns =
 					title + COLUMN_SEPARATOR +
 					version + COLUMN_SEPARATOR +
 					author + COLUMN_SEPARATOR +
@@ -1057,9 +1053,23 @@ namespace {
 					downloads + COLUMN_SEPARATOR +
 					sizef + COLUMN_SEPARATOR;
 
-				options.push_back(IMAGE_PREFIX + icon + COLUMN_SEPARATOR + text_columns);
 				// icon paths shouldn't be filtered!
 				options_to_filter.push_back(text_columns + descriptions.back());
+
+				utils::truncate_as_wstring(title, 20);
+				utils::truncate_as_wstring(version, 12);
+				utils::truncate_as_wstring(author, 16);
+
+				text_columns =
+					IMAGE_PREFIX + icon + COLUMN_SEPARATOR +
+					title + COLUMN_SEPARATOR +
+					version + COLUMN_SEPARATOR +
+					author + COLUMN_SEPARATOR +
+					type_label_str + COLUMN_SEPARATOR +
+					downloads + COLUMN_SEPARATOR +
+					sizef + COLUMN_SEPARATOR;
+
+				options.push_back(text_columns);
 			}
 
 			std::string pub_option_text, del_option_text;
