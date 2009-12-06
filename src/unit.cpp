@@ -2440,6 +2440,8 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 					LOG_UT << "applying image_mod \n";
 				} else if (apply_to == "new_animation") {
 					unit_animation::add_anims(animations_, effect);
+				} else if (apply_to == "ellipse") {
+					cfg_["ellipse"] = effect["ellipse"];
 				}
 			} // end while
 		} else { // for times = per level & level = 0 we still need to rebuild the descriptions
