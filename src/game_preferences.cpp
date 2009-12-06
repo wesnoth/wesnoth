@@ -241,25 +241,26 @@ bool is_campaign_completed(const std::string& campaign_id) {
 	return std::find(completed.begin(), completed.end(), campaign_id) != completed.end();
 }
 
-bool parse_should_show_lobby_join(const std::string& sender, const std::string& message) {
+bool parse_should_show_lobby_join(const std::string &sender, const std::string &message)
+{
 	// If it's actually not a lobby join message return true (show it).
-	if (sender != "server" || message.find("has logged into the lobby") == std::string::npos) return true;
-	if (lobby_joins() == SHOW_NONE) return false;
-	if (lobby_joins() == SHOW_ALL) return true;
-	const std::string::const_iterator i =
-			std::find(message.begin(), message.end(), ' ');
-	const std::string joiner(message.begin(), i);
-	if (lobby_joins() == SHOW_FRIENDS && is_friend(joiner)) return true;
-	return false;
+	if (sender != "server") return true;
+	std::string::size_type pos = message.find(" has logged into the lobby");
+	if (pos == std::string::npos) return true;
+	int lj = lobby_joins();
+	if (lj == SHOW_NONE) return false;
+	if (lj == SHOW_ALL) return true;
+	return is_friend(message.substr(0, pos));
 }
 
 int lobby_joins()
 {
-    if(preferences::get("lobby_joins") == "friends") {
+	std::string pref = preferences::get("lobby_joins");
+	if (pref == "friends") {
 		return SHOW_FRIENDS;
-	} else if(preferences::get("lobby_joins") == "all") {
+	} else if (pref == "all") {
 		return SHOW_ALL;
-	} else if(preferences::get("lobby_joins") == "none") {
+	} else if (pref == "none") {
 		return SHOW_NONE;
 	} else {
 		return SHOW_FRIENDS;

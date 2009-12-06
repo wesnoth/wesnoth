@@ -357,11 +357,12 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	remember_pw_button_.set_check(remember_password());
 	remember_pw_button_.set_help_string(_("Uncheck to delete the saved password (on exit)."));
 
-	show_lobby_joins_button1_.set_check(lobby_joins() == SHOW_NONE);
+	int lj = lobby_joins();
+	show_lobby_joins_button1_.set_check(lj == SHOW_NONE);
 	show_lobby_joins_button1_.set_help_string(_("Do not show messages about players joining the multiplayer lobby"));
-	show_lobby_joins_button2_.set_check(lobby_joins() == SHOW_FRIENDS);
+	show_lobby_joins_button2_.set_check(lj == SHOW_FRIENDS);
 	show_lobby_joins_button2_.set_help_string(_("Show messages about your friends joining the multiplayer lobby"));
-	show_lobby_joins_button3_.set_check(lobby_joins() == SHOW_ALL);
+	show_lobby_joins_button3_.set_check(lj == SHOW_ALL);
 	show_lobby_joins_button3_.set_help_string(_("Show messages about all players joining the multiplayer lobby"));
 
 	mp_server_search_button_.set_help_string(_("Find and set path to MP server to host LAN games."));
