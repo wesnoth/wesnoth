@@ -42,19 +42,6 @@ const std::string& label::get_text() const
 	return text_;
 }
 
-int label::set_size(int size)
-{
-	size_ = size;
-	update_label_size();
-	set_dirty();
-	return size_;
-}
-
-int label::get_size() const
-{
-	return size_;
-}
-
 const SDL_Color& label::set_colour(const SDL_Color& colour)
 {
 	colour_ = colour;

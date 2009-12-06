@@ -29,9 +29,6 @@ public:
 	const std::string& set_text(const std::string& text);
 	const std::string& get_text() const;
 
-	int set_size(int size);
-	int get_size() const;
-
 	const SDL_Color& set_colour(const SDL_Color& colour);
 	const SDL_Color& get_colour() const;
 
