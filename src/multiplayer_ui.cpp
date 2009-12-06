@@ -292,7 +292,6 @@ ui::ui(game_display& disp, const std::string& title, const config& cfg, chat& c,
 	users_menu_(disp.video(), std::vector<std::string>(), false, -1, -1, NULL, &umenu_style),
 
 	user_list_(),
-	selected_game_(""),
 	selected_user_(""),
 	selected_user_changed_(false),
 
@@ -721,9 +720,6 @@ void ui::gamelist_updated(bool silent)
 		u_elem.registered = utils::string_bool(user["registered"]);
 		u_elem.game_id = user["game_id"];
 		u_elem.location = user["location"];
-		if (!u_elem.game_id.empty() && u_elem.game_id == selected_game_) {
-			u_elem.state = SEL_GAME;
-		}
 		if (u_elem.name == preferences::login()) {
 			u_elem.relation = ME;
 		} else if (preferences::is_ignored(u_elem.name)) {
@@ -782,15 +778,6 @@ void ui::gamelist_updated(bool silent)
 
 	set_user_list(user_strings, silent);
 	set_user_menu_items(menu_strings);
-}
-
-void ui::set_selected_game(const std::string& game_id)
-{
-	// reposition the player list to show the players in the selected game
-	if (preferences::sort_list() && (selected_game_ != game_id)) {
-		users_menu_.move_selection(0);
-	}
-	selected_game_ = game_id;
 }
 
 void ui::set_user_menu_items(const std::vector<std::string>& list)
