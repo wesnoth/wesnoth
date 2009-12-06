@@ -229,12 +229,6 @@ public:
 
 
 	/**
-	 * Adds an observer of 'ai_user_interact' event.
-	 */
-	static void add_user_interact_observer( events::observer* event_observer );
-
-
-	/**
 	 * Adds an observer of 'ai_sync_network' event.
 	 */
 	static void add_sync_network_observer( events::observer* event_observer );
@@ -257,12 +251,6 @@ public:
 	 * Deletes an observer of 'ai_recruit_list_changed' event.
 	 */
 	static void remove_recruit_list_changed_observer( events::observer* event_observer );
-
-
-	/**
-	 * Removes an observer of 'ai_user_interact' event.
-	 */
-	static void remove_user_interact_observer( events::observer* event_observer );
 
 
 	/**
