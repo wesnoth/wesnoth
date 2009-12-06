@@ -302,6 +302,7 @@ struct undo_action {
 	undo_action(const unit& u, const map_location& loc,
 		const ACTION_TYPE action_type=NONE) :
 			route(),
+			waypoints(),
 			starting_moves(),
 			original_village_owner(),
 			recall_loc(loc),
