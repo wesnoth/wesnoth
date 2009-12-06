@@ -94,12 +94,6 @@ class map_fragment
 		void shift(const map_location& offset);
 
 		/**
-		 * Return a location at the top left corner of this fragment's
-		 * bounding rectangle
-		 */
-		map_location top_left_boundary() const;
-
-		/**
 		 * Get the center of the map fragment, bounds-wise.
 		 */
 		map_location center_of_bounds() const;
