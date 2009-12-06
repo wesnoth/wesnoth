@@ -525,9 +525,39 @@ bool tdispatcher::execute_hotkey(const hotkey::HOTKEY_COMMAND id)
  * the key up is rather useless. Guess what, the multiplexer already drops that
  * event so we never get it.
  *
- * The keyboard event is send to either the dispatcher that captured the
- * keyboard or the last in the dispatcher queue.
+ * If the keyboard event is a mouse wheel event it's directly send to the
+ * dispachting queue; either the dispatcher that captured the keyboard or the
+ * last dispatcher in the queue.
  *
+ * If the event is a real keyboard action it's first tried as hotkey. In order
+ * to do so the target dispatcher is first determined, either the dispatcher
+ * that captured the keyboard or the last dispatcher in the queue. Then it's
+ * tried whether a hotkey and whether the hotkey can be processed. If the
+ * hotkey isn't processed the keyboard event is send to the dispatcher as
+ * normal keyboard event.
+ *
+ * The hotkey processing will have several queues (to be implemented in 1.9):
+ * - global hotkeys that always work eg toggling fullscreen mode.
+ * - main screen hotkeys, these work when one of the dialogs is shown without
+ *   other dialogs on top of them. These hotkeys are for example
+ *   preferences. The main screens are:
+ *   - title screen
+ *   - game
+ *   - editor
+ *   - mp lobby
+ * - map screen hotkeys, these work when a map is shown eg toggle grid. The
+ *   screens are:
+ *   - game
+ *   - editor
+ * - local hotkeys, these are hotkeys that only work in a specific dialog eg
+ *   recruit unit only works in the game screen.
+ *
+ * The queues are processed in from bottom to top in the list above, this
+ * allows an item to use a hotkey but have another handler function. Eg
+ * preferences in the editor might open another preferences dialog.
+ *
+ * @todo The hotkeys need to be implemented like above in 1.9.   
+ *  
  * @todo This might change in the near future.
  *
  * @subsection tdistributor Event polishing and distribution
