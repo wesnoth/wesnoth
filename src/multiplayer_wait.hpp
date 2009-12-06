@@ -38,9 +38,6 @@ public:
 
 	void start_game();
 
-	// Gets current game snapshot if observer wants to skip the replay
-	game_state& request_snapshot();
-
 protected:
 	virtual void layout_children(const SDL_Rect& rect);
 	virtual void hide_children(bool hide=true);

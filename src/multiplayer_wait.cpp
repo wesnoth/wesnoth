@@ -363,14 +363,6 @@ void wait::start_game()
 	LOG_NW << "starting game\n";
 }
 
-game_state& wait::request_snapshot(){
-	config cfg;
-
-	cfg.add_child("snapshot_request");
-
-	return state_;
-}
-
 void wait::layout_children(const SDL_Rect& rect)
 {
 	ui::layout_children(rect);
