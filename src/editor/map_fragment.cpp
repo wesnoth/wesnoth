@@ -115,11 +115,6 @@ map_location map_fragment::center_of_mass() const
 	return sum;
 }
 
-void map_fragment::normalize()
-{
-	shift(top_left_boundary().vector_negation());
-}
-
 void map_fragment::center_by_bounds()
 {
 	shift(center_of_bounds().vector_negation());

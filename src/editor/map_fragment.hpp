@@ -110,11 +110,6 @@ class map_fragment
 		map_location center_of_mass() const;
 
 		/**
-		 * Shift the map fragment so that all locations have nonnegative coordinates
-		 */
-		void normalize();
-
-		/**
 		 * Shift the map fragment so it is roughly centered around the (0,0) point, bounds-wise.
 		 */
 		void center_by_bounds();
