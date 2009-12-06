@@ -571,11 +571,6 @@ static map_location cfg_to_loc(const vconfig& cfg,int defaultx = 0, int defaulty
 	return map_location(x, y);
 }
 
-static std::vector<map_location> multiple_locs(const vconfig& cfg)
-{
-	return parse_location_range(cfg["x"],cfg["y"]);
-}
-
 namespace {
 
 	std::vector<game_events::event_handler> event_handlers;
@@ -1799,7 +1794,7 @@ WML_HANDLER_FUNCTION(terrain, /*event_info*/, cfg)
 
 	bool replace_if_failed = utils::string_bool(cfg["replace_if_failed"]);
 
-	foreach (const map_location &loc, multiple_locs(cfg)) {
+	foreach (const map_location &loc, parse_location_range(cfg["x"], cfg["y"], true)) {
 		change_terrain(loc, terrain, mode, replace_if_failed);
 	}
 }
@@ -2546,9 +2541,7 @@ WML_HANDLER_FUNCTION(store_locations, /*event_info*/, cfg)
 WML_HANDLER_FUNCTION(capture_village, /*event_info*/, cfg)
 {
 	int side_num = lexical_cast_default<int>(cfg["side"]);
-	std::vector<map_location> locs(multiple_locs(cfg));
-
-	foreach (const map_location &loc, multiple_locs(cfg)) {
+	foreach (const map_location &loc, parse_location_range(cfg["x"], cfg["y"])) {
 		if (resources::game_map->is_village(loc)) {
 			get_village(loc, side_num);
 		}
