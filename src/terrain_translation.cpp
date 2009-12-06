@@ -148,11 +148,7 @@ const t_match ALL_SWAMPS("!,*^V*,*^B*,!,S*"); //excluding swamp villages and bri
 
 /***************************************************************************************/
 
-t_terrain::t_terrain(const std::string& b) :
-	base(string_to_layer_(b)), overlay(NO_LAYER)
-{}
-
-t_terrain::t_terrain(const std::string& b, const t_layer o) :
+t_terrain::t_terrain(const std::string& b, t_layer o) :
 	base(string_to_layer_(b)), overlay(o)
 {}
 

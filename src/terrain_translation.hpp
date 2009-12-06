@@ -42,10 +42,9 @@ namespace t_translation {
 	 * is empty (needed for matching) the layer has the value 0.
 	 */
 	struct t_terrain {
-		t_terrain(const std::string& b);
 		t_terrain(const std::string& b, const std::string& o);
-		t_terrain(const std::string& b, const t_layer o);
-		t_terrain(const t_layer& b, const t_layer& o) : base(b), overlay(o) {};
+		t_terrain(const std::string& b, t_layer o = NO_LAYER);
+		t_terrain(t_layer b, t_layer o) : base(b), overlay(o) {};
 		t_terrain() : base(0), overlay(NO_LAYER) {}
 
 		t_layer base;
