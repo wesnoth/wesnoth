@@ -95,7 +95,6 @@ public:
 			{ return current_player_; }
 
 		const std::string& get_id() const;
-		bool is_owned_by(const std::string& name) const;
 
 		/** Sets the username of this side. */
 		void set_id(const std::string& id);

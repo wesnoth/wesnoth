@@ -376,11 +376,6 @@ void connect::side::add_widgets_to_scrollpane(gui::scrollpane& pane, int pos)
 	pane.add_widget(&label_income_,  475 + slider_gold_.width(), 35 + pos);
 }
 
-bool connect::side::is_owned_by(const std::string& name) const
-{
-	return name == id_;
-}
-
 void connect::side::process_event()
 {
 	int drop_target;
