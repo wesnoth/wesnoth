@@ -42,19 +42,6 @@ namespace ai {
 class ai_context : public virtual default_ai_context {
 public:
 
-
-	/**
-	 * Constructor
-	 */
-	ai_context();
-
-
-	/**
-	 * Destructor
-	 */
-	virtual ~ai_context();
-
-
 	/**
 	 * Unwrap
 	 */

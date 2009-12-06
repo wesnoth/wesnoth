@@ -23,16 +23,6 @@
 // =======================================================================
 namespace ai {
 
-ai_context::ai_context()
-{
-}
-
-
-ai_context::~ai_context()
-{
-}
-
-
 ai_context_proxy::ai_context_proxy()
 	: target_()
 {
