@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2009-11-16 12:24+0100\n"
+"POT-Creation-Date: 2009-12-08 23:37+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,8 +41,8 @@ msgid "Wesnoth logo"
 msgstr ""
 
 # type: Content of: <html><body><div><div><div>
-#: template.html:19 template.html:88 template.html:109 template.html:129
-#: template.html:146
+#: template.html:19 template.html:88 template.html:109 template.html:133
+#: template.html:150
 msgid "</a>"
 msgstr "</a>"
 
@@ -104,7 +104,7 @@ msgid "<a href='#more'>More Info</a>"
 msgstr ""
 
 # type: Content of: <html><body><div><div><div>
-#: template.html:59 template.html:228
+#: template.html:59 template.html:232
 msgid "<br/>"
 msgstr "<br/>"
 
@@ -157,7 +157,7 @@ msgid "<a href='images/start-2-full.jpg'>"
 msgstr "<a href='images/start-2-full.jpg'>"
 
 # type: Attribute 'alt' of: <html><body><div><div><div><div><div><img>
-#: template.html:88 template.html:109 template.html:129 template.html:146
+#: template.html:88 template.html:109 template.html:133 template.html:150
 msgid "Wesnoth Screenshot"
 msgstr ""
 
@@ -215,36 +215,44 @@ msgstr ""
 # type: Content of: <html><body><div><div><div><p>
 #: template.html:117
 msgid ""
-"There is new monster unit: the Water Serpent.  Additionally, the Dwarvish "
+"The right sidebar on the main game display has been tuned for usability. It "
+"now gives more prominance to the selected unit's terrain defence percentage "
+"and time-of-day modifier."
+msgstr ""
+
+# type: Content of: <html><body><div><div><div><p>
+#: template.html:121
+msgid ""
+"There is a new monster unit: the Water Serpent.  Additionally, the Dwarvish "
 "Scout from Under the Burning Suns is now part of normal Dwarvish sides in "
 "campaigns. Several other unit lines - most notably the Drakes &mdash; have "
 "been completely redone with improved art and animations."
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:123
+#: template.html:127
 msgid "Add-on descriptions are now visible on the download server."
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:125
+#: template.html:129
 msgid ""
 "Most translations have been updated.  New translations include English in "
 "the Shavian alphabet and Vietnamese."
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><div><div><a>
-#: template.html:129
+#: template.html:133
 msgid "<a href='images/start-4-full.jpg'>"
 msgstr "<a href='images/start-4-full.jpg'>"
 
 # type: Content of: <html><body><div><div><div><h3>
-#: template.html:132
+#: template.html:136
 msgid "For Content Developers"
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:134
+#: template.html:138
 msgid ""
 "This year Wesnoth was once again a Google \"Summer of Code\" program; one of "
 "its major results was a complete rework of the Wesnoth map editor and its "
@@ -252,7 +260,7 @@ msgid ""
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:139
+#: template.html:143
 msgid ""
 "Our \"Summer of Art\" program, working in concert with Google's \"Summer of "
 "Code\", produced big results.  There are hundreds of new and reworked unit "
@@ -261,12 +269,12 @@ msgid ""
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><div><div><a>
-#: template.html:146
+#: template.html:150
 msgid "<a href='images/start-3-full.jpg'>"
 msgstr "<a href='images/start-3-full.jpg'>"
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:149
+#: template.html:153
 msgid ""
 "We paid a lot of attention to world continuity, from small details like "
 "replacing earth-human names for characters up through larger ones like "
@@ -275,7 +283,7 @@ msgid ""
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:155
+#: template.html:159
 msgid ""
 "More of the AI's control parameters can now be modified from with WML, "
 "enabling campaign designers to give enemy sides more distinct tactical "
@@ -283,14 +291,14 @@ msgid ""
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:159
+#: template.html:163
 msgid ""
 "We kept the promise we made in 1.6 when we had to remove Python for "
 "technical reasons; WML events can now be written in lua."
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:162
+#: template.html:166
 msgid ""
 "It is now possible for translators to localize images in Wesnoth. For more "
 "information and tutorials, look at the wiki article on <a href=\"http://wiki."
@@ -298,12 +306,12 @@ msgid ""
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><h2>
-#: template.html:169
+#: template.html:173
 msgid "Download"
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:171
+#: template.html:175
 msgid ""
 "Battle for Wesnoth is made available under the <a href='http://www.gnu.org/"
 "licenses/gpl-2.0.html'>GNU General Public License</a> (GPL). Source code is "
@@ -315,35 +323,35 @@ msgid ""
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:185
+#: template.html:189
 msgid ""
 "<strong> <a href='http://downloads.sourceforge.net/wesnoth/wesnoth-1.8.tar."
 "bz2?download'>Source code</a> </strong>"
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:190
+#: template.html:194
 msgid ""
 "<strong> <a href='http://downloads.sourceforge.net/wesnoth/wesnoth-1.8-win32."
 "exe?download'>Wesnoth for MS Windows</a> </strong>"
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:195
+#: template.html:199
 msgid ""
 "<strong> <a href='http://downloads.sourceforge.net/wesnoth/Wesnoth_1.8.dmg?"
 "download'>Wesnoth for Mac OS X</a> </strong>"
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:201
+#: template.html:205
 msgid ""
 "You can get up to date information about downloads at the <a href='http://"
 "wiki.wesnoth.org/Download'>downloads page</a>."
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:204
+#: template.html:208
 msgid ""
 "If you downloaded previous versions of the game, you might be interested in "
 "downloading the <a href='http://wiki.wesnoth.org/Download_Xdeltas'>xdelta</"
@@ -351,43 +359,43 @@ msgid ""
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><h2>
-#: template.html:209
+#: template.html:213
 msgid "More Info"
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:213
+#: template.html:217
 msgid ""
 "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.8/"
 "changelog'>Full Changelog</a> (English, very long)"
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:216
+#: template.html:220
 msgid ""
 "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.8/doc/manual/"
 "manual.en.html'>User's Manual</a>"
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:217
+#: template.html:221
 msgid "<a href='http://www.wesnoth.org'>Wesnoth Official Website</a> (English)"
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:224
+#: template.html:228
 msgid ""
 "<a href='http://www.wesnoth.org/start/1.4'>Wesnoth 1.4 Release Notes</a>"
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><a>
-#: template.html:225
+#: template.html:229
 #, fuzzy
 msgid ""
 "<a href='http://www.wesnoth.org/start/1.6'>Wesnoth 1.6 Release Notes</a>"
 msgstr "<a href='http://www.wesnoth.org'>"
 
 # type: Content of: <html><body><div><div><div><div><p>
-#: template.html:232
+#: template.html:236
 msgid "This page is also available in the following languages:"
 msgstr ""
