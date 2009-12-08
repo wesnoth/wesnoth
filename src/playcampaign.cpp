@@ -263,6 +263,16 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		if (!gamestate.snapshot["label"].empty()){
 			gamestate.classification().label = gamestate.snapshot["label"];
 		}
+		// Helper for transitioning middle-of-scenario savefiles from 1.6 to 1.8.
+		// To be removed for 1.10.
+		if (!scenario->find_child("event", "name", "preload")) {
+			LOG_NG << "Adding dummy preload event.\n";
+			config &ev = gamestate.snapshot.add_child("event");
+			ev["name"] = "preload";
+			ev["first_time_only"] = "no";
+			config &lua = ev.add_child("lua");
+			lua["code"] = "wesnoth.dofile 'lua/wml-tags.lua'";
+		}
 	}
 
 	controller_map controllers;
