@@ -224,6 +224,7 @@ set(wesnoth-main_SRC
     gui/auxiliary/event/distributor.cpp
     gui/auxiliary/event/handler.cpp
     gui/auxiliary/log.cpp
+    gui/auxiliary/timer.cpp
     gui/auxiliary/widget_definition.cpp
     gui/auxiliary/window_builder/button.cpp
     gui/auxiliary/window_builder/control.cpp

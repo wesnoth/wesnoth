@@ -19,6 +19,7 @@
 #include "clipboard.hpp"
 #include "foreach.hpp"
 #include "gui/auxiliary/event/dispatcher.hpp"
+#include "gui/auxiliary/timer.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/widgets/helper.hpp"
 #include "gui/widgets/widget.hpp"
@@ -304,6 +305,10 @@ void thandler::handle_event(const SDL_Event& event)
 
 		case DRAW_EVENT:
 			draw();
+			break;
+
+		case TIMER_EVENT:
+			execute_timer(reinterpret_cast<unsigned long>(event.user.data1));
 			break;
 
 		case CLOSE_WINDOW_EVENT:
