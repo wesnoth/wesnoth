@@ -27,6 +27,8 @@
 #include "formula_string_utils.hpp"
 #include "play_controller.hpp"
 
+#include <ctime>
+
 static lg::log_domain log_network("network");
 #define ERR_NW LOG_STREAM(err, log_network)
 
