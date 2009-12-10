@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-12-03 17:46+0100\n"
-"PO-Revision-Date: 2009-10-12 20:35+0100\n"
-"Last-Translator: Crommy\n"
+"PO-Revision-Date: 2009-12-10 16:55+0100\n"
+"Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -153,9 +153,8 @@ msgstr ""
 
 #. [unit_type]: id=Drake Arbiter, race=drake
 #: data/core/units/drakes/Arbiter.cfg:4
-#, fuzzy
 msgid "Drake Arbiter"
-msgstr "Drakenkämpfer"
+msgstr "Drakenschlichter"
 
 #. [unit_type]: id=Drake Arbiter, race=drake
 #: data/core/units/drakes/Arbiter.cfg:19
@@ -167,6 +166,15 @@ msgid ""
 "raw heft the massive metal head provides. The thick plate these drakes wear "
 "protects them well against weapons that could slip between their scales."
 msgstr ""
+"Die Aufgabe der Schlichter ist es ihnen erteilte Anweisungen bedingungslos "
+"auszuführen, wenn nötig auch mit Waffengewalt. Um dem Nachdruck zu verleihen "
+"führen sie, anstelle der traditionellen Klauenwaffen oder Speere, mächtige "
+"Hellebarden. Zwar schränken sie diese großen und unhandlichen Waffen in "
+"ihrer Beweglichkeit ein, doch spielt dies keine Rolle, wenn dem Gegner, "
+"getroffen von der schweren Waffe, keine Möglichkeit der Gegenwehr mehr "
+"verbleibt. Nur für den Fall, dass ihr Gegenüber doch in der Lage ist einen "
+"Treffer zu platzieren, tragen sie eine schwere Plattenrüstung, die sie vor "
+"dem Schlimmsten schützt."
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
@@ -184,30 +192,23 @@ msgstr "Armageddondrake"
 
 #. [unit_type]: id=Armageddon Drake, race=drake
 #: data/core/units/drakes/Armageddon.cfg:27
-#, fuzzy
 msgid ""
 "Were it not for the armor they wear, certain drakes might be "
 "indistinguishable from true dragons, at least to the lesser races for whom "
 "dragons are but legend. The creatures known as 'Armageddon Drakes' are "
 "towering things, both immune to and possessed of a tremendous fire."
 msgstr ""
-"Der Armageddondrake stellen die wohl mächtigsten Draken dar, die man sich "
-"nur vorstellen kann. Sie sind es gewohnt, inmitten eines Vulkans zu leben, "
-"so dass ihnen Feuer und größte Hitze kaum etwas anhaben kann. Es gibt "
-"Berichte, in denen gesagt wird, dass sich ein Armageddondrake bei einem "
-"Magier dafür bedankt hat, mit einem Feuerball angegriffen zu werden, da ihm "
-"doch ein wenig kalt wurde. Nicht dass es dem Magier auch nur im geringsten "
-"geholfen hätte...\n"
-"Seine mächtige Rüstung dient mehr als Statussymbol, denn als Schutz. Sie ist "
-"noch prächtiger verziert als beim Infernodraken. Hergestellt aus Mineralien, "
-"die man nur in den tiefsten Tiefen der Magamaflüsse in der Heimat der Draken "
-"findet, unterstreicht sie seine ehrfurchtgebietende Erscheinung."
+"Würden sie sich nicht in eine Rüstung kleiden könnte man diese Draken sicher "
+"kaum von echten Drachen unterscheiden. Diese riesigen Kreaturen, unter ihren "
+"Artgenossen bekannt als Armageddondrake, sind gegen Feuer immun. Doch dies "
+"ist nicht alles, in ihnen brennt ein gleißendes Feuer, welches sie ihren "
+"Widersachern entgegenschleudern, um sie so vom Angesicht der Erde zu brennen."
 
 #. [attack]: type=blade
 #: data/core/units/drakes/Armageddon.cfg:85 data/core/units/drakes/Fire.cfg:42
 #: data/core/units/drakes/Inferno.cfg:44
 msgid "battle claws"
-msgstr "Kriegsklauen"
+msgstr "Kampfeskralle"
 
 #. [attack]: type=fire
 #: data/core/units/drakes/Armageddon.cfg:94
@@ -237,6 +238,13 @@ msgid ""
 "around; Blademasters fiercely protect their fellows' honor, and no-one would "
 "dispute their right to do so."
 msgstr ""
+"Schwarze Rüstungen sind das Erkennungszeichen der Elite der Kaste der "
+"Kämpfer: die Klingenmeister. Nur wenigen ist es gelungen sich die nötige "
+"Erfahrung und das Können anzueignen, welches von Nöten ist, diesen Rang zu "
+"erreichen. Die meisten fallen vor Erreichen dieser hohen Auszeichnung in der "
+"Schlacht. Zwar neigen einige andere Draken dazu diese Kaste zu verspotten, "
+"doch achten sie immer da drauf, das kein Klingenmeister nahe ist, der es "
+"hören könnte, denn sie verteidigen die Ehre ihrer Kaste aufs Schärfste."
 
 #. [attack]: type=blade
 #: data/core/units/drakes/Blademaster.cfg:41
@@ -299,6 +307,17 @@ msgid ""
 "particularly good at \"resolving\" territorial disputes with other drakes "
 "and enforcing the laws of their tribe."
 msgstr ""
+"Schmetterer gehören zu einer einzigartigen Kaste der Draken. Durch ihre "
+"schwere Rüstung teilen sie nicht die natürlichen Anfälligkeiten ihrer "
+"Artgenossen gegen Speere und Pfeile. Doch ist sie so schwer und "
+"einschränkend, dass sie weder in der Lage sind zu fliegen, noch dass sie es "
+"schaffen genug Luft zu sammeln um Feuer zu speihen. Sich dem Nachteil "
+"bewusst schließen sie sogar ihre Flügel in die Rüstung ein, um zu zeigen, "
+"das sie dieser nicht bedürfen um aus der Schlacht siegreich hervorzugehen.\n"
+"\n"
+"Sie sind die einzige Kaste, der es gestattet ist neben den klassischen "
+"Klauenwaffen noch andere Waffen, wie Speere, zu nutzen. Diese versetzen sie "
+"in die Position in Konflikten unter Draken Recht und Gesetz durchzusetzen."
 
 #. [attack]: type=pierce
 #: data/core/units/drakes/Clasher.cfg:47
@@ -345,12 +364,20 @@ msgid ""
 "careful not to besmirch the honor of the Enforcers, and generally call upon "
 "them to combat only the most pernicious of enemies."
 msgstr ""
+"Vollstrecker kennen nur eine Strategie: die Stärksten werden zuerst "
+"bezwungen! So stürzen sie sich in der Schlacht mit Vorliebe auf die Anführer "
+"und Helden der Feinde um so schrecken unter den gegnerischen Truppen zu "
+"verbreiten, wenn ihre Anführer in kürzester Zeit fallen. Dabei spielt es "
+"keine Rolle, das sie weder in die Schlacht fliegen können, noch dass sie "
+"unter den Feinden kein Feuer spucken, denn wer kann solch riesigem Ungeheuer "
+"schon widerstehen?"
 
+# ist eigentlich ein angriff mit dem kopf/helm des draken, klassisches rammen, "Rammen" klingt aber doof als angriffsname, da passt "Mauerbrecher" besser, erklärung dazu siehe beschreibung vom Thrasher/Drescher
 #. [attack]: type=impact
 #: data/core/units/drakes/Enforcer.cfg:45
 #: data/core/units/drakes/Thrasher.cfg:41
 msgid "ram"
-msgstr ""
+msgstr "Mauerbrecher"
 
 #. [attack]: type=pierce
 #. [attack]: type=blade
@@ -368,7 +395,6 @@ msgstr "Drakenkämpfer"
 
 #. [unit_type]: id=Drake Fighter, race=drake
 #: data/core/units/drakes/Fighter.cfg:20
-#, fuzzy
 msgid ""
 "Drake Fighters wield curved war blades, and possess the fire-breathing "
 "skills of their ancestors. They can also fly, which is troubling to any foe. "
@@ -376,9 +402,10 @@ msgid ""
 "frightening to swordsman of any other race."
 msgstr ""
 "Drake Kämpfer meistern ihren Krummsäbel mit ebenso tödlicher Präzision wie "
-"die Fähigkeit Feuer zu speien, die sie von ihren Urahnen erbten. Die besten "
-"unter ihnen werden dazu berufen, sich der Elite der Draken Kämpfer "
-"anzuschließen."
+"die Fähigkeit Feuer zu speien, die sie von ihren Urahnen erbten. Ihre Flügel "
+"dienen zu mehr als nur der Zierde. Wie aus dem nichts stürzen sie sich aus "
+"dem Himmel in die Mitte ihrer Feinde, wo sie selbst den besten gegnerischen "
+"Schwertkämpfern ihre Grenzen aufzeigen."
 
 #. [attack]: type=blade
 #: data/core/units/drakes/Fighter.cfg:39 data/core/units/drakes/Warrior.cfg:39
@@ -399,6 +426,12 @@ msgid ""
 "vitality emanates through their skin, scorching their scales to a reddish-"
 "gray."
 msgstr ""
+"Feuerdraken ist es noch nicht gestattet die rot-goldene Rüstung, Zeichen des "
+"höchsten Ranges der Kaste der Flammen, zu tragen. Stattdessen wird die "
+"Rüstung mit silbernen Verzierungen geschmückt. Auch wenn sie noch lange "
+"nicht am Ende ihres Weges in der Kaste stehen, so brennt ihr inneres Feuer "
+"doch sehr heiß. Heiß genug um ihren Schuppen einen Farbton zu verleihen, der "
+"in ein rötliches grau übergeht."
 
 #. [unit_type]: id=Drake Flameheart, race=drake
 #: data/core/units/drakes/Flameheart.cfg:4
@@ -416,6 +449,14 @@ msgid ""
 "leader for supremacy, and only if he is sure of the support of his fellow "
 "drakes."
 msgstr ""
+"Entflammende Draken sind nicht die stärksten Draken und den meisten ihrer "
+"hochrangigen Artgenossen im direkten Zweikampf unterlegen. Doch "
+"normalerweise versuchen sie es eher einer direkten Konfrontation aus dem Weg "
+"zu gehen und stattdessen mithilfe ihrer Autorität andere in den Kampf zu "
+"führen. Sie sind es, die Pläne und Strategien entwerfen, wie man feindlichen "
+"Armeen am besten begegnet und sie in den Staub wirft. Das eigene "
+"Stammesoberhaupt fordern entflammende Draken allerdings nur heraus, wenn sie "
+"sich der Unterstützung vieler Artgenossen gewiss sind."
 
 #. [attack]: type=blade
 #. [attack]: type=arcane
@@ -459,6 +500,11 @@ msgid ""
 "they are more often seen leading small war parties or mediating disputes "
 "with a subtle hand."
 msgstr ""
+"Aufgrund ihrer charismatischen Ausstrahlung sowie der in ihnen lodernden "
+"Flamme ist es ihr Ziel zum Anführer ihres Stammes sowohl zu Friedens-, als "
+"auch zu Kriegszeiten, zu werden. Nur kleine Stämme akzeptieren einen "
+"lodernden Draken als Oberhaupt des Stammes. Allerdings werden sie oft "
+"gewählt um kleinere Kampftruppen anzuführen oder auch Dispute zu schlichten."
 
 #. [unit_type]: id=Drake Glider, race=drake
 #: data/core/units/drakes/Glider.cfg:4
@@ -481,6 +527,19 @@ msgid ""
 "distance – and if all else fails, he will fight with his feet, keeping his "
 "precious wings as far from the enemy as possible."
 msgstr ""
+"Viele Draken lieben das Rauschen des Windes über ihre Schuppen. Dies bringt "
+"sie dazu sich der Kaste der Gleiter anzuschließen. Sie lieben es lange "
+"Streifzüge über das Geländer des Stammes zu unternehmen. Andere Draken "
+"wundern sich allerdings oftmals, was sie dazu bringt die Strapazen der Jagd "
+"der auf dem Schlachtfeld erworbenen Ehre vorzuziehen.\n"
+"\n"
+"Meist jagen Gleiter großes Wild, egal ob Hirsche, Wildschweine oder "
+"Delphine. Dabei hilft ihnen ihre Fähigkeit Feuerstöße genauestens platziert "
+"zu nutzen, um ihre Beute vor sich her zu treiben. Sollte ein Gleiter dazu "
+"gezwungen sein in die Schlacht zu ziehen bevorzugt er es den Gegner aus der "
+"Entfernung auszuspähen. Sollte eine direkte Konfrontation unvermeidlich "
+"sein, so wird mit den Klauen an den Füßen gekämpft, um sicher zu stellen, "
+"dass die Flügel keinen Schaden davontragen."
 
 #. [attack]: type=impact
 #: data/core/units/drakes/Glider.cfg:44
@@ -504,6 +563,13 @@ msgid ""
 "other castes has increased their skill in combat, but their greatest "
 "strength still lies in their speed and flight."
 msgstr ""
+"Sturmdrachen haben sich einen Rang erarbeitet, der sich nicht länger dazu "
+"verpflichten der Jagd nachzugehen. Stattdessen sind sie unverzichtbarer "
+"Bestandteil der Armeen. Mit ihrer unglaublichen Schnelligkeit und Wendigkeit "
+"sind sie die besten Kundschafter der Draken. Sie überbringen wichtige "
+"Nachrichten zwischen den einzelnen Teilen der Armeen und umrunden feindliche "
+"Truppen um ihnen Blitzschnell in den Rücken zu fallen und wieder zu "
+"verschwinden bevor sich die Konfusion in den Reihen der Gegner gelichtet hat."
 
 #. [unit_type]: id=Inferno Drake, race=drake
 #: data/core/units/drakes/Inferno.cfg:4
@@ -519,6 +585,13 @@ msgid ""
 "from extensive use of their inner flame, their sculpted red-gold armor "
 "enhancing the illusion that they are, in fact, dragons."
 msgstr ""
+"Infernodraken haben ihr inneres Feuer wahrlich gemeistert. Sie werden von "
+"ihren Artgenossen beinahe so sehr geehrt und gefürchtet, wie ihre "
+"drachischen Urahnen. Unbeschadet wandern sie durch von ihnen selbst erzeugte "
+"Flammenmeere. Durch den exzessiven Gebrauch des Feuers leuchten ihre "
+"Schuppen in gleißendem rot. Ihre rot-goldene Rüstung verstärkt die Illusion "
+"noch weiter, das es sich hier nicht um Infernodraken, sondern um echte "
+"Drachen handelt."
 
 #. [unit_type]: id=Sky Drake, race=drake
 #: data/core/units/drakes/Sky.cfg:4
@@ -535,12 +608,19 @@ msgid ""
 "of their tribe and, just possibly, time with one of the closely-guarded "
 "drake females."
 msgstr ""
+"Die leichten, silbrig glänzende Keramikrüstungn, die Himmersdraken tragen, "
+"sind sowohl Zeichen ihres Ranges, als auch eine Bekundung ihrer "
+"Wertschätzung der Luft. Als Führer von Jagdtruppen sind sie oft längere Zeit "
+"von ihrer Heimat entfernt. Ziel eines jeden ist es möglichst viel Beute zu "
+"machen um so im Ansehen zu steigen und sich möglicherweise ein Anrecht auf "
+"Paarung mit den wenigen weiblichen Draken zu erstreiten."
 
+# bin ich nicht glücklich mit, aber es passt:
+# schmetterer -> drescher -> vollstrecker
 #. [unit_type]: id=Drake Thrasher, race=drake
 #: data/core/units/drakes/Thrasher.cfg:4
-#, fuzzy
 msgid "Drake Thrasher"
-msgstr "Drakenschmetterer"
+msgstr "Drakendrescher"
 
 #. [unit_type]: id=Drake Thrasher, race=drake
 #: data/core/units/drakes/Thrasher.cfg:19
@@ -552,6 +632,14 @@ msgid ""
 "are weapons. A Thrasher will gladly fulfill his caste duties, as long as it "
 "can be done on the battlefield."
 msgstr ""
+"Den Dreschern gereicht die schwere Rüstung nicht mehr als Hindernis sondern "
+"als Waffe. Ihre Angriffe erfolgen mit ganzem Körpereinsatz, so dass sie, "
+"getrieben vom hohen Gewicht, gegnerische Rüstungen ohne sonderliche Mühe zu "
+"durchdringen in der Lage sind. Auch der Körper selbst wird als Waffe "
+"genutzt. So gibt es Berichte das sie mit ihren schweren Helmen ganze Mauern "
+"eingerissen und Gegner unter diesen begraben haben. Für einen Drescher ist "
+"es eine Ehre den durch die Kaste auferlegten Verpflichtungen nachzukommen, "
+"solange dabei eine Herausforderung auf dem Schlachtfeld auf ihn wartet."
 
 #. [unit_type]: id=Drake Warden, race=drake
 #: data/core/units/drakes/Warden.cfg:4
@@ -569,6 +657,15 @@ msgid ""
 "bronze plate is the strongest work from the Drake forges, and their halberds "
 "can cleave a human in half."
 msgstr ""
+"Schlächter unterscheiden sich von den anderen Draken ihrer Kaste in zwei "
+"Dingen: Zum einen in ihren kunstvollen Helmen, die an ihre Urahnen, die "
+"Drachen, erinnern sollen, zum anderen darin, wie sie ihre gepanzerten Flügel "
+"mit bunten Stoffen verzieren, bevor sie den Dienst antreten. Diese Mode "
+"dient dazu ihrem Stolz über ihre Position in der Gesellschaft der Draken "
+"ausdruck zu verleihen. Doch ist die Rüstung weit mehr als schmucke Zierde. "
+"Geschmiedet mit den besten Bronzeplatten aus den Schmieden der Draken stellt "
+"sie einen nahezu perfekten Schutz vor Angriffen dar und mit ihrer Hellebarde "
+"können sie Menschen mit nur einem Schlag spalten."
 
 #. [unit_type]: id=Drake Warrior, race=drake
 #: data/core/units/drakes/Warrior.cfg:4
@@ -585,6 +682,13 @@ msgid ""
 "plated leather with the traditional war blade mounted on the back of each "
 "hand."
 msgstr ""
+"Draken aus der Kaste der Kämpfer sind die Grundlage für jede Stammesarmee. "
+"Es gibt keine besondere Vor- oder Nachteile, die diese hervorheben. Sie "
+"können nichts als ihre angeborene Brutalität sowie ihre militärische "
+"Ausbildung in die Schlacht führen, doch reichen diese meist vollkommen um "
+"sich freie Bahn zu schaffen. Sie kämpfen, wie es schon seit Jahrhunderten "
+"Tradition ist, in einer verstärkten Lederrüstung und mit ihrer Kriegsklinge, "
+"welche an ihren beiden Handrücken befestigt sind."
 
 #. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #: data/core/units/dwarves/Berserker.cfg:4
