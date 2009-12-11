@@ -13,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-12-03 17:46+0100\n"
-"PO-Revision-Date: 2009-11-08 09:58+0100\n"
-"Last-Translator: Guillaume Melquiond <guillaume.melquiond@gmail.com>\n"
+"POT-Creation-Date: 2009-12-03 17:48+0100\n"
+"PO-Revision-Date: 2009-12-09 23:26+0100\n"
+"Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,7 +30,7 @@ msgstr "Sauvegardes compressées"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:12
 msgid "Confirm deleting saves"
-msgstr ""
+msgstr "Confirmer la suppression des sauvegardes"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:19
@@ -70,14 +70,17 @@ msgstr "Montrer les combats"
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:68
 msgid "Ping Timeout"
-msgstr ""
+msgstr "Temps de réponse expiré"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:69
+#, fuzzy
 msgid ""
 "Number of seconds to wait for a ping reply before we time out. Disable with "
 "0."
 msgstr ""
+"Nombre de secondes restantes pour une réponse avant l'expiration du temps de "
+"réponse. Désactiver avec 0"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:79
@@ -97,7 +100,7 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:100
 msgid "Lobby sounds"
-msgstr ""
+msgstr "Sons du vestibule"
 
 #. [time]: id=underground
 #. [illuminated_time]: id=underground_illum
@@ -2880,7 +2883,6 @@ msgstr "Commandes multijoueurs"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:810
-#, fuzzy
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -2890,12 +2892,13 @@ msgid ""
 msgstr ""
 "\n"
 "Éjecte et bannit un utilisateur en mode multijoueur, ainsi que l'IP utilisée "
-"par cet utilisateur.\n"
+"par cet utilisateur. Peut être utilisée sur les utilisateurs ne jouant pas "
+"mais connectés sur le serveur. (Il ne seront alors évidemment pas éjectés du "
+"jeu)\n"
 "\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:813
-#, fuzzy
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -2907,15 +2910,15 @@ msgid ""
 msgstr ""
 "\n"
 "Donne le contrôle d'un camp (écrire ici le numéro de camp) à un joueur "
-"(écrire ici son surnom d'utilisateur ou d'observateur). Vous pouvez regarder "
-"à qui appartient un camp dans la fenêtre « Paramètres du Scénario » (appuyez "
-"sur le bouton « Suite » de la fenêtre d'état pour y accéder (alt+s par "
-"défaut)).\n"
+"(écrire ici le pseudonyme de l'utilisateur ou de l'observateur). Vous pouvez "
+"regarder à qui appartient un camp dans la fenêtre « Paramètres du "
+"Scénario » (appuyez sur le bouton « Suite » de la fenêtre d'état pour y "
+"accéder (alt+s par défaut)). L'hébergeur peut changer le controle de "
+"n'importe quel camp.\n"
 "\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:816
-#, fuzzy
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. If you "
@@ -2924,9 +2927,9 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Éjecte un utilisateur en mode multijoueur. Il pourra rejoindre la partie. "
-"C'est en général un moyen amical d'enlever quelqu'un qui a des problèmes de "
-"connexion ou autre.\n"
+"Éjecte un utilisateur en mode multijoueur. Il pourra rejoindre la partie. Si "
+"vous voulez seulement changer le contrôle de son camp, utilisez plutôt la "
+"commande « :control ».\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -2955,7 +2958,6 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:825
-#, fuzzy
 msgid ""
 "\n"
 "Unban a user in a multiplayer game by the IP address used by that username. "
@@ -2963,22 +2965,21 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Éjecte et bannit un utilisateur en mode multijoueur, ainsi que l'IP utilisée "
-"par cet utilisateur.\n"
+"Dé-bannit un utilisateur en mode multijoueur, en spécifiant l'IP utilisée "
+"par cet utilisateur. Peut être utilisé sur un utilisateur n'étant pas en jeu "
+"mais sur le serveur.\n"
 "\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:826
-#, fuzzy
 msgid ""
 "\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
 "observers is cleared."
 msgstr ""
 "\n"
-"Ignore l'observateur spécifié. Si aucun nom n'est fourni, affiche la liste "
-"des utilisateurs ignorés.\n"
-"\n"
+"Dé-ignore l'observateur spécifié. Si aucun nom n'est fourni, affiche la "
+"liste des utilisateurs ignorés."
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:833
@@ -3576,6 +3577,7 @@ msgstr ""
 #: data/core/macros/ai.cfg:449
 msgid "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
 msgstr ""
+"Demander à $ally_leader.name (chef du camp $ally_leader.side) d'aller ici"
 
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:144
@@ -3765,24 +3767,24 @@ msgstr "Sortir"
 #: data/core/macros/ai_controller.cfg:1047
 #, fuzzy
 msgid "Set special orders..."
-msgstr "Définir le comportement…"
+msgstr "Définir le comportement..."
 
 #: data/core/macros/ai_controller.cfg:1048
 msgid "Move leader to..."
-msgstr ""
+msgstr "Déplacer le chef vers..."
 
 #: data/core/macros/ai_controller.cfg:1049
-#, fuzzy
 msgid "Right-click to select a location to move leader to"
-msgstr "Faites un clic-droit pour sélectionner une zone à défendre"
+msgstr ""
+"Faites un clic-droit pour sélectionner une zone où déplacer le chef de camp"
 
 #: data/core/macros/ai_controller.cfg:1050
 msgid "Move leader here"
-msgstr ""
+msgstr "Déplacer le chef ici"
 
 #: data/core/macros/ai_controller.cfg:1051
 msgid "moving leader to $x1|,$y1|."
-msgstr ""
+msgstr "déplacer le chef en $x1|,$y1|."
 
 #: data/core/macros/ai_controller.cfg:1052
 #, fuzzy
@@ -3860,7 +3862,7 @@ msgstr ""
 #: data/core/macros/carryover-utils.cfg:42
 #, fuzzy
 msgid "Alternative objective:"
-msgstr "Définir l'objectif…"
+msgstr "Objectif alternatif :"
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:39
@@ -4049,7 +4051,6 @@ msgid "storm trident"
 msgstr "trident des tempêtes"
 
 #: data/core/macros/names.cfg:18
-#, fuzzy
 msgid ""
 "Egar,Elch,Ga'ash,Gadé Ihn,Gakré Ohm,Galeck,Galsh,Garadin,Garchin,Gark,Garlan,"
 "Garlin Ohn,Garrutin,Gart'lo,Garushi,Gashinar,Gashol,Gaushii,Gaustun,Gegchi,"
@@ -4062,25 +4063,24 @@ msgid ""
 "Verath,Verditt,Verkon,Verlinn,Vermad,Vertick,Vladnir"
 msgstr ""
 "Egar,Elch,Ga'ash,Gadé Ihn,Gakré Ohm,Galeck,Galsh,Garadin,Garchin,Gark,Garlan,"
-"Garlin ohn,Garrutin,Gart'lo,Garushi,Gashinar,Gashöl,Gaushii,Gaustun,Gegchi,"
-"Gelka Kon,Gelknick,Gillan,Gisharri,Goyst,Grada,Græt Ihn,Grashen,Gravlan,Gray,"
-"Grelnit,Grenn ohn,Gretz,Gribbel,Gridda,Grish,Gron ih,Ka,Kahn Ih,Karigan,"
-"Karri Kon,Karron,Kasp,Kegrid,Kerath Ihn,Kerath Kor,Klash,Kon Garashé,Kraag,"
-"Krall Ohn,Kran Kor,Krash,Kraslar,Krenli,Kruggen,Kun,Mah Toa,Mal,Margian,"
-"Marhildian,Markan,Markinos,Mar Ohn,Marra Di'lek,Marrito,Marritos,Merkush,"
+"Garlin Ohn,Garrutin,Gart'lo,Garushi,Gashinar,Gashol,Gaushii,Gaustun,Gegchi,"
+"Gelka Kon,Gelknick,Gillan,Gisharri,Gost,Grada,Græt Ihn,Grashen,Gravlan,Grag,"
+"Grelnit,Grenn Ohn,Greth,Gribbel,Gridda,Grish,Gron Ihn,Ka,Kahn Ih,Karigan,"
+"Karri Kon,Karron,Kask,Kegrid,Kerath Ihn,Kerath Kor,Klash,Kon Garashé,Kraag,"
+"Krall Ohn,Kran Kor,Krash,Kraslar,Krenli,Kruggen,Kun,Mah Toa,Margian,"
+"Mar'Ildian,Markan,Markinos,Mar Ohn,Marra Di'lek,Marrito,Marritos,Merkush,"
 "Merritos Gark,Morusté,Murr,Omataké,Reshan,Vashitt,Velnick,Veralon,Veramo,"
-"Verath,Verditt,Verkon,Verlinn,Vermay,Vertick,Vladnir"
+"Verath,Verditt,Verkon,Verlinn,Vermad,Vertick,Vladnir"
 
 #: data/core/macros/names.cfg:19
-#, fuzzy
 msgid ""
 "Alen Ka,Alinash Mal,Ashirt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
 "Eshi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orrida,Oshibi,Vallin,Valnirra,"
 "Valnitt,Velisk,Verra,Vellin Ka,Veshtar,Vushtin"
 msgstr ""
-"Alen Ka,Alinash Mal,Ashijt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
-"Eshyi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orriday,Oshibi,Vallin,Valnirra,"
-"Valnitt,Velisp,Vellin Ka,Vushtin,Werra,Weshter,Wilniss"
+"Alen Ka,Alinash Mal,Ashirt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
+"Eshi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orrida,Oshibi,Vallin,Valnirra,"
+"Valnitt,Velisk,Verra,Vellin Ka,Veshtar,Vushtin"
 
 #: data/core/macros/names.cfg:23
 msgid ""
@@ -7313,14 +7313,12 @@ msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Il n'y a pas de place vacante dans le château pour recruter une unité."
 
 #: src/actions.cpp:354 src/actions.cpp:413 src/actions.cpp:1344
-#, fuzzy
 msgid "An invalid attacker weapon got selected."
-msgstr "Ère sélectionnée non valide"
+msgstr "Arme d'attaque sélectionnée non valide."
 
 #: src/actions.cpp:359
-#, fuzzy
 msgid "An invalid defender weapon got selected."
-msgstr "Ère sélectionnée non valide"
+msgstr "Arme de défense sélectionnée non valide."
 
 #: src/actions.cpp:1102
 msgid "female^poisoned"
@@ -8028,11 +8026,10 @@ msgid "[unit_worth]'s filter didn't match any units!"
 msgstr ""
 
 #: src/gamestatus.cpp:722
-#, fuzzy
 msgid ""
 "Leader position not empty - duplicate side definition for side '$side|' "
 "found."
-msgstr "Doublon du camp « $side| » trouvé."
+msgstr "La position du chef n'est pas libre - Doublon du camp « $side » trouvé."
 
 #: src/generate_report.cpp:128
 msgid "invisible: "
@@ -8148,39 +8145,36 @@ msgid "Observers:"
 msgstr "Observateurs : "
 
 #: src/gui/dialogs/lobby_player_info.cpp:64
-#, fuzzy
 msgid "In game:"
-msgstr "nom :"
+msgstr "En jeu :"
 
 #: src/gui/dialogs/lobby_player_info.cpp:66
 msgid "(observing)"
-msgstr ""
+msgstr "(observateur)"
 
 #: src/gui/dialogs/lobby_player_info.cpp:68
 msgid "(playing)"
-msgstr ""
+msgstr "(joueur)"
 
 #: src/gui/dialogs/lobby_player_info.cpp:71
 msgid "In lobby"
-msgstr ""
+msgstr "Dans le vestibule"
 
 #: src/gui/dialogs/lobby_player_info.cpp:95
-#, fuzzy
 msgid "On friends list"
-msgstr "Ajouté à la liste des amis : "
+msgstr "Dans la liste d'amis"
 
 #: src/gui/dialogs/lobby_player_info.cpp:100
-#, fuzzy
 msgid "On ignores list"
-msgstr "Ajouté à la liste des ignorés : "
+msgstr "Dans la liste des ignorés"
 
 #: src/gui/dialogs/lobby_player_info.cpp:105
 msgid "Neither a friend nor ignored"
-msgstr ""
+msgstr "Ni amis ni ignorés"
 
 #: src/gui/dialogs/lobby_player_info.cpp:110
 msgid "You"
-msgstr ""
+msgstr "Vous"
 
 #: src/gui/dialogs/lobby_player_info.cpp:113 src/multiplayer_create.cpp:540
 msgid "Error"
@@ -8722,7 +8716,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2222
 msgid "Unban a user. He does not have to be in the game but on the server."
-msgstr ""
+msgstr "Dé-bannir un joueur. Il ne doit pas être en jeu mais sur le serveur."
 
 #: src/menu_events.cpp:2225
 msgid "Kick a player or observer."
@@ -8735,16 +8729,14 @@ msgstr ""
 "d'argument."
 
 #: src/menu_events.cpp:2229
-#, fuzzy
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr ""
-"Rend muet un observateur. Affiche la situation courante en l'absence "
+"Rend la parole à un observateur. Rend la parole à tout le monde en l'absence "
 "d'argument."
 
 #: src/menu_events.cpp:2231
-#, fuzzy
 msgid "Mute/Unmute all observers. (toggles)"
-msgstr "Rend tous les observateurs muets"
+msgstr "Donne/rend la parole à tous les observateurs (alterne entre les deux)."
 
 #: src/menu_events.cpp:2241
 msgid "Send a message to the server admins currently online"
@@ -8822,11 +8814,11 @@ msgstr ""
 #: src/menu_events.cpp:2281
 #, fuzzy
 msgid "List room members."
-msgstr "Liste des serveurs"
+msgstr "Liste des membres d'une partie"
 
 #: src/menu_events.cpp:2283
 msgid "List available rooms."
-msgstr ""
+msgstr "Liste des salles disponibles."
 
 #: src/menu_events.cpp:2285
 msgid "Room message."
@@ -9156,7 +9148,7 @@ msgstr "Joueur local anonyme"
 
 #: src/multiplayer_connect.cpp:666
 msgid "$playername $side"
-msgstr ""
+msgstr "$playername $side"
 
 #: src/multiplayer_connect.cpp:670
 msgid "(Empty slot)"
@@ -9475,16 +9467,18 @@ msgid "Apply Filter"
 msgstr ""
 
 #: src/multiplayer_lobby.cpp:735
+#, fuzzy
 msgid "Invert"
-msgstr ""
+msgstr "Invertit"
 
 #: src/multiplayer_lobby.cpp:736
 msgid "Vacant Slots"
 msgstr "Places vacantes"
 
 #: src/multiplayer_lobby.cpp:737
+#, fuzzy
 msgid "Friends in Game"
-msgstr ""
+msgstr "Amis en jeu"
 
 #: src/multiplayer_lobby.cpp:738
 msgid "Search:"
@@ -9499,25 +9493,33 @@ msgid ""
 "Enable the games filter. If unchecked all games are shown, regardless of any "
 "filter."
 msgstr ""
+"Active le filtrage de parties. S'il n'est pas activé, toutes les parties "
+"sont montrées, quelque soit les filtres."
 
 #: src/multiplayer_lobby.cpp:754
 msgid ""
 "Show all games that do *not* match your filter. Useful for hiding games you "
 "are not interested in."
 msgstr ""
+"Montre toutes les parties ne correspondant pas à votre filtre. Utile pour "
+"cacher les parties ne vous intéressant pas."
 
 #: src/multiplayer_lobby.cpp:758
 msgid "Only show games that have at least one vacant slot"
-msgstr ""
+msgstr "Montrer uniquement les parties ayant au moins une place libre."
 
 #: src/multiplayer_lobby.cpp:762
 msgid ""
 "Only show games that are played or observed by at least one of your friends"
 msgstr ""
+"Montrer uniquement les parties qui sont jouées ou observées par au moins "
+"l'un de vos amis."
 
 #: src/multiplayer_lobby.cpp:766
 msgid "Only show games whose title or description contain the entered text"
 msgstr ""
+"Montrer uniquement les parties dont le titre ou la description contient le "
+"texte entré."
 
 #: src/multiplayer_lobby.cpp:900
 msgid "Joining this game requires a password."
