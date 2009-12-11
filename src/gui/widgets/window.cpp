@@ -248,7 +248,6 @@ twindow::twindow(CVideo& video,
 	, escape_disabled_(false)
 	, linked_size_()
 	, dirty_list_()
-	, event_loop_pre_cb_()
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	, debug_layout_(new tdebug_layout_graph(this))
 #endif
@@ -472,10 +471,6 @@ int twindow::show(const bool restore, const unsigned auto_close_timeout)
 		// Start our loop drawing will happen here as well.
 		for(status_ = SHOWING; status_ != REQUEST_CLOSE; ) {
 			// process installed callback if valid, to allow e.g. network polling
-			// @todo use a cleaner way of getting external events
-			if (event_loop_pre_cb_) {
-				event_loop_pre_cb_();
-			}
 			events::pump();
 			// Add a delay so we don't keep spinning if there's no event.
 			SDL_Delay(10);

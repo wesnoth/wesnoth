@@ -339,13 +339,6 @@ public:
 	static void set_sunset(const unsigned interval)
 		{ sunset_ = interval ? interval : 5; }
 
-	/**
-	 * Set the callback that will be called in the event processing loop of
-	 * show() right before the actual event processing.
-	 */
-	void set_event_loop_pre_callback(boost::function<void ()> cb) {
-		event_loop_pre_cb_ = cb;
-	}
 private:
 
 	/** Needed so we can change what's drawn on the screen. */
@@ -541,12 +534,6 @@ private:
 	 * function has more information about the dirty_list_.
 	 */
 	std::vector<std::vector<twidget*> > dirty_list_;
-
-	/**
-	 * The callback function called before each iteration in the main event
-	 * processing loop.
-	 */
-	boost::function<void ()> event_loop_pre_cb_;
 
 	/**
 	 * Finishes the initialization of the grid.
