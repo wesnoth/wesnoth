@@ -20,7 +20,6 @@
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/layout_exception.hpp"
 #include "gui/widgets/button.hpp"
-#include "gui/widgets/scrollbar.hpp"
 #include "gui/widgets/spacer.hpp"
 #include "gui/widgets/window.hpp"
 
@@ -754,9 +753,21 @@ void tscrollbar_container::set_scrollbar_button_status()
 	}
 }
 
-void tscrollbar_container::scroll_to_vertical_end()
+void tscrollbar_container::scroll_vertical_scrollbar(
+		const tscrollbar_::tscroll scroll)
 {
-	vertical_scrollbar_->scroll(tscrollbar_::END);
+	assert(vertical_scrollbar_);
+
+	vertical_scrollbar_->scroll(scroll);
+	scrollbar_moved();
+}
+
+void tscrollbar_container::scroll_horizontal_scrollbar(
+		const tscrollbar_::tscroll scroll)
+{
+	assert(horizontal_scrollbar_);
+
+	horizontal_scrollbar_->scroll(scroll);
 	scrollbar_moved();
 }
 

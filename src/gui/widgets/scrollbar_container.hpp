@@ -16,10 +16,10 @@
 #define GUI_WIDGETS_SCROLLBAR_CONTAINER_HPP_INCLUDED
 
 #include "gui/widgets/container.hpp"
+#include "gui/widgets/scrollbar.hpp"
 
 namespace gui2 {
 
-class tscrollbar_;
 class tspacer;
 
 namespace implementation {
@@ -157,7 +157,21 @@ public:
 	const SDL_Rect& content_visible_area() const
 		{ return content_visible_area_; }
 
-	void scroll_to_vertical_end();
+	/***** ***** ***** scrollbar helpers ***** ****** *****/
+
+	/**
+	 * Scrolls the vertical scrollbar.
+	 *
+	 * @param scroll              The position to scroll to.
+	 */
+	void scroll_vertical_scrollbar(const tscrollbar_::tscroll scroll);
+
+	/**
+	 * Scrolls the horizontal scrollbar.
+	 *
+	 * @param scroll              The position to scroll to.
+	 */
+	void scroll_horizontal_scrollbar(const tscrollbar_::tscroll scroll);
 
 	/**
 	 * Callback when the scrollbar moves (NOTE maybe only one callback needed).
