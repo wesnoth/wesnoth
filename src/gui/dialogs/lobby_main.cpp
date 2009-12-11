@@ -1416,6 +1416,23 @@ void tlobby_main::user_dialog_callback(user_info* info)
 		tlobby_chat_window* t = whisper_window_open(info->name, true);
 		switch_to_window(t);
 	}
+	selected_game_id_ = info->game_id;
+	//the commented out code below should be enough, but that'd delete th
+	//the commented out code below should be enough, but that'd delete the
+	//playerlist and the widget calling this callback, so instead the game
+	//will be selected on the netxt gamelist update.
+	/*
+	if (info->game_id != 0) {
+		for (unsigned i = 0; i < lobby_info_.games_filtered().size(); ++i) {
+		game_info& g = *lobby_info_.games_filtered()[i];
+			if (info->game_id == g.id) {
+			gamelistbox_->select_row(i);
+				update_selected_game();
+				break;
+			}
+		}
+	}
+	*/
 	//do not update here as it can cause issues with removing the widget
 	//from within it's event handler. Should get updated as soon as possible
 	//update_gamelist();
