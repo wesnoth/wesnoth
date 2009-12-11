@@ -446,8 +446,12 @@ void tlobby_main::update_gamelist()
 	symbols["num_total"] = lexical_cast<std::string>(lobby_info_.games().size());
 	std::string games_string = vgettext("Games: showing $num_shown out of $num_total", symbols);
 	find_widget<tlabel>(gamelistbox_, "map", false).set_label(games_string);
+	int select_row = -1;
 	for (unsigned i = 0; i < lobby_info_.games_filtered().size(); ++i) {
 		const game_info& game = *lobby_info_.games_filtered()[i];
+		if (game.id == selected_game_id_) {
+			select_row = i;
+		}
 		std::map<std::string, string_map> data;
 
 		const char* color_string;
@@ -532,6 +536,7 @@ void tlobby_main::update_gamelist()
 		set_visible_if_exists(grid, "use_map_settings", game.use_map_settings);
 		set_visible_if_exists(grid, "no_era", !game.have_era);
 
+
 		tbutton* join_button = dynamic_cast<tbutton*>(grid->find("join", false));
 		if (join_button) {
 			join_button->set_callback_mouse_left_click(
@@ -549,6 +554,9 @@ void tlobby_main::update_gamelist()
 			minimap->set_config(&game_config_);
 			minimap->set_map_data(game.map_data);
 		}
+	}
+	if (select_row >= 0) {
+		gamelistbox_->select_row(select_row);
 	}
 	update_selected_game();
 }
