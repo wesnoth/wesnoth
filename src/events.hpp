@@ -20,11 +20,10 @@
 
 //our user-defined double-click event type
 #define DOUBLE_CLICK_EVENT SDL_USEREVENT
-#define HOVER_EVENT (SDL_USEREVENT + 1)
+#define TIMER_EVENT (SDL_USEREVENT + 1)
 #define HOVER_REMOVE_POPUP_EVENT (SDL_USEREVENT + 2)
 #define DRAW_EVENT (SDL_USEREVENT + 3)
 #define CLOSE_WINDOW_EVENT (SDL_USEREVENT + 4)
-#define TIMER_EVENT (SDL_USEREVENT + 5)
 
 namespace events
 {

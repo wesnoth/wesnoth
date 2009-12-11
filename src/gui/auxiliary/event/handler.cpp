@@ -149,14 +149,6 @@ private:
 
 	/***** Handlers *****/
 
-	/**
-	 * Fires a hover event.
-	 *
-	 * @param caller                 The distributor for which to fire the
-	 *                               event.
-	 */
-	void hover(void* caller);
-
 	/** Fires a draw event. */
 	void draw();
 
@@ -295,10 +287,6 @@ void thandler::handle_event(const SDL_Event& event)
 					, event.button.button);
 			break;
 
-		case HOVER_EVENT:
-			hover(event.user.data1);
-			break;
-
 		case HOVER_REMOVE_POPUP_EVENT:
 //			remove_popup();
 			break;
@@ -398,31 +386,6 @@ void thandler::disconnect(tdispatcher* dispatcher)
 		delete event_context;
 		event_context = NULL;
 	}
-}
-
-void thandler::hover(void* caller)
-{
-	DBG_GUI_E << "Firing: " << SHOW_HOVER_TOOLTIP << ".\n";
-
-	/*
-	 * Although the caller should be a valid widget, we won't blindly trust
-	 * this to be true. Instead test whether it's a valid widget before firing.
-	 * Since the parameter is a twidget* we need to cast the dispatcher to a
-	 * widget.
-	 */
-
-	foreach(tdispatcher* dispatcher, dispatchers_) {
-		twidget* widget = dynamic_cast<twidget*>(dispatcher);
-		if(widget == caller) {
-			assert(widget);
-			dispatcher->fire(SHOW_HOVER_TOOLTIP, *widget, NULL);
-			return;
-		}
-	}
-
-	ERR_GUI_E << "While firing " << SHOW_HOVER_TOOLTIP
-			<< " encountered an invalid dispatcher address "
-			<< caller << ".\n";
 }
 
 void thandler::draw()
