@@ -18,6 +18,7 @@
 
 #include "events.hpp"
 #include "gui/auxiliary/log.hpp"
+#include "gui/auxiliary/timer.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
@@ -39,24 +40,7 @@ namespace event {
  *
  * @returns                       The new timer interval, 0 to stop.
  */
-static Uint32 hover_callback(Uint32 /*interval*/, void *param)
-{
-	DBG_GUI_E << "Pushing hover event in queue.\n";
 
-	SDL_Event event;
-	SDL_UserEvent data;
-
-	data.type = HOVER_EVENT;
-	data.code = 0;
-	data.data1 = param;
-	data.data2 = NULL;
-
-	event.type = HOVER_EVENT;
-	event.user = data;
-
-	SDL_PushEvent(&event);
-	return 0;
-}
 #if 0
 /**
  * SDL_AddTimer() callback for the popup event.
@@ -128,7 +112,7 @@ tmouse_motion::tmouse_motion(twidget& owner
 	: mouse_focus_(NULL)
 	, mouse_captured_(false)
 	, owner_(owner)
-	, hover_timer_(NULL)
+	, hover_timer_(0)
 	, hover_widget_(NULL)
 	, hover_position_(0, 0)
 	, hover_shown_(true)
@@ -259,8 +243,15 @@ void tmouse_motion::start_hover_timer(twidget* widget, const tpoint& coordinate)
 	DBG_GUI_E << LOG_HEADER << "Start hover timer for widget '"
 			<< widget->id() << "' at address " << widget << ".\n";
 
-
-	hover_timer_ = SDL_AddTimer(50, hover_callback, &owner_);
+	hover_timer_ = add_timer(50
+			, boost::bind(
+				  static_cast<bool (tdispatcher::*) (const tevent
+					  , twidget&
+					  , void*)>(&tdispatcher::fire)
+				, &owner_
+				, SHOW_HOVER_TOOLTIP
+				, boost::ref(owner_)
+				, static_cast<void*>(NULL)));
 	if(hover_timer_) {
 		hover_widget_ = widget;
 		hover_position_ = coordinate;
@@ -277,16 +268,11 @@ void tmouse_motion::stop_hover_timer()
 				<< hover_widget_->id() << "' at address "
 				<< hover_widget_ << ".\n";
 
-		/*
-		 * The situation can happen if the timer pushes the hover event in the
-		 * queue but before that event is processed the remove request has
-		 * come. Need to see whether there is a better way to fix the issue.
-		 */
-//		if(SDL_RemoveTimer(hover_timer_) == SDL_FALSE) {
-//			ERR_GUI_E << LOG_HEADER << "Failed to remove hover timer.\n";
-//		}
+		if(!remove_timer(hover_timer_)) {
+			ERR_GUI_E << LOG_HEADER << "Failed to remove hover timer.\n";
+		}
 
-		hover_timer_ = NULL;
+		hover_timer_ = 0;
 		hover_widget_ = NULL;
 		hover_position_ = tpoint(0, 0);
 	}
@@ -298,7 +284,7 @@ void tmouse_motion::signal_handler_show_hover_tooltip(const event::tevent event)
 
 	if(!hover_widget_) {
 		// See tmouse_motion::stop_hover_timer.
-//		ERR_GUI_E << LOG_HEADER << event << " bailing out, no hover widget.\n";
+		ERR_GUI_E << LOG_HEADER << event << " bailing out, no hover widget.\n";
 		return;
 	}
 
@@ -312,7 +298,7 @@ void tmouse_motion::signal_handler_show_hover_tooltip(const event::tevent event)
 			, dynamic_cast<tcontrol&>(*hover_widget_).tooltip());
 	hover_shown_ = true;
 
-	hover_timer_ = NULL;
+	hover_timer_ = 0;
 	hover_widget_ = NULL;
 	hover_position_ = tpoint(0, 0);
 }

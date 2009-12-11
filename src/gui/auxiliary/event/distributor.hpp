@@ -86,7 +86,7 @@ protected:
 	twidget& owner_;
 
 	/** The timer for the hover event. */
-	SDL_TimerID hover_timer_;
+	unsigned long hover_timer_;
 
 	/** The widget which should get the hover event. */
 	twidget* hover_widget_;
