@@ -25,6 +25,7 @@
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/minimap.hpp"
 #include "gui/widgets/multi_page.hpp"
+#include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/toggle_panel.hpp"
@@ -247,8 +248,9 @@ void tlobby_main::append_to_chatbox(const std::string& text)
 void tlobby_main::append_to_chatbox(const std::string& text, size_t id)
 {
 	tgrid& grid = chat_log_container_->page_grid(id);
-	tcontrol& log = find_widget<tcontrol>(&grid, "log_text", false);
+	tscroll_label& log = find_widget<tscroll_label>(&grid, "log_text", false);
 	log.set_label(log.label() + "\n" + preferences::get_chat_timestamp(time(0)) + text);
+	log.scroll_to_vertical_end();
 }
 
 void tlobby_main::do_notify(t_notify_mode mode)

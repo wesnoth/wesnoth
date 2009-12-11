@@ -157,6 +157,8 @@ public:
 	const SDL_Rect& content_visible_area() const
 		{ return content_visible_area_; }
 
+	void scroll_to_vertical_end();
+
 	/**
 	 * Callback when the scrollbar moves (NOTE maybe only one callback needed).
 	 * Maybe also make protected or private and add a friend.

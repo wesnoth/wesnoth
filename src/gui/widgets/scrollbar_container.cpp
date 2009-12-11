@@ -754,6 +754,12 @@ void tscrollbar_container::set_scrollbar_button_status()
 	}
 }
 
+void tscrollbar_container::scroll_to_vertical_end()
+{
+	vertical_scrollbar_->scroll(tscrollbar_::END);
+	scrollbar_moved();
+}
+
 void tscrollbar_container::handle_key_home(SDLMod /*modifier*/, bool& handled)
 {
 	assert(vertical_scrollbar_ && horizontal_scrollbar_);
