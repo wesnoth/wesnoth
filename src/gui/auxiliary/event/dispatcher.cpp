@@ -583,8 +583,8 @@ bool tdispatcher::execute_hotkey(const hotkey::HOTKEY_COMMAND id)
  * allows an item to use a hotkey but have another handler function. Eg
  * preferences in the editor might open another preferences dialog.
  *
- * @todo The hotkeys need to be implemented like above in 1.9.   
- *  
+ * @todo The hotkeys need to be implemented like above in 1.9.
+ *
  * @todo This might change in the near future.
  *
  * @subsection tdistributor Event polishing and distribution
