@@ -19,6 +19,7 @@
 #include "gui/dialogs/helper.hpp"
 
 #include "gui/auxiliary/log.hpp"
+#include "gui/auxiliary/timer.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
@@ -306,6 +307,7 @@ tlobby_main::tlobby_main(const config& game_config
 	, player_list_()
 	, player_list_dirty_(false)
 	, disp_(disp)
+	, lobby_update_timer_(0)
 	, preferences_wrapper_()
 {
 }
@@ -317,6 +319,9 @@ void tlobby_main::set_preferences_callback(boost::function<void ()> cb)
 
 tlobby_main::~tlobby_main()
 {
+	if(lobby_update_timer_) {
+		remove_timer(lobby_update_timer_);
+	}
 }
 
 static void signal_handler_sdl_video_resize(
@@ -706,7 +711,11 @@ void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
 			&window, "chat_log_container", false, true);
 
 	window.set_enter_disabled(true);
-	window.set_event_loop_pre_callback(boost::bind(&tlobby_main::network_handler, this));
+	// Force first update to be directly.
+	tlobby_main::network_handler();
+	lobby_update_timer_ = add_timer(game_config::lobby_refresh
+			, boost::bind(&tlobby_main::network_handler, this)
+			, true);
 	window_ = &window;
 
 	chat_input_ = find_widget<ttext_box>(&window, "chat_input", false, true);
@@ -755,6 +764,8 @@ void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
 void tlobby_main::post_show(twindow& /*window*/)
 {
 	window_ = NULL;
+	remove_timer(lobby_update_timer_);
+	lobby_update_timer_ = 0;
 }
 
 room_info* tlobby_main::active_window_room()
