@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-12-03 17:46+0100\n"
+"POT-Creation-Date: 2009-12-12 11:44+0100\n"
 "PO-Revision-Date: 2009-12-10 16:55+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -408,7 +408,9 @@ msgstr ""
 "Schwertkämpfern ihre Grenzen aufzeigen."
 
 #. [attack]: type=blade
-#: data/core/units/drakes/Fighter.cfg:39 data/core/units/drakes/Warrior.cfg:39
+#: data/core/units/drakes/Fighter.cfg:39
+#: data/core/units/drakes/Flameheart.cfg:35
+#: data/core/units/drakes/Flare.cfg:34 data/core/units/drakes/Warrior.cfg:39
 msgid "war blade"
 msgstr "Kriegsklinge"
 
@@ -457,34 +459,6 @@ msgstr ""
 "Armeen am besten begegnet und sie in den Staub wirft. Das eigene "
 "Stammesoberhaupt fordern entflammende Draken allerdings nur heraus, wenn sie "
 "sich der Unterstützung vieler Artgenossen gewiss sind."
-
-#. [attack]: type=blade
-#. [attack]: type=arcane
-#: data/core/units/drakes/Flameheart.cfg:35
-#: data/core/units/drakes/Flare.cfg:34 data/core/units/elves/Archer.cfg:37
-#: data/core/units/elves/Avenger.cfg:76 data/core/units/elves/Captain.cfg:47
-#: data/core/units/elves/Champion.cfg:36 data/core/units/elves/Fighter.cfg:36
-#: data/core/units/elves/Hero.cfg:35 data/core/units/elves/High_Lord.cfg:73
-#: data/core/units/elves/Lord.cfg:39 data/core/units/elves/Marksman.cfg:64
-#: data/core/units/elves/Marshal.cfg:46 data/core/units/elves/Outrider.cfg:46
-#: data/core/units/elves/Ranger.cfg:73 data/core/units/elves/Rider.cfg:48
-#: data/core/units/elves/Scout.cfg:47
-#: data/core/units/elves/Sharpshooter.cfg:63
-#: data/core/units/humans/Horse_Knight.cfg:35
-#: data/core/units/humans/Horse_Paladin.cfg:52
-#: data/core/units/humans/Loyalist_Cavalryman.cfg:64
-#: data/core/units/humans/Loyalist_Dragoon.cfg:49
-#: data/core/units/humans/Loyalist_Lieutenant.cfg:46
-#: data/core/units/humans/Loyalist_Longbowman.cfg:39
-#: data/core/units/humans/Loyalist_Master_Bowman.cfg:39
-#: data/core/units/humans/Loyalist_Sergeant.cfg:47
-#: data/core/units/humans/Loyalist_Swordsman.cfg:39
-#: data/core/units/humans/Woodsman_Ranger.cfg:59
-#: data/core/units/nagas/Fighter.cfg:102 data/core/units/nagas/Myrmidon.cfg:43
-#: data/core/units/nagas/Warrior.cfg:41 data/core/units/orcs/Grunt.cfg:71
-#: data/core/units/orcs/Leader.cfg:28
-msgid "sword"
-msgstr "Schwert"
 
 #. [unit_type]: id=Drake Flare, race=drake
 #: data/core/units/drakes/Flare.cfg:4
@@ -1122,6 +1096,32 @@ msgstr ""
 "Zeiten des Krieges greifen viele Elfen zu dieser Waffe und – obwohl sie im "
 "Kampf Mann gegen Mann weniger Erfahrung besitzen – können sie es dank ihrer "
 "Geschicklichkeit mit jedem Soldaten der menschlichen Armeen aufnehmen."
+
+#. [attack]: type=blade
+#. [attack]: type=arcane
+#: data/core/units/elves/Archer.cfg:37 data/core/units/elves/Avenger.cfg:76
+#: data/core/units/elves/Captain.cfg:47 data/core/units/elves/Champion.cfg:36
+#: data/core/units/elves/Fighter.cfg:36 data/core/units/elves/Hero.cfg:35
+#: data/core/units/elves/High_Lord.cfg:73 data/core/units/elves/Lord.cfg:39
+#: data/core/units/elves/Marksman.cfg:64 data/core/units/elves/Marshal.cfg:46
+#: data/core/units/elves/Outrider.cfg:46 data/core/units/elves/Ranger.cfg:73
+#: data/core/units/elves/Rider.cfg:48 data/core/units/elves/Scout.cfg:47
+#: data/core/units/elves/Sharpshooter.cfg:63
+#: data/core/units/humans/Horse_Knight.cfg:35
+#: data/core/units/humans/Horse_Paladin.cfg:52
+#: data/core/units/humans/Loyalist_Cavalryman.cfg:64
+#: data/core/units/humans/Loyalist_Dragoon.cfg:49
+#: data/core/units/humans/Loyalist_Lieutenant.cfg:46
+#: data/core/units/humans/Loyalist_Longbowman.cfg:39
+#: data/core/units/humans/Loyalist_Master_Bowman.cfg:39
+#: data/core/units/humans/Loyalist_Sergeant.cfg:47
+#: data/core/units/humans/Loyalist_Swordsman.cfg:39
+#: data/core/units/humans/Woodsman_Ranger.cfg:59
+#: data/core/units/nagas/Fighter.cfg:102 data/core/units/nagas/Myrmidon.cfg:43
+#: data/core/units/nagas/Warrior.cfg:41 data/core/units/orcs/Grunt.cfg:71
+#: data/core/units/orcs/Leader.cfg:28
+msgid "sword"
+msgstr "Schwert"
 
 #. [attack]: type=pierce
 #. [attack]: type=fire

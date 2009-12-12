@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-12-03 17:46+0100\n"
+"POT-Creation-Date: 2009-12-12 11:44+0100\n"
 "PO-Revision-Date: 2009-10-09 15:20-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -382,7 +382,9 @@ msgstr ""
 "𐑕𐑒𐑱𐑤𐑟, 𐑦𐑟 𐑮𐑲𐑑𐑤𐑦 𐑓𐑮𐑲𐑑𐑩𐑯𐑦𐑙 𐑑 𐑕𐑹𐑛𐑟𐑥𐑨𐑯 𐑝 𐑧𐑯𐑦 𐑳𐑞𐑼 𐑮𐑱𐑕."
 
 #. [attack]: type=blade
-#: data/core/units/drakes/Fighter.cfg:39 data/core/units/drakes/Warrior.cfg:39
+#: data/core/units/drakes/Fighter.cfg:39
+#: data/core/units/drakes/Flameheart.cfg:35
+#: data/core/units/drakes/Flare.cfg:34 data/core/units/drakes/Warrior.cfg:39
 msgid "war blade"
 msgstr "𐑢𐑹 𐑚𐑤𐑱𐑛"
 
@@ -426,34 +428,6 @@ msgstr ""
 "𐑛𐑮𐑱𐑒 𐑝 𐑞𐑦𐑕 𐑕𐑑𐑨𐑗𐑼 𐑞 𐑦𐑒𐑕𐑑𐑧𐑯𐑑 𐑝 𐑣𐑦𐑟 𐑷𐑔𐑪𐑮𐑦𐑑𐑰: 𐑢𐑺 𐑣𐑰 𐑒𐑨𐑯 𐑐𐑫𐑖 𐑞𐑴𐑟 𐑣𐑰 𐑤𐑰𐑛𐑟 𐑯 𐑢𐑧𐑯 𐑦𐑑 "
 "𐑦𐑟 𐑚𐑧𐑕𐑑 𐑑 𐑤𐑰𐑝 𐑞𐑧𐑥 𐑑 𐑞𐑺 𐑴𐑯 𐑛𐑦𐑝𐑲𐑕𐑩𐑟. 𐑴𐑯𐑤𐑦 𐑩𐑒𐑱𐑠𐑩𐑯𐑩𐑤𐑦 𐑢𐑦𐑤 𐑩 𐑓𐑤𐑱𐑥𐑣𐑸𐑑 𐑗𐑨𐑤𐑩𐑯𐑡 𐑣𐑦𐑟 "
 "𐑑𐑮𐑲𐑚𐑟 𐑤𐑰𐑛𐑻 𐑓𐑹 𐑕𐑩𐑐𐑮𐑧𐑥𐑩𐑕𐑰, 𐑯 𐑴𐑯𐑤𐑦 𐑦𐑓 𐑣𐑰 𐑦𐑟 𐑖𐑫𐑼 𐑝 𐑞 𐑕𐑩𐑐𐑹𐑑 𐑝 𐑣𐑦𐑟 𐑓𐑧𐑤𐑴 𐑛𐑮𐑱𐑒𐑕."
-
-#. [attack]: type=blade
-#. [attack]: type=arcane
-#: data/core/units/drakes/Flameheart.cfg:35
-#: data/core/units/drakes/Flare.cfg:34 data/core/units/elves/Archer.cfg:37
-#: data/core/units/elves/Avenger.cfg:76 data/core/units/elves/Captain.cfg:47
-#: data/core/units/elves/Champion.cfg:36 data/core/units/elves/Fighter.cfg:36
-#: data/core/units/elves/Hero.cfg:35 data/core/units/elves/High_Lord.cfg:73
-#: data/core/units/elves/Lord.cfg:39 data/core/units/elves/Marksman.cfg:64
-#: data/core/units/elves/Marshal.cfg:46 data/core/units/elves/Outrider.cfg:46
-#: data/core/units/elves/Ranger.cfg:73 data/core/units/elves/Rider.cfg:48
-#: data/core/units/elves/Scout.cfg:47
-#: data/core/units/elves/Sharpshooter.cfg:63
-#: data/core/units/humans/Horse_Knight.cfg:35
-#: data/core/units/humans/Horse_Paladin.cfg:52
-#: data/core/units/humans/Loyalist_Cavalryman.cfg:64
-#: data/core/units/humans/Loyalist_Dragoon.cfg:49
-#: data/core/units/humans/Loyalist_Lieutenant.cfg:46
-#: data/core/units/humans/Loyalist_Longbowman.cfg:39
-#: data/core/units/humans/Loyalist_Master_Bowman.cfg:39
-#: data/core/units/humans/Loyalist_Sergeant.cfg:47
-#: data/core/units/humans/Loyalist_Swordsman.cfg:39
-#: data/core/units/humans/Woodsman_Ranger.cfg:59
-#: data/core/units/nagas/Fighter.cfg:102 data/core/units/nagas/Myrmidon.cfg:43
-#: data/core/units/nagas/Warrior.cfg:41 data/core/units/orcs/Grunt.cfg:71
-#: data/core/units/orcs/Leader.cfg:28
-msgid "sword"
-msgstr "𐑕𐑹𐑛"
 
 #. [unit_type]: id=Drake Flare, race=drake
 #: data/core/units/drakes/Flare.cfg:4
@@ -1035,6 +1009,32 @@ msgstr ""
 "𐑢𐑹, 𐑥𐑧𐑯𐑦 𐑢𐑦𐑤 𐑑𐑱𐑒 𐑳𐑐 𐑞𐑦𐑕 𐑢𐑧𐑐𐑩𐑯. 𐑞𐑴 𐑞𐑺 𐑮𐑧𐑤𐑩𐑑𐑦𐑝 𐑦𐑯𐑦𐑒𐑕𐑐𐑽𐑰𐑩𐑯𐑕 𐑢𐑦𐑞 𐑒𐑪𐑥𐑚𐑨𐑑 𐑤𐑰𐑝𐑟 𐑞𐑧𐑥 "
 "𐑕𐑳𐑥𐑢𐑪𐑑 𐑝𐑩𐑤𐑯𐑻𐑩𐑚𐑩𐑤, 𐑞𐑺 𐑯𐑨𐑗𐑼𐑩𐑤 𐑜𐑮𐑱𐑕 𐑦𐑯𐑖𐑫𐑼𐑟 𐑞𐑨𐑑 𐑞𐑱 𐑒𐑨𐑯 𐑚𐑧𐑕𐑑 𐑧𐑯𐑦 𐑝 𐑣𐑿𐑥𐑨𐑯𐑦𐑑𐑰𐑟 𐑓𐑮𐑧𐑖 "
 "𐑮𐑩𐑒𐑮𐑵𐑑𐑕."
+
+#. [attack]: type=blade
+#. [attack]: type=arcane
+#: data/core/units/elves/Archer.cfg:37 data/core/units/elves/Avenger.cfg:76
+#: data/core/units/elves/Captain.cfg:47 data/core/units/elves/Champion.cfg:36
+#: data/core/units/elves/Fighter.cfg:36 data/core/units/elves/Hero.cfg:35
+#: data/core/units/elves/High_Lord.cfg:73 data/core/units/elves/Lord.cfg:39
+#: data/core/units/elves/Marksman.cfg:64 data/core/units/elves/Marshal.cfg:46
+#: data/core/units/elves/Outrider.cfg:46 data/core/units/elves/Ranger.cfg:73
+#: data/core/units/elves/Rider.cfg:48 data/core/units/elves/Scout.cfg:47
+#: data/core/units/elves/Sharpshooter.cfg:63
+#: data/core/units/humans/Horse_Knight.cfg:35
+#: data/core/units/humans/Horse_Paladin.cfg:52
+#: data/core/units/humans/Loyalist_Cavalryman.cfg:64
+#: data/core/units/humans/Loyalist_Dragoon.cfg:49
+#: data/core/units/humans/Loyalist_Lieutenant.cfg:46
+#: data/core/units/humans/Loyalist_Longbowman.cfg:39
+#: data/core/units/humans/Loyalist_Master_Bowman.cfg:39
+#: data/core/units/humans/Loyalist_Sergeant.cfg:47
+#: data/core/units/humans/Loyalist_Swordsman.cfg:39
+#: data/core/units/humans/Woodsman_Ranger.cfg:59
+#: data/core/units/nagas/Fighter.cfg:102 data/core/units/nagas/Myrmidon.cfg:43
+#: data/core/units/nagas/Warrior.cfg:41 data/core/units/orcs/Grunt.cfg:71
+#: data/core/units/orcs/Leader.cfg:28
+msgid "sword"
+msgstr "𐑕𐑹𐑛"
 
 #. [attack]: type=pierce
 #. [attack]: type=fire
