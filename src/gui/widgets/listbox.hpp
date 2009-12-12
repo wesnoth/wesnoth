@@ -95,7 +95,7 @@ public:
 	 * NOTE this doesn't change the select status of the row.
 	 *
 	 * @param row                 The row to (de)activate.
-	 * @param select              true activate, false deactivate.
+	 * @param active              true activate, false deactivate.
 	 */
 	void set_row_active(const unsigned row, const bool active);
 
