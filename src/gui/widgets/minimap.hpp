@@ -92,6 +92,16 @@ private:
 	unsigned top_border_;
 	unsigned bottom_border_;
 
+	/**
+	 * Gets the image for the minimap.
+	 *
+	 * @param w                   The wanted width of the image.
+	 * @param h                   The wanted height of the image.
+	 *
+	 * @returns                   The image, NULL upon error.
+	 */
+	const surface get_image(const int w, const int h) const;
+
 	/** Inherited from tcontrol. */
 	void impl_draw_background(surface& frame_buffer);
 

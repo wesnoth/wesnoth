@@ -21,13 +21,97 @@
 #include "map_exception.hpp"
 #include "../../minimap.hpp"
 
+#include <algorithm>
+
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM_INDENT(err, log_config)
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
+// Define this to enable debug output for the minimap cache.
+//#define DEBUG_MINIMAP_CACHE
+
 namespace gui2 {
+
+/** Key type for the cache. */
+struct tkey
+{
+	tkey(const int w, const int h, const std::string& map_data)
+		: w(w)
+		, h(h)
+		, map_data(map_data)
+	{
+	}
+
+	/** Width of the image. */
+	const int w;
+
+	/** Height of the image. */
+	const int h;
+
+	/** The data used to generate the image. */
+	const std::string map_data;
+};
+
+static bool operator<(const tkey& lhs, const tkey& rhs)
+{
+	return lhs.w < rhs.w || (lhs.w == rhs.w
+			&& (lhs.h < rhs.h || (lhs.h == rhs.h
+				&& lhs.map_data < rhs.map_data)));
+}
+
+/** Value type for the cache. */
+struct tvalue
+{
+	tvalue(const surface& surf)
+		: surf(surf)
+		, age(1)
+	{
+	}
+
+	/** The cached image. */
+	const surface surf;
+
+	/**
+	 * The age of the image.
+	 *
+	 * Every time an image is used its age is increased by one. Once the cache
+	 * is full 25% of the cache is emptied. This is done by halving the age of
+	 * the items in the cache and then erase the 25% with the lowest age. If
+	 * items have the same age their order is unspecified.
+	 */
+	unsigned age;
+};
+
+#ifdef LOW_MEM
+	/**
+	 * Maximum number of items in the cache (multiple of 4).
+	 *
+	 * As small as possible for low mem.
+	 */
+	static const size_t cache_max_size = 4;
+#else
+	/**
+	 * Maximum number of items in the cache (multiple of 4).
+	 *
+	 * No testing on the optimal number is done, just seems a nice number.
+	 */
+	static const size_t cache_max_size = 100;
+#endif
+
+	/**
+	 * The terrain used to create the cache.
+	 *
+	 * If another terrain config is used the cache needs to be cleared, this
+	 * normally doesn't happen a lot so the clearing of the cache is rather
+	 * unusual.
+	 */
+	static const ::config* terrain = NULL;
+
+	/** The cache. */
+	typedef std::map<tkey, tvalue> tcache;
+	static tcache cache;
 
 void tminimap::set_borders(const unsigned left,
 		const unsigned right, const unsigned top, const unsigned bottom)
@@ -38,6 +122,91 @@ void tminimap::set_borders(const unsigned left,
 	bottom_border_ = bottom;
 
 	set_dirty();
+}
+
+static bool compare(const std::pair<unsigned, tcache::iterator>& lhs
+		, const std::pair<unsigned, tcache::iterator>& rhs)
+{
+	return lhs.first < rhs.first;
+}
+
+static void shrink_cache()
+{
+#ifdef DEBUG_MINIMAP_CACHE
+	std::cerr << "\nShrink cache from " << cache.size();
+#else
+	DBG_GUI_D << "Shrinking the minimap cache.\n";
+#endif
+
+	std::vector<std::pair<unsigned, tcache::iterator> > items;
+	for(tcache::iterator itor = cache.begin(); itor != cache.end(); ++itor) {
+
+		itor->second.age /= 2;
+		items.push_back(std::make_pair(itor->second.age, itor));
+	}
+
+	std::partial_sort(items.begin()
+			, items.begin() + cache_max_size / 4
+			, items.end()
+			, compare);
+
+	for(std::vector<std::pair<unsigned, tcache::iterator> >::iterator
+			  vitor = items.begin()
+			; vitor < items.begin() + cache_max_size / 4
+			; ++vitor) {
+
+		cache.erase(vitor->second);
+	}
+
+#ifdef DEBUG_MINIMAP_CACHE
+	std::cerr << " to " << cache.size() << ".\n";
+#endif
+}
+
+const surface tminimap::get_image(const int w, const int h) const
+{
+	if(terrain_ != terrain) {
+#ifdef DEBUG_MINIMAP_CACHE
+		std::cerr << "\nFlush cache.\n";
+#else
+		DBG_GUI_D << "Flushing the minimap cache.\n";
+#endif
+		terrain = terrain_;
+		cache.clear();
+
+	}
+
+	const tkey key(w, h, map_data_);
+	tcache::iterator itor = cache.find(key);
+
+	if(itor != cache.end()) {
+#ifdef DEBUG_MINIMAP_CACHE
+		std::cerr << '+';
+#endif
+		itor->second.age++;
+		return itor->second.surf;
+	}
+
+	if(cache.size() >= cache_max_size) {
+		shrink_cache();
+	}
+
+	try {
+		const gamemap map(*terrain_, map_data_);
+		const surface surf = image::getMinimap(w, h, map, NULL);
+		cache.insert(std::make_pair(key, tvalue(surf)));
+#ifdef DEBUG_MINIMAP_CACHE
+		std::cerr << '-';
+#endif
+		return surf;
+
+	} catch (incorrect_map_format_exception& e) {
+		ERR_CF << "Error while loading the map: " << e.msg_ << '\n';
+#ifdef DEBUG_MINIMAP_CACHE
+		std::cerr << 'X';
+#endif
+	}
+	return NULL;
 }
 
 void tminimap::impl_draw_background(surface& frame_buffer)
@@ -52,22 +221,16 @@ void tminimap::impl_draw_background(surface& frame_buffer)
 		return;
 	}
 
-	try {
-		const gamemap map(*terrain_, map_data_);
+	SDL_Rect rect = get_rect();
+	rect.x += left_border_;
+	rect.y += top_border_;
+	rect.w -= left_border_ + right_border_;
+	rect.h -= top_border_ + bottom_border_;
+	assert(rect.w > 0 && rect.h > 0);
 
-		SDL_Rect rect = get_rect();
-		rect.x += left_border_;
-		rect.y += top_border_;
-		rect.w -= left_border_ + right_border_;
-		rect.h -= top_border_ + bottom_border_;
-		assert(rect.w > 0 && rect.h > 0);
-
-		const ::surface surf = image::getMinimap(rect.w, rect.h, map, NULL);
-
+	const ::surface surf = get_image(rect.w, rect.h);
+	if(surf) {
 		SDL_BlitSurface(surf, NULL, frame_buffer, &rect);
-
-	} catch (incorrect_map_format_exception& e) {
-		ERR_CF << "Error while loading the map: " << e.msg_ << '\n';
 	}
 }
 
