@@ -21,6 +21,8 @@
 #include "image.hpp"
 #include "log.hpp"
 #include "map.hpp"
+#include "sdl_utils.hpp"
+
 #include "team.hpp"
 #include "wml_exception.hpp"
 #include "formula_string_utils.hpp"
@@ -29,9 +31,14 @@ static lg::log_domain log_display("display");
 #define DBG_DP LOG_STREAM(debug, log_display)
 #define WRN_DP LOG_STREAM(warn, log_display)
 
+
 namespace image {
 
-surface getMinimap(int w, int h, const gamemap& map, const viewpoint* vw)
+
+surface getMinimap(const int w
+		, const int h
+		, const gamemap& map
+		, const viewpoint* vw)
 {
 	const int scale = 8;
 

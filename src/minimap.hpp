@@ -14,15 +14,19 @@
 #ifndef MINIMAP_HPP_INCLUDED
 #define MINIMAP_HPP_INCLUDED
 
-#include "sdl_utils.hpp"
+#include <cstddef>
 
 class gamemap;
 class viewpoint;
+class surface;
 
 namespace image {
 	///function to create the minimap for a given map
 	///the surface returned must be freed by the user
-	surface getMinimap(int w, int h, const gamemap& map_, const viewpoint* vm=NULL);
+	surface getMinimap(const int w
+			, const int h
+			, const gamemap& map_
+			, const viewpoint* vm = NULL);
 }
 
 #endif
