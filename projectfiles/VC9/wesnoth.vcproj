@@ -530,6 +530,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\src\mp_game_settings.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\..\src\multiplayer.cpp"
 				>
 			</File>
@@ -539,10 +543,6 @@
 			</File>
 			<File
 				RelativePath="..\..\src\multiplayer_create.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\multiplayer_lobby.cpp"
 				>
 			</File>
 			<File
@@ -857,34 +857,6 @@
 					</File>
 					<File
 						RelativePath="..\..\src\gui\widgets\debug.cpp"
-						>
-						<FileConfiguration
-							Name="Debug|Win32"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-								ObjectFile="$(IntDir)\Gui\Widgets\"
-							/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Release|Win32"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-								ObjectFile="$(IntDir)\Gui\Widgets\"
-							/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug (fast)|Win32"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-								ObjectFile="$(IntDir)\Gui\Widgets\"
-							/>
-						</FileConfiguration>
-					</File>
-					<File
-						RelativePath="..\..\src\gui\widgets\event_handler.cpp"
 						>
 						<FileConfiguration
 							Name="Debug|Win32"
@@ -2420,6 +2392,34 @@
 						</FileConfiguration>
 					</File>
 					<File
+						RelativePath="..\..\src\gui\auxiliary\timer.cpp"
+						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug (fast)|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\"
+							/>
+						</FileConfiguration>
+					</File>
+					<File
 						RelativePath="..\..\src\gui\auxiliary\widget_definition.cpp"
 						>
 						<FileConfiguration
@@ -3091,6 +3091,94 @@
 								<Tool
 									Name="VCCLCompilerTool"
 									ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+								/>
+							</FileConfiguration>
+						</File>
+					</Filter>
+					<Filter
+						Name="Event"
+						>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\event\dispatcher.cpp"
+							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Event\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Event\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Debug (fast)|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Event\"
+								/>
+							</FileConfiguration>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\event\distributor.cpp"
+							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Event\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Event\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Debug (fast)|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Event\"
+								/>
+							</FileConfiguration>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\event\handler.cpp"
+							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Event\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Event\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Debug (fast)|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Event\"
 								/>
 							</FileConfiguration>
 						</File>
@@ -5229,6 +5317,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\src\mp_game_settings.hpp"
+				>
+			</File>
+			<File
 				RelativePath="..\..\src\multiplayer.hpp"
 				>
 			</File>
@@ -5242,10 +5334,6 @@
 			</File>
 			<File
 				RelativePath="..\..\src\multiplayer_error_codes.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\multiplayer_lobby.hpp"
 				>
 			</File>
 			<File
@@ -5847,6 +5935,10 @@
 						>
 					</File>
 					<File
+						RelativePath="..\..\src\gui\auxiliary\timer.hpp"
+						>
+					</File>
+					<File
 						RelativePath="..\..\src\gui\auxiliary\widget_definition.hpp"
 						>
 					</File>
@@ -5947,6 +6039,26 @@
 						</File>
 						<File
 							RelativePath="..\..\src\gui\auxiliary\window_builder\vertical_scrollbar.hpp"
+							>
+						</File>
+					</Filter>
+					<Filter
+						Name="Event"
+						>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\event\dispatcher.hpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\event\dispatcher_private.hpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\event\distributor.hpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\event\handler.hpp"
 							>
 						</File>
 					</Filter>
