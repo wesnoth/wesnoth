@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-12-12 11:44+0100\n"
+"POT-Creation-Date: 2009-12-13 15:50+0100\n"
 "PO-Revision-Date: 2009-11-15 13:03+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -7325,7 +7325,7 @@ msgstr ""
 "zavisnosti da biste igrali.)"
 
 #: src/addon_management.cpp:527 src/addon_management.cpp:599
-#: src/multiplayer.cpp:214 src/multiplayer.cpp:269 src/multiplayer_ui.cpp:80
+#: src/multiplayer.cpp:214 src/multiplayer.cpp:274 src/multiplayer_ui.cpp:80
 msgid "Connection timed out"
 msgstr "Veza je istekla."
 
@@ -8915,15 +8915,15 @@ msgstr "Server zahteva verziju '$version1', dok je vaša '$version2'."
 msgid "Server-side redirect loop"
 msgstr "Petlja preusmeravanja na strani servera"
 
-#: src/multiplayer.cpp:292
+#: src/multiplayer.cpp:297
 msgid "You must login first."
 msgstr "Morate se prvo prijaviti."
 
-#: src/multiplayer.cpp:294
+#: src/multiplayer.cpp:299
 msgid "The nick '$nick' is already taken."
 msgstr "Nadimak „$nick“ već je zauzet."
 
-#: src/multiplayer.cpp:296
+#: src/multiplayer.cpp:301
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
@@ -8931,27 +8931,27 @@ msgstr ""
 "Nadimak „$nick“ sadrži nevaljane znakove. Dozvoljena su samo slova, brojevi, "
 "podvlake i crtice."
 
-#: src/multiplayer.cpp:300
+#: src/multiplayer.cpp:305
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
 msgstr "Nadimak „$nick“ je predugačak. Ne može imati više od 18 znakova."
 
-#: src/multiplayer.cpp:303
+#: src/multiplayer.cpp:308
 msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr "Nadimak „$nick“ je rezervisan i igrači ga ne mogu uzeti."
 
-#: src/multiplayer.cpp:305
+#: src/multiplayer.cpp:310
 msgid "The nick '$nick' is not registered on this server."
 msgstr "Nadimak „$nick“ nije registrovan na ovom serveru."
 
-#: src/multiplayer.cpp:306
+#: src/multiplayer.cpp:311
 msgid " This server disallows unregistered nicks."
 msgstr " Ovaj server ne dozvoljava neregistrovane nadimke."
 
-#: src/multiplayer.cpp:308 src/multiplayer.cpp:310
+#: src/multiplayer.cpp:313 src/multiplayer.cpp:315
 msgid "The nick '$nick' is registered on this server."
 msgstr "Nadimak „$nick“ registrovan je na ovom serveru."
 
-#: src/multiplayer.cpp:311
+#: src/multiplayer.cpp:316
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
@@ -8959,12 +8959,12 @@ msgstr ""
 "UPOZORENJE: Jedan klijent već ima ovaj nadimak, prijavljivanjem ćete ga "
 "izbaciti!"
 
-#: src/multiplayer.cpp:314
+#: src/multiplayer.cpp:319
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr "Greška u postupku prijavljivanja (server nema seme za vašu vezu)."
 
-#: src/multiplayer.cpp:317
+#: src/multiplayer.cpp:322
 msgid "The password you provided was incorrect."
 msgstr "Dali ste neispravnu lozinku."
 

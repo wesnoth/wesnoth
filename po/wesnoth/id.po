@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-12-12 11:44+0100\n"
+"POT-Creation-Date: 2009-12-13 15:50+0100\n"
 "PO-Revision-Date: 2009-04-27 14:31+0530\n"
 "Last-Translator: Nicky IW <inkraiswitras@yahoo.com>\n"
 "Language-Team: none\n"
@@ -7547,7 +7547,7 @@ msgid ""
 msgstr ""
 
 #: src/addon_management.cpp:527 src/addon_management.cpp:599
-#: src/multiplayer.cpp:214 src/multiplayer.cpp:269 src/multiplayer_ui.cpp:80
+#: src/multiplayer.cpp:214 src/multiplayer.cpp:274 src/multiplayer_ui.cpp:80
 msgid "Connection timed out"
 msgstr "Koneksi timed out."
 
@@ -9138,15 +9138,15 @@ msgstr ""
 msgid "Server-side redirect loop"
 msgstr "Putaran kembali dari server"
 
-#: src/multiplayer.cpp:292
+#: src/multiplayer.cpp:297
 msgid "You must login first."
 msgstr "Anda harus pertama-tama login."
 
-#: src/multiplayer.cpp:294
+#: src/multiplayer.cpp:299
 msgid "The nick '$nick' is already taken."
 msgstr "Nama '$nick' sudah diambil."
 
-#: src/multiplayer.cpp:296
+#: src/multiplayer.cpp:301
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
@@ -9154,29 +9154,29 @@ msgstr ""
 "Nama '$nick' memiliki karakter tidak berlaku. Hanya huruf, angka, garis "
 "bawah dan strip dibolehkan."
 
-#: src/multiplayer.cpp:300
+#: src/multiplayer.cpp:305
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
 msgstr ""
 "Nama '$nick' terlalu panjang. Nama harus memiliki 18 karakter atau lebih "
 "sedikit."
 
-#: src/multiplayer.cpp:303
+#: src/multiplayer.cpp:308
 msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr "Nama '$nick' dilindungi dan tidak bisa digunakan oleh pemain."
 
-#: src/multiplayer.cpp:305
+#: src/multiplayer.cpp:310
 msgid "The nick '$nick' is not registered on this server."
 msgstr "Nama '$nick' tidak terdaftar di server ini"
 
-#: src/multiplayer.cpp:306
+#: src/multiplayer.cpp:311
 msgid " This server disallows unregistered nicks."
 msgstr "Server ini tidak membolehkan nama-nama tidak terdaftar."
 
-#: src/multiplayer.cpp:308 src/multiplayer.cpp:310
+#: src/multiplayer.cpp:313 src/multiplayer.cpp:315
 msgid "The nick '$nick' is registered on this server."
 msgstr "Nama '$nick' terdaftar di server ini"
 
-#: src/multiplayer.cpp:311
+#: src/multiplayer.cpp:316
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
@@ -9184,13 +9184,13 @@ msgstr ""
 "PERINGATAN: Sudah ada sebuah klien menggunakan nama ini, melog in akan "
 "menyebabkan klien tersebut ditendang!"
 
-#: src/multiplayer.cpp:314
+#: src/multiplayer.cpp:319
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
 "Error di prosedur login (server tidak memiliki biji untuk koneksi anda)."
 
-#: src/multiplayer.cpp:317
+#: src/multiplayer.cpp:322
 msgid "The password you provided was incorrect."
 msgstr "Kata sandi yang anda berikan salah."
 

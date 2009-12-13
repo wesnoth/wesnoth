@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-12-12 11:44+0100\n"
+"POT-Creation-Date: 2009-12-13 15:50+0100\n"
 "PO-Revision-Date: 2009-11-19 19:36+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
@@ -7303,7 +7303,7 @@ msgstr ""
 "hraním potrebné nainštalovať jeho závislosti.)"
 
 #: src/addon_management.cpp:527 src/addon_management.cpp:599
-#: src/multiplayer.cpp:214 src/multiplayer.cpp:269 src/multiplayer_ui.cpp:80
+#: src/multiplayer.cpp:214 src/multiplayer.cpp:274 src/multiplayer_ui.cpp:80
 msgid "Connection timed out"
 msgstr "Čas na pripojenie vypršal"
 
@@ -8882,15 +8882,15 @@ msgstr ""
 msgid "Server-side redirect loop"
 msgstr "Server presmerováva dokola"
 
-#: src/multiplayer.cpp:292
+#: src/multiplayer.cpp:297
 msgid "You must login first."
 msgstr "Musíš sa najprv prihlásiť."
 
-#: src/multiplayer.cpp:294
+#: src/multiplayer.cpp:299
 msgid "The nick '$nick' is already taken."
 msgstr "Prezývka '$nick' je už používaná."
 
-#: src/multiplayer.cpp:296
+#: src/multiplayer.cpp:301
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
@@ -8898,28 +8898,28 @@ msgstr ""
 "Prezývka '$nick' obsahuje nepovolené znaky. Povolené sú len písmená, čísla, "
 "pomlčky a podtržníky."
 
-#: src/multiplayer.cpp:300
+#: src/multiplayer.cpp:305
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
 msgstr ""
 "Prezývka '$nick' je príliš dlhá. Prezývky môžu mať maximálne 18 znakov."
 
-#: src/multiplayer.cpp:303
+#: src/multiplayer.cpp:308
 msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr "Prezývka '$nick' je rezervovaná a nemôže byť použitá hráčmi."
 
-#: src/multiplayer.cpp:305
+#: src/multiplayer.cpp:310
 msgid "The nick '$nick' is not registered on this server."
 msgstr "Prezývka '$nick' nie je na tomto serveri registrovaná."
 
-#: src/multiplayer.cpp:306
+#: src/multiplayer.cpp:311
 msgid " This server disallows unregistered nicks."
 msgstr " Tento server nepovoľuje neregistrované prezývky."
 
-#: src/multiplayer.cpp:308 src/multiplayer.cpp:310
+#: src/multiplayer.cpp:313 src/multiplayer.cpp:315
 msgid "The nick '$nick' is registered on this server."
 msgstr "Prezývka '$nick' je na tomto serveri registrovaná."
 
-#: src/multiplayer.cpp:311
+#: src/multiplayer.cpp:316
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
@@ -8927,12 +8927,12 @@ msgstr ""
 "VAROVANIE: Túto prezývku už používa iný používateľ, prihlásenie spôsobí "
 "vykopnutie tohto používateľa!"
 
-#: src/multiplayer.cpp:314
+#: src/multiplayer.cpp:319
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr "Chyba pri prihlasovaní (server nemal 'seed' pre toto pripojenie)."
 
-#: src/multiplayer.cpp:317
+#: src/multiplayer.cpp:322
 msgid "The password you provided was incorrect."
 msgstr "Zadané heslo je nesprávne."
 

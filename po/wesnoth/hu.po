@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-12-12 11:44+0100\n"
+"POT-Creation-Date: 2009-12-13 15:50+0100\n"
 "PO-Revision-Date: 2009-11-03 18:24+0100\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
@@ -7463,7 +7463,7 @@ msgstr ""
 "függőségét is telepítened kell.)"
 
 #: src/addon_management.cpp:527 src/addon_management.cpp:599
-#: src/multiplayer.cpp:214 src/multiplayer.cpp:269 src/multiplayer_ui.cpp:80
+#: src/multiplayer.cpp:214 src/multiplayer.cpp:274 src/multiplayer_ui.cpp:80
 msgid "Connection timed out"
 msgstr "A kapcsolat túllépte az időt"
 
@@ -9047,15 +9047,15 @@ msgstr ""
 msgid "Server-side redirect loop"
 msgstr "Kiszolgálóoldali átirányító hurok"
 
-#: src/multiplayer.cpp:292
+#: src/multiplayer.cpp:297
 msgid "You must login first."
 msgstr "Először be kell jelentkezned."
 
-#: src/multiplayer.cpp:294
+#: src/multiplayer.cpp:299
 msgid "The nick '$nick' is already taken."
 msgstr "Ez a becenév („$nick”) már foglalt."
 
-#: src/multiplayer.cpp:296
+#: src/multiplayer.cpp:301
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
@@ -9063,32 +9063,32 @@ msgstr ""
 "A megadott becenév („$nick”) érvénytelen karaktereket tartalmaz. Csak ékezet "
 "nélküli betűk, számok, aláhúzás és kötőjel használható."
 
-#: src/multiplayer.cpp:300
+#: src/multiplayer.cpp:305
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
 msgstr ""
 "A megadott becenév („$nick”) túl hosszú. Tizenkilenc karakternél rövidebbnek "
 "kell lennie."
 
-#: src/multiplayer.cpp:303
+#: src/multiplayer.cpp:308
 msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr ""
 "Ez a becenév („$nick”) különleges célokra van fenntartva, játékosok nem "
 "használhatják."
 
-#: src/multiplayer.cpp:305
+#: src/multiplayer.cpp:310
 msgid "The nick '$nick' is not registered on this server."
 msgstr "A megadott becenév („$nick”) nincs regisztrálva a kiszolgálón."
 
-#: src/multiplayer.cpp:306
+#: src/multiplayer.cpp:311
 msgid " This server disallows unregistered nicks."
 msgstr ""
 "Ehhez a kiszolgálóhoz csak regisztrált felhasználónévvel lehet csatlakozni."
 
-#: src/multiplayer.cpp:308 src/multiplayer.cpp:310
+#: src/multiplayer.cpp:313 src/multiplayer.cpp:315
 msgid "The nick '$nick' is registered on this server."
 msgstr "A megadott becenév („$nick”) regisztrálva van a kiszolgálón."
 
-#: src/multiplayer.cpp:311
+#: src/multiplayer.cpp:316
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
@@ -9096,14 +9096,14 @@ msgstr ""
 "FIGYELMEZTETÉS: Egy másik kliens már bejelentkezett ezzel a becenévvel! Az "
 "ismételt bejelentkezés az első kliens leválasztását vonja maga után!"
 
-#: src/multiplayer.cpp:314
+#: src/multiplayer.cpp:319
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
 "Hiba a bejelentkezés folyamatában (a kiszolgálónak nem volt elég kapacitása "
 "egy új kapcsolat fogadásához)."
 
-#: src/multiplayer.cpp:317
+#: src/multiplayer.cpp:322
 msgid "The password you provided was incorrect."
 msgstr "A megadott jelszó érvénytelen."
 
