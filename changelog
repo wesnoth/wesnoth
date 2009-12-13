@@ -1,4 +1,4 @@
-Version 1.7.9+svn:
+Version 1.7.10-1.8beta3:
  * Graphics:
    * Added attack icon for Drake Ram attack, and for UtBS's Giant Ant.
  * Language and i18n:
@@ -12,20 +12,20 @@ Version 1.7.9+svn:
    * Fix bug #14859: [time_area] created by event are not saved
    * Allow modifications to change unit ellipse
  * Miscellaneous and bugfixes:
-   * Fix bug #14865: move+attack into hex with ambusher causes crash
-   * Shorter "Initializing Display" phase when staying in same campaign/MP
-   * Optimize AI recruitement and movement phases
-   * Add hotkey support for gui2
-   * Remove spurious hover error messages
-   * Fix the gui2 unit tests
-   * Reduced header dependencies
-   * Fix the addon upload script to include the translate flag (patch #1387)
-   * Added a new gui2 timer engine
-   * Converted the hover tooltips to use the new timer engine
-   * MP lobby refresh to the new timer engine
-   * Change Drake Flare and Flameheart weapon names to match new weapons
    * Add a minimap cache for gui2
    * Add a new super class for the button
+   * Added a new gui2 timer engine
+   * Add hotkey support for gui2
+   * Change Drake Flare and Flameheart weapon names to match new weapons
+   * Converted the hover tooltips to use the new timer engine
+   * Fix bug #14865: move+attack into hex with ambusher causes crash
+   * Fix the addon upload script to include the translate flag (patch #1387)
+   * Fix the gui2 unit tests
+   * MP lobby refresh to the new timer engine
+   * Optimize AI recruitement and movement phases
+   * Reduced header dependencies
+   * Remove spurious hover error messages
+   * Shorter "Initializing Display" phase when staying in same campaign/MP
 
 Version 1.7.9-beta2:
  * AI:
