@@ -57,6 +57,10 @@ add_timer(const Uint32 interval
 /**
  * Removes a timer.
  *
+ * It's save to remove a timer in its own callback, only the value returned
+ * might not be accurate. The destruction is postponed until the execution is
+ * finished  and the return value is whether the postponing was successful.
+ *
  * @param id                      The id of the timer to remove, this is the id
  *                                returned by add_timer.
  *

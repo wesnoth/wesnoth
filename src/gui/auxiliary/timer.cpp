@@ -45,6 +45,45 @@ struct ttimer
 	/** The active timers. */
 	static std::map<unsigned long, ttimer> timers;
 
+	/** The id of the event being executed, 0 if none. */
+	static unsigned long executing_id = 0;
+
+	/** Did somebody try to remove the timer during its execution? */
+	static bool executing_id_removed = false;
+
+/**
+ * Helper to make removing a timer in a callback safe.
+ *
+ * Upon creation it sets the executing id and clears the remove request flag.
+ *
+ * If an remove_timer() is called for the id being executed it requests a
+ * remove the timer and exits remove_timer().
+ *
+ * Upon destruction it tests whether there was a request to remove the id and
+ * does so. It also clears the executing id. It leaves the remove request flag
+ * since the execution function needs to know whether or not the event was
+ * removed.
+ */
+class texecutor
+{
+public:
+	texecutor(unsigned long id)
+	{
+		executing_id = id;
+		executing_id_removed = false;
+
+	}
+
+	~texecutor()
+	{
+		const unsigned long id = executing_id;
+		executing_id = 0;
+		if(executing_id_removed) {
+			remove_timer(id);
+		}
+	}
+};
+
 static Uint32 timer_callback(Uint32, void* id)
 {
 	DBG_GUI_E << "Pushing timer event in queue.\n";
@@ -115,6 +154,11 @@ remove_timer(const unsigned long id)
 		return false;
 	}
 
+	if(id == executing_id) {
+		executing_id_removed = true;
+		return true;
+	}
+
 	if(!SDL_RemoveTimer(itor->second.sdl_id)) {
 		/*
 		 * This can happen if the caller of the timer didn't get the event yet
@@ -142,8 +186,12 @@ execute_timer(const unsigned long id)
 		return false;
 	}
 
-	itor->second.callback(id);
-	if(itor->second.interval == 0) {
+	{
+		texecutor executor(id);
+		itor->second.callback(id);
+	}
+
+	if(!executing_id_removed && itor->second.interval == 0) {
 		timers.erase(itor);
 	}
 	return true;
