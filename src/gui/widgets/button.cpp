@@ -29,6 +29,7 @@ namespace gui2 {
 
 tbutton::tbutton()
 	: tcontrol(COUNT)
+	, tclickable_()
 	, state_(ENABLED)
 	, retval_(0)
 	, callback_mouse_left_click_(0)

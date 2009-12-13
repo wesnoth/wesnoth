@@ -16,13 +16,16 @@
 #define GUI_WIDGETS_BUTTON_HPP_INCLUDED
 
 #include "gui/widgets/control.hpp"
+#include "gui/widgets/clickable.hpp"
 
 namespace gui2 {
 
 /**
  * Simple push button.
  */
-class tbutton : public tcontrol
+class tbutton
+	: public tcontrol
+	, public tclickable_
 {
 public:
 	tbutton();
@@ -63,6 +66,18 @@ public:
 
 	/** Inherited from tcontrol. */
 	unsigned get_state() const { return state_; }
+
+	/** Inherited from tclickable. */
+	void connect_click_handler(const event::tsignal_function& signal)
+	{
+		connect_signal_mouse_left_click(signal);
+	}
+
+	/** Inherited from tclickable. */
+	void disconnect_click_handler(const event::tsignal_function& signal)
+	{
+		disconnect_signal_mouse_left_click(signal);
+	}
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
