@@ -45,6 +45,7 @@ namespace settings {
 	unsigned popup_show_time = 0;
 	unsigned help_show_time = 0;
 	unsigned double_click_time = 0;
+	unsigned repeat_button_repeat_time = 0;
 
 	std::string sound_button_click = "";
 	std::string sound_toggle_button_click = "";
@@ -201,6 +202,7 @@ const std::string& tgui_definition::read(const config& cfg)
  *     Minimap                       @macro = minimap_description
  *     Multi_page                    @macro = multi_page_description
  *     Panel                         @macro = panel_description
+ *     Repeating_button              @macro = repeating_button_description
  *     Scroll_label                  @macro = scroll_label_description
  *     Slider                        @macro = slider_description
  *     Spacer                        @macro = spacer_description
@@ -275,6 +277,7 @@ const std::string& tgui_definition::read(const config& cfg)
 	load_definitions<tmulti_page_definition>("multi_page", cfg);
 	load_definitions<tstacked_widget_definition>("stacked_widget", cfg);
 	load_definitions<tpanel_definition>("panel", cfg);
+	load_definitions<trepeating_button_definition>("repeating_button", cfg);
 	load_definitions<tscroll_label_definition>("scroll_label", cfg);
 	load_definitions<tscrollbar_panel_definition>("scrollbar_panel", cfg);
 	load_definitions<tslider_definition>("slider", cfg);
@@ -323,6 +326,10 @@ const std::string& tgui_definition::read(const config& cfg)
  *                                     widget.
  *     double_click_time (unsigned)    The time between two clicks to still be a
  *                                     double click.
+ *     repeat_button_repeat_time (unsigned = 0)
+ *                                     The time a repeating button waits before
+ *                                     the next event is issued if the button
+ *                                     is still pressed down.
  *
  *     sound_button_click (string = "")
  *                                     The sound played if a button is
@@ -357,6 +364,9 @@ const std::string& tgui_definition::read(const config& cfg)
 	help_show_time_ = lexical_cast_default<unsigned>(settings["help_show_time"]);
 	double_click_time_ = lexical_cast_default<unsigned>(settings["double_click_time"]);
 
+	repeat_button_repeat_time_ = lexical_cast_default<unsigned>(
+				settings["repeat_button_repeat_time"]);
+
 	VALIDATE(double_click_time_, missing_mandatory_wml_key("settings", "double_click_time"));
 
 	sound_button_click_ = settings["sound_button_click"];
@@ -373,6 +383,7 @@ void tgui_definition::activate() const
 	settings::popup_show_time = popup_show_time_;
 	settings::help_show_time = help_show_time_;
 	settings::double_click_time = double_click_time_;
+	settings::repeat_button_repeat_time = repeat_button_repeat_time_;
 	settings::sound_button_click = sound_button_click_;
 	settings::sound_toggle_button_click = sound_toggle_button_click_;
 	settings::sound_toggle_panel_click = sound_toggle_panel_click_;
@@ -852,6 +863,40 @@ tpanel_definition::tresolution::tresolution(const config& cfg) :
 	// The panel needs to know the order.
 	state.push_back(tstate_definition(cfg.child("background")));
 	state.push_back(tstate_definition(cfg.child("foreground")));
+}
+
+trepeating_button_definition::trepeating_button_definition(const config& cfg) :
+	tcontrol_definition(cfg)
+{
+	DBG_GUI_P << "Parsing repeating button " << id << '\n';
+
+	load_resolutions<tresolution>(cfg);
+}
+
+trepeating_button_definition::tresolution::tresolution(const config& cfg) :
+	tresolution_definition_(cfg)
+{
+/*WIKI
+ * @page = GUIWidgetDefinitionWML
+ * @order = 1_repeating_button
+ *
+ * == Repeating button ==
+ *
+ * @macro = repeating_button_description
+ *
+ * The following states exist:
+ * * state_enabled, the repeating_button is enabled.
+ * * state_disabled, the repeating_button is disabled.
+ * * state_pressed, the left mouse repeating_button is down.
+ * * state_focussed, the mouse is over the repeating_button.
+ *
+ */
+	// Note the order should be the same as the enum tstate in
+	// repeating_button.hpp.
+	state.push_back(tstate_definition(cfg.child("state_enabled")));
+	state.push_back(tstate_definition(cfg.child("state_disabled")));
+	state.push_back(tstate_definition(cfg.child("state_pressed")));
+	state.push_back(tstate_definition(cfg.child("state_focussed")));
 }
 
 tscroll_label_definition::tscroll_label_definition(const config& cfg) :

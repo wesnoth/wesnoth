@@ -237,6 +237,7 @@ set(wesnoth-main_SRC
     gui/auxiliary/window_builder/minimap.cpp
     gui/auxiliary/window_builder/menubar.cpp
     gui/auxiliary/window_builder/multi_page.cpp
+    gui/auxiliary/window_builder/repeating_button.cpp
     gui/auxiliary/window_builder/scroll_label.cpp
     gui/auxiliary/window_builder/scrollbar_panel.cpp
     gui/auxiliary/window_builder/slider.cpp
@@ -286,6 +287,7 @@ set(wesnoth-main_SRC
     gui/widgets/multi_page.cpp
     gui/widgets/panel.cpp
     gui/widgets/password_box.cpp
+    gui/widgets/repeating_button.cpp
     gui/widgets/settings.cpp
     gui/widgets/scroll_label.cpp
     gui/widgets/scrollbar_container.cpp

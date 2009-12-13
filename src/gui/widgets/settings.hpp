@@ -233,6 +233,18 @@ struct tpanel_definition : public tcontrol_definition
 	};
 };
 
+struct trepeating_button_definition
+	: public tcontrol_definition
+{
+	trepeating_button_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		tresolution(const config& cfg);
+	};
+
+};
+
 struct tscroll_label_definition : public tcontrol_definition
 {
 
@@ -393,6 +405,7 @@ struct tgui_definition
 		, popup_show_time_(0)
 		, help_show_time_(0)
 		, double_click_time_(0)
+		, repeat_button_repeat_time_(0)
 		, sound_button_click_()
 		, sound_toggle_button_click_()
 		, sound_toggle_panel_click_()
@@ -426,6 +439,7 @@ private:
 	unsigned popup_show_time_;
 	unsigned help_show_time_;
 	unsigned double_click_time_;
+	unsigned repeat_button_repeat_time_;
 
 	std::string sound_button_click_;
 	std::string sound_toggle_button_click_;
@@ -465,6 +479,7 @@ private:
 		extern unsigned popup_show_time;
 		extern unsigned help_show_time;
 		extern unsigned double_click_time;
+		extern unsigned repeat_button_repeat_time;
 
 		extern std::string sound_button_click;
 		extern std::string sound_toggle_button_click;

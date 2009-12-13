@@ -30,6 +30,7 @@
 #include "gui/auxiliary/window_builder/minimap.hpp"
 #include "gui/auxiliary/window_builder/menubar.hpp"
 #include "gui/auxiliary/window_builder/multi_page.hpp"
+#include "gui/auxiliary/window_builder/repeating_button.hpp"
 #include "gui/auxiliary/window_builder/scroll_label.hpp"
 #include "gui/auxiliary/window_builder/scrollbar_panel.hpp"
 #include "gui/auxiliary/window_builder/slider.hpp"
@@ -77,6 +78,7 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 	TRY(minimap);
 	TRY(multi_page);
 	TRY(panel);
+	TRY(repeating_button);
 	TRY(scroll_label);
 	TRY(scrollbar_panel);
 	TRY(slider);
