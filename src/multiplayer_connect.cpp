@@ -654,10 +654,14 @@ config connect::side::get_config() const
 			}
 			{
 				res["id"] = res["save_id"];
-				const config &ai_cfg = ai::configuration::get_ai_config_for(ai_algorithm_);
-				res.add_child("ai",ai_cfg);
 				utils::string_map symbols;
-				symbols["playername"] = ai_cfg["description"];
+				if (allow_player_) {
+					const config &ai_cfg = ai::configuration::get_ai_config_for(ai_algorithm_);
+					res.add_child("ai",ai_cfg);
+					symbols["playername"] = ai_cfg["description"];
+				} else { // do not import default ai cfg here - all is set by scenario config
+					symbols["playername"] = _("Computer Player");
+				}
 				symbols["side"] = res["side"].str();
 				description = vgettext("$playername $side",symbols);
 			}
