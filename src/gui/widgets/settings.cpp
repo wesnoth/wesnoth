@@ -661,29 +661,33 @@ tlistbox_definition::tresolution::tresolution(const config& cfg) :
  * @end_table
  *
  * @start_table = container
- *     [_begin] (button)               Moves the position to the beginning of
+ *     [_begin] (clickable)            Moves the position to the beginning of
  *                                     the list.
- *     [_line_up] (button)             Move the position one item up. (NOTE if
+ *     [_line_up] (clickable)          Move the position one item up. (NOTE if
  *                                     too many items to move per item it might
  *                                     be more items.)
- *     [_half_page_up] (button)        Move the position half the number of the
+ *     [_half_page_up] (clickable)     Move the position half the number of the
  *                                     visible items up. (See note at _line_up.)
- *     [_page_up] (button)             Move the position the number of visible
+ *     [_page_up] (clickable)          Move the position the number of visible
  *                                     items up. (See note at _line_up.)
  *
  *
- *     [_end] (button)                 Moves the position to the end of the
+ *     [_end] (clickable)              Moves the position to the end of the
  *                                     list.
- *     [_line_down] (button)           Move the position one item down.(See note
+ *     [_line_down] (clickable)        Move the position one item down.(See note
  *                                     at _line_up.)
- *     [_half_page_down] (button)      Move the position half the number of the
+ *     [_half_page_down] (clickable)   Move the position half the number of the
  *                                     visible items down. (See note at _line_up.)
- *     [_page_down] (button)            Move the position the number of visible
+ *     [_page_down] (clickable)         Move the position the number of visible
  *                                     items down. (See note at _line_up.)
  *
  *     _scrollbar (vertical_scrollbar) This is the scrollbar so the user can
  *                                     scroll through the list.
  * @end_table
+ *
+ * A clickable is one of:
+ * * button
+ * * repeating_button
  *
  * The following states exist:
  * * state_enabled, the listbox is enabled.
