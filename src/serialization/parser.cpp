@@ -62,7 +62,7 @@ private:
 	void parse_variable();
 	void parse_directive();
 	std::string lineno_string(utils::string_map &map, std::string const &lineno,
-			          std::string const &error_string);
+		const char *error_string);
 	void error(const std::string& message);
 
 	config& cfg_;
@@ -325,11 +325,11 @@ void parser::parse_variable()
 /**
  * This function is crap. Don't use it on a string_map with prefixes.
  */
-std::string parser::lineno_string(utils::string_map &i18n_symbols, std::string const &lineno,
-			          std::string const &error_string)
+std::string parser::lineno_string(utils::string_map &i18n_symbols,
+	std::string const &lineno, const char *error_string)
 {
 	i18n_symbols["pos"] = ::lineno_string(lineno);
-	std::string result = _(error_string.c_str());
+	std::string result = _(error_string);
 	foreach(utils::string_map::value_type& var, i18n_symbols)
 		boost::algorithm::replace_all(result, std::string("$") + var.first, std::string(var.second));
 	return result;
