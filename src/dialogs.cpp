@@ -212,11 +212,7 @@ bool animate_unit_advancement(const map_location &loc, size_t choice)
 
 	if (u != resources::units->end() && !resources::screen->video().update_locked()) {
 		unit_animator animator;
-		bool with_bars = true;
-		std::stringstream text;
-		text << _("Level") << " " << u->second.level();
-		Uint32 color = display::rgb(255,255,255);
-		animator.add_animation(&u->second,"levelin",u->first, map_location(), 0, with_bars, false, text.str(), color);
+		animator.add_animation(&u->second,"levelin",u->first, map_location(), 0, true);
 		animator.start_animations();
 		animator.wait_for_end();
 		animator.set_all_standing();
