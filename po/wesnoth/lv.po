@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.9\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-12-13 15:50+0100\n"
-"PO-Revision-Date: 2009-12-09 20:30+0300\n"
+"PO-Revision-Date: 2009-12-13 21:49+0300\n"
 "Last-Translator: Reinis Danne <rei4dan@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -1009,7 +1009,6 @@ msgstr ""
 
 #. [topic]: id=movement
 #: data/core/help.cfg:216
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1034,7 +1033,7 @@ msgstr ""
 "noskaidrot, cik pārvietošanās punkti vienībai nepieciešami, lai ieietu "
 "noteiktā apvidus tipā, klikšķinot ar labo peles taustiņu uz tās un "
 "izvēloties 'Vienības aprakstu', un tad skatoties pie <italic>text='Apvidus "
-"apstākļi'</italic>."
+"apstākļiem'</italic>."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:218
@@ -1910,7 +1909,6 @@ msgstr "Lojalitāte"
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:408
-#, fuzzy
 msgid ""
 "Loyal units don't incur upkeep. Most units incur an upkeep cost at the end "
 "of every turn, which is equal to their level. Loyal units do not incur this "
@@ -2256,6 +2254,15 @@ msgid ""
 "\n"
 "Most units receive about 60% defense in mountains, whereas Dwarves enjoy 70%."
 msgstr ""
+"Kalni ir pietiekami stāvi, lai vienībām bieži nāktos rāpties pāri šķēršļiem, "
+"lai pārvietotos. Tie dod dabīgu aizsardzības papildinājumu lielākajai daļai "
+"vienību, bet tie arī spēcīgi apgrūtina jebkuru pāriešanu pāri tiem. Lielākā "
+"daļa kavalēristu vispār nespēj ieiet kalnainā apvidū, lai gan elfu jātnieki "
+"ir izņēmums, tā pat kā goblinu vilku jātnieki. Gan rūķi, gan troļļi ir kalnu "
+"dabīgie iemītnieki, un tiem ir ļoti viegli tur pārvietoties.\n"
+"\n"
+"Vairums vienību kalnos saņem aptuveni 60% aizsardzību, bet rūķi izbauda 70% "
+"aizsardzību."
 
 #. [topic]: id=terrain_swamp_water
 #: data/core/help.cfg:539
@@ -2274,6 +2281,14 @@ msgid ""
 "Most units make do with 30% defense in swamps. Mermen, Naga, and Saurians "
 "all generally enjoy 60%."
 msgstr ""
+"Purvi pārstāv jebkura veida slapjās zemes. Purvi palēlina gandrīz visus, un "
+"apgrūtina to spēju aizsargāties. Izņēmums ir jebkura rase, kuras ķermenis ir "
+"piemērots kustībai ūdenī, tās var gan netraucēti pārvietoties, gan arī tām "
+"ir priekšrocības aizsargājoties. Tie, kuri dzīvo šajās slapjajās zemēs, arī "
+"ir lietpratēji šī apvidus izmantošanā aizsegam.\n"
+"\n"
+"Lielākajai daļai vienību ir jāiztiek ar 30% aizsardzību purvos, bet nāras, "
+"nāgas un rāpuļi parasti izbauda 60% aizsardzību."
 
 #. [topic]: id=terrain_shallow_water
 #: data/core/help.cfg:551
@@ -2293,6 +2308,15 @@ msgid ""
 "Most units make do with 20 to 30% defense in shallow water, whereas both "
 "Naga and Mermen enjoy 60%."
 msgstr ""
+"Par seklu ūdeni tiek uzskatīta jebkura ūdenskrātuves daļa, kas ir pietiekami "
+"dziļa, lai sasniegtu cilvēka vidukli. Tas ir pietiekami, lai palēlinātu tik "
+"pat kā visus, un atstātu tos atklātus uzbrukumam. Rūķiem, ņemot vērā, ka "
+"ūdens tiem sniedzas gandrīz līdz kaklam, ir īpaši grūti šādā situācijā. "
+"Izņēmums ir rases, kuru ķermeņi ir dabīgi piemēroti peldēšanai, tādēļ tie "
+"saņem ievērojamu aizsardzības pieaugumu un var pārvietoties netraucēti.\n"
+"\n"
+"Lielākā daļa vienību iztiek ar 20% līdz 30% aizsardzību ūdenī, kamēr gan "
+"nāgas, gan nāras izbauda 60%."
 
 #. [topic]: id=terrain_deep_water
 #: data/core/help.cfg:563
@@ -2308,6 +2332,11 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 50% defense in deep water, with full movement."
 msgstr ""
+"Dziļš ūdens ir jebkurā ūdenstilpnes daļā, kur tas ir pāri cilvēka galvai. "
+"Lielākā daļa vienību nevar ieiet dziļā ūdenī: tajā valda vienības, kuras "
+"spēj vai nu lidot, vai ir ārkārtīgi spēcīgi peldētāji.\n"
+"\n"
+"Nārām un nāgām ir 50% aizsardzība dziļā ūdenī, un netraucēta pārvietošanās."
 
 #. [topic]: id=terrain_frozen
 #: data/core/help.cfg:575
@@ -2324,6 +2353,12 @@ msgid ""
 "\n"
 "Most units have 20 to 40% defense in frozen terrain."
 msgstr ""
+"Sasaluma apvidus ir jebkurš līdzens apgabals, kas klāts ar sniegu un ledu. "
+"Lielākā daļa vienību tajā pārvietojas lēnāk, un tām ir grūtāk aizstāvēties. "
+"Ņemiet vērā, ka peldošās vienības (pat tās, kuras spēj elpot zem ūdens) "
+"nevar peldēt zem ledus.\n"
+"\n"
+"Vairumam vienību ir 20 līdz 40% aizsardzība sasaluma apvidū."
 
 #. [topic]: id=terrain_castle
 #: data/core/help.cfg:587
@@ -2343,6 +2378,15 @@ msgid ""
 "Most units have about 60% defense in a castle.\n"
 "\n"
 msgstr ""
+"Par pilīm tiek uzskatīti jebkuri pastāvīgi nocietinājumi. Gandrīz visas "
+"vienības saņem ievērojamu aizsardzības papildinājumu, ja tās novietotas "
+"pilī, un visas vienības spēj tur brīvi pārvietoties. Pils aizsardzības "
+"spējas pārstāv tajā novietotās vienības. Bez vienības katrā pils lauciņā, "
+"pretinieka vienība var ielavīties pilī netraucēta un iegūt to pašu "
+"aizsardzības pieaugumu, kā visiem iekšā.\n"
+"\n"
+"Vairumam vienību pilī ir 60% aizsardzība.\n"
+"\n"
 
 #. [topic]: id=terrain_sand
 #: data/core/help.cfg:601
@@ -2358,6 +2402,12 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in Sand."
 msgstr ""
+"Smilšu nestabilitāte apgrūtina gandrīz visu vienību pārvietošanos, un atstāj "
+"tās atklātas uzbrukumam. Te izceļas rāpuļveidīgās rases, kuru platās pēdas "
+"vai čūskveidīgie ķermeņi padara to pārvietošanos pa smiltīm krietni "
+"vieglāku.\n"
+"\n"
+"Lielākajai daļai vienību smiltīs ir 20 līdz 40% aizsardzība."
 
 #. [topic]: id=terrain_desert
 #: data/core/help.cfg:613
@@ -2371,6 +2421,9 @@ msgid ""
 "beaches, however for gameplay purposes they are identical. See "
 "<ref>dst='terrain_sand' text='Sand'</ref>."
 msgstr ""
+"Tuksnešiem ir mazliet savādāks sastāvs, kā mazām smilšu bedrēm vai "
+"pludmalēm, taču spēles ziņā tie ir identiski. Sk.<ref>dst='terrain_sand' "
+"text='smiltis'</ref>."
 
 #. [topic]: id=terrain_cave
 #: data/core/help.cfg:623
@@ -2390,6 +2443,16 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in Caves, whereas dwarves have 50%."
 msgstr ""
+"Alu pavidus ir jebkurā vienības cauriešanai pietiekami lielā pazemes alā. "
+"Vairums vienību kopumā nav pazīstamas ar šo apvidu, tādēļ tās tiek "
+"palēļinātas un to aizsardzība ir apgrūtināta. Rūķiem un troļļiem, kuri ir "
+"dzīvo alās, ir salīdzinoši viegli tajās pārvietoties, īpaši rūķiem, sava "
+"mazā auguma dēļ spēj apiet daudzus šķēršļus, kurus citas rases nespēj. "
+"Reizēm alas ir <ref>dst='terrain_illuminated_cave' text='izgaismotas'</"
+"ref>.\n"
+"\n"
+"Lielākajai daļai vienību alās ir 20 līdz 40% aizsardzība, kamēr rūķiem ir "
+"50%."
 
 #. [topic]: id=terrain_rockbound_cave
 #: data/core/help.cfg:635
@@ -2410,6 +2473,16 @@ msgid ""
 "Most units have about 50% defense in rocky caves, whereas cavalry are "
 "limited to 40%. Dwarves enjoy 60% defense in Rockbound caves."
 msgstr ""
+"Klinšu alus apvidus ir veidojies ūdens un vēja iedarbībā, tie nes abrazīvas "
+"daļiņas, kuras izgrebj klinti. Tas atgādina izdēdējušu pazemes alu, kura "
+"samazina praktiski visu vienību efektivitāti, bet dod aizsardzību. Rūķiem un "
+"troļļiem, kas ir galvenie alu apdzīvotāji, ir samērā viegli pārvietoties "
+"šajā apvidū. Rūķiem, pateicoties to mazajiem augumiem, ir vislielākās "
+"priekšrocības pārvietojoties šādā reljefā. Reizēm alas ir "
+"<ref>dst='terrain_illuminated_cave' text='Illuminated'</ref>\n"
+"\n"
+"Lielākajai daļai vienību ir aptuveni 50% aizsardzība akmeņainajās alās, kur "
+"kavalērija ir ierobežota līdz 40%. Rūķi izbauda 60% aizsardzību klinšu alās."
 
 #. [topic]: id=terrain_illuminated_cave
 #: data/core/help.cfg:647
@@ -2424,6 +2497,10 @@ msgid ""
 "for lawful units and removes the attack bonus from chaotic units. In all "
 "other regards this terrain is functionally identical to normal cave terrains."
 msgstr ""
+"Reti pazemes pasaules pleķi ir izgaismoti iespīdot gaismai no virspuses "
+"drūmajā tumsā. Tas dod uzbrukuma priekšrocības likumpaklausīgajām vienībām "
+"un noņem uzbrukuma priekšrocības haotiskajām vienībām. Visādā citā ziņā šis "
+"apvidus ir identisks parastiem alu apvidiem."
 
 #. [topic]: id=terrain_fungus
 #: data/core/help.cfg:657
@@ -2443,6 +2520,15 @@ msgid ""
 "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
 "receive only 20%."
 msgstr ""
+"Sēņu birzis ir plaši pazemes gigantisko sēņu meži, kas zeļ drēgnajā tumsā. "
+"Lielākajai daļai vienību ir grūtības pārvarēt mazāko sēņu veidoto mīksto "
+"grīdu, bet tiem netrūkst aizsega aiz lielākajām kājiņām. Tomēr jātnieku "
+"vienības iestieg pilnībā un tām trūkst vajadzīgā kustību brīvība kaujā. "
+"Nedzīvo vienībām ir dabīga tieksme pret pūšanu un sēņu audzēs tās funkcionē "
+"diecgan labi.\n"
+"\n"
+"Lielākajai daļai vienību sēņu birzīs ir 50% līdz 60% aizsardzība, kamēr "
+"kavalēristiem tikai 20%."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [topic]: id=terrain_village
@@ -2464,6 +2550,16 @@ msgid ""
 "40%.\n"
 "\n"
 msgstr ""
+"Ciemi ir jebkura ēku grupa, vienalga vai cilvēku vai ne. Praktiski visas "
+"vienības, pat kavalēristi, spēj viegli pārvietoties ciemos, un vairums "
+"vienību iegūst papildus aizsardzību, kad novietotas ciemā. Ciemi dod "
+"vienībām resursus tīrīšanai un apkopj viņu brūces, kas ļauj tur novietotai "
+"vienībai atveseļoties par astoņiem veselības punktiem, vai arī tikt "
+"izārstētām no indes.\n"
+"\n"
+"Lielākajai daļai vienību ir 50 līdz 60% aizsardzība ciemos, bet "
+"kavalēristiem tikai 40%.\n"
+"\n"
 
 #. [topic]: id=terrain_water_village
 #: data/core/help.cfg:685
@@ -2483,6 +2579,15 @@ msgid ""
 "Merfolk and Nagas have 60% defense in submerged villages, whereas land based "
 "units usually have a low defense."
 msgstr ""
+"Zemūdens ciemi ir nāru un nāgu mājvieta. Kamēr ūdens radījumi tur ir mājās, "
+"sauszemes iemītniekiem ir lielas grūtības pārvietoties un aizsargāties šajos "
+"ciemos. Tomēr, kā visos ciemos, iekārtojums ir pieejams visām radībām, kuras "
+"ļauj vienībām apkopt to brūces. Jebkura ciemā novietotā vienība var tikt "
+"dziedēta par astoņiem veselības punktiem katrā gājienā, vai arī tā var tikt "
+"izārstēta no indes.\n"
+"\n"
+"Nārām un nāgām zemūdens ciemos ir 60% aizsardzība, kamēr sauszemes vienībām "
+"parasti ir zemāka aizsardzība."
 
 #. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:697
@@ -2497,6 +2602,10 @@ msgid ""
 "would take days to traverse. As far as gameplay is concerned, only units "
 "capable of flying can cross this terrain."
 msgstr ""
+"Nepārejams apvidus ir jebkurā plaisā vai aizā, kas, kā jau nosaukums pasaka "
+"priekšā, nevar tikt šķērsots ejot kājām. Plaisas izceļas ar stāvajām sienām, "
+"kuru pārvarēšana varētu prasīt dienas. Spēlē tikai lidojošās vienības spēj "
+"šķērsot šo apvidu."
 
 #. [topic]: id=terrain_lava
 #: data/core/help.cfg:707
@@ -2514,6 +2623,13 @@ msgid ""
 "This provides an attack bonus for lawful units and removes the attack bonus "
 "from chaotic units."
 msgstr ""
+"Briesmas, kas saistītas ar mēģināšanu staigāt pa lavu, ir diezgan "
+"acīmredzamas. Pārvietošanās ziņā lava ir <ref>dst='terrain_unwalkable' "
+"text='nepārejams'</ref> apvidus, un to spēj šķērsot tikai lidojošās "
+"vienības, kuras spēj lidot vērā ņemamā augstumā virs tās. Izkususī magma "
+"izstaro vērā ņemamu gaismu, kas apgaismo tieši virs tās esošo apgabalu. Tas "
+"dod papildus uzbrukuma spēku likumpaklausīgajām vienībām, un noņem to "
+"haotiskajām vienībām."
 
 #. [topic]: id=terrain_ford
 #: data/core/help.cfg:717
@@ -2530,6 +2646,11 @@ msgid ""
 "choosing whichever one offers the best defensive and movement bonuses for "
 "the unit on it."
 msgstr ""
+"Ja upe ir ārkārtīgi sekla, tad tās šķērsošana sauszemes vienībām problēmas "
+"nesagādā. Vēl jo vairāk, jebkurš radījums, kurš vislabāk pielāgojies "
+"peldēšanai, var netraucēts pārvietoties pat šādās upēs. Spēles upes krasts "
+"darbojas kā līdzenums vai sekls ūdens, atkarībā no tā, kurš dod labāko "
+"aizsardzības un pārvietošanās papildinājumus vienībai uz tā."
 
 #. [topic]: id=terrain_reef
 #: data/core/help.cfg:727
@@ -2546,6 +2667,12 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 70% defense on coastal reefs."
 msgstr ""
+"Piekrastes rifi ir sekls ūdens, ko veido akmeņi, koraļļi un smiltis. "
+"Vairumam sausdzemes vienību tie dod stabilāku pārvietošanos un aizsardzības "
+"pozīcijas kā parasti dod brišana seklā ūdenī, un tie dod arī neparasti "
+"augstu aizsardzību ūdens rasēm.\n"
+"\n"
+"Nārām un nāgām ir 70% aizsardzība piekrastes rifos."
 
 #. [topic]: id=terrain_bridge
 #: data/core/help.cfg:739
@@ -2567,6 +2694,16 @@ msgid ""
 "occupying the bridge hex. Note that a swimming unit and a land unit are not "
 "capable of occupying a bridge hex at the same time."
 msgstr ""
+"Tiem, kuriem piemīt spēja būvēt tiltus, tas dod patvērumu no ūdens ceļu "
+"mainības, kuru brasli nāk un iet reizē ar ūdens līnijas celšanos un krišanu. "
+"Nemaz jau nerunājot par sausu kāju greznību, kā zaudēšana nav nekāda joka "
+"lieta, it īpaši jau aukstajos ziemas mēnešos.\n"
+"\n"
+"Tiem, kuri iet pa sauszemi vai jūru, tilts ir labākais no abām pasaulēm - "
+"spēlē tas darbojas vai nu kā līdzenums, vai kā apakšā esošais ūdens, "
+"atkarībā no tā kurš dod labākos pārvietošanās un aizsardzības papildinājumus "
+"vienībai uz tilta. Ņemiet vērā, ka ūdens un sauszemes vienība nevar "
+"vienlaicīgi aizņemt tilta lauciņu."
 
 #. [topic]: id=terrain_impassable
 #: data/core/help.cfg:751
@@ -2582,6 +2719,11 @@ msgid ""
 "jagged peaks at such rarified heights, and not even the fiercest troll can "
 "smash through thick walls of stone."
 msgstr ""
+"Starp šķēršļiem, kurus nevarētu pārvarēt pat visapņēmīgākais ceļotājs, ir "
+"masīvas akmens sienas un kalni, tik augsti un stāvi, ka tie ir pastāvīgi "
+"ietīti mākoņos. Pat lidojošās vienības nespēj pārvarēt robotās virsotnes tik "
+"retinātā augstumā, un pat visnegantākais trollis nespēj izsisties cauri "
+"biezajām akmens sienām."
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:767
@@ -2608,6 +2750,11 @@ msgid ""
 "Debug mode is turned off by quitting the game or :nodebug.\n"
 "\n"
 msgstr ""
+"\n"
+"Ieslēgt atkļūdošanas režīmu (nedarbojas daudzspēlētāju spēlē). Sk. "
+"<ref>dst='debug_commands' text='atkļūdošanas režīma komandas'</ref>.\n"
+"Atkļūdošanas režīms tiek atslēgts pametot spēli vai ar :nodebug.\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:779
@@ -2620,6 +2767,14 @@ msgid ""
 "active side if no parameter is supplied.\n"
 "\n"
 msgstr ""
+"\n"
+"Iestatīt vai pārslēgt spēlētāju starp cilvēka un datora spēlētāju. "
+"Spēlētājam/klientam, kurš kontrolē to pusi, jāpalaiž šī komanda. Ja netiek "
+"dots otrais parametrs, tad pārslēdz starp cilvēku un datoru. Ja tas ir "
+"'ieslēgts', iestata datora kontroli. Ja tas ir 'izslēgts', tad iestata "
+"cilvēka kontroli. Pēc noklusējuma dabojas uz pašreiz aktīvo pusi, ja netiek "
+"dots neviens parametrs.\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:782
@@ -2710,6 +2865,12 @@ msgid ""
 "they won't be kicked then.)\n"
 "\n"
 msgstr ""
+"\n"
+"Uzliek pieejas aizliegumu lietotājam daudzspēlētāju spēlē, pēc IP adreses, "
+"ko lieto šis spēlētājs, un izsviež viņu. Var tikt izmantots pret "
+"lietotājiem, kuri nav spēlē, bet ir pieslēgušies serverim. (Protams, tad "
+"viņi netiks izsviesti.)\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:813
@@ -2722,6 +2883,13 @@ msgid ""
 "host can change control of any side.\n"
 "\n"
 msgstr ""
+"\n"
+"Nomaina puses kontrolētāju (ierakstiet šeit puses numuru) uz lietotājvārdu "
+"(ierakstiet šeit spēlētāja vai novērotāja lietotājvārdu). Jūs variet "
+"pārbaudīt, kura puse pieder kuram spēlētājam 'Scenārija iestatījumu' dialogā "
+"(Nospiediet pogu 'vēl' 'Statusa tabulā' (alt+s pēc noklusējuma), lai tur "
+"nokļūtu.). Saimnieks var mainīt jebkuras puses kontroli.\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:816
@@ -2732,6 +2900,11 @@ msgid ""
 "instead.\n"
 "\n"
 msgstr ""
+"\n"
+"Izsviest lietotāju no daudzspēlētāju spēles. Viņi spēs spēlei atkal "
+"pievienoties, Ja jūs gribiet tikai nomainīt viņu puses/-šu kontroli, tad "
+"izmantojiet komandu ':control'.\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:819
@@ -2741,6 +2914,10 @@ msgid ""
 "displayed.\n"
 "\n"
 msgstr ""
+"\n"
+"Apklusināt norādīto novērotāju. Ja neviens lietotājvārds netiek ierakstīts, "
+"tad tiek attēloti apklusināto lietotājvārdi.\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:822
@@ -2761,6 +2938,10 @@ msgid ""
 "Can be used on users not in the game but on the server.\n"
 "\n"
 msgstr ""
+"\n"
+"Noņemt aizliegumu ienākt lietotājam daudzspēlētāju spēlē, izmantojot tā IP "
+"adresi. Var tikt izmantots lietotājiem, kuri nav spēlē, bet ir uz servera.\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:826
@@ -2769,6 +2950,9 @@ msgid ""
 "Unmute a specific observer. If no username is supplied the list of muted "
 "observers is cleared."
 msgstr ""
+"\n"
+"Noņemt apklusinājumu no norādītā novērotāja. Ja netiek ierakstīts neviens "
+"lietotājvārds, tad tiek notīrīts viss apklusināto lietāju saraksts."
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:833
@@ -2783,6 +2967,10 @@ msgid ""
 "campaign.\n"
 "\n"
 msgstr ""
+"\n"
+"Atver izvēlni, kurā izvēlēties scenāriju kampaņā, uz kuru nekavējoties "
+"pāriet.\n"
+"\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:840
@@ -2920,6 +3108,9 @@ msgid ""
 "The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
+"Reģenerējas:\n"
+"Vienība dziedēs sevi par 8 VP gājienā. Ja tā ir saindēta, tad dziedēšanas "
+"vietā tā izņems indi."
 
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:98
@@ -2938,6 +3129,9 @@ msgid ""
 "This unit's resistances are doubled, up to a maximum of 50%, when defending. "
 "Vulnerabilities are not affected."
 msgstr ""
+"Nelokāms:\n"
+"Aizsargājoties šīs vienības izturība tiek dubultota, maksimāli līdz 50%. "
+"Ievainojamības paliek nemainīgas."
 
 #. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:114 data/core/macros/abilities.cfg:137
@@ -2967,6 +3161,14 @@ msgid ""
 "Leadership engages in combat, its attacks do 25% more damage times the "
 "difference in their levels."
 msgstr ""
+"Vada:\n"
+"Šī vienība spēj vadīt mūsu pašu vienības, kas tai ir blakus, ļaujot tām "
+"cīnīties labāk.\n"
+"\n"
+"Blakus esošās mūsu vienības ar zemāku līmeni nodarīs lielākus bojājumus "
+"cīņā. Kad vienībai ar vadīšanas iezīmi blakus esoša tās pašas puses vienība "
+"ar zemāku līmeni iesaistās kaujā, tās uzbrukumi nodara par 25% reiz to "
+"līmeņu starpība lielākus bojājumus."
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:347
@@ -2985,6 +3187,9 @@ msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
 msgstr ""
+"Strēlnieks:\n"
+"Šī vienība ir prasmīga ātrā paiešanā garām ienaidniekam, un tā ignorē visas "
+"ienaidnieku kontroles zonas."
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:363
@@ -3006,6 +3211,12 @@ msgid ""
 "Any units adjacent to this unit will fight as if it were dusk when it is "
 "night, and as if it were day when it is dusk."
 msgstr ""
+"Izgaismo:\n"
+"Šī vienība izgaismo savu apkārtni, ļaujot likumpaklausīgajām vienībām labāk "
+"cīnīties, un liekot haotiskajām vienībām cīnīties sliktāk.\n"
+"\n"
+"Jebkura tai blakus esoša vienība nakts laikā cīnīsies tā it kā būtu krēsla, "
+"bet krēslas laikā - tā it kā būtu diena."
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:378
@@ -3024,6 +3235,9 @@ msgid ""
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
 msgstr ""
+"Teleportējas:\n"
+"Šī vienība, izmantojot vienu no tās gājieniem, spēj teleportēties starp "
+"jebkuriem diviem tukšiem ciemiem, kuri pieder tās pusei."
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:390 data/core/macros/abilities.cfg:392
@@ -3045,6 +3259,12 @@ msgid ""
 "units next to it. Any enemy unit that first discovers this unit immediately "
 "loses all its remaining movement."
 msgstr ""
+"Uzbrūk no slēpņa:\n"
+"Šī vienība spēj slēpties mežos un palikt nemanāma tās ienaidniekiem.\n"
+"\n"
+"Ienaidnieka vienības nevar redzēt šo vienību, kamēr tā ir mežā, izņemot ja "
+"viņiem ir vienības tieši blakus šai vienībai. Jebkura ienaidnieka vienība, "
+"kura pirmā atklāj, nekavējoties zaudē visu tās atlikušo gājienu."
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:416 data/core/macros/abilities.cfg:417
@@ -3062,6 +3282,12 @@ msgid ""
 "it. Any enemy unit that first discovers this unit immediately loses all its "
 "remaining movement."
 msgstr ""
+"Slēpjas tumsā:\n"
+"Nakts laikā vienība kļūst neredzama.\n"
+"\n"
+"Ienaidnieka vienības nevar redzēt šo vienību nakts laikā, izņemot ja kāda "
+"viņu vienība ir tieši blakus tai. Jebkura ienaidnieka vienība, kura pirmā "
+"atklāj šo vienību, nekavējoties zaudē visu tās atlikušo gājienu."
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:423
@@ -3089,6 +3315,13 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
+"Maskēšanās:\n"
+"Šī vienība spēj paslēpties ciemos (izņemot ūdens ciemus), un palikt nemanāma "
+"tās ienaidniekiem, izņemot tos, kuri stāv tai blakus.\n"
+"\n"
+"Ienaidnieka vienības neredz šo vienību kamēr tā ir ciemā, izņemot ja kāda "
+"viņu vienība ir tai blakus. Jebkura ienaidnieka vienība, kura pirmā atklāj "
+"šo vienību, nekavējoties zaudē visu atlikušo tās gājienu."
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:468 data/core/macros/abilities.cfg:474
@@ -3110,6 +3343,12 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
+"Nirst:\n"
+"Šī vienība spēj slēpties dziļā ūdenī un palikt nemanāma tās ienaidniekiem.\n"
+"\n"
+"Ienaidnieka vienības neredz šo vienību kamēr tā ir dziļā ūdenī, izņemot ja "
+"kāda viņu vienība ir tai blakus. Jebkura ienaidnieka vienība, kura pirmā "
+"atklāj šo vienību, zaudē visu tās atlikušo gājienu."
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:497
@@ -3128,6 +3367,9 @@ msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
+"Barošanās:\n"
+"Šīs vienības maksimālais veselības līmenis paaugstinās par vienu ikreiz, kad "
+"tā nogalina dzīvu vienību."
 
 #. [unstore_unit]
 #: data/core/macros/abilities.cfg:524
@@ -3147,6 +3389,9 @@ msgid ""
 "of the target on the opposite side of the target, and that unit is not "
 "incapacitated (turned to stone or otherwise paralyzed)."
 msgstr ""
+"Iedur mugurā:\n"
+"Uzbrūkot šis uzbrukums nodara dubultus bojājumus, ja aiz mērķa pretējā pusē "
+"ir ienaidnieks, un tas nav atbruņots (pārakmeņots vai kā citādi paralizēts)."
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
@@ -3162,6 +3407,9 @@ msgid ""
 "identical to and on the same side as the unit with the Plague attack. This "
 "doesn't work on Undead or units in villages."
 msgstr ""
+"Sērga:\n"
+"Kad vienību nogalina sērga, tā tiek aizstāta ar identisku vienību, kas ir "
+"uzbrucēja pusē. Tas nestrādā uz nedzīvajiem un vienībām ciemos."
 
 #. [plague]: id=plague, type=Walking Corpse
 #: data/core/macros/abilities.cfg:594
@@ -3171,6 +3419,9 @@ msgid ""
 "Walking Corpse on the same side as the unit with the Plague attack. This "
 "doesn't work on Undead or units in villages."
 msgstr ""
+"Sērga:\n"
+"Kad vienību nogalina sērga, tā tiek aizstāta ar staigājošu līķi, kas ir "
+"uzbrucēja pusē. Tas nestrādā uz nedzīvajiem un vienībām ciemos."
 
 #. [slow]: id=slow
 #: data/core/macros/abilities.cfg:604
@@ -3186,6 +3437,11 @@ msgid ""
 "that is slowed will feature a snail icon in its sidebar information when it "
 "is selected."
 msgstr ""
+"Sapīšana:\n"
+"Šis uzbrukums palēlina mērķi līdz tas pabeidz gājienu. Sapīšana uz pusi "
+"samazina uzbrukumu spēku un pārvietošanās izmaksa sapītajai vienībai ir "
+"dubultota. Vienībai, kura ir sapīta, informācijas joslā būs redzama gliemeža "
+"ikona."
 
 #. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:615
@@ -3199,6 +3455,9 @@ msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
 msgstr ""
+"Pārakmeņo:\n"
+"Šis uzbrukums pārakmeņo mērķi. Pārakmeņotās vienības nespēj ne pārvietoties, "
+"ne uzbrukt."
 
 #. [chance_to_hit]: id=marksman
 #: data/core/macros/abilities.cfg:626
@@ -3211,6 +3470,8 @@ msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
+"Mērķī šaušana:\n"
+"Uzbrukumā šim uzbrukumam vienmēr ir vismaz 60% iespējamība trāpīt."
 
 #. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:653
@@ -3226,6 +3487,11 @@ msgid ""
 "unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
 "number of strikes."
 msgstr ""
+"Spietošana:\n"
+"Šī uzbrukuma sitienu skaits samazinās, kad vienība ir ievainota. Sitienu "
+"skaits ir proporcionāls vienības procentuālajam veselības daudzumam no tās "
+"maksimālās veselības. Piemēram, vienībai ar 3/4 no tās maksimālajiem "
+"veselības punktiem būs 3/4 no tās sitienu skaita."
 
 #. [damage]: id=charge
 #: data/core/macros/abilities.cfg:664
@@ -3239,6 +3505,9 @@ msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target's counterattack."
 msgstr ""
+"Lādiņš:\n"
+"Kad izmantots uzbrukumā, šis uzbrukums nodara dubultus bojājumus mērķim. Tas "
+"arī izraisa dubultus bojājumus no mērķa pretuzbrukumiem šai vienībai."
 
 #. [drains]: id=drains
 #: data/core/macros/abilities.cfg:678
@@ -3252,6 +3521,9 @@ msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
 msgstr ""
+"Izsūkšana:\n"
+"Šī vienība izsūc veselību no dzīvām vienībām, tā dziedējot sevi ar pusi no "
+"izsūktās veselības daudzuma (noapaļojot uz leju)."
 
 #. [poison]: id=poison
 #: data/core/macros/abilities.cfg:700
@@ -3266,6 +3538,10 @@ msgid ""
 "until they are cured or are reduced to 1 HP. Poison can not, of itself, kill "
 "a unit."
 msgstr ""
+"Inde:\n"
+"Šis uzbrukums saindē dzīvos mērķus. Saindētās vienības zaudē 6 VP katrā "
+"gājienā līdz kamēr tās tiek izārstētas vai to veselība tiek samazināta līdz "
+"1 punktam. Inde vien nespēj nogalināt vienību."
 
 #. [set_menu_item]: id=ai_controller_leader_control_{SIDE_CONTROLLED}
 #: data/core/macros/ai.cfg:449
@@ -3420,6 +3696,8 @@ msgid ""
 "$ally_leader.name (side $ally_side|) has not been given any instructions and "
 "is acting normally."
 msgstr ""
+"$ally_leader.name ($ally_side| puse) nav saņēmis nekādas instrukcijas un "
+"uzvedās normāli."
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:811
@@ -3430,6 +3708,10 @@ msgid ""
 "Behavior: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_behaviour_description"
 msgstr ""
+"Uzdevums: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_objective_description\n"
+"Uzvedība: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_behaviour_description"
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:825
@@ -3706,9 +3988,8 @@ msgid "Only magical beings can wield such an object."
 msgstr "Tikai maģiskās būtnes var izmantot šādu lietu."
 
 #: data/core/macros/items.cfg:532
-#, fuzzy
 msgid "Only the mermen can use this item!"
-msgstr "Tikai nāras var izmantot šo lietu!"
+msgstr "Tikai nāras var izmantot šo priekšmetu!"
 
 #: data/core/macros/items.cfg:532
 msgid "Should $unit.name pick up the trident?"
@@ -4527,6 +4808,8 @@ msgid ""
 "The computer player might not be able to play side $side_number properly in "
 "this scenario. Side $side_number is intended to be played by a human player."
 msgstr ""
+"Datora spēlētājs varētu nebūt spējīgs kārtīgi spēlēt pusi $side_number šajā "
+"scenārijā. Pusi $side_number ir paredzēts spēlēt cilvēkam."
 
 #. [time]: id=deep_underground
 #. [illuminated_time]: id=deep_underground_illum
@@ -4666,7 +4949,6 @@ msgstr ""
 "uzbrukumu līdz tā vai pretinieks guļ miris."
 
 #: data/core/macros/special-notes.cfg:59
-#, fuzzy
 msgid ""
 " If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
@@ -4855,7 +5137,6 @@ msgstr "veselīga"
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:133
-#, fuzzy
 msgid "Always rest heals"
 msgstr "Atpūta vienmēr dziedē"
 
@@ -5069,6 +5350,68 @@ msgid ""
 "a relatively cold climate, a feature which has allowed them to populate even "
 "some of the mountains of the far north of the Great Continent."
 msgstr ""
+"Dreiki ir lieli, spārnoti un uguni spļaujoši radījumi, kas atgādina patiesos "
+"pūķus. Vidēji pieaudzis dreiks ir aptuveni trīs metrus augsts un svarā "
+"viegli pārspēj cilvēku un zirgu kopā ņemot. Viņu ādu klāj cietas zvīņas, kas "
+"ir izturīgas pret lielāko daļu no fiziskajiem uzbrukumiem, izņemot "
+"caurduršanu un aukstuma bojājumiem. Lielākā daļa dreiku spēj lidot un var "
+"ātri ceļot lielus attālumus. Tomēr viņu lielais svars un apjoms zināmā mērā "
+"ierobežo lidšanas spēju, padarot tos gaisā neveiklus. Kur iespējams, viņi "
+"izmanto apvidus priekšrocības, piem., paugurus, kalnus un kokus, kā "
+"pacelšanās punktus, lai iegūtu lielāku augstumu un ātrumu. Par laimi viņu "
+"ienaidniekiem, tie tomēr ir diezgan nevaikli radījumi un pārsteidzoši lēni "
+"kaujā. Tas kopā ar viņu lielo izmēru padara viņus par viegliem mērķiem tiem, "
+"kuri uzdrošinās uzbrukt.\n"
+"\n"
+"Dreiki pēc būtības ir maģiski radījumi ar noslēpumainu iekšjo uguni, kas "
+"kurina pilda viņu dzīves. To var viegli novērot, kad viens no viņiem iet "
+"bojā cīņā, tā iekšējā uguns tiek atbrīvota, sadedzinot viņa atliekas pelnos. "
+"To iekšējā uguns ir arī viņu lielākā vājība - tā viņus padara ārkārtīgi "
+"ievainojamus pret aukstuma uzbrukumiem. Par spīti to maģiskajai dabai, "
+"dreiki nespēj virzīt maģiju kontrolētā veidā. Lai gan dreikos esošā maģija "
+"ļauj tiem spļaut uguni un dod tiem dzīvību, viņiem nav apzinātas kontroles "
+"pār viņu maģijas funkcijām.\n"
+"\n"
+"<header>text='Society'</header>\n"
+"\n"
+"Dreiki ir salīdzinoši kaujinieciska rase un to sabiedrību vislabāk var "
+"aprakstīt kā kulturālas kara sabiedrības. Dreiku cilts kodolu veido maza "
+"pieredzējušu karotāju grupa, kuru vada abpusēji cienīts - vai vienkārši "
+"bailes iedvesis - līderis, kurš vada sabiedrību ar dzelzs dūri. No katra "
+"dreika tiek sagaidīts, ka tas nopelnīs savu vietu stingrā hierarhijā, "
+"paklausīs augstākstāvošajiem un komandēs zemākos. Ieiešana valdošajā elitē "
+"iespējama tikai izaicinot un sakaujot augstākstāvošo vienā kaujā, tas ir arī "
+"veids, kādā tiek noteikt hierarhija elites iekšienē. Jebkāda veida viltus "
+"lietošana pret jebkuru sabiedroto dreiku, bez izņēmuma, tiek uzskatīta par "
+"gļēvumu un ir nepieņemama.\n"
+"\n"
+"Lai gan viņu kaujinieciskā daba un teritoriālā izjūta liek tiem mežonīgi "
+"aizstāvēt savas teritorijas, dreiki reti iebrūk vai šķērso apgabalus, kurus "
+"jau aizņem citas lielākās rases. Tā vietā viņi apmetas neapdzīvotos "
+"apgabalos, lai tur noteiktu paši savas teritorijas. Viņi pamatā pārtiek no "
+"liela medījuma, ko tie medī zemienēs ap to mājām, bet ir zināms, ka cālēni "
+"un zemāko kastu dreiki pārtiek arī no zināma veida sūnām un sēnēm, kuras tie "
+"kultivē dziļi viņu alās. Vienīgā tehnoloģija, kuru dreiki novērtē ir bruņau "
+"un ieroču kalšana, un viņi ne zin, ne viņiem arī ir vajadzība pēc citām "
+"zinātnēm un kultūras. Taču tās dažas lietas, kur viņi pielieto modi ir "
+"tikpat kā nepārspētas kvalitātes ziņā, tām spēj līdzinātis vienīgi tās, "
+"kuras gatavotas labākajās rūķu lietuvēs.\n"
+"\n"
+"Dreiki izšķiļās no olām un parasti dabiski dzīvo no 20 līdz 30 gadiem. Nāve "
+"kaujā dreikam ir labākais veids kādā atstāt šo pasauli. Pretstatā citu rasu "
+"vecākajiem pārstāvjiem, dreiki dabiski kļūst aizvien agresīvāki un "
+"pārgalvīgāki uz to dabiskās dzīves beigām, iespējams, lai palīdzētu "
+"nodrošināt to vietu savas tautas varoņu leģendās.\n"
+"\n"
+"<header>text='Ģeogrāfija'</header>\n"
+"\n"
+"Dreiki ir radušies vulkānisko salu ķēdē Dižajā okeānā. Populācijas spiediens "
+"un daudzu mājas salu grimšana lika dreiku kolonijām izplatīties Dižajā "
+"kontinentā. Dreiki tiecas veidot savas mājas kalnu alās netālu no vulkāniem, "
+"lai pasargātu savas olas, cālēnus un smēdes. Lai gan dreiki dabiski dod "
+"priekšroku siltumam, to iekšējā uguns ir vairāk kā spējīga tos uzturēt pat "
+"salīdzinoši aukstā klimatā, īpašība, kas viņiem ļāvusi apdzīvot pat dažus "
+"kalnus tālu Dižā kontinenta ziemeļos."
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:87
@@ -5588,6 +5931,10 @@ msgid ""
 "Day: +25% Damage\n"
 "Night: -25% Damage"
 msgstr ""
+"Likumpaklausīgās vienības labāk cīnās dienas laikā un sliktāk naktī.\n"
+"\n"
+"Diena: +25%\n"
+"Naktī: -25%"
 
 #. [language]
 #: data/hardwired/english.cfg:12
@@ -5595,6 +5942,8 @@ msgid ""
 "Neutral units are unaffected by day and night, fighting equally well under "
 "both conditions."
 msgstr ""
+"Neitrālās vienības diennakts laiks neietekmē, tās cīnās vienlīdz labi abos "
+"apstākļos."
 
 #. [language]
 #: data/hardwired/english.cfg:16
@@ -5604,16 +5953,20 @@ msgid ""
 "Day: -25% Damage\n"
 "Night: +25% Damage"
 msgstr ""
+"Haotiskās vienības labāk cīnās naktī un sliktāk dienas laikā.\n"
+"\n"
+"Diena: -25%\n"
+"Nakts: +25%"
 
 #. [language]
 #: data/hardwired/english.cfg:19
 msgid "$name's Bridge,$name's Crossing"
-msgstr ""
+msgstr "$name|a tilts,$name|a pāreja"
 
 #. [language]
 #: data/hardwired/english.cfg:20
 msgid "$name's Highway,$name's Pass,Path of $name"
-msgstr ""
+msgstr "$name|a lielceļš,$name|a pāreja,$name|a ceļš"
 
 #. [language]
 #: data/hardwired/english.cfg:21
@@ -5759,6 +6112,10 @@ msgid ""
 "features, and allows us to improve Wesnoth. To learn more about this or "
 "disable it, click the envelope in the bottom-right corner."
 msgstr ""
+"\"Kauja par Vesnotu\" automātiski sūta anonīmu statistiku par jūsu spēles "
+"attīstību uz serveri, kur tā tiek glabāta. Tas aktivizē vairākas lietas, un "
+"dod mums iespēju uzlabot šo spēli. Lai uzzinātu vairāk par šo funkciju vai "
+"lai to atslēgtu, klikšķiniet uz aploksni apakšējā labajā stūrī."
 
 #. [tip]
 #: data/hardwired/tips.cfg:4
@@ -5772,11 +6129,14 @@ msgid ""
 "if you coddle him too much he may be at too low a level to survive future "
 "battles."
 msgstr ""
+"Nepamet novārtā sava līdera pieredzes gūšanu! Jums viņš jātur drošībā, bet, "
+"ja viņu lutināsiet pārāk daudz, nākamajās kaujās viņš var būt pārāk zemā "
+"līmenī."
 
 #. [tip]
 #: data/hardwired/tips.cfg:8 data/hardwired/tips.cfg:136
 msgid "- Great Mage Delfador, 516YW"
-msgstr ""
+msgstr "- Dižais Mags Delfadors, 516VG"
 
 #. [tip]
 #: data/hardwired/tips.cfg:11
@@ -5786,6 +6146,11 @@ msgid ""
 "where they are). Use this to make sure the enemy can't reach your weak or "
 "injured units on his next turn."
 msgstr ""
+"'Darbību' izvēlnē varat izvēlēties 'Rādīt ienaidnieka gājienus', lai "
+"izgaismotu visus lauciņus, uz kuriem jūsu pretinieks var pārvietoties "
+"(pieņemot, ka jūsu vienības paliek, kur tās ir). Izmantojiet to, lai "
+"pārliecinātos, ka ienaidnieks nespēj piekļūt jūsu vājajām vai ievainotajām "
+"vienībām tā nākamajā gājienā."
 
 #. [tip]
 #: data/hardwired/tips.cfg:12 data/hardwired/tips.cfg:24
@@ -5804,7 +6169,7 @@ msgstr ""
 #: data/hardwired/tips.cfg:200 data/hardwired/tips.cfg:204
 #: data/hardwired/tips.cfg:209
 msgid "- The Wesnoth Tactical Guide"
-msgstr ""
+msgstr "- Vesnotas taktikas ceļvedis"
 
 #. [tip]
 #: data/hardwired/tips.cfg:15
@@ -5813,11 +6178,15 @@ msgid ""
 "Early in a campaign, try to give killing blows to these units so you can get "
 "some high-level troops sooner."
 msgstr ""
+"Vienībām ar 'inteliģences' iezīmi nepieciešams mazāks pieredzes punktu "
+"skaits, lai sasniegtu nākamo līmeni. Kampaņas sākumā mēģiniet dot šīm "
+"vienībām nogalinošos sitienus, lai ātrāk varētu iegūt kādus augsta līmeņa "
+"kareivjus."
 
 #. [tip]
 #: data/hardwired/tips.cfg:16
 msgid "- King Konrad, 536YW"
-msgstr ""
+msgstr "- Karalis Konrāds, 536VG"
 
 #. [tip]
 #: data/hardwired/tips.cfg:19
@@ -5826,11 +6195,14 @@ msgid ""
 "By placing two units on opposite sides of an enemy, their zones of control "
 "will restrict it to one hex of movement in any direction."
 msgstr ""
+"Ielenkšanas taktika ir ļoti spēcīga, īpaši pret ātriem pretiniekiem. "
+"Novietojot divas vienības ienaidnieka pretējās pusēs, to kontroles zonas "
+"ierobežos tā kustības līdz vienam lauciņam katrā virzienā."
 
 #. [tip]
 #: data/hardwired/tips.cfg:20 data/hardwired/tips.cfg:128
 msgid "- Memoirs of Gweddry, 627YW"
-msgstr ""
+msgstr "- Gweddry memuāri, 627VG"
 
 #. [tip]
 #: data/hardwired/tips.cfg:23
@@ -5839,6 +6211,10 @@ msgid ""
 "castle tile. That will let you choose which hex you put a new unit in. "
 "Placing units wisely can sometimes let you reach a village a turn earlier."
 msgstr ""
+"Jūs varat piekļūt 'Iesaukšanas' un 'Atsaukšanas' komandām klikšķinot ar labo "
+"peles taustiņu uz pils šūnas. Tas dos iespēju izvēlēties, kurā šūnā novietot "
+"jauno vienību. Apdomīga vienību izvietošana reizēm var ļaut sasniegt ciemu "
+"vienu gājienu ātrāk."
 
 #. [tip]
 #: data/hardwired/tips.cfg:27
@@ -5847,6 +6223,9 @@ msgid ""
 "'Status Table' will let you know how your enemies are doing, and how you are "
 "doing in comparison."
 msgstr ""
+"Galvenajā izvēlnē ir daži noderīgi kopsavilkuma ekrāni: piemēram, 'Statusa "
+"tabula' ļaus jums uzzināt, kā sokas jūsu ienaidniekiem, un salīdzinoši kā "
+"sokas jums."
 
 #. [tip]
 #: data/hardwired/tips.cfg:31
@@ -5855,11 +6234,15 @@ msgid ""
 "important when moving through difficult terrain such as water or caves. It "
 "can make the difference between being able to move one hex or two."
 msgstr ""
+"Vienības ar ātruma iezīmi pārvietojas par vienu lauciņu tālāk katrā gājienā. "
+"Tas var būt ļoti svarīgi pārvietojoties pa tādu sarežģītu apvidu kā ūdens "
+"vai alas. Tas var izšķirt vai vienība spēj pārvietoties nikai par vienu, vai "
+"par diviem lauciņiem."
 
 #. [tip]
 #: data/hardwired/tips.cfg:32 data/hardwired/tips.cfg:104
 msgid "- High Lord Kalenz, 470YW"
-msgstr ""
+msgstr "- Augstais lords Kalenzs, 470VG"
 
 #. [tip]
 #: data/hardwired/tips.cfg:35
@@ -5867,6 +6250,9 @@ msgid ""
 "After you have played a few scenarios, read the 'Gameplay' section in the "
 "help screen carefully. Details become important as scenarios get harder!"
 msgstr ""
+"Pēc tam, kad esiet paspēlējis dažus scenārijus, uzmanīgi izlasiet 'Spēles "
+"gaitas' nodaļu palīdzības logā. Scenārijiem kļūstot sarežģītākiem, detaļas "
+"kļūst nozīmīgas!"
 
 #. [tip]
 #: data/hardwired/tips.cfg:39
@@ -5875,6 +6261,8 @@ msgid ""
 "level units that are about to level up than with those same units at a "
 "higher level."
 msgstr ""
+"Parasti labāk ir sākt scenāriju ar zemāka līmeņa vienībām, kuras grasās "
+"pāriet nākamajā līmenī, nekā ar tā paša veida, augstāka līmeņa vienībām."
 
 #. [tip]
 #: data/hardwired/tips.cfg:43
@@ -5882,11 +6270,13 @@ msgid ""
 "On www.wesnoth.org you can find strategy guides, technical support, the "
 "history of Wesnoth, and much more."
 msgstr ""
+"Vietnē www.wesnoth.org variet atrast stratēģijas ceļvežus, tehnisko "
+"palīdzibu, Vesnotas vēsturi un vēl daudz vairāk."
 
 #. [tip]
 #: data/hardwired/tips.cfg:44
 msgid "- The Wesnoth Community"
-msgstr ""
+msgstr "- Vesnotas kopiena"
 
 #. [tip]
 #: data/hardwired/tips.cfg:47
@@ -5894,23 +6284,27 @@ msgid ""
 "Lawful units fight better by day, and chaotic units fight better at night. "
 "Neutral units are unaffected by the time of day."
 msgstr ""
+"Likumpaklausīgās vienības labāk cīnās dienas laikā, bet haotiskās vienības "
+"labāk cīnās nakts laikā. Neitrālās vienības neietekmē diennakts laiks."
 
 #. [tip]
 #: data/hardwired/tips.cfg:48
 msgid "- Royal Compendium of Battle Terminology - Volume II, 212YW"
-msgstr ""
+msgstr "- Karaliskais kaujas terminoloģijas saraksts - II sējums, 212VG"
 
 #. [tip]
 #: data/hardwired/tips.cfg:51
 msgid ""
 "An otherwise sound plan can fail if you attack at the wrong time of day."
 msgstr ""
+"Visādi citādi pamatots plāns var neizdoties, ja uzbrukums tiek veikts "
+"nepareizajā diennakts laikā."
 
 #. [tip]
 #: data/hardwired/tips.cfg:52 data/hardwired/tips.cfg:76
 #: data/hardwired/tips.cfg:124 data/hardwired/tips.cfg:132
 msgid "- Handbook of Tactical Analysis Volume I - Haldric II, 42YW"
-msgstr ""
+msgstr "- Taktiskās analīdzes rokasgrāmatas I sējums - Haldrics II, 42VG"
 
 #. [tip]
 #: data/hardwired/tips.cfg:55
@@ -5920,6 +6314,11 @@ msgid ""
 "cost. Try to choose scouts that can easily move across the surrounding "
 "terrain, because units see as far as they can move in one turn."
 msgstr ""
+"Ja jūs spēlejiet ar ieslēgtu 'plīvuru' vai 'kara miglu', jūs nezināsiet, ar "
+"ko jums darīšana. Šajā gadījumā, garas distances izlūkošanas vienības ir to "
+"izmaksu vērtas. Mēģiniet izvēlēties izlūkus, kuri viegli spēj pārvietoties "
+"pa apkārt esošo apvidu, jo vienības redz tik tālu, cik tālu tās spēj "
+"pārvietoties vienā gājienā."
 
 #. [tip]
 #: data/hardwired/tips.cfg:59
@@ -5929,6 +6328,11 @@ msgid ""
 "Right-click on a unit and select 'Unit Description' to see which attacks it "
 "is resistant to, and which will affect it the most."
 msgstr ""
+"Pavisam ir sešu veidu uzbrukumi: caurduršana, griešana, trieciens, uguns, "
+"aukstums un mistisks. Dažadām vienībām ir ievainojamības pret dažādiem "
+"uzbrukuma veidiem. Klikšķiniet ar labo peles taustiņu uz vienības un "
+"izvēlieties 'Vienības aprakstu', lai redzētu, pret kuriem uzbrukumiem tā ir "
+"izturīga, un kuri uzbrukumi to ietekmē visvairāk."
 
 #. [tip]
 #: data/hardwired/tips.cfg:63
@@ -5979,7 +6383,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:80
 msgid "- Handbook of Tactical Analysis Volume II - Haldric II, 43YW"
-msgstr ""
+msgstr "- Taktiskās analīzes rokasgrāmatas II sējums - Haldrics II, 43VG"
 
 #. [tip]
 #: data/hardwired/tips.cfg:83
@@ -5987,6 +6391,8 @@ msgid ""
 "Units stationed in villages will either heal eight hitpoints at the "
 "beginning of their turn, or will recover from poisoning."
 msgstr ""
+"Ciematos novietotās vienības vai nu tiks dziedētas par astoņiem veselības "
+"punktiem to gājiena sākumā, vai arī tās tiks izārstētas no indes."
 
 #. [tip]
 #: data/hardwired/tips.cfg:87
@@ -5995,6 +6401,9 @@ msgid ""
 "does not move or attack, it will recover two hitpoints at the beginning of "
 "its next turn."
 msgstr ""
+"Nepārvietojiet ievainotu vienību, ja neesiet spiesti to darīt - ļaujiet tai "
+"atpūsties. Ja vienība nepārvietojas un neuzbrūk, tā atgūs divu veselības "
+"puntus nākamā gājiena sākumā."
 
 #. [tip]
 #: data/hardwired/tips.cfg:91
@@ -6003,11 +6412,14 @@ msgid ""
 "terrain types, while most mounted units do not gain any defensive advantages "
 "from villages or castles."
 msgstr ""
+"Kājnieku vienības tiecas aizstāvēties labāk ciemos un pilīs kā citos apvidus "
+"tipos, kamēr lielākā daļa jātnieku vienību negūst nekādas aizsardzības "
+"priekšrocības no ciemiem un pilīm."
 
 #. [tip]
 #: data/hardwired/tips.cfg:92 data/hardwired/tips.cfg:172
 msgid "- Sir Kaylan, 498YW"
-msgstr ""
+msgstr "- Sers Kaylans, 498VG"
 
 #. [tip]
 #: data/hardwired/tips.cfg:95
@@ -6016,11 +6428,14 @@ msgid ""
 "weapons, but are vulnerable to attacks with piercing weapons, including bows "
 "and spears."
 msgstr ""
+"Uz zirgiem esošās vienības parasti ir izturīgas pret uzbrukumiem ar asmeni "
+"vai trieciena ieročiem, bet tās ir ievainojamas pret caurdurošiem ieročiem, "
+"tai skaitā pret bultām un šķēpiem."
 
 #. [tip]
 #: data/hardwired/tips.cfg:96
 msgid "- Sir Kaylan, 502YW"
-msgstr ""
+msgstr "- Sers Kaylans, 502VG"
 
 #. [tip]
 #: data/hardwired/tips.cfg:99
@@ -6061,7 +6476,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:116
 msgid "- Meneldur, 123YW"
-msgstr ""
+msgstr "- Meneldurs, 123VG"
 
 #. [tip]
 #: data/hardwired/tips.cfg:119
@@ -6113,7 +6528,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:140
 msgid "- Princess Li'sar, 515YW"
-msgstr ""
+msgstr "- Princese Li'sāra, 515VG"
 
 #. [tip]
 #: data/hardwired/tips.cfg:143
@@ -6144,7 +6559,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:156
 msgid "- The Scroll of Chantal, 516YW"
-msgstr ""
+msgstr "- Chantalas rullis, 516VG"
 
 #. [tip]
 #: data/hardwired/tips.cfg:159
@@ -6156,12 +6571,12 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:163
 msgid "Arcane attacks are very powerful against undead."
-msgstr ""
+msgstr "Mistikas uzbrukumi ir ļoti iedarbīgi pret nedzīvajiem."
 
 #. [tip]
 #: data/hardwired/tips.cfg:164
 msgid "- Great Sage Dacyn, 626YW"
-msgstr ""
+msgstr "- Dižais zintnieks Dacyns, 626VG"
 
 #. [tip]
 #: data/hardwired/tips.cfg:167
@@ -6178,6 +6593,8 @@ msgid ""
 "Charging units are best used against enemies they can kill with a single "
 "blow."
 msgstr ""
+"Triecienuzbrukumu izmantojošas vienības vislabāk izmantot pret "
+"ienaidniekiem, kurus tās var nogalināt ar vienu triecienu."
 
 #. [tip]
 #: data/hardwired/tips.cfg:175
@@ -6203,6 +6620,9 @@ msgid ""
 "Nearly every icon and word in Wesnoth's playing screen has a tool-tip. Place "
 "your mouse pointer over one to get an explanation or description."
 msgstr ""
+"Tik pat kā katrai ikonai un vārdam Vesnotas spēles ekrānā ir paskaidrojums. "
+"Novietojiet peles kursoru uz objektu, lai iegūtu paskaidrojumu vai tā "
+"aprakstu."
 
 #. [tip]
 #: data/hardwired/tips.cfg:187
@@ -6212,6 +6632,10 @@ msgid ""
 "right-hand corner of the game main screen). This information is vital so we "
 "can adjust campaign difficulty."
 msgstr ""
+"Jūs varat nosūtīt Vesnotas projektam anonīmu jūsu progresa ziņojumu "
+"izmantojot 'Palīdzēt Vesnotai' pogu (attēlota kā aploksnes ikona spēles "
+"galvenā ekrāna apakšējā labajā stūrī). Šī informācija ir svarīga, lai mēs "
+"spētu pielāgot kampaņu sarežģītību."
 
 #. [tip]
 #: data/hardwired/tips.cfg:191
@@ -6220,11 +6644,14 @@ msgid ""
 "veteran to damage a joint target heavily enough for the junior partner to "
 "get in the killing blow."
 msgstr ""
+"Lai ātri attīstītu zemā līmeņa vienības, apvienojiet tās komandās ar "
+"veterāniem un izmantojiet veterānu, lai ievainotu kopējo mērķi pietiekami, "
+"lai jaunā vienība spētu dot nāvējošo triecienu."
 
 #. [tip]
 #: data/hardwired/tips.cfg:192
 msgid "- Queen Li'sar, 528YW"
-msgstr ""
+msgstr "- Karaliene Li'sāra, 528VG"
 
 #. [tip]
 #: data/hardwired/tips.cfg:195
@@ -6240,6 +6667,8 @@ msgid ""
 "If an enemy benefits more from a rare terrain type than you do, occupying "
 "that terrain will deprive them of its benefits."
 msgstr ""
+"Ja ienaidnieka vienībai ir lielāks ieguvums no reti sastopama apvidus tipa, "
+"tad, aizņemot to apvidu, jūs liegsiet tās pieeju šim ieguvumam."
 
 #. [tip]
 #: data/hardwired/tips.cfg:203
@@ -6465,7 +6894,6 @@ msgid "You don't have a leader to recruit with."
 msgstr "Tev nav līderis ar ko iesaukt."
 
 #: src/actions.cpp:201
-#, fuzzy
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr "Tavam līderim jābūt tornī, lai iesauktu vai atsauktu vienības."
 
@@ -6617,6 +7045,8 @@ msgid ""
 "Do you still want to download $addon_title|? (You will have to install all "
 "the dependencies in order to play.)"
 msgstr ""
+"Vai joprojām vēlieties lejupielādēt $addon_title|? (Lai spēlētu, jums būs "
+"nepieciešams instalēt visas nepieciešamās pakotnes.)"
 
 #: src/addon_management.cpp:527 src/addon_management.cpp:599
 #: src/multiplayer.cpp:214 src/multiplayer.cpp:274 src/multiplayer_ui.cpp:80
@@ -6629,7 +7059,7 @@ msgstr "Serveris atbildēja ar kļūdu: \"$error|\""
 
 #: src/addon_management.cpp:538
 msgid "Terms"
-msgstr ""
+msgstr "Termini"
 
 #: src/addon_management.cpp:572
 msgid "Sending add-on"
@@ -6903,7 +7333,6 @@ msgid "Damage Calculations"
 msgstr "Bojājumu aprēķins"
 
 #: src/dialogs.cpp:128
-#, fuzzy
 msgid "Advance Unit"
 msgstr "Paaugstina vienību"
 
@@ -7238,7 +7667,6 @@ msgid "Resistances: "
 msgstr "Izturība: "
 
 #: src/generate_report.cpp:197
-#, fuzzy
 msgid "(Att / Def)"
 msgstr "(Uzbr / Aizs)"
 
@@ -7299,7 +7727,6 @@ msgid "Observers:"
 msgstr "Novērotāji:"
 
 #: src/gui/dialogs/lobby_player_info.cpp:64
-#, fuzzy
 msgid "In game:"
 msgstr "Spēlē:"
 
@@ -7531,9 +7958,8 @@ msgid "Unknown era"
 msgstr "Nezināma ēra"
 
 #: src/lobby_data.cpp:261
-#, fuzzy
 msgid "Remote scenario"
-msgstr "Attālinats scenārijs"
+msgstr "Attālinatais scenārijs"
 
 #: src/lobby_data.cpp:269
 msgid "Unknown scenario: $scenario_id"
@@ -7870,10 +8296,14 @@ msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
 msgstr ""
+"Uzliek piekļuves aizliegumu un izsviež spēlētāju vai novērotāju. Ja viņš nav "
+"spēlē, bet ir tikai uz servera, tad viņam tikai tiks uzlikts piekļuves "
+"aizliegums."
 
 #: src/menu_events.cpp:2222
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr ""
+"Noņemt lietotāja piekļuves aizliegumu. Viņam nav jābūt spēlē, bet uz servera."
 
 #: src/menu_events.cpp:2225
 msgid "Kick a player or observer."
@@ -7881,33 +8311,37 @@ msgstr "Klikšķini uz spēlētāju vai novērotāju."
 
 #: src/menu_events.cpp:2227
 msgid "Mute an observer. Without an argument displays the mute status."
-msgstr ""
+msgstr "Apklusināt novērotāju. Bez argumenta attēlo apklusināšanas statusu."
 
 #: src/menu_events.cpp:2229
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr ""
+"Noņemt apklusinājumu no novērotāja. Bez argumenta noņem apklusinājumu no "
+"visiem."
 
 #: src/menu_events.cpp:2231
 msgid "Mute/Unmute all observers. (toggles)"
-msgstr ""
+msgstr "Apklusina/noņem apklusinājumu no visiem novērotājiem. (pārslēdz)"
 
 #: src/menu_events.cpp:2241
 msgid "Send a message to the server admins currently online"
-msgstr ""
+msgstr "Sūta ziņu tiešsaistē esošajiem servera administratoriem"
 
 #: src/menu_events.cpp:2243
 msgid "Send an emotion or personal action in chat."
-msgstr ""
+msgstr "Sūtīt emociju vai personīgo darbību uz čatu."
 
 #: src/menu_events.cpp:2246
 msgid ""
 "Sends a private message. You can't send messages to players that don't "
 "control a side in a running game you are in."
 msgstr ""
+"Sūta privātu ziņu. Jūs nevariet sūtīt ziņas spēlētājiem, kuri nekontrolē "
+"kādu no pusēm notiekošajā spēlē, kurā jūs esiet."
 
 #: src/menu_events.cpp:2252
 msgid "Change the log level of a log domain."
-msgstr ""
+msgstr "Nomainīt žurnalēšanas līmeni žurnalēšanas domēnam."
 
 #: src/menu_events.cpp:2254
 msgid "Add a nick to your ignores list."
@@ -7982,11 +8416,11 @@ msgstr "Atsvaidzināt saskarni."
 
 #: src/menu_events.cpp:2418
 msgid "Switch a side to/from AI control."
-msgstr ""
+msgstr "Pārslēgt pusi uz/no datora kontroles."
 
 #: src/menu_events.cpp:2421
 msgid "Assign control of a side to a different player or observer."
-msgstr ""
+msgstr "Piešķirt kontrol pār pusi citam lietotājam vai novērotājam."
 
 #: src/menu_events.cpp:2423
 msgid "Clear chat history."
@@ -8018,7 +8452,7 @@ msgstr "Atslēgt automātisko saglabāšanu."
 
 #: src/menu_events.cpp:2441
 msgid "Advance to the next scenario, or scenario identified by 'id'"
-msgstr ""
+msgstr "Turpināt uz nākamo scenāriju vai scenāriju, kurš identificēts ar 'id'"
 
 #: src/menu_events.cpp:2444
 msgid "Choose next scenario"
@@ -8038,7 +8472,7 @@ msgstr "Izpildīt Lua komandu."
 
 #: src/menu_events.cpp:2453
 msgid "Set the command used by the custom command hotkey"
-msgstr ""
+msgstr "Uzstatīt komandu, kuru izmanto pielāgotās komandas karstais taustiņš"
 
 #: src/menu_events.cpp:2455
 msgid "Launch the gamestate inspector"
@@ -8046,7 +8480,7 @@ msgstr "Palaist spēles statusa inspektoru"
 
 #: src/menu_events.cpp:2457
 msgid "Set or show alias to a command"
-msgstr ""
+msgstr "Uzstatīt vai parādīt komandas citu vārdu"
 
 #: src/menu_events.cpp:2459
 msgid "Set a scenario variable."
@@ -8059,10 +8493,11 @@ msgstr "Parādīt scenārija mainīgo."
 #: src/menu_events.cpp:2463
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr ""
+"Izmainīt vienības mainīgo. (Tikai augstākā līmeņa atslēgas tiek atbalstītas.)"
 
 #: src/menu_events.cpp:2470
 msgid "Discover all units in help."
-msgstr ""
+msgstr "Atklāj visas vienības palīdzībā."
 
 #: src/menu_events.cpp:2475
 msgid "Create a unit."
@@ -8086,7 +8521,7 @@ msgstr "Palaist spēles notikumu."
 
 #: src/menu_events.cpp:2486
 msgid "Toggle overlaying of x,y coordinates on hexes."
-msgstr ""
+msgstr "Pārslēdz x,y koordinātu attēlošanu uz lauciņiem."
 
 #: src/menu_events.cpp:2489
 msgid "Toggle overlaying of terrain codes on hexes."
@@ -8586,7 +9021,6 @@ msgid "Leader: "
 msgstr "Līderis: "
 
 #: src/multiplayer_wait.cpp:131
-#, fuzzy
 msgid "Recruits: "
 msgstr "Iesaucamie: "
 
@@ -8979,9 +9413,8 @@ msgid "Recalls"
 msgstr "Atsaukšanas"
 
 #: src/statistics_dialog.cpp:79 src/statistics_dialog.cpp:148
-#, fuzzy
 msgid "Advancements"
-msgstr "Att\"īstības"
+msgstr "Attīstības"
 
 #: src/statistics_dialog.cpp:83 src/statistics_dialog.cpp:156
 msgid "Losses"
@@ -9004,7 +9437,6 @@ msgid "Overall"
 msgstr "Vispārējs"
 
 #: src/statistics_dialog.cpp:179
-#, fuzzy
 msgid "This Turn"
 msgstr "Šis gājiens"
 
@@ -9190,7 +9622,6 @@ msgid "XP to advance"
 msgstr "pieredze, lai attīstītos"
 
 #: src/unit.cpp:2479
-#, fuzzy
 msgid " move"
 msgstr " gājiens"
 
@@ -9308,7 +9739,6 @@ msgstr "Atļaut kopsavilkumu augšupielādi"
 #~ msgid "Apply Filter"
 #~ msgstr "Pielietot filtru"
 
-#, fuzzy
 #~ msgid "Invert"
 #~ msgstr "Invertēt"
 
