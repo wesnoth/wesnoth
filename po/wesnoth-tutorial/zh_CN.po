@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-11-26 15:38+0100\n"
-"PO-Revision-Date: 2009-04-09 13:54+1000\n"
-"Last-Translator: luojie <lililjlj@gmail.com>\n"
+"PO-Revision-Date: 2009-12-16 00:20-0600\n"
+"Last-Translator: Yuanle Song <sylecn@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -14,13 +14,12 @@ msgstr ""
 "X-Poedit-Bookmarks: 173,206,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:40
-#, fuzzy
 msgid ""
 "\n"
 "<big>Click a mouse button or press spacebar to continue...</big>"
 msgstr ""
 "\n"
-"*点击左键或者按空格继续..."
+"<big>点击鼠标或者按空格继续...</big>"
 
 #. [tutorial]: id=tutorial
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:49
@@ -89,9 +88,8 @@ msgstr "丽萨"
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:204
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:211
-#, fuzzy
 msgid "<big>Welcome to Wesnoth!</big>"
-msgstr "*欢迎来到韦诺!"
+msgstr "<big>欢迎来到韦诺!</big>"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:206
@@ -139,23 +137,21 @@ msgstr "左键单击丽萨"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:238
-#, fuzzy
 msgid ""
 "<big>You have selected Konrad.</big>\n"
 "The places he can move to are highlighted."
 msgstr ""
-"*你已经选中了孔列.\n"
-"高亮区域显示的是他可以移动的范围."
+"<big>你已经选中了孔列。</big>\n"
+"高亮区域显示的是他可以移动的范围。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:245
-#, fuzzy
 msgid ""
 "<big>You have selected Li'sar.</big>\n"
 "The places she can move to are highlighted."
 msgstr ""
-"*你已经选中了丽萨.\n"
-"高亮区域显示的是她可以移动的范围."
+"<big>你已经选中了丽萨。</big>\n"
+"高亮区域显示的是她可以移动的范围。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:250
@@ -179,15 +175,13 @@ msgstr "左键单击标记着'目的地'的格子"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:292
-#, fuzzy
 msgid ""
 "<big>Oops!</big>\n"
 "You moved to the wrong place! After this message, you can press 'u' to undo, "
 "then try again."
 msgstr ""
-"*唬!\n"
-"你移动错地方啦!关闭这条消息后,你可以按键盘上的'U'键来撤销移动,然后再试一次.\n"
-"*点击任意一个键继续..."
+"<big>啊!</big>\n"
+"你到了错误的地点!读完这条消息后,你可以按键盘上的'U'键来撤销移动,然后再试一次."
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:314
@@ -303,7 +297,6 @@ msgstr "可惜你已经把你的回合用来攻击刺靶. 现在就要轮到刺�
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:460
-#, fuzzy
 msgid ""
 "female^Unfortunately, you've used up your turn attacking the quintain. The "
 "quintain will now get a turn."
@@ -355,13 +348,12 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:508
-#, fuzzy
 msgid ""
 "female^There is a village on the other side of the river. Visiting villages "
 "is a good idea, and ending your turn in one will heal you. To the village!"
 msgstr ""
 "河边有个村庄.访问村庄是个好办法,驻守在村庄里的单位可以在下个回合开始时得到治"
-"疗——你应该撤退到那里."
+"疗。朝村庄前进！"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:521
@@ -433,7 +425,6 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:603
-#, fuzzy
 msgid ""
 "female^A splendid idea. You can recruit two units if you return to the keep. "
 "You have plenty of gold for that."
@@ -498,11 +489,12 @@ msgstr "是的,如果一个单位在一回合内什么都没有做,他将会缓�
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:742
-#, fuzzy
 msgid ""
 "Had the quintain survived your onslaught, it would have regained two "
 "hitpoints. If a unit doesn't do anything for a turn, it will slowly heal."
-msgstr "是的,如果一个单位在一回合内什么都没有做,他将会缓慢地恢复生命."
+msgstr ""
+"假如刺靶承受住了你的攻击，他会恢复2点生命值。如果一个单位在一回合内什么都没有"
+"做,他将会缓慢地恢复生命."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:755
@@ -684,9 +676,8 @@ msgstr ""
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1045
-#, fuzzy
 msgid "The quintain is dead, and I have gained more experience!"
-msgstr "刺靶被消灭了,长官,我经验值上升了!"
+msgstr "刺靶被消灭了，因此我获得了更多经验值！"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1050
@@ -749,13 +740,12 @@ msgstr ""
 "前,看看你的大军的部署和状态^.^."
 
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:27
-#, fuzzy
 msgid ""
 "<big>Remember:</big>\n"
 "You can press 'u' to undo most things; useful for correcting mistakes."
 msgstr ""
-"*记住:\n"
-"你可以用'U'键来撤销大部分操作: 这在修正错误操作的时候非常有用."
+"<big>记住：</big>\n"
+"你可以用'u'键来撤销大部分操作；这在修正错误操作的时候非常有用."
 
 #. [unit]: id=Galdrad, type=Elvish Captain
 #. [message]: speaker=narrator
@@ -806,14 +796,13 @@ msgstr "一个单位可以抵挡那么多敌人的攻击?"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:28
-#, fuzzy
 msgid ""
 "With a little help, yes. If you move your Shaman next to the defending unit, "
 "she will heal it 4 hitpoints per turn. Just be careful not to expose the "
 "Shaman to attack since she is fairly weak herself."
 msgstr ""
-"给点小小的帮助就行. 如果你把一个萨满放在那个防守单位旁边, 那它每回合会治疗那"
-"个单位4点生命值. 注意不要让萨满本身受到攻击:它本身相当脆弱."
+"如果给他一些帮助，是可以的。如果你把一个萨满放在那个防守单位旁边, 那它每回合"
+"会治疗那个单位4点生命值. 注意不要让萨满本身受到攻击，因为他自身相当脆弱."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:29
@@ -992,14 +981,13 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:530
-#, fuzzy
 msgid ""
 "During your tutorial, both $recall_name1 and $recall_name2 gained "
 "$recall_xp1 experience points. You should recall them now so they can gain "
 "more experience, rather than recruiting new ones."
 msgstr ""
-"在上一关中, $recall_name1 积累了 $recall_xp1 点经验值, 而 $recall_name2 获得"
-"了$recall_xp2 点. 你现在应该召回他们来代替征募新的单位."
+"在教学关中, $recall_name1 和 $recall_name2 都积累了 $recall_xp1 点经验值。你"
+"现在应该把他们召回，这样他们可以获得更多经验。不要征募新的单位。"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:533
@@ -1268,11 +1256,12 @@ msgstr "半兽人没有远程攻击, 用你的射手攻击它."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:921
-#, fuzzy
 msgid ""
 "Attack the orc with an Archer\n"
 "(move mouse over units to see description on right)"
-msgstr "用一个射手攻击那个兽人(把鼠标移动到单位上可以在右边查看单位说明)"
+msgstr ""
+"用一个射手攻击那个兽人\n"
+"(把鼠标移动到单位上可以在右边查看单位说明)"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:929
@@ -1586,13 +1575,12 @@ msgstr ""
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1357
-#, fuzzy
 msgid ""
 "We will miss $deadguy.name| because she had $deadguy.experience experience "
 "points, meaning she would have advanced to level 2 soon."
 msgstr ""
-"我们会怀念 $deadguy.user_description| 的, 它有 $deadguy.experience 点经验值, "
-"本来它很快就要升到2级了."
+"我们会怀念 $deadguy.user_description| 的, 因为她已经有 $deadguy.experience 点"
+"经验值, 那意味着本来它很快就要升到2级了."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1368
@@ -1646,7 +1634,6 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1430
-#, fuzzy
 msgid ""
 "female^Advancing a level has fully healed me!\n"
 "I always have a 60% chance of hitting with my Marksman ability, and I deal 9 "
@@ -1749,45 +1736,3 @@ msgstr "刺靶是用来进行剑术和枪术练习的. 被一个刺靶攻击是�
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "连枷"
-
-#, fuzzy
-#~ msgid "<big>Galdrad"
-#~ msgstr "嘉德拉德"
-
-#~ msgid ""
-#~ "Hello translators! Tutorial is meant to be a little funny at the start, "
-#~ "welcoming new players. Please keep friendly fun feeling! Any questions "
-#~ "email rusty@rustcorp.com.au!"
-#~ msgstr ""
-#~ "你好，翻译者。教程是个开头，应该有趣点~欢迎新人吧。 有问题请找 "
-#~ "rusty@rustcorp.com.au（英文）或访问www.wesnoth.cn（中文）"
-
-#~ msgid "*Galdrad"
-#~ msgstr "*嘉德拉德"
-
-#~ msgid "Elder Mage"
-#~ msgstr "长老法师"
-
-#~ msgid ""
-#~ "Once great, Elder Magi have seen their power diminished from wearying "
-#~ "years of battle. Nevertheless, they remain feared on the battlefield for "
-#~ "their powerful lightning bolts."
-#~ msgstr ""
-#~ "虽然在多年厌倦的战斗中伟大长老法师的能力会些微降低，但是敌人还是惧怕他那强"
-#~ "有力的闪电箭。"
-
-#~ msgid "staff"
-#~ msgstr "棍"
-
-#~ msgid "lightning"
-#~ msgstr "闪电"
-
-#~ msgid ""
-#~ "\n"
-#~ "*Left click to continue..."
-#~ msgstr ""
-#~ "\n"
-#~ "*单击鼠标左键继续..."
-
-#~ msgid "Right click on the tile south of you and recall $recall_name1"
-#~ msgstr "右键单击你下方的格子并且召回 $recall_name1"

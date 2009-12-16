@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "POT-Creation-Date: 2009-11-02 12:29+0100\n"
-"PO-Revision-Date: 2009-05-06 00:50-0500\n"
-"Last-Translator: sylecn <sylecn AT gmail.com>\n"
+"PO-Revision-Date: 2009-12-16 00:20-0600\n"
+"Last-Translator: Yuanle Song <sylecn@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -158,7 +158,7 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:64
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-e,\\ --editor>I<\\ file>"
 msgstr "B<-e,\\ --editor>I<\\ file>"
 
@@ -298,13 +298,13 @@ msgstr "B<-m, --multiplayer>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:128
-#, fuzzy
 msgid ""
 "runs a multiplayer game. There are additional options that can be used "
 "together with B<--multiplayer> as explained below. Only these additional "
 "options can follow B<--multiplayer>."
 msgstr ""
 "启动一个多人游戏。关于多人游戏下面有更多选项可以与B<--multiplayer>一起使用。"
+"只有这些选项可以跟在 B<--multiplayer>之后。"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:128
@@ -477,15 +477,15 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:180
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--ai_config>I<number>B<=>I<value>"
-msgstr "B<--side>I<number>B<=>I<value>"
+msgstr "B<--ai_config>I<number>B<=>I<value>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:183
 msgid ""
 "selects a configuration file to load for the AI controller for this side."
-msgstr ""
+msgstr "为该方选择一个配置文件用来家在AI控制器"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:183
@@ -859,15 +859,13 @@ msgstr "[I<tag>]"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:103
-#, fuzzy
 msgid "I<key>=\"I<value>\""
-msgstr "key=\"I<value>\""
+msgstr "I<key>=\"I<value>\""
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:105
-#, fuzzy
 msgid "I<key>=\"I<value>,I<value>,...\""
-msgstr "key=\"I<value>,I<value>,...\""
+msgstr "I<key>=\"I<value>,I<value>,...\""
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:107
@@ -884,7 +882,7 @@ msgstr "Global keys:"
 #: ../../doc/man/wesnothd.6:110
 #, no-wrap
 msgid "B<allow_remote_shutdown>"
-msgstr ""
+msgstr "B<allow_remote_shutdown>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:114
@@ -893,6 +891,8 @@ msgid ""
 "they come from the fifo.  Set it to B<yes> to allow remote shutdown via a /"
 "query by an administrator."
 msgstr ""
+"如果设置为 B<no> (默认值), 关闭和重启请求将被忽略，除非来自fifo。如果设为 "
+"B<yes> 则允许管理员通过 /query 远程关闭。"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:114
@@ -913,14 +913,14 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:118
 #, no-wrap
 msgid "B<compress_stored_rooms>"
-msgstr ""
+msgstr "B<compress_stored_rooms>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:121
 msgid ""
 "Determines whether the rooms file should be read and written to in "
 "compressed form. Defaults to B<yes>."
-msgstr ""
+msgstr "制定房间文件是否应该压缩。 默认值为 B<yes>."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:121
@@ -943,14 +943,13 @@ msgstr "B<disallow_names>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:131
-#, fuzzy
 msgid ""
 "Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
 "(used if nothing is specified) are: B<*admin*,*admln*,*server*,ai,ai?,"
 "computer,human,network,player>."
 msgstr ""
-"服务器不允许使用的用户名/昵称。可以使用`*'和`?'通配符来定义。更多信息请查看 "
+"服务器不允许使用的用户名/昵称。可以使用B<*>和B<?>通配符。更多信息请查看 "
 "B<glob>(7) 。默认值(如果用户没有指定则自动使用)是：B<*admin*,*admln*,"
 "*server*,ai,ai?,computer,human,network,player>."
 
@@ -962,14 +961,13 @@ msgstr "B<fifo_path>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:135
-#, fuzzy
 msgid ""
 "The path to the fifo you can echo server commands into (same as /query ... "
 "from wesnoth).  If not specified defaults to the compile-time path (default: "
 "B</var/run/socket/wesnothd/socket>)."
 msgstr ""
-"你能通过调用服务器命令的fifo路径（与在客户端中使用 /query 功能相同）。如果不"
-"指定，则默认为编译时指定的路径(默认：/var/run/socket/wesnothd/socket)."
+"你能通过调用服务器命令的fifo路径（与在wesnoth中使用 /query 功能相同）。如果不"
+"指定，则默认为编译时指定的路径(默认：B</var/run/socket/wesnothd/socket>)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:135
@@ -1011,7 +1009,7 @@ msgstr "当日新闻"
 #: ../../doc/man/wesnothd.6:144
 #, no-wrap
 msgid "B<new_room_policy>"
-msgstr ""
+msgstr "B<new_room_policy>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:147
@@ -1021,6 +1019,9 @@ msgid ""
 "respectively to everyone, registered users, admin users or disables new room "
 "creation. Default value is B<everyone>."
 msgstr ""
+"指定谁能在服务器上创建房间。可选值为 B<everyone>, B<registered>, B<admin> "
+"and B<nobody>, 分别表示所有人，注册用户，管理员用户，禁止创建房间。 默认值为 "
+"B<everyone>."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:147
@@ -1030,10 +1031,9 @@ msgstr "B<passwd>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:150
-#, fuzzy
 msgid ""
 "The password used to gain admin privileges (via B</query admin >I<password>)."
-msgstr "获取管理员权限的密码。通常以`admin '开头。"
+msgstr "用来获取管理员权限的密码 (通过 B</query admin >I<password>)."
 
 #: ../../doc/man/wesnothd.6:150
 #, no-wrap
@@ -1056,19 +1056,19 @@ msgstr "B<restart_command>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:156
-#, fuzzy
 msgid ""
 "The command that the server uses to start a new server process via the "
 "B<restart> command. (Can only be issued via the fifo. See the "
 "B<allow_remote_shutdown> setting.)"
 msgstr ""
-"这是服务器使用`restart'命令开启新进程时使用的命令。（只能通过fifo来调用。）"
+"这是服务器使用B<restart>命令开启新进程时使用的命令。（只能通过fifo来调用。参"
+"考B<allow_remote_shutdown>设置。）"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:156
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<room_save_file>"
-msgstr "B<ban_save_file>"
+msgstr "B<room_save_file>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:159
@@ -1077,6 +1077,8 @@ msgid ""
 "server startup and written to later. If empty or not set, rooms are not "
 "loaded and not saved."
 msgstr ""
+"制定存放房间信息的文件路径。这个文件在服务器启动时读取，之后会写入。如果设为"
+"空或者不设置，则房间不自动加载和保存。"
 
 #: ../../doc/man/wesnothd.6:159
 #, no-wrap
@@ -1097,14 +1099,13 @@ msgstr "B<versions_accepted>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:166
-#, fuzzy
 msgid ""
 "A comma separated list of version strings to be accepted by the server. B<*> "
 "and B<?> from wildcard patterns are supported.  (defaults to the "
 "corresponding wesnoth version)"
 msgstr ""
-"用逗号分隔的服务器接受的版本号列表。支持`*'和`?'通配符。（默认为(与服务器)一"
-"致的wesnoth版本）"
+"用逗号分隔的服务器接受的版本号列表。支持B<*>和B<?>通配符。（默认为(与服务器)"
+"一致的wesnoth版本）"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:168
@@ -1119,7 +1120,6 @@ msgstr "B<user_handler>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:173
-#, fuzzy
 msgid ""
 "The name of the user handler to use. Currently available user handlers are "
 "B<forum> (to connect wesnothd to a phpbb forum database) and B<sample> (a "
@@ -1127,9 +1127,9 @@ msgid ""
 "anything real you are insane). The default value is B<forum>. You must also "
 "add a B<[user_handler]> section, see below."
 msgstr ""
-"希望使用的用户处理单元。/todo 目前可选的有'forum'(将wesnothd与phpbb 论坛的数"
-"据库连接起来) 和'sample'(一个实现用户处理的实例,如果你真的(直接)用这个那你一"
-"定是疯了)。默认值是'forum'。同时你必须添加一个B<[user_handler]>部分,看下面。"
+"希望使用的用户处理单元。目前可选的有B<forum>(将wesnothd与phpbb 论坛的数据库连"
+"接起来) 和B<sample>(一个实现用户处理的示例,如果你真的(直接)用这个那你一定是疯"
+"了)。默认值是B<forum>同时你必须添加一个B<[user_handler]>部分,看下面。"
 
 # type: SS
 #: ../../doc/man/wesnothd.6:174
@@ -1205,7 +1205,6 @@ msgstr "B<time>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:207
-#, fuzzy
 msgid ""
 "The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s "
 "(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d "
@@ -1215,7 +1214,7 @@ msgid ""
 msgstr ""
 "时间长度定义。 格式为：%d[%s[%d%s[...]]] 其中%s是s（秒），m（分钟），h（小"
 "时），D（天），M（月），Y（年），%d是一个数字。如果不指定时间单位，默认为分钟"
-"（m）例如：time=\"1D12h30m\"结果是1天+12小时+30分钟的封禁。"
+"（m）例如：B<time=\\\"1D12h30m\\\">结果是1天，12小时，30分钟的封禁。"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:213
@@ -1229,7 +1228,6 @@ msgstr ""
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:221
-#, fuzzy
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
 "on which user handler is set with the B<user_handler> key. If no B<"
@@ -1237,8 +1235,8 @@ msgid ""
 "without any nick registration service."
 msgstr ""
 "B<[user_handler]> 设置用户处理单元。可设置的键值很大程度上取决于通过"
-"B<user_handler>设置的用户处理单元的值。如果配置文件中没有[user_handler]部分,"
-"服务器以不提供昵称注册服务的方式运行。"
+"B<user_handler>设置的用户处理单元的值。如果配置文件中没有B<[user_handler]>部"
+"分,服务器以不提供昵称注册服务的方式运行。"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:222
@@ -1308,9 +1306,9 @@ msgstr ""
 msgid "B<db_extra_table>"
 msgstr "B<db_extra_table>"
 
+# 请不要翻译SQL语句，谢谢。
 # type: Plain text
 #: ../../doc/man/wesnothd.6:241
-#, fuzzy
 msgid ""
 "(for user_handler=forum) The name of the table in which wesnothd will save "
 "its own data about users. You will have to create this table manually, e.g.: "
@@ -1319,9 +1317,9 @@ msgid ""
 "NOT NULL DEFAULT 0);>"
 msgstr ""
 "(如果用户处理单元设置为 forum) wesnothd存放用户游戏数据的表名。你必须自己创建"
-"这个表,例如:(SQL 语句,不要翻译了。)CREATE TABLE E<lt>table-nameE<gt>"
-"(username VARCHAR(255) PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL "
-"DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);"
+"这个表,例如:B<CREATE TABLE E<lt>table-nameE<gt>(username VARCHAR(255) "
+"PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, "
+"user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);>"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:241
