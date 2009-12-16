@@ -230,6 +230,8 @@ std::vector<target> default_ai_context_impl::find_targets(unit_map::const_iterat
 	move_map friends_srcdst, friends_dstsrc;
 	calculate_possible_moves(friends_possible_moves,friends_srcdst,friends_dstsrc,false,true);
 
+	//=== start getting targets
+
 	//if enemy units are in range of the leader, then we target the enemies who are in range.
 	if(has_leader) {
 		const double threat = power_projection(leader->first,enemy_dstsrc);
@@ -313,8 +315,8 @@ std::vector<target> default_ai_context_impl::find_targets(unit_map::const_iterat
 
 	//find the enemy leaders and explicit targets
 	unit_map::const_iterator u;
-	for(u = units_.begin(); u != units_.end(); ++u) {
-		if (get_leader_value()>0.0) {
+	if (get_leader_value()>0.0) {
+		for(u = units_.begin(); u != units_.end(); ++u) {
 			//is a visible enemy leader
 			if (u->second.can_recruit() && current_team().is_enemy(u->second.side())
 			    && !u->second.invisible(u->first, units_, teams_)) {
@@ -323,21 +325,21 @@ std::vector<target> default_ai_context_impl::find_targets(unit_map::const_iterat
 				targets.push_back(target(u->first,get_leader_value(),target::LEADER));
 			}
 		}
-		//explicit targets for this team
-
-		for(std::vector<goal_ptr>::iterator j = goals.begin();
-		    j != goals.end(); ++j) {
-
-			if (!(*j)->active()) {
-				continue;
-			}
-			if ((*j)->matches_unit(u)) {
-				LOG_AI << "found explicit target... " << u->first << " with value: " << (*j)->value() << "\n";
-				targets.push_back(target(u->first,(*j)->value(),target::EXPLICIT));
-			}
-		}
 
 	}
+
+	//explicit targets for this team
+	for(std::vector<goal_ptr>::iterator j = goals.begin();
+	    j != goals.end(); ++j) {
+
+		if (!(*j)->active()) {
+			continue;
+		}
+		(*j)->add_targets(std::back_inserter(targets));
+
+	}
+
+	//=== end getting targets
 
 	std::vector<double> new_values;
 

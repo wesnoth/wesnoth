@@ -32,6 +32,8 @@
 #include "../contexts.hpp"
 #include "../game_info.hpp"
 
+//included for 'target' markers
+#include "../default/contexts.hpp"
 
 #include <map>
 #include <stack>
@@ -48,7 +50,7 @@ public:
 	virtual ~goal();
 
 
-	virtual bool matches_unit(unit_map::const_iterator u);
+	virtual void add_targets(std::back_insert_iterator< std::vector< target > > target_list);
 
 
 	config to_config() const;
@@ -66,16 +68,33 @@ public:
 	bool redeploy(const config &cfg);
 
 
+protected:
+	config cfg_;
+
+
+};
+
+
+class target_unit_goal : public goal {
+public:
+	target_unit_goal(readonly_context &context, const config &cfg);
+
+
+	virtual void add_targets(std::back_insert_iterator< std::vector< target > > target_list);
+
+
+	virtual void on_create();
+
+private:
+	virtual bool matches_unit(unit_map::const_iterator u);
+
 	double value()
 	{
 		return value_;
 	}
-
-private:
-	config cfg_;
 	double value_;
-
 };
+
 
 
 class goal_factory{

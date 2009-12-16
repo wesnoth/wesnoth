@@ -119,7 +119,7 @@ static register_candidate_action_factory<testing_ai_default::leader_control_phas
 // Goals
 // =======================================================================
 
-static register_goal_factory<goal>
+static register_goal_factory<target_unit_goal>
 	goal_factory("");
 
 // =======================================================================
