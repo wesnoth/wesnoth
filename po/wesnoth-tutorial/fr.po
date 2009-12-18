@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-11-26 15:38+0100\n"
-"PO-Revision-Date: 2009-05-16 17:09+0100\n"
-"Last-Translator: Damien <guydelatourATgloireetpouvoir.com>\n"
+"POT-Creation-Date: 2009-12-13 15:50+0100\n"
+"PO-Revision-Date: 2009-12-14 22:57+0100\n"
+"Last-Translator: David Pradier <dayATsupertroll.org>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -12,13 +12,12 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:40
-#, fuzzy
 msgid ""
 "\n"
 "<big>Click a mouse button or press spacebar to continue...</big>"
 msgstr ""
 "\n"
-"<big>Appuyez sur le bouton gauche de la souris ou sur la barre d'espace pour "
+"<big>Appuyez sur un bouton de la souris ou sur la barre d'espace pour "
 "continuer...</big>"
 
 #. [tutorial]: id=tutorial
@@ -175,7 +174,7 @@ msgstr ""
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:265
 msgid "Left click on tile labeled HERE"
-msgstr "Cliquez avec le bouton gauche sur la case marquée ICI"
+msgstr "Cliquez avec le bouton gauche sur la case marquée « ICI »"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:292
@@ -305,17 +304,16 @@ msgid ""
 "Unfortunately, you've used up your turn attacking the quintain. The quintain "
 "will now get a turn."
 msgstr ""
-"Malheureusement vous avez déjà utilisé votre tour pour attaquer le "
+"Malheureusement, vous avez déjà utilisé votre tour pour attaquer le "
 "mannequin. Il va maintenant jouer son tour."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:460
-#, fuzzy
 msgid ""
 "female^Unfortunately, you've used up your turn attacking the quintain. The "
 "quintain will now get a turn."
 msgstr ""
-"Malheureusement vous avez déjà utilisé votre tour pour attaquer le "
+"Malheureusement, vous avez déjà utilisé votre tour pour attaquer le "
 "mannequin. Il va maintenant jouer son tour."
 
 #. [message]: id=student
@@ -367,7 +365,6 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:508
-#, fuzzy
 msgid ""
 "female^There is a village on the other side of the river. Visiting villages "
 "is a good idea, and ending your turn in one will heal you. To the village!"
@@ -397,7 +394,7 @@ msgstr ""
 "Vous avez conquis un village ! Vous pouvez y voir flotter un drapeau à vos "
 "couleurs et il a été ajouté au nombre total de vos villages, près de l'icône "
 "représentant une maison en haut de l'écran. Les villages génèrent l'or "
-"nécessaire aux recrutements : à chaque tour vous gagnez deux pièces d'or, "
+"nécessaire aux recrutements : à chaque tour, vous gagnez deux pièces d'or, "
 "plus une pour chaque village possédé."
 
 #. [event]
@@ -452,7 +449,6 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:603
-#, fuzzy
 msgid ""
 "female^A splendid idea. You can recruit two units if you return to the keep. "
 "You have plenty of gold for that."
@@ -528,7 +524,6 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:742
-#, fuzzy
 msgid ""
 "Had the quintain survived your onslaught, it would have regained two "
 "hitpoints. If a unit doesn't do anything for a turn, it will slowly heal."
@@ -594,8 +589,8 @@ msgid ""
 "safer."
 msgstr ""
 "Votre elfe a utilisé une épée (5-4, soit 5 points de dégâts pour 4 "
-"attaques), qui est une arme de corps à corps. La quintaine s'est défendue "
-"avec son arme de corps à corps (3-5). L'attaque à distance était plus sûre."
+"attaques), qui est une arme de corps-à-corps. La quintaine s'est défendue "
+"avec son arme de corps-à-corps (3-5). L'attaque à distance était plus sûre."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:841
@@ -606,8 +601,8 @@ msgid ""
 "End your turn, then attack again."
 msgstr ""
 "Votre elfe a utilisé une épée (5-4, soit 5 points de dégâts pour 4 "
-"attaques), qui est une arme de corps à corps. La quintaine s'est défendue "
-"avec son arme de corps à corps (3-5). L'attaque à distance aurait été plus "
+"attaques), qui est une arme de corps-à-corps. La quintaine s'est défendue "
+"avec son arme de corps-à-corps (3-5). L'attaque à distance aurait été plus "
 "sûre.\n"
 "Terminez votre tour, puis attaquez à nouveau."
 
@@ -619,8 +614,8 @@ msgid ""
 "You should tell the other Elf to use the bow."
 msgstr ""
 "Votre elfe a utilisé une épée (5-4, soit 5 points de dégâts pour 4 "
-"attaques), qui est une arme de corps à corps. La quintaine s'est défendue "
-"avec son arme de corps à corps (3-5). L'attaque à distance aurait été plus "
+"attaques), qui est une arme de corps-à-corps. La quintaine s'est défendue "
+"avec son arme de corps-à-corps (3-5). L'attaque à distance aurait été plus "
 "sûre.\n"
 "Vous devriez utiliser l'arc avec l'autre elfe."
 
@@ -640,7 +635,7 @@ msgid ""
 msgstr ""
 "Votre elfe a utilisé un arc, qui est une attaque à distance (3-3, soit 3 "
 "points de dégâts pour 3 attaques). La quintaine n'a pas d'attaque à "
-"distance, mais seulement une attaque de corps à corps ; elle n'a donc pas "
+"distance, mais seulement une attaque de corps-à-corps ; elle n'a donc pas "
 "été capable de se défendre."
 
 #. [message]: id=Delfador
@@ -653,7 +648,7 @@ msgid ""
 msgstr ""
 "Votre elfe a utilisé un arc, qui est une attaque à distance (3-3, soit 3 "
 "points de dégâts pour 3 attaques). La quintaine n'a pas d'attaque à "
-"distance, mais seulement une attaque de corps à corps ; elle n'a donc pas "
+"distance, mais seulement une attaque de corps-à-corps ; elle n'a donc pas "
 "été capable de se défendre.\n"
 "Terminez votre tour, puis attaquez à nouveau."
 
@@ -741,7 +736,6 @@ msgstr ""
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1045
-#, fuzzy
 msgid "The quintain is dead, and I have gained more experience!"
 msgstr "Le mannequin est mort, Messire, et j'ai gagné davantage d'expérience !"
 
@@ -874,16 +868,15 @@ msgstr "Une unité peut-elle survivre seule contre tous ces ennemis ?"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:28
-#, fuzzy
 msgid ""
 "With a little help, yes. If you move your Shaman next to the defending unit, "
 "she will heal it 4 hitpoints per turn. Just be careful not to expose the "
 "Shaman to attack since she is fairly weak herself."
 msgstr ""
 "Avec un peu d'aide, oui. Si vous déplacez votre chaman à côté de l'unité en "
-"défense, il la guérira de 4 points de vie par tour. Faites seulement "
-"attention de ne pas exposer le chaman aux attaques : il est lui-même plutôt "
-"vulnérable."
+"défense, elle la guérira de 4 points de vie par tour. Faites seulement "
+"attention de ne pas exposer la chaman aux attaques : elle est elle-même "
+"plutôt vulnérable."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:29
@@ -1045,7 +1038,7 @@ msgid ""
 "east; but we could stand on the shore and force them to fight us from the "
 "water, where they are exposed and we are protected by the forest."
 msgstr ""
-"Vous voyez cette eau bleu sombre ? Elle est trop profonde pour quiconque "
+"Vous voyez cette eau bleu sombre ? Elle est trop profonde pour que quiconque "
 "puisse passer. Ils pourraient se frayer lentement un chemin par cette mince "
 "bande d'eau peu profonde, d'un bleu plus clair, à l'est, mais alors nous "
 "pourrions nous tenir sur le rivage et les forcer à nous combattre depuis "
@@ -1078,16 +1071,14 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:530
-#, fuzzy
 msgid ""
 "During your tutorial, both $recall_name1 and $recall_name2 gained "
 "$recall_xp1 experience points. You should recall them now so they can gain "
 "more experience, rather than recruiting new ones."
 msgstr ""
-"Pendant ce didacticiel, $recall_name1 a gagné $recall_xp1 points "
-"d'expérience et $recall_name2 en a gagné $recall_xp2. Vous devriez les "
-"rappeler maintenant, pour qu'ils puissent gagner encore plus d'expérience, "
-"plutôt qu'en recruter de nouveaux."
+"Pendant ce didacticiel, $recall_name1 et $recall_name2 ont gagné $recall_xp1 "
+"points d'expérience. Vous devriez les rappeler maintenant, pour qu'ils "
+"puissent gagner encore plus d'expérience, plutôt qu'en recruter de nouveaux."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:533
@@ -1293,7 +1284,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:810
 msgid "Right click on the tile east of you and recall $recall_name2"
 msgstr ""
-"Cliquez avec le bouton droit sur la case à votre est, puis rappelez "
+"Cliquez avec le bouton droit sur la case à l'est de vous, puis rappelez "
 "$recall_name2"
 
 #. [then]
@@ -1328,7 +1319,7 @@ msgstr "Elindel"
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:885
 msgid "You've learned well, Konrad! "
-msgstr "Vous avez un bon élève, Konrad !"
+msgstr "Vous avez été un bon élève, Konrad !"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:886
@@ -1367,9 +1358,8 @@ msgid ""
 "You should leave the villages near your keep for Konrad to capture, as he "
 "needs to stay nearby to recruit more units anyway."
 msgstr ""
-"Vous devriez laisser les villages à proximité de votre donjon et en prendre "
-"possession avec Konrad. Il doit de toute façon rester proche du donjon pour "
-"recruter."
+"Vous devriez laisser Konrad prendre possession des villages à proximité de "
+"votre donjon. Il doit de toute façon en rester proche pour recruter."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:912
@@ -1377,9 +1367,8 @@ msgid ""
 "You should leave the villages near your keep for Li'sar to capture, as she "
 "needs to stay nearby to recruit more units anyway."
 msgstr ""
-"Vous devriez laisser les villages à proximité de votre donjon et en prendre "
-"possession avec Li'sar. Elle doit de toute façon rester proche du donjon "
-"pour recruter."
+"Vous devriez laisser Li'sar prendre possession des villages à proximité de "
+"votre donjon. Elle doit de toute façon en rester proche pour recruter."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:918
@@ -1479,7 +1468,7 @@ msgstr ""
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:989
 msgid "Recruit another Archer and a Fighter"
-msgstr "Recrutez un archer et un guerrier"
+msgstr "Recrutez un autre archer et un guerrier"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1004
@@ -1739,7 +1728,7 @@ msgid ""
 "16 experience points because he is level 2. Choose your unit carefully!"
 msgstr ""
 "Vous êtes sur le point de tuer leur chef ! L'unité qui l'achèvera gagnera 16 "
-"points d'expérience car il est niveau 2. Choisissez l'attaquant avec soin !"
+"points d'expérience, car il est niveau 2. Choisissez l'attaquant avec soin !"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1354
@@ -1752,13 +1741,12 @@ msgstr ""
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1357
-#, fuzzy
 msgid ""
 "We will miss $deadguy.name| because she had $deadguy.experience experience "
 "points, meaning she would have advanced to level 2 soon."
 msgstr ""
-"Nous allons regretter $deadguy.name| car il avait $deadguy.experience points "
-"d'expérience, et allait donc bientôt atteindre le niveau 2."
+"Nous allons regretter $deadguy.name| car elle avait $deadguy.experience "
+"points d'expérience, et allait donc bientôt atteindre le niveau 2."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1368
@@ -1819,7 +1807,6 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1430
-#, fuzzy
 msgid ""
 "female^Advancing a level has fully healed me!\n"
 "I always have a 60% chance of hitting with my Marksman ability, and I deal 9 "
