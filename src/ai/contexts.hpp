@@ -437,7 +437,7 @@ public:
 		return target_->get_side_context();
 	}
 
-	virtual int get_recursion_count()
+	virtual int get_recursion_count() const
 	{
 		return target_->get_recursion_count();
 	}
@@ -937,7 +937,7 @@ public:
 	}
 
 
-	virtual int get_recursion_count()
+	virtual int get_recursion_count() const
 	{
 		return target_->get_recursion_count();
 	}

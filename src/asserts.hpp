@@ -22,21 +22,21 @@
 
 #ifdef _MSC_VER
 #define BREAKPOINT() __debugbreak()
-#define WES_HALT() if (true) { BREAKPOINT(); exit(1); } else (void)0
+#define WES_HALT() do { BREAKPOINT(); exit(1); } while (false)
 
 #elif defined(__GNUG__) && (defined(__i386__) || defined(__x86_64__))
 #define BREAKPOINT() asm("int3")
-#define WES_HALT() if (true) { BREAKPOINT(); abort(); } else (void)0
+#define WES_HALT() do { BREAKPOINT(); abort(); } while (false)
 
 #else
 #define BREAKPOINT()
 #define WES_HALT() abort()
 #endif
 
-#define ERROR_LOG(a) if (true) { \
+#define ERROR_LOG(a) do { \
 	std::cerr << __FILE__ << ":" << __LINE__ << " ASSSERTION FAILED: " << a << std::endl; \
 	WES_HALT(); \
-	} else (void)0
+	} while (false)
 
 //for custom logging.  Example usage:
 //ASSERT_LOG(x != y, "x not equal to y. Value of x: " << x << ", y: " << y);

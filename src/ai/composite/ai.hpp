@@ -76,7 +76,7 @@ public:
 	virtual void new_turn();
 
 
-	std::string describe_self();
+	std::string describe_self() const;
 
 	/**
 	 * serialize

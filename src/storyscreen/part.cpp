@@ -115,7 +115,7 @@ part::BLOCK_LOCATION part::string_tblock_loc(const std::string& s)
 		if(s == "top") {
 			return part::BLOCK_TOP;
 		}
-		else if("middle") {
+		else if (s == "middle") {
 			return part::BLOCK_MIDDLE;
 		}
 	}

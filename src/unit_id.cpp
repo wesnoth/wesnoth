@@ -23,7 +23,7 @@ static lg::log_domain log_unit("unit");
 namespace n_unit {
 	id_manager id_manager::manager_;
 
-	id_manager::id_manager() : next_id_(0), fake_id_(-1)
+	id_manager::id_manager() : next_id_(0), fake_id_(size_t(-1))
 	{}
 
 	id_manager& id_manager::instance()
@@ -59,7 +59,7 @@ namespace n_unit {
 
 	void id_manager::reset_fake()
 	{
-		fake_id_ = -1;
+		fake_id_ = size_t(-1);
 	}
 
 	void id_manager::clear()

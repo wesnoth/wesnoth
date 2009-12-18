@@ -63,7 +63,7 @@ idle_ai::idle_ai(readwrite_context &context, const config &cfg)
 	init_readwrite_context_proxy(context);
 }
 
-std::string idle_ai::describe_self()
+std::string idle_ai::describe_self() const
 {
 	return "[idle_ai]";
 }
@@ -117,7 +117,8 @@ public:
 		do_recruitment();
 	}
 
-	virtual std::string describe_self(){
+	virtual std::string describe_self() const
+	{
 		return "[sample_ai]";
 	}
 
@@ -322,7 +323,8 @@ void ai_default::new_turn()
 	consider_combat_ = true;
 }
 
-std::string ai_default::describe_self(){
+std::string ai_default::describe_self() const
+{
 	return "[default_ai]";
 }
 

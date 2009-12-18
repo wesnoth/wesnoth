@@ -112,8 +112,8 @@ public:
 		iterator_base() : policy_(), counter_(), map_(NULL), i_() { }
 		iterator_base(iterator_type i, map_type* m) : policy_(i, m), counter_(m), map_(m), i_(i) { }
 
-		pointer_type operator->() const { assert(policy_.valid(i_, map_) && "Attempt to dereference invalid iterator"); return i_->second.ptr_; }
-		reference_type operator*() const { assert(policy_.valid(i_, map_) && "Attempt to dereference invalid iterator"); return *i_->second.ptr_; }
+		pointer_type operator->() const { assert(policy_.valid(i_, map_)); return i_->second.ptr_; }
+		reference_type operator*() const { assert(policy_.valid(i_, map_)); return *i_->second.ptr_; }
 
 		iterator_base& operator++();
 		iterator_base operator++(int);

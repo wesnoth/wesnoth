@@ -51,7 +51,7 @@ unit_map &unit_map::operator=(const unit_map &that)
 
 unit_map::~unit_map()
 {
-	assert(num_iters_ == 0 && "dangling iterators will attempt to dereference an invalid pointer in their destructor");
+	assert(num_iters_ == 0);
 	delete_all();
 }
 
@@ -103,7 +103,7 @@ void unit_map::add(const map_location &l, const unit &u) {
 
 void unit_map::move(const map_location &src, const map_location &dst) {
 	std::pair<map_location,unit> *p = extract(src);
-	assert(p && "attempt to move unit at location with no unit");
+	assert(p);
 	p->first = dst;
 	insert(p);
 }

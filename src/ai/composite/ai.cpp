@@ -33,7 +33,8 @@ static lg::log_domain log_ai_composite("ai/composite");
 // =======================================================================
 // COMPOSITE AI
 // =======================================================================
-std::string ai_composite::describe_self(){
+std::string ai_composite::describe_self() const
+{
 	return "[composite_ai]";
 }
 

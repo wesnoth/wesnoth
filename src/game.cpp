@@ -159,7 +159,6 @@ public:
 	bool play_multiplayer();
 	bool change_language();
 
-	void show_help();
 	void show_preferences();
 	void show_upload_begging();
 

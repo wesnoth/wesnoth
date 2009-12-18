@@ -60,7 +60,6 @@ public:
 private:
 	void parse_element();
 	void parse_variable();
-	void parse_directive();
 	std::string lineno_string(utils::string_map &map, std::string const &lineno,
 		const char *error_string);
 	void error(const std::string& message);

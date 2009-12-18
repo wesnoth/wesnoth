@@ -103,9 +103,6 @@ struct node {
 	bool operator<(const node& o) const {
 		return t < o.t;
 	}
-	bool operator>(const node& o) const {
-		return o < *this;
-	}
 };
 
 class comp {

@@ -379,7 +379,6 @@ public:
 	}
 
 	bool get_esc_ignore() { return ignore_esc_; }
-	void set_esc_ignore(bool ignore) { ignore_esc_ = ignore; }
 
 	virtual void handle_event(const SDL_Event& event)
 	{

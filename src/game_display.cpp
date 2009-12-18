@@ -576,7 +576,7 @@ void game_display::draw_bar(const std::string& image, int xpos, int ypos,
 	drawing_buffer_add(LAYER_UNIT_BAR, loc, tblit(xpos, ypos, surf, top));
 	drawing_buffer_add(LAYER_UNIT_BAR, loc, tblit(xpos, ypos + top.h, surf, bot));
 
-	const size_t unfilled = static_cast<const size_t>(height*(1.0 - filled));
+	size_t unfilled = static_cast<size_t>(height * (1.0 - filled));
 
 	if(unfilled < height && alpha >= ftofxp(0.3)) {
 		const Uint8 r_alpha = std::min<unsigned>(unsigned(fxpmult(alpha,255)),255);

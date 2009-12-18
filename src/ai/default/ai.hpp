@@ -42,7 +42,7 @@ public:
 	idle_ai(readwrite_context &context, const config &cfg);
 	void play_turn();
 	void new_turn();
-	virtual std::string describe_self();
+	std::string describe_self() const;
 	void switch_side(side_number side);
 	int get_recursion_count() const;
 	virtual config to_config() const;
@@ -152,7 +152,7 @@ public:
 
 	virtual void play_turn();
 	virtual void new_turn();
-	virtual std::string describe_self();
+	std::string describe_self() const;
 	virtual config to_config() const;
 	void switch_side(side_number side);
 
