@@ -20,8 +20,8 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-12-13 15:50+0100\n"
-"PO-Revision-Date: 2009-04-05 12:15-0400\n"
-"Last-Translator: Ignacio R. Morelle <shikadilord@users.sourceforge.net>\n"
+"PO-Revision-Date: 2009-12-15 23:10+0100\n"
+"Last-Translator: Diego J. <diegojromerolopez@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -38,7 +38,7 @@ msgstr "Partidas comprimidas"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:12
 msgid "Confirm deleting saves"
-msgstr ""
+msgstr "Confirmar eliminar partidas guardadas"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:19
@@ -78,7 +78,7 @@ msgstr "Mostrar combate"
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:68
 msgid "Ping Timeout"
-msgstr ""
+msgstr "Venció el tiempo de ping"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:69
@@ -86,26 +86,28 @@ msgid ""
 "Number of seconds to wait for a ping reply before we time out. Disable with "
 "0."
 msgstr ""
+"Número de segundos que se espera una respuesta ping antes de que venza el "
+"tiempo. Desactivar con 0."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:79
 msgid "Accept whisper messages from friends only"
-msgstr ""
+msgstr "Aceptar mensajes susurrados sólo por amigos"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:86
 msgid "Auto-open whisper windows in lobby"
-msgstr ""
+msgstr "Abrir automáticamente ventanas de susurros en la sala"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:93
 msgid "Group players in lobby"
-msgstr ""
+msgstr "Agrupar jugadores en una sala"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:100
 msgid "Lobby sounds"
-msgstr ""
+msgstr "Sonidos de sala"
 
 #. [time]: id=underground
 #. [illuminated_time]: id=underground_illum
@@ -372,9 +374,8 @@ msgstr "Traducción inglesa (GB)"
 
 #. [about]
 #: data/core/about.cfg:1357
-#, fuzzy
 msgid "English (Shaw) Translation"
-msgstr "Traducción inglesa (GB)"
+msgstr "Traducción inglesa (Shaw)"
 
 #. [about]
 #: data/core/about.cfg:1375
@@ -548,9 +549,8 @@ msgstr "Traducción valenciana (catalán del sur)"
 
 #. [about]
 #: data/core/about.cfg:2331
-#, fuzzy
 msgid "Vietnamese Translation"
-msgstr "Traducción china"
+msgstr "Traducción al vietnamita"
 
 #. [about]
 #: data/core/about.cfg:2338
@@ -602,9 +602,8 @@ msgstr "Habilidades especiales"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=factions_section
 #: data/core/help.cfg:67 src/help.cpp:1284 src/help.cpp:1286
-#, fuzzy
 msgid "Factions"
-msgstr "Facción"
+msgstr "Facciones"
 
 #. [section]: id=terrains
 #. [topic]: id=..terrains
@@ -2102,7 +2101,6 @@ msgstr ""
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:442
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2113,7 +2111,8 @@ msgstr ""
 "\n"
 "\n"
 "Las unidades vitales tienen 1 PV más 1 PV por nivel más de lo normal y el "
-"descansar les sana 2 PV adicionales tras cada turno en el que no luchen."
+"descansar les sana 2 PV adicionales tras cada turno en el que no luchen. "
+"también sufrirán un cuarto de daño por veneno."
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:447
@@ -3009,18 +3008,17 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:822
-#, fuzzy
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
 "\n"
 msgstr ""
 "\n"
-"Activa o desactiva silenciar a todos los observadores."
+"Silencia/Quita el silencio a todos los observadores.\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:825
-#, fuzzy
 msgid ""
 "\n"
 "Unban a user in a multiplayer game by the IP address used by that username. "
@@ -3029,7 +3027,8 @@ msgid ""
 msgstr ""
 "\n"
 "Expulsa, y prohíbe el acceso a un usuario y a la dirección IP que usa ese "
-"nombre de usuario.\n"
+"nombre de usuario. Puede usarse en usuarios que no estén en el juego pero sí "
+"en el servidor.\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -3158,6 +3157,9 @@ msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
 msgstr ""
+"\n"
+"Hace que la unidad seleccionada suba de nivel N veces. Por ejemplo: :unit "
+"advances=2"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:51
@@ -3545,21 +3547,19 @@ msgstr ""
 
 #. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:615
-#, fuzzy
 msgid "petrifies"
-msgstr "Golpes"
+msgstr "petrifica"
 
 #. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:617
-#, fuzzy
 msgid ""
 "Petrify:\n"
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
 msgstr ""
 "Petrificar:\n"
-"Este ataque convierte al objetivo en piedra. Las unidades afectadas por la "
-"petrificación no podrán moverse ni atacar."
+"Este ataque convierte al objetivo en piedra. Las unidades que hayan sido "
+"petrificadas no podrán moverse ni atacar."
 
 #. [chance_to_hit]: id=marksman
 #: data/core/macros/abilities.cfg:626
@@ -3651,6 +3651,8 @@ msgstr ""
 #: data/core/macros/ai.cfg:449
 msgid "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
 msgstr ""
+"Preguntar a $ally_leader.name (líder de la facción $ally_leader.side) para "
+"moverse aquí"
 
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:144
@@ -3840,31 +3842,29 @@ msgid "Exit"
 msgstr "Salir"
 
 #: data/core/macros/ai_controller.cfg:1047
-#, fuzzy
 msgid "Set special orders..."
-msgstr "Cambiar comportamiento..."
+msgstr "Asignar órdenes especiales..."
 
 #: data/core/macros/ai_controller.cfg:1048
 msgid "Move leader to..."
-msgstr ""
+msgstr "Mover líder a..."
 
 #: data/core/macros/ai_controller.cfg:1049
-#, fuzzy
 msgid "Right-click to select a location to move leader to"
-msgstr "Haga clic derecho para seleccionar una ubicación que defender"
+msgstr ""
+"Haga clic derecho para seleccionar una ubicación a la que mover el líder"
 
 #: data/core/macros/ai_controller.cfg:1050
 msgid "Move leader here"
-msgstr ""
+msgstr "Mover líder aquí"
 
 #: data/core/macros/ai_controller.cfg:1051
 msgid "moving leader to $x1|,$y1|."
-msgstr ""
+msgstr "moviendo líder a $x1|,$y1|."
 
 #: data/core/macros/ai_controller.cfg:1052
-#, fuzzy
 msgid "Clear special orders"
-msgstr "Cancelar todas las órdenes"
+msgstr "Limpiar órdenes especiales"
 
 #: data/core/macros/ai_controller.cfg:1053
 #, fuzzy
@@ -3901,9 +3901,8 @@ msgid "No early finish bonus."
 msgstr "No hay bonificación por finalizar pronto."
 
 #: data/core/macros/carryover-utils.cfg:15
-#, fuzzy
 msgid "<small>(early finish bonus)</small>"
-msgstr "`(bonificación por terminar pronto)"
+msgstr "<small>(bonificación por terminar pronto)</small>"
 
 #: data/core/macros/carryover-utils.cfg:18
 msgid "No gold carried over to the next scenario."
@@ -3936,9 +3935,8 @@ msgstr ""
 #. [objective]: description=<span color='white'>, condition=win
 #: data/core/macros/carryover-utils.cfg:34
 #: data/core/macros/carryover-utils.cfg:42
-#, fuzzy
 msgid "Alternative objective:"
-msgstr "Cambiar objetivo..."
+msgstr "Objetivo alternativo:"
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:39
@@ -5269,7 +5267,7 @@ msgstr "vital"
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:133
 msgid "Always rest heals"
-msgstr ""
+msgstr "Descansar siempre cura"
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:150 data/core/macros/traits.cfg:163
@@ -5318,9 +5316,8 @@ msgstr "torpe"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:221
-#, fuzzy
 msgid "aged"
-msgstr "a distancia"
+msgstr "anciano"
 
 #. [color_range]: id=red
 #. [color_range]: id=1
@@ -5331,12 +5328,12 @@ msgstr "Rojo"
 #. [color_range]: id=lightred
 #: data/core/team-colors.cfg:20
 msgid "Light Red"
-msgstr ""
+msgstr "Rojo claro"
 
 #. [color_range]: id=darkred
 #: data/core/team-colors.cfg:26
 msgid "Dark Red"
-msgstr ""
+msgstr "Rojo oscuro"
 
 #. [color_range]: id=blue
 #. [color_range]: id=2
@@ -6381,7 +6378,7 @@ msgstr "Lago $name"
 #. [language]
 #: data/hardwired/english.cfg:24
 msgid "$name's Peak,Mount $name"
-msgstr ""
+msgstr "Pico $name, montaña $name"
 
 #. [language]
 #: data/hardwired/english.cfg:25
@@ -6438,6 +6435,7 @@ msgstr "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 #: data/hardwired/english.cfg:33
 msgid "$mountain|mont,$mountain|cliff,$mountain|bury,$mountain|ham"
 msgstr ""
+"$mountain|montaña,$mountain|desfiladero,$mountain|enterrar,$mountain|crudo"
 
 #. [language]
 #: data/hardwired/english.cfg:34
@@ -6449,7 +6447,7 @@ msgstr ""
 #. [language]
 #: data/hardwired/english.cfg:35
 msgid "$road's Rest,$road's Waypoint,$road|bury,$road|ham,$name|bury,$name|ham"
-msgstr ""
+msgstr "el descanso de $road, el "
 
 #. [language]
 #: data/hardwired/english.cfg:36
@@ -6505,7 +6503,7 @@ msgstr "DejaVuSans.ttf,Andagii.ttf,wqy-zenhei.ttc"
 #. [fonts]
 #: data/hardwired/fonts.cfg:8
 msgid "DejaVu Sans,Andagii,WenQuanYi Zen Hei"
-msgstr ""
+msgstr "DejaVu Sans,Andagii,WenQuanYi Zen Hei"
 
 #. [tip]
 #: data/hardwired/tips.cfg:3
@@ -7285,15 +7283,13 @@ msgstr "nivel"
 
 #. [unit_moves]: id=unit-moves
 #: data/themes/default.cfg:459 data/themes/experimental.cfg:399
-#, fuzzy
 msgid "statuspanel^moves"
-msgstr "movimiento"
+msgstr "mueve"
 
 #. [unit_defense]: id=unit-defense
 #: data/themes/default.cfg:468 data/themes/experimental.cfg:408
-#, fuzzy
 msgid "statuspanel^terrain def."
-msgstr "nivel"
+msgstr "def. de terreno"
 
 #. [change]: id=actions-menu
 #: data/themes/default.cfg:1004
@@ -7395,27 +7391,24 @@ msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "No hay zonas del castillo libres para reclutar unidades."
 
 #: src/actions.cpp:354 src/actions.cpp:413 src/actions.cpp:1344
-#, fuzzy
 msgid "An invalid attacker weapon got selected."
-msgstr "Era seleccionada inválida"
+msgstr "Se ha seleccionado un arma de atacante inválida."
 
 #: src/actions.cpp:359
-#, fuzzy
 msgid "An invalid defender weapon got selected."
-msgstr "Era seleccionada inválida"
+msgstr "Se ha seleccionado un arma de defensor inválida."
 
 #: src/actions.cpp:1102
 msgid "female^poisoned"
 msgstr "envenenada"
 
 #: src/actions.cpp:1112
-#, fuzzy
 msgid "female^petrified"
-msgstr "envenenada"
+msgstr "petrificada"
 
 #: src/actions.cpp:1112
 msgid "petrified"
-msgstr ""
+msgstr "petrificado"
 
 #: src/actions.cpp:2298
 msgid "Ambushed!"
@@ -7510,9 +7503,8 @@ msgid "addon_type^Resources"
 msgstr "Recursos"
 
 #: src/addon_management.cpp:470
-#, fuzzy
 msgid "addon_type^Other"
-msgstr "Era multijugador"
+msgstr "Otro"
 
 #: src/addon_management.cpp:472
 msgid "addon_type^(unknown)"
@@ -7523,7 +7515,6 @@ msgid "Dependencies"
 msgstr "Dependencias"
 
 #: src/addon_management.cpp:506
-#, fuzzy
 msgid ""
 "$addon_title depends upon the following add-on which you have not installed "
 "yet:"
@@ -7531,10 +7522,9 @@ msgid_plural ""
 "$addon_title depends upon the following add-ons which you have not installed "
 "yet:"
 msgstr[0] ""
-"Este complemento depende del siguiente complemento que no ha sido instalado "
-"aún:"
+"$addon_title depende del siguiente complemento que no ha sido instalado aún:"
 msgstr[1] ""
-"Este complemento depende de los siguientes complementos que no han sido "
+"$addon_title depende de los siguientes complementos que no han sido "
 "instalado aún:"
 
 #: src/addon_management.cpp:509
@@ -7542,6 +7532,8 @@ msgid ""
 "Do you still want to download $addon_title|? (You will have to install all "
 "the dependencies in order to play.)"
 msgstr ""
+"¿Quiere descargar $addon_title|? (Debe tener todas las dependencias "
+"instaladas para jugar)."
 
 #: src/addon_management.cpp:527 src/addon_management.cpp:599
 #: src/multiplayer.cpp:214 src/multiplayer.cpp:274 src/multiplayer_ui.cpp:80
@@ -7729,7 +7721,7 @@ msgstr "Filtro: "
 
 #: src/addon_management.cpp:1122
 msgid "Description"
-msgstr ""
+msgstr "Descripción"
 
 #: src/addon_management.cpp:1159
 msgid "Network communication error."
@@ -7837,9 +7829,8 @@ msgid "What should our victorious unit become?"
 msgstr "¿En qué debe convertirse la unidad victoriosa?"
 
 #: src/dialogs.cpp:217
-#, fuzzy
 msgid "Level"
-msgstr "nivel"
+msgstr "Nivel"
 
 #: src/dialogs.cpp:236
 msgid "No objectives available"
@@ -8100,15 +8091,15 @@ msgstr "Información: "
 
 #: src/game_events.cpp:3282
 msgid "[unit_worth]'s filter didn't match any units!"
-msgstr ""
+msgstr "el filtro [unit_worth] no concuerda con ninguna unidad."
 
 #: src/gamestatus.cpp:722
-#, fuzzy
 msgid ""
 "Leader position not empty - duplicate side definition for side '$side|' "
 "found."
 msgstr ""
-"Se ha encontrado una definición de bando duplicada para el bando «$side|»."
+"La posición del líder no está vacía, se ha encontrado una definición de "
+"bando duplicada para el bando «$side|»."
 
 #: src/generate_report.cpp:128
 msgid "invisible: "
@@ -8153,10 +8144,9 @@ msgstr ""
 
 #: src/generate_report.cpp:140
 msgid "petrified: "
-msgstr ""
+msgstr "petrificado:"
 
 #: src/generate_report.cpp:141
-#, fuzzy
 msgid "This unit has been petrified. It may not move or attack."
 msgstr "Esta unidad ha sido petrificada. No se puede mover ni atacar."
 
@@ -8223,39 +8213,36 @@ msgid "Observers:"
 msgstr "Observadores:"
 
 #: src/gui/dialogs/lobby_player_info.cpp:64
-#, fuzzy
 msgid "In game:"
-msgstr "Nombre:"
+msgstr "En juego:"
 
 #: src/gui/dialogs/lobby_player_info.cpp:66
 msgid "(observing)"
-msgstr ""
+msgstr "(observando)"
 
 #: src/gui/dialogs/lobby_player_info.cpp:68
 msgid "(playing)"
-msgstr ""
+msgstr "(jugando)"
 
 #: src/gui/dialogs/lobby_player_info.cpp:71
 msgid "In lobby"
-msgstr ""
+msgstr "En sala"
 
 #: src/gui/dialogs/lobby_player_info.cpp:95
-#, fuzzy
 msgid "On friends list"
-msgstr "Añadido a la lista de amigos: "
+msgstr "En lista de amigos"
 
 #: src/gui/dialogs/lobby_player_info.cpp:100
-#, fuzzy
 msgid "On ignores list"
-msgstr "Añadido a la lista de usuarios a ignorar: "
+msgstr "En lista de ignorados"
 
 #: src/gui/dialogs/lobby_player_info.cpp:105
 msgid "Neither a friend nor ignored"
-msgstr ""
+msgstr "Ni es un amigo ni se ignora"
 
 #: src/gui/dialogs/lobby_player_info.cpp:110
 msgid "You"
-msgstr ""
+msgstr "Tú"
 
 #: src/gui/dialogs/lobby_player_info.cpp:113 src/multiplayer_create.cpp:541
 msgid "Error"
@@ -8274,12 +8261,10 @@ msgid "<header>text='Units having this ability'</header>"
 msgstr "<header>text='Unidades con esta habilidad'</header>"
 
 #: src/help.cpp:1246
-#, fuzzy
 msgid "Leaders:"
-msgstr "Líder: "
+msgstr "Líderes: "
 
 #: src/help.cpp:1255
-#, fuzzy
 msgid "Recruits:"
 msgstr "Reclutas: "
 
@@ -8288,13 +8273,12 @@ msgid "Era:"
 msgstr "Era:"
 
 #: src/help.cpp:1277
-#, fuzzy
 msgid "Factions:"
-msgstr "Facción"
+msgstr "Facciones:"
 
 #: src/help.cpp:1287
 msgid "Factions are only used in multiplayer"
-msgstr ""
+msgstr "Las facciones sólo se usan en multijugador"
 
 #: src/help.cpp:1362
 msgid "Advances from: "
@@ -8440,19 +8424,16 @@ msgid "?"
 msgstr "?"
 
 #: src/loadscreen.cpp:244
-#, fuzzy
 msgid "Verifying cache..."
-msgstr "Verificando caché"
+msgstr "Verificando caché..."
 
 #: src/loadscreen.cpp:262
-#, fuzzy
 msgid "Reading unit files..."
-msgstr "Leyendo archivos de unidades."
+msgstr "Leyendo archivos de unidades..."
 
 #: src/loadscreen.cpp:280
-#, fuzzy
 msgid "Reading files and creating cache..."
-msgstr "Leyendo archivos y creando el caché."
+msgstr "Leyendo archivos y creando caché..."
 
 #: src/lobby_data.cpp:201
 msgid "Unknown era: $era_id"
@@ -8807,6 +8788,8 @@ msgstr ""
 #: src/menu_events.cpp:2222
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr ""
+"Permitir el acceso a un usuario. No tiene que estar en el juego pero sí en "
+"el servidor."
 
 #: src/menu_events.cpp:2225
 msgid "Kick a player or observer."
@@ -8815,19 +8798,22 @@ msgstr "Expulsar a un jugador u observador."
 #: src/menu_events.cpp:2227
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr ""
+"Silenciar a un observador. Sin un argumento muestra el estado de los "
+"silenciados."
 
 #: src/menu_events.cpp:2229
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr ""
+"Permitir hablar a un observador. Sin un argumento permite que todos hablen."
 
 #: src/menu_events.cpp:2231
-#, fuzzy
 msgid "Mute/Unmute all observers. (toggles)"
-msgstr "Silenciar a todos los observadores."
+msgstr "Silenciar/Quitar silencio a todos los observadores."
 
 #: src/menu_events.cpp:2241
 msgid "Send a message to the server admins currently online"
 msgstr ""
+"Enviar un mensaje a los administradores del servidor que estén en línea"
 
 #: src/menu_events.cpp:2243
 msgid "Send an emotion or personal action in chat."
@@ -8890,29 +8876,28 @@ msgstr ""
 "usuario registrado."
 
 #: src/menu_events.cpp:2276
-#, fuzzy
 msgid "Join a room."
-msgstr "Unirse a la partida"
+msgstr "Unirse a partida."
 
 #: src/menu_events.cpp:2279
 msgid "Part a room."
-msgstr ""
+msgstr "Parte de una partida."
 
 #: src/menu_events.cpp:2281
 msgid "List room members."
-msgstr ""
+msgstr "Listar miembros de partidas."
 
 #: src/menu_events.cpp:2283
 msgid "List available rooms."
-msgstr ""
+msgstr "Listar partidas disponibles."
 
 #: src/menu_events.cpp:2285
 msgid "Room message."
-msgstr ""
+msgstr "Mensaje de partida."
 
 #: src/menu_events.cpp:2287
 msgid "Room query."
-msgstr ""
+msgstr "Consulta de partida."
 
 #: src/menu_events.cpp:2416
 msgid "Refresh gui."
@@ -8972,7 +8957,7 @@ msgstr "Desactiva el modo de depuración."
 
 #: src/menu_events.cpp:2451
 msgid "Execute a Lua statement."
-msgstr ""
+msgstr "Ejecutar sentencia en Lua."
 
 #: src/menu_events.cpp:2453
 msgid "Set the command used by the custom command hotkey"
@@ -8982,7 +8967,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2455
 msgid "Launch the gamestate inspector"
-msgstr ""
+msgstr "Lanzar el inspector de estado de juego"
 
 #: src/menu_events.cpp:2457
 msgid "Set or show alias to a command"
@@ -9004,7 +8989,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2470
 msgid "Discover all units in help."
-msgstr ""
+msgstr "Descubrir unidades"
 
 #: src/menu_events.cpp:2475
 msgid "Create a unit."
@@ -9236,7 +9221,7 @@ msgstr "Jugador local anónimo"
 
 #: src/multiplayer_connect.cpp:662
 msgid "$playername $side"
-msgstr ""
+msgstr "$playername $side"
 
 #: src/multiplayer_connect.cpp:666
 msgid "(Empty slot)"
@@ -9247,9 +9232,8 @@ msgid "(Reserved for $playername)"
 msgstr "(Reservado para $playername)"
 
 #: src/multiplayer_connect.cpp:678
-#, fuzzy
 msgid "(empty)"
-msgstr "Vacío"
+msgstr "(vacío)"
 
 #: src/multiplayer_connect.cpp:788
 msgid "Reserved"
@@ -9292,9 +9276,8 @@ msgid "I'm Ready"
 msgstr "Estoy listo"
 
 #: src/multiplayer_connect.cpp:1012
-#, fuzzy
 msgid "The scenario is invalid because it has no id."
-msgstr "El escenario es inválido, ya que no tiene bandos."
+msgstr "El escenario es inválido, porque no tiene id."
 
 #: src/multiplayer_connect.cpp:1016
 msgid "The scenario is invalid because it has no sides."
@@ -9325,11 +9308,8 @@ msgid "Victory:"
 msgstr "Victoria:"
 
 #: src/multiplayer_connect.cpp:1583
-#, fuzzy
 msgid "Defeat enemy leader(s)"
-msgstr ""
-"Victoria\n"
-"@Derrotar al/los líder(es) enemigo(s)"
+msgstr "Derrotar a los líderes enemigos"
 
 #: src/multiplayer_connect.cpp:1647
 msgid "Waiting for players to join..."
@@ -9571,8 +9551,8 @@ msgstr "Ubicación inicial: "
 #: src/multiplayer_wait.cpp:507
 msgid "multiplayer_starting_gold^Gold"
 msgid_plural "multiplayer_starting_gold^Gold"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "oro_inicial_en_multijugador^Oro"
+msgstr[1] "oro_inicial_en_multijugador^Oro"
 
 #: src/network.cpp:106
 msgid "invalid network handle"
@@ -9612,11 +9592,11 @@ msgstr "Inicializando visualización"
 
 #: src/play_controller.cpp:189
 msgid "time left for current turn"
-msgstr ""
+msgstr "tiempo restante para el turno actual"
 
 #: src/play_controller.cpp:191 src/replay_controller.cpp:136
 msgid "current local time"
-msgstr ""
+msgstr "hora actual local"
 
 #: src/play_controller.cpp:229
 msgid "Starting game"
@@ -9661,12 +9641,11 @@ msgstr "Escenario desconocido: «$scenario|»"
 
 #: src/playmp_controller.cpp:94
 msgid "$name has taken control"
-msgstr ""
+msgstr "$name ha tomado el control"
 
 #: src/playmp_controller.cpp:96
-#, fuzzy
 msgid "Turn changed"
-msgstr "a distancia"
+msgstr "Turno cambiado"
 
 #: src/playmp_controller.cpp:228
 msgid "Undoing moves not yet transmitted to the server."
@@ -9766,13 +9745,12 @@ msgid "The game is over."
 msgstr "El juego se ha acabado."
 
 #: src/playsingle_controller.cpp:492
-#, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game\n"
 "cannot continue. Do you want to save the game?"
 msgstr ""
-"Se ha producido una desconexión de red y el juego no puede continuar. "
-"¿Quiere guardar la partida?"
+"Se ha producido una desconexión de red y el juego\n"
+"no puede continuar. ¿Quiere guardar la partida?"
 
 #: src/playsingle_controller.cpp:652
 msgid "It is now $name|'s turn"
@@ -9839,9 +9817,8 @@ msgid "This is not a multiplayer save"
 msgstr "Ésta no es una partida guardada en modo multijugador"
 
 #: src/savegame.cpp:605
-#, fuzzy
 msgid "The game could not be saved: "
-msgstr "La partida no se ha podido guardar"
+msgstr "La partida no se ha podido guardar:"
 
 #: src/savegame.cpp:692
 msgid "Name: "
@@ -9920,11 +9897,10 @@ msgid "Unexpected closing tag"
 msgstr "No se esperaba etiqueta de cierre"
 
 #: src/serialization/parser.cpp:217
-#, fuzzy
 msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
 msgstr ""
 "Se ha encontrado una etiqueta de cierre inválida $tag2 de la etiqueta $tag "
-"(en la posición $pos)"
+"(abierta en la posición $pos)"
 
 #: src/serialization/parser.cpp:242 src/serialization/parser.cpp:254
 msgid "Empty variable name"
@@ -9976,9 +9952,8 @@ msgid "Damage"
 msgstr "Daño"
 
 #: src/statistics_dialog.cpp:177
-#, fuzzy
 msgid "Overall"
-msgstr "Sobre Todo"
+msgstr "Total"
 
 #: src/statistics_dialog.cpp:179
 msgid "This Turn"

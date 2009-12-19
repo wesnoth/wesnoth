@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-11-26 15:38+0100\n"
-"PO-Revision-Date: 2009-01-13 20:34-0300\n"
-"Last-Translator: Ignacio R. Morelle <shikadilord@users.sourceforge.net>\n"
+"PO-Revision-Date: 2009-12-15 20:06+0100\n"
+"Last-Translator: Diego J. <diegojromerolopez@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,13 +24,12 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:40
-#, fuzzy
 msgid ""
 "\n"
 "<big>Click a mouse button or press spacebar to continue...</big>"
 msgstr ""
 "\n"
-"*Pulsa el botón izquierdo o la barra espaciadora para continuar..."
+"<big>Pulsa el botón izquierdo o la barra espaciadora para continuar...</big>"
 
 #. [tutorial]: id=tutorial
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:49
@@ -99,9 +98,8 @@ msgstr "Li'sar"
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:204
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:211
-#, fuzzy
 msgid "<big>Welcome to Wesnoth!</big>"
-msgstr "*¡Bienvenido a Wesnoth!"
+msgstr "<big>¡Bienvenido a Wesnoth!</big>"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:206
@@ -150,23 +148,21 @@ msgstr "Pulsa el botón izquierdo sobre Li'sar"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:238
-#, fuzzy
 msgid ""
 "<big>You have selected Konrad.</big>\n"
 "The places he can move to are highlighted."
 msgstr ""
-"*Has seleccionado a Konrad.\n"
-"Los lugares a donde puede moverse están iluminados."
+"<big>Has seleccionado a Konrad.</big>\n"
+"Los lugares adonde puede moverse están iluminados."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:245
-#, fuzzy
 msgid ""
 "<big>You have selected Li'sar.</big>\n"
 "The places she can move to are highlighted."
 msgstr ""
-"*Has seleccionado a Li'sar.\n"
-"Los lugares a donde puede moverse están iluminados."
+"<big>Has seleccionado a Li'sar.</big>\n"
+"Los lugares adonde puede moverse están iluminados."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:250
@@ -192,15 +188,14 @@ msgstr "Pulsa con el botón izquierdo en la casilla marcada con «AQUÍ»"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:292
-#, fuzzy
 msgid ""
 "<big>Oops!</big>\n"
 "You moved to the wrong place! After this message, you can press 'u' to undo, "
 "then try again."
 msgstr ""
-"*¡Oops!\n"
-"¡Te moviste al lugar equivocado! Después de este mensaje puedes pulsar la "
-"tecla «u» para «Deshacer», luego puedes intentar de nuevo."
+"<big>¡Oops!</big>\n"
+"¡Te has movido al lugar equivocado! Después de este mensaje puedes pulsar la "
+"tecla «u» para «Deshacer», luego puedes intentarlo de nuevo."
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:314
@@ -322,7 +317,6 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:460
-#, fuzzy
 msgid ""
 "female^Unfortunately, you've used up your turn attacking the quintain. The "
 "quintain will now get a turn."
@@ -377,7 +371,6 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:508
-#, fuzzy
 msgid ""
 "female^There is a village on the other side of the river. Visiting villages "
 "is a good idea, and ending your turn in one will heal you. To the village!"
@@ -432,12 +425,11 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:585
-#, fuzzy
 msgid ""
 "female^You're about to be healed by $hp_difference hitpoints, but I think "
 "you're going to need some help against that quintain."
 msgstr ""
-"Te van a sanar $hp_difference puntos de daño. Pero creo que vas a necesitar "
+"Te van a sanar $hp_difference puntos de golpe. Pero creo que vas a necesitar "
 "algo de ayuda contra el estafermo."
 
 #. [message]: id=student
@@ -463,7 +455,6 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:603
-#, fuzzy
 msgid ""
 "female^A splendid idea. You can recruit two units if you return to the keep. "
 "You have plenty of gold for that."
@@ -535,11 +526,12 @@ msgstr "Sí, si una unidad no hace nada durante un turno, se sanará un poco."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:742
-#, fuzzy
 msgid ""
 "Had the quintain survived your onslaught, it would have regained two "
 "hitpoints. If a unit doesn't do anything for a turn, it will slowly heal."
-msgstr "Sí, si una unidad no hace nada durante un turno, se sanará un poco."
+msgstr ""
+"Habiendo sobrevivido el estafermo a tu asalto, ha recuperado dos puntos de "
+"golpe. Sí, si una unidad no hace nada durante un turno, se sanará un poco."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:755
@@ -736,9 +728,8 @@ msgstr ""
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1045
-#, fuzzy
 msgid "The quintain is dead, and I have gained more experience!"
-msgstr "El estafermo está muerto, señores, ¡y he ganado más experiencia!"
+msgstr "El estafermo está muerto, ¡y he ganado más experiencia!"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1050
@@ -808,12 +799,11 @@ msgstr ""
 "escenario» para continuar al siguiente escenario."
 
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:27
-#, fuzzy
 msgid ""
 "<big>Remember:</big>\n"
 "You can press 'u' to undo most things; useful for correcting mistakes."
 msgstr ""
-"*Recuerda:\n"
+"<big>Recuerda:</big>\n"
 "Puedes pulsar «u» para deshacer la mayoría de las cosas; útil para corregir "
 "errores."
 
@@ -868,7 +858,6 @@ msgstr "¿Puede una unidad sobrevivir contra todos esos enemigos?"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:28
-#, fuzzy
 msgid ""
 "With a little help, yes. If you move your Shaman next to the defending unit, "
 "she will heal it 4 hitpoints per turn. Just be careful not to expose the "
@@ -1068,7 +1057,6 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:530
-#, fuzzy
 msgid ""
 "During your tutorial, both $recall_name1 and $recall_name2 gained "
 "$recall_xp1 experience points. You should recall them now so they can gain "
@@ -1372,13 +1360,13 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:921
-#, fuzzy
 msgid ""
 "Attack the orc with an Archer\n"
 "(move mouse over units to see description on right)"
 msgstr ""
-"Ataca al orco con un arquero (pasa el puntero del ratón por encima de las "
-"unidades para ver su descripción a la derecha)"
+"Ataca al orco con un arquero\n"
+"(pasa el puntero del ratón por encima de las unidades para ver su "
+"descripción a la derecha)"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:929
@@ -1728,14 +1716,12 @@ msgstr ""
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1357
-#, fuzzy
 msgid ""
 "We will miss $deadguy.name| because she had $deadguy.experience experience "
 "points, meaning she would have advanced to level 2 soon."
 msgstr ""
-"Echaremos de menos a $deadguy.user_description| porque tenía $deadguy."
-"experience puntos de experiencia, por lo que habría subido al nivel 2 en "
-"breve."
+"Echaremos de menos a $deadguy.name| porque tenía $deadguy.experience puntos "
+"de experiencia, por lo que ella habría subido al nivel 2 en breve."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1368
@@ -1796,7 +1782,6 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1430
-#, fuzzy
 msgid ""
 "female^Advancing a level has fully healed me!\n"
 "I always have a 60% chance of hitting with my Marksman ability, and I deal 9 "
