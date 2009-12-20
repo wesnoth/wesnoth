@@ -91,6 +91,14 @@ void tlistbox::set_row_active(const unsigned row, const bool active)
 	generator_->get_item(row).set_active(active);
 }
 
+void tlistbox::set_row_visible(const unsigned row, const bool visible)
+{
+	assert(generator_);
+	generator_->set_item_shown(row, visible);
+	content_resize_request();
+	set_dirty();
+}
+
 const tgrid* tlistbox::get_row_grid(const unsigned row) const
 {
 	assert(generator_);
