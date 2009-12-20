@@ -141,6 +141,13 @@ class tokenizer
 					token_.type = token::token_type(current_);
 					token_.value = current_;
 					break;
+				case '_':
+					if (!is_alnum(peek_char())) {
+						token_.type = token::token_type(current_);
+						token_.value = current_;
+						break;
+					}
+					// no break
 				default:
 					if(is_alnum(current_)) {
 						token_.type = token::STRING;
@@ -153,7 +160,6 @@ class tokenizer
 						token_.value += current_;
 						next_char();
 					}
-					check_translatable();
 					return token_;
 			}
 
@@ -162,13 +168,6 @@ class tokenizer
 
 			return token_;
 		}
-
-		void check_translatable()
-		{
-			if(token_.value == "_")
-				token_.type = token::token_type('_');
-		}
-
 
 		const token& current_token() const
 		{
