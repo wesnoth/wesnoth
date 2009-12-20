@@ -54,12 +54,16 @@ namespace gui2 {
  *     -(filename)                The name of the savegame.
  *     -[date]                    The date the savegame was created.
  *
- *     (minimap) (minimap) ()     Minimap of the selected savegame.
- *     (imgLeader) (image) ()     The image of the leader in the selected
+ *     (preview_pane) (widget) () Container widget or grid that contains the
+ *                                items for a preview. The visible status of
+ *                                this container depends on whether or not
+ *                                something is selected.
+ *     -(minimap) (minimap) ()    Minimap of the selected savegame.
+ *     -(imgLeader) (image) ()    The image of the leader in the selected
  *                                savegame.
- *     (lblScenario) (label) ()   The name of the scenario of the selected
+ *     -(lblScenario) (label) ()  The name of the scenario of the selected
  *                                savegame.
- *     (lblSummary) (label) ()    Summary of the selected savegame.
+ *     -(lblSummary) (label) ()   Summary of the selected savegame.
  * @end_table
  */
 
@@ -188,35 +192,47 @@ void tgame_load::post_show(twindow& window)
 
 void tgame_load::display_savegame(twindow& window)
 {
-	tlistbox& list = find_widget<tlistbox>(&window, "savegame_list", false);
-	savegame::save_info& game = games_[list.get_selected_row()];
-	filename_ = game.name;
+	const int selected_row =
+			find_widget<tlistbox>(&window, "savegame_list", false)
+				.get_selected_row();
 
-	config cfg_summary;
-	std::string dummy;
+	twidget& preview_pane =
+			find_widget<twidget>(&window, "preview_pane", false);
 
-	try {
-		savegame::manager::load_summary(game.name, cfg_summary, &dummy);
-	} catch(game::load_game_failed&) {
-		cfg_summary["corrupt"] = "yes";
+	if(selected_row == -1) {
+		preview_pane.set_visible(twidget::HIDDEN);
+	} else {
+		preview_pane.set_visible(twidget::VISIBLE);
+
+		savegame::save_info& game = games_[selected_row];
+		filename_ = game.name;
+
+		config cfg_summary;
+		std::string dummy;
+
+		try {
+			savegame::manager::load_summary(game.name, cfg_summary, &dummy);
+		} catch(game::load_game_failed&) {
+			cfg_summary["corrupt"] = "yes";
+		}
+
+		find_widget<timage>(&window, "imgLeader", false).
+				set_label(cfg_summary["leader_image"]);
+
+		find_widget<tminimap>(&window, "minimap", false).
+				set_map_data(cfg_summary["map_data"]);
+
+		find_widget<tlabel>(&window, "lblScenario", false).set_label(game.name);
+
+		std::stringstream str;
+		str << game.format_time_local();
+		evaluate_summary_string(str, cfg_summary);
+
+		find_widget<tlabel>(&window, "lblSummary", false).set_label(str.str());
+
+		// FIXME: Find a better way to change the label width
+		window.invalidate_layout();
 	}
-
-	find_widget<timage>(&window, "imgLeader", false).
-			set_label(cfg_summary["leader_image"]);
-
-	find_widget<tminimap>(&window, "minimap", false).
-			set_map_data(cfg_summary["map_data"]);
-
-	find_widget<tlabel>(&window, "lblScenario", false).set_label(game.name);
-
-	std::stringstream str;
-	str << game.format_time_local();
-	evaluate_summary_string(str, cfg_summary);
-
-	find_widget<tlabel>(&window, "lblSummary", false).set_label(str.str());
-
-	// FIXME: Find a better way to change the label width
-	window.invalidate_layout();
 }
 
 void tgame_load::evaluate_summary_string(std::stringstream& str
