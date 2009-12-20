@@ -56,6 +56,7 @@ class twindow
 	friend class tdebug_layout_graph;
 	friend twindow* build(CVideo&, const std::string&);
 	friend struct twindow_implementation;
+	friend class tinvalidate_layout_blocker;
 
 public:
 
@@ -182,13 +183,32 @@ public:
 	void close() { status_ = REQUEST_CLOSE; }
 
 	/**
+	 * Helper class to block invalidate_layout.
+	 *
+	 * Some widgets can handling certain layout aspects without help. For
+	 * example a listbox can handle hiding and showing rows without help but
+	 * setting the visibility calls invalidate_layout(). When this blocker is
+	 * instanciated the call to invalidate_layout() becomes a nop.
+	 *
+	 * @note The class can't be used recursively.
+	 */
+	class tinvalidate_layout_blocker
+	{
+	public:
+		tinvalidate_layout_blocker(twindow& window);
+		~tinvalidate_layout_blocker();
+	private:
+		twindow& window_;
+	};
+
+	/**
 	 * Updates the size of the window.
 	 *
 	 * If the window has automatic placement set this function recacluates the
 	 * window. To be used after creation and after modification or items which
 	 * can have different sizes eg listboxes.
 	 */
-	void invalidate_layout() { need_layout_ = true; }
+	void invalidate_layout();
 
 	/** Inherited from tevent_handler. */
 	twindow& get_window() { return *this; }
@@ -362,6 +382,9 @@ private:
 	 * the window is resized.
 	 */
 	bool need_layout_;
+
+	/** Is invalidate layout blocked see tinvalidate_layout_blocker. */
+	bool invalidate_layout_blocked_;
 
 	/** Avoid drawing the window.  */
 	bool suspend_drawing_;

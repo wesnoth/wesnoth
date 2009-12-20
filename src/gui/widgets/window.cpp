@@ -229,6 +229,7 @@ twindow::twindow(CVideo& video,
 	, retval_(NONE)
 	, owner_(0)
 	, need_layout_(true)
+	, invalidate_layout_blocked_(false)
 	, suspend_drawing_(true)
 	, restorer_()
 	, tooltip_()
@@ -665,6 +666,26 @@ void twindow::draw()
 	cursor::draw(frame_buffer);
 	video_.flip();
 	cursor::undraw(frame_buffer);
+}
+
+twindow::tinvalidate_layout_blocker::tinvalidate_layout_blocker(twindow& window)
+	: window_(window)
+{
+	assert(!window_.invalidate_layout_blocked_);
+	window_.invalidate_layout_blocked_ = true;
+}
+
+twindow::tinvalidate_layout_blocker::~tinvalidate_layout_blocker()
+{
+	assert(window_.invalidate_layout_blocked_);
+	window_.invalidate_layout_blocked_ = false;
+}
+
+void twindow::invalidate_layout()
+{
+	if(!invalidate_layout_blocked_) {
+		need_layout_ = true;
+	}
 }
 
 void twindow::init_linked_size_group(const std::string& id,
