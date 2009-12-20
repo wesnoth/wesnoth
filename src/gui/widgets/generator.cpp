@@ -26,6 +26,22 @@ namespace policy {
 
 namespace minimum_selection {
 
+void tone::set_item_shown(const unsigned index, const bool show)
+{
+	if(show && get_selected_item_count() == 0) {
+		do_select_item(index);
+	} else if(!show && is_selected(index)) {
+		do_deselect_item(index);
+
+		for(unsigned i = index + 1; i < get_item_count(); ++i) {
+			if(get_item_shown(i)) {
+				do_select_item(i);
+				break;
+			}
+		}
+	}
+}
+
 void tone::create_item(const unsigned index)
 {
 	if(get_selected_item_count() == 0) {
@@ -44,6 +60,8 @@ bool tone::deselect_item(const unsigned index)
 
 void tone::delete_item(const unsigned index)
 {
+	/** @todo do_select_item needs to test for shown flag. */
+
 	if(is_selected(index)) {
 		do_deselect_item(index);
 
@@ -65,6 +83,13 @@ void tone::delete_item(const unsigned index)
 	}
 }
 
+void tnone::set_item_shown(const unsigned index, const bool show)
+{
+	if(!show && is_selected(index)) {
+		do_deselect_item(index);
+	}
+}
+
 } // namespace minimum_selection
 
 /***** ***** ***** ***** Placement ***** ***** ***** *****/
@@ -74,6 +99,25 @@ namespace placement {
 thorizontal_list::thorizontal_list()
 	: placed_(false)
 {
+}
+
+void thorizontal_list::set_item_shown(const unsigned index, const bool show)
+{
+	// Adjust the size.
+	tpoint best_size = this->get_best_size();
+	const int item_width = show
+			?  get_item(index).get_best_size().x
+			: -get_item(index).get_best_size().x;
+
+	best_size.x += item_width;
+	this->set_layout_size(best_size);
+
+	// Adjust the placement.
+	for(unsigned i = index + 1; i < get_item_count(); ++i) {
+		tpoint origin = get_item(i).get_origin();
+		origin.x += item_width;
+		get_item(i).set_origin(origin);
+	}
 }
 
 void thorizontal_list::create_item(const unsigned /*index*/)
@@ -93,7 +137,7 @@ tpoint thorizontal_list::calculate_best_size() const
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		const tgrid& grid = get_item(i);
-		if(grid.get_visible() == twidget::INVISIBLE) {
+		if(grid.get_visible() == twidget::INVISIBLE || !get_item_shown(i)) {
 			continue;
 		}
 
@@ -123,7 +167,7 @@ void thorizontal_list::set_size(const tpoint& origin, const tpoint& size)
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		tgrid& grid = get_item(i);
-		if(grid.get_visible() == twidget::INVISIBLE) {
+		if(grid.get_visible() == twidget::INVISIBLE || !get_item_shown(i)) {
 			continue;
 		}
 
@@ -146,7 +190,7 @@ void thorizontal_list::set_origin(const tpoint& origin)
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		tgrid& grid = get_item(i);
-		if(grid.get_visible() == twidget::INVISIBLE) {
+		if(grid.get_visible() == twidget::INVISIBLE || !get_item_shown(i)) {
 			continue;
 		}
 
@@ -179,7 +223,7 @@ twidget* thorizontal_list::find_at(
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		tgrid& grid = get_item(i);
-		if(grid.get_visible() == twidget::INVISIBLE) {
+		if(grid.get_visible() == twidget::INVISIBLE || !get_item_shown(i)) {
 			continue;
 		}
 
@@ -202,7 +246,7 @@ const twidget* thorizontal_list::find_at(const tpoint& coordinate,
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		const tgrid& grid = get_item(i);
-		if(grid.get_visible() == twidget::INVISIBLE) {
+		if(grid.get_visible() == twidget::INVISIBLE || !get_item_shown(i)) {
 			continue;
 		}
 
@@ -250,7 +294,9 @@ void thorizontal_list::handle_key_right_arrow(
 
 	for(size_t i = get_selected_item() + 1; i < get_item_count(); ++i) {
 
-		if(get_item(i).get_visible() == twidget::INVISIBLE) {
+		if(get_item(i).get_visible() == twidget::INVISIBLE
+				|| !get_item_shown(i)) {
+
 			continue;
 		}
 
@@ -267,6 +313,25 @@ void thorizontal_list::handle_key_right_arrow(
 tvertical_list::tvertical_list()
 	: placed_(false)
 {
+}
+
+void tvertical_list::set_item_shown(const unsigned index, const bool show)
+{
+	// Adjust the size.
+	tpoint best_size = this->get_best_size();
+	const int item_height = show
+			?  get_item(index).get_best_size().y
+			: -get_item(index).get_best_size().y;
+
+	best_size.y += item_height;
+	this->set_layout_size(best_size);
+
+	// Adjust the placement.
+	for(unsigned i = index + 1; i < get_item_count(); ++i) {
+		tpoint origin = get_item(i).get_origin();
+		origin.y += item_height;
+		get_item(i).set_origin(origin);
+	}
 }
 
 void tvertical_list::create_item(const unsigned /*index*/)
@@ -286,7 +351,7 @@ tpoint tvertical_list::calculate_best_size() const
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		const tgrid& grid = get_item(i);
-		if(grid.get_visible() == twidget::INVISIBLE) {
+		if(grid.get_visible() == twidget::INVISIBLE || !get_item_shown(i)) {
 			continue;
 		}
 
@@ -316,7 +381,7 @@ void tvertical_list::set_size(const tpoint& origin, const tpoint& size)
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		tgrid& grid = get_item(i);
-		if(grid.get_visible() == twidget::INVISIBLE) {
+		if(grid.get_visible() == twidget::INVISIBLE || !get_item_shown(i)) {
 			continue;
 		}
 
@@ -339,7 +404,7 @@ void tvertical_list::set_origin(const tpoint& origin)
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		tgrid& grid = get_item(i);
-		if(grid.get_visible() == twidget::INVISIBLE) {
+		if(grid.get_visible() == twidget::INVISIBLE || !get_item_shown(i)) {
 			continue;
 		}
 
@@ -372,7 +437,7 @@ twidget* tvertical_list::find_at(
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		tgrid& grid = get_item(i);
-		if(grid.get_visible() == twidget::INVISIBLE) {
+		if(grid.get_visible() == twidget::INVISIBLE || !get_item_shown(i)) {
 			continue;
 		}
 
@@ -396,7 +461,7 @@ const twidget* tvertical_list::find_at(const tpoint& coordinate,
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		const tgrid& grid = get_item(i);
-		if(grid.get_visible() == twidget::INVISIBLE) {
+		if(grid.get_visible() == twidget::INVISIBLE || !get_item_shown(i)) {
 			continue;
 		}
 
@@ -442,7 +507,9 @@ void tvertical_list::handle_key_down_arrow(SDLMod /*modifier*/, bool& handled)
 
 	for(size_t i = get_selected_item() + 1; i < get_item_count(); ++i) {
 
-		if(get_item(i).get_visible() == twidget::INVISIBLE) {
+		if(get_item(i).get_visible() == twidget::INVISIBLE
+					|| !get_item_shown(i)) {
+
 			continue;
 		}
 

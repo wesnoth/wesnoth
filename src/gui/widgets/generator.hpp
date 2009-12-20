@@ -99,6 +99,19 @@ public:
 	/** Returns whether the item is selected. */
 	virtual bool is_selected(const unsigned index) const = 0;
 
+	/**
+	 * Shows or hides an item.
+	 *
+	 * The caller is resposible for reformatting the grid.
+	 *
+	 * @param index               The item to show or hide.
+	 * @param show                If true shows the item, else hides it.
+	 */
+	virtual void set_item_shown(const unsigned index, const bool show) = 0;
+
+	/** Returns whether the item is shown. */
+	virtual bool get_item_shown(const unsigned index) const = 0;
+
 	/** Returns the number of items. */
 	virtual unsigned get_item_count() const = 0;
 

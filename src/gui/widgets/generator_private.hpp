@@ -41,6 +41,14 @@ struct tone
 	: public virtual tgenerator_
 {
 	/**
+	 * Called when an item is shown or hidden.
+	 *
+	 * @param index               The item to show or hide.
+	 * @param show                If true shows the item, else hides it.
+	 */
+	void set_item_shown(const unsigned index, const bool show);
+
+	/**
 	 * Called when an item is created.
 	 *
 	 * @param index               The index of the new item.
@@ -79,6 +87,9 @@ struct tone
 struct tnone
 	: public virtual tgenerator_
 {
+
+	/** See tone::set_item_shown(). */
+	void set_item_shown(const unsigned index, const bool show);
 
 	/** See minimum_selection::tone::create_item() */
 	void create_item(const unsigned /*index*/) {}
@@ -134,6 +145,7 @@ struct tone
 struct tinfinite
 	: public virtual tgenerator_
 {
+	/** See tone::select_item(). */
 	void select_item(const unsigned index)
 	{
 		do_select_item(index);
@@ -152,6 +164,14 @@ struct thorizontal_list
 	: public virtual tgenerator_
 {
 	thorizontal_list();
+
+	/**
+	 * Called when an item is shown or hidden.
+	 *
+	 * @param index               The item to show or hide.
+	 * @param show                If true shows the item, else hides it.
+	 */
+	void set_item_shown(const unsigned index, const bool show);
 
 	/**
 	 * Called when an item is created.
@@ -255,6 +275,9 @@ struct tvertical_list
 {
 	tvertical_list();
 
+	/** See thorizontal_list::set_item_shown(). */
+	void set_item_shown(const unsigned index, const bool show);
+
 	/** See thorizontal_list::create_item(). */
 	void create_item(const unsigned index);
 
@@ -328,6 +351,12 @@ private:
 struct tmatrix
 	: public virtual tgenerator_
 {
+	/** See thorizontal_list::set_item_shown(). */
+	void set_item_shown(const unsigned /*index*/, const bool /*show*/)
+	{
+		ERROR_LOG(false);
+	}
+
 	/** See thorizontal_list::create_item(). */
 	void create_item(const unsigned /*index*/) { ERROR_LOG(false); }
 
@@ -391,6 +420,12 @@ struct tmatrix
 struct tindependant
 	: public virtual tgenerator_
 {
+	/** See thorizontal_list::set_item_shown(). */
+	void set_item_shown(const unsigned /*index*/, const bool /*show*/)
+	{
+		/* DO NOTHING */
+	}
+
 	/** See thorizontal_list::create_item(). */
 	void create_item(const unsigned /*index*/)
 	{
@@ -601,6 +636,39 @@ public:
 	}
 
 	/** Inherited from tgenerator_. */
+	void set_item_shown(const unsigned index, const bool show)
+	{
+		assert(index < items_.size());
+		if(items_[index]->shown != show) {
+
+			/*
+			 * Item needs to be visible in get_best_size(), which might be
+			 * called in placement::set_item_shown.
+			 */
+			if(show) {
+				items_[index]->grid.set_visible(twidget::VISIBLE);
+			}
+
+			placement::set_item_shown(index, show);
+
+			items_[index]->shown = show;
+			if(!show) {
+				items_[index]->grid.set_visible(twidget::INVISIBLE);
+			}
+
+			minimum_selection::set_item_shown(index, show);
+		}
+	}
+
+	/** Inherited from tgenerator_. */
+	virtual bool get_item_shown(const unsigned index) const
+	{
+		assert(index < items_.size());
+		return items_[index]->shown;
+	}
+
+
+	/** Inherited from tgenerator_. */
 	unsigned get_item_count() const
 	{
 		return items_.size();
@@ -696,7 +764,7 @@ public:
 	void layout_init(const bool full_initialization)
 	{
 		foreach(titem* item, items_) {
-			if(item->grid.get_visible() != twidget::INVISIBLE) {
+			if(item->grid.get_visible() != twidget::INVISIBLE && item->shown) {
 				item->grid.layout_init(full_initialization);
 			}
 		}
@@ -750,7 +818,7 @@ public:
 		assert(this->get_visible() == twidget::VISIBLE);
 
 		foreach(titem* item, items_) {
-			if(item->grid.get_visible() == twidget::VISIBLE) {
+			if(item->grid.get_visible() == twidget::VISIBLE && item->shown) {
 				item->grid.draw_children(frame_buffer);
 			}
 		}
@@ -852,6 +920,7 @@ private:
 		titem()
 			: grid()
 			, selected(false)
+			, shown(true)
 		{
 		}
 
@@ -860,6 +929,17 @@ private:
 
 		/** Is the item selected or not. */
 		bool selected;
+
+		/**
+		 * Is the row shown or not.
+		 *
+		 * This flag is used the help to set the visible flag, it's prefered to
+		 * test this flag for external functions.
+		 *
+		 * @todo functions now test for visible and shown, that can use some
+		 * polishing.
+		 */
+		bool shown;
 	};
 
 	/** The number of selected items. */
