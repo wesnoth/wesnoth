@@ -459,7 +459,7 @@ void tscrollbar_container::content_resize_request()
 
 	assert(content_ && content_grid_);
 
-	tpoint best_size = content_grid_->get_best_size();
+	tpoint best_size = content_grid_->recalculate_best_size();
 	tpoint size = content_->get_size();
 
 	DBG_GUI_L << LOG_HEADER
@@ -474,14 +474,21 @@ void tscrollbar_container::content_resize_request()
 	}
 
 	if(best_size.x <= size.x && best_size.y <= size.y) {
+		const tpoint content_size = content_grid_->get_size();
+		if(content_size.x > size.x || content_size.y > size.y) {
+			DBG_GUI_L << LOG_HEADER << " will fit, only needs a resize.\n";
+			goto resize;
+		}
 		DBG_GUI_L << LOG_HEADER << " fits, nothing to do.\n";
 		return;
 	}
 
 	if(best_size.x > size.x) {
 		DBG_GUI_L << LOG_HEADER << " content too wide.\n";
-		if(horizontal_scrollbar_mode_ == auto_visible_first_run
-				|| horizontal_scrollbar_mode_ == always_invisible) {
+		if(horizontal_scrollbar_mode_ == always_invisible
+				|| (horizontal_scrollbar_mode_ == auto_visible_first_run
+					&& horizontal_scrollbar_grid_->get_visible()
+						== twidget::INVISIBLE)) {
 
 			DBG_GUI_L << LOG_HEADER
 					<< " can't use horizontal scrollbar, ask window.\n";
@@ -494,8 +501,10 @@ void tscrollbar_container::content_resize_request()
 
 	if(best_size.y > size.y) {
 		DBG_GUI_L << LOG_HEADER << " content too high.\n";
-		if(vertical_scrollbar_mode_ == auto_visible_first_run
-				|| vertical_scrollbar_mode_ == always_invisible) {
+		if(vertical_scrollbar_mode_ == always_invisible
+				|| (vertical_scrollbar_mode_ == auto_visible_first_run
+					&& vertical_scrollbar_grid_->get_visible()
+						== twidget::INVISIBLE)) {
 
 			DBG_GUI_L << LOG_HEADER
 					<< " can't use vertical scrollbar, ask window.\n";
@@ -506,6 +515,7 @@ void tscrollbar_container::content_resize_request()
 		}
 	}
 
+resize:
 	DBG_GUI_L << LOG_HEADER << " handle resizing.\n";
 	set_size(get_origin(), get_size());
 }
