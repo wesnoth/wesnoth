@@ -108,6 +108,20 @@ public:
 	void set_row_shown(const unsigned row, const bool shown);
 
 	/**
+	 * Makes a row visible or invisible.
+	 *
+	 * Use this version if you want to show hide multiple items since it's
+	 * optimized for that purpose, for one it calls the selection changed
+	 * callback only once instead of serveral times.
+	 *
+	 * @param shown               A vector with the show hide status for every
+	 *                            row. The number of items in the vector must
+	 *                            be equal to the number of items in the
+	 *                            listbox.
+	 */
+	void set_row_shown(const std::vector<bool>& shown);
+
+	/**
 	 * Returns the grid of the wanted row.
 	 *
 	 * There's only a const version since allowing callers to modify the grid

@@ -119,6 +119,37 @@ void tlistbox::set_row_shown(const unsigned row, const bool shown)
 	}
 }
 
+void tlistbox::set_row_shown(const std::vector<bool>& shown)
+{
+	assert(generator_);
+	assert(shown.size() == get_item_count());
+
+	twindow *window = get_window();
+	assert(window);
+
+	const int selected_row = get_selected_row();
+
+	bool resize_needed;
+	{
+		twindow::tinvalidate_layout_blocker invalidate_layout_blocker(*window);
+
+		for(size_t i = 0; i < shown.size(); ++i) {
+			generator_->set_item_shown(i, shown[i]);
+		}
+		resize_needed = !content_resize_request();
+	}
+
+	if(resize_needed) {
+		window->invalidate_layout();
+	} else {
+		set_dirty();
+	}
+
+	if(selected_row != get_selected_row() && callback_value_changed_) {
+		callback_value_changed_(this);
+	}
+}
+
 const tgrid* tlistbox::get_row_grid(const unsigned row) const
 {
 	assert(generator_);
