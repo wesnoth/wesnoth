@@ -73,6 +73,9 @@ public:
 	bool at_end() const
 		{ return item_position_ + visible_items_ >= item_count_; }
 
+	/** Are all items visible? */
+	bool all_items_visible() const { return visible_items_ >= item_count_; }
+
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
 	/** Inherited from tcontrol. */

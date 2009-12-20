@@ -714,8 +714,8 @@ void tscrollbar_container::set_scrollbar_button_status()
 		}
 
 		/***** Set the status if the scrollbars *****/
-		vertical_scrollbar_->set_active( !(vertical_scrollbar_->at_begin()
-				&& vertical_scrollbar_->at_end()));
+		vertical_scrollbar_->set_active(
+				!vertical_scrollbar_->all_items_visible());
 	}
 
 	if(true) { /** @todo scrollbar visibility. */
@@ -740,8 +740,8 @@ void tscrollbar_container::set_scrollbar_button_status()
 		}
 
 		/***** Set the status if the scrollbars *****/
-		horizontal_scrollbar_->set_active( !(horizontal_scrollbar_->at_begin()
-				&& horizontal_scrollbar_->at_end()));
+		horizontal_scrollbar_->set_active(
+				!horizontal_scrollbar_->all_items_visible());
 	}
 }
 
