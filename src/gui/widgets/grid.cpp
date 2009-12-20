@@ -345,7 +345,12 @@ void tgrid::demand_reduce_height(const unsigned /*maximum_height*/)
 	/** @todo Implement. */
 }
 
-
+tpoint tgrid::recalculate_best_size()
+{
+	tpoint best_size = calculate_best_size();
+	set_layout_size(best_size);
+	return best_size;
+}
 
 tpoint tgrid::calculate_best_size() const
 {

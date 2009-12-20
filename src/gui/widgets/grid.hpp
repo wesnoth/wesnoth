@@ -213,6 +213,16 @@ public:
 	/** Inherited from twidget. */
 	void demand_reduce_height(const unsigned maximum_height);
 
+	/**
+	 * Recalculates the best size.
+	 *
+	 * This is used for scrollbar containers when they try to update their
+	 * contents size before falling back to the 'global' invalidate_layout.
+	 *
+	 * @returns                   The newly calculated size.
+	 */
+	tpoint recalculate_best_size();
+
 private:
 
 	/** Inherited from twidget. */
