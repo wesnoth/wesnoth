@@ -155,7 +155,7 @@ bool tgame_load::filter_text_changed(ttext_* textbox, const std::string& text)
 		tgrid* row = list.get_row_grid(i);
 
 		if (text == ""){
-			list.set_row_visible(i, true);
+			list.set_row_shown(i, true);
 		}
 		else{
 			tgrid::iterator it = row->begin();
@@ -176,7 +176,7 @@ bool tgame_load::filter_text_changed(ttext_* textbox, const std::string& text)
 				}
 			}
 
-			list.set_row_visible(i
+			list.set_row_shown(i
 					, !found ? twidget::VISIBLE : twidget::INVISIBLE);
 		}
 	}

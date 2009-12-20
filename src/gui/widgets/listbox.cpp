@@ -91,7 +91,7 @@ void tlistbox::set_row_active(const unsigned row, const bool active)
 	generator_->get_item(row).set_active(active);
 }
 
-void tlistbox::set_row_visible(const unsigned row, const bool visible)
+void tlistbox::set_row_shown(const unsigned row, const bool shown)
 {
 	assert(generator_);
 
@@ -104,7 +104,7 @@ void tlistbox::set_row_visible(const unsigned row, const bool visible)
 	{
 		twindow::tinvalidate_layout_blocker invalidate_layout_blocker(*window);
 
-		generator_->set_item_shown(row, visible);
+		generator_->set_item_shown(row, shown);
 		resize_needed = !content_resize_request();
 	}
 

@@ -102,16 +102,10 @@ public:
 	/**
 	 * Makes a row visible or invisible.
 	 *
-	 * @todo maybe change the name to show row due to the fact that it's
-	 * different from the twidget::tvisible the row is only visible or
-	 * invisible not hidden.
-	 *
-	 * show_row(row, show)
-	 *
 	 * @param row                 The row to show or hide.
-	 * @param visible             true visible, false invisible.
+	 * @param shown               true visible, false invisible.
 	 */
-	void set_row_visible(const unsigned row, const bool visible);
+	void set_row_shown(const unsigned row, const bool shown);
 
 	/**
 	 * Returns the grid of the wanted row.
