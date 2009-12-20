@@ -447,7 +447,7 @@ bool tscrollbar_container::disable_click_dismiss() const
 			|| content_grid_->disable_click_dismiss();
 }
 
-void tscrollbar_container::content_resize_request()
+bool tscrollbar_container::content_resize_request()
 {
 	/**
 	 * @todo Try to handle auto_visible_first_run here as well.
@@ -470,7 +470,7 @@ void tscrollbar_container::content_resize_request()
 	if(size == tpoint(0, 0)) {
 		DBG_GUI_L << LOG_HEADER
 				<< " initial setup not done, bailing out.\n";
-		return;
+		return false;
 	}
 
 	if(best_size.x <= size.x && best_size.y <= size.y) {
@@ -480,7 +480,7 @@ void tscrollbar_container::content_resize_request()
 			goto resize;
 		}
 		DBG_GUI_L << LOG_HEADER << " fits, nothing to do.\n";
-		return;
+		return true;
 	}
 
 	if(best_size.x > size.x) {
@@ -495,7 +495,7 @@ void tscrollbar_container::content_resize_request()
 			twindow* window = get_window();
 			assert(window);
 			window->invalidate_layout();
-			return;
+			return false;
 		}
 	}
 
@@ -511,13 +511,14 @@ void tscrollbar_container::content_resize_request()
 			twindow* window = get_window();
 			assert(window);
 			window->invalidate_layout();
-			return;
+			return false;
 		}
 	}
 
 resize:
 	DBG_GUI_L << LOG_HEADER << " handle resizing.\n";
 	set_size(get_origin(), get_size());
+	return true;
 }
 
 void tscrollbar_container::vertical_scrollbar_click(twidget* caller)

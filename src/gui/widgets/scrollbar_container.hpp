@@ -223,8 +223,12 @@ protected:
 	 *
 	 * When a resize is required the container first can try to handle it
 	 * itself before asking the window to do the resize.
+	 *
+	 * @returns                   True if the resize is handled, false
+	 *                            otherwise. If the container has no size the
+	 *                            result is undefined.
 	 */
-	void content_resize_request();
+	bool content_resize_request();
 
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
