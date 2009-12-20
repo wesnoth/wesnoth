@@ -956,9 +956,10 @@ std::string unit::side_id() const {return teams_manager::get_teams()[side()-1].s
 
 void unit::set_movement(int moves)
 {
+	//FIXME: we shouldn't set those here, other code use this a simple setter.
 	hold_position_ = false;
 	end_turn_ = false;
-	movement_ = std::max<int>(0,std::min<int>(moves,max_movement_));
+	movement_ = std::max<int>(0, moves);
 }
 
 void unit::new_turn()
