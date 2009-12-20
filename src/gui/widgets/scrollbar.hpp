@@ -71,7 +71,7 @@ public:
 	 * Note both begin and end might be true at the same time.
 	 */
 	bool at_end() const
-		{ return item_position_ + visible_items_ == item_count_; }
+		{ return item_position_ + visible_items_ >= item_count_; }
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
