@@ -151,11 +151,13 @@ bool tgame_load::filter_text_changed(ttext_* textbox, const std::string& text)
 		return false;
 	last_words_ = words;
 
+	std::vector<bool> show_items(list.get_item_count());
+
 	for (unsigned int i = 0; i < list.get_item_count(); i++){
 		tgrid* row = list.get_row_grid(i);
 
 		if (text == ""){
-			list.set_row_shown(i, true);
+			show_items[i] = true;
 		}
 		else{
 			tgrid::iterator it = row->begin();
@@ -176,10 +178,10 @@ bool tgame_load::filter_text_changed(ttext_* textbox, const std::string& text)
 				}
 			}
 
-			list.set_row_shown(i
-					, !found ? twidget::VISIBLE : twidget::INVISIBLE);
+			show_items[i] = found;
 		}
 	}
+	list.set_row_shown(show_items);
 
 	return false;
 }
