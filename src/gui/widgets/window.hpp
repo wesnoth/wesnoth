@@ -216,7 +216,8 @@ public:
 	const twidget* find(const std::string& id,
 			const bool must_be_active) const
 		{ return tcontainer_::find(id, must_be_active); }
-
+#if 0
+	/** @todo Implement these functions. */
 	/**
 	 * Register a widget that prevents easy closing.
 	 *
@@ -235,6 +236,7 @@ public:
 	 * @param id                  The id of the widget to register.
 	 */
 	void remove_click_dismiss_blocker(const std::string& id);
+#endif
 
 	/**
 	 * Does the window close easily?
