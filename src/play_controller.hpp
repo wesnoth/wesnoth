@@ -164,7 +164,6 @@ protected:
 	 */
 	bool in_context_menu(hotkey::HOTKEY_COMMAND command) const;
 
-	virtual void init(CVideo& video);
 	void init_managers();
 	void fire_prestart(bool execute);
 	void fire_start(bool execute);
@@ -229,6 +228,7 @@ protected:
 	void set_defeat_music_list(const std::string& list);
 
 private:
+	void init(CVideo &video);
 	// Expand AUTOSAVES in the menu items, setting the real savenames.
 	void expand_autosaves(std::vector<std::string>& items);
 	std::vector<std::string> savenames_;
