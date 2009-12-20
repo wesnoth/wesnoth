@@ -98,6 +98,8 @@ void tlistbox::set_row_visible(const unsigned row, const bool visible)
 	twindow *window = get_window();
 	assert(window);
 
+	const int selected_row = get_selected_row();
+
 	bool resize_needed;
 	{
 		twindow::tinvalidate_layout_blocker invalidate_layout_blocker(*window);
@@ -110,6 +112,10 @@ void tlistbox::set_row_visible(const unsigned row, const bool visible)
 		window->invalidate_layout();
 	} else {
 		set_dirty();
+	}
+
+	if(selected_row != get_selected_row() && callback_value_changed_) {
+		callback_value_changed_(this);
 	}
 }
 
