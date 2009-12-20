@@ -819,6 +819,8 @@ const std::set<map_location>& readonly_context_impl::keeps() const
 
 
 keeps_cache::keeps_cache()
+	: map_(NULL)
+	, keeps_()
 {
 	ai::manager::add_turn_started_observer(this);
 	ai::manager::add_map_changed_observer(this);
