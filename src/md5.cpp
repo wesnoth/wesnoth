@@ -58,7 +58,11 @@ documentation and/or software.
 // MD5 simple initialization method
 
 MD5::MD5()
-	: finalized(0)
+	: state()
+	, count()
+	, buffer()
+	, digest()
+	, finalized(0)
 {
   init();
 }
