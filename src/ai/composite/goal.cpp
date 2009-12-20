@@ -131,6 +131,7 @@ void target_unit_goal::add_targets(std::back_insert_iterator< std::vector< targe
 
 target_unit_goal::target_unit_goal(readonly_context &context, const config &cfg)
 	: goal(context,cfg)
+	, value_(0.0)
 {
 }
 
