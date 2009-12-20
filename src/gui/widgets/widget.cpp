@@ -182,7 +182,7 @@ void twidget::populate_dirty_list(twindow& caller,
 {
 	assert(call_stack.empty() || call_stack.back() != this);
 
-	if(visible_ != twidget::VISIBLE) {
+	if(visible_ == twidget::INVISIBLE) {
 		return;
 	}
 
