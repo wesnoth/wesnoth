@@ -128,8 +128,6 @@ void tgame_load::fill_game_list(twindow& window
 
 		list.add_row(data);
 	}
-
-	window.invalidate_layout();
 }
 
 void tgame_load::list_item_clicked(twindow& window)
@@ -153,11 +151,12 @@ bool tgame_load::filter_text_changed(ttext_* textbox, const std::string& text)
 		tgrid* row = list.get_row_grid(i);
 
 		if (text == ""){
-			row->set_visible(twidget::VISIBLE);
+			list.set_row_visible(i, true);
 		}
 		else{
 			tgrid::iterator it = row->begin();
-			tlabel& filename_label = find_widget<tlabel>(*it, "filename", false);
+			tlabel& filename_label =
+					find_widget<tlabel>(*it, "filename", false);
 
 			bool found = false;
 			foreach (const std::string& word, words){
@@ -173,14 +172,10 @@ bool tgame_load::filter_text_changed(ttext_* textbox, const std::string& text)
 				}
 			}
 
-			if (found)
-				row->set_visible(twidget::VISIBLE);
-			else
-				row->set_visible(twidget::INVISIBLE);
+			list.set_row_visible(i
+					, !found ? twidget::VISIBLE : twidget::INVISIBLE);
 		}
 	}
-
-	window.invalidate_layout();
 
 	return false;
 }
