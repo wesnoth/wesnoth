@@ -619,7 +619,7 @@ class CrossRef:
                                     self.fileref[trial].append(fn, n+1)
                                     candidates.append(trial)
                             if len(candidates) > 1:
-                                print "%s: more than one definition of %s is visible here (%s)." % (Reference(ns,fn, n), name, ", ".join(candidates))
+                                print "%s: more than one resource matching %s is visible here (%s)." % (Reference(ns,fn, n), name, ", ".join(candidates))
                         if not key:
                             self.missing.append((name, Reference(ns,fn,n+1)))
                     # Notice implicit references through attacks
