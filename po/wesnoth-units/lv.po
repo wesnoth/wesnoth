@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-12-12 11:44+0100\n"
-"PO-Revision-Date: 2009-12-16 13:11+0300\n"
+"PO-Revision-Date: 2009-12-20 23:51+0300\n"
 "Last-Translator: Reinis Danne <rei4dan@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -27,6 +27,9 @@ msgid ""
 "blood of those they attack, thereby gaining some of the health lost by their "
 "victims."
 msgstr ""
+"Asins sikspārņi tā tiek saukti dēļ to sārtās krāsas, ko daži atzīmē, kā viņu "
+"iecienītās diētas simbolu. Šie radījumi ir ātri un spēj izsūkt asinis no "
+"saviem upuriem, tā gūstot daļu no to zaudētās veselības."
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
@@ -1607,7 +1610,7 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:52
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:40
 msgid "longsword"
-msgstr ""
+msgstr "garais zobens"
 
 #. [attack]: type=pierce
 #: data/core/units/humans/Horse_Grand_Knight.cfg:45
@@ -1615,7 +1618,7 @@ msgstr ""
 #: data/core/units/humans/Horse_Lancer.cfg:36
 #: data/core/units/humans/Horse_Paladin.cfg:61
 msgid "lance"
-msgstr ""
+msgstr "pīķis"
 
 #. [unit_type]: id=Knight, race=human
 #: data/core/units/humans/Horse_Knight.cfg:4
@@ -1679,7 +1682,7 @@ msgstr ""
 #. [unit_type]: id=Horseman, race=human
 #: data/core/units/humans/Horseman.cfg:4
 msgid "Horseman"
-msgstr ""
+msgstr "Jātnieks"
 
 #. [unit_type]: id=Horseman, race=human
 #: data/core/units/humans/Horseman.cfg:20
@@ -1692,11 +1695,18 @@ msgid ""
 "must take care against both spearmen and archers for whom their large size "
 "provide inviting targets."
 msgstr ""
+"Bieži nākdami no mežonīgākiem Vesnotas apgabaliem, jātnieki jau no bērnības "
+"tiek apmācīti jāšanā un stingra goda kodeksa ievērošanā. Jātnieka veiktais "
+"triecienuzbrukums ir spēcīga, bet riskanta taktika, kuras vērtība uz kaujas "
+"lauka ir tikusi pierādīta atkal un atkal. Jātnieki ir pārāki cīņā pret "
+"lielāko daļu kareivju, īpaši pret tiem, kuri ir izgājuši no ierindas, bet "
+"viņiem jāuzmanās gan no šķēpnešiem, gan lokšāvējiem, kuriem to lielais "
+"izmērs ir ērts mērķis."
 
 #. [unit_type]: id=Bowman, race=human
 #: data/core/units/humans/Loyalist_Bowman.cfg:4
 msgid "Bowman"
-msgstr ""
+msgstr "Lokšāvējs"
 
 #. [unit_type]: id=Bowman, race=human
 #: data/core/units/humans/Loyalist_Bowman.cfg:21
@@ -1707,26 +1717,37 @@ msgid ""
 "woodsmen, military bowmen are trained to competence with both a bow and a "
 "short sword, and are very common on the battlefield."
 msgstr ""
+"Lokšaušanas pielietošana ne tikai spēlei tika redzēta jau kopš tās "
+"parādīšanās, un lokšāvēji ir bijuši neatņemama kara sastāvdaļa kopš "
+"neatminamiem laikiem. Parasti necilas izcelsmes, nākuši no zemniekiem vai "
+"mežiniekiem, militārie lokšāvēji tiek apmācīti lietpratīgi rīkoties gan ar "
+"loku, gan ar īso zobenu, un uz kaujas lauka tie ir ļoti bieži sastopami."
 
 #. [attack]: type=blade
 #: data/core/units/humans/Loyalist_Bowman.cfg:37
 #: data/core/units/orcs/Crossbowman.cfg:24 data/core/units/orcs/Slurbow.cfg:29
 msgid "short sword"
-msgstr ""
+msgstr "īsais zobens"
 
 #. [unit_type]: id=Cavalier, race=human
 #: data/core/units/humans/Loyalist_Cavalier.cfg:4
+#, fuzzy
 msgid "Cavalier"
-msgstr ""
+msgstr "Kavalērists"
 
 #. [unit_type]: id=Cavalier, race=human
 #: data/core/units/humans/Loyalist_Cavalier.cfg:21
+#, fuzzy
 msgid ""
 "Cavaliers are masters at the use of both sword and crossbow from horseback. "
 "Their combination of striking power and mobility is fearsome; and they have "
 "a reputation for dash and aggressiveness to match it. The daring deeds of "
 "Cavaliers are the subject of many a tale and song."
 msgstr ""
+"Kavalēristi ir gan zobenu cīņas, gan stopa lietošanas zirga mugurā meistari. "
+"To triecienspēka un kustīguma kombinācija ir biedējoša, un to nepacietības "
+"un agresivitātes reputācija ir samērojama ar to. Kavalēristu varoņdarbi ir "
+"daudzu stāstu un dziesmu temats."
 
 #. [attack]: type=pierce
 #. [attack]: type=fire
@@ -1744,15 +1765,17 @@ msgstr ""
 #: data/core/units/orcs/Slurbow.cfg:47 data/core/units/orcs/Sovereign.cfg:37
 #: data/core/units/undead/Skele_Death_Knight.cfg:68
 msgid "crossbow"
-msgstr ""
+msgstr "stops"
 
 #. [unit_type]: id=Cavalryman, race=human
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:4
+#, fuzzy
 msgid "Cavalryman"
-msgstr ""
+msgstr "Bruņinieks"
 
 #. [unit_type]: id=Cavalryman, race=human
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:23
+#, fuzzy
 msgid ""
 "Cavalrymen are distinguished from horsemen by their tactics and equipment. A "
 "cavalryman wears heavier armor, and carries a sword and shield, rather than "
@@ -1763,6 +1786,13 @@ msgid ""
 "Cavalrymen are very useful for taking and holding positions on open ground, "
 "for screening friendly soldiers, and also for scouting work."
 msgstr ""
+"Bruņinieki atšķiras no jātniekiem ar to taktiku un ekipējumu. Bruņinieki "
+"valkā smagākas bruņas, un nes zobenu un vairogu, nevis pīķi. To taktikā "
+"netiek izmantoti triecienuzbrukumi, bet tā vietā viņi manevrē, lai cirstu ar "
+"zobenu, izmantojot gan zirgu, gan jātnieku ka efektīvu tuvcīņas ieroci.\n"
+"\n"
+"Bruņinieki ir ļoti noderīgi pozīciju ieņemšanā un noturēšanā atklātās "
+"vietās, sabiedroto kareivju aizsegšanā, un arī izlūkošanā."
 
 #. [unit_type]: id=Dragoon, race=human
 #: data/core/units/humans/Loyalist_Dragoon.cfg:4
@@ -1900,7 +1930,7 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Highwayman.cfg:37
 #: data/core/units/humans/Royal_Warrior.cfg:35
 msgid "mace"
-msgstr ""
+msgstr "vāle"
 
 #. [unit_type]: id=Iron Mauler, race=human
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:4
@@ -2008,7 +2038,7 @@ msgstr ""
 #. [unit_type]: id=Pikeman, race=human
 #: data/core/units/humans/Loyalist_Pikeman.cfg:4
 msgid "Pikeman"
-msgstr ""
+msgstr "Pīķnesis"
 
 #. [unit_type]: id=Pikeman, race=human
 #: data/core/units/humans/Loyalist_Pikeman.cfg:18
@@ -2020,11 +2050,17 @@ msgid ""
 "of pikemen is the bane of any cavalry charge, and with proper discipline and "
 "tactics, pikemen can also hold most other infantry at bay."
 msgstr ""
+"Daudzsološi šķēpneši Vesnotas armijās bieži vien tiek paaugstināti, lai "
+"izmantotu pīķus, un tiek apģērbti ar kaut ko daudz pārāku par raibo ādas "
+"bruņu kolekciju, kuru tie valkāja kā jauniesauktie. Pīķis ir daudz garāks "
+"ierocis par šķēpu, un tādēļ veicina dažādas kaujas taktikas. Pīķnešu siena "
+"ir jebkura kavalērjas trieciena slepkava, un ar pienācīgu disciplīnu un "
+"taktiku, pīķneši spēj noturēt krastā arī lielāko daļu kājnieku."
 
 #. [attack]: type=pierce
 #: data/core/units/humans/Loyalist_Pikeman.cfg:65
 msgid "pike"
-msgstr ""
+msgstr "pīķis"
 
 #. [unit_type]: id=Royal Guard, race=human
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:4
@@ -2083,7 +2119,7 @@ msgstr ""
 #. [unit_type]: id=Spearman, race=human
 #: data/core/units/humans/Loyalist_Spearman.cfg:4
 msgid "Spearman"
-msgstr ""
+msgstr "Šķēpnesis"
 
 #. [unit_type]: id=Spearman, race=human
 #: data/core/units/humans/Loyalist_Spearman.cfg:20
@@ -2094,6 +2130,11 @@ msgid ""
 "armed with a shield and a few javelins, spearmen are the staple of most "
 "armies, often thrown into the front lines with only the most basic training."
 msgstr ""
+"Priekš daudziem zobeni ir dārgas ērtības, un zemnieki tās normāli atļauties. "
+"Šķēpi ir daudz vieglāk uztaisāmi, un labi kalpos pat bez smailes, lai gan "
+"lielākā daļa to var atļauties. Ģērbti ādas bruņās, un bieži vien bruņojušies "
+"ar vairogu un dažiem šķēpiem, šķēpneši ir pamats lielākajai daļai armiju, "
+"bieži iemesti pirmajās rindās tikai ar pašu vienkāršāko apmācību."
 
 #. [unit_type]: id=Swordsman, race=human
 #: data/core/units/humans/Loyalist_Swordsman.cfg:4
@@ -2300,7 +2341,7 @@ msgstr ""
 #. [unit_type]: id=White Mage, race=human
 #: data/core/units/humans/Mage_White.cfg:4
 msgid "White Mage"
-msgstr ""
+msgstr "Baltais burvis"
 
 #. [unit_type]: id=White Mage, race=human
 #: data/core/units/humans/Mage_White.cfg:21
@@ -2315,6 +2356,15 @@ msgid ""
 "Though not trained for combat, they are a potent ally against magical or "
 "unnatural things."
 msgstr ""
+"Daži magi, mācoties par pasauli tiem apkārt, un uzzinot patiesību par "
+"ciešanām un netīrību, kādā cilvēce pārāk bieži dzīvo, atklāj, ka viņi nespēj "
+"noslēgties studiju dzīvē. Šie vīri un sievas atsakās no magu dzīves, un "
+"pievienojas mūku brālībām, kur velta tiem dotās spējas vispārējam labumam. "
+"Pēc viņu uzņemšanas, tie bieži ceļo pa pasauli, palīdzot slimajiem un "
+"ievainotajiem.\n"
+"\n"
+"Lai gan viņi nav trenēti cīņai, tie ir spējīgi sabiedrotie pret maģiskām vai "
+"nedabiskām lietām."
 
 #. [attack]: type=arcane
 #: data/core/units/humans/Mage_White.cfg:142
@@ -2322,17 +2372,17 @@ msgstr ""
 #: data/core/units/merfolk/Diviner.cfg:109
 #: data/core/units/merfolk/Priestess.cfg:106
 msgid "lightbeam"
-msgstr ""
+msgstr "gaismas stars"
 
 #. [female]
 #: data/core/units/humans/Mage_White.cfg:277
 msgid "female^White Mage"
-msgstr ""
+msgstr "Baltā burve"
 
 #. [unit_type]: id=Mage of Light, race=human
 #: data/core/units/humans/Mage_of_Light.cfg:4
 msgid "Mage of Light"
-msgstr ""
+msgstr "Gaismas burvis"
 
 #. [unit_type]: id=Mage of Light, race=human
 #: data/core/units/humans/Mage_of_Light.cfg:23
@@ -2344,16 +2394,22 @@ msgid ""
 "Following a strict code of piety and honor, these men and women work "
 "tirelessly to bring life and order to the troubled world in which they live."
 msgstr ""
+"Pēc daudzu gadu pieredzes vismērķtiecīgākie no baltajiem burvjiem attīsta "
+"lielas garīgā spējas. Ar stingru nodošanos gaismas ceļam, tie spēj saukt pēc "
+"tās palīdzības, lai aizdzītu nakts ēnas.\n"
+"\n"
+"Ievērojot stingru pietāti un godu, šie vīri un sievas nenoguruši strādā, lai "
+"nestu dzīvību un kārtību nemierīgajā pasaulē, kurā tie dzīvo."
 
 #. [attack]: type=impact
 #: data/core/units/humans/Mage_of_Light.cfg:111
 msgid "morning star"
-msgstr ""
+msgstr "rīta zvaigzne"
 
 #. [female]
 #: data/core/units/humans/Mage_of_Light.cfg:245
 msgid "female^Mage of Light"
-msgstr ""
+msgstr "Gaismas burve"
 
 #. [unit_type]: id=Outlaw, race=human
 #: data/core/units/humans/Outlaw.cfg:4
@@ -2414,7 +2470,7 @@ msgstr ""
 #. [unit_type]: id=Bandit, race=human
 #: data/core/units/humans/Outlaw_Bandit.cfg:4
 msgid "Bandit"
-msgstr ""
+msgstr "Bandīts"
 
 #. [unit_type]: id=Bandit, race=human
 #: data/core/units/humans/Outlaw_Bandit.cfg:18
@@ -2425,6 +2481,12 @@ msgid ""
 "victims into submission. Like any sort of outlaw, they're not comfortable "
 "fighting in broad daylight, being used to working at night."
 msgstr ""
+"Bandīti ir raiba cilvēku grupa, no kuriem lielākā daļa ir ar apšaubāmu "
+"pagātni. Tie ir jebkuras organizētas noziedznieku grupas stiprā roka, un, "
+"lai gan tiem varbūt trūkst līmenis vai inteliģence, tie izceļas ar savu "
+"iecienītāko uzdevumu - pakļāvības iedauzīšanu. Kā jebkura veida ārpus likuma "
+"esošie, kas pieraduši strādāt naktīs, viņi nejūtas ērti cīnoties gaišā "
+"dienas laikā."
 
 #. [unit_type]: id=Footpad, race=human
 #: data/core/units/humans/Outlaw_Footpad.cfg:4
@@ -2450,7 +2512,7 @@ msgstr ""
 #: data/core/units/merfolk/Netcaster.cfg:38
 #: data/core/units/trolls/Troll.cfg:38
 msgid "club"
-msgstr ""
+msgstr "runga"
 
 #. [female]
 #: data/core/units/humans/Outlaw_Footpad.cfg:176
@@ -2514,7 +2576,7 @@ msgstr ""
 #. [unit_type]: id=Ruffian, race=human
 #: data/core/units/humans/Outlaw_Ruffian.cfg:4
 msgid "Ruffian"
-msgstr ""
+msgstr "Huligāns"
 
 #. [unit_type]: id=Ruffian, race=human
 #: data/core/units/humans/Outlaw_Ruffian.cfg:19
@@ -2525,11 +2587,15 @@ msgid ""
 "sometimes manage to avoid the imprisonment or death that awaits most of "
 "their colleagues."
 msgstr ""
+"Daži cilvēki bez īpašām prasmēm nespēj vai negrib dzīvot godīgi. Tie, kuri "
+"cenšas iziet caur dzīvi rungas smagajā galā, ir pazistami kā 'huligāni'. Ar "
+"pietiekamu veiksmi un pieredzi, tie dažreiz pamanās izvairīties no "
+"ieslodzījuma vai nāves, kas sagaida lielāko daļu viņu kolēģu."
 
 #. [unit_type]: id=Thief, race=human
 #: data/core/units/humans/Outlaw_Thief.cfg:4
 msgid "Thief"
-msgstr ""
+msgstr "Zaglis"
 
 #. [unit_type]: id=Thief, race=human
 #: data/core/units/humans/Outlaw_Thief.cfg:20
@@ -2542,16 +2608,23 @@ msgid ""
 "their feet, and good with knives. They happily employ less-than-honorable "
 "tactics in combat, seeing little merit in a 'fair fight'."
 msgstr ""
+"Cik vien sen kāds var atcerēties, dažādo žurku ķērāju 'ģilžu' locekļi, kas "
+"izcēlās katrā lielākā pilsētā, piekopa interesantu praksi balināt savus "
+"matus ar laimu līdz tie pieņēma bāli zilu nokrāsu. Tā ir drošsirdīga rīcība, "
+"ņemot vērā, ka viņu profesija bieži nodarbojās ar ne visai legāliem "
+"pasākumiem. Zagļiem ir dažādas prasmes, un pēc vajadzības ir gan viegli "
+"kājās, gan labi ar nažiem. Neredzēdami 'godīgas cīņas' vērtību, tie labprāt "
+"izmanto ne visai godājamas taktikas cīņā."
 
 #. [female]
 #: data/core/units/humans/Outlaw_Thief.cfg:377
 msgid "female^Thief"
-msgstr ""
+msgstr "Zagle"
 
 #. [unit_type]: id=Thug, race=human
 #: data/core/units/humans/Outlaw_Thug.cfg:4
 msgid "Thug"
-msgstr ""
+msgstr "Izsitējs"
 
 #. [unit_type]: id=Thug, race=human
 #: data/core/units/humans/Outlaw_Thug.cfg:20
@@ -2562,11 +2635,16 @@ msgid ""
 "Regardless of their background, they all share a penchant for beating their "
 "victims with large clubs."
 msgstr ""
+"Izsitēji nāk no dažādiem avotiem, lai gan daži ar to piedzimst, daudzi ir "
+"bijušie karavīri, kuri atzīti par nepiemērotiem, lai kalpotu armijā, vai "
+"zemnieki, kas izsviesti no savas zemes. Viņi kļūst par izsitējiem, lai gūtu "
+"iztiku. Neskatoties uz viņu pagātni, viņiem visiem kopīga ir tieksme piesist "
+"savus upurus ar lielām rungām."
 
 #. [unit_type]: id=Peasant, race=human
 #: data/core/units/humans/Peasant.cfg:4
 msgid "Peasant"
-msgstr ""
+msgstr "Zemnieks"
 
 #. [unit_type]: id=Peasant, race=human
 #: data/core/units/humans/Peasant.cfg:20
@@ -2576,11 +2654,15 @@ msgid ""
 "homes. However, if you're hurling peasants at your foes, you're clearly out "
 "of superior forces."
 msgstr ""
+"Zemnieki ir lauku ekonomikas mugurkauls, un pēdējās cerības kareivji. Lai "
+"gan tie nav kareivīgi pēc dabas, tie spītīgi aizstāvēs savas mājas. Tomēr, "
+"ja tu svied zemniekus pret saviem ienaidniekiem, tad ir pavisam skaidrs, ka "
+"tev vairs nav labāku spēku."
 
 #. [attack]: type=pierce
 #: data/core/units/humans/Peasant.cfg:37 data/core/units/humans/Peasant.cfg:46
 msgid "pitchfork"
-msgstr ""
+msgstr "dakša"
 
 #. [unit_type]: id=Royal Warrior, race=human
 #: data/core/units/humans/Royal_Warrior.cfg:8
@@ -2774,7 +2856,7 @@ msgstr ""
 #. [unit_type]: id=Merman Hunter, race=merman
 #: data/core/units/merfolk/Hunter.cfg:4
 msgid "Merman Hunter"
-msgstr ""
+msgstr "Nāru mednieks"
 
 #. [unit_type]: id=Merman Hunter, race=merman
 #: data/core/units/merfolk/Hunter.cfg:20
@@ -2784,6 +2866,10 @@ msgid ""
 "of need, many mermen of that occupation will volunteer to swell the ranks of "
 "their military."
 msgstr ""
+"Nāru izkoptās prasmes zivju ķeršanā ar harpūnu ir viegli pārnesamas kara "
+"apstākļos, īpaši pret tiem, kuri ūdenī nav savās mājās. Vajadzības gadījumā "
+"daudzas nāras ar šo nodarbošanos labprātīgi pieteiksies papildināt viņu "
+"armijas rindas."
 
 #. [unit_type]: id=Mermaid Initiate, race=merman
 #: data/core/units/merfolk/Initiate.cfg:4
@@ -2932,7 +3018,7 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/monsters/Cave_Spider.cfg:49
 msgid "web"
-msgstr ""
+msgstr "tīkls"
 
 #. [unit_type]: id=Cuttle Fish, race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:4
@@ -2957,7 +3043,7 @@ msgstr ""
 #. [attack]: type=pierce
 #: data/core/units/monsters/Cuttle_Fish.cfg:46
 msgid "ink"
-msgstr ""
+msgstr "krāsa"
 
 #. [unit_type]: id=Fire Dragon, race=monster
 #: data/core/units/monsters/Fire_Dragon.cfg:4
@@ -2987,7 +3073,7 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/monsters/Fire_Dragon.cfg:40
 msgid "tail"
-msgstr ""
+msgstr "aste"
 
 #. [unit_type]: id=Giant Mudcrawler, race=monster
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:4
@@ -3010,7 +3096,7 @@ msgstr ""
 #: data/core/units/trolls/Whelp.cfg:39
 #: data/core/units/undead/Skeleton_Archer.cfg:32
 msgid "fist"
-msgstr ""
+msgstr "dūre"
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:56
@@ -3081,7 +3167,7 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/monsters/Skeletal_Dragon.cfg:30
 msgid "jaw"
-msgstr ""
+msgstr "žoklis"
 
 #. [unit_type]: id=Tentacle of the Deep, race=monster
 #: data/core/units/monsters/Tentacle.cfg:4
@@ -3220,7 +3306,7 @@ msgstr ""
 #. [unit_type]: id=Ogre, race=ogre
 #: data/core/units/ogres/Ogre.cfg:4
 msgid "Ogre"
-msgstr ""
+msgstr "Cilvēkēdājs"
 
 #. [unit_type]: id=Ogre, race=ogre
 #: data/core/units/ogres/Ogre.cfg:22
@@ -3230,6 +3316,9 @@ msgid ""
 "can be easily outrun or outsmarted, their strength is not to be "
 "underestimated."
 msgstr ""
+"Cilvēkēdāji ir milzīgi radījumi, kas parasti dabā dzīvo vieni, ievērojami "
+"līdzīgi cilvēkiem pēc to formas, lai gan lieli un kroplīgi. Lai gan tos var "
+"viegli noskriet vai apmuļķot, to spēku nevar novērtēt par zemu."
 
 #. [attack]: type=blade
 #: data/core/units/ogres/Ogre.cfg:38 data/core/units/ogres/Young_Ogre.cfg:38
@@ -3708,7 +3797,7 @@ msgstr ""
 #: data/core/units/undead/Necro_Lich.cfg:48
 #: data/core/units/undead/Spirit_Ghost.cfg:130
 msgid "touch"
-msgstr ""
+msgstr "pieskāriens"
 
 #. [unit_type]: id=Walking Corpse, race=undead
 #: data/core/units/undead/Corpse_Walking.cfg:6
@@ -3775,7 +3864,7 @@ msgstr ""
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:104
 #: data/core/units/undead/Necromancer.cfg:51
 msgid "chill wave"
-msgstr ""
+msgstr "aukstuma vilnis"
 
 #. [female]
 #: data/core/units/undead/Necro_Dark_Adept.cfg:212
@@ -4030,7 +4119,7 @@ msgstr ""
 #: data/core/units/undead/Spirit_Spectre.cfg:70
 #: data/core/units/undead/Spirit_Wraith.cfg:32
 msgid "wail"
-msgstr ""
+msgstr "vaimanas"
 
 #. [unit_type]: id=Nightgaunt, race=undead
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:4
@@ -4121,7 +4210,7 @@ msgstr ""
 #: data/core/units/wose/Ancient.cfg:105 data/core/units/wose/Elder.cfg:104
 #: data/core/units/wose/Wose.cfg:43
 msgid "crush"
-msgstr ""
+msgstr "saspiešana"
 
 #. [unit_type]: id=Elder Wose, race=wose
 #: data/core/units/wose/Elder.cfg:4
