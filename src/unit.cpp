@@ -1288,9 +1288,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 		} else if(std::find(side.begin(),side.end(),',') != side.end()) {
 			const std::vector<std::string>& vals = utils::split(side);
 
-			std::ostringstream s;
-			s << (this->side());
-			if(std::find(vals.begin(),vals.end(),s.str()) == vals.end()) {
+			if (std::find(vals.begin(), vals.end(), str_cast(side_)) == vals.end()) {
 				return false;
 			}
 		} else {
@@ -1476,23 +1474,13 @@ void unit::write(config& cfg) const
 		cfg["description"] = "";
 	}
 
-	std::stringstream hp;
-	hp << hit_points_;
-	cfg["hitpoints"] = hp.str();
-	std::stringstream hpm;
-	hpm << max_hit_points_;
-	cfg["max_hitpoints"] = hpm.str();
+	cfg["hitpoints"] = str_cast(hit_points_);
+	cfg["max_hitpoints"] = str_cast(max_hit_points_);
 
-	std::stringstream xp;
-	xp << experience_;
-	cfg["experience"] = xp.str();
-	std::stringstream xpm;
-	xpm << max_experience_;
-	cfg["max_experience"] = xpm.str();
+	cfg["experience"] = str_cast(experience_);
+	cfg["max_experience"] = str_cast(max_experience_);
 
-	std::stringstream sd;
-	sd << side_;
-	cfg["side"] = sd.str();
+	cfg["side"] = str_cast(side_);
 
 	cfg["type"] = type_id();
 
