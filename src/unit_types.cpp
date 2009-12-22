@@ -735,18 +735,16 @@ void unit_type::build_full(const config& cfg, const movement_type_map& mv_types,
 	const race_map::const_iterator race_it = races.find(cfg["race"]);
 	if(race_it != races.end()) {
 		race_ = &race_it->second;
-		if(race_ != NULL) {
-			if(race_->uses_global_traits() == false) {
-				possibleTraits_.clear();
-			}
-			if(utils::string_bool(cfg["ignore_race_traits"])) {
-				possibleTraits_.clear();
-			} else {
-				foreach (const config &t, race_->additional_traits())
-				{
-					if (alignment_ != NEUTRAL || t["id"] != "fearless")
-						possibleTraits_.add_child("trait", t);
-				}
+		if (!race_->uses_global_traits()) {
+			possibleTraits_.clear();
+		}
+		if (utils::string_bool(cfg["ignore_race_traits"])) {
+			possibleTraits_.clear();
+		} else {
+			foreach (const config &t, race_->additional_traits())
+			{
+				if (alignment_ != NEUTRAL || t["id"] != "fearless")
+					possibleTraits_.add_child("trait", t);
 			}
 		}
 	} else {
