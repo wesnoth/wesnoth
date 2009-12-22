@@ -19,7 +19,6 @@
 
 #include "global.hpp"
 
-#include "actions.hpp"
 #include "builder.hpp"
 #include "cursor.hpp"
 #include "display.hpp"
