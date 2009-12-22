@@ -466,9 +466,7 @@ void play_controller::init_side(const unsigned int team_index, bool is_replay){
 	}
 	gui_->set_playing_team(size_t(team_index));
 
-	std::stringstream player_number_str;
-	player_number_str << player_number_;
-	gamestate_.set_variable("side_number",player_number_str.str());
+	gamestate_.set_variable("side_number", str_cast(player_number_));
 	gamestate_.last_selected = map_location::null_location;
 
 	/**
@@ -492,12 +490,8 @@ void play_controller::do_init_side(const unsigned int team_index){
 
 	// If this is right after loading a game we don't need to fire events and such. It was already done before saving.
 	if (!loading_game_) {
-		std::stringstream event_stream;
-		event_stream << turn();
-		const std::string turn_num = event_stream.str();
-		std::stringstream side_num_stream;
-		side_num_stream << (team_index+1);
-		const std::string side_num = side_num_stream.str();
+		std::string turn_num = str_cast(turn());
+		std::string side_num = str_cast(team_index + 1);
 
 		if (turn() != previous_turn_)
 		{
@@ -627,16 +621,11 @@ void play_controller::finish_side_turn(){
 	game_events::pump();
 }
 
-void play_controller::finish_turn(){
-	std::stringstream event_stream;
-	event_stream << turn();
-
-	{
-		LOG_NG << "turn event..." << (recorder.is_skipping() ? "skipping" : "no skip") << "\n";
-		update_locker lock_display(gui_->video(),recorder.is_skipping());
-		const std::string turn_num = event_stream.str();
-		gamestate_.set_variable("turn_number",turn_num);
-	}
+void play_controller::finish_turn()
+{
+	LOG_NG << "turn event..." << (recorder.is_skipping() ? "skipping" : "no skip") << '\n';
+	update_locker lock_display(gui_->video(),recorder.is_skipping());
+	gamestate_.set_variable("turn_number", str_cast(turn()));
 }
 
 bool play_controller::enemies_visible() const
