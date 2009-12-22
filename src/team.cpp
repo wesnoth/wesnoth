@@ -770,9 +770,7 @@ std::string team::get_side_colour_index(int side)
 			return side_map;
 		}
 	}
-	std::stringstream id;
-	id<<side;
-	return id.str();
+	return str_cast(side);
 }
 
 std::string team::get_side_highlight(int side)
