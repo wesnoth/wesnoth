@@ -325,7 +325,7 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc)
 }
 
 void mouse_handler::add_waypoint(const map_location& loc) {
-	std::list<map_location>::iterator w = std::find(waypoints_.begin(), waypoints_.end(), loc);
+	std::vector<map_location>::iterator w = std::find(waypoints_.begin(), waypoints_.end(), loc);
 	//toggle between add a new one and remove an old one
 	if(w != waypoints_.end()){
 		waypoints_.erase(w);
@@ -338,7 +338,7 @@ void mouse_handler::add_waypoint(const map_location& loc) {
 	mouse_motion(0,0, false, true);
 }
 
-marked_route mouse_handler::get_route(unit_map::const_iterator un, map_location go_to, const std::list<map_location>& waypoints, team &team)
+marked_route mouse_handler::get_route(unit_map::const_iterator un, map_location go_to, const std::vector<map_location>& waypoints, team &team)
 {
 	// The pathfinder will check unit visibility (fogged/stealthy).
 	const shortest_path_calculator calc(un->second,team,units_,teams_,map_);
@@ -357,11 +357,13 @@ marked_route mouse_handler::get_route(unit_map::const_iterator un, map_location 
 		route.move_cost = 0;
 
 		//copy waypoints and add first source and last destination
-		std::list<map_location> waypts = waypoints;
-		waypts.push_front(un->first);
+		//TODO: don't copy but use vector index trick
+		std::vector<map_location> waypts;
+		waypts.push_back(un->first);
+		waypts.insert(waypts.end(), waypoints.begin(), waypoints.end());
 		waypts.push_back(go_to);
 
-		std::list<map_location>::iterator src = waypts.begin(),
+		std::vector<map_location>::iterator src = waypts.begin(),
 			dst = ++waypts.begin();
 		for(; dst != waypts.end(); ++src,++dst){
 			if (*src == *dst) continue;

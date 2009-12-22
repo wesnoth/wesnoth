@@ -60,7 +60,7 @@ public:
 
 	void add_waypoint(const map_location& loc);
 
-	marked_route get_route(unit_map::const_iterator un, map_location go_to, const std::list<map_location>& waypoints, team &team);
+	marked_route get_route(unit_map::const_iterator un, map_location go_to, const std::vector<map_location>& waypoints, team &team);
 protected:
 	/**
 	 * Due to the way this class is constructed we can assume that the
@@ -122,7 +122,7 @@ private:
 	map_location selected_hex_;
 	map_location next_unit_;
 	marked_route current_route_;
-	std::list<map_location> waypoints_;
+	std::vector<map_location> waypoints_;
 	paths current_paths_;
 	bool enemy_paths_;
 	int path_turns_;

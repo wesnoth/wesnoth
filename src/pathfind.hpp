@@ -152,7 +152,7 @@ plain_route a_star_search(map_location const &src, map_location const &dst,
  * Add marks on a route @a rt assuming that a @unit u travels along it.
  */
 marked_route mark_route(const plain_route &rt,
-	const std::list<map_location>& waypoints, const unit &u,
+	const std::vector<map_location>& waypoints, const unit &u,
 	const team &viewing_team, const unit_map &units,
 	const std::vector<team> &teams, const gamemap &map);
 

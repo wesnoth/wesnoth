@@ -284,7 +284,7 @@ struct undo_action {
 	enum ACTION_TYPE { NONE, RECRUIT, RECALL, DISMISS };
 
 	undo_action(const unit& u, const std::vector<map_location>& rt,
-		const std::list<map_location>& wp, int sm,
+		const std::vector<map_location>& wp, int sm,
 		int timebonus=0, int orig=-1,
 		const map_location::DIRECTION dir=map_location::NDIRECTIONS) :
 			route(rt),
@@ -313,7 +313,7 @@ struct undo_action {
 		{}
 
 	std::vector<map_location> route;
-	std::list<map_location> waypoints;
+	std::vector<map_location> waypoints;
 	int starting_moves;
 	int original_village_owner;
 	map_location recall_loc;

@@ -2028,7 +2028,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 	// See how far along the given path we can move.
 	const int starting_moves = ui->second.movement_left();
 	int moves_left = starting_moves;
-	std::list<map_location> starting_waypoints = ui->second.waypoints();
+	std::vector<map_location> starting_waypoints = ui->second.waypoints();
 	std::set<map_location> seen_units;
 	std::set<map_location> petrified_units;
 	bool discovered_unit = false;
@@ -2094,9 +2094,9 @@ size_t move_unit(move_unit_spectator *move_spectator,
 		moves_left -= cost;
 
 		// remove passed waypoints
-		std::list<map_location>& waypoints = ui->second.waypoints();
+		std::vector<map_location>& waypoints = ui->second.waypoints();
 		if(!waypoints.empty() && waypoints.front() == *step) {
-			waypoints.pop_front();
+			waypoints.erase(waypoints.begin());
 		}
 
 		// If we use fog or shroud, see if we have sighted an enemy unit,
