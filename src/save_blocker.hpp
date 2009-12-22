@@ -15,8 +15,11 @@
 #ifndef SAVE_BLOCKER_H_INCLUDED
 #define SAVE_BLOCKER_H_INCLUDED
 
-#include "play_controller.hpp"
 #include "SDL_mutex.h"
+
+#include <cassert>
+
+class play_controller;
 
 /** While any instance of this class exists, attempts to save the game via
  *  any call to play_controller will be temporarily postponed: the call will
