@@ -153,7 +153,7 @@ std::vector<Uint32> palette(color_range cr){
 
 std::string rgb2highlight(Uint32 rgb)
 {
-	std::stringstream h("");
+	std::ostringstream h;
 	// Must match what the escape interpreter for marked-up-text expects
 	h << "<" << ((rgb & 0xFF0000) >> 16)
 	  << "," << ((rgb & 0x00FF00) >> 8)
