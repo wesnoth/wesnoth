@@ -170,10 +170,7 @@ variant unit_callable::get_value(const std::string& key) const
 	} else if(key == "leader") {
 		return variant(u_.can_recruit());
 	} else if(key == "undead") {
-		if ( utils::string_bool(u_.get_state("not_living"))  )
-                    return variant( 1 );
-
-		return variant( 0 );
+		return variant(u_.get_state("not_living") ? 1 : 0);
 	} else if(key == "attacks") {
 		const std::vector<attack_type>& att = u_.attacks();
 		std::vector<variant> res;

@@ -689,24 +689,24 @@ battle_context::unit_stats::unit_stats(const unit &u, const map_location& u_loc,
 		weapon->set_specials_context(*aloc, *dloc, units, attacking, opp_weapon);
 		if (opp_weapon)
 			opp_weapon->set_specials_context(*aloc, *dloc, units, !attacking, weapon);
+		bool not_living = opp.get_state("not_living");
 		slows = weapon->get_special_bool("slow");
-		drains = weapon->get_special_bool("drains") && !utils::string_bool(opp.get_state("not_living"));
+		drains = !not_living && weapon->get_special_bool("drains");
 		petrifies = weapon->get_special_bool("petrifies");
-		poisons = weapon->get_special_bool("poison") && utils::string_bool(opp.get_state("not_living")) != true && opp.get_state(unit::STATE_POISONED) != true;
+		poisons = !not_living && weapon->get_special_bool("poison") && !opp.get_state(unit::STATE_POISONED);
 		backstab_pos = is_attacker && backstab_check(u_loc, opp_loc, units, *resources::teams);
 		rounds = weapon->get_specials("berserk").highest("value", 1).first;
 		firststrike = weapon->get_special_bool("firststrike");
 
 		// Handle plague.
 		unit_ability_list plague_specials = weapon->get_specials("plague");
-		plagues = !plague_specials.empty() && opp.get_state("not_living") != "yes" &&
+		plagues = !not_living && !plague_specials.empty() &&
 			strcmp(opp.undead_variation().c_str(), "null") && !resources::game_map->is_village(opp_loc);
 
-		if (!plague_specials.empty()) {
-			if((*plague_specials.cfgs.front().first)["type"] == "")
+		if (plagues) {
+			plague_type = (*plague_specials.cfgs.front().first)["type"];
+			if (plague_type.empty())
 				plague_type = u.type_id();
-			else
-				plague_type = (*plague_specials.cfgs.front().first)["type"];
 		}
 
 		// Compute chance to hit.
@@ -1554,8 +1554,7 @@ void calculate_healing(int side, bool update_display)
 	// We look for all allied units, then we see if our healer is near them.
 	for (unit_map::iterator i = units.begin(); i != units.end(); ++i) {
 
-		if (!utils::string_bool(i->second.get_state("healable"),true) ||
-			i->second.incapacitated())
+		if (i->second.get_state("not_healable") || i->second.incapacitated())
 			continue;
 
 		DBG_NG << "found healable unit at (" << i->first << ")\n";

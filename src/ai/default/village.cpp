@@ -350,7 +350,7 @@ void ai_default::find_villages(
 		}
 
 		const unit_map::const_iterator u = units_.find(j->second);
-		if(u == units_.end() || utils::string_bool(u->second.get_state("guardian"))) {
+		if (u == units_.end() || u->second.get_state("guardian")) {
 			continue;
 		}
 

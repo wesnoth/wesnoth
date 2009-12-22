@@ -414,12 +414,17 @@ unit::unit(unit_map* unitmap, const config& cfg,
 	if (const config &status_flags = cfg.child("status"))
 	{
 		foreach (const config::attribute &st, status_flags.attribute_range()) {
-			set_state(st.first,st.second);
+			if (st.first == "healable") {
+				if (!utils::string_bool(st.second, true))
+					set_state("not_healable", true);
+			} else if (utils::string_bool(st.second)) {
+				set_state(st.first, true);
+			}
 		}
 		cfg_.remove_child("status",0);
 	}
 	if(cfg["ai_special"] == "guardian") {
-		set_state("guardian","yes");
+		set_state("guardian", true);
 	}
 
 	// Remove animations from private cfg, they're not needed there now
@@ -1037,7 +1042,11 @@ void unit::heal(int amount)
 
 const std::map<std::string,std::string> unit::get_states() const
 {
-	std::map<std::string,std::string> all_states = states_;
+	std::map<std::string, std::string> all_states;
+	foreach (std::string const &s, states_) {
+		if (s == "not_healable") all_states["healable"] = "no";
+		else all_states[s] = "yes";
+	}
 	for (std::map<std::string, state_t>::const_iterator i = known_boolean_state_names_.begin(),
 	     i_end = known_boolean_state_names_.end(); i != i_end; ++i)
 	{
@@ -1049,17 +1058,13 @@ const std::map<std::string,std::string> unit::get_states() const
 	return all_states;
 }
 
-std::string unit::get_state(const std::string& state) const
+bool unit::get_state(const std::string &state) const
 {
 	state_t known_boolean_state_id = get_known_boolean_state_id(state);
 	if (known_boolean_state_id!=STATE_UNKNOWN){
-		return get_state(known_boolean_state_id) ? "yes" : "";
+		return get_state(known_boolean_state_id);
 	}
-	std::map<std::string,std::string>::const_iterator i = states_.find(state);
-	if(i != states_.end()) {
-		return i->second;
-	}
-	return "";
+	return states_.find(state) != states_.end();
 }
 
 void unit::set_state(state_t state, bool value)
@@ -1095,25 +1100,17 @@ std::map<std::string, unit::state_t> unit::get_known_boolean_state_names()
 	return known_boolean_state_names_map;
 }
 
-void unit::set_state(const std::string& state, const std::string& value)
+void unit::set_state(const std::string &state, bool value)
 {
 	state_t known_boolean_state_id = get_known_boolean_state_id(state);
-	if (value.empty()) {
-		if (known_boolean_state_id!=STATE_UNKNOWN){
-			set_state(known_boolean_state_id,false);
-			return;
-		}
-		std::map<std::string,std::string>::iterator i = states_.find(state);
-		if(i != states_.end()) {
-			states_.erase(i);
-		}
-	} else {
-		if (known_boolean_state_id!=STATE_UNKNOWN){
-			set_state(known_boolean_state_id,utils::string_bool(value));
-			return;
-		}
-		states_[state] = value;
+	if (known_boolean_state_id != STATE_UNKNOWN) {
+		set_state(known_boolean_state_id, value);
+		return;
 	}
+	if (value)
+		states_.insert(state);
+	else
+		states_.erase(state);
 }
 
 

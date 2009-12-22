@@ -157,8 +157,8 @@ public:
 	void set_resting(bool rest) { resting_ = rest; }
 
 	const std::map<std::string,std::string> get_states() const;
-	std::string get_state(const std::string& state) const;
-	void set_state(const std::string& state, const std::string& value);
+	bool get_state(const std::string& state) const;
+	void set_state(const std::string &state, bool value);
 	enum state_t { STATE_SLOWED = 0, STATE_POISONED, STATE_PETRIFIED,
 		STATE_HIDDEN, STATE_NOT_MOVED, STATE_UNKNOWN = -1 };
 	void set_state(state_t state, bool value);
@@ -400,7 +400,7 @@ private:
 	int attacks_left_;
 	int max_attacks_;
 
-	std::map<std::string,std::string> states_;
+	std::set<std::string> states_;
 	std::vector<bool> known_boolean_states_;
 	static std::map<std::string, state_t> known_boolean_state_names_;
 	config variables_;

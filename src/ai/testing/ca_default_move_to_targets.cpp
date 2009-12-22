@@ -291,7 +291,7 @@ std::pair<map_location,map_location> default_move_to_targets_phase::choose_move(
 	}
 
 	//guardian units stay put
-	if(utils::string_bool(u->second.get_state("guardian"))) {
+	if (u->second.get_state("guardian")) {
 		LOG_AI << u->second.type_id() << " is guardian, staying still\n";
 		return std::pair<map_location,map_location>(u->first,u->first);
 	}
@@ -384,8 +384,10 @@ std::pair<map_location,map_location> default_move_to_targets_phase::choose_move(
 		LOG_AI << "complex targeting...\n";
 		//now see if any other unit can put a better bid forward
 		for(++u; u != units_.end(); ++u) {
-			if(u->second.side() != get_side() || u->second.can_recruit() ||
-			   u->second.movement_left() <= 0 || utils::string_bool(u->second.get_state("guardian")) || u->second.incapacitated()) {
+			if (u->second.side() != get_side() || u->second.can_recruit() ||
+			    u->second.movement_left() <= 0 || u->second.get_state("guardian") ||
+			    u->second.incapacitated())
+			{
 				continue;
 			}
 

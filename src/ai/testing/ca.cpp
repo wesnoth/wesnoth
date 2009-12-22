@@ -1156,7 +1156,7 @@ void get_villages_phase::find_villages(
 		}
 
 		const unit_map::const_iterator u = get_info().units.find(j->second);
-		if(u == get_info().units.end() || utils::string_bool(u->second.get_state("guardian"))) {
+		if (u == get_info().units.end() || u->second.get_state("guardian")) {
 			continue;
 		}
 
