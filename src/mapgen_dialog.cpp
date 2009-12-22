@@ -285,30 +285,26 @@ void default_map_generator::user_config(display& disp)
 		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,castlesize_label,castlesize_rect.x,castlesize_rect.y);
 		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,landform_label,landform_rect.x,landform_rect.y);
 
-		std::stringstream players_str;
-		players_str << nplayers_;
-		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,players_str.str(),
-		                slider_right+horz_margin,players_rect.y);
+		font::draw_text(&screen, screen_area(), font::SIZE_NORMAL,
+			font::NORMAL_COLOUR, str_cast(nplayers_),
+			slider_right + horz_margin, players_rect.y);
 
-		std::stringstream width_str;
-		width_str << width_;
-		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,width_str.str(),
-		                slider_right+horz_margin,width_rect.y);
+		font::draw_text(&screen, screen_area(), font::SIZE_NORMAL,
+			font::NORMAL_COLOUR, str_cast(width_),
+			slider_right + horz_margin, width_rect.y);
 
-		std::stringstream height_str;
-		height_str << height_;
-		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,height_str.str(),
-		                slider_right+horz_margin,height_rect.y);
+		font::draw_text(&screen, screen_area(), font::SIZE_NORMAL,
+			font::NORMAL_COLOUR, str_cast(height_),
+			slider_right+horz_margin,height_rect.y);
 
 		std::stringstream villages_str;
 		villages_str << nvillages_ << _("/1000 tiles");
 		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,villages_str.str(),
 		                slider_right+horz_margin,villages_rect.y);
 
-		std::stringstream castlesize_str;
-		castlesize_str << castle_size_;
-		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,castlesize_str.str(),
-		                slider_right+horz_margin,castlesize_rect.y);
+		font::draw_text(&screen, screen_area(), font::SIZE_NORMAL,
+			font::NORMAL_COLOUR, str_cast(castle_size_),
+			slider_right + horz_margin, castlesize_rect.y);
 
 		std::stringstream landform_str;
 		landform_str << gettext(island_size_ == 0 ? N_("Inland") : (island_size_ < max_coastal ? N_("Coastal") : N_("Island")));
