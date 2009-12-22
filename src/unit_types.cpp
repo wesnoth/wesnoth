@@ -541,6 +541,8 @@ int defense_modifier_internal(std::map<t_translation::t_terrain, int>& defense_m
 	return res;
 }
 
+static const unit_race dummy_race;
+
 #ifdef _MSC_VER
 #pragma warning(push)
 //silence "elements of array will be default initialized" warnings
@@ -565,7 +567,7 @@ unit_type::unit_type() :
 	num_traits_(0),
 	gender_types_(),
 	variations_(),
-	race_(NULL),
+	race_(&dummy_race),
 	alpha_(),
 	abilities_(),
 	adv_abilities_(),
@@ -654,7 +656,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	num_traits_(0),
 	gender_types_(),
 	variations_(),
-	race_(NULL),
+	race_(&dummy_race),
 	alpha_(),
 	abilities_(),
 	adv_abilities_(),
@@ -747,9 +749,6 @@ void unit_type::build_full(const config& cfg, const movement_type_map& mv_types,
 					possibleTraits_.add_child("trait", t);
 			}
 		}
-	} else {
-		static const unit_race dummy_race;
-		race_ = &dummy_race;
 	}
 
 	// Insert any traits that are just for this unit type
