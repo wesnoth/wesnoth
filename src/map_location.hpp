@@ -126,6 +126,9 @@ std::vector<map_location> parse_location_range(const std::string& xvals,
  */
 void write_location_range(const std::set<map_location>& locs, config& cfg);
 
+/** Parse x,y keys of a config into a vector of locations */
+void read_locations(const config& cfg, std::vector<map_location>& locs);
+
 /** Write a vector of locations into a config
  *  adding keys x=x1,x2,..,xn and y=y1,y2,..,yn */
 void write_locations(const std::vector<map_location>& locs, config& cfg);

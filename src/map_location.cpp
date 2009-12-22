@@ -446,6 +446,18 @@ void write_location_range(const std::set<map_location>& locs, config& cfg)
 	cfg["y"] = y.str();
 }
 
+void read_locations(const config& cfg, std::vector<map_location>& locs)
+{
+	const std::vector<std::string> xvals = utils::split(cfg["x"]);
+	const std::vector<std::string> yvals = utils::split(cfg["y"]);
+	for (unsigned i = 0; i < xvals.size() || i < yvals.size(); ++i)
+	{
+		int x = lexical_cast<int>(xvals[i])-1;
+		int y = lexical_cast<int>(yvals[i])-1;
+		locs.push_back(map_location(x,y));
+	}
+}
+
 void write_locations(const std::vector<map_location>& locs, config& cfg)
 {
 	std::stringstream x, y;

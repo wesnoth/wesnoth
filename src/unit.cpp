@@ -437,9 +437,18 @@ unit::unit(unit_map* unitmap, const config& cfg,
 	} else {
 		hit_points_ = max_hit_points_;
 	}
+
 	goto_.x = lexical_cast_default<int>(cfg["goto_x"]) - 1;
 	goto_.y = lexical_cast_default<int>(cfg["goto_y"]) - 1;
-	waypoints_.clear();
+	if (const config &waypoints = cfg.child("waypoints")) {
+		read_locations(waypoints, waypoints_);
+		if(waypoints_.empty()==false){
+			if(waypoints_.back() != goto_)
+				waypoints_.clear(); //goto has changed, ignore waypoints
+			else
+				waypoints_.pop_back(); //last one was only for goto check
+		}
+	}
 
 	if(cfg["moves"] != "") {
 		movement_ = lexical_cast_default<int>(cfg["moves"]);
@@ -1549,6 +1558,16 @@ void unit::write(config& cfg) const
 
 	cfg["goto_x"] = lexical_cast_default<std::string>(goto_.x+1);
 	cfg["goto_y"] = lexical_cast_default<std::string>(goto_.y+1);
+
+	cfg.clear_children("waypoints");
+	if(waypoints_.empty() == false && goto_.valid()) {
+		config& waypoints_cfg = cfg.add_child("waypoints");
+		// append the goto for consistency checking
+		// (if goto changes, we will ignore waypoints)
+		std::vector<map_location> waypoints(waypoints_);
+		waypoints.push_back(goto_);
+		write_locations(waypoints, waypoints_cfg);
+	}
 
 	cfg["moves"] = lexical_cast_default<std::string>(movement_);
 	cfg["max_moves"] = lexical_cast_default<std::string>(max_movement_);
