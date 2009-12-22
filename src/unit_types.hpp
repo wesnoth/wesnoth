@@ -261,7 +261,7 @@ public:
 
 	const std::vector<unit_race::GENDER>& genders() const { return genders_; }
 
-	const std::string& race() const;
+	const std::string& race() const { return race_->id(); }
 	bool hide_help() const;
 
     enum BUILD_STATUS {NOT_BUILT, CREATED, HELP_INDEX, WITHOUT_ANIMATIONS, FULL};

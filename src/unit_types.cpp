@@ -1042,17 +1042,6 @@ std::vector<std::string> unit_type::get_ability_list() const
 	return res;
 }
 
-
-const std::string& unit_type::race() const
-{
-	if(race_ == NULL) {
-		static const std::string empty_string;
-		return empty_string;
-	}
-
-	return race_->id();
-}
-
 bool unit_type::hide_help() const {
 	return hide_help_ || unit_type_data::types().hide_help(id_, race_->id());
 }
