@@ -2568,6 +2568,3 @@ bool backstab_check(const map_location& attacker_loc,
 		return true; // Defender and opposite are enemies
 	return false; // Defender and opposite are friends
 }
-	gamemap &map = *resources::game_map;
-	unit_map &units = *resources::units;
-
