@@ -611,6 +611,7 @@ void ttext::rerender(const bool force) const
 			surface_buffer_, width, height, 32, stride,
 			0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000));
 		cairo_destroy(cr);
+		cairo_surface_destroy(cairo_surface);
 	}
 }
 
