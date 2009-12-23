@@ -436,7 +436,7 @@ void wait::generate_menu()
 		std::string description = sd["user_description"];
 		const std::string faction_id = sd["id"];
 
-		t_string side_name = sd["name"];
+		t_string side_name = sd["faction_name"];
 		std::string leader_type = sd["type"];
 		std::string gender_id = sd["gender"];
 
