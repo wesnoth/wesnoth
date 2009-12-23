@@ -2377,11 +2377,11 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 					const std::string &remove = effect["remove"];
 
 					if(add.empty() == false) {
-						set_state(add,"yes");
+						set_state(add, true);
 					}
 
 					if(remove.empty() == false) {
-						set_state(remove,"");
+						set_state(remove, false);
 					}
 				} else if (apply_to == "movement_costs") {
 					config &mv = cfg_.child_or_add("movement_costs");
