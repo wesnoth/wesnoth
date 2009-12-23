@@ -55,8 +55,6 @@ static lg::log_domain log_font("font");
 #include <fribidi.h>
 #endif
 
-namespace {
-
 // Signed int. Negative values mean "no subset".
 typedef int subset_id;
 
@@ -76,8 +74,8 @@ struct font_id
 	int size;
 };
 
-std::map<font_id, TTF_Font*> font_table;
-std::vector<std::string> font_names;
+static std::map<font_id, TTF_Font*> font_table;
+static std::vector<std::string> font_names;
 
 struct text_chunk
 {
@@ -94,15 +92,53 @@ struct text_chunk
 	std::string text;
 };
 
-std::vector<subset_id> font_map;
+struct char_block_map
+{
+	typedef std::pair<int, subset_id> block_t;
+	typedef std::map<int, block_t> cbmap_t;
+	cbmap_t cbmap;
+	/** Associates not-associated parts of a range with a new font. */
+	void insert(int first, int last, subset_id id)
+	{
+		if (first > last) return;
+		cbmap_t::iterator i = cbmap.lower_bound(first);
+		// At this point, either first <= i->first or i is past the end.
+		if (i != cbmap.begin()) {
+			cbmap_t::iterator j = i;
+			--j;
+			if (first <= j->second.first /* prev.last */) {
+				insert(j->second.first + 1, last, id);
+				return;
+			}
+		}
+		if (i != cbmap.end()) {
+			if (/* next.first */ i->first <= last) {
+				insert(first, i->first - 1, id);
+				return;
+			}
+		}
+		cbmap.insert(std::make_pair(first, block_t(last, id)));
+	}
+	subset_id get_id(int ch)
+	{
+		cbmap_t::iterator i = cbmap.upper_bound(ch);
+		// At this point, either ch < i->first or i is past the end.
+		if (i != cbmap.begin()) {
+			--i;
+			if (ch <= i->second.first /* prev.last */)
+				return i->second.second;
+		}
+		return -1;
+	}
+};
+
+static char_block_map char_blocks;
 
 //cache sizes of small text
 typedef std::map<std::string,SDL_Rect> line_size_cache_map;
 
 //map of styles -> sizes -> cache
-std::map<int,std::map<int,line_size_cache_map> > line_size_cache;
-
-}
+static std::map<int,std::map<int,line_size_cache_map> > line_size_cache;
 
 //Splits the UTF-8 text into text_chunks using the same font.
 static std::vector<text_chunk> split_text(std::string const & utf8_text) {
@@ -114,16 +150,15 @@ static std::vector<text_chunk> split_text(std::string const & utf8_text) {
 
 	try {
 		utils::utf8_iterator ch(utf8_text);
-		if(size_t(*ch) < font_map.size() && font_map[size_t(*ch)] >= 0) {
-			current_chunk.subset = font_map[size_t(*ch)];
-		}
-		for(utils::utf8_iterator end = utils::utf8_iterator::end(utf8_text); ch != end; ++ch) {
-			if(size_t(*ch) < font_map.size() &&
-					font_map[size_t(*ch)] >= 0 &&
-					font_map[size_t(*ch)] != current_chunk.subset) {
+		int sub = char_blocks.get_id(*ch);
+		if (sub >= 0) current_chunk.subset = sub;
+		for(utils::utf8_iterator end = utils::utf8_iterator::end(utf8_text); ch != end; ++ch)
+		{
+			sub = char_blocks.get_id(*ch);
+			if (sub >= 0 && sub != current_chunk.subset) {
 				chunks.push_back(current_chunk);
 				current_chunk.text.clear();
-				current_chunk.subset = font_map[size_t(*ch)];
+				current_chunk.subset = sub;
 			}
 			current_chunk.text.append(ch.substr().first, ch.substr().second);
 		}
@@ -202,7 +237,7 @@ static void clear_fonts()
 
 	font_table.clear();
 	font_names.clear();
-	font_map.clear();
+	char_blocks.cbmap.clear();
 	line_size_cache.clear();
 }
 
@@ -331,14 +366,14 @@ struct subset_descriptor
 	}
 
 	std::string name;
-	std::vector<std::pair<size_t, size_t> > present_codepoints;
+	typedef std::pair<int, int> range;
+	std::vector<range> present_codepoints;
 };
 
 //sets the font list to be used.
 static void set_font_list(const std::vector<subset_descriptor>& fontlist)
 {
 	clear_fonts();
-	font_map.reserve(0x10000);
 
 	std::vector<subset_descriptor>::const_iterator itor;
 	for(itor = fontlist.begin(); itor != fontlist.end(); ++itor) {
@@ -363,18 +398,8 @@ static void set_font_list(const std::vector<subset_descriptor>& fontlist)
 		const subset_id subset = font_names.size();
 		font_names.push_back(itor->name);
 
-		std::vector<std::pair<size_t,size_t> >::const_iterator cp_range;
-		for(cp_range = itor->present_codepoints.begin();
-				cp_range != itor->present_codepoints.end(); ++cp_range) {
-
-			size_t cp_max = std::max<size_t>(cp_range->first, cp_range->second);
-			if(cp_max >= font_map.size()) {
-				font_map.resize(cp_max+1, -1);
-			}
-			for(size_t cp = cp_range->first; cp <= cp_range->second; ++cp) {
-				if(font_map[cp] < 0)
-					font_map[cp] = subset;
-			}
+		foreach (const subset_descriptor::range &cp_range, itor->present_codepoints) {
+			char_blocks.insert(cp_range.first, cp_range.second, subset);
 		}
 	}
 }
