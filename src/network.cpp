@@ -247,12 +247,6 @@ manager::manager(size_t min_threads, size_t max_threads) : free_(true)
 		return;
 	}
 
-	// On Unix-based systems, set sigpipe to be ignored
-#if !(defined(_WIN32) || defined(__APPLE__) || defined(__AMIGAOS4__))
-	WRN_NW << "ignoring SIGPIPE\n";
-	signal(SIGPIPE,SIG_IGN);
-#endif
-
 	if(SDLNet_Init() == -1) {
 		ERR_NW << "could not initialize SDLNet; throwing error...\n";
 		throw error(SDL_GetError());
