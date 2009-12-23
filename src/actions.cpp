@@ -40,6 +40,7 @@
 #include "tod_manager.hpp"
 
 
+#include <boost/bind.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <list>
 
@@ -150,6 +151,187 @@ void move_unit_spectator::set_unit(const unit_map::const_iterator &u)
 {
 	unit_ = u;
 }
+
+
+unit_creator::unit_creator(team &tm, const map_location &start_pos)
+  : add_to_recall_(false),discover_(false),get_village_(false),invalidate_(false), rename_side_(false), show_(false), start_pos_(start_pos), team_(tm)
+{
+}
+
+
+unit_creator& unit_creator::allow_show(bool b)
+{
+	show_=b;
+	return *this;
+}
+
+
+unit_creator& unit_creator::allow_get_village(bool b)
+{
+	get_village_=b;
+	return *this;
+}
+
+
+unit_creator& unit_creator::allow_rename_side(bool b)
+{
+	rename_side_=b;
+	return *this;
+}
+
+unit_creator& unit_creator::allow_invalidate(bool b)
+{
+	invalidate_=b;
+	return *this;
+}
+
+
+unit_creator& unit_creator::allow_discover(bool b)
+{
+	discover_=b;
+	return *this;
+}
+
+
+unit_creator& unit_creator::allow_add_to_recall(bool b)
+{
+	add_to_recall_=b;
+	return *this;
+}
+
+
+map_location unit_creator::find_location(const config &cfg)
+{
+
+	DBG_NG << "finding location for unit with id=["<<cfg["id"]<<"] placement=["<<cfg["placement"]<<"] x=["<<cfg["x"]<<"] y=["<<cfg["y"]<<"] for side " << team_.side() << "\n";
+
+	std::vector< std::string > placements = utils::split(cfg["placement"]);
+
+	placements.push_back("map");
+	placements.push_back("recall");
+
+	foreach(std::string place, placements) {
+		map_location loc;
+
+		if (place == "recall" ) {
+			return map_location::null_location;
+		}
+
+		if (place == "leader" ) {
+			unit_map::const_iterator leader = resources::units->find_leader(team_.side());
+			//todo: take 'leader in recall list' possibility into account
+			if (leader.valid()) {
+				loc = leader->first;
+			} else {
+				loc = start_pos_;
+			}
+		}
+
+		if (place=="map") {
+			loc = map_location(cfg,resources::state_of_game);
+		}
+
+		if(loc.valid() && resources::game_map->on_board(loc)) {
+			loc = find_vacant_tile(*resources::game_map, *resources::units, loc, VACANT_ANY);
+			if(loc.valid() && resources::game_map->on_board(loc)) {
+				return loc;
+			}
+		}
+	}
+
+	return map_location::null_location;
+
+}
+
+
+void unit_creator::add_unit(const config &cfg)
+{
+	config temp_cfg(cfg);
+	map_location loc = find_location(temp_cfg);
+	temp_cfg["side"] = str_cast(team_.side());
+	temp_cfg.remove_attribute("x");
+	temp_cfg.remove_attribute("y");
+	temp_cfg.remove_attribute("placement");
+
+	const std::string& id =(cfg)["id"];
+
+	std::vector<unit>::iterator recall_list_element = std::find_if(team_.recall_list().begin(), team_.recall_list().end(), boost::bind(&unit::matches_id, _1, id));
+
+	if(!loc.valid()) {
+		if(add_to_recall_) {
+			if (recall_list_element==team_.recall_list().end()) {
+				//add to recall list
+				unit new_unit(resources::units, temp_cfg, true);
+				team_.recall_list().push_back(new_unit);
+				DBG_NG << "inserting unit with id=["<<id<<"] on recall list for side " << new_unit.side() << "\n";
+			} else {
+				LOG_NG << "wanted to insert unit on recall list, but recall list for side " << (cfg)["side"] << "already contains id="<<id<<"\n";
+			}
+			return;
+		}
+	} else {
+		assert( resources::units->find(loc) == resources::units->end() );
+		bool animate = utils::string_bool(temp_cfg["animate"],false);
+		if (recall_list_element==team_.recall_list().end()) {
+			//new unit
+			unit new_unit(resources::units, temp_cfg, true);
+			resources::units->add(loc, new_unit);
+			LOG_NG << "inserting unit for side " << new_unit.side() << "\n";
+			post_create(loc,new_unit,animate);
+		} else {
+			//get unit from recall list
+			unit recalled_unit = *recall_list_element;
+			recalled_unit.set_game_context(resources::units);
+			team_.recall_list().erase(recall_list_element);
+			resources::units->add(loc, recalled_unit);
+			LOG_NG << "inserting unit from recall list for side " << recalled_unit.side()<< " with id="<< id << "\n";
+			post_create(loc,recalled_unit,animate);
+		}
+	}
+
+	//if id is not empty, delete units with this ID from recall list
+	if (!id.empty()) {
+		std::vector<unit> &r = team_.recall_list();
+		r.erase(std::remove_if(r.begin(),r.end(),boost::bind(&unit::matches_id, _1, id)), r.end());
+	}
+}
+
+
+void unit_creator::post_create(const map_location &loc, const unit &new_unit, bool anim)
+{
+
+	if (discover_) {
+		preferences::encountered_units().insert(new_unit.type_id());
+	}
+
+	bool show = show_ && (resources::screen !=NULL) && !resources::screen->fogged(loc);
+	bool animate = show && anim;
+	// If the new unit is a leader, use its name as the player name.
+	if (rename_side_ && new_unit.can_recruit()) {
+		team_.set_current_player(new_unit.name());
+	}
+
+
+	if (get_village_) {
+		if (resources::game_map->is_village(loc)) {
+			get_village(loc, new_unit.side());
+		}
+	}
+
+	if (resources::screen!=NULL) {
+
+		if (invalidate_ ) {
+			resources::screen->invalidate(loc);
+		}
+
+		if (animate) {
+			unit_display::unit_recruited(loc);
+		} else if (show) {
+			resources::screen->draw();
+		}
+	}
+}
+
 
 bool can_recruit_on(const gamemap& map, const map_location& leader, const map_location& loc)
 {
@@ -1519,7 +1701,9 @@ bool get_village(const map_location& loc, int side, int *action_timebonus)
 	}
 
 	if(has_leader) {
-		resources::screen->invalidate(loc);
+		if (resources::screen != NULL) {
+			resources::screen->invalidate(loc);
+		}
 		return t->get_village(loc);
 	}
 

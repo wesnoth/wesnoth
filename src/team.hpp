@@ -125,6 +125,7 @@ public:
 	bool owns_village(const map_location& loc) const
 		{ return villages_.count(loc) > 0; }
 
+	int side() const { return info_.side; }
 	int gold() const { return gold_; }
 	int start_gold() const { return info_.start_gold; }
 	bool gold_add() const { return info_.gold_add; }

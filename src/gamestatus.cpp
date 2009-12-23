@@ -1,4 +1,4 @@
-/* $Id$ */
+//* $Id$ */
 /*
    Copyright (C) 2003 - 2009 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
@@ -22,6 +22,7 @@
 
 #include "gamestatus.hpp"
 
+#include "actions.hpp"
 #include "foreach.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
@@ -47,6 +48,12 @@ static lg::log_domain log_engine("engine");
 #define WRN_NG LOG_STREAM(warn, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define DBG_NG LOG_STREAM(debug, log_engine)
+
+static lg::log_domain log_engine_tc("engine/team_construction");
+#define ERR_NG_TC LOG_STREAM(err, log_engine_tc)
+#define WRN_NG_TC LOG_STREAM(warn, log_engine_tc)
+#define LOG_NG_TC LOG_STREAM(info, log_engine_tc)
+#define DBG_NG_TC LOG_STREAM(debug, log_engine_tc)
 
 game_classification::game_classification():
 	label(),
@@ -577,245 +584,337 @@ void game_state::set_variables(const config& vars) {
 	variables = vars;
 }
 
+
+class team_builder {
+public:
+	team_builder(const config& side_cfg,
+		     const std::string &save_id, std::vector<team>& teams,
+		     const config& level, gamemap& map, unit_map& units,
+		     bool snapshot, const config &starting_pos)
+		: level_(level), map_(map), player_cfg_(NULL), save_id_(save_id), side_cfg_(side_cfg), snapshot_(snapshot), starting_pos_(starting_pos), t_(NULL), teams_(teams),units_(units)
+	{
+	}
+
+	void build_team()
+	{
+		//initialize the context variables and flags, find relevant tags, set up everything
+		init();
+
+		//find out the correct qty of gold and handle gold carryover.
+		gold();
+
+		//create a new instance of team and push it to back of resources::teams vector
+		new_team();
+
+		assert(t_!=NULL);
+
+		//set team objectives if necessary
+		objectives();
+
+		// If the game state specifies additional units that can be recruited by the player, add them.
+		previous_recruits();
+
+		//place leader
+		leader();
+
+		//prepare units, populate obvious recall lists elements
+		prepare_units();
+
+		//place units
+		place_units();
+
+	}
+
+protected:
+
+	static const std::string default_gold_qty_;
+
+	int gold_info_ngold_;
+	bool gold_info_add_;
+        config leader_cfg_;
+	map_location leader_pos_;
+	const config &level_;
+	gamemap &map_;
+	const config *player_cfg_;
+	bool player_exists_;
+	const std::string &save_id_;
+	std::set<std::string> seen_ids_;
+	int side_;
+	const config &side_cfg_;
+	bool snapshot_;
+	map_location start_pos_;
+	const config &starting_pos_;
+	team *t_;
+	std::vector<team> &teams_;
+	std::vector<const config*> unit_configs_;
+	unit_map &units_;
+
+
+	void log_step(const char *s) {
+		LOG_NG_TC << "team "<<side_<<" construction: "<< s << std::endl;
+	}
+
+
+	void init()
+	{
+		side_ = lexical_cast_default<int>(side_cfg_["side"], 1);
+
+		log_step("init");
+
+		player_cfg_ = NULL;
+		//track whether a [player] tag with persistence information exists (in addition to the [side] tag)
+		player_exists_ = false;
+
+		if(map_.empty()) {
+			throw game::load_game_failed("Map not found");
+		}
+
+		if(side_cfg_["controller"] == "human" ||
+		   side_cfg_["controller"] == "network" ||
+		   side_cfg_["controller"] == "network_ai" ||
+		   side_cfg_["controller"] == "human_ai" ||
+		   utils::string_bool(side_cfg_["persistent"])) {
+			player_exists_ = true;
+
+			//if we have a snapshot, level contains team information
+			//else, we look for [side] or [player] (deprecated) tags in starting_pos
+			if (snapshot_) {
+				if (const config &c = level_.find_child("player","save_id",save_id_))  {
+					player_cfg_ = &c;
+				}
+			} else {
+				//at the start of scenario, get the persistence information from starting_pos
+				assert(starting_pos_ != NULL);
+				if (const config &c =  starting_pos_.find_child("player","save_id",save_id_))  {
+					player_cfg_ = &c;
+				} else if (const config &c =  starting_pos_.find_child("side","save_id",save_id_))  {
+					player_cfg_ = &c;
+					player_exists_ = false; //there is only a [side] tag for this save_id in starting_pos
+				} else {
+					player_cfg_ = NULL;
+					player_exists_ = false;
+				}
+			}
+		}
+
+		DBG_NG_TC << "snapshot: "<< (player_exists_ ? "true" : "false") <<std::endl;
+		DBG_NG_TC << "player_cfg: "<< (player_cfg_==NULL ? "is null" : "is not null") <<std::endl;
+		DBG_NG_TC << "player_exists: "<< (player_exists_ ? "true" : "false") <<std::endl;
+
+		unit_configs_.clear();
+		start_pos_= map_location::null_location;
+		seen_ids_.clear();
+		leader_pos_= map_location::null_location;
+		leader_cfg_ = config();
+
+	}
+
+	bool use_player_cfg()
+	{
+		return (player_cfg_ != NULL) && (!snapshot_);
+	}
+
+	void gold()
+	{
+		log_step("gold");
+
+		std::string gold = side_cfg_["gold"];
+		if(gold.empty()) {
+			gold = default_gold_qty_;
+		}
+
+		DBG_NG_TC << "found gold: '" << gold << "'\n";
+
+		gold_info_ngold_ = lexical_cast_default<int>(gold);
+
+		/* This is the gold carry-over mechanism for subsequent campaign
+		   scenarios. Snapshots and replays are loaded from savegames and
+		   got their own gold information, which must not be altered here
+		*/
+
+		//true  - carryover gold is added to the start_gold.
+		//false - the max of the two is taken as start_gold.
+		gold_info_add_ = utils::string_bool((side_cfg_)["gold_add"]);
+
+		if (use_player_cfg()) {
+			try {
+				int player_gold = lexical_cast_default<int>((*player_cfg_)["gold"]);
+				if (!player_exists_) {
+					//if we get the persistence information from [side], carryover gold is already sorted
+					gold_info_ngold_ = player_gold;
+					gold_info_add_ = utils::string_bool((*player_cfg_)["gold_add"]);
+				} else if(utils::string_bool((*player_cfg_)["gold_add"])) {
+					gold_info_ngold_ +=  player_gold;
+					gold_info_add_ = true;
+				} else if(player_gold >= gold_info_ngold_) {
+					gold_info_ngold_ = player_gold;
+				}
+			} catch (config::error&) {
+				ERR_NG_TC << "player tag for " << save_id_ << " does not have gold information\n";
+			}
+		}
+
+		DBG_NG_TC << "set gold to '" << gold_info_ngold_ << "'\n";
+		DBG_NG_TC << "set gold add flag to '" << gold_info_add_ << "'\n";
+	}
+
+
+	void new_team()
+	{
+		log_step("new team");
+		team temp_team(side_cfg_, map_, gold_info_ngold_);
+		temp_team.set_gold_add(gold_info_add_);
+		teams_.push_back(temp_team);
+		t_ = &teams_.back();
+	}
+
+
+	void objectives()
+	{
+		log_step("objectives");
+		// If this team has no objectives, set its objectives
+		// to the level-global "objectives"
+		if(t_->objectives().empty()){
+			const config& child = level_.find_child_recursive("objectives", "side", side_cfg_["side"]);
+			bool silent = false;
+			if (child && child.has_attribute("silent"))
+				silent = utils::string_bool(child["silent"]);
+			t_->set_objectives(level_["objectives"], silent);
+		}
+	}
+
+
+	void previous_recruits()
+	{
+		log_step("previous recruits");
+		// If the game state specifies units that
+		// can be recruited for the player, add them.
+		// the can_recruit attribute is checked for backwards compatibility of saves
+		if(player_cfg_ != NULL &&
+		   ((*player_cfg_).has_attribute("previous_recruits") || (*player_cfg_).has_attribute("can recruit")) ) {
+			std::vector<std::string> player_recruits;
+			if (!(*player_cfg_)["previous_recruits"].empty()) {
+				player_recruits = utils::split((*player_cfg_)["previous_recruits"]);
+			}
+			else {
+				player_recruits = utils::split((*player_cfg_)["can_recruit"]);
+			}
+			foreach (std::string rec, player_recruits) {
+				DBG_NG_TC << "adding previous recruit: "<< rec << std::endl;
+				t_->add_recruit(rec);
+			}
+		}
+	}
+
+
+
+
+	void handle_unit(const config &u, const char *origin)
+	{
+		DBG_NG_TC
+			<< "unit from "<<origin
+			<< ": type=["<<u["type"]
+			<< "] id=["<<u["id"]
+			<< "] placement=["<<u["placement"]
+			<< "] x=["<<u["x"]
+			<< "] y=["<<u["y"]
+			<<"]"<< std::endl;
+		const std::string &id = u["id"];
+		if (!id.empty()) {
+			if ( seen_ids_.find(id)!=seen_ids_.end() ) {
+				//seen before
+				unit new_unit(&units_, u, true);
+				t_->recall_list().push_back(new_unit);
+			} else {
+				//not seen before
+				unit_configs_.push_back(&u);
+				seen_ids_.insert(id);
+			}
+
+		} else {
+			unit_configs_.push_back(&u);
+		}
+	}
+
+	void leader()
+	{
+		log_step("leader");
+		// If this side tag describes the leader of the side, we can simply add it to front of unit queue
+		// there was a hack: if this side tag describes the leader of the side,
+		// we may replace the leader with someone from recall list who can recruit, but take positioning from [side]
+		// this hack shall be removed, since it messes up with 'multiple leaders'
+
+		// If this side tag describes the leader of the side
+		if(!utils::string_bool(side_cfg_["no_leader"]) && side_cfg_["controller"] != "null") {
+			// we must ensure that the 1st unit has 'canrecruit=yes'
+			leader_cfg_ = side_cfg_;
+			if (!leader_cfg_.has_attribute("canrecruit")) {
+				leader_cfg_["canrecruit"] = "yes";
+			}
+			if (!leader_cfg_.has_attribute("placement")) {
+				leader_cfg_["placement"] = "map,leader";
+			}
+			handle_unit(leader_cfg_,"leader_cfg");
+		} else {
+			leader_cfg_ = config();
+		}
+	}
+
+
+	void prepare_units()
+	{
+		log_step("prepare units");
+		if (use_player_cfg()) {
+			//units in [replay_start][side] merged with [side]
+			//only relevant in start-of-scenario saves, that's why !shapshot
+			//units that are in '[scenario][side]' are 'first'
+			//for create-or-recall semantics to work: for each unit with non-empty id, unconditionally put OTHER, later, units with same id directly to recall list, not including them in unit_configs_
+			foreach(const config &u, (*player_cfg_).child_range("unit")) {
+				handle_unit(u,"player_cfg");
+			}
+
+		} else {
+			//units in [side]
+			const config::child_list& starting_units = side_cfg_.get_children("unit");
+			for(config::child_list::const_iterator su = starting_units.begin(); su != starting_units.end(); ++su) {
+				handle_unit(**su,"side_cfg");
+			}
+		}
+	}
+
+
+	void place_units()
+	{
+		log_step("place units");
+		foreach (const config *u, unit_configs_) {
+			unit_creator uc(*t_,map_.starting_position(side_));
+			uc
+				.allow_add_to_recall(true)
+				.allow_discover(true)
+				.allow_get_village(true)
+				.allow_invalidate(false)
+				.allow_rename_side(true)
+				.allow_show(false);
+
+			uc.add_unit(*u);
+
+		}
+	}
+
+};
+
+const std::string team_builder::default_gold_qty_ = "100";
+
+
 void game_state::build_team(const config& side_cfg,
 					 std::string save_id, std::vector<team>& teams,
 					 const config& level, gamemap& map, unit_map& units,
 					 bool snapshot)
 {
-	const config *player_cfg = NULL;
-	//track whether a [player] tag with persistence information exists (in addition to the [side] tag)
-	bool player_exists = false;
-
-	if(map.empty()) {
-		throw game::load_game_failed("Map not found");
-	}
-
-	if(side_cfg["controller"] == "human" ||
-		side_cfg["controller"] == "network" ||
-		side_cfg["controller"] == "network_ai" ||
-		side_cfg["controller"] == "human_ai" ||
-		utils::string_bool(side_cfg["persistent"])) {
-		player_exists = true;
-
-		//if we have a snapshot, level contains team information
-		//else, we look for [side] or [player] (deprecated) tags in starting_pos
-		if (snapshot) {
-			if (const config &c = level.find_child("player","save_id",save_id))  {
-				player_cfg = &c;
-			}
-		} else {
-			//at the start of scenario, get the persistence information from starting_pos
-			assert(starting_pos != NULL);
-			if (const config &c =  starting_pos.find_child("player","save_id",save_id))  {
-				player_cfg = &c;
-			} else if (const config &c =  starting_pos.find_child("side","save_id",save_id))  {
-				player_cfg = &c;
-				player_exists = false; //there is only a [side] tag for this save_id in starting_pos
-			}
-		}
-	}
-
-	LOG_NG << "initializing team...\n";
-
-	std::string gold = side_cfg["gold"];
-	if(gold.empty())
-		gold = "100";
-
-	LOG_NG << "found gold: '" << gold << "'\n";
-
-	int ngold = lexical_cast_default<int>(gold);
-
-	/* This is the gold carry-over mechanism for subsequent campaign
-	scenarios. Snapshots and replays are loaded from savegames and
-	got their own gold information, which must not be altered here
-	*/
-	bool gold_add = utils::string_bool((side_cfg)["gold_add"]);
-	if ( (player_cfg != NULL)  && (!snapshot) ) {
-		try {
-			int player_gold = lexical_cast_default<int>((*player_cfg)["gold"]);
-			if (!player_exists) {
-				//if we get the persistence information from [side], carryover gold is already sorted
-				ngold = player_gold;
-				gold_add = utils::string_bool((*player_cfg)["gold_add"]);
-			} else if(utils::string_bool((*player_cfg)["gold_add"])) {
-				ngold +=  player_gold;
-				gold_add = true;
-			} else if(player_gold >= ngold) {
-				ngold = player_gold;
-			}
-		} catch (config::error&) {
-			ERR_NG << "player tag for " << save_id << " does not have gold information\n";
-		}
-	}
-
-	LOG_NG << "set gold to '" << ngold << "'\n";
-
-	team temp_team(side_cfg, map, ngold);
-	temp_team.set_gold_add(gold_add);
-	teams.push_back(temp_team);
-
-	// Update/fix the recall list for this side,
-	// by setting the "side" of each unit in it
-	// to be the "side" of the player.
-	int side = lexical_cast_default<int>(side_cfg["side"], 1);
-
-	//take recall list from [player] tag and update the side number of its units
-	if (player_cfg != NULL) {
-		foreach(const config &u, (*player_cfg).child_range("unit")) {
-			if (u["x"].empty() && u["y"].empty() && !utils::string_bool(u["find_vacant"],false)) {
-				config temp_cfg(u); //copy ctor, as player_cfg is const
-				temp_cfg["side"] = str_cast<int>(side);
-				//FIXME should probably pass &units here
-				unit un(NULL, temp_cfg, false);
-				teams.back().recall_list().push_back(un);
-			}
-		}
-	}
-
-	// If this team has no objectives, set its objectives
-	// to the level-global "objectives"
-	if(teams.back().objectives().empty()){
-		const config& child = level.find_child_recursive("objectives", "side", side_cfg["side"]);
-		bool silent = false;
-		if (child && child.has_attribute("silent"))
-			silent = utils::string_bool(child["silent"]);
-		teams.back().set_objectives(level["objectives"], silent);
-	}
-
-	map_location start_pos = map_location::null_location;
-	// If this side tag describes the leader of the side
-	if(!utils::string_bool(side_cfg["no_leader"]) && side_cfg["controller"] != "null") {
-		unit new_unit(&units, side_cfg, true);
-
-		if (player_cfg != NULL) {
-			for(std::vector<unit>::iterator it = teams.back().recall_list().begin();
-				it != teams.back().recall_list().end(); ++it) {
-				if(it->can_recruit()) {
-					new_unit = *it;
-					new_unit.set_game_context(&units);
-					teams.back().recall_list().erase(it);
-					break;
-				}
-			}
-		}
-
-		// See if the side specifies its location.
-		// Otherwise start it at the map-given starting position.
-		start_pos = map_location(side_cfg, this);
-
-		if(side_cfg["x"].empty() && side_cfg["y"].empty()) {
-			start_pos = map.starting_position(side);
-		}
-
-		if(!start_pos.valid() || !map.on_board(start_pos)) {
-			throw game::load_game_failed(
-				"Invalid starting position (" +
-				lexical_cast<std::string>(start_pos.x+1) +
-				"," + lexical_cast<std::string>(start_pos.y+1) +
-				") for the leader of side " +
-				lexical_cast<std::string>(side) + ".");
-		}
-
-		utils::string_map symbols;
-		symbols["side"] = lexical_cast<std::string>(side);
-		VALIDATE(units.count(start_pos) == 0,
-			t_string(vgettext("Leader position not empty - duplicate side definition for side '$side|' found.", symbols)));
-
-		units.add(start_pos, new_unit);
-		LOG_NG << "initializing side '" << side_cfg["side"] << "' at "
-			<< start_pos << '\n';
-	}
-
-	// If the game state specifies units that
-	// can be recruited for the player, add them.
-	// the can_recruit attribute is checked for backwards compatibility of saves
-	if(player_cfg != NULL &&
-		((*player_cfg).has_attribute("previous_recruits") || (*player_cfg).has_attribute("can recruit")) ) {
-		std::vector<std::string> player_recruits;
-			if (!(*player_cfg)["previous_recruits"].empty()) {
-				player_recruits = utils::split((*player_cfg)["previous_recruits"]);
-			}
-			else {
-				player_recruits = utils::split((*player_cfg)["can_recruit"]);
-			}
-		foreach (std::string rec, player_recruits) {
-			teams.back().add_recruit(rec);
-		}
-	}
-
-	// If there are additional starting units on this side
-	const config::child_list& starting_units = side_cfg.get_children("unit");
-	// the recall list has been filled by loading the [player]-section already.
-	// However, we need to get the information from the snapshot,
-	// so we start from scratch here.
-	// This is rather a quick hack, originating from keeping changes
-	// as minimal as possible for 1.2.
-	if (player_exists && snapshot){
-		teams.back().recall_list().clear();
-	}
-
-	//add the units with a specified position to the unit map
-	for(config::child_list::const_iterator su = starting_units.begin(); su != starting_units.end(); ++su) {
-
-		config temp_cfg(**su);
-		temp_cfg["side"] = str_cast<int>(side); //set the side before unit creation to avoid invalid side errors
-		temp_cfg.remove_attribute("find_vacant");
-
-		const std::string& id =(**su)["id"];
-		const std::string& x = (**su)["x"];
-		const std::string& y = (**su)["y"];
-		bool should_find_vacant_hex = utils::string_bool((**su)["find_vacant"],false);
-		map_location loc(**su, this);
-
-		if (should_find_vacant_hex) {
-			if(!loc.valid() || !map.on_board(loc)) {
-				loc = find_vacant_tile(map, units, start_pos, VACANT_ANY);
-			} else {
-				loc = find_vacant_tile(map, units, loc, VACANT_ANY);
-			}
-		}
-
-
-		std::vector<unit>::iterator recall_list_element = std::find_if(teams.back().recall_list().begin(), teams.back().recall_list().end(), boost::bind(&unit::matches_id, _1, id));
-		if(x.empty() && y.empty() && !should_find_vacant_hex) {
-			//if there is no player tag, this means this team is either not persistent or the units have been added from a [side] tag earlier
-			if(player_exists) {
-				if (recall_list_element==teams.back().recall_list().end()) {
-					unit new_unit(&units, temp_cfg, true);
-					teams.back().recall_list().push_back(new_unit);
-					LOG_NG << "inserting unit on recall list for side " << new_unit.side() << "\n";
-				} else {
-					LOG_NG << "wanted to insert unit on recall list, but recall list for side " << (**su)["side"] << "already contains id="<<id<<"\n";
-				}
-			}
-		} else if(!loc.valid() || !map.on_board(loc)) {
-			throw game::load_game_failed(
-				"Invalid starting position (" +
-				lexical_cast<std::string>(loc.x+1) +
-				"," + lexical_cast<std::string>(loc.y+1) +
-				") for a unit on side " +
-				lexical_cast<std::string>(side) + ".");
-		} else {
-			if (units.find(loc) != units.end()) {
-				ERR_NG << "[unit] trying to overwrite existing unit at " << loc << "\n";
-			} else {
-				if (recall_list_element==teams.back().recall_list().end()) {
-					unit new_unit(&units, temp_cfg, true);
-					units.add(loc, new_unit);
-					LOG_NG << "inserting unit for side " << new_unit.side() << "\n";
-				} else {
-					//get unit from recall list
-					unit u = *recall_list_element;
-					u.set_game_context(&units);
-					teams.back().recall_list().erase(recall_list_element);
-					units.add(loc, u);
-					LOG_NG << "inserting unit from recall list for side " << u.side()<< " with id="<< id << "\n";
-				}
-			}
-		}
-	}
-
+	team_builder tb = team_builder(side_cfg,save_id,teams,level,map,units,snapshot,starting_pos);
+	tb.build_team();
 }
+
 
 void game_state::set_menu_items(const config::const_child_itors &menu_items)
 {

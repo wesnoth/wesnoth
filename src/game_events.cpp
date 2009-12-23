@@ -47,6 +47,7 @@
 #include "play_controller.hpp"
 
 #include <boost/scoped_ptr.hpp>
+#include <boost/lexical_cast.hpp>
 #include <algorithm>
 #include <iomanip>
 #include <iostream>
@@ -1835,48 +1836,46 @@ static bool try_add_unit_to_recall_list(const map_location& loc, const unit& u)
 WML_HANDLER_FUNCTION(unit, /*event_info*/, cfg)
 {
 	const config& parsed_cfg = cfg.get_parsed_config();
-	unit new_unit(resources::units, parsed_cfg, true, resources::state_of_game);
 
 	if (cfg.has_attribute("to_variable")) {
+		unit new_unit(resources::units, parsed_cfg, true, resources::state_of_game);
 		config &var = resources::state_of_game->get_variable_cfg(parsed_cfg["to_variable"]);
 		var.clear();
 		new_unit.write(var);
+		var["placement"] = parsed_cfg["placement"];
 		var["x"] = parsed_cfg["x"];
 		var["y"] = parsed_cfg["y"];
 		return;
 	}
 
-	preferences::encountered_units().insert(new_unit.type_id());
-	map_location loc = cfg_to_loc(cfg);
-
-	if (!resources::game_map->on_board(loc)) {
-		try_add_unit_to_recall_list(loc, new_unit);
+	int side = 1;
+	try {
+		side = boost::lexical_cast<int>(parsed_cfg["side"]);
+	} catch (boost::bad_lexical_cast) {
+		ERR_NG << "wrong side in [unit] tag - not a number"<<std::endl;
+		DBG_NG << parsed_cfg.debug();
 		return;
 	}
 
-	loc = find_vacant_tile(*resources::game_map, *resources::units, loc);
-	bool show = resources::screen && !resources::screen->fogged(loc);
-	bool animate = show && utils::string_bool(parsed_cfg["animate"], false);
-
-	// If the new unit is a leader, use its name as the player name.
-	if (new_unit.can_recruit()) {
-		(*resources::teams)[new_unit.side() - 1].set_current_player(new_unit.name());
+	if ((side<1)||(side > static_cast<int>(resources::teams->size()))) {
+		ERR_NG << "wrong side in [unit] tag - no such side: "<<side<<" ( number of teams :"<<resources::teams->size()<<")"<<std::endl;
+		DBG_NG << parsed_cfg.debug();
+		return;
 	}
+	team &tm = resources::teams->at(side-1);
 
-	resources::units->erase(loc);
-	resources::units->add(loc, new_unit);
+	unit_creator uc(tm,resources::game_map->starting_position(side));
 
-	if (resources::game_map->is_village(loc)) {
-		get_village(loc, new_unit.side());
-	}
+	uc
+		.allow_add_to_recall(true)
+		.allow_discover(true)
+		.allow_get_village(true)
+		.allow_invalidate(true)
+		.allow_rename_side(true)
+		.allow_show(true);
 
-	resources::screen->invalidate(loc);
+	uc.add_unit(parsed_cfg);
 
-	if (animate) {
-		unit_display::unit_recruited(loc);
-	} else if (show) {
-		resources::screen->draw();
-	}
 }
 
 // If we should recall units that match a certain description
