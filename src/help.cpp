@@ -1382,9 +1382,8 @@ public:
 		// respective topic.
 		const std::string race_id = type_.race();
 		std::string race_name;
-		const race_map::const_iterator race_it = unit_types.races().find(race_id);
-		if (race_it != unit_types.races().end()) {
-			race_name = race_it->second.plural_name();
+		if (const unit_race *r = unit_types.find_race(race_id)) {
+			race_name = r->plural_name();
 		} else {
 			race_name = _ ("race^Miscellaneous");
 		}
@@ -1695,9 +1694,8 @@ void generate_races_sections(const config *help_cfg, section &sec, int level)
 		section_cfg["id"] = hidden_symbol(hidden) + race_prefix + *it;
 
 		std::string title;
-		const race_map::const_iterator race_it = unit_types.races().find(*it);
-		if (race_it != unit_types.races().end()) {
-			title = race_it->second.plural_name();
+		if (const unit_race *r = unit_types.find_race(*it)) {
+			title = r->plural_name();
 		} else {
 			title = _ ("race^Miscellaneous");
 		}
@@ -1744,10 +1742,9 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 	std::string race_id = "..race_"+race;
 	std::string race_name;
 	std::string race_description;
-	const race_map::const_iterator race_it = unit_types.races().find(race);
-	if (race_it != unit_types.races().end()) {
-		race_name = race_it->second.plural_name();
-		race_description = race_it->second.description();
+	if (const unit_race *r = unit_types.find_race(race)) {
+		race_name = r->plural_name();
+		race_description = r->description();
 		// if (description.empty()) description =  _("No description Available");
 	} else {
 		race_name = _ ("race^Miscellaneous");

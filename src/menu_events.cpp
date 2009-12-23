@@ -1442,9 +1442,8 @@ void menu_handler::create_unit(mouse_handler& mousehandler)
 		unit_types.find(i.first, unit_type::HELP_INDEX);
 
 		std::string race;
-		const race_map::const_iterator race_it = unit_types.races().find(i.second.race());
-		if (race_it != unit_types.races().end()) {
-			race = race_it->second.plural_name();
+		if (const unit_race *r = unit_types.find_race(i.second.race())) {
+			race = r->plural_name();
 		}
 		row << race << COLUMN_SEPARATOR;
 		row << i.second.type_name() << COLUMN_SEPARATOR;

@@ -94,11 +94,8 @@ void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
 
 		std::string race_label;
 
-		const race_map::const_iterator race_it =
-			unit_types.races().find(i.second.race());
-
-		if (race_it != unit_types.races().end()) {
-			race_label = race_it->second.plural_name();
+		if (const unit_race *r = unit_types.find_race(i.second.race())) {
+			race_label = r->plural_name();
 		}
 
 		std::map< std::string, string_map > row_data;

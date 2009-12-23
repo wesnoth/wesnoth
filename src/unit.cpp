@@ -289,14 +289,11 @@ unit::unit(unit_map* unitmap, const config& cfg,
 	}
 
 	advance_to(type(), use_traits, state);
-	if(cfg["race"] != "") {
-		const race_map::const_iterator race_it = unit_types.races().find(cfg["race"]);
-		if(race_it != unit_types.races().end()) {
-			race_ = &race_it->second;
-		} else {
-			static const unit_race dummy_race;
-			race_ = &dummy_race;
-		}
+	if (const unit_race *r = unit_types.find_race(cfg["race"])) {
+		race_ = r;
+	} else {
+		static const unit_race dummy_race;
+		race_ = &dummy_race;
 	}
 	level_ = lexical_cast_default<int>(cfg["level"], level_);
 	if(cfg["undead_variation"] != "") {

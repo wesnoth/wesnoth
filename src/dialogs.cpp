@@ -931,11 +931,9 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
 	det.level = t->level();
 	det.alignment = unit_type::alignment_description(t->alignment(), t->genders().front());
 
-	race_map const& rcm = unit_types.races();
-	race_map::const_iterator ri = rcm.find(t->race());
-	if(ri != rcm.end()) {
-		assert(t->genders().empty() != true);
-		det.race = (*ri).second.name(t->genders().front());
+	if (const unit_race *r = unit_types.find_race(t->race())) {
+		assert(!t->genders().empty());
+		det.race = r->name(t->genders().front());
 	}
 
 	//FIXME: This probably must be move into a unit_type function

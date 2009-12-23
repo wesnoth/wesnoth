@@ -1367,6 +1367,12 @@ void unit_type_data::add_advancement(unit_type& to_unit) const
     }
 }
 
+const unit_race *unit_type_data::find_race(const std::string &key) const
+{
+	race_map::const_iterator i = races_.find(key);
+	return i != races_.end() ? &i->second : NULL;
+}
+
 // This function is only meant to return the likely state of not_living
 // for a new recruit of this type. It should not be used to check if
 // a particular unit is living or not, use get_state("not_living") for that.
