@@ -23,6 +23,9 @@
 
 #include "global.hpp"
 
+#include <algorithm>
+#include <vector>
+
 #include "config.hpp"
 #include "construct_dialog.hpp"
 #include "cursor.hpp"
@@ -40,14 +43,11 @@
 #include "preferences_display.hpp"
 #include "sdl_utils.hpp"
 #include "show_dialog.hpp"
+#include "text.hpp"
 #include "titlescreen.hpp"
 #include "video.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
-#include <algorithm>
-#include <vector>
-
-#include "SDL_ttf.h"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -240,69 +240,66 @@ static void draw_tip_of_day(game_display& screen,
 							const SDL_Rect* const main_dialog_area,
 							surface_restorer& tip_of_day_restorer)
 {
-    // Restore the previous tip of day area to its old state (section of the title image).
-    tip_of_day_restorer.restore();
+	// Restore the previous tip of day area to its old state (section of the title image).
+	tip_of_day_restorer.restore();
 
-    // Draw tip of the day
-    const config* tip = get_tip_of_day(tips_of_day);
-    if(tip != NULL) {
-    	int tip_width = game_config::title_tip_width * screen.w() / 1024;
+	// Draw tip of the day
+	const config* tip = get_tip_of_day(tips_of_day);
+	if (!tip) return;
+	int tip_width = game_config::title_tip_width * screen.w() / 1024;
 
-		try {
-	        const std::string& text =
-				font::word_wrap_text((*tip)["text"], font::SIZE_NORMAL, tip_width);
-			const std::string& source =
-				font::word_wrap_text((*tip)["source"], font::SIZE_NORMAL, tip_width);
+	font::ttext text, source;
+	text.set_text((*tip)["text"], false);
+	text.set_maximum_width(tip_width);
+	text.set_maximum_height(main_dialog_area->h);
+	source.set_text((*tip)["source"], false);
+	source.set_font_style(font::ttext::STYLE_ITALIC);
+	source.set_maximum_width(tip_width);
 
-			const int pad = game_config::title_tip_padding;
+	int pad = game_config::title_tip_padding;
 
-			SDL_Rect area = font::text_area(text,font::SIZE_NORMAL);
-			area.w = tip_width;
-			SDL_Rect source_area = font::text_area(source, font::SIZE_NORMAL, TTF_STYLE_ITALIC);
-			area.w = std::max<size_t>(area.w, source_area.w) + 2*pad;
-			area.h += source_area.h + next_tip_button->location().h + 3*pad;
+	SDL_Rect area, source_area;
+	area.w = tip_width;
+	area.h = text.get_height();
+	source_area.w = source.get_width();
+	source_area.h = source.get_height();
+	area.w = std::max<size_t>(area.w, source_area.w) + 2 * pad;
+	area.h += source_area.h + next_tip_button->location().h + 3 * pad;
 
-			area.x = main_dialog_area->x - (game_config::title_tip_x * screen.w() / 1024) - area.w;
-			area.y = main_dialog_area->y + main_dialog_area->h - area.h;
+	area.x = main_dialog_area->x - (game_config::title_tip_x * screen.w() / 1024) - area.w;
+	area.y = main_dialog_area->y + main_dialog_area->h - area.h;
 
-			// Note: The buttons' locations need to be set before the dialog frame is drawn.
-			// Otherwise, when the buttons restore their area, they
-			// draw parts of the old dialog frame at their old locations.
-			// This way, the buttons draw a part of the title image,
-			// because the call to restore above restored the area
-			// of the old tip of the day to its initial state (the title image).
-			int button_x = area.x + area.w - next_tip_button->location().w - pad;
-			int button_y = area.y + area.h - pad - next_tip_button->location().h;
-			next_tip_button->set_location(button_x, button_y);
-			next_tip_button->set_dirty(); //force redraw even if location did not change.
+	// Note: The buttons' locations need to be set before the dialog frame is drawn.
+	// Otherwise, when the buttons restore their area, they
+	// draw parts of the old dialog frame at their old locations.
+	// This way, the buttons draw a part of the title image,
+	// because the call to restore above restored the area
+	// of the old tip of the day to its initial state (the title image).
+	int button_x = area.x + area.w - next_tip_button->location().w - pad;
+	int button_y = area.y + area.h - pad - next_tip_button->location().h;
+	next_tip_button->set_location(button_x, button_y);
+	next_tip_button->set_dirty(); //force redraw even if location did not change.
 
-			button_x -= previous_tip_button->location().w + pad;
-			previous_tip_button->set_location(button_x, button_y);
-			previous_tip_button->set_dirty();
+	button_x -= previous_tip_button->location().w + pad;
+	previous_tip_button->set_location(button_x, button_y);
+	previous_tip_button->set_dirty();
 
-			button_x = area.x + pad;
-			help_tip_button->set_location(button_x, button_y);
-			help_tip_button->set_dirty();
+	button_x = area.x + pad;
+	help_tip_button->set_location(button_x, button_y);
+	help_tip_button->set_dirty();
 
-			gui::dialog_frame f(screen.video(), "", style, false);
-			tip_of_day_restorer = surface_restorer(&screen.video(), f.layout(area).exterior);
-			f.draw_background();
-			f.draw_border();
+	gui::dialog_frame f(screen.video(), "", style, false);
+	tip_of_day_restorer = surface_restorer(&screen.video(), f.layout(area).exterior);
+	f.draw_background();
+	f.draw_border();
 
-			font::draw_text(&screen.video(), area, font::SIZE_NORMAL, font::NORMAL_COLOUR,
-							 text, area.x + pad, area.y + pad);
-			// todo
-			font::draw_text(&screen.video(), area, font::SIZE_NORMAL, font::NORMAL_COLOUR,
-							 source, area.x + area.w - source_area.w - pad,
-							 next_tip_button->location().y - source_area.h - pad,
-							 false, TTF_STYLE_ITALIC);
-		} catch (utils::invalid_utf8_exception&) {
-			ERR_NG << "Invalid utf-8 found, tips of day aren't drawn.\n";
-			return;
-		}
+	surface text_s = text.render();
+	screen.video().blit_surface(area.x + pad, area.y + pad, text_s);
+	surface source_s = source.render();
+	screen.video().blit_surface(area.x + area.w - source_area.w - pad,
+		next_tip_button->location().y - source_area.h - pad, source_s);
 
-		LOG_DP << "drew tip of day\n";
-	}
+	LOG_DP << "drew tip of day\n";
 }
 
 /**
