@@ -119,6 +119,26 @@ struct char_block_map
 		}
 		cbmap.insert(std::make_pair(first, block_t(last, id)));
 	}
+	/**
+	 * Compresses map by merging consecutive ranges with the same font, even
+	 * if there is some unassociated ranges inbetween.
+	 */
+	void compress()
+	{
+		LOG_FT << "Font map size before compression: " << cbmap.size() << " ranges\n";
+		cbmap_t::iterator i = cbmap.begin(), e = cbmap.end();
+		while (i != e) {
+			cbmap_t::iterator j = i;
+			++j;
+			if (j == e || i->second.second != j->second.second) {
+				i = j;
+				continue;
+			}
+			i->second.first = j->second.first;
+			cbmap.erase(j);
+		}
+		LOG_FT << "Font map size after compression: " << cbmap.size() << " ranges\n";
+	}
 	subset_id get_id(int ch)
 	{
 		cbmap_t::iterator i = cbmap.upper_bound(ch);
@@ -402,6 +422,7 @@ static void set_font_list(const std::vector<subset_descriptor>& fontlist)
 			char_blocks.insert(cp_range.first, cp_range.second, subset);
 		}
 	}
+	char_blocks.compress();
 }
 
 const SDL_Color NORMAL_COLOUR = {0xDD,0xDD,0xDD,0},
