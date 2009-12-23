@@ -1089,9 +1089,9 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 	std::map<t_string, std::string> special_description;
 	std::map<t_string, std::set<std::string> > special_units;
 
-	for(unit_type_data::unit_type_map::const_iterator i = unit_type_data::types().begin();
-	    i != unit_type_data::types().end(); ++i) {
-		const unit_type &type = (*i).second;
+	foreach (const unit_type_data::unit_type_map::value_type &i, unit_types.types())
+	{
+		const unit_type &type = i.second;
 		// Only show the weapon special if we find it on a unit that
 		// detailed description should be shown about.
 		if (description_type(type) != FULL_DESCRIPTION)
@@ -1157,9 +1157,9 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 	// should have a full description, if so, add this units abilities
 	// for display. We do not want to show abilities that the user has
 	// not encountered yet.
-	for(unit_type_data::unit_type_map::const_iterator i = unit_type_data::types().begin();
-	    i != unit_type_data::types().end(); ++i) {
-		const unit_type &type = (*i).second;
+	foreach (const unit_type_data::unit_type_map::value_type &i, unit_types.types())
+	{
+		const unit_type &type = i.second;
 		if (description_type(type) == FULL_DESCRIPTION) {
 
 			std::vector<t_string> const* abil_vecs[2];
@@ -1304,7 +1304,7 @@ public:
 	unit_topic_generator(const unit_type &t): type_(t) {}
 	virtual std::string operator()() const {
 		// this will force the lazy loading to build this unit
-		unit_type_data::types().find_unit_type(type_.id(), unit_type::WITHOUT_ANIMATIONS);
+		unit_types.find(type_.id(), unit_type::WITHOUT_ANIMATIONS);
 
 		std::stringstream ss;
 		std::string clear_stringstream;
@@ -1354,19 +1354,18 @@ public:
 			std::vector<std::string>::const_iterator adv_iter = adv_units.begin();
 			for (; adv_iter != adv_units.end(); ++adv_iter)
 			{
-				std::map<std::string,unit_type>::const_iterator type =
-						unit_type_data::types().find_unit_type(*adv_iter);
-				if (type != unit_type_data::types().end() && !type->second.hide_help())
+				const unit_type *type = unit_types.find(*adv_iter);
+				if (type && !type->hide_help())
 				{
 					if (adv_iter == adv_units.begin())
 						ss << (reverse ? _("Advances from: ") : _("Advances to: "));
 					else
 						ss << ", ";
 
-					std::string lang_unit = type->second.type_name();
+					std::string lang_unit = type->type_name();
 					std::string ref_id;
-					if (description_type(type->second) == FULL_DESCRIPTION) {
-						ref_id = unit_prefix + type->second.id();
+					if (description_type(*type) == FULL_DESCRIPTION) {
+						ref_id = unit_prefix + type->id();
 					} else {
 						ref_id = unknown_unit_topic;
 						lang_unit += " (?)";
@@ -1383,8 +1382,8 @@ public:
 		// respective topic.
 		const std::string race_id = type_.race();
 		std::string race_name;
-		const race_map::const_iterator race_it = unit_type_data::types().races().find(race_id);
-		if (race_it != unit_type_data::types().races().end()) {
+		const race_map::const_iterator race_it = unit_types.races().find(race_id);
+		if (race_it != unit_types.races().end()) {
 			race_name = race_it->second.plural_name();
 		} else {
 			race_name = _ ("race^Miscellaneous");
@@ -1633,18 +1632,17 @@ std::string make_unit_link(const std::string& type_id)
 {
 	std::string link;
 
-	std::map<std::string,unit_type>::const_iterator type =
-			unit_type_data::types().find_unit_type(type_id);
-	if (type == unit_type_data::types().end()) {
+	const unit_type *type = unit_types.find(type_id);
+	if (!type) {
 		std::cerr << "Unknown unit type : " << type_id << "\n";
 		// don't return an hyperlink (no page)
 		// instead show the id (as hint)
 		link = type_id;
-	} else if (!type->second.hide_help()) {
-		std::string name = type->second.type_name();
+	} else if (!type->hide_help()) {
+		std::string name = type->type_name();
 		std::string ref_id;
-		if (description_type(type->second) == FULL_DESCRIPTION) {
-			ref_id = unit_prefix + type->second.id();
+		if (description_type(*type) == FULL_DESCRIPTION) {
+			ref_id = unit_prefix + type->id();
 		} else {
 			ref_id = unknown_unit_topic;
 			name += " (?)";
@@ -1675,9 +1673,9 @@ void generate_races_sections(const config *help_cfg, section &sec, int level)
 	std::set<std::string> races;
 	std::set<std::string> visible_races;
 
-	for(unit_type_data::unit_type_map::const_iterator i = unit_type_data::types().begin();
-	    i != unit_type_data::types().end(); ++i) {
-		const unit_type &type = (*i).second;
+	foreach (const unit_type_data::unit_type_map::value_type &i, unit_types.types())
+	{
+		const unit_type &type = i.second;
 		UNIT_DESCRIPTION_TYPE desc_type = description_type(type);
 		if (desc_type == FULL_DESCRIPTION) {
 			races.insert(type.race());
@@ -1697,8 +1695,8 @@ void generate_races_sections(const config *help_cfg, section &sec, int level)
 		section_cfg["id"] = hidden_symbol(hidden) + race_prefix + *it;
 
 		std::string title;
-		const race_map::const_iterator race_it = unit_type_data::types().races().find(*it);
-		if (race_it != unit_type_data::types().races().end()) {
+		const race_map::const_iterator race_it = unit_types.races().find(*it);
+		if (race_it != unit_types.races().end()) {
 			title = race_it->second.plural_name();
 		} else {
 			title = _ ("race^Miscellaneous");
@@ -1718,9 +1716,9 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 	std::vector<topic> topics;
 	std::set<std::string> race_units;
 
-	for(unit_type_data::unit_type_map::const_iterator i = unit_type_data::types().begin();
-	    i != unit_type_data::types().end(); ++i) {
-		const unit_type &type = (*i).second;
+	foreach (const unit_type_data::unit_type_map::value_type &i, unit_types.types())
+	{
+		const unit_type &type = i.second;
 
 		if (type.race() != race)
 			continue;
@@ -1746,8 +1744,8 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 	std::string race_id = "..race_"+race;
 	std::string race_name;
 	std::string race_description;
-	const race_map::const_iterator race_it = unit_type_data::types().races().find(race);
-	if (race_it != unit_type_data::types().races().end()) {
+	const race_map::const_iterator race_it = unit_types.races().find(race);
+	if (race_it != unit_types.races().end()) {
 		race_name = race_it->second.plural_name();
 		race_description = race_it->second.description();
 		// if (description.empty()) description =  _("No description Available");
@@ -3165,7 +3163,7 @@ void show_help(display &disp, const section &toplevel_sec,
 
     // Find all unit_types that have not been constructed yet and fill in the information
     // needed to create the help topics
-    unit_type_data::types().build_all(unit_type::HELP_INDEX);
+	unit_types.build_all(unit_type::HELP_INDEX);
 
 	if (preferences::encountered_units().size() != size_t(last_num_encountered_units) ||
 	    preferences::encountered_terrains().size() != size_t(last_num_encountered_terrains) ||

@@ -803,12 +803,12 @@ const std::string &recruit_result::get_available_for_recruiting(const team &my_t
 
 const unit_type *recruit_result::get_unit_type_known(const std::string &recruit, bool)
 {
-	unit_type_data::unit_type_map::const_iterator type = unit_type_data::types().find_unit_type(recruit);
-	if (type == unit_type_data::types().end()) {
+	const unit_type *type = unit_types.find(recruit);
+	if (!type) {
 		set_error(E_UNKNOWN_OR_DUMMY_UNIT_TYPE);
 		return NULL;
 	}
-	return &type->second;
+	return type;
 }
 
 bool recruit_result::test_enough_gold(const team &my_team, const unit_type &type, bool)
@@ -978,14 +978,14 @@ void recruit_result::do_execute()
 	// a confirmation for the transaction.
 	recorder.add_recruit(num_,recruit_location_);
 	replay_undo replay_guard(recorder);
-	unit_type_data::unit_type_map::const_iterator u = unit_type_data::types().find_unit_type(unit_name_);
+	const unit_type *u = unit_types.find(unit_name_);
 	const events::command_disabler disable_commands;
 	const std::string recruit_err = find_recruit_location(get_side(), recruit_location_);
 	if(recruit_err.empty()) {
-		const unit new_unit(&info.units, &u->second, get_side(), true);
+		const unit new_unit(&info.units, u, get_side(), true);
 		place_recruit(new_unit, recruit_location_, false, preferences::show_ai_moves());
 		statistics::recruit_unit(new_unit);
-		get_my_team(info).spend_gold(u->second.cost());
+		get_my_team(info).spend_gold(u->cost());
 		// Confirm the transaction - i.e. don't undo recruitment
 		replay_guard.confirm_transaction();
 		set_gamestate_changed();

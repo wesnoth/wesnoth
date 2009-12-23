@@ -290,8 +290,8 @@ unit::unit(unit_map* unitmap, const config& cfg,
 
 	advance_to(type(), use_traits, state);
 	if(cfg["race"] != "") {
-		const race_map::const_iterator race_it = unit_type_data::types().races().find(cfg["race"]);
-		if(race_it != unit_type_data::types().races().end()) {
+		const race_map::const_iterator race_it = unit_types.races().find(cfg["race"]);
+		if(race_it != unit_types.races().end()) {
 			race_ = &race_it->second;
 		} else {
 			static const unit_race dummy_race;
@@ -500,11 +500,11 @@ void unit::clear_status_caches()
 
 unit_race::GENDER unit::generate_gender(const std::string& type_id, bool random_gender, game_state* state)
 {
-	unit_type_data::unit_type_map::const_iterator i = unit_type_data::types().find_unit_type(type_id);
-	if (i == unit_type_data::types().end()) {
+	const unit_type *i = unit_types.find(type_id);
+	if (!i) {
 		unknown_unit_type_error(type_id);
 	}
-	const unit_type& type = i->second;
+	const unit_type &type = *i;
 	const std::vector<unit_race::GENDER>& genders = type.genders();
 
 	if(genders.empty()) {
@@ -687,9 +687,9 @@ void unit::generate_name(rand_rng::simple_rng* rng)
 void unit::generate_traits(bool musthaveonly, game_state* state)
 {
 	LOG_UT << "Generating a trait for unit type " << type_id() << " with musthaveonly " << musthaveonly << "\n";
-	const unit_type_data::unit_type_map::const_iterator type = unit_type_data::types().find_unit_type(type_id());
+	const unit_type *type = unit_types.find(type_id());
 	// Calculate the unit's traits
-	if (type == unit_type_data::types().end()) {
+	if (!type) {
 		std::string error_message = _("Unknown unit type '$type|' while generating traits");
 		utils::string_map symbols;
 		symbols["type"] = type_id();
@@ -701,7 +701,7 @@ void unit::generate_traits(bool musthaveonly, game_state* state)
 	config::const_child_itors current_traits = modifications_.child_range("trait");
 	std::vector<config> candidate_traits;
 
-	foreach (const config &t, type->second.possible_traits())
+	foreach (const config &t, type->possible_traits())
 	{
 		// Skip the trait if the unit already has it.
 		const std::string &tid = t["id"];
@@ -735,7 +735,7 @@ void unit::generate_traits(bool musthaveonly, game_state* state)
 	// Now randomly fill out to the number of traits required or until
 	// there aren't any more traits.
 	int nb_traits = std::distance(current_traits.first, current_traits.second);
-	int max_traits = type->second.num_traits();
+	int max_traits = type->num_traits();
 	for (; nb_traits < max_traits && !candidate_traits.empty(); ++nb_traits)
 	{
 		int num = (state ? state->rng().get_random() : get_random())
@@ -864,9 +864,9 @@ const unit_type* unit::type() const
 {
 	if (type_id().empty()) return NULL;
 
-	std::map<std::string,unit_type>::const_iterator i = unit_type_data::types().find_unit_type(type_id());
-	if (i != unit_type_data::types().end()) {
-		return &i->second.get_gender_unit_type(gender_).get_variation(variation_);
+	const unit_type *i = unit_types.find(type_id());
+	if (i) {
+		return &i->get_gender_unit_type(gender_).get_variation(variation_);
 	}
 	//thow error
 	unknown_unit_type_error(type_id());
@@ -1474,10 +1474,9 @@ void unit::write(config& cfg) const
 	cfg.append(cfg_);
 	cfg["x"] = x;
 	cfg["y"] = y;
-	std::map<std::string,unit_type>::const_iterator uti = unit_type_data::types().find_unit_type(type_id());
-	const unit_type* ut = NULL;
-	if(uti != unit_type_data::types().end()) {
-		ut = &uti->second.get_gender_unit_type(gender_).get_variation(variation_);
+	const unit_type *ut = unit_types.find(type_id());
+	if (ut) {
+		ut = &ut->get_gender_unit_type(gender_).get_variation(variation_);
 	}
 	if(ut && cfg["description"] == ut->unit_description()) {
 		cfg["description"] = "";

@@ -85,7 +85,7 @@ namespace test_utils {
 			cfg_.merge_children("units");
 
 			if (config &units = cfg_.child("units")) {
-				unit_type_data::types().set_config(units);
+				unit_types.set_config(units);
 			}
 
 			game_config::load_config(&cfg_.child("game_config"));

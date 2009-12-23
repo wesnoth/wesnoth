@@ -1036,10 +1036,10 @@ WML_HANDLER_FUNCTION(move_unit_fake, /*event_info*/, cfg)
 		size_t side_num = lexical_cast_default<int>(side,1)-1;
 		if (side_num >= resources::teams->size()) side_num = 0;
 
-		const unit_race::GENDER gender = string_gender(cfg["gender"]);
-		const unit_type_data::unit_type_map::const_iterator itor = unit_type_data::types().find_unit_type(type);
-		if(itor != unit_type_data::types().end()) {
-			unit dummy_unit(resources::units, &itor->second, side_num + 1, false, gender);
+	unit_race::GENDER gender = string_gender(cfg["gender"]);
+	const unit_type *ut = unit_types.find(type);
+	if (!ut) return;
+	unit dummy_unit(resources::units, ut, side_num + 1, false, gender);
 
 			config mod;
 			config &effect = mod.add_child("effect");
@@ -1104,8 +1104,7 @@ WML_HANDLER_FUNCTION(move_unit_fake, /*event_info*/, cfg)
 				src = dst;
 			}
 			if (!path.empty()) unit_display::move_unit(path, dummy_unit, *resources::teams);
-		}
-	}
+}
 
 // Helper function(s) for [set_variable]
 namespace {
@@ -3254,10 +3253,9 @@ WML_HANDLER_FUNCTION(unit_worth, /*event_info*/, cfg)
 		const std::vector<std::string>& advances = u->second.advances_to();
 		int best_advance = cost;
 		foreach(const std::string& new_type, advances) {
-			const unit_type_data::unit_type_map::const_iterator
-				t = unit_type_data::types().find_unit_type(new_type);
-			if (t != unit_type_data::types().end()) {
-				best_advance = std::max(best_advance, t->second.cost());
+			const unit_type *t = unit_types.find(new_type);
+			if (t) {
+				best_advance = std::max(best_advance, t->cost());
 			}
 		}
 

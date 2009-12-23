@@ -30,18 +30,16 @@ std::vector<std::string> create_unit_table(const statistics::stats::str_int_map&
 {
 	std::vector<std::string> table;
 	for(statistics::stats::str_int_map::const_iterator i = m.begin(); i != m.end(); ++i) {
-		const unit_type_data::unit_type_map::const_iterator type = unit_type_data::types().find_unit_type(i->first);
-		if(type == unit_type_data::types().end()) {
-			continue;
-		}
+		const unit_type *type = unit_types.find(i->first);
+		if (!type) continue;
 
 		std::stringstream str;
 
-		str << IMAGE_PREFIX << type->second.image();
+		str << IMAGE_PREFIX << type->image();
 #ifndef LOW_MEM
-		str << "~RC(" << type->second.flag_rgb() << ">" << team << ")";
+		str << "~RC(" << type->flag_rgb() << ">" << team << ")";
 #endif
-		str << COLUMN_SEPARATOR	<< type->second.type_name() << COLUMN_SEPARATOR << i->second << "\n";
+		str << COLUMN_SEPARATOR	<< type->type_name() << COLUMN_SEPARATOR << i->second << "\n";
 		table.push_back(str.str());
 	}
 

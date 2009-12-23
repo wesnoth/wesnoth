@@ -1256,13 +1256,13 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
 		if (attacker_stats->plagues)
 		{
 			// plague units make new units on the target hex
-			unit_type_data::unit_type_map::const_iterator reanimitor;
 			LOG_NG << "trying to reanimate " << attacker_stats->plague_type << '\n';
-			reanimitor = unit_type_data::types().find_unit_type(attacker_stats->plague_type);
-			LOG_NG << "found unit type:" << reanimitor->second.id() << '\n';
-			if (reanimitor != unit_type_data::types().end())
+			const unit_type *reanimator =
+				unit_types.find(attacker_stats->plague_type);
+			if (reanimator)
 			{
-				unit newunit(&units_, &reanimitor->second,
+				LOG_NG << "found unit type:" << reanimator->id() << '\n';
+				unit newunit(&units_, reanimator,
 					attacker.get_unit().side(), true, unit_race::MALE);
 				newunit.set_attacks(0);
 				newunit.set_movement(0);
@@ -1761,14 +1761,14 @@ void calculate_healing(int side, bool update_display)
 
 unit get_advanced_unit(const unit &u, const std::string& advance_to)
 {
-	const std::map<std::string,unit_type>::const_iterator new_type = unit_type_data::types().find_unit_type(advance_to);
-	if (new_type == unit_type_data::types().end()) {
+	const unit_type *new_type = unit_types.find(advance_to);
+	if (!new_type) {
 		throw game::game_error("Could not find the unit being advanced"
 			" to: " + advance_to);
 	}
 	unit new_unit(u);
 	new_unit.get_experience(-new_unit.max_experience());
-	new_unit.advance_to(&new_type->second);
+	new_unit.advance_to(new_type);
 	return new_unit;
 }
 

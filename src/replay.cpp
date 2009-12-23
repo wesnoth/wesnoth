@@ -938,8 +938,8 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 
 			std::set<std::string>::const_iterator itor = recruits.begin();
 			std::advance(itor,val);
-			const std::map<std::string,unit_type>::const_iterator u_type = unit_type_data::types().find_unit_type(*itor);
-			if(u_type == unit_type_data::types().end()) {
+			const unit_type *u_type = unit_types.find(*itor);
+			if (!u_type) {
 				std::stringstream errbuf;
 				errbuf << "recruiting illegal unit: '" << *itor << "'\n";
 				replay::process_error(errbuf.str());
@@ -947,7 +947,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			}
 
 			const std::string res = find_recruit_location(side_num, loc);
-			const unit new_unit(resources::units, &u_type->second, side_num, true);
+			const unit new_unit(resources::units, u_type, side_num, true);
 			if (res.empty()) {
 				place_recruit(new_unit, loc, false, !get_replay_source().is_skipping());
 			} else {
@@ -956,19 +956,19 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				replay::process_error(errbuf.str());
 			}
 
-			if(u_type->second.cost() > current_team.gold()) {
+			if (u_type->cost() > current_team.gold()) {
 				std::stringstream errbuf;
-				errbuf << "unit '" << u_type->second.id() << "' is too expensive to recruit: "
-				       << u_type->second.cost() << "/" << current_team.gold() << "\n";
+				errbuf << "unit '" << u_type->id() << "' is too expensive to recruit: "
+					<< u_type->cost() << "/" << current_team.gold() << "\n";
 				replay::process_error(errbuf.str());
 			}
-			LOG_REPLAY << "recruit: team=" << side_num << " '" << u_type->second.id() << "' at (" << loc
-			       << ") cost=" << u_type->second.cost() << " from gold=" << current_team.gold() << ' ';
+			LOG_REPLAY << "recruit: team=" << side_num << " '" << u_type->id() << "' at (" << loc
+				<< ") cost=" << u_type->cost() << " from gold=" << current_team.gold() << ' ';
 
 
 			statistics::recruit_unit(new_unit);
 
-			current_team.spend_gold(u_type->second.cost());
+			current_team.spend_gold(u_type->cost());
 			LOG_REPLAY << "-> " << (current_team.gold()) << "\n";
 			fix_shroud = !get_replay_source().is_skipping();
 			check_checksums(*cfg);

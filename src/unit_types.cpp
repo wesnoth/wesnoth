@@ -1043,7 +1043,7 @@ std::vector<std::string> unit_type::get_ability_list() const
 }
 
 bool unit_type::hide_help() const {
-	return hide_help_ || unit_type_data::types().hide_help(id_, race_->id());
+	return hide_help_ || unit_types.hide_help(id_, race_->id());
 }
 
 void unit_type::add_advancement(const unit_type &to_unit,int xp)
@@ -1090,12 +1090,11 @@ void unit_type::add_advancement(const unit_type &to_unit,int xp)
 
 static void advancement_tree_internal(const std::string& id, std::set<std::string>& tree)
 {
-	unit_type_data::unit_type_map::const_iterator ut =
-			unit_type_data::types().find_unit_type(id);
-	if (ut == unit_type_data::types().end())
+	const unit_type *ut = unit_types.find(id);
+	if (!ut)
 		return;
 
-	foreach(const std::string& adv, ut->second.advances_to()) {
+	foreach(const std::string& adv, ut->advances_to()) {
 		if (tree.insert(adv).second) {
 			// insertion succeed, expand the new type
 			advancement_tree_internal(adv, tree);
@@ -1113,30 +1112,20 @@ std::set<std::string> unit_type::advancement_tree() const
 const std::vector<std::string> unit_type::advances_from() const
 {
 	// currently not needed (only help call us and already did it)
-	unit_type_data::types().build_all(unit_type::HELP_INDEX);
+	unit_types.build_all(unit_type::HELP_INDEX);
 
 	std::vector<std::string> adv_from;
-	for(unit_type_data::unit_type_map::const_iterator ut = unit_type_data::types().begin();
-	    ut != unit_type_data::types().end(); ++ut) {
-
-		foreach(const std::string& adv, ut->second.advances_to()) {
+	foreach (const unit_type_data::unit_type_map::value_type &ut, unit_types.types())
+	{
+		foreach(const std::string& adv, ut.second.advances_to()) {
 			if (adv == id_)
-				adv_from.push_back(ut->second.id());
+				adv_from.push_back(ut.second.id());
 		}
 	}
 	return adv_from;
 }
 
-
-
-unit_type_data* unit_type_data::instance_ = NULL;
-
 unit_type_data::unit_type_data() :
-	unit_types_()
-{
-}
-
-unit_type_data::unit_type_map_wrapper::unit_type_map_wrapper() :
 	types_(),
 	movement_types_(),
 	races_(),
@@ -1147,7 +1136,7 @@ unit_type_data::unit_type_map_wrapper::unit_type_map_wrapper() :
 {
 }
 
-void unit_type_data::unit_type_map_wrapper::set_config(config &cfg)
+void unit_type_data::set_config(config &cfg)
 {
     DBG_UT << "unit_type_data::set_config, name: " << cfg["name"] << "\n";
 
@@ -1212,7 +1201,7 @@ void unit_type_data::unit_type_map_wrapper::set_config(config &cfg)
 	}
 }
 
-bool unit_type_data::unit_type_map_wrapper::unit_type_exists(const std::string& key) const
+bool unit_type_data::unit_type_exists(const std::string& key) const
 {
     if (key.empty() || (key == "random"))
         return false;
@@ -1222,10 +1211,9 @@ bool unit_type_data::unit_type_map_wrapper::unit_type_exists(const std::string& 
 	return itor != types_.end();
 }
 
-unit_type_data::unit_type_map::const_iterator unit_type_data::unit_type_map_wrapper::find_unit_type(const std::string& key, unit_type::BUILD_STATUS status) const
+const unit_type *unit_type_data::find(const std::string& key, unit_type::BUILD_STATUS status) const
 {
-    if (key.empty() || (key == "random"))
-        return types_.end();
+	if (key.empty() || key == "random") return NULL;
 
 	DBG_CF << "trying to find " << key  << " in unit_type list (unit_type_data.unit_types)\n";
     const unit_type_map::iterator itor = types_.find(key);
@@ -1236,17 +1224,16 @@ unit_type_data::unit_type_map::const_iterator unit_type_data::unit_type_map_wrap
         for (unit_type_map::const_iterator ut = types_.begin(); ut != types_.end(); ut++)
             DBG_UT << "Known unit_types: key = '" << ut->first << "', id = '" << ut->second.id() << "'\n";
         */
-        return itor;
+		return NULL;
     }
 
     //check if the unit_type is constructed and build it if necessary
     build_unit_type(itor, status);
 
-    //return unit_type_data::unit_type_map::const_iterator();
-    return itor;
+	return &itor->second;
 }
 
-const config& unit_type_data::unit_type_map_wrapper::find_config(const std::string& key) const
+const config& unit_type_data::find_config(const std::string& key) const
 {
 	const config &cfg = unit_cfg_->find_child("unit_type", "id", key);
 
@@ -1259,7 +1246,7 @@ const config& unit_type_data::unit_type_map_wrapper::find_config(const std::stri
     ERROR_LOG("unit type not found");
 }
 
-void unit_type_data::unit_type_map_wrapper::clear()
+void unit_type_data::clear()
 {
 	types_.clear();
 	movement_types_.clear();
@@ -1270,7 +1257,7 @@ void unit_type_data::unit_type_map_wrapper::clear()
 	hide_help_type_.clear();
 }
 
-void unit_type_data::unit_type_map_wrapper::build_all(unit_type::BUILD_STATUS status) const
+void unit_type_data::build_all(unit_type::BUILD_STATUS status) const
 {
     assert(unit_cfg_ != NULL);
 
@@ -1282,7 +1269,7 @@ void unit_type_data::unit_type_map_wrapper::build_all(unit_type::BUILD_STATUS st
     }
 }
 
-unit_type& unit_type_data::unit_type_map_wrapper::build_unit_type(const unit_type_map::iterator& ut, unit_type::BUILD_STATUS status) const
+unit_type &unit_type_data::build_unit_type(const unit_type_map::iterator &ut, unit_type::BUILD_STATUS status) const
 {
     DBG_UT << "Building unit type " << ut->first << ", level " << status << "\n";
 
@@ -1319,7 +1306,7 @@ unit_type& unit_type_data::unit_type_map_wrapper::build_unit_type(const unit_typ
     return ut->second;
 }
 
-void unit_type_data::unit_type_map_wrapper::read_hide_help(const config& cfg)
+void unit_type_data::read_hide_help(const config& cfg)
 {
 	if (!cfg)
 		return;
@@ -1347,7 +1334,7 @@ void unit_type_data::unit_type_map_wrapper::read_hide_help(const config& cfg)
 	read_hide_help(cfg.child("not"));
 }
 
-bool unit_type_data::unit_type_map_wrapper::hide_help(const std::string& type, const std::string& race) const
+bool unit_type_data::hide_help(const std::string& type, const std::string& race) const
 {
 	bool res = hide_help_all_;
 	int lvl = hide_help_all_ ? 1 : 0; // first level is covered by 'all=yes'
@@ -1362,7 +1349,7 @@ bool unit_type_data::unit_type_map_wrapper::hide_help(const std::string& type, c
 	return res;
 }
 
-void unit_type_data::unit_type_map_wrapper::add_advancement(unit_type& to_unit) const
+void unit_type_data::add_advancement(unit_type& to_unit) const
 {
     const config& cfg = to_unit.get_cfg();
 
@@ -1433,3 +1420,5 @@ bool unit_type::has_random_traits() const
 	config::const_child_itors t = possible_traits();
 	return t.first != t.second && ++t.first != t.second;
 }
+
+unit_type_data unit_types;

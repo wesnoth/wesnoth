@@ -293,29 +293,23 @@ bool recruitment_phase::recruit_usage(const std::string& usage, bool &gamestate_
 	LOG_AI_TESTING_AI_DEFAULT << "recruiting '" << usage << "'\n";
 
 	//make sure id, usage and cost are known for the coming evaluation of unit types
-	unit_type_data::types().build_all(unit_type::HELP_INDEX);
+	unit_types.build_all(unit_type::HELP_INDEX);
 
 	std::vector<std::string> options;
 	bool found = false;
 	// Find an available unit that can be recruited,
 	// matches the desired usage type, and comes in under budget.
-	const std::set<std::string>& recruits = current_team().recruits();
-	for(std::map<std::string,unit_type>::const_iterator i =
-	    unit_type_data::types().begin(); i != unit_type_data::types().end(); ++i)
+	foreach (const std::string &name, current_team().recruits())
 	{
-		const std::string& name = i->second.id();
+		const unit_type *ut = unit_types.find(name);
+		if (!ut) continue;
 		// If usage is empty consider any unit.
-//		DBG_AI << name << " considered\n";
-		if (i->second.usage() == usage || usage == "") {
-			if (!recruits.count(name)) {
-//				DBG_AI << name << " rejected, not in recruitment list\n";
-				continue;
-			}
+		if (usage.empty() || ut->usage() == usage) {
 			LOG_AI_TESTING_AI_DEFAULT << name << " considered for " << usage << " recruitment\n";
 			found = true;
 
-			if (current_team().gold() - i->second.cost() < min_gold) {
-				LOG_AI_TESTING_AI_DEFAULT << name << " rejected, cost too high (cost: " << i->second.cost() << ", current gold: " << current_team().gold() <<", min_gold: " << min_gold << ")\n";
+			if (current_team().gold() - ut->cost() < min_gold) {
+				LOG_AI_TESTING_AI_DEFAULT << name << " rejected, cost too high (cost: " << ut->cost() << ", current gold: " << current_team().gold() <<", min_gold: " << min_gold << ")\n";
 				continue;
 			}
 
@@ -585,8 +579,8 @@ void recruitment_phase::analyze_potential_recruit_combat()
 	const std::set<std::string>& recruits = current_team().recruits();
 	std::set<std::string>::const_iterator i;
 	for(i = recruits.begin(); i != recruits.end(); ++i) {
-		const unit_type_data::unit_type_map::const_iterator info = unit_type_data::types().find_unit_type(*i);
-		if(info == unit_type_data::types().end() || not_recommended_units_.count(*i)) {
+		const unit_type *info = unit_types.find(*i);
+		if (!info || not_recommended_units_.count(*i)) {
 			continue;
 		}
 
@@ -598,12 +592,12 @@ void recruitment_phase::analyze_potential_recruit_combat()
 			}
 
 			unit const &un = j->second;
-			const unit_type_data::unit_type_map::const_iterator enemy_info = unit_type_data::types().find_unit_type(un.type_id());
-			VALIDATE((enemy_info != unit_type_data::types().end()), "Unknown unit type : " + un.type_id() + " while scoring units.");
+			const unit_type *enemy_info = unit_types.find(un.type_id());
+			VALIDATE(enemy_info, "Unknown unit type : " + un.type_id() + " while scoring units.");
 
 			int weight = un.cost() * un.hitpoints() / un.max_hitpoints();
 			weighting += weight;
-			score += compare_unit_types(info->second, enemy_info->second) * weight;
+			score += compare_unit_types(*info, *enemy_info) * weight;
 		}
 
 		if(weighting != 0) {
@@ -613,9 +607,9 @@ void recruitment_phase::analyze_potential_recruit_combat()
 		LOG_AI_TESTING_AI_DEFAULT << "combat score of '" << *i << "': " << score << "\n";
 		unit_combat_scores_[*i] = score;
 
-		if(best_usage.count(info->second.usage()) == 0 ||
-				score > best_usage[info->second.usage()]) {
-			best_usage[info->second.usage()] = score;
+		if (best_usage.count(info->usage()) == 0 ||
+				score > best_usage[info->usage()]) {
+			best_usage[info->usage()] = score;
 		}
 	}
 
@@ -623,14 +617,14 @@ void recruitment_phase::analyze_potential_recruit_combat()
 	// if they have a score more than 600 below
 	// the best unit of that usage type.
 	for(i = recruits.begin(); i != recruits.end(); ++i) {
-		const unit_type_data::unit_type_map::const_iterator info = unit_type_data::types().find_unit_type(*i);
-		if(info == unit_type_data::types().end() || not_recommended_units_.count(*i)) {
+		const unit_type *info = unit_types.find(*i);
+		if (!info || not_recommended_units_.count(*i)) {
 			continue;
 		}
 
-		if(unit_combat_scores_[*i] + 600 < best_usage[info->second.usage()]) {
+		if (unit_combat_scores_[*i] + 600 < best_usage[info->usage()]) {
 			LOG_AI_TESTING_AI_DEFAULT << "recommending not to use '" << *i << "' because of poor combat performance "
-				      << unit_combat_scores_[*i] << "/" << best_usage[info->second.usage()] << "\n";
+				      << unit_combat_scores_[*i] << "/" << best_usage[info->usage()] << "\n";
 			not_recommended_units_.insert(*i);
 		}
 	}

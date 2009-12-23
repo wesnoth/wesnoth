@@ -644,7 +644,7 @@ int sum_cost_str_int_map(const stats::str_int_map &m)
 {
 	int cost = 0;
 	for (stats::str_int_map::const_iterator i = m.begin(); i != m.end(); ++i) {
-		cost += i->second * unit_type_data::types().find_unit_type(i->first)->second.cost();
+		cost += i->second * unit_types.find(i->first)->cost();
 	}
 
 	return cost;

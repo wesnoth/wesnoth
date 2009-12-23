@@ -365,11 +365,10 @@ namespace {
 		}
 		void operator()(const std::string& recruit)
 		{
-			unit_type_data::unit_type_map::const_iterator i = unit_type_data::types().find_unit_type(recruit);
-			if (i == unit_type_data::types().end())
-				return;
+			const unit_type *ut = unit_types.find(recruit);
+			if (!ut) return;
 			++count_;
-			sum_ += i->second.cost();
+			sum_ += ut->cost();
 		}
 		private:
 		int a_;

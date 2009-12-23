@@ -728,17 +728,17 @@ variant formula_ai::get_value(const std::string& key) const
 	{
 		std::vector<variant> vars;
 
-		unit_type_data::types().build_all(unit_type::FULL);
+		unit_types.build_all(unit_type::FULL);
 
 		const std::set<std::string>& recruits = current_team().recruits();
 		if(recruits.size()==0)
 			return variant( &vars );
 		for(std::set<std::string>::const_iterator i = recruits.begin(); i != recruits.end(); ++i)
 		{
-			std::map<std::string,unit_type>::const_iterator unit_it = unit_type_data::types().find_unit_type(*i);
-			if (unit_it != unit_type_data::types().end() )
+			const unit_type *ut = unit_types.find(*i);
+			if (ut)
 			{
-				vars.push_back(variant(new unit_type_callable(unit_it->second) ));
+				vars.push_back(variant(new unit_type_callable(*ut)));
 			}
 		}
 		return variant( &vars );
@@ -748,7 +748,7 @@ variant formula_ai::get_value(const std::string& key) const
 		std::vector<variant> vars;
 		std::vector< std::vector< variant> > tmp;
 
-		unit_type_data::types().build_all(unit_type::FULL);
+		unit_types.build_all(unit_type::FULL);
 
 		for( size_t i = 0; i<get_info().teams.size(); ++i)
 		{
@@ -760,10 +760,10 @@ variant formula_ai::get_value(const std::string& key) const
 				continue;
 			for(std::set<std::string>::const_iterator str_it = recruits.begin(); str_it != recruits.end(); ++str_it)
 			{
-				std::map<std::string,unit_type>::const_iterator unit_it = unit_type_data::types().find_unit_type(*str_it);
-				if (unit_it != unit_type_data::types().end() )
+				const unit_type *ut = unit_types.find(*str_it);
+				if (ut)
 				{
-					tmp[i].push_back(variant(new unit_type_callable(unit_it->second) ));
+					tmp[i].push_back(variant(new unit_type_callable(*ut)));
 				}
 			}
 		}

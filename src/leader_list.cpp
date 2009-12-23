@@ -126,11 +126,9 @@ void leader_list_manager::update_gender_list(const std::string& leader)
 		return;
 	}
 
-	unit_type_data::unit_type_map_wrapper& utypes = unit_type_data::types();
-	const unit_type_data::unit_type_map::const_iterator
-		uti = utypes.find_unit_type(leader);
-	if (uti != utypes.end()) {
-		const unit_type& ut = uti->second;
+	const unit_type *utp = unit_types.find(leader);
+	if (utp) {
+		const unit_type &ut = *utp;
 		const std::vector<unit_race::GENDER> genders = ut.genders();
 		if ( (genders.size() < 2) && (gender_combo_ != NULL) ) {
 			gender_combo_->enable(false);
@@ -175,16 +173,13 @@ void leader_list_manager::populate_leader_combo(int selected_index) {
 	std::vector<std::string> leader_strings;
 	for(itor = leaders_.begin(); itor != leaders_.end(); ++itor) {
 
-		unit_type_data::unit_type_map_wrapper& utypes = unit_type_data::types();
-
-		const unit_type_data::unit_type_map::const_iterator
-			uti = utypes.find_unit_type(*itor);
-		if (uti != utypes.end()) {
+		const unit_type *utp = unit_types.find(*itor);
+		if (utp) {
 			std::string gender;
 			if (gender_combo_ != NULL && !genders_.empty() && size_t(gender_combo_->selected()) < genders_.size()) {
 				gender = gender_ids_[gender_combo_->selected()];
 			}
-			const unit_type& ut = uti->second.get_gender_unit_type(gender);
+			const unit_type& ut = utp->get_gender_unit_type(gender);
 			leader_strings.push_back(IMAGE_PREFIX + ut.image() + get_RC_suffix(ut.flag_rgb()) + COLUMN_SEPARATOR + ut.type_name());
 
 		} else {

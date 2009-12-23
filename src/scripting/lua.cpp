@@ -568,11 +568,9 @@ static int impl_unit_type_get(lua_State *L)
 	char const *m = luaL_checkstring(L, 2);
 	lua_pushstring(L, "id");
 	lua_rawget(L, 1);
-	unit_type_data::unit_type_map_wrapper &ut_map = unit_type_data::types();
-	unit_type_data::unit_type_map::const_iterator
-		uti = ut_map.find_unit_type(lua_tostring(L, -1));
-	if (uti == ut_map.end()) return 0;
-	unit_type const &ut = uti->second;
+	const unit_type *utp = unit_types.find(lua_tostring(L, -1));
+	if (!utp) return 0;
+	unit_type const &ut = *utp;
 
 	// Find the corresponding attribute.
 	return_tstring_attrib("name", ut.type_name());
@@ -593,8 +591,7 @@ static int impl_unit_type_get(lua_State *L)
 static int intf_get_unit_type(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
-	unit_type_data::unit_type_map_wrapper &ut_map = unit_type_data::types();
-	if (!ut_map.unit_type_exists(m)) return 0;
+	if (!unit_types.unit_type_exists(m)) return 0;
 
 	lua_createtable(L, 0, 1);
 	lua_pushvalue(L, 1);
@@ -613,11 +610,9 @@ static int intf_get_unit_type_ids(lua_State *L)
 {
 	lua_newtable(L);
 	int i = 1;
-	unit_type_data::unit_type_map_wrapper &ut_map = unit_type_data::types();
-	for (unit_type_data::unit_type_map::const_iterator uti = ut_map.begin(),
-	     uti_end = ut_map.end(); uti != uti_end; ++uti)
+	foreach (const unit_type_data::unit_type_map::value_type &ut, unit_types.types())
 	{
-		lua_pushstring(L, uti->first.c_str());
+		lua_pushstring(L, ut.first.c_str());
 		lua_rawseti(L, -2, i);
 		++i;
 	}

@@ -1425,7 +1425,7 @@ void game_controller::show_upload_begging()
 void game_controller::set_unit_data()
 {
 	if (config &units = game_config_.child("units")) {
-		unit_type_data::types().set_config(units);
+		unit_types.set_config(units);
 	}
 }
 

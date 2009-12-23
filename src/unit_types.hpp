@@ -334,70 +334,51 @@ private:
 class unit_type_data
 {
 public:
-    static unit_type_data& instance() {
-        if (instance_ == NULL)
-            instance_ = new unit_type_data();
+	unit_type_data();
 
-        return *instance_;
-    }
+	typedef std::map<std::string,unit_type> unit_type_map;
 
-    typedef std::map<std::string,unit_type> unit_type_map;
+	const unit_type_map &types() const { return types_; }
+	const race_map &races() const { return races_; }
+	void set_config(config &cfg);
 
-	class unit_type_map_wrapper
-	{
-        friend class unit_type_data;
+	bool unit_type_exists(const std::string &key) const;
+	const unit_type *find(const std::string &key, unit_type::BUILD_STATUS status = unit_type::FULL) const;
 
-		public:
-            const race_map& races() const { return races_; }
-            void set_config(config &cfg);
+	void build_all(unit_type::BUILD_STATUS status) const;
 
-			unit_type_map::const_iterator begin() const { return types_.begin(); }
-			unit_type_map::const_iterator end() const { return types_.end(); }
-			bool unit_type_exists(const std::string& key) const;
-            unit_type_map::const_iterator find_unit_type(const std::string& key, unit_type::BUILD_STATUS status = unit_type::FULL) const;
-
-            void build_all(unit_type::BUILD_STATUS status) const;
-
-			// check if the root hide_help contains these ids
-			bool hide_help(const std::string& type_id, const std::string& race_id) const;
-
-        private:
-            unit_type_map_wrapper();
-			unit_type_map_wrapper(const unit_type_map_wrapper &);
-
-			// parse the [hide_help] tag
-			void read_hide_help(const config& cfg);
-
-            void set_unit_config(const config& unit_cfg) { unit_cfg_ = &unit_cfg; }
-
-			const config& find_config(const std::string& key) const;
-			std::pair<unit_type_map::iterator, bool> insert(const std::pair<std::string,unit_type>& utype) { return types_.insert(utype); }
-			void clear();
-
-            unit_type& build_unit_type(const unit_type_map::iterator& ut, unit_type::BUILD_STATUS status) const;
-            void add_advancefrom(const config& unit_cfg) const;
-            void add_advancement(unit_type& to_unit) const;
-
-            mutable unit_type_map types_;
-            movement_type_map movement_types_;
-            race_map races_;
-
-			// if [hide_help] contains a 'all=yes' at its root
-			bool hide_help_all_;
-			// vectors containing the [hide_help] and its sub-tags [not]
-			std::vector< std::set<std::string> > hide_help_type_;
-			std::vector< std::set<std::string> > hide_help_race_;
-
-            const config* unit_cfg_;
-	};
-
-    static unit_type_map_wrapper& types() { return instance().unit_types_; }
+	/** Checks if the [hide_help] tag contains these IDs. */
+	bool hide_help(const std::string &type_id, const std::string &race_id) const;
 
 private:
-    static unit_type_data* instance_;
-    mutable unit_type_map_wrapper unit_types_;
+	unit_type_data(const unit_type_data &);
 
-    unit_type_data();
+	/** Parses the [hide_help] tag. */
+	void read_hide_help(const config &cfg);
+
+	void set_unit_config(const config& unit_cfg) { unit_cfg_ = &unit_cfg; }
+
+	const config &find_config(const std::string &key) const;
+	std::pair<unit_type_map::iterator, bool> insert(const std::pair<std::string, unit_type> &utype) { return types_.insert(utype); }
+	void clear();
+
+	unit_type& build_unit_type(const unit_type_map::iterator &ut, unit_type::BUILD_STATUS status) const;
+	void add_advancefrom(const config& unit_cfg) const;
+	void add_advancement(unit_type& to_unit) const;
+
+	mutable unit_type_map types_;
+	movement_type_map movement_types_;
+	race_map races_;
+
+	/** True if [hide_help] contains a 'all=yes' at its root. */
+	bool hide_help_all_;
+	// vectors containing the [hide_help] and its sub-tags [not]
+	std::vector< std::set<std::string> > hide_help_type_;
+	std::vector< std::set<std::string> > hide_help_race_;
+
+	const config *unit_cfg_;
 };
+
+extern unit_type_data unit_types;
 
 #endif

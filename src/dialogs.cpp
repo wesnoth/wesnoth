@@ -357,13 +357,13 @@ void save_preview_pane::draw_contents()
 
 	int ypos = area.y;
 
-	const unit_type_data::unit_type_map::const_iterator leader = unit_type_data::types().find_unit_type(summary["leader"]);
-	if (leader != unit_type_data::types().end()) {
-
+	const unit_type *leader = unit_types.find(summary["leader"]);
+	if (leader)
+	{
 #ifdef LOW_MEM
-		const surface image(image::get_image(leader->second.image()));
+		const surface image(image::get_image(leader->image()));
 #else
-		const surface image(image::get_image(leader->second.image() + "~RC(" + leader->second.flag_rgb() + ">1)"));
+		const surface image(image::get_image(leader->image() + "~RC(" + leader->flag_rgb() + ">1)"));
 #endif
 
 		if(image != NULL) {
@@ -921,7 +921,7 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
 		return det;
 
     //FIXME: There should be a better way to deal with this
-    unit_type_data::types().find_unit_type(t->id(), unit_type::WITHOUT_ANIMATIONS);
+	unit_types.find(t->id(), unit_type::WITHOUT_ANIMATIONS);
 
 	std::string mod = "~RC(" + t->flag_rgb() + ">" + team::get_side_colour_index(side_) + ")";
 	det.image = image::get_image(t->image()+mod);
@@ -931,7 +931,7 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
 	det.level = t->level();
 	det.alignment = unit_type::alignment_description(t->alignment(), t->genders().front());
 
-	race_map const& rcm = unit_type_data::types().races();
+	race_map const& rcm = unit_types.races();
 	race_map::const_iterator ri = rcm.find(t->race());
 	if(ri != rcm.end()) {
 		assert(t->genders().empty() != true);

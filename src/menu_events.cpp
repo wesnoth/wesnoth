@@ -675,16 +675,13 @@ void menu_handler::recruit(bool browse, int side_num, const map_location &last_h
 	std::vector<std::string> items;
 	const std::set<std::string>& recruits = current_team.recruits();
 	for(std::set<std::string>::const_iterator it = recruits.begin(); it != recruits.end(); ++it) {
-		const std::map<std::string,unit_type>::const_iterator
-				u_type = unit_type_data::types().find_unit_type(*it);
-		if(u_type == unit_type_data::types().end()) {
+		const unit_type *type = unit_types.find(*it);
+		if (!type) {
 			ERR_NG << "could not find unit '" << *it << "'\n";
 			return;
 		}
 
 		item_keys.push_back(*it);
-
-		const unit_type* type = &u_type->second;
 
 		//display units that we can't afford to recruit in red
 		const char prefix = (type->cost() > current_team.gold() ? font::BAD_TEXT : font::NULL_MARKUP);
@@ -756,11 +753,10 @@ void menu_handler::do_recruit(const std::string &name, int side_num,
 		++recruit_num;
 	}
 
-	const std::map<std::string,unit_type>::const_iterator
-			u_type = unit_type_data::types().find_unit_type(name);
-	assert(u_type != unit_type_data::types().end());
+	const unit_type *u_type = unit_types.find(name);
+	assert(u_type);
 
-	if (u_type->second.cost() > current_team.gold()) {
+	if (u_type->cost() > current_team.gold()) {
 		gui2::show_transient_message(gui_->video(), "",
 			_("You don't have enough gold to recruit that unit"));
 		return;
@@ -778,9 +774,9 @@ void menu_handler::do_recruit(const std::string &name, int side_num,
 
 	//create a unit with traits
 	recorder.add_recruit(recruit_num, loc);
-	const unit new_unit(&units_, &u_type->second, side_num, true);
+	const unit new_unit(&units_, u_type, side_num, true);
 	place_recruit(new_unit, loc, false, true);
-	current_team.spend_gold(u_type->second.cost());
+	current_team.spend_gold(u_type->cost());
 	statistics::recruit_unit(new_unit);
 
 	//MP_COUNTDOWN grant time bonus for recruiting
@@ -1387,14 +1383,13 @@ void menu_handler::create_unit_2(mouse_handler& mousehandler)
 	}
 
 	const std::string& ut_id = create_dlg.choice();
-	unit_type_data::unit_type_map::const_iterator i =
-		unit_type_data::types().find_unit_type(ut_id);
-	if(i == unit_type_data::types().end()) {
+	const unit_type *utp = unit_types.find(ut_id);
+	if (!utp) {
 		ERR_NG << "create unit dialog returned inexistent or unusable unit_type id '" << ut_id << "'\n";
 		return;
 	}
 
-	const unit_type& ut = i->second;
+	const unit_type &ut = *utp;
 
 	unit_race::GENDER gender = create_dlg.gender();
 	const bool generate_name = create_dlg.generate_name();
@@ -1440,21 +1435,22 @@ void menu_handler::create_unit(mouse_handler& mousehandler)
 								_("Type");
 	options.push_back(heading);
 
-	for(unit_type_data::unit_type_map::const_iterator i = unit_type_data::types().begin(); i != unit_type_data::types().end(); ++i) {
+	foreach (const unit_type_data::unit_type_map::value_type &i, unit_types.types())
+	{
 		std::stringstream row;
 
-		unit_type_data::types().find_unit_type(i->first, unit_type::HELP_INDEX);
+		unit_types.find(i.first, unit_type::HELP_INDEX);
 
 		std::string race;
-		const race_map::const_iterator race_it = unit_type_data::types().races().find(i->second.race());
-		if (race_it != unit_type_data::types().races().end()) {
+		const race_map::const_iterator race_it = unit_types.races().find(i.second.race());
+		if (race_it != unit_types.races().end()) {
 			race = race_it->second.plural_name();
 		}
 		row << race << COLUMN_SEPARATOR;
-		row << i->second.type_name() << COLUMN_SEPARATOR;
+		row << i.second.type_name() << COLUMN_SEPARATOR;
 
 		options.push_back(row.str());
-		unit_choices.push_back(&(i->second));
+		unit_choices.push_back(&i.second);
 	}
 
 	int choice = 0;
@@ -3249,9 +3245,8 @@ void console_handler::do_unbuff() {
 	}
 }*/
 void console_handler::do_discover() {
-	unit_type_data::unit_type_map::const_iterator i = unit_type_data::types().begin();
-	for(; i != unit_type_data::types().end(); ++i) {
-		preferences::encountered_units().insert(i->second.id());
+	foreach (const unit_type_data::unit_type_map::value_type &i, unit_types.types()) {
+		preferences::encountered_units().insert(i.second.id());
 	}
 }
 void console_handler::do_undiscover() {
@@ -3260,15 +3255,15 @@ void console_handler::do_undiscover() {
 void console_handler::do_create() {
 	const map_location &loc = mouse_handler_.get_last_hex();
 	if (menu_handler_.map_.on_board(loc)) {
-		const unit_type_data::unit_type_map::const_iterator i = unit_type_data::types().find_unit_type(get_data());
-		if(i == unit_type_data::types().end()) {
+		const unit_type *ut = unit_types.find(get_data());
+		if (!ut) {
 			command_failed("Invalid unit type");
 			return;
 		}
 
 		menu_handler_.units_.erase(loc);
 
-		unit created(&menu_handler_.units_, &i->second, 1, true);
+		unit created(&menu_handler_.units_, ut, 1, true);
 		created.new_turn();
 
 		menu_handler_.units_.add(loc, created);

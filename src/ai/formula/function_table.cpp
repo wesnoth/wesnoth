@@ -878,9 +878,9 @@ private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		const std::string type = args()[0]->evaluate(variables,add_debug_info(fdb,0,"get_unit_type:name")).as_string();
 
-		std::map<std::string,unit_type>::const_iterator unit_it = unit_type_data::types().find_unit_type( type );
-		if (unit_it != unit_type_data::types().end() )
-				return  variant( new unit_type_callable( unit_it->second ) );
+		const unit_type *ut = unit_types.find(type);
+		if (!ut)
+			return  variant( new unit_type_callable(*ut));
 
 		return variant();
 	}

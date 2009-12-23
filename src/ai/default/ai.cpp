@@ -417,29 +417,23 @@ bool ai_default_recruitment_stage::recruit_usage(const std::string& usage)
 	LOG_AI << "recruiting '" << usage << "'\n";
 
 	//make sure id, usage and cost are known for the coming evaluation of unit types
-	unit_type_data::types().build_all(unit_type::HELP_INDEX);
+	unit_types.build_all(unit_type::HELP_INDEX);
 
 	std::vector<std::string> options;
 	bool found = false;
 	// Find an available unit that can be recruited,
 	// matches the desired usage type, and comes in under budget.
-	const std::set<std::string>& recruits = current_team().recruits();
-	for(std::map<std::string,unit_type>::const_iterator i =
-	    unit_type_data::types().begin(); i != unit_type_data::types().end(); ++i)
+	foreach (const std::string &name, current_team().recruits())
 	{
-		const std::string& name = i->second.id();
+		const unit_type *ut = unit_types.find(name);
+		if (!ut) continue;
 		// If usage is empty consider any unit.
-//		DBG_AI << name << " considered\n";
-		if (i->second.usage() == usage || usage == "") {
-			if (!recruits.count(name)) {
-//				DBG_AI << name << " rejected, not in recruitment list\n";
-				continue;
-			}
+		if (usage.empty() || ut->usage() == usage) {
 			LOG_AI << name << " considered for " << usage << " recruitment\n";
 			found = true;
 
-			if (current_team().gold() - i->second.cost() < min_gold) {
-				LOG_AI << name << " rejected, cost too high (cost: " << i->second.cost() << ", current gold: " << current_team().gold() <<", min_gold: " << min_gold << ")\n";
+			if (current_team().gold() - ut->cost() < min_gold) {
+				LOG_AI << name << " rejected, cost too high (cost: " << ut->cost() << ", current gold: " << current_team().gold() <<", min_gold: " << min_gold << ")\n";
 				continue;
 			}
 
@@ -1350,15 +1344,15 @@ int ai_default_recruitment_stage::compare_unit_types(const unit_type& a, const u
 
 void ai_default_recruitment_stage::get_combat_score_vs(const unit_type& ut, const std::string &enemy_type_id, int &score, int &weighting, int hitpoints, int max_hitpoints) const
 {
-	const unit_type_data::unit_type_map::const_iterator enemy_info = unit_type_data::types().find_unit_type(enemy_type_id);
-	VALIDATE((enemy_info != unit_type_data::types().end()), "Unknown unit type : " + enemy_type_id + " while scoring units.");
+	const unit_type *enemy_info = unit_types.find(enemy_type_id);
+	VALIDATE(enemy_info, "Unknown unit type : " + enemy_type_id + " while scoring units.");
 	int weight = ut.cost();
 	if ((hitpoints>0) && (max_hitpoints>0)) {
 		weight = weight * hitpoints / max_hitpoints;
 	}
 
 	weighting += weight;
-	score += compare_unit_types(ut, enemy_info->second) * weight;
+	score += compare_unit_types(ut, *enemy_info) * weight;
 }
 
 int ai_default_recruitment_stage::get_combat_score(const unit_type& ut) const
@@ -1405,18 +1399,18 @@ void ai_default_recruitment_stage::analyze_potential_recruit_combat()
 	const std::set<std::string>& recruits = current_team().recruits();
 	std::set<std::string>::const_iterator i;
 	for(i = recruits.begin(); i != recruits.end(); ++i) {
-		const unit_type_data::unit_type_map::const_iterator info = unit_type_data::types().find_unit_type(*i);
-		if(info == unit_type_data::types().end() || not_recommended_units_.count(*i)) {
+		const unit_type *info = unit_types.find(*i);
+		if (!info || not_recommended_units_.count(*i)) {
 			continue;
 		}
 
-		int score = get_combat_score(info->second);
+		int score = get_combat_score(*info);
 		LOG_AI << "combat score of '" << *i << "': " << score << "\n";
 		unit_combat_scores_[*i] = score;
 
-		if(best_usage_.count(info->second.usage()) == 0 ||
-				score > best_usage_[info->second.usage()]) {
-			best_usage_[info->second.usage()] = score;
+		if(best_usage_.count(info->usage()) == 0 ||
+				score > best_usage_[info->usage()]) {
+			best_usage_[info->usage()] = score;
 		}
 	}
 
@@ -1424,14 +1418,14 @@ void ai_default_recruitment_stage::analyze_potential_recruit_combat()
 	// if they have a score more than 600 below
 	// the best unit of that usage type.
 	for(i = recruits.begin(); i != recruits.end(); ++i) {
-		const unit_type_data::unit_type_map::const_iterator info = unit_type_data::types().find_unit_type(*i);
-		if(info == unit_type_data::types().end() || not_recommended_units_.count(*i)) {
+		const unit_type *info = unit_types.find(*i);
+		if (!info || not_recommended_units_.count(*i)) {
 			continue;
 		}
 
-		if(unit_combat_scores_[*i] + 600 < best_usage_[info->second.usage()]) {
+		if(unit_combat_scores_[*i] + 600 < best_usage_[info->usage()]) {
 			LOG_AI << "recommending not to use '" << *i << "' because of poor combat performance "
-				      << unit_combat_scores_[*i] << "/" << best_usage_[info->second.usage()] << "\n";
+				<< unit_combat_scores_[*i] << "/" << best_usage_[info->usage()] << "\n";
 			not_recommended_units_.insert(*i);
 		}
 	}
@@ -1510,12 +1504,12 @@ void ai_default_recruitment_stage::analyze_potential_recruit_movements()
 	std::map<std::string,int> best_scores;
 
 	for(std::set<std::string>::const_iterator i = recruits.begin(); i != recruits.end(); ++i) {
-		const unit_type_data::unit_type_map::const_iterator info = unit_type_data::types().find_unit_type(*i);
-		if(info == unit_type_data::types().end()) {
+		const unit_type *info = unit_types.find(*i);
+		if (!info) {
 			continue;
 		}
 
-		const unit_type& ut = info->second;
+		const unit_type &ut = *info;
 		//TODO: we give max movement, but recruited will get 0? Seems inaccurate
 		//but keep it like that for now
 		// pathfinding ignoring other units and terrain defense
@@ -1558,14 +1552,13 @@ void ai_default_recruitment_stage::analyze_potential_recruit_movements()
 	for(std::map<std::string,int>::iterator j = unit_movement_scores_.begin();
 			j != unit_movement_scores_.end(); ++j) {
 
-		const unit_type_data::unit_type_map::const_iterator info =
-			unit_type_data::types().find_unit_type(j->first);
+		const unit_type *info = unit_types.find(j->first);
 
-		if(info == unit_type_data::types().end()) {
+		if (!info) {
 			continue;
 		}
 
-		const int best_score = best_scores[info->second.usage()];
+		const int best_score = best_scores[info->usage()];
 		if(best_score > 0) {
 			j->second = (j->second*10)/best_score;
 			if(j->second > 15) {
@@ -1630,16 +1623,16 @@ public:
 			bool best_combat_score_of_advancement_found = false;
 			int best_cost = recall_cost;
 			foreach (const std::string &i, u.advances_to()) {
-				const unit_type_data::unit_type_map::const_iterator ut = unit_type_data::types().find_unit_type(i);
-				if(ut == unit_type_data::types().end()) {
+				const unit_type *ut = unit_types.find(i);
+				if (!ut) {
 					continue;
 				}
 
-				int combat_score_of_advancement = stage_.get_combat_score(ut->second);
+				int combat_score_of_advancement = stage_.get_combat_score(*ut);
 				if (!best_combat_score_of_advancement_found || (best_combat_score_of_advancement<combat_score_of_advancement)) {
 					best_combat_score_of_advancement = combat_score_of_advancement;
 					best_combat_score_of_advancement_found = true;
-					best_cost = ut->second.cost();
+					best_cost = ut->cost();
 				}
 
 			}

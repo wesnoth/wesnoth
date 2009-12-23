@@ -21,6 +21,7 @@
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
+#include "foreach.hpp"
 #include "unit_types.hpp"
 
 namespace {
@@ -84,26 +85,26 @@ void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
 
 	std::vector< std::string > type_labels, race_labels;
 
-	for(unit_type_data::unit_type_map::const_iterator i = unit_type_data::types().begin(); i != unit_type_data::types().end(); ++i)
+	foreach (const unit_type_data::unit_type_map::value_type &i, unit_types.types())
 	{
-		unit_type_data::types().find_unit_type(i->first, unit_type::HELP_INDEX);
+		unit_types.find(i.first, unit_type::HELP_INDEX);
 
 		// And so we map an unit_type id to a list subscript. Ugh.
-		type_ids_.push_back(i->first);
+		type_ids_.push_back(i.first);
 
-		std::string race_label = "";
+		std::string race_label;
 
 		const race_map::const_iterator race_it =
-			unit_type_data::types().races().find(i->second.race());
+			unit_types.races().find(i.second.race());
 
-		if (race_it != unit_type_data::types().races().end()) {
+		if (race_it != unit_types.races().end()) {
 			race_label = race_it->second.plural_name();
 		}
 
 		std::map< std::string, string_map > row_data;
 		string_map column;
 
-		column["label"] = i->second.type_name();
+		column["label"] = i.second.type_name();
 		row_data.insert(std::make_pair("unit_type", column));
 		column["label"] = race_label;
 		row_data.insert(std::make_pair("race", column));
@@ -111,7 +112,7 @@ void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
 		list.add_row(row_data);
 
 		// Select the previous choice, if any.
-		if(choice_.empty() != true && choice_ == i->first) {
+		if(choice_.empty() != true && choice_ == i.first) {
 			list.select_row(list.get_item_count() - 1);
 		}
 	}
