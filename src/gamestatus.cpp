@@ -823,7 +823,9 @@ protected:
 		if (!id.empty()) {
 			if ( seen_ids_.find(id)!=seen_ids_.end() ) {
 				//seen before
-				unit new_unit(&units_, u, true);
+				config u_tmp = u;
+				u_tmp["side"] = str_cast(side_);
+				unit new_unit(&units_, u_tmp, true);
 				t_->recall_list().push_back(new_unit);
 			} else {
 				//not seen before
