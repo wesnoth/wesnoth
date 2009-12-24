@@ -276,8 +276,6 @@ unit::unit(unit_map* unitmap, const config& cfg,
 	if (const config &variables = cfg.child("variables")) {
 		variables_ = variables;
 		cfg_.remove_child("variables",0);
-	} else {
-		variables_.clear();
 	}
 
 	facing_ = map_location::parse_direction(cfg["facing"]);
