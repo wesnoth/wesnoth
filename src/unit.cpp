@@ -289,11 +289,13 @@ unit::unit(unit_map* unitmap, const config& cfg,
 	}
 
 	advance_to(type(), use_traits, state);
-	if (const unit_race *r = unit_types.find_race(cfg["race"])) {
-		race_ = r;
-	} else {
-		static const unit_race dummy_race;
-		race_ = &dummy_race;
+	if (cfg.has_attribute("race")) {
+		if (const unit_race *r = unit_types.find_race(cfg["race"])) {
+			race_ = r;
+		} else {
+			static const unit_race dummy_race;
+			race_ = &dummy_race;
+		}
 	}
 	level_ = lexical_cast_default<int>(cfg["level"], level_);
 	if(cfg["undead_variation"] != "") {
