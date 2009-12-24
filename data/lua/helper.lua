@@ -196,4 +196,53 @@ function helper.set_wml_tag_metatable(t)
 	return setmetatable(t, create_tag_mt)
 end
 
+--! Fetches all the WML container variables with name @a var.
+--! @returns a table containing all the variables (starting at index 1).
+function helper.get_variable_array(var)
+	local result = {}
+	for i = 1, wesnoth.get_variable(var .. ".length") do
+		result[i] = wesnoth.get_variable(string.format("%s[%d]", var, i - 1))
+	end
+	return result
+end
+
+--! Creates proxies for all the WML container variables with name @a var.
+--! This is similar to helper.get_variable_array, except that the elements
+--! can be used for writing too.
+--! @returns a table containing all the variable proxies (starting at index 1).
+function helper.get_variable_proxy_array(var)
+	local result = {}
+	for i = 1, wesnoth.get_variable(var .. ".length") do
+		result[i] = get_variable_proxy(string.format("%s[%d]", var, i - 1))
+	end
+	return result
+end
+
+--! Displays a WML message box with attributes from table @attr and options
+--! from table @options.
+--! @return the index of the selected option.
+--! @code
+--! local result = helper.get_user_choice({ speaker = "narrator" },
+--!     { "Choice 1", "Choice 2" })
+--! @endcode
+function helper.get_user_choice(attr, options)
+	local result = 0
+	function wesnoth.__user_choice_helper(i)
+		result = i
+	end
+	local msg = {}
+	for k,v in pairs(attr) do
+		msg[k] = attr[k]
+	end
+	for k,v in ipairs(options) do
+		table.insert(msg, { "option", { message = v,
+			{ "command", { { "lua", {
+				code = string.format("wesnoth.__user_choice_helper(%d)", k)
+			}}}}}})
+	end
+	wesnoth.fire("message", msg)
+	wesnoth.__user_choice_helper = nil
+	return result
+end
+
 return helper
