@@ -692,8 +692,10 @@ variable_info::variable_info(const std::string& varname,
 			is_valid = true;
 			return;
 		}
-		WRN_NG << "variable_info: using explicitly indexed Container as wrong WML type, "
-			<< varname << std::endl;
+		if (force_valid) {
+			WRN_NG << "variable_info: using explicitly indexed "
+				"container as wrong WML type, " << varname << '\n';
+		}
 		explicit_index = false;
 		index = 0;
 	} else {
