@@ -12,13 +12,15 @@ msgstr ""
 "PO-Revision-Date: 2009-11-15 13:03+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
+"Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: sr\n"
-"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%"
-"10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Environment: wesnoth, wesnoth/noent\n"
+"X-Associated-UI-Catalogs: wesnoth-lib wesnoth-httt\n"
+"X-Wrapping: fine\n"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:5
@@ -204,7 +206,7 @@ msgid ""
 "care of a village or a unit that can cure."
 msgstr ""
 "Lečenje +4:\n"
-"Omogućava jedinici da leči susedne savezničke jedinice na početku našeg "
+"Omogućava jedinici da leči susedne savezničke jedinice na početku svakog "
 "poteza.\n"
 "\n"
 "Jedinica pod uticajem ovog vidara može povratiti do 4 UP po potezu, ili ne "
@@ -728,7 +730,7 @@ msgid ""
 "first time."
 msgstr ""
 "Tokom igranja, imajte na umu da će vam prelaz mišem preko mnogih elemenata, "
-"kakvi su na primer podaci u statusnom oknu, dati kratak tekst sa dodatnim "
+"kakvi su na primer podaci u oknu stanja, dati kratak tekst sa dodatnim "
 "objašnjenjima. Ovo je posebno korisno kada se po prvi put susretnete sa "
 "<ref>dst='..abilities_section' text='sposobnostima'</ref>."
 
@@ -835,10 +837,11 @@ msgstr ""
 "text='jedinice'</ref> za svoju vojsku. Da biste najmili, vaš vođ (npr. "
 "Konrad u pohodu „Naslednik prestola“) mora stajati na polju kule u "
 "<ref>dst='terrain_castle' text='zamku'</ref>. Tada možete ili izabrati "
-"„Unajmi“ iz menija, ili kliknuti desnim na polje i izabrati "
-"<italic>text='Unajmi'</italic>. Ovo će vam dati spisak jedinica koje možete "
-"unajmiti, zajedno sa cenom koju morate platiti za svaku. Kliknite na "
-"jedinicu da vidite njene karakteristike, a na dugme „Unajmi“ da je unajmite."
+"„Unajmljivanje“ iz menija, ili kliknuti desnim na polje i izabrati "
+"<italic>text='Unajmljivanje'</italic>. Ovo će vam dati spisak jedinica koje "
+"možete unajmiti, zajedno sa cenom koju morate platiti za svaku. Kliknite na "
+"jedinicu da vidite njene karakteristike, a na dugme „Unajmljivanje“ da je "
+"unajmite."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:174
@@ -964,8 +967,8 @@ msgid ""
 "using two numbers (the current value and the maximum value the unit can "
 "have)."
 msgstr ""
-"Udarpoeni i iskustveni poeni su naznačeni u statusnom oknu preko dva broj — "
-"tekuće vrednosti, i maksimuma koji jedinica može imati."
+"Udarpoeni i iskustveni poeni su naznačeni u oknu stanja preko dva broja — "
+"tekuće vrednosti i maksimuma koji jedinica može imati."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:206
@@ -1107,16 +1110,16 @@ msgstr ""
 "U nekim scenarijima, deo mape će biti skriven od vašeg pogleda. Postoje dva "
 "mehanizma koja to mogu činiti, zajedno ili odvojeno. Pokrov sakriva i teren "
 "i jedinice koje se na njemu mogu naći. Kada se pokrov jednom razveje, "
-"nadalje uvek možete videti teren. Magla rata sakriva samo jedinice i "
-"vlasništvo nad selima (ne računajući vaše i savezničke). Magla rata se "
-"razilazi samo privremeno, dok su vaše jedinice u blizini, ali se vraća kada "
-"se one odmaknu. Jedinice razvejavaju i pokrov i maglu rata. Svaka jedinica "
-"čisti polja u dometu kretanja u datom potezu, pri čemu se ignorišu "
-"neprijateljske jedinice i nadzorni pojasevi.\n"
+"nadalje uvek možete videti teren. Magla rata sakriva samo jedinice i posede "
+"nad selima (ne računajući vaše i savezničke). Magla rata se razilazi samo "
+"privremeno, dok su vaše jedinice u blizini, ali se vraća kada se one "
+"odmaknu. Jedinice razvejavaju i pokrov i maglu rata. Svaka jedinica čisti "
+"polja u dometu kretanja u datom potezu, pri čemu se ignorišu neprijateljske "
+"jedinice i nadzorni pojasevi.\n"
 "\n"
 "Potez jedinice obično možete opozvati, sve dok nije došlo do događaja sa "
 "nasumičnim ishodom, kao što je borba ili unajmljivanje (gde većina jedinica "
-"poprima slučajna svojstva). Istraživanje skrivenog terena razvejavanjem "
+"poprima slučajne osobine). Istraživanje skrivenog terena razvejavanjem "
 "pokrova ili magle takođe sprečava opoziv na prethodno stanje. Ako želite, u "
 "meniju radnji možete uključiti „Zastoj ažuriranja pokrova“, što će sprečiti "
 "da jedinice razveju pokrov ili maglu do sledećeg nasumičnog događaja ili "
@@ -1209,7 +1212,7 @@ msgstr ""
 "\n"
 "\n"
 "Svaka jedinica je u određenoj prilici da bude pogođena, prema terenu na kome "
-"se nalazi. Vrednost je prikazana u statusnom oknu, a može se videti i desnim "
+"se nalazi. Vrednost je prikazana u oknu stanja, a može se videti i desnim "
 "klikom na jedinicu, izborom „Opis jedinice“, pa pod <italic>text='terenski "
 "modifikatori'</italic>. Na primer, vilenjaci imaju odbrambeni razred 70% u "
 "šumi, tako da jedinica koja ih napada ima samo 30% izgleda da pogodi. I "
@@ -1380,7 +1383,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Trenutno doba dana može se pratiti iznad minimape u statusnom oknu. Pri "
+"Trenutno doba dana može se pratiti iznad minimape u oknu stanja. Pri "
 "uobičajenom ciklusu smene dana i noći, jutro i popodne se računaju kao dan, "
 "a prva i druga četvrt kao noć:\n"
 
@@ -1594,7 +1597,7 @@ msgstr ""
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:322
 msgid "Income and Upkeep"
-msgstr "Prihod i izdaci"
+msgstr "Prihodi i izdaci"
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:323
@@ -1676,7 +1679,7 @@ msgstr ""
 "Postoje dva važna izuzetka: jedinice sa osobinom odanosti i vođi neće imati "
 "izdatke. Jedinice sa kojima započinjete scenario (npr. Delfador), ili "
 "jedinice koje vam se pridruže tokom scenarija (npr. konjanici u drugom "
-"scenariju „Naslednika prestola“), obično će biti odane. Jedinica koja vas "
+"scenariju „Naslednik prestola“), obično će biti odane. Jedinica koja vas "
 "lično predstavlja (npr. Konrad) gotovo uvek je vođ."
 
 #. [topic]: id=wrap_up
@@ -1693,8 +1696,8 @@ msgid ""
 "ref>, but you now know everything you need to know to play the Heir to the "
 "Throne campaign. Have fun, and good luck!"
 msgstr ""
-"Izloženim do sada, predstavljene su osnove Vesnota. Dalje možete čitati "
-"„Osnovne taktike“, ili se upoznavati sa <ref>dst='..traits_section' "
+"Izloženim do sada, predstavljene su osnove Vesnota. Dalje možete čitati o "
+"osnovnoj strategiji, ili se upoznavati sa <ref>dst='..traits_section' "
 "text='osobinama'</ref> i <ref>dst='..abilities_section' "
 "text='sposobnostima'</ref>, ali već znate sve što vam je neophodno da "
 "zaigrate pohod „Naslednik prestola“. Zabavite se, i srećno!"
@@ -1785,7 +1788,7 @@ msgstr ""
 "dostići više nivoe. Kasnije u toku pohoda oštroumnost nije tako korisna, "
 "pošto „napredovanje po najvećem nivou“ (NAPON) nije tako značajno kao "
 "napredovanje u nivou. Ako imate mnogo takvih jedinica najvišeg nivoa, možda "
-"vam je bolje sazivati jedinice sa poželjnijim osobinama."
+"je bolje da sazivate jedinice sa poželjnijim osobinama."
 
 #. [topic]: id=traits_quick
 #: data/core/help.cfg:377
@@ -1812,8 +1815,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Hitrost je najzapažljivija sposobnost, posebno kod sporijih jedinica kakve "
-"su trolovi i teška pešadija. Hitre jedinice često imaju značajno uvećanu "
+"Hitrost je najuočljivija osobina, posebno kod sporijih jedinica kakve su "
+"trolovi i teška pešadija. Hitre jedinice često imaju značajno uvećanu "
 "pokretljivost na nezgodnom terenu, što može biti važno za razmatranje kada "
 "raspoređujete snage. Takođe, ove jedinice nisu tako robusne kao one bez "
 "hitrosti, i stoga su manje pogodne za držanje položajâ pod stalnim napadom."
@@ -1873,10 +1876,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Iako korisna bilo kojoj jedinici koja se bori blisko, kršnost ima najveći "
-"efekat kod jedinica sa velikim brojem udara u napadu, kakvi su npr. vilin-"
-"borci. Kršne jedinice mogu biti vrlo korisne kada je samo još zrno dodatne "
-"štete potrebno da se oštećujući udar pretvori u završni."
+"Iako korisna bilo kojoj jedinici koja se bori blisko, kršnost je "
+"najznačajnija jedinicama sa velikim brojem udara u napadu, kakvi su npr. "
+"vilin-borci. Kršne jedinice mogu biti vrlo korisne kada je samo još zrnce "
+"više štete potrebno da se oštećujući udar pretvori u završni."
 
 #. [topic]: id=traits_fearless
 #: data/core/help.cfg:401
@@ -3200,8 +3203,8 @@ msgid ""
 "using one of its moves."
 msgstr ""
 "Teleportacija:\n"
-"Jedinica se može teleportovati između dva prazna sela u vlasništvu svoje "
-"strane, utrošivši svoj potez."
+"Jedinica se može teleportovati između dva prazna sela u posedu svoje strane, "
+"uz utrošak jednog pokreta."
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:390 data/core/macros/abilities.cfg:392
@@ -3227,8 +3230,8 @@ msgstr ""
 "Jedinica se može skrivati u šumi, tako da je neprijatelji ne uoče.\n"
 "\n"
 "Protivničke jedinice ne mogu videti niti napasti ovu jedinicu dok je u šumi, "
-"osim ako joj se ne nalaze u susedstvu. Neprijateljska jedinica koja prva "
-"otkrije skrivenu, istog časa gubi svu preostalu pokretnost u potezu."
+"sve dok ne stupe do nje. Neprijateljska jedinica koja prva otkrije skrivenu, "
+"istog časa gubi svu preostalu pokretnost u potezu."
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:416 data/core/macros/abilities.cfg:417
@@ -4874,7 +4877,7 @@ msgid ""
 "controlled by its side."
 msgstr ""
 " Ova jedinica se može teleportovati između između bilo koja dva prazna sela "
-"u vlasništvu svoje strane."
+"u posedu svoje strane."
 
 #: data/core/macros/special-notes.cfg:41
 msgid ""
@@ -5203,7 +5206,7 @@ msgstr "ljubičasta"
 #. [color_range]: id=7
 #: data/core/team-colors.cfg:50 data/core/team-colors.cfg:107
 msgid "Orange"
-msgstr "narandža�ta"
+msgstr "narandžasta"
 
 #. [color_range]: id=black
 #. [color_range]: id=5
@@ -6346,10 +6349,10 @@ msgid ""
 "where they are). Use this to make sure the enemy can't reach your weak or "
 "injured units on his next turn."
 msgstr ""
-"Iz menija „Radnje“ izaberite „Prikaži protivničke poteze“ da se istaknu sva "
-"polja koja vaš protivnik zaista može doseći (pod pretpostavkom da vaše "
-"jedinice ostanu gde jesu). Korisno da se uverite da neprijatelj ne može "
-"dohvatiti vaše oslabljene ili povređene jedinice u narednom potezu."
+"Iz menija „Radnje“ izaberite „Protivnički pokreti“ da se istaknu sva polja "
+"koja vaš protivnik zaista može doseći (pod pretpostavkom da vaše jedinice "
+"ostanu gde jesu). Korisno da se uverite da neprijatelj ne može dohvatiti "
+"vaše oslabljene ili povređene jedinice u narednom potezu."
 
 #. [tip]
 #: data/hardwired/tips.cfg:12 data/hardwired/tips.cfg:24
@@ -6410,9 +6413,9 @@ msgid ""
 "castle tile. That will let you choose which hex you put a new unit in. "
 "Placing units wisely can sometimes let you reach a village a turn earlier."
 msgstr ""
-"Naredbama „Unajmi“ i „Sazovi“ možete pristupiti desnim klikom na polje "
-"zamka. Potom izaberite polje gde želite da se nova jedinica pojavi. Mudrim "
-"postavljanjem jedinica možete doseći pokoje selo potez ranije."
+"Naredbama „Unajmljivanje“ i „Sazovi“ možete pristupiti desnim klikom na "
+"polje zamka. Potom izaberite polje gde želite da se nova jedinica pojavi. "
+"Mudrim postavljanjem jedinica možete doseći pokoje selo potez ranije."
 
 #. [tip]
 #: data/hardwired/tips.cfg:27
@@ -7043,7 +7046,7 @@ msgstr "jedinice"
 #: data/themes/default.cfg:258 data/themes/dfool.cfg:288
 #: data/themes/experimental.cfg:226
 msgid "upkeep"
-msgstr "troškovi"
+msgstr "izdaci"
 
 #. [label]: id=income-icon
 #: data/themes/default.cfg:267 data/themes/dfool.cfg:297
@@ -7503,9 +7506,10 @@ msgstr "Obriši dodatak: "
 msgid "There are no add-ons available for download from this server."
 msgstr "Na ovom serveru nema dodataka spremnih za preuzimanje."
 
+# >> dialog title
 #: src/addon_management.cpp:1104
 msgid "Get add-ons"
-msgstr "Dobavi dodatak"
+msgstr "Dobavljanje dodataka"
 
 #: src/addon_management.cpp:1105
 msgid "Choose the add-on to download."
@@ -7716,7 +7720,7 @@ msgstr "datum"
 
 #: src/dialogs.cpp:593 src/multiplayer_create.cpp:106
 msgid "Load Game"
-msgstr "Učitaj poziciju"
+msgstr "Učitavanje pozicije"
 
 #: src/dialogs.cpp:594
 msgid "Choose the game to load"
@@ -7852,7 +7856,7 @@ msgstr "Učitavam postavu igre."
 
 #: src/game.cpp:1996
 msgid "Re-initialize fonts for the current language."
-msgstr "Vaspostavljam fontove za tekući jezik."
+msgstr "Ponovo pripremam fontove za tekući jezik."
 
 #: src/game.cpp:2004
 msgid "Searching for installed add-ons."
@@ -8472,7 +8476,7 @@ msgstr "Nema jedinica spremnih za unajmljivanje."
 
 #: src/menu_events.cpp:718
 msgid "Recruit"
-msgstr "Unajmi"
+msgstr "Unajmljivanje"
 
 #: src/menu_events.cpp:719 src/menu_events.cpp:911
 msgid "Select unit:"
@@ -9358,7 +9362,7 @@ msgstr "Učitavam nivo..."
 
 #: src/play_controller.cpp:155
 msgid "Initializing teams"
-msgstr "Uspostavljam timove..."
+msgstr "Pripremam timove..."
 
 #: src/play_controller.cpp:175
 msgid "Loading units"
@@ -9366,7 +9370,7 @@ msgstr "Učitavam jedinice..."
 
 #: src/play_controller.cpp:182 src/play_controller.cpp:193
 msgid "Initializing display"
-msgstr "Uspostavljam prikaz..."
+msgstr "Pripremam prikaz..."
 
 #: src/play_controller.cpp:189
 msgid "time left for current turn"
@@ -10010,77 +10014,3 @@ msgstr "Pomozite nam da poboljšamo Vesnot za vas!"
 #: src/upload_log.cpp:375
 msgid "Enable summary uploads"
 msgstr "Uključi slanje sažetaka"
-
-#~ msgid "Defeat:"
-#~ msgstr "poraz:"
-
-#~ msgid "--no games open--"
-#~ msgstr "--nema započetih partija--"
-
-#~ msgid " (Unknown Era)"
-#~ msgstr " (nepoznata epoha)"
-
-#~ msgid "Password Required"
-#~ msgstr "neophodna lozinka"
-
-#~ msgid "Observe Game"
-#~ msgstr "Posmatraj partiju"
-
-#~ msgid "Join Game"
-#~ msgstr "Na proizvoljan server"
-
-#~ msgid "Quick Replays"
-#~ msgstr "Ubrzani snimci"
-
-#~ msgid "Preferences"
-#~ msgstr "Postavke"
-
-#~ msgid "Quit"
-#~ msgstr "Napusti"
-
-#~ msgid "Apply Filter"
-#~ msgstr "Primeni filter"
-
-#~ msgid "Invert"
-#~ msgstr "Izvrni"
-
-#~ msgid "Vacant Slots"
-#~ msgstr "Slobodna mesta"
-
-#~ msgid "Friends in Game"
-#~ msgstr "Prijatelji u igri"
-
-#~ msgid "Search:"
-#~ msgstr "Traži:"
-
-#~ msgid "Skip quickly to the active turn when observing"
-#~ msgstr "Brzo skoči na aktivni potez pri posmatranju."
-
-#~ msgid ""
-#~ "Enable the games filter. If unchecked all games are shown, regardless of "
-#~ "any filter."
-#~ msgstr ""
-#~ "Uključi filter partija. Ako je prazno, prikazuju se sve partije bez "
-#~ "obzira na filter."
-
-#~ msgid ""
-#~ "Show all games that do *not* match your filter. Useful for hiding games "
-#~ "you are not interested in."
-#~ msgstr ""
-#~ "Prikaži sve partije koje filter *ne* poklapa. Korisno za skrivanje "
-#~ "partija koje vas ne zanimaju."
-
-#~ msgid "Only show games that have at least one vacant slot"
-#~ msgstr "Prikaži samo partije sa bar jednim slobodnim mestom."
-
-#~ msgid ""
-#~ "Only show games that are played or observed by at least one of your "
-#~ "friends"
-#~ msgstr ""
-#~ "Prikaži samo partije koje igra ili posmatra bar jedan od prijatelja."
-
-#~ msgid "Only show games whose title or description contain the entered text"
-#~ msgstr "Prikaži samo partije čiji naslov ili opis sadrži uneti tekst."
-
-#~ msgid "Joining this game requires a password."
-#~ msgstr "Pridruživanje ovoj partiji samo uz lozinku."
