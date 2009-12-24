@@ -23,6 +23,7 @@
 
 #include "../../global.hpp"
 
+#include "component.hpp"
 #include "../contexts.hpp"
 #include "../game_info.hpp"
 #include "../../config.hpp"
@@ -38,7 +39,7 @@ class rca_context;
 class ai_context;
 class component;
 
-class engine {
+class engine : public component {
 public:
 	engine( readonly_context &context, const config &cfg );
 
@@ -82,7 +83,7 @@ public:
 	virtual std::string evaluate(const std::string& str);
 
 
-	virtual std::string get_name() const;
+	virtual const std::string& get_name() const;
 
 	/**
 	 * set ai context (which is not available during early initialization)
@@ -95,12 +96,19 @@ public:
 	 */
 	virtual config to_config() const;
 
+
+	virtual const std::string& get_id() const;
+
+
+	virtual const std::string& get_engine() const;
+
 protected:
 	readonly_context &ai_;
 
 	/** name of the engine which has created this engine*/
 	std::string engine_;
-
+	std::string id_;
+	std::string name_;
 };
 
 

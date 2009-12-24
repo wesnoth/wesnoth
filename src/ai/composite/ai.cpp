@@ -1,3 +1,4 @@
+
 /* $Id$ */
 /*
    Copyright (C) 2009 by Yurii Chernyi <terraninfo@terraninfo.net>
@@ -22,6 +23,9 @@
 #include "../manager.hpp"
 #include "../../foreach.hpp"
 #include "../../log.hpp"
+
+#include <boost/bind.hpp>
+#include <boost/function.hpp>
 
 namespace ai {
 
@@ -51,50 +55,76 @@ void ai_composite::on_create()
 
 	// init the composite ai stages
 	foreach(const config &cfg_element, cfg_.child_range("stage")){
-		add_stage(-1,cfg_element);
+		add_stage(cfg_element);
 	}
 
 	config cfg;
 	cfg["engine"] = "fai";
-	engine_ptr e_ptr = get_engine(cfg);
+	engine_ptr e_ptr = get_engine_by_cfg(cfg);
 	if (e_ptr) {
 		e_ptr->set_ai_context(this);
 	}
 
+	boost::function2<void, std::vector<engine_ptr>&, const config&> factory_engines =
+		boost::bind(&ai::ai_composite::create_engine,*this,_1,_2);
+
+	boost::function2<void, std::vector<goal_ptr>&, const config&> factory_goals =
+		boost::bind(&ai::ai_composite::create_goal,*this,_1,_2);
+
+	boost::function2<void, std::vector<stage_ptr>&, const config&> factory_stages =
+		boost::bind(&ai::ai_composite::create_stage,*this,_1,_2);
+
+	register_vector_property("engine",get_engines(), factory_engines);
+	register_vector_property("goal",get_goals(), factory_goals);
+	register_vector_property("stage",stages_, factory_stages);
+
+	register_aspect_property("aspect",get_aspects());
+
 }
 
+
+void ai_composite::create_stage(std::vector<stage_ptr> &stages, const config &cfg)
+{
+	engine::parse_stage_from_config(*this,cfg,std::back_inserter(stages));
+}
+
+
+void ai_composite::create_goal(std::vector<goal_ptr> &goals, const config &cfg)
+{
+	engine::parse_goal_from_config(*this,cfg,std::back_inserter(goals));
+}
+
+
+void ai_composite::create_engine(std::vector<engine_ptr> &engines, const config &cfg)
+{
+	engine::parse_engine_from_config(*this,cfg,std::back_inserter(engines));
+}
 
 ai_composite::~ai_composite()
 {
 }
 
 
-bool ai_composite::add_stage(int pos, const config &cfg)
+bool ai_composite::add_stage(const config &cfg)
 {
-	if (pos<0) {
-		pos = stages_.size();
-	}
 	std::vector< stage_ptr > stages;
-	engine::parse_stage_from_config(*this,cfg,std::back_inserter(stages));
+	create_stage(stages,cfg);
 	int j=0;
 	foreach (stage_ptr b, stages ){
-		stages_.insert(stages_.begin()+pos+j,b);
+		stages_.push_back(b);
 		j++;
 	}
 	return (j>0);
 }
 
 
-bool ai_composite::add_goal(int pos, const config &cfg)
+bool ai_composite::add_goal(const config &cfg)
 {
-	if (pos<0) {
-		pos = get_goals().size();
-	}
 	std::vector< goal_ptr > goals;
-	engine::parse_goal_from_config(*this,cfg,std::back_inserter(goals));
+	create_goal(goals,cfg);
 	int j=0;
 	foreach (goal_ptr b, goals ){
-		get_goals().insert(get_goals().begin()+pos+j,b);
+		get_goals().push_back(b);
 		j++;
 	}
 	return (j>0);
@@ -108,11 +138,30 @@ void ai_composite::play_turn(){
 }
 
 
+const std::string& ai_composite::get_id() const
+{
+	return cfg_["id"];
+}
+
+
+
+const std::string& ai_composite::get_name() const
+{
+	return cfg_["name"];
+}
+
+
+const std::string& ai_composite::get_engine() const
+{
+	return cfg_["engine"];
+}
+
+
 std::string ai_composite::evaluate(const std::string& str)
 {
 	config cfg;
 	cfg["engine"] = "fai";//@todo 1.9 : consider allowing other engines to evaluate
-	engine_ptr e_ptr = get_engine(cfg);
+	engine_ptr e_ptr = get_engine_by_cfg(cfg);
 	if (!e_ptr) {
 		return interface::evaluate(str);
 	}
@@ -158,119 +207,5 @@ config ai_composite::to_config() const
 
 	return cfg;
 }
-
-component* ai_composite::get_child(const path_element &child)
-{
-	if (child.property=="aspect") {
-		//ASPECT
-		aspect_map::const_iterator a = get_aspects().find(child.id);
-		if (a!=get_aspects().end()){
-			return &*a->second;
-		}
-		return NULL;
-	} else if (child.property=="stage") {
-	      	//std::vector< stage_ptr >::iterator i = std::find_if(stages_.begin(),stages_.end(),path_element_matches< stage_ptr >(child));
-		//if (i!=stages_.end()){
-		//	return &*(*i);
-		//}
-		return NULL;
-	} else if (child.property=="engine") {
-		//ENGINE
-		//@todo 1.7.5 implement
-		return NULL;
-	} else if (child.property=="goal") {
-		//std::vector< goal_ptr >::iterator i = std::find_if(get_goals().begin(),get_goals().end(),path_element_matches< goal_ptr >(child));
-		//if (i!=get_goals().end()){
-		//	return &*(*i);
-		//}
-		return NULL;
-	}
-
-	//OOPS
-	return NULL;
-}
-
-
-bool ai_composite::add_child(const path_element &child, const config &cfg)
-{
-	if (child.property=="aspect") {
-		//ASPECT
-		return false;//adding aspects directly is not supported - aspect['foo'].facet should be added instead
-	} else if (child.property=="stage") {
-	      	std::vector< stage_ptr >::iterator i = std::find_if(stages_.begin(),stages_.end(),path_element_matches< stage_ptr >(child));
-		return add_stage(i-stages_.begin(),cfg);
-	} else if (child.property=="engine") {
-		//ENGINE
-		//@todo 1.7.5 implement
-		return false;
-	} else if (child.property=="goal") {
-		std::vector< goal_ptr >::iterator i = std::find_if(get_goals().begin(),get_goals().end(),path_element_matches< goal_ptr >(child));
-		return add_goal(i-get_goals().begin(),cfg);
-	}
-
-	//OOPS
-	return false;
-}
-
-
-bool ai_composite::change_child(const path_element &child, const config &cfg)
-{
-	if (child.property=="aspect") {
-		//ASPECT
-		return false;//changing aspects directly is not supported - aspect['foo'].facet should be changed instead
-	} else if (child.property=="stage") {
-	      	std::vector< stage_ptr >::iterator i = std::find_if(stages_.begin(),stages_.end(),path_element_matches< stage_ptr >(child));
-		if (i!=stages_.end()) {
-			//@todo 1.7.5 implement
-			//return (*i)->redeploy(cfg);
-		}
-		return false;
-
-	} else if (child.property=="engine") {
-		//ENGINE
-		//@todo 1.7.5 implement
-		return false;
-	} else if (child.property=="goal") {
-		std::vector< goal_ptr >::iterator i = std::find_if(get_goals().begin(),get_goals().end(),path_element_matches< goal_ptr >(child));
-		if (i!=get_goals().end()) {
-			return (*i)->redeploy(cfg);
-		}
-	}
-
-	//OOPS
-	return false;
-}
-
-
-bool ai_composite::delete_child(const path_element &child)
-{
-	if (child.property=="aspect") {
-		//ASPECT
-		return false;//deleting aspects directly is not supported - aspect['foo'].facet should be deleted instead
-	} else if (child.property=="stage") {
-	      	std::vector< stage_ptr >::iterator i = std::find_if(stages_.begin(),stages_.end(),path_element_matches< stage_ptr >(child));
-		if (i!=stages_.end()) {
-			stages_.erase(i);
-			return true;
-		}
-		return false;
-	} else if (child.property=="engine") {
-		//ENGINE
-		//@todo 1.7.5 implement
-		return false;
-	} else if (child.property=="goal") {
-		std::vector< goal_ptr >::iterator i = std::find_if(get_goals().begin(),get_goals().end(),path_element_matches< goal_ptr >(child));
-		if (i!=get_goals().end()) {
-			get_goals().erase(i);
-			return true;
-		}
-		return false;
-	}
-
-	//OOPS
-	return false;
-}
-
-
 
 } //end of namespace ai

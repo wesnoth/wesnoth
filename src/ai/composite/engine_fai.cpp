@@ -75,6 +75,7 @@ private:
 engine_fai::engine_fai( readonly_context &context, const config &cfg )
 	: engine(context,cfg), formula_ai_(context,cfg.child_or_empty("formula_ai"))
 {
+	name_ = "fai";
 	formula_ai_.on_create();
 }
 
@@ -123,11 +124,6 @@ std::string engine_fai::evaluate(const std::string &str)
 	return formula_ai_.evaluate(str);
 }
 
-
-std::string engine_fai::get_name() const
-{
-	return "fai";
-}
 
 void engine_fai::set_ai_context(ai_context *context)
 {

@@ -230,6 +230,7 @@ public:
 		model_.add_row_to_stuff_list("ai config full","ai config full");
 		model_.add_row_to_stuff_list("recall list overview","recall list overview");
 		model_.add_row_to_stuff_list("recall list full","recall list full");
+		model_.add_row_to_stuff_list("ai component structure","ai component structure");
 		model_.set_inspect_window_text("");
 
 	}
@@ -284,6 +285,11 @@ public:
 				c.add_child("unit",c_unit);
 			}
 			model_.set_inspect_window_text(c.debug());
+			return;
+		}
+
+		if (selected==5) {
+			model_.set_inspect_window_text(ai::manager::get_active_ai_structure_for_side(side_));
 			return;
 		}
 

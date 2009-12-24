@@ -248,6 +248,17 @@ const std::string holder::get_ai_overview()
 	return s.str();
 }
 
+
+
+const std::string holder::get_ai_structure()
+{
+	if (!this->ai_) {
+		get_ai_ref();
+	}
+	return component_manager::print_component_tree(&*this->ai_,"");
+}
+
+
 const std::string holder::get_ai_identifier() const
 {
 	return cfg_["id"];
@@ -666,6 +677,13 @@ std::string manager::get_active_ai_overview_for_side( side_number side)
 {
 	return get_active_ai_holder_for_side(side).get_ai_overview();
 }
+
+
+std::string manager::get_active_ai_structure_for_side( side_number side)
+{
+	return get_active_ai_holder_for_side(side).get_ai_structure();
+}
+
 
 std::string manager::get_active_ai_identifier_for_side( side_number side )
 {

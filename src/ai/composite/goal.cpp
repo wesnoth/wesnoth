@@ -67,6 +67,20 @@ const std::string& goal::get_id() const
 }
 
 
+
+const std::string& goal::get_name() const
+{
+	return cfg_["id"];
+}
+
+
+
+const std::string& goal::get_engine() const
+{
+	return cfg_["engine"];
+}
+
+
 bool goal::redeploy(const config &cfg)
 {
 	cfg_ = cfg;

@@ -34,7 +34,7 @@ const double candidate_action::BAD_SCORE = 0;
 const double candidate_action::HIGH_SCORE = 100000;
 
 candidate_action::candidate_action(rca_context &context, const config &cfg)
-	: recursion_counter_(context.get_recursion_count()), enabled_(utils::string_bool(cfg["enabled"],true)), engine_(cfg["engine"]), score_(lexical_cast_default<double>(cfg["score"],BAD_SCORE)),max_score_(lexical_cast_default<double>(cfg["max_score"],HIGH_SCORE)),name_(cfg["name"]),type_(cfg["type"])
+	: recursion_counter_(context.get_recursion_count()), enabled_(utils::string_bool(cfg["enabled"],true)), engine_(cfg["engine"]), score_(lexical_cast_default<double>(cfg["score"],BAD_SCORE)),max_score_(lexical_cast_default<double>(cfg["max_score"],HIGH_SCORE)),id_(cfg["id"]),name_(cfg["name"]),type_(cfg["type"])
 {
 	init_rca_context_proxy(context);
 }
@@ -87,6 +87,18 @@ const std::string& candidate_action::get_name() const
 const std::string& candidate_action::get_type() const
 {
 	return type_;
+}
+
+
+const std::string& candidate_action::get_id() const
+{
+	return id_;
+}
+
+
+const std::string& candidate_action::get_engine() const
+{
+	return engine_;
 }
 
 

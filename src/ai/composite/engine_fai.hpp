@@ -42,8 +42,6 @@ public:
 
 	virtual std::string evaluate(const std::string &str);
 
-	virtual std::string get_name() const;
-
 	virtual config to_config() const;
 
 	virtual void set_ai_context(ai_context *context);

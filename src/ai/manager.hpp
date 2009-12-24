@@ -73,6 +73,9 @@ public:
 	const std::string get_ai_overview();
 
 
+	const std::string get_ai_structure();
+
+
 	const std::string get_ai_identifier() const;
 
 private:
@@ -376,6 +379,14 @@ public:
 	 * @return an ai overview
 	 */
 	static std::string get_active_ai_overview_for_side( side_number side);
+
+
+	/**
+	 * Gets AI Structure for active AI of the given @a side
+	 * @param side side number (1-based)
+	 * @return an ai structure
+	 */
+	static std::string get_active_ai_structure_for_side( side_number side);
 
 	/**
 	 * Gets AI algorithm identifier for active AI of the given @a side.

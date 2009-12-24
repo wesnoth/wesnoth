@@ -19,8 +19,10 @@
 
 #include "component.hpp"
 #include "engine.hpp"
-#include "../formula/ai.hpp"
 #include "../../log.hpp"
+#include "../../foreach.hpp"
+
+#include "../formula/ai.hpp"
 
 #include <boost/lexical_cast.hpp>
 #include <boost/regex.hpp>
@@ -31,32 +33,6 @@ static lg::log_domain log_ai_composite_component("ai/composite/component");
 #define DBG_AI_COMPOSITE LOG_STREAM(debug, log_ai_composite_component)
 #define LOG_AI_COMPOSITE LOG_STREAM(info, log_ai_composite_component)
 #define ERR_AI_COMPOSITE LOG_STREAM(err, log_ai_composite_component)
-
-
-component* component::get_child(const path_element &/*child*/)
-{
-	return NULL;
-}
-
-
-bool component::add_child(const path_element &/*child*/, const config &/*cfg*/)
-{
-	return false;
-}
-
-
-bool component::change_child(const path_element &/*child*/, const config &/*cfg*/)
-{
-	return false;
-}
-
-
-bool component::delete_child(const path_element &/*child*/)
-{
-	return false;
-}
-
-
 
 
 /*
@@ -83,6 +59,68 @@ bool component::delete_child(const path_element &/*child*/)
     [facet]...[/facet]
 [/modify_ai]
 */
+
+
+component* component::get_child(const path_element &child)
+{
+	std::map<std::string, property_handler_ptr>::iterator i = property_handlers_.find(child.property);
+	if (i!=property_handlers_.end()) {
+		return i->second->handle_get(child);
+	}
+	return NULL;
+}
+
+
+bool component::add_child(const path_element &child, const config &cfg)
+{
+	std::map<std::string, property_handler_ptr>::iterator i = property_handlers_.find(child.property);
+	if (i!=property_handlers_.end()) {
+		return i->second->handle_add(child,cfg);
+	}
+	return false;
+}
+
+
+bool component::change_child(const path_element &child, const config &cfg)
+{
+	std::map<std::string, property_handler_ptr>::iterator i = property_handlers_.find(child.property);
+	if (i!=property_handlers_.end()) {
+		return i->second->handle_change(child,cfg);
+	}
+	return false;
+}
+
+
+bool component::delete_child(const path_element &child)
+{
+	std::map<std::string, property_handler_ptr>::iterator i = property_handlers_.find(child.property);
+	if (i!=property_handlers_.end()) {
+		return i->second->handle_delete(child);
+	}
+	return false;
+}
+
+
+std::vector<component*> component::get_children(const std::string &type)
+{
+	std::vector<component*> components;
+	property_handler_map::iterator i = property_handlers_.find(type);
+	if (i!=property_handlers_.end()) {
+		return i->second->handle_get_children();
+	}
+
+	return components;
+}
+
+
+std::vector<std::string> component::get_children_types()
+{
+	std::vector<std::string> types;
+	foreach (property_handler_map::value_type &ph, property_handlers_) {
+		types.push_back(ph.first);
+	}
+	return types;
+}
 
 
 static component *find_component(component *root, const std::string &path, path_element &tail)
@@ -115,7 +153,7 @@ static component *find_component(component *root, const std::string &path, path_
 				pe.position = -2;
 			}
 		}
-		DBG_AI_COMPOSITE << "adding path element: "<< pe << std::endl;
+		//DBG_AI_COMPOSITE << "adding path element: "<< pe << std::endl;
 		elements.push_back(pe);
 	}
 	if (elements.size()<1) {
@@ -177,7 +215,46 @@ bool component_manager::delete_component(component *root, const std::string &pat
 }
 
 
+static void print_component(component *root, const std::string &type, std::stringstream &s, int offset)
+{
+	std::stringstream offset_ss;
+	for (int i=0;i<offset;++i) {
+		offset_ss<<"    ";
+	}
+	const std::string &offset_str = offset_ss.str();
+
+	const std::vector<std::string> &t_list = root->get_children_types();
+
+	s << offset_str << type<<"["<<root->get_id() <<"] "<<root->get_engine()<<" "<<root->get_name()<< std::endl;
+
+	foreach (std::string t, t_list) {
+		std::vector<component*> c_list = root->get_children(t);
+		foreach (component *c, c_list) {
+			print_component(c,t,s,offset+1);
+		}
+	}
+}
+
+std::string component_manager::print_component_tree(component *root, const std::string &path)
+{
+	path_element tail;
+	component *c;
+	if (!path.empty()) {
+		c = find_component(root,path,tail);
+		if (c==NULL) {
+			ERR_AI_COMPOSITE << "unable to find component" <<std::endl;
+			return "";
+		}
+	} else {
+		c = root;
+	}
+	std::stringstream s;
+	print_component(c, "", s, 0);
+	return s.str();
+}
+
 } //end of namespace ai
+
 
 std::ostream &operator<<(std::ostream &o, const ai::path_element &e)
 {

@@ -20,11 +20,14 @@
 #ifndef AI_COMPOSITE_COMPONENT_HPP_INCLUDED
 #define AI_COMPOSITE_COMPONENT_HPP_INCLUDED
 
-#include "../../global.hpp"
-
-#include "../game_info.hpp"
-
 #include <vector>
+#include <string>
+#include <iostream>
+#include <map>
+#include <boost/function.hpp>
+#include <boost/shared_ptr.hpp>
+
+#include "property_handler.hpp"
 
 #ifdef _MSC_VER
 #pragma warning(push)
@@ -35,29 +38,37 @@
 //============================================================================
 namespace ai {
 
-
-struct path_element {
-	path_element()
-		: property()
-		, id()
-		, position(0)
-	{
-	}
-
-	std::string property;
-	std::string id;
-	int position;
-};
-
-
 class component {
 public:
 	component() {};
+	virtual const std::string& get_id() const = 0;
+	virtual const std::string& get_name() const = 0;
+	virtual const std::string& get_engine() const = 0;
 	virtual ~component() {};
 	virtual component* get_child(const path_element &child);
+	virtual std::vector<component*> get_children(const std::string &type);
+	virtual std::vector<std::string> get_children_types();
 	virtual bool change_child(const path_element &child, const config &cfg);
 	virtual bool add_child(const path_element &child, const config &cfg);
 	virtual bool delete_child(const path_element &child);
+
+	template<typename X>
+	void register_vector_property(const std::string &property, std::vector< boost::shared_ptr<X> > &values_, boost::function2<void, std::vector< boost::shared_ptr<X> >&, const config&> construction_factory)
+	{
+	       	property_handlers_.insert(make_pair(property,property_handler_ptr(new vector_property_handler<X>(property,values_,construction_factory))));
+	}
+
+	template<typename X>
+	void register_aspect_property(const std::string &property, std::map< std::string, boost::shared_ptr<X> > &aspects_)
+	{
+	       	property_handlers_.insert(make_pair(property,property_handler_ptr(new aspect_property_handler<X>(property,aspects_))));
+	}
+
+
+
+	typedef std::map<std::string,property_handler_ptr> property_handler_map;
+private:
+	property_handler_map property_handlers_;
 };
 
 class component_manager {
@@ -65,39 +76,11 @@ public:
 	static bool add_component(component *root, const std::string &path, const config &cfg);
 	static bool change_component(component *root, const std::string &path, const config &cfg);
 	static bool delete_component(component *root, const std::string &path);
-};
-
-
-
-template<typename T>
-class path_element_matches{
-public:
-	path_element_matches(const path_element &element)
-		: count_(0), element_(element)
-	{
-	}
-	virtual ~path_element_matches(){}
-
-	bool operator()(const T& t)
-	{
-		if ( (!element_.id.empty()) && (element_.id == t->get_id()) ) {
-			return true;
-		}
-		if (count_ == element_.position) {
-			return true;
-		}
-		count_++;
-		return false;
-	}
-
-private:
-	int count_;
-	path_element element_;
+	static std::string print_component_tree(component *root, const std::string &path);
 };
 
 
 } //end of namespace ai
-
 
 std::ostream &operator<<(std::ostream &o, const ai::path_element &e);
 

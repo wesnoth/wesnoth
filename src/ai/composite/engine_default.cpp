@@ -33,6 +33,7 @@ static lg::log_domain log_ai_composite_engine_cpp("ai/composite/engine/cpp");
 engine_cpp::engine_cpp( readonly_context &context, const config &cfg )
 	: engine(context,cfg)
 {
+	name_ = "cpp";
 }
 
 engine_cpp::~engine_cpp()
@@ -111,10 +112,5 @@ void engine_cpp::do_parse_goal_from_config(const config &cfg, std::back_insert_i
 	*b = new_goal;
 }
 
-
-std::string engine_cpp::get_name() const
-{
-	return "cpp";
-}
 
 } //end of namespace ai

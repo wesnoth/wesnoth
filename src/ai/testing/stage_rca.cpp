@@ -23,6 +23,8 @@
 #include "../../foreach.hpp"
 #include "../../log.hpp"
 
+#include <boost/bind.hpp>
+
 namespace ai {
 
 namespace testing_ai_default {
@@ -45,7 +47,19 @@ void candidate_action_evaluation_loop::on_create()
 	foreach(const config &cfg_element, cfg_.child_range("candidate_action")){
 		engine::parse_candidate_action_from_config(*this,cfg_element,back_inserter(candidate_actions_));
 	}
+
+	boost::function2<void, std::vector<candidate_action_ptr>&, const config&> factory_candidate_actions =
+		boost::bind(&testing_ai_default::candidate_action_evaluation_loop::create_candidate_action,*this,_1,_2);
+
+	register_vector_property("candidate_action",candidate_actions_, factory_candidate_actions);
+
 }
+
+void candidate_action_evaluation_loop::create_candidate_action(std::vector<candidate_action_ptr> &candidate_actions, const config &cfg)
+{
+	engine::parse_candidate_action_from_config(*this,cfg,std::back_inserter(candidate_actions));
+}
+
 
 config candidate_action_evaluation_loop::to_config() const
 {
@@ -133,6 +147,25 @@ rca_context& candidate_action_evaluation_loop::get_rca_context()
 
 candidate_action_evaluation_loop::~candidate_action_evaluation_loop()
 {
+}
+
+bool candidate_action_evaluation_loop::add_child(const path_element &/*child*/, const config &/*cfg*/)
+{
+	//if (child.property=="candidate_action") {
+	//     	std::vector< candidate_action_ptr >::iterator i = std::find_if(candidate_actions_.begin(),candidate_actions_.end(),path_element_matches< candidate_action_ptr >(child));
+	//return add_candidate_action(i-candidate_actions_.begin(),cfg);
+	//}
+	return false;
+}
+
+bool candidate_action_evaluation_loop::change_child(const path_element &/*child*/, const config &/*cfg*/)
+{
+	return false;
+}
+
+bool candidate_action_evaluation_loop::delete_child(const path_element &/*child*/)
+{
+	return false;
 }
 
 } // end of namespace testing_ai_default

@@ -207,6 +207,9 @@ public:
 	virtual const aspect_map& get_aspects() const = 0;
 
 
+	virtual aspect_map& get_aspects() = 0;
+
+
 	virtual void add_facet(const std::string &id, const config &cfg) const = 0;
 
 
@@ -239,7 +242,13 @@ public:
 	/**
 	 * get engine by cfg, creating it if it is not created yet but known
 	 */
-	virtual engine_ptr get_engine(const config& cfg) = 0;
+	virtual engine_ptr get_engine_by_cfg(const config& cfg) = 0;
+
+
+	virtual const std::vector<engine_ptr>& get_engines() const = 0;
+
+
+	virtual std::vector<engine_ptr>& get_engines() = 0;
 
 
 	virtual std::string get_grouping() const = 0;
@@ -588,6 +597,12 @@ public:
 	}
 
 
+	virtual aspect_map& get_aspects()
+	{
+		return target_->get_aspects();
+	}
+
+
 	virtual void add_aspects(std::vector< aspect_ptr > &aspects )
 	{
 		return target_->add_aspects(aspects);
@@ -650,9 +665,21 @@ public:
 	}
 
 
-	virtual engine_ptr get_engine(const config &cfg)
+	virtual engine_ptr get_engine_by_cfg(const config &cfg)
 	{
-		return target_->get_engine(cfg);
+		return target_->get_engine_by_cfg(cfg);
+	}
+
+
+	virtual const std::vector<engine_ptr>& get_engines() const
+	{
+		return target_->get_engines();
+	}
+
+
+	virtual std::vector<engine_ptr>& get_engines()
+	{
+		return target_->get_engines();
 	}
 
 
@@ -1173,6 +1200,9 @@ public:
 	virtual const aspect_map& get_aspects() const;
 
 
+	virtual aspect_map& get_aspects();
+
+
 	virtual const attacks_vector& get_attacks() const;
 
 
@@ -1197,7 +1227,13 @@ public:
 	virtual const move_map& get_enemy_srcdst() const;
 
 
-	virtual engine_ptr get_engine(const config& cfg);
+	virtual engine_ptr get_engine_by_cfg(const config& cfg);
+
+
+	virtual const std::vector<engine_ptr>& get_engines() const;
+
+
+	virtual std::vector<engine_ptr>& get_engines();
 
 
 	virtual std::string get_grouping() const;

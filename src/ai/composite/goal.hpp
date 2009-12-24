@@ -35,6 +35,8 @@
 //included for 'target' markers
 #include "../default/contexts.hpp"
 
+#include "component.hpp"
+
 #include <map>
 #include <stack>
 #include <vector>
@@ -42,7 +44,7 @@
 
 namespace ai {
 
-class goal : public readonly_context_proxy {
+class goal : public readonly_context_proxy, public component {
 public:
 	goal(readonly_context &context, const config &cfg);
 
@@ -63,6 +65,12 @@ public:
 
 
 	const std::string& get_id() const;
+
+
+	const std::string& get_name() const;
+
+
+	const std::string& get_engine() const;
 
 
 	bool redeploy(const config &cfg);

@@ -24,6 +24,7 @@
 
 #include "../../config.hpp"
 
+#include "component.hpp"
 #include "contexts.hpp"
 #include "../contexts.hpp"
 #include <boost/shared_ptr.hpp>
@@ -39,7 +40,7 @@
 //============================================================================
 namespace ai {
 
-class candidate_action : public virtual rca_context_proxy {
+class candidate_action : public virtual rca_context_proxy, public component {
 public:
 	//this is a score guaranteed to be <=0, thus candidate action with this score will not be selected for execution
 	static const double BAD_SCORE;
@@ -111,6 +112,12 @@ public:
 	const std::string& get_type() const;
 
 
+	const std::string& get_id() const;
+
+
+	const std::string& get_engine() const;
+
+
 	int get_recursion_count() const;
 
 
@@ -125,13 +132,21 @@ private:
 
 	bool enabled_;
 
+
 	std::string engine_;
+
 
 	double score_;
 
+
 	double max_score_;
 
+
+	std::string id_;
+
+
 	std::string name_;
+
 
 	std::string type_;
 

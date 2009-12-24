@@ -40,6 +40,7 @@
 #include <deque>
 #include <iterator>
 #include <algorithm>
+#include <boost/bind.hpp>
 #include <boost/lexical_cast.hpp>
 #include <boost/pointer_cast.hpp>
 
@@ -82,6 +83,9 @@ public:
 	virtual config to_config() const;
 
 
+	virtual bool delete_all_facets();
+
+
 	void handle_generic_event(const std::string &/*event_name*/)
 	{
 		invalidate();
@@ -98,6 +102,9 @@ public:
 
 
 	const std::string& get_id() const;
+
+
+	const std::string& get_engine() const;
 
 
 	static lg::log_domain& log();
@@ -242,7 +249,6 @@ public:
 		}
 	}
 
-
 protected:
 	boost::shared_ptr<typesafe_aspect <T> > &where_;
 	aspect_map &aspects_;
@@ -272,11 +278,29 @@ public:
 				default_ = b;
 			}
 		}
+
+		boost::function2<void, typename aspect_type<T>::typesafe_ptr_vector&, const config&> factory_facets =
+                        boost::bind(&ai::composite_aspect<T>::create_facet,*this,_1,_2);
+
+                register_vector_property("facet",facets_, factory_facets);
+
 	}
+
+
+	void create_facet(  typename aspect_type<T>::typesafe_ptr_vector &facets, const config &cfg)
+        {
+		std::vector<aspect_ptr> facets_base;
+		engine::parse_aspect_from_config(*this,cfg,this->get_id(),std::back_inserter(facets_base));
+		foreach (aspect_ptr a, facets_base ){
+			typename aspect_type<T>::typesafe_ptr b = boost::dynamic_pointer_cast< typesafe_aspect<T> > (a);
+			facets.push_back(b);
+		}
+        }
+
 
 	virtual void recalculate() const
 	{
-		//@todo 1.7.5 optimize in case of an aspect which returns variant
+		//@todo 1.9 optimize in case of an aspect which returns variant
 		//typedef std::vector< boost::shared_ptr< typesafe_aspect < T > > >::reverse_const_iterator Iter;
 
 		foreach (const typename aspect_type<T>::typesafe_ptr &f, make_pair(facets_.rbegin(),facets_.rend())) {
@@ -321,55 +345,11 @@ public:
 	}
 
 
-	virtual component* get_child(const path_element &child)
+	virtual bool delete_all_facets()
 	{
-		if (child.property!="facet") {
-			return NULL;
-		}
-		typename aspect_type<T>::typesafe_ptr_vector::iterator i = std::find_if(facets_.begin(),facets_.end(),path_element_matches< typename aspect_type<T>::typesafe_ptr >(child));
-		if (i!=facets_.end()){
-			return &*(*i);
-		}
-		return NULL;
-	}
-
-
-	virtual bool add_child(const path_element &child, const config &cfg)
-	{
-		if (child.property!="facet") {
-			return false;
-		}
-		typename aspect_type<T>::typesafe_ptr_vector::iterator i = std::find_if(facets_.begin(),facets_.end(),path_element_matches< typename aspect_type<T>::typesafe_ptr >(child));
-		LOG_STREAM(info, aspect::log()) << "adding a new child facet to composite aspect["<<this->get_id()<<"]"<< std::endl;
-		return add_facet(i-facets_.begin(),cfg);
-	}
-
-
-	virtual bool change_child(const path_element &child, const config &cfg)
-	{
-		if (child.property!="facet") {
-			return false;
-		}
-		typename aspect_type<T>::typesafe_ptr_vector::iterator i = std::find_if(facets_.begin(),facets_.end(),path_element_matches< typename aspect_type<T>::typesafe_ptr >(child));
-		if (i!=facets_.end()){
-			return (*i)->redeploy(cfg,this->get_id());
-		}
-		return false;
-	}
-
-
-	virtual bool delete_child(const path_element &child)
-	{
-		if (child.property!="facet") {
-			return false;
-		}
-		typename aspect_type<T>::typesafe_ptr_vector::iterator i = std::find_if(facets_.begin(),facets_.end(),path_element_matches< typename aspect_type<T>::typesafe_ptr >(child));
-		if (i!=facets_.end()) {
-			facets_.erase(i);
-			this->invalidate();//@todo: invalidate only if facet was active
-			return true;
-		}
-		return false;
+		bool b = !facets_.empty();
+		facets_.clear();
+		return b;
 	}
 
 protected:

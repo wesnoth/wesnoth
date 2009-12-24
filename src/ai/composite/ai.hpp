@@ -90,10 +90,19 @@ public:
 	void switch_side(side_number side);
 
 
-	virtual bool add_goal(int pos, const config &cfg);
+	virtual bool add_goal(const config &cfg);
 
 
-	virtual bool add_stage(int pos, const config &cfg);
+	virtual bool add_stage(const config &cfg);
+
+
+	void create_stage(std::vector<stage_ptr> &stages, const config &cfg);
+
+
+	void create_goal(std::vector<goal_ptr> &goals, const config &cfg);
+
+
+	void create_engine(std::vector<engine_ptr> &engines, const config &cfg);
 
 
 	void on_create();
@@ -104,16 +113,13 @@ public:
 	virtual ai_context& get_ai_context();
 
 
-	virtual component* get_child(const path_element &child);
+	const std::string& get_id() const;
 
 
-	virtual bool add_child(const path_element &child, const config &cfg);
+	const std::string& get_name() const;
 
 
-	virtual bool change_child(const path_element &child, const config &cfg);
-
-
-	virtual bool delete_child(const path_element &child);
+	const std::string& get_engine() const;
 
 protected:
 

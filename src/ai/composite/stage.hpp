@@ -22,6 +22,7 @@
 
 #include "../../global.hpp"
 
+#include "component.hpp"
 #include "contexts.hpp"
 #include "../contexts.hpp"
 #include "../../config.hpp"
@@ -39,7 +40,7 @@ namespace ai {
 
 class ai_composite;
 
-class stage : public virtual ai_context_proxy {
+class stage : public virtual ai_context_proxy, public component {
 public:
 
 	/**
@@ -78,6 +79,15 @@ public:
 
 
 	virtual const std::string& get_id() const;
+
+
+	virtual const std::string& get_name() const;
+
+
+	virtual const std::string& get_engine() const;
+
+
+
 protected:
 	/**
 	 * Play the turn - implementation

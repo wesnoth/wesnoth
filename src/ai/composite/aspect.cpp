@@ -76,6 +76,13 @@ const std::string& aspect::get_name() const
 	return name_;
 }
 
+
+const std::string& aspect::get_engine() const
+{
+	return engine_;
+}
+
+
 bool aspect::redeploy(const config &cfg, const std::string& /*id*/)
 {
 	if (invalidate_on_turn_start_) {
@@ -134,6 +141,11 @@ config aspect::to_config() const
 	return cfg;
 }
 
+
+bool aspect::delete_all_facets()
+{
+	return false;
+}
 
 known_aspect::known_aspect(const std::string &name)
 	: name_(name)

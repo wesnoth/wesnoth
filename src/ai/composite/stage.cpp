@@ -77,6 +77,22 @@ const std::string& stage::get_id() const
 	return cfg_["id"];
 }
 
+
+const std::string& stage::get_engine() const
+{
+	return cfg_["engine"];
+}
+
+
+
+const std::string& stage::get_name() const
+{
+	return cfg_["name"];
+}
+
+
+
+
 // =======================================================================
 // COMPOSITE AI IDLE STAGE
 // =======================================================================

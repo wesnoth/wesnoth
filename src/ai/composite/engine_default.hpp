@@ -49,8 +49,6 @@ public:
 	virtual void do_parse_goal_from_config(const config &cfg, std::back_insert_iterator<std::vector< goal_ptr > > b );
 
 
-	virtual std::string get_name() const;
-
 };
 
 } //end of namespace ai

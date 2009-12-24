@@ -23,6 +23,7 @@
 #include "../../global.hpp"
 
 #include "../composite/contexts.hpp"
+#include "../composite/component.hpp"
 #include "../composite/rca.hpp"
 #include "../composite/stage.hpp"
 #include "../../config.hpp"
@@ -53,6 +54,15 @@ public:
 	config to_config() const;
 
 	rca_context& get_rca_context();
+
+	virtual bool add_child(const path_element &child, const config &cfg);
+
+	virtual bool change_child(const path_element &child, const config &cfg);
+
+	virtual bool delete_child(const path_element &child);
+
+
+	void create_candidate_action(std::vector<candidate_action_ptr> &candidate_actions, const config &cfg);
 
 private:
 	std::vector<candidate_action_ptr> candidate_actions_;

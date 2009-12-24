@@ -487,6 +487,12 @@ const aspect_map& readonly_context_impl::get_aspects() const
 }
 
 
+aspect_map& readonly_context_impl::get_aspects()
+{
+	return aspects_;
+}
+
+
 const attacks_vector& readonly_context_impl::get_attacks() const
 {
 	if (attacks_) {
@@ -562,7 +568,7 @@ const move_map& readonly_context_impl::get_enemy_srcdst() const
 }
 
 
-engine_ptr readonly_context_impl::get_engine(const config& cfg)
+engine_ptr readonly_context_impl::get_engine_by_cfg(const config& cfg)
 {
 	std::string engine_name = cfg["engine"];
 	if (engine_name.empty()) {
@@ -596,6 +602,19 @@ engine_ptr readonly_context_impl::get_engine(const config& cfg)
 	engines_.push_back(new_engine);
 	return engines_.back();
 }
+
+
+const std::vector<engine_ptr>& readonly_context_impl::get_engines() const
+{
+	return engines_;
+}
+
+
+std::vector<engine_ptr>& readonly_context_impl::get_engines()
+{
+	return engines_;
+}
+
 
 std::string readonly_context_impl::get_grouping() const
 {

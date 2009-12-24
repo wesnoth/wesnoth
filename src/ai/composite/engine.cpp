@@ -31,9 +31,9 @@ static lg::log_domain log_ai_composite_engine("ai/composite/engine");
 #define ERR_AI_COMPOSITE_ENGINE LOG_STREAM(err, log_ai_composite_engine)
 
 engine::engine( readonly_context &context, const config &cfg )
-	: ai_(context), engine_(cfg["engine"])
+	: ai_(context), engine_(cfg["engine"]), id_(cfg["id"]), name_(cfg["name"])
 {
-	LOG_AI_COMPOSITE_ENGINE << "side "<< ai_.get_side() << " : "<<" created engine with name=["<<cfg["name"]<<"]"<<std::endl;
+	LOG_AI_COMPOSITE_ENGINE << "side "<< ai_.get_side() << " : "<<" created engine with name=["<<name_<<"]"<<std::endl;
 }
 
 engine::~engine()
@@ -43,7 +43,7 @@ engine::~engine()
 
 void engine::parse_aspect_from_config( readonly_context &context, const config &cfg, const std::string &id, std::back_insert_iterator< std::vector< aspect_ptr > > b )
 {
-	engine_ptr eng = context.get_engine(cfg);
+	engine_ptr eng = context.get_engine_by_cfg(cfg);
 	if (eng){
 		//do not override that method in subclasses which cannot create aspects
 		eng->do_parse_aspect_from_config(cfg, id, b);
@@ -52,7 +52,7 @@ void engine::parse_aspect_from_config( readonly_context &context, const config &
 
 void engine::parse_candidate_action_from_config( rca_context &context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr > > b )
 {
-	engine_ptr eng = context.get_engine(cfg);
+	engine_ptr eng = context.get_engine_by_cfg(cfg);
 	if (eng){
 		//do not override that method in subclasses which cannot create candidate actions
 		eng->do_parse_candidate_action_from_config(context, cfg, b);
@@ -61,7 +61,7 @@ void engine::parse_candidate_action_from_config( rca_context &context, const con
 
 void engine::parse_engine_from_config( readonly_context &context, const config &cfg, std::back_insert_iterator<std::vector< engine_ptr > > b )
 {
-	engine_ptr eng = context.get_engine(cfg);
+	engine_ptr eng = context.get_engine_by_cfg(cfg);
 	if (eng){
 		//do not override that method in subclasses which cannot create engines
 		eng->do_parse_engine_from_config(cfg, b);
@@ -71,7 +71,7 @@ void engine::parse_engine_from_config( readonly_context &context, const config &
 
 void engine::parse_goal_from_config( readonly_context &context, const config &cfg, std::back_insert_iterator<std::vector< goal_ptr > > b )
 {
-	engine_ptr eng = context.get_engine(cfg);
+	engine_ptr eng = context.get_engine_by_cfg(cfg);
 	if (eng){
 		//do not override that method in subclasses which cannot create goals
 		eng->do_parse_goal_from_config(cfg, b);
@@ -81,7 +81,7 @@ void engine::parse_goal_from_config( readonly_context &context, const config &cf
 
 void engine::parse_stage_from_config( ai_context &context, const config &cfg, std::back_insert_iterator<std::vector< stage_ptr > > b )
 {
-	engine_ptr eng = context.get_engine(cfg);
+	engine_ptr eng = context.get_engine_by_cfg(cfg);
 	if (eng){
 		//do not override that method in subclasses which cannot create stages
 		eng->do_parse_stage_from_config(context, cfg, b);
@@ -120,9 +120,16 @@ std::string engine::evaluate(const std::string& /*str*/)
 
 
 
-std::string engine::get_name() const
+const std::string& engine::get_name() const
 {
-	return "null";
+	return name_;
+}
+
+
+
+const std::string& engine::get_engine() const
+{
+	return engine_;
 }
 
 
@@ -137,6 +144,12 @@ config engine::to_config() const
 	cfg["engine"] = engine_;
 	cfg["name"] = get_name();
 	return cfg;
+}
+
+
+const std::string& engine::get_id() const
+{
+	return id_;
 }
 
 
