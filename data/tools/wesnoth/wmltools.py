@@ -9,6 +9,7 @@ map_extensions   = ("map", "mask")
 image_extensions = ("png", "jpg", "jpeg")
 sound_extensions = ("ogg", "wav")
 vc_directories = (".git", ".svn")
+l10n_directories = ("l10n",)
 resource_extensions = map_extensions + image_extensions + sound_extensions
 image_reference = r"[A-Za-z0-9{}.][A-Za-z0-9_/+{}.-]*\.(png|jpg)(?=(~.*)?)"
 
@@ -89,7 +90,7 @@ class Forest:
             self.forest.append(subtree)
         for i in range(len(self.forest)):
             # Ignore version-control subdirectories and Emacs tempfiles
-            for dirkind in vc_directories:
+            for dirkind in vc_directories + l10n_directories:
                 self.forest[i] = filter(lambda x: dirkind not in x, self.forest[i])
             self.forest[i] = filter(lambda x: '.#' not in x, self.forest[i])
             self.forest[i] = filter(lambda x: not os.path.isdir(x), self.forest[i])
