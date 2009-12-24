@@ -275,7 +275,7 @@ unit::unit(unit_map* unitmap, const config& cfg,
 	}
 	if (const config &variables = cfg.child("variables")) {
 		variables_ = variables;
-		cfg_.remove_child("variables",0);
+		cfg_.clear_children("variables");
 	}
 
 	facing_ = map_location::parse_direction(cfg["facing"]);
@@ -283,7 +283,7 @@ unit::unit(unit_map* unitmap, const config& cfg,
 
 	if (const config &mods = cfg.child("modifications")) {
 		modifications_ = mods;
-		cfg_.remove_child("modifications",0);
+		cfg_.clear_children("modifications");
 	}
 
 	advance_to(type(), use_traits, state);
@@ -418,7 +418,7 @@ unit::unit(unit_map* unitmap, const config& cfg,
 				set_state(st.first, true);
 			}
 		}
-		cfg_.remove_child("status",0);
+		cfg_.clear_children("status");
 	}
 	if(cfg["ai_special"] == "guardian") {
 		set_state("guardian", true);
