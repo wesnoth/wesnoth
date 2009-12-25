@@ -319,6 +319,39 @@ static bool luaW_tovconfig(lua_State *L, int index, vconfig &vcfg, bool def = tr
 }
 
 /**
+ * Calls a Lua function stored below its @a nArgs arguments at the top of the stack.
+ * @return true if the call was successful and @a nRets return values are available.
+ */
+bool luaW_pcall(lua_State *L, int nArgs, int nRets, bool allow_wml_error = false)
+{
+	// Load the error handler before the function and its arguments.
+	lua_pushlightuserdata(L, (void *)&executeKey);
+	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_insert(L, -2 - nArgs);
+
+	// Call the function.
+	int res = lua_pcall(L, nArgs, nRets, -2 - nArgs);
+	if (res)
+	{
+		char const *m = lua_tostring(L, -1);
+		if (allow_wml_error && strncmp(m, "~wml:", 5) == 0) {
+			m += 5;
+			char const *e = strstr(m, "stack traceback");
+			lg::wml_error << std::string(m, e ? e - m : strlen(m));
+		} else {
+			chat_message("Lua error", m);
+			ERR_LUA << m << '\n';
+		}
+		lua_pop(L, 2);
+		return false;
+	}
+
+	// Remove the error handler.
+	lua_remove(L, -1 - nRets);
+	return true;
+}
+
+/**
  * Creates a t_string object (__call metamethod).
  * - Arg 1: userdata containing the domain.
  * - Arg 2: string to translate.
@@ -872,10 +905,6 @@ static int intf_require(lua_State *L)
 	if (p.empty())
 		goto error_call_destructors_1;
 
-	// Load the error handler.
-	lua_pushlightuserdata(L, (void *)&executeKey);
-	lua_rawget(L, LUA_REGISTRYINDEX);
-
 	// Compile the file.
 	int res = luaL_loadfile(L, p.c_str());
 	if (res)
@@ -887,15 +916,7 @@ static int intf_require(lua_State *L)
 	}
 
 	// Execute it.
-	res = lua_pcall(L, 0, 1, -2);
-	if (res)
-	{
-		char const *m = lua_tostring(L, -1);
-		chat_message("Lua error", m);
-		ERR_LUA << m << '\n';
-		return 0;
-	}
-	lua_remove(L, -2);
+	if (!luaW_pcall(L, 0, 1)) return 0;
 
 	// Add the return value to the table.
 	lua_pushvalue(L, 1);
@@ -997,10 +1018,6 @@ struct lua_action_handler : game_events::action_handler
 
 void lua_action_handler::handle(const game_events::queued_event &ev, const vconfig &cfg)
 {
-	// Load the error handler from the registry.
-	lua_pushlightuserdata(L, (void *)&executeKey);
-	lua_rawget(L, LUA_REGISTRYINDEX);
-
 	// Load the user function from the registry.
 	lua_pushlightuserdata(L, (void *)&uactionKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
@@ -1014,23 +1031,7 @@ void lua_action_handler::handle(const game_events::queued_event &ev, const vconf
 	lua_setmetatable(L, -2);
 
 	queued_event_context dummy(&ev);
-	int res = lua_pcall(L, 1, 0, -3);
-	if (res)
-	{
-		char const *m = lua_tostring(L, -1);
-		if (strncmp(m, "~wml:", 5) == 0) {
-			m += 5;
-			char const *e = strstr(m, "stack traceback");
-			lg::wml_error << std::string(m, e ? e - m : strlen(m));
-		} else {
-			chat_message("Lua error", m);
-			ERR_LUA << m << '\n';
-		}
-		lua_pop(L, 2);
-		return;
-	}
-
-	lua_pop(L, 1);
+	luaW_pcall(L, 1, 0, true);
 }
 
 lua_action_handler::~lua_action_handler()
@@ -1448,10 +1449,6 @@ lua_calculator::lua_calculator(lua_State *L_, int index)
 
 double lua_calculator::cost(const map_location &loc, double so_far) const
 {
-	// Load the error handler from the registry.
-	lua_pushlightuserdata(L, (void *)&executeKey);
-	lua_rawget(L, LUA_REGISTRYINDEX);
-
 	// Load the user function from the registry.
 	lua_pushlightuserdata(L, (void *)&uactionKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
@@ -1463,18 +1460,13 @@ double lua_calculator::cost(const map_location &loc, double so_far) const
 	lua_pushinteger(L, loc.y + 1);
 	lua_pushnumber(L, so_far);
 
-	int res = lua_pcall(L, 3, 1, -5);
-	if (res)
-	{
-		char const *m = lua_tostring(L, -1);
-		chat_message("Lua error", m);
-		ERR_LUA << m << '\n';
-		lua_pop(L, 2);
-		return 0;
-	}
+	// Execute the user function.
+	if (!luaW_pcall(L, 3, 1)) return 1.;
 
+	// Return a cost of at least 1 mp to avoid issues in pathfinder.
+	// (Condition is inverted to detect NaNs.)
 	double cost = lua_tonumber(L, -1);
-	lua_pop(L, 2);
+	lua_pop(L, 1);
 	return !(cost >= 1.) ? 1. : cost;
 }
 
@@ -1917,9 +1909,7 @@ bool LuaKernel::run_filter(char const *name, unit const &u)
 	unit_map::const_unit_iterator ui = resources::units->find(u.get_location());
 	if (!ui.valid()) return false;
 
-	// Load the error handler and get the user filter
-	lua_pushlightuserdata(L, (void *)&executeKey);
-	lua_rawget(L, LUA_REGISTRYINDEX);
+	// Get the user filter by name.
 	lua_pushstring(L, name);
 	lua_rawget(L, LUA_GLOBALSINDEX);
 
@@ -1930,41 +1920,20 @@ bool LuaKernel::run_filter(char const *name, unit const &u)
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_setmetatable(L, -2);
 
-	int res = lua_pcall(L, 1, 1, -3);
-	if (res)
-	{
-		char const *m = lua_tostring(L, -1);
-		chat_message("Lua error", m);
-		ERR_LUA << m << '\n';
-		lua_pop(L, 2);
-		return false;
-	}
+	if (!luaW_pcall(L, 1, 1)) return false;
 
 	bool b = lua_toboolean(L, -1);
-	lua_pop(L, 2);
+	lua_pop(L, 1);
 	return b;
 }
 
 /**
- * Runs a plain script.
+ * Runs a script on a stack containing @a nArgs arguments.
+ * @return true if the script was successful and @a nRets return values are available.
  */
-void LuaKernel::run(char const *prog)
-{
-	execute(prog, 0, 0);
-}
-
-/**
- * Runs a script on a preset stack.
- */
-void LuaKernel::execute(char const *prog, int nArgs, int nRets)
+bool LuaKernel::execute(char const *prog, int nArgs, int nRets)
 {
 	lua_State *L = mState;
-
-	// Load the error handler before the function arguments.
-	lua_pushlightuserdata(L, (void *)&executeKey);
-	lua_rawget(L, LUA_REGISTRYINDEX);
-	if (nArgs)
-		lua_insert(L, -1 - nArgs);
 
 	// Compile script into a variadic function.
 	int res = luaL_loadstring(L, prog);
@@ -1974,22 +1943,12 @@ void LuaKernel::execute(char const *prog, int nArgs, int nRets)
 		chat_message("Lua error", m);
 		ERR_LUA << m << '\n';
 		lua_pop(L, 2);
-		return;
+		return false;
 	}
 
 	// Place the function before its arguments.
 	if (nArgs)
 		lua_insert(L, -1 - nArgs);
 
-	res = lua_pcall(L, nArgs, nRets, -2 - nArgs);
-	if (res)
-	{
-		char const *m = lua_tostring(L, -1);
-		chat_message("Lua error", m);
-		ERR_LUA << m << '\n';
-		lua_pop(L, 2);
-		return;
-	}
-
-	lua_remove(L, -1 - nRets);
+	return luaW_pcall(L, nArgs, nRets);
 }

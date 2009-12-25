@@ -22,13 +22,14 @@ struct lua_State;
 class LuaKernel
 {
 	lua_State *mState;
-	void execute(char const *, int, int);
+	bool execute(char const *, int, int);
 public:
 	LuaKernel();
 	~LuaKernel();
 	void run_event(vconfig const &, game_events::queued_event const &);
 	bool run_filter(char const *name, unit const &u);
-	void run(char const *prog);
+	/** Runs a plain script. */
+	void run(char const *prog) { execute(prog, 0, 0); }
 };
 
 #endif
