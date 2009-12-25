@@ -104,9 +104,12 @@ void engine_fai::do_parse_stage_from_config( ai_context &context, const config &
 	}
 	const std::string &name = cfg["name"];
 	stage_ptr st_ptr;
-	if (name=="rca_formulas") {
-		st_ptr = stage_ptr(new stage_rca_formulas(context,cfg,formula_ai_));
-	} else if (name=="side_formulas") {
+
+	//dropped from 1.8, as it's not ready
+	//if (name=="rca_formulas") {
+	//	st_ptr = stage_ptr(new stage_rca_formulas(context,cfg,formula_ai_));
+
+	if (name=="side_formulas") {
 		st_ptr = stage_ptr(new stage_side_formulas(context,cfg,formula_ai_));
 	} else if (name=="unit_formulas") {
 		st_ptr = stage_ptr(new stage_unit_formulas(context,cfg,formula_ai_));
