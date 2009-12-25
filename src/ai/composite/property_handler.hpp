@@ -200,12 +200,12 @@ public:
 		return NULL;
 	}
 
-	bool handle_change(const path_element &child, const config &cfg)
+	bool handle_change(const path_element &/*child*/, const config &/*cfg*/)
 	{
 		return false;
 	}
 
-	bool handle_add(const path_element &child, const config &cfg)
+	bool handle_add(const path_element &/*child*/, const config &/*cfg*/)
 	{
 		return false;
 	}
