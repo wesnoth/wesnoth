@@ -83,15 +83,6 @@ public:
 private:
 
 	bool recruit_usage(const std::string& usage, bool &gamestate_changed);
-	/**
-	 * Analyze all the units that this side can recruit
-	 * and rate their movement types.
-	 * Ratings will be placed in 'unit_movement_scores_',
-	 * with lower scores being better,
-	 * and the lowest possible rating being '10'.
-	 */
-	//@todo 1.7 disabled till reorg of rca
-	//void analyze_potential_recruit_movements();
 
 	std::map<std::string,int> unit_movement_scores_;
 	std::set<std::string> not_recommended_units_;
