@@ -52,7 +52,7 @@ public:
 		try {
 			value = boost::lexical_cast<T>(cfg["value"]);
 		} catch (boost::bad_lexical_cast e) {
-			//@todo: 1.7.5 handle error
+			//@todo: 1.7.11 handle error, at least log it
 		}
 	}
 
@@ -61,7 +61,7 @@ public:
 		try {
 			cfg["value"] = boost::lexical_cast<std::string>(value);
 		} catch (boost::bad_lexical_cast e) {
-			//@todo: 1.7.5 handle error
+			//@todo: 1.7.11 handle error, at least log it
 		}
 	}
 

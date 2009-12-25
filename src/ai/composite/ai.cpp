@@ -171,7 +171,7 @@ std::string ai_composite::evaluate(const std::string& str)
 
 void ai_composite::new_turn()
 {
-	//@todo 1.7 replace with event system
+	//@todo 1.9 replace with event system
 	recalculate_move_maps();
 	invalidate_defensive_position_cache();
 	invalidate_keeps_cache();

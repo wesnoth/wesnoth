@@ -337,7 +337,7 @@ void attack_result::do_execute()
 	}
 
 	set_gamestate_changed();
-	//start of ugly hack. @todo 1.8 rework that via extended event system
+	//start of ugly hack. @todo 1.9 rework that via extended event system
 	//until event system is reworked, we note the attack this way
 	get_info().recent_attacks.insert(defender_loc_);
 	//end of ugly hack
@@ -410,7 +410,7 @@ bool move_result::test_route(const unit &un, const team &my_team, const unit_map
 	//allowed teleports
 	std::set<map_location> allowed_teleports;
 
-	//@todo 1.7: calculate allowed teleports
+	//@todo 1.7.11 important! : calculate allowed teleports
 
 	//do an A*-search
 	route_ = a_star_search(un.get_location(), to_, 10000.0, &calc, map.w(), map.h(), &allowed_teleports);
@@ -418,7 +418,7 @@ bool move_result::test_route(const unit &un, const team &my_team, const unit_map
 		set_error(E_NO_ROUTE);
 		return false;
 	}
-	return true;//@todo 1.7 do some tests on returned route
+	return true;
 }
 
 void move_result::do_check_before()
@@ -472,7 +472,7 @@ void move_result::do_check_after()
 		set_error(E_FAILED_TELEPORT);
 		return;
 	}
-	//@todo 1.7 add 'new units spotted' failure mode
+	//@todo 1.9 add 'new units spotted' failure mode
 
 	if (unit_location_!=to_) {
 		set_error(E_NOT_REACHED_DESTINATION);
@@ -512,7 +512,7 @@ void move_result::do_execute()
 			/*undo_list* undo_stack*/ NULL,
 			/*bool show_move*/ preferences::show_ai_moves(),
 			/*map_location *next_unit*/ NULL,
-			/*bool continue_move*/ true, //@todo: 1.7 set to false after implemeting interrupt awareness
+			/*bool continue_move*/ true, //@todo: 1.9 set to false after implemeting interrupt awareness
 			/*bool should_clear_shroud*/ true,
 			/*bool is_replay*/ false);
 

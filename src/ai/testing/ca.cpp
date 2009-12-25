@@ -191,7 +191,6 @@ double recruitment_phase::evaluate()
 bool recruitment_phase::execute()
 {
 	bool gamestate_changed = false;
-	//@todo 1.7: move to on_new_turn event handler
 	not_recommended_units_.clear();
 	unit_combat_scores_.clear();
 	unit_movement_scores_.clear();
@@ -355,123 +354,6 @@ bool recruitment_phase::recruit_usage(const std::string& usage, bool &gamestate_
 	}
 	return false;
 }
-
-//@todo 1.7 disabled till reorg of rca
-/*
-void recruitment_phase::analyze_potential_recruit_movements()
-{
-	unit_map &units_ = get_info().units;
-	gamemap &map_ = get_info().map;
-
-	if(unit_movement_scores_.empty() == false ||
-			utils::string_bool(current_team().ai_parameters()["recruitment_ignore_bad_movement"])) {
-		return;
-	}
-
-	const unit_map::const_iterator leader = units_.find_leader(get_side());
-	if(leader == units_.end()) {
-		return;
-	}
-
-	const map_location& start = nearest_keep(leader->first);
-	if(map_.on_board(start) == false) {
-		return;
-	}
-
-	log_scope2(log_ai_testing_ai_default, "analyze_potential_recruit_movements()");
-
-	const unsigned int max_targets = 5;
-
-	const move_map srcdst, dstsrc;
-	std::vector<target> targets = find_targets(leader,dstsrc);
-	if(targets.size() > max_targets) {
-		std::sort(targets.begin(),targets.end(),target_comparer_distance(start));
-		targets.erase(targets.begin()+max_targets,targets.end());
-	}
-
-	const std::set<std::string>& recruits = current_team().recruits();
-
-	LOG_AI_TESTING_AI_DEFAULT << "targets: " << targets.size() << "\n";
-
-	std::map<std::string,int> best_scores;
-
-	for(std::set<std::string>::const_iterator i = recruits.begin(); i != recruits.end(); ++i) {
-		const unit_type_data::unit_type_map::const_iterator info = unit_type_data::types().find_unit_type(*i);
-		if(info == unit_type_data::types().end()) {
-			continue;
-		}
-
-		const unit temp_unit(&get_info().units,&get_info().map,
-				&get_info().tod_manager_, &get_info().teams, &info->second, get_side());
-		// since we now use the ignore_units switch, no need to use a empty unit_map
-		// unit_map units;
-		// const temporary_unit_placer placer(units,start,temp_unit);
-
-		// pathfinding ignoring other units and terrain defense
-		const shortest_path_calculator calc(temp_unit,current_team(),get_info().units,teams_,map_,true,true);
-
-		int cost = 0;
-		int targets_reached = 0;
-		int targets_missed = 0;
-
-		for(std::vector<target>::const_iterator t = targets.begin(); t != targets.end(); ++t) {
-			LOG_AI << "analyzing '" << *i << "' getting to target...\n";
-			plain_route route = a_star_search(start, t->loc, 100.0, &calc,
-					get_info().map.w(), get_info().map.h());
-
-			if (!route.steps.empty()) {
-				LOG_AI_TESTING_AI_DEFAULT << "made it: " << route.move_cost << "\n";
-				cost += route.move_cost;
-				++targets_reached;
-			} else {
-				LOG_AI_TESTING_AI_DEFAULT << "failed\n";
-				++targets_missed;
-			}
-		}
-
-		if(targets_reached == 0 || targets_missed >= targets_reached*2) {
-			unit_movement_scores_[*i] = 100000;
-			not_recommended_units_.insert(*i);
-		} else {
-			const int average_cost = cost/targets_reached;
-			const int score = (average_cost * (targets_reached+targets_missed))/targets_reached;
-			unit_movement_scores_[*i] = score;
-
-			const std::map<std::string,int>::const_iterator current_best = best_scores.find(temp_unit.usage());
-			if(current_best == best_scores.end() || score < current_best->second) {
-				best_scores[temp_unit.usage()] = score;
-			}
-		}
-	}
-
-	for(std::map<std::string,int>::iterator j = unit_movement_scores_.begin();
-			j != unit_movement_scores_.end(); ++j) {
-
-		const unit_type_data::unit_type_map::const_iterator info =
-			unit_type_data::types().find_unit_type(j->first);
-
-		if(info == unit_type_data::types().end()) {
-			continue;
-		}
-
-		const int best_score = best_scores[info->second.usage()];
-		if(best_score > 0) {
-			j->second = (j->second*10)/best_score;
-			if(j->second > 15) {
-				LOG_AI_TESTING_AI_DEFAULT << "recommending against recruiting '" << j->first << "' (score: " << j->second << ")\n";
-				not_recommended_units_.insert(j->first);
-			} else {
-				LOG_AI_TESTING_AI_DEFAULT << "recommending recruit of '" << j->first << "' (score: " << j->second << ")\n";
-			}
-		}
-	}
-
-	if(not_recommended_units_.size() == unit_movement_scores_.size()) {
-		not_recommended_units_.clear();
-	}
-}
-
-*/
 
 int recruitment_phase::average_resistance_against(const unit_type& a, const unit_type& b) const
 {
@@ -982,7 +864,7 @@ bool get_villages_phase::execute()
 					//25.0* current_team().caution() * power_projection(loc,enemy_dstsrc) / new_unit->second.hitpoints()
 					//Is this an improvement?
 
-					//@todo 1.7 fix this to account for RCA semantics
+					//@todo 1.7 check if this an improvement
 					//add_target(target(new_unit->first,1.0,target::SUPPORT));
 				}
 			}

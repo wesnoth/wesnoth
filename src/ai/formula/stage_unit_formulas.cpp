@@ -141,14 +141,14 @@ bool stage_unit_formulas::do_play_stage()
 
 void stage_unit_formulas::on_create()
 {
-	//@todo parse the formulas
+	//we have no state on our own
 }
 
 
 config stage_unit_formulas::to_config() const
 {
 	config cfg = stage::to_config();
-	//@todo: serialize to config
+	//we have no state on our own
 	return cfg;
 }
 

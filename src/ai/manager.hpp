@@ -15,8 +15,8 @@
 /**
  * @file ai/manager.hpp
  * Managing the AIs lifecycle - headers
- * @todo 1.7 Refactor history handling and internal commands.
- * @todo 1.7 AI Interface command to clear the history.
+ * @todo 1.9 Refactor history handling and internal commands.
+ * @todo 1.9 AI Interface command to clear the history.
  */
 
 #ifndef AI_MANAGER_HPP_INCLUDED
@@ -51,7 +51,7 @@ typedef boost::shared_ptr<ai_composite> composite_ai_ptr;
 /**
  * Base class that holds the AI and current AI parameters.
  * It is an implementation detail.
- * @todo 1.7.5 move it out of public view
+ * @todo 1.9 move it out of public view
  */
 class holder{
 public:
@@ -475,7 +475,7 @@ private:
 	 * @param side side number (1-based).
 	 * @param str string to evaluate.
 	 * @return string result of evaluation.
-	 * @todo 1.7 rewrite this function to use a fai or lua parser.
+	 * @todo 1.9 rewrite this function to use a fai or lua parser.
 	 */
 	static const std::string internal_evaluate_command( side_number side, const std::string& str );
 

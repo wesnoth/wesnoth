@@ -33,6 +33,7 @@ static lg::log_domain log_ai("ai/stage/rca_formulas");
 
 namespace ai {
 
+//note: will not be documented for 1.8, as it's not finished
 stage_rca_formulas::stage_rca_formulas(ai_context &context
 		, const config &cfg, formula_ai &fai)
 	: stage(context,cfg)
@@ -73,13 +74,13 @@ stage_rca_formulas::~stage_rca_formulas()
 
 bool stage_rca_formulas::do_play_stage()
 {
-	return false;//@todo: implement
+	return false;//@todo 1.9: implement
 }
 
 
 void stage_rca_formulas::on_create()
 {
-	//@todo parse the formulas
+	//@todo 1.9 parse the formulas
 	//candidate_action_manager_.load_config(ai_param, this, &function_table);
 }
 
@@ -87,7 +88,7 @@ void stage_rca_formulas::on_create()
 config stage_rca_formulas::to_config() const
 {
 	config cfg = stage::to_config();
-	//@todo: serialize to config
+	//@todo 1.9: serialize to config
 	cfg.append(cfg_);
 	return cfg;
 }

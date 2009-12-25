@@ -1018,7 +1018,6 @@ private:
 };
 
 
-//@todo: public game_logic::formula_callable
 class readonly_context_impl : public virtual side_context_proxy, public readonly_context, public events::observer {
 public:
 

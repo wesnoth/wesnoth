@@ -145,7 +145,7 @@ public:
 		/** The global game state, because we may set the completion field. */
 		class game_state& game_state_;
 
-		/** hack. @todo 1.8 rework that via extended event system */
+		/** hack. @todo 1.9 rework that via extended event system, or at least ensure it hurts no one */
 		std::set<map_location> recent_attacks;
 };
 

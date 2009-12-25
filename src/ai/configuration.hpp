@@ -32,7 +32,6 @@ namespace ai {
 
 /**
  * AI parameters. class to deal with AI parameters. It is an implementation detail.
- * @todo 1.7 AI parameter/AI memory/AI effective parameter system must be reworked
  * We need implementation which will allow easy access to all the parameters
  * which match any of the pre-defined set of filters
  * such as 'select from ai_parameters where time_of_day=first watch'
