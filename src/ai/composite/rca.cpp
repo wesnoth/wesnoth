@@ -31,7 +31,7 @@ static lg::log_domain log_ai_composite_rca("ai/composite/rca");
 #define ERR_AI_COMPOSITE_RCA LOG_STREAM(err, log_ai_composite_rca)
 
 const double candidate_action::BAD_SCORE = 0;
-const double candidate_action::HIGH_SCORE = 100000;
+const double candidate_action::HIGH_SCORE = 10000000;
 
 candidate_action::candidate_action(rca_context &context, const config &cfg)
 	: recursion_counter_(context.get_recursion_count()), enabled_(utils::string_bool(cfg["enabled"],true)), engine_(cfg["engine"]), score_(lexical_cast_default<double>(cfg["score"],BAD_SCORE)),max_score_(lexical_cast_default<double>(cfg["max_score"],HIGH_SCORE)),id_(cfg["id"]),name_(cfg["name"]),type_(cfg["type"])
