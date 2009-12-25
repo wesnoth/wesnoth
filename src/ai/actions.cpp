@@ -408,9 +408,7 @@ bool move_result::test_route(const unit &un, const team &my_team, const unit_map
 	const shortest_path_calculator calc(un, my_team, units, teams,map);
 
 	//allowed teleports
-	std::set<map_location> allowed_teleports;
-
-	//@todo 1.7.11 important! : calculate allowed teleports
+	std::set<map_location> allowed_teleports = get_teleport_locations(un, units, my_team, true);//@todo 1.9: see_all -> false
 
 	//do an A*-search
 	route_ = a_star_search(un.get_location(), to_, 10000.0, &calc, map.w(), map.h(), &allowed_teleports);
