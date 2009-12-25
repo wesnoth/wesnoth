@@ -437,8 +437,7 @@ void save_preview_pane::draw_contents()
 	std::stringstream str;
 
 	// Escape all special characters in filenames
-	std::string name = (*info_)[index_].name;
-	str << font::BOLD_TEXT << utils::escape(name) << "\n" << time_buf;
+	str << font::BOLD_TEXT << utils::escape((*info_)[index_].name) << '\n' << time_buf;
 
 	const std::string& campaign_type = summary["campaign_type"];
 	if(utils::string_bool(summary["corrupt"], false)) {

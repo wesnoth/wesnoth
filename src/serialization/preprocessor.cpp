@@ -463,10 +463,9 @@ preprocessor_data::preprocessor_data(preprocessor_streambuf &t,
 
 	s << history;
 	if (!name.empty()) {
-		std::string ename(name);
 		if (!history.empty())
 			s << ' ';
-		s << utils::escape(ename, " \\");
+		s << utils::escape(name, " \\");
 	}
 	if (!t.location_.empty())
 		s << ' ' << t.linenum_ << ' ' << t.location_;

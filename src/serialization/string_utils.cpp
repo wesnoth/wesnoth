@@ -207,35 +207,33 @@ int apply_modifier( const int number, const std::string &amount, const int minim
 	return value;
 }
 
-std::string &escape(std::string &str, const std::string& special_chars)
+std::string escape(const std::string &str, const char *special_chars)
 {
-	std::string::size_type pos = 0;
+	std::string::size_type pos = str.find_first_of(special_chars);
+	if (pos == std::string::npos) {
+		// Fast path, possibly involving only reference counting.
+		return str;
+	}
+	std::string res = str;
 	do {
-		pos = str.find_first_of(special_chars, pos);
-		if (pos == std::string::npos)
-			break;
-		str.insert(pos, 1, '\\');
-		pos += 2;
-	} while (pos < str.size());
-	return str;
+		res.insert(pos, 1, '\\');
+		pos = res.find_first_of(special_chars, pos + 2);
+	} while (pos != std::string::npos);
+	return res;
 }
 
-std::string& escape(std::string& str)
+std::string unescape(const std::string &str)
 {
-	static const std::string special_chars("#@{}+-,\\*=");
-	return escape(str, special_chars);
-}
-
-std::string &unescape(std::string &str)
-{
-	std::string::size_type pos = 0;
+	std::string::size_type pos = str.find('\\');
+	if (pos == std::string::npos) {
+		// Fast path, possibly involving only reference counting.
+		return str;
+	}
+	std::string res = str;
 	do {
-		pos = str.find('\\', pos);
-		if (pos == std::string::npos)
-			break;
-		str.erase(pos, 1);
-		++pos;
-	} while (pos < str.size());
+		res.erase(pos, 1);
+		pos = res.find('\\', pos + 1);
+	} while (pos != std::string::npos);
 	return str;
 }
 

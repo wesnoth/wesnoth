@@ -211,9 +211,7 @@ SDL_Rect draw_text(surface dst, const SDL_Rect& area, int size,
 		i1 = parse_markup(i1,i2,&sz,&col,&text_style);
 
 		if(i1 != i2) {
-			std::string new_string(i1,i2);
-
-			utils::unescape(new_string);
+			std::string new_string = utils::unescape(std::string(i1, i2));
 
 			const SDL_Rect rect = draw_text_line(dst, area, sz, col, new_string, x, y, use_tooltips, text_style);
 			if(rect.w > res.w) {

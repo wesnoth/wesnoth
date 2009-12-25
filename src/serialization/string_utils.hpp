@@ -109,7 +109,7 @@ std::vector< std::pair< int, int > > parse_ranges(std::string const &str);
 int apply_modifier( const int number, const std::string &amount, const int minimum = 0);
 
 /** Prepends a configurable set of characters with a backslash */
-std::string &escape(std::string &str, const std::string& special_chars);
+std::string escape(const std::string &str, const char *special_chars);
 
 /**
  * Prepend all special characters with a backslash.
@@ -117,10 +117,11 @@ std::string &escape(std::string &str, const std::string& special_chars);
  * Special characters are:
  * #@{}+-,\*=
  */
-std::string &escape(std::string &str);
+inline std::string escape(const std::string &str)
+{ return escape(str, "#@{}+-,\\*="); }
 
 /** Remove all escape characters (backslash) */
-std::string &unescape(std::string &str);
+std::string unescape(const std::string &str);
 
 /** Remove whitespace from the front and back of the string 'str'. */
 std::string &strip(std::string &str);
