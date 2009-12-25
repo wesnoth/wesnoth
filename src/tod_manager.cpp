@@ -301,7 +301,7 @@ void tod_manager::set_turn(unsigned int num)
 	VALIDATE(times_.size(), _("No time of day has been defined."));
 	const unsigned int old_num = turn_;
 	// Correct ToD
-	int current_time = (num  - 1) % times_.size();
+	int current_time = (currentTime_ + num - old_num) % times_.size();
 	if (current_time < 0) {
 		current_time += times_.size();
 	}
