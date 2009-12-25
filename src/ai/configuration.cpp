@@ -230,7 +230,7 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 	int version = 10600;
 	foreach (const config &aiparam, cfg.child_range("ai")) {
 		if (aiparam.has_attribute("version")){
-			int v = boost::lexical_cast<int>(aiparam["version"]);//@todo: 1.7: handle errors here
+			int v = lexical_cast_default<int>(aiparam["version"],version);
 			if (version<v) {
 				version = v;
 			}
