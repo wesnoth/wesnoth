@@ -173,49 +173,6 @@ int default_ai_context_impl::rate_terrain(const unit& u, const map_location& loc
 	return rating;
 }
 
-const map_location& default_ai_context_impl::suitable_keep(const map_location& leader_location, const paths& leader_paths){
-	if (get_info().map.is_keep(leader_location)) {
-		return leader_location; //if leader already on keep, then return leader_location
-	}
-
-	map_location const* best_free_keep = &map_location::null_location;
-	double cost_to_best_free_keep = 0.0;
-
-	map_location const* best_occupied_keep = &map_location::null_location;
-	double cost_to_best_occupied_keep = 0.0;
-
-	foreach (const paths::step &dest, leader_paths.destinations)
-	{
-		const map_location &loc = dest.curr;
-		if (keeps().find(loc)!=keeps().end()){
-			//@todo 1.7 move_left for 1-turn-moves is really "cost_to_get_there", it is just not renamed there yet. see r34430 for more detais.
-			const int cost_to_loc = dest.move_left;
-			if (get_info().units.count(loc) == 0) {
-				if ((*best_free_keep==map_location::null_location)||(cost_to_loc<cost_to_best_free_keep)){
-					best_free_keep = &loc;
-					cost_to_best_free_keep = cost_to_loc;
-				}
-			} else {
-				if ((*best_occupied_keep==map_location::null_location)||(cost_to_loc<cost_to_best_occupied_keep)){
-					best_occupied_keep = &loc;
-					cost_to_best_occupied_keep = cost_to_loc;
-				}
-			}
-		}
-	}
-
-	if (*best_free_keep != map_location::null_location){
-		return *best_free_keep; // if there is a free keep reachable during current turn, return it
-	}
-
-	if (*best_occupied_keep != map_location::null_location){
-		return *best_occupied_keep; // if there is an occupied keep reachable during current turn, return it
-	}
-
-	return nearest_keep(leader_location); // return nearest keep
-}
-
-
 std::vector<target> default_ai_context_impl::find_targets(unit_map::const_iterator leader, const move_map& enemy_dstsrc)
 {
 	log_scope2(log_ai, "finding targets...");

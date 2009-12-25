@@ -246,11 +246,6 @@ public:
 	}
 
 
-	virtual const map_location& suitable_keep( const map_location& leader_location, const paths& leader_paths )
-	{
-		return target_->suitable_keep(leader_location,leader_paths);
-	}
-
 	virtual config to_default_ai_context_config() const
 	{
 		return target_->to_default_ai_context_config();
@@ -307,14 +302,11 @@ public:
 	virtual int rate_terrain(const unit& u, const map_location& loc) const;
 
 
-	virtual const map_location& suitable_keep( const map_location& leader_location, const paths& leader_paths );
-
-
 	virtual config to_default_ai_context_config() const;
 
 private:
 	recursion_counter recursion_counter_;
-	mutable std::vector<target> additional_targets_;//@todo: refactor this
+	mutable std::vector<target> additional_targets_;//@todo 1.9 refactor this
 
 
 };

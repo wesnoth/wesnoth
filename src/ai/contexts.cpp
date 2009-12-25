@@ -475,7 +475,7 @@ double readonly_context_impl::get_aggression() const
 int readonly_context_impl::get_attack_depth() const
 {
 	if (attack_depth_) {
-		return std::max<int>(1,attack_depth_->get()); //@todo 1.7: add minmax filter to attack_depth aspect
+		return std::max<int>(1,attack_depth_->get()); //@todo 1.9: add validators, such as minmax filters to aspects
 	}
 	return 1;
 }
@@ -508,7 +508,7 @@ const variant& readonly_context_impl::get_attacks_as_variant() const
 	if (attacks_) {
 		return attacks_->get_variant();
 	}
-	static variant v;//@todo: replace with variant::null_variant;
+	static variant v;//@todo 1.9: replace with variant::null_variant;
 	return v;
 }
 
@@ -704,7 +704,7 @@ const moves_map& readonly_context_impl::get_possible_moves() const
 const std::vector<unit>& readonly_context_impl::get_recall_list() const
 {
 	static std::vector<unit> dummy_units;
-	//@todo: check for (level_["disallow_recall"]))
+	//@todo 1.9: check for (level_["disallow_recall"]))
 	if(!current_team().persistent()) {
 		return dummy_units;
 	}
@@ -1056,7 +1056,7 @@ void readonly_context_impl::recalculate_move_maps() const
 					++i;
 				}
 			}
-		//@todo: shall possible moves be modified as well ?
+		//@todo 1.9: shall possible moves be modified as well ?
 		}
 	}
 	move_maps_valid_ = true;
@@ -1079,26 +1079,26 @@ const map_location& readonly_context_impl::suitable_keep(const map_location& lea
 	}
 
 	map_location const* best_free_keep = &map_location::null_location;
-	double cost_to_best_free_keep = 0.0;
+	double move_left_at_best_free_keep = 0.0;
 
 	map_location const* best_occupied_keep = &map_location::null_location;
-	double cost_to_best_occupied_keep = 0.0;
+	double move_left_at_best_occupied_keep = 0.0;
 
 	foreach (const paths::step &dest, leader_paths.destinations)
 	{
 		const map_location &loc = dest.curr;
 		if (keeps().find(loc)!=keeps().end()){
-			//@todo 1.7 move_left for 1-turn-moves is really "cost_to_get_there", it is just not renamed there yet. see r34430 for more detais.
-			const int cost_to_loc = dest.move_left;
+
+			const int move_left_at_loc = dest.move_left;
 			if (get_info().units.count(loc) == 0) {
-				if ((*best_free_keep==map_location::null_location)||(cost_to_loc<cost_to_best_free_keep)){
+				if ((*best_free_keep==map_location::null_location)||(move_left_at_loc>move_left_at_best_free_keep)){
 					best_free_keep = &loc;
-					cost_to_best_free_keep = cost_to_loc;
+					move_left_at_best_free_keep = move_left_at_loc;
 				}
 			} else {
-				if ((*best_occupied_keep==map_location::null_location)||(cost_to_loc<cost_to_best_occupied_keep)){
+				if ((*best_occupied_keep==map_location::null_location)||(move_left_at_loc>move_left_at_best_occupied_keep)){
 					best_occupied_keep = &loc;
-					cost_to_best_occupied_keep = cost_to_loc;
+				        move_left_at_best_occupied_keep = move_left_at_loc;
 				}
 			}
 		}
