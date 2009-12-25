@@ -571,7 +571,10 @@ static std::vector<std::string> split_in_width(const std::string &s, const int f
 static std::string remove_first_space(const std::string& text);
 
 /// Prepend all chars with meaning inside attributes with a backslash.
-static std::string escape(const std::string &s);
+static std::string escape(const std::string &s)
+{
+	return utils::escape(s, "'\\");
+}
 
 /// Return the first word in s, not removing any spaces in the start of
 /// it.
@@ -3055,22 +3058,6 @@ std::string remove_first_space(const std::string& text)
 		return text.substr(1);
 	}
 	return text;
-}
-
-std::string escape(const std::string &s)
-{
-	std::string res = s;
-	if(!res.empty()) {
-		std::string::size_type pos = 0;
-		do {
-			pos = res.find_first_of("'\\", pos);
-			if(pos != std::string::npos) {
-				res.insert(pos, 1, '\\');
-				pos += 2;
-			}
-		} while(pos < res.size() && pos != std::string::npos);
-	}
-	return res;
 }
 
 std::string get_first_word(const std::string &s)
