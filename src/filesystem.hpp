@@ -221,6 +221,11 @@ std::string get_wml_location(const std::string &filename,
 	const std::string &current_dir = std::string());
 
 /**
+ * Returns a short path to @a filename, skipping the (user) data directory.
+ */
+std::string get_short_wml_path(const std::string &filename);
+
+/**
  * Returns the appropriate invocation for a Wesnoth-related binary, assuming
  * that it is located in the same directory as the running wesnoth binary.
  * This is just a string-transformation based on argv[0], so the returned

@@ -419,7 +419,8 @@ preprocessor_file::preprocessor_file(preprocessor_streambuf &t, std::string cons
 			delete file_stream;
 		}
 		else
-			new preprocessor_data(t, file_stream, "", name, 1, directory_name(name), t.textdomain_, NULL);
+			new preprocessor_data(t, file_stream, "", get_short_wml_path(name),
+				1, directory_name(name), t.textdomain_, NULL);
 	}
 	pos_ = files_.begin();
 	end_ = files_.end();
