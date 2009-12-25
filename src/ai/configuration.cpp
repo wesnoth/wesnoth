@@ -230,7 +230,7 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 	int version = 10600;
 	foreach (const config &aiparam, cfg.child_range("ai")) {
 		if (aiparam.has_attribute("version")){
-			int v = boost::lexical_cast<int>(aiparam["version"]);//@todo 1.7 parse version from more readable form, such as "1.7.3"
+			int v = boost::lexical_cast<int>(aiparam["version"]);//@todo: 1.7: handle errors here
 			if (version<v) {
 				version = v;
 			}
@@ -242,6 +242,11 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 			return false;
 		}
 		version = 10703;
+	}
+
+
+	if (version<10710) {
+		version = 10710;
 	}
 
 	//construct new-style integrated config
@@ -290,7 +295,7 @@ bool configuration::upgrade_side_config_from_1_07_02_to_1_07_03(side_number side
 
 	//dump the rest of the config into fallback stage
 
-	config fallback_stage_cfg;
+	config fallback_stage_cfg;//@todo 1.7.11 important! make rca default.
 	fallback_stage_cfg["engine"] = "cpp";
 	fallback_stage_cfg["name"] = "testing_ai_default::fallback";
 	fallback_stage_cfg["id"] = "fallback";
@@ -329,7 +334,7 @@ bool configuration::upgrade_side_config_from_1_07_02_to_1_07_03(side_number side
 		}
 		aiparam.clear_children("target");
 	}
-	fallback_stage_cfg_ai.clear_children("aspect");//@todo 1.7: cleanup only configs of well-known ai aspects
+	fallback_stage_cfg_ai.clear_children("aspect");
 
 	//move [stage]s to root of the config
 	foreach (const config &aistage, fallback_stage_cfg_ai.child_range("stage")) {
