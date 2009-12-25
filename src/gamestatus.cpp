@@ -518,10 +518,12 @@ void game_state::clear_variable(const std::string& varname)
 	}
 }
 
-static void clear_wmi(std::map<std::string, wml_menu_item*>& gs_wmi) {
-	std::map<std::string, wml_menu_item*>::iterator itor = gs_wmi.begin();
-	for(itor = gs_wmi.begin(); itor != gs_wmi.end(); ++itor) {
-		delete itor->second;
+static void clear_wmi(std::map<std::string, wml_menu_item *> &gs_wmi)
+{
+	for (std::map<std::string, wml_menu_item *>::iterator i = gs_wmi.begin(),
+	     i_end = gs_wmi.end(); i != i_end; ++i)
+	{
+		delete i->second;
 	}
 	gs_wmi.clear();
 }
