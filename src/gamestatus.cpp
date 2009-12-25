@@ -569,7 +569,7 @@ game_state& game_state::operator=(const game_state& state)
 	starting_pos = state.starting_pos;
 	snapshot = state.snapshot;
 	last_selected = state.last_selected;
-	set_variables(state.get_variables());
+	variables = state.variables;
 
 	return *this;
 }
