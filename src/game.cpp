@@ -1525,7 +1525,7 @@ void game_controller::load_game_cfg(const bool force)
 					msg << "\n" << *i;
 				}
 
-				msg << "\n" << _("ERROR DETAILS:") << "\n" << font::nullify_markup(user_error_log);
+				msg << '\n' << _("ERROR DETAILS:") << '\n' << user_error_log;
 
 				gui2::show_error_message(disp().video(),msg.str());
 			}
@@ -1546,7 +1546,7 @@ void game_controller::load_game_cfg(const bool force)
 	} catch(game::error& e) {
 		ERR_CONFIG << "Error loading game configuration files\n";
 		gui2::show_error_message(disp().video(), _("Error loading game configuration files: '") +
-			font::nullify_markup(e.message) + _("' (The game will now exit)"));
+			e.message + _("' (The game will now exit)"));
 		throw;
 	}
 }
