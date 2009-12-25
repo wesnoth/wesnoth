@@ -149,25 +149,6 @@ candidate_action_evaluation_loop::~candidate_action_evaluation_loop()
 {
 }
 
-bool candidate_action_evaluation_loop::add_child(const path_element &/*child*/, const config &/*cfg*/)
-{
-	//if (child.property=="candidate_action") {
-	//     	std::vector< candidate_action_ptr >::iterator i = std::find_if(candidate_actions_.begin(),candidate_actions_.end(),path_element_matches< candidate_action_ptr >(child));
-	//return add_candidate_action(i-candidate_actions_.begin(),cfg);
-	//}
-	return false;
-}
-
-bool candidate_action_evaluation_loop::change_child(const path_element &/*child*/, const config &/*cfg*/)
-{
-	return false;
-}
-
-bool candidate_action_evaluation_loop::delete_child(const path_element &/*child*/)
-{
-	return false;
-}
-
 } // end of namespace testing_ai_default
 
 } // end of namespace ai

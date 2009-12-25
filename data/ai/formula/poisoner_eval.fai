@@ -1,6 +1,6 @@
 fai 'poisoner_eval.fai'
 
-60 +
+{AI_CA_COMBAT_SCORE} + 100 +
 #rate units with regeneration as worse targets #
 if( find( villages, self = target.loc ), -10, 0 ) +
 # units next to healers/curers are also bad targets #

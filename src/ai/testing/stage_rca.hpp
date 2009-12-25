@@ -55,13 +55,6 @@ public:
 
 	rca_context& get_rca_context();
 
-	virtual bool add_child(const path_element &child, const config &cfg);
-
-	virtual bool change_child(const path_element &child, const config &cfg);
-
-	virtual bool delete_child(const path_element &child);
-
-
 	void create_candidate_action(std::vector<candidate_action_ptr> &candidate_actions, const config &cfg);
 
 private:
