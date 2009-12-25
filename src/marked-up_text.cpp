@@ -152,15 +152,6 @@ std::string del_tags(const std::string& text){
 	return utils::join(lines, '\n');
 }
 
-std::string nullify_markup(const std::string& text) {
-	std::vector<std::string> lines = utils::split(text, '\n', 0);
-	std::vector<std::string>::iterator line;
-	for(line = lines.begin(); line != lines.end(); ++line) {
-		*line = std::string() + NULL_MARKUP + *line;
-	}
-	return utils::join(lines, '\n');
-}
-
 std::string color2markup(const SDL_Color &color)
 {
 	std::stringstream markup;
