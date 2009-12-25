@@ -329,6 +329,7 @@ void thandler::handle_event(const SDL_Event& event)
 #endif
 
 		// Silently ignored events.
+		case SDL_ACTIVEEVENT:
 		case SDL_KEYUP:
 		case DOUBLE_CLICK_EVENT:
 			break;
