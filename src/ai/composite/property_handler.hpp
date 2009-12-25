@@ -78,7 +78,10 @@ class component;
 
 class base_property_handler {
 public:
-        virtual component* handle_get(const path_element &child) = 0;
+
+	virtual ~base_property_handler() {}
+
+	virtual component* handle_get(const path_element &child) = 0;
 	virtual bool handle_change(const path_element &child, const config &cfg) = 0;
 	virtual bool handle_add(const path_element &child, const config &cfg) = 0;
 	virtual bool handle_delete(const path_element &child) = 0;
