@@ -1419,43 +1419,23 @@ static int intf_eval_conditional(lua_State *L)
 	return 1;
 }
 
+/**
+ * Cost function object relying on a Lua function.
+ * @note The stack index of the Lua function must be valid each time the cost is computed.
+ */
 struct lua_calculator : cost_calculator
 {
 	lua_State *L;
-	int num;
+	int index;
 
-	lua_calculator(lua_State *L, int index);
+	lua_calculator(lua_State *L_, int i): L(L_), index(i) {}
 	double cost(const map_location &loc, double so_far) const;
-	~lua_calculator();
 };
-
-lua_calculator::lua_calculator(lua_State *L_, int index)
-	: L(L_)
-	, num(0)
-{
-	lua_pushvalue(L, index);
-
-	// Retrieve the user function table from the registry.
-	lua_pushlightuserdata(L, (void *)&uactionKey);
-	lua_rawget(L, LUA_REGISTRYINDEX);
-
-	// Push the function in the table so that it is not collected.
-	num = lua_objlen(L, -1) + 1;
-	lua_insert(L, -2);
-	lua_rawseti(L, -2, num);
-
-	lua_pop(L, 1);
-}
 
 double lua_calculator::cost(const map_location &loc, double so_far) const
 {
-	// Load the user function from the registry.
-	lua_pushlightuserdata(L, (void *)&uactionKey);
-	lua_rawget(L, LUA_REGISTRYINDEX);
-	lua_rawgeti(L, -1, num);
-	lua_remove(L, -2);
-
-	// Push the location and current cost.
+	// Copy the user function and push the location and current cost.
+	lua_pushvalue(L, index);
 	lua_pushinteger(L, loc.x + 1);
 	lua_pushinteger(L, loc.y + 1);
 	lua_pushnumber(L, so_far);
@@ -1468,16 +1448,6 @@ double lua_calculator::cost(const map_location &loc, double so_far) const
 	double cost = lua_tonumber(L, -1);
 	lua_pop(L, 1);
 	return !(cost >= 1.) ? 1. : cost;
-}
-
-lua_calculator::~lua_calculator()
-{
-	// Remove the function from the registry, so that it can be collected.
-	lua_pushlightuserdata(L, (void *)&uactionKey);
-	lua_rawget(L, LUA_REGISTRYINDEX);
-	lua_pushnil(L);
-	lua_rawseti(L, -2, num);
-	lua_pop(L, 1);
 }
 
 /**
