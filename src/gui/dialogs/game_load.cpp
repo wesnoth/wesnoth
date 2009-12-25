@@ -151,18 +151,15 @@ bool tgame_load::filter_text_changed(ttext_* textbox, const std::string& text)
 		return false;
 	last_words_ = words;
 
-	std::vector<bool> show_items(list.get_item_count());
+	std::vector<bool> show_items(list.get_item_count(), true);
 
-	for (unsigned int i = 0; i < list.get_item_count(); i++){
-		tgrid* row = list.get_row_grid(i);
+	if(!text.empty()) {
+		for(unsigned int i = 0; i < list.get_item_count(); i++) {
+			tgrid* row = list.get_row_grid(i);
 
-		if (text == ""){
-			show_items[i] = true;
-		}
-		else{
 			tgrid::iterator it = row->begin();
 			tlabel& filename_label =
-					find_widget<tlabel>(*it, "filename", false);
+				find_widget<tlabel>(*it, "filename", false);
 
 			bool found = false;
 			foreach (const std::string& word, words){
@@ -181,6 +178,7 @@ bool tgame_load::filter_text_changed(ttext_* textbox, const std::string& text)
 			show_items[i] = found;
 		}
 	}
+
 	list.set_row_shown(show_items);
 
 	return false;
