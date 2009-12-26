@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4 Estonian translation\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-12-13 15:50+0100\n"
-"PO-Revision-Date: 2009-09-27 22:29+0300\n"
+"PO-Revision-Date: 2009-12-25 11:55+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: Kaido Kikkas <kakk@kakupesa.net>\n"
 "MIME-Version: 1.0\n"
@@ -71,7 +71,7 @@ msgstr "Näita võitlust"
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:68
 msgid "Ping Timeout"
-msgstr "Ping-i viivitus"
+msgstr "Ping-i ooteaeg"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:69
@@ -120,7 +120,7 @@ msgstr "mürgitatud"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:749
 #: data/core/macros/abilities.cfg:554
 msgid "berserk"
-msgstr "hullus"
+msgstr "segane"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:752
@@ -130,7 +130,7 @@ msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
-"Hullus:\n"
+"Segane:\n"
 "Nii kaitstes kui rünnates kestab võitlus 30 ringi või kuni üks osapoole "
 "surmani."
 
@@ -361,13 +361,12 @@ msgstr "Hollandikeelne tõlge"
 #. [about]
 #: data/core/about.cfg:1344
 msgid "English (GB) Translation"
-msgstr "Inglisekeelne (briti) tõlge"
+msgstr "Ingliskeelne (briti) tõlge"
 
 #. [about]
 #: data/core/about.cfg:1357
-#, fuzzy
 msgid "English (Shaw) Translation"
-msgstr "Inglisekeelne (briti) tõlge"
+msgstr "Ingliskeelne (Shaw) tõlge"
 
 #. [about]
 #: data/core/about.cfg:1375
@@ -517,7 +516,7 @@ msgstr "Slovakikeelne tõlge"
 #. [about]
 #: data/core/about.cfg:2196
 msgid "Slovenian Translation"
-msgstr "Sloveeniakeelne tõlge"
+msgstr "Sloveenikeelne tõlge"
 
 #. [about]
 #: data/core/about.cfg:2209
@@ -784,9 +783,9 @@ msgid ""
 "a certain number of turns have elapsed."
 msgstr ""
 "Pane tähele iga stsenaariumi alguses näidatavat eesmärgiakent. Sageli võidad "
-"stenaariumi kõigi vastase pealikute surmamisega ning kaotad, kui sinu pealik "
-"sureb. Stsenaariumidel aga võib olla ka muid sihte - näiteks viia enda "
-"pealik kindlasse punkti kaardil, päästa mõni tegelane, lahendada mõni "
+"stsenaariumi kõigi vastase pealikute surmamisega ning kaotad, kui sinu "
+"pealik sureb. Stsenaariumidel aga võib olla ka muid sihte - näiteks viia "
+"enda pealik kindlasse punkti kaardil, päästa mõni tegelane, lahendada mõni "
 "mõistatus või pidada vastu piiramisele kindla arvu käikude jooksul."
 
 #. [topic]: id=victory_and_defeat
@@ -1137,7 +1136,7 @@ msgstr ""
 "löögid. Ründaja valib rünnakutüübi ning kaitsja kasutab sama tüüpi "
 "vasturünnakut. Rünnakuid on kaht tüüpi: lähirünnak, mis enamasti kasutab "
 "mõõku, kirveid, kihvu jms relvi, ning kaugrünnak, mis kasutab vibusid, "
-"viskodasid, tulekerasid vms."
+"viskeodasid, tulekerasid vms."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:240
@@ -1734,7 +1733,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Veel võivad üksused olla<ref>dst='traits_dextrou's text='osavad'</ref>, "
+"Veel võivad üksused olla<ref>dst='traits_dextrous' text='osavad'</ref>, "
 "<ref>dst='traits_loyal' text='ustavad'</ref> ja  <ref>dst='traits_undead' "
 "text='kooljad'</ref>.\n"
 "\n"
@@ -2005,7 +2004,7 @@ msgid ""
 "rest even when travelling."
 msgstr ""
 "Niigi tuntud enda elujõu poolest, on mõned päkapikud veelgi turskemad kui "
-"teised ning suudavad puhata isegi rändamise ajal."
+"teised ning suudavad puhata isegi rännakul olles."
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:442
@@ -2044,8 +2043,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Juhm olemine on paraku väga levinud omadus mäekollide ja muude vähemate "
-"rasside seas (üks põhjus, miks neid vähemateks peetakse...)."
+"Juhmus on paraku väga levinud omadus mäekollide ja muude vähemate rasside "
+"seas (see on üks põhjus, miks neid vähemateks peetakse...)."
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:455
@@ -2082,7 +2081,8 @@ msgstr "Nõrk"
 #: data/core/help.cfg:464
 msgid "Units with trait Weak get a -1 increment in hitpoints and melee damage."
 msgstr ""
-"Nõrgad üksused kaotavad 1 punkti elust ja lähivõitluses tekitatavast kahjust."
+"Nõrgad üksused kaotavad teistega võrreldes 1 punkti nii elujõust kui "
+"lähivõitluses tekitatavast kahjust."
 
 #. [topic]: id=..terrains
 #: data/core/help.cfg:472
@@ -2098,7 +2098,7 @@ msgstr ""
 #. [topic]: id=terrain_flat
 #: data/core/help.cfg:479
 msgid "Flat"
-msgstr "Tasane"
+msgstr "Rohumaa"
 
 #. [topic]: id=terrain_flat
 #: data/core/help.cfg:484
@@ -2300,7 +2300,7 @@ msgstr ""
 #. [topic]: id=terrain_frozen
 #: data/core/help.cfg:575
 msgid "Frozen"
-msgstr "Külmunud"
+msgstr "Lumi"
 
 #. [topic]: id=terrain_frozen
 #: data/core/help.cfg:580
@@ -2607,12 +2607,12 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 70% defense on coastal reefs."
 msgstr ""
-"Rannarifid on kividest, korallidest ja liivast koosnevad madalikud. Enamik "
+"Rannakaljud on kividest, korallidest ja liivast koosnevad madalikud. Enamik "
 "maaüksusi suudab siin paremini seista ja end kaitsta kui tavalises madalas "
 "vees, vees elavad rassid aga suudavad siin end kaitsta erakordselt "
 "edukalt .\n"
 "\n"
-"Mermen and Naga both receive 70% defense on coastal reefs."
+"Nii näkkidel kui nagadel on rannakaljudel 70% kaitsevõime."
 
 #. [topic]: id=terrain_bridge
 #: data/core/help.cfg:739
@@ -2646,7 +2646,7 @@ msgstr ""
 #. [topic]: id=terrain_impassable
 #: data/core/help.cfg:751
 msgid "Impassable"
-msgstr "läbimatu"
+msgstr "Läbimatu ala"
 
 #. [topic]: id=terrain_impassable
 #: data/core/help.cfg:754
@@ -2689,7 +2689,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Lülita silumine sisse (ei tööta mitmemängija-režiimis). Vt. "
+"Lülita silumine sisse (ei tööta mitmemängijarežiimis). Vt. "
 "<ref>dst='debug_commands' text='silumiskäsud'</ref>.\n"
 "Silumise lülitab välja kas mängust lahkumine või käsk :nodebug.\n"
 "\n"
@@ -3169,8 +3169,9 @@ msgid ""
 "using one of its moves."
 msgstr ""
 "Ruumirändur:\n"
-"See üksus suudab rännata hetkeliselt ühest külast mistahes teise enda poole "
-"tühja külasse, kulutades selleks vaid ühe liikumispunkti (sammu)."
+"See üksus suudab rännata hetkeliselt ühest külast mistahes teise samale "
+"mängijale kuuluvasse tühja külasse, kulutades selleks vaid ühe "
+"liikumispunkti (sammu)."
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:390 data/core/macros/abilities.cfg:392
@@ -3500,7 +3501,7 @@ msgstr "kaitsev."
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:213
 msgid "Focus on defeating..."
-msgstr "Keskendu alistamisele..."
+msgstr "Keskendu alistama ..."
 
 #. [literal]: speaker=narrator
 #. [value]: speaker=narrator
@@ -3545,7 +3546,7 @@ msgstr "mängija $temp_i"
 #. [command]
 #: data/core/macros/ai_controller.cfg:309
 msgid "focusing on defeating $this_enemy_description|."
-msgstr "püüan alistada vastast $this_enemy_description|."
+msgstr "püüan alistada vastane $this_enemy_description|."
 
 #. [value]
 #. [option]: speaker=narrator
@@ -3559,7 +3560,7 @@ msgstr "Tagasi"
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:359
 msgid "Focus on protecting..."
-msgstr "Keskendu kaitsele..."
+msgstr "Keskendu kaitsma... "
 
 #. [literal]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:376
@@ -4816,7 +4817,7 @@ msgstr ""
 
 #: data/core/macros/special-notes.cfg:35
 msgid " Illumination increases the lighting level in adjacent areas."
-msgstr "Valgustamine tõstab valgustatuse taset kõrvalolevatel väljadel."
+msgstr "Valgustamine muudab kõrvalasuvad väljad valgemaks."
 
 #: data/core/macros/special-notes.cfg:38
 msgid ""
@@ -4866,7 +4867,7 @@ msgid ""
 " Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
 msgstr ""
-"Hullunud rünnaku korral jätkab üksus rünnakut, kuni ta ise või vastane on "
+"Segase rünnaku korral jätkab üksus rünnakut, kuni ta ise või vastane on "
 "surnult maas."
 
 #: data/core/macros/special-notes.cfg:59
@@ -4981,7 +4982,7 @@ msgstr "kooljas"
 #. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:24 data/core/macros/traits.cfg:39
 msgid "Immune to drain, poison and plague"
-msgstr "Immuunne kurnamise, nakatamise ja mürgi suhtes"
+msgstr "Kurnamine, nakatamine ja mürk ei mõju"
 
 #. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:37
@@ -5904,7 +5905,7 @@ msgstr ""
 "kulutada suure osa ajast magades või mõtiskledes. Trollidel on kummaline "
 "side loodusega - mitte elavate olenditega nagu haldjatel, vaid maa ja "
 "kiviga. Nad tunnevad mõnesugust huvi ümbruskonna vastu ning paljud "
-"trollipõnnid isegi huvituvad rändamisest ja maailma nägmisest. Vananedes "
+"trollipõnnid isegi huvituvad rändamisest ja maailma nägemisest. Vananedes "
 "muutuvad trollid passiivseks, veetes üha enam aega  kodukoopa nurgas magades "
 "- kuni nad viimaks surevad ja nende kehast saab elutu kivikuju.\n"
 "\n"
@@ -6080,7 +6081,7 @@ msgstr "$name sild, $name ülekäik"
 #. [language]
 #: data/hardwired/english.cfg:20
 msgid "$name's Highway,$name's Pass,Path of $name"
-msgstr "$name maantee,$name's kuru,$name rada"
+msgstr "$name maantee,$name kuru,$name rada"
 
 #. [language]
 #: data/hardwired/english.cfg:21
@@ -6228,10 +6229,10 @@ msgid ""
 "features, and allows us to improve Wesnoth. To learn more about this or "
 "disable it, click the envelope in the bottom-right corner."
 msgstr ""
-"Battle for Wesnoth saadab anonüümset statistikat sinu mängude kohta "
-"vastavasse serverisse. See toetab erinevaid arendusi ja aitab meil mängu "
-"paremaks teha. Lisainfo saamiseks või selle keelamiseks klõpsa ümbrikule "
-"ekraani paremas alanurgas."
+"Wesnothi Lahing saadab anonüümset statistikat sinu mängude kohta vastavasse "
+"serverisse. See toetab erinevaid arendusi ja aitab meil mängu paremaks teha. "
+"Lisainfo saamiseks või selle keelamiseks klõpsa ümbrikule ekraani paremas "
+"alanurgas."
 
 #. [tip]
 #: data/hardwired/tips.cfg:4
@@ -7169,7 +7170,7 @@ msgstr "Mitmemängija stsenaarium"
 
 #: src/addon_management.cpp:466
 msgid "addon_type^MP campaign"
-msgstr "Mitme mängija sõjakäik"
+msgstr "Mitmemängija sõjakäik"
 
 #: src/addon_management.cpp:468
 msgid "addon_type^Resources"
@@ -7613,7 +7614,7 @@ msgstr "Kustuta salvestus"
 
 #: src/dialogs.cpp:675
 msgid "Profile"
-msgstr "profiil"
+msgstr "Profiil"
 
 #: src/dialogs.cpp:771 src/help.cpp:1330
 msgid "level"
@@ -7883,22 +7884,20 @@ msgid "In lobby"
 msgstr "Ooteruumis"
 
 #: src/gui/dialogs/lobby_player_info.cpp:95
-#, fuzzy
 msgid "On friends list"
-msgstr "Lisatud sõprade nimekirja:"
+msgstr "Sõbranimekirjas"
 
 #: src/gui/dialogs/lobby_player_info.cpp:100
-#, fuzzy
 msgid "On ignores list"
-msgstr "Lisatud eiratavate nimekirja:"
+msgstr "Eiratavate nimekirjas"
 
 #: src/gui/dialogs/lobby_player_info.cpp:105
 msgid "Neither a friend nor ignored"
-msgstr ""
+msgstr "Ei sõber ega eiratav"
 
 #: src/gui/dialogs/lobby_player_info.cpp:110
 msgid "You"
-msgstr ""
+msgstr "Sina"
 
 #: src/gui/dialogs/lobby_player_info.cpp:113 src/multiplayer_create.cpp:541
 msgid "Error"
@@ -8228,7 +8227,7 @@ msgstr "Olukord"
 
 #: src/menu_events.cpp:475
 msgid "More >"
-msgstr "Veel..."
+msgstr "Veel >"
 
 #: src/menu_events.cpp:493
 msgid "scenario settings^Leader"
@@ -8666,7 +8665,7 @@ msgstr "Tundmatu silumistase: '$level'."
 
 #: src/menu_events.cpp:2535 src/menu_events.cpp:2544
 msgid "error"
-msgstr "Viga"
+msgstr "viga"
 
 #: src/menu_events.cpp:2542
 msgid "Unknown debug domain: '$domain'."
@@ -8698,7 +8697,7 @@ msgstr "Sinu sõbra- ja eiramisnimekirjad on tühjad."
 
 #: src/menu_events.cpp:2945
 msgid "Couldn't find label or unit containing the string '$search'."
-msgstr "Ei leindud silti ega üksust, mille nimes esineks tekst '$search'."
+msgstr "Ei leitud silti ega üksust, mille nimes esineks tekst '$search'."
 
 #: src/menu_events.cpp:2974
 msgid "Can't droid invalid side: '$side'."
@@ -9222,12 +9221,11 @@ msgstr "PIldi algväärtustamine"
 
 #: src/play_controller.cpp:189
 msgid "time left for current turn"
-msgstr ""
+msgstr "käesolevaks käiguks jäänud aeg"
 
 #: src/play_controller.cpp:191 src/replay_controller.cpp:136
-#, fuzzy
 msgid "current local time"
-msgstr "Praegune hooldaja"
+msgstr "kohalik aeg"
 
 #: src/play_controller.cpp:229
 msgid "Starting game"
@@ -9618,7 +9616,7 @@ msgstr "Sõjakäigud"
 
 #: src/titlescreen.cpp:427
 msgid "TitleScreen button^Multiplayer"
-msgstr "Mitmekesi mängimine"
+msgstr "Mitmekesi mäng"
 
 #: src/titlescreen.cpp:428
 msgid "TitleScreen button^Load"
@@ -9666,7 +9664,7 @@ msgstr "Aita Wesnothi tegijaid"
 
 #: src/titlescreen.cpp:445
 msgid "Start a tutorial to familiarize yourself with the game"
-msgstr "Mänguga tutvumiseks alusta õpetusest"
+msgstr "Mänguga tutvumist alusta õpetusest"
 
 #: src/titlescreen.cpp:446
 msgid "Start a new single player campaign"

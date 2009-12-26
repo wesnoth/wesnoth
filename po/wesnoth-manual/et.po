@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.7+svn\n"
 "POT-Creation-Date: 2009-09-23 12:35+0300\n"
-"PO-Revision-Date: 2009-09-27 00:03+0300\n"
+"PO-Revision-Date: 2009-12-26 00:52+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -45,11 +45,11 @@ msgid ""
 "specialists, and hand pick a force with the right strengths to fight well on "
 "different terrains against all manner of opposition."
 msgstr ""
-"<emphasis>Kogu vägev sõjavägi</emphasis> ning tee rohelistest algajatest "
-"kogenud veteranid. Hilisemates mängudes võid kutsuda tagasi oma suurimad "
-"sõdalased ning luua väe, millele keegi vastu ei saa. Vali üksusi eri "
-"kunstide asjatundjate hulgast ja pane kokku sõjajõud, kel on sobivad "
-"oskused, kes suudavad võidelda eri maastikel ja eri vaenlaste vastu."
+"Kogu vägev sõjavägi ning tee rohelistest algajatest kogenud veteranid. "
+"Hilisemates mängudes võid kutsuda tagasi oma suurimad sõdalased ning luua "
+"väe, millele keegi vastu ei saa. Vali üksusi eri kunstide asjatundjate "
+"hulgast ja pane kokku sõjajõud, kel on sobivad oskused ning kes suudavad "
+"võidelda eri maastikel ja eri vaenlaste vastu."
 
 # type: Content of: <book><preface><simpara>
 #: ../../doc/manual/manual.en.xml:16
@@ -64,7 +64,7 @@ msgid ""
 msgstr ""
 "Wesnothis on palju erinevaid saagasid, mida saad läbi mängida. Võid võidelda "
 "orkide, kooljate ja röövlitega Wesnothi kuningriigi avarustes; võitle koos "
-"draarkonitega mäetippudel, haldjatega Hõbelaanes, päkapikega Knalga suurtes "
+"draakonitega mäetippudel, haldjatega Hõbelaanes, päkapikega Knalga suurtes "
 "saalides või isegi näkkidega Pärlilahes. Võid üritada tagasi võita Wesnothi "
 "trooni, kasutada enda võimu kooljate üle surelike maade allutamiseks või "
 "juhtida enda võimsa orkihõimu inimeste vastu, kes sinu maadele on tunginud."
@@ -82,8 +82,8 @@ msgstr ""
 "vibukütid ja võlurid on vaid mõned neist) ning mängida läbi lahinguid "
 "väikestest varitsustest hiigelarmeede vastasseisudeni. Sa võid ka luua enda "
 "üksusi ja koostada enda stsenaariume või  isegi täielikke sõjakäike. Võid ka "
-"esitada väljakutse sõpradele - või ka võõrastele - ning korraldada suuri "
-"<emphasis>paljude mängijatega</emphasis> fantaasialahinguid."
+"esitada väljakutse sõpradele - või ka võõrastele - ning korraldada suuri, "
+"paljude mängijatega fantaasialahinguid."
 
 # type: Content of: <book><preface><simpara>
 #: ../../doc/manual/manual.en.xml:29
@@ -203,7 +203,7 @@ msgid ""
 msgstr ""
 "Mängu mõttes on rassid jagatud eri osapoolteks. Näiteks teevad orkid sageli "
 "koostööd trollidega, haldjad või päkapikud aga inimestega. Mõned osapooled "
-"peegeldavad erisusi inimeste endi seas &#8212; näiteks valitsusväed vs "
+"peegeldavad erisusi inimeste endi seas &#8212; näiteks valitsusväed või "
 "mässajad. Enamikus sõjakäikudes juhid sa üht osapoolt - kuid vahel sõlmivad "
 "need ka liite, nii et võid kohata lahingus enam kui üht."
 
@@ -370,7 +370,7 @@ msgid ""
 "Click this button to start the Map Editor where you can create custom maps "
 "for multiplayer games or for building your own campaign upon."
 msgstr ""
-"Klõpsa seda nuppu, et käivitada kaardirdaktor - sellega saad teha omaenda "
+"Klõpsa seda nuppu, et käivitada kaardiredaktor - sellega saad teha omaenda "
 "kaarte mitmekesi mängimiseks või enda loodava sõjakäigu tarbeks."
 
 #: ../../doc/manual/manual.en.xml:186
@@ -612,7 +612,7 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><section><title>
 #: ../../doc/manual/manual.en.xml:338
 msgid "Join official Server"
-msgstr "Võta ühendust ametliku serveriga"
+msgstr "Ühendu ametliku serveriga"
 
 # type: Content of: <book><chapter><section><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:339
@@ -688,14 +688,13 @@ msgid ""
 "else."
 msgstr ""
 "Et käivitada mitmemängija mäng ilma välist serverit kasutamata, pead "
-"käivitama kohaliku <emphasis>wesnothd</emphasis> serveri. Seejärel võta "
-"ühendust iseenda arvutiga <emphasis>Võta ühendust serveriga</emphasis> -"
-"aknas, kirjutades aadressiks 127.0.0.1 . Kui soovid kutsuda ka teisi "
-"mängijaid, peavad nad ligi pääsema TCP pordile 15000. Kui kasutad tulemüüri, "
-"tuleb selle sätetest ilmselt lubada ligipääs porti 15000 ja suunata "
-"sinnatulev liiklus mängu jooksutavasse masinasse.  Avalikes serverites või "
-"teiste arvutites toimuvad mängud üldjuhul tulemüüri ümberseadistamist ei "
-"vaja."
+"käivitama kohaliku <emphasis>wesnothd</emphasis> serveri. See käivitatakse "
+"taustaprotsessina ja peatatakse, kui kõik mängijad on lahkunud. Kui soovid "
+"kutsuda ka teisi mängijaid, peavad nad ligi pääsema TCP pordile 15000. Kui "
+"kasutad tulemüüri, tuleb selle sätetest ilmselt lubada ligipääs porti 15000 "
+"ja suunata sinnatulev liiklus mängu jooksutavasse masinasse.  Avalikes "
+"serverites või teiste arvutites toimuvad mängud üldjuhul tulemüüri "
+"ümberseadistamist ei vaja."
 
 # type: Content of: <book><chapter><section><section><section><title>
 #: ../../doc/manual/manual.en.xml:372
@@ -800,7 +799,7 @@ msgstr "Sinu üksuste arv"
 # type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:439
 msgid "Your upkeep"
-msgstr "Sinu elatis"
+msgstr "Sinu üksuste elatis"
 
 # type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:444
@@ -1074,7 +1073,7 @@ msgstr "F1"
 
 #: ../../doc/manual/manual.en.xml:595
 msgid "The Battle for Wesnoth Help"
-msgstr "Wesnothi Lahingu käsiraamat"
+msgstr "Wesnothi Lahingu abiteave"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:600
@@ -1314,7 +1313,7 @@ msgstr "Ctrl-a"
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:787
 msgid "Toggle accelerated game mode"
-msgstr "Lülita kiirendus sisse-välja"
+msgstr "Lülita kiirendatud mäng sisse-välja"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:792 ../../doc/manual/manual.en.xml:912
@@ -1978,7 +1977,7 @@ msgstr "Enamiku üksuste eripärad on järgmised:"
 
 #: ../../doc/manual/manual.en.xml:1280
 msgid "Intelligent"
-msgstr "intelligentne"
+msgstr "Taibukas"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1284
@@ -2001,7 +2000,7 @@ msgstr ""
 
 #: ../../doc/manual/manual.en.xml:1296
 msgid "Quick"
-msgstr "Kiire"
+msgstr "Väle"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1300
@@ -2090,7 +2089,7 @@ msgstr ""
 
 #: ../../doc/manual/manual.en.xml:1360
 msgid "Healthy"
-msgstr "Tervisklik"
+msgstr "Turske"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1364
@@ -2132,7 +2131,7 @@ msgstr ""
 
 #: ../../doc/manual/manual.en.xml:1389
 msgid "Loyal"
-msgstr "Lojaalne"
+msgstr "Ustav"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1393
@@ -2216,7 +2215,7 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1451
 msgid "Berserk"
-msgstr "Sõjahullus"
+msgstr "Segane"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1455
@@ -2224,12 +2223,13 @@ msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
-"See üksus jätkab ründamist 30 rünnakuringi või kuni üks võitlejatest sureb."
+"See üksus jätkab nii rünnakul kui kaitses olles võitlemist 30 ringi jooksul "
+"või kuni üks võitlejatest sureb."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1463
 msgid "Charge"
-msgstr "Tormav"
+msgstr "Tormakas"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1467
@@ -2307,7 +2307,7 @@ msgstr ""
 
 #: ../../doc/manual/manual.en.xml:1528 ../../doc/manual/manual.en.xml:2162
 msgid "Poison"
-msgstr "Mürk"
+msgstr "Mürgitav"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1532
@@ -2491,7 +2491,7 @@ msgstr ""
 
 #: ../../doc/manual/manual.en.xml:1666
 msgid "Leadership"
-msgstr "Juhtimisvõime"
+msgstr "Väejuht"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1670
@@ -2722,8 +2722,8 @@ msgstr ""
 "väljuda kas valides mõne muu üksuse (klõpsates sellele või kasutades  "
 "<literal>n</literal> või <literal>N</literal> -klahve) või tehes paremklõpsu "
 "(Command-klõps  Maci arvutitel) kusagil mujal kaardil. <link linkend=\"orbs"
-"\">Märgukerad</link>üksuse terviseribal on kiire viis näha, millised üksused "
-"on juba käinud ja millised saavad selles käigus veel liikuda."
+"\">Märgukuulid</link> üksuse terviseribal on kiire viis näha, millised "
+"üksused on juba käinud ja millised saavad selles käigus veel liikuda."
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:1888
@@ -2764,7 +2764,7 @@ msgid ""
 "reflected in both the path that is displayed for your unit and the hexes it "
 "may move to on the current turn."
 msgstr ""
-"Enamikul üksustel on mõjuväli, mis mõjutab potentsiaalset liikumisteed ja "
+"Enamikul üksustel on mõjuväli, mis mõjutab võimalikku liikumisteed ja "
 "sihtpunkte. Need kajastuvad ka näidatavates võimalike käikude sihtpunktides "
 "ning sinna liikumise teedes."
 
@@ -2791,7 +2791,7 @@ msgstr ""
 
 #: ../../doc/manual/manual.en.xml:1914 ../../doc/manual/manual.en.xml:1921
 msgid "Orbs"
-msgstr "Infokerad"
+msgstr "Märgukuulid"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:1915
@@ -3066,7 +3066,7 @@ msgid ""
 "missiles. Example: A Dark Adepts&#8217;s chill wave."
 msgstr ""
 "<emphasis role=\"strong\">Külm</emphasis>: Külmutavad või jäänooli kasutavad "
-"rünnakud. Näide: pimedusejüngrite külmalaine"
+"rünnakud. Näide: pimedusejüngrite külmalaine."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2101
@@ -3075,7 +3075,7 @@ msgid ""
 "foe like a chicken. Example: A drake&#8217;s fire breath."
 msgstr ""
 "<emphasis role=\"strong\">Tuli</emphasis>: vaenlast tulega praadivad "
-"rünnakud. Näide: Lohe tulehingus."
+"rünnakud. Näide: lohe tulehingus."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2107
@@ -3090,7 +3090,7 @@ msgstr ""
 
 #: ../../doc/manual/manual.en.xml:2115
 msgid "Resistance"
-msgstr "Vastupanu"
+msgstr "Vastupanuvõimed"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2116
@@ -3132,7 +3132,7 @@ msgstr ""
 
 #: ../../doc/manual/manual.en.xml:2132 ../../doc/manual/manual.en.xml:2530
 msgid "Healing"
-msgstr "Ravimine"
+msgstr "Tervendamine"
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:2133
@@ -3151,7 +3151,7 @@ msgstr ""
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:2138
 msgid "There are two basic ways for a unit to be healed:"
-msgstr "Üksuse ravimiseks on kaks peamist viisi:"
+msgstr "Üksuse tervendamiseks on kaks peamist viisi:"
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2142
@@ -3602,7 +3602,7 @@ msgstr ""
 
 #: ../../doc/manual/manual.en.xml:2345
 msgid "Time of Day"
-msgstr "Aeg"
+msgstr "Päevaaeg"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2346
