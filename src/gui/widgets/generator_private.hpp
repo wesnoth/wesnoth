@@ -168,6 +168,9 @@ struct thorizontal_list
 	/**
 	 * Called when an item is shown or hidden.
 	 *
+	 * This function is responsible to calculate the new best size, the
+	 * generator will call @ref set_size later.
+	 *
 	 * @param index               The item to show or hide.
 	 * @param show                If true shows the item, else hides it.
 	 */
@@ -649,13 +652,19 @@ public:
 				items_[index]->grid.set_visible(twidget::VISIBLE);
 			}
 
+			/*** Calculate the new best size. ***/
 			placement::set_item_shown(index, show);
 
+			/*** Set the proper visible state. ***/
 			items_[index]->shown = show;
 			if(!show) {
 				items_[index]->grid.set_visible(twidget::INVISIBLE);
 			}
 
+			/*** Put the items at their new places. ***/
+			placement::set_size(this->get_origin(), this->get_best_size());
+
+			/*** Update the selection. ***/
 			minimum_selection::set_item_shown(index, show);
 		}
 	}

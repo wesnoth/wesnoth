@@ -103,7 +103,6 @@ thorizontal_list::thorizontal_list()
 
 void thorizontal_list::set_item_shown(const unsigned index, const bool show)
 {
-	// Adjust the size.
 	tpoint best_size = this->get_best_size();
 	const int item_width = show
 			?  get_item(index).get_best_size().x
@@ -111,13 +110,6 @@ void thorizontal_list::set_item_shown(const unsigned index, const bool show)
 
 	best_size.x += item_width;
 	this->set_layout_size(best_size);
-
-	// Adjust the placement.
-	for(unsigned i = index + 1; i < get_item_count(); ++i) {
-		tpoint origin = get_item(i).get_origin();
-		origin.x += item_width;
-		get_item(i).set_origin(origin);
-	}
 }
 
 void thorizontal_list::create_item(const unsigned /*index*/)
@@ -317,7 +309,6 @@ tvertical_list::tvertical_list()
 
 void tvertical_list::set_item_shown(const unsigned index, const bool show)
 {
-	// Adjust the size.
 	tpoint best_size = this->get_best_size();
 	const int item_height = show
 			?  get_item(index).get_best_size().y
@@ -325,13 +316,6 @@ void tvertical_list::set_item_shown(const unsigned index, const bool show)
 
 	best_size.y += item_height;
 	this->set_layout_size(best_size);
-
-	// Adjust the placement.
-	for(unsigned i = index + 1; i < get_item_count(); ++i) {
-		tpoint origin = get_item(i).get_origin();
-		origin.y += item_height;
-		get_item(i).set_origin(origin);
-	}
 }
 
 void tvertical_list::create_item(const unsigned /*index*/)
