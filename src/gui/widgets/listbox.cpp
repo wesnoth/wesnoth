@@ -111,6 +111,7 @@ void tlistbox::set_row_shown(const unsigned row, const bool shown)
 	if(resize_needed) {
 		window->invalidate_layout();
 	} else {
+		content_grid_->set_visible_area(content_visible_area());
 		set_dirty();
 	}
 
@@ -142,6 +143,7 @@ void tlistbox::set_row_shown(const std::vector<bool>& shown)
 	if(resize_needed) {
 		window->invalidate_layout();
 	} else {
+		content_grid_->set_visible_area(content_visible_area());
 		set_dirty();
 	}
 
