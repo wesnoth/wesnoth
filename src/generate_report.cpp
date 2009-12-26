@@ -367,20 +367,24 @@ report generate_report(TYPE type,
 	case UNIT_PROFILE:
 		return report("", u->profile(), "");
 	case TIME_OF_DAY: {
-		time_of_day tod = resources::tod_manager->time_of_day_at(units, mouseover, *resources::game_map);
+		time_of_day tod;
 
-		// Don't show illuminated time on fogged/shrouded tiles
-		if (current_team.fogged(mouseover) || current_team.shrouded(mouseover)) {
-			tod = resources::tod_manager->get_time_of_day(false, mouseover);
+		if (current_team.shrouded(mouseover)) {
+			// Don't show time on shrouded tiles.
+			tod = resources::tod_manager->get_time_of_day();
+		} else if (current_team.fogged(mouseover)) {
+			// Don't show illuminated time on fogged tiles.
+			tod = resources::tod_manager->get_time_of_day(0, mouseover);
+		} else {
+			tod = resources::tod_manager->time_of_day_at(units, mouseover, *resources::game_map);
 		}
-		std::stringstream tooltip;
 
-		tooltip << tod.name << "\n"
-				<< _("Lawful units: ")
-				<< (tod.lawful_bonus > 0 ? "+" : "") << tod.lawful_bonus << "%\n"
-				<< _("Neutral units: ") << "0%\n"
-				<< _("Chaotic units: ")
-				<< (tod.lawful_bonus < 0 ? "+" : "") << (tod.lawful_bonus*-1) << "%";
+		std::ostringstream tooltip;
+		int b = tod.lawful_bonus;
+		tooltip << tod.name << '\n'
+			<< _("Lawful units: ") << (b > 0 ? "+" : "") << b << "%\n"
+			<< _("Neutral units: ") << "0%\n"
+			<< _("Chaotic units: ") << (b < 0 ? "+" : "") << -b << "%";
 
 		std::string tod_image = tod.image;
 		if (tod.bonus_modified > 0) tod_image += "~BRIGHTEN()";
