@@ -22,11 +22,6 @@ static lg::log_domain log_display("display");
 
 namespace image {
 
-surface nop_function::operator()(const surface& src) const
-{
-	return src;
-}
-
 surface rc_function::operator()(const surface& src) const
 {
 	// unchecked

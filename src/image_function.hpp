@@ -36,17 +36,6 @@ public:
 };
 
 /**
- * NOP function.
- * It takes a surface and returns a pointer to the same surface.
- */
-class nop_function : public function_base
-{
-public:
-	nop_function() {}
-	virtual surface operator()(const surface& src) const;
-};
-
-/**
  * Recolor (RC/TC/PAL) function.
  * It is used not only for color-range-based recoloring ("~RC(magenta>teal)")
  * but also for team-color-based color range selection and recoloring

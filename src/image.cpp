@@ -710,8 +710,6 @@ surface locator::load_image_sub_file() const
 					functor_queue.push_back(new cs_function(0,0,b));
 				}
 				else if("NOP" == function) {
-					// Odd, isn't it?
-					functor_queue.push_back(new nop_function());
 				}
 				// Fake image function used by GUI2 portraits until
 				// Mordante gets rid of it. *tsk* *tsk*
@@ -733,10 +731,6 @@ surface locator::load_image_sub_file() const
 		}
 
 		foreach(function_base* f, functor_queue) {
-			if(f == NULL) {
-				ERR_DP << "somebody set up us the bomb\n";
-				continue;
-			}
 			surf = (*f)(surf);
 			delete f;
 		}
