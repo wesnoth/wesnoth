@@ -322,7 +322,8 @@ static bool luaW_tovconfig(lua_State *L, int index, vconfig &vcfg, bool def = tr
  * Calls a Lua function stored below its @a nArgs arguments at the top of the stack.
  * @return true if the call was successful and @a nRets return values are available.
  */
-bool luaW_pcall(lua_State *L, int nArgs, int nRets, bool allow_wml_error = false)
+static bool luaW_pcall(lua_State *L
+		, int nArgs, int nRets, bool allow_wml_error = false)
 {
 	// Load the error handler before the function and its arguments.
 	lua_pushlightuserdata(L, (void *)&executeKey);
