@@ -368,7 +368,6 @@ report generate_report(TYPE type,
 		return report("", u->profile(), "");
 	case TIME_OF_DAY: {
 		time_of_day tod = resources::tod_manager->time_of_day_at(units, mouseover, *resources::game_map);
-		const std::string tod_image = tod.image + (preferences::flip_time() ? "~FL(horiz)" : "");
 
 		// Don't show illuminated time on fogged/shrouded tiles
 		if (current_team.fogged(mouseover) || current_team.shrouded(mouseover)) {
@@ -382,6 +381,10 @@ report generate_report(TYPE type,
 				<< _("Neutral units: ") << "0%\n"
 				<< _("Chaotic units: ")
 				<< (tod.lawful_bonus < 0 ? "+" : "") << (tod.lawful_bonus*-1) << "%";
+
+		std::string tod_image = tod.image;
+		if (tod.bonus_modified > 0) tod_image += "~BRIGHTEN()";
+		if (preferences::flip_time()) tod_image += "~FL(horiz)";
 
 		return report("",tod_image,tooltip.str());
 	}

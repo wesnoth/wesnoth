@@ -438,18 +438,7 @@ void game_display::draw_report(reports::TYPE report_num)
 							  selectedHex_, mouseoverHex_, displayedUnitHex_,
 		observers_, level_, !viewpoint_);
 
-	bool brighten = false;
-	if(report_num == reports::TIME_OF_DAY) {
-		time_of_day tod = tod_manager_.time_of_day_at(units_,mouseoverHex_,get_map());
-		// Don't show illuminated time on fogged/shrouded tiles
-		if (fogged(mouseoverHex_) || shrouded(mouseoverHex_)) {
-
-			tod = tod_manager_.get_time_of_day(false,mouseoverHex_);
-		}
-		brighten = (tod.bonus_modified > 0);
-	}
-
-	refresh_report(report_num, report, brighten);
+	refresh_report(report_num, report);
 }
 
 void game_display::draw_game_status()

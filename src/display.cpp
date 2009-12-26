@@ -2096,8 +2096,7 @@ void display:: set_report_content(const reports::TYPE which_report, const std::s
 	report_[which_report] = content;
 }
 
-void display::refresh_report(reports::TYPE report_num, reports::report report,
-			     bool brighten)
+void display::refresh_report(reports::TYPE report_num, reports::report report)
 {
 	const theme::status_item* const item = theme_.get_status_item(reports::report_name(report_num));
 	if (!item) {
@@ -2226,12 +2225,6 @@ void display::refresh_report(reports::TYPE report_num, reports::report report,
 			if (img->w < area.w) area.w = img->w;
 			if (img->h < area.h) area.h = img->h;
 			draw_image_for_report(img, area);
-
-			if (brighten) {
-				surface tod_bright(image::get_image(game_config:: tod_bright_image));
-				if (tod_bright)
-					draw_image_for_report(tod_bright, area);
-			}
 
 			++image_count;
 			if (area.h > tallest) {
