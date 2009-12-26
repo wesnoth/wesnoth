@@ -3167,18 +3167,18 @@ WML_HANDLER_FUNCTION(time_area, /*event_info*/, cfg)
 
 // Adding new events
 WML_HANDLER_FUNCTION(event, /*event_info*/, cfg)
+{
+	std::string behavior_flag = cfg["delayed_variable_substitution"];
+	if(!(utils::string_bool(behavior_flag,true)))
 	{
-        std::string behavior_flag = cfg["delayed_variable_substitution"];
-        if(!(utils::string_bool(behavior_flag,true)))
-        {
-        	const config &parsed = cfg.get_parsed_config();
-		    new_handlers.push_back(game_events::event_handler(vconfig(parsed, true)));
-        }
-        else
-        {
-		    new_handlers.push_back(game_events::event_handler(cfg));
-        }
+		const config &parsed = cfg.get_parsed_config();
+		new_handlers.push_back(game_events::event_handler(vconfig(parsed, true)));
 	}
+	else
+	{
+		new_handlers.push_back(game_events::event_handler(cfg));
+	}
+}
 
 // Experimental map replace
 WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
