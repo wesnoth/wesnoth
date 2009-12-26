@@ -188,6 +188,14 @@ private:
 	int depth_;
 };
 
+/**
+ * Overlay with ToD brightening (BRIGHTEN).
+ */
+struct brighten_function : function_base
+{
+	virtual surface operator()(const surface &src) const;
+};
+
 } /* end namespace image */
 
 #endif /* !defined(IMAGE_FUNCTION_HPP_INCLUDED) */

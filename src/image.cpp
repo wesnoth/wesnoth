@@ -714,7 +714,10 @@ surface locator::load_image_sub_file() const
 				// Fake image function used by GUI2 portraits until
 				// Mordante gets rid of it. *tsk* *tsk*
 				else if("RIGHT" == function) {
-					;
+				}
+				// Add a bright overlay.
+				else if (function == "BRIGHTEN") {
+					functor_queue.push_back(new brighten_function());
 				}
 				else {
 					ERR_DP << "unknown image function in path: " << function << '\n';

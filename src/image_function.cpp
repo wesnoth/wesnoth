@@ -13,6 +13,9 @@
 */
 
 #include "image_function.hpp"
+
+#include "game_config.hpp"
+#include "image.hpp"
 #include "log.hpp"
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -112,6 +115,15 @@ surface cs_function::operator()(const surface& src) const
 surface bl_function::operator()(const surface& src) const
 {
 	return blur_alpha_surface(src, depth_);
+}
+
+surface brighten_function::operator()(const surface &src) const
+{
+	surface ret = make_neutral_surface(src);
+	surface tod_bright(image::get_image(game_config:: tod_bright_image));
+	if (tod_bright)
+		blit_surface(tod_bright, NULL, ret, NULL);
+	return ret;
 }
 
 } /* end namespace image */
