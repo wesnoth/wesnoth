@@ -985,7 +985,7 @@ std::string get_binary_file_location(const std::string& type, const std::string&
 	std::string::size_type pos = filename.rfind("../");
 	if (pos != std::string::npos) {
 		std::string nf = filename.substr(pos + 3);
-		WRN_FS << "Illegal path '" << filename << "' replaced by '" << nf << "'\n";
+		LOG_FS << "Illegal path '" << filename << "' replaced by '" << nf << "'\n";
 		return get_binary_file_location(type, nf);
 	}
 
