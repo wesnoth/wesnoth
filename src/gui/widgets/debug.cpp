@@ -247,7 +247,7 @@ void tdebug_layout_graph::widget_generate_info(std::ostream& out,
 					id + "_I_" + lexical_cast<std::string>(i);
 
 				widget_generate_info(out,
-					&generator->get_item(i),
+					&generator->item(i),
 					child_id, true);
 
 				out << "\t" << id << " -> "
