@@ -394,7 +394,7 @@ public:
 	void set_visible(const tvisible visible);
 	tvisible get_visible() const { return visible_; }
 
-	tdrawing_action get_drawing_action() const { return drawing_action_; }
+	tdrawing_action get_drawing_action() const;
 
 	/**
 	 * Sets the visible area for a widget.

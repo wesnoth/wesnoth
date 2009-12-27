@@ -186,7 +186,7 @@ void twidget::populate_dirty_list(twindow& caller,
 		return;
 	}
 
-	if(drawing_action_ == NOT_DRAWN) {
+	if(get_drawing_action() == NOT_DRAWN) {
 		return;
 	}
 
@@ -216,6 +216,13 @@ void twidget::set_visible(const tvisible visible)
 	}
 
 	visible_ = visible;
+}
+
+twidget::tdrawing_action twidget::get_drawing_action() const
+{
+	return (w_ == 0 || h_ == 0)
+		? NOT_DRAWN
+		: drawing_action_;
 }
 
 void twidget::set_visible_area(const SDL_Rect& area)
