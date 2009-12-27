@@ -642,7 +642,9 @@ void twindow::draw()
 		}
 
 		// Children.
-		item.back()->draw_children(frame_buffer);
+		if(!item.empty()) {
+			item.back()->draw_children(frame_buffer);
+		}
 
 		// Foreground.
 		for(std::vector<twidget*>::reverse_iterator ritor = item.rbegin();
