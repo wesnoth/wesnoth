@@ -84,30 +84,24 @@ wesnothd \- 韦诺之战 \fBWesnoth\fP 多人游戏服务器
 .
 .TP 
 \fBallow_remote_shutdown\fP
-If set to \fBno\fP (default), shut_down and restart requests are ignored unless
-they come from the fifo.  Set it to \fByes\fP to allow remote shutdown via a
-/query by an administrator.
+如果设置为 \fBno\fP (默认值), 关闭和重启请求将被忽略，除非来自fifo。如果设为 \fByes\fP 则允许管理员通过 /query 远程关闭。
 .TP 
 \fBban_save_file\fP
 一个服务器可读可写的（经gzip压缩的）文件的完整路径或相对路径。封禁信息会自动保存在这个文件，并在服务器重启时读取。
 .TP 
 \fBcompress_stored_rooms\fP
-Determines whether the rooms file should be read and written to in
-compressed form. Defaults to \fByes\fP.
+制定房间文件是否应该压缩。 默认值为 \fByes\fP.
 .TP 
 \fBconnections_allowed\fP
 同一IP允许的连接数。\fB0\fP 表示无限制。(默认值：\fB5\fP)
 .TP 
 \fBdisallow_names\fP
-Names/nicks that are not accepted by the server. \fB*\fP and \fB?\fP from wildcard
-patterns are supported. See \fBglob\fP(7)  for more details.  Default values
-(used if nothing is specified) are:
-\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
+服务器不允许使用的用户名/昵称。可以使用\fB*\fP和\fB?\fP通配符。更多信息请查看 \fBglob\fP(7)
+。默认值(如果用户没有指定则自动使用)是：\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-The path to the fifo you can echo server commands into (same as /query
-\&... from wesnoth).  If not specified defaults to the compile\-time path
-(default: \fB/var/run/socket/wesnothd/socket\fP).
+你能通过调用服务器命令的fifo路径（与在wesnoth中使用 /query
+功能相同）。如果不指定，则默认为编译时指定的路径(默认：\fB/var/run/socket/wesnothd/socket\fP).
 .TP 
 \fBmax_messages\fP
 \fBmessages_time_period\fP中允许存在的消息数。 (默认值: \fB4\fP)
@@ -119,44 +113,32 @@ The path to the fifo you can echo server commands into (same as /query
 当日新闻
 .TP 
 \fBnew_room_policy\fP
-Determines who can create new rooms on the server. Available values are
-\fBeveryone\fP, \fBregistered\fP, \fBadmin\fP and \fBnobody\fP, and give the permission
-respectively to everyone, registered users, admin users or disables new room
-creation. Default value is \fBeveryone\fP.
+指定谁能在服务器上创建房间。可选值为 \fBeveryone\fP, \fBregistered\fP, \fBadmin\fP and \fBnobody\fP,
+分别表示所有人，注册用户，管理员用户，禁止创建房间。 默认值为 \fBeveryone\fP.
 .TP 
 \fBpasswd\fP
-The password used to gain admin privileges (via \fB/query admin
-\fP\fIpassword\fP).
+用来获取管理员权限的密码 (通过 \fB/query admin \fP\fIpassword\fP).
 .TP 
 \fBreplay_save_path\fP
 存放游戏录像的目录。(必须以/结尾!)默认为`'(空),也就是wesnothd 启动时的目录。
 .TP 
 \fBrestart_command\fP
-The command that the server uses to start a new server process via the
-\fBrestart\fP command. (Can only be issued via the fifo. See the
-\fBallow_remote_shutdown\fP setting.)
+这是服务器使用\fBrestart\fP命令开启新进程时使用的命令。（只能通过fifo来调用。参考\fBallow_remote_shutdown\fP设置。）
 .TP 
 \fBroom_save_file\fP
-Path to a file where the room info should be stored. This file is read on
-server startup and written to later. If empty or not set, rooms are not
-loaded and not saved.
+制定存放房间信息的文件路径。这个文件在服务器启动时读取，之后会写入。如果设为空或者不设置，则房间不自动加载和保存。
 .TP 
 \fBsave_replays\fP
 设置服务器是否自动保存游戏录像。(默认值: \fBfalse\fP)
 .TP 
 \fBversions_accepted\fP
-A comma separated list of version strings to be accepted by the server. \fB*\fP
-and \fB?\fP from wildcard patterns are supported.  (defaults to the
-corresponding wesnoth version)
+用逗号分隔的服务器接受的版本号列表。支持\fB*\fP和\fB?\fP通配符。（默认为(与服务器)一致的wesnoth版本）
 .br
 例如: \fBversions_accepted="*"\fP 允许所有版本连接。
 .TP  
 \fBuser_handler\fP
-The name of the user handler to use. Currently available user handlers are
-\fBforum\fP (to connect wesnothd to a phpbb forum database) and \fBsample\fP (a
-sample implementation of the user handler interface, if you use this on
-anything real you are insane). The default value is \fBforum\fP. You must also
-add a \fB[user_handler]\fP section, see below.
+希望使用的用户处理单元。目前可选的有\fBforum\fP(将wesnothd与phpbb 论坛的数据库连接起来)
+和\fBsample\fP(一个实现用户处理的示例,如果你真的(直接)用这个那你一定是疯了)。默认值是\fBforum\fP同时你必须添加一个\fB[user_handler]\fP部分,看下面。
 .
 .SS "Global tags:"
 .
@@ -181,20 +163,15 @@ add a \fB[user_handler]\fP section, see below.
 给封禁时间起一个名字
 .TP 
 \fBtime\fP
-The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s
-(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d
-is a number.  If no time modifier is given minutes (m) are assumed.
-Example: \fBtime="1D12h30m"\fP results in a ban time of 1 day, 12 hours and 30
-minutes.
+时间长度定义。 格式为：%d[%s[%d%s[...]]]
+其中%s是s（秒），m（分钟），h（小时），D（天），M（月），Y（年），%d是一个数字。如果不指定时间单位，默认为分钟（m）例如：\fBtime=\"1D12h30m\"\fP结果是1天，12小时，30分钟的封禁。
 .RE
 .P
 \fB[proxy]\fP 这个标签告诉服务器扮演代理服务器角色，把用户连接重定向到另一台服务器。与\fB[redirect]\fP接受一样的参数。
 .RE
 .P
-\fB[user_handler]\fP Configures the user handler. Available keys vary depending
-on which user handler is set with the \fBuser_handler\fP key. If no
-\fB[user_handler]\fP section is present in the configuration the server will
-run without any nick registration service.
+\fB[user_handler]\fP
+设置用户处理单元。可设置的键值很大程度上取决于通过\fBuser_handler\fP设置的用户处理单元的值。如果配置文件中没有\fB[user_handler]\fP部分,服务器以不提供昵称注册服务的方式运行。
 .RS
 .TP  
 \fBdb_host\fP
@@ -214,11 +191,10 @@ run without any nick registration service.
 (例如phpbb3_users)。
 .TP  
 \fBdb_extra_table\fP
-(for user_handler=forum) The name of the table in which wesnothd will save
-its own data about users. You will have to create this table manually, e.g.:
-\fBCREATE TABLE <table\-name>(username VARCHAR(255) PRIMARY KEY,
-user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4)
-NOT NULL DEFAULT 0);\fP
+(如果用户处理单元设置为 forum) wesnothd存放用户游戏数据的表名。你必须自己创建这个表,例如:\fBCREATE TABLE
+<table\-name>(username VARCHAR(255) PRIMARY KEY, user_lastvisit INT
+UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT
+0);\fP
 .TP  
 \fBuser_expiration\fP
 (如果用户处理单元设置为 sample) 注册昵称失效时间(天数)。

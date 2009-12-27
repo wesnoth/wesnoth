@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-lib_1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-12-13 15:50+0100\n"
+"POT-Creation-Date: 2009-12-27 12:27+0100\n"
 "PO-Revision-Date: 2009-11-26 23:16+0100\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
@@ -584,7 +584,7 @@ msgstr "Kapcsolódás"
 #: data/gui/default/window/editor_new_map.cfg:111
 #: data/gui/default/window/editor_resize_map.cfg:275
 #: data/gui/default/window/editor_settings.cfg:240
-#: data/gui/default/window/game_load.cfg:442
+#: data/gui/default/window/game_load.cfg:444
 #: data/gui/default/window/game_save.cfg:134
 #: data/gui/default/window/language_selection.cfg:133
 #: data/gui/default/window/message.cfg:136
@@ -609,8 +609,8 @@ msgstr "Hadjárat"
 #. [button]: id=ok
 #: data/gui/default/window/campaign_dialog.cfg:301
 #: data/gui/default/window/editor_settings.cfg:230
-#: data/gui/default/window/game_load.cfg:428
-#: data/gui/default/window/game_load.cfg:429
+#: data/gui/default/window/game_load.cfg:430
+#: data/gui/default/window/game_load.cfg:431
 #: data/gui/default/window/game_save.cfg:119
 #: data/gui/default/window/game_save.cfg:120
 #: data/gui/default/window/mp_login.cfg:234
@@ -877,40 +877,40 @@ msgid "Load Game"
 msgstr "Játék betöltése"
 
 #. [label]: id=lblChoose
-#: data/gui/default/window/game_load.cfg:179
+#: data/gui/default/window/game_load.cfg:181
 msgid "Choose the game to load"
 msgstr "Válaszd ki a betöltendő játékot"
 
 #. [label]: id=lblFilter
-#: data/gui/default/window/game_load.cfg:203
+#: data/gui/default/window/game_load.cfg:205
 msgid "Filter"
 msgstr "Szűrés"
 
 #. [label]: id=name
 #. [label]: id=filename
-#: data/gui/default/window/game_load.cfg:253
+#: data/gui/default/window/game_load.cfg:255
 #: data/gui/default/window/mp_server_list.cfg:96
 msgid "Name"
 msgstr "Név"
 
 #. [label]: id=date
-#: data/gui/default/window/game_load.cfg:267
+#: data/gui/default/window/game_load.cfg:269
 msgid "Date"
 msgstr "Dátum"
 
 #. [button]: id=delete
-#: data/gui/default/window/game_load.cfg:351
-#: data/gui/default/window/game_load.cfg:352
+#: data/gui/default/window/game_load.cfg:353
+#: data/gui/default/window/game_load.cfg:354
 msgid "Delete"
 msgstr "Törlés"
 
 #. [toggle_button]: id=show_replay
-#: data/gui/default/window/game_load.cfg:370
+#: data/gui/default/window/game_load.cfg:372
 msgid "Show replay"
 msgstr "Visszajátszás mutatása"
 
 #. [toggle_button]: id=cancel_orders
-#: data/gui/default/window/game_load.cfg:388
+#: data/gui/default/window/game_load.cfg:390
 msgid "Cancel orders"
 msgstr "Parancsok visszavonása"
 
@@ -1425,7 +1425,7 @@ msgstr "Jelszóemlékeztető"
 #. [grid]
 #: data/gui/default/window/mp_method_selection.cfg:31
 #: data/gui/default/window/title_screen.cfg:184
-#: src/gui/dialogs/game_load.cpp:259
+#: src/gui/dialogs/game_load.cpp:270
 msgid "Multiplayer"
 msgstr "Többjátékos"
 
@@ -1507,7 +1507,7 @@ msgstr "Előző"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:182
-#: src/gui/dialogs/game_load.cpp:261
+#: src/gui/dialogs/game_load.cpp:272
 msgid "Tutorial"
 msgstr "Gyakorlás"
 
@@ -2057,34 +2057,34 @@ msgstr "A szöveg betűmérete 0."
 msgid "Text doesn't start on canvas."
 msgstr "A szöveg kezdete lelóg a vászonról."
 
-#: src/gui/auxiliary/window_builder.cpp:141
+#: src/gui/auxiliary/window_builder.cpp:143
 msgid "Linked '$id' group has multiple definitions."
 msgstr "A következő csoport több definícióval is rendelkezik: \"$id\"."
 
-#: src/gui/auxiliary/window_builder.cpp:199 src/gui/widgets/settings.cpp:445
+#: src/gui/auxiliary/window_builder.cpp:201 src/gui/widgets/settings.cpp:456
 msgid "No resolution defined."
 msgstr "A felbontás nincs megadva."
 
-#: src/gui/auxiliary/window_builder.cpp:306
+#: src/gui/auxiliary/window_builder.cpp:308
 #: src/gui/auxiliary/window_builder/panel.cpp:35
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:38
-#: src/gui/widgets/settings.cpp:709 src/gui/widgets/settings.cpp:808
-#: src/gui/widgets/settings.cpp:901 src/gui/widgets/settings.cpp:944
-#: src/gui/widgets/settings.cpp:1059
+#: src/gui/widgets/settings.cpp:724 src/gui/widgets/settings.cpp:823
+#: src/gui/widgets/settings.cpp:950 src/gui/widgets/settings.cpp:993
+#: src/gui/widgets/settings.cpp:1108
 msgid "No grid defined."
 msgstr "Nincs mezőháló megadva."
 
-#: src/gui/auxiliary/window_builder.cpp:337
+#: src/gui/auxiliary/window_builder.cpp:339
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
 "A következő csoporthoz \"meghatározott szélesség\"-et vagy \"meghatározott "
 "magasság\"-ot kell rendelni: \"$id\"."
 
-#: src/gui/auxiliary/window_builder.cpp:436
+#: src/gui/auxiliary/window_builder.cpp:438
 msgid "A row must have a column."
 msgstr "Egy sorhoz még oszlopot kell rendelni."
 
-#: src/gui/auxiliary/window_builder.cpp:437
+#: src/gui/auxiliary/window_builder.cpp:439
 msgid "Number of columns differ."
 msgstr "Az oszlopok száma helytelen."
 
@@ -2120,31 +2120,31 @@ msgstr "Az értékek és az \"értékcímkék\" száma nem egyezik."
 msgid "No stack defined."
 msgstr "Nincs halmaz megadva."
 
-#: src/gui/dialogs/game_load.cpp:232
+#: src/gui/dialogs/game_load.cpp:243
 msgid "#(Invalid)"
 msgstr "#(Érvénytelen)"
 
-#: src/gui/dialogs/game_load.cpp:252
+#: src/gui/dialogs/game_load.cpp:263
 msgid "Campaign: $campaign_name"
 msgstr "Hadjárat: $campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:271
+#: src/gui/dialogs/game_load.cpp:282
 msgid "replay"
 msgstr "visszajátszás"
 
-#: src/gui/dialogs/game_load.cpp:273
+#: src/gui/dialogs/game_load.cpp:284
 msgid "Turn"
 msgstr "Kör"
 
-#: src/gui/dialogs/game_load.cpp:275
+#: src/gui/dialogs/game_load.cpp:286
 msgid "Scenario Start"
 msgstr "Pálya indítása"
 
-#: src/gui/dialogs/game_load.cpp:278
+#: src/gui/dialogs/game_load.cpp:289
 msgid "Difficulty: "
 msgstr "Nehézség: "
 
-#: src/gui/dialogs/game_load.cpp:282
+#: src/gui/dialogs/game_load.cpp:293
 msgid "Version: "
 msgstr "Verzió: "
 
@@ -2205,32 +2205,32 @@ msgstr "Verzió"
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Ez a nélkülözhetetlen vezérlőeszköz nincs megadva: \"$id\"."
 
-#: src/gui/widgets/settings.cpp:144
+#: src/gui/widgets/settings.cpp:145
 msgid "No default gui defined."
 msgstr "Nincs alapértelmezett grafikus felület megadva."
 
-#: src/gui/widgets/settings.cpp:304
+#: src/gui/widgets/settings.cpp:307
 msgid "Window not defined."
 msgstr "Nincs ablak megadva."
 
-#: src/gui/widgets/settings.cpp:401
+#: src/gui/widgets/settings.cpp:412
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 "A meghatározás (\"$definition\") nem tartalmaz adatokat erről a "
 "vezérlőeszközről: \"$id\" "
 
-#: src/gui/widgets/settings.cpp:471
+#: src/gui/widgets/settings.cpp:482
 msgid "No state or draw section defined."
 msgstr "Az állapot vagy a térképrészlet nincs megadva."
 
-#: src/gui/widgets/window.cpp:754
+#: src/gui/widgets/window.cpp:777
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr ""
 "A távozáshoz egy \"kattints a távozásra\" vagy egy \"rendben\" gomb "
 "szükséges."
 
-#: src/gui/widgets/window.cpp:779 src/gui/widgets/window.cpp:812
+#: src/gui/widgets/window.cpp:802 src/gui/widgets/window.cpp:835
 #: src/tests/gui/test_gui2.cpp:229
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Egy párbeszédablak nem jeleníthető meg, mert nem fér el a képernyőn."
@@ -2713,23 +2713,23 @@ msgstr "Területforma:"
 msgid "Roads Between Castles"
 msgstr "Várak összekötése utakkal"
 
-#: src/mapgen_dialog.cpp:304
+#: src/mapgen_dialog.cpp:301
 msgid "/1000 tiles"
 msgstr "/1000 terület"
 
-#: src/mapgen_dialog.cpp:314
+#: src/mapgen_dialog.cpp:310
 msgid "Coastal"
 msgstr "Tengerpart"
 
-#: src/mapgen_dialog.cpp:314
+#: src/mapgen_dialog.cpp:310
 msgid "Inland"
 msgstr "Szárazföld"
 
-#: src/mapgen_dialog.cpp:314
+#: src/mapgen_dialog.cpp:310
 msgid "Island"
 msgstr "Sziget"
 
-#: src/marked-up_text.cpp:418
+#: src/marked-up_text.cpp:407
 msgid "The maximum text width is less than 1."
 msgstr "A legnagyobb szövegszélesség kisebb, mint 1."
 

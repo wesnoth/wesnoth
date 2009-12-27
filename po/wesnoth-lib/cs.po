@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-12-13 15:50+0100\n"
+"POT-Creation-Date: 2009-12-27 12:27+0100\n"
 "PO-Revision-Date: 2009-11-21 12:05+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -596,7 +596,7 @@ msgstr "Připojit"
 #: data/gui/default/window/editor_new_map.cfg:111
 #: data/gui/default/window/editor_resize_map.cfg:275
 #: data/gui/default/window/editor_settings.cfg:240
-#: data/gui/default/window/game_load.cfg:442
+#: data/gui/default/window/game_load.cfg:444
 #: data/gui/default/window/game_save.cfg:134
 #: data/gui/default/window/language_selection.cfg:133
 #: data/gui/default/window/message.cfg:136
@@ -621,8 +621,8 @@ msgstr "Hraj tažení"
 #. [button]: id=ok
 #: data/gui/default/window/campaign_dialog.cfg:301
 #: data/gui/default/window/editor_settings.cfg:230
-#: data/gui/default/window/game_load.cfg:428
-#: data/gui/default/window/game_load.cfg:429
+#: data/gui/default/window/game_load.cfg:430
+#: data/gui/default/window/game_load.cfg:431
 #: data/gui/default/window/game_save.cfg:119
 #: data/gui/default/window/game_save.cfg:120
 #: data/gui/default/window/mp_login.cfg:234
@@ -893,40 +893,40 @@ msgid "Load Game"
 msgstr "Načti hru"
 
 #. [label]: id=lblChoose
-#: data/gui/default/window/game_load.cfg:179
+#: data/gui/default/window/game_load.cfg:181
 msgid "Choose the game to load"
 msgstr "Vyber si hru pro nahrání"
 
 #. [label]: id=lblFilter
-#: data/gui/default/window/game_load.cfg:203
+#: data/gui/default/window/game_load.cfg:205
 msgid "Filter"
 msgstr "Filtr"
 
 #. [label]: id=name
 #. [label]: id=filename
-#: data/gui/default/window/game_load.cfg:253
+#: data/gui/default/window/game_load.cfg:255
 #: data/gui/default/window/mp_server_list.cfg:96
 msgid "Name"
 msgstr "Název"
 
 #. [label]: id=date
-#: data/gui/default/window/game_load.cfg:267
+#: data/gui/default/window/game_load.cfg:269
 msgid "Date"
 msgstr "Datum"
 
 #. [button]: id=delete
-#: data/gui/default/window/game_load.cfg:351
-#: data/gui/default/window/game_load.cfg:352
+#: data/gui/default/window/game_load.cfg:353
+#: data/gui/default/window/game_load.cfg:354
 msgid "Delete"
 msgstr "Smazat"
 
 #. [toggle_button]: id=show_replay
-#: data/gui/default/window/game_load.cfg:370
+#: data/gui/default/window/game_load.cfg:372
 msgid "Show replay"
 msgstr "Přehrát záznam"
 
 #. [toggle_button]: id=cancel_orders
-#: data/gui/default/window/game_load.cfg:388
+#: data/gui/default/window/game_load.cfg:390
 msgid "Cancel orders"
 msgstr "Zrušit příkazy"
 
@@ -1441,7 +1441,7 @@ msgstr "Připomenutí hesla"
 #. [grid]
 #: data/gui/default/window/mp_method_selection.cfg:31
 #: data/gui/default/window/title_screen.cfg:184
-#: src/gui/dialogs/game_load.cpp:259
+#: src/gui/dialogs/game_load.cpp:270
 msgid "Multiplayer"
 msgstr "Hra více hráčů"
 
@@ -1522,7 +1522,7 @@ msgstr "Předchozí"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:182
-#: src/gui/dialogs/game_load.cpp:261
+#: src/gui/dialogs/game_load.cpp:272
 msgid "Tutorial"
 msgstr "Výcvik"
 
@@ -2062,33 +2062,33 @@ msgstr "Text má výšku fontu nula."
 msgid "Text doesn't start on canvas."
 msgstr "Text nezačíná na plátně."
 
-#: src/gui/auxiliary/window_builder.cpp:141
+#: src/gui/auxiliary/window_builder.cpp:143
 msgid "Linked '$id' group has multiple definitions."
 msgstr "Spojená skupina '$id' má více definicí,"
 
-#: src/gui/auxiliary/window_builder.cpp:199 src/gui/widgets/settings.cpp:445
+#: src/gui/auxiliary/window_builder.cpp:201 src/gui/widgets/settings.cpp:456
 msgid "No resolution defined."
 msgstr "Není definováno žádné rozlišení."
 
-#: src/gui/auxiliary/window_builder.cpp:306
+#: src/gui/auxiliary/window_builder.cpp:308
 #: src/gui/auxiliary/window_builder/panel.cpp:35
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:38
-#: src/gui/widgets/settings.cpp:709 src/gui/widgets/settings.cpp:808
-#: src/gui/widgets/settings.cpp:901 src/gui/widgets/settings.cpp:944
-#: src/gui/widgets/settings.cpp:1059
+#: src/gui/widgets/settings.cpp:724 src/gui/widgets/settings.cpp:823
+#: src/gui/widgets/settings.cpp:950 src/gui/widgets/settings.cpp:993
+#: src/gui/widgets/settings.cpp:1108
 msgid "No grid defined."
 msgstr "Není definována žádná mřížka."
 
-#: src/gui/auxiliary/window_builder.cpp:337
+#: src/gui/auxiliary/window_builder.cpp:339
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
 "Spojená skupina '$id' potřebuje klíč 'fixed_width' nebo 'fixed_height'."
 
-#: src/gui/auxiliary/window_builder.cpp:436
+#: src/gui/auxiliary/window_builder.cpp:438
 msgid "A row must have a column."
 msgstr "Řádek musí mít sloupec."
 
-#: src/gui/auxiliary/window_builder.cpp:437
+#: src/gui/auxiliary/window_builder.cpp:439
 msgid "Number of columns differ."
 msgstr "Počet sloupců se liší."
 
@@ -2123,31 +2123,31 @@ msgstr "Nesouhlasí počet value_labels a values."
 msgid "No stack defined."
 msgstr "Nebyl definován žádný zásobník."
 
-#: src/gui/dialogs/game_load.cpp:232
+#: src/gui/dialogs/game_load.cpp:243
 msgid "#(Invalid)"
 msgstr "#(Invalid)"
 
-#: src/gui/dialogs/game_load.cpp:252
+#: src/gui/dialogs/game_load.cpp:263
 msgid "Campaign: $campaign_name"
 msgstr "Tažení: $campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:271
+#: src/gui/dialogs/game_load.cpp:282
 msgid "replay"
 msgstr "záznam"
 
-#: src/gui/dialogs/game_load.cpp:273
+#: src/gui/dialogs/game_load.cpp:284
 msgid "Turn"
 msgstr "Kolo"
 
-#: src/gui/dialogs/game_load.cpp:275
+#: src/gui/dialogs/game_load.cpp:286
 msgid "Scenario Start"
 msgstr "Začátek scénáře"
 
-#: src/gui/dialogs/game_load.cpp:278
+#: src/gui/dialogs/game_load.cpp:289
 msgid "Difficulty: "
 msgstr "Obtížnost: "
 
-#: src/gui/dialogs/game_load.cpp:282
+#: src/gui/dialogs/game_load.cpp:293
 msgid "Version: "
 msgstr "Verze: "
 
@@ -2208,30 +2208,30 @@ msgstr "Verze"
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Povinný ovládací prvek '$id' nebyl definován."
 
-#: src/gui/widgets/settings.cpp:144
+#: src/gui/widgets/settings.cpp:145
 msgid "No default gui defined."
 msgstr "Není definováno výchozí uživatelské rozhraní (GUI)."
 
-#: src/gui/widgets/settings.cpp:304
+#: src/gui/widgets/settings.cpp:307
 msgid "Window not defined."
 msgstr "Okno není definováno."
 
-#: src/gui/widgets/settings.cpp:401
+#: src/gui/widgets/settings.cpp:412
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "Definice ovladače '$definition' neobsahuje definici pro '$id'."
 
-#: src/gui/widgets/settings.cpp:471
+#: src/gui/widgets/settings.cpp:482
 msgid "No state or draw section defined."
 msgstr "Není definován stav či region vykreslení."
 
-#: src/gui/widgets/window.cpp:754
+#: src/gui/widgets/window.cpp:777
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr ""
 "Zavření kliknutím kamkoliv vyžaduje přítomnost parametru nebo tlačítkas id "
 "nastaveným na 'click_dismiss' nebo 'ok'."
 
-#: src/gui/widgets/window.cpp:779 src/gui/widgets/window.cpp:812
+#: src/gui/widgets/window.cpp:802 src/gui/widgets/window.cpp:835
 #: src/tests/gui/test_gui2.cpp:229
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Nebyl zobrazen dialog, který se nevejde na obrazovku."
@@ -2717,23 +2717,23 @@ msgstr "Typ krajiny:"
 msgid "Roads Between Castles"
 msgstr "Cesty mezi hrady"
 
-#: src/mapgen_dialog.cpp:304
+#: src/mapgen_dialog.cpp:301
 msgid "/1000 tiles"
 msgstr "/1000 polí"
 
-#: src/mapgen_dialog.cpp:314
+#: src/mapgen_dialog.cpp:310
 msgid "Coastal"
 msgstr "Pobřeží"
 
-#: src/mapgen_dialog.cpp:314
+#: src/mapgen_dialog.cpp:310
 msgid "Inland"
 msgstr "Vnitrozemí"
 
-#: src/mapgen_dialog.cpp:314
+#: src/mapgen_dialog.cpp:310
 msgid "Island"
 msgstr "Ostrov"
 
-#: src/marked-up_text.cpp:418
+#: src/marked-up_text.cpp:407
 msgid "The maximum text width is less than 1."
 msgstr "Maximální šířka textu je menší než 1."
 

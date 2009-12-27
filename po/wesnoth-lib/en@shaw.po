@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-12-13 15:50+0100\n"
+"POT-Creation-Date: 2009-12-27 12:27+0100\n"
 "PO-Revision-Date: 2009-10-08 23:00-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -584,7 +584,7 @@ msgstr "𐑒𐑩𐑯𐑧𐑒𐑑"
 #: data/gui/default/window/editor_new_map.cfg:111
 #: data/gui/default/window/editor_resize_map.cfg:275
 #: data/gui/default/window/editor_settings.cfg:240
-#: data/gui/default/window/game_load.cfg:442
+#: data/gui/default/window/game_load.cfg:444
 #: data/gui/default/window/game_save.cfg:134
 #: data/gui/default/window/language_selection.cfg:133
 #: data/gui/default/window/message.cfg:136
@@ -609,8 +609,8 @@ msgstr "𐑐𐑤𐑱 𐑩 𐑒𐑨𐑥𐑐𐑱𐑯"
 #. [button]: id=ok
 #: data/gui/default/window/campaign_dialog.cfg:301
 #: data/gui/default/window/editor_settings.cfg:230
-#: data/gui/default/window/game_load.cfg:428
-#: data/gui/default/window/game_load.cfg:429
+#: data/gui/default/window/game_load.cfg:430
+#: data/gui/default/window/game_load.cfg:431
 #: data/gui/default/window/game_save.cfg:119
 #: data/gui/default/window/game_save.cfg:120
 #: data/gui/default/window/mp_login.cfg:234
@@ -877,40 +877,40 @@ msgid "Load Game"
 msgstr "𐑤𐑴𐑛 𐑜𐑱𐑥"
 
 #. [label]: id=lblChoose
-#: data/gui/default/window/game_load.cfg:179
+#: data/gui/default/window/game_load.cfg:181
 msgid "Choose the game to load"
 msgstr "𐑗𐑵𐑟 𐑞 𐑜𐑱𐑥 𐑑 𐑤𐑴𐑛"
 
 #. [label]: id=lblFilter
-#: data/gui/default/window/game_load.cfg:203
+#: data/gui/default/window/game_load.cfg:205
 msgid "Filter"
 msgstr "𐑓𐑦𐑤𐑑𐑼"
 
 #. [label]: id=name
 #. [label]: id=filename
-#: data/gui/default/window/game_load.cfg:253
+#: data/gui/default/window/game_load.cfg:255
 #: data/gui/default/window/mp_server_list.cfg:96
 msgid "Name"
 msgstr "𐑯𐑱𐑥"
 
 #. [label]: id=date
-#: data/gui/default/window/game_load.cfg:267
+#: data/gui/default/window/game_load.cfg:269
 msgid "Date"
 msgstr "𐑛𐑱𐑑"
 
 #. [button]: id=delete
-#: data/gui/default/window/game_load.cfg:351
-#: data/gui/default/window/game_load.cfg:352
+#: data/gui/default/window/game_load.cfg:353
+#: data/gui/default/window/game_load.cfg:354
 msgid "Delete"
 msgstr "𐑛𐑦𐑤𐑰𐑑"
 
 #. [toggle_button]: id=show_replay
-#: data/gui/default/window/game_load.cfg:370
+#: data/gui/default/window/game_load.cfg:372
 msgid "Show replay"
 msgstr "𐑖𐑴 𐑮𐑰𐑐𐑤𐑱"
 
 #. [toggle_button]: id=cancel_orders
-#: data/gui/default/window/game_load.cfg:388
+#: data/gui/default/window/game_load.cfg:390
 msgid "Cancel orders"
 msgstr "𐑒𐑨𐑯𐑕𐑩𐑤 𐑹𐑛𐑼𐑟"
 
@@ -1424,7 +1424,7 @@ msgstr "𐑐𐑭𐑕𐑢𐑻𐑛 𐑮𐑦𐑥𐑲𐑯𐑛𐑼"
 #. [grid]
 #: data/gui/default/window/mp_method_selection.cfg:31
 #: data/gui/default/window/title_screen.cfg:184
-#: src/gui/dialogs/game_load.cpp:259
+#: src/gui/dialogs/game_load.cpp:270
 msgid "Multiplayer"
 msgstr "𐑥𐑩𐑤𐑑𐑰𐑐𐑤𐑱𐑻"
 
@@ -1503,7 +1503,7 @@ msgstr "𐑐𐑮𐑰𐑝𐑦𐑩𐑕"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:182
-#: src/gui/dialogs/game_load.cpp:261
+#: src/gui/dialogs/game_load.cpp:272
 msgid "Tutorial"
 msgstr "𐑑𐑵𐑑𐑹𐑰𐑩𐑤"
 
@@ -2030,32 +2030,32 @@ msgstr "𐑑𐑧𐑒𐑕𐑑 𐑣𐑨𐑟 𐑩 𐑓𐑪𐑯𐑑 𐑕𐑲𐑟 �
 msgid "Text doesn't start on canvas."
 msgstr "𐑑𐑧𐑒𐑕𐑑 𐑛𐑳𐑟𐑯𐑑 𐑕𐑑𐑸𐑑 𐑪𐑯 𐑒𐑨𐑯𐑝𐑩𐑕."
 
-#: src/gui/auxiliary/window_builder.cpp:141
+#: src/gui/auxiliary/window_builder.cpp:143
 msgid "Linked '$id' group has multiple definitions."
 msgstr "𐑤𐑦𐑙𐑒𐑑 '$id' 𐑜𐑮𐑵𐑐 𐑣𐑨𐑟 𐑥𐑳𐑤𐑑𐑦𐑐𐑩𐑤 𐑛𐑧𐑓𐑩𐑯𐑦𐑖𐑩𐑯𐑟."
 
-#: src/gui/auxiliary/window_builder.cpp:199 src/gui/widgets/settings.cpp:445
+#: src/gui/auxiliary/window_builder.cpp:201 src/gui/widgets/settings.cpp:456
 msgid "No resolution defined."
 msgstr "𐑯𐑴 𐑮𐑧𐑟𐑩𐑤𐑵𐑖𐑩𐑯 𐑛𐑦𐑓𐑲𐑯𐑛."
 
-#: src/gui/auxiliary/window_builder.cpp:306
+#: src/gui/auxiliary/window_builder.cpp:308
 #: src/gui/auxiliary/window_builder/panel.cpp:35
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:38
-#: src/gui/widgets/settings.cpp:709 src/gui/widgets/settings.cpp:808
-#: src/gui/widgets/settings.cpp:901 src/gui/widgets/settings.cpp:944
-#: src/gui/widgets/settings.cpp:1059
+#: src/gui/widgets/settings.cpp:724 src/gui/widgets/settings.cpp:823
+#: src/gui/widgets/settings.cpp:950 src/gui/widgets/settings.cpp:993
+#: src/gui/widgets/settings.cpp:1108
 msgid "No grid defined."
 msgstr "𐑯𐑴 𐑜𐑮𐑦𐑛 𐑛𐑦𐑓𐑲𐑯𐑛."
 
-#: src/gui/auxiliary/window_builder.cpp:337
+#: src/gui/auxiliary/window_builder.cpp:339
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgstr "𐑤𐑦𐑙𐑒𐑑 '$id' 𐑜𐑮𐑵𐑐 𐑯𐑰𐑛𐑟 𐑩 'fixed_width' 𐑹 'fixed_height' 𐑒𐑰."
 
-#: src/gui/auxiliary/window_builder.cpp:436
+#: src/gui/auxiliary/window_builder.cpp:438
 msgid "A row must have a column."
 msgstr "𐑩 𐑸·𐑫𐑵𐑱𐑙𐑔𐑮𐑬 𐑥𐑳𐑕𐑑 𐑣𐑨𐑝 𐑩 𐑒𐑪𐑤𐑩𐑥."
 
-#: src/gui/auxiliary/window_builder.cpp:437
+#: src/gui/auxiliary/window_builder.cpp:439
 msgid "Number of columns differ."
 msgstr "𐑯𐑳𐑥𐑚𐑻 𐑝 𐑒𐑪𐑤𐑩𐑥𐑟 𐑛𐑦𐑓𐑼."
 
@@ -2089,31 +2089,31 @@ msgstr "𐑞 𐑯𐑳𐑥𐑚𐑻 𐑝 value_labels 𐑯 𐑝𐑨𐑤𐑿𐑟 �
 msgid "No stack defined."
 msgstr "𐑯𐑴 𐑕𐑑𐑨𐑒 𐑛𐑦𐑓𐑲𐑯𐑛."
 
-#: src/gui/dialogs/game_load.cpp:232
+#: src/gui/dialogs/game_load.cpp:243
 msgid "#(Invalid)"
 msgstr " "
 
-#: src/gui/dialogs/game_load.cpp:252
+#: src/gui/dialogs/game_load.cpp:263
 msgid "Campaign: $campaign_name"
 msgstr "𐑒𐑨𐑥𐑐𐑱𐑯: $campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:271
+#: src/gui/dialogs/game_load.cpp:282
 msgid "replay"
 msgstr "𐑮𐑰𐑐𐑤𐑱"
 
-#: src/gui/dialogs/game_load.cpp:273
+#: src/gui/dialogs/game_load.cpp:284
 msgid "Turn"
 msgstr "𐑑𐑻𐑯"
 
-#: src/gui/dialogs/game_load.cpp:275
+#: src/gui/dialogs/game_load.cpp:286
 msgid "Scenario Start"
 msgstr "𐑕𐑦𐑯𐑺𐑰𐑴 𐑕𐑑𐑸𐑑"
 
-#: src/gui/dialogs/game_load.cpp:278
+#: src/gui/dialogs/game_load.cpp:289
 msgid "Difficulty: "
 msgstr "𐑛𐑦𐑓𐑦𐑒𐑩𐑤𐑑𐑦: "
 
-#: src/gui/dialogs/game_load.cpp:282
+#: src/gui/dialogs/game_load.cpp:293
 msgid "Version: "
 msgstr "𐑝𐑻𐑠𐑩𐑯: "
 
@@ -2173,28 +2173,28 @@ msgstr "𐑝𐑻𐑠𐑩𐑯"
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "𐑥𐑨𐑯𐑛𐑩𐑑𐑹𐑰 𐑢𐑦𐑡𐑩𐑑 '$id' 𐑣𐑨𐑟𐑯𐑑 𐑚𐑰𐑯 𐑛𐑦𐑓𐑲𐑯𐑛."
 
-#: src/gui/widgets/settings.cpp:144
+#: src/gui/widgets/settings.cpp:145
 msgid "No default gui defined."
 msgstr "𐑯𐑴 𐑛𐑰𐑓𐑷𐑤𐑑 ·𐑜·𐑿·𐑦 𐑛𐑦𐑓𐑲𐑯𐑛."
 
-#: src/gui/widgets/settings.cpp:304
+#: src/gui/widgets/settings.cpp:307
 msgid "Window not defined."
 msgstr "𐑢𐑦𐑯𐑛𐑴 𐑯𐑪𐑑 𐑛𐑦𐑓𐑲𐑯𐑛."
 
-#: src/gui/widgets/settings.cpp:401
+#: src/gui/widgets/settings.cpp:412
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "𐑢𐑦𐑡𐑩𐑑 𐑛𐑧𐑓𐑩𐑯𐑦𐑖𐑩𐑯 '$definition' 𐑛𐑳𐑟𐑯𐑑 𐑒𐑩𐑯𐑑𐑱𐑯 𐑞 𐑛𐑧𐑓𐑩𐑯𐑦𐑖𐑩𐑯 𐑓𐑹 '$id'."
 
-#: src/gui/widgets/settings.cpp:471
+#: src/gui/widgets/settings.cpp:482
 msgid "No state or draw section defined."
 msgstr "𐑯𐑴 𐑕𐑑𐑱𐑑 𐑹 𐑛𐑮𐑷 𐑕𐑧𐑒𐑖𐑩𐑯 𐑛𐑦𐑓𐑲𐑯𐑛."
 
-#: src/gui/widgets/window.cpp:754
+#: src/gui/widgets/window.cpp:777
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "𐑒𐑤𐑦𐑒 𐑛𐑦𐑕𐑥𐑦𐑕 𐑯𐑰𐑛𐑟 𐑩 'click_dismiss' 𐑹 '𐑴𐑒𐑱' 𐑚𐑳𐑑𐑩𐑯."
 
-#: src/gui/widgets/window.cpp:779 src/gui/widgets/window.cpp:812
+#: src/gui/widgets/window.cpp:802 src/gui/widgets/window.cpp:835
 #: src/tests/gui/test_gui2.cpp:229
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "𐑓𐑱𐑤𐑛 𐑑 𐑖𐑴 𐑩 𐑛𐑲𐑩𐑤𐑪𐑜, 𐑢𐑦𐑗 𐑛𐑳𐑟𐑯𐑑 𐑓𐑦𐑑 𐑪𐑯 𐑞 𐑕𐑒𐑮𐑰𐑯."
@@ -2677,23 +2677,23 @@ msgstr "𐑤𐑨𐑯𐑛𐑓𐑹𐑥:"
 msgid "Roads Between Castles"
 msgstr "𐑮𐑴𐑛𐑟 𐑚𐑦𐑑𐑢𐑰𐑯 𐑒𐑨𐑕𐑩𐑤𐑟"
 
-#: src/mapgen_dialog.cpp:304
+#: src/mapgen_dialog.cpp:301
 msgid "/1000 tiles"
 msgstr "/1000 𐑑𐑲𐑤𐑟"
 
-#: src/mapgen_dialog.cpp:314
+#: src/mapgen_dialog.cpp:310
 msgid "Coastal"
 msgstr "𐑒𐑴𐑕𐑑𐑩𐑤"
 
-#: src/mapgen_dialog.cpp:314
+#: src/mapgen_dialog.cpp:310
 msgid "Inland"
 msgstr "𐑦𐑯𐑤𐑩𐑯𐑛"
 
-#: src/mapgen_dialog.cpp:314
+#: src/mapgen_dialog.cpp:310
 msgid "Island"
 msgstr "𐑲𐑤𐑩𐑯𐑛"
 
-#: src/marked-up_text.cpp:418
+#: src/marked-up_text.cpp:407
 msgid "The maximum text width is less than 1."
 msgstr "𐑞 𐑥𐑨𐑒𐑕𐑦𐑥𐑩𐑥 𐑑𐑧𐑒𐑕𐑑 𐑢𐑦𐑛𐑔 𐑦𐑟 𐑤𐑧𐑕 𐑞𐑨𐑯 1."
 

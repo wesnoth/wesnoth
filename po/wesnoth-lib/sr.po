@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-12-13 15:50+0100\n"
+"POT-Creation-Date: 2009-12-27 12:27+0100\n"
 "PO-Revision-Date: 2009-11-15 13:04+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
-"Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
-"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Language: sr\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%"
+"10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Environment: wesnoth, wesnoth/noent\n"
 "X-Wrapping: fine\n"
 
@@ -584,7 +584,7 @@ msgstr "Повежи се"
 #: data/gui/default/window/editor_new_map.cfg:111
 #: data/gui/default/window/editor_resize_map.cfg:275
 #: data/gui/default/window/editor_settings.cfg:240
-#: data/gui/default/window/game_load.cfg:442
+#: data/gui/default/window/game_load.cfg:444
 #: data/gui/default/window/game_save.cfg:134
 #: data/gui/default/window/language_selection.cfg:133
 #: data/gui/default/window/message.cfg:136
@@ -610,8 +610,8 @@ msgstr "Играње похода"
 #. [button]: id=ok
 #: data/gui/default/window/campaign_dialog.cfg:301
 #: data/gui/default/window/editor_settings.cfg:230
-#: data/gui/default/window/game_load.cfg:428
-#: data/gui/default/window/game_load.cfg:429
+#: data/gui/default/window/game_load.cfg:430
+#: data/gui/default/window/game_load.cfg:431
 #: data/gui/default/window/game_save.cfg:119
 #: data/gui/default/window/game_save.cfg:120
 #: data/gui/default/window/mp_login.cfg:234
@@ -878,40 +878,40 @@ msgid "Load Game"
 msgstr "Учитај позицију"
 
 #. [label]: id=lblChoose
-#: data/gui/default/window/game_load.cfg:179
+#: data/gui/default/window/game_load.cfg:181
 msgid "Choose the game to load"
 msgstr "Позиција за учитавање"
 
 #. [label]: id=lblFilter
-#: data/gui/default/window/game_load.cfg:203
+#: data/gui/default/window/game_load.cfg:205
 msgid "Filter"
 msgstr "Филтер"
 
 #. [label]: id=name
 #. [label]: id=filename
-#: data/gui/default/window/game_load.cfg:253
+#: data/gui/default/window/game_load.cfg:255
 #: data/gui/default/window/mp_server_list.cfg:96
 msgid "Name"
 msgstr "Име"
 
 #. [label]: id=date
-#: data/gui/default/window/game_load.cfg:267
+#: data/gui/default/window/game_load.cfg:269
 msgid "Date"
 msgstr "Датум"
 
 #. [button]: id=delete
-#: data/gui/default/window/game_load.cfg:351
-#: data/gui/default/window/game_load.cfg:352
+#: data/gui/default/window/game_load.cfg:353
+#: data/gui/default/window/game_load.cfg:354
 msgid "Delete"
 msgstr "Обриши"
 
 #. [toggle_button]: id=show_replay
-#: data/gui/default/window/game_load.cfg:370
+#: data/gui/default/window/game_load.cfg:372
 msgid "Show replay"
 msgstr "Прикажи снимак"
 
 #. [toggle_button]: id=cancel_orders
-#: data/gui/default/window/game_load.cfg:388
+#: data/gui/default/window/game_load.cfg:390
 msgid "Cancel orders"
 msgstr "Обустави наређења"
 
@@ -1425,7 +1425,7 @@ msgstr "Подсетник лозинке"
 #. [grid]
 #: data/gui/default/window/mp_method_selection.cfg:31
 #: data/gui/default/window/title_screen.cfg:184
-#: src/gui/dialogs/game_load.cpp:259
+#: src/gui/dialogs/game_load.cpp:270
 msgid "Multiplayer"
 msgstr "Вишеиграње"
 
@@ -1504,7 +1504,7 @@ msgstr "Претходно"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:182
-#: src/gui/dialogs/game_load.cpp:261
+#: src/gui/dialogs/game_load.cpp:272
 msgid "Tutorial"
 msgstr "Подучавање"
 
@@ -2045,32 +2045,32 @@ msgstr "Величина фонта за текст је 0."
 msgid "Text doesn't start on canvas."
 msgstr "Текст не стаје на платно."
 
-#: src/gui/auxiliary/window_builder.cpp:141
+#: src/gui/auxiliary/window_builder.cpp:143
 msgid "Linked '$id' group has multiple definitions."
 msgstr "Повезана група ‘$id’ има вишеструке дефиниције."
 
-#: src/gui/auxiliary/window_builder.cpp:199 src/gui/widgets/settings.cpp:445
+#: src/gui/auxiliary/window_builder.cpp:201 src/gui/widgets/settings.cpp:456
 msgid "No resolution defined."
 msgstr "Резолуција није дефинисана."
 
-#: src/gui/auxiliary/window_builder.cpp:306
+#: src/gui/auxiliary/window_builder.cpp:308
 #: src/gui/auxiliary/window_builder/panel.cpp:35
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:38
-#: src/gui/widgets/settings.cpp:709 src/gui/widgets/settings.cpp:808
-#: src/gui/widgets/settings.cpp:901 src/gui/widgets/settings.cpp:944
-#: src/gui/widgets/settings.cpp:1059
+#: src/gui/widgets/settings.cpp:724 src/gui/widgets/settings.cpp:823
+#: src/gui/widgets/settings.cpp:950 src/gui/widgets/settings.cpp:993
+#: src/gui/widgets/settings.cpp:1108
 msgid "No grid defined."
 msgstr "Мрежа није дефинисана."
 
-#: src/gui/auxiliary/window_builder.cpp:337
+#: src/gui/auxiliary/window_builder.cpp:339
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgstr "Повезана група ‘$id’ тражи кључ ‘fixed_width’ или ‘fixed_height’."
 
-#: src/gui/auxiliary/window_builder.cpp:436
+#: src/gui/auxiliary/window_builder.cpp:438
 msgid "A row must have a column."
 msgstr "Врста мора имати колону."
 
-#: src/gui/auxiliary/window_builder.cpp:437
+#: src/gui/auxiliary/window_builder.cpp:439
 msgid "Number of columns differ."
 msgstr "Број колона се разликује."
 
@@ -2104,31 +2104,31 @@ msgstr "Број value_labels и вредности се не слаже."
 msgid "No stack defined."
 msgstr "Стек није задат."
 
-#: src/gui/dialogs/game_load.cpp:232
+#: src/gui/dialogs/game_load.cpp:243
 msgid "#(Invalid)"
 msgstr "#(неваљан)"
 
-#: src/gui/dialogs/game_load.cpp:252
+#: src/gui/dialogs/game_load.cpp:263
 msgid "Campaign: $campaign_name"
 msgstr "Поход: $campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:271
+#: src/gui/dialogs/game_load.cpp:282
 msgid "replay"
 msgstr "снимак"
 
-#: src/gui/dialogs/game_load.cpp:273
+#: src/gui/dialogs/game_load.cpp:284
 msgid "Turn"
 msgstr "Потез"
 
-#: src/gui/dialogs/game_load.cpp:275
+#: src/gui/dialogs/game_load.cpp:286
 msgid "Scenario Start"
 msgstr "Почетак сценарија"
 
-#: src/gui/dialogs/game_load.cpp:278
+#: src/gui/dialogs/game_load.cpp:289
 msgid "Difficulty: "
 msgstr "Тежина: "
 
-#: src/gui/dialogs/game_load.cpp:282
+#: src/gui/dialogs/game_load.cpp:293
 msgid "Version: "
 msgstr "Верзија: "
 
@@ -2188,29 +2188,29 @@ msgstr "верзија"
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Обавезни виџет „$id“ није дефинисан."
 
-#: src/gui/widgets/settings.cpp:144
+#: src/gui/widgets/settings.cpp:145
 msgid "No default gui defined."
 msgstr "Подразумевано сучеље није дефинисано."
 
-#: src/gui/widgets/settings.cpp:304
+#: src/gui/widgets/settings.cpp:307
 msgid "Window not defined."
 msgstr "Прозор није дефинисан."
 
-#: src/gui/widgets/settings.cpp:401
+#: src/gui/widgets/settings.cpp:412
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "Дефиниција виџета „$definition“ не садржи дефиницију за „$id“."
 
-#: src/gui/widgets/settings.cpp:471
+#: src/gui/widgets/settings.cpp:482
 msgid "No state or draw section defined."
 msgstr "Одељак стања или цртања није дефинисан."
 
 # >? Wtf?
-#: src/gui/widgets/window.cpp:754
+#: src/gui/widgets/window.cpp:777
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "Клику отпуштања треба дугме „click_dismiss“ или „ok“."
 
-#: src/gui/widgets/window.cpp:779 src/gui/widgets/window.cpp:812
+#: src/gui/widgets/window.cpp:802 src/gui/widgets/window.cpp:835
 #: src/tests/gui/test_gui2.cpp:229
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Не могу да прикажем дијалог који не стаје на екран."
@@ -2697,23 +2697,23 @@ msgstr "Пејзаж:"
 msgid "Roads Between Castles"
 msgstr "Путеви међу замковима"
 
-#: src/mapgen_dialog.cpp:304
+#: src/mapgen_dialog.cpp:301
 msgid "/1000 tiles"
 msgstr "/1000 плочица"
 
-#: src/mapgen_dialog.cpp:314
+#: src/mapgen_dialog.cpp:310
 msgid "Coastal"
 msgstr "обалски"
 
-#: src/mapgen_dialog.cpp:314
+#: src/mapgen_dialog.cpp:310
 msgid "Inland"
 msgstr "копнени"
 
-#: src/mapgen_dialog.cpp:314
+#: src/mapgen_dialog.cpp:310
 msgid "Island"
 msgstr "острвски"
 
-#: src/marked-up_text.cpp:418
+#: src/marked-up_text.cpp:407
 msgid "The maximum text width is less than 1."
 msgstr "Највећа ширина текста је испод 1."
 
