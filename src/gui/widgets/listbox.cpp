@@ -88,7 +88,7 @@ unsigned tlistbox::get_item_count() const
 void tlistbox::set_row_active(const unsigned row, const bool active)
 {
 	assert(generator_);
-	generator_->get_item(row).set_active(active);
+	generator_->item(row).set_active(active);
 }
 
 void tlistbox::set_row_shown(const unsigned row, const bool shown)
@@ -156,13 +156,13 @@ const tgrid* tlistbox::get_row_grid(const unsigned row) const
 {
 	assert(generator_);
 	// rename this function and can we return a reference??
-	return &generator_->get_item(row);
+	return &generator_->item(row);
 }
 
 tgrid* tlistbox::get_row_grid(const unsigned row)
 {
 	assert(generator_);
-	return &generator_->get_item(row);
+	return &generator_->item(row);
 }
 
 bool tlistbox::select_row(const unsigned row, const bool select)
@@ -191,7 +191,7 @@ void tlistbox::list_item_clicked(twidget* caller)
 
 	for(size_t i = 0; i < generator_->get_item_count(); ++i) {
 
-		if(generator_->get_item(i).has_widget(caller)) {
+		if(generator_->item(i).has_widget(caller)) {
 			generator_->toggle_item(i);
 			if(callback_value_changed_) {
 				callback_value_changed_(this);
@@ -218,7 +218,7 @@ void tlistbox::set_size(const tpoint& origin, const tpoint& size)
 	const int selected_item = generator_->get_selected_item();
 	if(selected_item != -1) {
 		const SDL_Rect& visible = content_visible_area();
-		SDL_Rect rect = generator_->get_item(selected_item).get_rect();
+		SDL_Rect rect = generator_->item(selected_item).get_rect();
 
 		rect.x = visible.x;
 		rect.w = visible.w;
@@ -248,7 +248,7 @@ void tlistbox::handle_key_up_arrow(SDLMod modifier, bool& handled)
 		// When scrolling make sure the new items is visible but leave the
 		// horizontal scrollbar position.
 		const SDL_Rect& visible = content_visible_area();
-		SDL_Rect rect = generator_->get_item(
+		SDL_Rect rect = generator_->item(
 				generator_->get_selected_item()).get_rect();
 
 		rect.x = visible.x;
@@ -275,7 +275,7 @@ void tlistbox::handle_key_down_arrow(SDLMod modifier, bool& handled)
 		// When scrolling make sure the new items is visible but leave the
 		// horizontal scrollbar position.
 		const SDL_Rect& visible = content_visible_area();
-		SDL_Rect rect = generator_->get_item(
+		SDL_Rect rect = generator_->item(
 				generator_->get_selected_item()).get_rect();
 
 		rect.x = visible.x;
@@ -303,7 +303,7 @@ void tlistbox::handle_key_left_arrow(SDLMod modifier, bool& handled)
 		// When scrolling make sure the new items is visible but leave the
 		// vertical scrollbar position.
 		const SDL_Rect& visible = content_visible_area();
-		SDL_Rect rect = generator_->get_item(
+		SDL_Rect rect = generator_->item(
 				generator_->get_selected_item()).get_rect();
 
 		rect.y = visible.y;
@@ -330,7 +330,7 @@ void tlistbox::handle_key_right_arrow(SDLMod modifier, bool& handled)
 		// When scrolling make sure the new items is visible but leave the
 		// vertical scrollbar position.
 		const SDL_Rect& visible = content_visible_area();
-		SDL_Rect rect = generator_->get_item(
+		SDL_Rect rect = generator_->item(
 				generator_->get_selected_item()).get_rect();
 
 		rect.y = visible.y;

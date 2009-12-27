@@ -105,8 +105,8 @@ void thorizontal_list::set_item_shown(const unsigned index, const bool show)
 {
 	tpoint best_size = this->get_best_size();
 	const int item_width = show
-			?  get_item(index).get_best_size().x
-			: -get_item(index).get_best_size().x;
+			?  item(index).get_best_size().x
+			: -item(index).get_best_size().x;
 
 	best_size.x += item_width;
 	this->set_layout_size(best_size);
@@ -128,7 +128,7 @@ tpoint thorizontal_list::calculate_best_size() const
 	tpoint result(0, 0);
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		const tgrid& grid = get_item(i);
+		const tgrid& grid = item(i);
 		if(grid.get_visible() == twidget::INVISIBLE || !get_item_shown(i)) {
 			continue;
 		}
@@ -158,7 +158,7 @@ void thorizontal_list::set_size(const tpoint& origin, const tpoint& size)
 	tpoint current_origin = origin;
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		tgrid& grid = get_item(i);
+		tgrid& grid = item(i);
 		if(grid.get_visible() == twidget::INVISIBLE || !get_item_shown(i)) {
 			continue;
 		}
@@ -181,7 +181,7 @@ void thorizontal_list::set_origin(const tpoint& origin)
 	tpoint current_origin = origin;
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		tgrid& grid = get_item(i);
+		tgrid& grid = item(i);
 		if(grid.get_visible() == twidget::INVISIBLE || !get_item_shown(i)) {
 			continue;
 		}
@@ -201,7 +201,7 @@ void thorizontal_list::set_visible_area(const SDL_Rect& area)
 	 */
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		tgrid& grid = get_item(i);
+		tgrid& grid = item(i);
 		grid.set_visible_area(area);
 	}
 }
@@ -214,7 +214,7 @@ twidget* thorizontal_list::find_at(
 
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		tgrid& grid = get_item(i);
+		tgrid& grid = item(i);
 		if(grid.get_visible() == twidget::INVISIBLE || !get_item_shown(i)) {
 			continue;
 		}
@@ -237,7 +237,7 @@ const twidget* thorizontal_list::find_at(const tpoint& coordinate,
 
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		const tgrid& grid = get_item(i);
+		const tgrid& grid = item(i);
 		if(grid.get_visible() == twidget::INVISIBLE || !get_item_shown(i)) {
 			continue;
 		}
@@ -266,7 +266,7 @@ void thorizontal_list::handle_key_left_arrow(
 
 		// NOTE we check the first widget to be active since grids have no
 		// active flag. This method might not be entirely reliable.
-		tcontrol* control = dynamic_cast<tcontrol*>(get_item(i).widget(0, 0));
+		tcontrol* control = dynamic_cast<tcontrol*>(item(i).widget(0, 0));
 		if(control && control->get_active()) {
 			select_item(i);
 			return;
@@ -286,7 +286,7 @@ void thorizontal_list::handle_key_right_arrow(
 
 	for(size_t i = get_selected_item() + 1; i < get_item_count(); ++i) {
 
-		if(get_item(i).get_visible() == twidget::INVISIBLE
+		if(item(i).get_visible() == twidget::INVISIBLE
 				|| !get_item_shown(i)) {
 
 			continue;
@@ -294,7 +294,7 @@ void thorizontal_list::handle_key_right_arrow(
 
 		// NOTE we check the first widget to be active since grids have no
 		// active flag. This method might not be entirely reliable.
-		tcontrol* control = dynamic_cast<tcontrol*>(get_item(i).widget(0, 0));
+		tcontrol* control = dynamic_cast<tcontrol*>(item(i).widget(0, 0));
 		if(control && control->get_active()) {
 			select_item(i);
 			return;
@@ -311,8 +311,8 @@ void tvertical_list::set_item_shown(const unsigned index, const bool show)
 {
 	tpoint best_size = this->get_best_size();
 	const int item_height = show
-			?  get_item(index).get_best_size().y
-			: -get_item(index).get_best_size().y;
+			?  item(index).get_best_size().y
+			: -item(index).get_best_size().y;
 
 	best_size.y += item_height;
 	this->set_layout_size(best_size);
@@ -334,7 +334,7 @@ tpoint tvertical_list::calculate_best_size() const
 	tpoint result(0, 0);
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		const tgrid& grid = get_item(i);
+		const tgrid& grid = item(i);
 		if(grid.get_visible() == twidget::INVISIBLE || !get_item_shown(i)) {
 			continue;
 		}
@@ -364,7 +364,7 @@ void tvertical_list::set_size(const tpoint& origin, const tpoint& size)
 	tpoint current_origin = origin;
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		tgrid& grid = get_item(i);
+		tgrid& grid = item(i);
 		if(grid.get_visible() == twidget::INVISIBLE || !get_item_shown(i)) {
 			continue;
 		}
@@ -387,7 +387,7 @@ void tvertical_list::set_origin(const tpoint& origin)
 	tpoint current_origin = origin;
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		tgrid& grid = get_item(i);
+		tgrid& grid = item(i);
 		if(grid.get_visible() == twidget::INVISIBLE || !get_item_shown(i)) {
 			continue;
 		}
@@ -407,7 +407,7 @@ void tvertical_list::set_visible_area(const SDL_Rect& area)
 	 */
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		tgrid& grid = get_item(i);
+		tgrid& grid = item(i);
 		grid.set_visible_area(area);
 	}
 }
@@ -420,7 +420,7 @@ twidget* tvertical_list::find_at(
 
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		tgrid& grid = get_item(i);
+		tgrid& grid = item(i);
 		if(grid.get_visible() == twidget::INVISIBLE || !get_item_shown(i)) {
 			continue;
 		}
@@ -444,7 +444,7 @@ const twidget* tvertical_list::find_at(const tpoint& coordinate,
 
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		const tgrid& grid = get_item(i);
+		const tgrid& grid = item(i);
 		if(grid.get_visible() == twidget::INVISIBLE || !get_item_shown(i)) {
 			continue;
 		}
@@ -472,7 +472,7 @@ void tvertical_list::handle_key_up_arrow(SDLMod /*modifier*/, bool& handled)
 
 		// NOTE we check the first widget to be active since grids have no
 		// active flag. This method might not be entirely reliable.
-		tcontrol* control = dynamic_cast<tcontrol*>(get_item(i).widget(0, 0));
+		tcontrol* control = dynamic_cast<tcontrol*>(item(i).widget(0, 0));
 		if(control && control->get_active()) {
 			select_item(i);
 			return;
@@ -491,7 +491,7 @@ void tvertical_list::handle_key_down_arrow(SDLMod /*modifier*/, bool& handled)
 
 	for(size_t i = get_selected_item() + 1; i < get_item_count(); ++i) {
 
-		if(get_item(i).get_visible() == twidget::INVISIBLE
+		if(item(i).get_visible() == twidget::INVISIBLE
 					|| !get_item_shown(i)) {
 
 			continue;
@@ -499,7 +499,7 @@ void tvertical_list::handle_key_down_arrow(SDLMod /*modifier*/, bool& handled)
 
 		// NOTE we check the first widget to be active since grids have no
 		// active flag. This method might not be entirely reliable.
-		tcontrol* control = dynamic_cast<tcontrol*>(get_item(i).widget(0, 0));
+		tcontrol* control = dynamic_cast<tcontrol*>(item(i).widget(0, 0));
 		if(control && control->get_active()) {
 			select_item(i);
 			return;
@@ -511,7 +511,7 @@ void tindependant::request_reduce_width(const unsigned maximum_width)
 {
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		tgrid& grid = get_item(i);
+		tgrid& grid = item(i);
 		grid.request_reduce_width(maximum_width);
 	}
 }
@@ -520,7 +520,7 @@ void tindependant::request_reduce_height(const unsigned maximum_height)
 {
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		tgrid& grid = get_item(i);
+		tgrid& grid = item(i);
 		grid.request_reduce_height(maximum_height);
 	}
 }
@@ -534,7 +534,7 @@ tpoint tindependant::calculate_best_size() const
 	tpoint result(0, 0);
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		const tgrid& grid = get_item(i);
+		const tgrid& grid = item(i);
 
 		const tpoint best_size = grid.get_best_size();
 
@@ -554,7 +554,7 @@ void tindependant::set_size(const tpoint& origin, const tpoint& size)
 {
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		tgrid& grid = get_item(i);
+		tgrid& grid = item(i);
 		grid.set_size(origin, size);
 	}
 }
@@ -569,7 +569,7 @@ void tindependant::set_origin(const tpoint& origin)
 	 */
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		tgrid& grid = get_item(i);
+		tgrid& grid = item(i);
 		grid.set_origin(origin);
 	}
 }
@@ -585,7 +585,7 @@ twidget* tindependant::find_at(const tpoint& coordinate
 		return NULL;
 	}
 
-	tgrid& grid = get_item(selected_item);
+	tgrid& grid = item(selected_item);
 	return grid.find_at(coordinate, must_be_active);
 }
 
@@ -600,7 +600,7 @@ const twidget* tindependant::find_at(const tpoint& coordinate
 		return NULL;
 	}
 
-	const tgrid& grid = get_item(selected_item);
+	const tgrid& grid = item(selected_item);
 	return grid.find_at(coordinate, must_be_active);
 }
 
@@ -609,7 +609,7 @@ twidget* tindependant::find(
 {
 	for(size_t i = 0; i < get_item_count(); ++i) {
 		if(is_selected(i)) {
-			if(twidget* widget = get_item(i).find(id, must_be_active)) {
+			if(twidget* widget = item(i).find(id, must_be_active)) {
 				return widget;
 			}
 		}
@@ -623,7 +623,7 @@ const twidget* tindependant::find(
 	for(size_t i = 0; i < get_item_count(); ++i) {
 		if(is_selected(i)) {
 			if(const twidget* widget =
-					get_item(i).find(id, must_be_active)) {
+					item(i).find(id, must_be_active)) {
 
 				return widget;
 			}
@@ -642,7 +642,7 @@ void tindependant::set_visible_area(const SDL_Rect& area)
 	 */
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		tgrid& grid = get_item(i);
+		tgrid& grid = item(i);
 		grid.set_visible_area(area);
 	}
 }

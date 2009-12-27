@@ -122,7 +122,10 @@ public:
 	virtual int get_selected_item() const = 0;
 
 	/** Gets the grid of an item. */
-	virtual tgrid& get_item(const unsigned index) = 0;
+	virtual tgrid& item(const unsigned index) = 0;
+
+	/** Gets the grid of an item. */
+	virtual const tgrid& item(const unsigned index) const = 0;
 
 	/***** ***** ***** ***** Create items ***** ***** ***** *****/
 
@@ -305,9 +308,6 @@ public:
 	 */
 	virtual void handle_key_right_arrow(SDLMod modifier, bool& handled) = 0;
 protected:
-
-	/** Gets the grid of an item. */
-	virtual const tgrid& get_item(const unsigned index) const = 0;
 
 	/**
 	 * Selects a not selected item.

@@ -626,7 +626,7 @@ public:
 			if(!minimum_selection::deselect_item(index)) {
 				// Some items might have deseleted themselves so
 				// make sure they do get selected again.
-				select_action::select(get_item(index), true);
+				select_action::select(item(index), true);
 			}
 		}
 	}
@@ -706,11 +706,19 @@ public:
 	}
 
 	/** Inherited from tgenerator_. */
-	tgrid& get_item(const unsigned index)
+	tgrid& item(const unsigned index)
 	{
 		assert(index < items_.size());
 		return items_[index]->grid;
 	}
+
+	/** Inherited from tgenerator_. */
+	const tgrid& item(const unsigned index) const
+	{
+		assert(index < items_.size());
+		return items_[index]->grid;
+	}
+
 
 	/** Inherited from tgenerator_. */
 	void create_item(const int index,
@@ -895,13 +903,6 @@ public:
 	}
 
 protected:
-
-	/** Inherited from tgenerator_. */
-	const tgrid& get_item(const unsigned index) const
-	{
-		assert(index < items_.size());
-		return items_[index]->grid;
-	}
 
 	/** Inherited from tgenerator_. */
 	void do_select_item(const unsigned index) //fixme rename to impl

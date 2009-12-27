@@ -86,13 +86,13 @@ int tmulti_page::get_selected_page() const
 const tgrid& tmulti_page::page_grid(const unsigned page) const
 {
 	assert(generator_);
-	return generator_->get_item(page);
+	return generator_->item(page);
 }
 
 tgrid& tmulti_page::page_grid(const unsigned page)
 {
 	assert(generator_);
-	return generator_->get_item(page);
+	return generator_->item(page);
 }
 
 namespace {
