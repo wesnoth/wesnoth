@@ -1083,14 +1083,14 @@ msgstr "B<restart_command>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:156
-#, fuzzy
 msgid ""
 "The command that the server uses to start a new server process via the "
 "B<restart> command. (Can only be issued via the fifo. See the "
 "B<allow_remote_shutdown> setting.)"
 msgstr ""
 "Komandos, kurias serveris naudoja paleisti naują serverio procesą su "
-"„restart“ komanda. (gali būti iškviesta per fifo.)"
+"B<restart> komanda. (Gali būti iškviesta per fifo. Žiūrėkite "
+"B<allow_remote_shutdown> nustatymą.)"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:156
@@ -1445,15 +1445,3 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:283
 msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
 msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
-
-# type: TP
-#~ msgid "B<--dummy-locales>"
-#~ msgstr "B<--dummy-locales>"
-
-# type: Plain text
-#~ msgid ""
-#~ "use special dummy locales to switch to any language even if that language "
-#~ "isn't installed system-wide."
-#~ msgstr ""
-#~ "naudoti specialias netikras lokales persijungimui į bet kurią kalbą, net "
-#~ "jei ta kalba nepalaikoma jūsų sistemoje."
