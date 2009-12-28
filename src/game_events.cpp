@@ -1848,14 +1848,8 @@ WML_HANDLER_FUNCTION(unit, /*event_info*/, cfg)
 		return;
 	}
 
-	int side = 1;
-	try {
-		side = boost::lexical_cast<int>(parsed_cfg["side"]);
-	} catch (boost::bad_lexical_cast) {
-		ERR_NG << "wrong side in [unit] tag - not a number"<<std::endl;
-		DBG_NG << parsed_cfg.debug();
-		return;
-	}
+	int side = lexical_cast_default<int>(parsed_cfg["side"],1);
+
 
 	if ((side<1)||(side > static_cast<int>(resources::teams->size()))) {
 		ERR_NG << "wrong side in [unit] tag - no such side: "<<side<<" ( number of teams :"<<resources::teams->size()<<")"<<std::endl;
