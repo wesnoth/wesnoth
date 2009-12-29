@@ -2325,8 +2325,8 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 				loc = find_vacant_tile(*resources::game_map, *resources::units,loc);
 			}
 
-		resources::units->erase(loc);
-		resources::units->add(loc, u);
+			resources::units->erase(loc);
+			resources::units->add(loc, u);
 
 			std::string text = cfg["text"];
 			play_controller *controller = resources::controller;
