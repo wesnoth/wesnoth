@@ -124,7 +124,7 @@ end
 
 local function wml_gold(cfg)
 	local team = wesnoth.get_side(cfg.side or 1)
-	local amount = cfg.amount or
+	local amount = tonumber(cfg.amount) or
 		helper.wml_error("[gold] missing required amount= attribute.")
 	team.gold = team.gold + amount
 end
