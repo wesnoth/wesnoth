@@ -180,7 +180,7 @@ protected:
 					if (do_attack) {
 						attack_result_ptr attack_res = execute_attack_action(best_movement.first,i->first,-1);
 						gamestate_changed |= attack_res->is_gamestate_changed();
-						if (attack_res->is_ok()){
+						if (!attack_res->is_ok()){
 							LOG_AI << "attack failed" << std::endl;
 						}
 					}
@@ -202,7 +202,7 @@ protected:
         for(move_map::const_iterator i = dstsrc.begin(); i != dstsrc.end(); ++i) {
             if(get_info().map.is_village(i->first) && current_team().owns_village(i->first) == false) {
                 move_result_ptr move_res = execute_move_action(i->second,i->first,true);
-		if (move_res->is_ok()) {
+		if (!move_res->is_ok()) {
 			LOG_AI << "move failed!" << std::endl;
 		}
 		if (move_res->is_gamestate_changed()) {
@@ -269,7 +269,7 @@ protected:
 		        std::advance(i,choice);
 
 			recruit_result_ptr recruit_res = execute_recruit_action(*i);
-			if (recruit_res->is_ok()) {
+			if (!recruit_res->is_ok()) {
 				LOG_AI << "recruitment failed!" << std::endl;
 			}
 			if (recruit_res->is_gamestate_changed()) {
@@ -778,7 +778,7 @@ void ai_default::do_move()
 			move_result_ptr move_ptr = check_move_action(ui->first,closest_move.first);
 			if (move_ptr->is_ok()) {
 				move_ptr->execute();
-				if (move_ptr->is_ok()) {
+				if (!move_ptr->is_ok()) {
 					WRN_AI << "'goto' move failed" << std::endl;
 				}
 			}
