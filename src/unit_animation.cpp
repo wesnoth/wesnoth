@@ -22,6 +22,8 @@
 #include "map.hpp"
 #include "unit.hpp"
 #include "variable.hpp"
+#include "resources.hpp"
+#include "play_controller.hpp"
 
 #include <algorithm>
 
@@ -1093,8 +1095,7 @@ void unit_animator::wait_until(int animation_time) const
 {
 	game_display*disp = game_display::get_singleton();
 	double speed = disp->turbo_speed();
-        disp->draw();
-        events::pump();
+	resources::controller->play_slice(false);
 	int end_tick = animated_units_[0].my_unit->get_animation()->time_to_tick(animation_time);
 	while (SDL_GetTicks() < static_cast<unsigned int>(end_tick)
 				- std::min<int>(static_cast<unsigned int>(20/speed),20)) {
@@ -1102,8 +1103,7 @@ void unit_animator::wait_until(int animation_time) const
 		disp->delay(std::max<int>(0,
 			std::min<int>(10,
 			static_cast<int>((animation_time - get_animation_time()) * speed))));
-		disp->draw();
-		events::pump();
+		resources::controller->play_slice(false);
                 end_tick = animated_units_[0].my_unit->get_animation()->time_to_tick(animation_time);
 	}
 	disp->delay(std::max<int>(0,end_tick - SDL_GetTicks() +5));
@@ -1115,8 +1115,7 @@ void unit_animator::wait_for_end() const
 	bool finished = false;
 	game_display*disp = game_display::get_singleton();
 	while(!finished) {
-		disp->draw();
-		events::pump();
+		resources::controller->play_slice(false);
 		disp->delay(10);
 		finished = true;
 		for(std::vector<anim_elem>::const_iterator anim = animated_units_.begin(); anim != animated_units_.end();++anim) {
