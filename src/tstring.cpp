@@ -198,6 +198,12 @@ t_string_base::t_string_base(const std::string& string, const std::string& textd
 	translatable_(true),
 	last_untranslatable_(false)
 {
+	if (string.empty()) {
+		value_.clear();
+		translatable_ = false;
+		return;
+	}
+
 	std::map<std::string, unsigned int>::const_iterator idi = textdomain_to_id.find(textdomain);
 	unsigned int id;
 
