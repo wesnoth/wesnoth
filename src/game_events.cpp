@@ -2579,7 +2579,8 @@ WML_HANDLER_FUNCTION(endlevel, /*event_info*/, cfg)
 	data.custom_endlevel_music = cfg["music"];
 	data.carryover_report = utils::string_bool(cfg["carryover_report"], true);
 	data.prescenario_save = utils::string_bool(cfg["save"], true);
-	data.linger_mode = utils::string_bool(cfg["linger_mode"], true);
+	data.linger_mode = utils::string_bool(cfg["linger_mode"], true)
+		&& !resources::teams->empty();
 	data.gold_bonus = utils::string_bool(cfg["bonus"], true);
 	data.carryover_percentage = lexical_cast_default<int>
 		(cfg["carryover_percentage"],

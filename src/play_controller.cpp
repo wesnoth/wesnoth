@@ -171,6 +171,9 @@ void play_controller::init(CVideo& video){
 				, units_, snapshot);
 	}
 
+	// mouse_handler expects at least one team for linger mode to work.
+	if (teams_.empty()) end_level_data_.linger_mode = false;
+
 	LOG_NG << "loading units..." << (SDL_GetTicks() - ticks_) << "\n";
 	loadscreen::global_loadscreen->set_progress(70, _("Loading units"));
 	preferences::encounter_recruitable_units(teams_);
