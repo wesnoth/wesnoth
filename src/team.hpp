@@ -305,12 +305,9 @@ private:
 	mutable std::vector<const shroud_map*> ally_shroud_, ally_fog_;
 };
 
-struct teams_manager {
-	teams_manager(std::vector<team>& teams);
-	~teams_manager();
-
-	static const std::vector<team>& get_teams();
-};
+namespace teams_manager {
+	const std::vector<team> &get_teams();
+}
 
 namespace player_teams {
 	int village_owner(const map_location& loc);

@@ -34,23 +34,10 @@ static lg::log_domain log_engine("engine");
 #define WRN_NG LOG_STREAM(warn, log_engine)
 
 
-namespace {
-	std::vector<team>* teams = NULL;
-}
+static std::vector<team> *&teams = resources::teams;
 
 //static member initialization
 const int team::default_team_gold = 100;
-
-teams_manager::teams_manager(std::vector<team>& teams_list)
-{
-	assert(!teams);
-	teams = &teams_list;
-}
-
-teams_manager::~teams_manager()
-{
-	teams = NULL;
-}
 
 const std::vector<team>& teams_manager::get_teams()
 {

@@ -53,7 +53,6 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 		int ticks, int num_turns, const config& game_config, CVideo& video,
 		bool skip_replay) :
 	controller_base(ticks, game_config, video),
-	team_manager_(teams_),
 	prefs_disp_manager_(),
 	tooltips_manager_(),
 	events_manager_(),

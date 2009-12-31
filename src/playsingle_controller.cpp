@@ -381,7 +381,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			}
 		}
 
-		if(!team_manager_.get_teams().size())
+		if (teams_.empty())
 		{
 			//store persistent teams
 			gamestate_.snapshot = config();
