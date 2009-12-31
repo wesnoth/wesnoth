@@ -14,11 +14,16 @@
 */
 
 #include "controller_base.hpp"
+
 #include "dialogs.hpp"
 #include "display.hpp"
-#include "mouse_handler_base.hpp"
 #include "foreach.hpp"
+#include "log.hpp"
+#include "mouse_handler_base.hpp"
 #include "preferences_display.hpp"
+
+static lg::log_domain log_display("display");
+#define ERR_DP LOG_STREAM(err, log_display)
 
 controller_base::controller_base(
 		int ticks, const config& game_config, CVideo& /*video*/) :
@@ -255,8 +260,12 @@ const config& controller_base::get_theme(const config& game_config, std::string 
 	if (const config &c = game_config.find_child("theme", "name", theme_name))
 		return c;
 
-	if (const config &c = game_config.find_child("theme", "name", "default"))
+	ERR_DP << "Theme '" << theme_name << "' not found. Trying the default theme.\n";
+
+	if (const config &c = game_config.find_child("theme", "name", "Default"))
 		return c;
+
+	ERR_DP << "Default theme not found.\n";
 
 	static config empty;
 	return empty;
