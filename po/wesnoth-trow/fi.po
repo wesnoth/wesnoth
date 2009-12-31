@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-12-27 12:27+0100\n"
-"PO-Revision-Date: 2009-03-20 18:52+0200\n"
+"PO-Revision-Date: 2009-12-23 15:19+0200\n"
 "Last-Translator: Mikko Nikkilä <miccoh@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -61,11 +61,10 @@ msgstr "Ylimys"
 #. [campaign]: id=The_Rise_Of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:22
 msgid "(Expert level, 25 scenarios.)"
-msgstr ""
+msgstr "(keskitasoa, 25 skenaariota, 98 % suomennettu)"
 
 #. [campaign]: id=The_Rise_Of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:22
-#, fuzzy
 msgid ""
 "Lead Prince Haldric through the destruction of the Green Isle and across the "
 "Ocean to establish the very kingdom of Wesnoth itself. The confrontation "
@@ -76,7 +75,6 @@ msgstr ""
 "itse Wesnothin kuningaskunta. Yhteenotto kuolleiden valtiaan Jevyanin kanssa "
 "odottaa...\n"
 "\n"
-"(keskitasoa, 25 skenaariota)"
 
 #. [about]
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:26
@@ -254,8 +252,9 @@ msgid ""
 "forces to battle, it is time - but I'll stay near to keep an eye on you. "
 "There is more to this raid than meets the eye, I think."
 msgstr ""
-"Osoitat aloitekykyä! Olen ylpeä sinusta, poikani! Johda joukkomme "
-"taisteluun, minä seuraan lähettyviltä ja tarkkailen tilannetta."
+"Osoitat aloitekykyä, poikani! Olen ylpeä sinusta! Kyllä, voit johtaa "
+"joukkomme taisteluun tällä kertaa, mutta minä seuraan lähettyviltä ja "
+"tarkkailen tilannetta."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:111
@@ -2168,19 +2167,17 @@ msgstr "Pah, tehdään se sitten sinun tavallasi!"
 
 #. [unit]: id=Lady Jessene, type=$lady_store.type
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:256
-#, fuzzy
 msgid "Lady Jessene"
-msgstr "Lady Jessica"
+msgstr "Lady Jessene"
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:287
-#, fuzzy
 msgid ""
 "I am the Lady Jessene, a noble, a princess of the Wesfolk! I was betrayed by "
 "the Lich-Lords' dark pact with the orcs, in no small part because your fool "
 "Prince of Southbay convinced them that their immortal un-lives were over!"
 msgstr ""
-"Olen Lady Jessica, ylimys ja wessien prinsessa! Kuolonherrat pettivät minut "
+"Olen Lady Jessene, ylimys ja wessien prinsessa! Kuolonherrat pettivät minut "
 "liittoutumalla örkkien kanssa, lähinnä siksi että hölmö Suvilahden "
 "prinssinne sai heidät uskomaan epäelämiensä kuolemattomien päivien olevan "
 "luetut!"
@@ -2312,9 +2309,8 @@ msgstr "Sankarin voitto: Kukista kaikki vihollisjohtajat"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:462
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:200
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:293
-#, fuzzy
 msgid "Death of Lady Jessene"
-msgstr "Lady Jessican kuolema"
+msgstr "Lady Jessenen kuolema"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:253
@@ -2771,12 +2767,11 @@ msgstr ""
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:265
-#, fuzzy
 msgid ""
 "Okay. Let's un-petrify that lich and take his book, then get into the "
 "sewers. Umm, what language would that book be in?"
 msgstr ""
-"Selvä. Puretaan sen kuolonherran kivetys ja haetaan kirja, sitten "
+"Selvä. Puretaan sen kuolonherran kivetys ja haetaan hänen kirjansa, sitten "
 "viemäreihin. Ömm, millähän kielellä se kirja on kirjoitettu?"
 
 #. [message]: speaker=Lady Jessene
@@ -2831,15 +2826,14 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:340
-#, fuzzy
 msgid ""
 "INSCRIPTION: This monolith was erected by me, &lt;CHIPPED AWAY&gt;, first "
 "Mage of the good people of the Green Isle. By its power the Lich-Lord is "
 "bound in stone. To end the spell a noble of the line of Kings should utter "
 "the following..."
 msgstr ""
-"KAIVERRUS: Tämän monoliitin pystytin minä, <nimi hakattu "
-"tunnistamattomaksi>, Vihersaaren hyvän kansan ensimmäinen velho. Sen "
+"KAIVERRUS: Tämän monoliitin pystytin minä, &lt;nimi hakattu "
+"tunnistamattomaksi&gt;, Vihersaaren hyvän kansan ensimmäinen velho. Sen "
 "voimalla kuolonherra on vangittu kiveen. Päättääkseen loitsun, aatelisen "
 "kuninkaiden sukua tulee lausua seuraava..."
 
@@ -2850,13 +2844,12 @@ msgstr "Voisinpa vaikka lausua nuo taikasanat."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:399
-#, fuzzy
 msgid ""
 "The lich is free! Let's bash him and grab that book. That sounds like a job "
 "for you, Lady Jessene!"
 msgstr ""
 "Kuolonherra on vapaa! Hajotetaan hänet ja napataan kirja. Tämä näyttää "
-"sopivalta hommalta sinulle, Lady Jessica!"
+"sopivalta hommalta sinulle, Lady Jessene!"
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:403
@@ -3418,13 +3411,12 @@ msgstr ""
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:203
-#, fuzzy
 msgid ""
 "If there is no other way. May the bards forever sing of the valor of the "
 "Kings of Southbay! Jessene, about that book?"
 msgstr ""
 "No, jos muuta keinoa ei ole. Laulakoot runoniekat ikuisesti Suvilahden "
-"kuninkaiden kunniaa! Jessica, miten se kirja?"
+"kuninkaiden kunniaa! Jessene, miten se kirja?"
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:207
@@ -3484,12 +3476,11 @@ msgstr "Kuningas Addroran IX:n kuolema"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:292
-#, fuzzy
 msgid ""
 "Several months pass. Jessene has translated Lich-Lord Caror's Book of Fire "
 "and Darkness. Prince Haldric is busy probing the secrets of the Ruby of Fire."
 msgstr ""
-"Muutama kuukausi kuluu. Jessica on saanut käännettyä kuolonherra Carorin "
+"Muutama kuukausi kuluu. Jessene on saanut käännettyä kuolonherra Carorin "
 "Tulen ja pimeyden kirjan. Prinssi Haldric viettää aikaansa yrittäen ymmärtää "
 "tulirubiinin salaisuuksia."
 
@@ -3716,7 +3707,6 @@ msgstr "Kirkasvesisatamaan"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:589
-#, fuzzy
 msgid "To the Midlands &amp; Oldwood"
 msgstr "Keskiylängölle ja Vanhaan metsään"
 
@@ -4328,14 +4318,13 @@ msgstr ""
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:316
-#, fuzzy
 msgid ""
 "May the currents carry you swiftly, my friend. (whispered) Jessene, send "
 "word that a third of the fleet is to return to the Green Isle, to look for "
 "more survivors. If they return tell them to keep returning until no more "
 "survivors are found."
 msgstr ""
-"Kuljettakoot virrat sinua vikkelästi, ystäväni. (Kuiskaa) Jessica, lähetä "
+"Kuljettakoot virrat sinua vikkelästi, ystäväni. (Kuiskaa) Jessene, lähetä "
 "viesti laivastolle ja käske kolmasosaa palaamaan Vihersaarelle etsimään "
 "lisää henkiinjääneitä. Jos he palaavat, lähetä heidät yhä uudelleen "
 "etsimään, kunnes henkiinjääneitä ei enää ole."
@@ -4608,13 +4597,12 @@ msgstr ""
 
 #. [message]: speaker=Lady Dionli
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:405
-#, fuzzy
 msgid ""
 "I suggest that we grant these humans the plains to the north and south of "
 "the Great River."
 msgstr ""
-"Ehdotan, että annamme näille ihmisille tasankomaat suuren joen molemmin "
-"puolin."
+"Ehdotan, että annamme näille ihmisille tasankomaat Suurenjoen pohjois- sekä "
+"eteläpuolilta."
 
 #. [message]: speaker=Lord Aryad
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:409
@@ -5255,9 +5243,8 @@ msgstr "Vakooja metsässä"
 
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:90
-#, fuzzy
 msgid "Jessene in Hiding"
-msgstr "Jessica piilossa"
+msgstr "Jessene piilossa"
 
 #. [message]: speaker=Lord Logalmier
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:115
@@ -5348,14 +5335,13 @@ msgstr "Thruf"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:238
-#, fuzzy
 msgid ""
 "Haldric and his companions race across the plains to confront the resurgent "
 "orcish threat. On the eve of battle, Lady Jessene catches up with Haldric on "
 "a fog-covered plain."
 msgstr ""
 "Haldric kumppaneineen kulkee pikamarssia yli aron ehtiäkseen örkkien "
-"kimppuun. Taistelun aattona Lady Jessica kohtaa Haldricin sumun peittämällä "
+"kimppuun. Taistelun aattona Lady Jessene kohtaa Haldricin sumun peittämällä "
 "arolla."
 
 #. [message]: speaker=Lady Jessene
@@ -5407,12 +5393,11 @@ msgstr ""
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:268
-#, fuzzy
 msgid ""
 "I have a plan. Jessene, remember that troll-hole? Here, take the Ruby of "
 "Fire, hide it in the hole."
 msgstr ""
-"Minulla on suunnitelma. Jessica, muistatko sen peikonkolon? Tässä, ota "
+"Minulla on suunnitelma. Jessene, muistatko sen peikonkolon? Tässä, ota "
 "tulirubiini ja piilota se koloon."
 
 #. [message]: speaker=Lady Jessene
@@ -5456,9 +5441,8 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:315
-#, fuzzy
 msgid "Lady Jessene soon departs. In the distance a voice booms:"
-msgstr "Lady Jessica lähtee pian. Kaukaa kuuluu jylisevä ääni:"
+msgstr "Lady Jessene lähtee pian. Kaukaa kuuluu jylisevä ääni:"
 
 #. [message]: speaker=Tan-Gagar
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:321
@@ -5524,13 +5508,12 @@ msgstr "Vahvistusjoukkoja! Emme saa päästää niitä maihin."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:464
-#, fuzzy
 msgid ""
 "We've defeated their vanguard. We have to meet the fleet before Jevyan "
 "destroys them and captures the ships. I hope Jessene makes it back soon."
 msgstr ""
 "Olemme lyöneet heidän etujoukkonsa. Nyt meidän on päästävä laivaston luo "
-"ennen kuin Jevyan tuhoaa heidät ja valtaa alukset. Toivottavasti Jessica "
+"ennen kuin Jevyan tuhoaa heidät ja valtaa alukset. Toivottavasti Jessene "
 "palaa pian."
 
 #. [message]: speaker=Commander Aethyr
@@ -5849,7 +5832,6 @@ msgstr "MITÄ!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:138
-#, fuzzy
 msgid ""
 "I'll be dead. I mean we can't just say that we gave away the Ruby of Fire, "
 "or send Jevyan a letter. Well, we are going to say it - but that's not the "
@@ -5858,7 +5840,7 @@ msgid ""
 msgstr ""
 "Minä kuolen. Tarkoitan siis, että emme voi vain lähettää sanaa tai viestiä "
 "Jevyanille siitä, että annoimme pois tulirubiinin. No, kyllä me sanomme sen, "
-"mutta se ei ole olennaista. Jessica, sinun tehtäväsi on väärentää hyvin "
+"mutta se ei ole olennaista. Jessene, sinun tehtäväsi on väärentää hyvin "
 "virallisen näköinen sopimus, jossa annoimme haltioiden haltuun tulirubiinin "
 "korvauksena asuinpaikastamme täällä."
 
@@ -5877,7 +5859,6 @@ msgstr ""
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:146
-#, fuzzy
 msgid ""
 "Haldric! I won't do it... I won't help. What is it with your kind, always "
 "rushing to a fool's death? Who'll lead these people? I...<i>we</i> need you "
@@ -5885,7 +5866,7 @@ msgid ""
 msgstr ""
 "Haldric! En suostu... En auta sinua. Mikä teikäläisillä on, kun aina "
 "juoksette päin kuolemaa kuin hullut. Kuka jäisi johtamaan kansaasi sinun "
-"jälkeesi?"
+"jälkeesi? Minä... <i>Me</i> tarvitsemme sinut elossa."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:150
@@ -5902,13 +5883,12 @@ msgstr "Haldric, tämä on naurettavaa! Minä –"
 
 #. [message]: speaker=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:187
-#, fuzzy
 msgid ""
 "There is no way I'm letting you go through with this, sir! Over our dead "
 "bodies, right Jessene?"
 msgstr ""
 "En todellakaan anna sinun tehdä tätä, herrani! Vain kuolleiden ruumiidemme "
-"yli, vai mitä Jessica?"
+"yli, vai mitä Jessene?"
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:191
@@ -6586,9 +6566,8 @@ msgstr "Antakoot valon herrat teille armonne. Mutta valani sitoo minua."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:202
-#, fuzzy
 msgid "Jessene, you hid the ruby away in that vile Troll Hole? Didn't you?"
-msgstr "Jessica, piilotit rubiinin sinne peikkojen pesään? Eikö niin?"
+msgstr "Jessene, piilotit rubiinin sinne peikkojen pesään? Eikö niin?"
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:206
@@ -7127,10 +7106,9 @@ msgstr "Halveksu vain peikkoja, mutta ÄLÄ luolia!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-nlmsg.cfg:54
-#, fuzzy
 msgid ""
 "Well, at least we don't have to contend with the undead. No offense Jessene."
-msgstr "No, ainakaan ei tarvitse sietää epäkuolleita. Anteeksi, Jessica."
+msgstr "No, ainakaan ei tarvitse sietää epäkuolleita. Anteeksi, Jessene."
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-nlmsg.cfg:58
@@ -7357,7 +7335,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-story.cfg:127
-#, fuzzy
 msgid ""
 "Several days later Prince Haldric departs in his ship, the Eldaric, his home "
 "and the Green Isle lost to him forever. Before him lay a vast expanse of "
@@ -7367,8 +7344,8 @@ msgstr ""
 "Muutamia päiviä myöhemmin prinssi Haldric lähtee laivallaan Eldaricillä. "
 "Hänen entiset kotinsa ja Vihersaari ovat hänelle nyt iäksi mennyttä elämää. "
 "Edessään hän näkee laajan myrskyisen meren ja sen salaperäisen saaren, jonka "
-"Lady Jessica on maininnut, ja yhä enemmän tuntemattomia maita vielä "
-"kauempana idässä."
+"Lady Jessene on maininnut, ja yhä eksoottisempia maita vielä kauempana "
+"idässä."
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-story.cfg:133

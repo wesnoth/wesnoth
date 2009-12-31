@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-12-27 12:27+0100\n"
-"PO-Revision-Date: 2009-03-10 21:27+0200\n"
+"PO-Revision-Date: 2009-12-23 15:46+0200\n"
 "Last-Translator: Mikko Nikkilä <miccoh@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -59,11 +59,10 @@ msgstr "Kaartilainen"
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:21
 msgid "(Intermediate level, 18 scenarios.)"
-msgstr ""
+msgstr "(keskitasoa, 18 skenaariota, 98 % suomennettu)"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:21
-#, fuzzy
 msgid ""
 "There are rumors of undead attacks on the eastern border of Wesnoth. You, an "
 "officer in the Royal Army, have been sent to the eastern front to protect "
@@ -74,7 +73,6 @@ msgstr ""
 "kuninkaallisen armeijan upseeri, on lähetetty itäiselle rintamalle "
 "suojelemaan kyläläisiä ja selvittämään, mitä on tapahtumassa.\n"
 "\n"
-"(keskitasoa, 18 skenaariota)"
 
 #. [about]
 #: data/campaigns/Eastern_Invasion/_main.cfg:25
@@ -107,7 +105,7 @@ msgid ""
 "It was the thirteenth year of Konrad II's reign, and there were strange "
 "occurrences in the Estmark Hills on the eastern border of Wesnoth."
 msgstr ""
-"Elettiin Konrad II:en valtakauden kolmattatoista vuotta, ja Wesnothin "
+"Elettiin Konrad II:n valtakauden kolmattatoista vuotta, ja Wesnothin "
 "itärajalla Estmarkin kukkuloilla tapahtui outoja."
 
 #. [part]
@@ -122,7 +120,7 @@ msgstr ""
 "Karjaa ja kuormajuhtia löytyi kuolleena pelloilta. Miehiä katosi taloistaan "
 "jättäen jälkeensä vain ohuen mustan verivanan. Aluksi ihmiset epäilivät "
 "aavikon vaeltelevia ryöstäjiä, mutta kun he lähettivät tiedustelijoita "
-"itään, he löysivät vain pienen vuorijonon ja silmän kantamattomiin suota."
+"itään, he löysivät vain pienen vuorijonon ja suota silmänkantamattomiin."
 
 #. [part]
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:25
@@ -132,10 +130,10 @@ msgid ""
 "the King, asking for help. The messenger rode hard for many days and nights, "
 "and finally reached the city of Weldyn."
 msgstr ""
-"Katoamiset jatkuivat, ja päivä päivältä pelko kasvoi. Lopulta itäisten "
-"kylien ihmiset lähettivät viestinviejän pyytämään kuninkaalta apua. "
-"Viestinviejä ratsasti lujaa monen päivän ja yön ajan, ja vihdoin saapui "
-"Weldynin kaupunkiin."
+"Katoamiset jatkuivat ja päivä päivältä pelko kasvoi. Lopulta itäisten kylien "
+"ihmiset lähettivät viestinviejän pyytämään kuninkaalta apua. Viestinviejä "
+"ratsasti lujaa monen päivän ja yön ajan, ja vihdoin saapui Weldynin "
+"kaupunkiin."
 
 #. [part]
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:29
@@ -145,7 +143,7 @@ msgid ""
 "earlier on the far southern border, attacks by undead. Dacyn outlined a plan "
 "to combat these intrusions."
 msgstr ""
-"Kuninkaan saatua tiedon ongelmasta, puuttui hänen neuvonantajansa Dacyn "
+"Kuninkaan saatua tiedon ongelmasta puuttui hänen neuvonantajansa Dacyn "
 "puheeseen. Mitä ilmeisimmin nämä hyökkäykset olivat samanlaisia kuin ne, "
 "jotka olivat tapahtuneet aiemmin eteläisellä rajalla. Hyökkäysten takana "
 "olivat epäkuolleet. Dacyn hahmotteli suunnitelman näiden hyökkäysten "
@@ -165,7 +163,7 @@ msgstr ""
 "rantapenkereelle, Soradocista etelään, estämään Estmarkin ulkopuolisten "
 "lurjusten ja örkkiryöstelijöiden pääsy Wesnothiin. Mutta myöhempinä aikoina "
 "Jokivartion asemat oli hylätty, kun valloittajat etenivät Estmarkiin ja "
-"örkit ajettiin pakosalle Suuren joen tuolle puolen."
+"örkit ajettiin pakosalle Suurenjoen tuolle puolen."
 
 #. [part]
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:40
@@ -857,7 +855,7 @@ msgstr ""
 "Mutta Gweddry ja Dacyn tajusivat, että palaaminen Wesnothiin ei olisi "
 "helppoa pakotunnelin ollessa heiltä suljettu. He marssivat Estmarkin "
 "kukkuloilta suuntaan, jonne ei moni wesnothilainen ollut ennen matkustanut – "
-"tuntemattomaan metsämaahan Suuren joen eteläpuolella."
+"tuntemattomaan metsämaahan Suurenjoen eteläpuolella."
 
 #. [side]: type=Lieutenant, id=Gweddry
 #. [side]: type=Elvish Ranger, id=Volas
@@ -1297,9 +1295,8 @@ msgstr ""
 
 #. [message]: speaker=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:532
-#, fuzzy
 msgid "You dare to attack <i>me</i>!? Go back to your master!"
-msgstr "Rohkenetteko hyökätä MINUA vastaan?!? Palatkaa herranne luo!"
+msgstr "Rohkenetteko hyökätä <i>minua</i> vastaan!? Palatkaa herranne luo!"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:536
@@ -1612,7 +1609,7 @@ msgid ""
 "travel along that path, we will not have to fight orcs immediately."
 msgstr ""
 "Olemme nyt klaanien maalla. Tunnen tämän alueen hyvin. Tie pohjoiseen johtaa "
-"suoraan Suurelle joelle, jonka pohjoispuolella, Pohjoisilla mailla, on "
+"suoraan Suurellejoelle, jonka pohjoispuolella, Pohjoisilla mailla, on "
 "örkkien kotimaat. Länteen päin kulkeva tie pysyy jonkin aikaa Wesnothin "
 "valtakunnan sisällä, kunnes saavutamme toisen ylityspaikan Glynin metsän "
 "pohjoispuolella. Jos matkaamme tätä tietä, meidän ei tarvitse taistella "
@@ -1660,26 +1657,22 @@ msgstr ""
 
 #. [message]: speaker=Wak-Rano
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:134
-#, fuzzy
 msgid ""
 "Hmm... I know. We will make a pact to destroy these men, and continue our "
 "fight later. "
 msgstr ""
 "Hmm... tiedän. Sovimme, että tuhoamme yhdessä nämä ihmiset, ja jatkamme "
-"taisteluamme myöhemmin. (Ehkä hän kuolee. Silloin minä voitan taistelumme "
-"taistelematta.)"
+"taisteluamme myöhemmin."
 
 #. [message]: speaker=Mal-Arnai
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:138
-#, fuzzy
 msgid "This foolish orc will surely perish."
-msgstr "Hyvä on, olemme liittolaisia, nyt. (Tuo hölmö örkki kuolee varmasti.)"
+msgstr "Tuo hölmö örkki kuolee varmasti."
 
 #. [message]: speaker=Mal-Arnai
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:138
-#, fuzzy
 msgid "Very well, we are allies, for now. "
-msgstr "Hyvä on, olemme liittolaisia, nyt. (Tuo hölmö örkki kuolee varmasti.)"
+msgstr "Hyvä on, olemme liittolaisia, nyt."
 
 #. [message]: speaker=Wak-Rano
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:149
@@ -1723,7 +1716,7 @@ msgstr "Saata Gweddry ja Owaec joen yli"
 msgid ""
 "We have come to the Great River. What should we do? Should we attempt to "
 "cross it?"
-msgstr "Olemme tulleet suurelle joelle. Mitä teemme - yritämmekö ylittää sen?"
+msgstr "Olemme tulleet Suurellejoelle. Mitä teemme? Yritämmekö ylittää sen?"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:133
@@ -1992,9 +1985,8 @@ msgstr ""
 
 #. [message]: speaker=Prok-Bak
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:146
-#, fuzzy
 msgid "You human! Call us foul, will you!?"
-msgstr "Sinä, ihminen! Kutsutko meitä inhoiksi, mitä?!?"
+msgstr "Sinä, ihminen! Kutsutko meitä hölmöiksi, mitä!?"
 
 #. [message]: speaker=Pelathsil
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:150
@@ -2403,9 +2395,9 @@ msgid ""
 "Northlands, farther south than before. Orcs were at his back. He and his men "
 "went south, until they reached the Great River."
 msgstr ""
-"Gweddry oli paennnut örkkivartijoilta. Hän huomasi joutuneensa pohjoisille "
+"Gweddry oli paennut örkkivartijoilta. Hän huomasi joutuneensa pohjoisille "
 "alueille, etelämmäksi kuin aiemmin. Örkit seurasivat häntä. Hän ja hänen "
-"joukkonsa menivät etelään, kunnes he tulivat Suurelle joelle."
+"joukkonsa menivät etelään, kunnes he tulivat Suurellejoelle."
 
 #. [side]: type=Orcish Warlord, id=Varrak-Klar
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:43
@@ -2429,12 +2421,11 @@ msgstr "Tuhoa silta TAI lyö kaikki viholliset."
 
 #. [objectives]
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:188
-#, fuzzy
 msgid ""
 "Note: every unit not on the south side of the river when the bridge is "
 "destroyed will be lost (including non-recalled units)"
 msgstr ""
-"Huomio: jokainen yksikkö, joka ei ole joen eteläisellä puolella sillan "
+"Huomio: jokainen yksikkö, joka ei ole joen eteläpuolella sillan "
 "tuhoamishetkellä, menetetään (myös kutsumattomat veteraaniyksiköt)"
 
 #. [unit]: id=Engineer, type=Red Mage
@@ -3255,16 +3246,15 @@ msgstr ""
 "Voit värvätä tai kutsua 6 yksikköä.\n"
 "Ensimmäiseen vuoron jälkeen linnasi katoaa,ja sinun tulee taistella loppuun "
 "niillä joukoilla jotka sinulla on sillä hetkellä.\n"
-"Se johtaja joka kukistuu ensin, häviää taistelun."
+"Johtaja, joka kukistuu ensin, häviää taistelun."
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:137
-#, fuzzy
 msgid ""
 "Wait - what just happened? He called more warriors out of the ground! That's "
 "not allowed!"
 msgstr ""
-"Mitä tapahtui? Hän kutsui lisää joukkojoa kentältä! Se ei ole sallittua!"
+"Odota... Mitä juuri tapahtui? Hän kutsui lisää joukkoja! Se ei ole sallittua!"
 
 #. [message]: speaker=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:141
@@ -3278,7 +3268,7 @@ msgstr ""
 #. [message]: speaker=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:152
 msgid "I... lose?..."
-msgstr "Miten...voin...hävitä?..."
+msgstr "Miten... voin... hävitä?"
 
 #. [message]: speaker=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:166

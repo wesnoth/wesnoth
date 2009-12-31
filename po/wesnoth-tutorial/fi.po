@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-tutorial-fi\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-11-26 15:38+0100\n"
-"PO-Revision-Date: 2009-04-01 17:20+0200\n"
+"PO-Revision-Date: 2009-12-23 14:46+0200\n"
 "Last-Translator: Mikko Nikkilä <miccoh@gmail.com>\n"
 "Language-Team: Finnish <kde-i18n-fi-discussion@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -15,13 +15,12 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:40
-#, fuzzy
 msgid ""
 "\n"
 "<big>Click a mouse button or press spacebar to continue...</big>"
 msgstr ""
 "\n"
-"*Paina hiiren vasenta painiketta tai välilyöntiä jatkaaksesi..."
+"<big>Paina hiiren vasenta painiketta tai välilyöntiä jatkaaksesi...</big>"
 
 #. [tutorial]: id=tutorial
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:49
@@ -90,9 +89,8 @@ msgstr "Li’sar"
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:204
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:211
-#, fuzzy
 msgid "<big>Welcome to Wesnoth!</big>"
-msgstr "*Tervetuloa Wesnothiin!"
+msgstr "<big>Tervetuloa Wesnothiin!</big>"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:206
@@ -141,22 +139,20 @@ msgstr "Napsauta hiiren vasenta painiketta Li’sarin kohdalla"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:238
-#, fuzzy
 msgid ""
 "<big>You have selected Konrad.</big>\n"
 "The places he can move to are highlighted."
 msgstr ""
-"*Valitsit Konradin.\n"
+"<big>Valitsit Konradin.</big>\n"
 "Paikat, joihin hän voi liikkua, näkyvät korostettuina."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:245
-#, fuzzy
 msgid ""
 "<big>You have selected Li'sar.</big>\n"
 "The places she can move to are highlighted."
 msgstr ""
-"*Valitsit Li’sarin.\n"
+"<big>Valitsit Li’sarin.</big>\n"
 "Paikat, joihin hän voi liikkua, näkyvät korostettuina."
 
 #. [event]
@@ -183,13 +179,12 @@ msgstr "Napsauta hiiren vasemmalla painikkeella ruutua, jossa lukee TÄNNE"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:292
-#, fuzzy
 msgid ""
 "<big>Oops!</big>\n"
 "You moved to the wrong place! After this message, you can press 'u' to undo, "
 "then try again."
 msgstr ""
-"*Oho!\n"
+"<big>Hups!</big>\n"
 "Liikuit väärään paikkaan! Tämän viestin jälkeen voit painaa u-näppäintä, "
 "joka peruu edellisen siirron. Yritä sitten uudestaan."
 
@@ -312,7 +307,6 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:460
-#, fuzzy
 msgid ""
 "female^Unfortunately, you've used up your turn attacking the quintain. The "
 "quintain will now get a turn."
@@ -368,13 +362,12 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:508
-#, fuzzy
 msgid ""
 "female^There is a village on the other side of the river. Visiting villages "
 "is a good idea, and ending your turn in one will heal you. To the village!"
 msgstr ""
-"Joen toisella puolella on kylä. Kylissä käyminen on hyvä ajatus. Vuoron "
-"lopettaminen kylään parantaa sinua. Siispä kylään!"
+"Joen toisella puolella on kylä. Kylissä käyminen on hyvä ajatus, sillä "
+"vuoron lopettaminen kylään parantaa sinua. Siispä kylään!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:521
@@ -451,7 +444,6 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:603
-#, fuzzy
 msgid ""
 "female^A splendid idea. You can recruit two units if you return to the keep. "
 "You have plenty of gold for that."
@@ -526,12 +518,12 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:742
-#, fuzzy
 msgid ""
 "Had the quintain survived your onslaught, it would have regained two "
 "hitpoints. If a unit doesn't do anything for a turn, it will slowly heal."
 msgstr ""
-"Kyllä vain. Jos yksikkö on toimettomana koko vuoron, se paranee hitaasti."
+"Jos harjoittelunukke olisi selviytynyt teurastuksestasi, se oli saanut kaksi "
+"elämäpistettä. Jos yksikkö on toimettomana koko vuoron, se paranee hitaasti."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:755
@@ -732,9 +724,8 @@ msgstr ""
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1045
-#, fuzzy
 msgid "The quintain is dead, and I have gained more experience!"
-msgstr "Toverit, harjoittelunukke on kuollut, ja minä sain lisää kokemusta!"
+msgstr "Harjoittelunukke on kuollut, ja minä sain lisää kokemusta!"
 
 # tarvii välilyönnin loppuun
 #. [message]: id=Delfador
@@ -805,12 +796,11 @@ msgstr ""
 "skenaarioon."
 
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:27
-#, fuzzy
 msgid ""
 "<big>Remember:</big>\n"
 "You can press 'u' to undo most things; useful for correcting mistakes."
 msgstr ""
-"*Muista:\n"
+"<big>Muista:</big>\n"
 "Voit perua useimmat siirrot painamalla u-näppäintä. Se on hyödyllistä "
 "virheiden korjaamiseksi."
 
@@ -864,14 +854,13 @@ msgstr "Voiko yksi yksikkö selvitä itsekseen kaikkia noita vihollisia vastaan?
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:28
-#, fuzzy
 msgid ""
 "With a little help, yes. If you move your Shaman next to the defending unit, "
 "she will heal it 4 hitpoints per turn. Just be careful not to expose the "
 "Shaman to attack since she is fairly weak herself."
 msgstr ""
 "Kyllä, jos se saa hieman apua. Jos liikutat shamaanisi puolustavan yksikön "
-"viereen, se parantaa sitä 4 elämäpistettä vuorossa. Shamaani on itse melko "
+"viereen, hän parantaa sitä 4 elämäpistettä vuorossa. Shamaani on itse melko "
 "heikko yksikkö, joten pidä huoli, ettei sen kimppuun hyökätä."
 
 #. [then]
@@ -1066,15 +1055,14 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:530
-#, fuzzy
 msgid ""
 "During your tutorial, both $recall_name1 and $recall_name2 gained "
 "$recall_xp1 experience points. You should recall them now so they can gain "
 "more experience, rather than recruiting new ones."
 msgstr ""
-"Tutoriaalin aikana $recall_name1 sai $recall_xp1 kokemuspistettä, ja "
-"$recall_name2 sai $recall_xp2 pistettä. Sinun kannattaisi kutsua nämä "
-"kokeneet yksiköt nyt, jotta he saisivat lisää kokemusta."
+"Tutoriaalin aikana $recall_name1 ja $recall_name2 saivat $recall_xp1 "
+"kokemuspistettä. Uusien yksikköjen värväämisen sijaan sinun kannattaisi "
+"kutsua nyt nämä kokeneet yksiköt, jotta he saisivat lisää kokemusta."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:533
@@ -1370,13 +1358,12 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:921
-#, fuzzy
 msgid ""
 "Attack the orc with an Archer\n"
 "(move mouse over units to see description on right)"
 msgstr ""
-"Hyökkää örkkiä vastaan jousihaltialla (liikuta hiiren osoitin yksikön "
-"päälle, niin näet kuvauksen oikealla)"
+"Hyökkää örkkiä vastaan jousihaltialla\n"
+"(liikuta hiiren osoitin yksikön päälle, niin näet kuvauksen oikealla)"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:929
@@ -1725,13 +1712,12 @@ msgstr ""
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1357
-#, fuzzy
 msgid ""
 "We will miss $deadguy.name| because she had $deadguy.experience experience "
 "points, meaning she would have advanced to level 2 soon."
 msgstr ""
-"$deadguy.name|, tulemme kaipaamaan häntä. Hänellä oli $deadguy.experience "
-"kokemuspistettä, joten hän olisi pian ylentynyt tasolle kaksi."
+"$deadguy.name|, tulemme kaipaamaan häntä. Hänellä nimittäin oli $deadguy."
+"experience kokemuspistettä, joten hän olisi pian ylentynyt tasolle kaksi."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1368
@@ -1786,22 +1772,21 @@ msgid ""
 "damage each for 4 attacks. Use me to dislodge hard-to-hit units."
 msgstr ""
 "Seuraavalle tasolle yleneminen on parantanut minut täysin!\n"
-"Minulla on aina 60% mahdollisuus osua jousellani ja teen 9 elämäpistettä "
-"vahinkoa jokaisella neljällä hyökkäykselläni. Käytä minua vaikeasti "
-"osuttavia vihollisia vastaan."
+"Minulla on aina 60% mahdollisuus osua tarkk’ampuja-erikoistaidollani ja teen "
+"9 elämäpistettä vahinkoa jokaisella neljällä hyökkäykselläni. Käytä minua "
+"vaikeasti osuttavia vihollisia vastaan."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1430
-#, fuzzy
 msgid ""
 "female^Advancing a level has fully healed me!\n"
 "I always have a 60% chance of hitting with my Marksman ability, and I deal 9 "
 "damage each for 4 attacks. Use me to dislodge hard-to-hit units."
 msgstr ""
 "Seuraavalle tasolle yleneminen on parantanut minut täysin!\n"
-"Minulla on aina 60% mahdollisuus osua jousellani ja teen 9 elämäpistettä "
-"vahinkoa jokaisella neljällä hyökkäykselläni. Käytä minua vaikeasti "
-"osuttavia vihollisia vastaan."
+"Minulla on aina 60% mahdollisuus osua tarkk’ampuja-erikoistaidollani ja teen "
+"9 elämäpistettä vahinkoa jokaisella neljällä hyökkäykselläni. Käytä minua "
+"vaikeasti osuttavia vihollisia vastaan."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1446
