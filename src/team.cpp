@@ -58,19 +58,6 @@ const std::vector<team>& teams_manager::get_teams()
 	return *teams;
 }
 
-int teams_manager::get_first_human_team(const config::child_list::const_iterator& cfg, const config::child_list& unit_cfg,
-						const std::string& client_type, const std::string& login)
-{
-	int result = -1;
-	const std::string& controller = (**cfg)["controller"];
-	if (controller == client_type && (**cfg)["id"] == login) {
-		result = cfg - unit_cfg.begin();
-	} else if((**cfg)["controller"] == "human") {
-		result = cfg - unit_cfg.begin();
-	}
-	return result;
-}
-
 team::team_info::team_info(const config& cfg) :
 		name(cfg["name"]),
 		gold(lexical_cast_default<int>(cfg["gold"])),

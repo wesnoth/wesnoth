@@ -139,12 +139,11 @@ void play_controller::init(CVideo& video){
 	}
 	recorder.set_skip(false);
 
-	const config::child_list& unit_cfg = level_.get_children("side");
 	const bool snapshot = utils::string_bool(level_["snapshot"]);
 
 	if(utils::string_bool(level_["modify_placing"])) {
 		LOG_NG << "modifying placing...\n";
-		place_sides_in_preferred_locations(map_,unit_cfg);
+		place_sides_in_preferred_locations();
 	}
 
 	foreach (const config &t, level_.child_range("time_area")) {
@@ -161,14 +160,23 @@ void play_controller::init(CVideo& video){
 
 	std::set<std::string> seen_save_ids;
 
-	for(config::child_list::const_iterator ui = unit_cfg.begin(); ui != unit_cfg.end(); ++ui) {
-		std::string save_id = get_unique_saveid(**ui, seen_save_ids);
+	int team_num = 0;
+	foreach (const config &side, level_.child_range("side"))
+	{
+		std::string save_id = get_unique_saveid(side, seen_save_ids);
 		seen_save_ids.insert(save_id);
-		if (first_human_team_ == -1){
-			first_human_team_ = team_manager_.get_first_human_team(ui, unit_cfg, preferences::client_type(), preferences::login());
+		if (first_human_team_ == -1) {
+			const std::string &controller = side["controller"];
+			if (controller == preferences::client_type() &&
+			    side["id"] == preferences::login()) {
+				first_human_team_ = team_num;
+			} else if (controller == "human") {
+				first_human_team_ = team_num;
+			}
 		}
-		gamestate_.build_team(**ui, save_id, teams_, level_, map_
+		gamestate_.build_team(side, save_id, teams_, level_, map_
 				, units_, snapshot);
+		++team_num;
 	}
 
 	// mouse_handler expects at least one team for linger mode to work.
@@ -280,34 +288,36 @@ struct placing_info {
 
 static bool operator<(const placing_info& a, const placing_info& b) { return a.score > b.score; }
 
-void play_controller::place_sides_in_preferred_locations(gamemap& map, const config::child_list& sides)
+void play_controller::place_sides_in_preferred_locations()
 {
 	std::vector<placing_info> placings;
 
-	const int num_pos = map.num_valid_starting_positions();
+	int num_pos = map_.num_valid_starting_positions();
 
-	for(config::child_list::const_iterator s = sides.begin(); s != sides.end(); ++s) {
-		const int side_num = s - sides.begin() + 1;
+	int side_num = 1;
+	foreach (const config &side, level_.child_range("side"))
+	{
 		for(int p = 1; p <= num_pos; ++p) {
-			const map_location& pos = map.starting_position(p);
-			const int score = placing_score(**s,map,pos);
+			const map_location& pos = map_.starting_position(p);
+			int score = placing_score(side, map_, pos);
 			placing_info obj;
 			obj.side = side_num;
 			obj.score = score;
 			obj.pos = pos;
 			placings.push_back(obj);
 		}
+		++side_num;
 	}
 
 	std::sort(placings.begin(),placings.end());
 	std::set<int> placed;
 	std::set<map_location> positions_taken;
 
-	for(std::vector<placing_info>::const_iterator i = placings.begin(); i != placings.end() && placed.size() != sides.size(); ++i) {
+	for (std::vector<placing_info>::const_iterator i = placings.begin(); i != placings.end() && int(placed.size()) != side_num - 1; ++i) {
 		if(placed.count(i->side) == 0 && positions_taken.count(i->pos) == 0) {
 			placed.insert(i->side);
 			positions_taken.insert(i->pos);
-			map.set_starting_position(i->side,i->pos);
+			map_.set_starting_position(i->side,i->pos);
 			LOG_NG << "placing side " << i->side << " at " << i->pos << '\n';
 		}
 	}
