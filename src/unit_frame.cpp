@@ -45,7 +45,7 @@ int progressive_string::duration() const
 {
 	int total =0;
 	std::vector<std::pair<std::string,int> >::const_iterator cur_halo;
-	for(cur_halo = data_.begin() ; cur_halo != data_.end() ; cur_halo++) {
+	for(cur_halo = data_.begin() ; cur_halo != data_.end() ; ++cur_halo) {
 		total += cur_halo->second;
 	}
 	return total;
@@ -59,7 +59,7 @@ const std::string& progressive_string::get_current_element(int current_time)cons
 	if(data_.empty()) return empty_string;
 	while(time < current_time&& sub_halo < data_.size()) {
 		time += data_[sub_halo].second;
-		sub_halo++;
+		++sub_halo;
 
 	}
 	if(sub_halo) sub_halo--;
@@ -100,7 +100,7 @@ const T progressive_<T>::get_current_element(int current_time, T default_val) co
 	if(data_.empty()) return default_val;
 	while(time < searched_time&& sub_halo < data_.size()) {
 		time += data_[sub_halo].second;
-		sub_halo++;
+		++sub_halo;
 
 	}
 	if(sub_halo != 0) {
@@ -125,7 +125,7 @@ int progressive_<T>::duration() const
 {
 	int total = 0;
 	typename std::vector<std::pair<std::pair<T, T>, int> >::const_iterator cur_halo;
-	for(cur_halo = data_.begin() ; cur_halo != data_.end() ; cur_halo++) {
+	for(cur_halo = data_.begin() ; cur_halo != data_.end() ; ++cur_halo) {
 		total += cur_halo->second;
 	}
 	return total;
