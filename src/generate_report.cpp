@@ -112,7 +112,7 @@ report generate_report(TYPE type,
 	case UNIT_AMLA: {
 	  report res;
 		const std::vector<std::pair<std::string,std::string> > &amla_icons=u->amla_icons();
-	  for(std::vector<std::pair<std::string,std::string> >::const_iterator i=amla_icons.begin();i!=amla_icons.end();i++){
+	  for(std::vector<std::pair<std::string,std::string> >::const_iterator i=amla_icons.begin();i!=amla_icons.end();++i){
 	    res.add_image(i->first,i->second);
 	  }
 	  return(res);
@@ -217,7 +217,7 @@ report generate_report(TYPE type,
 	case UNIT_ADVANCEMENT_OPTIONS: {
 		report res;
 		const std::map<std::string,std::string> &adv_icons = u->advancement_icons();
-		for(std::map<std::string,std::string>::const_iterator i=adv_icons.begin();i!=adv_icons.end();i++){
+		for(std::map<std::string,std::string>::const_iterator i=adv_icons.begin();i!=adv_icons.end();++i){
 			res.add_image(i->first,i->second);
 		}
 		return res;
@@ -421,7 +421,7 @@ report generate_report(TYPE type,
 			std::vector<map_location>::const_iterator i = map.villages().begin();
 			for (; i != map.villages().end(); ++i) {
 				if (!current_team.shrouded(*i))
-					unshrouded_villages++;
+					++unshrouded_villages;
 			}
 			str << unshrouded_villages;
 		} else {
