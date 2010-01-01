@@ -359,9 +359,9 @@ const map_location display::pixel_position_to_hex(int x, int y) const
 void display::rect_of_hexes::iterator::operator++()
 {
 	if (loc_.y < rect_.bottom[loc_.x & 1])
-		loc_.y++;
+		++loc_.y;
 	else {
-		loc_.x++;
+		++loc_.x;
 		loc_.y = rect_.top[loc_.x & 1];
 	}
 }
@@ -1060,8 +1060,8 @@ void display::draw_text_in_hex(const map_location& loc,
 	const int y = get_location_y(loc) - text_surf->h/2
 	              + static_cast<int>(y_in_hex* hex_size());
 
-	for (int dy=-1; dy <= 1; dy++) {
-		for (int dx=-1; dx <= 1; dx++) {
+	for (int dy=-1; dy <= 1; ++dy) {
+		for (int dx=-1; dx <= 1; ++dx) {
 			if (dx!=0 || dy!=0) {
 				drawing_buffer_add(layer, loc, tblit(x + dx, y + dy, back_surf));
 			}
@@ -1643,7 +1643,7 @@ void display::scroll_to_tiles(const std::vector<map_location>& locs,
 	bool valid = false;
 	bool first_tile_on_screen = false;
 
-	for(std::vector<map_location>::const_iterator itor = locs.begin(); itor != locs.end() ; itor++) {
+	for(std::vector<map_location>::const_iterator itor = locs.begin(); itor != locs.end() ; ++itor) {
 		if(get_map().on_board(*itor) == false) continue;
 		if(check_fogged && fogged(*itor)) continue;
 
