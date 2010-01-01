@@ -598,7 +598,7 @@ int battle_context::choose_defender_weapon(const unit &attacker, const unit &def
 
 	// What options does defender have?
 	unsigned int i;
-	for (i = 0; i < defender.attacks().size(); i++) {
+	for (i = 0; i < defender.attacks().size(); ++i) {
 		const attack_type &def = defender.attacks()[i];
 		if (def.range() == att.range() && def.defense_weight() > 0) {
 			choices.push_back(i);
@@ -617,7 +617,7 @@ int battle_context::choose_defender_weapon(const unit &attacker, const unit &def
 	double max_weight = 0.0;
 	int min_rating = 0;
 
-	for (i = 0; i < choices.size(); i++) {
+	for (i = 0; i < choices.size(); ++i) {
 		const attack_type &def = defender.attacks()[choices[i]];
 		if (def.defense_weight() > max_weight) {
 			max_weight = def.defense_weight();
@@ -641,7 +641,7 @@ int battle_context::choose_defender_weapon(const unit &attacker, const unit &def
 	}
 
 	// Multiple options: simulate them, save best.
-	for (i = 0; i < choices.size(); i++) {
+	for (i = 0; i < choices.size(); ++i) {
 		const attack_type &def = defender.attacks()[choices[i]];
 		unit_stats *att_stats = new unit_stats(attacker, attacker_loc, attacker_weapon,
 				true, defender, defender_loc, &def, units);
@@ -686,7 +686,7 @@ int battle_context::choose_attacker_weapon(const unit &attacker, const unit &def
 
 	// What options does attacker have?
 	unsigned int i;
-	for (i = 0; i < attacker.attacks().size(); i++) {
+	for (i = 0; i < attacker.attacks().size(); ++i) {
 		const attack_type &att = attacker.attacks()[i];
 		if (att.attack_weight() > 0) {
 			choices.push_back(i);
@@ -704,7 +704,7 @@ int battle_context::choose_attacker_weapon(const unit &attacker, const unit &def
 	unit_stats *best_att_stats = NULL, *best_def_stats = NULL;
 	combatant *best_att_comb = NULL, *best_def_comb = NULL;
 
-	for (i = 0; i < choices.size(); i++) {
+	for (i = 0; i < choices.size(); ++i) {
 		const attack_type &att = attacker.attacks()[choices[i]];
 		int def_weapon = choose_defender_weapon(attacker, defender, choices[i], units,
 			attacker_loc, defender_loc, prev_def);
@@ -1583,7 +1583,7 @@ void attack::perform()
 	unit_display::unit_draw_weapon(a_.loc_,a_.get_unit(),a_stats_->weapon,d_stats_->weapon,d_.loc_,&d_.get_unit());
 	while(a_.n_attacks_ > 0 || d_.n_attacks_ > 0) {
 		DBG_NG << "start of attack loop...\n";
-		abs_n_attack_++;
+		++abs_n_attack_;
 
 		if (a_.n_attacks_ > 0 && !defender_strikes_first) {
 			if (!perform_hit(true, attack_stats)) break;
@@ -1591,7 +1591,7 @@ void attack::perform()
 
 		// If the defender got to strike first, they use it up here.
 		defender_strikes_first = false;
-		abs_n_defend_++;
+		++abs_n_defend_;
 
 		if (d_.n_attacks_ > 0) {
 			if (!perform_hit(false, attack_stats)) break;
@@ -1922,7 +1922,7 @@ void calculate_healing(int side, bool update_display)
 
             /* for each unit in l, remember nearest */
             for (std::list<struct unit_healing_struct>::iterator i = l.begin();
-                 i != l.end() ; i++) {
+                 i != l.end() ; ++i) {
               //int d = uhs.square_dist(*i);
               int d = distance_between(*uhs.healed_loc, *i->healed_loc);
               if (d < min_d) {
