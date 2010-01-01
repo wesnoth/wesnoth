@@ -593,7 +593,25 @@ public:
 		     const std::string &save_id, std::vector<team>& teams,
 		     const config& level, gamemap& map, unit_map& units,
 		     bool snapshot, const config &starting_pos)
-		: level_(level), map_(map), player_cfg_(NULL), save_id_(save_id), side_cfg_(side_cfg), snapshot_(snapshot), starting_pos_(starting_pos), t_(NULL), teams_(teams),units_(units)
+		: gold_info_ngold_(0)
+		, gold_info_add_(false)
+		, leader_cfg_()
+		, leader_pos_()
+		, level_(level)
+		, map_(map)
+		, player_cfg_(NULL)
+		, player_exists_(false)
+		, save_id_(save_id)
+		, seen_ids_()
+		, side_(0)
+		, side_cfg_(side_cfg)
+		, snapshot_(snapshot)
+		, start_pos_()
+		, starting_pos_(starting_pos)
+		, t_(NULL)
+		, teams_(teams)
+		, unit_configs_()
+		, units_(units)
 	{
 	}
 
@@ -633,7 +651,7 @@ protected:
 
 	int gold_info_ngold_;
 	bool gold_info_add_;
-        config leader_cfg_;
+	config leader_cfg_;
 	map_location leader_pos_;
 	const config &level_;
 	gamemap &map_;
