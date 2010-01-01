@@ -448,9 +448,9 @@ bool ai_default_recruitment_stage::recruit_usage(const std::string& usage)
 
 			if (imc != maximum_counts_.end()) {
 				int count_active = 0;
-				for (unit_map::iterator u = get_info().units.begin(); u != get_info().units.end(); u++) {
+				for (unit_map::iterator u = get_info().units.begin(); u != get_info().units.end(); ++u) {
 					if ((u->second.side()==get_side()) && (!u->second.incapacitated()) && (u->second.type_id() == name)) {
-						count_active++;
+						++count_active;
 					}
 				}
 
