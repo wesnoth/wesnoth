@@ -160,10 +160,10 @@ prob_matrix::prob_matrix(unsigned int a_max_hp, unsigned int b_max_hp,
 		min_row_[NEITHER_SLOWED] = 0;
 		min_row_[A_SLOWED] = 0;
 		min_col_[A_SLOWED] = b_hp - 1;
-		for (unsigned int row = 0; row < a_summary[0].size(); row++)
+		for (unsigned int row = 0; row < a_summary[0].size(); ++row)
 			val(NEITHER_SLOWED, row, b_hp) = a_summary[0][row];
 		if (!a_summary[1].empty()) {
-			for (unsigned int row = 0; row < a_summary[1].size(); row++)
+			for (unsigned int row = 0; row < a_summary[1].size(); ++row)
 				val(A_SLOWED, row, b_hp) = a_summary[1][row];
 		}
 		debug(("A has fought before\n"));
@@ -172,10 +172,10 @@ prob_matrix::prob_matrix(unsigned int a_max_hp, unsigned int b_max_hp,
 		min_col_[NEITHER_SLOWED] = 0;
 		min_col_[B_SLOWED] = 0;
 		min_row_[B_SLOWED] = a_hp - 1;
-		for (unsigned int col = 0; col < b_summary[0].size(); col++)
+		for (unsigned int col = 0; col < b_summary[0].size(); ++col)
 			val(NEITHER_SLOWED, a_hp, col) = b_summary[0][col];
 		if (!b_summary[1].empty()) {
-			for (unsigned int col = 0; col < b_summary[1].size(); col++)
+			for (unsigned int col = 0; col < b_summary[1].size(); ++col)
 				val(B_SLOWED, a_hp, col) = b_summary[1][col];
 		}
 		debug(("B has fought before\n"));
@@ -226,13 +226,13 @@ void prob_matrix::dump() const
 	const char *names[]
 		= { "NEITHER_SLOWED", "A_SLOWED", "B_SLOWED", "BOTH_SLOWED" };
 
-	for (m = 0; m < 4; m++) {
+	for (m = 0; m < 4; ++m) {
 		if (!plane_[m])
 			continue;
 		debug(("%s:\n", names[m]));
-		for (row = 0; row < rows_; row++) {
+		for (row = 0; row < rows_; ++row) {
 			debug(("  "));
-			for (col = 0; col < cols_; col++)
+			for (col = 0; col < cols_; ++col)
 				debug(("%4.3g ", val(m, row, col)*100));
 			debug(("\n"));
 		}
@@ -289,9 +289,9 @@ void prob_matrix::shift_cols(unsigned dst, unsigned src,
 	// Loop backwards so we write drain behind us, for when src == dst.
 	for (row = rows_ - 1; row > min_row_[src]; row--) {
 		// These are all going to die (move to col 0).
-		for (col = 1; col <= damage; col++)
+		for (col = 1; col <= damage; ++col)
 			xfer(dst, src, row+(col>>shift), 0, row, col, prob);
-		for (col = damage+1; col < cols_; col++)
+		for (col = damage+1; col < cols_; ++col)
 			xfer(dst, src, row+(damage>>shift), col - damage, row, col, prob);
 	}
 }
@@ -308,9 +308,9 @@ void prob_matrix::shift_rows(unsigned dst, unsigned src,
 	// Loop downwards so if we drain, we write behind us.
 	for (col = cols_ - 1; col > min_col_[src]; col--) {
 		// These are all going to die (move to row 0).
-		for (row = 1; row <= damage; row++)
+		for (row = 1; row <= damage; ++row)
 			xfer(dst, src, 0, col+(row>>shift), row, col, prob);
-		for (row = damage+1; row < rows_; row++)
+		for (row = damage+1; row < rows_; ++row)
 			xfer(dst, src, row - damage, col+(damage>>shift), row, col, prob);
 	}
 }
@@ -355,18 +355,18 @@ void prob_matrix::receive_blow_b(unsigned damage, unsigned slow_damage, double h
 void prob_matrix::remove_petrify_distortion_a(unsigned damage, unsigned slow_damage,
 											unsigned b_hp)
 {
-	for (int p = 0; p < 4; p++) {
+	for (int p = 0; p < 4; ++p) {
 		if (!plane_[p])
 			continue;
 
 		// A is slow in planes 1 and 3.
 		if (p & 1) {
 			if (b_hp > slow_damage)
-				for (unsigned int row = 0; row < rows_; row++)
+				for (unsigned int row = 0; row < rows_; ++row)
 					xfer(p, p, row, b_hp - slow_damage, row, 0, 1.0);
 		} else {
 			if (b_hp > damage)
-				for (unsigned int row = 0; row < rows_; row++)
+				for (unsigned int row = 0; row < rows_; ++row)
 					xfer(p, p, row, b_hp - damage, row, 0, 1.0);
 		}
 	}
@@ -375,18 +375,18 @@ void prob_matrix::remove_petrify_distortion_a(unsigned damage, unsigned slow_dam
 void prob_matrix::remove_petrify_distortion_b(unsigned damage, unsigned slow_damage,
 											unsigned a_hp)
 {
-	for (int p = 0; p < 4; p++) {
+	for (int p = 0; p < 4; ++p) {
 		if (!plane_[p])
 			continue;
 
 		// B is slow in planes 2 and 3.
 		if (p & 2) {
 			if (a_hp > slow_damage)
-				for (unsigned int col = 0; col < cols_; col++)
+				for (unsigned int col = 0; col < cols_; ++col)
 					xfer(p, p, a_hp - slow_damage, col, 0, col, 1.0);
 		} else {
 			if (a_hp > damage)
-				for (unsigned int col = 0; col < cols_; col++)
+				for (unsigned int col = 0; col < cols_; ++col)
 					xfer(p, p, a_hp - damage, col, 0, col, 1.0);
 		}
 	}
@@ -405,7 +405,7 @@ void prob_matrix::extract_results(std::vector<double> summary_a[2],
 	if (plane_[B_SLOWED])
 		summary_b[1] = std::vector<double>(cols_);
 
-	for (p = 0; p < 4; p++) {
+	for (p = 0; p < 4; ++p) {
 		int dst_a, dst_b;
 		if (!plane_[p])
 			continue;
@@ -414,8 +414,8 @@ void prob_matrix::extract_results(std::vector<double> summary_a[2],
 		dst_a = (p & 1);
 		// B is slow in planes 2 and 3.
 		dst_b = !!(p & 2);
-		for (row = 0; row < rows_; row++) {
-			for (col = 0; col < cols_; col++) {
+		for (row = 0; row < rows_; ++row) {
+			for (col = 0; col < cols_; ++col) {
 				summary_a[dst_a][row] += val(p, row, col);
 				summary_b[dst_b][col] += val(p, row, col);
 			}
@@ -429,13 +429,13 @@ double prob_matrix::dead_prob() const
 	unsigned int p, row, col;
 	double prob = 0.0;
 
-	for (p = 0; p < 4; p++) {
+	for (p = 0; p < 4; ++p) {
 		if (!plane_[p])
 			continue;
 		// We might count 0,0 twice, but that is always 0 anyway.
-		for (row = min_row_[p]; row < rows_; row++)
+		for (row = min_row_[p]; row < rows_; ++row)
 			prob += val(p, row, 0);
-		for (col = min_col_[p]; col < cols_; col++)
+		for (col = min_col_[p]; col < cols_; ++col)
 			prob += val(p, 0, col);
 	}
 	return prob;
@@ -540,7 +540,7 @@ void combatant::adjust_hitchance()
 		alive_prob = 1 - summary[0][0] - summary[1][0];
 
 	unsigned int i;
-	for (i = 1; i <= u_.max_hp; i++) {
+	for (i = 1; i <= u_.max_hp; ++i) {
 		double prob = 0.0;
 		if(i < summary[0].size()) {
 			prob = summary[0][i];
@@ -548,13 +548,13 @@ void combatant::adjust_hitchance()
 		if (!summary[1].empty())
 			prob += summary[1][i];
 		for (unsigned int j = 0; j < u_.swarm_min + (u_.swarm_max -
-                static_cast<double>(u_.swarm_min)) * u_.hp / u_.max_hp; j++)
+                static_cast<double>(u_.swarm_min)) * u_.hp / u_.max_hp; ++j)
 
 			hit_chances_[j] += prob * u_.chance_to_hit / 100.0 / alive_prob;
 	}
 
 	debug(("\nhit_chances_ (base %u%%):", u_.chance_to_hit));
-	for (i = 0; i < u_.swarm_max; i++)
+	for (i = 0; i < u_.swarm_max; ++i)
 		debug((" %.2f", hit_chances_[i] * 100.0 + 0.5));
 	debug(("\n"));
 }
@@ -569,7 +569,7 @@ unsigned combatant::min_hp() const
 	assert(summary[1].empty());
 
 	unsigned int i;
-	for (i = 0; summary[0][i] == 0; i++) {};
+	for (i = 0; summary[0][i] == 0; ++i) {};
 	return i;
 }
 
@@ -580,7 +580,7 @@ void combatant::no_death_fight(combatant &opp)
 		// Starts with a known HP, so Pascal's triangle.
 		summary[0] = std::vector<double>(u_.max_hp+1);
 		summary[0][u_.hp] = 1.0;
-		for (unsigned int i = 0; i < opp.hit_chances_.size(); i++) {
+		for (unsigned int i = 0; i < opp.hit_chances_.size(); ++i) {
 			for (int j = i; j >= 0; j--) {
 				double move = summary[0][u_.hp - j * opp.u_.damage] * opp.hit_chances_[i];
 				summary[0][u_.hp - j * opp.u_.damage] -= move;
@@ -589,8 +589,8 @@ void combatant::no_death_fight(combatant &opp)
 		}
 	} else {
 		// HP could be spread anywhere, iterate through whole thing.
-		for (unsigned int i = 0; i < opp.hit_chances_.size(); i++) {
-			for (unsigned int j = opp.u_.damage; j <= u_.hp; j++) {
+		for (unsigned int i = 0; i < opp.hit_chances_.size(); ++i) {
+			for (unsigned int j = opp.u_.damage; j <= u_.hp; ++j) {
 				double move = summary[0][j] * opp.hit_chances_[i];
 				summary[0][j] -= move;
 				summary[0][j - opp.u_.damage] += move;
@@ -602,7 +602,7 @@ void combatant::no_death_fight(combatant &opp)
 		// Starts with a known HP, so Pascal's triangle.
 		opp.summary[0] = std::vector<double>(opp.u_.max_hp+1);
 		opp.summary[0][opp.u_.hp] = 1.0;
-		for (unsigned int i = 0; i < hit_chances_.size(); i++) {
+		for (unsigned int i = 0; i < hit_chances_.size(); ++i) {
 			for (int j = i; j >= 0; j--) {
 				double move = opp.summary[0][opp.u_.hp - j * u_.damage] * hit_chances_[i];
 				opp.summary[0][opp.u_.hp - j * u_.damage] -= move;
@@ -611,8 +611,8 @@ void combatant::no_death_fight(combatant &opp)
 		}
 	} else {
 		// HP could be spread anywhere, iterate through whole thing.
-		for (unsigned int i = 0; i < hit_chances_.size(); i++) {
-			for (unsigned int j = u_.damage; j <= opp.u_.hp; j++) {
+		for (unsigned int i = 0; i < hit_chances_.size(); ++i) {
+			for (unsigned int j = u_.damage; j <= opp.u_.hp; ++j) {
 				double move = opp.summary[0][j] * hit_chances_[i];
 				opp.summary[0][j] -= move;
 				opp.summary[0][j - u_.damage] += move;
@@ -635,7 +635,7 @@ void combatant::one_strike_fight(combatant &opp)
 		}
 	} else {
 		if (hit_chances_.size() == 1) {
-			for (unsigned int i = 1; i < opp.summary[0].size(); i++) {
+			for (unsigned int i = 1; i < opp.summary[0].size(); ++i) {
 				double move = opp.summary[0][i] * hit_chances_[0];
 				opp.summary[0][i] -= move;
 				opp.summary[0][std::max<int>(i - u_.damage, 0)] += move;
@@ -656,7 +656,7 @@ void combatant::one_strike_fight(combatant &opp)
 		}
 	} else {
 		if (opp.hit_chances_.size() == 1) {
-			for (unsigned int i = 1; i < summary[0].size(); i++) {
+			for (unsigned int i = 1; i < summary[0].size(); ++i) {
 				double move = summary[0][i] * opp.hit_chances_[0] * opp_alive_prob;
 				summary[0][i] -= move;
 				summary[0][std::max<int>(i - opp.u_.damage, 0)] += move;
@@ -686,7 +686,7 @@ void combatant::complex_fight(combatant &opp, unsigned int rounds)
 		b_damage = b_slow_damage = u_.max_hp;
 
 	do {
-		for (unsigned int i = 0; i < max_attacks; i++) {
+		for (unsigned int i = 0; i < max_attacks; ++i) {
 			if (i < hit_chances_.size()) {
 				debug(("A strikes\n"));
 				m.receive_blow_b(a_damage, a_slow_damage, hit_chances_[i],
@@ -725,8 +725,8 @@ void combatant::consider_levelup(combatant &opp) {
 		// the fully healed case.
 		std::vector<double>::iterator i;
 		i = hp_dist.begin();
-		i++; // skip to the second value
-		for ( ; i != hp_dist.end(); i++) {
+		++i; // skip to the second value
+		for ( ; i != hp_dist.end(); ++i) {
 			*i = 0;
 		}
 		// fully healed unless dead
@@ -743,8 +743,8 @@ void combatant::consider_levelup(combatant &opp) {
 			(1 - hp_dist.front() - opp.hp_dist.front()) / (1 - hp_dist.front());
 		std::vector<double>::iterator i;
 		i = hp_dist.begin();
-		i++; // skip to the second value
-		for( ; i != hp_dist.end(); i++) {
+		++i; // skip to the second value
+		for( ; i != hp_dist.end(); ++i) {
 			*i *= scalefactor;
 		}
 
@@ -808,13 +808,13 @@ void combatant::fight(combatant &opp, bool levelup_considered)
 #if 0
 	assert(summary[0].size() == res.size());
 	assert(opp.summary[0].size() == opp_res.size());
-	for (unsigned int i = 0; i < summary[0].size(); i++) {
+	for (unsigned int i = 0; i < summary[0].size(); ++i) {
 		if (fabs(summary[0][i] - res[i]) > 0.000001) {
 			std::cerr << "Mismatch for " << i << " hp: " << summary[0][i] << " should have been " << res[i] << "\n";
 			assert(0);
 		}
 	}
-	for (unsigned int i = 0; i < opp.summary[0].size(); i++) {
+	for (unsigned int i = 0; i < opp.summary[0].size(); ++i) {
 		if (fabs(opp.summary[0][i] - opp_res[i])> 0.000001) {
 			std::cerr << "Mismatch for " << i << " hp: " << opp.summary[0][i] << " should have been " << opp_res[i] << "\n";
 			assert(0);
@@ -826,13 +826,13 @@ void combatant::fight(combatant &opp, bool levelup_considered)
 	if (summary[1].empty())
 		hp_dist = summary[0];
 	else {
-		for (unsigned int i = 0; i < hp_dist.size(); i++)
+		for (unsigned int i = 0; i < hp_dist.size(); ++i)
 			hp_dist[i] = summary[0][i] + summary[1][i];
 	}
 	if (opp.summary[1].empty())
 		opp.hp_dist = opp.summary[0];
 	else {
-		for (unsigned int i = 0; i < opp.hp_dist.size(); i++)
+		for (unsigned int i = 0; i < opp.hp_dist.size(); ++i)
 			opp.hp_dist[i] = opp.summary[0][i] + opp.summary[1][i];
 	}
 
@@ -870,7 +870,7 @@ double combatant::average_hp(unsigned int healing) const
 	double total = 0;
 
 	// Since sum of probabilities is 1.0, we can just tally weights.
-	for (unsigned int i = 1; i < hp_dist.size(); i++) {
+	for (unsigned int i = 1; i < hp_dist.size(); ++i) {
 		total += hp_dist[i] * std::min<unsigned int>(i + healing, u_.max_hp);
 	}
 	return total;
@@ -909,7 +909,7 @@ void combatant::print(const char label[], unsigned int battle) const
 		printf("firststrike,");
 	printf("maxhp=%u ", hp_dist.size()-1);
 	printf(" %.2f", untouched);
-	for (unsigned int i = 0; i < hp_dist.size(); i++)
+	for (unsigned int i = 0; i < hp_dist.size(); ++i)
 		printf(" %.2f", hp_dist[i] * 100);
 	printf("\n");
 }
@@ -926,7 +926,7 @@ static void run(unsigned specific_battle)
 	unsigned int i, j, k, battle = 0;
 	struct timeval start, end, total;
 
-	for (i = 0; i < NUM_UNITS; i++) {
+	for (i = 0; i < NUM_UNITS; ++i) {
 		unsigned hp = 1 + ((i*3)%23);
 		u[i] = new combatant(hp, hp + (i+7)%17, false);
 		u[i]->set_weapon((i % 4) + 1, (i % 9) == 0, (i % 5) == 0,
@@ -936,15 +936,15 @@ static void run(unsigned specific_battle)
 	}
 
 	gettimeofday(&start, NULL);
-	for (i = 0; i < NUM_UNITS; i++) {
-		for (j = 0; j < NUM_UNITS; j++) {
+	for (i = 0; i < NUM_UNITS; ++i) {
+		for (j = 0; j < NUM_UNITS; ++j) {
 			if (i == j)
 				continue;
-			for (k = 0; k < NUM_UNITS; k++) {
+			for (k = 0; k < NUM_UNITS; ++k) {
 				double untouched;
 				if (i == k || j == k)
 					continue;
-				battle++;
+				++battle;
 				if (specific_battle && battle != specific_battle)
 					continue;
 				u[j]->fight(*u[i]);
@@ -976,7 +976,7 @@ static void run(unsigned specific_battle)
 	printf("Total combats: %i\n", NUM_UNITS*(NUM_UNITS-1)*(NUM_UNITS-2));
 #endif
 
-	for (i = 0; i < NUM_UNITS; i++) {
+	for (i = 0; i < NUM_UNITS; ++i) {
 		delete u[i];
 	}
 
@@ -1070,11 +1070,11 @@ int main(int argc, char *argv[])
 	}
 
 	def = parse_unit(&argv, &damage, &hit_chance, &slows);
-	for (i = 0; argv[1]; i++)
+	for (i = 0; argv[1]; ++i)
 		att[i] = parse_unit(&argv);
 	att[i] = NULL;
 
-	for (i = 0; att[i]; i++) {
+	for (i = 0; att[i]; ++i) {
 		// In case defender has swarm, effectiveness changes.
 		debug(("Fighting next attacker\n"));
 		def->set_effectiveness(damage, hit_chance, slows);
@@ -1082,11 +1082,11 @@ int main(int argc, char *argv[])
 	}
 
 	def->print("Defender", 0);
-	for (i = 0; att[i]; i++)
+	for (i = 0; att[i]; ++i)
 		att[i]->print("Attacker", 0);
 
 	delete def;
-	for (i = 0; att[i]; i++)
+	for (i = 0; att[i]; ++i)
 		delete att[i];
 
 	return 0;
