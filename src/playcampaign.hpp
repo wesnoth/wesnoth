@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
    Copyright (C) 2003-2005 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2009 by Philippe Plantier <ayin@anathas.org>
+   Copyright (C) 2005 - 2010 by Philippe Plantier <ayin@anathas.org>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify

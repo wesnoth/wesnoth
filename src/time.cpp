@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2008 - 2009 by Pauli Nieminen <paniemin@cc.hut.fi>
+   Copyright (C) 2008 - 2010 by Pauli Nieminen <paniemin@cc.hut.fi>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify

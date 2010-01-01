@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2009 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2010 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify

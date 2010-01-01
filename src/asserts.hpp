@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
    Copyright (C) 2008 by David White <dave@whitevine.net>
-                 2008 - 2009 by Richard Kettering <kettering.richard@gmail.com>
+                 2008 - 2010 by Richard Kettering <kettering.richard@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
