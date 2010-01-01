@@ -307,6 +307,19 @@ tline::tline(const config& cfg) :
  *                                     scrollbar, but don't want it to be shown
  *                                     when not needed eg the language list
  *                                     will need a scrollbar on most screens.
+ *
+ *     resize_mode                     Determines how an image is resized.
+ *                                     Possible values:
+ *                                     @* scale        The image is scaled.
+ *                                     @* stretch      The first row or column
+ *                                     of pixels is copied over the entire
+ *                                     image. (Can only be used to scale resize
+ *                                     in one direction, else falls
+ *                                     back to scale.)
+ *                                     @* tile         The image is placed
+ *                                     several times until the entire surface
+ *                                     is filled. The last images are
+ *                                     truncated.
  * @end_table
  *
  * == Section types ==
@@ -577,23 +590,44 @@ private:
 	 * When an image needs to be scaled in one direction there are two options:
 	 * - scale, which interpolates the image.
 	 * - stretch, which used the first row/column and copies those pixels.
+	 *
+	 * @todo Remove in 1.9.
 	 */
 	bool stretch_;
+
+	/**
+	 * Determines the way an image will be resized.
+	 *
+	 * If the image is smaller is needed it needs to resized, how is determined
+	 * by the value of this enum.
+	 */
+	enum tresize_mode {
+		  scale
+		, stretch
+		, tile
+	};
+
+	/** Converts a string to a resize mode. */
+	tresize_mode get_resize_mode(const std::string& resize_mode);
+
+	/** The resize mode for an image. */
+	tresize_mode resize_mode_;
 
 	/** Mirror the image over the vertical axis. */
 	tformula<bool> vertical_mirror_;
 };
 
-timage::timage(const config& cfg) :
-	x_(cfg["x"]),
-	y_(cfg["y"]),
-	w_(cfg["w"]),
-	h_(cfg["h"]),
-	src_clip_(),
-	image_(),
-	image_name_(cfg["name"]),
-	stretch_(utils::string_bool(cfg["stretch"])),
-	vertical_mirror_(cfg["vertical_mirror"])
+timage::timage(const config& cfg)
+	: x_(cfg["x"])
+	, y_(cfg["y"])
+	, w_(cfg["w"])
+	, h_(cfg["h"])
+	, src_clip_()
+	, image_()
+	, image_name_(cfg["name"])
+	, stretch_(utils::string_bool(cfg["stretch"]))
+	, resize_mode_(get_resize_mode(cfg["resize_mode"]))
+	, vertical_mirror_(cfg["vertical_mirror"])
 {
 /*WIKI
  * @page = GUICanvasWML
@@ -606,14 +640,20 @@ timage::timage(const config& cfg) :
  *     x (f_unsigned = 0)              The x coordinate of the top left corner.
  *     y (f_unsigned = 0)              The y coordinate of the top left corner.
  *     w (f_unsigned = 0)              The width of the image, if not zero the
- *                                     image will be scaled to the desired width.
+ *                                     image will be scaled to the desired
+ *                                     width.
  *     h (f_unsigned = 0)              The height of the image, if not zero the
- *                                     image will be scaled to the desired height.
+ *                                     image will be scaled to the desired
+ *                                     height.
  *     stretch (bool = false)          Border images often need to be either
  *                                     stretched in the width or the height. If
- *                                     that's the case use stretch. It only works
- *                                     if only the height or the width is not zero.
- *                                     It will copy the first pixel to the others.
+ *                                     that's the case use stretch. It only
+ *                                     works if only the height or the width is
+ *                                     not zero.  It will copy the first pixel
+ *                                     to the others. (Note this mode is
+ *                                     deprecated, use resize_mode instead.)
+ *     resize_mode (resize_mode = scale)
+ *                                     Determin
  *     vertical_mirror (f_bool = false)
  *                                     Mirror the image over the vertical axis.
  *     name (f_string = "")            The name of the image.
@@ -645,6 +685,20 @@ timage::timage(const config& cfg) :
  * Also the general variables are available, see [[#general_variables|Line]].
  *
  */
+
+#if 0
+	/** @todo Enable in 1.9. */
+	if(!cfg["stretch"].empty()) {
+		ERR_GUI_D << "Image: The field 'strech' is "
+				"deprecated use 'resize_mode instead.\n";
+	}
+#endif
+
+	/** @todo Remove in 1.9. */
+	if(stretch_ && resize_mode_ != stretch) {
+		resize_mode_ = stretch;
+	}
+
 	if(!image_name_.has_formula()) {
 		surface tmp(image::get_image(image::locator(cfg["name"])));
 
@@ -735,9 +789,9 @@ void timage::draw(surface& canvas,
 	// Test whether we need to scale and do the scaling if needed.
 	if(w || h) {
 		bool done = false;
-		bool stretch = stretch_ && (!!w ^ !!h);
+		bool stretch_image = (resize_mode_ == stretch) && (!!w ^ !!h);
 		if(!w) {
-			if(stretch) {
+			if(stretch_image) {
 				DBG_GUI_D << "Image: vertical stretch from " << image_->w
 					<< ',' << image_->h << " to a height of " << h << ".\n";
 
@@ -748,7 +802,7 @@ void timage::draw(surface& canvas,
 		}
 
 		if(!h) {
-			if(stretch) {
+			if(stretch_image) {
 				DBG_GUI_D << "Image: horizontal stretch from " << image_->w
 					<< ',' << image_->h << " to a width of " << w << ".\n";
 
@@ -760,10 +814,34 @@ void timage::draw(surface& canvas,
 
 		if(!done) {
 
-			DBG_GUI_D << "Image: scaling from " << image_->w
-				<< ',' << image_->h << " to " << w << ',' << h << ".\n";
+			if(resize_mode_ == tile) {
+				DBG_GUI_D << "Image: tiling from " << image_->w
+						<< ',' << image_->h << " to " << w << ',' << h << ".\n";
 
-			surf = scale_surface(image_, w, h, false);
+				const int columns = (w + image_->w - 1) / image_->w;
+				const int rows = (h + image_->h - 1) / image_->h;
+				surf = create_neutral_surface(w, h);
+
+				for(int x = 0; x < columns; ++x) {
+					for(int y = 0; y < rows; ++y) {
+						const SDL_Rect dest =
+								{x * image_->w, y * image_->h, 0, 0};
+
+						blit_surface(image_, NULL, surf, &dest);
+					}
+				}
+
+			} else {
+				if(resize_mode_ == stretch) {
+					ERR_GUI_D << "Image: failed to stretch image, "
+							"fall back to scaling.\n";
+				}
+
+				DBG_GUI_D << "Image: scaling from " << image_->w
+						<< ',' << image_->h << " to " << w << ',' << h << ".\n";
+
+				surf = scale_surface(image_, w, h, false);
+			}
 		}
 		src_clip.w = w;
 		src_clip.h = h;
@@ -776,6 +854,21 @@ void timage::draw(surface& canvas,
 	}
 
 	blit_surface(surf, &src_clip, canvas, &dst_clip);
+}
+
+timage::tresize_mode timage::get_resize_mode(const std::string& resize_mode)
+{
+	if(resize_mode == "tile") {
+		return timage::tile;
+	} else if(resize_mode == "stretch") {
+		return timage::stretch;
+	} else {
+		if(!resize_mode.empty() && resize_mode != "scale") {
+			ERR_GUI_E << "Invalid resize mode '"
+				<< resize_mode << "' falling back to 'scale'.\n";
+		}
+		return timage::scale;
+	}
 }
 
 /***** ***** ***** ***** ***** TEXT ***** ***** ***** ***** *****/
