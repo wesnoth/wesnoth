@@ -100,11 +100,11 @@ static void move_unit_between(const map_location& a, const map_location& b, unit
 	map_location arr[6];
 	get_adjacent_tiles(a, arr);
 	unsigned int i;
-	for (i = 0; i < 6; i++) {
+	for (i = 0; i < 6; ++i) {
 		disp->invalidate(arr[i]);
 	}
 	get_adjacent_tiles(b, arr);
-	for (i = 0; i < 6; i++) {
+	for (i = 0; i < 6; ++i) {
 		disp->invalidate(arr[i]);
 	}
 }
@@ -188,7 +188,7 @@ void move_unit(const std::vector<map_location>& path, unit& u,
 				disp->place_temporary_unit(temp_unit);
 				// scroll in as much of the remaining path as possible
 				std::vector<map_location> remaining_path;
-				for(size_t j = i; j < path.size(); j++) {
+				for(size_t j = i; j < path.size(); ++j) {
 					remaining_path.push_back(path[j]);
 				}
 				temp_unit.get_animation()->pause_animation();
@@ -366,7 +366,7 @@ void unit_attack(
 	const unit_animation * defender_anim = def->second.choose_animation(*disp,def->first,"defend",att->first,damage,hit_type,&attack,secondary_attack,swing);
 	animator.add_animation(&defender,defender_anim,def->first,true,false,text  ,display::rgb(255,0,0));;
 
-	for (std::vector<std::pair<const config *, map_location> >::iterator itor = leaders.cfgs.begin(); itor != leaders.cfgs.end(); itor++) {
+	for (std::vector<std::pair<const config *, map_location> >::iterator itor = leaders.cfgs.begin(); itor != leaders.cfgs.end(); ++itor) {
 		if(itor->second == a) continue;
 		if(itor->second == b) continue;
 		unit_map::iterator leader = units.find(itor->second);
@@ -374,7 +374,7 @@ void unit_attack(
 		leader->second.set_facing(itor->second.get_relative_dir(a));
 		animator.add_animation(&leader->second,"leading",itor->second,att->first,damage,true,false,"",0,hit_type,&attack,secondary_attack,swing);
 	}
-	for (std::vector<std::pair<const config *, map_location> >::iterator itor = helpers.cfgs.begin(); itor != helpers.cfgs.end(); itor++) {
+	for (std::vector<std::pair<const config *, map_location> >::iterator itor = helpers.cfgs.begin(); itor != helpers.cfgs.end(); ++itor) {
 		if(itor->second == a) continue;
 		if(itor->second == b) continue;
 		unit_map::iterator helper = units.find(itor->second);
@@ -411,7 +411,7 @@ void reset_helpers(const unit *attacker,const unit *defender)
 	unit_map& units = disp->get_units();
 	if(attacker) {
 		unit_ability_list leaders = attacker->get_abilities("leadership");
-		for (std::vector<std::pair<const config *, map_location> >::iterator itor = leaders.cfgs.begin(); itor != leaders.cfgs.end(); itor++) {
+		for (std::vector<std::pair<const config *, map_location> >::iterator itor = leaders.cfgs.begin(); itor != leaders.cfgs.end(); ++itor) {
 			unit_map::iterator leader = units.find(itor->second);
 			assert(leader != units.end());
 			leader->second.set_standing();
@@ -420,7 +420,7 @@ void reset_helpers(const unit *attacker,const unit *defender)
 
 	if(defender) {
 		unit_ability_list helpers = defender->get_abilities("resistance");
-		for (std::vector<std::pair<const config *, map_location> >::iterator itor = helpers.cfgs.begin(); itor != helpers.cfgs.end(); itor++) {
+		for (std::vector<std::pair<const config *, map_location> >::iterator itor = helpers.cfgs.begin(); itor != helpers.cfgs.end(); ++itor) {
 			unit_map::iterator helper = units.find(itor->second);
 			assert(helper != units.end());
 			helper->second.set_standing();
@@ -571,7 +571,7 @@ void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const m
 	}
 	const vconfig::child_list sub_anims = cfg.get_children("animate");
 	vconfig::child_list::const_iterator anim_itor;
-	for(anim_itor = sub_anims.begin(); anim_itor != sub_anims.end();anim_itor++) {
+	for(anim_itor = sub_anims.begin(); anim_itor != sub_anims.end();++anim_itor) {
 		wml_animation_internal(animator, *anim_itor);
 	}
 
