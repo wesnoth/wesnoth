@@ -40,7 +40,11 @@ namespace ai {
 
 class component {
 public:
-	component() {};
+	component()
+		: property_handlers_()
+	{
+	}
+
 	virtual const std::string& get_id() const = 0;
 	virtual const std::string& get_name() const = 0;
 	virtual const std::string& get_engine() const = 0;
