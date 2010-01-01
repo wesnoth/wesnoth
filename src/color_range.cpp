@@ -116,7 +116,7 @@ std::vector<Uint32> string2rgb(std::string s){
 			if (*endptr != '\0') {
 				throw bad_lexical_cast();
 			}
-			c++;
+			++c;
 		}
 		out.push_back(rgb_hex);
 	}
@@ -140,11 +140,11 @@ std::vector<Uint32> palette(color_range cr){
 	// Could use a special function, would be more efficient,
 	// but harder to maintain.
 	std::map<Uint32,Uint32> cmap = recolor_range(cr,temp);
-	for(std::map<Uint32,Uint32>::const_iterator k=cmap.begin(); k!=cmap.end();k++){
+	for(std::map<Uint32,Uint32>::const_iterator k=cmap.begin(); k!=cmap.end();++k){
 		clist.insert(k->second);
 	}
 	res.push_back(cmap[255]);
-	for(std::set<Uint32>::const_iterator c=clist.begin();c!=clist.end();c++){
+	for(std::set<Uint32>::const_iterator c=clist.begin();c!=clist.end();++c){
 		if(*c != res[0] && *c!=0 && *c != 0x00FFFFFF){
 			res.push_back(*c);}
 	}
