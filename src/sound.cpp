@@ -182,9 +182,9 @@ static bool track_ok(const std::string& id)
 	std::set<std::string> played;
 	std::vector<std::string>::reverse_iterator i;
 
-	for (i = played_before.rbegin(); i != played_before.rend(); i++) {
+	for (i = played_before.rbegin(); i != played_before.rend(); ++i) {
 		if (*i == id) {
-			num_played++;
+			++num_played;
 			if (num_played == 2)
 				break;
 		} else {
@@ -203,7 +203,7 @@ static bool track_ok(const std::string& id)
 	// Check previous previous track not same.
 	i = played_before.rbegin();
 	if (i != played_before.rend()) {
-		i++;
+		++i;
 		if (i != played_before.rend()) {
 			if (*i == id) {
 				LOG_AUDIO << "Played just before previous\n";
@@ -254,7 +254,7 @@ static std::string pick_one(const std::string &files)
 	if (prev_choices.find(files) != prev_choices.end()) {
 		choice = rand()%(ids.size()-1);
 		if (choice >= prev_choices[files])
-			choice++;
+			++choice;
 		prev_choices[files] = choice;
 	} else {
 		choice = rand()%ids.size();
@@ -596,7 +596,7 @@ void commit_music_changes()
 		return;
 
 	// If current track no longer on playlist, change it.
-	for (i = current_track_list.begin(); i != current_track_list.end(); i++) {
+	for (i = current_track_list.begin(); i != current_track_list.end(); ++i) {
 		if (current_track == *i)
 			return;
 	}
@@ -616,7 +616,7 @@ void write_music_play_list(config& snapshot)
 	bool append = false;
 
 	// First entry clears playlist, others append to it.
-	for (i = current_track_list.begin(); i != current_track_list.end(); i++) {
+	for (i = current_track_list.begin(); i != current_track_list.end(); ++i) {
 		i->write(snapshot, append);
 		append = true;
 	}
@@ -826,7 +826,7 @@ void set_sound_volume(int vol)
 			vol = MIX_MAX_VOLUME;
 
 		// Bell, timer and UI have separate channels which we can't set up from this
-		for (unsigned i = 0; i < n_of_channels; i++){
+		for (unsigned i = 0; i < n_of_channels; ++i){
 			if(i != UI_sound_channel && i != bell_channel && i != timer_channel) {
 				Mix_Volume(i, vol);
 			}
