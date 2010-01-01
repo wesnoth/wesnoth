@@ -94,6 +94,11 @@ struct text_chunk
 
 struct char_block_map
 {
+	char_block_map()
+		: cbmap()
+	{
+	}
+
 	typedef std::pair<int, subset_id> block_t;
 	typedef std::map<int, block_t> cbmap_t;
 	cbmap_t cbmap;
