@@ -350,7 +350,7 @@ private:
 			const variant var_2 = args()[1]->evaluate(variables,fdb);
 			if ( var_1.num_elements() != var_2.num_elements() )
 				return variant();
-			for(size_t i = 0; i < var_1.num_elements(); i++ )
+			for(size_t i = 0; i < var_1.num_elements(); ++i )
 				tmp[ var_1[i] ] = var_2[i];
 		} else
 		{
@@ -379,7 +379,7 @@ private:
 		const variant value = args()[0]->evaluate(variables,fdb);
 		const variant list = args()[1]->evaluate(variables,fdb);
 
-		for(size_t i = 0; i < list.num_elements(); i++ ) {
+		for(size_t i = 0; i < list.num_elements(); ++i ) {
 			if( list[i] == value) {
 				return variant(i);
 			}
@@ -774,7 +774,7 @@ public:
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		if( args().size() != 0 ) {
-			for( size_t i = 0; i < args().size() ; i++)
+			for( size_t i = 0; i < args().size() ; ++i)
 				args()[i]->evaluate(variables,fdb);
 		}
 
@@ -986,7 +986,7 @@ expression_ptr function_symbol_table::create_function(const std::string& fn, con
 std::vector<std::string> function_symbol_table::get_function_names() const
 {
 	std::vector<std::string> res;
-	for(std::map<std::string, formula_function>::const_iterator iter = custom_formulas_.begin(); iter != custom_formulas_.end(); iter++ ) {
+	for(std::map<std::string, formula_function>::const_iterator iter = custom_formulas_.begin(); iter != custom_formulas_.end(); ++iter ) {
 		res.push_back((*iter).first);
 	}
 	return res;
