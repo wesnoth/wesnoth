@@ -684,7 +684,7 @@ std::vector<surface> game_display::footsteps_images(const map_location& loc)
 	// and the second for the last step
 	const int second_half = (i+1 == route_.steps.end()) ? 0 : 1;
 
-	for (int h = first_half; h <= second_half; h++) {
+	for (int h = first_half; h <= second_half; ++h) {
 		const std::string sense( h==0 ? "-in" : "-out" );
 
 		if (!tiles_adjacent(*(i+(h-1)), *(i+h))) {
@@ -894,14 +894,14 @@ void game_display::invalidate_animations()
 	new_animation_frame();
 	display::invalidate_animations();
 	unit_map::iterator unit;
-	for(unit=units_.begin() ; unit != units_.end() ; unit++)
+	for(unit=units_.begin() ; unit != units_.end() ; ++unit)
 		unit->second.refresh();
 	if (temp_unit_ )
 		temp_unit_->refresh();
 	bool new_inval = true;
 	while(new_inval) {
 		new_inval = false;
-		for(unit=units_.begin() ; unit != units_.end() ; unit++) {
+		for(unit=units_.begin() ; unit != units_.end() ; ++unit) {
 			new_inval |= unit->second.invalidate(unit->second.get_location());
 		}
 		if (temp_unit_ ) {
