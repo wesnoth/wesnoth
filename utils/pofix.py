@@ -271,8 +271,8 @@ stringfixes = {
 # "Yanqui" is an ethnic slur in Spanish
 ("Yanqui", "Zhangor"),
 # Addressing bug #15027
-("$dwarf_name|", "$intl_dwarf_name|"),
-("$troll_name|", "$intl_troll_name|"),
+("$dwarf_name", "$intl_dwarf_name"),
+("$troll_name", "$intl_troll_name"),
 ),
 
 }
