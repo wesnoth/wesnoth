@@ -270,6 +270,9 @@ stringfixes = {
 "wesnoth-utbs" : (
 # "Yanqui" is an ethnic slur in Spanish
 ("Yanqui", "Zhangor"),
+# Addressing bug #15027
+("$dwarf_name|", "$intl_dwarf_name|"),
+("$troll_name|", "$intl_troll_name|"),
 ),
 
 }
@@ -277,7 +280,7 @@ stringfixes = {
 # Speak, if all argument files are newer than this timestamp
 # Try to use UTC here
 # date --utc "+%s  # %c"
-timecheck = 1257179853  # Mon 02 Nov 2009 04:37:33 PM UTC
+timecheck = 1262364535  # Fri 01 Jan 2010 04:48:55 PM UTC
 
 import os, sys, time, stat
 
