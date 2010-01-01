@@ -690,7 +690,7 @@ WML_HANDLER_FUNCTION(unpetrify, /*event_info*/, cfg)
 		}
 	}
 
-	for (size_t side = 0; side != resources::teams->size(); side++) {
+	for (size_t side = 0; side != resources::teams->size(); ++side) {
 		if (clear_fog_side[side] && (*resources::teams)[side].auto_shroud_updates()) {
 			clear_shroud(side + 1);
 		}
@@ -1317,7 +1317,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 
 			int choice = get_random() % num_choices;
 			int tmp = 0;
-			for(size_t i = 0; i < ranges.size(); i++) {
+			for(size_t i = 0; i < ranges.size(); ++i) {
 				tmp += (ranges[i].second - ranges[i].first) + 1;
 				if (tmp > choice) {
 					if (ranges[i].first == 0 && ranges[i].second == 0) {
@@ -1409,7 +1409,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 
 		int choice = state_of_game->rng().get_random() % num_choices;
 		int tmp = 0;
-		for(size_t i = 0; i < ranges.size(); i++) {
+		for(size_t i = 0; i < ranges.size(); ++i) {
 			tmp += (ranges[i].second - ranges[i].first) + 1;
 			if (tmp > choice) {
 				if (ranges[i].first == 0 && ranges[i].second == 0) {
@@ -1721,7 +1721,7 @@ WML_HANDLER_FUNCTION(unhide_unit, /*event_info*/, cfg)
 	const map_location loc = cfg_to_loc(cfg);
 	unit_map::iterator u;
 	// Unhide all for backward compatibility
-	for (u = resources::units->begin(); u != resources::units->end() ; u++) {
+	for (u = resources::units->begin(); u != resources::units->end() ; ++u) {
 		u->second.set_hidden(false);
 		resources::screen->invalidate(loc);
 		resources::screen->draw();
