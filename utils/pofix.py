@@ -3,7 +3,7 @@
 # pofix - perform string fixups on incoming .po files.
 #
 # The purpose of this script is to save translators from having to
-# apply various string fixes needed before 1.6 by hand.  It is
+# apply various string fixes needed before stable release by hand.  It is
 # intended to be run on each incoming .po file as the Lord of
 # Translations receives it.  However, translators may run it on their
 # own .po files to be sure, as a second application will harmlessly do
