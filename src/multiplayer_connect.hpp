@@ -232,6 +232,13 @@ private:
 	bool sides_available() const;
 
 	/**
+	 * Validates whether the game can be started.
+	 *
+	 * returns                       Can the game be started?
+	 */
+	bool can_start_game() const;
+
+	/**
 	 * Updates the state of the player list, the launch button and of the start
 	 * game label, to reflect the actual state.
 	 */

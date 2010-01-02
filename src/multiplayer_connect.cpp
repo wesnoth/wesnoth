@@ -1088,7 +1088,7 @@ void connect::process_event()
 	}
 
 	if (launch_.pressed()) {
-		if (!sides_available())
+		if (can_start_game())
 			set_result(mp::ui::PLAY);
 	}
 
@@ -1643,10 +1643,41 @@ bool connect::sides_available() const
 	return false;
 }
 
+bool connect::can_start_game() const
+{
+	if(sides_available()) {
+		return false;
+	}
+
+	int non_empty_controller_sides = 0;
+	int player_non_empty_controller_sides = 0;
+
+	foreach(const side& s, sides_) {
+		if(s.get_controller() != CNTR_EMPTY) {
+
+			++non_empty_controller_sides;
+			if(s.allow_player()) {
+				++player_non_empty_controller_sides;
+			}
+		}
+	}
+
+	return non_empty_controller_sides >= 2
+			&& player_non_empty_controller_sides >= 1;
+}
+
 void connect::update_playerlist_state(bool silent)
 {
-	waiting_label_.set_text(sides_available() ? _("Waiting for players to join...") : "");
-	launch_.enable(!sides_available());
+	/**
+	 * @todo Better message for 1.9.
+	 *
+	 * If !sides_available() && !can_start() we could show a better message,
+	 * but that needs to wait until the stringfreeze is lifted.
+	 */
+	waiting_label_.set_text(!can_start_game()
+			? _("Waiting for players to join...")
+			: "");
+	launch_.enable(can_start_game());
 
 	// If the "gamelist_" variable has users, use it.
 	// Else, extracts the user list from the actual player list.
