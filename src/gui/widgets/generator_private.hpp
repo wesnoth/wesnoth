@@ -166,17 +166,6 @@ struct thorizontal_list
 	thorizontal_list();
 
 	/**
-	 * Called when an item is shown or hidden.
-	 *
-	 * This function is responsible to calculate the new best size, the
-	 * generator will call @ref set_size later.
-	 *
-	 * @param index               The item to show or hide.
-	 * @param show                If true shows the item, else hides it.
-	 */
-	void set_item_shown(const unsigned index, const bool show);
-
-	/**
 	 * Called when an item is created.
 	 *
 	 * This function should place the new item.
@@ -278,9 +267,6 @@ struct tvertical_list
 {
 	tvertical_list();
 
-	/** See thorizontal_list::set_item_shown(). */
-	void set_item_shown(const unsigned index, const bool show);
-
 	/** See thorizontal_list::create_item(). */
 	void create_item(const unsigned index);
 
@@ -354,12 +340,6 @@ private:
 struct tmatrix
 	: public virtual tgenerator_
 {
-	/** See thorizontal_list::set_item_shown(). */
-	void set_item_shown(const unsigned /*index*/, const bool /*show*/)
-	{
-		ERROR_LOG(false);
-	}
-
 	/** See thorizontal_list::create_item(). */
 	void create_item(const unsigned /*index*/) { ERROR_LOG(false); }
 
@@ -423,12 +403,6 @@ struct tmatrix
 struct tindependant
 	: public virtual tgenerator_
 {
-	/** See thorizontal_list::set_item_shown(). */
-	void set_item_shown(const unsigned /*index*/, const bool /*show*/)
-	{
-		/* DO NOTHING */
-	}
-
 	/** See thorizontal_list::create_item(). */
 	void create_item(const unsigned /*index*/)
 	{
@@ -644,25 +618,11 @@ public:
 		assert(index < items_.size());
 		if(items_[index]->shown != show) {
 
-			/*
-			 * Item needs to be visible in get_best_size(), which might be
-			 * called in placement::set_item_shown.
-			 */
-			if(show) {
-				items_[index]->grid.set_visible(twidget::VISIBLE);
-			}
-
-			/*** Calculate the new best size. ***/
-			placement::set_item_shown(index, show);
-
 			/*** Set the proper visible state. ***/
 			items_[index]->shown = show;
-			if(!show) {
-				items_[index]->grid.set_visible(twidget::INVISIBLE);
-			}
-
-			/*** Put the items at their new places. ***/
-			placement::set_size(this->get_origin(), this->get_best_size());
+			items_[index]->grid.set_visible(show
+					? twidget::VISIBLE
+					: twidget::INVISIBLE);
 
 			/*** Update the selection. ***/
 			minimum_selection::set_item_shown(index, show);

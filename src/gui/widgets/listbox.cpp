@@ -105,6 +105,8 @@ void tlistbox::set_row_shown(const unsigned row, const bool shown)
 		twindow::tinvalidate_layout_blocker invalidate_layout_blocker(*window);
 
 		generator_->set_item_shown(row, shown);
+		generator_->set_size(generator_->get_origin()
+				, generator_->calculate_best_size());
 		resize_needed = !content_resize_request();
 	}
 
@@ -137,6 +139,8 @@ void tlistbox::set_row_shown(const std::vector<bool>& shown)
 		for(size_t i = 0; i < shown.size(); ++i) {
 			generator_->set_item_shown(i, shown[i]);
 		}
+		generator_->set_size(generator_->get_origin()
+				, generator_->calculate_best_size());
 		resize_needed = !content_resize_request();
 	}
 

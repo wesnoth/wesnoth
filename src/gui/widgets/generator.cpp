@@ -101,17 +101,6 @@ thorizontal_list::thorizontal_list()
 {
 }
 
-void thorizontal_list::set_item_shown(const unsigned index, const bool show)
-{
-	tpoint best_size = this->get_best_size();
-	const int item_width = show
-			?  item(index).get_best_size().x
-			: -item(index).get_best_size().x;
-
-	best_size.x += item_width;
-	this->set_layout_size(best_size);
-}
-
 void thorizontal_list::create_item(const unsigned /*index*/)
 {
 	if(!placed_) {
@@ -305,17 +294,6 @@ void thorizontal_list::handle_key_right_arrow(
 tvertical_list::tvertical_list()
 	: placed_(false)
 {
-}
-
-void tvertical_list::set_item_shown(const unsigned index, const bool show)
-{
-	tpoint best_size = this->get_best_size();
-	const int item_height = show
-			?  item(index).get_best_size().y
-			: -item(index).get_best_size().y;
-
-	best_size.y += item_height;
-	this->set_layout_size(best_size);
 }
 
 void tvertical_list::create_item(const unsigned /*index*/)

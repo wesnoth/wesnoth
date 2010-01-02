@@ -102,7 +102,7 @@ public:
 	/**
 	 * Shows or hides an item.
 	 *
-	 * The caller is resposible for reformatting the grid.
+	 * The caller is responsible for reformatting the grid.
 	 *
 	 * @param index               The item to show or hide.
 	 * @param show                If true shows the item, else hides it.
