@@ -99,14 +99,15 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 		controller_ = parent_->default_controller_;
 	} else {
 		size_t i = CNTR_NETWORK;
-		// If player isn't allowed, network controller doesn't make sense
-		if (!allow_player_)
+		if(!allow_player_)
 		{
-			cfg_["controller"] = controller_names[CNTR_COMPUTER];
-			controller_ = static_cast<mp::controller>(CNTR_COMPUTER); // Set to ai
-		}
-		else
-		{
+			if(cfg_["controller"] == "null") {
+				controller_ = CNTR_EMPTY;
+			} else {
+				cfg_["controller"] = controller_names[CNTR_COMPUTER];
+				controller_ = static_cast<mp::controller>(CNTR_COMPUTER);
+			}
+		} else {
 			if (cfg_["controller"] == "network"
 					|| cfg_["controller"] == "human")
 			{
