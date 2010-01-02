@@ -1634,7 +1634,7 @@ void connect::update_and_send_diff(bool update_time_of_day)
 	}
 }
 
-bool connect::sides_available()
+bool connect::sides_available() const
 {
 	for(side_list::const_iterator itor = sides_.begin(); itor != sides_.end(); ++itor) {
 		if (itor->available())

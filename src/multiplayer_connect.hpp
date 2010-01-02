@@ -229,7 +229,7 @@ private:
 	void update_and_send_diff(bool update_time_of_day = false);
 
 	/** Returns true if there still are sides available for this game. */
-	bool sides_available();
+	bool sides_available() const;
 
 	/**
 	 * Updates the state of the player list, the launch button and of the start
