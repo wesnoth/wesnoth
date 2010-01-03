@@ -245,9 +245,15 @@ std::string file_menu::add_path(const std::string& path, const std::string& to_a
 				joined_path += to_add;
 		}
 #endif
-		else if (to_add[0] == path_delim) {
-			joined_path += to_add;
+#ifdef _WIN32
+		else if (to_add.size() > 1 && to_add[1] == ':') {
+			joined_path = to_add;
 		}
+#else
+		else if (to_add[0] == path_delim) {
+			joined_path = to_add;
+		}
+#endif
 		else {
 			joined_path += "/" + to_add;
 		}
