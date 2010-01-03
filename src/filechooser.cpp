@@ -18,6 +18,7 @@
 
 #include "display.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/transient_message.hpp"
 #include "filechooser.hpp"
 #include "widgets/file_menu.hpp"
 
@@ -189,8 +190,8 @@ void file_dialog::action(gui::dialog_process_info &dp_info) {
 		if(!chosen_file_.empty())
 		{
 			if(files_list_->delete_chosen_file() == -1) {
-				gui::message_dialog d(get_display(), _("Deletion of the file failed."));
-				d.show();
+				gui2::show_transient_error_message(get_display().video()
+						, _("Deletion of the file failed."));
 				dp_info.clear_buttons();
 			} else {
 				dp_info.first_time = true;
@@ -207,8 +208,8 @@ void file_dialog::action(gui::dialog_process_info &dp_info) {
 		if(d.result() != gui::CLOSE_DIALOG && !d.textbox_text().empty())
 		{
 			if( !files_list_->make_directory(d.textbox_text()) ) {
-				gui::message_dialog d2(get_display(), _("Creation of the directory failed."));
-				d2.show();
+				gui2::show_transient_error_message(get_display().video()
+						, _("Creation of the directory failed."));
 			} else {
 				dp_info.first_time = true;
 			}
