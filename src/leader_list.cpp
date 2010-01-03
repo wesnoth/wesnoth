@@ -153,7 +153,7 @@ void leader_list_manager::update_gender_list(const std::string& leader)
 		}
 		if (gender_combo_ != NULL) {
 			gender_combo_->set_items(genders_);
-			assert(genders_.size()!=0);
+			assert(!genders_.empty());
 			gender_index %= genders_.size();
 			gender_combo_->set_selected(gender_index);
 		}
