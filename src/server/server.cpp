@@ -577,7 +577,7 @@ void server::run() {
 		ntime::source::get_source().start_frame();
 		try {
 			// We are going to waith 10 seconds before shutting down so users can get out of game.
-			if (graceful_restart && games_.size() == 0 && ++graceful_counter > 500 )
+			if (graceful_restart && games_.empty() && ++graceful_counter > 500 )
 			{
 				// TODO: We should implement client side autoreconnect.
 				// Idea:
