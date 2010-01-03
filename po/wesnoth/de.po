@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-01-02 13:54+0100\n"
-"PO-Revision-Date: 2009-11-18 20:55+0100\n"
+"POT-Creation-Date: 2010-01-02 14:15+0100\n"
+"PO-Revision-Date: 2010-01-02 15:38+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -368,9 +368,8 @@ msgstr "Englische (GB) Übersetzung"
 
 #. [about]
 #: data/core/about.cfg:1357
-#, fuzzy
 msgid "English (Shaw) Translation"
-msgstr "Englische (GB) Übersetzung"
+msgstr "Englische (Shaw) Transliteration"
 
 #. [about]
 #: data/core/about.cfg:1381
@@ -2118,8 +2117,8 @@ msgstr ""
 "\n"
 "Vitale Einheiten erhalten 1 LP zu Beginn sowie 1 LP pro Stufe zusätzlich. "
 "Zudem regenerieren sie nach einem Zug, in dem sie nicht gekämpft haben, 2 LP "
-"zusätzlich zur normalen Heilung durch Rasten. Außerdem erleiden sie ein "
-"Viertel weniger Schaden, wenn sie vergiftet wurden."
+"als würden sie rasten. Außerdem erleiden sie ein Viertel weniger Schaden, "
+"wenn sie vergiftet wurden."
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:447
@@ -2952,7 +2951,6 @@ msgstr "Mehrspieler Kommandos"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:810
-#, fuzzy
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -2962,7 +2960,9 @@ msgid ""
 msgstr ""
 "\n"
 "Verbannt die dem Namen des Spielers zugeordnete IP-Adresse aus dem "
-"Mehrspielermodus und wirft ihn vom Server.\n"
+"Mehrspielermodus und wirft ihn aus dem Spiel. Kann auf Spieler angewandt "
+"werden, die sich nicht im Spiel aber auf dem Server befinden. (Sie werden "
+"dann nicht aus dem Spiel geworfen.)\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -3028,7 +3028,6 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:825
-#, fuzzy
 msgid ""
 "\n"
 "Unban a user in a multiplayer game by the IP address used by that username. "
@@ -3036,8 +3035,9 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Verbannt die dem Namen des Spielers zugeordnete IP-Adresse aus dem "
-"Mehrspielermodus und wirft ihn vom Server.\n"
+"Hebt die Verbannung einer dem Namen des Spielers zugeordneten IP-Adresse für "
+"eine Mehrspielerpartie auf. Er muss nicht an einem Spiel teilnehmen, aber "
+"sich auf dem Server befinden.\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -3671,6 +3671,8 @@ msgstr ""
 #: data/core/macros/ai.cfg:438
 msgid "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
 msgstr ""
+"Bittet $ally_leader.name (Anführer der Fraktion $ally_leader.side) sich "
+"hierher zu bewegen"
 
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:144
@@ -3863,20 +3865,21 @@ msgstr "Spezielle Befehle erteilen..."
 
 #: data/core/macros/ai_controller.cfg:1048
 msgid "Move leader to..."
-msgstr ""
+msgstr "Sendet den Anführer nach..."
 
 #: data/core/macros/ai_controller.cfg:1049
-#, fuzzy
 msgid "Right-click to select a location to move leader to"
-msgstr "Wählt mit einem Rechtsklick jenen Ort aus, welchen ich beschützen soll"
+msgstr ""
+"Wählt mit einem Rechtsklick jenen Ort aus, zu dem der Anführer entsandt "
+"werden soll"
 
 #: data/core/macros/ai_controller.cfg:1050
 msgid "Move leader here"
-msgstr ""
+msgstr "Sendet den Anführer hierher"
 
 #: data/core/macros/ai_controller.cfg:1051
 msgid "moving leader to $x1|,$y1|."
-msgstr ""
+msgstr "sende Anführer nach $x1|,$y1|."
 
 #: data/core/macros/ai_controller.cfg:1052
 msgid "Clear special orders"
@@ -5295,7 +5298,7 @@ msgstr "vital"
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:133
 msgid "Always rest heals"
-msgstr ""
+msgstr "Rastet auch nach Bewegung"
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:150 data/core/macros/traits.cfg:163
@@ -8125,7 +8128,7 @@ msgstr "Information: "
 
 #: src/game_events.cpp:3268
 msgid "[unit_worth]'s filter didn't match any units!"
-msgstr ""
+msgstr "Der Filter [unit_worth] hat keine Einheiten gefunden!"
 
 #: src/generate_report.cpp:128
 msgid "invisible: "
@@ -8817,6 +8820,8 @@ msgstr ""
 #: src/menu_events.cpp:2217
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr ""
+"Hebt die Verbannung eines Spielers auf. Er muss nicht an einem Spiel "
+"teilnehmen, aber sich auf dem Server befinden."
 
 #: src/menu_events.cpp:2220
 msgid "Kick a player or observer."
@@ -8927,7 +8932,7 @@ msgstr "Sendet eine Nachricht an einen Raum."
 
 #: src/menu_events.cpp:2282
 msgid "Room query."
-msgstr ""
+msgstr "Raumabfrage."
 
 #: src/menu_events.cpp:2411
 msgid "Refresh gui."
@@ -9634,7 +9639,7 @@ msgstr "Verbleibende Zeit für den aktuellen Zug"
 
 #: src/play_controller.cpp:201 src/replay_controller.cpp:136
 msgid "current local time"
-msgstr ""
+msgstr "Aktuelle Systemzeit"
 
 #: src/play_controller.cpp:239
 msgid "Starting game"
@@ -9682,9 +9687,8 @@ msgid "$name has taken control"
 msgstr "$name hat die Kontrolle übernommen"
 
 #: src/playmp_controller.cpp:96
-#, fuzzy
 msgid "Turn changed"
-msgstr "Fernkampf"
+msgstr "Nächster Spieler am Zug"
 
 #: src/playmp_controller.cpp:228
 msgid "Undoing moves not yet transmitted to the server."

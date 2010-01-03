@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-01-02 13:54+0100\n"
-"PO-Revision-Date: 2009-11-18 19:42+0100\n"
+"POT-Creation-Date: 2010-01-02 14:15+0100\n"
+"PO-Revision-Date: 2010-01-02 15:45+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -934,7 +934,7 @@ msgstr "x"
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_save_oos.cfg:52
 msgid "OOS error"
-msgstr ""
+msgstr "Synchronisationsfehler"
 
 #. [toggle_button]: id=ignore_all
 #: data/gui/default/window/game_save_oos.cfg:134
@@ -975,7 +975,7 @@ msgstr "Wert"
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:114
 msgid "Inspection window"
-msgstr ""
+msgstr "Inspektor"
 
 #. [label]: id=unit_type
 #. [label]: id=typename
@@ -1037,9 +1037,8 @@ msgstr "Vorgaben nutzen"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:178
-#, fuzzy
 msgid "Reloaded game"
-msgstr "Partie eröffnen"
+msgstr "Spiel neu geladen"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:179
@@ -1217,7 +1216,7 @@ msgstr "Status überprüfen"
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:147
 msgid "Kick / ban reason:"
-msgstr ""
+msgstr "Grund für Rauswurf / Verbannung:"
 
 #. [button]: id=kick
 #: data/gui/default/window/lobby_player_info.cfg:160
@@ -1228,13 +1227,12 @@ msgstr "Vom Server werfen"
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:167
 msgid "Ban time:"
-msgstr ""
+msgstr "Verbannungszeit:"
 
 #. [button]: id=kick_ban
 #: data/gui/default/window/lobby_player_info.cfg:180
-#, fuzzy
 msgid "Kick/ban"
-msgstr "Vom Server werfen"
+msgstr "Vom Server werfen/Bannen"
 
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
@@ -2144,7 +2142,7 @@ msgstr "Version: "
 
 #: src/gui/dialogs/lobby_main.cpp:170
 msgid "whisper to $receiver"
-msgstr ""
+msgstr "an $receiver senden"
 
 #: src/gui/dialogs/lobby_main.cpp:454
 msgid "Games: showing $num_shown out of $num_total"
