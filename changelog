@@ -12,6 +12,8 @@ Version 1.7.11+svn:
    * Convert several old style message dialog to the new style
    * Allow listboxes to add rows at every place instead of at the end only
  * Miscellaneous and bugfixes:
+   * Fix errors in tutorial when the player unexpectedly kills certain enemy
+     units in scenario 2 (bug #15037)
    * Fix scrolling during animation (bug 13106)
    * Fix drakes tipping their wings in the water when flying
    * Fix some assertion failures when showing/hiding listbox items
