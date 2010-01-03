@@ -77,6 +77,21 @@ void show_transient_message(CVideo& video, const std::string& title,
 	bool message_use_markup = false,
 	bool title_use_markup = false);
 
+/**
+ * Shows a transient error message to the user.
+ *
+ * This shows a dialog with a short message which can be dismissed with a
+ * single click.
+ *
+ * @param video               The video which contains the surface to draw
+ *                            upon.
+ * @param message             The message to show in the dialog.
+ * @param message_use_markup  Use markup for the message?
+ */
+void show_transient_error_message(CVideo& video
+		, const std::string& message
+		, bool message_use_markup = false);
+
 } // namespace gui2
 
 #endif

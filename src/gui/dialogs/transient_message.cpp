@@ -16,8 +16,10 @@
 
 #include "gui/dialogs/transient_message.hpp"
 
+#include "gettext.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/window.hpp"
+#include "log.hpp"
 
 namespace gui2 {
 
@@ -44,6 +46,14 @@ void show_transient_message(CVideo& video, const std::string& title,
 	ttransient_message dlg(title, title_use_markup,
 			message, message_use_markup);
 	dlg.show(video);
+}
+
+void show_transient_error_message(CVideo& video
+		, const std::string& message
+		, bool message_use_markup)
+{
+	LOG_STREAM(err, lg::general) << message << '\n';
+	show_transient_message(video, _("Error"), message, message_use_markup);
 }
 
 } // namespace gui2
