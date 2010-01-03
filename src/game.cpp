@@ -44,6 +44,7 @@
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/mp_method_selection.hpp"
 #include "gui/dialogs/title_screen.hpp"
+#include "gui/dialogs/transient_message.hpp"
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 #include "gui/widgets/debug.hpp"
 #endif
@@ -1329,18 +1330,14 @@ bool game_controller::play_multiplayer()
 	} catch(network::error& e) {
 		if(e.message != "") {
 			ERR_NET << "caught network::error: " << e.message << "\n";
-			/* GCC-3.3 needs a temp var otherwise compilation fails */
-			gui::dialog dlg(disp(),"",e.message,gui::OK_ONLY);
-			dlg.show();
+			gui2::show_transient_message(disp().video(), "", e.message);
 		} else {
 			ERR_NET << "caught network::error\n";
 		}
 	} catch(config::error& e) {
 		if(e.message != "") {
 			ERR_CONFIG << "caught config::error: " << e.message << "\n";
-			/* GCC-3.3 needs a temp var otherwise compilation fails */
-			gui::dialog dlg2(disp(),"",e.message,gui::OK_ONLY);
-			dlg2.show();
+			gui2::show_transient_message(disp().video(), "", e.message);
 		} else {
 			ERR_CONFIG << "caught config::error\n";
 		}
