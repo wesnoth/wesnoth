@@ -104,7 +104,7 @@ static wide_string markov_generate_name(const markov_prefix_map& prefixes,
 	// originally generated name.
 	wide_string originalRes = res;
 	int prefixLen;
-	while (res.size() > 0) {
+	while(!res.empty()) {
 		prefixLen = chain_size < res.size() ? chain_size : res.size();
 		prefix = wide_string(res.end() - prefixLen, res.end());
 
