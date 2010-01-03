@@ -240,7 +240,7 @@ namespace game_config
 				team_rgb_name[id] = (**teamC)["name"];
 				//generate palette of same name;
 				std::vector<Uint32> tp = palette(team_rgb_range[id]);
-				if(tp.size()){
+				if(!tp.empty()){
 					team_rgb_colors.insert(std::make_pair(id,tp));
 					//if this is being used, output log of palette for artists use.
 					DBG_NG << "color palette creation:\n";
