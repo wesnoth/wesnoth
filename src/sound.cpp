@@ -237,7 +237,7 @@ static std::string pick_one(const std::string &files)
 {
 	std::vector<std::string> ids = utils::split(files);
 
-	if (ids.size() == 0)
+	if (ids.empty())
 		return "";
 	if (ids.size() == 1)
 		return ids[0];
