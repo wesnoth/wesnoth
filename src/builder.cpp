@@ -719,7 +719,7 @@ void terrain_builder::add_rotated_rules(building_ruleset& rules, building_rule& 
 	} else {
 		const std::vector<std::string>& rot = utils::split(rotations, ',');
 
-		for(size_t angle = 0; angle < rot.size(); angle++) {
+		for(size_t angle = 0; angle < rot.size(); ++angle) {
 			building_rule rule = rotate_rule(tpl, angle, rot);
 			add_rule(rules, rule, precedence);
 		}
@@ -782,7 +782,7 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 				std::pair<anchormap::const_iterator, anchormap::const_iterator> range =
 					anchors.equal_range(pos);
 
-				for(; range.first != range.second; range.first++) {
+				for(; range.first != range.second; ++range.first) {
 					loc = range.first->second;
 					add_constraints(pbr.constraints, loc, tc, br);
 				}
@@ -794,7 +794,7 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 		const std::string global_has_flag = br["has_flag"];
 
 		for(constraint_set::iterator constraint = pbr.constraints.begin(); constraint != pbr.constraints.end();
-		    constraint++) {
+		    ++constraint) {
 
 			if(global_set_flag.size())
 				constraint->second.set_flag.push_back(global_set_flag);
@@ -954,7 +954,7 @@ void terrain_builder::apply_rule(const terrain_builder::building_rule &rule, con
 
 		// Sets flags
 		for(std::vector<std::string>::const_iterator itor = constraint->second.set_flag.begin();
-				itor != constraint->second.set_flag.end(); itor++) {
+				itor != constraint->second.set_flag.end(); ++itor) {
 			btile.flags.insert(*itor);
 		}
 
@@ -997,7 +997,7 @@ void terrain_builder::build_terrains()
 			size_t constraint_size = 0;
 
 			for (terrain_by_type_map::iterator type_it = terrain_by_type_.begin();
-					 type_it != terrain_by_type_.end(); type_it++) {
+					 type_it != terrain_by_type_.end(); ++type_it) {
 
 				const t_translation::t_terrain t = type_it->first;
 				if (terrain_matches(t, match)) {
@@ -1038,6 +1038,6 @@ void terrain_builder::build_terrains()
 			}
 		}
 
-		rule_index++;
+		++rule_index;
 	}
 }
