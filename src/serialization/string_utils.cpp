@@ -141,9 +141,9 @@ std::vector< std::string > paranthetical_split(std::string const &val,
 			i1=i2;
 			continue;
 		}
-		if(part.size() && *i2 == part.back()){
+		if(!part.empty() && *i2 == part.back()){
 			part.pop_back();
-			if(!separator && part.size() == 0){
+			if(!separator && part.empty()){
 				std::string new_val(i1, i2);
 				if (flags & STRIP_SPACES)
 					strip(new_val);
@@ -151,7 +151,7 @@ std::vector< std::string > paranthetical_split(std::string const &val,
 				++i2;
 				i1=i2;
 			}else{
-				if (part.size() == 0)
+				if (part.empty())
 					in_paranthesis = false;
 				++i2;
 			}
@@ -160,7 +160,7 @@ std::vector< std::string > paranthetical_split(std::string const &val,
 		bool found=false;
 		for(size_t i=0; i < lp.size(); i++){
 			if (*i2 == lp[i]){
-				if (!separator && part.size()==0){
+				if (!separator && part.empty()){
 					std::string new_val(i1, i2);
 					if (flags & STRIP_SPACES)
 						strip(new_val);
@@ -187,7 +187,7 @@ std::vector< std::string > paranthetical_split(std::string const &val,
 	if (!(flags & REMOVE_EMPTY) || !new_val.empty())
 		res.push_back(new_val);
 
-	if(part.size()){
+	if(!part.empty()){
 			ERR_GENERAL << "Mismatched paranthesis:\n"<<val<<"\n";;
 	}
 
