@@ -1210,7 +1210,7 @@ bool show_theme_dialog(display& disp)
 {
 	int action = 0;
 	std::vector<std::string> options = disp.get_theme().get_known_themes();
-	if(options.size()){
+	if(!options.empty()){
 		std::string current_theme=_("Saved Theme Preference: ")+preferences::theme();
 		action = gui::show_dialog(disp,NULL,"",current_theme,gui::OK_CANCEL,&options);
 		if(action >= 0){

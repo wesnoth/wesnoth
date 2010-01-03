@@ -284,7 +284,7 @@ const std::vector<game_config::server_info>& server_list()
 	static std::vector<game_config::server_info> pref_servers;
 	if(pref_servers.empty()) {
 		std::vector<game_config::server_info> &game_servers = game_config::server_list;
-		VALIDATE(game_servers.size() > 0, _("No server has been defined."));
+		VALIDATE(!game_servers.empty(), _("No server has been defined."));
 		pref_servers.insert(pref_servers.begin(), game_servers.begin(), game_servers.end());
 		foreach (const config &server, get_prefs()->child_range("server")) {
 			game_config::server_info sinf;
