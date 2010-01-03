@@ -1115,7 +1115,7 @@ formula::formula(const std::string& str, function_symbol_table* symbols) :
 		throw formula_error("Missing 'faiend', make sure each .fai file ends with it", "", "", 0);
 	}
 
-	if(tokens.size() != 0) {
+	if(!tokens.empty()) {
 		expr_ = parse_expression(&tokens[0],&tokens[0] + tokens.size(), symbols);
 	} else {
 		expr_ = expression_ptr(new null_expression());
