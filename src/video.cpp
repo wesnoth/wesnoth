@@ -153,7 +153,7 @@ static void calc_rects()
 					unsigned h = next->first - y;
 					SDL_Rect a = {x, y, w, h};
 
-					if (update_rects.size() == 0) {
+					if (update_rects.empty()) {
 						update_rects.push_back(a);
 					} else {
 						SDL_Rect& p = update_rects.back(), n;
