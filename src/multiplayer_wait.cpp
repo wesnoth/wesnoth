@@ -17,6 +17,7 @@
 #include "dialogs.hpp"
 #include "foreach.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/transient_message.hpp"
 #include "game_display.hpp"
 #include "leader_list.hpp"
 #include "log.hpp"
@@ -389,9 +390,9 @@ void wait::process_network_data(const config& data, const network::connection so
 	ui::process_network_data(data, sock);
 
 	if(data["message"] != "") {
-		/* GCC-3.3 needs a temp var otherwise compilation fails */
-		gui::dialog dlg(disp(),_("Response"),data["message"],gui::OK_ONLY);
-		dlg.show();
+		gui2::show_transient_message(disp().video()
+				, _("Response")
+				, data["message"]);
 	}
 	if(data["failed"] == "yes") {
 		set_result(QUIT);
