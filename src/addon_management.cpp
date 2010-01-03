@@ -507,11 +507,14 @@ namespace {
 				"$addon_title depends upon the following add-ons which you have not installed yet:",
 				count_missing), &symbols);
 			std::string msg_reminder = utils::interpolate_variables_into_string(_("Do you still want to download $addon_title|? (You will have to install all the dependencies in order to play.)"), &symbols);
-			/* GCC-3.3 needs a temp var otherwise compilation fails */
-			gui::dialog dlg(disp, msg_title, msg_entrytxt + "\n \n" + missing +
-			                "\n \n" + msg_reminder, gui::OK_CANCEL);
-			if (dlg.show())
+
+			if(gui2::show_message(disp.video()
+					, msg_title
+					, msg_entrytxt + "\n \n" + missing + "\n \n" + msg_reminder
+					, gui2::tmessage::ok_cancel_buttons) == gui2::twindow::OK) {
+
 				return false;
+			}
 		}
 		return true;
 	}
@@ -534,10 +537,12 @@ namespace {
 			gui2::show_error_message(disp.video(), error_message);
 			return;
 		} else if (const config &c = data.child("message")) {
-			/* GCC-3.3 needs a temp var otherwise compilation fails */
-			gui::dialog dlg(disp,_("Terms"), c["message"], gui::OK_CANCEL);
-			const int res = dlg.show();
-			if(res != 0) {
+
+			if(gui2::show_message(disp.video()
+					,_("Terms")
+					, c["message"]
+					, gui2::tmessage::ok_cancel_buttons) != gui2::twindow::OK) {
+
 				return;
 			}
 		}
@@ -781,15 +786,17 @@ namespace {
 				"An outdated local add-on has publishing information attached. It will not be offered for updating.",
 				"Some outdated local add-ons have publishing information attached. They will not be offered for updating.",
 				unsafe_matches.size());
-			/* GCC-3.3 needs a temp var otherwise compilation fails */
-			gui::dialog dlg(disp, warn_title, warn_entrytxt + unsafe_list.str(), gui::MESSAGE);
-			dlg.show();
+
+			gui2::show_transient_message(disp.video()
+					, warn_title
+					, warn_entrytxt + unsafe_list.str());
 		}
 
 		if(safe_matches.empty()) {
-			gui::dialog dlg(disp, _("No add-ons to update"), _("Could not find any updated add-ons on this server."),
-			                gui::MESSAGE);
-			dlg.show();
+
+			gui2::show_transient_message(disp.video()
+					, _("No add-ons to update")
+					, _("Could not find any updated add-ons on this server."));
 			return;
 		}
 
@@ -930,18 +937,16 @@ namespace {
 				_n("The following add-on could not be downloaded or updated successfully:",
 				   "The following add-ons could not be downloaded or updated successfully:",
 				   failed_titles.size()) + failed_titles_list_fmt;
-			/* GCC-3.3 needs a temp var otherwise compilation fails */
-			gui::dialog err_dlg(disp, err_title, err_message, gui::MESSAGE);
-			err_dlg.show();
+
+			gui2::show_message(disp.video(), err_title, err_message);
 			return;
 		}
 
 		const std::string msg_title = _("Update succeeded");
 		const std::string msg_message = !upd_all ? _("Add-on updated successfully.") :
 		                                           _("All add-ons updated successfully.");
-		/* GCC-3.3 needs a temp var otherwise compilation fails */
-		gui::dialog msg_dlg(disp, msg_title, msg_message, gui::MESSAGE);
-		msg_dlg.show();
+
+		gui2::show_message(disp.video(), msg_title, msg_message);
 	}
 
 	void download_addons(game_display& disp, const std::string& remote_address,
@@ -1208,10 +1213,12 @@ namespace {
 			utils::string_map symbols;
 			symbols["addon"] = addons.at(index);
 			confirm_message = utils::interpolate_variables_into_string(confirm_message, &symbols);
-			/* GCC-3.3 needs a temp var otherwise compilation fails */
-			gui::dialog confirm_dlg(disp, _("Confirm"), confirm_message, gui::YES_NO);
-			res = confirm_dlg.show();
-		} while (res != 0);
+
+			res = gui2::show_message(disp.video()
+					, _("Confirm")
+					, confirm_message
+					, gui2::tmessage::yes_no_buttons);
+		} while (res != gui2::twindow::OK);
 
 		// Put underscores back in the name
 		std::string addon_id = addons.at(index);
@@ -1225,9 +1232,9 @@ namespace {
 			utils::string_map symbols;
 			symbols["addon"] = addons.at(index);
 			message = utils::interpolate_variables_into_string(message, &symbols);
-			/* GCC-3.3 needs a temp var otherwise compilation fails */
-			gui::dialog dlg(disp, _("Add-on deleted"), message, gui::OK_ONLY);
-			dlg.show();
+			gui2::show_transient_message(disp.video()
+					, _("Add-on deleted")
+					, message);
 
 			if(should_reload_cfg != NULL)
 				*should_reload_cfg = true;
