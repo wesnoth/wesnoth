@@ -604,7 +604,7 @@ int battle_context::choose_defender_weapon(const unit &attacker, const unit &def
 			choices.push_back(i);
 		}
 	}
-	if (choices.size() == 0)
+	if (choices.empty())
 		return -1;
 	if (choices.size() == 1)
 		return choices[0];
@@ -692,7 +692,7 @@ int battle_context::choose_attacker_weapon(const unit &attacker, const unit &def
 			choices.push_back(i);
 		}
 	}
-	if (choices.size() == 0)
+	if (choices.empty())
 		return -1;
 	if (choices.size() == 1) {
 		*defender_weapon = choose_defender_weapon(attacker, defender, choices[0], units,
@@ -1807,7 +1807,7 @@ void calculate_healing(int side, bool update_display)
 			healers.push_back(units.find(heal_loc->loc));
 		}
 
-		if (healers.size() > 0) {
+		if (!healers.empty()) {
 			DBG_NG << "Unit has " << healers.size() << " potential healers\n";
 		}
 
@@ -1880,7 +1880,7 @@ void calculate_healing(int side, bool update_display)
 			healing = neg_max;
 		}
 
-		if (healers.size() > 0) {
+		if (!healers.empty()) {
 			DBG_NG << "Just before healing animations, unit has " << healers.size() << " potential healers\n";
 		}
 
