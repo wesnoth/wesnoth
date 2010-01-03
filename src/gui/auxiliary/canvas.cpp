@@ -653,7 +653,8 @@ timage::timage(const config& cfg)
  *                                     to the others. (Note this mode is
  *                                     deprecated, use resize_mode instead.)
  *     resize_mode (resize_mode = scale)
- *                                     Determin
+ *                                     Determines how an image is scaled to fit
+ *                                     the wanted size.
  *     vertical_mirror (f_bool = false)
  *                                     Mirror the image over the vertical axis.
  *     name (f_string = "")            The name of the image.
