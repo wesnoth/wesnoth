@@ -52,8 +52,13 @@ public:
 	 * When an item in the list is selected by the user we need to
 	 * update the state. We installed a callback handler which
 	 * calls us.
+	 *
+	 * @param item                The data send to the set_members of the
+	 *                            widgets.
+	 * @param index               The item before which to add the new item,
+	 *                            0 == begin, -1 == end.
 	 */
-	void add_row(const string_map& item);
+	void add_row(const string_map& item, const int index = -1);
 
 	/**
 	 * Adds single row to the grid.
@@ -69,9 +74,12 @@ public:
 	 *                            empty string, it is send to all members.
 	 *                            Having both empty and non-empty id's gives
 	 *                            undefined behaviour.
+	 * @param index               The item before which to add the new item,
+	 *                            0 == begin, -1 == end.
 	 */
-	void add_row(const std::map<std::string /* widget id */,
-			string_map>& data);
+	void add_row(
+			  const std::map<std::string /* widget id */, string_map>& data
+			, const int index = -1);
 
 	/**
 	 * Removes a row in the listbox.

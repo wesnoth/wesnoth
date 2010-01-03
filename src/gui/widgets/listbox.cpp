@@ -40,19 +40,20 @@ tlistbox::tlistbox(const bool has_minimum, const bool has_maximum,
 			has_minimum, has_maximum, placement, select);
 }
 
-void tlistbox::add_row(const string_map& item)
+void tlistbox::add_row(const string_map& item, const int index)
 {
 	assert(generator_);
 	generator_->create_item(
-			-1, list_builder_, item, callback_list_item_clicked);
+			index, list_builder_, item, callback_list_item_clicked);
 }
 
 void tlistbox::add_row(
-		const std::map<std::string /* widget id */, string_map>& data)
+		  const std::map<std::string /* widget id */, string_map>& data
+		, const int index)
 {
 	assert(generator_);
 	generator_->create_item(
-			-1, list_builder_, data, callback_list_item_clicked);
+			index, list_builder_, data, callback_list_item_clicked);
 }
 
 void tlistbox::remove_row(const unsigned row, unsigned count)
