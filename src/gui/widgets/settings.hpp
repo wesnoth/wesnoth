@@ -342,22 +342,6 @@ struct ttooltip_definition : public tcontrol_definition
 	};
 };
 
-struct tvertical_scrollbar_definition : public tcontrol_definition
-{
-	tvertical_scrollbar_definition(const config& cfg);
-
-	struct tresolution : public tresolution_definition_
-	{
-		tresolution(const config& cfg);
-
-		unsigned minimum_positioner_length;
-		unsigned maximum_positioner_length;
-
-		unsigned top_offset;
-		unsigned bottom_offset;
-	};
-};
-
 struct twindow_definition
 	: public tcontrol_definition
 {

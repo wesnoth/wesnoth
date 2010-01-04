@@ -106,6 +106,7 @@ wesnoth_source = \
 	gui/auxiliary/log.cpp \
 	gui/auxiliary/timer.cpp \
 	gui/auxiliary/widget_definition.cpp \
+	gui/auxiliary/widget_definition/vertical_scrollbar.cpp \
 	gui/auxiliary/window_builder/button.cpp \
 	gui/auxiliary/window_builder/control.cpp \
 	gui/auxiliary/window_builder/helper.cpp \

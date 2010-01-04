@@ -16,7 +16,7 @@
 
 #include "gui/widgets/vertical_scrollbar.hpp"
 
-
+#include "gui/auxiliary/widget_definition/vertical_scrollbar.hpp"
 
 namespace gui2 {
 
