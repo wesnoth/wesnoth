@@ -16,9 +16,10 @@
 
 #include "gui/auxiliary/widget_definition.hpp"
 
-#include "config.hpp"
+#include "gettext.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/widgets/helper.hpp"
+#include "wml_exception.hpp"
 
 namespace gui2 {
 
@@ -94,6 +95,47 @@ tresolution_definition_::tresolution_definition_(const config& cfg) :
 
 	DBG_GUI_P << "Parsing resolution "
 		<< window_width << ", " << window_height << '\n';
+}
+
+tcontrol_definition::tcontrol_definition(const config& cfg) :
+	id(cfg["id"]),
+	description(cfg["description"]),
+	resolutions()
+{
+
+/*WIKI
+ * @page = GUIWidgetDefinitionWML
+ * @order = 1
+ *
+ * THIS PAGE IS AUTOMATICALLY GENERATED, DO NOT MODIFY DIRECTLY !!!
+ *
+ * = Widget definition =
+ *
+ * This page describes the definition of all widgets in the toolkit. Every
+ * widget has some parts in common, first of all every definition has the
+ * following fields.
+ *
+ * @start_table = config
+ *     id (string)                   Unique id for this gui (theme).
+ *     description (t_string)        Unique translatable name for this gui.
+ *
+ *     resolution (section)          The definitions of the widget in various
+ *                                   resolutions.
+ * @end_table
+ *
+ */
+
+	VALIDATE(!id.empty(), missing_mandatory_wml_key("gui", "id"));
+	VALIDATE(!description.empty()
+			, missing_mandatory_wml_key("gui", "description"));
+
+	/*
+	 * Do this validation here instead of in load_resolutions so the
+	 * translatable string is not in the header and we don't need to pull in
+	 * extra header dependencies.
+	 */
+	config::const_child_itors itors = cfg.child_range("resolution");
+	VALIDATE(itors.first != itors.second, _("No resolution defined."));
 }
 
 } // namespace gui2

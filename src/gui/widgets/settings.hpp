@@ -85,27 +85,6 @@ enum twindow_type {
 
 const std::string& get_id(const twindow_type window_type);
 
-
-struct tcontrol_definition : public reference_counted_object
-{
-private:
-	tcontrol_definition();
-public:
-
-	tcontrol_definition(const config& cfg);
-
-	template<class T>
-	void load_resolutions(const config &resolution_list);
-
-	std::string id;
-	t_string description;
-
-	std::vector<tresolution_definition_ptr> resolutions;
-
-};
-
-typedef boost::intrusive_ptr<tcontrol_definition> tcontrol_definition_ptr;
-
 struct tbutton_definition : public tcontrol_definition
 {
 	tbutton_definition(const config& cfg);

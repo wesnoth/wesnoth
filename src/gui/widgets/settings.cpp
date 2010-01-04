@@ -415,49 +415,6 @@ void tgui_definition::load_definitions(
 		!= control_definition[definition_type].end(), msg);
 }
 
-tcontrol_definition::tcontrol_definition(const config& cfg) :
-	id(cfg["id"]),
-	description(cfg["description"]),
-	resolutions()
-{
-
-/*WIKI
- * @page = GUIWidgetDefinitionWML
- * @order = 1
- *
- * THIS PAGE IS AUTOMATICALLY GENERATED, DO NOT MODIFY DIRECTLY !!!
- *
- * = Widget definition =
- *
- * This page describes the definition of all widgets in the toolkit. Every
- * widget has some parts in common, first of all every definition has the
- * following fields.
- *
- * @start_table = config
- *     id (string)                   Unique id for this gui (theme).
- *     description (t_string)        Unique translatable name for this gui.
- *
- *     resolution (section)          The definitions of the widget in various
- *                                   resolutions.
- * @end_table
- *
- */
-
-	VALIDATE(!id.empty(), missing_mandatory_wml_key("gui", "id"));
-	VALIDATE(!description.empty(), missing_mandatory_wml_key("gui", "description"));
-
-}
-
-
-template<class T>
-void tcontrol_definition::load_resolutions(const config &cfg)
-{
-	config::const_child_itors itors = cfg.child_range("resolution");
-	VALIDATE(itors.first != itors.second, _("No resolution defined."));
-	foreach (const config &r, itors) {
-		resolutions.push_back(new T(r));
-	}
-}
 
 tstate_definition::tstate_definition(const config &cfg) :
 	canvas()

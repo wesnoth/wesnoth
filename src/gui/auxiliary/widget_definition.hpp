@@ -15,9 +15,9 @@
 #ifndef GUI_AUXILIARY_WIDGET_DEFINITION_HPP_INCLUDED
 #define GUI_AUXILIARY_WIDGET_DEFINITION_HPP_INCLUDED
 
+#include "config.hpp"
+#include "foreach.hpp"
 #include "gui/auxiliary/canvas.hpp"
-
-class config;
 
 namespace gui2 {
 
@@ -69,6 +69,28 @@ typedef
 typedef
 	boost::intrusive_ptr<const tresolution_definition_>
 	tresolution_definition_const_ptr;
+
+struct tcontrol_definition
+	: public reference_counted_object
+{
+	tcontrol_definition(const config& cfg);
+
+	template<class T>
+	void load_resolutions(const config &cfg)
+	{
+		config::const_child_itors itors = cfg.child_range("resolution");
+		foreach (const config &r, itors) {
+			resolutions.push_back(new T(r));
+		}
+	}
+
+	std::string id;
+	t_string description;
+
+	std::vector<tresolution_definition_ptr> resolutions;
+};
+
+typedef boost::intrusive_ptr<tcontrol_definition> tcontrol_definition_ptr;
 
 } // namespace gui2
 
