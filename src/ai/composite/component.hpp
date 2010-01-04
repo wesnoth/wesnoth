@@ -59,13 +59,13 @@ public:
 	template<typename X>
 	void register_vector_property(const std::string &property, std::vector< boost::shared_ptr<X> > &values_, boost::function2<void, std::vector< boost::shared_ptr<X> >&, const config&> construction_factory)
 	{
-	       	property_handlers_.insert(make_pair(property,property_handler_ptr(new vector_property_handler<X>(property,values_,construction_factory))));
+		property_handlers_.insert(std::make_pair(property,property_handler_ptr(new vector_property_handler<X>(property,values_,construction_factory))));
 	}
 
 	template<typename X>
 	void register_aspect_property(const std::string &property, std::map< std::string, boost::shared_ptr<X> > &aspects_)
 	{
-	       	property_handlers_.insert(make_pair(property,property_handler_ptr(new aspect_property_handler<X>(property,aspects_))));
+		property_handlers_.insert(std::make_pair(property,property_handler_ptr(new aspect_property_handler<X>(property,aspects_))));
 	}
 
 
