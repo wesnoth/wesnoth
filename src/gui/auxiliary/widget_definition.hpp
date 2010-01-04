@@ -30,10 +30,6 @@ namespace gui2 {
  */
 struct tstate_definition
 {
-private:
-	tstate_definition();
-
-public:
 	tstate_definition(const config &cfg);
 
 	tcanvas canvas;
@@ -41,11 +37,9 @@ public:
 
 
 /** Base class of a resolution, contains the common keys for a resolution. */
-struct tresolution_definition_ : public reference_counted_object
+struct tresolution_definition_
+	: public reference_counted_object
 {
-private:
-	tresolution_definition_();
-public:
 	tresolution_definition_(const config& cfg);
 
 	unsigned window_width;
