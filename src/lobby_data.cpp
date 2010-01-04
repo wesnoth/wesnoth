@@ -182,6 +182,7 @@ game_info::game_info(const config& game, const config& game_config)
 , have_era(true)
 , has_friends(false)
 , has_ignored(false)
+, filtered_out(false)
 {
 	std::string turn = game["turn"];
 	std::string slots = game["slots"];
@@ -541,14 +542,13 @@ void lobby_info::apply_game_filter()
 {
 	games_filtered_.clear();
 	foreach (game_info& gi, games_) {
+		bool filter_out = game_filter_.match(gi);
 		if (game_filter_invert_) {
-			if (!game_filter_.match(gi)) {
-				games_filtered_.push_back(&gi);
-			}
-		} else {
-			if (game_filter_.match(gi)) {
-				games_filtered_.push_back(&gi);
-			}
+			filter_out  = !filter_out;
+		}
+		gi.filtered_out = filter_out;
+		if (filter_out) {
+			games_filtered_.push_back(&gi);
 		}
 	}
 }

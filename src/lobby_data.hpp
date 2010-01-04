@@ -140,6 +140,8 @@ struct game_info
 
 	bool has_friends;
 	bool has_ignored;
+
+	bool filtered_out;
 };
 
 class game_filter_base : public std::unary_function<game_info, bool>

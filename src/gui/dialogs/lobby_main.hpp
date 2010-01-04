@@ -85,6 +85,8 @@ public:
 
 	void update_gamelist();
 
+	void update_gamelist_filter();
+
 	void update_playerlist();
 
 	enum legacy_result { QUIT, JOIN, OBSERVE, CREATE, PREFERENCES };

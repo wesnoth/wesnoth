@@ -454,8 +454,8 @@ void tlobby_main::update_gamelist()
 	std::string games_string = vgettext("Games: showing $num_shown out of $num_total", symbols);
 	find_widget<tlabel>(gamelistbox_, "map", false).set_label(games_string);
 	int select_row = -1;
-	for (unsigned i = 0; i < lobby_info_.games_filtered().size(); ++i) {
-		const game_info& game = *lobby_info_.games_filtered()[i];
+	for (unsigned i = 0; i < lobby_info_.games().size(); ++i) {
+		const game_info& game = lobby_info_.games()[i];
 		if (game.id == selected_game_id_) {
 			select_row = i;
 		}
@@ -568,6 +568,17 @@ void tlobby_main::update_gamelist()
 	update_selected_game();
 }
 
+void tlobby_main::update_gamelist_filter()
+{
+	lobby_info_.apply_game_filter();
+	assert(lobby_info_.games().size() == gamelistbox_->get_item_count());
+	for (unsigned i = 0; i < lobby_info_.games().size(); ++i) {
+		const game_info& game = lobby_info_.games()[i];
+		gamelistbox_->set_row_shown(i, !game.filtered_out);
+	}
+}
+
+
 void tlobby_main::update_playerlist()
 {
 	DBG_LB << "Playerlist update: " << lobby_info_.users().size() << "\n";
@@ -673,7 +684,7 @@ void tlobby_main::update_selected_game()
 	int idx = gamelistbox_->get_selected_row();
 	bool can_join = false, can_observe = false;
 	if (idx >= 0) {
-		const game_info& game = *lobby_info_.games_filtered()[idx];
+		const game_info& game = lobby_info_.games()[idx];
 		can_observe = game.can_observe();
 		can_join = game.can_join();
 		selected_game_id_ = game.id;
@@ -1232,7 +1243,7 @@ void tlobby_main::join_global_button_callback(gui2::twindow &window)
 
 void tlobby_main::join_or_observe(int idx)
 {
-	const game_info& game = *lobby_info_.games_filtered()[idx];
+	const game_info& game = lobby_info_.games()[idx];
 	if (do_game_join(idx, !game.can_join())) {
 		legacy_result_ = game.can_join() ? JOIN : OBSERVE;
 		window_->close();
@@ -1241,12 +1252,12 @@ void tlobby_main::join_or_observe(int idx)
 
 bool tlobby_main::do_game_join(int idx, bool observe)
 {
-	if (idx < 0 || idx > static_cast<int>(lobby_info_.games_filtered().size())) {
+	if (idx < 0 || idx > static_cast<int>(lobby_info_.games().size())) {
 		ERR_LB << "Requested join/observe of a game with index out of range: "
-			<< idx << ", games size is " << lobby_info_.games_filtered().size() << "\n";
+			<< idx << ", games size is " << lobby_info_.games().size() << "\n";
 		return false;
 	}
-	const game_info& game = *lobby_info_.games_filtered()[idx];
+	const game_info& game = lobby_info_.games()[idx];
 	if (observe) {
 		if (!game.can_observe()) {
 			ERR_LB << "Requested observe of a game with observers disabled\n";
@@ -1397,7 +1408,7 @@ bool tlobby_main::game_filter_keypress_callback(twidget* /*widget*/, SDLKey key,
 {
 	if (key == SDLK_RETURN || key == SDLK_KP_ENTER) {
 		game_filter_reload();
-		update_gamelist();
+		update_gamelist_filter();
 	}
 	return false;
 }
@@ -1405,7 +1416,7 @@ bool tlobby_main::game_filter_keypress_callback(twidget* /*widget*/, SDLKey key,
 void tlobby_main::game_filter_change_callback(gui2::twidget* /*widget*/)
 {
 	game_filter_reload();
-	update_gamelist();
+	update_gamelist_filter();
 }
 
 void tlobby_main::gamelist_change_callback(gui2::twindow &/*window*/)
@@ -1418,7 +1429,7 @@ void tlobby_main::player_filter_callback(gui2::twidget* /*widget*/)
 	player_list_.update_sort_icons();
 	preferences::set_playerlist_sort_relation(player_list_.sort_by_relation->get_value());
 	preferences::set_playerlist_sort_name(player_list_.sort_by_name->get_value());
-	update_gamelist();
+	update_gamelist_filter();
 }
 
 void tlobby_main::user_dialog_callback(user_info* info)
