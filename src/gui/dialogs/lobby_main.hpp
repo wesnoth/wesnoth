@@ -27,6 +27,7 @@ class display;
 
 namespace gui2 {
 
+class tgrid;
 class tlabel;
 class tlistbox;
 class ttext_box;
@@ -85,7 +86,18 @@ public:
 
 	void update_gamelist();
 
+protected:
+	void update_gamelist_header();
+
+	void update_gamelist_diff();
+
 	void update_gamelist_filter();
+
+	std::map<std::string, string_map> make_game_row_data(const game_info& game);
+
+	void adjust_game_row_contents(const game_info& game, tgrid* grid);
+
+public:
 
 	void update_playerlist();
 
@@ -367,6 +379,8 @@ private:
 
 	/** Wrapper for the preferences hotkey. */
 	boost::function<void()> preferences_wrapper_;
+
+	std::vector<int> gamelist_id_at_row_;
 };
 
 } // namespace gui2

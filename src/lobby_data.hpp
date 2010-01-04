@@ -142,6 +142,12 @@ struct game_info
 	bool has_ignored;
 
 	bool filtered_out;
+
+	enum game_display_status { CLEAN, NEW, UPDATED, DELETED };
+	game_display_status display_status;
+
+	const char* display_status_string() const;
+
 };
 
 class game_filter_base : public std::unary_function<game_info, bool>
@@ -193,7 +199,7 @@ public:
 };
 
 template <class T, T game_info::*member, class OP = std::equal_to<T> >
-class game_filter_value: public game_filter_base
+class game_filter_value : public game_filter_base
 {
 public:
 	game_filter_value(const T& value)
@@ -249,6 +255,8 @@ public:
 
 	void process_gamelist(const config &data);
 	bool process_gamelist_diff(const config &data);
+
+	void sync_games_display_status();
 
 	const config& gamelist() const { return gamelist_; }
 

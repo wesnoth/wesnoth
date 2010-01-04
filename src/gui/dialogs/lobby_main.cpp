@@ -309,6 +309,7 @@ tlobby_main::tlobby_main(const config& game_config
 	, disp_(disp)
 	, lobby_update_timer_(0)
 	, preferences_wrapper_()
+	, gamelist_id_at_row_()
 {
 }
 
@@ -424,6 +425,26 @@ void add_tooltip_data(std::map<std::string, string_map>& map,
 	map.insert(std::make_pair(key, item));
 }
 
+void modify_grid_with_data(tgrid* grid, const std::map<std::string, string_map>& map)
+{
+	typedef std::map<std::string, string_map> strstrmap;
+	foreach (const strstrmap::value_type v, map) {
+		const std::string& key = v.first;
+		const string_map& strmap = v.second;
+		twidget* w = grid->find(key, false);
+		if (w == NULL) continue;
+		tcontrol* c = dynamic_cast<tcontrol*>(w);
+		if (c == NULL) continue;
+		foreach (const string_map::value_type& vv, strmap) {
+			if (vv.first == "label") {
+				c->set_label(vv.second);
+			} else if (vv.first == "tooltip") {
+				c->set_tooltip(vv.second);
+			}
+		}
+	}
+}
+
 void set_visible_if_exists(tgrid* grid, const char* id, bool visible)
 {
 	twidget* w = grid->find(id, false);
@@ -447,125 +468,211 @@ std::string tag(const std::string& str, const std::string& tag)
 void tlobby_main::update_gamelist()
 {
 	gamelistbox_->clear();
+	gamelist_id_at_row_.clear();
 	lobby_info_.apply_game_filter();
-	utils::string_map symbols;
-	symbols["num_shown"] = lexical_cast<std::string>(lobby_info_.games_filtered().size());
-	symbols["num_total"] = lexical_cast<std::string>(lobby_info_.games().size());
-	std::string games_string = vgettext("Games: showing $num_shown out of $num_total", symbols);
-	find_widget<tlabel>(gamelistbox_, "map", false).set_label(games_string);
+	update_gamelist_header();
 	int select_row = -1;
 	for (unsigned i = 0; i < lobby_info_.games().size(); ++i) {
 		const game_info& game = lobby_info_.games()[i];
 		if (game.id == selected_game_id_) {
 			select_row = i;
 		}
-		std::map<std::string, string_map> data;
-
-		const char* color_string;
-		if (game.vacant_slots > 0) {
-			if (game.reloaded || game.started) {
-				color_string = "yellow";
-			} else {
-				color_string = "green";
-			}
-		} else {
-			if (game.observers) {
-				color_string = "#ddd";
-			} else {
-				color_string = "red";
-			}
-		}
-		if (!game.have_era && (game.vacant_slots > 0 || game.observers)) {
-			color_string = "#444";
-		}
-
-		add_label_data(data, "status", colorize(game.status, color_string));
-		add_label_data(data, "name", colorize(game.name, color_string));
-
-		add_label_data(data, "era", game.era);
-		add_label_data(data, "era_short", game.era_short);
-		add_label_data(data, "map_info", game.map_info);
-		add_label_data(data, "scenario", game.scenario);
-		add_label_data(data, "map_size_text", game.map_size_info);
-		add_label_data(data, "time_limit", game.time_limit);
-		add_label_data(data, "gold_text", game.gold);
-		add_label_data(data, "xp_text", game.xp);
-		add_label_data(data, "vision_text", game.vision);
-		add_label_data(data, "time_limit_text", game.time_limit);
-		add_label_data(data, "status", game.status);
-		if (game.observers) {
-			add_label_data(data, "observer_icon", "misc/eye.png");
-			add_tooltip_data(data, "observer_icon", _("Observers allowed"));
-		} else {
-			add_label_data(data, "observer_icon", "misc/no_observer.png");
-			add_tooltip_data(data, "observer_icon", _("Observers not allowed"));
-		}
-
-		const char* vision_icon;
-		if (game.fog) {
-			if (game.shroud) {
-				vision_icon = "misc/vision-fog-shroud.png";
-			} else {
-				vision_icon = "misc/vision-fog.png";
-			}
-		} else {
-			if (game.shroud) {
-				vision_icon = "misc/vision-shroud.png";
-			} else {
-				vision_icon = "misc/vision-none.png";
-			}
-		}
-		add_label_data(data, "vision_icon", vision_icon);
-		add_tooltip_data(data, "vision_icon", game.vision);
-
-		gamelistbox_->add_row(data);
+		gamelist_id_at_row_.push_back(game.id);
+		LOG_LB << "Adding game to listbox (1)" << game.id << "\n";
+		gamelistbox_->add_row(make_game_row_data(game));
+		gamelistbox_->set_row_shown(i, !game.filtered_out);
 		tgrid* grid = gamelistbox_->get_row_grid(gamelistbox_->get_item_count() - 1);
-
-		find_widget<tcontrol>(grid, "name", false).set_use_markup(true);
-
-		find_widget<tcontrol>(grid, "status", false).set_use_markup(true);
-
-		ttoggle_panel& row_panel =
-				find_widget<ttoggle_panel>(grid, "panel", false);
-
-		row_panel.set_callback_mouse_left_double_click(boost::bind(
-			&tlobby_main::join_or_observe, this, i));
-
-		set_visible_if_exists(grid, "time_limit_icon", !game.time_limit.empty());
-		set_visible_if_exists(grid, "vision_fog", game.fog);
-		set_visible_if_exists(grid, "vision_shroud", game.shroud);
-		set_visible_if_exists(grid, "vision_none", !(game.fog || game.shroud));
-		set_visible_if_exists(grid, "observers_yes", game.observers);
-		set_visible_if_exists(grid, "observers_no", !game.observers);
-		set_visible_if_exists(grid, "needs_password", game.password_required);
-		set_visible_if_exists(grid, "reloaded", game.reloaded);
-		set_visible_if_exists(grid, "started", game.started);
-		set_visible_if_exists(grid, "use_map_settings", game.use_map_settings);
-		set_visible_if_exists(grid, "no_era", !game.have_era);
-
-
-		tbutton* join_button = dynamic_cast<tbutton*>(grid->find("join", false));
-		if (join_button) {
-			join_button->set_callback_mouse_left_click(
-				dialog_callback<tlobby_main, &tlobby_main::join_button_callback>);
-			join_button->set_active(game.can_join());
-		}
-		tbutton* observe_button = dynamic_cast<tbutton*>(grid->find("observe", false));
-		if (observe_button) {
-			observe_button->set_callback_mouse_left_click(
-				dialog_callback<tlobby_main, &tlobby_main::observe_button_callback>);
-			observe_button->set_active(game.can_observe());
-		}
-		tminimap* minimap = dynamic_cast<tminimap*>(grid->find("minimap", false));
-		if (minimap) {
-			minimap->set_config(&game_config_);
-			minimap->set_map_data(game.map_data);
-		}
+		adjust_game_row_contents(game, grid);
 	}
 	if (select_row >= 0) {
 		gamelistbox_->select_row(select_row);
 	}
 	update_selected_game();
+}
+
+void tlobby_main::update_gamelist_diff()
+{
+	lobby_info_.apply_game_filter();
+	update_gamelist_header();
+	int select_row = -1;
+	unsigned list_i = 0;
+	int list_rows_deleted = 0;
+	std::vector<int> next_gamelist_id_at_row;
+	for (unsigned i = 0; i < lobby_info_.games().size(); ++i) {
+		const game_info& game = lobby_info_.games()[i];
+		if (game.display_status == game_info::NEW) {
+			LOG_LB << "Adding game to listbox " << game.id << "\n";
+			if (list_i != gamelistbox_->get_item_count()) {
+				gamelistbox_->add_row(make_game_row_data(game), list_i);
+				DBG_LB << "Added a game listbox row not at the end"
+					<< list_i << " " << gamelistbox_->get_item_count() << "\n";
+			} else {
+				gamelistbox_->add_row(make_game_row_data(game));
+			}
+			tgrid* grid = gamelistbox_->get_row_grid(gamelistbox_->get_item_count() - 1);
+			adjust_game_row_contents(game, grid);
+			list_i++;
+			next_gamelist_id_at_row.push_back(game.id);
+		} else {
+			if (list_i >= gamelistbox_->get_item_count()) {
+				ERR_LB << "Ran out of listbox items\n";
+				network::send_data(config("refresh_lobby"), 0, true);
+				return;
+			}
+			int listbox_game_id = gamelist_id_at_row_[list_i + list_rows_deleted];
+			if (game.id != listbox_game_id) {
+				ERR_LB << "Listbox game id does not match expected id "
+					<< listbox_game_id << " " << game.id << "\n";
+				network::send_data(config("refresh_lobby"), 0, true);
+				return;
+			}
+			if (game.display_status == game_info::UPDATED) {
+				LOG_LB << "Modyfying game in listbox " << game.id << "\n";
+				tgrid* grid = gamelistbox_->get_row_grid(list_i);
+				modify_grid_with_data(grid, make_game_row_data(game));
+				adjust_game_row_contents(game, grid);
+				++list_i;
+				next_gamelist_id_at_row.push_back(game.id);
+			} else if (game.display_status == game_info::DELETED) {
+				LOG_LB << "Deleting game from listbox " << game.id << "\n";
+				gamelistbox_->remove_row(list_i);
+				++list_rows_deleted;
+			} else {
+				//clean
+				LOG_LB << "Clean game in listbox " << game.id << "\n";
+				next_gamelist_id_at_row.push_back(game.id);
+				++list_i;
+			}
+		}
+
+		if (game.id == selected_game_id_) {
+			select_row = list_i;
+		}
+	}
+	next_gamelist_id_at_row.swap(gamelist_id_at_row_);
+	if (select_row >= static_cast<int>(gamelistbox_->get_item_count())) {
+		select_row = gamelistbox_->get_item_count() - 1;
+	}
+	if (select_row >= 0) {
+		gamelistbox_->select_row(select_row);
+	}
+	update_selected_game();
+}
+
+void tlobby_main::update_gamelist_header()
+{
+	utils::string_map symbols;
+	symbols["num_shown"] = lexical_cast<std::string>(lobby_info_.games_filtered().size());
+	symbols["num_total"] = lexical_cast<std::string>(lobby_info_.games().size());
+	std::string games_string = vgettext("Games: showing $num_shown out of $num_total", symbols);
+	find_widget<tlabel>(gamelistbox_, "map", false).set_label(games_string);
+}
+
+std::map<std::string, string_map> tlobby_main::make_game_row_data(const game_info& game)
+{
+	std::map<std::string, string_map> data;
+
+	const char* color_string;
+	if (game.vacant_slots > 0) {
+		if (game.reloaded || game.started) {
+			color_string = "yellow";
+		} else {
+			color_string = "green";
+		}
+	} else {
+		if (game.observers) {
+			color_string = "#ddd";
+		} else {
+			color_string = "red";
+		}
+	}
+	if (!game.have_era && (game.vacant_slots > 0 || game.observers)) {
+		color_string = "#444";
+	}
+
+	add_label_data(data, "status", colorize(game.status, color_string));
+	add_label_data(data, "name", colorize(game.name, color_string));
+
+	add_label_data(data, "era", game.era);
+	add_label_data(data, "era_short", game.era_short);
+	add_label_data(data, "map_info", game.map_info);
+	add_label_data(data, "scenario", game.scenario);
+	add_label_data(data, "map_size_text", game.map_size_info);
+	add_label_data(data, "time_limit", game.time_limit);
+	add_label_data(data, "gold_text", game.gold);
+	add_label_data(data, "xp_text", game.xp);
+	add_label_data(data, "vision_text", game.vision);
+	add_label_data(data, "time_limit_text", game.time_limit);
+	add_label_data(data, "status", game.status);
+	if (game.observers) {
+		add_label_data(data, "observer_icon", "misc/eye.png");
+		add_tooltip_data(data, "observer_icon", _("Observers allowed"));
+	} else {
+		add_label_data(data, "observer_icon", "misc/no_observer.png");
+		add_tooltip_data(data, "observer_icon", _("Observers not allowed"));
+	}
+
+	const char* vision_icon;
+	if (game.fog) {
+		if (game.shroud) {
+			vision_icon = "misc/vision-fog-shroud.png";
+		} else {
+			vision_icon = "misc/vision-fog.png";
+		}
+	} else {
+		if (game.shroud) {
+			vision_icon = "misc/vision-shroud.png";
+		} else {
+			vision_icon = "misc/vision-none.png";
+		}
+	}
+	add_label_data(data, "vision_icon", vision_icon);
+	add_tooltip_data(data, "vision_icon", game.vision);
+	return data;
+}
+
+void tlobby_main::adjust_game_row_contents(const game_info& game, tgrid* grid)
+{
+	find_widget<tcontrol>(grid, "name", false).set_use_markup(true);
+
+	find_widget<tcontrol>(grid, "status", false).set_use_markup(true);
+
+	ttoggle_panel& row_panel =
+			find_widget<ttoggle_panel>(grid, "panel", false);
+
+	row_panel.set_callback_mouse_left_double_click(boost::bind(
+		&tlobby_main::join_or_observe, this, game.id)); //FIX THIS!!! should use index WILL NOT WORK
+
+	set_visible_if_exists(grid, "time_limit_icon", !game.time_limit.empty());
+	set_visible_if_exists(grid, "vision_fog", game.fog);
+	set_visible_if_exists(grid, "vision_shroud", game.shroud);
+	set_visible_if_exists(grid, "vision_none", !(game.fog || game.shroud));
+	set_visible_if_exists(grid, "observers_yes", game.observers);
+	set_visible_if_exists(grid, "observers_no", !game.observers);
+	set_visible_if_exists(grid, "needs_password", game.password_required);
+	set_visible_if_exists(grid, "reloaded", game.reloaded);
+	set_visible_if_exists(grid, "started", game.started);
+	set_visible_if_exists(grid, "use_map_settings", game.use_map_settings);
+	set_visible_if_exists(grid, "no_era", !game.have_era);
+
+
+	tbutton* join_button = dynamic_cast<tbutton*>(grid->find("join", false));
+	if (join_button) {
+		join_button->set_callback_mouse_left_click(
+			dialog_callback<tlobby_main, &tlobby_main::join_button_callback>);
+		join_button->set_active(game.can_join());
+	}
+	tbutton* observe_button = dynamic_cast<tbutton*>(grid->find("observe", false));
+	if (observe_button) {
+		observe_button->set_callback_mouse_left_click(
+			dialog_callback<tlobby_main, &tlobby_main::observe_button_callback>);
+		observe_button->set_active(game.can_observe());
+	}
+	tminimap* minimap = dynamic_cast<tminimap*>(grid->find("minimap", false));
+	if (minimap) {
+		minimap->set_config(&game_config_);
+		minimap->set_map_data(game.map_data);
+	}
 }
 
 void tlobby_main::update_gamelist_filter()
@@ -1029,7 +1136,8 @@ void tlobby_main::close_window(size_t idx)
 void tlobby_main::network_handler()
 {
 	if (player_list_dirty_) {
-		update_gamelist();
+		update_gamelist_filter();
+		update_playerlist();
 	}
 	try {
 		config data;
@@ -1088,12 +1196,14 @@ void tlobby_main::process_gamelist(const config &data)
 {
 	lobby_info_.process_gamelist(data);
 	update_gamelist();
+	lobby_info_.sync_games_display_status();
 }
 
 void tlobby_main::process_gamelist_diff(const config &data)
 {
 	if (lobby_info_.process_gamelist_diff(data)) {
-		update_gamelist();
+		update_gamelist_diff();
+		lobby_info_.sync_games_display_status();
 	}
 	int joined = data.child_count("insert_child");
 	int left = data.child_count("remove_child");
@@ -1302,7 +1412,7 @@ void tlobby_main::send_message_button_callback(gui2::twindow &/*window*/)
 		//      opened window, so e.g. /ignore in a whisper session ignores
 		//      the other party without having to specify it's nick.
 		chat_handler::do_speak(input);
-		if (player_list_dirty_) update_gamelist();
+		if (player_list_dirty_) update_gamelist_filter();
 	} else {
 		config msg;
 		send_message_to_active_window(input);

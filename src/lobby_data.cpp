@@ -183,6 +183,7 @@ game_info::game_info(const config& game, const config& game_config)
 , has_friends(false)
 , has_ignored(false)
 , filtered_out(false)
+, display_status(NEW)
 {
 	std::string turn = game["turn"];
 	std::string slots = game["slots"];
@@ -328,6 +329,24 @@ bool game_info::can_observe() const
 	return (have_era && observers) || preferences::is_authenticated();
 }
 
+const char* game_info::display_status_string() const
+{
+	switch (display_status) {
+		case game_info::CLEAN:
+			return "clean";
+		case game_info::NEW:
+			return "new";
+		case game_info::DELETED:
+			return "deleted";
+		case game_info::UPDATED:
+			return "updated";
+		default:
+			ERR_CF << "BAD display_status " << display_status
+				<< " in game " << id << "\n";
+			return "?";
+	}
+}
+
 game_filter_stack::game_filter_stack()
 : filters_()
 {
@@ -390,6 +409,30 @@ bool game_filter_general_string_part::match(const game_info &game) const
 		) != s2.end();
 }
 
+namespace {
+
+std::string dump_games_vector(const std::vector<game_info>& games)
+{
+	std::stringstream ss;
+	foreach (const game_info& game, games) {
+		ss << "G" << game.id << "(" << game.name << ") " << game.display_status_string() << " ";
+	}
+	ss << "\n";
+	return ss.str();
+}
+
+std::string dump_games_config(const config& gamelist)
+{
+	std::stringstream ss;
+	foreach (const config& c, gamelist.child_range("game")) {
+		ss << "g" << c["id"] << "(" << c["name"] << ") " << c[config::diff_track_attribute] << " ";
+	}
+	ss << "\n";
+	return ss.str();
+}
+
+} //end anonymous namespace
+
 lobby_info::lobby_info(const config& game_config)
 	: game_config_(game_config)
 	, gamelist_()
@@ -410,20 +453,83 @@ void lobby_info::process_gamelist(const config &data)
 {
 	gamelist_ = data;
 	gamelist_initialized_ = true;
+	games_.clear();
+	foreach (const config& c, gamelist_.child("gamelist").child_range("game")) {
+		games_.push_back(game_info(c, game_config_));
+	}
+	DBG_LB << dump_games_vector(games_);
+	DBG_LB << dump_games_config(gamelist_.child("gamelist"));
 	parse_gamelist();
 }
+
 
 bool lobby_info::process_gamelist_diff(const config &data)
 {
 	if (!gamelist_initialized_) return false;
+	DBG_LB << "prediff " << dump_games_config(gamelist_.child("gamelist"));
 	try {
-		gamelist_.apply_diff(data);
+		gamelist_.apply_diff(data, true);
 	} catch(config::error& e) {
-		ERR_CF << "Error while applying the gamelist diff: '"
+		ERR_LB << "Error while applying the gamelist diff: '"
 			<< e.message << "' Getting a new gamelist.\n";
 		network::send_data(config("refresh_lobby"), 0, true);
 		return false;
 	}
+	DBG_LB << "postdiff " << dump_games_config(gamelist_.child("gamelist"));
+	DBG_LB << dump_games_vector(games_);
+	std::vector<game_info>::iterator game_i = games_.begin();
+	config::child_itors range = gamelist_.child("gamelist").child_range("game");
+	for (config::child_iterator i = range.first; i != range.second; ++i) {
+		config& c = *i;
+		DBG_LB << "data process: " << c["id"] << " (" << c[config::diff_track_attribute] << ")\n";
+		if (c[config::diff_track_attribute] == "new") {
+			games_.insert(game_i, game_info(c, game_config_));
+		} else {
+			if (game_i == games_.end()) {
+				ERR_LB << "Ran out of processed games while working on a gamelist diff\n";
+				network::send_data(config("refresh_lobby"), 0, true);
+				return false;
+			}
+			int config_game_id = lexical_cast_default<int>(c["id"]);
+			if (game_i->id != config_game_id) {
+				ERR_LB << "Game id doesn't match (in order) while applying diff "
+					<< game_i->id << " " << config_game_id << "\n";
+				network::send_data(config("refresh_lobby"), 0, true);
+				return false;
+			}
+			if (c[config::diff_track_attribute] == "modified") {
+				*game_i = game_info(c, game_config_);
+				game_i->display_status = game_info::UPDATED;
+			} else if (c[config::diff_track_attribute] == "deleted") {
+				//check for a delete game X - insert "new" game X (same id) occurance
+				config::child_iterator nexti = i;
+				++nexti;
+				if (nexti != range.second) {
+					config& nextc = *nexti;
+					if (nextc["id"] == c["id"]) {
+						LOG_LB << "ID match in delete-add fix: "
+							<< nextc["id"] << " " << nextc[config::diff_track_attribute] << "\n";
+						if (nextc[config::diff_track_attribute] == "new") {
+							nextc[config::diff_track_attribute] = "modified";
+							continue;
+						}
+					}
+				}
+				game_i->display_status = game_info::DELETED;
+			}
+		}
+		++game_i;
+	}
+	DBG_LB << dump_games_vector(games_);
+	try {
+		gamelist_.clear_diff_track(data);
+	} catch(config::error& e) {
+		ERR_LB << "Error while applying the gamelist diff (2): '"
+			<< e.message << "' Getting a new gamelist.\n";
+		network::send_data(config("refresh_lobby"), 0, true);
+		return false;
+	}
+	DBG_LB << "postclean " << dump_games_config(gamelist_.child("gamelist"));
 	parse_gamelist();
 	return true;
 }
@@ -434,10 +540,7 @@ void lobby_info::parse_gamelist()
 	foreach (const config& c, gamelist_.child_range("user")) {
 		users_.push_back(user_info(c));
 	}
-	games_.clear();
-	foreach (const config& c, gamelist_.child("gamelist").child_range("game")) {
-		games_.push_back(game_info(c, game_config_));
-	}
+
 	games_by_id_.clear();
 	foreach (game_info& gi, games_) {
 		games_by_id_.insert(std::make_pair(gi.id, &gi));
@@ -461,6 +564,20 @@ void lobby_info::parse_gamelist()
 				}
 			}
 		}
+	}
+}
+
+void lobby_info::sync_games_display_status()
+{
+	DBG_LB << "sync_games_display_status\n";
+	games_.erase(
+		std::remove_if(games_.begin(), games_.end(),
+			game_filter_value<game_info::game_display_status,
+				&game_info::display_status>(game_info::DELETED)),
+		games_.end());
+
+	foreach (game_info& gi, games_) {
+		gi.display_status = game_info::CLEAN;
 	}
 }
 
