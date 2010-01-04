@@ -727,7 +727,9 @@ void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
 	GUI2_EASY_BUTTON_CALLBACK(refresh, tlobby_main);
 	GUI2_EASY_BUTTON_CALLBACK(show_preferences, tlobby_main);
 	GUI2_EASY_BUTTON_CALLBACK(join_global, tlobby_main);
+	join_global_btn->set_active(false);
 	GUI2_EASY_BUTTON_CALLBACK(observe_global, tlobby_main);
+	observe_global_btn->set_active(false);
 	GUI2_EASY_BUTTON_CALLBACK(close_window, tlobby_main);
 
 	ttoggle_button& skip_replay =
