@@ -34,6 +34,8 @@ static lg::log_domain log_config("config");
 
 config config::invalid;
 
+const char* config::diff_track_attribute = "__diff_track";
+
 void config::check_valid() const
 {
 	if (!*this)
@@ -716,9 +718,11 @@ void config::get_diff(const config& c, config& res) const
 	}
 }
 
-void config::apply_diff(const config& diff)
+void config::apply_diff(const config& diff, bool track /* = false */)
 {
 	check_valid(diff);
+
+	if (track) values[diff_track_attribute] = "modified";
 
 	if (const config &inserts = diff.child("insert")) {
 		foreach (const attribute &v, inserts.attribute_range()) {
@@ -746,7 +750,7 @@ void config::apply_diff(const config& diff)
 				throw error("error in diff: could not find element '" + item.key + "'");
 			}
 
-			itor->second[index]->apply_diff(item.cfg);
+			itor->second[index]->apply_diff(item.cfg, track);
 		}
 	}
 
@@ -754,7 +758,8 @@ void config::apply_diff(const config& diff)
 	{
 		const size_t index = lexical_cast<size_t>(i["index"].str());
 		foreach (const any_child &item, i.all_children_range()) {
-			add_child_at(item.key, item.cfg, index);
+			config& inserted = add_child_at(item.key, item.cfg, index);
+			if (track) inserted[diff_track_attribute] = "new";
 		}
 	}
 
@@ -762,8 +767,49 @@ void config::apply_diff(const config& diff)
 	{
 		const size_t index = lexical_cast<size_t>(i["index"].str());
 		foreach (const any_child &item, i.all_children_range()) {
+			if (!track) {
+				remove_child(item.key, index);
+			} else {
+				const child_map::iterator itor = children.find(item.key);
+				if(itor == children.end() || index >= itor->second.size()) {
+					throw error("error in diff: could not find element '" + item.key + "'");
+				}
+				itor->second[index]->values[diff_track_attribute] = "deleted";
+			}
+		}
+	}
+}
+
+void config::clear_diff_track(const config& diff)
+{
+	remove_attribute(diff_track_attribute);
+	foreach (const config &i, diff.child_range("delete_child"))
+	{
+		const size_t index = lexical_cast<size_t>(i["index"].str());
+		foreach (const any_child &item, i.all_children_range()) {
 			remove_child(item.key, index);
 		}
+	}
+
+	foreach (const config &i, diff.child_range("change_child"))
+	{
+		const size_t index = lexical_cast<size_t>(i["index"].str());
+		foreach (const any_child &item, i.all_children_range())
+		{
+			if (item.key.empty()) {
+				continue;
+			}
+
+			const child_map::iterator itor = children.find(item.key);
+			if(itor == children.end() || index >= itor->second.size()) {
+				throw error("error in diff: could not find element '" + item.key + "'");
+			}
+
+			itor->second[index]->clear_diff_track(item.cfg);
+		}
+	}
+	foreach (const any_child &value, all_children_range()) {
+		const_cast<config *>(&value.cfg)->remove_attribute(diff_track_attribute);
 	}
 }
 

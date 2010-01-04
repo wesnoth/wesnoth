@@ -309,7 +309,31 @@ public:
 	config get_diff(const config& c) const;
 	void get_diff(const config& c, config& res) const;
 
-	void apply_diff(const config& diff); //throw error
+	/**
+	 * The name of the attribute used for tracking diff changes
+	 */
+	static const char* diff_track_attribute;
+
+	/**
+	 * A function to apply a diff config onto this config object.
+	 *
+	 * If the "track" parameter is true, the changes made will be marked in a
+	 * magic attribute (defined above) of this and child nodes of this config,
+	 * with "new" value indicating an added child, "modified" a modified one,
+	 * and "deleted" for the deleted items, *which will not be actually
+	 * deleted* (so calling code can easily see what they are).
+	 * Use clear_diff_track with the same diff object to clear the tracking
+	 * info and actually delete the nodes.
+	 */
+	void apply_diff(const config& diff, bool track = false); //throw error
+
+	/**
+	 * Clear any tracking info from a previous apply_diff call with tracking.
+	 * This also removes the nodes that are to be deleted, in effect making
+	 * apply_diff(c, true); clear_diff_tracking(c);
+	 * equivalent to apply_diff(c, false);
+	 */
+	void clear_diff_track(const config& diff);
 
 	/**
 	 * Merge config 'c' into this config.
