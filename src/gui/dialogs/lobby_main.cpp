@@ -480,7 +480,6 @@ void tlobby_main::update_gamelist()
 		gamelist_id_at_row_.push_back(game.id);
 		LOG_LB << "Adding game to listbox (1)" << game.id << "\n";
 		gamelistbox_->add_row(make_game_row_data(game));
-		gamelistbox_->set_row_shown(i, !game.filtered_out);
 		tgrid* grid = gamelistbox_->get_row_grid(gamelistbox_->get_item_count() - 1);
 		adjust_game_row_contents(game, grid);
 	}
@@ -679,10 +678,6 @@ void tlobby_main::update_gamelist_filter()
 {
 	lobby_info_.apply_game_filter();
 	assert(lobby_info_.games().size() == gamelistbox_->get_item_count());
-	for (unsigned i = 0; i < lobby_info_.games().size(); ++i) {
-		const game_info& game = lobby_info_.games()[i];
-		gamelistbox_->set_row_shown(i, !game.filtered_out);
-	}
 }
 
 
