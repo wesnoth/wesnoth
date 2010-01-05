@@ -182,7 +182,6 @@ game_info::game_info(const config& game, const config& game_config)
 , have_era(true)
 , has_friends(false)
 , has_ignored(false)
-, filtered_out(false)
 , display_status(NEW)
 {
 	std::string turn = game["turn"];
@@ -446,6 +445,7 @@ lobby_info::lobby_info(const config& game_config)
 	, whispers_()
 	, game_filter_()
 	, game_filter_invert_(false)
+	, games_shown_()
 {
 }
 
@@ -459,6 +459,7 @@ void lobby_info::process_gamelist(const config &data)
 	}
 	DBG_LB << dump_games_vector(games_);
 	DBG_LB << dump_games_config(gamelist_.child("gamelist"));
+	games_shown_.resize(games_.size());
 	parse_gamelist();
 }
 
@@ -530,6 +531,7 @@ bool lobby_info::process_gamelist_diff(const config &data)
 		return false;
 	}
 	DBG_LB << "postclean " << dump_games_config(gamelist_.child("gamelist"));
+	games_shown_.resize(games_.size());
 	parse_gamelist();
 	return true;
 }
@@ -635,9 +637,14 @@ void lobby_info::close_room(const std::string &name)
 	}
 }
 
-const std::vector<game_info*>& lobby_info::games_filtered()
+const std::vector<game_info*>& lobby_info::games_filtered() const
 {
 	return games_filtered_;
+}
+
+int lobby_info::games_shown_count() const
+{
+	return std::count(games_shown_.begin(), games_shown_.end(), true);
 }
 
 void lobby_info::add_game_filter(game_filter_base *f)
@@ -658,13 +665,14 @@ void lobby_info::set_game_filter_invert(bool value)
 void lobby_info::apply_game_filter()
 {
 	games_filtered_.clear();
-	foreach (game_info& gi, games_) {
-		bool filter_out = game_filter_.match(gi);
+	for (unsigned i = 0; i < games_.size(); ++i) {
+		game_info& gi = games_[i];
+		bool show = game_filter_.match(gi);
 		if (game_filter_invert_) {
-			filter_out  = !filter_out;
+			show = !show;
 		}
-		gi.filtered_out = filter_out;
-		if (filter_out) {
+		games_shown_[i] = show;
+		if (show) {
 			games_filtered_.push_back(&gi);
 		}
 	}
@@ -726,7 +734,7 @@ void lobby_info::sort_users(bool by_name, bool by_relation)
 	}
 }
 
-const std::vector<user_info*>& lobby_info::users_sorted()
+const std::vector<user_info*>& lobby_info::users_sorted() const
 {
 	return users_sorted_;
 }

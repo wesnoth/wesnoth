@@ -141,8 +141,6 @@ struct game_info
 	bool has_friends;
 	bool has_ignored;
 
-	bool filtered_out;
-
 	enum game_display_status { CLEAN, NEW, UPDATED, DELETED };
 	game_display_status display_status;
 
@@ -284,9 +282,11 @@ public:
 
 	const std::vector<room_info>& rooms() const { return rooms_; }
 	const std::vector<game_info>& games() const { return games_; }
-	const std::vector<game_info*>& games_filtered();
+	const std::vector<bool>& games_shown() const { return games_shown_; }
+	const std::vector<game_info*>& games_filtered() const;
+	int games_shown_count() const;
 	const std::vector<user_info>& users() const { return users_; }
-	const std::vector<user_info*>& users_sorted();
+	const std::vector<user_info*>& users_sorted() const;
 private:
 	void parse_gamelist();
 
@@ -302,6 +302,7 @@ private:
 	std::map<std::string, chat_log> whispers_;
 	game_filter_and_stack game_filter_;
 	bool game_filter_invert_;
+	std::vector<bool> games_shown_;
 };
 
 #endif

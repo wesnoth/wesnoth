@@ -483,6 +483,7 @@ void tlobby_main::update_gamelist()
 		tgrid* grid = gamelistbox_->get_row_grid(gamelistbox_->get_item_count() - 1);
 		adjust_game_row_contents(game, grid);
 	}
+	gamelistbox_->set_row_shown(lobby_info_.games_shown());
 	if (select_row >= 0) {
 		gamelistbox_->select_row(select_row);
 	}
@@ -678,6 +679,7 @@ void tlobby_main::update_gamelist_filter()
 {
 	lobby_info_.apply_game_filter();
 	assert(lobby_info_.games().size() == gamelistbox_->get_item_count());
+	gamelistbox_->set_row_shown(lobby_info_.games_shown());
 }
 
 
@@ -1123,10 +1125,6 @@ void tlobby_main::close_window(size_t idx)
 	chat_log_container_->select_page(active_window_);
 	if (active_changed) active_window_changed();
 }
-
-
-
-
 
 void tlobby_main::network_handler()
 {
