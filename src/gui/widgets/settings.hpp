@@ -85,17 +85,6 @@ enum twindow_type {
 
 const std::string& get_id(const twindow_type window_type);
 
-struct tbutton_definition : public tcontrol_definition
-{
-	tbutton_definition(const config& cfg);
-
-	struct tresolution : public tresolution_definition_
-	{
-		tresolution(const config& cfg);
-	};
-
-};
-
 /*
  * A horizontal listbox definition is the same as a normal listbox.
  * The big difference between them is the difference in the instanciation,
