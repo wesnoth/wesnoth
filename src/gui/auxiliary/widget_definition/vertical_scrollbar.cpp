@@ -12,6 +12,8 @@
    See the COPYING file for more details.
 */
 
+#define GETTEXT_DOMAIN "wesnoth-lib"
+
 #include "gui/auxiliary/widget_definition/vertical_scrollbar.hpp"
 
 #include "gui/auxiliary/log.hpp"
