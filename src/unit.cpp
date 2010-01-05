@@ -762,16 +762,28 @@ std::vector<std::string> unit::get_traits_list() const
 void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 {
 	t = &t->get_gender_unit_type(gender_).get_variation(variation_);
-	reset_modifications();
+
+	// Reset the scalar values first
+	traits_description_ = "";
+	is_fearless_ = false;
+	is_healthy_ = false;
+
+	// Clear modification-related caches
+	modification_descriptions_.clear();
+	movement_costs_.clear();
+	defense_mods_.clear();
+
+	// Clear modified configs
+	const std::string mod_childs[] = {"advancement","attacks","movement_costs","defense","resistance","abilities"};
+	foreach(const std::string& tag, mod_childs) {
+		cfg_.clear_children(tag);
+	}
 
 	// Remove old type's halo, animations, abilities, attacks and advancement options (AMLA)
 	cfg_["halo"] = "";
 	foreach(const std::string& tag_name, unit_animation::all_tag_names()) {
 		cfg_.clear_children(tag_name);
 	}
-	cfg_.clear_children("abilities");
-	cfg_.clear_children("attacks");
-	cfg_.clear_children("advancement");
 
 	if(t->movement_type().get_parent()) {
 		cfg_.merge_with(t->movement_type().get_parent()->get_cfg());
@@ -2097,44 +2109,6 @@ std::vector<std::pair<std::string,std::string> > unit::amla_icons() const
 
 void unit::reset_modifications()
 {
-	const std::string mod_childs[] = {"attacks","movement_costs","defense","resistance","abilities"};
-	const unit_type *t = type();
-	if(t == NULL) {
-		return;
-	}
-
-	// Reset the scalar values first
-	traits_description_ = "";
-	is_fearless_ = false;
-	is_healthy_ = false;
-	max_hit_points_ = t->hitpoints();
-	max_experience_ = t->experience_needed(false);
-	max_movement_ = t->movement();
-	attacks_ = t->attacks();
-
-	// Clear modification-related caches
-	modification_descriptions_.clear();
-	movement_costs_.clear();
-	defense_mods_.clear();
-
-	// Clear modified configs
-	foreach(const std::string& tag, mod_childs) {
-		cfg_.clear_children(tag);
-	}
-
-	// Restore unmodified configs
-	if(t->movement_type().get_parent()) {
-		//before merging the base movementtype, first get the parent movetype
-		//(...this doesn't look right but it was copied from advance_to()...)
-		cfg_.merge_with(t->movement_type().get_parent()->get_cfg());
-	}
-	config to_merge;
-	foreach(const std::string& tag, mod_childs) {
-		foreach (const config &child, t->cfg_.child_range(tag)) {
-			to_merge.add_child(tag, child);
-		}
-	}
-	cfg_.merge_with(to_merge);
 }
 
 std::vector<config> unit::get_modification_advances() const

@@ -11,6 +11,9 @@ Version 1.7.11+svn:
    * Add a new transient error message
    * Convert several old style message dialog to the new style
    * Allow listboxes to add rows at every place instead of at the end only
+ * WML Engine:
+   * Removed bogus merging of the old unit type's movetype when advancing
+     (fixes bug #15055)
  * Miscellaneous and bugfixes:
    * Fix errors in tutorial when the player unexpectedly kills certain enemy
      units in scenario 2 (bug #15037)
