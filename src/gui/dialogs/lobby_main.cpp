@@ -484,7 +484,7 @@ void tlobby_main::update_gamelist()
 		adjust_game_row_contents(game, grid);
 	}
 	gamelistbox_->set_row_shown(lobby_info_.games_shown());
-	if (select_row >= 0) {
+	if (select_row >= 0 && select_row != gamelistbox_->get_selected_row()) {
 		gamelistbox_->select_row(select_row);
 	}
 	update_selected_game();
@@ -544,16 +544,19 @@ void tlobby_main::update_gamelist_diff()
 				++list_i;
 			}
 		}
-
-		if (game.id == selected_game_id_) {
-			select_row = list_i;
+	}
+	for (unsigned i = 0; i < next_gamelist_id_at_row.size(); ++i) {
+		if (next_gamelist_id_at_row[i] == selected_game_id_) {
+			select_row = i;
 		}
 	}
 	next_gamelist_id_at_row.swap(gamelist_id_at_row_);
 	if (select_row >= static_cast<int>(gamelistbox_->get_item_count())) {
+		ERR_LB << "Would select a row beyond the listbox"
+			<< select_row << " " << gamelistbox_->get_item_count() << "\n";
 		select_row = gamelistbox_->get_item_count() - 1;
 	}
-	if (select_row >= 0) {
+	if (select_row >= 0 && select_row != gamelistbox_->get_selected_row()) {
 		gamelistbox_->select_row(select_row);
 	}
 	update_selected_game();
