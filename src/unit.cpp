@@ -471,7 +471,7 @@ unit::unit(unit_map* unitmap, const config& cfg,
 
 	generate_name(state ? &(state->rng()) : 0);
 
-	game_events::add_events(cfg_.child_range("event"), type_);
+	game_events::add_events(cfg.child_range("event"), type_);
 	// Make the default upkeep "full"
 	if(cfg_["upkeep"].empty()) {
 		cfg_["upkeep"] = "full";
@@ -659,6 +659,7 @@ void unit::set_game_context(unit_map *unitmap)
 
 	// In case the unit carries EventWML, apply it now
 	game_events::add_events(cfg_.child_range("event"), type_);
+	cfg_.clear_children("event");
 }
 
 void unit::generate_name(rand_rng::simple_rng* rng)
@@ -773,35 +774,33 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 	movement_costs_.clear();
 	defense_mods_.clear();
 
-	// Clear modified configs
-	const std::string mod_childs[] = {"advancement","attacks","movement_costs","defense","resistance","abilities"};
-	foreach(const std::string& tag, mod_childs) {
-		cfg_.clear_children(tag);
-	}
+	// Clear the stored config and replace it with the one from the unit type,
+	// except for a few attributes.
+	config old_cfg;
+	old_cfg.swap(cfg_);
 
-	// Remove old type's halo, animations, abilities, attacks and advancement options (AMLA)
-	cfg_["halo"] = "";
-	foreach(const std::string& tag_name, unit_animation::all_tag_names()) {
-		cfg_.clear_children(tag_name);
+	static char const *persistent_attrs[] = { "canrecruit", "upkeep", "ellipse",
+		"image", "usage", "random_traits", "generate_name" };
+	foreach (const char *attr, persistent_attrs) {
+		if (!old_cfg.has_attribute(attr)) continue;
+		cfg_[attr] = old_cfg[attr];
 	}
 
 	if(t->movement_type().get_parent()) {
 		cfg_.merge_with(t->movement_type().get_parent()->get_cfg());
 	}
+
+	cfg_.merge_with(t->cfg_);
+
 	// If unit has specific profile, remember it and keep it after advancing
-	bool specific_profile = false;
-	const std::string profile = cfg_["profile"];
+	const std::string &profile = old_cfg["profile"];
 	if (!profile.empty()) {
 		const unit_type* u_type = type();
 		if (u_type != NULL && profile != u_type->cfg_["profile"]){
-			specific_profile = true;
+			cfg_["profile"] = profile;
 		}
 	}
 
-	cfg_.merge_with(t->cfg_);
-	if (specific_profile) {
-		cfg_["profile"] = profile;
-	}
 	cfg_.clear_children("male");
 	cfg_.clear_children("female");
 
@@ -860,6 +859,7 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 	}
 
 	game_events::add_events(cfg_.child_range("event"), type_);
+	cfg_.clear_children("event");
 
 	set_state(STATE_POISONED,false);
 	set_state(STATE_SLOWED,false);
@@ -2105,10 +2105,6 @@ std::vector<std::pair<std::string,std::string> > unit::amla_icons() const
 		}
 	}
 	return(temp);
-}
-
-void unit::reset_modifications()
-{
 }
 
 std::vector<config> unit::get_modification_advances() const

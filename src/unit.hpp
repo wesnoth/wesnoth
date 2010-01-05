@@ -306,7 +306,6 @@ public:
 	const std::string& get_loop_formula() const { return unit_loop_formula_; }
 	const std::string& get_priority_formula() const { return unit_priority_formula_; }
 
-	void reset_modifications();
 	void backup_state();
 	void apply_modifications();
 	void remove_temporary_modifications();
