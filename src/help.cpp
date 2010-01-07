@@ -1353,7 +1353,7 @@ public:
 		do {
 			std::vector<std::string> adv_units =
 				reverse ? type_.advances_from() : type_.advances_to();
-			bool first = false;
+			bool first = true;
 
 			foreach (const std::string &adv, adv_units)
 			{
