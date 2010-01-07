@@ -46,7 +46,7 @@
 #include <boost/bind.hpp>
 
 static lg::log_domain log_network("network");
-#define DBG_NW LOG_STREAM(info, log_network)
+#define DBG_NW LOG_STREAM(debug, log_network)
 #define LOG_NW LOG_STREAM(info, log_network)
 #define ERR_NW LOG_STREAM(err, log_network)
 
@@ -58,9 +58,10 @@ static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 
 static lg::log_domain log_lobby("lobby");
-#define DBG_LB LOG_STREAM(info, log_lobby)
+#define DBG_LB LOG_STREAM(debug, log_lobby)
 #define LOG_LB LOG_STREAM(info, log_lobby)
 #define ERR_LB LOG_STREAM(err, log_lobby)
+#define SCOPE_LB log_scope2(log_lobby, __func__)
 
 
 namespace gui2 {
@@ -467,6 +468,7 @@ std::string tag(const std::string& str, const std::string& tag)
 
 void tlobby_main::update_gamelist()
 {
+	SCOPE_LB;
 	gamelistbox_->clear();
 	gamelist_id_at_row_.clear();
 	lobby_info_.apply_game_filter();
@@ -492,6 +494,7 @@ void tlobby_main::update_gamelist()
 
 void tlobby_main::update_gamelist_diff()
 {
+	SCOPE_LB;
 	lobby_info_.apply_game_filter();
 	update_gamelist_header();
 	int select_row = -1;
@@ -688,6 +691,7 @@ void tlobby_main::update_gamelist_filter()
 
 void tlobby_main::update_playerlist()
 {
+	SCOPE_LB;
 	DBG_LB << "Playerlist update: " << lobby_info_.users().size() << "\n";
 	lobby_info_.update_user_statuses(selected_game_id_, active_window_room());
 	lobby_info_.sort_users(player_list_.sort_by_name->get_value(), player_list_.sort_by_relation->get_value());
@@ -808,6 +812,7 @@ void tlobby_main::update_selected_game()
 
 void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
 {
+	SCOPE_LB;
 	roomlistbox_ = find_widget<tlistbox>(&window, "room_list", false, true);
 	roomlistbox_->set_callback_value_change(dialog_callback<tlobby_main, &tlobby_main::room_switch_callback>);
 
