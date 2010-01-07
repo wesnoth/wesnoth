@@ -1351,30 +1351,33 @@ public:
 		const bool first_reverse_value = true;
 		bool reverse = first_reverse_value;
 		do {
-			const std::vector<std::string>& adv_units =
-					reverse ? type_.advances_from() : type_.advances_to();
+			std::vector<std::string> adv_units =
+				reverse ? type_.advances_from() : type_.advances_to();
+			bool first = false;
 
-			std::vector<std::string>::const_iterator adv_iter = adv_units.begin();
-			for (; adv_iter != adv_units.end(); ++adv_iter)
+			foreach (const std::string &adv, adv_units)
 			{
-				const unit_type *type = unit_types.find(*adv_iter);
-				if (type && !type->hide_help())
-				{
-					if (adv_iter == adv_units.begin())
-						ss << (reverse ? _("Advances from: ") : _("Advances to: "));
-					else
-						ss << ", ";
+				const unit_type *type = unit_types.find(adv);
+				if (!type || type->hide_help()) continue;
 
-					std::string lang_unit = type->type_name();
-					std::string ref_id;
-					if (description_type(*type) == FULL_DESCRIPTION) {
-						ref_id = unit_prefix + type->id();
-					} else {
-						ref_id = unknown_unit_topic;
-						lang_unit += " (?)";
-					}
-					ss << "<ref>dst='" << escape(ref_id) << "' text='" << escape(lang_unit) << "'</ref>";
+				if (first) {
+					if (reverse)
+						ss << _("Advances from: ");
+					else
+						ss << _("Advances to: ");
+					first = false;
+				} else
+					ss << ", ";
+
+				std::string lang_unit = type->type_name();
+				std::string ref_id;
+				if (description_type(*type) == FULL_DESCRIPTION) {
+					ref_id = unit_prefix + type->id();
+				} else {
+					ref_id = unknown_unit_topic;
+					lang_unit += " (?)";
 				}
+				ss << "<ref>dst='" << escape(ref_id) << "' text='" << escape(lang_unit) << "'</ref>";
 			}
 			ss << "\n"; //added even if empty, to avoid shifting
 
