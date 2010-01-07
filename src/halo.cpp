@@ -211,7 +211,7 @@ bool effect::render()
 
 void effect::unrender()
 {
-	if(buffer_ == NULL) {
+	if (!surf_ || !buffer_) {
 		return;
 	}
 
