@@ -484,7 +484,7 @@ void tlobby_main::update_gamelist()
 		LOG_LB << "Adding game to listbox (1)" << game.id << "\n";
 		gamelistbox_->add_row(make_game_row_data(game));
 		tgrid* grid = gamelistbox_->get_row_grid(gamelistbox_->get_item_count() - 1);
-		adjust_game_row_contents(game, grid);
+		adjust_game_row_contents(game, gamelistbox_->get_item_count() - 1, grid);
 	}
 	gamelistbox_->set_row_shown(lobby_info_.games_shown());
 	if (select_row >= 0 && select_row != gamelistbox_->get_selected_row()) {
@@ -514,7 +514,7 @@ void tlobby_main::update_gamelist_diff()
 				gamelistbox_->add_row(make_game_row_data(game));
 			}
 			tgrid* grid = gamelistbox_->get_row_grid(gamelistbox_->get_item_count() - 1);
-			adjust_game_row_contents(game, grid);
+			adjust_game_row_contents(game, gamelistbox_->get_item_count() - 1, grid);
 			list_i++;
 			next_gamelist_id_at_row.push_back(game.id);
 		} else {
@@ -534,7 +534,7 @@ void tlobby_main::update_gamelist_diff()
 				LOG_LB << "Modyfying game in listbox " << game.id << "\n";
 				tgrid* grid = gamelistbox_->get_row_grid(list_i);
 				modify_grid_with_data(grid, make_game_row_data(game));
-				adjust_game_row_contents(game, grid);
+				adjust_game_row_contents(game, list_i, grid);
 				++list_i;
 				next_gamelist_id_at_row.push_back(game.id);
 			} else if (game.display_status == game_info::DELETED) {
@@ -638,7 +638,7 @@ std::map<std::string, string_map> tlobby_main::make_game_row_data(const game_inf
 	return data;
 }
 
-void tlobby_main::adjust_game_row_contents(const game_info& game, tgrid* grid)
+void tlobby_main::adjust_game_row_contents(const game_info& game, int idx, tgrid* grid)
 {
 	find_widget<tcontrol>(grid, "name", false).set_use_markup(true);
 
@@ -648,7 +648,7 @@ void tlobby_main::adjust_game_row_contents(const game_info& game, tgrid* grid)
 			find_widget<ttoggle_panel>(grid, "panel", false);
 
 	row_panel.set_callback_mouse_left_double_click(boost::bind(
-		&tlobby_main::join_or_observe, this, game.id)); //FIX THIS!!! should use index WILL NOT WORK
+		&tlobby_main::join_or_observe, this, idx));
 
 	set_visible_if_exists(grid, "time_limit_icon", !game.time_limit.empty());
 	set_visible_if_exists(grid, "vision_fog", game.fog);

@@ -95,7 +95,7 @@ protected:
 
 	std::map<std::string, string_map> make_game_row_data(const game_info& game);
 
-	void adjust_game_row_contents(const game_info& game, tgrid* grid);
+	void adjust_game_row_contents(const game_info& game, int idx, tgrid* grid);
 
 public:
 
