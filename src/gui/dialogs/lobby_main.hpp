@@ -381,6 +381,8 @@ private:
 	boost::function<void()> preferences_wrapper_;
 
 	std::vector<int> gamelist_id_at_row_;
+
+	bool delay_playerlist_update_;
 };
 
 } // namespace gui2

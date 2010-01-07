@@ -311,6 +311,7 @@ tlobby_main::tlobby_main(const config& game_config
 	, lobby_update_timer_(0)
 	, preferences_wrapper_()
 	, gamelist_id_at_row_()
+	, delay_playerlist_update_(false)
 {
 }
 
@@ -691,6 +692,7 @@ void tlobby_main::update_gamelist_filter()
 
 void tlobby_main::update_playerlist()
 {
+	if (delay_playerlist_update_) return;
 	SCOPE_LB;
 	DBG_LB << "Playerlist update: " << lobby_info_.users().size() << "\n";
 	lobby_info_.update_user_statuses(selected_game_id_, active_window_room());
@@ -1547,12 +1549,13 @@ void tlobby_main::user_dialog_callback(user_info* info)
 {
 	tlobby_player_info dlg(*this, *info, lobby_info_);
 	dlg.show(window_->video());
+	delay_playerlist_update_ = true;
 	if (dlg.result_open_whisper()) {
 		tlobby_chat_window* t = whisper_window_open(info->name, true);
 		switch_to_window(t);
+		window_->invalidate_layout();
 	}
 	selected_game_id_ = info->game_id;
-	//the commented out code below should be enough, but that'd delete th
 	//the commented out code below should be enough, but that'd delete the
 	//playerlist and the widget calling this callback, so instead the game
 	//will be selected on the netxt gamelist update.
@@ -1571,6 +1574,7 @@ void tlobby_main::user_dialog_callback(user_info* info)
 	//do not update here as it can cause issues with removing the widget
 	//from within it's event handler. Should get updated as soon as possible
 	//update_gamelist();
+	delay_playerlist_update_ = false;
 	player_list_dirty_ = true;
 }
 
