@@ -1810,6 +1810,7 @@ def inner_spellcheck(nav, value, spelldict):
     value = value.replace("\xe2\x80\xa6", " ")	# UTF-8 ellipsis
     value = value.replace("\xe2\x80\x94", " ")	# UTF-8 em dash
     value = value.replace("\xe2\x80\x93", " ")	# UTF-8 en dash
+    value = value.replace("\xe2\x80\x95", " ")	# UTF-8 horizontal dash
     value = value.replace("''", "")
     value = value.replace("female^", " ")
     value = value.replace("male^", " ")
