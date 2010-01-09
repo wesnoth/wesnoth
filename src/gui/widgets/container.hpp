@@ -149,7 +149,7 @@ public:
 	 * This function should only be called upon an empty grid. This grid is
 	 * returned by initial_grid();
 	 *
-	 * @grid_builder              The builder for the grid.
+	 * @param grid_builder        The builder for the grid.
 	 */
 	void init_grid(const boost::intrusive_ptr<tbuilder_grid>& grid_builder);
 
