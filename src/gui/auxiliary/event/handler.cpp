@@ -394,9 +394,37 @@ void thandler::draw()
 	// Don't display this event since it floods the screen
 	//DBG_GUI_E << "Firing " << DRAW << ".\n";
 
-	/** @todo Need to evaluate which windows really to redraw. */
+	bool first = true;
+
+	/**
+	 * @todo Need to evaluate which windows really to redraw.
+	 *
+	 * For now we use a hack, but would be nice to rewrite it for 1.9/1.11.
+	 */
 	foreach(tdispatcher* dispatcher, dispatchers_) {
+		if(!first) {
+			/*
+			 * This leaves glitches on window borders if the window beneath it
+			 * has changed, on the other hand invalidating twindown::restorer_
+			 * causes black borders around the window. So there's the choice
+			 * between two evils.
+			 */
+			dynamic_cast<twidget&>(*dispatcher).set_dirty();
+		} else {
+			first = false;
+		}
+
 		dispatcher->fire(DRAW, dynamic_cast<twidget&>(*dispatcher));
+	}
+
+	if(!dispatchers_.empty()) {
+		CVideo& video = dynamic_cast<twindow&>(*dispatchers_.back()).video();
+
+		surface frame_buffer = video.getSurface();
+
+		cursor::draw(frame_buffer);
+		video.flip();
+		cursor::undraw(frame_buffer);
 	}
 }
 

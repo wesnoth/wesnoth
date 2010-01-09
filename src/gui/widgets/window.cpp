@@ -558,6 +558,7 @@ void twindow::draw()
 			surface frame_buffer = get_video_surface();
 
 			if(sunset_) {
+				/** @todo should probably be moved to event::thandler::draw. */
 				static unsigned i = 0;
 				if(++i % sunset_ == 0) {
 					SDL_Rect r = {0, 0, frame_buffer->w, frame_buffer->h };
@@ -568,10 +569,6 @@ void twindow::draw()
 					update_rect(r);
 				}
 			}
-
-			cursor::draw(frame_buffer);
-			video_.flip();
-			cursor::undraw(frame_buffer);
 		}
 		return;
 	}
@@ -665,9 +662,6 @@ void twindow::draw()
 
 	SDL_Rect rect = get_rect();
 	update_rect(rect);
-	cursor::draw(frame_buffer);
-	video_.flip();
-	cursor::undraw(frame_buffer);
 }
 
 twindow::tinvalidate_layout_blocker::tinvalidate_layout_blocker(twindow& window)
