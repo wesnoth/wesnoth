@@ -488,6 +488,7 @@ bool lobby_info::process_gamelist_diff(const config &data)
 		if (c[config::diff_track_attribute] == "new") {
 			if (game_i == games_.end()) {
 				games_.insert(game_i, game_info(c, game_config_));
+				game_i = games_.end();
 			} else {
 				//adding not at the end should rarely if ever happen
 				int idx = std::distance(games_.begin(), game_i);
@@ -528,7 +529,7 @@ bool lobby_info::process_gamelist_diff(const config &data)
 				}
 				game_i->display_status = game_info::DELETED;
 			}
-		++game_i;
+			++game_i;
 		}
 	}
 	DBG_LB << dump_games_vector(games_);
