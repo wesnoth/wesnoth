@@ -48,7 +48,7 @@ struct tgrid_implementation
 	 * Implementation for the wrappers for
 	 * [const] twidget* tgrid::find_at(const tpoint&, const bool) [const].
 	 *
-	 * @param W                   twidget or const twidget.
+	 * @tparam W                  twidget or const twidget.
 	 */
 	template<class W>
 	static W* find_at(typename tconst_duplicator<W, tgrid>::type& grid,
@@ -77,7 +77,7 @@ struct tgrid_implementation
 	 * [const] twidget* tgrid::find(const std::string&,
 	 * const bool) [const].
 	 *
-	 * @param W                   twidget or const twidget.
+	 * @tparam W                  twidget or const twidget.
 	 */
 	template<class W>
 	static W* find(typename tconst_duplicator<W, tgrid>::type& grid,
