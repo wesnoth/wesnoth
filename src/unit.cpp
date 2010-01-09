@@ -208,18 +208,18 @@ unit::unit(const unit& o):
 
 unit::unit(unit_map* unitmap, const config& cfg,
 		bool use_traits, game_state* state) :
-	cfg_(),
+	cfg_(cfg),
 	loc_(),
 	advances_to_(),
-	type_(),
+	type_(cfg["type"]),
 	race_(NULL),
-	id_(),
-	name_(),
+	id_(cfg["id"]),
+	name_(cfg["name"]),
 	underlying_id_(0),
 	type_name_(),
 	undead_variation_(),
-	variation_(),
-	hit_points_(0),
+	variation_(cfg["variation"]),
+	hit_points_(1),
 	max_hit_points_(0),
 	experience_(0),
 	max_experience_(0),
@@ -250,8 +250,8 @@ unit::unit(unit_map* unitmap, const config& cfg,
 	emit_zoc_(0),
 	state_(STATE_STANDING),
 	overlays_(),
-	role_(),
-	ai_special_(),
+	role_(cfg["role"]),
+	ai_special_(cfg["ai_special"]),
 	attacks_(),
 	facing_(map_location::SOUTH_EAST),
 	traits_description_(),
@@ -278,15 +278,12 @@ unit::unit(unit_map* unitmap, const config& cfg,
 {
 	set_state(STATE_HIDDEN,true);
 
-	if(cfg["type"].empty()) {
+	if (type_.empty()) {
 		throw game::load_game_failed("Attempt to de-serialize a unit with an empty 'type' field:\n" + cfg.debug());
 	}
 
-	cfg_ = cfg;
-
 	cfg_.clear_children("unit"); //remove underlying unit definitions from scenario files
 
-	type_ = cfg_["type"];
 	side_ = lexical_cast_default<int>(cfg["side"]);
 	if(side_ <= 0) {
 		side_ = 1;
@@ -294,20 +291,11 @@ unit::unit(unit_map* unitmap, const config& cfg,
 
 	validate_side(side_);
 
-	// Prevent un-initialized variables
-	hit_points_=1;
-
-	variation_ = cfg["variation"];
-
-	name_ = cfg["name"];
 	std::string custom_unit_desc = cfg["description"];
 
-	id_ = cfg["id"];
 	underlying_id_ = lexical_cast_default<size_t>(cfg["underlying_id"],0);
 	set_underlying_id();
 
-	role_ = cfg["role"];
-	ai_special_ = cfg["ai_special"];
 	overlays_ = utils::split(cfg["overlays"]);
 	if(overlays_.size() == 1 && overlays_.front() == "") {
 		overlays_.clear();
