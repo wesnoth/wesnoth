@@ -159,7 +159,7 @@ public:
 	 *                            0 == begin, -1 == end.
 	 * @param list_builder        A grid builder that's will build the
 	 *                            contents of the new item.
-	 * @param item_data           The data to initialize the parameters of
+	 * @param data                The data to initialize the parameters of
 	 *                            the new item.
 	 * @param callback            The callback function to call when an item
 	 *                            in the grid is (de)selected.
@@ -180,7 +180,7 @@ public:
 	 *                            0 == begin, -1 == end.
 	 * @param list_builder        A grid builder that's will build the
 	 *                            contents of the new item.
-	 * @param item_data           The data to initialize the parameters of
+	 * @param data                The data to initialize the parameters of
 	 *                            the new item.
 	 * @param callback            The callback function to call when an item
 	 *                            in the grid is (de)selected.
@@ -200,7 +200,7 @@ public:
 	 *                            0 == begin, -1 == end.
 	 * @param list_builder        A grid builder that's will build the
 	 *                            contents of the new item.
-	 * @param item_data           The data to initialize the parameters of
+	 * @param data                The data to initialize the parameters of
 	 *                            the new item.
 	 * @param callback            The callback function to call when an item
 	 *                            in the grid is (de)selected.
