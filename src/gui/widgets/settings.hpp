@@ -85,22 +85,6 @@ enum twindow_type {
 
 const std::string& get_id(const twindow_type window_type);
 
-struct tlistbox_definition : public tcontrol_definition
-{
-
-	tlistbox_definition(const config& cfg);
-
-	struct tresolution : public tresolution_definition_
-	{
-		tresolution(const config& cfg);
-
-		// NOTE maybe we need the borders...
-
-		tbuilder_grid_ptr grid;
-
-	};
-};
-
 struct tmenubar_definition : public tcontrol_definition
 {
 

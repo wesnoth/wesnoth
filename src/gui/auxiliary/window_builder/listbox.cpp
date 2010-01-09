@@ -19,6 +19,7 @@
 #include "foreach.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/log.hpp"
+#include "gui/auxiliary/widget_definition/listbox.hpp"
 #include "gui/auxiliary/window_builder/helper.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "wml_exception.hpp"
