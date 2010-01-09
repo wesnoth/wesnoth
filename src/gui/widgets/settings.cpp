@@ -28,6 +28,7 @@
 #include "gui/auxiliary/widget_definition/button.hpp"
 #include "gui/auxiliary/widget_definition/horizontal_scrollbar.hpp"
 #include "gui/auxiliary/widget_definition/image.hpp"
+#include "gui/auxiliary/widget_definition/label.hpp"
 #include "gui/auxiliary/widget_definition/vertical_scrollbar.hpp"
 #include "gui/widgets/window.hpp"
 #include "serialization/parser.hpp"
@@ -442,36 +443,6 @@ tstate_definition::tstate_definition(const config &cfg) :
 	VALIDATE(draw, _("No state or draw section defined."));
 
 	canvas.set_cfg(draw);
-}
-
-tlabel_definition::tlabel_definition(const config& cfg) :
-	tcontrol_definition(cfg)
-{
-	DBG_GUI_P << "Parsing label " << id << '\n';
-
-	load_resolutions<tresolution>(cfg);
-}
-
-
-tlabel_definition::tresolution::tresolution(const config& cfg) :
-	tresolution_definition_(cfg)
-{
-/*WIKI
- * @page = GUIWidgetDefinitionWML
- * @order = 1_label
- *
- * == Label ==
- *
- * @macro = label_description
- *
- * The following states exist:
- * * state_enabled, the label is enabled.
- * * state_disabled, the label is disabled.
- */
-
-	// Note the order should be the same as the enum tstate is label.hpp.
-	state.push_back(tstate_definition(cfg.child("state_enabled")));
-	state.push_back(tstate_definition(cfg.child("state_disabled")));
 }
 
 tlistbox_definition::tlistbox_definition(const config& cfg) :

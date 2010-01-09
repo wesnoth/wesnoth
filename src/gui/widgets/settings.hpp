@@ -94,17 +94,6 @@ const std::string& get_id(const twindow_type window_type);
 struct tlistbox_definition;
 typedef tlistbox_definition thorizontal_listbox_definition;
 
-struct tlabel_definition : public tcontrol_definition
-{
-
-	tlabel_definition(const config& cfg);
-
-	struct tresolution : public tresolution_definition_
-	{
-		tresolution(const config& cfg);
-	};
-};
-
 struct tlistbox_definition : public tcontrol_definition
 {
 
