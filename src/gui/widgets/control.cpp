@@ -126,9 +126,6 @@ void tcontrol::layout_init(const bool full_initialization)
 
 void tcontrol::request_reduce_width(const unsigned maximum_width)
 {
-	// Inherited.
-	twidget::request_reduce_width(maximum_width);
-
 	assert(config_);
 
 	if(!label_.empty() && can_wrap()) {

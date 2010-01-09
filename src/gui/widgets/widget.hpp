@@ -148,13 +148,11 @@ public:
 	 * This function tries to do it 'friendly' and only use scrollbars or
 	 * wrapping of the widget.
 	 *
-	 * @todo Make pure virtual.
-	 *
 	 * @see @ref layout_algorihm for more information.
 	 *
 	 * @param maximum_width       The wanted maximum width.
 	 */
-	virtual void request_reduce_width(const unsigned /*maximum_width*/) {}
+	virtual void request_reduce_width(const unsigned maximum_width) = 0;
 
 	/**
 	 * Tries to reduce the width of a widget.
