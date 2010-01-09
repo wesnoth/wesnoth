@@ -26,6 +26,8 @@
 #include "map_exception.hpp"
 #include "wml_exception.hpp"
 
+#include <iterator>
+
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 static lg::log_domain log_engine("engine");
@@ -484,7 +486,15 @@ bool lobby_info::process_gamelist_diff(const config &data)
 		config& c = *i;
 		DBG_LB << "data process: " << c["id"] << " (" << c[config::diff_track_attribute] << ")\n";
 		if (c[config::diff_track_attribute] == "new") {
-			games_.insert(game_i, game_info(c, game_config_));
+			if (game_i == games_.end()) {
+				games_.insert(game_i, game_info(c, game_config_));
+			} else {
+				//adding not at the end should rarely if ever happen
+				int idx = std::distance(games_.begin(), game_i);
+				games_.insert(game_i, game_info(c, game_config_));
+				game_i = games_.begin();
+				std::advance(game_i, idx + 1); //go back where we were accounting for the added item
+			}
 		} else {
 			if (game_i == games_.end()) {
 				ERR_LB << "Ran out of processed games while working on a gamelist diff\n";
