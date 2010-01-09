@@ -85,17 +85,6 @@ enum twindow_type {
 
 const std::string& get_id(const twindow_type window_type);
 
-struct tminimap_definition : public tcontrol_definition
-{
-
-	tminimap_definition(const config& cfg);
-
-	struct tresolution : public tresolution_definition_
-	{
-		tresolution(const config& cfg);
-	};
-};
-
 struct tmulti_page_definition
 	: public tcontrol_definition
 {

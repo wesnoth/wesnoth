@@ -31,6 +31,7 @@
 #include "gui/auxiliary/widget_definition/label.hpp"
 #include "gui/auxiliary/widget_definition/listbox.hpp"
 #include "gui/auxiliary/widget_definition/menubar.hpp"
+#include "gui/auxiliary/widget_definition/minimap.hpp"
 #include "gui/auxiliary/widget_definition/vertical_scrollbar.hpp"
 #include "gui/widgets/window.hpp"
 #include "serialization/parser.hpp"
@@ -445,33 +446,6 @@ tstate_definition::tstate_definition(const config &cfg) :
 	VALIDATE(draw, _("No state or draw section defined."));
 
 	canvas.set_cfg(draw);
-}
-
-tminimap_definition::tminimap_definition(const config& cfg) :
-	tcontrol_definition(cfg)
-{
-	DBG_GUI_P << "Parsing minimap " << id << '\n';
-
-	load_resolutions<tresolution>(cfg);
-}
-
-tminimap_definition::tresolution::tresolution(const config& cfg) :
-	tresolution_definition_(cfg)
-{
-/*WIKI
- * @page = GUIWidgetDefinitionWML
- * @order = 1_minimap
- *
- * == Minimap ==
- *
- * @macro = minimap_description
- *
- * The following states exist:
- * * state_enabled, the minimap is enabled.
- *
- */
-	// Note the order should be the same as the enum tstate is minimap.hpp.
-	state.push_back(tstate_definition(cfg.child("state_enabled")));
 }
 
 tpanel_definition::tpanel_definition(const config& cfg) :

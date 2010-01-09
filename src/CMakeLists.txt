@@ -232,6 +232,7 @@ set(wesnoth-main_SRC
     gui/auxiliary/widget_definition/label.cpp
     gui/auxiliary/widget_definition/listbox.cpp
     gui/auxiliary/widget_definition/menubar.cpp
+    gui/auxiliary/widget_definition/minimap.cpp
     gui/auxiliary/widget_definition/vertical_scrollbar.cpp
     gui/auxiliary/window_builder/button.cpp
     gui/auxiliary/window_builder/control.cpp
