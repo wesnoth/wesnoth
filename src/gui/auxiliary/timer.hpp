@@ -39,7 +39,7 @@ namespace gui2 {
 /**
  * Adds a new timer.
  *
- * @param Uint32                  The timer interval in ms.
+ * @param interval                The timer interval in ms.
  * @param callback                The function to call when the timer expires,
  *                                the id send as parameter is the id of the
  *                                timer.
@@ -47,7 +47,7 @@ namespace gui2 {
  *                                expires.
  *
  * @returns                       The id of the timer.
- * @retval[0]                     Failed to create a timer.
+ * @retval [0]                    Failed to create a timer.
  */
 unsigned long
 add_timer(const Uint32 interval
