@@ -170,7 +170,6 @@ private:
 	/**
 	 * Fires a mouse button up event.
 	 *
-	 * @param event                  The event to fire.
 	 * @param position               The position of the mouse.
 	 * @param button                 The SDL id of the button that caused the
 	 *                               event.
@@ -180,7 +179,6 @@ private:
 	/**
 	 * Fires a mouse button down event.
 	 *
-	 * @param event                  The event to fire.
 	 * @param position               The position of the mouse.
 	 * @param button                 The SDL id of the button that caused the
 	 *                               event.
