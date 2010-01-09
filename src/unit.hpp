@@ -84,8 +84,6 @@ public:
 	/** The type id of the unit */
 	const std::string& type_id() const { return type_; }
 	const unit_type* type() const;
-	/** throw an error about unknown unit type */
-	void unknown_unit_type_error(const std::string& type_id) const;
 
 	/** id assigned by wml */
 	const std::string& id() const { if (id_.empty()) return type_name(); else return id_; }

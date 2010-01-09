@@ -81,6 +81,16 @@ void sort_units(std::vector< unit > &units)
 	std::sort(units.begin(), units.end(), compare_unit_values);
 }
 
+static void unknown_unit_type_error(const std::string &type_id)
+{
+	std::string error_message = _("Unknown unit type '$type|'");
+	utils::string_map symbols;
+	symbols["type"] = type_id;
+	error_message = utils::interpolate_variables_into_string(error_message, &symbols);
+	ERR_NG << "unit of type " << type_id << " not found!\n";
+	throw game::game_error(error_message);
+}
+
 // Copy constructor
 unit::unit(const unit& o):
            cfg_(o.cfg_),
@@ -881,16 +891,6 @@ const unit_type* unit::type() const
 	unknown_unit_type_error(type_id());
 	//shouldn't be reached
 	return NULL;
-}
-
-void unit::unknown_unit_type_error(const std::string& type_id) const
-{
-	std::string error_message = _("Unknown unit type '$type|'");
-	utils::string_map symbols;
-	symbols["type"] = type_id;
-	error_message = utils::interpolate_variables_into_string(error_message, &symbols);
-	ERR_NG << "unit of type " << type_id << " not found!\n";
-	throw game::game_error(error_message);
 }
 
 const std::string& unit::profile() const
