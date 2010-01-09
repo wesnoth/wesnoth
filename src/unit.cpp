@@ -1961,6 +1961,9 @@ int unit::upkeep() const
 	if(cfg_["upkeep"] == "loyal") {
 		return 0;
 	}
+	if(cfg_["upkeep"] == "free") {
+		return 0;
+	}
 	return lexical_cast_default<int>(cfg_["upkeep"]);
 }
 

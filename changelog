@@ -18,6 +18,8 @@ Version 1.7.11+svn:
  * WML Engine:
    * Removed bogus merging of the old unit type's movetype when advancing
      (fixes bug #15055)
+   * [unit] upkeep now accepts the 'free' value as a synonym for 'loyal'
+     It was widely used this way and worked because its integer value is 0
  * Miscellaneous and bugfixes:
    * Fix errors in tutorial when the player unexpectedly kills certain enemy
      units in scenario 2 (bug #15037)
