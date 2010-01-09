@@ -177,8 +177,8 @@ public:
 	void set_row_grow_factor(const unsigned row, const unsigned factor)
 		{ grid_.set_row_grow_factor(row, factor); }
 
-	void set_col_grow_factor(const unsigned col, const unsigned factor)
-		{ grid_.set_col_grow_factor(col, factor); }
+	void set_column_grow_factor(const unsigned column, const unsigned factor)
+		{ grid_.set_column_grow_factor(column, factor); }
 
 public:
 	/***** ***** ***** setters / getters for members ***** ****** *****/

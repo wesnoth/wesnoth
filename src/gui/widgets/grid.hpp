@@ -95,10 +95,10 @@ public:
 	 * @param column              The column to modify.
 	 * @param factor              The grow factor.
 	 */
-	void set_col_grow_factor(const unsigned col, const unsigned factor)
+	void set_column_grow_factor(const unsigned column, const unsigned factor)
 	{
-		assert(col< col_grow_factor_.size());
-		col_grow_factor_[col] = factor;
+		assert(column< col_grow_factor_.size());
+		col_grow_factor_[column] = factor;
 		set_dirty();
 	}
 

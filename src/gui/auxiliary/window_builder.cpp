@@ -475,7 +475,7 @@ twidget* tbuilder_grid::build (tgrid* grid) const
 		for(unsigned y = 0; y < cols; ++y) {
 
 			if(x == 0) {
-				grid->set_col_grow_factor(y, col_grow_factor[y]);
+				grid->set_column_grow_factor(y, col_grow_factor[y]);
 			}
 
 			DBG_GUI_G << "Window builder: adding child at " << x << ',' << y << ".\n";

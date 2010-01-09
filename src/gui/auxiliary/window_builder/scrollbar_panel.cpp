@@ -80,7 +80,7 @@ twidget* tbuilder_scrollbar_panel::build() const
 		for(unsigned y = 0; y < cols; ++y) {
 
 			if(x == 0) {
-				content_grid->set_col_grow_factor(y
+				content_grid->set_column_grow_factor(y
 						, grid->col_grow_factor[y]);
 			}
 
