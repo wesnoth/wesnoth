@@ -291,8 +291,6 @@ unit::unit(unit_map* unitmap, const config& cfg,
 
 	validate_side(side_);
 
-	std::string custom_unit_desc = cfg["description"];
-
 	underlying_id_ = lexical_cast_default<size_t>(cfg["underlying_id"],0);
 	set_underlying_id();
 
@@ -340,8 +338,8 @@ unit::unit(unit_map* unitmap, const config& cfg,
 	if(cfg["flying"] != "") {
 		flying_ = utils::string_bool(cfg["flying"]);
 	}
-	if(custom_unit_desc != "") {
-		cfg_["description"] = custom_unit_desc;
+	if (cfg.has_attribute("description")) {
+		cfg_["description"] = cfg["description"];
 	}
 	if(cfg["cost"] != "") {
 		unit_value_ = lexical_cast_default<int>(cfg["cost"]);
