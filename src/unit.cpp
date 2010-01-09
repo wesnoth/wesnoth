@@ -91,6 +91,35 @@ static void unknown_unit_type_error(const std::string &type_id)
 	throw game::game_error(error_message);
 }
 
+static unit_race::GENDER generate_gender(const std::string &type_id, bool random_gender, game_state *state)
+{
+	const unit_type *i = unit_types.find(type_id);
+	if (!i) {
+		unknown_unit_type_error(type_id);
+	}
+	const unit_type &type = *i;
+	const std::vector<unit_race::GENDER>& genders = type.genders();
+
+	if(genders.empty()) {
+		return unit_race::MALE;
+	} else if(random_gender == false || genders.size() == 1) {
+		return genders.front();
+	} else {
+		int random = state ? state->rng().get_random() : get_random();
+		return genders[random % genders.size()];
+	}
+}
+
+static unit_race::GENDER generate_gender(const config &cfg, game_state *state)
+{
+	const std::string& gender = cfg["gender"];
+	if(!gender.empty())
+		return string_gender(gender);
+
+	bool random_gender = utils::string_bool(cfg["random_gender"], false);
+	return generate_gender(cfg["type"], random_gender, state);
+}
+
 // Copy constructor
 unit::unit(const unit& o):
            cfg_(o.cfg_),
@@ -505,35 +534,6 @@ void unit::clear_status_caches()
 	units_with_cache.clear();
 }
 
-unit_race::GENDER unit::generate_gender(const std::string& type_id, bool random_gender, game_state* state)
-{
-	const unit_type *i = unit_types.find(type_id);
-	if (!i) {
-		unknown_unit_type_error(type_id);
-	}
-	const unit_type &type = *i;
-	const std::vector<unit_race::GENDER>& genders = type.genders();
-
-	if(genders.empty()) {
-		return unit_race::MALE;
-	} else if(random_gender == false || genders.size() == 1) {
-		return genders.front();
-	} else {
-		int random = state ? state->rng().get_random() : get_random();
-		return genders[random % genders.size()];
-	}
-}
-
-unit_race::GENDER unit::generate_gender(const config& cfg, game_state* state)
-{
-	const std::string& gender = cfg["gender"];
-	if(!gender.empty())
-		return string_gender(gender);
-
-	bool random_gender = utils::string_bool(cfg_["random_gender"], false);
-	return generate_gender(cfg["type"], random_gender, state);
-}
-
 unit::unit(unit_map *unitmap, const unit_type *t, int side,
 		bool real_unit, unit_race::GENDER gender) :
 	cfg_(),
@@ -558,7 +558,7 @@ unit::unit(unit_map *unitmap, const unit_type *t, int side,
 	unrenamable_(false),
 	side_(side),
 	gender_(gender != unit_race::NUM_GENDERS ?
-			gender : generate_gender(t->id(), real_unit)),
+		gender : generate_gender(t->id(), real_unit, NULL)),
 	alpha_(),
 	unit_formula_(),
 	unit_loop_formula_(),

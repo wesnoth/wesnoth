@@ -319,9 +319,6 @@ public:
 	 **/
 	unit& clone(bool is_temporary=true);
 
-	unit_race::GENDER generate_gender(const std::string& type_id, bool random_gender, game_state* state = NULL);
-	unit_race::GENDER generate_gender(const config& cfg, game_state* state);
-
 	std::string image_mods() const;
 
 	/**
