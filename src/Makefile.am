@@ -108,6 +108,7 @@ wesnoth_source = \
 	gui/auxiliary/widget_definition.cpp \
 	gui/auxiliary/widget_definition/button.cpp \
 	gui/auxiliary/widget_definition/horizontal_scrollbar.cpp \
+	gui/auxiliary/widget_definition/image.cpp \
 	gui/auxiliary/widget_definition/vertical_scrollbar.cpp \
 	gui/auxiliary/window_builder/button.cpp \
 	gui/auxiliary/window_builder/control.cpp \
