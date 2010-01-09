@@ -130,7 +130,7 @@ public:
 	 *
 	 * @param restore             Restore the screenarea the window was on
 	 *                            after closing it?
-	 * @param auto_close_time     The time in ms after which the window will
+	 * @param auto_close_timeout  The time in ms after which the window will
 	 *                            automatically close, if 0 it doesn't close.
 	 *                            @note the timeout is a minimum time and
 	 *                            there's no quarantee about how fast it closes
@@ -346,7 +346,7 @@ public:
 	 * Sets there return value of the window.
 	 *
 	 * @param retval              The return value for the window.
-	 * @param close               Close the window after setting the value.
+	 * @param close_window        Close the window after setting the value.
 	 */
 	void set_retval(const int retval, const bool close_window = true)
 		{ retval_ = retval; if(close_window) close(); }
@@ -603,7 +603,7 @@ public:
 	 *
 	 * @todo rename to keyboard_remove_from_chain.
 	 *
-	 * @parameter widget          The widget to be removed from the chain.
+	 * @param widget              The widget to be removed from the chain.
 	 */
 	void remove_from_keyboard_chain(twidget* widget);
 
