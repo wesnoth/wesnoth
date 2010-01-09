@@ -70,7 +70,7 @@ private:
  * @param title               The title of the dialog.
  * @param message             The message to show in the dialog.
  * @param message_use_markup  Use markup for the message?
- * @param title_markup_mod    Use markup for the title?
+ * @param title_use_markup    Use markup for the title?
  */
 void show_transient_message(CVideo& video, const std::string& title,
 	const std::string& message,
