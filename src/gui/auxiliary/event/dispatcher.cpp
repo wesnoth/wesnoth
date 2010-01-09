@@ -114,7 +114,7 @@ public:
  * parameter. In order to facilitate this we send the parameter in the
  * constructor of the class and let operator() call the functor with the
  * default parameters and the stored parameters. This allows the core part of
- * @ref fire to be generic.
+ * @ref tdispatcher::fire to be generic.
  */
 class ttrigger
 {

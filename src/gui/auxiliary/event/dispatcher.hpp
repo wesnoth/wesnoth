@@ -166,6 +166,8 @@ public:
 	/**
 	 * Fires an event which takes a coordinate parameter.
 	 *
+	 * @param event                  The event to fire.
+	 * @param target                 The widget that should receive the event.
 	 * @param coordinate             The mouse position for the event.
 	 */
 	bool fire(const tevent event, twidget& target, const tpoint& coordinate);
@@ -173,6 +175,8 @@ public:
 	/**
 	 * Fires an event which takes keyboard parameters.
 	 *
+	 * @param event                  The event to fire.
+	 * @param target                 The widget that should receive the event.
 	 * @param key                    The SDL key code of the key pressed.
 	 * @param modifier               The SDL key modifiers used.
 	 * @param unicode                The unicode value for the key pressed.
@@ -183,10 +187,15 @@ public:
 			, const SDLMod modifier
 			, const Uint16 unicode);
 
-	/** Fires an event which takes notification parameters. */
-	bool fire(const tevent event
-			, twidget& target
-			, void*);
+	/** 
+	 * Fires an event which takes notification parameters.
+	 *
+	 * @note the void* parameter is a dummy needed for SFINAE.
+	 *
+	 * @param event                  The event to fire.
+	 * @param target                 The widget that should receive the event.
+	 */
+	bool fire(const tevent event, twidget& target, void*);
 
 	/**
 	 * The position where to add a new callback in the signal handler.
