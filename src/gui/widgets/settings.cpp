@@ -271,8 +271,8 @@ const std::string& tgui_definition::read(const config& cfg)
 
 	/***** Control definitions *****/
 	load_definitions<tbutton_definition>("button", cfg);
-	load_definitions<thorizontal_listbox_definition>(
-			"horizontal_listbox", cfg);
+	// share the definition of the normal listbox.
+	load_definitions<tlistbox_definition>("horizontal_listbox", cfg);
 	load_definitions<thorizontal_scrollbar_definition>("horizontal_scrollbar", cfg);
 	load_definitions<timage_definition>("image", cfg);
 	load_definitions<tlabel_definition>("label", cfg);

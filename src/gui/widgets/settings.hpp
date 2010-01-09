@@ -85,15 +85,6 @@ enum twindow_type {
 
 const std::string& get_id(const twindow_type window_type);
 
-/*
- * A horizontal listbox definition is the same as a normal listbox.
- * The big difference between them is the difference in the instanciation,
- * which looks different on the WML side, still uses the normal listbox widget
- * class.
- */
-struct tlistbox_definition;
-typedef tlistbox_definition thorizontal_listbox_definition;
-
 struct tlistbox_definition : public tcontrol_definition
 {
 
