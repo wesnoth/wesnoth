@@ -262,7 +262,7 @@ public:
 	/**
 	 * Remove the widget from the keyborad chain.
 	 *
-	 * @parameter widget          The widget to be removed from the chain.
+	 * @param widget              The widget to be removed from the chain.
 	 */
 	void keyboard_remove_from_chain(twidget* widget);
 
