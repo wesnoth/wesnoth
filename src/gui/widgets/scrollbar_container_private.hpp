@@ -47,7 +47,7 @@ struct tscrollbar_container_implementation
 	 * [const] twidget* tscrollbar_container::find_at(
 	 * const tpoint&, const bool) [const].
 	 *
-	 * @param W                   twidget or const twidget.
+	 * @tparam W                  twidget or const twidget.
 	 */
 	template<class W>
 	static W* find_at(
@@ -75,7 +75,7 @@ struct tscrollbar_container_implementation
 	 * [const] twidget* tscrollbar_container::find(
 	 * const std::string&, const bool) [const].
 	 *
-	 * @param W                   twidget or const twidget.
+	 * @tparam W                  twidget or const twidget.
 	 */
 	template<class W>
 	static W* find(
