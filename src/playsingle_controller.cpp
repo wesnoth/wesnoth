@@ -220,7 +220,7 @@ void playsingle_controller::report_victory(
 				   << turns_left << "</b>\n"
 				   << _("Bonus: ")
 				   << finishing_bonus << "\n";
-	  	}
+		}
 		report << _("Gold: ")
 		       << (remaining_gold + finishing_bonus);
 	}
@@ -236,8 +236,11 @@ void playsingle_controller::report_victory(
 	std::string goldmsg;
 	utils::string_map symbols;
 
-	if (player_gold < 0) { symbols["gold"] = "0"; }
-	else { symbols["gold"] = lexical_cast_default<std::string>(player_gold); }
+	if (player_gold < 0) {
+		symbols["gold"] = "0";
+	} else {
+		symbols["gold"] = lexical_cast_default<std::string>(player_gold);
+	}
 
 	// Note that both strings are the same in english, but some languages will
 	// want to translate them differently.
