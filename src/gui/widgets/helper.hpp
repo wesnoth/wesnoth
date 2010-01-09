@@ -121,7 +121,7 @@ surface save_background(const surface& background, const SDL_Rect& rect);
 /**
  * Copies one surface unto another one.
  *
- * @param restore                The surface to copy to the background.
+ * @param restorer               The surface to copy to the background.
  * @param background             The surface to copy unto.
  * @param rect                   The area to copy to on the background.
  */
