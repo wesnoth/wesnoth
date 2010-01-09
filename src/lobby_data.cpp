@@ -528,8 +528,8 @@ bool lobby_info::process_gamelist_diff(const config &data)
 				}
 				game_i->display_status = game_info::DELETED;
 			}
-		}
 		++game_i;
+		}
 	}
 	DBG_LB << dump_games_vector(games_);
 	try {
