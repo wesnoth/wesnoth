@@ -47,6 +47,7 @@ private:
 	/**
 	 * Updates the tip of day widget.
 	 *
+	 * @param window              The window being shown.
 	 * @param previous            Show the previous tip, else shows the next
 	 *                            one.
 	 */
