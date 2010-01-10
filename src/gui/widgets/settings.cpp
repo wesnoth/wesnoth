@@ -14,7 +14,7 @@
 
 /**
  * @file src/gui/widgets/settings.cpp
- * Implementation of settingss.hpp.
+ * Implementation of settings.hpp.
  */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
