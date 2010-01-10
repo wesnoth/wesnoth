@@ -38,6 +38,7 @@
 #include "gui/auxiliary/widget_definition/scroll_label.hpp"
 #include "gui/auxiliary/widget_definition/scrollbar_panel.hpp"
 #include "gui/auxiliary/widget_definition/slider.hpp"
+#include "gui/auxiliary/widget_definition/spacer.hpp"
 #include "gui/auxiliary/widget_definition/vertical_scrollbar.hpp"
 #include "gui/widgets/window.hpp"
 #include "serialization/parser.hpp"
@@ -452,30 +453,6 @@ tstate_definition::tstate_definition(const config &cfg) :
 	VALIDATE(draw, _("No state or draw section defined."));
 
 	canvas.set_cfg(draw);
-}
-
-tspacer_definition::tspacer_definition(const config& cfg) :
-	tcontrol_definition(cfg)
-{
-	DBG_GUI_P << "Parsing spacer " << id << '\n';
-
-	load_resolutions<tresolution>(cfg);
-}
-
-
-tspacer_definition::tresolution::tresolution(const config& cfg) :
-	tresolution_definition_(cfg)
-{
-/*WIKI
- * @page = GUIWidgetDefinitionWML
- * @order = 1_spacer
- *
- * == Spacer ==
- *
- * @macro = spacer_description
- *
- * A spacer has no states so nothing to load.
- */
 }
 
 tstacked_widget_definition::tstacked_widget_definition(const config& cfg) :

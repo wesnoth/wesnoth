@@ -239,6 +239,7 @@ set(wesnoth-main_SRC
     gui/auxiliary/widget_definition/scroll_label.cpp
     gui/auxiliary/widget_definition/scrollbar_panel.cpp
     gui/auxiliary/widget_definition/slider.cpp
+    gui/auxiliary/widget_definition/spacer.cpp
     gui/auxiliary/widget_definition/vertical_scrollbar.cpp
     gui/auxiliary/window_builder/button.cpp
     gui/auxiliary/window_builder/control.cpp
