@@ -35,6 +35,7 @@
 #include "gui/auxiliary/widget_definition/multi_page.hpp"
 #include "gui/auxiliary/widget_definition/panel.hpp"
 #include "gui/auxiliary/widget_definition/repeating_button.hpp"
+#include "gui/auxiliary/widget_definition/scroll_label.hpp"
 #include "gui/auxiliary/widget_definition/vertical_scrollbar.hpp"
 #include "gui/widgets/window.hpp"
 #include "serialization/parser.hpp"
@@ -449,59 +450,6 @@ tstate_definition::tstate_definition(const config &cfg) :
 	VALIDATE(draw, _("No state or draw section defined."));
 
 	canvas.set_cfg(draw);
-}
-
-tscroll_label_definition::tscroll_label_definition(const config& cfg) :
-	tcontrol_definition(cfg)
-{
-	DBG_GUI_P << "Parsing scroll label " << id << '\n';
-
-	load_resolutions<tresolution>(cfg);
-}
-
-tscroll_label_definition::tresolution::tresolution(const config& cfg) :
-	tresolution_definition_(cfg),
-	grid(NULL)
-{
-/*WIKI
- * @page = GUIWidgetDefinitionWML
- * @order = 1_scroll_label
- *
- * == Scroll label ==
- *
- * @macro = scroll_label_description
- *
- * This widget is slower as a normal label widget so only use this widget
- * when the scrollbar is required (or expected to become required).
- *
- * @start_table = config
- *     grid (grid)                     A grid containing the widgets for main
- *                                     widget.
- * @end_table
- *
- * TODO we need one definition for a vertical scrollbar since this is the second
- * time we use it.
- *
- * @start_table = container
- *     _content_grid (grid)            A grid which should only contain one
- *                                     label widget.
- *     _scrollbar_grid (grid)          A grid for the scrollbar
- *                                     (Merge with listbox info.)
- * @end_table
- *
- * The following states exist:
- * * state_enabled, the scroll label is enabled.
- * * state_disabled, the scroll label is disabled.
- *
- */
-	// Note the order should be the same as the enum tstate is scroll_label.hpp.
-	state.push_back(tstate_definition(cfg.child("state_enabled")));
-	state.push_back(tstate_definition(cfg.child("state_disabled")));
-
-	const config &child = cfg.child("grid");
-	VALIDATE(child, _("No grid defined."));
-
-	grid = new tbuilder_grid(child);
 }
 
 tscrollbar_panel_definition::tscrollbar_panel_definition(const config& cfg)

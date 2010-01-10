@@ -86,19 +86,6 @@ enum twindow_type {
 
 const std::string& get_id(const twindow_type window_type);
 
-struct tscroll_label_definition : public tcontrol_definition
-{
-
-	tscroll_label_definition(const config& cfg);
-
-	struct tresolution : public tresolution_definition_
-	{
-		tresolution(const config& cfg);
-
-		tbuilder_grid_ptr grid;
-	};
-};
-
 struct tscrollbar_panel_definition : public tcontrol_definition
 {
 

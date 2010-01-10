@@ -19,6 +19,7 @@
 #include "config.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/window_builder/helper.hpp"
+#include "gui/auxiliary/widget_definition/scroll_label.hpp"
 #include "gui/widgets/scroll_label.hpp"
 
 namespace gui2 {
