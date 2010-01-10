@@ -669,8 +669,8 @@ static int impl_unit_get(lua_State *L)
 	unit const &u = ui->second;
 
 	// Find the corresponding attribute.
-	return_int_attrib("x", ui->first.x);
-	return_int_attrib("y", ui->first.y);
+	return_int_attrib("x", ui->first.x + 1);
+	return_int_attrib("y", ui->first.y + 1);
 	return_int_attrib("side", u.side());
 	return_string_attrib("id", u.id());
 	return_int_attrib("hitpoints", u.hitpoints());
