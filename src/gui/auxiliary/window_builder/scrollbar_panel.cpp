@@ -19,6 +19,7 @@
 #include "config.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/log.hpp"
+#include "gui/auxiliary/widget_definition/scrollbar_panel.hpp"
 #include "gui/auxiliary/window_builder/helper.hpp"
 #include "gui/widgets/scrollbar_panel.hpp"
 #include "wml_exception.hpp"
