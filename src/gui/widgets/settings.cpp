@@ -33,6 +33,7 @@
 #include "gui/auxiliary/widget_definition/menubar.hpp"
 #include "gui/auxiliary/widget_definition/minimap.hpp"
 #include "gui/auxiliary/widget_definition/multi_page.hpp"
+#include "gui/auxiliary/widget_definition/panel.hpp"
 #include "gui/auxiliary/widget_definition/vertical_scrollbar.hpp"
 #include "gui/widgets/window.hpp"
 #include "serialization/parser.hpp"
@@ -449,54 +450,6 @@ tstate_definition::tstate_definition(const config &cfg) :
 	canvas.set_cfg(draw);
 }
 
-tpanel_definition::tpanel_definition(const config& cfg) :
-	tcontrol_definition(cfg)
-{
-
-	DBG_GUI_P << "Parsing panel " << id << '\n';
-
-	load_resolutions<tresolution>(cfg);
-}
-
-tpanel_definition::tresolution::tresolution(const config& cfg) :
-	tresolution_definition_(cfg),
-	top_border(lexical_cast_default<unsigned>(cfg["top_border"])),
-	bottom_border(lexical_cast_default<unsigned>(cfg["bottom_border"])),
-	left_border(lexical_cast_default<unsigned>(cfg["left_border"])),
-	right_border(lexical_cast_default<unsigned>(cfg["right_border"]))
-{
-/*WIKI
- * @page = GUIWidgetDefinitionWML
- * @order = 1_panel
- *
- * == Panel ==
- *
- * @macro = panel_description
- *
- * A panel is always enabled and can't be disabled. Instead it uses the
- * states as layers to draw on.
- *
- * The resolution for a panel also contains the following keys:
- * @start_table = config
- *     top_border (unsigned = 0)     The size which isn't used for the client
- *                                   area.
- *     bottom_border (unsigned = 0)  The size which isn't used for the client
- *                                   area.
- *     left_border (unsigned = 0)    The size which isn't used for the client
- *                                   area.
- *     right_border (unsigned = 0)   The size which isn't used for the client
- *                                   area.
- * @end_table
- *
- * The following layers exist:
- * * background, the background of the panel.
- * * foreground, the foreground of the panel.
- */
-
-	// The panel needs to know the order.
-	state.push_back(tstate_definition(cfg.child("background")));
-	state.push_back(tstate_definition(cfg.child("foreground")));
-}
 
 trepeating_button_definition::trepeating_button_definition(const config& cfg) :
 	tcontrol_definition(cfg)

@@ -22,6 +22,7 @@
 
 #include "gui/auxiliary/formula.hpp"
 #include "gui/auxiliary/widget_definition.hpp"
+#include "gui/auxiliary/widget_definition/panel.hpp"
 #include "gui/auxiliary/window_builder.hpp"
 #include "tstring.hpp"
 
@@ -84,23 +85,6 @@ enum twindow_type {
 };
 
 const std::string& get_id(const twindow_type window_type);
-
-struct tpanel_definition : public tcontrol_definition
-{
-
-	tpanel_definition(const config& cfg);
-
-	struct tresolution : public tresolution_definition_
-	{
-		tresolution(const config& cfg);
-
-		unsigned top_border;
-		unsigned bottom_border;
-
-		unsigned left_border;
-		unsigned right_border;
-	};
-};
 
 struct trepeating_button_definition
 	: public tcontrol_definition
