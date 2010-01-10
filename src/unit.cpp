@@ -1953,6 +1953,10 @@ int unit::upkeep() const
 	return lexical_cast_default<int>(cfg_["upkeep"]);
 }
 
+bool unit::loyal() const
+{
+	return cfg_["upkeep"] == "loyal" || cfg_["upkeep"] == "free";
+}
 
 int unit::movement_cost(const t_translation::t_terrain terrain) const
 {

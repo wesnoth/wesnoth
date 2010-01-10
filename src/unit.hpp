@@ -219,7 +219,7 @@ public:
 	std::vector<map_location>& waypoints() { return waypoints_; }
 
 	int upkeep() const;
-	bool loyal() const {return cfg_["upkeep"]=="loyal"; }
+	bool loyal() const;
 
 	void set_hidden(bool state);
 	bool get_hidden() const { return hidden_; }
