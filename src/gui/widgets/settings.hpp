@@ -86,18 +86,6 @@ enum twindow_type {
 
 const std::string& get_id(const twindow_type window_type);
 
-struct trepeating_button_definition
-	: public tcontrol_definition
-{
-	trepeating_button_definition(const config& cfg);
-
-	struct tresolution : public tresolution_definition_
-	{
-		tresolution(const config& cfg);
-	};
-
-};
-
 struct tscroll_label_definition : public tcontrol_definition
 {
 

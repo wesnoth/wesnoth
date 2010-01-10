@@ -34,6 +34,7 @@
 #include "gui/auxiliary/widget_definition/minimap.hpp"
 #include "gui/auxiliary/widget_definition/multi_page.hpp"
 #include "gui/auxiliary/widget_definition/panel.hpp"
+#include "gui/auxiliary/widget_definition/repeating_button.hpp"
 #include "gui/auxiliary/widget_definition/vertical_scrollbar.hpp"
 #include "gui/widgets/window.hpp"
 #include "serialization/parser.hpp"
@@ -448,41 +449,6 @@ tstate_definition::tstate_definition(const config &cfg) :
 	VALIDATE(draw, _("No state or draw section defined."));
 
 	canvas.set_cfg(draw);
-}
-
-
-trepeating_button_definition::trepeating_button_definition(const config& cfg) :
-	tcontrol_definition(cfg)
-{
-	DBG_GUI_P << "Parsing repeating button " << id << '\n';
-
-	load_resolutions<tresolution>(cfg);
-}
-
-trepeating_button_definition::tresolution::tresolution(const config& cfg) :
-	tresolution_definition_(cfg)
-{
-/*WIKI
- * @page = GUIWidgetDefinitionWML
- * @order = 1_repeating_button
- *
- * == Repeating button ==
- *
- * @macro = repeating_button_description
- *
- * The following states exist:
- * * state_enabled, the repeating_button is enabled.
- * * state_disabled, the repeating_button is disabled.
- * * state_pressed, the left mouse repeating_button is down.
- * * state_focussed, the mouse is over the repeating_button.
- *
- */
-	// Note the order should be the same as the enum tstate in
-	// repeating_button.hpp.
-	state.push_back(tstate_definition(cfg.child("state_enabled")));
-	state.push_back(tstate_definition(cfg.child("state_disabled")));
-	state.push_back(tstate_definition(cfg.child("state_pressed")));
-	state.push_back(tstate_definition(cfg.child("state_focussed")));
 }
 
 tscroll_label_definition::tscroll_label_definition(const config& cfg) :
