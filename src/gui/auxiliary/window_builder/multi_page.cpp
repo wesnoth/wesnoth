@@ -20,6 +20,7 @@
 #include "foreach.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/log.hpp"
+#include "gui/auxiliary/widget_definition/multi_page.hpp"
 #include "gui/widgets/multi_page.hpp"
 #include "wml_exception.hpp"
 

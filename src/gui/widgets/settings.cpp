@@ -32,6 +32,7 @@
 #include "gui/auxiliary/widget_definition/listbox.hpp"
 #include "gui/auxiliary/widget_definition/menubar.hpp"
 #include "gui/auxiliary/widget_definition/minimap.hpp"
+#include "gui/auxiliary/widget_definition/multi_page.hpp"
 #include "gui/auxiliary/widget_definition/vertical_scrollbar.hpp"
 #include "gui/widgets/window.hpp"
 #include "serialization/parser.hpp"
@@ -455,40 +456,6 @@ tpanel_definition::tpanel_definition(const config& cfg) :
 	DBG_GUI_P << "Parsing panel " << id << '\n';
 
 	load_resolutions<tresolution>(cfg);
-}
-
-tmulti_page_definition::tmulti_page_definition(const config& cfg) :
-	tcontrol_definition(cfg)
-{
-	DBG_GUI_P << "Parsing multipage " << id << '\n';
-
-	load_resolutions<tresolution>(cfg);
-}
-
-tmulti_page_definition::tresolution::tresolution(const config& cfg) :
-	tresolution_definition_(cfg),
-	grid(NULL)
-{
-/*WIKI
- * @page = GUIWidgetDefinitionWML
- * @order = 1_multi_page
- *
- * == Multi page ==
- *
- * @macro = multi_page_description
- *
- * @start_table = config
- *     grid (grid)                     A grid containing the widgets for main
- *                                     widget.
- * @end_table
- *
- * A multipage has no states.
- */
-
-	const config &child = cfg.child("grid");
-	VALIDATE(child, _("No grid defined."));
-
-	grid = new tbuilder_grid(child);
 }
 
 tpanel_definition::tresolution::tresolution(const config& cfg) :
