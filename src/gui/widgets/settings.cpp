@@ -43,6 +43,7 @@
 #include "gui/auxiliary/widget_definition/text_box.hpp"
 #include "gui/auxiliary/widget_definition/toggle_button.hpp"
 #include "gui/auxiliary/widget_definition/toggle_panel.hpp"
+#include "gui/auxiliary/widget_definition/tooltip.hpp"
 #include "gui/auxiliary/widget_definition/vertical_scrollbar.hpp"
 #include "gui/widgets/window.hpp"
 #include "serialization/parser.hpp"
@@ -457,35 +458,6 @@ tstate_definition::tstate_definition(const config &cfg) :
 	VALIDATE(draw, _("No state or draw section defined."));
 
 	canvas.set_cfg(draw);
-}
-
-ttooltip_definition::ttooltip_definition(const config& cfg) :
-	tcontrol_definition(cfg)
-{
-	DBG_GUI_P << "Parsing tooltip " << id << '\n';
-
-	load_resolutions<tresolution>(cfg);
-}
-
-ttooltip_definition::tresolution::tresolution(const config& cfg) :
-	tresolution_definition_(cfg)
-
-{
-/*WIKI
- * @page = GUIWidgetDefinitionWML
- * @order = 1_tooltip
- *
- * == Tooltip ==
- *
- * The definition of a tooltip.
- *
- * The following states exist:
- * * state_enabled, the tooltip has only one state, it's either shown or hidden.
- *
- */
-
-	// Note only one state for a tooltip.
-	state.push_back(tstate_definition(cfg.child("state_enabled")));
 }
 
 twindow_definition::twindow_definition(const config& cfg) :
