@@ -42,6 +42,7 @@
 #include "gui/auxiliary/window_builder/password_box.hpp"
 #include "gui/auxiliary/window_builder/toggle_panel.hpp"
 #include "gui/auxiliary/window_builder/vertical_scrollbar.hpp"
+#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "formula_string_utils.hpp"
 

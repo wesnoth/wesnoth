@@ -16,6 +16,7 @@
 #include "gui/dialogs/lobby_player_info.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
+#include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
 
 #include "game_preferences.hpp"

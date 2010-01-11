@@ -19,6 +19,7 @@
 #include "gui/dialogs/helper.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/listbox.hpp"
+#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 
 #include "../../foreach.hpp"

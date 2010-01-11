@@ -23,6 +23,7 @@
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/password_box.hpp"
+#include "gui/widgets/settings.hpp"
 #include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/toggle_button.hpp"
 

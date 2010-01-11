@@ -21,6 +21,7 @@
 #include "gui/dialogs/field.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
+#include "gui/widgets/settings.hpp"
 
 namespace gui2 {
 

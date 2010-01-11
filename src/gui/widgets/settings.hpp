@@ -20,17 +20,10 @@
 #ifndef GUI_WIDGETS_SETTING_HPP_INCLUDED
 #define GUI_WIDGETS_SETTING_HPP_INCLUDED
 
-#include "gui/auxiliary/formula.hpp"
-#include "gui/auxiliary/widget_definition.hpp"
 #include "gui/auxiliary/widget_definition/window.hpp"
-#include "gui/auxiliary/window_builder.hpp"
-#include "tstring.hpp"
 
-#include <map>
 #include <string>
 #include <vector>
-
-class config;
 
 namespace gui2 {
 

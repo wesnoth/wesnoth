@@ -49,6 +49,7 @@
 #include "gui/widgets/debug.hpp"
 #endif
 #include "gui/auxiliary/event/handler.hpp"
+#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "help.hpp"
 #include "hotkeys.hpp"

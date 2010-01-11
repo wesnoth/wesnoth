@@ -24,6 +24,7 @@
 #include "gui/widgets/integer_selector.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/minimap.hpp"
+#include "gui/widgets/settings.hpp"
 #include "../../settings.hpp"
 
 namespace gui2 {

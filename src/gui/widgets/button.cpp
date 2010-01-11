@@ -17,6 +17,7 @@
 #include "gui/widgets/button.hpp"
 
 #include "gui/auxiliary/log.hpp"
+#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "sound.hpp"
 

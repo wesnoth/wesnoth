@@ -19,6 +19,7 @@
 #include "gui/widgets/button.hpp"
 #include "gui/dialogs/field.hpp"
 #include "gui/widgets/label.hpp"
+#include "gui/widgets/settings.hpp"
 
 #include "game_preferences.hpp"
 

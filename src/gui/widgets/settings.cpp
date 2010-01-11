@@ -19,6 +19,8 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
+#include "gui/widgets/settings.hpp"
+
 #include "asserts.hpp"
 #include "config_cache.hpp"
 #include "filesystem.hpp"

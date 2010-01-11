@@ -25,7 +25,6 @@
 #include "gui/auxiliary/formula.hpp"
 #include "gui/widgets/helper.hpp"
 #include "gui/widgets/panel.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/tooltip.hpp"
 
 #include "events.hpp"

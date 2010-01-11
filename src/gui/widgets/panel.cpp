@@ -17,6 +17,7 @@
 #include "gui/widgets/panel.hpp"
 
 #include "gui/auxiliary/log.hpp"
+#include "gui/auxiliary/widget_definition/panel.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'

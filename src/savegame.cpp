@@ -24,6 +24,7 @@
 #include "gui/dialogs/game_load.hpp"
 #include "gui/dialogs/game_save.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "map.hpp"

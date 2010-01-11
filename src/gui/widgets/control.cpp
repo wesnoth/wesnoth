@@ -19,6 +19,7 @@
 #include "font.hpp"
 #include "foreach.hpp"
 #include "gui/auxiliary/log.hpp"
+#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "marked-up_text.hpp"
 

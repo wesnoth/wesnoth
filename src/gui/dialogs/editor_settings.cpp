@@ -21,6 +21,7 @@
 
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
+#include "gui/widgets/settings.hpp"
 #include "gui/widgets/slider.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gettext.hpp"

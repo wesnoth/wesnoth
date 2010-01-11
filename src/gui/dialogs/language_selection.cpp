@@ -18,6 +18,7 @@
 
 #include "foreach.hpp"
 #include "gui/widgets/listbox.hpp"
+#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "language.hpp"
 #include "preferences.hpp"

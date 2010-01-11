@@ -20,6 +20,7 @@
 #include "formatter.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/widget_definition/slider.hpp"
+#include "gui/widgets/settings.hpp"
 #include "sound.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
