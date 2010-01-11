@@ -18,6 +18,7 @@
 
 #include "foreach.hpp"
 #include "gui/auxiliary/log.hpp"
+#include "gui/auxiliary/widget_definition/toggle_panel.hpp"
 #include "gui/widgets/window.hpp"
 #include "sound.hpp"
 
