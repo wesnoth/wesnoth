@@ -121,6 +121,7 @@ wesnoth_source = \
 	gui/auxiliary/widget_definition/slider.cpp \
 	gui/auxiliary/widget_definition/spacer.cpp \
 	gui/auxiliary/widget_definition/stacked_widget.cpp \
+	gui/auxiliary/widget_definition/text_box.cpp \
 	gui/auxiliary/widget_definition/vertical_scrollbar.cpp \
 	gui/auxiliary/window_builder/button.cpp \
 	gui/auxiliary/window_builder/control.cpp \

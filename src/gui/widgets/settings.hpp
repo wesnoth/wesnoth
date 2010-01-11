@@ -86,21 +86,6 @@ enum twindow_type {
 
 const std::string& get_id(const twindow_type window_type);
 
-struct ttext_box_definition : public tcontrol_definition
-{
-
-	ttext_box_definition(const config& cfg);
-
-	struct tresolution : public tresolution_definition_
-	{
-		tresolution(const config& cfg);
-
-		tformula<unsigned> text_x_offset;
-		tformula<unsigned> text_y_offset;
-	};
-
-};
-
 struct ttoggle_button_definition : public tcontrol_definition
 {
 	ttoggle_button_definition(const config& cfg);

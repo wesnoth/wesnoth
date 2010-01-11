@@ -19,6 +19,7 @@
 #include "font.hpp"
 #include "foreach.hpp"
 #include "gui/auxiliary/log.hpp"
+#include "gui/auxiliary/widget_definition/text_box.hpp"
 #include "gui/widgets/window.hpp"
 #include "game_preferences.hpp"
 
