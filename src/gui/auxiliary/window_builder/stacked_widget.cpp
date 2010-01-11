@@ -20,6 +20,7 @@
 #include "foreach.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/log.hpp"
+#include "gui/auxiliary/widget_definition/stacked_widget.hpp"
 #include "gui/widgets/stacked_widget.hpp"
 #include "wml_exception.hpp"
 

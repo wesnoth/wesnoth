@@ -39,6 +39,7 @@
 #include "gui/auxiliary/widget_definition/scrollbar_panel.hpp"
 #include "gui/auxiliary/widget_definition/slider.hpp"
 #include "gui/auxiliary/widget_definition/spacer.hpp"
+#include "gui/auxiliary/widget_definition/stacked_widget.hpp"
 #include "gui/auxiliary/widget_definition/vertical_scrollbar.hpp"
 #include "gui/widgets/window.hpp"
 #include "serialization/parser.hpp"
@@ -453,37 +454,6 @@ tstate_definition::tstate_definition(const config &cfg) :
 	VALIDATE(draw, _("No state or draw section defined."));
 
 	canvas.set_cfg(draw);
-}
-
-tstacked_widget_definition::tstacked_widget_definition(const config& cfg) :
-	tcontrol_definition(cfg)
-{
-	DBG_GUI_P << "Parsing stacked widget " << id << '\n';
-
-	load_resolutions<tresolution>(cfg);
-}
-
-tstacked_widget_definition::tresolution::tresolution(const config& cfg) :
-	tresolution_definition_(cfg),
-	grid(NULL)
-{
-/*WIKI
- * @page = GUIWidgetDefinitionWML
- * @order = 1_stacked_widget
- *
- * == Multi page ==
- *
- * The documentation is not written yet.
- */
-
-	// Add a dummy state since every widget needs a state.
-	static config dummy ("draw");
-	state.push_back(tstate_definition(dummy));
-
-	const config &child = cfg.child("grid");
-	VALIDATE(child, _("No grid defined."));
-
-	grid = new tbuilder_grid(child);
 }
 
 ttext_box_definition::ttext_box_definition(const config& cfg) :
