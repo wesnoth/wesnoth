@@ -3,19 +3,20 @@
 #
 # Automatically generated, 2004.
 # Santtu Pajukanta <santtu@pajukanta.fi>, 2007.
+# Samu Voutilainen <smar@smar.fi>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-01-02 13:54+0100\n"
-"PO-Revision-Date: 2009-09-02 00:02+0200\n"
-"Last-Translator: Mikko Nikkilä <miccoh@gmail.com>\n"
-"Language-Team: Finnish\n"
+"POT-Creation-Date: 2010-01-02 14:15+0100\n"
+"PO-Revision-Date: 2010-01-10 21:25+0200\n"
+"Last-Translator: Samu Voutilainen <smar@smar.fi>\n"
+"Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 1.0\n"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:5
@@ -25,7 +26,7 @@ msgstr "Tiivistetyt tallennukset"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:12
 msgid "Confirm deleting saves"
-msgstr ""
+msgstr "Varmista tallennuksien poisto "
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:19
@@ -65,7 +66,7 @@ msgstr "Näytä taistelu"
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:68
 msgid "Ping Timeout"
-msgstr ""
+msgstr "Aikakatkaisu"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:69
@@ -73,26 +74,28 @@ msgid ""
 "Number of seconds to wait for a ping reply before we time out. Disable with "
 "0."
 msgstr ""
+"Sekuntien määrä ennen kuin yhteys katkaistaan. Poista käytöstä asettamalla "
+"nollaksi. "
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:79
 msgid "Accept whisper messages from friends only"
-msgstr ""
+msgstr "Hyväksy yksityisviestit vain ystäviltä. "
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:86
 msgid "Auto-open whisper windows in lobby"
-msgstr ""
+msgstr "Avaa yksityisviesti-ikkunat automaattisesti aulassa"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:93
 msgid "Group players in lobby"
-msgstr ""
+msgstr "Ryhmitä pelaajat aulassa"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:100
 msgid "Lobby sounds"
-msgstr ""
+msgstr "Aulan äänet"
 
 #. [time]: id=underground
 #. [illuminated_time]: id=underground_illum
@@ -357,9 +360,8 @@ msgstr "Brittienglanninkielinen käännös"
 
 #. [about]
 #: data/core/about.cfg:1357
-#, fuzzy
 msgid "English (Shaw) Translation"
-msgstr "Brittienglanninkielinen käännös"
+msgstr "Eglanninkielinen(Shaw) käännös"
 
 #. [about]
 #: data/core/about.cfg:1381
@@ -533,9 +535,8 @@ msgstr "Valenciankatalaaninkielinen käännös"
 
 #. [about]
 #: data/core/about.cfg:2340
-#, fuzzy
 msgid "Vietnamese Translation"
-msgstr "Kiinankielinen käännös"
+msgstr "Vietnaminkielinen käännös"
 
 #. [about]
 #: data/core/about.cfg:2347
@@ -587,9 +588,8 @@ msgstr "Hyökkäystaidot"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=factions_section
 #: data/core/help.cfg:67 src/help.cpp:1287 src/help.cpp:1289
-#, fuzzy
 msgid "Factions"
-msgstr "Liittouma"
+msgstr "Liittoumat"
 
 #. [section]: id=terrains
 #. [topic]: id=..terrains
@@ -2867,7 +2867,6 @@ msgstr "Moninpelikomennot"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:810
-#, fuzzy
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -2876,12 +2875,13 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Potki pelaaja moninpelistä, ja estä hänen IP-osoitteensa.\n"
+"Potki käyttäjä moninpelistä ja estä hänen IP-osoitteensa. Voidaan käyttää "
+"käyttäjiin, jotka eivät ole pelissä, mutta palvelimella. Luonnollisesti "
+"heitä ei silloin potkita pois.\n"
 "\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:813
-#, fuzzy
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -2892,16 +2892,16 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Vaihda armeijaa kontrolloiva pelaaja (kirjoita tähän armeijan numero) "
-"käyttäjänimeksi (kirjoita tähän pelaajan tai tarkkailijan käyttäjänimi). "
-"Voit valita, mikä puoli kuuluu millekin pelaajalle Skenaarion asetukset -"
-"dialogissa (paina Lisää-nappia Statistiikkataulukossa, jonne pääsee "
-"näppäinyhdistelmällä alt+s).\n"
+"Vaihda puolta kontrolloiva käyttäjä (kirjoita tähän armeijan numero) "
+"toiseksi (kirjoita tähän pelaajan tai tarkkailijan käyttäjänimi). Voit "
+"tarkistaa, mikä puoli kuuluu millekin pelaajalle skenaarion asetukset -"
+"valintaikkunassa (paina Lisää-nappia statistiikkataulukossa, jonne pääsee "
+"näppäinyhdistelmällä alt+s). Pelin isäntä voi hallita minkä tahansa puolen "
+"kontrollia. \n"
 "\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:816
-#, fuzzy
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. If you "
@@ -2910,9 +2910,8 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Potki pelaaja pois moninpelistä. Pelaaja pystyy palaamaan peliin. Tätä "
-"käytetään tavallisesti poistamaan pelaaja, jolla on yhteys- tai muita "
-"ongelmia.\n"
+"Potki pelaaja pois moninpelistä. Pelaaja pystyy palaamaan peliin. Jos haluat "
+"vain vaihtaa pelaajien puolia, käytä komentoa :control tämän sijaan.\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -2930,18 +2929,17 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:822
-#, fuzzy
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
 "\n"
 msgstr ""
 "\n"
-"Hiljennä tai poista hiljennys kaikilta tarkkailijoilta."
+"Hiljennä tai poista hiljennys kaikilta tarkkailijoilta.\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:825
-#, fuzzy
 msgid ""
 "\n"
 "Unban a user in a multiplayer game by the IP address used by that username. "
@@ -2949,21 +2947,20 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Potki pelaaja moninpelistä, ja estä hänen IP-osoitteensa.\n"
+"Salli estetyn pelaajan tuleminen takaisin peliin. Voidaan käyttää "
+"käyttäjiin, jotka eivät ole pelissä, mutta ovat palvelimella.\n"
 "\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:826
-#, fuzzy
 msgid ""
 "\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
 "observers is cleared."
 msgstr ""
 "\n"
-"Hiljennä nimeltämainittu tarkkailija. Jos nimeä ei anneta, näyttää "
-"hiljennetyt pelaajatunnukset.\n"
-"\n"
+"Hiljennä nimeltä mainittu tarkkailija. Jos nimeä ei anneta, hiljennettyjen "
+"käyttäjien lista tyhjennetään."
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:833
@@ -3062,7 +3059,6 @@ msgstr ""
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:861
-#, fuzzy
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -3070,8 +3066,9 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Muokkaa määriteltyä valitun yksikön ominaisuutta. Esimerkki: :unit "
-"hitpoints=100"
+"Muokkaa määrättyä valitun yksikön ominaisuutta. Esimerkki: :unit "
+"hitpoints=100\n"
+"\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:862
@@ -3079,6 +3076,8 @@ msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
 msgstr ""
+"\n"
+"Aiheuttaa yksikön ylenemisen n kertaa. Esimerkki: :unit advances=2"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:51
@@ -3461,13 +3460,11 @@ msgstr ""
 
 #. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:615
-#, fuzzy
 msgid "petrifies"
-msgstr "iskut"
+msgstr "kivettää"
 
 #. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:617
-#, fuzzy
 msgid ""
 "Petrify:\n"
 "This attack petrifies the target, turning it to stone. Units that have been "
@@ -3565,6 +3562,8 @@ msgstr ""
 #: data/core/macros/ai.cfg:438
 msgid "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
 msgstr ""
+"Kysy yksikköä $ally_leader.name (puolen $ally_leader.side johtaja) "
+"liikkumaan tänne"
 
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:144
@@ -3753,42 +3752,37 @@ msgid "Exit"
 msgstr "Poistu"
 
 #: data/core/macros/ai_controller.cfg:1047
-#, fuzzy
 msgid "Set special orders..."
-msgstr "Aseta käyttäytyminen..."
+msgstr "Aseta erikoisohjeet..."
 
 #: data/core/macros/ai_controller.cfg:1048
 msgid "Move leader to..."
-msgstr ""
+msgstr "Siirrä johtaja..."
 
 #: data/core/macros/ai_controller.cfg:1049
-#, fuzzy
 msgid "Right-click to select a location to move leader to"
-msgstr "Klikkaa oikealla hiirenkorvalla haluamaasi puolustuspaikkaa"
+msgstr ""
+"Klikkaa oikealla hiirenkorvalla valitaksesi paikan johtajasi siirtämiselle"
 
 #: data/core/macros/ai_controller.cfg:1050
 msgid "Move leader here"
-msgstr ""
+msgstr "Siirrä johtaja tänne"
 
 #: data/core/macros/ai_controller.cfg:1051
 msgid "moving leader to $x1|,$y1|."
-msgstr ""
+msgstr "siirretään johtajaa paikkaan $x1|,$y1|."
 
 #: data/core/macros/ai_controller.cfg:1052
-#, fuzzy
 msgid "Clear special orders"
-msgstr "Poista kaikki käskyt"
+msgstr "Poista erikoiskäskyt"
 
 #: data/core/macros/ai_controller.cfg:1053
-#, fuzzy
 msgid ""
 "Special: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_special_description"
 msgstr ""
-"Tavoite: $ai_controller.side_$ally_side|_current_settings."
-"currently_doing_objective_description\n"
-"Käyttäytyminen: $ai_controller.side_$ally_side|_current_settings."
-"currently_doing_behaviour_description"
+"Erikoiskäsky: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_objective_description"
 
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
@@ -3814,9 +3808,8 @@ msgid "No early finish bonus."
 msgstr "Ei palkintoa aikaisesta lopetuksesta."
 
 #: data/core/macros/carryover-utils.cfg:15
-#, fuzzy
 msgid "<small>(early finish bonus)</small>"
-msgstr "`(aikaisesen lopetuksen bonus)"
+msgstr "<small>(aikaisen lopetuksen bonus)</small>"
 
 #: data/core/macros/carryover-utils.cfg:18
 msgid "No gold carried over to the next scenario."
@@ -3850,9 +3843,8 @@ msgstr ""
 #. [objective]: description=<span color='white'>, condition=win
 #: data/core/macros/carryover-utils.cfg:34
 #: data/core/macros/carryover-utils.cfg:42
-#, fuzzy
 msgid "Alternative objective:"
-msgstr "Aseta tavoite..."
+msgstr "Vaihtoehtoinen tavoite:"
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:39
@@ -3936,13 +3928,13 @@ msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr "Myrkky virtaa tälläkin hetkellä tämän yksikön suonissa."
 
 #: data/core/macros/items.cfg:287
-#, fuzzy
 msgid ""
 "Sprinkling this water on melee weapons grants them the 'arcane' damage type "
 "until the end of the current scenario. Should $unit.name use it?"
 msgstr ""
-"Tämä vesi antaa lähitaisteluaseille salatieteen vahinkomuodon skenaarion "
-"loppuun asti."
+"Tämän veden pirskottaminen lähitaisteluaseen päälle antaa sille salatieteen "
+"vahinkotyypiksi nykyisen skenaarion loppuun saakka. Pitäisikö yksikön $unit."
+"name käyttää se?"
 
 #: data/core/macros/items.cfg:288
 msgid "I am not suited to the use of this item! Let another take it."
@@ -4041,7 +4033,6 @@ msgid "storm trident"
 msgstr "myrskyjen kolmikärki"
 
 #: data/core/macros/names.cfg:18
-#, fuzzy
 msgid ""
 "Egar,Elch,Ga'ash,Gadé Ihn,Gakré Ohm,Galeck,Galsh,Garadin,Garchin,Gark,Garlan,"
 "Garlin Ohn,Garrutin,Gart'lo,Garushi,Gashinar,Gashol,Gaushii,Gaustun,Gegchi,"
@@ -4053,26 +4044,25 @@ msgid ""
 "Merritos Gark,Morusté,Murr,Omataké,Reshan,Vashitt,Velnick,Veralon,Veramo,"
 "Verath,Verditt,Verkon,Verlinn,Vermad,Vertick,Vladnir"
 msgstr ""
-"Egar,Elch,Ga’ash,Gadé Ihn,Gakré Ohm,Galeck,Galsh,Garadin,Garchin,Gark,Garlan,"
-"Garlin ohn,Garrutin,Gart'lo,Garushi,Gashinar,Gashöl,Gaushii,Gaustun,Gegchi,"
-"Gelka Kon,Gelknick,Gillan,Gisharri,Goyst,Grada,Græt Ihn,Grashen,Gravlan,Gray,"
-"Grelnit,Grenn ohn,Gretz,Gribbel,Gridda,Grish,Gron ih,Ka,Kahn Ih,Karigan,"
-"Karri Kon,Karron,Kasp,Kegrid,Kerath Ihn,Kerath Kor,Klash,Kon Garashé,Kraag,"
-"Krall Ohn,Kran Kor,Krash,Kraslar,Krenli,Kruggen,Kun,Mah Toa,Mal,Margian,"
-"Marhildian,Markan,Markinos,Mar Ohn,Marra Di'lek,Marrito,Marritos,Merkush,"
+"Egar,Elch,Ga'ash,Gadé Ihn,Gakré Ohm,Galeck,Galsh,Garadin,Garchin,Gark,Garlan,"
+"Garlin Ohn,Garrutin,Gart'lo,Garushi,Gashinar,Gashol,Gaushii,Gaustun,Gegchi,"
+"Gelka Kon,Gelknick,Gillan,Gisharri,Gost,Grada,Græt Ihn,Grashen,Gravlan,Grag,"
+"Grelnit,Grenn Ohn,Greth,Gribbel,Gridda,Grish,Gron Ihn,Ka,Kahn Ih,Karigan,"
+"Karri Kon,Karron,Kask,Kegrid,Kerath Ihn,Kerath Kor,Klash,Kon Garashé,Kraag,"
+"Krall Ohn,Kran Kor,Krash,Kraslar,Krenli,Kruggen,Kun,Mah Toa,Margian,"
+"Mar'Ildian,Markan,Markinos,Mar Ohn,Marra Di'lek,Marrito,Marritos,Merkush,"
 "Merritos Gark,Morusté,Murr,Omataké,Reshan,Vashitt,Velnick,Veralon,Veramo,"
-"Verath,Verditt,Verkon,Verlinn,Vermay,Vertick,Vladnir"
+"Verath,Verditt,Verkon,Verlinn,Vermad,Vertick,Vladnir"
 
 #: data/core/macros/names.cfg:19
-#, fuzzy
 msgid ""
 "Alen Ka,Alinash Mal,Ashirt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
 "Eshi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orrida,Oshibi,Vallin,Valnirra,"
 "Valnitt,Velisk,Verra,Vellin Ka,Veshtar,Vushtin"
 msgstr ""
-"Alen Ka,Alinash Mal,Ashijt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
-"Eshyi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orriday,Oshibi,Vallin,Valnirra,"
-"Valnitt,Velisp,Vellin Ka,Vushtin,Werra,Weshter,Wilniss"
+"Alen Ka,Alinash Mal,Ashirt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
+"Eshi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orrida,Oshibi,Vallin,Valnirra,"
+"Valnitt,Velisk,Verra,Vellin Ka,Veshtar,Vushtin"
 
 #: data/core/macros/names.cfg:23
 msgid ""
@@ -5177,7 +5167,7 @@ msgstr "elinvoimainen"
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:133
 msgid "Always rest heals"
-msgstr ""
+msgstr "Aina lepämisestä johtuvat paranemiset"
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:150 data/core/macros/traits.cfg:163
@@ -5226,9 +5216,8 @@ msgstr "hämärtää"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:221
-#, fuzzy
 msgid "aged"
-msgstr "kaukotaistelu"
+msgstr "ikääntynyt"
 
 #. [color_range]: id=red
 #. [color_range]: id=1
@@ -5239,12 +5228,12 @@ msgstr "Punainen"
 #. [color_range]: id=lightred
 #: data/core/team-colors.cfg:20
 msgid "Light Red"
-msgstr ""
+msgstr "Vaaleanpunainen"
 
 #. [color_range]: id=darkred
 #: data/core/team-colors.cfg:26
 msgid "Dark Red"
-msgstr ""
+msgstr "Tummanpunainen"
 
 #. [color_range]: id=blue
 #. [color_range]: id=2
@@ -5712,7 +5701,6 @@ msgstr "Ihmiset"
 
 #. [race]: id=human
 #: data/core/units.cfg:169
-#, fuzzy
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -6284,40 +6272,39 @@ msgstr "$name|järvi,$name|vesi"
 #. [language]
 #: data/hardwired/english.cfg:24
 msgid "$name's Peak,Mount $name"
-msgstr ""
+msgstr "$name|:n huippu, $name|-vuori"
 
 #. [language]
 #: data/hardwired/english.cfg:25
-#, fuzzy
 msgid "$name's Swamp,$name|marsh,$name|fen"
-msgstr "$name|maa,$name|kylä,$name|pelto"
+msgstr "$name|:n suo,$name|-suomaa,$name|-letto"
 
 #. [language]
 #: data/hardwired/english.cfg:26
-#, fuzzy
 msgid "$name|bury,$name|ham,$name|ton,$name|bury"
-msgstr "$name|kylä,$name|kylä,$name|tupa,$name|pitäjä,$name|pää"
+msgstr "$name|piilo,$name|mökki,$name|kylä,$name|pitäjä"
 
 #. [language]
 #: data/hardwired/english.cfg:27
-#, fuzzy
 msgid "$name|harbor,$name|port,$lake|port,$lake|harbor"
-msgstr "$name|lahti,$name|niemi,$name|ranta,$name|järvi,$name|satama"
+msgstr "$name|satama,$name|niemi,$lake|niemi,$lake|satama"
 
 #. [language]
 #: data/hardwired/english.cfg:28
-#, fuzzy
 msgid ""
 "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross,$name on river"
-msgstr "$name|joki,$name|virta,$name|puro,$name|koski,$river|kylä,$river|koski"
+msgstr ""
+"$name|mökki,$name|kahlaamo,$name|ylitys,$river|kahlaamo,$river|ylitys,$name "
+"on river"
 
 #. [language]
 #: data/hardwired/english.cfg:29
-#, fuzzy
 msgid ""
 "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge,$bridge|ham,"
 "$bridge|ton"
-msgstr "$river|silta,$river|ylitys,$river|raja,$name|asema,$name|silta"
+msgstr ""
+"$river|silta,$river|silta,$river|silta,$name|mökki,$name|silta,$bridge|mökki,"
+"$bridge|kylä"
 
 #. [language]
 #: data/hardwired/english.cfg:30
@@ -6326,11 +6313,11 @@ msgstr "$name|maa,$name|kylä,$name|pelto"
 
 #. [language]
 #: data/hardwired/english.cfg:31
-#, fuzzy
 msgid ""
 "$name|ham,$name|ton,$name|wood,$name Forest,$forest|wood,$forest|ham,$forest|"
 "ton"
-msgstr "$name|kylä,$name|kylä,$name|metsä,$name|korpi"
+msgstr ""
+"$name|mökki,$name|kylä,$name|puusto,$name|-metsä,$forest|mökki,$forest|kylä"
 
 #. [language]
 #: data/hardwired/english.cfg:32
@@ -6340,7 +6327,7 @@ msgstr "$name|mäki,$name|kumpu,$name|harju,$name|kukkula,$name|rinne"
 #. [language]
 #: data/hardwired/english.cfg:33
 msgid "$mountain|mont,$mountain|cliff,$mountain|bury,$mountain|ham"
-msgstr ""
+msgstr "$mountain|suoja,$mountain|jyrkänne,$mountain|piilo,$mountain|mökki"
 
 #. [language]
 #: data/hardwired/english.cfg:34
@@ -6354,12 +6341,14 @@ msgstr ""
 #: data/hardwired/english.cfg:35
 msgid "$road's Rest,$road's Waypoint,$road|bury,$road|ham,$name|bury,$name|ham"
 msgstr ""
+"$road|:n taukopaikka,$road|:n välietappi,$road|piilo,$road|mökki,$name|piilo,"
+"$name|mökki"
 
 #. [language]
 #: data/hardwired/english.cfg:36
-#, fuzzy
 msgid "$name|bury,$name|ham,$name|ton,$swamp|bury,$swamp|ham,$swamp|ton,"
-msgstr "$name|kylä,$name|kylä,$name|tupa,$name|pitäjä,$name|pää"
+msgstr ""
+"$name|piilo,$name|mökki,$name|kylä,$name|piilo,$swamp|piilo,$swamp|pitäjä"
 
 #. [language]
 #: data/hardwired/english.cfg:39
@@ -7172,15 +7161,13 @@ msgstr "kokemustaso"
 
 #. [unit_moves]: id=unit-moves
 #: data/themes/default.cfg:459 data/themes/experimental.cfg:399
-#, fuzzy
 msgid "statuspanel^moves"
 msgstr "liikepisteet"
 
 #. [unit_defense]: id=unit-defense
 #: data/themes/default.cfg:468 data/themes/experimental.cfg:408
-#, fuzzy
 msgid "statuspanel^terrain def."
-msgstr "kokemustaso"
+msgstr "puol. maastossa"
 
 #. [change]: id=actions-menu
 #: data/themes/default.cfg:1004
@@ -7282,27 +7269,24 @@ msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Linnassa ei ole tyhjää tilaa, johon värvätä."
 
 #: src/actions.cpp:536 src/actions.cpp:595 src/actions.cpp:1526
-#, fuzzy
 msgid "An invalid attacker weapon got selected."
-msgstr "Virheellinen aikakausi valittu."
+msgstr "Epäkelpo hyökkäysväline valittu."
 
 #: src/actions.cpp:541
-#, fuzzy
 msgid "An invalid defender weapon got selected."
-msgstr "Virheellinen aikakausi valittu."
+msgstr "Epäkelpo puolustusväline valittu."
 
 #: src/actions.cpp:1284
 msgid "female^poisoned"
 msgstr "myrkytetty"
 
 #: src/actions.cpp:1294
-#, fuzzy
 msgid "female^petrified"
-msgstr "myrkytetty"
+msgstr "kivetetty"
 
 #: src/actions.cpp:1294
 msgid "petrified"
-msgstr ""
+msgstr "kivetetty"
 
 #: src/actions.cpp:2481
 msgid "Ambushed!"
@@ -7397,9 +7381,8 @@ msgid "addon_type^Resources"
 msgstr "apuvälineet"
 
 #: src/addon_management.cpp:470
-#, fuzzy
 msgid "addon_type^Other"
-msgstr "MP-aikakausi"
+msgstr "Muu"
 
 #: src/addon_management.cpp:472
 msgid "addon_type^(unknown)"
@@ -7410,26 +7393,23 @@ msgid "Dependencies"
 msgstr "Riippuvuudet"
 
 #: src/addon_management.cpp:506
-#, fuzzy
 msgid ""
 "$addon_title depends upon the following add-on which you have not installed "
 "yet:"
 msgid_plural ""
 "$addon_title depends upon the following add-ons which you have not installed "
 "yet:"
-msgstr[0] ""
-"Tämä lisäosa tarvitsee seuraavan lisäosan, jota ei ole vielä asennettu:"
+msgstr[0] "$addon_title vaatii lisäosia, joita ei ole vielä asennettu: "
 msgstr[1] ""
 "Tämä lisäosa tarvitsee seuraavat lisäosat, joita ei ole vielä asennettu:"
 
 #: src/addon_management.cpp:509
-#, fuzzy
 msgid ""
 "Do you still want to download $addon_title|? (You will have to install all "
 "the dependencies in order to play.)"
 msgstr ""
-"Haluatko ladata tämän lisäosan? (Pelatakseen on tästä huolimatta asennettava "
-"tarvittavat riippuvuudet.)"
+"Haluatko ladata lisäosan $addon_title? (Pelatakseen tätä lisäosaa sinun on "
+"asennettava tarvittavat riippuvuudet.)"
 
 #: src/addon_management.cpp:527 src/addon_management.cpp:599
 #: src/multiplayer.cpp:214 src/multiplayer.cpp:274 src/multiplayer_ui.cpp:80
@@ -7616,7 +7596,7 @@ msgstr "Suodatin: "
 
 #: src/addon_management.cpp:1122
 msgid "Description"
-msgstr ""
+msgstr "Kuvaus"
 
 #: src/addon_management.cpp:1159
 msgid "Network communication error."
@@ -7977,7 +7957,7 @@ msgstr "Info:"
 
 #: src/game_events.cpp:3268
 msgid "[unit_worth]'s filter didn't match any units!"
-msgstr ""
+msgstr "[unit_worth]-suodatin ei täsmää yhteenkään yksikköön!"
 
 #: src/generate_report.cpp:128
 msgid "invisible: "
@@ -8021,10 +8001,9 @@ msgstr ""
 
 #: src/generate_report.cpp:140
 msgid "petrified: "
-msgstr ""
+msgstr "kivetetty: "
 
 #: src/generate_report.cpp:141
-#, fuzzy
 msgid "This unit has been petrified. It may not move or attack."
 msgstr "Tämä yksikkö on kivetetty. Se ei voi liikkua eikä hyökätä."
 
@@ -8091,39 +8070,36 @@ msgid "Observers:"
 msgstr "Tarkkailijat:"
 
 #: src/gui/dialogs/lobby_player_info.cpp:64
-#, fuzzy
 msgid "In game:"
-msgstr "Nimi:"
+msgstr "Pelissä:"
 
 #: src/gui/dialogs/lobby_player_info.cpp:66
 msgid "(observing)"
-msgstr ""
+msgstr "(tarkkailee)"
 
 #: src/gui/dialogs/lobby_player_info.cpp:68
 msgid "(playing)"
-msgstr ""
+msgstr "(pelaa)"
 
 #: src/gui/dialogs/lobby_player_info.cpp:71
 msgid "In lobby"
-msgstr ""
+msgstr "Aulassa"
 
 #: src/gui/dialogs/lobby_player_info.cpp:95
-#, fuzzy
 msgid "On friends list"
-msgstr "Lisätyt ystävälistalle: "
+msgstr "Ystävälistalla"
 
 #: src/gui/dialogs/lobby_player_info.cpp:100
-#, fuzzy
 msgid "On ignores list"
-msgstr "Et enää saa viestejä, jotka lähettää "
+msgstr "Suodatuslistalla"
 
 #: src/gui/dialogs/lobby_player_info.cpp:105
 msgid "Neither a friend nor ignored"
-msgstr ""
+msgstr "Ei ystävä eikä suodatettuna"
 
 #: src/gui/dialogs/lobby_player_info.cpp:110
 msgid "You"
-msgstr ""
+msgstr "Sinä"
 
 #: src/gui/dialogs/lobby_player_info.cpp:113 src/multiplayer_create.cpp:541
 msgid "Error"
@@ -8142,27 +8118,24 @@ msgid "<header>text='Units having this ability'</header>"
 msgstr "<header>text='Yksiköt tällä ominaisuudella'</header>"
 
 #: src/help.cpp:1249
-#, fuzzy
 msgid "Leaders:"
-msgstr "Johtaja: "
+msgstr "Johtajat:"
 
 #: src/help.cpp:1258
-#, fuzzy
 msgid "Recruits:"
-msgstr "Värvättävät: "
+msgstr "Värvättävät:"
 
 #: src/help.cpp:1272 src/multiplayer_create.cpp:79
 msgid "Era:"
 msgstr "Aikakausi:"
 
 #: src/help.cpp:1280
-#, fuzzy
 msgid "Factions:"
-msgstr "Liittouma"
+msgstr "Liittoumat:"
 
 #: src/help.cpp:1290
 msgid "Factions are only used in multiplayer"
-msgstr ""
+msgstr "Liittoumat ovat käytössä vain moninpelissä"
 
 #: src/help.cpp:1364
 msgid "Advances from: "
@@ -8308,19 +8281,16 @@ msgid "?"
 msgstr "?"
 
 #: src/loadscreen.cpp:244
-#, fuzzy
 msgid "Verifying cache..."
-msgstr "Tarkistetaan välimuistia"
+msgstr "Tarkistetaan väliaikaistiedostoja..."
 
 #: src/loadscreen.cpp:262
-#, fuzzy
 msgid "Reading unit files..."
-msgstr "Luetaan yksikkötiedostoja."
+msgstr "Luetaan yksikkötiedostoja..."
 
 #: src/loadscreen.cpp:280
-#, fuzzy
 msgid "Reading files and creating cache..."
-msgstr "Luetaan tiedostoja ja luodaan väliaikaistiedostoa."
+msgstr "Luetaan tiedostoja ja luodaan väliaikaistiedostoja"
 
 #: src/lobby_data.cpp:201
 msgid "Unknown era: $era_id"
@@ -8670,6 +8640,7 @@ msgstr ""
 #: src/menu_events.cpp:2217
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr ""
+"Poista käyttäjän esto. Hänen ei tarvitse olla pelissä, mutta palvelimella. "
 
 #: src/menu_events.cpp:2220
 msgid "Kick a player or observer."
@@ -8680,14 +8651,14 @@ msgid "Mute an observer. Without an argument displays the mute status."
 msgstr "Hiljennä katsoja. Ilman parametreja näyttää hiljennyksen tilan."
 
 #: src/menu_events.cpp:2224
-#, fuzzy
 msgid "Unmute an observer. Without an argument unmutes everyone."
-msgstr "Hiljennä katsoja. Ilman parametreja näyttää hiljennyksen tilan."
+msgstr ""
+"Vastaanota katsojan viestit. Ilman parametrejä poistaa suodatuksen kaikilta "
+"katsojilta."
 
 #: src/menu_events.cpp:2226
-#, fuzzy
 msgid "Mute/Unmute all observers. (toggles)"
-msgstr "Hiljennä kaikki katsojat."
+msgstr "Hiljennä/salli kaikki katsojat."
 
 #: src/menu_events.cpp:2236
 msgid "Send a message to the server admins currently online"
@@ -8752,30 +8723,28 @@ msgid "Request a list of details you can set for your registered nick."
 msgstr "Pyydä listaa tiedoista, jotka olet asettanut nimimerkillesi."
 
 #: src/menu_events.cpp:2271
-#, fuzzy
 msgid "Join a room."
-msgstr "Liity peliin"
+msgstr "Liity huoneeseen."
 
 #: src/menu_events.cpp:2274
 msgid "Part a room."
-msgstr ""
+msgstr "Poistu huoneesta."
 
 #: src/menu_events.cpp:2276
-#, fuzzy
 msgid "List room members."
-msgstr "Lista palvelimista"
+msgstr "Näytä huoneen jäsenet."
 
 #: src/menu_events.cpp:2278
 msgid "List available rooms."
-msgstr ""
+msgstr "Näytä saatavilla olevat huoneet."
 
 #: src/menu_events.cpp:2280
 msgid "Room message."
-msgstr ""
+msgstr "Huoneviesti"
 
 #: src/menu_events.cpp:2282
 msgid "Room query."
-msgstr ""
+msgstr "Huoneen jono."
 
 #: src/menu_events.cpp:2411
 msgid "Refresh gui."
@@ -8837,7 +8806,7 @@ msgstr "Poista virheenetsintätila pois käytöstä."
 
 #: src/menu_events.cpp:2446
 msgid "Execute a Lua statement."
-msgstr ""
+msgstr "Suorita Lua-skripti."
 
 #: src/menu_events.cpp:2448
 msgid "Set the command used by the custom command hotkey"
@@ -8845,7 +8814,7 @@ msgstr "Aseta komento käyttäjän omalle komentopikanäppäimelle"
 
 #: src/menu_events.cpp:2450
 msgid "Launch the gamestate inspector"
-msgstr ""
+msgstr "Käynnistä pelitilan tarkkailija."
 
 #: src/menu_events.cpp:2452
 msgid "Set or show alias to a command"
@@ -8865,7 +8834,7 @@ msgstr "Muuta yksikkömuuttujaa (vain ylimmän tason avaimet ovat tuettuja)."
 
 #: src/menu_events.cpp:2465
 msgid "Discover all units in help."
-msgstr ""
+msgstr "Paljasta kaikki yksiköt ohjeessa. "
 
 #: src/menu_events.cpp:2470
 msgid "Create a unit."
@@ -9098,7 +9067,7 @@ msgstr "tietokonepelaaja"
 
 #: src/multiplayer_connect.cpp:663
 msgid "$playername $side"
-msgstr ""
+msgstr "$playername $side"
 
 #: src/multiplayer_connect.cpp:667
 msgid "(Empty slot)"
@@ -9109,9 +9078,8 @@ msgid "(Reserved for $playername)"
 msgstr "(varattu pelaajalle $playername)"
 
 #: src/multiplayer_connect.cpp:679
-#, fuzzy
 msgid "(empty)"
-msgstr "tyhjä"
+msgstr "(tyhjä)"
 
 #: src/multiplayer_connect.cpp:789
 msgid "Reserved"
@@ -9182,11 +9150,8 @@ msgid "Victory:"
 msgstr "Voitto:"
 
 #: src/multiplayer_connect.cpp:1584
-#, fuzzy
 msgid "Defeat enemy leader(s)"
-msgstr ""
-"Voitto:\n"
-"@Kukista vihollisjohtaja(t)"
+msgstr "Kukista vihollisjohtaja(t)"
 
 #: src/multiplayer_connect.cpp:1678
 msgid "Waiting for players to join..."
@@ -9468,11 +9433,11 @@ msgstr "Alustetaan näyttöä"
 
 #: src/play_controller.cpp:199
 msgid "time left for current turn"
-msgstr ""
+msgstr "Aikaa jäljellä nykyisellä vuorolla"
 
 #: src/play_controller.cpp:201 src/replay_controller.cpp:136
 msgid "current local time"
-msgstr ""
+msgstr "tämänhetkinen paikallinen aika"
 
 #: src/play_controller.cpp:239
 msgid "Starting game"
@@ -9517,12 +9482,11 @@ msgstr "Tuntematon skenaario: '$scenario|'"
 
 #: src/playmp_controller.cpp:94
 msgid "$name has taken control"
-msgstr ""
+msgstr "$name on ottanut kontrollin"
 
 #: src/playmp_controller.cpp:96
-#, fuzzy
 msgid "Turn changed"
-msgstr "kaukotaistelu"
+msgstr "Vuoro vaihtui"
 
 #: src/playmp_controller.cpp:228
 msgid "Undoing moves not yet transmitted to the server."
@@ -9622,12 +9586,12 @@ msgid "The game is over."
 msgstr "Peli on ohitse."
 
 #: src/playsingle_controller.cpp:495
-#, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game\n"
 "cannot continue. Do you want to save the game?"
 msgstr ""
-"Verkkoyhteys on katkennut, eikä peli voi jatkua. Haluatko tallentaa pelin?"
+"Verkkoyhteys on katkennut, eikä peli voi jatkua.\n"
+"Haluatko tallentaa pelin?"
 
 #: src/playsingle_controller.cpp:655
 msgid "It is now $name|'s turn"
@@ -9690,9 +9654,8 @@ msgid "This is not a multiplayer save"
 msgstr "Tämä ei ole moninpelin tallenne"
 
 #: src/savegame.cpp:605
-#, fuzzy
 msgid "The game could not be saved: "
-msgstr "Peliä ei voitu tallentaa."
+msgstr "Peliä ei voitu tallentaa: "
 
 #: src/savegame.cpp:692
 msgid "Name: "
