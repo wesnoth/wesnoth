@@ -460,38 +460,6 @@ tstate_definition::tstate_definition(const config &cfg) :
 	canvas.set_cfg(draw);
 }
 
-twindow_definition::twindow_definition(const config& cfg) :
-	tcontrol_definition(cfg)
-{
-/*WIKI
- * @page = GUIWidgetDefinitionWML
- * @order = 1_window
- *
- * == Window ==
- *
- * The definition of a window. A window is a kind of panel see the panel for
- * which fields exist
- *
- */
-
-	DBG_GUI_P << "Parsing window " << id << '\n';
-
-	load_resolutions<tresolution>(cfg);
-}
-
-twindow_definition::tresolution::tresolution(const config& cfg)
-	: tpanel_definition::tresolution(cfg)
-	, grid(NULL)
-{
-	const config &child = cfg.child("grid");
-//	VALIDATE(child, _("No grid defined."));
-
-	/** @todo Evaluate whether the grid should become mandatory. */
-	if(child) {
-		grid = new tbuilder_grid(child);
-	}
-}
-
 tresolution_definition_ptr get_control(
 		const std::string& control_type, const std::string& definition)
 {

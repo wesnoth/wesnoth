@@ -22,7 +22,7 @@
 
 #include "gui/auxiliary/formula.hpp"
 #include "gui/auxiliary/widget_definition.hpp"
-#include "gui/auxiliary/widget_definition/panel.hpp"
+#include "gui/auxiliary/widget_definition/window.hpp"
 #include "gui/auxiliary/window_builder.hpp"
 #include "tstring.hpp"
 
@@ -85,20 +85,6 @@ enum twindow_type {
 };
 
 const std::string& get_id(const twindow_type window_type);
-
-struct twindow_definition
-	: public tcontrol_definition
-{
-	twindow_definition(const config& cfg);
-
-	struct tresolution
-		: public tpanel_definition::tresolution
-	{
-		tresolution(const config& cfg);
-
-		tbuilder_grid_ptr grid;
-	};
-};
 
 struct tgui_definition
 {
