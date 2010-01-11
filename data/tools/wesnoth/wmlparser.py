@@ -374,10 +374,11 @@ class Parser:
                     return None
             # If it is a directory, parse all cfg files within.
             if os.path.isdir(dirpath):
+                # Note: glob.glob will return 
                 # Execute all WML files in the directory.
-                files = glob.glob(dirpath + "/*.cfg")
+                files = glob.glob(str(dirpath + "/*.cfg"))
                 # And also execute directories with a _main.cfg.
-                files += glob.glob(dirpath + "/*/_main.cfg")
+                files += glob.glob(str(dirpath + "/*/_main.cfg"))
                 files.sort()
                 mc = dirpath + "/_main.cfg"
                 fc = dirpath + "/_final.cfg"
