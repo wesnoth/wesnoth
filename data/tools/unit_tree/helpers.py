@@ -139,7 +139,8 @@ class ImageCollector:
                 p.wait()
             else:
                 sys.stderr.write(
-                    "Warning: Required image %s: \"%s\" does not exist.\n" % (c, i))
+                    "Warning: Required image %s: \"%s\" does not exist.\n" % (
+                        repr(c), repr(i)))
                 if self.verbose:
                     sys.stderr.write("Warning: Looked at the following locations:\n")
                     sys.stderr.write("\n".join(bases) + "\n")
@@ -352,7 +353,10 @@ class WesnothList:
                     except KeyError:
                         sys.stderr.write(
                             ("Error: Era '%s' faction '%s' references " +
-                            "non-existant unit id '%s'!\n") % (eid, fid, uid))
+                            "non-existant unit id '%s'!\n") % (
+                                eid,
+                                fid,
+                                repr(uid)))
                         continue
                     if not eid in unit.eras:
                         unit.eras.append(eid)

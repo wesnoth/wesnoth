@@ -111,7 +111,7 @@ class HTMLOutput:
                         except KeyError:
                             sys.stderr.write(
                                 "Warning: Unit %s not found as advancement of %s\n" %
-                                (auid, uid))
+                                (auid, repr(uid)))
                             continue
                         forest.add_node(helpers.UnitNode(au))
                         new_units_added[auid] = au
