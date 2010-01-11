@@ -41,6 +41,7 @@
 #include "gui/auxiliary/widget_definition/spacer.hpp"
 #include "gui/auxiliary/widget_definition/stacked_widget.hpp"
 #include "gui/auxiliary/widget_definition/text_box.hpp"
+#include "gui/auxiliary/widget_definition/toggle_button.hpp"
 #include "gui/auxiliary/widget_definition/vertical_scrollbar.hpp"
 #include "gui/widgets/window.hpp"
 #include "serialization/parser.hpp"
@@ -455,46 +456,6 @@ tstate_definition::tstate_definition(const config &cfg) :
 	VALIDATE(draw, _("No state or draw section defined."));
 
 	canvas.set_cfg(draw);
-}
-
-ttoggle_button_definition::ttoggle_button_definition(const config& cfg) :
-	tcontrol_definition(cfg)
-{
-	DBG_GUI_P << "Parsing toggle button " << id << '\n';
-
-	load_resolutions<tresolution>(cfg);
-}
-
-ttoggle_button_definition::tresolution::tresolution(const config& cfg) :
-	tresolution_definition_(cfg)
-{
-/*WIKI
- * @page = GUIWidgetDefinitionWML
- * @order = 1_toggle_button
- *
- * == Toggle button ==
- *
- * The definition of a toggle button.
- *
- * The following states exist:
- * * state_enabled, the button is enabled and not selected.
- * * state_disabled, the button is disabled and not selected.
- * * state_focussed, the mouse is over the button and not selected.
- *
- * * state_enabled_selected, the button is enabled and selected.
- * * state_disabled_selected, the button is disabled and selected.
- * * state_focussed_selected, the mouse is over the button and selected.
- *
- */
-
-	// Note the order should be the same as the enum tstate is toggle_button.hpp.
-	state.push_back(tstate_definition(cfg.child("state_enabled")));
-	state.push_back(tstate_definition(cfg.child("state_disabled")));
-	state.push_back(tstate_definition(cfg.child("state_focussed")));
-
-	state.push_back(tstate_definition(cfg.child("state_enabled_selected")));
-	state.push_back(tstate_definition(cfg.child("state_disabled_selected")));
-	state.push_back(tstate_definition(cfg.child("state_focussed_selected")));
 }
 
 ttoggle_panel_definition::ttoggle_panel_definition(const config& cfg) :
