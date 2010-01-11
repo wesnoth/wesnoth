@@ -76,97 +76,67 @@ namespace settings {
 
 namespace {
 
-	/** Map with all known windows, (the builder class builds a window). */
-	std::map<std::string, twindow_builder> windows;
-
-	/** Map with all known guis. */
-	std::map<std::string, tgui_definition> guis;
-
-	/** Points to the current gui. */
-	std::map<std::string, tgui_definition>::const_iterator current_gui = guis.end();
-
 	/**
-	 * Vector with all known windows, these are validated on existance on startup.
+	 * Vector with all known windows, these are validated on existance on
+	 * startup.
+	 *
 	 * The enum twindow_type is the index of the array.
 	 */
 	std::vector<std::string> window_type_list(COUNT);
-} // namespace
 
-static void fill_window_types()
+struct tgui_definition
 {
-	window_type_list[ADDON_CONNECT] = "addon_connect";
-	window_type_list[ADDON_LIST] = "addon_list";
-	window_type_list[CAMPAIGN_SELECTION] = "campaign_selection";
-	window_type_list[LANGUAGE_SELECTION] = "language_selection";
-	window_type_list[WML_MESSAGE_LEFT] = "wml_message_left";
-	window_type_list[WML_MESSAGE_RIGHT] = "wml_message_right";
-	window_type_list[MESSAGE] = "message";
-	window_type_list[TRANSIENT_MESSAGE] = "transient_message";
-	window_type_list[MP_CONNECT] = "mp_connect";
-	window_type_list[MP_METHOD_SELECTION] = "mp_method_selection";
-	window_type_list[MP_SERVER_LIST] = "mp_server_list";
-	window_type_list[MP_LOGIN] = "mp_login";
-	window_type_list[MP_CMD_WRAPPER] = "mp_cmd_wrapper";
-	window_type_list[MP_CREATE_GAME] = "mp_create_game";
-	window_type_list[TITLE_SCREEN] = "title_screen";
-	window_type_list[GAME_LOAD] = "game_load";
-	window_type_list[GAME_DELETE] = "game_delete";
-	window_type_list[GAME_SAVE] = "game_save";
-	window_type_list[GAME_SAVE_MESSAGE] = "game_save_message";
-	window_type_list[GAME_SAVE_OOS] = "game_save_oos";
-#ifndef DISABLE_EDITOR
-	window_type_list[EDITOR_NEW_MAP] = "editor_new_map";
-	window_type_list[EDITOR_GENERATE_MAP] = "editor_generate_map";
-	window_type_list[EDITOR_RESIZE_MAP] = "editor_resize_map";
-	window_type_list[EDITOR_SETTINGS] = "editor_settings";
-#endif
-	window_type_list[LOBBY_MAIN] = "lobby_main";
-	window_type_list[LOBBY_PLAYER_INFO] = "lobby_player_info";
-	window_type_list[UNIT_CREATE] = "unit_create";
-	window_type_list[FORMULA_DEBUGGER] = "formula_debugger";
-	window_type_list[GAMESTATE_INSPECTOR] = "gamestate_inspector";
-}
-
-const std::string& get_id(const twindow_type window_type)
-{
-	assert(window_type >= 0 && window_type < COUNT);
-
-	return window_type_list[window_type];
-}
-
-void load_settings()
-{
-	LOG_GUI_G << "Setting: init gui.\n";
-
-	// Init.
-	fill_window_types();
-
-	twindow::update_screen_size();
-
-	// Read file.
-	config cfg;
-	try {
-		preproc_map preproc(
-				game_config::config_cache::instance().get_preproc_map());
-		scoped_istream stream = preprocess_file(get_wml_location("gui/default.cfg"), &preproc);
-
-		read(cfg, *stream);
-	} catch(config::error&) {
-		ERR_GUI_P << "Setting: could not read file 'data/gui/default.cfg'.\n";
+	tgui_definition()
+		: id()
+		, description()
+		, control_definition()
+		, windows()
+		, window_types()
+		, popup_show_delay_(0)
+		, popup_show_time_(0)
+		, help_show_time_(0)
+		, double_click_time_(0)
+		, repeat_button_repeat_time_(0)
+		, sound_button_click_()
+		, sound_toggle_button_click_()
+		, sound_toggle_panel_click_()
+		, sound_slider_adjust_()
+	{
 	}
 
-	// Parse guis
-	foreach (const config &g, cfg.child_range("gui")) {
-		std::pair<std::string, tgui_definition> child;
-		child.first = child.second.read(g);
-		guis.insert(child);
-	}
+	std::string id;
+	t_string description;
 
-	VALIDATE(guis.find("default") != guis.end(), _ ("No default gui defined."));
+	const std::string& read(const config& cfg);
 
-	current_gui = guis.find("default");
-	current_gui->second.activate();
-}
+	/** Activates a gui. */
+	void activate() const;
+
+	typedef std::map <std::string /*control type*/,
+		std::map<std::string /*id*/, tcontrol_definition_ptr> >
+		tcontrol_definition_map;
+
+	tcontrol_definition_map control_definition;
+
+	std::map<std::string, twindow_definition> windows;
+
+	std::map<std::string, twindow_builder> window_types;
+private:
+	template<class T>
+	void load_definitions(const std::string& definition_type,
+		const config &cfg, const char *key = NULL);
+
+	unsigned popup_show_delay_;
+	unsigned popup_show_time_;
+	unsigned help_show_time_;
+	unsigned double_click_time_;
+	unsigned repeat_button_repeat_time_;
+
+	std::string sound_button_click_;
+	std::string sound_toggle_button_click_;
+	std::string sound_toggle_panel_click_;
+	std::string sound_slider_adjust_;
+};
 
 const std::string& tgui_definition::read(const config& cfg)
 {
@@ -434,6 +404,94 @@ void tgui_definition::load_definitions(
 	VALIDATE(control_definition[definition_type].find("default")
 		!= control_definition[definition_type].end(), msg);
 }
+
+	/** Map with all known windows, (the builder class builds a window). */
+	std::map<std::string, twindow_builder> windows;
+
+	/** Map with all known guis. */
+	std::map<std::string, tgui_definition> guis;
+
+	/** Points to the current gui. */
+	std::map<std::string, tgui_definition>::const_iterator current_gui = guis.end();
+
+} // namespace
+
+static void fill_window_types()
+{
+	window_type_list[ADDON_CONNECT] = "addon_connect";
+	window_type_list[ADDON_LIST] = "addon_list";
+	window_type_list[CAMPAIGN_SELECTION] = "campaign_selection";
+	window_type_list[LANGUAGE_SELECTION] = "language_selection";
+	window_type_list[WML_MESSAGE_LEFT] = "wml_message_left";
+	window_type_list[WML_MESSAGE_RIGHT] = "wml_message_right";
+	window_type_list[MESSAGE] = "message";
+	window_type_list[TRANSIENT_MESSAGE] = "transient_message";
+	window_type_list[MP_CONNECT] = "mp_connect";
+	window_type_list[MP_METHOD_SELECTION] = "mp_method_selection";
+	window_type_list[MP_SERVER_LIST] = "mp_server_list";
+	window_type_list[MP_LOGIN] = "mp_login";
+	window_type_list[MP_CMD_WRAPPER] = "mp_cmd_wrapper";
+	window_type_list[MP_CREATE_GAME] = "mp_create_game";
+	window_type_list[TITLE_SCREEN] = "title_screen";
+	window_type_list[GAME_LOAD] = "game_load";
+	window_type_list[GAME_DELETE] = "game_delete";
+	window_type_list[GAME_SAVE] = "game_save";
+	window_type_list[GAME_SAVE_MESSAGE] = "game_save_message";
+	window_type_list[GAME_SAVE_OOS] = "game_save_oos";
+#ifndef DISABLE_EDITOR
+	window_type_list[EDITOR_NEW_MAP] = "editor_new_map";
+	window_type_list[EDITOR_GENERATE_MAP] = "editor_generate_map";
+	window_type_list[EDITOR_RESIZE_MAP] = "editor_resize_map";
+	window_type_list[EDITOR_SETTINGS] = "editor_settings";
+#endif
+	window_type_list[LOBBY_MAIN] = "lobby_main";
+	window_type_list[LOBBY_PLAYER_INFO] = "lobby_player_info";
+	window_type_list[UNIT_CREATE] = "unit_create";
+	window_type_list[FORMULA_DEBUGGER] = "formula_debugger";
+	window_type_list[GAMESTATE_INSPECTOR] = "gamestate_inspector";
+}
+
+const std::string& get_id(const twindow_type window_type)
+{
+	assert(window_type >= 0 && window_type < COUNT);
+
+	return window_type_list[window_type];
+}
+
+void load_settings()
+{
+	LOG_GUI_G << "Setting: init gui.\n";
+
+	// Init.
+	fill_window_types();
+
+	twindow::update_screen_size();
+
+	// Read file.
+	config cfg;
+	try {
+		preproc_map preproc(
+				game_config::config_cache::instance().get_preproc_map());
+		scoped_istream stream = preprocess_file(get_wml_location("gui/default.cfg"), &preproc);
+
+		read(cfg, *stream);
+	} catch(config::error&) {
+		ERR_GUI_P << "Setting: could not read file 'data/gui/default.cfg'.\n";
+	}
+
+	// Parse guis
+	foreach (const config &g, cfg.child_range("gui")) {
+		std::pair<std::string, tgui_definition> child;
+		child.first = child.second.read(g);
+		guis.insert(child);
+	}
+
+	VALIDATE(guis.find("default") != guis.end(), _ ("No default gui defined."));
+
+	current_gui = guis.find("default");
+	current_gui->second.activate();
+}
+
 
 tstate_definition::tstate_definition(const config &cfg) :
 	canvas()

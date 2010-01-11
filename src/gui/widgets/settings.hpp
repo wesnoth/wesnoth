@@ -86,59 +86,6 @@ enum twindow_type {
 
 const std::string& get_id(const twindow_type window_type);
 
-struct tgui_definition
-{
-	tgui_definition()
-		: id()
-		, description()
-		, control_definition()
-		, windows()
-		, window_types()
-		, popup_show_delay_(0)
-		, popup_show_time_(0)
-		, help_show_time_(0)
-		, double_click_time_(0)
-		, repeat_button_repeat_time_(0)
-		, sound_button_click_()
-		, sound_toggle_button_click_()
-		, sound_toggle_panel_click_()
-		, sound_slider_adjust_()
-	{
-	}
-
-	std::string id;
-	t_string description;
-
-	const std::string& read(const config& cfg);
-
-	/** Activates a gui. */
-	void activate() const;
-
-	typedef std::map <std::string /*control type*/,
-		std::map<std::string /*id*/, tcontrol_definition_ptr> >
-		tcontrol_definition_map;
-
-	tcontrol_definition_map control_definition;
-
-	std::map<std::string, twindow_definition> windows;
-
-	std::map<std::string, twindow_builder> window_types;
-private:
-	template<class T>
-	void load_definitions(const std::string& definition_type,
-		const config &cfg, const char *key = NULL);
-
-	unsigned popup_show_delay_;
-	unsigned popup_show_time_;
-	unsigned help_show_time_;
-	unsigned double_click_time_;
-	unsigned repeat_button_repeat_time_;
-
-	std::string sound_button_click_;
-	std::string sound_toggle_button_click_;
-	std::string sound_toggle_panel_click_;
-	std::string sound_slider_adjust_;
-};
 
 	tresolution_definition_ptr get_control(
 		const std::string& control_type, const std::string& definition);
@@ -148,7 +95,6 @@ private:
 
 	/** Loads the setting for the theme. */
 	void load_settings();
-
 
 	/** This namespace contains the 'global' settings. */
 	namespace settings {
