@@ -101,22 +101,23 @@ def interpret(lines, css):
     outstr = '<p class="%s">' % css
     for line in lines:
         line = line.strip()
-        if not inlisting and not line:
-            outstr += "</p><p>"
-            continue
-        if not inlisting and line[0] == '!':
-            outstr += "</p>\n<pre class='listing'>"
-            inlisting = True
-            bracketdepth = curlydepth = 0
+        if inlisting:
+            if line and line[0] != '!':
+                outstr += "</pre>\n<p>"
+                inlisting = False
+        else:
+            if not line:
+                outstr += "</p><p>"
+                continue
+            if line[0] == '!':
+                outstr += "</p>\n<pre class='listing'>"
+                inlisting = True
+                bracketdepth = curlydepth = 0
         line = line.replace("<", "&lt;").replace(">", "&gt;").replace("&", "&amp;")
         if inlisting:
             outstr += line[1:] + "\n"
         else:
             outstr += line + "\n"
-        if inlisting:
-            if line and line[0] != '!':
-                outstr += "</pre>\n<p>"
-                inlisting = False
     if not inlisting:
         outstr += "</p>\n"
     else:
