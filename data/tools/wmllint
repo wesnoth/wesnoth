@@ -1695,14 +1695,14 @@ def translator(filename, mapxforms, textxform):
             # Handle text (non-map) lines.  It can use within().
             newline = textxform(filename, lineno, line)
             newdata.append(newline + terminator)
+            fields = newline.split("#")
+            trimmed = fields[0]
+            destringed = re.sub('"[^"]*"', '', trimmed)	# Ignore string literals
+            comment = ""
+            if len(fields) > 1:
+                comment = fields[1]
             # Now do warnings based on the state of the tag stack.
             if not unbalanced:
-                fields = newline.split("#")
-                trimmed = fields[0]
-                destringed = re.sub('"[^"]*"', '', trimmed)	# Ignore string literals
-                comment = ""
-                if len(fields) > 1:
-                    comment = fields[1]
                 for instance in re.finditer(r"\[\/?\+?([a-z][a-z_]*[a-z])\]", destringed):
                     tag = instance.group(1)
                     attributes = []
