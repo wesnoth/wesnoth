@@ -1506,17 +1506,15 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 				}
 			}
 		} else {
-			bool kicked = false;
 			for (wesnothd::player_map::const_iterator pl = players_.begin();
 					pl != players_.end(); ++pl)
 			{
 				if (utils::wildcard_string_match(pl->second.name(), target)) {
-					banned = true;
+					if (banned) out << "\n";
+					else banned = true;
 					const std::string ip = network::ip_address(pl->first);
 					out << ban_manager_.ban(ip, parsed_time, reason, issuer_name, group, target);
 					if (kick) {
-						if (kicked) out << "\n";
-						else kicked = true;
 						out << "\nKicked " << pl->second.name() << " (" << ip << ").";
 						send_error(pl->first, ("You have been banned. Reason: " + reason).c_str());
 						network::queue_disconnect(pl->first);
@@ -1530,7 +1528,8 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 					for (std::deque<connection_log>::const_iterator i = ip_log_.begin();
 							i != ip_log_.end(); ++i) {
 						if (i->nick == target) {
-							banned = true;
+							if (banned) out << "\n";
+							else banned = true;
 							out << ban_manager_.ban(i->ip, parsed_time, reason, issuer_name, group, target);
 						}
 					}
