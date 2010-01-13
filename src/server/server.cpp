@@ -1524,7 +1524,8 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 			if (!banned) {
 				// If nobody was banned yet check the ip_log but only if a
 				// simple username was used to prevent accidental bans.
-				if (utils::isvalid_username(target)) {
+				// @todo FIXME: since we can have several entries now we should only ban the latest or so
+				/*if (utils::isvalid_username(target)) {
 					for (std::deque<connection_log>::const_iterator i = ip_log_.begin();
 							i != ip_log_.end(); ++i) {
 						if (i->nick == target) {
@@ -1533,7 +1534,7 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 							out << ban_manager_.ban(i->ip, parsed_time, reason, issuer_name, group, target);
 						}
 					}
-				}
+				}*/
 				if(!banned) {
 					out << "Nickmask '" << target << "' did not match, no bans set.";
 				}
