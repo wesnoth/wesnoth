@@ -497,6 +497,9 @@ def validate_on_pop(tagstack, closer, filename, lineno):
     if closer == "terrain" and attributes.get("heals") in ("true", "false"):
         print '"%s", line %d: heals attribute no longer takes a boolean' % \
               (filename, lineno)
+    if closer == "unit" and attributes.get("id") is not None and attributes.get("type") is not None and attributes.get("side") is None:
+        print '"%s", line %d: unit declaration without side attribute' % \
+              (filename, lineno)
 
 def within(tag):
     "Did the specified tag lead one of our enclosing contexts?"
