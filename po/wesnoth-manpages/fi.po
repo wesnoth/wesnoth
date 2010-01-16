@@ -1,18 +1,20 @@
 # Finnish translations for Battle for Wesnoth package
 # Copyright (C) 2006 Wesnoth development team.
-# Automatically generated, 2006.
 #
+# Automatically generated, 2006.
+# Samu Voutilainen <smar@smar.fi>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "POT-Creation-Date: 2009-11-02 12:29+0100\n"
-"PO-Revision-Date: 2009-05-10 18:19+0200\n"
-"Last-Translator: Mikko Nikkilä <miccoh@gmail.com>\n"
-"Language-Team: Finnish\n"
+"PO-Revision-Date: 2010-01-11 21:14+0200\n"
+"Last-Translator: Samu Voutilainen <smar@smar.fi>\n"
+"Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 1.0\n"
 
 # type: TH
 #: ../../doc/man/wesnoth.6:16
@@ -163,7 +165,7 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:64
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-e,\\ --editor>I<\\ file>"
 msgstr "B<-e,\\ --editor>I<\\ tiedosto>"
 
@@ -314,14 +316,14 @@ msgstr "B<-m, --multiplayer>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:128
-#, fuzzy
 msgid ""
 "runs a multiplayer game. There are additional options that can be used "
 "together with B<--multiplayer> as explained below. Only these additional "
 "options can follow B<--multiplayer>."
 msgstr ""
-"Käynnistää moninpelin. Joitain valitsimia voi yhdistellä tämän valitsimen "
-"kanssa, kuten alla selitetään."
+"Käynnistää moninpelin. Joitakiin valitsimia voi yhdistää valitsimen B<--"
+"multiplayer> kanssa, kuten alla selitetään. Vain nämä valinnaiset valitsimet "
+"voivat olla tämän valitsimen jälkeen. "
 
 # type: TP
 #: ../../doc/man/wesnoth.6:128
@@ -497,15 +499,15 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:180
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--ai_config>I<number>B<=>I<value>"
-msgstr "B<--side>I<numero>B<=>I<arvo>"
+msgstr "B<--ai_config>I<numero>B<=>I<arvo>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:183
 msgid ""
 "selects a configuration file to load for the AI controller for this side."
-msgstr ""
+msgstr "Valitsee asetustiedoston tekoälyn lataamiseksi tälle puolelle."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:183
@@ -893,15 +895,13 @@ msgstr "[I<tagi>]"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:103
-#, fuzzy
 msgid "I<key>=\"I<value>\""
-msgstr "avain=\"I<arvo>\""
+msgstr "I<avain>=\"I<arvo>\""
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:105
-#, fuzzy
 msgid "I<key>=\"I<value>,I<value>,...\""
-msgstr "avain=\"I<arvo>,I<arvo>,...\""
+msgstr "I<avain>=\"I<arvo>,I<arvo>,...\""
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:107
@@ -916,9 +916,9 @@ msgstr "Globaalit avaimet:"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:110
-#, no-wrap
+#, fuzzy, no-wrap
 msgid "B<allow_remote_shutdown>"
-msgstr ""
+msgstr "B<allow_remote_shutdown>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:114
@@ -927,6 +927,9 @@ msgid ""
 "they come from the fifo.  Set it to B<yes> to allow remote shutdown via a /"
 "query by an administrator."
 msgstr ""
+"Jos asetettu arvoon B<no> (oletus), ”shut_down”- ja ”restart”-pyynnöteivät "
+"vaikuta, elleivät ne tulo FIFO:sta. Aseta arvoon B<yes> salliaksesi "
+"etäsammutuksen ylläpitäjän käskyllä. "
 
 # type: TP
 #: ../../doc/man/wesnothd.6:114
@@ -946,9 +949,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnothd.6:118
-#, no-wrap
+#, fuzzy, no-wrap
 msgid "B<compress_stored_rooms>"
-msgstr ""
+msgstr "B<compress_stored_rooms>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:121
@@ -956,6 +959,8 @@ msgid ""
 "Determines whether the rooms file should be read and written to in "
 "compressed form. Defaults to B<yes>."
 msgstr ""
+"Määrittää, pitäisikö huonetiedostot lukea ja kirjoittaa pakatussa muodossa. "
+"Oletuksena kyllä(B<yes>)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:121
@@ -980,7 +985,6 @@ msgstr "B<disallow_names>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:131
-#, fuzzy
 msgid ""
 "Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
@@ -988,8 +992,8 @@ msgid ""
 "computer,human,network,player>."
 msgstr ""
 "Nimet tai nimimerkit, joita palvelin ei hyväksy. Jokerimerkeistä toimivat "
-"”*” ja ”?”. Lisätietoja: B<glob>(7). Oletusarvot (käytössä kun muita ei ole "
-"annettu) ovat: B<*admin*,*admln*,*server*,ai,ai?,computer,human,network,"
+"B<*> ja B<?>. Lisätietoja: B<glob>(7). Oletusarvot (käytössä, kun muita ei "
+"ole annettu) ovat: B<*admin*,*admln*,*server*,ai,ai?,computer,human,network,"
 "player>."
 
 # type: TP
@@ -1000,15 +1004,15 @@ msgstr "B<fifo_path>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:135
-#, fuzzy
 msgid ""
 "The path to the fifo you can echo server commands into (same as /query ... "
 "from wesnoth).  If not specified defaults to the compile-time path (default: "
 "B</var/run/socket/wesnothd/socket>)."
 msgstr ""
 "Polku FIFOon, jonne voi kirjoittaa palvelinkomentoja (samoja kuin "
-"komennolla /query wesnothista). Jos jätetty määrittelemättä, käytetään "
-"käännön aikana määriteltyä polkua (oletus: /var/run/socket/wesnothd/socket)."
+"komennolla  /query wesnothissa). Jos jätetty määrittelemättä, käytetään "
+"käännön aikana määriteltyä polkua (oletus: B</var/run/socket/wesnothd/"
+"socket>)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:135
@@ -1054,7 +1058,7 @@ msgstr "Päivän viesti."
 #: ../../doc/man/wesnothd.6:144
 #, no-wrap
 msgid "B<new_room_policy>"
-msgstr ""
+msgstr "B<new_room_policy>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:147
@@ -1064,6 +1068,10 @@ msgid ""
 "respectively to everyone, registered users, admin users or disables new room "
 "creation. Default value is B<everyone>."
 msgstr ""
+"Määrittää, ketkä voivat tehdä uusia huoneita palvelimella. Mahdollisia "
+"arvoja on B<everyone>, B<registered>, B<admin> ja B<nobody> (kaikki, "
+"rekisteröityneet, ylläpitäjä tai ei kukaan. Tässä järjestyksessä). "
+"Oletusarvona on B<everyone>"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:147
@@ -1073,11 +1081,10 @@ msgstr "B<passwd>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:150
-#, fuzzy
 msgid ""
 "The password used to gain admin privileges (via B</query admin >I<password>)."
 msgstr ""
-"Salasana, jolla saa ylläpitäjän oikeudet. Alkaa yleensä sanalla ”admin”."
+"Salasana, jolla saa ylläpitäjän oikeudet (via B</query admin >I<password>)."
 
 #: ../../doc/man/wesnothd.6:150
 #, no-wrap
@@ -1102,20 +1109,20 @@ msgstr "B<restart_command>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:156
-#, fuzzy
 msgid ""
 "The command that the server uses to start a new server process via the "
 "B<restart> command. (Can only be issued via the fifo. See the "
 "B<allow_remote_shutdown> setting.)"
 msgstr ""
 "Komento, jota palvelin käyttää käynnistääkseen uuden palvelinprosessin "
-"”restart”-komennosta. (Annettavissa vain FIFOn kautta.)"
+"B<restart>-komennosta (Annettavissa vain FIFOn kautta. Katso "
+"B<allow_remote_shutdown>-asetus)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:156
 #, fuzzy, no-wrap
 msgid "B<room_save_file>"
-msgstr "B<ban_save_file>"
+msgstr "B<room_save_file>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:159
@@ -1124,6 +1131,9 @@ msgid ""
 "server startup and written to later. If empty or not set, rooms are not "
 "loaded and not saved."
 msgstr ""
+"Polku, jossa huonetiedot tulisi olla tallennettuna. Tämä tiedosto luetaan "
+"palvelimen käynnistyessä ja kirjoitetaan myöhemmin. Jos tyhjä tai "
+"asettamatta, huoneita ei ladata eikä tallenneta."
 
 #: ../../doc/man/wesnothd.6:159
 #, no-wrap
@@ -1146,15 +1156,14 @@ msgstr "B<versions_accepted>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:166
-#, fuzzy
 msgid ""
 "A comma separated list of version strings to be accepted by the server. B<*> "
 "and B<?> from wildcard patterns are supported.  (defaults to the "
 "corresponding wesnoth version)"
 msgstr ""
-"Pilkuilla eroteltu lista palvelimen hyväksymistä versiomerkkijonoista. "
-"Jokerimerkeistä toimivat ”*” ja ”?”. (Oletus on palvelimen versiota vastaava "
-"wesnothin versio.)"
+"Pilkuilla eroteltu lista palvelimen hyväksymistä versioista. Jokerimerkeistä "
+"toimivat B<*> ja B<?> (Oletus on palvelimen versiota vastaava wesnothin "
+"versio)."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:168
@@ -1169,7 +1178,6 @@ msgstr "B<user_handler>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:173
-#, fuzzy
 msgid ""
 "The name of the user handler to use. Currently available user handlers are "
 "B<forum> (to connect wesnothd to a phpbb forum database) and B<sample> (a "
@@ -1178,10 +1186,10 @@ msgid ""
 "add a B<[user_handler]> section, see below."
 msgstr ""
 "Käyttäjäkäsittelijän nimi. Tällä hetkellä käytettävissä olevat käsittelijät "
-"ovat ”forum” (jolla wesnothd yhdistetään phpbb-foorumin tietokantaan) ja "
-"”sample” (esimerkkitoteutus käyttäjäkäsittelijän rajapinnasta; jos käytät "
-"tätä mihinkään todelliseen, olet hullu). Oletusarvo on ”forum”. Myös B<"
-"[user_handler]>-osio täytyy lisätä, ks. alla."
+"ovat B<forum> (jolla wesnothd yhdistetään wesnoth.orgin phpbb-foorumin "
+"tietokantaan) ja B<sample> (esimerkkitoteutus käyttäjäkäsittelijän "
+"rajapinnasta; jos käytät tätä mihinkään todelliseen, olet täysin hullu). "
+"Oletusarvo on B<forum>. Myös B<[user_handler]>-osio täytyy lisätä, ks. alla."
 
 # type: SS
 #: ../../doc/man/wesnothd.6:174
@@ -1263,7 +1271,6 @@ msgstr "B<time>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:207
-#, fuzzy
 msgid ""
 "The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s "
 "(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d "
@@ -1273,9 +1280,9 @@ msgid ""
 msgstr ""
 "Ajan pituuden määritelmä. Muoto on: %d[%s[%d%s[...]]] jossa %s on s "
 "(sekunteja), m (minuutteja), h (tunteja), D (päiviä), M (kuukausia) tai Y "
-"(vuosia) ja %d on luku. Jos ajanmäärettä ei anneta, käytetään oletuksena "
-"minuutteja. Esimerkki: time=\"1D12h30m\" luo estoajan, joka kestää 1 päivän, "
-"12 tuntia ja 30 minuuttia."
+"(vuosia) ja %d on luku. Jos määrettä ei anneta, käytetään oletuksena "
+"minuutteja. Esimerkki: B<time=\"1D12h30m\"> luo estoajan, joka kestää 1 "
+"päivän, 12 tuntia ja 30 minuuttia."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:213
@@ -1290,7 +1297,6 @@ msgstr ""
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:221
-#, fuzzy
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
 "on which user handler is set with the B<user_handler> key. If no B<"
@@ -1299,7 +1305,7 @@ msgid ""
 msgstr ""
 "B<[user_handler]> Säätää käyttäjäkäsittelijän asetukset. Käytetyt avaimet "
 "riippuvat siitä, mikä käsittelijä on valittu avaimella B<user_handler>. Jos "
-"asetuksissa ei ole [user_handler]-osiota, palvelin käynnistyy ilman "
+"asetuksissa ei ole B<[user_handler]>-osiota, palvelin käynnistyy ilman "
 "nimimerkkien rekisteröintipalvelua."
 
 # type: TP
@@ -1373,7 +1379,6 @@ msgstr "B<db_extra_table>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:241
-#, fuzzy
 msgid ""
 "(for user_handler=forum) The name of the table in which wesnothd will save "
 "its own data about users. You will have to create this table manually, e.g.: "
@@ -1382,10 +1387,10 @@ msgid ""
 "NOT NULL DEFAULT 0);>"
 msgstr ""
 "(user_handler=sample) Sen taulun nimi, johon wesnothd tallentaa oman datansa "
-"käyttäjistä. Tämä taulu pitää luoda manuaalisesti, esim.: CREATE TABLE "
+"käyttäjistä. Tämä taulu pitää luoda manuaalisesti, esim.: B<CREATE TABLE "
 "E<lt>taulunnimiE<gt>(username VARCHAR(255) PRIMARY KEY, user_lastvisit INT "
 "UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT "
-"0);"
+"0);>"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:241
