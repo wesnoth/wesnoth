@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-01-02 13:54+0100\n"
-"PO-Revision-Date: 2009-08-09 00:12+0100\n"
-"Last-Translator: Damien J\n"
+"POT-Creation-Date: 2010-01-02 14:15+0100\n"
+"PO-Revision-Date: 2010-01-16 16:03+0100\n"
+"Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -66,9 +66,8 @@ msgstr "Campement"
 
 #. [terrain_type]: id=orcish_fort
 #: data/core/terrain.cfg:173
-#, fuzzy
 msgid "Fort"
-msgstr "Forêt"
+msgstr "Fort"
 
 #. [terrain_type]: id=castle
 #. [terrain_type]: id=elven_castle
@@ -111,44 +110,39 @@ msgstr "Ruine des marais"
 msgid "Keep"
 msgstr "Donjon"
 
+# Benoît : « Donjon » ça va pas avec campement, et c'est une tente...
 #. [terrain_type]: id=encampment_keep
 #: data/core/terrain.cfg:256
-#, fuzzy
 msgid "Encampment Keep"
-msgstr "Campement"
+msgstr "Tente de commandement"
 
 #. [terrain_type]: id=orcish_keep
 #: data/core/terrain.cfg:269
-#, fuzzy
 msgid "Fort Keep"
-msgstr "Donjon"
+msgstr "Donjon de fort"
 
 #. [terrain_type]: id=human_keep
 #. [terrain_type]: id=dwarven_keep
 #. [terrain_type]: id=swamp_keep
 #: data/core/terrain.cfg:282 data/core/terrain.cfg:308
 #: data/core/terrain.cfg:347
-#, fuzzy
 msgid "Castle Keep"
-msgstr "Château"
+msgstr "Donjon de château"
 
 #. [terrain_type]: id=elven_keep
 #: data/core/terrain.cfg:295
-#, fuzzy
 msgid "Elven Keep"
-msgstr "Château"
+msgstr "Château elfe"
 
 #. [terrain_type]: id=ruined_keep
 #: data/core/terrain.cfg:321
-#, fuzzy
 msgid "Ruined Castle Keep"
-msgstr "Château"
+msgstr "Donjon de château en ruine"
 
 #. [terrain_type]: id=sunken_keep
 #: data/core/terrain.cfg:334
-#, fuzzy
 msgid "Sunken Castle Keep"
-msgstr "Château"
+msgstr "Donjon de château englouti"
 
 #. [terrain_type]: id=crater
 #: data/core/terrain.cfg:387
@@ -185,9 +179,8 @@ msgstr "Forêt enneigée"
 
 #. [terrain_type]: id=snow_forest
 #: data/core/terrain.cfg:442
-#, fuzzy
 msgid "Snowy Pine Forest"
-msgstr "Forêt enneigée"
+msgstr "Forêt de résineux enneigée"
 
 #. [terrain_type]: id=great_tree
 #: data/core/terrain.cfg:453
@@ -210,9 +203,8 @@ msgstr "Forêt"
 
 #. [terrain_type]: id=forest
 #: data/core/terrain.cfg:464
-#, fuzzy
 msgid "Pine Forest"
-msgstr "Forêt enneigée"
+msgstr "Forêt de résineux"
 
 #. [terrain_type]: id=tropical_forest
 #: data/core/terrain.cfg:473
@@ -221,51 +213,43 @@ msgstr "Forêt tropicale"
 
 #. [terrain_type]: id=deciduous_forest_summer
 #: data/core/terrain.cfg:484
-#, fuzzy
 msgid "Summer Deciduous Forest"
-msgstr "Colline boisé"
+msgstr "Forêt de feuillus estivale"
 
 #. [terrain_type]: id=deciduous_forest_fall
 #: data/core/terrain.cfg:495
-#, fuzzy
 msgid "Fall Deciduous Forest"
-msgstr "Colline boisé"
+msgstr "Forêt de feuillus automnale"
 
 #. [terrain_type]: id=deciduous_forest_winter
 #: data/core/terrain.cfg:506
-#, fuzzy
 msgid "Winter Deciduous Forest"
-msgstr "Colline boisé"
+msgstr "Forêt de feuillus hivernale"
 
 #. [terrain_type]: id=deciduous_forest_winter_snow
 #: data/core/terrain.cfg:517
-#, fuzzy
 msgid "Snowy Deciduous Forest"
-msgstr "Forêt enneigée"
+msgstr "Forêt de feuillus enneigée"
 
 #. [terrain_type]: id=mixed_forest_summer
 #: data/core/terrain.cfg:529
-#, fuzzy
 msgid "Summer Mixed Forest"
-msgstr "Colline boisé"
+msgstr "Forêt mixte estivale"
 
 #. [terrain_type]: id=mixed_forest_fall
 #: data/core/terrain.cfg:540
-#, fuzzy
 msgid "Fall Mixed Forest"
-msgstr "Forêt enneigée"
+msgstr "Forêt mixte automnale"
 
 #. [terrain_type]: id=mixed_forest_winter
 #: data/core/terrain.cfg:551
-#, fuzzy
 msgid "Winter Mixed Forest"
-msgstr "Colline boisé"
+msgstr "Forêt mixte hivernale"
 
 #. [terrain_type]: id=mixed_forest_winter_snow
 #: data/core/terrain.cfg:562
-#, fuzzy
 msgid "Snowy Mixed Forest"
-msgstr "Forêt enneigée"
+msgstr "Forêt mixte enneigée"
 
 #. [terrain_type]: id=forested_hills
 #. [terrain_type]: id=deciduous_forest_summer_hills
@@ -289,47 +273,41 @@ msgstr "Collines boisées"
 msgid "Forested Snow Hills"
 msgstr "Collines boisées enneigées"
 
+# Benoît : difficile de faire synthétique !
 #. [terrain_type]: id=deciduous_forest_summer_hills
 #: data/core/terrain.cfg:598
-#, fuzzy
 msgid "Summer Deciduous Forested Hills"
-msgstr "Colline boisé"
+msgstr "Collines boisées de feuillus (été)"
 
 #. [terrain_type]: id=deciduous_forest_fall_hills
 #: data/core/terrain.cfg:609
-#, fuzzy
 msgid "Fall Deciduous Forested Hills"
-msgstr "Colline boisé"
+msgstr "Collines boisées de feuillus (automne)"
 
 #. [terrain_type]: id=deciduous_forest_winter_hills
 #: data/core/terrain.cfg:620
-#, fuzzy
 msgid "Winter Deciduous Forested Hills"
-msgstr "Colline boisé"
+msgstr "Collines boisées de feuillus (hiver)"
 
 #. [terrain_type]: id=deciduous_forest_winter_snow_hills
 #: data/core/terrain.cfg:631
-#, fuzzy
 msgid "Snowy Deciduous Forested Hills"
-msgstr "Colline boisé"
+msgstr "Collines enneigées boisées de feuillus"
 
 #. [terrain_type]: id=mixed_forest_summer_hills
 #: data/core/terrain.cfg:642
-#, fuzzy
 msgid "Summer Mixed Forested Hills"
-msgstr "Colline boisé"
+msgstr "Collines boisées (forêt mixte estivale)"
 
 #. [terrain_type]: id=mixed_forest_winter_hills
 #: data/core/terrain.cfg:663
-#, fuzzy
 msgid "Winter Mixed Forested Hills"
-msgstr "Colline boisé"
+msgstr "Collines boisées (forêt mixte hivernale)"
 
 #. [terrain_type]: id=mixed_forest_winter_snow_hills
 #: data/core/terrain.cfg:674
-#, fuzzy
 msgid "Snowy Mixed Forested Hills"
-msgstr "Colline boisé"
+msgstr "Collines boisées enneigées (forêt mixte)"
 
 #. [terrain_type]: id=grassland
 #. [terrain_type]: id=grassland_flowers
@@ -369,15 +347,13 @@ msgstr "Montagnes"
 
 #. [terrain_type]: id=desert_mountains
 #: data/core/terrain.cfg:761
-#, fuzzy
 msgid "Desert Mountains"
-msgstr "Montagnes désertiques infranchissables"
+msgstr "Montagnes désertiques"
 
 #. [terrain_type]: id=snow_mountains
 #: data/core/terrain.cfg:779
-#, fuzzy
 msgid "Snowy Mountains"
-msgstr "Montagnes"
+msgstr "Montagnes enneigées"
 
 #. [terrain_type]: id=canyon
 #: data/core/terrain.cfg:793
@@ -627,9 +603,8 @@ msgstr "Annuler"
 
 #. [label]
 #: data/gui/default/window/campaign_dialog.cfg:44
-#, fuzzy
 msgid "Play a campaign"
-msgstr "Campagne"
+msgstr "Jouer une campagne"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -797,30 +772,28 @@ msgstr "Appliquer"
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:28
 msgid "Formula debugger"
-msgstr ""
+msgstr "Débogueur de formules"
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:51
 msgid "Welcome"
-msgstr ""
+msgstr "Bienvenue"
 
 #. [label]: id=state
 #: data/gui/default/window/formula_debugger.cfg:63
-#, fuzzy
 msgid "state"
-msgstr "Coller"
+msgstr "état"
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:77
 msgid "Call stack"
-msgstr ""
+msgstr "Pile d'appel"
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:86
 #: data/gui/default/window/gamestate_inspector.cfg:268
-#, fuzzy
 msgid "Actions"
-msgstr "Action"
+msgstr "Actions"
 
 #. [button]: id=step
 #: data/gui/default/window/formula_debugger.cfg:120
@@ -848,7 +821,7 @@ msgstr "Continuer le déplacement"
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:166
 msgid "Execution trace"
-msgstr ""
+msgstr "Trace d'execution"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
@@ -876,7 +849,7 @@ msgstr "Voulez-vous réellement quitter ?"
 #. [toggle_button]: id=dont_ask_again
 #: data/gui/default/window/game_delete.cfg:72
 msgid "Don't ask me again!"
-msgstr ""
+msgstr "Ne plus me demander !"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -916,9 +889,8 @@ msgstr ""
 
 #. [label]: id=lblFilter
 #: data/gui/default/window/game_load.cfg:205
-#, fuzzy
 msgid "Filter"
-msgstr "Fichier : "
+msgstr "Filtre : "
 
 #. [label]: id=name
 #. [label]: id=filename
@@ -929,9 +901,8 @@ msgstr "Nom"
 
 #. [label]: id=date
 #: data/gui/default/window/game_load.cfg:269
-#, fuzzy
 msgid "Date"
-msgstr "Coller"
+msgstr "Date"
 
 #. [button]: id=delete
 #: data/gui/default/window/game_load.cfg:353
@@ -964,23 +935,21 @@ msgstr "Sauvegarder le jeu"
 #: data/gui/default/window/game_save.cfg:62
 #: data/gui/default/window/game_save_message.cfg:82
 #: data/gui/default/window/game_save_oos.cfg:82
-#, fuzzy
 msgid "Name:"
 msgstr "Nom : "
 
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_save_message.cfg:52
 msgid "x"
-msgstr ""
+msgstr "x"
 
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_save_oos.cfg:52
 msgid "OOS error"
-msgstr ""
+msgstr "Erreur de synchronisation"
 
 #. [toggle_button]: id=ignore_all
 #: data/gui/default/window/game_save_oos.cfg:134
-#, fuzzy
 msgid "Ignore All"
 msgstr "Tout ignorer"
 
@@ -992,32 +961,28 @@ msgstr "Quitter la partie"
 
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_save_overwrite.cfg:32
-#, fuzzy
 msgid "Overwrite?"
 msgstr "Écraser ?"
 
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_save_overwrite.cfg:52
-#, fuzzy
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "La sauvegarde existe déjà. Voulez-vous la remplacer ?"
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:38
 msgid "Gamestate Inspector"
-msgstr ""
+msgstr "Débogueur d'état de partie"
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:92
-#, fuzzy
 msgid "Types"
-msgstr "oui"
+msgstr "Types"
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:103
-#, fuzzy
 msgid "Content"
-msgstr "Se connecter"
+msgstr "Contenu"
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:114
@@ -1029,12 +994,12 @@ msgstr ""
 #: data/gui/default/window/gamestate_inspector.cfg:145
 #: data/gui/default/window/unit_create.cfg:138
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 #. [label]: id=name
 #: data/gui/default/window/gamestate_inspector.cfg:206
 msgid "Variable"
-msgstr ""
+msgstr "Variable"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -1067,14 +1032,13 @@ msgstr "Changer de langue"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:108
-#, fuzzy
 msgid "Games"
-msgstr "Nom"
+msgstr "Parties"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:176
 msgid "Requires a password to join"
-msgstr ""
+msgstr "Nécessite un mot de passe"
 
 #. [toggle_button]: id=use_map_settings
 #. [row]
@@ -1085,19 +1049,18 @@ msgstr "Utiliser les paramètres de la carte"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:178
-#, fuzzy
 msgid "Reloaded game"
-msgstr "Créer un jeu"
+msgstr "Partie rechargée"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:179
 msgid "Unknown era"
-msgstr ""
+msgstr "Ère inconnue"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:181
 msgid "Gold per village"
-msgstr ""
+msgstr "Or par village"
 
 #. [label]
 #. [row]
@@ -1113,92 +1076,83 @@ msgstr "Limite de temps"
 
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:305
-#, fuzzy
 msgid "Sort players:"
-msgstr "Joueurs :"
+msgstr "Trier les joueurs :"
 
 #. [toggle_button]: id=player_list_sort_relation
 #: data/gui/default/window/lobby_main.cfg:313
 msgid "Friends first, ignored people last"
-msgstr ""
+msgstr "Les amis d'abord, les ignorés en dernier"
 
 #. [toggle_button]: id=player_list_sort_name
 #: data/gui/default/window/lobby_main.cfg:321
 msgid "Alphabetically"
-msgstr ""
+msgstr "Alphabétiquement"
 
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:334
-#, fuzzy
 msgid "Selected game"
-msgstr "Supprimer le fichier"
+msgstr "Partie séléctionnée"
 
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:335
 msgid "Current room"
-msgstr ""
+msgstr "Salle de discussion active"
 
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:336
 msgid "Lobby"
-msgstr ""
+msgstr "Vestibule"
 
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:337
-#, fuzzy
 msgid "Other games"
-msgstr "Créer un jeu"
+msgstr "Autres parties"
 
 #. [label]: id=room
 #: data/gui/default/window/lobby_main.cfg:369
 msgid "Rooms"
-msgstr ""
+msgstr "Salles de discussions"
 
 #. [image]: id=pending_messages
 #: data/gui/default/window/lobby_main.cfg:387
-#, fuzzy
 msgid "Messages waiting"
-msgstr "Messagerie"
+msgstr "Messages en attente"
 
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:457
-#, fuzzy
 msgid "Multiplayer Lobby"
-msgstr "Multijoueur"
+msgstr "Vestibule multijoueur"
 
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:465
-#, fuzzy
 msgid "Filter:"
-msgstr "Fichier : "
+msgstr "Filtre : "
 
 #. [toggle_button]: id=filter_with_friends
 #: data/gui/default/window/lobby_main.cfg:476
-#, fuzzy
 msgid "Friends"
-msgstr "Liste des amis"
+msgstr "Amis"
 
 #. [toggle_button]: id=filter_without_ignored
 #: data/gui/default/window/lobby_main.cfg:482
 msgid "No ignored"
-msgstr ""
+msgstr "Pas d'ignorés"
 
 #. [toggle_button]: id=filter_vacant_slots
 #: data/gui/default/window/lobby_main.cfg:488
 msgid "Vacant slots"
-msgstr ""
+msgstr "Places restantes"
 
 #. [toggle_button]: id=filter_invert
 #: data/gui/default/window/lobby_main.cfg:494
-#, fuzzy
 msgid "Invert filter"
-msgstr "Pivoter la sélection"
+msgstr "Inverser le filtre"
 
 #. [button]: id=send_message
 #: data/gui/default/window/lobby_main.cfg:538
-#, fuzzy
 msgid "Send"
-msgstr "Sable"
+msgstr "Envoyer"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_preferences
@@ -1211,9 +1165,8 @@ msgstr "Préférences"
 
 #. [button]: id=refresh
 #: data/gui/default/window/lobby_main.cfg:562
-#, fuzzy
 msgid "Refresh"
-msgstr "Rafraîchir l'affichage"
+msgstr "Rafraîchir"
 
 #. [label]
 #. [button]: id=create
@@ -1224,14 +1177,13 @@ msgstr "Créer un jeu"
 
 #. [button]: id=join_global
 #: data/gui/default/window/lobby_main.cfg:582
-#, fuzzy
 msgid "Join"
-msgstr "Identification"
+msgstr "Rejoindre"
 
 #. [button]: id=observe_global
 #: data/gui/default/window/lobby_main.cfg:588
 msgid "Observe"
-msgstr ""
+msgstr "Observer"
 
 #. [toggle_button]: id=skip_replay
 #: data/gui/default/window/lobby_main.cfg:594
@@ -1271,7 +1223,6 @@ msgstr "Revenir à la version sur disque"
 
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:133
-#, fuzzy
 msgid "Moderation"
 msgstr "Modération"
 
@@ -1294,7 +1245,7 @@ msgstr "Kick"
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:167
 msgid "Ban time:"
-msgstr ""
+msgstr "Temps de bannissement :"
 
 #. [button]: id=kick_ban
 #: data/gui/default/window/lobby_player_info.cfg:180
@@ -1566,9 +1517,8 @@ msgstr "Aide"
 
 #. [button]: id=previous_tip
 #: data/gui/default/window/title_screen.cfg:124
-#, fuzzy
 msgid "Previous"
-msgstr "Unité précédente"
+msgstr "Précédent"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
@@ -1610,32 +1560,28 @@ msgstr "Créer une unité (débug !)"
 
 #. [label]
 #: data/gui/default/window/unit_create.cfg:59
-#, fuzzy
 msgid "Gender:"
-msgstr "Générer"
+msgstr "Genre :"
 
 #. [toggle_button]: id=male_toggle
 #: data/gui/default/window/unit_create.cfg:69
-#, fuzzy
 msgid "Male"
-msgstr "Château"
+msgstr "Masculin"
 
 #. [toggle_button]: id=female_toggle
 #: data/gui/default/window/unit_create.cfg:79
 msgid "Female"
-msgstr ""
+msgstr "Féminin"
 
 #. [toggle_button]: id=namegen_toggle
 #: data/gui/default/window/unit_create.cfg:97
-#, fuzzy
 msgid "Generate name"
-msgstr "Générer une carte"
+msgstr "Générer un nom"
 
 #. [label]: id=race
 #: data/gui/default/window/unit_create.cfg:126
-#, fuzzy
 msgid "Race"
-msgstr "Annuler"
+msgstr "Race"
 
 #: src/filechooser.cpp:74
 msgid "File: "
@@ -1670,7 +1616,6 @@ msgid "player"
 msgstr "joueur"
 
 #: src/game_preferences_display.cpp:157
-#, fuzzy
 msgid "Full Screen"
 msgstr "Plein écran"
 
@@ -1688,7 +1633,7 @@ msgstr "Sauter les déplacements de l'IA"
 
 #: src/game_preferences_display.cpp:161
 msgid "Interrupt move when an ally is sighted"
-msgstr ""
+msgstr "Arrêter le mouvement lorsqu'un allié est découvert"
 
 #: src/game_preferences_display.cpp:162
 msgid "Show Grid"
@@ -2185,7 +2130,7 @@ msgstr ""
 
 #: src/gui/dialogs/game_load.cpp:263
 msgid "Campaign: $campaign_name"
-msgstr ""
+msgstr "Campagne : $campaign_name"
 
 #: src/gui/dialogs/game_load.cpp:282
 #, fuzzy
@@ -2193,23 +2138,20 @@ msgid "replay"
 msgstr "joueur"
 
 #: src/gui/dialogs/game_load.cpp:284
-#, fuzzy
 msgid "Turn"
-msgstr "Fin du tour"
+msgstr "Tour"
 
 #: src/gui/dialogs/game_load.cpp:286
-#, fuzzy
 msgid "Scenario Start"
-msgstr "Objectifs du scénario"
+msgstr "Début du scénario"
 
 #: src/gui/dialogs/game_load.cpp:289
 msgid "Difficulty: "
-msgstr ""
+msgstr "Difficulté : "
 
 #: src/gui/dialogs/game_load.cpp:293
-#, fuzzy
 msgid "Version: "
-msgstr "Version"
+msgstr "Version : "
 
 #: src/gui/dialogs/lobby_main.cpp:170
 msgid "whisper to $receiver"
@@ -2221,11 +2163,11 @@ msgstr ""
 
 #: src/gui/dialogs/lobby_main.cpp:498
 msgid "Observers allowed"
-msgstr ""
+msgstr "Observateurs autorisés"
 
 #: src/gui/dialogs/lobby_main.cpp:501
 msgid "Observers not allowed"
-msgstr ""
+msgstr "Observateurs interdits"
 
 #: src/gui/dialogs/lobby_main.cpp:801
 msgid ""
@@ -2238,18 +2180,16 @@ msgid "Room $name joined"
 msgstr ""
 
 #: src/gui/dialogs/lobby_main.cpp:1266
-#, fuzzy
 msgid "Password Required"
-msgstr "Pense-bête de mot de passe"
+msgstr "Mot de passe requis"
 
 #: src/gui/dialogs/lobby_main.cpp:1267
 msgid "Joining this game requires a password."
-msgstr ""
+msgstr "Rejoindre cette partie nécessite un mot de passe."
 
 #: src/gui/dialogs/lobby_main.cpp:1268
-#, fuzzy
 msgid "Password: "
-msgstr "Mot de passe :"
+msgstr "Mot de passe : "
 
 #: src/gui/dialogs/message.cpp:191
 msgid "Error"
@@ -2414,9 +2354,8 @@ msgid "Speak"
 msgstr "Parler"
 
 #: src/hotkeys.cpp:78
-#, fuzzy
 msgid "Change Side (Debug!)"
-msgstr "Changer le camp de l'unité (débug !)"
+msgstr "Changer de camp (débug !)"
 
 #: src/hotkeys.cpp:80
 msgid "Scenario Objectives"
