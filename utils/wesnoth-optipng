@@ -141,17 +141,20 @@ print_statistics()
 while [ "${1}" != "" ]; do
 	if [ "${1}" = "--nice" ] || [ "${1}" = "-n" ]; then
 		opti_nice=$2
-		shift
+		shift 2
 	elif [ "${1}" = "--threads" ]; then
 		max_number_threads=$2
-		shift
+		shift 2
 	elif [ "${1}" = "--help" ] || [ "${1}" = "-h" ]; then
 		cat << EOSTREAM
 Wesnoth automatic PNG optimization helper script
 Part of the Battle for Wesnoth project <www.wesnoth.org>
 
 Usage:
-  $(basename ${0}) [{--nice|n} <value>] [{--threads} <value>] [{--help|-h}]
+  $(basename ${0}) [{--nice|n} <value>] [{--threads} <value>] [{--help|-h}] [<file>...]
+
+If no files are given on command line, all PNG files within current working
+directory and below are processed.
 
 Switches:
   --help / -h   Displays this help text.
@@ -169,8 +172,10 @@ convert utility (http://www.imagemagick.org/script/convert.php) to be installed
 and available in PATH.
 EOSTREAM
 		exit 0
+	else
+		filelist="${filelist} ${1}"
+		shift
 	fi
-	shift
 done
 
 # FIXME: disabled because it isn't working for Ivanovic.
@@ -187,7 +192,9 @@ which advdef &> /dev/null ||
 # Set-up a trap to avoid leaving orphan tempfiles behind.
 trap user_int HUP INT TERM
 
-filelist=$(find -iname "*.png")
+if test -z "$filelist"; then
+	filelist=$(find -iname "*.png")
+fi
 
 # work with a parallized joblist
 echo "*************************"
