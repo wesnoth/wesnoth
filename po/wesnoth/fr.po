@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-01-02 13:54+0100\n"
-"PO-Revision-Date: 2009-12-09 23:26+0100\n"
+"POT-Creation-Date: 2010-01-02 14:15+0100\n"
+"PO-Revision-Date: 2010-01-16 15:15+0100\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
@@ -74,28 +74,29 @@ msgstr "Temps de réponse expiré"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:69
-#, fuzzy
 msgid ""
 "Number of seconds to wait for a ping reply before we time out. Disable with "
 "0."
 msgstr ""
-"Nombre de secondes restantes pour une réponse avant l'expiration du temps de "
-"réponse. Désactiver avec 0"
+"Nombre de secondes restantes avant l'expiration du temps de réponse. "
+"Désactiver avec 0"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:79
 msgid "Accept whisper messages from friends only"
-msgstr ""
+msgstr "N'accepter que les messages privés des amis"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:86
 msgid "Auto-open whisper windows in lobby"
 msgstr ""
+"Ouvrir automatiquement une fenêtre pour les messages privés à partir du "
+"vestibule"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:93
 msgid "Group players in lobby"
-msgstr ""
+msgstr "Afficher les joueurs par groupe dans le vestibule"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:100
@@ -368,9 +369,8 @@ msgstr "Traduction anglaise (Grande-Bretagne)"
 
 #. [about]
 #: data/core/about.cfg:1357
-#, fuzzy
 msgid "English (Shaw) Translation"
-msgstr "Traduction anglaise (Grande-Bretagne)"
+msgstr "Traduction anglaise (Shaw)"
 
 #. [about]
 #: data/core/about.cfg:1381
@@ -3095,6 +3095,9 @@ msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
 msgstr ""
+"\n"
+"Augmente N fois le niveau de l'unité séléctionnée. Par exemple : :unit "
+"advances=2"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:51
@@ -5190,7 +5193,7 @@ msgstr "vigoureuse"
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:133
 msgid "Always rest heals"
-msgstr ""
+msgstr "Récupère à chaque tour"
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:150 data/core/macros/traits.cfg:163
@@ -8011,7 +8014,7 @@ msgstr "Infos : "
 
 #: src/game_events.cpp:3268
 msgid "[unit_worth]'s filter didn't match any units!"
-msgstr ""
+msgstr "Le filtre [unit_worth] ne correspond à aucune unité !"
 
 #: src/generate_report.cpp:128
 msgid "invisible: "
@@ -8784,18 +8787,16 @@ msgstr ""
 "enregistré."
 
 #: src/menu_events.cpp:2271
-#, fuzzy
 msgid "Join a room."
-msgstr "Se connecter à une partie"
+msgstr "Se connecter à une salle de discussion."
 
 #: src/menu_events.cpp:2274
 msgid "Part a room."
-msgstr ""
+msgstr "Quitter une salle."
 
 #: src/menu_events.cpp:2276
-#, fuzzy
 msgid "List room members."
-msgstr "Liste des membres d'une partie"
+msgstr "Liste des membres d'une salle."
 
 #: src/menu_events.cpp:2278
 msgid "List available rooms."
@@ -8803,11 +8804,11 @@ msgstr "Liste des salles disponibles."
 
 #: src/menu_events.cpp:2280
 msgid "Room message."
-msgstr ""
+msgstr "Message de salle."
 
 #: src/menu_events.cpp:2282
 msgid "Room query."
-msgstr ""
+msgstr "Requête de salle."
 
 #: src/menu_events.cpp:2411
 msgid "Refresh gui."
@@ -8876,7 +8877,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2450
 msgid "Launch the gamestate inspector"
-msgstr ""
+msgstr "Lancer le débogueur d'état de partie"
 
 #: src/menu_events.cpp:2452
 msgid "Set or show alias to a command"
@@ -8898,7 +8899,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2465
 msgid "Discover all units in help."
-msgstr ""
+msgstr "Découvrir toutes les unités dans l'aide."
 
 #: src/menu_events.cpp:2470
 msgid "Create a unit."
