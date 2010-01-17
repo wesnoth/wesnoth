@@ -447,7 +447,7 @@ bool tscrollbar_container::disable_click_dismiss() const
 			|| content_grid_->disable_click_dismiss();
 }
 
-bool tscrollbar_container::content_resize_request()
+bool tscrollbar_container::content_resize_request(const bool force_sizing)
 {
 	/**
 	 * @todo Try to handle auto_visible_first_run here as well.
@@ -477,6 +477,10 @@ bool tscrollbar_container::content_resize_request()
 		const tpoint content_size = content_grid_->get_size();
 		if(content_size.x > size.x || content_size.y > size.y) {
 			DBG_GUI_L << LOG_HEADER << " will fit, only needs a resize.\n";
+			goto resize;
+		}
+		if(force_sizing) {
+			DBG_GUI_L << LOG_HEADER << " fits, but resize forced.\n";
 			goto resize;
 		}
 		DBG_GUI_L << LOG_HEADER << " fits, nothing to do.\n";

@@ -222,13 +222,22 @@ protected:
 	 * Notification if the content of a child needs a resize.
 	 *
 	 * When a resize is required the container first can try to handle it
-	 * itself before asking the window to do the resize.
+	 * itself. If it can't honour the request the function will call @ref
+	 * twindow::invalidate_layout().
+	 *
+	 * @note Calling this function on a widget with size == (0, 0) results
+	 * false but doesn't call invalidate_layout, the engine expects to be in
+	 * build up phase with the layout already invalidated.
+	 *
+	 * @param force_sizing        If the contents fit do we want to force a
+	 *                            resize? This is needed in the MP lobby since
+	 *                            items might not be properly placed yet.
+	 *                            (The listboxes with the player info need it.)
 	 *
 	 * @returns                   True if the resize is handled, false
-	 *                            otherwise. If the container has no size the
-	 *                            result is undefined.
+	 *                            otherwise.
 	 */
-	bool content_resize_request();
+	bool content_resize_request(const bool force_sizing = false);
 
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
