@@ -360,6 +360,8 @@ public:
 	static void set_sunset(const unsigned interval)
 		{ sunset_ = interval ? interval : 5; }
 
+	bool get_need_layout() const { return need_layout_; }
+
 private:
 
 	/** Needed so we can change what's drawn on the screen. */
