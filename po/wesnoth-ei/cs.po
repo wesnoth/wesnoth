@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-12-27 12:27+0100\n"
+"POT-Creation-Date: 2010-01-17 17:48+0100\n"
 "PO-Revision-Date: 2009-09-24 20:15+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -286,7 +286,7 @@ msgstr "Wesnoťané"
 #. [unit]: type=White Mage, id=Dacyn
 #. [message]
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:71
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:443
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:446
 msgid "Dacyn"
 msgstr "Dacyn"
 
@@ -394,7 +394,7 @@ msgstr "Odolej až do Dacynova návratu za dva dny"
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:89
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:141
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:177
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:142
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:135
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:133
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:160
 #: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:67
@@ -530,7 +530,7 @@ msgstr "Přesuň Gweddryho k padacím dveřím"
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:93
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:145
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:181
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:146
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:139
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:137
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:164
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:163
@@ -1379,7 +1379,7 @@ msgstr "Poraz vůdce nemrtvých"
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:97
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:149
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:185
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:150
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:143
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:141
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:168
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:167
@@ -2622,20 +2622,20 @@ msgstr ""
 msgid "The Drowned Plains"
 msgstr "Zatopené pláně"
 
-#. [unit]: type=Skeletal Dragon, id=Khrakrahs
-#. [message]
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:126
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:398
-msgid "Khrakrahs"
-msgstr "Krakraš"
-
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:138
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:131
 msgid "Defeat Khrakrahs"
 msgstr "Poraz Krakraše"
 
+#. [unit]: type=Skeletal Dragon, id=Khrakrahs
+#. [message]
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:153
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:401
+msgid "Khrakrahs"
+msgstr "Krakraš"
+
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:380
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:383
 msgid ""
 "Now, we have reached the Horse Plains, the fair homeland of my people. They "
 "may be able to help us in - "
@@ -2643,7 +2643,7 @@ msgstr ""
 "Konečně jsme dosáhli Plání koní, domova mého lidu. Mohou nám pomoci do -"
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:384
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:387
 msgid ""
 "What?! Swamps?! Those undead have destroyed the grasslands of my House, and "
 "they shall pay for it!"
@@ -2651,7 +2651,7 @@ msgstr ""
 "Cože?! Bažiny?! Ti nemrtví zničili pláně mého rodu a draze za to zaplatí!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:388
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:391
 msgid ""
 "The lich-lord must have flooded the valley. The undead like the swamp. It is "
 "death, decay, everything that they are themselves. I can sense them lurking "
@@ -2661,22 +2661,22 @@ msgstr ""
 "smrt, rozklad, všechno co jim je tak blízké. Cítím je poblíž; číhají na nás."
 
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:392
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:395
 msgid "I s'ppose we'll hav' to wade across it anyway... ugh."
 msgstr "Asi se tama fakt budem muset přebrodit. Fujtajbl!"
 
 #. [message]
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:400
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:403
 msgid "Findshhhh... slayhhhh... killhhhh..."
 msgstr "Nhhhhajít.... zhhhhabít... znhhhičit..."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:404
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:407
 msgid "What is that sound?!?"
 msgstr "Co je to?"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:408
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:411
 msgid ""
 "I do not know, but my guess is the dragon Khrakrahs. He was a powerful beast "
 "indeed, in the time of Haldric, living in the Northern Mountains. But he "
@@ -2688,7 +2688,7 @@ msgstr ""
 "co se stalo, ale musíme ho zabít."
 
 #. [message]
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:445
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:448
 msgid ""
 "Aha! I see what they have done. They have raised him as an undead dragon. "
 "But he does not appear to be weak to my arcane senses... this is strange "
@@ -3221,7 +3221,7 @@ msgid "I... lose?..."
 msgstr "Já.... prohrál? ..."
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:166
+#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:167
 msgid "And more!"
 msgstr "A další!"
 
@@ -3322,13 +3322,13 @@ msgid "How did you know...?"
 msgstr "Jak jsi to věděl...?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:326
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:327
 msgid "Kill the king!"
 msgstr "Zabijte krále!"
 
 # pův.: "když teď zachráníme"
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:330
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:331
 msgid "They killed Konrad... now, even if we save Weldyn, Wesnoth has fallen."
 msgstr "Zabili Konráda... I kdybychom teď zachránili Weldyn, Wesnoth padl."
 

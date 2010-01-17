@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-12-27 12:27+0100\n"
+"POT-Creation-Date: 2010-01-17 17:48+0100\n"
 "PO-Revision-Date: 2008-12-11 23:20+0100\n"
 "Last-Translator: Martin Dzbor <mdzbor@yahoo.co.uk>\n"
 "Language-Team: none\n"
@@ -127,7 +127,7 @@ msgstr "Porazíš Ar Danta"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:27
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:536
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:125
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:47
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:155
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:24
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:348
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:24
@@ -154,7 +154,7 @@ msgstr "Kapou'e zomrie"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:39
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:548
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:137
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:55
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:163
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:36
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:360
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:36
@@ -188,9 +188,9 @@ msgstr "Vyprší čas"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:80
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:147
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:153
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:66
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:72
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:134
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:41
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:47
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:109
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:47
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:53
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:47
@@ -244,9 +244,9 @@ msgstr "Albert"
 #. [side]: type=Lieutenant, id=Albert
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:78
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:65
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:83
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:101
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:116
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:58
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:76
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:91
 #, fuzzy
 msgid "Humans"
 msgstr "Harman"
@@ -917,7 +917,7 @@ msgstr ""
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:31
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:540
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:129
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:51
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:159
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:28
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:352
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:28
@@ -1680,35 +1680,35 @@ msgstr "Aha... no..."
 msgid "Black Flag"
 msgstr "Čierna vlajka"
 
-#. [objective]: condition=win
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:43
-#, fuzzy
-msgid "Defeat Slowhand and Harman"
-msgstr "Porazíš Slowhanda"
-
 #. [side]: type=General, id=Slowhand
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:80
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:55
 msgid "Slowhand"
 msgstr "Slowhand"
 
 #. [side]: type=General, id=Harman
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:113
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:88
 msgid "Harman"
 msgstr "Harman"
 
 #. [unit]: type=Orcish Warrior, id=Affman
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:140
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:142
 msgid "Affman"
 msgstr "Afman"
 
+#. [objective]: condition=win
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:151
+#, fuzzy
+msgid "Defeat Slowhand and Harman"
+msgstr "Porazíš Slowhanda"
+
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:204
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:202
 #, fuzzy
 msgid "So, here is Tirigaz. But what's going on?"
 msgstr "Tak a sme pred Tirigazom... Ale čo sa to tu, doparoma, deje?"
 
 #. [message]: speaker=Pirk
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:208
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:206
 msgid ""
 "Looks like humans have attacked here too. You were right, Kapou'e, the "
 "humans have declared all-out war on us."
@@ -1717,7 +1717,7 @@ msgstr ""
 "vyhlásili totálnu vojnu."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:212
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:210
 #, fuzzy
 msgid ""
 "Listen, if we are to meet with the rest of the Great Council, we have to "
@@ -1731,13 +1731,13 @@ msgstr ""
 "ochranu."
 
 #. [message]: speaker=Gork
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:216
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:214
 #, fuzzy
 msgid "This is a wise choice. Good luck, son of the Black-Eye."
 msgstr "To je múdra voľba. Veľa šťastia, syn Čierneho Oka."
 
 #. [message]: speaker=Slowhand
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:220
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:218
 #, fuzzy
 msgid ""
 "Haha! Our plan is going well, let's surround them on land while our allies "
@@ -1747,29 +1747,29 @@ msgstr ""
 "z mora!"
 
 #. [message]: speaker=Affman
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:266
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:264
 msgid "Look, a party of our kind approaches from the North."
 msgstr "Pozrite, prichádza výprava našincov, tam od severu."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:271
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:269
 msgid "Greetings from Kapou'e, Son of the Black-Eye Karun."
 msgstr "Prijmite pozdrav od Kapou'a, syna bývalého náčelníka \"Čierne Oko\"."
 
 #. [message]: speaker=Affman
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:276
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:274
 msgid "Son of the great Black-Eye Karun?! You do us honor, Chief."
 msgstr "Syn náčelníka \"Čierne Oko\"?! Je nám naozaj cťou, náčelník."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:281
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:279
 #, fuzzy
 msgid "Do not grovel like humans, just tell me what's going on here."
 msgstr ""
 "Poklony si nechajme na neskôr, teraz mi povedzte, čo sa to tu vlastne deje."
 
 #. [message]: speaker=Affman
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:286
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:284
 #, fuzzy
 msgid ""
 "I don't really know, one day all was calm and peaceful and the next a fleet "
@@ -1783,13 +1783,13 @@ msgstr ""
 "dobyť Severnú Baštu. A potom im dorazili posily z obcí na juhu."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:291
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:289
 #, fuzzy
 msgid "Are the shamans safe?"
 msgstr "Zachrániš šamanov"
 
 #. [message]: speaker=Affman
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:296
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:294
 #, fuzzy
 msgid ""
 "When we realized that there was no way we could hold the humans off, we sent "
@@ -1802,7 +1802,7 @@ msgstr ""
 "zostal, aby sme im dali aspoň akú-takú šancu."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:301
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:299
 #, fuzzy
 msgid ""
 "Wise decision. We have actually come to speak to the shamans, but while we "
@@ -1816,29 +1816,29 @@ msgstr ""
 "môžeme aspoň vyčistiť toto územie od ľudí."
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:306
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:304
 #, fuzzy
 msgid "I love this strategy, Chief!"
 msgstr "To je úžasná stratégia, náčelník!"
 
 #. [message]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:526
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:524
 msgid "Pillage! Let's plunder these orcs!"
 msgstr "Rabovačka! Ideme vylúpiť týchto orkov!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:537
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:535
 msgid "Aaaargh! I die!"
 msgstr "Aaaargh! Zomieram!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:541
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:539
 #, fuzzy
 msgid "Finally, you pay for what you did to my orc brothers!"
 msgstr "Konečne si zaplatil za všetko, čo si urobil mojim bratom orkom!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:551
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:549
 msgid ""
 "We are victorious at last. Someone go tell the shamans that they can come "
 "out now."
@@ -1847,14 +1847,14 @@ msgstr ""
 "úkrytu."
 
 #. [message]: speaker=Gork
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:573
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:571
 msgid ""
 "Congratulations on your victory, Kapou'e. You do honor to the memory of your "
 "father."
 msgstr "Blahoželám ti k víťazstvu, Kapou'e. Robíš česť pamiatke svojho otca."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:577
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:575
 msgid ""
 "Thanks, but I have news. Since the forces here were certain they were going "
 "to be defeated, they sent the shamans to the Mourned Hills. If we want to "
@@ -1865,7 +1865,7 @@ msgstr ""
 "nimi stretnúť, musíme ísť za nimi."
 
 #. [message]: speaker=Pirk
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:581
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:579
 #, fuzzy
 msgid ""
 "Oh, great. That means we have to cross the Desert of Death which is full of "
@@ -1878,7 +1878,7 @@ msgstr ""
 "púšti, musíme prejsť cez Tichý les!"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:585
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:583
 #, fuzzy
 msgid ""
 "Well, we have no choice ... I've never tasted scorpions but I am sure they "
@@ -4459,13 +4459,13 @@ msgid "YEAH!"
 msgstr ""
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:687
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:688
 msgid ""
 "Yeah, we finally got the coward. What do you want us to do with him chief?"
 msgstr ""
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:692
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:693
 msgid ""
 "Stick his head at the end of a pike and let the buzzards pick it clean. I "
 "wasn't joking about making a mug from his skull."

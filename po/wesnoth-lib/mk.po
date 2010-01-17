@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.0-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-01-02 13:54+0100\n"
+"POT-Creation-Date: 2010-01-17 17:48+0100\n"
 "PO-Revision-Date: 2008-05-11 16:12+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -615,8 +615,8 @@ msgstr ""
 #: data/gui/default/window/unit_create.cfg:205
 #: data/gui/default/window/wml_message.cfg:458
 #: data/gui/default/window/wml_message.cfg:679 src/construct_dialog.cpp:126
-#: src/construct_dialog.cpp:133 src/gui/dialogs/message.cpp:163
-#: src/gui/dialogs/message.cpp:170
+#: src/construct_dialog.cpp:133 src/gui/dialogs/message.cpp:164
+#: src/gui/dialogs/message.cpp:171
 msgid "OK"
 msgstr ""
 
@@ -820,7 +820,7 @@ msgstr ""
 #. [button]: id=quit
 #. [grid]
 #: data/gui/default/window/formula_debugger.cfg:222
-#: data/gui/default/window/lobby_main.cfg:550
+#: data/gui/default/window/lobby_main.cfg:555
 #: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:643
 #: src/hotkeys.cpp:934
 msgid "Quit"
@@ -851,7 +851,7 @@ msgstr ""
 #: data/gui/default/window/game_save_oos.cfg:187
 #: data/gui/default/window/game_save_overwrite.cfg:88
 #: data/gui/default/window/game_save_overwrite.cfg:89
-#: src/construct_dialog.cpp:129 src/gui/dialogs/message.cpp:177
+#: src/construct_dialog.cpp:129 src/gui/dialogs/message.cpp:178
 msgid "Yes"
 msgstr ""
 
@@ -861,14 +861,14 @@ msgstr ""
 #: data/gui/default/window/game_save_message.cfg:154
 #: data/gui/default/window/game_save_oos.cfg:201
 #: data/gui/default/window/game_save_overwrite.cfg:103
-#: src/construct_dialog.cpp:130 src/gui/dialogs/message.cpp:179
+#: src/construct_dialog.cpp:130 src/gui/dialogs/message.cpp:180
 msgid "No"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_load.cfg:42
-#: src/gui/dialogs/mp_create_game.cpp:75 src/hotkeys.cpp:66
+#: src/gui/dialogs/mp_create_game.cpp:76 src/hotkeys.cpp:66
 msgid "Load Game"
 msgstr ""
 
@@ -993,7 +993,7 @@ msgstr ""
 #. [button]: id=cancel
 #. [button]: id=close_window
 #: data/gui/default/window/gamestate_inspector.cfg:331
-#: data/gui/default/window/lobby_main.cfg:509
+#: data/gui/default/window/lobby_main.cfg:514
 #: data/gui/default/window/lobby_player_info.cfg:192
 #: data/gui/default/window/message.cfg:122 src/construct_dialog.cpp:140
 msgid "Close"
@@ -1018,162 +1018,162 @@ msgid "Change language"
 msgstr ""
 
 #. [row]
-#: data/gui/default/window/lobby_main.cfg:108
+#: data/gui/default/window/lobby_main.cfg:109
 msgid "Games"
 msgstr ""
 
 #. [row]
-#: data/gui/default/window/lobby_main.cfg:176
+#: data/gui/default/window/lobby_main.cfg:177
 msgid "Requires a password to join"
 msgstr ""
 
 #. [toggle_button]: id=use_map_settings
 #. [row]
-#: data/gui/default/window/lobby_main.cfg:177
+#: data/gui/default/window/lobby_main.cfg:178
 #: data/gui/default/window/mp_create_game.cfg:313
 msgid "Use map settings"
 msgstr ""
 
 #. [row]
-#: data/gui/default/window/lobby_main.cfg:178
+#: data/gui/default/window/lobby_main.cfg:179
 msgid "Reloaded game"
 msgstr ""
 
 #. [row]
-#: data/gui/default/window/lobby_main.cfg:179
+#: data/gui/default/window/lobby_main.cfg:180
 msgid "Unknown era"
 msgstr ""
 
 #. [row]
-#: data/gui/default/window/lobby_main.cfg:181
+#: data/gui/default/window/lobby_main.cfg:182
 msgid "Gold per village"
 msgstr ""
 
 #. [label]
 #. [row]
-#: data/gui/default/window/lobby_main.cfg:183
+#: data/gui/default/window/lobby_main.cfg:184
 #: data/gui/default/window/mp_create_game.cfg:412
 msgid "Experience modifier"
 msgstr ""
 
 #. [row]
-#: data/gui/default/window/lobby_main.cfg:185
+#: data/gui/default/window/lobby_main.cfg:186
 msgid "Time limit"
 msgstr ""
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:305
+#: data/gui/default/window/lobby_main.cfg:306
 msgid "Sort players:"
 msgstr ""
 
 #. [toggle_button]: id=player_list_sort_relation
-#: data/gui/default/window/lobby_main.cfg:313
+#: data/gui/default/window/lobby_main.cfg:314
 msgid "Friends first, ignored people last"
 msgstr ""
 
 #. [toggle_button]: id=player_list_sort_name
-#: data/gui/default/window/lobby_main.cfg:321
+#: data/gui/default/window/lobby_main.cfg:322
 msgid "Alphabetically"
 msgstr ""
 
 #. [definition]
-#: data/gui/default/window/lobby_main.cfg:334
+#: data/gui/default/window/lobby_main.cfg:337
 msgid "Selected game"
 msgstr ""
 
 #. [definition]
-#: data/gui/default/window/lobby_main.cfg:335
+#: data/gui/default/window/lobby_main.cfg:338
 msgid "Current room"
 msgstr ""
 
 #. [definition]
-#: data/gui/default/window/lobby_main.cfg:336
+#: data/gui/default/window/lobby_main.cfg:339
 msgid "Lobby"
 msgstr ""
 
 #. [definition]
-#: data/gui/default/window/lobby_main.cfg:337
+#: data/gui/default/window/lobby_main.cfg:340
 msgid "Other games"
 msgstr ""
 
 #. [label]: id=room
-#: data/gui/default/window/lobby_main.cfg:369
+#: data/gui/default/window/lobby_main.cfg:374
 msgid "Rooms"
 msgstr ""
 
 #. [image]: id=pending_messages
-#: data/gui/default/window/lobby_main.cfg:387
+#: data/gui/default/window/lobby_main.cfg:392
 msgid "Messages waiting"
 msgstr ""
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:457
+#: data/gui/default/window/lobby_main.cfg:462
 msgid "Multiplayer Lobby"
 msgstr ""
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:465
+#: data/gui/default/window/lobby_main.cfg:470
 msgid "Filter:"
 msgstr ""
 
 #. [toggle_button]: id=filter_with_friends
-#: data/gui/default/window/lobby_main.cfg:476
+#: data/gui/default/window/lobby_main.cfg:481
 msgid "Friends"
 msgstr ""
 
 #. [toggle_button]: id=filter_without_ignored
-#: data/gui/default/window/lobby_main.cfg:482
+#: data/gui/default/window/lobby_main.cfg:487
 msgid "No ignored"
 msgstr ""
 
 #. [toggle_button]: id=filter_vacant_slots
-#: data/gui/default/window/lobby_main.cfg:488
+#: data/gui/default/window/lobby_main.cfg:493
 msgid "Vacant slots"
 msgstr ""
 
 #. [toggle_button]: id=filter_invert
-#: data/gui/default/window/lobby_main.cfg:494
+#: data/gui/default/window/lobby_main.cfg:499
 msgid "Invert filter"
 msgstr ""
 
 #. [button]: id=send_message
-#: data/gui/default/window/lobby_main.cfg:538
+#: data/gui/default/window/lobby_main.cfg:543
 msgid "Send"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_preferences
 #. [grid]
-#: data/gui/default/window/lobby_main.cfg:556
+#: data/gui/default/window/lobby_main.cfg:561
 #: data/gui/default/window/title_screen.cfg:189
 #: src/game_preferences_display.cpp:53 src/hotkeys.cpp:79
 msgid "Preferences"
 msgstr ""
 
 #. [button]: id=refresh
-#: data/gui/default/window/lobby_main.cfg:562
+#: data/gui/default/window/lobby_main.cfg:567
 msgid "Refresh"
 msgstr ""
 
 #. [label]
 #. [button]: id=create
-#: data/gui/default/window/lobby_main.cfg:576
+#: data/gui/default/window/lobby_main.cfg:581
 #: data/gui/default/window/mp_create_game.cfg:33
 msgid "Create Game"
 msgstr ""
 
 #. [button]: id=join_global
-#: data/gui/default/window/lobby_main.cfg:582
+#: data/gui/default/window/lobby_main.cfg:587
 msgid "Join"
 msgstr ""
 
 #. [button]: id=observe_global
-#: data/gui/default/window/lobby_main.cfg:588
+#: data/gui/default/window/lobby_main.cfg:593
 msgid "Observe"
 msgstr ""
 
 #. [toggle_button]: id=skip_replay
-#: data/gui/default/window/lobby_main.cfg:594
+#: data/gui/default/window/lobby_main.cfg:599
 msgid "Quick replay"
 msgstr ""
 
@@ -1420,7 +1420,7 @@ msgstr ""
 #. [grid]
 #: data/gui/default/window/mp_method_selection.cfg:31
 #: data/gui/default/window/title_screen.cfg:184
-#: src/gui/dialogs/game_load.cpp:270
+#: src/gui/dialogs/game_load.cpp:271
 msgid "Multiplayer"
 msgstr ""
 
@@ -1494,7 +1494,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:182
-#: src/gui/dialogs/game_load.cpp:272
+#: src/gui/dialogs/game_load.cpp:273
 msgid "Tutorial"
 msgstr ""
 
@@ -1554,27 +1554,27 @@ msgstr ""
 msgid "Race"
 msgstr ""
 
-#: src/filechooser.cpp:74
+#: src/filechooser.cpp:75
 msgid "File: "
 msgstr ""
 
-#: src/filechooser.cpp:77
+#: src/filechooser.cpp:78
 msgid "Delete File"
 msgstr ""
 
-#: src/filechooser.cpp:79 src/filechooser.cpp:204
+#: src/filechooser.cpp:80 src/filechooser.cpp:205
 msgid "New Folder"
 msgstr ""
 
-#: src/filechooser.cpp:192
+#: src/filechooser.cpp:194
 msgid "Deletion of the file failed."
 msgstr ""
 
-#: src/filechooser.cpp:205
+#: src/filechooser.cpp:206
 msgid "Name: "
 msgstr ""
 
-#: src/filechooser.cpp:210
+#: src/filechooser.cpp:212
 msgid "Creation of the directory failed."
 msgstr ""
 
@@ -2013,62 +2013,65 @@ msgstr ""
 msgid "Rectangle doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/auxiliary/canvas.cpp:970
+#: src/gui/auxiliary/canvas.cpp:971
 msgid "Text has a font size of 0."
 msgstr ""
 
-#: src/gui/auxiliary/canvas.cpp:1040
+#: src/gui/auxiliary/canvas.cpp:1041
 msgid "Text doesn't start on canvas."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder.cpp:143
-msgid "Linked '$id' group has multiple definitions."
-msgstr ""
-
-#: src/gui/auxiliary/window_builder.cpp:201 src/gui/widgets/settings.cpp:456
+#: src/gui/auxiliary/widget_definition.cpp:138
+#: src/gui/auxiliary/window_builder.cpp:202
 msgid "No resolution defined."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder.cpp:308
+#: src/gui/auxiliary/widget_definition/listbox.cpp:105
+#: src/gui/auxiliary/widget_definition/multi_page.cpp:54
+#: src/gui/auxiliary/widget_definition/scroll_label.cpp:73
+#: src/gui/auxiliary/widget_definition/scrollbar_panel.cpp:63
+#: src/gui/auxiliary/widget_definition/stacked_widget.cpp:51
+#: src/gui/auxiliary/window_builder.cpp:309
 #: src/gui/auxiliary/window_builder/panel.cpp:35
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:38
-#: src/gui/widgets/settings.cpp:724 src/gui/widgets/settings.cpp:823
-#: src/gui/widgets/settings.cpp:950 src/gui/widgets/settings.cpp:993
-#: src/gui/widgets/settings.cpp:1108
 msgid "No grid defined."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder.cpp:339
+#: src/gui/auxiliary/window_builder.cpp:144
+msgid "Linked '$id' group has multiple definitions."
+msgstr ""
+
+#: src/gui/auxiliary/window_builder.cpp:340
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder.cpp:438
+#: src/gui/auxiliary/window_builder.cpp:439
 msgid "A row must have a column."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder.cpp:439
+#: src/gui/auxiliary/window_builder.cpp:440
 msgid "Number of columns differ."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:41
-#: src/gui/auxiliary/window_builder/listbox.cpp:51
-#: src/gui/auxiliary/window_builder/scrollbar_panel.cpp:40
+#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:42
+#: src/gui/auxiliary/window_builder/listbox.cpp:52
+#: src/gui/auxiliary/window_builder/scrollbar_panel.cpp:41
 msgid "No list defined."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:45
-#: src/gui/auxiliary/window_builder/listbox.cpp:55
+#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:46
+#: src/gui/auxiliary/window_builder/listbox.cpp:56
 msgid "A 'list_definition' should contain one row."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:61
-#: src/gui/auxiliary/window_builder/listbox.cpp:71
-#: src/gui/auxiliary/window_builder/multi_page.cpp:58
+#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:62
+#: src/gui/auxiliary/window_builder/listbox.cpp:72
+#: src/gui/auxiliary/window_builder/multi_page.cpp:59
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder/multi_page.cpp:37
+#: src/gui/auxiliary/window_builder/multi_page.cpp:38
 msgid "No page defined."
 msgstr ""
 
@@ -2076,85 +2079,85 @@ msgstr ""
 msgid "The number of value_labels and values don't match."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder/stacked_widget.cpp:35
+#: src/gui/auxiliary/window_builder/stacked_widget.cpp:36
 msgid "No stack defined."
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:243
+#: src/gui/dialogs/game_load.cpp:244
 msgid "#(Invalid)"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:263
+#: src/gui/dialogs/game_load.cpp:264
 msgid "Campaign: $campaign_name"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:282
+#: src/gui/dialogs/game_load.cpp:283
 msgid "replay"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:284
+#: src/gui/dialogs/game_load.cpp:285
 msgid "Turn"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:286
+#: src/gui/dialogs/game_load.cpp:287
 msgid "Scenario Start"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:289
+#: src/gui/dialogs/game_load.cpp:290
 msgid "Difficulty: "
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:293
+#: src/gui/dialogs/game_load.cpp:294
 msgid "Version: "
 msgstr ""
 
-#: src/gui/dialogs/lobby_main.cpp:170
+#: src/gui/dialogs/lobby_main.cpp:172
 msgid "whisper to $receiver"
 msgstr ""
 
-#: src/gui/dialogs/lobby_main.cpp:454
+#: src/gui/dialogs/lobby_main.cpp:575
 msgid "Games: showing $num_shown out of $num_total"
 msgstr ""
 
-#: src/gui/dialogs/lobby_main.cpp:498
+#: src/gui/dialogs/lobby_main.cpp:617
 msgid "Observers allowed"
 msgstr ""
 
-#: src/gui/dialogs/lobby_main.cpp:501
+#: src/gui/dialogs/lobby_main.cpp:620
 msgid "Observers not allowed"
 msgstr ""
 
-#: src/gui/dialogs/lobby_main.cpp:801
+#: src/gui/dialogs/lobby_main.cpp:921
 msgid ""
 "Whisper session with $name started. If you don't want to receive messages "
 "from this user, type /ignore $name\n"
 msgstr ""
 
-#: src/gui/dialogs/lobby_main.cpp:807
+#: src/gui/dialogs/lobby_main.cpp:927
 msgid "Room $name joined"
 msgstr ""
 
-#: src/gui/dialogs/lobby_main.cpp:1266
+#: src/gui/dialogs/lobby_main.cpp:1404
 msgid "Password Required"
 msgstr ""
 
-#: src/gui/dialogs/lobby_main.cpp:1267
+#: src/gui/dialogs/lobby_main.cpp:1405
 msgid "Joining this game requires a password."
 msgstr ""
 
-#: src/gui/dialogs/lobby_main.cpp:1268
+#: src/gui/dialogs/lobby_main.cpp:1406
 msgid "Password: "
 msgstr ""
 
-#: src/gui/dialogs/message.cpp:191
+#: src/gui/dialogs/message.cpp:192 src/gui/dialogs/transient_message.cpp:57
 msgid "Error"
 msgstr ""
 
-#: src/gui/dialogs/mp_create_game.cpp:76
+#: src/gui/dialogs/mp_create_game.cpp:77
 msgid "Load Game..."
 msgstr ""
 
-#: src/gui/dialogs/title_screen.cpp:90
+#: src/gui/dialogs/title_screen.cpp:91
 msgid "Version"
 msgstr ""
 
@@ -2162,28 +2165,28 @@ msgstr ""
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:145
-msgid "No default gui defined."
-msgstr ""
-
-#: src/gui/widgets/settings.cpp:307
+#: src/gui/widgets/settings.cpp:299
 msgid "Window not defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:412
+#: src/gui/widgets/settings.cpp:404
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:482
+#: src/gui/widgets/settings.cpp:491
+msgid "No default gui defined."
+msgstr ""
+
+#: src/gui/widgets/settings.cpp:518
 msgid "No state or draw section defined."
 msgstr ""
 
-#: src/gui/widgets/window.cpp:777
+#: src/gui/widgets/window.cpp:772
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr ""
 
-#: src/gui/widgets/window.cpp:802 src/gui/widgets/window.cpp:835
+#: src/gui/widgets/window.cpp:797 src/gui/widgets/window.cpp:830
 #: src/tests/gui/test_gui2.cpp:229
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr ""

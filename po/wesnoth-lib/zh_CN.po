@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-01-02 13:54+0100\n"
+"POT-Creation-Date: 2010-01-17 17:48+0100\n"
 "PO-Revision-Date: 2009-12-16 00:20-0600\n"
 "Last-Translator: sylecn <sylecn@yahoo.com.cn>\n"
 "Language-Team: none\n"
@@ -618,8 +618,8 @@ msgstr "开始战役"
 #: data/gui/default/window/unit_create.cfg:205
 #: data/gui/default/window/wml_message.cfg:458
 #: data/gui/default/window/wml_message.cfg:679 src/construct_dialog.cpp:126
-#: src/construct_dialog.cpp:133 src/gui/dialogs/message.cpp:163
-#: src/gui/dialogs/message.cpp:170
+#: src/construct_dialog.cpp:133 src/gui/dialogs/message.cpp:164
+#: src/gui/dialogs/message.cpp:171
 msgid "OK"
 msgstr "确定"
 
@@ -823,7 +823,7 @@ msgstr "Execution trace"
 #. [button]: id=quit
 #. [grid]
 #: data/gui/default/window/formula_debugger.cfg:222
-#: data/gui/default/window/lobby_main.cfg:550
+#: data/gui/default/window/lobby_main.cfg:555
 #: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:643
 #: src/hotkeys.cpp:934
 msgid "Quit"
@@ -854,7 +854,7 @@ msgstr "不要再次询问！"
 #: data/gui/default/window/game_save_oos.cfg:187
 #: data/gui/default/window/game_save_overwrite.cfg:88
 #: data/gui/default/window/game_save_overwrite.cfg:89
-#: src/construct_dialog.cpp:129 src/gui/dialogs/message.cpp:177
+#: src/construct_dialog.cpp:129 src/gui/dialogs/message.cpp:178
 msgid "Yes"
 msgstr "是"
 
@@ -864,14 +864,14 @@ msgstr "是"
 #: data/gui/default/window/game_save_message.cfg:154
 #: data/gui/default/window/game_save_oos.cfg:201
 #: data/gui/default/window/game_save_overwrite.cfg:103
-#: src/construct_dialog.cpp:130 src/gui/dialogs/message.cpp:179
+#: src/construct_dialog.cpp:130 src/gui/dialogs/message.cpp:180
 msgid "No"
 msgstr "否"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_load.cfg:42
-#: src/gui/dialogs/mp_create_game.cpp:75 src/hotkeys.cpp:66
+#: src/gui/dialogs/mp_create_game.cpp:76 src/hotkeys.cpp:66
 msgid "Load Game"
 msgstr "读取游戏"
 
@@ -996,7 +996,7 @@ msgstr "变量"
 #. [button]: id=cancel
 #. [button]: id=close_window
 #: data/gui/default/window/gamestate_inspector.cfg:331
-#: data/gui/default/window/lobby_main.cfg:509
+#: data/gui/default/window/lobby_main.cfg:514
 #: data/gui/default/window/lobby_player_info.cfg:192
 #: data/gui/default/window/message.cfg:122 src/construct_dialog.cpp:140
 msgid "Close"
@@ -1021,162 +1021,162 @@ msgid "Change language"
 msgstr "切换语言"
 
 #. [row]
-#: data/gui/default/window/lobby_main.cfg:108
+#: data/gui/default/window/lobby_main.cfg:109
 msgid "Games"
 msgstr "游戏"
 
 #. [row]
-#: data/gui/default/window/lobby_main.cfg:176
+#: data/gui/default/window/lobby_main.cfg:177
 msgid "Requires a password to join"
 msgstr "需要密码才能加入游戏"
 
 #. [toggle_button]: id=use_map_settings
 #. [row]
-#: data/gui/default/window/lobby_main.cfg:177
+#: data/gui/default/window/lobby_main.cfg:178
 #: data/gui/default/window/mp_create_game.cfg:313
 msgid "Use map settings"
 msgstr "开启地图选项设置"
 
 #. [row]
-#: data/gui/default/window/lobby_main.cfg:178
+#: data/gui/default/window/lobby_main.cfg:179
 msgid "Reloaded game"
 msgstr "重新载入的游戏"
 
 #. [row]
-#: data/gui/default/window/lobby_main.cfg:179
+#: data/gui/default/window/lobby_main.cfg:180
 msgid "Unknown era"
 msgstr "未知时代"
 
 #. [row]
-#: data/gui/default/window/lobby_main.cfg:181
+#: data/gui/default/window/lobby_main.cfg:182
 msgid "Gold per village"
 msgstr "每个村庄的金币"
 
 #. [label]
 #. [row]
-#: data/gui/default/window/lobby_main.cfg:183
+#: data/gui/default/window/lobby_main.cfg:184
 #: data/gui/default/window/mp_create_game.cfg:412
 msgid "Experience modifier"
 msgstr "经验修改"
 
 #. [row]
-#: data/gui/default/window/lobby_main.cfg:185
+#: data/gui/default/window/lobby_main.cfg:186
 msgid "Time limit"
 msgstr "时间限制"
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:305
+#: data/gui/default/window/lobby_main.cfg:306
 msgid "Sort players:"
 msgstr "玩家分类："
 
 #. [toggle_button]: id=player_list_sort_relation
-#: data/gui/default/window/lobby_main.cfg:313
+#: data/gui/default/window/lobby_main.cfg:314
 msgid "Friends first, ignored people last"
 msgstr "好友优先，忽略用户最后"
 
 #. [toggle_button]: id=player_list_sort_name
-#: data/gui/default/window/lobby_main.cfg:321
+#: data/gui/default/window/lobby_main.cfg:322
 msgid "Alphabetically"
 msgstr "字母顺序"
 
 #. [definition]
-#: data/gui/default/window/lobby_main.cfg:334
+#: data/gui/default/window/lobby_main.cfg:337
 msgid "Selected game"
 msgstr "选择的游戏"
 
 #. [definition]
-#: data/gui/default/window/lobby_main.cfg:335
+#: data/gui/default/window/lobby_main.cfg:338
 msgid "Current room"
 msgstr "当前房间"
 
 #. [definition]
-#: data/gui/default/window/lobby_main.cfg:336
+#: data/gui/default/window/lobby_main.cfg:339
 msgid "Lobby"
 msgstr "聊天室"
 
 #. [definition]
-#: data/gui/default/window/lobby_main.cfg:337
+#: data/gui/default/window/lobby_main.cfg:340
 msgid "Other games"
 msgstr "其它游戏"
 
 #. [label]: id=room
-#: data/gui/default/window/lobby_main.cfg:369
+#: data/gui/default/window/lobby_main.cfg:374
 msgid "Rooms"
 msgstr "房间"
 
 #. [image]: id=pending_messages
-#: data/gui/default/window/lobby_main.cfg:387
+#: data/gui/default/window/lobby_main.cfg:392
 msgid "Messages waiting"
 msgstr "消息等待中"
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:457
+#: data/gui/default/window/lobby_main.cfg:462
 msgid "Multiplayer Lobby"
 msgstr "多人游戏聊天室"
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:465
+#: data/gui/default/window/lobby_main.cfg:470
 msgid "Filter:"
 msgstr "过滤器："
 
 #. [toggle_button]: id=filter_with_friends
-#: data/gui/default/window/lobby_main.cfg:476
+#: data/gui/default/window/lobby_main.cfg:481
 msgid "Friends"
 msgstr "好友列表"
 
 #. [toggle_button]: id=filter_without_ignored
-#: data/gui/default/window/lobby_main.cfg:482
+#: data/gui/default/window/lobby_main.cfg:487
 msgid "No ignored"
 msgstr "无忽略设置"
 
 #. [toggle_button]: id=filter_vacant_slots
-#: data/gui/default/window/lobby_main.cfg:488
+#: data/gui/default/window/lobby_main.cfg:493
 msgid "Vacant slots"
 msgstr "空位数"
 
 #. [toggle_button]: id=filter_invert
-#: data/gui/default/window/lobby_main.cfg:494
+#: data/gui/default/window/lobby_main.cfg:499
 msgid "Invert filter"
 msgstr "反选过滤器"
 
 #. [button]: id=send_message
-#: data/gui/default/window/lobby_main.cfg:538
+#: data/gui/default/window/lobby_main.cfg:543
 msgid "Send"
 msgstr "发送"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_preferences
 #. [grid]
-#: data/gui/default/window/lobby_main.cfg:556
+#: data/gui/default/window/lobby_main.cfg:561
 #: data/gui/default/window/title_screen.cfg:189
 #: src/game_preferences_display.cpp:53 src/hotkeys.cpp:79
 msgid "Preferences"
 msgstr "选项"
 
 #. [button]: id=refresh
-#: data/gui/default/window/lobby_main.cfg:562
+#: data/gui/default/window/lobby_main.cfg:567
 msgid "Refresh"
 msgstr "刷新"
 
 #. [label]
 #. [button]: id=create
-#: data/gui/default/window/lobby_main.cfg:576
+#: data/gui/default/window/lobby_main.cfg:581
 #: data/gui/default/window/mp_create_game.cfg:33
 msgid "Create Game"
 msgstr "创建游戏"
 
 #. [button]: id=join_global
-#: data/gui/default/window/lobby_main.cfg:582
+#: data/gui/default/window/lobby_main.cfg:587
 msgid "Join"
 msgstr "加入"
 
 #. [button]: id=observe_global
-#: data/gui/default/window/lobby_main.cfg:588
+#: data/gui/default/window/lobby_main.cfg:593
 msgid "Observe"
 msgstr "观察"
 
 #. [toggle_button]: id=skip_replay
-#: data/gui/default/window/lobby_main.cfg:594
+#: data/gui/default/window/lobby_main.cfg:599
 msgid "Quick replay"
 msgstr "快速回放"
 
@@ -1423,7 +1423,7 @@ msgstr "密码提示"
 #. [grid]
 #: data/gui/default/window/mp_method_selection.cfg:31
 #: data/gui/default/window/title_screen.cfg:184
-#: src/gui/dialogs/game_load.cpp:270
+#: src/gui/dialogs/game_load.cpp:271
 msgid "Multiplayer"
 msgstr "多人游戏"
 
@@ -1502,7 +1502,7 @@ msgstr "上一条"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:182
-#: src/gui/dialogs/game_load.cpp:272
+#: src/gui/dialogs/game_load.cpp:273
 msgid "Tutorial"
 msgstr "教程"
 
@@ -1562,27 +1562,27 @@ msgstr "生成的名字"
 msgid "Race"
 msgstr "种族"
 
-#: src/filechooser.cpp:74
+#: src/filechooser.cpp:75
 msgid "File: "
 msgstr "文件:"
 
-#: src/filechooser.cpp:77
+#: src/filechooser.cpp:78
 msgid "Delete File"
 msgstr "删除文件"
 
-#: src/filechooser.cpp:79 src/filechooser.cpp:204
+#: src/filechooser.cpp:80 src/filechooser.cpp:205
 msgid "New Folder"
 msgstr "新建文件夹"
 
-#: src/filechooser.cpp:192
+#: src/filechooser.cpp:194
 msgid "Deletion of the file failed."
 msgstr "删除文件失败。"
 
-#: src/filechooser.cpp:205
+#: src/filechooser.cpp:206
 msgid "Name: "
 msgstr "名字:"
 
-#: src/filechooser.cpp:210
+#: src/filechooser.cpp:212
 msgid "Creation of the directory failed."
 msgstr "建立目录失败。"
 
@@ -2021,63 +2021,66 @@ msgstr "线条无法在画布上显示"
 msgid "Rectangle doesn't fit on canvas."
 msgstr "矩形无法在画布上显示"
 
-#: src/gui/auxiliary/canvas.cpp:970
+#: src/gui/auxiliary/canvas.cpp:971
 msgid "Text has a font size of 0."
 msgstr "字体大小是0。"
 
-#: src/gui/auxiliary/canvas.cpp:1040
+#: src/gui/auxiliary/canvas.cpp:1041
 msgid "Text doesn't start on canvas."
 msgstr "文字没有从画布上开始。"
 
-#: src/gui/auxiliary/window_builder.cpp:143
-msgid "Linked '$id' group has multiple definitions."
-msgstr "连接的 '$id' 组有重复定义。"
-
-#: src/gui/auxiliary/window_builder.cpp:201 src/gui/widgets/settings.cpp:456
+#: src/gui/auxiliary/widget_definition.cpp:138
+#: src/gui/auxiliary/window_builder.cpp:202
 msgid "No resolution defined."
 msgstr "分辨率未定义"
 
-#: src/gui/auxiliary/window_builder.cpp:308
+#: src/gui/auxiliary/widget_definition/listbox.cpp:105
+#: src/gui/auxiliary/widget_definition/multi_page.cpp:54
+#: src/gui/auxiliary/widget_definition/scroll_label.cpp:73
+#: src/gui/auxiliary/widget_definition/scrollbar_panel.cpp:63
+#: src/gui/auxiliary/widget_definition/stacked_widget.cpp:51
+#: src/gui/auxiliary/window_builder.cpp:309
 #: src/gui/auxiliary/window_builder/panel.cpp:35
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:38
-#: src/gui/widgets/settings.cpp:724 src/gui/widgets/settings.cpp:823
-#: src/gui/widgets/settings.cpp:950 src/gui/widgets/settings.cpp:993
-#: src/gui/widgets/settings.cpp:1108
 msgid "No grid defined."
 msgstr "网格未定义"
 
-#: src/gui/auxiliary/window_builder.cpp:339
+#: src/gui/auxiliary/window_builder.cpp:144
+msgid "Linked '$id' group has multiple definitions."
+msgstr "连接的 '$id' 组有重复定义。"
+
+#: src/gui/auxiliary/window_builder.cpp:340
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgstr "连接的 '$id' 组需要 'fixed_width' 或 'fixed_height' 主键。"
 
-#: src/gui/auxiliary/window_builder.cpp:438
+#: src/gui/auxiliary/window_builder.cpp:439
 msgid "A row must have a column."
 msgstr "一行至少要有一个栏目"
 
-#: src/gui/auxiliary/window_builder.cpp:439
+#: src/gui/auxiliary/window_builder.cpp:440
 msgid "Number of columns differ."
 msgstr "分栏数目不一致"
 
-#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:41
-#: src/gui/auxiliary/window_builder/listbox.cpp:51
-#: src/gui/auxiliary/window_builder/scrollbar_panel.cpp:40
+#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:42
+#: src/gui/auxiliary/window_builder/listbox.cpp:52
+#: src/gui/auxiliary/window_builder/scrollbar_panel.cpp:41
 msgid "No list defined."
 msgstr "列表未定义"
 
-#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:45
-#: src/gui/auxiliary/window_builder/listbox.cpp:55
+#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:46
+#: src/gui/auxiliary/window_builder/listbox.cpp:56
 msgid "A 'list_definition' should contain one row."
 msgstr "list_definition (列表定义）应该包含一行。"
 
-#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:61
-#: src/gui/auxiliary/window_builder/listbox.cpp:71
-#: src/gui/auxiliary/window_builder/multi_page.cpp:58
+#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:62
+#: src/gui/auxiliary/window_builder/listbox.cpp:72
+#: src/gui/auxiliary/window_builder/multi_page.cpp:59
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 "'list_data' (列表数据) 与 'list_definition' （列表定义）中栏目数量必须一致。"
 
-#: src/gui/auxiliary/window_builder/multi_page.cpp:37
+#: src/gui/auxiliary/window_builder/multi_page.cpp:38
 msgid "No page defined."
 msgstr "页面未定义"
 
@@ -2085,86 +2088,86 @@ msgstr "页面未定义"
 msgid "The number of value_labels and values don't match."
 msgstr "value_labels （值标签）与 values (值) 数量不匹配。"
 
-#: src/gui/auxiliary/window_builder/stacked_widget.cpp:35
+#: src/gui/auxiliary/window_builder/stacked_widget.cpp:36
 msgid "No stack defined."
 msgstr "堆栈未定义"
 
-#: src/gui/dialogs/game_load.cpp:243
+#: src/gui/dialogs/game_load.cpp:244
 msgid "#(Invalid)"
 msgstr "#(无效的)"
 
-#: src/gui/dialogs/game_load.cpp:263
+#: src/gui/dialogs/game_load.cpp:264
 msgid "Campaign: $campaign_name"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:282
+#: src/gui/dialogs/game_load.cpp:283
 msgid "replay"
 msgstr "回放"
 
-#: src/gui/dialogs/game_load.cpp:284
+#: src/gui/dialogs/game_load.cpp:285
 msgid "Turn"
 msgstr "回合"
 
-#: src/gui/dialogs/game_load.cpp:286
+#: src/gui/dialogs/game_load.cpp:287
 msgid "Scenario Start"
 msgstr "场景开始"
 
-#: src/gui/dialogs/game_load.cpp:289
+#: src/gui/dialogs/game_load.cpp:290
 msgid "Difficulty: "
 msgstr "难度："
 
-#: src/gui/dialogs/game_load.cpp:293
+#: src/gui/dialogs/game_load.cpp:294
 msgid "Version: "
 msgstr "版本："
 
-#: src/gui/dialogs/lobby_main.cpp:170
+#: src/gui/dialogs/lobby_main.cpp:172
 msgid "whisper to $receiver"
 msgstr "发送私人消息给 $receiver"
 
-#: src/gui/dialogs/lobby_main.cpp:454
+#: src/gui/dialogs/lobby_main.cpp:575
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "游戏：$num_shown 已显示（共有$num_total ）"
 
-#: src/gui/dialogs/lobby_main.cpp:498
+#: src/gui/dialogs/lobby_main.cpp:617
 msgid "Observers allowed"
 msgstr "允许观察者"
 
-#: src/gui/dialogs/lobby_main.cpp:501
+#: src/gui/dialogs/lobby_main.cpp:620
 msgid "Observers not allowed"
 msgstr "不允许观察者"
 
-#: src/gui/dialogs/lobby_main.cpp:801
+#: src/gui/dialogs/lobby_main.cpp:921
 msgid ""
 "Whisper session with $name started. If you don't want to receive messages "
 "from this user, type /ignore $name\n"
 msgstr ""
 "和用户 $name 的私人聊天开始。如果你不希望接收该用户消息，输入 /ignore $name\n"
 
-#: src/gui/dialogs/lobby_main.cpp:807
+#: src/gui/dialogs/lobby_main.cpp:927
 msgid "Room $name joined"
 msgstr "已加入 $name 房间"
 
-#: src/gui/dialogs/lobby_main.cpp:1266
+#: src/gui/dialogs/lobby_main.cpp:1404
 msgid "Password Required"
 msgstr "需要密码"
 
-#: src/gui/dialogs/lobby_main.cpp:1267
+#: src/gui/dialogs/lobby_main.cpp:1405
 msgid "Joining this game requires a password."
 msgstr "加入这个游戏需要密码"
 
-#: src/gui/dialogs/lobby_main.cpp:1268
+#: src/gui/dialogs/lobby_main.cpp:1406
 msgid "Password: "
 msgstr "密码："
 
-#: src/gui/dialogs/message.cpp:191
+#: src/gui/dialogs/message.cpp:192 src/gui/dialogs/transient_message.cpp:57
 msgid "Error"
 msgstr "错误"
 
-#: src/gui/dialogs/mp_create_game.cpp:76
+#: src/gui/dialogs/mp_create_game.cpp:77
 msgid "Load Game..."
 msgstr "读取游戏..."
 
-#: src/gui/dialogs/title_screen.cpp:90
+#: src/gui/dialogs/title_screen.cpp:91
 msgid "Version"
 msgstr "版本"
 
@@ -2172,28 +2175,28 @@ msgstr "版本"
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "必须的widget '$id' 未定义。"
 
-#: src/gui/widgets/settings.cpp:145
-msgid "No default gui defined."
-msgstr "没有指定默认图形界面。"
-
-#: src/gui/widgets/settings.cpp:307
+#: src/gui/widgets/settings.cpp:299
 msgid "Window not defined."
 msgstr "窗口未定义"
 
-#: src/gui/widgets/settings.cpp:412
+#: src/gui/widgets/settings.cpp:404
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "Widget 定义 '$definition' 不包含 '$id' 的定义。"
 
-#: src/gui/widgets/settings.cpp:482
+#: src/gui/widgets/settings.cpp:491
+msgid "No default gui defined."
+msgstr "没有指定默认图形界面。"
+
+#: src/gui/widgets/settings.cpp:518
 msgid "No state or draw section defined."
 msgstr "状态或绘制区域未定义"
 
-#: src/gui/widgets/window.cpp:777
+#: src/gui/widgets/window.cpp:772
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "单击dismiss需要'click_dismiss'或'ok'按钮。"
 
-#: src/gui/widgets/window.cpp:802 src/gui/widgets/window.cpp:835
+#: src/gui/widgets/window.cpp:797 src/gui/widgets/window.cpp:830
 #: src/tests/gui/test_gui2.cpp:229
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "无法显示一个对话框，屏幕大小不适。"

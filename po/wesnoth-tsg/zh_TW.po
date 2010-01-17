@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-12-27 12:27+0100\n"
+"POT-Creation-Date: 2010-01-17 17:49+0100\n"
 "PO-Revision-Date: 2009-05-24 18:50+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Ch.Andrew <chandrew1119@gmail.com>\n"
@@ -198,7 +198,7 @@ msgstr "擊敗克撒．馬丁"
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:432
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:479
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:234
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:377
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:376
 msgid "Death of Deoran"
 msgstr "迪奧蘭死亡"
 
@@ -1296,7 +1296,7 @@ msgstr "依茜麗兒抵達米布林的村莊"
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:580
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:49
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:238
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:381
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:380
 msgid "Death of Ethiliel"
 msgstr "依茜麗兒死亡"
 
@@ -3101,20 +3101,20 @@ msgid "The Council of Westin will arrive on turn $council_arrive_turn|."
 msgstr "韋斯汀議會將在第 $council_arrive_turn| 回合到達。"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:514
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:302
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:515
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:301
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:12
 msgid "I have failed my kingdom and duty..."
 msgstr "王國和重任尚未完成啊......"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:529
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:530
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:67
 msgid "Now I will never see Westin free again..."
 msgstr "以後我再也見不到韋斯汀自由了......"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:540
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:541
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:81
 msgid "Far from home I fall - but not in vain! Guard our people, Deoran!"
 msgstr "我死在遠離家園處－－可是我毫無悔很！保衛我們的人民，迪奧蘭！"
@@ -3230,7 +3230,8 @@ msgstr ""
 "了我們的領袖！我們不能容忍這種事情！妳和他們都得死！"
 
 #. [event]
-#. [unit]: type=$unit_type, id=Disciple of Mebrin
+#. [unit]: type=$unit_type
+#. [message]
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:213
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:214
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:215
@@ -3238,7 +3239,8 @@ msgstr ""
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:217
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:218
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:219
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:277
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:276
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:288
 msgid "Disciple of Mebrin"
 msgstr "米布林的追隨者"
 
@@ -3247,19 +3249,19 @@ msgstr "米布林的追隨者"
 msgid "Keep the enraged elves from sacking Westin"
 msgstr "阻止暴怒的精靈洗劫韋斯汀"
 
-#. [message]: speaker=Disciple of Mebrin
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:290
+#. [message]
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:289
 msgid "For every one of us you strike down, more will rise!"
 msgstr "每一個被你們殺死的人，都將引來更多！"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:316
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:315
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:52
 msgid "I have given my all for my kingdom! Avenge me, Deoran!"
 msgstr "我已為王國奉獻所有！為我報仇，迪奧蘭！"
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:329
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:328
 msgid ""
 "Ithelden's elves have killed Ethiliel! Now we have no chance to come to an "
 "agreement with them. A war with the Elves is imminent."
@@ -3268,37 +3270,37 @@ msgstr ""
 "即將來臨。"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:333
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:332
 msgid ""
 "We are far away from Weldyn. We'll surely all be killed long before any "
 "reinforcements arrive."
 msgstr "我們離威爾丁太遠了。還沒等到援軍來以前我們一定先會被殺光。"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:356
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:355
 msgid ""
 "We won't be able to hold them off for long. I should go reason with them!"
 msgstr "我們不可能堅守很久，我要去和他們理論！"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:360
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:359
 msgid ""
 "Are you sure that the elves will greet you any more kindly than they have "
 "met us? After all, you did lead us into the forests..."
 msgstr "妳確信精靈們對妳會更客氣一些嗎？畢竟，是妳帶領我們進入森林的......"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:364
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:363
 msgid "Perhaps not, but it is your only hope. I must reach Ithelden!"
 msgstr "可能不會，然而這是唯一的希望。我必須和伊蒂爾丹談談！"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:367
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:366
 msgid "Ithelden's base"
 msgstr "伊蒂爾丹的基地"
 
 #. [objective]: condition=win
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:373
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:372
 msgid "Send Ethiliel to the Great Tree and parley with Ithelden"
 msgstr "讓依茜麗兒抵達大樹並與伊蒂爾丹會談"
 

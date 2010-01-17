@@ -60,7 +60,7 @@ Näyttää käyttäjän asetushakemiston polun ja lopettaa.
 Mahdollistaa ylimääräisiä komentotila\-asetuksia pelissä. (Katso wiki\-sivulta
 http://www.wesnoth.org/wiki/CommandMode lisätietoja komentotilasta.)
 .TP 
-\fB\-e,\ \-\-editor\fP\fI\ file\fP
+\fB\-e,\ \-\-editor\fP\fI\ tiedosto\fP
 Käynnistää pelinsisäisen karttaeditorin suoraan. Jos \fItiedosto\fP on
 syötetty, komento vastaa \fB\-e \-\-load\fP:a
 .TP 
@@ -101,9 +101,9 @@ Asettaa enimmäisarvon kuvanpäivitysten määrälle sekunnissa. Arvon tulee oll
 väliltä 1–1000. Oletus on \fB50\fP.
 .TP 
 \fB\-m, \-\-multiplayer\fP
-runs a multiplayer game. There are additional options that can be used
-together with \fB\-\-multiplayer\fP as explained below. Only these additional
-options can follow \fB\-\-multiplayer\fP.
+Käynnistää moninpelin. Joitakiin valitsimia voi yhdistää valitsimen
+\fB\-\-multiplayer\fP kanssa, kuten alla selitetään. Vain nämä valinnaiset
+valitsimet voivat olla tämän valitsimen jälkeen.
 .TP 
 \fB\-\-no\-delay\fP
 Käynnistää pelin ilman viiveitä graafisen suorituskyvyn mittausta
@@ -153,8 +153,8 @@ Osapuolikohtaisissa moninpelivalitsimissa on \fInumero\fP\-kenttä. Se täytyy
 korvata puolen numerolla. Yleensä \fInumero\fP on 1 tai 2, mutta voi olla
 suurempikin riippuen valitun skenaarion mahdollisesta pelaajamäärästä.
 .TP 
-\fB\-\-ai_config\fP\fInumber\fP\fB=\fP\fIvalue\fP
-selects a configuration file to load for the AI controller for this side.
+\fB\-\-ai_config\fP\fInumero\fP\fB=\fP\fIarvo\fP
+Valitsee asetustiedoston tekoälyn lataamiseksi tälle puolelle.
 .TP 
 \fB\-\-algorithm\fP\fInumero\fP\fB=\fP\fIarvo\fP
 Valitsee puolta kontrolloivalle tekoälylle tavallisesta poikkeavan

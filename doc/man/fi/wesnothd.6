@@ -81,9 +81,9 @@ Laittaa vianjäljityslokin kirjoittamisen päälle.
 .P
 [\fItagi\fP]
 .IP
-\fIkey\fP="\fIvalue\fP"
+\fIavain\fP="\fIarvo\fP"
 .IP
-\fIkey\fP="\fIvalue\fP,\fIvalue\fP,..."
+\fIavain\fP="\fIarvo\fP,\fIarvo\fP,..."
 .P
 [/\fItagi\fP]
 .
@@ -91,9 +91,9 @@ Laittaa vianjäljityslokin kirjoittamisen päälle.
 .
 .TP 
 \fBallow_remote_shutdown\fP
-If set to \fBno\fP (default), shut_down and restart requests are ignored unless
-they come from the fifo.  Set it to \fByes\fP to allow remote shutdown via a
-/query by an administrator.
+Jos asetettu arvoon \fBno\fP (oletus), ”shut_down”\- ja ”restart”\-pyynnöteivät
+vaikuta, elleivät ne tulo FIFO:sta. Aseta arvoon \fByes\fP salliaksesi
+etäsammutuksen ylläpitäjän käskyllä.
 .TP 
 \fBban_save_file\fP
 Täydellinen tai suhteellinen polku (gzip\-pakattuun) tiedostoon, jota
@@ -101,23 +101,23 @@ palvelin voi lukea ja kirjoittaa. Estot tallennetaan tähän tiedostoon ja
 luetaan siitä palvelimen käynnistyessä.
 .TP 
 \fBcompress_stored_rooms\fP
-Determines whether the rooms file should be read and written to in
-compressed form. Defaults to \fByes\fP.
+Määrittää, pitäisikö huonetiedostot lukea ja kirjoittaa pakatussa
+muodossa. Oletuksena kyllä(\fByes\fP).
 .TP 
 \fBconnections_allowed\fP
 Sallittujen yhteyksien määrä samasta IP:stä. Arvo \fB0\fP poistaa
 rajoituksen. (Oletus on \fB5\fP.)
 .TP 
 \fBdisallow_names\fP
-Names/nicks that are not accepted by the server. \fB*\fP and \fB?\fP from wildcard
-patterns are supported. See \fBglob\fP(7)  for more details.  Default values
-(used if nothing is specified) are:
+Nimet tai nimimerkit, joita palvelin ei hyväksy. Jokerimerkeistä toimivat
+\fB*\fP ja \fB?\fP. Lisätietoja: \fBglob\fP(7). Oletusarvot (käytössä, kun muita ei
+ole annettu) ovat:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-The path to the fifo you can echo server commands into (same as /query
-\&... from wesnoth).  If not specified defaults to the compile\-time path
-(default: \fB/var/run/socket/wesnothd/socket\fP).
+Polku FIFOon, jonne voi kirjoittaa palvelinkomentoja (samoja kuin komennolla
+/query wesnothissa). Jos jätetty määrittelemättä, käytetään käännön aikana
+määriteltyä polkua (oletus: \fB/var/run/socket/wesnothd/socket\fP).
 .TP 
 \fBmax_messages\fP
 Sallittu määrä viestejä ajanjaksossa, joka on määritelty asetuksella
@@ -131,14 +131,13 @@ havaitsemisessa. (Oletus on \fB10\fP.)
 Päivän viesti.
 .TP 
 \fBnew_room_policy\fP
-Determines who can create new rooms on the server. Available values are
-\fBeveryone\fP, \fBregistered\fP, \fBadmin\fP and \fBnobody\fP, and give the permission
-respectively to everyone, registered users, admin users or disables new room
-creation. Default value is \fBeveryone\fP.
+Määrittää, ketkä voivat tehdä uusia huoneita palvelimella. Mahdollisia
+arvoja on \fBeveryone\fP, \fBregistered\fP, \fBadmin\fP ja \fBnobody\fP (kaikki,
+rekisteröityneet, ylläpitäjä tai ei kukaan. Tässä
+järjestyksessä). Oletusarvona on \fBeveryone\fP
 .TP 
 \fBpasswd\fP
-The password used to gain admin privileges (via \fB/query admin
-\fP\fIpassword\fP).
+Salasana, jolla saa ylläpitäjän oikeudet (via \fB/query admin \fP\fIpassword\fP).
 .TP 
 \fBreplay_save_path\fP
 Hakemisto, johon palvelin tallentaa pelien uusinnat. (Muista vinoviiva
@@ -146,32 +145,33 @@ lopussa!) Oletus on \*(rq, joka tarkoittaa hakemistoa, jossa wesnothd
 käynnistettiin.
 .TP 
 \fBrestart_command\fP
-The command that the server uses to start a new server process via the
-\fBrestart\fP command. (Can only be issued via the fifo. See the
-\fBallow_remote_shutdown\fP setting.)
+Komento, jota palvelin käyttää käynnistääkseen uuden palvelinprosessin
+\fBrestart\fP\-komennosta (Annettavissa vain FIFOn kautta. Katso
+\fBallow_remote_shutdown\fP\-asetus).
 .TP 
 \fBroom_save_file\fP
-Path to a file where the room info should be stored. This file is read on
-server startup and written to later. If empty or not set, rooms are not
-loaded and not saved.
+Polku, jossa huonetiedot tulisi olla tallennettuna. Tämä tiedosto luetaan
+palvelimen käynnistyessä ja kirjoitetaan myöhemmin. Jos tyhjä tai
+asettamatta, huoneita ei ladata eikä tallenneta.
 .TP 
 \fBsave_replays\fP
 Valitsee, tallentaako palvelin automaattisesti pelien uusinnat. (Oletus:
 \fBfalse\fP)
 .TP 
 \fBversions_accepted\fP
-A comma separated list of version strings to be accepted by the server. \fB*\fP
-and \fB?\fP from wildcard patterns are supported.  (defaults to the
-corresponding wesnoth version)
+Pilkuilla eroteltu lista palvelimen hyväksymistä versioista. Jokerimerkeistä
+toimivat \fB*\fP ja \fB?\fP (Oletus on palvelimen versiota vastaava wesnothin
+versio).
 .br
 Esimerkki: \fBversions_accepted="*"\fP hyväksyy minkä tahansa version.
 .TP  
 \fBuser_handler\fP
-The name of the user handler to use. Currently available user handlers are
-\fBforum\fP (to connect wesnothd to a phpbb forum database) and \fBsample\fP (a
-sample implementation of the user handler interface, if you use this on
-anything real you are insane). The default value is \fBforum\fP. You must also
-add a \fB[user_handler]\fP section, see below.
+Käyttäjäkäsittelijän nimi. Tällä hetkellä käytettävissä olevat käsittelijät
+ovat \fBforum\fP (jolla wesnothd yhdistetään wesnoth.orgin phpbb\-foorumin
+tietokantaan) ja \fBsample\fP (esimerkkitoteutus käyttäjäkäsittelijän
+rajapinnasta; jos käytät tätä mihinkään todelliseen, olet täysin
+hullu). Oletusarvo on \fBforum\fP. Myös \fB[user_handler]\fP\-osio täytyy lisätä,
+ks. alla.
 .
 .SS "Globaalit tagit:"
 .
@@ -199,11 +199,11 @@ väliaikaisten estojen pituuksille.
 Estoajasta käytettävä nimi.
 .TP 
 \fBtime\fP
-The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s
-(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d
-is a number.  If no time modifier is given minutes (m) are assumed.
-Example: \fBtime="1D12h30m"\fP results in a ban time of 1 day, 12 hours and 30
-minutes.
+Ajan pituuden määritelmä. Muoto on: %d[%s[%d%s[...]]] jossa %s on s
+(sekunteja), m (minuutteja), h (tunteja), D (päiviä), M (kuukausia) tai Y
+(vuosia) ja %d on luku. Jos määrettä ei anneta, käytetään oletuksena
+minuutteja. Esimerkki: \fBtime="1D12h30m"\fP luo estoajan, joka kestää 1
+päivän, 12 tuntia ja 30 minuuttia.
 .RE
 .P
 \fB[proxy]\fP Tällä tagilla käsketään palvelinta toimimaan välityspalvelimena
@@ -211,10 +211,10 @@ ja ohjaamaan asiakkaiden pyynnöt määrätylle palvelimelle. Hyväksyy samat
 avaimet kuin \fB[redirect]\fP.
 .RE
 .P
-\fB[user_handler]\fP Configures the user handler. Available keys vary depending
-on which user handler is set with the \fBuser_handler\fP key. If no
-\fB[user_handler]\fP section is present in the configuration the server will
-run without any nick registration service.
+\fB[user_handler]\fP Säätää käyttäjäkäsittelijän asetukset. Käytetyt avaimet
+riippuvat siitä, mikä käsittelijä on valittu avaimella \fBuser_handler\fP. Jos
+asetuksissa ei ole \fB[user_handler]\fP\-osiota, palvelin käynnistyy ilman
+nimimerkkien rekisteröintipalvelua.
 .RS
 .TP  
 \fBdb_host\fP
@@ -235,11 +235,11 @@ käyttäjädatansa. Todennäköisimmin tämä on <tauluetuliite>_users
 (esim. phpbb3_users).
 .TP  
 \fBdb_extra_table\fP
-(for user_handler=forum) The name of the table in which wesnothd will save
-its own data about users. You will have to create this table manually, e.g.:
-\fBCREATE TABLE <table\-name>(username VARCHAR(255) PRIMARY KEY,
-user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4)
-NOT NULL DEFAULT 0);\fP
+(user_handler=sample) Sen taulun nimi, johon wesnothd tallentaa oman datansa
+käyttäjistä. Tämä taulu pitää luoda manuaalisesti, esim.: \fBCREATE TABLE
+<taulunnimi>(username VARCHAR(255) PRIMARY KEY, user_lastvisit INT
+UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT
+0);\fP
 .TP  
 \fBuser_expiration\fP
 (user_handler=sample) Aika, jonka kuluttua rekisteröity nimimerkki vanhenee

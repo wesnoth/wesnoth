@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-tsg.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-12-27 12:27+0100\n"
+"POT-Creation-Date: 2010-01-17 17:49+0100\n"
 "PO-Revision-Date: 2009-11-22 15:00+0300\n"
 "Last-Translator: Fedor Khod'kov <fedor76@istra.ru>\n"
 "Language-Team: \n"
@@ -198,7 +198,7 @@ msgstr "Победите Урзу Матина"
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:432
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:479
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:234
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:377
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:376
 msgid "Death of Deoran"
 msgstr "Смерть Деорана"
 
@@ -1382,7 +1382,7 @@ msgstr "Передвиньте Этилиель к деревне Мебрина
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:580
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:49
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:238
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:381
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:380
 msgid "Death of Ethiliel"
 msgstr "Смерть Этилиель"
 
@@ -3327,20 +3327,20 @@ msgid "The Council of Westin will arrive on turn $council_arrive_turn|."
 msgstr "Совет Вестина прибудет к ходу $council_arrive_turn|."
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:514
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:302
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:515
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:301
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:12
 msgid "I have failed my kingdom and duty..."
 msgstr "Я не выполнил свой долг перед королевством..."
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:529
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:530
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:67
 msgid "Now I will never see Westin free again..."
 msgstr "Я никогда больше не увижу Вестин свободным..."
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:540
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:541
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:81
 msgid "Far from home I fall - but not in vain! Guard our people, Deoran!"
 msgstr ""
@@ -3463,7 +3463,8 @@ msgstr ""
 "терпеть такие деяния! Ты умрёшь вместе с ними!"
 
 #. [event]
-#. [unit]: type=$unit_type, id=Disciple of Mebrin
+#. [unit]: type=$unit_type
+#. [message]
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:213
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:214
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:215
@@ -3471,7 +3472,8 @@ msgstr ""
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:217
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:218
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:219
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:277
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:276
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:288
 msgid "Disciple of Mebrin"
 msgstr "Ученик Мебрина"
 
@@ -3480,19 +3482,19 @@ msgstr "Ученик Мебрина"
 msgid "Keep the enraged elves from sacking Westin"
 msgstr "Не позвольте разгневанным эльфам захватить Вестин"
 
-#. [message]: speaker=Disciple of Mebrin
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:290
+#. [message]
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:289
 msgid "For every one of us you strike down, more will rise!"
 msgstr "На место каждого, кого вы убьёте, заступят ещё больше!"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:316
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:315
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:52
 msgid "I have given my all for my kingdom! Avenge me, Deoran!"
 msgstr "Я отдал всё ради своей земли! Отомсти за меня, Деоран!"
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:329
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:328
 msgid ""
 "Ithelden's elves have killed Ethiliel! Now we have no chance to come to an "
 "agreement with them. A war with the Elves is imminent."
@@ -3501,7 +3503,7 @@ msgstr ""
 "Война с эльфами неминуема."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:333
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:332
 msgid ""
 "We are far away from Weldyn. We'll surely all be killed long before any "
 "reinforcements arrive."
@@ -3510,13 +3512,13 @@ msgstr ""
 "нибудь подкрепление."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:356
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:355
 msgid ""
 "We won't be able to hold them off for long. I should go reason with them!"
 msgstr "Мы не сможем сдерживать их долго. Я должна попробовать урезонить их!"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:360
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:359
 msgid ""
 "Are you sure that the elves will greet you any more kindly than they have "
 "met us? After all, you did lead us into the forests..."
@@ -3525,19 +3527,19 @@ msgstr ""
 "концов, это Вы вели нас в лес."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:364
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:363
 msgid "Perhaps not, but it is your only hope. I must reach Ithelden!"
 msgstr ""
 "Может и нет, но это наша единственная надежда. Я должна добраться до "
 "Ителдена!"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:367
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:366
 msgid "Ithelden's base"
 msgstr "Стан Ителдена"
 
 #. [objective]: condition=win
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:373
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:372
 msgid "Send Ethiliel to the Great Tree and parley with Ithelden"
 msgstr "Отправьте Этилиель к Великому Дереву переговорить с Ителденом"
 

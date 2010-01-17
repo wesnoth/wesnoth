@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-12-27 12:27+0100\n"
+"POT-Creation-Date: 2010-01-17 17:48+0100\n"
 "PO-Revision-Date: 2009-12-23 15:46+0200\n"
 "Last-Translator: Mikko Nikkilä <miccoh@gmail.com>\n"
 "Language-Team: none\n"
@@ -281,7 +281,7 @@ msgstr "Wesnothilaiset"
 #. [unit]: type=White Mage, id=Dacyn
 #. [message]
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:71
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:443
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:446
 msgid "Dacyn"
 msgstr "Dacyn"
 
@@ -389,7 +389,7 @@ msgstr "Kestä, kunnes Dacyn palaa kahden päivän kuluessa"
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:89
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:141
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:177
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:142
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:135
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:133
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:160
 #: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:67
@@ -531,7 +531,7 @@ msgstr "Saata Gweddry salaluukulle"
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:93
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:145
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:181
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:146
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:139
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:137
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:164
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:163
@@ -1380,7 +1380,7 @@ msgstr "Kukista epäkuolleiden johtaja"
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:97
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:149
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:185
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:150
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:143
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:141
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:168
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:167
@@ -2653,20 +2653,20 @@ msgstr ""
 msgid "The Drowned Plains"
 msgstr "Uponneet tasangot"
 
-#. [unit]: type=Skeletal Dragon, id=Khrakrahs
-#. [message]
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:126
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:398
-msgid "Khrakrahs"
-msgstr "Khrakrahs"
-
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:138
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:131
 msgid "Defeat Khrakrahs"
 msgstr "Kukista Khrakrahs"
 
+#. [unit]: type=Skeletal Dragon, id=Khrakrahs
+#. [message]
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:153
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:401
+msgid "Khrakrahs"
+msgstr "Khrakrahs"
+
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:380
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:383
 msgid ""
 "Now, we have reached the Horse Plains, the fair homeland of my people. They "
 "may be able to help us in - "
@@ -2675,7 +2675,7 @@ msgstr ""
 "saattaisivat voida auttaa meitä..."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:384
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:387
 msgid ""
 "What?! Swamps?! Those undead have destroyed the grasslands of my House, and "
 "they shall pay for it!"
@@ -2684,7 +2684,7 @@ msgstr ""
 "saavat maksaa siitä!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:388
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:391
 msgid ""
 "The lich-lord must have flooded the valley. The undead like the swamp. It is "
 "death, decay, everything that they are themselves. I can sense them lurking "
@@ -2695,22 +2695,22 @@ msgstr ""
 "Voin aistia heidät vaanimassa soissa, odottaen väijyttääkseen meidät."
 
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:392
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:395
 msgid "I s'ppose we'll hav' to wade across it anyway... ugh."
 msgstr "Oletan, että jourumme kahlaamaan sen läpi kuiteskin... ugh."
 
 #. [message]
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:400
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:403
 msgid "Findshhhh... slayhhhh... killhhhh..."
 msgstr "Löy..täää... kuo..le..maaa... tap..paaa..."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:404
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:407
 msgid "What is that sound?!?"
 msgstr "Mikä tuo ääni on?!?"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:408
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:411
 msgid ""
 "I do not know, but my guess is the dragon Khrakrahs. He was a powerful beast "
 "indeed, in the time of Haldric, living in the Northern Mountains. But he "
@@ -2723,7 +2723,7 @@ msgstr ""
 "tuhottava hänet."
 
 #. [message]
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:445
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:448
 msgid ""
 "Aha! I see what they have done. They have raised him as an undead dragon. "
 "But he does not appear to be weak to my arcane senses... this is strange "
@@ -3271,7 +3271,7 @@ msgid "I... lose?..."
 msgstr "Miten... voin... hävitä?"
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:166
+#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:167
 msgid "And more!"
 msgstr "Voit hyvinkin!"
 
@@ -3374,12 +3374,12 @@ msgid "How did you know...?"
 msgstr "Kuinka tiesitte...?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:326
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:327
 msgid "Kill the king!"
 msgstr "Tappakaa kuningas!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:330
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:331
 msgid "They killed Konrad... now, even if we save Weldyn, Wesnoth has fallen."
 msgstr ""
 "He tappoivat Konradin... Nyt, vaikka pelastaisimme Weldynin, Wesnoth on "
