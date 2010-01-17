@@ -782,14 +782,6 @@ void tlobby_main::update_playerlist()
 	player_list_.other_rooms.auto_hide();
 	player_list_.other_games.auto_hide();
 
-	/**
-	 * @todo See whether this invalidate can be removed.
-	 *
-	 * It should be possible but once done the clicking on the sort oder of the
-	 * players in an empty lobby seems to crash with a not sized userpanel
-	 * size {-1, -1, 0, 0}.
-	 */
-	window_->invalidate_layout();
 	player_list_dirty_ = false;
 }
 
@@ -1205,18 +1197,37 @@ void tlobby_main::process_gamelist(const config &data)
 
 void tlobby_main::process_gamelist_diff(const config &data)
 {
-	if (lobby_info_.process_gamelist_diff(data)) {
-		update_gamelist_diff();
-		lobby_info_.sync_games_display_status();
-	}
-	int joined = data.child_count("insert_child");
-	int left = data.child_count("remove_child");
-	if (joined > 0 || left > 0) {
-		if (left > joined) {
-			do_notify(NOTIFY_LOBBY_QUIT);
-		} else {
-			do_notify(NOTIFY_LOBBY_JOIN);
+	{
+		assert(window_);
+		twindow::tinvalidate_layout_blocker blocker(*window_);
+
+		if (lobby_info_.process_gamelist_diff(data)) {
+			update_gamelist_diff();
+			lobby_info_.sync_games_display_status();
 		}
+		int joined = data.child_count("insert_child");
+		int left = data.child_count("remove_child");
+		if (joined > 0 || left > 0) {
+			if (left > joined) {
+				do_notify(NOTIFY_LOBBY_QUIT);
+			} else {
+				do_notify(NOTIFY_LOBBY_JOIN);
+			}
+		}
+	}
+
+	/*
+	 * As long as the layout is valid update all listboxes; if
+	 * update_content_size() returns false the layout is invalidated. If
+	 * invalidated the trying to size the other listboxes is a waste of
+	 * effort, since they will be requested for a layout phase anyway.
+	 */
+	if(!window_->get_need_layout()) {
+		player_list_.active_game.list->update_content_size()
+				&& player_list_.active_room.list->update_content_size()
+				&& player_list_.other_rooms.list->update_content_size()
+				&& player_list_.other_games.list->update_content_size()
+				&& gamelistbox_->update_content_size();
 	}
 }
 
