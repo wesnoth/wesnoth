@@ -207,6 +207,25 @@ void tlistbox::list_item_clicked(twidget* caller)
 	assert(false);
 }
 
+bool tlistbox::update_content_size()
+{
+	if(get_visible() == twidget::INVISIBLE) {
+		return true;
+	}
+
+	if(get_size() == tpoint(0, 0)) {
+		return false;
+	}
+
+	if(content_resize_request(true)) {
+		content_grid_->set_visible_area(content_visible_area());
+		set_dirty();
+		return true;
+	}
+
+	return false;
+}
+
 void tlistbox::set_size(const tpoint& origin, const tpoint& size)
 {
 	// Inherited.

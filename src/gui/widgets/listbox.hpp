@@ -175,6 +175,23 @@ public:
 	void set_self_active(const bool /*active*/)  {}
 //		{ state_ = active ? ENABLED : DISABLED; }
 //
+
+	/**
+	 * Request to update the size of the content after changing the content.
+	 *
+	 * When a resize is required the container first can try to handle it
+	 * itself. If it can't honour the request the function will call @ref
+	 * twindow::invalidate_layout().
+	 *
+	 * @note Calling this function on a widget with size == (0, 0) results
+	 * false but doesn't call invalidate_layout, the engine expects to be in
+	 * build up phase with the layout already invalidated.
+	 *
+	 * @returns                      True if the resizing succeeded, false
+	 *                               otherwise.
+	 */
+	bool update_content_size();
+
 	/***** ***** ***** ***** inherited ***** ***** ****** *****/
 
 	/** Inherited from tscrollbar_container. */
