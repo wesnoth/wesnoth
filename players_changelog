@@ -3,13 +3,17 @@ changes may be omitted). For a complete list of changes, see the main
 changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/trunk/changelog
 
 Version 1.7.11+svn:
- * Language and i18n:
-   * Updated translations: Czech, Finnish, French, German, Hebrew, Italian,
-     Latin, Russian, Shavian, Slovak, Spanish.
+ * Campaigns:
+   * Fixed a bug in several scenarios causing some enemy units to disappear when
+     loading a save.
 
  * Graphics:
    * Improved the background for the new dialogs.
    * Improved the speed of the MP lobby.
+
+ * Language and i18n:
+   * Updated translations: Czech, Finnish, French, German, Hebrew, Italian,
+     Latin, Russian, Shavian, Slovak, Spanish.
 
  * Multiplayer:
    * Dummy sides no longer get a turn, e.g. the status in Caves of the Basilisk
