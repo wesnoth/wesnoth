@@ -15,6 +15,7 @@ Version 1.7.11+svn:
    * Add a new transient error message
    * Convert several old style message dialog to the new style
    * Allow listboxes to add rows at every place instead of at the end only
+   * Improved the speed of the new lobby
  * WML Engine:
    * Removed bogus merging of the old unit type's movetype when advancing
      (fixes bug #15055)
@@ -33,6 +34,7 @@ Version 1.7.11+svn:
    * Fixed drawing glitches with tiled gui2 windows in the lobby
    * Fix some doxygen warnings
    * wesnoth-optipng can now process selected files given on command line
+   * Allow listboxes to better request the update of their contents.
 
 Version 1.7.11-1.8beta4:
  * Language and i18n:
