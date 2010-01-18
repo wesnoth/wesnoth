@@ -22,6 +22,7 @@
 #include "composite/aspect.hpp"
 #include "composite/engine_default.hpp"
 #include "composite/engine_fai.hpp"
+#include "composite/engine_lua.hpp"
 #include "composite/goal.hpp"
 #include "default/ai.hpp"
 #include "formula/ai.hpp"
@@ -55,6 +56,9 @@ static register_engine_factory<engine_cpp>
 
 static register_engine_factory<engine_fai>
 	composite_ai_factory_fai("fai");
+
+static register_engine_factory<engine_lua>
+	composite_ai_factory_lua("lua");
 
 // =======================================================================
 // Stages

@@ -50,6 +50,7 @@ wesnoth_source = \
 	ai/composite/engine.cpp \
 	ai/composite/engine_default.cpp \
 	ai/composite/engine_fai.cpp \
+	ai/composite/engine_lua.cpp \
 	ai/composite/goal.cpp \
 	ai/composite/rca.cpp \
 	ai/composite/stage.cpp \
