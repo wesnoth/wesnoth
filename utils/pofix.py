@@ -316,7 +316,7 @@ if __name__ == '__main__':
                     else:
                         lines = after.split('\n')
                         for (i, line) in enumerate(lines):
-                            if line[0] != '#':
+                            if line and line[0] != '#':
                                 lines[i] = lines[i].replace(old, new)
                         after = '\n'.join(lines)
             if after != before:
