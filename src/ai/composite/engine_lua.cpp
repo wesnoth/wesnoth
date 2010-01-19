@@ -113,7 +113,7 @@ void engine_lua::do_parse_stage_from_config( ai_context & /*context*/, const con
 	}
 }
 
-std::string engine_lua::evaluate(const std::string &str)
+std::string engine_lua::evaluate(const std::string &/*str*/)
 {
 	//@todo: this is not mandatory, but if we want to allow lua to evaluate
 	// something 'in context' of this ai, this will be useful
