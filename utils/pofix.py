@@ -282,7 +282,7 @@ stringfixes = {
 # date --utc "+%s  # %c"
 timecheck = 1262364535  # Fri 01 Jan 2010 04:48:55 PM UTC
 
-import os, sys, time, stat
+import os, sys, time, stat, re
 
 if __name__ == '__main__':
     newer = 0
@@ -300,6 +300,7 @@ if __name__ == '__main__':
             # Read the content of each file and transform it
             before = open(path, "r").read()
             after = before
+            decommented = re.sub("#.*", "", before)
             for (domain, fixes) in stringfixes.items():
                 for (old, new) in fixes:
                     if old is new:
@@ -311,7 +312,7 @@ if __name__ == '__main__':
                     #lead to "real" probs not found, the real check would be "does replacing
                     #old with new lead to duplicate msgids? (including old ones marked with #~)"
                     #which is not easily done in the current design...
-                    elif new in after and old in after and not new in old:
+                    elif new in decommented and old in decommented and not new in old:
                         print "pofix: %s already includes the new string\n\t\"%s\"\nbut also the old\n\t\"%s\"\nthis needs handfixing for now since it likely creates duplicate msgids." % (path, new, old)
                     else:
                         lines = after.split('\n')
