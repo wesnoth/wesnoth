@@ -82,7 +82,7 @@ void wait::leader_preview_pane::draw_contents()
 		const std::vector<std::string> recruit_list = utils::split(recruits);
 		std::ostringstream recruit_string;
 
-		if(faction[0] == font::IMAGE) {
+		if(!faction.empty() && faction[0] == font::IMAGE) {
 			std::string::size_type p = faction.find_first_of(COLUMN_SEPARATOR);
 			if(p != std::string::npos && p < faction.size())
 				faction = faction.substr(p+1);
