@@ -2107,7 +2107,9 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 				}
 				if(utils::string_bool(cfg["animate"])) {
 					resources::screen->scroll_to_tile(loc);
-					unit_display::unit_die(loc, un->second);
+					if (un.valid()) {
+						unit_display::unit_die(loc, un->second);
+					}
 				}
 				if (fire_event)
 				{

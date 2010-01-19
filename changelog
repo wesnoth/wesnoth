@@ -1,4 +1,6 @@
 1.7.12+svn:
+ * Engine:
+   * Fix bug #15146: made kill event with animate="yes" recheck the presence of unit before animating, fixing the assertion failure (in case the unit is removed by other wml events like last breath)
  * Language and i18n:
    * Updated translations: Finnish, German, Russian, Serbian
    * The manual now does support translations of alternative texts for images
