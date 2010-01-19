@@ -314,7 +314,11 @@ if __name__ == '__main__':
                     elif new in after and old in after and not new in old:
                         print "pofix: %s already includes the new string\n\t\"%s\"\nbut also the old\n\t\"%s\"\nthis needs handfixing for now since it likely creates duplicate msgids." % (path, new, old)
                     else:
-                        after = after.replace(old, new)
+                        lines = after.split('\n')
+                        for (i, line) in enumerate(lines):
+                            if line[0] != '#':
+                                lines[i] = lines[i].replace(old, new)
+                        after = '\n'.join(lines)
             if after != before:
                 print "pofix: %s modified" % path
                 modified += 1
