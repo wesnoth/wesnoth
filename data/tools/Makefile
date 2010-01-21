@@ -65,10 +65,10 @@ definitions:
 	@./wmlscope --definitions --exclude data/scenarios --exclude data/campaigns $(MAINLINE)
 
 # Generate a reference page for the utility macros.
-macro-reference.xhtml:
-	@cat helpheader.xhtml >macro-reference.xhtml
-	@./wmlscope --extracthelp --exclude data/scenarios --exclude data/tutorial --exclude data/campaigns $(DATA)/core/macros/ >>macro-reference.xhtml
-	@cat helptrailer.xhtml >>macro-reference.xhtml
+macro-reference.html:
+	@cat helpheader.xhtml >macro-reference.html
+	@./wmlscope --extracthelp --exclude data/scenarios --exclude data/tutorial --exclude data/campaigns $(DATA)/core/macros/ >>macro-reference.html
+	@cat helptrailer.xhtml >>macro-reference.html
 
 # Report on unchecked macro calls
 unchecked:
