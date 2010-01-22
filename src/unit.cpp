@@ -1741,7 +1741,11 @@ void unit::redraw_unit()
 		params.blend_with = disp.rgb(0,255,0);
 		params.blend_ratio = 0.25;
 	}
+	//hackish : see unit_frame::merge_parameters
+	// we use image_mod on the primary image
+	// and halo_mod on secondary images and all haloes
 	params.image_mod = image_mods();
+	params.halo_mod = TC_image_mods();
 	params.image= absolute_image();
 
 
@@ -1766,7 +1770,7 @@ void unit::redraw_unit()
 
 
 	if(unit_halo_ == halo::NO_HALO && !image_halo().empty()) {
-		unit_halo_ = halo::add(0, 0, image_halo(), map_location(-1, -1));
+		unit_halo_ = halo::add(0, 0, image_halo()+TC_image_mods(), map_location(-1, -1));
 	}
 	if(unit_halo_ != halo::NO_HALO && image_halo().empty()) {
 		halo::remove(unit_halo_);
@@ -2812,11 +2816,16 @@ temporary_unit_mover::~temporary_unit_mover()
 	}
 }
 
-std::string unit::image_mods() const{
+std::string unit::TC_image_mods() const{
 	std::stringstream modifier;
 	if(flag_rgb_.size()){
 		modifier << "~RC("<< flag_rgb_ << ">" << team::get_side_colour_index(side()) << ")";
 	}
+	return modifier.str();
+}
+std::string unit::image_mods() const{
+	std::stringstream modifier;
+	modifier << TC_image_mods();
 	if(image_mods_.size()){
 		modifier << "~" << image_mods_;
 	}

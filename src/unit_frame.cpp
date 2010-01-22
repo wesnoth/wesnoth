@@ -625,9 +625,15 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 		result.image_diagonal = engine_val.image_diagonal;
 	}
 
-	/** engine provides a string for "petrified" and "team color" modifications */
+	/** engine provides a string for "petrified" and "team color" modifications 
+          note that image_mod is the complete modification and halo_mod is only the TC part 
+          see unit.cpp, we know that and use it*/
 		result.image_mod = current_val.image_mod +animation_val.image_mod;
-	if(primary)	result.image_mod += engine_val.image_mod;
+	if(primary) {
+                result.image_mod += engine_val.image_mod;
+        } else {
+                result.image_mod += engine_val.halo_mod;
+        }
 
 	assert(engine_val.halo.empty());
 	result.halo = current_val.halo.empty()?animation_val.halo:current_val.halo;
@@ -639,9 +645,8 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 	result.halo_y = current_val.halo_y?current_val.halo_y:animation_val.halo_y;
 	result.halo_y += engine_val.halo_y;
 
-	/** engine provides hflip modifications */
-		result.halo_mod = current_val.halo_mod +animation_val.halo_mod;
-	if(primary)	result.halo_mod += engine_val.halo_mod;
+        result.halo_mod = current_val.halo_mod +animation_val.halo_mod;
+	result.halo_mod += engine_val.halo_mod;
 
 	assert(engine_val.duration == 0);
 	result.duration = current_val.duration;

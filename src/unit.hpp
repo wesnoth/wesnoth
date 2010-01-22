@@ -319,6 +319,7 @@ public:
 	 **/
 	unit& clone(bool is_temporary=true);
 
+	std::string TC_image_mods() const;
 	std::string image_mods() const;
 
 	/**
