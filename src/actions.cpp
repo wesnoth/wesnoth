@@ -272,6 +272,7 @@ void unit_creator::add_unit(const config &cfg)
 	} else {
 		assert( resources::units->find(loc) == resources::units->end() );
 		bool animate = utils::string_bool(temp_cfg["animate"],false);
+		temp_cfg.remove_attribute("animate");
 		if (recall_list_element==team_.recall_list().end()) {
 			//new unit
 			unit new_unit(resources::units, temp_cfg, true);
