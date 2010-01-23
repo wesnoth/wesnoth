@@ -726,7 +726,7 @@ protected:
 
 	}
 
-	bool use_player_cfg()
+	bool use_player_cfg() const
 	{
 		return (player_cfg_ != NULL) && (!snapshot_);
 	}
