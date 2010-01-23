@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-01-17 17:48+0100\n"
-"PO-Revision-Date: 2010-01-16 15:15+0100\n"
+"PO-Revision-Date: 2010-01-23 21:55+0100\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
@@ -3768,9 +3768,8 @@ msgid "Exit"
 msgstr "Sortir"
 
 #: data/core/macros/ai_controller.cfg:1047
-#, fuzzy
 msgid "Set special orders..."
-msgstr "Définir le comportement..."
+msgstr "Définir les ordres spéciaux..."
 
 #: data/core/macros/ai_controller.cfg:1048
 msgid "Move leader to..."
@@ -3790,20 +3789,16 @@ msgid "moving leader to $x1|,$y1|."
 msgstr "déplacer le chef en $x1|,$y1|."
 
 #: data/core/macros/ai_controller.cfg:1052
-#, fuzzy
 msgid "Clear special orders"
-msgstr "Annuler tous les ordres"
+msgstr "Annuler tous les ordres spéciaux"
 
 #: data/core/macros/ai_controller.cfg:1053
-#, fuzzy
 msgid ""
 "Special: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_special_description"
 msgstr ""
-"Objectif : $ai_controller.side_$ally_side|_current_settings."
-"currently_doing_objective_description\n"
-"Comportement : $ai_controller.side_$ally_side|_current_settings."
-"currently_doing_behaviour_description"
+"Spécial : $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_special_description"
 
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
@@ -3863,7 +3858,6 @@ msgstr ""
 #. [objective]: description=<span color='white'>, condition=win
 #: data/core/macros/carryover-utils.cfg:34
 #: data/core/macros/carryover-utils.cfg:42
-#, fuzzy
 msgid "Alternative objective:"
 msgstr "Objectif alternatif :"
 
