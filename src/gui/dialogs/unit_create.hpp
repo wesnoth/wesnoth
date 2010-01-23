@@ -35,7 +35,7 @@ public:
 	bool no_choice() const { return choice_.empty(); }
 
 	/** User's choice whether to create a unit with a random name. */
-	bool generate_name() { return generate_name_; }
+	bool generate_name() const { return generate_name_; }
 
 	/** Gender choice from the user. */
 	unit_race::GENDER gender() { return gender_; }
