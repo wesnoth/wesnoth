@@ -34,7 +34,7 @@ public:
 	~create();
 
 	mp_game_settings& get_parameters();
-	int num_turns() { return num_turns_; }
+	int num_turns() const { return num_turns_; }
 
 protected:
 	virtual void layout_children(const SDL_Rect& rect);
