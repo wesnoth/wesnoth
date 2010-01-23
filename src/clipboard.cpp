@@ -70,32 +70,32 @@ public:
 	}
 
 
-	Atom XA_CLIPBOARD()
+	Atom XA_CLIPBOARD() const
 	{
 		return atomTable_[0];
 	}
 
-	Atom XA_TEXT()
+	Atom XA_TEXT() const
 	{
 		return atomTable_[1];
 	}
 
-	Atom XA_COMPOUND_TEXT()
+	Atom XA_COMPOUND_TEXT() const
 	{
 		return atomTable_[2];
 	}
 
-	Atom UTF8_STRING()
+	Atom UTF8_STRING() const
 	{
 		return atomTable_[3];
 	}
 
-	Atom WES_PASTE()
+	Atom WES_PASTE() const
 	{
 		return atomTable_[4];
 	}
 
-	Atom XA_TARGETS()
+	Atom XA_TARGETS() const
 	{
 		return atomTable_[5];
 	}
