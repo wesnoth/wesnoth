@@ -100,7 +100,7 @@ public:
 	//evaluate candidate action, return true if we have candidate action that have score > 0
 	bool evaluate_candidate_actions(ai::formula_ai* ai, unit_map& units);
 
-	const_formula_ptr get_best_action_formula() {
+	const_formula_ptr get_best_action_formula() const {
 		if( evaluated_candidate_actions_.empty() )
 			return game_logic::formula_ptr();
 		return (*evaluated_candidate_actions_.begin())->get_action();
