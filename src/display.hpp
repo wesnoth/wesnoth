@@ -242,7 +242,7 @@ public:
 	void set_grid(const bool grid) { grid_ = grid; }
 
 	/** Getter for the x,y debug overlay on tiles */
-	bool get_draw_coordinates() { return draw_coordinates_; }
+	bool get_draw_coordinates() const { return draw_coordinates_; }
 	/** Setter for the x,y debug overlay on tiles */
 	void set_draw_coordinates(bool value) { draw_coordinates_ = value; }
 
