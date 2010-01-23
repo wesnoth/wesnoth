@@ -96,7 +96,7 @@ public:
 private:
 	virtual bool matches_unit(unit_map::const_iterator u);
 
-	double value()
+	double value() const
 	{
 		return value_;
 	}
