@@ -247,7 +247,7 @@ public:
 	void set_draw_coordinates(bool value) { draw_coordinates_ = value; }
 
 	/** Getter for the terrain code debug overlay on tiles */
-	bool get_draw_terrain_codes() { return draw_terrain_codes_; }
+	bool get_draw_terrain_codes() const { return draw_terrain_codes_; }
 	/** Setter for the terrain code debug overlay on tiles */
 	void set_draw_terrain_codes(bool value) { draw_terrain_codes_ = value; }
 
