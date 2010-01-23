@@ -534,7 +534,7 @@ unit::unit(unit_map* unitmap, const config& cfg,
 	}
 
 	foreach (const config::attribute &attr, input_cfg.attribute_range()) {
-		WRN_UT << "Unknown unit attribute " << attr.first << " discarded.\n";
+		WRN_UT << "Unknown attribute '" << attr.first << "' discarded.\n";
 	}
 }
 
