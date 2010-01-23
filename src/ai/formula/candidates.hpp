@@ -59,7 +59,7 @@ public:
 
 	const_formula_ptr& get_action() {return action_;}
 
-	const std::string& get_name() { return name_;}
+	const std::string& get_name() const { return name_;}
 	const std::string& get_type() { return type_;}
 
 protected:
