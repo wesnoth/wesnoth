@@ -117,7 +117,7 @@ public:
 		candidate_actions_.push_back(candidate_action);
 	}
 
-	bool has_candidate_actions() { return !candidate_actions_.empty(); }
+	bool has_candidate_actions() const { return !candidate_actions_.empty(); }
 
 	void clear() {
 		candidate_actions_.clear();
