@@ -903,6 +903,16 @@ protected:
 
 	void place_units()
 	{
+		static char const *side_attrs[] = { "name", "gold",
+			"income", "team_name", "user_team_name", "save_id",
+			"current_player", "countdown_time", "action_bonus_count",
+			"flag", "flag_icon", "objectives", "objectives_changed",
+			"disallow_observers", "allow_player", "no_leader",
+			"hidden", "music", "colour", "ai_config", "gold",
+			"start_gold", "team_rgb", "village_gold", "controller",
+			"disallow_observers", "persistent", "share_view",
+			"share_maps", "recruit", "fog", "shroud", "shroud_data" };
+
 		log_step("place units");
 		foreach (const config *u, unit_configs_) {
 			unit_creator uc(*t_,map_.starting_position(side_));
@@ -914,7 +924,11 @@ protected:
 				.allow_rename_side(true)
 				.allow_show(false);
 
-			uc.add_unit(*u);
+			config cfg = *u;
+			foreach (const char *attr, side_attrs) {
+				cfg.remove_attribute(attr);
+			}
+			uc.add_unit(cfg);
 
 		}
 	}
