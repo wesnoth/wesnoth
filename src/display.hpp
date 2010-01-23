@@ -147,7 +147,7 @@ public:
 	int hex_size() const { return zoom_; }
 
 	/** Returns the current zoom factor. */
-	double get_zoom_factor() { return double(zoom_)/double(image::tile_size); }
+	double get_zoom_factor() const { return double(zoom_)/double(image::tile_size); }
 
 	/**
 	 * given x,y co-ordinates of an onscreen pixel, will return the
