@@ -816,6 +816,14 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 
 	cfg_.merge_with(t->cfg_);
 
+	// Remove pure unit_type attributes.
+	static char const *unit_type_attrs[] = { "movement", "movement_type",
+		"die_sound", "flies", "inherit", "variation_name",
+		"ignore_race_traits" };
+	foreach (const char *attr, unit_type_attrs) {
+		cfg_.remove_attribute(attr);
+	}
+
 	// If unit has specific profile, remember it and keep it after advancing
 	const std::string &profile = old_cfg["profile"];
 	if (!profile.empty()) {
