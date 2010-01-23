@@ -508,6 +508,32 @@ unit::unit(unit_map* unitmap, const config& cfg,
 	refreshing_  = false;
 	hidden_ = false;
 	game_config::add_color_info(cfg);
+
+	config input_cfg = cfg;
+
+	static char const *internalized_attrs[] = { "type", "id", "name",
+		"gender", "random_gender", "variation", "role", "ai_special",
+		"side", "underlying_id", "overlays", "facing", "race",
+		"level", "undead_variation", "max_attacks",
+		"attacks_left", "alpha", "zoc", "flying", "cost",
+		"max_hitpoints", "max_moves", "max_experience",
+		"advances_to", "hitpoints", "goto_x", "goto_y", "moves",
+		"experience", "resting", "unrenamable", "alignment" };
+	foreach (const char *attr, internalized_attrs) {
+		input_cfg.remove_attribute(attr);
+		cfg_.remove_attribute(attr);
+	}
+
+	static char const *raw_attrs[] = { "description", "halo",
+		"profile", "upkeep", "canrecruit", "usage", "ellipse",
+		"image", "random_traits", "generate_name" };
+	foreach (const char *attr, raw_attrs) {
+		input_cfg.remove_attribute(attr);
+	}
+
+	foreach (const config::attribute &attr, input_cfg.attribute_range()) {
+		WRN_UT << "Unknown unit attribute " << attr.first << " discarded.\n";
+	}
 }
 
 void unit::clear_status_caches()
