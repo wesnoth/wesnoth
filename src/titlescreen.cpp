@@ -375,7 +375,7 @@ public:
 		}
 	}
 
-	bool get_esc_ignore() { return ignore_esc_; }
+	bool get_esc_ignore() const { return ignore_esc_; }
 
 	virtual void handle_event(const SDL_Event& event)
 	{
