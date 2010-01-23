@@ -666,7 +666,8 @@ protected:
 	unit_map &units_;
 
 
-	void log_step(const char *s) {
+	void log_step(const char *s) const
+	{
 		LOG_NG_TC << "team "<<side_<<" construction: "<< s << std::endl;
 	}
 
