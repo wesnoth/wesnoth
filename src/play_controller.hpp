@@ -130,7 +130,7 @@ public:
 	 */
 	bool next_turn() {return tod_manager_.next_turn();}
 
-	int current_side() { return player_number_; }
+	int current_side() const { return player_number_; }
 
 	void add_time_area(const config& cfg) {tod_manager_.add_time_area(cfg);}
 	void add_time_area(const std::string& id, const std::set<map_location>& locs,
