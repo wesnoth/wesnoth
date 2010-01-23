@@ -518,7 +518,9 @@ unit::unit(unit_map* unitmap, const config& cfg,
 		"attacks_left", "alpha", "zoc", "flying", "cost",
 		"max_hitpoints", "max_moves", "max_experience",
 		"advances_to", "hitpoints", "goto_x", "goto_y", "moves",
-		"experience", "resting", "unrenamable", "alignment" };
+		"experience", "resting", "unrenamable", "alignment",
+		// Useless attributes created when saving units to WML:
+		"flag_rgb", "language_name" };
 	foreach (const char *attr, internalized_attrs) {
 		input_cfg.remove_attribute(attr);
 		cfg_.remove_attribute(attr);
