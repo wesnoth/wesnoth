@@ -209,7 +209,7 @@ namespace {
 class escape_handler : public events::handler {
 public:
 	escape_handler() : escape_pressed_(false) {}
-	bool escape_pressed() { return escape_pressed_; }
+	bool escape_pressed() const { return escape_pressed_; }
 	void handle_event(const SDL_Event &event) { escape_pressed_ |= (event.type == SDL_KEYDOWN)
 		&& (reinterpret_cast<const SDL_KeyboardEvent&>(event).keysym.sym == SDLK_ESCAPE); }
 private:
