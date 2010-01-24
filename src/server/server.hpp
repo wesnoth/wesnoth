@@ -37,9 +37,10 @@ private:
 		std::string nick, ip;
 		time_t log_off;
 
-		bool operator==(const connection_log& c) {
-		// log off time does not matter to find ip-nick pairs
-		return c.nick == nick && c.ip == ip;
+		bool operator==(const connection_log& c) const
+		{
+			// log off time does not matter to find ip-nick pairs
+			return c.nick == nick && c.ip == ip;
 		}
 	};
 
