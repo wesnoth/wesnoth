@@ -904,7 +904,7 @@ protected:
 
 	void place_units()
 	{
-		static char const *side_attrs[] = { "name", "gold",
+		static char const *side_attrs[] = {
 			"income", "team_name", "user_team_name", "save_id",
 			"current_player", "countdown_time", "action_bonus_count",
 			"flag", "flag_icon", "objectives", "objectives_changed",
