@@ -911,7 +911,7 @@ protected:
 			"disallow_observers", "allow_player", "no_leader",
 			"hidden", "music", "colour", "ai_config", "gold",
 			"start_gold", "team_rgb", "village_gold", "controller",
-			"disallow_observers", "persistent", "share_view",
+			"persistent", "share_view",
 			"share_maps", "recruit", "fog", "shroud", "shroud_data" };
 
 		log_step("place units");
