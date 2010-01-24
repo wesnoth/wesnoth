@@ -105,7 +105,7 @@ public:
 		return wmInf_.info.x11.display;
 	}
 
-	Window window()
+	Window window() const
 	{
 		return wmInf_.info.x11.window;
 	}
