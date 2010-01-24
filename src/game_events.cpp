@@ -744,7 +744,7 @@ WML_HANDLER_FUNCTION(music, /*event_info*/, cfg)
 WML_HANDLER_FUNCTION(sound, /*event_info*/, cfg)
 {
 	play_controller *controller = resources::controller;
-	if(controller->is_skiping_replay()) {
+	if(controller->is_skipping_replay()) {
 		return;
 	}
 	std::string sound = cfg["name"];
@@ -2332,7 +2332,7 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 
 			std::string text = cfg["text"];
 			play_controller *controller = resources::controller;
-			if(!text.empty() && !controller->is_skiping_replay())
+			if(!text.empty() && !controller->is_skipping_replay())
 			{
 				// Print floating label
 				std::string red_str = cfg["red"];
@@ -2916,7 +2916,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 	// skip messages during quick replay
 	play_controller *controller = resources::controller;
 	if(!has_input && (
-			 controller->is_skiping_replay() ||
+			 controller->is_skipping_replay() ||
 			 current_context->skip_messages
 			 ))
 	{
