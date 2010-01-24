@@ -1054,12 +1054,6 @@ std::string get_wml_location(const std::string &filename, const std::string &cur
 
 	bool already_found = false;
 
-	if (filename[0] == '@')
-	{
-		// TODO: remove this before 1.8
-		ERR_FS << filename << " style includes are obsolete and no longer work. Use '~' instead.\n";
-	}
-
 	if (filename[0] == '~')
 	{
 		// If the filename starts with '~', look in the user data directory.
