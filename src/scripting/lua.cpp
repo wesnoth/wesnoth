@@ -1424,7 +1424,7 @@ static int intf_eval_conditional(lua_State *L)
  * Cost function object relying on a Lua function.
  * @note The stack index of the Lua function must be valid each time the cost is computed.
  */
-struct lua_calculator : cost_calculator
+struct lua_calculator : pathfind::cost_calculator
 {
 	lua_State *L;
 	int index;
@@ -1514,7 +1514,7 @@ static int intf_find_path(lua_State *L)
 	int viewing_side = u->side();
 	bool ignore_units = false, see_all = false, ignore_teleport = false;
 	double stop_at = 10000;
-	cost_calculator *calc = NULL;
+	pathfind::cost_calculator *calc = NULL;
 
 	if (lua_istable(L, arg))
 	{
@@ -1552,16 +1552,16 @@ static int intf_find_path(lua_State *L)
 	std::set<map_location> teleport_locations;
 
 	if (!ignore_teleport) {
-		teleport_locations = get_teleport_locations(
+	  teleport_locations = pathfind::get_teleport_locations(
 			*u, units, viewing_team, see_all, ignore_units);
 	}
 
 	if (!calc) {
-		calc = new shortest_path_calculator(*u, viewing_team,
+	  calc = new pathfind::shortest_path_calculator(*u, viewing_team,
 			units, teams, map, ignore_units);
 	}
 
-	plain_route res = a_star_search(src, dst, stop_at, calc, map.w(), map.h(),
+	pathfind::plain_route res = a_star_search(src, dst, stop_at, calc, map.w(), map.h(),
 		&teleport_locations);
 	delete calc;
 
@@ -1649,7 +1649,7 @@ static int intf_find_vacant_tile(lua_State *L)
 	}
 
 	map_location res = find_vacant_tile(*resources::game_map,
-		*resources::units, map_location(x -1, y - 1), VACANT_ANY, u);
+					    *resources::units, map_location(x -1, y - 1), pathfind::VACANT_ANY, u);
 	if (!res.valid()) return 0;
 
 	lua_pushinteger(L, res.x + 1);

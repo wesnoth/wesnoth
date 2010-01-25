@@ -177,12 +177,12 @@ public:
 	virtual recall_result_ptr check_recall_action(const std::string& id, const map_location &where = map_location::null_location) = 0;
 	virtual recruit_result_ptr check_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location) = 0;
 	virtual stopunit_result_ptr check_stopunit_action(const map_location& unit_location, bool remove_movement = true, bool remove_attacks = false) = 0;
-	virtual void calculate_possible_moves(std::map<map_location,paths>& possible_moves,
+	virtual void calculate_possible_moves(std::map<map_location,pathfind::paths>& possible_moves,
 		move_map& srcdst, move_map& dstsrc, bool enemy,
 		bool assume_full_movement=false,
 		const terrain_filter* remove_destinations=NULL) const = 0;
 	virtual void calculate_moves(const unit_map& units,
-		std::map<map_location,paths>& possible_moves, move_map& srcdst,
+		std::map<map_location,pathfind::paths>& possible_moves, move_map& srcdst,
 		move_map& dstsrc, bool enemy, bool assume_full_movement=false,
 		const terrain_filter* remove_destinations=NULL,
 		bool see_all=false) const = 0;
@@ -358,7 +358,7 @@ public:
 	virtual void recalculate_move_maps_enemy() const = 0;
 
 	/** get most suitable keep for leader - nearest free that can be reached in 1 turn, if none - return nearest occupied that can be reached in 1 turn, if none - return nearest keep, if none - return null_location */
-	virtual const map_location& suitable_keep( const map_location& leader_location, const paths& leader_paths ) = 0;
+	virtual const map_location& suitable_keep( const map_location& leader_location, const pathfind::paths& leader_paths ) = 0;
 
 	/**
 	 * serialize to config
@@ -532,7 +532,7 @@ public:
 		return target_->check_stopunit_action(unit_location, remove_movement, remove_attacks);
 	}
 
-	virtual void calculate_possible_moves(std::map<map_location,paths>& possible_moves,
+	virtual void calculate_possible_moves(std::map<map_location,pathfind::paths>& possible_moves,
 		move_map& srcdst, move_map& dstsrc, bool enemy,
 		bool assume_full_movement=false,
 		const terrain_filter* remove_destinations=NULL) const
@@ -541,7 +541,7 @@ public:
 	}
 
 	virtual void calculate_moves(const unit_map& units,
-		std::map<map_location,paths>& possible_moves, move_map& srcdst,
+		std::map<map_location,pathfind::paths>& possible_moves, move_map& srcdst,
 		move_map& dstsrc, bool enemy, bool assume_full_movement=false,
 		const terrain_filter* remove_destinations=NULL,
 		bool see_all=false) const
@@ -871,7 +871,7 @@ public:
 	}
 
 
-	virtual const map_location& suitable_keep( const map_location& leader_location, const paths& leader_paths )
+	virtual const map_location& suitable_keep( const map_location& leader_location, const pathfind::paths& leader_paths )
 	{
 		return target_->suitable_keep(leader_location, leader_paths);
 	}
@@ -1152,7 +1152,7 @@ public:
 	 * @param remove_destinations a pointer to a terrain filter for possible destinations
 	 *                            to omit.
 	 */
-	void calculate_possible_moves(std::map<map_location,paths>& possible_moves,
+	void calculate_possible_moves(std::map<map_location,pathfind::paths>& possible_moves,
 		move_map& srcdst, move_map& dstsrc, bool enemy,
 		bool assume_full_movement=false,
 		const terrain_filter* remove_destinations=NULL) const;
@@ -1162,7 +1162,7 @@ public:
 	 * use of a speculative unit map.
 	 */
 	void calculate_moves(const unit_map& units,
-		std::map<map_location,paths>& possible_moves, move_map& srcdst,
+		std::map<map_location,pathfind::paths>& possible_moves, move_map& srcdst,
 		move_map& dstsrc, bool enemy, bool assume_full_movement=false,
 		const terrain_filter* remove_destinations=NULL,
 		bool see_all=false) const;
@@ -1337,7 +1337,7 @@ public:
 	void on_create();
 
 
-	virtual const map_location& suitable_keep( const map_location& leader_location, const paths& leader_paths );
+	virtual const map_location& suitable_keep( const map_location& leader_location, const pathfind::paths& leader_paths );
 
 
 	virtual config to_readonly_context_config() const;

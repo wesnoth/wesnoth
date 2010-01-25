@@ -587,7 +587,7 @@ void game_display::set_game_mode(const tgame_mode game_mode)
 void game_display::draw_movement_info(const map_location& loc)
 {
 	// Search if there is a mark here
-	marked_route::mark_map::iterator w = route_.marks.find(loc);
+	pathfind::marked_route::mark_map::iterator w = route_.marks.find(loc);
 
 	// Don't use empty route or the first step (the unit will be there)
 	if(w != route_.marks.end()
@@ -739,16 +739,16 @@ surface game_display::get_flag(const map_location& loc)
 	return surface(NULL);
 }
 
-void game_display::highlight_reach(const paths &paths_list)
+void game_display::highlight_reach(const pathfind::paths &paths_list)
 {
 	unhighlight_reach();
 	highlight_another_reach(paths_list);
 }
 
-void game_display::highlight_another_reach(const paths &paths_list)
+void game_display::highlight_another_reach(const pathfind::paths &paths_list)
 {
 	// Fold endpoints of routes into reachability map.
-	foreach (const paths::step &dest, paths_list.destinations) {
+	foreach (const pathfind::paths::step &dest, paths_list.destinations) {
 		reach_map_[dest.curr]++;
 	}
 	reach_map_changed_ = true;
@@ -809,7 +809,7 @@ void game_display::invalidate_route()
 	}
 }
 
-void game_display::set_route(const marked_route *route)
+void game_display::set_route(const pathfind::marked_route *route)
 {
 	invalidate_route();
 

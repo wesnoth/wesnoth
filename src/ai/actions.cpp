@@ -405,10 +405,10 @@ bool move_result::test_route(const unit &un, const team &my_team, const unit_map
 		set_error(E_EMPTY_MOVE);
 		return false;
 	}
-	const shortest_path_calculator calc(un, my_team, units, teams,map);
+	const pathfind::shortest_path_calculator calc(un, my_team, units, teams,map);
 
 	//allowed teleports
-	std::set<map_location> allowed_teleports = get_teleport_locations(un, units, my_team, true);//@todo 1.9: see_all -> false
+	std::set<map_location> allowed_teleports = pathfind::get_teleport_locations(un, units, my_team, true);//@todo 1.9: see_all -> false
 
 	//do an A*-search
 	route_ = a_star_search(un.get_location(), to_, 10000.0, &calc, map.w(), map.h(), &allowed_teleports);
@@ -615,7 +615,7 @@ bool recall_result::test_suitable_recall_location(const gamemap &map, const unit
 
 	//if we have not-on-board location, such as null_location, then the caller wants us to recall on 'any' possible tile.
 	if (!map.on_board(recall_location_)) {
-		recall_location_ = find_vacant_tile(map, units, my_leader.get_location(), VACANT_CASTLE);
+	  recall_location_ = find_vacant_tile(map, units, my_leader.get_location(), pathfind::VACANT_CASTLE);
 	}
 
 	if (!can_recruit_on(map, my_leader.get_location(), recall_location_)) {
@@ -844,7 +844,7 @@ bool recruit_result::test_suitable_recruit_location(const gamemap &map, const un
 
 	//if we have not-on-board location, such as null_location, then the caller wants us to recruit on 'any' possible tile.
 	if (!map.on_board(recruit_location_)) {
-		recruit_location_ = find_vacant_tile(map, units, my_leader.get_location(), VACANT_CASTLE);
+	  recruit_location_ = find_vacant_tile(map, units, my_leader.get_location(), pathfind::VACANT_CASTLE);
 	}
 
 	if (!can_recruit_on(map, my_leader.get_location(), recruit_location_)) {

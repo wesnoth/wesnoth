@@ -644,7 +644,7 @@ WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 	const unit *pass_check = &u->second;
 	if (utils::string_bool(cfg["ignore_passability"]))
 		pass_check = NULL;
-	const map_location vacant_dst = find_vacant_tile(*resources::game_map, *resources::units, dst, VACANT_ANY, pass_check);
+	const map_location vacant_dst = find_vacant_tile(*resources::game_map, *resources::units, dst, pathfind::VACANT_ANY, pass_check);
 	if (!resources::game_map->on_board(vacant_dst)) return;
 
 	const int side = u->second.side();
@@ -1064,7 +1064,7 @@ WML_HANDLER_FUNCTION(move_unit_fake, /*event_info*/, cfg)
 			path.push_back(src);
 			continue;
 		}
-		shortest_path_calculator calc(dummy_unit,
+		pathfind::shortest_path_calculator calc(dummy_unit,
 				(*resources::teams)[side_num],
 				*resources::units,
 				*resources::teams,
@@ -1077,12 +1077,12 @@ WML_HANDLER_FUNCTION(move_unit_fake, /*event_info*/, cfg)
 			break;
 		}
 
-		plain_route route = a_star_search(src, dst, 10000, &calc,
+		pathfind::plain_route route = a_star_search(src, dst, 10000, &calc,
 			game_map->w(), game_map->h());
 
 		if (route.steps.size() == 0) {
 			WRN_NG << "Could not find move_unit_fake route from " << src << " to " << dst << ": ignoring complexities\n";
-			emergency_path_calculator calc(dummy_unit, *game_map);
+			pathfind::emergency_path_calculator calc(dummy_unit, *game_map);
 
 			route = a_star_search(src, dst, 10000, &calc,
 					game_map->w(), game_map->h());
@@ -1091,7 +1091,7 @@ WML_HANDLER_FUNCTION(move_unit_fake, /*event_info*/, cfg)
 				// over locations which are unreachable to it (infinite movement
 				// costs). This really cannot fail.
 				WRN_NG << "Could not find move_unit_fake route from " << src << " to " << dst << ": ignoring terrain\n";
-				dummy_path_calculator calc(dummy_unit, *game_map);
+				pathfind::dummy_path_calculator calc(dummy_unit, *game_map);
 				route = a_star_search(src, dst, 10000, &calc, game_map->w(), game_map->h());
 				assert(route.steps.size() > 0);
 			}
@@ -2324,7 +2324,7 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 			(cfg.has_attribute("x") && cfg.has_attribute("y")) ? cfg : vconfig(var));
 		if(loc.valid()) {
 			if(utils::string_bool(cfg["find_vacant"])) {
-				loc = find_vacant_tile(*resources::game_map, *resources::units,loc);
+			  loc = pathfind::find_vacant_tile(*resources::game_map, *resources::units,loc);
 			}
 
 			resources::units->erase(loc);

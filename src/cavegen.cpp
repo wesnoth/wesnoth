@@ -277,7 +277,7 @@ void cave_map_generator::place_chamber(const chamber& c)
 	}
 }
 
-struct passage_path_calculator : cost_calculator
+struct passage_path_calculator : pathfind::cost_calculator
 {
 	passage_path_calculator(const t_translation::t_map& mapdata,
 	t_translation::t_terrain wall, double laziness, size_t windiness):
@@ -319,7 +319,7 @@ void cave_map_generator::place_passage(const passage& p)
 
 	passage_path_calculator calc(map_,wall_,laziness,windiness);
 
-	plain_route rt = a_star_search(p.src, p.dst, 10000.0, &calc, width_, height_);
+	pathfind::plain_route rt = a_star_search(p.src, p.dst, 10000.0, &calc, width_, height_);
 
 	const size_t width = std::max<size_t>(1,atoi(p.cfg["width"].c_str()));
 

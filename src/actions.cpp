@@ -56,7 +56,7 @@ static lg::log_domain log_config("config");
 static lg::log_domain log_ai_testing("ai/testing");
 #define LOG_AI_TESTING LOG_STREAM(info, log_ai_testing)
 
-struct castle_cost_calculator : cost_calculator
+struct castle_cost_calculator : pathfind::cost_calculator
 {
 	castle_cost_calculator(const gamemap& map) : map_(map)
 	{}
@@ -232,7 +232,7 @@ map_location unit_creator::find_location(const config &cfg)
 		}
 
 		if(loc.valid() && resources::game_map->on_board(loc)) {
-			loc = find_vacant_tile(*resources::game_map, *resources::units, loc, VACANT_ANY);
+		  loc = find_vacant_tile(*resources::game_map, *resources::units, loc, pathfind::VACANT_ANY);
 			if(loc.valid() && resources::game_map->on_board(loc)) {
 				return loc;
 			}
@@ -349,7 +349,7 @@ bool can_recruit_on(const gamemap& map, const map_location& leader, const map_lo
 	// The limit computed in the third argument is more than enough for
 	// any convex castle on the map. Strictly speaking it could be
 	// reduced to sqrt(map.w()**2 + map.h()**2).
-	plain_route rt = a_star_search(leader, loc, map.w()+map.h(), &calc, map.w(), map.h());
+	pathfind::plain_route rt = a_star_search(leader, loc, map.w()+map.h(), &calc, map.w(), map.h());
 	return !rt.steps.empty();
 }
 
@@ -394,9 +394,9 @@ std::string find_recruit_location(int side, map_location &recruit_loc, bool need
 
 	if (!resources::game_map->on_board(recruit_loc)) {
 		recruit_loc = find_vacant_tile(*resources::game_map, *resources::units, leader_keep->first,
-		                                    need_castle ? VACANT_CASTLE : VACANT_ANY);
+					       need_castle ? pathfind::VACANT_CASTLE : pathfind::VACANT_ANY);
 	} else if (resources::units->count(recruit_loc) == 1) {
-		recruit_loc = find_vacant_tile(*resources::game_map, *resources::units, recruit_loc, VACANT_ANY);
+	  recruit_loc = find_vacant_tile(*resources::game_map, *resources::units, recruit_loc, pathfind::VACANT_ANY);
 	}
 
 	if (!resources::game_map->on_board(recruit_loc)) {
@@ -2075,8 +2075,8 @@ namespace {
 			return false;
 		}
 
-		paths p(*resources::game_map, *resources::units, loc, *resources::teams, true, false, tm, 0, false, true);
-		foreach (const paths::step &dest, p.destinations) {
+		pathfind::paths p(*resources::game_map, *resources::units, loc, *resources::teams, true, false, tm, 0, false, true);
+		foreach (const pathfind::paths::step &dest, p.destinations) {
 			clear_shroud_loc(tm, dest.curr, &cleared_locations);
 		}
 
@@ -2317,7 +2317,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 		team_num = ui->second.side()-1;
 		tm = &teams[team_num];
 
-		if (!skirmisher && enemy_zoc(units, teams, *step, *tm, ui->second.side())) {
+		if (!skirmisher && pathfind::enemy_zoc(units, teams, *step, *tm, ui->second.side())) {
 			moves_left = 0;
 		}
 

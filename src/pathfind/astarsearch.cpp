@@ -127,8 +127,8 @@ public:
 }
 
 
-plain_route a_star_search(const map_location& src, const map_location& dst,
-                            double stop_at, const cost_calculator *calc, const size_t width,
+pathfind::plain_route pathfind::a_star_search(const map_location& src, const map_location& dst,
+			  double stop_at, const pathfind::cost_calculator *calc, const size_t width,
                             const size_t height, const std::set<map_location>* teleports) {
 	//----------------- PRE_CONDITIONS ------------------
 	assert(src.valid(width, height));
@@ -142,7 +142,7 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 
 	if (calc->cost(dst, 0) >= stop_at) {
 		LOG_PF << "aborted A* search because Start or Dest is invalid\n";
-		plain_route locRoute;
+		pathfind::plain_route locRoute;
 		locRoute.move_cost = int(calc->getNoPathValue());
 		return locRoute;
 	}
@@ -206,7 +206,7 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 		}
 	}
 
-	plain_route route;
+	pathfind::plain_route route;
 	if (nodes[index(dst)].g < stop_at) {
 		DBG_PF << "found solution; calculating it...\n";
 		route.move_cost = static_cast<int>(nodes[index(dst)].g);

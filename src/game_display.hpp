@@ -103,13 +103,13 @@ public:
 	 * for the unit to move along.
 	 * All other paths will be greyed out.
 	 */
-	void highlight_reach(const paths &paths_list);
+	void highlight_reach(const pathfind::paths &paths_list);
 
 	/**
 	 * Add more paths to highlight.  Print numbers where they overlap.
 	 * Used only by Show Enemy Moves.
 	 */
-	void highlight_another_reach(const paths &paths_list);
+  void highlight_another_reach(const pathfind::paths &paths_list);
 
 	/** Reset highlighting of paths. */
 	void unhighlight_reach();
@@ -119,7 +119,7 @@ public:
 	 * unit. If NULL, no route is displayed. @a route does not have to remain
 	 * valid after being set.
 	 */
-	void set_route(const marked_route *route);
+  void set_route(const pathfind::marked_route *route);
 
 	/** Function to float a label above a tile */
 	void float_label(const map_location& loc, const std::string& text,
@@ -320,7 +320,7 @@ private:
 	const SDL_Rect& calculate_energy_bar(surface surf);
 	std::map<surface,SDL_Rect> energy_bar_rects_;
 
-	marked_route route_;
+	pathfind::marked_route route_;
 
 	const tod_manager& tod_manager_;
 

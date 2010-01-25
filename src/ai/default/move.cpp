@@ -38,7 +38,7 @@ static lg::log_domain log_ai("ai/move");
 
 namespace ai {
 
-struct move_cost_calculator : cost_calculator
+  struct move_cost_calculator : pathfind::cost_calculator
 {
 	move_cost_calculator(const unit& u, const gamemap& map,
 			const unit_map& units, const move_map& enemy_dstsrc)
@@ -165,7 +165,7 @@ bool ai_default::move_group(const location& dst, const std::vector<location>& ro
 	std::deque<location> preferred_moves;
 	preferred_moves.push_back(dst);
 
-	std::map<location,paths> possible_moves;
+	std::map<location,pathfind::paths> possible_moves;
 	move_map srcdst, dstsrc;
 	calculate_possible_moves(possible_moves,srcdst,dstsrc,false);
 
@@ -290,7 +290,7 @@ struct rated_target_comparer {
 
 double ai_default::rate_target(const target& tg, const unit_map::iterator& u,
 			const move_map& dstsrc, const move_map& enemy_dstsrc,
-			const plain_route& rt)
+			const pathfind::plain_route& rt)
 {
 	double move_cost = rt.move_cost;
 
@@ -379,7 +379,7 @@ std::pair<map_location,map_location> ai_default::choose_move(std::vector<target>
 		return std::pair<location,location>(u->first,u->first);
 	}
 
-	const plain_route dummy_route;
+	const pathfind::plain_route dummy_route;
 	assert(dummy_route.steps.empty() && dummy_route.move_cost == 0);
 
 	// We will sort all targets by a quick maximal possible rating,
@@ -399,7 +399,7 @@ std::pair<map_location,map_location> ai_default::choose_move(std::vector<target>
 
 	const move_cost_calculator cost_calc(u->second, map_, units_, enemy_dstsrc);
 
-	plain_route best_route;
+	pathfind::plain_route best_route;
 	unit_map::iterator best = units_.end();
 	double best_rating = -1.0;
 
@@ -419,7 +419,7 @@ std::pair<map_location,map_location> ai_default::choose_move(std::vector<target>
 		// to it seeming futile. Be very cautious about changing this value,
 		// as it can cause the AI to give up on searches and just do nothing.
 		const double locStopValue = 500.0;
-		plain_route real_route = a_star_search(u->first, tg.loc, locStopValue, &cost_calc, map_.w(), map_.h());
+		pathfind::plain_route real_route = pathfind::a_star_search(u->first, tg.loc, locStopValue, &cost_calc, map_.w(), map_.h());
 
 		if(real_route.steps.empty()) {
 			LOG_AI << "Can't reach target: " << locStopValue << " = " << tg.value << "/" << best_rating << "\n";
@@ -478,7 +478,7 @@ std::pair<map_location,map_location> ai_default::choose_move(std::vector<target>
 
 			const move_cost_calculator calc(u->second, map_, units_, enemy_dstsrc);
 			const double locStopValue = std::min(best_target->value / best_rating, 100.0);
-			plain_route cur_route = a_star_search(u->first, best_target->loc, locStopValue, &calc, map_.w(), map_.h());
+			pathfind::plain_route cur_route = a_star_search(u->first, best_target->loc, locStopValue, &calc, map_.w(), map_.h());
 
 			if(cur_route.steps.empty()) {
 				continue;
@@ -536,7 +536,7 @@ std::pair<map_location,map_location> ai_default::choose_move(std::vector<target>
 		}
 	}
 
-	std::map<map_location,paths> dummy_possible_moves;
+	std::map<map_location,pathfind::paths> dummy_possible_moves;
 	move_map fullmove_srcdst;
 	move_map fullmove_dstsrc;
 	calculate_possible_moves(dummy_possible_moves,fullmove_srcdst,fullmove_dstsrc,false,true);
@@ -714,8 +714,8 @@ void ai_default::access_points(const move_map& srcdst, const location& u, const 
 	for(move_map::const_iterator i = locs.first; i != locs.second; ++i) {
 		const location& loc = i->second;
 		if (int(distance_between(loc,dst)) <= u_it->second.total_movement()) {
-			shortest_path_calculator calc(u_it->second, current_team(), units_, teams_, map_);
-			plain_route rt = a_star_search(loc, dst, u_it->second.total_movement(), &calc, map_.w(), map_.h());
+			pathfind::shortest_path_calculator calc(u_it->second, current_team(), units_, teams_, map_);
+			pathfind::plain_route rt = a_star_search(loc, dst, u_it->second.total_movement(), &calc, map_.w(), map_.h());
 			if(rt.steps.empty() == false) {
 				out.push_back(loc);
 			}
@@ -732,12 +732,12 @@ void ai_default::move_leader_to_keep()
 	}
 
 	// Find where the leader can move
-	const paths leader_paths(map_, units_, leader->first,
+	const pathfind::paths leader_paths(map_, units_, leader->first,
 	   	 teams_, false, false, current_team());
 	const map_location& keep = suitable_keep(leader->first,leader_paths);
 
-	std::map<map_location,paths> possible_moves;
-	possible_moves.insert(std::pair<map_location,paths>(leader->first,leader_paths));
+	std::map<map_location,pathfind::paths> possible_moves;
+	possible_moves.insert(std::pair<map_location,pathfind::paths>(leader->first,leader_paths));
 
 	// If the leader is not on keep, move him there.
 	if(leader->first != keep) {
@@ -755,7 +755,7 @@ void ai_default::move_leader_to_keep()
 			// The leader can't move to his keep, try to move to the closest location
 			// to the keep where there are no enemies in range.
 			const int current_distance = distance_between(leader->first,keep);
-			foreach (const paths::step &dest, leader_paths.destinations)
+			foreach (const pathfind::paths::step &dest, leader_paths.destinations)
 			{
 				if (!units_.find(dest.curr).valid()){
 					const int new_distance = distance_between(dest.curr,keep);

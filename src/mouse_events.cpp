@@ -143,7 +143,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 
 		if(enemy_paths_) {
 			enemy_paths_ = false;
-			current_paths_ = paths();
+			current_paths_ = pathfind::paths();
 			gui().unhighlight_reach();
 		} else if(over_route_) {
 			over_route_ = false;
@@ -233,7 +233,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 				unit_movement_resetter move_reset(un->second);
 
 				bool teleport = un->second.get_ability_bool("teleport");
-				current_paths_ = paths(map_,units_,new_hex,teams_,
+				current_paths_ = pathfind::paths(map_,units_,new_hex,teams_,
 									false,teleport,viewing_team(),path_turns_);
 				gui().highlight_reach(current_paths_);
 				enemy_paths_ = true;
@@ -241,7 +241,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 				//unit is on our team, show path if the unit has one
 				const map_location go_to = un->second.get_goto();
 				if(map_.on_board(go_to)) {
-					marked_route route = get_route(un, go_to, un->second.waypoints(), current_team());
+					pathfind::marked_route route = get_route(un, go_to, un->second.waypoints(), current_team());
 					gui().set_route(&route);
 				}
 				over_route_ = true;
@@ -338,19 +338,19 @@ void mouse_handler::add_waypoint(const map_location& loc) {
 	mouse_motion(0,0, false, true);
 }
 
-marked_route mouse_handler::get_route(unit_map::const_iterator un, map_location go_to, const std::vector<map_location>& waypoints, team &team)
+pathfind::marked_route mouse_handler::get_route(unit_map::const_iterator un, map_location go_to, const std::vector<map_location>& waypoints, team &team)
 {
 	// The pathfinder will check unit visibility (fogged/stealthy).
-	const shortest_path_calculator calc(un->second,team,units_,teams_,map_);
+	const pathfind::shortest_path_calculator calc(un->second,team,units_,teams_,map_);
 
-	std::set<map_location> allowed_teleports = get_teleport_locations(
+	std::set<map_location> allowed_teleports = pathfind::get_teleport_locations(
 		un->second, units_, viewing_team());
 
-	plain_route route;
+	pathfind::plain_route route;
 
 	if (waypoints.empty()) {
 		// standard shortest path
-		route = a_star_search(un->first, go_to, 10000.0, &calc, map_.w(), map_.h(), &allowed_teleports);
+		route = pathfind::a_star_search(un->first, go_to, 10000.0, &calc, map_.w(), map_.h(), &allowed_teleports);
 	} else {
 		// initialize the main route with the first step
 		route.steps.push_back(un->first);
@@ -367,7 +367,7 @@ marked_route mouse_handler::get_route(unit_map::const_iterator un, map_location 
 			dst = ++waypts.begin();
 		for(; dst != waypts.end(); ++src,++dst){
 			if (*src == *dst) continue;
-			plain_route inter_route = a_star_search(*src, *dst, 10000.0, &calc, map_.w(), map_.h(), &allowed_teleports);
+			pathfind::plain_route inter_route = pathfind::a_star_search(*src, *dst, 10000.0, &calc, map_.w(), map_.h(), &allowed_teleports);
 			if(inter_route.steps.size()>=1) {
 				// add to the main route but skip the head (already in)
 				route.steps.insert(route.steps.end(),
@@ -421,7 +421,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 	unit_map::iterator clicked_u = find_unit(hex);
 
 	const map_location src = selected_hex_;
-	paths orig_paths = current_paths_;
+	pathfind::paths orig_paths = current_paths_;
 	const map_location& attack_from = current_unit_attacks_from(hex);
 
 	//see if we're trying to do a attack or move-and-attack
@@ -435,7 +435,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 		}
 		else {
 			// we will now temporary move next to the enemy
-			paths::dest_vect::const_iterator itor =
+			pathfind::paths::dest_vect::const_iterator itor =
 					current_paths_.destinations.find(attack_from);
 			if(itor == current_paths_.destinations.end()) {
 				// can't reach the attacking location
@@ -535,7 +535,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 			// and we restore them before the "select" event is raised
 			unit_movement_resetter move_reset(u->second, u->second.side() != side_num_);
 			bool teleport = u->second.get_ability_bool("teleport");
-			current_paths_ = paths(map_, units_, hex, teams_,
+			current_paths_ = pathfind::paths(map_, units_, hex, teams_,
 				false, teleport, viewing_team(), path_turns_);
 		}
 		show_attack_options(u);
@@ -554,7 +554,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 
 	} else {
 		gui().unhighlight_reach();
-		current_paths_ = paths();
+		current_paths_ = pathfind::paths();
 		current_route_.steps.clear();
 	}
 }
@@ -584,7 +584,7 @@ bool mouse_handler::move_unit_along_current_route(bool check_shroud, bool attack
 	gui().select_hex(map_location());
 
 	// will be invalid after the move
-	current_paths_ = paths();
+	current_paths_ = pathfind::paths();
 	current_route_.steps.clear();
 
 	attackmove_ = attackmove;
@@ -768,7 +768,7 @@ void mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 	clear_undo_stack();
 	redo_stack_.clear();
 
-	current_paths_ = paths();
+	current_paths_ = pathfind::paths();
 	// make the attacker's stats appear during the attack
 	gui().display_unit_hex(attacker_loc);
 	// remove highlighted hexes etc..
@@ -900,7 +900,7 @@ void mouse_handler::cycle_units(const bool browse, const bool reverse)
 	}
 }
 
-void mouse_handler::set_current_paths(paths new_paths) {
+void mouse_handler::set_current_paths(pathfind::paths new_paths) {
 	gui().unhighlight_reach();
 	current_paths_ = new_paths;
 	current_route_.steps.clear();

@@ -191,7 +191,7 @@ private:
 	move_unit_spectator move_spectator_;
 	const map_location to_;
 	bool remove_movement_;
-	plain_route route_;
+	pathfind::plain_route route_;
 	map_location unit_location_;
 };
 

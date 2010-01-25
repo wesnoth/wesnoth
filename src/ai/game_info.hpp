@@ -22,6 +22,7 @@
 
 #include <boost/shared_ptr.hpp>
 #include "../map_location.hpp"
+#include "pathfind/pathfind.hpp"
 
 #include <set>
 #include <vector>
@@ -33,7 +34,6 @@ class gamemap;
 class unit_map;
 class team;
 class tod_manager;
-struct paths;
 
 /**
  * info is structure which holds references to all the important objects
@@ -48,7 +48,7 @@ typedef int side_number;
 typedef std::multimap<map_location,map_location> move_map;
 
 /** The standard way in which a map of possible movement routes to location is recorded*/
-typedef std::map<map_location,paths> moves_map;
+  typedef std::map<map_location,pathfind::paths> moves_map;
 
 class interface;
 

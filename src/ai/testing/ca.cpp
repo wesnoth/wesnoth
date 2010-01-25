@@ -129,7 +129,7 @@ double aspect_recruitment_phase::evaluate()
 		return BAD_SCORE;
 	}
 
-	map_location recruit_loc = find_vacant_tile(get_info().map, get_info().units, leader->first, VACANT_CASTLE);
+	map_location recruit_loc = find_vacant_tile(get_info().map, get_info().units, leader->first, pathfind::VACANT_CASTLE);
 	if (!get_info().map.on_board(recruit_loc)) {
 		return BAD_SCORE;
 	}
@@ -661,19 +661,19 @@ double move_leader_to_goals_phase::evaluate()
 		}
 	}
 
-	shortest_path_calculator calc(leader->second, current_team(), get_info().units, get_info().teams, get_info().map);
-	plain_route route = a_star_search(leader->first, dst_, 1000.0, &calc,
+	pathfind::shortest_path_calculator calc(leader->second, current_team(), get_info().units, get_info().teams, get_info().map);
+	pathfind::plain_route route = a_star_search(leader->first, dst_, 1000.0, &calc,
 			get_info().map.w(), get_info().map.h());
 	if(route.steps.empty()) {
 		LOG_AI_TESTING_AI_DEFAULT << "route empty";
 		return BAD_SCORE;
 	}
 
-	const paths leader_paths(get_info().map, get_info().units, leader->first,
+	const pathfind::paths leader_paths(get_info().map, get_info().units, leader->first,
 				 get_info().teams, false, false, current_team());
 
-	std::map<map_location,paths> possible_moves;
-	possible_moves.insert(std::pair<map_location,paths>(leader->first,leader_paths));
+	std::map<map_location,pathfind::paths> possible_moves;
+	possible_moves.insert(std::pair<map_location,pathfind::paths>(leader->first,leader_paths));
 
 	map_location loc;
 	foreach (const map_location &l, route.steps)
@@ -745,12 +745,12 @@ double move_leader_to_keep_phase::evaluate()
 	}
 
 	// Find where the leader can move
-	const paths leader_paths(get_info().map, units_, leader->first,
+	const pathfind::paths leader_paths(get_info().map, units_, leader->first,
 		 get_info().teams, false, false, current_team());
 	const map_location& keep = suitable_keep(leader->first,leader_paths);
 
-	std::map<map_location,paths> possible_moves;
-	possible_moves.insert(std::pair<map_location,paths>(leader->first,leader_paths));
+	std::map<map_location,pathfind::paths> possible_moves;
+	possible_moves.insert(std::pair<map_location,pathfind::paths>(leader->first,leader_paths));
 
 	// If the leader is not on keep, move him there.
 	if(leader->first != keep) {
@@ -768,7 +768,7 @@ double move_leader_to_keep_phase::evaluate()
 		// The leader can't move to his keep, try to move to the closest location
 		// to the keep where there are no enemies in range.
 		const int current_distance = distance_between(leader->first,keep);
-		foreach (const paths::step &dest, leader_paths.destinations)
+		foreach (const pathfind::paths::step &dest, leader_paths.destinations)
 		{
 			if (!units_.find(dest.curr).valid()){
 				const int new_distance = distance_between(dest.curr,keep);
@@ -947,7 +947,7 @@ void get_villages_phase::find_villages(
 	treachmap& reachmap,
 	tmoves& moves,
 	const std::multimap<map_location,map_location>& dstsrc,
-	const std::map<map_location,paths>& possible_moves,
+	const std::map<map_location,pathfind::paths>& possible_moves,
 	const std::multimap<map_location,map_location>& enemy_dstsrc)
 
 {
@@ -1716,7 +1716,7 @@ double retreat_phase::evaluate()
 	unit_map units_ = get_info().units;
 
 	unit_map::const_iterator leader = units_.find_leader(get_side());
-	std::map<map_location,paths> dummy_possible_moves;
+	std::map<map_location,pathfind::paths> dummy_possible_moves;
 
 	move_map fullmove_srcdst;
 	move_map fullmove_dstsrc;

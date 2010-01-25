@@ -36,7 +36,7 @@ static lg::log_domain log_ai_testing_ca_testing_move_to_targets("ai/testing/ca_t
 
 
 
-struct move_cost_calculator : cost_calculator
+  struct move_cost_calculator : pathfind::cost_calculator
 {
 	move_cost_calculator(const unit& u, const gamemap& map,
 			const unit_map& units, const move_map& enemy_dstsrc)
@@ -204,7 +204,7 @@ struct rated_target_comparer {
 
 double testing_move_to_targets_phase::rate_target(const target& tg, const unit_map::iterator& u,
 			const move_map& dstsrc, const move_map& enemy_dstsrc,
-			const plain_route& rt)
+			const pathfind::plain_route& rt)
 {
 	double move_cost = rt.move_cost;
 
@@ -296,7 +296,7 @@ std::pair<map_location,map_location> testing_move_to_targets_phase::choose_move(
 		return std::pair<map_location,map_location>(u->first,u->first);
 	}
 
-	const plain_route dummy_route;
+	const pathfind::plain_route dummy_route;
 	assert(dummy_route.steps.empty() && dummy_route.move_cost == 0);
 
 	// We will sort all targets by a quick maximal possible rating,
@@ -316,7 +316,7 @@ std::pair<map_location,map_location> testing_move_to_targets_phase::choose_move(
 
 	const move_cost_calculator cost_calc(u->second, map_, units_, enemy_dstsrc);
 
-	plain_route best_route;
+	pathfind::plain_route best_route;
 	unit_map::iterator best = units_.end();
 	double best_rating = -1.0;
 
@@ -336,7 +336,7 @@ std::pair<map_location,map_location> testing_move_to_targets_phase::choose_move(
 		// to it seeming futile. Be very cautious about changing this value,
 		// as it can cause the AI to give up on searches and just do nothing.
 		const double locStopValue = 500.0;
-		plain_route real_route = a_star_search(u->first, tg.loc, locStopValue, &cost_calc, map_.w(), map_.h());
+		pathfind::plain_route real_route = a_star_search(u->first, tg.loc, locStopValue, &cost_calc, map_.w(), map_.h());
 
 		if(real_route.steps.empty()) {
 			LOG_AI << "Can't reach target: " << locStopValue << " = " << tg.value << "/" << best_rating << "\n";
@@ -402,7 +402,7 @@ std::pair<map_location,map_location> testing_move_to_targets_phase::choose_move(
 			//const double locStopValue = std::min(best_target->value / best_rating, 100.0);
 
 			const double locStopValue = 500.0;
-			plain_route cur_route = a_star_search(u->first, best_target->loc, locStopValue, &calc, map_.w(), map_.h());
+			pathfind::plain_route cur_route = a_star_search(u->first, best_target->loc, locStopValue, &calc, map_.w(), map_.h());
 
 			if(cur_route.steps.empty()) {
 				continue;
@@ -460,7 +460,7 @@ std::pair<map_location,map_location> testing_move_to_targets_phase::choose_move(
 		}
 	}
 
-	std::map<map_location,paths> dummy_possible_moves;
+	std::map<map_location,pathfind::paths> dummy_possible_moves;
 	move_map fullmove_srcdst;
 	move_map fullmove_dstsrc;
 	calculate_possible_moves(dummy_possible_moves,fullmove_srcdst,fullmove_dstsrc,false,true);
@@ -640,8 +640,8 @@ void testing_move_to_targets_phase::access_points(const move_map& srcdst, const 
 	for(move_map::const_iterator i = locs.first; i != locs.second; ++i) {
 		const map_location& loc = i->second;
 		if (int(distance_between(loc,dst)) <= u_it->second.total_movement()) {
-			shortest_path_calculator calc(u_it->second, current_team(), units_, get_info().teams, map_);
-			plain_route rt = a_star_search(loc, dst, u_it->second.total_movement(), &calc, map_.w(), map_.h());
+			pathfind::shortest_path_calculator calc(u_it->second, current_team(), units_, get_info().teams, map_);
+			pathfind::plain_route rt = a_star_search(loc, dst, u_it->second.total_movement(), &calc, map_.w(), map_.h());
 			if(rt.steps.empty() == false) {
 				out.push_back(loc);
 			}
@@ -749,7 +749,7 @@ bool testing_move_to_targets_phase::move_group(const map_location& dst, const st
 	std::deque<map_location> preferred_moves;
 	preferred_moves.push_back(dst);
 
-	std::map<map_location,paths> possible_moves;
+	std::map<map_location,pathfind::paths> possible_moves;
 	move_map srcdst, dstsrc;
 	calculate_possible_moves(possible_moves,srcdst,dstsrc,false);
 

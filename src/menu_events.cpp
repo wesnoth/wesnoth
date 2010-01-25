@@ -1257,7 +1257,7 @@ void menu_handler::show_enemy_moves(bool ignore_units, int side_num)
 		{
 			const unit_movement_resetter move_reset(u->second);
 			bool teleports = u->second.get_ability_bool("teleport");
-			const paths& path = paths(map_,units_,
+			const pathfind::paths& path = pathfind::paths(map_,units_,
 									  u->first,teams_,false,teleports,teams_[gui_->viewing_team()], 0,false, ignore_units);
 
 			gui_->highlight_another_reach(path);
@@ -1599,7 +1599,7 @@ void menu_handler::move_unit_to_loc(const unit_map::const_iterator &ui,
 {
 	assert(ui != units_.end());
 
-	marked_route route = mousehandler.get_route(ui, target, ui->second.waypoints(), teams_[side_num - 1]);
+	pathfind::marked_route route = mousehandler.get_route(ui, target, ui->second.waypoints(), teams_[side_num - 1]);
 
 	if(route.steps.empty())
 		return;
@@ -1644,7 +1644,7 @@ void menu_handler::execute_gotos(mouse_handler &mousehandler, int side)
 			if(fully_moved.count(current_loc))
 				continue;
 
-			marked_route route = mousehandler.get_route(ui, goto_loc, ui->second.waypoints(), teams_[side - 1]);
+			pathfind::marked_route route = mousehandler.get_route(ui, goto_loc, ui->second.waypoints(), teams_[side - 1]);
 
 			if(route.steps.size() <= 1) { // invalid path
 				fully_moved.insert(current_loc);
@@ -1653,7 +1653,7 @@ void menu_handler::execute_gotos(mouse_handler &mousehandler, int side)
 
 			// look where we will stop this turn (turn_1 waypoint or goto)
 			map_location next_stop = goto_loc;
-			marked_route::mark_map::const_iterator w = route.marks.begin();
+			pathfind::marked_route::mark_map::const_iterator w = route.marks.begin();
 			for(; w != route.marks.end(); ++w) {
 				if (w->second.turns == 1) {
 					next_stop = w->first;
@@ -1718,7 +1718,7 @@ void menu_handler::unit_hold_position(mouse_handler &mousehandler, int side_num)
 		un->second.set_hold_position(!un->second.hold_position());
 		gui_->invalidate(mousehandler.get_selected_hex());
 
-		mousehandler.set_current_paths(paths());
+		mousehandler.set_current_paths(pathfind::paths());
 		gui_->draw();
 
 		if(un->second.hold_position()) {
@@ -1740,7 +1740,7 @@ void menu_handler::end_unit_turn(mouse_handler &mousehandler, int side_num)
 		}
 		gui_->invalidate(mousehandler.get_selected_hex());
 
-		mousehandler.set_current_paths(paths());
+		mousehandler.set_current_paths(pathfind::paths());
 		gui_->draw();
 
 		if(un->second.user_end_turn()) {

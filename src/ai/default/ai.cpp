@@ -130,7 +130,7 @@ public:
 
 protected:
 	void do_attacks() {
-		std::map<map_location,paths> possible_moves;
+		std::map<map_location,pathfind::paths> possible_moves;
 		move_map srcdst, dstsrc;
 		calculate_possible_moves(possible_moves,srcdst,dstsrc,false);
 
@@ -195,7 +195,7 @@ protected:
 	}
 
 	void get_villages() {
-        std::map<map_location,paths> possible_moves;
+        std::map<map_location,pathfind::paths> possible_moves;
         move_map srcdst, dstsrc;
         calculate_possible_moves(possible_moves,srcdst,dstsrc,false);
 
@@ -224,7 +224,7 @@ protected:
 		if(leader == get_info().units.end())
 			return;
 
-		std::map<map_location,paths> possible_moves;
+		std::map<map_location,pathfind::paths> possible_moves;
 		move_map srcdst, dstsrc;
 		calculate_possible_moves(possible_moves,srcdst,dstsrc,false);
 
@@ -504,7 +504,7 @@ bool ai_default_recruitment_stage::recruit_usage(const std::string& usage)
 
 bool ai_default::multistep_move_possible(const map_location& from,
 	const map_location& to, const map_location& via,
-	const std::map<map_location,paths>& possible_moves) const
+	const std::map<map_location,pathfind::paths>& possible_moves) const
 {
 	const unit_map::const_iterator i = units_.find(from);
 	if(i != units_.end()) {
@@ -512,14 +512,14 @@ bool ai_default::multistep_move_possible(const map_location& from,
 			LOG_AI << "when seeing if leader can move from "
 				<< from << " -> " << to
 				<< " seeing if can detour to keep at " << via << '\n';
-			const std::map<map_location,paths>::const_iterator moves = possible_moves.find(from);
+			const std::map<map_location,pathfind::paths>::const_iterator moves = possible_moves.find(from);
 			if(moves != possible_moves.end()) {
 
 				LOG_AI << "found leader moves..\n";
 
 				// See if the unit can make it to 'via', and if it can,
 				// how much movement it will have left when it gets there.
-				paths::dest_vect::const_iterator itor =
+				pathfind::paths::dest_vect::const_iterator itor =
 					moves->second.destinations.find(via);
 				if (itor != moves->second.destinations.end())
 				{
@@ -527,7 +527,7 @@ bool ai_default::multistep_move_possible(const map_location& from,
 					unit temp_unit(i->second);
 					temp_unit.set_movement(itor->move_left);
 					const temporary_unit_placer unit_placer(units_,via,temp_unit);
-					const paths unit_paths(map_,units_,via,teams_,false,false,current_team());
+					const pathfind::paths unit_paths(map_,units_,via,teams_,false,false,current_team());
 
 					LOG_AI << "Found " << unit_paths.destinations.size() << " moves for temp leader.\n";
 
@@ -736,7 +736,7 @@ void ai_default::do_move()
 
 	raise_user_interact();
 
-	typedef std::map<location,paths> moves_map;
+	typedef std::map<location,pathfind::paths> moves_map;
 
 	const bool passive_leader_shares_keep = get_passive_leader_shares_keep();
 	const bool passive_leader = get_passive_leader()||passive_leader_shares_keep;
@@ -1060,7 +1060,7 @@ bool ai_default::retreat_units(const unit_map::const_iterator& leader)
 		return false;//note: this speeds up the evaluation - per-unit caution is not implemented anyway
 	}
 	// Get versions of the move map that assume that all units are at full movement
-	std::map<map_location,paths> dummy_possible_moves;
+	std::map<map_location,pathfind::paths> dummy_possible_moves;
 	move_map fullmove_srcdst;
 	move_map fullmove_dstsrc;
 	calculate_possible_moves(dummy_possible_moves, fullmove_srcdst, fullmove_dstsrc,
@@ -1513,7 +1513,7 @@ void ai_default_recruitment_stage::analyze_potential_recruit_movements()
 		//@todo 1.9: we give max movement, but recruited will get 0? Seems inaccurate
 		//but keep it like that for now
 		// pathfinding ignoring other units and terrain defense
-		const move_type_path_calculator calc(ut.movement_type(), ut.movement(), ut.movement(), current_team(),map_);
+		const pathfind::move_type_path_calculator calc(ut.movement_type(), ut.movement(), ut.movement(), current_team(),map_);
 
 		int cost = 0;
 		int targets_reached = 0;
@@ -1521,7 +1521,7 @@ void ai_default_recruitment_stage::analyze_potential_recruit_movements()
 
 		for(std::vector<target>::const_iterator t = targets.begin(); t != targets.end(); ++t) {
 			LOG_AI << "analyzing '" << *i << "' getting to target...\n";
-			plain_route route = a_star_search(start, t->loc, 100.0, &calc,
+			pathfind::plain_route route = a_star_search(start, t->loc, 100.0, &calc,
 					get_info().map.w(), get_info().map.h());
 
 			if (!route.steps.empty()) {
@@ -1872,19 +1872,19 @@ void ai_default::move_leader_to_goals()
 
 	do_recruitment();
 
-	shortest_path_calculator calc(leader->second, current_team(), units_, teams_, map_);
-	plain_route route = a_star_search(leader->first, dst, 1000.0, &calc,
+	pathfind::shortest_path_calculator calc(leader->second, current_team(), units_, teams_, map_);
+	pathfind::plain_route route = pathfind::a_star_search(leader->first, dst, 1000.0, &calc,
 			get_info().map.w(), get_info().map.h());
 	if(route.steps.empty()) {
 		LOG_AI << "route empty";
 		return;
 	}
 
-	const paths leader_paths(map_, units_, leader->first,
+	const pathfind::paths leader_paths(map_, units_, leader->first,
 			teams_, false, false, current_team());
 
-	std::map<map_location,paths> possible_moves;
-	possible_moves.insert(std::pair<map_location,paths>(leader->first,leader_paths));
+	std::map<map_location,pathfind::paths> possible_moves;
+	possible_moves.insert(std::pair<map_location,pathfind::paths>(leader->first,leader_paths));
 
 	map_location loc;
 	foreach (const map_location &l, route.steps)
@@ -1917,11 +1917,11 @@ void ai_default::move_leader_after_recruit()
 	const bool passive_leader_shares_keep = get_passive_leader_shares_keep();
 	const bool passive_leader = get_passive_leader()||passive_leader_shares_keep;
 
-	const paths leader_paths(map_, units_, leader->first,
+	const pathfind::paths leader_paths(map_, units_, leader->first,
 			teams_, false, false, current_team());
 
-	std::map<map_location,paths> possible_moves;
-	possible_moves.insert(std::pair<map_location,paths>(leader->first,leader_paths));
+	std::map<map_location,pathfind::paths> possible_moves;
+	possible_moves.insert(std::pair<map_location,pathfind::paths>(leader->first,leader_paths));
 
 	if(!passive_leader && current_team().gold() < 20 && is_accessible(leader->first,get_enemy_dstsrc()) == false) {
 		// See if we want to ward any enemy units off from getting our villages.
@@ -1935,7 +1935,7 @@ void ai_default::move_leader_after_recruit()
 				int current_distance = distance_between(i->first,leader->first);
 				location current_loc;
 
-				foreach (const paths::step &dest, leader_paths.destinations)
+				foreach (const pathfind::paths::step &dest, leader_paths.destinations)
 				{
 					const int distance = distance_between(i->first, dest.curr);
 					if (distance < current_distance &&
@@ -1953,7 +1953,7 @@ void ai_default::move_leader_after_recruit()
 						<< "," << str_cast(current_loc.y+1);
 					unit_map temp_units;
 					temp_units.add(current_loc, leader->second);
-					const paths p(map_, temp_units, current_loc, teams_, false,
+					const pathfind::paths p(map_, temp_units, current_loc, teams_, false,
 					              false, current_team());
 
 					if (p.destinations.contains(i->first))
@@ -1980,7 +1980,7 @@ void ai_default::move_leader_after_recruit()
 
 		bool friend_can_reach_keep = false;
 
-		std::map<location,paths> friends_possible_moves;
+		std::map<location,pathfind::paths> friends_possible_moves;
 		move_map friends_srcdst, friends_dstsrc;
 		calculate_possible_moves(friends_possible_moves,friends_srcdst,friends_dstsrc,false,true);
 		for(move_map::const_iterator i = friends_dstsrc.begin(); i != friends_dstsrc.end(); ++i) {
@@ -2028,7 +2028,7 @@ void ai_default::move_leader_after_recruit()
 	// We didn't move: are we in trouble?
 	leader = units_.find_leader(get_side());
 	if (!passive_leader && !leader->second.has_moved() && leader->second.attacks_left()) {
-		std::map<map_location,paths> dummy_possible_moves;
+		std::map<map_location,pathfind::paths> dummy_possible_moves;
 		move_map fullmove_srcdst;
 		move_map fullmove_dstsrc;
 		calculate_possible_moves(dummy_possible_moves,fullmove_srcdst,fullmove_dstsrc,false,true,&get_avoid());

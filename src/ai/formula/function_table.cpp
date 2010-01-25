@@ -658,7 +658,7 @@ private:
 		if (ai_.get_info().units.find(loc)==ai_.get_info().units.end()){
 			return variant();
 		}
-		const paths unit_paths(ai_.get_info().map, ai_.get_info().units, loc ,ai_.get_info().teams, false, false, ai_.current_team());
+		const pathfind::paths unit_paths(ai_.get_info().map, ai_.get_info().units, loc ,ai_.get_info().teams, false, false, ai_.current_team());
 		return variant(new location_callable(ai_.suitable_keep(loc,unit_paths)));
 	}
 
@@ -974,7 +974,7 @@ private:
 
                 std::set<map_location> allowed_teleports = ai_.get_allowed_teleports(unit_it);
 
-		plain_route route = ai_.shortest_path_calculator( src, dst, unit_it, allowed_teleports );
+		pathfind::plain_route route = ai_.shortest_path_calculator( src, dst, unit_it, allowed_teleports );
 
                 if( route.steps.size() < 2 ) {
                     return variant(&locations);
@@ -1024,9 +1024,9 @@ private:
 
                 std::set<map_location> allowed_teleports = ai_.get_allowed_teleports(unit_it);
 
-                emergency_path_calculator em_calc(unit_it->second, ai_.get_info().map);
+		pathfind::emergency_path_calculator em_calc(unit_it->second, ai_.get_info().map);
 
-                plain_route route = a_star_search(src, dst, 1000.0, &em_calc, ai_.get_info().map.w(), ai_.get_info().map.h(), &allowed_teleports);
+                pathfind::plain_route route = pathfind::a_star_search(src, dst, 1000.0, &em_calc, ai_.get_info().map.w(), ai_.get_info().map.h(), &allowed_teleports);
 
                 if( route.steps.size() < 2 ) {
                     return variant(&locations);
@@ -1078,7 +1078,7 @@ private:
 
                 std::set<map_location> allowed_teleports = ai_.get_allowed_teleports(unit_it);
 
-		plain_route route = ai_.shortest_path_calculator( src, dst, unit_it, allowed_teleports );
+		pathfind::plain_route route = ai_.shortest_path_calculator( src, dst, unit_it, allowed_teleports );
 
                 if( route.steps.size() < 2 ) {
 			return variant();

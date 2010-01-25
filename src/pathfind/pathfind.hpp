@@ -33,6 +33,8 @@ class unit_movement_type;
 #include <vector>
 #include <functional>
 
+namespace pathfind {
+
 enum VACANT_TILE_TYPE { VACANT_CASTLE, VACANT_ANY };
 
 /**
@@ -43,7 +45,7 @@ enum VACANT_TILE_TYPE { VACANT_CASTLE, VACANT_ANY };
 map_location find_vacant_tile(const gamemap& map,
                                    const unit_map& un,
                                    const map_location& loc,
-                                   VACANT_TILE_TYPE vacancy=VACANT_ANY,
+			     	   pathfind::VACANT_TILE_TYPE vacancy=VACANT_ANY,
                                    const unit* pass_check=NULL);
 
 /** Function which determines if a given location is in an enemy zone of control. */
@@ -212,5 +214,7 @@ struct dummy_path_calculator : cost_calculator
 	virtual double cost(const map_location& loc, const double so_far) const;
 
 };
+
+}
 
 #endif

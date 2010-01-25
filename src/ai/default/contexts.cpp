@@ -109,14 +109,14 @@ bool default_ai_context_impl::multistep_move_possible(const map_location& from,
 			LOG_AI << "when seeing if leader can move from "
 				<< from << " -> " << to
 				<< " seeing if can detour to keep at " << via << '\n';
-			const std::map<map_location,paths>::const_iterator moves = possible_moves.find(from);
+			const std::map<map_location,pathfind::paths>::const_iterator moves = possible_moves.find(from);
 			if(moves != possible_moves.end()) {
 
 				LOG_AI << "found leader moves..\n";
 
 				// See if the unit can make it to 'via', and if it can,
 				// how much movement it will have left when it gets there.
-				paths::dest_vect::const_iterator itor =
+				pathfind::paths::dest_vect::const_iterator itor =
 					moves->second.destinations.find(via);
 				if (itor != moves->second.destinations.end())
 				{
@@ -124,7 +124,7 @@ bool default_ai_context_impl::multistep_move_possible(const map_location& from,
 					unit temp_unit(i->second);
 					temp_unit.set_movement(itor->move_left);
 					const temporary_unit_placer unit_placer(units_,via,temp_unit);
-					const paths unit_paths(get_info().map,units_,via,get_info().teams,false,false,current_team());
+					const pathfind::paths unit_paths(get_info().map,units_,via,get_info().teams,false,false,current_team());
 
 					LOG_AI << "Found " << unit_paths.destinations.size() << " moves for temp leader.\n";
 
@@ -183,7 +183,7 @@ std::vector<target> default_ai_context_impl::find_targets(unit_map::const_iterat
 
 	std::vector<target> targets;
 
-	std::map<map_location,paths> friends_possible_moves;
+	std::map<map_location,pathfind::paths> friends_possible_moves;
 	move_map friends_srcdst, friends_dstsrc;
 	calculate_possible_moves(friends_possible_moves,friends_srcdst,friends_dstsrc,false,true);
 

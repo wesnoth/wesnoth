@@ -171,7 +171,7 @@ protected:
 	virtual void do_move();
 
 	virtual bool do_combat();
-	virtual bool get_villages(const std::map<map_location,paths>& possible_moves,
+	virtual bool get_villages(const std::map<map_location,pathfind::paths>& possible_moves,
 		const move_map& dstsrc, const move_map& enemy_dstsrc,
 		unit_map::iterator &leader);
 	virtual bool get_healing();
@@ -212,7 +212,7 @@ protected:
 	 */
 	bool multistep_move_possible(const location& from,
 		const location& to, const location& via,
-		const std::map<location,paths>& possible_moves) const;
+		const std::map<location,pathfind::paths>& possible_moves) const;
 
 public:
 
@@ -275,7 +275,7 @@ private:
 		std::map<map_location /*unit location*/, std::vector<map_location /* villages we can reach*/> >& reachmap,
 		std::vector<std::pair<map_location,map_location> >& moves,
 		const std::multimap<map_location,map_location>& dstsrc,
-		const std::map<map_location,paths>& possible_moves,
+		const std::map<map_location,pathfind::paths>& possible_moves,
 		const std::multimap<map_location,map_location>& enemy_dstsrc) const;
 
 	/**
@@ -284,7 +284,7 @@ private:
 	 */
 	double rate_target(const target& tg, const unit_map::iterator& u,
 			const move_map& dstsrc, const move_map& enemy_dstsrc,
-			const plain_route& rt);
+			const pathfind::plain_route& rt);
 
 	int recruiting_preferred_;
 	static const int min_recruiting_value_to_force_recruit = 28;

@@ -175,14 +175,14 @@ variant formula_ai::make_action(game_logic::const_formula_ptr formula_, const ga
 	return res;
 }
 
-plain_route formula_ai::shortest_path_calculator(const map_location &src,
+pathfind::plain_route formula_ai::shortest_path_calculator(const map_location &src,
 	const map_location &dst, unit_map::iterator &unit_it,
 	std::set<map_location> & allowed_teleports) const
 {
     map_location destination = dst;
 
     unit_map &units_ = get_info().units;
-    ::shortest_path_calculator calc(unit_it->second, current_team(), units_, get_info().teams, get_info().map);
+    pathfind::shortest_path_calculator calc(unit_it->second, current_team(), units_, get_info().teams, get_info().map);
 
     unit_map::const_iterator dst_un = units_.find(destination);
 
@@ -223,7 +223,7 @@ plain_route formula_ai::shortest_path_calculator(const map_location &src,
         destination = res;
     }
 
-	plain_route route = a_star_search(src, destination, 1000.0, &calc,
+	pathfind::plain_route route = a_star_search(src, destination, 1000.0, &calc,
             get_info().map.w(), get_info().map.h(), &allowed_teleports);
 
     return route;
@@ -231,11 +231,11 @@ plain_route formula_ai::shortest_path_calculator(const map_location &src,
 
 std::set<map_location> formula_ai::get_allowed_teleports(unit_map::iterator& unit_it) const
 {
-	return get_teleport_locations(unit_it->second, get_info().units, current_team(), true);
+  return pathfind::get_teleport_locations(unit_it->second, get_info().units, current_team(), true);
 }
 
 map_location formula_ai::path_calculator(const map_location& src, const map_location& dst, unit_map::iterator& unit_it) const{
-	std::map<map_location,paths>::const_iterator path = get_possible_moves().find(src);
+	std::map<map_location,pathfind::paths>::const_iterator path = get_possible_moves().find(src);
 
 	map_location destination = dst;
 
@@ -244,11 +244,11 @@ map_location formula_ai::path_calculator(const map_location& src, const map_loca
 	{
 		std::set<map_location> allowed_teleports = get_allowed_teleports(unit_it);
 		//destination is too far, check where unit can go
-		plain_route route = shortest_path_calculator( src, dst, unit_it, allowed_teleports );
+		pathfind::plain_route route = shortest_path_calculator( src, dst, unit_it, allowed_teleports );
 
 		if( route.steps.size() == 0 ) {
-			emergency_path_calculator em_calc(unit_it->second, get_info().map);
-			route = a_star_search(src, dst, 1000.0, &em_calc, get_info().map.w(), get_info().map.h(), &allowed_teleports);
+			pathfind::emergency_path_calculator em_calc(unit_it->second, get_info().map);
+			route = pathfind::a_star_search(src, dst, 1000.0, &em_calc, get_info().map.w(), get_info().map.h(), &allowed_teleports);
 			if( route.steps.size() < 2 ) {
 				return map_location();
 			}

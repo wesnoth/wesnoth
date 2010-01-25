@@ -43,12 +43,12 @@ public:
 	void cycle_back_units(const bool browse) { cycle_units(browse, true); }
 
 	int get_path_turns() const { return path_turns_; }
-	const paths& current_paths() const { return current_paths_; }
+	const pathfind::paths& current_paths() const { return current_paths_; }
 	const map_location& get_last_hex() const { return last_hex_; }
 	map_location get_selected_hex() const { return selected_hex_; }
 	bool get_undo() const { return undo_; }
 	void set_path_turns(const int path_turns) { path_turns_ = path_turns; }
-	void set_current_paths(paths new_paths);
+	void set_current_paths(pathfind::paths new_paths);
 	void set_selected_hex(map_location hex) { selected_hex_ = hex; }
 	void deselect_hex();
 	void invalidate_reachmap() { reachmap_invalid_ = true; }
@@ -60,7 +60,7 @@ public:
 
 	void add_waypoint(const map_location& loc);
 
-	marked_route get_route(unit_map::const_iterator un, map_location go_to, const std::vector<map_location>& waypoints, team &team);
+	pathfind::marked_route get_route(unit_map::const_iterator un, map_location go_to, const std::vector<map_location>& waypoints, team &team);
 protected:
 	/**
 	 * Due to the way this class is constructed we can assume that the
@@ -121,9 +121,9 @@ private:
 	map_location previous_free_hex_;
 	map_location selected_hex_;
 	map_location next_unit_;
-	marked_route current_route_;
+	pathfind::marked_route current_route_;
 	std::vector<map_location> waypoints_;
-	paths current_paths_;
+	pathfind::paths current_paths_;
 	bool enemy_paths_;
 	int path_turns_;
 	int side_num_;

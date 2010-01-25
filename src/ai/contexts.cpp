@@ -292,14 +292,14 @@ void readonly_context_impl::log_message(const std::string& msg)
 }
 
 
-void readonly_context_impl::calculate_possible_moves(std::map<map_location,paths>& res, move_map& srcdst,
+void readonly_context_impl::calculate_possible_moves(std::map<map_location,pathfind::paths>& res, move_map& srcdst,
 		move_map& dstsrc, bool enemy, bool assume_full_movement,
 		const terrain_filter* remove_destinations) const
 {
   calculate_moves(get_info().units,res,srcdst,dstsrc,enemy,assume_full_movement,remove_destinations);
 }
 
-void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_location,paths>& res, move_map& srcdst,
+void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_location,pathfind::paths>& res, move_map& srcdst,
 		move_map& dstsrc, bool enemy, bool assume_full_movement,
 		const terrain_filter* remove_destinations,
 		bool see_all
@@ -336,8 +336,8 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 			dstsrc.insert(trivial_mv);
 		}
 		bool teleports = un_it->second.get_ability_bool("teleport");
-		res.insert(std::pair<map_location,paths>(
-		                un_it->first,paths(get_info().map,units,
+		res.insert(std::pair<map_location,pathfind::paths>(
+					 un_it->first,pathfind::paths(get_info().map,units,
 					 un_it->first,get_info().teams,false,teleports,
 									current_team(),0,see_all)));
 	}
@@ -348,8 +348,8 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 		remove_destinations = NULL;
 	}
 
-	for(std::map<map_location,paths>::iterator m = res.begin(); m != res.end(); ++m) {
-		foreach (const paths::step &dest, m->second.destinations)
+	for(std::map<map_location,pathfind::paths>::iterator m = res.begin(); m != res.end(); ++m) {
+		foreach (const pathfind::paths::step &dest, m->second.destinations)
 		{
 			const map_location& src = m->first;
 			const map_location& dst = dest.curr;
@@ -906,7 +906,7 @@ bool readonly_context_impl::leader_can_reach_keep() const
 	}
 
 	// Find where the leader can move
-	const paths leader_paths(get_info().map,get_info().units,leader->first,get_info().teams,false,false,current_team());
+	const pathfind::paths leader_paths(get_info().map,get_info().units,leader->first,get_info().teams,false,false,current_team());
 
 
 	return leader_paths.destinations.contains(start_pos);
@@ -1073,7 +1073,7 @@ void readonly_context_impl::recalculate_move_maps_enemy() const
 }
 
 
-const map_location& readonly_context_impl::suitable_keep(const map_location& leader_location, const paths& leader_paths){
+const map_location& readonly_context_impl::suitable_keep(const map_location& leader_location, const pathfind::paths& leader_paths){
 	if (get_info().map.is_keep(leader_location)) {
 		return leader_location; //if leader already on keep, then return leader_location
 	}
@@ -1084,7 +1084,7 @@ const map_location& readonly_context_impl::suitable_keep(const map_location& lea
 	map_location const* best_occupied_keep = &map_location::null_location;
 	double move_left_at_best_occupied_keep = 0.0;
 
-	foreach (const paths::step &dest, leader_paths.destinations)
+	foreach (const pathfind::paths::step &dest, leader_paths.destinations)
 	{
 		const map_location &loc = dest.curr;
 		if (keeps().find(loc)!=keeps().end()){
