@@ -45,7 +45,7 @@ enum VACANT_TILE_TYPE { VACANT_CASTLE, VACANT_ANY };
 map_location find_vacant_tile(const gamemap& map,
                                    const unit_map& un,
                                    const map_location& loc,
-			     	   pathfind::VACANT_TILE_TYPE vacancy=VACANT_ANY,
+			     	   VACANT_TILE_TYPE vacancy=VACANT_ANY,
                                    const unit* pass_check=NULL);
 
 /** Function which determines if a given location is in an enemy zone of control. */
@@ -146,7 +146,7 @@ struct plain_route
 };
 
 plain_route a_star_search(map_location const &src, map_location const &dst,
-                           double stop_at, cost_calculator const *costCalculator,
+                           double stop_at, cost_calculator const* costCalculator,
                            const size_t parWidth, const size_t parHeight,
                            std::set<map_location> const *teleports = NULL);
 

@@ -17,7 +17,7 @@
 
 #include "log.hpp"
 #include "map.hpp"
-#include "pathfind.hpp"
+#include "pathfind/pathfind.hpp"
 #include "foreach.hpp"
 
 #include <queue>
@@ -32,10 +32,10 @@ namespace {
 double heuristic(const map_location& src, const map_location& dst)
 {
 	// We will mainly use the distances in hexes
-	// but we substract a tiny bonus for shorter Euclidean distance
+	// but we subtract a tiny bonus for shorter Euclidean distance
 	// based on how the path looks on the screen.
 
-	// 0.75 comes frome the horizontal hex imbrication
+	// 0.75 comes from the horizontal hex imbrication
 	double xdiff = (src.x - dst.x) * 0.75;
 	// we must add 0.5 to the y coordinate when x is odd
 	double ydiff = (src.y - dst.y) + ((src.x & 1) - (dst.x & 1)) * 0.5;
@@ -45,7 +45,7 @@ double heuristic(const map_location& src, const map_location& dst)
 	// (see shortest_path_calculator::cost)
 	// NOTE: In theory, such heuristic is barely 'admissible' for A*,
 	// But not a problem for our current A* (we use heuristic only for speed)
-	// Plus, the euclidian fraction stay below the 1MP minumum and is also
+	// Plus, the euclidean fraction stay below the 1MP minimum and is also
 	// a good heuristic, so we still find the shortest path efficiently.
 	return distance_between(src, dst) + (xdiff*xdiff + ydiff*ydiff) / 900000000.0;
 
@@ -56,6 +56,7 @@ double heuristic(const map_location& src, const map_location& dst)
 
 // values 0 and 1 mean uninitialized
 const unsigned bad_search_counter = 0;
+// The number of nodes already processed.
 static unsigned search_counter = bad_search_counter;
 
 struct node {
@@ -128,7 +129,7 @@ public:
 
 
 pathfind::plain_route pathfind::a_star_search(const map_location& src, const map_location& dst,
-			  double stop_at, const pathfind::cost_calculator *calc, const size_t width,
+		  	    double stop_at, const pathfind::cost_calculator *calc, const size_t width,
                             const size_t height, const std::set<map_location>* teleports) {
 	//----------------- PRE_CONDITIONS ------------------
 	assert(src.valid(width, height));
