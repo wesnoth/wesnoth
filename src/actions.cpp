@@ -349,7 +349,7 @@ bool can_recruit_on(const gamemap& map, const map_location& leader, const map_lo
 	// The limit computed in the third argument is more than enough for
 	// any convex castle on the map. Strictly speaking it could be
 	// reduced to sqrt(map.w()**2 + map.h()**2).
-	pathfind::plain_route rt = a_star_search(leader, loc, map.w()+map.h(), &calc, map.w(), map.h());
+	pathfind::plain_route rt = pathfind::a_star_search(leader, loc, map.w()+map.h(), &calc, map.w(), map.h());
 	return !rt.steps.empty();
 }
 

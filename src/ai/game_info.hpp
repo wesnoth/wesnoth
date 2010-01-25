@@ -48,7 +48,7 @@ typedef int side_number;
 typedef std::multimap<map_location,map_location> move_map;
 
 /** The standard way in which a map of possible movement routes to location is recorded*/
-  typedef std::map<map_location,pathfind::paths> moves_map;
+typedef std::map<map_location,pathfind::paths> moves_map;
 
 class interface;
 

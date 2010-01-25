@@ -36,7 +36,7 @@ static lg::log_domain log_ai_testing_ca_testing_move_to_targets("ai/testing/ca_t
 
 
 
-  struct move_cost_calculator : pathfind::cost_calculator
+struct move_cost_calculator : pathfind::cost_calculator
 {
 	move_cost_calculator(const unit& u, const gamemap& map,
 			const unit_map& units, const move_map& enemy_dstsrc)
@@ -402,7 +402,7 @@ std::pair<map_location,map_location> testing_move_to_targets_phase::choose_move(
 			//const double locStopValue = std::min(best_target->value / best_rating, 100.0);
 
 			const double locStopValue = 500.0;
-			pathfind::plain_route cur_route = a_star_search(u->first, best_target->loc, locStopValue, &calc, map_.w(), map_.h());
+			pathfind::plain_route cur_route = pathfind::a_star_search(u->first, best_target->loc, locStopValue, &calc, map_.w(), map_.h());
 
 			if(cur_route.steps.empty()) {
 				continue;

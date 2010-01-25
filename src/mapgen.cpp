@@ -390,7 +390,7 @@ double road_path_calculator::cost(const location& loc,
 	if (loc.x < 0 || loc.y < 0 || loc.x >= static_cast<long>(map_.size()) ||
 			loc.y >= static_cast<long>(map_.front().size())) {
 
-		return (getNoPathValue());
+		return (pathfind::cost_calculator::getNoPathValue());
 	}
 
 	// We multiply the cost by a random amount,

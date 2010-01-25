@@ -138,7 +138,6 @@ pathfind::plain_route pathfind::a_star_search(const map_location& src, const map
 	assert(stop_at <= calc->getNoPathValue());
 	//---------------------------------------------------
 
-
 	DBG_PF << "A* search: " << src << " -> " << dst << '\n';
 
 	if (calc->cost(dst, 0) >= stop_at) {
@@ -174,7 +173,9 @@ pathfind::plain_route pathfind::a_star_search(const map_location& src, const map
 
 	while (!pq.empty()) {
 		node& n = nodes[pq.front()];
+
 		n.in = search_counter;
+
 		std::pop_heap(pq.begin(), pq.end(), node_comp);
 		pq.pop_back();
 

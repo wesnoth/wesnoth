@@ -1873,7 +1873,7 @@ void ai_default::move_leader_to_goals()
 	do_recruitment();
 
 	pathfind::shortest_path_calculator calc(leader->second, current_team(), units_, teams_, map_);
-	pathfind::plain_route route = pathfind::a_star_search(leader->first, dst, 1000.0, &calc,
+	pathfind::plain_route route = a_star_search(leader->first, dst, 1000.0, &calc,
 			get_info().map.w(), get_info().map.h());
 	if(route.steps.empty()) {
 		LOG_AI << "route empty";
