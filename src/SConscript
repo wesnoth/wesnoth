@@ -61,7 +61,7 @@ libwesnoth_core_sources.extend([
 libwesnoth_core = env.Library("wesnoth_core", libwesnoth_core_sources)
 
 libwesnoth_sources = Split("""
-    astarsearch.cpp
+    pathfind/astarsearch.cpp
     builder.cpp
     cavegen.cpp
     clipboard.cpp
@@ -218,7 +218,7 @@ wesnoth_sources = Split("""
     multiplayer_wait.cpp
     multiplayer_create.cpp
     multiplayer_connect.cpp
-    pathfind.cpp
+    pathfind/pathfind.cpp
     playcampaign.cpp
     play_controller.cpp
     playmp_controller.cpp

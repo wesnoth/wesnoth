@@ -20,7 +20,7 @@
 
 #include "actions.hpp"
 #include "game_display.hpp"
-#include "pathfind.hpp"
+#include "pathfind/pathfind.hpp"
 #include "random.hpp"
 #include "unit_map.hpp"
 #include "mouse_handler_base.hpp"

@@ -223,7 +223,7 @@ wesnoth_source = \
 	multiplayer_create.cpp \
 	network.cpp \
 	network_worker.cpp \
-	pathfind.cpp \
+	pathfind/pathfind.cpp \
 	playcampaign.cpp \
 	play_controller.cpp \
 	playmp_controller.cpp \
@@ -235,7 +235,7 @@ wesnoth_source = \
 	resources.cpp \
 	save_blocker.cpp \
 	savegame.cpp \
-    savegame_config.cpp \
+	savegame_config.cpp \
 	scripting/lua.cpp \
 	sha1.cpp \
 	settings.cpp \
@@ -447,7 +447,6 @@ libwesnoth_core_a_SOURCES = \
 	serialization/tokenizer.cpp
 
 libwesnoth_a_SOURCES = \
-	astarsearch.cpp \
 	builder.cpp \
 	cavegen.cpp \
 	clipboard.cpp \
@@ -469,6 +468,7 @@ libwesnoth_a_SOURCES = \
 	mapgen_dialog.cpp \
 	marked-up_text.cpp \
 	minimap.cpp \
+	pathfind/astarsearch.cpp \
 	pathutils.cpp \
 	preferences.cpp \
 	preferences_display.cpp \

@@ -29,7 +29,7 @@
 #include "map.hpp"
 #include "map_label.hpp"
 #include "mouse_handler_base.hpp"
-#include "pathfind.hpp"
+#include "pathfind/pathfind.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
 #include "statistics.hpp"

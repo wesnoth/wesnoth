@@ -35,7 +35,7 @@
 #include "wml_exception.hpp"
 #include "formula_string_utils.hpp"
 #include "map.hpp"
-#include "pathfind.hpp"
+#include "pathfind/pathfind.hpp"
 
 #include <boost/bind.hpp>
 

@@ -27,7 +27,7 @@ class unit_map;
 #include "chat_events.hpp"
 #include "display.hpp"
 #include "image.hpp"
-#include "pathfind.hpp"
+#include "pathfind/pathfind.hpp"
 
 #include "SDL.h"
 

@@ -45,7 +45,7 @@ extern "C" {
 #include "gamestatus.hpp"
 #include "log.hpp"
 #include "map.hpp"
-#include "pathfind.hpp"
+#include "pathfind/pathfind.hpp"
 #include "resources.hpp"
 #include "scripting/lua.hpp"
 #include "terrain_translation.hpp"

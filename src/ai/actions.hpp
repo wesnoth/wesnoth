@@ -28,7 +28,7 @@
 #include "../map.hpp"
 #include "../map_location.hpp"
 #include "../team.hpp"
-#include "../pathfind.hpp"
+#include "../pathfind/pathfind.hpp"
 
 #include <memory>
 #include <vector>
