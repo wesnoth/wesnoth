@@ -341,7 +341,6 @@ set(wesnoth-main_SRC
     multiplayer_create.cpp
     network.cpp
     network_worker.cpp
-    pathfind.cpp
     playcampaign.cpp
     play_controller.cpp
     playmp_controller.cpp
@@ -411,7 +410,6 @@ endif(ENABLE_EDITOR)
 # rename libwesnoth.a to libwesnoth-game.a to have clearer targets
 
 SET(libwesnoth-game_STAT_SRC
-    astarsearch.cpp
     builder.cpp
     cavegen.cpp
     clipboard.cpp
@@ -435,6 +433,8 @@ SET(libwesnoth-game_STAT_SRC
     mapgen_dialog.cpp
     marked-up_text.cpp
     minimap.cpp
+    pathfind/astarsearch.cpp
+    pathfind/pathfind.cpp
     pathutils.cpp
     preferences.cpp
     preferences_display.cpp
