@@ -43,11 +43,9 @@ public:
 	void cycle_back_units(const bool browse) { cycle_units(browse, true); }
 
 	int get_path_turns() const { return path_turns_; }
-#ifndef EXPERIMENTAL
+
 	const pathfind::paths& current_paths() const { return current_paths_; }
-#else
-	const pathfind::paths get_current_paths() const { return current_paths_; }
-#endif
+
 	const map_location& get_last_hex() const { return last_hex_; }
 	map_location get_selected_hex() const { return selected_hex_; }
 	bool get_undo() const { return undo_; }
