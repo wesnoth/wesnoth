@@ -171,7 +171,7 @@ public:
 	map_location minimap_location_on(int x, int y);
 
 	const map_location& selected_hex() const { return selectedHex_; }
-	const map_location& mouseover_hex() { return mouseoverHex_; }
+	const map_location& mouseover_hex() const { return mouseoverHex_; }
 
 	virtual void select_hex(map_location hex);
 	virtual void highlight_hex(map_location hex);
