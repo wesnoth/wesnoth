@@ -27,6 +27,9 @@ class tod_manager;
 class unit_map;
 
 namespace soundsource { class manager; }
+#ifdef EXPERIMENTAL
+namespace pathfind { class manager; }
+#endif
 
 namespace resources
 {
@@ -39,6 +42,9 @@ namespace resources
 	extern LuaKernel *lua_kernel;
 	extern play_controller *controller;
 	extern tod_manager *tod_manager;
+#ifdef EXPERIMENTAL
+	extern pathfind::manager *tunnels;
+#endif
 }
 
 #endif

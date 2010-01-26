@@ -1549,12 +1549,17 @@ static int intf_find_path(lua_State *L)
 	}
 
 	team &viewing_team = teams[viewing_side - 1];
+#ifndef EXPERIMENTAL
 	std::set<map_location> teleport_locations;
 
 	if (!ignore_teleport) {
 	  teleport_locations = pathfind::get_teleport_locations(
 			*u, units, viewing_team, see_all, ignore_units);
 	}
+#else
+	const pathfind::teleport_map teleport_locations = !ignore_teleport ? pathfind::get_teleport_locations(
+			*u, units, viewing_team, see_all, ignore_units) : pathfind::teleport_map();
+#endif
 
 	if (!calc) {
 	  calc = new pathfind::shortest_path_calculator(*u, viewing_team,

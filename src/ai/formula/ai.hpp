@@ -104,8 +104,13 @@ public:
 	void handle_exception(game_logic::formula_error& e) const;
 	void handle_exception(game_logic::formula_error& e, const std::string& failed_operation) const;
 
+#ifndef EXPERIMENTAL
         std::set<map_location> get_allowed_teleports(unit_map::iterator& unit_it) const;
 	pathfind::plain_route shortest_path_calculator(const map_location& src, const map_location& dst, unit_map::iterator& unit_it, std::set<map_location>& allowed_teleports) const;
+#else
+	pathfind::teleport_map get_allowed_teleports(unit_map::iterator& unit_it) const;
+	pathfind::plain_route shortest_path_calculator(const map_location& src, const map_location& dst, unit_map::iterator& unit_it, pathfind::teleport_map& allowed_teleports) const;
+#endif
 
         void store_outcome_position(const variant& var);
 

@@ -11,7 +11,7 @@ AC_PREREQ([2.60])
 # to match whether this is a stable or unstable release.
 #######################################################################
 define([WESNOTH_VERSION],[1.7.12+svn])
-experimental_default=yes
+experimental_default=no
 define([WESNOTH_BUGS],[http://bugs.wesnoth.org])
 
 AC_INIT([Battle for Wesnoth], WESNOTH_VERSION, WESNOTH_BUGS, [wesnoth])

@@ -177,7 +177,11 @@ variant formula_ai::make_action(game_logic::const_formula_ptr formula_, const ga
 
 pathfind::plain_route formula_ai::shortest_path_calculator(const map_location &src,
 	const map_location &dst, unit_map::iterator &unit_it,
+#ifndef EXPERIMENTAL
 	std::set<map_location> & allowed_teleports) const
+#else
+	pathfind::teleport_map& allowed_teleports) const
+#endif
 {
     map_location destination = dst;
 
@@ -229,7 +233,11 @@ pathfind::plain_route formula_ai::shortest_path_calculator(const map_location &s
     return route;
 }
 
+#ifndef EXPERIMENTAL
 std::set<map_location> formula_ai::get_allowed_teleports(unit_map::iterator& unit_it) const
+#else
+pathfind::teleport_map formula_ai::get_allowed_teleports(unit_map::iterator& unit_it) const
+#endif
 {
   return pathfind::get_teleport_locations(unit_it->second, get_info().units, current_team(), true);
 }
@@ -242,7 +250,11 @@ map_location formula_ai::path_calculator(const map_location& src, const map_loca
 	//check if destination is within unit's reach, if not, calculate where to move
 	if (!path->second.destinations.contains(dst))
 	{
+#ifndef EXPERIMENTAL
 		std::set<map_location> allowed_teleports = get_allowed_teleports(unit_it);
+#else
+		pathfind::teleport_map allowed_teleports = get_allowed_teleports(unit_it);
+#endif
 		//destination is too far, check where unit can go
 		pathfind::plain_route route = shortest_path_calculator( src, dst, unit_it, allowed_teleports );
 

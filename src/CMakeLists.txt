@@ -341,6 +341,10 @@ set(wesnoth-main_SRC
     multiplayer_create.cpp
     network.cpp
     network_worker.cpp
+#ifdef EXPERIMENTAL
+    pathfind/pathfind.cpp
+    pathfind/teleport.cpp
+#endif
     playcampaign.cpp
     play_controller.cpp
     playmp_controller.cpp
@@ -434,7 +438,9 @@ SET(libwesnoth-game_STAT_SRC
     marked-up_text.cpp
     minimap.cpp
     pathfind/astarsearch.cpp
+#ifndef EXPERIMENTAL
     pathfind/pathfind.cpp
+#endif
     pathutils.cpp
     preferences.cpp
     preferences_display.cpp

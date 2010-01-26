@@ -658,7 +658,11 @@ private:
 		if (ai_.get_info().units.find(loc)==ai_.get_info().units.end()){
 			return variant();
 		}
+#ifndef EXPERIMENTAL
 		const pathfind::paths unit_paths(ai_.get_info().map, ai_.get_info().units, loc ,ai_.get_info().teams, false, false, ai_.current_team());
+#else
+		const pathfind::paths unit_paths(ai_.get_info().map, ai_.get_info().units, loc ,ai_.get_info().teams, false, true, ai_.current_team());
+#endif
 		return variant(new location_callable(ai_.suitable_keep(loc,unit_paths)));
 	}
 
@@ -972,7 +976,11 @@ private:
 			throw formula_error( str.str(), "", "", 0);
 		}
 
+#ifndef EXPERIMENTAL
                 std::set<map_location> allowed_teleports = ai_.get_allowed_teleports(unit_it);
+#else
+		pathfind::teleport_map allowed_teleports = ai_.get_allowed_teleports(unit_it);
+#endif
 
 		pathfind::plain_route route = ai_.shortest_path_calculator( src, dst, unit_it, allowed_teleports );
 
@@ -1022,7 +1030,11 @@ private:
 			throw formula_error( str.str(), "", "", 0);
 		}
 
+#ifndef EXPERIMENTAL
                 std::set<map_location> allowed_teleports = ai_.get_allowed_teleports(unit_it);
+#else
+                pathfind::teleport_map allowed_teleports = ai_.get_allowed_teleports(unit_it);
+#endif
 
 		pathfind::emergency_path_calculator em_calc(unit_it->second, ai_.get_info().map);
 
@@ -1076,7 +1088,11 @@ private:
 			throw formula_error( str.str(), "", "", 0);
 		}
 
+#ifndef EXPERIMENTAL
                 std::set<map_location> allowed_teleports = ai_.get_allowed_teleports(unit_it);
+#else
+		pathfind::teleport_map allowed_teleports = ai_.get_allowed_teleports(unit_it);
+#endif
 
 		pathfind::plain_route route = ai_.shortest_path_calculator( src, dst, unit_it, allowed_teleports );
 
@@ -1316,11 +1332,15 @@ public:
 	{}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+#ifndef EXPERIMENTAL
 		variant loc_var = args()[0]->evaluate(variables,add_debug_info(fdb,0,"unit_at:location"));
 		if (loc_var.is_null()) {
 			return variant();
 		}
 		const location_callable* loc = convert_variant<location_callable>(loc_var);
+#else
+		const location_callable* loc = convert_variant<location_callable>(args()[0]->evaluate(variables,add_debug_info(fdb,0,"unit_at:location")));
+#endif
 		const unit_map::const_iterator i = ai_.get_info().units.find(loc->loc());
 		if(i != ai_.get_info().units.end()) {
 			return variant(new unit_callable(*i));

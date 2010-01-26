@@ -335,10 +335,16 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 			srcdst.insert(trivial_mv);
 			dstsrc.insert(trivial_mv);
 		}
+#ifndef EXPERIMENTAL
 		bool teleports = un_it->second.get_ability_bool("teleport");
+#endif
 		res.insert(std::pair<map_location,pathfind::paths>(
 					 un_it->first,pathfind::paths(get_info().map,units,
+#ifndef EXPERIMENTAL
 					 un_it->first,get_info().teams,false,teleports,
+#else
+					 un_it->first,get_info().teams,false,true,
+#endif
 									current_team(),0,see_all)));
 	}
 
@@ -906,7 +912,11 @@ bool readonly_context_impl::leader_can_reach_keep() const
 	}
 
 	// Find where the leader can move
+#ifndef EXPERIMENTAL
 	const pathfind::paths leader_paths(get_info().map,get_info().units,leader->first,get_info().teams,false,false,current_team());
+#else
+	const pathfind::paths leader_paths(get_info().map,get_info().units,leader->first,get_info().teams,false,true,current_team());
+#endif
 
 
 	return leader_paths.destinations.contains(start_pos);

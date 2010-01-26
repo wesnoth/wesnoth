@@ -527,7 +527,11 @@ bool ai_default::multistep_move_possible(const map_location& from,
 					unit temp_unit(i->second);
 					temp_unit.set_movement(itor->move_left);
 					const temporary_unit_placer unit_placer(units_,via,temp_unit);
+#ifndef EXPERIMENTAL
 					const pathfind::paths unit_paths(map_,units_,via,teams_,false,false,current_team());
+#else
+					const pathfind::paths unit_paths(map_,units_,via,teams_,false,true,current_team());
+#endif
 
 					LOG_AI << "Found " << unit_paths.destinations.size() << " moves for temp leader.\n";
 
@@ -1881,7 +1885,11 @@ void ai_default::move_leader_to_goals()
 	}
 
 	const pathfind::paths leader_paths(map_, units_, leader->first,
+#ifndef EXPERIMENTAL
 			teams_, false, false, current_team());
+#else
+			teams_, false, true, current_team());
+#endif
 
 	std::map<map_location,pathfind::paths> possible_moves;
 	possible_moves.insert(std::pair<map_location,pathfind::paths>(leader->first,leader_paths));
@@ -1918,7 +1926,11 @@ void ai_default::move_leader_after_recruit()
 	const bool passive_leader = get_passive_leader()||passive_leader_shares_keep;
 
 	const pathfind::paths leader_paths(map_, units_, leader->first,
+#ifndef EXPERIMENTAL
 			teams_, false, false, current_team());
+#else
+			teams_, false, true, current_team());
+#endif
 
 	std::map<map_location,pathfind::paths> possible_moves;
 	possible_moves.insert(std::pair<map_location,pathfind::paths>(leader->first,leader_paths));
@@ -1954,7 +1966,11 @@ void ai_default::move_leader_after_recruit()
 					unit_map temp_units;
 					temp_units.add(current_loc, leader->second);
 					const pathfind::paths p(map_, temp_units, current_loc, teams_, false,
+#ifndef EXPERIMENTAL
 					              false, current_team());
+#else
+					              true, current_team());
+#endif
 
 					if (p.destinations.contains(i->first))
 					{

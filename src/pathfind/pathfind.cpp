@@ -104,6 +104,7 @@ bool pathfind::enemy_zoc(unit_map const &units, std::vector<team> const &teams,
 	return false;
 }
 
+#ifndef EXPERIMENTAL
 std::set<map_location> pathfind::get_teleport_locations(const unit &u,
 	const unit_map &units, const team &viewing_team,
 	bool see_all, bool ignore_units)
@@ -127,6 +128,7 @@ std::set<map_location> pathfind::get_teleport_locations(const unit &u,
 	return res;
 }
 
+#endif
 static unsigned search_counter;
 
 namespace {
@@ -193,16 +195,22 @@ static void find_routes(const gamemap& map, const unit_map& units,
 		bool see_all, bool ignore_units)
 {
 	const team& current_team = teams[u.side() - 1];
+#ifndef EXPERIMENTAL
 	std::set<map_location> teleports;
+#else
+	pathfind::teleport_map teleports;
+#endif
 	if (allow_teleport) {
 	  teleports = pathfind::get_teleport_locations(u, units, viewing_team, see_all, ignore_units);
 	}
 
 	const int total_movement = u.total_movement();
 
+#ifndef EXPERIMENTAL
 	std::vector<map_location> locs(6 + teleports.size());
 	std::copy(teleports.begin(), teleports.end(), locs.begin() + 6);
 
+#endif
 	search_counter += 2;
 	if (search_counter == 0) search_counter = 2;
 
@@ -224,10 +232,24 @@ static void find_routes(const gamemap& map, const unit_map& units,
 		pq.pop_back();
 		n.in = search_counter;
 
+#ifdef EXPERIMENTAL
+		std::set<map_location> allowed_teleports;
+		teleports.get_adjacents(allowed_teleports, n.curr);
+		std::vector<map_location> locs(6 + allowed_teleports.size());
+		std::copy(allowed_teleports.begin(), allowed_teleports.end(), locs.begin() + 6);
+#endif
 		get_adjacent_tiles(n.curr, &locs[0]);
+#ifndef EXPERIMENTAL
 		for (int i = teleports.count(n.curr) ? locs.size() : 6; i-- > 0; ) {
+#else
+		for (int i = locs.size(); i-- > 0; ) {
+#endif
 			if (!locs[i].valid(map.w(), map.h())) continue;
 
+#ifdef EXPERIMENTAL
+			if (locs[i] == n.curr) continue;
+
+#endif
 			node& next = nodes[index(locs[i])];
 
 			bool next_visited = next.in - search_counter <= 1u;

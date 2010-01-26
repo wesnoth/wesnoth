@@ -670,7 +670,11 @@ double move_leader_to_goals_phase::evaluate()
 	}
 
 	const pathfind::paths leader_paths(get_info().map, get_info().units, leader->first,
+#ifndef EXPERIMENTAL
 				 get_info().teams, false, false, current_team());
+#else
+				 get_info().teams, false, true, current_team());
+#endif
 
 	std::map<map_location,pathfind::paths> possible_moves;
 	possible_moves.insert(std::pair<map_location,pathfind::paths>(leader->first,leader_paths));
@@ -746,7 +750,11 @@ double move_leader_to_keep_phase::evaluate()
 
 	// Find where the leader can move
 	const pathfind::paths leader_paths(get_info().map, units_, leader->first,
+#ifndef EXPERIMENTAL
 		 get_info().teams, false, false, current_team());
+#else
+		 get_info().teams, false, true, current_team());
+#endif
 	const map_location& keep = suitable_keep(leader->first,leader_paths);
 
 	std::map<map_location,pathfind::paths> possible_moves;
@@ -1748,7 +1756,11 @@ double retreat_phase::evaluate()
 				typedef move_map::const_iterator Itor;
 				std::pair<Itor,Itor> itors = get_srcdst().equal_range(i->first);
 				map_location best_pos, best_defensive(i->first);
+#ifndef EXPERIMENTAL
 				double best_rating = -1000.0;
+#else
+				double best_rating = 0.0;
+#endif
 				int best_defensive_rating = i->second.defense_modifier(get_info().map.get_terrain(i->first))
 					- (get_info().map.is_village(i->first) ? 10 : 0);
 				while(itors.first != itors.second) {

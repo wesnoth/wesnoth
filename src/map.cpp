@@ -30,6 +30,7 @@
 #include "serialization/parser.hpp"
 #include "util.hpp"
 #include "wml_exception.hpp"
+#include "foreach.hpp"
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)

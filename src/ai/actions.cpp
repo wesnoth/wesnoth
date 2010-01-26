@@ -407,8 +407,12 @@ bool move_result::test_route(const unit &un, const team &my_team, const unit_map
 	}
 	const pathfind::shortest_path_calculator calc(un, my_team, units, teams,map);
 
+#ifndef EXPERIMENTAL
 	//allowed teleports
 	std::set<map_location> allowed_teleports = pathfind::get_teleport_locations(un, units, my_team, true);//@todo 1.9: see_all -> false
+#else
+	pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(un, units, my_team, true);//@todo 1.9: see_all -> false
+#endif
 
 	//do an A*-search
 	route_ = pathfind::a_star_search(un.get_location(), to_, 10000.0, &calc, map.w(), map.h(), &allowed_teleports);
@@ -505,7 +509,11 @@ void move_result::do_execute()
 	if (from_ != to_) {
 		move_unit(
 			/*move_unit_spectator* move_spectator*/ &move_spectator_,
+#ifndef EXPERIMENTAL
 			/*std::vector<map_location> route*/ route_.steps,
+#else
+			/*std::vector<map_location> pathfind::route*/ route_.steps,
+#endif
 			/*replay* move_recorder*/ &recorder,
 			/*undo_list* undo_stack*/ NULL,
 			/*bool show_move*/ preferences::show_ai_moves(),

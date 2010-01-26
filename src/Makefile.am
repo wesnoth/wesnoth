@@ -224,6 +224,9 @@ wesnoth_source = \
 	network.cpp \
 	network_worker.cpp \
 	pathfind/pathfind.cpp \
+#ifdef EXPERIMENTAL
+	pathfind/teleport.cpp \
+#endif
 	playcampaign.cpp \
 	play_controller.cpp \
 	playmp_controller.cpp \

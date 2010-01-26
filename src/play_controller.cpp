@@ -63,6 +63,9 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	menu_handler_(NULL, units_, teams_, level, map_, game_config, tod_manager_, state_of_game, undo_stack_, redo_stack_),
 	soundsources_manager_(),
 	tod_manager_(level, num_turns, &state_of_game),
+#ifdef EXPERIMENTAL
+	pathfind_manager_(),
+#endif
 	gui_(),
 	statistics_context_(level["name"]),
 	level_(level),
@@ -117,6 +120,9 @@ play_controller::~play_controller()
 	resources::screen = NULL;
 	resources::soundsources = NULL;
 	resources::tod_manager = NULL;
+#ifdef EXPERIMENTAL
+	resources::tunnels = NULL;
+#endif
 }
 
 void play_controller::init(CVideo& video){
@@ -245,8 +251,14 @@ void play_controller::init_managers(){
 	prefs_disp_manager_.reset(new preferences::display_manager(gui_.get()));
 	tooltips_manager_.reset(new tooltips::manager(gui_->video()));
 	soundsources_manager_.reset(new soundsource::manager(*gui_));
+#ifdef EXPERIMENTAL
+	pathfind_manager_.reset(new pathfind::manager(level_));
+#endif
 
 	resources::soundsources = soundsources_manager_.get();
+#ifdef EXPERIMENTAL
+	resources::tunnels = pathfind_manager_.get();
+#endif
 
 	halo_manager_.reset(new halo::manager(*gui_));
 	LOG_NG << "done initializing managers... " << (SDL_GetTicks() - ticks_) << "\n";
@@ -611,6 +623,9 @@ config play_controller::to_config() const
 
 	//write out the current state of the map
 	cfg["map_data"] = map_.write();
+#ifdef EXPERIMENTAL
+	cfg.merge_with(pathfind_manager_->to_config());
+#endif
 
 	return cfg;
 }
@@ -897,15 +912,25 @@ void play_controller::process_keyup_event(const SDL_Event& event) {
 			const unit_map::iterator u = mouse_handler_.selected_unit();
 
 			if(u != units_.end()) {
+#ifndef EXPERIMENTAL
 				bool teleport = u->second.get_ability_bool("teleport");
 
+#endif
 				// if it's not the unit's turn, we reset its moves
 				unit_movement_resetter move_reset(u->second, u->second.side() != player_number_);
 
 				mouse_handler_.set_current_paths(pathfind::paths(map_,units_,u->first,
+#ifndef EXPERIMENTAL
 				                       teams_,false,teleport, teams_[gui_->viewing_team()],
+#else
+				                       teams_,false,true, teams_[gui_->viewing_team()],
+#endif
 				                       mouse_handler_.get_path_turns()));
+#ifndef EXPERIMENTAL
 				gui_->highlight_reach(mouse_handler_.current_paths());
+#else
+				gui_->highlight_reach(mouse_handler_.get_current_paths());
+#endif
 			}
 		}
 	}

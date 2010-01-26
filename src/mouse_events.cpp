@@ -232,9 +232,15 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 				//unit under cursor is not on our team, highlight reach
 				unit_movement_resetter move_reset(un->second);
 
+#ifndef EXPERIMENTAL
 				bool teleport = un->second.get_ability_bool("teleport");
+#endif
 				current_paths_ = pathfind::paths(map_,units_,new_hex,teams_,
+#ifndef EXPERIMENTAL
 									false,teleport,viewing_team(),path_turns_);
+#else
+									false,true,viewing_team(),path_turns_);
+#endif
 				gui().highlight_reach(current_paths_);
 				enemy_paths_ = true;
 			} else {
@@ -343,7 +349,11 @@ pathfind::marked_route mouse_handler::get_route(unit_map::const_iterator un, map
 	// The pathfinder will check unit visibility (fogged/stealthy).
 	const pathfind::shortest_path_calculator calc(un->second,team,units_,teams_,map_);
 
+#ifndef EXPERIMENTAL
 	std::set<map_location> allowed_teleports = pathfind::get_teleport_locations(
+#else
+	pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(
+#endif
 		un->second, units_, viewing_team());
 
 	pathfind::plain_route route;
@@ -534,9 +544,15 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 			// if it's not the unit's turn, we reset its moves
 			// and we restore them before the "select" event is raised
 			unit_movement_resetter move_reset(u->second, u->second.side() != side_num_);
+#ifndef EXPERIMENTAL
 			bool teleport = u->second.get_ability_bool("teleport");
+#endif
 			current_paths_ = pathfind::paths(map_, units_, hex, teams_,
+#ifndef EXPERIMENTAL
 				false, teleport, viewing_team(), path_turns_);
+#else
+				false, true, viewing_team(), path_turns_);
+#endif
 		}
 		show_attack_options(u);
 		gui().highlight_reach(current_paths_);
