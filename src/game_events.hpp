@@ -136,7 +136,7 @@ namespace game_events
 
 			void handle_event(const queued_event& event_info);
 
-			const vconfig& get_vconfig() { return cfg_; }
+			const vconfig& get_vconfig() const { return cfg_; }
 		private:
 			bool first_time_only_;
 			bool disabled_;
