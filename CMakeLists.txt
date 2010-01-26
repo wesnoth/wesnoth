@@ -98,6 +98,11 @@ set(BINARY_PREFIX "" CACHE STRING "Prefix in front of all binaries")
 # Handle options (set paths/definitions/etc...)
 #
 
+if(ENABLE_EXPERIMENTAL)
+  add_definitions(-DEXPERIMENTAL)
+endif(ENABLE_EXPERIMENTAL)
+
+
 if(CMAKE_COMPILER_IS_GNUCXX)
 	# Set our own default flags at first run.
 	if(NOT CONFIGURED)
