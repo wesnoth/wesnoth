@@ -39,9 +39,8 @@ except KeyError:
 # Build-control options
 #
 
-# FIXME: Experimental code enabled by default in unstable (odd minor version).
-#experimental_default = (int(version.split(".")[1]) % 2) == 1
-experimental_default = False
+# Experimental code is enabled by default in unstable (odd minor version).
+experimental_default = (int(version.split(".")[1]) % 2) == 1
 
 opts = Variables('.scons-option-cache')
 
