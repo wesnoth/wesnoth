@@ -1756,11 +1756,8 @@ double retreat_phase::evaluate()
 				typedef move_map::const_iterator Itor;
 				std::pair<Itor,Itor> itors = get_srcdst().equal_range(i->first);
 				map_location best_pos, best_defensive(i->first);
-#ifndef EXPERIMENTAL
+
 				double best_rating = -1000.0;
-#else
-				double best_rating = 0.0;
-#endif
 				int best_defensive_rating = i->second.defense_modifier(get_info().map.get_terrain(i->first))
 					- (get_info().map.is_village(i->first) ? 10 : 0);
 				while(itors.first != itors.second) {
