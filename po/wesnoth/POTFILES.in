@@ -10,6 +10,7 @@ src/ai/composite/contexts.cpp
 src/ai/composite/engine.cpp
 src/ai/composite/engine_default.cpp
 src/ai/composite/engine_fai.cpp
+src/ai/composite/engine_lua.cpp
 src/ai/composite/goal.cpp
 src/ai/composite/rca.cpp
 src/ai/composite/stage.cpp
@@ -39,7 +40,6 @@ src/ai/testing.cpp
 src/ai/testing/stage_fallback.cpp
 src/ai/testing/stage_rca.cpp
 src/animated_game.cpp
-src/astarsearch.cpp
 src/attack_prediction.cpp
 src/attack_prediction_display.cpp
 src/boilerplate-header.cpp
@@ -104,7 +104,9 @@ src/multiplayer_ui.cpp
 src/multiplayer_wait.cpp
 src/network.cpp
 src/network_worker.cpp
-src/pathfind.cpp
+src/pathfind/astarsearch.cpp
+src/pathfind/pathfind.cpp
+src/pathfind/teleport.cpp
 src/pathutils.cpp
 src/playcampaign.cpp
 src/play_controller.cpp
