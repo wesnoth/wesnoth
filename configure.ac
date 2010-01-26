@@ -180,7 +180,7 @@ AC_ARG_ENABLE([experimental],
 
 if test "x$experimental" = "xyes"
 then
-    CPPFLAGS="$CPPFLAGS -DUSE_TINY_GUI"
+    CPPFLAGS="$CPPFLAGS -DEXPERIMENTAL"
 fi
 
 AM_CONDITIONAL([EXPERIMENTAL], [test "x$experimental" = "xyes"])
