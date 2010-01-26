@@ -170,7 +170,7 @@ public:
 	 */
 	map_location minimap_location_on(int x, int y);
 
-	const map_location& selected_hex() { return selectedHex_; }
+	const map_location& selected_hex() const { return selectedHex_; }
 	const map_location& mouseover_hex() { return mouseoverHex_; }
 
 	virtual void select_hex(map_location hex);
