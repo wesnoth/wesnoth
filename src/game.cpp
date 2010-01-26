@@ -596,6 +596,11 @@ bool game_controller::init_config(const bool force)
 {
 	cache_.clear_defines();
 
+#ifdef EXPERIMENTAL
+	// use this to guard WML that depends on code guarded by EXPERIMENTAL
+	cache_.add_define("EXPERIMENTAL");
+#endif /* EXPERIMENTAL */
+
 	// make sure that multiplayer mode is set if command line parameter is selected
 	if (multiplayer_mode_)
 		cache_.add_define("MULTIPLAYER");
