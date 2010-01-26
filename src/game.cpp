@@ -171,7 +171,7 @@ public:
 	editor::EXIT_STATUS start_editor(const std::string& filename = "");
 #endif
 	void start_wesnothd();
-	const config& game_config(){return game_config_;};
+	const config& game_config() const { return game_config_; }
 
 private:
 	game_controller(const game_controller&);
