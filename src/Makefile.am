@@ -224,9 +224,6 @@ wesnoth_source = \
 	network.cpp \
 	network_worker.cpp \
 	pathfind/pathfind.cpp \
-#ifdef EXPERIMENTAL
-	pathfind/teleport.cpp \
-#endif
 	playcampaign.cpp \
 	play_controller.cpp \
 	playmp_controller.cpp \
@@ -270,6 +267,14 @@ wesnoth_source = \
 	widgets/combo_drag.cpp \
 	widgets/drop_target.cpp \
 	widgets/scrollpane.cpp
+
+# used for stuff that is currently seen as highly experimental
+wesnoth_experimental_SOURCES = \
+	pathfind/teleport.cpp
+
+if EXPERIMENTAL
+wesnoth_source += $(wesnoth_experimental_SOURCES)
+endif
 
 # used with editor option in the wesnoth target
 wesnoth_editor_SOURCES = \
