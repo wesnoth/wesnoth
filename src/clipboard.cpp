@@ -100,7 +100,7 @@ public:
 		return atomTable_[5];
 	}
 
-	Display* dpy()
+	Display* dpy() const
 	{
 		return wmInf_.info.x11.display;
 	}
