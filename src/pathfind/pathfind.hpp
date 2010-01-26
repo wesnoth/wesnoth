@@ -235,11 +235,7 @@ struct dummy_path_calculator : cost_calculator
 	virtual double cost(const map_location& loc, const double so_far) const;
 
 };
-#ifndef EXPERIMENTAL
 
-#endif
 }
-#ifndef EXPERIMENTAL
 
-#endif
 #endif
