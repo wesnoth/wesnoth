@@ -39,9 +39,6 @@ except KeyError:
 # Build-control options
 #
 
-# Experimental code is enabled by default in unstable (odd minor version).
-experimental_default = (int(version.split(".")[1]) % 2) == 1
-
 opts = Variables('.scons-option-cache')
 
 def OptionalPath(key, val, env):
@@ -75,7 +72,7 @@ opts.AddVariables(
     PathVariable('python_site_packages_dir', 'sets the directory where python modules are installed', "lib/python/site-packages/wesnoth", PathVariable.PathAccept),
     BoolVariable('editor', 'Enable editor', True),
     BoolVariable('lowmem', 'Set to reduce memory usage by removing extra functionality', False),
-    BoolVariable('experimental', 'Enable experimental code for developers only', experimental_default),
+    BoolVariable('experimental', 'Enable experimental code for developers only', False),
     BoolVariable('lua', 'Enable Lua support', True),
     BoolVariable('notifications', 'Enable support for desktop notifications', True),
     BoolVariable('nls','enable compile/install of gettext message catalogs',True),
