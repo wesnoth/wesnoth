@@ -23,8 +23,24 @@ if os.path.exists('.scons-option-cache'):
     optfile.close()
 
 #
+# Get the Wesnoth version number
+#
+
+config_h_re = re.compile(r"^.*#define\s*(\S*)\s*\"(\S*)\".*$", re.MULTILINE)
+build_config = dict( config_h_re.findall(File("src/wesconfig.h").get_contents()) )
+try:
+    version = build_config["VERSION"]
+    print "Building Wesnoth version %s" % version
+except KeyError:
+    print "Couldn't determin the Wesnoth version number, bailing out!"
+    sys.exit(1)
+
+#
 # Build-control options
 #
+
+# Experimental code is enabled by default in unstable (odd minor version).
+experimental_default = (int(version.split(".")[1]) % 2) == 1
 
 opts = Variables('.scons-option-cache')
 
@@ -59,6 +75,7 @@ opts.AddVariables(
     PathVariable('python_site_packages_dir', 'sets the directory where python modules are installed', "lib/python/site-packages/wesnoth", PathVariable.PathAccept),
     BoolVariable('editor', 'Enable editor', True),
     BoolVariable('lowmem', 'Set to reduce memory usage by removing extra functionality', False),
+    BoolVariable('experimental', 'Enable experimental code for developees only', experimental_default),
     BoolVariable('lua', 'Enable Lua support', True),
     BoolVariable('notifications', 'Enable support for desktop notifications', True),
     BoolVariable('nls','enable compile/install of gettext message catalogs',True),
@@ -380,6 +397,9 @@ for env in [test_env, client_env, env]:
     if env['lowmem']:
         env.Append(CPPDEFINES = "LOW_MEM")
 
+    if env['experimental']:
+        env.Append(CPPDEFINES = "EXPERIMENTAL")
+
     if env['internal_data']:
         env.Append(CPPDEFINES = "USE_INTERNAL_DATA")
 
@@ -573,8 +593,6 @@ env.Precious(uninstall)
 #
 # Making a distribution tarball.
 #
-config_h_re = re.compile(r"^.*#define\s*(\S*)\s*\"(\S*)\".*$", re.MULTILINE)
-build_config = dict( config_h_re.findall(File("src/wesconfig.h").get_contents()) )
 env["version"] = build_config.get("VERSION")
 if 'dist' in COMMAND_LINE_TARGETS:    # Speedup, the manifest is expensive
     def dist_manifest():
