@@ -341,10 +341,6 @@ set(wesnoth-main_SRC
     multiplayer_create.cpp
     network.cpp
     network_worker.cpp
-#ifdef EXPERIMENTAL
-    pathfind/pathfind.cpp
-    pathfind/teleport.cpp
-#endif
     playcampaign.cpp
     play_controller.cpp
     playmp_controller.cpp
@@ -387,6 +383,14 @@ set(wesnoth-main_SRC
     widgets/drop_target.cpp
     widgets/scrollpane.cpp
 )
+
+if(ENABLE_EXPERIMENTAL)
+    set(wesnoth-main_SRC
+        ${wesnoth-main_SRC}
+        pathfind/pathfind.cpp
+        pathfind/teleport.cpp
+    )
+endif(ENABLE_EXPERIMENTAL)
 
 if(ENABLE_EDITOR)
 	set(wesnoth-main_SRC
@@ -438,9 +442,6 @@ SET(libwesnoth-game_STAT_SRC
     marked-up_text.cpp
     minimap.cpp
     pathfind/astarsearch.cpp
-#ifndef EXPERIMENTAL
-    pathfind/pathfind.cpp
-#endif
     pathutils.cpp
     preferences.cpp
     preferences_display.cpp
@@ -471,6 +472,13 @@ SET(libwesnoth-game_STAT_SRC
     widgets/widget.cpp
     wml_exception.cpp
 )
+
+if(NOT ENABLE_EXPERIMENTAL)
+    SET(libwesnoth-game_STAT_SRC
+        ${libwesnoth-game_STAT_SRC}
+        pathfind/pathfind.cpp
+    )
+endif(NOT ENABLE_EXPERIMENTAL)
 
 if(ENABLE_GAME AND ENABLE_TESTS)
 	set(libwesnoth-game_STAT_SRC
