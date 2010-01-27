@@ -34,6 +34,9 @@
 #include "../../formula_debugger.hpp"
 #include "../../log.hpp"
 #include "../../menu_events.hpp"
+#ifdef EXPERIMENTAL
+#include "../../pathfind/teleport.hpp"
+#endif
 #include "../../terrain_filter.hpp"
 #include "../../tod_manager.hpp"
 

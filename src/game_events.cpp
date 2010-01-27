@@ -36,6 +36,9 @@
 #include "map.hpp"
 #include "map_label.hpp"
 #include "map_exception.hpp"
+#ifdef EXPERIMENTAL
+#include "pathfind/teleport.hpp"
+#endif
 #include "replay.hpp"
 #include "resources.hpp"
 #include "scripting/lua.hpp"

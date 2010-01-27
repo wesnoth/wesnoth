@@ -26,6 +26,9 @@
 #include "halo.hpp"
 #include "loadscreen.hpp"
 #include "log.hpp"
+#ifdef EXPERIMENTAL
+#include "pathfind/teleport.hpp"
+#endif
 #include "resources.hpp"
 #include "savegame.hpp"
 #include "sound.hpp"

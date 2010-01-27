@@ -26,9 +26,6 @@ class unit_movement_type;
 
 #include "map_location.hpp"
 #include "team.hpp"
-#ifdef EXPERIMENTAL
-#include "pathfind/teleport.hpp"
-#endif
 
 #include <map>
 #include <list>

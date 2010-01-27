@@ -41,6 +41,9 @@
 #include "../game_preferences.hpp"
 #include "../log.hpp"
 #include "../mouse_handler_base.hpp"
+#ifdef EXPERIMENTAL
+#include "../pathfind/teleport.hpp"
+#endif
 #include "play_controller.hpp"
 #include "../replay.hpp"
 #include "resources.hpp"

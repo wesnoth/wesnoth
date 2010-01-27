@@ -27,6 +27,9 @@
 #include "../../log.hpp"
 #include "../../map_label.hpp"
 #include "../../menu_events.hpp"
+#ifdef EXPERIMENTAL
+#include "../../pathfind/teleport.hpp"
+#endif
 #include "../../replay.hpp"
 #include "../../terrain_filter.hpp"
 #include "../../unit.hpp"

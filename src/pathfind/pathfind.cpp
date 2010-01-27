@@ -21,6 +21,9 @@
 #include "global.hpp"
 
 #include "pathfind/pathfind.hpp"
+#ifdef EXPERIMENTAL
+#include "pathfind/teleport.hpp"
+#endif
 
 #include "foreach.hpp"
 #include "gettext.hpp"

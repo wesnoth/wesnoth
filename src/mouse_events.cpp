@@ -27,6 +27,9 @@
 #include "map.hpp"
 #include "marked-up_text.hpp"
 #include "menu_events.hpp"
+#ifdef EXPERIMENTAL
+#include "pathfind/teleport.hpp"
+#endif
 #include "play_controller.hpp"
 #include "sound.hpp"
 #include "replay.hpp"

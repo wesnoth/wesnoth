@@ -53,6 +53,12 @@ namespace soundsource {
 	class manager;
 } // namespace soundsource
 
+#ifdef EXPERIMENTAL
+namespace pathfind {
+	class manager;
+}
+#endif
+
 namespace tooltips {
 	struct manager;
 } // namespace tooltips
