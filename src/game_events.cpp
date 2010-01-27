@@ -2346,7 +2346,10 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 	const config &var = resources::state_of_game->get_variable_cfg(cfg["variable"]);
 
 	try {
-		const unit u(resources::units, var, false);
+		config tmp_cfg(var);
+		tmp_cfg.remove_attribute("x");
+		tmp_cfg.remove_attribute("y");
+		const unit u(resources::units, tmp_cfg, false);
 
 		preferences::encountered_units().insert(u.type_id());
 		map_location loc = cfg_to_loc(
