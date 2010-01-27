@@ -3,7 +3,9 @@ from glob import glob
 from subprocess import Popen, PIPE
 import os, shutil
 import re
-from os.path import join
+from fnmatch import fnmatch
+from os.path import join, walk
+from collections import defaultdict
 Import("env")
 
 def remove_pot_cdate(path):
@@ -27,6 +29,18 @@ textdomains = filter(os.path.isdir, textdomains)
 linguas = Split(open("LINGUAS").read())
 
 if "pot-update" in COMMAND_LINE_TARGETS:
+    domain_sources = defaultdict(list)
+    def fill_source_list(arg, dir, files):
+        for file in files:
+            if fnmatch(file, "*.cpp"):
+                match = re.search('^#define\\s+GETTEXT_DOMAIN\\s+"wesnoth(-.*)"', Dir(dir).File(file).get_contents(), re.MULTILINE)
+                if match:
+                    source_domain = match.group(1)
+                else:
+                    source_domain = ""
+                domain_sources[source_domain].append(Dir(dir).File(file).path)
+    walk("../src", fill_source_list, None)
+
     for domain in textdomains:
         pot = File(join(domain, domain + ".pot"))
         env.Precious(pot)
@@ -35,8 +49,9 @@ if "pot-update" in COMMAND_LINE_TARGETS:
         if domain in po4a_domains:
             continue
 
-        sources = Split(open(join(domain, "POTFILES.in")).read())
-        sources = map(lambda x: File(x, Dir("..")), sources)
+        potfiles = open(join(domain, "POTFILES.in"), "w")
+        potfiles.writelines([line + "\n" for line in sorted(domain_sources[domain[7:]])])
+        sources = map(lambda x: Dir("#").File(x), domain_sources[domain[7:]])
         if sources:
             source_pot = env.Command(
                 join(domain, domain + ".cpp.po"),
