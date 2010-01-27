@@ -1444,11 +1444,6 @@ def hack_syntax(filename, lines):
         # RC -> PAL
         elif "RC" in lines[i]:
             lines[i] = re.sub(r"~RC\(([^=\)]*)=([^)]*)\)",r"~PAL(\1>\2)",lines[i])
-        elif "campaigns/" in lines[i]:
-            lines[i] = lines[i].replace("{~campaigns/", "{~add-ons/")
-            lines[i] = lines[i].replace("{@campaigns/", "{~add-ons/")
-        elif "@add-ons/" in lines[i]:
-            lines[i] = lines[i].replace("{@add-ons/", "{~add-ons/")
     # Rename the terrain definition tag
     in_standing_anim = False
     for i in range(len(lines)):
@@ -1465,6 +1460,32 @@ def hack_syntax(filename, lines):
             in_standing_anim = False
         if in_standing_anim:
             lines[i] = re.sub(r"terrain([^_])", r"terrain_type\1", lines[i])
+    # campaigns directory becomes add-ons
+    in_binary_path = in_textdomain = False
+    for i in range(len(lines)):
+        if "no-syntax-rewrite" in lines[i]:
+            break
+        if lines[i].startswith("#"):
+            pass
+        # The trouble with this transformation is that it's only right for UMC;
+        # it clobbers mainline.
+        if 0:
+            if "[binary_path]" in lines[i]:
+                in_binary_path = True
+            if "[/binary_path]" in lines[i]:
+                in_binary_path = False
+            if "[textdomain]" in lines[i]:
+                in_textdomain = True
+            if "[/textdomain]" in lines[i]:
+                in_textdomain = False
+            if in_binary_path or in_textdomain:
+                lines[i] = re.sub(r"data/campaigns", r"data/add_ons", lines[i])
+        # This is done on every line
+        if "campaigns/" in lines[i]:
+            lines[i] = lines[i].replace("{~campaigns/", "{~add-ons/")
+            lines[i] = lines[i].replace("{@campaigns/", "{~add-ons/")
+        elif "@add-ons/" in lines[i]:
+            lines[i] = lines[i].replace("{@add-ons/", "{~add-ons/")
     # More syntax transformations would go here.
     return lines
 
