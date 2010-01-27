@@ -136,6 +136,13 @@ stringfixes = {
 ("chop pieces of meat", "chop pieces of flesh"),
 ),
 
+"wesnoth-multiplayer" : (
+# Markup fixes that can't be separated from the content without stringchanges
+("#Dark Forecast was made by:", "<span color='#ff0000'>Dark Forecast was made by:</span>"),
+("@jb", "<span color='#00ff00'>jb</span>"),
+("@Rhuvaen", "<span color='#00ff00'>Rhuvaen</span>"),
+),
+
 "wesnoth-nr" : (
 # Most NR changes are comma-placement or typo fixes.  The first two
 # are exceptions, required by our policy of not allowing anything in
@@ -280,7 +287,7 @@ stringfixes = {
 # Speak, if all argument files are newer than this timestamp
 # Try to use UTC here
 # date --utc "+%s  # %c"
-timecheck = 1262364535  # Fri 01 Jan 2010 04:48:55 PM UTC
+timecheck = 1264598971  # Wed 27 Jan 2010 01:29:31 PM UTC
 
 import os, sys, time, stat, re
 
