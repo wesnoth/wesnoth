@@ -1332,15 +1332,11 @@ public:
 	{}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-#ifndef EXPERIMENTAL
 		variant loc_var = args()[0]->evaluate(variables,add_debug_info(fdb,0,"unit_at:location"));
 		if (loc_var.is_null()) {
 			return variant();
 		}
 		const location_callable* loc = convert_variant<location_callable>(loc_var);
-#else
-		const location_callable* loc = convert_variant<location_callable>(args()[0]->evaluate(variables,add_debug_info(fdb,0,"unit_at:location")));
-#endif
 		const unit_map::const_iterator i = ai_.get_info().units.find(loc->loc());
 		if(i != ai_.get_info().units.end()) {
 			return variant(new unit_callable(*i));

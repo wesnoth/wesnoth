@@ -2133,14 +2133,10 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 				}
 				if(utils::string_bool(cfg["animate"])) {
 					resources::screen->scroll_to_tile(loc);
-#ifndef EXPERIMENTAL
 					if (un.valid()) {
-#endif
 						unit_display::unit_die(loc, un->second);
 					}
-#ifndef EXPERIMENTAL
 				}
-#endif
 				if (fire_event)
 				{
 					game_events::fire("die", death_loc, death_loc);
