@@ -914,6 +914,10 @@ protected:
 			"persistent", "share_view",
 			"share_maps", "recruit", "fog", "shroud", "shroud_data" };
 
+		static char const *mp_side_attrs[] = {
+			"income_lock", "gold_lock", "team_lock", "leader",
+			"random_leader", "terrain_liked" };
+
 		log_step("place units");
 		foreach (const config *u, unit_configs_) {
 			unit_creator uc(*t_,map_.starting_position(side_));
@@ -927,6 +931,9 @@ protected:
 
 			config cfg = *u;
 			foreach (const char *attr, side_attrs) {
+				cfg.remove_attribute(attr);
+			}
+			foreach (const char *attr, mp_side_attrs) {
 				cfg.remove_attribute(attr);
 			}
 			uc.add_unit(cfg);
