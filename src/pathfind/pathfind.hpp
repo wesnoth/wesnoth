@@ -37,8 +37,8 @@ namespace pathfind {
 
 #ifdef EXPERIMENTAL
 class teleport_map;
-
 #endif
+
 enum VACANT_TILE_TYPE { VACANT_CASTLE, VACANT_ANY };
 
 /**
@@ -61,8 +61,8 @@ bool enemy_zoc(unit_map const &units,
 std::set<map_location> get_teleport_locations(const unit &u,
 	const unit_map &units, const team &viewing_team,
 	bool see_all = false, bool ignore_units = false);
-
 #endif
+
 struct cost_calculator
 {
 	cost_calculator() {}
@@ -156,11 +156,7 @@ struct plain_route
 };
 
 plain_route a_star_search(map_location const &src, map_location const &dst,
-#ifndef EXPERIMENTAL
-                           double stop_at, cost_calculator const* costCalculator,
-#else
                            double stop_at, const cost_calculator* costCalculator,
-#endif
                            const size_t parWidth, const size_t parHeight,
 #ifndef EXPERIMENTAL
                            std::set<map_location> const *teleports = NULL);
