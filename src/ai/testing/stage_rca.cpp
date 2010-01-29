@@ -29,7 +29,7 @@ namespace ai {
 
 namespace testing_ai_default {
 
-static lg::log_domain log_ai_testing_rca_default("ai/testing/rca_default");
+static lg::log_domain log_ai_testing_rca_default("ai/stage/rca");
 #define DBG_AI_TESTING_RCA_DEFAULT LOG_STREAM(debug, log_ai_testing_rca_default)
 #define LOG_AI_TESTING_RCA_DEFAULT LOG_STREAM(info, log_ai_testing_rca_default)
 #define ERR_AI_TESTING_RCA_DEFAULT LOG_STREAM(err, log_ai_testing_rca_default)
