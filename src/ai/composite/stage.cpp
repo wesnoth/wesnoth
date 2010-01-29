@@ -28,10 +28,10 @@
 
 namespace ai {
 
-static lg::log_domain log_ai_composite_stage("ai/composite/stage");
-#define DBG_AI_COMPOSITE_STAGE LOG_STREAM(debug, log_ai_composite_stage)
-#define LOG_AI_COMPOSITE_STAGE LOG_STREAM(info, log_ai_composite_stage)
-#define ERR_AI_COMPOSITE_STAGE LOG_STREAM(err, log_ai_composite_stage)
+static lg::log_domain log_ai_stage("ai/stage");
+#define DBG_AI_STAGE LOG_STREAM(debug, log_ai_stage)
+#define LOG_AI_STAGE LOG_STREAM(info, log_ai_stage)
+#define ERR_AI_STAGE LOG_STREAM(err, log_ai_stage)
 
 // =======================================================================
 // COMPOSITE AI STAGE
@@ -45,7 +45,7 @@ stage::stage( ai_context &context, const config &cfg )
 
 void stage::on_create()
 {
-	LOG_AI_COMPOSITE_STAGE << "side "<< get_side() << " : "<<" created stage with name=["<<cfg_["name"]<<"]"<<std::endl;
+	LOG_AI_STAGE << "side "<< get_side() << " : "<<" created stage with name=["<<cfg_["name"]<<"]"<<std::endl;
 }
 
 stage::~stage()
@@ -108,7 +108,7 @@ idle_stage::~idle_stage()
 }
 
 bool idle_stage::do_play_stage(){
-	LOG_AI_COMPOSITE_STAGE << "Turn " << get_info().tod_manager_.turn() << ": playing idle stage for side: "<< get_side() << std::endl;
+	LOG_AI_STAGE << "Turn " << get_info().tod_manager_.turn() << ": playing idle stage for side: "<< get_side() << std::endl;
 	return false;
 }
 
