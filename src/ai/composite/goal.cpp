@@ -26,10 +26,10 @@
 
 namespace ai {
 
-static lg::log_domain log_ai_composite_goal("ai/composite/goal");
-#define DBG_AI_COMPOSITE_GOAL LOG_STREAM(debug, log_ai_composite_goal)
-#define LOG_AI_COMPOSITE_GOAL LOG_STREAM(info, log_ai_composite_goal)
-#define ERR_AI_COMPOSITE_GOAL LOG_STREAM(err, log_ai_composite_goal)
+static lg::log_domain log_ai_goal("ai/goal");
+#define DBG_AI_GOAL LOG_STREAM(debug, log_ai_goal)
+#define LOG_AI_GOAL LOG_STREAM(info, log_ai_goal)
+#define ERR_AI_GOAL LOG_STREAM(err, log_ai_goal)
 
 goal::goal(readonly_context &context, const config &cfg)
 	: readonly_context_proxy(), cfg_(cfg)
@@ -102,7 +102,7 @@ void target_unit_goal::on_create()
 		try {
 			value_ = boost::lexical_cast<double>(cfg_["value"]);
 		} catch (boost::bad_lexical_cast){
-			ERR_AI_COMPOSITE_GOAL << "bad value of goal"<<std::endl;
+			ERR_AI_GOAL << "bad value of goal"<<std::endl;
 			value_ = 0;
 		}
 	}
@@ -134,7 +134,7 @@ void target_unit_goal::add_targets(std::back_insert_iterator< std::vector< targe
 	unit_map::const_iterator u;
 	for(u = units.begin(); u != units.end(); ++u) {
 		if (this->matches_unit(u)) {
-			LOG_AI_COMPOSITE_GOAL << "found explicit target... " << u->first << " with value: " << this->value() << "\n";
+			LOG_AI_GOAL << "found explicit target... " << u->first << " with value: " << this->value() << "\n";
 			*target_list = target(u->first,this->value(),target::EXPLICIT);
 		}
 	}
@@ -157,7 +157,7 @@ void protect_goal::on_create()
 		try {
 			value_ = boost::lexical_cast<double>(cfg_["value"]);
 		} catch (boost::bad_lexical_cast){
-			ERR_AI_COMPOSITE_GOAL << "bad value of protect_goal"<<std::endl;
+			ERR_AI_GOAL << "bad value of protect_goal"<<std::endl;
 			value_ = 0;
 		}
 	}
@@ -165,7 +165,7 @@ void protect_goal::on_create()
 		try {
 			radius_ = boost::lexical_cast<int>(cfg_["protect_radius"]);
 		} catch (boost::bad_lexical_cast){
-			ERR_AI_COMPOSITE_GOAL << "bad protection radius of protect_goal"<<std::endl;
+			ERR_AI_GOAL << "bad protection radius of protect_goal"<<std::endl;
 			radius_ = 1;
 		}
 	}
@@ -185,15 +185,15 @@ void protect_goal::on_create()
 void protect_goal::add_targets(std::back_insert_iterator< std::vector< target > > target_list)
 {
 	if (!(this)->active()) {
-		LOG_AI_COMPOSITE_GOAL << "skipping protect_goal - not active" << std::endl;
+		LOG_AI_GOAL << "skipping protect_goal - not active" << std::endl;
 		return;
 	}
 
 	if (!filter_ptr_) {
-		LOG_AI_COMPOSITE_GOAL << "skipping protect_goal - no criteria given" << std::endl;
+		LOG_AI_GOAL << "skipping protect_goal - no criteria given" << std::endl;
 		return;
 	} else {
-		DBG_AI_COMPOSITE_GOAL << "protect_goal with criteria" << std::endl << cfg_.child("criteria") << std::endl;
+		DBG_AI_GOAL << "protect_goal with criteria" << std::endl << cfg_.child("criteria") << std::endl;
 	}
 
 	unit_map &units = get_info().units;
@@ -202,7 +202,7 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target > 
 
 	std::set<map_location> items;
 	filter_ptr_->get_locations(items);
-	DBG_AI_COMPOSITE_GOAL << "seaching for threats in protect_goal" << std::endl;
+	DBG_AI_GOAL << "seaching for threats in protect_goal" << std::endl;
 	// Look for directions to protect a specific location.
 	foreach (const map_location &loc, items)
 	{
@@ -210,7 +210,7 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target > 
 			const int distance = distance_between(u->first,loc);
 			if(current_team().is_enemy(u->second.side()) && distance < radius_
 			&& !u->second.invisible(u->first, units, teams)) {
-				DBG_AI_COMPOSITE_GOAL << "found threat target... " << u->first << " is a threat to "<< loc << std::endl;
+				DBG_AI_GOAL << "found threat target... " << u->first << " is a threat to "<< loc << std::endl;
 				*target_list = target(u->first, value_ * double(radius_-distance) /
 							double(radius_),target::THREAT);
 			}
