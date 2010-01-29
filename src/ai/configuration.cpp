@@ -344,7 +344,7 @@ bool configuration::upgrade_side_config_from_1_07_02_to_1_07_03(side_number side
 			if (aiparam.has_attribute("protect_leader")) {
 				config c;
 				c["value"] = aiparam["protect_leader"];
-				c["can_recruit"] = "yes";
+				c["canrecruit"] = "yes";
 				c["side_number"] = str_cast(side);
 				if (aiparam.has_attribute("protect_leader_radius")) {
 					c["radius"] = aiparam["protect_leader_radius"];
