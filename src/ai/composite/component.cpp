@@ -29,10 +29,10 @@
 
 namespace ai {
 
-static lg::log_domain log_ai_composite_component("ai/composite/component");
-#define DBG_AI_COMPOSITE LOG_STREAM(debug, log_ai_composite_component)
-#define LOG_AI_COMPOSITE LOG_STREAM(info, log_ai_composite_component)
-#define ERR_AI_COMPOSITE LOG_STREAM(err, log_ai_composite_component)
+static lg::log_domain log_ai_component("ai/component");
+#define DBG_AI_COMPONENT LOG_STREAM(debug, log_ai_component)
+#define LOG_AI_COMPONENT LOG_STREAM(info, log_ai_component)
+#define ERR_AI_COMPONENT LOG_STREAM(err, log_ai_component)
 
 
 /*
@@ -153,7 +153,7 @@ static component *find_component(component *root, const std::string &path, path_
 				pe.position = -2;
 			}
 		}
-		//DBG_AI_COMPOSITE << "adding path element: "<< pe << std::endl;
+		//DBG_AI_COMPONENT << "adding path element: "<< pe << std::endl;
 		elements.push_back(pe);
 	}
 	if (elements.size()<1) {
@@ -242,7 +242,7 @@ std::string component_manager::print_component_tree(component *root, const std::
 	if (!path.empty()) {
 		c = find_component(root,path,tail);
 		if (c==NULL) {
-			ERR_AI_COMPOSITE << "unable to find component" <<std::endl;
+			ERR_AI_COMPONENT << "unable to find component" <<std::endl;
 			return "";
 		}
 	} else {
