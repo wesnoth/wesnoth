@@ -28,7 +28,7 @@ namespace ai {
 
 namespace testing_ai_default {
 
-static lg::log_domain log_ai_testing_ca_testing_move_to_targets("ai/testing/ca_testing_move_to_targets");
+static lg::log_domain log_ai_testing_ca_testing_move_to_targets("ai/ca/testing_move_to_targets");
 #define DBG_AI LOG_STREAM(debug, log_ai_testing_ca_testing_move_to_targets)
 #define LOG_AI LOG_STREAM(info, log_ai_testing_ca_testing_move_to_targets)
 #define WRN_AI LOG_STREAM(warn, log_ai_testing_ca_testing_move_to_targets)
