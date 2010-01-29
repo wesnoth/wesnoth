@@ -92,19 +92,16 @@ double goto_phase::evaluate()
 	return BAD_SCORE;
 }
 
-bool goto_phase::execute()
+void goto_phase::execute()
 {
-	bool gamestate_changed = false;
 	if (!move_) {
-		return gamestate_changed;
+		return;
 	}
 
 	move_->execute();
 	if (!move_->is_ok()){
 		LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute not ok" << std::endl;
 	}
-	gamestate_changed |= move_->is_gamestate_changed();
-	return gamestate_changed;
 }
 
 //==============================================================
@@ -140,15 +137,15 @@ double aspect_recruitment_phase::evaluate()
 	return get_score();
 }
 
-bool aspect_recruitment_phase::execute()
+void aspect_recruitment_phase::execute()
 {
 	raise_user_interact();
 	stage_ptr r = get_recruitment(*this);
 	if (r) {
-		return r->play_stage();
+		r->play_stage();
+	} else {
+		ERR_AI_TESTING_AI_DEFAULT << "no recruitment aspect - skipping recruitment" << std::endl;
 	}
-	ERR_AI_TESTING_AI_DEFAULT << "no recruitment aspect - skipping recruitment" << std::endl;
-	return false;
 }
 
 //==============================================================
@@ -188,9 +185,8 @@ double recruitment_phase::evaluate()
 	return get_score();
 }
 
-bool recruitment_phase::execute()
+void recruitment_phase::execute()
 {
-	bool gamestate_changed = false;
 	not_recommended_units_.clear();
 	unit_combat_scores_.clear();
 	unit_movement_scores_.clear();
@@ -258,7 +254,7 @@ bool recruitment_phase::execute()
 			<< scouts_wanted << " in total\n";
 
 		while(unit_types["scout"] < scouts_wanted) {
-			if (!recruit_usage("scout",gamestate_changed)){
+			if (!recruit_usage("scout")){
 				break;
 			}
 			++unit_types["scout"];
@@ -271,7 +267,7 @@ bool recruitment_phase::execute()
 		options.push_back("");
 	}
 	// Buy units as long as we have room and can afford it.
-	while (recruit_usage(options[rand()%options.size()],gamestate_changed)) {
+	while (recruit_usage(options[rand()%options.size()])) {
 		//refresh the recruitment pattern - it can be changed by recruit_usage
 		options = get_recruitment_pattern();
 		if (options.empty()) {
@@ -279,10 +275,9 @@ bool recruitment_phase::execute()
 		}
 	}
 
-	return gamestate_changed;
 }
 
-bool recruitment_phase::recruit_usage(const std::string& usage, bool &gamestate_changed)
+bool recruitment_phase::recruit_usage(const std::string& usage)
 {
 	raise_user_interact();
 
@@ -327,7 +322,6 @@ bool recruitment_phase::recruit_usage(const std::string& usage, bool &gamestate_
 	if(options.empty() == false) {
 		const int option = rand()%options.size();
 		recruit_result_ptr recruit_result = execute_recruit_action(options[option]);
-		gamestate_changed |= recruit_result->is_gamestate_changed();
 		return recruit_result->is_ok();
 	}
 	if (found) {
@@ -581,29 +575,26 @@ double combat_phase::evaluate()
 	}
 }
 
-bool combat_phase::execute()
+void combat_phase::execute()
 {
 	assert(choice_rating_ > 0.0);
-	bool gamestate_changed = false;
 	map_location from   = best_analysis_.movements[0].first;
 	map_location to     = best_analysis_.movements[0].second;
 	map_location target_loc = best_analysis_.target;
 
 	if (from!=to) {
 		move_result_ptr move_res = execute_move_action(from,to,false);
-		gamestate_changed |= move_res->is_gamestate_changed();
 		if (!move_res->is_ok()) {
-			return gamestate_changed;
+			LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute not ok, move failed" << std::endl;
+			return;
 		}
 	}
 
 	attack_result_ptr attack_res = execute_attack_action(to, target_loc, -1);
-	gamestate_changed |= attack_res->is_gamestate_changed();
 	if (!attack_res->is_ok()) {
-		return gamestate_changed;
+		LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute not ok, attack failed" << std::endl;
 	}
 
-	return gamestate_changed;
 }
 
 //==============================================================
@@ -699,22 +690,18 @@ double move_leader_to_goals_phase::evaluate()
 
 }
 
-bool move_leader_to_goals_phase::execute()
+void move_leader_to_goals_phase::execute()
 {
-	bool gamestate_changed = false;
 	move_->execute();
 	if (!move_->is_ok()){
 		LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute not ok" << std::endl;
 	}
-	gamestate_changed |= move_->is_gamestate_changed();
 	if (move_->get_unit_location()==dst_) {
 		//goal already reached
 		if (auto_remove_ && !id_.empty()) {
 			remove_goal(id_);
 		}
 	}
-
-	return gamestate_changed;
 }
 
 void move_leader_to_goals_phase::remove_goal(const std::string &id)
@@ -802,15 +789,12 @@ double move_leader_to_keep_phase::evaluate()
 	return BAD_SCORE;
 }
 
-bool move_leader_to_keep_phase::execute()
+void move_leader_to_keep_phase::execute()
 {
-	bool gamestate_changed = false;
 	move_->execute();
 	if (!move_->is_ok()){
 		LOG_AI_TESTING_AI_DEFAULT <<  get_name() <<"::execute not ok" << std::endl;
 	}
-	gamestate_changed |= move_->is_gamestate_changed();
-	return gamestate_changed;
 }
 
 //==============================================================
@@ -840,9 +824,9 @@ double get_villages_phase::evaluate()
 	return BAD_SCORE;
 }
 
-bool get_villages_phase::execute()
+
+void get_villages_phase::execute()
 {
-	bool gamestate_changed = false;
 	unit_map &units_ = get_info().units;
 	unit_map::const_iterator leader = units_.find_leader(get_side());
 	// Move all the units to get villages, however move the leader last,
@@ -856,9 +840,8 @@ bool get_villages_phase::execute()
 		} else {
 			if(units_.count(i->first) == 0) {
 				move_result_ptr move_res = execute_move_action(i->second,i->first,true);
-				gamestate_changed |= move_res->is_gamestate_changed();
 				if (!move_res->is_ok()) {
-					return gamestate_changed;
+					return;
 				}
 
 				const map_location loc = move_res->get_unit_location();
@@ -882,14 +865,13 @@ bool get_villages_phase::execute()
 	if(leader_move.second.valid()) {
 		if(units_.count(leader_move.first) == 0 && get_info().map.is_village(leader_move.first)) {
 			move_result_ptr move_res = execute_move_action(leader_move.second,leader_move.first,true);
-			gamestate_changed |= move_res->is_gamestate_changed();
 			if (!move_res->is_ok()) {
-				return gamestate_changed;
+				return;
 			}
 		}
 	}
 
-	return gamestate_changed;
+	return;
 }
 
 void get_villages_phase::get_villages(const moves_map& possible_moves,
@@ -1693,16 +1675,13 @@ double get_healing_phase::evaluate()
 	return BAD_SCORE;
 }
 
-bool get_healing_phase::execute()
+void get_healing_phase::execute()
 {
 	LOG_AI_TESTING_AI_DEFAULT << "moving unit to village for healing...\n";
-	bool gamestate_changed = false;
 	move_->execute();
 	if (!move_->is_ok()){
 		LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute not ok" << std::endl;
 	}
-	gamestate_changed |= move_->is_gamestate_changed();
-	return gamestate_changed;
 }
 
 //==============================================================
@@ -1816,15 +1795,12 @@ double retreat_phase::evaluate()
 	return BAD_SCORE;
 }
 
-bool retreat_phase::execute()
+void retreat_phase::execute()
 {
-	bool gamestate_changed = false;
 	move_->execute();
 	if (!move_->is_ok()){
 		LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute not ok" << std::endl;
 	}
-	gamestate_changed |= move_->is_gamestate_changed();
-	return gamestate_changed;
 }
 
 
@@ -1908,15 +1884,12 @@ double simple_move_and_targeting_phase::evaluate()
 	return BAD_SCORE;
 }
 
-bool simple_move_and_targeting_phase::execute()
+void simple_move_and_targeting_phase::execute()
 {
-	bool gamestate_changed = false;
 	move_->execute();
 	if (!move_->is_ok()){
 		LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute not ok" << std::endl;
 	}
-	gamestate_changed |= move_->is_gamestate_changed();
-	return gamestate_changed;
 }
 
 
@@ -1940,10 +1913,9 @@ double leader_control_phase::evaluate()
 
 
 
-bool leader_control_phase::execute()
+void leader_control_phase::execute()
 {
 	ERR_AI_TESTING_AI_DEFAULT << get_name() << ": execute - not yet implemented" << std::endl;
-	return false;
 }
 
 //==============================================================

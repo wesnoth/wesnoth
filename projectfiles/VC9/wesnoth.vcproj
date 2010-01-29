@@ -4149,6 +4149,34 @@
 					</FileConfiguration>
 				</File>
 				<File
+					RelativePath="..\..\src\ai\gamestate_observer.cpp"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\ai\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\ai\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug (fast)|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\ai\"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
 					RelativePath="..\..\src\ai\interface.cpp"
 					>
 					<FileConfiguration
@@ -6217,6 +6245,10 @@
 				</File>
 				<File
 					RelativePath="..\..\src\ai\game_info.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ai\gamestate_observer.hpp"
 					>
 				</File>
 				<File

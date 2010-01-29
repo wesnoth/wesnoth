@@ -49,7 +49,7 @@ public:
 
 	virtual double evaluate();
 
-	virtual bool execute();
+	virtual void execute();
 
 protected:
 	void access_points(const move_map& srcdst, const map_location& u, const map_location& dst, std::vector<map_location>& out);

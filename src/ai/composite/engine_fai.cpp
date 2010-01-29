@@ -57,9 +57,9 @@ public:
 	}
 
 
-	virtual bool execute()
+	virtual void execute()
 	{
-		return formula_ai_.execute_candidate_action(fai_ca_);
+		formula_ai_.execute_candidate_action(fai_ca_);
 	}
 
 	virtual config to_config() const

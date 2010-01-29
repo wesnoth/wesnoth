@@ -73,7 +73,7 @@ public:
 	/**
 	 * Execute the candidate action
 	 */
-	virtual bool execute() = 0;
+	virtual void execute() = 0;
 
 	/**
 	 * Is this candidate action enabled ?

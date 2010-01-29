@@ -54,10 +54,9 @@ public:
 	}
 
 
-	virtual bool execute()
+	virtual void execute()
 	{
-		//@todo: lua must do the actions. the return value is supposed to be 'true if gamestate has changed' but it'll be refactored away soon.
-		return false;
+		//@todo: lua must do the actions.
 	}
 
 	virtual config to_config() const

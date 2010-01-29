@@ -69,6 +69,7 @@ wesnoth_source = \
 	ai/formula/stage_side_formulas.cpp \
 	ai/formula/stage_unit_formulas.cpp \
 	ai/game_info.cpp \
+	ai/gamestate_observer.cpp \
 	ai/interface.cpp \
 	ai/manager.cpp \
 	ai/registry.cpp \

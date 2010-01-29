@@ -126,10 +126,8 @@ double testing_move_to_targets_phase::evaluate()
 }
 
 
-bool testing_move_to_targets_phase::execute()
+void testing_move_to_targets_phase::execute()
 {
-	bool gamestate_changed = false;
-
 	unit_map::const_iterator leader = get_info().units.find_leader(get_side());
 	gamemap &map_ = get_info().map;
 	LOG_AI << "finding targets...\n";
@@ -171,15 +169,11 @@ bool testing_move_to_targets_phase::execute()
 		LOG_AI << "move: " << move.first << " -> " << move.second << '\n';
 
 		move_result_ptr move_ptr = execute_move_action(move.first,move.second,true);
-		gamestate_changed |= move_ptr->is_gamestate_changed();
-
 		if(!move_ptr->is_ok()) {
 			WRN_AI << "unexpected outcome of move"<<std::endl;
 			break;
 		}
 	}
-
-	return gamestate_changed;;
 }
 
 

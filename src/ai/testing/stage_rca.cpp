@@ -20,6 +20,7 @@
 #include "stage_rca.hpp"
 
 #include "../composite/ai.hpp"
+#include "../gamestate_observer.hpp"
 #include "../../foreach.hpp"
 #include "../../log.hpp"
 
@@ -122,13 +123,14 @@ bool candidate_action_evaluation_loop::do_play_stage()
 		//Execution
 		if (best_score>candidate_action::BAD_SCORE) {
 			DBG_AI_TESTING_RCA_DEFAULT << "Best candidate action: "<< *best_ptr << std::endl;
-			executed = best_ptr->execute();
-			if (!executed) {
+			gamestate_observer gs_o;
+			best_ptr->execute();
+			executed = true;
+			if (!gs_o.is_gamestate_changed()) {
 				//this means that this CA has lied to us in evaluate()
 				//we punish it by disabling it
 				best_ptr->disable();
-				//since we don't re-enable at this play_stage, if we disable this CA, other may get the change to go.
-				executed = true;
+				//since we don't re-enable at this play_stage, if we disable this CA, other may get the chance to go.
 			} else {
 				gamestate_changed = true;
 			}

@@ -48,7 +48,7 @@ public:
 
 	virtual double evaluate();
 
-	virtual bool execute();
+	virtual void execute();
 private:
 	move_result_ptr move_;
 };
@@ -64,7 +64,7 @@ public:
 
 	virtual double evaluate();
 
-	virtual bool execute();
+	virtual void execute();
 };
 
 //============================================================================
@@ -78,11 +78,11 @@ public:
 
 	virtual double evaluate();
 
-	virtual bool execute();
+	virtual void execute();
 
 private:
 
-	bool recruit_usage(const std::string& usage, bool &gamestate_changed);
+	bool recruit_usage(const std::string& usage);
 
 	std::map<std::string,int> unit_movement_scores_;
 	std::set<std::string> not_recommended_units_;
@@ -125,7 +125,7 @@ public:
 
 	virtual double evaluate();
 
-	virtual bool execute();
+	virtual void execute();
 private:
 	attack_analysis best_analysis_;
 	double choice_rating_;
@@ -143,7 +143,7 @@ public:
 
 	virtual double evaluate();
 
-	virtual bool execute();
+	virtual void execute();
 private:
 
 	void remove_goal(const std::string &id);
@@ -165,7 +165,7 @@ public:
 
 	virtual double evaluate();
 
-	virtual bool execute();
+	virtual void execute();
 
 private:
 	move_result_ptr move_;
@@ -182,7 +182,7 @@ public:
 
 	virtual double evaluate();
 
-	virtual bool execute();
+	virtual void execute();
 private:
 	/** Location of the keep the closest to our leader. */
 	map_location keep_loc_;
@@ -274,7 +274,7 @@ public:
 
 	virtual double evaluate();
 
-	virtual bool execute();
+	virtual void execute();
 private:
 
 	move_result_ptr move_;
@@ -291,7 +291,7 @@ public:
 
 	virtual double evaluate();
 
-	virtual bool execute();
+	virtual void execute();
 private:
 
 	bool should_retreat(const map_location& loc, const unit_map::const_iterator& un, const move_map &srcdst, const move_map &dstsrc, double caution);
@@ -311,7 +311,7 @@ public:
 
 	virtual double evaluate();
 
-	virtual bool execute();
+	virtual void execute();
 
 private:
 
@@ -330,7 +330,7 @@ public:
 
 	virtual double evaluate();
 
-	virtual bool execute();
+	virtual void execute();
 };
 
 
