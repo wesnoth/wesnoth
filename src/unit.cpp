@@ -490,7 +490,7 @@ unit::unit(unit_map* unitmap, const config& cfg,
 		alignment_ = unit_type::NEUTRAL;
 	} else if(cfg["alignment"]=="chaotic") {
 		alignment_ = unit_type::CHAOTIC;
-	} else if(cfg["type"]=="") {
+	} else {
 		alignment_ = unit_type::NEUTRAL;
 	}
 
