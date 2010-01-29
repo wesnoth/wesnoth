@@ -136,6 +136,15 @@ private:
 
 
 	/**
+	 * Upgrade protect goal config from version 1.7.2 to version 1.7.3
+	 * @param side side number
+	 * @param[in] protect_cfg the config to be read
+	 * @param[out] parsed_cfg parsed config, to which a new goal is to be added
+	 * @param[in] add_filter should [filter] be added to criteria or not
+	 */
+	static void upgrade_protect_goal_config_from_1_07_02_to_1_07_03(side_number side, const config &protect_cfg, config &parsed_cfg, bool add_filter);
+
+	/**
 	 * Upgrade side config from version 1.7.2 to version 1.7.3
 	 * @param[in] cfg the config to be read
 	 * @param[out] parsed_cfg parsed config

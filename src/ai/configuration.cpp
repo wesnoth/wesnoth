@@ -310,29 +310,52 @@ bool configuration::upgrade_side_config_from_1_07_02_to_1_07_03(side_number side
 					aiparam.clear_children(wka.name_);
 				}
 			}
+
+
+			foreach (const config &aitarget, aiparam.child_range("target")) {
+				config aigoal;
+
+				if (aitarget.has_attribute("value")) {
+					aigoal["value"] = aitarget["value"];
+				} else {
+					aigoal["value"] = "0";
+				}
+
+				config &aigoalcriteria = aigoal.add_child("criteria",aitarget);
+				aigoalcriteria.remove_attribute("value");
+
+				parsed_cfg.add_child("goal",aigoal);
+			}
+			aiparam.clear_children("target");
+
+
+			foreach (const config &ai_protect_unit, aiparam.child_range("protect_unit")) {
+				upgrade_protect_goal_config_from_1_07_02_to_1_07_03(side,ai_protect_unit,parsed_cfg,true);
+			}
+			aiparam.clear_children("protect_unit");
+
+
+			foreach (const config &ai_protect_location, aiparam.child_range("protect_location")) {
+				upgrade_protect_goal_config_from_1_07_02_to_1_07_03(side,ai_protect_location,parsed_cfg,false);
+			}
+			aiparam.clear_children("protect_location");
+
+
+			if (aiparam.has_attribute("protect_leader")) {
+				config c;
+				c["value"] = aiparam["protect_leader"];
+				c["can_recruit"] = "yes";
+				c["side_number"] = str_cast(side);
+				if (aiparam.has_attribute("protect_leader_radius")) {
+					c["radius"] = aiparam["protect_leader_radius"];
+				}
+
+				upgrade_protect_goal_config_from_1_07_02_to_1_07_03(side,c,parsed_cfg,true);
+			}
+
+
 			fallback_stage_cfg_ai.append(aiparam);
 		}
-
-		foreach (const config &aitarget, aiparam.child_range("target")) {
-			config aigoal;
-			if (aiparam.has_attribute("turns")) {
-				aigoal["turns"] = aiparam["turns"];
-			}
-			if (aiparam.has_attribute("time_of_day")) {
-				aigoal["time_of_day"] = aiparam["time_of_day"];
-			}
-			if (aitarget.has_attribute("value")) {
-				aigoal["value"] = aitarget["value"];
-			} else {
-				aigoal["value"] = "0";
-			}
-
-			config &aigoalcriteria = aigoal.add_child("criteria",aitarget);
-			aigoalcriteria.remove_attribute("value");
-
-			parsed_cfg.add_child("goal",aigoal);
-		}
-		aiparam.clear_children("target");
 	}
 	fallback_stage_cfg_ai.clear_children("aspect");
 
@@ -342,7 +365,7 @@ bool configuration::upgrade_side_config_from_1_07_02_to_1_07_03(side_number side
 	}
 	fallback_stage_cfg_ai.clear_children("stage");
 
-	//move [goal] to root of the config
+	//move [goal]s to root of the config
 	foreach (const config &aigoal, fallback_stage_cfg_ai.child_range("goal")) {
 		parsed_cfg.add_child("goal",aigoal);
 	}
@@ -374,10 +397,47 @@ void configuration::upgrade_aspect_configs_from_1_07_02_to_1_07_03(side_number s
 		cfg.add_child("ai",aiparam);
 	}
 
-	DBG_AI_CONFIGURATION << "side "<< side <<": upgrading aspects from syntax of 1.7.2. to 1.7.3, old-style config is:" << std::endl << cfg << std::endl;
+	DBG_AI_CONFIGURATION << "side "<< side <<": upgrading aspects from syntax of 1.7.2 to 1.7.3, old-style config is:" << std::endl << cfg << std::endl;
 	foreach (const well_known_aspect &wka, well_known_aspects) {
 		upgrade_aspect_config_from_1_07_02_to_1_07_03(side, cfg,parsed_cfg,wka.name_,wka.was_an_attribute_);
 	}
+}
+
+
+void configuration::upgrade_protect_goal_config_from_1_07_02_to_1_07_03(side_number side, const config &protect_cfg, config &parsed_cfg, bool add_filter)
+{
+	config aigoal;
+	aigoal["name"] = "protect";
+
+	if (protect_cfg.has_attribute("value")) {
+		aigoal["value"] = protect_cfg["value"];
+	} else {
+		aigoal["value"] = "1";//old default value
+	}
+
+	//note: 'radius' attribute is renamed to avoid confusion with SLF's radius
+	if (protect_cfg.has_attribute("radius")) {
+		aigoal["protect_radius"] = protect_cfg["radius"];
+	} else {
+		aigoal["protect_radius"] = "20";//old default value
+	}
+	DBG_AI_CONFIGURATION << "side "<< side <<": upgrading protect goal from syntax of 1.7.2 to 1.7.3, old-style config is:" << std::endl << protect_cfg << std::endl;
+
+
+	if (add_filter) {
+		config &aigoal_criteria = aigoal.add_child("criteria",config());
+		config &aigoal_criteria_filter = aigoal_criteria.add_child("filter",protect_cfg);
+		aigoal_criteria_filter.remove_attribute("value");
+		aigoal_criteria_filter.remove_attribute("radius");
+	} else {
+		config &aigoal_criteria = aigoal.add_child("criteria",protect_cfg);
+		aigoal_criteria.remove_attribute("value");
+		aigoal_criteria.remove_attribute("radius");
+	}
+
+
+	parsed_cfg.add_child("goal",aigoal);
+	DBG_AI_CONFIGURATION << "side "<< side <<": after upgrade of protect goal from syntax of 1.7.2 to 1.7.3, new-style config is:" << std::endl << aigoal << std::endl;
 }
 
 } //end of namespace ai

@@ -31,6 +31,7 @@
 
 #include "../contexts.hpp"
 #include "../game_info.hpp"
+#include "../../terrain_filter.hpp"
 
 //included for 'target' markers
 #include "../default/contexts.hpp"
@@ -55,10 +56,10 @@ public:
 	virtual void add_targets(std::back_insert_iterator< std::vector< target > > target_list);
 
 
-	config to_config() const;
+	virtual config to_config() const;
 
 
-	void on_create();
+	virtual void on_create();
 
 
 	bool active() const;
@@ -103,6 +104,29 @@ private:
 	double value_;
 };
 
+
+
+class protect_goal : public goal {
+public:
+	protect_goal(readonly_context &context, const config &cfg);
+
+
+	virtual void add_targets(std::back_insert_iterator< std::vector< target > > target_list);
+
+
+	virtual void on_create();
+
+private:
+
+	double value()
+	{
+		return value_;
+	}
+
+	boost::shared_ptr<terrain_filter> filter_ptr_;
+	int radius_;
+	double value_;
+};
 
 
 class goal_factory{

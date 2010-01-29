@@ -150,4 +150,84 @@ target_unit_goal::target_unit_goal(readonly_context &context, const config &cfg)
 }
 
 
+void protect_goal::on_create()
+{
+	goal::on_create();
+	if (cfg_.has_attribute("value")) {
+		try {
+			value_ = boost::lexical_cast<double>(cfg_["value"]);
+		} catch (boost::bad_lexical_cast){
+			ERR_AI_COMPOSITE_GOAL << "bad value of protect_goal"<<std::endl;
+			value_ = 0;
+		}
+	}
+	if (cfg_.has_attribute("protect_radius")) {
+		try {
+			radius_ = boost::lexical_cast<int>(cfg_["protect_radius"]);
+		} catch (boost::bad_lexical_cast){
+			ERR_AI_COMPOSITE_GOAL << "bad protection radius of protect_goal"<<std::endl;
+			radius_ = 1;
+		}
+	}
+
+	if (radius_<1) {
+		radius_=20;
+	}
+	const config &criteria = cfg_.child("criteria");
+	if (criteria) {
+		filter_ptr_ = boost::shared_ptr<terrain_filter>(new terrain_filter(vconfig(criteria),get_info().units));
+	}
+
+
+}
+
+
+void protect_goal::add_targets(std::back_insert_iterator< std::vector< target > > target_list)
+{
+	if (!(this)->active()) {
+		LOG_AI_COMPOSITE_GOAL << "skipping protect_goal - not active" << std::endl;
+		return;
+	}
+
+	if (!filter_ptr_) {
+		LOG_AI_COMPOSITE_GOAL << "skipping protect_goal - no criteria given" << std::endl;
+		return;
+	} else {
+		DBG_AI_COMPOSITE_GOAL << "protect_goal with criteria" << std::endl << cfg_.child("criteria") << std::endl;
+	}
+
+	unit_map &units = get_info().units;
+	std::vector<team> &teams = get_info().teams;
+
+
+	std::set<map_location> items;
+	filter_ptr_->get_locations(items);
+	DBG_AI_COMPOSITE_GOAL << "seaching for threats in protect_goal" << std::endl;
+	// Look for directions to protect a specific location.
+	foreach (const map_location &loc, items)
+	{
+		for(unit_map::const_iterator u = units.begin(); u != units.end(); ++u) {
+			const int distance = distance_between(u->first,loc);
+			if(current_team().is_enemy(u->second.side()) && distance < radius_
+			&& !u->second.invisible(u->first, units, teams)) {
+				DBG_AI_COMPOSITE_GOAL << "found threat target... " << u->first << " is a threat to "<< loc << std::endl;
+				*target_list = target(u->first, value_ * double(radius_-distance) /
+							double(radius_),target::THREAT);
+			}
+		}
+	}
+
+
+}
+
+
+protect_goal::protect_goal(readonly_context &context, const config &cfg)
+	: goal(context,cfg)
+	, filter_ptr_()
+	, radius_(20)
+	, value_(1.0) //these defaults are taken from old code
+{
+}
+
+
 } //end of namespace ai

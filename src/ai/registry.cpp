@@ -126,6 +126,10 @@ static register_candidate_action_factory<testing_ai_default::leader_control_phas
 static register_goal_factory<target_unit_goal>
 	goal_factory("");
 
+
+static register_goal_factory<protect_goal>
+	goal_factory_protect("protect");
+
 // =======================================================================
 // Aspects
 // =======================================================================
