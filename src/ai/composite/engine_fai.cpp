@@ -28,10 +28,10 @@
 
 namespace ai {
 
-static lg::log_domain log_ai_composite_engine_fai("ai/composite/engine/fai");
-#define DBG_AI_COMPOSITE_ENGINE_FAI LOG_STREAM(debug, log_ai_composite_engine_fai)
-#define LOG_AI_COMPOSITE_ENGINE_FAI LOG_STREAM(info, log_ai_composite_engine_fai)
-#define ERR_AI_COMPOSITE_ENGINE_FAI LOG_STREAM(err, log_ai_composite_engine_fai)
+static lg::log_domain log_ai_engine_fai("ai/engine/fai");
+#define DBG_AI_ENGINE_FAI LOG_STREAM(debug, log_ai_engine_fai)
+#define LOG_AI_ENGINE_FAI LOG_STREAM(info, log_ai_engine_fai)
+#define ERR_AI_ENGINE_FAI LOG_STREAM(err, log_ai_engine_fai)
 
 #ifdef _MSC_VER
 #pragma warning(push)
@@ -88,8 +88,8 @@ engine_fai::~engine_fai()
 void engine_fai::do_parse_candidate_action_from_config( rca_context &context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr > > b ){
 	game_logic::candidate_action_ptr fai_ca = formula_ai_.load_candidate_action_from_config(cfg);
 	if (!fai_ca) {
-		ERR_AI_COMPOSITE_ENGINE_FAI << "side "<<ai_.get_side()<< " : ERROR creating candidate_action["<<cfg["name"]<<"]"<< std::endl;
-		DBG_AI_COMPOSITE_ENGINE_FAI << "config snippet contains: " << std::endl << cfg << std::endl;
+		ERR_AI_ENGINE_FAI << "side "<<ai_.get_side()<< " : ERROR creating candidate_action["<<cfg["name"]<<"]"<< std::endl;
+		DBG_AI_ENGINE_FAI << "config snippet contains: " << std::endl << cfg << std::endl;
 		return;
 	}
 	candidate_action_ptr ca = candidate_action_ptr(new fai_candidate_action_wrapper(context,cfg,fai_ca,formula_ai_));
@@ -114,7 +114,7 @@ void engine_fai::do_parse_stage_from_config( ai_context &context, const config &
 	} else if (name=="unit_formulas") {
 		st_ptr = stage_ptr(new stage_unit_formulas(context,cfg,formula_ai_));
 	} else {
-		ERR_AI_COMPOSITE_ENGINE_FAI << "unknown type of formula_ai stage: ["<< name <<"]"<<std::endl;
+		ERR_AI_ENGINE_FAI << "unknown type of formula_ai stage: ["<< name <<"]"<<std::endl;
 	}
 	if (st_ptr) {
 		st_ptr->on_create();
@@ -131,9 +131,9 @@ std::string engine_fai::evaluate(const std::string &str)
 void engine_fai::set_ai_context(ai_context *context)
 {
 	if (context!=NULL) {
-		DBG_AI_COMPOSITE_ENGINE_FAI << "fai engine: ai_context is set" << std::endl;
+		DBG_AI_ENGINE_FAI << "fai engine: ai_context is set" << std::endl;
 	} else {
-		DBG_AI_COMPOSITE_ENGINE_FAI << "fai engine: ai_context is cleared" << std::endl;
+		DBG_AI_ENGINE_FAI << "fai engine: ai_context is cleared" << std::endl;
 	}
 	formula_ai_.set_ai_context(context);
 }
