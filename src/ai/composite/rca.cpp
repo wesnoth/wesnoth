@@ -25,10 +25,10 @@
 
 namespace ai {
 
-static lg::log_domain log_ai_composite_rca("ai/composite/rca");
-#define DBG_AI_COMPOSITE_RCA LOG_STREAM(debug, log_ai_composite_rca)
-#define LOG_AI_COMPOSITE_RCA LOG_STREAM(info, log_ai_composite_rca)
-#define ERR_AI_COMPOSITE_RCA LOG_STREAM(err, log_ai_composite_rca)
+static lg::log_domain log_ai_stage_rca("ai/stage/rca");
+#define DBG_AI_STAGE_RCA LOG_STREAM(debug, log_ai_stage_rca)
+#define LOG_AI_STAGE_RCA LOG_STREAM(info, log_ai_stage_rca)
+#define ERR_AI_STAGE_RCA LOG_STREAM(err, log_ai_stage_rca)
 
 const double candidate_action::BAD_SCORE = 0;
 const double candidate_action::HIGH_SCORE = 10000000;
