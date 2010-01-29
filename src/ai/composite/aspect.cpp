@@ -22,16 +22,16 @@
 
 namespace ai {
 
-static lg::log_domain log_ai_composite_aspect("ai/composite/aspect");
-#define DBG_AI_COMPOSITE_ASPECT LOG_STREAM(debug, log_ai_composite_aspect)
-#define LOG_AI_COMPOSITE_ASPECT LOG_STREAM(info, log_ai_composite_aspect)
-#define WRN_AI_COMPOSITE_ASPECT LOG_STREAM(warn, log_ai_composite_aspect)
-#define ERR_AI_COMPOSITE_ASPECT LOG_STREAM(err, log_ai_composite_aspect)
+static lg::log_domain log_ai_aspect("ai/aspect");
+#define DBG_AI_ASPECT LOG_STREAM(debug, log_ai_aspect)
+#define LOG_AI_ASPECT LOG_STREAM(info, log_ai_aspect)
+#define WRN_AI_ASPECT LOG_STREAM(warn, log_ai_aspect)
+#define ERR_AI_ASPECT LOG_STREAM(err, log_ai_aspect)
 
 aspect::aspect(readonly_context &context, const config &cfg, const std::string &id)
 		: valid_(false), valid_variant_(false), cfg_(cfg), invalidate_on_turn_start_(utils::string_bool(cfg["invalidate_on_turn_start"],true)), invalidate_on_tod_change_(utils::string_bool(cfg["invalidate_on_tod_change"],true)), invalidate_on_gamestate_change_(utils::string_bool(cfg["invalidate_on_gamestate_change"])), invalidate_on_minor_gamestate_change_(utils::string_bool(cfg["invalidate_on_minor_gamestate_change"])),engine_(cfg["engine"]),name_(cfg["name"]),id_(id)
 	{
-		DBG_AI_COMPOSITE_ASPECT << "creating new aspect: engine=["<<engine_<<"], name=["<<name_<<"], id=["<<id_<<"]"<< std::endl;
+		DBG_AI_ASPECT << "creating new aspect: engine=["<<engine_<<"], name=["<<name_<<"], id=["<<id_<<"]"<< std::endl;
 		init_readonly_context_proxy(context);
 		redeploy(cfg,id);
 	}
@@ -57,7 +57,7 @@ aspect::~aspect()
 
 lg::log_domain& aspect::log()
 {
-	return log_ai_composite_aspect;
+	return log_ai_aspect;
 }
 
 void aspect::on_create()
@@ -110,7 +110,7 @@ bool aspect::redeploy(const config &cfg, const std::string& /*id*/)
 	engine_ = cfg["engine"];
 	name_ = cfg["name"];
 	id_ = cfg["id"];
-	DBG_AI_COMPOSITE_ASPECT << "redeploying aspect: engine=["<<engine_<<"], name=["<<name_<<"], id=["<<id_<<"]"<< std::endl;
+	DBG_AI_ASPECT << "redeploying aspect: engine=["<<engine_<<"], name=["<<name_<<"], id=["<<id_<<"]"<< std::endl;
 	if (invalidate_on_turn_start_) {
 		manager::add_turn_started_observer(this);
 	}
