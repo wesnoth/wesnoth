@@ -28,7 +28,7 @@ namespace ai {
 
 namespace testing_ai_default {
 
-static lg::log_domain log_ai_testing_stage_fallback("ai/testing/stage_fallback");
+static lg::log_domain log_ai_testing_stage_fallback("ai/stage/fallback");
 #define DBG_AI_TESTING_STAGE_FALLBACK LOG_STREAM(debug, log_ai_testing_stage_fallback)
 #define LOG_AI_TESTING_STAGE_FALLBACK LOG_STREAM(info, log_ai_testing_stage_fallback)
 #define ERR_AI_TESTING_STAGE_FALLBACK LOG_STREAM(err, log_ai_testing_stage_fallback)
