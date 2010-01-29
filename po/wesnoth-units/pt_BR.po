@@ -8,10 +8,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-01-17 17:49+0100\n"
-"PO-Revision-Date: 2009-03-11 11:33-0400\n"
+"POT-Creation-Date: 2010-01-26 22:38+0100\n"
+"PO-Revision-Date: 2010-01-28 23:36-0300\n"
 "Last-Translator: Rainer Oliveira <rainercoliveira@gmail.com>\n"
-"Language-Team: Portuguese - Brasil\n"
+"Language-Team: Portuguese - Brasil <gnome-l10n-br@listas.cipsga.org.br>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -24,7 +24,6 @@ msgstr "Morcego de Sangue"
 
 #. [unit_type]: id=Blood Bat, race=bats
 #: data/core/units/bats/Bat_Blood.cfg:20
-#, fuzzy
 msgid ""
 "Blood Bats are so named because of their ruddy hue, which some mark as a "
 "symbol of their preferred diet. These creatures are fast and can drain the "
@@ -64,6 +63,9 @@ msgid ""
 "Bats, gaining the ability to drain not merely the blood but the very life "
 "energy of their victims."
 msgstr ""
+"Dentre os morcegos de sangue, o mais vil, predador e bem-sucedido se torna "
+"um Morcego Assustador, ganhando a habilidade de drenar não apenas o sangue, "
+"mas a própria energia vital de suas vítimas."
 
 #. [unit_type]: id=Vampire Bat, race=bats
 #: data/core/units/bats/Bat_Vampire.cfg:4
@@ -152,6 +154,7 @@ msgstr "Soldado Draconiano"
 
 #. [unit_type]: id=Drake Arbiter, race=drake
 #: data/core/units/drakes/Arbiter.cfg:19
+#, fuzzy
 msgid ""
 "Arbiters take their caste duty of enforcing order very seriously. In order "
 "to better execute their duties, they have abandoned the drakes' traditional "
@@ -160,6 +163,13 @@ msgid ""
 "raw heft the massive metal head provides. The thick plate these drakes wear "
 "protects them well against weapons that could slip between their scales."
 msgstr ""
+"\"Arbiters\" levam muito a sério seu dever de casta de fortalecer a ordem. "
+"Para melhor executar seus deveres, eles abandonaram as \"hand-mounted claws"
+"\" tradicionais dos draconianos e trocaram suas lanças por \"spike\" e "
+"lâminas do \"halberd\". Para eles, a perda de mobilidade é um preço justo "
+"para o \"raw heft\" que as cabeças metálicas maciças proporcionam. Os "
+"escudos espessos que estes draconianos usam protege bem contra armas que "
+"poderiam deslizar entre suas escamas."
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
@@ -216,6 +226,7 @@ msgstr "Mestre Draconiano"
 
 #. [unit_type]: id=Drake Blademaster, race=drake
 #: data/core/units/drakes/Blademaster.cfg:21
+#, fuzzy
 msgid ""
 "Black armor marks the elite order of the Fighter caste: the Blademasters. "
 "Only a few manage to gain the skill and power necessary to be admitted to "
@@ -224,6 +235,12 @@ msgid ""
 "around; Blademasters fiercely protect their fellows' honor, and no-one would "
 "dispute their right to do so."
 msgstr ""
+"Armaduras negras identificam a ordem de elite da casta Lutadora: Os Mestres "
+"da lâmina. Poucos conseguem a habilidade e o poder necessários para serem "
+"admitidos neste alto rank sem cair em batalha. Embora outros draconianos às "
+"vezes depreciem a casta dos Lutadores, eles sempre verificam se nenhum da "
+"casta está por perto; Mestres da lâmina obrigatoriamente protegem a honra "
+"dos companheiros, e ninguém questiona seu direito de fazer isto."
 
 #. [attack]: type=blade
 #: data/core/units/drakes/Blademaster.cfg:41
@@ -231,7 +248,7 @@ msgstr ""
 #: data/core/units/drakes/Enforcer.cfg:36
 #: data/core/units/drakes/Thrasher.cfg:23
 msgid "war talon"
-msgstr ""
+msgstr "garra de guerra"
 
 #. [unit_type]: id=Drake Burner, race=drake
 #: data/core/units/drakes/Burner.cfg:4
@@ -285,6 +302,17 @@ msgid ""
 "particularly good at \"resolving\" territorial disputes with other drakes "
 "and enforcing the laws of their tribe."
 msgstr ""
+"Os 'Clashers' são membro de uma casta única entre os draconianos. Suas "
+"grossas armaduras, por um lado compensam a fraqueza natural dos draconianos "
+"contra lanças e flechas, por outro são tão pesadas e restritivas que eles "
+"são incapazes de voar ou aspirar o suficiente para usar seu fogo interior. "
+"Eles adotaram esta desvantagem, enclausurando completamente suas asas, para "
+"enfatizar que não precisam voar para triunfar em batalha.\n"
+"\n"
+"Esta também é a única casta que pode quebrar o tabu e lutar com lanças "
+"associadas às tradicionais garras metálicas dos draconianos, o que os torna "
+"particularmente bons em \"resolver\" disputas territoriais com outros "
+"draconianos e reforçar as leis da sua tribo."
 
 #. [attack]: type=pierce
 #: data/core/units/drakes/Clasher.cfg:48
@@ -323,6 +351,7 @@ msgstr "Draconiano Terror"
 
 #. [unit_type]: id=Drake Enforcer, race=drake
 #: data/core/units/drakes/Enforcer.cfg:21
+#, fuzzy
 msgid ""
 "Not for Enforcers are the tactics of maneuver and deception; rather, they "
 "charge in wherever the melee is the fiercest. At close range, it matters "
@@ -331,12 +360,18 @@ msgid ""
 "careful not to besmirch the honor of the Enforcers, and generally call upon "
 "them to combat only the most pernicious of enemies."
 msgstr ""
+"Not for Enforcers are the tactics of maneuver and deception; rather, they "
+"charge in wherever the melee is the fiercest. Próximo, pouco importa se a "
+"armadura os protege de 'spouting flame'; tudo que importa é a potência que "
+"eles aprenderam a concentrar em cada golpe. 'Drake leaders' são cuidadosos "
+"em não 'besmirch' a honra dos 'Enforcers', e geralmente se apoiam neles "
+"apenas para combater os mais perigosos inimigos."
 
 #. [attack]: type=impact
 #: data/core/units/drakes/Enforcer.cfg:45
 #: data/core/units/drakes/Thrasher.cfg:41
 msgid "ram"
-msgstr ""
+msgstr "aríete"
 
 #. [attack]: type=pierce
 #. [attack]: type=blade
@@ -370,9 +405,8 @@ msgstr ""
 #: data/core/units/drakes/Fighter.cfg:39
 #: data/core/units/drakes/Flameheart.cfg:35
 #: data/core/units/drakes/Flare.cfg:34 data/core/units/drakes/Warrior.cfg:39
-#, fuzzy
 msgid "war blade"
-msgstr "lâmina maldita"
+msgstr "lâmina de guerra"
 
 #. [unit_type]: id=Fire Drake, race=drake
 #: data/core/units/drakes/Fire.cfg:4
@@ -388,6 +422,11 @@ msgid ""
 "vitality emanates through their skin, scorching their scales to a reddish-"
 "gray."
 msgstr ""
+"Como não são autorizados a vestir ouro-avermelhado reservado às patentes "
+"mais altas dos incendiários, os Draconianos de Fogo enfeitam suas armaduras "
+"com prata. Embora estejam apenas começando a dedicar suas vidas à chama "
+"interna que arde neles, sua vitalidade emana através da pele, tornando suas "
+"escamas cinza-avermelhadas."
 
 #. [unit_type]: id=Drake Flameheart, race=drake
 #: data/core/units/drakes/Flameheart.cfg:4
@@ -405,6 +444,14 @@ msgid ""
 "leader for supremacy, and only if he is sure of the support of his fellow "
 "drakes."
 msgstr ""
+"Corações Flamejantes não têm a força necesária para derrotar outros "
+"draconianos de alta patente em combate individual, mas preferem, de qualquer "
+"modo, evitar confrontos dentro da tribo. A experiencia ensinou todo "
+"draconiano desta estatura a amplitude da sua autoridade: onde ele envia "
+"aqueles que lidera e quando é melhor deixá-los com seus próprios meios. "
+"Apenas ocasionalmente um Coração Flamejante desafiará o líder de sua tribo "
+"visando a supremacia, e apenas se ele tiver certeza que terá o suporte de "
+"seus companheiros."
 
 #. [unit_type]: id=Drake Flare, race=drake
 #: data/core/units/drakes/Flare.cfg:4
@@ -420,6 +467,11 @@ msgid ""
 "they are more often seen leading small war parties or mediating disputes "
 "with a subtle hand."
 msgstr ""
+"Respeitados pelo calor de suas chamas e reverenciados pelo seu carisma, os "
+"Labaredas desejam ser grandes líderes de seu povo, tanto na guerra quanto na "
+"paz. Embora uma pequena e isolada tribo possa às vezes aceitar um Labareda "
+"como líder, eles são vistos com mais frequência liderando pequenos grupos de "
+"guerra ou mediando disputas de forma sutil."
 
 #. [unit_type]: id=Drake Glider, race=drake
 #: data/core/units/drakes/Glider.cfg:4
@@ -442,6 +494,18 @@ msgid ""
 "distance – and if all else fails, he will fight with his feet, keeping his "
 "precious wings as far from the enemy as possible."
 msgstr ""
+"Muitos draconianos gostam do ar correndo pelas escamas, levando-os a vestir "
+"os robes leves da casta dos planadores. As longas incursões para os recantos "
+"distantes do território tribal são sua paixão, embora outros draconianos se "
+"impressionem  com o que pode levar alguém às caçadas exaustivas quando mais "
+"glória pode ser alcançada no campo de batalha.\n"
+"\n"
+"Mais frequentemente, Planadores caçam grandes presas como veados, porcos ou "
+"golfinhos; a habilidade ancestral de cuspir fogo, sufocada em outras castas "
+"pela armadura, é sem valor para cercar as presas sem machucá-las. Se um "
+"Planador é chamado para o campo de batalha, ele prefere cansar o inimigo à "
+"distância – e se tudo falhar, ele vai lutar com suas patas, mantendo as asas "
+"valiosas o mais longe possível do inimigo."
 
 #. [attack]: type=impact
 #: data/core/units/drakes/Glider.cfg:44
@@ -456,6 +520,7 @@ msgstr "Draconiano Furacão"
 
 #. [unit_type]: id=Hurricane Drake, race=drake
 #: data/core/units/drakes/Hurricane.cfg:20
+#, fuzzy
 msgid ""
 "Hurricane Drakes have moved above the menial hunting and gathering to which "
 "the lower members of their caste are relegated. They are an integral part of "
@@ -465,6 +530,13 @@ msgid ""
 "other castes has increased their skill in combat, but their greatest "
 "strength still lies in their speed and flight."
 msgstr ""
+"Draconianos furacão migraram para acima do 'menial hunting' e se uniram "
+"àqueles que os membros inferiores da sua casta são relegados. Eles são parte "
+"integral das forças armadas draconianas, como batedores das forças "
+"principais, levando mensagens no campo de batalha e caindo sobre o inimigo "
+"quando não são esperados. Sendo liberados - grudgingly - para treinar com os "
+"novatos de outras castas melhorou suas habilidades em combate, mas sua "
+"grande força ainda está na velocidade e no vôo."
 
 #. [unit_type]: id=Inferno Drake, race=drake
 #: data/core/units/drakes/Inferno.cfg:4
@@ -480,6 +552,12 @@ msgid ""
 "from extensive use of their inner flame, their sculpted red-gold armor "
 "enhancing the illusion that they are, in fact, dragons."
 msgstr ""
+"Draconianos infernais são mestres do fogo que respiram, respeitados e "
+"temidos nas suas tribos quase tanto quanto os próprios ancestrais dos "
+"draconianos. Eles podem caçarsem se ferir através de uma tempestade de fogo "
+"que tenham eles próprios criado, escamas são tingidas de vermelho devido ao "
+"uso intensivo do seu fogo interior, suas armaduras esculpidas em vermelho "
+"ouro aumenta a impressão de que são, de fato, dragões."
 
 #. [unit_type]: id=Sky Drake, race=drake
 #: data/core/units/drakes/Sky.cfg:4
@@ -488,6 +566,7 @@ msgstr "Draconiano Celeste"
 
 #. [unit_type]: id=Sky Drake, race=drake
 #: data/core/units/drakes/Sky.cfg:19
+#, fuzzy
 msgid ""
 "The lightweight ceramic armor that the Sky Drakes wear is a symbol of their "
 "rank, glazed silver to honor their connection to the air. As leaders of the "
@@ -496,6 +575,12 @@ msgid ""
 "of their tribe and, just possibly, time with one of the closely-guarded "
 "drake females."
 msgstr ""
+"A armadura de cerâmica leve que os draconianos celestes usam é o símbolo de "
+"sua posição, prata semi-transparente para horar sua conexão com o ar. Como "
+"líderes da caçada, eles frequentemente deixam o lar por longos períodos de "
+"tempo. Cada um tentando trazer para casa o máximo de 'game' possível,"
+"competindo para ganhar o respeito da sua tribo e, possivelmente, tempo com "
+"uma das bem-guardadas fêmeas draconianas."
 
 #. [unit_type]: id=Drake Thrasher, race=drake
 #: data/core/units/drakes/Thrasher.cfg:4
@@ -783,9 +868,8 @@ msgstr "relâmpago"
 
 #. [unit_type]: id=Dwarvish Scout, race=dwarf
 #: data/core/units/dwarves/Scout.cfg:4
-#, fuzzy
 msgid "Dwarvish Scout"
-msgstr "Batedor Élfico"
+msgstr "Batedor Anão"
 
 #. [unit_type]: id=Dwarvish Scout, race=dwarf
 #: data/core/units/dwarves/Scout.cfg:19
@@ -1801,9 +1885,8 @@ msgstr ""
 #: data/core/units/humans/Loyalist_General.cfg:56
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:52
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:40
-#, fuzzy
 msgid "longsword"
-msgstr "espada"
+msgstr "espada longa"
 
 #. [attack]: type=pierce
 #: data/core/units/humans/Horse_Grand_Knight.cfg:45
