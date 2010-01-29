@@ -25,15 +25,15 @@
 
 namespace ai {
 
-static lg::log_domain log_ai_composite_engine("ai/composite/engine");
-#define DBG_AI_COMPOSITE_ENGINE LOG_STREAM(debug, log_ai_composite_engine)
-#define LOG_AI_COMPOSITE_ENGINE LOG_STREAM(info, log_ai_composite_engine)
-#define ERR_AI_COMPOSITE_ENGINE LOG_STREAM(err, log_ai_composite_engine)
+static lg::log_domain log_ai_engine("ai/engine");
+#define DBG_AI_ENGINE LOG_STREAM(debug, log_ai_engine)
+#define LOG_AI_ENGINE LOG_STREAM(info, log_ai_engine)
+#define ERR_AI_ENGINE LOG_STREAM(err, log_ai_engine)
 
 engine::engine( readonly_context &context, const config &cfg )
 	: ai_(context), engine_(cfg["engine"]), id_(cfg["id"]), name_(cfg["name"])
 {
-	LOG_AI_COMPOSITE_ENGINE << "side "<< ai_.get_side() << " : "<<" created engine with name=["<<name_<<"]"<<std::endl;
+	LOG_AI_ENGINE << "side "<< ai_.get_side() << " : "<<" created engine with name=["<<name_<<"]"<<std::endl;
 }
 
 engine::~engine()
