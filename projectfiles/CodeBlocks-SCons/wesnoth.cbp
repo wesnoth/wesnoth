@@ -126,7 +126,6 @@
 		<Unit filename="..\..\src\animated_game.cpp" />
 		<Unit filename="..\..\src\array.hpp" />
 		<Unit filename="..\..\src\asserts.hpp" />
-		<Unit filename="..\..\src\astarsearch.cpp" />
 		<Unit filename="..\..\src\attack_prediction.cpp" />
 		<Unit filename="..\..\src\attack_prediction.hpp" />
 		<Unit filename="..\..\src\attack_prediction_display.cpp" />
@@ -539,8 +538,11 @@
 		<Unit filename="..\..\src\network.hpp" />
 		<Unit filename="..\..\src\network_worker.cpp" />
 		<Unit filename="..\..\src\network_worker.hpp" />
-		<Unit filename="..\..\src\pathfind.cpp" />
-		<Unit filename="..\..\src\pathfind.hpp" />
+		<Unit filename="..\..\src\pathfind\astarsearch.cpp" />
+		<Unit filename="..\..\src\pathfind\pathfind.cpp" />
+		<Unit filename="..\..\src\pathfind\pathfind.hpp" />
+		<Unit filename="..\..\src\pathfind\teleport.hpp" />
+		<Unit filename="..\..\src\pathfind\teleport.cpp" />
 		<Unit filename="..\..\src\pathutils.cpp" />
 		<Unit filename="..\..\src\pathutils.hpp" />
 		<Unit filename="..\..\src\play_controller.cpp" />
