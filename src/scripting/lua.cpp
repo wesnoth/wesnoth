@@ -95,6 +95,9 @@ static char const uactionKey = 0;
 static char const vconfigKey = 0;
 static char const wactionKey = 0;
 
+/* Global definition so that it does not leak on longjmp. */
+static std::string error_buffer;
+
 /**
  * Displays a message in the chat window.
  */
@@ -1601,7 +1604,7 @@ static int intf_put_unit(lua_State *L)
 		error_call_destructors_1:
 		return luaL_typerror(L, unit_arg, "WML table");
 		error_call_destructors_2:
-		return luaL_argerror(L, unit_arg, "missing 'type' field");
+		return luaL_argerror(L, unit_arg, error_buffer.c_str());
 		error_call_destructors_3:
 		return luaL_argerror(L, 1, "invalid location");
 	}
@@ -1618,13 +1621,18 @@ static int intf_put_unit(lua_State *L)
 		config cfg;
 		if (!luaW_toconfig(L, unit_arg, cfg))
 			goto error_call_destructors_1;
-		if (cfg["type"].empty())
-			goto error_call_destructors_2;
 		if (unit_arg == 1) {
 			x = lexical_cast_default(cfg["x"], 0);
 			y = lexical_cast_default(cfg["y"], 0);
+			cfg.remove_attribute("x");
+			cfg.remove_attribute("y");
 		}
-		u = new unit(resources::units, cfg, true, resources::state_of_game);
+		try {
+			u = new unit(resources::units, cfg, true, resources::state_of_game);
+		} catch (const game::error &e) {
+			error_buffer = "broken unit WML [" + e.message + "]";
+			goto error_call_destructors_2;
+		}
 	}
 
 	map_location loc(x - 1, y - 1);
