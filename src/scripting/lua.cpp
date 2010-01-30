@@ -1594,8 +1594,8 @@ static int intf_find_path(lua_State *L)
 
 /**
  * Places a unit on the map.
- * Args 1,2: (optional) location.
- * Arg 3: WML table describing a unit, or nothing/nil to delete.
+ * - Args 1,2: (optional) location.
+ * - Arg 3: WML table describing a unit, or nothing/nil to delete.
  */
 static int intf_put_unit(lua_State *L)
 {
@@ -1650,8 +1650,8 @@ static int intf_put_unit(lua_State *L)
 
 /**
  * Finds a vacant tile.
- * Args 1,2: location.
- * Arg 3: optional unit for checking movement type.
+ * - Args 1,2: location.
+ * - Arg 3: optional unit for checking movement type.
  */
 static int intf_find_vacant_tile(lua_State *L)
 {
