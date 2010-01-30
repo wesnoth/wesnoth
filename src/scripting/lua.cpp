@@ -170,6 +170,31 @@ static bool luaW_hasmetatable(lua_State *L, int index, char const &key)
 }
 
 /**
+ * Converts a scalar to a translatable string.
+ */
+static bool luaW_totstring(lua_State *L, int index, t_string &str)
+{
+	switch (lua_type(L, index)) {
+		case LUA_TBOOLEAN:
+			str = lua_toboolean(L, index) ? "yes" : "no";
+			break;
+		case LUA_TNUMBER:
+		case LUA_TSTRING:
+			str = lua_tostring(L, index);
+			break;
+		case LUA_TUSERDATA:
+		{
+			if (!luaW_hasmetatable(L, index, tstringKey)) return false;
+			str = *static_cast<t_string *>(lua_touserdata(L, index));
+			break;
+		}
+		default:
+			return false;
+	}
+	return true;
+}
+
+/**
  * Converts a config object to a Lua table.
  * The destination table should be at the top of the stack on entry. It is
  * still at the top on exit.
@@ -1673,6 +1698,29 @@ static int intf_find_vacant_tile(lua_State *L)
 	return 2;
 }
 
+/**
+ * Floats some text on the map.
+ * - Args 1,2: location.
+ * - Arg 3: string.
+ */
+static int intf_float_label(lua_State *L)
+{
+	if (false) {
+		error_call_destructors_1:
+		return luaL_argerror(L, 3, "invalid string");
+	}
+
+	map_location loc;
+	loc.x = lua_tointeger(L, 1) - 1;
+	loc.y = lua_tointeger(L, 2) - 1;
+
+	t_string text;
+	if (!luaW_totstring(L, 3, text)) goto error_call_destructors_1;
+	resources::screen->float_label(loc, text, font::LABEL_COLOUR.r,
+		font::LABEL_COLOUR.g, font::LABEL_COLOUR.b);
+	return 0;
+}
+
 LuaKernel::LuaKernel()
 	: mState(luaL_newstate())
 {
@@ -1701,6 +1749,7 @@ LuaKernel::LuaKernel()
 		{ "eval_conditional",         &intf_eval_conditional         },
 		{ "find_path",                &intf_find_path                },
 		{ "find_vacant_tile",         &intf_find_vacant_tile         },
+		{ "float_label",              &intf_float_label              },
 		{ "get_map_size",             &intf_get_map_size             },
 		{ "get_selected_tile",        &intf_get_selected_tile        },
 		{ "get_side",                 &intf_get_side                 },
