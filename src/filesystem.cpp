@@ -963,7 +963,7 @@ const std::vector<std::string>& get_binary_paths(const std::string& type)
 	}
 
 	// not found in "/type" directory, try main directory
-	res.push_back(get_user_data_dir());
+	res.push_back(get_user_data_dir() + "/");
 
 	if(!game_config::path.empty())
 		res.push_back(game_config::path+"/");
