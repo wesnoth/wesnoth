@@ -37,7 +37,7 @@ gamestate_observer::~gamestate_observer()
 }
 
 
-void gamestate_observer::handle_generic_event(const std::string &event_name)
+void gamestate_observer::handle_generic_event(const std::string &/*event_name*/)
 {
 	++gamestate_change_counter_;
 }
