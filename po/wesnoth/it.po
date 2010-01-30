@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-01-26 22:38+0100\n"
-"PO-Revision-Date: 2009-12-29 12:42+0100\n"
+"PO-Revision-Date: 2010-01-30 11:50+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -5762,7 +5762,6 @@ msgstr "Uomini"
 
 #. [race]: id=human
 #: data/core/units.cfg:169
-#, fuzzy
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -5803,29 +5802,28 @@ msgid ""
 "and the strengths and weaknesses of these groups complement each other."
 msgstr ""
 "La razza umana è molto particolare. Anche se in origine sono arrivati dal "
-"vecchio continente, gli uomini si sono sparsi per tutto il mondo in culture "
+"Vecchio Continente, gli uomini si sono sparsi per tutto il mondo in culture "
 "e razze diverse. Anche se non sono infusi di magia come altre creature, gli "
-"uomini possono imparare a usarla e possono apprenderne più tipi che le altre "
-"razze. Non hanno nessun'abilità speciale tranne la loro versatilità e "
-"passione. Anche se spesso sono in disaccordo con tutte le razze, "
-"occasionalmente formano alleanze con le razze meno aggressive come elfi e "
-"nani. Gli uomini con meno scrupoli non disdegnano nemmeno di assumere "
-"mercenari orchi. Non hanno nemici naturali, anche se la maggioranza degli "
-"uomini, come la maggior parte delle genti delle altre razze, hanno una "
-"istintiva avversione per i non-morti. Gli uomini sono più bassi degli elfi, "
-"ma più alti dei nani. Il colore della loro pelle può variare, da quasi "
-"bianco e bruno scuro.\n"
+"uomini possono imparare a usarla e possono apprenderne più tipi delle altre "
+"razze. Non hanno abilità speciali tranne la versatilità e passione. Anche se "
+"spesso sono in disaccordo con altre razze, occasionalmente formano alleanze "
+"con i popoli meno aggressivi come elfi e nani. I meno scrupolosi non "
+"disdegnano nemmeno di assumere mercenari orchi. Non hanno nemici naturali, "
+"anche se la maggioranza degli uomini, come la maggior parte delle genti "
+"delle altre razze, hanno un'istintiva avversione per i non-morti. Gli uomini "
+"sono più bassi degli elfi, ma più alti dei nani. Il colore della loro pelle "
+"può variare da quasi bianco a bruno scuro.\n"
 "\n"
-"<header>text='Sudditi deklla corona'</header>\n"
+"<header>text='Sudditi della corona'</header>\n"
 "Ci sono diversi gruppi di uomini, ma la maggioranza di quelli che vivono sul "
-"grande continente sono sudditi della corona di Wesnoth. Gli uomini "
-"arrivarono per la prima volta sul grande continente da una remota terra "
-"oltre l'oceano a occidente, l'Isola Verde, e presto stabilirono la loro "
-"capitale in una città dell'interno,  Weldyn. In pochi secoli avevano "
-"costruito parecchie città sparse sul continente. I soldati della corona "
-"proteggono il paese, formando la forza militare più organizzata del mondo "
-"conosciuto. I suoi guerrieri provengono dalle province principali dove tutti "
-"gli uomini sono coscritti in tenera età.\n"
+"grande continente sono sudditi della corona di Wesnoth. Inizialmente, gli "
+"uomini arrivarono sul Grande Continente attraverso una remota terra oltre "
+"l'oceano a occidente, l'Isola Verde, e presto stabilirono la loro capitale "
+"in una città dell'interno, Weldyn. In pochi secoli avevano costruito "
+"parecchie città sparse sul continente. I soldati della corona proteggono il "
+"paese, formando la forza militare più organizzata del mondo conosciuto. I "
+"suoi guerrieri provengono dalle province principali dove tutti gli uomini "
+"sono coscritti in tenera età.\n"
 "\n"
 "<header>text='I clan'</header>\n"
 "Le province orientali di Wesnoth, chiamate Terre dei Clan, sono "
@@ -6344,33 +6342,34 @@ msgstr "Porto $name|,Porto di $name|,Porto $lake|,Porto di $lake"
 
 #. [language]
 #: data/hardwired/english.cfg:28
-#, fuzzy
 msgid ""
 "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross,$name on river"
 msgstr ""
-"$name|passo,$name|guado,$name|attraversamento,$river|guado,$river|"
-"attraversamento"
+"Ca' $name|,Guado di $name|,Croce $name|,Guado di $river|,Croce $river|,$name "
+"sul fiume"
 
 #. [language]
 #: data/hardwired/english.cfg:29
-#, fuzzy
 msgid ""
 "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge,$bridge|ham,"
 "$bridge|ton"
-msgstr "$river|ponte,$river|ponte,$river|ponte,$name|passo,$name|ponte"
+msgstr ""
+"Ponte sul $river|,Ponte sul $river|,Ponte sul $river|,Ca' $name|,Ponte di "
+"$name|,Ca' $bridge|,$bridge|ton"
 
 #. [language]
 #: data/hardwired/english.cfg:30
 msgid "$name|ham,$name|ton,$name|field"
-msgstr "Villa$name,$name|burgo,Campo$name|"
+msgstr "Villa $name,$name|burgo,Campo $name|"
 
 #. [language]
 #: data/hardwired/english.cfg:31
-#, fuzzy
 msgid ""
 "$name|ham,$name|ton,$name|wood,$name Forest,$forest|wood,$forest|ham,$forest|"
 "ton"
-msgstr "$name|ham,$name|ton,$name|wood,Foresta di $name"
+msgstr ""
+"Ca' $name|,Villa $name|,Bosco $name|,Foresta di $name,Bosco di $forest|,Ca' "
+"$forest|,$forest|ton"
 
 #. [language]
 #: data/hardwired/english.cfg:32
@@ -6394,12 +6393,12 @@ msgstr ""
 #: data/hardwired/english.cfg:35
 msgid "$road's Rest,$road's Waypoint,$road|bury,$road|ham,$name|bury,$name|ham"
 msgstr ""
+"Settimo di $road,Quinto di $road,$road|burgo,$road|ham,$name|burgo,$name|ham"
 
 #. [language]
 #: data/hardwired/english.cfg:36
-#, fuzzy
 msgid "$name|bury,$name|ham,$name|ton,$swamp|bury,$swamp|ham,$swamp|ton,"
-msgstr "$name|bury,$name|ham,$name|ton"
+msgstr "$name|burgo,$name|ham,$name|ton,$swamp|burgo,$swamp|ham,$swamp|ton,"
 
 #. [language]
 #: data/hardwired/english.cfg:39
