@@ -390,6 +390,7 @@ if(ENABLE_EXPERIMENTAL)
         ${wesnoth-main_SRC}
         pathfind/pathfind.cpp
         pathfind/teleport.cpp
+	gui/dialogs/icon_message.cpp
     )
 endif(ENABLE_EXPERIMENTAL)
 
