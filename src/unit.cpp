@@ -923,6 +923,28 @@ const std::string& unit::profile() const
 	return absolute_image();
 }
 
+std::string unit::transparent() const {
+	std::string image = profile();
+	const size_t offset = image.find_last_of('/');
+	if(offset != std::string::npos) {
+		image.insert(offset, "/transparent");
+	} else {
+		image = "transparent/" + image;
+	}
+
+	image::locator locator(image);
+	if(!locator.file_exists()) {
+		image = profile();
+
+#ifndef LOW_MEM
+		if(image == absolute_image()) {
+			image += image_mods();
+		}
+#endif
+	}
+	return image;
+}
+
 SDL_Colour unit::hp_color() const
 {
 	double unit_energy = 0.0;

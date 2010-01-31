@@ -101,6 +101,8 @@ public:
 
 	/** The unit's profile */
 	const std::string& profile() const;
+	/** The unit's transparent profile */
+	std::string transparent() const;
 	/** Information about the unit -- a detailed description of it */
 	const std::string& unit_description() const { return cfg_["description"]; }
 
