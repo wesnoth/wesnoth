@@ -3622,7 +3622,7 @@ namespace game_events {
 	{
 		assert(!manager_running);
 		foreach (const config &ev, cfg.child_range("event")) {
-			event_handlers.push_back(game_events::event_handler(vconfig(ev)));
+			event_handlers.push_back(game_events::event_handler(vconfig(ev, true)));
 		}
 		foreach (const std::string &id, utils::split(cfg["unit_wml_ids"])) {
 			unit_wml_ids.insert(id);
