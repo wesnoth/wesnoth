@@ -256,7 +256,9 @@ private:
 	/**
 	 * Contains a pointer to the generator.
 	 *
-	 * The pointer is not owned by this variable.
+	 * The pointer is not owned by this class, it's stored in the content_grid_
+	 * of the tscrollbar_container super class and freed when it's grid is
+	 * freed.
 	 */
 	tgenerator_* generator_;
 
