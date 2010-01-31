@@ -17,11 +17,16 @@ function helper.all_teams()
 end
 
 --! Returns the first subtag of @a cfg with the given @a name.
-function helper.get_child(cfg, name)
+--! If @a id is not nil, the "id" attribute of the subtag has to match too.
+--! The function also returns the index of the subtag in the array.
+function helper.get_child(cfg, name, id)
 	-- ipairs cannot be used on a vconfig object
 	for i = 1, #cfg do
 		local v = cfg[i]
-		if v[1] == name then return v[2] end
+		if v[1] == name then
+			local w = v[2]
+			if not id or w.id == id then return w, i end
+		end
 	end
 end
 
@@ -204,6 +209,14 @@ function helper.get_variable_array(var)
 		result[i] = wesnoth.get_variable(string.format("%s[%d]", var, i - 1))
 	end
 	return result
+end
+
+--! Puts all the elements of table @a t inside a WML container with name @a var.
+function helper.set_variable_array(var, t)
+	wesnoth.set_variable(var)
+	for i, v in ipairs(t) do
+		wesnoth.set_variable(string.format("%s[%d]", var, i - 1), v)
+	end
 end
 
 --! Creates proxies for all the WML container variables with name @a var.
