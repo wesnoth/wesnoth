@@ -426,6 +426,20 @@ static void fill_window_types()
 	window_type_list[LANGUAGE_SELECTION] = "language_selection";
 	window_type_list[WML_MESSAGE_LEFT] = "wml_message_left";
 	window_type_list[WML_MESSAGE_RIGHT] = "wml_message_right";
+#ifdef EXPERIMENTAL
+	window_type_list[ICON_MESSAGE_LEFT] = "icon_message_left";
+	window_type_list[ICON_MESSAGE_RIGHT] = "icon_message_right";
+	window_type_list[OPTION_MESSAGE_LEFT] = "option_message_left";
+	window_type_list[OPTION_MESSAGE_RIGHT] = "option_message_right";
+	window_type_list[UNIT_MESSAGE_LEFT] = "unit_message_left";
+	window_type_list[UNIT_MESSAGE_RIGHT] = "unit_message_right";
+	window_type_list[INPUT_MESSAGE_LEFT] = "input_message_left";
+	window_type_list[INPUT_MESSAGE_RIGHT] = "input_message_right";
+	window_type_list[RECALL_MESSAGE_LEFT] = "recall_message_left";
+	window_type_list[RECALL_MESSAGE_RIGHT] = "recall_message_right";
+	window_type_list[RECRUIT_MESSAGE_LEFT] = "recruit_message_left";
+	window_type_list[RECRUIT_MESSAGE_RIGHT] = "recruit_message_right";
+#endif
 	window_type_list[MESSAGE] = "message";
 	window_type_list[TRANSIENT_MESSAGE] = "transient_message";
 	window_type_list[MP_CONNECT] = "mp_connect";
