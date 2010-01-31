@@ -789,21 +789,24 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 			}
 		}
 
-		const std::string global_set_flag = br["set_flag"];
-		const std::string global_no_flag = br["no_flag"];
-		const std::string global_has_flag = br["has_flag"];
+		const std::vector<std::string> global_set_flag = utils::split(br["set_flag"]);
+		const std::vector<std::string> global_no_flag = utils::split(br["no_flag"]);
+		const std::vector<std::string> global_has_flag = utils::split(br["has_flag"]);
 
 		for(constraint_set::iterator constraint = pbr.constraints.begin(); constraint != pbr.constraints.end();
 		    ++constraint) {
 
 			if(global_set_flag.size())
-				constraint->second.set_flag.push_back(global_set_flag);
+				constraint->second.set_flag.insert(constraint->second.set_flag.end(),
+						global_set_flag.begin(), global_set_flag.end());
 
 			if(global_no_flag.size())
-				constraint->second.no_flag.push_back(global_no_flag);
+				constraint->second.no_flag.insert(constraint->second.no_flag.end(),
+						global_no_flag.begin(), global_no_flag.end());
 
 			if(global_has_flag.size())
-				constraint->second.has_flag.push_back(global_has_flag);
+				constraint->second.has_flag.insert(constraint->second.has_flag.end(),
+						global_has_flag.begin(), global_has_flag.end());
 
 		}
 
