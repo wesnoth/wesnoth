@@ -22,7 +22,9 @@
 
 #include <boost/shared_ptr.hpp>
 #include "../map_location.hpp"
-#include "pathfind/pathfind.hpp"
+namespace pathfind {
+    struct paths;
+}
 
 #include <set>
 #include <vector>
