@@ -406,6 +406,17 @@ static stopunit_result_ptr execute_stopunit_action( side_number side,
 	bool remove_attacks );
 
 
+/**
+ * get human-readable name of the error by code.
+ * @param error_code error code.
+ * @retval result the name of the error.
+ */
+const static std::string& get_error_name(int error_code);
+
+private:
+
+static std::map<int,std::string> error_names_;
+
 };
 
 
