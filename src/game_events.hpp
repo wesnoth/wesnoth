@@ -89,59 +89,21 @@ namespace game_events
 	class event_handler
 	{
 		public:
-			event_handler(const vconfig& cfg, bool is_menu_item=false) :
-				first_time_only_(utils::string_bool(cfg["first_time_only"],true)),
-				disabled_(false), is_menu_item_(is_menu_item), cfg_(cfg)
-			{}
-
-			void read(const vconfig& cfg) { cfg_ = cfg; }
-			void write(config& cfg) const
-			{
-				if(disabled_)
-					return;
-
-				cfg = cfg_.get_config();
-			}
+			event_handler(const config &cfg, bool is_menu_item = false);
 
 			bool matches_name(const std::string& name) const;
 
-			bool first_time_only() const { return first_time_only_; }
-
-			void disable() { disabled_ = true; }
 			bool disabled() const { return disabled_; }
-
-			bool is_menu_item() const;
-			const vconfig::child_list first_arg_filters() const
-			{
-				return cfg_.get_children("filter");
-			}
-			const vconfig::child_list first_special_filters() const
-			{
-				vconfig::child_list kids;
-				kids = cfg_.get_children("filter_attack");
-				return kids;
-
-			}
-
-			const vconfig::child_list second_arg_filters() const
-			{
-				return cfg_.get_children("filter_second");
-			}
-			const vconfig::child_list second_special_filters() const
-			{
-				vconfig::child_list kids;
-				kids = cfg_.get_children("filter_second_attack");
-				return kids;
-			}
+			bool is_menu_item() const { return is_menu_item_; }
 
 			void handle_event(const queued_event& event_info);
 
-			const vconfig& get_vconfig() const { return cfg_; }
+			const config &get_config() const { return cfg_; }
 		private:
 			bool first_time_only_;
 			bool disabled_;
 			bool is_menu_item_;
-			vconfig cfg_;
+			config cfg_;
 	};
 
 	/**

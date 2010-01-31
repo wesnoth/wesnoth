@@ -3200,12 +3200,11 @@ WML_HANDLER_FUNCTION(event, /*event_info*/, cfg)
 	std::string behavior_flag = cfg["delayed_variable_substitution"];
 	if(!(utils::string_bool(behavior_flag,true)))
 	{
-		const config &parsed = cfg.get_parsed_config();
-		new_handlers.push_back(game_events::event_handler(vconfig(parsed, true)));
+		new_handlers.push_back(game_events::event_handler(cfg.get_parsed_config()));
 	}
 	else
 	{
-		new_handlers.push_back(game_events::event_handler(cfg));
+		new_handlers.push_back(game_events::event_handler(cfg.get_config()));
 	}
 }
 
@@ -3332,12 +3331,12 @@ static void commit_wmi_commands() {
 			foreach(game_events::event_handler& hand, event_handlers) {
 				if(hand.is_menu_item() && hand.matches_name(mref->name)) {
 					LOG_NG << "changing command for " << mref->name << " to:\n" << *wcc.second;
-					hand.read(vconfig(mref->command, true));
+					hand = game_events::event_handler(mref->command, true);
 				}
 			}
 		} else if(!is_empty_command) {
 			LOG_NG << "setting command for " << mref->name << " to:\n" << *wcc.second;
-			event_handlers.push_back(game_events::event_handler(vconfig(mref->command, true), true));
+			event_handlers.push_back(game_events::event_handler(mref->command, true));
 		}
 
 		delete wcc.second;
@@ -3358,29 +3357,26 @@ static bool process_event(game_events::event_handler& handler, const game_events
 	scoped_xy_unit second_unit("second_unit", ev.loc2.x, ev.loc2.y, *units);
 	scoped_weapon_info first_weapon("weapon", ev.data.child("first"));
 	scoped_weapon_info second_weapon("second_weapon", ev.data.child("second"));
+	vconfig filters(handler.get_config());
 
-	const vconfig::child_list first_filters = handler.first_arg_filters();
-	vconfig::child_list::const_iterator ffi;
-	for(ffi = first_filters.begin();
-			ffi != first_filters.end(); ++ffi) {
-
-		if(unit1 == units->end() || !game_events::unit_matches_filter(unit1,*ffi)) {
+	foreach (const vconfig &f, filters.get_children("filter"))
+	{
+		if (unit1 == units->end() || !game_events::unit_matches_filter(unit1, f)) {
 			return false;
 		}
-		if(!ffi->empty()) {
+		if (!f.empty()) {
 			filtered_unit1 = true;
 		}
 	}
-	bool special_matches = false;
-	const vconfig::child_list first_special_filters = handler.first_special_filters();
-	special_matches = first_special_filters.size() ? false : true;
-	for(ffi = first_special_filters.begin();
-			ffi != first_special_filters.end(); ++ffi) {
 
-		if(unit1 != units->end() && game_events::matches_special_filter(ev.data.child("first"),*ffi)) {
+	vconfig::child_list special_filters = filters.get_children("filter_attack");
+	bool special_matches = special_filters.empty();
+	foreach (const vconfig &f, special_filters)
+	{
+		if (unit1 != units->end() && game_events::matches_special_filter(ev.data.child("first"), f)) {
 			special_matches = true;
 		}
-		if(!ffi->empty()) {
+		if (!f.empty()) {
 			filtered_unit1 = true;
 		}
 	}
@@ -3388,25 +3384,24 @@ static bool process_event(game_events::event_handler& handler, const game_events
 		return false;
 	}
 
-	const vconfig::child_list second_filters = handler.second_arg_filters();
-	for(vconfig::child_list::const_iterator sfi = second_filters.begin();
-			sfi != second_filters.end(); ++sfi) {
-		if(unit2 == units->end() || !game_events::unit_matches_filter(unit2,*sfi)) {
+	foreach (const vconfig &f, filters.get_children("filter_second"))
+	{
+		if (unit2 == units->end() || !game_events::unit_matches_filter(unit2, f)) {
 			return false;
 		}
-		if(!sfi->empty()) {
+		if (!f.empty()) {
 			filtered_unit2 = true;
 		}
 	}
-	const vconfig::child_list second_special_filters = handler.second_special_filters();
-	special_matches = second_special_filters.size() ? false : true;
-	for(ffi = second_special_filters.begin();
-			ffi != second_special_filters.end(); ++ffi) {
 
-		if(unit2 != units->end() && game_events::matches_special_filter(ev.data.child("second"),*ffi)) {
+	special_filters = filters.get_children("filter_second_attack");
+	special_matches = special_filters.empty();
+	foreach (const vconfig &f, special_filters)
+	{
+		if (unit2 != units->end() && game_events::matches_special_filter(ev.data.child("second"), f)) {
 			special_matches = true;
 		}
-		if(!ffi->empty()) {
+		if (!f.empty()) {
 			filtered_unit2 = true;
 		}
 	}
@@ -3445,18 +3440,24 @@ static bool process_event(game_events::event_handler& handler, const game_events
 }
 
 namespace game_events {
+
+	event_handler::event_handler(const config &cfg, bool imi) :
+		first_time_only_(utils::string_bool(cfg["first_time_only"], true)),
+		disabled_(false), is_menu_item_(imi), cfg_(cfg)
+	{}
+
 	void event_handler::handle_event(const game_events::queued_event& event_info)
 	{
 		if (first_time_only_)
 		{
-			disable();
+			disabled_ = true;
 		}
 
-		if (is_menu_item()) {
-			DBG_NG << cfg_["name"] << " will now invoke the following command(s):\n" << cfg_.get_config();
+		if (is_menu_item_) {
+			DBG_NG << cfg_["name"] << " will now invoke the following command(s):\n" << cfg_;
 		}
 
-		handle_event_commands(event_info, cfg_);
+		handle_event_commands(event_info, vconfig(cfg_));
 	}
 
 	void handle_event_commands(const game_events::queued_event& event_info, const vconfig &cfg)
@@ -3494,11 +3495,8 @@ namespace game_events {
 		DBG_NG << "done handling command...\n";
 	}
 
-	bool game_events::event_handler::is_menu_item() const {
-		return is_menu_item_;
-	}
-
-	bool game_events::event_handler::matches_name(const std::string& name) const {
+	bool event_handler::matches_name(const std::string &name) const
+	{
 		const t_string& t_my_names = cfg_["name"];
 		const std::string& my_names = t_my_names;
 		std::string::const_iterator itor,
@@ -3622,7 +3620,7 @@ namespace game_events {
 	{
 		assert(!manager_running);
 		foreach (const config &ev, cfg.child_range("event")) {
-			event_handlers.push_back(game_events::event_handler(vconfig(ev, true)));
+			event_handlers.push_back(game_events::event_handler(ev));
 		}
 		foreach (const std::string &id, utils::split(cfg["unit_wml_ids"])) {
 			unit_wml_ids.insert(id);
@@ -3646,7 +3644,7 @@ namespace game_events {
 		typedef std::pair<std::string, wml_menu_item *> item;
 		foreach (const item &itor, resources::state_of_game->wml_menu_items) {
 			if (!itor.second->command.empty()) {
-				event_handlers.push_back(game_events::event_handler(vconfig(itor.second->command, true), true));
+				event_handlers.push_back(game_events::event_handler(itor.second->command, true));
 			}
 			++wmi_count;
 		}
@@ -3658,10 +3656,9 @@ namespace game_events {
 	void write_events(config& cfg)
 	{
 		assert(manager_running);
-		for(std::vector<game_events::event_handler>::const_iterator i = event_handlers.begin(); i != event_handlers.end(); ++i) {
-			if(!i->disabled() && !i->is_menu_item()) {
-				i->write(cfg.add_child("event"));
-			}
+		foreach (const game_events::event_handler &eh, event_handlers) {
+			if (eh.disabled() || eh.is_menu_item()) continue;
+			cfg.add_child("event", eh.get_config());
 		}
 
 		std::stringstream used;
@@ -3736,7 +3733,7 @@ namespace game_events {
 			unit_wml_ids.insert(id);
 			foreach (const config &new_ev, cfgs) {
 				std::vector<game_events::event_handler> &temp = (pump_manager::count()) ? new_handlers : event_handlers;
-				temp.push_back(game_events::event_handler(vconfig(new_ev, true)));
+				temp.push_back(game_events::event_handler(new_ev));
 			}
 		}
 	}
@@ -3799,11 +3796,7 @@ namespace game_events {
 					init_event_vars = false;
 				}
 
-				LOG_NG << "processing event '" << event_name << "' using "
-					<< (handler.get_vconfig().is_volatile()?"volatile ":"") << "cfg 0x"
-					<< std::hex << std::setiosflags(std::ios::uppercase)
-					<< reinterpret_cast<uintptr_t>(&handler.get_vconfig().get_config())
-					<< std::dec << "\n";
+				LOG_NG << "processing event '" << event_name << "'\n";
 				if(process_event(handler, ev))
 					result = true;
 			}
