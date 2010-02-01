@@ -47,24 +47,24 @@
 namespace gui2 {
 
 /*
-void trecall_message_::recall_pressed(twindow& window) {
+ void trecall_message_::recall_pressed(twindow& window) {
 
-	tlistbox& input_list = find_widget<tlistbox> (&window, "unit_list", false);
+ tlistbox& input_list = find_widget<tlistbox> (&window, "unit_list", false);
 
-	game_menu_handler_->do_recall(chosen_unit_);
-	input_list.remove_row(input_list.get_selected_row());
+ game_menu_handler_->do_recall(chosen_unit_);
+ input_list.remove_row(input_list.get_selected_row());
 
-	if (unit_list_.empty()) {
-		window.close();
-	}
+ if (unit_list_.empty()) {
+ window.close();
+ }
 
-	unit_list_.erase(unit_list_.begin() + input_list.get_selected_row());
-	chosen_unit_ = &unit_list_[0];
-	update_unit_list(window);
-	input_list.set_dirty();
-	window.set_dirty();
-}
-*/
+ unit_list_.erase(unit_list_.begin() + input_list.get_selected_row());
+ chosen_unit_ = &unit_list_[0];
+ update_unit_list(window);
+ input_list.set_dirty();
+ window.set_dirty();
+ }
+ */
 
 void tunit_message_::profile_pressed() {
 	const unit_type& t = *chosen_unit_->type();
@@ -72,28 +72,30 @@ void tunit_message_::profile_pressed() {
 }
 
 void tunit_message_::help_pressed() {
-	help::show_help(*resources::screen,"recruit_and_recall");
+	help::show_help(*resources::screen, "recruit_and_recall");
 }
 
 void trecall_message_::remove_pressed(CVideo& video, twindow& window) {
-	tlistbox& unit_listbox = find_widget<tlistbox> (&window, "unit_list", false);
+	tlistbox& unit_listbox =
+			find_widget<tlistbox> (&window, "unit_list", false);
 
 	//If the unit is of level > 1, or is close to advancing,
 	//we warn the player about it
 	std::stringstream message;
 	if (chosen_unit_->loyal()) {
-		message << /*_*/("My lord, this unit is loyal and requires no upkeep! ")
-			<< (chosen_unit_->gender() == unit_race::MALE ? /*_*/("Do you really want to dismiss him?")
-			    : /*_*/("Do you really want to dismiss her?"));
+		message
+				<< /*_*/("My lord, this unit is loyal and requires no upkeep! ")
+				<< (chosen_unit_->gender() == unit_race::MALE ? /*_*/("Do you really want to dismiss him?")
+						: /*_*/("Do you really want to dismiss her?"));
 	} else if (chosen_unit_->level() > 1) {
 		message
 				<< /*_*/("My lord, this unit is an experienced one, having advanced levels! ")
 				<< (chosen_unit_->gender() == unit_race::MALE ? /*_*/("Do you really want to dismiss him?")
-				    : /*_*/("Do you really want to dismiss her?"));
+						: /*_*/("Do you really want to dismiss her?"));
 
 	} else if (chosen_unit_->experience() > chosen_unit_->max_experience() / 2) {
-	  message << /*_*/("My lord, this unit is close to advancing a level! ")
-		  << (chosen_unit_->gender() == unit_race::MALE ? /*_*/("Do you really want to dismiss him?")
+		message << /*_*/("My lord, this unit is close to advancing a level! ")
+				<< (chosen_unit_->gender() == unit_race::MALE ? /*_*/("Do you really want to dismiss him?")
 						: /*_*/("Do you really want to dismiss her?"));
 	}
 
@@ -107,7 +109,7 @@ void trecall_message_::remove_pressed(CVideo& video, twindow& window) {
 
 	game_menu_handler_->do_delete_recall(chosen_unit_);
 
-//	assert(unit_)
+	//	assert(unit_)
 	int selected_row = unit_listbox.get_selected_row();
 
 	unit_listbox.remove_row(selected_row);
@@ -119,14 +121,15 @@ void trecall_message_::remove_pressed(CVideo& video, twindow& window) {
 		return;
 	}
 	*chosen_unit_ = unit_list_[0];
-	unit_listbox.select_row(0,true);
+	unit_listbox.select_row(0, true);
 	update_unit_list(window);
 	unit_listbox.set_dirty();
 	window.set_dirty();
 }
 
 void tunit_message_::update_unit_list(twindow& window) {
-	tlistbox& unit_listbox = find_widget<tlistbox> (&window, "unit_list", false);
+	tlistbox& unit_listbox =
+			find_widget<tlistbox> (&window, "unit_list", false);
 	*chosen_unit_ = unit_list_[unit_listbox.get_selected_row()];
 
 	if (resources::game_map->on_board(chosen_unit_->get_location())) {
@@ -230,16 +233,15 @@ void trecall_message_::pre_show(CVideo& video, twindow& window) {
 	tunit_message_::pre_show(video, window);
 
 	/*
-	tbutton* recall_button = find_widget<tbutton> (&window, "recall", false,
-			false);
-	recall_button->connect_signal_mouse_left_click(boost::bind(
-			&trecall_message_::recall_pressed, this, boost::ref(window)));
-	*/
+	 tbutton* recall_button = find_widget<tbutton> (&window, "recall", false,
+	 false);
+	 recall_button->connect_signal_mouse_left_click(boost::bind(
+	 &trecall_message_::recall_pressed, this, boost::ref(window)));
+	 */
 
-	tbutton* help_button = find_widget<tbutton> (&window, "help", false,
-				false);
-		help_button->connect_signal_mouse_left_click(boost::bind(
-				&tunit_message_::help_pressed, this));
+	tbutton* help_button = find_widget<tbutton> (&window, "help", false, false);
+	help_button->connect_signal_mouse_left_click(boost::bind(
+			&tunit_message_::help_pressed, this));
 
 	tbutton* remove_button = find_widget<tbutton> (&window, "remove", false,
 			false);
@@ -266,9 +268,9 @@ void tunit_message_::pre_show(CVideo& video, twindow& window) {
 	for (size_t i = 0; i < unit_list_.size(); i++) {
 		unit& unit = unit_list_[i];
 
-		bool affordable = unit.cost() <= gold_ ;
+		bool affordable = unit.cost() <= gold_;
 
-		std::string unit_mod = affordable ? unit.image_mods() : "~GS()" ;
+		std::string unit_mod = affordable ? unit.image_mods() : "~GS()";
 		std::string icon = (unit.absolute_image() + unit_mod);
 		std::string type = unit.type_name();
 		std::string name = unit.name();
@@ -294,10 +296,11 @@ void tunit_message_::pre_show(CVideo& video, twindow& window) {
 
 		std::string gold_color;
 
-		gold_color = affordable ? "green" : "red" ;
+		gold_color = affordable ? "green" : "red";
 
 		std::ostringstream cost;
-		cost << "<span color=\"" << gold_color << "\">" << unit.cost() << " " << /*_*/("Gold") << "</span>" ;
+		cost << "<span color=\"" << gold_color << "\">" << unit.cost() << " "
+				<< /*_*/("Gold") << "</span>";
 
 		// Add the data.
 		data["cost"]["label"] = cost.str();
@@ -320,10 +323,9 @@ void tunit_message_::pre_show(CVideo& video, twindow& window) {
 void trecruit_message_::pre_show(CVideo& video, twindow& window) {
 	tunit_message_::pre_show(video, window);
 
-	tbutton* help_button = find_widget<tbutton> (&window, "help", false,
-				false);
-		help_button->connect_signal_mouse_left_click(boost::bind(
-				&tunit_message_::help_pressed, this));
+	tbutton* help_button = find_widget<tbutton> (&window, "help", false, false);
+	help_button->connect_signal_mouse_left_click(boost::bind(
+			&tunit_message_::help_pressed, this));
 
 	window.set_click_dismiss(false);
 }
@@ -371,8 +373,8 @@ void toption_message_::post_show(twindow& window) {
 
 void tunit_message_::post_show(twindow& window) {
 	if (!unit_list_.empty()) {
-	*chosen_unit_ = unit_list_[find_widget<tlistbox> (&window, "unit_list",
-			true).get_selected_row()];
+		*chosen_unit_ = unit_list_[find_widget<tlistbox> (&window, "unit_list",
+				true).get_selected_row()];
 	}
 }
 
@@ -381,7 +383,6 @@ void trecruit_message_::post_show(twindow& window) {
 	chosen_type_ = chosen_unit_->type_id();
 }
 
-//#ifdef EXPERIMENTAL
 twindow* ticon_message_left::build_window(CVideo& video) {
 	return build(video, get_id(ICON_MESSAGE_LEFT));
 }
@@ -429,7 +430,6 @@ twindow* tunit_message_left::build_window(CVideo& video) {
 twindow* tunit_message_right::build_window(CVideo& video) {
 	return build(video, get_id(UNIT_MESSAGE_RIGHT));
 }
-//#endif
 
 //begin of the wrapper functions
 int show_icon_message(const bool left_side, CVideo& video,
@@ -517,12 +517,14 @@ int show_recall_message(const bool left_side, CVideo& video, const bool mirror,
 int show_recruit_message(const bool left_side, CVideo& video,
 		const bool mirror, const std::vector<const unit_type*> type_list,
 		int side_num, int gold) {
-		std::string chosen_type_id;
+	std::string chosen_type_id;
 	std::auto_ptr<trecruit_message_> dlg;
 	if (left_side) {
-		dlg.reset(new trecruit_message_left(mirror, type_list, chosen_type_id, side_num, gold));
+		dlg.reset(new trecruit_message_left(mirror, type_list, chosen_type_id,
+				side_num, gold));
 	} else {
-		dlg.reset(new trecruit_message_right(mirror, type_list, chosen_type_id, side_num, gold));
+		dlg.reset(new trecruit_message_right(mirror, type_list, chosen_type_id,
+				side_num, gold));
 	}
 	assert(dlg.get());
 	dlg->show(video);
