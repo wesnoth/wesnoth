@@ -1,6 +1,6 @@
-/* $Id: wml_message.cpp 39955 2009-11-26 05:32:48Z fendrin $ */
+/* $Id: icon_message.cpp 39955 2009-11-26 05:32:48Z fendrin $ */
 /*
- Copyright (C) 2008 - 2009 by Mark de Wever <koraq@xs4all.nl>
+ Copyright (C) 2009 - 2010 by Fabian Mueller <fabianmueller5@gmx.de>
  Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
  This program is free software; you can redistribute it and/or modify
@@ -25,7 +25,7 @@
 
 #include "gui/dialogs/icon_message.hpp"
 
-#include "gettext.hpp"
+//#include "gettext.hpp"
 #include "font.hpp"
 #include "unit.hpp"
 #include "foreach.hpp"
@@ -82,19 +82,19 @@ void trecall_message_::remove_pressed(CVideo& video, twindow& window) {
 	//we warn the player about it
 	std::stringstream message;
 	if (chosen_unit_->loyal()) {
-		message << _("My lord, this unit is loyal and requires no upkeep! ")
-				<< (chosen_unit_->gender() == unit_race::MALE ? _("Do you really want to dismiss him?")
-						: _("Do you really want to dismiss her?"));
+		message << /*_*/("My lord, this unit is loyal and requires no upkeep! ")
+			<< (chosen_unit_->gender() == unit_race::MALE ? /*_*/("Do you really want to dismiss him?")
+			    : /*_*/("Do you really want to dismiss her?"));
 	} else if (chosen_unit_->level() > 1) {
 		message
-				<< _("My lord, this unit is an experienced one, having advanced levels! ")
-				<< (chosen_unit_->gender() == unit_race::MALE ? _("Do you really want to dismiss him?")
-						: _("Do you really want to dismiss her?"));
+				<< /*_*/("My lord, this unit is an experienced one, having advanced levels! ")
+				<< (chosen_unit_->gender() == unit_race::MALE ? /*_*/("Do you really want to dismiss him?")
+				    : /*_*/("Do you really want to dismiss her?"));
 
 	} else if (chosen_unit_->experience() > chosen_unit_->max_experience() / 2) {
-		message << _("My lord, this unit is close to advancing a level! ")
-				<< (chosen_unit_->gender() == unit_race::MALE ? _("Do you really want to dismiss him?")
-						: _("Do you really want to dismiss her?"));
+	  message << /*_*/("My lord, this unit is close to advancing a level! ")
+		  << (chosen_unit_->gender() == unit_race::MALE ? /*_*/("Do you really want to dismiss him?")
+						: /*_*/("Do you really want to dismiss her?"));
 	}
 
 	if (!message.str().empty()) {
@@ -297,7 +297,7 @@ void tunit_message_::pre_show(CVideo& video, twindow& window) {
 		gold_color = affordable ? "green" : "red" ;
 
 		std::ostringstream cost;
-		cost << "<span color=\"" << gold_color << "\">" << unit.cost() << " " << _("Gold") << "</span>" ;
+		cost << "<span color=\"" << gold_color << "\">" << unit.cost() << " " << /*_*/("Gold") << "</span>" ;
 
 		// Add the data.
 		data["cost"]["label"] = cost.str();

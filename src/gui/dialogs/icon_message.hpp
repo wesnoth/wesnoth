@@ -1,6 +1,6 @@
-/* $Id: wml_message.hpp 39955 2009-11-26 05:32:48Z fendrin $ */
+/* $Id: icon_message.hpp 39955 2009-11-26 05:32:48Z fendrin $ */
 /*
-   Copyright (C) 2008 - 2009 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2010 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -15,7 +15,7 @@
 #ifndef GUI_DIALOGS_ICON_MESSAGE_HPP_INCLUDED
 #define GUI_DIALOGS_ICON_MESSAGE_HPP_INCLUDED
 
-#include "gettext.hpp"
+//#include "gettext.hpp"
 #include "gui/dialogs/dialog.hpp"
 #include "unit.hpp"
 #include "menu_events.hpp"
@@ -296,8 +296,8 @@ public:
 			const std::vector<const unit_type*> type_list,
 			std::string& chosen_type,
 			int side_num, int gold)
-			: tunit_message_(_("Recruit")
-					, _("Select unit:")
+			: tunit_message_(/*_*/("Recruit")
+					, /*_*/("Select unit:")
 					, mirror
 					, type_list, &unit_, side_num, gold )
 			  , chosen_type_(chosen_type)
@@ -383,7 +383,7 @@ public:
 			const std::vector<unit>& unit_list,
 			unit* chosen_unit,
 			events::menu_handler* game_menu_handler)
-		: tunit_message_(_("Recall"),_("Select Unit:"), mirror, unit_list, chosen_unit)
+		: tunit_message_(/*_*/("Recall"),/*_*/("Select Unit:"), mirror, unit_list, chosen_unit)
 		  , game_menu_handler_(game_menu_handler)
 	{
 	}
