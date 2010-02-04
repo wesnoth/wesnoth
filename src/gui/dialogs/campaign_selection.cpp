@@ -23,6 +23,7 @@
 #include "gui/widgets/multi_page.hpp"
 #include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/settings.hpp"
+#include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/window.hpp"
 #include "serialization/string_utils.hpp"
 
@@ -58,12 +59,15 @@ namespace gui2 {
 
 void tcampaign_selection::campaign_selected(twindow& window)
 {
-	tlistbox& list = find_widget<tlistbox>(&window, "campaign_list", false);
+	if(new_widgets) {
+	} else {
+		tlistbox& list = find_widget<tlistbox>(&window, "campaign_list", false);
 
-	tmulti_page& multi_page = find_widget<tmulti_page>(
-			&window, "campaign_details", false);
+		tmulti_page& multi_page = find_widget<tmulti_page>(
+				&window, "campaign_details", false);
 
-	multi_page.select_page(list.get_selected_row());
+		multi_page.select_page(list.get_selected_row());
+	}
 }
 
 twindow* tcampaign_selection::build_window(CVideo& video)
@@ -73,61 +77,130 @@ twindow* tcampaign_selection::build_window(CVideo& video)
 
 void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 {
-	/***** Setup campaign list. *****/
-	tlistbox& list = find_widget<tlistbox>(&window, "campaign_list", false);
+	if(new_widgets) {
+		/***** Setup campaign tree. *****/
+		ttree_view& tree = find_widget<ttree_view>(&window, "campaign_tree", false);
 
-	list.set_callback_value_change(dialog_callback
-			<tcampaign_selection, &tcampaign_selection::campaign_selected>);
+//		list.set_callback_value_change(dialog_callback
+//				<tcampaign_selection, &tcampaign_selection::campaign_selected>);
 
-	window.keyboard_capture(&list);
+		window.keyboard_capture(&tree);
 
-	/***** Setup campaign details. *****/
-	tmulti_page& multi_page = find_widget<tmulti_page>(
-			&window, "campaign_details", false);
+		string_map tree_group_field;
+		std::map<std::string, string_map> tree_group_item;
 
-	foreach (const config &c, campaigns_) {
+		tree_group_field["label"] = "Campaigns won";
+		tree_group_item["tree_view_node_label"] = tree_group_field;
+		ttree_view::tnode& completed =
+				tree.add_node("campaign_group", tree_group_item);
 
-		/*** Add list item ***/
-		string_map list_item;
-		std::map<std::string, string_map> list_item_item;
+		tree_group_field["label"] = "Campaigns to conquer";
+		tree_group_item["tree_view_node_label"] = tree_group_field;
+		ttree_view::tnode& not_completed =
+				tree.add_node("campaign_group", tree_group_item);
 
-		list_item["label"] = c["icon"];
-		list_item_item.insert(std::make_pair("icon", list_item));
+		/***** Setup campaign details. *****/
+		tmulti_page& multi_page = find_widget<tmulti_page>(
+				&window, "campaign_details", false);
 
-		list_item["label"] = c["name"];
-		list_item_item.insert(std::make_pair("name", list_item));
+		foreach(const config &campaign, campaigns_) {
 
-		list.add_row(list_item_item);
+			/*** Add tree item ***/
+			tree_group_field["label"] = campaign["icon"];
+			tree_group_item["icon"] = tree_group_field;
 
-		tgrid* grid = list.get_row_grid(list.get_item_count() - 1);
-		assert(grid);
+			tree_group_field["label"] = campaign["name"];
+			tree_group_item["name"] = tree_group_field;
 
-		twidget* widget = grid->find("victory", false);
-		if(widget && !utils::string_bool(c["completed"], false)) {
-			widget->set_visible(twidget::HIDDEN);
+			if(utils::string_bool(campaign["completed"], false)) {
+				completed.add_child("campaign", tree_group_item);
+			} else {
+				not_completed.add_child("campaign", tree_group_item);
+			}
+
+			/*** Add detail item ***/
+			string_map detail_item;
+			std::map<std::string, string_map> detail_page;
+
+			detail_item["label"] = campaign["description"];
+			detail_item["use_markup"] = "true";
+			detail_page.insert(std::make_pair("description", detail_item));
+
+			detail_item["label"] = campaign["image"];
+			detail_page.insert(std::make_pair("image", detail_item));
+
+			multi_page.add_page(detail_page);
+
+			break; // FIXME remove
 		}
 
-		/*** Add detail item ***/
-		string_map detail_item;
-		std::map<std::string, string_map> detail_page;
+//		if(completed.empty()) {
+			completed.set_visible(twidget::INVISIBLE);
+//		}
 
-		detail_item["label"] = c["description"];
-		detail_item["use_markup"] = "true";
-		detail_page.insert(std::make_pair("description", detail_item));
+		if(not_completed.empty()) {
+			not_completed.set_visible(twidget::INVISIBLE);
+		}
 
-		detail_item["label"] = c["image"];
-		detail_page.insert(std::make_pair("image", detail_item));
+	} else {
+		/***** Setup campaign list. *****/
+		tlistbox& list = find_widget<tlistbox>(&window, "campaign_list", false);
 
-		multi_page.add_page(detail_page);
+		list.set_callback_value_change(dialog_callback
+				<tcampaign_selection, &tcampaign_selection::campaign_selected>);
+
+		window.keyboard_capture(&list);
+
+		/***** Setup campaign details. *****/
+		tmulti_page& multi_page = find_widget<tmulti_page>(
+				&window, "campaign_details", false);
+
+		foreach (const config &c, campaigns_) {
+
+			/*** Add list item ***/
+			string_map list_item;
+			std::map<std::string, string_map> list_item_item;
+
+			list_item["label"] = c["icon"];
+			list_item_item.insert(std::make_pair("icon", list_item));
+
+			list_item["label"] = c["name"];
+			list_item_item.insert(std::make_pair("name", list_item));
+
+			list.add_row(list_item_item);
+
+			tgrid* grid = list.get_row_grid(list.get_item_count() - 1);
+			assert(grid);
+
+			twidget* widget = grid->find("victory", false);
+			if(widget && !utils::string_bool(c["completed"], false)) {
+				widget->set_visible(twidget::HIDDEN);
+			}
+
+			/*** Add detail item ***/
+			string_map detail_item;
+			std::map<std::string, string_map> detail_page;
+
+			detail_item["label"] = c["description"];
+			detail_item["use_markup"] = "true";
+			detail_page.insert(std::make_pair("description", detail_item));
+
+			detail_item["label"] = c["image"];
+			detail_page.insert(std::make_pair("image", detail_item));
+
+			multi_page.add_page(detail_page);
+		}
 	}
-
 	campaign_selected(window);
 }
 
 void tcampaign_selection::post_show(twindow& window)
 {
+	if(new_widgets) {
+	} else {
 		choice_ = find_widget<tlistbox>(
 				&window, "campaign_list", false).get_selected_row();
+	}
 }
 
 } // namespace gui2
