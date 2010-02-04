@@ -247,6 +247,7 @@ set(wesnoth-main_SRC
     gui/auxiliary/widget_definition/toggle_button.cpp
     gui/auxiliary/widget_definition/toggle_panel.cpp
     gui/auxiliary/widget_definition/tooltip.cpp
+    gui/auxiliary/widget_definition/tree_view.cpp
     gui/auxiliary/widget_definition/vertical_scrollbar.cpp
     gui/auxiliary/widget_definition/window.cpp
     gui/auxiliary/window_builder/button.cpp
@@ -272,6 +273,7 @@ set(wesnoth-main_SRC
     gui/auxiliary/window_builder/panel.cpp
     gui/auxiliary/window_builder/password_box.cpp
     gui/auxiliary/window_builder/toggle_panel.cpp
+    gui/auxiliary/window_builder/tree_view.cpp
     gui/auxiliary/window_builder.cpp
     gui/dialogs/addon_connect.cpp
     gui/dialogs/addon_list.cpp
@@ -324,6 +326,7 @@ set(wesnoth-main_SRC
     gui/widgets/toggle_button.cpp 
     gui/widgets/toggle_panel.cpp 
     gui/widgets/tooltip.cpp
+    gui/widgets/tree_view.cpp
     gui/widgets/vertical_scrollbar.cpp
     gui/widgets/widget.cpp
     gui/widgets/window.cpp

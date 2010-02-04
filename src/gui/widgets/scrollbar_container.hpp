@@ -43,6 +43,7 @@ class tscrollbar_container
 	friend struct implementation::tbuilder_scroll_label;
 	friend struct implementation::tbuilder_scrollbar_panel;
 	friend class tlistbox;
+	friend class ttree_view;
 	friend struct tscrollbar_container_implementation;
 
 public:
@@ -388,7 +389,7 @@ private:
 	SDL_Rect content_visible_area_;
 
 	/** The builder needs to call us so we do our setup. */
-	void finalize_setup();
+	void finalize_setup(); // FIXME make protected
 
 	/**
 	 * Function for the subclasses to do their setup.

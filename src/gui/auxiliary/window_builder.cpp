@@ -38,6 +38,7 @@
 #include "gui/auxiliary/window_builder/stacked_widget.hpp"
 #include "gui/auxiliary/window_builder/text_box.hpp"
 #include "gui/auxiliary/window_builder/toggle_button.hpp"
+#include "gui/auxiliary/window_builder/tree_view.hpp"
 #include "gui/auxiliary/window_builder/panel.hpp"
 #include "gui/auxiliary/window_builder/password_box.hpp"
 #include "gui/auxiliary/window_builder/toggle_panel.hpp"
@@ -89,6 +90,7 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 	TRY(password_box);
 	TRY(toggle_button);
 	TRY(toggle_panel);
+	TRY(tree_view);
 	TRY(vertical_scrollbar);
 	TRY(grid);
 

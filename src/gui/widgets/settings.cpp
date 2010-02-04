@@ -46,6 +46,7 @@
 #include "gui/auxiliary/widget_definition/toggle_button.hpp"
 #include "gui/auxiliary/widget_definition/toggle_panel.hpp"
 #include "gui/auxiliary/widget_definition/tooltip.hpp"
+#include "gui/auxiliary/widget_definition/tree_view.hpp"
 #include "gui/auxiliary/widget_definition/vertical_scrollbar.hpp"
 #include "gui/widgets/window.hpp"
 #include "serialization/parser.hpp"
@@ -211,6 +212,7 @@ const std::string& tgui_definition::read(const config& cfg)
  *     Toggle_panel                  Like a toggle button but then as panel so
  *                                   can hold multiple items in a grid.
  *     Tooltip                       A small tooltip with help.
+ *     Tree_view                     A tree view widget.
  *     Vertical_scrollbar            A vertical scrollbar.
  *     Window                        A window.
  * @end_table
@@ -280,6 +282,7 @@ const std::string& tgui_definition::read(const config& cfg)
 	load_definitions<ttoggle_button_definition>("toggle_button", cfg);
 	load_definitions<ttoggle_panel_definition>("toggle_panel", cfg);
 	load_definitions<ttooltip_definition>("tooltip", cfg);
+	load_definitions<ttree_view_definition>("tree_view", cfg);
 	load_definitions<tvertical_scrollbar_definition>("vertical_scrollbar", cfg);
 	load_definitions<twindow_definition>("window", cfg);
 
