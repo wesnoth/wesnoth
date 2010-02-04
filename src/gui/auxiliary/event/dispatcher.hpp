@@ -187,7 +187,7 @@ public:
 			, const SDLMod modifier
 			, const Uint16 unicode);
 
-	/** 
+	/**
 	 * Fires an event which takes notification parameters.
 	 *
 	 * @note the void* parameter is a dummy needed for SFINAE.

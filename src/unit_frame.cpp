@@ -625,8 +625,8 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 		result.image_diagonal = engine_val.image_diagonal;
 	}
 
-	/** engine provides a string for "petrified" and "team color" modifications 
-          note that image_mod is the complete modification and halo_mod is only the TC part 
+	/** engine provides a string for "petrified" and "team color" modifications
+          note that image_mod is the complete modification and halo_mod is only the TC part
           see unit.cpp, we know that and use it*/
 		result.image_mod = current_val.image_mod +animation_val.image_mod;
 	if(primary) {
