@@ -89,7 +89,7 @@ tbuilder_tree_view::tnode::tnode(const config& cfg)
 	/** @todo activate after the string freeze. */
 #if 0
 //	VALIDATE(id != "root",
-			_("[node]id 'root' is reserved for the implentation."));
+//			_("[node]id 'root' is reserved for the implentation."));
 #else
 	assert(id != "root");
 #endif
