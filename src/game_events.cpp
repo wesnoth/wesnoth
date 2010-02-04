@@ -2079,8 +2079,7 @@ class recursion_preventer {
 		loc_(loc),
 		too_many_recursions_(false)
 	{
-		const int nill = 0;
-		recursion_counter::iterator inserted = counter_.insert(std::make_pair(loc_, nill)).first;
+		recursion_counter::iterator inserted = counter_.insert(std::make_pair(loc_, 0)).first;
 		++inserted->second;
 		too_many_recursions_ = inserted->second >= max_recursion;
 	}
