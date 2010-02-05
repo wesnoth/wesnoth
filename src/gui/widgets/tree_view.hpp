@@ -115,9 +115,6 @@ public:
 
 		void request_reduce_width(unsigned int) {}
 
-		
-
-
 		tnode* parent_;
 
 		ttree_view* parent_widget_;
@@ -131,7 +128,12 @@ public:
 
 		ttoggle_button* icon_;
 
-		void child_populate_dirty_list(twindow& caller,
+		/**
+		 * "Inherited" from twidget.
+		 *
+		 * This version needs to call its children, which are it's child nodes.
+		 */
+		void impl_populate_dirty_list(twindow& caller,
 				const std::vector<twidget*>& call_stack);
 
 		tpoint calculate_best_size() const 
@@ -170,6 +172,10 @@ public:
 	{
 		return get_root_node().add_child(id, data);
 	}
+
+	/** Inherited from tscrollbar_container. */
+	void child_populate_dirty_list(twindow& caller,
+			const std::vector<twidget*>& call_stack);
 
 	/** Inherited from tcontainer_. */
 	void set_self_active(const bool /*active*/)  {}
@@ -217,6 +223,7 @@ private:
 
 	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const;
+
 };
 
 } // namespace gui2

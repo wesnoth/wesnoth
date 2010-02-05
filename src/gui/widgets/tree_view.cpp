@@ -212,10 +212,9 @@ const twidget* ttree_view::tnode::find_at(
 			*this, coordinate, must_be_active);
 }
 
-void ttree_view::tnode::child_populate_dirty_list(twindow& caller
+void ttree_view::tnode::impl_populate_dirty_list(twindow& caller
 		, const std::vector<twidget*>& call_stack)
 {
-	std::cerr << "Dirty list, grid " << grid_.get_dirty() << ".\n";
 	std::vector<twidget*> child_call_stack = call_stack;
 	grid_.populate_dirty_list(caller, child_call_stack);
 
@@ -225,7 +224,7 @@ void ttree_view::tnode::child_populate_dirty_list(twindow& caller
 
 	foreach(tnode& node, children_) {
 		std::vector<twidget*> child_call_stack = call_stack;
-		node.populate_dirty_list(caller, child_call_stack);
+		node.impl_populate_dirty_list(caller, child_call_stack);
 	}
 }
 
@@ -400,6 +399,16 @@ ttree_view::ttree_view(const std::vector<tnode_definition>& node_definitions)
 		, this
 		, std::map<std::string, string_map>()))
 {
+}
+
+void ttree_view::child_populate_dirty_list(twindow& caller
+		, const std::vector<twidget*>& call_stack)
+{
+	// Inherited.
+	tscrollbar_container::child_populate_dirty_list(caller, call_stack);
+
+	assert(root_node_);
+	root_node_->impl_populate_dirty_list(caller, call_stack);
 }
 
 const std::string& ttree_view::tnode::get_control_type() const
