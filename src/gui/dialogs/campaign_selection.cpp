@@ -143,6 +143,13 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 		}
 
 	} else {
+		/***** Hid the tree view. *****/
+		if(ttree_view* tree = find_widget<ttree_view>(
+				&window, "campaign_tree", false, false)) {
+
+			tree->set_visible(twidget::INVISIBLE);
+		}
+
 		/***** Setup campaign list. *****/
 		tlistbox& list = find_widget<tlistbox>(&window, "campaign_list", false);
 
