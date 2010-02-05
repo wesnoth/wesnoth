@@ -47,6 +47,7 @@ ttree_view::tnode::tnode(const std::string& id
 	, children_()
 	, node_definitions_(node_definitions)
 	, icon_(NULL)
+	, label_(NULL)
 {
 	set_parent(parent_widget);
 	grid_.set_parent(this);
@@ -74,24 +75,20 @@ ttree_view::tnode::tnode(const std::string& id
 				if(parent_ && parent_->icon_) {
 					parent_->icon_->set_visible(twidget::VISIBLE);
 				}
-/*
-				twidget* w = find_widget<twidget>(
+
+				twidget& widget = find_widget<twidget>(
 						  &grid_
 						, "tree_view_node_label"
-						, false
-						, false); {
-assert(w);
+						, false);
 
-					w->connect_signal<event::LEFT_BUTTON_CLICK>(
-							boost::bind(&ttree_view::tnode::
-								signal_handler_left_button_click
-								, this, _2));
-
-
+				label_ = dynamic_cast<tselectable_*>(&widget);
+				if(label_) {
+					widget.connect_signal<event::LEFT_BUTTON_CLICK>(
+							  boost::bind(&ttree_view::tnode::
+								signal_handler_label_left_button_click
+								, this, _2, _3, _4)
+							, event::tdispatcher::front_child);
 				}
-*/
-
-//				init_grid(&grid_, data);
 
 				return;
 			}
@@ -347,6 +344,26 @@ void ttree_view::tnode::signal_handler_left_button_click(
 	parent_widget_->set_size(
 			  parent_widget_->get_origin()
 			, parent_widget_->get_size());
+}
+
+void ttree_view::tnode::signal_handler_label_left_button_click(
+		  const event::tevent event
+		, bool& handled
+		, bool& halt)
+{
+	DBG_GUI_E << LOG_NODE_HEADER << ' ' << event << ".\n";
+
+	assert(label_);
+
+	if(label_->get_value()) {
+		// Forbid deselecting
+		halt = handled = true;
+	} else {
+		// Deselect current item
+		//
+		// TODO implement
+	}
+
 }
 
 void ttree_view::tnode::init_grid(tgrid* grid

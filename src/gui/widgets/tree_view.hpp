@@ -23,6 +23,7 @@
 
 namespace gui2 {
 
+class tselectable_;
 class ttoggle_button;
 
 class ttree_view
@@ -128,6 +129,8 @@ public:
 
 		ttoggle_button* icon_;
 
+		tselectable_* label_;
+
 		/**
 		 * "Inherited" from twidget.
 		 *
@@ -156,7 +159,13 @@ public:
 
 		void impl_draw_children(surface& frame_buffer);
 
+		// FIXME rename to icon
 		void signal_handler_left_button_click(const event::tevent event);
+
+		void signal_handler_label_left_button_click(
+				  const event::tevent event
+				, bool& handled
+				, bool& halt);
 
 		void init_grid(tgrid* grid
 				, const std::map<
