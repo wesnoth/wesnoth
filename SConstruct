@@ -73,7 +73,6 @@ opts.AddVariables(
     BoolVariable('editor', 'Enable editor', True),
     BoolVariable('lowmem', 'Set to reduce memory usage by removing extra functionality', False),
     BoolVariable('experimental', 'Enable experimental code for developers only', False),
-    BoolVariable('lua', 'Enable Lua support', True),
     BoolVariable('notifications', 'Enable support for desktop notifications', True),
     BoolVariable('nls','enable compile/install of gettext message catalogs',True),
     PathVariable('prefix', 'autotools-style installation prefix', "/usr/local", PathVariable.PathAccept),
@@ -294,19 +293,13 @@ if env["prereqs"]:
         conf.CheckSDL(require_version = '1.2.7') and \
         conf.CheckSDL('SDL_net') or Warning("Base prerequisites are not met.")
 
-    def check_lua():
-        if env["lua"]:
-            return conf.CheckLua(require_version = "5.1")
-        else:
-            return True
-
     env = conf.Finish()
     client_env = env.Clone()
     conf = client_env.Configure(**configure_args)
     have_client_prereqs = have_server_prereqs and \
         conf.CheckPango("cairo") and \
         conf.CheckPKG("fontconfig") and \
-        check_lua() and \
+        conf.CheckLua(require_version = "5.1") and \
         conf.CheckBoost("regex", require_version = "1.35.0") and \
         conf.CheckSDL("SDL_ttf", require_version = "2.0.8") and \
         conf.CheckSDL("SDL_mixer", require_version = '1.2.0') and \
@@ -402,9 +395,6 @@ for env in [test_env, client_env, env]:
 
     if not env["editor"]:
         env.Append(CPPDEFINES = "DISABLE_EDITOR")
-
-    if not env['lua']:
-        env.Append(CPPDEFINES = "DISABLE_LUA")
 
     if env["PLATFORM"] == "win32":
         env["pool_alloc"] = False
