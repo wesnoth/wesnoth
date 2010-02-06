@@ -387,17 +387,15 @@ void copy_to_clipboard(const std::string& text, const bool)
 	// Convert newlines
 	std::string str;
 	str.reserve(text.size());
-	std::string::const_iterator first = text.begin();
 	std::string::const_iterator last = text.begin();
-	do {
+	while(last != text.end()) {
 		if(*last != '\n') {
-			++last;
-			continue;
+			str.push_back(*last);
+		} else {
+			str.append("\r\n");
 		}
-		str.append(first, last);
-		str.append("\r\n");
-		first = ++last;
-	} while(last != text.end());
+		++last;
+	}
 
 	const HGLOBAL hglb = GlobalAlloc(GMEM_MOVEABLE, (str.size() + 1) * sizeof(TCHAR));
 	if(hglb == NULL) {
