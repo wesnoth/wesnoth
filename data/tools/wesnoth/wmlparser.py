@@ -799,11 +799,46 @@ class Parser:
                     data.insert(subdata)
 
 
+def strify(string):
+    """
+Massage a string into what appears to be a JSON-compatible form
+"""
+    s = repr(string)
+    front = s.index("'")
+    return '"%s"' % s[front+1:len(s)-1]
+
+def jsonify(tree, verbose=False):
+    """
+Convert a DataSub into JSON
+
+If verbose, insert a linebreak after every brace and comma (put every item on its own line), otherwise, condense everything into a single line.
+"""
+    print "{",
+    if verbose: print
+    first = True
+    for child in tree.children():
+        if first:
+            first = False
+        else:
+            print ",",
+            if verbose: print
+        print '"%s":' % child.name,
+        if child.get_type() == "DataSub":
+            jsonify(child)
+        else:
+            print strify(child.get_value()),
+            if verbose: print
+    print "}",
+    if verbose: print
+
 if __name__ == "__main__":
     import optparse, subprocess
     try: import psyco
     except ImportError: pass
     else: psyco.full()
+
+    # Hack to make us not crash when we encounter characters that aren't ASCII
+    sys.stdout = __import__("codecs").getwriter('utf-8')(sys.stdout)
 
     optionparser = optparse.OptionParser()
     optionparser.set_usage("usage: %prog [options] [filename]")
@@ -818,6 +853,8 @@ if __name__ == "__main__":
         help = "do not expand any macros")
     optionparser.add_option("-c", "--contents", action = "store_true",
         help = "display contents of every tag")
+    optionparser.add_option("-j", "--to-json", action = "store_true",
+        help = "output JSON version of tree")
     options, args = optionparser.parse_args()
 
     if options.path:
@@ -854,5 +891,8 @@ if __name__ == "__main__":
     data = wmldata.DataSub("WML")
     wmlparser.parse_top(data)
 
-    data.debug(show_contents = options.contents, use_color = options.color)
+    if options.to_json:
+        jsonify(data)#, True) # For more readable results
+    else:
+        data.debug(show_contents = options.contents, use_color = options.color)
 
