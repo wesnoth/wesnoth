@@ -89,6 +89,11 @@ ttree_view::tnode::tnode(const std::string& id
 								signal_handler_label_left_button_click
 								, this, _2, _3, _4)
 							, event::tdispatcher::front_child);
+					widget.connect_signal<event::LEFT_BUTTON_CLICK>(
+							  boost::bind(&ttree_view::tnode::
+								signal_handler_label_left_button_click
+								, this, _2, _3, _4)
+							, event::tdispatcher::front_pre_child);
 				}
 
 				return;
@@ -362,15 +367,20 @@ void ttree_view::tnode::signal_handler_label_left_button_click(
 
 	assert(label_);
 
+	// We only snoop on the event so normally don't touch the handled, else if we snoop in preexcept when halting.
+
 	if(label_->get_value()) {
 		// Forbid deselecting
 		halt = handled = true;
 	} else {
 		// Deselect current item
-		//
-		// TODO implement
-	}
+		assert(parent_widget_);
+		if(parent_widget_->selected_item_ && parent_widget_->selected_item_->label_) {
+			parent_widget_->selected_item_->label_->set_value(false);
+		}
 
+		parent_widget_->selected_item_ = this;
+	}
 }
 
 void ttree_view::tnode::init_grid(tgrid* grid
@@ -422,6 +432,7 @@ ttree_view::ttree_view(const std::vector<tnode_definition>& node_definitions)
 		, NULL
 		, this
 		, std::map<std::string, string_map>()))
+	, selected_item_(NULL)
 {
 }
 

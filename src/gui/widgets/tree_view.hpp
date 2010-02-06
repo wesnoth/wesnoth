@@ -199,6 +199,10 @@ public:
 		indention_step_size_ = indention_step_size;
 	}
 
+	tnode* selected_item() { return selected_item_; }
+
+	const tnode* selected_item() const { return selected_item_; }
+
 protected:
 
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
@@ -228,6 +232,8 @@ private:
 	unsigned indention_step_size_;
 
 	tnode* root_node_;
+
+	tnode* selected_item_;
 
 	/** Inherited from tcontainer_. */
 	virtual void finalize_setup();
