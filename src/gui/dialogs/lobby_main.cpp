@@ -842,11 +842,7 @@ void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
 			&window, "chat_log_container", false, true);
 
 	window.set_enter_disabled(true);
-	// Force first update to be directly.
-	tlobby_main::network_handler();
-	lobby_update_timer_ = add_timer(game_config::lobby_refresh
-			, boost::bind(&tlobby_main::network_handler, this)
-			, true);
+
 	window_ = &window;
 
 	chat_input_ = find_widget<ttext_box>(&window, "chat_input", false, true);
@@ -892,6 +888,12 @@ void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
 	room_window_open("lobby", true);
 	active_window_changed();
 	game_filter_reload();
+
+	// Force first update to be directly.
+	tlobby_main::network_handler();
+	lobby_update_timer_ = add_timer(game_config::lobby_refresh
+			, boost::bind(&tlobby_main::network_handler, this)
+			, true);
 }
 
 void tlobby_main::post_show(twindow& /*window*/)
