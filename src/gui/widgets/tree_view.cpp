@@ -116,15 +116,37 @@ ttree_view::tnode::tnode(const std::string& id
 ttree_view::tnode& ttree_view::tnode::add_child(
 		  const std::string& id
 		, const std::map<std::string /* widget id */, string_map>& data
-		, const int)
+		, const int index)
 {
-	children_.push_back(new tnode(
-				  id
-				, node_definitions_
-				, this
-				, parent_widget_
-				, data));
-	return children_.back();
+
+	boost::ptr_vector<tnode>::iterator itor = children_.end();
+
+	if(static_cast<size_t>(index) < children_.size()) {
+		itor = children_.begin() + index;
+	}
+
+	itor = children_.insert(itor, new tnode(
+			  id
+			, node_definitions_
+			, this
+			, parent_widget_
+			, data));
+
+	if(parent_widget_->get_size() == tpoint(0, 0)) {
+		return *itor;
+	}
+	/** @todo Test whether this resizing works properly. */
+	if(parent_widget_->content_resize_request()) {
+		parent_widget_->set_size(
+				  parent_widget_->get_origin()
+				, parent_widget_->get_size());
+	} else {
+		twindow *window = get_window();
+		assert(window);
+		window->invalidate_layout();
+	}
+
+	return *itor;
 }
 
 ttree_view::tnode& ttree_view::tnode::parent()
