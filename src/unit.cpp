@@ -1521,12 +1521,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 
 void unit::write(config& cfg) const
 {
-	// If a location has been saved in the config, keep it
-	std::string x = cfg["x"];
-	std::string y = cfg["y"];
 	cfg.append(cfg_);
-	cfg["x"] = x;
-	cfg["y"] = y;
 	const unit_type *ut = unit_types.find(type_id());
 	if (ut) {
 		ut = &ut->get_gender_unit_type(gender_).get_variation(variation_);
