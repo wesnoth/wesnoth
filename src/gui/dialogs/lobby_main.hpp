@@ -255,6 +255,8 @@ private:
 
 	void process_network_data(const config& data);
 
+	void process_delayed_data();
+
 	void process_message(const config& data, bool whisper = false);
 
 	void process_gamelist(const config& data);
@@ -383,6 +385,12 @@ private:
 	std::vector<int> gamelist_id_at_row_;
 
 	bool delay_playerlist_update_;
+
+	bool delay_gamelist_update_;
+
+	std::deque<config> delayed_gamelist_updates_;
+
+	friend struct lobby_delay_gamelist_update_guard;
 };
 
 } // namespace gui2

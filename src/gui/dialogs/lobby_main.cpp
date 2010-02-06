@@ -313,8 +313,21 @@ tlobby_main::tlobby_main(const config& game_config
 	, preferences_wrapper_()
 	, gamelist_id_at_row_()
 	, delay_playerlist_update_(false)
+	, delay_gamelist_update_(false)
+	, delayed_gamelist_updates_()
 {
 }
+
+struct lobby_delay_gamelist_update_guard
+{
+	lobby_delay_gamelist_update_guard(tlobby_main& l) : l(l) {
+		l.delay_gamelist_update_ = true;
+	}
+	~lobby_delay_gamelist_update_guard() {
+		l.delay_gamelist_update_ = false;
+	}
+	tlobby_main& l;
+};
 
 void tlobby_main::set_preferences_callback(boost::function<void ()> cb)
 {
@@ -1135,6 +1148,9 @@ void tlobby_main::network_handler()
 		update_gamelist_filter();
 		update_playerlist();
 	}
+	if (!delay_gamelist_update_ && !delayed_gamelist_updates_.empty()) {
+		process_delayed_data();
+	}
 	try {
 		config data;
 		const network::connection sock = network::receive_data(data);
@@ -1147,6 +1163,18 @@ void tlobby_main::network_handler()
 	}
 }
 
+void tlobby_main::process_delayed_data()
+{
+	foreach (const config& data, delayed_gamelist_updates_) {
+		if(data.child("gamelist")) {
+			process_gamelist(data);
+		} else if (const config &c = data.child("gamelist_diff")) {
+			process_gamelist_diff(c);
+		}
+	}
+	delayed_gamelist_updates_.clear();
+}
+
 void tlobby_main::process_network_data(const config &data)
 {
 	if (const config &c = data.child("error")) {
@@ -1156,9 +1184,17 @@ void tlobby_main::process_network_data(const config &data)
 	} else if (const config &c = data.child("whisper")) {
 		process_message(c, true);
 	} else if(data.child("gamelist")) {
-		process_gamelist(data);
+		if (delay_gamelist_update_) {
+			delayed_gamelist_updates_.push_back(data);
+		} else {
+			process_gamelist(data);
+		}
 	} else if (const config &c = data.child("gamelist_diff")) {
-		process_gamelist_diff(c);
+		if (delay_gamelist_update_) {
+			delayed_gamelist_updates_.push_back(data);
+		} else {
+			process_gamelist_diff(c);
+		}
 	} else if (const config &c = data.child("room_join")) {
 		process_room_join(c);
 	} else if (const config &c = data.child("room_part")) {
@@ -1560,6 +1596,7 @@ void tlobby_main::player_filter_callback(gui2::twidget* /*widget*/)
 void tlobby_main::user_dialog_callback(user_info* info)
 {
 	tlobby_player_info dlg(*this, *info, lobby_info_);
+	lobby_delay_gamelist_update_guard g(*this);
 	dlg.show(window_->video());
 	delay_playerlist_update_ = true;
 	if (dlg.result_open_whisper()) {
