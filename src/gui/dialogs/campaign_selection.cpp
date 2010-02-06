@@ -27,6 +27,8 @@
 #include "gui/widgets/window.hpp"
 #include "serialization/string_utils.hpp"
 
+#include <boost/bind.hpp>
+
 namespace gui2 {
 
 /*WIKI
@@ -60,6 +62,15 @@ namespace gui2 {
 void tcampaign_selection::campaign_selected(twindow& window)
 {
 	if(new_widgets) {
+		assert(find_widget<ttree_view>(&window, "campaign_tree", false)
+				.selected_item());
+		const unsigned choice = lexical_cast<unsigned>(
+				find_widget<ttree_view>(&window, "campaign_tree", false)
+					.selected_item()->id());
+
+		tmulti_page& multi_page = find_widget<tmulti_page>(
+				&window, "campaign_details", false);
+		multi_page.select_page(choice);
 	} else {
 		tlistbox& list = find_widget<tlistbox>(&window, "campaign_list", false);
 
@@ -81,8 +92,10 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 		/***** Setup campaign tree. *****/
 		ttree_view& tree = find_widget<ttree_view>(&window, "campaign_tree", false);
 
-//		list.set_callback_value_change(dialog_callback
-//				<tcampaign_selection, &tcampaign_selection::campaign_selected>);
+		tree.set_selection_change_callback(boost::bind(
+				  &tcampaign_selection::campaign_selected
+				, *this
+				, boost::ref(window)));
 
 		window.keyboard_capture(&tree);
 
