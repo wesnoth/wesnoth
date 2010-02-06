@@ -261,6 +261,14 @@ tpoint ttree_view::tnode::calculate_best_size(const int indention_level
 	return best_size;
 }
 
+void ttree_view::tnode::set_origin(const tpoint& origin)
+{
+	// Inherited.
+	twidget::set_origin(origin);
+
+	set_size(40, origin);
+}
+
 void ttree_view::tnode::set_size(const tpoint& origin, const tpoint& size)
 {
 	// Inherited.

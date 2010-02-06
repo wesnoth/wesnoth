@@ -149,6 +149,8 @@ public:
 		tpoint calculate_best_size(const int indention_level
 				, const unsigned indention_step_size) const;
 
+		void set_origin(const tpoint& origin);
+
 		void set_size(const tpoint& origin, const tpoint& size);
 
 		unsigned set_size(
