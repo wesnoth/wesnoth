@@ -141,7 +141,7 @@ bool ttree_view::tnode::is_folded() const
 {
 	return icon_ && icon_->get_value();
 }
-
+#if 0
 void ttree_view::tnode::fold(const bool /*recursive*/)
 {
 	// FIXME set state
@@ -159,7 +159,7 @@ void ttree_view::tnode::unfold(const texpand_mode /*mode*/)
 			  parent_widget_->get_origin()
 			, parent_widget_->get_size());
 }
-
+#endif
 struct ttree_view_node_implementation
 {
 

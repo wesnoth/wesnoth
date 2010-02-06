@@ -103,9 +103,9 @@ public:
 
 		// If recursive all children will be closed recursively causing
 		// restore expaning not to expand anything
-		void fold(const bool recursive); // FIXME implement
+//		void fold(const bool recursive); // FIXME implement
 
-		void unfold(const texpand_mode mode); // FIXME implement
+//		void unfold(const texpand_mode mode); // FIXME implement
 
 		twidget* find_at(const tpoint& coordinate, const bool must_be_active);
 
