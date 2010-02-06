@@ -149,6 +149,7 @@ ttree_view::tnode& ttree_view::tnode::add_child(
 	return *itor;
 }
 
+
 ttree_view::tnode& ttree_view::tnode::parent()
 {
 	assert(!is_root_node());
@@ -449,6 +450,37 @@ ttree_view::ttree_view(const std::vector<tnode_definition>& node_definitions)
 	, selected_item_(NULL)
 	, selection_change_callback_()
 {
+}
+
+void ttree_view::remove_node(tnode* node)
+{
+	assert(node && node != root_node_ && node->parent_);
+
+	boost::ptr_vector<tnode>::iterator itor =
+				  node->parent_->children_.begin();
+
+	for( ; itor != node->parent_->children_.end(); ++itor) {
+		if(&*itor == node) {
+			break;
+		}
+	}
+
+	assert(itor != node->parent_->children_.end());
+
+	node->parent_->children_.erase(itor);
+
+	if(get_size() == tpoint(0, 0)) {
+		return;
+	}
+
+	/** @todo Test whether this resizing works properly. */
+	if(content_resize_request()) {
+		set_size(get_origin(), get_size());
+	} else {
+		twindow *window = get_window();
+		assert(window);
+		window->invalidate_layout();
+	}
 }
 
 void ttree_view::child_populate_dirty_list(twindow& caller

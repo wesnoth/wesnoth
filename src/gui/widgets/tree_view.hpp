@@ -184,6 +184,8 @@ public:
 		return get_root_node().add_child(id, data);
 	}
 
+	void remove_node(tnode* node);
+
 	/** Inherited from tscrollbar_container. */
 	void child_populate_dirty_list(twindow& caller,
 			const std::vector<twidget*>& call_stack);
