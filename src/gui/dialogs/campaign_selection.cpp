@@ -131,7 +131,7 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 
 			multi_page.add_page(detail_page);
 
-			break; // FIXME remove
+//			break; // FIXME remove
 		}
 
 //		if(completed.empty()) {
