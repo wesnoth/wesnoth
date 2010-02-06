@@ -103,6 +103,7 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 		tmulti_page& multi_page = find_widget<tmulti_page>(
 				&window, "campaign_details", false);
 
+		unsigned id = 0;
 		foreach(const config &campaign, campaigns_) {
 
 			/*** Add tree item ***/
@@ -113,9 +114,9 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 			tree_group_item["name"] = tree_group_field;
 
 			if(utils::string_bool(campaign["completed"], false)) {
-				completed.add_child("campaign", tree_group_item);
+				completed.add_child("campaign", tree_group_item).set_id(lexical_cast<std::string>(id++));
 			} else {
-				not_completed.add_child("campaign", tree_group_item);
+				not_completed.add_child("campaign", tree_group_item).set_id(lexical_cast<std::string>(id++));
 			}
 
 			/*** Add detail item ***/
@@ -204,6 +205,11 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 void tcampaign_selection::post_show(twindow& window)
 {
 	if(new_widgets) {
+		assert(find_widget<ttree_view>(&window, "campaign_tree", false)
+				.selected_item());
+		choice_ = lexical_cast<unsigned>(
+				find_widget<ttree_view>(&window, "campaign_tree", false)
+					.selected_item()->id());
 	} else {
 		choice_ = find_widget<tlistbox>(
 				&window, "campaign_list", false).get_selected_row();
