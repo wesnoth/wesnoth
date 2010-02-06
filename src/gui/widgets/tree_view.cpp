@@ -31,9 +31,6 @@
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
-#undef DBG_GUI_L
-#define DBG_GUI_L std::cerr
-
 namespace gui2 {
 
 ttree_view::tnode::tnode(const std::string& id
@@ -169,37 +166,23 @@ struct ttree_view_node_implementation
 				tree_view_node
 			, const tpoint& coordinate, const bool must_be_active)
 	{
-		std::cerr
-				<< " Checking at " << coordinate
-				<< " must be active " << must_be_active
-				<< ".\n";
-
 		if(W* widget =
 				tree_view_node.grid_.find_at(coordinate, must_be_active)) {
-
-			std::cerr
-					<< " found the widget in our grid, id '" << widget->id()
-					<< "'.\n";
 
 			return widget;
 		}
 
 		if(tree_view_node.is_folded()) {
-			std::cerr << " folded found nothing.\n";
 			return NULL;
 		}
 
 		typedef typename tconst_duplicator<W, ttree_view::tnode>::type thack;
 		foreach(thack& node, tree_view_node.children_) {
 			if(W* widget = node./*grid_.*/find_at(coordinate, must_be_active)) {
-				std::cerr
-						<< " found the widget in a child grid, id '"
-						<< widget->id() << "'.\n";
 				return widget;
 			}
 		}
 
-		std::cerr << " found nothing.\n";
 		return NULL;
 	}
 };
