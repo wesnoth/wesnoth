@@ -717,7 +717,7 @@ static int impl_unit_get(lua_State *L)
 	return_bool_attrib("resting", u.resting());
 	return_string_attrib("role", u.get_role());
 	return_string_attrib("facing", map_location::write_direction(u.facing()));
-	return_cfg_attrib("__cfg", u.write(cfg));
+	return_cfg_attrib("__cfg", u.write(cfg); ui->first.write(cfg));
 	return 0;
 }
 
