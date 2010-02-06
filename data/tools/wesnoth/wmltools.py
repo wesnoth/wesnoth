@@ -149,7 +149,7 @@ def formaltype(f):
         ftype = "numeric"
     elif f in ("POSITION",):
         ftype = "position"
-    elif f.endswith("_SPAN"):
+    elif f.endswith("_SPAN") or f == "SIDES":
         ftype = "span"
     elif f in ("RANGE",):
         ftype = "range"
