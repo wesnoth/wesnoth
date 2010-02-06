@@ -20,6 +20,7 @@
 #include "gui/widgets/control.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/toggle_panel.hpp"
+#include "gui/widgets/window.hpp"
 
 #include <boost/bind.hpp>
 
@@ -341,17 +342,15 @@ void ttree_view::tnode::signal_handler_left_button_click(
 {
 	DBG_GUI_E << LOG_NODE_HEADER << ' ' << event << ".\n";
 
-	assert(icon_);
-/*
-	if(!icon_->get_value()) {
-		fold(false);
+	if(parent_widget_->content_resize_request()) {
+		parent_widget_->set_size(
+				  parent_widget_->get_origin()
+				, parent_widget_->get_size());
 	} else {
-		unfold(recursive_restore);
+		twindow *window = get_window();
+		assert(window);
+		window->invalidate_layout();
 	}
-*/
-	parent_widget_->set_size(
-			  parent_widget_->get_origin()
-			, parent_widget_->get_size());
 }
 
 void ttree_view::tnode::signal_handler_label_left_button_click(
