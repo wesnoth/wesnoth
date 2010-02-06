@@ -672,7 +672,8 @@ unit_preview_pane::unit_preview_pane(const gui::filter_textbox *filter, TYPE typ
 				      filter_(filter), weapons_(type == SHOW_ALL), left_(on_left_side)
 {
 	unsigned w = font::relative_size(weapons_ ? 200 : 190);
-	unsigned h = font::relative_size(weapons_ ? 370 : 140);
+// advance test
+	unsigned h = font::relative_size(weapons_ ? 440 : 140);
 	set_measurements(w, h);
 }
 
