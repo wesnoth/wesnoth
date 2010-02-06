@@ -110,7 +110,7 @@ ttree_view::tnode& ttree_view::tnode::add_child(
 		, const std::map<std::string /* widget id */, string_map>& data
 		, const int)
 {
-	children_.push_back(new tnode::tnode(
+	children_.push_back(new tnode(
 				  id
 				, node_definitions_
 				, this
