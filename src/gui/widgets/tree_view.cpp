@@ -94,6 +94,11 @@ ttree_view::tnode::tnode(const std::string& id
 								signal_handler_label_left_button_click
 								, this, _2, _3, _4)
 							, event::tdispatcher::front_pre_child);
+
+					if(!parent_widget_->selected_item_) {
+						parent_widget_->selected_item_ = this;
+						label_->set_value(true);
+					}
 				}
 
 				return;
@@ -380,6 +385,10 @@ void ttree_view::tnode::signal_handler_label_left_button_click(
 		}
 
 		parent_widget_->selected_item_ = this;
+
+		if(parent_widget_->selection_change_callback_) {
+			parent_widget_->selection_change_callback_();
+		}
 	}
 }
 
@@ -433,6 +442,7 @@ ttree_view::ttree_view(const std::vector<tnode_definition>& node_definitions)
 		, this
 		, std::map<std::string, string_map>()))
 	, selected_item_(NULL)
+	, selection_change_callback_()
 {
 }
 

@@ -203,6 +203,11 @@ public:
 
 	const tnode* selected_item() const { return selected_item_; }
 
+	void set_selection_change_callback(boost::function<void()> callback)
+	{
+		selection_change_callback_ = callback;
+	}
+
 protected:
 
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
@@ -234,6 +239,8 @@ private:
 	tnode* root_node_;
 
 	tnode* selected_item_;
+
+	boost::function<void ()> selection_change_callback_;
 
 	/** Inherited from tcontainer_. */
 	virtual void finalize_setup();
