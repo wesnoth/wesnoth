@@ -916,7 +916,8 @@ protected:
 
 		static char const *mp_side_attrs[] = {
 			"income_lock", "gold_lock", "team_lock", "leader",
-			"random_leader", "terrain_liked" };
+			"random_leader", "terrain_liked",
+			"allow_changes", "faction_name", "user_description" };
 
 		log_step("place units");
 		foreach (const config *u, unit_configs_) {
