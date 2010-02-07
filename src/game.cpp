@@ -663,11 +663,7 @@ bool game_controller::play_test()
 	state_.classification().campaign_define = "TEST";
 	cache_.add_define("TEST");
 
-	try {
-		load_game_cfg();
-	} catch(config::error&) {
-		return false;
-	}
+	load_game_cfg();
 
 	paths_manager_.set_paths(game_config());
 
