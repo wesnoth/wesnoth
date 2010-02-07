@@ -62,11 +62,15 @@ namespace gui2 {
 void tcampaign_selection::campaign_selected(twindow& window)
 {
 	if(new_widgets) {
-		assert(find_widget<ttree_view>(&window, "campaign_tree", false)
-				.selected_item());
-		const unsigned choice = lexical_cast<unsigned>(
-				find_widget<ttree_view>(&window, "campaign_tree", false)
-					.selected_item()->id());
+		ttree_view& tree = find_widget<ttree_view>(&window, "campaign_tree", false);
+
+		if(tree.empty()) {
+			return;
+		}
+
+		assert(tree.selected_item());
+		const unsigned choice =
+				lexical_cast<unsigned>(tree.selected_item()->id());
 
 		tmulti_page& multi_page = find_widget<tmulti_page>(
 				&window, "campaign_details", false);
@@ -148,12 +152,12 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 //			break; // FIXME remove
 		}
 
-//		if(completed.empty()) {
-			completed.set_visible(twidget::INVISIBLE);
-//		}
+		if(completed.empty()) {
+			tree.remove_node(&completed);
+		}
 
 		if(not_completed.empty()) {
-			not_completed.set_visible(twidget::INVISIBLE);
+			tree.remove_node(&not_completed);
 		}
 
 	} else {
@@ -218,11 +222,15 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 void tcampaign_selection::post_show(twindow& window)
 {
 	if(new_widgets) {
-		assert(find_widget<ttree_view>(&window, "campaign_tree", false)
-				.selected_item());
-		choice_ = lexical_cast<unsigned>(
-				find_widget<ttree_view>(&window, "campaign_tree", false)
-					.selected_item()->id());
+		ttree_view& tree = find_widget<ttree_view>(&window, "campaign_tree", false);
+
+		if(tree.empty()) {
+			return;
+		}
+
+		assert(tree.selected_item());
+		choice_ = lexical_cast<unsigned>(tree.selected_item()->id());
+
 	} else {
 		choice_ = find_widget<tlistbox>(
 				&window, "campaign_list", false).get_selected_row();
