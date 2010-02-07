@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-02-02 13:04+0100\n"
-"PO-Revision-Date: 2010-01-02 15:45+0100\n"
+"PO-Revision-Date: 2010-02-07 11:54+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -64,9 +64,8 @@ msgstr "Lager"
 
 #. [terrain_type]: id=orcish_fort
 #: data/core/terrain.cfg:173
-#, fuzzy
 msgid "Fort"
-msgstr "Wald"
+msgstr "Kastell"
 
 #. [terrain_type]: id=castle
 #. [terrain_type]: id=elven_castle
@@ -116,9 +115,8 @@ msgstr "Anführerzelt"
 
 #. [terrain_type]: id=orcish_keep
 #: data/core/terrain.cfg:269
-#, fuzzy
 msgid "Fort Keep"
-msgstr "Burgfried"
+msgstr "Hauptgebäude"
 
 #. [terrain_type]: id=human_keep
 #. [terrain_type]: id=dwarven_keep
@@ -2068,11 +2066,13 @@ msgstr "Kein Gitternetz definiert."
 
 #: src/gui/auxiliary/window_builder.cpp:144
 msgid "Linked '$id' group has multiple definitions."
-msgstr ""
+msgstr "Referenzierte Gruppe »$id« wurde mehrfach definiert."
 
 #: src/gui/auxiliary/window_builder.cpp:340
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
+"Referenzierte Gruppe »$id« benötigt einen der Schlüssel »fixed_width« oder "
+"»fixed_height«."
 
 #: src/gui/auxiliary/window_builder.cpp:439
 msgid "A row must have a column."
@@ -2123,9 +2123,8 @@ msgid "Campaign: $campaign_name"
 msgstr "Kampagne: $campaign_name"
 
 #: src/gui/dialogs/game_load.cpp:283
-#, fuzzy
 msgid "replay"
-msgstr "Spieler"
+msgstr "Spielverlauf"
 
 #: src/gui/dialogs/game_load.cpp:285
 msgid "Turn"
@@ -2221,6 +2220,8 @@ msgstr "Kein Zustands- oder Zeichenabschnitt definiert."
 #: src/gui/widgets/window.cpp:772
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr ""
+"Dieser »click dismiss« Dialog benötigt eine »click_dismiss« oder »ok« "
+"Schaltfläche."
 
 #: src/gui/widgets/window.cpp:797 src/gui/widgets/window.cpp:830
 #: src/tests/gui/test_gui2.cpp:229

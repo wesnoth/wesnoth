@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-02-02 13:04+0100\n"
-"PO-Revision-Date: 2010-01-02 15:38+0100\n"
+"PO-Revision-Date: 2010-02-07 11:25+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -6378,7 +6378,7 @@ msgstr ""
 #. [language]
 #: data/hardwired/english.cfg:19
 msgid "$name's Bridge,$name's Crossing"
-msgstr "$name|s Brücke,$name|s Überquerung"
+msgstr "$name|brücke,$name|s Überquerung,$name|furt"
 
 #. [language]
 #: data/hardwired/english.cfg:20
@@ -6393,17 +6393,17 @@ msgstr "$name Fluss,Fluss $name"
 #. [language]
 #: data/hardwired/english.cfg:22
 msgid "$name Forest,$name's Forest"
-msgstr "$name Wald,$name|s Wald"
+msgstr "$name|wald,$name|s Wald,$name|forst,$name|hein,$name|s Gehölz"
 
 #. [language]
 #: data/hardwired/english.cfg:23
 msgid "$name Lake"
-msgstr "$name See"
+msgstr "$name|see,$name|weiher,$name|teich"
 
 #. [language]
 #: data/hardwired/english.cfg:24
 msgid "$name's Peak,Mount $name"
-msgstr "$name|spitze,Berg $name"
+msgstr "$name|spitze,$name|berg"
 
 #. [language]
 #: data/hardwired/english.cfg:25
@@ -6412,14 +6412,15 @@ msgstr "$name|s Sumpf,$name|marsch,$name|fenn"
 
 #. [language]
 #: data/hardwired/english.cfg:26
-#, fuzzy
 msgid "$name|bury,$name|ham,$name|ton,$name|bury"
-msgstr "Sankt-$name,$name|heim,$name|hausen"
+msgstr "Sankt-$name,$name|heim,$name|husen,$name|ow"
 
 #. [language]
 #: data/hardwired/english.cfg:27
 msgid "$name|harbor,$name|port,$lake|port,$lake|harbor"
-msgstr "$name|hafen,$name|baden,$lake|baden,$lake|hafen"
+msgstr ""
+"$name|hafen,$name|baden,$lake|baden,$lake|hafen,$name|koog,$name|heven,$name|"
+"siel,$name|haven,$lake|deich,$lake|roog"
 
 #. [language]
 #: data/hardwired/english.cfg:28
@@ -6444,11 +6445,10 @@ msgstr "$name|heim,$name|hausen,$name|feld"
 
 #. [language]
 #: data/hardwired/english.cfg:31
-#, fuzzy
 msgid ""
 "$name|ham,$name|ton,$name|wood,$name Forest,$forest|wood,$forest|ham,$forest|"
 "ton"
-msgstr "$name|heim,$name|hausen,$name|wald,$name| Forst"
+msgstr "$name|heim,$name|hausen,$name|wald,$name|s Forst,$name|s Gehölz"
 
 #. [language]
 #: data/hardwired/english.cfg:32
@@ -6459,6 +6459,8 @@ msgstr "$name|heim,Sankt-$name,$name|hausen,$name|hügel,$name|rücken"
 #: data/hardwired/english.cfg:33
 msgid "$mountain|mont,$mountain|cliff,$mountain|bury,$mountain|ham"
 msgstr ""
+"$mountain|s Hütte,$mountain|fels,$mountain|berg,$mountain|rück,$mountain|tal,"
+"$mountain|binge,$mountain|horst"
 
 #. [language]
 #: data/hardwired/english.cfg:34
@@ -6472,12 +6474,14 @@ msgstr ""
 #: data/hardwired/english.cfg:35
 msgid "$road's Rest,$road's Waypoint,$road|bury,$road|ham,$name|bury,$name|ham"
 msgstr ""
+"$road|s Rast,$road|s Hof,$road|weiler,$road|mühle,$name|s Rast,$name|s Hof, "
+"$name|sbrunn,$name"
 
 #. [language]
 #: data/hardwired/english.cfg:36
-#, fuzzy
 msgid "$name|bury,$name|ham,$name|ton,$swamp|bury,$swamp|ham,$swamp|ton,"
-msgstr "Sankt-$name,$name|heim,$name|hausen"
+msgstr ""
+"Sankt-$name,$name|heim,$name|hausen,$swamp|ried,$swamp|werder,$name|moor"
 
 #. [language]
 #: data/hardwired/english.cfg:39
