@@ -283,7 +283,8 @@ void ttree_view::tnode::set_origin(const tpoint& origin)
 	// Inherited.
 	twidget::set_origin(origin);
 
-	set_size(40, origin);
+	assert(parent_widget_);
+	set_size(parent_widget_->indention_step_size_, origin);
 }
 
 void ttree_view::tnode::set_size(const tpoint& origin, const tpoint& size)
@@ -291,7 +292,8 @@ void ttree_view::tnode::set_size(const tpoint& origin, const tpoint& size)
 	// Inherited.
 	twidget::set_size(origin, size);
 
-	set_size(40, origin);
+	assert(parent_widget_);
+	set_size(parent_widget_->indention_step_size_, origin);
 }
 
 unsigned ttree_view::tnode::set_size(
