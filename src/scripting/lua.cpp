@@ -591,12 +591,18 @@ static int impl_vconfig_collect(lua_State *L)
 		if (lua_type(L, -1) == LUA_TUSERDATA) { \
 			lua_pushlightuserdata(L, (void *)&tstringKey); \
 			lua_rawget(L, LUA_REGISTRYINDEX); \
-			if (!lua_getmetatable(L, -2) || !lua_rawequal(L, -1, -2)) \
-				return luaL_typerror(L, -3, "(translatable) string"); \
+			if (!lua_getmetatable(L, -2) || !lua_rawequal(L, -1, -2)) { \
+				error_buffer = "(translatable) string"; \
+				goto error_call_destructors_modify; \
+			} \
 			const t_string &value = *static_cast<t_string *>(lua_touserdata(L, -3)); \
 			accessor; \
 		} else { \
-			const char *value = luaL_checkstring(L, -1); \
+			const char *value = lua_tostring(L, -1); \
+			if (!value) { \
+				error_buffer = "(translatable) string"; \
+				goto error_call_destructors_modify; \
+			} \
 			accessor; \
 		} \
 		return 0; \
@@ -604,14 +610,22 @@ static int impl_vconfig_collect(lua_State *L)
 
 #define modify_string_attrib(name, accessor) \
 	if (strcmp(m, name) == 0) { \
-		const char *value = luaL_checkstring(L, -1); \
+		const char *value = lua_tostring(L, -1); \
+		if (!value) { \
+			error_buffer = "string"; \
+			goto error_call_destructors_modify; \
+		} \
 		accessor; \
 		return 0; \
 	}
 
 #define modify_int_attrib(name, accessor) \
 	if (strcmp(m, name) == 0) { \
-		int value = luaL_checkint(L, -1); \
+		if (!lua_isnumber(L, -1)) { \
+			error_buffer = "integer"; \
+			goto error_call_destructors_modify; \
+		} \
+		int value = lua_tointeger(L, -1); \
 		accessor; \
 		return 0; \
 	}
@@ -740,6 +754,8 @@ static int impl_unit_set(lua_State *L)
 		return luaL_argerror(L, 1, "unknown unit");
 		error_call_destructors_2:
 		return luaL_argerror(L, 2, "unknown modifiable property");
+		error_call_destructors_modify:
+		return luaL_typerror(L, 3, error_buffer.c_str());
 	}
 
 	size_t id = *static_cast<size_t *>(lua_touserdata(L, 1));
@@ -1189,6 +1205,11 @@ static int impl_side_get(lua_State *L)
  */
 static int impl_side_set(lua_State *L)
 {
+	if (false) {
+		error_call_destructors_modify:
+		return luaL_typerror(L, 3, error_buffer.c_str());
+	}
+
 	// Hidden metamethod, so arg1 has to be a pointer to a team.
 	team &t = **static_cast<team **>(lua_touserdata(L, 1));
 	char const *m = luaL_checkstring(L, 2);
@@ -1411,6 +1432,10 @@ static int impl_game_config_get(lua_State *L)
  */
 static int impl_game_config_set(lua_State *L)
 {
+	if (false) {
+		error_call_destructors_modify:
+		return luaL_typerror(L, 3, error_buffer.c_str());
+	}
 	char const *m = luaL_checkstring(L, 2);
 	lua_settop(L, 3);
 
