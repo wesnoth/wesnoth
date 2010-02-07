@@ -112,6 +112,9 @@ public:
 		const twidget* find_at(
 				  const tpoint& coordinate
 				, const bool must_be_active) const;
+
+		void clear() { children_.clear(); }
+
 	private:
 
 		void request_reduce_width(unsigned int) {}
