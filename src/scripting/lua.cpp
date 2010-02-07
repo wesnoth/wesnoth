@@ -1462,6 +1462,30 @@ static int impl_current_get(lua_State *L)
 	// Find the corresponding attribute.
 	return_int_attrib("side", resources::controller->current_side());
 	return_int_attrib("turn", resources::controller->turn());
+
+	if (strcmp(m, "event_context") == 0)
+	{
+		const game_events::queued_event &ev = queued_event_context::get();
+		config cfg;
+		if (const config &weapon = ev.data.child("first")) {
+			cfg.add_child("weapon", weapon);
+		}
+		if (const config &weapon = ev.data.child("second")) {
+			cfg.add_child("second_weapon", weapon);
+		}
+		if (ev.loc1.valid()) {
+			cfg["x1"] = str_cast(ev.loc1.x + 1);
+			cfg["y1"] = str_cast(ev.loc1.y + 1);
+		}
+		if (ev.loc2.valid()) {
+			cfg["x2"] = str_cast(ev.loc2.x + 1);
+			cfg["y2"] = str_cast(ev.loc2.y + 1);
+		}
+		lua_newtable(L);
+		table_of_wml_config(L, cfg);
+		return 1;
+	}
+
 	return 0;
 }
 
