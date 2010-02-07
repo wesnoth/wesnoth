@@ -596,19 +596,9 @@ bool game_controller::init_config(const bool force)
 {
 	cache_.clear_defines();
 
-#ifdef EXPERIMENTAL
-	// use this to guard WML that depends on code guarded by EXPERIMENTAL
-	cache_.add_define("EXPERIMENTAL");
-#endif /* EXPERIMENTAL */
-
 	// make sure that multiplayer mode is set if command line parameter is selected
 	if (multiplayer_mode_)
 		cache_.add_define("MULTIPLAYER");
-
-	// make sure that 'debug mode' symbol is set if command line parameter is selected
-	if (game_config::debug) {
-		cache_.add_define("DEBUG_MODE");
-	}
 
 	load_game_cfg(force);
 
@@ -1404,6 +1394,16 @@ void game_controller::set_unit_data()
 
 void game_controller::load_game_cfg(const bool force)
 {
+#ifdef EXPERIMENTAL
+	// use this to guard WML that depends on code guarded by EXPERIMENTAL
+	cache_.add_define("EXPERIMENTAL");
+#endif /* EXPERIMENTAL */
+
+	// make sure that 'debug mode' symbol is set if command line parameter is selected
+	if (game_config::debug) {
+		cache_.add_define("DEBUG_MODE");
+	}
+
 	gui::set_background_dirty();
 	if (!game_config_.empty() && !force
 			&& old_defines_map_ == cache_.get_preproc_map())
