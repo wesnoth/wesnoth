@@ -194,6 +194,8 @@ public:
 	void set_self_active(const bool /*active*/)  {}
 //		{ state_ = active ? ENABLED : DISABLED; }
 
+	bool empty() const { return root_node_->empty(); }
+
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_indention_step_size(const unsigned indention_step_size)
