@@ -1030,6 +1030,7 @@ std::string game_display::current_team_name() const
 }
 
 #ifdef HAVE_LIBDBUS
+/** Use KDE 4 notifications. */
 static bool kde_style = false;
 
 struct wnotify
@@ -1068,8 +1069,8 @@ static DBusConnection *get_dbus_connection()
 	if (!initted)
 	{
 		initted = true;
-		if (getenv("KDE_FULL_SESSION")) {
-			// TODO: check for version <= 4.3.
+		if (getenv("KDE_SESSION_VERSION")) {
+			// This variable is defined for KDE 4 only.
 			kde_style = true;
 		}
 		DBusError err;
