@@ -1394,11 +1394,6 @@ void game_controller::set_unit_data()
 
 void game_controller::load_game_cfg(const bool force)
 {
-#ifdef EXPERIMENTAL
-	// use this to guard WML that depends on code guarded by EXPERIMENTAL
-	cache_.add_define("EXPERIMENTAL");
-#endif /* EXPERIMENTAL */
-
 	// make sure that 'debug mode' symbol is set if command line parameter is selected
 	if (game_config::debug) {
 		cache_.add_define("DEBUG_MODE");
