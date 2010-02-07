@@ -223,7 +223,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 #ifdef USE_TINY_GUI
 	set_measurements(180, 180);		  // FIXME: should compute this, but using what data ?
 #else
-	set_measurements(440, 425);
+	set_measurements(465, 425);
 #endif
 
 
