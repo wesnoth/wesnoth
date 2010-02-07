@@ -49,6 +49,7 @@ extern "C" {
 #ifdef EXPERIMENTAL
 #include "pathfind/teleport.hpp"
 #endif
+#include "play_controller.hpp"
 #include "resources.hpp"
 #include "scripting/lua.hpp"
 #include "terrain_translation.hpp"
@@ -1412,6 +1413,22 @@ static int impl_game_config_set(lua_State *L)
 }
 
 /**
+ * Gets some data about current point of game (__index metamethod).
+ * - Arg 1: userdata (ignored).
+ * - Arg 2: string containing the name of the property.
+ * - Ret 1: something containing the attribute.
+ */
+static int impl_current_get(lua_State *L)
+{
+	char const *m = luaL_checkstring(L, 2);
+
+	// Find the corresponding attribute.
+	return_int_attrib("side", resources::controller->current_side());
+	return_int_attrib("turn", resources::controller->turn());
+	return 0;
+}
+
+/**
  * Displays a message in the chat window and in the logs.
  * - Arg 1: optional message header.
  * - Arg 2 (or 1): message.
@@ -1872,6 +1889,18 @@ LuaKernel::LuaKernel()
 	lua_setfield(L, -2, "__metatable");
 	lua_setmetatable(L, -2);
 	lua_setfield(L, -2, "game_config");
+	lua_pop(L, 1);
+
+	// Create the current variable with its metatable.
+	lua_getglobal(L, "wesnoth");
+	lua_newuserdata(L, 0);
+	lua_createtable(L, 0, 2);
+	lua_pushcfunction(L, impl_current_get);
+	lua_setfield(L, -2, "__index");
+	lua_pushstring(L, "current config");
+	lua_setfield(L, -2, "__metatable");
+	lua_setmetatable(L, -2);
+	lua_setfield(L, -2, "current");
 	lua_pop(L, 1);
 
 	// Create the package table.
