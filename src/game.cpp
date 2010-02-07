@@ -666,9 +666,6 @@ bool game_controller::play_test()
 	try {
 		load_game_cfg();
 	} catch(config::error&) {
-		cache_.clear_defines();
-		cache_.add_define("TEST");
-		load_game_cfg();
 		return false;
 	}
 
