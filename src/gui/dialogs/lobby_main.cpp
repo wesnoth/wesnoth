@@ -77,6 +77,24 @@ void tsub_player_list::init(gui2::twindow &w, const std::string &id)
 		boost::bind(&tsub_player_list::show_toggle_callback, this, _1));
 	count = find_widget<tlabel>(&w, id + "_count", false, true);
 	label = find_widget<tlabel>(&w, id + "_label", false, true);
+
+
+	if(new_widgets) {
+
+		ttree_view& parent_tree = find_widget<ttree_view>(&w
+				, "player_tree"
+				, false);
+
+		string_map tree_group_field;
+		std::map<std::string, string_map> tree_group_item;
+
+		tree_group_field["label"] = id;
+		tree_group_item["tree_view_node_label"] = tree_group_field;
+		tree = &parent_tree.add_node("player_group", tree_group_item);
+
+	} else {
+		tree = NULL;
+	}
 }
 
 void tsub_player_list::show_toggle_callback(gui2::twidget* /*widget*/)
@@ -118,6 +136,21 @@ void tplayer_list::init(gui2::twindow &w)
 			, "player_list_sort_name", false, true);
 	sort_by_relation = find_widget<ttoggle_button>(&w
 			, "player_list_sort_relation", false, true);
+
+	tree = find_widget<ttree_view>(&w
+			, "player_tree"
+			, false
+			, new_widgets);
+
+	if(new_widgets) {
+		active_game.list->set_visible(twidget::INVISIBLE);
+		active_room.list->set_visible(twidget::INVISIBLE);
+		other_rooms.list->set_visible(twidget::INVISIBLE);
+		other_games.list->set_visible(twidget::INVISIBLE);
+	}
+	if(!new_widgets && tree) {
+		tree->set_visible(twidget::INVISIBLE);
+	}
 }
 
 void tplayer_list::update_sort_icons()
@@ -722,6 +755,18 @@ void tlobby_main::update_playerlist()
 	player_list_.active_room.list->clear();
 	player_list_.other_rooms.list->clear();
 	player_list_.other_games.list->clear();
+	if(new_widgets) {
+		assert(player_list_.active_game.tree);
+		assert(player_list_.active_room.tree);
+		assert(player_list_.other_games.tree);
+		assert(player_list_.other_rooms.tree);
+
+		player_list_.active_game.tree->clear();
+		player_list_.active_room.tree->clear();
+		player_list_.other_games.tree->clear();
+		player_list_.other_rooms.tree->clear();
+	}
+
 	foreach (user_info* userptr, lobby_info_.users_sorted())
 	{
 		user_info& user = *userptr;
@@ -780,15 +825,33 @@ void tlobby_main::update_playerlist()
 		if (!preferences::playerlist_group_players()) {
 			target_list = &player_list_.other_rooms;
 		}
-		target_list->list->add_row(data);
 
-		tgrid* grid = target_list->list->get_row_grid(target_list->list->get_item_count() - 1);
+		if(new_widgets) {
+			assert(target_list->tree);
 
-		find_widget<tlabel>(grid, "player", false).set_use_markup(true);
+			string_map tree_group_field;
+			std::map<std::string, string_map> tree_group_item;
 
-		find_widget<ttoggle_panel>(grid, "userpanel", false)
-				.set_callback_mouse_left_double_click(boost::bind(
-					&tlobby_main::user_dialog_callback, this, userptr));
+			/*** Add tree item ***/
+			tree_group_field["label"] = icon_ss.str();
+			tree_group_item["icon"] = tree_group_field;
+
+			tree_group_field["label"] = name;
+			tree_group_field["use_markup"] = "true";
+			tree_group_item["name"] = tree_group_field;
+
+			target_list->tree->add_child("player", tree_group_item);
+		} else {
+			target_list->list->add_row(data);
+
+			tgrid* grid = target_list->list->get_row_grid(target_list->list->get_item_count() - 1);
+
+			find_widget<tlabel>(grid, "player", false).set_use_markup(true);
+
+			find_widget<ttoggle_panel>(grid, "userpanel", false)
+					.set_callback_mouse_left_double_click(boost::bind(
+						&tlobby_main::user_dialog_callback, this, userptr));
+		}
 	}
 	player_list_.active_game.auto_hide();
 	player_list_.active_room.auto_hide();

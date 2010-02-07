@@ -16,6 +16,7 @@
 #define GUI_DIALOGS_LOBBY_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
+#include "gui/widgets/tree_view.hpp"
 #include "config.hpp"
 #include "chat_events.hpp"
 #include "lobby_data.hpp"
@@ -57,6 +58,7 @@ struct tsub_player_list
 	tlabel* count;
 	ttoggle_button* show_toggle;
 	tlistbox* list;
+	ttree_view::tnode* tree;
 };
 
 struct tplayer_list
@@ -70,6 +72,8 @@ struct tplayer_list
 
 	ttoggle_button* sort_by_name;
 	ttoggle_button* sort_by_relation;
+
+	ttree_view* tree;
 };
 
 class tlobby_main : public tdialog, private events::chat_handler
