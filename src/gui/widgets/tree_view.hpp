@@ -158,7 +158,8 @@ public:
 
 		unsigned set_size(
 				  const unsigned indention_step_size
-				, tpoint origin);
+				, tpoint origin
+				, unsigned width);
 
 		void set_visible_area(const SDL_Rect& area);
 

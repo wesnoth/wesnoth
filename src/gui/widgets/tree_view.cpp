@@ -284,7 +284,7 @@ void ttree_view::tnode::set_origin(const tpoint& origin)
 	twidget::set_origin(origin);
 
 	assert(parent_widget_);
-	set_size(parent_widget_->indention_step_size_, origin);
+	set_size(parent_widget_->indention_step_size_, origin, get_size().x);
 }
 
 void ttree_view::tnode::set_size(const tpoint& origin, const tpoint& size)
@@ -293,22 +293,25 @@ void ttree_view::tnode::set_size(const tpoint& origin, const tpoint& size)
 	twidget::set_size(origin, size);
 
 	assert(parent_widget_);
-	set_size(parent_widget_->indention_step_size_, origin);
+	set_size(parent_widget_->indention_step_size_, origin, size.x);
 }
 
 unsigned ttree_view::tnode::set_size(
 	  const unsigned indention_step_size
-	, tpoint origin)
+	, tpoint origin
+	, unsigned width)
 {
 	log_scope2(log_gui_layout, LOG_NODE_SCOPE_HEADER);
 	DBG_GUI_L << LOG_NODE_HEADER << " origin " << origin << ".\n";
 
 	const unsigned offset = origin.y;
-	const tpoint best_size = grid_.get_best_size();
+	tpoint best_size = grid_.get_best_size();
+	best_size.x = width;
 	grid_.set_size(origin, best_size);
 
 	if(!is_root_node()) {
 		origin.x += indention_step_size;
+		width -= indention_step_size;
 	}
 	origin.y += best_size.y;
 
@@ -319,7 +322,7 @@ unsigned ttree_view::tnode::set_size(
 
 	DBG_GUI_L << LOG_NODE_HEADER << " set children.\n";
 	foreach(tnode& node, children_) {
-		origin.y += node.set_size(indention_step_size, origin);
+		origin.y += node.set_size(indention_step_size, origin, width);
 	}
 
 	DBG_GUI_L << LOG_NODE_HEADER << " result " << ( origin.y - offset) << ".\n";
