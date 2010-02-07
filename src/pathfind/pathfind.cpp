@@ -476,11 +476,12 @@ pathfind::marked_route pathfind::mark_route(const plain_route &rt,
 
 pathfind::shortest_path_calculator::shortest_path_calculator(unit const &u, team const &t,
 		unit_map const &units, std::vector<team> const &teams, gamemap const &map,
-		bool ignore_unit, bool ignore_defense)
+		bool ignore_unit, bool ignore_defense, bool see_all)
 	: unit_(u), viewing_team_(t), units_(units), teams_(teams), map_(map),
 	  movement_left_(unit_.movement_left()),
 	  total_movement_(unit_.total_movement()),
-	  ignore_unit_(ignore_unit), ignore_defense_(ignore_defense)
+	  ignore_unit_(ignore_unit), ignore_defense_(ignore_defense),
+	  see_all_(see_all)
 {}
 
 double pathfind::shortest_path_calculator::cost(const map_location& loc, const double so_far) const
@@ -489,7 +490,7 @@ double pathfind::shortest_path_calculator::cost(const map_location& loc, const d
 
 	// loc is shrouded, consider it impassable
 	// NOTE: This is why AI must avoid to use shroud
-	if (viewing_team_.shrouded(loc))
+	if (!see_all_ && viewing_team_.shrouded(loc))
 		return getNoPathValue();
 
 	const t_translation::t_terrain terrain = map_[loc];
@@ -504,7 +505,7 @@ double pathfind::shortest_path_calculator::cost(const map_location& loc, const d
 	int other_unit_subcost = 0;
 	if (!ignore_unit_) {
 		const unit *other_unit =
-			get_visible_unit(units_, loc, viewing_team_);
+			get_visible_unit(units_, loc, viewing_team_, see_all_);
 
 		// We can't traverse visible enemy and we also prefer empty hexes
 		// (less blocking in multi-turn moves and better when exploring fog,
@@ -543,7 +544,7 @@ double pathfind::shortest_path_calculator::cost(const map_location& loc, const d
 
 	// check ZoC
 	if (!ignore_unit_ && remaining_movement != terrain_cost
-	    && enemy_zoc(units_, teams_, loc, viewing_team_, unit_.side())
+	    && enemy_zoc(units_, teams_, loc, viewing_team_, unit_.side(), see_all_)
 			&& !unit_.get_ability_bool("skirmisher", loc)) {
 		// entering ZoC cost all remaining MP
 		move_cost += remaining_movement;
