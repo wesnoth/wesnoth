@@ -635,7 +635,7 @@ static int impl_unit_type_get(lua_State *L)
 	lua_pushstring(L, "id");
 	lua_rawget(L, 1);
 	const unit_type *utp = unit_types.find(lua_tostring(L, -1));
-	if (!utp) return 0;
+	if (!utp) return luaL_argerror(L, 1, "unknown unit type");
 	unit_type const &ut = *utp;
 
 	// Find the corresponding attribute.
@@ -693,11 +693,16 @@ static int intf_get_unit_type_ids(lua_State *L)
  */
 static int impl_unit_get(lua_State *L)
 {
+	if (false) {
+		error_call_destructors:
+		return luaL_argerror(L, 1, "unknown unit");
+	}
+
 	size_t id = *static_cast<size_t *>(lua_touserdata(L, 1));
 	char const *m = luaL_checkstring(L, 2);
 
 	unit_map::const_unit_iterator ui = resources::units->find(id);
-	if (!ui.valid()) return 0;
+	if (!ui.valid()) goto error_call_destructors;
 	unit const &u = ui->second;
 
 	// Find the corresponding attribute.
@@ -730,12 +735,19 @@ static int impl_unit_get(lua_State *L)
  */
 static int impl_unit_set(lua_State *L)
 {
+	if (false) {
+		error_call_destructors_1:
+		return luaL_argerror(L, 1, "unknown unit");
+		error_call_destructors_2:
+		return luaL_argerror(L, 2, "unknown modifiable property");
+	}
+
 	size_t id = *static_cast<size_t *>(lua_touserdata(L, 1));
 	char const *m = luaL_checkstring(L, 2);
 	lua_settop(L, 3);
 
 	unit_map::unit_iterator ui = resources::units->find(id);
-	if (!ui.valid()) return 0;
+	if (!ui.valid()) goto error_call_destructors_1;
 	unit &u = ui->second;
 
 	// Find the corresponding attribute.
@@ -745,7 +757,7 @@ static int impl_unit_set(lua_State *L)
 	modify_tstring_attrib("name", u.set_name(value));
 	modify_string_attrib("role", u.set_role(value));
 	modify_string_attrib("facing", u.set_facing(map_location::parse_direction(value)));
-	return 0;
+	goto error_call_destructors_2;
 }
 
 /**
@@ -1203,7 +1215,7 @@ static int impl_side_set(lua_State *L)
 		return 0;
 	}
 
-	return 0;
+	return luaL_argerror(L, 2, "unknown modifiable property");
 }
 
 /**
@@ -1409,7 +1421,7 @@ static int impl_game_config_set(lua_State *L)
 	modify_int_attrib("rest_heal_amount", game_config::rest_heal_amount = value);
 	modify_int_attrib("recall_cost", game_config::recall_cost = value);
 	modify_int_attrib("kill_experience", game_config::kill_experience = value);
-	return 0;
+	return luaL_argerror(L, 2, "unknown modifiable property");
 }
 
 /**
