@@ -207,6 +207,7 @@ wesnoth_source = \
 	gui/widgets/toggle_panel.cpp \
 	gui/widgets/tooltip.cpp \
 	gui/widgets/tree_view.cpp \
+	gui/widgets/tree_view_node.cpp \
 	gui/widgets/vertical_scrollbar.cpp \
 	gui/widgets/widget.cpp \
 	gui/widgets/window.cpp \
