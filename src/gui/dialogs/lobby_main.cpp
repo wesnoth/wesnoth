@@ -1330,7 +1330,23 @@ void tlobby_main::process_gamelist(const config &data)
 
 void tlobby_main::process_gamelist_diff(const config &data)
 {
-	{
+	if(new_widgets) {
+		// Copy pasted from the part below, we should call invalidate layout
+		// when needed.
+		if (lobby_info_.process_gamelist_diff(data)) {
+			update_gamelist_diff();
+			lobby_info_.sync_games_display_status();
+		}
+		int joined = data.child_count("insert_child");
+		int left = data.child_count("remove_child");
+		if (joined > 0 || left > 0) {
+			if (left > joined) {
+				do_notify(NOTIFY_LOBBY_QUIT);
+			} else {
+				do_notify(NOTIFY_LOBBY_JOIN);
+			}
+		}
+	} else {
 		assert(window_);
 		twindow::tinvalidate_layout_blocker blocker(*window_);
 
