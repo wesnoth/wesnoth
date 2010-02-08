@@ -177,10 +177,8 @@ void tplayer_list::init(gui2::twindow &w)
 			, new_widgets);
 
 	if(new_widgets) {
-		active_game.list->set_visible(twidget::INVISIBLE);
-		active_room.list->set_visible(twidget::INVISIBLE);
-		other_rooms.list->set_visible(twidget::INVISIBLE);
-		other_games.list->set_visible(twidget::INVISIBLE);
+		find_widget<twidget>(&w, "old_player_list", false)
+				.set_visible(twidget::INVISIBLE);
 	}
 	if(!new_widgets && tree) {
 		tree->set_visible(twidget::INVISIBLE);
