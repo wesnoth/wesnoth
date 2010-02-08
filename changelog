@@ -16,19 +16,19 @@ Version 1.7.12+svn:
    * Add and wire two new Drake attack icons.
  * Language and i18n:
    * Updated translations: Czech, Finnish, French, German, Hungarian, Italian,
-     Polish, Portuguese (Brazil), Russian, Serbian
+     Lithuanian, Polish, Portuguese (Brazil), Russian, Serbian
    * The manual now does support translations of alternative texts for images
      (bug #14874)
+ * Multiplayer
+   * An early test version of the multiplayer port of "Legend of Wesmere" 
+     is available when starting wesnoth with the commandline argument "--debug"
  * User interface:
    * Add a new tree view widget
    * Use tree view widget as test in campaign dialog (needs --new-widgets)
    * Use tree view widget in the lobby
  * Miscellaneous and bugfixes:
    * Fixed serveral issues found by cppcheck
- * Multiplayer
-   * An early test version of the multiplayer port of "Legend of Wesmere" 
-     is available when starting wesnoth with the commandline argument "--debug".
-	
+
 Version 1.7.12-1.8beta5:
  * AI
    * Fixed unit_at formula ai function to return null on null input
