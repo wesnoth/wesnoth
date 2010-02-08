@@ -783,12 +783,11 @@ void tlobby_main::update_playerlist()
 			lobby = true;
 		}
 	}
-	if(!new_widgets) {
-		player_list_.active_game.list->clear();
-		player_list_.active_room.list->clear();
-		player_list_.other_rooms.list->clear();
-		player_list_.other_games.list->clear();
-	} else {
+	player_list_.active_game.list->clear();
+	player_list_.active_room.list->clear();
+	player_list_.other_rooms.list->clear();
+	player_list_.other_games.list->clear();
+	if(new_widgets) {
 		assert(player_list_.active_game.tree);
 		assert(player_list_.active_room.tree);
 		assert(player_list_.other_games.tree);
@@ -891,12 +890,10 @@ void tlobby_main::update_playerlist()
 						&tlobby_main::user_dialog_callback, this, userptr));
 		}
 	}
-	if(!new_widgets) {
-		player_list_.active_game.auto_hide();
-		player_list_.active_room.auto_hide();
-		player_list_.other_rooms.auto_hide();
-		player_list_.other_games.auto_hide();
-	}
+	player_list_.active_game.auto_hide();
+	player_list_.active_room.auto_hide();
+	player_list_.other_rooms.auto_hide();
+	player_list_.other_games.auto_hide();
 
 	player_list_dirty_ = false;
 }
