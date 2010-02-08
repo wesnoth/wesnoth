@@ -586,6 +586,8 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				// to force a reload of the scenario config.
 				if (gamestate.classification().campaign_type != "multiplayer"){
 					gamestate.starting_pos = config();
+				} else {
+					write_players(gamestate, gamestate.starting_pos, true, true);
 				}
 				//add the variables to the starting position
 				gamestate.starting_pos.add_child("variables", gamestate.get_variables());
