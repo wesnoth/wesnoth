@@ -59,6 +59,7 @@ struct tsub_player_list
 	ttoggle_button* show_toggle;
 	tlistbox* list;
 	ttree_view::tnode* tree;
+	tlabel* tree_label;
 };
 
 struct tplayer_list

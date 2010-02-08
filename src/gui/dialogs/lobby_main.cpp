@@ -92,8 +92,16 @@ void tsub_player_list::init(gui2::twindow &w, const std::string &id)
 		tree_group_item["tree_view_node_label"] = tree_group_field;
 		tree = &parent_tree.add_node("player_group", tree_group_item);
 
+		tree_label = find_widget<tlabel>(tree
+					, "tree_view_node_label"
+					, false
+					, true);
+
+		tree_label->set_label(label->label());
+
 	} else {
 		tree = NULL;
+		tree_label = NULL;
 	}
 }
 
@@ -110,19 +118,45 @@ void tsub_player_list::show_toggle_callback(gui2::twidget* /*widget*/)
 
 void tsub_player_list::auto_hide()
 {
-	std::stringstream ss;
-	ss << "(" << list->get_item_count() << ")";
-	count->set_label(ss.str());
-	if (list->get_item_count() == 0) {
-		list->set_visible(twidget::INVISIBLE);
-		show_toggle->set_visible(twidget::INVISIBLE);
-		label->set_visible(twidget::INVISIBLE);
-		count->set_visible(twidget::INVISIBLE);
+	if(gui2::new_widgets) {
+		assert(tree);
+		assert(tree_label);
+		if(tree->empty()) {
+			/**
+			 * @todo Make sure setting visible resizes the widget.
+			 *
+			 * It doesn't work here since invalidate_layout is blocked, but the
+			 * widget should also be able to handle it itself. Once done the
+			 * setting of the label text can also be removed.
+			 */
+			assert(label);
+			tree_label->set_label(label->label() + " (0)");
+//			tree_label->set_visible(twidget::INVISIBLE);
+		} else {
+			assert(label);
+			std::stringstream ss;
+			ss << label->label() << " (" << tree->size() << ")";
+			tree_label->set_label(ss.str());
+//			tree_label->set_visible(twidget::VISIBLE);
+		}
 	} else {
-		list->set_visible(show_toggle->get_value() ? twidget::INVISIBLE : twidget::VISIBLE);
-		show_toggle->set_visible(twidget::VISIBLE);
-		label->set_visible(twidget::VISIBLE);
-		count->set_visible(twidget::VISIBLE);
+		std::stringstream ss;
+		ss << "(" << list->get_item_count() << ")";
+		count->set_label(ss.str());
+		if (list->get_item_count() == 0) {
+			list->set_visible(twidget::INVISIBLE);
+			show_toggle->set_visible(twidget::INVISIBLE);
+			label->set_visible(twidget::INVISIBLE);
+			count->set_visible(twidget::INVISIBLE);
+		} else {
+			list->set_visible(show_toggle->get_value()
+					? twidget::INVISIBLE
+					: twidget::VISIBLE);
+			show_toggle->set_visible(twidget::VISIBLE);
+			label->set_visible(twidget::VISIBLE);
+			count->set_visible(twidget::VISIBLE);
+
+		}
 	}
 }
 
