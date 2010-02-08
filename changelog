@@ -4,6 +4,9 @@ Version 1.7.12+svn:
      config, which is a goal with name=protect, which accepts a SLF [criteria].
    * Changed names of AI log domains, to have a more uniform naming style.
      Most names became shorter.
+ * Campaigns:
+   * Fixed a bug in several scenarios causing some enemy units to disappear when
+     loading a save
  * Engine:
    * Fix bug #15146: made kill event with animate="yes" recheck the presence of
      unit before animating, fixing the assertion failure (in case the unit is
