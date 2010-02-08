@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-02-02 13:04+0100\n"
+"POT-Creation-Date: 2010-02-08 11:33+0100\n"
 "PO-Revision-Date: 2010-01-10 21:25+0200\n"
 "Last-Translator: Samu Voutilainen <smar@smar.fi>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
@@ -3596,11 +3596,11 @@ msgstr "Keskity kukistamiseen..."
 #. [set_menu_item]: id=ai_controller
 #: data/core/macros/ai_controller.cfg:225
 #: data/core/macros/ai_controller.cfg:377
-#: data/core/macros/ai_controller.cfg:697
-#: data/core/macros/ai_controller.cfg:822
-#: data/core/macros/ai_controller.cfg:839
-#: data/core/macros/ai_controller.cfg:860
-#: data/core/macros/ai_controller.cfg:900
+#: data/core/macros/ai_controller.cfg:694
+#: data/core/macros/ai_controller.cfg:819
+#: data/core/macros/ai_controller.cfg:836
+#: data/core/macros/ai_controller.cfg:857
+#: data/core/macros/ai_controller.cfg:897
 msgid "Instruct ally"
 msgstr "Ohjeista liittolaista"
 
@@ -3638,9 +3638,9 @@ msgstr "keskitytään kukistamaan vihollinen $this_enemy_description|."
 #. [value]
 #. [option]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:333
-#: data/core/macros/ai_controller.cfg:491
-#: data/core/macros/ai_controller.cfg:885
-#: data/core/macros/ai_controller.cfg:920
+#: data/core/macros/ai_controller.cfg:490
+#: data/core/macros/ai_controller.cfg:882
+#: data/core/macros/ai_controller.cfg:917
 msgid "Back"
 msgstr "Takaisin"
 
@@ -3660,53 +3660,53 @@ msgid "focusing on protecting $this_ally_description|."
 msgstr "keskitytään suojelemaan ystävää $this_ally_description|."
 
 #. [option]: type=objective
-#: data/core/macros/ai_controller.cfg:523
+#: data/core/macros/ai_controller.cfg:522
 msgid "Defend a location..."
 msgstr "Puolusta paikkaa..."
 
 #. [print]
-#: data/core/macros/ai_controller.cfg:539
+#: data/core/macros/ai_controller.cfg:538
 msgid "Right-click to select a location to defend"
 msgstr "Klikkaa oikealla hiirenkorvalla haluamaasi puolustuspaikkaa"
 
 #. [set_menu_item]: id=ai_controller_defend_location_picker
-#: data/core/macros/ai_controller.cfg:546
+#: data/core/macros/ai_controller.cfg:545
 msgid "Defend this location"
 msgstr "Puolusta tätä paikkaa"
 
 #. [command]
-#: data/core/macros/ai_controller.cfg:563
+#: data/core/macros/ai_controller.cfg:562
 msgid "focusing on defending the area around $x1|,$y1|."
 msgstr "keskitytään puolustamaan aluetta $x1|,$y1|:n ympärillä."
 
 #. [print]
-#: data/core/macros/ai_controller.cfg:607
+#: data/core/macros/ai_controller.cfg:604
 msgid "Location selection canceled"
 msgstr "Alueen valinta peruttu"
 
 #. [option]
-#: data/core/macros/ai_controller.cfg:622
+#: data/core/macros/ai_controller.cfg:619
 msgid "Clear objective orders"
 msgstr "Poista tavoitekäskyt"
 
 #. [option]
-#: data/core/macros/ai_controller.cfg:643
+#: data/core/macros/ai_controller.cfg:640
 msgid "Clear behavior orders"
 msgstr "Poista käyttäytymiskäskyt"
 
 #. [option]
-#: data/core/macros/ai_controller.cfg:665
+#: data/core/macros/ai_controller.cfg:662
 msgid "Clear all orders"
 msgstr "Poista kaikki käskyt"
 
 #. [then]
-#: data/core/macros/ai_controller.cfg:790
-#: data/core/macros/ai_controller.cfg:801
+#: data/core/macros/ai_controller.cfg:787
+#: data/core/macros/ai_controller.cfg:798
 msgid "none set."
 msgstr "ei mitään"
 
 #. [value]: speaker=narrator
-#: data/core/macros/ai_controller.cfg:823
+#: data/core/macros/ai_controller.cfg:820
 msgid ""
 "$ally_leader.name (side $ally_side|) has not been given any instructions and "
 "is acting normally."
@@ -3715,8 +3715,8 @@ msgstr ""
 "toimii normaalisti."
 
 #. [value]: speaker=narrator
-#: data/core/macros/ai_controller.cfg:826
-#: data/core/macros/ai_controller.cfg:843
+#: data/core/macros/ai_controller.cfg:823
+#: data/core/macros/ai_controller.cfg:840
 msgid ""
 "Objective: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_objective_description\n"
@@ -3729,7 +3729,7 @@ msgstr ""
 "currently_doing_behaviour_description"
 
 #. [value]: speaker=narrator
-#: data/core/macros/ai_controller.cfg:840
+#: data/core/macros/ai_controller.cfg:837
 msgid ""
 "$ally_leader.name (side $ally_side|) is carrying out the following "
 "instructions:"
@@ -3737,46 +3737,46 @@ msgstr ""
 "$ally_leader.name (puoli $ally_side|) toteuttaa seuraavanlaisia käskyjä:"
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:855
+#: data/core/macros/ai_controller.cfg:852
 msgid "Set objective..."
 msgstr "Aseta tavoite..."
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:895
+#: data/core/macros/ai_controller.cfg:892
 msgid "Set behavior..."
 msgstr "Aseta käyttäytyminen..."
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:935
+#: data/core/macros/ai_controller.cfg:932
 msgid "Exit"
 msgstr "Poistu"
 
-#: data/core/macros/ai_controller.cfg:1062
+#: data/core/macros/ai_controller.cfg:1059
 msgid "Set special orders..."
 msgstr "Aseta erikoisohjeet..."
 
-#: data/core/macros/ai_controller.cfg:1063
+#: data/core/macros/ai_controller.cfg:1060
 msgid "Move leader to..."
 msgstr "Siirrä johtaja..."
 
-#: data/core/macros/ai_controller.cfg:1064
+#: data/core/macros/ai_controller.cfg:1061
 msgid "Right-click to select a location to move leader to"
 msgstr ""
 "Klikkaa oikealla hiirenkorvalla valitaksesi paikan johtajasi siirtämiselle"
 
-#: data/core/macros/ai_controller.cfg:1065
+#: data/core/macros/ai_controller.cfg:1062
 msgid "Move leader here"
 msgstr "Siirrä johtaja tänne"
 
-#: data/core/macros/ai_controller.cfg:1066
+#: data/core/macros/ai_controller.cfg:1063
 msgid "moving leader to $x1|,$y1|."
 msgstr "siirretään johtajaa paikkaan $x1|,$y1|."
 
-#: data/core/macros/ai_controller.cfg:1067
+#: data/core/macros/ai_controller.cfg:1064
 msgid "Clear special orders"
 msgstr "Poista erikoiskäskyt"
 
-#: data/core/macros/ai_controller.cfg:1068
+#: data/core/macros/ai_controller.cfg:1065
 msgid ""
 "Special: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_special_description"
@@ -7110,8 +7110,8 @@ msgstr "Päätä skenaario"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:211 src/unit.cpp:2342
-#: src/unit.cpp:2498
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:211 src/unit.cpp:2337
+#: src/unit.cpp:2493
 msgid "HP"
 msgstr "EP"
 
@@ -7336,7 +7336,7 @@ msgstr "Kuvausta ei ole saatavilla."
 msgid "B"
 msgstr "t"
 
-#: src/addon_management.cpp:416 src/dialogs.cpp:1053
+#: src/addon_management.cpp:416 src/dialogs.cpp:1054
 msgid "KB"
 msgstr "Kt"
 
@@ -7544,7 +7544,7 @@ msgstr "Kaikki lisäosat päivitetty onnistuneesti."
 msgid "Connecting to add-ons server..."
 msgstr "Yhdistetään lisäosapalvelimeen..."
 
-#: src/addon_management.cpp:974
+#: src/addon_management.cpp:974 src/network.cpp:369 src/network.cpp:377
 msgid "Could not connect to host."
 msgstr "Yhteyttä koneeseen ei saatu."
 
@@ -7807,7 +7807,7 @@ msgstr "Peruuta käskyt"
 msgid "OK"
 msgstr "OK"
 
-#: src/dialogs.cpp:611 src/dialogs.cpp:1024 src/dialogs.cpp:1131
+#: src/dialogs.cpp:611 src/dialogs.cpp:1025 src/dialogs.cpp:1132
 #: src/multiplayer_connect.cpp:1004 src/multiplayer_create.cpp:86
 #: src/multiplayer_wait.cpp:175
 msgid "Cancel"
@@ -7821,55 +7821,55 @@ msgstr "Tuhoa tallenne"
 msgid "Profile"
 msgstr "Profiili"
 
-#: src/dialogs.cpp:766 src/help.cpp:1333
+#: src/dialogs.cpp:767 src/help.cpp:1333
 msgid "level"
 msgstr "taso"
 
-#: src/dialogs.cpp:779 src/help.cpp:1436
+#: src/dialogs.cpp:780 src/help.cpp:1436
 msgid "HP: "
 msgstr "EP: "
 
-#: src/dialogs.cpp:782
+#: src/dialogs.cpp:783
 msgid "XP: "
 msgstr "KP: "
 
-#: src/dialogs.cpp:786 src/help.cpp:1437
+#: src/dialogs.cpp:787 src/help.cpp:1437
 msgid "Moves: "
 msgstr "Liikepisteitä: "
 
-#: src/game.cpp:639 src/game.cpp:1372
+#: src/game.cpp:629 src/game.cpp:1363
 msgid "The Battle for Wesnoth"
 msgstr "Taistelu Wesnothista"
 
-#: src/game.cpp:971 src/game.cpp:979
+#: src/game.cpp:960 src/game.cpp:968
 msgid "The file you have tried to load is corrupt"
 msgstr "Tiedosto, jonka yritit avata, on korruptoitunut"
 
-#: src/game.cpp:974 src/game.cpp:982 src/savegame.cpp:534
+#: src/game.cpp:963 src/game.cpp:971 src/savegame.cpp:534
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Tiedosto, jonka yritit ladata, on vahingoittunut: '"
 
-#: src/game.cpp:986
+#: src/game.cpp:975
 msgid "File I/O Error while reading the game"
 msgstr "Peliä luettaessa tiedoston I/O -virhe"
 
-#: src/game.cpp:1081
+#: src/game.cpp:1070
 msgid "No campaigns are available.\n"
 msgstr "Yhtään kampanjaa ei ole saatavilla.\n"
 
-#: src/game.cpp:1119
+#: src/game.cpp:1108
 msgid "Difficulty"
 msgstr "Vaikeustaso"
 
-#: src/game.cpp:1120
+#: src/game.cpp:1109
 msgid "Select difficulty level:"
 msgstr "Valitse vaikeustaso:"
 
-#: src/game.cpp:1255
+#: src/game.cpp:1244
 msgid "Do you really want to start the server?"
 msgstr "Haluatko varmasti käynnistää palvelimen?"
 
-#: src/game.cpp:1256
+#: src/game.cpp:1245
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
@@ -7877,61 +7877,61 @@ msgstr ""
 "Palvelin ajaa itseään taustaprosessina kunnes kaikki käyttäjät ovat "
 "poistuneet."
 
-#: src/game.cpp:1260
+#: src/game.cpp:1249
 msgid "Don't show again"
 msgstr "Älä näytä uudelleen"
 
-#: src/game.cpp:1331
+#: src/game.cpp:1320
 msgid "Error while starting server: "
 msgstr "Virhe käynnistäessä palvelinta:"
 
-#: src/game.cpp:1333 src/playcampaign.cpp:105 src/playcampaign.cpp:392
+#: src/game.cpp:1322 src/playcampaign.cpp:105 src/playcampaign.cpp:392
 msgid "The game could not be loaded: "
 msgstr "Peliä ei voitu ladata: "
 
-#: src/game.cpp:1335 src/playcampaign.cpp:107 src/playcampaign.cpp:395
+#: src/game.cpp:1324 src/playcampaign.cpp:107 src/playcampaign.cpp:395
 msgid "Error while playing the game: "
 msgstr "Virhe pelatessa: "
 
-#: src/game.cpp:1351 src/playcampaign.cpp:109 src/playcampaign.cpp:398
+#: src/game.cpp:1342 src/playcampaign.cpp:109 src/playcampaign.cpp:398
 msgid "The game map could not be loaded: "
 msgstr "Karttaa ei voitu ladata: "
 
-#: src/game.cpp:1495
+#: src/game.cpp:1491
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Seuraavassa lisäosassa oli virhe, eikä sitä voitu ladata:"
 msgstr[1] "Seuraavissa lisäosissa oli virheitä, eikä niitä voitu ladata:"
 
-#: src/game.cpp:1502
+#: src/game.cpp:1498
 msgid "ERROR DETAILS:"
 msgstr "VIRHEEN TARKEMPI KUVAUS:"
 
-#: src/game.cpp:1522
+#: src/game.cpp:1518
 msgid "Error loading game configuration files: '"
 msgstr "Virhe ladattaessa asetustiedostoja: '"
 
-#: src/game.cpp:1523
+#: src/game.cpp:1519
 msgid "' (The game will now exit)"
 msgstr "' (peli sulkeutuu nyt)"
 
-#: src/game.cpp:1532
+#: src/game.cpp:1528
 msgid "Loading data files"
 msgstr "Ladataan tiedostoja"
 
-#: src/game.cpp:1963
+#: src/game.cpp:1959
 msgid "Loading game configuration."
 msgstr "Ladataan asetuksia."
 
-#: src/game.cpp:1969
+#: src/game.cpp:1965
 msgid "Re-initialize fonts for the current language."
 msgstr "Alustetaan merkistö uudelleen tätä kieltä varten."
 
-#: src/game.cpp:1977
+#: src/game.cpp:1973
 msgid "Searching for installed add-ons."
 msgstr "Etsitään asennettuja lisäosia."
 
-#: src/game.cpp:1986
+#: src/game.cpp:1982
 msgid "Loading title screen."
 msgstr "Ladataan aloitusikkunaa."
 
@@ -7955,7 +7955,7 @@ msgstr "Virheenetsintä:"
 msgid "Info: "
 msgstr "Info:"
 
-#: src/game_events.cpp:3301
+#: src/game_events.cpp:3300
 msgid "[unit_worth]'s filter didn't match any units!"
 msgstr "[unit_worth]-suodatin ei täsmää yhteenkään yksikköön!"
 
@@ -9403,15 +9403,15 @@ msgstr "Virheellinen verkkokahva."
 msgid "Client disconnected"
 msgstr "Vastapuoli katkaisi yhteyden."
 
-#: src/network.cpp:527
+#: src/network.cpp:528
 msgid "Could not add socket to socket set"
 msgstr "Ei voitu lisätä yhteyspalikkaa."
 
-#: src/network.cpp:539
+#: src/network.cpp:540
 msgid "Could not send initial handshake"
 msgstr "Ei voitu lähettää alkukättelyä."
 
-#: src/pathfind/pathfind.cpp:498
+#: src/pathfind/pathfind.cpp:499
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Maastoa yhtä vähemmällä liikkumiskustannuksella kohdattu."
 
@@ -9956,31 +9956,31 @@ msgstr "Tuntematon yksikkötyyppi '$type|'"
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "Tuntematon yksikkötyyppi ”$type|” generoidessa piirteitä"
 
-#: src/unit.cpp:2299 src/unit.cpp:2486 src/unit.cpp:2559
+#: src/unit.cpp:2294 src/unit.cpp:2481 src/unit.cpp:2554
 msgid " and "
 msgstr " ja "
 
-#: src/unit.cpp:2310
+#: src/unit.cpp:2305
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2375
+#: src/unit.cpp:2370
 msgid "moves"
 msgstr "siirrot"
 
-#: src/unit.cpp:2393 src/unit.cpp:2513
+#: src/unit.cpp:2388 src/unit.cpp:2508
 msgid "XP to advance"
 msgstr "KP:tä ylenemiseen"
 
-#: src/unit.cpp:2505
+#: src/unit.cpp:2500
 msgid " move"
 msgstr "siirto"
 
-#: src/unit.cpp:2521
+#: src/unit.cpp:2516
 msgid "$effect_description per level"
 msgstr "$effect_description tasoa kohden"
 
-#: src/unit.cpp:2568
+#: src/unit.cpp:2563
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 

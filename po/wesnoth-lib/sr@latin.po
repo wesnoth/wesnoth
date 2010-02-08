@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-02-02 13:04+0100\n"
+"POT-Creation-Date: 2010-02-08 11:33+0100\n"
 "PO-Revision-Date: 2009-11-15 13:04+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -579,7 +579,7 @@ msgstr "Poveži se"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
 #: data/gui/default/window/addon_connect.cfg:220
-#: data/gui/default/window/campaign_dialog.cfg:315
+#: data/gui/default/window/campaign_dialog.cfg:433
 #: data/gui/default/window/editor_generate_map.cfg:111
 #: data/gui/default/window/editor_new_map.cfg:111
 #: data/gui/default/window/editor_resize_map.cfg:275
@@ -602,13 +602,13 @@ msgstr "Odustani"
 
 # >> @title:window
 #. [label]
-#: data/gui/default/window/campaign_dialog.cfg:44
+#: data/gui/default/window/campaign_dialog.cfg:49
 msgid "Play a campaign"
 msgstr "Igranje pohoda"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/default/window/campaign_dialog.cfg:301
+#: data/gui/default/window/campaign_dialog.cfg:419
 #: data/gui/default/window/editor_settings.cfg:230
 #: data/gui/default/window/game_load.cfg:430
 #: data/gui/default/window/game_load.cfg:431
@@ -825,7 +825,7 @@ msgstr "Trag izvršavanja"
 #. [button]: id=quit
 #. [grid]
 #: data/gui/default/window/formula_debugger.cfg:222
-#: data/gui/default/window/lobby_main.cfg:555
+#: data/gui/default/window/lobby_main.cfg:667
 #: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:643
 #: src/hotkeys.cpp:934
 msgid "Quit"
@@ -998,7 +998,7 @@ msgstr "Promenljiva"
 #. [button]: id=cancel
 #. [button]: id=close_window
 #: data/gui/default/window/gamestate_inspector.cfg:331
-#: data/gui/default/window/lobby_main.cfg:514
+#: data/gui/default/window/lobby_main.cfg:626
 #: data/gui/default/window/lobby_player_info.cfg:192
 #: data/gui/default/window/message.cfg:122 src/construct_dialog.cpp:140
 msgid "Close"
@@ -1102,83 +1102,83 @@ msgid "Other games"
 msgstr "Druge partije"
 
 #. [label]: id=room
-#: data/gui/default/window/lobby_main.cfg:374
+#: data/gui/default/window/lobby_main.cfg:486
 msgid "Rooms"
 msgstr "Sobe"
 
 #. [image]: id=pending_messages
-#: data/gui/default/window/lobby_main.cfg:392
+#: data/gui/default/window/lobby_main.cfg:504
 msgid "Messages waiting"
 msgstr "Čekaju poruke"
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:462
+#: data/gui/default/window/lobby_main.cfg:574
 msgid "Multiplayer Lobby"
 msgstr "Višeigrački hol"
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:470
+#: data/gui/default/window/lobby_main.cfg:582
 msgid "Filter:"
 msgstr "Filter:"
 
 #. [toggle_button]: id=filter_with_friends
-#: data/gui/default/window/lobby_main.cfg:481
+#: data/gui/default/window/lobby_main.cfg:593
 msgid "Friends"
 msgstr "Prijatelji"
 
 #. [toggle_button]: id=filter_without_ignored
-#: data/gui/default/window/lobby_main.cfg:487
+#: data/gui/default/window/lobby_main.cfg:599
 msgid "No ignored"
 msgstr "Bez ignorisanih"
 
 #. [toggle_button]: id=filter_vacant_slots
-#: data/gui/default/window/lobby_main.cfg:493
+#: data/gui/default/window/lobby_main.cfg:605
 msgid "Vacant slots"
 msgstr "Slobodnih mesta"
 
 #. [toggle_button]: id=filter_invert
-#: data/gui/default/window/lobby_main.cfg:499
+#: data/gui/default/window/lobby_main.cfg:611
 msgid "Invert filter"
 msgstr "Izvrni filter"
 
 #. [button]: id=send_message
-#: data/gui/default/window/lobby_main.cfg:543
+#: data/gui/default/window/lobby_main.cfg:655
 msgid "Send"
 msgstr "Pošalji"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_preferences
 #. [grid]
-#: data/gui/default/window/lobby_main.cfg:561
+#: data/gui/default/window/lobby_main.cfg:673
 #: data/gui/default/window/title_screen.cfg:189
 #: src/game_preferences_display.cpp:53 src/hotkeys.cpp:79
 msgid "Preferences"
 msgstr "Postavke"
 
 #. [button]: id=refresh
-#: data/gui/default/window/lobby_main.cfg:567
+#: data/gui/default/window/lobby_main.cfg:679
 msgid "Refresh"
 msgstr "Osveži"
 
 #. [label]
 #. [button]: id=create
-#: data/gui/default/window/lobby_main.cfg:581
+#: data/gui/default/window/lobby_main.cfg:693
 #: data/gui/default/window/mp_create_game.cfg:33
 msgid "Create Game"
 msgstr "Napravi partiju"
 
 #. [button]: id=join_global
-#: data/gui/default/window/lobby_main.cfg:587
+#: data/gui/default/window/lobby_main.cfg:699
 msgid "Join"
 msgstr "Pridruži se"
 
 #. [button]: id=observe_global
-#: data/gui/default/window/lobby_main.cfg:593
+#: data/gui/default/window/lobby_main.cfg:705
 msgid "Observe"
 msgstr "Posmatraj"
 
 #. [toggle_button]: id=skip_replay
-#: data/gui/default/window/lobby_main.cfg:599
+#: data/gui/default/window/lobby_main.cfg:711
 msgid "Quick replay"
 msgstr "Brzi snimak"
 
@@ -2047,7 +2047,7 @@ msgid "Text doesn't start on canvas."
 msgstr "Tekst ne staje na platno."
 
 #: src/gui/auxiliary/widget_definition.cpp:138
-#: src/gui/auxiliary/window_builder.cpp:202
+#: src/gui/auxiliary/window_builder.cpp:204
 msgid "No resolution defined."
 msgstr "Rezolucija nije definisana."
 
@@ -2056,25 +2056,26 @@ msgstr "Rezolucija nije definisana."
 #: src/gui/auxiliary/widget_definition/scroll_label.cpp:73
 #: src/gui/auxiliary/widget_definition/scrollbar_panel.cpp:63
 #: src/gui/auxiliary/widget_definition/stacked_widget.cpp:51
-#: src/gui/auxiliary/window_builder.cpp:309
+#: src/gui/auxiliary/widget_definition/tree_view.cpp:42
+#: src/gui/auxiliary/window_builder.cpp:311
 #: src/gui/auxiliary/window_builder/panel.cpp:35
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:38
 msgid "No grid defined."
 msgstr "Mreža nije definisana."
 
-#: src/gui/auxiliary/window_builder.cpp:144
+#: src/gui/auxiliary/window_builder.cpp:146
 msgid "Linked '$id' group has multiple definitions."
 msgstr "Povezana grupa ‘$id’ ima višestruke definicije."
 
-#: src/gui/auxiliary/window_builder.cpp:340
+#: src/gui/auxiliary/window_builder.cpp:342
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgstr "Povezana grupa ‘$id’ traži ključ ‘fixed_width’ ili ‘fixed_height’."
 
-#: src/gui/auxiliary/window_builder.cpp:439
+#: src/gui/auxiliary/window_builder.cpp:441
 msgid "A row must have a column."
 msgstr "Vrsta mora imati kolonu."
 
-#: src/gui/auxiliary/window_builder.cpp:440
+#: src/gui/auxiliary/window_builder.cpp:442
 msgid "Number of columns differ."
 msgstr "Broj kolona se razlikuje."
 
@@ -2136,23 +2137,23 @@ msgstr "Težina: "
 msgid "Version: "
 msgstr "Verzija: "
 
-#: src/gui/dialogs/lobby_main.cpp:172
+#: src/gui/dialogs/lobby_main.cpp:205
 msgid "whisper to $receiver"
 msgstr "šapat za $receiver"
 
-#: src/gui/dialogs/lobby_main.cpp:575
+#: src/gui/dialogs/lobby_main.cpp:621
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "Partije: prikazno $num_shown od $num_total"
 
-#: src/gui/dialogs/lobby_main.cpp:617
+#: src/gui/dialogs/lobby_main.cpp:663
 msgid "Observers allowed"
 msgstr "Posmatrači dozvoljeni"
 
-#: src/gui/dialogs/lobby_main.cpp:620
+#: src/gui/dialogs/lobby_main.cpp:666
 msgid "Observers not allowed"
 msgstr "Posmatrači nisu dozvoljeni"
 
-#: src/gui/dialogs/lobby_main.cpp:921
+#: src/gui/dialogs/lobby_main.cpp:999
 msgid ""
 "Whisper session with $name started. If you don't want to receive messages "
 "from this user, type /ignore $name\n"
@@ -2160,19 +2161,19 @@ msgstr ""
 "Započeta sesija šaptanja za $name|. Ako ne želite da primate poruke ovog "
 "korisnika, upišite /ignore $name\n"
 
-#: src/gui/dialogs/lobby_main.cpp:927
+#: src/gui/dialogs/lobby_main.cpp:1005
 msgid "Room $name joined"
 msgstr "U sobi $name"
 
-#: src/gui/dialogs/lobby_main.cpp:1404
+#: src/gui/dialogs/lobby_main.cpp:1505
 msgid "Password Required"
 msgstr "Neophodna lozinka"
 
-#: src/gui/dialogs/lobby_main.cpp:1405
+#: src/gui/dialogs/lobby_main.cpp:1506
 msgid "Joining this game requires a password."
 msgstr "Za priključivanje ovoj partiji neophodna je lozinka."
 
-#: src/gui/dialogs/lobby_main.cpp:1406
+#: src/gui/dialogs/lobby_main.cpp:1507
 msgid "Password: "
 msgstr "Lozinka: "
 
@@ -2192,20 +2193,20 @@ msgstr "verzija"
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Obavezni vidžet „$id“ nije definisan."
 
-#: src/gui/widgets/settings.cpp:299
+#: src/gui/widgets/settings.cpp:302
 msgid "Window not defined."
 msgstr "Prozor nije definisan."
 
-#: src/gui/widgets/settings.cpp:404
+#: src/gui/widgets/settings.cpp:407
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "Definicija vidžeta „$definition“ ne sadrži definiciju za „$id“."
 
-#: src/gui/widgets/settings.cpp:505
+#: src/gui/widgets/settings.cpp:508
 msgid "No default gui defined."
 msgstr "Podrazumevano sučelje nije definisano."
 
-#: src/gui/widgets/settings.cpp:532
+#: src/gui/widgets/settings.cpp:535
 msgid "No state or draw section defined."
 msgstr "Odeljak stanja ili crtanja nije definisan."
 

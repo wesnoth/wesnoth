@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-02-02 13:04+0100\n"
+"POT-Creation-Date: 2010-02-08 11:33+0100\n"
 "PO-Revision-Date: 2010-02-07 11:11+0100\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
@@ -89,8 +89,7 @@ msgstr "N'accepter que les messages privés des amis"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:86
 msgid "Auto-open whisper windows in lobby"
-msgstr ""
-"Ouvrir une fenêtre pour les messages privés du vestibule"
+msgstr "Ouvrir une fenêtre pour les messages privés du vestibule"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:93
@@ -3612,11 +3611,11 @@ msgstr "Se concentrer sur l'attaque…"
 #. [set_menu_item]: id=ai_controller
 #: data/core/macros/ai_controller.cfg:225
 #: data/core/macros/ai_controller.cfg:377
-#: data/core/macros/ai_controller.cfg:697
-#: data/core/macros/ai_controller.cfg:822
-#: data/core/macros/ai_controller.cfg:839
-#: data/core/macros/ai_controller.cfg:860
-#: data/core/macros/ai_controller.cfg:900
+#: data/core/macros/ai_controller.cfg:694
+#: data/core/macros/ai_controller.cfg:819
+#: data/core/macros/ai_controller.cfg:836
+#: data/core/macros/ai_controller.cfg:857
+#: data/core/macros/ai_controller.cfg:897
 msgid "Instruct ally"
 msgstr "Donner des instructions à l'allié"
 
@@ -3654,9 +3653,9 @@ msgstr "Se focaliser contre $this_enemy_description|."
 #. [value]
 #. [option]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:333
-#: data/core/macros/ai_controller.cfg:491
-#: data/core/macros/ai_controller.cfg:885
-#: data/core/macros/ai_controller.cfg:920
+#: data/core/macros/ai_controller.cfg:490
+#: data/core/macros/ai_controller.cfg:882
+#: data/core/macros/ai_controller.cfg:917
 msgid "Back"
 msgstr "Précédent"
 
@@ -3676,53 +3675,53 @@ msgid "focusing on protecting $this_ally_description|."
 msgstr "focalisez-vous sur la protection de $this_ally_description|."
 
 #. [option]: type=objective
-#: data/core/macros/ai_controller.cfg:523
+#: data/core/macros/ai_controller.cfg:522
 msgid "Defend a location..."
 msgstr "Défendre une zone…"
 
 #. [print]
-#: data/core/macros/ai_controller.cfg:539
+#: data/core/macros/ai_controller.cfg:538
 msgid "Right-click to select a location to defend"
 msgstr "Faites un clic-droit pour sélectionner une zone à défendre"
 
 #. [set_menu_item]: id=ai_controller_defend_location_picker
-#: data/core/macros/ai_controller.cfg:546
+#: data/core/macros/ai_controller.cfg:545
 msgid "Defend this location"
 msgstr "Défendre cette zone"
 
 #. [command]
-#: data/core/macros/ai_controller.cfg:563
+#: data/core/macros/ai_controller.cfg:562
 msgid "focusing on defending the area around $x1|,$y1|."
 msgstr "défendre la zone $x1|,$y1|."
 
 #. [print]
-#: data/core/macros/ai_controller.cfg:607
+#: data/core/macros/ai_controller.cfg:604
 msgid "Location selection canceled"
 msgstr "Sélection du lieu annulée"
 
 #. [option]
-#: data/core/macros/ai_controller.cfg:622
+#: data/core/macros/ai_controller.cfg:619
 msgid "Clear objective orders"
 msgstr "Annuler les ordres d'objectif"
 
 #. [option]
-#: data/core/macros/ai_controller.cfg:643
+#: data/core/macros/ai_controller.cfg:640
 msgid "Clear behavior orders"
 msgstr "Annuler les ordres de comportement"
 
 #. [option]
-#: data/core/macros/ai_controller.cfg:665
+#: data/core/macros/ai_controller.cfg:662
 msgid "Clear all orders"
 msgstr "Annuler tous les ordres"
 
 #. [then]
-#: data/core/macros/ai_controller.cfg:790
-#: data/core/macros/ai_controller.cfg:801
+#: data/core/macros/ai_controller.cfg:787
+#: data/core/macros/ai_controller.cfg:798
 msgid "none set."
 msgstr "aucun ordre défini."
 
 #. [value]: speaker=narrator
-#: data/core/macros/ai_controller.cfg:823
+#: data/core/macros/ai_controller.cfg:820
 msgid ""
 "$ally_leader.name (side $ally_side|) has not been given any instructions and "
 "is acting normally."
@@ -3731,8 +3730,8 @@ msgstr ""
 "comporte normalement."
 
 #. [value]: speaker=narrator
-#: data/core/macros/ai_controller.cfg:826
-#: data/core/macros/ai_controller.cfg:843
+#: data/core/macros/ai_controller.cfg:823
+#: data/core/macros/ai_controller.cfg:840
 msgid ""
 "Objective: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_objective_description\n"
@@ -3745,53 +3744,53 @@ msgstr ""
 "currently_doing_behaviour_description"
 
 #. [value]: speaker=narrator
-#: data/core/macros/ai_controller.cfg:840
+#: data/core/macros/ai_controller.cfg:837
 msgid ""
 "$ally_leader.name (side $ally_side|) is carrying out the following "
 "instructions:"
 msgstr "$ally_leader.name (camp $ally_side|) suit les instructions suivantes :"
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:855
+#: data/core/macros/ai_controller.cfg:852
 msgid "Set objective..."
 msgstr "Définir l'objectif…"
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:895
+#: data/core/macros/ai_controller.cfg:892
 msgid "Set behavior..."
 msgstr "Définir le comportement…"
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:935
+#: data/core/macros/ai_controller.cfg:932
 msgid "Exit"
 msgstr "Sortir"
 
-#: data/core/macros/ai_controller.cfg:1062
+#: data/core/macros/ai_controller.cfg:1059
 msgid "Set special orders..."
 msgstr "Définir les ordres spéciaux..."
 
-#: data/core/macros/ai_controller.cfg:1063
+#: data/core/macros/ai_controller.cfg:1060
 msgid "Move leader to..."
 msgstr "Déplacer le chef vers..."
 
-#: data/core/macros/ai_controller.cfg:1064
+#: data/core/macros/ai_controller.cfg:1061
 msgid "Right-click to select a location to move leader to"
 msgstr ""
 "Faites un clic-droit pour sélectionner une zone où déplacer le chef de camp"
 
-#: data/core/macros/ai_controller.cfg:1065
+#: data/core/macros/ai_controller.cfg:1062
 msgid "Move leader here"
 msgstr "Déplacer le chef ici"
 
-#: data/core/macros/ai_controller.cfg:1066
+#: data/core/macros/ai_controller.cfg:1063
 msgid "moving leader to $x1|,$y1|."
 msgstr "déplacer le chef en $x1|,$y1|."
 
-#: data/core/macros/ai_controller.cfg:1067
+#: data/core/macros/ai_controller.cfg:1064
 msgid "Clear special orders"
 msgstr "Annuler tous les ordres spéciaux"
 
-#: data/core/macros/ai_controller.cfg:1068
+#: data/core/macros/ai_controller.cfg:1065
 msgid ""
 "Special: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_special_description"
@@ -7150,8 +7149,8 @@ msgstr "Fin du scénario"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:211 src/unit.cpp:2342
-#: src/unit.cpp:2498
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:211 src/unit.cpp:2337
+#: src/unit.cpp:2493
 msgid "HP"
 msgstr "PV"
 
@@ -7376,7 +7375,7 @@ msgstr "Aucune description n'est disponible"
 msgid "B"
 msgstr "o"
 
-#: src/addon_management.cpp:416 src/dialogs.cpp:1053
+#: src/addon_management.cpp:416 src/dialogs.cpp:1054
 msgid "KB"
 msgstr "Ko"
 
@@ -7586,7 +7585,7 @@ msgstr "Toutes les extensions ont été mises à jour avec succès."
 msgid "Connecting to add-ons server..."
 msgstr "Connexion au serveur des extensions..."
 
-#: src/addon_management.cpp:974
+#: src/addon_management.cpp:974 src/network.cpp:369 src/network.cpp:377
 msgid "Could not connect to host."
 msgstr "Impossible de se connecter au serveur."
 
@@ -7857,7 +7856,7 @@ msgstr "Annuler les ordres"
 msgid "OK"
 msgstr "OK"
 
-#: src/dialogs.cpp:611 src/dialogs.cpp:1024 src/dialogs.cpp:1131
+#: src/dialogs.cpp:611 src/dialogs.cpp:1025 src/dialogs.cpp:1132
 #: src/multiplayer_connect.cpp:1004 src/multiplayer_create.cpp:86
 #: src/multiplayer_wait.cpp:175
 msgid "Cancel"
@@ -7871,55 +7870,55 @@ msgstr "Effacer la sauvegarde"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/dialogs.cpp:766 src/help.cpp:1333
+#: src/dialogs.cpp:767 src/help.cpp:1333
 msgid "level"
 msgstr "niveau"
 
-#: src/dialogs.cpp:779 src/help.cpp:1436
+#: src/dialogs.cpp:780 src/help.cpp:1436
 msgid "HP: "
 msgstr "PV : "
 
-#: src/dialogs.cpp:782
+#: src/dialogs.cpp:783
 msgid "XP: "
 msgstr "XP : "
 
-#: src/dialogs.cpp:786 src/help.cpp:1437
+#: src/dialogs.cpp:787 src/help.cpp:1437
 msgid "Moves: "
 msgstr "Déplacements : "
 
-#: src/game.cpp:639 src/game.cpp:1372
+#: src/game.cpp:629 src/game.cpp:1363
 msgid "The Battle for Wesnoth"
 msgstr "Bataille pour Wesnoth"
 
-#: src/game.cpp:971 src/game.cpp:979
+#: src/game.cpp:960 src/game.cpp:968
 msgid "The file you have tried to load is corrupt"
 msgstr "Le fichier sauvegardé est corrompu"
 
-#: src/game.cpp:974 src/game.cpp:982 src/savegame.cpp:534
+#: src/game.cpp:963 src/game.cpp:971 src/savegame.cpp:534
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Le fichier que vous avez essayé de charger est corrompu : « "
 
-#: src/game.cpp:986
+#: src/game.cpp:975
 msgid "File I/O Error while reading the game"
 msgstr "Erreur d'E/S en chargeant le jeu"
 
-#: src/game.cpp:1081
+#: src/game.cpp:1070
 msgid "No campaigns are available.\n"
 msgstr "Aucune campagne disponible.\n"
 
-#: src/game.cpp:1119
+#: src/game.cpp:1108
 msgid "Difficulty"
 msgstr "Difficulté"
 
-#: src/game.cpp:1120
+#: src/game.cpp:1109
 msgid "Select difficulty level:"
 msgstr "Choisissez le niveau de difficulté :"
 
-#: src/game.cpp:1255
+#: src/game.cpp:1244
 msgid "Do you really want to start the server?"
 msgstr "Voulez-vous vraiment démarrer le serveur ?"
 
-#: src/game.cpp:1256
+#: src/game.cpp:1245
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
@@ -7927,61 +7926,61 @@ msgstr ""
 "Le serveur fonctionnera en processus d'arrière-plan jusqu'à ce que tous les "
 "utilisateurs se soient déconnectés."
 
-#: src/game.cpp:1260
+#: src/game.cpp:1249
 msgid "Don't show again"
 msgstr "Ne plus afficher"
 
-#: src/game.cpp:1331
+#: src/game.cpp:1320
 msgid "Error while starting server: "
 msgstr "Erreur lors du démarrage du serveur : "
 
-#: src/game.cpp:1333 src/playcampaign.cpp:105 src/playcampaign.cpp:392
+#: src/game.cpp:1322 src/playcampaign.cpp:105 src/playcampaign.cpp:392
 msgid "The game could not be loaded: "
 msgstr "Le jeu n'a pas pu être chargé : "
 
-#: src/game.cpp:1335 src/playcampaign.cpp:107 src/playcampaign.cpp:395
+#: src/game.cpp:1324 src/playcampaign.cpp:107 src/playcampaign.cpp:395
 msgid "Error while playing the game: "
 msgstr "Erreur lors du déroulement de la partie : "
 
-#: src/game.cpp:1351 src/playcampaign.cpp:109 src/playcampaign.cpp:398
+#: src/game.cpp:1342 src/playcampaign.cpp:109 src/playcampaign.cpp:398
 msgid "The game map could not be loaded: "
 msgstr "La carte n'a pas pu être chargée : "
 
-#: src/game.cpp:1495
+#: src/game.cpp:1491
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Impossible de charger cette(ces) extension(s) en erreur :"
 msgstr[1] "Impossible de charger cette(ces) extension(s) en erreur :"
 
-#: src/game.cpp:1502
+#: src/game.cpp:1498
 msgid "ERROR DETAILS:"
 msgstr "Détails des erreurs :"
 
-#: src/game.cpp:1522
+#: src/game.cpp:1518
 msgid "Error loading game configuration files: '"
 msgstr "Erreur lors du chargement des fichiers de configuration du jeu : « "
 
-#: src/game.cpp:1523
+#: src/game.cpp:1519
 msgid "' (The game will now exit)"
 msgstr " » (Le jeu va maintenant se terminer)"
 
-#: src/game.cpp:1532
+#: src/game.cpp:1528
 msgid "Loading data files"
 msgstr "Lecture des fichiers de données"
 
-#: src/game.cpp:1963
+#: src/game.cpp:1959
 msgid "Loading game configuration."
 msgstr "Chargement de la configuration du jeu"
 
-#: src/game.cpp:1969
+#: src/game.cpp:1965
 msgid "Re-initialize fonts for the current language."
 msgstr "Réinitialiser les polices pour le langage courant."
 
-#: src/game.cpp:1977
+#: src/game.cpp:1973
 msgid "Searching for installed add-ons."
 msgstr "Chercher des extensions installées."
 
-#: src/game.cpp:1986
+#: src/game.cpp:1982
 msgid "Loading title screen."
 msgstr "Chargement de l'écran de présentation"
 
@@ -8005,7 +8004,7 @@ msgstr "Debogage : "
 msgid "Info: "
 msgstr "Infos : "
 
-#: src/game_events.cpp:3301
+#: src/game_events.cpp:3300
 msgid "[unit_worth]'s filter didn't match any units!"
 msgstr "Le filtre [unit_worth] ne correspond à aucune unité !"
 
@@ -9463,15 +9462,15 @@ msgstr "identifiant réseau non valide"
 msgid "Client disconnected"
 msgstr "Client déconnecté"
 
-#: src/network.cpp:527
+#: src/network.cpp:528
 msgid "Could not add socket to socket set"
 msgstr "Impossible d'ajouter le port à la liste des ports"
 
-#: src/network.cpp:539
+#: src/network.cpp:540
 msgid "Could not send initial handshake"
 msgstr "Impossible d'envoyer le signal d'établissement de la liaison"
 
-#: src/pathfind/pathfind.cpp:498
+#: src/pathfind/pathfind.cpp:499
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Un terrain avec un coût de mouvement inférieur à 1 a été détecté."
 
@@ -10023,31 +10022,31 @@ msgstr "Type d'unité inconnu : « $type| »"
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "Type d'unité inconnu lors de la génération des traits : '$type|'"
 
-#: src/unit.cpp:2299 src/unit.cpp:2486 src/unit.cpp:2559
+#: src/unit.cpp:2294 src/unit.cpp:2481 src/unit.cpp:2554
 msgid " and "
 msgstr " et "
 
-#: src/unit.cpp:2310
+#: src/unit.cpp:2305
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list| : $effect_description"
 
-#: src/unit.cpp:2375
+#: src/unit.cpp:2370
 msgid "moves"
 msgstr "déplacements"
 
-#: src/unit.cpp:2393 src/unit.cpp:2513
+#: src/unit.cpp:2388 src/unit.cpp:2508
 msgid "XP to advance"
 msgstr "XP pour évoluer"
 
-#: src/unit.cpp:2505
+#: src/unit.cpp:2500
 msgid " move"
 msgstr " déplacement"
 
-#: src/unit.cpp:2521
+#: src/unit.cpp:2516
 msgid "$effect_description per level"
 msgstr "$effect_description par niveau"
 
-#: src/unit.cpp:2568
+#: src/unit.cpp:2563
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name| : $trait_description "
 

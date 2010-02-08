@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-01-17 17:48+0100\n"
+"POT-Creation-Date: 2010-02-08 11:33+0100\n"
 "PO-Revision-Date: 2009-01-07 22:43+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -174,7 +174,7 @@ msgstr "Red overlevende elver"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:127
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1107
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:188
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1762
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1805
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:214
 msgid "Death of Kaleh, Nym, Garak or Zhul"
 msgstr "Kaleh, Nym, Garak eller Zhuls død"
@@ -741,7 +741,7 @@ msgstr ""
 
 #. [objectives]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1096
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1751
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1794
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1238
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1385
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1543
@@ -757,7 +757,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4975
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:5122
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1033
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2896
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2899
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1098
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1237
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1331
@@ -1052,7 +1052,7 @@ msgstr ""
 "tiltrukket andre åndemanere. Vi kan på ingen måde besejre dem alle. Vi er "
 "løbet tør for tid. Der er ingen udvej. Eloh redde os!"
 
-#. [scenario]: id=2_Across_the_Harsh_Sands
+#. [scenario]: id=2_Across_the_Harsh_Sands, role=Hunting Ogre, role=Hunting Ogre
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:6
 msgid "Across the Harsh Sands"
 msgstr "Over sandet"
@@ -1069,7 +1069,7 @@ msgstr "Udød"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:184
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1754
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1797
 msgid "Kaleh Must Reach the Northern Edge of the Desert"
 msgstr "Kaleh skal nå det nordlige hjørne af ørkenen"
 
@@ -1214,29 +1214,29 @@ msgstr "tørst"
 msgid "refreshed"
 msgstr "opfrisket"
 
-#. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:661
+#. [scenario]: id=2_Across_the_Harsh_Sands, role=Hunting Ogre, role=Hunting Ogre
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:652
 msgid "Scorpion"
 msgstr "Skorpion"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:680
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:684
 msgid "Wait. I think I spotted something ahead of us..."
 msgstr "Vent. Jeg tror jeg har opdatet noget foran os..."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:684
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:688
 msgid "What? I don't see a thing."
 msgstr "Hvad? Jeg kan intet se."
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:688
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:692
 msgid "See that shining speckles ahead? Scorpions. Large. Whole nest of them."
 msgstr ""
 "Se den skinnende plet der fremme? Skorpioner. Store. En hel rede fuld af dem."
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:695
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:699
 msgid ""
 "Do you want us to fight? We can still avoid them, but they are between us "
 "and the next oasis."
@@ -1245,12 +1245,12 @@ msgstr ""
 "den næste oase."
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:712
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:734
 msgid "Scorpions! We must have stumbled across a nest of them."
 msgstr "Skorpioner! Vi må være faldet over en rede med dem."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:746
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:765
 msgid ""
 "The scorpions were devouring some poor person's body. There doesn't seem to "
 "be much of him or her left, but wait...what's this? It looks like a tiny "
@@ -1267,7 +1267,7 @@ msgstr ""
 "vi kan helt sikkert bruge den nu."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:751
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:770
 msgid ""
 "One unit wearing this ring is immune to any damage caused during the day by "
 "the heat of the desert."
@@ -1276,18 +1276,18 @@ msgstr ""
 "varme om dagen."
 
 #. [object]: id=Travelring
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:767
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:786
 msgid "Traveler's Ring"
 msgstr "Rejsendes ring"
 
 #. [object]: id=Travelring
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:769
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:788
 msgid "At the end of each turn, this unit takes no damage from the desert."
 msgstr ""
 "Ved afslutningen af hver runde tager denne enhed ikke skade af ørkenen."
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:811
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:829
 msgid ""
 "Look, an oasis! Its refreshing water will allow our people to regain "
 "strength and rest safely on the grass during the heat of the day."
@@ -1295,14 +1295,13 @@ msgstr ""
 "Se en oase! Dets friske vand vil gøre at vort folk vil genfinde sin styrke "
 "og de kan hvile sikkert på græsset under dagens hede."
 
-#. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:829
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:831
+#. [scenario]: id=2_Across_the_Harsh_Sands, role=Hunting Ogre, role=Hunting Ogre
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:838
 msgid "Hunting Ogre"
 msgstr "Jagtogretrold"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:868
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:881
 msgid ""
 "Shh... Ogres ahead. Behind that dune there, we have to pass them if we want "
 "to reach the next oasis."
@@ -1311,12 +1310,12 @@ msgstr ""
 "skal nå den næste oase."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:872
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:885
 msgid "No chance to sneak around?"
 msgstr "Ingen mulighed for at snige sig forbi?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:876
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:889
 msgid ""
 "We would have to cover extra distance in difficult terrain. If you want to "
 "bypass them I suggest going straight north in the hopes of finding an oasis "
@@ -1325,19 +1324,20 @@ msgstr ""
 "Vi må gå ekstra langt i svært terræn. Hvis du vil forsøge at omgå dem, så "
 "vil jeg foreslå at vi går lige mod nord i håbet om at finde en oase der."
 
+#. [message]: type=Ogre, role=Hunting Ogre
 #. [message]: type=Ogre
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:889
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:913
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:916
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:957
 msgid "Fresh meat!"
 msgstr "Frisk kød!"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:908
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:952
 msgid "Ogre ambush!"
 msgstr "Ogretrold baghold!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:918
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:962
 msgid ""
 "Ugh, they smell as bad as they look. And they're huge! Well, the bigger they "
 "are, the harder they fall."
@@ -1346,7 +1346,7 @@ msgstr ""
 "de er desto hårdere falder de."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:941
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:987
 msgid ""
 "That's the last of them. This looks like a hunting party, they must have a "
 "camp around here somewhere."
@@ -1355,7 +1355,7 @@ msgstr ""
 "sted i nærheden."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:955
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1001
 msgid ""
 "Hey! Look there, they dropped something... A stone bottle, sealed. I wonder "
 "what's inside..."
@@ -1363,35 +1363,35 @@ msgstr ""
 "Se der. De tabte noget... En forseglet stenflaske. Hvad mon der er i den..."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:962
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1008
 msgid "Nym! No! Don't open..."
 msgstr "Nym! Nej! Åben den ikke..."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:972
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1018
 msgid ""
 "Too late. And it's just sand inside. Not worth... Whoa! What's happening?!"
 msgstr "For sent. Og der er kun sand indeni. Ikke værd... Vov! Hvad sker der?!"
 
 #. [unit]: type=Dust Devil, id=Dust Devil
 #. [unit_type]: id=Dust Devil, race=monster
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:978
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1024
 #: data/campaigns/Under_the_Burning_Suns/units/Dust_Devil.cfg:4
 msgid "Dust Devil"
 msgstr "Støvdjævel"
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:993
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1039
 msgid "It's a dust devil, but I have never seen one so small before."
 msgstr "Det er en støvdjævel, men jeg har aldrig set en så lille en før."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1050
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1096
 msgid "It seems to like you, looks like you just got yourself a pet."
 msgstr "Den ser ud til at kunne li' dig, ser ud til at du har fået et kæledyr."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1055
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1101
 msgid ""
 "Girl, I told you not to open it. Let's go, I'd really like to get to an "
 "oasis soon."
@@ -1400,19 +1400,19 @@ msgstr ""
 "vil gerne meget snart være i en oase."
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1150
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1195
 msgid "Black Lieutenant"
 msgstr "Sort løjtnant"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1151
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1152
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1153
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1196
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1197
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1198
 msgid "Black Hand Bandit"
 msgstr "Sorthåndsbandit"
 
 #. [message]: type=Thug
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1178
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1223
 msgid ""
 "And I thought it was going to be another boring patrol. You there! Elf! This "
 "is our oasis, and we will water it with your blood!"
@@ -1421,9 +1421,9 @@ msgstr ""
 "Dette er vores oase og vi vil vande den med dit blod!"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1183
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1221
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1288
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1228
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1266
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1333
 msgid ""
 "We need that water, and if we have to go through you to get it, so be it."
 msgstr ""
@@ -1431,38 +1431,38 @@ msgstr ""
 "det ske."
 
 #. [message]: role=Black Lieutenant
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1216
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1283
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1261
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1328
 msgid ""
 "We don't know who you are, and we don't much care. Tremble before the might "
 "of the Black Hand!"
 msgstr "Vi ved ikke hvem i er, og vi er ligeglade. Frygt Den sorte Hånds magt!"
 
 #. [unit]: type=Red Mage, id=Elyssa
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1336
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1381
 msgid "Elyssa"
 msgstr "Elyssa"
 
 #. [event]: (role=ElyssaUndead, (role=ElyssaUndead, (role=ElyssaUndead, (role=ElyssaUndead, (role=ElyssaUndead, (role=ElyssaUndead, (role=ElyssaUndead, (role=ElyssaUndead, (role=ElyssaUndead, (role=ElyssaUndead, (role=ElyssaUndead, (role=ElyssaUndead, (role=ElyssaUndead, (role=ElyssaUndead, (role=ElyssaUndead
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1394
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1439
 msgid "Go'hag"
 msgstr "Go'hag"
 
 #. [event]: (role=ElyssaUndead, (role=ElyssaUndead, (role=ElyssaUndead, (role=ElyssaUndead, (role=ElyssaUndead, (role=ElyssaUndead, (role=ElyssaUndead, (role=ElyssaUndead, (role=ElyssaUndead, (role=ElyssaUndead, (role=ElyssaUndead, (role=ElyssaUndead, (role=ElyssaUndead, (role=ElyssaUndead, (role=ElyssaUndead
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1395
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1396
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1397
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1398
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1440
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1441
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1442
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1443
 msgid "Undead Raider"
 msgstr "Udød røver"
 
 #. [message]: speaker=Elyssa
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1413
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1458
 msgid "Back, you fiends! Or I'll kill you a second time!"
 msgstr "Tilbage dit udyr! Eller jeg dræber dig endnu engang!"
 
 #. [message]: speaker=Go'hag
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1420
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1465
 msgid ""
 "You have defied our master for the last time. Now you shall die! And I shall "
 "personally make it slow and painful, to thank you for that scorching you "
@@ -1473,37 +1473,37 @@ msgstr ""
 "skade du gav mig. "
 
 #. [message]: speaker=Go'hag
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1427
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1472
 msgid "You have defied our master for the last time. Now you shall die!"
 msgstr "Du har trodset vores herre for den sidste gang. Nu skal du dø!"
 
 #. [message]: speaker=Elyssa
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1434
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1479
 msgid "Stupid undead, they never listen. Then have a taste of my flame!"
 msgstr "Dumme udøde, de lytter aldrig. Så smag da min flamme!"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1439
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1484
 msgid "She looks like she's in trouble. We should help her."
 msgstr "Hun ser ud til at være i nød. Vi bør hjælpe hende."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1466
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1511
 msgid "Whew! Looks like that's the last of them."
 msgstr "Det var vist den sidste af dem."
 
 #. [message]: speaker=Elyssa
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1471
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1516
 msgid "Thanks for the help! That was a little too close for comfort."
 msgstr "Tak for hjælpen! Det var lige lidt for tæt på."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1476
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1521
 msgid "That was a lot of undead. Why were they coming after you?"
 msgstr "Det var en stor gruppe af udøde. Hvorfor var de efter dig?"
 
 #. [message]: speaker=Elyssa
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1481
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1526
 msgid ""
 "I accidentally managed to anger a powerful necromancer a while ago...it's a "
 "long story. But who are you? You almost look like elves."
@@ -1512,7 +1512,7 @@ msgstr ""
 "siden... det er en lang historie. Men hvem er i? I ligner næsten elver."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1486
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1531
 msgid ""
 "We are, we're the Quenoth Elves and we are traveling north. You look like "
 "you're a mage, but I thought your kind were all gone."
@@ -1521,7 +1521,7 @@ msgstr ""
 "troldmand, men jeg troede at jeres slags var forsvundet."
 
 #. [message]: speaker=Elyssa
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1491
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1536
 msgid ""
 "I am, I'm a fire mage. I've been traveling for quite a while now, exploring "
 "and learning. But these sands seem particularly inhospitable! I've been "
@@ -1534,12 +1534,12 @@ msgstr ""
 "slutter mig til jer for en del af jeres rejse?"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1496
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1541
 msgid "We'd be glad to have the help of someone with the mastery of fire."
 msgstr "Vi vil være glad for at få hjælp fra en med kompetance inden for ild."
 
 #. [message]: speaker=$speaking_unit.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1504
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1549
 msgid ""
 "The undead are defeated, but we lost her in the fight as well. Darn, if only "
 "we could have saved her."
@@ -1548,20 +1548,20 @@ msgstr ""
 "kunne have reddet hende."
 
 #. [unit]: type=Wraith, id=Vengeful Lord, role=wraith
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1556
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1601
 msgid "Vengeful Lord"
 msgstr "Hævngerrig lensherre"
 
 #. [then]: (role=Wraith)}, (role=Wraith)}, (role=Wraith)}, (role=Wraith)}
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1566
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1567
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1571
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1572
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1611
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1612
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1616
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1617
 msgid "Honor Guard"
 msgstr "Ærevagt"
 
 #. [message]: speaker=Vengeful Lord
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1577
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1622
 msgid ""
 "The most hated living in my castle! To me! To me stray souls of the deserts! "
 "Let's cleanse this pollution!"
@@ -1570,7 +1570,7 @@ msgstr ""
 "ørkenen! Lad os rense denne forurening!"
 
 #. [message]: speaker=Vengeful Lord
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1582
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1627
 msgid ""
 "Elf with a bow, I remember you. You thought me defeated, but I am back even "
 "more powerful than before. Death reigns eternal, your scorched bones and "
@@ -1581,34 +1581,33 @@ msgstr ""
 "og livløse krop vil slutte sig til min vært."
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1587
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1632
 msgid ""
 "Still singing the same tune. We defeated you once before, we can do so again!"
 msgstr "Stadig den samme sang. Vi har besejret dig før. Vi kan gøre det igen!"
 
 #. [message]: speaker=Vengeful Lord
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1601
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1646
 msgid "Nooo... (fades)"
 msgstr "Neeej... (forsvinder)"
 
 #. [message]: speaker=$speaking_unit.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1611
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1656
 msgid "Searching his castle, we found a chest filled with gold."
 msgstr "Under gennemsøgning af borgen fandt vi denne kiste fyldt med guld."
 
-#. [else]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1646
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1647
+#. [else]: role=Ogre Nomad
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1689
 msgid "Ogre Nomad"
 msgstr "Ogretroldnomade"
 
 #. [message]: type=Ogre
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1659
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1702
 msgid "Elves! Kill them all!"
 msgstr "Elver! Dræb dem alle!"
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1664
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1707
 msgid ""
 "This ruined castle must be where the ogres make their home. Well, if it's a "
 "fight they want, it's a fight they'll get. "
@@ -1617,7 +1616,7 @@ msgstr ""
 "en kamp de ønsker så skal de få det. "
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1688
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1731
 msgid ""
 "That's the last of those stinking beasts. They should trouble us no more."
 msgstr ""
@@ -1625,27 +1624,27 @@ msgstr ""
 "problemer."
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1693
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1736
 msgid "This ruin looks oddly familiar."
 msgstr "Denne ruin ser mærkelig bekendt ud."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1698
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1741
 msgid "Yuck, there's still dried blood on the stones. It's kind of spooky."
 msgstr "Ad bad. Der er stadig blodstænk på stenene. Det er ret uhyggeligt."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1729
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1772
 msgid "This land belongs to the Black Hand. Trespass and you will die."
 msgstr "Dette land tilhører Den sorte Hånd. Indgang medfører døden."
 
 #. [message]: speaker=$explorer.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1736
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1779
 msgid "Bandits. If they get in our way, they're going to be sorry."
 msgstr "Banditter. Hvis de går i vejen for os, kommer de til at fortryde det."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1741
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1784
 msgid ""
 "There's no way we can get all our people safely across the desert with "
 "outlaws harassing us. We must defeat them before we can continue."
@@ -1654,7 +1653,7 @@ msgstr ""
 "efter os. Vi må besejre dem før vi kan fortsætte."
 
 #. [message]: speaker=$explorer.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1746
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1789
 msgid ""
 "Did you see that? I think I just saw someone disappear behind that dune over "
 "there. I think we're being watched. I suspect there are more of these "
@@ -1665,17 +1664,17 @@ msgstr ""
 "klitterne, end vi først troede."
 
 #. [objective]: condition=win
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1758
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1801
 msgid "Defeat Outlaw Leader"
 msgstr "Besejr den fredløse leder"
 
 #. [unit]: id=Thorn, type=Outlaw
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1772
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1815
 msgid "Thorn"
 msgstr "Thorn"
 
 #. [message]: speaker=$explorer.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1841
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1884
 msgid ""
 "Dang. I was sure I saw an oasis here. Must have been a mirage. I've been out "
 "in the sand for too long."
@@ -1684,7 +1683,7 @@ msgstr ""
 "Jeg har været ude i ørkenen for længe."
 
 #. [message]: speaker=$explorer.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1865
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1908
 msgid ""
 "So, the outlaws have made a base around Pinnacle Rock. It's a good location, "
 "but we will drive them from it all the same."
@@ -1693,12 +1692,12 @@ msgstr ""
 "sted, men vi vil fordrive dem alligevel."
 
 #. [object]: id=PureWater
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1889
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1932
 msgid "Pure Water"
 msgstr "Rent vand"
 
 #. [object]: id=PureWater
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1891
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1934
 msgid ""
 "This water will make your melee weapons arcane, and thus especially powerful "
 "against the undead."
@@ -1707,20 +1706,20 @@ msgstr ""
 "mod udøde."
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1920
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1963
 msgid "I surrender! I mean we surrender. Just please don't kill me."
 msgstr "Jeg overgiver mig! Jeg mener vi overgiver os. Slå mig ikke ihjel."
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1927
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1939
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1970
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1982
 msgid ""
 "Please, have mercy on us. We're just trying to survive in this horrible land."
 msgstr ""
 "Vær venlig og vis nåde. Vi prøver kun at overleve i dette frygtelige land."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1932
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1975
 msgid ""
 "I will not kill you in cold blood. But leave these lands, and never darken "
 "our path again. Or I will show you no mercy."
@@ -1729,7 +1728,7 @@ msgstr ""
 "aldrig vores vej igen. Ellers vil jeg ikke vise nogen nåde."
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1950
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1993
 msgid ""
 "Here, take this vial of holy water. You'll need it with all the undead "
 "around."
@@ -1738,7 +1737,7 @@ msgstr ""
 "omkring."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1955
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1998
 msgid ""
 "I will take this vial, in exchange for your life. But leave these lands, and "
 "never darken our path again. Or I will show you no mercy."
@@ -1747,7 +1746,7 @@ msgstr ""
 "aldrig vores vej igen. Ellers viser jeg ingen nåde."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1960
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2003
 msgid ""
 "It's Holy Water. When anointed on a weapon it makes it deadly to magical "
 "creatures. Vials such as these are rare and valuable. We should choose "
@@ -1758,7 +1757,7 @@ msgstr ""
 "med omhu hvem som skal bruge det."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2001
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2044
 msgid ""
 "The Black Hand outlaws still threaten the others. While their leader still "
 "fights we won't be able to get all our people across the sands safely. We "
@@ -1769,7 +1768,7 @@ msgstr ""
 "Sorte Hånd før vi kan fortsætte."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2010
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2053
 msgid ""
 "The outlaws are defeated and we've made it across these blasted sands. The "
 "hills are just a few miles to the north. We should be able to find water and "
@@ -1780,7 +1779,7 @@ msgstr ""
 "hvile der."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2039
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2082
 msgid ""
 "Now that we have a moment of peace, I have to ask you, Elyssa, what were you "
 "really doing out in the middle of the desert? It's a rather barren place to "
@@ -1790,7 +1789,7 @@ msgstr ""
 "i midten af ørkenen? Det er et nøgent sted at rejse i."
 
 #. [message]: speaker=Elyssa
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2044
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2087
 msgid ""
 "I've been searching for secrets from the past. Did you know that this entire "
 "land used to be a huge empire? Apparently this used to all be great plains "
@@ -1801,7 +1800,7 @@ msgstr ""
 "landbrugsjord, før sandet kom."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2049
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2092
 msgid ""
 "It's hard to imagine. There's barely enough rain here now to support these "
 "tiny cacti, let alone crops."
@@ -1810,7 +1809,7 @@ msgstr ""
 "kaktusser kan overleve og da slet ikke afgrøder."
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2054
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2097
 msgid ""
 "And yet the great ruins that I have seen scattered across these sands are a "
 "testament that something was here before us. Perhaps in a time long ago when "
@@ -1821,7 +1820,7 @@ msgstr ""
 "tilgivende."
 
 #. [message]: speaker=Elyssa
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2059
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2102
 msgid ""
 "Before the Great Fall, there were huge cities, with great schools of magery, "
 "libraries of books, vast repositories of knowledge. Most of it was destroyed "
@@ -1835,12 +1834,12 @@ msgstr ""
 "tilbage. For eksempel har du hørt om Ildscepteret?"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2064
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2107
 msgid "No, I haven't. What is it?"
 msgstr "Nej jeg har ikke. Hvad er det?"
 
 #. [message]: speaker=Elyssa
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2069
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2112
 msgid ""
 "I'm not sure. I've read various references to it, but nothing specific. I've "
 "been searching for it for a long time. All I know is that it was a very "
@@ -1856,13 +1855,13 @@ msgstr ""
 "sikker på den må være et sted."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2074
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2117
 msgid ""
 "Perhaps. But it has been so long, and so much has been lost. Who can say?"
 msgstr "Måske. Men der er gået så lang tid, og så meget er tabt. Hvem ved?"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2101
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2143
 msgid ""
 "We've run out of provisions and our people are exhausted. We've taken too "
 "long crossing the desert, I fear we shall never reach the other side. "
@@ -1871,12 +1870,12 @@ msgstr ""
 "lang tid om at krydse ørken. Jeg fryfter vi aldrig når den anden side. "
 
 #. [else]: (role=LostSoul, (role=LostSoul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2293
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2335
 msgid "Lost Soul"
 msgstr "Fortabt sjæl"
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2312
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2354
 msgid ""
 "The sands are haunted with the spirits of tortured souls long since dead. At "
 "dusk they rise again, and during the Long Dark they can be particularly "
@@ -1889,7 +1888,7 @@ msgstr ""
 "dagens hede mod rædslernes om natten."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2317
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2359
 msgid ""
 "The combination of the heat of the day and the rising undead make dusk a "
 "particularly dangerous time of day."
@@ -1898,12 +1897,12 @@ msgstr ""
 "specielt farligt tidspunkt på dagen."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2331
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2373
 msgid "You come and rise again, spirits? Have we not defeated you before?"
 msgstr "I kommer igen ånder? Har vi ikke en gang besejret jer?"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2336
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2378
 msgid ""
 "These lost souls cannot hold onto anything but memories of lives long gone. "
 "They will rise to plague us again, night after night."
@@ -1912,12 +1911,12 @@ msgstr ""
 "tidligere liv. De vil komme igen og igen og plage os, nat efter nat."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2394
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2436
 msgid "What happened? The undead spirits all just disappeared."
 msgstr "Hvad skete der? De udøde ånder er forsvundet."
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2399
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2441
 msgid ""
 "These spirits are weak. They seek to prey on the helpless, but when they "
 "encounter strong resistance they flee."
@@ -1926,7 +1925,7 @@ msgstr ""
 "modstand så flygter de."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2406
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2448
 msgid "Flee, you craven spirits, and leave us in peace!"
 msgstr "Flygt i krysteragtige ånder, og lad os være i fred!"
 
@@ -9576,14 +9575,14 @@ msgstr "Red mindst to havmænd ved runde 16"
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:504
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1039
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2902
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2905
 msgid "Three merfolk must survive"
 msgstr "Tre havmænd må overleve"
 
 #. [objective]: condition=lose
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:508
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1043
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2906
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2909
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:613
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1104
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1243
@@ -10245,7 +10244,7 @@ msgstr "Jeg må gå nu. Kæmp i mit sted."
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1242
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2140
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2375
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2729
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2732
 msgid "Hekuba"
 msgstr "Hekuba"
 
@@ -10825,34 +10824,34 @@ msgstr ""
 msgid "Poor Kromph, at least he's finally at rest."
 msgstr "Stakkels Kromph. I det mindste hviler han nu."
 
-#. [event]
+#. [event]: role=Angry Crab
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2642
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2665
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2667
 msgid "Angry Crab"
 msgstr "Vred krabbe"
 
-#. [message]: speaker=Angry Crab
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2649
+#. [message]: role=Angry Crab
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2650
 msgid "Aaaargh! Fresh meat!"
 msgstr "Aaaargh! Frisk mad!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2653
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2654
 msgid "Where did those things come from? They look dangerous."
 msgstr "Hvor kom de der fra? De ser farlige ud."
 
-#. [message]: speaker=Angry Crab
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2672
+#. [message]: role=Angry Crab
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2675
 msgid "Gaaaggghhh! Kill!"
 msgstr "Gaaaggghhh! Dræb!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2676
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2679
 msgid "What are those things? They looked like ticked off giant crabs."
 msgstr "Hvad er dette for skabninger? De ligner rasende kæmpekrabber."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2688
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2691
 msgid ""
 "It is finished. See, my people, Tanstafaal has been killed by his own hand, "
 "and the thing pretending to be our god is gone."
@@ -10861,7 +10860,7 @@ msgstr ""
 "tingen der udgav sig for at være vores gud er borte."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2692
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2695
 msgid ""
 "You who call yourself Eloh, I challenge you, if you are truly our god, then "
 "show yourself, and strike me down where I stand!"
@@ -10870,7 +10869,7 @@ msgstr ""
 "gud, så vis dig, og slå mig ned hvor jeg står!"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2699
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2702
 msgid ""
 "Nothing. Eloh may still watch over us, but that thing was not her. And yet, "
 "I do not hold a grudge against all of you who rebelled. I too was deceived "
@@ -10888,7 +10887,7 @@ msgstr ""
 "eller dø i forsøget."
 
 #. [message]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2706
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2709
 msgid ""
 "I think I speak for all of us when I say that we accept your offer of "
 "amnesty and will follow you again. You have proved yourself capable as a "
@@ -10902,7 +10901,7 @@ msgstr ""
 "meget over dette."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2711
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2714
 msgid ""
 "Thank you. And I have also not forgotten the pledge I made to our merfolk "
 "friends. If it is possible, I would like to meet with your master. Your "
@@ -10913,32 +10912,32 @@ msgstr ""
 "folk et godt ry, og jeg, i det mindste, stoler på dig."
 
 #. [message]: role=merfolk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2715
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2718
 msgid "Thank you."
 msgstr "Tak."
 
 #. [unit]: type=Necromancer, id=Zilchis
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2741
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2744
 msgid "Zilchis"
 msgstr "Zilchis"
 
 #. [unit]: type=Necromancer, id=Sultaria
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2752
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2755
 msgid "Sultaria"
 msgstr "Sultaria"
 
 #. [message]: speaker=Hekuba
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2762
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2765
 msgid "And what about us, little elf, did you forget about us?"
 msgstr "Og hvad med os lille elv, glemte du alt om os?"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2766
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2769
 msgid "I could never forget what you did to those merfolk."
 msgstr "Jeg vil aldrig kunne glemme hvad du gjorde mod de havmænd."
 
 #. [message]: speaker=Hekuba
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2770
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2773
 msgid ""
 "Good, for that is just a taste. You are fools to interfere with our affairs, "
 "and the Iron Council does not tolerate fools. The Dark Lady shall swallow "
@@ -10955,20 +10954,20 @@ msgstr ""
 "fjerne de ikke-troende foran os!"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2813
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2814
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2815
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2816
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2817
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2818
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2819
 msgid "Arisen Warrior"
 msgstr "Genrejst kriger"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2820
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2823
 msgid "Gosh, just when things were starting to calm down."
 msgstr "Gosh, netop som tingene var ved at falde til ro."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2824
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2827
 msgid ""
 "Our people are scattered and exhausted, where will we go now Kaleh? Shall we "
 "retreat back into the dunes?"
@@ -10977,7 +10976,7 @@ msgstr ""
 "tilbage til klitterne?"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2828
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2831
 msgid ""
 "Before I decide, I have just one question: How did you merfolk plan on "
 "bringing us to meet your master, if she dwells far beneath the sea?"
@@ -10987,7 +10986,7 @@ msgstr ""
 "overflade?"
 
 #. [message]: role=merfolk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2832
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2835
 msgid ""
 "Actually we prefer to dwell in the shallow waters, where we may frolic in "
 "the great coral reefs under the sun and moon. But I digress, we realize that "
@@ -10998,7 +10997,7 @@ msgstr ""
 "at dit folk ikke kan svømme som os, og jeg tror jeg har en løsning."
 
 #. [message]: role=merfolk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2836
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2839
 msgid ""
 "The humans of the Iron Council dwell in a large island to the northwest; I "
 "was taken there several times for interrogation. It is a fearsome place, "
@@ -11013,7 +11012,7 @@ msgstr ""
 "bølgerne."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2840
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2843
 msgid ""
 "Across the waves!?! We are a people of the desert, we know nothing of "
 "piloting such vessels. And I do not like the idea of putting my life at the "
@@ -11024,7 +11023,7 @@ msgstr ""
 "nogle menneskebygget skibe."
 
 #. [message]: role=merfolk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2844
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2847
 msgid ""
 "We have often spied on the humans and have picked up some knowledge of "
 "piloting. We also have some magical skills that allow us to control the "
@@ -11041,7 +11040,7 @@ msgstr ""
 "tid og der er ingen anden måde at få jer til hende."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2848
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2851
 msgid ""
 "We have already gone to many strange places and survived. I trust the "
 "merfolk, if they believe that they can transport us safely across the "
@@ -11052,18 +11051,18 @@ msgstr ""
 "ligger jeg mit liv i deres hænder."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2852
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2855
 msgid "Wherever you go Kaleh, I will follow."
 msgstr "Hvor du går Kaleh der går jeg."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2856
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2859
 msgid "Very well. You have not led us astray so far, I will not leave you now."
 msgstr ""
 "Udmærket. Du har ikke ført os på afveje indtil nu. Jeg forlader dig ikke nu."
 
 #. [message]: speaker=$ally_name
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2866
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2869
 msgid ""
 "Ouch, being stuck between the water and the sun is a terrible place to be, "
 "but where you go I will follow."
@@ -11072,7 +11071,7 @@ msgstr ""
 "går, følger jeg efter."
 
 #. [message]: speaker=$ally_name
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2872
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2875
 msgid ""
 "$intl_ally_name scared of big water and bright sun, but $intl_ally_name will "
 "not dishonor Great Leader. Great Leader say follow Kaleh, and "
@@ -11083,7 +11082,7 @@ msgstr ""
 "følg Kaleh, og $intl_ally_name vil gøre det."
 
 #. [message]: role=merfolk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2878
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2881
 msgid ""
 "We have attacked the humans in the past, when their boats trespass in our "
 "waters, and so they fear us greatly. Their dark mages have cast protective "
@@ -11101,7 +11100,7 @@ msgstr ""
 "må du selv erobre dem."
 
 #. [message]: role=merfolk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2882
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2885
 msgid ""
 "There are four boats in the lagoon. Once you have captured each of the four "
 "then we can help you steer them out into the open water and to freedom. Then "
@@ -11116,12 +11115,12 @@ msgstr ""
 "med."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2886
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2889
 msgid "Truly, there are not as many of us as there once were."
 msgstr "Sandt, der er ikke så mange af os, som der var engang."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2890
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2893
 msgid ""
 "Though the cost be high, we do what we must. Come let us go capture those "
 "boats."
@@ -11129,19 +11128,19 @@ msgstr ""
 "Selvom prisen har været høj, så gør vi hvad vi skal. Lad os indfange de både."
 
 #. [objective]: condition=win
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2898
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2901
 msgid "Capture all 4 human ships"
 msgstr "Fang alle 4 menneskeskibe"
 
 #. [message]: speaker=Eloh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3188
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3191
 msgid ""
 "You think you can strike me down. This is just a small part of my true power."
 msgstr ""
 "Du tror du kan slå mig ned. Dette er kun en lille del af min sande magt."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3192
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3195
 msgid ""
 "Small part or no, if it is mortally possible to destroy you, I shall. Your "
 "hands are stained in our blood, you are not our god."
@@ -11150,25 +11149,25 @@ msgstr ""
 "gøre det. Dine hænder er fyldt med blod, du er ikke vores gud."
 
 #. [message]: speaker=Eloh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3211
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3214
 msgid "Don't worry Kaleh, we will see each other again...I promise."
 msgstr "Vær ikke bekymret Kaleh. Vi mødes igen. Det lover jeg."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3219
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3222
 msgid "She freaks me out, but at least it seems that she can be destroyed."
 msgstr ""
 "Hun giver mig nerver, men i det mindste ser det ud til at hun kan knuses."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3223
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3226
 msgid ""
 "That was just an apparition, but if we meet again I will make her pay for "
 "all that she has done."
 msgstr ""
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3235
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3238
 msgid ""
 "I'm sorry, Kaleh. My faith clouded my reason. But I wanted so very much to "
 "believe."
@@ -11177,7 +11176,7 @@ msgstr ""
 "tro."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3239
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3242
 msgid ""
 "You do not need to apologize. What you did was very brave. I wish to...to "
 "whatever god still watches over us, that this bloodshed was not necessary. "
@@ -11190,7 +11189,7 @@ msgstr ""
 "Hvor frygtelig det end lyder, så er selv døden en bedre skæbne."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3243
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3246
 msgid ""
 "So when you had the strange encounter with that human Durstrag and his "
 "guards, just after we escaped the caves, you were talking to Eloh, or "
@@ -11200,7 +11199,7 @@ msgstr ""
 "lige efter vi undslap hulerne, så talte du med Eloh, eller hvad hun nu er?"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3247
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3250
 msgid ""
 "Yes, she appeared only to me and demanded that I surrender to the humans. "
 "When I refused she threatened me, saying she would kill me if I refused. "
@@ -11211,7 +11210,7 @@ msgstr ""
 "begyndte jeg at blive virkelig mistænksom."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3251
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3254
 msgid ""
 "It is clear that that thing was not our god. I do not know what it was, but "
 "I have to keep believing that Eloh is out there somewhere. Without our "
@@ -11222,12 +11221,12 @@ msgstr ""
 "hvad har vi så tilbage?"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3255
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3258
 msgid "We have each other."
 msgstr "Vi har hinanden."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3259
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3262
 msgid ""
 "That's not enough. Look, you're a wonderful girl Nym, and Kaleh, you've "
 "shown yourself to be a great leader, but our actions have to mean something "
@@ -11240,14 +11239,14 @@ msgstr ""
 "med os. Vi må blive ved med at tro."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3263
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3266
 msgid "Peace Zhul, we can discuss theology later. We still have work to do."
 msgstr ""
 "Fred Zhul, vi kan diskutere teologi senere. Vi har stadig arbejde der skal "
 "gøres."
 
 #. [message]: speaker=Tanstafaal
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3292
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3295
 msgid ""
 "You cannot defeat me, I am protected by the goddess now. Finally, Kaleh, I "
 "will show everyone who is stronger!"
@@ -11256,12 +11255,12 @@ msgstr ""
 "vil jeg vise alle hvem der er den stærkeste!"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3296
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3299
 msgid "Oh Tanstafaal, I pity you. This battle was never about you."
 msgstr "Oh Tanstafaal, jeg har ondt af dig. Slaget vedrørte aldrig dig."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3314
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3317
 msgid ""
 "No, do not kill him. He may deserve it, but he will not die at my hands."
 msgstr ""
@@ -11269,12 +11268,12 @@ msgstr ""
 "min hånd."
 
 #. [message]: speaker=Tanstafaal
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3318
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3321
 msgid "Never Kaleh. I will not be your lackey again!"
 msgstr "Aldrig Kaleh. Jeg vil ikke være din spytslikker igen!"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3327
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3330
 msgid ""
 "Why did he have to kill himself? Oh poor misguided Tanstafaal. We have lost "
 "too many elves today."
@@ -11283,19 +11282,19 @@ msgstr ""
 "for mange elver i dag."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3331
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3334
 msgid "Do not blame yourself too much, it is Eloh who persuaded him to rebel."
 msgstr ""
 "Tag ikke for meget af skylden selv. Det er Eloh som overtalte ham til at "
 "gøre oprør."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3335
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3338
 msgid "Yes, she too will pay for her part in all of this."
 msgstr "Hun vil også betale for sin andel i dette her."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3356
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3359
 msgid ""
 "We've run out of time. The humans are gaining strength and will surely "
 "overwhelm us now."
@@ -11303,12 +11302,12 @@ msgstr ""
 "Vi er løbet tør for tid. Menneskene samler styrke og vil overmande os nu."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3369
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3372
 msgid "We've captured all four boats!"
 msgstr "Vi har fanget alle fire både!"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3373
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3376
 msgid ""
 "Good, then let's get out of here. The merfolk will help you guide the ships. "
 "I'll muster the rest of our people and retreat from this bloody battlefield. "
@@ -11319,7 +11318,7 @@ msgid ""
 msgstr ""
 
 #. [message]: role=merfolk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3377
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3380
 msgid ""
 "Then by the Sea God's hand I call forth the winds. May they confound our "
 "enemies and blow these ships to safety!"
@@ -16433,6 +16432,12 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:249
 msgid "Epilogue:"
 msgstr "Epilog:"
+
+#. [terrain_type]: id=DarkTiles
+#: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:10
+#, fuzzy
+msgid "Dark Tiles"
+msgstr "Darius"
 
 #. [terrain_type]: id=lava
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:22

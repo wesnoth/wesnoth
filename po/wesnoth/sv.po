@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-02-02 13:04+0100\n"
+"POT-Creation-Date: 2010-02-08 11:33+0100\n"
 "PO-Revision-Date: 2009-02-04 14:32+0100\n"
 "Last-Translator: Gustav Tiger <admin@tigge.org>\n"
 "Language-Team: Swedish\n"
@@ -3597,11 +3597,11 @@ msgstr "Fokusera på att förgöra..."
 #. [set_menu_item]: id=ai_controller
 #: data/core/macros/ai_controller.cfg:225
 #: data/core/macros/ai_controller.cfg:377
-#: data/core/macros/ai_controller.cfg:697
-#: data/core/macros/ai_controller.cfg:822
-#: data/core/macros/ai_controller.cfg:839
-#: data/core/macros/ai_controller.cfg:860
-#: data/core/macros/ai_controller.cfg:900
+#: data/core/macros/ai_controller.cfg:694
+#: data/core/macros/ai_controller.cfg:819
+#: data/core/macros/ai_controller.cfg:836
+#: data/core/macros/ai_controller.cfg:857
+#: data/core/macros/ai_controller.cfg:897
 msgid "Instruct ally"
 msgstr "Instruera allierade"
 
@@ -3639,9 +3639,9 @@ msgstr "fokuserar på att besegra $this_enemy_description|."
 #. [value]
 #. [option]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:333
-#: data/core/macros/ai_controller.cfg:491
-#: data/core/macros/ai_controller.cfg:885
-#: data/core/macros/ai_controller.cfg:920
+#: data/core/macros/ai_controller.cfg:490
+#: data/core/macros/ai_controller.cfg:882
+#: data/core/macros/ai_controller.cfg:917
 msgid "Back"
 msgstr "Tillbaka"
 
@@ -3661,53 +3661,53 @@ msgid "focusing on protecting $this_ally_description|."
 msgstr "fokuserar på att beskydda $this_ally_description|."
 
 #. [option]: type=objective
-#: data/core/macros/ai_controller.cfg:523
+#: data/core/macros/ai_controller.cfg:522
 msgid "Defend a location..."
 msgstr "Försvara en plats..."
 
 #. [print]
-#: data/core/macros/ai_controller.cfg:539
+#: data/core/macros/ai_controller.cfg:538
 msgid "Right-click to select a location to defend"
 msgstr "Högerklicka för att välja en plats att försvara"
 
 #. [set_menu_item]: id=ai_controller_defend_location_picker
-#: data/core/macros/ai_controller.cfg:546
+#: data/core/macros/ai_controller.cfg:545
 msgid "Defend this location"
 msgstr "Försvara denna plats"
 
 #. [command]
-#: data/core/macros/ai_controller.cfg:563
+#: data/core/macros/ai_controller.cfg:562
 msgid "focusing on defending the area around $x1|,$y1|."
 msgstr "fokuserar på att försvara området kring $x1|,$y1|."
 
 #. [print]
-#: data/core/macros/ai_controller.cfg:607
+#: data/core/macros/ai_controller.cfg:604
 msgid "Location selection canceled"
 msgstr "Områdesval avbröts"
 
 #. [option]
-#: data/core/macros/ai_controller.cfg:622
+#: data/core/macros/ai_controller.cfg:619
 msgid "Clear objective orders"
 msgstr "Avbryt målorder"
 
 #. [option]
-#: data/core/macros/ai_controller.cfg:643
+#: data/core/macros/ai_controller.cfg:640
 msgid "Clear behavior orders"
 msgstr "Avbryt beteendeorder"
 
 #. [option]
-#: data/core/macros/ai_controller.cfg:665
+#: data/core/macros/ai_controller.cfg:662
 msgid "Clear all orders"
 msgstr "Avbryt alla order"
 
 #. [then]
-#: data/core/macros/ai_controller.cfg:790
-#: data/core/macros/ai_controller.cfg:801
+#: data/core/macros/ai_controller.cfg:787
+#: data/core/macros/ai_controller.cfg:798
 msgid "none set."
 msgstr "ingen satt."
 
 #. [value]: speaker=narrator
-#: data/core/macros/ai_controller.cfg:823
+#: data/core/macros/ai_controller.cfg:820
 msgid ""
 "$ally_leader.name (side $ally_side|) has not been given any instructions and "
 "is acting normally."
@@ -3716,8 +3716,8 @@ msgstr ""
 "agerar normalt."
 
 #. [value]: speaker=narrator
-#: data/core/macros/ai_controller.cfg:826
-#: data/core/macros/ai_controller.cfg:843
+#: data/core/macros/ai_controller.cfg:823
+#: data/core/macros/ai_controller.cfg:840
 msgid ""
 "Objective: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_objective_description\n"
@@ -3730,55 +3730,55 @@ msgstr ""
 "currently_doing_behaviour_description"
 
 #. [value]: speaker=narrator
-#: data/core/macros/ai_controller.cfg:840
+#: data/core/macros/ai_controller.cfg:837
 msgid ""
 "$ally_leader.name (side $ally_side|) is carrying out the following "
 "instructions:"
 msgstr "$ally_leader.name (sida $ally_side|) utför följande instruktioner:"
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:855
+#: data/core/macros/ai_controller.cfg:852
 msgid "Set objective..."
 msgstr "Välj mål..."
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:895
+#: data/core/macros/ai_controller.cfg:892
 msgid "Set behavior..."
 msgstr "Välj beteende..."
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:935
+#: data/core/macros/ai_controller.cfg:932
 msgid "Exit"
 msgstr "Avsluta"
 
-#: data/core/macros/ai_controller.cfg:1062
+#: data/core/macros/ai_controller.cfg:1059
 #, fuzzy
 msgid "Set special orders..."
 msgstr "Välj beteende..."
 
-#: data/core/macros/ai_controller.cfg:1063
+#: data/core/macros/ai_controller.cfg:1060
 msgid "Move leader to..."
 msgstr ""
 
-#: data/core/macros/ai_controller.cfg:1064
+#: data/core/macros/ai_controller.cfg:1061
 #, fuzzy
 msgid "Right-click to select a location to move leader to"
 msgstr "Högerklicka för att välja en plats att försvara"
 
-#: data/core/macros/ai_controller.cfg:1065
+#: data/core/macros/ai_controller.cfg:1062
 msgid "Move leader here"
 msgstr ""
 
-#: data/core/macros/ai_controller.cfg:1066
+#: data/core/macros/ai_controller.cfg:1063
 msgid "moving leader to $x1|,$y1|."
 msgstr ""
 
-#: data/core/macros/ai_controller.cfg:1067
+#: data/core/macros/ai_controller.cfg:1064
 #, fuzzy
 msgid "Clear special orders"
 msgstr "Avbryt alla order"
 
-#: data/core/macros/ai_controller.cfg:1068
+#: data/core/macros/ai_controller.cfg:1065
 #, fuzzy
 msgid ""
 "Special: $ai_controller.side_$ally_side|_current_settings."
@@ -7073,8 +7073,8 @@ msgstr "Avsluta scenariot"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:211 src/unit.cpp:2342
-#: src/unit.cpp:2498
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:211 src/unit.cpp:2337
+#: src/unit.cpp:2493
 msgid "HP"
 msgstr "HP"
 
@@ -7305,7 +7305,7 @@ msgstr "Inga beskrivning tillgänglig."
 msgid "B"
 msgstr "B"
 
-#: src/addon_management.cpp:416 src/dialogs.cpp:1053
+#: src/addon_management.cpp:416 src/dialogs.cpp:1054
 msgid "KB"
 msgstr "KB"
 
@@ -7513,7 +7513,7 @@ msgstr "Alla tillägg uppdaterades korrekt."
 msgid "Connecting to add-ons server..."
 msgstr "Ansluter till extramaterial-servern..."
 
-#: src/addon_management.cpp:974
+#: src/addon_management.cpp:974 src/network.cpp:369 src/network.cpp:377
 msgid "Could not connect to host."
 msgstr "Kunde inte ansluta till servern."
 
@@ -7779,7 +7779,7 @@ msgstr "Avbryt order"
 msgid "OK"
 msgstr "OK"
 
-#: src/dialogs.cpp:611 src/dialogs.cpp:1024 src/dialogs.cpp:1131
+#: src/dialogs.cpp:611 src/dialogs.cpp:1025 src/dialogs.cpp:1132
 #: src/multiplayer_connect.cpp:1004 src/multiplayer_create.cpp:86
 #: src/multiplayer_wait.cpp:175
 msgid "Cancel"
@@ -7793,55 +7793,55 @@ msgstr "Radera sparat spel"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/dialogs.cpp:766 src/help.cpp:1333
+#: src/dialogs.cpp:767 src/help.cpp:1333
 msgid "level"
 msgstr "nivå"
 
-#: src/dialogs.cpp:779 src/help.cpp:1436
+#: src/dialogs.cpp:780 src/help.cpp:1436
 msgid "HP: "
 msgstr "HP: "
 
-#: src/dialogs.cpp:782
+#: src/dialogs.cpp:783
 msgid "XP: "
 msgstr "EP: "
 
-#: src/dialogs.cpp:786 src/help.cpp:1437
+#: src/dialogs.cpp:787 src/help.cpp:1437
 msgid "Moves: "
 msgstr "Förflyttning: "
 
-#: src/game.cpp:639 src/game.cpp:1372
+#: src/game.cpp:629 src/game.cpp:1363
 msgid "The Battle for Wesnoth"
 msgstr "Kampen om Wesnoth"
 
-#: src/game.cpp:971 src/game.cpp:979
+#: src/game.cpp:960 src/game.cpp:968
 msgid "The file you have tried to load is corrupt"
 msgstr "Filen du försöker öppna är felaktig"
 
-#: src/game.cpp:974 src/game.cpp:982 src/savegame.cpp:534
+#: src/game.cpp:963 src/game.cpp:971 src/savegame.cpp:534
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Filen du försöker öppna är felaktig: '"
 
-#: src/game.cpp:986
+#: src/game.cpp:975
 msgid "File I/O Error while reading the game"
 msgstr "I/O-fel vid läsning från fil"
 
-#: src/game.cpp:1081
+#: src/game.cpp:1070
 msgid "No campaigns are available.\n"
 msgstr "Inga kampanjer är tillgängliga.\n"
 
-#: src/game.cpp:1119
+#: src/game.cpp:1108
 msgid "Difficulty"
 msgstr "Svårighetsgrad"
 
-#: src/game.cpp:1120
+#: src/game.cpp:1109
 msgid "Select difficulty level:"
 msgstr "Välj svårighetsgrad:"
 
-#: src/game.cpp:1255
+#: src/game.cpp:1244
 msgid "Do you really want to start the server?"
 msgstr "Vill du verkligen starta serven?"
 
-#: src/game.cpp:1256
+#: src/game.cpp:1245
 #, fuzzy
 msgid ""
 "The server will run in a background process until all users have "
@@ -7850,61 +7850,61 @@ msgstr ""
 "Servern kommer att köras i en bakgrundsprocess tills alla användare har "
 "kopplat ifrån sig."
 
-#: src/game.cpp:1260
+#: src/game.cpp:1249
 msgid "Don't show again"
 msgstr "Visa inte igen"
 
-#: src/game.cpp:1331
+#: src/game.cpp:1320
 msgid "Error while starting server: "
 msgstr "Fel under serverstart: "
 
-#: src/game.cpp:1333 src/playcampaign.cpp:105 src/playcampaign.cpp:392
+#: src/game.cpp:1322 src/playcampaign.cpp:105 src/playcampaign.cpp:392
 msgid "The game could not be loaded: "
 msgstr "Spelet kunde inte öppnas: "
 
-#: src/game.cpp:1335 src/playcampaign.cpp:107 src/playcampaign.cpp:395
+#: src/game.cpp:1324 src/playcampaign.cpp:107 src/playcampaign.cpp:395
 msgid "Error while playing the game: "
 msgstr "Fel under spel: "
 
-#: src/game.cpp:1351 src/playcampaign.cpp:109 src/playcampaign.cpp:398
+#: src/game.cpp:1342 src/playcampaign.cpp:109 src/playcampaign.cpp:398
 msgid "The game map could not be loaded: "
 msgstr "Kartan kunde inte öppnas: "
 
-#: src/game.cpp:1495
+#: src/game.cpp:1491
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Följande extramaterial innehöll fel och kunde inte öppnas:"
 msgstr[1] "Följande extramaterial innehöll fel och kunde inte öppnas:"
 
-#: src/game.cpp:1502
+#: src/game.cpp:1498
 msgid "ERROR DETAILS:"
 msgstr "FELDETALJER:"
 
-#: src/game.cpp:1522
+#: src/game.cpp:1518
 msgid "Error loading game configuration files: '"
 msgstr "Fel vid öppnande av konfigurationsfiler: '"
 
-#: src/game.cpp:1523
+#: src/game.cpp:1519
 msgid "' (The game will now exit)"
 msgstr "' (Spelet kommer nu att avslutas)"
 
-#: src/game.cpp:1532
+#: src/game.cpp:1528
 msgid "Loading data files"
 msgstr "Läser datafiler"
 
-#: src/game.cpp:1963
+#: src/game.cpp:1959
 msgid "Loading game configuration."
 msgstr "Laddar spelkonfiguration."
 
-#: src/game.cpp:1969
+#: src/game.cpp:1965
 msgid "Re-initialize fonts for the current language."
 msgstr "Ställer in typsnitt för aktuellt språk."
 
-#: src/game.cpp:1977
+#: src/game.cpp:1973
 msgid "Searching for installed add-ons."
 msgstr "Söker efter installerat extramaterial."
 
-#: src/game.cpp:1986
+#: src/game.cpp:1982
 msgid "Loading title screen."
 msgstr "Laddar titelsidan."
 
@@ -7928,7 +7928,7 @@ msgstr "Avlusning:"
 msgid "Info: "
 msgstr "Info:"
 
-#: src/game_events.cpp:3301
+#: src/game_events.cpp:3300
 msgid "[unit_worth]'s filter didn't match any units!"
 msgstr ""
 
@@ -9395,15 +9395,15 @@ msgstr "Ogiltigt nätverkshandtag"
 msgid "Client disconnected"
 msgstr "Klienten har avbrutit uppkopplingen"
 
-#: src/network.cpp:527
+#: src/network.cpp:528
 msgid "Could not add socket to socket set"
 msgstr "Kunde inte lägga till sockel till sockellistan"
 
-#: src/network.cpp:539
+#: src/network.cpp:540
 msgid "Could not send initial handshake"
 msgstr "Kunde inte utföra handskakning"
 
-#: src/pathfind/pathfind.cpp:498
+#: src/pathfind/pathfind.cpp:499
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Stötte på terräng med en förflyttningskostnad mindre än 1."
 
@@ -9954,31 +9954,31 @@ msgstr "Okänt truppslag: '$type|'"
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "Okänt truppslag '$type|' under generering av karaktärsdrag"
 
-#: src/unit.cpp:2299 src/unit.cpp:2486 src/unit.cpp:2559
+#: src/unit.cpp:2294 src/unit.cpp:2481 src/unit.cpp:2554
 msgid " and "
 msgstr " och "
 
-#: src/unit.cpp:2310
+#: src/unit.cpp:2305
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2375
+#: src/unit.cpp:2370
 msgid "moves"
 msgstr "förflyttning"
 
-#: src/unit.cpp:2393 src/unit.cpp:2513
+#: src/unit.cpp:2388 src/unit.cpp:2508
 msgid "XP to advance"
 msgstr "EP till befordran"
 
-#: src/unit.cpp:2505
+#: src/unit.cpp:2500
 msgid " move"
 msgstr " förflyttning"
 
-#: src/unit.cpp:2521
+#: src/unit.cpp:2516
 msgid "$effect_description per level"
 msgstr "$effect_description per nivå"
 
-#: src/unit.cpp:2568
+#: src/unit.cpp:2563
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 
