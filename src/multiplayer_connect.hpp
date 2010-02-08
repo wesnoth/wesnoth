@@ -94,10 +94,10 @@ public:
 		const std::string& get_current_player() const
 			{ return current_player_; }
 
-		const std::string& get_id() const;
+		const std::string& get_player_id() const;
 
 		/** Sets the username of this side. */
-		void set_id(const std::string& id);
+		void set_player_id(const std::string& player_id);
 
 		const std::string& get_save_id() const;
 
@@ -139,6 +139,7 @@ public:
 		// Configurable variables
 		int index_;
 		std::string id_;
+		std::string player_id_;
 		std::string save_id_;
 		std::string current_player_;
 		mp::controller controller_;

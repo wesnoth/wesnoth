@@ -61,10 +61,11 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	parent_(&parent),
 	cfg_(cfg),
 	index_(index),
-	id_(""), // Id is reset, and not imported from loading savegames
+	id_(cfg_.get_attribute("id")),
+	player_id_(cfg_.get_attribute("player_id")),
 	save_id_(cfg_.get_attribute("save_id")),
 	current_player_(cfg_.get_attribute("current_player")),
-	controller_(),
+	controller_(CNTR_NETWORK),
 	faction_(lexical_cast_default<int>(cfg_.get_attribute("faction"), 0)),
 	team_(0),
 	colour_(index),
@@ -330,7 +331,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 
 connect::side::side(const side& a) :
 	parent_(a.parent_), cfg_(a.cfg_),
-	index_(a.index_), id_(a.id_),  save_id_(a.save_id_),
+	index_(a.index_), id_(a.id_), player_id_(a.player_id_),  save_id_(a.save_id_),
 	current_player_(a.current_player_),
 	controller_(a.controller_),
 	faction_(a.faction_), team_(a.team_), colour_(a.colour_),
@@ -378,16 +379,16 @@ void connect::side::process_event()
 	int drop_target;
 	if ( ( drop_target = combo_controller_->get_drop_target() )> -1)
 	{
-		const std::string target_id = parent_->sides_[drop_target].get_id();
+		const std::string target_id = parent_->sides_[drop_target].get_player_id();
 		const mp::controller target_controller = parent_->sides_[drop_target].get_controller();
 		const std::string target_ai = parent_->sides_[drop_target].ai_algorithm_;
 
 		parent_->sides_[drop_target].ai_algorithm_ = ai_algorithm_;
-		if (id_.empty())
+		if (player_id_.empty())
 		{
 			parent_->sides_[drop_target].set_controller(controller_);
 		} else {
-			parent_->sides_[drop_target].set_id(id_);
+			parent_->sides_[drop_target].set_player_id(player_id_);
 		}
 
 		ai_algorithm_ = target_ai;
@@ -395,7 +396,7 @@ void connect::side::process_event()
 		{
 			set_controller(target_controller);
 		} else {
-			set_id(target_id);
+			set_player_id(target_id);
 		}
 		changed_ = true;
 		parent_->sides_[drop_target].changed_ = true;
@@ -411,15 +412,15 @@ void connect::side::process_event()
 		} else if (combo_controller_->selected() < cntr_last) {
 			// Correct entry number if CNTR_NETWORK is not allowed for combo_controller_
 			controller_ = mp::controller(combo_controller_->selected() + (parent_->local_only_ ? 1 : 0));
-			id_ = "";
+			player_id_ = "";
 			changed_ = true;
 		} else {
 			// give user second side
 			size_t user = combo_controller_->selected() - cntr_last - 1;
 
 			const std::string new_id = parent_->users_[user].name;
-			if (new_id != id_) {
-				id_ = new_id;
+			if (new_id != player_id_) {
+				player_id_ = new_id;
 				controller_ = parent_->users_[user].controller;
 				changed_ = true;
 			}
@@ -495,11 +496,11 @@ bool connect::side::available(const std::string& name) const
 	if (name.empty())
 	{
 		return allow_player_
-			&& ((controller_ == CNTR_NETWORK && id_.empty())
+			&& ((controller_ == CNTR_NETWORK && player_id_.empty())
 					|| controller_ == CNTR_RESERVED);
 	}
 	return allow_player_
-		&& ((controller_ == CNTR_NETWORK && id_.empty())
+		&& ((controller_ == CNTR_NETWORK && player_id_.empty())
 			|| (controller_ == CNTR_RESERVED && current_player_ == name));
 }
 
@@ -510,10 +511,10 @@ bool connect::side::allow_player() const
 
 void connect::side::update_controller_ui()
 {
-	if (id_.empty()) {
+	if (player_id_.empty()) {
 		combo_controller_->set_selected(controller_ - (parent_->local_only_ ? 1 : 0));
 	} else {
-		connected_user_list::iterator player = parent_->find_player(id_);
+		connected_user_list::iterator player = parent_->find_player(player_id_);
 
 		if (player != parent_->users_.end()) {
 			const int no_reserve = save_id_.empty()?-1:0;
@@ -628,10 +629,10 @@ config connect::side::get_config() const
 		res["side"] = lexical_cast<std::string>(index_ + 1);
 	}
 	res["controller"] = controller_names[controller_];
-	res["current_player"] = id_.empty() ? current_player_ : id_;
+	res["current_player"] = player_id_.empty() ? current_player_ : player_id_;
 	res["id"] = id_;
 
-	if (id_.empty()) {
+	if (player_id_.empty()) {
 		std::string description;
 		switch(controller_) {
 		case CNTR_NETWORK:
@@ -641,7 +642,7 @@ config connect::side::get_config() const
 			if(enabled_ && cfg_.get_attribute("save_id").empty()) {
 				res["save_id"] = preferences::login() + res["side"].str();
 			}
-			res["id"] = preferences::login() + res["side"].str();
+			res["player_id"] = preferences::login() + res["side"].str();
 			res["current_player"] = preferences::login();
 			description = N_("Anonymous local player");
 			break;
@@ -682,12 +683,12 @@ config connect::side::get_config() const
 		}
 		res["user_description"] = t_string(description, "wesnoth");
 	} else {
-		res["id"] = id_ + res["side"];
+		res["player_id"] = id_ + res["side"];
 		if(enabled_ && cfg_.get_attribute("save_id").empty()) {
-			res["save_id"] = id_ + res["side"].str();
+			res["save_id"] = player_id_ + res["side"].str();
 		}
 
-		res["user_description"] = id_;
+		res["user_description"] = player_id_;
 	}
 
 	res["name"] = res["user_description"];
@@ -768,7 +769,7 @@ config connect::side::get_config() const
 void connect::side::set_controller(mp::controller controller)
 {
 	controller_ = controller;
-	id_ = "";
+	player_id_ = "";
 
 	update_ui();
 }
@@ -793,28 +794,28 @@ void connect::side::update_user_list()
 	for (itor = parent_->users_.begin(); itor != parent_->users_.end();
 			++itor) {
 		list.push_back(itor->name);
-		if (itor->name == id_)
+		if (itor->name == player_id_)
 			name_present = true;
 	}
 
 	if (name_present == false) {
-		id_ = "";
+		player_id_ = "";
 	}
 
 	combo_controller_->set_items(list);
 	update_controller_ui();
 }
 
-const std::string& connect::side::get_id() const
+const std::string& connect::side::get_player_id() const
 {
-	return id_;
+	return player_id_;
 }
 
-void connect::side::set_id(const std::string& id)
+void connect::side::set_player_id(const std::string& player_id)
 {
-	connected_user_list::iterator i = parent_->find_player(id);
+	connected_user_list::iterator i = parent_->find_player(player_id);
 	if (i != parent_->users_.end()) {
-		id_ = id;
+		player_id_ = player_id;
 		controller_ = i->controller;
 	}
 	update_ui();
@@ -827,7 +828,7 @@ const std::string& connect::side::get_save_id() const
 
 void connect::side::import_network_user(const config& data)
 {
-	id_ = data["name"];
+	player_id_ = data["name"];
 	controller_ = CNTR_NETWORK;
 
 	if(enabled_ && !parent_->era_sides_.empty()) {
@@ -854,7 +855,7 @@ void connect::side::import_network_user(const config& data)
 
 void connect::side::reset(mp::controller controller)
 {
-	id_ = "";
+	player_id_ = "";
 	controller_ = controller;
 
 	if(enabled_ && !parent_->era_sides_.empty()) {
@@ -1046,7 +1047,7 @@ connect::connect(game_display& disp, const config& game_config,
 			if (side_choice == -1)
 				side_choice = s - sides_.begin();
 			if(s->get_current_player() == preferences::login()) {
-				sides_[s - sides_.begin()].set_id(preferences::login());
+				sides_[s - sides_.begin()].set_player_id(preferences::login());
 				side_choice = gamemap::MAX_PLAYERS;
 			}
 		}
@@ -1055,7 +1056,8 @@ connect::connect(game_display& disp, const config& game_config,
 	if (side_choice != -1
 			&& side_choice != gamemap::MAX_PLAYERS)
 	{
-		sides_[side_choice].set_id(preferences::login());
+		if (sides_[side_choice].get_player_id() == "")
+			sides_[side_choice].set_player_id(preferences::login());
 	}
 
 	// Updates the "level_" variable, now that sides are loaded
@@ -1160,7 +1162,7 @@ void connect::process_network_data(const config& data, const network::connection
 	if (!data["side_drop"].empty()) {
 		const int side_drop = lexical_cast_default<int>(data["side_drop"], 0) - 1;
 		if(side_drop >= 0 && side_drop < int(sides_.size())) {
-			connected_user_list::iterator player = find_player(sides_[side_drop].get_id());
+			connected_user_list::iterator player = find_player(sides_[side_drop].get_player_id());
 			sides_[side_drop].reset(sides_[side_drop].get_controller());
 			if (player != users_.end()) {
 				users_.erase(player);
@@ -1710,7 +1712,7 @@ int connect::find_player_side(const std::string& id) const
 {
 	side_list::const_iterator itor;
 	for (itor = sides_.begin(); itor != sides_.end(); ++itor) {
-		if (itor->get_id() == id)
+		if (itor->get_player_id() == id)
 			break;
 	}
 
