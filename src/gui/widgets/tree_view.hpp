@@ -113,6 +113,20 @@ public:
 				  const tpoint& coordinate
 				, const bool must_be_active) const;
 
+		/** Inherited from twidget.*/
+		twidget* find(const std::string& id, const bool must_be_active)
+		{
+			twidget* result = twidget::find(id, must_be_active);
+			return result ? result : grid_.find(id, must_be_active);
+		}
+
+		/** Inherited from twidget.*/
+		const twidget* find(const std::string& id
+				, const bool must_be_active) const
+		{
+			const twidget* result = twidget::find(id, must_be_active);
+			return result ? result : grid_.find(id, must_be_active);
+		}
 		void clear() { children_.clear(); }
 
 	private:
