@@ -242,6 +242,12 @@ void ttree_view::tnode::impl_populate_dirty_list(twindow& caller
 	}
 }
 
+tpoint ttree_view::tnode::calculate_best_size() const
+{
+	assert(parent_widget_);
+	return calculate_best_size(-1, parent_widget_->indention_step_size_);
+}
+
 tpoint ttree_view::tnode::calculate_best_size(const int indention_level
 		, const unsigned indention_step_size) const
 {

@@ -142,10 +142,7 @@ public:
 		void impl_populate_dirty_list(twindow& caller,
 				const std::vector<twidget*>& call_stack);
 
-		tpoint calculate_best_size() const 
-		{
-			return calculate_best_size(-1, 40); // FIXME step only negative
-		}
+		tpoint calculate_best_size() const;
 
 		bool disable_click_dismiss() const { return true; }
 
