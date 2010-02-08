@@ -127,6 +127,9 @@ public:
 			const twidget* result = twidget::find(id, must_be_active);
 			return result ? result : grid_.find(id, must_be_active);
 		}
+
+		size_t size() const { return children_.size(); }
+
 		void clear() { children_.clear(); }
 
 	private:
