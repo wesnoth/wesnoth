@@ -1397,7 +1397,8 @@ void game_controller::set_unit_data()
 void game_controller::load_game_cfg(const bool force)
 {
 	// make sure that 'debug mode' symbol is set if command line parameter is selected
-	if (game_config::debug) {
+	// also if we're in multiplayer and actual debug mode is disabled
+	if (game_config::debug || game_config::mp_debug) {
 		cache_.add_define("DEBUG_MODE");
 	}
 
