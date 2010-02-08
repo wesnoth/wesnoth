@@ -62,7 +62,9 @@ namespace gui2 {
 void tcampaign_selection::campaign_selected(twindow& window)
 {
 	if(new_widgets) {
-		ttree_view& tree = find_widget<ttree_view>(&window, "campaign_tree", false);
+		ttree_view& tree = find_widget<ttree_view>(&window
+				, "campaign_tree"
+				, false);
 
 		if(tree.empty()) {
 			return;
@@ -94,7 +96,9 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 {
 	if(new_widgets) {
 		/***** Setup campaign tree. *****/
-		ttree_view& tree = find_widget<ttree_view>(&window, "campaign_tree", false);
+		ttree_view& tree = find_widget<ttree_view>(&window
+				, "campaign_tree"
+				, false);
 
 		tree.set_selection_change_callback(boost::bind(
 				  &tcampaign_selection::campaign_selected
@@ -131,9 +135,11 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 			tree_group_item["name"] = tree_group_field;
 
 			if(utils::string_bool(campaign["completed"], false)) {
-				completed.add_child("campaign", tree_group_item).set_id(lexical_cast<std::string>(id++));
+				completed.add_child("campaign", tree_group_item)
+						.set_id(lexical_cast<std::string>(id++));
 			} else {
-				not_completed.add_child("campaign", tree_group_item).set_id(lexical_cast<std::string>(id++));
+				not_completed.add_child("campaign", tree_group_item)
+						.set_id(lexical_cast<std::string>(id++));
 			}
 
 			/*** Add detail item ***/
@@ -148,8 +154,6 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 			detail_page.insert(std::make_pair("image", detail_item));
 
 			multi_page.add_page(detail_page);
-
-//			break; // FIXME remove
 		}
 
 		if(completed.empty()) {
@@ -222,7 +226,9 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 void tcampaign_selection::post_show(twindow& window)
 {
 	if(new_widgets) {
-		ttree_view& tree = find_widget<ttree_view>(&window, "campaign_tree", false);
+		ttree_view& tree = find_widget<ttree_view>(&window
+				, "campaign_tree"
+				, false);
 
 		if(tree.empty()) {
 			return;
