@@ -651,7 +651,6 @@ config connect::side::get_config() const
 				res["save_id"] = "ai" + res["side"].str();
 			}
 			{
-				res["id"] = res["save_id"];
 				utils::string_map symbols;
 				if (allow_player_) {
 					const config &ai_cfg = ai::configuration::get_ai_config_for(ai_algorithm_);
