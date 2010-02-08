@@ -259,6 +259,9 @@ class CrossRefLister(CrossRef):
                 defcount += 1
                 callcount += len(defn.references)
                 if None in map(formaltype, defn.args):
+                    for (i, d) in enumerate(defn.args):
+                        if formaltype(d) is None:
+                            defn.args[i] += "?"
                     unchecked.append((name, defn))
                     unresolvedcount += len(defn.references)
         if unchecked:
