@@ -682,7 +682,7 @@ config connect::side::get_config() const
 		}
 		res["user_description"] = t_string(description, "wesnoth");
 	} else {
-		res["player_id"] = id_ + res["side"];
+		res["player_id"] = player_id_ + res["side"];
 		if(enabled_ && cfg_.get_attribute("save_id").empty()) {
 			res["save_id"] = player_id_ + res["side"].str();
 		}
