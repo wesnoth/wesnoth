@@ -1325,7 +1325,9 @@ bool game_controller::play_multiplayer()
 	} catch(network::error& e) {
 		if(e.message != "") {
 			ERR_NET << "caught network::error: " << e.message << "\n";
-			gui2::show_transient_message(disp().video(), "", e.message);
+			gui2::show_transient_message(disp().video()
+					, ""
+					, gettext(e.message.c_str()));
 		} else {
 			ERR_NET << "caught network::error\n";
 		}

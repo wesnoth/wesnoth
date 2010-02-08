@@ -366,14 +366,15 @@ void connect_operation::run()
 	char* const hostname = host_.empty() ? NULL : const_cast<char*>(host_.c_str());
 	IPaddress ip;
 	if(SDLNet_ResolveHost(&ip,hostname,port_) == -1) {
-		error_ = "Could not connect to host";
+		error_ = N_("Could not connect to host.");
 		return;
 	}
 
 	TCPsocket sock = SDLNet_TCP_Open(&ip);
 	if(!sock) {
-		error_ = hostname == NULL ? "Could not bind to port" :
-		                            "Could not connect to host";
+		error_ = hostname == NULL
+				? "Could not bind to port"
+				: N_("Could not connect to host.");
 		return;
 	}
 
