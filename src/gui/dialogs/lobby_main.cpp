@@ -872,7 +872,12 @@ void tlobby_main::update_playerlist()
 			tree_group_field["use_markup"] = "true";
 			tree_group_item["name"] = tree_group_field;
 
-			target_list->tree->add_child("player", tree_group_item);
+			ttree_view::tnode& player =
+					target_list->tree->add_child("player", tree_group_item);
+
+			find_widget<ttoggle_panel>(&player, "tree_view_node_label", false)
+					.set_callback_mouse_left_double_click(boost::bind(
+						&tlobby_main::user_dialog_callback, this, userptr));
 		} else {
 			target_list->list->add_row(data);
 
