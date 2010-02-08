@@ -226,7 +226,7 @@ void wait::join_game(bool observe)
 				side_num = nb_sides;
 				break;
 			}
-			if (sd["controller"] == "network" && sd["id"].empty())
+			if (sd["controller"] == "network" && sd["player_id"].empty())
 			{
 				if (!side_choice) { // found the first empty side
 					side_choice = &sd;
@@ -435,7 +435,7 @@ void wait::generate_menu()
 		}
 
 		std::string description = sd["user_description"];
-		const std::string faction_id = sd["id"];
+		const std::string faction_id = sd["player_id"];
 
 		t_string side_name = sd["faction_name"];
 		std::string leader_type = sd["type"];
@@ -452,8 +452,8 @@ void wait::generate_menu()
 			}
 		}
 
-		if(!sd["id"].empty())
-			playerlist.push_back(sd["id"]);
+		if(!sd["player_id"].empty())
+			playerlist.push_back(sd["player_id"]);
 
 		std::string leader_name;
 		std::string leader_image;
