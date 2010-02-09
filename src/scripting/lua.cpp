@@ -1421,6 +1421,7 @@ static int impl_game_config_get(lua_State *L)
 	return_int_attrib("recall_cost", game_config::recall_cost);
 	return_int_attrib("kill_experience", game_config::kill_experience);
 	return_string_attrib("version", game_config::version);
+	return_bool_attrib("debug", game_config::debug);
 	return 0;
 }
 
