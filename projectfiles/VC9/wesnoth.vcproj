@@ -474,10 +474,6 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\lobby_data.cpp"
-				>
-			</File>
-			<File
 				RelativePath="..\..\src\lobby_preferences.cpp"
 				>
 			</File>
@@ -2383,6 +2379,18 @@
 							/>
 						</FileConfiguration>
 					</File>
+					<Filter
+						Name="Lobby"
+						>
+						<File
+							RelativePath="..\..\src\gui\dialogs\lobby\lobby_data.cpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\dialogs\lobby\lobby_info.cpp"
+							>
+						</File>
+					</Filter>
 				</Filter>
 				<Filter
 					Name="Auxiliary"
@@ -5361,10 +5369,6 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\lobby_data.hpp"
-				>
-			</File>
-			<File
 				RelativePath="..\..\src\lobby_preferences.hpp"
 				>
 			</File>
@@ -5866,6 +5870,18 @@
 						RelativePath="..\..\src\gui\dialogs\wml_message.hpp"
 						>
 					</File>
+					<Filter
+						Name="Lobby"
+						>
+						<File
+							RelativePath="..\..\src\gui\dialogs\lobby\lobby_data.hpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\dialogs\lobby\lobby_info.hpp"
+							>
+						</File>
+					</Filter>
 				</Filter>
 				<Filter
 					Name="Widgets"

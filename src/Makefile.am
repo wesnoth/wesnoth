@@ -165,6 +165,8 @@ wesnoth_source = \
 	gui/dialogs/game_save.cpp \
 	gui/dialogs/gamestate_inspector.cpp \
 	gui/dialogs/language_selection.cpp \
+	gui/dialogs/lobby/lobby_data.cpp \
+	gui/dialogs/lobby/lobby_info.cpp \
 	gui/dialogs/lobby_main.cpp \
 	gui/dialogs/lobby_player_info.cpp \
 	gui/dialogs/message.cpp \
@@ -214,7 +216,6 @@ wesnoth_source = \
 	halo.cpp \
 	help.cpp \
 	intro.cpp \
-	lobby_data.cpp \
 	lobby_preferences.cpp \
 	leader_list.cpp \
 	menu_events.cpp \

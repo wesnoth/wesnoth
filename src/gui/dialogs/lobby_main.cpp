@@ -36,7 +36,6 @@
 #include "formula_string_utils.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
-#include "lobby_data.hpp"
 #include "lobby_preferences.hpp"
 #include "log.hpp"
 #include "network.hpp"

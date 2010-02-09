@@ -19,7 +19,7 @@
 #include "gui/widgets/tree_view.hpp"
 #include "config.hpp"
 #include "chat_events.hpp"
-#include "lobby_data.hpp"
+#include "src/gui/dialogs/lobby/lobby_info.hpp"
 
 #include <boost/scoped_ptr.hpp>
 #include <boost/function.hpp>
