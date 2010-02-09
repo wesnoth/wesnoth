@@ -78,7 +78,7 @@ void tsub_player_list::init(gui2::twindow &w, const std::string &id)
 	label = find_widget<tlabel>(&w, id + "_label", false, true);
 
 
-	if(new_widgets) {
+	if(!new_widgets) {
 
 		ttree_view& parent_tree = find_widget<ttree_view>(&w
 				, "player_tree"
@@ -117,7 +117,7 @@ void tsub_player_list::show_toggle_callback(gui2::twidget* /*widget*/)
 
 void tsub_player_list::auto_hide()
 {
-	if(gui2::new_widgets) {
+	if(!new_widgets) {
 		assert(tree);
 		assert(tree_label);
 		if(tree->empty()) {
@@ -173,9 +173,9 @@ void tplayer_list::init(gui2::twindow &w)
 	tree = find_widget<ttree_view>(&w
 			, "player_tree"
 			, false
-			, new_widgets);
+			, !new_widgets);
 
-	if(new_widgets) {
+	if(!new_widgets) {
 		find_widget<twidget>(&w, "old_player_list", false)
 				.set_visible(twidget::INVISIBLE);
 
@@ -197,7 +197,7 @@ void tplayer_list::init(gui2::twindow &w)
 					, "tree_view_node_icon"
 					, false).set_value(true);
 	}
-	if(!new_widgets && tree) {
+	if(new_widgets && tree) {
 		tree->set_visible(twidget::INVISIBLE);
 	}
 }
@@ -806,7 +806,7 @@ void tlobby_main::update_playerlist()
 	player_list_.active_room.list->clear();
 	player_list_.other_rooms.list->clear();
 	player_list_.other_games.list->clear();
-	if(new_widgets) {
+	if(!new_widgets) {
 		assert(player_list_.active_game.tree);
 		assert(player_list_.active_room.tree);
 		assert(player_list_.other_games.tree);
@@ -877,7 +877,7 @@ void tlobby_main::update_playerlist()
 			target_list = &player_list_.other_rooms;
 		}
 
-		if(new_widgets) {
+		if(!new_widgets) {
 			assert(target_list->tree);
 
 			string_map tree_group_field;
@@ -1354,7 +1354,7 @@ void tlobby_main::process_gamelist(const config &data)
 
 void tlobby_main::process_gamelist_diff(const config &data)
 {
-	if(new_widgets) {
+	if(!new_widgets) {
 		// Copy pasted from the part below, we should call invalidate layout
 		// when needed.
 		if (lobby_info_.process_gamelist_diff(data)) {
