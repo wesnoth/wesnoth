@@ -307,8 +307,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 	end_level_data &end_level = get_end_level_data();
 	end_level.carryover_percentage = lexical_cast_default<int>(
 		level_["carryover_percentage"], game_config::gold_carryover_percentage);
-	end_level.carryover_add = utils::string_bool(
-		level_["carryover_add"], game_config::gold_carryover_add);
+	end_level.carryover_add = utils::string_bool(level_["carryover_add"]);
 
 	LOG_NG << "entering try... " << (SDL_GetTicks() - ticks_) << "\n";
 	try {
@@ -348,9 +347,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			end_level.carryover_percentage = lexical_cast_default<int>(
 				level_["carryover_percentage"],
 				game_config::gold_carryover_percentage);
-			end_level.carryover_add = utils::string_bool(
-				level_["carryover_add"],
-				game_config::gold_carryover_add);
+			end_level.carryover_add = utils::string_bool(level_["carryover_add"]);
 			end_level.gold_bonus = utils::string_bool(end_cfg["bonus"], true);
 			end_level.carryover_report = false;
 			throw end_level_exception(SKIP_TO_LINGER);

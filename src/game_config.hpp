@@ -49,13 +49,6 @@ namespace game_config
 	/** Default percentage gold carried over to the next scenario. */
 	extern const int gold_carryover_percentage;
 
-	/**
-	 * If true the carried over gold is added to the start gold in the next
-	 * scenario, otherwise it uses the maximum of starting gold and carryover
-	 * gold.
-	 */
-	extern const bool gold_carryover_add;
-
 	extern bool debug, editor, ignore_replay_errors, mp_debug, exit_at_end, no_delay, small_gui, disable_autosave;
 
 	extern int cache_compression_level;

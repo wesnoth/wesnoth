@@ -2618,8 +2618,7 @@ WML_HANDLER_FUNCTION(endlevel, /*event_info*/, cfg)
 	data.carryover_percentage = lexical_cast_default<int>
 		(cfg["carryover_percentage"],
 		 game_config::gold_carryover_percentage);
-	data.carryover_add = utils::string_bool(cfg["carryover_add"],
-		game_config::gold_carryover_add);
+	data.carryover_add = utils::string_bool(cfg["carryover_add"]);
 
 	if (result.empty() || result == "victory") {
 		resources::controller->force_end_level(VICTORY);
