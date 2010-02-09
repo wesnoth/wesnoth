@@ -131,7 +131,7 @@ public:
 	void set_side(unsigned int new_side) { side_ = new_side; }
 	fixed_t alpha() const { return alpha_; }
 
-	bool can_recruit() const { return utils::string_bool(cfg_["canrecruit"]); }
+	bool can_recruit() const { return canrecruit_; }
 	bool incapacitated() const { return get_state(STATE_PETRIFIED); }
 	int total_movement() const { return max_movement_; }
 	int movement_left() const { return (movement_ == 0 || incapacitated()) ? 0 : movement_; }
@@ -371,6 +371,7 @@ private:
 	int experience_;
 	int max_experience_;
 	int level_;
+	bool canrecruit_;
 	unit_type::ALIGNMENT alignment_;
 	std::string flag_rgb_;
 	std::string image_mods_;

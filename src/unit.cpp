@@ -139,6 +139,7 @@ unit::unit(const unit& o):
            experience_(o.experience_),
            max_experience_(o.max_experience_),
            level_(o.level_),
+	canrecruit_(o.canrecruit_),
            alignment_(o.alignment_),
            flag_rgb_(o.flag_rgb_),
            image_mods_(o.image_mods_),
@@ -224,6 +225,7 @@ unit::unit(unit_map* unitmap, const config& cfg,
 	experience_(0),
 	max_experience_(0),
 	level_(0),
+	canrecruit_(utils::string_bool(cfg["canrecruit"])),
 	alignment_(),
 	flag_rgb_(),
 	image_mods_(),
@@ -519,6 +521,7 @@ unit::unit(unit_map* unitmap, const config& cfg,
 		"max_hitpoints", "max_moves", "max_experience",
 		"advances_to", "hitpoints", "goto_x", "goto_y", "moves",
 		"experience", "resting", "unrenamable", "alignment",
+		"canrecruit",
 		// Useless attributes created when saving units to WML:
 		"flag_rgb", "language_name" };
 	foreach (const char *attr, internalized_attrs) {
@@ -527,7 +530,7 @@ unit::unit(unit_map* unitmap, const config& cfg,
 	}
 
 	static char const *raw_attrs[] = { "description", "halo",
-		"profile", "upkeep", "canrecruit", "usage", "ellipse",
+		"profile", "upkeep", "usage", "ellipse",
 		"image", "random_traits", "generate_name" };
 	foreach (const char *attr, raw_attrs) {
 		input_cfg.remove_attribute(attr);
@@ -566,6 +569,7 @@ unit::unit(unit_map *unitmap, const unit_type *t, int side,
 	experience_(0),
 	max_experience_(0),
 	level_(0),
+	canrecruit_(false),
 	alignment_(),
 	flag_rgb_(),
 	image_mods_(),
@@ -803,7 +807,7 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 	config old_cfg;
 	old_cfg.swap(cfg_);
 
-	static char const *persistent_attrs[] = { "canrecruit", "upkeep", "ellipse",
+	static char const *persistent_attrs[] = { "upkeep", "ellipse",
 		"image", "usage", "random_traits", "generate_name" };
 	foreach (const char *attr, persistent_attrs) {
 		if (!old_cfg.has_attribute(attr)) continue;
