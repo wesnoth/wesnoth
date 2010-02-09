@@ -568,6 +568,7 @@ void tlobby_main::update_gamelist()
 	SCOPE_LB;
 	gamelistbox_->clear();
 	gamelist_id_at_row_.clear();
+	lobby_info_.make_games_vector();
 	lobby_info_.apply_game_filter();
 	update_gamelist_header();
 	int select_row = -1;
@@ -582,7 +583,7 @@ void tlobby_main::update_gamelist()
 		tgrid* grid = gamelistbox_->get_row_grid(gamelistbox_->get_item_count() - 1);
 		adjust_game_row_contents(game, gamelistbox_->get_item_count() - 1, grid);
 	}
-	gamelistbox_->set_row_shown(lobby_info_.games_shown());
+	gamelistbox_->set_row_shown(lobby_info_.games_visibility());
 	if (select_row >= 0 && select_row != gamelistbox_->get_selected_row()) {
 		gamelistbox_->select_row(select_row);
 	}
@@ -592,6 +593,7 @@ void tlobby_main::update_gamelist()
 void tlobby_main::update_gamelist_diff()
 {
 	SCOPE_LB;
+	lobby_info_.make_games_vector();
 	lobby_info_.apply_game_filter();
 	update_gamelist_header();
 	int select_row = -1;
@@ -615,31 +617,31 @@ void tlobby_main::update_gamelist_diff()
 			next_gamelist_id_at_row.push_back(game.id);
 		} else {
 			if (list_i >= gamelistbox_->get_item_count()) {
-				ERR_LB << "Ran out of listbox items\n";
+				ERR_LB << "Ran out of listbox items -- triggering a full refresh\n";
 				network::send_data(config("refresh_lobby"), 0, true);
 				return;
 			}
 			int listbox_game_id = gamelist_id_at_row_[list_i + list_rows_deleted];
 			if (game.id != listbox_game_id) {
 				ERR_LB << "Listbox game id does not match expected id "
-					<< listbox_game_id << " " << game.id << "\n";
+					<< listbox_game_id << " " << game.id << " (row " << list_i << ")\n";
 				network::send_data(config("refresh_lobby"), 0, true);
 				return;
 			}
 			if (game.display_status == game_info::UPDATED) {
-				LOG_LB << "Modyfying game in listbox " << game.id << "\n";
+				LOG_LB << "Modyfying game in listbox " << game.id << " (row " << list_i << ")\n";
 				tgrid* grid = gamelistbox_->get_row_grid(list_i);
 				modify_grid_with_data(grid, make_game_row_data(game));
 				adjust_game_row_contents(game, list_i, grid);
 				++list_i;
 				next_gamelist_id_at_row.push_back(game.id);
 			} else if (game.display_status == game_info::DELETED) {
-				LOG_LB << "Deleting game from listbox " << game.id << "\n";
+				LOG_LB << "Deleting game from listbox " << game.id << " (row " << list_i << ")\n";
 				gamelistbox_->remove_row(list_i);
 				++list_rows_deleted;
 			} else {
 				//clean
-				LOG_LB << "Clean game in listbox " << game.id << "\n";
+				LOG_LB << "Clean game in listbox " << game.id << " (row " << list_i << ")\n";
 				next_gamelist_id_at_row.push_back(game.id);
 				++list_i;
 			}
@@ -782,7 +784,7 @@ void tlobby_main::update_gamelist_filter()
 {
 	lobby_info_.apply_game_filter();
 	assert(lobby_info_.games().size() == gamelistbox_->get_item_count());
-	gamelistbox_->set_row_shown(lobby_info_.games_shown());
+	gamelistbox_->set_row_shown(lobby_info_.games_visibility());
 }
 
 

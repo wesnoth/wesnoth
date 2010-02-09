@@ -38,6 +38,8 @@ static lg::log_domain log_lobby("lobby");
 #define LOG_LB LOG_STREAM(info, log_lobby)
 #define WRN_LB LOG_STREAM(warn, log_lobby)
 #define ERR_LB LOG_STREAM(err, log_lobby)
+#define SCOPE_LB log_scope2(log_lobby, __func__)
+
 
 lobby_info::lobby_info(const config& game_config)
 	: game_config_(game_config)
@@ -52,7 +54,7 @@ lobby_info::lobby_info(const config& game_config)
 	, whispers_()
 	, game_filter_()
 	, game_filter_invert_(false)
-	, games_shown_()
+	, games_visibility_()
 {
 }
 
@@ -95,6 +97,7 @@ std::string dump_games_config(const config& gamelist)
 
 void lobby_info::process_gamelist(const config &data)
 {
+	SCOPE_LB;
 	gamelist_ = data;
 	gamelist_initialized_ = true;
 	delete_games();
@@ -105,13 +108,13 @@ void lobby_info::process_gamelist(const config &data)
 	}
 	DBG_LB << dump_games_map(games_by_id_);
 	DBG_LB << dump_games_config(gamelist_.child("gamelist"));
-	games_shown_.resize(games_by_id_.size());
 	process_userlist();
 }
 
 
 bool lobby_info::process_gamelist_diff(const config &data)
 {
+	SCOPE_LB;
 	if (!gamelist_initialized_) return false;
 	DBG_LB << "prediff " << dump_games_config(gamelist_.child("gamelist"));
 	try {
@@ -162,13 +165,13 @@ bool lobby_info::process_gamelist_diff(const config &data)
 		return false;
 	}
 	DBG_LB << "postclean " << dump_games_config(gamelist_.child("gamelist"));
-	games_shown_.resize(games_by_id_.size());
 	process_userlist();
 	return true;
 }
 
 void lobby_info::process_userlist()
 {
+	SCOPE_LB;
 	users_.clear();
 	foreach (const config& c, gamelist_.child_range("user")) {
 		users_.push_back(user_info(c));
@@ -196,7 +199,7 @@ void lobby_info::process_userlist()
 
 void lobby_info::sync_games_display_status()
 {
-	DBG_LB << "sync_games_display_status\n";
+	DBG_LB << "lobby_info::sync_games_display_status\n";
 	game_info_map::iterator i = games_by_id_.begin();
 	while (i != games_by_id_.end()) {
 		if (i->second->display_status == game_info::DELETED) {
@@ -269,7 +272,7 @@ const std::vector<game_info*>& lobby_info::games_filtered() const
 
 int lobby_info::games_shown_count() const
 {
-	return std::count(games_shown_.begin(), games_shown_.end(), true);
+	return std::count(games_visibility_.begin(), games_visibility_.end(), true);
 }
 
 void lobby_info::add_game_filter(game_filter_base *f)
@@ -287,22 +290,31 @@ void lobby_info::set_game_filter_invert(bool value)
 	game_filter_invert_ = value;
 }
 
-void lobby_info::apply_game_filter()
+void lobby_info::make_games_vector()
 {
 	games_filtered_.clear();
-	games_shown_.clear();
+	games_visibility_.clear();
 	games_.clear();
 	foreach (const game_info_map::value_type& v, games_by_id_) {
-		game_info& gi = *v.second;
+		games_.push_back(v.second);
+	}
+	games_visibility_.resize(games_.size());
+}
+
+void lobby_info::apply_game_filter()
+{
+	int i = 0;
+	foreach (game_info* g, games_) {
+		game_info& gi = *g;
 		bool show = game_filter_.match(gi);
 		if (game_filter_invert_) {
 			show = !show;
 		}
-		games_shown_.push_back(show);
+		games_visibility_[i] = show;
 		if (show) {
 			games_filtered_.push_back(&gi);
 		}
-		games_.push_back(&gi);
+		++i;
 	}
 }
 

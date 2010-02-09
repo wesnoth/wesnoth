@@ -46,6 +46,8 @@ public:
 
 	void sync_games_display_status();
 
+	void make_games_vector();
+
 	const config& gamelist() const { return gamelist_; }
 
 	void clear_game_filter();
@@ -72,7 +74,7 @@ public:
 
 	const std::vector<room_info>& rooms() const { return rooms_; }
 	const std::vector<game_info*>& games() const { return games_; }
-	const std::vector<bool>& games_shown() const { return games_shown_; }
+	const std::vector<bool>& games_visibility() const { return games_visibility_; }
 	const std::vector<game_info*>& games_filtered() const;
 	int games_shown_count() const;
 	const std::vector<user_info>& users() const { return users_; }
@@ -94,7 +96,7 @@ private:
 	std::map<std::string, chat_log> whispers_;
 	game_filter_and_stack game_filter_;
 	bool game_filter_invert_;
-	std::vector<bool> games_shown_;
+	std::vector<bool> games_visibility_;
 };
 
 #endif
