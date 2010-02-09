@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "lobby_data.hpp"
+#include "gui/dialogs/lobby/lobby_data.hpp"
 
 #include "config.hpp"
 #include "game_preferences.hpp"

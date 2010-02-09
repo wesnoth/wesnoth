@@ -15,7 +15,7 @@
 #ifndef INC_LOBBY_INFO
 #define INC_LOBBY_INFO
 
-#include "src/gui/dialogs/lobby/lobby_data.hpp"
+#include "gui/dialogs/lobby/lobby_data.hpp"
 
 /**
  * This class represents the collective information the client has
