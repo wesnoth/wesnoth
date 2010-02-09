@@ -26,7 +26,22 @@ class lobby_info
 public:
 	lobby_info(const config& game_config);
 
+	~lobby_info();
+
+	void delete_games();
+
+	typedef std::map<int, game_info*> game_info_map;
+
+	/**
+	 * Process a full gamelist. Current info is discarded.
+	 */
 	void process_gamelist(const config &data);
+
+	/**
+	 * Process a gamelist diff.
+	 * @return true on success, false on failure (e.g. when the
+	 * diff did not apply correctly)
+	 */
 	bool process_gamelist_diff(const config &data);
 
 	void sync_games_display_status();
@@ -56,21 +71,23 @@ public:
 	void update_user_statuses(int game_id, const room_info* room);
 
 	const std::vector<room_info>& rooms() const { return rooms_; }
-	const std::vector<game_info>& games() const { return games_; }
+	const std::vector<game_info*>& games() const { return games_; }
 	const std::vector<bool>& games_shown() const { return games_shown_; }
 	const std::vector<game_info*>& games_filtered() const;
 	int games_shown_count() const;
 	const std::vector<user_info>& users() const { return users_; }
 	const std::vector<user_info*>& users_sorted() const;
 private:
-	void parse_gamelist();
+	void process_userlist();
 
 	const config& game_config_;
 	config gamelist_;
 	bool gamelist_initialized_;
 	std::vector<room_info> rooms_;
-	std::vector<game_info> games_;
-	std::map<int, game_info*> games_by_id_;
+
+	game_info_map games_by_id_;
+
+	std::vector<game_info*> games_;
 	std::vector<game_info*> games_filtered_;
 	std::vector<user_info> users_;
 	std::vector<user_info*> users_sorted_;

@@ -34,33 +34,10 @@ static lg::log_domain log_engine("engine");
 #define WRN_NG LOG_STREAM(warn, log_engine)
 
 static lg::log_domain log_lobby("lobby");
-#define DBG_LB LOG_STREAM(info, log_lobby)
+#define DBG_LB LOG_STREAM(debug, log_lobby)
 #define LOG_LB LOG_STREAM(info, log_lobby)
+#define WRN_LB LOG_STREAM(warn, log_lobby)
 #define ERR_LB LOG_STREAM(err, log_lobby)
-
-namespace {
-
-std::string dump_games_vector(const std::vector<game_info>& games)
-{
-	std::stringstream ss;
-	foreach (const game_info& game, games) {
-		ss << "G" << game.id << "(" << game.name << ") " << game.display_status_string() << " ";
-	}
-	ss << "\n";
-	return ss.str();
-}
-
-std::string dump_games_config(const config& gamelist)
-{
-	std::stringstream ss;
-	foreach (const config& c, gamelist.child_range("game")) {
-		ss << "g" << c["id"] << "(" << c["name"] << ") " << c[config::diff_track_attribute] << " ";
-	}
-	ss << "\n";
-	return ss.str();
-}
-
-} //end anonymous namespace
 
 lobby_info::lobby_info(const config& game_config)
 	: game_config_(game_config)
@@ -79,18 +56,57 @@ lobby_info::lobby_info(const config& game_config)
 {
 }
 
+lobby_info::~lobby_info()
+{
+	delete_games();
+}
+
+void lobby_info::delete_games()
+{
+	foreach (const game_info_map::value_type& v, games_by_id_) {
+		delete v.second;
+	}
+}
+
+namespace {
+
+std::string dump_games_map(const lobby_info::game_info_map& games)
+{
+	std::stringstream ss;
+	foreach (const lobby_info::game_info_map::value_type& v, games) {
+		const game_info& game = *v.second;
+		ss << "G" << game.id << "(" << game.name << ") " << game.display_status_string() << " ";
+	}
+	ss << "\n";
+	return ss.str();
+}
+
+std::string dump_games_config(const config& gamelist)
+{
+	std::stringstream ss;
+	foreach (const config& c, gamelist.child_range("game")) {
+		ss << "g" << c["id"] << "(" << c["name"] << ") " << c[config::diff_track_attribute] << " ";
+	}
+	ss << "\n";
+	return ss.str();
+}
+
+} //end anonymous namespace
+
 void lobby_info::process_gamelist(const config &data)
 {
 	gamelist_ = data;
 	gamelist_initialized_ = true;
-	games_.clear();
+	delete_games();
+	games_by_id_.clear();
 	foreach (const config& c, gamelist_.child("gamelist").child_range("game")) {
-		games_.push_back(game_info(c, game_config_));
+		game_info* game = new game_info(c, game_config_);
+		games_by_id_[game->id] = game;
 	}
-	DBG_LB << dump_games_vector(games_);
+	DBG_LB << dump_games_map(games_by_id_);
 	DBG_LB << dump_games_config(gamelist_.child("gamelist"));
-	games_shown_.resize(games_.size());
-	parse_gamelist();
+	games_shown_.resize(games_by_id_.size());
+	process_userlist();
 }
 
 
@@ -107,60 +123,36 @@ bool lobby_info::process_gamelist_diff(const config &data)
 		return false;
 	}
 	DBG_LB << "postdiff " << dump_games_config(gamelist_.child("gamelist"));
-	DBG_LB << dump_games_vector(games_);
-	std::vector<game_info>::iterator game_i = games_.begin();
+	DBG_LB << dump_games_map(games_by_id_);
 	config::child_itors range = gamelist_.child("gamelist").child_range("game");
 	for (config::child_iterator i = range.first; i != range.second; ++i) {
 		config& c = *i;
 		DBG_LB << "data process: " << c["id"] << " (" << c[config::diff_track_attribute] << ")\n";
-		if (c[config::diff_track_attribute] == "new") {
-			if (game_i == games_.end()) {
-				games_.insert(game_i, game_info(c, game_config_));
-				game_i = games_.end();
+		int game_id = lexical_cast_default<int>(c["id"]);
+		if (game_id == 0) {
+			ERR_LB << "game with id 0 in gamelist config\n";
+			network::send_data(config("refresh_lobby"), 0, true);
+			return false;
+		}
+		game_info_map::iterator current_i = games_by_id_.find(game_id);
+		const std::string& diff_result = c[config::diff_track_attribute];
+		if (diff_result == "new" || diff_result == "modified") {
+			if (current_i == games_by_id_.end()) {
+				games_by_id_.insert(std::make_pair(game_id, new game_info(c, game_config_)));
 			} else {
-				//adding not at the end should rarely if ever happen
-				int idx = std::distance(games_.begin(), game_i);
-				games_.insert(game_i, game_info(c, game_config_));
-				game_i = games_.begin();
-				std::advance(game_i, idx + 1); //go back where we were accounting for the added item
+				//had a game with that id, so update it and mark it as such
+				*(current_i->second) = game_info(c, game_config_);
+				current_i->second->display_status = game_info::UPDATED;
 			}
-		} else {
-			if (game_i == games_.end()) {
-				ERR_LB << "Ran out of processed games while working on a gamelist diff\n";
-				network::send_data(config("refresh_lobby"), 0, true);
-				return false;
+		} else if (diff_result == "deleted") {
+			if (current_i == games_by_id_.end()) {
+				WRN_LB << "Would have to delete a game that I don't have: " << game_id << "\n";
+			} else {
+				current_i->second->display_status = game_info::DELETED;
 			}
-			int config_game_id = lexical_cast_default<int>(c["id"]);
-			if (game_i->id != config_game_id) {
-				ERR_LB << "Game id doesn't match (in order) while applying diff "
-					<< game_i->id << " " << config_game_id << "\n";
-				network::send_data(config("refresh_lobby"), 0, true);
-				return false;
-			}
-			if (c[config::diff_track_attribute] == "modified") {
-				*game_i = game_info(c, game_config_);
-				game_i->display_status = game_info::UPDATED;
-			} else if (c[config::diff_track_attribute] == "deleted") {
-				//check for a delete game X - insert "new" game X (same id) occurance
-				config::child_iterator nexti = i;
-				++nexti;
-				if (nexti != range.second) {
-					config& nextc = *nexti;
-					if (nextc["id"] == c["id"]) {
-						LOG_LB << "ID match in delete-add fix: "
-							<< nextc["id"] << " " << nextc[config::diff_track_attribute] << "\n";
-						if (nextc[config::diff_track_attribute] == "new") {
-							nextc[config::diff_track_attribute] = "modified";
-							continue;
-						}
-					}
-				}
-				game_i->display_status = game_info::DELETED;
-			}
-			++game_i;
 		}
 	}
-	DBG_LB << dump_games_vector(games_);
+	DBG_LB << dump_games_map(games_by_id_);
 	try {
 		gamelist_.clear_diff_track(data);
 	} catch(config::error& e) {
@@ -170,35 +162,29 @@ bool lobby_info::process_gamelist_diff(const config &data)
 		return false;
 	}
 	DBG_LB << "postclean " << dump_games_config(gamelist_.child("gamelist"));
-	games_shown_.resize(games_.size());
-	parse_gamelist();
+	games_shown_.resize(games_by_id_.size());
+	process_userlist();
 	return true;
 }
 
-void lobby_info::parse_gamelist()
+void lobby_info::process_userlist()
 {
 	users_.clear();
 	foreach (const config& c, gamelist_.child_range("user")) {
 		users_.push_back(user_info(c));
 	}
-
-	games_by_id_.clear();
-	foreach (game_info& gi, games_) {
-		games_by_id_.insert(std::make_pair(gi.id, &gi));
-	}
 	foreach (user_info& ui, users_) {
 		if (ui.game_id != 0) {
-			std::map<int, game_info*>::iterator i = games_by_id_.find(ui.game_id);
-			if (i == games_by_id_.end()) {
+			game_info* g = get_game_by_id(ui.game_id);
+			if (g == NULL) {
 				WRN_NG << "User " << ui.name << " has unknown game_id: " << ui.game_id << "\n";
 			} else {
-				game_info& g = *i->second;
 				switch (ui.relation) {
 					case user_info::FRIEND:
-						g.has_friends = true;
+						g->has_friends = true;
 						break;
 					case user_info::IGNORED:
-						g.has_ignored = true;
+						g->has_ignored = true;
 						break;
 					default:
 						break;
@@ -211,14 +197,14 @@ void lobby_info::parse_gamelist()
 void lobby_info::sync_games_display_status()
 {
 	DBG_LB << "sync_games_display_status\n";
-	games_.erase(
-		std::remove_if(games_.begin(), games_.end(),
-			game_filter_value<game_info::game_display_status,
-				&game_info::display_status>(game_info::DELETED)),
-		games_.end());
-
-	foreach (game_info& gi, games_) {
-		gi.display_status = game_info::CLEAN;
+	game_info_map::iterator i = games_by_id_.begin();
+	while (i != games_by_id_.end()) {
+		if (i->second->display_status == game_info::DELETED) {
+			games_by_id_.erase(i++);
+		} else {
+			i->second->display_status = game_info::CLEAN;
+			++i;
+		}
 	}
 }
 
@@ -304,16 +290,19 @@ void lobby_info::set_game_filter_invert(bool value)
 void lobby_info::apply_game_filter()
 {
 	games_filtered_.clear();
-	for (unsigned i = 0; i < games_.size(); ++i) {
-		game_info& gi = games_[i];
+	games_shown_.clear();
+	games_.clear();
+	foreach (const game_info_map::value_type& v, games_by_id_) {
+		game_info& gi = *v.second;
 		bool show = game_filter_.match(gi);
 		if (game_filter_invert_) {
 			show = !show;
 		}
-		games_shown_[i] = show;
+		games_shown_.push_back(show);
 		if (show) {
 			games_filtered_.push_back(&gi);
 		}
+		games_.push_back(&gi);
 	}
 }
 

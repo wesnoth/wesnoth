@@ -572,7 +572,7 @@ void tlobby_main::update_gamelist()
 	update_gamelist_header();
 	int select_row = -1;
 	for (unsigned i = 0; i < lobby_info_.games().size(); ++i) {
-		const game_info& game = lobby_info_.games()[i];
+		const game_info& game = *lobby_info_.games()[i];
 		if (game.id == selected_game_id_) {
 			select_row = i;
 		}
@@ -599,7 +599,7 @@ void tlobby_main::update_gamelist_diff()
 	int list_rows_deleted = 0;
 	std::vector<int> next_gamelist_id_at_row;
 	for (unsigned i = 0; i < lobby_info_.games().size(); ++i) {
-		const game_info& game = lobby_info_.games()[i];
+		const game_info& game = *lobby_info_.games()[i];
 		if (game.display_status == game_info::NEW) {
 			LOG_LB << "Adding game to listbox " << game.id << "\n";
 			if (list_i != gamelistbox_->get_item_count()) {
@@ -920,7 +920,7 @@ void tlobby_main::update_selected_game()
 	int idx = gamelistbox_->get_selected_row();
 	bool can_join = false, can_observe = false;
 	if (idx >= 0) {
-		const game_info& game = lobby_info_.games()[idx];
+		const game_info& game = *lobby_info_.games()[idx];
 		can_observe = game.can_observe();
 		can_join = game.can_join();
 		selected_game_id_ = game.id;
@@ -1539,7 +1539,7 @@ void tlobby_main::join_global_button_callback(gui2::twindow &window)
 
 void tlobby_main::join_or_observe(int idx)
 {
-	const game_info& game = lobby_info_.games()[idx];
+	const game_info& game = *lobby_info_.games()[idx];
 	if (do_game_join(idx, !game.can_join())) {
 		legacy_result_ = game.can_join() ? JOIN : OBSERVE;
 		window_->close();
@@ -1553,7 +1553,7 @@ bool tlobby_main::do_game_join(int idx, bool observe)
 			<< idx << ", games size is " << lobby_info_.games().size() << "\n";
 		return false;
 	}
-	const game_info& game = lobby_info_.games()[idx];
+	const game_info& game = *lobby_info_.games()[idx];
 	if (observe) {
 		if (!game.can_observe()) {
 			ERR_LB << "Requested observe of a game with observers disabled\n";
