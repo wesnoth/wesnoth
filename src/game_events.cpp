@@ -1922,8 +1922,8 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 		const std::string player_id = (*resources::teams)[index].save_id();
 
 		if((*resources::teams)[index].recall_list().size() < 1) {
-			WRN_NG << "player not found when trying to recall!\n"
-				   << "player_id: " << player_id << " index: " << index << "\n";
+			WRN_NG << "recall list is empty when trying to recall!\n"
+				   << "player_id: " << player_id << " side: " << index+1 << "\n";
 			continue;
 		}
 
