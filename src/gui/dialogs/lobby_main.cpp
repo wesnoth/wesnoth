@@ -1726,6 +1726,8 @@ void tlobby_main::player_filter_callback(gui2::twidget* /*widget*/)
 	preferences::set_playerlist_sort_relation(player_list_.sort_by_relation->get_value());
 	preferences::set_playerlist_sort_name(player_list_.sort_by_name->get_value());
 	update_gamelist_filter();
+	update_playerlist();
+	window_->invalidate_layout();
 }
 
 void tlobby_main::user_dialog_callback(user_info* info)
