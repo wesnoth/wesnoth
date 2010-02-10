@@ -10,7 +10,7 @@ AC_PREREQ([2.60])
 # Don't forget to change the default value of 'experimental' 
 # to match whether this is a stable or unstable release.
 #######################################################################
-define([WESNOTH_VERSION],[1.7.12+svn])
+define([WESNOTH_VERSION],[1.7.13-1.8beta6])
 experimental_default=no
 define([WESNOTH_BUGS],[http://bugs.wesnoth.org])
 
