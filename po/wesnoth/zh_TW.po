@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth1.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-02-08 11:33+0100\n"
+"POT-Creation-Date: 2010-02-10 17:39+0100\n"
 "PO-Revision-Date: 2009-05-08 22:09+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
@@ -6474,8 +6474,8 @@ msgstr "結束任務"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:211 src/unit.cpp:2337
-#: src/unit.cpp:2493
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:211 src/unit.cpp:2341
+#: src/unit.cpp:2497
 msgid "HP"
 msgstr "生命值"
 
@@ -7253,45 +7253,45 @@ msgstr "遊戲執行出錯： "
 msgid "The game map could not be loaded: "
 msgstr "無法加載遊戲地圖： "
 
-#: src/game.cpp:1491
+#: src/game.cpp:1492
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "以下附加模組有錯誤，無法讀取："
 msgstr[1] "以下附加模組有錯誤，無法讀取："
 
-#: src/game.cpp:1498
+#: src/game.cpp:1499
 msgid "ERROR DETAILS:"
 msgstr "錯誤細節："
 
-#: src/game.cpp:1518
+#: src/game.cpp:1519
 msgid "Error loading game configuration files: '"
 msgstr "載入遊戲配置文件時出錯： '"
 
-#: src/game.cpp:1519
+#: src/game.cpp:1520
 msgid "' (The game will now exit)"
 msgstr "' （現在將退出遊戲）"
 
-#: src/game.cpp:1528
+#: src/game.cpp:1529
 msgid "Loading data files"
 msgstr "讀取數據文件"
 
-#: src/game.cpp:1959
+#: src/game.cpp:1960
 msgid "Loading game configuration."
 msgstr "載入遊戲配置。"
 
-#: src/game.cpp:1965
+#: src/game.cpp:1966
 msgid "Re-initialize fonts for the current language."
 msgstr "為當前語言重置字體。"
 
-#: src/game.cpp:1973
+#: src/game.cpp:1974
 msgid "Searching for installed add-ons."
 msgstr "搜尋已安裝模組。"
 
-#: src/game.cpp:1982
+#: src/game.cpp:1983
 msgid "Loading title screen."
 msgstr "讀取主畫面。"
 
-#: src/game_config.cpp:287
+#: src/game_config.cpp:286
 msgid "Invalid color range: "
 msgstr "無效顔色"
 
@@ -7311,7 +7311,7 @@ msgstr "偵錯:"
 msgid "Info: "
 msgstr "資訊:"
 
-#: src/game_events.cpp:3300
+#: src/game_events.cpp:3299
 msgid "[unit_worth]'s filter didn't match any units!"
 msgstr ""
 
@@ -7421,6 +7421,53 @@ msgstr "渾沌單位： "
 #: src/generate_report.cpp:565
 msgid "Observers:"
 msgstr "觀察者："
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:204
+msgid "Unknown era: $era_id"
+msgstr "未知時代: $era_id"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:209
+msgid "Unknown era"
+msgstr "未知時代"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:264
+msgid "Remote scenario"
+msgstr "遠程場景"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:272
+msgid "Unknown scenario: $scenario_id"
+msgstr "未知場景: $scenario_id"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:277
+msgid "Unknown scenario"
+msgstr "未知場景"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:283
+msgid "Reloaded game"
+msgstr "已載入的遊戲"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:294
+msgid "Turn "
+msgstr "回合"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:298
+msgid "Vacant Slot:"
+msgid_plural "Vacant Slots:"
+msgstr[0] "空位："
+msgstr[1] "空位："
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:304
+msgid "Fog"
+msgstr "迷霧"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:307
+#: src/gui/dialogs/lobby/lobby_data.cpp:310 src/multiplayer_create.cpp:84
+msgid "Shroud"
+msgstr "戰場黑幕"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:312
+msgid "none"
+msgstr "無"
 
 #: src/gui/dialogs/lobby_player_info.cpp:65
 #, fuzzy
@@ -7617,17 +7664,17 @@ msgid "System default language"
 msgstr "系統預設語言"
 
 #: src/leader_list.cpp:137 src/menu_events.cpp:1503
-#: src/multiplayer_connect.cpp:214 src/multiplayer_connect.cpp:266
+#: src/multiplayer_connect.cpp:215 src/multiplayer_connect.cpp:267
 msgid "gender^Random"
 msgstr "隨機"
 
-#: src/leader_list.cpp:147 src/multiplayer_connect.cpp:210
-#: src/multiplayer_connect.cpp:262
+#: src/leader_list.cpp:147 src/multiplayer_connect.cpp:211
+#: src/multiplayer_connect.cpp:263
 msgid "Female ♀"
 msgstr "女性 ♀"
 
-#: src/leader_list.cpp:151 src/multiplayer_connect.cpp:212
-#: src/multiplayer_connect.cpp:264
+#: src/leader_list.cpp:151 src/multiplayer_connect.cpp:213
+#: src/multiplayer_connect.cpp:265
 msgid "Male ♂"
 msgstr "男性 ♂"
 
@@ -7653,52 +7700,6 @@ msgstr "載入部隊資料。"
 #, fuzzy
 msgid "Reading files and creating cache..."
 msgstr "載入資料並新增暫存。"
-
-#: src/lobby_data.cpp:204
-msgid "Unknown era: $era_id"
-msgstr "未知時代: $era_id"
-
-#: src/lobby_data.cpp:209
-msgid "Unknown era"
-msgstr "未知時代"
-
-#: src/lobby_data.cpp:264
-msgid "Remote scenario"
-msgstr "遠程場景"
-
-#: src/lobby_data.cpp:272
-msgid "Unknown scenario: $scenario_id"
-msgstr "未知場景: $scenario_id"
-
-#: src/lobby_data.cpp:277
-msgid "Unknown scenario"
-msgstr "未知場景"
-
-#: src/lobby_data.cpp:283
-msgid "Reloaded game"
-msgstr "已載入的遊戲"
-
-#: src/lobby_data.cpp:294
-msgid "Turn "
-msgstr "回合"
-
-#: src/lobby_data.cpp:298
-msgid "Vacant Slot:"
-msgid_plural "Vacant Slots:"
-msgstr[0] "空位："
-msgstr[1] "空位："
-
-#: src/lobby_data.cpp:304
-msgid "Fog"
-msgstr "迷霧"
-
-#: src/lobby_data.cpp:307 src/lobby_data.cpp:310 src/multiplayer_create.cpp:84
-msgid "Shroud"
-msgstr "戰場黑幕"
-
-#: src/lobby_data.cpp:312
-msgid "none"
-msgstr "無"
 
 #: src/map.cpp:163
 msgid "A map without a header is not supported"
@@ -8377,35 +8378,35 @@ msgstr "登入錯誤（伺服器沒有連結您的位置）。"
 msgid "The password you provided was incorrect."
 msgstr "您輸入的密碼錯誤。"
 
-#: src/multiplayer_connect.cpp:89 src/multiplayer_connect.cpp:479
-#: src/multiplayer_connect.cpp:608
+#: src/multiplayer_connect.cpp:90 src/multiplayer_connect.cpp:480
+#: src/multiplayer_connect.cpp:609
 msgid "Normal"
 msgstr "普通"
 
-#: src/multiplayer_connect.cpp:475 src/multiplayer_connect.cpp:604
+#: src/multiplayer_connect.cpp:476 src/multiplayer_connect.cpp:605
 #: src/multiplayer_wait.cpp:499 src/multiplayer_wait.cpp:507
 msgid "("
 msgstr "（"
 
-#: src/multiplayer_connect.cpp:475 src/multiplayer_connect.cpp:604
+#: src/multiplayer_connect.cpp:476 src/multiplayer_connect.cpp:605
 #: src/multiplayer_wait.cpp:499 src/multiplayer_wait.cpp:510
 msgid ")"
 msgstr "）"
 
-#: src/multiplayer_connect.cpp:477 src/multiplayer_connect.cpp:606
+#: src/multiplayer_connect.cpp:478 src/multiplayer_connect.cpp:607
 #: src/multiplayer_wait.cpp:509
 msgid "+"
 msgstr "+"
 
-#: src/multiplayer_connect.cpp:638
+#: src/multiplayer_connect.cpp:639
 msgid "(Vacant slot)"
 msgstr "（空位）"
 
-#: src/multiplayer_connect.cpp:646
+#: src/multiplayer_connect.cpp:647
 msgid "Anonymous local player"
 msgstr "單機匿名玩家"
 
-#: src/multiplayer_connect.cpp:660 src/multiplayer_connect.cpp:1413
+#: src/multiplayer_connect.cpp:660 src/multiplayer_connect.cpp:1414
 msgid "Computer Player"
 msgstr "電腦玩家"
 
@@ -8475,34 +8476,34 @@ msgstr "由於没有選擇陣營，本地圖無法使用。"
 msgid "The scenario is invalid because it has no sides."
 msgstr "由於没有選擇陣營，本地圖無法使用。"
 
-#: src/multiplayer_connect.cpp:1410
+#: src/multiplayer_connect.cpp:1411
 msgid "Network Player"
 msgstr "網絡玩家"
 
-#: src/multiplayer_connect.cpp:1412
+#: src/multiplayer_connect.cpp:1413
 msgid "Local Player"
 msgstr "單機玩家"
 
-#: src/multiplayer_connect.cpp:1414
+#: src/multiplayer_connect.cpp:1415
 msgid "Empty"
 msgstr "空位"
 
-#: src/multiplayer_connect.cpp:1559
+#: src/multiplayer_connect.cpp:1560
 msgid "Cannot find era $era"
 msgstr "找不到$era時期"
 
-#: src/multiplayer_connect.cpp:1582
+#: src/multiplayer_connect.cpp:1583
 msgid "Victory:"
 msgstr "勝利："
 
-#: src/multiplayer_connect.cpp:1584
+#: src/multiplayer_connect.cpp:1585
 #, fuzzy
 msgid "Defeat enemy leader(s)"
 msgstr ""
 "勝利條件：\n"
 "@打敗敵人的領袖(們)"
 
-#: src/multiplayer_connect.cpp:1678
+#: src/multiplayer_connect.cpp:1679
 msgid "Waiting for players to join..."
 msgstr "等待玩家加入..."
 
@@ -8818,11 +8819,11 @@ msgstr "這一幕結束了。您想繼續這個任務嗎?"
 msgid "Downloading next scenario..."
 msgstr "正在下載下一幕……"
 
-#: src/playcampaign.cpp:601
+#: src/playcampaign.cpp:603
 msgid "Do you want to save your game?"
 msgstr "您想儲存遊戲嗎？"
 
-#: src/playcampaign.cpp:620
+#: src/playcampaign.cpp:622
 msgid "Unknown scenario: '$scenario|'"
 msgstr "未知任務： '"
 
@@ -8913,34 +8914,34 @@ msgid_plural ""
 msgstr[0] "您將以 $gold 金子和預定的最小起始資金中較高那個開始下一幕。"
 msgstr[1] "你將以 $gold 金子和預定的最小起始資金中較高那個開始下一幕。"
 
-#: src/playsingle_controller.cpp:412
+#: src/playsingle_controller.cpp:409
 msgid "Game Over"
 msgstr "遊戲結束"
 
-#: src/playsingle_controller.cpp:413
+#: src/playsingle_controller.cpp:410
 msgid "The game is over."
 msgstr "本遊戲結束。"
 
-#: src/playsingle_controller.cpp:498
+#: src/playsingle_controller.cpp:495
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game\n"
 "cannot continue. Do you want to save the game?"
 msgstr "網絡連接已斷開，遊戲無法繼續進行。您想儲存遊戲嗎？"
 
-#: src/playsingle_controller.cpp:658
+#: src/playsingle_controller.cpp:655
 msgid "It is now $name|'s turn"
 msgstr "輪到$name|了"
 
-#: src/playsingle_controller.cpp:876
+#: src/playsingle_controller.cpp:873
 msgid "Scenario Report"
 msgstr "任務報告"
 
-#: src/playsingle_controller.cpp:878
+#: src/playsingle_controller.cpp:875
 msgid "Victory"
 msgstr "勝利"
 
-#: src/playsingle_controller.cpp:879
+#: src/playsingle_controller.cpp:876
 msgid "You have emerged victorious!"
 msgstr "您贏得了勝利！"
 
@@ -9284,35 +9285,35 @@ msgstr "没有定制時間."
 msgid "Unknown unit type '$type|'"
 msgstr "未知單位 '$type|'"
 
-#: src/unit.cpp:715
+#: src/unit.cpp:719
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "當創造性格時，未知單位 '$type|'"
 
-#: src/unit.cpp:2294 src/unit.cpp:2481 src/unit.cpp:2554
+#: src/unit.cpp:2298 src/unit.cpp:2485 src/unit.cpp:2558
 msgid " and "
 msgstr "以及"
 
-#: src/unit.cpp:2305
+#: src/unit.cpp:2309
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2370
+#: src/unit.cpp:2374
 msgid "moves"
 msgstr "移動點數"
 
-#: src/unit.cpp:2388 src/unit.cpp:2508
+#: src/unit.cpp:2392 src/unit.cpp:2512
 msgid "XP to advance"
 msgstr "升級所需經驗值"
 
-#: src/unit.cpp:2500
+#: src/unit.cpp:2504
 msgid " move"
 msgstr "移動"
 
-#: src/unit.cpp:2516
+#: src/unit.cpp:2520
 msgid "$effect_description per level"
 msgstr "每級 $effect_description"
 
-#: src/unit.cpp:2563
+#: src/unit.cpp:2567
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 

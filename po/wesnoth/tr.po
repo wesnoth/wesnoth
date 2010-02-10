@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-02-08 11:33+0100\n"
+"POT-Creation-Date: 2010-02-10 17:39+0100\n"
 "PO-Revision-Date: 2009-04-12 14:56+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <ceviri@belgeler.gen.tr>\n"
@@ -6883,8 +6883,8 @@ msgstr "Senaryoyu Bitir"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:211 src/unit.cpp:2337
-#: src/unit.cpp:2493
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:211 src/unit.cpp:2341
+#: src/unit.cpp:2497
 msgid "HP"
 msgstr "YP"
 
@@ -7670,45 +7670,45 @@ msgstr "Oyunu oynanırken hata: "
 msgid "The game map could not be loaded: "
 msgstr "Oyun haritası yüklenemedi: "
 
-#: src/game.cpp:1491
+#: src/game.cpp:1492
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Şu eklenti hatalı ve yüklenemedi:"
 msgstr[1] "Şu eklenti hatalı ve yüklenemedi:"
 
-#: src/game.cpp:1498
+#: src/game.cpp:1499
 msgid "ERROR DETAILS:"
 msgstr "HATA AYRINTILARI:"
 
-#: src/game.cpp:1518
+#: src/game.cpp:1519
 msgid "Error loading game configuration files: '"
 msgstr "Oyun yapılandırma dosyaları yüklenirken hata: ‘"
 
-#: src/game.cpp:1519
+#: src/game.cpp:1520
 msgid "' (The game will now exit)"
 msgstr "’ (Şimdi oyundan çıkılıyor)"
 
-#: src/game.cpp:1528
+#: src/game.cpp:1529
 msgid "Loading data files"
 msgstr "Veri dosyaları yükleniyor"
 
-#: src/game.cpp:1959
+#: src/game.cpp:1960
 msgid "Loading game configuration."
 msgstr "Oyun yapılandırması yükleniyor."
 
-#: src/game.cpp:1965
+#: src/game.cpp:1966
 msgid "Re-initialize fonts for the current language."
 msgstr "Yazıtipleri geçerli dil için yeniden ilklendirildi."
 
-#: src/game.cpp:1973
+#: src/game.cpp:1974
 msgid "Searching for installed add-ons."
 msgstr "Kurulu eklentiler aranıyor."
 
-#: src/game.cpp:1982
+#: src/game.cpp:1983
 msgid "Loading title screen."
 msgstr "Ana ekran yükleniyor."
 
-#: src/game_config.cpp:287
+#: src/game_config.cpp:286
 msgid "Invalid color range: "
 msgstr "Geçersiz renk aralığı: "
 
@@ -7728,7 +7728,7 @@ msgstr "Hata ayıklama: "
 msgid "Info: "
 msgstr "Bilgi: "
 
-#: src/game_events.cpp:3300
+#: src/game_events.cpp:3299
 msgid "[unit_worth]'s filter didn't match any units!"
 msgstr ""
 
@@ -7842,6 +7842,53 @@ msgstr "Kaypak birimler: "
 #: src/generate_report.cpp:565
 msgid "Observers:"
 msgstr "Seyirciler:"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:204
+msgid "Unknown era: $era_id"
+msgstr "Bilinmeyen çağ: $era_id"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:209
+msgid "Unknown era"
+msgstr "Bilinmeyen çağ"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:264
+msgid "Remote scenario"
+msgstr "Uzak Senaryo"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:272
+msgid "Unknown scenario: $scenario_id"
+msgstr "Bilinmeyen senaryo: $scenario_id"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:277
+msgid "Unknown scenario"
+msgstr "Bilinmeyen Senaryo"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:283
+msgid "Reloaded game"
+msgstr "Oyunu yeniden yükler"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:294
+msgid "Turn "
+msgstr "El "
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:298
+msgid "Vacant Slot:"
+msgid_plural "Vacant Slots:"
+msgstr[0] "Sahipsiz Yer:"
+msgstr[1] "Sahipsiz Yer:"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:304
+msgid "Fog"
+msgstr "Sis"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:307
+#: src/gui/dialogs/lobby/lobby_data.cpp:310 src/multiplayer_create.cpp:84
+msgid "Shroud"
+msgstr "Örtü"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:312
+msgid "none"
+msgstr "hiçbiri"
 
 #: src/gui/dialogs/lobby_player_info.cpp:65
 #, fuzzy
@@ -8038,17 +8085,17 @@ msgid "System default language"
 msgstr "Öntanımlı sistem dili"
 
 #: src/leader_list.cpp:137 src/menu_events.cpp:1503
-#: src/multiplayer_connect.cpp:214 src/multiplayer_connect.cpp:266
+#: src/multiplayer_connect.cpp:215 src/multiplayer_connect.cpp:267
 msgid "gender^Random"
 msgstr "Rastgele"
 
-#: src/leader_list.cpp:147 src/multiplayer_connect.cpp:210
-#: src/multiplayer_connect.cpp:262
+#: src/leader_list.cpp:147 src/multiplayer_connect.cpp:211
+#: src/multiplayer_connect.cpp:263
 msgid "Female ♀"
 msgstr "Dişi ♀"
 
-#: src/leader_list.cpp:151 src/multiplayer_connect.cpp:212
-#: src/multiplayer_connect.cpp:264
+#: src/leader_list.cpp:151 src/multiplayer_connect.cpp:213
+#: src/multiplayer_connect.cpp:265
 msgid "Male ♂"
 msgstr "Erkek ♂"
 
@@ -8074,52 +8121,6 @@ msgstr "Birim dosyaları okunuyor."
 #, fuzzy
 msgid "Reading files and creating cache..."
 msgstr "Dosyalar okunuyor ve önbellek oluşturuluyor."
-
-#: src/lobby_data.cpp:204
-msgid "Unknown era: $era_id"
-msgstr "Bilinmeyen çağ: $era_id"
-
-#: src/lobby_data.cpp:209
-msgid "Unknown era"
-msgstr "Bilinmeyen çağ"
-
-#: src/lobby_data.cpp:264
-msgid "Remote scenario"
-msgstr "Uzak Senaryo"
-
-#: src/lobby_data.cpp:272
-msgid "Unknown scenario: $scenario_id"
-msgstr "Bilinmeyen senaryo: $scenario_id"
-
-#: src/lobby_data.cpp:277
-msgid "Unknown scenario"
-msgstr "Bilinmeyen Senaryo"
-
-#: src/lobby_data.cpp:283
-msgid "Reloaded game"
-msgstr "Oyunu yeniden yükler"
-
-#: src/lobby_data.cpp:294
-msgid "Turn "
-msgstr "El "
-
-#: src/lobby_data.cpp:298
-msgid "Vacant Slot:"
-msgid_plural "Vacant Slots:"
-msgstr[0] "Sahipsiz Yer:"
-msgstr[1] "Sahipsiz Yer:"
-
-#: src/lobby_data.cpp:304
-msgid "Fog"
-msgstr "Sis"
-
-#: src/lobby_data.cpp:307 src/lobby_data.cpp:310 src/multiplayer_create.cpp:84
-msgid "Shroud"
-msgstr "Örtü"
-
-#: src/lobby_data.cpp:312
-msgid "none"
-msgstr "hiçbiri"
 
 #: src/map.cpp:163
 msgid "A map without a header is not supported"
@@ -8817,35 +8818,35 @@ msgstr "Oturum açarken hata oluştu (sunucunun bağlanmanız için kaynağı yo
 msgid "The password you provided was incorrect."
 msgstr "Belirttiğiniz parola yanlıştı."
 
-#: src/multiplayer_connect.cpp:89 src/multiplayer_connect.cpp:479
-#: src/multiplayer_connect.cpp:608
+#: src/multiplayer_connect.cpp:90 src/multiplayer_connect.cpp:480
+#: src/multiplayer_connect.cpp:609
 msgid "Normal"
 msgstr "Normal"
 
-#: src/multiplayer_connect.cpp:475 src/multiplayer_connect.cpp:604
+#: src/multiplayer_connect.cpp:476 src/multiplayer_connect.cpp:605
 #: src/multiplayer_wait.cpp:499 src/multiplayer_wait.cpp:507
 msgid "("
 msgstr "("
 
-#: src/multiplayer_connect.cpp:475 src/multiplayer_connect.cpp:604
+#: src/multiplayer_connect.cpp:476 src/multiplayer_connect.cpp:605
 #: src/multiplayer_wait.cpp:499 src/multiplayer_wait.cpp:510
 msgid ")"
 msgstr ")"
 
-#: src/multiplayer_connect.cpp:477 src/multiplayer_connect.cpp:606
+#: src/multiplayer_connect.cpp:478 src/multiplayer_connect.cpp:607
 #: src/multiplayer_wait.cpp:509
 msgid "+"
 msgstr "+"
 
-#: src/multiplayer_connect.cpp:638
+#: src/multiplayer_connect.cpp:639
 msgid "(Vacant slot)"
 msgstr "(Sahipsiz yer)"
 
-#: src/multiplayer_connect.cpp:646
+#: src/multiplayer_connect.cpp:647
 msgid "Anonymous local player"
 msgstr "Anonim yerel oyuncu"
 
-#: src/multiplayer_connect.cpp:660 src/multiplayer_connect.cpp:1413
+#: src/multiplayer_connect.cpp:660 src/multiplayer_connect.cpp:1414
 msgid "Computer Player"
 msgstr "Bilgisayar Oyuncusu"
 
@@ -8915,34 +8916,34 @@ msgstr "Bu senaryo geçersiz çünkü tarafları yok."
 msgid "The scenario is invalid because it has no sides."
 msgstr "Bu senaryo geçersiz çünkü tarafları yok."
 
-#: src/multiplayer_connect.cpp:1410
+#: src/multiplayer_connect.cpp:1411
 msgid "Network Player"
 msgstr "Ağ Oyuncusu"
 
-#: src/multiplayer_connect.cpp:1412
+#: src/multiplayer_connect.cpp:1413
 msgid "Local Player"
 msgstr "Yerel Oyuncu"
 
-#: src/multiplayer_connect.cpp:1414
+#: src/multiplayer_connect.cpp:1415
 msgid "Empty"
 msgstr "Boş"
 
-#: src/multiplayer_connect.cpp:1559
+#: src/multiplayer_connect.cpp:1560
 msgid "Cannot find era $era"
 msgstr "$era çağı bulunamıyor"
 
-#: src/multiplayer_connect.cpp:1582
+#: src/multiplayer_connect.cpp:1583
 msgid "Victory:"
 msgstr "Galibiyet:"
 
-#: src/multiplayer_connect.cpp:1584
+#: src/multiplayer_connect.cpp:1585
 #, fuzzy
 msgid "Defeat enemy leader(s)"
 msgstr ""
 "Galibiyet\n"
 "@Düşman lider(ler)ini öldür"
 
-#: src/multiplayer_connect.cpp:1678
+#: src/multiplayer_connect.cpp:1679
 msgid "Waiting for players to join..."
 msgstr "Oyuncuların katılması bekleniyor..."
 
@@ -9259,11 +9260,11 @@ msgstr "Bu senaryo bitti. Seferberliğe devam etmek istiyor musunuz?"
 msgid "Downloading next scenario..."
 msgstr "Bir sonraki senaryo indiriliyor..."
 
-#: src/playcampaign.cpp:601
+#: src/playcampaign.cpp:603
 msgid "Do you want to save your game?"
 msgstr "Bu oyunu kaydetmek istiyor musunuz?"
 
-#: src/playcampaign.cpp:620
+#: src/playcampaign.cpp:622
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Bilinmeyen Senaryo: ‘$scenario|’"
 
@@ -9365,15 +9366,15 @@ msgstr[1] ""
 "Sonraki senaryoya ya $gold altınla ya da bundan daha fazlaysa sonraki "
 "senaryonun asgari başlangıç altınıyla başlayacaksınız."
 
-#: src/playsingle_controller.cpp:412
+#: src/playsingle_controller.cpp:409
 msgid "Game Over"
 msgstr "Oyun Bitti"
 
-#: src/playsingle_controller.cpp:413
+#: src/playsingle_controller.cpp:410
 msgid "The game is over."
 msgstr "Oyun sona erdi."
 
-#: src/playsingle_controller.cpp:498
+#: src/playsingle_controller.cpp:495
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game\n"
@@ -9382,19 +9383,19 @@ msgstr ""
 "Bir ağ bağlantı kopması oluştu ve oyun devam edemeyecek. Oyunu kaydetmek "
 "istiyor musunuz?"
 
-#: src/playsingle_controller.cpp:658
+#: src/playsingle_controller.cpp:655
 msgid "It is now $name|'s turn"
 msgstr "Sıra $name|’de"
 
-#: src/playsingle_controller.cpp:876
+#: src/playsingle_controller.cpp:873
 msgid "Scenario Report"
 msgstr "Senaryo Raporu"
 
-#: src/playsingle_controller.cpp:878
+#: src/playsingle_controller.cpp:875
 msgid "Victory"
 msgstr "Galibiyet"
 
-#: src/playsingle_controller.cpp:879
+#: src/playsingle_controller.cpp:876
 msgid "You have emerged victorious!"
 msgstr "Galip olarak tamamladın!"
 
@@ -9744,35 +9745,35 @@ msgstr "Günün saati için bir tanım yapılmamış."
 msgid "Unknown unit type '$type|'"
 msgstr "Bilinmeyen birim türü: ‘$type|’"
 
-#: src/unit.cpp:715
+#: src/unit.cpp:719
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "Yetenekler üretilirken bilinmeyen birim türü: ‘$type|’"
 
-#: src/unit.cpp:2294 src/unit.cpp:2481 src/unit.cpp:2554
+#: src/unit.cpp:2298 src/unit.cpp:2485 src/unit.cpp:2558
 msgid " and "
 msgstr " ve "
 
-#: src/unit.cpp:2305
+#: src/unit.cpp:2309
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2370
+#: src/unit.cpp:2374
 msgid "moves"
 msgstr "hareket"
 
-#: src/unit.cpp:2388 src/unit.cpp:2508
+#: src/unit.cpp:2392 src/unit.cpp:2512
 msgid "XP to advance"
 msgstr "terfi için gerekli TP"
 
-#: src/unit.cpp:2500
+#: src/unit.cpp:2504
 msgid " move"
 msgstr " hareket"
 
-#: src/unit.cpp:2516
+#: src/unit.cpp:2520
 msgid "$effect_description per level"
 msgstr "seviye başına $effect_description"
 
-#: src/unit.cpp:2563
+#: src/unit.cpp:2567
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 

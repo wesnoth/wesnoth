@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.6.0+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-02-08 11:33+0100\n"
+"POT-Creation-Date: 2010-02-10 17:39+0100\n"
 "PO-Revision-Date: 2009-03-21 20:49+0100\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
@@ -6685,8 +6685,8 @@ msgstr "Fi de l'escenari"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:211 src/unit.cpp:2337
-#: src/unit.cpp:2493
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:211 src/unit.cpp:2341
+#: src/unit.cpp:2497
 msgid "HP"
 msgstr "HP"
 
@@ -7473,46 +7473,46 @@ msgstr "S'ha produït un error durant la partida: "
 msgid "The game map could not be loaded: "
 msgstr "No ha estat possible carregar la partida:"
 
-#: src/game.cpp:1491
+#: src/game.cpp:1492
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "El complement següent contenia errors i no s'ha pogut carregar:"
 msgstr[1] ""
 "Els complements següents contenien errors i no s'han pogut carregar:"
 
-#: src/game.cpp:1498
+#: src/game.cpp:1499
 msgid "ERROR DETAILS:"
 msgstr "DETALLS DE L'ERROR:"
 
-#: src/game.cpp:1518
+#: src/game.cpp:1519
 msgid "Error loading game configuration files: '"
 msgstr "Error carregant els fitxers de configuració del joc: '"
 
-#: src/game.cpp:1519
+#: src/game.cpp:1520
 msgid "' (The game will now exit)"
 msgstr "' (ara es tancarà el joc)."
 
-#: src/game.cpp:1528
+#: src/game.cpp:1529
 msgid "Loading data files"
 msgstr "S'estan llegint els fitxers de dades"
 
-#: src/game.cpp:1959
+#: src/game.cpp:1960
 msgid "Loading game configuration."
 msgstr "S'està carregant la configuració del joc."
 
-#: src/game.cpp:1965
+#: src/game.cpp:1966
 msgid "Re-initialize fonts for the current language."
 msgstr "S'està tornant a inicialitzar la font per a l'idioma actual."
 
-#: src/game.cpp:1973
+#: src/game.cpp:1974
 msgid "Searching for installed add-ons."
 msgstr "S'estan cercant els complements instal·lats..."
 
-#: src/game.cpp:1982
+#: src/game.cpp:1983
 msgid "Loading title screen."
 msgstr "S'està carregant la pantalla principal."
 
-#: src/game_config.cpp:287
+#: src/game_config.cpp:286
 msgid "Invalid color range: "
 msgstr "El rang de colors no és vàlid: "
 
@@ -7532,7 +7532,7 @@ msgstr "Depuració: "
 msgid "Info: "
 msgstr "Informació: "
 
-#: src/game_events.cpp:3300
+#: src/game_events.cpp:3299
 msgid "[unit_worth]'s filter didn't match any units!"
 msgstr ""
 
@@ -7649,6 +7649,53 @@ msgstr "Unitats caòtiques: "
 #: src/generate_report.cpp:565
 msgid "Observers:"
 msgstr "Observadors:"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:204
+msgid "Unknown era: $era_id"
+msgstr "Era desconeguda: $era_id"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:209
+msgid "Unknown era"
+msgstr "Era desconeguda"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:264
+msgid "Remote scenario"
+msgstr "Escenari remot"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:272
+msgid "Unknown scenario: $scenario_id"
+msgstr "Escenari desconegut: $scenario_id"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:277
+msgid "Unknown scenario"
+msgstr "Escenari desconegut"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:283
+msgid "Reloaded game"
+msgstr "Partida recarregada"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:294
+msgid "Turn "
+msgstr "Torn "
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:298
+msgid "Vacant Slot:"
+msgid_plural "Vacant Slots:"
+msgstr[0] "Plaça lliure:"
+msgstr[1] "Places lliures:"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:304
+msgid "Fog"
+msgstr "Boira"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:307
+#: src/gui/dialogs/lobby/lobby_data.cpp:310 src/multiplayer_create.cpp:84
+msgid "Shroud"
+msgstr "Ocult"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:312
+msgid "none"
+msgstr "cap"
 
 #: src/gui/dialogs/lobby_player_info.cpp:65
 #, fuzzy
@@ -7845,17 +7892,17 @@ msgid "System default language"
 msgstr "Idioma per defecte del sistema"
 
 #: src/leader_list.cpp:137 src/menu_events.cpp:1503
-#: src/multiplayer_connect.cpp:214 src/multiplayer_connect.cpp:266
+#: src/multiplayer_connect.cpp:215 src/multiplayer_connect.cpp:267
 msgid "gender^Random"
 msgstr "Aleatori"
 
-#: src/leader_list.cpp:147 src/multiplayer_connect.cpp:210
-#: src/multiplayer_connect.cpp:262
+#: src/leader_list.cpp:147 src/multiplayer_connect.cpp:211
+#: src/multiplayer_connect.cpp:263
 msgid "Female ♀"
 msgstr "Femení ♀"
 
-#: src/leader_list.cpp:151 src/multiplayer_connect.cpp:212
-#: src/multiplayer_connect.cpp:264
+#: src/leader_list.cpp:151 src/multiplayer_connect.cpp:213
+#: src/multiplayer_connect.cpp:265
 msgid "Male ♂"
 msgstr "Masculí ♂"
 
@@ -7881,52 +7928,6 @@ msgstr "S'està llegint els fitxers de les unitats."
 #, fuzzy
 msgid "Reading files and creating cache..."
 msgstr "S'estan llegint els fitxers i creant la memòria cau."
-
-#: src/lobby_data.cpp:204
-msgid "Unknown era: $era_id"
-msgstr "Era desconeguda: $era_id"
-
-#: src/lobby_data.cpp:209
-msgid "Unknown era"
-msgstr "Era desconeguda"
-
-#: src/lobby_data.cpp:264
-msgid "Remote scenario"
-msgstr "Escenari remot"
-
-#: src/lobby_data.cpp:272
-msgid "Unknown scenario: $scenario_id"
-msgstr "Escenari desconegut: $scenario_id"
-
-#: src/lobby_data.cpp:277
-msgid "Unknown scenario"
-msgstr "Escenari desconegut"
-
-#: src/lobby_data.cpp:283
-msgid "Reloaded game"
-msgstr "Partida recarregada"
-
-#: src/lobby_data.cpp:294
-msgid "Turn "
-msgstr "Torn "
-
-#: src/lobby_data.cpp:298
-msgid "Vacant Slot:"
-msgid_plural "Vacant Slots:"
-msgstr[0] "Plaça lliure:"
-msgstr[1] "Places lliures:"
-
-#: src/lobby_data.cpp:304
-msgid "Fog"
-msgstr "Boira"
-
-#: src/lobby_data.cpp:307 src/lobby_data.cpp:310 src/multiplayer_create.cpp:84
-msgid "Shroud"
-msgstr "Ocult"
-
-#: src/lobby_data.cpp:312
-msgid "none"
-msgstr "cap"
 
 #: src/map.cpp:163
 msgid "A map without a header is not supported"
@@ -8612,35 +8613,35 @@ msgstr ""
 msgid "The password you provided was incorrect."
 msgstr ""
 
-#: src/multiplayer_connect.cpp:89 src/multiplayer_connect.cpp:479
-#: src/multiplayer_connect.cpp:608
+#: src/multiplayer_connect.cpp:90 src/multiplayer_connect.cpp:480
+#: src/multiplayer_connect.cpp:609
 msgid "Normal"
 msgstr "Normal"
 
-#: src/multiplayer_connect.cpp:475 src/multiplayer_connect.cpp:604
+#: src/multiplayer_connect.cpp:476 src/multiplayer_connect.cpp:605
 #: src/multiplayer_wait.cpp:499 src/multiplayer_wait.cpp:507
 msgid "("
 msgstr "("
 
-#: src/multiplayer_connect.cpp:475 src/multiplayer_connect.cpp:604
+#: src/multiplayer_connect.cpp:476 src/multiplayer_connect.cpp:605
 #: src/multiplayer_wait.cpp:499 src/multiplayer_wait.cpp:510
 msgid ")"
 msgstr ")"
 
-#: src/multiplayer_connect.cpp:477 src/multiplayer_connect.cpp:606
+#: src/multiplayer_connect.cpp:478 src/multiplayer_connect.cpp:607
 #: src/multiplayer_wait.cpp:509
 msgid "+"
 msgstr "+"
 
-#: src/multiplayer_connect.cpp:638
+#: src/multiplayer_connect.cpp:639
 msgid "(Vacant slot)"
 msgstr "(Plaça lliure)"
 
-#: src/multiplayer_connect.cpp:646
+#: src/multiplayer_connect.cpp:647
 msgid "Anonymous local player"
 msgstr "Jugador anònim local"
 
-#: src/multiplayer_connect.cpp:660 src/multiplayer_connect.cpp:1413
+#: src/multiplayer_connect.cpp:660 src/multiplayer_connect.cpp:1414
 msgid "Computer Player"
 msgstr "Ordinador"
 
@@ -8710,34 +8711,34 @@ msgstr "L'escenari no és vàlid: no hi ha bàndols disponibles."
 msgid "The scenario is invalid because it has no sides."
 msgstr "L'escenari no és vàlid: no hi ha bàndols disponibles."
 
-#: src/multiplayer_connect.cpp:1410
+#: src/multiplayer_connect.cpp:1411
 msgid "Network Player"
 msgstr "Jugador xarxa"
 
-#: src/multiplayer_connect.cpp:1412
+#: src/multiplayer_connect.cpp:1413
 msgid "Local Player"
 msgstr "Jugador local"
 
-#: src/multiplayer_connect.cpp:1414
+#: src/multiplayer_connect.cpp:1415
 msgid "Empty"
 msgstr "Buit"
 
-#: src/multiplayer_connect.cpp:1559
+#: src/multiplayer_connect.cpp:1560
 msgid "Cannot find era $era"
 msgstr "No ha estat possible trobar $era."
 
-#: src/multiplayer_connect.cpp:1582
+#: src/multiplayer_connect.cpp:1583
 msgid "Victory:"
 msgstr "Victòria:"
 
-#: src/multiplayer_connect.cpp:1584
+#: src/multiplayer_connect.cpp:1585
 #, fuzzy
 msgid "Defeat enemy leader(s)"
 msgstr ""
 "Victòria:\n"
 "@Derrota els líders enemics"
 
-#: src/multiplayer_connect.cpp:1678
+#: src/multiplayer_connect.cpp:1679
 msgid "Waiting for players to join..."
 msgstr "Esperant que s'uneixin jugadors..."
 
@@ -9057,11 +9058,11 @@ msgstr "Aquest escenari ha acabat. Voleu continuar la campanya?"
 msgid "Downloading next scenario..."
 msgstr "S'està descarregant el següent nivell..."
 
-#: src/playcampaign.cpp:601
+#: src/playcampaign.cpp:603
 msgid "Do you want to save your game?"
 msgstr "Voleu desar la partida?"
 
-#: src/playcampaign.cpp:620
+#: src/playcampaign.cpp:622
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Escenari desconegut: «$scenario|»"
 
@@ -9148,15 +9149,15 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/playsingle_controller.cpp:412
+#: src/playsingle_controller.cpp:409
 msgid "Game Over"
 msgstr "Partida perduda"
 
-#: src/playsingle_controller.cpp:413
+#: src/playsingle_controller.cpp:410
 msgid "The game is over."
 msgstr "La partida ha acabat."
 
-#: src/playsingle_controller.cpp:498
+#: src/playsingle_controller.cpp:495
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game\n"
@@ -9165,19 +9166,19 @@ msgstr ""
 "S'ha produït una desconnexió de la xarxa i la partida no pot continuar. "
 "Voleu desar la partida?"
 
-#: src/playsingle_controller.cpp:658
+#: src/playsingle_controller.cpp:655
 msgid "It is now $name|'s turn"
 msgstr "És el torn de $name|."
 
-#: src/playsingle_controller.cpp:876
+#: src/playsingle_controller.cpp:873
 msgid "Scenario Report"
 msgstr "Informe de l'escenari"
 
-#: src/playsingle_controller.cpp:878
+#: src/playsingle_controller.cpp:875
 msgid "Victory"
 msgstr "Victòria"
 
-#: src/playsingle_controller.cpp:879
+#: src/playsingle_controller.cpp:876
 msgid "You have emerged victorious!"
 msgstr "Heu estat el vencedor!"
 
@@ -9531,35 +9532,35 @@ msgstr "No s'ha definit l'hora del dia."
 msgid "Unknown unit type '$type|'"
 msgstr "Tipus d'unitat «$type|» desconegut"
 
-#: src/unit.cpp:715
+#: src/unit.cpp:719
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "Tipus d'unitat «$type|» desconegut mentre s'estaven generant els trets"
 
-#: src/unit.cpp:2294 src/unit.cpp:2481 src/unit.cpp:2554
+#: src/unit.cpp:2298 src/unit.cpp:2485 src/unit.cpp:2558
 msgid " and "
 msgstr " i "
 
-#: src/unit.cpp:2305
+#: src/unit.cpp:2309
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2370
+#: src/unit.cpp:2374
 msgid "moves"
 msgstr "moviments"
 
-#: src/unit.cpp:2388 src/unit.cpp:2508
+#: src/unit.cpp:2392 src/unit.cpp:2512
 msgid "XP to advance"
 msgstr "punt d'experiència per avançar"
 
-#: src/unit.cpp:2500
+#: src/unit.cpp:2504
 msgid " move"
 msgstr " moviment"
 
-#: src/unit.cpp:2516
+#: src/unit.cpp:2520
 msgid "$effect_description per level"
 msgstr ""
 
-#: src/unit.cpp:2563
+#: src/unit.cpp:2567
 msgid "$trait_name|: $trait_description "
 msgstr ""
 

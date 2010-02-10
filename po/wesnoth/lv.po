@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.9\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-02-08 11:33+0100\n"
+"POT-Creation-Date: 2010-02-10 17:39+0100\n"
 "PO-Revision-Date: 2009-12-17 00:09+0300\n"
 "Last-Translator: Reinis Danne <rei4dan@gmail.com>\n"
 "Language-Team: none\n"
@@ -7057,8 +7057,8 @@ msgstr "Beigt scenāriju"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:211 src/unit.cpp:2337
-#: src/unit.cpp:2493
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:211 src/unit.cpp:2341
+#: src/unit.cpp:2497
 msgid "HP"
 msgstr "Veselība"
 
@@ -7856,7 +7856,7 @@ msgstr "Kļūde spēlējot spēli: "
 msgid "The game map could not be loaded: "
 msgstr "Neizdevās ielādēt spēles karti: "
 
-#: src/game.cpp:1491
+#: src/game.cpp:1492
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Sekojošam papildinājumam atgadījās kļūdas, un to neizdevās ielādēt:"
@@ -7865,39 +7865,39 @@ msgstr[1] ""
 msgstr[2] ""
 "Sekojošiem papildinājumiem atgadījās kļūdas un tos neizdevās ielādēt:"
 
-#: src/game.cpp:1498
+#: src/game.cpp:1499
 msgid "ERROR DETAILS:"
 msgstr "KĻŪDAS DETAĻAS:"
 
-#: src/game.cpp:1518
+#: src/game.cpp:1519
 msgid "Error loading game configuration files: '"
 msgstr "Kļūda ielādējot spēles konfigurācijas failus: '"
 
-#: src/game.cpp:1519
+#: src/game.cpp:1520
 msgid "' (The game will now exit)"
 msgstr "' (Spēle tagad aizvērsies)"
 
-#: src/game.cpp:1528
+#: src/game.cpp:1529
 msgid "Loading data files"
 msgstr "Ielādē datu failus"
 
-#: src/game.cpp:1959
+#: src/game.cpp:1960
 msgid "Loading game configuration."
 msgstr "Ielādē spēles konfigurāciju."
 
-#: src/game.cpp:1965
+#: src/game.cpp:1966
 msgid "Re-initialize fonts for the current language."
 msgstr "Reinicializē pašreizējās valodas fontus."
 
-#: src/game.cpp:1973
+#: src/game.cpp:1974
 msgid "Searching for installed add-ons."
 msgstr "Meklē instalētos papildinājumus."
 
-#: src/game.cpp:1982
+#: src/game.cpp:1983
 msgid "Loading title screen."
 msgstr "Ielādē galveno lapu."
 
-#: src/game_config.cpp:287
+#: src/game_config.cpp:286
 msgid "Invalid color range: "
 msgstr "Nederīgs krāsu apgabals: "
 
@@ -7917,7 +7917,7 @@ msgstr "Atkļūdot: "
 msgid "Info: "
 msgstr "Informācija: "
 
-#: src/game_events.cpp:3300
+#: src/game_events.cpp:3299
 msgid "[unit_worth]'s filter didn't match any units!"
 msgstr "[unit_worth] filtrs neatbilda nevienai vienībai!"
 
@@ -8033,6 +8033,54 @@ msgstr "Haotiskās vienības: "
 #: src/generate_report.cpp:565
 msgid "Observers:"
 msgstr "Novērotāji:"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:204
+msgid "Unknown era: $era_id"
+msgstr "Nezināma ēra: $era_id"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:209
+msgid "Unknown era"
+msgstr "Nezināma ēra"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:264
+msgid "Remote scenario"
+msgstr "Attālinatais scenārijs"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:272
+msgid "Unknown scenario: $scenario_id"
+msgstr "Nezināms scenārijs: $scenārija_id"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:277
+msgid "Unknown scenario"
+msgstr "Nezināms scenārijs"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:283
+msgid "Reloaded game"
+msgstr "Pārlādēta spēle"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:294
+msgid "Turn "
+msgstr "Gājiens "
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:298
+msgid "Vacant Slot:"
+msgid_plural "Vacant Slots:"
+msgstr[0] "Brīva vieta:"
+msgstr[1] "Brīvas vietas:"
+msgstr[2] "Brīvas vietas:"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:304
+msgid "Fog"
+msgstr "Migla"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:307
+#: src/gui/dialogs/lobby/lobby_data.cpp:310 src/multiplayer_create.cpp:84
+msgid "Shroud"
+msgstr "Plīvurs"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:312
+msgid "none"
+msgstr "nekas"
 
 #: src/gui/dialogs/lobby_player_info.cpp:65
 msgid "In game:"
@@ -8223,17 +8271,17 @@ msgid "System default language"
 msgstr "Sistēmas noklusētā valoda"
 
 #: src/leader_list.cpp:137 src/menu_events.cpp:1503
-#: src/multiplayer_connect.cpp:214 src/multiplayer_connect.cpp:266
+#: src/multiplayer_connect.cpp:215 src/multiplayer_connect.cpp:267
 msgid "gender^Random"
 msgstr "Nejaušs"
 
-#: src/leader_list.cpp:147 src/multiplayer_connect.cpp:210
-#: src/multiplayer_connect.cpp:262
+#: src/leader_list.cpp:147 src/multiplayer_connect.cpp:211
+#: src/multiplayer_connect.cpp:263
 msgid "Female ♀"
 msgstr "Sieviete ♀"
 
-#: src/leader_list.cpp:151 src/multiplayer_connect.cpp:212
-#: src/multiplayer_connect.cpp:264
+#: src/leader_list.cpp:151 src/multiplayer_connect.cpp:213
+#: src/multiplayer_connect.cpp:265
 msgid "Male ♂"
 msgstr "Vīrietis ♂"
 
@@ -8256,53 +8304,6 @@ msgstr "Lasa vienību failus..."
 #: src/loadscreen.cpp:280
 msgid "Reading files and creating cache..."
 msgstr "Lasa failus un izveido kešatmiņu..."
-
-#: src/lobby_data.cpp:204
-msgid "Unknown era: $era_id"
-msgstr "Nezināma ēra: $era_id"
-
-#: src/lobby_data.cpp:209
-msgid "Unknown era"
-msgstr "Nezināma ēra"
-
-#: src/lobby_data.cpp:264
-msgid "Remote scenario"
-msgstr "Attālinatais scenārijs"
-
-#: src/lobby_data.cpp:272
-msgid "Unknown scenario: $scenario_id"
-msgstr "Nezināms scenārijs: $scenārija_id"
-
-#: src/lobby_data.cpp:277
-msgid "Unknown scenario"
-msgstr "Nezināms scenārijs"
-
-#: src/lobby_data.cpp:283
-msgid "Reloaded game"
-msgstr "Pārlādēta spēle"
-
-#: src/lobby_data.cpp:294
-msgid "Turn "
-msgstr "Gājiens "
-
-#: src/lobby_data.cpp:298
-msgid "Vacant Slot:"
-msgid_plural "Vacant Slots:"
-msgstr[0] "Brīva vieta:"
-msgstr[1] "Brīvas vietas:"
-msgstr[2] "Brīvas vietas:"
-
-#: src/lobby_data.cpp:304
-msgid "Fog"
-msgstr "Migla"
-
-#: src/lobby_data.cpp:307 src/lobby_data.cpp:310 src/multiplayer_create.cpp:84
-msgid "Shroud"
-msgstr "Plīvurs"
-
-#: src/lobby_data.cpp:312
-msgid "none"
-msgstr "nekas"
 
 #: src/map.cpp:163
 msgid "A map without a header is not supported"
@@ -9002,35 +9003,35 @@ msgstr ""
 msgid "The password you provided was incorrect."
 msgstr "Jūsu ierakstītā parole bija nepareiza."
 
-#: src/multiplayer_connect.cpp:89 src/multiplayer_connect.cpp:479
-#: src/multiplayer_connect.cpp:608
+#: src/multiplayer_connect.cpp:90 src/multiplayer_connect.cpp:480
+#: src/multiplayer_connect.cpp:609
 msgid "Normal"
 msgstr "Normāls"
 
-#: src/multiplayer_connect.cpp:475 src/multiplayer_connect.cpp:604
+#: src/multiplayer_connect.cpp:476 src/multiplayer_connect.cpp:605
 #: src/multiplayer_wait.cpp:499 src/multiplayer_wait.cpp:507
 msgid "("
 msgstr "("
 
-#: src/multiplayer_connect.cpp:475 src/multiplayer_connect.cpp:604
+#: src/multiplayer_connect.cpp:476 src/multiplayer_connect.cpp:605
 #: src/multiplayer_wait.cpp:499 src/multiplayer_wait.cpp:510
 msgid ")"
 msgstr ")"
 
-#: src/multiplayer_connect.cpp:477 src/multiplayer_connect.cpp:606
+#: src/multiplayer_connect.cpp:478 src/multiplayer_connect.cpp:607
 #: src/multiplayer_wait.cpp:509
 msgid "+"
 msgstr "+"
 
-#: src/multiplayer_connect.cpp:638
+#: src/multiplayer_connect.cpp:639
 msgid "(Vacant slot)"
 msgstr "(Brīva vieta)"
 
-#: src/multiplayer_connect.cpp:646
+#: src/multiplayer_connect.cpp:647
 msgid "Anonymous local player"
 msgstr "Anonīms vietējais spēlētājs"
 
-#: src/multiplayer_connect.cpp:660 src/multiplayer_connect.cpp:1413
+#: src/multiplayer_connect.cpp:660 src/multiplayer_connect.cpp:1414
 msgid "Computer Player"
 msgstr "Dators"
 
@@ -9098,31 +9099,31 @@ msgstr "Scenārijs ir nederīgs, jo tam nav id."
 msgid "The scenario is invalid because it has no sides."
 msgstr "Scenārijs ir nederīgs jo tajā nav neviena puse."
 
-#: src/multiplayer_connect.cpp:1410
+#: src/multiplayer_connect.cpp:1411
 msgid "Network Player"
 msgstr "Tīkla spēlētājs"
 
-#: src/multiplayer_connect.cpp:1412
+#: src/multiplayer_connect.cpp:1413
 msgid "Local Player"
 msgstr "Vietējais spēlētājs"
 
-#: src/multiplayer_connect.cpp:1414
+#: src/multiplayer_connect.cpp:1415
 msgid "Empty"
 msgstr "Tukšs"
 
-#: src/multiplayer_connect.cpp:1559
+#: src/multiplayer_connect.cpp:1560
 msgid "Cannot find era $era"
 msgstr "Nav atrasta ēra $era"
 
-#: src/multiplayer_connect.cpp:1582
+#: src/multiplayer_connect.cpp:1583
 msgid "Victory:"
 msgstr "Uzvara:"
 
-#: src/multiplayer_connect.cpp:1584
+#: src/multiplayer_connect.cpp:1585
 msgid "Defeat enemy leader(s)"
 msgstr "Sakaut pretinieku līderi/-us"
 
-#: src/multiplayer_connect.cpp:1678
+#: src/multiplayer_connect.cpp:1679
 msgid "Waiting for players to join..."
 msgstr "Gaida spēlētāju pievienošanos..."
 
@@ -9445,11 +9446,11 @@ msgstr "Šis scenārijs ir beidzies. Vai vēlies turpināt kampaņu?"
 msgid "Downloading next scenario..."
 msgstr "Lejupielādē nākamo scenāriju..."
 
-#: src/playcampaign.cpp:601
+#: src/playcampaign.cpp:603
 msgid "Do you want to save your game?"
 msgstr "Vai vēlies saglabāt savu spēli?"
 
-#: src/playcampaign.cpp:620
+#: src/playcampaign.cpp:622
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Nezināms scenārijs: '$scenario|'"
 
@@ -9556,15 +9557,15 @@ msgstr[2] ""
 "Jūs sāksiet nākamo scenāriju ar $gold zelta gabaliem vai ar noteikto "
 "minimālo zelta daudzumu, atkarībā no tā, kurš ir lielāks."
 
-#: src/playsingle_controller.cpp:412
+#: src/playsingle_controller.cpp:409
 msgid "Game Over"
 msgstr "Spēles beigas"
 
-#: src/playsingle_controller.cpp:413
+#: src/playsingle_controller.cpp:410
 msgid "The game is over."
 msgstr "Spēle ir beigusies."
 
-#: src/playsingle_controller.cpp:498
+#: src/playsingle_controller.cpp:495
 msgid ""
 "A network disconnection has occurred, and the game\n"
 "cannot continue. Do you want to save the game?"
@@ -9572,19 +9573,19 @@ msgstr ""
 "Tīkls ticis atvienots un spēle\n"
 "nevar tikt turpināta. Vai vēlaties saglabāt spēli?"
 
-#: src/playsingle_controller.cpp:658
+#: src/playsingle_controller.cpp:655
 msgid "It is now $name|'s turn"
 msgstr "Tagad ir $name| gājiens"
 
-#: src/playsingle_controller.cpp:876
+#: src/playsingle_controller.cpp:873
 msgid "Scenario Report"
 msgstr "Scenārija atskaite"
 
-#: src/playsingle_controller.cpp:878
+#: src/playsingle_controller.cpp:875
 msgid "Victory"
 msgstr "Uzvara"
 
-#: src/playsingle_controller.cpp:879
+#: src/playsingle_controller.cpp:876
 msgid "You have emerged victorious!"
 msgstr "Tu esi uzvarējis!"
 
@@ -9932,35 +9933,35 @@ msgstr "Diennakts laiks nav ticis definēts."
 msgid "Unknown unit type '$type|'"
 msgstr "Nezināms vienības tips '$type|'"
 
-#: src/unit.cpp:715
+#: src/unit.cpp:719
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "Nezināms vienības tips '$type|', ģenerējot iezīmes"
 
-#: src/unit.cpp:2294 src/unit.cpp:2481 src/unit.cpp:2554
+#: src/unit.cpp:2298 src/unit.cpp:2485 src/unit.cpp:2558
 msgid " and "
 msgstr " un "
 
-#: src/unit.cpp:2305
+#: src/unit.cpp:2309
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2370
+#: src/unit.cpp:2374
 msgid "moves"
 msgstr "gājieni"
 
-#: src/unit.cpp:2388 src/unit.cpp:2508
+#: src/unit.cpp:2392 src/unit.cpp:2512
 msgid "XP to advance"
 msgstr "pieredze, lai attīstītos"
 
-#: src/unit.cpp:2500
+#: src/unit.cpp:2504
 msgid " move"
 msgstr " gājiens"
 
-#: src/unit.cpp:2516
+#: src/unit.cpp:2520
 msgid "$effect_description per level"
 msgstr "$effect_description par līmeni"
 
-#: src/unit.cpp:2563
+#: src/unit.cpp:2567
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 

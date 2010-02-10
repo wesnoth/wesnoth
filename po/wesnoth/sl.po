@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-02-08 11:33+0100\n"
+"POT-Creation-Date: 2010-02-10 17:39+0100\n"
 "PO-Revision-Date: 2006-08-14 19:33+0200\n"
 "Last-Translator: Jaka Kranjc <wesnoth@prinas.si>\n"
 "Language-Team: Slovenian\n"
@@ -6271,8 +6271,8 @@ msgstr "Oddaljen scenarij"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:211 src/unit.cpp:2337
-#: src/unit.cpp:2493
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:211 src/unit.cpp:2341
+#: src/unit.cpp:2497
 msgid "HP"
 msgstr "HP"
 
@@ -7109,7 +7109,7 @@ msgstr "Napaka med igranjem: "
 msgid "The game map could not be loaded: "
 msgstr "Karte ni bilo možno naložiti: "
 
-#: src/game.cpp:1491
+#: src/game.cpp:1492
 #, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
@@ -7118,41 +7118,41 @@ msgstr[1] "Sledeče dodatne kampanje zaradi napak ni bilo možno naložiti: "
 msgstr[2] "Sledeče dodatne kampanje zaradi napak ni bilo možno naložiti: "
 msgstr[3] "Sledeče dodatne kampanje zaradi napak ni bilo možno naložiti: "
 
-#: src/game.cpp:1498
+#: src/game.cpp:1499
 msgid "ERROR DETAILS:"
 msgstr "PODROBNOSTI NAPAKE:"
 
-#: src/game.cpp:1518
+#: src/game.cpp:1519
 msgid "Error loading game configuration files: '"
 msgstr "Napaka pri nalaganju nastavitvenih datotek: '"
 
-#: src/game.cpp:1519
+#: src/game.cpp:1520
 msgid "' (The game will now exit)"
 msgstr "' (Igra se bo zaključila)"
 
-#: src/game.cpp:1528
+#: src/game.cpp:1529
 #, fuzzy
 msgid "Loading data files"
 msgstr "Branje datotek enot."
 
-#: src/game.cpp:1959
+#: src/game.cpp:1960
 msgid "Loading game configuration."
 msgstr "Nalaganje nastavitev."
 
-#: src/game.cpp:1965
+#: src/game.cpp:1966
 msgid "Re-initialize fonts for the current language."
 msgstr "Ponastavi pisave za trenutni jezik."
 
-#: src/game.cpp:1973
+#: src/game.cpp:1974
 #, fuzzy
 msgid "Searching for installed add-ons."
 msgstr "Pošiljanje dodatka"
 
-#: src/game.cpp:1982
+#: src/game.cpp:1983
 msgid "Loading title screen."
 msgstr "Nalaganje uvodnega zaslona."
 
-#: src/game_config.cpp:287
+#: src/game_config.cpp:286
 #, fuzzy
 msgid "Invalid color range: "
 msgstr "Neveljavna barva"
@@ -7175,7 +7175,7 @@ msgstr ""
 msgid "Info: "
 msgstr ""
 
-#: src/game_events.cpp:3300
+#: src/game_events.cpp:3299
 msgid "[unit_worth]'s filter didn't match any units!"
 msgstr ""
 
@@ -7293,6 +7293,60 @@ msgstr "Kaotične enote: "
 #: src/generate_report.cpp:565
 msgid "Observers:"
 msgstr "Opazovalci:"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:204
+#, fuzzy
+msgid "Unknown era: $era_id"
+msgstr "Neznana era"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:209
+msgid "Unknown era"
+msgstr "Neznana era"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:264
+msgid "Remote scenario"
+msgstr "Oddaljen scenarij"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:272
+#, fuzzy
+msgid "Unknown scenario: $scenario_id"
+msgstr "Neznan scenarij: '"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:277
+msgid "Unknown scenario"
+msgstr "Neznan scenarij"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:283
+#, fuzzy
+msgid "Reloaded game"
+msgstr "Naloži enoigralski shranjen položaj"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:294
+#, fuzzy
+msgid "Turn "
+msgstr "Poteza"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:298
+#, fuzzy
+msgid "Vacant Slot:"
+msgid_plural "Vacant Slots:"
+msgstr[0] "Prazno mesto:"
+msgstr[1] "Prazno mesto:"
+msgstr[2] "Prazno mesto:"
+msgstr[3] "Prazno mesto:"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:304
+msgid "Fog"
+msgstr "Megla"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:307
+#: src/gui/dialogs/lobby/lobby_data.cpp:310 src/multiplayer_create.cpp:84
+msgid "Shroud"
+msgstr "Koprena"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:312
+msgid "none"
+msgstr "brez"
 
 #: src/gui/dialogs/lobby_player_info.cpp:65
 #, fuzzy
@@ -7507,18 +7561,18 @@ msgid "System default language"
 msgstr "Privzeti sistemski jezik"
 
 #: src/leader_list.cpp:137 src/menu_events.cpp:1503
-#: src/multiplayer_connect.cpp:214 src/multiplayer_connect.cpp:266
+#: src/multiplayer_connect.cpp:215 src/multiplayer_connect.cpp:267
 #, fuzzy
 msgid "gender^Random"
 msgstr "Naključno"
 
-#: src/leader_list.cpp:147 src/multiplayer_connect.cpp:210
-#: src/multiplayer_connect.cpp:262
+#: src/leader_list.cpp:147 src/multiplayer_connect.cpp:211
+#: src/multiplayer_connect.cpp:263
 msgid "Female ♀"
 msgstr ""
 
-#: src/leader_list.cpp:151 src/multiplayer_connect.cpp:212
-#: src/multiplayer_connect.cpp:264
+#: src/leader_list.cpp:151 src/multiplayer_connect.cpp:213
+#: src/multiplayer_connect.cpp:265
 msgid "Male ♂"
 msgstr ""
 
@@ -7544,59 +7598,6 @@ msgstr "Branje datotek enot."
 #, fuzzy
 msgid "Reading files and creating cache..."
 msgstr "Branje datotek in ustvarjanje predpomnilnika."
-
-#: src/lobby_data.cpp:204
-#, fuzzy
-msgid "Unknown era: $era_id"
-msgstr "Neznana era"
-
-#: src/lobby_data.cpp:209
-msgid "Unknown era"
-msgstr "Neznana era"
-
-#: src/lobby_data.cpp:264
-msgid "Remote scenario"
-msgstr "Oddaljen scenarij"
-
-#: src/lobby_data.cpp:272
-#, fuzzy
-msgid "Unknown scenario: $scenario_id"
-msgstr "Neznan scenarij: '"
-
-#: src/lobby_data.cpp:277
-msgid "Unknown scenario"
-msgstr "Neznan scenarij"
-
-#: src/lobby_data.cpp:283
-#, fuzzy
-msgid "Reloaded game"
-msgstr "Naloži enoigralski shranjen položaj"
-
-#: src/lobby_data.cpp:294
-#, fuzzy
-msgid "Turn "
-msgstr "Poteza"
-
-#: src/lobby_data.cpp:298
-#, fuzzy
-msgid "Vacant Slot:"
-msgid_plural "Vacant Slots:"
-msgstr[0] "Prazno mesto:"
-msgstr[1] "Prazno mesto:"
-msgstr[2] "Prazno mesto:"
-msgstr[3] "Prazno mesto:"
-
-#: src/lobby_data.cpp:304
-msgid "Fog"
-msgstr "Megla"
-
-#: src/lobby_data.cpp:307 src/lobby_data.cpp:310 src/multiplayer_create.cpp:84
-msgid "Shroud"
-msgstr "Koprena"
-
-#: src/lobby_data.cpp:312
-msgid "none"
-msgstr "brez"
 
 #: src/map.cpp:163
 msgid "A map without a header is not supported"
@@ -8332,35 +8333,35 @@ msgstr ""
 msgid "The password you provided was incorrect."
 msgstr ""
 
-#: src/multiplayer_connect.cpp:89 src/multiplayer_connect.cpp:479
-#: src/multiplayer_connect.cpp:608
+#: src/multiplayer_connect.cpp:90 src/multiplayer_connect.cpp:480
+#: src/multiplayer_connect.cpp:609
 msgid "Normal"
 msgstr "Navadna"
 
-#: src/multiplayer_connect.cpp:475 src/multiplayer_connect.cpp:604
+#: src/multiplayer_connect.cpp:476 src/multiplayer_connect.cpp:605
 #: src/multiplayer_wait.cpp:499 src/multiplayer_wait.cpp:507
 msgid "("
 msgstr "("
 
-#: src/multiplayer_connect.cpp:475 src/multiplayer_connect.cpp:604
+#: src/multiplayer_connect.cpp:476 src/multiplayer_connect.cpp:605
 #: src/multiplayer_wait.cpp:499 src/multiplayer_wait.cpp:510
 msgid ")"
 msgstr ")"
 
-#: src/multiplayer_connect.cpp:477 src/multiplayer_connect.cpp:606
+#: src/multiplayer_connect.cpp:478 src/multiplayer_connect.cpp:607
 #: src/multiplayer_wait.cpp:509
 msgid "+"
 msgstr "+"
 
-#: src/multiplayer_connect.cpp:638
+#: src/multiplayer_connect.cpp:639
 msgid "(Vacant slot)"
 msgstr "(Prosto mesto)"
 
-#: src/multiplayer_connect.cpp:646
+#: src/multiplayer_connect.cpp:647
 msgid "Anonymous local player"
 msgstr "Anonimen lokalni igralec"
 
-#: src/multiplayer_connect.cpp:660 src/multiplayer_connect.cpp:1413
+#: src/multiplayer_connect.cpp:660 src/multiplayer_connect.cpp:1414
 msgid "Computer Player"
 msgstr "Računalniški igralec"
 
@@ -8434,34 +8435,34 @@ msgstr "Scenarij je neveljaven, ker nima nobenih strani."
 msgid "The scenario is invalid because it has no sides."
 msgstr "Scenarij je neveljaven, ker nima nobenih strani."
 
-#: src/multiplayer_connect.cpp:1410
+#: src/multiplayer_connect.cpp:1411
 msgid "Network Player"
 msgstr "Mrežni igralec"
 
-#: src/multiplayer_connect.cpp:1412
+#: src/multiplayer_connect.cpp:1413
 msgid "Local Player"
 msgstr "Lokalni igralec"
 
-#: src/multiplayer_connect.cpp:1414
+#: src/multiplayer_connect.cpp:1415
 msgid "Empty"
 msgstr "Prazno"
 
-#: src/multiplayer_connect.cpp:1559
+#: src/multiplayer_connect.cpp:1560
 msgid "Cannot find era $era"
 msgstr "Ni mogoče najti ere $era"
 
-#: src/multiplayer_connect.cpp:1582
+#: src/multiplayer_connect.cpp:1583
 msgid "Victory:"
 msgstr "Zmaga:"
 
-#: src/multiplayer_connect.cpp:1584
+#: src/multiplayer_connect.cpp:1585
 #, fuzzy
 msgid "Defeat enemy leader(s)"
 msgstr ""
 "Zmaga:\n"
 "@Premagaj sovražne voditelje"
 
-#: src/multiplayer_connect.cpp:1678
+#: src/multiplayer_connect.cpp:1679
 msgid "Waiting for players to join..."
 msgstr "Čakanje na igralce..."
 
@@ -8796,12 +8797,12 @@ msgstr ""
 msgid "Downloading next scenario..."
 msgstr "Prenašam naslednjo stopnjo..."
 
-#: src/playcampaign.cpp:601
+#: src/playcampaign.cpp:603
 #, fuzzy
 msgid "Do you want to save your game?"
 msgstr "Ali zares želite izbrisati ta shranjeni položaj?"
 
-#: src/playcampaign.cpp:620
+#: src/playcampaign.cpp:622
 #, fuzzy
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Neznan scenarij: '"
@@ -8896,15 +8897,15 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: src/playsingle_controller.cpp:412
+#: src/playsingle_controller.cpp:409
 msgid "Game Over"
 msgstr "Konec igre"
 
-#: src/playsingle_controller.cpp:413
+#: src/playsingle_controller.cpp:410
 msgid "The game is over."
 msgstr "Igra je končana"
 
-#: src/playsingle_controller.cpp:498
+#: src/playsingle_controller.cpp:495
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game\n"
@@ -8913,20 +8914,20 @@ msgstr ""
 "Zgodila se je mrežna prkinitev in igra se ne more nadaljevati. Ali želite "
 "shraniti igro?"
 
-#: src/playsingle_controller.cpp:658
+#: src/playsingle_controller.cpp:655
 #, fuzzy
 msgid "It is now $name|'s turn"
 msgstr "Vaša poteza se je začela"
 
-#: src/playsingle_controller.cpp:876
+#: src/playsingle_controller.cpp:873
 msgid "Scenario Report"
 msgstr "Scenarijsko poročilo"
 
-#: src/playsingle_controller.cpp:878
+#: src/playsingle_controller.cpp:875
 msgid "Victory"
 msgstr "Zmaga"
 
-#: src/playsingle_controller.cpp:879
+#: src/playsingle_controller.cpp:876
 msgid "You have emerged victorious!"
 msgstr "Zmagali ste!"
 
@@ -9304,38 +9305,38 @@ msgstr ""
 msgid "Unknown unit type '$type|'"
 msgstr ""
 
-#: src/unit.cpp:715
+#: src/unit.cpp:719
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr ""
 
-#: src/unit.cpp:2294 src/unit.cpp:2481 src/unit.cpp:2554
+#: src/unit.cpp:2298 src/unit.cpp:2485 src/unit.cpp:2558
 #, fuzzy
 msgid " and "
 msgstr "Pesek"
 
-#: src/unit.cpp:2305
+#: src/unit.cpp:2309
 msgid "$attack_list|: $effect_description"
 msgstr ""
 
-#: src/unit.cpp:2370
+#: src/unit.cpp:2374
 #, fuzzy
 msgid "moves"
 msgstr "Premiki"
 
-#: src/unit.cpp:2388 src/unit.cpp:2508
+#: src/unit.cpp:2392 src/unit.cpp:2512
 msgid "XP to advance"
 msgstr "XP do napredovanja"
 
-#: src/unit.cpp:2500
+#: src/unit.cpp:2504
 #, fuzzy
 msgid " move"
 msgstr "Premiki"
 
-#: src/unit.cpp:2516
+#: src/unit.cpp:2520
 msgid "$effect_description per level"
 msgstr ""
 
-#: src/unit.cpp:2563
+#: src/unit.cpp:2567
 msgid "$trait_name|: $trait_description "
 msgstr ""
 

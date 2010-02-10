@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-02-08 11:33+0100\n"
+"POT-Creation-Date: 2010-02-10 17:39+0100\n"
 "PO-Revision-Date: 2005-12-14 12:40+0200\n"
 "Last-Translator: \n"
 "Language-Team: Afrikaans\n"
@@ -6340,8 +6340,8 @@ msgstr "Onbekende scenario: '"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:211 src/unit.cpp:2337
-#: src/unit.cpp:2493
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:211 src/unit.cpp:2341
+#: src/unit.cpp:2497
 msgid "HP"
 msgstr "LP"
 
@@ -7183,7 +7183,7 @@ msgstr "Fout tydens speel van spel: "
 msgid "The game map could not be loaded: "
 msgstr "Die spelkaart kon nie gelaai word nie: "
 
-#: src/game.cpp:1491
+#: src/game.cpp:1492
 #, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
@@ -7192,41 +7192,41 @@ msgstr[0] ""
 msgstr[1] ""
 "Die volgende bykomende veldtogte kon nie gelaai word nie weens foute:"
 
-#: src/game.cpp:1498
+#: src/game.cpp:1499
 msgid "ERROR DETAILS:"
 msgstr "FOUT BESONDERHEDE:"
 
-#: src/game.cpp:1518
+#: src/game.cpp:1519
 msgid "Error loading game configuration files: '"
 msgstr "Fout met laai van konfigurasie lêers: '"
 
-#: src/game.cpp:1519
+#: src/game.cpp:1520
 msgid "' (The game will now exit)"
 msgstr "' (Die spel gaan nou sluit)"
 
-#: src/game.cpp:1528
+#: src/game.cpp:1529
 msgid "Loading data files"
 msgstr ""
 
-#: src/game.cpp:1959
+#: src/game.cpp:1960
 #, fuzzy
 msgid "Loading game configuration."
 msgstr "Fout met laai van konfigurasie lêers: '"
 
-#: src/game.cpp:1965
+#: src/game.cpp:1966
 msgid "Re-initialize fonts for the current language."
 msgstr ""
 
-#: src/game.cpp:1973
+#: src/game.cpp:1974
 #, fuzzy
 msgid "Searching for installed add-ons."
 msgstr "Besig om veldtog af te laai..."
 
-#: src/game.cpp:1982
+#: src/game.cpp:1983
 msgid "Loading title screen."
 msgstr ""
 
-#: src/game_config.cpp:287
+#: src/game_config.cpp:286
 #, fuzzy
 msgid "Invalid color range: "
 msgstr "Ongeldige kleur"
@@ -7249,7 +7249,7 @@ msgstr ""
 msgid "Info: "
 msgstr ""
 
-#: src/game_events.cpp:3300
+#: src/game_events.cpp:3299
 msgid "[unit_worth]'s filter didn't match any units!"
 msgstr ""
 
@@ -7366,6 +7366,61 @@ msgstr "Chaotiese eenhede: "
 #: src/generate_report.cpp:565
 msgid "Observers:"
 msgstr "Waarnemers:"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:204
+#, fuzzy
+msgid "Unknown era: $era_id"
+msgstr "Onbekende scenario: '"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:209
+#, fuzzy
+msgid "Unknown era"
+msgstr "Onbekende scenario: '"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:264
+#, fuzzy
+msgid "Remote scenario"
+msgstr "Onbekende scenario: '"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:272
+#, fuzzy
+msgid "Unknown scenario: $scenario_id"
+msgstr "Onbekende scenario: '"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:277
+#, fuzzy
+msgid "Unknown scenario"
+msgstr "Onbekende scenario: '"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:283
+#, fuzzy
+msgid "Reloaded game"
+msgstr "Laai 'n enkel speler gestoorde spel"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:294
+#, fuzzy
+msgid "Turn "
+msgstr "Beurt"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:298
+#, fuzzy
+msgid "Vacant Slot:"
+msgid_plural "Vacant Slots:"
+msgstr[0] "Vakante Gleuf"
+msgstr[1] "Vakante Gleuf"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:304
+msgid "Fog"
+msgstr "Mis"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:307
+#: src/gui/dialogs/lobby/lobby_data.cpp:310 src/multiplayer_create.cpp:84
+msgid "Shroud"
+msgstr "Sluier"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:312
+msgid "none"
+msgstr "geen"
 
 #: src/gui/dialogs/lobby_player_info.cpp:65
 #, fuzzy
@@ -7580,18 +7635,18 @@ msgid "System default language"
 msgstr "Standaard stelseltaal"
 
 #: src/leader_list.cpp:137 src/menu_events.cpp:1503
-#: src/multiplayer_connect.cpp:214 src/multiplayer_connect.cpp:266
+#: src/multiplayer_connect.cpp:215 src/multiplayer_connect.cpp:267
 #, fuzzy
 msgid "gender^Random"
 msgstr "Willekeurige"
 
-#: src/leader_list.cpp:147 src/multiplayer_connect.cpp:210
-#: src/multiplayer_connect.cpp:262
+#: src/leader_list.cpp:147 src/multiplayer_connect.cpp:211
+#: src/multiplayer_connect.cpp:263
 msgid "Female ♀"
 msgstr ""
 
-#: src/leader_list.cpp:151 src/multiplayer_connect.cpp:212
-#: src/multiplayer_connect.cpp:264
+#: src/leader_list.cpp:151 src/multiplayer_connect.cpp:213
+#: src/multiplayer_connect.cpp:265
 msgid "Male ♂"
 msgstr ""
 
@@ -7615,60 +7670,6 @@ msgstr "Besig om te konnekteer aan Bediener..."
 #: src/loadscreen.cpp:280
 msgid "Reading files and creating cache..."
 msgstr ""
-
-#: src/lobby_data.cpp:204
-#, fuzzy
-msgid "Unknown era: $era_id"
-msgstr "Onbekende scenario: '"
-
-#: src/lobby_data.cpp:209
-#, fuzzy
-msgid "Unknown era"
-msgstr "Onbekende scenario: '"
-
-#: src/lobby_data.cpp:264
-#, fuzzy
-msgid "Remote scenario"
-msgstr "Onbekende scenario: '"
-
-#: src/lobby_data.cpp:272
-#, fuzzy
-msgid "Unknown scenario: $scenario_id"
-msgstr "Onbekende scenario: '"
-
-#: src/lobby_data.cpp:277
-#, fuzzy
-msgid "Unknown scenario"
-msgstr "Onbekende scenario: '"
-
-#: src/lobby_data.cpp:283
-#, fuzzy
-msgid "Reloaded game"
-msgstr "Laai 'n enkel speler gestoorde spel"
-
-#: src/lobby_data.cpp:294
-#, fuzzy
-msgid "Turn "
-msgstr "Beurt"
-
-#: src/lobby_data.cpp:298
-#, fuzzy
-msgid "Vacant Slot:"
-msgid_plural "Vacant Slots:"
-msgstr[0] "Vakante Gleuf"
-msgstr[1] "Vakante Gleuf"
-
-#: src/lobby_data.cpp:304
-msgid "Fog"
-msgstr "Mis"
-
-#: src/lobby_data.cpp:307 src/lobby_data.cpp:310 src/multiplayer_create.cpp:84
-msgid "Shroud"
-msgstr "Sluier"
-
-#: src/lobby_data.cpp:312
-msgid "none"
-msgstr "geen"
 
 #: src/map.cpp:163
 msgid "A map without a header is not supported"
@@ -8387,35 +8388,35 @@ msgstr ""
 msgid "The password you provided was incorrect."
 msgstr ""
 
-#: src/multiplayer_connect.cpp:89 src/multiplayer_connect.cpp:479
-#: src/multiplayer_connect.cpp:608
+#: src/multiplayer_connect.cpp:90 src/multiplayer_connect.cpp:480
+#: src/multiplayer_connect.cpp:609
 msgid "Normal"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:475 src/multiplayer_connect.cpp:604
+#: src/multiplayer_connect.cpp:476 src/multiplayer_connect.cpp:605
 #: src/multiplayer_wait.cpp:499 src/multiplayer_wait.cpp:507
 msgid "("
 msgstr "("
 
-#: src/multiplayer_connect.cpp:475 src/multiplayer_connect.cpp:604
+#: src/multiplayer_connect.cpp:476 src/multiplayer_connect.cpp:605
 #: src/multiplayer_wait.cpp:499 src/multiplayer_wait.cpp:510
 msgid ")"
 msgstr ")"
 
-#: src/multiplayer_connect.cpp:477 src/multiplayer_connect.cpp:606
+#: src/multiplayer_connect.cpp:478 src/multiplayer_connect.cpp:607
 #: src/multiplayer_wait.cpp:509
 msgid "+"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:638
+#: src/multiplayer_connect.cpp:639
 msgid "(Vacant slot)"
 msgstr "(Vakante gleuf)"
 
-#: src/multiplayer_connect.cpp:646
+#: src/multiplayer_connect.cpp:647
 msgid "Anonymous local player"
 msgstr "Anonieme plaaslike speler"
 
-#: src/multiplayer_connect.cpp:660 src/multiplayer_connect.cpp:1413
+#: src/multiplayer_connect.cpp:660 src/multiplayer_connect.cpp:1414
 msgid "Computer Player"
 msgstr "Rekenaar Speler"
 
@@ -8489,34 +8490,34 @@ msgstr "Die scenario is ongeldig want daar is geen kante nie."
 msgid "The scenario is invalid because it has no sides."
 msgstr "Die scenario is ongeldig want daar is geen kante nie."
 
-#: src/multiplayer_connect.cpp:1410
+#: src/multiplayer_connect.cpp:1411
 msgid "Network Player"
 msgstr "Netwerkspeler"
 
-#: src/multiplayer_connect.cpp:1412
+#: src/multiplayer_connect.cpp:1413
 msgid "Local Player"
 msgstr "Plaaslike Speler"
 
-#: src/multiplayer_connect.cpp:1414
+#: src/multiplayer_connect.cpp:1415
 msgid "Empty"
 msgstr "Leeg"
 
-#: src/multiplayer_connect.cpp:1559
+#: src/multiplayer_connect.cpp:1560
 msgid "Cannot find era $era"
 msgstr "Kan nie die $era|-era vind nie"
 
-#: src/multiplayer_connect.cpp:1582
+#: src/multiplayer_connect.cpp:1583
 msgid "Victory:"
 msgstr "Oorwinning:"
 
-#: src/multiplayer_connect.cpp:1584
+#: src/multiplayer_connect.cpp:1585
 #, fuzzy
 msgid "Defeat enemy leader(s)"
 msgstr ""
 "Oorwinning\n"
 "@Verslaan vyandige leier(s)"
 
-#: src/multiplayer_connect.cpp:1678
+#: src/multiplayer_connect.cpp:1679
 msgid "Waiting for players to join..."
 msgstr "Wag vir spelers om aan te sluit"
 
@@ -8851,12 +8852,12 @@ msgstr ""
 msgid "Downloading next scenario..."
 msgstr "Besig om die volgende vlak af te laai"
 
-#: src/playcampaign.cpp:601
+#: src/playcampaign.cpp:603
 #, fuzzy
 msgid "Do you want to save your game?"
 msgstr "Wil jy jou spel stoor?"
 
-#: src/playcampaign.cpp:620
+#: src/playcampaign.cpp:622
 #, fuzzy
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Onbekende scenario: '"
@@ -8947,15 +8948,15 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/playsingle_controller.cpp:412
+#: src/playsingle_controller.cpp:409
 msgid "Game Over"
 msgstr "Spel is Oor"
 
-#: src/playsingle_controller.cpp:413
+#: src/playsingle_controller.cpp:410
 msgid "The game is over."
 msgstr "Die spel is klaar."
 
-#: src/playsingle_controller.cpp:498
+#: src/playsingle_controller.cpp:495
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game\n"
@@ -8964,20 +8965,20 @@ msgstr ""
 "'n Netwerk-koppelprobleem het ontstaan en die spel kan nie voortgaan nie. "
 "Wil jy die spel stoor?"
 
-#: src/playsingle_controller.cpp:658
+#: src/playsingle_controller.cpp:655
 #, fuzzy
 msgid "It is now $name|'s turn"
 msgstr "Dis nou jou beurt"
 
-#: src/playsingle_controller.cpp:876
+#: src/playsingle_controller.cpp:873
 msgid "Scenario Report"
 msgstr "Scenarioverslag"
 
-#: src/playsingle_controller.cpp:878
+#: src/playsingle_controller.cpp:875
 msgid "Victory"
 msgstr "Oorwinning"
 
-#: src/playsingle_controller.cpp:879
+#: src/playsingle_controller.cpp:876
 msgid "You have emerged victorious!"
 msgstr "Jy het die oorwinning behaal!"
 
@@ -9354,38 +9355,38 @@ msgstr ""
 msgid "Unknown unit type '$type|'"
 msgstr ""
 
-#: src/unit.cpp:715
+#: src/unit.cpp:719
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr ""
 
-#: src/unit.cpp:2294 src/unit.cpp:2481 src/unit.cpp:2554
+#: src/unit.cpp:2298 src/unit.cpp:2485 src/unit.cpp:2558
 #, fuzzy
 msgid " and "
 msgstr "Sand"
 
-#: src/unit.cpp:2305
+#: src/unit.cpp:2309
 msgid "$attack_list|: $effect_description"
 msgstr ""
 
-#: src/unit.cpp:2370
+#: src/unit.cpp:2374
 #, fuzzy
 msgid "moves"
 msgstr "Skuiwe"
 
-#: src/unit.cpp:2388 src/unit.cpp:2508
+#: src/unit.cpp:2392 src/unit.cpp:2512
 msgid "XP to advance"
 msgstr "EP om te bevorder"
 
-#: src/unit.cpp:2500
+#: src/unit.cpp:2504
 #, fuzzy
 msgid " move"
 msgstr "Skuiwe"
 
-#: src/unit.cpp:2516
+#: src/unit.cpp:2520
 msgid "$effect_description per level"
 msgstr ""
 
-#: src/unit.cpp:2563
+#: src/unit.cpp:2567
 msgid "$trait_name|: $trait_description "
 msgstr ""
 

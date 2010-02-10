@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.1.1\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-02-08 11:33+0100\n"
+"POT-Creation-Date: 2010-02-10 17:39+0100\n"
 "PO-Revision-Date: 2009-04-05 10:50+0100\n"
 "Last-Translator: Gaute Storli Nielsen <gauteamus(at)gmail(dot)com>\n"
 "Language-Team: None\n"
@@ -6614,8 +6614,8 @@ msgstr "Scenario hos annen spiller"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:211 src/unit.cpp:2337
-#: src/unit.cpp:2493
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:211 src/unit.cpp:2341
+#: src/unit.cpp:2497
 msgid "HP"
 msgstr "HP"
 
@@ -7438,48 +7438,48 @@ msgstr "Feil under spill: "
 msgid "The game map could not be loaded: "
 msgstr "Kartet kunne ikke lastes: "
 
-#: src/game.cpp:1491
+#: src/game.cpp:1492
 #, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Følgende ekstra felttog hadde feil og kunne ikke lastes inn: "
 msgstr[1] "Følgende ekstra felttog hadde feil og kunne ikke lastes inn: "
 
-#: src/game.cpp:1498
+#: src/game.cpp:1499
 msgid "ERROR DETAILS:"
 msgstr "FEILRAPPORT:"
 
-#: src/game.cpp:1518
+#: src/game.cpp:1519
 msgid "Error loading game configuration files: '"
 msgstr "Feil ved lasting av konfigurasjonsfiler: '"
 
-#: src/game.cpp:1519
+#: src/game.cpp:1520
 msgid "' (The game will now exit)"
 msgstr "' (Spillet avsluttes)"
 
-#: src/game.cpp:1528
+#: src/game.cpp:1529
 #, fuzzy
 msgid "Loading data files"
 msgstr "Leser enhetsbeskrivelser."
 
-#: src/game.cpp:1959
+#: src/game.cpp:1960
 msgid "Loading game configuration."
 msgstr "Feil ved lasting av spillkonfigurasjon."
 
-#: src/game.cpp:1965
+#: src/game.cpp:1966
 msgid "Re-initialize fonts for the current language."
 msgstr "Installer skrift for gjeldende språk på nytt."
 
-#: src/game.cpp:1973
+#: src/game.cpp:1974
 #, fuzzy
 msgid "Searching for installed add-ons."
 msgstr "Sender spilltillegg"
 
-#: src/game.cpp:1982
+#: src/game.cpp:1983
 msgid "Loading title screen."
 msgstr "Laster hovedmeny."
 
-#: src/game_config.cpp:287
+#: src/game_config.cpp:286
 #, fuzzy
 msgid "Invalid color range: "
 msgstr "Ugyldig farge"
@@ -7502,7 +7502,7 @@ msgstr ""
 msgid "Info: "
 msgstr ""
 
-#: src/game_events.cpp:3300
+#: src/game_events.cpp:3299
 msgid "[unit_worth]'s filter didn't match any units!"
 msgstr ""
 
@@ -7621,6 +7621,58 @@ msgstr "Lyssky enheter: "
 #: src/generate_report.cpp:565
 msgid "Observers:"
 msgstr "Observatører:"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:204
+#, fuzzy
+msgid "Unknown era: $era_id"
+msgstr "Ukjent epoke"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:209
+msgid "Unknown era"
+msgstr "Ukjent epoke"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:264
+msgid "Remote scenario"
+msgstr "Scenario hos annen spiller"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:272
+#, fuzzy
+msgid "Unknown scenario: $scenario_id"
+msgstr "Ukjent scenario: '"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:277
+msgid "Unknown scenario"
+msgstr "Ukjent scenario"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:283
+#, fuzzy
+msgid "Reloaded game"
+msgstr "Fortsett et lagret spill"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:294
+#, fuzzy
+msgid "Turn "
+msgstr "Runde"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:298
+#, fuzzy
+msgid "Vacant Slot:"
+msgid_plural "Vacant Slots:"
+msgstr[0] "Ledig plass:"
+msgstr[1] "Ledig plass:"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:304
+msgid "Fog"
+msgstr "Stridsdis"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:307
+#: src/gui/dialogs/lobby/lobby_data.cpp:310 src/multiplayer_create.cpp:84
+msgid "Shroud"
+msgstr "Skodde"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:312
+msgid "none"
+msgstr "ingen"
 
 #: src/gui/dialogs/lobby_player_info.cpp:65
 #, fuzzy
@@ -7834,18 +7886,18 @@ msgid "System default language"
 msgstr "Systemstyrt språkvalg"
 
 #: src/leader_list.cpp:137 src/menu_events.cpp:1503
-#: src/multiplayer_connect.cpp:214 src/multiplayer_connect.cpp:266
+#: src/multiplayer_connect.cpp:215 src/multiplayer_connect.cpp:267
 #, fuzzy
 msgid "gender^Random"
 msgstr "Tilfeldig"
 
-#: src/leader_list.cpp:147 src/multiplayer_connect.cpp:210
-#: src/multiplayer_connect.cpp:262
+#: src/leader_list.cpp:147 src/multiplayer_connect.cpp:211
+#: src/multiplayer_connect.cpp:263
 msgid "Female ♀"
 msgstr ""
 
-#: src/leader_list.cpp:151 src/multiplayer_connect.cpp:212
-#: src/multiplayer_connect.cpp:264
+#: src/leader_list.cpp:151 src/multiplayer_connect.cpp:213
+#: src/multiplayer_connect.cpp:265
 msgid "Male ♂"
 msgstr ""
 
@@ -7871,57 +7923,6 @@ msgstr "Leser enhetsbeskrivelser."
 #, fuzzy
 msgid "Reading files and creating cache..."
 msgstr "Leser filer og lagrer midlertidig."
-
-#: src/lobby_data.cpp:204
-#, fuzzy
-msgid "Unknown era: $era_id"
-msgstr "Ukjent epoke"
-
-#: src/lobby_data.cpp:209
-msgid "Unknown era"
-msgstr "Ukjent epoke"
-
-#: src/lobby_data.cpp:264
-msgid "Remote scenario"
-msgstr "Scenario hos annen spiller"
-
-#: src/lobby_data.cpp:272
-#, fuzzy
-msgid "Unknown scenario: $scenario_id"
-msgstr "Ukjent scenario: '"
-
-#: src/lobby_data.cpp:277
-msgid "Unknown scenario"
-msgstr "Ukjent scenario"
-
-#: src/lobby_data.cpp:283
-#, fuzzy
-msgid "Reloaded game"
-msgstr "Fortsett et lagret spill"
-
-#: src/lobby_data.cpp:294
-#, fuzzy
-msgid "Turn "
-msgstr "Runde"
-
-#: src/lobby_data.cpp:298
-#, fuzzy
-msgid "Vacant Slot:"
-msgid_plural "Vacant Slots:"
-msgstr[0] "Ledig plass:"
-msgstr[1] "Ledig plass:"
-
-#: src/lobby_data.cpp:304
-msgid "Fog"
-msgstr "Stridsdis"
-
-#: src/lobby_data.cpp:307 src/lobby_data.cpp:310 src/multiplayer_create.cpp:84
-msgid "Shroud"
-msgstr "Skodde"
-
-#: src/lobby_data.cpp:312
-msgid "none"
-msgstr "ingen"
 
 #: src/map.cpp:163
 msgid "A map without a header is not supported"
@@ -8663,35 +8664,35 @@ msgstr ""
 msgid "The password you provided was incorrect."
 msgstr ""
 
-#: src/multiplayer_connect.cpp:89 src/multiplayer_connect.cpp:479
-#: src/multiplayer_connect.cpp:608
+#: src/multiplayer_connect.cpp:90 src/multiplayer_connect.cpp:480
+#: src/multiplayer_connect.cpp:609
 msgid "Normal"
 msgstr "Normal"
 
-#: src/multiplayer_connect.cpp:475 src/multiplayer_connect.cpp:604
+#: src/multiplayer_connect.cpp:476 src/multiplayer_connect.cpp:605
 #: src/multiplayer_wait.cpp:499 src/multiplayer_wait.cpp:507
 msgid "("
 msgstr "("
 
-#: src/multiplayer_connect.cpp:475 src/multiplayer_connect.cpp:604
+#: src/multiplayer_connect.cpp:476 src/multiplayer_connect.cpp:605
 #: src/multiplayer_wait.cpp:499 src/multiplayer_wait.cpp:510
 msgid ")"
 msgstr ")"
 
-#: src/multiplayer_connect.cpp:477 src/multiplayer_connect.cpp:606
+#: src/multiplayer_connect.cpp:478 src/multiplayer_connect.cpp:607
 #: src/multiplayer_wait.cpp:509
 msgid "+"
 msgstr "+"
 
-#: src/multiplayer_connect.cpp:638
+#: src/multiplayer_connect.cpp:639
 msgid "(Vacant slot)"
 msgstr "(Ledig plass)"
 
-#: src/multiplayer_connect.cpp:646
+#: src/multiplayer_connect.cpp:647
 msgid "Anonymous local player"
 msgstr "Lokal spiller"
 
-#: src/multiplayer_connect.cpp:660 src/multiplayer_connect.cpp:1413
+#: src/multiplayer_connect.cpp:660 src/multiplayer_connect.cpp:1414
 msgid "Computer Player"
 msgstr "Datastyrt spiller"
 
@@ -8765,34 +8766,34 @@ msgstr "Scenariet er ugyldig fordi det ikke har noen spillerplasser."
 msgid "The scenario is invalid because it has no sides."
 msgstr "Scenariet er ugyldig fordi det ikke har noen spillerplasser."
 
-#: src/multiplayer_connect.cpp:1410
+#: src/multiplayer_connect.cpp:1411
 msgid "Network Player"
 msgstr "Nettverksspiller"
 
-#: src/multiplayer_connect.cpp:1412
+#: src/multiplayer_connect.cpp:1413
 msgid "Local Player"
 msgstr "Lokal spiller"
 
-#: src/multiplayer_connect.cpp:1414
+#: src/multiplayer_connect.cpp:1415
 msgid "Empty"
 msgstr "Ingen spiller"
 
-#: src/multiplayer_connect.cpp:1559
+#: src/multiplayer_connect.cpp:1560
 msgid "Cannot find era $era"
 msgstr "Finner ikke epoke $era"
 
-#: src/multiplayer_connect.cpp:1582
+#: src/multiplayer_connect.cpp:1583
 msgid "Victory:"
 msgstr "Seier:"
 
-#: src/multiplayer_connect.cpp:1584
+#: src/multiplayer_connect.cpp:1585
 #, fuzzy
 msgid "Defeat enemy leader(s)"
 msgstr ""
 "Seier:\n"
 "@Overvinn fiendens leder(e)"
 
-#: src/multiplayer_connect.cpp:1678
+#: src/multiplayer_connect.cpp:1679
 msgid "Waiting for players to join..."
 msgstr "Venter på at spillere skal bli med..."
 
@@ -9124,12 +9125,12 @@ msgstr ""
 msgid "Downloading next scenario..."
 msgstr "Laster ned neste brett..."
 
-#: src/playcampaign.cpp:601
+#: src/playcampaign.cpp:603
 #, fuzzy
 msgid "Do you want to save your game?"
 msgstr "Hoppe over opptak av spillet?"
 
-#: src/playcampaign.cpp:620
+#: src/playcampaign.cpp:622
 #, fuzzy
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Ukjent scenario: '"
@@ -9220,15 +9221,15 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/playsingle_controller.cpp:412
+#: src/playsingle_controller.cpp:409
 msgid "Game Over"
 msgstr "Spillet er slutt"
 
-#: src/playsingle_controller.cpp:413
+#: src/playsingle_controller.cpp:410
 msgid "The game is over."
 msgstr "Spillet er slutt."
 
-#: src/playsingle_controller.cpp:498
+#: src/playsingle_controller.cpp:495
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game\n"
@@ -9237,20 +9238,20 @@ msgstr ""
 "Det har skjedd en frakobling fra nettverket, og spillet kan ikke fortsette. "
 "Vil du lagre spillet?"
 
-#: src/playsingle_controller.cpp:658
+#: src/playsingle_controller.cpp:655
 #, fuzzy
 msgid "It is now $name|'s turn"
 msgstr "Det er din tur"
 
-#: src/playsingle_controller.cpp:876
+#: src/playsingle_controller.cpp:873
 msgid "Scenario Report"
 msgstr "Scenariorapport"
 
-#: src/playsingle_controller.cpp:878
+#: src/playsingle_controller.cpp:875
 msgid "Victory"
 msgstr "Seier"
 
-#: src/playsingle_controller.cpp:879
+#: src/playsingle_controller.cpp:876
 msgid "You have emerged victorious!"
 msgstr "Du har seiret!"
 
@@ -9625,38 +9626,38 @@ msgstr ""
 msgid "Unknown unit type '$type|'"
 msgstr ""
 
-#: src/unit.cpp:715
+#: src/unit.cpp:719
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr ""
 
-#: src/unit.cpp:2294 src/unit.cpp:2481 src/unit.cpp:2554
+#: src/unit.cpp:2298 src/unit.cpp:2485 src/unit.cpp:2558
 #, fuzzy
 msgid " and "
 msgstr "Sand"
 
-#: src/unit.cpp:2305
+#: src/unit.cpp:2309
 msgid "$attack_list|: $effect_description"
 msgstr ""
 
-#: src/unit.cpp:2370
+#: src/unit.cpp:2374
 #, fuzzy
 msgid "moves"
 msgstr "Flytt"
 
-#: src/unit.cpp:2388 src/unit.cpp:2508
+#: src/unit.cpp:2392 src/unit.cpp:2512
 msgid "XP to advance"
 msgstr "XP til forfremmelse"
 
-#: src/unit.cpp:2500
+#: src/unit.cpp:2504
 #, fuzzy
 msgid " move"
 msgstr "Flytt"
 
-#: src/unit.cpp:2516
+#: src/unit.cpp:2520
 msgid "$effect_description per level"
 msgstr ""
 
-#: src/unit.cpp:2563
+#: src/unit.cpp:2567
 msgid "$trait_name|: $trait_description "
 msgstr ""
 

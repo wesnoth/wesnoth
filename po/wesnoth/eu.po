@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-02-08 11:33+0100\n"
+"POT-Creation-Date: 2010-02-10 17:39+0100\n"
 "PO-Revision-Date: 2005-08-23 11:08+0100\n"
 "Last-Translator: Alfredo Beaumont <ziberpunk@ziberghetto.dhis.org>\n"
 "Language-Team: Basque <ziberpunk@ziberghetto.dhis.org>\n"
@@ -5600,8 +5600,8 @@ msgstr "Guda leku ezezaguna: '"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:211 src/unit.cpp:2337
-#: src/unit.cpp:2493
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:211 src/unit.cpp:2341
+#: src/unit.cpp:2497
 msgid "HP"
 msgstr "BP"
 
@@ -6444,48 +6444,48 @@ msgstr "Errorea jokuan jolasterakoan:"
 msgid "The game map could not be loaded: "
 msgstr "Ezin izan da joku mapa kargatu: "
 
-#: src/game.cpp:1491
+#: src/game.cpp:1492
 #, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Ezin izan da joku mapa kargatu: "
 msgstr[1] "Ezin izan da joku mapa kargatu: "
 
-#: src/game.cpp:1498
+#: src/game.cpp:1499
 msgid "ERROR DETAILS:"
 msgstr "OKERRAREN XEHETASUNAK:"
 
-#: src/game.cpp:1518
+#: src/game.cpp:1519
 msgid "Error loading game configuration files: '"
 msgstr "Errorea jokuaren konfigurazio fitxategiak kargatzen: '"
 
-#: src/game.cpp:1519
+#: src/game.cpp:1520
 msgid "' (The game will now exit)"
 msgstr "' (Jokua orain irten egingo da)"
 
-#: src/game.cpp:1528
+#: src/game.cpp:1529
 msgid "Loading data files"
 msgstr ""
 
-#: src/game.cpp:1959
+#: src/game.cpp:1960
 #, fuzzy
 msgid "Loading game configuration."
 msgstr "Errorea jokuaren konfigurazio fitxategiak kargatzen: '"
 
-#: src/game.cpp:1965
+#: src/game.cpp:1966
 msgid "Re-initialize fonts for the current language."
 msgstr ""
 
-#: src/game.cpp:1973
+#: src/game.cpp:1974
 #, fuzzy
 msgid "Searching for installed add-ons."
 msgstr "Kanpaina jeisten..."
 
-#: src/game.cpp:1982
+#: src/game.cpp:1983
 msgid "Loading title screen."
 msgstr ""
 
-#: src/game_config.cpp:287
+#: src/game_config.cpp:286
 #, fuzzy
 msgid "Invalid color range: "
 msgstr "Baliogabeko kolorea"
@@ -6508,7 +6508,7 @@ msgstr ""
 msgid "Info: "
 msgstr ""
 
-#: src/game_events.cpp:3300
+#: src/game_events.cpp:3299
 msgid "[unit_worth]'s filter didn't match any units!"
 msgstr ""
 
@@ -6624,6 +6624,61 @@ msgstr "Unitate kaotikoak:"
 #: src/generate_report.cpp:565
 msgid "Observers:"
 msgstr "Ikusleak:"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:204
+#, fuzzy
+msgid "Unknown era: $era_id"
+msgstr "Guda leku ezezaguna: '"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:209
+#, fuzzy
+msgid "Unknown era"
+msgstr "Guda leku ezezaguna: '"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:264
+#, fuzzy
+msgid "Remote scenario"
+msgstr "Guda leku ezezaguna: '"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:272
+#, fuzzy
+msgid "Unknown scenario: $scenario_id"
+msgstr "Guda leku ezezaguna: '"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:277
+#, fuzzy
+msgid "Unknown scenario"
+msgstr "Guda leku ezezaguna: '"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:283
+#, fuzzy
+msgid "Reloaded game"
+msgstr "Kargatu jokalari bakarreko gordetako jokua"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:294
+#, fuzzy
+msgid "Turn "
+msgstr "Txanda"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:298
+#, fuzzy
+msgid "Vacant Slot:"
+msgid_plural "Vacant Slots:"
+msgstr[0] "(Erreten hutsa)"
+msgstr[1] "(Erreten hutsa)"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:304
+msgid "Fog"
+msgstr "Behelaino"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:307
+#: src/gui/dialogs/lobby/lobby_data.cpp:310 src/multiplayer_create.cpp:84
+msgid "Shroud"
+msgstr "Ezkutua"
+
+#: src/gui/dialogs/lobby/lobby_data.cpp:312
+msgid "none"
+msgstr "bat ere ez"
 
 #: src/gui/dialogs/lobby_player_info.cpp:65
 #, fuzzy
@@ -6840,18 +6895,18 @@ msgid "System default language"
 msgstr "Sistemako lehenetsitako hizkuntza"
 
 #: src/leader_list.cpp:137 src/menu_events.cpp:1503
-#: src/multiplayer_connect.cpp:214 src/multiplayer_connect.cpp:266
+#: src/multiplayer_connect.cpp:215 src/multiplayer_connect.cpp:267
 #, fuzzy
 msgid "gender^Random"
 msgstr "Ausazkoa"
 
-#: src/leader_list.cpp:147 src/multiplayer_connect.cpp:210
-#: src/multiplayer_connect.cpp:262
+#: src/leader_list.cpp:147 src/multiplayer_connect.cpp:211
+#: src/multiplayer_connect.cpp:263
 msgid "Female ♀"
 msgstr ""
 
-#: src/leader_list.cpp:151 src/multiplayer_connect.cpp:212
-#: src/multiplayer_connect.cpp:264
+#: src/leader_list.cpp:151 src/multiplayer_connect.cpp:213
+#: src/multiplayer_connect.cpp:265
 msgid "Male ♂"
 msgstr ""
 
@@ -6875,60 +6930,6 @@ msgstr "Zerbitzarira konektatzen..."
 #: src/loadscreen.cpp:280
 msgid "Reading files and creating cache..."
 msgstr ""
-
-#: src/lobby_data.cpp:204
-#, fuzzy
-msgid "Unknown era: $era_id"
-msgstr "Guda leku ezezaguna: '"
-
-#: src/lobby_data.cpp:209
-#, fuzzy
-msgid "Unknown era"
-msgstr "Guda leku ezezaguna: '"
-
-#: src/lobby_data.cpp:264
-#, fuzzy
-msgid "Remote scenario"
-msgstr "Guda leku ezezaguna: '"
-
-#: src/lobby_data.cpp:272
-#, fuzzy
-msgid "Unknown scenario: $scenario_id"
-msgstr "Guda leku ezezaguna: '"
-
-#: src/lobby_data.cpp:277
-#, fuzzy
-msgid "Unknown scenario"
-msgstr "Guda leku ezezaguna: '"
-
-#: src/lobby_data.cpp:283
-#, fuzzy
-msgid "Reloaded game"
-msgstr "Kargatu jokalari bakarreko gordetako jokua"
-
-#: src/lobby_data.cpp:294
-#, fuzzy
-msgid "Turn "
-msgstr "Txanda"
-
-#: src/lobby_data.cpp:298
-#, fuzzy
-msgid "Vacant Slot:"
-msgid_plural "Vacant Slots:"
-msgstr[0] "(Erreten hutsa)"
-msgstr[1] "(Erreten hutsa)"
-
-#: src/lobby_data.cpp:304
-msgid "Fog"
-msgstr "Behelaino"
-
-#: src/lobby_data.cpp:307 src/lobby_data.cpp:310 src/multiplayer_create.cpp:84
-msgid "Shroud"
-msgstr "Ezkutua"
-
-#: src/lobby_data.cpp:312
-msgid "none"
-msgstr "bat ere ez"
 
 #: src/map.cpp:163
 msgid "A map without a header is not supported"
@@ -7640,36 +7641,36 @@ msgstr ""
 msgid "The password you provided was incorrect."
 msgstr ""
 
-#: src/multiplayer_connect.cpp:89 src/multiplayer_connect.cpp:479
-#: src/multiplayer_connect.cpp:608
+#: src/multiplayer_connect.cpp:90 src/multiplayer_connect.cpp:480
+#: src/multiplayer_connect.cpp:609
 msgid "Normal"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:475 src/multiplayer_connect.cpp:604
+#: src/multiplayer_connect.cpp:476 src/multiplayer_connect.cpp:605
 #: src/multiplayer_wait.cpp:499 src/multiplayer_wait.cpp:507
 msgid "("
 msgstr "("
 
-#: src/multiplayer_connect.cpp:475 src/multiplayer_connect.cpp:604
+#: src/multiplayer_connect.cpp:476 src/multiplayer_connect.cpp:605
 #: src/multiplayer_wait.cpp:499 src/multiplayer_wait.cpp:510
 msgid ")"
 msgstr ")"
 
-#: src/multiplayer_connect.cpp:477 src/multiplayer_connect.cpp:606
+#: src/multiplayer_connect.cpp:478 src/multiplayer_connect.cpp:607
 #: src/multiplayer_wait.cpp:509
 msgid "+"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:638
+#: src/multiplayer_connect.cpp:639
 #, fuzzy
 msgid "(Vacant slot)"
 msgstr "(Erreten hutsa)"
 
-#: src/multiplayer_connect.cpp:646
+#: src/multiplayer_connect.cpp:647
 msgid "Anonymous local player"
 msgstr "Jokalari lokal anonimoa"
 
-#: src/multiplayer_connect.cpp:660 src/multiplayer_connect.cpp:1413
+#: src/multiplayer_connect.cpp:660 src/multiplayer_connect.cpp:1414
 msgid "Computer Player"
 msgstr "Ordenagailuko jokalaria"
 
@@ -7741,34 +7742,34 @@ msgstr ""
 msgid "The scenario is invalid because it has no sides."
 msgstr ""
 
-#: src/multiplayer_connect.cpp:1410
+#: src/multiplayer_connect.cpp:1411
 msgid "Network Player"
 msgstr "Sareko jokalaria"
 
-#: src/multiplayer_connect.cpp:1412
+#: src/multiplayer_connect.cpp:1413
 msgid "Local Player"
 msgstr "Jokalari lokala"
 
-#: src/multiplayer_connect.cpp:1414
+#: src/multiplayer_connect.cpp:1415
 msgid "Empty"
 msgstr "Hutsa"
 
-#: src/multiplayer_connect.cpp:1559
+#: src/multiplayer_connect.cpp:1560
 msgid "Cannot find era $era"
 msgstr "Ezin izan da $era garaia aurkitu"
 
-#: src/multiplayer_connect.cpp:1582
+#: src/multiplayer_connect.cpp:1583
 msgid "Victory:"
 msgstr "Garaipena:"
 
-#: src/multiplayer_connect.cpp:1584
+#: src/multiplayer_connect.cpp:1585
 #, fuzzy
 msgid "Defeat enemy leader(s)"
 msgstr ""
 "Garaipena\n"
 "@Arerioen nagusia(k) gainditu"
 
-#: src/multiplayer_connect.cpp:1678
+#: src/multiplayer_connect.cpp:1679
 msgid "Waiting for players to join..."
 msgstr "Jokalariak sartu zai..."
 
@@ -8106,12 +8107,12 @@ msgstr ""
 msgid "Downloading next scenario..."
 msgstr "Hurrengo maila jeisten..."
 
-#: src/playcampaign.cpp:601
+#: src/playcampaign.cpp:603
 #, fuzzy
 msgid "Do you want to save your game?"
 msgstr "Zure jokua gorde nahi duzu?"
 
-#: src/playcampaign.cpp:620
+#: src/playcampaign.cpp:622
 #, fuzzy
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Guda leku ezezaguna: '"
@@ -8203,15 +8204,15 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/playsingle_controller.cpp:412
+#: src/playsingle_controller.cpp:409
 msgid "Game Over"
 msgstr "Jokua bukatu da"
 
-#: src/playsingle_controller.cpp:413
+#: src/playsingle_controller.cpp:410
 msgid "The game is over."
 msgstr "Jokua bukatu da."
 
-#: src/playsingle_controller.cpp:498
+#: src/playsingle_controller.cpp:495
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game\n"
@@ -8220,20 +8221,20 @@ msgstr ""
 "Sareko deskonexio bat gertatu da, eta jokuak ezin du jarraitu. Jokua gorde "
 "nahi duzu?"
 
-#: src/playsingle_controller.cpp:658
+#: src/playsingle_controller.cpp:655
 #, fuzzy
 msgid "It is now $name|'s turn"
 msgstr "Zure txanda"
 
-#: src/playsingle_controller.cpp:876
+#: src/playsingle_controller.cpp:873
 msgid "Scenario Report"
 msgstr "Gudagunearen txostena"
 
-#: src/playsingle_controller.cpp:878
+#: src/playsingle_controller.cpp:875
 msgid "Victory"
 msgstr "Garaipena!"
 
-#: src/playsingle_controller.cpp:879
+#: src/playsingle_controller.cpp:876
 msgid "You have emerged victorious!"
 msgstr "Garaile irten zara gudatik!"
 
@@ -8603,38 +8604,38 @@ msgstr ""
 msgid "Unknown unit type '$type|'"
 msgstr ""
 
-#: src/unit.cpp:715
+#: src/unit.cpp:719
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr ""
 
-#: src/unit.cpp:2294 src/unit.cpp:2481 src/unit.cpp:2554
+#: src/unit.cpp:2298 src/unit.cpp:2485 src/unit.cpp:2558
 #, fuzzy
 msgid " and "
 msgstr "Hondarra"
 
-#: src/unit.cpp:2305
+#: src/unit.cpp:2309
 msgid "$attack_list|: $effect_description"
 msgstr ""
 
-#: src/unit.cpp:2370
+#: src/unit.cpp:2374
 #, fuzzy
 msgid "moves"
 msgstr "Mugimenduak"
 
-#: src/unit.cpp:2388 src/unit.cpp:2508
+#: src/unit.cpp:2392 src/unit.cpp:2512
 msgid "XP to advance"
 msgstr "Aurreratzeko EP"
 
-#: src/unit.cpp:2500
+#: src/unit.cpp:2504
 #, fuzzy
 msgid " move"
 msgstr "Mugimenduak"
 
-#: src/unit.cpp:2516
+#: src/unit.cpp:2520
 msgid "$effect_description per level"
 msgstr ""
 
-#: src/unit.cpp:2563
+#: src/unit.cpp:2567
 msgid "$trait_name|: $trait_description "
 msgstr ""
 
