@@ -193,6 +193,7 @@ public:
 	}
 
 	team_info::CONTROLLER controller() const { return info_.controller; }
+	const std::string& colour() const { return info_.colour; }
 	bool is_human() const { return info_.controller == team_info::HUMAN; }
 	bool is_human_ai() const { return info_.controller == team_info::HUMAN_AI; }
 	bool is_network_human() const { return info_.controller == team_info::NETWORK; }

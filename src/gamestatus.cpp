@@ -220,6 +220,7 @@ void write_players(game_state& gamestate, config& cfg, const bool use_snapshot, 
 						(*scenario_side)["previous_recruits"]	= (*carryover_side)["can_recruit"];
 					}
 					(*scenario_side)["name"] = (*carryover_side)["name"];
+					(*scenario_side)["colour"] = (*carryover_side)["colour"];
 					//add recallable units
 					foreach (const config* u, carryover_side->get_children("unit")) {
 						scenario_side->add_child("unit", *u);
@@ -592,7 +593,6 @@ public:
 		: gold_info_ngold_(0)
 		, gold_info_add_(false)
 		, leader_cfg_()
-		, leader_pos_()
 		, level_(level)
 		, map_(map)
 		, player_cfg_(NULL)
@@ -602,7 +602,6 @@ public:
 		, side_(0)
 		, side_cfg_(side_cfg)
 		, snapshot_(snapshot)
-		, start_pos_()
 		, starting_pos_(starting_pos)
 		, t_(NULL)
 		, teams_(teams)
@@ -648,7 +647,6 @@ protected:
 	int gold_info_ngold_;
 	bool gold_info_add_;
 	config leader_cfg_;
-	map_location leader_pos_;
 	const config &level_;
 	gamemap &map_;
 	const config *player_cfg_;
@@ -658,7 +656,6 @@ protected:
 	int side_;
 	const config &side_cfg_;
 	bool snapshot_;
-	map_location start_pos_;
 	const config &starting_pos_;
 	team *t_;
 	std::vector<team> &teams_;
@@ -719,9 +716,7 @@ protected:
 		DBG_NG_TC << "player_exists: "<< (player_exists_ ? "true" : "false") <<std::endl;
 
 		unit_configs_.clear();
-		start_pos_= map_location::null_location;
 		seen_ids_.clear();
-		leader_pos_= map_location::null_location;
 		leader_cfg_ = config();
 
 	}
@@ -862,17 +857,18 @@ protected:
 		// there was a hack: if this side tag describes the leader of the side,
 		// we may replace the leader with someone from recall list who can recruit, but take positioning from [side]
 		// this hack shall be removed, since it messes up with 'multiple leaders'
-
+		
 		// If this side tag describes the leader of the side
 		if(!utils::string_bool(side_cfg_["no_leader"]) && side_cfg_["controller"] != "null") {
-			// we must ensure that the 1st unit has 'canrecruit=yes'
 			leader_cfg_ = side_cfg_;
-			if (!leader_cfg_.has_attribute("canrecruit")) {
+
+			if (!leader_cfg_.has_attribute("canrecruit")){
 				leader_cfg_["canrecruit"] = "yes";
 			}
-			if (!leader_cfg_.has_attribute("placement")) {
+			if (!leader_cfg_.has_attribute("placement")){
 				leader_cfg_["placement"] = "map,leader";
 			}
+
 			handle_unit(leader_cfg_,"leader_cfg");
 		} else {
 			leader_cfg_ = config();
