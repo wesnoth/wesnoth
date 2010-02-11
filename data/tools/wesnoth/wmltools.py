@@ -157,7 +157,7 @@ def formaltype(f):
         ftype = "alignment"
     elif f in ("TERRAIN",):
         ftype = "terrain_code"
-    elif f in ("NAME", "VAR", "IMAGESTEM", "ID") or f.endswith("_NAME"):
+    elif f in ("NAME", "VAR", "IMAGESTEM", "ID", "FLAG") or f.endswith("_NAME") or f.endswith("_ID"):
         ftype = "name"
     elif f in ("ID_STRING", "NAME_STRING", "DESCRIPTION"):
         ftype = "optional_string"
