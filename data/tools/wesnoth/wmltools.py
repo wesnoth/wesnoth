@@ -145,12 +145,14 @@ def formaltype(f):
     # Deduce the expected type of the formal
     if f.startswith("_"):
         f = f[1:]
-    if f in ("SIDE", "X", "Y", "RED", "GREEN", "BLUE", "TURN", "RADIUS", "PROB", "LAYER") or f.endswith("NUMBER") or f.endswith("AMOUNT") or f.endswith("COST") or f.endswith("_X") or f.endswith("_Y") or f.endswith("_INCREMENT") or f.endswith("_FACTOR"):
+    if f in ("SIDE", "X", "Y", "RED", "GREEN", "BLUE", "TURN", "RADIUS", "PROB", "LAYER") or f.endswith("_SIDE") or f.endswith("NUMBER") or f.endswith("AMOUNT") or f.endswith("COST") or f.endswith("_X") or f.endswith("_Y") or f.endswith("_INCREMENT") or f.endswith("_FACTOR"):
         ftype = "numeric"
-    elif f in ("POSITION",):
+    elif f in ("POSITION",) or f.endswith("_POSITION"):
         ftype = "position"
-    elif f.endswith("_SPAN") or f == "SIDES":
+    elif f.endswith("_SPAN"):
         ftype = "span"
+    elif f == "SIDES" or f.endswith("_SIDES"):
+        ftype = "alliance"
     elif f in ("RANGE",):
         ftype = "range"
     elif f in ("ALIGN",):
@@ -185,7 +187,7 @@ def actualtype(a):
     # Deduce the type of the actual
     if a.isdigit() or a.startswith("-") and a[1:].isdigit():
         atype = "numeric"
-    elif re.match(r"[0-9]+,[0-9]+\Z", a):
+    elif re.match(r"-?[0-9]+,-?[0-9]+\Z", a):
         atype = "position"
     elif re.match(r"([0-9]+\-[0-9]+,?|[0-9]+,?)+\Z", a):
         atype = "span"
@@ -238,6 +240,8 @@ def argmatch(formals, actuals):
         elif atype in ("shortname", "name", "string", "stringliteral", "empty") and ftype == "optional_string":
             pass
         elif atype in ("shortname",) and ftype == "terrain_code":
+            pass
+        elif atype in ("numeric", "position", "span", "empty") and ftype == "alliance":
             pass
         elif atype != ftype and ftype is not None and atype is not None:
             return False
