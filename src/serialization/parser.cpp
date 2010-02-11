@@ -411,6 +411,8 @@ void write_key_val(std::ostream &out, const std::string &key, const t_string &va
 {
 	bool first = true;
 	if (value.empty()) {
+		out << std::string(level, '\t') << key << AttributeEquals
+			<< AttributeEndPostfix;;
 		return;
 	}
 
