@@ -173,7 +173,7 @@ def formaltype(f):
         ftype = "filter"
     elif f == "WML" or f.endswith("_WML"):
         ftype = "wml"
-    elif f in ("AFFIX",):
+    elif f in ("AFFIX",) or f.endswith("AFFIX"):
         ftype = "affix"
     elif f.endswith("VALUE"):
         ftype = "any"
