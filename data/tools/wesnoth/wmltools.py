@@ -147,7 +147,7 @@ def formaltype(f):
         f = f[1:]
     if f in ("SIDE", "X", "Y", "RED", "GREEN", "BLUE", "TURN", "RADIUS", "PROB", "LAYER", "TIME") or f.endswith("_SIDE") or f.endswith("NUMBER") or f.endswith("AMOUNT") or f.endswith("COST") or f.endswith("_X") or f.endswith("_Y") or f.endswith("_INCREMENT") or f.endswith("_FACTOR") or f.endswith("_TIME"):
         ftype = "numeric"
-    elif f in ("POSITION",) or f.endswith("_POSITION"):
+    elif f in ("POSITION",) or f.endswith("_POSITION") or f == "BASE":
         ftype = "position"
     elif f.endswith("_SPAN"):
         ftype = "span"
