@@ -211,6 +211,7 @@ const surface tminimap::get_image(const int w, const int h) const
 
 void tminimap::impl_draw_background(surface& frame_buffer)
 {
+	if (!terrain_) return;
 	assert(terrain_);
 
 	DBG_GUI_D << LOG_HEADER
