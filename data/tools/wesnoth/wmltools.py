@@ -159,7 +159,7 @@ def formaltype(f):
         ftype = "alignment"
     elif f == "TERRAIN":
         ftype = "terrain_code"
-    elif f.startswith("ADJACENT") or f in ("TERRAIN_PATTERN"):
+    elif f.startswith("ADJACENT") or f.startswith("TERRAINLIST") or f == "TERRAIN_PATTERN":
         ftype = "terrain_pattern"
     elif f in ("NAME", "VAR", "IMAGESTEM", "ID", "FLAG") or f.endswith("_NAME") or f.endswith("_ID"):
         ftype = "name"
@@ -205,7 +205,7 @@ def actualtype(a):
         atype = "terrain_code"
     elif a.endswith(".wav") or a.endswith(".ogg"):
         atype = "sound"
-    elif a.startswith('"') and a.endswith('"') or a.startswith("_"):
+    elif a.startswith('"') and a.endswith('"') or (a.startswith("_") and a != '_s'):
         atype = "stringliteral"
     elif "=" in a:
         atype = "filter"
