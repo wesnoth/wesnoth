@@ -40,7 +40,8 @@ namespace game_config
 	int rest_heal_amount= 2;
 	int recall_cost = 20;
 	int kill_experience = 8;
-	unsigned lobby_refresh = 2000;
+	unsigned lobby_network_timer = 100;
+	unsigned lobby_refresh = 4000;
 	const int gold_carryover_percentage = 80;
 	const std::string version = VERSION;
 #ifdef REVISION

@@ -151,7 +151,13 @@ bool lobby_info::process_gamelist_diff(const config &data)
 			if (current_i == games_by_id_.end()) {
 				WRN_LB << "Would have to delete a game that I don't have: " << game_id << "\n";
 			} else {
-				current_i->second->display_status = game_info::DELETED;
+				if (current_i->second->display_status == game_info::NEW) {
+					//this means the game never made it through to the user interface
+					//so just deleting it is fine
+					games_by_id_.erase(current_i);
+				} else {
+					current_i->second->display_status = game_info::DELETED;
+				}
 			}
 		}
 	}

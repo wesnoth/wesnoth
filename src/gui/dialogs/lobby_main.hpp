@@ -379,6 +379,12 @@ private:
 
 	bool player_list_dirty_;
 
+	bool gamelist_dirty_;
+
+	unsigned last_gamelist_update_;
+
+	bool gamelist_diff_update_;
+
 	display& disp_;
 
 	/** Timer for updating the lobby. */

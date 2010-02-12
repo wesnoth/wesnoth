@@ -390,6 +390,9 @@ tlobby_main::tlobby_main(const config& game_config
 	, selected_game_id_()
 	, player_list_()
 	, player_list_dirty_(false)
+	, gamelist_dirty_(false)
+	, last_gamelist_update_(0)
+	, gamelist_diff_update_(false)
 	, disp_(disp)
 	, lobby_update_timer_(0)
 	, preferences_wrapper_()
@@ -588,6 +591,9 @@ void tlobby_main::update_gamelist()
 		gamelistbox_->select_row(select_row);
 	}
 	update_selected_game();
+	gamelist_dirty_ = false;
+	last_gamelist_update_ = SDL_GetTicks();
+	lobby_info_.sync_games_display_status();
 }
 
 void tlobby_main::update_gamelist_diff()
@@ -662,6 +668,9 @@ void tlobby_main::update_gamelist_diff()
 		gamelistbox_->select_row(select_row);
 	}
 	update_selected_game();
+	gamelist_dirty_ = false;
+	last_gamelist_update_ = SDL_GetTicks();
+	lobby_info_.sync_games_display_status();
 }
 
 void tlobby_main::update_gamelist_header()
@@ -1010,7 +1019,7 @@ void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
 
 	// Force first update to be directly.
 	tlobby_main::network_handler();
-	lobby_update_timer_ = add_timer(game_config::lobby_refresh
+	lobby_update_timer_ = add_timer(game_config::lobby_network_timer
 			, boost::bind(&tlobby_main::network_handler, this)
 			, true);
 }
@@ -1265,6 +1274,13 @@ void tlobby_main::close_window(size_t idx)
 
 void tlobby_main::network_handler()
 {
+	if (gamelist_dirty_ && (SDL_GetTicks() - last_gamelist_update_ > game_config::lobby_refresh)) {
+		if (gamelist_diff_update_) {
+			update_gamelist_diff();
+		} else {
+			update_gamelist();
+		}
+	}
 	if (player_list_dirty_) {
 		update_gamelist_filter();
 		update_playerlist();
@@ -1348,59 +1364,30 @@ void tlobby_main::process_message(const config &data, bool whisper /*= false*/)
 void tlobby_main::process_gamelist(const config &data)
 {
 	lobby_info_.process_gamelist(data);
-	update_gamelist();
-	lobby_info_.sync_games_display_status();
+	DBG_LB << "Received gamelist\n";
+	gamelist_dirty_ = true;
+	gamelist_diff_update_ = false;
+	//update_gamelist();
+	//lobby_info_.sync_games_display_status();
 }
 
 void tlobby_main::process_gamelist_diff(const config &data)
 {
-	if(!new_widgets) {
-		// Copy pasted from the part below, we should call invalidate layout
-		// when needed.
-		if (lobby_info_.process_gamelist_diff(data)) {
-			update_gamelist_diff();
-			lobby_info_.sync_games_display_status();
-		}
-		int joined = data.child_count("insert_child");
-		int left = data.child_count("remove_child");
-		if (joined > 0 || left > 0) {
-			if (left > joined) {
-				do_notify(NOTIFY_LOBBY_QUIT);
-			} else {
-				do_notify(NOTIFY_LOBBY_JOIN);
-			}
-		}
+	if (lobby_info_.process_gamelist_diff(data)) {
+		DBG_LB << "Received gamelist diff\n";
+		gamelist_dirty_ = true;
+		gamelist_diff_update_ = true;
 	} else {
-		assert(window_);
-		twindow::tinvalidate_layout_blocker blocker(*window_);
-
-		if (lobby_info_.process_gamelist_diff(data)) {
-			update_gamelist_diff();
-			lobby_info_.sync_games_display_status();
-		}
-		int joined = data.child_count("insert_child");
-		int left = data.child_count("remove_child");
-		if (joined > 0 || left > 0) {
-			if (left > joined) {
-				do_notify(NOTIFY_LOBBY_QUIT);
-			} else {
-				do_notify(NOTIFY_LOBBY_JOIN);
-			}
-		}
+		ERR_LB << "process_gamelist_diff failed!\n";
 	}
-
-	/*
-	 * As long as the layout is valid update all listboxes; if
-	 * update_content_size() returns false the layout is invalidated. If
-	 * invalidated the trying to size the other listboxes is a waste of
-	 * effort, since they will be requested for a layout phase anyway.
-	 */
-	if(!window_->get_need_layout()) {
-		player_list_.active_game.list->update_content_size()
-				&& player_list_.active_room.list->update_content_size()
-				&& player_list_.other_rooms.list->update_content_size()
-				&& player_list_.other_games.list->update_content_size()
-				&& gamelistbox_->update_content_size();
+	int joined = data.child_count("insert_child");
+	int left = data.child_count("remove_child");
+	if (joined > 0 || left > 0) {
+		if (left > joined) {
+			do_notify(NOTIFY_LOBBY_QUIT);
+		} else {
+			do_notify(NOTIFY_LOBBY_JOIN);
+		}
 	}
 }
 
