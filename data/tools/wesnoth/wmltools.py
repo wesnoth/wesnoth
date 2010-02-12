@@ -157,8 +157,10 @@ def formaltype(f):
         ftype = "range"
     elif f in ("ALIGN",):
         ftype = "alignment"
-    elif f in ("TERRAIN",):
+    elif f == "TERRAIN":
         ftype = "terrain_code"
+    elif f.startswith("ADJACENT") or f in ("TERRAIN_PATTERN"):
+        ftype = "terrain_pattern"
     elif f in ("NAME", "VAR", "IMAGESTEM", "ID", "FLAG") or f.endswith("_NAME") or f.endswith("_ID"):
         ftype = "name"
     elif f in ("ID_STRING", "NAME_STRING", "DESCRIPTION"):
@@ -242,6 +244,8 @@ def argmatch(formals, actuals):
         elif atype in ("shortname",) and ftype == "terrain_code":
             pass
         elif atype in ("numeric", "position", "span", "empty") and ftype == "alliance":
+            pass
+        elif atype in ("terrain_code", "shortname", "name") and ftype == "terrain_pattern":
             pass
         elif atype != ftype and ftype is not None and atype is not None:
             return False
