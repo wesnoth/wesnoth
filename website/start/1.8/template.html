@@ -28,7 +28,7 @@
 
 <h1>Battle for Wesnoth 1.8 Release Notes</h1>
 
-<p><em>Christmas, 2009</em>. It is once again time for that thrill
+<p>It is once again time for that thrill
 you've all been waiting for, a Wesnoth stable release. The Battle for
 Wesnoth team is proud to release version 1.8 of <em>The Battle for
 Wesnoth</em>, a <a
@@ -68,10 +68,11 @@ game's AI.</p>
 
 <h3 id='players'>For Players</h3>
 
-<p>To help the player keeping those who are loyal to him alive, this units
+<p>To help the player keep those who are loyal to him alive, this units
 are now marked with an overlay symbol that looks like a bronze ring.</p>
 
-<p>The names on maps and other images are now localized to the players language.</p>
+<p>The names on maps and other images are now localized to the
+player's language.</p>
 
 <h4 id='campaigns'>Campaigns</h4>
 
@@ -104,8 +105,8 @@ chooses recruits/recalls better, and does smarter target selection.</p>
 
 <h4 id='multiplayer'>Multiplayer</h4>
 
-<p>The operating system's gui can be allowed to "notify" the online player
-that it is on him to play on.</p>
+<p>The operating system's GUI can be told to notify the online player
+that it his turn to play.</p>
 
 <p>The multiplayer lobby has been completely redesigned for improved
 ease of play and better appearance.</p>
@@ -146,19 +147,24 @@ in the Shavian alphabet and Vietnamese.</p>
 <h3 id='campdev'>For Content Developers</h3>
 
 <p>This year Wesnoth was once again a Google "Summer of Code" program;
-one of its major results was a complete rework of Wesnoth's support for multiplayer campaigns.
-Sides in multiplayer games are now persistent and can be carried over from one multiplayer scenario to the next.
-The leaders of AI sides are now able to recall from their side's list.
-As a side effect it is now possible to have more than one leader with the ability to recruit per side.
+one of its major results was a complete rework of Wesnoth's support
+for multiplayer campaigns.  Sides in multiplayer games are now
+persistent and can be carried over from one multiplayer scenario to
+the next.  The leaders of AI sides are now able to recall from their
+side's list.  As a side effect it is now possible to have more than
+one leader with the ability to recruit per side.
 </p>
 
-<p>Another Google of summer result is a new framework for Wesnoth's artificial intelligence.
-The ai can now be scripted to reflect the needs of certain event based story settings better.
-Even possible but by far harder is the creation of a different ai that fits into the framework.
-</p>
+<p>Another Summer of Code result is a new framework for Wesnoth's
+artificial intelligence.  The AI can now be scripted to significantly
+change its behavior in different story settings and in response to
+campaign events, give enemy sides more distinct tactical
+personalities.  It is possible, though not easy, to create alternate
+AIs that are also scriptable.</p>
 
-<p>A very helpfull little new tool is called the "gamestate inspector".
-A content developer can use it to view the values of the wml variables and the recall list ingame through a gui.
+<p>A new tool called the "gamestate inspector" allows a
+content developer to view and nodify values of the WML variables
+and the recall list through a UI while a game is in progress.
 </p>
 
 <p>Our "Summer of Art" program, working in concert with Google's "Summer
@@ -177,16 +183,11 @@ like putting many new placenames on the main map. The main Wesnoth
 history timeline has been tweaked to eliminate various minor
 inconsistencies.</p>
 
-<p>More of the AI's control parameters can now be modified
-from with WML, enabling campaign designers to give enemy sides more
-distinct tactical personalities.</p>
-
 <p>We kept the promise we made in 1.6 when we had to remove Python for
-technical reasons; WML events can now be written in lua.
-The integration of lua in the wesnoth game engine is advanced enough to even
-allow the coding of self defined action wml tags.
-This is the first time wesnoth allows the content developers to modify wml itself.
-</p>
+technical reasons; WML events can now be written in lua.  The
+integration of lua in the wesnoth game engine is advanced enough to
+even allow the coding of WML action tags with lua definitions that can
+read and modify game state variables in the C++ core.</p>
 
 <p>It is now possible for translators to localize images in
 Wesnoth. For more information and tutorials, look at the wiki article
