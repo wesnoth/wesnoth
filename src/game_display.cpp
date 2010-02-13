@@ -21,6 +21,8 @@
 
 #include "game_display.hpp"
 
+#include "wesconfig.h"
+
 #ifdef HAVE_LIBDBUS
 #include <dbus/dbus.h>
 #endif
