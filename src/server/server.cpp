@@ -29,7 +29,6 @@
 #include "../network.hpp"
 #include "../filesystem.hpp"
 #include "../multiplayer_error_codes.hpp"
-#include "../time.hpp"
 #include "../serialization/parser.hpp"
 #include "../serialization/preprocessor.hpp"
 #include "../serialization/string_utils.hpp"
@@ -300,7 +299,7 @@ public:
 	}
 };
 
-
+static fps_limiter fps_limit_;
 
 server::server(int port, const std::string& config_file, size_t min_threads,
 		size_t max_threads) :
@@ -481,7 +480,7 @@ void server::load_config() {
 	// remember to make new one as a daemon or it will block old one
 	restart_command = cfg_["restart_command"];
 
-	ntime::source::get_source().set_frame_time(lexical_cast_default<size_t>(cfg_["ms_per_frame"],20));
+	fps_limit_.set_ms_per_frame(lexical_cast_default<size_t>(cfg_["ms_per_frame"], 20));
 
 	accepted_versions_.clear();
 	const std::string& versions = cfg_["versions_accepted"];
@@ -574,7 +573,7 @@ void server::run() {
 	for (int loop = 0;; ++loop) {
 		// Try to run with 50 FPS all the time
 		// Server will respond a bit faster under heavy load
-		ntime::source::get_source().start_frame();
+		fps_limit_.limit();
 		try {
 			// We are going to waith 10 seconds before shutting down so users can get out of game.
 			if (graceful_restart && games_.empty() && ++graceful_counter > 500 )

@@ -451,7 +451,6 @@ wesnothd_sources = Split("""
     server/sample_user_handler.cpp
     server/simple_wml.cpp
     server/user_handler.cpp
-    time.cpp
     """)
 wesnothd_sources.extend(env.Object("server/server.cpp", EXTRA_DEFINE = env['fifodir'] and "FIFODIR='\"$fifodir\"'" or None))
 

@@ -560,7 +560,6 @@ SET(wesnothd_SRC
     server/forum_user_handler.cpp
     server/sample_user_handler.cpp
     network.cpp
-	time.cpp
     network_worker.cpp
     loadscreen_empty.cpp 
 )
