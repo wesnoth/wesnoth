@@ -70,6 +70,12 @@ int get_random()
   return r ;
 }
 
+int get_random_nocheck()
+{
+  assert(random_generator!=NULL);
+  int r = random_generator->get_random_nocheck();
+  return r ;
+}
 
 const config* get_random_results()
 {
@@ -148,8 +154,18 @@ rng::rng() : random_(NULL), random_child_(0), generator_()
 
 int rng::get_random()
 {
+	return get_random_private(true);
+}
+
+int rng::get_random_nocheck()
+{
+	return get_random_private(false);
+}
+
+int rng::get_random_private(bool check)
+{
 	if (!random_) {
-		int r = generator_.get_random();
+		int r = generator_.get_next_random();
 		LOG_RND << "get_random() returning " << r << " (random_ is null)\n";
 		return r;
 	}
@@ -157,15 +173,20 @@ int rng::get_random()
 	const config::child_list random(random_->get_children("random"));
 	if (random_child_ >= random.size()) {
 		random_child_ = random.size() + 1;
-		int res = generator_.get_random() & 0x7FFFFFFF;
+		int res = generator_.get_next_random() & 0x7FFFFFFF;
 		(random_->add_child("random"))["value"] = lexical_cast<std::string>(res);
 		LOG_RND << "get_random() returning " << res << " (added to random_)\n";
 		return res;
 	} else {
-		int mine = generator_.get_random();
+		int mine = generator_.get_next_random();
 		int stored = lexical_cast_default<int>((*random[random_child_++])["value"], 0);
 		if (mine != stored) {
-			WRN_RND << "Random number mismatch, mine " << mine << " vs " << stored << "\n";
+			if (check) {
+				ERR_RND << "Random number mismatch, mine " << mine << " vs " << stored << "\n";
+				//OOS here?
+			} else {
+				LOG_RND << "Random number mismatch (nocheck), mine " << mine << " vs " << stored << "\n";
+			}
 		}
 		LOG_RND << "get_random() returning " << stored << "\n";
 		return stored;
@@ -239,7 +260,7 @@ simple_rng::simple_rng(const config& cfg) :
 {
 }
 
-int simple_rng::get_random()
+int simple_rng::get_next_random()
 {
 	random_next();
 	++random_calls_;

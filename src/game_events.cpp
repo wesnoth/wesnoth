@@ -1344,7 +1344,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 				}
 			}
 
-			int choice = get_random() % num_choices;
+			int choice = get_random_nocheck() % num_choices;
 			int tmp = 0;
 			for(size_t i = 0; i < ranges.size(); ++i) {
 				tmp += (ranges[i].second - ranges[i].first) + 1;
@@ -1436,7 +1436,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 			}
 		}
 
-		int choice = state_of_game->rng().get_random() % num_choices;
+		int choice = state_of_game->rng().get_next_random() % num_choices;
 		int tmp = 0;
 		for(size_t i = 0; i < ranges.size(); ++i) {
 			tmp += (ranges[i].second - ranges[i].first) + 1;

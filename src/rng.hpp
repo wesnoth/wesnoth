@@ -29,7 +29,18 @@ class rng
 {
 public:
 	rng();
+	/**
+	 * Get the next random number -- from the results if available, from the
+	 * generator otherwise. The two should match.
+	 */
 	int get_random();
+
+	/**
+	 * Get the next random number.
+	 * Do not check if the random number is consistent with local seed state
+	 * (evantually this should be never used).
+	 */
+	int get_random_nocheck();
 
 	const config* get_random_results();
 	void set_random_results(const config& cfg);
@@ -37,6 +48,7 @@ public:
 	void set_seed(seed_t seed);
 
 protected:
+	int get_random_private(bool check);
 	config* random();
 	void set_random(config*);
 

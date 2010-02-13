@@ -21,6 +21,7 @@
 class config;
 
 int get_random();
+int get_random_nocheck();
 const config* get_random_results();
 void set_random_results(const config& cfg);
 

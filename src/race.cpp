@@ -69,7 +69,7 @@ static wide_string markov_generate_name(const markov_prefix_map& prefixes,
 	std::vector<int> random(max_len);
 	size_t j = 0;
 	for(; j < max_len; ++j) {
-		random[j] = rng ? rng->get_random() : get_random();
+		random[j] = rng ? rng->get_next_random() : get_random_nocheck();
 	}
 
 	j = 0;

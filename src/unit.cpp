@@ -105,7 +105,7 @@ static unit_race::GENDER generate_gender(const std::string &type_id, bool random
 	} else if(random_gender == false || genders.size() == 1) {
 		return genders.front();
 	} else {
-		int random = state ? state->rng().get_random() : get_random();
+		int random = state ? state->rng().get_next_random() : get_random_nocheck();
 		return genders[random % genders.size()];
 	}
 }
@@ -764,7 +764,7 @@ void unit::generate_traits(bool musthaveonly, game_state* state)
 	int max_traits = type->num_traits();
 	for (; nb_traits < max_traits && !candidate_traits.empty(); ++nb_traits)
 	{
-		int num = (state ? state->rng().get_random() : get_random())
+		int num = (state ? state->rng().get_next_random() : get_random_nocheck())
 		          % candidate_traits.size();
 		modifications_.add_child("trait", candidate_traits[num]);
 		candidate_traits.erase(candidate_traits.begin() + num);

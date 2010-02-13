@@ -28,7 +28,7 @@ public:
     simple_rng(const config& cfg);
 
 	/** Get a new random number. */
-	int get_random();
+	int get_next_random();
 
 	/**
 	 *  Seeds the random pool.
