@@ -381,14 +381,6 @@ bool game_filter_and_stack::match(const game_info &game) const
 	return true;
 }
 
-bool game_filter_or_stack::match(const game_info &game) const
-{
-	foreach (game_filter_base* f, filters_) {
-		if (f->match(game)) return true;
-	}
-	return false;
-}
-
 bool game_filter_string_part::match(const game_info &game) const
 {
 	const std::string& gs = game.*member_;

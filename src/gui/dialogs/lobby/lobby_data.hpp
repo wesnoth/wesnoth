@@ -190,12 +190,6 @@ public:
 	bool match(const game_info& game) const;
 };
 
-class game_filter_or_stack : public game_filter_stack
-{
-public:
-	bool match(const game_info& game) const;
-};
-
 template <class T, T game_info::*member, class OP = std::equal_to<T> >
 class game_filter_value : public game_filter_base
 {
