@@ -338,29 +338,6 @@ void MD5::decode (uint4 *output, uint1 *input, uint4 len){
 
 
 
-
-// Note: Replace "for loop" with standard memcpy if possible.
-void MD5::memcpy (uint1 *output, uint1 *input, uint4 len){
-
-  unsigned int i;
-
-  for (i = 0; i < len; i++)
-    output[i] = input[i];
-}
-
-
-
-// Note: Replace "for loop" with standard memset if possible.
-void MD5::memset (uint1 *output, uint1 value, uint4 len){
-
-  unsigned int i;
-
-  for (i = 0; i < len; i++)
-    output[i] = value;
-}
-
-
-
 // ROTATE_LEFT rotates x left n bits.
 
 inline unsigned int MD5::rotate_left  (uint4 x, uint4 n){
