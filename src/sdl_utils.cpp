@@ -19,9 +19,10 @@
 
 #include "global.hpp"
 
-#include "config.hpp"
 #include "video.hpp"
 
+#include <algorithm>
+#include <cassert>
 #include <cstring>
 #include <iostream>
 
@@ -1724,27 +1725,6 @@ SDL_Color inverse(const SDL_Color& colour) {
 	inverse.b = 255 - colour.b;
 	inverse.unused = 0;
 	return inverse;
-}
-
-void pixel_data::read(const config& cfg) {
-	const std::string& red = cfg["red"];
-	const std::string& green = cfg["green"];
-	const std::string& blue = cfg["blue"];
-
-	if (red.empty())
-		r = 0;
-	else
-		r = atoi(red.c_str());
-
-	if (green.empty())
-		g = 0;
-	else
-		g = atoi(green.c_str());
-
-	if (blue.empty())
-		b = 0;
-	else
-		b = atoi(blue.c_str());
 }
 
 surface_restorer::surface_restorer() : target_(NULL), rect_(empty_rect), surface_(NULL)

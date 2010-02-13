@@ -305,39 +305,6 @@ bool operator!=(const SDL_Color& a, const SDL_Color& b);
 SDL_Color inverse(const SDL_Color& colour);
 SDL_Color int_to_color(const Uint32 rgb);
 
-class config; // no need to include config.hpp
-
-struct pixel_data
-{
-	pixel_data() : r(0), g(0), b(0)
-	{}
-
-	pixel_data(int red, int green, int blue) : r(red), g(green), b(blue)
-	{}
-
-	pixel_data(int pixel, SDL_PixelFormat* fmt) : r(0), g(0), b(0) {
-		unformat(pixel, fmt);
-	}
-
-	pixel_data(config& cfg) : r(0), g(0), b(0) {
-		read(cfg);
-	}
-
-	int format(SDL_PixelFormat* fmt) const {
-		return SDL_MapRGB(fmt,r,g,b);
-	}
-
-	void unformat(int pixel, SDL_PixelFormat* fmt) {
-		r = ((pixel&fmt->Rmask) >> fmt->Rshift);
-		g = ((pixel&fmt->Gmask) >> fmt->Gshift);
-		b = ((pixel&fmt->Bmask) >> fmt->Bshift);
-	}
-
-	void read(const config& cfg);
-
-	int r, g, b;
-};
-
 struct surface_lock
 {
 	surface_lock(const surface &surf) : surface_(surf), locked_(false)
