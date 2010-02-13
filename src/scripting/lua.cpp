@@ -839,6 +839,51 @@ static int intf_fire(lua_State *L)
 }
 
 /**
+ * Fires an event.
+ * - Arg 1: string containing the event name.
+ * - Arg 2,3: optional first location.
+ * - Arg 4,5: optional second location.
+ * - Arg 6: optional WML table used as the [weapon] tag.
+ * - Arg 7: optional WML table used as the [second_weapon] tag.
+ * - Ret 1: boolean indicating whether the event was processed or not.
+ */
+static int lua_fire_event(lua_State *L)
+{
+	char const *m = luaL_checkstring(L, 1);
+
+	int pos = 2;
+	if (false) {
+		error_call_destructors:
+		return luaL_typerror(L, pos, "WML table");
+	}
+
+	map_location l1, l2;
+	config data;
+
+	if (lua_isnumber(L, 2)) {
+		l1 = map_location(lua_tointeger(L, 2) - 1, lua_tointeger(L, 3) - 1);
+		if (lua_isnumber(L, 4)) {
+			l2 = map_location(lua_tointeger(L, 4) - 1, lua_tointeger(L, 5) - 1);
+			pos = 6;
+		} else pos = 4;
+	}
+
+	if (!lua_isnoneornil(L, pos)) {
+		if (!luaW_toconfig(L, pos, data.add_child("first")))
+			goto error_call_destructors;
+	}
+	++pos;
+	if (!lua_isnoneornil(L, pos)) {
+		if (!luaW_toconfig(L, pos, data.add_child("second")))
+			goto error_call_destructors;
+	}
+
+	bool b = game_events::fire(m, l1, l2, data);
+	lua_pushboolean(L, b);
+	return 1;
+}
+
+/**
  * Gets a WML variable.
  * - Arg 1: string containing the variable name.
  * - Arg 2: optional bool indicating if tables for containers should be left empty.
@@ -1825,6 +1870,7 @@ LuaKernel::LuaKernel()
 	static luaL_reg const callbacks[] = {
 		{ "dofile",                   &intf_dofile                   },
 		{ "fire",                     &intf_fire                     },
+		{ "fire_event",               &lua_fire_event                },
 		{ "eval_conditional",         &intf_eval_conditional         },
 		{ "find_path",                &intf_find_path                },
 		{ "find_vacant_tile",         &intf_find_vacant_tile         },
