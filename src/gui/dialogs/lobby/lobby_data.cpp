@@ -381,13 +381,6 @@ bool game_filter_and_stack::match(const game_info &game) const
 	return true;
 }
 
-bool game_filter_string_part::match(const game_info &game) const
-{
-	const std::string& gs = game.*member_;
-	return std::search(gs.begin(), gs.end(), value_.begin(), value_.end(),
-		chars_equal_insensitive) != gs.end();
-}
-
 bool game_filter_general_string_part::match(const game_info &game) const
 {
 	const std::string& s1 = game.map_info;

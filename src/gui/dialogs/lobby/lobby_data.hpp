@@ -206,21 +206,6 @@ private:
 	T value_;
 };
 
-class game_filter_string_part : public game_filter_base
-{
-public:
-	game_filter_string_part(std::string game_info::*member, const std::string& value)
-	: member_(member), value_(value)
-	{
-	}
-
-	bool match(const game_info& game) const;
-
-private:
-	std::string game_info::*member_;
-	std::string value_;
-};
-
 class game_filter_general_string_part : public game_filter_base
 {
 public:
