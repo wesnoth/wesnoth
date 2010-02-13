@@ -43,10 +43,10 @@ class map_labels;
 #include "key.hpp"
 #include "map_location.hpp"
 #include "reports.hpp"
+#include "team.hpp"
 #include "time_of_day.hpp"
 #include "theme.hpp"
 #include "video.hpp"
-#include "viewpoint.hpp"
 #include "widgets/button.hpp"
 
 #include "SDL.h"
@@ -562,7 +562,7 @@ protected:
 
 	CVideo& screen_;
 	const gamemap* map_;
-	const viewpoint *viewpoint_;
+	const team *viewpoint_;
 	int xpos_, ypos_;
 	theme theme_;
 	int zoom_;

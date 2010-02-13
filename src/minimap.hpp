@@ -17,16 +17,13 @@
 #include <cstddef>
 
 class gamemap;
-class viewpoint;
 class surface;
+class team;
 
 namespace image {
 	///function to create the minimap for a given map
 	///the surface returned must be freed by the user
-	surface getMinimap(const int w
-			, const int h
-			, const gamemap& map_
-			, const viewpoint* vm = NULL);
+	surface getMinimap(int w, int h, const gamemap &map_, const team *vm = NULL);
 }
 
 #endif

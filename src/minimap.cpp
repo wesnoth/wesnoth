@@ -34,11 +34,7 @@ static lg::log_domain log_display("display");
 
 namespace image {
 
-
-surface getMinimap(const int w
-		, const int h
-		, const gamemap& map
-		, const viewpoint* vw)
+surface getMinimap(int w, int h, const gamemap &map, const team *vw)
 {
 	const int scale = 8;
 

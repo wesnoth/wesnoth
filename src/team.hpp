@@ -18,7 +18,6 @@
 #include "color_range.hpp"
 #include "game_config.hpp"
 #include "map_location.hpp"
-#include "viewpoint.hpp"
 #include "savegame_config.hpp"
 #include "unit.hpp"
 
@@ -34,7 +33,7 @@ class gamemap;
  * This class stores all the data for a single 'side' (in game nomenclature).
  * E.g., there is only one leader unit per team.
  */
-class team : public viewpoint, public savegame::savegame_config
+class team : public savegame::savegame_config
 {
 	class shroud_map {
 	public:
