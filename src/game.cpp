@@ -2070,7 +2070,9 @@ static int do_gameloop(int argc, char** argv)
 				continue;
 			}
 		} else if(res == gui::MULTIPLAYER) {
-			game_config::debug = false;
+			if (!game_config::mp_debug) {
+				game_config::debug = false;
+			}
 			if(game.play_multiplayer() == false) {
 				continue;
 			}
