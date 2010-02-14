@@ -31,6 +31,7 @@ ttree_view::ttree_view(const std::vector<tnode_definition>& node_definitions)
 	: tscrollbar_container(2)
 	, node_definitions_(node_definitions)
 	, indention_step_size_(0)
+	, need_layout_(false)
 	, root_node_(new ttree_view_node(
 		  "root"
 		, node_definitions_
@@ -85,6 +86,8 @@ void ttree_view::child_populate_dirty_list(twindow& caller
 	// Inherited.
 	tscrollbar_container::child_populate_dirty_list(caller, call_stack);
 
+	layout();
+
 	assert(root_node_);
 	root_node_->impl_populate_dirty_list(caller, call_stack);
 }
@@ -92,6 +95,18 @@ void ttree_view::child_populate_dirty_list(twindow& caller
 bool ttree_view::empty() const
 {
 	return root_node_->empty();
+}
+
+void ttree_view::layout()
+{
+	if(need_layout_) {
+		root_node_->set_size(indention_step_size_
+			, get_origin()
+			, root_node_->get_size().x);
+		root_node_->set_visible_area(content_visible_area_);
+
+		need_layout_ = false;
+	}
 }
 
 namespace {

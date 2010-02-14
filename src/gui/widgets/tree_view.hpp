@@ -107,11 +107,16 @@ private:
 
 	unsigned indention_step_size_;
 
+	bool need_layout_;
+
 	ttree_view_node* root_node_;
 
 	ttree_view_node* selected_item_;
 
 	boost::function<void ()> selection_change_callback_;
+
+	/** Layouts the children if needed. */
+	void layout();
 
 	/** Inherited from tcontainer_. */
 	virtual void finalize_setup();
