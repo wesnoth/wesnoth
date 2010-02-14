@@ -129,24 +129,61 @@ ttree_view_node& ttree_view_node::add_child(
 			, parent_widget_
 			, data));
 
+	if(is_folded() || is_root_node()) {
+		return *itor;
+	}
+
 	if(parent_widget_->get_size() == tpoint(0, 0)) {
 		return *itor;
 	}
-	/** @todo Test whether this resizing works properly. */
-	if(parent_widget_->content_resize_request()) {
-		parent_widget_->set_size(
-				  parent_widget_->get_origin()
-				, parent_widget_->get_size());
-	} else {
-		twindow *window = get_window();
-		assert(window);
-		window->invalidate_layout();
+
+
+	tpoint best_size = itor->get_best_size();
+	best_size.x += indention_level() * parent_widget_->indention_step_size_;
+	const tpoint size = parent_widget_->content_grid()->get_size();
+	const unsigned width_modification = best_size.x > size.x
+			? best_size.x - size.x
+			: 0;
+
+	if(parent_widget_->content_resize_request(
+			  width_modification
+			, best_size.y)) {
+
+		parent_widget_->root_node_->set_size(tpoint(
+			  size.x + width_modification
+			, size.y + best_size.y));
+		parent_widget_->content_grid()->set_size(tpoint(
+			  size.x + width_modification
+			, size.y + best_size.y));
+
+		parent_widget_->need_layout_ = true;
 	}
 
 	return *itor;
 }
 
+unsigned ttree_view_node::indention_level() const
+{
+	unsigned level = 0;
+
+	const ttree_view_node* node = this;
+	while(node->is_root_node()) {
+		node = &node->parent();
+		++level;
+	}
+
+	return level;
+}
+
+
 ttree_view_node& ttree_view_node::parent()
+{
+	assert(!is_root_node());
+
+	return *parent_;
+}
+
+const ttree_view_node& ttree_view_node::parent() const
 {
 	assert(!is_root_node());
 
@@ -176,6 +213,37 @@ void ttree_view_node::unfold(const texpand_mode /*mode*/)
 			, parent_widget_->get_size());
 }
 #endif
+
+void ttree_view_node::clear()
+{
+	/** @todo Also try to find the optimal width. */
+	unsigned height_reduction = 0;
+
+	if(!is_folded()) {
+		foreach(const ttree_view_node& node, children_) {
+			height_reduction += node.get_size().y;
+		}
+	}
+
+	children_.clear();
+
+	if(height_reduction == 0) {
+		return;
+	}
+
+	if(parent_widget_->content_resize_request(0, -height_reduction)) {
+		const tpoint size = parent_widget_->root_node_->get_size();
+		parent_widget_->content_grid()->set_size(tpoint(
+			  size.x
+			, size.y - height_reduction));
+		parent_widget_->root_node_->set_size(tpoint(
+			  size.x
+			, size.y - height_reduction));
+
+		parent_widget_->need_layout_ = true;
+	}
+}
+
 struct ttree_view_node_implementation
 {
 
@@ -197,7 +265,7 @@ struct ttree_view_node_implementation
 
 		typedef typename tconst_duplicator<W, ttree_view_node>::type thack;
 		foreach(thack& node, tree_view_node.children_) {
-			if(W* widget = node./*grid_.*/find_at(coordinate, must_be_active)) {
+			if(W* widget = node.find_at(coordinate, must_be_active)) {
 				return widget;
 			}
 		}
@@ -327,6 +395,9 @@ unsigned ttree_view_node::set_size(
 		origin.y += node.set_size(indention_step_size, origin, width);
 	}
 
+	// Inherited.
+	twidget::set_size(tpoint(width, origin.y - offset));
+
 	DBG_GUI_L << LOG_HEADER << " result " << ( origin.y - offset) << ".\n";
 	return origin.y - offset;
 }
@@ -349,6 +420,10 @@ void ttree_view_node::set_visible_area(const SDL_Rect& area)
 
 void ttree_view_node::impl_draw_children(surface& frame_buffer)
 {
+	if(is_root_node()) {
+		parent_widget_->layout();
+	}
+
 	grid_.draw_children(frame_buffer);
 
 	if(is_folded()) {
@@ -364,6 +439,7 @@ void ttree_view_node::signal_handler_left_button_click(
 		const event::tevent event)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+// FIXME rewrite as well
 
 	if(parent_widget_->content_resize_request()) {
 		parent_widget_->set_size(

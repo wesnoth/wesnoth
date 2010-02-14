@@ -59,10 +59,13 @@ public:
 
 	bool is_root_node() const { return parent_ == NULL; }
 
+	unsigned indention_level() const;
+
 	/**
 	 * Returns the parent node, can't be used on the root node.
 	 */
 	ttree_view_node& parent();
+	const ttree_view_node& parent() const;
 
 	bool empty() const { return children_.empty(); }
 
@@ -105,7 +108,7 @@ public:
 
 	size_t size() const { return children_.size(); }
 
-	void clear() { children_.clear(); }
+	void clear();
 
 private:
 
@@ -149,6 +152,8 @@ private:
 			  const unsigned indention_step_size
 			, tpoint origin
 			, unsigned width);
+
+	using twidget::set_size;
 
 	void set_visible_area(const SDL_Rect& area);
 
