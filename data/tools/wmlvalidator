@@ -55,6 +55,8 @@ class Validator:
                 print "Attribute '[%s] %s' should appear exactly once, not %d times" % (verbosename, attribute.name, nummatches)
             elif attribute.freq == wmlgrammar.OPTIONAL and nummatches > 1:
                 print "Attribute '[%s] %s' should appear at most once, not %d times" % (verbosename, attribute.name, nummatches)
+            elif attribute.freq == wmlgrammar.FORBIDDEN and nummatches > 0:
+                print "Attribute '[%s] %s' should not appear. It appears %d times" % (verbosename, attribute.name, nummatches)
             for match in matches:
                 if not attribute.validate(match.data):
                     print "Attribute '[%s] %s's value should be %s, found: %s" % (verbosename, attribute.name, attribute.type, match.data)

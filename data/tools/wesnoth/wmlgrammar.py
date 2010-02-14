@@ -6,8 +6,9 @@ import re
 REQUIRED = 1
 OPTIONAL = 2
 REPEATED = 3
+FORBIDDEN = 4
 
-class Grammar:
+class Grammar(object):
     def __init__(self, schema):
         schema = schema.get_first("schema")
         self.datatypes = {
@@ -34,21 +35,21 @@ class Grammar:
     def get_datatype(self, name):
         return self.datatypes[name]
 
-class Node:
+class Node(object):
     def __init__(self, schema, datatypes):
         self.name = schema.name
-        self.elements = []
+        self.elements = set([])
         self.ext_elements = [] #Ugh, do we really want to do this?
-        self.attributes = []
+        self.attributes = set([])
         self.parent = None
         for item in schema.get_all_text():
             if item.name[0] == '_':
-                self.elements.append( Element(item) )
+                self.elements.add( Element(item) )
             else:
-                self.attributes.append( Attribute(item, datatypes) )
+                self.attributes.add( Attribute(item, datatypes) )
         for item in schema.get_all_subs():
             if item.name == "element":
-                print "[element] found, not parsing yet"
+                print "[element] found in schema, not parsing yet"
                 #self.ext_elements...
             else:
                 raise Exception( "Unknown element [%s] encountered in grammar for [%s]" % (item.name, self.name) )
@@ -56,8 +57,8 @@ class Node:
             self.name, self.parent = self.name.split(':',1)
     def inherit(self, other):
         assert self.parent == other.name
-        self.elements += other.elements
-        self.attributes += other.attributes
+        self.elements.update( other.elements )
+        self.attributes.update( other.attributes )
         self.parent = None
     def get_attributes(self):
         return self.attributes
@@ -65,7 +66,7 @@ class Node:
         return self.elements
 
 
-class Element:
+class Element(object):
     def __init__(self, schema):
         first, second = schema.data.split(" ",1)
         self.name = schema.name[1:]
@@ -73,6 +74,10 @@ class Element:
         self.subname = second
     def match(self, name):
         return self.name == name
+    def __hash__(self):
+        return hash(self.name)
+    def __cmp__(self, other):
+        return (isinstance(other, type(self)) or isinstance(self, type(other))) and cmp(self.name, other.name)
 
 class ExtElement(Element):
     def __init__(self, schema):
@@ -82,7 +87,7 @@ class ExtElement(Element):
     def match(self, name):
         return bool(self.re.match(name))
 
-class Attribute:
+class Attribute(object):
     def __init__(self, schema, datatypes):
         first, second = schema.data.split(" ",1)
         if not second in datatypes:
@@ -95,6 +100,10 @@ class Attribute:
         return self.name == name
     def validate(self, value):
         return bool(self.re.match(value))
+    def __hash__(self):
+        return hash(self.name)
+    def __cmp__(self, other):
+        return (isinstance(other, type(self)) or isinstance(self, type(other))) and cmp(self.name, other.name)
 
 def parse_frequency(string):
     if string == "required":
@@ -103,6 +112,8 @@ def parse_frequency(string):
         return OPTIONAL
     elif string == "repeated":
         return REPEATED
+    elif string == "forbidden":
+        return FORBIDDEN
     else:
         raise Exception( "Unknown frequency '%s'" % (string,) )
 
