@@ -469,6 +469,16 @@ class DataSub(Data):
             if isinstance(data, DataText): return data
         return None
 
+    def get_texts(self, name):
+        """Gets all text elements matching the name"""
+        return [text for text in self.get_all(name)
+            if isinstance(text, DataText)]
+
+    def get_all_text(self):
+        """Gets all text elements"""
+        return [text for text in self.data
+            if isinstance(text, DataText)]
+
     def get_binary(self, name):
         """Return a binary element"""
         for data in self.get_all(name):
