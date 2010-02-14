@@ -322,7 +322,6 @@ static void set_scrollbar_mode(tgrid* scrollbar_grid, tscrollbar_* scrollbar,
 		tscrollbar_container::tscrollbar_mode& scrollbar_mode,
 		const unsigned items, const unsigned visible_items)
 {
-
 	assert(scrollbar_grid && scrollbar);
 
 	if(scrollbar_mode == tscrollbar_container::always_invisible) {
@@ -522,6 +521,124 @@ bool tscrollbar_container::content_resize_request(const bool force_sizing)
 resize:
 	DBG_GUI_L << LOG_HEADER << " handle resizing.\n";
 	set_size(get_origin(), get_size());
+	return true;
+}
+
+bool tscrollbar_container::content_resize_request(
+		  const int width_modification
+		, const int height_modification)
+{
+	DBG_GUI_L << LOG_HEADER
+			<< " wanted width modification " << width_modification
+			<< " wanted height modification " << height_modification
+			<< ".\n";
+
+	if(get_size() == tpoint(0, 0)) {
+		DBG_GUI_L << LOG_HEADER
+				<< " initial setup not done, bailing out.\n";
+		return false;
+	}
+
+	twindow* window = get_window();
+	assert(window);
+	if(window->get_need_layout()) {
+		DBG_GUI_L << LOG_HEADER
+				<< " window already needs a layout phase, bailing out.\n";
+		return false;
+	}
+
+	assert(content_ && content_grid_);
+
+	const bool result = content_resize_width(width_modification)
+			&& content_resize_height(height_modification);
+
+	DBG_GUI_L << LOG_HEADER << " result " << result << ".\n";
+	return result;
+}
+
+bool tscrollbar_container::content_resize_width(const int width_modification)
+{
+	if(width_modification == 0) {
+		return true;
+	}
+
+	const int new_width = content_grid_->get_width() + width_modification;
+	DBG_GUI_L << LOG_HEADER
+			<< " current width " << content_grid_->get_width()
+			<< " wanted width " << new_width;
+
+	assert(new_width > 0);
+
+	if(static_cast<unsigned>(new_width) <= content_->get_width()) {
+		DBG_GUI_L << " width fits in container, test height.\n";
+		return true;
+	}
+
+	assert(horizontal_scrollbar_ && horizontal_scrollbar_grid_);
+	if(horizontal_scrollbar_mode_ == always_invisible
+			|| (horizontal_scrollbar_mode_ == auto_visible_first_run
+				&& horizontal_scrollbar_grid_->get_visible()
+					== twidget::INVISIBLE)) {
+
+		DBG_GUI_L << " can't use horizontal scrollbar, ask window.\n";
+		twindow* window = get_window();
+		assert(window);
+		window->invalidate_layout();
+		return false;
+	}
+
+	DBG_GUI_L << " use the horizontal scrollbar, test height.\n";
+	set_scrollbar_mode(horizontal_scrollbar_grid_
+			, horizontal_scrollbar_
+			, horizontal_scrollbar_mode_
+			, new_width
+			, content_->get_width());
+
+	return true;
+}
+
+bool tscrollbar_container::content_resize_height(const int height_modification)
+{
+	if(height_modification == 0) {
+		return true;
+	}
+
+	const int new_height =
+			content_grid_->get_height() + height_modification;
+
+	DBG_GUI_L << LOG_HEADER
+			<< " current height " << content_grid_->get_height()
+			<< " wanted height " << new_height;
+
+	assert(new_height > 0);
+
+	if(static_cast<unsigned>(new_height) <= content_->get_height()) {
+		DBG_GUI_L << " height in container, resize allowed.\n";
+		return true;
+	}
+
+	assert(vertical_scrollbar_ && vertical_scrollbar_grid_);
+	if(vertical_scrollbar_mode_ == always_invisible
+			|| (vertical_scrollbar_mode_ == auto_visible_first_run
+				&& vertical_scrollbar_grid_->get_visible()
+					== twidget::INVISIBLE)) {
+
+		DBG_GUI_L << " can't use vertical scrollbar, ask window.\n";
+		twindow* window = get_window();
+		assert(window);
+		window->invalidate_layout();
+		return false;
+	}
+
+	DBG_GUI_L << " use the vertical scrollbar, resize allowed.\n";
+	set_scrollbar_mode(vertical_scrollbar_grid_
+			, vertical_scrollbar_
+			, vertical_scrollbar_mode_
+			, new_height
+			, content_->get_height());
+
+	vertical_scrollbar_->set_dirty();
+
 	return true;
 }
 

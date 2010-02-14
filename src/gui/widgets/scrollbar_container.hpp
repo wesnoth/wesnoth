@@ -240,6 +240,57 @@ protected:
 	 */
 	bool content_resize_request(const bool force_sizing = false);
 
+	/**
+	 * Request from the content to modify the size of the container.
+	 *
+	 * When the wanted resize fails the function will call @ref
+	 * twindow::invalidate_layout().
+	 *
+	 *
+	 * @note Calling this function on a widget with size == (0, 0) results
+	 * false but doesn't call invalidate_layout, the engine expects to be in
+	 * build up phase with the layout already invalidated.
+	 *
+	 * @note If @ref twindow::get_need_layout() is true the function returns
+	 * false and doesn't try to fit the contents since a layout phase will be
+	 * triggered anyway.
+	 *
+	 * @note This function might replace the @ref content_resize_request above.
+	 *
+	 * @param width_modification  The wanted modification to the width:
+	 *                            * negative values reduce width.
+	 *                            * zero leave width as is.
+	 *                            * positive values increase width.
+	 * @param height_modification The wanted modification to the height:
+	 *                            * negative values reduce height.
+	 *                            * zero leave height as is.
+	 *                            * positive values increase height.
+	 *
+	 * @returns                   True is wanted modification is accepted false
+	 *                            otherwise.
+	 */
+	bool content_resize_request(
+			  const int width_modification
+			, const int height_modification);
+
+private:
+
+	/**
+	 * Helper for @ref content_resize_request.
+	 *
+	 * Handle the width modification.
+	 */
+	bool content_resize_width(const int width_modification);
+
+	/**
+	 * Helper for @ref content_resize_request.
+	 *
+	 * Handle the height modification.
+	 */
+	bool content_resize_height(const int height_modification);
+
+protected:
+
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
 	/**
