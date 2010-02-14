@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "POT-Creation-Date: 2009-11-02 12:29+0100\n"
-"PO-Revision-Date: 2009-12-29 12:45+0100\n"
+"PO-Revision-Date: 2010-02-14 15:49+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -973,6 +973,8 @@ msgid ""
 "Determines whether the rooms file should be read and written to in "
 "compressed form. Defaults to B<yes>."
 msgstr ""
+"Determina se i file delle stanze debbano essere letti e scritti in forma "
+"compressa. Normalmente vale B<yes>."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:121
@@ -997,7 +999,6 @@ msgstr "B<disallow_names>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:131
-#, fuzzy
 msgid ""
 "Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
@@ -1005,7 +1006,7 @@ msgid ""
 "computer,human,network,player>."
 msgstr ""
 "I nomi o nick che non sono accettati dal server. Si possono usare i "
-"caratteri jolly «*» e «?». Vedi B<glob>(7) per maggiori dettagli. I valori "
+"caratteri jolly B<*> e B<?>. Vedi B<glob>(7) per maggiori dettagli. I valori "
 "predefiniti (usati in mancanza di specifiche diverse) sono: B<*admin*,"
 "*admln*,*server*,ai,ai?,computer,human,network,player>."
 
@@ -1134,6 +1135,9 @@ msgid ""
 "server startup and written to later. If empty or not set, rooms are not "
 "loaded and not saved."
 msgstr ""
+"Percorso del file in cui memorizzare le informazioni sulle stanze. Questo "
+"file è letto all'avvio del server e vi viene scritto in seguito. Se è vuoto "
+"o non impostato, le stanze non saranno caricate o salvate."
 
 #: ../../doc/man/wesnothd.6:159
 #, no-wrap
