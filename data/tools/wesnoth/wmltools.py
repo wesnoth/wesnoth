@@ -145,7 +145,7 @@ def formaltype(f):
     # Deduce the expected type of the formal
     if f.startswith("_"):
         f = f[1:]
-    if f in ("SIDE", "X", "Y", "RED", "GREEN", "BLUE", "TURN", "RADIUS", "PROB", "LAYER", "TIME") or f.endswith("_SIDE") or f.endswith("NUMBER") or f.endswith("AMOUNT") or f.endswith("COST") or f.endswith("_X") or f.endswith("_Y") or f.endswith("_INCREMENT") or f.endswith("_FACTOR") or f.endswith("_TIME"):
+    if f in ("SIDE", "X", "Y", "RED", "GREEN", "BLUE", "TURN", "RADIUS", "PROB", "LAYER", "TIME") or f.endswith("_SIDE") or f.endswith("NUMBER") or f.endswith("AMOUNT") or f.endswith("COST") or f.endswith("_X") or f.endswith("_Y") or f.endswith("_INCREMENT") or f.endswith("_FACTOR") or f.endswith("_TIME") or f.endswith("_SIZE"):
         ftype = "numeric"
     elif f in ("POSITION",) or f.endswith("_POSITION") or f == "BASE":
         ftype = "position"
@@ -205,7 +205,7 @@ def actualtype(a):
         atype = "terrain_code"
     elif a.endswith(".wav") or a.endswith(".ogg"):
         atype = "sound"
-    elif a.startswith('"') and a.endswith('"') or (a.startswith("_") and a != '_s'):
+    elif a.startswith('"') and a.endswith('"') or (a.startswith("_") and a[1] not in "abcdefghijklmnopqrstuvwxyz"):
         atype = "stringliteral"
     elif "=" in a:
         atype = "filter"
