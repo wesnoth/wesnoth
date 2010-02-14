@@ -28,10 +28,11 @@
 
 <h1>Battle for Wesnoth 1.8 Release Notes</h1>
 
-<p><em>Christmas, 2009</em>. It is once again time for that thrill
+<p>March 2010: It is once again time for that thrill
 you've all been waiting for, a Wesnoth stable release. The Battle for
 Wesnoth team is proud to release version 1.8 of <em>The Battle for
 Wesnoth</em>, a <a
+href='http://www.gnu.org/philosophy/philosophy.html'>free</a> <a
 href='http://www.opensource.org/'>open-source</a>
 turn-based strategy game with a fantasy theme and roleplaying
 elements. The game is <a href='#download'>available for download</a>
@@ -67,6 +68,12 @@ game's AI.</p>
 
 <h3 id='players'>For Players</h3>
 
+<p>To help the player keep those who are loyal to him alive, this units
+are now marked with an overlay symbol that looks like a bronze ring.</p>
+
+<p>The names on maps and other images are now localized to the
+player's language.</p>
+
 <h4 id='campaigns'>Campaigns</h4>
 
 <p>A new campaign, <cite>Delfador's Memoirs</cite>, tells the tale of
@@ -76,13 +83,14 @@ href="http://wesnoth-umc-dev.sourceforge.net">Wesnoth-UMC-Dev
 project</a>, where it spent almost a year being adapted for
 mainline.</p>
 
-<p>We've continued to polish and improve the mainline campaigns.  The
-hero Kaleh's custom advancements in <cite>Under the Burning
+<p>We've continued to polish and improve the mainline campaigns. 
+The hero Kaleh's custom advancements in <cite>Under the Burning
 Suns</cite>, long a source of problems, have been debugged and
 streamlined. Significant continuity problems in <cite>Heir to the
-Throne's</cite> "Cliffs of Thoria" scenario have been fixed. Some
-later scenarios in <cite>Legend of Wesmere</cite> have been rewritten
-and significantly enhanced.</p>
+Throne's</cite> "Cliffs of Thoria" scenario have been fixed. 
+Some scenarios in <cite>Legend of Wesmere</cite> have been rewritten
+and significantly enhanced. An early version of it's multiplayer port
+is available to test Wesnoth's multiplayer campaign feature.</p>
 
 <div class='thumb tright'>
   <div><a href='images/start-2-full.jpg'><img src='images/start-2.jpg' alt='Wesnoth Screenshot'/></a></div>
@@ -96,6 +104,9 @@ Mountains</cite>, and <cite>Journey's End</cite>.</p>
 chooses recruits/recalls better, and does smarter target selection.</p>
 
 <h4 id='multiplayer'>Multiplayer</h4>
+
+<p>The operating system's GUI can be told to notify the online player
+that it his turn to play.</p>
 
 <p>The multiplayer lobby has been completely redesigned for improved
 ease of play and better appearance.</p>
@@ -114,13 +125,18 @@ release.</p>
 
 <h4 id='general'>General</h4>
 
-<p>There is new monster unit: the Water Serpent.  Additionally, the
+<p>The right sidebar on the main game display has been tuned for
+usability. It now gives more prominance to the selected unit's
+terrain defence percentage and time-of-day modifier.</p>
+
+<p>There is a new monster unit: the Water Serpent.  Additionally, the
 Dwarvish Scout from Under the Burning Suns is now part of normal
-Dwarvish sides in campaigns. Several other unit lines - most notably
+Dwarvish sides in campaigns. Several other unit lines &mdash; most notably
 the Drakes &mdash; have been completely redone with improved art and
 animations.</p>
 
-<p>Add-on descriptions are now visible on the download server.</p>
+<p>Add-on descriptions are now visible on interface panel for the
+download server.</p>
 
 <p>Most translations have been updated.  New translations include English
 in the Shavian alphabet and Vietnamese.</p>
@@ -132,15 +148,33 @@ in the Shavian alphabet and Vietnamese.</p>
 <h3 id='campdev'>For Content Developers</h3>
 
 <p>This year Wesnoth was once again a Google "Summer of Code" program;
-one of its major results was a complete rework of the Wesnoth map
-editor and its interface, making it a friendlier tool for content
-developers.</p>
+one of its major results was a complete rework of Wesnoth's support
+for multiplayer campaigns.  Sides in multiplayer games are now
+persistent and can be carried over from one multiplayer scenario to
+the next.  The leaders of AI sides are now able to recall from their
+side's list.  As a side effect it is now possible to have more than
+one leader with the ability to recruit per side.
+</p>
+
+<p>Another Summer of Code result is a new framework for Wesnoth's
+artificial intelligence.  The AI can now be scripted to significantly
+change its behavior in different story settings and in response to
+campaign events, give enemy sides more distinct tactical
+personalities.  It is possible, though not easy, to create alternate
+AIs that are also scriptable.</p>
+
+<p>A new tool called the <a
+href="http://wiki.wesnoth.org/CommandMode#Extra_Debugging_Commands">"gamestate
+inspector"</a> allows a content developer to view and nodify values of
+the WML variables and the recall list through a UI while a game is in
+progress.</p>
+
+<p>New Orcish Village and Orcish Keep terrain graphics improve the
+options available to map designers.</p>
 
 <p>Our "Summer of Art" program, working in concert with Google's "Summer
 of Code", produced big results.  There are hundreds of new and
-reworked unit portraits available for your add-ons. There are new
-terrain graphics as well, including the Orcish Village and Orcish
-Keep.</p>
+reworked unit portraits available for your add-ons.</p>
 
 <div class='thumb tright'>
   <div><a href='images/start-3-full.jpg'><img src='images/start-3.jpg' alt='Wesnoth Screenshot'/></a></div>
@@ -152,12 +186,11 @@ like putting many new placenames on the main map. The main Wesnoth
 history timeline has been tweaked to eliminate various minor
 inconsistencies.</p>
 
-<p>More of the AI's control parameters can now be modified
-from with WML, enabling campaign designers to give enemy sides more
-distinct tactical personalities.</p>
-
 <p>We kept the promise we made in 1.6 when we had to remove Python for
-technical reasons; WML events can now be written in lua.</p>
+technical reasons; WML events can now be written in lua.  The
+integration of lua in the wesnoth game engine is advanced enough to
+even allow the coding of WML action tags with lua definitions that can
+read and modify game state variables in the C++ core.</p>
 
 <p>It is now possible for translators to localize images in
 Wesnoth. For more information and tutorials, look at the wiki article
@@ -183,23 +216,24 @@ TODO: add the correct links once the files are available
 <ul>
 <li>
   <strong>
-  <a href='http://downloads.sourceforge.net/wesnoth/wesnoth-1.8.tar.bz2?download'>Source code</a>
+  <a href='http://sourceforge.net/projects/wesnoth/files/wesnoth/wesnoth-1.8.tar.bz2/download'>Source code</a>
   </strong>
 </li>
 <li>
   <strong>
-  <a href='http://downloads.sourceforge.net/wesnoth/wesnoth-1.8-win32.exe?download'>Wesnoth for MS Windows</a>
+  <a href='http://sourceforge.net/projects/wesnoth/files/wesnoth/wesnoth-1.8-win32.exe/download'>Wesnoth for MS Windows</a>
   </strong>
 </li>
 <li>
   <strong>
-  <a href='http://downloads.sourceforge.net/wesnoth/Wesnoth_1.8.dmg?download'>Wesnoth for Mac OS X</a>
+  <a href='http://sourceforge.net/projects/wesnoth/files/wesnoth/Wesnoth_1.8.dmg/download'>Wesnoth for Mac OS X</a>
   </strong>
 </li>
 </ul>
 
 <p>You can get up to date information about downloads at the <a
-href='http://wiki.wesnoth.org/Download'>downloads page</a>.</p>
+href='http://wiki.wesnoth.org/Download'>downloads page</a>. There you can also
+find packages and instructions for other platforms once they are available.</p>
 
 <p>If you downloaded previous versions of the game, you might be interested in
 downloading the <a
@@ -231,7 +265,7 @@ href='http://wiki.wesnoth.org/Download_Xdeltas'>xdelta</a> files only.</p>
 <div id="languages">
 <p>This page is also available in the following languages:</p>
 <ul>
-<!--LANGS--><li><a href='index.en.html'>English</a></li><li><a href='index.lt.html'>Lietuvių</a></li>
+<!--LANGS--><li><a href='index.en.html'>English</a></li>
 <!--LANGS-->
 </ul>
 </div>
