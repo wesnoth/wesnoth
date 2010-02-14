@@ -28,6 +28,7 @@
 #include "log.hpp"
 #include "game_preferences.hpp"
 #include "replay.hpp"
+#include "resources.hpp"
 #include "statistics.hpp"
 #include "unit.hpp"
 #include "unit_id.hpp"
@@ -936,6 +937,12 @@ protected:
 			uc.add_unit(cfg);
 
 		}
+
+		// Find the first leader and use its name as the player name.
+		unit_map::iterator u = resources::units->find_first_leader(t_->side());
+		if (u != resources::units->end())
+			t_->set_current_player(u->second.name());
+
 	}
 
 };

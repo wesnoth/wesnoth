@@ -247,3 +247,18 @@ unit_map::unit_iterator unit_map::find_leader(int side)
 	}
 	return i_end;
 }
+
+unit_map::unit_iterator unit_map::find_first_leader(int side)
+{
+	unit_map::iterator i = begin(), i_end = end();
+	unit_map::iterator first_leader = end();
+	size_t min_underlying_id = -1;
+
+	for (; i != i_end; ++i) {
+		if (static_cast<int>(i->second.side()) == side && i->second.can_recruit()){
+			if ((first_leader == end()) || (i->second.underlying_id() < first_leader->second.underlying_id()) )
+				first_leader = i;
+		}
+	}
+	return first_leader;
+}

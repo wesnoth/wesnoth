@@ -217,6 +217,7 @@ public:
 	unit_iterator find_leader(int side);
 	const_unit_iterator find_leader(int side) const
 	{ return const_cast<unit_map *>(this)->find_leader(side); }
+	unit_iterator find_first_leader(int side);
 
 	size_t count(const map_location& loc) const { return lmap_.count(loc); }
 

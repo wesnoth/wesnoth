@@ -307,11 +307,6 @@ void unit_creator::post_create(const map_location &loc, const unit &new_unit, bo
 
 	bool show = show_ && (resources::screen !=NULL) && !resources::screen->fogged(loc);
 	bool animate = show && anim;
-	// If the new unit is a leader, use its name as the player name.
-	if (rename_side_ && new_unit.can_recruit()) {
-		team_.set_current_player(new_unit.name());
-	}
-
 
 	if (get_village_) {
 		if (resources::game_map->is_village(loc)) {
