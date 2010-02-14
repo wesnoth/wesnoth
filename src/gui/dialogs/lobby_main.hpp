@@ -58,7 +58,7 @@ struct tsub_player_list
 	tlabel* count;
 	ttoggle_button* show_toggle;
 	tlistbox* list;
-	ttree_view::tnode* tree;
+	ttree_view_node* tree;
 	tlabel* tree_label;
 };
 

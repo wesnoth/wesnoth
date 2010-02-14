@@ -17,6 +17,7 @@
 #include "gui/widgets/tree_view.hpp"
 
 #include "gui/auxiliary/log.hpp"
+#include "gui/widgets/tree_view_node.hpp"
 #include "gui/widgets/window.hpp"
 
 #include <boost/bind.hpp>
@@ -30,7 +31,7 @@ ttree_view::ttree_view(const std::vector<tnode_definition>& node_definitions)
 	: tscrollbar_container(2)
 	, node_definitions_(node_definitions)
 	, indention_step_size_(0)
-	, root_node_(new tnode(
+	, root_node_(new ttree_view_node(
 		  "root"
 		, node_definitions_
 		, NULL
@@ -41,11 +42,17 @@ ttree_view::ttree_view(const std::vector<tnode_definition>& node_definitions)
 {
 }
 
-void ttree_view::remove_node(tnode* node)
+ttree_view_node& ttree_view::add_node(const std::string& id
+		, const std::map<std::string /* widget id */, string_map>& data)
+{
+	return get_root_node().add_child(id, data);
+}
+
+void ttree_view::remove_node(ttree_view_node* node)
 {
 	assert(node && node != root_node_ && node->parent_);
 
-	boost::ptr_vector<tnode>::iterator itor =
+	boost::ptr_vector<ttree_view_node>::iterator itor =
 				  node->parent_->children_.begin();
 
 	for( ; itor != node->parent_->children_.end(); ++itor) {
@@ -80,6 +87,11 @@ void ttree_view::child_populate_dirty_list(twindow& caller
 
 	assert(root_node_);
 	root_node_->impl_populate_dirty_list(caller, call_stack);
+}
+
+bool ttree_view::empty() const
+{
+	return root_node_->empty();
 }
 
 namespace {

@@ -18,10 +18,9 @@
 #include "gui/widgets/scrollbar_container.hpp"
 #include "gui/auxiliary/window_builder/tree_view.hpp"
 
-// Can be changed to forward declaration once ilor is finished with the lobby.
-#include "gui/widgets/tree_view_node.hpp"
-
 namespace gui2 {
+
+class ttree_view_node;
 
 class ttree_view
 		: public tscrollbar_container
@@ -30,8 +29,6 @@ class ttree_view
 	friend class ttree_view_node;
 public:
 
-	// Can be removed once ilor is done with the  lobby.
-	typedef ttree_view_node tnode;
 	typedef implementation::tbuilder_tree_view::tnode tnode_definition;
 
 	/**
@@ -52,10 +49,7 @@ public:
 	ttree_view_node& get_root_node() { return *root_node_; }
 
 	ttree_view_node& add_node(const std::string& id
-			, const std::map<std::string /* widget id */, string_map>& data)
-	{
-		return get_root_node().add_child(id, data);
-	}
+			, const std::map<std::string /* widget id */, string_map>& data);
 
 	void remove_node(ttree_view_node* tree_view_node);
 
@@ -67,7 +61,7 @@ public:
 	void set_self_active(const bool /*active*/)  {}
 //		{ state_ = active ? ENABLED : DISABLED; }
 
-	bool empty() const { return root_node_->empty(); }
+	bool empty() const;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 

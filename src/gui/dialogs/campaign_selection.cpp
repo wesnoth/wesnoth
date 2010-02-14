@@ -24,6 +24,7 @@
 #include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/tree_view.hpp"
+#include "gui/widgets/tree_view_node.hpp"
 #include "gui/widgets/window.hpp"
 #include "serialization/string_utils.hpp"
 
@@ -112,12 +113,12 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 
 		tree_group_field["label"] = "Campaigns won";
 		tree_group_item["tree_view_node_label"] = tree_group_field;
-		ttree_view::tnode& completed =
+		ttree_view_node& completed =
 				tree.add_node("campaign_group", tree_group_item);
 
 		tree_group_field["label"] = "Campaigns to conquer";
 		tree_group_item["tree_view_node_label"] = tree_group_field;
-		ttree_view::tnode& not_completed =
+		ttree_view_node& not_completed =
 				tree.add_node("campaign_group", tree_group_item);
 
 		/***** Setup campaign details. *****/

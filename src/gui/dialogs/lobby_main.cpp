@@ -31,6 +31,7 @@
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/toggle_panel.hpp"
+#include "gui/widgets/tree_view_node.hpp"
 
 #include "foreach.hpp"
 #include "formula_string_utils.hpp"
@@ -900,7 +901,7 @@ void tlobby_main::update_playerlist()
 			tree_group_field["use_markup"] = "true";
 			tree_group_item["name"] = tree_group_field;
 
-			ttree_view::tnode& player =
+			ttree_view_node& player =
 					target_list->tree->add_child("player", tree_group_item);
 
 			find_widget<ttoggle_panel>(&player, "tree_view_node_label", false)
