@@ -1,0 +1,165 @@
+#!/usr/bin/env python
+"""
+wmltest -- tool to validate the syntax and semantics of WML.
+
+Use --help to see usage.
+"""
+#TODO:
+#-define verbosity levels better
+
+import wesnoth.wmldata as wmldata
+import wesnoth.wmlparser as wmlparser
+import wesnoth.wmlgrammar as wmlgrammar
+import re
+
+def print_indent(string, depth, char=' '):
+    print "%s%s" % (depth * char, string)
+
+class Validator:
+    """
+    The class that takes a wmlgrammer object to validate wml trees with
+    """
+    def __init__(self, schema, verbosity=0):
+        self.schema = wmlgrammar.Grammar(schema)
+        self.verbosity = verbosity
+
+    def validate(self, node, depth=0, name=None):
+        """
+        Validate the given DataSub node.
+        depth indicates how deep we've recursed into the tree,
+        name is a mechanism for overwriting the node name to look up in the schema, used for overloaded names.
+        """
+        if not name or name == node.name:
+            name = node.name
+            verbosename = name
+        else:
+            verbosename = "%s (%s)" % (node.name, name)
+
+        if self.verbosity > 1:
+            print_indent(node.name, depth)
+
+        try:
+            schema = self.schema.get_element(name)
+        except KeyError:
+            print "No valid schema found for %s" % verbosename
+            return
+
+
+        # TODO: the blocks below probably need to be rewritten
+
+        # Validate the attributes
+        for attribute in schema.get_attributes():
+            matches = node.get_texts(attribute.name)
+            nummatches = len(matches)
+            if attribute.freq == wmlgrammar.REQUIRED and nummatches != 1:
+                print "Attribute '[%s] %s' should appear exactly once, not %d times" % (verbosename, attribute.name, nummatches)
+            elif attribute.freq == wmlgrammar.OPTIONAL and nummatches > 1:
+                print "Attribute '[%s] %s' should appear at most once, not %d times" % (verbosename, attribute.name, nummatches)
+            for match in matches:
+                if not attribute.validate(match.data):
+                    print "Attribute '[%s] %s's value should be %s, found: %s" % (verbosename, attribute.name, attribute.type, match.data)
+                node.remove(match) # Get rid of these so we can see what's left
+        for attribute in node.get_all_text():
+            print "Attribute '[%s] %s' found, which has no meaning there" % (verbosename, attribute.name)
+
+        # Validate the elements
+        for element in schema.get_elements():
+            matches = node.get_subs(element.name)
+            nummatches = len(matches)
+            if element.freq == wmlgrammar.REQUIRED and nummatches != 1:
+                print "Element '[%s] [%s]' should appear exactly once, not %d times" % (verbosename, element.name, nummatches)
+            elif element.freq == wmlgrammar.OPTIONAL and nummatches > 1:
+                print "Element '[%s] [%s]' should appear at most once, not %d times" % (verbosename, element.name, nummatches)
+            for match in matches:
+                self.validate(match, depth+1, element.subname)
+                node.remove(match)
+
+        for element in node.get_all_subs():
+            print "Element '[%s] [%s]' found, which has no meaning there" % (verbosename, element.name)
+            # Do we want to do this?
+            if False:
+                print "Attempting to validate [%s] anyway" % element.name
+                self.validate(element, depth+1)
+
+if __name__ == '__main__':
+    import optparse, subprocess, os, codecs, sys
+
+    # Ugly hack to force the output of UTF-8.
+    # This prevents us from crashing when we're being verbose
+    #  and encounter a non-ascii character.
+    sys.stdout = codecs.getwriter('utf-8')(sys.stdout)
+
+    op = optparse.OptionParser()
+    op.set_usage("Usage: %prog [options] [filename]")
+    op.add_option("-p", "--path",
+        help = "Specify Wesnoth's data dir",
+        dest = "path")
+    op.add_option("-u", "--userpath",
+        help = "Specify user data dir",
+        dest = "userpath")
+    op.add_option("-s", "--schema",
+        help = "Specify WML schema",
+        dest = "schema")
+    op.add_option("-v", "--verbose",
+        action = "count",
+        dest = "verbose",
+        help = "Increase verbosity, 4 is the maximum.")
+    op.add_option("-D", "--define",
+        action = "append",
+        dest = "defines",
+        default = [],
+        help = "Define (empty) preprocessor macros, for campaign/multiplayer inclusion.")
+    (options, args) = op.parse_args()
+
+    if not options.path:
+        try:
+            p = subprocess.Popen(["wesnoth", "--path"], stdout = subprocess.PIPE)
+            path = p.stdout.read().strip()
+            options.path = os.path.join(path, "data")
+            sys.stderr.write("No Wesnoth path given.\nAutomatically found '%s'\n" % (options.path, ) )
+        except OSError:
+            options.path = '.'
+            sys.stderr.write("Could not determine Wesnoth path.\nAssuming '%s'\n" % (options.path, ) )
+
+    if len(args) < 1:
+        args.append(os.path.join(options.path, '_main.cfg'))
+
+    if options.verbose > 1:
+        print "Options: %s\nArgs: %s\n"% (options, args)
+
+    if not options.schema:
+        options.schema = os.path.join(options.path, 'schema.cfg')
+
+    # Parse the schema
+    parser = wmlparser.Parser(options.path)
+
+    if options.verbose > 3:
+        parser.verbose = True
+    parser.parse_file(options.schema)
+
+    schema = wmldata.DataSub("schema")
+    parser.parse_top(schema)
+
+    # Construct the validator
+    validator = Validator(schema, options.verbose)
+
+    # Parse the WML
+    parser = wmlparser.Parser(options.path, options.userpath)
+
+    if options.verbose > 3:
+        parser.verbose = True
+
+    if options.userpath:
+        parser.parse_text("{~add-ons}")
+    for file in args:
+        parser.parse_file(file)
+    for macro in options.defines:
+        parser.parse_text("#define %s \n#enddef" % (macro, ) )
+
+    data = wmldata.DataSub("root")
+    parser.parse_top(data)
+
+    # Validate
+    validator.validate(data)
+
+# vim: tabstop=4: shiftwidth=4: expandtab: softtabstop=4: autoindent:

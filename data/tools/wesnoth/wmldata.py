@@ -505,8 +505,13 @@ class DataSub(Data):
             if isinstance(ifdef, DataIfDef)]
 
     def get_subs(self, name):
-        """Gets all macros matching the name"""
+        """Gets all elements matching the name"""
         return [sub for sub in self.get_all(name)
+            if isinstance(sub, DataSub)]
+
+    def get_all_subs(self):
+        """Gets all elements"""
+        return [sub for sub in self.data
             if isinstance(sub, DataSub)]
 
     def remove_macros(self, name):
