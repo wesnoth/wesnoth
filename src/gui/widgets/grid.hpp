@@ -236,6 +236,8 @@ public:
 	/** Inherited from twidget. */
 	void set_size(const tpoint& origin, const tpoint& size);
 
+	using twidget::set_size;
+
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
 	/** Inherited from twidget. */

@@ -124,6 +124,17 @@ void twidget::set_size(const tpoint& origin, const tpoint& size)
 	set_dirty();
 }
 
+void twidget::set_size(const tpoint& size)
+{
+	assert(size.x >= 0);
+	assert(size.y >= 0);
+
+	w_ = size.x;
+	h_ = size.y;
+
+	set_dirty();
+}
+
 twidget* twidget::find_at(const tpoint& coordinate,
 		const bool must_be_active)
 {

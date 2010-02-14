@@ -240,6 +240,17 @@ public:
 	 */
 	virtual void set_size(const tpoint& origin, const tpoint& size);
 
+	/**
+	 * Sets the size of the widget.
+	 *
+	 * This version is meant to resize a widget, since the origin isn't
+	 * modified. This can be used if a widget needs to change its size and the
+	 * layout will be fixed later.
+	 *
+	 * @param size                The size of the widget.
+	 */
+	virtual void set_size(const tpoint& size);
+
 	/***** ***** ***** ***** query ***** ***** ***** *****/
 
 	/**
