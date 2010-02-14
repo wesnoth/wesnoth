@@ -324,7 +324,7 @@ void animated<T,T_void_value>::remove_frames_until(int new_starting_time)
 
 }
 template<typename T,  typename T_void_value>
-void animated<T,T_void_value>::remove_frames_after(int new_ending_time)
+void animated<T,T_void_value>::set_end_time(int new_ending_time)
 {
 int last_start_time = starting_frame_time_;
 typename std::vector<frame>::iterator current_frame = frames_.begin();
@@ -332,7 +332,10 @@ typename std::vector<frame>::iterator current_frame = frames_.begin();
                 last_start_time += current_frame->duration_;
                 current_frame++;
         }
+        // at this point last_start_time is set to the beginning of the first frame past the end
+        // or set to frames_.end()
         frames_.erase(current_frame,frames_.end());
+        frames_.back().duration_ += new_ending_time - last_start_time;
 
 }
 

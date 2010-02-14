@@ -365,11 +365,11 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.back().event_ = utils::split("levelout");
 
 		animations.push_back(*itor);
-		animations.back().unit_anim_.override(0,1,"","",0,"");
+		animations.back().unit_anim_.override(0,1);
 		animations.back().event_ = utils::split("pre_movement");
 
 		animations.push_back(*itor);
-		animations.back().unit_anim_.override(0,1,"","",0,"");
+		animations.back().unit_anim_.override(0,1);
 		animations.back().event_ = utils::split("post_movement");
 
 		animations.push_back(*itor);
@@ -383,7 +383,7 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.back().event_ = utils::split("defend");
 
 		animations.push_back(*itor);
-		animations.back().unit_anim_.override(0,1,"");
+		animations.back().unit_anim_.override(0,1);
 		animations.back().event_ = utils::split("defend");
 
 		animations.push_back(*itor);
@@ -406,7 +406,7 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.back().sub_anims_["_death_sound"].add_frame(1,frame_builder().sound(cfg["die_sound"]),true);
 
 		animations.push_back(*itor);
-		animations.back().unit_anim_.override(0,1,"","",0,"");
+		animations.back().unit_anim_.override(0,1);
 		animations.back().event_ = utils::split("victory");
 
 		animations.push_back(*itor);
@@ -691,7 +691,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		if (anim["layer"].empty()) anim["layer"] = default_layer;
 		anim["apply_to"] = "pre_teleport";
 		animations.push_back(unit_animation(anim));
-		animations.back().unit_anim_.remove_frames_after(0);
+		animations.back().unit_anim_.set_end_time(0);
 		anim["apply_to"] ="post_teleport";
 		animations.push_back(unit_animation(anim));
 		animations.back().unit_anim_.remove_frames_until(0);
@@ -713,7 +713,7 @@ void unit_animation::particule::override(int start_time
 		const unit_frame & last_frame = get_last_frame();
 		add_frame(duration -get_animation_duration(), last_frame);
 	} else if(get_animation_duration() > duration) {
-		remove_frames_after(duration);
+		set_end_time(duration);
 	}
 
 }
