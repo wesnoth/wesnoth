@@ -145,7 +145,7 @@ def formaltype(f):
     # Deduce the expected type of the formal
     if f.startswith("_"):
         f = f[1:]
-    if f in ("SIDE", "X", "Y", "RED", "GREEN", "BLUE", "TURN", "RADIUS", "PROB", "LAYER", "TIME") or f.endswith("_SIDE") or f.endswith("NUMBER") or f.endswith("AMOUNT") or f.endswith("COST") or f.endswith("_X") or f.endswith("_Y") or f.endswith("_INCREMENT") or f.endswith("_FACTOR") or f.endswith("_TIME") or f.endswith("_SIZE"):
+    if f in ("SIDE", "X", "Y", "RED", "GREEN", "BLUE", "TURN", "PROB", "LAYER", "TIME") or f.endswith("_SIDE") or f.endswith("NUMBER") or f.endswith("AMOUNT") or f.endswith("COST") or f.endswith("RADIUS") or f.endswith("_X") or f.endswith("_Y") or f.endswith("_INCREMENT") or f.endswith("_FACTOR") or f.endswith("_TIME") or f.endswith("_SIZE"):
         ftype = "numeric"
     elif f in ("POSITION",) or f.endswith("_POSITION") or f == "BASE":
         ftype = "position"
@@ -157,9 +157,11 @@ def formaltype(f):
         ftype = "range"
     elif f in ("ALIGN",):
         ftype = "alignment"
+    elif f in ("TYPES",):
+        ftype = "types"
     elif f == "TERRAIN":
         ftype = "terrain_code"
-    elif f.startswith("ADJACENT") or f.startswith("TERRAINLIST") or f == "TERRAIN_PATTERN":
+    elif f.startswith("ADJACENT") or f.startswith("TERRAINLIST") or f.endswith("TERRAIN_PATTERN"):
         ftype = "terrain_pattern"
     elif f in ("NAME", "VAR", "IMAGESTEM", "ID", "FLAG") or f.endswith("_NAME") or f.endswith("_ID"):
         ftype = "name"
@@ -246,6 +248,8 @@ def argmatch(formals, actuals):
         elif atype in ("numeric", "position", "span", "empty") and ftype == "alliance":
             pass
         elif atype in ("terrain_code", "shortname", "name") and ftype == "terrain_pattern":
+            pass
+        elif atype in ("string", "shortname", "name") and ftype == "types":
             pass
         elif atype != ftype and ftype is not None and atype is not None:
             return False
