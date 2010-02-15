@@ -48,6 +48,7 @@ public:
 
 	virtual void do_parse_goal_from_config(const config &cfg, std::back_insert_iterator<std::vector< goal_ptr > > b );
 
+	virtual void do_parse_engine_from_config(const config &cfg, std::back_insert_iterator<std::vector< engine_ptr > > b );
 
 };
 

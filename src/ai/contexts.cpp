@@ -590,6 +590,7 @@ engine_ptr readonly_context_impl::get_engine_by_cfg(const config& cfg)
 		return *en;
 	}
 
+	//TODO: fix, removing some code duplication
 	engine_factory::factory_map::iterator eng = engine_factory::get_list().find(engine_name);
 	if (eng == engine_factory::get_list().end()){
 		ERR_AI << "side "<<get_side()<<" : UNABLE TO FIND engine["<<

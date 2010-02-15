@@ -113,4 +113,22 @@ void engine_cpp::do_parse_goal_from_config(const config &cfg, std::back_insert_i
 }
 
 
+void engine_cpp::do_parse_engine_from_config(const config &cfg, std::back_insert_iterator<std::vector< engine_ptr > > b )
+{
+	engine_factory::factory_map::iterator f = engine_factory::get_list().find(cfg["name"]);
+	if (f == engine_factory::get_list().end()){
+		ERR_AI_ENGINE_CPP << "side "<<ai_.get_side()<< " : UNKNOWN engine["<<cfg["name"]<<"]"<< std::endl;
+		DBG_AI_ENGINE_CPP << "config snippet contains: " << std::endl << cfg << std::endl;
+		return;
+	}
+	engine_ptr new_engine = f->second->get_new_instance(ai_,cfg);
+	if (!new_engine) {
+		ERR_AI_ENGINE_CPP << "side "<<ai_.get_side()<< " : UNABLE TO CREATE engine["<<cfg["name"]<<"]"<< std::endl;
+		DBG_AI_ENGINE_CPP << "config snippet contains: " << std::endl << cfg << std::endl;
+		return;
+	}
+	*b = new_engine;
+}
+
+
 } //end of namespace ai
