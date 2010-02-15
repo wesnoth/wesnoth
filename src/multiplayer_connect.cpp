@@ -72,6 +72,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	gold_(lexical_cast_default<int>(cfg_.get_attribute("gold"), 100)),
 	income_(lexical_cast_default<int>(cfg_.get_attribute("income"), 0)),
 	leader_(),
+	ready_for_start_(false),
 	gender_(),
 	ai_algorithm_(),
 	player_number_(parent.video(), lexical_cast_default<std::string>(index+1, ""),
@@ -335,7 +336,7 @@ connect::side::side(const side& a) :
 	current_player_(a.current_player_),
 	controller_(a.controller_),
 	faction_(a.faction_), team_(a.team_), colour_(a.colour_),
-	gold_(a.gold_), income_(a.income_), leader_(a.leader_), /* taken_(a.taken_), */
+	gold_(a.gold_), income_(a.income_), leader_(a.leader_), ready_for_start_(a.ready_for_start_),
 	gender_(a.gender_),
 	ai_algorithm_(a.ai_algorithm_),
 	player_number_(a.player_number_), combo_controller_(a.combo_controller_),
@@ -413,6 +414,7 @@ void connect::side::process_event()
 			// Correct entry number if CNTR_NETWORK is not allowed for combo_controller_
 			controller_ = mp::controller(combo_controller_->selected() + (parent_->local_only_ ? 1 : 0));
 			player_id_ = "";
+			ready_for_start_ = false;
 			changed_ = true;
 		} else {
 			// give user second side
@@ -422,6 +424,7 @@ void connect::side::process_event()
 			if (new_id != player_id_) {
 				player_id_ = new_id;
 				controller_ = parent_->users_[user].controller;
+				ready_for_start_ = true;
 				changed_ = true;
 			}
 		}
@@ -489,6 +492,21 @@ bool connect::side::changed()
 	bool res = changed_;
 	changed_ = false;
 	return res;
+}
+
+bool connect::side::ready_for_start() const
+{
+	//sides without players are always ready
+	if (!allow_player_)
+		return true;
+
+	//the host and the AI are always ready
+	if ((controller_ == mp::CNTR_COMPUTER) ||
+		(controller_ == mp::CNTR_EMPTY) ||
+		(controller_ == mp::CNTR_LOCAL))
+		return true;
+
+	return ready_for_start_;
 }
 
 bool connect::side::available(const std::string& name) const
@@ -820,6 +838,11 @@ void connect::side::set_player_id(const std::string& player_id)
 	update_ui();
 }
 
+void connect::side::set_ready_for_start(bool ready_for_start)
+{
+	ready_for_start_ = ready_for_start;
+}
+
 const std::string& connect::side::get_save_id() const
 {
 	return save_id_;
@@ -856,6 +879,9 @@ void connect::side::reset(mp::controller controller)
 {
 	player_id_ = "";
 	controller_ = controller;
+
+	if ((controller == mp::CNTR_NETWORK) || (controller == mp::CNTR_RESERVED))
+		ready_for_start_ = false;
 
 	if(enabled_ && !parent_->era_sides_.empty()) {
 		if(combo_faction_.enabled())
@@ -1265,6 +1291,7 @@ void connect::process_network_data(const config& data, const network::connection
 		int side_taken = find_player_side(change_faction["name"]);
 		if(side_taken != -1) {
 			sides_[side_taken].import_network_user(change_faction);
+			sides_[side_taken].set_ready_for_start(true);
 			update_playerlist_state();
 			update_and_send_diff();
 		}
@@ -1635,6 +1662,15 @@ void connect::update_and_send_diff(bool update_time_of_day)
 	}
 }
 
+bool connect::sides_ready() const
+{
+	for(side_list::const_iterator itor = sides_.begin(); itor != sides_.end(); ++itor) {
+		if (!itor->ready_for_start())
+			return false;
+	}
+	return true;
+}
+
 bool connect::sides_available() const
 {
 	for(side_list::const_iterator itor = sides_.begin(); itor != sides_.end(); ++itor) {
@@ -1646,7 +1682,7 @@ bool connect::sides_available() const
 
 bool connect::can_start_game() const
 {
-	if(sides_available()) {
+	if(!sides_ready()) {
 		return false;
 	}
 

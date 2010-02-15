@@ -80,6 +80,9 @@ public:
 		 */
 		bool available(const std::string& name = "") const;
 
+		/** Returns true, if the player has chosen his leader and this side is ready for the game to start */
+		bool ready_for_start() const;
+		
 		/** Return true if players are allowed to take this side. */
 		bool allow_player() const;
 
@@ -98,6 +101,9 @@ public:
 
 		/** Sets the username of this side. */
 		void set_player_id(const std::string& player_id);
+
+		/** Sets if the joining player has chosen his leader. */
+		void set_ready_for_start(bool ready_for_start);
 
 		const std::string& get_save_id() const;
 
@@ -151,7 +157,7 @@ public:
 		std::string leader_;
 		std::string gender_;
 		std::string ai_algorithm_;
-		//bool taken_;
+		bool ready_for_start_;
 
 		// Widgets for this side
 		gui::label player_number_;
@@ -231,6 +237,9 @@ private:
 
 	/** Returns true if there still are sides available for this game. */
 	bool sides_available() const;
+
+	/** Returns true if all sides are ready to start the game. */
+	bool sides_ready() const;
 
 	/**
 	 * Validates whether the game can be started.
