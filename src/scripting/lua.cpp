@@ -54,10 +54,12 @@ extern "C" {
 #include "scripting/lua.hpp"
 #include "terrain_translation.hpp"
 #include "unit.hpp"
+#include "ai/actions.hpp"
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
+
 
 /**
  * Stack storing the queued_event objects needed for calling WML actions.
@@ -95,6 +97,7 @@ static char const tstringKey = 0;
 static char const uactionKey = 0;
 static char const vconfigKey = 0;
 static char const wactionKey = 0;
+static char const aisKey     = 0;
 
 /* Global definition so that it does not leak on longjmp. */
 static std::string error_buffer;
@@ -1845,6 +1848,72 @@ static int intf_float_label(lua_State *L)
 	return 0;
 }
 
+//start of ai_ functions
+static int intf_ai_execute_move(lua_State *L)
+{
+	int side = lua_tointeger(L, 1);
+	map_location from;
+	from.x = lua_tointeger(L, 2) - 1;
+	from.y = lua_tointeger(L, 3) - 1;
+	map_location to;
+	to.x = lua_tointeger(L, 4) - 1;
+	to.y = lua_tointeger(L, 5) - 1;
+	bool remove_movement = lua_toboolean(L, 6);
+	ai::actions::execute_move_action(side,true,from,to,remove_movement);
+	return 0;
+}
+
+static int intf_ai_execute_attack(lua_State *L)
+{
+	int side = lua_tointeger(L, 1);
+	map_location attacker;
+	attacker.x = lua_tointeger(L, 2) - 1;
+	attacker.y = lua_tointeger(L, 3) - 1;
+	map_location defender;
+	defender.x = lua_tointeger(L, 4) - 1;
+	defender.y = lua_tointeger(L, 5) - 1;
+	int attacker_weapon = lua_tointeger(L, 6);
+	double aggression = lua_tonumber(L, 7);
+	ai::actions::execute_attack_action(side,true,attacker,defender,attacker_weapon,aggression);
+	return 0;
+}
+
+static int intf_ai_execute_stopunit(lua_State *L)
+{
+	int side = lua_tointeger(L, 1);
+	map_location loc;
+	loc.x = lua_tointeger(L, 2) - 1;
+	loc.y = lua_tointeger(L, 3) - 1;
+	bool remove_movement = lua_toboolean(L, 4);
+	bool remove_attacks = lua_toboolean(L, 5);
+	ai::actions::execute_stopunit_action(side,true,loc,remove_movement,remove_attacks);
+	return 0;
+}
+
+static int intf_ai_execute_recruit(lua_State *L)
+{
+	int side = lua_tointeger(L, 1);
+	const char* unit_name = lua_tostring(L,2);
+	map_location where;
+	where.x = lua_tointeger(L, 3) - 1;
+	where.y = lua_tointeger(L, 4) - 1;
+	ai::actions::execute_recruit_action(side,true,std::string(unit_name),where);
+	return 0;
+}
+
+
+static int intf_ai_execute_recall(lua_State *L)
+{
+	int side = lua_tointeger(L, 1);
+	const char* unit_id = lua_tostring(L,2);
+	map_location where;
+	where.x = lua_tointeger(L, 3) - 1;
+	where.y = lua_tointeger(L, 4) - 1;
+	ai::actions::execute_recall_action(side,true,std::string(unit_id),where);
+	return 0;
+}
+//end of ai_ functions
+
 LuaKernel::LuaKernel()
 	: mState(luaL_newstate())
 {
@@ -1868,6 +1937,11 @@ LuaKernel::LuaKernel()
 
 	// Put some callback functions in the scripting environment.
 	static luaL_reg const callbacks[] = {
+		{ "ai_execute_move",          &intf_ai_execute_move          },
+		{ "ai_execute_attack",        &intf_ai_execute_attack        },
+		{ "ai_execute_stopunit",      &intf_ai_execute_stopunit      },
+		{ "ai_execute_recruit",       &intf_ai_execute_recruit       },
+		{ "ai_execute_recall",        &intf_ai_execute_recall        },
 		{ "dofile",                   &intf_dofile                   },
 		{ "fire",                     &intf_fire                     },
 		{ "fire_event",               &lua_fire_event                },
@@ -1973,6 +2047,13 @@ LuaKernel::LuaKernel()
 	lua_pushstring(L, "wml action handler");
 	lua_setfield(L, -2, "__metatable");
 	lua_rawset(L, LUA_REGISTRYINDEX);
+
+
+	// Create the ai elements table.
+	lua_pushlightuserdata(L, (void *)&aisKey);
+	lua_newtable(L);
+	lua_rawset(L, LUA_REGISTRYINDEX);
+
 
 	// Delete dofile and loadfile.
 	lua_pushnil(L);
@@ -2124,4 +2205,108 @@ bool LuaKernel::execute(char const *prog, int nArgs, int nRets)
 		lua_insert(L, -1 - nArgs);
 
 	return luaW_pcall(L, nArgs, nRets);
+}
+
+
+// ai support stuff
+lua_ai_context* LuaKernel::create_ai_context(char const *code, int side)
+{
+	lua_State *L = mState;
+	int res_ai = luaL_loadstring(L, code);//stack size is now 1 [ -1: ai_context]
+	if (res_ai)
+	{
+
+		char const *m = lua_tostring(L, -1);
+		ERR_LUA << "error while initializing ai:  " <<m << '\n';
+		lua_pop(L, 2);//return with stack size 0 []
+		return NULL;
+	}
+
+	lua_pushinteger(L,side);
+	luaW_pcall(L, 1, 1, true);//compile the ai
+	// Retrieve the ai elements table from the registry.
+	lua_pushlightuserdata(L, (void *)&aisKey);
+	lua_rawget(L, LUA_REGISTRYINDEX);   //stack size is now 2  [-1: ais_table -2: f]
+	// Push the function in the table so that it is not collected.
+	size_t length_ai = lua_objlen(L, -1);//length of ais_table
+	lua_pushvalue(L, -2); //stack size is now 3: [-1: ai_context  -2: ais_table  -3: ai_context]
+	lua_rawseti(L, -2, length_ai + 1);// ais_table[length+1]=ai_context.  stack size is now 2 [-1: ais_table  -2: ai_context]
+	lua_remove(L, -1);//stack size is now 1 [-1: ai_context]
+	lua_remove(L, -1);//stack size is now 0 []
+	return new lua_ai_context(L, length_ai + 1);
+}
+
+lua_ai_action_handler* LuaKernel::create_ai_action_handler(char const *code, lua_ai_context &context)
+{
+	lua_State *L = mState;
+
+	int res = luaL_loadstring(L, code);//stack size is now 1 [ -1: f]
+	if (res)
+	{
+		char const *m = lua_tostring(L, -1);
+		ERR_LUA << "error while creating ai function:  " <<m << '\n';
+		lua_pop(L, 2);//return with stack size 0 []
+		return NULL;
+	}
+
+
+	// Retrieve the ai elements table from the registry.
+	lua_pushlightuserdata(L, (void *)&aisKey);
+	lua_rawget(L, LUA_REGISTRYINDEX);   //stack size is now 2  [-1: ais_table -2: f]
+	// Push the function in the table so that it is not collected.
+	size_t length = lua_objlen(L, -1);//length of ais_table
+	lua_pushvalue(L, -2); //stack size is now 3: [-1: f  -2: ais_table  -3: f]
+	lua_rawseti(L, -2, length + 1);// ais_table[length+1]=f.  stack size is now 2 [-1: ais_table  -2: f]
+	lua_remove(L, -1);//stack size is now 1 [-1: f]
+	lua_remove(L, -1);//stack size is now 0 []
+	// Create the proxy C++ action handler.
+	return new lua_ai_action_handler(L, context, length + 1);
+}
+
+
+//will be moved to separate file
+void lua_ai_context::load()
+{
+	lua_pushlightuserdata(L, (void *)&aisKey);//stack size is now 1 [-1: ais_table key]
+	lua_rawget(L, LUA_REGISTRYINDEX);//stack size is still 1 [-1: ais_table]
+	lua_rawgeti(L, -1, num_);//stack size is 2 [-1: ai_context -2: ais_table]
+	lua_remove(L,-2);
+}
+
+
+lua_ai_context::~lua_ai_context()
+{
+	// Remove the ai context from the registry, so that it can be collected.
+	lua_pushlightuserdata(L, (void *)&aisKey);
+	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_pushnil(L);
+	lua_rawseti(L, -2, num_);
+	lua_pop(L, 1);
+}
+
+
+
+/**
+ * handling of config in-out parameter will be done later
+ */
+void lua_ai_action_handler::handle(config &/*cfg*/)
+{
+	// Load the user function from the registry.
+	lua_pushlightuserdata(L, (void *)&aisKey);//stack size is now 1 [-1: ais_table key]
+	lua_rawget(L, LUA_REGISTRYINDEX);//stack size is still 1 [-1: ais_table]
+	lua_rawgeti(L, -1, num_);//stack size is 2 [-1: ai_action  -2: ais_table]
+	lua_remove(L,-2);//stack size is 1 [-1: ai_action]
+	//load the lua ai context as a parameter
+	context_.load();//stack size is 2 [-1: ai_context  -2: ai_action]
+	luaW_pcall(L, 1, 0, true);
+}
+
+lua_ai_action_handler::~lua_ai_action_handler()
+{
+	// Remove the function from the registry, so that it can be collected.
+	lua_pushlightuserdata(L, (void *)&aisKey);
+	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_pushnil(L);
+	lua_rawseti(L, -2, num_);
+	lua_pop(L, 1);
 }

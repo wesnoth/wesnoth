@@ -21,6 +21,9 @@
 #include "engine_lua.hpp"
 #include "rca.hpp"
 #include "../../log.hpp"
+#include "../../resources.hpp"
+#include "../../scripting/lua.hpp"
+#include "../gamestate_observer.hpp"
 
 namespace ai {
 
@@ -38,10 +41,11 @@ static lg::log_domain log_ai_engine_lua("ai/engine/lua");
 
 class lua_candidate_action_wrapper : public candidate_action {
 public:
-	lua_candidate_action_wrapper( rca_context &context, const config &cfg )
-		: candidate_action(context,cfg),cfg_(cfg)
+	lua_candidate_action_wrapper( rca_context &context, const config &cfg, lua_ai_context &lua_ai_ctx)
+		: candidate_action(context,cfg),evaluation_(cfg["evaluation"]),evaluation_action_handler_(),execution_(cfg["execution"]),execution_action_handler_(),serialized_evaluation_state_()
 	{
-
+		evaluation_action_handler_ = boost::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_ai_action_handler(evaluation_.c_str(),lua_ai_ctx));
+		execution_action_handler_ = boost::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_ai_action_handler(execution_.c_str(),lua_ai_ctx));
 	}
 
 	virtual ~lua_candidate_action_wrapper() {}
@@ -49,22 +53,75 @@ public:
 
 	virtual double evaluate()
 	{
-		//@todo: lua must evaluate the score and return it
-		return 0;
+		serialized_evaluation_state_ = config();
+		if (evaluation_action_handler_) {
+			evaluation_action_handler_->handle(serialized_evaluation_state_);
+		} else {
+			return BAD_SCORE;
+		}
+
+		return lexical_cast_default<double>(serialized_evaluation_state_["score"],BAD_SCORE);
 	}
 
 
 	virtual void execute()
 	{
-		//@todo: lua must do the actions.
+		if (execution_action_handler_) {
+			execution_action_handler_->handle(serialized_evaluation_state_);
+		}
 	}
 
 	virtual config to_config() const
 	{
-		return cfg_;//or we can serialize our current state to config instead of using original cfg
+		config cfg = candidate_action::to_config();
+		cfg["evaluation"] = evaluation_;
+		cfg["execution"] = execution_;
+		cfg.add_child("state",serialized_evaluation_state_);
+		return cfg;
 	}
 private:
-	const config cfg_;
+	std::string evaluation_;
+	boost::shared_ptr<lua_ai_action_handler> evaluation_action_handler_;
+	std::string execution_;
+	boost::shared_ptr<lua_ai_action_handler> execution_action_handler_;
+	config serialized_evaluation_state_;
+};
+
+
+
+class lua_stage_wrapper : public stage {
+public:
+	lua_stage_wrapper( ai_context &context, const config &cfg, lua_ai_context &lua_ai_ctx )
+		: stage(context,cfg),action_handler_(),code_(cfg["code"]),serialized_evaluation_state_(cfg.child_or_empty("state"))
+	{
+		action_handler_ =  boost::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_ai_action_handler(code_.c_str(),lua_ai_ctx));
+	}
+
+	virtual ~lua_stage_wrapper()
+	{
+	}
+
+	virtual bool do_play_stage()
+	{
+		gamestate_observer gs_o;
+		if (action_handler_) {
+			action_handler_->handle(serialized_evaluation_state_);
+		}
+
+		return gs_o.is_gamestate_changed();
+	}
+
+	virtual config to_config() const
+	{
+		config cfg = stage::to_config();
+		cfg["code"] = code_;
+		cfg.add_child("state",serialized_evaluation_state_);
+		return cfg;
+	}
+private:
+	boost::shared_ptr<lua_ai_action_handler> action_handler_;
+	std::string code_;
+	config serialized_evaluation_state_;
 };
 
 
@@ -76,6 +133,7 @@ engine_lua::engine_lua( readonly_context &context, const config &cfg )
 	: engine(context,cfg)
 {
 	name_ = "lua";
+	lua_ai_context_ =  boost::shared_ptr<lua_ai_context>(resources::lua_kernel->create_ai_context(cfg["code"].c_str(),context.get_side()));//will be moved to set_ai_context
 }
 
 
@@ -84,28 +142,32 @@ engine_lua::~engine_lua()
 }
 
 
-void engine_lua::do_parse_candidate_action_from_config( rca_context & /*context*/, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr > > b ){
+void engine_lua::do_parse_candidate_action_from_config( rca_context &context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr > > b ){
 	if (!cfg) {
 		return;
 	}
-	candidate_action_ptr ca_ptr;
-	//@todo : need to code an adapter class which implements the candidate action interface
-	//ca_ptr = candidate_action_ptr(new lua_candidate_action_wrapper(context,cfg));
+
+	if (!lua_ai_context_) {
+		return;
+	}
+
+	candidate_action_ptr ca_ptr = candidate_action_ptr(new lua_candidate_action_wrapper(context,cfg,*lua_ai_context_));
 	if (ca_ptr) {
 		*b = ca_ptr;
 	}
 }
 
-void engine_lua::do_parse_stage_from_config( ai_context & /*context*/, const config &cfg, std::back_insert_iterator<std::vector< stage_ptr > > b )
+void engine_lua::do_parse_stage_from_config( ai_context &context, const config &cfg, std::back_insert_iterator<std::vector< stage_ptr > > b )
 {
 	if (!cfg) {
 		return;
 	}
-	stage_ptr st_ptr;
 
-	//@todo : need to code an adapter class which implements the stage interface
-	//it's simple - the main part is do_play_stage() method
-	//st_ptr = stage_ptr(new lua_stage_wrapper(context,cfg));
+	if (!lua_ai_context_) {
+		return;
+	}
+
+	stage_ptr st_ptr = stage_ptr(new lua_stage_wrapper(context,cfg,*lua_ai_context_));
 	if (st_ptr) {
 		st_ptr->on_create();
 		*b = st_ptr;
