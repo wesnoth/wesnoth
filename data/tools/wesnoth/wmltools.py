@@ -173,7 +173,7 @@ def formaltype(f):
         ftype = "image"
     elif f.endswith("MUSIC",) or f.endswith("SOUND"):
         ftype = "sound"
-    elif f in ("FILTER",):
+    elif f.endswith("FILTER",):
         ftype = "filter"
     elif f == "WML" or f.endswith("_WML"):
         ftype = "wml"
