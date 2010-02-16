@@ -187,6 +187,7 @@ void write_players(game_state& gamestate, config& cfg, const bool use_snapshot, 
 			foreach (config* carryover_side, source->get_children(side_tag)) {
 				config *scenario_side = NULL;
 
+				//TODO: use the player_id instead of the save_id for that
 				if (config& c = cfg.find_child("side", "save_id", (*carryover_side)["save_id"])) {
 					scenario_side = &c;
 				} else if (config& c = cfg.find_child("side", "id", (*carryover_side)["save_id"])) {
@@ -221,6 +222,7 @@ void write_players(game_state& gamestate, config& cfg, const bool use_snapshot, 
 						(*scenario_side)["previous_recruits"]	= (*carryover_side)["can_recruit"];
 					}
 					(*scenario_side)["name"] = (*carryover_side)["name"];
+					(*scenario_side)["current_player"] = (*carryover_side)["current_player"];
 					(*scenario_side)["colour"] = (*carryover_side)["colour"];
 					//add recallable units
 					foreach (const config* u, carryover_side->get_children("unit")) {
@@ -940,7 +942,7 @@ protected:
 
 		// Find the first leader and use its name as the player name.
 		unit_map::iterator u = resources::units->find_first_leader(t_->side());
-		if (u != resources::units->end())
+		if ((u != resources::units->end()) && t_->current_player().empty())
 			t_->set_current_player(u->second.name());
 
 	}

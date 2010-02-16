@@ -495,6 +495,7 @@ void playmp_controller::play_network_turn(){
 		}
 
 		play_slice();
+		check_end_level();
 
 		if (!network_processing_stopped_){
 			turn_data.send_data();

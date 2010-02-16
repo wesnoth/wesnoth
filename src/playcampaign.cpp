@@ -497,20 +497,23 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				{
 					std::string id = side["save_id"];
 					if(id.empty()) {
-						continue;
+						id = side["id"];
 					}
-
-					/* Update side info to match current_player info
-					 * to allow it taking the side in next scenario
-					 * and to be set in the players list on side server
-					 */
-					controller_map::const_iterator ctr = controllers.find(id);
-					if(ctr != controllers.end()) {
-						if (const config& c = gamestate.snapshot.find_child("side", "save_id", id)) {
-							side["current_player"] = c["name"];
+					if(!id.empty()) {
+						/* Update side info to match current_player info
+						 * to allow it taking the side in next scenario
+						 * and to be set in the players list on side server
+						 */
+						controller_map::const_iterator ctr = controllers.find(id);
+						if(ctr != controllers.end()) {
+							if (const config& c = gamestate.snapshot.find_child("side", "save_id", id)) {
+								side["current_player"] = c["current_player"];
+							}
+							side["controller"] = ctr->second.controller;
 						}
-						side["controller"] = ctr->second.controller;
 					}
+					if (side["controller"].empty())
+						side["controller"] = "null";
 				}
 
 				// If the entire scenario should be randomly generated
@@ -557,6 +560,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				next_cfg["next_scenario"] = (*scenario)["next_scenario"];
 				next_cfg.add_child("snapshot");
 				gamestate.starting_pos = *scenario;
+				//move the player information into the hosts gamestate
 				write_players(gamestate, gamestate.starting_pos, true, true);
 				next_cfg.add_child("multiplayer", gamestate.mp_settings().to_config());
 				next_cfg.add_child("replay_start", gamestate.starting_pos);
