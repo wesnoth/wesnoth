@@ -789,6 +789,11 @@ class Parser:
                         subdata.set_meta(self.filename, self.line)
                         self.parse_top(subdata, name)
                         data.insert(subdata)
+                elif name[0] == " ":
+                    # We single this case out explicitly as the wesnoth parser
+                    # ignores it due to implementation reasons and this makes
+                    # more sense of the error message
+                    raise Error(self, "Invalid tag [%s] contains whitespace" % name)
                 else:
                     subdata = wmldata.DataSub(name)
                     subdata.set_meta(self.filename, self.line)
