@@ -653,6 +653,8 @@ class Parser:
         while 1:
             self.skip_whitespace_and_newlines()
             if self.at_end():
+                if state:
+                    raise Error(self, "Tag stack non-empty (%s) at end of data" % state)
                 break
             c = self.read_next()
             if c == "#": # comment or preprocessor
