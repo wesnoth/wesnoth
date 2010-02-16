@@ -36,6 +36,10 @@ validate:
 	# No UMC testing until $$(UMC) is fixed
 	./wmlvalidator -p $(DATA) #-u $(UMC)
 
+validate-gui:
+	# Check GUI WML for meaning and references.
+	./wmlvalidator -p $(DATA) -s $(DATA)/schema-gui.cfg $(DATA)/gui/default.cfg
+
 # Beware of removing images listed in this report unless you know
 # UMC is not relying on them!
 #
