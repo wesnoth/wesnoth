@@ -159,9 +159,9 @@ def formaltype(f):
         ftype = "alignment"
     elif f in ("TYPES",):
         ftype = "types"
-    elif f.startswith("ADJACENT") or f.startswith("TERRAINLIST") or f.endswith("TERRAIN_PATTERN"):
+    elif f.startswith("ADJACENT") or f.startswith("TERRAINLIST") or f.endswith("TERRAIN_PATTERN") or f == "RESTRICTING":
         ftype = "terrain_pattern"
-    elif f.startswith("TERRAIN"):
+    elif f.startswith("TERRAIN") or f.endswith("TERRAIN"):
         ftype = "terrain_code"
     elif f in ("NAME", "VAR", "IMAGESTEM", "ID", "FLAG") or f.endswith("_NAME") or f.endswith("_ID"):
         ftype = "name"
