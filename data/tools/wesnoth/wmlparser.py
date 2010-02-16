@@ -678,9 +678,13 @@ class Parser:
 
                 elif self.check_for("undef "):
                     self.read_until(" ")
-                    name = self.read_until(" \n")
+                    name = self.read_until("\n")
                     name = name.rstrip()
+                    if " " in name:
+                        if self.verbose: sys.stderr.write("Stray symbols in #undef %s\n" % name)
+                        name = name.split(" ")[0]
                     if name in self.macros: del self.macros[name]
+                    elif self.verbose: sys.stderr.write("undef'd macro '%s' did not exist\n" % name)
                 elif self.check_for("ifdef ") or self.check_for("ifndef"):
 
                     what = "#" + self.read_until(" ").rstrip()
