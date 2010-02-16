@@ -34,7 +34,7 @@ display* disp = NULL;
 class effect
 {
 public:
-	effect(int xpos, int ypos, const animated<std::string>::anim_description& img,
+	effect(int xpos, int ypos, const animated<image::locator>::anim_description& img,
 			const map_location& loc, ORIENTATION, bool infinite);
 
 	void set_location(int x, int y);
@@ -50,9 +50,9 @@ public:
 	void add_overlay_location(std::set<map_location>& locations);
 private:
 
-	const std::string& current_image() { return images_.get_current_frame(); }
+	const image::locator& current_image() { return images_.get_current_frame(); }
 
-	animated<std::string> images_;
+	animated<image::locator> images_;
 
 	ORIENTATION orientation_;
 
@@ -97,7 +97,7 @@ std::set<int> deleted_haloes;
  */
 std::set<int> changing_haloes;
 
-effect::effect(int xpos, int ypos, const animated<std::string>::anim_description& img,
+effect::effect(int xpos, int ypos, const animated<image::locator>::anim_description& img,
 		const map_location& loc, ORIENTATION orientation, bool infinite) :
 	images_(img),
 	orientation_(orientation),
@@ -276,7 +276,7 @@ int add(int x, int y, const std::string& image, const map_location& loc,
 		ORIENTATION orientation, bool infinite)
 {
 	const int id = halo_id++;
-	animated<std::string>::anim_description image_vector;
+	animated<image::locator>::anim_description image_vector;
 	std::vector<std::string> items = utils::paranthetical_split(image, ',');
 	std::vector<std::string>::const_iterator itor = items.begin();
 	for(; itor != items.end(); ++itor) {
@@ -291,7 +291,7 @@ int add(int x, int y, const std::string& image, const map_location& loc,
 			str = *itor;
 			time = 100;
 		}
-		image_vector.push_back(animated<std::string>::frame_description(time,std::string(str)));
+		image_vector.push_back(animated<image::locator>::frame_description(time,image::locator(str)));
 
 	}
 	haloes.insert(std::pair<int,effect>(id,effect(x,y,image_vector,loc,orientation,infinite)));
