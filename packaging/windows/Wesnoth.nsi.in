@@ -151,6 +151,8 @@
 
 Section "Battle for Wesnoth" BfWSection
 
+  SectionIn RO
+
   SetOutPath "$INSTDIR\manual"
   File /r /x .* doc\manual\*.html
   File /r /x .* doc\manual\styles
