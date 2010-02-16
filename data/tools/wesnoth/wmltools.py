@@ -159,10 +159,10 @@ def formaltype(f):
         ftype = "alignment"
     elif f in ("TYPES",):
         ftype = "types"
-    elif f == "TERRAIN":
-        ftype = "terrain_code"
     elif f.startswith("ADJACENT") or f.startswith("TERRAINLIST") or f.endswith("TERRAIN_PATTERN"):
         ftype = "terrain_pattern"
+    elif f.startswith("TERRAIN"):
+        ftype = "terrain_code"
     elif f in ("NAME", "VAR", "IMAGESTEM", "ID", "FLAG") or f.endswith("_NAME") or f.endswith("_ID"):
         ftype = "name"
     elif f in ("ID_STRING", "NAME_STRING", "DESCRIPTION"):
@@ -179,7 +179,8 @@ def formaltype(f):
         ftype = "wml"
     elif f in ("AFFIX",) or f.endswith("AFFIX"):
         ftype = "affix"
-    elif f.endswith("VALUE"):
+    # The regexp case avoids complaints about some wacky terrain macros.
+    elif f.endswith("VALUE") or re.match("[ARS][0-9]", f):
         ftype = "any"
     else:
         ftype = None
