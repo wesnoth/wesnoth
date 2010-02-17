@@ -157,6 +157,8 @@ ttree_view_node& ttree_view_node::add_child(
 			, size.y + best_size.y));
 
 		parent_widget_->need_layout_ = true;
+
+		parent_widget_->set_dirty();
 	}
 
 	return *itor;
@@ -241,6 +243,8 @@ void ttree_view_node::clear()
 			, size.y - height_reduction));
 
 		parent_widget_->need_layout_ = true;
+
+		parent_widget_->set_dirty();
 	}
 }
 
