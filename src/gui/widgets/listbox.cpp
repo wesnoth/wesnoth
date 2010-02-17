@@ -71,6 +71,8 @@ void tlistbox::remove_row(const unsigned row, unsigned count)
 	for(; count; --count) {
 		generator_->delete_item(row);
 	}
+
+	set_dirty();
 }
 
 void tlistbox::clear()
