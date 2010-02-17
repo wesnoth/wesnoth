@@ -40,10 +40,12 @@ terrain_type::terrain_type() :
 		mvt_type_(1, t_translation::VOID_TERRAIN),
 		def_type_(1, t_translation::VOID_TERRAIN),
 		union_type_(1, t_translation::VOID_TERRAIN),
-        height_adjust_(0),
+		height_adjust_(0),
+		height_adjust_set_(false),
 		submerge_(0.0),
+		submerge_set_(false),
 		light_modification_(0),
-        heals_(0),
+		heals_(0),
 		income_description_(),
 		income_description_ally_(),
 		income_description_enemy_(),
@@ -70,7 +72,9 @@ terrain_type::terrain_type(const config& cfg) :
 		def_type_(),
 		union_type_(),
 		height_adjust_(atoi(cfg["unit_height_adjust"].c_str())),
+		height_adjust_set_(!cfg["unit_height_adjust"].empty()),
 		submerge_(atof(cfg["submerge"].c_str())),
+		submerge_set_(!cfg["submerge"].empty()),
 		light_modification_(atoi(cfg["light"].c_str())),
 		heals_(lexical_cast_default<int>(cfg["heals"], 0)),
 		income_description_(),
@@ -178,8 +182,10 @@ terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay
 	mvt_type_(overlay.mvt_type_),
 	def_type_(overlay.def_type_),
 	union_type_(),
-	height_adjust_(overlay.height_adjust_),
-	submerge_(overlay.submerge_),
+	height_adjust_(base.height_adjust_),
+	height_adjust_set_(base.height_adjust_set_),
+	submerge_(base.submerge_),
+	submerge_set_(base.submerge_set_),
 	light_modification_(base.light_modification_ + overlay.light_modification_),
 	heals_(std::max<int>(base.heals_, overlay.heals_)),
 	income_description_(),
@@ -195,6 +201,16 @@ terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay
 	editor_default_base_(),
 	hide_in_editor_(base.hide_in_editor_ || overlay.hide_in_editor_)
 {
+
+	if(overlay.height_adjust_set_) {
+		height_adjust_set_ = true;
+		height_adjust_ = overlay.height_adjust_;
+	}
+
+	if(overlay.submerge_set_) {
+		submerge_set_ = true;
+		submerge_ = overlay.submerge_;
+	}
 
 	merge_alias_lists(mvt_type_, base.mvt_type_);
 	merge_alias_lists(def_type_, base.def_type_);

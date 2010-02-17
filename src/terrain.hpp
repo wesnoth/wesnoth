@@ -98,8 +98,10 @@ private:
 	t_translation::t_list union_type_;
 
 	int height_adjust_;
+	bool height_adjust_set_;
 
 	double submerge_;
+	bool submerge_set_;
 
 	int light_modification_, heals_;
 
