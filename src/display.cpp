@@ -1641,7 +1641,6 @@ void display::scroll_to_tiles(const std::vector<map_location>& locs,
 	int miny = 0;
 	int maxy = 0;
 	bool valid = false;
-	bool first_tile_on_screen = false;
 
 	for(std::vector<map_location>::const_iterator itor = locs.begin(); itor != locs.end() ; ++itor) {
 		if(get_map().on_board(*itor) == false) continue;
@@ -1656,7 +1655,6 @@ void display::scroll_to_tiles(const std::vector<map_location>& locs,
 			miny = y;
 			maxy = y;
 			valid = true;
-			first_tile_on_screen = !outside_area(map_area(), x, y);
 		} else {
 			int minx_new = std::min<int>(minx,x);
 			int miny_new = std::min<int>(miny,y);
