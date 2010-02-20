@@ -995,6 +995,8 @@ surface floating_label::create_surface()
 		// FIXME: @todo Better would be to only ignore colour markup or reset the colour after set_text().
 		if (colour_ != font::LABEL_COLOUR) use_markup_ = false;
 		text.set_text(text_, use_markup_);
+		// Reset the maximum width, as we want the smallest bounding box.
+		text.set_maximum_width(text.get_width());
 		surface foreground = text.render();
 
 		if(foreground == NULL) {
