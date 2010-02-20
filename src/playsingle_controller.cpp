@@ -139,7 +139,8 @@ void playsingle_controller::force_end_turn(){
 
 void playsingle_controller::check_end_level()
 {
-	if (level_result_ == NONE) return;
+	if ((level_result_ == NONE) || linger_)
+		return;
 	throw end_level_exception(level_result_);
 }
 
