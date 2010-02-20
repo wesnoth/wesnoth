@@ -105,7 +105,7 @@ private:
 public:
 
 	/** Inherited from tcontainer_. */
-	void set_size(const tpoint& origin, const tpoint& size);
+	void place(const tpoint& origin, const tpoint& size);
 
 	/** Inherited from tcontainer_. */
 	void set_origin(const tpoint& origin);

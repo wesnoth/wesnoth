@@ -231,7 +231,7 @@ public:
 	virtual tpoint calculate_best_size() const = 0;
 
 	/** Inherited from twidget. */
-	virtual void set_size(const tpoint& origin, const tpoint& size) = 0;
+	virtual void place(const tpoint& origin, const tpoint& size) = 0;
 
 	/** Inherited from twidget. */
 	virtual void set_origin(const tpoint& origin) = 0;

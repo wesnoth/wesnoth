@@ -100,7 +100,7 @@ tpoint twidget::get_best_size() const
 	return result;
 }
 
-void twidget::set_size(const tpoint& origin, const tpoint& size)
+void twidget::place(const tpoint& origin, const tpoint& size)
 {
 	assert(size.x >= 0);
 	assert(size.y >= 0);

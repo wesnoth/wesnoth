@@ -128,7 +128,7 @@ protected:
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
 	/** Inherited from tcontrol. */
-	void set_size(const tpoint& origin, const tpoint& size);
+	void place(const tpoint& origin, const tpoint& size);
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 

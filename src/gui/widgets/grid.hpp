@@ -234,9 +234,7 @@ public:
 
 public:
 	/** Inherited from twidget. */
-	void set_size(const tpoint& origin, const tpoint& size);
-
-	using twidget::set_size;
+	void place(const tpoint& origin, const tpoint& size);
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
@@ -305,12 +303,12 @@ private:
 		tpoint get_best_size() const;
 
 		/**
-		 * Sets the size of the widget in the cell.
+		 * Places the widget in the cell.
 		 *
 		 * @param origin          The origin (x, y) for the widget.
 		 * @param size            The size for the widget.
 		 */
-		void set_size(tpoint origin, tpoint size);
+		void place(tpoint origin, tpoint size);
 
 		/** Forwards layout_init() to the cell. */
 		void layout_init(const bool full_initialization);

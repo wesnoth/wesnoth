@@ -72,7 +72,7 @@ void ttree_view::remove_node(ttree_view_node* node)
 
 	/** @todo Test whether this resizing works properly. */
 	if(content_resize_request()) {
-		set_size(get_origin(), get_size());
+		place(get_origin(), get_size());
 	} else {
 		twindow *window = get_window();
 		assert(window);
@@ -100,7 +100,7 @@ bool ttree_view::empty() const
 void ttree_view::layout()
 {
 	if(need_layout_) {
-		root_node_->set_size(indention_step_size_
+		root_node_->place(indention_step_size_
 			, get_origin()
 			, root_node_->get_size().x);
 		root_node_->set_visible_area(content_visible_area_);

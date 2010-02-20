@@ -146,14 +146,12 @@ private:
 
 	void set_origin(const tpoint& origin);
 
-	void set_size(const tpoint& origin, const tpoint& size);
+	void place(const tpoint& origin, const tpoint& size);
 
-	unsigned set_size(
+	unsigned place(
 			  const unsigned indention_step_size
 			, tpoint origin
 			, unsigned width);
-
-	using twidget::set_size;
 
 	void set_visible_area(const SDL_Rect& area);
 

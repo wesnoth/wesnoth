@@ -62,14 +62,14 @@ void tcontainer_::demand_reduce_height(const unsigned maximum_height)
 	grid_.demand_reduce_height(maximum_height - border_space().y);
 }
 
-void tcontainer_::set_size(const tpoint& origin, const tpoint& size)
+void tcontainer_::place(const tpoint& origin, const tpoint& size)
 {
-	tcontrol::set_size(origin, size);
+	tcontrol::place(origin, size);
 
 	const SDL_Rect rect = get_client_rect();
 	const tpoint client_size(rect.w, rect.h);
 	const tpoint client_position(rect.x, rect.y);
-	grid_.set_size(client_position, client_size);
+	grid_.place(client_position, client_size);
 }
 
 tpoint tcontainer_::calculate_best_size() const

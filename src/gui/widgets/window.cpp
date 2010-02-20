@@ -876,7 +876,7 @@ void twindow::layout()
 	}
 
 	/***** Set the window size *****/
-	set_size(origin, size);
+	place(origin, size);
 
 	generate_dot_file("layout_finished", LAYOUT);
 	need_layout_ = false;
@@ -962,7 +962,7 @@ void twindow::do_show_tooltip(const tpoint& location, const t_string& tooltip)
 	}
 #endif
 
-	tooltip_.set_size(
+	tooltip_.place(
 			tpoint(tooltip_rect.x, tooltip_rect.y),
 			tpoint(tooltip_rect.w, tooltip_rect.h));
 
@@ -1016,7 +1016,7 @@ void twindow::do_show_help_popup(const tpoint& location, const t_string& help_po
 		help_popup_rect.x = client_rect.w - size.x;
 	}
 
-	help_popup_.set_size(
+	help_popup_.place(
 			tpoint(help_popup_rect.w, help_popup_rect.h),
 			tpoint(help_popup_rect.x, help_popup_rect.y));
 

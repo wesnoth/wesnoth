@@ -413,13 +413,13 @@ bool tgrid::can_wrap() const
 	return twidget::can_wrap();
 }
 
-void tgrid::set_size(const tpoint& origin, const tpoint& size)
+void tgrid::place(const tpoint& origin, const tpoint& size)
 {
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 
 	/***** INIT *****/
 
-	twidget::set_size(origin, size);
+	twidget::place(origin, size);
 
 	if(!rows_ || !cols_) {
 		return;
@@ -688,7 +688,7 @@ tpoint tgrid::tchild::get_best_size() const
 	return best_size;
 }
 
-void tgrid::tchild::set_size(tpoint origin, tpoint size)
+void tgrid::tchild::place(tpoint origin, tpoint size)
 {
 	assert(widget());
 	if(widget()->get_visible() == twidget::INVISIBLE) {
@@ -722,7 +722,7 @@ void tgrid::tchild::set_size(tpoint origin, tpoint size)
 				<< origin << " x " << size
 				<< ".\n";
 
-		widget()->set_size(origin, size);
+		widget()->place(origin, size);
 		return;
 	}
 
@@ -741,7 +741,7 @@ void tgrid::tchild::set_size(tpoint origin, tpoint size)
 					<< origin << " x " << size
 					<< ".\n";
 
-			widget()->set_size(origin, size);
+			widget()->place(origin, size);
 			return;
 
 		}
@@ -826,7 +826,7 @@ void tgrid::tchild::set_size(tpoint origin, tpoint size)
 			<< " resize widget to " << widget_orig << " x " << widget_size
 			<< ".\n";
 
-	widget()->set_size(widget_orig, widget_size);
+	widget()->place(widget_orig, widget_size);
 }
 
 void tgrid::tchild::layout_init(const bool full_initialization)
@@ -874,7 +874,7 @@ void tgrid::layout(const tpoint& origin)
 					<< ".\n";
 
 			if(child(row, col).widget()) {
-				child(row, col).set_size(orig, size);
+				child(row, col).place(orig, size);
 			}
 
 			orig.x += col_width_[col];

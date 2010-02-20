@@ -233,12 +233,15 @@ public:
 	virtual bool can_wrap() const { return false; }
 
 	/**
-	 * Sets the size of the widget.
+	 * Places the widget.
+	 *
+	 * This function is normally called by a layout function to do the
+	 * placement of a widget.
 	 *
 	 * @param origin              The position of top left of the widget.
 	 * @param size                The size of the widget.
 	 */
-	virtual void set_size(const tpoint& origin, const tpoint& size);
+	virtual void place(const tpoint& origin, const tpoint& size);
 
 	/**
 	 * Sets the size of the widget.

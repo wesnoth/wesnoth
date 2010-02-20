@@ -343,11 +343,10 @@ static void set_scrollbar_mode(tgrid* scrollbar_grid, tscrollbar_* scrollbar,
 	}
 }
 
-void tscrollbar_container::
-		set_size(const tpoint& origin, const tpoint& size)
+void tscrollbar_container::place(const tpoint& origin, const tpoint& size)
 {
 	// Inherited.
-	tcontainer_::set_size(origin, size);
+	tcontainer_::place(origin, size);
 
 	// Set content size
 	assert(content_ && content_grid_);
@@ -520,7 +519,7 @@ bool tscrollbar_container::content_resize_request(const bool force_sizing)
 
 resize:
 	DBG_GUI_L << LOG_HEADER << " handle resizing.\n";
-	set_size(get_origin(), get_size());
+	place(get_origin(), get_size());
 	return true;
 }
 
@@ -769,7 +768,7 @@ void tscrollbar_container::child_populate_dirty_list(twindow& caller,
 void tscrollbar_container::set_content_size(
 		const tpoint& origin, const tpoint& size)
 {
-	content_grid_->set_size(origin, size);
+	content_grid_->place(origin, size);
 }
 
 void tscrollbar_container::show_content_rect(const SDL_Rect& rect)

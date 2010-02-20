@@ -108,7 +108,7 @@ void tlistbox::set_row_shown(const unsigned row, const bool shown)
 		twindow::tinvalidate_layout_blocker invalidate_layout_blocker(*window);
 
 		generator_->set_item_shown(row, shown);
-		generator_->set_size(generator_->get_origin()
+		generator_->place(generator_->get_origin()
 				, generator_->calculate_best_size());
 		resize_needed = !content_resize_request();
 	}
@@ -142,7 +142,7 @@ void tlistbox::set_row_shown(const std::vector<bool>& shown)
 		for(size_t i = 0; i < shown.size(); ++i) {
 			generator_->set_item_shown(i, shown[i]);
 		}
-		generator_->set_size(generator_->get_origin()
+		generator_->place(generator_->get_origin()
 				, generator_->calculate_best_size());
 		resize_needed = !content_resize_request();
 	}
@@ -228,10 +228,10 @@ bool tlistbox::update_content_size()
 	return false;
 }
 
-void tlistbox::set_size(const tpoint& origin, const tpoint& size)
+void tlistbox::place(const tpoint& origin, const tpoint& size)
 {
 	// Inherited.
-	tscrollbar_container::set_size(origin, size);
+	tscrollbar_container::place(origin, size);
 
 	/**
 	 * @todo Work-around to set the selected item visible again.
@@ -436,7 +436,7 @@ void tlistbox::set_content_size(const tpoint& origin, const tpoint& size)
 
 	const int best_height = content_grid()->get_best_size().y;
 	const tpoint s(size.x, size.y < best_height ? size.y : best_height);
-	content_grid()->set_size(origin, s);
+	content_grid()->place(origin, s);
 }
 
 const std::string& tlistbox::get_control_type() const

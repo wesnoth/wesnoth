@@ -109,10 +109,10 @@ ttext_box::ttext_box()
 				::signal_handler_left_button_double_click, this, _2, _3));
 }
 
-void ttext_box::set_size(const tpoint& origin, const tpoint& size)
+void ttext_box::place(const tpoint& origin, const tpoint& size)
 {
 	// Inherited.
-	tcontrol::set_size(origin, size);
+	tcontrol::place(origin, size);
 
 	set_maximum_width(get_text_maximum_width());
 	set_maximum_height(get_text_maximum_height());

@@ -201,18 +201,12 @@ void ttree_view_node::fold(const bool /*recursive*/)
 {
 	// FIXME set state
 
-	parent_widget_->set_size(
-			  parent_widget_->get_origin()
-			, parent_widget_->get_size());
 }
 
 void ttree_view_node::unfold(const texpand_mode /*mode*/)
 {
 	// FIXME set state
 
-	parent_widget_->set_size(
-			  parent_widget_->get_origin()
-			, parent_widget_->get_size());
 }
 #endif
 
@@ -358,19 +352,19 @@ void ttree_view_node::set_origin(const tpoint& origin)
 	twidget::set_origin(origin);
 
 	assert(parent_widget_);
-	set_size(parent_widget_->indention_step_size_, origin, get_size().x);
+	place(parent_widget_->indention_step_size_, origin, get_size().x);
 }
 
-void ttree_view_node::set_size(const tpoint& origin, const tpoint& size)
+void ttree_view_node::place(const tpoint& origin, const tpoint& size)
 {
 	// Inherited.
-	twidget::set_size(origin, size);
+	twidget::place(origin, size);
 
 	assert(parent_widget_);
-	set_size(parent_widget_->indention_step_size_, origin, size.x);
+	place(parent_widget_->indention_step_size_, origin, size.x);
 }
 
-unsigned ttree_view_node::set_size(
+unsigned ttree_view_node::place(
 	  const unsigned indention_step_size
 	, tpoint origin
 	, unsigned width)
@@ -381,7 +375,7 @@ unsigned ttree_view_node::set_size(
 	const unsigned offset = origin.y;
 	tpoint best_size = grid_.get_best_size();
 	best_size.x = width;
-	grid_.set_size(origin, best_size);
+	grid_.place(origin, best_size);
 
 	if(!is_root_node()) {
 		origin.x += indention_step_size;
@@ -396,7 +390,7 @@ unsigned ttree_view_node::set_size(
 
 	DBG_GUI_L << LOG_HEADER << " set children.\n";
 	foreach(ttree_view_node& node, children_) {
-		origin.y += node.set_size(indention_step_size, origin, width);
+		origin.y += node.place(indention_step_size, origin, width);
 	}
 
 	// Inherited.
@@ -446,7 +440,7 @@ void ttree_view_node::signal_handler_left_button_click(
 // FIXME rewrite as well
 
 	if(parent_widget_->content_resize_request()) {
-		parent_widget_->set_size(
+		parent_widget_->place(
 				  parent_widget_->get_origin()
 				, parent_widget_->get_size());
 	} else {

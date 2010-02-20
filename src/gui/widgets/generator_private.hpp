@@ -207,7 +207,7 @@ struct thorizontal_list
 	 * @param origin              The origin of the generator.
 	 * @param size                The size of the generator.
 	 */
-	void set_size(const tpoint& origin, const tpoint& size);
+	void place(const tpoint& origin, const tpoint& size);
 
 	/**
 	 * Sets the origin of the generator.
@@ -281,8 +281,8 @@ struct tvertical_list
 	/** See thorizontal_list::calculate_best_size(). */
 	tpoint calculate_best_size() const;
 
-	/** See thorizontal_list::set_size(). */
-	void set_size(const tpoint& origin, const tpoint& size);
+	/** See thorizontal_list::place(). */
+	void place(const tpoint& origin, const tpoint& size);
 
 	/** See thorizontal_list::set_origin(). */
 	void set_origin(const tpoint& origin);
@@ -355,8 +355,8 @@ struct tmatrix
 	tpoint calculate_best_size() const
 		{ ERROR_LOG(false); }
 
-	/** See thorizontal_list::set_size(). */
-	void set_size(const tpoint& /*origin*/, const tpoint& /*size*/)
+	/** See thorizontal_list::place(). */
+	void place(const tpoint& /*origin*/, const tpoint& /*size*/)
 		{ ERROR_LOG(false); }
 
 	/** See thorizontal_list::set_origin(). */
@@ -418,8 +418,8 @@ struct tindependant
 	/** See thorizontal_list::calculate_best_size(). */
 	tpoint calculate_best_size() const;
 
-	/** See thorizontal_list::set_size(). */
-	void set_size(const tpoint& origin, const tpoint& size);
+	/** See thorizontal_list::place(). */
+	void place(const tpoint& origin, const tpoint& size);
 
 	/** See thorizontal_list::set_origin(). */
 	void set_origin(const tpoint& origin);
@@ -766,12 +766,12 @@ public:
 	}
 
 	/** Inherited from tgenerator_. */
-	void set_size(const tpoint& origin, const tpoint& size)
+	void place(const tpoint& origin, const tpoint& size)
 	{
 		// Inherited, so we get useful debug info.
-		twidget::set_size(origin, size);
+		twidget::place(origin, size);
 
-		placement::set_size(origin, size);
+		placement::place(origin, size);
 	}
 
 	/** Inherited from tgenerator_. */

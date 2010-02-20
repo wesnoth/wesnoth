@@ -134,7 +134,7 @@ tpoint thorizontal_list::calculate_best_size() const
 	return result;
 }
 
-void thorizontal_list::set_size(const tpoint& origin, const tpoint& size)
+void thorizontal_list::place(const tpoint& origin, const tpoint& size)
 {
 	/*
 	 * - Set every item to it's best size.
@@ -157,7 +157,7 @@ void thorizontal_list::set_size(const tpoint& origin, const tpoint& size)
 		// FIXME should we look at grow factors???
 		best_size.y = size.y;
 
-		grid.set_size(current_origin, best_size);
+		grid.place(current_origin, best_size);
 
 		current_origin.x += best_size.x;
 	}
@@ -329,7 +329,7 @@ tpoint tvertical_list::calculate_best_size() const
 	return result;
 }
 
-void tvertical_list::set_size(const tpoint& origin, const tpoint& size)
+void tvertical_list::place(const tpoint& origin, const tpoint& size)
 {
 	/*
 	 * - Set every item to it's best size.
@@ -352,7 +352,7 @@ void tvertical_list::set_size(const tpoint& origin, const tpoint& size)
 		// FIXME should we look at grow factors???
 		best_size.x = size.x;
 
-		grid.set_size(current_origin, best_size);
+		grid.place(current_origin, best_size);
 
 		current_origin.y += best_size.y;
 	}
@@ -528,12 +528,12 @@ tpoint tindependant::calculate_best_size() const
 	return result;
 }
 
-void tindependant::set_size(const tpoint& origin, const tpoint& size)
+void tindependant::place(const tpoint& origin, const tpoint& size)
 {
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		tgrid& grid = item(i);
-		grid.set_size(origin, size);
+		grid.place(origin, size);
 	}
 }
 

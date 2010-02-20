@@ -174,7 +174,7 @@ tpoint tcontrol::calculate_best_size() const
 	return result;
 }
 
-void tcontrol::set_size(const tpoint& origin, const tpoint& size)
+void tcontrol::place(const tpoint& origin, const tpoint& size)
 {
 	// resize canvasses
 	foreach(tcanvas& canvas, canvas_) {
@@ -191,7 +191,7 @@ void tcontrol::set_size(const tpoint& origin, const tpoint& size)
 	}
 
 	// inherited
-	twidget::set_size(origin, size);
+	twidget::place(origin, size);
 
 	// update the state of the canvas after the sizes have been set.
 	update_canvas();

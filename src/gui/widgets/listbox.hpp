@@ -195,7 +195,7 @@ public:
 	/***** ***** ***** ***** inherited ***** ***** ****** *****/
 
 	/** Inherited from tscrollbar_container. */
-	void set_size(const tpoint& origin, const tpoint& size);
+	void place(const tpoint& origin, const tpoint& size);
 
 	/** Inherited from tscrollbar_container. */
 	void child_populate_dirty_list(twindow& caller,

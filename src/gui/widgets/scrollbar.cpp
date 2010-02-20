@@ -101,10 +101,10 @@ void tscrollbar_::scroll(const tscroll scroll)
 		}
 }
 
-void tscrollbar_::set_size(const tpoint& origin, const tpoint& size)
+void tscrollbar_::place(const tpoint& origin, const tpoint& size)
 {
 	// Inherited.
-	tcontrol::set_size(origin, size);
+	tcontrol::place(origin, size);
 
 	recalculate();
 }
