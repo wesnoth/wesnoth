@@ -1622,8 +1622,12 @@ static int intf_find_path(lua_State *L)
 {
 	int arg = 1;
 	if (false) {
-		error_call_destructors:
-		return luaL_argerror(L, arg, "???");
+		error_call_destructors_1:
+		return luaL_typerror(L, 1, "unit");
+		error_call_destructors_2:
+		return luaL_typerror(L, arg, "number");
+		error_call_destructors_3:
+		return luaL_argerror(L, 1, "no unit found");
 	}
 
 	map_location src, dst;
@@ -1633,11 +1637,11 @@ static int intf_find_path(lua_State *L)
 	if (lua_isuserdata(L, arg))
 	{
 		if (!luaW_hasmetatable(L, 1, getunitKey))
-			goto error_call_destructors;
+			goto error_call_destructors_1;
 		size_t id = *static_cast<size_t *>(lua_touserdata(L, 1));
 		unit_map::const_unit_iterator ui = units.find(id);
 		if (!ui.valid())
-			goto error_call_destructors;
+			goto error_call_destructors_1;
 		u = &ui->second;
 		src = u->get_location();
 		++arg;
@@ -1645,31 +1649,29 @@ static int intf_find_path(lua_State *L)
 	else
 	{
 		if (!lua_isnumber(L, arg))
-			goto error_call_destructors;
+			goto error_call_destructors_2;
 		src.x = lua_tointeger(L, arg) - 1;
 		++arg;
 		if (!lua_isnumber(L, arg))
-			goto error_call_destructors;
+			goto error_call_destructors_2;
 		src.y = lua_tointeger(L, arg) - 1;
 		unit_map::const_unit_iterator ui = units.find(src);
-		if (!ui.valid())
-			goto error_call_destructors;
-		u = &ui->second;
+		if (ui.valid()) u = &ui->second;
 		++arg;
 	}
 
 	if (!lua_isnumber(L, arg))
-		goto error_call_destructors;
+		goto error_call_destructors_2;
 	dst.x = lua_tointeger(L, arg) - 1;
 	++arg;
 	if (!lua_isnumber(L, arg))
-		goto error_call_destructors;
+		goto error_call_destructors_2;
 	dst.y = lua_tointeger(L, arg) - 1;
 	++arg;
 
 	std::vector<team> &teams = *resources::teams;
 	gamemap &map = *resources::game_map;
-	int viewing_side = u->side();
+	int viewing_side = 0;
 	bool ignore_units = false, see_all = false, ignore_teleport = false;
 	double stop_at = 10000;
 	pathfind::cost_calculator *calc = NULL;
@@ -1706,20 +1708,16 @@ static int intf_find_path(lua_State *L)
 		calc = new lua_calculator(L, arg);
 	}
 
-	team &viewing_team = teams[viewing_side - 1];
-#ifndef EXPERIMENTAL
-	std::set<map_location> teleport_locations;
-
-	if (!ignore_teleport) {
-	  teleport_locations = pathfind::get_teleport_locations(
-			*u, units, viewing_team, see_all, ignore_units);
-	}
-#else
-	const pathfind::teleport_map teleport_locations = !ignore_teleport ? pathfind::get_teleport_locations(
-			*u, units, viewing_team, see_all, ignore_units) : pathfind::teleport_map();
-#endif
+	pathfind::teleport_map teleport_locations;
 
 	if (!calc) {
+		if (!u) goto error_call_destructors_3;
+
+		team &viewing_team = teams[(viewing_side ? viewing_side : u->side()) - 1];
+		if (!ignore_teleport) {
+			teleport_locations = pathfind::get_teleport_locations(
+				*u, units, viewing_team, see_all, ignore_units);
+		}
 		calc = new pathfind::shortest_path_calculator(*u, viewing_team,
 			units, teams, map, ignore_units, false, see_all);
 	}
