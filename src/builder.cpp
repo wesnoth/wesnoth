@@ -90,8 +90,10 @@ void terrain_builder::tile::add_image_to_cache(const std::string &tod, ordered_r
 
 		if(layer < 0 || (layer == 0 && basey < UNITPOS)) {
 			images_background.push_back(tod_variant->second.image);
+			images_background.back().set_animation_time(rand()%images_background.back().get_animation_duration());
 		} else {
 			images_foreground.push_back(tod_variant->second.image);
+			images_foreground.back().set_animation_time(rand()%images_foreground.back().get_animation_duration());
 		}
 	}
 }
@@ -320,8 +322,10 @@ bool terrain_builder::rule_valid(const building_rule &rule) const
 
 				// we already precached file existence in the constructor
 				// but only for filenames not using ".."
-				if(!image::exists("terrain/" + s + ".png", s.find("..") == std::string::npos))
+				if(!image::exists("terrain/" + s + ".png", s.find("..") == std::string::npos)){
+				//	printf("%s\n",s.c_str());
 					return false;
+				}
 			}
 		}
 	}
