@@ -109,57 +109,20 @@ void ttree_view::layout()
 	}
 }
 
-namespace {
-
-/**
- * Swaps an item in a grid for another one.*/
-void swap_grid(tgrid* grid,
-		tgrid* content_grid, twidget* widget, const std::string& id)
-{
-	assert(content_grid);
-	assert(widget);
-
-	// Make sure the new child has same id.
-	widget->set_id(id);
-
-	// Get the container containing the wanted widget.
-	tgrid* parent_grid = NULL;
-	if(grid) {
-		parent_grid = find_widget<tgrid>(grid, id, false, false);
-	}
-	if(!parent_grid) {
-		parent_grid = find_widget<tgrid>(content_grid, id, true, false);
-	}
-	assert(parent_grid);
-	parent_grid = dynamic_cast<tgrid*>(parent_grid->parent());
-	assert(parent_grid);
-
-	// Replace the child.
-	widget = parent_grid->swap_child(id, widget, false);
-	assert(widget);
-
-	delete widget;
-}
-
-} // namespace
-
 void ttree_view::finalize_setup()
 {
-	tgrid* g = new tgrid();
+	// Inherited.
+	tscrollbar_container::finalize_setup();
 
-	g->set_rows_cols(1, 1);
-	g->set_child(
+	assert(content_grid());
+	content_grid()->set_rows_cols(1, 1);
+	content_grid()->set_child(
 			  root_node_
 			, 0
 			, 0
 			, tgrid::VERTICAL_GROW_SEND_TO_CLIENT
 				| tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT
 			, 0);
-
-	swap_grid(NULL, &grid(), g/*root_node_*/, "_content_grid");
-
-	// Inherited.
-	tscrollbar_container::finalize_setup();
 }
 
 const std::string& ttree_view::get_control_type() const
