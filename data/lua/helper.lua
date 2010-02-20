@@ -258,4 +258,15 @@ function helper.get_user_choice(attr, options)
 	return result
 end
 
+--! Returns the distance between two tiles given by their WML coordinates.
+function helper.distance_between(x1, y1, x2, y2)
+	local function is_even(v) return v % 2 == 0 end
+	local hdist = math.abs(x1 - x2)
+	local vdist = math.abs(y1 - y2)
+	if (y1 < y2 and not is_even(x1) and is_even(x2)) or
+	   (y2 < y1 and not is_even(x2) and is_even(x1))
+	then vdist = vdist + 1 end
+	return math.max(hdist, vdist + math.floor(hdist / 2))
+end
+
 return helper
