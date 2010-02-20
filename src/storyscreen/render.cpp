@@ -132,11 +132,6 @@ void part_ui::prepare_geometry()
 	base_rect_.w = background_->w;
 	base_rect_.h = background_->h;
 
-	int next_button_loc_x, next_button_loc_y;
-	int skip_button_loc_x, skip_button_loc_y;
-	next_button_loc_x = next_button_loc_y = 0;
-	skip_button_loc_x = skip_button_loc_y = 0;
-
 #ifdef USE_TINY_GUI
 	// Use the whole screen for text on tinygui
 	text_x_ = 10;
