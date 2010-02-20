@@ -513,7 +513,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 						}
 					}
 					if (side["controller"].empty())
-						side["controller"] = "null";
+						side["controller"] = "ai";
 				}
 
 				// If the entire scenario should be randomly generated
