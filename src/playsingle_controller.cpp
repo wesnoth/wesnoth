@@ -652,7 +652,7 @@ void playsingle_controller::before_human_turn(bool save)
 }
 
 void playsingle_controller::show_turn_dialog(){
-	if(preferences::turn_dialog()) {
+	if(preferences::turn_dialog() && (level_result_ == NONE) ) {
 		std::string message = _("It is now $name|'s turn");
 		utils::string_map symbols;
 		symbols["name"] = teams_[player_number_ - 1].current_player();
