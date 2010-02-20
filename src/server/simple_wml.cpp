@@ -1139,7 +1139,6 @@ std::string document::stats()
 	int text_size = 0;
 	int nbuffers = 0;
 	int nnodes = 0;
-	int nhas_nodes = 0;
 	int ndirty = 0;
 	int nattributes = 0;
 	for(document* d = head_doc; d != NULL; d = d->next_) {
@@ -1157,7 +1156,6 @@ std::string document::stats()
 		}
 
 		if(d->root_) {
-			++nhas_nodes;
 			nnodes += 1 + d->root_->nchildren();
 			nattributes += d->root_->nattributes_recursive();
 		}
