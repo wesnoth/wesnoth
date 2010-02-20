@@ -37,6 +37,8 @@ namespace pathfind {
 
 #ifdef EXPERIMENTAL
 class teleport_map;
+#else
+typedef std::set<map_location> teleport_map;
 #endif
 
 enum VACANT_TILE_TYPE { VACANT_CASTLE, VACANT_ANY };
