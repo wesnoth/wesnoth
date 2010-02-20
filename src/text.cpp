@@ -81,6 +81,7 @@ ttext::ttext() :
 	maximum_width_(-1),
 	maximum_height_(-1),
 	ellipse_mode_(PANGO_ELLIPSIZE_END),
+	alignment_(PANGO_ALIGN_LEFT),
 	maximum_length_(std::string::npos),
 	calculation_dirty_(true),
 	length_(0),
@@ -91,6 +92,7 @@ ttext::ttext() :
 	pango_cairo_context_set_resolution(context_, 72.0);
 
 	pango_layout_set_ellipsize(layout_, ellipse_mode_);
+	pango_layout_set_alignment(layout_, alignment_);
 
 	/*
 	 * Set the pango spacing a bit bigger since the default is deemed to small
@@ -402,6 +404,15 @@ ttext& ttext::set_ellipse_mode(const PangoEllipsizeMode ellipse_mode)
 		surface_dirty_ = true;
 	}
 
+	return *this;
+}
+
+ttext &ttext::set_alignment(PangoAlignment alignment)
+{
+	if (alignment == alignment_) return *this;
+	pango_layout_set_alignment(layout_, alignment);
+	alignment_ = alignment;
+	surface_dirty_ = true;
 	return *this;
 }
 

@@ -177,6 +177,8 @@ public:
 
 	ttext& set_ellipse_mode(const PangoEllipsizeMode ellipse_mode);
 
+	ttext &set_alignment(PangoAlignment);
+
 	ttext& set_maximum_length(const size_t maximum_length);
 
 private:
@@ -222,6 +224,9 @@ private:
 
 	/** The way too long text is shown depends on this mode. */
 	PangoEllipsizeMode ellipse_mode_;
+
+	/** The alinment of the text. */
+	PangoAlignment alignment_;
 
 	/** The maximum length of the text. */
 	size_t maximum_length_;
