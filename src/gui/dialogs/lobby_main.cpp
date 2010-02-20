@@ -628,6 +628,14 @@ void tlobby_main::update_gamelist_diff()
 				network::send_data(config("refresh_lobby"), 0, true);
 				return;
 			}
+			if (list_i + list_rows_deleted > gamelist_id_at_row_.size()) {
+				ERR_LB << "gamelist_id_at_row_ overflow! "
+					<< list_i << " + " << list_rows_deleted
+					<< " > " << gamelist_id_at_row_.size()
+					<< " -- triggering a full refresh\n";
+				network::send_data(config("refresh_lobby"), 0, true);
+				return;
+			}
 			int listbox_game_id = gamelist_id_at_row_[list_i + list_rows_deleted];
 			if (game.id != listbox_game_id) {
 				ERR_LB << "Listbox game id does not match expected id "
