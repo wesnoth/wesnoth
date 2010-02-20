@@ -302,7 +302,6 @@ void show_about(display &disp, const std::string &campaign)
 
 		int y = text_rect.y - offset;
 		int line = startline;
-		int cur_line = 0;
 		max_text_width = 0;
 
 		{
@@ -328,7 +327,6 @@ void show_about(display &disp, const std::string &campaign)
 				if(size_t(line) > text.size()-1)
 					line = 0;
 				y += line_height + line_spacing;
-				cur_line++;
 			} while(y < text_rect.y + text_rect.h);
 		}
 
