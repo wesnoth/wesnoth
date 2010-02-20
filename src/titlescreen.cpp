@@ -255,6 +255,7 @@ static void draw_tip_of_day(game_display& screen,
 	source.set_text((*tip)["source"], false);
 	source.set_font_style(font::ttext::STYLE_ITALIC);
 	source.set_maximum_width(tip_width);
+	source.set_alignment(PANGO_ALIGN_RIGHT);
 
 	int pad = game_config::title_tip_padding;
 
@@ -296,7 +297,7 @@ static void draw_tip_of_day(game_display& screen,
 	surface text_s = text.render();
 	screen.video().blit_surface(area.x + pad, area.y + pad, text_s);
 	surface source_s = source.render();
-	screen.video().blit_surface(area.x + area.w - source_area.w - pad,
+	screen.video().blit_surface(area.x + pad,
 		next_tip_button->location().y - source_area.h - pad, source_s);
 
 	LOG_DP << "drew tip of day\n";
