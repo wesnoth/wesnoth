@@ -400,7 +400,6 @@ tlobby_main::tlobby_main(const config& game_config
 	, gamelist_id_at_row_()
 	, delay_playerlist_update_(false)
 	, delay_gamelist_update_(false)
-	, delayed_gamelist_updates_()
 {
 }
 
@@ -1283,7 +1282,8 @@ void tlobby_main::close_window(size_t idx)
 
 void tlobby_main::network_handler()
 {
-	if (gamelist_dirty_ && (SDL_GetTicks() - last_gamelist_update_ > game_config::lobby_refresh)) {
+	if (gamelist_dirty_ && !delay_gamelist_update_
+		&&(SDL_GetTicks() - last_gamelist_update_ > game_config::lobby_refresh)) {
 		if (gamelist_diff_update_) {
 			update_gamelist_diff();
 		} else {
@@ -1293,9 +1293,6 @@ void tlobby_main::network_handler()
 	if (player_list_dirty_) {
 		update_gamelist_filter();
 		update_playerlist();
-	}
-	if (!delay_gamelist_update_ && !delayed_gamelist_updates_.empty()) {
-		process_delayed_data();
 	}
 	try {
 		config data;
@@ -1309,18 +1306,6 @@ void tlobby_main::network_handler()
 	}
 }
 
-void tlobby_main::process_delayed_data()
-{
-	foreach (const config& data, delayed_gamelist_updates_) {
-		if(data.child("gamelist")) {
-			process_gamelist(data);
-		} else if (const config &c = data.child("gamelist_diff")) {
-			process_gamelist_diff(c);
-		}
-	}
-	delayed_gamelist_updates_.clear();
-}
-
 void tlobby_main::process_network_data(const config &data)
 {
 	if (const config &c = data.child("error")) {
@@ -1330,17 +1315,9 @@ void tlobby_main::process_network_data(const config &data)
 	} else if (const config &c = data.child("whisper")) {
 		process_message(c, true);
 	} else if(data.child("gamelist")) {
-		if (delay_gamelist_update_) {
-			delayed_gamelist_updates_.push_back(data);
-		} else {
-			process_gamelist(data);
-		}
+		process_gamelist(data);
 	} else if (const config &c = data.child("gamelist_diff")) {
-		if (delay_gamelist_update_) {
-			delayed_gamelist_updates_.push_back(data);
-		} else {
-			process_gamelist_diff(c);
-		}
+		process_gamelist_diff(c);
 	} else if (const config &c = data.child("room_join")) {
 		process_room_join(c);
 	} else if (const config &c = data.child("room_part")) {
@@ -1376,8 +1353,6 @@ void tlobby_main::process_gamelist(const config &data)
 	DBG_LB << "Received gamelist\n";
 	gamelist_dirty_ = true;
 	gamelist_diff_update_ = false;
-	//update_gamelist();
-	//lobby_info_.sync_games_display_status();
 }
 
 void tlobby_main::process_gamelist_diff(const config &data)
