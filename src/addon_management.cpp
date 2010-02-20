@@ -1337,8 +1337,12 @@ void refresh_addon_version_info_cache()
 			LOG_CFG << "caching add-on version info: " << addon << " [" << version << "]\n";
 			version_info_cache.insert(std::make_pair(addon, version_info(version)));
 		}
-		else {
-			WRN_CFG << "add-on '" << addon << "' has no _info.cfg; cannot read version info\n";
+		// Don't print the warning if the user is clearly the author
+		else if (!file_exists(parentd+"/"+addon+".pbl")
+			  && !file_exists(parentd+"/"+addon+"/_server.pbl")
+			  && !file_exists(parentd+"/"+addon+"/.svn")
+			  && !file_exists(parentd+"/"+addon+"/.git")) {
+				WRN_CFG << "add-on '" << addon << "' has no _info.cfg; cannot read version info\n";
 		}
 	}
 }
