@@ -52,6 +52,7 @@ ttree_view_node& ttree_view::add_node(const std::string& id
 void ttree_view::remove_node(ttree_view_node* node)
 {
 	assert(node && node != root_node_ && node->parent_);
+	const tpoint node_size = node->get_size();
 
 	boost::ptr_vector<ttree_view_node>::iterator itor =
 				  node->parent_->children_.begin();
@@ -70,14 +71,8 @@ void ttree_view::remove_node(ttree_view_node* node)
 		return;
 	}
 
-	/** @todo Test whether this resizing works properly. */
-	if(content_resize_request()) {
-		place(get_origin(), get_size());
-	} else {
-		twindow *window = get_window();
-		assert(window);
-		window->invalidate_layout();
-	}
+	// Don't shrink the width, need to think about a good algorithm to do so.
+	resize_content(0, -node_size.y);
 }
 
 void ttree_view::child_populate_dirty_list(twindow& caller
@@ -86,7 +81,7 @@ void ttree_view::child_populate_dirty_list(twindow& caller
 	// Inherited.
 	tscrollbar_container::child_populate_dirty_list(caller, call_stack);
 
-	layout();
+	layout_children(false);
 
 	assert(root_node_);
 	root_node_->impl_populate_dirty_list(caller, call_stack);
@@ -97,12 +92,46 @@ bool ttree_view::empty() const
 	return root_node_->empty();
 }
 
-void ttree_view::layout()
+void ttree_view::resize_content(
+		  const int width_modification
+		, const int height_modification)
 {
-	if(need_layout_) {
+	DBG_GUI_L << LOG_HEADER << " current size " << content_grid()->get_size()
+			<< " width_modification " << width_modification
+			<< " height_modification " << height_modification
+			<< ".\n";
+
+	if(content_resize_request(width_modification, height_modification)) {
+
+
+		// Calculate new size
+		tpoint size = content_grid()->get_size();
+		size.x += width_modification;
+		size.y += height_modification;
+
+		// Set new size (both need to be sized seperately.
+		content_grid()->set_size(size);
+
+		// Set status.
+		need_layout_ = true;
+		// If the content grows assume it "overwrites" the old content.
+		if(width_modification < 0 || height_modification < 0) {
+			set_dirty();
+		}
+		DBG_GUI_L << LOG_HEADER << " succeeded.\n";
+	} else {
+		DBG_GUI_L << LOG_HEADER << " failed.\n";
+	}
+}
+
+void ttree_view::layout_children(const bool force)
+{
+	assert(root_node_ && content_grid());
+
+	if(need_layout_ || force) {
 		root_node_->place(indention_step_size_
 			, get_origin()
-			, root_node_->get_size().x);
+			, content_grid()->get_size().x);
 		root_node_->set_visible_area(content_visible_area_);
 
 		need_layout_ = false;

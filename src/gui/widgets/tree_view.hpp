@@ -115,8 +115,27 @@ private:
 
 	boost::function<void ()> selection_change_callback_;
 
+	/**
+	 * Resizes the content.
+	 *
+	 * The resize either happens due to resizing the content or invalidate the
+	 * layout of the window.
+	 *
+	 * @param width_modification  The wanted modification to the width:
+	 *                            * negative values reduce width.
+	 *                            * zero leave width as is.
+	 *                            * positive values increase width.
+	 * @param height_modification The wanted modification to the height:
+	 *                            * negative values reduce height.
+	 *                            * zero leave height as is.
+	 *                            * positive values increase height.
+	 */
+	void resize_content(
+			  const int width_modification
+			, const int height_modification);
+
 	/** Layouts the children if needed. */
-	void layout();
+	void layout_children(const bool force);
 
 	/** Inherited from tcontainer_. */
 	virtual void finalize_setup();

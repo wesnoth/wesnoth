@@ -59,7 +59,7 @@ public:
 
 	bool is_root_node() const { return parent_ == NULL; }
 
-	unsigned indention_level() const;
+	unsigned indention_level() const; // fixme add get to the name
 
 	/**
 	 * Returns the parent node, can't be used on the root node.
@@ -144,6 +144,10 @@ private:
 	tpoint calculate_best_size(const int indention_level
 			, const unsigned indention_step_size) const;
 
+	tpoint get_current_size() const;
+	tpoint get_folded_size() const { return grid_.get_size(); }
+	tpoint get_unfolded_size() const;
+
 	void set_origin(const tpoint& origin);
 
 	void place(const tpoint& origin, const tpoint& size);
@@ -170,6 +174,7 @@ private:
 				std::string /* widget id */, string_map>& data);
 
 	const std::string& get_control_type() const;
+
 };
 
 } // namespace gui2
