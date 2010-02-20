@@ -1531,7 +1531,7 @@ void unit::write(config& cfg) const
 		ut = &ut->get_gender_unit_type(gender_).get_variation(variation_);
 	}
 	if(ut && cfg["description"] == ut->unit_description()) {
-		cfg["description"] = "";
+		cfg.remove_attribute("description");
 	}
 
 	cfg["hitpoints"] = str_cast(hit_points_);
