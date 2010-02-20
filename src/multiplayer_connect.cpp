@@ -851,6 +851,9 @@ const std::string& connect::side::get_save_id() const
 
 void connect::side::import_network_user(const config& data)
 {
+	if (controller_ == CNTR_RESERVED)
+		set_ready_for_start(true);
+
 	player_id_ = data["name"];
 	controller_ = CNTR_NETWORK;
 
