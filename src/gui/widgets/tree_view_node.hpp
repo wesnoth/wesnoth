@@ -59,7 +59,7 @@ public:
 
 	bool is_root_node() const { return parent_ == NULL; }
 
-	unsigned indention_level() const; // fixme add get to the name
+	unsigned get_indention_level() const;
 
 	/**
 	 * Returns the parent node, can't be used on the root node.

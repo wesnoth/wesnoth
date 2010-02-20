@@ -142,7 +142,7 @@ ttree_view_node& ttree_view_node::add_child(
 
 	// Calculate width modification.
 	tpoint best_size = itor->get_best_size();
-	best_size.x += indention_level() * parent_widget_->indention_step_size_;
+	best_size.x += get_indention_level() * parent_widget_->indention_step_size_;
 	const unsigned width_modification = best_size.x > current_width
 			? current_width - best_size.x
 			: 0;
@@ -157,7 +157,7 @@ ttree_view_node& ttree_view_node::add_child(
 	return *itor;
 }
 
-unsigned ttree_view_node::indention_level() const
+unsigned ttree_view_node::get_indention_level() const
 {
 	unsigned level = 0;
 
@@ -318,7 +318,7 @@ tpoint ttree_view_node::get_current_size() const
 tpoint ttree_view_node::get_unfolded_size() const
 {
 	tpoint size = grid_.get_best_size();
-	size.x += indention_level() * parent_widget_->indention_step_size_;
+	size.x += get_indention_level() * parent_widget_->indention_step_size_;
 
 	foreach(const ttree_view_node& node, children_) {
 
