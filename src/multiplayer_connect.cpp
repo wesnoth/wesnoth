@@ -1666,8 +1666,9 @@ void connect::update_and_send_diff(bool update_time_of_day)
 bool connect::sides_ready() const
 {
 	for(side_list::const_iterator itor = sides_.begin(); itor != sides_.end(); ++itor) {
-		if (!itor->ready_for_start())
+		if (!itor->ready_for_start()) {
 			return false;
+		}
 	}
 	return true;
 }
@@ -1687,21 +1688,21 @@ bool connect::can_start_game() const
 		return false;
 	}
 
-	int non_empty_controller_sides = 0;
-	int player_non_empty_controller_sides = 0;
-
+	/*
+	 * If at least one human player is slotted with a player/ai we're allowed
+	 * to start. Before used a more advanced test but it seems people are
+	 * creative in what is used in multiplayer [1] so use a simpler test now.
+	 * [1] http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=568029
+	 */
 	foreach(const side& s, sides_) {
 		if(s.get_controller() != CNTR_EMPTY) {
-
-			++non_empty_controller_sides;
 			if(s.allow_player()) {
-				++player_non_empty_controller_sides;
+				return true;
 			}
 		}
 	}
 
-	return non_empty_controller_sides >= 2
-			&& player_non_empty_controller_sides >= 1;
+	return false;
 }
 
 void connect::update_playerlist_state(bool silent)
