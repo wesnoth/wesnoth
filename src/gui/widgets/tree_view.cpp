@@ -106,13 +106,12 @@ void ttree_view::resize_content(
 
 	if(content_resize_request(width_modification, height_modification)) {
 
-
-		// Calculate new size
+		// Calculate new size.
 		tpoint size = content_grid()->get_size();
 		size.x += width_modification;
 		size.y += height_modification;
 
-		// Set new size (both need to be sized seperately.
+		// Set new size.
 		content_grid()->set_size(size);
 
 		// Set status.
