@@ -110,6 +110,9 @@ public:
 protected:
 
 	/** Inherited from twidget. */
+	void layout_children();
+
+	/** Inherited from twidget. */
 	void child_populate_dirty_list(twindow& caller,
 			const std::vector<twidget*>& call_stack);
 

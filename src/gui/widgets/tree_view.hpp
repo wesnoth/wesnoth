@@ -63,6 +63,9 @@ public:
 
 	bool empty() const;
 
+	/** Inherited from tscrollbar_container. */
+	void layout_children();
+
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_indention_step_size(const unsigned indention_step_size)

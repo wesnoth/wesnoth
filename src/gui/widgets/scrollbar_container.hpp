@@ -450,6 +450,9 @@ private:
 	virtual void finalize_subclass() {}
 
 	/** Inherited from tcontainer_. */
+	void layout_children();
+
+	/** Inherited from tcontainer_. */
 	void impl_draw_children(surface& frame_buffer);
 
 	/** Inherited from tcontainer_. */

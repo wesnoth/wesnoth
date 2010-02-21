@@ -444,10 +444,6 @@ void ttree_view_node::set_visible_area(const SDL_Rect& area)
 
 void ttree_view_node::impl_draw_children(surface& frame_buffer)
 {
-	if(is_root_node()) {
-		parent_widget_->layout_children(false);
-	}
-
 	grid_.draw_children(frame_buffer);
 
 	if(is_folded()) {

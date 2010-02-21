@@ -478,6 +478,16 @@ public:
 	void draw_foreground(surface& frame_buffer);
 
 	/**
+	 * Allows a widget to update its children.
+	 *
+	 * Before the window is populating the dirty list the widgets can update
+	 * their content, which allows delayed initialization. This delayed
+	 * initialization is only allowed if the widget resizes itself, not when
+	 * being placed.
+	 */
+	virtual void layout_children() {}
+
+	/**
 	 * Adds a widget to the dirty list if it is dirty.
 	 *
 	 * See twindow::dirty_list_ for more info on the dirty list.

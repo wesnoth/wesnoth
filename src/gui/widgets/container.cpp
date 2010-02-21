@@ -123,6 +123,11 @@ void tcontainer_::impl_draw_children(surface& frame_buffer)
 	grid_.draw_children(frame_buffer);
 }
 
+void tcontainer_::layout_children()
+{
+	grid_.layout_children();
+}
+
 void tcontainer_::child_populate_dirty_list(twindow& caller,
 		const std::vector<twidget*>& call_stack)
 {

@@ -81,8 +81,6 @@ void ttree_view::child_populate_dirty_list(twindow& caller
 	// Inherited.
 	tscrollbar_container::child_populate_dirty_list(caller, call_stack);
 
-	layout_children(false);
-
 	assert(root_node_);
 	root_node_->impl_populate_dirty_list(caller, call_stack);
 }
@@ -90,6 +88,11 @@ void ttree_view::child_populate_dirty_list(twindow& caller
 bool ttree_view::empty() const
 {
 	return root_node_->empty();
+}
+
+void ttree_view::layout_children()
+{
+	layout_children(false);
 }
 
 void ttree_view::resize_content(

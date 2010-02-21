@@ -754,6 +754,15 @@ void tscrollbar_container::impl_draw_children(surface& frame_buffer)
 	content_grid_->draw_children(frame_buffer);
 }
 
+void tscrollbar_container::layout_children()
+{
+	// Inherited.
+	tcontainer_::layout_children();
+
+	assert(content_grid_);
+	content_grid_->layout_children();
+}
+
 void tscrollbar_container::child_populate_dirty_list(twindow& caller,
 		const std::vector<twidget*>& call_stack)
 {

@@ -553,6 +553,14 @@ void tgrid::set_visible_area(const SDL_Rect& area)
 	}
 }
 
+void tgrid::layout_children()
+{
+	foreach(tchild& child, children_) {
+		assert(child.widget());
+		child.widget()->layout_children();
+	}
+}
+
 void tgrid::child_populate_dirty_list(twindow& caller,
 			const std::vector<twidget*>& call_stack)
 {
