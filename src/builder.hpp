@@ -263,7 +263,7 @@ public:
 	struct tile
 	{
 		/** An ordered rule_image list */
-		typedef std::multimap<int, const rule_image*> ordered_ri_list;
+		typedef std::multimap<int,std::pair<int, const rule_image*> > ordered_ri_list;
 
 		/** Contructor for the tile() structure */
 		tile();
@@ -312,6 +312,10 @@ public:
 		 * The time-of-day to which the image caches correspond.
 		 */
 		std::string last_tod;
+		/**
+		  * Unique random number used to start all animations originating from this tile
+		  */
+		int rand_seed;
 
 	};
 
@@ -371,7 +375,7 @@ private:
 				tiles_((x + 4) * (y + 4)),
 				x_(x),
 				y_(y)
-			{}
+			{reset();}
 
 		/**
 		 * Returns a reference to the tile which is at the position
