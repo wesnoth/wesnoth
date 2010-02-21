@@ -51,8 +51,8 @@ public:
 	void add_label(const map_location &, label *);
 
 	void clear_all();
-protected:
 	void clear_map(label_map &);
+protected:
 	void operator=(const labels&);
 
 private:
