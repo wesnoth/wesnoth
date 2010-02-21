@@ -29,6 +29,14 @@ tstacked_widget::tstacked_widget()
 			false, false, tgenerator_::independant, false);
 }
 
+void tstacked_widget::layout_children()
+{
+	assert(generator_);
+	for(unsigned i = 0; i < generator_->get_item_count(); ++i) {
+		generator_->item(i).layout_children();
+	}
+}
+
 namespace {
 
 /**

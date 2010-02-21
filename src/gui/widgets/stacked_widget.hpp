@@ -43,6 +43,9 @@ public:
 	/** Inherited from tcontrol. */
 	unsigned get_state() const { return 0; }
 
+	/** Inherited from tscrollbar_container. */
+	void layout_children();
+
 private:
 
 	/**
