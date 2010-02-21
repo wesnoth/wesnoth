@@ -32,8 +32,9 @@
 
 #include "../map.hpp"
 #include "../terrain.hpp"
-
-
+#ifdef EXPERIMENTAL
+#include "../map_label.hpp"
+#endif
 namespace editor {
 
 /**
@@ -299,6 +300,26 @@ class editor_action_starting_position : public editor_action_location
 	protected:
 		int player_;
 };
+
+#ifdef EXPERIMENTAL
+/**
+ * Set label action
+ */
+class editor_action_label : public editor_action_location
+{
+	public:
+		editor_action_label(map_location loc, const terrain_label* label)
+		: editor_action_location(loc), label_(label)
+		{
+		}
+		editor_action_label* clone() const;
+		editor_action* perform(map_context& mc) const;
+		void perform_without_undo(map_context& mc) const;
+		const char* get_name() const { return "label"; }
+	protected:
+		const terrain_label* label_;
+};
+#endif
 
 /**
  * Select the given locations
