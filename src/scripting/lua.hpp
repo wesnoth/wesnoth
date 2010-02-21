@@ -27,8 +27,9 @@ class lua_ai_context
 private:
 	lua_State *L;
 	int num_;
+	int side_;
 public:
-	lua_ai_context(lua_State *l, int num) : L(l), num_(num)
+	lua_ai_context(lua_State *l, int num, int side) : L(l), num_(num), side_(side)
 	{
 	}
 	~lua_ai_context();

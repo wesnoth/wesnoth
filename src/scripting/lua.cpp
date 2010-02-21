@@ -1846,72 +1846,6 @@ static int intf_float_label(lua_State *L)
 	return 0;
 }
 
-//start of ai_ functions
-static int intf_ai_execute_move(lua_State *L)
-{
-	int side = lua_tointeger(L, 1);
-	map_location from;
-	from.x = lua_tointeger(L, 2) - 1;
-	from.y = lua_tointeger(L, 3) - 1;
-	map_location to;
-	to.x = lua_tointeger(L, 4) - 1;
-	to.y = lua_tointeger(L, 5) - 1;
-	bool remove_movement = lua_toboolean(L, 6);
-	ai::actions::execute_move_action(side,true,from,to,remove_movement);
-	return 0;
-}
-
-static int intf_ai_execute_attack(lua_State *L)
-{
-	int side = lua_tointeger(L, 1);
-	map_location attacker;
-	attacker.x = lua_tointeger(L, 2) - 1;
-	attacker.y = lua_tointeger(L, 3) - 1;
-	map_location defender;
-	defender.x = lua_tointeger(L, 4) - 1;
-	defender.y = lua_tointeger(L, 5) - 1;
-	int attacker_weapon = lua_tointeger(L, 6);
-	double aggression = lua_tonumber(L, 7);
-	ai::actions::execute_attack_action(side,true,attacker,defender,attacker_weapon,aggression);
-	return 0;
-}
-
-static int intf_ai_execute_stopunit(lua_State *L)
-{
-	int side = lua_tointeger(L, 1);
-	map_location loc;
-	loc.x = lua_tointeger(L, 2) - 1;
-	loc.y = lua_tointeger(L, 3) - 1;
-	bool remove_movement = lua_toboolean(L, 4);
-	bool remove_attacks = lua_toboolean(L, 5);
-	ai::actions::execute_stopunit_action(side,true,loc,remove_movement,remove_attacks);
-	return 0;
-}
-
-static int intf_ai_execute_recruit(lua_State *L)
-{
-	int side = lua_tointeger(L, 1);
-	const char* unit_name = lua_tostring(L,2);
-	map_location where;
-	where.x = lua_tointeger(L, 3) - 1;
-	where.y = lua_tointeger(L, 4) - 1;
-	ai::actions::execute_recruit_action(side,true,std::string(unit_name),where);
-	return 0;
-}
-
-
-static int intf_ai_execute_recall(lua_State *L)
-{
-	int side = lua_tointeger(L, 1);
-	const char* unit_id = lua_tostring(L,2);
-	map_location where;
-	where.x = lua_tointeger(L, 3) - 1;
-	where.y = lua_tointeger(L, 4) - 1;
-	ai::actions::execute_recall_action(side,true,std::string(unit_id),where);
-	return 0;
-}
-//end of ai_ functions
-
 LuaKernel::LuaKernel()
 	: mState(luaL_newstate())
 {
@@ -1935,11 +1869,6 @@ LuaKernel::LuaKernel()
 
 	// Put some callback functions in the scripting environment.
 	static luaL_reg const callbacks[] = {
-		{ "ai_execute_move",          &intf_ai_execute_move          },
-		{ "ai_execute_attack",        &intf_ai_execute_attack        },
-		{ "ai_execute_stopunit",      &intf_ai_execute_stopunit      },
-		{ "ai_execute_recruit",       &intf_ai_execute_recruit       },
-		{ "ai_execute_recall",        &intf_ai_execute_recall        },
 		{ "dofile",                   &intf_dofile                   },
 		{ "fire",                     &intf_fire                     },
 		{ "fire_event",               &lua_fire_event                },
@@ -2207,6 +2136,134 @@ bool LuaKernel::execute(char const *prog, int nArgs, int nRets)
 
 
 // ai support stuff
+static int transform_ai_action(lua_State *L, ai::action_result_ptr action_result)
+{
+	lua_newtable(L);
+	lua_pushboolean(L,action_result->is_ok());
+	lua_setfield(L, -2, "ok");
+	lua_pushboolean(L,action_result->is_gamestate_changed());
+	lua_setfield(L, -2, "gamestate_changed");
+	lua_pushinteger(L,action_result->get_status());
+	lua_setfield(L, -2, "status");
+	return 1;
+}
+
+static map_location to_map_location(lua_State *L, int index)
+{
+	map_location loc;
+
+	if (!lua_isnoneornil(L,index)) {
+		lua_getfield(L,index,"x");
+		loc.x = luaL_checkint(L, -1) - 1;
+		lua_pop(L,1);
+
+		lua_getfield(L,index,"y");
+		loc.y = luaL_checkint(L, -1) - 1;
+		lua_pop(L,1);
+	}
+
+	return loc;
+}
+
+static int impl_ai_execute_move(lua_State *L, bool remove_movement)
+{
+	int side = lua_tointeger(L,lua_upvalueindex(1));
+	map_location from = to_map_location(L,2);
+	map_location to = to_map_location(L,3);
+	ai::move_result_ptr move_result = ai::actions::execute_move_action(side,true,from,to,remove_movement);
+	return transform_ai_action(L,move_result);
+}
+
+
+static int impl_ai_execute_move_full(lua_State *L)
+{
+	return impl_ai_execute_move(L,true);
+}
+
+
+static int impl_ai_execute_move_partial(lua_State *L)
+{
+	return impl_ai_execute_move(L,false);
+}
+
+
+static int impl_ai_execute_attack(lua_State *L)
+{
+	int side = lua_tointeger(L,lua_upvalueindex(1));
+	map_location attacker = to_map_location(L,2);
+	map_location defender = to_map_location(L,3);
+
+	int attacker_weapon = -1;//-1 means 'select what is best'
+	double aggression = 0.5;//TODO: replace with side agression
+
+	if (!lua_isnoneornil(L, 5)) {
+		aggression = luaL_checknumber(L, 5);
+	}
+
+	if (!lua_isnoneornil(L, 4)) {
+		attacker_weapon = luaL_checkint(L, 4);
+	}
+
+	ai::attack_result_ptr attack_result = ai::actions::execute_attack_action(side,true,attacker,defender,attacker_weapon,aggression);
+	return transform_ai_action(L,attack_result);
+}
+
+
+static int impl_ai_execute_stopunit_select(lua_State *L, bool remove_movement, bool remove_attacks)
+{
+	int side = lua_tointeger(L,lua_upvalueindex(1));
+	map_location loc = to_map_location(L,2);
+
+	ai::stopunit_result_ptr stopunit_result = ai::actions::execute_stopunit_action(side,true,loc,remove_movement,remove_attacks);
+	return transform_ai_action(L,stopunit_result);
+}
+
+
+static int impl_ai_execute_stopunit_moves(lua_State *L)
+{
+	return impl_ai_execute_stopunit_select(L,true,false);
+}
+
+static int impl_ai_execute_stopunit_attacks(lua_State *L)
+{
+	return impl_ai_execute_stopunit_select(L,false,true);
+}
+
+static int impl_ai_execute_stopunit_all(lua_State *L)
+{
+	return impl_ai_execute_stopunit_select(L,true,true);
+}
+
+
+static int impl_ai_execute_recruit(lua_State *L)
+{
+	int side = lua_tointeger(L,lua_upvalueindex(1));
+	const char* unit_name = luaL_checkstring(L,2);
+	map_location where = to_map_location(L,3);
+
+	ai::recruit_result_ptr recruit_result = ai::actions::execute_recruit_action(side,true,std::string(unit_name),where);
+	return transform_ai_action(L,recruit_result);
+}
+
+
+static int impl_ai_execute_recall(lua_State *L)
+{
+	int side = lua_tointeger(L,lua_upvalueindex(1));
+	const char* unit_id = luaL_checkstring(L,2);
+	map_location where = to_map_location(L,3);
+
+	ai::recall_result_ptr recall_result = ai::actions::execute_recall_action(side,true,std::string(unit_id),where);
+	return transform_ai_action(L,recall_result);
+}
+
+static int impl_ai_side(lua_State *L)
+{
+	int side = lua_tointeger(L,lua_upvalueindex(1));
+	lua_pushinteger(L,side);
+	return 1;
+}
+
+
 lua_ai_context* LuaKernel::create_ai_context(char const *code, int side)
 {
 	lua_State *L = mState;
@@ -2219,9 +2276,37 @@ lua_ai_context* LuaKernel::create_ai_context(char const *code, int side)
 		lua_pop(L, 2);//return with stack size 0 []
 		return NULL;
 	}
-
+	//push data table here
+	lua_newtable(L);//stack size is 2 [-1: ai_context  -2: new table]
 	lua_pushinteger(L,side);
-	luaW_pcall(L, 1, 1, true);//compile the ai
+	lua_pushcclosure(L,&impl_ai_side,1);
+	lua_setfield(L, -2, "_side");
+	luaW_pcall(L, 1, 1, true);//compile the ai as a closure
+	lua_pushinteger(L,side);
+	lua_pushcclosure(L,&impl_ai_execute_move_partial,1);
+	lua_setfield(L, -2, "_move");
+	lua_pushinteger(L,side);
+	lua_pushcclosure(L,&impl_ai_execute_move_full,1);
+	lua_setfield(L, -2, "_move_full");
+	lua_pushinteger(L,side);
+	lua_pushcclosure(L,&impl_ai_execute_attack,1);
+	lua_setfield(L, -2, "_attack");
+	lua_pushinteger(L,side);
+	lua_pushcclosure(L,&impl_ai_execute_stopunit_moves,1);
+	lua_setfield(L, -2, "_stopunit_moves");
+	lua_pushinteger(L,side);
+	lua_pushcclosure(L,&impl_ai_execute_stopunit_attacks,1);
+	lua_setfield(L, -2, "_stopunit_attacks");
+	lua_pushinteger(L,side);
+	lua_pushcclosure(L,&impl_ai_execute_stopunit_all,1);
+	lua_setfield(L, -2, "_stopunit_all");
+	lua_pushinteger(L,side);
+	lua_pushcclosure(L,&impl_ai_execute_recall,1);
+	lua_setfield(L, -2, "_recall");
+	lua_pushinteger(L,side);
+	lua_pushcclosure(L,&impl_ai_execute_recruit,1);
+	lua_setfield(L, -2, "_recruit");
+
 	// Retrieve the ai elements table from the registry.
 	lua_pushlightuserdata(L, (void *)&aisKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);   //stack size is now 2  [-1: ais_table -2: f]
@@ -2231,7 +2316,7 @@ lua_ai_context* LuaKernel::create_ai_context(char const *code, int side)
 	lua_rawseti(L, -2, length_ai + 1);// ais_table[length+1]=ai_context.  stack size is now 2 [-1: ais_table  -2: ai_context]
 	lua_remove(L, -1);//stack size is now 1 [-1: ai_context]
 	lua_remove(L, -1);//stack size is now 0 []
-	return new lua_ai_context(L, length_ai + 1);
+	return new lua_ai_context(L, length_ai + 1, side);
 }
 
 lua_ai_action_handler* LuaKernel::create_ai_action_handler(char const *code, lua_ai_context &context)
@@ -2262,7 +2347,6 @@ lua_ai_action_handler* LuaKernel::create_ai_action_handler(char const *code, lua
 }
 
 
-//will be moved to separate file
 void lua_ai_context::load()
 {
 	lua_pushlightuserdata(L, (void *)&aisKey);//stack size is now 1 [-1: ais_table key]
@@ -2295,7 +2379,7 @@ void lua_ai_action_handler::handle(config &/*cfg*/)
 	lua_rawgeti(L, -1, num_);//stack size is 2 [-1: ai_action  -2: ais_table]
 	lua_remove(L,-2);//stack size is 1 [-1: ai_action]
 	//load the lua ai context as a parameter
-	context_.load();//stack size is 2 [-1: ai_context  -2: ai_action]
+	context_.load();//stack size is 2 [-1: ai_context -2: ai_action]
 	luaW_pcall(L, 1, 0, true);
 }
 
