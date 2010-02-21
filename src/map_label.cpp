@@ -36,16 +36,25 @@ static bool is_shrouded(const display& disp, const map_location& loc)
 }
 
 map_labels::map_labels(const display &disp, const team *team) :
-	disp_(disp), team_(team), labels_()
+	labels(), disp_(disp), team_(team)
 {
 }
 
-map_labels::~map_labels()
+labels::labels() :
+		labels_()
+{
+}
+
+labels::~labels()
 {
 	clear_all();
 }
 
-void map_labels::write(config& res) const
+map_labels::~map_labels()
+{
+}
+
+void labels::write(config& res) const
 {
 	for (team_label_map::const_iterator labs = labels_.begin(); labs != labels_.end(); ++labs)
 	{
@@ -59,21 +68,26 @@ void map_labels::write(config& res) const
 	}
 }
 
-void map_labels::read(const config &cfg)
+void labels::read(const config &cfg)
 {
 	clear_all();
 
 	foreach (const config &i, cfg.child_range("label"))
 	{
 		const map_location loc(i, resources::state_of_game);
-		terrain_label *label = new terrain_label(*this, i);
-		add_label(loc, label);
+		label *new_label = new label(*this, i);
+		add_label(loc, new_label);
 	}
-	recalculate_labels();
 }
 
+void map_labels::read(const config &cfg)
+{
+	labels::read(cfg);
+	recalculate_labels();
 
-size_t map_labels::get_max_chars()
+}
+
+size_t labels::get_max_chars()
 {
 	return max_label_size;
 }
@@ -124,6 +138,77 @@ void map_labels::set_team(const team* team)
 	}
 }
 
+
+const label* labels::set_label(const map_location& loc,
+					   const std::string& text,
+					   const std::string& team_name,
+					   const SDL_Color colour,
+					   const bool visible_in_fog,
+					   const bool visible_in_shroud)
+{
+	label* res = 0;
+	team_label_map::iterator current_label_map = labels_.find(team_name);
+	label_map::iterator current_label;
+
+	if ( current_label_map != labels_.end()
+			&& (current_label = current_label_map->second.find(loc)) != current_label_map->second.end() )
+	{
+		// Found old checking if need to erase it
+		if(text.empty())
+		{
+			current_label->second->set_text("");
+			res = new label("",team_name,loc,*this,colour,visible_in_fog,visible_in_shroud);
+			delete current_label->second;
+			current_label_map->second.erase(loc);
+
+			team_label_map::iterator global_label_map = labels_.find("");
+			label_map::iterator itor;
+			bool update = false;
+			if(global_label_map != labels_.end()) {
+				itor = global_label_map->second.find(loc);
+				update = itor != global_label_map->second.end();
+			}
+//			if (update)
+//			{
+//				itor->second->recalculate();
+//			}
+
+		}
+		else
+		{
+			current_label->second->update_info(text, team_name, colour);
+			res = current_label->second;
+		}
+	}
+	else if(!text.empty())
+	{
+		team_label_map::iterator global_label_map = labels_.find("");
+		label_map::iterator itor;
+		bool update = false;
+		if(global_label_map != labels_.end()) {
+			itor = global_label_map->second.find(loc);
+			update = itor != global_label_map->second.end();
+		}
+
+		label* new_label = new label(text,
+				team_name,
+				loc,
+				*this,
+				colour,
+				visible_in_fog,
+				visible_in_shroud);
+		add_label(loc,new_label);
+
+		res = new_label;
+
+//		if (update)
+//		{
+//			itor->second->recalculate();
+//		}
+
+	}
+	return res;
+}
 
 const terrain_label* map_labels::set_label(const map_location& loc,
 					   const std::string& text,
@@ -176,16 +261,16 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 			update = itor != global_label_map->second.end();
 		}
 
-		terrain_label* label = new terrain_label(text,
+		terrain_label* new_label = new terrain_label(text,
 				team_name,
 				loc,
 				*this,
 				colour,
 				visible_in_fog,
 				visible_in_shroud);
-		add_label(loc,label);
+		add_label(loc,new_label);
 
-		res = label;
+		res = new_label;
 
 		if (update)
 		{
@@ -194,6 +279,11 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 
 	}
 	return res;
+}
+
+void labels::add_label(const map_location &loc, label *new_label)
+{
+	labels_[new_label->team_name()][loc] = new_label;
 }
 
 void map_labels::add_label(const map_location &loc, terrain_label *new_label)
@@ -225,7 +315,17 @@ void map_labels::clear_map(label_map &m)
 	m.clear();
 }
 
-void map_labels::clear_all()
+
+void labels::clear_map(label_map &m)
+{
+	foreach (label_map::value_type &v, m)
+	{
+		delete v.second;
+	}
+	m.clear();
+}
+
+void labels::clear_all()
 {
 	foreach (team_label_map::value_type &m, labels_)
 	{
@@ -276,10 +376,10 @@ void map_labels::recalculate_shroud()
 
 
 /// creating new label
-terrain_label::terrain_label(const std::string& text,
+label::label(const std::string& text,
 							 const std::string& team_name,
 							 const map_location& loc,
-							 const map_labels& parent,
+							 const labels& parent,
 							 const SDL_Color colour,
 							 const bool visible_in_fog,
 							 const bool visible_in_shroud)  :
@@ -293,22 +393,53 @@ terrain_label::terrain_label(const std::string& text,
 		loc_(loc)
 {
 	check_text_length();
+}
+
+terrain_label::terrain_label(const std::string& text,
+		const std::string& team_name,
+		const map_location& loc,
+		const map_labels& parent,
+		const SDL_Color colour,
+		const bool visible_in_fog,
+		const bool visible_in_shroud) :
+		label(text, team_name, loc, parent, colour, visible_in_fog, visible_in_shroud), parent_(&parent)
+		{
 	draw();
+		}
+
+
+
+
+
+label::label(const labels &parent, const config &cfg) :
+	handle_(0),
+	text_(),
+	team_name_(),
+	visible_in_fog_(true),
+	visible_in_shroud_(false),
+	colour_(),
+	parent_(&parent),
+	loc_()
+{
+	read(cfg);
+	check_text_length();
 }
 
 /// Load label from config
 terrain_label::terrain_label(const map_labels &parent, const config &cfg) :
-		handle_(0),
-		text_(),
-		team_name_(),
-		visible_in_fog_(true),
-		visible_in_shroud_(false),
-		colour_(),
-		parent_(&parent),
-		loc_()
+		label::label(parent, cfg), parent_(&parent)
+
+//						handle_(0),
+//		text_(),
+//		team_name_(),
+//		visible_in_fog_(true),
+//		visible_in_shroud_(false),
+//		colour_(),
+//		parent_(&parent),
+//		loc_()
 {
-	read(cfg);
-	check_text_length();
+//	read(cfg);
+//	check_text_length();
 }
 
 
@@ -317,7 +448,12 @@ terrain_label::~terrain_label()
 	clear();
 }
 
-void terrain_label::read(const config &cfg)
+label::~label()
+{
+	clear();
+}
+
+void label::read(const config &cfg)
 {
 	const variable_set &vs = *resources::state_of_game;
 	loc_ = map_location(cfg, &vs);
@@ -347,7 +483,7 @@ void terrain_label::read(const config &cfg)
 	colour_ = colour;
 }
 
-void terrain_label::write(config& cfg) const
+void label::write(config& cfg) const
 {
 	loc_.write(cfg);
 	cfg["text"] = text();
@@ -357,37 +493,37 @@ void terrain_label::write(config& cfg) const
 	cfg["visible_in_shroud"] = visible_in_shroud() ? "yes" : "no";
 }
 
-const std::string& terrain_label::text() const
+const std::string& label::text() const
 {
 	return text_;
 }
 
-const std::string& terrain_label::team_name() const
+const std::string& label::team_name() const
 {
 	return team_name_;
 }
 
-bool terrain_label::visible_in_fog() const
+bool label::visible_in_fog() const
 {
 	return visible_in_fog_;
 }
 
-bool terrain_label::visible_in_shroud() const
+bool label::visible_in_shroud() const
 {
 	return visible_in_shroud_;
 }
 
-const map_location& terrain_label::location() const
+const map_location& label::location() const
 {
 	return loc_;
 }
 
-const SDL_Colour& terrain_label::colour() const
+const SDL_Colour& label::colour() const
 {
 	return colour_;
 }
 
-std::string terrain_label::cfg_colour() const
+std::string label::cfg_colour() const
 {
 	std::stringstream buf;
 	const unsigned int red = static_cast<unsigned int>(colour_.r);
@@ -401,12 +537,12 @@ std::string terrain_label::cfg_colour() const
 	return buf.str();
 }
 
-void terrain_label::set_text(const std::string& text)
+void label::set_text(const std::string& text)
 {
 	text_ = text;
 }
 
-void terrain_label::update_info(const std::string& text,
+void label::update_info(const std::string& text,
 								const std::string& team_name,
 								const SDL_Color colour)
 {
@@ -414,8 +550,16 @@ void terrain_label::update_info(const std::string& text,
 	text_ = text;
 	check_text_length();
 	team_name_ = team_name;
+}
+
+void terrain_label::update_info(const std::string& text,
+		const std::string& team_name,
+		const SDL_Color colour)
+{
+	label::update_info(text, team_name, colour);
 	draw();
 }
+
 
 void terrain_label::scroll(const double xmove,
 						   const double ymove) const
@@ -483,7 +627,7 @@ bool terrain_label::visible() const
 			|| (team_name_.empty() && parent_->visible_global_label(loc_)));
 }
 
-void terrain_label::check_text_length()
+void label::check_text_length()
 {
 	// The actual data is wide_strings so test in wide_string mode
 	// also cutting a wide_string at an arbritary place gives odd
@@ -491,7 +635,7 @@ void terrain_label::check_text_length()
 	utils::truncate_as_wstring(text_, parent_->get_max_chars());
 }
 
-void terrain_label::clear()
+void label::clear()
 {
 	if (handle_)
 	{
