@@ -21,6 +21,10 @@
 #include "../construct_dialog.hpp"
 #include "../gettext.hpp"
 
+#ifdef EXPERIMENTAL
+#include "map_label.hpp"
+#endif
+
 namespace editor {
 
 bool mouse_action::has_context_menu() const
@@ -411,6 +415,88 @@ void mouse_action_fill::set_mouse_overlay(editor_display& disp)
 }
 
 
+#ifdef EXPERIMENTAL
+editor_action* mouse_action_map_label::click_right(editor_display& /*disp*/, int /*x*/, int /*y*/)
+{
+	return NULL;
+}
+
+editor_action* mouse_action_map_label::click_left(editor_display& /*disp*/, int /*x*/, int /*y*/)
+{
+	click_ = true;
+	return NULL;
+}
+
+editor_action* mouse_action_map_label::up_right(editor_display& disp, int x, int y)
+{
+	map_location hex = disp.hex_clicked_on(x, y);
+	int player_starting_at_hex = disp.map().is_starting_position(hex) + 1;
+	if (player_starting_at_hex != -1) {
+		return new editor_action_starting_position(map_location(), player_starting_at_hex);
+	} else {
+		return NULL;
+	}
+}
+editor_action* mouse_action_map_label::up_left(editor_display& disp, int x, int y)
+{
+	if (!click_) return NULL;
+	click_ = false;
+	map_location hex = disp.hex_clicked_on(x, y);
+	if (!disp.map().on_board(hex)) {
+		return NULL;
+	}
+
+	const terrain_label* old_label = disp.labels().get_label(hex);
+//		const std::string& old_team_name = old_label ? old_label->team_name() : "";
+
+	bool visible_in_fog = true;
+	bool visible_in_shroud = true;
+
+	//TODO gui2
+	gui::dialog	d(disp, _("Place Label"), "", gui::OK_CANCEL);
+	d.set_textbox(_("Label: "), (old_label ? old_label->text() : ""), map_labels::get_max_chars());
+	//TODO note that gui1 does not support more than one textbox in a dialogue.
+//	d.set_textbox(_("Team: "), (old_label ? old_label->team_name() : ""), map_labels::get_max_chars());
+	d.add_option(_("Visible in Fog"), visible_in_fog, gui::dialog::BUTTON_CHECKBOX_LEFT);
+	d.add_option(_("Visible in Shroud"), visible_in_shroud, gui::dialog::BUTTON_CHECKBOX_LEFT);
+	//color can be adjusted as well
+
+	//	d.add_option(_("Team only"), team_only, gui::dialog::BUTTON_CHECKBOX_LEFT);
+
+	editor_action* a = NULL;
+	if(!d.show()) {
+		SDL_Color colour = font::LABEL_COLOUR;
+
+		//TODO cleanup
+		// remove the old label if we changed the team_name
+//		if (d.option_checked() == (old_team_name == "")) {
+//			const terrain_label* old = gui_->labels().set_label(loc, "", old_team_name, colour);
+//			if (old) recorder.add_label(old);
+//		}
+//		const terrain_label* res = gui_->labels().set_label(loc, d.textbox_text(), team_name, colour);
+
+//		terrain_label label = new terrain_label(d.textbox_text(), "", hex, )
+
+		const terrain_label* label = disp.labels().set_label(hex, d.textbox_text());
+		a = new editor_action_label(hex, label);
+		update_brush_highlights(disp, hex);
+	}
+	return a;
+}
+
+void mouse_action_map_label::set_mouse_overlay(editor_display& disp)
+{
+	surface image = image::get_image("editor/tool-overlay-starting-position.png");
+	Uint8 alpha = 196;
+	int size = image->w;
+	int zoom = static_cast<int>(size * disp.get_zoom_factor());
+
+	// Add the alpha factor and scale the image
+	image = scale_surface(adjust_surface_alpha(image, alpha), zoom, zoom);
+	disp.set_mouseover_hex_overlay(image);
+}
+#endif
+
 editor_action* mouse_action_starting_position::up_left(editor_display& disp, int x, int y)
 {
 	if (!click_) return NULL;
@@ -476,6 +562,8 @@ void mouse_action_starting_position::set_mouse_overlay(editor_display& disp)
 	image = scale_surface(adjust_surface_alpha(image, alpha), zoom, zoom);
 	disp.set_mouseover_hex_overlay(image);
 }
+
+
 
 
 } //end namespace editor
