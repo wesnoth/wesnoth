@@ -261,7 +261,7 @@ void attack_result::do_check_before()
 	}
 
 	if (attacker_weapon_!=-1) {
-		if ((attacker_weapon_<0)||(attacker_weapon_ > static_cast<int>(attacker->attacks().size()))) {
+		if ((attacker_weapon_<0)||(attacker_weapon_ >= static_cast<int>(attacker->attacks().size()))) {
 			LOG_AI_ACTIONS << "invalid weapon selection for the attacker\n";
 			set_error(E_WRONG_ATTACKER_WEAPON);
 			return;
@@ -406,6 +406,11 @@ bool move_result::test_route(const unit &un, const team &my_team, const unit_map
 
 	if (un.movement_left() == 0 ) {
 		set_error(E_EMPTY_MOVE);
+		return false;
+	}
+
+	if (!to_.valid()) {
+		set_error(E_NO_ROUTE);
 		return false;
 	}
 	const pathfind::shortest_path_calculator calc(un, my_team, units, teams,map);
