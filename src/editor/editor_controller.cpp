@@ -184,6 +184,10 @@ void editor_controller::init_mouse_actions(const config& game_config)
 		new mouse_action_select(&brush_, key_)));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_STARTING_POSITION,
 		new mouse_action_starting_position(key_)));
+#ifdef EXPERIMENTAL
+	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_LABEL,
+		new mouse_action_map_label(key_)));
+#endif
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_PASTE,
 		new mouse_action_paste(clipboard_, key_)));
 	foreach (const theme::menu& menu, gui().get_theme().menus()) {
@@ -837,6 +841,10 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_EDITOR_TOOL_SELECT:
 		case HOTKEY_EDITOR_TOOL_STARTING_POSITION:
 			return true; //tool selection always possible
+#ifdef EXPERIMENTAL
+		case HOTKEY_EDITOR_TOOL_LABEL:
+			return true; //tool selection always possible
+#endif
 		case HOTKEY_EDITOR_CUT:
 		case HOTKEY_EDITOR_COPY:
 		case HOTKEY_EDITOR_EXPORT_SELECTION_COORDS:
@@ -882,6 +890,10 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 		case HOTKEY_EDITOR_TOOL_PAINT:
 		case HOTKEY_EDITOR_TOOL_FILL:
 		case HOTKEY_EDITOR_TOOL_SELECT:
+#ifdef EXPERIMENTAL
+		case HOTKEY_EDITOR_TOOL_LABEL:
+			return is_mouse_action_set(command) ? ACTION_ON : ACTION_OFF;
+#endif
 		case HOTKEY_EDITOR_TOOL_STARTING_POSITION:
 			return is_mouse_action_set(command) ? ACTION_ON : ACTION_OFF;
 		case HOTKEY_EDITOR_DRAW_COORDINATES:
@@ -936,6 +948,11 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 		case HOTKEY_EDITOR_TOOL_STARTING_POSITION:
 			hotkey_set_mouse_action(command);
 			return true;
+#ifdef EXPERIMENTAL
+		case HOTKEY_EDITOR_TOOL_LABEL:
+			hotkey_set_mouse_action(command);
+			return true;
+#endif
 		case HOTKEY_EDITOR_PASTE: //paste is somewhat different as it might be "one action then revert to previous mode"
 			hotkey_set_mouse_action(command);
 			return true;
