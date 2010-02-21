@@ -1,20 +1,22 @@
 # Finnish translations for Battle for Wesnoth package.
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# Automatically generated, 2004.
 #
+# Automatically generated, 2004.
+# Samu Voutilainen <smar@smar.fi>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-02-10 17:39+0100\n"
-"PO-Revision-Date: 2010-01-09 22:54+0200\n"
-"Last-Translator: Jarkko Patteri <jarkkopatteri@gmail.com>\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2010-02-20 21:55+0200\n"
+"Last-Translator: Samu Voutilainen <smar@smar.fi>\n"
+"Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 1.0\n"
 
 #. [terrain_type]: id=off_map
 #: data/core/terrain.cfg:13
@@ -80,17 +82,17 @@ msgstr "linna"
 #. [terrain_type]: id=ruin
 #: data/core/terrain.cfg:216
 msgid "Ruin"
-msgstr "raunioita"
+msgstr "raunio"
 
 #. [terrain_type]: id=sunkenruin
 #: data/core/terrain.cfg:227
 msgid "Sunken Ruin"
-msgstr "uponneita raunioita"
+msgstr "uponnut raunio"
 
 #. [terrain_type]: id=swampruin
 #: data/core/terrain.cfg:239
 msgid "Swamp Ruin"
-msgstr "soistuneita raunioita"
+msgstr "soistunut raunio"
 
 #. [terrain_type]: id=encampment_keep
 #. [terrain_type]: id=orcish_keep
@@ -112,12 +114,12 @@ msgstr "linnake"
 #. [terrain_type]: id=encampment_keep
 #: data/core/terrain.cfg:256
 msgid "Encampment Keep"
-msgstr "leiri"
+msgstr "leirin linnake"
 
 #. [terrain_type]: id=orcish_keep
 #: data/core/terrain.cfg:269
 msgid "Fort Keep"
-msgstr "linnake"
+msgstr "linnoituksen linnake"
 
 #. [terrain_type]: id=human_keep
 #. [terrain_type]: id=dwarven_keep
@@ -125,22 +127,22 @@ msgstr "linnake"
 #: data/core/terrain.cfg:282 data/core/terrain.cfg:308
 #: data/core/terrain.cfg:347
 msgid "Castle Keep"
-msgstr "linna"
+msgstr "linnan linnake"
 
 #. [terrain_type]: id=elven_keep
 #: data/core/terrain.cfg:295
 msgid "Elven Keep"
-msgstr "haltialinna"
+msgstr "haltialinnan linnake"
 
 #. [terrain_type]: id=ruined_keep
 #: data/core/terrain.cfg:321
 msgid "Ruined Castle Keep"
-msgstr "rauniolinna"
+msgstr "rauniolinnan linnake"
 
 #. [terrain_type]: id=sunken_keep
 #: data/core/terrain.cfg:334
 msgid "Sunken Castle Keep"
-msgstr "uponnut linna"
+msgstr "uponnen linnan linnake"
 
 #. [terrain_type]: id=crater
 #: data/core/terrain.cfg:387
@@ -150,7 +152,7 @@ msgstr "kraateri"
 #. [terrain_type]: id=desert
 #: data/core/terrain.cfg:397
 msgid "Desert"
-msgstr "aavikkoa"
+msgstr "aavikko"
 
 #. [terrain_type]: id=sand_rubble
 #: data/core/terrain.cfg:407
@@ -173,17 +175,17 @@ msgstr "keidas"
 #: data/core/terrain.cfg:441 data/core/terrain.cfg:516
 #: data/core/terrain.cfg:561
 msgid "Snow Forest"
-msgstr "lumista metsää"
+msgstr "luminen metsä"
 
 #. [terrain_type]: id=snow_forest
 #: data/core/terrain.cfg:442
 msgid "Snowy Pine Forest"
-msgstr "lumista metsää"
+msgstr "luminen mäntymetsä"
 
 #. [terrain_type]: id=great_tree
 #: data/core/terrain.cfg:453
 msgid "Great Tree"
-msgstr "suuri puu"
+msgstr "massiivinen puu"
 
 #. [terrain_type]: id=forest
 #. [terrain_type]: id=deciduous_forest_summer
@@ -197,57 +199,57 @@ msgstr "suuri puu"
 #: data/core/terrain.cfg:528 data/core/terrain.cfg:539
 #: data/core/terrain.cfg:550
 msgid "Forest"
-msgstr "metsää"
+msgstr "metsä"
 
 #. [terrain_type]: id=forest
 #: data/core/terrain.cfg:464
 msgid "Pine Forest"
-msgstr "metsää"
+msgstr "mäntymetsä"
 
 #. [terrain_type]: id=tropical_forest
 #: data/core/terrain.cfg:473
 msgid "Tropical Forest"
-msgstr "trooppista metsää"
+msgstr "trooppinen metsä"
 
 #. [terrain_type]: id=deciduous_forest_summer
 #: data/core/terrain.cfg:484
 msgid "Summer Deciduous Forest"
-msgstr "lehtimetsää"
+msgstr "kesäinen lehtimetsä"
 
 #. [terrain_type]: id=deciduous_forest_fall
 #: data/core/terrain.cfg:495
 msgid "Fall Deciduous Forest"
-msgstr "lehtimetsää"
+msgstr "syksyinen lehtimetsä"
 
 #. [terrain_type]: id=deciduous_forest_winter
 #: data/core/terrain.cfg:506
 msgid "Winter Deciduous Forest"
-msgstr "lehtimetsää"
+msgstr "talvinen lehtimetsä"
 
 #. [terrain_type]: id=deciduous_forest_winter_snow
 #: data/core/terrain.cfg:517
 msgid "Snowy Deciduous Forest"
-msgstr "lumista metsää"
+msgstr "luminen lehtimetsä"
 
 #. [terrain_type]: id=mixed_forest_summer
 #: data/core/terrain.cfg:529
 msgid "Summer Mixed Forest"
-msgstr "sekametsää"
+msgstr "kesäinen sekametsä"
 
 #. [terrain_type]: id=mixed_forest_fall
 #: data/core/terrain.cfg:540
 msgid "Fall Mixed Forest"
-msgstr "sekametsää"
+msgstr "syksyinen sekametsä"
 
 #. [terrain_type]: id=mixed_forest_winter
 #: data/core/terrain.cfg:551
 msgid "Winter Mixed Forest"
-msgstr "sekametsää"
+msgstr "talvinen sekametsä"
 
 #. [terrain_type]: id=mixed_forest_winter_snow
 #: data/core/terrain.cfg:562
 msgid "Snowy Mixed Forest"
-msgstr "lumista metsää"
+msgstr "luminen sekametsä"
 
 #. [terrain_type]: id=forested_hills
 #. [terrain_type]: id=deciduous_forest_summer_hills
@@ -261,7 +263,7 @@ msgstr "lumista metsää"
 #: data/core/terrain.cfg:641 data/core/terrain.cfg:652
 #: data/core/terrain.cfg:662
 msgid "Forested Hills"
-msgstr "metsittyneitä kukkuloita"
+msgstr "metsittyneitä mäkiä"
 
 #. [terrain_type]: id=forested_snow_hills
 #. [terrain_type]: id=deciduous_forest_winter_snow_hills
@@ -269,42 +271,42 @@ msgstr "metsittyneitä kukkuloita"
 #: data/core/terrain.cfg:587 data/core/terrain.cfg:630
 #: data/core/terrain.cfg:673
 msgid "Forested Snow Hills"
-msgstr "metsittyneitä, lumisia mäkiä"
+msgstr "metsittyneitä lumisia mäkiä"
 
 #. [terrain_type]: id=deciduous_forest_summer_hills
 #: data/core/terrain.cfg:598
 msgid "Summer Deciduous Forested Hills"
-msgstr "metsittyneitä kukkuloita"
+msgstr "kesäisen lehtimetsäisiä mäkiä"
 
 #. [terrain_type]: id=deciduous_forest_fall_hills
 #: data/core/terrain.cfg:609
 msgid "Fall Deciduous Forested Hills"
-msgstr "metsittyneitä kukkuloita"
+msgstr "syksyisen lehtimetsäisiä mäkiä"
 
 #. [terrain_type]: id=deciduous_forest_winter_hills
 #: data/core/terrain.cfg:620
 msgid "Winter Deciduous Forested Hills"
-msgstr "metsittyneitä kukkuloita"
+msgstr "talvisen lehtimetsäisiä mäkiä"
 
 #. [terrain_type]: id=deciduous_forest_winter_snow_hills
 #: data/core/terrain.cfg:631
 msgid "Snowy Deciduous Forested Hills"
-msgstr "metsittyneitä kukkuloita"
+msgstr "lumisen lehtimetsäisiä kukkuloita"
 
 #. [terrain_type]: id=mixed_forest_summer_hills
 #: data/core/terrain.cfg:642
 msgid "Summer Mixed Forested Hills"
-msgstr "metsittyneitä kukkuloita"
+msgstr "kesäisen sekametsäisiä kukkuloita"
 
 #. [terrain_type]: id=mixed_forest_winter_hills
 #: data/core/terrain.cfg:663
 msgid "Winter Mixed Forested Hills"
-msgstr "metsittyneitä kukkuloita"
+msgstr "talvisen sekametsäisiä kukkuloita"
 
 #. [terrain_type]: id=mixed_forest_winter_snow_hills
 #: data/core/terrain.cfg:674
 msgid "Snowy Mixed Forested Hills"
-msgstr "metsittyneitä kukkuloita"
+msgstr "lumisen sekametsäisiä kukkuloita"
 
 #. [terrain_type]: id=grassland
 #. [terrain_type]: id=grassland_flowers
@@ -312,12 +314,12 @@ msgstr "metsittyneitä kukkuloita"
 #: data/core/terrain.cfg:688 data/core/terrain.cfg:697
 #: data/core/terrain.cfg:706
 msgid "Grassland"
-msgstr "tasankoa"
+msgstr "tasanko"
 
 #. [terrain_type]: id=savanna
 #: data/core/terrain.cfg:715
 msgid "Savanna"
-msgstr "savannia"
+msgstr "savanni"
 
 #. [terrain_type]: id=snow_hills
 #: data/core/terrain.cfg:728
@@ -327,7 +329,7 @@ msgstr "lumisia mäkiä"
 #. [terrain_type]: id=desert_hills
 #: data/core/terrain.cfg:738
 msgid "Dunes"
-msgstr "hiekkadyynejä"
+msgstr "hiekkadyyni"
 
 #. [terrain_type]: id=hills
 #: data/core/terrain.cfg:748
@@ -340,17 +342,17 @@ msgstr "mäkiä"
 #: data/core/terrain.cfg:760 data/core/terrain.cfg:770
 #: data/core/terrain.cfg:778
 msgid "Mountains"
-msgstr "vuoria"
+msgstr "vuori"
 
 #. [terrain_type]: id=desert_mountains
 #: data/core/terrain.cfg:761
 msgid "Desert Mountains"
-msgstr "aavikkovuoristo"
+msgstr "aavikkovuori"
 
 #. [terrain_type]: id=snow_mountains
 #: data/core/terrain.cfg:779
 msgid "Snowy Mountains"
-msgstr "vuoria"
+msgstr "lumisia vuori"
 
 #. [terrain_type]: id=canyon
 #: data/core/terrain.cfg:793
@@ -387,7 +389,7 @@ msgstr "peltomaa"
 #. [terrain_type]: id=swamp_water
 #: data/core/terrain.cfg:876
 msgid "Swamp"
-msgstr "suota"
+msgstr "suo"
 
 #. [terrain_type]: id=lit
 #: data/core/terrain.cfg:890
@@ -417,7 +419,7 @@ msgstr "valaistu sienilehto"
 #. [terrain_type]: id=rocky_cave
 #: data/core/terrain.cfg:947
 msgid "Rockbound Cave"
-msgstr "louhikkoluolaa"
+msgstr "louhikkoluola"
 
 #. [terrain_type]: id=desert_village
 #. [terrain_type]: id=orcish_snow_village
@@ -489,22 +491,22 @@ msgstr "koralliriutta"
 #. [terrain_type]: id=cloud
 #: data/core/terrain.cfg:1367
 msgid "Impassable Mountains"
-msgstr "ylitsepääsemätön vuoristo"
+msgstr "ylitsepääsemättömiä vuoria"
 
 #. [terrain_type]: id=clouddesert
 #: data/core/terrain.cfg:1376
 msgid "Impassable Desert Mountains"
-msgstr "ylitsepääsemätön aavikkovuoristo"
+msgstr "ylitsepääsemättömiä aavikkovuoria"
 
 #. [terrain_type]: id=cavewall
 #: data/core/terrain.cfg:1385
 msgid "Cave Wall"
-msgstr "Kiveä"
+msgstr "luolan seinä"
 
 #. [terrain_type]: id=wall_stone
 #: data/core/terrain.cfg:1394
 msgid "Wall"
-msgstr "Seinä"
+msgstr "seinä"
 
 #. [terrain_type]: id=impassable_overlay
 #. [terrain_type]: id=impassable
@@ -530,7 +532,7 @@ msgstr "jäätynyt"
 #. [terrain_type]: id=unwalkable
 #: data/core/terrain.cfg:1449
 msgid "Unwalkable"
-msgstr "ylitsepääsemätön"
+msgstr "kulkukelvoton"
 
 #. [label]
 #. [column]
@@ -544,7 +546,7 @@ msgstr "Yhdistä palvelimelle"
 #. [label]
 #: data/gui/default/window/addon_connect.cfg:51
 msgid "You will now connect to a server to download add-ons."
-msgstr "Yhdistät parhaillaan palvelimeen ladataksesi lisäosia."
+msgstr "Yhdistät parhaillaan palvelimelle ladataksesi lisäosia."
 
 #. [label]
 #: data/gui/default/window/addon_connect.cfg:81
@@ -599,7 +601,7 @@ msgstr "Peruuta"
 #. [label]
 #: data/gui/default/window/campaign_dialog.cfg:49
 msgid "Play a campaign"
-msgstr "Pelaa kampanja"
+msgstr "Pelaa kampanjaa"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -695,7 +697,7 @@ msgstr "Vanha korkeus:"
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:147
 msgid "Expand / shrink direction"
-msgstr "Laajenna / supista suuntaa"
+msgstr "Laajenna / supista suuntaan"
 
 #. [toggle_button]: id=copy_edge_terrain
 #: data/gui/default/window/editor_resize_map.cfg:242
@@ -767,7 +769,7 @@ msgstr "Hyväksy"
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:28
 msgid "Formula debugger"
-msgstr "Kaava"
+msgstr "Kaavojen virheenjäljittäjä"
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:51
@@ -782,7 +784,7 @@ msgstr "tila"
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:77
 msgid "Call stack"
-msgstr ""
+msgstr "Kutsupino"
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:86
@@ -793,7 +795,7 @@ msgstr "Toiminnot"
 #. [button]: id=step
 #: data/gui/default/window/formula_debugger.cfg:120
 msgid "Step operation"
-msgstr ""
+msgstr "Astu operaatioon"
 
 #. [button]: id=next
 #: data/gui/default/window/formula_debugger.cfg:130
@@ -803,7 +805,7 @@ msgstr "Seuraava toiminto"
 #. [button]: id=stepout
 #: data/gui/default/window/formula_debugger.cfg:140
 msgid "Step out"
-msgstr ""
+msgstr "Astu pois"
 
 #. [button]: id=continue
 #: data/gui/default/window/formula_debugger.cfg:150
@@ -813,7 +815,7 @@ msgstr "Jatka"
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:166
 msgid "Execution trace"
-msgstr ""
+msgstr "Suoritusjälki"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
@@ -834,12 +836,12 @@ msgstr "Poista tallennus"
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_delete.cfg:52
 msgid "Do you really want to delete this game?"
-msgstr "Haluatko todella poistaa tämän pelin?"
+msgstr "Haluatko varmasti poistaa tämän pelin?"
 
 #. [toggle_button]: id=dont_ask_again
 #: data/gui/default/window/game_delete.cfg:72
 msgid "Don't ask me again!"
-msgstr "Älä kysy uudestaan"
+msgstr "Älä kysy uudestaan!"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -870,12 +872,12 @@ msgstr "Ei"
 #: data/gui/default/window/game_load.cfg:42
 #: src/gui/dialogs/mp_create_game.cpp:76 src/hotkeys.cpp:66
 msgid "Load Game"
-msgstr "Lataa peli"
+msgstr "Avaa peli"
 
 #. [label]: id=lblChoose
 #: data/gui/default/window/game_load.cfg:181
 msgid "Choose the game to load"
-msgstr "Valitse ladattava peli"
+msgstr "Valitse avattava peli"
 
 #. [label]: id=lblFilter
 #: data/gui/default/window/game_load.cfg:205
@@ -922,7 +924,6 @@ msgstr "Tallenna peli"
 #: data/gui/default/window/game_save.cfg:62
 #: data/gui/default/window/game_save_message.cfg:82
 #: data/gui/default/window/game_save_oos.cfg:82
-#, fuzzy
 msgid "Name:"
 msgstr "Nimi:"
 
@@ -934,7 +935,7 @@ msgstr "x"
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_save_oos.cfg:52
 msgid "OOS error"
-msgstr "OOS -virhe"
+msgstr "OOS-virhe"
 
 #. [toggle_button]: id=ignore_all
 #: data/gui/default/window/game_save_oos.cfg:134
@@ -950,17 +951,17 @@ msgstr "Lopeta peli"
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_save_overwrite.cfg:32
 msgid "Overwrite?"
-msgstr "Kirjoitetaanko päälle?"
+msgstr "Ylikirjoitetaanko tiedosto?"
 
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_save_overwrite.cfg:52
 msgid "Save already exists. Do you want to overwrite it?"
-msgstr "Tallennus on jo olemassa. Tahdotko päällekirjoittaa nykyisen?"
+msgstr "Tämänniminen tallennus on jo olemassa. Tahdotko ylikirjoittaa sen?"
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:38
 msgid "Gamestate Inspector"
-msgstr ""
+msgstr "Pelitilan tarkastelija"
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:92
@@ -975,7 +976,7 @@ msgstr "Sisältö"
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:114
 msgid "Inspection window"
-msgstr ""
+msgstr "Tarkastelijan ikkuna"
 
 #. [label]: id=unit_type
 #. [label]: id=typename
@@ -1010,7 +1011,7 @@ msgstr "Kieli"
 #. [label]
 #: data/gui/default/window/language_selection.cfg:50
 msgid "Choose your preferred language:"
-msgstr "Valitse haluamasi kieli"
+msgstr "Valitse haluamasi kieli:"
 
 #. [button]: id=ok
 #: data/gui/default/window/language_selection.cfg:118
@@ -1110,7 +1111,7 @@ msgstr "Viestitys"
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:567
 msgid "Multiplayer Lobby"
-msgstr "Moninpelihalli"
+msgstr "Moninpeliaula"
 
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:575
@@ -1211,12 +1212,12 @@ msgstr "Moderointi"
 #. [button]: id=check_status
 #: data/gui/default/window/lobby_player_info.cfg:140
 msgid "Check status"
-msgstr "Tarkasta tilanne"
+msgstr "Tarkasta tila"
 
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:147
 msgid "Kick / ban reason:"
-msgstr "Potku/Esto syy:"
+msgstr "Potkun tai eston syy:"
 
 #. [button]: id=kick
 #: data/gui/default/window/lobby_player_info.cfg:160
@@ -1236,9 +1237,8 @@ msgstr "Potkaise/Estä"
 
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
-#, fuzzy
 msgid "Multiplayer command dialog"
-msgstr "Moninpelin komentojen kääredialogi"
+msgstr "Moninpelin komentovalikko"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:31
@@ -1258,7 +1258,7 @@ msgstr "Lähetä yksityisviesti"
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:133
 msgid "Friends/Ignored List"
-msgstr "Ystävien/torjuttujen lista"
+msgstr "Ystävien / torjuttujen lista"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=add_friend
@@ -1299,7 +1299,7 @@ msgstr "Aika:"
 #. [button]: id=status
 #: data/gui/default/window/mp_cmd_wrapper.cfg:366
 msgid "Status"
-msgstr "Tilanne"
+msgstr "Tila"
 
 #. [button]: id=ban
 #: data/gui/default/window/mp_cmd_wrapper.cfg:396
@@ -1310,7 +1310,7 @@ msgstr "Estä"
 #: data/gui/default/window/mp_connect.cfg:50
 #: data/gui/default/window/mp_server_list.cfg:61
 msgid "You will now connect to the multiplayer server."
-msgstr "Yhdistät parhaillaan moninpelipalvelimeen."
+msgstr "Sinut yhdistetään moninpelipalvelimeen."
 
 #. [button]: id=list
 #: data/gui/default/window/mp_connect.cfg:148
@@ -1497,9 +1497,8 @@ msgstr "Apua"
 
 #. [button]: id=previous_tip
 #: data/gui/default/window/title_screen.cfg:124
-#, fuzzy
 msgid "Previous"
-msgstr "Edellinen yksikkö"
+msgstr "Edellinen"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
@@ -1511,12 +1510,12 @@ msgstr "Tutoriaali"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:183
 msgid "Campaign"
-msgstr "Kampanja"
+msgstr "Kampanjat"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:185
 msgid "Load"
-msgstr "Lataa"
+msgstr "Tallennukset"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:186
@@ -1526,7 +1525,7 @@ msgstr "Lisäosat"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:187
 msgid "Editor"
-msgstr "Editori"
+msgstr "Karttaeditori"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:190
@@ -1542,7 +1541,7 @@ msgstr "Luo yksikkö (Debug!)"
 #. [label]
 #: data/gui/default/window/unit_create.cfg:59
 msgid "Gender:"
-msgstr "Sukupuoli:i"
+msgstr "Sukupuoli:"
 
 #. [toggle_button]: id=male_toggle
 #: data/gui/default/window/unit_create.cfg:69
@@ -1614,7 +1613,7 @@ msgstr "Ohita tietokoneen liikkeet"
 
 #: src/game_preferences_display.cpp:161
 msgid "Interrupt move when an ally is sighted"
-msgstr "Estä liike kun liittolainen havaitaan"
+msgstr "Keskeytä liike havaitessa liittolaisen"
 
 #: src/game_preferences_display.cpp:162
 msgid "Show Grid"
@@ -1650,7 +1649,7 @@ msgstr "Ikonisoi aulan lista"
 
 #: src/game_preferences_display.cpp:171
 msgid "Set path to wesnothd"
-msgstr "Aseta ”wesnothd”:n polku"
+msgstr "Aseta wesnothd:n polku"
 
 #: src/game_preferences_display.cpp:172
 msgid "Friends List"
@@ -1726,11 +1725,11 @@ msgstr "Käyttäjäympäristön äänet"
 
 #: src/game_preferences_display.cpp:196
 msgid "Custom"
-msgstr "Epätavallinen"
+msgstr "Mukautetut"
 
 #: src/game_preferences_display.cpp:198
 msgid "Show Unit Idle Animations"
-msgstr "Näytä yksikön vapaa-ajan animaatiot"
+msgstr "Näytä yksiköiden vapaa-ajan animaatiot"
 
 #: src/game_preferences_display.cpp:200
 msgid "Music Volume:"
@@ -1742,7 +1741,7 @@ msgstr "Äänet:"
 
 #: src/game_preferences_display.cpp:201
 msgid "UI Sound Volume:"
-msgstr "UI:n äänenvoimakkuus:"
+msgstr "Käyttöliittymän äänenvoimakkuus:"
 
 #: src/game_preferences_display.cpp:202
 msgid "Bell Volume:"
@@ -1750,7 +1749,7 @@ msgstr "Äänimerkin voimakkuus:"
 
 #: src/game_preferences_display.cpp:202
 msgid "Scroll Speed:"
-msgstr "Ruudunvieritysnopeus:"
+msgstr "Vierityksen nopeus:"
 
 #: src/game_preferences_display.cpp:205
 msgid "Sample Rate (Hz):"
@@ -1829,7 +1828,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:303
 msgid "Make units move and fight faster"
-msgstr "Valitse, jos haluat, että yksiköt liikkuvat ja taistelevat nopeammin"
+msgstr "Valitse, jos haluat yksiköiden liikkuvan ja taistelevan nopeammin"
 
 #: src/game_preferences_display.cpp:320
 msgid "Units move and fight speed"
@@ -1849,7 +1848,7 @@ msgstr "Aseta maksimimäärä säästettäville automaattitallennuksille"
 
 #: src/game_preferences_display.cpp:338
 msgid "Do not animate AI units moving"
-msgstr "Älä animoi tietokoneen yksikköjen liikkeitä"
+msgstr "Älä animoi tietokoneen yksiköiden liikkeitä"
 
 #: src/game_preferences_display.cpp:349
 msgid "Overlay a grid onto the map"
@@ -1940,11 +1939,11 @@ msgstr "Valitse, liikkuuko aurinko vasemmalta oikealle, vai päinvastoin"
 
 #: src/game_preferences_display.cpp:397
 msgid "Use colored mouse cursors (may be slower)"
-msgstr "Värilliset hiiren kursorit (mahdollisesti hitaampi)"
+msgstr "Värilliset hiiren kursorit (saattaa hidastaa)"
 
 #: src/game_preferences_display.cpp:400
 msgid "Use graphical special effects (may be slower)"
-msgstr "Käytä erikoistehosteita (mahdollisesti hitaampi)"
+msgstr "Käytä erikoistehosteita (saattaa hidastaa)"
 
 #: src/game_preferences_display.cpp:402
 msgid "View and configure keyboard shortcuts"
@@ -2012,7 +2011,7 @@ msgstr "Uusi teema otetaan käyttöön seuraavassa uudessa tai ladatussa peliss�
 
 #: src/game_preferences_display.cpp:1224
 msgid "No known themes. Try changing from within an existing game."
-msgstr "Ei teemoja. Yritä vaihtamista käynnissä olevasta pelistä."
+msgstr "Ei teemoja. Teema täytyy vaihtaa käynnissä olevasta pelistä."
 
 #: src/game_preferences_display.cpp:1267
 msgid "Find $filename server binary to host networked games"
@@ -2053,16 +2052,16 @@ msgstr "Ruudukkoa ei ole määritetty."
 
 #: src/gui/auxiliary/window_builder.cpp:146
 msgid "Linked '$id' group has multiple definitions."
-msgstr "Linkitetyllä '$id' -ryhmällä on useampia määritelmiä"
+msgstr "Linkitetyllä ’$id’ -ryhmällä on useampia määritelmiä"
 
 #: src/gui/auxiliary/window_builder.cpp:342
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
-"Linkitetty '$id' -ryhmä vaatii 'fixed_width' tai 'fixed_height' avaimen."
+"Linkitetty ’$id’ -ryhmä vaatii ’fixed_width’ tai ’fixed_height’ avaimen."
 
 #: src/gui/auxiliary/window_builder.cpp:441
 msgid "A row must have a column."
-msgstr "Rivillä täytyy olla (yksi) kolumni."
+msgstr "Rivillä täytyy olla kolumni."
 
 #: src/gui/auxiliary/window_builder.cpp:442
 msgid "Number of columns differ."
@@ -2077,7 +2076,7 @@ msgstr "Listaa ei ole määritetty."
 #: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:46
 #: src/gui/auxiliary/window_builder/listbox.cpp:56
 msgid "A 'list_definition' should contain one row."
-msgstr "'list_definition':lla pitäisi olla yksi rivi."
+msgstr "’list_definition’:lla pitäisi olla yksi rivi."
 
 #: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:62
 #: src/gui/auxiliary/window_builder/listbox.cpp:72
@@ -2085,24 +2084,23 @@ msgstr "'list_definition':lla pitäisi olla yksi rivi."
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
-"'list_data':lla täytyy olla sama määrä kolumneja kuin 'list_definition':lla."
+"’list_data’:lla täytyy olla sama määrä kolumneja kuin ’list_definition’:lla."
 
 #: src/gui/auxiliary/window_builder/multi_page.cpp:38
 msgid "No page defined."
 msgstr "Ruudukkoa ei ole määritetty."
 
 #: src/gui/auxiliary/window_builder/slider.cpp:66
-#, fuzzy
 msgid "The number of value_labels and values don't match."
-msgstr "kenttien ”value_labels” ja ”values” numerot eivät täsmää."
+msgstr "kenttien value_labels ja values arvot eivät täsmää."
 
 #: src/gui/auxiliary/window_builder/stacked_widget.cpp:36
 msgid "No stack defined."
-msgstr ""
+msgstr "Pinoa ei ole määritetty."
 
 #: src/gui/dialogs/game_load.cpp:244
 msgid "#(Invalid)"
-msgstr ""
+msgstr "#(Epäkelpo)"
 
 #: src/gui/dialogs/game_load.cpp:264
 msgid "Campaign: $campaign_name"
@@ -2113,9 +2111,8 @@ msgid "replay"
 msgstr "uusinta"
 
 #: src/gui/dialogs/game_load.cpp:285
-#, fuzzy
 msgid "Turn"
-msgstr "Lopeta vuoro"
+msgstr "Vuoro"
 
 #: src/gui/dialogs/game_load.cpp:287
 msgid "Scenario Start"
@@ -2131,7 +2128,7 @@ msgstr "Versio:"
 
 #: src/gui/dialogs/lobby_main.cpp:254
 msgid "whisper to $receiver"
-msgstr "Yksityisviesti henkilölle $receiver"
+msgstr "yksityisviesti henkilölle $receiver"
 
 #: src/gui/dialogs/lobby_main.cpp:672
 msgid "Games: showing $num_shown out of $num_total"
@@ -2143,7 +2140,7 @@ msgstr "Tarkkailijat sallittu"
 
 #: src/gui/dialogs/lobby_main.cpp:717
 msgid "Observers not allowed"
-msgstr "Tarkkailijat evätty"
+msgstr "Tarkkailijat estetty"
 
 #: src/gui/dialogs/lobby_main.cpp:1055
 msgid ""
@@ -2155,7 +2152,7 @@ msgstr ""
 
 #: src/gui/dialogs/lobby_main.cpp:1061
 msgid "Room $name joined"
-msgstr ""
+msgstr "Liitytty huoneeseen $name"
 
 #: src/gui/dialogs/lobby_main.cpp:1577
 msgid "Password Required"
@@ -2192,7 +2189,8 @@ msgstr "Ikkunaa ei ole määritetty."
 #: src/gui/widgets/settings.cpp:407
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
-msgstr "Widgetin määritelmä ”$definition” ei sisällä määritelmää id:lle ”$id”."
+msgstr ""
+"Pienoisohjelman määritelmä ”$definition” ei sisällä määritelmää id:lle ”$id”."
 
 #: src/gui/widgets/settings.cpp:508
 msgid "No default gui defined."
@@ -2204,12 +2202,12 @@ msgstr "Tilannetta tai piirtoaluetta ei ole määritetty."
 
 #: src/gui/widgets/window.cpp:772
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
-msgstr ""
+msgstr "Hylkäys klikkaamalla tarvitsee ”click_dismiss” tai ”ok” -painikkeen. "
 
 #: src/gui/widgets/window.cpp:797 src/gui/widgets/window.cpp:830
 #: src/tests/gui/test_gui2.cpp:229
 msgid "Failed to show a dialog, which doesn't fit on the screen."
-msgstr "Dialogin näyttäminen epäonnistui, koska se ei mahtunut ruudulle."
+msgstr "Valintaikkunan näyttäminen epäonnistui, koska se ei mahtunut ruudulle."
 
 #: src/hotkeys.cpp:46
 msgid "Next Unit"
@@ -2253,7 +2251,7 @@ msgstr "Loitonna"
 
 #: src/hotkeys.cpp:56
 msgid "Default Zoom"
-msgstr "Vakiosuurennus"
+msgstr "Vakiotäisyys"
 
 #: src/hotkeys.cpp:57
 msgid "Toggle Full Screen"
@@ -2265,7 +2263,7 @@ msgstr "Kuvankaappaus"
 
 #: src/hotkeys.cpp:59
 msgid "Map Screenshot"
-msgstr "Karttakuvankaappaus"
+msgstr "Kuvankaappaus kartasta"
 
 #: src/hotkeys.cpp:60
 msgid "Accelerated"
@@ -2305,7 +2303,7 @@ msgstr "Lopeta vuoro"
 
 #: src/hotkeys.cpp:71
 msgid "Toggle Ellipses"
-msgstr ""
+msgstr "Kytke ellipsit käyttöön"
 
 #: src/hotkeys.cpp:72
 msgid "Toggle Grid"
@@ -2651,7 +2649,7 @@ msgstr "Kuvankaappauksen ottaminen epäonnistui"
 #. translate this message as "sv,da", while Danish as "da,sv".
 #: src/image.cpp:345
 msgid "language code for localized resources^en_US"
-msgstr ""
+msgstr "fi"
 
 #: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:239
 msgid "Close Window"
