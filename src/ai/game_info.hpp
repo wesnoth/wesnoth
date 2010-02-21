@@ -90,6 +90,7 @@ struct known_aspect_type {
 	typedef std::vector< boost::shared_ptr< typesafe_known_aspect<T> > > typesafe_ptr_vector;
 };
 
+class action_result;
 class attack_result;
 class recall_result;
 class recruit_result;
@@ -97,6 +98,7 @@ class move_result;
 class move_and_attack_result;
 class stopunit_result;
 
+typedef boost::shared_ptr<action_result> action_result_ptr;
 typedef boost::shared_ptr<attack_result> attack_result_ptr;
 typedef boost::shared_ptr<recall_result> recall_result_ptr;
 typedef boost::shared_ptr<recruit_result> recruit_result_ptr;
