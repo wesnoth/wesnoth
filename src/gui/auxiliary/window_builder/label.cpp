@@ -26,7 +26,7 @@ namespace implementation {
 
 tbuilder_label::tbuilder_label(const config& cfg)
 	: tbuilder_control(cfg)
-	, wrap(utils::string_bool("wrap"))
+	, wrap(utils::string_bool(cfg["wrap"]))
 {
 }
 
