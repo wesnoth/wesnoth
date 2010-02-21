@@ -16,7 +16,11 @@
 
 #include "gui/widgets/listbox.hpp"
 
+#include "gui/auxiliary/log.hpp"
 #include "gui/widgets/window.hpp"
+
+#define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
+#define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
 namespace gui2 {
 
@@ -35,6 +39,7 @@ tlistbox::tlistbox(const bool has_minimum, const bool has_maximum,
 	, generator_(NULL)
 	, list_builder_(NULL)
 	, callback_value_changed_(NULL)
+	, need_layout_(false)
 {
 	generator_ = tgenerator_::build(
 			has_minimum, has_maximum, placement, select);
@@ -68,11 +73,15 @@ void tlistbox::remove_row(const unsigned row, unsigned count)
 		count = get_item_count();
 	}
 
+	unsigned height_reduced = 0;
 	for(; count; --count) {
+		height_reduced += generator_->item(row).get_height();
 		generator_->delete_item(row);
 	}
 
-	set_dirty();
+	if(height_reduced != 0) {
+		resize_content(0, -height_reduced);
+	}
 }
 
 void tlistbox::clear()
@@ -251,6 +260,42 @@ void tlistbox::place(const tpoint& origin, const tpoint& size)
 
 		show_content_rect(rect);
 	}
+}
+
+void tlistbox::resize_content(
+		  const int width_modification
+		, const int height_modification)
+{
+	DBG_GUI_L << LOG_HEADER << " current size " << content_grid()->get_size()
+			<< " width_modification " << width_modification
+			<< " height_modification " << height_modification
+			<< ".\n";
+
+	if(content_resize_request(width_modification, height_modification)) {
+
+		// Calculate new size.
+		tpoint size = content_grid()->get_size();
+		size.x += width_modification;
+		size.y += height_modification;
+
+		// Set new size.
+		content_grid()->set_size(size);
+
+		// Set status.
+		need_layout_ = true;
+		// If the content grows assume it "overwrites" the old content.
+		if(width_modification < 0 || height_modification < 0) {
+			set_dirty();
+		}
+		DBG_GUI_L << LOG_HEADER << " succeeded.\n";
+	} else {
+		DBG_GUI_L << LOG_HEADER << " failed.\n";
+	}
+}
+
+void tlistbox::layout_children()
+{
+	layout_children(false);
 }
 
 void tlistbox::child_populate_dirty_list(twindow& caller,
@@ -437,6 +482,16 @@ void tlistbox::set_content_size(const tpoint& origin, const tpoint& size)
 	const int best_height = content_grid()->get_best_size().y;
 	const tpoint s(size.x, size.y < best_height ? size.y : best_height);
 	content_grid()->place(origin, s);
+}
+
+void tlistbox::layout_children(const bool force)
+{
+	if(need_layout_ || force) {
+		content_grid()->place(
+				  content_grid()->get_origin()
+				, content_grid()->get_size());
+		need_layout_ = false;
+	}
 }
 
 const std::string& tlistbox::get_control_type() const

@@ -198,6 +198,9 @@ public:
 	void place(const tpoint& origin, const tpoint& size);
 
 	/** Inherited from tscrollbar_container. */
+	void layout_children();
+
+	/** Inherited from tscrollbar_container. */
 	void child_populate_dirty_list(twindow& caller,
 			const std::vector<twidget*>& call_stack);
 
@@ -273,6 +276,30 @@ private:
 	 * change the selected item.
 	 */
 	void (*callback_value_changed_) (twidget*);
+
+	bool need_layout_;
+
+	/**
+	 * Resizes the content.
+	 *
+	 * The resize either happens due to resizing the content or invalidate the
+	 * layout of the window.
+	 *
+	 * @param width_modification  The wanted modification to the width:
+	 *                            * negative values reduce width.
+	 *                            * zero leave width as is.
+	 *                            * positive values increase width.
+	 * @param height_modification The wanted modification to the height:
+	 *                            * negative values reduce height.
+	 *                            * zero leave height as is.
+	 *                            * positive values increase height.
+	 */
+	void resize_content(
+			  const int width_modification
+			, const int height_modification);
+
+	/** Layouts the children if needed. */
+	void layout_children(const bool force);
 
 	/** Inherited from tscrollbar_container. */
 	virtual void set_content_size(const tpoint& origin, const tpoint& size);
