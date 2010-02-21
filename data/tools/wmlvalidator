@@ -52,32 +52,32 @@ class Validator:
             matches = node.get_texts(attribute.name)
             nummatches = len(matches)
             if attribute.freq == wmlgrammar.REQUIRED and nummatches != 1:
-                print "Attribute '[%s] %s' should appear exactly once, not %d times" % (verbosename, attribute.name, nummatches)
+                print "(%s:%d) Attribute '[%s] %s' should appear exactly once, not %d times" % (node.file, node.line, verbosename, attribute.name, nummatches)
             elif attribute.freq == wmlgrammar.OPTIONAL and nummatches > 1:
-                print "Attribute '[%s] %s' should appear at most once, not %d times" % (verbosename, attribute.name, nummatches)
+                print "(%s:%d) Attribute '[%s] %s' should appear at most once, not %d times" % (node.file, node.line, verbosename, attribute.name, nummatches)
             elif attribute.freq == wmlgrammar.FORBIDDEN and nummatches > 0:
-                print "Attribute '[%s] %s' should not appear. It appears %d times" % (verbosename, attribute.name, nummatches)
+                print "(%s:%d) Attribute '[%s] %s' should not appear. It appears %d times" % (node.file, node.line, verbosename, attribute.name, nummatches)
             for match in matches:
                 if not attribute.validate(match.data):
-                    print "Attribute '[%s] %s's value should be %s, found: %s" % (verbosename, attribute.name, attribute.type, match.data)
+                    print "(%s:%d) Attribute '[%s] %s's value should be %s, found: %s" % (node.file, node.line, verbosename, attribute.name, attribute.type, match.data)
                 node.remove(match) # Get rid of these so we can see what's left
         for attribute in node.get_all_text():
-            print "Attribute '[%s] %s' found, which has no meaning there" % (verbosename, attribute.name)
+            print "(%s:%d) Attribute '[%s] %s' found, which has no meaning there" % (node.file, node.line, verbosename, attribute.name)
 
         # Validate the elements
         for element in schema.get_elements():
             matches = node.get_subs(element.name)
             nummatches = len(matches)
             if element.freq == wmlgrammar.REQUIRED and nummatches != 1:
-                print "Element '[%s] [%s]' should appear exactly once, not %d times" % (verbosename, element.name, nummatches)
+                print "(%s:%d) Element '[%s] [%s]' should appear exactly once, not %d times" % (node.file, node.line, verbosename, element.name, nummatches)
             elif element.freq == wmlgrammar.OPTIONAL and nummatches > 1:
-                print "Element '[%s] [%s]' should appear at most once, not %d times" % (verbosename, element.name, nummatches)
+                print "(%s:%d) Element '[%s] [%s]' should appear at most once, not %d times" % (node.file, node.line, verbosename, element.name, nummatches)
             for match in matches:
                 self.validate(match, depth+1, element.subname)
                 node.remove(match)
 
         for element in node.get_all_subs():
-            print "Element '[%s] [%s]' found, which has no meaning there" % (verbosename, element.name)
+            print "(%s:%d) Element '[%s] [%s]' found, which has no meaning there" % (node.file, node.line, verbosename, element.name)
             # Do we want to do this?
             if False:
                 print "Attempting to validate [%s] anyway" % element.name
