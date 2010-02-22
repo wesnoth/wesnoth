@@ -102,7 +102,7 @@ void tbuilder_control::init_control(tcontrol* control) const
  *                                     for other purposes, this is documented
  *                                     at the widget.
  *
- *     tooptip (tstring = "")          If you hover over a widget a while (the
+ *     tooltip (tstring = "")          If you hover over a widget a while (the
  *                                     time it takes can differ per widget) a
  *                                     short help can show up.This defines the
  *                                     text of that message.
