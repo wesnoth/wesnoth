@@ -53,11 +53,6 @@ namespace soundsource {
 	class manager;
 } // namespace soundsource
 
-#ifdef EXPERIMENTAL
-namespace pathfind {
-	class manager;
-}
-#endif
 
 namespace tooltips {
 	struct manager;
@@ -200,9 +195,6 @@ protected:
 	events::menu_handler menu_handler_;
 	boost::scoped_ptr<soundsource::manager> soundsources_manager_;
 	tod_manager tod_manager_;
-#ifdef EXPERIMENTAL
-	boost::scoped_ptr<pathfind::manager> pathfind_manager_;
-#endif
 
 	//other objects
 	boost::scoped_ptr<game_display> gui_;

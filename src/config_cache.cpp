@@ -81,10 +81,6 @@ namespace game_config {
 		defines_map_["APPLE"] = preproc_define();
 #endif
 
-#ifdef EXPERIMENTAL
-		// use this to guard WML that depends on code guarded by EXPERIMENTAL
-		defines_map_["EXPERIMENTAL"] = preproc_define();
-#endif /* EXPERIMENTAL */
 	}
 
 	void config_cache::get_config(const std::string& path, config& cfg)

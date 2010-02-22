@@ -46,9 +46,6 @@ extern "C" {
 #include "log.hpp"
 #include "map.hpp"
 #include "pathfind/pathfind.hpp"
-#ifdef EXPERIMENTAL
-#include "pathfind/teleport.hpp"
-#endif
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "scripting/lua.hpp"

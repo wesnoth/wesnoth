@@ -248,56 +248,6 @@ void editor_action_starting_position::perform_without_undo(map_context& mc) cons
 	mc.set_needs_labels_reset();
 }
 
-#ifdef EXPERIMENTAL
-
-editor_action_label* editor_action_label::clone() const
-{
-	return new editor_action_label(*this);
-}
-
-editor_action* editor_action_label::perform(map_context& mc) const
-{
-	std::auto_ptr<editor_action> undo;
-
-//	terrain_label old_label = mc.get_labels(loc_);
-
-//	int old_player = mc.get_map().is_starting_position(loc_) + 1;
-//	map_location old_loc = mc.get_map().starting_position(player_);
-
-//	LOG_ED << "label perform, " << ", loc_ " << loc_ << ", old_label " << old_label << ", old_loc " << old_loc << "\n";
-//	if (old_label != -1) {
-//		// If another player was starting at the location, we actually perform two actions, so the undo is an action_chain.
-//		editor_action_chain* undo_chain = new editor_action_chain();
-//		undo_chain->append_action(new editor_action_label(loc_, old_label));
-//		undo_chain->append_action(new editor_action_label(old_loc, label_));
-//		undo.reset(undo_chain);
-//		LOG_ED << "label actual: " << old_label << " to " << map_location() << "\n";
-//		mc.set_label(loc_)
-////		mc.get_map().set_starting_position(old_player, map_location());
-//	} else {
-//		undo.reset(new editor_action_label(old_loc, label_));
-//	}
-//	LOG_ED << "label actual: " << label_ << " to " << loc_ << "\n";
-//
-//	mc.set_label(label_, loc_);
-	//	mc.get_map().set_starting_position(player_, loc_);
-	mc.set_needs_labels_reset();
-	return undo.release();
-}
-
-void editor_action_label::perform_without_undo(map_context& mc) const
-{
-	int old_player = mc.get_map().is_starting_position(loc_);
-	if (old_player != -1) {
-		mc.get_map().set_starting_position(old_player, map_location());
-	}
-
-	//TODO
-	//mc.get_map().set_starting_position(player_, loc_);
-	mc.set_needs_labels_reset();
-}
-
-#endif
 
 editor_action_select* editor_action_select::clone() const
 {

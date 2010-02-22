@@ -391,14 +391,6 @@ set(wesnoth-main_SRC
     widgets/scrollpane.cpp
 )
 
-if(ENABLE_EXPERIMENTAL)
-    set(wesnoth-main_SRC
-        ${wesnoth-main_SRC}
-        pathfind/pathfind.cpp
-        pathfind/teleport.cpp
-	gui/dialogs/icon_message.cpp
-    )
-endif(ENABLE_EXPERIMENTAL)
 
 if(ENABLE_EDITOR)
 	set(wesnoth-main_SRC
@@ -480,12 +472,10 @@ SET(libwesnoth-game_STAT_SRC
     wml_exception.cpp
 )
 
-if(NOT ENABLE_EXPERIMENTAL)
     SET(libwesnoth-game_STAT_SRC
         ${libwesnoth-game_STAT_SRC}
         pathfind/pathfind.cpp
     )
-endif(NOT ENABLE_EXPERIMENTAL)
 
 if(ENABLE_GAME AND ENABLE_TESTS)
 	set(libwesnoth-game_STAT_SRC

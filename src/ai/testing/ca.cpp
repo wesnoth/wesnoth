@@ -661,11 +661,7 @@ double move_leader_to_goals_phase::evaluate()
 	}
 
 	const pathfind::paths leader_paths(get_info().map, get_info().units, leader->first,
-#ifndef EXPERIMENTAL
 				 get_info().teams, false, false, current_team());
-#else
-				 get_info().teams, false, true, current_team());
-#endif
 
 	std::map<map_location,pathfind::paths> possible_moves;
 	possible_moves.insert(std::pair<map_location,pathfind::paths>(leader->first,leader_paths));
@@ -737,11 +733,7 @@ double move_leader_to_keep_phase::evaluate()
 
 	// Find where the leader can move
 	const pathfind::paths leader_paths(get_info().map, units_, leader->first,
-#ifndef EXPERIMENTAL
 		 get_info().teams, false, false, current_team());
-#else
-		 get_info().teams, false, true, current_team());
-#endif
 	const map_location& keep = suitable_keep(leader->first,leader_paths);
 
 	std::map<map_location,pathfind::paths> possible_moves;

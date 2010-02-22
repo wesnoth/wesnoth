@@ -46,20 +46,6 @@ enum twindow_type {
 	                          * A WML message dialog with the portrait on
 	                          * the right side.
 	                          */
-#ifdef EXPERIMENTAL
-		ICON_MESSAGE_LEFT,
-		ICON_MESSAGE_RIGHT,
-		OPTION_MESSAGE_LEFT,
-		OPTION_MESSAGE_RIGHT,
-		UNIT_MESSAGE_LEFT,
-		UNIT_MESSAGE_RIGHT,
-		INPUT_MESSAGE_LEFT,
-		INPUT_MESSAGE_RIGHT,
-		RECALL_MESSAGE_LEFT,
-		RECALL_MESSAGE_RIGHT,
-		RECRUIT_MESSAGE_RIGHT,
-		RECRUIT_MESSAGE_LEFT,
-#endif
 	MP_CONNECT,              /**< The mp server connection dialog. */
 	MP_METHOD_SELECTION,     /**<
 	                          * The dialog which allows you to choose the kind

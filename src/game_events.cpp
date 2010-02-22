@@ -36,9 +36,6 @@
 #include "map.hpp"
 #include "map_label.hpp"
 #include "map_exception.hpp"
-#ifdef EXPERIMENTAL
-#include "pathfind/teleport.hpp"
-#endif
 #include "replay.hpp"
 #include "resources.hpp"
 #include "scripting/lua.hpp"
@@ -625,32 +622,6 @@ WML_HANDLER_FUNCTION(place_shroud, /*event_info*/,cfg)
 	toggle_shroud(false,cfg );
 }
 
-#ifdef EXPERIMENTAL
-WML_HANDLER_FUNCTION(tunnel, /*event_info*/, cfg)
-{
-	const bool remove = utils::string_bool(cfg["remove"], false);
-	if (remove) {
-		const std::vector<std::string> ids = utils::split(cfg["id"]);
-		foreach(const std::string &id, ids) {
-			resources::tunnels->remove(id);
-		}
-	} else if (cfg.get_children("source").empty() ||
-		cfg.get_children("target").empty() ||
-		cfg.get_children("filter").empty()) {
-		ERR_WML << "[tunnel] is missing a mandatory tag:\n"
-			 << cfg.get_config().debug();
-	} else {
-		pathfind::teleport_group tunnel(cfg, false);
-		resources::tunnels->add(tunnel);
-
-		if (utils::string_bool(cfg["bidirectional"], true)) {
-			tunnel = pathfind::teleport_group(cfg, true);
-			resources::tunnels->add(tunnel);
-		}
-	}
-}
-
-#endif
 WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 {
 	unit_map::iterator u = resources::units->find(event_info.loc1);

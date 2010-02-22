@@ -178,12 +178,6 @@ AC_ARG_ENABLE([experimental],
 	      [experimental=$enableval],
 	      [experimental=$experimental_default])
 
-if test "x$experimental" = "xyes"
-then
-    CPPFLAGS="$CPPFLAGS -DEXPERIMENTAL"
-fi
-
-AM_CONDITIONAL([EXPERIMENTAL], [test "x$experimental" = "xyes"])
 
 DATADIR=$PACKAGE
 AC_ARG_WITH([datadir-name],

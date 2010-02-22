@@ -124,11 +124,7 @@ bool default_ai_context_impl::multistep_move_possible(const map_location& from,
 					unit temp_unit(i->second);
 					temp_unit.set_movement(itor->move_left);
 					const temporary_unit_placer unit_placer(units_,via,temp_unit);
-#ifndef EXPERIMENTAL
 					const pathfind::paths unit_paths(get_info().map,units_,via,get_info().teams,false,false,current_team());
-#else
-					const pathfind::paths unit_paths(get_info().map,units_,via,get_info().teams,false,true,current_team());
-#endif
 
 					LOG_AI << "Found " << unit_paths.destinations.size() << " moves for temp leader.\n";
 

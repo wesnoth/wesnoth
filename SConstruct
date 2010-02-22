@@ -387,9 +387,6 @@ for env in [test_env, client_env, env]:
     if env['lowmem']:
         env.Append(CPPDEFINES = "LOW_MEM")
 
-    if env['experimental']:
-        env.Append(CPPDEFINES = "EXPERIMENTAL")
-
     if env['internal_data']:
         env.Append(CPPDEFINES = "USE_INTERNAL_DATA")
 

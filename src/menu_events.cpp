@@ -31,9 +31,6 @@
 #include "gettext.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/dialogs/wml_message.hpp"
-#ifdef EXPERIMENTAL
-#include "gui/dialogs/icon_message.hpp"
-#endif
 #include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/unit_create.hpp"
 #include "gui/widgets/settings.hpp"
@@ -711,11 +708,6 @@ void menu_handler::recruit(bool browse, int side_num, const map_location &last_h
 
 	int recruit_res = 0;
 
-#ifdef EXPERIMENTAL
-	bool left_side = true;
-	//recruit_res = gui2::show_recruit_message()
-	recruit_res = gui2::show_recruit_message(left_side, gui_->video(), false, sample_units, side_num, current_team.gold());
-#else
 	{
 		dialogs::unit_types_preview_pane unit_preview(
 			sample_units, NULL, side_num);
@@ -732,33 +724,12 @@ void menu_handler::recruit(bool browse, int side_num, const map_location &last_h
 		rmenu.set_panes(preview_panes);
 		recruit_res = rmenu.show();
 	}
-#endif
 
 	if(recruit_res != -1) {
 		do_recruit(item_keys[recruit_res], side_num, last_hex);
 	}
 }
 
-#ifdef EXPERIMENTAL
-void menu_handler::do_delete_recall(unit* un)
-{
-	//int side_num = un->side();
-//TODO
-//	team &current_team = teams_[side_num - 1];
-
-	//add dismissal to the undo stack
-	undo_stack_.push_back(undo_action(*un, map_location(),
-				undo_action::DISMISS));
-
-	//remove the unit from the recall list
-	//TODO
-	//current_team.remove_from_recall(un->underlying_id());
-
-	recorder.add_disband(un->id());
-	//clear the redo stack to avoid duplication of dismissals
-	redo_stack_.clear();
-}
-#endif
 
 void menu_handler::repeat_recruit(int side_num, const map_location &last_hex)
 {
@@ -864,9 +835,6 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 		return;
 	}
 
-#ifdef EXPERIMENTAL
-	//TODO
-#else
 	std::vector<std::string> options, options_to_filter;
 
 	std::ostringstream heading;
@@ -1005,7 +973,6 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	gui_->invalidate_game_status();
 	gui_->invalidate_all();
 	recorder.add_checksum_check(loc);
-#endif
 }
 
 void menu_handler::undo(int side_num)
@@ -1291,15 +1258,9 @@ void menu_handler::show_enemy_moves(bool ignore_units, int side_num)
 			!gui_->fogged(u->first) && !u->second.incapacitated() && !invisible)
 		{
 			const unit_movement_resetter move_reset(u->second);
-#ifndef EXPERIMENTAL
 			bool teleports = u->second.get_ability_bool("teleport");
-#endif
 			const pathfind::paths& path = pathfind::paths(map_,units_,
-#ifndef EXPERIMENTAL
 									  u->first,teams_,false,teleports,teams_[gui_->viewing_team()], 0,false, ignore_units);
-#else
-									  u->first,teams_,false,true,teams_[gui_->viewing_team()], 0,false, ignore_units);
-#endif
 
 			gui_->highlight_another_reach(path);
 		}

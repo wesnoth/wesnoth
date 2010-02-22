@@ -409,38 +409,6 @@ private:
 };
 
 
-#ifdef EXPERIMENTAL
-/**
- * Set map label action.
- */
-class mouse_action_map_label : public mouse_action
-{
-public:
-	mouse_action_map_label(const CKey& key)
-	: mouse_action(key), click_(false)
-	  {
-	  }
-
-	/**
-	 * Left click displays a dialog that is used for entering the label string.
-	 */
-	editor_action* up_left(editor_display& disp, int x, int y);
-
-	editor_action* click_left(editor_display& disp, int x, int y);
-	/**
-	 * Right click erases the label under the mouse.
-	 */
-	editor_action* up_right(editor_display& disp, int x, int y);
-
-	editor_action* click_right(editor_display& disp, int x, int y);
-
-	virtual void set_mouse_overlay(editor_display& disp);
-
-private:
-	bool click_;
-
-};
-#endif
 
 } //end namespace editor
 

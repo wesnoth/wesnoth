@@ -274,13 +274,6 @@ wesnoth_source = \
 	widgets/drop_target.cpp \
 	widgets/scrollpane.cpp
 
-# used for stuff that is currently seen as highly experimental
-wesnoth_experimental_SOURCES = \
-	pathfind/teleport.cpp
-
-if EXPERIMENTAL
-wesnoth_source += $(wesnoth_experimental_SOURCES)
-endif
 
 # used with editor option in the wesnoth target
 wesnoth_editor_SOURCES = \

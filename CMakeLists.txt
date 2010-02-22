@@ -80,7 +80,6 @@ if (UNIX AND NOT APPLE AND NOT CYGWIN)
 endif(UNIX AND NOT APPLE AND NOT CYGWIN)
 option(ENABLE_STRICT_COMPILATION "Sets the strict compilation mode" ON)
 option(ENABLE_DEBUG_WINDOW_LAYOUT "Add the debug option to allow the generation of debug layout files in dot format" OFF)
-option(ENABLE_EXPERIMENTAL "Enable some experimental features, what exactly differs over time" OFF)
 
 #misc options
 if(NOT MSVC)
@@ -99,9 +98,6 @@ set(BINARY_PREFIX "" CACHE STRING "Prefix in front of all binaries")
 # Handle options (set paths/definitions/etc...)
 #
 
-if(ENABLE_EXPERIMENTAL)
-  add_definitions(-DEXPERIMENTAL)
-endif(ENABLE_EXPERIMENTAL)
 
 
 if(CMAKE_COMPILER_IS_GNUCXX)

@@ -35,11 +35,7 @@ class unit_movement_type;
 
 namespace pathfind {
 
-#ifdef EXPERIMENTAL
-class teleport_map;
-#else
 typedef std::set<map_location> teleport_map;
-#endif
 
 enum VACANT_TILE_TYPE { VACANT_CASTLE, VACANT_ANY };
 
@@ -59,11 +55,9 @@ bool enemy_zoc(unit_map const &units,
                std::vector<team> const &teams, map_location const &loc,
                team const &viewing_team, int side, bool see_all=false);
 
-#ifndef EXPERIMENTAL
 std::set<map_location> get_teleport_locations(const unit &u,
 	const unit_map &units, const team &viewing_team,
 	bool see_all = false, bool ignore_units = false);
-#endif
 
 struct cost_calculator
 {
@@ -89,11 +83,7 @@ struct paths
 	// Construct a list of paths for the unit at loc.
 	// - force_ignore_zocs: find the path ignoring ZOC entirely,
 	//                     if false, will use the unit on the loc's ability
-#ifndef EXPERIMENTAL
 	// - allow_teleport: indicates whether unit teleports between villages
-#else
-	// - allow_teleport: indicates whether the paths should include teleportation (false for sight)
-#endif
 	// - additional_turns: if 0, paths for how far the unit can move this turn will be calculated.
 	//                     If 1, paths for how far the unit can move by the end of next turn
 	//                     will be calculated, and so forth.
@@ -160,11 +150,7 @@ struct plain_route
 plain_route a_star_search(map_location const &src, map_location const &dst,
                            double stop_at, const cost_calculator* costCalculator,
                            const size_t parWidth, const size_t parHeight,
-#ifndef EXPERIMENTAL
                            std::set<map_location> const *teleports = NULL);
-#else
-                           const teleport_map* teleports = NULL);
-#endif
 
 /**
  * Add marks on a route @a rt assuming that a @unit u travels along it.
