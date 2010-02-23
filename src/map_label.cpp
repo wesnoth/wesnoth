@@ -427,7 +427,7 @@ label::label(const labels &parent, const config &cfg) :
 
 /// Load label from config
 terrain_label::terrain_label(const map_labels &parent, const config &cfg) :
-		label::label(parent, cfg), parent_(&parent)
+		label(parent, cfg), parent_(&parent)
 
 //						handle_(0),
 //		text_(),
