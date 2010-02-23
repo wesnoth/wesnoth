@@ -3090,6 +3090,22 @@ void console_handler::do_choose_level() {
 			next = nb;
 		++nb;
 	}
+	// find scenarios of multiplayer campaigns 
+	// (assumes that scenarios are ordered properly in the game_config)
+	std::string& scenario = menu_handler_.gamestate_.mp_settings().mp_scenario;
+	foreach (const config &mp, menu_handler_.game_config_.child_range("multiplayer"))
+	{
+		if (mp["id"] == scenario)
+		{
+			const std::string &id = mp["id"];
+			options.push_back(id);
+			if (id == menu_handler_.gamestate_.classification().next_scenario)
+				next = nb;
+			++nb;
+			scenario = mp["next_scenario"];
+		}
+	}
+	std::sort(options.begin(), options.end());
 	int choice = 0;
 	{
 		gui::dialog menu(*menu_handler_.gui_, _("Choose Scenario (Debug!)"), "", gui::OK_CANCEL);
