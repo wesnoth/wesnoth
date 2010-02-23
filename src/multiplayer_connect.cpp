@@ -75,6 +75,10 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	gender_(),
 	ai_algorithm_(),
 	ready_for_start_(false),
+	gold_lock_(utils::string_bool(cfg_.get_attribute("gold_lock"), false)),
+	income_lock_(utils::string_bool(cfg_.get_attribute("income_lock"), false)),
+	team_lock_(utils::string_bool(cfg_.get_attribute("team_lock"), false)),
+	colour_lock_(utils::string_bool(cfg_.get_attribute("colour_lock"), false)),
 	player_number_(parent.video(), lexical_cast_default<std::string>(index+1, ""),
 	               font::SIZE_LARGE, font::LOBBY_COLOUR),
 	combo_controller_(new gui::combo_drag(parent.disp(), parent.player_types_, parent.combo_control_group_)),
@@ -90,6 +94,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	label_gold_(parent.video(), "100", font::SIZE_SMALL, font::LOBBY_COLOUR),
 	label_income_(parent.video(), _("Normal"), font::SIZE_SMALL, font::LOBBY_COLOUR),
 	allow_player_(utils::string_bool(cfg_.get_attribute("allow_player"), true)),
+	allow_changes_(utils::string_bool(cfg_.get_attribute("allow_changes"), true)),
 	enabled_(!parent_->params_.saved_game), changed_(false),
 	llm_(parent.era_sides_, enabled_ ? &combo_leader_ : NULL, enabled_ ? &combo_gender_ : NULL)
 {
@@ -223,20 +228,12 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 		combo_gender_.set_selected(0);
 	} else if(parent_->params_.use_map_settings) {
 		// gold, income, team, and colour are only suggestions unless explicitly locked
-		if(utils::string_bool(cfg_.get_attribute("gold_lock"), false)) {
-			slider_gold_.enable(false);
-			label_gold_.enable(false);
-		}
-		if(utils::string_bool(cfg_.get_attribute("income_lock"), false)) {
-			slider_income_.enable(false);
-			label_income_.enable(false);
-		}
-		if(utils::string_bool(cfg_.get_attribute("team_lock"), false)) {
-			combo_team_.enable(false);
-		}
-		if(utils::string_bool(cfg_.get_attribute("colour_lock"), false)) {
-			combo_colour_.enable(false);
-		}
+		slider_gold_.enable(!gold_lock_);
+		label_gold_.enable(!gold_lock_);
+		slider_income_.enable(!income_lock_);
+		label_income_.enable(!income_lock_);
+		combo_team_.enable(!team_lock_);
+		combo_colour_.enable(!colour_lock_);
 
 		// Set the leader and gender
 		leader_ = cfg_.get_attribute("type");
@@ -340,6 +337,10 @@ connect::side::side(const side& a) :
 	gender_(a.gender_),
 	ai_algorithm_(a.ai_algorithm_),
 	ready_for_start_(a.ready_for_start_),
+	gold_lock_(a.gold_lock_),
+	income_lock_(a.income_lock_),
+	team_lock_(a.team_lock_),
+	colour_lock_(a.colour_lock_),
 	player_number_(a.player_number_), combo_controller_(a.combo_controller_),
 	orig_controller_(a.orig_controller_),
 	combo_ai_algorithm_(a.combo_ai_algorithm_),
@@ -347,8 +348,8 @@ connect::side::side(const side& a) :
 	combo_team_(a.combo_team_), combo_colour_(a.combo_colour_),
 	slider_gold_(a.slider_gold_), slider_income_(a.slider_income_),
 	label_gold_(a.label_gold_), label_income_(a.label_income_),
-	allow_player_(a.allow_player_), enabled_(a.enabled_),
-	changed_(a.changed_), llm_(a.llm_)
+	allow_player_(a.allow_player_), allow_changes_(a.allow_changes_),
+	enabled_(a.enabled_), changed_(a.changed_), llm_(a.llm_)
 {
 	llm_.set_colour(colour_);
 	llm_.set_leader_combo((enabled_ && leader_.empty()) ? &combo_leader_ : NULL);
@@ -710,6 +711,7 @@ config connect::side::get_config() const
 	}
 
 	res["name"] = res["user_description"];
+	res["allow_changes"] = (enabled_ && allow_changes_) ? "yes" : "no";
 
 	if(enabled_) {
 		if (leader_.empty()) {
@@ -747,10 +749,6 @@ config connect::side::get_config() const
 		res["share_view"] =  parent_->params_.share_view ? "yes" : "no";
 		if(!parent_->params_.use_map_settings || res["village_gold"].empty())
 			res["village_gold"] = lexical_cast<std::string>(parent_->params_.village_gold);
-
-		res["allow_changes"] = "yes";
-	} else {
-		res["allow_changes"] = "no";
 	}
 
 	if(parent_->params_.use_map_settings && enabled_) {

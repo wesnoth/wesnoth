@@ -159,6 +159,13 @@ public:
 		std::string ai_algorithm_;
 		bool ready_for_start_;
 
+		// Flags for controlling the dialog widgets of the game lobby
+		bool gold_lock_;
+		bool income_lock_;
+		bool team_lock_;
+		bool colour_lock_;
+		bool allow_changes_;
+
 		// Widgets for this side
 		gui::label player_number_;
 		gui::combo_drag_ptr combo_controller_;
