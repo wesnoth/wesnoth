@@ -164,7 +164,6 @@ public:
 		bool income_lock_;
 		bool team_lock_;
 		bool colour_lock_;
-		bool allow_changes_;
 
 		// Widgets for this side
 		gui::label player_number_;
@@ -182,6 +181,7 @@ public:
 		gui::label label_income_;
 
 		bool allow_player_;
+		bool allow_changes_;
 		bool enabled_;
 		bool changed_;
 		leader_list_manager llm_;
