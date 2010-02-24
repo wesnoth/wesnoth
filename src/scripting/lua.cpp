@@ -2145,12 +2145,11 @@ static int transform_ai_action(lua_State *L, ai::action_result_ptr action_result
 	return 1;
 }
 
-static map_location to_map_location(lua_State *L, int &index)
+static map_location to_map_location(lua_State *L, int &index, bool &err)
 {
 	if (false) {
-		error_call_destructors_1:
-		return map_location::null_location;
-		error_call_destructors_2:
+		error_call_destructors:
+		err = true;
 		return map_location::null_location;
 	}
 
@@ -2159,22 +2158,22 @@ static map_location to_map_location(lua_State *L, int &index)
 	if (lua_isuserdata(L, index))
 	{
 		if (!luaW_hasmetatable(L, index, getunitKey))
-			goto error_call_destructors_1;
+			goto error_call_destructors;
 		size_t id = *static_cast<size_t *>(lua_touserdata(L, index));
 		unit_map::const_unit_iterator ui = (*resources::units).find(id);
 		if (!ui.valid())
-			goto error_call_destructors_1;
+			goto error_call_destructors;
 		loc = ui->first;
 		++index;
 	}
 	else
 	{
 		if (!lua_isnumber(L, index))
-			goto error_call_destructors_2;
+			goto error_call_destructors;
 		loc.x = lua_tointeger(L, index) - 1;
 		++index;
 		if (!lua_isnumber(L, index))
-			goto error_call_destructors_2;
+			goto error_call_destructors;
 		loc.y = lua_tointeger(L, index) - 1;
 		++index;
 	}
@@ -2184,10 +2183,24 @@ static map_location to_map_location(lua_State *L, int &index)
 
 static int impl_ai_execute_move(lua_State *L, bool remove_movement)
 {
-	int side = lua_tointeger(L,lua_upvalueindex(1));
 	int index = 2;
-	map_location from = to_map_location(L,index);
-	map_location to = to_map_location(L,index);
+	if (false) {
+		error_call_destructors_1:
+		return luaL_argerror(L, index-1, "wrong 'from' location");
+		error_call_destructors_2:
+		return luaL_argerror(L, index-1, "wrong 'to' location");
+	}
+
+	int side = lua_tointeger(L,lua_upvalueindex(1));
+	bool err = false;
+	map_location from = to_map_location(L,index,err);
+	if (err) {
+		goto error_call_destructors_1;
+	}
+	map_location to = to_map_location(L,index,err);
+	if (err) {
+		goto error_call_destructors_2;
+	}
 	ai::move_result_ptr move_result = ai::actions::execute_move_action(side,true,from,to,remove_movement);
 	return transform_ai_action(L,move_result);
 }
@@ -2207,10 +2220,24 @@ static int impl_ai_execute_move_partial(lua_State *L)
 
 static int impl_ai_execute_attack(lua_State *L)
 {
-	int side = lua_tointeger(L,lua_upvalueindex(1));
 	int index = 2;
-	map_location attacker = to_map_location(L,index);
-	map_location defender = to_map_location(L,index);
+	if (false) {
+		error_call_destructors_1:
+		return luaL_argerror(L, index-1, "wrong attacker location");
+		error_call_destructors_2:
+		return luaL_argerror(L, index-1, "wrong defender location");
+	}
+
+	int side = lua_tointeger(L,lua_upvalueindex(1));
+	bool err = false;
+	map_location attacker = to_map_location(L,index,err);
+	if (err) {
+		goto error_call_destructors_1;
+	}
+	map_location defender = to_map_location(L,index,err);
+	if (err) {
+		goto error_call_destructors_2;
+	}
 
 	int attacker_weapon = -1;//-1 means 'select what is best'
 	double aggression = 0.5;//TODO: replace with side agression
@@ -2230,9 +2257,18 @@ static int impl_ai_execute_attack(lua_State *L)
 
 static int impl_ai_execute_stopunit_select(lua_State *L, bool remove_movement, bool remove_attacks)
 {
-	int side = lua_tointeger(L,lua_upvalueindex(1));
 	int index = 2;
-	map_location loc = to_map_location(L,index);
+	if (false) {
+		error_call_destructors:
+		return luaL_argerror(L, index-1, "wrong unit location");
+	}
+
+	int side = lua_tointeger(L,lua_upvalueindex(1));
+	bool err = false;
+	map_location loc = to_map_location(L,index,err);
+	if (err) {
+		goto error_call_destructors;
+	}
 
 	ai::stopunit_result_ptr stopunit_result = ai::actions::execute_stopunit_action(side,true,loc,remove_movement,remove_attacks);
 	return transform_ai_action(L,stopunit_result);
@@ -2257,10 +2293,22 @@ static int impl_ai_execute_stopunit_all(lua_State *L)
 
 static int impl_ai_execute_recruit(lua_State *L)
 {
+	int index = 3;
+	if (false) {
+		error_call_destructors:
+		return luaL_argerror(L, index-1, "wrong recruit location");
+	}
+
 	const char *unit_name = luaL_checkstring(L,2);
 	int side = lua_tointeger(L,lua_upvalueindex(1));
-	int index = 3;
-	map_location where = to_map_location(L,index);
+	bool err = false;
+	map_location where = map_location::null_location;
+	if (!lua_isnoneornil(L,index)) {
+		where = to_map_location(L,index,err);
+		if (err) {
+			goto error_call_destructors;
+		}
+	}
 
 	ai::recruit_result_ptr recruit_result = ai::actions::execute_recruit_action(side,true,std::string(unit_name),where);
 	return transform_ai_action(L,recruit_result);
@@ -2269,10 +2317,22 @@ static int impl_ai_execute_recruit(lua_State *L)
 
 static int impl_ai_execute_recall(lua_State *L)
 {
+	int index = 3;
+	if (false) {
+		error_call_destructors:
+		return luaL_argerror(L, index-1, "wrong recall location");
+	}
+
 	const char *unit_id = luaL_checkstring(L,2);
 	int side = lua_tointeger(L,lua_upvalueindex(1));
-	int index = 3;
-	map_location where = to_map_location(L,index);
+	bool err = false;
+	map_location where = map_location::null_location;
+	if (!lua_isnoneornil(L,index)) {
+		where = to_map_location(L,index,err);
+		if (err) {
+			goto error_call_destructors;
+		}
+	}
 
 	ai::recall_result_ptr recall_result = ai::actions::execute_recall_action(side,true,std::string(unit_id),where);
 	return transform_ai_action(L,recall_result);
