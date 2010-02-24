@@ -75,6 +75,7 @@ src/generic_event.cpp
 src/gettext.cpp
 src/gui/auxiliary/timer.cpp
 src/gui/dialogs/game_delete.cpp
+src/gui/dialogs/icon_message.cpp
 src/gui/dialogs/lobby/lobby_data.cpp
 src/gui/dialogs/lobby/lobby_info.cpp
 src/gui/dialogs/lobby_player_info.cpp
@@ -108,7 +109,6 @@ src/network.cpp
 src/network_worker.cpp
 src/pathfind/astarsearch.cpp
 src/pathfind/pathfind.cpp
-src/pathfind/teleport.cpp
 src/pathutils.cpp
 src/playcampaign.cpp
 src/play_controller.cpp
@@ -149,7 +149,6 @@ src/server/simple_wml.cpp
 src/server/user_handler.cpp
 src/settings.cpp
 src/sha1.cpp
-src/skiplist_test.cpp
 src/sound.cpp
 src/sound_music_track.cpp
 src/soundsource.cpp
@@ -163,7 +162,6 @@ src/team.cpp
 src/terrain.cpp
 src/theme.cpp
 src/thread.cpp
-src/time.cpp
 src/time_of_day.cpp
 src/titlescreen.cpp
 src/tod_manager.cpp

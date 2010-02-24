@@ -108,17 +108,17 @@ scrivere e leggere. L'elenco degli utenti messi al bando sarà conservato in
 questo file e letto a tutti gli avvii del server.
 .TP 
 \fBcompress_stored_rooms\fP
-Determines whether the rooms file should be read and written to in
-compressed form. Defaults to \fByes\fP.
+Determina se i file delle stanze debbano essere letti e scritti in forma
+compressa. Normalmente vale \fByes\fP.
 .TP 
 \fBconnections_allowed\fP
 Il numero di connessioni permesse dallo stesso IP. \fB0\fP indica infinite
 connessioni (valore predefinito: \fB5\fP).
 .TP 
 \fBdisallow_names\fP
-Names/nicks that are not accepted by the server. \fB*\fP and \fB?\fP from wildcard
-patterns are supported. See \fBglob\fP(7)  for more details.  Default values
-(used if nothing is specified) are:
+I nomi o nick che non sono accettati dal server. Si possono usare i
+caratteri jolly \fB*\fP e \fB?\fP. Vedi \fBglob\fP(7) per maggiori dettagli. I valori
+predefiniti (usati in mancanza di specifiche diverse) sono:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
@@ -158,9 +158,9 @@ The command that the server uses to start a new server process via the
 \fBallow_remote_shutdown\fP setting.)
 .TP 
 \fBroom_save_file\fP
-Path to a file where the room info should be stored. This file is read on
-server startup and written to later. If empty or not set, rooms are not
-loaded and not saved.
+Percorso del file in cui memorizzare le informazioni sulle stanze. Questo
+file è letto all'avvio del server e vi viene scritto in seguito. Se è vuoto
+o non impostato, le stanze non saranno caricate o salvate.
 .TP 
 \fBsalva_replays\fP
 Definisce se il server salverà automaticamente i replay delle
