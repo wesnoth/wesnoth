@@ -72,7 +72,6 @@ opts.AddVariables(
     PathVariable('python_site_packages_dir', 'sets the directory where python modules are installed', "lib/python/site-packages/wesnoth", PathVariable.PathAccept),
     BoolVariable('editor', 'Enable editor', True),
     BoolVariable('lowmem', 'Set to reduce memory usage by removing extra functionality', False),
-    BoolVariable('experimental', 'Enable experimental code for developers only', False),
     BoolVariable('notifications', 'Enable support for desktop notifications', True),
     BoolVariable('nls','enable compile/install of gettext message catalogs',True),
     PathVariable('prefix', 'autotools-style installation prefix', "/usr/local", PathVariable.PathAccept),
