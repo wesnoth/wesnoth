@@ -13,6 +13,10 @@ The release team should empty this file after each release.
 
 ***
 
+There was a rather nasty bug in 1.7.13 that made multiplayer side leaders and WML-generated units always Neutral under most circumstances (e.g. when the alignment isn't explicitly specified for individual units). This is, obviously, fixed in this version.
+
+***
+
 Almost a year passed since python AI was removed - and now, another way to script AI is available - Lua can be used to write AIs
 
 ***
