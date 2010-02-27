@@ -2171,7 +2171,7 @@ static bool to_map_location(lua_State *L, int &index, map_location &res)
 
 static int impl_ai_execute_move(lua_State *L, bool remove_movement)
 {
-	int index = 2;
+	int index = 1;
 	if (false) {
 		error_call_destructors:
 		return luaL_typerror(L, index, "location (unit/integers)");
@@ -2200,7 +2200,7 @@ static int impl_ai_execute_move_partial(lua_State *L)
 
 static int impl_ai_execute_attack(lua_State *L)
 {
-	int index = 2;
+	int index = 1;
 	if (false) {
 		error_call_destructors:
 		return luaL_typerror(L, index, "location (unit/integers)");
@@ -2229,7 +2229,7 @@ static int impl_ai_execute_attack(lua_State *L)
 
 static int impl_ai_execute_stopunit_select(lua_State *L, bool remove_movement, bool remove_attacks)
 {
-	int index = 2;
+	int index = 1;
 	if (false) {
 		error_call_destructors:
 		return luaL_typerror(L, index, "location (unit/integers)");
@@ -2262,12 +2262,12 @@ static int impl_ai_execute_stopunit_all(lua_State *L)
 
 static int impl_ai_execute_recruit(lua_State *L)
 {
-	const char *unit_name = luaL_checkstring(L,2);
+	const char *unit_name = luaL_checkstring(L, 1);
 	int side = lua_tointeger(L,lua_upvalueindex(1));
 	map_location where;
-	if (!lua_isnoneornil(L, 3)) {
-		where.x = lua_tonumber(L, 3) - 1;
-		where.y = lua_tonumber(L, 4) - 1;
+	if (!lua_isnoneornil(L, 2)) {
+		where.x = lua_tonumber(L, 2) - 1;
+		where.y = lua_tonumber(L, 3) - 1;
 	}
 
 	ai::recruit_result_ptr recruit_result = ai::actions::execute_recruit_action(side,true,std::string(unit_name),where);
@@ -2277,12 +2277,12 @@ static int impl_ai_execute_recruit(lua_State *L)
 
 static int impl_ai_execute_recall(lua_State *L)
 {
-	const char *unit_id = luaL_checkstring(L,2);
+	const char *unit_id = luaL_checkstring(L, 1);
 	int side = lua_tointeger(L,lua_upvalueindex(1));
 	map_location where;
-	if (!lua_isnoneornil(L, 3)) {
-		where.x = lua_tonumber(L, 3) - 1;
-		where.y = lua_tonumber(L, 4) - 1;
+	if (!lua_isnoneornil(L, 2)) {
+		where.x = lua_tonumber(L, 2) - 1;
+		where.y = lua_tonumber(L, 3) - 1;
 	}
 
 	ai::recall_result_ptr recall_result = ai::actions::execute_recall_action(side,true,std::string(unit_id),where);
