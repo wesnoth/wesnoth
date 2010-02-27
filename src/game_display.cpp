@@ -1137,6 +1137,11 @@ static uint32_t send_dbus_notification(DBusConnection *connection, uint32_t repl
 	if (!ret) {
 		ERR_DP << "Failed to send visual notification: " << err.message << '\n';
 		dbus_error_free(&err);
+		if (kde_style) {
+			ERR_DP << " Retrying with the freedesktop protocol.\n";
+			kde_style = false;
+			return send_dbus_notification(connection, replaces_id, owner, message);
+		}
 		return 0;
 	}
 	uint32_t id;
