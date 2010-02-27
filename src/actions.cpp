@@ -249,8 +249,6 @@ void unit_creator::add_unit(const config &cfg)
 	config temp_cfg(cfg);
 	map_location loc = find_location(temp_cfg);
 	temp_cfg["side"] = str_cast(team_.side());
-	temp_cfg.remove_attribute("x");
-	temp_cfg.remove_attribute("y");
 	temp_cfg.remove_attribute("placement");
 	temp_cfg.remove_attribute("player_id");
 	temp_cfg.remove_attribute("faction_from_recruit");

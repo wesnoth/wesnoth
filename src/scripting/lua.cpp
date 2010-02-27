@@ -1771,8 +1771,6 @@ static int intf_put_unit(lua_State *L)
 		if (unit_arg == 1) {
 			x = lexical_cast_default(cfg["x"], 0);
 			y = lexical_cast_default(cfg["y"], 0);
-			cfg.remove_attribute("x");
-			cfg.remove_attribute("y");
 		}
 		try {
 			u = new unit(resources::units, cfg, true, resources::state_of_game);

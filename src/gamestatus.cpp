@@ -911,9 +911,8 @@ protected:
 			"hidden", "music", "colour", "ai_config", "gold",
 			"start_gold", "team_rgb", "village_gold", "controller",
 			"persistent", "share_view",
-			"share_maps", "recruit", "fog", "shroud", "shroud_data" };
-
-		static char const *mp_side_attrs[] = {
+			"share_maps", "recruit", "fog", "shroud", "shroud_data",
+			// Multiplayer attributes.
 			"income_lock", "gold_lock", "team_lock", "leader",
 			"random_leader", "terrain_liked",
 			"allow_changes", "faction_name", "user_description" };
@@ -931,9 +930,6 @@ protected:
 
 			config cfg = *u;
 			foreach (const char *attr, side_attrs) {
-				cfg.remove_attribute(attr);
-			}
-			foreach (const char *attr, mp_side_attrs) {
 				cfg.remove_attribute(attr);
 			}
 			uc.add_unit(cfg);

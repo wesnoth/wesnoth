@@ -2317,8 +2317,6 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 
 	try {
 		config tmp_cfg(var);
-		tmp_cfg.remove_attribute("x");
-		tmp_cfg.remove_attribute("y");
 		const unit u(resources::units, tmp_cfg, false);
 
 		preferences::encountered_units().insert(u.type_id());
