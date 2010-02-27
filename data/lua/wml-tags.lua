@@ -123,7 +123,9 @@ local function wml_message(cfg)
 end
 
 local function wml_gold(cfg)
-	local team = wesnoth.get_side(cfg.side or 1)
+	local side = tonumber(cfg.side or 1) or
+		helper.wml_error("[gold] given a noninteger side= attribute.")
+	local team = wesnoth.get_side(side)
 	local amount = tonumber(cfg.amount) or
 		helper.wml_error("[gold] missing required amount= attribute.")
 	team.gold = team.gold + amount
