@@ -2131,8 +2131,6 @@ bool LuaKernel::execute(char const *prog, int nArgs, int nRets)
 	return luaW_pcall(L, nArgs, nRets);
 }
 
-
-// ai support stuff
 static int transform_ai_action(lua_State *L, ai::action_result_ptr action_result)
 {
 	lua_newtable(L);
@@ -2169,7 +2167,7 @@ static bool to_map_location(lua_State *L, int &index, map_location &res)
 	return true;
 }
 
-static int impl_ai_execute_move(lua_State *L, bool remove_movement)
+static int ai_execute_move(lua_State *L, bool remove_movement)
 {
 	int index = 1;
 	if (false) {
@@ -2185,20 +2183,17 @@ static int impl_ai_execute_move(lua_State *L, bool remove_movement)
 	return transform_ai_action(L,move_result);
 }
 
-
-static int impl_ai_execute_move_full(lua_State *L)
+static int cfun_ai_execute_move_full(lua_State *L)
 {
-	return impl_ai_execute_move(L,true);
+	return ai_execute_move(L, true);
 }
 
-
-static int impl_ai_execute_move_partial(lua_State *L)
+static int cfun_ai_execute_move_partial(lua_State *L)
 {
-	return impl_ai_execute_move(L,false);
+	return ai_execute_move(L, false);
 }
 
-
-static int impl_ai_execute_attack(lua_State *L)
+static int cfun_ai_execute_attack(lua_State *L)
 {
 	int index = 1;
 	if (false) {
@@ -2226,8 +2221,7 @@ static int impl_ai_execute_attack(lua_State *L)
 	return transform_ai_action(L,attack_result);
 }
 
-
-static int impl_ai_execute_stopunit_select(lua_State *L, bool remove_movement, bool remove_attacks)
+static int ai_execute_stopunit_select(lua_State *L, bool remove_movement, bool remove_attacks)
 {
 	int index = 1;
 	if (false) {
@@ -2243,24 +2237,22 @@ static int impl_ai_execute_stopunit_select(lua_State *L, bool remove_movement, b
 	return transform_ai_action(L,stopunit_result);
 }
 
-
-static int impl_ai_execute_stopunit_moves(lua_State *L)
+static int cfun_ai_execute_stopunit_moves(lua_State *L)
 {
-	return impl_ai_execute_stopunit_select(L,true,false);
+	return ai_execute_stopunit_select(L, true, false);
 }
 
-static int impl_ai_execute_stopunit_attacks(lua_State *L)
+static int cfun_ai_execute_stopunit_attacks(lua_State *L)
 {
-	return impl_ai_execute_stopunit_select(L,false,true);
+	return ai_execute_stopunit_select(L, false, true);
 }
 
-static int impl_ai_execute_stopunit_all(lua_State *L)
+static int cfun_ai_execute_stopunit_all(lua_State *L)
 {
-	return impl_ai_execute_stopunit_select(L,true,true);
+	return ai_execute_stopunit_select(L, true, true);
 }
 
-
-static int impl_ai_execute_recruit(lua_State *L)
+static int cfun_ai_execute_recruit(lua_State *L)
 {
 	const char *unit_name = luaL_checkstring(L, 1);
 	int side = lua_tointeger(L,lua_upvalueindex(1));
@@ -2274,8 +2266,7 @@ static int impl_ai_execute_recruit(lua_State *L)
 	return transform_ai_action(L,recruit_result);
 }
 
-
-static int impl_ai_execute_recall(lua_State *L)
+static int cfun_ai_execute_recall(lua_State *L)
 {
 	const char *unit_id = luaL_checkstring(L, 1);
 	int side = lua_tointeger(L,lua_upvalueindex(1));
@@ -2288,7 +2279,6 @@ static int impl_ai_execute_recall(lua_State *L)
 	ai::recall_result_ptr recall_result = ai::actions::execute_recall_action(side,true,std::string(unit_id),where);
 	return transform_ai_action(L,recall_result);
 }
-
 
 lua_ai_context* LuaKernel::create_ai_context(char const *code, int side)
 {
@@ -2307,30 +2297,23 @@ lua_ai_context* LuaKernel::create_ai_context(char const *code, int side)
 	lua_pushinteger(L,side);
 	lua_setfield(L, -2, "side");//stack size is 2 [- 1: new table; -2 ai as string]
 
-	lua_pushinteger(L,side);
-	lua_pushcclosure(L,&impl_ai_execute_move_partial,1);
-	lua_setfield(L, -2, "move");
-	lua_pushinteger(L,side);
-	lua_pushcclosure(L,&impl_ai_execute_move_full,1);
-	lua_setfield(L, -2, "move_full");
-	lua_pushinteger(L,side);
-	lua_pushcclosure(L,&impl_ai_execute_attack,1);
-	lua_setfield(L, -2, "attack");
-	lua_pushinteger(L,side);
-	lua_pushcclosure(L,&impl_ai_execute_stopunit_moves,1);
-	lua_setfield(L, -2, "stopunit_moves");
-	lua_pushinteger(L,side);
-	lua_pushcclosure(L,&impl_ai_execute_stopunit_attacks,1);
-	lua_setfield(L, -2, "stopunit_attacks");
-	lua_pushinteger(L,side);
-	lua_pushcclosure(L,&impl_ai_execute_stopunit_all,1);
-	lua_setfield(L, -2, "stopunit_all");
-	lua_pushinteger(L,side);
-	lua_pushcclosure(L,&impl_ai_execute_recall,1);
-	lua_setfield(L, -2, "recall");
-	lua_pushinteger(L,side);
-	lua_pushcclosure(L,&impl_ai_execute_recruit,1);
-	lua_setfield(L, -2, "recruit");
+	static luaL_reg const callbacks[] = {
+		{ "attack",           &cfun_ai_execute_attack           },
+		{ "move",             &cfun_ai_execute_move_partial     },
+		{ "move_full",        &cfun_ai_execute_move_full        },
+		{ "recall",           &cfun_ai_execute_recall           },
+		{ "recruit",          &cfun_ai_execute_recruit          },
+		{ "stopunit_all",     &cfun_ai_execute_stopunit_all     },
+		{ "stopunit_attacks", &cfun_ai_execute_stopunit_attacks },
+		{ "stopunit_moves",   &cfun_ai_execute_stopunit_moves   },
+		{ NULL, NULL }
+	};
+
+	for (const luaL_reg *p = callbacks; p->name; ++p) {
+		lua_pushinteger(L, side);
+		lua_pushcclosure(L, p->func, 1);
+		lua_setfield(L, -2, p->name);
+	}
 
 	//compile the ai as a closure
 	if (!luaW_pcall(L, 1, 1, true)) {
@@ -2344,8 +2327,7 @@ lua_ai_context* LuaKernel::create_ai_context(char const *code, int side)
 	size_t length_ai = lua_objlen(L, -1);//length of ais_table
 	lua_pushvalue(L, -2); //stack size is now 3: [-1: ai_context  -2: ais_table  -3: ai_context]
 	lua_rawseti(L, -2, length_ai + 1);// ais_table[length+1]=ai_context.  stack size is now 2 [-1: ais_table  -2: ai_context]
-	lua_remove(L, -1);//stack size is now 1 [-1: ai_context]
-	lua_remove(L, -1);//stack size is now 0 []
+	lua_pop(L, 2);
 	return new lua_ai_context(L, length_ai + 1, side);
 }
 
@@ -2385,7 +2367,6 @@ void lua_ai_context::load()
 	lua_remove(L,-2);
 }
 
-
 lua_ai_context::~lua_ai_context()
 {
 	// Remove the ai context from the registry, so that it can be collected.
@@ -2395,8 +2376,6 @@ lua_ai_context::~lua_ai_context()
 	lua_rawseti(L, -2, num_);
 	lua_pop(L, 1);
 }
-
-
 
 /**
  * handling of config in-out parameter will be done later
