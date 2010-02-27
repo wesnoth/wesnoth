@@ -1800,19 +1800,39 @@ static int intf_put_unit(lua_State *L)
  */
 static int intf_find_vacant_tile(lua_State *L)
 {
-	int x = lua_tointeger(L, 1), y = lua_tointeger(L, 2);
+	if (false) {
+		error_call_destructors:
+		return luaL_typerror(L, 3, "unit");
+	}
+
+	int x = luaL_checkint(L, 1) - 1, y = luaL_checkint(L, 2) - 1;
 
 	const unit *u = NULL;
-	if (luaW_hasmetatable(L, 3, getunitKey)) {
-		size_t id = *static_cast<size_t *>(lua_touserdata(L, 3));
-		unit_map::const_unit_iterator ui = resources::units->find(id);
-		if (ui.valid()) u = &ui->second;
+	bool fake_unit = false;
+	if (!lua_isnoneornil(L, 3)) {
+		if (luaW_hasmetatable(L, 3, getunitKey)) {
+			size_t id = *static_cast<size_t *>(lua_touserdata(L, 3));
+			unit_map::const_unit_iterator ui = resources::units->find(id);
+			if (ui.valid()) u = &ui->second;
+		} else {
+			config cfg;
+			if (!luaW_toconfig(L, 3, cfg))
+				goto error_call_destructors;
+			try {
+				u = new unit(resources::units, cfg, false, resources::state_of_game);
+			} catch (const game::error &) {
+				goto error_call_destructors;
+			}
+			fake_unit = true;
+		}
 	}
 
 	map_location res = find_vacant_tile(*resources::game_map,
-					    *resources::units, map_location(x -1, y - 1), pathfind::VACANT_ANY, u);
-	if (!res.valid()) return 0;
+		*resources::units, map_location(x, y), pathfind::VACANT_ANY, u);
 
+	if (fake_unit) delete u;
+
+	if (!res.valid()) return 0;
 	lua_pushinteger(L, res.x + 1);
 	lua_pushinteger(L, res.y + 1);
 	return 2;
