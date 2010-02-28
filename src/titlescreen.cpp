@@ -76,8 +76,11 @@ static lg::log_domain log_config("config");
  */
 static bool fade_logo(game_display& screen, int xcpos, int ycpos)
 {
-	const surface logo(image::get_image(game_config::game_logo));
-	if(logo == NULL) {
+	surface const fb = screen.video().getSurface();
+	if (!fb) return true;
+
+	surface logo = image::get_image(game_config::game_logo);
+	if (!logo) {
 		ERR_DP << "Could not find game logo\n";
 		return true;
 	}
@@ -85,10 +88,13 @@ static bool fade_logo(game_display& screen, int xcpos, int ycpos)
 	int xpos = xcpos - logo->w / 2;
 	int ypos = ycpos - logo->h / 2;
 
-	surface const fb = screen.video().getSurface();
-
-	if(fb == NULL || xpos < 0 || ypos < 0 || xpos + logo->w > fb->w || ypos + logo->h > fb->h) {
-		return true;
+	if (xpos < 0 || ypos < 0 || xpos + logo->w > fb->w || ypos + logo->h > fb->h) {
+		double scale = 2 * std::min(
+			std::min((double)xcpos / logo->w, (double)(fb->w - ycpos) / logo->w),
+			std::min((double)ycpos / logo->h, (double)(fb->h - ycpos) / logo->h));
+		logo = scale_surface(logo, logo->w * scale, logo->h * scale);
+		xpos = xcpos - logo->w / 2;
+		ypos = ycpos - logo->h / 2;
 	}
 
 	// Only once, when the game is first started, the logo fades in unless
