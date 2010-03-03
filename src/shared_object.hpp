@@ -14,12 +14,6 @@
 #ifndef SHARED_OBJECT_HPP_INCLUDED
 #define SHARED_OBJECT_HPP_INCLUDED
 
-/* 
- * Magic to address a Debian dependency problem:
- * see <https://gna.org/bugs/?15459> for discussion.
- */
-#define BOOST_MULTI_INDEX_DISABLE_SERIALIZATION 
-
 #include <climits>
 #include <cassert>
 #include <boost/multi_index_container.hpp>
