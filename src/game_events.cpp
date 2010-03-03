@@ -2668,7 +2668,7 @@ WML_HANDLER_FUNCTION(heal_unit, event_info, cfg)
 		}
 	}
 
-	const vconfig healers_filter = cfg.child("secondary_unit_filter");
+	const vconfig healers_filter = cfg.child("filter_second");
 	unit_map::iterator v;
 	std::vector<unit_map::iterator> healers;
 
