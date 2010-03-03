@@ -184,7 +184,7 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 		unit_filter_.push_back(filter);
 	}
 
-	foreach (const config &filter, cfg.child_range("secondary_unit_filter")) {
+	foreach (const config &filter, cfg.child_range("filter_second")) {
 		secondary_unit_filter_.push_back(filter);
 	}
 	frequency_ = atoi(cfg["frequency"].c_str());
