@@ -88,7 +88,7 @@ if(NOT MSVC)
 endif(NOT MSVC)
 
 if(UNIX AND NOT APPLE AND NOT CYGWIN)
-	option(ENABLE_NOTIFICATIONS "Enable Window manager notification messages" OFF)
+	option(ENABLE_NOTIFICATIONS "Enable Window manager notification messages" ON)
 endif(UNIX AND NOT APPLE AND NOT CYGWIN)
 
 set(BINARY_SUFFIX "" CACHE STRING "Suffix behind all binaries")
