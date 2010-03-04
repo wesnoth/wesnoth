@@ -5,14 +5,15 @@
 # Automatically generated, 2005.
 # naoki iimura <amatubu@gmail.com>, 2006-2008.
 # Nobuhito Okada <okyada@gmail.com>, 2006.
+# IWAI, Masaharu <iwaim.sub@gmail.com>, 2010.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
+"Project-Id-Version: Battle for Wesnoth 1.6.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-01-17 17:49+0100\n"
-"PO-Revision-Date: 2008-03-22 11:36+0900\n"
-"Last-Translator: naoki iimura <amatubu@gmail.com>\n"
+"POT-Creation-Date: 2010-02-25 00:07+0100\n"
+"PO-Revision-Date: 2010-02-08 19:41+0900\n"
+"Last-Translator: IWAI, Masaharu <iwaim.sub@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,7 +27,7 @@ msgid ""
 "<big>Click a mouse button or press spacebar to continue...</big>"
 msgstr ""
 "\n"
-"*左クリックするかキーを押して続けましょう……"
+"*左クリックするかスペースキーを押して続けましょう……"
 
 #. [tutorial]: id=tutorial
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:49
@@ -54,7 +55,6 @@ msgstr "Delfador"
 
 #. [objectives]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:148
-#, fuzzy
 msgid ""
 "You will learn the basics of:\n"
 "Movement\n"
@@ -112,7 +112,6 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:207
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:214
-#, fuzzy
 msgid ""
 "You are standing in the keep, and your mentor Delfador is on the east side "
 "of the river."
@@ -172,7 +171,6 @@ msgstr "ここ"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:256
-#, fuzzy
 msgid "Move Konrad next to Delfador by clicking on the tile marked 'HERE'."
 msgstr ""
 "Konrad を Delfador の隣に移動させます。「ここ」という印が付けられた場所を左ク"
@@ -180,7 +178,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:260
-#, fuzzy
 msgid "Move Li'sar next to Delfador by clicking on the tile marked 'HERE'."
 msgstr ""
 "Li'sar を Delfador の隣に移動させます。「ここ」という印が付けられた場所を左ク"
@@ -188,7 +185,6 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:265
-#, fuzzy
 msgid "Left click on tile labeled HERE"
 msgstr "「ここ」というラベルのついた場所を左クリックします"
 
@@ -202,12 +198,10 @@ msgid ""
 msgstr ""
 "*あいたた！\n"
 "間違った場所に移動しました！ このメッセージを閉じたあと、「u」を押してやり直"
-"してください。では、もう一度。\n"
-"*左クリックするかキーを押して続けましょう……"
+"してください。では、もう一度。"
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:314
-#, fuzzy
 msgid "Good morning, Delfador! Is it time to attack things?"
 msgstr "おはようございます Delfador！ 何かに攻撃するときがきたのですね？"
 
@@ -240,9 +234,8 @@ msgstr "……このクィンティンを！"
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:362
-#, fuzzy
 msgid "A quintain? You want me to pretend to fight a dummy?"
-msgstr "クィンティンですって？ ダミーと戦っているふりをしろというのですか？？"
+msgstr "クィンティンですって？ ダミーと戦っているふりをしろというのですか？"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:366
@@ -252,7 +245,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:371
-#, fuzzy
 msgid ""
 "To attack the quintain, first select the attacker (Konrad) then the target "
 "(the quintain). You will see an attack description. When you click OK, "
@@ -264,7 +256,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:376
-#, fuzzy
 msgid ""
 "To attack the quintain, first select the attacker (Li'sar) then the target "
 "(the quintain). You will see an attack description. When you click OK, "
@@ -301,23 +292,21 @@ msgstr "よい考えだ！"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:440
-#, fuzzy
 msgid ""
 "Note: the tiny blue crown above Delfador means you will lose the game if he "
 "is killed. You will also lose the game if your leader (Konrad) is killed."
 msgstr ""
-"メモ：Delfador の近くにある小さな銀色の王冠は、彼が殺されてしまうとゲームに敗"
+"メモ：Delfador の近くにある小さな青色の王冠は、彼が殺されてしまうとゲームに敗"
 "北するということを表しています。リーダー（Konrad）が殺された場合も同じように"
 "ゲームに敗北します。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:443
-#, fuzzy
 msgid ""
 "Note: the tiny blue crown above Delfador means you will lose the game if he "
 "is killed. You will also lose the game if your leader (Li'sar) is killed."
 msgstr ""
-"メモ：Delfador の近くにある小さな銀色の王冠は、彼が殺されてしまうとゲームに敗"
+"メモ：Delfador の近くにある小さな青色の王冠は、彼が殺されてしまうとゲームに敗"
 "北するということを表しています。リーダー（Li'sar）が殺された場合も同じように"
 "ゲームに敗北します。"
 
@@ -327,8 +316,8 @@ msgid ""
 "Unfortunately, you've used up your turn attacking the quintain. The quintain "
 "will now get a turn."
 msgstr ""
-"残念ながら、おぬしのターンは使い切ってしまった。クィンティンに攻撃したこと"
-"で。次はクィンティンのターンだ。"
+"残念ながら、クィンティンに攻撃したことで、おぬしのターンは終了だ。次はクィン"
+"ティンのターンだ。"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:460
@@ -337,8 +326,8 @@ msgid ""
 "female^Unfortunately, you've used up your turn attacking the quintain. The "
 "quintain will now get a turn."
 msgstr ""
-"残念ながら、おぬしのターンは使い切ってしまった。クィンティンに攻撃したこと"
-"で。次はクィンティンのターンだ。"
+"残念ながら、クィンティンに攻撃したことで、おぬしのターンは終了だ。次はクィン"
+"ティンのターンだ。"
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:466
@@ -347,7 +336,6 @@ msgstr "ダミーにもターンがあるのですか？"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:472
-#, fuzzy
 msgid ""
 "Yes. It's a magical quintain.\n"
 "Now, this quintain gets 5 chances to hit you for 3 damage each. If it hits "
@@ -355,12 +343,9 @@ msgid ""
 "yourself!"
 msgstr ""
 "そうだ。これは魔法によって作られたクィンティンなのだ。\n"
-"ユニットの説明に 3-5 と書かれているのがわかるな？ 最初の数字はこのユニットの"
-"攻撃が命中したときに 3 ポイントのダメージを与えられることをあらわしている。2 "
-"番目の数字はこのユニットが 1 回の戦闘で 5 回の攻撃ができることをあらわしてい"
-"る。\n"
-"もしそれがすべて命中すれば、おぬしのヒットポイントは $student_hp から "
-"$future_hp に下がるだろう。構えよ！"
+"このクィンティンは 1 回の戦闘で 5 回の攻撃ができ、1回の攻撃で 3 ポイントのダ"
+"メージを与えることができるのだ。もしそれがすべて命中すれば、おぬしのヒットポ"
+"イントは $student_hp から $future_hp に下がるだろう。構えよ！"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:475
@@ -369,7 +354,6 @@ msgstr "右下にあるターン終了ボタンをクリックしてください
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:496
-#, fuzzy
 msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
 msgstr ""
 "痛い！ 回復が必要です！ ヒットポイントが $student_hp しか残っていません！"
@@ -383,13 +367,12 @@ msgstr "村"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:503
-#, fuzzy
 msgid ""
 "There is a village on the other side of the river. Visiting villages is a "
 "good idea, and ending your turn in one will heal you. To the village!"
 msgstr ""
-"川の対岸に村がある。村に訪れるのがよい。そこでターンを終了すれば回復すること"
-"ができる。そこに移動しなさい。"
+"川の対岸に村がある。その村に訪れるがよかろう。そこでターンを終了すれば回復す"
+"ることができるのだ。そこに移動しなさい。"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:508
@@ -398,8 +381,8 @@ msgid ""
 "female^There is a village on the other side of the river. Visiting villages "
 "is a good idea, and ending your turn in one will heal you. To the village!"
 msgstr ""
-"川の対岸に村がある。村に訪れるのがよい。そこでターンを終了すれば回復すること"
-"ができる。そこに移動しなさい。"
+"川の対岸に村がある。その村に訪れるがよかろう。そこでターンを終了すれば回復す"
+"ることができるのだ。そこに移動しなさい。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:521
@@ -413,7 +396,6 @@ msgstr "村をクリックして Li'sar を移動させます"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:540
-#, fuzzy
 msgid ""
 "You captured a village! It now flies your flag color and has been added to "
 "your total village count at the top of the screen (house icon). Villages "
@@ -422,9 +404,8 @@ msgid ""
 msgstr ""
 "さて、あなたはこの村を「占拠」しました。村にあなたの旗が掲揚されているのが見"
 "えるでしょう。そしてすぐに画面の上にある家のアイコンの右に「1」があらわれるで"
-"しょう。村からはゴールドが得られます。ターンにつき 2 ゴールドと、占拠している"
-"村 1 つにつき 1 ゴールドを得ることができます。\n"
-"*左クリックするかキーを押して続けましょう……"
+"しょう。村からはユニットの雇用に必要なゴールドが得られます。ターンにつき 2 "
+"ゴールドと、占拠している村 1 つにつき 1 ゴールドを得ることができます。"
 
 #. [event]
 #. [then]
@@ -439,23 +420,21 @@ msgstr "ターン終了ボタンをクリックしてください"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:580
-#, fuzzy
 msgid ""
 "You're about to be healed by $hp_difference hitpoints, but I think you're "
 "going to need some help against that quintain."
 msgstr ""
-"おぬしのヒットポイントは 8 回復するだろう。しかしそのクィンティンと戦うために"
-"はもう少し助けが必要になるだろう。"
+"おぬしのヒットポイントは $hp_difference 回復するだろう。しかしそのクィンティ"
+"ンと再び戦うためにはもう少し助けが必要だろうな。"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:585
-#, fuzzy
 msgid ""
 "female^You're about to be healed by $hp_difference hitpoints, but I think "
 "you're going to need some help against that quintain."
 msgstr ""
-"おぬしのヒットポイントは 8 回復するだろう。しかしそのクィンティンと戦うために"
-"はもう少し助けが必要になるだろう。"
+"おぬしのヒットポイントは $hp_difference 回復するだろう。しかしそのクィンティ"
+"ンと再び戦うためにはもう少し助けが必要だろうな。"
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:591
@@ -471,7 +450,6 @@ msgstr "主塔"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:598
-#, fuzzy
 msgid ""
 "A splendid idea. You can recruit two units if you return to the keep. You "
 "have plenty of gold for that."
@@ -501,7 +479,6 @@ msgstr "Li'sar を主塔に移動させてください"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:628
-#, fuzzy
 msgid ""
 "Whenever you're on a keep, you can recruit into castle tiles around it by "
 "right-clicking and selecting 'Recruit'. This time you will only be given one "
@@ -509,8 +486,7 @@ msgid ""
 msgstr ""
 "主塔にいるときには、いつでもその周りにある城のタイルにユニットを雇用すること"
 "ができます。城のタイルを右クリックして「雇用する」を選択します。今回はユニッ"
-"トの選択肢は 1 種類しかありません。選択してください。\n"
-"*左クリックするかキーを押し得て続けましょう……"
+"トの選択肢は「エルフの戦士」 1 種類しかありません。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:632
@@ -520,7 +496,6 @@ msgstr "城のタイルを右クリックして「雇用する」を選択して
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:668
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:700
-#, fuzzy
 msgid ""
 "These newly recruited units can do nothing this turn; you will control them "
 "next turn.\n"
@@ -531,8 +506,7 @@ msgstr ""
 "ことになります。\n"
 "メモ：このダイアログを閉じたあと、ユニットの上にマウスカーソルを移動させるこ"
 "とにより、ユニットについての詳細を確認することができます。詳細は画面の右側に"
-"表示されます。\n"
-"*左クリックするかキーを押して続けましょう……"
+"表示されます。"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:679
@@ -543,7 +517,6 @@ msgstr ""
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:733
-#, fuzzy
 msgid ""
 "Hey, the quintain just healed 2 hitpoints! I'd better attack it at once!"
 msgstr ""
@@ -554,35 +527,33 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:737
 msgid "Yes, if a unit doesn't do anything for a turn, it will slowly heal."
 msgstr ""
+"そうだ。ターンに何もしなかったユニットは、ゆっくり回復することができるのだ。"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:743
+#, fuzzy
 msgid ""
 "Had the quintain survived your onslaught, it would have regained two "
 "hitpoints. If a unit doesn't do anything for a turn, it will slowly heal."
 msgstr ""
+"そうだ。ターンに何もしなかったユニットは、ゆっくり回復することができるのだ。"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:757
-#, fuzzy
 msgid ""
 "But before you send your fighters against the quintain, you should know they "
 "have two kinds of attack..."
 msgstr ""
-"そうだ。ターンに何もしなかったユニットは、ゆっくり回復することができるの"
-"だ。\n"
 "しかし戦士を派遣してクィンティンを攻撃させる前に、彼らには 2 種類の攻撃方法が"
 "あることを知っておく必要がある……"
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:761
-#, fuzzy
 msgid "I'll tell them to use the one that does the most damage!"
 msgstr "最もダメージを与えられる方法で攻撃するように指示します！"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:765
-#, fuzzy
 msgid ""
 "And which would that be? The sword (5-4) or the bow (3-3)? I suppose you'll "
 "find out..."
@@ -597,9 +568,8 @@ msgstr "エルフの戦士を左クリックしてください"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:768
-#, fuzzy
 msgid "End your turn and attack again."
-msgstr "自分のターンを終えて、 もう一度攻撃するのだ。"
+msgstr "自分のターンを終えて、もう一度攻撃するのだ。"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:787
@@ -608,6 +578,8 @@ msgid ""
 "now would you?\n"
 "Use the fighters you recruited first; they'll be a lot of help."
 msgstr ""
+"あなた自身が再びクィンティンを攻撃するような愚かなことはしてはならない。最初"
+"に雇用した戦士を使うのだ。彼らは多くの助けになる。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:798
@@ -616,7 +588,6 @@ msgstr "クィンティンを左クリックして攻撃してください"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:835
-#, fuzzy
 msgid ""
 "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
 "attack. Quintain defended with its melee attack (3-5). The ranged attack was "
@@ -628,7 +599,6 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:843
-#, fuzzy
 msgid ""
 "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
 "attack. The quintain defended with its melee attack (3-5). The ranged attack "
@@ -642,7 +612,6 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:855
-#, fuzzy
 msgid ""
 "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
 "attack. The quintain defended with its melee attack (3-5).\n"
@@ -661,7 +630,6 @@ msgstr "もう一方のエルフで攻撃してください"
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:887
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:905
-#, fuzzy
 msgid ""
 "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
 "The quintain has no ranged attack, only a melee attack, so it could not "
@@ -673,7 +641,6 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:895
-#, fuzzy
 msgid ""
 "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
 "The quintain has no ranged attack, only a melee attack, so it could not "
@@ -687,7 +654,6 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:926
-#, fuzzy
 msgid "Keep attacking with both elves until the quintain is finished!"
 msgstr "2 人のエルフで攻撃し続けるのだ。クィンティンが倒れるまで！"
 
@@ -707,7 +673,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:969
-#, fuzzy
 msgid ""
 "Note:\n"
 "Remember to pull back wounded units into villages and recruit more if "
@@ -716,8 +681,8 @@ msgid ""
 msgstr ""
 "メモ：\n"
 "覚えておいてください。傷ついたユニットを村に戻すことと、必要があればもっとユ"
-"ニットを雇用することを。最も経験値（XP）の高いユニットには特に注意してくださ"
-"い。"
+"ニットを雇用することを。経験値（XP）の高いユニットはレベルアップができるので"
+"特に注意してください。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:988
@@ -733,7 +698,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1005
-#, fuzzy
 msgid ""
 "Note:\n"
 "When a unit gets enough experience (the experience bar is the smaller bar on "
@@ -750,7 +714,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1022
-#, fuzzy
 msgid ""
 "Note:\n"
 "Once you select a unit, you'll see percentages for different terrain tiles. "
@@ -774,7 +737,6 @@ msgstr "クィンティンを倒して、私はより多くの経験値を得る
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1052
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1056
-#, fuzzy
 msgid ""
 "Yes, you gain experience through battle, especially by killing an opponent. "
 "Gain enough experience and you'll become more powerful."
@@ -784,7 +746,6 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1053
-#, fuzzy
 msgid ""
 " Now, Konrad, I will leave you with more dummies to practice on! After that, "
 "we have real work to do..."
@@ -794,7 +755,6 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1057
-#, fuzzy
 msgid ""
 " Now, Li'sar, I will leave you with more dummies to practice on! After that, "
 "we have real work to do..."
@@ -830,7 +790,6 @@ msgstr "いいえ、もう習得しました。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1151
-#, fuzzy
 msgid ""
 "After your victory notice, the map will be grayed out to indicate that the "
 "scenario is over, but you will be able to examine the final positions and "
@@ -888,7 +847,6 @@ msgstr "森林地区"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:26
-#, fuzzy
 msgid ""
 "Now put an unwounded unit, preferably a fighter, in that patch of forest on "
 "the south-east of the island; a nice, defensible spot."
@@ -937,25 +895,21 @@ msgstr ""
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:226
-#, fuzzy
 msgid "I hope I have a chance to retreat after this!"
 msgstr "このターンのあと退却したいです！"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:237
-#, fuzzy
 msgid "One lucky attack by an Orcish Grunt, and I'm done for!"
 msgstr "オークの兵卒からラッキーな一撃を受けてしまった。もうだめだ！"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:248
-#, fuzzy
 msgid "Ouch! I could make use of some healing in a village."
 msgstr "あいた！ 村で少し回復したいです。"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:275
-#, fuzzy
 msgid "I have $side.gold gold; enough to recruit!"
 msgstr " $side.gold ゴールドあります。ですから十分雇用することができます！"
 
@@ -1013,7 +967,6 @@ msgstr "これは遊びではありませんよ、Konrad！ "
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:418
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:419
-#, fuzzy
 msgid ""
 "Orcs have encamped across the river. This is elven country; they are fools "
 "to enter here. We Elves are fast and hard to hit in forests. You must defeat "
@@ -1045,13 +998,12 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:427
-#, fuzzy
 msgid ""
 "By then, their leader will have recruited units to send against us and the "
 "real fight will begin."
 msgstr ""
 "それまでに、彼らのリーダーはユニットを雇って私たちの方に送り込んでくるでしょ"
-"う。そうしたら、本当の戦いが始まるでしょう。"
+"う。それからが本当の戦いです。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:428
@@ -1072,21 +1024,19 @@ msgstr "深み"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:438
-#, fuzzy
 msgid ""
 "See this dark blue water? It's too deep for either side to cross. They could "
 "slowly wade through that narrow band of shallow lighter-blue water in the "
 "east; but we could stand on the shore and force them to fight us from the "
 "water, where they are exposed and we are protected by the forest."
 msgstr ""
-"この濃紺の水を見てください。ここは深すぎてどちらからも渉ることができません。"
+"この濃紺の水を見てください。ここは深すぎてどちらからも渡ることができません。"
 "彼らは東側にある水色の狭い帯状の浅瀬をゆっくりと渉ってくるでしょうが、私たち"
 "は岸で待ち、彼らに水の中から攻撃してくるようにしむけるべきです。そうすれば、"
 "彼らには隠れるところがなく、私たちは森に守られます。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:449
-#, fuzzy
 msgid ""
 "The more likely attack, then, is across the bridge. That middle island is "
 "the key: it has a village for healing injured units and forests in which we "
@@ -1157,20 +1107,18 @@ msgstr "あなたの北東のタイルを右クリックして $recall_name1 を
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:552
-#, fuzzy
 msgid ""
 "If any Elvish Fighters from your last battle had experience, we would recall "
 "them to the current battlefield. However, both units don't have much "
 "experience so it's more efficient to recruit new ones. Recruit an Elvish "
 "Fighter."
 msgstr ""
-"前回の戦いで経験を積んだエルフの戦士がいれば、彼らを召還するのですが。彼らは"
-"経験を積んでいないので、新しい者を雇用する方が安上がりです。ですから、エルフ"
-"の戦士を雇用してください。"
+"前回の戦いで経験を積んだエルフの戦士がいれば、彼らを召還するのですが。新しい"
+"者を雇用する場合、彼らは経験を積んでいないので召還するよりも安上がりです。エ"
+"ルフの戦士を雇用してください。"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:555
-#, fuzzy
 msgid ""
 "If you had any experienced units alive from your last battle we would recall "
 "them. Instead we must recruit a new Elvish Fighter."
@@ -1198,7 +1146,6 @@ msgstr ""
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:608
-#, fuzzy
 msgid ""
 "The Shaman is a fairly weak unit but has the ability to heal units around "
 "it. It also has a special attack which slows enemies, halving the damage "
@@ -1215,7 +1162,6 @@ msgstr "では、自分のターンを終了するのですか？"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:611
-#, fuzzy
 msgid ""
 "While none of your recruited units can move, you still can. Your five units "
 "cost you 5 gold in upkeep, leaving you 3 gold poorer per turn. You need more "
@@ -1359,7 +1305,6 @@ msgstr "十分学んだようですね、Konrad！ "
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:886
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:888
-#, fuzzy
 msgid ""
 "The village supports one unit and pays 1 gold per turn. You're only losing 1 "
 "gold per turn now."
@@ -1411,7 +1356,6 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:918
-#, fuzzy
 msgid "Orcs have no ranged attack, so use your archers against them."
 msgstr ""
 "オーク族は投射攻撃ができません。ですから、彼らに対しては射手を使いなさい。"
@@ -1428,7 +1372,6 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:929
-#, fuzzy
 msgid ""
 "Excellent. Elves are well-protected in the forest. There's only a 30% chance "
 "of hitting an Elvish Archer in forests."
@@ -1438,7 +1381,6 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:938
-#, fuzzy
 msgid ""
 "It's very dangerous to stand in water when there are enemies about! Your "
 "unit will have an 80% chance of being hit when the enemy counter-attacks! "
@@ -1455,13 +1397,11 @@ msgstr "もう一方の射手でオークを攻撃してください"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:956
-#, fuzzy
 msgid "Fighter to HERE"
 msgstr "戦士をここへ"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:957
-#, fuzzy
 msgid ""
 "Your other units cannot reach that Orc this turn. Send a Fighter to the "
 "village to the far east. It will take two turns to reach it."
@@ -1471,7 +1411,6 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:958
-#, fuzzy
 msgid ""
 "You can order a unit to move for multiple turns by selecting the unit and "
 "clicking on the destination. A number will indicate how many turns it will "
@@ -1497,13 +1436,11 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:978
-#, fuzzy
 msgid "Move your Fighter and Shaman south, then return Konrad to the Keep"
 msgstr "戦士と呪術師を南へ移動させ、Konrad を主塔に戻してください"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:979
-#, fuzzy
 msgid "Move your Fighter and Shaman south, then return Li'sar to the Keep"
 msgstr "戦士と呪術師を南へ移動させ、Li'sar を主塔に戻してください"
 
@@ -1534,7 +1471,6 @@ msgstr "Li'sar を別の（まだ占拠していない）村に移動させて�
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1032
-#, fuzzy
 msgid ""
 "That Grunt is blocking the bridge! We must occupy that island before the "
 "Wolf Riders reach it."
@@ -1559,7 +1495,6 @@ msgstr "支配ゾーン"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1044
-#, fuzzy
 msgid ""
 "No. Once you move close to an enemy unit, you are in its 'Zone of Control' "
 "and cannot move further that turn.\n"
@@ -1568,12 +1503,11 @@ msgid ""
 msgstr ""
 "できません。いったん敵のユニットの隣に移動すると、敵ユニットの「支配ゾーン」"
 "に入り、そのターンにはそれ以上移動できなくなるのです。\n"
-"あなたの部隊を水の中をゆっくり渉ることなく島に移動させるためには、彼を殺さな"
+"あなたの部隊を水の中をゆっくり渡ることなく島に移動させるためには、彼を殺さな"
 "ければならないでしょう。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1045
-#, fuzzy
 msgid "Attack the orc with an Archer"
 msgstr "射手でオークを攻撃してください"
 
@@ -1587,7 +1521,6 @@ msgstr ""
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1076
-#, fuzzy
 msgid ""
 "No other units can reach that Orc. I hope my archer survives its counter-"
 "attack! I'd better grab more villages and move everyone closer for next turn."
@@ -1598,7 +1531,6 @@ msgstr ""
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1077
-#, fuzzy
 msgid ""
 "Yes. If your Shaman stands just behind that unit on the bridge, it will heal "
 "it at the beginning of the next turn."
@@ -1608,7 +1540,6 @@ msgstr ""
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1078
-#, fuzzy
 msgid "Move your Shaman onto the bridge to stand behind your other unit"
 msgstr "呪術師を橋に移動させ、ユニットの後ろに配置してください"
 
@@ -1623,7 +1554,6 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1137
-#, fuzzy
 msgid ""
 "It's very dangerous to stand in water when there are enemies about! Your "
 "unit will have an 80% chance of being hit! Cancel, and wait for them to "
@@ -1635,7 +1565,6 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1147
-#, fuzzy
 msgid ""
 "Don't forget about your fighter in the east; you can move him south to that "
 "last village near the channel."
@@ -1645,7 +1574,6 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1153
-#, fuzzy
 msgid ""
 "We need to take that village, otherwise they will take it next turn! Move "
 "your wounded unit onto the village so it can heal, then kill that Orc!"
@@ -1656,7 +1584,6 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1165
-#, fuzzy
 msgid ""
 "Careful! It is now nighttime. Orcs are chaotic, meaning their attacks are "
 "25% stronger at night and 25% weaker in the day. You are lawful: stronger by "
@@ -1669,7 +1596,6 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1166
-#, fuzzy
 msgid ""
 "After this dialog, hold the mouse over the landscape image below the minimap "
 "on the right to see a description of the time of day."
@@ -1679,7 +1605,6 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1173
-#, fuzzy
 msgid ""
 "Remember to retreat your wounded units to villages. Healers can only heal 4 "
 "hitpoints at a time, while villages can heal 8 (the maximum for any unit)."
@@ -1695,7 +1620,6 @@ msgstr "ここで防御"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1181
-#, fuzzy
 msgid ""
 "Beware of those Orcs crossing the river! If they get into the forest they'll "
 "be hard to dislodge!"
@@ -1705,7 +1629,6 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1188
-#, fuzzy
 msgid ""
 "You can make sure you've used all your units each turn by pressing 'n' to "
 "automatically select the next unit. SPACE will indicate a unit is finished.\n"
@@ -1719,7 +1642,6 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1193
-#, fuzzy
 msgid "You only need to defeat the leader to win (see Main Menu->Objectives)."
 msgstr ""
 "勝利するために必要なことは、リーダーを倒すことだけです。「メイン」メニューか"
@@ -1727,7 +1649,6 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1198
-#, fuzzy
 msgid ""
 "Remember to recruit troops useful for the situation. Archers are "
 "particularly effective against Grunts, Wolf Riders and their leader."
@@ -1737,18 +1658,15 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1216
-#, fuzzy
 msgid ""
 "Stay near the keep! You need to be on a keep to recruit more units, and I "
 "doubt the Orc leader will let you use his!"
 msgstr ""
-"主塔の近くにいてください。より多くのユニットを雇用するためには主塔にいる必要"
-"があります。オークのリーダーがあなたに彼の主塔を使わせてくれるとは思えませ"
-"ん！"
+"主塔の近くにいてください。更にユニットを雇用するためには主塔にいる必要があり"
+"ます。オークのリーダーがあなたに彼の主塔を使わせてくれるとは思えません！"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1230
-#, fuzzy
 msgid ""
 "Their leader has moved into that village! He's not as stupid as I thought. "
 "The village heals him each turn and provides good defense."
@@ -1758,13 +1676,12 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1241
-#, fuzzy
 msgid ""
 "That unit has captured our village! You'd better get him out; it heals him "
 "each turn and provides good defense."
 msgstr ""
-"あのユニットが私たちの村を占拠しました！ 彼を追い出すべきです。それは、毎ター"
-"ン回復し、防御力も高くなるからです。"
+"あのユニットが私たちの村を占拠しました！ 彼を追い出すべきです。なぜなら、毎"
+"ターン回復し、防御力も高くなるからです。"
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1253
@@ -1778,25 +1695,23 @@ msgstr ""
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1289
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1305
-#, fuzzy
 msgid ""
 "You are close to killing their leader! The unit who finishes him will gain "
 "16 experience points because he is level 2. Choose your unit carefully!"
 msgstr ""
-"敵のリーダーをもうすぐ倒すことができます！ 彼にとどめを刺したユニットは16 の"
-"経験値を獲得することができます。彼はレベル 2 ですから。どのユニットでとどめを"
-"刺すか注意深く選んでください！"
+"敵のリーダーをもうすぐ倒すことができます！ 彼はレベル 2 ですから、彼にとどめ"
+"を刺したユニットは 16 の経験値を獲得することができます。どのユニットでとどめ"
+"を刺すか注意深く選んでください！"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1354
-#, fuzzy
 msgid ""
 "We will miss $deadguy.name| because he had $deadguy.experience experience "
 "points, meaning he would have advanced to level 2 soon."
 msgstr ""
-" $deadguy.user_description| を失ってしまったのは残念です。彼は $deadguy."
-"experience の経験値を獲得していました。これは、彼がもうすぐレベル 2 になれた"
-"ことを意味しています。"
+" $deadguy.name| を失ってしまったのは残念です。彼は $deadguy.experience の経験"
+"値を獲得していました。これは、彼がもうすぐレベル 2 になれたことを意味していま"
+"す。"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1357
@@ -1805,19 +1720,18 @@ msgid ""
 "We will miss $deadguy.name| because she had $deadguy.experience experience "
 "points, meaning she would have advanced to level 2 soon."
 msgstr ""
-" $deadguy.user_description| を失ってしまったのは残念です。彼は $deadguy."
-"experience の経験値を獲得していました。これは、彼がもうすぐレベル 2 になれた"
-"ことを意味しています。"
+" $deadguy.name| を失ってしまったのは残念です。彼は $deadguy.experience の経験"
+"値を獲得していました。これは、彼がもうすぐレベル 2 になれたことを意味していま"
+"す。"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1368
-#, fuzzy
 msgid ""
 "We will miss $deadguy.name|, but it's better than one of our experienced "
 "troops dying!"
 msgstr ""
-" $deadguy.user_description| を失ってしまったのは残念です。しかし経験を積んだ"
-"部隊の一人が死んでしまうよりはよかった！"
+" $deadguy.name| を失ってしまったのは残念です。しかし経験を積んだ部隊の一人が"
+"死んでしまうよりはよかった！"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1381
@@ -1829,7 +1743,6 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1382
-#, fuzzy
 msgid ""
 "You can see where an enemy can reach by moving the mouse over them. You can "
 "see all the possible enemy moves at once with the 'Show Enemy Moves' command "
@@ -1841,26 +1754,23 @@ msgstr ""
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1386
-#, fuzzy
 msgid ""
 "Level 2 units are powerful, but not invulnerable! Goodbye, $deadguy.name|."
 msgstr ""
 "レベル 2 のユニットは強力ですが、不死身ではありません！ さようなら、$deadguy."
-"user_description|。"
+"name|。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1401
-#, fuzzy
 msgid ""
 "Beware of the Orc leader: he can do 36 hitpoints of damage at night! Attack "
 "with many units at once during the day."
 msgstr ""
-"リーダーに注意してください。それは、彼は夜間には 36 ヒットポイントのダメージ"
-"を与えることができるからです！ 多くのユニットで一度に攻撃しなさい。日中に。"
+"オークのリーダーに注意してください。彼は夜間には 36 ヒットポイントのダメージ"
+"を与えることができるからです！ 日中に多くのユニットで一度に攻撃しなさい。"
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1421
-#, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
 "I always have a 60% chance of hitting with my Marksman ability, and I deal 9 "
@@ -1886,7 +1796,6 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1446
-#, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
 "I am good with both bow and sword, and I have a special ability: ambush. I "
@@ -1900,7 +1809,6 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1460
-#, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
 "I am good with both bow and sword, and I have a special ability: leadership. "
@@ -1913,7 +1821,6 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1475
-#, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
 "I am particularly good with the sword, dealing 8 damage in 4 attacks."
@@ -1924,7 +1831,6 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1659
-#, fuzzy
 msgid "You took too long! We'll never be rid of these Orcs!"
 msgstr ""
 "時間がかかり過ぎました。私たちはもうオーク族を追い払うことができないでしょ"
@@ -1932,7 +1838,6 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1677
-#, fuzzy
 msgid ""
 "You are victorious! You may want to try Novice-level campaigns such as: The "
 "South Guard, An Orcish Incursion, A Tale of Two Brothers, and Heir to the "
@@ -1940,9 +1845,9 @@ msgid ""
 "Konrad, Li'sar and Delfador are characters from Heir to the Throne."
 msgstr ""
 "あなたはオーク族に勝利することができました。さて、次は初心者レベルのキャン"
-"ペーンである南部防衛隊、二人の兄弟の物語、王位継承者のいずれかに挑戦してみて"
-"ください。南部防衛隊は特に初心者向けに設計されたキャンペーンです。Konrad、"
-"Li'sar、Delfador は王位継承者の登場人物です。"
+"ペーンである「南部防衛隊」、「二人の兄弟の物語」、「王位継承者」のいずれかに"
+"挑戦してみてください。特に「南部防衛隊」は初心者向けに設計されたキャンペーン"
+"です。Konrad、Li'sar、Delfador は王位継承者の登場人物です。"
 
 #. [unit_type]: id=Fighter, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:4
@@ -1953,7 +1858,6 @@ msgstr "戦士"
 #. [unit_type]: id=Fighter, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:17
 #: data/campaigns/tutorial/units/Fighteress.cfg:17
-#, fuzzy
 msgid ""
 "Young and brash, Fighters are skilled with swords and are vulnerable to "
 "attack from enemies. However, they have the potential to become great "
@@ -1974,7 +1878,6 @@ msgstr "女戦士"
 
 #. [attack]: type=blade
 #: data/campaigns/tutorial/units/Fighteress.cfg:21
-#, fuzzy
 msgid "saber"
 msgstr "サーベル"
 
@@ -1991,10 +1894,6 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "フレイル"
-
-#, fuzzy
-#~ msgid "<big>Galdrad"
-#~ msgstr "Galdrad"
 
 #~ msgid ""
 #~ "Hello translators! Tutorial is meant to be a little funny at the start, "

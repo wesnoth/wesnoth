@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-02-25 00:07+0100\n"
-"PO-Revision-Date: 2008-02-25 00:50+0900\n"
+"PO-Revision-Date: 2010-02-17 05:20+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
 "MIME-Version: 1.0\n"
@@ -839,7 +839,7 @@ msgstr "動作"
 #: data/gui/default/window/formula_debugger.cfg:120
 #, fuzzy
 msgid "Step operation"
-msgstr "マップ生成"
+msgstr "地形の設定"
 
 #. [button]: id=next
 #: data/gui/default/window/formula_debugger.cfg:131
@@ -937,9 +937,8 @@ msgstr "ファイル:"
 #. [label]: id=filename
 #: data/gui/default/window/game_load.cfg:255
 #: data/gui/default/window/mp_server_list.cfg:96
-#, fuzzy
 msgid "Name"
-msgstr "名前:"
+msgstr "名前"
 
 #. [label]: id=date
 #: data/gui/default/window/game_load.cfg:269
@@ -958,7 +957,7 @@ msgstr "ファイル削除"
 #: data/gui/default/window/game_load.cfg:372
 #, fuzzy
 msgid "Show replay"
-msgstr "プレイヤー"
+msgstr "リプレイを保存"
 
 #. [toggle_button]: id=cancel_orders
 #: data/gui/default/window/game_load.cfg:390
@@ -1026,9 +1025,8 @@ msgstr "はい"
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:103
-#, fuzzy
 msgid "Content"
-msgstr "移動を続ける"
+msgstr ""
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:114
@@ -1081,7 +1079,7 @@ msgstr "言語を変更します"
 #: data/gui/default/window/lobby_main.cfg:109
 #, fuzzy
 msgid "Games"
-msgstr "名前:"
+msgstr "名前"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:177
@@ -1143,7 +1141,7 @@ msgstr ""
 #: data/gui/default/window/lobby_main.cfg:337
 #, fuzzy
 msgid "Selected game"
-msgstr "ファイル削除"
+msgstr "新しいマップの作成"
 
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:338
@@ -1245,9 +1243,8 @@ msgstr ""
 
 #. [toggle_button]: id=skip_replay
 #: data/gui/default/window/lobby_main.cfg:704
-#, fuzzy
 msgid "Quick replay"
-msgstr "プレイヤー"
+msgstr ""
 
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:30
@@ -1528,12 +1525,12 @@ msgstr ""
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:138
 msgid "Join Official Server"
-msgstr ""
+msgstr "公式サーバーに参加"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:139
 msgid "Log on to the official Wesnoth multiplayer server"
-msgstr ""
+msgstr "Wesnothの公式マルチプレイサーバーにログオンします。"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:149
@@ -1554,12 +1551,12 @@ msgstr ""
 #: data/gui/default/window/mp_method_selection.cfg:168
 #, fuzzy
 msgid "Local Game"
-msgstr "ゲームを再開"
+msgstr "ローカルゲーム"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:169
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
-msgstr ""
+msgstr "同一マシンを共用して AI もしくは人間とマルチプレイを行います。"
 
 #. [label]: id=address
 #: data/gui/default/window/mp_server_list.cfg:113
@@ -1568,9 +1565,8 @@ msgstr ""
 
 #. [button]: id=ok
 #: data/gui/default/window/mp_server_list.cfg:215
-#, fuzzy
 msgid "Select"
-msgstr "全て選択"
+msgstr "選択"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=help
@@ -1588,9 +1584,8 @@ msgstr "前のユニット"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:182
 #: src/gui/dialogs/game_load.cpp:273
-#, fuzzy
 msgid "Tutorial"
-msgstr "ターンダイアログ"
+msgstr "チュートリアル"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:183
@@ -2971,9 +2966,6 @@ msgstr ""
 
 #~ msgid "Flip around (this may change the dimensions of the map):"
 #~ msgstr "反転する方向（マップの全体サイズが変わるかもしれません）"
-
-#~ msgid "Set Terrain"
-#~ msgstr "地形の設定"
 
 #~ msgid "Save As"
 #~ msgstr "名前を付けて保存"
