@@ -9,10 +9,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.6.5\n"
+"Project-Id-Version: Battle for Wesnoth SVN TRUNK\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-02-25 00:07+0100\n"
-"PO-Revision-Date: 2010-02-08 19:41+0900\n"
+"PO-Revision-Date: 2010-03-04 19:56+0900\n"
 "Last-Translator: IWAI, Masaharu <iwaim.sub@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
 "MIME-Version: 1.0\n"
@@ -21,13 +21,12 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:40
-#, fuzzy
 msgid ""
 "\n"
 "<big>Click a mouse button or press spacebar to continue...</big>"
 msgstr ""
 "\n"
-"*左クリックするかスペースキーを押して続けましょう……"
+"<big>マウスボタンをクリックするかスペースキーを押して続けましょう……</big>"
 
 #. [tutorial]: id=tutorial
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:49
@@ -96,9 +95,8 @@ msgstr "Li'sar"
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:204
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:211
-#, fuzzy
 msgid "<big>Welcome to Wesnoth!</big>"
-msgstr "*Wesnoth へようこそ！"
+msgstr "<big>Wesnoth へようこそ！</big>"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:206
@@ -146,22 +144,20 @@ msgstr "Li'sar を左クリックしてください"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:238
-#, fuzzy
 msgid ""
 "<big>You have selected Konrad.</big>\n"
 "The places he can move to are highlighted."
 msgstr ""
-"*Konrad を選択しました。\n"
+"<big>Konrad を選択しました。</big>\n"
 "彼が移動することができる範囲が強調されます。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:245
-#, fuzzy
 msgid ""
 "<big>You have selected Li'sar.</big>\n"
 "The places she can move to are highlighted."
 msgstr ""
-"*Li'sar を選択しました。\n"
+"<big>Li'sar を選択しました。</big>\n"
 "彼女が移動することができる範囲が強調されます。"
 
 #. [event]
@@ -190,13 +186,12 @@ msgstr "「ここ」というラベルのついた場所を左クリックしま
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:292
-#, fuzzy
 msgid ""
 "<big>Oops!</big>\n"
 "You moved to the wrong place! After this message, you can press 'u' to undo, "
 "then try again."
 msgstr ""
-"*あいたた！\n"
+"<big>あいたた！</big>\n"
 "間違った場所に移動しました！ このメッセージを閉じたあと、「u」を押してやり直"
 "してください。では、もう一度。"
 
@@ -321,7 +316,6 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:460
-#, fuzzy
 msgid ""
 "female^Unfortunately, you've used up your turn attacking the quintain. The "
 "quintain will now get a turn."
@@ -376,7 +370,6 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:508
-#, fuzzy
 msgid ""
 "female^There is a village on the other side of the river. Visiting villages "
 "is a good idea, and ending your turn in one will heal you. To the village!"
@@ -459,7 +452,6 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:603
-#, fuzzy
 msgid ""
 "female^A splendid idea. You can recruit two units if you return to the keep. "
 "You have plenty of gold for that."
@@ -531,12 +523,12 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:743
-#, fuzzy
 msgid ""
 "Had the quintain survived your onslaught, it would have regained two "
 "hitpoints. If a unit doesn't do anything for a turn, it will slowly heal."
 msgstr ""
-"そうだ。ターンに何もしなかったユニットは、ゆっくり回復することができるのだ。"
+"クィンティンはおぬしの攻撃から生き延び、ヒットポイントが 2 回復した。\n"
+"ターンに何もしなかったユニットは、ゆっくり回復することができるのだ。"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:757
@@ -730,7 +722,6 @@ msgstr ""
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1047
-#, fuzzy
 msgid "The quintain is dead, and I have gained more experience!"
 msgstr "クィンティンを倒して、私はより多くの経験値を得ることができました！"
 
@@ -801,12 +792,11 @@ msgstr ""
 "の部隊の最終的な位置や状態を確認することができるでしょう。"
 
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:27
-#, fuzzy
 msgid ""
 "<big>Remember:</big>\n"
 "You can press 'u' to undo most things; useful for correcting mistakes."
 msgstr ""
-"*覚えておいてください：\n"
+"<big>覚えておいてください：</big>\n"
 "「u」キーを押してほとんどのことを取り消すことができます。間違えたときにやりな"
 "おすのに便利です。"
 
@@ -861,15 +851,14 @@ msgstr "1 ユニットだけであの敵すべてと戦って生き延びられ�
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:28
-#, fuzzy
 msgid ""
 "With a little help, yes. If you move your Shaman next to the defending unit, "
 "she will heal it 4 hitpoints per turn. Just be careful not to expose the "
 "Shaman to attack since she is fairly weak herself."
 msgstr ""
-"少し助けがあれば可能です。呪術師を防御しているユニットの隣に置けば、1 ターン"
-"ごとにヒットポイントが 4 回復するでしょう。ただ、呪術師が攻撃されないように注"
-"意してください。呪術師は一人ではとても弱いですから。"
+"僅かですが助けを得ることができます。呪術師を防御しているユニットの隣に置け"
+"ば、1 ターンごとにヒットポイントが 4 回復するでしょう。ただ、呪術師が攻撃され"
+"ないように注意してください。呪術師は一人ではとても弱いですから。"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:29
@@ -1061,16 +1050,14 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:530
-#, fuzzy
 msgid ""
 "During your tutorial, both $recall_name1 and $recall_name2 gained "
 "$recall_xp1 experience points. You should recall them now so they can gain "
 "more experience, rather than recruiting new ones."
 msgstr ""
-"チュートリアルの間に、$recall_name1 は $recall_xp1 の経験値を獲得し、"
-"$recall_name2 は $recall_xp2 の経験値を獲得しました。彼らをここで召還すべきで"
-"す。そうすれば彼らは、新しいユニットを雇用するよりも、より多くの経験を得るこ"
-"とができます。"
+"チュートリアルの間に、$recall_name1 と $recall_name2 は $recall_xp1 の経験値"
+"を獲得しました。彼らをここで召還すべきです。そうすれば彼らは、新しいユニット"
+"を雇用するよりも、より多くの経験を得ることができます。"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:533
@@ -1362,7 +1349,6 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:921
-#, fuzzy
 msgid ""
 "Attack the orc with an Archer\n"
 "(move mouse over units to see description on right)"
@@ -1715,14 +1701,13 @@ msgstr ""
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1357
-#, fuzzy
 msgid ""
 "We will miss $deadguy.name| because she had $deadguy.experience experience "
 "points, meaning she would have advanced to level 2 soon."
 msgstr ""
-" $deadguy.name| を失ってしまったのは残念です。彼は $deadguy.experience の経験"
-"値を獲得していました。これは、彼がもうすぐレベル 2 になれたことを意味していま"
-"す。"
+" $deadguy.name| を失ってしまったのは残念です。彼女は $deadguy.experience の経"
+"験値を獲得していました。これは、彼女がもうすぐレベル 2 になれたことを意味して"
+"います。"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1368
@@ -1777,22 +1762,21 @@ msgid ""
 "damage each for 4 attacks. Use me to dislodge hard-to-hit units."
 msgstr ""
 "レベルアップして完全に回復しました！\n"
-"私はいつでも私の弓を使って 60% の確率で攻撃を命中させることができます。そして"
-"その 4 回の攻撃でそれぞれ 9 のダメージを与えることができます。攻撃を命中させ"
-"ることが難しいユニットを除去するのに私を使ってください。"
+"私は射撃能力を持っているのでいつでも 60% の確率で攻撃を命中させることができま"
+"す。そしてその 4 回の攻撃でそれぞれ 9 のダメージを与えることができます。攻撃"
+"を命中させることが難しいユニットを除去するのに私を使ってください。"
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1430
-#, fuzzy
 msgid ""
 "female^Advancing a level has fully healed me!\n"
 "I always have a 60% chance of hitting with my Marksman ability, and I deal 9 "
 "damage each for 4 attacks. Use me to dislodge hard-to-hit units."
 msgstr ""
 "レベルアップして完全に回復しました！\n"
-"私はいつでも私の弓を使って 60% の確率で攻撃を命中させることができます。そして"
-"その 4 回の攻撃でそれぞれ 9 のダメージを与えることができます。攻撃を命中させ"
-"ることが難しいユニットを除去するのに私を使ってください。"
+"私は射撃能力を持っているのでいつでも 60% の確率で攻撃を命中させることができま"
+"す。そしてその 4 回の攻撃でそれぞれ 9 のダメージを与えることができます。攻撃"
+"を命中させることが難しいユニットを除去するのに私を使ってください。"
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1446
