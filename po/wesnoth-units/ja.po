@@ -6,14 +6,15 @@
 # Nobuhito Okada <okyada@gmail.com>, 2005-2006.
 # MATSUMOTO Yuji <matumoto@marron.cias.osakafu-u.ac.jp>, 2005.
 # naoki iimura <amatubu@gmail.com>, 2005-2008.
+# IWAI, Masaharu <iwaim.sub@gmail.com>, 2010.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
+"Project-Id-Version: Battle for Wesnoth 1.6.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-17 13:28+0200\n"
-"PO-Revision-Date: 2008-04-22 10:08+0900\n"
-"Last-Translator: naoki iimura <amatubu@gmail.com>\n"
+"PO-Revision-Date: 2010-02-17 05:09+0900\n"
+"Last-Translator: IWAI, Masaharu <iwaim.sub@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -56,9 +57,8 @@ msgstr "牙"
 
 #. [unit_type]: id=Dread Bat, race=bats
 #: data/core/units/bats/Bat_Dread.cfg:4
-#, fuzzy
 msgid "Dread Bat"
-msgstr "ヴァンパイアバット"
+msgstr ""
 
 #. [unit_type]: id=Dread Bat, race=bats
 #: data/core/units/bats/Bat_Dread.cfg:25
@@ -116,7 +116,6 @@ msgstr "海賊ガレオン船"
 
 #. [unit_type]: id=Pirate Galleon, race=mechanical
 #: data/core/units/boats/Pirate_Galleon.cfg:18
-#, fuzzy
 msgid ""
 "Pirate galleons are to transport ships what wolves are to sheep. The pirates "
 "who crew them are more than happy to help relieve other ships of their "
@@ -797,7 +796,6 @@ msgstr "ルーンの槌"
 
 #. [attack]: type=fire
 #: data/core/units/dwarves/Runemaster.cfg:47
-#, fuzzy
 msgid "lightning bolt"
 msgstr "雷撃"
 
@@ -1014,7 +1012,6 @@ msgstr "エルフの隊長"
 
 #. [unit_type]: id=Elvish Captain, race=elf
 #: data/core/units/elves/Captain.cfg:26
-#, fuzzy
 msgid ""
 "Elves, unlike many other races, will quickly acknowledge and follow any of "
 "their peers who have experience in combat. In this they differ greatly from "
@@ -1023,9 +1020,9 @@ msgid ""
 "their leaders, and the tendency to choose leaders of merit is one of the "
 "quiet strengths of the elves."
 msgstr ""
-"エルフは他の多くの種族と違って、戦いの経験のある同輩をすぐに認めて、 従いま"
-"す。これは、統率力が弾圧と威嚇の不安定なまがい物である人間にとっては、 極めて"
-"奇妙に見えます。そのリーダーの知恵を進んで受け入れ、 実力あるリーダーを選ぶ傾"
+"エルフは他の多くの種族と違って、戦いの経験のある同輩をすぐに認めて、従いま"
+"す。これは、統率力が弾圧と威嚇の不安定なまがい物である人間にとっては、極めて"
+"奇妙に見えます。そのリーダーの知恵を進んで受け入れ、実力あるリーダーを選ぶ傾"
 "向の組み合わせこそエルフの静かなる力の一つです。"
 
 #. [unit_type]: id=Elvish Champion, race=elf
@@ -1035,7 +1032,6 @@ msgstr "エルフのチャンピオン"
 
 #. [unit_type]: id=Elvish Champion, race=elf
 #: data/core/units/elves/Champion.cfg:20
-#, fuzzy
 msgid ""
 "Those few elves who deliberately hone themselves into weapons of war become "
 "something which belies the rather docile reputation of their race. "
@@ -1043,11 +1039,10 @@ msgid ""
 "swordsmanship to which few can compare. Even archery, treated as a secondary "
 "pursuit, is masterfully executed."
 msgstr ""
-"彼等自身を戦争の武器として慎重に磨き上げてきた、この数少ないエルフは、 彼等の"
-"種族のいくらか従順な評判を裏切るものであります。 献身と技能は形式の純正さに見"
-"合い、 結果としてわずかなものしか匹敵できない剣術の達人となります。弓術さえ"
-"も、 二次的な追求として扱われますが、人間の多くがただ驚きでじっと 見つめるし"
-"かできないような技でもって実行されます。"
+"彼等自身を戦争の武器として慎重に磨き上げてきた、この数少ないエルフは、エルフ"
+"族特有のおとなしいという評判を裏切るものであります。 献身と技能は形式の純正さ"
+"に見合い、結果としてわずかなものしか匹敵できない剣術の達人となります。剣術ほ"
+"ど重視して鍛えていない弓術でさえも、達人並みに習得しています。"
 
 #. [unit_type]: id=Elvish Druid, race=elf
 #: data/core/units/elves/Druid.cfg:4
@@ -1159,7 +1154,6 @@ msgstr "エルフの英雄"
 
 #. [unit_type]: id=Elvish Hero, race=elf
 #: data/core/units/elves/Hero.cfg:19
-#, fuzzy
 msgid ""
 "A relatively small amount of experience will turn an elf from a competent "
 "fighter into a master of combat. Those who are honored as heroes are strong "
@@ -1167,8 +1161,8 @@ msgid ""
 "lack of practice."
 msgstr ""
 "比較的少ない経験で、エルフは有能な戦士から戦闘の達人になることができます。英"
-"雄として尊敬するこの者達は剣でも弓でも強く、 練習不足でも決してなくならない技"
-"能を持ちます。"
+"雄として尊敬されるこの者達は剣でも弓でも強く、練習不足でも決してなくならない"
+"技能を持ちます。"
 
 #. [unit_type]: id=Elvish High Lord, race=elf
 #: data/core/units/elves/High_Lord.cfg:4
@@ -1253,7 +1247,6 @@ msgstr "エルフの元帥"
 
 #. [unit_type]: id=Elvish Marshal, race=elf
 #: data/core/units/elves/Marshal.cfg:27
-#, fuzzy
 msgid ""
 "The longevity and natural intelligence of elves make them apt for military "
 "matters, enough even to counter their general distaste for such things. "
@@ -1262,12 +1255,11 @@ msgid ""
 "when an elf sets his mind to war, the strategy that results is the work of a "
 "master."
 msgstr ""
-"エルフの長寿と生まれながらの知性によって、軍隊にありがちな邪悪な性向について"
-"は、 彼等が一般的にそのようなものを嫌うために、全く逆のものに変えてしまいま"
-"す。 エルフは人間よりもずっとはっきりと物事を憶えていて、 他の者達にどのよう"
-"な訓練を行えばよいかをしばしば直感で知ることができます。 まさに、エルフが戦争"
-"に心を向けるというめったにない機会において生まれる戦略は、 巨匠の作品となりま"
-"す。"
+"長寿と生まれながらの知性をもつエルフは、軍隊にありがちな慣習を持っていませ"
+"ん。エルフ族は一般的にそういったものに嫌悪感を持つからです。エルフは人間より"
+"もずっとはっきりと物事を憶えていて、他の者達にどのような訓練を行えばよいかを"
+"しばしば直感で知ることができます。エルフが戦争に心を向けるというめったにない"
+"機会において生まれる戦略は、まさに偉大な芸術家の作品のようでもあります。"
 
 #. [unit_type]: id=Elvish Outrider, race=elf
 #: data/core/units/elves/Outrider.cfg:4
@@ -1496,7 +1488,6 @@ msgstr "ダイアウルフライダー"
 
 #. [unit_type]: id=Direwolf Rider, race=wolf
 #: data/core/units/goblins/Direwolf_Rider.cfg:21
-#, fuzzy
 msgid ""
 "'Dire wolves' differ from the common variety only in size and color. They "
 "typically stand taller than a horse at the shoulder, and have an appetite to "
@@ -1509,15 +1500,16 @@ msgid ""
 "the orcish assassins, making a swipe from these beasts' paws into a most "
 "deadly stroke."
 msgstr ""
-"「ダイアウルフ」は普通の種類とは、大きさと色だけが異なります。 それは通常肩ま"
-"での馬よりも高く立ち上がり、それに見合う食欲があります。 狂ったものだけがその"
-"ようなものに出くわしたいと望むでしょう。すなわち、 ゴブリンが多大な労力をかけ"
-"て、(言うなれば)手なづけることができたのです。\n"
+"「ダイアウルフ」と普通の種類の狼との違いは大きさと色だけです。通常サイズで"
+"は、その高さは馬の肩よりも大きくなり、その大きさに見合っただけの食欲もありま"
+"す。正常な判断力を持っていれば、このような生き物に出くわしたいと望むものはい"
+"ないでしょう。しかしながら、ゴブリンの中には大変な労力をかけてダイアウルフを"
+"飼いならし、その背中に乗ることができるものもいるのです。\n"
 "\n"
-"狼のかぎ爪は一般的には最も危険な部分としては見なされませんが、 それは鉄釘より"
-"も太く長いのです。その乗り手は前面に毒を塗りつけることで、 オークの暗殺者に"
-"よって使われていたようなものではなく、この獣の足で打たれる ことはほぼ死にいた"
-"る一撃となります。"
+"狼のかぎ爪は一般的には最も危険な部分としては見なされてはいませんが、実際には"
+"大きいもので、鉄釘よりも太く長いのです。ダイアウルフライダーはその前足に毒を"
+"塗りつけています。このことにより、オークの暗殺者による毒の攻撃とは違って、死"
+"にも至るほどの一撃を繰り出します。"
 
 #. [unit_type]: id=Goblin Impaler, race=goblin
 #: data/core/units/goblins/Impaler.cfg:4
@@ -1555,12 +1547,12 @@ msgid ""
 "The wolves they are given are bred for speed and strength, making them quite "
 "dangerous in combat."
 msgstr ""
-"ゴブリンの「騎士」というのは同じ称号をもつ人間とはほとんど共通点がなく、 その"
-"称号は彼等の敵の口調の中でのみ使われるものです。類似点は単に彼等が ウルフライ"
-"ダーのエリートであるということで、おそらくは、何か向こうみずな 襲撃での成功"
-"や、同様に下劣な性質の何かによりその地位に昇進しています。\n"
+"ゴブリンの「騎士」というのは人間族での同様に呼ばれる称号とはほとんど共通点は"
+"ありません。彼らの敵からそう呼ばれているだけなのです。類似点は、単に彼らが"
+"「ウルフライダー」のエリートであるという点だけです。おそらくは、何か向こうみ"
+"ずな襲撃で成功したという理由でその地位を獲得したのでしょう。\n"
 "\n"
-"彼等が与えられる狼は速度と力のために改良されており、彼等は戦闘において 極めて"
+"彼等が与えられる狼は速度と力の面で優秀なものであるため、戦闘においては極めて"
 "危険なものとなります。"
 
 #. [unit_type]: id=Goblin Pillager, race=wolf
@@ -1570,16 +1562,15 @@ msgstr "ゴブリンの略奪兵"
 
 #. [unit_type]: id=Goblin Pillager, race=wolf
 #: data/core/units/goblins/Pillager.cfg:19
-#, fuzzy
 msgid ""
 "Some Goblins train their wolves to overcome their fear of fire. In raids, "
 "these goblins take a supporting role; they will torch the homes and crops of "
 "their foes, and also carry nets to wreak havoc against those attempting to "
 "rally for defense or reprisal."
 msgstr ""
-"あるゴブリンは彼等の狼を炎の恐れに打ち勝つよう訓練します。襲撃において、 これ"
-"らのゴブリンは驚くべき役割を果たします。彼等は敵の家々や作物に放火し、 また網"
-"を引いて防御や報復に向かおうとする試みを台無しにします。"
+"ゴブリンの中には、狼を炎の恐れに打ち勝つよう訓練します。襲撃において、これら"
+"のゴブリンは驚くべき役割を果たします。彼等は、敵の家々や作物に放火したり、網"
+"を投げて防御や反撃を困難にしたりするのです。"
 
 #. [attack]: type=fire
 #: data/core/units/goblins/Pillager.cfg:43
@@ -1648,7 +1639,6 @@ msgstr "ウルフライダー"
 
 #. [unit_type]: id=Wolf Rider, race=wolf
 #: data/core/units/goblins/Wolf_Rider.cfg:36
-#, fuzzy
 msgid ""
 "No one is quite sure how the practice of taming and riding wolves came into "
 "being, but the advantages of it for a goblin are obvious. Goblins are "
@@ -1662,13 +1652,16 @@ msgid ""
 "mounts have a rather easy time traversing the mountains, though water and "
 "woods will still slow them down."
 msgstr ""
-"どのように狼を飼い馴らし、乗るという習慣がどのように生まれてきたかは 誰も確証"
-"がありません。ゴブリンはオークよりも小さく、また弱いものです。 乗ることができ"
-"たものは、より安全であり、戦闘においてより面白い役割を果たすでしょう。\n"
+"狼を飼い馴らし、乗るという習慣がどのように生まれてきたかは誰も知りません。し"
+"かし、ゴブリンにとって狼に乗るということは多大なメリットがあります。ゴブリン"
+"はオークと比べると小さく弱い生き物です。そのため、とても危険な任務や、戦では"
+"あまり重要でない任務を押し付けられることもしばしばあります。一方で狼に乗るこ"
+"とができたゴブリンは、より安全になり、戦局に大きな影響を与えたり、戦において"
+"より面白い役割を果たすこともできるでしょう。\n"
 "\n"
-"狼は、プレートアーマーを着た人間を支えることはできませんが、 レザーアーマーを"
-"着たゴブリンを担ぐのは簡単です。馬とはまったく違って、 狼は山を楽に横切ること"
-"ができますが、水や森は彼らの歩みを遅くするでしょう。"
+"狼はプレートアーマーを着た人間を支えることはできませんが、レザーアーマーを着"
+"たゴブリンを担ぐのは簡単です。馬とはまったく違って、狼は山を楽に横切ることが"
+"できます。しかし、水や森は彼らの歩みを遅くするでしょう。"
 
 #. [unit_type]: id=Gryphon, race=gryphon
 #: data/core/units/gryphons/Gryphon.cfg:4
@@ -1873,17 +1866,15 @@ msgstr "精鋭竜騎士"
 
 #. [unit_type]: id=Cavalier, race=human
 #: data/core/units/humans/Loyalist_Cavalier.cfg:21
-#, fuzzy
 msgid ""
 "A triumphant sight on the battlefield, cavaliers are masters at the use of "
 "both sword and crossbow from horseback. This is fearsome when combined with "
 "their mobility; such might, and the daring deeds it fosters, are the subject "
 "of many a tale and song."
 msgstr ""
-"戦場での勝利を呼び込む精鋭竜騎士は馬上での剣とクロスボウの両方の使用法を 習得"
-"しており、彼らの投射武器は彼らの剣を免れた多くの敵に命中します。 歴史上知られ"
-"ている偉大な戦いには、彼らの勇猛さによって、戦いの流れが変わった ものがいくつ"
-"かあります。"
+"戦場での勝利を呼び込む精鋭竜騎士は馬上での剣とクロスボウの両方の使用法を習得"
+"しています。その機動力と相まって恐怖の対象となっています。その偉業は数多くの"
+"歌や物語として語り継がれています。"
 
 #. [attack]: type=pierce
 #. [attack]: type=fire
@@ -2493,9 +2484,8 @@ msgstr "熟練女魔術師"
 
 #. [unit_type]: id=Elder Mage, race=human
 #: data/core/units/humans/Mage_Elder.cfg:4
-#, fuzzy
 msgid "Elder Mage"
-msgstr "銀魔術師"
+msgstr ""
 
 #. [unit_type]: id=Elder Mage, race=human
 #: data/core/units/humans/Mage_Elder.cfg:22
@@ -2507,7 +2497,6 @@ msgstr ""
 
 #. [attack]: type=fire
 #: data/core/units/humans/Mage_Elder.cfg:34
-#, fuzzy
 msgid "lightning"
 msgstr "雷撃"
 
@@ -2661,16 +2650,14 @@ msgid ""
 "Though not trained for combat, they are a potent ally against magical or "
 "unnatural things."
 msgstr ""
-"一部の魔術師は、彼らの周りにある世界について学び、そして人間があまりにも 頻繁"
-"に苦しみや汚らしさの中で生きているという真実を学んだことにより、 研究人生の中"
+"一部の魔術師は、彼らの周りにある世界について学び、そして人間があまりにも頻繁"
+"に苦しみや汚らしさの中で生きているという真実を学んだことにより、研究人生の中"
 "に閉じこもるしかないということに気がつきます。これらの男や女は 魔術師としての"
 "人生をやめて、修道僧の聖職に加わり、彼らに与えられた技能を すべての者の利益の"
-"ために捧げます。聖職を授かる儀式の後、彼らは病気やけがを 治療しながら頻繁に世"
+"ために捧げます。聖職を授かる儀式の後、彼らは病気やけがを治療しながら頻繁に世"
 "界を旅します。\n"
 "\n"
-"戦いのためのために訓練されていないものの、彼らが強力な同盟者であるという 一人"
-"の敵がいます。必要があれば、彼らは光の力を呼び出し、致命的な状態を 取り除くで"
-"しょう。"
+"戦闘のための訓練はしていませんが、魔法や不思議な力をもつ強力な仲間です。"
 
 #. [attack]: type=arcane
 #: data/core/units/merfolk/Priestess.cfg:106
@@ -3196,8 +3183,8 @@ msgid ""
 msgstr ""
 "戦闘においてマーマンによって使われる重りをつけられた網はうまく使うのが 難しい"
 "武器です。それをマスターした者は彼らの仲間から評価され、尊敬されます。 この武"
-"器は彼らの得意なところでマーマンンの完全な優位を確実にすることを助け、 また"
-"まったく水のそばに近づかない敵にとってさえも彼らの種族を脅威にします。"
+"器は彼らの得意なところでマーマンの完全な優位を確実にすることを助け、 またまっ"
+"たく水のそばに近づかない敵にとってさえも彼らの種族を脅威にします。"
 
 #. [unit_type]: id=Merman Fighter, race=merman
 #: data/core/units/merfolk/Fighter.cfg:4

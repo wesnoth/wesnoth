@@ -1,17 +1,18 @@
 # Japanese translations for Battle for Wesnoth package.
-# Copyright (C) 2005-2006 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
+# Copyright (C) 2005-2010 Wesnoth development team
 # Automatically generated, 2005.
 # naoki iimura <amatubu@gmail.com>, 2005.
 # Nobuhito Okada <okyada@gmail.com>, 2006.
+# IWAI, Masaharu <iwaim.sub@gmail.com>, 2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-05-26 22:21+0200\n"
-"PO-Revision-Date: 2006-09-05 13:50+0900\n"
-"Last-Translator: Nobuhito OKADA <okyada@gmail.com>\n"
+"PO-Revision-Date: 2010-02-17 02:26+0900\n"
+"Last-Translator: IWAI, Masaharu <iwaim.sub@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,12 +22,12 @@ msgstr ""
 #. [campaign]: id=Son_Of_The_Black_Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:9
 msgid "Son of the Black-Eye"
-msgstr ""
+msgstr "黒眼の子"
 
 #. [campaign]: id=Son_Of_The_Black_Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:10
 msgid "SotBE"
-msgstr ""
+msgstr "黒眼の子"
 
 #. [campaign]: id=Son_Of_The_Black_Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:15
@@ -70,6 +71,15 @@ msgid ""
 "\n"
 "(Expert level, 18 scenarios.)"
 msgstr ""
+"あなたの父親である 黒眼の Karun は、オーク族史上最も偉大な指導者でした。今、"
+"彼の息子\n"
+"\n"
+"<あなたの父親カールーンBlack-目は、今までに生きた最も偉大なorcishリーダーでし"
+"た。 現在、彼の息子として、orcsで古い協定を破って、あなたの陸を取るのに夢中で"
+"ある人間の利己的なデザインを阻むのは、あなたまで達しています。 戦争している"
+"orcish部族を結合させます、そして、Orcish Councilを集めます、そして、すばらし"
+"いHordeを呼び出して、人間の虫と彼らのwose生まれの同盟国をあの世に送ってくださ"
+"い!"
 
 #. [about]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:27
@@ -98,9 +108,8 @@ msgstr "平和の終わり"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:21
-#, fuzzy
 msgid "Defeat Albert"
-msgstr "Ar Dant を倒す"
+msgstr "Albert を倒す"
 
 #. [objective]: condition=lose
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:37
@@ -341,7 +350,6 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:159
-#, fuzzy
 msgid "Argh! I die! But other humans will come to avenge me, filthy orcs!"
 msgstr ""
 "ああ！ 私は死ぬ！ しかし他の人間たちがおまえたちを倒しにやってくるだろう。汚"
@@ -349,29 +357,28 @@ msgstr ""
 
 #. [message]: role=second
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:168
-#, fuzzy
 msgid "Victory!"
-msgstr "万歳！ 勝利だ！"
+msgstr "勝ったぞ！"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:173
 msgid "Oh, just die, human-worm."
-msgstr ""
+msgstr "おお、死んだな。人間の虫けらめ。"
 
 #. [unit]: type=Wolf Rider, id=Vrag
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:192
 msgid "Vrag"
-msgstr ""
+msgstr "Vrag"
 
 #. [message]: speaker=Vrag
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:202
 msgid " *pant* Chief! Chief!"
-msgstr ""
+msgstr " *息を切らしながら* 隊長！隊長！"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:207
 msgid "Speak, rider."
-msgstr ""
+msgstr "何だ、話してみろ。"
 
 #. [message]: speaker=Vrag
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:212
@@ -650,6 +657,9 @@ msgid ""
 "@Defeat the enemy leader\n"
 "`(early finish bonus)"
 msgstr ""
+"<255,255,255>達成ボーナスがある目標:\n"
+"@敵のリーダーを倒す\n"
+"`(早期終了ボーナス)"
 
 #. [side]: type=Dwarvish Lord, id=Kwili
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:85
@@ -743,7 +753,6 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:198
-#, fuzzy
 msgid ""
 "I've never pushed so far. We are crossing the border of the Black-Eye lands."
 msgstr ""
@@ -772,7 +781,6 @@ msgstr "Pe"
 
 #. [message]: speaker=Blemaker
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:249
-#, fuzzy
 msgid "Look! Dwarves are fighting orcs!"
 msgstr "見ろ！ ドワーフ族がオーク族と戦っている！"
 
@@ -788,12 +796,11 @@ msgid ""
 "I don't know. Orcs have been our allies in the past, but they treat us as "
 "fools."
 msgstr ""
-"そうすべきかどうかわからない。オーク族は過去には我々の同盟者であったが、彼ら"
-"はいつも我々を愚か者のように扱った。"
+"どうだろうな。オーク族は過去には我々の同盟者であったが、彼らはいつも我々を愚"
+"か者のように扱っていた。"
 
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:261
-#, fuzzy
 msgid ""
 "But, Father, we don't know what they are seeking there. Between us, we could "
 "squash these dwarves."
@@ -803,7 +810,6 @@ msgstr ""
 
 #. [message]: speaker=Blemaker
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:265
-#, fuzzy
 msgid ""
 "Right, my son. We help our orcish friends. But you take care ... I would be "
 "desperate if something happened to you."
@@ -849,7 +855,6 @@ msgstr "親父！ ああ、なんてことだ！"
 
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:322
-#, fuzzy
 msgid "Filthy dwarves! Now I'll kill you to the last!"
 msgstr "汚れたドワーフども！ 最後にはおまえたちを殺す！"
 
@@ -1031,12 +1036,12 @@ msgstr ""
 #. [side]: type=Elvish Marshal, id=Ammon
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:112
 msgid "Ammon"
-msgstr ""
+msgstr "Ammon"
 
 #. [side]: type=Elvish Marshal, id=Sammual
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:126
 msgid "Sammual"
-msgstr ""
+msgstr "Sammual"
 
 #. [event]
 #. [event]: role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}
@@ -1191,9 +1196,8 @@ msgstr "隊長、俺にすばらしい計画がある。"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:427
-#, fuzzy
 msgid "Go on, Grüü."
-msgstr "Grüü の死"
+msgstr "Grüü、言ってみろ。"
 
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:432
@@ -1210,8 +1214,7 @@ msgstr "……"
 #, fuzzy
 msgid ""
 "Then, Kapou'e launched his desperate attack to break the siege of Barag Gór."
-msgstr ""
-"そして、Kapou'e は Barag Gór の包囲を止めるために必死の攻撃を開始した。"
+msgstr "そして、Kapou'e は Barag Gór の包囲を破るために必死の攻撃を開始した。"
 
 #. [unit]: id=Jetto, type=Orcish Assassin
 #. [message]: speaker=narrator
@@ -1224,7 +1227,6 @@ msgstr "Jetto"
 
 #. [message]: speaker=Jetto
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:483
-#, fuzzy
 msgid ""
 "Freedom! Many thanks, Son of the Black-Eye. I'm Jetto, master of assassins, "
 "now you can count on the assassins' guild to help you in your quest!"
@@ -1235,7 +1237,7 @@ msgstr ""
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:488
 msgid "Jetto, how did you get captured by the likes of these?"
-msgstr ""
+msgstr "Jetto、何故捕らえられたのだ？"
 
 #. [message]: speaker=Jetto
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:493
@@ -1244,23 +1246,26 @@ msgid ""
 "Unfortunately, I was captured. But now I am free and the elves shall feel my "
 "wrath!"
 msgstr ""
+"Barag Gór 評議会はエルフのリーダーの暗殺を私に命じました。残念ながら私は捕わ"
+"れていまいました。しかし、今、自由の身になったので、エルフに復讐してやりま"
+"す！"
 
 #. [message]: speaker=Rugh
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:519
 msgid "Good. Reinforcements at last!"
-msgstr ""
+msgstr "いいぞ、ついに増援がきた！"
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:524
 msgid ""
 "That's right! Now let's drive those mincing tree-shaggers back into their "
 "forests!"
-msgstr ""
+msgstr "ええ、木を破壊する気取った奴等を森の中へ追い返してやりましょう！"
 
 #. [message]: speaker=Pirk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:559
 msgid "At last! The siege has been broken."
-msgstr ""
+msgstr "ついに包囲網を破ったぞ！"
 
 #. [message]: speaker=Gork
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:564
@@ -1351,7 +1356,6 @@ msgstr ""
 
 #. [scenario]: id=To_the_harbour_of_Tirigaz
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:4
-#, fuzzy
 msgid "To the Harbour of Tirigaz"
 msgstr "Tirigaz の港へ"
 
@@ -1402,6 +1406,7 @@ msgstr ""
 msgid ""
 "A couple of days into their journey, the party halted to rest for the night."
 msgstr ""
+"行程のうち数日間、Kapou'e の一団は夜に休息をするために留まろうとしています。"
 
 #. [message]: speaker=Vraurk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:275
@@ -1435,12 +1440,12 @@ msgstr "すばらしい！ 訓練の時間だ！"
 #. [message]: speaker=Vraurk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:313
 msgid "Uh... I don't think so. Let's get out of here!"
-msgstr ""
+msgstr "うーむ。私は賛同できないな。ここから脱出しましょう！"
 
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:318
 msgid "No way! Grüü want to crush some undead."
-msgstr ""
+msgstr "嫌だ！俺はアンデッドを叩き潰したい。"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:323
@@ -1449,12 +1454,14 @@ msgid ""
 "our supply lines and path of retreat. In these days of turmoil, we don't "
 "know what lies ahead, so it is best not to leave any threats in our rear."
 msgstr ""
+"Grüü に賛成だ。こいつらアンデッドがここにいることで、俺たちの補給経路と退路が"
+"断たれることは問題だ。この行程に今後何が起こるか判らないのだから、背後に脅威"
+"を残さない方が良い。"
 
 #. [message]: speaker=Vraurk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:328
-#, fuzzy
 msgid "But..."
-msgstr "……"
+msgstr "しかし……"
 
 #. [message]: speaker=Gork
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:333
@@ -1462,15 +1469,16 @@ msgid ""
 "Hush, Vraurk, We must trust the Son of the Black-Eye in these matters, for "
 "he is far more versed in them then we are."
 msgstr ""
+"Vraurk よ、黙れ。困難にぶつかれば我々は黒眼の子を信じるべきだ。彼は遥か将来に"
+"語り継がれる多くの叙事詩を残すのだから。"
 
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:338
 msgid "That's right, lets go!"
-msgstr ""
+msgstr "その通りだ。叩き潰すぞ！"
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:352
-#, fuzzy
 msgid "Hmmm, what a neat bottle! What is it?"
 msgstr "ふうむ、なんときれいな瓶だろう！ これはなんだ？"
 
@@ -1482,7 +1490,7 @@ msgstr "それには「せ・い・な・る・水」と書かれている"
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:360
 msgid "I'm thirsty ... *gulp* *gulp*"
-msgstr "のどが渇いた…… ごくごく"
+msgstr "のどが渇いた…… *ごくごく*"
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:364
@@ -1496,7 +1504,6 @@ msgstr "朝が近づいてきた。やつら夜の生き物どもはもうすぐ
 
 #. [message]: speaker=Pirk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:389
-#, fuzzy
 msgid "Grüü, are you forgetting we are also night creatures?"
 msgstr "Grüü、お前は我々も夜の生き物だということを忘れたのか？"
 
@@ -1514,7 +1521,7 @@ msgstr "海賊旗"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:42
 #, fuzzy
 msgid "Defeat Slowhand and Harman"
-msgstr "Slowhand を倒す"
+msgstr "Slowhand と Harman を倒す"
 
 #. [side]: type=General, id=Slowhand
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:79
@@ -1524,17 +1531,17 @@ msgstr "Slowhand"
 #. [side]: type=General, id=Harman
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:112
 msgid "Harman"
-msgstr ""
+msgstr "Harman"
 
 #. [unit]: type=Orcish Warrior, id=Affman
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:139
 msgid "Affman"
-msgstr ""
+msgstr "Affman"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:203
 msgid "So, here is Tirigaz. But what's going on?"
-msgstr ""
+msgstr "おお。ここが Tirigaz だ。だが、あのやってくるものはなんだ？"
 
 #. [message]: speaker=Pirk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:207
@@ -1542,6 +1549,8 @@ msgid ""
 "Looks like humans have attacked here too. You were right, Kapou'e, the "
 "humans have declared all-out war on us."
 msgstr ""
+"ここでもまた人間族が攻撃してきました。Kapou'e、あなたの方が正しかった。人間族"
+"は我々に全面戦争の開戦を布告してきました。"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:211
@@ -1554,7 +1563,6 @@ msgstr ""
 
 #. [message]: speaker=Gork
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:215
-#, fuzzy
 msgid "This is a wise choice. Good luck, son of the Black-Eye."
 msgstr "賢い考えだ。黒眼の子よ、幸運を祈る。"
 
@@ -1576,12 +1584,12 @@ msgstr ""
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:270
 msgid "Greetings from Kapou'e, Son of the Black-Eye Karun."
-msgstr ""
+msgstr "黒眼の Karun の子 Kapou's がきてやったぞ。"
 
 #. [message]: speaker=Affman
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:275
 msgid "Son of the great Black-Eye Karun?! You do us honor, Chief."
-msgstr ""
+msgstr "偉大な黒眼の Karun の子！？隊長、光栄です。"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:280
@@ -1599,9 +1607,8 @@ msgstr ""
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:290
-#, fuzzy
 msgid "Are the shamans safe?"
-msgstr "シャーマンを救出する"
+msgstr "シャーマンは無事か？"
 
 #. [message]: speaker=Affman
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:295
@@ -1627,7 +1634,6 @@ msgstr ""
 
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:305
-#, fuzzy
 msgid "I love this strategy, Chief!"
 msgstr "隊長、それはすばらしい戦略だ！"
 
@@ -3513,23 +3519,22 @@ msgstr ""
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:108
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:122
 msgid "Rebels"
-msgstr ""
+msgstr "Rebels"
 
 #. [side]: type=Orcish Warlord, id=Meato
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:92
-#, fuzzy
 msgid "Meato"
-msgstr "Jetto"
+msgstr "Meato"
 
 #. [side]: type=Orcish Warlord, id=Ragvan
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:112
 msgid "Ragvan"
-msgstr ""
+msgstr "Ragvan"
 
 #. [side]: type=Orcish Warlord, id=Kergai
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:132
 msgid "Kergai"
-msgstr ""
+msgstr "Kergai"
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:151
@@ -4364,7 +4369,6 @@ msgstr "評議会が再び完成することはないだろう。もう望みは
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/utils/deaths.cfg:92
-#, fuzzy
 msgid "Oh no, I am defeated."
 msgstr "ああ、なんてことだ、俺は負けた。"
 
