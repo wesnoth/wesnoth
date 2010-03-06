@@ -227,7 +227,7 @@ private:
 			, const unsigned indention_step_size) const;
 
 	tpoint get_current_size() const;
-	tpoint get_folded_size() const { return grid_.get_size(); }
+	tpoint get_folded_size() const;
 	tpoint get_unfolded_size() const;
 
 	void set_origin(const tpoint& origin);

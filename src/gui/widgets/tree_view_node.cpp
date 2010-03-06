@@ -308,7 +308,7 @@ tpoint ttree_view_node::get_current_size() const
 		return tpoint(0, 0);
 	}
 
-	tpoint size = grid_.get_size();
+	tpoint size = get_folded_size();
 	if(is_folded()) {
 		return size;
 	}
@@ -319,7 +319,7 @@ tpoint ttree_view_node::get_current_size() const
 			continue;
 		}
 
-		const tpoint node_size = node.get_unfolded_size();
+		tpoint node_size = node.get_current_size();
 
 		size.y += node_size.y;
 		size.x = std::max(size.x, node_size.x);
@@ -328,10 +328,21 @@ tpoint ttree_view_node::get_current_size() const
 	return size;
 }
 
+tpoint ttree_view_node::get_folded_size() const
+{
+	tpoint size = grid_.get_size();
+	if(get_indention_level() > 1) {
+		size.x += (get_indention_level() - 1) * tree_view().indention_step_size_;
+	}
+	return size;
+}
+
 tpoint ttree_view_node::get_unfolded_size() const
 {
 	tpoint size = grid_.get_best_size();
-	size.x += get_indention_level() * tree_view().indention_step_size_;
+	if(get_indention_level() > 1) {
+		size.x += (get_indention_level() - 1) * tree_view().indention_step_size_;
+	}
 
 	foreach(const ttree_view_node& node, children_) {
 
@@ -339,7 +350,7 @@ tpoint ttree_view_node::get_unfolded_size() const
 			continue;
 		}
 
-		const tpoint node_size = node.get_unfolded_size();
+		tpoint node_size = node.get_unfolded_size();
 
 		size.y += node_size.y;
 		size.x = std::max(size.x, node_size.x);
@@ -471,23 +482,44 @@ void ttree_view_node::signal_handler_left_button_click(
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
+	/**
+	 * @todo Rewrite this sizing code for the folding/unfolding.
+	 *
+	 * The code works but feels rather hacky, so better move back to the
+	 * drawingboard for 1.9.
+	 */
+
 	// is_folded() returns the new state.
 	if(is_folded()) {
 
-		const tpoint current_size = get_folded_size();
-		const tpoint new_size = get_unfolded_size();
-
-		tree_view().resize_content(
-				  current_size.x - new_size.x
-				, current_size.y - new_size.y);
-	} else {
-
-		const tpoint current_size = get_unfolded_size();
+		// From unfolded to folded.
+		const tpoint current_size(get_current_size().x, get_unfolded_size().y);
 		const tpoint new_size = get_folded_size();
 
-		tree_view().resize_content(
-				  current_size.x - new_size.x
-				, current_size.y - new_size.y);
+		int width_modification = new_size.x - current_size.x;
+		if(width_modification < 0) {
+			width_modification = 0;
+		}
+
+		const int height_modification = new_size.y - current_size.y;
+		assert(height_modification <= 0);
+
+		tree_view().resize_content(width_modification, height_modification);
+	} else {
+
+		// From folded to unfolded.
+		const tpoint current_size(get_current_size().x, get_folded_size().y);
+		const tpoint new_size = get_unfolded_size();
+
+		int width_modification = new_size.x - current_size.x;
+		if(width_modification < 0) {
+			width_modification = 0;
+		}
+
+		const int height_modification = new_size.y - current_size.y;
+		assert(height_modification >= 0);
+
+		tree_view().resize_content(width_modification, height_modification);
 	}
 }
 
