@@ -82,7 +82,7 @@ public:
 
 		/** Returns true, if the player has chosen his leader and this side is ready for the game to start */
 		bool ready_for_start() const;
-		
+
 		/** Return true if players are allowed to take this side. */
 		bool allow_player() const;
 

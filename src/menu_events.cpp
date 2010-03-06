@@ -3090,7 +3090,7 @@ void console_handler::do_choose_level() {
 			next = nb;
 		++nb;
 	}
-	// find scenarios of multiplayer campaigns 
+	// find scenarios of multiplayer campaigns
 	// (assumes that scenarios are ordered properly in the game_config)
 	std::string& scenario = menu_handler_.gamestate_.mp_settings().mp_scenario;
 	foreach (const config &mp, menu_handler_.game_config_.child_range("multiplayer"))

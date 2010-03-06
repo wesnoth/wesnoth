@@ -860,7 +860,7 @@ protected:
 		// there was a hack: if this side tag describes the leader of the side,
 		// we may replace the leader with someone from recall list who can recruit, but take positioning from [side]
 		// this hack shall be removed, since it messes up with 'multiple leaders'
-		
+
 		// If this side tag describes the leader of the side
 		if(!utils::string_bool(side_cfg_["no_leader"]) && side_cfg_["controller"] != "null") {
 			leader_cfg_ = side_cfg_;
