@@ -40,6 +40,8 @@ class ttree_view_node
 				std::string /* widget id */, string_map>& data);
 public:
 
+	~ttree_view_node();
+
 	/**
 	 * Adds a child item to the list.
 	 */

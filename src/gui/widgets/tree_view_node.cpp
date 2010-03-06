@@ -110,6 +110,13 @@ ttree_view_node::ttree_view_node(const std::string& id
 	}
 }
 
+ttree_view_node::~ttree_view_node()
+{
+	if(parent_widget_ && parent_widget_->selected_item_ == this) {
+		parent_widget_->selected_item_ = NULL;
+	}
+}
+
 ttree_view_node& ttree_view_node::add_child(
 		  const std::string& id
 		, const std::map<std::string /* widget id */, string_map>& data
