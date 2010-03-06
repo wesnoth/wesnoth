@@ -303,6 +303,19 @@ twindow::twindow(CVideo& video,
 
 twindow::~twindow()
 {
+	/*
+	 * We need to delete our children here instead of waiting for the grid to
+	 * automatically do it. The reason is when the grid deletes its children
+	 * they will try to unregister them self from the linked widget list. At
+	 * this point the member of twindow are destroyed and we enter UB. (For
+	 * some reason the bug didn't trigger on g++ but it does on MSVC.
+	 */
+	for(unsigned row = 0; row < grid().get_rows(); ++row) {
+		for(unsigned col = 0; col < grid().get_cols(); ++col) {
+			grid().remove_child(row, col);
+		}
+	}
+
 	tmanager::instance().remove(*this);
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS

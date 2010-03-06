@@ -32,6 +32,8 @@ Version 1.7.13+svn:
  * Miscellaneous and bug fixes:
    * Fix bug #15429 (Units created by WML can only get the Neutral alignment);
      this also affected MP leaders
+   * Fix UB when closing a window, caused by the children of the window
+     accessing the destroyed window members
 
 Version 1.7.13-1.8beta6:
  * AI:
