@@ -31,6 +31,7 @@ class ttree_view_node
 	friend struct ttree_view_node_implementation;
 	friend class ttree_view;
 
+public:
 	typedef implementation::tbuilder_tree_view::tnode tnode_definition;
 	ttree_view_node(const std::string& id
 			, const std::vector<tnode_definition>& node_definitions
@@ -38,7 +39,6 @@ class ttree_view_node
 			, ttree_view* parent_widget
 			, const std::map<
 				std::string /* widget id */, string_map>& data);
-public:
 
 	~ttree_view_node();
 
