@@ -136,7 +136,7 @@ void tgrid::remove_child(const unsigned row, const unsigned col)
 	if(cell.widget()) {
 		delete cell.widget();
 	}
-	cell.set_widget(0);
+	cell.set_widget(NULL);
 }
 
 void tgrid::remove_child(const std::string& id, const bool find_all)
@@ -145,7 +145,7 @@ void tgrid::remove_child(const std::string& id, const bool find_all)
 
 		if(child.id() == id) {
 			delete child.widget();
-			child.set_widget(0);
+			child.set_widget(NULL);
 
 			if(!find_all) {
 				break;

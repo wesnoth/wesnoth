@@ -296,7 +296,7 @@ private:
 		tchild() :
 			flags_(0),
 			border_size_(0),
-			widget_(0)
+			widget_(NULL)
 
 			// Fixme make a class wo we can store some properties in the cache
 			// regarding size etc.
