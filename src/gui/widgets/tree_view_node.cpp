@@ -169,7 +169,7 @@ unsigned ttree_view_node::get_indention_level() const
 	unsigned level = 0;
 
 	const ttree_view_node* node = this;
-	while(node->is_root_node()) {
+	while(!node->is_root_node()) {
 		node = &node->parent_node();
 		++level;
 	}
