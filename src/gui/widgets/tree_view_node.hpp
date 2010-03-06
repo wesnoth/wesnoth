@@ -32,25 +32,47 @@ class ttree_view_node
 	friend class ttree_view;
 
 public:
+
 	typedef implementation::tbuilder_tree_view::tnode tnode_definition;
 	ttree_view_node(const std::string& id
 			, const std::vector<tnode_definition>& node_definitions
 			, ttree_view_node* parent_node
 			, ttree_view& parent_tree_view
-			, const std::map<
-				std::string /* widget id */, string_map>& data);
+			, const std::map<std::string /* widget id */, string_map>& data);
 
 	~ttree_view_node();
 
 	/**
-	 * Adds a child item to the list.
+	 * Adds a child item to the list of child nodes.
+	 *
+	 * @param id                  The id of the node definition to use for the
+	 *                            new node.
+	 * @param data                The data to send to the set_members of the
+	 *                            widgets. If the member id is not an empty
+	 *                            string it is only send to the widget that has
+	 *                            the wanted id (if any). If the member id is an
+	 *                            empty string, it is send to all members.
+	 *                            Having both empty and non-empty id's gives
+	 *                            undefined behaviour.
+	 * @param index               The item before which to add the new item,
+	 *                            0 == begin, -1 == end.
 	 */
 	ttree_view_node& add_child(const std::string& id
 			, const std::map<std::string /* widget id */, string_map>& data
 			, const int index = -1);
 
 	/**
-	 * Adds a sibbling to the end of the list.
+	 * Adds a sibbling for a node at the end of the list.
+	 *
+	 * @param id                  The id of the node definition to use for the
+	 *                            new node.
+	 * @param data                The data to send to the set_members of the
+	 *                            widgets. If the member id is not an empty
+	 *                            string it is only send to the widget that has
+	 *                            the wanted id (if any). If the member id is an
+	 *                            empty string, it is send to all members.
+	 *                            Having both empty and non-empty id's gives
+	 *                            undefined behaviour.
 	 */
 	ttree_view_node& add_sibling(const std::string& id
 			, const std::map<std::string /* widget id */, string_map>& data)
@@ -59,21 +81,29 @@ public:
 		return parent_node().add_child(id, data);
 	}
 
+	/**
+	 * Is this node the root node?
+	 *
+	 * When the parent tree view is created it adds one special node, the root
+	 * node. This node has no parent node and some other special features so
+	 * several code paths need to check whether they are the parent node.
+	 */
 	bool is_root_node() const { return parent_node_ == NULL; }
 
+	/**
+	 * The indention level of the node.
+	 *
+	 * The root node starts at level 0.
+	 */
 	unsigned get_indention_level() const;
 
-	/**
-	 * Returns the parent node, can't be used on the root node.
-	 */
-	ttree_view_node& parent_node();
-	const ttree_view_node& parent_node() const;
-
-	ttree_view& tree_view();
-	const ttree_view& tree_view() const;
-
+	/** Does the node have children? */
 	bool empty() const { return children_.empty(); }
 
+	/** Is the node folded? */
+	bool is_folded() const;
+
+#if 0
 	enum texpand_mode
 	{
 		  recursive_restore // recursively restores collapse mode
@@ -82,16 +112,18 @@ public:
 	};
 
 
-	bool is_folded() const;
 
 	// If recursive all children will be closed recursively causing
 	// restore expaning not to expand anything
 //		void fold(const bool recursive); // FIXME implement
 
 //		void unfold(const texpand_mode mode); // FIXME implement
+#endif
 
+	/** Inherited from twidget.*/
 	twidget* find_at(const tpoint& coordinate, const bool must_be_active);
 
+	/** Inherited from twidget.*/
 	const twidget* find_at(
 			  const tpoint& coordinate
 			, const bool must_be_active) const;
@@ -111,27 +143,72 @@ public:
 		return result ? result : grid_.find(id, must_be_active);
 	}
 
+	/**
+	 * The "size" of the widget.
+	 *
+	 * @todo Rename this function, names to close to the size of the widget.
+	 */
 	size_t size() const { return children_.size(); }
 
+	/**
+	 * Removes all child items from the widget.
+	 */
 	void clear();
+
+	/***** ***** ***** setters / getters for members ***** ****** *****/
+
+	/**
+	 * Returns the parent node.
+	 *
+	 * @pre                       is_root_node() == false.
+	 */
+	ttree_view_node& parent_node();
+
+	/** The const version of @ref parent_node. */
+	const ttree_view_node& parent_node() const;
+
+	ttree_view& tree_view();
+
+	const ttree_view& tree_view() const;
 
 private:
 
 	void request_reduce_width(unsigned int) {}
 
+	/**
+	 * Our parent node.
+	 *
+	 * All nodes except the root node have a parent node.
+	 */
 	ttree_view_node* parent_node_;
 
+	/** The tree view that owns us. */
 	ttree_view& tree_view_;
 
+	/** Grid holding our contents. */
 	tgrid grid_;
 
-	// We want the returned child nodes to remain stable.
+	/**
+	 * Our children.
+	 *
+	 * We want the returned child nodes to remain stable so store pointers.
+	 */
 	boost::ptr_vector<ttree_view_node> children_;
 
+	/**
+	 * The node definitions known to use.
+	 *
+	 * This list is needed to create new nodes.
+	 *
+	 * @todo Maybe store this list in the tree_view to avoid copying the
+	 * reference.
+	 */
 	const std::vector<tnode_definition>& node_definitions_;
 
+	/** The icon to show the folded state. */
 	ttoggle_button* icon_;
 
+	/** The label to show our selected state. */
 	tselectable_* label_;
 
 	/**
@@ -179,7 +256,6 @@ private:
 				std::string /* widget id */, string_map>& data);
 
 	const std::string& get_control_type() const;
-
 };
 
 } // namespace gui2
