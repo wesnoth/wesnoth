@@ -36,7 +36,7 @@ public:
 	ttree_view_node(const std::string& id
 			, const std::vector<tnode_definition>& node_definitions
 			, ttree_view_node* parent_node
-			, ttree_view* parent_widget
+			, ttree_view& parent_tree_view
 			, const std::map<
 				std::string /* widget id */, string_map>& data);
 
@@ -68,6 +68,9 @@ public:
 	 */
 	ttree_view_node& parent_node();
 	const ttree_view_node& parent_node() const;
+
+	ttree_view& tree_view();
+	const ttree_view& tree_view() const;
 
 	bool empty() const { return children_.empty(); }
 
@@ -118,7 +121,7 @@ private:
 
 	ttree_view_node* parent_node_;
 
-	ttree_view* parent_widget_;
+	ttree_view& tree_view_;
 
 	tgrid grid_;
 

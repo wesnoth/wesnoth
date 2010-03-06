@@ -36,7 +36,7 @@ ttree_view::ttree_view(const std::vector<tnode_definition>& node_definitions)
 		  "root"
 		, node_definitions_
 		, NULL
-		, this
+		, *this
 		, std::map<std::string, string_map>()))
 	, selected_item_(NULL)
 	, selection_change_callback_()

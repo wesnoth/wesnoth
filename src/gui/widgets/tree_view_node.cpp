@@ -25,7 +25,7 @@
 #include <boost/bind.hpp>
 
 #define LOG_SCOPE_HEADER \
-		get_control_type() + " [" + parent_widget_->id() + "] " + __func__
+		get_control_type() + " [" + tree_view().id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
 namespace gui2 {
@@ -33,19 +33,19 @@ namespace gui2 {
 ttree_view_node::ttree_view_node(const std::string& id
 		, const std::vector<tnode_definition>& node_definitions
 		, ttree_view_node* parent_node
-		, ttree_view* parent_widget
+		, ttree_view& parent_tree_view
 		, const std::map<std::string /* widget id */, string_map>& data
 		)
 	: parent_node_(parent_node)
-	, parent_widget_(parent_widget) // need to store? also used in set_parent
+	, tree_view_(parent_tree_view)
 	, grid_()
 	, children_()
 	, node_definitions_(node_definitions)
 	, icon_(NULL)
 	, label_(NULL)
 {
-	set_parent(parent_widget);
 	grid_.set_parent(this);
+	set_parent(&parent_tree_view);
 	if(id != "root") {
 		foreach(const tnode_definition& node_definition, node_definitions_) {
 			if(node_definition.id == id) {
@@ -89,8 +89,8 @@ ttree_view_node::ttree_view_node(const std::string& id
 								, this, _2, _3, _4)
 							, event::tdispatcher::front_pre_child);
 
-					if(!parent_widget_->selected_item_) {
-						parent_widget_->selected_item_ = this;
+					if(!tree_view().selected_item_) {
+						tree_view().selected_item_ = this;
 						label_->set_value(true);
 					}
 				}
@@ -112,8 +112,8 @@ ttree_view_node::ttree_view_node(const std::string& id
 
 ttree_view_node::~ttree_view_node()
 {
-	if(parent_widget_ && parent_widget_->selected_item_ == this) {
-		parent_widget_->selected_item_ = NULL;
+	if(/*tree_view() &&*/ tree_view().selected_item_ == this) {
+		tree_view().selected_item_ = NULL;
 	}
 }
 
@@ -122,7 +122,6 @@ ttree_view_node& ttree_view_node::add_child(
 		, const std::map<std::string /* widget id */, string_map>& data
 		, const int index)
 {
-	assert(parent_widget_ && parent_widget_->content_grid());
 
 	boost::ptr_vector<ttree_view_node>::iterator itor = children_.end();
 
@@ -134,22 +133,23 @@ ttree_view_node& ttree_view_node::add_child(
 			  id
 			, node_definitions_
 			, this
-			, parent_widget_
+			, tree_view()
 			, data));
 
 	if(is_folded() || is_root_node()) {
 		return *itor;
 	}
 
-	if(parent_widget_->get_size() == tpoint(0, 0)) {
+	if(tree_view().get_size() == tpoint(0, 0)) {
 		return *itor;
 	}
 
-	const int current_width = parent_widget_->content_grid()->get_width();
+	assert(tree_view().content_grid());
+	const int current_width = tree_view().content_grid()->get_width();
 
 	// Calculate width modification.
 	tpoint best_size = itor->get_best_size();
-	best_size.x += get_indention_level() * parent_widget_->indention_step_size_;
+	best_size.x += get_indention_level() * tree_view().indention_step_size_;
 	const unsigned width_modification = best_size.x > current_width
 			? best_size.x - current_width
 			: 0;
@@ -159,7 +159,7 @@ ttree_view_node& ttree_view_node::add_child(
 	assert(height_modification > 0);
 
 	// Request new size.
-	parent_widget_->resize_content(width_modification, height_modification);
+	tree_view().resize_content(width_modification, height_modification);
 
 	return *itor;
 }
@@ -180,15 +180,23 @@ unsigned ttree_view_node::get_indention_level() const
 ttree_view_node& ttree_view_node::parent_node()
 {
 	assert(!is_root_node());
-
 	return *parent_node_;
 }
 
 const ttree_view_node& ttree_view_node::parent_node() const
 {
 	assert(!is_root_node());
-
 	return *parent_node_;
+}
+
+ttree_view& ttree_view_node::tree_view()
+{
+	return tree_view_;
+}
+
+const ttree_view& ttree_view_node::tree_view() const
+{
+	return tree_view_;
 }
 
 bool ttree_view_node::is_folded() const
@@ -226,7 +234,7 @@ void ttree_view_node::clear()
 		return;
 	}
 
-	parent_widget_->resize_content(0, -height_reduction);
+	tree_view().resize_content(0, -height_reduction);
 }
 
 struct ttree_view_node_implementation
@@ -292,8 +300,7 @@ void ttree_view_node::impl_populate_dirty_list(twindow& caller
 
 tpoint ttree_view_node::calculate_best_size() const
 {
-	assert(parent_widget_);
-	return calculate_best_size(-1, parent_widget_->indention_step_size_);
+	return calculate_best_size(-1, tree_view().indention_step_size_);
 }
 
 tpoint ttree_view_node::get_current_size() const
@@ -325,7 +332,7 @@ tpoint ttree_view_node::get_current_size() const
 tpoint ttree_view_node::get_unfolded_size() const
 {
 	tpoint size = grid_.get_best_size();
-	size.x += get_indention_level() * parent_widget_->indention_step_size_;
+	size.x += get_indention_level() * tree_view().indention_step_size_;
 
 	foreach(const ttree_view_node& node, children_) {
 
@@ -383,9 +390,8 @@ void ttree_view_node::set_origin(const tpoint& origin)
 	// Inherited.
 	twidget::set_origin(origin);
 
-	assert(parent_widget_);
 	// Using layout_children seems to fail.
-	place(parent_widget_->indention_step_size_, origin, get_size().x);
+	place(tree_view().indention_step_size_, origin, get_size().x);
 }
 
 void ttree_view_node::place(const tpoint& origin, const tpoint& size)
@@ -393,8 +399,7 @@ void ttree_view_node::place(const tpoint& origin, const tpoint& size)
 	// Inherited.
 	twidget::place(origin, size);
 
-	assert(parent_widget_);
-	parent_widget_->layout_children(true);
+	tree_view().layout_children(true);
 }
 
 unsigned ttree_view_node::place(
@@ -467,15 +472,13 @@ void ttree_view_node::signal_handler_left_button_click(
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
-	assert(parent_widget_);
-
 	// is_folded() returns the new state.
 	if(is_folded()) {
 
 		const tpoint current_size = get_folded_size();
 		const tpoint new_size = get_unfolded_size();
 
-		parent_widget_->resize_content(
+		tree_view().resize_content(
 				  current_size.x - new_size.x
 				, current_size.y - new_size.y);
 	} else {
@@ -483,7 +486,7 @@ void ttree_view_node::signal_handler_left_button_click(
 		const tpoint current_size = get_unfolded_size();
 		const tpoint new_size = get_folded_size();
 
-		parent_widget_->resize_content(
+		tree_view().resize_content(
 				  current_size.x - new_size.x
 				, current_size.y - new_size.y);
 	}
@@ -506,15 +509,14 @@ void ttree_view_node::signal_handler_label_left_button_click(
 		halt = handled = true;
 	} else {
 		// Deselect current item
-		assert(parent_widget_);
-		if(parent_widget_->selected_item_ && parent_widget_->selected_item_->label_) {
-			parent_widget_->selected_item_->label_->set_value(false);
+		if(tree_view().selected_item_ && tree_view().selected_item_->label_) {
+			tree_view().selected_item_->label_->set_value(false);
 		}
 
-		parent_widget_->selected_item_ = this;
+		tree_view().selected_item_ = this;
 
-		if(parent_widget_->selection_change_callback_) {
-			parent_widget_->selection_change_callback_();
+		if(tree_view().selection_change_callback_) {
+			tree_view().selection_change_callback_();
 		}
 	}
 }
