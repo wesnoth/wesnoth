@@ -551,6 +551,14 @@ bool tscrollbar_container::content_resize_request(
 	const bool result = content_resize_width(width_modification)
 			&& content_resize_height(height_modification);
 
+	if(result) {
+		/*
+		 * The subroutines set the new size of the scrollbar but don't
+		 * update the button status.
+		 */
+		set_scrollbar_button_status();
+	}
+
 	DBG_GUI_L << LOG_HEADER << " result " << result << ".\n";
 	return result;
 }
@@ -570,6 +578,11 @@ bool tscrollbar_container::content_resize_width(const int width_modification)
 
 	if(static_cast<unsigned>(new_width) <= content_->get_width()) {
 		DBG_GUI_L << " width fits in container, test height.\n";
+		set_scrollbar_mode(horizontal_scrollbar_grid_
+				, horizontal_scrollbar_
+				, horizontal_scrollbar_mode_
+				, new_width
+				, content_->get_width());
 		return true;
 	}
 
@@ -613,6 +626,11 @@ bool tscrollbar_container::content_resize_height(const int height_modification)
 
 	if(static_cast<unsigned>(new_height) <= content_->get_height()) {
 		DBG_GUI_L << " height in container, resize allowed.\n";
+		set_scrollbar_mode(vertical_scrollbar_grid_
+				, vertical_scrollbar_
+				, vertical_scrollbar_mode_
+				, new_height
+				, content_->get_height());
 		return true;
 	}
 
@@ -635,8 +653,6 @@ bool tscrollbar_container::content_resize_height(const int height_modification)
 			, vertical_scrollbar_mode_
 			, new_height
 			, content_->get_height());
-
-	vertical_scrollbar_->set_dirty();
 
 	return true;
 }
