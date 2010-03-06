@@ -486,10 +486,15 @@ void tlistbox::set_content_size(const tpoint& origin, const tpoint& size)
 
 void tlistbox::layout_children(const bool force)
 {
+	assert(content_grid());
+
 	if(need_layout_ || force) {
 		content_grid()->place(
 				  content_grid()->get_origin()
 				, content_grid()->get_size());
+
+		content_grid()->set_visible_area(content_visible_area_);
+
 		need_layout_ = false;
 	}
 }
