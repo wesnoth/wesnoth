@@ -144,7 +144,7 @@ ttree_view_node& ttree_view_node::add_child(
 	tpoint best_size = itor->get_best_size();
 	best_size.x += get_indention_level() * parent_widget_->indention_step_size_;
 	const unsigned width_modification = best_size.x > current_width
-			? current_width - best_size.x
+			? best_size.x - current_width
 			: 0;
 
 	// Calculate height modification.
