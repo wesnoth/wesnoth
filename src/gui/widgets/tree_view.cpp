@@ -51,21 +51,21 @@ ttree_view_node& ttree_view::add_node(const std::string& id
 
 void ttree_view::remove_node(ttree_view_node* node)
 {
-	assert(node && node != root_node_ && node->parent_);
+	assert(node && node != root_node_ && node->parent_node_);
 	const tpoint node_size = node->get_size();
 
 	boost::ptr_vector<ttree_view_node>::iterator itor =
-				  node->parent_->children_.begin();
+				  node->parent_node_->children_.begin();
 
-	for( ; itor != node->parent_->children_.end(); ++itor) {
+	for( ; itor != node->parent_node_->children_.end(); ++itor) {
 		if(&*itor == node) {
 			break;
 		}
 	}
 
-	assert(itor != node->parent_->children_.end());
+	assert(itor != node->parent_node_->children_.end());
 
-	node->parent_->children_.erase(itor);
+	node->parent_node_->children_.erase(itor);
 
 	if(get_size() == tpoint(0, 0)) {
 		return;

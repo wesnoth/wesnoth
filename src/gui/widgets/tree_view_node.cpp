@@ -32,11 +32,11 @@ namespace gui2 {
 
 ttree_view_node::ttree_view_node(const std::string& id
 		, const std::vector<tnode_definition>& node_definitions
-		, ttree_view_node* parent
+		, ttree_view_node* parent_node
 		, ttree_view* parent_widget
 		, const std::map<std::string /* widget id */, string_map>& data
 		)
-	: parent_(parent)
+	: parent_node_(parent_node)
 	, parent_widget_(parent_widget) // need to store? also used in set_parent
 	, grid_()
 	, children_()
@@ -67,8 +67,8 @@ ttree_view_node::ttree_view_node(const std::string& id
 
 				}
 
-				if(parent_ && parent_->icon_) {
-					parent_->icon_->set_visible(twidget::VISIBLE);
+				if(parent_node_ && parent_node_->icon_) {
+					parent_node_->icon_->set_visible(twidget::VISIBLE);
 				}
 
 				twidget& widget = find_widget<twidget>(
@@ -170,25 +170,25 @@ unsigned ttree_view_node::get_indention_level() const
 
 	const ttree_view_node* node = this;
 	while(node->is_root_node()) {
-		node = &node->parent();
+		node = &node->parent_node();
 		++level;
 	}
 
 	return level;
 }
 
-ttree_view_node& ttree_view_node::parent()
+ttree_view_node& ttree_view_node::parent_node()
 {
 	assert(!is_root_node());
 
-	return *parent_;
+	return *parent_node_;
 }
 
-const ttree_view_node& ttree_view_node::parent() const
+const ttree_view_node& ttree_view_node::parent_node() const
 {
 	assert(!is_root_node());
 
-	return *parent_;
+	return *parent_node_;
 }
 
 bool ttree_view_node::is_folded() const
@@ -298,7 +298,7 @@ tpoint ttree_view_node::calculate_best_size() const
 
 tpoint ttree_view_node::get_current_size() const
 {
-	if(parent_ && parent_->is_folded()) {
+	if(parent_node_ && parent_node_->is_folded()) {
 		return tpoint(0, 0);
 	}
 

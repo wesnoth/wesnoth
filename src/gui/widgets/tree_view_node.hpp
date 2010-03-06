@@ -35,7 +35,7 @@ public:
 	typedef implementation::tbuilder_tree_view::tnode tnode_definition;
 	ttree_view_node(const std::string& id
 			, const std::vector<tnode_definition>& node_definitions
-			, ttree_view_node* parent
+			, ttree_view_node* parent_node
 			, ttree_view* parent_widget
 			, const std::map<
 				std::string /* widget id */, string_map>& data);
@@ -56,18 +56,18 @@ public:
 			, const std::map<std::string /* widget id */, string_map>& data)
 	{
 		assert(!is_root_node());
-		return parent().add_child(id, data);
+		return parent_node().add_child(id, data);
 	}
 
-	bool is_root_node() const { return parent_ == NULL; }
+	bool is_root_node() const { return parent_node_ == NULL; }
 
 	unsigned get_indention_level() const;
 
 	/**
 	 * Returns the parent node, can't be used on the root node.
 	 */
-	ttree_view_node& parent();
-	const ttree_view_node& parent() const;
+	ttree_view_node& parent_node();
+	const ttree_view_node& parent_node() const;
 
 	bool empty() const { return children_.empty(); }
 
@@ -116,7 +116,7 @@ private:
 
 	void request_reduce_width(unsigned int) {}
 
-	ttree_view_node* parent_;
+	ttree_view_node* parent_node_;
 
 	ttree_view* parent_widget_;
 
