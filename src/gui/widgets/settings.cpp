@@ -205,6 +205,7 @@ const std::string& tgui_definition::read(const config& cfg)
  *                                   intended for over- and underlays. (The
  *                                   widget is still experimental.)
  *     Text_box                      A single line text box.
+ *     Tree_view                     @macro = tree_view_description
  *     Toggle_button                 A kind of button with two 'states' normal
  *                                   and selected. This is a more generic widget
  *                                   which is used for eg checkboxes and

@@ -34,6 +34,22 @@ ttree_view_definition::tresolution::tresolution(const config& cfg) :
 	tresolution_definition_(cfg),
 	grid(NULL)
 {
+/*WIKI
+ * @page = GUIWidgetDefinitionWML
+ * @order = 1_tree_view
+ *
+ * == Tree view ==
+ *
+ * @macro = tree_view_description
+ *
+ * The documentation is not written yet.
+ *
+ * The following states exist:
+ * * state_enabled, the listbox is enabled.
+ * * state_disabled, the listbox is disabled.
+ *
+ */
+
 	// Note the order should be the same as the enum tstate is listbox.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 	state.push_back(tstate_definition(cfg.child("state_disabled")));
