@@ -407,7 +407,7 @@ ttext& ttext::set_ellipse_mode(const PangoEllipsizeMode ellipse_mode)
 	return *this;
 }
 
-ttext &ttext::set_alignment(PangoAlignment alignment)
+ttext &ttext::set_alignment(const PangoAlignment alignment)
 {
 	if (alignment == alignment_) return *this;
 	pango_layout_set_alignment(layout_, alignment);

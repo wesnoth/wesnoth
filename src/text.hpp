@@ -177,7 +177,7 @@ public:
 
 	ttext& set_ellipse_mode(const PangoEllipsizeMode ellipse_mode);
 
-	ttext &set_alignment(PangoAlignment);
+	ttext &set_alignment(const PangoAlignment alignment);
 
 	ttext& set_maximum_length(const size_t maximum_length);
 
