@@ -173,7 +173,8 @@ public:
 
 private:
 
-	void request_reduce_width(unsigned int) {}
+	/** Inherited from twidget. */
+	void request_reduce_width(const unsigned /*maximum_width*/) {}
 
 	/**
 	 * Our parent node.
