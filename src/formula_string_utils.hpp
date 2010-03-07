@@ -31,7 +31,25 @@ std::string interpolate_variables_into_string(const std::string &str, const vari
 }
 
 /** Handy wrappers around interpolate_variables_into_string and gettext. */
-std::string vgettext(const char*, const utils::string_map&);
+std::string vgettext(const char* msgid, const utils::string_map& symbols);
+std::string vgettext(const char* domain
+		, const char* msgid
+		, const utils::string_map& symbols);
+
 std::string vngettext(const char*, const char*, int, const utils::string_map&);
+
+/**
+ * @todo Convert all functions.
+ *
+ * All function in this file should have an overloaded version with a domain
+ * and probably convert all callers to use the macro instead of directly calling
+ * the function.
+ */
+
+#ifdef GETTEXT_DOMAIN
+#define	VGETTEXT(msgid, symbols) vgettext(GETTEXT_DOMAIN, msgid, symbols)
+#else
+#define	VGETTEXT(msgid, symbols) vgettext(msgid, symbols)
+#endif
 
 #endif
