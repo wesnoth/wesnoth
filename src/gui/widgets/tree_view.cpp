@@ -41,6 +41,12 @@ ttree_view::ttree_view(const std::vector<tnode_definition>& node_definitions)
 	, selected_item_(NULL)
 	, selection_change_callback_()
 {
+	connect_signal<event::LEFT_BUTTON_DOWN>(
+			  boost::bind(
+				    &ttree_view::signal_handler_left_button_down
+				  , this
+				  , _2)
+			, event::tdispatcher::back_pre_child);
 }
 
 ttree_view_node& ttree_view::add_node(const std::string& id
@@ -160,6 +166,13 @@ const std::string& ttree_view::get_control_type() const
 {
 	static const std::string type = "tree_view";
 	return type;
+}
+
+void ttree_view::signal_handler_left_button_down(const event::tevent event)
+{
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+
+	get_window()->keyboard_capture(this);
 }
 
 } // namespace gui2

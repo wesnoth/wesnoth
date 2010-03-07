@@ -146,6 +146,9 @@ private:
 	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const;
 
+	/***** ***** ***** signal handlers ***** ****** *****/
+
+	void signal_handler_left_button_down(const event::tevent event);
 };
 
 } // namespace gui2
