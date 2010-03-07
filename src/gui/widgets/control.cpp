@@ -228,6 +228,7 @@ void tcontrol::set_label(const t_string& label)
 	}
 
 	label_ = label;
+	set_layout_size(tpoint(0, 0));
 	update_canvas();
 	set_dirty();
 }
