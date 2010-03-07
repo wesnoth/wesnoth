@@ -137,7 +137,7 @@ private:
 	 */
 	tstate state_;
 
- 	/**
+	/**
 	 * The return value of the button.
 	 *
 	 * If this value is not 0 and the button is double clicked it sets the
@@ -145,7 +145,7 @@ private:
 	 */
 	int retval_;
 
- 	/** See tselectable_::set_callback_state_change. */
+	/** See tselectable_::set_callback_state_change. */
 	boost::function<void (twidget*)> callback_state_change_;
 
 	/** Mouse left double click callback */
