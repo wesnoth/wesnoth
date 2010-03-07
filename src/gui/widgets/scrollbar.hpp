@@ -198,7 +198,7 @@ private:
 	/** The current length of the positioner. */
 	unsigned positioner_length_;
 
- 	/** This callback is used when the positioner is moved by the user. */
+	/** This callback is used when the positioner is moved by the user. */
 	void (*callback_positioner_move_) (twidget*);
 
 	/***** ***** ***** ***** Pure virtual functions ***** ***** ***** *****/
