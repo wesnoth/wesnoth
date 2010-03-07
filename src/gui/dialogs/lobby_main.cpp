@@ -252,7 +252,7 @@ void tlobby_main::add_whisper_sent(const std::string& receiver, const std::strin
 	} else {
 		utils::string_map symbols;
 		symbols["receiver"] = receiver;
-		add_active_window_whisper(vgettext("whisper to $receiver", symbols), message);
+		add_active_window_whisper(VGETTEXT("whisper to $receiver", symbols), message);
 	}
 	lobby_info_.get_whisper_log(receiver).add_message(preferences::login(), message);
 }
@@ -686,7 +686,7 @@ void tlobby_main::update_gamelist_header()
 	utils::string_map symbols;
 	symbols["num_shown"] = lexical_cast<std::string>(lobby_info_.games_filtered().size());
 	symbols["num_total"] = lexical_cast<std::string>(lobby_info_.games().size());
-	std::string games_string = vgettext("Games: showing $num_shown out of $num_total", symbols);
+	std::string games_string = VGETTEXT("Games: showing $num_shown out of $num_total", symbols);
 	find_widget<tlabel>(gamelistbox_, "map", false).set_label(games_string);
 }
 
@@ -1068,13 +1068,13 @@ tlobby_chat_window* tlobby_main::search_create_window(const std::string& name, b
 		symbols["name"] = name;
 		if (whisper) {
 			add_label_data(data, "log_header", "<" + name + ">");
-			add_label_data(data, "log_text", vgettext(
+			add_label_data(data, "log_text", VGETTEXT(
 				"Whisper session with $name started. "
 				"If you don't want to receive messages from this user, "
 				"type /ignore $name\n", symbols));
 		} else {
 			add_label_data(data, "log_header", name);
-			add_label_data(data, "log_text", vgettext(
+			add_label_data(data, "log_text", VGETTEXT(
 				"Room $name joined", symbols));
 			lobby_info_.open_room(name);
 		}
@@ -1392,7 +1392,7 @@ void tlobby_main::process_room_join(const config &data)
 			/* TODO: Uncomment after stringfreeze is lifted, add/use preference
 			utils::string_map symbols;
 			symbols["player"] = player;
-			add_room_window_message(room, "server", vgettext("$player has entered the room", symbols));
+			add_room_window_message(room, "server", VGETTEXT("$player has entered the room", symbols));
 			*/
 		}
 		if (r == active_window_room()) {
@@ -1431,7 +1431,7 @@ void tlobby_main::process_room_part(const config &data)
 		/* TODO: Uncomment after stringfreeze is lifted, add/use preference
 		utils::string_map symbols;
 		symbols["player"] = player;
-		add_room_window_message(room, "server", vgettext("$player has left the room", symbols));
+		add_room_window_message(room, "server", VGETTEXT("$player has left the room", symbols));
 		*/
         if (active_window_room() == r) {
             update_playerlist();
