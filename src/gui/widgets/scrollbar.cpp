@@ -118,6 +118,10 @@ void tscrollbar_::set_item_position(const unsigned item_position)
 
 	item_position_ = (item_position_ + step_size_ - 1) / step_size_;
 
+	if(all_items_visible()) {
+		item_position_ = 0;
+	}
+
 	// Determine the pixel offset of the item position.
 	positioner_offset_ = static_cast<unsigned>(item_position_ * pixels_per_step_);
 
