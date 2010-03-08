@@ -114,6 +114,10 @@ stringfixes = {
 # See the explanation of the changes for TROW.
 ("A final blow destroys the Lich,", "A final blow destroys the lich,"),
 ("back yard", "back-yard"),
+("color='#000000'", "color='white'"),
+("color='#ff0000'", "color='red'"),
+("color='#00ff00'", "color='green'"),
+("color='#ffff00'", "color='yellow'"),
 ),
 
 "wesnoth-low" : (
