@@ -165,7 +165,7 @@ pathfind::plain_route pathfind::a_star_search(const map_location& src, const map
 	indexer index(width, height);
 	comp node_comp(nodes);
 
-	nodes[index(dst)].g = stop_at;
+	nodes[index(dst)].g = stop_at + 1;
 	nodes[index(src)] = node(0, src, map_location::null_location, dst, true, teleports);
 
 	std::vector<int> pq;
@@ -189,7 +189,7 @@ pathfind::plain_route pathfind::a_star_search(const map_location& src, const map
 
 			node& next = nodes[index(locs[i])];
 
-			double thresh = (next.in - search_counter <= 1u) ? next.g : stop_at;
+			double thresh = (next.in - search_counter <= 1u) ? next.g : stop_at + 1;
 			// cost() is always >= 1  (assumed and needed by the heuristic)
 			if (n.g + 1 >= thresh) continue;
 			double cost = n.g + calc->cost(locs[i], n.g);
@@ -209,7 +209,7 @@ pathfind::plain_route pathfind::a_star_search(const map_location& src, const map
 	}
 
 	pathfind::plain_route route;
-	if (nodes[index(dst)].g < stop_at) {
+	if (nodes[index(dst)].g <= stop_at) {
 		DBG_PF << "found solution; calculating it...\n";
 		route.move_cost = static_cast<int>(nodes[index(dst)].g);
 		for (node curr = nodes[index(dst)]; curr.prev != map_location::null_location; curr = nodes[index(curr.prev)]) {
