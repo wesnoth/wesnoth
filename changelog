@@ -1,6 +1,9 @@
 Version 1.7.13+svn:
  * AI:
    * Allow to write AI components in LUA
+   * Implemented FR #15465: 'protect' goal was split into protect_location, 
+     protect_unit, protect_my_unit [goal] tags. protect_my_unit can be used 
+     as a direct replacement for protect_leader.
  * Graphics:
    * Fixed bug 15344: missing ice to nothing transition
    * Fixed weird side effect of long first frame in standing anims

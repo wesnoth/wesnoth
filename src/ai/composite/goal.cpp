@@ -184,33 +184,60 @@ void protect_goal::on_create()
 
 void protect_goal::add_targets(std::back_insert_iterator< std::vector< target > > target_list)
 {
+	std::string goal_type;
+	if (protect_unit_) {
+		if (protect_only_own_unit_) {
+			goal_type = "protect_my_unit";
+		} else {
+			goal_type = "protect_unit";
+		}
+	} else {
+		goal_type ="protect_location";
+	}
+
 	if (!(this)->active()) {
-		LOG_AI_GOAL << "skipping protect_goal - not active" << std::endl;
+		LOG_AI_GOAL << "skipping " << goal_type << " goal - not active" << std::endl;
 		return;
 	}
 
-	if (!filter_ptr_) {
-		LOG_AI_GOAL << "skipping protect_goal - no criteria given" << std::endl;
+	const config &criteria = cfg_.child("criteria");
+	if (!criteria) {
+		LOG_AI_GOAL << "skipping " << goal_type << " goal - no criteria given" << std::endl;
 		return;
 	} else {
-		DBG_AI_GOAL << "protect_goal with criteria" << std::endl << cfg_.child("criteria") << std::endl;
+		DBG_AI_GOAL << goal_type << " goal with criteria" << std::endl << cfg_.child("criteria") << std::endl;
 	}
+
 
 	unit_map &units = get_info().units;
 	std::vector<team> &teams = get_info().teams;
 
 
 	std::set<map_location> items;
-	filter_ptr_->get_locations(items);
-	DBG_AI_GOAL << "seaching for threats in protect_goal" << std::endl;
-	// Look for directions to protect a specific location.
+	if (protect_unit_) {
+		for(unit_map::const_iterator u = units.begin(); u != units.end(); ++u) {
+
+			if (protect_only_own_unit_ && u->second.side()!=get_side()) {
+				continue;
+			}
+			//TODO: we will protect hidden units, by not testing for invisibility to current side
+			if (u->second.matches_filter(vconfig(criteria),u->first)) {
+				DBG_AI_GOAL << "in "<<goal_type<< ": " << u->first << " should be protected " << std::endl;
+				items.insert(u->first);
+			}
+		}
+	} else {
+		filter_ptr_->get_locations(items);
+	}
+	DBG_AI_GOAL << "seaching for threats in "+goal_type+" goal" << std::endl;
+	// Look for directions to protect a specific location or specific unit.
 	foreach (const map_location &loc, items)
 	{
 		for(unit_map::const_iterator u = units.begin(); u != units.end(); ++u) {
 			const int distance = distance_between(u->first,loc);
 			if(current_team().is_enemy(u->second.side()) && distance < radius_
 			&& !u->second.invisible(u->first, units, teams)) {
-				DBG_AI_GOAL << "found threat target... " << u->first << " is a threat to "<< loc << std::endl;
+				DBG_AI_GOAL << "in "<<goal_type<<": found threat target. " << u->first << " is a threat to "<< loc << std::endl;
 				*target_list = target(u->first, value_ * double(radius_-distance) /
 							double(radius_),target::THREAT);
 			}
@@ -221,11 +248,13 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target > 
 }
 
 
-protect_goal::protect_goal(readonly_context &context, const config &cfg)
+protect_goal::protect_goal(readonly_context &context, const config &cfg, bool protect_only_own_unit, bool protect_unit)
 	: goal(context,cfg)
 	, filter_ptr_()
-	, radius_(20)
-	, value_(1.0) //these defaults are taken from old code
+	, protect_only_own_unit_(protect_only_own_unit)
+	, protect_unit_(protect_unit)
+	, radius_(20) //this default radius is taken from old code
+	, value_(1.0) //this default value taken from old code
 {
 }
 
