@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-02-25 00:07+0100\n"
+"POT-Creation-Date: 2010-03-08 14:58+0100\n"
 "PO-Revision-Date: 2008-03-01 17:08+0200\n"
 "Last-Translator: Aleksej Korgenkov <grimpanto@mail.ru>\n"
 "Language-Team: none\n"
@@ -604,9 +604,9 @@ msgstr ""
 #: data/gui/default/window/campaign_dialog.cfg:433
 #: data/gui/default/window/editor_generate_map.cfg:111
 #: data/gui/default/window/editor_new_map.cfg:111
-#: data/gui/default/window/editor_resize_map.cfg:275
+#: data/gui/default/window/editor_resize_map.cfg:273
 #: data/gui/default/window/editor_settings.cfg:240
-#: data/gui/default/window/game_load.cfg:444
+#: data/gui/default/window/game_load.cfg:443
 #: data/gui/default/window/game_save.cfg:134
 #: data/gui/default/window/language_selection.cfg:133
 #: data/gui/default/window/message.cfg:136
@@ -631,8 +631,8 @@ msgstr ""
 #. [button]: id=ok
 #: data/gui/default/window/campaign_dialog.cfg:419
 #: data/gui/default/window/editor_settings.cfg:230
+#: data/gui/default/window/game_load.cfg:429
 #: data/gui/default/window/game_load.cfg:430
-#: data/gui/default/window/game_load.cfg:431
 #: data/gui/default/window/game_save.cfg:119
 #: data/gui/default/window/game_save.cfg:120
 #: data/gui/default/window/mp_login.cfg:234
@@ -715,30 +715,30 @@ msgid "Old width:"
 msgstr "Larĝeco:"
 
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:95
+#: data/gui/default/window/editor_resize_map.cfg:94
 #, fuzzy
 msgid "New height:"
 msgstr "Alteco:"
 
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:119
+#: data/gui/default/window/editor_resize_map.cfg:118
 #, fuzzy
 msgid "Old height:"
 msgstr "Alteco:"
 
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:147
+#: data/gui/default/window/editor_resize_map.cfg:145
 msgid "Expand / shrink direction"
 msgstr ""
 
 #. [toggle_button]: id=copy_edge_terrain
-#: data/gui/default/window/editor_resize_map.cfg:242
+#: data/gui/default/window/editor_resize_map.cfg:240
 msgid "Copy edge terrain"
 msgstr ""
 
 #. [button]: id=ok
-#: data/gui/default/window/editor_resize_map.cfg:264
-#: data/gui/default/window/editor_resize_map.cfg:265
+#: data/gui/default/window/editor_resize_map.cfg:262
+#: data/gui/default/window/editor_resize_map.cfg:263
 #, fuzzy
 msgid "Resize map"
 msgstr "Ŝanĝi grandecon de mapo"
@@ -944,20 +944,20 @@ msgid "Date"
 msgstr "Enmeti"
 
 #. [button]: id=delete
+#: data/gui/default/window/game_load.cfg:352
 #: data/gui/default/window/game_load.cfg:353
-#: data/gui/default/window/game_load.cfg:354
 #, fuzzy
 msgid "Delete"
 msgstr "Forigi Dosieron"
 
 #. [toggle_button]: id=show_replay
-#: data/gui/default/window/game_load.cfg:372
+#: data/gui/default/window/game_load.cfg:371
 #, fuzzy
 msgid "Show replay"
 msgstr "ludanto"
 
 #. [toggle_button]: id=cancel_orders
-#: data/gui/default/window/game_load.cfg:390
+#: data/gui/default/window/game_load.cfg:389
 #, fuzzy
 msgid "Cancel orders"
 msgstr "Nuligu"
@@ -2136,7 +2136,7 @@ msgstr "Neniu servilo estis difinita."
 #: src/gui/auxiliary/widget_definition/scroll_label.cpp:73
 #: src/gui/auxiliary/widget_definition/scrollbar_panel.cpp:63
 #: src/gui/auxiliary/widget_definition/stacked_widget.cpp:51
-#: src/gui/auxiliary/widget_definition/tree_view.cpp:42
+#: src/gui/auxiliary/widget_definition/tree_view.cpp:58
 #: src/gui/auxiliary/window_builder.cpp:311
 #: src/gui/auxiliary/window_builder/panel.cpp:35
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:38
@@ -2224,30 +2224,12 @@ msgstr ""
 msgid "Version: "
 msgstr ""
 
-#: src/gui/dialogs/lobby_main.cpp:255
-msgid "whisper to $receiver"
-msgstr ""
-
-#: src/gui/dialogs/lobby_main.cpp:689
-msgid "Games: showing $num_shown out of $num_total"
-msgstr ""
-
 #: src/gui/dialogs/lobby_main.cpp:731
 msgid "Observers allowed"
 msgstr ""
 
 #: src/gui/dialogs/lobby_main.cpp:734
 msgid "Observers not allowed"
-msgstr ""
-
-#: src/gui/dialogs/lobby_main.cpp:1072
-msgid ""
-"Whisper session with $name started. If you don't want to receive messages "
-"from this user, type /ignore $name\n"
-msgstr ""
-
-#: src/gui/dialogs/lobby_main.cpp:1078
-msgid "Room $name joined"
 msgstr ""
 
 #: src/gui/dialogs/lobby_main.cpp:1548
@@ -2280,30 +2262,30 @@ msgstr ""
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Neniu servilo estis difinita."
 
-#: src/gui/widgets/settings.cpp:302
+#: src/gui/widgets/settings.cpp:303
 msgid "Window not defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:407
+#: src/gui/widgets/settings.cpp:408
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:494
+#: src/gui/widgets/settings.cpp:495
 #, fuzzy
 msgid "No default gui defined."
 msgstr "Neniu servilo estis difinita."
 
-#: src/gui/widgets/settings.cpp:521
+#: src/gui/widgets/settings.cpp:522
 #, fuzzy
 msgid "No state or draw section defined."
 msgstr "Neniu servilo estis difinita."
 
-#: src/gui/widgets/window.cpp:775
+#: src/gui/widgets/window.cpp:788
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr ""
 
-#: src/gui/widgets/window.cpp:800 src/gui/widgets/window.cpp:833
+#: src/gui/widgets/window.cpp:813 src/gui/widgets/window.cpp:846
 #: src/tests/gui/test_gui2.cpp:229
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr ""

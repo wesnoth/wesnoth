@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-02-25 00:07+0100\n"
+"POT-Creation-Date: 2010-03-08 14:58+0100\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lietuvių <komp_lt@konferencijos.lt>\n"
@@ -578,9 +578,9 @@ msgstr "Prisijungti"
 #: data/gui/default/window/campaign_dialog.cfg:433
 #: data/gui/default/window/editor_generate_map.cfg:111
 #: data/gui/default/window/editor_new_map.cfg:111
-#: data/gui/default/window/editor_resize_map.cfg:275
+#: data/gui/default/window/editor_resize_map.cfg:273
 #: data/gui/default/window/editor_settings.cfg:240
-#: data/gui/default/window/game_load.cfg:444
+#: data/gui/default/window/game_load.cfg:443
 #: data/gui/default/window/game_save.cfg:134
 #: data/gui/default/window/language_selection.cfg:133
 #: data/gui/default/window/message.cfg:136
@@ -605,8 +605,8 @@ msgstr "Žaisti kampaniją"
 #. [button]: id=ok
 #: data/gui/default/window/campaign_dialog.cfg:419
 #: data/gui/default/window/editor_settings.cfg:230
+#: data/gui/default/window/game_load.cfg:429
 #: data/gui/default/window/game_load.cfg:430
-#: data/gui/default/window/game_load.cfg:431
 #: data/gui/default/window/game_save.cfg:119
 #: data/gui/default/window/game_save.cfg:120
 #: data/gui/default/window/mp_login.cfg:234
@@ -683,28 +683,28 @@ msgid "Old width:"
 msgstr "Senas plotis:"
 
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:95
+#: data/gui/default/window/editor_resize_map.cfg:94
 msgid "New height:"
 msgstr "Naujas aukštis:"
 
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:119
+#: data/gui/default/window/editor_resize_map.cfg:118
 msgid "Old height:"
 msgstr "Senas aukštis:"
 
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:147
+#: data/gui/default/window/editor_resize_map.cfg:145
 msgid "Expand / shrink direction"
 msgstr ""
 
 #. [toggle_button]: id=copy_edge_terrain
-#: data/gui/default/window/editor_resize_map.cfg:242
+#: data/gui/default/window/editor_resize_map.cfg:240
 msgid "Copy edge terrain"
 msgstr ""
 
 #. [button]: id=ok
-#: data/gui/default/window/editor_resize_map.cfg:264
-#: data/gui/default/window/editor_resize_map.cfg:265
+#: data/gui/default/window/editor_resize_map.cfg:262
+#: data/gui/default/window/editor_resize_map.cfg:263
 msgid "Resize map"
 msgstr "Keisti žemėlapio dydį"
 
@@ -895,18 +895,18 @@ msgid "Date"
 msgstr "Data"
 
 #. [button]: id=delete
+#: data/gui/default/window/game_load.cfg:352
 #: data/gui/default/window/game_load.cfg:353
-#: data/gui/default/window/game_load.cfg:354
 msgid "Delete"
 msgstr "Trinti"
 
 #. [toggle_button]: id=show_replay
-#: data/gui/default/window/game_load.cfg:372
+#: data/gui/default/window/game_load.cfg:371
 msgid "Show replay"
 msgstr "Parodyti peržaidimą"
 
 #. [toggle_button]: id=cancel_orders
-#: data/gui/default/window/game_load.cfg:390
+#: data/gui/default/window/game_load.cfg:389
 msgid "Cancel orders"
 msgstr "Atšaukti nurodymus"
 
@@ -2042,7 +2042,7 @@ msgstr "Neapibrėžta raiška."
 #: src/gui/auxiliary/widget_definition/scroll_label.cpp:73
 #: src/gui/auxiliary/widget_definition/scrollbar_panel.cpp:63
 #: src/gui/auxiliary/widget_definition/stacked_widget.cpp:51
-#: src/gui/auxiliary/widget_definition/tree_view.cpp:42
+#: src/gui/auxiliary/widget_definition/tree_view.cpp:58
 #: src/gui/auxiliary/window_builder.cpp:311
 #: src/gui/auxiliary/window_builder/panel.cpp:35
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:38
@@ -2123,14 +2123,6 @@ msgstr "Sudėtingumas: "
 msgid "Version: "
 msgstr "Versija: "
 
-#: src/gui/dialogs/lobby_main.cpp:255
-msgid "whisper to $receiver"
-msgstr ""
-
-#: src/gui/dialogs/lobby_main.cpp:689
-msgid "Games: showing $num_shown out of $num_total"
-msgstr ""
-
 #: src/gui/dialogs/lobby_main.cpp:731
 msgid "Observers allowed"
 msgstr "Stebėtojai leidžiami"
@@ -2138,16 +2130,6 @@ msgstr "Stebėtojai leidžiami"
 #: src/gui/dialogs/lobby_main.cpp:734
 msgid "Observers not allowed"
 msgstr "Stebėtojai neleidžiami"
-
-#: src/gui/dialogs/lobby_main.cpp:1072
-msgid ""
-"Whisper session with $name started. If you don't want to receive messages "
-"from this user, type /ignore $name\n"
-msgstr ""
-
-#: src/gui/dialogs/lobby_main.cpp:1078
-msgid "Room $name joined"
-msgstr "Prisijungta prie kambario $name"
 
 #: src/gui/dialogs/lobby_main.cpp:1548
 msgid "Password Required"
@@ -2177,28 +2159,28 @@ msgstr "Versija"
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:302
+#: src/gui/widgets/settings.cpp:303
 msgid "Window not defined."
 msgstr "Langas neapibrėžtas."
 
-#: src/gui/widgets/settings.cpp:407
+#: src/gui/widgets/settings.cpp:408
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:494
+#: src/gui/widgets/settings.cpp:495
 msgid "No default gui defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:521
+#: src/gui/widgets/settings.cpp:522
 msgid "No state or draw section defined."
 msgstr ""
 
-#: src/gui/widgets/window.cpp:775
+#: src/gui/widgets/window.cpp:788
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr ""
 
-#: src/gui/widgets/window.cpp:800 src/gui/widgets/window.cpp:833
+#: src/gui/widgets/window.cpp:813 src/gui/widgets/window.cpp:846
 #: src/tests/gui/test_gui2.cpp:229
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr ""
@@ -2788,3 +2770,6 @@ msgstr ""
 #: src/wml_exception.cpp:76
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
+
+#~ msgid "Room $name joined"
+#~ msgstr "Prisijungta prie kambario $name"

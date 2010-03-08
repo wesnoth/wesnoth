@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-02-25 00:07+0100\n"
+"POT-Creation-Date: 2010-03-08 14:58+0100\n"
 "PO-Revision-Date: 2009-12-29 12:44+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -581,9 +581,9 @@ msgstr "Connetti"
 #: data/gui/default/window/campaign_dialog.cfg:433
 #: data/gui/default/window/editor_generate_map.cfg:111
 #: data/gui/default/window/editor_new_map.cfg:111
-#: data/gui/default/window/editor_resize_map.cfg:275
+#: data/gui/default/window/editor_resize_map.cfg:273
 #: data/gui/default/window/editor_settings.cfg:240
-#: data/gui/default/window/game_load.cfg:444
+#: data/gui/default/window/game_load.cfg:443
 #: data/gui/default/window/game_save.cfg:134
 #: data/gui/default/window/language_selection.cfg:133
 #: data/gui/default/window/message.cfg:136
@@ -608,8 +608,8 @@ msgstr "Gioca una campagna"
 #. [button]: id=ok
 #: data/gui/default/window/campaign_dialog.cfg:419
 #: data/gui/default/window/editor_settings.cfg:230
+#: data/gui/default/window/game_load.cfg:429
 #: data/gui/default/window/game_load.cfg:430
-#: data/gui/default/window/game_load.cfg:431
 #: data/gui/default/window/game_save.cfg:119
 #: data/gui/default/window/game_save.cfg:120
 #: data/gui/default/window/mp_login.cfg:234
@@ -686,28 +686,28 @@ msgid "Old width:"
 msgstr "Vecchia larghezza:"
 
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:95
+#: data/gui/default/window/editor_resize_map.cfg:94
 msgid "New height:"
 msgstr "Nuova altezza:"
 
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:119
+#: data/gui/default/window/editor_resize_map.cfg:118
 msgid "Old height:"
 msgstr "Vecchia altezza:"
 
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:147
+#: data/gui/default/window/editor_resize_map.cfg:145
 msgid "Expand / shrink direction"
 msgstr "Espandi / riduci direzione"
 
 #. [toggle_button]: id=copy_edge_terrain
-#: data/gui/default/window/editor_resize_map.cfg:242
+#: data/gui/default/window/editor_resize_map.cfg:240
 msgid "Copy edge terrain"
 msgstr "Copia il terreno del bordo"
 
 #. [button]: id=ok
-#: data/gui/default/window/editor_resize_map.cfg:264
-#: data/gui/default/window/editor_resize_map.cfg:265
+#: data/gui/default/window/editor_resize_map.cfg:262
+#: data/gui/default/window/editor_resize_map.cfg:263
 msgid "Resize map"
 msgstr "Ridimensiona mappa"
 
@@ -898,18 +898,18 @@ msgid "Date"
 msgstr "Data"
 
 #. [button]: id=delete
+#: data/gui/default/window/game_load.cfg:352
 #: data/gui/default/window/game_load.cfg:353
-#: data/gui/default/window/game_load.cfg:354
 msgid "Delete"
 msgstr "Elimina"
 
 #. [toggle_button]: id=show_replay
-#: data/gui/default/window/game_load.cfg:372
+#: data/gui/default/window/game_load.cfg:371
 msgid "Show replay"
 msgstr "Mostra replay"
 
 #. [toggle_button]: id=cancel_orders
-#: data/gui/default/window/game_load.cfg:390
+#: data/gui/default/window/game_load.cfg:389
 msgid "Cancel orders"
 msgstr "Annulla gli ordini"
 
@@ -2057,7 +2057,7 @@ msgstr "Non è stato definita nessuna risoluzione."
 #: src/gui/auxiliary/widget_definition/scroll_label.cpp:73
 #: src/gui/auxiliary/widget_definition/scrollbar_panel.cpp:63
 #: src/gui/auxiliary/widget_definition/stacked_widget.cpp:51
-#: src/gui/auxiliary/widget_definition/tree_view.cpp:42
+#: src/gui/auxiliary/widget_definition/tree_view.cpp:58
 #: src/gui/auxiliary/window_builder.cpp:311
 #: src/gui/auxiliary/window_builder/panel.cpp:35
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:38
@@ -2140,14 +2140,6 @@ msgstr "Difficoltà: "
 msgid "Version: "
 msgstr "Versione: "
 
-#: src/gui/dialogs/lobby_main.cpp:255
-msgid "whisper to $receiver"
-msgstr "Bisbiglia a $receiver"
-
-#: src/gui/dialogs/lobby_main.cpp:689
-msgid "Games: showing $num_shown out of $num_total"
-msgstr "Partite: mostrate $num_shown di $num_total"
-
 #: src/gui/dialogs/lobby_main.cpp:731
 msgid "Observers allowed"
 msgstr "Osservatori ammessi"
@@ -2155,18 +2147,6 @@ msgstr "Osservatori ammessi"
 #: src/gui/dialogs/lobby_main.cpp:734
 msgid "Observers not allowed"
 msgstr "Osservatori non ammessi"
-
-#: src/gui/dialogs/lobby_main.cpp:1072
-msgid ""
-"Whisper session with $name started. If you don't want to receive messages "
-"from this user, type /ignore $name\n"
-msgstr ""
-"Iniziata una sessione bisbigliata con $name. Se non vuoi ricevere messaggi "
-"da questo utente, scrivi /ignore $name\n"
-
-#: src/gui/dialogs/lobby_main.cpp:1078
-msgid "Room $name joined"
-msgstr "Sei entrato nella stanza $name"
 
 #: src/gui/dialogs/lobby_main.cpp:1548
 msgid "Password Required"
@@ -2196,29 +2176,29 @@ msgstr "Versione"
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Non è stato definito il widget obbligatorio «$id»."
 
-#: src/gui/widgets/settings.cpp:302
+#: src/gui/widgets/settings.cpp:303
 msgid "Window not defined."
 msgstr "Finestra non definita."
 
-#: src/gui/widgets/settings.cpp:407
+#: src/gui/widgets/settings.cpp:408
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 "La definizione del widget «$definition» non contiene la definizione di «$id»."
 
-#: src/gui/widgets/settings.cpp:494
+#: src/gui/widgets/settings.cpp:495
 msgid "No default gui defined."
 msgstr "Non è stato definita una gui predefinita."
 
-#: src/gui/widgets/settings.cpp:521
+#: src/gui/widgets/settings.cpp:522
 msgid "No state or draw section defined."
 msgstr "Non è stata definita nessuna sezione state o draw."
 
-#: src/gui/widgets/window.cpp:775
+#: src/gui/widgets/window.cpp:788
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "L'ignora con un clic richiede un pulsante «click_dismiss» o «ok»."
 
-#: src/gui/widgets/window.cpp:800 src/gui/widgets/window.cpp:833
+#: src/gui/widgets/window.cpp:813 src/gui/widgets/window.cpp:846
 #: src/tests/gui/test_gui2.cpp:229
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Non è stato possibile mostrare una finestra che non sta nello schermo."
@@ -2819,6 +2799,22 @@ msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
 "Nella sezione «[$section|]» la chiave obbligatoria «$key|» non è impostata."
 "Nella sezione «[$section|]» la chiave obbligatoria «$key|» non è impostata."
+
+#~ msgid "whisper to $receiver"
+#~ msgstr "Bisbiglia a $receiver"
+
+#~ msgid "Games: showing $num_shown out of $num_total"
+#~ msgstr "Partite: mostrate $num_shown di $num_total"
+
+#~ msgid ""
+#~ "Whisper session with $name started. If you don't want to receive messages "
+#~ "from this user, type /ignore $name\n"
+#~ msgstr ""
+#~ "Iniziata una sessione bisbigliata con $name. Se non vuoi ricevere "
+#~ "messaggi da questo utente, scrivi /ignore $name\n"
+
+#~ msgid "Room $name joined"
+#~ msgstr "Sei entrato nella stanza $name"
 
 #~ msgid "Save The Map"
 #~ msgstr "Salva la mappa"
