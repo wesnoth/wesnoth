@@ -165,14 +165,20 @@ void holder::modify_ai(const config &cfg)
 		res = component_manager::change_component(&*this->ai_,cfg["path"],cfg);
 	} else if (act == "delete") {
 		res = component_manager::delete_component(&*this->ai_,cfg["path"]);
+	} else if (act == "try_delete") {
+		res = component_manager::delete_component(&*this->ai_,cfg["path"]);
+		if (!res) {
+			LOG_AI_MOD << "[modify_ai] "<<act<<" failed, ignoring because it's a try_delete"<< std::endl;
+			res = true;
+		}
 	} else {
-		ERR_AI_MOD << "modify_ai tag has invalid 'action' attribute " << std::endl;
+		ERR_AI_MOD << "modify_ai tag has invalid 'action' attribute " << act << std::endl;
 	}
-	DBG_AI_MOD << "side "<< side_ << "  after [modify_ai]"<<std::endl << to_config() << std::endl;
+	DBG_AI_MOD << "side "<< side_ << "  after [modify_ai]"<<act<<std::endl << to_config() << std::endl;
 	if (!res) {
-		WRN_AI_MOD << "[modify_ai] failed"<< std::endl;
+		LOG_AI_MOD << "[modify_ai] "<<act<<" failed"<< std::endl;
 	} else {
-		LOG_AI_MOD << "[modify_ai] success"<< std::endl;
+		LOG_AI_MOD << "[modify_ai] "<<act<<" success"<< std::endl;
 	}
 
 }
