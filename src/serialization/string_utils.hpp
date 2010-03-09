@@ -73,7 +73,7 @@ std::vector< std::string > split(std::string const &val, char c = ',', int flags
  * an empty elements are never removed as they are placeholders.
  * hence REMOVE EMPTY only works for the separator split.
  *
- * parenthetical_split("a(b)c{d}e(f{g})h",0,"({",")}") should return
+ * paranthetical_split("a(b)c{d}e(f{g})h",0,"({",")}") should return
  * a vector of <"a","b","c","d","e","f{g}","h">
  */
 std::vector< std::string > paranthetical_split(std::string const &val,
