@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-03-08 14:58+0100\n"
-"PO-Revision-Date: 2010-02-16 00:52+0900\n"
+"PO-Revision-Date: 2010-03-07 03:38+0900\n"
 "Last-Translator: IWAI, Masaharu <iwaim.sub@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
 "MIME-Version: 1.0\n"
@@ -6794,15 +6794,13 @@ msgstr "レベル"
 
 #. [unit_moves]: id=unit-moves
 #: data/themes/default.cfg:459 data/themes/experimental.cfg:399
-#, fuzzy
 msgid "statuspanel^moves"
 msgstr "移動"
 
 #. [unit_defense]: id=unit-defense
 #: data/themes/default.cfg:468 data/themes/experimental.cfg:408
-#, fuzzy
 msgid "statuspanel^terrain def."
-msgstr "レベル"
+msgstr "地形効果"
 
 #. [change]: id=actions-menu
 #: data/themes/default.cfg:1004
@@ -7982,17 +7980,14 @@ msgid "?"
 msgstr "？"
 
 #: src/loadscreen.cpp:244
-#, fuzzy
 msgid "Verifying cache..."
 msgstr "キャッシュを検証しています。"
 
 #: src/loadscreen.cpp:262
-#, fuzzy
 msgid "Reading unit files..."
 msgstr "ユニットのファイルを読み込んでいます。"
 
 #: src/loadscreen.cpp:280
-#, fuzzy
 msgid "Reading files and creating cache..."
 msgstr "ファイルを読み込んでキャッシュを作成しています。"
 
@@ -8836,11 +8831,8 @@ msgid "Victory:"
 msgstr "勝利条件:"
 
 #: src/multiplayer_connect.cpp:1614
-#, fuzzy
 msgid "Defeat enemy leader(s)"
-msgstr ""
-"勝利条件\n"
-"@敵のリーダー（達）を打ち負かす"
+msgstr "敵のリーダー（達）を倒す"
 
 #: src/multiplayer_connect.cpp:1718
 msgid "Waiting for players to join..."
