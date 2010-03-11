@@ -2186,7 +2186,11 @@ size_t move_unit(move_unit_spectator *move_spectator,
 
 	assert(ui != units.end());
 
-	ui->second.set_goto(map_location());
+	//don't modify goto if we're have a spectator
+	//if it is present, then the caller code is responsible for modifying gotos
+	if (move_spectator==NULL) {
+		ui->second.set_goto(map_location());
+	}
 
 	size_t team_num = ui->second.side()-1;
 	team *tm = &teams[team_num];
@@ -2366,7 +2370,12 @@ size_t move_unit(move_unit_spectator *move_spectator,
 		if(seen_units.empty() == false) {
 			ui->second.set_interrupted_move(route.back());
 		} else {
-			ui->second.set_goto(route.back());
+
+			//don't modify goto if we're have a spectator
+			//if it is present, then the caller code is responsible for modifying gotos
+			if (move_spectator==NULL) {
+				ui->second.set_goto(route.back());
+			}
 		}
 	} else {
 		ui->second.set_interrupted_move(map_location());
