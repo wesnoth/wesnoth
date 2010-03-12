@@ -1243,7 +1243,7 @@ const config& unit_type_data::find_config(const std::string& key) const
     ERR_CF << "unit type not found: " << key << "\n";
     ERR_CF << *unit_cfg_ << "\n";
 
-    ERROR_LOG("unit type not found");
+    throw config::error("unit type not found: "+key);
 }
 
 void unit_type_data::clear()
