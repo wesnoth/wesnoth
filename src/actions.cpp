@@ -261,7 +261,7 @@ void unit_creator::add_unit(const config &cfg)
 		if(add_to_recall_) {
 			if (recall_list_element==team_.recall_list().end()) {
 				//add to recall list
-				unit new_unit(resources::units, temp_cfg, true);
+				unit new_unit(resources::units, temp_cfg, true,resources::state_of_game);
 				team_.recall_list().push_back(new_unit);
 				DBG_NG << "inserting unit with id=["<<id<<"] on recall list for side " << new_unit.side() << "\n";
 			} else {
@@ -275,7 +275,7 @@ void unit_creator::add_unit(const config &cfg)
 		temp_cfg.remove_attribute("animate");
 		if (recall_list_element==team_.recall_list().end()) {
 			//new unit
-			unit new_unit(resources::units, temp_cfg, true);
+			unit new_unit(resources::units, temp_cfg, true, resources::state_of_game);
 			resources::units->add(loc, new_unit);
 			LOG_NG << "inserting unit for side " << new_unit.side() << "\n";
 			post_create(loc,new_unit,animate);
