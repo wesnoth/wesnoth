@@ -1,4 +1,4 @@
-# Battle for Wesnoth 1.6.5
+# #-#-#-#-#  wesnoth.cpp1.po (Battle for Wesnoth VERSION)  #-#-#-#-#
 # Japanese translations for Battle for Wesnoth package.
 # Copyright (C) 2005-2006 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
@@ -6,15 +6,14 @@
 # naoki iimura <amatubu@gmail.com>, 2005-2008.
 # Nobuhito Okada <okyada@gmail.com>, 2005-2006.
 # Takanobu Hirai <airhead@users.sourceforge.jp>, 2006.
-# IWAI, Masaharu <iwaim.sub@gmail.com>, 2010.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.1.7\n"
+"Project-Id-Version: 1.7.x-SVN\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-03-08 14:58+0100\n"
-"PO-Revision-Date: 2010-02-17 06:36+0900\n"
-"Last-Translator: IWAI, Masaharu <iwaim.sub@gmail.com>\n"
+"PO-Revision-Date: 2010-03-13 03:06+0900\n"
+"Last-Translator: \n"
 "Language-Team: Japanese Translation Team\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,7 +27,7 @@ msgstr "王位継承者"
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:12
 msgid "HttT"
-msgstr "王位継承者"
+msgstr "HttT"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:16
@@ -64,11 +63,10 @@ msgstr "チャンピオン"
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:21
 msgid "(Novice level, 25 scenarios.)"
-msgstr ""
+msgstr "(初心者レベル、25 シナリオ)"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:21
-#, fuzzy
 msgid ""
 "Fight to regain the throne of Wesnoth, of which you are the legitimate "
 "heir.\n"
@@ -76,7 +74,6 @@ msgid ""
 msgstr ""
 "Wesnoth の王位を取り戻すために戦え。あなたはその正当な継承者だ。\n"
 "\n"
-"(初心者レベル、25 シナリオ)"
 
 #. [about]
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:29
@@ -265,7 +262,7 @@ msgstr "Konrad"
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:76
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:102
 msgid "Rebels"
-msgstr "Rebels"
+msgstr "反乱軍"
 
 #. [unit]: id=Delfador, type=Elder Mage
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:77
@@ -323,7 +320,7 @@ msgstr "Urug-Telfar"
 #: data/campaigns/Heir_To_The_Throne/scenarios/19a_Snow_Plains.cfg:76
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:122
 msgid "Orcs"
-msgstr ""
+msgstr "オーク族"
 
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:174
@@ -524,7 +521,7 @@ msgstr "ああ、なんてことだ！ 時間切れだ。彼らが援軍をつ�
 #. [message]: speaker=second_unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:421
 msgid "Die, villain, die!"
-msgstr "死ね、この悪党め、死ね！"
+msgstr "死ね、この悪人、死ね！"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:432
@@ -576,15 +573,14 @@ msgstr "最後のターンまで抵抗する"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:24
-#, fuzzy
 msgid ""
 "<span color='white'>Alternative objective:</span>\n"
 "<span color='green'>Defeat the enemy leader</span> <small>(special bonus)</"
 "small>"
 msgstr ""
-"<255,255,255>別の目標:\n"
-"@敵のリーダーを倒す\n"
-"`(スペシャルボーナス)"
+"<span color='white'>別の目標:</span>\n"
+"<span color='green'>敵のリーダーを倒す</span><small>（スペシャルボーナス）</"
+"small>"
 
 #. [objective]: condition=lose
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:37
@@ -673,7 +669,7 @@ msgid ""
 "to take you to safety."
 msgstr ""
 "うまくいけばあなたの助けを借りて敵の攻撃を防ぐことができるでしょう。しかし、"
-"あなたはここに長く留まってはいけません。我々の大義からすれば港を守ることより"
+"あなたはここに長く留まってはいけません。我々の大儀からすれば港を守ることより"
 "もあなたが生き残ることの方が重要なのです。船は 2 日後に到着する予定で、あなた"
 "を安全なところまでお連れできるはずです。"
 
@@ -720,12 +716,12 @@ msgid ""
 "fight better by day, and worse at night. Horsemen are unmatched on open "
 "land, though elves will serve you better in forests or rugged terrain."
 msgstr ""
-"エルフ族は強力な種族です、Konrad。通常は私の部下よりも強力だといえます。しか"
-"し、騎手は別の点で強力です。遠くから攻撃することはできませんが、通常の 2 倍の"
-"ダメージを与える突撃ができます。しかしそのかわり、倍のダメージを受けます。彼"
-"らは「秩序」ユニットでもあり、これは、昼間は強く、夜間は弱いということを意味"
-"します。騎手は開けている土地では無敵ですが、森やでこぼこした地形ではエルフ族"
-"が有利でしょう。"
+"エルフ族は強力な種族です、Konrad。通常は私の部下よりも強力だと認められます。"
+"しかし、騎手は別の点で強力です。遠くから攻撃することはできませんが、通常の 2 "
+"倍のダメージを与える突撃ができます。しかしそのかわり、倍のダメージを受けま"
+"す。彼らは「秩序」ユニットでもあり、これは、昼間は強く、夜間は弱いということ"
+"を意味します。騎手は開けている土地では無敵ですが、森やでこぼこした地形ではエ"
+"ルフ族が有利でしょう。"
 
 #. [message]: speaker=Kaylan
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:209
@@ -1078,15 +1074,14 @@ msgstr "片方の敵のリーダーを倒し、時間切れになるまでもう
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:24
-#, fuzzy
 msgid ""
 "<span color='white'>Alternative objective:</span>\n"
 "<span color='green'>Defeat all enemy leaders</span> <small>(early finish "
 "bonus)</small>"
 msgstr ""
-"<255,255,255>別の目標:\n"
-"@すべての敵のリーダーを倒す\n"
-"`(早期終了ボーナス)"
+"<span color='white'>別の目標</span>\n"
+"<span color='green'>敵のリーダーをすべて倒す</span><small>（早期終了ボーナ"
+"ス）</small>"
 
 #. [side]: type=Orcish Warrior, id=Dwaba-Kukai
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:59
@@ -1117,7 +1112,6 @@ msgstr "Inalai"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:201
-#, fuzzy
 msgid ""
 "So this is the Bay of Pearls. It looks like they have those merfolk working "
 "hard!"
@@ -1127,7 +1121,6 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:205
-#, fuzzy
 msgid ""
 "Indeed it does. It also looks like they have many, many troops. I should go "
 "around the bay and distract some of them. You and the rest rescue the "
@@ -1149,7 +1142,6 @@ msgstr "それにしてもボス、なぜ我々はコウモリとナーガしか
 
 #. [message]: speaker=Dwaba-Kukai
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:239
-#, fuzzy
 msgid ""
 "Because we need to control the seas and the merfolk, and nagas and bats are "
 "best for doing that!"
@@ -1561,6 +1553,9 @@ msgid ""
 "<span color='green'>Defeat Muff Malal</span> <small>(early finish bonus)</"
 "small>"
 msgstr ""
+"<span color='white'>別の目標</span>\n"
+"<span color='green'>Muff Malal を倒す</span><small>（早期終了ボーナス）</"
+"small>"
 
 #. [side]: type=Dark Sorcerer, id=Muff Malal
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:61
@@ -1693,20 +1688,19 @@ msgstr "のろわれた島"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:24
-#, fuzzy
 msgid ""
 "<span color='white'>Alternative objective:</span>\n"
 "<span color='green'>Defeat all enemy leaders</span> <small>(special bonus)</"
 "small>"
 msgstr ""
-"<255,255,255>別の目標:\n"
-"@すべての敵のリーダーを倒す\n"
-"`(スペシャルボーナス)"
+"<span color='white'>別の目標:</span>\n"
+"<span color='green'>敵のリーダーをすべて倒す</span><small>（スペシャルボーナ"
+"ス）</small>"
 
 #. [objectives]
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:32
 msgid "No gold carried over to the next scenario."
-msgstr "次のシナリオに持ち越すゴールドは無し"
+msgstr ""
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:40
@@ -1772,8 +1766,8 @@ msgid ""
 "Let's hope these rumors are not true! I have none of my men or gold with me! "
 "How could I defend myself?"
 msgstr ""
-"うわさが本当ではないことを祈りましょう！兵士は誰もいなし、お金ももっていな"
-"い！どうやって自分を守ればいいんでしょう？"
+"うわさが本当ではないことを祈りましょう！ 私の兵はだれもいません！ どうやって"
+"自分を守ることができるでしょう？"
 
 #. [message]: speaker=Kalba
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:179
@@ -1792,12 +1786,13 @@ msgstr "Delurin"
 
 #. [message]: speaker=Delurin
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:197
+#, fuzzy
 msgid ""
 "Maybe we can make a deal! Help us defeat those evil creatures! You may use "
 "our gold reserves to lead us!"
 msgstr ""
-"取引しないか？あの邪悪な生き物を倒すのを手伝ってくれ！俺たちの金を使い、俺た"
-"ちを引き連れてくれ！"
+"私たちは協力することができるでしょう！ あの邪悪な生き物を倒すのを手伝ってくだ"
+"さい！"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:207
@@ -1855,9 +1850,9 @@ msgid ""
 "If we eradicate the undead blight on these islands, I will surely go with "
 "you. Otherwise, I plan to finish my task here before moving on."
 msgstr ""
-"この島々を蝕んでいるアンデッドを全滅させることができたら、あなたとともに行き"
-"ましょう。それができなければ、先へ進む前にここに残って自分の仕事を終わらせま"
-"す。"
+"この島々をを傷つけているアンデッドを全滅させることができたら、あなたとともに"
+"行きましょう。それができなければ、先へ進む前にここに残って自分の仕事を終わら"
+"せます。"
 
 #. [unit]: type=Revenant, id=Xakae
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:310
@@ -1897,8 +1892,6 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:517
 msgid "You regain your lost troops and $isle_damned_starting_gold gold!"
 msgstr ""
-"あなたは、はぐれていた仲間と $isle_damned_starting_gold ゴールドを取り戻し"
-"た！"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:488
@@ -2193,7 +2186,7 @@ msgid ""
 "The turbulent waters hid a nearly invisible ford, wide enough for two "
 "soldiers to march shoulder-to-shoulder."
 msgstr ""
-"Konrad が驚いたことに、彼らは河口を素早く渡っていきました。奔流の中には全くと"
+"Konrad が驚いたことに、彼らは河口を素早く渉っていきました。奔流の中には全くと"
 "いっていいほど目につかない浅瀬が隠されてれていたのでした。その浅瀬は、2 人の"
 "兵士が肩と肩をくっつけて進軍できるほどの広さしかありません。"
 
@@ -2204,7 +2197,7 @@ msgid ""
 "discover this place. Bring your forces into the city, quickly now, and you "
 "can flank them."
 msgstr ""
-"ここで川を歩いて渡れることを知っている人はほとんどいません。オーク族はこの場"
+"ここで川を歩いて渉れることを知っている人はほとんどいません。オーク族はこの場"
 "所をまだ見つけていません。今すぐにあなたの軍勢を都市に連れていけば、彼らを側"
 "面から攻めることができるでしょう。"
 
@@ -2695,7 +2688,6 @@ msgstr ""
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:307
-#, fuzzy
 msgid ""
 "I see that your forces draw near, impostor! I'll not be defeated in my own "
 "backyard so easily... Come forth and attack, my loyal duelist!"
@@ -2746,15 +2738,14 @@ msgstr "2 日間生き残る"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:23
-#, fuzzy
 msgid ""
 "<span color='white'>Alternative objective:</span>\n"
 "<span color='green'>Eradicate the liches</span> <small>(early finish bonus)</"
 "small>"
 msgstr ""
-"<255,255,255>別の目標:\n"
-"@リッチを全滅させる\n"
-"`(早期終了ボーナス)"
+"<span color='white'>別の目標:</span>\n"
+"<span color='green'>リッチを全滅させる</span><small>（早期終了ボーナス）</"
+"small>"
 
 #. [side]: type=Lich, id=Galga
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:76
@@ -2892,7 +2883,6 @@ msgstr ""
 
 #. [message]: speaker=Moremirmu
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:381
-#, fuzzy
 msgid ""
 "You must escape the clutches of that vile Queen, my lord. If you take a "
 "course bearing north-east, on past the mountain of gryphons, you will be "
@@ -2900,8 +2890,8 @@ msgid ""
 "able to ford the river in winter!"
 msgstr ""
 "閣下、あなたは卑劣な女王の支配下から逃れなければなりません。北東方向に針路を"
-"とり、グリフォンの山を超えれば、Abez で大河を渡ることができるでしょう。しかし"
-"急がなければいけません。冬になれば川を渡ることはできなくなってしまうでしょ"
+"とり、グリフォンの山を超えれば、Abez で大河を渉ることができるでしょう。しかし"
+"急がなければいけません。冬になれば川を渉ることはできなくなってしまうでしょ"
 "う！"
 
 #. [message]: speaker=Konrad
@@ -2945,7 +2935,6 @@ msgstr ""
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:418
-#, fuzzy
 msgid ""
 "The land of Wesnoth is not safe for us. The Queen's forces reach every "
 "corner. We must make haste to the north lands, across the Great River. Let "
@@ -3076,7 +3065,7 @@ msgid ""
 "continue toward the land of the dwarves. Hurry, let us go!"
 msgstr ""
 "さらに北に進まなければならない。安全な Elensefar や Alduin に戻るには遅すぎ"
-"る。その前に冬が訪れてしまう。したがって、我々は大河を渡ってドワーフ族の地に"
+"る。その前に冬が訪れてしまう。したがって、我々は大河を渉ってドワーフ族の地に"
 "向かわなければならない。急げ、いくぞ！"
 
 #. [message]: speaker=Konrad
@@ -3202,7 +3191,7 @@ msgid ""
 "lands, but they are now filled only with chaos. This is where your father "
 "and uncle were betrayed, almost nineteen years ago now, Konrad."
 msgstr ""
-"ここが Abez の浅瀬だ。この川を渡れば、Wesnoth を離れ、北部の地に入ることにな"
+"ここが Abez の浅瀬だ。この川を渉れば、Wesnoth を離れ、北部の地に入ることにな"
 "る。ドワーフ族がかつてこの地を支配していたが、今は混沌だけで満ちている。ここ"
 "は今からほぼ 19 年前におぬしの父や叔父が裏切られた場所でもあるのだよ、"
 "Konrad。"
@@ -3221,7 +3210,7 @@ msgid ""
 "northern armies crossed and attacked us."
 msgstr ""
 "王の軍はここで野営していて、北の軍はこの川の北側にいたのだ。3 日 3 晩、どちら"
-"の軍勢も川を渡ろうとせず、向き合ったままだった。4 日目に、北の軍が川を渡り、"
+"の軍勢も川を渉ろうとせず、向き合ったままだった。4 日目に、北の軍が川を渉り、"
 "我々を攻撃してきた。"
 
 #. [message]: speaker=Konrad
@@ -3285,11 +3274,11 @@ msgid ""
 "battle, that boy, fool that he was, came charging at me, slashing wildly. I "
 "had little choice but to end his life."
 msgstr ""
-"私は反逆者の王、そしてすべての黒幕である Asheviere と戦うために兵士を集めた。"
-"そして、この場所ではなく、Weldyn からの道の途中の Tath で彼らと戦った。我々は"
-"数で負けていた。おそらく 4 対 1 といったところだろう。戦いの途中に、あの少年"
-"は、やたらにめった切りしながら愚かにも私に突進してきたのだ。私には彼の命を絶"
-"つ以外の選択肢はほとんどなかったのだ。"
+"私は反逆者の王、そしてもちろん Asheviere と戦うために兵士を集めた。彼女がすべ"
+"ての黒幕であったから。我々は彼らと戦った。この場所ではないが、Weldin からの道"
+"の途中、Tath で。我々は数で負けていた。おそらく 4 対 1 といったところだろう。"
+"戦いの途中に、あの少年は、やたらにめった切りしながら愚かにも私に突進してきた"
+"のだ。私には彼の命を絶つ以外の選択肢はほとんどなかったのだ。"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:236
@@ -3313,7 +3302,7 @@ msgid ""
 "are manned!"
 msgstr ""
 "閣下、お話のところ申し訳ありませんが、私たちは急がなければいけません。私たち"
-"はすぐにこの川を渡らなければいけません。そして、見てください！ 川の土手にある"
+"はすぐにこの川を渉らなければいけません。そして、見てください！ 川の土手にある"
 "見張り台に人がいるようです！"
 
 #. [message]: speaker=Gaga-Breuk
@@ -3322,13 +3311,13 @@ msgid ""
 "Look! Some of the southerners, men of Wesnoth, are trying to cross into our "
 "lands! We will slaughter them by the river's edge!"
 msgstr ""
-"見ろ！ 南の者たち、Wesnoth の軍が我々の地に渡ってこようとしている！ 我々は彼"
+"見ろ！ 南の者たち、Wesnoth の軍が我々の地に渉ってこようとしている！ 我々は彼"
 "らを川岸で倒すだろう！"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:253
 msgid "Isn't there somewhere else we can cross? Maybe upstream?"
-msgstr "渡ることができる他の場所はないのですか？ おそらく上流にはあるのでは？"
+msgstr "渉ることができる他の場所はないのですか？ おそらく上流にはあるのでは？"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:257
@@ -3339,11 +3328,11 @@ msgid ""
 "like rats! Look to the west! Asheviere has a border fort, and it seems to be "
 "full of soldiers! We must cross here, and quickly!"
 msgstr ""
-"冬が足早にせまってきている。川を渡るのには数日間しかなく、最も近くの橋は遥か"
+"冬が足早にせまってきている。川を渉るのには数日間しかなく、最も近くの橋は遥か"
 "上流だ。冬が来たときに川の南側で足止めされているのは自殺行為だ。Asheviere は"
 "ネズミでも捕らえるかのように我々を捕らえるだろう！ 西側を見るのだ！ "
 "Asheviere は北との境界に砦を築いていて、その中は兵士でいっぱいのようだ！ 我々"
-"はは急いでここを渡らなければならない！"
+"はは急いでここを渉らなければならない！"
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:261
@@ -3352,7 +3341,7 @@ msgid ""
 "to leave Wesnoth. We can't let them cross the river. After them, men!"
 msgstr ""
 "彼らを見つけたわ！ 彼らがアンデッドを食い止めたというのは本当だったのね。彼ら"
-"は Wesnoth を離れようとしています。川を渡らせるわけにはいきません。兵士たち、"
+"は Wesnoth を離れようとしています。川を渉らせるわけにはいきません。兵士たち、"
 "彼らを追うのです！"
 
 #. [message]: speaker=Konrad
@@ -3382,9 +3371,8 @@ msgstr "平原では逃げられましたが、あなたに負けたわけでは
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:366
-#, fuzzy
 msgid "Water Serpent"
-msgstr "シーサーペント"
+msgstr "ウォーターサーペント"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:369
@@ -3409,12 +3397,12 @@ msgid ""
 "must get to the other side with all haste!"
 msgstr ""
 "深海の生き物が近づいています！ これはとても危険です。急ぎましょう！ 大急ぎで"
-"向こう岸に渡らなければいけません！"
+"向こう岸に渉らなければいけません！"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:412
 msgid "We made it across the river safely! Where to now?"
-msgstr "無事に川を渡ることができました！ さて、どこへ向かいますか？"
+msgstr "無事に川を渉ることができました！ さて、どこへ向かいますか？"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:417
@@ -3431,8 +3419,8 @@ msgid ""
 "I cannot believe it. They have made it away! We must make chase. After them, "
 "men! Let us cross the river too! We will meet again, foul impostor."
 msgstr ""
-"信じられない。彼らは川を渡ってしまったわ！ 私たちは追わなければいけません。兵"
-"士たち、彼らを追うのです！ 私たちも川を渡りましょう！ 邪悪な詐欺師さん、また"
+"信じられない。彼らは川を渉ってしまったわ！ 私たちは追わなければいけません。兵"
+"士たち、彼らを追うのです！ 私たちも川を渉りましょう！ 邪悪な詐欺師さん、また"
 "会いましょう！"
 
 #. [message]: speaker=Konrad
@@ -3449,7 +3437,7 @@ msgid ""
 msgstr ""
 "確実に我々を追おうとするだろう。しかしこの川には我々が戦ったよりもより多くの"
 "生き物が隠れている。そのため彼女が我々を追うことは難しくなるだろう。我々は前"
-"進し続けなければならない。冬がくる前に彼女が渡ることができたとしたら、そのと"
+"進し続けなければならない。冬がくる前に彼女が渉ることができたとしたら、そのと"
 "きは受けて立とう！"
 
 #. [scenario]: id=12_Northern_Winter
@@ -3464,7 +3452,7 @@ msgid ""
 "distant thutter of orcish signal drums made the abundant pine forests "
 "nestled in rolling foothills both breathtaking and ominous."
 msgstr ""
-"川を渡った先は、これまで人間がほとんど訪れたことのない場所でした。オーク族の"
+"川を渉った先は、これまで人間がほとんど訪れたことのない場所でした。オーク族の"
 "太鼓の音が時折遠くで鳴り響き、そのせいで、なだらかな山麓の丘に生えているたく"
 "さんの松の木の森が恐ろしく、不気味なものに感じられました。"
 
@@ -3520,7 +3508,7 @@ msgid ""
 "days."
 msgstr ""
 "その通りです、しばらく休みましょう！ 行く先にはたくさんの困難が待ち受けている"
-"と確信しています。それに、何日もの間 川を渡るようなことにこれ以上耐えられると"
+"と確信しています。それに、何日もの間 川を渉るようなことにこれ以上耐えられると"
 "は思えません。"
 
 #. [message]: speaker=Kalenz
@@ -3544,9 +3532,9 @@ msgid ""
 msgstr ""
 "Kalenz よ、彼らの言うとおりだ。1 ヶ月以内に笏を手に入れたいと思っていたが、そ"
 "れはできないようだ。すぐに休まなければ、我々の兵士たちは逃亡し始めるだろう。"
-"しかしこの荒れ果てた北の地においては、休む権利ですら戦いで勝ち取らねばならな"
-"い。北の方を見よ！ あの邪悪なオークたちが我々を平穏でいさせてくれることはない"
-"だろう！"
+"しかしこの荒れ果てた北の地においては、休む権利のためでさえも戦わなければなら"
+"ない。北の方を見よ！ あの邪悪なオークたちが我々を平穏でいさせてくれることはな"
+"いだろう！"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:179
@@ -3649,9 +3637,8 @@ msgstr "ドワーフ王国の入り口"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:28
-#, fuzzy
 msgid "Move Konrad to the entrance of the dwarven tunnels"
-msgstr "ドワーフ王国の入り口まで Konrad を移動させる"
+msgstr "ドワーフの坑道の入り口まで Konrad を移動させる"
 
 #. [side]: type=Orcish Slurbow, id=Knafa-Telfar
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:68
@@ -3685,9 +3672,8 @@ msgstr "親衛隊"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:182
-#, fuzzy
 msgid "At last, this is the entrance to the dwarven tunnels."
-msgstr "ついに、ドワーフ王国の入り口に到着した。"
+msgstr "ついに、ドワーフの坑道の入り口に到着した。"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:186
@@ -3985,13 +3971,12 @@ msgstr "モンスターが湖に隠れていました！"
 
 #. [message]: role=whiner
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:639
-#, fuzzy
 msgid ""
 "The legend was true! There are always tentacled creatures hiding in the "
 "lakes near the dwarven tunnels."
 msgstr ""
-"伝説は本当だったのだ！ ドワーフ王国の近くにある湖にはいつも、触手のある生き物"
-"が隠れているのだ。"
+"伝説は本当だったのだ！ ドワーフの坑道の近くにある湖にはいつも、触手のある生き"
+"物が隠れているのだ。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:649
@@ -4083,8 +4068,8 @@ msgid ""
 "honor our alliance. Many dwarves were slaughtered, and you cowardly elves "
 "did nothing to help!"
 msgstr ""
-"「我々を傷つけるようなことはしていない」だと？ エルフ族が我々との同盟を破って"
-"救援にこなかったとき、わしはその場にいただ。多くのドワーフが虐殺されたが、お"
+"「我々を傷つけるようなことはしていない」だと？ エルフ族が我々との同盟を守るた"
+"めにやってこなかったとき、わしはそこにいたのだ。多くのドワーフが虐殺され、お"
 "前たち臆病者のエルフ族はまったく助けようとしなかった！"
 
 #. [message]: speaker=Kalenz
@@ -4142,8 +4127,8 @@ msgid ""
 "not."
 msgstr ""
 "友よ、冗談ではない。我々は炎の笏を探しているのだ。それを見つけるためにドワー"
-"フ族の助けを必要としている。ただ、あなた方が協力してくれなくとも、我々はそれ"
-"を見つけるつもりだ。"
+"フ族の助けを必要としている。しかし、あなた方が協力してくれなくとも、我々はそ"
+"れを見つけるだろう。"
 
 #. [message]: speaker=Relgorn
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:366
@@ -4174,8 +4159,7 @@ msgid ""
 "I am Delfador, Delfador the Great, Arch Mage to King Garard, and Protector "
 "of his heir."
 msgstr ""
-"私は Delfador。Garard 王の偉大なる熟練魔術師であり、後継者である彼の守護者"
-"だ。"
+"私は Delfador。Garard 王の偉大なる熟練魔術師であり、彼の後継者の守護者だ。"
 
 #. [message]: speaker=Relgorn
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:386
@@ -4364,7 +4348,7 @@ msgstr "Lionel"
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:116
 msgid "We are now in the main dwarvish caverns."
-msgstr "ドワーフの洞窟の中枢に到着した。"
+msgstr "ドワーフの洞窟の主要な部分に到着した。"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:120
@@ -4437,7 +4421,7 @@ msgid ""
 "(sniffs) A mer-mahn. Never heard of it. I doubt yer as tasty as my friends "
 "here."
 msgstr ""
-"（においを嗅ぎながら）マーマ〜ンだって。聞いたことがねえ。あんたがここにいる"
+"（においを嗅ぎながら）マーマ～ンだって。聞いたことがねえ。あんたがここにいる"
 "俺たちの仲間と同じようにうまそうには見えねえな。"
 
 #. [message]
@@ -4452,8 +4436,8 @@ msgid ""
 "little carried away, fell in the water, and were sucked down intae this "
 "grotto."
 msgstr ""
-"俺は前哨基地を護るために このちっぽけな子犬どもと戯れていたところだ。ちょっと"
-"夢中になってたら、水の中に落ちて、この洞窟に引き込まれちまった。"
+"俺はこのちっぽけな子犬どもとけんかしてたところだ。俺の前哨基地を護るために。"
+"ちょっと夢中になってたら、水の中に落ちて、この洞窟に引き込まれちまった。"
 
 #. [message]
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:235
@@ -4467,10 +4451,9 @@ msgid ""
 "little ravenous, if ye catch my drift. Canna' swim past that current, and "
 "no' for lack o' tryin'."
 msgstr ""
-"ああ、少なくとも数日にはなるかな。トロルの肉がにおい始めてきたところだし、"
-"ちょっと小腹がすいてきたところだ。俺が漂流しているのを見つけてくれたところで"
-"ちょっと頼みがある。あの流れを泳いで超えられないか？ 俺にはちょっと無理だった"
-"んだ。"
+"ああ、少なくとも数日にはなるかな。トロルの肉がにおい始めてきたところなんだ。"
+"俺が漂流しているのを見つけてくれたところでちょっと頼みがある。あの流れを泳い"
+"で超えられないか？ 俺にはちょっと無理だったんだ。"
 
 #. [message]
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:243
@@ -4480,7 +4463,7 @@ msgstr "あなたを助けよう。私の肩につかまりなさい、ドワー
 #. [message]: speaker=Ulfdain
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:247
 msgid "Thanks. Nae need to wait around here. Let's go."
-msgstr "ありがたい。こんなところに留まる意味はない。さあ行こう。"
+msgstr "ありがたい。こんなところに留まる必要はない。出発。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:270
@@ -4497,7 +4480,7 @@ msgid ""
 "Well, mer-mahn, we made it. I will fight for yer lord. He sounds like a "
 "brave fellow."
 msgstr ""
-"やれやれ、マーマ〜ン、やったな。あんたの主人のために俺も戦おう。勇敢なやつの"
+"やれやれ、マーマ～ン、やったな。あんたの主人のために俺も戦おう。勇敢なやつの"
 "ようだしな。"
 
 #. [message]: speaker=unit
@@ -5000,7 +4983,6 @@ msgstr "避けられない選択"
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:16
-#, fuzzy
 msgid ""
 "The Scepter, initially dulled from decades of dust and debris, began to glow "
 "from the ruby's inner fire. Dwarvish runes on the golden handle lit up in "
@@ -5112,7 +5094,6 @@ msgstr "ええ。王女様、これであなたは笏を私に対して使うの
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:210
-#, fuzzy
 msgid ""
 "No, I was thinking... I don't really want to kill you. I have what I came to "
 "get. So if you promise never to come south of the Great River, I will spare "
@@ -5172,7 +5153,6 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:238
-#, fuzzy
 msgid ""
 "Then perhaps we should head east along the river, and seek refuge and rest "
 "there for a time?"
@@ -5212,8 +5192,8 @@ msgid ""
 msgstr ""
 "川を避けるには 2 つの道があります。北へ向かい、私たち一族の古い本拠地を通って"
 "東へ向かう道。そこには現在一族が住んでいます。あるいは南へ向かい、沼地を抜け"
-"て東へ曲がり、そこから北へ向かう道。この道を選ぶ場合、川を一度多く渡ることに"
-"なりますが、渡るのに安全な場所を知っています。"
+"て東へ曲がり、そこから北へ向かう道。この道を選ぶ場合、川を一度多く渉ることに"
+"なりますが、渉るのに安全な場所を知っています。"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:254
@@ -5520,7 +5500,6 @@ msgstr ""
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/19a_Snow_Plains.cfg:145
-#, fuzzy
 msgid ""
 "Move along, elf, unless you enjoy making camp in this icy waste. I, for one, "
 "do not!"
@@ -5622,6 +5601,8 @@ msgid ""
 "<span color='white'>Bonus objective:</span>\n"
 "<span color='green'>Defeat all Death Knights first</span>"
 msgstr ""
+"<span color='white'>ボーナスのある目標:</span>\n"
+"<span color='green'>先に死の騎士をすべて倒す</span>"
 
 #. [side]: type=Death Knight, id=Clarustus
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:88
@@ -5727,42 +5708,39 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:306
-#, fuzzy
 msgid ""
 "A final blow destroys the lich, releasing a small shock wave of energy "
 "outwards. The last Death Knight silently falls to the ground, inanimate. A "
 "giant cloud of dust bellows out as the remnants of the Lich's once-mortal "
 "skin and centuries of grime and gristle are dislodged for the last time."
 msgstr ""
-"最後の一撃が Lich を粉砕しました。すると、小さな衝撃波が外側に広がりました。"
+"最後の一撃がリッチを粉砕しました。すると、小さな衝撃波が外側に広がりました。"
 "最後の死の騎士は生気がなくなって静かに地面に崩れ落ちました。巨大なほこりの雲"
 "がうなりをあげました。かつては人間のものであったリッチの皮膚、何世紀もの汚"
 "れ、軟骨の残骸がついに解放されたかのように。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:313
-#, fuzzy
 msgid ""
 "A final blow destroys the lich, releasing a small shock wave of energy "
 "outwards. The Death Knights silently fall to the ground, inanimate. A giant "
 "cloud of dust bellows out as the remnants of the lich's once-mortal skin and "
 "centuries of grime and gristle are dislodged for the last time."
 msgstr ""
-"最後の一撃が Lich を粉砕しました。すると、小さな衝撃波が外側に広がりました。"
+"最後の一撃がリッチを粉砕しました。すると、小さな衝撃波が外側に広がりました。"
 "死の騎士は生気がなくなって静かに地面に崩れ落ちました。巨大なほこりの雲がうな"
 "りをあげました。かつては人間のものであったリッチの皮膚、何世紀もの汚れ、軟骨"
 "の残骸がついに解放されたかのように。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:322
-#, fuzzy
 msgid ""
 "A final blow destroys the lich, releasing a small shock wave of energy "
 "outwards. A giant cloud of dust bellows out as the remnants of the Lich's "
 "once-mortal skin and centuries of grime and gristle are dislodged for the "
 "last time."
 msgstr ""
-"最後の一撃が Lich を粉砕しました。すると、小さな衝撃波が外側に広がりました。"
+"最後の一撃がリッチを粉砕しました。すると、小さな衝撃波が外側に広がりました。"
 "巨大なほこりの雲がうなりをあげました。かつては人間のものであったリッチの皮"
 "膚、何世紀もの汚れ、軟骨の残骸がついに解放されたかのように。"
 
@@ -5831,7 +5809,7 @@ msgstr "川の終点までたどり着く"
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:137
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:84
 msgid "Drakes"
-msgstr "Drakes"
+msgstr "ドレーク族"
 
 #. [unit]: type=Injured Sergeant, id=Warven
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:265
@@ -5840,7 +5818,6 @@ msgstr "Warven"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:279
-#, fuzzy
 msgid ""
 "The party traveled down the river for days, sometimes walking through the "
 "shallow water, sometimes swimming, helped by the Merfolk."
@@ -5850,7 +5827,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:284
-#, fuzzy
 msgid ""
 "One day they saw a gruesome sight - a fleet of boats and rafts sunk or "
 "shattered among the river islands. Konrad sent some of the mermen to "
@@ -5877,7 +5853,6 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:292
-#, fuzzy
 msgid ""
 "Haven't you found any enemy boats, ones the Wesnothians were fighting "
 "against?"
@@ -5892,7 +5867,6 @@ msgstr ""
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:300
-#, fuzzy
 msgid "Perhaps the monsters Lord Kalenz alluded to sunk the boats."
 msgstr "Kalenz さんがおっしゃっていたモンスターが船を沈めたのではないかしら。"
 
@@ -5929,7 +5903,6 @@ msgstr ""
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:320
-#, fuzzy
 msgid ""
 "Then we have only two choices: to proceed down the river or to go back where "
 "we came from and fight our way through the orcs or the undead."
@@ -5969,7 +5942,6 @@ msgstr "ドラゴンだわ！ 大きい！"
 
 #. [message]: speaker=Keh Ohn
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:365
-#, fuzzy
 msgid ""
 "I am Keh Ohn, leader of the drakes who have settled upon these cliffs. Who "
 "are you?"
@@ -6001,7 +5973,6 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:381
-#, fuzzy
 msgid ""
 "Here? But, drakes have never been seen in Wesnoth before... Are you certain "
 "of this?"
@@ -6028,7 +5999,6 @@ msgstr ""
 
 #. [message]: speaker=Keh Ohn
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:392
-#, fuzzy
 msgid ""
 "GRROAR!! Will you silly self-centered creatures show some manners and pay "
 "some attention to me?"
@@ -6038,13 +6008,12 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:396
-#, fuzzy
 msgid ""
 "Eh... well of course, sir drake. Let me introduce myself - I am Prince "
 "Konrad, leader of the group and heir to the throne of Wesnoth."
 msgstr ""
-"ええ……もちろんです、Drake 殿。自己紹介します。私は Konrad 王子、このグループ"
-"のリーダーで、Wesnoth の王位継承者です。"
+"ええ……もちろんです、ドレーク殿。自己紹介します。私は Konrad 王子、このグルー"
+"プのリーダーで、Wesnoth の王位継承者です。"
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:400
@@ -6068,7 +6037,6 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:412
-#, fuzzy
 msgid ""
 "No...There is an ongoing civil war amongst us humans. The boats were sent by "
 "our enemies, not by us, even if they were Wesnothian boats."
@@ -6084,7 +6052,6 @@ msgstr "王子は本当のことを言っています。"
 
 #. [message]: speaker=Keh Ohn
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:420
-#, fuzzy
 msgid ""
 "I don't know. Maybe you are telling the truth, maybe not. We drakes don't "
 "trust you. Many of our warriors died in the battle and many more are still "
@@ -6108,7 +6075,6 @@ msgstr "俺の警告を無視するなら……、戦いだ。"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:432
-#, fuzzy
 msgid ""
 "So be it. We have to go down the river; we have no choice. We'll fight our "
 "way through if necessary."
@@ -6132,7 +6098,6 @@ msgstr ""
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:541
-#, fuzzy
 msgid ""
 "Those are some of the monsters I warned about. Such undead guardians are "
 "indestructible. We must find another way to go."
@@ -6174,7 +6139,6 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:831
-#, fuzzy
 msgid ""
 "Keep on going down the river. While we're at it, let us force as many drakes "
 "as possible to pay with their lives. They have defied us, and now they will "
@@ -6204,7 +6168,6 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1001
-#, fuzzy
 msgid ""
 "I wonder why the drakes haven't finished him by now? It is strange that "
 "there are not any drakes or undead in that area."
@@ -6297,6 +6260,8 @@ msgid ""
 "<span color='white'>Optional objective:</span>\n"
 "<span color='green'>Rescue the sergeant</span>"
 msgstr ""
+"<span color='white'>オプションの目標:</span>\n"
+"<span color='green'>軍曹を救出する</span>"
 
 #. [message]: speaker=Warven
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1118
@@ -6351,7 +6316,6 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1163
-#, fuzzy
 msgid ""
 "Wait. What about the tributary which flows into the river from inside the "
 "mountain? There seems to be a cave..."
@@ -6439,11 +6403,12 @@ msgstr "北部エルフ族の本拠地"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:20
+#, fuzzy
 msgid ""
 "Konrad must reach the Lintanir Forest to the east and hold that position "
 "until the turn is over"
 msgstr ""
-"東にある Lintanir の森に Konrad が到着し、時間切れになるまでそこに留まる"
+"Konrad はエルフの森に到着し、時間切れになるまでそこに留まらなければならない"
 
 #. [objective]: condition=lose
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:40
@@ -6453,7 +6418,7 @@ msgstr "森に到着する前に時間切れになる"
 #. [objectives]
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:45
 msgid "Note: your encampment will be dismantled after the first turn.\n"
-msgstr "メモ: あなたの宿営地は最初のターンが終わると取り壊されます\n"
+msgstr "注意: あなたの宿営地は最初のターンが終わると取り壊されます。\n"
 
 #. [side]: type=Commander, id=Konrad
 #. [side]: type=Elvish Lord, id=Uradredia
@@ -6465,7 +6430,7 @@ msgstr "メモ: あなたの宿営地は最初のターンが終わると取り�
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:40
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:49
 msgid "Allies"
-msgstr "Allies"
+msgstr "同盟軍"
 
 #. [side]: type=Orcish Warlord, id=Kior-Dal
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:69
@@ -6489,8 +6454,6 @@ msgid ""
 "the North Elves. I was born not far east of here...more years ago than I "
 "care to remember."
 msgstr ""
-"ついに、北部エルフ族の本拠地 Lintanir の森付近にたどり着きました。私は随分昔"
-"にここのちょっと東で産まれた……。"
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:353
@@ -6530,11 +6493,11 @@ msgstr "おお！ ついにあなたたちを見つけました。"
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:400
+#, fuzzy
 msgid ""
 "Greetings, Telerandor, herald of Lintanir! Why have you been searching for "
 "us?"
-msgstr ""
-"Lintanir の使者 Telerandor、こんにちは。なぜ私たちを捜していたのですか？"
+msgstr "旧友 Eonihar、こんにちは。なぜ私たちを捜していたのですか？"
 
 #. [message]: speaker=Telerandor
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:405
@@ -6552,14 +6515,15 @@ msgstr "問題ですって？ どんな問題なのですか？"
 
 #. [message]: speaker=Telerandor
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:415
+#, fuzzy
 msgid ""
 "We have sighted a great host to the south, a host of the men of Wesnoth. And "
 "we believe they are looking for you! There is not a moment to lose. You must "
 "make haste, east to Lintanir. Only there will you be safe!"
 msgstr ""
 "私たちは南側に大群を見つけました。大勢の Wesnoth 軍です。そして彼らはあなたた"
-"ちを探しているはずです！ 時間がありません。東にある Lintanir に急いでに向かわ"
-"なければなりません。あなたたちが安全でいられるのはそこだけです！"
+"ちを探しているはずです！ 時間がありません。急いでエルフ族の森に向かわなければ"
+"なりません。あなたたちが安全でいられるのはそこだけです！"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:420
@@ -6643,7 +6607,7 @@ msgstr "あなたが何を言おうとしているのか心配していました
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:456
 msgid "Come then, Konrad, let us go. We will do what must be done."
-msgstr "では Konrad、いきましょう。成すべきことをするために。"
+msgstr "では Konrad、いきましょう。しなければならないことをするために。"
 
 #. [message]: speaker=Telerandor
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:460
@@ -6762,20 +6726,22 @@ msgstr "見つけた！ 突撃！"
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:655
+#, fuzzy
 msgid "There you are! You must come quickly east to Lintanir!!"
 msgstr ""
-"ここにいたのですね！ 東にある Lintanir に急いで行かなければなりません！"
+"ここにいたのですね！ 東にあるエルフ族の本拠地にすぐにいかなければなりません！"
 
 #. [message]: speaker=El'rien
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:670
+#, fuzzy
 msgid ""
 "Greetings, Elf-friend! Welcome to Emetria, my hold in Lintanir. You must "
 "take shelter here until the battle passes. If you stay with me here for a "
 "little while, we will all be safe."
 msgstr ""
-"こんにちは、エルフの友よ！ Lintanir の Emetria へようこそ。あなたたちは戦いが"
-"終わるまでここで避難しなければなりません。ここで私とともにしばらく留まってい"
-"れば、あなたたちは皆安全でしょう。"
+"こんにちは、エルフの友よ！ Ementria へようこそ。あなたたちは戦いが終わるまで"
+"ここで避難しなければなりません。ここで私とともにしばらく留まっていれば、あな"
+"たたちは皆安全でしょう。"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:674
@@ -6838,13 +6804,12 @@ msgstr "地下からの出口を探し、Konrad をそこに移動させる"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:28
-#, fuzzy
 msgid ""
 "<span color='white'>Optional objective:</span>\n"
 "<span color='green'>Help the Wose fend off the undead attack</span>"
 msgstr ""
-"<255,255,255>別の目標:\n"
-"@ウーズを助け、アンデッドの攻撃をかわす"
+"<span color='white'>オプションの目標:</span>\n"
+"<span color='green'>ウーズを助け、アンデッドの攻撃をかわす</span>"
 
 #. [objective]: condition=lose
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:48
@@ -6913,14 +6878,15 @@ msgstr "Everlore"
 
 #. [message]: speaker=Uradredia
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:101
+#, fuzzy
 msgid ""
 "Greetings, and welcome to our capital. You should feel honored. It has been "
 "half a century - a generation in the way your race counts time - since any "
 "man has been considered Elf-friend enough to stand here in Elensiria."
 msgstr ""
-"こんにちは、我々の首都へようこそ。おぬしらは誇りに思うはずだ。半世紀、おぬし"
-"らの種族の時間では 1 世代もの間、ここ Elensiria に立ち入るに足るエルフの友と"
-"見なされた人はいないのだから。"
+"こんにちは、我々の首都へようこそ。おぬしらは誇りに思うはずだ。半世紀もの間 - "
+"おぬしらの種族の時間では 1 世代 - もの間、ここに立つに足るエルフの友と見なさ"
+"れた人はいないのだから。"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:105
@@ -6933,8 +6899,8 @@ msgid ""
 "I might also say that it is you who are honored. It has been so long since "
 "you have been graced by the presence of a princess of Wesnoth."
 msgstr ""
-"誇りに思うのはあなたも一緒だと思うわ。あなたたちエルフが Wesnoth の王女の前で"
-"栄誉を与えられたのはずいぶん前のことよ。"
+"誇りに思うのはあなたも一緒だと思うわ。あなたが Wesnoth の王女の前で栄誉を与え"
+"られたのはずいぶん前のことよ。"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:113
@@ -7022,8 +6988,8 @@ msgid ""
 "She had them murdered? There were others too, not just Konrad? Surely you do "
 "not speak the truth! Parandra, what do you say?"
 msgstr ""
-"母が王子らを殺したですって？ Konrad だけでなく他にもいたのですか？ あなたが話"
-"しているのは嘘に決まっているわ！ Parandra、あなたはどう思いますか？"
+"彼女が彼らを殺したですって？ Konrad だけでなく他にもいたのですか？ 間違いなく"
+"あなたが話しているのは真実ではないわ！ Parandra、あなたはどう思いますか？"
 
 #. [message]: speaker=Parandra
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:153
@@ -7435,7 +7401,7 @@ msgid ""
 "Quickly, capture them! The Queen wishes to make them her prisoners."
 msgstr ""
 "見ろ！ あれは裏切り者の Li'sar だ。老魔術師と不正なエルフ族の統治者とともにい"
-"る。急げ、奴等を捕らえるのだ！ 女王は奴等を捕虜にすることを望んでいる。"
+"る。急げ、彼らを捕らえるのだ！ 王女は彼らを捕虜にすることを望んでいる。"
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:178
@@ -7466,12 +7432,12 @@ msgstr "Dacayan"
 #. [message]: speaker=Dacayan
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:205
 msgid "The Queen has sent us to aid you in capturing these rebels."
-msgstr "反逆者を捕らえるのを手伝うために女王に派遣されました。"
+msgstr "反逆者を捕らえるのを助けるために女王が私たちを派遣しました。"
 
 #. [message]: speaker=Malatus
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:209
 msgid "We have changed the plan. Now we are killing them."
-msgstr "計画を変更だ。彼らを殺すことにした。"
+msgstr "我々は計画を変更した。彼らを殺そうとしているのだ。"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:217
@@ -7489,9 +7455,8 @@ msgstr "クランの試練"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:39
-#, fuzzy
 msgid "Defeat $units_to_slay enemy units"
-msgstr "25 ユニットを倒す"
+msgstr "$units_to_slay ユニットを倒す"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:44
@@ -8052,7 +8017,6 @@ msgstr "おぬしが息子を殺したように、私がおぬしを殺す。"
 
 #. [message]: speaker=Asheviere
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:355
-#, fuzzy
 msgid ""
 "You were always defiant, wizard, and no one has thwarted my plans as "
 "determinedly as you."
@@ -8062,14 +8026,12 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:359
-#, fuzzy
 msgid ""
 "I have always been a humble servant of the Crown, and remain such even now."
 msgstr "私はいつでも王位に対する忠実なしもべだった。今でも。"
 
 #. [message]: speaker=Asheviere
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:363
-#, fuzzy
 msgid ""
 "Delfador! You utterly disgust me, you sniveling worm. How dare you confront "
 "me, your queen?"
@@ -8190,9 +8152,9 @@ msgid ""
 "matters of state. He lived until a ripe old age and was granted a royal "
 "funeral, after which he was buried in the Royal Crypt in Weldyn."
 msgstr ""
-"Delfador は Li'sar のよき相談役となり、国家の重要事項について彼女に助言をしま"
-"した。彼は高齢になるまで生きた後、国葬され、その後 Weldyn の王家の墓に埋葬さ"
-"れました。"
+"Delfador は Li'sar の最高評議会の一員となり、国家の重要事項について彼女に助言"
+"をしました。彼は高齢になるまで生きた後、国葬され、その後 Weldyn の王家の墓に"
+"埋葬されました。"
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/25_HttT_Epilogue.cfg:23
@@ -8317,7 +8279,7 @@ msgstr "笏"
 #. [attack]: type=cold
 #: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:32
 msgid "raging blizzard"
-msgstr "猛烈な吹雪"
+msgstr ""
 
 #. [variation]
 #. [unit_type]
@@ -8384,7 +8346,6 @@ msgstr "シーオーク"
 
 #. [unit_type]: id=Sea Orc, race=orc
 #: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:17
-#, fuzzy
 msgid ""
 "While often viewed as inferior to their land-loving counterparts, Sea Orcs "
 "represent a great leap for all goblins as they have adapted to aquatic "
@@ -8429,7 +8390,6 @@ msgstr "だめだ！ 終わりだ！ 我々は負けてしまった！"
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/utils/deaths.cfg:65
-#, fuzzy
 msgid "At least I die an honorable death."
 msgstr "ついに名誉な死を遂げられる"
 
@@ -8549,18 +8509,16 @@ msgstr "炎の笏"
 
 #. [object]: id=object_scepter
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:387
-#, fuzzy
 msgid ""
 "This ancient Sceptre was forged by the great Dwarves of the Heart Mountains. "
 "A symbol of the kingship of Wesnoth, the Sceptre has the power to shoot "
 "fireballs at enemies of the bearer!"
 msgstr ""
-"この古代の笏は深い山々に済む偉大なドワーフによって鍛えられた。Wesnoth の王位"
+"この古代の笏は深い山々に住む偉大なドワーフによって鍛えられた。Wesnoth の王位"
 "の象徴である笏は、それを所有する者の敵に対してファイアボールを撃つ力がある。"
 
 #. [object]: id=object_scepter
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:388
-#, fuzzy
 msgid ""
 "This is the Sceptre of Fire. Only a true successor to the throne can "
 "possibly dare to take this!"
@@ -8569,7 +8527,6 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:413
-#, fuzzy
 msgid "Here it is at last, I have the Sceptre!"
 msgstr "ついに笏を手に入れました！"
 
@@ -8587,7 +8544,6 @@ msgstr "少し北に向かえば外に出られると思うわ。"
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:444
-#, fuzzy
 msgid "At last! I have the Sceptre!"
 msgstr "ついに！ 笏を手に入れたわ！"
 
@@ -8610,7 +8566,6 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:456
-#, fuzzy
 msgid ""
 "The Sceptre makes its wielder powerful, but hardly immortal, child. Use it "
 "prudently. Now come, I believe there is an exit to the north!"
@@ -8625,12 +8580,11 @@ msgstr "私が何をしているかはわかっていると思うわ。いきま
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/utils/intro.cfg:5
-#, fuzzy
 msgid ""
 "In the twenty-seventh year of the reign of Garard II, king of Wesnoth, the "
 "kingdom was plunged into a bitter war with the Orcs of the North."
 msgstr ""
-"Wesnoth の王、Garard II 世の治世の 27 年目、王国は「北部の部族」との激しい戦"
+"Wesnoth の王、Garard II 世の治世の 27 年目、王国は北部のオーク族との激しい戦"
 "争に突入しました。"
 
 #. [part]
@@ -8754,14 +8708,12 @@ msgstr ""
 #~ msgid "And so it has begun!"
 #~ msgstr "それでは、始まりだ！"
 
+#, fuzzy
 #~ msgid ""
 #~ "<255,255,255>Alternative objective:\n"
 #~ "@Defeat Muff Malal\n"
 #~ "`(early finish bonus)"
-#~ msgstr ""
-#~ "<255,255,255>別の目標:\n"
-#~ "@Muff Malalを倒す\n"
-#~ "`(早期終了ボーナス)"
+#~ msgstr "すべての敵のリーダーを倒す"
 
 #~ msgid "Robert"
 #~ msgstr "Robert"
@@ -8769,23 +8721,22 @@ msgstr ""
 #~ msgid "Troll"
 #~ msgstr "トロル"
 
+#, fuzzy
 #~ msgid ""
 #~ "<255,255,255>Bonus objective:\n"
 #~ "@Defeat all Death Knights first"
-#~ msgstr ""
-#~ "<255,255,255>達成ボーナスのある目標:\n"
-#~ "@リッチより先にすべての死の騎士を倒す"
+#~ msgstr "すべての敵のリーダーを倒す"
 
 #~ msgid "That is possible..."
 #~ msgstr "その可能性はある……"
 
+#, fuzzy
 #~ msgid ""
 #~ "<255,255,255>Optional objective:\n"
 #~ "@Rescue the sergeant"
-#~ msgstr ""
-#~ "<255,255,255>別の目標:\n"
-#~ "@軍曹を救出する"
+#~ msgstr "すべての敵のリーダーを倒す"
 
+#, fuzzy
 #~ msgid ""
 #~ "There is a waterfall ahead. It is so high I can barely see the top of it! "
 #~ "Neither the Mermen, even less the land dwellers can swim up the "
@@ -8797,12 +8748,11 @@ msgstr ""
 #~ "に。グリフォンでもこれほど高く飛ぶことは難しいでしょう！ 恐れながら、閣"
 #~ "下、私たちは行き詰まってしまったようです。"
 
+#, fuzzy
 #~ msgid ""
 #~ "<255,255,255>Bonus objective:\n"
 #~ "@Defeat all enemy leaders"
-#~ msgstr ""
-#~ "<255,255,255>達成ボーナスのある目標:\n"
-#~ "@すべての敵のリーダーを倒す"
+#~ msgstr "すべての敵のリーダーを倒す"
 
 #~ msgid "Clan Member Defeated"
 #~ msgstr "クランのメンバーが倒された"

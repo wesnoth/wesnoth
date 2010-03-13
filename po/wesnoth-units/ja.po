@@ -6,15 +6,14 @@
 # Nobuhito Okada <okyada@gmail.com>, 2005-2006.
 # MATSUMOTO Yuji <matumoto@marron.cias.osakafu-u.ac.jp>, 2005.
 # naoki iimura <amatubu@gmail.com>, 2005-2008.
-# IWAI, Masaharu <iwaim.sub@gmail.com>, 2010.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.6.5\n"
+"Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-03-08 14:58+0100\n"
-"PO-Revision-Date: 2010-02-17 05:09+0900\n"
-"Last-Translator: IWAI, Masaharu <iwaim.sub@gmail.com>\n"
+"PO-Revision-Date: 2010-02-01 21:07+0900\n"
+"Last-Translator: \n"
 "Language-Team: Japanese Translation Team\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,17 +28,16 @@ msgstr "吸血コウモリ"
 
 #. [unit_type]: id=Blood Bat, race=bats
 #: data/core/units/bats/Bat_Blood.cfg:20
-#, fuzzy
 msgid ""
 "Blood Bats are so named because of their ruddy hue, which some mark as a "
 "symbol of their preferred diet. These creatures are fast and can drain the "
 "blood of those they attack, thereby gaining some of the health lost by their "
 "victims."
 msgstr ""
-"吸血コウモリという名前は彼らの赤い色合いからつけられました。その赤い姿は彼ら"
-"が好む食事を象徴する印です。これらの生き物は素早く、攻撃する相手から血を吸う"
-"ことができます。それにより、彼らの犠牲者が失った生命力の一部を得ることができ"
-"るのです。"
+"吸血コウモリという名前は彼らの赤い色合いから名づけられました。その赤い姿は彼"
+"らが好む食事を象徴する印です。これらの生き物は素早く、攻撃する相手から血を吸"
+"うことができます。それにより、彼らの犠牲者が失った生命力の一部を得ることがで"
+"きるのです。"
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
@@ -60,7 +58,7 @@ msgstr "牙"
 #. [unit_type]: id=Dread Bat, race=bats
 #: data/core/units/bats/Bat_Dread.cfg:4
 msgid "Dread Bat"
-msgstr ""
+msgstr "戦慄コウモリ"
 
 #. [unit_type]: id=Dread Bat, race=bats
 #: data/core/units/bats/Bat_Dread.cfg:26
@@ -69,6 +67,8 @@ msgid ""
 "Bats, gaining the ability to drain not merely the blood but the very life "
 "energy of their victims."
 msgstr ""
+"最も不道徳で肉食の成功した吸血コウモリは戦慄コウモリとなり、ただ犠牲者の血を"
+"吸うだけではなく、生命エネルギーを吸い取る能力を得ます。"
 
 #. [unit_type]: id=Vampire Bat, race=bats
 #: data/core/units/bats/Bat_Vampire.cfg:4
@@ -82,9 +82,9 @@ msgid ""
 "While their fangs are not very powerful, the health of victims is drained "
 "away along with their blood, and given to the Bats."
 msgstr ""
-"ヴァンパイアバットは飛行動物で、他の生き物の血を食料にしています。 その牙はそ"
-"れほど強力ではありませんが、 獲物の血とともに 体力を奪い、 それを自身のものと"
-"します。"
+"ヴァンパイアバットは飛行動物で、他の生き物の血を食料にしています。その牙はそ"
+"れほど強力ではありませんが、獲物の血とともに体力を奪い、それを自身のものとし"
+"ます。"
 
 #. [unit_type]: id=Boat, race=mechanical
 #: data/core/units/boats/Boat.cfg:4
@@ -93,13 +93,12 @@ msgstr "小舟"
 
 #. [unit_type]: id=Boat, race=mechanical
 #: data/core/units/boats/Boat.cfg:18
-#, fuzzy
 msgid ""
 "Propelled by oars or small sails, boats are used to travel short distances "
 "and in shallows where large ships cannot navigate."
 msgstr ""
-"たいていはオールや小さな帆によって進む小舟は短距離を移動する場合や、大きな船"
-"では航行することのできない浅瀬を移動するのに使われます。"
+"オールや小さな帆によって進む小舟は短距離を移動する場合や、大きな船では航行す"
+"ることのできない浅瀬を移動するのに使われます。"
 
 #. [unit_type]: id=Galleon, race=mechanical
 #: data/core/units/boats/Galleon.cfg:6
@@ -109,7 +108,7 @@ msgstr "ガレオン船"
 #. [unit_type]: id=Galleon, race=mechanical
 #: data/core/units/boats/Galleon.cfg:21
 msgid "Galleons are blue-water ships built for trade and transport."
-msgstr "ガレオン船は貿易や輸送のために建造された海洋船である。"
+msgstr "ガレオン船は貿易や輸送のために建造された海洋船です。"
 
 #. [unit_type]: id=Pirate Galleon, race=mechanical
 #: data/core/units/boats/Pirate_Galleon.cfg:4
@@ -124,8 +123,7 @@ msgid ""
 "weighty cargo."
 msgstr ""
 "海賊ガレオン船は輸送船にとって、羊に対する狼のようなものです。乗っている海賊"
-"たちは、他の船からその重たい貨物を取り除くのを手伝うのがなによりの楽しみで"
-"す。"
+"達は、他の船からその重たい貨物を取り除くのを手伝うのがなによりの楽しみです。"
 
 #. [attack]: type=pierce
 #: data/core/units/boats/Pirate_Galleon.cfg:21
@@ -140,22 +138,22 @@ msgstr "輸送ガレオン船"
 
 #. [unit_type]: id=Transport Galleon, race=mechanical
 #: data/core/units/boats/Transport_Galleon.cfg:18
-#, fuzzy
 msgid ""
 "Transport Galleons are well-armed ships that carry troops. If they reach the "
 "shore, they can land the troops to attack."
 msgstr ""
-"輸送ガレオン船は 軍隊を輸送する完全武装船です。 この船が岸についたなら、 攻撃"
-"のために その軍隊を上陸させることができます。"
+"輸送ガレオン船は軍隊を輸送する完全武装船です。この船が岸に着いたなら、攻撃の"
+"ためにその軍隊を上陸させることができます。"
 
 #. [unit_type]: id=Drake Arbiter, race=drake
 #: data/core/units/drakes/Arbiter.cfg:4
 #, fuzzy
 msgid "Drake Arbiter"
-msgstr "ドレークの戦士"
+msgstr "ドレークの殺戮者"
 
 #. [unit_type]: id=Drake Arbiter, race=drake
 #: data/core/units/drakes/Arbiter.cfg:19
+#, fuzzy
 msgid ""
 "Arbiters take their caste duty of enforcing order very seriously. In order "
 "to better execute their duties, they have abandoned the drakes' traditional "
@@ -164,6 +162,12 @@ msgid ""
 "raw heft the massive metal head provides. The thick plate these drakes wear "
 "protects them well against weapons that could slip between their scales."
 msgstr ""
+"Arbitersは命令を強制するという彼らの階級の職分をとても真剣に受け取っていま"
+"す。職務をより良く実行するため、彼らはドレークの伝統的な手に着ける爪を放棄"
+"し、槍をハルバードのスパイクと刃に交換しました。彼らの考えでは、扱いやすさの"
+"損失は大きな金属の穂先がもたらす、ありのままの重量に見合う対価です。これらの"
+"ドレークが身に着ける厚い板金により、彼らの鱗の隙間に滑り込む武器から大いに守"
+"られます。"
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
@@ -181,7 +185,6 @@ msgstr "アルマゲドンドレーク"
 
 #. [unit_type]: id=Armageddon Drake, race=drake
 #: data/core/units/drakes/Armageddon.cfg:27
-#, fuzzy
 msgid ""
 "Were it not for the armor they wear, certain drakes might be "
 "indistinguishable from true dragons, at least to the lesser races for whom "
@@ -189,16 +192,15 @@ msgid ""
 "towering things, both immune to and possessed of a tremendous fire."
 msgstr ""
 "彼らが着ている鎧がなければ、ある種のドレークは本物のドラゴンと区別がつかない"
-"かも知れません。少なくとも普通の人間にとっては。「アルマゲドンドレーク」とし"
-"て知られている生き物は非常に大きいもので、とてつもない炎に対して免疫があり、"
-"また保有しています。"
+"かも知れません。少なくともドラゴンが伝説にすぎない他の劣った種族にとっては。"
+"「アルマゲドンドレーク」として知られている生き物は非常に大きいもので、とてつ"
+"もない炎に対して免疫があり、また保有しています。"
 
 #. [attack]: type=blade
 #: data/core/units/drakes/Armageddon.cfg:86 data/core/units/drakes/Fire.cfg:42
 #: data/core/units/drakes/Inferno.cfg:44
-#, fuzzy
 msgid "battle claws"
-msgstr "戦斧"
+msgstr "格闘かぎ爪"
 
 #. [attack]: type=fire
 #: data/core/units/drakes/Armageddon.cfg:95
@@ -228,6 +230,11 @@ msgid ""
 "around; Blademasters fiercely protect their fellows' honor, and no-one would "
 "dispute their right to do so."
 msgstr ""
+"黒い鎧は戦士階級の精鋭部隊である、熟練剣士の印です。戦いで死ぬことなく、この"
+"最高階級に認められるのに必要な技能と力を手に入れられる者は、ごくわずかしかい"
+"ません。他のドレークは戦士階級を貶すとしても、周囲に誰もいないのをいつも二度"
+"確認します。熟練剣士は猛烈に彼らの仲間の名誉を守っており、彼らがそうする権利"
+"に疑いを挟もうとする者は誰もいないのです。"
 
 #. [attack]: type=blade
 #: data/core/units/drakes/Blademaster.cfg:41
@@ -235,7 +242,7 @@ msgstr ""
 #: data/core/units/drakes/Enforcer.cfg:36
 #: data/core/units/drakes/Thrasher.cfg:23
 msgid "war talon"
-msgstr ""
+msgstr "戦爪"
 
 #. [unit_type]: id=Drake Burner, race=drake
 #: data/core/units/drakes/Burner.cfg:4
@@ -250,9 +257,9 @@ msgid ""
 "coupled with their sheer size and fearsome claws, makes them deadly foes in "
 "combat."
 msgstr ""
-"ドレークの焼却者は数少なく、誇りを持った者達で、彼の遠い祖先の力、特に 炎の息"
-"を吐く能力について、最もよく受け継いでいます。これは、彼等の巨大で 恐ろしい爪"
-"が合わさることで、戦闘では危険な敵となります。"
+"ドレークの焼却者は数少なく、誇りを持った者達で、彼らの遠い祖先の力、特に炎の"
+"息を吐く能力について、最もよく受け継いでいます。これは、彼らの巨大で恐ろしい"
+"爪が合わさることで、戦闘では危険な敵となります。"
 
 #. [attack]: type=blade
 #: data/core/units/drakes/Burner.cfg:40
@@ -275,6 +282,7 @@ msgstr "ドレークの粉砕者"
 
 #. [unit_type]: id=Drake Clasher, race=drake
 #: data/core/units/drakes/Clasher.cfg:23
+#, fuzzy
 msgid ""
 "The Clashers are members of a unique caste among the drakes. Their thick "
 "armor, while compensating for the drakes' natural weakness against spears "
@@ -288,6 +296,14 @@ msgid ""
 "particularly good at \"resolving\" territorial disputes with other drakes "
 "and enforcing the laws of their tribe."
 msgstr ""
+"粉砕者はドレーク族の独特な階級の一員です。彼らの厚い鎧はドレークの生来的な槍"
+"や矢に対する弱さを補いますが、重いので飛行能力を制限し、彼らの内なる炎を使う"
+"のに十分な息を集めるのを妨げます。彼らはこの不利益を受け入れ、完全に彼らの翼"
+"を包み込んで、戦闘で勝利するのに飛行は不必要であることを強調します。\n"
+"\n"
+"禁忌を破り、ドレークの伝統的な鉄の爪に加えて槍で戦うことを許された唯一の階級"
+"でもあります。これにより彼らは、他のドレークとの領土争いを「解決」し、彼らの"
+"部族の掟を強制するのにとりわけ優れています。"
 
 #. [attack]: type=pierce
 #: data/core/units/drakes/Clasher.cfg:48
@@ -326,6 +342,7 @@ msgstr "ドレークの下士官"
 
 #. [unit_type]: id=Drake Enforcer, race=drake
 #: data/core/units/drakes/Enforcer.cfg:21
+#, fuzzy
 msgid ""
 "Not for Enforcers are the tactics of maneuver and deception; rather, they "
 "charge in wherever the melee is the fiercest. At close range, it matters "
@@ -334,12 +351,18 @@ msgid ""
 "careful not to besmirch the honor of the Enforcers, and generally call upon "
 "them to combat only the most pernicious of enemies."
 msgstr ""
+"策略とごまかしの戦術はEnforcersのためのものではありません。むしろ、彼らは格闘"
+"戦が最も強烈な場所ならどこへでも突撃していきます。近接戦闘においては、炎を吐"
+"くのに鎧が邪魔になることはほとんど問題になりません。重要なのは、彼らが一撃一"
+"撃に集中することを学んできた力だけです。ドレークの指導者達はEnforcersの名誉を"
+"汚さないよう注意しています。一般的に、敵の中でも最も有害な相手と戦うときにの"
+"み彼らを召集します。"
 
 #. [attack]: type=impact
 #: data/core/units/drakes/Enforcer.cfg:45
 #: data/core/units/drakes/Thrasher.cfg:41
 msgid "ram"
-msgstr ""
+msgstr "角"
 
 #. [attack]: type=pierce
 #. [attack]: type=blade
@@ -357,24 +380,23 @@ msgstr "ドレークの戦士"
 
 #. [unit_type]: id=Drake Fighter, race=drake
 #: data/core/units/drakes/Fighter.cfg:20
-#, fuzzy
 msgid ""
 "Drake Fighters wield curved war blades, and possess the fire-breathing "
 "skills of their ancestors. They can also fly, which is troubling to any foe. "
 "Their great strength, coupled with their hardened scales, is rightly "
 "frightening to swordsman of any other race."
 msgstr ""
-"ドレークの戦士は得意なシミターを装備しており、祖先の能力である火炎の ブレスを"
-"行うこともできます。経験の積んだ彼らのほとんどは次のドレークの 熟練戦士となり"
-"ます。"
+"ドレークの戦士は湾曲した戦刀を装備しており、祖先の能力である火を吐く能力も"
+"持っています。彼らは飛ぶこともでき、それによりあらゆる敵を悩ませます。彼らの"
+"すさまじい力は頑健な体躯と組み合わさって、間違いなくあらゆる他の種族の剣士を"
+"恐れさせます。"
 
 #. [attack]: type=blade
 #: data/core/units/drakes/Fighter.cfg:39
 #: data/core/units/drakes/Flameheart.cfg:35
 #: data/core/units/drakes/Flare.cfg:34 data/core/units/drakes/Warrior.cfg:39
-#, fuzzy
 msgid "war blade"
-msgstr "斬撃"
+msgstr "戦刀"
 
 #. [unit_type]: id=Fire Drake, race=drake
 #: data/core/units/drakes/Fire.cfg:4
@@ -390,6 +412,10 @@ msgid ""
 "vitality emanates through their skin, scorching their scales to a reddish-"
 "gray."
 msgstr ""
+"焼却者階級の最上位に予約されている赤金を纏うことはまだ許されていませんが、火"
+"炎ドレークは彼らの鎧を銀色で調えています。彼らは彼らの中で燃える炎に人生を捧"
+"げ始めただけですが、その生命力は彼らの皮膚を通して発散され、彼らの鱗を赤みが"
+"かった灰色に焦がします。"
 
 #. [unit_type]: id=Drake Flameheart, race=drake
 #: data/core/units/drakes/Flameheart.cfg:4
@@ -407,6 +433,12 @@ msgid ""
 "leader for supremacy, and only if he is sure of the support of his fellow "
 "drakes."
 msgstr ""
+"フレイムハートは他の高い階級のドレークを一対一で倒す力には欠けますが、どんな"
+"場合でも、むしろ部族内の衝突を回避する方を好みます。この段階のあらゆるドレー"
+"クは経験を積んで自身の影響力の限界を知りました。すなわち、彼が率いる者達を押"
+"し進められる地点と、彼らの意志のままにさせるのが最も良い時機を。フレイムハー"
+"トが覇権のために部族の指導者に挑戦するのは時々しかなく、仲間のドレークの支援"
+"が得られると確信しているときだけです。"
 
 #. [unit_type]: id=Drake Flare, race=drake
 #: data/core/units/drakes/Flare.cfg:4
@@ -422,6 +454,11 @@ msgid ""
 "they are more often seen leading small war parties or mediating disputes "
 "with a subtle hand."
 msgstr ""
+"フレアは彼らの持つ炎の熱によって尊敬され、また彼らの持つカリスマによって崇拝"
+"されます。フレアは戦時においても平時においても、人々の偉大な指導者となること"
+"に憧れています。時々小さな孤立した部族がフレアを指導者として受け入れるでしょ"
+"うが、小さな戦闘部隊を指揮していたり、絶妙な手腕で争いを仲裁しているところが"
+"もっと良く見かけられます。"
 
 #. [unit_type]: id=Drake Glider, race=drake
 #: data/core/units/drakes/Glider.cfg:4
@@ -444,6 +481,16 @@ msgid ""
 "distance – and if all else fails, he will fight with his feet, keeping his "
 "precious wings as far from the enemy as possible."
 msgstr ""
+"多くのドレークが鱗越しに空気の流れを楽しむので、彼らは滑空ドレーク階級の軽い"
+"衣服を身に着けるようになります。部族の領土の限界を遠く離れた長期の侵攻は彼ら"
+"の情熱ですが、戦場でもっと栄光が見つけられるのに、何が狩猟の骨折り仕事を引き"
+"受けさせるのだろうと、他のドレークが疑問に思うことがしばしばあります。\n"
+"\n"
+"たいてい、滑空ドレークは鹿や豚、またはイルカのような、より大きな獲物を狩立て"
+"ます。ドレークの先祖伝来の火を向ける能力は、他の階級では鎧に妨げられますが、"
+"獲物を傷付けることなく追い出して集めるには貴重です。滑空者が戦場に召集される"
+"と、彼は敵を遠くから悩ませるのを好みます。もし他の全員が負けた場合は、彼は大"
+"事な翼をできるだけ敵から遠くに保ちながら、しっかりと戦うでしょう。"
 
 #. [attack]: type=impact
 #: data/core/units/drakes/Glider.cfg:44
@@ -467,6 +514,12 @@ msgid ""
 "other castes has increased their skill in combat, but their greatest "
 "strength still lies in their speed and flight."
 msgstr ""
+"ハリケーンドレークはつまらない狩猟を卒業し、彼らの階級のより低位の構成員が追"
+"放されたところへ集まります。彼らはドレークの軍隊の不可欠な部分です。主力の前"
+"方の偵察し、戦場を横切って通信を運び、最も敵が少ないと思われる所に襲いかかり"
+"ます。嫌々ながらではありますが、他の階級から来た新参者と一緒の訓練が許された"
+"ために戦闘能力が向上しましたが、彼らの最大の強みはいまだその速度と飛行にある"
+"のです。"
 
 #. [unit_type]: id=Inferno Drake, race=drake
 #: data/core/units/drakes/Inferno.cfg:4
@@ -482,6 +535,10 @@ msgid ""
 "from extensive use of their inner flame, their sculpted red-gold armor "
 "enhancing the illusion that they are, in fact, dragons."
 msgstr ""
+"インフェルノドレークは彼らが吐く炎の熟練者であり、彼らの部族ではドラゴンの祖"
+"先と同等に近い敬意と恐怖を受けています。彼らは自分の作り出した炎の嵐の中を無"
+"傷でうろつけます。鱗は彼ら自身の内なる炎の過度な使用で赤く染まりました。彼ら"
+"の赤金の彫刻された鎧は、彼らが本当にドラゴンであるという錯覚を助長します。"
 
 #. [unit_type]: id=Sky Drake, race=drake
 #: data/core/units/drakes/Sky.cfg:4
@@ -498,15 +555,21 @@ msgid ""
 "of their tribe and, just possibly, time with one of the closely-guarded "
 "drake females."
 msgstr ""
+"飛行ドレークが身に着ける軽量セラミックの鎧は彼らの階級の象徴です。つや出しの"
+"銀色は彼らの空との繋がりを称えています。狩猟のリーダーとして彼らはしばしば故"
+"郷から長期間離れます。可能な限り多くの獲物をもたらす試みのそれぞれで、部族の"
+"評判を、あるいはただ用心深く守られたドレークの雌の一人との時間を得ようと競い"
+"ます。"
 
 #. [unit_type]: id=Drake Thrasher, race=drake
 #: data/core/units/drakes/Thrasher.cfg:4
 #, fuzzy
 msgid "Drake Thrasher"
-msgstr "ドレークの粉砕者"
+msgstr "ドレークの剣闘士"
 
 #. [unit_type]: id=Drake Thrasher, race=drake
 #: data/core/units/drakes/Thrasher.cfg:19
+#, fuzzy
 msgid ""
 "Instead of letting themselves be bound by their armor, Thrashers have "
 "learned to redirect its weight to supplement their bodies' momentum, adding "
@@ -515,6 +578,11 @@ msgid ""
 "are weapons. A Thrasher will gladly fulfill his caste duties, as long as it "
 "can be done on the battlefield."
 msgstr ""
+"鎧に自分自身を拘束させる代わりにThrashersは彼らの体の勢いを補うために重さを向"
+"け直すことを学び、彼らの短い槍と手に着けた爪の一撃に力を加えます。装備と体は"
+"一つです。厚手の兜と彼らに似合わないずんぐりした頭蓋でさえ武器となります。"
+"Thrasherは喜んで自分の階級の職務を果たします。それが戦場で片付けられる限り"
+"は。"
 
 #. [unit_type]: id=Drake Warden, race=drake
 #: data/core/units/drakes/Warden.cfg:4
@@ -523,6 +591,7 @@ msgstr "ドレークの長官"
 
 #. [unit_type]: id=Drake Warden, race=drake
 #: data/core/units/drakes/Warden.cfg:20
+#, fuzzy
 msgid ""
 "Wardens are set apart from the rest of the Clasher caste by two things: "
 "their ornate helms, modeled after their dragon ancestors, and the care with "
@@ -532,6 +601,12 @@ msgid ""
 "bronze plate is the strongest work from the Drake forges, and their halberds "
 "can cleave a human in half."
 msgstr ""
+"Wardensは粉砕者階級の残りとは二つの点で隔てられています。彼らのドラゴンの祖先"
+"を元にした華美な兜と、職務を報告する前に、彼らの装甲された翼を明るく彩られた"
+"布で飾る気遣いです。この装飾の様式は、彼らがドレーク社会での役割に感じる誇り"
+"から生じたものですが、儀礼的なものからは遠く離れています。彼らの厄介な青銅の"
+"鎧はドレークの鍛冶場の最強の作品であり、彼らのハルバードは人間を真っ二つに裂"
+"けます。"
 
 #. [unit_type]: id=Drake Warrior, race=drake
 #: data/core/units/drakes/Warrior.cfg:4
@@ -548,6 +623,11 @@ msgid ""
 "plated leather with the traditional war blade mounted on the back of each "
 "hand."
 msgstr ""
+"熟練戦士のような戦士階級のドレークは、あらゆる部族の軍隊の基礎となります。特"
+"別な能力や技能は持ちません。ただ彼らが生まれつき持つ獣のような力と軍事訓練の"
+"みを頼りに、敵軍の中に活路を切り開くのです。彼らはセラミック板で覆った革鎧に"
+"身を包み、両手の甲に伝統的な戦刀を着けて、何世紀もそうしてきたように戦いま"
+"す。"
 
 #. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #: data/core/units/dwarves/Berserker.cfg:4
@@ -556,15 +636,14 @@ msgstr "ドワーフの熟練狂戦士"
 
 #. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #: data/core/units/dwarves/Berserker.cfg:20
-#, fuzzy
 msgid ""
 "Berserkers are a rare caste of Dwarves, who work themselves into a towering "
 "rage before combat. These warriors disdain all notion of defense, thinking "
 "only of the unrelenting assaults for which they are legendary."
 msgstr ""
 "狂戦士はドワーフ族の中では珍しい階級で、彼らは戦闘の前に激しい激怒の中に入り"
-"込みます。これらの戦士は防御の概念をまったく忘れており、容赦のない攻撃のこと"
-"だけを考えています。この攻撃は伝説的でもあります。"
+"込みます。これらの戦士は防御の概念をまったく軽蔑しており、容赦のない攻撃のこ"
+"とだけを考えています。この攻撃は伝説的でもあります。"
 
 #. [attack]: type=blade
 #: data/core/units/dwarves/Berserker.cfg:44
@@ -579,7 +658,6 @@ msgstr "ドワーフのドラゴン衛兵"
 
 #. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
 #: data/core/units/dwarves/Dragonguard.cfg:21
-#, fuzzy
 msgid ""
 "It is not clear why the Dragonguards are called what they are, a name given "
 "by their dwarven brethren. Some speculate that the name comes from their "
@@ -590,12 +668,13 @@ msgid ""
 "Dwarven citadels are both renowned and feared; weapons that have broken the "
 "mightiest of warriors with a single blow."
 msgstr ""
-"なぜ彼等がドラゴン衛兵と呼ばれるのかは明らかではありませんが、これは  ドーフ"
-"の仲間によって名づけられました。ある者はその名前は彼等が選ぶ武器、 炎と死を噴"
-"射する奇妙な杖に由来すると推測します。またあるものは、本当の ドラゴンさえも、"
-"この世で再び見られる機会があれば、この武器は恐れさせる からであろうと考えま"
-"す。いずれにしても、偉大なドワーフの要塞の衛兵が 有名かつ恐れらているのは、一"
-"振りで最も強力な戦士達さえも倒すという、 この武器のためなのです。"
+"なぜ彼らがドラゴン衛兵と呼ばれるのかは明らかではありませんが、これはドワーフ"
+"の仲間によって名づけられました。ある者はその名前は彼らが選ぶ武器、炎と死を噴"
+"射する奇妙な杖に由来すると推測します。またあるものは、本当のドラゴンにとって"
+"さえも、そのようなものがこの世で再び見られる機会があればですが、この武器は脅"
+"威になるからであろうと考えます。いずれにしても、偉大なドワーフの要塞の衛兵が"
+"有名かつ恐れらているのは、一振りで最も強力な戦士達さえも倒すという、この武器"
+"のためなのです。"
 
 #. [attack]: type=blade
 #: data/core/units/dwarves/Dragonguard.cfg:39
@@ -624,10 +703,11 @@ msgstr "竜の杖"
 #: data/core/units/dwarves/Explorer.cfg:4
 #, fuzzy
 msgid "Dwarvish Explorer"
-msgstr "ドワーフの狂戦士"
+msgstr "ドワーフの探検家"
 
 #. [unit_type]: id=Dwarvish Explorer, race=dwarf
 #: data/core/units/dwarves/Explorer.cfg:24
+#, fuzzy
 msgid ""
 "Dwarvish Explorers are peerless survivalists. Using only the equipment they "
 "carry, they can range for months around the forests and mountains looking "
@@ -636,6 +716,11 @@ msgid ""
 "having practiced this skill hunting in the mountains. Their maneuverability "
 "makes them dangerous and tricky foes."
 msgstr ""
+"Dwarvish Explorersは並ぶ者のない生存者です。運んでいる装備のみを使い、彼らは"
+"新しい鉱石の層や堆積した鉱床を探して、数ヶ月間森や山脈の周辺を歩き回ります。"
+"そのため彼らの格闘能力は他のドワーフに劣りますが、山では狩猟に使用していたの"
+"で、他のドワーフは斧投げではかないません。彼らはその機動性により危険で油断の"
+"ならない敵となります。"
 
 #. [attack]: type=blade
 #: data/core/units/dwarves/Explorer.cfg:42 data/core/units/dwarves/Lord.cfg:52
@@ -664,16 +749,15 @@ msgstr "ドワーフの戦士"
 
 #. [unit_type]: id=Dwarvish Fighter, race=dwarf
 #: data/core/units/dwarves/Fighter.cfg:20
-#, fuzzy
 msgid ""
 "Dwarvish Fighters wield mighty battle axes and hammers, which make them "
 "feared opponents in close-range combat. They are excellent in mountainous "
 "terrain or underground. Their power and endurance more than compensate for "
 "their relatively poor mobility."
 msgstr ""
-"ドワーフの戦士は強固な戦斧とハンマーを装備し、これによって格闘戦で敵を 恐れさ"
-"せます。彼らは山岳や地下の地形で優れています。俊敏ではありませんが 頑健で、彼"
-"らの耐久力は鈍足であることを十分補います。"
+"ドワーフの戦士は強固な戦斧とハンマーを装備し、これによって近接戦闘では敵を恐"
+"れさせます。彼らは山岳や地下の地形で優れています。彼らの力と耐久力は比較的乏"
+"しい機動力を補って余りあるものです。"
 
 #. [attack]: type=impact
 #: data/core/units/dwarves/Fighter.cfg:55 data/core/units/dwarves/Lord.cfg:61
@@ -725,9 +809,9 @@ msgid ""
 "target with a thrown hand axe at several paces. Though slow on their feet, "
 "these dwarves are a testament to the prowess of their kin."
 msgstr ""
-"輝く鎧を身にまとい、このドワーフ達は山の下の王のように見えます。彼等は 達人の"
-"技で斧や鉄槌をふるい、離れた相手に斧を標的に投げつけて命中させる こともできま"
-"す。足は遅いですが、これらのドワーフ達は親族の武勇の象徴です。"
+"輝く鎧を身にまとい、このドワーフ達は山の下の王のように見えます。彼らは達人の"
+"技で斧や鉄槌を振るい、離れた相手に斧を標的に投げつけて命中させることもできま"
+"す。足は遅いですが、これらのドワーフ達は一族の武勇の象徴です。"
 
 #. [attack]: type=blade
 #: data/core/units/dwarves/Lord.cfg:70
@@ -738,10 +822,11 @@ msgstr "手斧"
 #: data/core/units/dwarves/Pathfinder.cfg:4
 #, fuzzy
 msgid "Dwarvish Pathfinder"
-msgstr "ドワーフの銃撃兵"
+msgstr "ドワーフの先導者"
 
 #. [unit_type]: id=Dwarvish Pathfinder, race=dwarf
 #: data/core/units/dwarves/Pathfinder.cfg:18
+#, fuzzy
 msgid ""
 "These hardy dwarves are sometimes away from their caves for long periods, "
 "scouting and patrolling the borders. They spend this time watching for "
@@ -749,6 +834,10 @@ msgid ""
 "territory. They are powerful fighters in a melee, and from a distance their "
 "deftly thrown axes can rival the power and accuracy of a human archer."
 msgstr ""
+"これらの頑丈なドワーフは国境の偵察や巡視のために長い間洞窟から離れることが"
+"時々あります。彼らはこの時間を侵入者の警戒や、ドワーフの縄張りに侵入したなら"
+"ず者や盗賊との戦いに費やします。彼らは近接戦では強力な戦士で、距離を置いても"
+"彼らの器用な手投げ斧は人間の射手の力と精度に匹敵します。"
 
 #. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #: data/core/units/dwarves/Runemaster.cfg:4
@@ -757,17 +846,15 @@ msgstr "ドワーフのルーンマスター"
 
 #. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #: data/core/units/dwarves/Runemaster.cfg:21
-#, fuzzy
 msgid ""
 "Dwarven magic most often manifests itself by the inscription of runes in the "
 "surface of an object, which by their mere presence somehow imbue it with "
 "power. Though rarely seen in combat, a master of these runes can put them to "
 "terrifying use."
 msgstr ""
-"ドワーフの魔法は、知られる限りでは、オブジェの表面のルーン文字の銘刻によって "
-"最もよく示され、彼等が存在するだけでどういうわけか力を吹き込まれるのです。 戦"
-"闘ではめったに見られませんが、このルーンマスターはそれらを恐るべき道具に 変え"
-"ることができます。"
+"ドワーフの魔法は、それが存在するだけでどういうわけか力を吹き込まれる、物体の"
+"表面に刻まれたルーン文字によって最もよく示されます。戦闘では滅多に見られませ"
+"んが、これらのルーンの達人はそれらを恐るべき道具に変えることができます。"
 
 #. [attack]: type=impact
 #: data/core/units/dwarves/Runemaster.cfg:38
@@ -777,16 +864,17 @@ msgstr "ルーンの槌"
 #. [attack]: type=fire
 #: data/core/units/dwarves/Runemaster.cfg:47
 msgid "lightning bolt"
-msgstr "雷撃"
+msgstr "雷の矢"
 
 #. [unit_type]: id=Dwarvish Scout, race=dwarf
 #: data/core/units/dwarves/Scout.cfg:4
 #, fuzzy
 msgid "Dwarvish Scout"
-msgstr "エルフの斥候"
+msgstr "ドワーフの斥候"
 
 #. [unit_type]: id=Dwarvish Scout, race=dwarf
 #: data/core/units/dwarves/Scout.cfg:19
+#, fuzzy
 msgid ""
 "Although the dwarves cannot match the taller races in a sprint, when "
 "unencumbered by heavy armor their tremendous stamina and endurance allows "
@@ -797,6 +885,12 @@ msgid ""
 "However, they pay for their speed with the poorer protection provided by "
 "their lighter armor."
 msgstr ""
+"ドワーフは短距離ではより背の高い種族にはかなわないものの、重い鎧に妨げられな"
+"ければ、彼らの恐ろしいほどの持久力と忍耐力で最速の者にも拮抗します。Dwarvish "
+"Scoutsはそのことを武器に、主力の前に並んで兵の動きと配置を報告してきたり、重"
+"要な目標を確保したりします。戦闘以外では、彼らはしばしばドワーフの共同体間の"
+"通信を中継します。しかしながら、彼らは速さの代償として、軽い鎧により防御が貧"
+"弱になっています。"
 
 #. [unit_type]: id=Dwarvish Sentinel, race=dwarf
 #: data/core/units/dwarves/Sentinel.cfg:4
@@ -813,10 +907,10 @@ msgid ""
 "can hold a patch of earth with the singleminded tenacity of an oak."
 msgstr ""
 "彼らの部隊の中で優れた者である、ドワーフの精鋭防御兵は彼らの戦線に防壁を形作"
-"ります。直接的な攻撃を彼らが固めている前線へと向ることは、たいてい論外なこと"
-"です。そのような行動は、効果がないというよりもむしろ自滅的と言えます。これら"
-"ドワーフは格闘攻撃の達人であり、オークの一途な強固さとともに、地上の一区画を"
-"占めることができます。"
+"ります。直接的な攻撃を彼らが固めている前線へと向けることは、たいてい論外なこ"
+"とです。そのような行動は、効果がないというよりもむしろ自滅的と言えます。これ"
+"らドワーフは格闘攻撃の達人であり、オークの一途な強固さとともに、地上の一区画"
+"を占めることができます。"
 
 #. [unit_type]: id=Dwarvish Stalwart, race=dwarf
 #: data/core/units/dwarves/Stalwart.cfg:4
@@ -831,6 +925,10 @@ msgid ""
 "ground against all but the most visceral assault. It is a dangerous thing to "
 "lose a foothold to one such as these, for it will not be easily reprised."
 msgstr ""
+"経験の策略と訓練で警護兵は価値ある兵士へと変化します。これらの強固な兵隊はそ"
+"の技能に見合った装備が与えられ、ほとんど直感的な襲撃以外に対して彼らの土地を"
+"保持できます。容易には再現できないので、彼らのような者の足場を失うのは危険な"
+"ことです。"
 
 #. [unit_type]: id=Dwarvish Steelclad, race=dwarf
 #: data/core/units/dwarves/Steelclad.cfg:4
@@ -843,7 +941,7 @@ msgid ""
 "The more experienced Dwarvish Steelclad fighters wear heavy chain mail and "
 "plate armor, for which they are rightly famous."
 msgstr ""
-"より経験を積んだドワーフの装甲歩兵は重鎖帷子とプレートアーマーを装備して いる"
+"より経験を積んだドワーフの装甲歩兵は重鎖帷子とプレートアーマーを装備している"
 "ことで有名です。"
 
 #. [unit_type]: id=Dwarvish Thunderer, race=dwarf
@@ -853,7 +951,6 @@ msgstr "ドワーフの銃撃兵"
 
 #. [unit_type]: id=Dwarvish Thunderer, race=dwarf
 #: data/core/units/dwarves/Thunderer.cfg:20
-#, fuzzy
 msgid ""
 "When the men of Wesnoth first encountered the dwarves, they were mystified "
 "by the power of the Dwarvish Thunderers, who were able to hurl death from "
@@ -861,12 +958,10 @@ msgid ""
 "The deafening noise of these 'thundersticks' is terrifying to behold, and is "
 "made more so by the secrecy which dwarves wrap about their workings."
 msgstr ""
-"Wesnothの人々が最初にドワーフに遭遇した時、彼等はドワーフの銃撃兵の力に 惑わ"
-"されました。彼等が戦闘に持ち込むこの奇妙な器具…「杖」を使って遠くから 死を放"
-"つことができたのです。Ka'lianによって制定された平和が実施された時、 Haldricの"
-"人々はこの武器のことを理解しておらず、もちろん自分自身では全く使う ことができ"
-"なかったので、ドワーフともう戦わなくてもよい幸運を理解し、二度と そのようなこ"
-"とはするまいと誓ったのです。"
+"Wesnoth の人々が最初にドワーフに遭遇した時、彼らはドワーフの銃撃兵の力に惑わ"
+"されました。彼らは戦闘に持ち込む奇妙な杖の仕掛けで遠くから死を放つことができ"
+"たのです。耳をつんざく「雷の杖」の騒音は見るのも恐ろしく、彼らの働きについて"
+"ドワーフが包み隠す機密性により一層恐ろしくなりました。"
 
 #. [attack]: type=pierce
 #: data/core/units/dwarves/Thunderer.cfg:120
@@ -881,7 +976,6 @@ msgstr "ドワーフの熟練銃撃兵"
 
 #. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
 #: data/core/units/dwarves/Thunderguard.cfg:22
-#, fuzzy
 msgid ""
 "The Dwarven Thunderguards are famed for their curious weaponry, these "
 "strange staffs of wood and iron that make a thunderous noise in their anger. "
@@ -894,15 +988,15 @@ msgid ""
 "Though a single shot from these 'thundersticks' can take several minutes to "
 "prepare, the results are seen by the Dwarves as being well worth the wait."
 msgstr ""
-"ドワーフの熟練銃撃兵は彼等の珍しい武器、怒ると雷のような音を立てる木と鉄で で"
-"きた奇妙な杖で名声をはせています。この武器の背後にある陰謀は謎につつまれてお"
-"り、 これを装備していた Knalgaのドワーフ達によって墓に埋められた秘密であり、 "
-"作り話ではないかとさえ思われています。最もよく知られているのは、その武器の 口"
-"の中に奇妙な黒い埃を詰めこむドワーフ達に関する報告で、ある者はそれは 中に閉じ"
-"込められている獣に与える食べ物だと言っています。\n"
+"ドワーフの熟練銃撃兵は彼らの珍しい武器、怒ると雷のような音を立てる木と鉄でで"
+"きた奇妙な杖で名声を馳せています。この武器の背後にある陰謀は謎に包まれてお"
+"り、これを装備していた Knalga のドワーフ達が墓まで持っていく秘密であり、作り"
+"話ではないかとさえ思われています。最もよく知られているのは、その武器の口の中"
+"に奇妙な黒い埃を詰めこむドワーフ達に関する報告で、ある者はそれは中に閉じ込め"
+"られている獣に与える食べ物だと言っています。\n"
 "\n"
-"この「雷の杖」からの一撃は準備するのに数分かかりますが、そのためにかなり 待た"
-"されるドワーフを見ることになります。"
+"この「雷の杖」からの一撃は準備するのに数分かかりますが、その結果はドワーフ族"
+"にとって待つ価値のあるものとみなされています。"
 
 #. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
 #: data/core/units/dwarves/Ulfserker.cfg:4
@@ -911,16 +1005,15 @@ msgstr "ドワーフの狂戦士"
 
 #. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
 #: data/core/units/dwarves/Ulfserker.cfg:21
-#, fuzzy
 msgid ""
 "Dwarves are an ancient race of powerful fighters. Ulfserkers are the most "
 "ferocious of these; in battle, they will work themselves into a blind rage "
 "wherein they feel neither fear nor pain, and will pay no heed to any wounds "
 "they receive."
 msgstr ""
-"ドワーフは強力な戦士である古代種族です。狂戦士は戦闘において最も凶暴な者たち"
-"で、 いくら傷を受けようが気にすることなく、彼らは敵か自分のどちらかが死ぬま"
-"で、 攻撃の手を止めません。"
+"ドワーフは強力な戦士達の古代種族です。狂戦士は戦闘において最も凶暴な者達で、"
+"自身を恐怖も痛みも感じない盲目の激怒に没入させます。いくら傷を受けようが気に"
+"することがありません。"
 
 #. [unit_type]: id=Elvish Archer, race=elf
 #: data/core/units/elves/Archer.cfg:4
@@ -937,10 +1030,10 @@ msgid ""
 "their natural grace ensures that they can best any of humanity's fresh "
 "recruits."
 msgstr ""
-"エルフは多くの理由で彼等に本来備わってきた技能である弓術には、 常に定評があり"
-"ます。例えか弱い肉体であっても弓を手にすれば恐しい存在になり、 戦時には多くが"
-"この武器を装備します。比較的戦闘に未経験なためいくぶん弱味には なりますが、彼"
-"等生来の優雅さがどんな人間の新米もかなわないことを確かにします。"
+"エルフは多くの理由で彼らに本来備わってきた技能である弓術には、常に定評があり"
+"ます。例えか弱い肉体であっても弓を手にすれば恐しい存在になり、戦時には多くが"
+"この武器を装備します。比較的戦闘に未経験なためいくぶん弱味にはなりますが、彼"
+"ら生来の優雅さがどんな人間の新米も敵わないことを確かにします。"
 
 #. [attack]: type=blade
 #. [attack]: type=arcane
@@ -1013,13 +1106,13 @@ msgid ""
 "brethren lost earlier in the battle. Although not so base in design, it is "
 "not at all inaccurate."
 msgstr ""
-"エルフの「復讐者」という奇妙な名前は、この熟練レンジャーによってしばしば 使用"
-"されてきた戦術に由来します。敵が見せかけの防御を攻め越えることに 成功して、前"
-"線の背後のすきのある軍隊が続いた時に、この射手は姿を現して、 供給ラインを引き"
-"避いて、身動きできなくなった敵を取り囲んで攻撃します。\n"
+"エルフの「復讐者」という奇妙な名前は、この熟練レンジャーによってしばしば使用"
+"されてきた戦術に由来します。敵が見せかけの防御を攻め越えることに成功して、前"
+"線の背後に隙のある軍隊が続いた時に、この射手は姿を現して、供給ラインを引き裂"
+"いて、身動きできなくなった敵を取り囲んで攻撃します。\n"
 "\n"
-"これは、時には、戦闘の始まりに失われた彼等の仲間への復讐の形だとして 解釈され"
-"ました。そのように基から計画されたわけではありませんが、 必ずしも不正確でもあ"
+"これは、時には、戦闘の始まりに失われた彼らの仲間への復讐の形だとして解釈され"
+"ました。そのように基から計画されたわけではありませんが、必ずしも不正確でもあ"
 "りません。"
 
 #. [female]
@@ -1043,8 +1136,8 @@ msgid ""
 "quiet strengths of the elves."
 msgstr ""
 "エルフは他の多くの種族と違って、戦いの経験のある同輩をすぐに認めて、従いま"
-"す。これは、統率力が弾圧と威嚇の不安定なまがい物である人間にとっては、極めて"
-"奇妙に見えます。そのリーダーの知恵を進んで受け入れ、実力あるリーダーを選ぶ傾"
+"す。これは、統率力がしばしば威圧と威嚇についての問題である人間とは大きく異な"
+"ります。そのリーダーの知恵を進んで受け入れる意思と、実力あるリーダーを選ぶ傾"
 "向の組み合わせこそエルフの静かなる力の一つです。"
 
 #. [unit_type]: id=Elvish Champion, race=elf
@@ -1054,7 +1147,6 @@ msgstr "エルフのチャンピオン"
 
 #. [unit_type]: id=Elvish Champion, race=elf
 #: data/core/units/elves/Champion.cfg:20
-#, fuzzy
 msgid ""
 "Those few elves who deliberately hone themselves into weapons of war become "
 "something which belies the peace-loving reputation of their race. Dedication "
@@ -1062,10 +1154,10 @@ msgid ""
 "to which few can compare. Even their archery, treated as a secondary "
 "pursuit, is masterfully executed."
 msgstr ""
-"彼等自身を戦争の武器として慎重に磨き上げてきた、この数少ないエルフは、エルフ"
-"族特有のおとなしいという評判を裏切るものであります。 献身と技能は形式の純正さ"
-"に見合い、結果としてわずかなものしか匹敵できない剣術の達人となります。剣術ほ"
-"ど重視して鍛えていない弓術でさえも、達人並みに習得しています。"
+"彼ら自身を戦争の武器として慎重に磨き上げてきたこの数少ないエルフは、彼らの種"
+"族の平和好きな評判を裏切るものであります。献身と技能は形式の純正さに見合い、"
+"結果としてわずかなものしか匹敵できない剣術の達人となります。彼らの弓術さえ"
+"も、二次的な追求として扱われますが、名人芸でもって実行されます。"
 
 #. [unit_type]: id=Elvish Druid, race=elf
 #: data/core/units/elves/Druid.cfg:4
@@ -1074,7 +1166,6 @@ msgstr "エルフのドルイド僧"
 
 #. [unit_type]: id=Elvish Druid, race=elf
 #: data/core/units/elves/Druid.cfg:21
-#, fuzzy
 msgid ""
 "The magic of the wood-elves is poorly suited for combat, but effective "
 "nonetheless. The forests in which they thrive can become quickened by a word "
@@ -1083,12 +1174,11 @@ msgid ""
 "The chief ability of Druids lies in healing, and it is for this skill that "
 "they are revered by their people."
 msgstr ""
-"森エルフの魔法は戦闘にはあまり向いていませんが、それでもなお効果的です。 彼等"
-"が住んでいる森は一言の命令で活気づき、 彼等の平和を脅かす者達に遅いかかりま"
-"す。\n"
+"森エルフの魔法は戦闘には向いていませんが、それでもなお効果的です。彼らの育っ"
+"た森は一言の命令で活気づき、彼らの平和を脅かす者達に襲いかかります。\n"
 "\n"
-"彼等の主な能力は回復であり、エルフのドルイド僧が人々から崇められるのは、 この"
-"能力のためです。"
+"ドルイド僧の主な能力は回復であり、彼らが人々から崇められるのは、この能力のた"
+"めです。"
 
 #. [attack]: type=impact
 #: data/core/units/elves/Druid.cfg:40 data/core/units/elves/Enchantress.cfg:38
@@ -1160,7 +1250,6 @@ msgstr "エルフの戦士"
 
 #. [unit_type]: id=Elvish Fighter, race=elf
 #: data/core/units/elves/Fighter.cfg:20
-#, fuzzy
 msgid ""
 "Elves are not warlike by nature, but in times of need, their natural grace "
 "and agility serve them well, as does their skillful craftsmanship. An elf "
@@ -1168,9 +1257,10 @@ msgid ""
 "by the standards of other races, and put them to effective use on the "
 "battlefield."
 msgstr ""
-"エルフは本来戦い好きではありませんが、必要な時になれば、彼等の生来の優雅さと"
-"俊敏さが熟練の職人芸とともにとても役立ちます。 エルフは剣術と弓術の基本を超人"
-"的に短時間でつかみとり、戦場において効果的に使用することができます。"
+"エルフは生来好戦的ではありませんが、必要な時になれば、彼らの生来の優雅さと俊"
+"敏さが熟練の職人芸とともにとても役立ちます。エルフは剣術と弓術の基本を他の種"
+"族の基準からすると超人的に短時間でつかみとり、戦場において効果的に使用するこ"
+"とができます。"
 
 #. [unit_type]: id=Elvish Hero, race=elf
 #: data/core/units/elves/Hero.cfg:4
@@ -1179,16 +1269,16 @@ msgstr "エルフの英雄"
 
 #. [unit_type]: id=Elvish Hero, race=elf
 #: data/core/units/elves/Hero.cfg:19
-#, fuzzy
 msgid ""
 "Elves, though not warlike by nature, are swift to learn; a relatively small "
 "amount of experience will turn an elf from a competent fighter into a master "
 "of combat. Those who are honored as heroes are strong with both sword and "
 "bow, and their skill once acquired does not fade for lack of practice."
 msgstr ""
-"比較的少ない経験で、エルフは有能な戦士から戦闘の達人になることができます。英"
-"雄として尊敬されるこの者達は剣でも弓でも強く、練習不足でも決してなくならない"
-"技能を持ちます。"
+"エルフは生来好戦的ではありませんが、速やかに学習します。比較的少ない経験で、"
+"エルフは有能な戦士から戦闘の達人になることができます。英雄として尊敬されるこ"
+"の者達は剣でも弓でも強く、一度得られた彼らの技能は練習不足でも決してなくなり"
+"ません。"
 
 #. [unit_type]: id=Elvish High Lord, race=elf
 #: data/core/units/elves/High_Lord.cfg:4
@@ -1203,6 +1293,9 @@ msgid ""
 "and wisdom. Quiet and contemplative in times of peace, a High Lord in the "
 "full of his wrath is an awesome sight indeed."
 msgstr ""
+"エルフ族の指導者達は民衆からの本能的な忠誠を自由にします。それは他の種族の支"
+"配者が妬むことしかできず、多大な注意深さと英知でしか得られないものです。平時"
+"は静かで沈思的ですが、完全に激怒した高級貴族は実に凄まじい光景となります。"
 
 #. [unit_type]: id=Elvish Lady, race=elf
 #: data/core/units/elves/Lady.cfg:5
@@ -1217,6 +1310,9 @@ msgid ""
 "uncertainty. Their just reign is rewarded by the unflagging fealty of their "
 "people, which is the greatest gift for which any ruler could ask."
 msgstr ""
+"エルフ族は彼らの指導者を知恵と宇宙的な力の均衡への感受性で選びます。先見は不"
+"測の事態に彼らを保護します。彼らの正しい治世は人民の衰えない忠誠で報いられま"
+"す。それはどんな支配者も求める最高の賜物なのです。"
 
 #. [unit_type]: id=Elvish Lord, race=elf
 #: data/core/units/elves/Lord.cfg:4
@@ -1230,6 +1326,9 @@ msgid ""
 "society. Elvish Lords are the wisest and strongest of their people, and are "
 "fearsome in their command of magic."
 msgstr ""
+"エルフ族の高貴さは、彼らの社会的な立場に適合した功績により手に入ります。エル"
+"フの貴族はエルフの中で最も賢く、最も強く、そして魔法の扱いに恐ろしく優れてい"
+"ます。"
 
 #. [unit_type]: id=Elvish Marksman, race=elf
 #: data/core/units/elves/Marksman.cfg:4
@@ -1238,7 +1337,6 @@ msgstr "エルフの射撃手"
 
 #. [unit_type]: id=Elvish Marksman, race=elf
 #: data/core/units/elves/Marksman.cfg:20
-#, fuzzy
 msgid ""
 "Elves are wonderously keen-sighted, a gift which contributes to their "
 "mastery of the bow. An elf practiced at archery can hit targets that a man "
@@ -1246,12 +1344,10 @@ msgid ""
 "is let fly. Realizing this prodigious skill does come with one cost, that "
 "being a lack of practice with the sword."
 msgstr ""
-"彼等の弓の技能に貢献するものの一つは、エルフの普通では考えられないほど良い視"
-"力です。 弓術士として訓練されたエルフは、例え夜であっても人間が見えないような"
-"目標に命中させることができ、 一矢目が射たれるとほぼ同時に二本目の矢をつがえる"
-"ことができます。\n"
-"\n"
-"この驚異的な技能は、剣の練習不足という唯一の犠牲が生じます。"
+"エルフ族は驚くほど目が良く、この賜物は彼らの弓の技能に貢献します。弓術士とし"
+"て訓練されたエルフは、例え夜であっても人間が見えないような標的に命中させるこ"
+"とができ、一矢目が射たれるとほぼ同時に二本目の矢をつがえることができます。こ"
+"の驚異的な技能は、剣の練習不足という一つの犠牲を伴います。"
 
 #. [attack]: type=pierce
 #: data/core/units/elves/Marksman.cfg:73
@@ -1273,7 +1369,6 @@ msgstr "エルフの元帥"
 
 #. [unit_type]: id=Elvish Marshal, race=elf
 #: data/core/units/elves/Marshal.cfg:27
-#, fuzzy
 msgid ""
 "The longevity and natural intelligence of elves make them apt for military "
 "matters, enough even to counter their general distaste for war. Elves "
@@ -1282,11 +1377,11 @@ msgid ""
 "elf sets his mind to war, the strategy that results is often the work of a "
 "master."
 msgstr ""
-"長寿と生まれながらの知性をもつエルフは、軍隊にありがちな慣習を持っていませ"
-"ん。エルフ族は一般的にそういったものに嫌悪感を持つからです。エルフは人間より"
-"もずっとはっきりと物事を憶えていて、他の者達にどのような訓練を行えばよいかを"
-"しばしば直感で知ることができます。エルフが戦争に心を向けるというめったにない"
-"機会において生まれる戦略は、まさに偉大な芸術家の作品のようでもあります。"
+"エルフの長寿と生まれながらの知性によって、彼らは軍事に適しました。それは彼ら"
+"が戦争に対し一般的に持つ嫌悪に逆らうのに十分だったのです。エルフは人間よりも"
+"ずっとはっきりと物事を憶えていて、他の者達にどのような訓練を行えばよいかをし"
+"ばしば直感で知ることができます。まさに、エルフが戦争に心を向けるという滅多に"
+"ない機会において生まれる戦略は、巨匠の作品となります。"
 
 #. [unit_type]: id=Elvish Outrider, race=elf
 #: data/core/units/elves/Outrider.cfg:4
@@ -1295,7 +1390,6 @@ msgstr "エルフの騎馬従者"
 
 #. [unit_type]: id=Elvish Outrider, race=elf
 #: data/core/units/elves/Outrider.cfg:23
-#, fuzzy
 msgid ""
 "Elvish Outriders are trained as the royal couriers of the elven kingdoms. "
 "Despite the peaceful nature of their people, their experience makes them "
@@ -1308,13 +1402,14 @@ msgid ""
 "their number from death."
 msgstr ""
 "エルフの騎馬従者はエルフの王国の王室密使として訓練されています。人々の穏やか"
-"な性質にも関わらず、彼等の経験により戦闘では極めて致命的な存在となります。彼"
-"等の馬に乗りながら弓を使う技能に近づけるような人間は、今だかつて誰もいません"
+"な性質にも関わらず、彼らの経験により戦闘では極めて致命的な存在となります。彼"
+"らの馬に乗りながら弓を使う技能に近づけるような人間は、今だかつて誰もいません"
 "でしたし、実際には、土の地面に立ちながらでも、そこまでできる者はほとんどいな"
 "いでしょう。\n"
 "\n"
-"この兵士達の速度により、エルフが自分の本拠地で戦うことになれば、死者が相当数"
-"救われることになります。"
+"この兵士達の速度により、エルフが自分の本拠地で戦うことになれば、いつでもどこ"
+"でも彼らの選んだ所を攻撃できます。これにより死者が相当数救われることになりま"
+"す。"
 
 #. [unit_type]: id=Elvish Ranger, race=elf
 #: data/core/units/elves/Ranger.cfg:3
@@ -1323,7 +1418,6 @@ msgstr "エルフのレンジャー"
 
 #. [unit_type]: id=Elvish Ranger, race=elf
 #: data/core/units/elves/Ranger.cfg:20
-#, fuzzy
 msgid ""
 "Though a man might spend years in the forest, he will never shake the "
 "feeling that he is a guest in a realm of which he is not truly a part. With "
@@ -1331,11 +1425,10 @@ msgid ""
 "rapidly becomes a master of them. This, combined with a considerable skill "
 "at archery and swordsmanship, is very useful in warfare."
 msgstr ""
-"人間が森の中で何年も過ごしたとしても、彼は実は一部ではない場所での客人である"
-"という気分をふるい落とせないでしょう。エルフであればこれは完全に反対です。"
-"木々の知識を学んだ全てのエルフはその達人にふさわしいものとなり、弓術と剣術の"
-"目ざましい技能と組み合わされた時には、その結果は戦争での力強い道具となりま"
-"す。"
+"人間が森の中で何年も過ごしたとしても、彼は本当は一部ではない領域での客人であ"
+"るという気分をふるい落とせないでしょう。エルフであればこれは完全に反対です。"
+"木々の知識を学んだ全てのエルフは速やかにそれらの達人となり、弓術と剣術の目ざ"
+"ましい技能と組み合わされた時には、その結果は戦争での力強い道具となります。"
 
 #. [female]
 #: data/core/units/elves/Ranger.cfg:189
@@ -1349,7 +1442,6 @@ msgstr "エルフの騎兵"
 
 #. [unit_type]: id=Elvish Rider, race=elf
 #: data/core/units/elves/Rider.cfg:24
-#, fuzzy
 msgid ""
 "The master horsemen of the elves are able to move through forests at a speed "
 "which would be suicidal for any human. Awe of the rider is quite justified - "
@@ -1359,13 +1451,13 @@ msgid ""
 "This combination of incredible mobility and potent combat strength is one of "
 "the greatest assets the elves possess in warfare."
 msgstr ""
-"習熟したエルフの騎兵は、人間にとっては自殺的ともいえる速度で木々の中を 移動す"
-"ることができます。これは確かに乗り手への畏れを人々に植えつけますが、 彼等がな"
-"す芸当はほとんど超自然的に見えるめ、馬の蘊蓄についての疑問もまた 浮かび上がり"
+"習熟したエルフの騎兵は、人間にとっては自殺的ともいえる速度で森の中を移動する"
+"ことができます。これは確かに乗り手への畏れを人々に植えつけますが、彼らがなす"
+"芸当はほとんど超自然的に見えるため、馬の血統についての疑問もまた浮かび上がり"
 "ます。\n"
 "\n"
-"この信じられないほどの機動力と強い戦闘能力の組み合わせは、戦争における エルフ"
-"が所有する偉大な資産の一つであす。"
+"この信じられないほどの機動力と強い戦闘能力の組み合わせは、戦争におけるエルフ"
+"が所有する偉大な資産の一つです。"
 
 #. [unit_type]: id=Elvish Scout, race=elf
 #: data/core/units/elves/Scout.cfg:4
@@ -1374,7 +1466,6 @@ msgstr "エルフの斥候"
 
 #. [unit_type]: id=Elvish Scout, race=elf
 #: data/core/units/elves/Scout.cfg:23
-#, fuzzy
 msgid ""
 "The horsemen of the wood elves have some skill with bow and sword, but their "
 "true skill lies in their horsemanship. Even other elves are impressed by "
@@ -1382,10 +1473,10 @@ msgid ""
 "thick of the forest with nary a scratch. They may be the only cavalry in "
 "existence that fares better in the woods than on open ground."
 msgstr ""
-"森エルフの騎兵は弓と剣の技能をいくらか持っていますが、彼等の真の技能は 馬術に"
-"あります。他のエルフ達でさえも、彼等の森の中でのものすごい速度や、 太い木々の"
-"間をかすりもせず投げ矢を行う能力をいくぶん取り入れています。 おそらく彼等は、"
-"開かれた大地より木の中でうまくやっていける唯一存在する 騎兵隊でしょう。"
+"森エルフの騎兵は弓と剣の技能をいくらか持っていますが、彼らの真の技能は馬術に"
+"あります。他のエルフ達でさえも、彼らの森の中でのものすごい速度や、太い木々の"
+"間をかすりもせず突進する能力に感動させられています。おそらく彼らは、開かれた"
+"大地より森の中でうまくやっていける唯一存在する騎兵隊でしょう。"
 
 #. [unit_type]: id=Elvish Shaman, race=elf
 #: data/core/units/elves/Shaman.cfg:4
@@ -1394,7 +1485,6 @@ msgstr "エルフの女呪術師"
 
 #. [unit_type]: id=Elvish Shaman, race=elf
 #: data/core/units/elves/Shaman.cfg:23
-#, fuzzy
 msgid ""
 "Being partly faerie in nature, elves have an inherent capability for magic. "
 "This is realized in their affinity with the natural world, which they can "
@@ -1405,10 +1495,10 @@ msgid ""
 "The healing abilities of the elves are also remarkable, and of capital use "
 "in battle."
 msgstr ""
-"本質的には一部妖精の存在であるため、エルフは魔法の能力を受け継いでいます。 こ"
-"れは戦闘での同盟として消臭する自然界との密接な関係において思い知らされます。 "
-"彼等の森に迷いこんだ敵はただちに、それほど恐怖を感じさせない彼等が 立っている"
-"根にからみ取られることに気づくでしょう。\n"
+"本質的には一部妖精の存在であるため、エルフは魔法の能力を受け継いでいます。こ"
+"れは戦闘での同盟として召集する自然界との密接な関係において思い知らされます。"
+"彼らの森に迷いこんだ敵はただちに木の根に絡み取られて、彼らが立っているまさの"
+"その大地に妨害されていることに気づくでしょう。\n"
 "\n"
 "エルフの回復の能力もまた注目すべきもので、戦闘において非常に役立ちます。"
 
@@ -1419,16 +1509,15 @@ msgstr "エルフの狙撃手"
 
 #. [unit_type]: id=Elvish Sharpshooter, race=elf
 #: data/core/units/elves/Sharpshooter.cfg:21
-#, fuzzy
 msgid ""
 "There was a legend of an elf who stopped an arrow by shooting it out of the "
 "air with one of his own. It is a testament to the skill of the elves that "
 "such a story could be taken seriously. The sharpshooters of the elves have, "
 "quite simply, mastered the art of archery."
 msgstr ""
-"かつて言われた話ですが、あるエルフは、自分の矢を打って空中で命中させることで "
-"矢を止めたそうです。そのような物語が真剣に受け取られるのも、エルフの技能の証"
-"拠です。 エルフの狙撃手は、極めて単純に、弓矢の術に熟達しています。"
+"自分の矢を打って空中で命中させることで矢を止めたエルフの伝説がありました。そ"
+"のような物語が真剣に受け取られるのも、エルフの技能の証拠です。エルフの狙撃手"
+"は、極めて単純に、弓矢の術に熟達しています。"
 
 #. [female]
 #: data/core/units/elves/Sharpshooter.cfg:182
@@ -1442,15 +1531,14 @@ msgstr "エルフのシェード"
 
 #. [unit_type]: id=Elvish Shyde, race=elf
 #: data/core/units/elves/Shyde.cfg:22
-#, fuzzy
 msgid ""
 "Devotion to the path of faerie may will eventually transform an elf maiden "
 "into a creature of both worlds. Guided by a nature which is little "
 "understood, these beautiful stewards of the elven forests epitomize the "
 "grace and mystery of their people."
 msgstr ""
-"妖精世界への傾倒は、最終的にはエルフの処女を両方の世界の生き物へと 変身させる"
-"でしょう。ほとんど理解されていない自然現象に導かれたこの美しい エルフの森の執"
+"妖精の道への傾倒は、最終的にはエルフの処女を両方の世界の生き物へと変身させる"
+"でしょう。ほとんど理解されていない自然現象に導かれたこの美しいエルフの森の執"
 "事は、エルフ達の優雅さと神秘の典型であります。"
 
 #. [attack]: type=impact
@@ -1479,8 +1567,8 @@ msgstr ""
 "ことは滅多にありませんが、エルフ族はこのことをよく理解しています。それは簡単"
 "なことではなく、その力の使い方としては非常に不適切なものです。\n"
 "\n"
-"それができる者たちのことを他の種族から大雑把に「女魔術師」と呼ばれます。そし"
-"て、彼らは確かにその能力を持っています。"
+"それができる者達のことを他の種族から大雑把に「女魔術師」と呼ばれます。そし"
+"て、彼女らは確かにその能力を持っています。"
 
 #. [unit_type]: id=Elvish Sylph, race=elf
 #: data/core/units/elves/Sylph.cfg:4
@@ -1507,7 +1595,7 @@ msgstr "クモの巣"
 #. [unit_type]: id=Fog Clearer, race=monster
 #: data/core/units/fake/Fog_Clearer.cfg:7
 msgid "dummy_unit^Fog Clearer"
-msgstr ""
+msgstr "霧払い"
 
 #. [unit_type]: id=Direwolf Rider, race=wolf
 #: data/core/units/goblins/Direwolf_Rider.cfg:4
@@ -1516,7 +1604,6 @@ msgstr "ダイアウルフライダー"
 
 #. [unit_type]: id=Direwolf Rider, race=wolf
 #: data/core/units/goblins/Direwolf_Rider.cfg:22
-#, fuzzy
 msgid ""
 "'Dire wolves' differ from the common variety only in size and color. They "
 "typically stand taller than a horse at the shoulder, and have an appetite to "
@@ -1529,16 +1616,15 @@ msgid ""
 "the orcish assassins, making a swipe from these beasts' paws into a most "
 "deadly stroke."
 msgstr ""
-"「ダイアウルフ」と普通の種類の狼との違いは大きさと色だけです。通常サイズで"
-"は、その高さは馬の肩よりも大きくなり、その大きさに見合っただけの食欲もありま"
-"す。正常な判断力を持っていれば、このような生き物に出くわしたいと望むものはい"
-"ないでしょう。しかしながら、ゴブリンの中には大変な労力をかけてダイアウルフを"
-"飼いならし、その背中に乗ることができるものもいるのです。\n"
+"「ダイアウルフ」は、普通の種類とは大きさと色が異なるだけです。それは通常馬の"
+"肩よりも高く立ち上がり、それに見合う食欲があります。そのようなものに出くわし"
+"たいと望むのは狂人だけでしょう。しかしゴブリンは多大な労力をかけて、なんとか"
+"これを手なづけて乗ってきたのです。\n"
 "\n"
-"狼のかぎ爪は一般的には最も危険な部分としては見なされてはいませんが、実際には"
-"大きいもので、鉄釘よりも太く長いのです。ダイアウルフライダーはその前足に毒を"
-"塗りつけています。このことにより、オークの暗殺者による毒の攻撃とは違って、死"
-"にも至るほどの一撃を繰り出します。"
+"狼のかぎ爪は一般的には最も危険な部分としては見なされませんが、この巨大な獣の"
+"それは鉄釘よりも太く長いのです。その乗り手は前面に毒を塗りつけるので、オーク"
+"の暗殺者によって使われていたようなものとは違い、この獣の足で打たれることはほ"
+"ぼ死にいたる一撃となります。"
 
 #. [unit_type]: id=Goblin Impaler, race=goblin
 #: data/core/units/goblins/Impaler.cfg:4
@@ -1547,17 +1633,15 @@ msgstr "ゴブリンの熟練槍兵"
 
 #. [unit_type]: id=Goblin Impaler, race=goblin
 #: data/core/units/goblins/Impaler.cfg:21
-#, fuzzy
 msgid ""
 "Goblins are used by the orcs as skirmishers to disrupt the enemy's battle "
 "line. Those who manage to survive their first few battles equip themselves "
 "with a long spear to compensate for their short reach, and better armor to "
 "guard their diminuitive frames."
 msgstr ""
-"ゴブリンはオークによって敵の前線でエサとして利用されます。 なんとか生き残るこ"
-"とのできた者達は、変わらずそうし続けるために装備を整えます。 ずっと巨大な槍は"
-"彼等の短いリーチを補うのに役立ち、もっと良い鎧により彼等の 小さな肉体が守られ"
-"ます。"
+"ゴブリンはオークによって敵の戦線を崩壊させる散兵として利用されます。最初の数"
+"戦をなんとか生き残ることのできた者達は、彼らの短いリーチを補う長槍と、小柄な"
+"体格を守るより上質な鎧で装備を整えます。"
 
 #. [unit_type]: id=Goblin Knight, race=wolf
 #: data/core/units/goblins/Knight.cfg:4
@@ -1566,7 +1650,6 @@ msgstr "ゴブリンの騎士"
 
 #. [unit_type]: id=Goblin Knight, race=wolf
 #: data/core/units/goblins/Knight.cfg:21
-#, fuzzy
 msgid ""
 "The Goblin 'Knights' have little in common with the men who share that "
 "title, and the title is bestowed in mockery by their enemies. The similarity "
@@ -1576,13 +1659,13 @@ msgid ""
 "The wolves they are given are bred for speed and strength, making them quite "
 "dangerous in combat."
 msgstr ""
-"ゴブリンの「騎士」というのは人間族での同様に呼ばれる称号とはほとんど共通点は"
-"ありません。彼らの敵からそう呼ばれているだけなのです。類似点は、単に彼らが"
-"「ウルフライダー」のエリートであるという点だけです。おそらくは、何か向こうみ"
-"ずな襲撃で成功したという理由でその地位を獲得したのでしょう。\n"
+"ゴブリンの「騎士」というのは同じ称号をもつ人間とはほとんど共通点がなく、その"
+"称号は彼らの敵の口調の中でのみ使われるものです。類似点は単に彼らが狼乗りの精"
+"鋭であるということで、おそらくは、何か向こうみずな襲撃での成功によってその地"
+"位に昇進しています。\n"
 "\n"
-"彼等が与えられる狼は速度と力の面で優秀なものであるため、戦闘においては極めて"
-"危険なものとなります。"
+"彼らに与えられる狼は速度と力のために改良されているので、彼らは戦闘において極"
+"めて危険なものとなります。"
 
 #. [unit_type]: id=Goblin Pillager, race=wolf
 #: data/core/units/goblins/Pillager.cfg:4
@@ -1597,9 +1680,9 @@ msgid ""
 "their foes, and also carry nets to wreak havoc against those attempting to "
 "rally for defense or reprisal."
 msgstr ""
-"ゴブリンの中には、狼を炎の恐れに打ち勝つよう訓練します。襲撃において、これら"
-"のゴブリンは驚くべき役割を果たします。彼等は、敵の家々や作物に放火したり、網"
-"を投げて防御や反撃を困難にしたりするのです。"
+"あるゴブリンは彼らの狼を炎の恐れに打ち勝つよう訓練します。襲撃において、これ"
+"らのゴブリンは補助的な役割を果たします。彼らは敵の家々や作物に放火し、また網"
+"を引いて防御や報復に向かおうとする試みを台無しにします。"
 
 #. [attack]: type=fire
 #: data/core/units/goblins/Pillager.cfg:56
@@ -1620,7 +1703,6 @@ msgstr "ゴブリンの鼓舞兵"
 
 #. [unit_type]: id=Goblin Rouser, race=goblin
 #: data/core/units/goblins/Rouser.cfg:22
-#, fuzzy
 msgid ""
 "Standard-bearers are an oddity amongst goblins. A goblin who has survived "
 "enough battles to be considered a veteran is rare enough, and it is rarer "
@@ -1628,11 +1710,11 @@ msgid ""
 "Nonetheless, a rouser's frenzied goading effectively steels the less veteran "
 "fighters to strive harder and longer before they die."
 msgstr ""
-"旗手はゴブリンの間では変わった存在です。十分な戦闘を生き延びてベテランと みな"
-"されるようなゴブリンはまったくまれであり、彼のベテランとしての地位を 他のゴブ"
-"リンが認識し、尊敬しているというのはもっとまれなことです。 とはいえ、鼓舞兵の"
-"熱狂的な激励によって、若い兵士はより激しく、死ぬまでに より長く戦う覚悟ができ"
-"るのです。"
+"旗手はゴブリンの間では変わった存在です。十分な戦闘を生き延びてベテランとみな"
+"されるようなゴブリンはまったくまれであり、彼のベテランとしての地位を他のゴブ"
+"リンが認識し、尊敬しているというのはもっとまれなことです。とはいえ、鼓舞兵の"
+"熱狂的な激励によって、ベテランでない戦士をより激しく、死ぬまでにより長く戦う"
+"よう覚悟させるのです。"
 
 #. [unit_type]: id=Goblin Spearman, race=goblin
 #: data/core/units/goblins/Spearman.cfg:4
@@ -1641,7 +1723,6 @@ msgstr "ゴブリンの槍兵"
 
 #. [unit_type]: id=Goblin Spearman, race=goblin
 #: data/core/units/goblins/Spearman.cfg:22
-#, fuzzy
 msgid ""
 "In any litter of orcs, several are born much smaller and weaker than the "
 "rest. These runts are called 'Goblins' and are looked down on by the rest of "
@@ -1653,12 +1734,12 @@ msgid ""
 "failure of the orcish bloodline, though no one knows enough of their history "
 "to state anything conclusive."
 msgstr ""
-"オークのどのひと腹の子の中でも、何匹かは他よりもずっと小さく弱い者が 生まれま"
-"す。この発育不良の者達は「ゴブリン」と呼ばれ同族の他の者から 見下されます。戦"
-"闘において、この者達は最も貧弱な装備を与えられ、将軍に実際の 強襲を準備する時"
-"間を与えるための盾として使われます。\n"
+"オークのどのひと腹の子の中でも、何匹かは他よりもずっと小さく弱い者が生まれま"
+"す。この発育不良の者達は「ゴブリン」と呼ばれ同族の他の者から見下されます。戦"
+"闘において、この者達は最も貧弱な装備を与えられ、将軍に実際の強襲を準備する時"
+"間を与えるための捨て駒として使われます。\n"
 "\n"
-"決定的な事を名言できるほど彼等の歴史については誰も知らないのですが、 こういっ"
+"決定的な事を明言できるほど彼らの歴史については誰も知らないのですが、こういっ"
 "た生き物の存在はオークの血筋の誤りの始まりであると推測する者もいます。"
 
 #. [unit_type]: id=Wolf Rider, race=wolf
@@ -1681,16 +1762,15 @@ msgid ""
 "mounts have a rather easy time traversing the mountains, though water and "
 "woods will still slow them down."
 msgstr ""
-"狼を飼い馴らし、乗るという習慣がどのように生まれてきたかは誰も知りません。し"
-"かし、ゴブリンにとって狼に乗るということは多大なメリットがあります。ゴブリン"
-"はオークと比べると小さく弱い生き物です。そのため、とても危険な任務や、戦では"
-"あまり重要でない任務を押し付けられることもしばしばあります。一方で狼に乗るこ"
-"とができたゴブリンは、より安全になり、戦局に大きな影響を与えたり、戦において"
-"より面白い役割を果たすこともできるでしょう。\n"
+"狼を飼い馴らし、乗るという習慣がどのように生まれてきたかは誰も確証がありませ"
+"ん。しかしゴブリンにとっての利点は明白です。ゴブリンは眷属のオークよりも小さ"
+"く、また弱いものです。そしてしばしば戦闘において最も危険で望まれない部分を任"
+"されます。乗ることができたものは、より安全であり、戦闘においてより面白い役割"
+"を果たすでしょう。\n"
 "\n"
-"狼はプレートアーマーを着た人間を支えることはできませんが、レザーアーマーを着"
-"たゴブリンを担ぐのは簡単です。馬とはまったく違って、狼は山を楽に横切ることが"
-"できます。しかし、水や森は彼らの歩みを遅くするでしょう。"
+"狼は、プレートアーマーを着た人間を支えることはできませんが、レザーアーマーを"
+"着たゴブリンを担ぐのは簡単です。馬とはまったく違って、狼は山を楽に横切ること"
+"ができますが、水や森は彼らの歩みを遅くするでしょう。"
 
 #. [unit_type]: id=Gryphon, race=gryphon
 #: data/core/units/gryphons/Gryphon.cfg:4
@@ -1704,7 +1784,7 @@ msgid ""
 "both dangerous and wary of other intelligent creatures, and thus should not "
 "be disturbed without a good reason."
 msgstr ""
-"この荘厳で力強い生物は空の支配者です。グリフォンは危険で他の知的種族に 対して"
+"この荘厳で力強い生物は空の支配者です。グリフォンは危険で他の知的種族に対して"
 "用心深いため、しかるべき理由なしに彼らに干渉すべきではありません。"
 
 #. [unit_type]: id=Gryphon Master, race=gryphon
@@ -1714,15 +1794,15 @@ msgstr "グリフォンマスター"
 
 #. [unit_type]: id=Gryphon Master, race=gryphon
 #: data/core/units/gryphons/Gryphon_Master.cfg:20
-#, fuzzy
 msgid ""
 "Gryphon Masters have long experience flying the Gryphons, which have become "
 "an extension of themselves. This special relationship makes the heart of the "
 "earth-bound tremble, for these mighty birds of prey may strike from anywhere."
 msgstr ""
-"グリフォンマスターはグリフォンで飛行した長い経験があり、これにより グリフォン"
-"を彼らの身体の一部のように扱うことができます。この特別な関係に よって、このペ"
-"アはどこへでも出撃して、地上の生物の心をおののかせます。"
+"グリフォンマスターはグリフォンで飛行した長い経験があり、これによりグリフォン"
+"を彼らの身体の一部のように扱うことができます。この特別な関係によって、地上の"
+"生物の心をおののかせます。この力強い鳥の餌食となる者は、あらゆる場所から襲撃"
+"を受けるためです。"
 
 #. [unit_type]: id=Gryphon Rider, race=gryphon
 #: data/core/units/gryphons/Gryphon_Rider.cfg:4
@@ -1736,9 +1816,8 @@ msgid ""
 "become Gryphon Riders, and discover the world of the skies upon the backs of "
 "these flying beasts."
 msgstr ""
-"強力なグリフォンと強固な絆を結ぶことができる者はほとんどいません。 グリフォン"
-"ライダーとなった者はグリフォンの背にまたがって、空の世界を 見い出すことでしょ"
-"う。"
+"強力なグリフォンと強固な絆を結ぶことができる者はごくわずかです。グリフォンラ"
+"イダーとなった者は、この空飛ぶ獣の背中から、空の世界を見い出すことでしょう。"
 
 #. [unit_type]: id=Grand Knight, race=human
 #: data/core/units/humans/Horse_Grand_Knight.cfg:4
@@ -1754,10 +1833,10 @@ msgid ""
 "head of a charge is a terrifying sight for infantry, and is often enough to "
 "break right through a defensive line."
 msgstr ""
-"近衛騎士は剣とランスの技能の頂点を極めています。全身板金を装備し、 速度よりも"
-"力のために改良された馬に乗るため、この戦士達は重要な騎兵軍隊の核を 形成しま"
-"す。責任の長にあたる近衛騎士は歩兵隊にとっては恐しい存在で、 しばしば防御線を"
-"直ちに突破してしまうほどです。"
+"近衛騎士は剣とランスの技能の頂点を極めています。全身板金を装備し、速度よりも"
+"力のために改良された馬に乗るため、この戦士達は重要な騎兵軍隊の核を形成しま"
+"す。責任の長にあたる近衛騎士は歩兵隊にとっては恐ろしい存在で、しばしば防御線"
+"を直ちに突破してしまうほどです。"
 
 #. [attack]: type=blade
 #: data/core/units/humans/Horse_Grand_Knight.cfg:36
@@ -1765,9 +1844,8 @@ msgstr ""
 #: data/core/units/humans/Loyalist_General.cfg:56
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:52
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:40
-#, fuzzy
 msgid "longsword"
-msgstr "剣"
+msgstr "長剣"
 
 #. [attack]: type=pierce
 #: data/core/units/humans/Horse_Grand_Knight.cfg:45
@@ -1784,7 +1862,6 @@ msgstr "騎士"
 
 #. [unit_type]: id=Knight, race=human
 #: data/core/units/humans/Horse_Knight.cfg:19
-#, fuzzy
 msgid ""
 "Horsemen of skill and discipline are promoted to Knights. Veterans of "
 "combat, they have seen the often-fatal results of a failed charge, and have "
@@ -1794,11 +1871,11 @@ msgid ""
 "however, and growing experience with these weapons makes them deadlier at "
 "the tilt."
 msgstr ""
-"技能と規律を身につけたは騎兵は、騎士へと昇進します。戦闘のベテランで、 突撃の"
-"失敗でしばしば致命的な結果を見てきたので、その使い方の分別を学びました。 騎士"
-"はそれゆえ、武装として剣を携帯し、より辛抱が必要ですが、突撃よりも ずっと安全"
-"な戦術を実践します。彼等のランスはいまだ使える状態ですが、 この武器を使って成"
-"長する経験は彼等の利益に対するのみです。"
+"技能と規律を身につけたは騎兵は、騎士へと昇進します。戦闘のベテランで、突撃の"
+"失敗でしばしば致命的な結果を見てきたので、その使い方の分別を学びました。騎士"
+"はそれゆえ、武装として剣を携帯し、より辛抱が必要ですが、突撃よりもずっと安全"
+"な戦術を実践します。彼らのランスはいまだ使える状態ですが、この武器を使って経"
+"験を積んだことにより、一突きで致命的になっています。"
 
 #. [unit_type]: id=Lancer, race=human
 #: data/core/units/humans/Horse_Lancer.cfg:4
@@ -1807,7 +1884,6 @@ msgstr "ランス騎兵"
 
 #. [unit_type]: id=Lancer, race=human
 #: data/core/units/humans/Horse_Lancer.cfg:20
-#, fuzzy
 msgid ""
 "Lancers are among the bravest and most feared riders in all of Wesnoth. Clad "
 "in minimal armor, they free themselves to ride swiftly, faster than any of "
@@ -1816,12 +1892,12 @@ msgid ""
 "down infantrymen who have made the mistake of breaking formation, and in "
 "piercing defensive lines. However, they have limited use in defense."
 msgstr ""
-"ランス騎兵は、Wesnoth全土でも、最も勇気があって恐しい乗り手です。 最小限の鎧"
-"を帯び、迅速に、彼等の仲間の誰よりも早く、自由に乗り回します。 彼等が使用する"
-"大胆な戦術は両刃の剣で、しばしば栄光を勝ち取るか、即死するかの どちらかです。"
-"ランス騎兵は、編隊を崩す過ちを犯した歩兵を狩り倒すことや、 防御ラインに穴を開"
-"けることに優れています。しかしながら、彼等は防御での 使用は限られたものとなり"
-"ます。"
+"ランス騎兵は、Wesnoth 全土でも、最も勇気があって恐しい乗り手です。最小限の鎧"
+"を帯び、迅速に、彼らの仲間の誰よりも早く、自由に乗り回します。彼らが使用する"
+"大胆な戦術は両刃の剣で、しばしば栄光を勝ち取るか、即死するかのどちらかです。"
+"ランス騎兵は、編隊を崩す過ちを犯した歩兵を狩り倒すことや、防衛線に穴を開ける"
+"ことに優れています。しかしながら、彼らは防御での使用は限られたものとなりま"
+"す。"
 
 #. [unit_type]: id=Paladin, race=human
 #: data/core/units/humans/Horse_Paladin.cfg:4
@@ -1848,6 +1924,20 @@ msgid ""
 "curious abilities; a paladin is very powerful in fighting magical or "
 "unnatural things, and most have some skill at medicine and healing."
 msgstr ""
+"最も高潔な騎士、聖騎士は国王と王位にではなく、理想それ自身に彼らの力を誓いま"
+"した。騎士道と、善であるもの全てに仕える執事の職です。彼らは世界の軍隊に所属"
+"しているかもしれませんが、彼らの最初の忠誠はしばしば彼ら自身の製作の集団、秘"
+"密の、政治と文化の境界が交わる僧院騎士団にあります。聖騎士の忠誠心は主君の見"
+"せ掛けの美徳と同程度しか強くないので、統治者は時折彼らを警戒します。このこと"
+"は、これらの集団を貶めて解散させようと試みる、あるいはより稀ですが、彼らを別"
+"の固く忠実な服務中の兵隊に保つ入念な欺きを生み出す、双方のより邪悪な意思へと"
+"導きます。\n"
+"    \n"
+"一般的に聖騎士は、ほとんどの軍のチャンピオンである「近衛騎士」と同じだけ恐ろ"
+"しいわけではありません。しかしそれでもなお、彼らは一級の戦士です。その上彼ら"
+"の知恵と信仰心は、これらの僧兵にとある不思議な能力を与えました。聖騎士は魔法"
+"的あるいは不自然な存在と戦う際に大変強力で、たいていの者は医術と治療の能力を"
+"いくらか備えています。"
 
 #. [unit_type]: id=Horseman, race=human
 #: data/core/units/humans/Horseman.cfg:4
@@ -1856,7 +1946,6 @@ msgstr "騎兵"
 
 #. [unit_type]: id=Horseman, race=human
 #: data/core/units/humans/Horseman.cfg:20
-#, fuzzy
 msgid ""
 "Often hailing from the wilder and untamed regions of Wesnoth, Horsemen are "
 "trained from childhood to ride and to follow a strict code of honor. A "
@@ -1866,12 +1955,12 @@ msgid ""
 "must take care against both spearmen and archers for whom their large size "
 "provide inviting targets."
 msgstr ""
-"しばしば Wesnothのどちらかというと抑制されていない地域の出身で、 騎兵は子供の"
-"頃から乗馬と名誉ある厳格な規定に従うことを訓練されています。 騎兵による突撃は"
-"強力ですが向こうみずな戦術であり、その価値は戦場で何度も 繰り返し明らかにされ"
-"てきました。騎士はほとんどの歩兵、特にラインから 外れたものに対して優れていま"
-"すが、巨大な寸法と勢いによりかっこうの的に なってしまうため、槍兵と射手に対し"
-"ては気をつけなければなりません。"
+"しばしば Wesnoth のより野性的で自然のままの地域の出身で、 騎兵は子供の頃から"
+"乗馬と名誉ある厳格な規定に従うことを訓練されています。騎兵による突撃は強力で"
+"すが向こうみずな戦術であり、その価値は戦場で何度も繰り返し明らかにされてきま"
+"した。騎士はほとんどの歩兵、特に戦線から外れたものに対して優れていますが、巨"
+"大な寸法により格好の的になってしまうため、槍兵と射手に対しては気をつけなけれ"
+"ばなりません。"
 
 #. [unit_type]: id=Bowman, race=human
 #: data/core/units/humans/Loyalist_Bowman.cfg:4
@@ -1880,7 +1969,6 @@ msgstr "弓兵"
 
 #. [unit_type]: id=Bowman, race=human
 #: data/core/units/humans/Loyalist_Bowman.cfg:21
-#, fuzzy
 msgid ""
 "The use of archery in shooting something other than game was seen from its "
 "inception, and archers have been indispensable in warfare since time "
@@ -1888,9 +1976,10 @@ msgid ""
 "woodsmen, military bowmen are trained to competence with both a bow and a "
 "short sword, and are very common on the battlefield."
 msgstr ""
-"競技以外で何かを射つ弓術の使用はその発端から見られ、弓術師は太古の昔から 戦争"
-"においては欠くことのできない存在でした。弓兵は通常農民やきこりのような 卑しい"
-"出身で、弓でも小剣でも十分な腕前を持ち、戦場においては非常に一般的です。"
+"競技以外で何かを射つ際の弓術の使用はその発端から見られ、射手は記録がないほど"
+"の太古の昔から戦争において欠くことのできない存在でした。通常農民やきこりのよ"
+"うな卑しい出身ですが、軍属の弓兵は弓も小剣も十分に訓練され、戦場においては非"
+"常に一般的な存在です。"
 
 #. [attack]: type=blade
 #: data/core/units/humans/Loyalist_Bowman.cfg:37
@@ -1905,16 +1994,16 @@ msgstr "精鋭竜騎士"
 
 #. [unit_type]: id=Cavalier, race=human
 #: data/core/units/humans/Loyalist_Cavalier.cfg:21
-#, fuzzy
 msgid ""
 "Cavaliers are masters at the use of both sword and crossbow from horseback. "
 "Their combination of striking power and mobility is fearsome; and they have "
 "a reputation for dash and aggressiveness to match it. The daring deeds of "
 "Cavaliers are the subject of many a tale and song."
 msgstr ""
-"戦場での勝利を呼び込む精鋭竜騎士は馬上での剣とクロスボウの両方の使用法を習得"
-"しています。その機動力と相まって恐怖の対象となっています。その偉業は数多くの"
-"歌や物語として語り継がれています。"
+"精鋭竜騎士は馬上での剣とクロスボウの両方の使用法に熟練しています。彼らの打撃"
+"力と機動力の組み合わせは恐ろしいものです。その突進には定評があり、またそれに"
+"見合った積極性を持っています。精鋭竜騎士の勇敢な業績は、多くの物語や歌の主題"
+"となっています。"
 
 #. [attack]: type=pierce
 #. [attack]: type=fire
@@ -1941,7 +2030,6 @@ msgstr "竜騎兵"
 
 #. [unit_type]: id=Cavalryman, race=human
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:23
-#, fuzzy
 msgid ""
 "Cavalrymen are distinguished from horsemen by their tactics and equipment. A "
 "cavalryman wears heavier armor, and carries a sword and shield, rather than "
@@ -1952,12 +2040,12 @@ msgid ""
 "Cavalrymen are very useful for taking and holding positions on open ground, "
 "for screening friendly soldiers, and also for scouting work."
 msgstr ""
-"竜騎兵は騎兵とは戦術と装備で区別されます。竜騎兵はもっと重い鎧を着て、 ランス"
-"ではなく剣と盾を携帯します。彼等の戦術には突撃は含まれませんが、 その代わり"
-"に、格闘の効果的な道具として馬と乗り手の両方を用いながら、 剣を使って当てては"
-"逃げるという戦法を行います。\n"
+"竜騎兵は騎兵とは戦術と装備で区別されます。竜騎兵はもっと重い鎧を着て、ランス"
+"ではなく剣と盾を携帯します。彼らの戦術には突撃は含まれませんが、その代わり"
+"に、格闘の効果的な道具として馬と乗り手の両方を用いながら、剣を使って斬りつけ"
+"るという戦法を行います。\n"
 "\n"
-"竜騎兵は開かれた土地での陣取りと保持や、味方の兵士達の守り、斥候の 役割とし"
+"竜騎兵は開かれた土地での陣取りと保持や、味方の兵士達の守り、斥候の役割とし"
 "て、非常に便利です。"
 
 #. [unit_type]: id=Dragoon, race=human
@@ -1967,7 +2055,6 @@ msgstr "熟練竜騎士"
 
 #. [unit_type]: id=Dragoon, race=human
 #: data/core/units/humans/Loyalist_Dragoon.cfg:20
-#, fuzzy
 msgid ""
 "The more talented cavalrymen in the armies of Wesnoth are trained in the use "
 "of the crossbow, and matched with much more powerful steeds. Well-armored, "
@@ -1975,9 +2062,10 @@ msgid ""
 "hold the ground they take. Their mobility and resilience make them of great "
 "value on the battlefield."
 msgstr ""
-"Wesnothの軍隊で、より素質のある竜騎兵はクロスボウを使用する訓練を 受けてお"
-"り、より強力な軍馬を支給されています。優れた装備と剣技で、 彼らは前線へ疾走"
-"し、得た土地を保持します。彼らの機動性と回復力は戦場で 大いに価値があります。"
+"Wesnoth の軍隊で、より素質のある竜騎兵はクロスボウを使用する訓練を受けてお"
+"り、より強力な軍馬に釣り合っています。優れた装備と剣技で、これらの兵士は前線"
+"へ疾走し、得た土地を保持できます。彼らの機動性と弾力性は戦場で大いに価値があ"
+"ります。"
 
 #. [unit_type]: id=Duelist, race=human
 #: data/core/units/humans/Loyalist_Duelist.cfg:4
@@ -1986,7 +2074,6 @@ msgstr "決闘者"
 
 #. [unit_type]: id=Duelist, race=human
 #: data/core/units/humans/Loyalist_Duelist.cfg:20
-#, fuzzy
 msgid ""
 "It is a peculiar custom of Wesnoth's nobility that they typically enroll "
 "their sons into one of two orders of armigers, training them either in the "
@@ -2000,22 +2087,20 @@ msgid ""
 "live long enough to be veterans typically do so by making such concessions "
 "to utility and survival."
 msgstr ""
-"Wesnothの貴族達には、一般的に息子を2大騎士団の1つに入隊させ、 馬術か剣術のい"
-"ずれかを訓練させるという、特有の流儀があります。\n"
-"決闘者は、若い貴族達に対する侮辱への熱情が生来の権利の向こうみずな 表明を時に"
-"駆り立てる、不幸にも一般的な実践から名づけられています。\n"
+"Wesnoth の貴族達には、一般的に息子を二大騎士団の一つに入隊させ、馬術か剣術の"
+"いずれかを訓練させるという、特有の流儀があります。決闘者は、それが本当である"
+"か否かに関係なく、侮辱の傷に生来の権利の向こうみずな表明を駆り立てられるよう"
+"な、若い貴族達の不幸にも一般的な実践から名づけられています。\n"
 "\n"
-"必ずしも実際は貴族の生まれでないこともあり完全には貴族に見えない者も います"
-"が、経験を積んだ剣士達はコートやマントの下に用意に隠すことの できる小さな弩を"
-"携帯します。装填に時間がかかり、使うことは不名誉だと しばしば考えられています"
-"が、それは実際には非常に便利で、彼等の階級でも ベテランと呼ばれるまで長く生き"
-"た者達は典型的に、活用と生き残りのために 譲歩することで、そうしています。"
+"経験を積んだ剣士達は外套やマントの下に用意に隠すことのできる小さなクロスボウ"
+"を携帯します。装填に時間がかかり、使うことは不名誉だとしばしば考えられていま"
+"すが、それは実際には非常に便利で、彼らの階級でもベテランと呼ばれるまで長く生"
+"きた者達は典型的に、活用と生き残りのために譲歩することで、そうしています。"
 
 #. [attack]: type=blade
 #: data/core/units/humans/Loyalist_Duelist.cfg:85
 #: data/core/units/humans/Loyalist_Fencer.cfg:140
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:44
-#, fuzzy
 msgid "saber"
 msgstr "サーベル"
 
@@ -2026,7 +2111,6 @@ msgstr "剣術士"
 
 #. [unit_type]: id=Fencer, race=human
 #: data/core/units/humans/Loyalist_Fencer.cfg:21
-#, fuzzy
 msgid ""
 "Fencers belong to a school of thought that considers the armor most soldiers "
 "wear in combat to be their own worst enemy. While armor can only soften a "
@@ -2039,16 +2123,16 @@ msgid ""
 "disadvantage. They relish dancing circles around troops like heavy infantry, "
 "mocking the weight of their full armor."
 msgstr ""
-"ほとんどの兵士が戦闘において着用する鎧は彼等自身の最悪の敵であるという 考えを"
-"もつ道場に、剣術士は所属しています。鎧は殴打をやわらげるだけですが、 それを巧"
-"みにかわすことができれば完全に悪影響を打ち消すことができるでしょう。 攻撃的な"
-"動きを頼もしくよけることが可能となれば、ぜいたくは身体に ぴったり合うものだけ"
-"でよくなり、その時は厳格な訓練に耐えられる者のみとなります。\n"
+"ほとんどの兵士が戦闘において着用する鎧は彼ら自身の最悪の敵であるという考えを"
+"もつ流派に、剣術士は所属しています。鎧は殴打をやわらげるだけですが、それをか"
+"わすことができれば完全に被害を受けなくなります。攻撃的な動きを頼もしく避ける"
+"ことが可能となれば、ぜいたくは身体にぴったり合うものだけでよくなり、その時は"
+"厳格な訓練に耐えられる者のみとなります。\n"
 "\n"
-"短刀とレイピアのみを装備しているため、剣術士は足取りも軽く、鎧に拘束された 仲"
-"間達が不利となる多くの状況において役に立ちます。彼等は、しばしば文字通り 踊り"
-"ながら、重歩兵のような部隊の回りを、その全身板金装備に払う代償を 冷やかしなが"
-"ら一回りすることを好みます。"
+"短刀とサーベルのみを装備しているため、剣術士は足取りが軽く、鎧に拘束された仲"
+"間達が不利となる多くの状況において役に立ちます。彼らは、しばしば文字通り踊り"
+"ながら、重歩兵のような部隊の回りを、その完全防備の重量を冷やかしながら一回り"
+"することを好みます。"
 
 #. [unit_type]: id=General, race=human
 #: data/core/units/humans/Loyalist_General.cfg:4
@@ -2057,14 +2141,12 @@ msgstr "将軍"
 
 #. [unit_type]: id=General, race=human
 #: data/core/units/humans/Loyalist_General.cfg:30
-#, fuzzy
 msgid ""
 "As the leaders of their armies, Generals are responsible for the protection "
 "of large or important areas in the kingdoms to which they have sworn fealty."
 msgstr ""
-"彼等の軍隊の指導者として、将軍は自分が中世を誓った王国の巨大または重要な 地域"
-"の防衛に対する責任を持ちます。彼等はこの秩序を遂行するのに十分な訓練と 経験を"
-"積んでいます。"
+"将軍は彼らの軍隊の指導者として、自分が忠誠を誓った王国の広大なあるいは重要な"
+"地域の防衛に対する責任を持ちます。"
 
 #. [unit_type]: id=Grand Marshal, race=human
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:4
@@ -2073,16 +2155,15 @@ msgstr "大元帥"
 
 #. [unit_type]: id=Grand Marshal, race=human
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:26
-#, fuzzy
 msgid ""
 "The rank of Grand Marshal is one of the most esteemed in the armies of "
 "humanity, and those who bear its title have survived many trials by fire, "
 "proving both their tactical wit and their considerable mettle at personal "
 "combat."
 msgstr ""
-"大元帥の階級は人間軍隊においてもっとも尊重されているもののひとつであり、 その"
-"称号を受ける者は、炎を使用した多くの試練をくぐり抜け、個人戦における 戦術的才"
-"能と目ざましい勇気を証明しています。"
+"大元帥の階級は人間の軍隊においてもっとも尊重されているもののひとつであり、そ"
+"の称号を受ける者は、炎を使用した多くの試練をくぐり抜け、戦術的才能と個人戦に"
+"おける目ざましい勇気を証明しています。"
 
 #. [unit_type]: id=Halberdier, race=human
 #: data/core/units/humans/Loyalist_Halberdier.cfg:4
@@ -2091,7 +2172,6 @@ msgstr "ハルバード使い"
 
 #. [unit_type]: id=Halberdier, race=human
 #: data/core/units/humans/Loyalist_Halberdier.cfg:21
-#, fuzzy
 msgid ""
 "A halberd is a heavy weapon and difficult to use, but very powerful in the "
 "hands of an expert. It is also much more flexible than the spear from which "
@@ -2107,16 +2187,16 @@ msgid ""
 "customary only to grant these weapons to veteran pikemen, who have proven "
 "that they have the skill to employ them properly on the field of war."
 msgstr ""
-"ハルバードは扱いが難しくて非常に重い武器ですが、達人の手にかかれば強力に なり"
-"ます。それはまた、同じ系統の槍よりもずっと柔軟性に富んでいます。 ハルバード使"
-"いなら誰でも説明できますが、この武器は槍や鉾よりも2つ多く、 4つの主要な命中点"
-"があります。これらは、先端、刃、柄の先の根本の釘と、 刃の内側のポイントで、こ"
-"れは振り回す者の方に引っ張り返す動きで使うことができます。 この全てが、特に騎"
-"兵に対して、格闘における非常に多目的な武器となります。\n"
+"ハルバードは非常に重い武器で扱いの難しいものですが、達人の手にかかればとても"
+"強力なものとなります。それはまた、同じ系統の槍よりもずっと柔軟性に富んでいま"
+"す。ハルバード使いなら誰でも説明できますが、この武器は槍や鉾よりも二つ多く、"
+"四つの主要な命中点があります。これらは、先端、刃、柄の先の根本の釘と、刃の内"
+"側のポイントで、これは振り回す者の方に引っ張り返す動きで使うことができます。"
+"この全てが、特に騎兵に対して、格闘における非常に多目的な武器となります。\n"
 "\n"
-"しかしながら、ハルバードは槍に比べて技工がとりわけ費用がかかり、初心者の 手に"
-"かかるとほとんど効果がなくなります。 Wesnothの軍隊では慣例的に、 これらの武器"
-"は戦地において適切にそれを用いる技能があると認められた老練の 槍兵にのみ与えら"
+"しかしながら、ハルバードは槍に比べて技工がとりわけ費用がかかり、初心者の手に"
+"かかるとほとんど効果がなくなります。Wesnoth の軍隊では慣例的に、これらの武器"
+"は戦地において適切にそれを用いる技能があると認められた老練の槍兵にのみ与えら"
 "れます。"
 
 #. [unit_type]: id=Heavy Infantryman, race=human
@@ -2133,6 +2213,10 @@ msgid ""
 "positions. A few of these in battle line will stiffen it considerably, "
 "albeit at an obvious cost in tactical flexibility."
 msgstr ""
+"重歩兵は全身鎧を着て重い打撃武器を扱うたくましい戦士です。彼らは近接戦闘では"
+"敵う者のない力で戦いますが、機動力は貧弱なので、防御の固い地点で固定的な防衛"
+"に使うのが一番です。戦略的な柔軟さが犠牲になるのは明白ですが、戦線に数人投入"
+"すると、とても強固になるでしょう。"
 
 #. [attack]: type=impact
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:37
@@ -2152,7 +2236,6 @@ msgstr "大槌兵"
 
 #. [unit_type]: id=Iron Mauler, race=human
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:21
-#, fuzzy
 msgid ""
 "Iron Maulers are given their name for reasons which are all too obvious to "
 "their foes. The men within these suits of armor can match ogres in contests "
@@ -2165,15 +2248,15 @@ msgid ""
 "they cannot run on the battlefield. Too often have they seen a distant "
 "comrade fall, yet were powerless to reach the scene in time to help."
 msgstr ""
-"大槌兵は、全く明らかすぎる理由により、その名前を与えられています。 この鎧スー"
-"ツの中の人間は力比べではオーガにも匹敵し、彼等が仕える城の 衛兵のチャンピオン"
-"として認められています。彼等はしかしながら維持費が高く、 使用人に支えられる完"
-"全な護送なしには遠方の戦いへ送ることはできません。\n"
+"大槌兵は、全く明らかすぎる理由により、敵からその名前を与えられています。この"
+"鎧スーツの中の人間は力比べではオーガにも匹敵し、彼らが仕える城の衛兵のチャン"
+"ピオンとして認められています。彼らはしかしながら維持費が高く、使用人に支えら"
+"れる完全な護送なしには遠方の戦いへ送ることはできません。\n"
 "\n"
-"格闘戦では驚異的ですが、このように装備することは多くの欠点もあります。 すなわ"
-"ち大槌兵は簡単に疲労してしまい、戦場で走ることができないことが あまりにもよく"
-"知られています。何度も遠くの仲間が倒れているのを見てきましたが、 助けに間に合"
-"うようにその現場まで辿りつくには力不足すぎたのです。"
+"格闘戦では驚異的ですが、このように装備することは多くの欠点もあります。すなわ"
+"ち大槌兵は簡単に疲労してしまい、戦場で走ることができないことがあまりにもよく"
+"知られています。何度も遠くの仲間が倒れるのを見てきましたが、助けに間に合うよ"
+"うにその現場まで辿りつくには力不足すぎたのです。"
 
 #. [unit_type]: id=Javelineer, race=human
 #: data/core/units/humans/Loyalist_Javelineer.cfg:4
@@ -2191,12 +2274,12 @@ msgid ""
 "from a distance, often without retribution, and still hold their ground in "
 "melee."
 msgstr ""
-"投槍兵は、離れた敵を攻撃できるように、ほぼいつもいくつかの投げ槍を装備してい"
-"ます。 しかしながら、あるものは使い方に天性の才能をもっていることを見出し"
-"て、 より上手に扱います。投槍兵は離れた敵を扱う能力を用いて格闘戦での技能を "
-"補強することが可能であるため、軍隊にとって価値ある財産となります。 離れたとこ"
-"ろから敵の兵士たちに投げ槍を投げつけ、そのまま格闘で彼等の地を 保持することが"
-"できます。"
+"槍兵は、離れた敵を殺せなかったとしても悩ませられるように、ほぼいつでも投げ槍"
+"を数本装備しています。しかしながら、あるものは使い方に天性の才能をもっている"
+"ことを見出して、より上手に扱います。投槍兵は離れた敵を扱う能力を用いて格闘戦"
+"での技能を補強することが可能であるため、軍隊にとって価値ある財産となります。"
+"離れたところから敵の戦列に投げ槍を投げつけ、そのまま格闘で彼らの土地を保持す"
+"ることができます。"
 
 #. [unit_type]: id=Lieutenant, race=human
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:4
@@ -2209,8 +2292,8 @@ msgid ""
 "Trained at swords and crossbows, Lieutenants lead small groups of human "
 "soldiers, coordinating their attacks."
 msgstr ""
-"剣とクロスボウによって訓練された副官は人間の兵士の小隊を率い、彼らの 攻撃を調"
-"整し、周囲の低レベルの者の戦闘能力を上昇させます。"
+"剣とクロスボウで訓練を積んだ副官は人間の兵士の小隊を率い、彼らの攻撃を調整し"
+"ます。"
 
 #. [unit_type]: id=Longbowman, race=human
 #: data/core/units/humans/Loyalist_Longbowman.cfg:4
@@ -2219,7 +2302,6 @@ msgstr "大弓兵"
 
 #. [unit_type]: id=Longbowman, race=human
 #: data/core/units/humans/Loyalist_Longbowman.cfg:21
-#, fuzzy
 msgid ""
 "Longbows are fearsome weapons, but too difficult for beginning archers to "
 "wield. It takes great strength to draw one, and the added range and power it "
@@ -2227,11 +2309,10 @@ msgid ""
 "carry their weapons as a badge of pride, and most bowmen look forward to the "
 "day they can begin using one."
 msgstr ""
-"大弓兵は単に物理法則の長所から、射手を始めることを禁じられています。 大弓を引"
-"くには相当な力が必要であり、初心者には全く欠けている授かり物で ありますが、こ"
-"の武器で良いねらいがつけられなければ、増加した射程範囲と 力は役立たずになりま"
-"す。大弓兵は誇りの記章として自分の武器を携帯しており、 多くの弓兵はこれを仕え"
-"るようになる日を夢見ています。"
+"大弓は恐ろしい武器ですが、初心者が扱うにはあまりに難しい武器です。大弓を引く"
+"には相当な力が必要である上、この武器で良い狙いがつけられなければ、増加した射"
+"程範囲と力は役立たずになります。大弓兵は誇りの記章として自分の武器を携帯して"
+"おり、多くの弓兵はこれを使えるようになる日を夢見ています。"
 
 #. [unit_type]: id=Master Bowman, race=human
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:4
@@ -2240,7 +2321,6 @@ msgstr "熟練弓兵"
 
 #. [unit_type]: id=Master Bowman, race=human
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:21
-#, fuzzy
 msgid ""
 "Master bowmen have reached the zenith of their art, inasmuch as any human is "
 "capable. Armed with both a sword, and a great yew bow, these warriors crown "
@@ -2251,12 +2331,12 @@ msgid ""
 "their human counterparts have speculated, perhaps in envy, that this is only "
 "by dint of age."
 msgstr ""
-"熟練弓兵は、人間がなしうる限り彼等の技能の頂点に達しました。 剣と最高のイチイ"
-"の弓を装備し、この戦士達はよく狙われた矢で 数多くの敵を討ち倒しながら、射手達"
-"の大隊を配備します。 彼等の剣での技能もまた無視できず、駆け出しの剣術士程度に"
-"は その扱いに長けています。この世界の多くの種族の中で、エルフだけが 弓術では"
-"人間に勝っており、人間の側ではこれはただ年を取ってるからだと、 おそらく妬みか"
-"ら推測しています。"
+"熟練弓兵は、人間がなしうる限り彼らの技能の頂点に達しました。剣と最高のイチイ"
+"の弓を装備し、この戦士達は存在するだけで射手達の大部隊と称され、よく狙われた"
+"矢で数多くの敵を討ち倒します。彼らの剣での技能もまた無視できず、駆け出しの剣"
+"術士程度にはその扱いに長けています。この世界の多くの種族の中で、エルフだけが"
+"弓術で人間に勝っており、人間の側ではこれはただ年を取ってるからだと、おそらく"
+"妬みから推測しています。"
 
 #. [unit_type]: id=Master at Arms, race=human
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:4
@@ -2265,7 +2345,6 @@ msgstr "先任警衛兵曹"
 
 #. [unit_type]: id=Master at Arms, race=human
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:21
-#, fuzzy
 msgid ""
 "Master fencers have an envied place in life. Though the journey to their "
 "station was a dangerous way of life, they have reached the time wherein they "
@@ -2279,15 +2358,15 @@ msgid ""
 "positions in which their flamboyant nature is not only accepted, but is "
 "perhaps even useful."
 msgstr ""
-"熟練剣士の人生はねたまれるような所があります。向こうみずで危険な生き方では あ"
-"りますが、彼等はその見返りに報いられる時期に到ったのです。その技能と放蕩な や"
-"り方で名声を得て、この紳士には生まれついての貴族のふるまいがあり、高貴な 生ま"
-"れの多くの淑女の目に追われます。\n"
+"熟練剣士の人生は妬まれるような所があります。向こうみずで危険な生き方ではあり"
+"ますが、彼らはその見返りに報いられる時期に到ったのです。その技能と放蕩なやり"
+"方で名声を得て、この紳士には生まれついての貴族の振る舞いがあり、高貴な生まれ"
+"の多くの淑女の目に追われます。\n"
 "\n"
-"彼等には通常約束を選択できるぜいたくがあり、彼等がそう選ぶなら国を放浪する自"
-"由もあります。 しばしば、彼等は城の衛兵の隊長や、士官学校の学長として見い出さ"
-"れますが、 そのような地位には彼等のはでやかな性質は受け入れられないだけです"
-"が、 おそらくかえって便利でしょう。"
+"彼らには通常約束を選択できるぜいたくがあり、彼らがそう選ぶなら国を放浪する自"
+"由もあります。しばしば、彼らは城の衛兵の隊長や、士官学校の学長として見い出さ"
+"れます。そのような地位には彼らの華やかな性質は受け入れられないだけですが、お"
+"そらくかえって便利でしょう。"
 
 #. [unit_type]: id=Pikeman, race=human
 #: data/core/units/humans/Loyalist_Pikeman.cfg:4
@@ -2296,7 +2375,6 @@ msgstr "熟練槍兵"
 
 #. [unit_type]: id=Pikeman, race=human
 #: data/core/units/humans/Loyalist_Pikeman.cfg:18
-#, fuzzy
 msgid ""
 "Promising spearmen in the armies of Wesnoth are often graduated to wielding "
 "pikes, and are outfitted with something far superior to the motley "
@@ -2305,11 +2383,11 @@ msgid ""
 "of pikemen is the bane of any cavalry charge, and with proper discipline and "
 "tactics, pikemen can also hold most other infantry at bay."
 msgstr ""
-"Wesnoth の軍の有望な槍兵は、しばしば長槍を巧みに使うことを会得し、彼らが新人"
-"として身に着けていたレザーアーマーのまだらの衣服よりもすぐれたものを 支給され"
-"ます。長槍は槍よりももっと長い武器で、このためさまざまな戦術を 容易にしていま"
-"す。熟練槍兵の壁はどんな騎兵の突撃にも致命的で、適切な訓練と 戦術があれば、熟"
-"練槍兵はほとんどの歩兵を寄せつけません。"
+"Wesnoth 軍の有望な槍兵は、しばしば長槍を巧みに使うことを会得し、彼らが新人の"
+"とき身に着けていたレザーアーマーのまだらの衣服よりもはるかに優れたものを支給"
+"されます。長槍は槍よりももっと長い武器で、このため様々な戦術を容易にしていま"
+"す。熟練槍兵の壁はどんな騎兵の突撃にとっても致命的で、適切な訓練と戦術があれ"
+"ば、熟練槍兵はほとんどの歩兵を寄せつけません。"
 
 #. [attack]: type=pierce
 #: data/core/units/humans/Loyalist_Pikeman.cfg:65
@@ -2334,10 +2412,10 @@ msgid ""
 "they are well-renowned."
 msgstr ""
 "親衛隊は Wesnoth の最高の剣士の中から選ばれます。より高貴な貴族のもとに仕え、"
-"彼らはボディーガードとして働くとともに、一部では彼らの雇い主の官職の 印として"
-"も機能します。親衛隊の特殊部隊は神殿にいて、王宮の土地と王室を 守っています。"
-"上官との信頼関係のために、彼らは傭兵よりも、よく重要な 輸入の任務に配備されま"
-"す。彼らの信頼性や接近戦における優位性は彼らの 一番の財産です。彼らはそれで有"
+"彼らはボディーガードとして働くとともに、一部では彼らの雇い主の官職の印として"
+"も機能します。親衛隊の特殊部隊は神殿にいて、王宮の土地と王室を守っています。"
+"上官との信頼関係のために、彼らは傭兵よりも、よく重要な輸入の任務に配備されま"
+"す。彼らの信頼性や接近戦における優位性は彼らの一番の財産です。彼らはそれで有"
 "名なのです。"
 
 #. [unit_type]: id=Sergeant, race=human
@@ -2347,15 +2425,14 @@ msgstr "軍曹"
 
 #. [unit_type]: id=Sergeant, race=human
 #: data/core/units/humans/Loyalist_Sergeant.cfg:26
-#, fuzzy
 msgid ""
 "The Sergeant is a low-ranking officer in the ranks of an army. Though "
 "academically trained, he will need some experience in the field before his "
 "leadership is sound and acknowledged."
 msgstr ""
-"軍曹は国王軍の階級における士官です。学問的な訓練は受けていますが、 彼のリー"
-"ダーシップが有効で認められるまでには戦場でいくらかの経験を 積む必要があるで"
-"しょう。"
+"軍曹は軍の階級における下級士官です。学問的な訓練は受けていますが、彼の統率力"
+"が有効になり認められるまでには、戦場でいくらかの経験を積む必要があるでしょ"
+"う。"
 
 #. [unit_type]: id=Shock Trooper, race=human
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:4
@@ -2364,7 +2441,6 @@ msgstr "破砕兵"
 
 #. [unit_type]: id=Shock Trooper, race=human
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:18
-#, fuzzy
 msgid ""
 "Shock troopers are the elite of the heavy infantry, and a significant part "
 "of their use is mere intimidation. The only men who can enter their ranks "
@@ -2375,18 +2451,18 @@ msgid ""
 "drawback of such heavy armor is, of course, the time it takes to move into "
 "and out of combat."
 msgstr ""
-"破砕兵は重歩兵の精鋭で、彼らを戦場で使うことの半分の目的は単なる脅しです。 彼"
-"らの階級に入ることができる人間は、驚くほど体格がよく、スパイクで縁取られた 黒"
-"いプレートを着ると、彼らは恐ろしく見えます。破砕兵がモーニングスターで 敵を打"
-"ち破る姿を見れば、相手方の士気を打ち砕くのに十分です。彼らは時々、 このような"
-"鎧が包んでいる者は人間ではなく、怪物ではないかと考えています。 このような重い"
-"鎧の弱点は、もちろん、戦闘に入り、また離脱するのに時間がかかることです。"
+"破砕兵は重歩兵の精鋭で、彼らを戦場で使うことの目的の大部分は単なる脅しです。"
+"彼らの階級に入ることができる人間は、驚くほど体格がよく、スパイクで縁取られた"
+"黒いプレートを着ると、彼らは恐ろしく見えます。破砕兵がモーニングスターで敵を"
+"打ち破る姿を見れば、相手方の士気を打ち砕くのに十分です。時々、このような鎧が"
+"包んでいる者は人間ではなく、怪物ではないかと疑われることもあります。このよう"
+"な重い鎧の弱点は、もちろん、戦闘に入り、また離脱するのに時間がかかることで"
+"す。"
 
 #. [attack]: type=impact
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:36
-#, fuzzy
 msgid "flail"
-msgstr "尾"
+msgstr "フレイル"
 
 #. [unit_type]: id=Spearman, race=human
 #: data/core/units/humans/Loyalist_Spearman.cfg:4
@@ -2395,7 +2471,6 @@ msgstr "槍兵"
 
 #. [unit_type]: id=Spearman, race=human
 #: data/core/units/humans/Loyalist_Spearman.cfg:20
-#, fuzzy
 msgid ""
 "Swords are, for many, an expensive luxury, and one which peasants can ill "
 "afford. Spears are much easier to make and will do well even without a "
@@ -2403,12 +2478,11 @@ msgid ""
 "armed with a shield and a few javelins, spearmen are the staple of most "
 "armies, often thrown into the front lines with only the most basic training."
 msgstr ""
-"剣は多くの場合、高価なぜいたく品であり、農民にはほとんど保有する余裕が ないも"
-"のです。槍はより簡単に作ることができ、頭を使わなくてもうまく使う ことができる"
-"でしょう。しかしながら、ほとんどの者にとっては保有する余裕が ありません。レ"
-"ザーアーマーを着て、しばしば楯とジャベリンで武装していている 槍兵はほとんどの"
-"軍隊にとって必須であり、しばしば基礎的な訓練を受けただけで 前線に投入されま"
-"す。"
+"剣は多くの場合、高価なぜいたく品であり、農民にはほとんど保有する余裕がないも"
+"のです。槍はより簡単に作ることができ、穂先が無くても有効です。しかしながら、"
+"ほとんどの者にとっては保有する余裕がありません。レザーアーマーを着て、しばし"
+"ば楯と数本の投げ槍で武装していている槍兵はほとんどの軍隊にとって必須であり、"
+"しばしば基礎的な訓練を受けただけで前線に投入されます。"
 
 #. [unit_type]: id=Swordsman, race=human
 #: data/core/units/humans/Loyalist_Swordsman.cfg:4
@@ -2417,7 +2491,6 @@ msgstr "剣士"
 
 #. [unit_type]: id=Swordsman, race=human
 #: data/core/units/humans/Loyalist_Swordsman.cfg:18
-#, fuzzy
 msgid ""
 "An experienced soldier will often save enough to equip himself with a suit "
 "of scale or chain armor, and a sturdy broadsword. Though trading their "
@@ -2426,11 +2499,11 @@ msgid ""
 "behind. A sword is not without its own drawbacks, but is more versatile than "
 "a spear, and much better in close quarters."
 msgstr ""
-"経験を積んだ兵士はスケールアーマーもしくはチェーンアーマーと頑丈な ブロード"
-"ソードを装備することができるほど貯えることがよくあります。彼らの 槍を剣と交換"
-"することはしばしばいくらかいらいらする変化ですが、ほとんどの 槍兵はその機会に"
-"飛びつくでしょう。彼らが残している武器の限界をすべて知って いるからです。剣は"
-"弱点がない訳ではありませんが、槍よりも使いやすく、 接近戦では有利なのです。"
+"経験を積んだ兵士はスケールアーマーもしくはチェーンアーマーと頑丈なブロード"
+"ソードを装備することができるほど貯えることがよくあります。彼らの槍を剣と交換"
+"することはしばしばいくらかいらいらする変化ですが、ほとんどの槍兵はその機会に"
+"飛びつくでしょう。彼らが後に残した武器の限界をすべて知っているからです。剣は"
+"弱点がない訳ではありませんが、槍よりも使いやすく、接近戦では有利なのです。"
 
 #. [unit_type]: id=Mage, race=human
 #: data/core/units/humans/Mage.cfg:4
@@ -2439,7 +2512,6 @@ msgstr "魔術師"
 
 #. [unit_type]: id=Mage, race=human
 #: data/core/units/humans/Mage.cfg:25
-#, fuzzy
 msgid ""
 "Humans have often pondered the workings of the world in which they live. "
 "Some endeavor to take this beyond idle musing, to set it as the primary "
@@ -2460,17 +2532,21 @@ msgid ""
 "Physically frail, and lacking familiarity with combat, magi do possess "
 "certain arts which are of great utility in battle."
 msgstr ""
-"人間はしばしば自分達の生きている世界の作用について思案します。ある者は、 これ"
-"を無意味な黙想以上のものととらえて、人生の第一の事業と定めようと努力 します。"
-"魔術師は研究に何年も費やして、彼等をかけ離れたものにする知識の全てを 貯えてき"
-"ました。読み書きできる者がほとんどいない世界では、こういった男女は 知識の追及"
-"に完全に傾倒してきました。彼等の階級は、有望な貴族の子供達か、 肉体労働の人生"
-"によって生じる知的空虚感からの脱出を求める者達で、 満たされています。\n"
+"人間はしばしば自分達の生きている世界の作用について思案します。ある者は、これ"
+"を無意味な黙想以上のものと捉えて、人生の第一の事業と定めようと努力します。魔"
+"術師の肩書きに値する者はみな研究に少なくとも十年は費やして、彼らを他の人々か"
+"らかけ離れたものにする知識の全てを貯えてきました。読み書きできる者がほとんど"
+"いない世界では、こういった男女は知識の追及に完全に傾倒してきました。彼らの階"
+"級は、有望な貴族の子供達か、肉体労働によって生じる知的空虚感からの脱出を求め"
+"る者達で満たされています。\n"
 "\n"
-"皮肉にも、彼等が蓄積した知識とそれに対する謙遜した独占により、魔術師の 集団組"
-"織は社会を支配できそうでしたし、試みようとしてきました。しかしながら 彼等の真"
-"の愛は金でも力でもなく、魔術師の研究をそのような終わりの手段だと みなす者は、"
-"真の熟達が必要であるという大切な確信をしばしば欠いています。"
+"皮肉にも、彼らの知識すべてとそれに対する謙遜した独占により、魔術師の集団組織"
+"は社会を支配できそうでしたし、試みようとしてきました。しかしながら、彼らの真"
+"の愛は金でも力でもなく、魔術師の研究をそのような目的の手段だとみなす者は、真"
+"の熟達が必要であるという大切な確信をしばしば欠いています。\n"
+"\n"
+"肉体的に弱く、また戦闘にも慣れていませんが、魔術師は戦闘で大変有用な技術を保"
+"有しています。"
 
 #. [attack]: type=fire
 #: data/core/units/humans/Mage.cfg:76
@@ -2490,7 +2566,6 @@ msgstr "熟練魔術師"
 
 #. [unit_type]: id=Arch Mage, race=human
 #: data/core/units/humans/Mage_Arch.cfg:21
-#, fuzzy
 msgid ""
 "The title of Arch Mage is traditionally conferred only after a lifetime of "
 "study and achievement to match. Arch Magi are often employed in positions of "
@@ -2505,16 +2580,15 @@ msgid ""
 "unleash the full power of their art, something which is not to be taken "
 "lightly."
 msgstr ""
-"熟練魔術師の称号はそれに見合うだけの一生をかけた研究と業績の後でのみ 贈られ"
-"る。熟練魔術師はしばしば教育の地位か、彼等の知恵の成果を求めるほど 賢い者達へ"
-"の顧問として雇われます。\n"
-"多くの場合は、裕福な後援者か、もうけの多い企業で、ひっきりなしの仕事や 助言か"
-"ら離れて、その魔法使いは妨げられることなく研究に従事することになります。\n"
-"またある者は、文明を避け隠匿者として、しばしば多くの人達がまゆをしかめそうな "
-"ことの研究に時を費やします。\n"
+"熟練魔術師の称号は伝統的にそれに見合うだけの一生をかけた研究と業績の後でのみ"
+"贈られます。熟練魔術師はしばしば教育の地位か、彼らの知恵の成果を求めるほど賢"
+"い者達の顧問として雇われます。多くの場合は、裕福な後援者か、もうけの多い企業"
+"で、たまに行う魔術や助言を除いて、その魔法使いは妨げられることなく研究に従事"
+"することになります。これにより人間の知識、すなわち科学や哲学、そして世界に美"
+"しさを与える技術の大部分が生じます。\n"
 "\n"
-"戦闘に関してはどのような訓練も受けていませんが、必要があれば熟練魔術師は  容"
-"易には対処できない彼等の術を最大限の力まで解放することができます。"
+"戦闘に関してはどのような訓練も受けていませんが、必要があれば熟練魔術師は容易"
+"には対処できない彼らの術を最大限の力まで解放することができます。"
 
 #. [attack]: type=fire
 #: data/core/units/humans/Mage_Arch.cfg:90
@@ -2531,7 +2605,7 @@ msgstr "熟練女魔術師"
 #. [unit_type]: id=Elder Mage, race=human
 #: data/core/units/humans/Mage_Elder.cfg:4
 msgid "Elder Mage"
-msgstr ""
+msgstr "老魔術師"
 
 #. [unit_type]: id=Elder Mage, race=human
 #: data/core/units/humans/Mage_Elder.cfg:22
@@ -2540,11 +2614,14 @@ msgid ""
 "wearying years of battle. Nevertheless they remain feared on the battlefield "
 "on account of their powerful lightning bolts."
 msgstr ""
+"かつての偉大な老魔術師は、飽きるほどの戦いの年月によって自身の力が少し弱まっ"
+"ているのに気づきます。それにも関わらず、彼らの強力な雷撃のために、戦場で恐れ"
+"られることに変わりはありませんでした。"
 
 #. [attack]: type=fire
 #: data/core/units/humans/Mage_Elder.cfg:34
 msgid "lightning"
-msgstr "雷撃"
+msgstr "雷"
 
 #. [unit_type]: id=Great Mage, race=human
 #: data/core/units/humans/Mage_Great.cfg:4
@@ -2566,14 +2643,14 @@ msgid ""
 "Though they are not warriors, by any means, the application of their art to "
 "combat is something that often causes other soldiers to stand aside in awe."
 msgstr ""
-"大魔術師の称号について検討されるような者はみな、その時代のほとんど伝説に 近い"
-"存在であり、街の触れ役は称号を与える上で説得力をもって分別を学んできました。 "
-"称号の功績は老齢の先導魔術師達の評議会によって注意深く考慮され、 称号の叙勲は"
-"過半数の投票によってのみ与えられます。それにも関わらず、 大魔術師と呼ばれる栄"
-"誉に本気で推薦される者は誰でも疑いなく、その術の達人であり、 技能において彼等"
+"大魔術師の称号について検討されるような者はみな、その時代のほとんど伝説に近い"
+"存在であり、街の触れ役は称号を与える上で説得力をもって分別を学んできました。"
+"称号の功績は老齢の先導魔術師達の評議会によって注意深く考慮され、称号の叙勲は"
+"過半数の投票によってのみ与えられます。それにも関わらず、大魔術師と呼ばれる栄"
+"誉に本気で推薦される者は誰でも疑いなく、その術の達人であり、技能において彼ら"
 "のほぼ全ての仲間よりも上回ります。\n"
 "\n"
-"彼等はあらゆる意味で戦士ではありませんが、戦闘での彼等の術の適用はしばしば 兵"
+"彼らはあらゆる意味で戦士ではありませんが、戦闘での彼らの術の適用はしばしば兵"
 "士達を畏れで退かせるほどのものになります。"
 
 #. [female]
@@ -2588,7 +2665,6 @@ msgstr "赤魔術師"
 
 #. [unit_type]: id=Red Mage, race=human
 #: data/core/units/humans/Mage_Red.cfg:21
-#, fuzzy
 msgid ""
 "Upon the successful culmination of their apprenticeship, a mage is stripped "
 "of the brown robes of an apprentice and given the ruddy cloak of a master. "
@@ -2603,16 +2679,16 @@ msgid ""
 "number of tricks up their sleeves, including the gouts of fire which may "
 "have cemented their colloquial name."
 msgstr ""
-"見習いの期間を無事終えると、魔術師は見習いの青いローブを脱ぎ、師匠から 赤い"
-"ローブを与えられます。この変化の意味はしばしば農民階級では失われていて、 間"
-"違って熟練魔術師を「赤魔術師」と呼んでいます。同様に、色の変化の象徴的意味は "
-"しばしば魔術師の何もないところから火を作り出す能力を意味するものだと誤解され"
-"ます。 このトリックはまぎれもなく有用ですが、彼らが苦労して手に入れた知恵の "
-"応用として見られます。\n"
+"見習いの期間を無事終えると、魔術師は見習いの茶色いローブを脱ぎ、師匠から赤い"
+"ローブを与えられます。この変化の意味はしばしば農民階級では失われていて、間"
+"違って熟練魔術師を「赤魔術師」と呼んでいます。同様に、色の変化の象徴的意味は"
+"しばしば魔術師の空気以外何もないところから火を作り出す能力を意味するものだと"
+"誤解されます。このトリックはまぎれもなく有用ですが、彼らが苦労して手に入れた"
+"知恵の愚鈍な応用として見られます。\n"
 "\n"
-"身体的に弱く、戦士として鍛えられていませんが、「赤魔術師」はいくつかの トリッ"
-"クを用意しています。これには、彼らの口語的な名前と結びつけられた火の 塊も含ま"
-"れています。"
+"身体的に弱く、戦士として鍛えられていませんが、「赤魔術師」は袖中にいくつかの"
+"トリックを用意しています。これには、彼らの口語的な名前と結びつけられた火の塊"
+"も含まれています。"
 
 #. [female]
 #: data/core/units/humans/Mage_Red.cfg:157
@@ -2630,12 +2706,11 @@ msgid ""
 "SPECIAL_NOTE^ Silver Magi are well-attuned to their magical natures and are "
 "highly resistant to non-physical damage."
 msgstr ""
-" 銀魔術師は彼等の魔法的な性質によく調和しており、非物理的ダメージに対して高い"
+" 銀魔術師は彼らの魔法的な性質によく調和しており、非物理的ダメージに対して高い"
 "抵抗力があります。"
 
 #. [unit_type]: id=Silver Mage, race=human
 #: data/core/units/humans/Mage_Silver.cfg:24
-#, fuzzy
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
 "ends. Often viewed as sages, or wandering mystics, silver magi act under an "
@@ -2655,18 +2730,16 @@ msgid ""
 "skills are of undeniable use on the battlefield, if one can manage to induce "
 "the mage to apply them."
 msgstr ""
-"魔術師が研究においてとることができる多くの進路は、著しく異なる最後へと導きま"
-"す。 銀魔術師は、現実とともに結び付けられた力の研究に専念し、ほとんどの人が想"
-"像して いたよりも大きな世界の神秘を解明することができたものです。 しばしば賢"
-"人や放浪する神秘主義者として見られ、銀魔術師は彼らの同職者からさえも 隠された"
-"意図のもとで行動します。教導職にとって役に立つのでしばしば雇われますが、 彼ら"
-"はいくらか距離をおいたままです。\n"
+"魔術師が研究において取ることができる多くの進路は、著しく異なる最後へと導きま"
+"す。しばしば賢人や放浪する神秘主義者として見られ、銀魔術師は彼らの同職者から"
+"さえも隠された意図のもとで行動します。教導職にとって役に立つのでしばしば雇わ"
+"れますが、彼らはいくらか距離をおいたままです。\n"
 "\n"
-"彼らは実際、魔術師の階級の中で自らの結社を持っています。彼らの同輩にある 秘密"
-"を与えないという結社を。これらのうちの一つは、歩いて移動するよりも 早く大きな"
-"距離を渡ることができる明らかな能力です。銀魔術師の結社のメンバーは この働きに"
-"ついて同僚の魔術師と議論することを熱心に拒否します。まれに他の者が 彼らの仕事"
-"について詮索したときには、彼らは努力することをやめ、 二度とそのことを話しませ"
+"彼らは実際、魔術師の階級の中で自らの結社を持っています。彼らの同輩にある秘密"
+"を与えないという結社を。これらのうちの一つは、歩いて移動するよりも早く大きな"
+"距離を渡ることができる明らかな能力です。銀魔術師の結社のメンバーはこの働きに"
+"ついて同僚の魔術師と議論することを熱心に拒否します。まれに他の者が彼らの仕事"
+"について詮索したときには、彼らは努力することをやめ、二度とそのことを話しませ"
 "ん。\n"
 "\n"
 "銀魔術師はたいてい他の魔術師よりも肉体的に熟練していて、彼らの技能は戦場でと"
@@ -2684,7 +2757,6 @@ msgstr "白魔術師"
 
 #. [unit_type]: id=White Mage, race=human
 #: data/core/units/humans/Mage_White.cfg:21
-#, fuzzy
 msgid ""
 "Some magi, as they learn about the world around them, and learn the truth of "
 "the suffering and squalor in which humanity too often lives, find that they "
@@ -2698,12 +2770,13 @@ msgid ""
 msgstr ""
 "一部の魔術師は、彼らの周りにある世界について学び、そして人間があまりにも頻繁"
 "に苦しみや汚らしさの中で生きているという真実を学んだことにより、研究人生の中"
-"に閉じこもるしかないということに気がつきます。これらの男や女は 魔術師としての"
-"人生をやめて、修道僧の聖職に加わり、彼らに与えられた技能を すべての者の利益の"
-"ために捧げます。聖職を授かる儀式の後、彼らは病気やけがを治療しながら頻繁に世"
-"界を旅します。\n"
+"に閉じこってはいられないということに気がつきます。これらの男や女は魔術師とし"
+"ての人生をやめて、修道僧の聖職に加わり、彼らに与えられた技能をすべての者の利"
+"益のために捧げます。聖職を授かる儀式の後、彼らは病気やけがを治療しながら頻繁"
+"に世界を旅します。\n"
 "\n"
-"戦闘のための訓練はしていませんが、魔法や不思議な力をもつ強力な仲間です。"
+"戦いのためのために訓練されていないものの、彼らは魔法的あるいは不自然な存在に"
+"対しては強力な同盟者です。"
 
 #. [attack]: type=arcane
 #: data/core/units/humans/Mage_White.cfg:142
@@ -2725,7 +2798,6 @@ msgstr "光の魔術師"
 
 #. [unit_type]: id=Mage of Light, race=human
 #: data/core/units/humans/Mage_of_Light.cfg:23
-#, fuzzy
 msgid ""
 "After years of experience, the most devout of white magi develop vast "
 "spiritual powers. By strict devotion to the path of the light, they can call "
@@ -2734,12 +2806,12 @@ msgid ""
 "Following a strict code of piety and honor, these men and women work "
 "tirelessly to bring life and order to the troubled world in which they live."
 msgstr ""
-"何年も経験を積んだ後、白魔術師の中でも特に敬虔な者達は、巨大な霊的な力を 授か"
-"ります。光の道への厳格な献身によって、彼等は夜の影を追い払うための 助けを呼び"
+"何年も経験を積んだ後、白魔術師の中でも特に敬虔な者達は、巨大な霊的な力を授か"
+"ります。光の道への厳格な献身によって、彼らは夜の影を追い払うための助けを呼び"
 "出すことができます。\n"
 "\n"
-"敬虔と名誉の厳格な規定に従うことで、これらの男女は、自分たちの生きる困難な 世"
-"界に生命と秩序をもたらすために、疲れることなく働きます。"
+"敬虔と名誉の厳格な規定に従うことで、これらの男女は、自分達の生きる困難な世界"
+"に生命と秩序をもたらすために、疲れることなく働きます。"
 
 #. [attack]: type=impact
 #: data/core/units/humans/Mage_of_Light.cfg:111
@@ -2767,11 +2839,12 @@ msgid ""
 "are somewhat ill at ease fighting during the day, preferring the cover of "
 "nightfall."
 msgstr ""
-"何年かの下積みの後、「追いはぎ」は彼らの仲間である無法者に昇格します。 戦闘に"
-"おいて彼ら自身の力量を証明したので、彼らにはより危険な仕事が与えられ、 また略"
-"奪品の分け前もより多くなります。多くの相手が彼らの武器の選択をばかに するで"
-"しょうが、無法者は武器の致命的な許容量や攻撃手段の有効性をよく心得ています。 "
-"無法者は昼間の戦闘にはいくらかの不安があり、日暮れに包まれるのを好みます。"
+"何年かの下積みの後、「追いはぎ」は彼らの仲間である無法者に昇格します。戦闘に"
+"おいて彼ら自身の力量を証明したので、彼らにはより危険な仕事が与えられ、また略"
+"奪品の分け前もより多くなります。多くの相手が彼らの武器の選択をばかにするで"
+"しょうが、無法者は武器の致命的な許容量や攻撃手段の迅速な有効性をよく心得てい"
+"ます。無法者は昼間の戦闘にはいくらかの不安があり、日暮れに包まれるのを好みま"
+"す。"
 
 #. [attack]: type=impact
 #: data/core/units/humans/Outlaw.cfg:44
@@ -2793,7 +2866,6 @@ msgstr "暗殺者"
 
 #. [unit_type]: id=Assassin, race=human
 #: data/core/units/humans/Outlaw_Assassin.cfg:20
-#, fuzzy
 msgid ""
 "The greatest of thieves are sometimes tasked to take far more than their "
 "victim's belongings. Masters of knife-fighting and uncannily light on their "
@@ -2801,12 +2873,11 @@ msgid ""
 "victims, be it poisoned knives thrown from afar, or a dagger planted in the "
 "back. Deadly at night, assassins are less able fighting under the sun."
 msgstr ""
-"盗賊の中でも最も偉大な者達は犠牲者の所持品よりもはるかに大きな物を奪う 仕事を"
-"与えられます。\n"
-"ナイフ戦と超人的に軽い忍び足の達人として、このおそろしい人影は犠牲者の 命を静"
-"かに奪うために、遠くから投げつけられる毒のナイフや背後から、背後から 突き立て"
-"られる短剣など、いかなる手段をも用います。夜間は致命的ですが、 こういった暗殺"
-"者は明るい太陽の下で戦うのはいくぶん苦手です。"
+"盗賊の中でも最も偉大な者達は犠牲者の所持品よりもはるかに大きな物を奪う仕事を"
+"与えられます。ナイフ戦と不気味なほどに軽い忍び足の達人として、この恐ろしい人"
+"影は犠牲者を始末するのに、遠くから投げつけられる毒のナイフや、背後から突き立"
+"てられる短剣など、いかなる手段をも用います。夜間は致命的ですが、暗殺者は太陽"
+"の下で戦うのはいくぶん苦手です。"
 
 #. [attack]: type=blade
 #: data/core/units/humans/Outlaw_Assassin.cfg:52
@@ -2833,9 +2904,9 @@ msgid ""
 "victims into submission. Like any sort of outlaw, they're not comfortable "
 "fighting in broad daylight, being used to working at night."
 msgstr ""
-"山賊はほとんどが不審な背景をもつ人間達の混成の集まりです。彼等は 犯罪組織集団"
-"の強力な兵であり、策略や知性には欠けますが、犠牲者を 服従させるまで打ちのめす"
-"ような彼等好みの仕事に優れています。 あらゆる無法者と同様に、広い日中での戦い"
+"山賊はほとんどが不審な背景をもつ人間達の混成の集まりです。彼らは犯罪組織集団"
+"の強力な兵であり、策略や知性には欠けますが、犠牲者を服従させるまで打ちのめす"
+"ような彼ら好みの仕事に優れています。あらゆる無法者と同様に、広い日中での戦い"
 "は苦手で、夜間の行動に慣れています。"
 
 #. [unit_type]: id=Footpad, race=human
@@ -2845,7 +2916,6 @@ msgstr "追いはぎ"
 
 #. [unit_type]: id=Footpad, race=human
 #: data/core/units/humans/Outlaw_Footpad.cfg:21
-#, fuzzy
 msgid ""
 "These petty criminals are often derisively called 'footpads' by their "
 "superiors, for they are tasked with any job that requires a great deal of "
@@ -2854,11 +2924,11 @@ msgid ""
 "their inferior weaponry they are quite good at harrying their enemies, "
 "especially under cover of darkness."
 msgstr ""
-"このけちな犯罪者は、しばしば上の者から「追いはぎ」と嘲笑的に呼ばれますが、 そ"
-"れは彼等が、走り回ることに大いに長けていることを要求されるどのような仕事も 引"
-"き受けるためで、しばしば密使や斥候としても雇われます。彼等の脚の持久力と 技能"
-"は戦闘においても同様に活躍し、みじめな武器しかないにも関わらず、彼等は、 特に"
-"闇に隠れて、敵を悩ますのが極めて得意です。"
+"このけちな犯罪者は、しばしば上の者から「追いはぎ」と嘲笑的に呼ばれますが、そ"
+"れは彼らが、走り回ることに大いに長けていることを要求されるどのような仕事も引"
+"き受けるためで、しばしば密使や斥候としても雇われます。そうして得られた持久力"
+"と敏捷さは戦闘においても同様に活躍し、みじめな武器しかないにも関わらず、彼ら"
+"は、特に闇に隠れて、敵を悩ますのが極めて得意です。"
 
 #. [attack]: type=impact
 #: data/core/units/humans/Outlaw_Footpad.cfg:38
@@ -2887,6 +2957,9 @@ msgid ""
 "to elude capture. They can be dangerous in their element, though no match "
 "for the sheer numbers that law-abiding soldiery can throw at them."
 msgstr ""
+"老練な犯罪者は、彼らの非情さと捕縛を避ける能力の両方で名を馳せます。彼らは得"
+"意なところでは危険になれます。しかし、彼らに遵法軍人が投入する全くの数には敵"
+"いません。"
 
 #. [female]
 #: data/core/units/humans/Outlaw_Fugitive.cfg:122
@@ -2907,6 +2980,10 @@ msgid ""
 "attacking on lonely roads or in the dead of night. Their experience with "
 "such encounters makes them deadly foes in hand to hand combat."
 msgstr ""
+"公道の追いはぎは陰険な暴力行為で悪名高くなりました。彼らは誰であれ最も多く払"
+"う者に喜んで雇われ、雇い主の敵に対してより少数のならず者の一団を率いて、しば"
+"しば人里離れた街道や真夜中に攻めます。このような遭遇戦での経験により、彼らは"
+"接近戦では致命的な敵となります。"
 
 #. [unit_type]: id=Rogue, race=human
 #: data/core/units/humans/Outlaw_Rogue.cfg:4
@@ -2923,11 +3000,11 @@ msgid ""
 "reliable accuracy, and their long hours of prowling around at night leave "
 "them more comfortable fighting in the dark."
 msgstr ""
-"盗賊のグループの親玉は技術でその地位を手に入れます。これらの熟練盗賊は、 群衆"
-"の中を通り抜け、彼らの不幸を願う者たちから隠れながら不幸な時間を 過ごしてきま"
-"した。これらの技術は戦いにおいてとても便利なものです。 ナイフ使いの達人であ"
-"り、彼らは確実な精度でナイフを投げることができます。 そして夜に長い時間獲物を"
-"求めてぶらついていたため、暗闇での戦闘により 長けています。"
+"盗賊のグループの親玉は技術でその地位を手に入れます。これらの熟練盗賊は、群衆"
+"の中を通り抜け、彼らの不幸を願う者達から隠れながら不幸な時間を過ごしてきまし"
+"た。これらの技術は戦いにおいてとても便利なものです。ナイフ使いの達人であり、"
+"彼らは確実な精度でナイフを投げることができます。そして夜に長い時間獲物を求め"
+"てぶらついていたため、暗闇での戦闘により長けています。"
 
 #. [female]
 #: data/core/units/humans/Outlaw_Rogue.cfg:153
@@ -2948,6 +3025,10 @@ msgid ""
 "sometimes manage to avoid the imprisonment or death that awaits most of "
 "their colleagues."
 msgstr ""
+"特定の技能を持たないある者達は真っ当な生活ができないか、またはしようとしませ"
+"ん。棒の重い端で人生を歩もうとするそれらの者達は「ならず者」として知られま"
+"す。彼らに十分な運と経験があれば、彼らの仲間の大部分を待ち受けている投獄や死"
+"を時々どうにか回避します。"
 
 #. [unit_type]: id=Thief, race=human
 #: data/core/units/humans/Outlaw_Thief.cfg:4
@@ -2956,7 +3037,6 @@ msgstr "盗賊"
 
 #. [unit_type]: id=Thief, race=human
 #: data/core/units/humans/Outlaw_Thief.cfg:20
-#, fuzzy
 msgid ""
 "For as long as anyone can remember, the members of the various 'guilds' of "
 "rat-catchers that spring up in any larger city have had a curious practice "
@@ -2966,12 +3046,13 @@ msgid ""
 "their feet, and good with knives. They happily employ less-than-honorable "
 "tactics in combat, seeing little merit in a 'fair fight'."
 msgstr ""
-"誰もが覚えていられる限り、どんな大きな都市にも発生する、ねずみ取りの いくつか"
-"の「ギルド」のメンバーには、彼らの髪を淡い青色になるまでライムで 漂白するとい"
-"う珍しい習慣がありました。彼らの職業は「あまり合法的でない」企てを 調べるた"
-"め、これは大胆な行動です。盗賊はたくさんの技術を持っていて、必然的に 足取りが"
-"軽く、ナイフを使うのに長けています。彼らは戦闘において「フェアな戦い」には ほ"
-"とんど意味を見いださず、「あまり立派ではない」戦術をよろこんで使います。"
+"誰もが覚えていられる限り、大きな都市であればどこにでも発生する、様々なねずみ"
+"取りの「ギルド」のメンバーには、髪が淡い青色になるまで石灰で漂白するという珍"
+"しい習慣がありました。彼らの職業はしばしば「あまり合法的ではない」事業を追求"
+"するものであるので、これは大胆な行動です。盗賊はたくさんの技術を持っていて、"
+"必然的に足取りが軽く、ナイフを使うのに長けています。彼らは戦闘において「フェ"
+"アな戦い」にはほとんど意味を見いださず、「あまり立派ではない」戦術をよろこん"
+"で使います。"
 
 #. [female]
 #: data/core/units/humans/Outlaw_Thief.cfg:377
@@ -2985,7 +3066,6 @@ msgstr "悪党"
 
 #. [unit_type]: id=Thug, race=human
 #: data/core/units/humans/Outlaw_Thug.cfg:20
-#, fuzzy
 msgid ""
 "Thugs come from a wide variety of sources; while a few are born into "
 "thuggery, many are former soldiers deemed unfit to serve in the army or "
@@ -2993,10 +3073,10 @@ msgid ""
 "Regardless of their background, they all share a penchant for beating their "
 "victims with large clubs."
 msgstr ""
-"悪党はさまざまな原因によりうまれます。一部には悪党として生まれてくる者も あり"
-"ますが、多くは軍隊に不適格とされた元兵士か、土地を捨てた農民です。 彼らは生計"
-"を立てるためにすぐに悪党になります。彼らの経歴に関係なく、 彼らは犠牲者を大き"
-"なこん棒で打つという共通の習慣を持っています。"
+"悪党はさまざまな原因により生まれます。一部には生まれつきの悪党もいますが、多"
+"くは軍隊で働くには不適格とされた元兵士か、土地を捨てた農民です。彼らは生計を"
+"立てるために悪党になります。経歴に関係なく、彼らはみな犠牲者を大きな棍棒で打"
+"つという共通の傾向を持っています。"
 
 #. [unit_type]: id=Peasant, race=human
 #: data/core/units/humans/Peasant.cfg:4
@@ -3005,16 +3085,15 @@ msgstr "農民"
 
 #. [unit_type]: id=Peasant, race=human
 #: data/core/units/humans/Peasant.cfg:20
-#, fuzzy
 msgid ""
 "Peasants are the backbone of the rural economy, and the soldiers of last "
 "resort. While not warlike by nature, they will stubbornly defend their "
 "homes. However, if you're hurling peasants at your foes, you're clearly out "
 "of superior forces."
 msgstr ""
-"農民は地方経済の 根幹であり、 兵士としては 最後の手段となります。 生まれつき "
-"臆病でない限りは、 彼らは家庭を 断固として守るでしょう。 しかし、 彼らに敵を "
-"攻撃させる場合には、 その特別な力は 発揮できません。"
+"農民は地方経済の根幹であり、兵士としては最後の手段となります。元来好戦的では"
+"ありませんが、彼らは家庭を断固として守るでしょう。しかし、敵に農民をぶつける"
+"ようでは、あなたが優れた戦力を持ち合わせていないのは明らかです。"
 
 #. [attack]: type=pierce
 #: data/core/units/humans/Peasant.cfg:37 data/core/units/humans/Peasant.cfg:46
@@ -3023,9 +3102,8 @@ msgstr "熊手"
 
 #. [unit_type]: id=Royal Warrior, race=human
 #: data/core/units/humans/Royal_Warrior.cfg:8
-#, fuzzy
 msgid "Royal Warrior"
-msgstr "トロルの戦士"
+msgstr "王族の戦士"
 
 #. [unit_type]: id=Royal Warrior, race=human
 #: data/core/units/humans/Royal_Warrior.cfg:31
@@ -3033,6 +3111,8 @@ msgid ""
 "Royal warriors are the kings and princes of human noble houses, armed and "
 "armored to a degree heavier than that of their knights."
 msgstr ""
+"王族の戦士は人間の高貴な家系の王または王子で、彼らの騎士達よりも重武装してい"
+"ます。"
 
 #. [unit_type]: id=Woodsman, race=human
 #: data/core/units/humans/Woodsman.cfg:4
@@ -3046,6 +3126,9 @@ msgid ""
 "a living where the human world verges on the wilderness. Wits and woodcraft "
 "often support them where weapons will not."
 msgstr ""
+"木こりは狩人であり、木を切る者であり、炭焼きであり、荒野に接する人間世界での"
+"生活をやりくりするその他諸々です。武器が頼りにならない場面で、しばしば機知と"
+"木工が彼らの助けとなります。"
 
 #. [unit_type]: id=Huntsman, race=human
 #: data/core/units/humans/Woodsman_Huntsman.cfg:5
@@ -3070,6 +3153,17 @@ msgid ""
 "save lives, ease travel, provide food, and their skill with a bow is "
 "capitally useful in a fight."
 msgstr ""
+"狩猟は貴族の有名なスポーツですが、それは庶民にとっては生計を立てる手段でもあ"
+"ります。他のあらゆる技術と同様に、それに熟練した人間がいます。猟師は彼らの仕"
+"事の秘訣を知りつくしており、荒野での移動や追跡、弓の扱いに習熟しています。彼"
+"らは動く標的や、藪や遮蔽物に隠れた標的をきれいに射抜きます。長年の射的練習で"
+"鍛えられた技であり、しばしば守備隊の弓兵に欠けているものです。\n"
+"\n"
+"猟師の熟練者は未開地で生活する、もしくは未開地を通過する集団に雇われます。そ"
+"れは法に従う人間達であったり、それに対抗する人間達であったりします。自然その"
+"ものですら致命的な不意打ちを仕掛けられるので、このような案内を雇えなかった司"
+"令官はただの地形のために部下を失います。良い木こりは生命を守り、旅しやすく"
+"し、食料を供給できます。そして彼らの弓の技能は戦闘で素晴らしく有用です。"
 
 #. [unit_type]: id=Poacher, race=human
 #: data/core/units/humans/Woodsman_Poacher.cfg:4
@@ -3078,7 +3172,6 @@ msgstr "密猟者"
 
 #. [unit_type]: id=Poacher, race=human
 #: data/core/units/humans/Woodsman_Poacher.cfg:22
-#, fuzzy
 msgid ""
 "Though not trained as warriors, the skills possessed by a hunter (especially "
 "those of archery) are useful in battle. Any group of soldiers or bandits "
@@ -3089,8 +3182,9 @@ msgid ""
 "and in forests and swamps."
 msgstr ""
 "戦士として鍛えられてはいませんが、狩人が持つ能力（特に弓の能力）は戦闘におい"
-"て有用です。どんな山賊のグループも数人の密猟者を雇う必要があるでしょう。単に"
-"狩りのためだけでなく、本格的な戦いにおいて手を貸してもらうために。\n"
+"て有用です。どんな兵士や山賊のグループも未開地を抜けるのには数人の密猟者を雇"
+"う必要があるでしょう。単に狩りのためだけでなく、本格的な戦いにおいて手を貸し"
+"てもらうために。\n"
 "\n"
 "彼らの経験によって、狩人は夜間、森や沼地において非常に有能です。"
 
@@ -3114,6 +3208,16 @@ msgid ""
 "even hear of it at all. Rangers can be hired, but they are just as likely to "
 "be in the employ of bandits, as they are to be in the king's service."
 msgstr ""
+"レンジャーは、無数の理由により彼らの仲間との交際を避けることを選択した、野生"
+"の人間でありまた放浪者です。彼らは生活の大部分を自然の茂みの中で費やし、その"
+"秘密の多くを知ります。彼らは他の人間が棒きれと石ころしか見つけられない場所"
+"で、食料と避難場所を見つけることができる素晴らしい先導者であり、探検家で"
+"す。\n"
+"\n"
+"このような人間の存在は統治者の権威主義をなおさら煩わせます。彼らは騎士団と上"
+"陸した軍隊が制御できない要素です。彼らは動機の疑わしい人間で、あらゆる王命を"
+"少しでも聞いたとしてもあざ笑う最初の一人です。レンジャーは雇用可能ですが、し"
+"かし彼らは王に仕えるときでも、ちょうどならず者に雇われるのと同じ調子です。"
 
 #. [unit_type]: id=Trapper, race=human
 #: data/core/units/humans/Woodsman_Trapper.cfg:4
@@ -3131,6 +3235,13 @@ msgid ""
 "Their skill at hunting is very useful in combat, and also leaves them "
 "unusually competent at night, and in forests and swamps."
 msgstr ""
+"熟練の木こりはどんな軍隊にとっても有用な同盟者であり、荒野に生きる人々のどん"
+"なに大きい集団にとっても不可欠なものです。彼らは人間も獣も両方追跡でき、他の"
+"大多数が見逃す物事に気づき、そしてしばしば食卓の食料、動物または野菜、を探し"
+"出せる唯一の人物です。\n"
+"\n"
+"彼らの狩猟技能は戦闘においても大変有用であり、その上夜間、森や沼地においては"
+"非常に有能になります。"
 
 #. [unit_type]: id=Mermaid Diviner, race=merman
 #: data/core/units/merfolk/Diviner.cfg:4
@@ -3147,6 +3258,10 @@ msgid ""
 "banks of the Alavynne, but who rode again the next day, in full number, and "
 "wrought the downfall of the crimson duke."
 msgstr ""
+"長年の信仰により、世界の働きについての大いなる英知と光の恩恵が司祭に与えられ"
+"ました。従って、これらの水の淑女に与えられた力は、物語と歌に繰り返し現れる主"
+"題です。Alavynne の浅瀬で隅に追いやられて殺され、しかし翌日再び定員で上がって"
+"くる人間、銀の尖塔の騎士達のそれのように、深紅の公爵の凋落をもたらしました。"
 
 #. [unit_type]: id=Mermaid Enchantress, race=merman
 #: data/core/units/merfolk/Enchantress.cfg:4
@@ -3155,7 +3270,6 @@ msgstr "マーメイドの術師"
 
 #. [unit_type]: id=Mermaid Enchantress, race=merman
 #: data/core/units/merfolk/Enchantress.cfg:20
-#, fuzzy
 msgid ""
 "Mermaids, like elves, have a powerful and native ability in magic, though "
 "theirs is considerably different than that of the elves. Those who master "
@@ -3164,12 +3278,12 @@ msgid ""
 "is forbidden against their own race - this power is the greater part of what "
 "protects their people from the monsters that wander out of the abyss."
 msgstr ""
-"マーメイドはエルフと同じように、魔法に関して強い天性の能力がありますが、 彼ら"
-"の能力はかなり異なっています。この能力をマスターした者は高い評価を受け、 彼ら"
-"の技術は数多くの工芸に使用されており、これらの多くは人間が夢にも 思わないよう"
-"なものです。この技術を戦争において彼らの種族自身に対して使うことは 禁じられて"
-"います。この力は、地の底から迷い出てきた怪物から彼らの種族を 守るものの大部分"
-"なのです。"
+"マーメイドはエルフと同じように、魔法に関して強い天性の能力がありますが、彼女"
+"らの能力はエルフ族の能力と比べてかなり異なっています。この能力をマスターした"
+"者は高い評価を受け、彼女らの技術は数多くの工芸に使用されており、これらの多く"
+"は人間が夢にも思わないようなものです。これを戦争において彼らの種族自身に対し"
+"て使うことは禁じられています。この力は、地の底から迷い出てきた怪物から彼らの"
+"種族を守るものの大部分であるからです。"
 
 #. [attack]: type=impact
 #: data/core/units/merfolk/Enchantress.cfg:46
@@ -3197,6 +3311,15 @@ msgid ""
 "effective chase over land, and are at a great disadvantage in hand-to-hand "
 "combat."
 msgstr ""
+"マーマンは漁に網と棍棒の両方を組み合わせて使用する傾向があります。網で魚を集"
+"め、棍棒で殺して仕上げます。これらの道具の両方が戦いに適用でき、これらを使う"
+"のに特化した補助者を慎重に戦闘に連れ出すのに十分な価値があると見られまし"
+"た。\n"
+"\n"
+"    マーマンはしばしば陸上の敵から離れていると気付きます。マーマンは水の中で"
+"は強すぎて、陸上で何らかの攻撃をするには弱すぎるのです。網はてこの鍵となる一"
+"部です。網なしではマーマンは陸を越えて有効な追跡ができず、これは近接戦闘では"
+"非常に不利な点となります。"
 
 #. [unit_type]: id=Merman Fighter, race=merman
 #: data/core/units/merfolk/Fighter.cfg:4
@@ -3205,13 +3328,12 @@ msgstr "マーマンの戦士"
 
 #. [unit_type]: id=Merman Fighter, race=merman
 #: data/core/units/merfolk/Fighter.cfg:20
-#, fuzzy
 msgid ""
 "Skilled denizens of the sea, Mermen are powerful and quick in any watery "
 "environment, but lose most of their mobility on land."
 msgstr ""
-"水域に慣れた生物であるマーマンは、水の環境では力強く素早いですが、 陸上ではも"
-"がくようにしか移動できません。"
+"海に熟練した住人であるマーマンは、水の環境では力強く素早いですが、陸上では機"
+"動性のほとんどを失ってしまいます。"
 
 #. [unit_type]: id=Merman Hoplite, race=merman
 #: data/core/units/merfolk/Hoplite.cfg:4
@@ -3220,16 +3342,16 @@ msgstr "マーマンの装甲歩兵"
 
 #. [unit_type]: id=Merman Hoplite, race=merman
 #: data/core/units/merfolk/Hoplite.cfg:21
-#, fuzzy
 msgid ""
 "With their towering shields, the Merman Hoplites form the elite guard of the "
 "watery realm. Their powerful armor and rigid discipline allow them to hold a "
 "steadfast line in the maelstrom of battle. In times of desperation, they can "
 "even do so on land, though not nearly as well as a creature with legs."
 msgstr ""
-"タワーシールドによって、マーマンの装甲歩兵は水域の強固な守備隊を形成します。 "
-"強力な鎧と厳しい訓練によって、彼らは戦場の熱狂に左右されません。脚のある 生物"
-"とは異なり、絶望的な時も彼らは陸地において、そのように振舞うことができます。"
+"タワーシールドによって、マーマンの装甲歩兵は水域の強固な守備隊を形成します。"
+"強力な鎧と厳しい訓練によって、彼らは戦場の大渦巻の中にあっても不動の前線を保"
+"てます。脚のある生物と同じようにはいきませんが、絶望的な状況でも、彼らは陸地"
+"においてそのように振舞うことができます。"
 
 #. [unit_type]: id=Merman Hunter, race=merman
 #: data/core/units/merfolk/Hunter.cfg:4
@@ -3245,8 +3367,8 @@ msgid ""
 "their military."
 msgstr ""
 "槍による漁業でマーマンによって使用される技術は簡単に戦闘に応用することができ"
-"ます。 特に水中に住んでいるのではない者に対して。必要なときに、この職業の多く"
-"の マーマンは彼らの軍隊の兵を増やすために志願するでしょう。"
+"ます。特に水中に住んでいるのではない者に対して。必要なときに、この職業の多く"
+"のマーマンは彼らの軍隊の兵を増やすために志願するでしょう。"
 
 #. [unit_type]: id=Mermaid Initiate, race=merman
 #: data/core/units/merfolk/Initiate.cfg:4
@@ -3255,7 +3377,6 @@ msgstr "マーメイドの下級術師"
 
 #. [unit_type]: id=Mermaid Initiate, race=merman
 #: data/core/units/merfolk/Initiate.cfg:23
-#, fuzzy
 msgid ""
 "Young mermaids are often initiated into the water magics native to their "
 "people. The wondrous abilities this grants are inimitable by any other race, "
@@ -3264,12 +3385,12 @@ msgid ""
 "Despite their frailty, this makes them quite formidable in combat, as they "
 "can call upon the very water about them to smite their enemies."
 msgstr ""
-"若いマーメイドはしばしば彼らの種族に生まれつき備わっている水の魔法を 伝授され"
-"ます。この驚くべき能力の授与は他のどんな種族にもまねできないものであり、 これ"
+"若いマーメイドはしばしば彼らの種族に生まれつき備わっている水の魔法を伝授され"
+"ます。この驚くべき能力の授与は他のどんな種族にもまねできないものであり、これ"
 "らの種族が妖精側であるという印なのです。\n"
 "\n"
 "彼らの弱さにもかかわらず、この能力のおかげで彼らは戦闘においてとても手強いで"
-"す。 彼らは彼らのすぐ周りにある水を敵に魔法をかけ、打ち付けることができるから"
+"す。彼らは彼らのすぐ周りにある水を敵に魔法をかけ、打ち付けることができるから"
 "です。"
 
 #. [unit_type]: id=Merman Javelineer, race=merman
@@ -3279,16 +3400,16 @@ msgstr "マーマンの投槍兵"
 
 #. [unit_type]: id=Merman Javelineer, race=merman
 #: data/core/units/merfolk/Javelineer.cfg:20
-#, fuzzy
 msgid ""
 "Those mermen who master the art of the javelin can become nearly as "
 "effective as an archer - though the heft of their weapons impedes their "
 "range, the impact of one is considerably greater. In the water, the mobility "
 "of the mermen more than makes up for this when facing foes who cannot swim."
 msgstr ""
-"投槍術をマスターしたマーマンは射手とほとんど同様に効果的になります - 彼らの武"
-"器の重さが射程距離を妨げますが、この衝撃はかなり大きくなります。 水中では、泳"
-"げない敵に対面しているとき、マーマンの機動性がこれを補ってあまりあります。"
+"投槍術をマスターしたマーマンは射手とほとんど同様に効果的になります。彼らの武"
+"器の重さが射程距離を妨げますが、一撃当たりの衝撃はかなり大きくなります。水中"
+"では、泳げない敵に対面しているとき、マーマンの機動性がこれを補ってあまりあり"
+"ます。"
 
 #. [unit_type]: id=Merman Netcaster, race=merman
 #: data/core/units/merfolk/Netcaster.cfg:4
@@ -3310,6 +3431,16 @@ msgid ""
 "close to shore. Clubs were used in combat with little or no adaptation from "
 "fishing, since they were already quite deadly."
 msgstr ""
+"マーマンによって営まれる漁業は、たいていは魚の群れを待ち伏せの網に追い込み、"
+"そこでオールのような棍棒を使うというものです。これらを兵士に対して即興的に使"
+"うのは、とても効果的であることが判っています。大部分の陸地の生物は水に腰の深"
+"さまで浸かるだけでも非常に不便なので、網に捕まるとほとんどどうしようもありま"
+"せん。\n"
+"    \n"
+"    この手法が有効だったので、空中に投げられるような、より小さくて重い網の発"
+"展に繋がりました。これらは漁には使えませんが、戦闘と岸の近くまで来たときの狩"
+"猟の両方で有用です。戦闘で使われる棍棒は漁用からほとんどあるいはまったく改良"
+"されていません。それらは既にかなり致命的だったからです。"
 
 #. [unit_type]: id=Mermaid Priestess, race=merman
 #: data/core/units/merfolk/Priestess.cfg:4
@@ -3318,7 +3449,6 @@ msgstr "マーメイドの司祭"
 
 #. [unit_type]: id=Mermaid Priestess, race=merman
 #: data/core/units/merfolk/Priestess.cfg:23
-#, fuzzy
 msgid ""
 "Among mermen, mysticism is generally left to the mermaids, who are more "
 "inclined to it. It is they who dedicate themselves to the ideal of bringing "
@@ -3326,13 +3456,10 @@ msgid ""
 "piety also grants them certain powers, allowing them to guard their people "
 "against magical or unnatural things."
 msgstr ""
-"マーマンは人間の多くが従う教義を共有しています。文化的な理由により、 この支持"
-"はマーメイドにも残されています。マーメイドはより知的に傾いています。 平和と生"
-"命をもたらすという理想のために彼ら自身を捧げ、病気や負傷、疾病と 戦うための技"
-"術を学んでいるのは彼らです。これらの病気や負傷は、人間とは どんな小さい部分も"
-"共有していません。彼らの不断の努力や信心深さにより、 彼らはある精神的な力を授"
-"与されます。これにより、彼らはこの世にいない者から 彼らの種族を守ることができ"
-"るのです。"
+"マーマンの間では一般的に、神秘主義は、それへの傾向がより強いマーメイドに任せ"
+"られます。平和と生命をもたらすという理想と、それを実現可能な技術に専心してい"
+"るのは彼女らです。彼女らは信仰心によりある種の力を得て、魔法的なあるいは不自"
+"然な存在から彼女らの種族を守ることができるのです。"
 
 #. [unit_type]: id=Mermaid Siren, race=merman
 #: data/core/units/merfolk/Siren.cfg:4
@@ -3341,7 +3468,6 @@ msgstr "マーメイド・セイレン"
 
 #. [unit_type]: id=Mermaid Siren, race=merman
 #: data/core/units/merfolk/Siren.cfg:23
-#, fuzzy
 msgid ""
 "The faerie nature of the mermaids is strongest in the Sirens, whose "
 "connection to the currents of magic often causes them to be mistaken for "
@@ -3353,16 +3479,14 @@ msgid ""
 "The myriad applications of this rarely occur to land dwellers, who simply "
 "regard it with wonder."
 msgstr ""
-"マーメイドの精霊種はセイレンの中で最も強い者です。水の精とのつながりから、 し"
-"ばしば水の精自身と間違えられます。これはまったく真実ではないのですが、 この間"
-"違いは理解できます。本当の水の精はマーメイドにとってもほとんど見る ことができ"
-"ないからです。彼らの魔法の出現も確かに非常に似ています。セイレンの 周りにある"
-"水は彼女自身が拡張したかのように気まぐれに操られます。\n"
+"マーメイドの精霊種はセイレンの中で最も強い者です。魔術の傾向とのつながりか"
+"ら、しばしば水の精自身と間違えられます。これはまったく真実ではないのですが、"
+"この間違いは理解できます。本当の水の精はマーメイドにとってもほとんど見られな"
+"いものだからです。彼らの魔法の出現も確かに非常に似ています。セイレンの周りに"
+"ある水は彼女自身の延長であるかのように気まぐれに操られます。\n"
 "\n"
-"この無数の用途は陸地の住人はほとんど思いつきません。彼らは単に驚いてそれを 見"
-"るだけです。\n"
-"\n"
-"特記事項: セイレンの攻撃は本質的に魔法であり、常に高い確率で敵に命中します。"
+"この無数の用途は陸地の住人にはほとんど思いつきません。彼らは単に驚いてそれを"
+"見るだけです。"
 
 #. [attack]: type=impact
 #: data/core/units/merfolk/Siren.cfg:42
@@ -3376,7 +3500,6 @@ msgstr "マーマンの槍兵"
 
 #. [unit_type]: id=Merman Spearman, race=merman
 #: data/core/units/merfolk/Spearman.cfg:19
-#, fuzzy
 msgid ""
 "Archery is little favored by the mermen, for whom use of javelins serves a "
 "similar function. Though thrown javelins are of little use under the water, "
@@ -3385,12 +3508,12 @@ msgid ""
 "wreak damage. They are also useful in melee, even deep under the surface, "
 "which is something that certainly cannot be said of arrows."
 msgstr ""
-"弓術はマーマンにはあまり好まれません。彼らにとっては投槍術が同じ働きを 果たす"
-"からです。水中では投げ槍を投げてもほとんど役に立ちませんが、水面では 非常に役"
-"に立ちます。水面では、それらの重さにより、効果的で十分な勢いを 保ったまま数"
-"フィートの水中まで突入することができます。彼らは深い水中に おいてさえ、格闘で"
-"も役に立ちます。深い水中というのは確実に、矢のことなど 言うことのできない場所"
-"です。"
+"弓術はマーマンにはあまり好まれません。彼らにとっては投槍術が近い働きを果たす"
+"からです。水中では投げ槍を投げてもほとんど役に立ちませんが、水面では非常に役"
+"に立ちます。水面では、それらの重さにより、損害を与えるのに十分な勢いを保った"
+"まま数フィートの水中まで突入することができます。彼らは深い水中においてさえ、"
+"格闘でも役に立ちます。深い水中というのは確実に、矢のことなど言うことのできな"
+"い場所です。"
 
 #. [unit_type]: id=Merman Triton, race=merman
 #: data/core/units/merfolk/Triton.cfg:4
@@ -3399,14 +3522,13 @@ msgstr "精鋭トライトン"
 
 #. [unit_type]: id=Merman Triton, race=merman
 #: data/core/units/merfolk/Triton.cfg:21
-#, fuzzy
 msgid ""
 "Tritons are combat masters of the sea. Skilled in use of the trident, "
 "Tritons easily defeat any enemy foolish enough to wander into their "
 "preferred environment."
 msgstr ""
-"トライトンは海を知りつくしており、トライデントの使用に長けているため、 彼らの"
-"得意とする地形に入り込んだ愚かな敵を容易に撃退します。"
+"トライトンは海における戦闘の練達者です。トライデントの使用に長けているため、"
+"彼らの得意とする地形に入り込んだ愚かな敵を容易に撃退します。"
 
 #. [unit_type]: id=Merman Warrior, race=merman
 #: data/core/units/merfolk/Warrior.cfg:4
@@ -3419,7 +3541,7 @@ msgid ""
 "The Mermen Warriors form the core of the mermen armies. Wielding powerful "
 "tridents, they are a bane to any who dare enter their waters."
 msgstr ""
-"マーマンの戦士はマーマンの軍隊の中核を形成します。力強いトライデントを 使用す"
+"マーマンの戦士はマーマンの軍隊の中核を形成します。力強いトライデントを使用す"
 "ることで、彼らは彼らの水域に入った命知らずを撃退します。"
 
 #. [unit_type]: id=Giant Spider, race=monster
@@ -3429,15 +3551,15 @@ msgstr "巨大蜘蛛"
 
 #. [unit_type]: id=Giant Spider, race=monster
 #: data/core/units/monsters/Cave_Spider.cfg:20
-#, fuzzy
 msgid ""
 "Giant Spiders are said to roam the depths of Knalga, devouring many victims. "
 "They have a vicious bite, made worse by the fact that it is poisoned, and "
 "can also fling webs through the air to trap their prey."
 msgstr ""
-"巨大蜘蛛はKnalgaの深淵をさまよい歩いて多くの犠牲者を貪り食っていると 言われて"
-"います。彼らは接近戦では噛みついて敵に毒を与えることができます。 また、蜘蛛の"
-"巣を投射して、敵を遅くすることができます。"
+"巨大蜘蛛は Knalga の深淵をさまよい歩いて多くの犠牲者を貪り食っていると言われ"
+"ています。彼らには危険な噛みつきがあり、それは毒を持っているという事実によっ"
+"てより凶悪になります。また、彼らは空中に蜘蛛の巣を投射して、犠牲者を捕らえる"
+"こともできます。"
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Cave_Spider.cfg:49
@@ -3457,9 +3579,9 @@ msgid ""
 "distance. The best way to survive an encounter with these monsters is to "
 "remain ashore."
 msgstr ""
-"殺人魚は海中の巨大な生物です。彼らは巨大な触手によって敵をつかむことや、 毒を"
-"含んだ墨を吐くことができます。彼らと遭遇して生き残る最善の方法は、 浅瀬にとど"
-"まることです。"
+"殺人魚は海中の巨大な生物です。彼らは巨大な触手によって敵を掴んだり、毒を含ん"
+"だ墨を吐いたりできます。彼らと遭遇して生き残る最善の方法は、浅瀬にとどまるこ"
+"とです。"
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Cuttle_Fish.cfg:35
@@ -3491,6 +3613,14 @@ msgid ""
 "Battling a dragon is said to be the pinnacle of danger itself, fit only for "
 "fools, or the bravest of knights."
 msgstr ""
+"ドラゴンは伝説上の生物で、普通はおとぎ話の中にのみ見られます。彼らは大変希少"
+"で、歴史的な事象ではなく、これらの生物がかつて行った単独での都市や街の破壊"
+"は、ただの神話として退けられるかもしれません。伝説ではドラゴンの破壊行為につ"
+"いてとても詳細に述べられています。彼らの素晴らしい力、速さ、超自然的なずる"
+"さ、そしてそれ以上に、彼らの内部で燃えさかる業火について。\n"
+"\n"
+"ドラゴンと戦うのはそれ自体危険の極みと言えるでしょう。愚者か、そうでなければ"
+"最も勇敢な騎士にのみ相応しいものです。"
 
 #. [attack]: type=blade
 #: data/core/units/monsters/Fire_Dragon.cfg:31
@@ -3509,14 +3639,13 @@ msgstr "巨大泥蟲"
 
 #. [unit_type]: id=Giant Mudcrawler, race=monster
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:18
-#, fuzzy
 msgid ""
 "Giant Mudcrawlers are a larger kind of Mudcrawler, and are magical "
 "constructs of soil and water. They attack by belching lumps of mud at their "
 "foes, or by striking them with their fists."
 msgstr ""
-"巨大泥蟲は泥蟲よりも大きく、魔法によって土と水から造られました。 彼らは敵に泥"
-"のかたまりを噴射するか、あるいは拳で打ちつけることで攻撃します。"
+"巨大泥蟲は泥蟲よりも大きい種類で、魔法によって土と水から造られました。彼らは"
+"敵に泥の塊を噴射するか、あるいは拳で打ちつけることで攻撃します。"
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:47
@@ -3541,13 +3670,12 @@ msgstr "大サソリ"
 
 #. [unit_type]: id=Giant Scorpion, race=monster
 #: data/core/units/monsters/Giant_Scorpion.cfg:19
-#, fuzzy
 msgid ""
 "A normal scorpion is dangerous enough - the deadliness of one the size of a "
 "man needs little explanation."
 msgstr ""
-"普通のサソリでも十分危険ですが、…人間の大きさのものの危険性については、 説明"
-"はいらないでしょう。"
+"普通のサソリでも十分危険ですが、人間の大きさのものの危険性については、説明は"
+"要らないでしょう。"
 
 #. [attack]: type=pierce
 #: data/core/units/monsters/Giant_Scorpion.cfg:24
@@ -3570,8 +3698,8 @@ msgid ""
 "Mudcrawlers are magical constructs of soil and water. They attack by "
 "belching lumps of mud at their foes."
 msgstr ""
-"泥蟲は魔法によって土と水から造られています。彼らは敵に泥のかたまりを 噴射する"
-"ことで攻撃します。"
+"泥蟲は魔法によって土と水から造られています。彼らは敵に泥の塊を噴射することで"
+"攻撃します。"
 
 #. [unit_type]: id=Sea Serpent, race=monster
 #: data/core/units/monsters/Sea_Serpent.cfg:4
@@ -3582,8 +3710,7 @@ msgstr "シーサーパント"
 #: data/core/units/monsters/Sea_Serpent.cfg:22
 msgid ""
 "Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
-msgstr ""
-"シーサーパントは巨大な怪物で、 その体で船をひっくり返すことができます。"
+msgstr "シーサーパントは巨大な怪物で、その体で船をひっくり返すことができます。"
 
 #. [unit_type]: id=Skeletal Dragon, race=undead
 #: data/core/units/monsters/Skeletal_Dragon.cfg:4
@@ -3599,11 +3726,11 @@ msgid ""
 "like nothing more than a pile of bones, but few people who thought that way "
 "lived long enough to change their minds."
 msgstr ""
-"かつて、 もっとも強力な生物のひとつであった、 恐れられたドラゴンも ただの骨と"
-"筋だけとなってしまいました。 その死から長い時を経て、 降霊術師の暗黒の力に"
-"よって蘇えり、 今は彼に仕えています。 スケルトンドラゴンは、 ただの骨の山にし"
-"か見えないかもしれませんが、 そう考えた人間で、 その考えを改めるくらい 十分に"
-"生き長らえたものはほとんどいません。"
+"かつて、もっとも強力な生物のひとつであった、恐れられたドラゴンもただの骨と筋"
+"だけとなってしまいました。その死から長い時を経て、降霊術師の暗黒の力によって"
+"蘇り、今は彼に仕えています。スケルトンドラゴンは、ただの骨の山にしか見えない"
+"かもしれませんが、そう考えた人間で、その考えを改めるくらい十分に生き長らえた"
+"ものはほとんどいません。"
 
 #. [attack]: type=blade
 #: data/core/units/monsters/Skeletal_Dragon.cfg:30
@@ -3620,13 +3747,12 @@ msgstr "深淵のテンタクル"
 msgid ""
 "Tentacles of the Deep are the appendages of some greater monster that lurks "
 "below the waves."
-msgstr "深淵のテンタクルは、 波の下に隠れている巨大なモンスターの触手です。"
+msgstr "深淵のテンタクルは、波の下に隠れている何らかの巨大な怪物の触手です。"
 
 #. [unit_type]: id=Water Serpent, race=monster
 #: data/core/units/monsters/Water_Serpent.cfg:5
-#, fuzzy
 msgid "Water Serpent"
-msgstr "シーサーパント"
+msgstr "ウォーターサーパント"
 
 #. [unit_type]: id=Water Serpent, race=monster
 #: data/core/units/monsters/Water_Serpent.cfg:38
@@ -3636,6 +3762,10 @@ msgid ""
 "up as a primitive offshoot of the Nagas. What is certain is that it is wise "
 "to avoid waters where they are known to congregate."
 msgstr ""
+"ウォーターサーパントの祖先については、学者達は意見を異にしています。ある者は"
+"シーサーパントの未成熟な幼体か、たまは成熟した類縁であるとの立場を取っていま"
+"す。他の者はナーガの原始的な傍系であると見ています。確かなことは、これらが集"
+"うのが知られている水域は避けるのが賢いということです。"
 
 #. [unit_type]: id=Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:4
@@ -3648,6 +3778,8 @@ msgid ""
 "Wolves are aggressive animals that hunt in packs. Although weak "
 "individually, a wolf pack can kill even the strongest man in minutes."
 msgstr ""
+"狼は集団で狩りをする攻撃的な動物です。一匹一匹は弱くても、狼の群れは最強の人"
+"間でさえ数分で殺すことができます。"
 
 #. [unit_type]: id=Yeti, race=monster
 #: data/core/units/monsters/Yeti.cfg:4
@@ -3661,8 +3793,8 @@ msgid ""
 "snow-covered mountains. Few profess to have seen one, and their existence is "
 "doubted by many."
 msgstr ""
-"イェティについてはほとんど知られていませんが、猿のような生き物で、 人里離れ雪"
-"に覆われた山に住むんでいると言われています。見たという証言もわずかで、 多くの"
+"イェティについてはほとんど知られていませんが、猿のような生き物で、人里離れ雪"
+"に覆われた山に住むんでいると言われています。見たという証言もわずかで、多くの"
 "人にその存在は疑われています。"
 
 #. [unit_type]: id=Naga Fighter, race=naga
@@ -3672,7 +3804,6 @@ msgstr "ナーガの戦士"
 
 #. [unit_type]: id=Naga Fighter, race=naga
 #: data/core/units/nagas/Fighter.cfg:21
-#, fuzzy
 msgid ""
 "The serpentine naga are one of the few races capable of any meaningful "
 "mobility in water, giving them mastery of a whole world effectively "
@@ -3681,10 +3812,11 @@ msgid ""
 "abyss. They are small, and somewhat frail in form, but often much more "
 "nimble than their opponents."
 msgstr ""
-"ヘビの姿をとるナーガは水上での有効な移動力を持つ数少ない種族のひとつです。 し"
-"かし、彼らは真の海の生物ではなく、水呼吸できないために、深海へ移動する ことは"
-"できません。彼らは小さく、やわな体をしていますが、ほとんどの場合 敵よりも非常"
-"に素早く動作できます。"
+"ヘビの姿をとるナーガは水上での有効な移動力を持つ数少ない種族のひとつであり、"
+"陸の居住者には実質的に禁じられた世界全体の支配が与えられています。しかし、彼"
+"らは真の海の生物ではなく、水呼吸できないために、深海へ移動することはできませ"
+"ん。彼らは小さく、やわな体をしていますが、ほとんどの場合敵よりも非常に素早く"
+"動作できます。"
 
 #. [female]
 #: data/core/units/nagas/Fighter.cfg:153
@@ -3698,7 +3830,6 @@ msgstr "ミュルミドーン"
 
 #. [unit_type]: id=Naga Myrmidon, race=naga
 #: data/core/units/nagas/Myrmidon.cfg:22
-#, fuzzy
 msgid ""
 "The most practiced of the naga blademasters are initiated into the caste of "
 "the Myrmidon, masters of their twin-bladed art. They strike as fast as the "
@@ -3706,10 +3837,10 @@ msgid ""
 "are they potent enemies on any open terrain, but their ability to swim "
 "allows them deadly mobility in water."
 msgstr ""
-"ナーガの剣士としてもっとも熟練した彼らは、二刀流の達人であるミュルミドーンの "
-"階級に加わっています。彼らはヘビと同じくらい早く攻撃でき、優雅に踊りながら 攻"
-"撃を回避します。どのような開けた土地で敵に有効なだけでなく、水泳能力によって "
-"素晴しい移動力を持っています。"
+"ナーガの剣士として最も熟練した彼らは、二刀流の達人であるミュルミドーンの階級"
+"に加わっています。彼らは自身に似たヘビと同じくらい速く攻撃でき、優雅に踊りな"
+"がら攻撃を回避します。あらゆる開けた土地の敵に有効なだけでなく、水泳能力に"
+"よって素晴しい移動力を持っています。"
 
 #. [female]
 #: data/core/units/nagas/Myrmidon.cfg:95
@@ -3718,7 +3849,6 @@ msgstr "女ミュルミドーン"
 
 #. [female]
 #: data/core/units/nagas/Myrmidon.cfg:97
-#, fuzzy
 msgid ""
 "The most practiced of the nagani blademasters are initiated into the caste "
 "of the Myrmidon, masters of their twin-bladed art. They strike as fast as "
@@ -3726,10 +3856,10 @@ msgid ""
 "only are they potent enemies on any open terrain, but their ability to swim "
 "allows them a deadly mobility."
 msgstr ""
-"女ナーガの剣士としてもっとも熟練した彼女らは、二刀流の達人である ミュルミドー"
-"ンの階級に加わっています。彼らはヘビと同じくらい早く攻撃でき、 優雅に踊りなが"
-"ら攻撃を回避します。どのような開けた土地で敵に有効なだけでなく、 水泳能力に"
-"よって素晴しい移動力を持っています。"
+"女ナーガの剣士として最も熟練した彼女らは、二刀流の達人であるミュルミドーンの"
+"階級に加わっています。彼女らは自身に似たヘビと同じくらい速く攻撃でき、優雅に"
+"踊りながら攻撃を回避します。あらゆる開けた土地の敵に有効なだけでなく、水泳能"
+"力によって素晴しい移動力を持っています。"
 
 #. [unit_type]: id=Naga Warrior, race=naga
 #: data/core/units/nagas/Warrior.cfg:4
@@ -3738,7 +3868,6 @@ msgstr "ナーガの熟練戦士"
 
 #. [unit_type]: id=Naga Warrior, race=naga
 #: data/core/units/nagas/Warrior.cfg:20
-#, fuzzy
 msgid ""
 "The young warriors of the naga aspire to the day when they merit their "
 "second blade. Their martial practice of using twin blades is wholly unlike "
@@ -3747,10 +3876,10 @@ msgid ""
 "from blows. This makes them potent on land, but the friction of water "
 "greatly impedes the technique."
 msgstr ""
-"ナーガの若い戦士たちの多くは二刀流を熟達する日を熱望しています。彼らの 二刀流"
-"による格闘技能はオークや他の種族のものとは全く異なっており、彼らは ヘビの姿で"
-"もっとも効果的な技能である、攻撃回避の捻りや回転を学んでいます。 これは陸上で"
-"は有効ですが、水の抵抗がこれを行うことを大きく妨げます。"
+"ナーガの若い戦士達は二刀流に熟達する日を熱望しています。彼らの二刀流による格"
+"闘技能はオークや他の種族のものとは全く異なっており、彼らはヘビの姿でもっとも"
+"効果的な技能である、攻撃回避の捻りや回転を学んでいます。これは陸上では有効で"
+"すが、水の抵抗がこれを行うことを大きく妨げます。"
 
 #. [female]
 #: data/core/units/nagas/Warrior.cfg:92
@@ -3759,7 +3888,6 @@ msgstr "女ナーガの熟練戦士"
 
 #. [female]
 #: data/core/units/nagas/Warrior.cfg:94
-#, fuzzy
 msgid ""
 "Many of the young warriors of the nagani aspire for the day when they merit "
 "their second blade. Their martial practice of using twin blades is wholly "
@@ -3768,9 +3896,9 @@ msgid ""
 "dodge from blows. This makes them potent on land, but the friction of water "
 "greatly impedes their ability to do this."
 msgstr ""
-"ナーガの若い戦士たちの多くは二刀流を熟達する日を熱望しています。彼らの 二刀流"
-"による格闘技能はオークや他の種族のものとは全く異なっており、彼らは ヘビの姿で"
-"もっとも効果的な技能である、攻撃回避の捻りや回転を学んでいます。 これは陸上で"
+"女ナーガの若い戦士達の多くは二刀流を熟達する日を熱望しています。彼らの二刀流"
+"による格闘技能はオークや他の種族のものとは全く異なっており、彼らはヘビの姿で"
+"もっとも効果的な技能である、攻撃回避の捻りや回転を学んでいます。これは陸上で"
 "は有効ですが、水の抵抗がこれを行うことを大きく妨げます。"
 
 #. [unit_type]: id=Ogre, race=ogre
@@ -3786,8 +3914,8 @@ msgid ""
 "can be easily outrun or outsmarted, their strength is not to be "
 "underestimated."
 msgstr ""
-"オーガは通常は単独で荒野に棲む生き物で、巨大で醜くはありますが、姿は著しく 人"
-"間に似ています。素早さや知恵で彼らに打ち勝つのは簡単ですが、その腕力は 侮るこ"
+"オーガは通常は単独で荒野に棲む生き物で、巨大で醜くはありますが、姿は著しく人"
+"間に似ています。素早さや知恵で彼らに打ち勝つのは簡単ですが、その腕力は侮るこ"
 "とはできません。"
 
 #. [attack]: type=blade
@@ -3802,14 +3930,13 @@ msgstr "若者オーガ"
 
 #. [unit_type]: id=Young Ogre, race=ogre
 #: data/core/units/ogres/Young_Ogre.cfg:22
-#, fuzzy
 msgid ""
 "When still young, Ogres are sometimes captured and taken into armies to be "
 "trained. They cannot manage weapons skillfully, but they compensate for that "
 "lack with great strength."
 msgstr ""
-"まだ若い内にオーガは時々捕えられ、軍隊に入れて訓練させられます。彼らは それほ"
-"ど武器をそれほど上手に扱えませんが、彼等の怪力を考慮すると大したこと ではあり"
+"まだ若い内にオーガは時々捕えられ、軍隊に入れて訓練させられます。彼らはそれほ"
+"ど武器をそれほど上手に扱えませんが、彼らの怪力を考慮すると大したことではあり"
 "ません。"
 
 #. [unit_type]: id=Orcish Archer, race=orc
@@ -3819,7 +3946,6 @@ msgstr "オークの弓兵"
 
 #. [unit_type]: id=Orcish Archer, race=orc
 #: data/core/units/orcs/Archer.cfg:19
-#, fuzzy
 msgid ""
 "Amongst orcs, bows are often regarded as a cowardly weapon; but even orcs, "
 "especially youths and those of slight build, are pragmatic enough to use "
@@ -3827,9 +3953,11 @@ msgid ""
 "semblance of training. Even as poorly handled as they are, their weapons can "
 "still be quite deadly, and the wielders thereof rarely march alone."
 msgstr ""
-"オークの弓兵は遠くから敵を攻撃するため、多くの仲間のオークから下級の戦士で あ"
-"ると思われています。しかし、ほとんどのオークは弓の扱いを学んでいないため、 弓"
-"兵はオークの軍隊では不可欠な要素です。"
+"オークの間では、弓はしばしば臆病者の武器とみなされています。しかしオークです"
+"らも、特に若者とあまり成長しなかった者は、そのことにも関わらず、弓を使うのは"
+"実用上十分です。オークの射手の装備が整っているのは稀ですし、訓練した様子も見"
+"られません。彼らの扱いが雑であっても、彼らの武器はまったく致死的となり得ま"
+"す。そして射手はそのことから一人で進撃することは滅多にありません。"
 
 #. [unit_type]: id=Orcish Assassin, race=orc
 #: data/core/units/orcs/Assassin.cfg:4
@@ -3838,7 +3966,6 @@ msgstr "オークの暗殺者"
 
 #. [unit_type]: id=Orcish Assassin, race=orc
 #: data/core/units/orcs/Assassin.cfg:22
-#, fuzzy
 msgid ""
 "Though some consider it cowardly to use, poison is a weapon favored by orcs, "
 "especially those weak of frame. Orcish assassins, who use it on throwing "
@@ -3846,10 +3973,11 @@ msgid ""
 "nimble. Though rarely the ones who deal the killing blow, their tactics are "
 "a considerable aid to their larger and more brutal kin."
 msgstr ""
-"それを使うのは臆病だと考える者もいるでしょうが、毒は特に体格的に劣った オーク"
-"に好まれる武器です。これを投げナイフに使うオークの暗殺者は驚くほど 素早いので"
-"すが、少し弱いです。とどめの一撃を与える者になることはほとんど ありませんが、"
-"彼らの戦術はより大きくて荒々しい彼らの一族にとって重要な助けと なります。"
+"それを使うのは臆病だと考える者もいるでしょうが、毒は特に体格的に劣ったオーク"
+"に好まれる武器です。これを投げナイフに使うオークの暗殺者は、オークの基準から"
+"は概して虚弱ですが、驚くほど素早いのです。とどめの一撃を与える者になることは"
+"ほとんどありませんが、彼らの戦術はより大きくて荒々しい彼らの一族にとって重要"
+"な助けとなります。"
 
 #. [attack]: type=blade
 #: data/core/units/orcs/Assassin.cfg:35 data/core/units/orcs/Slayer.cfg:36
@@ -3863,16 +3991,16 @@ msgstr "オークのクロスボウ兵"
 
 #. [unit_type]: id=Orcish Crossbowman, race=orc
 #: data/core/units/orcs/Crossbowman.cfg:18
-#, fuzzy
 msgid ""
 "Orcish crossbows are crude imitations of human or dwarvish design; a "
 "crossbow of any make, though, is a fairly potent device. The orcs privileged "
 "enough to wield them are capable warriors, and what they lack in finesse, "
 "they make up for in numbers."
 msgstr ""
-"オークのクロスボウ兵は技能の低さを補うのに十分な威力の武器を備えています。 エ"
-"ルフの射撃手と比べると投射攻撃において効果的ではありませんが、彼らは頑強で あ"
-"るため、格闘戦においてはエルフよりも少しだけ有利です。"
+"オークのクロスボウは人間やドワーフによる設計物の粗悪な模造品です。ですが、ク"
+"ロスボウは誰が作ったものであれ、十分に有力な装置です。これらを扱うに足る権利"
+"を与えられたオークは有能な戦士であり、巧妙さに欠けていても、彼らは数で補いま"
+"す。"
 
 #. [unit_type]: id=Orcish Grunt, race=orc
 #: data/core/units/orcs/Grunt.cfg:4
@@ -3886,7 +4014,7 @@ msgid ""
 "or elven fighters, Grunts can deliver much more powerful blows, and take "
 "more hits before falling."
 msgstr ""
-"オークの兵卒はオーク軍隊の中核です。人間やエルフの戦士よりも遅いですが、 オー"
+"オークの兵卒はオーク軍隊の中核です。人間やエルフの戦士よりも遅いですが、オー"
 "クの兵卒はより強力な攻撃ができ、倒されるまでにより多くの攻撃を命中させます。"
 
 #. [unit_type]: id=Orcish Leader, race=orc
@@ -3896,7 +4024,6 @@ msgstr "オークのリーダー"
 
 #. [unit_type]: id=Orcish Leader, race=orc
 #: data/core/units/orcs/Leader.cfg:19
-#, fuzzy
 msgid ""
 "Unusually cunning orcs tend to find themselves as the leaders of warrior "
 "bands. They carry a bow out of necessity, but are much more skilled with the "
@@ -3904,10 +4031,10 @@ msgid ""
 "rapport with their kin, especially goblins, and can inspire them to fight "
 "with uncharacteristic boldness."
 msgstr ""
-"オークの支配者は彼らの部族の族長です。彼らは重要な決定を下し、戦闘時には 彼ら"
-"の民を統率します。彼らは必要に応じて弓も使用しますが、剣技に非常に長けて お"
-"り、全員が強力な戦士です。生来の統率技能によって、彼らは戦闘時には非常に 貴重"
-"な存在となります。この支配者が死亡したら、戦闘も敗北です。"
+"非常に賢いオークは自分自身を戦士団のリーダーとして認識していきます。彼らは必"
+"要に迫られて弓を携えていますが、剣技の方にもっと習熟しています。これらのオー"
+"クは強力な戦士ですが、彼らの一族、特にゴブリンと、ある種の親密さも持っていま"
+"す。そして彼らを鼓舞して、彼ららしからぬ大胆さを持って戦えるようにします。"
 
 #. [unit_type]: id=Orcish Ruler, race=orc
 #: data/core/units/orcs/Ruler.cfg:4
@@ -3923,6 +4050,10 @@ msgid ""
 "their rare ability to rally other orcs to battle, to give orders that are "
 "followed not out of fear, but loyalty."
 msgstr ""
+"不和と内輪揉めから大部族を保持できるようなオークは、しばしば非常に知的で指揮"
+"に優れ、そして必然的にとても強くもなります。彼らは剣と弓に熟練しますが、彼ら"
+"の本当の才能は、他のオークを戦闘に駆り立て、恐怖心ではなく忠誠心で命令に従わ"
+"せるという希少な能力にあります。"
 
 #. [attack]: type=blade
 #: data/core/units/orcs/Ruler.cfg:27 data/core/units/orcs/Sovereign.cfg:28
@@ -3937,7 +4068,6 @@ msgstr "オークの殺戮者"
 
 #. [unit_type]: id=Orcish Slayer, race=orc
 #: data/core/units/orcs/Slayer.cfg:22
-#, fuzzy
 msgid ""
 "The larger or more skilled orcish assassins are called 'Slayers' by their "
 "enemies. Slayers are fast on their feet, and quite nimble in combat, "
@@ -3945,11 +4075,10 @@ msgid ""
 "poison, is a vicious tool, and its common use on the battlefield is often "
 "the real cause of orcish supremacy."
 msgstr ""
-"区別は多少不明瞭ですが、より大きく、しばしばより熟練したオークの暗殺者は 彼ら"
-"の敵から「殺戮者」と呼ばれます。殺戮者は足が速く、戦闘においてとても すばやい"
-"ですが、彼らは防具を身につけないことでそれを実現しています。彼らの えり抜きの"
-"武器、毒は危険な道具で、戦場における主な使い方はしばしばオークの 覇権の本当の"
-"原因です。"
+"より大きく、より熟練したオークの暗殺者は彼らの敵から「殺戮者」と呼ばれます。"
+"殺戮者は足が速く、戦闘においてとてもすばやいですが、彼らは防具を身につけない"
+"ことでそれを実現しています。彼らのえり抜きの武器、毒は危険な道具で、戦場にお"
+"けるそれの主な使い方はしばしばオークの覇権の本当の原因です。"
 
 #. [unit_type]: id=Orcish Slurbow, race=orc
 #: data/core/units/orcs/Slurbow.cfg:4
@@ -3958,7 +4087,6 @@ msgstr "オークのスラーボウ兵"
 
 #. [unit_type]: id=Orcish Slurbow, race=orc
 #: data/core/units/orcs/Slurbow.cfg:23
-#, fuzzy
 msgid ""
 "The basic design of a crossbow gives rise to the arbalest or 'slurbow'; a "
 "much more intricate device, complete with a hand-turned cranequin to re-cock "
@@ -3970,10 +4098,14 @@ msgid ""
 "Orcs prize any such weapons they can manage to plunder, and they invariably "
 "end up in the hands of their strongest and most cunning archers."
 msgstr ""
-"スラーボウ兵はクレインクインと金属の円筒を追加することで彼らのクロスボウを 改"
-"良しました。その結果、彼らは致命的な強さと精度で矢を放つことができるように な"
-"ります。エルフや人間の似たユニットよりも投射戦闘において相変わらず弱いまま で"
-"すが、格闘の強さと持久力においてまだ優位に立っています。"
+"アルバレストあるいは「スラーボウ」は、クロスボウの基本的な設計から発生したも"
+"のです。この更に難解な装置は、武器を再装填する手回し式の巻き上げ機で仕上げら"
+"れています。しばしば複数の弓を持ち、薄板または骨で出来ており、弾を発射しま"
+"す。このような装置は扱いが楽で、単純なクロスボウよりも更に強力です。また、そ"
+"れはオークの製法が及ばないものでもあります。\n"
+"\n"
+"どうにか略奪できたこのような武器をオークは評価しており、最後には常に最も強く"
+"狡猾な射手の手に渡ります。"
 
 #. [unit_type]: id=Orcish Sovereign, race=orc
 #: data/core/units/orcs/Sovereign.cfg:4
@@ -3990,6 +4122,11 @@ msgid ""
 "the civilized races of the world. The surest way to disperse such a host is "
 "to slay this rare orc who can hold it together."
 msgstr ""
+"時折、天性のカリスマを持ち、種族全体を指揮するオークが現れることがあります。"
+"もし彼がさらに初期の権力闘争を生き延びられるほど強く狡猾であった場合、必然的"
+"に自分自身が戦士の大群を率いているのに気づきます。そして必然的に世界の文明的"
+"な種族にとって多数の騒乱の種となります。大軍を維持できるこの珍しいオークを一"
+"緒に殺してしまうのが、このような大軍を分散させる最も確実な方法です。"
 
 #. [unit_type]: id=Orcish Warlord, race=orc
 #: data/core/units/orcs/Warlord.cfg:4
@@ -3998,14 +4135,14 @@ msgstr "オークの将軍"
 
 #. [unit_type]: id=Orcish Warlord, race=orc
 #: data/core/units/orcs/Warlord.cfg:19
-#, fuzzy
 msgid ""
 "Only orcs with both great cunning and unsurpassed strength can become "
 "Warlords. Masters of the sword, and even possessing some skill with the bow, "
 "these beast-warriors lead their brethren with iron will and iron hand."
 msgstr ""
-"非常に狡猾で卓越した力を持つオークだけが将軍になることができます。剣の 達人で"
-"弓の能力さえも持つ、この残忍な戦士が鉄の手をもつ彼等の同胞を統率します。"
+"非常に狡猾で卓越した力を持つオークだけが将軍になることができます。剣の達人で"
+"弓の能力さえも持つ、この残忍な戦士が鋼鉄の意思と手を持つ彼らの同胞を統率しま"
+"す。"
 
 #. [unit_type]: id=Orcish Warrior, race=orc
 #: data/core/units/orcs/Warrior.cfg:4
@@ -4019,7 +4156,7 @@ msgid ""
 "respected among the Orcs, and highly feared by their foes. Their only "
 "weakness is their inability to wield the bow."
 msgstr ""
-"二刀流の剣技に長けているオークの戦士はオークの中では非常に尊敬されており、 敵"
+"二刀流の剣技に長けているオークの戦士はオークの中では非常に尊敬されており、敵"
 "には非常に恐れられています。弓を使用できないことが唯一の彼らの弱点です。"
 
 #. [unit_type]: id=Saurian Ambusher, race=lizard
@@ -4029,7 +4166,6 @@ msgstr "トカゲの熟練散兵"
 
 #. [unit_type]: id=Saurian Ambusher, race=lizard
 #: data/core/units/saurians/Ambusher.cfg:19
-#, fuzzy
 msgid ""
 "Saurians are light on their feet, and able at navigating terrain that often "
 "confounds their enemies. When this natural mobility is combined with "
@@ -4039,11 +4175,11 @@ msgid ""
 "take advantage of the smallest gap in an enemy line, and have the prowess to "
 "make the enemy regret tactical mistakes."
 msgstr ""
-"トカゲ族は素早く、彼らの敵を困らせような地形を進むのが非常に得意です。 経験や"
-"強さ、装備を得れば、彼らの戦士は戦闘において特に脅威となるでしょう。 というの"
-"は、彼らを閉じ込めることは他の敵よりも非常に難しいからです。 防具をつけていて"
-"も、トカゲの戦士は敵の前線の最も小さな隙間をたくみに利用し、 敵に過ちを後悔さ"
-"せる優れた能力を持っています。"
+"トカゲ族は足が軽く、彼らの敵を困らせような地形を進むのが得意です。この生来の"
+"機動力が経験や強さ、正式の装備と結びつけば、彼らの戦士は戦闘において特に脅威"
+"となるでしょう。彼らを閉じ込めることは他の敵よりも非常に難しいということのみ"
+"を取り上げたとしても。防具をつけていてもトカゲの戦士は敵の前線のわずかな隙間"
+"をたくみに利用でき、敵に戦術的な過ちを後悔させる勇気を持っています。"
 
 #. [unit_type]: id=Saurian Augur, race=lizard
 #: data/core/units/saurians/Augur.cfg:4
@@ -4052,15 +4188,14 @@ msgstr "トカゲの占い師"
 
 #. [unit_type]: id=Saurian Augur, race=lizard
 #: data/core/units/saurians/Augur.cfg:21
-#, fuzzy
 msgid ""
 "Saurians have some knowledge of what men call sorcery, but their practice of "
 "it reeks of augury and black magic. It is little understood, but rightly "
 "regarded with fear by those against whom it is used."
 msgstr ""
-"トカゲ族は人間が魔法と呼んでいる何らかの能力を持っています。 そのひとつは占い"
-"を思わせるもので、すべて不快な魔術です。 それはたいしたことのないものと理解さ"
-"れるかもしれませんが、それを使われるものにとっては恐怖と見なされます。"
+"トカゲ族は人間が魔法と呼んでいる何らかの知識を持っています。ですが彼らのそれ"
+"の実践は占いと黒魔術を思わせるものです。それが何なのかあまり理解されていませ"
+"んが、それを使われるものにとってはまさしく恐怖と見なされます。"
 
 #. [attack]: type=cold
 #: data/core/units/saurians/Augur.cfg:87
@@ -4076,7 +4211,6 @@ msgstr "トカゲの精鋭散兵"
 
 #. [unit_type]: id=Saurian Flanker, race=lizard
 #: data/core/units/saurians/Flanker.cfg:20
-#, fuzzy
 msgid ""
 "Saurian warriors are generally weaker in frame than their elven or human "
 "counterparts. This is of course a relative term, and they can still become "
@@ -4097,7 +4231,6 @@ msgstr "トカゲの神官"
 
 #. [unit_type]: id=Saurian Oracle, race=lizard
 #: data/core/units/saurians/Oracle.cfg:21
-#, fuzzy
 msgid ""
 "Certain saurians are seen dressed in arcane regalia and covered head to toe "
 "in horrifying, esoteric shapes and markings, both with paint and tattoo. "
@@ -4106,11 +4239,11 @@ msgid ""
 "the strange magics their kind possess, and are beings to be wary of if ever "
 "seen."
 msgstr ""
-"一部のトカゲ族は、重要な王権の象徴として、頭からつま先まで、塗料と入れ墨で描"
-"かれた恐ろしい、秘密の形や模様に覆われています。ある者は彼らを空想家、あるい"
-"は彼らの種族の中の神官だろうと考えています。しかし、彼らが持っている「社会的"
-"な」機能がなんであれ、彼らはまぎれもなく強力です。彼らの種族の持つ奇妙な魔法"
-"のために。そして彼らはいつでも警戒すべき存在です。"
+"一部のトカゲ族は神秘的な王権の象徴で着飾り、頭からつま先まで、塗料と入れ墨で"
+"描かれた恐ろしい、秘密の形や模様に覆われています。ある者は彼らを彼らの種族の"
+"中の幻視者、あるいは神官だろうと考えています。しかし、彼らが持っている「社会"
+"的な」役割がなんであれ、彼らはまぎれもなく強力です。彼らの種族の持つ奇妙な魔"
+"法のために。そして彼らはいつでも警戒すべき存在です。"
 
 #. [unit_type]: id=Saurian Skirmisher, race=lizard
 #: data/core/units/saurians/Skirmisher.cfg:4
@@ -4129,12 +4262,12 @@ msgid ""
 "spear with enough force to do considerable damage, either in hand or thrown."
 msgstr ""
 "トカゲ族は体格がとても小さく、そのためにいくぶん弱いのですが、彼らは大変機敏"
-"です。 戦闘においては、その大きさのおかげで、人間の大人も寄せつけないような防"
-"御を素早く通り抜けることができます。 これにより、彼らに対処する者にとって油断"
+"です。戦闘においては、その大きさのおかげで、人間の大人も寄せつけないような防"
+"御を素早く通り抜けることができます。これにより、彼らに対処する者にとって油断"
 "のならない敵となっています。\n"
 "\n"
-"彼らは槍を好みます。 それは彼らの強力な後ろ足によって大きなダメージを与えるた"
-"めの十分な力を槍に与えることができるからです。 槍を手に持って使うかにしても、"
+"彼らは槍を好みます。それは彼らの強力な後ろ足によって大きなダメージを与えるた"
+"めの十分な力を槍に与えることができるからです。槍を手に持って使うかにしても、"
 "投げるにしても。"
 
 #. [unit_type]: id=Saurian Soothsayer, race=lizard
@@ -4168,9 +4301,9 @@ msgid ""
 "tales about trolls, and to see the stories made flesh does nothing to "
 "diminish their grandeur."
 msgstr ""
-"生まれながらに異常な怪力を授かったトロルが年齢と知恵に見合うならば、 何世代に"
-"も渡り記憶に残る獣である並み外れたものとなります。彼等の力の妙技と 狡猾さはト"
-"ロルに関するほとんどの言い伝えの出所であり、肉体となった物語を 見ても、彼等の"
+"生まれながらに異常な怪力を授かったトロルが年齢と知恵に見合うならば、何世代に"
+"も渡り記憶に残る獣である並み外れたものとなります。彼らの力の妙技と狡猾さはト"
+"ロルに関するほとんどの言い伝えの出所であり、肉体となった物語を見ても、彼らの"
 "威厳をなくすことは全くありません。"
 
 #. [unit_type]: id=Troll Hero, race=troll
@@ -4180,14 +4313,13 @@ msgstr "トロルの英雄"
 
 #. [unit_type]: id=Troll Hero, race=troll
 #: data/core/units/trolls/Hero.cfg:18
-#, fuzzy
 msgid ""
 "Some trolls are born with an exceptional share of the strength and vitality "
 "that characterizes their race. In a society where might makes right, those "
 "of their ilk revere them as heroes."
 msgstr ""
-"トロルの中には彼らの種族を特徴づける過剰なほどの強さと生命力を併せ持つ者が い"
-"ます。力を持つ者が正しいとされる社会において、彼らの種族は彼らを英雄として 崇"
+"トロルの中には彼らの種族を特徴づける過剰なほどの強さと生命力を併せ持つ者がい"
+"ます。力を持つ者が正しいとされる社会において、彼らの種族は彼らを英雄として崇"
 "拝します。"
 
 #. [unit_type]: id=Troll Rocklobber, race=troll
@@ -4197,7 +4329,6 @@ msgstr "トロルの投石手"
 
 #. [unit_type]: id=Troll Rocklobber, race=troll
 #: data/core/units/trolls/Rocklobber.cfg:20
-#, fuzzy
 msgid ""
 "The thought of throwing a boulder in combat has certainly occurred to many "
 "trolls, and some have taken to them as a weapon of choice. Because stones "
@@ -4205,14 +4336,11 @@ msgid ""
 "to carrying them in sacks slung over their shoulders. The same leather out "
 "of which the sack is formed is easily adapted to a crude sling."
 msgstr ""
-"戦闘で大きな丸石を投げるという考えは、多くのトロルが確実に思い浮かべます。 そ"
-"して一部の者は武器の選択の一つとしてそれを使い始めました。これらの石は いつで"
-"も簡単に見つけることができるわけではないため、投石手はそれらを袋に 入れて肩に"
-"担いで運ぶようになりました。袋を形作るのと同じ革は粗末な投石機に 簡単に適合し"
-"ます。\n"
-"\n"
-"特記事項: 扱いにくいのですが、これらの怪物によって投げられる石は、もし あたれ"
-"ばどんな矢よりも致命的です。"
+"戦闘で大きな丸石を投げるという考えは、多くのトロルが確実に思い浮かべます。そ"
+"して一部の者は武器の選択の一つとしてそれを使い始めました。投げ飛ばすのにちょ"
+"うどいい形状の石はいつでも簡単に見つけることができるわけではないため、投石手"
+"はそれらを袋に入れて肩に担いで運ぶようになりました。袋を形作るのと同じ革は粗"
+"末な投石機に簡単に適合します。"
 
 #. [unit_type]: id=Troll, race=troll
 #: data/core/units/trolls/Troll.cfg:4
@@ -4221,7 +4349,6 @@ msgstr "トロル"
 
 #. [unit_type]: id=Troll, race=troll
 #: data/core/units/trolls/Troll.cfg:18
-#, fuzzy
 msgid ""
 "Trolls have long troubled the thoughts of humanity and dwarf-kind. Sages "
 "remain baffled at the origins of these creatures and the driving force "
@@ -4230,18 +4357,16 @@ msgid ""
 "clubs typically favored in fighting act as extensions of their arms, used "
 "for the same purpose of mauling their prey into submission."
 msgstr ""
-"トロルはこれらの生き物が原因で困ったままの人間やドワーフ族を悩ませる頭痛の 種"
-"でした。そしておそらくもっと重要なことは、彼らの異常な生命力と強さを味方に つ"
-"けることでした。成長したトロルは人間の上にそびえ立ち、武装していなくても 戦闘"
-"において大きな脅威になるでしょう。戦闘でよく好まれる大きなこん棒は彼らの 武器"
-"を拡張するものとして働き、彼らの犠牲者を大槌で打って服従させるのと同じ 目的に"
-"使われます。"
+"トロルは長らく人間とドワーフ族を悩ませる頭痛の種でした。これらの生物の起源"
+"と、彼らの異常な生命力と強さの背後にある駆動力については、賢者達も困惑したま"
+"まです。成長したトロルは人間の上にそびえ立ち、武装していなくても戦闘において"
+"大きな脅威になるでしょう。戦闘でよく好まれる大きな棍棒は彼らの腕の延長として"
+"働き、彼らの犠牲者を大槌で打って服従させるのと同じ目的に使われます。"
 
 #. [unit_type]: id=Troll Shaman, race=troll
 #: data/core/units/trolls/Troll_Shaman.cfg:4
-#, fuzzy
 msgid "Troll Shaman"
-msgstr "トロルの子供"
+msgstr "トロルの呪術師"
 
 #. [unit_type]: id=Troll Shaman, race=troll
 #: data/core/units/trolls/Troll_Shaman.cfg:24
@@ -4250,11 +4375,14 @@ msgid ""
 "or tough as other trolls, their true power lies in their fire magic, which "
 "they use to blast enemies with gouts of flame."
 msgstr ""
+"トロルの呪術師はトロル族の神秘的な指導者です。他のトロルより強くも丈夫でもあ"
+"りませんが、彼らの真の力は、敵を炎の塊で吹き飛ばすのに使われる火の魔術にあり"
+"ます。"
 
 #. [attack]: type=fire
 #: data/core/units/trolls/Troll_Shaman.cfg:41
 msgid "flame blast"
-msgstr ""
+msgstr "爆炎"
 
 #. [unit_type]: id=Troll Warrior, race=troll
 #: data/core/units/trolls/Warrior.cfg:4
@@ -4263,7 +4391,6 @@ msgstr "トロルの戦士"
 
 #. [unit_type]: id=Troll Warrior, race=troll
 #: data/core/units/trolls/Warrior.cfg:20
-#, fuzzy
 msgid ""
 "Trolls typically neither need nor prefer to use any proper armament in "
 "combat, as large 'sticks and stones' serve them all too well. However, "
@@ -4274,14 +4401,14 @@ msgid ""
 "kind. Given how dangerous a troll is with its bare hands, the thought of a "
 "troll with proper armament is entirely unsettling."
 msgstr ""
-"トロルは概して戦闘で武器を使う必要がなく、また好みません。大きな「棒や石」が "
-"あればそれで十分だからです。しかしながら、トロルは滑り止めの蹄鉄をつけた 防具"
-"を着て金属のハンマーを持っている姿が何度か目撃されています。これは彼らの 代表"
-"的な同盟者であるオークがこれらの供給元であり、またしばしば作成者であると 推測"
-"されます。いくつかの強制退去させられたトロルの穴の調査によって道具が 使われた"
-"というわずかな証拠は見つかっていますが、どんな金属加工の跡も見つかって いませ"
-"ん。トロルが戦闘においてどれだけ危険かを考えると、完全武装した トロルを考える"
-"のは非常に不安を与えるものです。"
+"トロルは概して戦闘で武器を使う必要がなく、また好みません。大きな「棒や石」が"
+"あればそれで十分だからです。しかしながら、トロルは滑り止めの蹄鉄をつけた防具"
+"を着て金属のハンマーを持っている姿が何度も目撃されています。彼らの代表的な同"
+"盟者であるオークがこれらの供給元であり、また作成者であると推測されます。いく"
+"つかの強制退去させられたトロルの穴の調査によって道具が使われたというわずかな"
+"証拠は見つかっていますが、どんな金属加工の跡も見つかっていません。トロルが素"
+"手でどれだけ危険かを考えると、完全武装したトロルを考えるのは非常に不安を与え"
+"るものです。"
 
 #. [unit_type]: id=Troll Whelp, race=troll
 #: data/core/units/trolls/Whelp.cfg:4
@@ -4290,7 +4417,6 @@ msgstr "トロルの子供"
 
 #. [unit_type]: id=Troll Whelp, race=troll
 #: data/core/units/trolls/Whelp.cfg:20
-#, fuzzy
 msgid ""
 "Describing a troll as a whelp is something of an oxymoron, given that their "
 "bodies are already much hardier than that of a grown man. They are clumsy "
@@ -4298,11 +4424,11 @@ msgid ""
 "all fours, but any difficulty this causes them is more than made up for by "
 "the raw strength of their race."
 msgstr ""
-"トロルを子供と呼ぶのはある種の矛盾語法です。彼らの身体はすでに成長した 人間よ"
-"りもより頑丈だからです。彼らは不器用でまだちゃんと歩くことができず、 代わりに"
-"ほぼ 4 本足でよたよた歩くことを余儀なくされます。しかしこのことが 彼らに引き"
-"起こすいかなる阻害も、彼らの種族が元々持つ強さが補うものよりも 大きいというこ"
-"とはありません。"
+"トロルを子供と呼ぶのはある種の矛盾語法です。彼らの身体はすでに成長した人間よ"
+"りもより頑丈だからです。彼らは不器用でまだちゃんと歩くことができず、代わりに"
+"ほぼ 4 本足でよたよた歩くことを余儀なくされます。しかしこのことが彼らに引き起"
+"こすいかなる阻害も、彼らの種族が元々持つ強さが補うものよりも大きいということ"
+"はありません。"
 
 #. [unit_type]: id=Ghoul, race=undead
 #: data/core/units/undead/Corpse_Ghoul.cfg:4
@@ -4311,7 +4437,6 @@ msgstr "グール"
 
 #. [unit_type]: id=Ghoul, race=undead
 #: data/core/units/undead/Corpse_Ghoul.cfg:22
-#, fuzzy
 msgid ""
 "Only the more perverse and sadistic of necromancers know what must be done "
 "to turn a person into a ghoul, and it is a secret they are not telling. The "
@@ -4322,14 +4447,13 @@ msgid ""
 "It is because of such things that necromancy is condemned with an almost "
 "primal hatred in all civilized lands."
 msgstr ""
-"降霊術の全体を探求してきた者だけが人間をグールに変えるために何がなされる べき"
-"かを知っており、それは彼等が教えようとしない秘密です。彼等が行ってきた 言語に"
-"絶する儀式が何であったとしても、その結果は人間であった日のことは何も 憶えてい"
-"ない獣であり、生まれた時の裸のままよろよろ歩いて、死体を腹いっぱいに 詰め込む"
-"物です。\n"
+"最も邪悪で残虐な者だけが人間をグールに変えるために何がなされるべきかを知って"
+"おり、それは彼らが教えようとしない秘密です。しかしながら、その結果はあまりに"
+"もよく知られています。人間であった日のことは何も憶えていない獣であり、生まれ"
+"た時の裸のままよろよろ歩いて、死体を腹いっぱいに詰め込む物です。\n"
 "\n"
-"降霊術がほぼ第一級の嫌悪により使用禁止になっているのは、そのような理由からで"
-"す。"
+"降霊術があらゆる文明化された土地でほぼ第一級の嫌悪により使用禁止になっている"
+"のは、そのような理由からです。"
 
 #. [unit_type]: id=Necrophage, race=undead
 #: data/core/units/undead/Corpse_Necrophage.cfg:4
@@ -4348,6 +4472,13 @@ msgid ""
 "- a process about which almost nothing is known, but which can be nothing "
 "but nightmarish."
 msgstr ""
+"ネクロファージ、またの名を「死体をむさぼるもの」は、人間との粗雑な類似点だけ"
+"を持った、怪物的な、太った物体です。その移動能力にも関わらず、すっかり腐った"
+"ような外見をしています。彼らの血液は病気と毒に満ちていて、また相応の悪臭があ"
+"ります。これらについての最も胸の悪くなるような事実は、彼らにかけられた邪悪な"
+"魔術の痕跡を知覚できる者のみにとっては明らかなのですが、生きた人間からどうに"
+"かして作り出されたというものです。その過程はほとんど何も知られていませんが、"
+"それは悪夢以外の何物でもないでしょう。"
 
 #. [unit_type]: id=Soulless, race=undead
 #: data/core/units/undead/Corpse_Soulless.cfg:6
@@ -4362,6 +4493,10 @@ msgid ""
 "unwilling corpses. These shamblers are often numerous, but fragile; a touch "
 "of combat can waken them, though, making them far more formidable."
 msgstr ""
+"死体を操る技術は不運にも暗黒の技術として良く知られています。実施者はしばしば"
+"望まない死体から下僕と戦士を蘇らせるためにそれを使います。このよろよろ歩く者"
+"達は、たびたび大量に現れます。ですが、脆く、ちょっとした戦闘で弱ります。それ"
+"でも集団になることで非常に侮りにくくなります。"
 
 #. [attack]: type=impact
 #. [attack]: type=arcane
@@ -4380,14 +4515,14 @@ msgstr "歩く死体"
 
 #. [unit_type]: id=Walking Corpse, race=undead
 #: data/core/units/undead/Corpse_Walking.cfg:19
-#, fuzzy
 msgid ""
 "Walking Corpses are the bodies of the dead, re-animated by dark magic. "
 "Though not especially dangerous to a trained soldier, the sight of one's "
 "former comrades amongst their number is frightening to say the least."
 msgstr ""
-"歩く死体は、 黒魔術によって 動かされている 死体です。戦闘には弱いですが、 こ"
-"れらのゾンビは 倒した相手に呪いを広げ、 不死の軍隊を増やしていきます。"
+"歩く死体は、黒魔術によって動かされている死者の肉体です。訓練を受けた兵士には"
+"特に危険なものではありませんが、その数の中に以前の仲間がいる光景は控えめに"
+"言っても恐ろしいものです。"
 
 #. [unit_type]: id=Ancient Lich, race=undead
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:4
@@ -4396,13 +4531,12 @@ msgstr "古代リッチ"
 
 #. [unit_type]: id=Ancient Lich, race=undead
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:25
-#, fuzzy
 msgid ""
 "A being of this order is a revenant of ages long past. Anyone who encounters "
 "an Ancient Lich likely has far worse things to worry about than death."
 msgstr ""
-"この種族の存在は長く過ぎ去った年月の伝令です。古代リッチに遭遇した者は 誰でも"
-"死よりもずっと悪い事を心配します。"
+"この種族の存在は長く過ぎ去った年月の蘇ってきた者です。古代リッチに遭遇した者"
+"は誰でも死よりもずっと悪い事を心配します。"
 
 #. [attack]: type=cold
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:60
@@ -4438,13 +4572,13 @@ msgid ""
 "In such condition, their only weapon is the craft they have so committed "
 "themselves to learning."
 msgstr ""
-"いかなる専門家も惹きつけられる黒魔術の誘惑は、文明世界ではその芸術を 学んで捕"
-"らえられると死刑宣告を受けるにもかかわらず、まさに大きな賞です。 そしていまだ"
-"この芸術を追い求める者達がおり、その賞がもたらすものは 不死以外の何物ではあり"
-"ません。秘密の教団内で隠されていたり、地下世界の 暗黒の儀式において伝授され、"
-"これらの狂信者が耐えなければならない訓練は、 彼等を消耗させ衰弱させます。\n"
+"いかなる専門家も惹きつけられる黒魔術の誘惑は、文明世界ではその芸術を学んで捕"
+"らえられると死刑宣告を受けるにもかかわらず、まさに大きな賞です。そしていまだ"
+"この芸術を追い求める者達がおり、その賞がもたらすものは不死以外の何物ではあり"
+"ません。秘密の教団内で隠されていたり、地下世界の暗黒の儀式において伝授され、"
+"これらの狂信者が耐えなければならない訓練は、彼らを消耗させ衰弱させます。\n"
 "\n"
-"そのような制約において、彼等の唯一の武器は彼等が学ぶことに専心した 技巧になり"
+"そのような制約において、彼らの唯一の武器は彼らが学ぶことに専心した技巧になり"
 "ます。"
 
 #. [attack]: type=cold
@@ -4483,6 +4617,18 @@ msgid ""
 "a loyalty any tyrant would dream of, and it is tempting to those with even "
 "the slightest desire for power."
 msgstr ""
+"黒魔術によって起き上がる恐怖は、それを取り巻く秘密と恐ろしい噂によって増強さ"
+"れています。黒魔術師は生と死の秘密を紐解き始めました。その後者を加えるのはあ"
+"まりにも容易です。その仕事により、魂と不活性な物質の間のつながりについて、最"
+"初のぼんやりとした光が得られ、そしてそのつながりを操る最初の実験に成功しま"
+"す。死の背後に潜む恐ろしい未知が感じ取られ、必然的にその深さが測られまし"
+"た。\n"
+"\n"
+"それを用いて自然の支配から彼ら自身の不死性を奪い取るというどんな意図にも関わ"
+"らず、彼らの仕事の最初の結果は、即物的で不快な応用でした。彼らが死体に吹き込"
+"んだ生命は彼らの下僕を作成できます。下僕は働き、また殺すこともでき、決して主"
+"人に疑問を抱きません。これらの創造物はあらゆる暴君が夢見た忠誠心を持ち、力へ"
+"のほんのわずかな渇望ですら誘うものです。"
 
 #. [female]
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:250
@@ -4508,6 +4654,18 @@ msgid ""
 "a loyalty any tyrant would dream of, and it is tempting to those with even "
 "the merest desire for power."
 msgstr ""
+"黒魔術によって起き上がる恐怖は、主に、一般人がそれについてほとんど何も知らな"
+"いというところから来ています。女黒魔術師は生と死の秘密を紐解き始めました。そ"
+"の後者を加えるのはあまりにも容易です。その仕事により、魂と不活性な物質の間の"
+"つながりについて、最初のぼんやりとした光が得られ、そしてそのつながりを操る最"
+"初の実験に成功します。死の背後に潜む恐ろしい未知が感じ取られ、必然的にその深"
+"さが測られました。\n"
+"\n"
+"それを用いて自然の支配から彼女ら自身の不死性を奪い取るというどんな意図にも関"
+"わらず、彼女らの仕事の最初の結果は、即物的で不快な応用でした。彼女らが死体に"
+"吹き込んだ生命は彼女らの下僕を作成できます。下僕は働き、また殺すこともでき、"
+"決して主人に疑問を抱きません。これらの創造物はあらゆる暴君が夢見た忠誠心を持"
+"ち、力へのほんのわずかな渇望ですら誘うものです。"
 
 #. [unit_type]: id=Lich, race=undead
 #: data/core/units/undead/Necro_Lich.cfg:4
@@ -4516,7 +4674,6 @@ msgstr "リッチ"
 
 #. [unit_type]: id=Lich, race=undead
 #: data/core/units/undead/Necro_Lich.cfg:25
-#, fuzzy
 msgid ""
 "A lich is the physical embodiment of black magic's first goal: the quest to "
 "achieve immortality. Though a great deal is sacrificed in the rebirth, in "
@@ -4529,14 +4686,14 @@ msgid ""
 "question can be raised at all, testifies to the magnitude of what their "
 "order has achieved."
 msgstr ""
-"リッチは、黒魔術が最初に目指したものの肉体的に具現化した形、不道徳を 成し遂げ"
-"る来訪者です。復活の犠牲は大事ですが、リッチになった者は真に 恐怖を与えるもの"
-"である死をも逃れることとなります。維持しているものは心と、 肉体は枯れ果ててい"
-"ますが、魂が続きます。\n"
+"リッチは、黒魔術が最初に目指したもの、すなわち不死を成し遂げる探求、を肉体的"
+"に具現化した形です。復活の犠牲は大事ですが、リッチになった者は真に恐怖を与え"
+"るものである死をも逃れることとなります。維持しているものは心と、肉体は枯れ果"
+"てていますが、魂が続きます。\n"
 "\n"
-"知られてはいませんが、おそらく交霊術の内なる循環によって保たれており、 生命が"
-"無限に引延ばされているか、単に延長されているかのどちらかです。 しかしそのよう"
-"なことを考えることさえ、彼等が既に成し遂げた事の重要度に 対する貢献を支持する"
+"知られてはいませんが、おそらく降霊術の内なる循環によって保たれており、生命が"
+"無限に引延ばされているか、単に延長されているかのどちらかです。しかしそのよう"
+"なことを考えることさえ、彼らが既に成し遂げた事の重要度に対する貢献を支持する"
 "ことになります。"
 
 #. [unit_type]: id=Necromancer, race=human
@@ -4570,7 +4727,6 @@ msgstr "疫病の杖"
 
 #. [female]
 #: data/core/units/undead/Necromancer.cfg:254
-#, fuzzy
 msgid "female^Necromancer"
 msgstr "ネクロマンサー"
 
@@ -4581,7 +4737,6 @@ msgstr "ベインボウ"
 
 #. [unit_type]: id=Banebow, race=undead
 #: data/core/units/undead/Skele_Banebow.cfg:18
-#, fuzzy
 msgid ""
 "The most powerful of the undead archers invariably end up being those who "
 "were themselves archers in their previous life. They wander the fields of "
@@ -4589,10 +4744,10 @@ msgid ""
 "nor caring what their purpose or foes might be. They are driven only by a "
 "malice born of their empty and tortured existence."
 msgstr ""
-"もっとも強力な不死の射手で、生前も射手であった者たちです。 彼らは、 薄れつつ"
-"ある生前の技術をたよりに、彼らの目的や敵が何であるかを知らず 気にもせずに、戦"
-"場をさまよいます。彼らは、空の矛盾した存在への苦悩に よって生じた悪意によって"
-"のみ動かされます。"
+"不死の射手でもっとも強力なことは、結局生前も変わらず射手であったということで"
+"す。彼らは、薄れつつある生前の技術を頼りに、彼らの目的や敵が何であるかを知ら"
+"ず気にもせずに、戦場をさまよいます。彼らは、空の矛盾した存在への苦悩によって"
+"生じた悪意によってのみ動かされます。"
 
 #. [unit_type]: id=Bone Shooter, race=undead
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:4
@@ -4601,7 +4756,6 @@ msgstr "ボーンシューター"
 
 #. [unit_type]: id=Bone Shooter, race=undead
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:16
-#, fuzzy
 msgid ""
 "Of a dark sorcerer's creations, some take more strongly to the false life "
 "given them. The potency of their un-life is given equipment to match; "
@@ -4610,11 +4764,11 @@ msgid ""
 "victims. It follows that they are dubbed simply 'Bone-Shooters' by their "
 "unfortunate enemies."
 msgstr ""
-"黒魔術師の創造物の中でも、ある者達は与えられた偽りの人生において、 より強力な"
-"力を手にします。生きていた時の能力に見合う装備が与えられ、 特に射手はまったく"
-"卑劣な兵器を装備させられます。彼等の矢筒は、 木ではなく犠牲者の骨によって造ら"
-"れた矢が詰められています。 不幸な敵によって単純に「ボーンシューター」と名づけ"
-"られた 忌まわしき者たちは生ける者すべての恐怖となります。"
+"黒魔術師の創造物の中でも、ある者達は与えられた偽りの人生において、より強力な"
+"力を手にします。生きていた時の能力に見合う装備が与えられ、特に射手はまったく"
+"卑劣な兵器を装備させられます。彼らの矢筒は、木ではなく犠牲者の骨によって造ら"
+"れた矢が詰められています。それで不幸な敵によって単純に「ボーンシューター」と"
+"名づけられました。"
 
 #. [unit_type]: id=Chocobone, race=undead
 #: data/core/units/undead/Skele_Chocobone.cfg:4
@@ -4623,14 +4777,13 @@ msgstr "チョコボーン"
 
 #. [unit_type]: id=Chocobone, race=undead
 #: data/core/units/undead/Skele_Chocobone.cfg:21
-#, fuzzy
 msgid ""
 "Riding the bones of ostrich-like large birds once used as mounts by a lost "
 "civilization, the skeletal Chocobones can move faster than most cavalry "
 "units."
 msgstr ""
-"失なわれた文明で乗用に使用されていたダチョウのような大鳥の骨にまたがっている "
-"チョコボーンはほとんどの騎乗ユニットよりも早く移動することができます。"
+"失われた文明で乗用に使用されていたダチョウのような大鳥の骨に跨がっているチョ"
+"コボーンは、ほとんどの騎乗ユニットよりも速く移動できます。"
 
 #. [unit_type]: id=Death Knight, race=undead
 #: data/core/units/undead/Skele_Death_Knight.cfg:4
@@ -4639,16 +4792,15 @@ msgstr "死の騎士"
 
 #. [unit_type]: id=Death Knight, race=undead
 #: data/core/units/undead/Skele_Death_Knight.cfg:26
-#, fuzzy
 msgid ""
 "Tales are told of the mightiest warriors and generals, who, cursed with hate "
 "and stung by betrayal, have come back to this world as Death Knights. "
 "Wielding the same weapons as in life, they command the Undead in their quest "
 "for revenge."
 msgstr ""
-"伝説で伝えられる最も強固な戦士と司令官であった者たちで、憎悪と裏切りの 感情に"
-"よって呪われており、死の騎士としてこの世界に戻ってきました。彼らは 生前と同じ"
-"武器を装備しており、復讐のために不死の軍隊を指揮します。"
+"最も強固な戦士と司令官であった者達で、憎悪と裏切りの感情によって呪われた者"
+"が、死の騎士としてこの世界に戻ってくると伝えられています。彼らは生前と同じ武"
+"器を装備しており、復讐のために不死の軍隊を指揮します。"
 
 #. [unit_type]: id=Deathblade, race=undead
 #: data/core/units/undead/Skele_Deathblade.cfg:4
@@ -4657,7 +4809,6 @@ msgstr "デスブレード"
 
 #. [unit_type]: id=Deathblade, race=undead
 #: data/core/units/undead/Skele_Deathblade.cfg:19
-#, fuzzy
 msgid ""
 "In life, the abominations known as 'Deathblades' were masters of combat, "
 "soldiers who were both lithe and deadly. Their new masters, recognizing "
@@ -4665,10 +4816,10 @@ msgid ""
 "monsters are much faster than the rest of their kind, both on foot and with "
 "their blades."
 msgstr ""
-"生きていた時は、「デスブレード」として知られていた憎悪は戦闘の達人で、 柔軟で"
-"致命的な兵士でした。彼等の新しい主人はしばしばこれを認め、彼等が かつてもって"
-"いた技能に見合うよう装備させることでその長所を活かそうとする でしょう。もろい"
-"ですが、この怪物達は同種の他の者達よりも、足も剣の振りも ずっと早いのです。"
+"生きていた時は、「デスブレード」として知られていた憎悪は戦闘の達人で、柔軟で"
+"致命的な兵士でした。彼らの新しい主人はこれを認め、彼らがかつてもっていた技能"
+"に見合うような装備をさせます。もろいですが、この怪物達は同種の他の者達より"
+"も、足も剣の振りもずっと早いのです。"
 
 #. [unit_type]: id=Draug, race=undead
 #: data/core/units/undead/Skele_Draug.cfg:4
@@ -4677,7 +4828,6 @@ msgstr "ドラウグ"
 
 #. [unit_type]: id=Draug, race=undead
 #: data/core/units/undead/Skele_Draug.cfg:18
-#, fuzzy
 msgid ""
 "There is little left, in these towering ruins, of the men they once were. "
 "Warriors at heart, they are now lost in the dream of unlife; wandering "
@@ -4685,11 +4835,10 @@ msgid ""
 "for a peace bought only by strength of arms. And so they struggle; both "
 "unthinking, and unrelenting."
 msgstr ""
-"かつて伝説的な戦士であったものの残りであるドラウグは敵対する者すべての 心の中"
-"の恐怖心を打ちつけます。彼らは悪意によって動かされているのではなく、 生命なき"
-"者の夢の中で永遠に束縛されており、記憶の中にある偉大なる戦いを通して さまよっ"
-"ており、軍隊の力によってのみもたらされる開放と平和のために命知らずで 戦いま"
-"す。敵の記憶や目的はずっと以前に忘却し、消えさっています。"
+"これらのそびえ立つ廃墟の中に、かつていた兵士達はほとんど残されていません。戦"
+"士たちは内心では、今は生命なき者の夢の中で失われ、記憶の中にある戦いを通して"
+"さまよっており、武器の力によってのみもたらされる開放と安寧のために必死になっ"
+"て戦います。そのため彼らは考えることも容赦することもなく争うのです。"
 
 #. [unit_type]: id=Revenant, race=undead
 #: data/core/units/undead/Skele_Revenant.cfg:4
@@ -4698,7 +4847,6 @@ msgstr "レブナント"
 
 #. [unit_type]: id=Revenant, race=undead
 #: data/core/units/undead/Skele_Revenant.cfg:19
-#, fuzzy
 msgid ""
 "Given false life to do battle once more, the creatures known as Revenants "
 "were clearly great warriors in their time, though the memory of that time is "
@@ -4707,11 +4855,12 @@ msgid ""
 "powerful tool in combat: a fearless warrior that feels no pain and will "
 "fight to the bitter end."
 msgstr ""
-"もう一度戦うという偽の生命を与えられ、レブナントとして知られている生き物は か"
-"つては明らかに偉大な戦士でした。しかし、そのときの記憶はもう久しく失われて い"
-"ます。彼らを呼び覚ました魔術師でさえ彼らの過去を推測することだけしか できませ"
-"ん。そのような質問は別として、レブナントは戦闘において強力な道具です。 痛みを"
-"感じない恐れを知らない戦士であり、彼らはあくまで戦うでしょう。"
+"もう一度戦うという偽の生命を与えられ、レブナントとして知られている生き物はか"
+"つては明らかに偉大な戦士でした。しかし、そのときの記憶はアンデッド自身からは"
+"もうほとんど完全に失われています。彼らを呼び覚ました魔術師でさえ彼らの過去を"
+"推測することだけしかできません。そのような質問は別として、レブナントは戦闘に"
+"おいて強力な道具です。痛みを感じない恐れを知らない戦士であり、彼らはあくまで"
+"戦うでしょう。"
 
 #. [unit_type]: id=Skeleton, race=undead
 #: data/core/units/undead/Skeleton.cfg:4
@@ -4726,9 +4875,9 @@ msgid ""
 "neither pain, nor death, and their mere presence will often frighten away "
 "any who would challenge their master."
 msgstr ""
-"スケルトンは、 戦場で斃れたものを 黒魔術で蘇えらせた戦士です。 心をほとんど失"
-"い、 確固たる目的をもち、彼等は痛みも死でさえも恐れず、存在するだけで彼等の主"
-"人に 立ち向かおうとする者達は逃げ出すこともあります。"
+"スケルトンは、戦場で斃れたものを黒魔術で蘇えらせた戦士です。心をほとんど失"
+"い、確固たる目的をもち、彼らは痛みも死でさえも恐れず、存在するだけで彼らの主"
+"人に立ち向かおうとする者達は逃げ出すこともあります。"
 
 #. [unit_type]: id=Skeleton Archer, race=undead
 #: data/core/units/undead/Skeleton_Archer.cfg:4
@@ -4737,7 +4886,6 @@ msgstr "スケルトンアーチャー"
 
 #. [unit_type]: id=Skeleton Archer, race=undead
 #: data/core/units/undead/Skeleton_Archer.cfg:17
-#, fuzzy
 msgid ""
 "A skeleton archer is little different from the 'skeletons' which often "
 "accompany it - it is a sin against nature, a warrior raised from the dead to "
@@ -4745,11 +4893,11 @@ msgid ""
 "to achieve the tasks laid before them, for death holds no fear for one who "
 "is already dead."
 msgstr ""
-"スケルトンアーチャーはしばしば一緒にいる「スケルトン」とほとんど変わりません "
-"－ これは自然に対する罪であり、再び戦うために死からよみがえった戦士なので"
-"す。 彼らの主人の手の内で、これらの兵士は彼らの前にある仕事を達成するために "
-"あらゆることを行うでしょう。既に死んだものにとって、死はまったく恐ろしいもの"
-"では ないのです。"
+"スケルトンアーチャーはしばしば一緒にいる「スケルトン」とほとんど変わりませ"
+"ん。これは自然に対する罪であり、再び戦うために死からよみがえった戦士なので"
+"す。彼らの主人の手の内で、これらの兵士は彼らの前にある仕事を達成するためにあ"
+"らゆることを行うでしょう。既に死んだものにとって、死はまったく恐ろしいもので"
+"はないのです。"
 
 #. [unit_type]: id=Ghost, race=undead
 #: data/core/units/undead/Spirit_Ghost.cfg:4
@@ -4758,19 +4906,14 @@ msgstr "ゴースト"
 
 #. [unit_type]: id=Ghost, race=undead
 #: data/core/units/undead/Spirit_Ghost.cfg:19
-#, fuzzy
 msgid ""
 "Enslaved within a shroud of enchantments, a trapped spirit may be likened to "
 "the wind in the sails of a ship. This damned vessel becomes an unfailing "
 "servant which can be bound to whatever task their master sees fit."
 msgstr ""
-"人間の魂は不変で滅びることはないというのが、創造主の偉大な慈悲の一つです。 し"
-"かしながら、降霊術師がこれにもかかわらずできる多くのことは、 全くぞっとさせら"
-"れます。\n"
-"\n"
-"不愉快な魔法の白布にまとわれるため、幽霊は船の帆の風になぞられます。 この投獄"
-"に起因する計略は忠実な下僕で、彼等の主人が適しているとみなす 務めは何でも行わ"
-"せることができます。"
+"魔法の布で囚われるため、捕まった魂は船の帆の風になぞらえられます。この呪われ"
+"た器は、彼らの主人が適しているとみなす務めは何でも行わせることができる忠実な"
+"下僕となります。"
 
 #. [attack]: type=cold
 #: data/core/units/undead/Spirit_Ghost.cfg:142
@@ -4793,9 +4936,8 @@ msgid ""
 "foe."
 msgstr ""
 "この生き物が身に着けている仮面の目的は、彼らの顔つきと同様に知られていませ"
-"ん。 これらの恐ろしい姿は生きている者に見られることはほとんどありません。そし"
-"て、 彼らのことを話すことができる生存者は彼らの敵を研究する暇はありませんでし"
-"た。"
+"ん。これらの恐ろしい姿は生きている者に見られることはほとんどありません。そし"
+"て、彼らのことを話せる生存者は彼らの敵を研究する暇はありませんでした。"
 
 #. [unit_type]: id=Shadow, race=undead
 #: data/core/units/undead/Spirit_Shadow.cfg:4
@@ -4811,8 +4953,8 @@ msgid ""
 "\n"
 "That is a question which is easily answered by a necromancer."
 msgstr ""
-"世界に光があらわれ、未知のものに形を与えたとき、恐れは闇の中に退却する ことを"
-"余儀なくされました。そのときから、世界の影は人間にとって恐怖と なりました。し"
+"世界に光があらわれ、未知のものに形を与えたとき、恐れは闇の中に退却することを"
+"余儀なくされました。そのときから、世界の影は人間にとって恐怖となりました。し"
 "かしながら、その理由がわかっている訳ではありません。\n"
 "\n"
 "これは降霊術師にとっては簡単に答えられる質問です。"
@@ -4824,7 +4966,6 @@ msgstr "スペクター"
 
 #. [unit_type]: id=Spectre, race=undead
 #: data/core/units/undead/Spirit_Spectre.cfg:21
-#, fuzzy
 msgid ""
 "Sometimes called the 'hollow men', spectres form the right arm of their "
 "masters' powers. They are an unholy terror to the living, for they are quite "
@@ -4834,12 +4975,13 @@ msgid ""
 "encountering one is that it is likely only the harbinger of a much more "
 "dangerous force that will follow in its wake."
 msgstr ""
-"「透明人間」とも呼ばれ、スペクターは彼らの主人の力の右腕になります。 これらの"
-"憎悪は生きているものにとって本当の脅威であり、彼らの主人の 領地では夜通し監視"
-"をしなければなりません。\n"
+"時に「虚ろな人々」とも呼ばれるスペクターは、彼らの主人の力の右腕になります。"
+"彼らはその外見が示すのと同じぐらい致命的なので、生きているものにとっては不浄"
+"の恐怖となります。\n"
 "\n"
-"これらの創造は大きな功績です。1 体に遭遇したことにおける本当の危険は、 これが"
-"その後ろに続くもっと危険な軍の単なる前触れかも知れないということです。"
+"これらの創造はそれ自体が大きな功績です。1 体に遭遇したことにおける本当の危険"
+"は、これがその後ろに続くもっと危険な軍の単なる前触れかも知れないということで"
+"す。"
 
 #. [attack]: type=arcane
 #: data/core/units/undead/Spirit_Spectre.cfg:59
@@ -4854,7 +4996,6 @@ msgstr "レイス"
 
 #. [unit_type]: id=Wraith, race=undead
 #: data/core/units/undead/Spirit_Wraith.cfg:17
-#, fuzzy
 msgid ""
 "These shades of what were once warriors are among the most terrifying things "
 "a necromancer can create, for a sword will cleave right through them as if "
@@ -4862,13 +5003,10 @@ msgid ""
 "are invincible which is so frightening, a notion that is fortunately far "
 "from the truth."
 msgstr ""
-"かつては戦士だった者が拷問された姿は降霊術師の創造物の中で最も 恐ろしいもので"
-"す。剣は彼らが空気そのものであるかのように彼らを素通りするでしょう。 これらの"
-"生き物が無敵であるという考えがこのような恐怖を引き起こしていて、 その考えは実"
-"際には真実にはほど遠いものです。\n"
-"\n"
-"このため、彼らを追い払う魔法によって、彼らを脅かしたまさにそのものを通して 彼"
-"ら自身を再生するという方法が作られました。"
+"かつては戦士だった者の幻影は降霊術師の創造物の中で最も恐ろしいものです。剣は"
+"彼らが空気そのものであるかのように彼らを素通りし、何も損害を与えていないよう"
+"に見えるでしょう。これらの生き物が無敵であるという考えがこのような恐怖を引き"
+"起こしていて、その考えは実際には真実にはほど遠いものです。"
 
 #. [unit_type]: id=Ancient Wose, race=wose
 #: data/core/units/wose/Ancient.cfg:4
@@ -4877,7 +5015,6 @@ msgstr "古代ウーズ"
 
 #. [unit_type]: id=Ancient Wose, race=wose
 #: data/core/units/wose/Ancient.cfg:21
-#, fuzzy
 msgid ""
 "There is a curious story of a farmer who had a great oak in his lawn, a tree "
 "which had stood when his father first broke the soil on that land, and under "
@@ -4888,12 +5025,11 @@ msgid ""
 "Such encounters are all that is known of what are presumably the most "
 "ancient of woses."
 msgstr ""
-"自分の芝生に巨大なカシワをもっていた農夫の不思議な話があります。木は彼の 父親"
-"がその土地で初めて土を耕した時にはすでに立っていて、その下で彼の 家族にはたく"
-"さんの思い出がありました。そのようなわけで彼にとってショック だったのですが、"
-"ある日彼が起きると神隠しにあったようになくなっており、 木が立っていた場所には"
-"大地にむき出しの断片以外には何も残っていませんでした。 哀れな農夫はその後すっ"
-"かりおかしくなってしまいました。\n"
+"自分の芝生に巨大なカシワをもっていた農夫の不思議な話があります。木は彼の父親"
+"がその土地で初めて土を耕した時にはすでに立っていて、その下で彼の家族にはたく"
+"さんの思い出がありました。そのようなわけで彼にとってショックだったのですが、"
+"ある朝彼が起きると神隠しにあったようになくなっており、木が立っていた場所には"
+"大地にむき出しの断片以外には何も残っていませんでした。\n"
 "\n"
 "そのような遭遇は全て、おそらく最古のウーズとして知られているものだと言われま"
 "す。"
@@ -4911,7 +5047,6 @@ msgstr "老ウーズ"
 
 #. [unit_type]: id=Elder Wose, race=wose
 #: data/core/units/wose/Elder.cfg:20
-#, fuzzy
 msgid ""
 "Woses have been said to possess many shapes, all of them tree-like in form, "
 "and as they age, to increase in size. Tales tell of woses who resemble trees "
@@ -4925,15 +5060,15 @@ msgid ""
 "turned to violence, should someone manage to raise the ire of these "
 "creatures."
 msgstr ""
-"ウーズは、全て木のような形をしていますが、さまざまな姿をもち、年を取るに 従い"
-"大きさも増すと言われてきました。この点でも同様に木に似ているウーズに ついての"
-"伝説では、生き物が下を通れるほどはるか高くそびえ立つと言います。 これはなぜ彼"
-"等がめったに見られないかの大きな原因です。彼等がよくする居眠りを しながら立っ"
-"ているため、それほど成長したウーズは珍しい形の木以外には見えません。 注意深い"
-"エルフでさえも、時にはだまされるほどです。\n"
+"ウーズは、全て木のような形をしていますが、さまざまな姿をもち、年を取るに従い"
+"大きさも増すと言われてきました。この点でも同様に木に似ているウーズについての"
+"伝説では、生き物が下を通れるほどはるか高くそびえ立つと言います。これはなぜ彼"
+"らがめったに見られないかの大きな原因です。彼らがよくする居眠りをしながら立っ"
+"ているため、それほど成長したウーズは珍しい形の木以外には見えません。不注意な"
+"エルフが、時折だまされるほどには。\n"
 "\n"
-"ウーズは決して戦士ではありませんが、誰かがこの生き物の怒りを呼び起こすことが "
-"できれば、彼等のもつ力は明らかに暴力的になります。"
+"ウーズは決して戦士ではありませんが、誰かがこの生き物の怒りを呼び起こすことが"
+"できれば、彼らのもつ強大な力は容易く暴力へと変わります。"
 
 #. [unit_type]: id=Wose, race=wose
 #: data/core/units/wose/Wose.cfg:4
@@ -4942,7 +5077,6 @@ msgstr "ウーズ"
 
 #. [unit_type]: id=Wose, race=wose
 #: data/core/units/wose/Wose.cfg:21
-#, fuzzy
 msgid ""
 "Rarely seen even by elves, the Wose is an order of creature about which "
 "little is known. The elves are the source of most of this knowledge; they "
@@ -4955,24 +5089,24 @@ msgid ""
 "Woses are utterly unwarlike, but possess a great strength. They are, "
 "however, neither used to, nor quick at moving around."
 msgstr ""
-"エルフであってもめったに見つけられないため、ウーズはほとんど知られていない 生"
-"物種です。エルフはこの知識の多くの出所で、この生き物は形が似ているが木の 子孫"
-"ではなく、エルフ達自身よりも、違なる流れですが、妖精世界に近く結びついて いる"
-"とわかっています。この種族の動機や働きは不明ですが、多くが、ウーズは 自然界の"
-"管理者であるという考えを明らかだとしています。\n"
+"エルフであっても滅多に見つけられないため、ウーズはほとんど知られていない生物"
+"種です。エルフはこの知識の多くの出所で、この生き物は形が似ているが木の子孫で"
+"はなく、エルフ達自身よりも、異なる流れですが、妖精世界に近く結びついていると"
+"分かっています。この種族の動機や働きは不明ですが、多くが、ウーズは自然界の管"
+"理者であるという考えを明らかだとしています。\n"
 "\n"
-"ウーズは全く戦いを好みませんが怪力を持っています。しかしながら、動き回ったり "
-"することになれておらず、素早くもできません。"
+"ウーズは全く戦いを好みませんが怪力を持っています。しかしながら、動き回ったり"
+"することに慣れておらず、素早くもできません。"
 
+#, fuzzy
 #~ msgid ""
 #~ "The drakes who master the use of a sword are sworn into a special order. "
 #~ "The mark of their initiation is the black-and-white warpaint they display "
 #~ "in battle."
 #~ msgstr ""
-#~ "剣の扱いの達人であるドレークは特別な階級に就任します。この儀式の印として、"
-#~ "戦いにおいて黒と白の戦闘化粧をしています。"
+#~ "戦刀の扱いの達人であるドレークは特別な階級に就任します。この儀式の印とし"
+#~ "て、戦いにおいて黒と白の戦闘化粧をしています。"
 
-#, fuzzy
 #~ msgid ""
 #~ "A Drake Clasher is incapable of either flight and fire-breathing, and "
 #~ "most assume their relegation to melee combat is because of disability - "
@@ -4990,28 +5124,26 @@ msgstr ""
 #~ "spears and arrows."
 #~ msgstr ""
 #~ "ドレークの粉砕者は飛行することも炎の息を吐くこともできないため、ほとんどの"
-#~ "者は、彼等が格闘戦用に格下げられたことはこの無能さのためだと考えています。"
-#~ "すなわち、その他の点で不利となるような扱いを獲得しようという試みだと。これ"
-#~ "らの技能がいくぶん不足していると考えることもできますが、この理論を支持する"
-#~ "者達は、彼等が仲間のドレークと戦うのにどれだけよく適しているかを考慮するの"
-#~ "を忘れています。\n"
+#~ "者は、彼らが格闘戦用に格下げられたことはこの無能さのためだと考えています。"
+#~ "すなわち、別な方法で不利となるようなところから扱いを獲得しようという試みだ"
+#~ "と。これらの技能がいくぶん不足していると考えることもできますが、この理論を"
+#~ "支持する者達は、彼らが仲間のドレークと戦うのにどれだけよく適しているかを考"
+#~ "慮するのを忘れています。\n"
 #~ "\n"
-#~ "彼等は実はドレーク階級の司法官で、彼等の軍隊は今となっては大げさで儀式的で"
-#~ "すが、全く効果的ではないとは言えません。彼等より劣る種族と遭遇すると、彼等"
-#~ "は 生まれつきの身体の大きさや腕力はそれ自体が強力な武器であることに気づ"
-#~ "き、この階級をもつ軍隊と組み合わされれば、結果として戦士達は彼等の種の典型"
-#~ "的な弱点のいくつかをなくすことができます。例えば、槍や矢に対する大きな弱点"
-#~ "を。"
+#~ "彼らは実はドレーク階級の司法官で、彼らの軍隊は今となっては大いに儀式的です"
+#~ "が、全く効果的ではないとは言えません。彼らより劣る種族と遭遇すると、彼らは"
+#~ "生まれつきの身体の大きさや腕力はそれ自体が強力な武器であることに気づき、こ"
+#~ "の階級をもつ軍隊と組み合わされば、結果として戦士達は彼らの種族の典型的な弱"
+#~ "点のいくつかを無くすことができます。例えば、槍や矢に対する大きな弱点を。"
 
-#, fuzzy
 #~ msgid ""
 #~ "The great Drake Enforcers epitomize the raw strength of their kind. Long "
 #~ "hours at the forge have equipped them with a bristling array of weaponry, "
 #~ "and they are clad them head to toe in shining armor of proof."
 #~ msgstr ""
-#~ "偉大なドレークの下士官は彼等の種のありのままの力を集約しています。鍛冶で "
-#~ "何時間もかけて鍛えぬかれた武器を持ち、頭からつま先まで光り輝く鎧で覆われ"
-#~ "て います。"
+#~ "偉大なドレークの下士官は彼らの種のありのままの力を集約しています。鍛冶で何"
+#~ "時間もかけて鍛え抜かれた逆立った武器の装いを持ち、頭からつま先まで光り輝く"
+#~ "鎧で覆われています。"
 
 #~ msgid "scimitar"
 #~ msgstr "シミター"
@@ -5022,10 +5154,9 @@ msgstr ""
 #~ "armor, they belch columns of flame at any who oppose them, a testament to "
 #~ "the strength and majesty of their kind."
 #~ msgstr ""
-#~ "偉大なる火炎ドレークは彼等の内なる炎の達人です。輝く鎧をまとい、彼等には "
-#~ "むかうもの全てに力と種の威厳さの証拠の炎柱を噴出させます。"
+#~ "偉大なる火炎ドレークは彼らの内なる炎の達人です。輝く鎧をまとい、彼らに刃向"
+#~ "かう者全てに種族の力と威厳を示す炎の柱を吐き出します。"
 
-#, fuzzy
 #~ msgid ""
 #~ "It is said that the eldest lines of drakes - the direct descendants of "
 #~ "the dragons themselves - have veins which course with fire rather than "
@@ -5033,24 +5164,23 @@ msgstr ""
 #~ "belief, though, for some reason, no one has tried cutting one open to "
 #~ "find out."
 #~ msgstr ""
-#~ "ドラゴン自身の直接の子孫であるドレークの最年長者達は、血液ではなく炎が 流"
-#~ "れる血管を持っていると言われます。ドラゴンのように炎を吐くことができるた"
-#~ "め、 この考えを信じさせますが、なんらかの理由で、身体を切り開いて明らかに"
-#~ "しようと したものは誰もいません。"
+#~ "ドラゴン自身の直接の子孫であるドレークの最年長者の家系は、血液ではなく炎が"
+#~ "流れる血管を持っていると言われます。彼らが炎を吐けることがこの説明に信憑性"
+#~ "を与えていますが、なんらかの理由で、身体を切り開いて明らかにしようとしたも"
+#~ "のは誰もいません。"
 
 #~ msgid ""
 #~ "Drakes are an old race, wise enough to hearken to their own natural "
 #~ "leaders. Those who are called 'flares' by their enemies are the drakes "
 #~ "who aspire to be such leaders, both in war and in peace."
 #~ msgstr ""
-#~ "ドレークは古い種族で、彼等自身の生まれつきのリーダーの言うことを聞くほど "
-#~ "賢くもあります。彼等の敵にフレアと呼ばれる者達は、戦時においても平時に お"
+#~ "ドレークは古い種族で、彼ら自身の生まれつきのリーダーの言うことを聞くほど賢"
+#~ "くもあります。彼らの敵に「フレア」と呼ばれる者達は、戦時においても平時にお"
 #~ "いてもそのようなリーダーになることを志願するドレークです。"
 
 #~ msgid "Drake Gladiator"
 #~ msgstr "ドレークの剣闘士"
 
-#, fuzzy
 #~ msgid ""
 #~ "The Gladiator has taken a completely different path from the Slashers. "
 #~ "Rather than emphasize training, they have chosen to focus on the craft of "
@@ -5060,13 +5190,12 @@ msgstr ""
 #~ "focus on their weapons confers offensive capability at the cost of a "
 #~ "slight reduction in their defensive abilities."
 #~ msgstr ""
-#~ "剣闘士は殺戮者とは全く異なる道を歩みます。訓練を強調するよりもむしろ、 武"
-#~ "器の技巧に集中することを選びました。ドレーク社会の鍛冶屋であり、そのため "
-#~ "最高の武器を所有します。最も鋭い刀や槍やメイスで、彼等がすでに身につけて "
-#~ "いる印象的な盛装を補います。彼等は武器に集中して情熱を傾けるため、 わずか"
-#~ "ならがら防御能力が犠牲になります。"
+#~ "剣闘士は殺戮者とは全く異なる道を歩みます。訓練を強調するよりもむしろ、武器"
+#~ "の技巧に集中することを選びました。彼らはドレーク社会の鍛冶屋であり、そのた"
+#~ "め最高の武器を所有します。最も鋭い刀や槍やメイスで、彼らが既に身に着けてい"
+#~ "る印象的な装いを補います。彼らの武器に対する熱心な集中により、わずかながら"
+#~ "防御能力を犠牲にした攻撃力が与えられます。"
 
-#, fuzzy
 #~ msgid ""
 #~ "Drake Gliders wear as little encumberment as possible, freeing themselves "
 #~ "to fly to their full ability. These Drakes are competent fighters, "
@@ -5076,26 +5205,23 @@ msgstr ""
 #~ "cover. Their skill at flying allows them the precision to target enemies "
 #~ "under such cover."
 #~ msgstr ""
-#~ "滑空ドレークは洞窟を抜けるときに、素早く敵を避けることができるように、 可"
-#~ "能な限り装備する鎧を少なくしています。彼らは戦士としての能力を持ち、 多く"
-#~ "の同族と同等の内なる炎を所有しています。彼らはその速度を効果的に使用し、 "
-#~ "それによって凶悪な一撃を敵に与えることもできます。彼らは経験を積むと 飛行"
-#~ "ドレークとなります。 彼等の空中での優位点から、これらのドレークは ほとんど"
-#~ "の防御範囲を越えて見渡すことができます。 彼等の飛行能力により、 そのような"
-#~ "防御に守られた敵を正確に目標とすることができます。"
+#~ "滑空ドレークは最大の能力で飛べるように、可能な限り邪魔になるものを身に着け"
+#~ "ません。彼らは有能な戦士で、多くの同族と同じく内なる炎を所有しています。彼"
+#~ "らはその速度を効果的に使用して敵を服従させる一撃を与えることもできます。彼"
+#~ "らの空中での優位点から、これらのドレークは最も防御的な遮蔽物の先まで見通せ"
+#~ "ます。彼らの飛行能力により、そのような防御に守られた敵を正確に狙うことがで"
+#~ "きます。"
 
-#, fuzzy
 #~ msgid ""
 #~ "Masters of the aerial realm, the Hurricane Drakes are the elite among "
 #~ "those drakes which are gifted with flight. Soaring high in the air, they "
 #~ "can see past most defensive cover and spit fire at their foes with "
 #~ "impunity."
 #~ msgstr ""
-#~ "空中領域の支配者、ハリケーンドレークは飛行能力を授かったドレークの中でも "
-#~ "エリートです。空高く舞い上がり、ほとんど防御が守りきれない範囲まで見渡"
-#~ "し、 とがめることなく敵に炎を吐きかけます。"
+#~ "空中領域の支配者、ハリケーンドレークは飛行能力を授かったドレークの中の精鋭"
+#~ "です。空高く舞い上がり、最も防御的な遮蔽物の先まで見通し、とがめられること"
+#~ "なく敵に炎を吐きかけます。"
 
-#, fuzzy
 #~ msgid ""
 #~ "The flying conflagrations known as Drake Infernos are the masters of the "
 #~ "fire they breathe, and rival their predecessors the Dragons in their "
@@ -5103,12 +5229,11 @@ msgstr ""
 #~ "fire. Their shining, flame-colored armor is a mark of their proud and "
 #~ "powerful caste, the ideal to which their brethren aspire."
 #~ msgstr ""
-#~ "インフェルノドレークとして知られる飛行体は彼等の吐く炎の達人で、それを 使"
-#~ "う能力では彼等の先祖ドラゴンに匹敵します。この生来の能力で火炎に対する 免"
-#~ "疫に近いものをもたらします。彼等の光輝く炎色の鎧は、彼等の誇り深く強力な "
-#~ "階級の印で、彼等の仲間が熱望する理想です。"
+#~ "インフェルノドレークとして知られる空飛ぶ大火は彼らの吐く炎の達人で、それを"
+#~ "使う能力では彼らの先祖のドラゴンに匹敵します。この生来の能力は火炎に対する"
+#~ "免疫に近いものをもたらします。彼らの光輝く炎色の鎧は、彼らの誇り高く強力な"
+#~ "階級の印で、彼らの仲間が熱望する理想です。"
 
-#, fuzzy
 #~ msgid ""
 #~ "Sky drakes are truly the kings of the sky. The momentum of their terrible "
 #~ "stooping dive and their fire breath combine into a terrible weapon. By "
@@ -5116,16 +5241,14 @@ msgstr ""
 #~ "positions which would otherwise afford a great defensive advantage to "
 #~ "their foes."
 #~ msgstr ""
-#~ "飛行ドレークは真の大空の王です。武器としてその推進力と火炎のブレスを 使用"
-#~ "して、多くの者に死をもたらしました。彼らは軽快に急降下して敵を襲う ことが"
-#~ "でき、誰にも止められないうちに遠くに離れることができます。 空中から 攻撃す"
-#~ "ることにより、 本来なら防御側の敵に非常に優位となるような場所に 対してで"
-#~ "も、大変正確に炎を吐くことができます。"
+#~ "飛行ドレークはまさに大空の王です。恐ろしい急降下の勢いと火炎のブレスが組み"
+#~ "合わさって恐ろしい武器となりました。空中から攻撃することにより、本来なら防"
+#~ "御側の敵に非常に優位となるような場所に対してでも、大変正確に炎を吐くことが"
+#~ "できます。"
 
 #~ msgid "Drake Slasher"
 #~ msgstr "ドレークの殺戮者"
 
-#, fuzzy
 #~ msgid ""
 #~ "Slashers are Clashers who have chosen to master the use of a halberd "
 #~ "instead of carrying a sword and the spear. Their great size allows them "
@@ -5134,11 +5257,11 @@ msgstr ""
 #~ "defensive skills, which is a major advantage over their close cousins the "
 #~ "Gladiators."
 #~ msgstr ""
-#~ "殺戮者は、剣や槍を持つ代わりに、ハルバードの使い方を習得すために選ばれた "
-#~ "粉砕者です。彼等は巨大な身体のため、人がイノシシにするように馬を串刺しに "
-#~ "できるほど巨大な武器を使うことが可能となります。彼等はまた訓練により持久力"
-#~ "と 防御能力を高めており、それこそ彼等の近縁である剣闘士を超える大きな強み"
-#~ "です。"
+#~ "殺戮者は、剣や槍を持つ代わりに、ハルバードの使い方を習得するために選ばれた"
+#~ "粉砕者です。彼らは巨大な身体のため、人がイノシシにするように馬を串刺しにで"
+#~ "きるほど大きな、身の丈に合った武器を使うことが可能となります。彼らはまた訓"
+#~ "練により持久力と防御能力を高めており、それこそ彼らの近縁である剣闘士を超え"
+#~ "る大きな強みです。"
 
 #~ msgid ""
 #~ "The Warden represents the pinnacle of the clasher caste, being picked "
@@ -5146,10 +5269,10 @@ msgstr ""
 #~ "warriors on this earth would dare stand against them. The Wardens' weapon "
 #~ "of choice is the halberd, which they use to great effect."
 #~ msgstr ""
-#~ "長官は、最もやり手の殺戮者から選ばれる、粉砕者階級の頂点を意味します。 こ"
-#~ "の世界で彼等に立ち向かおうとする戦士はほとんどいないほど、彼等は その力を"
-#~ "鍛え上げてきました。長官が選択できる武器はハルバードで、彼等は それを使っ"
-#~ "てものすごい効果を上げることができます。"
+#~ "長官は、最もやり手の殺戮者から選ばれる、粉砕者階級の頂点を意味します。この"
+#~ "世界で彼らに立ち向かおうとする戦士はほとんどいないほど、彼らはその力を鍛え"
+#~ "上げてきました。長官が選択できる武器はハルバードで、彼らはそれを使ってもの"
+#~ "すごい効果を上げることができます。"
 
 #, fuzzy
 #~ msgid ""
@@ -5158,9 +5281,9 @@ msgstr ""
 #~ "allows them to strike devastating blows, and to withstand punishment in "
 #~ "equal measure."
 #~ msgstr ""
-#~ "ドレークの熟練戦士は素晴らしい腕前の剣を装備しており、祖先の能力である 火"
-#~ "炎のブレスを行うこともできます。彼等のすさまじい力により、縮み上がるよう"
-#~ "な 一撃を打ちこみ、同じだけの苦痛に耐えることができます。"
+#~ "ドレークの熟練戦士は素晴らしい腕前の戦刀を装備しており、祖先の能力である火"
+#~ "を吐く能力も持っています。彼らの種族のすさまじい力により、彼らは打ちのめす"
+#~ "ような一撃を放ち、また同じだけの苦痛に耐えられます。"
 
 #~ msgid ""
 #~ "Heavy infantry are an unusual choice for outfitting troops. They are very "
@@ -5173,15 +5296,14 @@ msgstr ""
 #~ "taken of it, but in certain situations, these troops are well worth the "
 #~ "trade-offs."
 #~ msgstr ""
-#~ "重歩兵は供給部隊としては通常ではない選択です。彼等は戦地に送ることが 難し"
-#~ "く、駐留している市街や城の防御にのみ用いられるのが一般的です。 頭からつま"
-#~ "先まで全身板金に覆われ、巨大な鎚矛で武装されており、重歩兵は 格闘戦専用の"
-#~ "目的に卓越しています。横隊の中心にいる何人かはその力を 相当支えています。"
-#~ "これによる悪化傾向は明らかで、金属の重さと、 払わねばならない多大な注意の"
-#~ "両方においてですが、特定の状況において この部隊はこの交換条件に十分見合う"
-#~ "価値があります。"
+#~ "重歩兵は供給部隊としては通常ではない選択です。彼らは戦地に送ることが難し"
+#~ "く、駐留している市街や城の防御にのみ用いられるのが一般的です。頭からつま先"
+#~ "まで全身板金に覆われ、巨大な鎚矛で武装されており、重歩兵は格闘戦専用の目的"
+#~ "に卓越しています。横隊の中心にいる何人かはその力を相当支えています。これに"
+#~ "よる悪化傾向は明らかで、金属の重さと、払わねばならない多大な注意の両方にお"
+#~ "いてですが、特定の状況においてこの部隊はこの交換条件に十分見合う価値があり"
+#~ "ます。"
 
-#, fuzzy
 #~ msgid ""
 #~ "female^After some years of service, former 'footpads' rise up in the "
 #~ "ranks of their fellow outlaws. Having proven themselves in combat, they "
@@ -5191,14 +5313,13 @@ msgstr ""
 #~ "ammunition. Outlaws are somewhat ill at ease fighting during the day, "
 #~ "preferring the cover of nightfall."
 #~ msgstr ""
-#~ "何年かの下積みの後、「追いはぎ」は彼らの仲間である無法者に昇格します。 戦"
-#~ "闘において彼ら自身の力量を証明したので、彼らにはより危険な仕事が与えら"
-#~ "れ、 また略奪品の分け前もより多くなります。多くの相手が彼らの武器の選択を"
-#~ "ばかに するでしょうが、無法者は武器の致命的な許容量や攻撃手段の有効性をよ"
-#~ "く心得ています。 無法者は昼間の戦闘にはいくらかの不安があり、日暮れに包ま"
-#~ "れるのを好みます。"
+#~ "何年かの下積みの後、「追いはぎ」は彼女らの仲間である無法者に昇格します。戦"
+#~ "闘において彼女ら自身の力量を証明したので、彼女らにはより危険な仕事が与えら"
+#~ "れ、また略奪品の分け前もより多くなります。多くの相手が彼女らの武器の選択を"
+#~ "ばかにするでしょうが、無法者は武器の致命的な許容量や攻撃手段の迅速な有効性"
+#~ "をよく心得ています。無法者は昼間の戦闘にはいくらかの不安があり、日暮れに包"
+#~ "まれるのを好みます。"
 
-#, fuzzy
 #~ msgid ""
 #~ "female^These petty criminals are often derisively called 'footpads' by "
 #~ "their superiors, for they are tasked with any job that requires a great "
@@ -5207,18 +5328,18 @@ msgstr ""
 #~ "despite their inferior weaponry they are quite good at harrying their "
 #~ "enemies, especially under cover of darkness."
 #~ msgstr ""
-#~ "このけちな犯罪者は、しばしば上の者から「追いはぎ」と嘲笑的に呼ばれます"
-#~ "が、 それは彼等が、走り回ることに大いに長けていることを要求されるどのよう"
-#~ "な仕事も 引き受けるためで、しばしば密使や斥候としても雇われます。彼等の脚"
-#~ "の持久力と 技能は戦闘においても同様に活躍し、みじめな武器しかないにも関わ"
-#~ "らず、彼等は、 特に闇に隠れて、敵を悩ますのが極めて得意です。"
+#~ "このけちな犯罪者は、しばしば上の者から「追いはぎ」と嘲笑的に呼ばれますが、"
+#~ "それは彼女らが、走り回ることに大いに長けていることを要求されるどのような仕"
+#~ "事も引き受けるためで、しばしば密使や斥候としても雇われます。そうして得られ"
+#~ "た持久力と敏捷さは戦闘においても同様に活躍し、みじめな武器しかないにも関わ"
+#~ "らず、彼女らは、特に闇に隠れて、敵を悩ますのが極めて得意です。"
 
 #~ msgid ""
 #~ "Armed with heavy mace, Highwaymen are the last people you want to meet on "
 #~ "a deserted road late at night."
 #~ msgstr ""
 #~ "重いメイスで武装しており、公道の追いはぎは夜の人気のない道で最も会いたくな"
-#~ "い者たちです。"
+#~ "い者達です。"
 
 #~ msgid ""
 #~ "The weighted nets used by mermen in warfare are a difficult weapon to use "
@@ -5227,11 +5348,10 @@ msgstr ""
 #~ "element, and makes their race a threat even to enemies who merely "
 #~ "approach the water."
 #~ msgstr ""
-#~ "戦闘においてマーマンによって使われる重りをつけられた網はうまく使うのが 難"
-#~ "しい武器です。それをマスターした者は彼らの仲間から評価され、尊敬されま"
-#~ "す。 この武器は彼らの得意なところでマーマンの完全な優位を確実にすることを"
-#~ "助け、 またまったく水のそばに近づかない敵にとってさえも彼らの種族を脅威に"
-#~ "します。"
+#~ "戦闘においてマーマンによって使われる重りをつけられた網はうまく使うのが難し"
+#~ "い武器です。それをマスターした者は彼らの仲間から評価され、尊敬されます。こ"
+#~ "の武器は彼らの得意なところでマーマンの完全な優位を確実にすることを助け、ま"
+#~ "たまったく水のそばに近づかない敵にとってさえも彼らの種族を脅威にします。"
 
 #~ msgid ""
 #~ "Fishing, as practiced by mermen, is largely a matter of chasing schools "
@@ -5244,15 +5364,14 @@ msgstr ""
 #~ "would otherwise be at a great advantage."
 #~ msgstr ""
 #~ "マーマンによって営まれる漁業は、たいていは魚の群れを待ち伏せの網に追い込む"
-#~ "と いうものです。これらの網はそれ自身ではそれほど大きなダメージを与えるこ"
-#~ "とは できませんが、川の浅瀬を渉ろうとしている軍隊に対して大きな効果を与え"
-#~ "るために 使われます。小さくて重りをつけられた網は空中に投げ出されます。こ"
-#~ "れらの網は 平時に使うために設計されたのではありませんが、戦闘時には特に効"
-#~ "果的です。 マーマンはこのような武器を軍隊を水中で動けないようにするために"
-#~ "も使用します。 そしてもっと重要なのは、陸にいる軍隊に対して戦場を公平にす"
-#~ "るためです。 そうでないと軍隊はとても有利になるでしょう。"
+#~ "というものです。これらの網はそれ自身ではそれほど大きなダメージを与えること"
+#~ "はできませんが、川の浅瀬を渉ろうとしている軍隊に対して大きな効果を与えるた"
+#~ "めに使われます。小さくて重りをつけられた網は空中に投げ出されます。これらの"
+#~ "網は平時に使うために設計されたのではありませんが、戦闘時には特に効果的で"
+#~ "す。マーマンはこのような武器を軍隊を水中で動けないようにするためにも使用し"
+#~ "ます。そしてもっと重要なのは、陸にいる軍隊に対して戦場を公平にするためで"
+#~ "す。そうでないと軍隊はとても有利になるでしょう。"
 
-#, fuzzy
 #~ msgid ""
 #~ "female^To attract any practitioners, the lure of black magic must be a "
 #~ "great prize indeed, for anyone caught practicing the art in the civilized "
@@ -5265,15 +5384,15 @@ msgstr ""
 #~ "In such condition, their only weapon is the craft they have so committed "
 #~ "themselves to learning."
 #~ msgstr ""
-#~ "いかなる専門家も惹きつけられる黒魔術の誘惑は、文明世界ではその芸術を 学ん"
-#~ "で捕らえられると死刑宣告を受けるにもかかわらず、まさに大きな賞です。 そし"
-#~ "ていまだこの芸術を追い求める者達がおり、その賞がもたらすものは 不死以外の"
-#~ "何物ではありません。秘密の教団内で隠されていたり、地下世界の 暗黒の儀式に"
-#~ "おいて伝授され、これらの狂信者が耐えなければならない訓練は、 彼等を消耗さ"
-#~ "せ衰弱させます。\n"
+#~ "いかなる専門家も惹きつけられる黒魔術の誘惑は、文明世界ではその芸術を学んで"
+#~ "捕らえられると死刑宣告を受けるにもかかわらず、まさに大きな賞です。そしてい"
+#~ "まだこの芸術を追い求める者達がおり、その賞がもたらすものは不死以外の何物で"
+#~ "はありません。秘密の教団内で隠されていたり、地下世界の暗黒の儀式において伝"
+#~ "授され、これらの狂信者が耐えなければならない訓練は、彼女らを消耗させ衰弱さ"
+#~ "せます。\n"
 #~ "\n"
-#~ "そのような制約において、彼等の唯一の武器は彼等が学ぶことに専心した 技巧に"
-#~ "なります。"
+#~ "そのような制約において、彼女らの唯一の武器は彼女らが学ぶことに専心した技巧"
+#~ "になります。"
 
 #~ msgid ""
 #~ "\n"
@@ -5284,7 +5403,6 @@ msgstr ""
 #~ "\n"
 #~ "特記事項"
 
-#, fuzzy
 #~ msgid ""
 #~ "Knights of the highest virtue, Paladins have sworn themselves to semi-"
 #~ "monastic vows, pledging their might to the cause of righteousness. Though "
@@ -5295,11 +5413,11 @@ msgstr ""
 #~ "\n"
 #~ "Special Notes:"
 #~ msgstr ""
-#~ "最も高潔な騎士である聖騎士は彼らの力を正義のために捧げることを修道院に 宣"
-#~ "誓しました。戦場では近衛騎士ほどは堂々としていませんが、聖騎士は戦闘に お"
-#~ "いて強力であり、彼らの忠誠は彼らに他の才能を与えます。聖騎士はこの世に い"
-#~ "ない者にとっては致命的であり、また彼の仲間の傷を治療できるよう訓練を 受け"
-#~ "ています。\n"
+#~ "最も高潔な騎士である聖騎士は彼らの力を正義のために捧げることを修道院に宣誓"
+#~ "しました。戦場では近衛騎士ほどは堂々としていませんが、聖騎士は戦闘において"
+#~ "強力であり、彼らの忠誠は彼らに他の才能を与えます。聖騎士はこの世にいない者"
+#~ "にとっては致命的であり、また彼の仲間の傷を治療できるよう訓練を受けていま"
+#~ "す。\n"
 #~ "\n"
 #~ "特記事項:"
 
@@ -5343,7 +5461,6 @@ msgstr ""
 #~ msgid "Soul Shooter"
 #~ msgstr "ソウルシューター"
 
-#, fuzzy
 #~ msgid ""
 #~ "The dread inspired by black magic comes chiefly from how little is known "
 #~ "about it by the common man. Dark sorcerers have begun to unlock the "
@@ -5352,14 +5469,9 @@ msgstr ""
 #~ "\n"
 #~ "Special Notes:"
 #~ msgstr ""
-#~ "黒魔術から思い起こされる恐怖は主に、一般人にはそれがほとんど知られて いな"
-#~ "いことから来ています。 黒魔術師は生命と死の秘密の扉を開き、 すぐに痛みと苦"
-#~ "しみを与える達人になろうとしています。\n"
-#~ "\n"
-#~ "暗黒の技の究極の目標とは死と生命の完全な支配です。 黒魔術師は、死体や 骸骨"
-#~ "や霊魂を生き返らせることで、ついには生命と死の操り方を学ぶでしょう。 堕落"
-#~ "と力への渇望により、リッチ敵なものへの変身と恐ろしい不死の達成を通して、 "
-#~ "死を完全に克服しようと試みることでしょう。\n"
+#~ "黒魔術から思い起こされる恐怖は主に、一般人にはそれがほとんど知られていない"
+#~ "ことから来ています。黒魔術師は生命と死の秘密の扉を開き、その後者はあまりに"
+#~ "も簡単に与えられるものです。\n"
 #~ "\n"
 #~ "特記事項:"
 
@@ -5374,7 +5486,6 @@ msgstr ""
 #~ "\n"
 #~ "特記事項:"
 
-#, fuzzy
 #~ msgid ""
 #~ "The most resilient dwarves sometimes join the Dwarvish army as Guardsmen. "
 #~ "Slow and without a strong attack, they guard the Army's flank,  hurling "
@@ -5383,9 +5494,9 @@ msgstr ""
 #~ "\n"
 #~ "Special Notes:"
 #~ msgstr ""
-#~ "もっとも屈強なドワーフは警護兵として軍隊に参加することがあります。強力な "
-#~ "攻撃なしで遅い彼らは軍隊の側面を守備し、多くのダメージに耐え、防御のため "
-#~ "大槍を敵に投げつけます。\n"
+#~ "もっとも屈強なドワーフは警護兵として軍隊に参加することがあります。強力な攻"
+#~ "撃なしで遅い彼らは軍隊の側面を守備し、多くのダメージに耐え、防御のため大槍"
+#~ "を敵に投げつけます。\n"
 #~ "\n"
 #~ "特記事項:"
 
@@ -5412,7 +5523,6 @@ msgstr ""
 #~ "\n"
 #~ "特記事項:"
 
-#, fuzzy
 #~ msgid ""
 #~ "Mermaid Priestesses pursue their calling with a fervor that leaves their "
 #~ "human counterparts somewhat taken aback. This may have its roots in a "
@@ -5424,12 +5534,11 @@ msgstr ""
 #~ "\n"
 #~ "Special Notes:"
 #~ msgstr ""
-#~ "マーメイドの司祭は、人間の同等の者をいくぶん驚かすほどの情熱をもって 天職"
-#~ "を見い出します。これは彼らが暗唱しているある伝説が起源なのかも知れませ"
-#~ "ん。 彼らの民族をかつて破滅させた、言い表すことのできない謎の恐怖を物語る"
-#~ "伝説です。 このことについて語られることはほとんどありませんが、それをどう"
-#~ "にか打ち負かし、 彼らの民族を安泰にしたのは光の力であったことは明らかで"
-#~ "す。\n"
+#~ "マーメイドの司祭は、人間の同等の者をいくぶん驚かすほどの情熱をもって天職を"
+#~ "見い出します。これは彼らが暗唱しているある伝説が起源なのかも知れません。彼"
+#~ "らの民族をかつて破滅させた、言い表すことのできない謎の恐怖を物語る伝説で"
+#~ "す。このことについて語られることはほとんどありませんが、それをどうにか打ち"
+#~ "負かし、彼らの民族を安泰にしたのは光の力であったことは明らかです。\n"
 #~ "\n"
 #~ "特記事項:"
 
@@ -5454,7 +5563,6 @@ msgstr ""
 #~ "なかぶりつきと破壊的な尾に気をつけなければなりません。ファイアドラゴンは "
 #~ "ずる賢く、残酷であり、しばしば彼らを勝利に導く手下を連れています。"
 
-#, fuzzy
 #~ msgid ""
 #~ "Orcish Rulers are the chieftains of their tribes. They make the important "
 #~ "decisions and lead their people into battle. They carry a bow out of "
@@ -5464,14 +5572,13 @@ msgstr ""
 #~ "\n"
 #~ "Special Notes:"
 #~ msgstr ""
-#~ "オークの支配者は彼らの部族の族長です。彼らは重要な決定を下し、戦闘時には "
-#~ "彼らの民を統率します。 彼らは必要に応じて弓も使用しますが、剣技に非常に 長"
-#~ "けており、全員が強力な戦士です。生来の統率技能によって、戦闘時には彼らは "
-#~ "非常に貴重な存在となります。この支配者が死亡したら、戦闘も敗北です。\n"
+#~ "オークの支配者は彼らの部族の族長です。彼らは重要な決定を下し、戦闘時には彼"
+#~ "らの民を統率します。彼らは必要に応じて弓も使用しますが、剣技に非常に長けて"
+#~ "おり、全員が強力な戦士です。生来の統率技能によって、戦闘時には彼らは非常に"
+#~ "貴重な存在となります。この支配者が死亡したら、戦闘も敗北です。\n"
 #~ "\n"
 #~ "特記事項:"
 
-#, fuzzy
 #~ msgid ""
 #~ "Orcish Sovereigns are the chieftains of the largest and most powerful "
 #~ "tribes. They make the important decisions and lead their people into "
@@ -5482,14 +5589,13 @@ msgstr ""
 #~ "\n"
 #~ "Special Notes:"
 #~ msgstr ""
-#~ "オークの君主は彼らの部族の族長です。彼らは重要な決定を下し、戦闘時には 彼"
-#~ "らの民を統率します。 彼らは必要に応じて弓も使用しますが、剣技に非常に 長け"
-#~ "ており、全員が強力な戦士です。生来の統率技能によって、戦闘時には彼らは 非"
-#~ "常に貴重な存在となります。この支配者が死亡したら、戦闘も敗北です。\n"
+#~ "オークの君主は彼らの部族の族長です。彼らは重要な決定を下し、戦闘時には彼ら"
+#~ "の民を統率します。彼らは必要に応じて弓も使用しますが、剣技に非常に長けてお"
+#~ "り、全員が強力な戦士です。生来の統率技能によって、戦闘時には彼らは非常に貴"
+#~ "重な存在となります。この支配者が死亡したら、戦闘も敗北です。\n"
 #~ "\n"
 #~ "特記事項:"
 
-#, fuzzy
 #~ msgid ""
 #~ "Blood Bats are fast and can drain the blood of those they attack, thereby "
 #~ "gaining some of the health lost by their victims. Such is their fury that "
@@ -5498,8 +5604,11 @@ msgstr ""
 #~ "\n"
 #~ "Special Notes:"
 #~ msgstr ""
-#~ "吸血コウモリは素早く、相手の血を吸い取ることで、餌食から奪った体力の 一部"
-#~ "を得ることができます。 この不死の空飛ぶ獣が彼らの犠牲者の血によって 赤く汚"
-#~ "れていることこそが、凶暴性の証です。\n"
+#~ "吸血コウモリは素早く、相手の血を吸い取ることで、餌食から奪った体力の一部を"
+#~ "得ることができます。この不死の空飛ぶ獣が彼らの犠牲者の血によって赤く汚れて"
+#~ "いることこそが、凶暴性の証です。\n"
 #~ "\n"
 #~ "特記事項:"
+
+#~ msgid "Longbow"
+#~ msgstr "大弓"

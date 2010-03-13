@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-02-25 00:07+0100\n"
-"PO-Revision-Date: 2008-02-25 00:35+0900\n"
-"Last-Translator: naoki iimura <amatubu@gmail.com>\n"
+"POT-Creation-Date: 2010-03-08 14:58+0100\n"
+"PO-Revision-Date: 2010-02-01 01:19+0900\n"
+"Last-Translator:  <P2295417919104729@hotmail.co.jp>\n"
 "Language-Team: Japanese Translation Team\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,9 +23,8 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:4
-#, fuzzy
 msgid "4p - A New Land"
-msgstr "4P - ラグーン"
+msgstr "4p - 新天地"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:7
@@ -33,6 +32,8 @@ msgid ""
 "This 4p survival scenario allows you to construct buildings and terraform "
 "the land. Use map settings. Recommended starting gold=100."
 msgstr ""
+"この 4p のサバイバルシナリオでは建物を建設したり地形を変更したりできます。"
+"マップ設定を使用してください。推奨開始ゴールドは 100 です。"
 
 #. [part]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:25
@@ -42,16 +43,19 @@ msgid ""
 "armies that had crushed their homeland, the leaders of the resistance hoped "
 "only for enough time to rebuild their forces."
 msgstr ""
+"大戦の余波の中、残された人間達は辺鄙な人里離れた峡谷へと逃げ出した。故郷を破"
+"壊した強力な軍隊から姿を隠すことはできないと分かっていたから、抵抗運動の指導"
+"者達は彼ら自身の戦力を再建するだけの時間稼ぎに望みを賭けるしかなかった。"
 
 #. [objectives]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:33
 msgid "Right-click on your leader during your turn for help"
-msgstr ""
+msgstr "自分のターン中にリーダーを右クリックするとヘルプが表示されます"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:35
 msgid "You must survive until turn 25."
-msgstr ""
+msgstr "25 ターンまで生き延びなければならない。"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:52
@@ -74,32 +78,32 @@ msgstr "チーム 2"
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:436
 msgid ""
 "You destroy the mushroom mine. The northwest undead now have 10 less income."
-msgstr ""
+msgstr "キノコの鉱窟を破壊しました。北西のアンデッドの収入が 10 下がりました。"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:456
 msgid ""
 "You destroy the mushroom mine. The northeast orcs now have 10 less income."
-msgstr ""
+msgstr "キノコの鉱窟を破壊しました。北東のオークの収入が 10 下がりました。"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:476
 msgid ""
 "You destroy the mushroom mine. The southwest orcs now have 10 less income."
-msgstr ""
+msgstr "キノコの鉱窟を破壊しました。南西のオークの収入が 10 下がりました。"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:496
 msgid ""
 "You destroy the mushroom mine. The southeast undead now have 10 less income."
-msgstr ""
+msgstr "キノコの鉱窟を破壊しました。南東のアンデッドの収入が 10 下がりました。"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:588
 msgid ""
 "One of your peasants has happened upon some spider's nests in the north and "
 "south."
-msgstr ""
+msgstr "農民の一人が偶然北と南にある蜘蛛の巣を見つけました。"
 
 #. [message]: type=Peasant
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:594
@@ -107,6 +111,8 @@ msgid ""
 "I swear I saw somebody trapped in the spider's web. Maybe we should rescue "
 "them?"
 msgstr ""
+"誓って言うが、何者かが蜘蛛の巣に捕まっているのを見たんだ。救出すべきだろう"
+"か？"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:606
@@ -115,12 +121,14 @@ msgid ""
 "spiders guarding each captive are currently wounded, the sooner you get "
 "there the better chance you have of killing them."
 msgstr ""
+"虜囚の隣にユニットを移動させるとその陣営に加わります。虜囚を守っている蜘蛛は"
+"現在傷ついているので、すぐに向かえば倒せる可能性がより高くなるでしょう。"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:617
 msgid ""
 "Your men report strange sounds coming from some caves to the east and west."
-msgstr ""
+msgstr "部下達が東と北にある洞窟から聞こえてくる奇妙な音について報告しました。"
 
 #. [message]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:623
@@ -129,6 +137,9 @@ msgid ""
 "it must be where the mainstay of their resources are produced. If we could "
 "destroy them our chances wouldn't nearly be so slim."
 msgstr ""
+"近くで敵が地下のキノコの鉱窟を掘っているのだろう――奴らの資源が生産される大黒"
+"柱があるに違いない。それを破壊できれば、チャンスはそれほど狭くはならないだろ"
+"う。"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:635
@@ -136,11 +147,13 @@ msgid ""
 "Move any unit onto these villages to destroy the mine. Each one you destroy "
 "will reduce the enemy's income by 10."
 msgstr ""
+"これらの村にユニットを移動させると鉱窟を破壊できます。一つ破壊する毎に敵の収"
+"入が 10 減少します。"
 
 #. [message]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:647
 msgid "This battle is nearly at an end. Victory is close at hand!"
-msgstr ""
+msgstr "戦闘はほぼ終わりだ。勝利は近い！"
 
 #. [message]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:658
@@ -148,48 +161,49 @@ msgid ""
 "We have survived the onslaught! The tide of the battle has turned, victory "
 "cannot elude us now!"
 msgstr ""
+"我々は猛攻撃を生き延びた！ 戦闘の潮流は引き、勝利は我々の手から逃れ得ない！"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:662
 msgid "You have won the game, but you may continue if you wish..."
-msgstr ""
+msgstr "あなたはゲームに勝利しましたが、もし望むのであれば続行できます……"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:677
 msgid "I have fallen, but all is not lost!"
-msgstr ""
+msgstr "私が倒れても、全てが失われたわけではない！"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:689
 msgid "I am done for, but we have yet to lose this battle!"
-msgstr ""
+msgstr "私はもう駄目だが、我々はまだ戦いに負けたわけじゃない！"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:701
 msgid "Comrades, avenge me!"
-msgstr ""
+msgstr "友よ、仇は頼んだぞ！"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:713
 msgid "Do not fear, there is hope for us still!"
-msgstr ""
+msgstr "恐れるな、まだ希望はある！"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_general_macros.cfg:73
 msgid "The chest contains $oc_treasure gold."
-msgstr ""
+msgstr "箱の中には $oc_treasure ゴールドが入っていた。"
 
 #. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:5
 msgid "Return to menu"
-msgstr ""
+msgstr "メニューに戻る"
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:16
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:114
 msgid "Peasants"
-msgstr ""
+msgstr "農民"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:19
@@ -198,13 +212,15 @@ msgid ""
 "peasant allows you to terraform the landscape and/or build castles, mines, "
 "farms, villages and universities."
 msgstr ""
+"農民はあなたの労働者です。農民を右クリックすると、地形次第で土地の環境を変え"
+"たり、城、鉱山、農場、村、大学を建設できます。"
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:27
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:121
 msgid "Mages"
-msgstr ""
+msgstr "魔術師"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:29
@@ -212,14 +228,15 @@ msgid ""
 "Mages are your wise men. They can study at universities, pursuing advances "
 "in mining, farming and recruitment."
 msgstr ""
+"魔術師はあなたの頭脳労働者です。大学で研究を行い、鉱業や農業、雇用の発展に従"
+"事します。"
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:37
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:128
-#, fuzzy
 msgid "Farms"
-msgstr "Faery"
+msgstr "農地"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:39
@@ -227,13 +244,15 @@ msgid ""
 "Farms can only be planted on grassland. Move a peasant onto a farm and he "
 "will begin to automatically harvest the cash crop."
 msgstr ""
+"開墾された平原が農地となります。農民を農地に移動させると自動的に換金作物を収"
+"穫し始めます。"
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:47
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:135
 msgid "Villages"
-msgstr ""
+msgstr "村"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:49
@@ -242,14 +261,15 @@ msgid ""
 "usual. Right-click on a peasant in a village and you can establish a "
 "university."
 msgstr ""
+"村は平原の上にのみ建設できます。通常と同様の収入および回復効果が得られます。"
+"村の上にいる農民を右クリックすると大学を設立できます。"
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:57
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:142
-#, fuzzy
 msgid "Mines"
-msgstr "モンスター"
+msgstr "鉱山"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:59
@@ -257,13 +277,15 @@ msgid ""
 "Mines can be built on hills or mountains. A peasant on a mine will "
 "automatically dig for gold at the start of your turn."
 msgstr ""
+"鉱山は丘と山に建設できます。鉱山の上にいる農民はターン開始時に自動的に金を採"
+"掘します。"
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:67
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:149
 msgid "Universities"
-msgstr ""
+msgstr "大学"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:69
@@ -273,6 +295,9 @@ msgid ""
 "your chosen research target. Right-click on a mage in a university to change "
 "research target."
 msgstr ""
+"「エルフ式」の村は大学を表します。大学の上にいる魔術師はターン開始時に自動的"
+"に選択した研究対象を進行させます。大学の魔術師を右クリックすると研究対象を変"
+"更できます。"
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
@@ -281,7 +306,7 @@ msgstr ""
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:156
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:135
 msgid "Diplomacy"
-msgstr ""
+msgstr "外交"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:79
@@ -289,32 +314,33 @@ msgid ""
 "Right-clicking on your leader when in a university allows you to select "
 "special diplomatic options."
 msgstr ""
+"リーダーが大学にいるときに右クリックすると特別な外交オプションを選択できま"
+"す。"
 
 #. [set_menu_item]: id=anl_help
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:87
 msgid "Help"
-msgstr ""
+msgstr "ヘルプ"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:103
-#, fuzzy
 msgid "A New Land - Help"
-msgstr "4P - ラグーン"
+msgstr "新天地 - ヘルプ"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:104
 msgid "Select a topic."
-msgstr ""
+msgstr "項目を選んでください。"
 
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:107
 msgid "Done"
-msgstr ""
+msgstr "終了"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:19
 msgid "I hereby donate 20 gold to the coffers of $df_player_name|."
-msgstr ""
+msgstr "これより $df_player_name| の財源に 20 ゴールドを提供する。"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:59
@@ -322,6 +348,8 @@ msgid ""
 "$sf_player_name|, since our wisdom exceeds yours I have instructed my "
 "scholars to further your understanding of agriculture."
 msgstr ""
+"$sf_player_name|、我々の知識はそちらを上回っているから、そちらの農業の理解を"
+"促進させるようこちらの学者達に命令した。"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:91
@@ -330,6 +358,8 @@ msgid ""
 "instructed my scholars to aid you in your efforts to learn the science of "
 "mining."
 msgstr ""
+"$sm_player_name|、我が人民の知識はそちらを上回っているから、そちらが鉱業科学"
+"を学ぶ労力を軽減するようこちらの学者達に命令した。"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:123
@@ -337,6 +367,8 @@ msgid ""
 "You know worryingly little about the arts of war, $sw_player_name|. I feel "
 "an obligation to instruct you in this vital matter."
 msgstr ""
+"$sw_player_name|、君は心配してしまう程に戦術について何も知らない。この不可欠"
+"な件について君を指導する義務を感じる。"
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:190
@@ -344,6 +376,8 @@ msgid ""
 "$player_name\n"
 "Share knowledge of agriculture"
 msgstr ""
+"$player_name\n"
+"農業知識共有"
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:197
@@ -351,6 +385,8 @@ msgid ""
 "$player_name\n"
 "Share knowledge of mining"
 msgstr ""
+"$player_name\n"
+"鉱業知識共有"
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:204
@@ -358,24 +394,26 @@ msgid ""
 "$player_name\n"
 "Share knowledge of warfare"
 msgstr ""
+"$player_name\n"
+"戦術知識共有"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:221
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:248
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:282
 msgid "Diplomatic Options"
-msgstr ""
+msgstr "外交オプション"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:224
 msgid "What shall I do?"
-msgstr ""
+msgstr "どうしますか？"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:230
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:47
 msgid "Nothing"
-msgstr ""
+msgstr "何もしない"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:241
@@ -383,17 +421,19 @@ msgid ""
 "Donate Funds\n"
 "Give 20 gold to another player"
 msgstr ""
+"財源提供\n"
+"他のプレイヤーに 20 ゴールドを与える"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:251
 msgid "Who will you donate funds to?"
-msgstr ""
+msgstr "誰に財源を提供しますか？"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:254
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:288
 msgid "Back"
-msgstr ""
+msgstr "戻る"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:275
@@ -401,11 +441,13 @@ msgid ""
 "Share Knowledge\n"
 "Help an ally with their research"
 msgstr ""
+"知識共有\n"
+"同盟軍を研究で支援する"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:285
 msgid "Who will you share knowledge with?"
-msgstr ""
+msgstr "誰と知識を共有しますか？"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:323
@@ -415,6 +457,10 @@ msgid ""
 "Negotiation Progress: $player_$side_number|.leader_option_1.progress|/"
 "$player_$side_number|.leader_option_1.target"
 msgstr ""
+"ドワーフ族との交渉\n"
+"ドワーフ族のユニットを雇用できるようにする\n"
+"交渉状況: $player_$side_number|.leader_option_1.progress|/$player_"
+"$side_number|.leader_option_1.target"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:350
@@ -424,12 +470,16 @@ msgid ""
 "Negotiation Progress: $player_$side_number|.leader_option_2.progress|/"
 "$player_$side_number|.leader_option_2.target"
 msgstr ""
+"エルフ族との交渉\n"
+"エルフ族のユニットを雇用できるようにする\n"
+"交渉状況: $player_$side_number|.leader_option_2.progress|/$player_"
+"$side_number|.leader_option_2.target"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:383
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:407
 msgid "Negotiation Complete"
-msgstr ""
+msgstr "交渉完了"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:386
@@ -437,6 +487,8 @@ msgid ""
 "Our talks are complete - the Dwarves will gladly fight by your side. Which "
 "of our brethren do you want to recruit?"
 msgstr ""
+"話し合いは終わった――ドワーフ族は喜んであなたの陣営で戦うだろう。わしらの兄弟"
+"のうちどれを雇用したいと望むのか？"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:410
@@ -444,11 +496,13 @@ msgid ""
 "Our talks are complete - the Elves shall aid you in this battle. Which our "
 "of kin do you wish to recruit?"
 msgstr ""
+"話し合いは終わりました――エルフ族は戦闘であなたを支援します。私達の同胞のうち"
+"どれを雇用したいのですか？"
 
 #. [set_menu_item]: id=anl_choose_new_recruit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:9
 msgid "Choose New Recruit"
-msgstr ""
+msgstr "新しい雇用の選択"
 
 #. [message]: speaker=unit
 #. [message]: speaker=narrator
@@ -457,22 +511,22 @@ msgstr ""
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:231
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:247
 msgid "Study Complete"
-msgstr ""
+msgstr "研究完了"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:35
 msgid "Which type of unit would you like to be able to recruit?"
-msgstr ""
+msgstr "どのタイプのユニットを雇用できるようにしますか？"
 
 #. [set_menu_item]: id=anl_oversee_research
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:56
 msgid "Oversee Research"
-msgstr ""
+msgstr "研究の監督"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:95
 msgid "Research"
-msgstr ""
+msgstr "研究"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:101
@@ -483,11 +537,16 @@ msgid ""
 "Our farms produce $player_$side_number|.farming.gold|g\n"
 "Our mines produce $player_$side_number|.mining.gold|g\n"
 msgstr ""
+"我々は現在 $player_$side_number|.research.current_target| を研究しています。"
+"終了まで学者達を何に専念させますか？\n"
+"\n"
+"農場収入 $player_$side_number|.farming.gold|g\n"
+"鉱山収入 $player_$side_number|.mining.gold|g\n"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:105
 msgid "Continue as before"
-msgstr ""
+msgstr "以前のものを継続する"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:118
@@ -497,13 +556,17 @@ msgid ""
 "Study Progress: $player_$side_number|.farming.progress|/$player_"
 "$side_number|.farming.target"
 msgstr ""
+"農業\n"
+"農業収入 +1 ゴールド\n"
+"研究状況: $player_$side_number|.farming.progress|/$player_$side_number|."
+"farming.target"
 
 #. [command]
 #. [if]
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:120
 #: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:127
 msgid "agriculture"
-msgstr ""
+msgstr "農業"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:133
@@ -513,13 +576,17 @@ msgid ""
 "Study Progress: $player_$side_number|.mining.progress|/$player_$side_number|."
 "mining.target"
 msgstr ""
+"鉱業\n"
+"鉱業収入 +1 ゴールド\n"
+"研究状況: $player_$side_number|.mining.progress|/$player_$side_number|."
+"mining.target"
 
 #. [command]
 #. [if]
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:135
 #: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:133
 msgid "mining"
-msgstr ""
+msgstr "鉱業"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:148
@@ -529,13 +596,17 @@ msgid ""
 "Study Progress: $player_$side_number|.warfare.progress|/$player_"
 "$side_number|.warfare.target"
 msgstr ""
+"戦術\n"
+"新しいタイプのユニットを雇用可能にする\n"
+"研究状況: $player_$side_number|.warfare.progress|/$player_$side_number|."
+"warfare.target"
 
 #. [command]
 #. [if]
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:172
 #: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:139
 msgid "warfare"
-msgstr ""
+msgstr "戦術"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:216
@@ -543,6 +614,8 @@ msgid ""
 "$player_$side_number|.name|'s farms now produce $player_$side_number|."
 "farming.gold gold."
 msgstr ""
+"$player_$side_number|.name| の農場の収入は $player_$side_number|.farming."
+"gold ゴールドになりました。"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:233
@@ -550,6 +623,8 @@ msgid ""
 "$player_$side_number|.name|'s mines now produce $player_$side_number|.mining."
 "gold gold."
 msgstr ""
+"$player_$side_number|.name| の鉱山の収入は $player_$side_number|.mining.gold "
+"ゴールドになりました。"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:249
@@ -557,31 +632,33 @@ msgid ""
 "$player_$side_number|.name|, we have finished researching warfare. Right-"
 "click on a mage in a university to select a unit to recruit."
 msgstr ""
+"$player_$side_number|.name|、戦術の研究が終わりました。大学の上にいる魔術師を"
+"右クリックして雇用するユニットを選択してください。"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:157
 msgid "Let's cut you free!"
-msgstr ""
+msgstr "自由にしてやろう！"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:161
 msgid "You release the creature from the web and it agrees to help you."
-msgstr ""
+msgstr "蜘蛛の巣からその生物を解放すると、あなたを助けることに同意しました。"
 
 #. [set_menu_item]: id=anl_get_to_work
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:6
 msgid "Get to Work!"
-msgstr ""
+msgstr "仕事にかかれ！"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:43
 msgid "What shall I do my liege?"
-msgstr ""
+msgstr "陛下、如何致しましょうか？"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:59
 msgid "Convert to Grassland"
-msgstr ""
+msgstr "平原に変える"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:59
@@ -589,145 +666,144 @@ msgstr ""
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:266
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:402
 msgid "Cost: 0g"
-msgstr ""
+msgstr "コスト: 0g"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:74
 msgid "Plant Farm"
-msgstr ""
+msgstr "農地にする"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:86
 msgid "Build Village"
-msgstr ""
+msgstr "村を作る"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:86
 msgid "Cost: 15g"
-msgstr ""
+msgstr "コスト: 15g"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:104
 msgid "Build Castle"
-msgstr ""
+msgstr "城を建設する"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:104
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:361
 msgid "Cost: 6g"
-msgstr ""
+msgstr "コスト: 6g"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:121
 msgid "Cost: 4g"
-msgstr ""
+msgstr "コスト: 4g"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:121
 msgid "Flood the Field"
-msgstr ""
+msgstr "平地を氾濫させる"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:138
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:281
 msgid "Cost: 1g"
-msgstr ""
+msgstr "コスト: 1g"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:138
 msgid "Plant Saplings"
-msgstr ""
+msgstr "若木を植える"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:158
 msgid "Chop Down Forest"
-msgstr ""
+msgstr "森を切り開く"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:158
 msgid "Earns: 1g"
-msgstr ""
+msgstr "コスト: 1g"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:185
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:206
 msgid "Build Mine"
-msgstr ""
+msgstr "鉱山を掘る"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:185
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:206
 msgid "Cost: 25g"
-msgstr ""
+msgstr "コスト: 25g"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:227
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:319
 msgid "Cost: 3g"
-msgstr ""
+msgstr "コスト: 3g"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:227
 msgid "Make a Ford"
-msgstr ""
+msgstr "浅瀬を作る"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:245
 msgid "Cost: 5g"
-msgstr ""
+msgstr "コスト: 5g"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:245
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:281
 msgid "Landfill"
-msgstr ""
+msgstr "埋め立てる"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:266
 msgid "Destroy the Ford"
-msgstr ""
+msgstr "浅瀬を破壊する"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:302
 msgid "Cost: 2g"
-msgstr ""
+msgstr "コスト: 2g"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:302
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:319
 msgid "Smash Cave Floor"
-msgstr ""
+msgstr "洞窟の床を砕く"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:336
 msgid "Earns: 3g"
-msgstr ""
+msgstr "収入: 3g"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:336
 msgid "Harvest Mushrooms"
-msgstr ""
+msgstr "キノコを収穫する"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:361
 msgid "Build a Keep"
-msgstr ""
+msgstr "主塔を建設する"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:381
 msgid "Cost: 7g"
-msgstr ""
+msgstr "コスト: 7g"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:381
 msgid "Establish University"
-msgstr ""
+msgstr "大学を設立する"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:402
-#, fuzzy
 msgid "Clear the Ground"
-msgstr "晴天"
+msgstr "地面をきれいにする"
 
 #~ msgid "User Map"
 #~ msgstr "ユーザーマップ"
@@ -781,12 +857,6 @@ msgstr "晴天"
 #~ "ユニットを動かす戦略を練らなければならない。 この地はかつて、伝説のバジリ"
 #~ "スクの長老の本拠地であった。 彼らを取り囲む洞くつと不毛の荒野は、幾人かの "
 #~ "Wesnoth の偉大なヒーローたちの石化した姿で満たされている。"
-
-#~ msgid "teamname^North"
-#~ msgstr "北軍"
-
-#~ msgid "teamname^South"
-#~ msgstr "南軍"
 
 #~ msgid ""
 #~ "The winds of the dark sky blew so cold,\n"
@@ -1339,12 +1409,6 @@ msgstr "晴天"
 #~ "coniferous region."
 #~ msgstr "その昔天から落ちた巨大な星が、この針葉樹地帯に痕跡を残した。"
 
-#~ msgid "teamname^West"
-#~ msgstr "西軍"
-
-#~ msgid "teamname^East"
-#~ msgstr "東軍"
-
 #~ msgid "2p - Hamlets"
 #~ msgstr "2P - 小集落"
 
@@ -1677,21 +1741,6 @@ msgstr "晴天"
 #~ "める最善の方法はオークションです。最も低い札を入れた人が勝ちだ。 とても小"
 #~ "さいマップなので、中央以外のプレイヤーは 75 ゴルードを推奨。"
 
-#~ msgid "teamname^Northeast"
-#~ msgstr "北東軍"
-
-#~ msgid "teamname^Southeast"
-#~ msgstr "南東軍"
-
-#~ msgid "teamname^Southwest"
-#~ msgstr "南西軍"
-
-#~ msgid "teamname^Northwest"
-#~ msgstr "北西軍"
-
-#~ msgid "teamname^Center"
-#~ msgstr "中央軍"
-
 #~ msgid "5p - Forest of Fear"
 #~ msgstr "5P - 畏敬の森"
 
@@ -1829,12 +1878,6 @@ msgstr "晴天"
 #~ "Morituri からヒントを得て、この 8 プレイヤーのマップは 2 つのチームが攻撃"
 #~ "においても防御においても協力する必要のある壮大な戦闘シーンを作り出す。"
 
-#~ msgid "teamname^east"
-#~ msgstr "東軍"
-
-#~ msgid "teamname^west"
-#~ msgstr "西軍"
-
 #~ msgid "8p - Morituri"
 #~ msgstr "8P - Morituri"
 
@@ -1934,3 +1977,47 @@ msgstr "晴天"
 #~ msgstr ""
 #~ "Wesnoth のベンチマークです。以下のオプションを使用します。--no-delay --"
 #~ "multiplayer --scenario=wesbench_shroud_walk --exit-at-end"
+
+#, fuzzy
+#~ msgid "teamname^North"
+#~ msgstr "チーム 1"
+
+#, fuzzy
+#~ msgid "teamname^South"
+#~ msgstr "チーム 1"
+
+#, fuzzy
+#~ msgid "teamname^West"
+#~ msgstr "チーム 1"
+
+#, fuzzy
+#~ msgid "teamname^East"
+#~ msgstr "チーム 1"
+
+#, fuzzy
+#~ msgid "teamname^Northeast"
+#~ msgstr "チーム 1"
+
+#, fuzzy
+#~ msgid "teamname^Southeast"
+#~ msgstr "チーム 1"
+
+#, fuzzy
+#~ msgid "teamname^Southwest"
+#~ msgstr "チーム 1"
+
+#, fuzzy
+#~ msgid "teamname^Northwest"
+#~ msgstr "チーム 1"
+
+#, fuzzy
+#~ msgid "teamname^Center"
+#~ msgstr "チーム 1"
+
+#, fuzzy
+#~ msgid "teamname^east"
+#~ msgstr "チーム 1"
+
+#, fuzzy
+#~ msgid "teamname^west"
+#~ msgstr "チーム 1"

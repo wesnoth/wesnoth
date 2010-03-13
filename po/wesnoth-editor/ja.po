@@ -8,11 +8,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
+"Project-Id-Version: Battle for Wesnoth 1.7.x-SVN\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-02-25 00:07+0100\n"
-"PO-Revision-Date: 2009-01-06 22:11+0900\n"
-"Last-Translator: np <tukiplus@gmail.com>\n"
+"PO-Revision-Date: 2010-01-31 12:03+0900\n"
+"Last-Translator: \n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,17 +23,17 @@ msgstr ""
 #. [brush]
 #: data/core/editor/brushes.cfg:5
 msgid "Single Hex"
-msgstr "1マス"
+msgstr "1 マス"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:15
 msgid "Radius 1 Hex"
-msgstr "半径1マス"
+msgstr "半径 1 マス"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:25
 msgid "Radius 2 Hex"
-msgstr "半径2マス"
+msgstr "半径 2 マス"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:55
@@ -68,7 +68,7 @@ msgstr "森林"
 #. [editor_group]: id=frozen
 #: data/core/editor/terrain-groups.cfg:44
 msgid "frozen"
-msgstr "雪原"
+msgstr "凍土"
 
 #. [editor_group]: id=rough
 #: data/core/editor/terrain-groups.cfg:51
@@ -93,7 +93,7 @@ msgstr "城"
 #. [editor_group]: id=special
 #: data/core/editor/terrain-groups.cfg:79
 msgid "special"
-msgstr "特別"
+msgstr "特殊地形"
 
 #. [editor_tool_hint]: id=editor-tool-paint
 #. [editor_tool_hint]: id=editor-tool-fill
@@ -101,13 +101,13 @@ msgstr "特別"
 #. [menu]: id=flood_button_editor
 #: data/core/editor/tool-hints.cfg:7 data/core/editor/tool-hints.cfg:13
 #: data/themes/editor.cfg:179 data/themes/editor.cfg:192
-#, fuzzy
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
-"前景、背景を描くために左右のクリック。シフトキーを押しながらなら、ベースレイ"
-"ヤーのみに描画。"
+"左右クリックで割り当てられた地形を描画。シフトキーを押しながらなら、ベースレ"
+"イヤーのみに描画。コントロールキーを押しながらクリックで、カーソルの下の地形"
+"に切り替え。"
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
@@ -128,8 +128,8 @@ msgid ""
 "position under cursor, delete clears."
 msgstr ""
 "左クリックでプレイヤーのスタート地点を決定、右でキャンセル。数字キーでその番"
-"号のプレイヤーのスタート地点へ移動、Alt+数字キーでその番号のプレイヤーのス"
-"タート地点を設定。"
+"号のプレイヤーのスタート地点へ移動、Alt キーと数字キーでその番号のプレイヤー"
+"のスタート地点を設定。"
 
 #. [editor_tool_hint]: id=editor-paste
 #: data/core/editor/tool-hints.cfg:30
@@ -158,7 +158,7 @@ msgstr "マップ"
 #. [menu]: id=menu-editor-window
 #: data/themes/editor.cfg:151
 msgid "Window"
-msgstr "Window"
+msgstr "ウィンドウ"
 
 #. [label]: id=villages-icon
 #: data/themes/editor.cfg:270
@@ -186,7 +186,7 @@ msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr ""
-"本当に終了してもよろしいですか？最後に保存したところからのマップの変更は失わ"
+"本当に終了してもよろしいですか？ 最後に保存したところからのマップの変更は失わ"
 "れます。"
 
 #: src/editor/editor_controller.cpp:311
@@ -194,7 +194,7 @@ msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr ""
-"本当に終了してもよろしいですか？マップは変更されていますが、最後に保存したと"
+"本当に終了してもよろしいですか？ マップは変更されていますが、最後に保存したと"
 "ころからの変更は全て失われます。"
 
 #: src/editor/editor_controller.cpp:316
@@ -203,7 +203,7 @@ msgstr "終了"
 
 #: src/editor/editor_controller.cpp:373
 msgid "No editor time-of-day found."
-msgstr ""
+msgstr "エディタの時刻設定が見つかりません。"
 
 #: src/editor/editor_controller.cpp:409
 msgid "Unsaved Changes"
@@ -224,7 +224,7 @@ msgstr "マップに名前を付けて保存"
 
 #: src/editor/editor_controller.cpp:467
 msgid "The file already exists. Do you want to overwrite it?"
-msgstr "マップはすでに存在します。 上書きしますか？"
+msgstr "マップはすでに存在します。上書きしますか？"
 
 #: src/editor/editor_controller.cpp:484
 msgid "No random map generators found."
@@ -260,21 +260,23 @@ msgstr "マップを保存しました。"
 
 #: src/editor/editor_controller.cpp:688
 msgid "Loaded embedded map data"
-msgstr ""
+msgstr "読み込まれた埋め込みマップデータ"
 
 #: src/editor/editor_controller.cpp:689 src/editor/editor_controller.cpp:703
 msgid "Map loaded from scenario"
-msgstr ""
+msgstr "シナリオからを読み込まれたマップ"
 
 #: src/editor/editor_controller.cpp:699
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
 msgstr ""
+"読み込まれた参照マップ:\n"
+"$new"
 
 #: src/editor/editor_controller.cpp:1092
 msgid "Undo"
-msgstr "やり直す"
+msgstr "元に戻す"
 
 #: src/editor/editor_controller.cpp:1094
 msgid "Can't Undo"
@@ -282,7 +284,7 @@ msgstr "アンドゥできません"
 
 #: src/editor/editor_controller.cpp:1098
 msgid "Redo"
-msgstr "元に戻す"
+msgstr "やり直す"
 
 #: src/editor/editor_controller.cpp:1100
 msgid "Can't Redo"
@@ -290,16 +292,15 @@ msgstr "リドゥできません"
 
 #: src/editor/editor_controller.cpp:1105
 msgid "Auto-update Terrain Transitions: Yes"
-msgstr ""
+msgstr "地形変化を自動的に更新: 有効"
 
 #: src/editor/editor_controller.cpp:1108
 msgid "Auto-update Terrain Transitions: Partial"
-msgstr ""
+msgstr "地形変化を自動的に更新: 部分的"
 
 #: src/editor/editor_controller.cpp:1112
-#, fuzzy
 msgid "Auto-update Terrain Transitions: No"
-msgstr "変化を更新する"
+msgstr "地形変化を自動的に更新: 無効"
 
 #: src/editor/editor_map.cpp:149 src/editor/mouse_action.cpp:429
 msgid "Player"
@@ -311,48 +312,47 @@ msgstr "ターゲットマップのサイズが現在のマップのサイズと
 
 #: src/editor/editor_palettes.cpp:506
 msgid "(non-core)"
-msgstr ""
+msgstr "（コア以外）"
 
 #: src/editor/editor_palettes.cpp:507
 msgid "Will not work in game without extra care."
-msgstr ""
+msgstr "更に手を入れなければゲームで動作しません。"
 
 #: src/editor/editor_palettes.cpp:532
 msgid "FG"
-msgstr "FG"
+msgstr "左クリック地形"
 
 #: src/editor/editor_palettes.cpp:534
 msgid "BG"
-msgstr "BG"
+msgstr "右クリック地形"
 
 #: src/editor/map_context.cpp:70
 msgid "File not found"
-msgstr ""
+msgstr "ファイルが見つかりません"
 
 #: src/editor/map_context.cpp:84
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 msgstr ""
+"マップファイルはシナリオのようですが、map_data 値が存在するファイルを指し示し"
+"ていません"
 
 #: src/editor/map_context.cpp:99
-#, fuzzy
 msgid "Empty map file"
-msgstr "空のマップファイルか、ファイルが見つかりません"
+msgstr "空のマップファイル"
 
 #: src/editor/map_context.cpp:219
-#, fuzzy
 msgid "Could not save into scenario"
-msgstr "マップを保存できませんでした: $msg"
+msgstr "シナリオに保存できませんでした。"
 
 #: src/editor/map_context.cpp:226
 msgid "Could not save the map: $msg"
 msgstr "マップを保存できませんでした: $msg"
 
 #: src/editor/mouse_action.cpp:426
-#, fuzzy
 msgid "(Player)^None"
-msgstr "プレイヤー"
+msgstr "プレイヤーなし"
 
 #: src/editor/mouse_action.cpp:433
 msgid "Choose player"
@@ -365,6 +365,9 @@ msgid ""
 "the cursor. Pressing a number key by itself will scroll to that player's "
 "starting position."
 msgstr ""
+"どのプレイヤーをここから開始させますか？ Alt キーと数字キーを使用してプレイ"
+"ヤーの開始位置を設定することができます。Del キーでカーソルの下の開始位置を消"
+"去できます。数字キーを押すとそのプレイヤーの開始位置にスクロールします。"
 
 #: src/gui/dialogs/editor_settings.cpp:162
 msgid "Custom setting"
@@ -379,13 +382,12 @@ msgstr "設定の変更"
 #~ msgid "Error"
 #~ msgstr "エラー"
 
-#, fuzzy
 #~ msgid ""
 #~ "Which player should start here? You can also use the 1-9 and delete keys "
 #~ "to set/clear starting positions."
 #~ msgstr ""
-#~ "どのプレイヤーをここからスタートさせますか？1～9のボタンと、デリートキーを"
-#~ "スタート地点の配置、削除に利用できます。"
+#~ "どのプレイヤーをここからスタートさせますか？ 1～9 とデリートキーをスタート"
+#~ "地点の配置、削除に利用できます。"
 
 #~ msgid "Settings"
 #~ msgstr "設定"
@@ -442,7 +444,7 @@ msgstr "設定の変更"
 #~ "Warning: Illegal characters found in the map name. Please save under a "
 #~ "different name."
 #~ msgstr ""
-#~ "警告: マップ名に不正な文字が見つかりました。別な名前で保存して下さい。"
+#~ "警告: マップ名に無効な文字が見つかりました。別な名前で保存して下さい。"
 
 #~ msgid "The file does not contain a valid map."
 #~ msgstr "そのファイルには有効なマップがありません。"
@@ -451,7 +453,7 @@ msgstr "設定の変更"
 #~ msgstr "終了前にマップを保存しますか？"
 
 #~ msgid "Error: Illegal character in filename."
-#~ msgstr "エラー: ファイル名に不正な文字"
+#~ msgstr "エラー: ファイル名に無効な文字"
 
 #~ msgid ""
 #~ "Can't resize the map, the requested size is bigger than the maximum, size="
