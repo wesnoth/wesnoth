@@ -215,6 +215,68 @@ public:
 
 
 
+class unit_mode_controller : public single_mode_controller{
+public:
+	unit_mode_controller(const std::string& name, tgamestate_inspector::model &m)
+		:single_mode_controller(name,m)
+	{
+	}
+
+	void show_stuff_list()
+	{
+		model_.clear_stuff_list();
+
+		for(unit_map::iterator i = resources::units->begin(); i != resources::units->end(); ++i) {
+			std::stringstream s;
+			s << "("<<i->first;
+			s << ") side=" << i->second.side() <<" ";
+			if (i->second.can_recruit()) {
+				s << "LEADER ";
+			}
+
+			s << "id=["<<i->second.id() << "] "<<i->second.type_id() << "; L"<<i->second.level()<<"; " << i->second.experience() <<"/" << i->second.max_experience()<< " xp; "<< i->second.hitpoints() <<"/"<<i->second.max_hitpoints()<<" hp; ";
+				foreach (const std::string &str, i->second.get_traits_list() ) {
+				s << str <<" ";
+			}
+
+			std::string key = s.str();
+			model_.add_row_to_stuff_list(key,key);
+		}
+
+		model_.set_inspect_window_text("");
+
+	}
+
+	void handle_stuff_list_selection()
+	{
+		int selected = model_.stuff_list->get_selected_row();
+		if (selected==-1) {
+			model_.set_inspect_window_text("");
+			return;
+		}
+
+		int i = 0;//@todo: replace with precached data
+		for(unit_map::iterator u = resources::units->begin(); u != resources::units->end(); ++u) {
+			if (selected==i) {
+				config c_unit;
+				u->second.write(c_unit);
+				model_.set_inspect_window_text(c_unit.debug());
+				return;
+			}
+			i++;
+		}
+		model_.set_inspect_window_text("");
+
+	}
+
+	virtual void update_view_from_model()
+	{
+		show_stuff_list();
+		//handle_stuff_list_selection();
+	}
+};
+
+
 class team_mode_controller : public single_mode_controller{
 public:
 	team_mode_controller(const std::string& name, tgamestate_inspector::model &m, int side)
@@ -307,7 +369,7 @@ public:
 					s << " LEADER ";
 				}
 
-				s << "id=["<<i->second.id() << "] "<<i->second.type_id() << "; L"<<i->second.level()<<"; " << i->second.experience() <<"/" << i->second.max_experience()<< " xp ; "<< i->second.hitpoints() <<"/"<<i->second.max_hitpoints()<<" hitpoints." << std::endl;
+				s << "id=["<<i->second.id() << "] "<<i->second.type_id() << "; L"<<i->second.level()<<"; " << i->second.experience() <<"/" << i->second.max_experience()<< " xp; "<< i->second.hitpoints() <<"/"<<i->second.max_hitpoints()<<" hp." << std::endl;
 				foreach (const std::string &str, i->second.get_traits_list() ) {
 					s << "\t" << str<< std::endl;
 				}
@@ -339,6 +401,8 @@ public:
 	{
 		sm_controllers_.push_back(
 				boost::shared_ptr<single_mode_controller>(new variable_mode_controller("variables",model_)));
+		sm_controllers_.push_back(
+				boost::shared_ptr<single_mode_controller>(new unit_mode_controller("units",model_)));
 		//foreach team
 		int sides = static_cast<int>((*resources::teams).size());
 		for( int side = 1; side<=sides; ++side) {

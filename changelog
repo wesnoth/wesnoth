@@ -8,6 +8,8 @@ Version 1.7.14+svn:
    * Fix bug #15542: if game encounters a base_unit that refers to a
      unit that the game cannot find, throw exception instead of
      failing assertion.
+   * Add a list of team units and a dedicated unit mode to gamestate
+     inspector (launched by :inspect command and [inspect] tag).
  * Language and i18n:
    * Updated translations: Chinese (Traditional), Czech, Japanese
  * Multiplayer:
