@@ -232,6 +232,7 @@ public:
 		model_.add_row_to_stuff_list("recall list overview","recall list overview");
 		model_.add_row_to_stuff_list("recall list full","recall list full");
 		model_.add_row_to_stuff_list("ai component structure","ai component structure");
+		model_.add_row_to_stuff_list("unit list overview","unit list overview");
 		model_.set_inspect_window_text("");
 
 	}
@@ -291,6 +292,28 @@ public:
 
 		if (selected==5) {
 			model_.set_inspect_window_text(ai::manager::get_active_ai_structure_for_side(side_));
+			return;
+		}
+
+
+		if (selected==6) {
+			std::stringstream s;
+			for(unit_map::iterator i = resources::units->begin(); i != resources::units->end(); ++i) {
+				if (i->second.side()!=side_) {
+					continue;
+				}
+				s <<i->first;
+				if (i->second.can_recruit()) {
+					s << " LEADER ";
+				}
+
+				s << "id=["<<i->second.id() << "] "<<i->second.type_id() << "; L"<<i->second.level()<<"; " << i->second.experience() <<"/" << i->second.max_experience()<< " xp ; "<< i->second.hitpoints() <<"/"<<i->second.max_hitpoints()<<" hitpoints." << std::endl;
+				foreach (const std::string &str, i->second.get_traits_list() ) {
+					s << "\t" << str<< std::endl;
+				}
+				s << std::endl << std::endl;
+			}
+			model_.set_inspect_window_text(s.str());
 			return;
 		}
 
