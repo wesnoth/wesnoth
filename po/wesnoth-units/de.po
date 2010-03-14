@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-03-08 14:58+0100\n"
-"PO-Revision-Date: 2009-12-12 17:42+0100\n"
-"Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
+"PO-Revision-Date: 2010-03-14 14:08+0100\n"
+"Last-Translator: Crommy\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -3520,7 +3520,7 @@ msgstr ""
 #. [unit_type]: id=Mermaid Diviner, race=merman
 #: data/core/units/merfolk/Diviner.cfg:4
 msgid "female^Mermaid Diviner"
-msgstr "Meerjungfrauwahrsagerin"
+msgstr "Schaumgeborene"
 
 #. [unit_type]: id=Mermaid Diviner, race=merman
 #: data/core/units/merfolk/Diviner.cfg:25
@@ -3532,18 +3532,19 @@ msgid ""
 "banks of the Alavynne, but who rode again the next day, in full number, and "
 "wrought the downfall of the crimson duke."
 msgstr ""
-"Wahrsagerinnen des Meeresvolkes bewältigen ihre Aufgaben mit einer solchen "
-"Inbrunst, dass sie die Geistlichen der Menschen häufig in den Schatten "
-"stellen. Dies mag mit einer alten Legende zu tun haben, die von einem "
-"namenlosen, schattenhaften Scheusal berichtet, welches Tod und Verderben "
-"über ihr einst stolzes und mächtiges Volk gebracht hatte. Weiterhin erzählt "
-"die Legende, dass das Wesen durch die Macht des Lichtes in irgendeiner Art "
-"besiegt wurde, so dass das ihr Volk überlebte."
+"Die Schaumgeborenen sind die Wahrsagerinnen des Meeresvolkes und sie "
+"bewältigen ihre Aufgaben mit einer solchen Inbrunst, dass sie die "
+"Geistlichen der Menschen häufig in den Schatten stellen. Dies mag mit einer "
+"alten Legende zu tun haben, die von einem namenlosen, schattenhaften "
+"Scheusal berichtet, welches Tod und Verderben über ihr einst stolzes und "
+"mächtiges Volk gebracht hatte. Weiterhin erzählt die Legende, dass das Wesen "
+"durch die Macht des Lichtes in irgendeiner Art besiegt wurde, so dass das "
+"ihr Volk überlebte."
 
 #. [unit_type]: id=Mermaid Enchantress, race=merman
 #: data/core/units/merfolk/Enchantress.cfg:4
 msgid "female^Mermaid Enchantress"
-msgstr "Meerjungfraumystikerin"
+msgstr "Meerjungfrau"
 
 #. [unit_type]: id=Mermaid Enchantress, race=merman
 #: data/core/units/merfolk/Enchantress.cfg:20
@@ -3555,12 +3556,12 @@ msgid ""
 "is forbidden against their own race - this power is the greater part of what "
 "protects their people from the monsters that wander out of the abyss."
 msgstr ""
-"Die Mystikerinnen des Meeresvolkes haben die Magie des Wassers gemeistert "
-"und sind in der Lage, die geheimen Botschaften der Wellen zu entschlüsseln, "
-"die von Naids Willen künden. Es gibt ein ungeschriebenes Gesetz, dass die "
-"Macht des Wassers niemals gegen die eigenen Leute eingesetzt werden darf, "
-"selbst wenn sich diese bekämpfen sollte. Das Wasser bietet ihnen Schutz vor "
-"den vielen Unholden, die an Land lauern."
+"Meerjungfrauen haben die Magie des Wassers gemeistert und sind in der Lage, "
+"die geheimen Botschaften der Wellen zu entschlüsseln, die von Naids Willen "
+"künden. Es gibt ein ungeschriebenes Gesetz, dass die Macht des Wassers "
+"niemals gegen die eigenen Leute eingesetzt werden darf, selbst wenn sich "
+"diese bekämpfen sollten. Das Wasser bietet ihnen Schutz vor den vielen "
+"Unholden, die an Land lauern."
 
 #. [attack]: type=impact
 #: data/core/units/merfolk/Enchantress.cfg:46
@@ -3588,11 +3589,21 @@ msgid ""
 "effective chase over land, and are at a great disadvantage in hand-to-hand "
 "combat."
 msgstr ""
+"Zum Fischen verwenden Meermenschen Netze, um die Fische einzufangen und "
+"Keulen, um sie anschließend zu erlegen. Diese Kombination eignet sich ebenso "
+"für den Kampf und diese Spezialisten bilden wertvolle Hilfstruppen, die "
+"wohlfeil in der Schlacht zum Einsatz gelangen.\n"
+"\n"
+"Meermenschen sind häufig in Kämpfe zu Lande verwickelt - auch wenn sie im "
+"Wasser kaum zu schlagen sind, sind sie an Land schwach. Netze gleichen die "
+"Langsamkeit und Schwäche der Meermenschen auf festem Boden aus. Ohne Netze "
+"wäre zu Lande an eine Verfolgung geschwächter Gegner ebensowenig zu denken, "
+"wie an erfolgreichen Nahkampf."
 
 #. [unit_type]: id=Merman Fighter, race=merman
 #: data/core/units/merfolk/Fighter.cfg:4
 msgid "Merman Fighter"
-msgstr "Wassermannkämpfer"
+msgstr "Seeknecht"
 
 #. [unit_type]: id=Merman Fighter, race=merman
 #: data/core/units/merfolk/Fighter.cfg:20
@@ -3600,8 +3611,9 @@ msgid ""
 "Skilled denizens of the sea, Mermen are powerful and quick in any watery "
 "environment, but lose most of their mobility on land."
 msgstr ""
-"Wassermänner kommen aus den Tiefen des Meeres, sind stark und schnell in "
-"Meeren, Seen und Flüssen – aber sehr schlecht an Land."
+"Wassermänner ohne große Kampferfahrungen werden Seeknecht genannt. Sie "
+"kommen aus den Tiefen des Meeres, sind stark und schnell in Meeren, Seen und "
+"Flüssen – aber sehr schlecht an Land."
 
 #. [unit_type]: id=Merman Hoplite, race=merman
 #: data/core/units/merfolk/Hoplite.cfg:4
@@ -3646,7 +3658,7 @@ msgstr ""
 #. [unit_type]: id=Mermaid Initiate, race=merman
 #: data/core/units/merfolk/Initiate.cfg:4
 msgid "female^Mermaid Initiate"
-msgstr "Meerjungfrau"
+msgstr "Nymphe"
 
 #. [unit_type]: id=Mermaid Initiate, race=merman
 #: data/core/units/merfolk/Initiate.cfg:23
@@ -3658,21 +3670,21 @@ msgid ""
 "Despite their frailty, this makes them quite formidable in combat, as they "
 "can call upon the very water about them to smite their enemies."
 msgstr ""
-"Genau wie Elfen haben Meerjungfrauen eine natürliche Befähigung, Magie zu "
-"wirken. Trotz allem unterscheidet sich ihre Art von anderen Rassen. Während "
-"die landlebenden Rassen die Elemente Feuer, Luft und Erde manipulieren "
-"können, ist die Domäne des Meeresvolkes das Wasser.\n"
+"Genau wie Elfen haben viele Nymphen als junge Meerjungfrauen eine natürliche "
+"Befähigung, Magie zu wirken. Trotz allem unterscheidet sich ihre Art von "
+"anderen Rassen. Während die landlebenden Rassen die Elemente Feuer, Luft und "
+"Erde manipulieren können, ist die Domäne des Meeresvolkes das Wasser.\n"
 "\n"
-"Aus diesem Grund werden junge Meerjungfrauen, wenn sie alt genug sind, in "
-"der Kunst der Magie unterwiesen. Damit ist es ihnen möglich, das Wasser in "
-"jeder Art zu manipulieren. Sei es als ein starker Wasserstrahl, der einem "
-"Gegner entgegengeschleudert wird, oder in Form einer mächtigen Flutwelle, "
-"die ganze Armeen ertränken kann."
+"Aus diesem Grund werden junge Meerjungfrauen, wenn sie alt genug sind, als "
+"Nymphen in der Kunst der Magie unterwiesen. Damit ist es ihnen möglich, das "
+"Wasser in jeder Art zu manipulieren. Sei es als ein starker Wasserstrahl, "
+"der einem Gegner entgegengeschleudert wird, oder in Form einer mächtigen "
+"Flutwelle, die ganze Armeen ertränken kann."
 
 #. [unit_type]: id=Merman Javelineer, race=merman
 #: data/core/units/merfolk/Javelineer.cfg:4
 msgid "Merman Javelineer"
-msgstr "Wassermannspeerwerfer"
+msgstr "Harpunier"
 
 #. [unit_type]: id=Merman Javelineer, race=merman
 #: data/core/units/merfolk/Javelineer.cfg:20
@@ -3682,13 +3694,13 @@ msgid ""
 "range, the impact of one is considerably greater. In the water, the mobility "
 "of the mermen more than makes up for this when facing foes who cannot swim."
 msgstr ""
-"Jene Wassermänner, die die Disziplin des Speerwerfens meistern, sind im "
-"Fernkampf häufig so effektiv wie ein Bogenschütze. Zwar haben Speere "
+"Jene Wassermänner, die die Disziplin des Harpunierens meistern, sind im "
+"Fernkampf häufig so effektiv wie ein Bogenschütze. Zwar haben Harpunen "
 "aufgrund ihres Gewichts eine weit geringere Reichweite als die Pfeile eines "
-"Bogenschützen, doch richtet alleine die Wucht, mit der ein geworfener Speer "
-"einschlägt, schon einen beträchtlichen Schaden an. Vor allem im Wasser sind "
-"sie ihren menschlichen Gegenspielern haushoch überlegen, da viele von ihnen "
-"Nichtschwimmer sind."
+"Bogenschützen, doch richtet alleine die Wucht, mit der eine geschleuderte "
+"Harpune einschlägt, schon einen beträchtlichen Schaden an. Vor allem im "
+"Wasser sind sie ihren menschlichen Gegenspielern haushoch überlegen, da "
+"viele von ihnen Nichtschwimmer sind."
 
 #. [unit_type]: id=Merman Netcaster, race=merman
 #: data/core/units/merfolk/Netcaster.cfg:4
@@ -3710,11 +3722,22 @@ msgid ""
 "close to shore. Clubs were used in combat with little or no adaptation from "
 "fishing, since they were already quite deadly."
 msgstr ""
+"Fischen auf Meermenschenart besteht darin, einen Schwarm Fische in die "
+"ausgelegten Netze zu treiben und sie dort mit ruderartigen Knüppeln "
+"endgültig zu erlegen. Dieselbe Technik ist selbst bei Soldaten wirkungsvoll. "
+"Die meisten Landratten werden schon unsicher, wenn sie bis zur Hüfte im "
+"Wasser stehen, in einem Netz werden sie geradezu hilflos.\n"
+"\n"
+"Der überraschende Erfolg dieser Kriegstechnik führte zur Entwicklung "
+"kleinerer, mit Gewichten beschwerter Wurfnetze. Zum Fischen sind sie "
+"ungeeignet, jedoch zum Kampf und zur Jagd zu Lande sehr nützlich. Die "
+"todbringenden Keulen jedoch sind ebenso perfekt zum Kampf geeignet wie zum "
+"Fischen."
 
 #. [unit_type]: id=Mermaid Priestess, race=merman
 #: data/core/units/merfolk/Priestess.cfg:4
 msgid "female^Mermaid Priestess"
-msgstr "Meerjungfraupriesterin"
+msgstr "Wassernixe"
 
 #. [unit_type]: id=Mermaid Priestess, race=merman
 #: data/core/units/merfolk/Priestess.cfg:23
