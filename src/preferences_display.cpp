@@ -55,6 +55,58 @@ display_manager::~display_manager()
 	disp = NULL;
 }
 
+bool detect_video_settings(CVideo& video, std::pair<int,int>& resolution, int& bpp, int& video_flags)
+{
+	video_flags = fullscreen() ? FULL_SCREEN : 0;
+	resolution = preferences::resolution();
+
+	const int force_bpp = bpp;
+	int DefaultBPP = 24;
+	const SDL_VideoInfo* const video_info = SDL_GetVideoInfo();
+	if(video_info != NULL && video_info->vfmt != NULL) {
+		DefaultBPP = video_info->vfmt->BitsPerPixel;
+	}
+
+	std::cerr << "Checking video mode: " << resolution.first << 'x'
+		<< resolution.second << 'x' << DefaultBPP << "...\n";
+
+	typedef std::pair<int, int> res_t;
+	std::vector<res_t> res_list;
+	res_list.push_back(res_t(1024, 768));
+	res_list.push_back(res_t(1024, 600));
+	res_list.push_back(res_t(800, 600));
+	if (game_config::small_gui)
+		res_list.push_back(res_t(800, 480));
+#ifdef USE_TINY_GUI
+	res_list.push_back(res_t(640, 480));
+	res_list.push_back(res_t(320, 240));
+#endif
+
+	bpp = video.modePossible(resolution.first, resolution.second,
+		DefaultBPP, video_flags);
+
+	foreach (const res_t &res, res_list)
+	{
+		if (bpp != 0) break;
+		std::cerr << "Video mode " << resolution.first << 'x'
+			<< resolution.second << 'x' << DefaultBPP
+			<< " is not supported; attempting " << res.first
+			<< 'x' << res.second << 'x' << DefaultBPP << "...\n";
+		resolution = res;
+		bpp = video.modePossible(resolution.first, resolution.second,
+			DefaultBPP, video_flags);
+	}
+
+	if (bpp == 0) {
+		return false;
+	}
+
+	if(force_bpp > 0) {
+		bpp = force_bpp;
+	}
+
+	return true;
+}
 
 void set_fullscreen(CVideo& video, const bool ison)
 {

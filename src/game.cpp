@@ -180,8 +180,6 @@ private:
 	void load_game_cfg(const bool force=false);
 	void set_unit_data();
 
-	bool detect_video_settings(); // FIXME
-
 	void mark_completed_campaigns(std::vector<config>& campaigns);
 
 	const int argc_;
@@ -498,69 +496,6 @@ game_display& game_controller::disp()
 	return *disp_.get();
 }
 
-bool game_controller::detect_video_settings()
-{
-	video_flags = preferences::fullscreen() ? FULL_SCREEN : 0;
-	resolution  = preferences::resolution();
-
-	int DefaultBPP = 24;
-	const SDL_VideoInfo* const video_info = SDL_GetVideoInfo();
-	if(video_info != NULL && video_info->vfmt != NULL) {
-		DefaultBPP = video_info->vfmt->BitsPerPixel;
-	}
-
-	std::cerr << "Checking video mode: " << resolution.first << 'x'
-		<< resolution.second << 'x' << DefaultBPP << "...\n";
-
-	typedef std::pair<int, int> res_t;
-	std::vector<res_t> res_list;
-	res_list.push_back(res_t(1024, 768));
-	res_list.push_back(res_t(800, 600));
-	if (game_config::small_gui)
-		res_list.push_back(res_t(800, 480));
-#ifdef USE_TINY_GUI
-	res_list.push_back(res_t(640, 480));
-	res_list.push_back(res_t(320, 240));
-#endif
-
-	bpp = video_.modePossible(resolution.first, resolution.second,
-		DefaultBPP, video_flags);
-
-	foreach (const res_t &res, res_list)
-	{
-		if (bpp != 0) break;
-		std::cerr << "Video mode " << resolution.first << 'x'
-			<< resolution.second << 'x' << DefaultBPP
-			<< " is not supported; attempting " << res.first
-			<< 'x' << res.second << 'x' << DefaultBPP << "...\n";
-		resolution = res;
-		bpp = video_.modePossible(resolution.first, resolution.second,
-			DefaultBPP, video_flags);
-	}
-
-	if (bpp == 0)
-	{
-		std::cerr << "Video mode " << resolution.first << 'x'
-			<< resolution.second << 'x' << DefaultBPP
-			<< " is not supported.\n";
-
-		if ((video_flags & FULL_SCREEN)) {
-			std::cerr << "Try running the program with the --windowed option "
-				<< "using a " << DefaultBPP << "bpp setting for your display adapter.\n";
-		} else {
-			std::cerr << "Try running the program with the --fullscreen option.\n";
-		}
-
-		return false;
-	}
-
-	if(force_bpp_ > 0) {
-		bpp = force_bpp_;
-	}
-
-	return true;
-}
-
 bool game_controller::init_video()
 {
 	if(no_gui_) {
@@ -575,8 +510,19 @@ bool game_controller::init_video()
 
 	image::set_wm_icon();
 
-	bool found_matching = detect_video_settings();
+	bool found_matching = preferences::detect_video_settings(video_, resolution, bpp, video_flags);
 	if(!found_matching) {
+		std::cerr << "Video mode " << resolution.first << 'x'
+			<< resolution.second << 'x' << bpp
+			<< " is not supported.\n";
+
+		if ((video_flags & FULL_SCREEN)) {
+			std::cerr << "Try running the program with the --windowed option "
+				<< "using a " << bpp << "bpp setting for your display adapter.\n";
+		} else {
+			std::cerr << "Try running the program with the --fullscreen option.\n";
+		}
+
 		return false;
 	}
 

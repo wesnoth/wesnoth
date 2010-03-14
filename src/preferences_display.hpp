@@ -29,6 +29,20 @@ namespace preferences {
 		~display_manager();
 	};
 
+
+	/**
+	 * Detect a good resolution.
+	 *
+	 * @param video               The video 'holding' the framebuffer.
+	 * @param resolution          Any good resultion is returned through this reference.
+	 * @param bpp                 A reference through which the best bpp is returned.
+     *                            If non-zero when passed, only that bpp is allowed.
+	 * @param video_flags         A reference through which the video flags for setting the video mode are returned.
+     *
+     * @returns                   Whether valid video settings were found.
+     */
+	bool detect_video_settings(CVideo& video, std::pair<int,int>& resolution, int& bpp, int& video_flags);
+
 	void set_fullscreen(CVideo& video, const bool ison);
 	void set_fullscreen(bool ison);
 	void set_scroll_to_action(bool ison);
