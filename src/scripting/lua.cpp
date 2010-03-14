@@ -38,7 +38,10 @@ extern "C" {
 #include <cassert>
 #include <cstring>
 
+#include "scripting/lua.hpp"
+
 #include "actions.hpp"
+#include "attack_prediction.hpp"
 #include "filesystem.hpp"
 #include "foreach.hpp"
 #include "game_display.hpp"
@@ -48,7 +51,6 @@ extern "C" {
 #include "pathfind/pathfind.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
-#include "scripting/lua.hpp"
 #include "terrain_translation.hpp"
 #include "unit.hpp"
 #include "ai/actions.hpp"
@@ -421,10 +423,12 @@ void lua_unit::reload()
 /**
  * Converts a Lua value to a unit pointer.
  */
-static unit *luaW_tounit(lua_State *L, int index)
+static unit *luaW_tounit(lua_State *L, int index, bool only_on_map = false)
 {
 	if (!luaW_hasmetatable(L, index, getunitKey)) return NULL;
-	return static_cast<lua_unit *>(lua_touserdata(L, index))->get();
+	lua_unit *lu = static_cast<lua_unit *>(lua_touserdata(L, index));
+	if (only_on_map && !lu->on_map()) return NULL;
+	return lu->get();
 }
 
 /**
@@ -604,6 +608,12 @@ static int impl_vconfig_collect(lua_State *L)
 #define return_int_attrib(name, accessor) \
 	if (strcmp(m, name) == 0) { \
 		lua_pushinteger(L, accessor); \
+		return 1; \
+	}
+
+#define return_float_attrib(name, accessor) \
+	if (strcmp(m, name) == 0) { \
+		lua_pushnumber(L, accessor); \
 		return 1; \
 	}
 
@@ -2122,6 +2132,68 @@ static int intf_unit_defense(lua_State *L)
 	return 1;
 }
 
+/**
+ * Puts a table at the top of the stack with some combat result.
+ */
+static void luaW_pushsimdata(lua_State *L, const combatant &cmb)
+{
+	int n = cmb.hp_dist.size();
+	lua_createtable(L, 0, 4);
+	lua_pushnumber(L, cmb.poisoned);
+	lua_setfield(L, -2, "poisoned");
+	lua_pushnumber(L, cmb.slowed);
+	lua_setfield(L, -2, "slowed");
+	lua_pushnumber(L, cmb.average_hp());
+	lua_setfield(L, -2, "average_hp");
+	lua_createtable(L, n, 0);
+	for (int i = 0; i < n; ++i) {
+		lua_pushnumber(L, cmb.hp_dist[i]);
+		lua_rawseti(L, -2, i);
+	}
+	lua_setfield(L, -2, "hp_chance");
+}
+
+/**
+ * Simulates a combat between two units.
+ * - Arg 1: attacker userdata.
+ * - Arg 2: optional weapon index.
+ * - Arg 3: defender userdata.
+ * - Arg 4: optional weapon index.
+ * - Ret 1: attacker results.
+ * - Ret 2: defender results.
+ */
+static int intf_simulate_combat(lua_State *L)
+{
+	int arg_num = 1, att_w = -1, def_w = -1;
+
+	unit const *att = luaW_tounit(L, arg_num);
+	if (!att) return luaL_typerror(L, arg_num, "unit");
+	++arg_num;
+	if (lua_isnumber(L, arg_num)) {
+		att_w = lua_tointeger(L, arg_num) - 1;
+		if (att_w < 0 || att_w >= int(att->attacks().size()))
+			return luaL_argerror(L, arg_num, "weapon index out of bounds");
+		++arg_num;
+	}
+
+	unit const *def = luaW_tounit(L, arg_num, true);
+	if (!def) return luaL_typerror(L, arg_num, "unit");
+	++arg_num;
+	if (lua_isnumber(L, arg_num)) {
+		def_w = lua_tointeger(L, arg_num) - 1;
+		if (def_w < 0 || def_w >= int(def->attacks().size()))
+			return luaL_argerror(L, arg_num, "weapon index out of bounds");
+		++arg_num;
+	}
+
+	battle_context context(*resources::units, att->get_location(),
+		def->get_location(), att_w, def_w, 0.0, NULL, att);
+
+	luaW_pushsimdata(L, context.get_attacker_combatant());
+	luaW_pushsimdata(L, context.get_defender_combatant());
+	return 2;
+}
+
 LuaKernel::LuaKernel()
 	: mState(luaL_newstate())
 {
@@ -2172,6 +2244,7 @@ LuaKernel::LuaKernel()
 		{ "set_terrain",              &intf_set_terrain              },
 		{ "set_variable",             &intf_set_variable             },
 		{ "set_village_owner",        &intf_set_village_owner        },
+		{ "simulate_combat",          &intf_simulate_combat          },
 		{ "textdomain",               &intf_textdomain               },
 		{ "unit_defense",             &intf_unit_defense             },
 		{ "unit_movement_cost",       &intf_unit_movement_cost       },
