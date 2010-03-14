@@ -420,15 +420,18 @@ bool show_video_mode_dialog(display& disp)
 			{ 0, 0,  640, 480  },
 			{ 0, 0,  800, 480  },	// small-gui (EeePC resolution)
 			{ 0, 0,  800, 600  },
+			{ 0, 0, 1024, 600  },	// used on many netbooks
 			{ 0, 0, 1024, 768  },
 			{ 0, 0, 1280, 960  },
 			{ 0, 0, 1280, 1024 },
+			{ 0, 0, 1366, 768  },	// 16:9 notebooks
 			{ 0, 0, 1440, 900  },
 			{ 0, 0, 1440, 1200 },
 			{ 0, 0, 1600, 1200 },
 			{ 0, 0, 1680, 1050 },
 			{ 0, 0, 1920, 1080 },
 			{ 0, 0, 1920, 1200 },
+			{ 0, 0, 2560, 1600 }
 		};
 		static const SDL_Rect * const scr_modes_list[] = {
 			&scr_modes[0],
@@ -444,6 +447,9 @@ bool show_video_mode_dialog(display& disp)
 			&scr_modes[10],
 			&scr_modes[11],
 			&scr_modes[12],
+			&scr_modes[13],
+			&scr_modes[14],
+			&scr_modes[15],
 			NULL
 		};
 
