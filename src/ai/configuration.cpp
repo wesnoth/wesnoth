@@ -288,17 +288,13 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 bool configuration::upgrade_side_config_from_1_07_02_to_1_07_03(side_number side, config &cfg)
 {
 	LOG_AI_CONFIGURATION << "side "<< side <<": upgrading ai config version from version 1.7.2 to 1.7.3"<< std::endl;
-	config parsed_cfg;
+	config parsed_cfg = get_ai_config_for("testing_ai_default");
 
 	//get values of all aspects
 	upgrade_aspect_configs_from_1_07_02_to_1_07_03(side, cfg.child_range("ai"), parsed_cfg);
 
 	//dump the rest of the config into fallback stage
 
-	config fallback_stage_cfg;//@todo 1.7.11 important! make rca default.
-	fallback_stage_cfg["engine"] = "cpp";
-	fallback_stage_cfg["name"] = "testing_ai_default::fallback";
-	fallback_stage_cfg["id"] = "fallback";
 	config fallback_stage_cfg_ai;
 
 	foreach (config &aiparam, cfg.child_range("ai")) {
@@ -376,10 +372,7 @@ bool configuration::upgrade_side_config_from_1_07_02_to_1_07_03(side_number side
 		parsed_cfg.add_child("modify_ai",aimodifyai);
 	}
 	fallback_stage_cfg_ai.clear_children("modify_ai");
-
-	fallback_stage_cfg.add_child("ai",fallback_stage_cfg_ai);
-
-	parsed_cfg.add_child("stage",fallback_stage_cfg);
+	//nothing useful should be at fallback_stage_cfg_ai at this point
 
 	cfg = config();
 	cfg.add_child("ai",parsed_cfg);
@@ -390,7 +383,6 @@ bool configuration::upgrade_side_config_from_1_07_02_to_1_07_03(side_number side
 
 void configuration::upgrade_aspect_configs_from_1_07_02_to_1_07_03(side_number side, const config::const_child_itors &ai_parameters, config &parsed_cfg)
 {
-	parsed_cfg = config();
 	config cfg;
 
 	foreach (const config &aiparam, ai_parameters) {
