@@ -16,6 +16,8 @@ Version 1.7.14+svn:
  * Multiplayer:
    * Fix bug #15541: fix OOS on [unit] tag generating different
      traits because of usage of local RNG instead of MP RNG.
+   * Fix bug #15560 for Dark Forecast: fix OOS in Dark Forecast caused by
+     unit advancement not properly synced across the network.
  * Music and sound effects:
    * Added new music track, "Weight of Revenge" by Doug Kaufman
  * User interface:
