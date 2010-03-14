@@ -419,6 +419,15 @@ void lua_unit::reload()
 }
 
 /**
+ * Converts a Lua value to a unit pointer.
+ */
+static unit *luaW_tounit(lua_State *L, int index)
+{
+	if (!luaW_hasmetatable(L, index, getunitKey)) return NULL;
+	return static_cast<lua_unit *>(lua_touserdata(L, index))->get();
+}
+
+/**
  * Creates a t_string object (__call metamethod).
  * - Arg 1: userdata containing the domain.
  * - Arg 2: string to translate.
@@ -1949,15 +1958,37 @@ static int intf_create_unit(lua_State *L)
  */
 static int intf_copy_unit(lua_State *L)
 {
-	if (!luaW_hasmetatable(L, 1, getunitKey))
-		return luaL_typerror(L, 1, "unit");
-	unit const *u = static_cast<lua_unit *>(lua_touserdata(L, 1))->get();
+	unit const *u = luaW_tounit(L, 1);
 	if (!u) return luaL_typerror(L, 1, "unit");
 
 	new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(new unit(*u));
 	lua_pushlightuserdata(L, (void *)&getunitKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_setmetatable(L, -2);
+	return 1;
+}
+
+/**
+ * Returns unit resistance against a given attack type.
+ * - Arg 1: unit userdata.
+ * - Arg 2: string containing attack type.
+ * - Arg 3: boolean indicating if attacker.
+ * - Args 4/5: optional location.
+ */
+static int intf_unit_resistance(lua_State *L)
+{
+	unit const *u = luaW_tounit(L, 1);
+	if (!u) return luaL_typerror(L, 1, "unit");
+	char const *m = luaL_checkstring(L, 2);
+	bool a = lua_toboolean(L, 3);
+
+	map_location loc = u->get_location();
+	if (!lua_isnoneornil(L, 4)) {
+		loc.x = lua_tointeger(L, 4) - 1;
+		loc.y = lua_tointeger(L, 5) - 1;
+	}
+
+	lua_pushinteger(L, u->resistance_against(m, a, loc));
 	return 1;
 }
 
@@ -2011,6 +2042,7 @@ LuaKernel::LuaKernel()
 		{ "set_variable",             &intf_set_variable             },
 		{ "set_village_owner",        &intf_set_village_owner        },
 		{ "textdomain",               &intf_textdomain               },
+		{ "unit_resistance",          &intf_unit_resistance          },
 		{ NULL, NULL }
 	};
 	luaL_register(L, "wesnoth", callbacks);
