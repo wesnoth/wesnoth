@@ -385,7 +385,7 @@ void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool br
 	mouse_handler_base::mouse_press(event, browse);
 }
 
-bool mouse_handler::right_click_show_menu(int /*x*/, int /*y*/, const bool browse)
+bool mouse_handler::right_click_show_menu(int x, int y, const bool browse)
 {
 	// The first right-click cancel the selection if any,
 	// the second open the context menu
@@ -393,7 +393,7 @@ bool mouse_handler::right_click_show_menu(int /*x*/, int /*y*/, const bool brows
 		select_hex(map_location(), browse);
 		return false;
 	} else {
-		return true;
+		return point_in_rect(x, y, gui().map_area());
 	}
 }
 
