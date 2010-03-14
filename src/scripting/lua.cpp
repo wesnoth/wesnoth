@@ -2008,6 +2008,22 @@ static int intf_unit_movement_cost(lua_State *L)
 	return 1;
 }
 
+/**
+ * Returns unit defense on a given terrain.
+ * - Arg 1: unit userdata.
+ * - Arg 2: string containing the terrain type.
+ */
+static int intf_unit_defense(lua_State *L)
+{
+	unit const *u = luaW_tounit(L, 1);
+	if (!u) return luaL_typerror(L, 1, "unit");
+	char const *m = luaL_checkstring(L, 2);
+
+	t_translation::t_terrain t = t_translation::read_terrain_code(m);
+	lua_pushinteger(L, u->defense_modifier(t));
+	return 1;
+}
+
 LuaKernel::LuaKernel()
 	: mState(luaL_newstate())
 {
@@ -2058,6 +2074,7 @@ LuaKernel::LuaKernel()
 		{ "set_variable",             &intf_set_variable             },
 		{ "set_village_owner",        &intf_set_village_owner        },
 		{ "textdomain",               &intf_textdomain               },
+		{ "unit_defense",             &intf_unit_defense             },
 		{ "unit_movement_cost",       &intf_unit_movement_cost       },
 		{ "unit_resistance",          &intf_unit_resistance          },
 		{ NULL, NULL }
