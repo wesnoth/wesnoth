@@ -81,23 +81,16 @@ void sort_units(std::vector< unit > &units)
 	std::sort(units.begin(), units.end(), compare_unit_values);
 }
 
-static void unknown_unit_type_error(const std::string &type_id)
+static const unit_type &get_unit_type(const std::string &type_id)
 {
-	std::string error_message = _("Unknown unit type '$type|'");
-	utils::string_map symbols;
-	symbols["type"] = type_id;
-	error_message = utils::interpolate_variables_into_string(error_message, &symbols);
-	ERR_NG << "unit of type " << type_id << " not found!\n";
-	throw game::game_error(error_message);
+	const unit_type *i = unit_types.find(type_id);
+	if (!i) throw game::game_error("unknown unit type: " + type_id);
+	return *i;
 }
 
 static unit_race::GENDER generate_gender(const std::string &type_id, bool random_gender, game_state *state)
 {
-	const unit_type *i = unit_types.find(type_id);
-	if (!i) {
-		unknown_unit_type_error(type_id);
-	}
-	const unit_type &type = *i;
+	const unit_type &type = get_unit_type(type_id);
 	const std::vector<unit_race::GENDER>& genders = type.genders();
 
 	if(genders.empty()) {
@@ -115,9 +108,12 @@ static unit_race::GENDER generate_gender(const config &cfg, game_state *state)
 	const std::string& gender = cfg["gender"];
 	if(!gender.empty())
 		return string_gender(gender);
+	const std::string &type = cfg["type"];
+	if (type.empty())
+		return unit_race::MALE;
 
 	bool random_gender = utils::string_bool(cfg["random_gender"], false);
-	return generate_gender(cfg["type"], random_gender, state);
+	return generate_gender(type, random_gender, state);
 }
 
 // Copy constructor
@@ -281,7 +277,7 @@ unit::unit(unit_map* unitmap, const config& cfg,
 	set_state(STATE_HIDDEN,true);
 
 	if (type_.empty()) {
-		throw game::load_game_failed("Attempt to de-serialize a unit with an empty 'type' field:\n" + cfg.debug());
+		throw game::game_error("creating unit with an empty type field");
 	}
 
 	cfg_.clear_children("unit"); //remove underlying unit definitions from scenario files
@@ -907,16 +903,9 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 
 const unit_type* unit::type() const
 {
-	if (type_id().empty()) return NULL;
-
-	const unit_type *i = unit_types.find(type_id());
-	if (i) {
-		return &i->get_gender_unit_type(gender_).get_variation(variation_);
-	}
-	//thow error
-	unknown_unit_type_error(type_id());
-	//shouldn't be reached
-	return NULL;
+	if (type_.empty()) return NULL;
+	const unit_type &i = get_unit_type(type_);
+	return &i.get_gender_unit_type(gender_).get_variation(variation_);
 }
 
 const std::string& unit::profile() const

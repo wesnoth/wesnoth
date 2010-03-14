@@ -2418,7 +2418,7 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 			(*resources::teams)[u.side() - 1].have_leader();
 		}
 
-	} catch(game::load_game_failed& e) {
+	} catch (game::game_error &e) {
 		ERR_NG << "could not de-serialize unit: '" << e.message << "'\n";
 	}
 }
