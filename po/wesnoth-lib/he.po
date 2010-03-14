@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-08 14:58+0100\n"
+"POT-Creation-Date: 2010-03-14 18:39+0100\n"
 "PO-Revision-Date: 2010-01-06 20:53+0200\n"
 "Last-Translator: Ariel Ben-Yehuda <ariel.bys@gmail.com>\n"
 "Language-Team: Hebrew\n"
@@ -2127,6 +2127,14 @@ msgstr "דרגת קושי: "
 msgid "Version: "
 msgstr "גרסא: "
 
+#: src/gui/dialogs/lobby_main.cpp:255
+msgid "whisper to $receiver"
+msgstr "לחש ל $receiver"
+
+#: src/gui/dialogs/lobby_main.cpp:689
+msgid "Games: showing $num_shown out of $num_total"
+msgstr "משחקים: מציג $num_shown מתוך $num_total"
+
 #: src/gui/dialogs/lobby_main.cpp:731
 msgid "Observers allowed"
 msgstr "צופים אופשרו"
@@ -2134,6 +2142,18 @@ msgstr "צופים אופשרו"
 #: src/gui/dialogs/lobby_main.cpp:734
 msgid "Observers not allowed"
 msgstr "צופים לא אופשרו"
+
+#: src/gui/dialogs/lobby_main.cpp:1072
+msgid ""
+"Whisper session with $name started. If you don't want to receive messages "
+"from this user, type /ignore $name\n"
+msgstr ""
+"סדרת לחישות עם $name התחילה. עם אתה לא רוצה לקבל הודעות מהמשתמש הזה, הקש /"
+"ignore $name\n"
+
+#: src/gui/dialogs/lobby_main.cpp:1078
+msgid "Room $name joined"
+msgstr "הצרפנו לחדר $name"
 
 #: src/gui/dialogs/lobby_main.cpp:1548
 msgid "Password Required"
@@ -2739,11 +2759,11 @@ msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr "אזהרה: מקש הקיצור לתמונה לא מכיל אחד מקונטרול, אלט או שיפט."
 
-#: src/preferences_display.cpp:453
+#: src/preferences_display.cpp:459
 msgid "There are no alternative video modes available"
 msgstr "אין מצבי תצוגה חלופיים זמינים"
 
-#: src/preferences_display.cpp:482
+#: src/preferences_display.cpp:488
 msgid "Choose Resolution"
 msgstr "בחירת רזולוציה"
 
@@ -2778,22 +2798,6 @@ msgstr ""
 #: src/wml_exception.cpp:76
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "In section '[$section|]' the mandatory key '$key|' isn't set."
-
-#~ msgid "whisper to $receiver"
-#~ msgstr "לחש ל $receiver"
-
-#~ msgid "Games: showing $num_shown out of $num_total"
-#~ msgstr "משחקים: מציג $num_shown מתוך $num_total"
-
-#~ msgid ""
-#~ "Whisper session with $name started. If you don't want to receive messages "
-#~ "from this user, type /ignore $name\n"
-#~ msgstr ""
-#~ "סדרת לחישות עם $name התחילה. עם אתה לא רוצה לקבל הודעות מהמשתמש הזה, הקש /"
-#~ "ignore $name\n"
-
-#~ msgid "Room $name joined"
-#~ msgstr "הצרפנו לחדר $name"
 
 #~ msgid "Save The Map"
 #~ msgstr "שמור מפה"

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-08 14:58+0100\n"
+"POT-Creation-Date: 2010-03-14 18:39+0100\n"
 "PO-Revision-Date: 2009-09-26 15:45+0700\n"
 "Last-Translator: Phạm Thành Nam <phamthanhnam.ptn@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
@@ -2123,6 +2123,14 @@ msgstr "Độ khó: "
 msgid "Version: "
 msgstr "Phiên bản: "
 
+#: src/gui/dialogs/lobby_main.cpp:255
+msgid "whisper to $receiver"
+msgstr ""
+
+#: src/gui/dialogs/lobby_main.cpp:689
+msgid "Games: showing $num_shown out of $num_total"
+msgstr ""
+
 #: src/gui/dialogs/lobby_main.cpp:731
 msgid "Observers allowed"
 msgstr "Cho phép người quan sát"
@@ -2130,6 +2138,18 @@ msgstr "Cho phép người quan sát"
 #: src/gui/dialogs/lobby_main.cpp:734
 msgid "Observers not allowed"
 msgstr "Không cho phép người quan sát"
+
+#: src/gui/dialogs/lobby_main.cpp:1072
+msgid ""
+"Whisper session with $name started. If you don't want to receive messages "
+"from this user, type /ignore $name\n"
+msgstr ""
+"Phiên thì thầm với $name đã khởi chạy. Nếu bạn không muốn nhận tin nhắn từ "
+"người dùng này, đánh /ignore $name\n"
+
+#: src/gui/dialogs/lobby_main.cpp:1078
+msgid "Room $name joined"
+msgstr "Đã tham gia phòng $name"
 
 #: src/gui/dialogs/lobby_main.cpp:1548
 msgid "Password Required"
@@ -2736,11 +2756,11 @@ msgstr ""
 "Cảnh báo: phím nóng chụp màn hình không được kết hợp với các phím Control, "
 "Alt hay Meta."
 
-#: src/preferences_display.cpp:453
+#: src/preferences_display.cpp:459
 msgid "There are no alternative video modes available"
 msgstr "Không có chế độ video thay thế"
 
-#: src/preferences_display.cpp:482
+#: src/preferences_display.cpp:488
 msgid "Choose Resolution"
 msgstr "Chọn độ phân giải"
 
@@ -2774,13 +2794,3 @@ msgstr ""
 #: src/wml_exception.cpp:76
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "Trong phần '[$section|]' khóa bắt buộc '$key|' không được thiết lập."
-
-#~ msgid ""
-#~ "Whisper session with $name started. If you don't want to receive messages "
-#~ "from this user, type /ignore $name\n"
-#~ msgstr ""
-#~ "Phiên thì thầm với $name đã khởi chạy. Nếu bạn không muốn nhận tin nhắn "
-#~ "từ người dùng này, đánh /ignore $name\n"
-
-#~ msgid "Room $name joined"
-#~ msgstr "Đã tham gia phòng $name"

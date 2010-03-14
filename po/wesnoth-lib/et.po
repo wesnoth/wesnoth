@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-08 14:58+0100\n"
+"POT-Creation-Date: 2010-03-14 18:39+0100\n"
 "PO-Revision-Date: 2009-12-25 23:14+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: none\n"
@@ -2128,6 +2128,14 @@ msgstr "Raskusaste:"
 msgid "Version: "
 msgstr "Versioon: "
 
+#: src/gui/dialogs/lobby_main.cpp:255
+msgid "whisper to $receiver"
+msgstr "sosista $receiver -le"
+
+#: src/gui/dialogs/lobby_main.cpp:689
+msgid "Games: showing $num_shown out of $num_total"
+msgstr "Mängud: näitan $num_shown  $num_total-st"
+
 #: src/gui/dialogs/lobby_main.cpp:731
 msgid "Observers allowed"
 msgstr "Vaatlejad lubatud"
@@ -2135,6 +2143,18 @@ msgstr "Vaatlejad lubatud"
 #: src/gui/dialogs/lobby_main.cpp:734
 msgid "Observers not allowed"
 msgstr "Vaatlejad keelatud"
+
+#: src/gui/dialogs/lobby_main.cpp:1072
+msgid ""
+"Whisper session with $name started. If you don't want to receive messages "
+"from this user, type /ignore $name\n"
+msgstr ""
+"Alustasid sosistamist kasutajaga $name. Kui soovid selle kasutaja sõnumeid "
+"eirata, kirjuta  /ignore $name\n"
+
+#: src/gui/dialogs/lobby_main.cpp:1078
+msgid "Room $name joined"
+msgstr "Liitusid ruumiga $name"
 
 #: src/gui/dialogs/lobby_main.cpp:1548
 msgid "Password Required"
@@ -2741,11 +2761,11 @@ msgstr ""
 "Hoiatus: ekraanitõmmise klahvikombinatsioonid Ctrl, Alt või Meta-klahviga ei "
 "toimi."
 
-#: src/preferences_display.cpp:453
+#: src/preferences_display.cpp:459
 msgid "There are no alternative video modes available"
 msgstr "Alternatiivsed videorežiimid puuduvad."
 
-#: src/preferences_display.cpp:482
+#: src/preferences_display.cpp:488
 msgid "Choose Resolution"
 msgstr "Muuda ekraani lahutusvõimet."
 
@@ -2778,22 +2798,6 @@ msgstr ""
 #: src/wml_exception.cpp:76
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "Sektsioonis '[$section|]' pole kohustuslik võti '$key|' määratud."
-
-#~ msgid "whisper to $receiver"
-#~ msgstr "sosista $receiver -le"
-
-#~ msgid "Games: showing $num_shown out of $num_total"
-#~ msgstr "Mängud: näitan $num_shown  $num_total-st"
-
-#~ msgid ""
-#~ "Whisper session with $name started. If you don't want to receive messages "
-#~ "from this user, type /ignore $name\n"
-#~ msgstr ""
-#~ "Alustasid sosistamist kasutajaga $name. Kui soovid selle kasutaja "
-#~ "sõnumeid eirata, kirjuta  /ignore $name\n"
-
-#~ msgid "Room $name joined"
-#~ msgstr "Liitusid ruumiga $name"
 
 #~ msgid "Save The Map"
 #~ msgstr "Salvesta kaart"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-08 14:58+0100\n"
+"POT-Creation-Date: 2010-03-14 18:39+0100\n"
 "PO-Revision-Date: 2009-11-14 13:41+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
@@ -2141,6 +2141,14 @@ msgstr "Trudność: "
 msgid "Version: "
 msgstr "Wersja: "
 
+#: src/gui/dialogs/lobby_main.cpp:255
+msgid "whisper to $receiver"
+msgstr "szepnij do $receiver"
+
+#: src/gui/dialogs/lobby_main.cpp:689
+msgid "Games: showing $num_shown out of $num_total"
+msgstr "Gry: wyświetlanie $num_shown z $num_total"
+
 #: src/gui/dialogs/lobby_main.cpp:731
 msgid "Observers allowed"
 msgstr "Obserwatorzy dopuszczani"
@@ -2148,6 +2156,19 @@ msgstr "Obserwatorzy dopuszczani"
 #: src/gui/dialogs/lobby_main.cpp:734
 msgid "Observers not allowed"
 msgstr "Obserwatorzy niedopuszczani"
+
+#: src/gui/dialogs/lobby_main.cpp:1072
+msgid ""
+"Whisper session with $name started. If you don't want to receive messages "
+"from this user, type /ignore $name\n"
+msgstr ""
+"Nawiązano sesję wiadomości szeptanych z użytkownikiem $name. Jeśli nie "
+"chcesz otrzymywać wiadomości od tego użytkownika, wpis polecenie /ignore "
+"$name\n"
+
+#: src/gui/dialogs/lobby_main.cpp:1078
+msgid "Room $name joined"
+msgstr "Dołączono do pokoju $name"
 
 #: src/gui/dialogs/lobby_main.cpp:1548
 msgid "Password Required"
@@ -2756,11 +2777,11 @@ msgstr ""
 "Ostrzeżenie: skrót do zrzutu ekranu niepowiązany z klawiszami Control, Alt "
 "lub Meta."
 
-#: src/preferences_display.cpp:453
+#: src/preferences_display.cpp:459
 msgid "There are no alternative video modes available"
 msgstr "Inne tryby graficzne nie są dostępne"
 
-#: src/preferences_display.cpp:482
+#: src/preferences_display.cpp:488
 msgid "Choose Resolution"
 msgstr "Wybierz rozdzielczość"
 
@@ -2795,23 +2816,6 @@ msgstr ""
 #: src/wml_exception.cpp:76
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "W sekcji '[$section|]' nie ustawiono obowiązkowego klucza '$key|'."
-
-#~ msgid "whisper to $receiver"
-#~ msgstr "szepnij do $receiver"
-
-#~ msgid "Games: showing $num_shown out of $num_total"
-#~ msgstr "Gry: wyświetlanie $num_shown z $num_total"
-
-#~ msgid ""
-#~ "Whisper session with $name started. If you don't want to receive messages "
-#~ "from this user, type /ignore $name\n"
-#~ msgstr ""
-#~ "Nawiązano sesję wiadomości szeptanych z użytkownikiem $name. Jeśli nie "
-#~ "chcesz otrzymywać wiadomości od tego użytkownika, wpis polecenie /ignore "
-#~ "$name\n"
-
-#~ msgid "Room $name joined"
-#~ msgstr "Dołączono do pokoju $name"
 
 #~ msgid "Save The Map"
 #~ msgstr "Zapisz mapę"

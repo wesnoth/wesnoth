@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-08 14:58+0100\n"
+"POT-Creation-Date: 2010-03-14 18:39+0100\n"
 "PO-Revision-Date: 2009-12-14 21:23+0100\n"
 "Last-Translator: Diego J. <diegojromerolopez@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -2161,6 +2161,14 @@ msgstr "Dificultad:"
 msgid "Version: "
 msgstr "Versión:"
 
+#: src/gui/dialogs/lobby_main.cpp:255
+msgid "whisper to $receiver"
+msgstr "susurrar a $receiver"
+
+#: src/gui/dialogs/lobby_main.cpp:689
+msgid "Games: showing $num_shown out of $num_total"
+msgstr "Partidas: mostrando $num_shown de $num_total"
+
 #: src/gui/dialogs/lobby_main.cpp:731
 msgid "Observers allowed"
 msgstr "Se permiten observadores"
@@ -2168,6 +2176,18 @@ msgstr "Se permiten observadores"
 #: src/gui/dialogs/lobby_main.cpp:734
 msgid "Observers not allowed"
 msgstr "No se permiten observadores"
+
+#: src/gui/dialogs/lobby_main.cpp:1072
+msgid ""
+"Whisper session with $name started. If you don't want to receive messages "
+"from this user, type /ignore $name\n"
+msgstr ""
+"Ha empezado una sesión de susurros con $name. Si no quiere recibir mensajes "
+"de este usuario, escriba /ignore $name\n"
+
+#: src/gui/dialogs/lobby_main.cpp:1078
+msgid "Room $name joined"
+msgstr "Unido a partida $name"
 
 #: src/gui/dialogs/lobby_main.cpp:1548
 msgid "Password Required"
@@ -2775,11 +2795,11 @@ msgstr ""
 "Advertencia: teclas de captura no combinadas con las teclas modificadoras "
 "Control, Alt o Meta."
 
-#: src/preferences_display.cpp:453
+#: src/preferences_display.cpp:459
 msgid "There are no alternative video modes available"
 msgstr "No tiene modos de vídeo alternativos disponibles"
 
-#: src/preferences_display.cpp:482
+#: src/preferences_display.cpp:488
 msgid "Choose Resolution"
 msgstr "Seleccione resolución"
 
@@ -2817,22 +2837,6 @@ msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
 "En la sección «[$section|]» el atributo obligatorio «$key|» no se ha "
 "establecido."
-
-#~ msgid "whisper to $receiver"
-#~ msgstr "susurrar a $receiver"
-
-#~ msgid "Games: showing $num_shown out of $num_total"
-#~ msgstr "Partidas: mostrando $num_shown de $num_total"
-
-#~ msgid ""
-#~ "Whisper session with $name started. If you don't want to receive messages "
-#~ "from this user, type /ignore $name\n"
-#~ msgstr ""
-#~ "Ha empezado una sesión de susurros con $name. Si no quiere recibir "
-#~ "mensajes de este usuario, escriba /ignore $name\n"
-
-#~ msgid "Room $name joined"
-#~ msgstr "Unido a partida $name"
 
 #~ msgid "Save The Map"
 #~ msgstr "Guardar el mapa"

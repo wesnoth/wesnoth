@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-08 14:58+0100\n"
+"POT-Creation-Date: 2010-03-14 18:39+0100\n"
 "PO-Revision-Date: 2010-02-20 21:55+0200\n"
 "Last-Translator: Samu Voutilainen <smar@smar.fi>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -2126,6 +2126,14 @@ msgstr "Vaikeusaste:"
 msgid "Version: "
 msgstr "Versio:"
 
+#: src/gui/dialogs/lobby_main.cpp:255
+msgid "whisper to $receiver"
+msgstr "yksityisviesti henkilölle $receiver"
+
+#: src/gui/dialogs/lobby_main.cpp:689
+msgid "Games: showing $num_shown out of $num_total"
+msgstr "Pelit: $num_total ,joista $num_shown näkyvissä"
+
 #: src/gui/dialogs/lobby_main.cpp:731
 msgid "Observers allowed"
 msgstr "Tarkkailijat sallittu"
@@ -2133,6 +2141,18 @@ msgstr "Tarkkailijat sallittu"
 #: src/gui/dialogs/lobby_main.cpp:734
 msgid "Observers not allowed"
 msgstr "Tarkkailijat estetty"
+
+#: src/gui/dialogs/lobby_main.cpp:1072
+msgid ""
+"Whisper session with $name started. If you don't want to receive messages "
+"from this user, type /ignore $name\n"
+msgstr ""
+"Yksityistila henkilön $name kanssa aloitettu. Jos et halua vastaanottaa "
+"viestejä tältä käyttäjältä, kirjoita /ignore $name\n"
+
+#: src/gui/dialogs/lobby_main.cpp:1078
+msgid "Room $name joined"
+msgstr "Liitytty huoneeseen $name"
 
 #: src/gui/dialogs/lobby_main.cpp:1548
 msgid "Password Required"
@@ -2741,11 +2761,11 @@ msgstr ""
 "Varoitus: kuvankaappauspikanäppäimiä ei yhdistetty Control, Alt tai Meta-"
 "näppäimen kanssa"
 
-#: src/preferences_display.cpp:453
+#: src/preferences_display.cpp:459
 msgid "There are no alternative video modes available"
 msgstr "Vaihtoehtoisia näyttötarkkuuksia ei ole käytettävissä."
 
-#: src/preferences_display.cpp:482
+#: src/preferences_display.cpp:488
 msgid "Choose Resolution"
 msgstr "Valitse näyttötarkkuus"
 
@@ -2781,22 +2801,6 @@ msgstr ""
 #: src/wml_exception.cpp:76
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "Alueella ’[$section]’ pakollinen avain $key| ei ole asetettu."
-
-#~ msgid "whisper to $receiver"
-#~ msgstr "yksityisviesti henkilölle $receiver"
-
-#~ msgid "Games: showing $num_shown out of $num_total"
-#~ msgstr "Pelit: $num_total ,joista $num_shown näkyvissä"
-
-#~ msgid ""
-#~ "Whisper session with $name started. If you don't want to receive messages "
-#~ "from this user, type /ignore $name\n"
-#~ msgstr ""
-#~ "Yksityistila henkilön $name kanssa aloitettu. Jos et halua vastaanottaa "
-#~ "viestejä tältä käyttäjältä, kirjoita /ignore $name\n"
-
-#~ msgid "Room $name joined"
-#~ msgstr "Liitytty huoneeseen $name"
 
 #~ msgid "Save The Map"
 #~ msgstr "Tallenna kartta"

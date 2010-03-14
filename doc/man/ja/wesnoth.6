@@ -1,0 +1,194 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTH 6 2009 wesnoth "Battle for Wesnoth"
+.
+.SH 名前
+wesnoth \- Battle for Wesnoth ターン制ファンタジー戦略ゲーム
+.
+.SH 書式
+.
+\fBwesnoth\fP [\fIOPTIONS\fP] [\fIPATH_TO_DATA\fP]
+.
+.SH 説明
+.
+Battle for \fBWesnoth\fPはターン制のファンタジー戦略ゲームです。
+
+生え抜きの中核の軍隊を使用して、資金と村の資源の管理に注意しながら、全ての敵のリーダーを倒しましょう。全てのユニットは固有の強みと弱点を持つため、勝利するためには、敵の同様の好機を阻みながら、自軍の長所を最大限に引き出せるように配備する必要があります。自分の言語でプレイ可能で、賢いコンピュータを相手に力を試したり、Wesnoth
+の巨大なオンラインプレイヤーのコミュニティに参加したりすることができます。自分でカスタムユニットや、シナリオやキャンペーンを作成して、それを他の人達と共有することもできます。
+.
+.SH オプション
+.
+.TP 
+\fB\-\-bpp\fP\fI\ number\fP
+ピクセル当りのビット数の値を設定。例: \fB\-\-bpp 32\fP
+.TP 
+\fB\-c, \-\-campaign\fP
+直接キャンペーン選択メニューに移動する。
+.TP 
+\fB\-\-config\-dir\fP\fI\ name\fP
+ユーザ設定ディレクトリを $HOME 以下の \fIname\fP または windows の "My Documents\eMy Games" に設定する。
+.TP 
+\fB\-\-config\-path\fP
+ユーザ設定ディレクトリの名前を表示して、終了する。
+.TP 
+\fB\-d, \-\-debug\fP
+ゲーム内での追加コマンドモードオプションを有効にする。(コマンドモードについてのより多くの情報については、 wiki ページ
+http://www.wesnoth.org/wiki/CommandMode を参照のこと)
+.TP 
+\fB\-e,\ \-\-editor\fP\fI\ file\fP
+ゲーム内のマップエディタを直接開始する。もし \fIfile\fP が指定された場合は \fB\-e \-\-load\fP と等価。
+.TP 
+\fB\-\-fps\fP
+ゲーム実行時の秒当たりのフレーム数(FPS)をスクリーンの隅に表示する。
+.TP 
+\fB\-f, \-\-fullscreen\fP
+フルスクリーンモードでゲームを実行する。
+.TP 
+\fB\-\-gunzip\fP\fI\ infile.gz\fP
+gzip フォーマットのファイルを展開して .gz という拡張子を除いたファイルに保存する。 \fIinfile.gz\fP は削除される。
+.TP 
+\fB\-\-gzip\fP\fI\ infile\fP
+ファイルを gzip フォーマットで圧縮して \fIinfile\fP.gz に保存し、\fIinfile\fP を削除する。
+.TP 
+\fB\-h, \-\-help\fP
+標準出力にコマンドラインオプションの要約を表示して、終了する。
+.TP 
+\fB\-l,\ \-\-load\fP\fI\ file\fP
+標準のゲーム保存ディレクトリから保存されたゲーム \fIfile\fP をロードする。もし同様に \fB\-e\fP または \fB\-\-editor\fP
+オプションが使われた場合は、エディタを開始して \fIfile\fP
+からマップを開く。もしディレクトリなら、マップ読み込みダイアログでその場所を表示した状態からエディタを開始する。
+.TP 
+\fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
+ログ領域(domain)の厳密さのレベルを設定する。 \fBall\fP は、どのログ領域にも対応させるために利用される。有効なレベルは以下の通り。
+\fBerror\fP、\ \fBwarning\fP、\ \fBinfo\fP、\ \fBdebug\fP。既定値では \fBerror\fP レベルが使用される。
+.TP 
+\fB\-\-logdomains\fP
+すべてのログ領域(domain)のリストを表示して、終了する。
+.TP 
+\fB\-\-max\-fps\fP
+ゲームにおける 1 秒間あたりのフレーム数。値は 1 から 1000 までで、既定値は \fB50\fP。
+.TP 
+\fB\-m, \-\-multiplayer\fP
+マルチプレイヤーゲームを実行する。 \fB\-\-multiplayer\fP と共に利用できる追加のオプションは後述。これらの追加のオプションだけが
+\fB\-\-multiplayer\fP の後に続けられる。
+.TP 
+\fB\-\-no\-delay\fP
+グラフィックベンチマーク用にディレイなしでゲームを実行する。これは \fB\-\-nogui\fP では自動的に有効になる。
+.TP 
+\fB\-\-nocache\fP
+ゲームデータのキャッシュを使用しない。
+.TP 
+\fB\-\-nomusic\fP
+音楽なしでゲームを実行する。
+.TP 
+\fB\-\-nosound\fP
+サウンドや音楽なしでゲームを実行する。
+.TP 
+\fB\-\-path\fP
+ゲームデータディレクトリの名前を表示して、終了する。
+.TP 
+\fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
+画面解像度を設定する。例: \fB\-r 800x600\fP
+.TP 
+\fB\-\-smallgui\fP
+画面解像度を 800x480 まで落としていくつかのインターフェース要素をリサイズするのを許可する。
+.TP 
+\fB\-s,\ \-\-server\ [host]\fP
+ホストが指定されていれば、そのホストへ接続する。あるいは選択の最初のサーバに接続する。例: \fB\-\-server server.wesnoth.org\fP
+.TP 
+\fB\-t, \-\-test\fP
+簡単なテストシナリオでゲームを実行する。
+.TP 
+\fB\-\-validcache\fP
+キャッシュが正しいものと想定する。(危険)
+.TP 
+\fB\-v, \-\-version\fP
+バージョン番号を表示して、終了する。
+.TP 
+\fB\-w, \-\-windowed\fP
+ウィンドウ化されたモードでゲームを実行する。
+.TP 
+\fB\-\-with\-replay\fP
+\fB\-\-load\fP オプションでロードされたゲームのリプレイを実行する。
+.
+.SH "\-\-multiplayer 用のオプション"
+.
+陣営指定のマルチプレイヤーオプションが \fInumber\fP によって示される。 \fInumber\fP は陣営のナンバーに置き換えられる必要がある。通常は
+1 か 2 だが、選択されたシナリオでの可能なプレイヤー数に依存する。
+.TP 
+\fB\-\-ai_config\fP\fInumber\fP\fB=\fP\fIvalue\fP
+この陣営の AI コントローラに読み込む設定ファイルを選択する。
+.TP 
+\fB\-\-algorithm\fP\fInumber\fP\fB=\fP\fIvalue\fP
+この陣営向けに AI コントローラによって使用される非標準のアルゴリズムを選択する。設定可能な値(value)は、 \fBidle_ai\fP と
+\fBsample_ai\fP。
+.TP  
+\fB\-\-controller\fP\fInumber\fP\fB=\fP\fIvalue\fP
+この陣営の操作者を選択する。設定可能な値(value)は、\fBhuman\fP と \fBai\fP。
+.TP  
+\fB\-\-era=\fP\fIvalue\fP
+\fBDefault\fP の代わりの時代を選択してプレイするためにこのオプションを使用する。時代は ID によって選択される。時代はファイル
+\fBdata/multiplayer/eras.cfg\fP の中に記述されている。
+.TP 
+\fB\-\-exit\-at\-end\fP
+シナリオが終わると、ユーザが OK
+をクリックする必要のある勝利／敗北のダイアログを表示せずに終了する。これはスクリプト化可能なベンチマークにも利用される。
+.TP 
+\fB\-\-nogui\fP
+GUI なしでゲームを実行する。要望の効果を得るためには \fB\-\-multiplayer\fP より前になければならない。
+.TP 
+\fB\-\-parm\fP\fInumber\fP\fB=\fP\fIname\fP\fB:\fP\fIvalue\fP
+この陣営の追加的なパラメータを設定する。このパラメータは、\fB\-\-controller\fP と \fB\-\-algorithm\fP
+とともに使用されるオプションに依存する。自作の AI 設計者にのみ有用と思われる。(まだ完全には文書化されていない)
+.TP 
+\fB\-\-scenario=\fP\fIvalue\fP
+マルチプレイヤーのシナリオを ID で選択する。既定のシナリオ ID は \fBmultiplayer_The_Freelands\fP。
+.TP 
+\fB\-\-side\fP\fInumber\fP\fB=\fP\fIvalue\fP
+このサイドの現在の時代の党派を選択する。党派は ID によって選択される。党派はファイル data/multiplayer.cfg
+の中に記述されている。
+.TP 
+\fB\-\-turns=\fP\fIvalue\fP
+選択されたシナリオのターン数を設定する。既定値は \fB50\fP。
+.
+.SH 著者
+.
+David White <davidnwhite@verizon.net> によって書かれた。
+.br
+Nils Kneuper <crazy\-ivanovic@gmx.net> と ott <ott@gaon.net> と
+Soliton <soliton.de@gmail.com> によって編集された。
+.br
+このマニュアルページは Cyril Bouthors <cyril@bouthors.org> によって最初に書かれた。岡田信人
+<okyada@gmail.com> によって日本語に翻訳された。
+.br
+公式ホームページ http://www.wesnoth.org/ を訪問して下さい。
+.
+.SH 著作権
+.
+Copyright \(co 2003\-2009 David White <davidnwhite@verizon.net>
+.br
+This is Free Software; this software is licensed under the GPL version 2, as
+published by the Free Software Foundation.  There is NO warranty; not even
+for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+.
+.SH 関連項目
+.
+\fBwesnoth_editor\fP(6), \fBwesnothd\fP(6)

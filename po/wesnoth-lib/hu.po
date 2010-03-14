@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-lib_1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-08 14:58+0100\n"
+"POT-Creation-Date: 2010-03-14 18:39+0100\n"
 "PO-Revision-Date: 2009-11-26 23:16+0100\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
@@ -2152,6 +2152,14 @@ msgstr "Nehézség: "
 msgid "Version: "
 msgstr "Verzió: "
 
+#: src/gui/dialogs/lobby_main.cpp:255
+msgid "whisper to $receiver"
+msgstr "súgás neki: $receiver"
+
+#: src/gui/dialogs/lobby_main.cpp:689
+msgid "Games: showing $num_shown out of $num_total"
+msgstr "Játékok: összesen $num_total mérkőzés zajlik, ebből $num_shown látható"
+
 #: src/gui/dialogs/lobby_main.cpp:731
 msgid "Observers allowed"
 msgstr "Megfigyelés engedélyezve"
@@ -2160,6 +2168,18 @@ msgstr "Megfigyelés engedélyezve"
 #: src/gui/dialogs/lobby_main.cpp:734
 msgid "Observers not allowed"
 msgstr "Megfigyelés letiltva"
+
+#: src/gui/dialogs/lobby_main.cpp:1072
+msgid ""
+"Whisper session with $name started. If you don't want to receive messages "
+"from this user, type /ignore $name\n"
+msgstr ""
+"Sugdolózás kezdődött ezzel a felhasználóval: $name. Ha mégsem szeretnél "
+"üzeneteket kapni tőle, írd be a következő parancsot: /ignore $name\n"
+
+#: src/gui/dialogs/lobby_main.cpp:1078
+msgid "Room $name joined"
+msgstr "Csatlakoztál ehhez a szobához: $name"
 
 #: src/gui/dialogs/lobby_main.cpp:1548
 msgid "Password Required"
@@ -2771,11 +2791,11 @@ msgstr ""
 "Figyelmeztetés: a képernyőkép-készítés gyorsbillentyűje nincs Control, Alt "
 "vagy Meta billentyűvel kombinálva."
 
-#: src/preferences_display.cpp:453
+#: src/preferences_display.cpp:459
 msgid "There are no alternative video modes available"
 msgstr "Nincsenek más megjelenítési módok"
 
-#: src/preferences_display.cpp:482
+#: src/preferences_display.cpp:488
 msgid "Choose Resolution"
 msgstr "Felbontás kiválasztása"
 
@@ -2810,23 +2830,6 @@ msgstr ""
 #: src/wml_exception.cpp:76
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "A '[$section|]' részben a kötelező'$key|' kulcs nincs beállítva."
-
-#~ msgid "whisper to $receiver"
-#~ msgstr "súgás neki: $receiver"
-
-#~ msgid "Games: showing $num_shown out of $num_total"
-#~ msgstr ""
-#~ "Játékok: összesen $num_total mérkőzés zajlik, ebből $num_shown látható"
-
-#~ msgid ""
-#~ "Whisper session with $name started. If you don't want to receive messages "
-#~ "from this user, type /ignore $name\n"
-#~ msgstr ""
-#~ "Sugdolózás kezdődött ezzel a felhasználóval: $name. Ha mégsem szeretnél "
-#~ "üzeneteket kapni tőle, írd be a következő parancsot: /ignore $name\n"
-
-#~ msgid "Room $name joined"
-#~ msgstr "Csatlakoztál ehhez a szobához: $name"
 
 #~ msgid "Save The Map"
 #~ msgstr "Pálya mentése"

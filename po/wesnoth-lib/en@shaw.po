@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-08 14:58+0100\n"
+"POT-Creation-Date: 2010-03-14 18:39+0100\n"
 "PO-Revision-Date: 2009-10-08 23:00-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -2121,6 +2121,14 @@ msgstr "𐑛𐑦𐑓𐑦𐑒𐑩𐑤𐑑𐑦: "
 msgid "Version: "
 msgstr "𐑝𐑻𐑠𐑩𐑯: "
 
+#: src/gui/dialogs/lobby_main.cpp:255
+msgid "whisper to $receiver"
+msgstr ""
+
+#: src/gui/dialogs/lobby_main.cpp:689
+msgid "Games: showing $num_shown out of $num_total"
+msgstr ""
+
 #: src/gui/dialogs/lobby_main.cpp:731
 msgid "Observers allowed"
 msgstr "𐑩𐑚𐑟𐑻𐑝𐑼𐑟 𐑩𐑤𐑬𐑛"
@@ -2128,6 +2136,18 @@ msgstr "𐑩𐑚𐑟𐑻𐑝𐑼𐑟 𐑩𐑤𐑬𐑛"
 #: src/gui/dialogs/lobby_main.cpp:734
 msgid "Observers not allowed"
 msgstr "𐑩𐑚𐑟𐑻𐑝𐑼𐑟 𐑯𐑪𐑑 𐑩𐑤𐑬𐑛"
+
+#: src/gui/dialogs/lobby_main.cpp:1072
+msgid ""
+"Whisper session with $name started. If you don't want to receive messages "
+"from this user, type /ignore $name\n"
+msgstr ""
+"𐑢𐑦𐑕𐑐𐑻 𐑕𐑧𐑖𐑩𐑯 𐑢𐑦𐑞 $name 𐑕𐑑𐑸𐑑𐑩𐑛. 𐑦𐑓 𐑿 𐑛𐑴𐑯𐑑 𐑢𐑪𐑯𐑑 𐑑 𐑮𐑦𐑕𐑰𐑝 𐑥𐑧𐑕𐑦𐑡𐑩𐑟 𐑓𐑮𐑪𐑥 𐑞𐑦𐑕 𐑿𐑟𐑼, "
+"𐑑𐑲𐑐 /ignore $name\n"
+
+#: src/gui/dialogs/lobby_main.cpp:1078
+msgid "Room $name joined"
+msgstr "𐑮𐑵𐑥 $name 𐑡𐑶𐑯𐑛"
 
 #: src/gui/dialogs/lobby_main.cpp:1548
 msgid "Password Required"
@@ -2732,11 +2752,11 @@ msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr "𐑢𐑹𐑯𐑦𐑙: 𐑕𐑒𐑮𐑰𐑯𐑖𐑷𐑑 𐑣𐑭𐑑𐑒𐑰𐑟 𐑯𐑪𐑑 𐑒𐑩𐑥𐑚𐑲𐑯𐑛 𐑢𐑦𐑞 𐑒𐑩𐑯𐑑𐑮𐑴𐑤, Alt 𐑹 𐑥𐑰𐑑𐑩 𐑒𐑰𐑟."
 
-#: src/preferences_display.cpp:453
+#: src/preferences_display.cpp:459
 msgid "There are no alternative video modes available"
 msgstr "𐑞𐑺 𐑸 𐑯𐑴 𐑷𐑤𐑑𐑻𐑯𐑩𐑑𐑦𐑝 𐑝𐑦𐑛𐑦𐑴 𐑥𐑴𐑛𐑟 𐑩𐑝𐑱𐑤𐑩𐑚𐑩𐑤"
 
-#: src/preferences_display.cpp:482
+#: src/preferences_display.cpp:488
 msgid "Choose Resolution"
 msgstr "𐑗𐑵𐑟 𐑮𐑧𐑟𐑩𐑤𐑵𐑖𐑩𐑯"
 
@@ -2770,13 +2790,3 @@ msgstr ""
 #: src/wml_exception.cpp:76
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "𐑦𐑯 𐑕𐑧𐑒𐑖𐑩𐑯 '[$section|]' 𐑞 𐑥𐑨𐑯𐑛𐑩𐑑𐑹𐑰 𐑒𐑰 '$key|' 𐑦𐑟𐑯𐑑 𐑕𐑧𐑑."
-
-#~ msgid ""
-#~ "Whisper session with $name started. If you don't want to receive messages "
-#~ "from this user, type /ignore $name\n"
-#~ msgstr ""
-#~ "𐑢𐑦𐑕𐑐𐑻 𐑕𐑧𐑖𐑩𐑯 𐑢𐑦𐑞 $name 𐑕𐑑𐑸𐑑𐑩𐑛. 𐑦𐑓 𐑿 𐑛𐑴𐑯𐑑 𐑢𐑪𐑯𐑑 𐑑 𐑮𐑦𐑕𐑰𐑝 𐑥𐑧𐑕𐑦𐑡𐑩𐑟 𐑓𐑮𐑪𐑥 𐑞𐑦𐑕 "
-#~ "𐑿𐑟𐑼, 𐑑𐑲𐑐 /ignore $name\n"
-
-#~ msgid "Room $name joined"
-#~ msgstr "𐑮𐑵𐑥 $name 𐑡𐑶𐑯𐑛"

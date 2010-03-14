@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-08 14:58+0100\n"
+"POT-Creation-Date: 2010-03-14 18:39+0100\n"
 "PO-Revision-Date: 2009-10-04 19:41+0100\n"
 "Last-Translator: Alexander van Gessel (AI/AI0867) <AI0867@gmail.com>\n"
 "Language-Team: Dutch <AI0867@gmail.com>\n"
@@ -2172,6 +2172,14 @@ msgstr "Moelijkheid: "
 msgid "Version: "
 msgstr "Versie: "
 
+#: src/gui/dialogs/lobby_main.cpp:255
+msgid "whisper to $receiver"
+msgstr ""
+
+#: src/gui/dialogs/lobby_main.cpp:689
+msgid "Games: showing $num_shown out of $num_total"
+msgstr ""
+
 #: src/gui/dialogs/lobby_main.cpp:731
 msgid "Observers allowed"
 msgstr "Observators toegestaan"
@@ -2179,6 +2187,17 @@ msgstr "Observators toegestaan"
 #: src/gui/dialogs/lobby_main.cpp:734
 msgid "Observers not allowed"
 msgstr "Observators niet toegestaan"
+
+#: src/gui/dialogs/lobby_main.cpp:1072
+msgid ""
+"Whisper session with $name started. If you don't want to receive messages "
+"from this user, type /ignore $name\n"
+msgstr ""
+
+#: src/gui/dialogs/lobby_main.cpp:1078
+#, fuzzy
+msgid "Room $name joined"
+msgstr "Ruimte $name "
 
 #: src/gui/dialogs/lobby_main.cpp:1548
 msgid "Password Required"
@@ -2787,11 +2806,11 @@ msgstr ""
 "Waarschuwing: schermafdruk sneltoets niet gecombineerd met Control, Alt of "
 "Meta knop."
 
-#: src/preferences_display.cpp:453
+#: src/preferences_display.cpp:459
 msgid "There are no alternative video modes available"
 msgstr "Er zijn geen andere video modes beschikbaar."
 
-#: src/preferences_display.cpp:482
+#: src/preferences_display.cpp:488
 msgid "Choose Resolution"
 msgstr "Kies een resolutie"
 
@@ -2828,10 +2847,6 @@ msgstr ""
 #: src/wml_exception.cpp:76
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "In sectie '[$section|]' is het verplichte veld '$key|' niet gezet."
-
-#, fuzzy
-#~ msgid "Room $name joined"
-#~ msgstr "Ruimte $name "
 
 #~ msgid "Save The Map"
 #~ msgstr "Kaart opslaan"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.x-SVN\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-08 14:58+0100\n"
+"POT-Creation-Date: 2010-03-14 18:39+0100\n"
 "PO-Revision-Date: 2010-01-31 12:01+0900\n"
 "Last-Translator: \n"
 "Language-Team: Japanese Translation Team\n"
@@ -2132,6 +2132,14 @@ msgstr "難易度: "
 msgid "Version: "
 msgstr "バージョン: "
 
+#: src/gui/dialogs/lobby_main.cpp:255
+msgid "whisper to $receiver"
+msgstr "$receiver にささやく"
+
+#: src/gui/dialogs/lobby_main.cpp:689
+msgid "Games: showing $num_shown out of $num_total"
+msgstr "ゲーム: $num_total 中の $num_shown を表示"
+
 #: src/gui/dialogs/lobby_main.cpp:731
 msgid "Observers allowed"
 msgstr "観戦許可"
@@ -2139,6 +2147,18 @@ msgstr "観戦許可"
 #: src/gui/dialogs/lobby_main.cpp:734
 msgid "Observers not allowed"
 msgstr "観戦不許可"
+
+#: src/gui/dialogs/lobby_main.cpp:1072
+msgid ""
+"Whisper session with $name started. If you don't want to receive messages "
+"from this user, type /ignore $name\n"
+msgstr ""
+"$name とのささやきセッションが開始されました。もしこのユーザーからのメッセー"
+"ジを受け取りたくない場合は、/ignore $name と入力してください。\n"
+
+#: src/gui/dialogs/lobby_main.cpp:1078
+msgid "Room $name joined"
+msgstr "部屋 $name に参加しました"
 
 #: src/gui/dialogs/lobby_main.cpp:1548
 msgid "Password Required"
@@ -2745,11 +2765,11 @@ msgstr ""
 "警告: スクリーンショットのホットキーはコントロールキー、Alt キー、メタキーと"
 "組み合わせられません。"
 
-#: src/preferences_display.cpp:453
+#: src/preferences_display.cpp:459
 msgid "There are no alternative video modes available"
 msgstr "変更可能な画面モードはありません"
 
-#: src/preferences_display.cpp:482
+#: src/preferences_display.cpp:488
 msgid "Choose Resolution"
 msgstr "解像度を選択して下さい"
 
@@ -2862,22 +2882,6 @@ msgstr ""
 #~ msgstr ""
 #~ "シングルプレイの勝利とシングルプレイ/マルチプレイの敗北の保存データを自動"
 #~ "的に削除します"
-
-#~ msgid "whisper to $receiver"
-#~ msgstr "$receiver にささやく"
-
-#~ msgid "Games: showing $num_shown out of $num_total"
-#~ msgstr "ゲーム: $num_total 中の $num_shown を表示"
-
-#~ msgid ""
-#~ "Whisper session with $name started. If you don't want to receive messages "
-#~ "from this user, type /ignore $name\n"
-#~ msgstr ""
-#~ "$name とのささやきセッションが開始されました。もしこのユーザーからのメッ"
-#~ "セージを受け取りたくない場合は、/ignore $name と入力してください。\n"
-
-#~ msgid "Room $name joined"
-#~ msgstr "部屋 $name に参加しました"
 
 #~ msgid "Set Terrain"
 #~ msgstr "地形の設定"

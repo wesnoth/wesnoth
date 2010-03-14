@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-08 14:58+0100\n"
+"POT-Creation-Date: 2010-03-14 18:39+0100\n"
 "PO-Revision-Date: 2009-11-21 12:05+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -2155,6 +2155,15 @@ msgstr "Obtížnost: "
 msgid "Version: "
 msgstr "Verze: "
 
+# v chatu, "levá část tabulky" (jméno) - nesmí být příliš dlouhé!
+#: src/gui/dialogs/lobby_main.cpp:255
+msgid "whisper to $receiver"
+msgstr "soukr. zpr. pro $receiver"
+
+#: src/gui/dialogs/lobby_main.cpp:689
+msgid "Games: showing $num_shown out of $num_total"
+msgstr "Hry: zobrazeno $num_shown ze $num_total"
+
 #: src/gui/dialogs/lobby_main.cpp:731
 msgid "Observers allowed"
 msgstr "Pozorovatelé povoleni"
@@ -2162,6 +2171,18 @@ msgstr "Pozorovatelé povoleni"
 #: src/gui/dialogs/lobby_main.cpp:734
 msgid "Observers not allowed"
 msgstr "Pozorovatelé zakázáni"
+
+#: src/gui/dialogs/lobby_main.cpp:1072
+msgid ""
+"Whisper session with $name started. If you don't want to receive messages "
+"from this user, type /ignore $name\n"
+msgstr ""
+"Zahájena soukromá konverzace s $name|. Pokud si nepřejete přijímat od tohoto "
+"človka zprávy, napište /ignore $name|.\n"
+
+#: src/gui/dialogs/lobby_main.cpp:1078
+msgid "Room $name joined"
+msgstr "Vstoupil(a) jsi do místnosti $name"
 
 #: src/gui/dialogs/lobby_main.cpp:1548
 msgid "Password Required"
@@ -2774,11 +2795,11 @@ msgstr ""
 "Varování: klávesová zkratka pro snímání obrazovky není kombinovaná s Ctrl, "
 "Alt nebo jinými speciálními klávesami."
 
-#: src/preferences_display.cpp:453
+#: src/preferences_display.cpp:459
 msgid "There are no alternative video modes available"
 msgstr "Žádné jiné grafické módy nejsou k dispozici."
 
-#: src/preferences_display.cpp:482
+#: src/preferences_display.cpp:488
 msgid "Choose Resolution"
 msgstr "Vyber si rozlišení"
 
@@ -2811,20 +2832,3 @@ msgstr ""
 #: src/wml_exception.cpp:76
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "V sekci '[$section|]' není nastaven povinný klíč '$key|'."
-
-# v chatu, "levá část tabulky" (jméno) - nesmí být příliš dlouhé!
-#~ msgid "whisper to $receiver"
-#~ msgstr "soukr. zpr. pro $receiver"
-
-#~ msgid "Games: showing $num_shown out of $num_total"
-#~ msgstr "Hry: zobrazeno $num_shown ze $num_total"
-
-#~ msgid ""
-#~ "Whisper session with $name started. If you don't want to receive messages "
-#~ "from this user, type /ignore $name\n"
-#~ msgstr ""
-#~ "Zahájena soukromá konverzace s $name|. Pokud si nepřejete přijímat od "
-#~ "tohoto človka zprávy, napište /ignore $name|.\n"
-
-#~ msgid "Room $name joined"
-#~ msgstr "Vstoupil(a) jsi do místnosti $name"

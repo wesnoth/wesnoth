@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.9\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-08 14:58+0100\n"
+"POT-Creation-Date: 2010-03-14 18:39+0100\n"
 "PO-Revision-Date: 2009-12-20 14:44+0300\n"
 "Last-Translator: Reinis Danne <rei4dan@gmail.com>\n"
 "Language-Team: none\n"
@@ -2129,6 +2129,14 @@ msgstr "Grūtība:"
 msgid "Version: "
 msgstr "Versija:"
 
+#: src/gui/dialogs/lobby_main.cpp:255
+msgid "whisper to $receiver"
+msgstr "pačukstēt $receiver"
+
+#: src/gui/dialogs/lobby_main.cpp:689
+msgid "Games: showing $num_shown out of $num_total"
+msgstr "Spēles: rāda $num_shown no $num_total"
+
 #: src/gui/dialogs/lobby_main.cpp:731
 msgid "Observers allowed"
 msgstr "Vērotāji atļauti"
@@ -2136,6 +2144,18 @@ msgstr "Vērotāji atļauti"
 #: src/gui/dialogs/lobby_main.cpp:734
 msgid "Observers not allowed"
 msgstr "Vērotāji nav atļauti"
+
+#: src/gui/dialogs/lobby_main.cpp:1072
+msgid ""
+"Whisper session with $name started. If you don't want to receive messages "
+"from this user, type /ignore $name\n"
+msgstr ""
+"Čukstēšanas sesija ar $name sākta. Ja nevēlaties saņemt ziņas no šī "
+"lietotāja, ierakstiet \"/ignore $name\"\n"
+
+#: src/gui/dialogs/lobby_main.cpp:1078
+msgid "Room $name joined"
+msgstr "Istaba $name pievienota"
 
 #: src/gui/dialogs/lobby_main.cpp:1548
 msgid "Password Required"
@@ -2742,11 +2762,11 @@ msgstr ""
 "Brīdinājums: ekrānattēlu karstie taustiņi nav kombinēti ar Control, Alt vai "
 "Meta taustiņiem."
 
-#: src/preferences_display.cpp:453
+#: src/preferences_display.cpp:459
 msgid "There are no alternative video modes available"
 msgstr "Alternatīvi video režīmi nav pieejami"
 
-#: src/preferences_display.cpp:482
+#: src/preferences_display.cpp:488
 msgid "Choose Resolution"
 msgstr "Izvēlieties izšķirtspēju"
 
@@ -2779,22 +2799,6 @@ msgstr ""
 #: src/wml_exception.cpp:76
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "Sadaļā '[$section|]' obligātā atslēga '$key|' nav iestatīta."
-
-#~ msgid "whisper to $receiver"
-#~ msgstr "pačukstēt $receiver"
-
-#~ msgid "Games: showing $num_shown out of $num_total"
-#~ msgstr "Spēles: rāda $num_shown no $num_total"
-
-#~ msgid ""
-#~ "Whisper session with $name started. If you don't want to receive messages "
-#~ "from this user, type /ignore $name\n"
-#~ msgstr ""
-#~ "Čukstēšanas sesija ar $name sākta. Ja nevēlaties saņemt ziņas no šī "
-#~ "lietotāja, ierakstiet \"/ignore $name\"\n"
-
-#~ msgid "Room $name joined"
-#~ msgstr "Istaba $name pievienota"
 
 #~ msgid "Save The Map"
 #~ msgstr "Saglabāt karti"

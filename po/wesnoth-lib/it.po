@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-08 14:58+0100\n"
+"POT-Creation-Date: 2010-03-14 18:39+0100\n"
 "PO-Revision-Date: 2009-12-29 12:44+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -2140,6 +2140,14 @@ msgstr "Difficoltà: "
 msgid "Version: "
 msgstr "Versione: "
 
+#: src/gui/dialogs/lobby_main.cpp:255
+msgid "whisper to $receiver"
+msgstr "Bisbiglia a $receiver"
+
+#: src/gui/dialogs/lobby_main.cpp:689
+msgid "Games: showing $num_shown out of $num_total"
+msgstr "Partite: mostrate $num_shown di $num_total"
+
 #: src/gui/dialogs/lobby_main.cpp:731
 msgid "Observers allowed"
 msgstr "Osservatori ammessi"
@@ -2147,6 +2155,18 @@ msgstr "Osservatori ammessi"
 #: src/gui/dialogs/lobby_main.cpp:734
 msgid "Observers not allowed"
 msgstr "Osservatori non ammessi"
+
+#: src/gui/dialogs/lobby_main.cpp:1072
+msgid ""
+"Whisper session with $name started. If you don't want to receive messages "
+"from this user, type /ignore $name\n"
+msgstr ""
+"Iniziata una sessione bisbigliata con $name. Se non vuoi ricevere messaggi "
+"da questo utente, scrivi /ignore $name\n"
+
+#: src/gui/dialogs/lobby_main.cpp:1078
+msgid "Room $name joined"
+msgstr "Sei entrato nella stanza $name"
 
 #: src/gui/dialogs/lobby_main.cpp:1548
 msgid "Password Required"
@@ -2755,11 +2775,11 @@ msgstr ""
 "Attenzione: scorciatoia per schermata non combinata con i tasti Ctrl, Alt o "
 "Meta."
 
-#: src/preferences_display.cpp:453
+#: src/preferences_display.cpp:459
 msgid "There are no alternative video modes available"
 msgstr "Nessuna modalità video alternativa disponibile"
 
-#: src/preferences_display.cpp:482
+#: src/preferences_display.cpp:488
 msgid "Choose Resolution"
 msgstr "Scegli la risoluzione"
 
@@ -2799,22 +2819,6 @@ msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
 "Nella sezione «[$section|]» la chiave obbligatoria «$key|» non è impostata."
 "Nella sezione «[$section|]» la chiave obbligatoria «$key|» non è impostata."
-
-#~ msgid "whisper to $receiver"
-#~ msgstr "Bisbiglia a $receiver"
-
-#~ msgid "Games: showing $num_shown out of $num_total"
-#~ msgstr "Partite: mostrate $num_shown di $num_total"
-
-#~ msgid ""
-#~ "Whisper session with $name started. If you don't want to receive messages "
-#~ "from this user, type /ignore $name\n"
-#~ msgstr ""
-#~ "Iniziata una sessione bisbigliata con $name. Se non vuoi ricevere "
-#~ "messaggi da questo utente, scrivi /ignore $name\n"
-
-#~ msgid "Room $name joined"
-#~ msgstr "Sei entrato nella stanza $name"
 
 #~ msgid "Save The Map"
 #~ msgstr "Salva la mappa"

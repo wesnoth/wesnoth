@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-08 14:58+0100\n"
+"POT-Creation-Date: 2010-03-14 18:39+0100\n"
 "PO-Revision-Date: 2009-12-07 18:47+0200\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team:  <http://bugs.wesnoth.org>\n"
@@ -2142,6 +2142,14 @@ msgstr "Сложность: "
 msgid "Version: "
 msgstr "Версия:"
 
+#: src/gui/dialogs/lobby_main.cpp:255
+msgid "whisper to $receiver"
+msgstr "Послать шёпот $receiver-у"
+
+#: src/gui/dialogs/lobby_main.cpp:689
+msgid "Games: showing $num_shown out of $num_total"
+msgstr "Игры: показано $num_shown из $num_total"
+
 #: src/gui/dialogs/lobby_main.cpp:731
 msgid "Observers allowed"
 msgstr "Наблюдение разрешено"
@@ -2149,6 +2157,18 @@ msgstr "Наблюдение разрешено"
 #: src/gui/dialogs/lobby_main.cpp:734
 msgid "Observers not allowed"
 msgstr "Наблюдение запрещено"
+
+#: src/gui/dialogs/lobby_main.cpp:1072
+msgid ""
+"Whisper session with $name started. If you don't want to receive messages "
+"from this user, type /ignore $name\n"
+msgstr ""
+"Открылся приватный чат с $name. Если Вы не хотите получать сообщения от "
+"этого пользователя, наберите /ignore $name\n"
+
+#: src/gui/dialogs/lobby_main.cpp:1078
+msgid "Room $name joined"
+msgstr "Зашли в комнату $name"
 
 #: src/gui/dialogs/lobby_main.cpp:1548
 msgid "Password Required"
@@ -2755,11 +2775,11 @@ msgstr ""
 "Предупреждение: для скриншота лучше бы использовать комбинацию с клавишами "
 "Control, Alt или Meta."
 
-#: src/preferences_display.cpp:453
+#: src/preferences_display.cpp:459
 msgid "There are no alternative video modes available"
 msgstr "Нет доступных альтернативных видеорежимов"
 
-#: src/preferences_display.cpp:482
+#: src/preferences_display.cpp:488
 msgid "Choose Resolution"
 msgstr "Выберите разрешение"
 
@@ -2793,22 +2813,6 @@ msgstr ""
 #: src/wml_exception.cpp:76
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "В разделе '[$section|]' не задан обязательный параметр '$key|' ."
-
-#~ msgid "whisper to $receiver"
-#~ msgstr "Послать шёпот $receiver-у"
-
-#~ msgid "Games: showing $num_shown out of $num_total"
-#~ msgstr "Игры: показано $num_shown из $num_total"
-
-#~ msgid ""
-#~ "Whisper session with $name started. If you don't want to receive messages "
-#~ "from this user, type /ignore $name\n"
-#~ msgstr ""
-#~ "Открылся приватный чат с $name. Если Вы не хотите получать сообщения от "
-#~ "этого пользователя, наберите /ignore $name\n"
-
-#~ msgid "Room $name joined"
-#~ msgstr "Зашли в комнату $name"
 
 #~ msgid "Save The Map"
 #~ msgstr "Сохранить карту"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-08 14:58+0100\n"
+"POT-Creation-Date: 2010-03-14 18:39+0100\n"
 "PO-Revision-Date: 2009-12-16 00:20-0600\n"
 "Last-Translator: sylecn <sylecn@yahoo.com.cn>\n"
 "Language-Team: none\n"
@@ -2121,6 +2121,14 @@ msgstr "难度："
 msgid "Version: "
 msgstr "版本："
 
+#: src/gui/dialogs/lobby_main.cpp:255
+msgid "whisper to $receiver"
+msgstr "发送私人消息给 $receiver"
+
+#: src/gui/dialogs/lobby_main.cpp:689
+msgid "Games: showing $num_shown out of $num_total"
+msgstr "游戏：$num_shown 已显示（共有$num_total ）"
+
 #: src/gui/dialogs/lobby_main.cpp:731
 msgid "Observers allowed"
 msgstr "允许观察者"
@@ -2128,6 +2136,17 @@ msgstr "允许观察者"
 #: src/gui/dialogs/lobby_main.cpp:734
 msgid "Observers not allowed"
 msgstr "不允许观察者"
+
+#: src/gui/dialogs/lobby_main.cpp:1072
+msgid ""
+"Whisper session with $name started. If you don't want to receive messages "
+"from this user, type /ignore $name\n"
+msgstr ""
+"和用户 $name 的私人聊天开始。如果你不希望接收该用户消息，输入 /ignore $name\n"
+
+#: src/gui/dialogs/lobby_main.cpp:1078
+msgid "Room $name joined"
+msgstr "已加入 $name 房间"
 
 #: src/gui/dialogs/lobby_main.cpp:1548
 msgid "Password Required"
@@ -2733,11 +2752,11 @@ msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr "警告：屏幕截图键没有使用组合键（Ctrl, Alt或Meta）。"
 
-#: src/preferences_display.cpp:453
+#: src/preferences_display.cpp:459
 msgid "There are no alternative video modes available"
 msgstr "没有其他可用的显示模式"
 
-#: src/preferences_display.cpp:482
+#: src/preferences_display.cpp:488
 msgid "Choose Resolution"
 msgstr "选择分辨率"
 
@@ -2770,19 +2789,3 @@ msgstr ""
 #: src/wml_exception.cpp:76
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "在区块'[$section|]'中，必须设的值'$key|'没有设置。"
-
-#~ msgid "whisper to $receiver"
-#~ msgstr "发送私人消息给 $receiver"
-
-#~ msgid "Games: showing $num_shown out of $num_total"
-#~ msgstr "游戏：$num_shown 已显示（共有$num_total ）"
-
-#~ msgid ""
-#~ "Whisper session with $name started. If you don't want to receive messages "
-#~ "from this user, type /ignore $name\n"
-#~ msgstr ""
-#~ "和用户 $name 的私人聊天开始。如果你不希望接收该用户消息，输入 /ignore "
-#~ "$name\n"
-
-#~ msgid "Room $name joined"
-#~ msgstr "已加入 $name 房间"

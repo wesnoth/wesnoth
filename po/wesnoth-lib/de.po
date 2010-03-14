@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-08 14:58+0100\n"
+"POT-Creation-Date: 2010-03-14 18:39+0100\n"
 "PO-Revision-Date: 2010-02-07 11:54+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -2143,6 +2143,14 @@ msgstr "Schwierigkeitsgrad: "
 msgid "Version: "
 msgstr "Version: "
 
+#: src/gui/dialogs/lobby_main.cpp:255
+msgid "whisper to $receiver"
+msgstr "an $receiver senden"
+
+#: src/gui/dialogs/lobby_main.cpp:689
+msgid "Games: showing $num_shown out of $num_total"
+msgstr "Spiele: $num_shown von $num_total angezeigt"
+
 #: src/gui/dialogs/lobby_main.cpp:731
 msgid "Observers allowed"
 msgstr "Beobachter zugelassen"
@@ -2150,6 +2158,18 @@ msgstr "Beobachter zugelassen"
 #: src/gui/dialogs/lobby_main.cpp:734
 msgid "Observers not allowed"
 msgstr "Beobachter nicht zugelassen"
+
+#: src/gui/dialogs/lobby_main.cpp:1072
+msgid ""
+"Whisper session with $name started. If you don't want to receive messages "
+"from this user, type /ignore $name\n"
+msgstr ""
+"Private Nachrichtensitzung mit $name gestartet. Wenn Ihr von diesem Benutzer "
+"keine Nachrichten mehr erhalten wollt, führt den Befehl »/ignore $name« aus\n"
+
+#: src/gui/dialogs/lobby_main.cpp:1078
+msgid "Room $name joined"
+msgstr "Raum $name betreten"
 
 #: src/gui/dialogs/lobby_main.cpp:1548
 msgid "Password Required"
@@ -2763,11 +2783,11 @@ msgstr ""
 "Warnung: Das Tastaturkürzel für einen Schnappschuss ist weder mit Strg, Alt "
 "oder der Metataste kombiniert."
 
-#: src/preferences_display.cpp:453
+#: src/preferences_display.cpp:459
 msgid "There are no alternative video modes available"
 msgstr "Es sind keine weitere Videomodi verfügbar"
 
-#: src/preferences_display.cpp:482
+#: src/preferences_display.cpp:488
 msgid "Choose Resolution"
 msgstr "Wählt die gewünschte Auflösung"
 
@@ -2803,20 +2823,3 @@ msgstr ""
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
 "Im Abschnitt »[$section|]« ist der benötigte Schlüssel »$key|« nicht gesetzt."
-
-#~ msgid "whisper to $receiver"
-#~ msgstr "an $receiver senden"
-
-#~ msgid "Games: showing $num_shown out of $num_total"
-#~ msgstr "Spiele: $num_shown von $num_total angezeigt"
-
-#~ msgid ""
-#~ "Whisper session with $name started. If you don't want to receive messages "
-#~ "from this user, type /ignore $name\n"
-#~ msgstr ""
-#~ "Private Nachrichtensitzung mit $name gestartet. Wenn Ihr von diesem "
-#~ "Benutzer keine Nachrichten mehr erhalten wollt, führt den Befehl »/ignore "
-#~ "$name« aus\n"
-
-#~ msgid "Room $name joined"
-#~ msgstr "Raum $name betreten"
