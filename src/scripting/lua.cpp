@@ -1679,9 +1679,7 @@ static int intf_find_path(lua_State *L)
 
 	if (lua_isuserdata(L, arg))
 	{
-		if (!luaW_hasmetatable(L, 1, getunitKey))
-			goto error_call_destructors_1;
-		u = static_cast<lua_unit *>(lua_touserdata(L, 1))->get();
+		u = luaW_tounit(L, 1);
 		if (!u) goto error_call_destructors_1;
 		src = u->get_location();
 		++arg;
@@ -1780,6 +1778,106 @@ static int intf_find_path(lua_State *L)
 	lua_pushinteger(L, res.move_cost);
 
 	return 2;
+}
+
+/**
+ * Finds all the locations reachable by a unit.
+ * - Args 1,2: source location. (Or Arg 1: unit.)
+ * - Arg 3: optional table (optional fields: ignore_units, ignore_teleport, additional_turns, viewing_side).
+ * - Ret 1: array of triples (coordinates + remaining movement).
+ */
+static int intf_find_reach(lua_State *L)
+{
+	int arg = 1;
+	if (false) {
+		error_call_destructors_1:
+		return luaL_typerror(L, 1, "unit");
+		error_call_destructors_2:
+		return luaL_typerror(L, arg, "number");
+		error_call_destructors_3:
+		return luaL_argerror(L, 1, "no unit found");
+	}
+
+	map_location src;
+	unit_map &units = *resources::units;
+	const unit *u = NULL;
+
+	if (lua_isuserdata(L, arg))
+	{
+		u = luaW_tounit(L, 1);
+		if (!u) goto error_call_destructors_1;
+		src = u->get_location();
+		++arg;
+	}
+	else
+	{
+		if (!lua_isnumber(L, arg))
+			goto error_call_destructors_2;
+		src.x = lua_tointeger(L, arg) - 1;
+		++arg;
+		if (!lua_isnumber(L, arg))
+			goto error_call_destructors_2;
+		src.y = lua_tointeger(L, arg) - 1;
+		unit_map::const_unit_iterator ui = units.find(src);
+		if (!ui.valid())
+			goto error_call_destructors_3;
+		u = &ui->second;
+		++arg;
+	}
+
+	std::vector<team> &teams = *resources::teams;
+	gamemap &map = *resources::game_map;
+	int viewing_side = 0;
+	bool ignore_units = false, see_all = false, ignore_teleport = false;
+	int additional_turns = 0;
+
+	if (lua_istable(L, arg))
+	{
+		lua_pushstring(L, "ignore_units");
+		lua_rawget(L, arg);
+		ignore_units = lua_toboolean(L, -1);
+		lua_pop(L, 1);
+
+		lua_pushstring(L, "ignore_teleport");
+		lua_rawget(L, arg);
+		ignore_teleport = lua_toboolean(L, -1);
+		lua_pop(L, 1);
+
+		lua_pushstring(L, "additional_turns");
+		lua_rawget(L, arg);
+		additional_turns = lua_tointeger(L, -1);
+		lua_pop(L, 1);
+
+		lua_pushstring(L, "viewing_side");
+		lua_rawget(L, arg);
+		if (!lua_isnil(L, -1)) {
+			int i = lua_tointeger(L, -1);
+			if (i >= 1 && i <= int(teams.size())) viewing_side = i;
+			else see_all = true;
+		}
+		lua_pop(L, 1);
+	}
+
+	team &viewing_team = teams[(viewing_side ? viewing_side : u->side()) - 1];
+	pathfind::paths res(map, units, src, teams, ignore_units, !ignore_teleport,
+		viewing_team, additional_turns, see_all, ignore_units);
+
+	int nb = res.destinations.size();
+	lua_createtable(L, nb, 0);
+	for (int i = 0; i < nb; ++i)
+	{
+		pathfind::paths::step &s = res.destinations[i];
+		lua_createtable(L, 2, 0);
+		lua_pushinteger(L, s.curr.x + 1);
+		lua_rawseti(L, -2, 1);
+		lua_pushinteger(L, s.curr.y + 1);
+		lua_rawseti(L, -2, 2);
+		lua_pushinteger(L, s.move_left);
+		lua_rawseti(L, -2, 3);
+		lua_rawseti(L, -2, i + 1);
+	}
+
+	return 1;
 }
 
 /**
@@ -2052,6 +2150,7 @@ LuaKernel::LuaKernel()
 		{ "dofile",                   &intf_dofile                   },
 		{ "eval_conditional",         &intf_eval_conditional         },
 		{ "find_path",                &intf_find_path                },
+		{ "find_reach",               &intf_find_reach               },
 		{ "find_vacant_tile",         &intf_find_vacant_tile         },
 		{ "fire",                     &intf_fire                     },
 		{ "fire_event",               &intf_fire_event               },
