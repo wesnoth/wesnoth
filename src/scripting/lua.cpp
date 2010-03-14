@@ -792,9 +792,10 @@ static int impl_unit_set(lua_State *L)
 		return luaL_typerror(L, 3, error_buffer.c_str());
 	}
 
-	unit *pu = static_cast<lua_unit *>(lua_touserdata(L, 1))->get();
+	lua_unit *lu = static_cast<lua_unit *>(lua_touserdata(L, 1));
 	char const *m = luaL_checkstring(L, 2);
 	lua_settop(L, 3);
+	unit *pu = lu->get();
 	if (!pu) return luaL_argerror(L, 1, "unknown unit");
 	unit &u = *pu;
 
@@ -805,6 +806,11 @@ static int impl_unit_set(lua_State *L)
 	modify_tstring_attrib("name", u.set_name(value));
 	modify_string_attrib("role", u.set_role(value));
 	modify_string_attrib("facing", u.set_facing(map_location::parse_direction(value)));
+	if (!lu->on_map()) {
+		map_location loc = u.get_location();
+		modify_int_attrib("x", loc.x = value - 1; u.set_location(loc));
+		modify_int_attrib("y", loc.y = value - 1; u.set_location(loc));
+	}
 	goto error_call_destructors_2;
 }
 
