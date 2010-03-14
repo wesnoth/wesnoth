@@ -4,14 +4,14 @@
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Máthé Katalin <katkadu@gmail.com>, 2008., 2009.
-# Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2008, 2009.
+# Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2008, 2009, 2010.
 # Pintér Csaba <piere-d-siorac@freemail.hu>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: hu-sotbe\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-02-08 11:33+0100\n"
-"PO-Revision-Date: 2009-11-03 18:30+0100\n"
+"POT-Creation-Date: 2010-03-14 18:39+0100\n"
+"PO-Revision-Date: 2010-03-07 12:07+0100\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
 "MIME-Version: 1.0\n"
@@ -76,9 +76,9 @@ msgid ""
 "born allies to the land of the dead!\n"
 "\n"
 msgstr ""
-"Az apád, Fekete-Szem Karun, volt a valaha élt legnagyobb ork vezér. Fiaként "
-"most rád hárul a feladat, hogy meghiúsítsd az önző emberek terveit, akik "
-"megszegték a régi egyezményeket az orkokkal, és nem nyugszanak míg "
+"Az apád, Fekete-Szem Karun, volt a valaha élt legnagyobb ork fejedelem. "
+"Fiaként most rád hárul a feladat, hogy meghiúsítsd az önző emberek terveit, "
+"akik megszegték a régi egyezményeket az orkokkal, és nem nyugszanak, míg "
 "földjeiket meg nem szerezik. Egyesítsd az egymással harcoló ork törzseket, "
 "hívd össze az Ork Nagytanácsot, hívd újra életre a Nagy Hordát és küld a "
 "pokolba az ember-férgeket és szövetségeseiket!\n"
@@ -280,7 +280,7 @@ msgstr ""
 "úton Karunt és kis testőr csapatát megtámadták és mindannyiukat "
 "lemészárolták. Bár nem volt túlélő, hogy elmondja, mi történt, az orkok "
 "között mégis hamarosan elterjedt, hogy az Északi Szövetség szándékosan "
-"csalta tőrbe Fekete-Szemet, hogy vezetőjük megölésével meggyengítse az ork "
+"csalta tőrbe Fekete-Szemet, hogy fejedelmük megölésével meggyengítse az ork "
 "egységet."
 
 #. [part]
@@ -349,7 +349,7 @@ msgid ""
 "orcish leader Kapou'e, the son of the Black-Eye."
 msgstr ""
 "Csapatai napnyugtára egy hegyes-völgyes vidékre értek, amely Kapou'e ork "
-"vezető fennhatósága alatt állt, aki nem volt más,  mint Fekete-Szem fia."
+"törzsfőnök fennhatósága alatt állt, aki nem volt más,  mint Fekete-Szem fia."
 
 #. [message]: speaker=Albert
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:145
@@ -688,13 +688,14 @@ msgstr "Kapou'e eléri a hegyek végét"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:35
+#, fuzzy
 msgid ""
 "<span color='white'>Bonus objective:</span>\n"
 "<span color='green'>Defeat the enemy leader</span> <small>(early finish "
 "bonus)</small>"
 msgstr ""
 "<span color='white'>Bónusz:</span>\n"
-"<span color='green'>Legyőzöd az ellenség vezérét</span> <small>(jutalom a "
+"<span color='#00ff00'>Legyőzöd az ellenség vezérét</span> <small>(jutalom a "
 "gyors befejezésért)</small>"
 
 #. [side]: type=Dwarvish Lord, id=Kwili
@@ -2349,13 +2350,14 @@ msgstr "Túléled a Shan Taum veszélyt 20 körön át"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:25
+#, fuzzy
 msgid ""
 "<span color='white'>Alternative objective:</span>\n"
 "<span color='green'>Defeat Shan Taum</span> <small>(early finish bonus)</"
 "small>"
 msgstr ""
 "<span color='white'>Másik lehetőség a győzelemre:</span>\n"
-"<span color='green'>Legyőzöd Shan Taumot</span> <small>(jutalom a korai "
+"<span color='#00ff00'>Legyőzöd Shan Taumot</span> <small>(jutalom a korai "
 "befejezésért)</small>"
 
 #. [side]: type=Orcish Warlord, id=Shan Taum
@@ -2544,7 +2546,7 @@ msgid ""
 "will decide. We may have to form the Great Horde again, and give you the "
 "leadership on it."
 msgstr ""
-"Hagyd itt az embereid, Kapou'e -- most biztonságban vannak -- és menj védd "
+"Hagyd itt az embereid, Kapou'e -- most biztonságban vannak -- és menj, védd "
 "meg Prestimet! Ezalatt, most, hogy a tanács újra teljes, dönteni fogunk. "
 "Lehet, hogy újra össze kell hívnunk a Nagy Hordát, és téged a vezetőjévé "
 "tenni."
@@ -3848,15 +3850,15 @@ msgid ""
 "direct southwest beeline towards Bitok. They were all to meet in Dorset that "
 "spring to repel the human attack that seemed certain to come."
 msgstr ""
-"A csapat, amit idáig vezetett tisztelte Kapou'et, bölcs és jó vezérnek "
-"tartották, és hűséget fogadtak neki. Kapou'e ezt örömmel fogadta. Több "
-"különítményt küldött ki, hogy uralma alá vonja a többi törzset, ha kell "
-"erőszakkal. Al'Brockot nyugatra küldte, azon az úton, amerre ő maga menekült "
-"még egy évvel azelőtt az emberek elől. Flar'Tart délre küldte a Haag-hegység "
-"mentén a Gyászoló-dombok keleti részéhez. Kapou'e maga egyenesen Bitok felé "
-"vette útját. A terv szerint mindannyian Dorsetben találkoznak a tavasz "
-"beköszöntével, hogy visszaverjék az addigra biztosan meginduló emberi "
-"támadást."
+"A csapat, melyet idáig vezetett, tisztelte Kapou'et, bölcs és jó "
+"törzsfőnöknek tartották, és hűséget fogadtak neki. Kapou'e ezt örömmel "
+"fogadta. Több különítményt küldött ki, hogy uralma alá vonja a többi "
+"törzset, ha kell erőszakkal. Al'Brockot nyugatra küldte, azon az úton, "
+"amerre ő maga menekült még egy évvel azelőtt az emberek elől. Flar'Tart "
+"délre küldte a Haag-hegység mentén a Gyászoló-dombok keleti részéhez. "
+"Kapou'e maga egyenesen Bitok felé vette útját. A terv szerint mindannyian "
+"Dorsetben találkoznak a tavasz beköszöntével, hogy visszaverjék az addigra "
+"biztosan meginduló emberi támadást."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:179
@@ -4041,12 +4043,12 @@ msgid ""
 "accomplishments."
 msgstr ""
 "Ó, csak azt gondoltam, hogy miért is ne tölthetném a telet apám régi "
-"barátjával. Lássuk mivel töltötted te az idődet."
+"barátjával. Hiszen micsoda lenyűgöző eredményeket ért el mostanában..."
 
 #. [message]: speaker=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:254
 msgid "Accomplishments?"
-msgstr "Eredmények?"
+msgstr "Miféle eredményeket?"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:259
@@ -4058,10 +4060,11 @@ msgid ""
 "all, he is directly responsible for a bloody civil war right at the time "
 "when his people are on the edge of total extermination!"
 msgstr ""
-"Nos lássuk csak, először is megszegte becsületszavát és az emberek talpnyaló "
-"kéme lett. Aztán megszervezte a Nagytanács felének halálát, ezzel is több "
-"száz testvérünk halálát okozva. A legjava, pedig, hogy közvetlenül felelős "
-"egy véres belháborúért, miközben a nép a kiirtás szélén áll."
+"Nos lássuk csak, először is megszegte fejedelmének tett esküjét és az "
+"emberek talpnyaló kéme lett. Aztán megszervezte a Nagytanács felének "
+"halálát, ezzel is több száz testvérünk halálát okozva. A legjava, pedig, "
+"hogy közvetlenül felelős egy véres belháborúért, miközben a nép a kiirtás "
+"szélén áll."
 
 #. [message]: speaker=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:264
@@ -4093,7 +4096,7 @@ msgid ""
 "How dare you accuse me of being a traitor, you turdlicker! Orga, kill this "
 "kid for me. I'll be in my keep."
 msgstr ""
-"Hogy merészelsz árulással vádolni engem, te szarnyaló! Orga öld meg nekem "
+"Hogy merészelsz árulással vádolni engem, te szarnyaló! Orga, öld meg nekem "
 "ezt a kölyköt! A kastélyomban leszek."
 
 #. [message]: speaker=Orga
@@ -4615,7 +4618,7 @@ msgid ""
 msgstr ""
 "III. Howgarth meghívta Kapou'-t az Északi Szövetségbe, mint annak idején az "
 "apját, de Kapou'e nem fogadta el. Visszatért Barag Górba, amit fővárosának "
-"tett meg. Önmagát az északi törzsek uralkodójának nevezte ki."
+"tett meg. Önmagát az északi törzsek fejedelmének nevezte ki."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/19_Epilogue.cfg:39
@@ -4628,10 +4631,10 @@ msgid ""
 "orcish territory without hindrance from other tribes."
 msgstr ""
 "Kapou'e hosszú uralkodása az orkok számára a példa nélküli jólét és egység "
-"időszaka volt. Kapou'e vezetésével az orkok megtisztították területüket a "
-"maradék ellenálló emberi, tünde, törp, élőholt bandáktól. Egyezményeket "
-"kötöttek egymás közt, szabad utat adva a kereskedelemnek az ork területeken "
-"belül: a törzsek nem akadályozták más törzsek kereskedőit."
+"időszaka volt. Kapou'e fejedelemsége alatt az orkok megtisztították "
+"területüket a maradék ellenálló emberi, tünde, törp, élőholt bandáktól. "
+"Egyezményeket kötöttek egymás közt, szabad utat adva a kereskedelemnek az "
+"ork területeken belül: a törzsek nem akadályozták más törzsek kereskedőit."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/19_Epilogue.cfg:44
