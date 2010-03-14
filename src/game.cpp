@@ -215,10 +215,6 @@ private:
 
 	game_state state_;
 
-	std::pair<int,int> resolution; // FIXME
-	int bpp; // FIXME
-	int video_flags; // FIXME
-
 	std::string loaded_game_;
 	bool loaded_game_show_replay_;
 	bool loaded_game_cancel_orders_;
@@ -258,9 +254,6 @@ game_controller::game_controller(int argc, char** argv) :
 	old_defines_map_(),
 	disp_(NULL),
 	state_(),
-	resolution(),
-	bpp(0),
-	video_flags(0),
 	loaded_game_(),
 	loaded_game_show_replay_(false),
 	loaded_game_cancel_orders_(false),
@@ -510,7 +503,16 @@ bool game_controller::init_video()
 
 	image::set_wm_icon();
 
+	std::pair<int,int> resolution;
+	int bpp = 0;
+	int video_flags = 0;
+
 	bool found_matching = preferences::detect_video_settings(video_, resolution, bpp, video_flags);
+
+	if(force_bpp_ > 0) {
+		bpp = force_bpp_;
+	}
+
 	if(!found_matching) {
 		std::cerr << "Video mode " << resolution.first << 'x'
 			<< resolution.second << 'x' << bpp
