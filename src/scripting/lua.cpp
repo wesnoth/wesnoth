@@ -397,6 +397,8 @@ public:
 	lua_unit(size_t u): uid(u), ptr(NULL) {}
 	lua_unit(unit *u): uid(0), ptr(u) {}
 	~lua_unit() { delete ptr; }
+	bool on_map() const { return !ptr; }
+	void reload();
 	unit *get();
 };
 
@@ -406,6 +408,14 @@ unit *lua_unit::get()
 	unit_map::unit_iterator ui = resources::units->find(uid);
 	if (!ui.valid()) return NULL;
 	return &ui->second;
+}
+
+void lua_unit::reload()
+{
+	assert(ptr);
+	uid = ptr->underlying_id();
+	delete ptr;
+	ptr= NULL;
 }
 
 /**
@@ -868,7 +878,7 @@ static int intf_fire(lua_State *L)
  * - Arg 7: optional WML table used as the [second_weapon] tag.
  * - Ret 1: boolean indicating whether the event was processed or not.
  */
-static int lua_fire_event(lua_State *L)
+static int intf_fire_event(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
 
@@ -1767,28 +1777,52 @@ static int intf_put_unit(lua_State *L)
 	int unit_arg = 1;
 	if (false) {
 		error_call_destructors_1:
-		return luaL_typerror(L, unit_arg, "WML table");
+		return luaL_typerror(L, unit_arg, "WML table or unit");
 		error_call_destructors_2:
 		return luaL_argerror(L, unit_arg, error_buffer.c_str());
 		error_call_destructors_3:
 		return luaL_argerror(L, 1, "invalid location");
+		error_call_destructors_4:
+		return luaL_argerror(L, unit_arg, "unit not found");
 	}
 
+	lua_unit *lu = NULL;
 	unit *u = NULL;
-	int x = 0, y = 0;
+	map_location loc;
 	if (lua_isnumber(L, 1)) {
 		unit_arg = 3;
-		x = lua_tointeger(L, 1);
-		y = lua_tointeger(L, 2);
+		loc.x = lua_tointeger(L, 1) - 1;
+		loc.y = lua_tointeger(L, 2) - 1;
+		if (!resources::game_map->on_board(loc))
+			goto error_call_destructors_3;
 	}
 
-	if (!lua_isnoneornil(L, unit_arg)) {
+	if (luaW_hasmetatable(L, unit_arg, getunitKey))
+	{
+		lu = static_cast<lua_unit *>(lua_touserdata(L, unit_arg));
+		u = lu->get();
+		if (!u) goto error_call_destructors_4;
+		if (lu->on_map()) {
+			if (unit_arg == 1) return 0;
+			resources::units->move(u->get_location(), loc);
+			return 0;
+		}
+		if (unit_arg == 1) {
+			loc = u->get_location();
+			if (!resources::game_map->on_board(loc))
+				goto error_call_destructors_3;
+		}
+	}
+	else if (!lua_isnoneornil(L, unit_arg))
+	{
 		config cfg;
 		if (!luaW_toconfig(L, unit_arg, cfg))
 			goto error_call_destructors_1;
 		if (unit_arg == 1) {
-			x = lexical_cast_default(cfg["x"], 0);
-			y = lexical_cast_default(cfg["y"], 0);
+			loc.x = lexical_cast_default(cfg["x"], 0) - 1;
+			loc.y = lexical_cast_default(cfg["y"], 0) - 1;
+			if (!resources::game_map->on_board(loc))
+				goto error_call_destructors_3;
 		}
 		try {
 			u = new unit(resources::units, cfg, true, resources::state_of_game);
@@ -1798,15 +1832,12 @@ static int intf_put_unit(lua_State *L)
 		}
 	}
 
-	map_location loc(x - 1, y - 1);
-	if (!resources::game_map->on_board(loc)) {
-		delete u;
-		goto error_call_destructors_3;
-	}
-
 	resources::units->erase(loc);
-	if (u) resources::units->add(loc, *u);
-	delete u;
+	if (u) {
+		resources::units->add(loc, *u);
+		if (!lu) delete u;
+		else lu->reload();
+	}
 
 	return 0;
 }
@@ -1877,6 +1908,53 @@ static int intf_float_label(lua_State *L)
 	return 0;
 }
 
+/**
+ * Creates a unit from its WML description.
+ * - Arg 1: WML table.
+ */
+static int intf_create_unit(lua_State *L)
+{
+	if (false) {
+		error_call_destructors_1:
+		return luaL_argerror(L, 1, "WML table");
+		error_call_destructors_2:
+		return luaL_argerror(L, 1, error_buffer.c_str());
+	}
+
+	config cfg;
+	if (!luaW_toconfig(L, 1, cfg))
+		goto error_call_destructors_1;
+	try {
+		unit *u = new unit(resources::units, cfg, true, resources::state_of_game);
+		new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(u);
+		lua_pushlightuserdata(L, (void *)&getunitKey);
+		lua_rawget(L, LUA_REGISTRYINDEX);
+		lua_setmetatable(L, -2);
+		return 1;
+	} catch (const game::error &e) {
+		error_buffer = "broken unit WML [" + e.message + "]";
+		goto error_call_destructors_2;
+	}
+}
+
+/**
+ * Copies a unit.
+ * - Arg 1: unit userdata.
+ */
+static int intf_copy_unit(lua_State *L)
+{
+	if (!luaW_hasmetatable(L, 1, getunitKey))
+		return luaL_typerror(L, 1, "unit");
+	unit const *u = static_cast<lua_unit *>(lua_touserdata(L, 1))->get();
+	if (!u) return luaL_typerror(L, 1, "unit");
+
+	new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(new unit(*u));
+	lua_pushlightuserdata(L, (void *)&getunitKey);
+	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_setmetatable(L, -2);
+	return 1;
+}
+
 LuaKernel::LuaKernel()
 	: mState(luaL_newstate())
 {
@@ -1900,12 +1978,14 @@ LuaKernel::LuaKernel()
 
 	// Put some callback functions in the scripting environment.
 	static luaL_reg const callbacks[] = {
+		{ "copy_unit",                &intf_copy_unit                },
+		{ "create_unit",              &intf_create_unit              },
 		{ "dofile",                   &intf_dofile                   },
-		{ "fire",                     &intf_fire                     },
-		{ "fire_event",               &lua_fire_event                },
 		{ "eval_conditional",         &intf_eval_conditional         },
 		{ "find_path",                &intf_find_path                },
 		{ "find_vacant_tile",         &intf_find_vacant_tile         },
+		{ "fire",                     &intf_fire                     },
+		{ "fire_event",               &intf_fire_event               },
 		{ "float_label",              &intf_float_label              },
 		{ "get_map_size",             &intf_get_map_size             },
 		{ "get_selected_tile",        &intf_get_selected_tile        },
