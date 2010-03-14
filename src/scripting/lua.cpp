@@ -385,6 +385,30 @@ static bool luaW_pcall(lua_State *L
 }
 
 /**
+ * Storage for a unit, either one on the map, or one owned by the Lua code.
+ */
+class lua_unit
+{
+	size_t uid;
+	unit *ptr;
+	lua_unit(lua_unit const &);
+
+public:
+	lua_unit(size_t u): uid(u), ptr(NULL) {}
+	lua_unit(unit *u): uid(0), ptr(u) {}
+	~lua_unit() { delete ptr; }
+	unit *get();
+};
+
+unit *lua_unit::get()
+{
+	if (ptr) return ptr;
+	unit_map::unit_iterator ui = resources::units->find(uid);
+	if (!ui.valid()) return NULL;
+	return &ui->second;
+}
+
+/**
  * Creates a t_string object (__call metamethod).
  * - Arg 1: userdata containing the domain.
  * - Arg 2: string to translate.
@@ -700,6 +724,16 @@ static int intf_get_unit_type_ids(lua_State *L)
 }
 
 /**
+ * Destroys a unit object before it is collected (__gc metamethod).
+ */
+static int impl_unit_collect(lua_State *L)
+{
+	lua_unit *u = static_cast<lua_unit *>(lua_touserdata(L, 1));
+	u->lua_unit::~lua_unit();
+	return 0;
+}
+
+/**
  * Gets some data on a unit (__index metamethod).
  * - Arg 1: full userdata containing the unit id.
  * - Arg 2: string containing the name of the property.
@@ -707,21 +741,14 @@ static int intf_get_unit_type_ids(lua_State *L)
  */
 static int impl_unit_get(lua_State *L)
 {
-	if (false) {
-		error_call_destructors:
-		return luaL_argerror(L, 1, "unknown unit");
-	}
-
-	size_t id = *static_cast<size_t *>(lua_touserdata(L, 1));
+	unit const *pu = static_cast<lua_unit *>(lua_touserdata(L, 1))->get();
 	char const *m = luaL_checkstring(L, 2);
-
-	unit_map::const_unit_iterator ui = resources::units->find(id);
-	if (!ui.valid()) goto error_call_destructors;
-	unit const &u = ui->second;
+	if (!pu) return luaL_argerror(L, 1, "unknown unit");
+	unit const &u = *pu;
 
 	// Find the corresponding attribute.
-	return_int_attrib("x", ui->first.x + 1);
-	return_int_attrib("y", ui->first.y + 1);
+	return_int_attrib("x", u.get_location().x + 1);
+	return_int_attrib("y", u.get_location().y + 1);
 	return_int_attrib("side", u.side());
 	return_string_attrib("id", u.id());
 	return_int_attrib("hitpoints", u.hitpoints());
@@ -736,7 +763,7 @@ static int impl_unit_get(lua_State *L)
 	return_bool_attrib("resting", u.resting());
 	return_string_attrib("role", u.get_role());
 	return_string_attrib("facing", map_location::write_direction(u.facing()));
-	return_cfg_attrib("__cfg", u.write(cfg); ui->first.write(cfg));
+	return_cfg_attrib("__cfg", u.write(cfg); u.get_location().write(cfg));
 	return 0;
 }
 
@@ -749,21 +776,17 @@ static int impl_unit_get(lua_State *L)
 static int impl_unit_set(lua_State *L)
 {
 	if (false) {
-		error_call_destructors_1:
-		return luaL_argerror(L, 1, "unknown unit");
 		error_call_destructors_2:
 		return luaL_argerror(L, 2, "unknown modifiable property");
 		error_call_destructors_modify:
 		return luaL_typerror(L, 3, error_buffer.c_str());
 	}
 
-	size_t id = *static_cast<size_t *>(lua_touserdata(L, 1));
+	unit *pu = static_cast<lua_unit *>(lua_touserdata(L, 1))->get();
 	char const *m = luaL_checkstring(L, 2);
 	lua_settop(L, 3);
-
-	unit_map::unit_iterator ui = resources::units->find(id);
-	if (!ui.valid()) goto error_call_destructors_1;
-	unit &u = ui->second;
+	if (!pu) return luaL_argerror(L, 1, "unknown unit");
+	unit &u = *pu;
 
 	// Find the corresponding attribute.
 	modify_int_attrib("side", u.set_side(value));
@@ -779,7 +802,7 @@ static int impl_unit_set(lua_State *L)
  * Gets the numeric ids of all the units.
  * - Arg 1: optional table containing a filter
  * - Ret 1: table containing full userdata with __index pointing to
- *          lua_unit_get and __newindex pointing to lua_unit_set.
+ *          impl_unit_get and __newindex pointing to impl_unit_set.
  */
 static int intf_get_units(lua_State *L)
 {
@@ -805,8 +828,7 @@ static int intf_get_units(lua_State *L)
 	{
 		if (!filter.null() && !ui->second.matches_filter(filter, ui->first))
 			continue;
-		size_t *p = static_cast<size_t *>(lua_newuserdata(L, sizeof(size_t)));
-		*p = ui->second.underlying_id();
+		new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(ui->second.underlying_id());
 		lua_pushvalue(L, 1);
 		lua_setmetatable(L, 3);
 		lua_rawseti(L, 2, i);
@@ -1634,11 +1656,8 @@ static int intf_find_path(lua_State *L)
 	{
 		if (!luaW_hasmetatable(L, 1, getunitKey))
 			goto error_call_destructors_1;
-		size_t id = *static_cast<size_t *>(lua_touserdata(L, 1));
-		unit_map::const_unit_iterator ui = units.find(id);
-		if (!ui.valid())
-			goto error_call_destructors_1;
-		u = &ui->second;
+		u = static_cast<lua_unit *>(lua_touserdata(L, 1))->get();
+		if (!u) goto error_call_destructors_1;
 		src = u->get_location();
 		++arg;
 	}
@@ -1810,9 +1829,7 @@ static int intf_find_vacant_tile(lua_State *L)
 	bool fake_unit = false;
 	if (!lua_isnoneornil(L, 3)) {
 		if (luaW_hasmetatable(L, 3, getunitKey)) {
-			size_t id = *static_cast<size_t *>(lua_touserdata(L, 3));
-			unit_map::const_unit_iterator ui = resources::units->find(id);
-			if (ui.valid()) u = &ui->second;
+			u = static_cast<lua_unit *>(lua_touserdata(L, 3))->get();
 		} else {
 			config cfg;
 			if (!luaW_toconfig(L, 3, cfg))
@@ -1943,7 +1960,9 @@ LuaKernel::LuaKernel()
 
 	// Create the getunit metatable.
 	lua_pushlightuserdata(L, (void *)&getunitKey);
-	lua_createtable(L, 0, 3);
+	lua_createtable(L, 0, 4);
+	lua_pushcfunction(L, impl_unit_collect);
+	lua_setfield(L, -2, "__gc");
 	lua_pushcfunction(L, impl_unit_get);
 	lua_setfield(L, -2, "__index");
 	lua_pushcfunction(L, impl_unit_set);
@@ -2109,8 +2128,7 @@ bool LuaKernel::run_filter(char const *name, unit const &u)
 	lua_rawget(L, LUA_GLOBALSINDEX);
 
 	// Pass the unit as argument.
-	size_t *p = static_cast<size_t *>(lua_newuserdata(L, sizeof(size_t)));
-	*p = ui->second.underlying_id();
+	new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(ui->second.underlying_id());
 	lua_pushlightuserdata(L, (void *)&getunitKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_setmetatable(L, -2);
@@ -2165,10 +2183,9 @@ static bool to_map_location(lua_State *L, int &index, map_location &res)
 	if (lua_isuserdata(L, index))
 	{
 		if (!luaW_hasmetatable(L, index, getunitKey)) return false;
-		size_t id = *static_cast<size_t *>(lua_touserdata(L, index));
-		unit_map::const_unit_iterator ui = resources::units->find(id);
-		if (!ui.valid()) return false;
-		res = ui->first;
+		unit const *u = static_cast<lua_unit *>(lua_touserdata(L, index))->get();
+		if (!u) return false;
+		res = u->get_location();
 		++index;
 	}
 	else
