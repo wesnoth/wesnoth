@@ -264,8 +264,12 @@ sourcespec::sourcespec(const config& cfg) :
 	}
 	else {
 		for(unsigned int i = 0; i < std::min(vx.size(), vy.size()); ++i) {
-			map_location loc(lexical_cast<int>(vx[i]), lexical_cast<int>(vy[i]));
-			locations_.push_back(loc);
+			try {
+				map_location loc(lexical_cast<int>(vx[i]), lexical_cast<int>(vy[i]));
+				locations_.push_back(loc);
+			} catch(bad_lexical_cast&) {
+				lg::wml_error << "non-numerical coordinates for soundsource (" << vx[i] << ',' << vy[i] << ')';
+			}
 		}
 	}
 }
