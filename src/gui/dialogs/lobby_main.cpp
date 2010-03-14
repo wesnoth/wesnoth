@@ -627,7 +627,7 @@ void tlobby_main::update_gamelist_diff()
 				network::send_data(config("refresh_lobby"), 0, true);
 				return;
 			}
-			if (list_i + list_rows_deleted > gamelist_id_at_row_.size()) {
+			if (list_i + list_rows_deleted >= gamelist_id_at_row_.size()) {
 				ERR_LB << "gamelist_id_at_row_ overflow! "
 					<< list_i << " + " << list_rows_deleted
 					<< " > " << gamelist_id_at_row_.size()
