@@ -311,22 +311,34 @@ void tgrid::request_reduce_height(const unsigned maximum_height)
 	const unsigned too_high = size.y - maximum_height;
 	unsigned reduced = 0;
 	for(size_t row = 0; row < rows_; ++row) {
+		unsigned wanted_height = row_height_[row] - (too_high - reduced);
+		/**
+		 * @todo Improve this code.
+		 *
+		 * Now we try every item to be reduced, maybe items need a flag whether
+		 * or not to try to reduce and also eveluate whether the force
+		 * reduction is still needed.
+		 */
 		if(too_high - reduced >=  row_height_[row]) {
 			DBG_GUI_L << LOG_HEADER
 					<< " row " << row
-					<< " is too small to be reduced.\n";
-			continue;
+					<< " height " << row_height_[row]
+					<< " want to reduce " << too_high
+					<< " is too small to be reduced fully try 1 pixel.\n";
+
+			wanted_height = 1;
 		}
 
-		const unsigned wanted_height = row_height_[row] - (too_high - reduced);
 		const unsigned height = tgrid_implementation::
 				row_request_reduce_height(*this, row, wanted_height);
 
 		if(height < row_height_[row]) {
 			DBG_GUI_L << LOG_HEADER
+					<< " row " << row
+					<< " height " << row_height_[row]
+					<< " want to reduce " << too_high
 					<< " reduced " << row_height_[row] - height
-					<< " pixels for row " << row
-					<< ".\n";
+					<< " pixels.\n";
 
 			size.y -= row_height_[row] - height;
 			row_height_[row] = height;
@@ -337,7 +349,14 @@ void tgrid::request_reduce_height(const unsigned maximum_height)
 		}
 	}
 
-	set_layout_size(calculate_best_size());
+	size = calculate_best_size();
+
+	DBG_GUI_L << LOG_HEADER
+			<< " Requested maximum " << maximum_height
+			<< " resulting height " << size.y
+			<< ".\n";
+
+	set_layout_size(size);
 }
 
 void tgrid::demand_reduce_height(const unsigned /*maximum_height*/)
