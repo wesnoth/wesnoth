@@ -1971,7 +1971,7 @@ static int intf_copy_unit(lua_State *L)
 /**
  * Returns unit resistance against a given attack type.
  * - Arg 1: unit userdata.
- * - Arg 2: string containing attack type.
+ * - Arg 2: string containing the attack type.
  * - Arg 3: boolean indicating if attacker.
  * - Args 4/5: optional location.
  */
@@ -1989,6 +1989,22 @@ static int intf_unit_resistance(lua_State *L)
 	}
 
 	lua_pushinteger(L, u->resistance_against(m, a, loc));
+	return 1;
+}
+
+/**
+ * Returns unit movement cost on a given terrain.
+ * - Arg 1: unit userdata.
+ * - Arg 2: string containing the terrain type.
+ */
+static int intf_unit_movement_cost(lua_State *L)
+{
+	unit const *u = luaW_tounit(L, 1);
+	if (!u) return luaL_typerror(L, 1, "unit");
+	char const *m = luaL_checkstring(L, 2);
+
+	t_translation::t_terrain t = t_translation::read_terrain_code(m);
+	lua_pushinteger(L, u->movement_cost(t));
 	return 1;
 }
 
@@ -2042,6 +2058,7 @@ LuaKernel::LuaKernel()
 		{ "set_variable",             &intf_set_variable             },
 		{ "set_village_owner",        &intf_set_village_owner        },
 		{ "textdomain",               &intf_textdomain               },
+		{ "unit_movement_cost",       &intf_unit_movement_cost       },
 		{ "unit_resistance",          &intf_unit_resistance          },
 		{ NULL, NULL }
 	};
