@@ -98,6 +98,7 @@ if(ENABLE_POT_UPDATE_TARGET)
 				--keyword=N_
 				--keyword=sgettext
 				--keyword=vgettext
+				--keyword=VGETTEXT
 				--keyword=_n:1,2
 				--keyword=sngettext:1,2
 				--keyword=vngettext:1,2
