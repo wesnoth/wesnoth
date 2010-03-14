@@ -496,6 +496,7 @@ void tlistbox::layout_children(const bool force)
 		content_grid()->set_visible_area(content_visible_area_);
 
 		need_layout_ = false;
+		set_dirty();
 	}
 }
 
