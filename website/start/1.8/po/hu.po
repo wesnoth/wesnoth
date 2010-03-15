@@ -2,20 +2,20 @@
 # Copyright (C) 2005 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2008, 2009.
+# Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2008, 2009, 2010.
 # Kelemen Zoltán <kelemen_zoltan@freemail.hu>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: hu-release_announcement\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-02-28 15:45+0100\n"
-"PO-Revision-Date: 2009-03-21 09:57+0100\n"
+"PO-Revision-Date: 2010-03-13 13:26+0100\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 0.2\n"
+"X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 # type: Attribute 'title' of: <html><head><link>
@@ -26,9 +26,8 @@ msgstr "Alapértelmezett"
 
 #. type: Content of: <html><head><title>
 #: template.html:9
-#, fuzzy
 msgid "Battle for Wesnoth 1.8"
-msgstr "Harc Wesnothért 1.6"
+msgstr "Harc Wesnothért 1.8"
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #. type: Content of: <html><body><div><div><div><a>
@@ -51,13 +50,11 @@ msgstr "</a>"
 
 #. type: Content of: <html><body><div><div><div><h1>
 #: template.html:29
-#, fuzzy
 msgid "Battle for Wesnoth 1.8 Release Notes"
-msgstr "Harc Wesnothért 1.6 - Kiadási megjegyzések"
+msgstr "Harc Wesnothért 1.8 - Kiadási megjegyzések"
 
 #. type: Content of: <html><body><div><div><div><p>
 #: template.html:31
-#, fuzzy
 msgid ""
 "<em>March 2010</em>. It is once again time for that thrill you've all been "
 "waiting for, a Wesnoth stable release. The Battle for Wesnoth team is proud "
@@ -68,18 +65,21 @@ msgid ""
 "for download</a> now for Windows, Mac OS X and various GNU/Linux "
 "distributions."
 msgstr ""
-"<em>2009. március 22.</em> A Harc Wesnothért csapat büszkén jelenti be a "
-"<em>Harc Wesnothért</em> 1.6-os verziójának kiadását, ami egy <a "
-"href='http://www.gnu.org/philosophy/philosophy.html'>Ingyenes</a>, körökre "
+"<em>2010. március</em> Ismét eljött az ideje a mindenki által várt stabil "
+"Wesnoth verzió megjelenésének. A Harc Wesnothért csapat büszkén jelenti be a "
+"<em>Harc Wesnothért</em> 1.8-as verziójának kiadását, ami egy <a "
+"href='http://www.gnu.org/philosophy/philosophy.html'>ingyenes, szabad</a>, <"
+"a "
+"href='http://www."
+"opensource.org/'>nyílt forráskódú</a>, körökre "
 "osztott, fantasy témájú, szerepjátékelemekkel tarkított stratégiai játék. A "
 "játék <a href='#download'>letölthető</a> Windowsra, Mac OS X-re, és "
 "különböző GNU/Linux változatokra is."
 
 #. type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:43
-#, fuzzy
 msgid "<a href='#game'>What's New in Wesnoth 1.8</a>"
-msgstr "<a href='#game'>Újdonságok a Wesnoth 1.6-ban</a>"
+msgstr "<a href='#game'>Újdonságok a Wesnoth 1.8-ban</a>"
 
 # type: Content of: <html><body><div><div><div><ul><li><ul><li>
 #. type: Content of: <html><body><div><div><div><ul><li><ul><li>
@@ -125,9 +125,8 @@ msgstr "<a href='#more'>További információk</a>"
 
 #. type: Content of: <html><body><div><div><div><h2>
 #: template.html:62
-#, fuzzy
 msgid "What's New in Wesnoth 1.8"
-msgstr "Újdonságok a Wesnoth 1.6-ban"
+msgstr "Újdonságok a Wesnoth 1.8-ban"
 
 # type: Content of: <html><body><div><div><div><div><div><a>
 #. type: Content of: <html><body><div><div><div><div><div><a>
@@ -148,6 +147,10 @@ msgid ""
 "campaign, hundreds of new and revised unit portraits, four new music tracks, "
 "some UI redesign, and substantial improvements in the game's AI."
 msgstr ""
+"A fejlesztések ezúttal a következők: egy új, teljes hosszúságú hadjárat "
+"került a játékba, több száz új vagy átdolgozott egységkép jelent meg, négy "
+"új zeneszám csendül fel, a grafikus felületet átalakítottuk és lényeges "
+"változtatásokat hajtottunk végre a játék mesterséges intelligenciáján."
 
 # type: Content of: <html><body><div><div><div><h3>
 #. type: Content of: <html><body><div><div><div><h3>
@@ -161,6 +164,9 @@ msgid ""
 "To help the player keep those who are loyal to him alive, these units are "
 "now marked with an overlay symbol that looks like a bronze ring."
 msgstr ""
+"Annak érdekében, hogy a játékosnak könnyebb legyen megóvnia azokat az "
+"egységeket, amelyek hűséges jellemvonásúak, ezen egységek mostantól egy "
+"bronz gyűrűre hasonlító jelölést viselnek az energiacsíkjuk fölött."
 
 #. type: Content of: <html><body><div><div><div><p>
 #: template.html:78
@@ -170,6 +176,12 @@ msgid ""
 "information and tutorials, look at the wiki article on <a href=\"http://wiki."
 "wesnoth.org/ImageLocalization\">Image Localization</a>."
 msgstr ""
+"A térképeken lévő nevek, más képek és logók mostantól lefordíthatóak a "
+"játékos saját nyelvére. Számos nyelv &mdash; köztük a magyar is &mdash; "
+"immár alkalmazza "
+"ezt az új lehetőséget. További információ és segédlet található a wiki "
+"oldalon a <a href=\"http://wiki.wesnoth.org/ImageLocalization\">Kép "
+"honosítás</a> címszó alatt."
 
 # type: Content of: <html><body><div><div><div><h4>
 #. type: Content of: <html><body><div><div><div><h4>
@@ -186,6 +198,11 @@ msgid ""
 "imported from the <a href=\"http://wesnoth-umc-dev.sourceforge.net\">Wesnoth-"
 "UMC-Dev project</a>, where it spent almost a year being adapted for mainline."
 msgstr ""
+"Az új hadjárat, <cite>Delfador visszaemlékezései</cite>, azt a történetet "
+"meséli el, hogy miként vált egy varázsló tanoncból a Nagy Delfador. Ezt a "
+"hadjáratot a <a href=\"http://wesnoth-umc-dev.sourceforge.net\">"
+"Wesnoth-UMC-Dev project</a>-ből emeltük át a játék fő hadjáratai közé, ahol "
+"majdnem egy évig volt, míg mindenben a fő hadjáratokhoz igazítottuk."
 
 #. type: Content of: <html><body><div><div><div><p>
 #: template.html:92
@@ -199,6 +216,14 @@ msgid ""
 "enhanced. An early version of its multiplayer port is available to test "
 "Wesnoth's multiplayer campaign feature."
 msgstr ""
+"Tovább folytattuk a fő hadjáratok csiszolását is. <cite>A tűző napok alatt<"
+"/cite> hősének, Kalehnek, egyedi egységfejlődését, mely hosszú idő óta "
+"problémák forrása, a játék szabályainak sokkal megfelelőbb módon jelentősen "
+"átalakítottuk. <cite>A trónörökös</cite> \"Thoria bércei\" nevű pályáján "
+"tapasztalt súlyos folytonosságbeli problémákat kijavítottuk. A <cite>Wesmere "
+"legendája</cite> néhány pályáját újraírtuk és jelentősen javítottuk. Ezen "
+"hadjárat többjátékos átdolgozásának egy korai verziója is elérhető, mellyel "
+"a Wesnoth többjátékos hadjárat lehetőségei tesztelhetők."
 
 # type: Content of: <html><body><div><div><div><div><div><a>
 #. type: Content of: <html><body><div><div><div><div><div><a>
@@ -214,6 +239,9 @@ msgid ""
 "cite>, <cite>Into the Shadows</cite>, <cite>Over the Northern Mountains</"
 "cite>, and <cite>Journey's End</cite>."
 msgstr ""
+"Négy új szimfonikus zenemű került a játékba: <cite>A háború áldozatai</"
+"cite>, az <cite>Árnyék felé</cite>, az <cite>Északi hegyek felett</"
+"cite>, és <cite>Az utazás vége</cite>."
 
 # type: Content of: <html><body><div><div><div><p>
 #. type: Content of: <html><body><div><div><div><p>
@@ -222,6 +250,9 @@ msgid ""
 "The game AI has been significantly debugged and improved; it chooses "
 "recruits/recalls better, and does smarter target selection."
 msgstr ""
+"A játék MI-je jelentősen javult, sok hibát kiküszöböltünk. A gép okosabban "
+"választja ki a toborzandó/visszahívandó egységeket, és körültekintőbben "
+"választ célpontokat is."
 
 # type: Content of: <html><body><div><div><div><dl><dt>
 #. type: Content of: <html><body><div><div><div><h4>
@@ -235,6 +266,8 @@ msgid ""
 "The operating system's GUI can be told to notify the player that it's his "
 "turn to play."
 msgstr ""
+"Az operációs rendszer grafikus felülete úgy is beállítható, hogy értesítse a "
+"játékost, ha az ő köre következik."
 
 # type: Content of: <html><body><div><div><div><p>
 #. type: Content of: <html><body><div><div><div><p>
@@ -243,6 +276,8 @@ msgid ""
 "The multiplayer lobby has been completely redesigned for improved ease of "
 "play and better appearance."
 msgstr ""
+"A többjátékos játékcsarnokot teljesen átalakítottuk, így szebb a megjelenése "
+"és könnyebb játszani rajta."
 
 #. type: Content of: <html><body><div><div><div><p>
 #: template.html:120
@@ -251,6 +286,10 @@ msgid ""
 "combats. This makes certain kinds of cheats and out-of-sync conditions "
 "impossible, at the cost of breaking compatibility with versions before 1.7.3."
 msgstr ""
+"Többjátékos küzdelmekben a véletlen számokat a többjátékos Wesnoth "
+"kiszolgáló hozza létre. Ez lehetetlenné tesz bizonyos csalási kísérleteket "
+"és megelőzi a szinkronvesztési hibákat is, de cserébe a játék nem "
+"kompatibilis az 1.7.3 előtti verziókkal."
 
 # type: Content of: <html><body><div><div><div><h4>
 #. type: Content of: <html><body><div><div><div><h4>
@@ -265,6 +304,9 @@ msgid ""
 "now gives more prominence to the selected unit's terrain defence percentage "
 "and time-of-day modifier."
 msgstr ""
+"A játékképernyő jobb oldalán lévő panelt a még jobb áttekinthetőség "
+"érdekében átalakítottuk: még világosabban látszik az épp kiválasztott egység "
+"adott terepen érvényes védelmi százaléka és napszaki módosítója."
 
 #. type: Content of: <html><body><div><div><div><p>
 #: template.html:131
@@ -277,6 +319,13 @@ msgid ""
 "completed in this release cycle.  (But most animations are still missing for "
 "them.)"
 msgstr ""
+"Egy új szörny egység is megtalálható a játékban: a vízi kígyó. \"A tűző "
+"napok alatt\"-ból ismert törp felderítő immár más hadjáratokban is "
+"toborozható. Több másik egységsor &mdash; legszembetűnőbben a perzsekények "
+"&mdash; teljesen megújult és még szemet gyönyörködtetőbb képekkel, "
+"animációkkal bővült. A művészeti igazgatón virtuális tollának hála a sellők "
+"újrarajzolása befejeződött és jelen van ebben a kiadásban (azonban a legtöbb "
+"animációjuk még hiányzik)."
 
 # type: Content of: <html><body><div><div><div><div><div><a>
 #. type: Content of: <html><body><div><div><div><div><div><a>
@@ -290,6 +339,8 @@ msgid ""
 "Add-on descriptions are now accessible from the add-on download dialog via a "
 "button."
 msgstr ""
+"A kiegészítők leírása immár egy gombnyomással elérhető a kiegészítések "
+"letöltésekor megjelenő párbeszédablakból."
 
 #. type: Content of: <html><body><div><div><div><p>
 #: template.html:148
@@ -297,6 +348,9 @@ msgid ""
 "Most translations have been updated. In addition, Vietnamese has returned, "
 "and we have a new transliteration, English in the Shavian alphabet."
 msgstr ""
+"A legtöbb fordítás frissült ebben a verzióban. A magyar honosítás teljes, és "
+"számos finomításon esett át az előző stabil verzió óta. Újra elérhető a "
+"vietnami fordítás, és megjelent az angol fonetikus (shaw) átírás is."
 
 # type: Content of: <html><body><div><div><div><h3>
 #. type: Content of: <html><body><div><div><div><h3>
@@ -314,6 +368,13 @@ msgid ""
 "now able to recall from their side's list. As a side effect it is now "
 "possible to have more than one leader with the ability to recruit per side."
 msgstr ""
+"Az elmúlt esztendőben a Wesnoth ismét a Google \"Summer of Code\" része volt."
+" Ennek egyik legnagyobb eredménye, hogy teljesen megújult a többjátékos "
+"hadjáratok támogatása. A többjátékos csapatok állandókká váltak, így "
+"továbbvihetők a következő pályákra. Az MI oldal vezérei immár képesek a "
+"korábbi toborzási lista alapján visszahívni az egységeket. A változások "
+"mellékhatásaként lehetővé vált, hogy egy adott oldalon több vezér is "
+"toborozhasson."
 
 #. type: Content of: <html><body><div><div><div><p>
 #: template.html:161
@@ -325,6 +386,13 @@ msgid ""
 "though not easy, to use scripting languages (formula_ai, lua) to create "
 "alternate AIs that are also scriptable."
 msgstr ""
+"A Summer of Code másik eredménye a Wesnoth mesterséges intelligenciájának "
+"szerkezeti megújítása. Az MI-t már szkriptekkel is lehet irányítani, így "
+"jelentősen meg tudja változtatni addigi viselkedését és képes reagálni a "
+"hadjárat során bekövetkező eseményekre, történeti fejleményekre. Ily módon "
+"az ellenséges csapatok eltérő taktikai hozzáállást mutathatnak egy adott "
+"helyzetben. Bár nem könnyű, de mód van rá, hogy szkriptelés (formula_ai, "
+"lua) segítségével alternatív, tovább szkriptelhető MI-ket hozzunk létre."
 
 #. type: Content of: <html><body><div><div><div><p>
 #: template.html:168
@@ -334,6 +402,10 @@ msgid ""
 "content developer to view the values of the WML variables, ai configuration, "
 "and the recall list while a game is in progress."
 msgstr ""
+"Rendelkezésre áll a <a href=\"http://wiki.wesnoth.org/"
+"CommandMode#Extra_Debugging_Commands\">\"játékállapot-felügyelő\"</a> nevű "
+"új eszköz is, mely lehetővé teszi a fejlesztők számára, hogy játék közben "
+"megtekintsék a WML változókat, az MI beállításait és a visszahívási listát."
 
 # type: Content of: <html><body><div><div><div><div><div><a>
 #. type: Content of: <html><body><div><div><div><div><div><a>
@@ -347,6 +419,8 @@ msgid ""
 "New Orcish Village and Orcish Keep terrain graphics improve the options "
 "available to map designers."
 msgstr ""
+"Az új ork falu és ork torony megrajzolása tovább bővíti a térképfejlesztők "
+"rendelkezésére álló tereppaletta kínálatát."
 
 #. type: Content of: <html><body><div><div><div><p>
 #: template.html:180
@@ -356,6 +430,10 @@ msgid ""
 "complete rework of the Drake sprites. We hope to continue this program in "
 "coming years."
 msgstr ""
+"Az újonnan bevezetett \"Nyári Művészeti Ösztöndíj\" programunkban is kiváló "
+"eredményeket értünk el. Ennek keretében több tucat új portré jött létre és a "
+"perzsekény egységek megjelenése is teljesen megújult. Reméljük, hogy a "
+"program az előttünk álló években tovább folytatódik."
 
 # type: Content of: <html><body><div><div><div><p>
 #. type: Content of: <html><body><div><div><div><p>
@@ -366,6 +444,10 @@ msgid ""
 "putting many new placenames on the main map. The main Wesnoth history "
 "timeline has been tweaked to eliminate various minor inconsistencies."
 msgstr ""
+"Rengeteg figyelmet fordítottunk arra, hogy a Wesnoth világképe egységes "
+"legyen; egészen olyan apróságoktól kezdve, mint a valós életből vett emberi "
+"nevek megváltoztatása képzeletbeli személyek nevére, olyan látványosabb "
+"dolgokig, mint új meg új helyek elnevezése Wesnoth térképén."
 
 #. type: Content of: <html><body><div><div><div><p>
 #: template.html:192
@@ -376,6 +458,12 @@ msgid ""
 "allow the coding of WML action tags with lua definitions that can read and "
 "modify game state variables in the C++ core."
 msgstr ""
+"Megtartottuk az ígéretünket, melyet az 1.6-os verzió kiadásakor tettünk a "
+"Python technikai okok miatt való eltávolítása után: ezentúl lua nyelven is "
+"lehet WML eseményeket és MI elemeket írni. A lua olyan szilárdan beépült a "
+"játék motorjába, hogy még WML parancs tegek is kódolhatók olyan lua "
+"kifejezések segítségével, melyek képesek olvasni és módosítani a "
+"játékállapot-változókat a program C++ kódjában."
 
 #. type: Content of: <html><body><div><div><div><h2>
 #: template.html:200
@@ -384,7 +472,6 @@ msgstr "Letöltés"
 
 #. type: Content of: <html><body><div><div><div><p>
 #: template.html:202
-#, fuzzy
 msgid ""
 "Battle for Wesnoth is made available under the <a href='http://www.gnu.org/"
 "licenses/gpl-2.0.html'>GNU General Public License</a> (GPL). Source code is "
@@ -395,9 +482,9 @@ msgid ""
 "systems, including Linux and Windows and Mac OS X."
 msgstr ""
 "A Harc Wesnothért a <a href='http://www.gnu.org/copyleft/gpl.html'>GNU GPL</"
-"a> licencnek megfelelően lett közzétéve. A forráskód elérhető a <a "
+"a> licencnek megfelelően lett közzé téve. A forráskód elérhető a <a "
 "href='http://www.wesnoth.org'>wesnoth.org</a> honlapon, ahol a különböző "
-"operációs rendszerekre történő <a href='http://wesnoth.org/wiki/"
+"operációs rendszerekre történő <a href='http://wiki.wesnoth.org/"
 "CompilingWesnoth'>lefordításához</a> is találsz segítséget. Előre "
 "elkészített csomagok is elérhetőek a legnépszerűbb operációs rendszerekre, "
 "például Linuxra, Windowsra és Mac OS X-re."
@@ -405,58 +492,55 @@ msgstr ""
 # type: Content of: <html><body><div><div><div><ul><li>
 #. type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:216
-#, fuzzy
 msgid ""
 "<strong> <a href='http://sourceforge.net/projects/wesnoth/files/wesnoth/"
 "wesnoth-1.8.tar.bz2/download'>Source code</a> </strong>"
 msgstr ""
-"<strong> <a href='http://downloads.sourceforge.net/wesnoth/wesnoth-1.6a.tar."
-"bz2?download'>Forráskód</a> </strong>"
+"<strong> <a href='http://sourceforge.net/projects/wesnoth/files/wesnoth/"
+"wesnoth-1.8.tar.bz2/download'>Forráskód</a> </strong>"
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #. type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:221
-#, fuzzy
 msgid ""
 "<strong> <a href='http://sourceforge.net/projects/wesnoth/files/wesnoth/"
 "wesnoth-1.8-win32.exe/download'>Wesnoth for MS Windows</a> </strong>"
 msgstr ""
-"<strong> <a href='http://downloads.sourceforge.net/wesnoth/wesnoth-1.6a-"
-"win32.exe?download'>Wesnoth az MS Windowsra</a> </strong>"
+"<strong> <a href='http://sourceforge.net/projects/wesnoth/files/wesnoth/"
+"wesnoth-1.8-win32.exe/download'>Wesnoth az MS Windowsra</a> </strong>"
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #. type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:226
-#, fuzzy
 msgid ""
 "<strong> <a href='http://sourceforge.net/projects/wesnoth/files/wesnoth/"
 "Wesnoth_1.8.dmg/download'>Wesnoth for Mac OS X</a> </strong>"
 msgstr ""
-"<strong> <a href='http://downloads.sourceforge.net/wesnoth/Wesnoth_1.6a.dmg?"
-"download'>Wesnoth a Mac OS X-re</a> </strong>"
+"<strong> <a href='http://sourceforge.net/projects/wesnoth/files/wesnoth/"
+"Wesnoth_1.8.dmg/download'>Wesnoth a Mac OS X-re</a> </strong>"
 
 #. type: Content of: <html><body><div><div><div><p>
 #: template.html:232
-#, fuzzy
 msgid ""
 "You can get up to date information about downloads at the <a href='http://"
 "wiki.wesnoth.org/Download'>downloads page</a>. There you can also find "
 "packages and instructions for other platforms once they are available."
 msgstr ""
 "A letöltésekkel kapcsolatos naprakész információt a <a href='http://www."
-"wesnoth.org/wiki/Download'>Letöltések honlapján</a> találod."
+"wesnoth.org/wiki/Download'>Letöltések honlapján</a> találod. Ezen az oldalon "
+"más platformokhoz készített csomagokat és útmutatót is találhatsz, amint az "
+"adott csomagok elkészülnek."
 
 #. type: Content of: <html><body><div><div><div><p>
 #: template.html:236
-#, fuzzy
 msgid ""
 "If you downloaded previous versions of the game, you might be interested in "
 "downloading the <a href='http://wiki.wesnoth.org/Download_Xdeltas'>xdelta</"
 "a> files only."
 msgstr ""
 "Ha a játék egy korábbi verzióját már letöltötted, akkor elég, ha csak a "
-"változásokat tartalmazó <a href='http://www.wesnoth.org/wiki/"
-"Download_Xdeltas'>xdelta</a> fájlokat töltöd le."
+"változásokat tartalmazó <a href='http://wiki.wesnoth.org/Download_Xdeltas'>"
+"xdelta</a> fájlokat töltöd le."
 
 #. type: Content of: <html><body><div><div><div><h2>
 #: template.html:241
@@ -466,24 +550,22 @@ msgstr "További információk"
 # type: Content of: <html><body><div><div><div><ul><li>
 #. type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:245
-#, fuzzy
 msgid ""
 "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.8/"
 "changelog'>Full Changelog</a> (English, very long)"
 msgstr ""
-"<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.6/changelog'>A "
+"<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.8/changelog'>A "
 "változások teljes listája</a> (angol, nagyon hosszú)"
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #. type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:248
-#, fuzzy
 msgid ""
 "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.8/doc/manual/"
 "manual.en.html'>User's Manual</a>"
 msgstr ""
-"<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/branches/1.6/doc/"
-"manual/manual.hu.html'>Felhasználói kézikönyv</a> (magyarul)"
+"<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/branches/1."
+"8/doc/manual/manual.hu.html'>Felhasználói kézikönyv</a> (magyarul)"
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #. type: Content of: <html><body><div><div><div><ul><li>
@@ -503,11 +585,10 @@ msgstr ""
 # type: Content of: <html><body><div><div><div><ul><li>
 #. type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:257
-#, fuzzy
 msgid ""
 "<a href='http://www.wesnoth.org/start/1.6'>Wesnoth 1.6 Release Notes</a>"
 msgstr ""
-"<a href='http://www.wesnoth.org/start/1.4'>Wesnoth 1.4 Kiadási megjegyzések</"
+"<a href='http://www.wesnoth.org/start/1.6'>Wesnoth 1.6 Kiadási megjegyzések</"
 "a>"
 
 #. type: Content of: <html><body><div><div><div><div><p>
