@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-14 18:39+0100\n"
+"POT-Creation-Date: 2010-03-15 01:03+0100\n"
 "PO-Revision-Date: 2008-09-24 02:09+0100\n"
 "Last-Translator: Mavorte <mavorte1@yahoo.es>\n"
 "Language-Team: none\n"
@@ -7189,8 +7189,8 @@ msgstr "Fi de l'escenari"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:237
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:208 src/unit.cpp:2341
-#: src/unit.cpp:2497
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:208 src/unit.cpp:2330
+#: src/unit.cpp:2486
 msgid "HP"
 msgstr "PV"
 
@@ -7940,103 +7940,103 @@ msgstr "PE:"
 msgid "Moves: "
 msgstr "Moviments: "
 
-#: src/game.cpp:629 src/game.cpp:1363
+#: src/game.cpp:577 src/game.cpp:1311
 msgid "The Battle for Wesnoth"
 msgstr "La Batalla per Wesnoth"
 
-#: src/game.cpp:960 src/game.cpp:968
+#: src/game.cpp:908 src/game.cpp:916
 msgid "The file you have tried to load is corrupt"
 msgstr "L'archiu que ha intentat carregar està danyat."
 
-#: src/game.cpp:963 src/game.cpp:971 src/savegame.cpp:534
+#: src/game.cpp:911 src/game.cpp:919 src/savegame.cpp:534
 msgid "The file you have tried to load is corrupt: '"
 msgstr "L'archiu que has intentat carregar està danyat: '"
 
-#: src/game.cpp:975
+#: src/game.cpp:923
 msgid "File I/O Error while reading the game"
 msgstr "Erro d'E/S en l'archiu mentres es llegia la partida"
 
-#: src/game.cpp:1070
+#: src/game.cpp:1018
 msgid "No campaigns are available.\n"
 msgstr "No hi ha campanyes disponibles.\n"
 
-#: src/game.cpp:1108
+#: src/game.cpp:1056
 msgid "Difficulty"
 msgstr "Dificultat"
 
-#: src/game.cpp:1109
+#: src/game.cpp:1057
 msgid "Select difficulty level:"
 msgstr "Selecciona el nivell de dificultat:"
 
-#: src/game.cpp:1244
+#: src/game.cpp:1192
 #, fuzzy
 msgid "Do you really want to start the server?"
 msgstr "¿Estàs segur de que vols despedir-la?"
 
-#: src/game.cpp:1245
+#: src/game.cpp:1193
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr ""
 
-#: src/game.cpp:1249
+#: src/game.cpp:1197
 #, fuzzy
 msgid "Don't show again"
 msgstr "¡No tornes a preguntar!"
 
-#: src/game.cpp:1320
+#: src/game.cpp:1268
 #, fuzzy
 msgid "Error while starting server: "
 msgstr "S'ha produït un erro durant la partida: "
 
-#: src/game.cpp:1322 src/playcampaign.cpp:105 src/playcampaign.cpp:392
+#: src/game.cpp:1270 src/playcampaign.cpp:105 src/playcampaign.cpp:392
 msgid "The game could not be loaded: "
 msgstr "No ha segut possible guardar la partida:"
 
-#: src/game.cpp:1324 src/playcampaign.cpp:107 src/playcampaign.cpp:395
+#: src/game.cpp:1272 src/playcampaign.cpp:107 src/playcampaign.cpp:395
 msgid "Error while playing the game: "
 msgstr "S'ha produït un erro durant la partida: "
 
-#: src/game.cpp:1342 src/playcampaign.cpp:109 src/playcampaign.cpp:398
+#: src/game.cpp:1290 src/playcampaign.cpp:109 src/playcampaign.cpp:398
 msgid "The game map could not be loaded: "
 msgstr "No ha segut possible carregar la partida:"
 
-#: src/game.cpp:1492
+#: src/game.cpp:1440
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "La següent expansió conté erros i no s'ha pogut carregar:"
 msgstr[1] "Les següents expansions contenen erros i no s'han pogut carregar:"
 
-#: src/game.cpp:1499
+#: src/game.cpp:1447
 msgid "ERROR DETAILS:"
 msgstr "DETALLS DE L'ERRO:"
 
-#: src/game.cpp:1519
+#: src/game.cpp:1467
 msgid "Error loading game configuration files: '"
 msgstr "Erro carregant els archius de configuració del joc: '"
 
-#: src/game.cpp:1520
+#: src/game.cpp:1468
 msgid "' (The game will now exit)"
 msgstr "' (ara es tancarà el joc)."
 
-#: src/game.cpp:1529
+#: src/game.cpp:1477
 msgid "Loading data files"
 msgstr "Llegint archius de senyes."
 
-#: src/game.cpp:1960
+#: src/game.cpp:1908
 msgid "Loading game configuration."
 msgstr "Carregant configuració del joc."
 
-#: src/game.cpp:1966
+#: src/game.cpp:1914
 msgid "Re-initialize fonts for the current language."
 msgstr "Reiniciant tipografies per a l'idioma actual."
 
-#: src/game.cpp:1974
+#: src/game.cpp:1922
 #, fuzzy
 msgid "Searching for installed add-ons."
 msgstr "S'està solicitant el llistat d'expansions"
 
-#: src/game.cpp:1983
+#: src/game.cpp:1931
 msgid "Loading title screen."
 msgstr "Carregant pantalla inicial."
 
@@ -10119,40 +10119,36 @@ msgstr "Ajuda a Wesnoth enviant-nos informació"
 msgid "No time of day has been defined."
 msgstr "No s'ha definit l'hora del dia."
 
-#: src/unit.cpp:86
-msgid "Unknown unit type '$type|'"
-msgstr "Tipo d'unitat '$type|' desconegut"
-
-#: src/unit.cpp:719
+#: src/unit.cpp:715
 #, fuzzy
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "Tipo d'unitat '$type|' desconegut"
 
-#: src/unit.cpp:2298 src/unit.cpp:2485 src/unit.cpp:2558
+#: src/unit.cpp:2287 src/unit.cpp:2474 src/unit.cpp:2547
 msgid " and "
 msgstr " i"
 
-#: src/unit.cpp:2309
+#: src/unit.cpp:2298
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2374
+#: src/unit.cpp:2363
 msgid "moves"
 msgstr "moviments"
 
-#: src/unit.cpp:2392 src/unit.cpp:2512
+#: src/unit.cpp:2381 src/unit.cpp:2501
 msgid "XP to advance"
 msgstr "Punts d'Experiència per a alvançar"
 
-#: src/unit.cpp:2504
+#: src/unit.cpp:2493
 msgid " move"
 msgstr " moviment"
 
-#: src/unit.cpp:2520
+#: src/unit.cpp:2509
 msgid "$effect_description per level"
 msgstr "$effect_description per nivell"
 
-#: src/unit.cpp:2567
+#: src/unit.cpp:2556
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 
@@ -10232,6 +10228,9 @@ msgstr "¡Ajuda'ns a fer un Wesnoth millor per a tots!"
 #: src/upload_log.cpp:375
 msgid "Enable summary uploads"
 msgstr "Permetre emissions de resums"
+
+#~ msgid "Unknown unit type '$type|'"
+#~ msgstr "Tipo d'unitat '$type|' desconegut"
 
 #~ msgid "Level"
 #~ msgstr "Nivell"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-14 18:39+0100\n"
+"POT-Creation-Date: 2010-03-15 01:03+0100\n"
 "PO-Revision-Date: 2008-11-04 13:44+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -7091,8 +7091,8 @@ msgstr "Afslut scenarie"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:237
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:208 src/unit.cpp:2341
-#: src/unit.cpp:2497
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:208 src/unit.cpp:2330
+#: src/unit.cpp:2486
 msgid "HP"
 msgstr "L"
 
@@ -7831,39 +7831,39 @@ msgstr "EP: "
 msgid "Moves: "
 msgstr "Bevægelser: "
 
-#: src/game.cpp:629 src/game.cpp:1363
+#: src/game.cpp:577 src/game.cpp:1311
 msgid "The Battle for Wesnoth"
 msgstr "Kampen om Wesnoth"
 
-#: src/game.cpp:960 src/game.cpp:968
+#: src/game.cpp:908 src/game.cpp:916
 msgid "The file you have tried to load is corrupt"
 msgstr "Filen du forsøgte at indlæse er korrupt"
 
-#: src/game.cpp:963 src/game.cpp:971 src/savegame.cpp:534
+#: src/game.cpp:911 src/game.cpp:919 src/savegame.cpp:534
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Filen du prøvede at indlæse er korrupt: '"
 
-#: src/game.cpp:975
+#: src/game.cpp:923
 msgid "File I/O Error while reading the game"
 msgstr "I/O-filfejl under læsning af spillet"
 
-#: src/game.cpp:1070
+#: src/game.cpp:1018
 msgid "No campaigns are available.\n"
 msgstr "Ingen kampagner er tilgængelige.\n"
 
-#: src/game.cpp:1108
+#: src/game.cpp:1056
 msgid "Difficulty"
 msgstr "Sværhedsgrad"
 
-#: src/game.cpp:1109
+#: src/game.cpp:1057
 msgid "Select difficulty level:"
 msgstr "Vælg sværhedsgrad:"
 
-#: src/game.cpp:1244
+#: src/game.cpp:1192
 msgid "Do you really want to start the server?"
 msgstr "Vil du virkelig starte serveren?"
 
-#: src/game.cpp:1245
+#: src/game.cpp:1193
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
@@ -7871,27 +7871,27 @@ msgstr ""
 "Serveren vil køre som en baggrundsproces indtil alle brugerne har afbrudt "
 "forbindelsen."
 
-#: src/game.cpp:1249
+#: src/game.cpp:1197
 msgid "Don't show again"
 msgstr "Vis ikke igen!"
 
-#: src/game.cpp:1320
+#: src/game.cpp:1268
 msgid "Error while starting server: "
 msgstr "Fejl under opstart af server: "
 
-#: src/game.cpp:1322 src/playcampaign.cpp:105 src/playcampaign.cpp:392
+#: src/game.cpp:1270 src/playcampaign.cpp:105 src/playcampaign.cpp:392
 msgid "The game could not be loaded: "
 msgstr "Spillet kunne ikke indlæses: "
 
-#: src/game.cpp:1324 src/playcampaign.cpp:107 src/playcampaign.cpp:395
+#: src/game.cpp:1272 src/playcampaign.cpp:107 src/playcampaign.cpp:395
 msgid "Error while playing the game: "
 msgstr "Fejl under spillet: "
 
-#: src/game.cpp:1342 src/playcampaign.cpp:109 src/playcampaign.cpp:398
+#: src/game.cpp:1290 src/playcampaign.cpp:109 src/playcampaign.cpp:398
 msgid "The game map could not be loaded: "
 msgstr "Kortet kunne ikke indlæses: "
 
-#: src/game.cpp:1492
+#: src/game.cpp:1440
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] ""
@@ -7899,35 +7899,35 @@ msgstr[0] ""
 msgstr[1] ""
 "Følgende udvidelsesmoduler indeholder fejl og kunne derfor ikke indlæses:"
 
-#: src/game.cpp:1499
+#: src/game.cpp:1447
 msgid "ERROR DETAILS:"
 msgstr "FEJL-DETALJER:"
 
-#: src/game.cpp:1519
+#: src/game.cpp:1467
 msgid "Error loading game configuration files: '"
 msgstr "Fejl ved indlæsning af spillets konfigurationsfiler: '"
 
-#: src/game.cpp:1520
+#: src/game.cpp:1468
 msgid "' (The game will now exit)"
 msgstr "' (Spillet afsluttes)"
 
-#: src/game.cpp:1529
+#: src/game.cpp:1477
 msgid "Loading data files"
 msgstr "Indlæser datafiler"
 
-#: src/game.cpp:1960
+#: src/game.cpp:1908
 msgid "Loading game configuration."
 msgstr "Indlæser spillets konfiguration."
 
-#: src/game.cpp:1966
+#: src/game.cpp:1914
 msgid "Re-initialize fonts for the current language."
 msgstr "Genindlæser fonte for det nuværende sprog."
 
-#: src/game.cpp:1974
+#: src/game.cpp:1922
 msgid "Searching for installed add-ons."
 msgstr "Søger efter intallerede kampagner"
 
-#: src/game.cpp:1983
+#: src/game.cpp:1931
 msgid "Loading title screen."
 msgstr "Henter titelskærm."
 
@@ -9973,40 +9973,36 @@ msgstr "Hjælp Wesnoth ved at sende os information"
 msgid "No time of day has been defined."
 msgstr "Intet tid på dagen er defineret."
 
-#: src/unit.cpp:86
-msgid "Unknown unit type '$type|'"
-msgstr "Ukendt enhedstype '$type|'"
-
-#: src/unit.cpp:719
+#: src/unit.cpp:715
 #, fuzzy
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "Ukendt enhedstype '$type|'"
 
-#: src/unit.cpp:2298 src/unit.cpp:2485 src/unit.cpp:2558
+#: src/unit.cpp:2287 src/unit.cpp:2474 src/unit.cpp:2547
 msgid " and "
 msgstr " og "
 
-#: src/unit.cpp:2309
+#: src/unit.cpp:2298
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2374
+#: src/unit.cpp:2363
 msgid "moves"
 msgstr "bevægelser"
 
-#: src/unit.cpp:2392 src/unit.cpp:2512
+#: src/unit.cpp:2381 src/unit.cpp:2501
 msgid "XP to advance"
 msgstr "Erfaring til forfremmelse"
 
-#: src/unit.cpp:2504
+#: src/unit.cpp:2493
 msgid " move"
 msgstr " bevægelse"
 
-#: src/unit.cpp:2520
+#: src/unit.cpp:2509
 msgid "$effect_description per level"
 msgstr "$effect_description per niveau"
 
-#: src/unit.cpp:2567
+#: src/unit.cpp:2556
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 
@@ -10086,6 +10082,9 @@ msgstr "Hjælp os med at gøre Wesnoth bedre for dig!"
 #: src/upload_log.cpp:375
 msgid "Enable summary uploads"
 msgstr "Slå sending af resumer til"
+
+#~ msgid "Unknown unit type '$type|'"
+#~ msgstr "Ukendt enhedstype '$type|'"
 
 #~ msgid "Level"
 #~ msgstr "Level"

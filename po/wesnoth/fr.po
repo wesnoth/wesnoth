@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-14 18:39+0100\n"
+"POT-Creation-Date: 2010-03-15 01:03+0100\n"
 "PO-Revision-Date: 2010-02-07 11:11+0100\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
@@ -7149,8 +7149,8 @@ msgstr "Fin du scénario"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:237
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:208 src/unit.cpp:2341
-#: src/unit.cpp:2497
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:208 src/unit.cpp:2330
+#: src/unit.cpp:2486
 msgid "HP"
 msgstr "PV"
 
@@ -7886,39 +7886,39 @@ msgstr "XP : "
 msgid "Moves: "
 msgstr "Déplacements : "
 
-#: src/game.cpp:629 src/game.cpp:1363
+#: src/game.cpp:577 src/game.cpp:1311
 msgid "The Battle for Wesnoth"
 msgstr "Bataille pour Wesnoth"
 
-#: src/game.cpp:960 src/game.cpp:968
+#: src/game.cpp:908 src/game.cpp:916
 msgid "The file you have tried to load is corrupt"
 msgstr "Le fichier sauvegardé est corrompu"
 
-#: src/game.cpp:963 src/game.cpp:971 src/savegame.cpp:534
+#: src/game.cpp:911 src/game.cpp:919 src/savegame.cpp:534
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Le fichier que vous avez essayé de charger est corrompu : « "
 
-#: src/game.cpp:975
+#: src/game.cpp:923
 msgid "File I/O Error while reading the game"
 msgstr "Erreur d'E/S en chargeant le jeu"
 
-#: src/game.cpp:1070
+#: src/game.cpp:1018
 msgid "No campaigns are available.\n"
 msgstr "Aucune campagne disponible.\n"
 
-#: src/game.cpp:1108
+#: src/game.cpp:1056
 msgid "Difficulty"
 msgstr "Difficulté"
 
-#: src/game.cpp:1109
+#: src/game.cpp:1057
 msgid "Select difficulty level:"
 msgstr "Choisissez le niveau de difficulté :"
 
-#: src/game.cpp:1244
+#: src/game.cpp:1192
 msgid "Do you really want to start the server?"
 msgstr "Voulez-vous vraiment démarrer le serveur ?"
 
-#: src/game.cpp:1245
+#: src/game.cpp:1193
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
@@ -7926,61 +7926,61 @@ msgstr ""
 "Le serveur fonctionnera en processus d'arrière-plan jusqu'à ce que tous les "
 "utilisateurs se soient déconnectés."
 
-#: src/game.cpp:1249
+#: src/game.cpp:1197
 msgid "Don't show again"
 msgstr "Ne plus afficher"
 
-#: src/game.cpp:1320
+#: src/game.cpp:1268
 msgid "Error while starting server: "
 msgstr "Erreur lors du démarrage du serveur : "
 
-#: src/game.cpp:1322 src/playcampaign.cpp:105 src/playcampaign.cpp:392
+#: src/game.cpp:1270 src/playcampaign.cpp:105 src/playcampaign.cpp:392
 msgid "The game could not be loaded: "
 msgstr "Le jeu n'a pas pu être chargé : "
 
-#: src/game.cpp:1324 src/playcampaign.cpp:107 src/playcampaign.cpp:395
+#: src/game.cpp:1272 src/playcampaign.cpp:107 src/playcampaign.cpp:395
 msgid "Error while playing the game: "
 msgstr "Erreur lors du déroulement de la partie : "
 
-#: src/game.cpp:1342 src/playcampaign.cpp:109 src/playcampaign.cpp:398
+#: src/game.cpp:1290 src/playcampaign.cpp:109 src/playcampaign.cpp:398
 msgid "The game map could not be loaded: "
 msgstr "La carte n'a pas pu être chargée : "
 
-#: src/game.cpp:1492
+#: src/game.cpp:1440
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Impossible de charger cette(ces) extension(s) en erreur :"
 msgstr[1] "Impossible de charger cette(ces) extension(s) en erreur :"
 
-#: src/game.cpp:1499
+#: src/game.cpp:1447
 msgid "ERROR DETAILS:"
 msgstr "Détails des erreurs :"
 
-#: src/game.cpp:1519
+#: src/game.cpp:1467
 msgid "Error loading game configuration files: '"
 msgstr "Erreur lors du chargement des fichiers de configuration du jeu : « "
 
-#: src/game.cpp:1520
+#: src/game.cpp:1468
 msgid "' (The game will now exit)"
 msgstr " » (Le jeu va maintenant se terminer)"
 
-#: src/game.cpp:1529
+#: src/game.cpp:1477
 msgid "Loading data files"
 msgstr "Lecture des fichiers de données"
 
-#: src/game.cpp:1960
+#: src/game.cpp:1908
 msgid "Loading game configuration."
 msgstr "Chargement de la configuration du jeu"
 
-#: src/game.cpp:1966
+#: src/game.cpp:1914
 msgid "Re-initialize fonts for the current language."
 msgstr "Réinitialiser les polices pour le langage courant."
 
-#: src/game.cpp:1974
+#: src/game.cpp:1922
 msgid "Searching for installed add-ons."
 msgstr "Chercher des extensions installées."
 
-#: src/game.cpp:1983
+#: src/game.cpp:1931
 msgid "Loading title screen."
 msgstr "Chargement de l'écran de présentation"
 
@@ -10015,39 +10015,35 @@ msgstr "Aider Wesnoth en envoyant des données"
 msgid "No time of day has been defined."
 msgstr "Aucun moment de la journée n'a été défini."
 
-#: src/unit.cpp:86
-msgid "Unknown unit type '$type|'"
-msgstr "Type d'unité inconnu : « $type| »"
-
-#: src/unit.cpp:719
+#: src/unit.cpp:715
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "Type d'unité inconnu lors de la génération des traits : '$type|'"
 
-#: src/unit.cpp:2298 src/unit.cpp:2485 src/unit.cpp:2558
+#: src/unit.cpp:2287 src/unit.cpp:2474 src/unit.cpp:2547
 msgid " and "
 msgstr " et "
 
-#: src/unit.cpp:2309
+#: src/unit.cpp:2298
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list| : $effect_description"
 
-#: src/unit.cpp:2374
+#: src/unit.cpp:2363
 msgid "moves"
 msgstr "déplacements"
 
-#: src/unit.cpp:2392 src/unit.cpp:2512
+#: src/unit.cpp:2381 src/unit.cpp:2501
 msgid "XP to advance"
 msgstr "XP pour évoluer"
 
-#: src/unit.cpp:2504
+#: src/unit.cpp:2493
 msgid " move"
 msgstr " déplacement"
 
-#: src/unit.cpp:2520
+#: src/unit.cpp:2509
 msgid "$effect_description per level"
 msgstr "$effect_description par niveau"
 
-#: src/unit.cpp:2567
+#: src/unit.cpp:2556
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name| : $trait_description "
 
@@ -10125,6 +10121,9 @@ msgstr "Aidez-nous à améliorer Wesnoth pour vous !"
 #: src/upload_log.cpp:375
 msgid "Enable summary uploads"
 msgstr "Autoriser l'envoi de résumés"
+
+#~ msgid "Unknown unit type '$type|'"
+#~ msgstr "Type d'unité inconnu : « $type| »"
 
 #~ msgid "Level"
 #~ msgstr "Niveau"

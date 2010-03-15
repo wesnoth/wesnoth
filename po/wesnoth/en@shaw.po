@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-14 18:39+0100\n"
+"POT-Creation-Date: 2010-03-15 01:03+0100\n"
 "PO-Revision-Date: 2009-10-11 21:15-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -6857,8 +6857,8 @@ msgstr "𐑧𐑯𐑛 𐑕𐑦𐑯𐑺𐑰𐑴"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:237
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:208 src/unit.cpp:2341
-#: src/unit.cpp:2497
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:208 src/unit.cpp:2330
+#: src/unit.cpp:2486
 msgid "HP"
 msgstr "HP"
 
@@ -7579,99 +7579,99 @@ msgstr "XP: "
 msgid "Moves: "
 msgstr "𐑥𐑵𐑝𐑟: "
 
-#: src/game.cpp:629 src/game.cpp:1363
+#: src/game.cpp:577 src/game.cpp:1311
 msgid "The Battle for Wesnoth"
 msgstr "𐑞 𐑚𐑨𐑑𐑩𐑤 𐑓𐑹 ·𐑢𐑧𐑕𐑯𐑷𐑔"
 
-#: src/game.cpp:960 src/game.cpp:968
+#: src/game.cpp:908 src/game.cpp:916
 msgid "The file you have tried to load is corrupt"
 msgstr "𐑞 𐑓𐑲𐑤 𐑿 𐑣𐑨𐑝 𐑑𐑮𐑲𐑛 𐑑 𐑤𐑴𐑛 𐑦𐑟 𐑒𐑼𐑳𐑐𐑑"
 
-#: src/game.cpp:963 src/game.cpp:971 src/savegame.cpp:534
+#: src/game.cpp:911 src/game.cpp:919 src/savegame.cpp:534
 msgid "The file you have tried to load is corrupt: '"
 msgstr "𐑞 𐑓𐑲𐑤 𐑿 𐑣𐑨𐑝 𐑑𐑮𐑲𐑛 𐑑 𐑤𐑴𐑛 𐑦𐑟 𐑒𐑼𐑳𐑐𐑑: '"
 
-#: src/game.cpp:975
+#: src/game.cpp:923
 msgid "File I/O Error while reading the game"
 msgstr "𐑓𐑲𐑤 𐑲/𐑴 𐑻𐑹 𐑢𐑲𐑤 𐑮𐑰𐑛𐑦𐑙 𐑞 𐑜𐑱𐑥"
 
-#: src/game.cpp:1070
+#: src/game.cpp:1018
 msgid "No campaigns are available.\n"
 msgstr "𐑯𐑴 𐑒𐑨𐑥𐑐𐑱𐑯𐑟 𐑸 𐑩𐑝𐑱𐑤𐑩𐑚𐑩𐑤.\n"
 
-#: src/game.cpp:1108
+#: src/game.cpp:1056
 msgid "Difficulty"
 msgstr "𐑛𐑦𐑓𐑦𐑒𐑩𐑤𐑑𐑦"
 
-#: src/game.cpp:1109
+#: src/game.cpp:1057
 msgid "Select difficulty level:"
 msgstr "𐑕𐑩𐑤𐑧𐑒𐑑 𐑛𐑦𐑓𐑦𐑒𐑩𐑤𐑑𐑦 𐑤𐑧𐑝𐑩𐑤:"
 
-#: src/game.cpp:1244
+#: src/game.cpp:1192
 msgid "Do you really want to start the server?"
 msgstr "𐑛𐑵 𐑿 𐑮𐑾𐑤𐑦 𐑢𐑪𐑯𐑑 𐑑 𐑕𐑑𐑸𐑑 𐑞 𐑕𐑻𐑝𐑻?"
 
-#: src/game.cpp:1245
+#: src/game.cpp:1193
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr "𐑞 𐑕𐑻𐑝𐑻 𐑢𐑦𐑤 𐑮𐑳𐑯 𐑦𐑯 𐑩 𐑚𐑨𐑒𐑜𐑮𐑬𐑯𐑛 𐑐𐑮𐑴𐑕𐑧𐑕 𐑳𐑯𐑑𐑦𐑤 𐑷𐑤 𐑿𐑟𐑼𐑟 𐑣𐑨𐑝 𐑛𐑦𐑕𐑒𐑩𐑯𐑧𐑒𐑑𐑩𐑛."
 
-#: src/game.cpp:1249
+#: src/game.cpp:1197
 msgid "Don't show again"
 msgstr "𐑛𐑴𐑯𐑑 𐑖𐑴 𐑩𐑜𐑱𐑯"
 
-#: src/game.cpp:1320
+#: src/game.cpp:1268
 msgid "Error while starting server: "
 msgstr "𐑻𐑹 𐑢𐑲𐑤 𐑕𐑑𐑸𐑑𐑦𐑙 𐑕𐑻𐑝𐑻: "
 
-#: src/game.cpp:1322 src/playcampaign.cpp:105 src/playcampaign.cpp:392
+#: src/game.cpp:1270 src/playcampaign.cpp:105 src/playcampaign.cpp:392
 msgid "The game could not be loaded: "
 msgstr "𐑞 𐑜𐑱𐑥 𐑒𐑫𐑛 𐑯𐑪𐑑 𐑚𐑰 𐑤𐑴𐑛𐑩𐑛: "
 
-#: src/game.cpp:1324 src/playcampaign.cpp:107 src/playcampaign.cpp:395
+#: src/game.cpp:1272 src/playcampaign.cpp:107 src/playcampaign.cpp:395
 msgid "Error while playing the game: "
 msgstr "𐑻𐑹 𐑢𐑲𐑤 𐑐𐑤𐑱𐑦𐑙 𐑞 𐑜𐑱𐑥: "
 
-#: src/game.cpp:1342 src/playcampaign.cpp:109 src/playcampaign.cpp:398
+#: src/game.cpp:1290 src/playcampaign.cpp:109 src/playcampaign.cpp:398
 msgid "The game map could not be loaded: "
 msgstr "𐑞 𐑜𐑱𐑥 𐑥𐑨𐑐 𐑒𐑫𐑛 𐑯𐑪𐑑 𐑚𐑰 𐑤𐑴𐑛𐑩𐑛: "
 
-#: src/game.cpp:1492
+#: src/game.cpp:1440
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "𐑞 𐑓𐑪𐑤𐑴𐑦𐑙 𐑨𐑛-𐑪𐑯 𐑣𐑨𐑛 𐑻𐑼𐑟 𐑯 𐑒𐑫𐑛 𐑯𐑪𐑑 𐑚𐑰 𐑤𐑴𐑛𐑩𐑛:"
 msgstr[1] "𐑞 𐑓𐑪𐑤𐑴𐑦𐑙 𐑨𐑛-𐑭𐑯𐑟 𐑣𐑨𐑛 𐑻𐑼𐑟 𐑯 𐑒𐑫𐑛 𐑯𐑪𐑑 𐑚𐑰 𐑤𐑴𐑛𐑩𐑛:"
 
-#: src/game.cpp:1499
+#: src/game.cpp:1447
 msgid "ERROR DETAILS:"
 msgstr "𐑻𐑹 𐑛𐑰𐑑𐑱𐑤𐑟:"
 
-#: src/game.cpp:1519
+#: src/game.cpp:1467
 msgid "Error loading game configuration files: '"
 msgstr "𐑻𐑹 𐑤𐑴𐑛𐑦𐑙 𐑜𐑱𐑥 𐑒𐑩𐑯𐑓𐑦𐑜𐑘𐑼𐑱𐑖𐑩𐑯 𐑓𐑲𐑤𐑟: '"
 
-#: src/game.cpp:1520
+#: src/game.cpp:1468
 msgid "' (The game will now exit)"
 msgstr "' (𐑞 𐑜𐑱𐑥 𐑢𐑦𐑤 𐑯𐑬 𐑧𐑜𐑟𐑦𐑑)"
 
-#: src/game.cpp:1529
+#: src/game.cpp:1477
 msgid "Loading data files"
 msgstr "𐑤𐑴𐑛𐑦𐑙 𐑛𐑱𐑑𐑩 𐑓𐑲𐑤𐑟"
 
-#: src/game.cpp:1960
+#: src/game.cpp:1908
 msgid "Loading game configuration."
 msgstr "𐑤𐑴𐑛𐑦𐑙 𐑜𐑱𐑥 𐑒𐑩𐑯𐑓𐑦𐑜𐑘𐑼𐑱𐑖𐑩𐑯."
 
-#: src/game.cpp:1966
+#: src/game.cpp:1914
 msgid "Re-initialize fonts for the current language."
 msgstr "𐑮𐑰-𐑦𐑯𐑦𐑖𐑩𐑤𐑲𐑟 𐑓𐑪𐑯𐑑𐑕 𐑓𐑹 𐑞 𐑒𐑳𐑮𐑩𐑯𐑑 𐑤𐑨𐑙𐑜𐑢𐑩𐑡."
 
-#: src/game.cpp:1974
+#: src/game.cpp:1922
 msgid "Searching for installed add-ons."
 msgstr "𐑕𐑻𐑗𐑦𐑙 𐑓𐑹 𐑦𐑯𐑕𐑑𐑷𐑤𐑛 𐑨𐑛-𐑭𐑯𐑟."
 
-#: src/game.cpp:1983
+#: src/game.cpp:1931
 msgid "Loading title screen."
 msgstr "𐑤𐑴𐑛𐑦𐑙 𐑑𐑲𐑑𐑩𐑤 𐑕𐑒𐑮𐑰𐑯."
 
@@ -9662,39 +9662,35 @@ msgstr "𐑣𐑧𐑤𐑐 ·𐑢𐑧𐑕𐑯𐑷𐑔 𐑚𐑲 𐑕𐑧𐑯𐑛�
 msgid "No time of day has been defined."
 msgstr "𐑯𐑴 𐑑𐑲𐑥 𐑝 𐑛𐑱 𐑣𐑨𐑟 𐑚𐑰𐑯 𐑛𐑦𐑓𐑲𐑯𐑛."
 
-#: src/unit.cpp:86
-msgid "Unknown unit type '$type|'"
-msgstr "𐑳𐑯𐑯𐑴𐑯 𐑿𐑯𐑦𐑑 𐑑𐑲𐑐 '$type|'"
-
-#: src/unit.cpp:719
+#: src/unit.cpp:715
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "𐑳𐑯𐑯𐑴𐑯 𐑿𐑯𐑦𐑑 𐑑𐑲𐑐 '$type|' 𐑢𐑲𐑤 𐑡𐑧𐑯𐑼𐑱𐑑𐑦𐑙 𐑑𐑮𐑱𐑑𐑕"
 
-#: src/unit.cpp:2298 src/unit.cpp:2485 src/unit.cpp:2558
+#: src/unit.cpp:2287 src/unit.cpp:2474 src/unit.cpp:2547
 msgid " and "
 msgstr "𐑯 "
 
-#: src/unit.cpp:2309
+#: src/unit.cpp:2298
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2374
+#: src/unit.cpp:2363
 msgid "moves"
 msgstr "𐑥𐑵𐑝𐑟"
 
-#: src/unit.cpp:2392 src/unit.cpp:2512
+#: src/unit.cpp:2381 src/unit.cpp:2501
 msgid "XP to advance"
 msgstr "XP 𐑑 𐑩𐑛𐑝𐑭𐑯𐑕"
 
-#: src/unit.cpp:2504
+#: src/unit.cpp:2493
 msgid " move"
 msgstr "𐑥𐑵𐑝"
 
-#: src/unit.cpp:2520
+#: src/unit.cpp:2509
 msgid "$effect_description per level"
 msgstr "$effect_description 𐑐𐑻 𐑤𐑧𐑝𐑩𐑤"
 
-#: src/unit.cpp:2567
+#: src/unit.cpp:2556
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 
@@ -9770,6 +9766,9 @@ msgstr "𐑣𐑧𐑤𐑐 𐑳𐑕 𐑥𐑱𐑒 ·𐑢𐑧𐑕𐑯𐑷𐑔 𐑚�
 #: src/upload_log.cpp:375
 msgid "Enable summary uploads"
 msgstr "𐑦𐑯𐑱𐑚𐑩𐑤 𐑕𐑳𐑥𐑼𐑦 𐑳𐑐𐑤𐑴𐑛𐑟"
+
+#~ msgid "Unknown unit type '$type|'"
+#~ msgstr "𐑳𐑯𐑯𐑴𐑯 𐑿𐑯𐑦𐑑 𐑑𐑲𐑐 '$type|'"
 
 #~ msgid "Level"
 #~ msgstr "𐑤𐑧𐑝𐑩𐑤"
