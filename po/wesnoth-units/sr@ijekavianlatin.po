@@ -1,0 +1,4037 @@
+# #-#-#-#-#  wesnoth-units.cpp.pot (Battle for Wesnoth VERSION)  #-#-#-#-#
+# Serbian translations for Battle for Wesnoth package.
+# Copyright (C) 2010 Wesnoth development team
+# This file is distributed under the same license as the Battle for Wesnoth package.
+# Automatically generated, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Battle for Wesnoth 1.7.1+svn\n"
+"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"POT-Creation-Date: 2010-03-15 01:03+0100\n"
+"PO-Revision-Date: 2010-03-15 01:03+0100\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: sr@ijekavianlatin\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. [unit_type]: id=Blood Bat, race=bats
+#: data/core/units/bats/Bat_Blood.cfg:4
+msgid "Blood Bat"
+msgstr ""
+
+#. [unit_type]: id=Blood Bat, race=bats
+#: data/core/units/bats/Bat_Blood.cfg:20
+msgid ""
+"Blood Bats are so named because of their ruddy hue, which some mark as a "
+"symbol of their preferred diet. These creatures are fast and can drain the "
+"blood of those they attack, thereby gaining some of the health lost by their "
+"victims."
+msgstr ""
+
+#. [attack]: type=blade
+#. [attack]: type=pierce
+#: data/core/units/bats/Bat_Blood.cfg:189
+#: data/core/units/bats/Bat_Dread.cfg:42
+#: data/core/units/bats/Bat_Vampire.cfg:189
+#: data/core/units/goblins/Direwolf_Rider.cfg:46
+#: data/core/units/goblins/Knight.cfg:48
+#: data/core/units/goblins/Pillager.cfg:47
+#: data/core/units/goblins/Wolf_Rider.cfg:64
+#: data/core/units/monsters/Cave_Spider.cfg:37
+#: data/core/units/monsters/Sea_Serpent.cfg:27
+#: data/core/units/monsters/Water_Serpent.cfg:43
+#: data/core/units/monsters/Wolf.cfg:50
+msgid "fangs"
+msgstr ""
+
+#. [unit_type]: id=Dread Bat, race=bats
+#: data/core/units/bats/Bat_Dread.cfg:4
+msgid "Dread Bat"
+msgstr ""
+
+#. [unit_type]: id=Dread Bat, race=bats
+#: data/core/units/bats/Bat_Dread.cfg:26
+msgid ""
+"The most vicious, predatory, and successful of the Blood Bats become Dread "
+"Bats, gaining the ability to drain not merely the blood but the very life "
+"energy of their victims."
+msgstr ""
+
+#. [unit_type]: id=Vampire Bat, race=bats
+#: data/core/units/bats/Bat_Vampire.cfg:4
+msgid "Vampire Bat"
+msgstr ""
+
+#. [unit_type]: id=Vampire Bat, race=bats
+#: data/core/units/bats/Bat_Vampire.cfg:20
+msgid ""
+"Vampire bats are flying beasts that feed on the blood of other creatures. "
+"While their fangs are not very powerful, the health of victims is drained "
+"away along with their blood, and given to the Bats."
+msgstr ""
+
+#. [unit_type]: id=Boat, race=mechanical
+#: data/core/units/boats/Boat.cfg:4
+msgid "Boat"
+msgstr ""
+
+#. [unit_type]: id=Boat, race=mechanical
+#: data/core/units/boats/Boat.cfg:18
+msgid ""
+"Propelled by oars or small sails, boats are used to travel short distances "
+"and in shallows where large ships cannot navigate."
+msgstr ""
+
+#. [unit_type]: id=Galleon, race=mechanical
+#: data/core/units/boats/Galleon.cfg:6
+msgid "Galleon"
+msgstr ""
+
+#. [unit_type]: id=Galleon, race=mechanical
+#: data/core/units/boats/Galleon.cfg:21
+msgid "Galleons are blue-water ships built for trade and transport."
+msgstr ""
+
+#. [unit_type]: id=Pirate Galleon, race=mechanical
+#: data/core/units/boats/Pirate_Galleon.cfg:4
+msgid "Pirate Galleon"
+msgstr ""
+
+#. [unit_type]: id=Pirate Galleon, race=mechanical
+#: data/core/units/boats/Pirate_Galleon.cfg:18
+msgid ""
+"Pirate galleons are to transport ships what wolves are to sheep. The pirates "
+"who crew them are more than happy to help relieve other ships of their "
+"weighty cargo."
+msgstr ""
+
+#. [attack]: type=pierce
+#: data/core/units/boats/Pirate_Galleon.cfg:21
+#: data/core/units/boats/Transport_Galleon.cfg:22
+msgid "ballista"
+msgstr ""
+
+#. [unit_type]: id=Transport Galleon, race=mechanical
+#: data/core/units/boats/Transport_Galleon.cfg:4
+msgid "Transport Galleon"
+msgstr ""
+
+#. [unit_type]: id=Transport Galleon, race=mechanical
+#: data/core/units/boats/Transport_Galleon.cfg:18
+msgid ""
+"Transport Galleons are well-armed ships that carry troops. If they reach the "
+"shore, they can land the troops to attack."
+msgstr ""
+
+#. [unit_type]: id=Drake Arbiter, race=drake
+#: data/core/units/drakes/Arbiter.cfg:4
+msgid "Drake Arbiter"
+msgstr ""
+
+#. [unit_type]: id=Drake Arbiter, race=drake
+#: data/core/units/drakes/Arbiter.cfg:19
+msgid ""
+"Arbiters take their caste duty of enforcing order very seriously. In order "
+"to better execute their duties, they have abandoned the drakes' traditional "
+"hand-mounted claws and traded their spears for the spike and blade of the "
+"halberd. In their minds, the loss of maneuverability is a fair price for the "
+"raw heft the massive metal head provides. The thick plate these drakes wear "
+"protects them well against weapons that could slip between their scales."
+msgstr ""
+
+#. [attack]: type=blade
+#. [attack]: type=pierce
+#: data/core/units/drakes/Arbiter.cfg:41 data/core/units/drakes/Arbiter.cfg:50
+#: data/core/units/drakes/Warden.cfg:42 data/core/units/drakes/Warden.cfg:51
+#: data/core/units/humans/Loyalist_Halberdier.cfg:41
+#: data/core/units/humans/Loyalist_Halberdier.cfg:53
+msgid "halberd"
+msgstr ""
+
+#. [unit_type]: id=Armageddon Drake, race=drake
+#: data/core/units/drakes/Armageddon.cfg:4
+msgid "Armageddon Drake"
+msgstr ""
+
+#. [unit_type]: id=Armageddon Drake, race=drake
+#: data/core/units/drakes/Armageddon.cfg:27
+msgid ""
+"Were it not for the armor they wear, certain drakes might be "
+"indistinguishable from true dragons, at least to the lesser races for whom "
+"dragons are but legend. The creatures known as 'Armageddon Drakes' are "
+"towering things, both immune to and possessed of a tremendous fire."
+msgstr ""
+
+#. [attack]: type=blade
+#: data/core/units/drakes/Armageddon.cfg:86 data/core/units/drakes/Fire.cfg:42
+#: data/core/units/drakes/Inferno.cfg:44
+msgid "battle claws"
+msgstr ""
+
+#. [attack]: type=fire
+#: data/core/units/drakes/Armageddon.cfg:95
+#: data/core/units/drakes/Blademaster.cfg:50
+#: data/core/units/drakes/Burner.cfg:49 data/core/units/drakes/Fighter.cfg:48
+#: data/core/units/drakes/Fire.cfg:51 data/core/units/drakes/Flameheart.cfg:44
+#: data/core/units/drakes/Flare.cfg:43 data/core/units/drakes/Glider.cfg:53
+#: data/core/units/drakes/Hurricane.cfg:138
+#: data/core/units/drakes/Inferno.cfg:53 data/core/units/drakes/Sky.cfg:137
+#: data/core/units/drakes/Warrior.cfg:48
+#: data/core/units/monsters/Fire_Dragon.cfg:49
+msgid "fire breath"
+msgstr ""
+
+#. [unit_type]: id=Drake Blademaster, race=drake
+#: data/core/units/drakes/Blademaster.cfg:4
+msgid "Drake Blademaster"
+msgstr ""
+
+#. [unit_type]: id=Drake Blademaster, race=drake
+#: data/core/units/drakes/Blademaster.cfg:21
+msgid ""
+"Black armor marks the elite order of the Fighter caste: the Blademasters. "
+"Only a few manage to gain the skill and power necessary to be admitted to "
+"this highest rank without perishing in battle. Though other drakes may "
+"disparage the Fighter caste, they always check twice to be sure none are "
+"around; Blademasters fiercely protect their fellows' honor, and no-one would "
+"dispute their right to do so."
+msgstr ""
+
+#. [attack]: type=blade
+#: data/core/units/drakes/Blademaster.cfg:41
+#: data/core/units/drakes/Clasher.cfg:39
+#: data/core/units/drakes/Enforcer.cfg:36
+#: data/core/units/drakes/Thrasher.cfg:23
+msgid "war talon"
+msgstr ""
+
+#. [unit_type]: id=Drake Burner, race=drake
+#: data/core/units/drakes/Burner.cfg:4
+msgid "Drake Burner"
+msgstr ""
+
+#. [unit_type]: id=Drake Burner, race=drake
+#: data/core/units/drakes/Burner.cfg:20
+msgid ""
+"Drake Burners are the proud few in whom the blood and strength of their "
+"remote ancestors runs truest, giving them the ability to breathe fire. This, "
+"coupled with their sheer size and fearsome claws, makes them deadly foes in "
+"combat."
+msgstr ""
+
+#. [attack]: type=blade
+#: data/core/units/drakes/Burner.cfg:40
+#: data/core/units/goblins/Direwolf_Rider.cfg:55
+#: data/core/units/gryphons/Gryphon.cfg:41
+#: data/core/units/gryphons/Gryphon_Master.cfg:42
+#: data/core/units/gryphons/Gryphon_Rider.cfg:42
+#: data/core/units/monsters/Skeletal_Dragon.cfg:42
+#: data/core/units/undead/Corpse_Ghoul.cfg:27
+#: data/core/units/undead/Corpse_Necrophage.cfg:28
+#: data/core/units/undead/Spirit_Nightgaunt.cfg:67
+#: data/core/units/undead/Spirit_Shadow.cfg:135
+msgid "claws"
+msgstr ""
+
+#. [unit_type]: id=Drake Clasher, race=drake
+#: data/core/units/drakes/Clasher.cfg:4
+msgid "Drake Clasher"
+msgstr ""
+
+#. [unit_type]: id=Drake Clasher, race=drake
+#: data/core/units/drakes/Clasher.cfg:23
+msgid ""
+"The Clashers are members of a unique caste among the drakes. Their thick "
+"armor, while compensating for the drakes' natural weakness against spears "
+"and arrows, is so heavy and restricting that they are not able to fly or "
+"muster enough breath to use their inner fire. They have embraced this "
+"handicap, completely encasing their wings to emphasize that they do not need "
+"flight to triumph in battle.\n"
+"\n"
+"This is also the only caste that is allowed to break taboo and fight with "
+"spears in addition to the drake's traditional metal claws, which makes them "
+"particularly good at \"resolving\" territorial disputes with other drakes "
+"and enforcing the laws of their tribe."
+msgstr ""
+
+#. [attack]: type=pierce
+#: data/core/units/drakes/Clasher.cfg:48
+#: data/core/units/drakes/Thrasher.cfg:32
+#: data/core/units/dwarves/Guardsman.cfg:43
+#: data/core/units/dwarves/Sentinel.cfg:51
+#: data/core/units/dwarves/Stalwart.cfg:46
+#: data/core/units/goblins/Impaler.cfg:43
+#: data/core/units/goblins/Impaler.cfg:55
+#: data/core/units/goblins/Rouser.cfg:46
+#: data/core/units/goblins/Spearman.cfg:43
+#: data/core/units/goblins/Spearman.cfg:53
+#: data/core/units/humans/Horseman.cfg:36
+#: data/core/units/humans/Loyalist_Javelineer.cfg:40
+#: data/core/units/humans/Loyalist_Spearman.cfg:59
+#: data/core/units/merfolk/Hoplite.cfg:48
+#: data/core/units/merfolk/Hunter.cfg:37 data/core/units/merfolk/Hunter.cfg:45
+#: data/core/units/merfolk/Javelineer.cfg:37
+#: data/core/units/merfolk/Javelineer.cfg:45
+#: data/core/units/merfolk/Spearman.cfg:36
+#: data/core/units/merfolk/Spearman.cfg:44
+#: data/core/units/saurians/Ambusher.cfg:39
+#: data/core/units/saurians/Ambusher.cfg:48
+#: data/core/units/saurians/Flanker.cfg:40
+#: data/core/units/saurians/Flanker.cfg:49
+#: data/core/units/saurians/Skirmisher.cfg:133
+#: data/core/units/saurians/Skirmisher.cfg:142
+#: data/core/units/undead/Skele_Chocobone.cfg:26
+msgid "spear"
+msgstr ""
+
+#. [unit_type]: id=Drake Enforcer, race=drake
+#: data/core/units/drakes/Enforcer.cfg:4
+msgid "Drake Enforcer"
+msgstr ""
+
+#. [unit_type]: id=Drake Enforcer, race=drake
+#: data/core/units/drakes/Enforcer.cfg:21
+msgid ""
+"Not for Enforcers are the tactics of maneuver and deception; rather, they "
+"charge in wherever the melee is the fiercest. At close range, it matters "
+"little that their armor prevents them from spouting flame; all that matters "
+"is the power they've learned to focus in each strike. Drake leaders are "
+"careful not to besmirch the honor of the Enforcers, and generally call upon "
+"them to combat only the most pernicious of enemies."
+msgstr ""
+
+#. [attack]: type=impact
+#: data/core/units/drakes/Enforcer.cfg:45
+#: data/core/units/drakes/Thrasher.cfg:41
+msgid "ram"
+msgstr ""
+
+#. [attack]: type=pierce
+#. [attack]: type=blade
+#: data/core/units/drakes/Enforcer.cfg:54
+#: data/core/units/merfolk/Fighter.cfg:37
+#: data/core/units/merfolk/Triton.cfg:38 data/core/units/merfolk/Triton.cfg:46
+#: data/core/units/merfolk/Warrior.cfg:36
+msgid "trident"
+msgstr ""
+
+#. [unit_type]: id=Drake Fighter, race=drake
+#: data/core/units/drakes/Fighter.cfg:4
+msgid "Drake Fighter"
+msgstr ""
+
+#. [unit_type]: id=Drake Fighter, race=drake
+#: data/core/units/drakes/Fighter.cfg:20
+msgid ""
+"Drake Fighters wield curved war blades, and possess the fire-breathing "
+"skills of their ancestors. They can also fly, which is troubling to any foe. "
+"Their great strength, coupled with their hardened scales, is rightly "
+"frightening to swordsman of any other race."
+msgstr ""
+
+#. [attack]: type=blade
+#: data/core/units/drakes/Fighter.cfg:39
+#: data/core/units/drakes/Flameheart.cfg:35
+#: data/core/units/drakes/Flare.cfg:34 data/core/units/drakes/Warrior.cfg:39
+msgid "war blade"
+msgstr ""
+
+#. [unit_type]: id=Fire Drake, race=drake
+#: data/core/units/drakes/Fire.cfg:4
+msgid "Fire Drake"
+msgstr ""
+
+#. [unit_type]: id=Fire Drake, race=drake
+#: data/core/units/drakes/Fire.cfg:19
+msgid ""
+"Not yet permitted to wear the red-gold reserved for the highest ranks of the "
+"Burners, the Fire Drakes trim their armor with silver. Though they have only "
+"begun to dedicate their lives to the flame that burns within them, its "
+"vitality emanates through their skin, scorching their scales to a reddish-"
+"gray."
+msgstr ""
+
+#. [unit_type]: id=Drake Flameheart, race=drake
+#: data/core/units/drakes/Flameheart.cfg:4
+msgid "Drake Flameheart"
+msgstr ""
+
+#. [unit_type]: id=Drake Flameheart, race=drake
+#: data/core/units/drakes/Flameheart.cfg:27
+msgid ""
+"Flamehearts lack the strength to defeat other high-ranking drakes in single "
+"combat, but prefer in any case to avoid confrontation within the tribe. "
+"Experience has taught any drake of this stature the extent of his authority: "
+"where he can push those he leads and when it is best to leave them to their "
+"own devices. Only occasionally will a Flameheart challenge his tribe's "
+"leader for supremacy, and only if he is sure of the support of his fellow "
+"drakes."
+msgstr ""
+
+#. [unit_type]: id=Drake Flare, race=drake
+#: data/core/units/drakes/Flare.cfg:4
+msgid "Drake Flare"
+msgstr ""
+
+#. [unit_type]: id=Drake Flare, race=drake
+#: data/core/units/drakes/Flare.cfg:26
+msgid ""
+"Respected for the heat of their flame and revered for their charisma, Flares "
+"aspire to become great leaders of their people, both in war and peace. "
+"Though a small isolated tribe will sometimes accept a Flare as a leader, "
+"they are more often seen leading small war parties or mediating disputes "
+"with a subtle hand."
+msgstr ""
+
+#. [unit_type]: id=Drake Glider, race=drake
+#: data/core/units/drakes/Glider.cfg:4
+msgid "Drake Glider"
+msgstr ""
+
+#. [unit_type]: id=Drake Glider, race=drake
+#: data/core/units/drakes/Glider.cfg:23
+msgid ""
+"Many drakes enjoy the flow of air over scales, leading them to don the light "
+"robes of the Glider caste. The long forays to the far reaches of the tribal "
+"territory are their passion, though other drakes often wonder what could "
+"lead someone to take on the drudgery of hunting when more glory could be "
+"found on the battlefield.\n"
+"\n"
+"Most often, Gliders hunt larger game like deer, swine, or dolphins; the "
+"drakes' ancestral ability to aim fire, hampered in other castes by armor, is "
+"invaluable for flushing and herding the quarry without harming it. If a "
+"Glider is called to the battlefield, he prefers to harass the enemy from a "
+"distance – and if all else fails, he will fight with his feet, keeping his "
+"precious wings as far from the enemy as possible."
+msgstr ""
+
+#. [attack]: type=impact
+#: data/core/units/drakes/Glider.cfg:44
+#: data/core/units/drakes/Hurricane.cfg:129 data/core/units/drakes/Sky.cfg:128
+msgid "slam"
+msgstr ""
+
+#. [unit_type]: id=Hurricane Drake, race=drake
+#: data/core/units/drakes/Hurricane.cfg:4
+msgid "Hurricane Drake"
+msgstr ""
+
+#. [unit_type]: id=Hurricane Drake, race=drake
+#: data/core/units/drakes/Hurricane.cfg:20
+msgid ""
+"Hurricane Drakes have moved above the menial hunting and gathering to which "
+"the lower members of their caste are relegated. They are an integral part of "
+"the drakes' military, scouting ahead of the main forces, carrying messages "
+"across the battlefield, and falling upon the enemy where it's least "
+"expected. Being allowed - grudgingly - to train with the newcomers from "
+"other castes has increased their skill in combat, but their greatest "
+"strength still lies in their speed and flight."
+msgstr ""
+
+#. [unit_type]: id=Inferno Drake, race=drake
+#: data/core/units/drakes/Inferno.cfg:4
+msgid "Inferno Drake"
+msgstr ""
+
+#. [unit_type]: id=Inferno Drake, race=drake
+#: data/core/units/drakes/Inferno.cfg:21
+msgid ""
+"Inferno Drakes are masters of the fire they breathe, respected and feared in "
+"their tribes nearly as much as the draconic ancestors themselves. They can "
+"prowl unharmed through a firestorm of their own creation, scales tinged red "
+"from extensive use of their inner flame, their sculpted red-gold armor "
+"enhancing the illusion that they are, in fact, dragons."
+msgstr ""
+
+#. [unit_type]: id=Sky Drake, race=drake
+#: data/core/units/drakes/Sky.cfg:4
+msgid "Sky Drake"
+msgstr ""
+
+#. [unit_type]: id=Sky Drake, race=drake
+#: data/core/units/drakes/Sky.cfg:19
+msgid ""
+"The lightweight ceramic armor that the Sky Drakes wear is a symbol of their "
+"rank, glazed silver to honor their connection to the air. As leaders of the "
+"hunt, they are often away from their homes for long periods of time. Each "
+"tries to bring as much game home as possible, competing to gain the respect "
+"of their tribe and, just possibly, time with one of the closely-guarded "
+"drake females."
+msgstr ""
+
+#. [unit_type]: id=Drake Thrasher, race=drake
+#: data/core/units/drakes/Thrasher.cfg:4
+msgid "Drake Thrasher"
+msgstr ""
+
+#. [unit_type]: id=Drake Thrasher, race=drake
+#: data/core/units/drakes/Thrasher.cfg:19
+msgid ""
+"Instead of letting themselves be bound by their armor, Thrashers have "
+"learned to redirect its weight to supplement their bodies' momentum, adding "
+"power to the blows of their short spears and hand-mounted claws. Equipment "
+"and body are one; even their thick helms and the thick skulls beneath them "
+"are weapons. A Thrasher will gladly fulfill his caste duties, as long as it "
+"can be done on the battlefield."
+msgstr ""
+
+#. [unit_type]: id=Drake Warden, race=drake
+#: data/core/units/drakes/Warden.cfg:4
+msgid "Drake Warden"
+msgstr ""
+
+#. [unit_type]: id=Drake Warden, race=drake
+#: data/core/units/drakes/Warden.cfg:20
+msgid ""
+"Wardens are set apart from the rest of the Clasher caste by two things: "
+"their ornate helms, modeled after their dragon ancestors, and the care with "
+"which they drape their armored wings in brightly colored cloth before "
+"reporting for duty. Though this mode of dress stems from the pride they feel "
+"for their role in drake society, it is far from ceremonial. Their cumbersome "
+"bronze plate is the strongest work from the Drake forges, and their halberds "
+"can cleave a human in half."
+msgstr ""
+
+#. [unit_type]: id=Drake Warrior, race=drake
+#: data/core/units/drakes/Warrior.cfg:4
+msgid "Drake Warrior"
+msgstr ""
+
+#. [unit_type]: id=Drake Warrior, race=drake
+#: data/core/units/drakes/Warrior.cfg:19
+msgid ""
+"Drakes of the Fighter caste, like the Warrior, are the foundation of any "
+"tribe's army. No special abilities or skills set them apart; only their "
+"natural brute strength and military training help them carve their way "
+"through enemy forces. They fight as they have for centuries, clad in ceramic-"
+"plated leather with the traditional war blade mounted on the back of each "
+"hand."
+msgstr ""
+
+#. [unit_type]: id=Dwarvish Berserker, race=dwarf
+#: data/core/units/dwarves/Berserker.cfg:4
+msgid "Dwarvish Berserker"
+msgstr ""
+
+#. [unit_type]: id=Dwarvish Berserker, race=dwarf
+#: data/core/units/dwarves/Berserker.cfg:20
+msgid ""
+"Berserkers are a rare caste of Dwarves, who work themselves into a towering "
+"rage before combat. These warriors disdain all notion of defense, thinking "
+"only of the unrelenting assaults for which they are legendary."
+msgstr ""
+
+#. [attack]: type=blade
+#: data/core/units/dwarves/Berserker.cfg:44
+#: data/core/units/dwarves/Ulfserker.cfg:45
+msgid "berserker frenzy"
+msgstr ""
+
+#. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
+#: data/core/units/dwarves/Dragonguard.cfg:4
+msgid "Dwarvish Dragonguard"
+msgstr ""
+
+#. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
+#: data/core/units/dwarves/Dragonguard.cfg:21
+msgid ""
+"It is not clear why the Dragonguards are called what they are, a name given "
+"by their dwarven brethren. Some speculate that the name comes from their "
+"weapon of choice, these strange staffs that belch fire and death. Others "
+"have surmised that it is because such weapons would be a threat against even "
+"a true Dragon, should such a thing be seen again in the known world. "
+"Whatever the case, it is for these weapons that the guardians of the great "
+"Dwarven citadels are both renowned and feared; weapons that have broken the "
+"mightiest of warriors with a single blow."
+msgstr ""
+
+#. [attack]: type=blade
+#: data/core/units/dwarves/Dragonguard.cfg:39
+#: data/core/units/dwarves/Thunderer.cfg:111
+#: data/core/units/dwarves/Thunderguard.cfg:40
+#: data/core/units/humans/Outlaw_Assassin.cfg:40
+#: data/core/units/humans/Outlaw_Rogue.cfg:39
+#: data/core/units/humans/Outlaw_Thief.cfg:188
+#: data/core/units/humans/Woodsman.cfg:42
+#: data/core/units/humans/Woodsman_Huntsman.cfg:51
+#: data/core/units/humans/Woodsman_Poacher.cfg:48
+#: data/core/units/humans/Woodsman_Trapper.cfg:82
+#: data/core/units/orcs/Archer.cfg:26 data/core/units/orcs/Assassin.cfg:26
+#: data/core/units/orcs/Slayer.cfg:27
+#: data/core/units/undead/Skele_Banebow.cfg:31
+#: data/core/units/undead/Skele_Bone_Shooter.cfg:29
+msgid "dagger"
+msgstr ""
+
+#. [attack]: type=pierce
+#: data/core/units/dwarves/Dragonguard.cfg:48
+msgid "dragonstaff"
+msgstr ""
+
+#. [unit_type]: id=Dwarvish Explorer, race=dwarf
+#: data/core/units/dwarves/Explorer.cfg:4
+msgid "Dwarvish Explorer"
+msgstr ""
+
+#. [unit_type]: id=Dwarvish Explorer, race=dwarf
+#: data/core/units/dwarves/Explorer.cfg:24
+msgid ""
+"Dwarvish Explorers are peerless survivalists. Using only the equipment they "
+"carry, they can range for months around the forests and mountains looking "
+"for new seams of ore and deposits of minerals. Whilst their skill in a melee "
+"is less than some other dwarves, they are unmatched with throwing axes, "
+"having practiced this skill hunting in the mountains. Their maneuverability "
+"makes them dangerous and tricky foes."
+msgstr ""
+
+#. [attack]: type=blade
+#: data/core/units/dwarves/Explorer.cfg:42 data/core/units/dwarves/Lord.cfg:52
+#: data/core/units/dwarves/Steelclad.cfg:52
+#: data/core/units/undead/Skele_Death_Knight.cfg:45
+msgid "battle axe"
+msgstr ""
+
+#. [attack]: type=blade
+#: data/core/units/dwarves/Explorer.cfg:51
+#: data/core/units/dwarves/Fighter.cfg:47
+#: data/core/units/dwarves/Pathfinder.cfg:37
+#: data/core/units/dwarves/Pathfinder.cfg:45
+#: data/core/units/dwarves/Scout.cfg:37 data/core/units/dwarves/Scout.cfg:45
+#: data/core/units/undead/Skele_Deathblade.cfg:162
+#: data/core/units/undead/Skele_Draug.cfg:30
+#: data/core/units/undead/Skele_Revenant.cfg:43
+#: data/core/units/undead/Skeleton.cfg:119
+msgid "axe"
+msgstr ""
+
+#. [unit_type]: id=Dwarvish Fighter, race=dwarf
+#: data/core/units/dwarves/Fighter.cfg:4
+msgid "Dwarvish Fighter"
+msgstr ""
+
+#. [unit_type]: id=Dwarvish Fighter, race=dwarf
+#: data/core/units/dwarves/Fighter.cfg:20
+msgid ""
+"Dwarvish Fighters wield mighty battle axes and hammers, which make them "
+"feared opponents in close-range combat. They are excellent in mountainous "
+"terrain or underground. Their power and endurance more than compensate for "
+"their relatively poor mobility."
+msgstr ""
+
+#. [attack]: type=impact
+#: data/core/units/dwarves/Fighter.cfg:55 data/core/units/dwarves/Lord.cfg:61
+#: data/core/units/dwarves/Steelclad.cfg:61
+#: data/core/units/trolls/Great.cfg:27 data/core/units/trolls/Hero.cfg:27
+#: data/core/units/trolls/Warrior.cfg:27
+msgid "hammer"
+msgstr ""
+
+#. [unit_type]: id=Dwarvish Guardsman, race=dwarf
+#: data/core/units/dwarves/Guardsman.cfg:4
+msgid "Dwarvish Guardsman"
+msgstr ""
+
+#. [unit_type]: id=Dwarvish Guardsman, race=dwarf
+#: data/core/units/dwarves/Guardsman.cfg:20
+msgid ""
+"The dwarven race has always been famed for its sturdiness of build, and many "
+"of their warriors outfit themselves to take advantage of this. Dwarven "
+"guardsmen march into battle with tower shields and spears. Most often, their "
+"role is to hold the line, and to take a heavy toll on those who try to break "
+"it. As the line marches forward, they act to secure its hard-won advance."
+msgstr ""
+
+#. [attack]: type=pierce
+#: data/core/units/dwarves/Guardsman.cfg:52
+#: data/core/units/dwarves/Sentinel.cfg:60
+#: data/core/units/dwarves/Stalwart.cfg:55
+#: data/core/units/humans/Loyalist_Javelineer.cfg:51
+#: data/core/units/humans/Loyalist_Spearman.cfg:71
+msgid "javelin"
+msgstr ""
+
+#. [unit_type]: id=Dwarvish Lord, race=dwarf
+#: data/core/units/dwarves/Lord.cfg:4
+msgid "Dwarvish Lord"
+msgstr ""
+
+#. [unit_type]: id=Dwarvish Lord, race=dwarf
+#: data/core/units/dwarves/Lord.cfg:20
+msgid ""
+"Clad in shining armor, these dwarves look like kings from under the "
+"mountains. They wield axe and hammer with masterful skill, and can hit a "
+"target with a thrown hand axe at several paces. Though slow on their feet, "
+"these dwarves are a testament to the prowess of their kin."
+msgstr ""
+
+#. [attack]: type=blade
+#: data/core/units/dwarves/Lord.cfg:70
+msgid "hatchet"
+msgstr ""
+
+#. [unit_type]: id=Dwarvish Pathfinder, race=dwarf
+#: data/core/units/dwarves/Pathfinder.cfg:4
+msgid "Dwarvish Pathfinder"
+msgstr ""
+
+#. [unit_type]: id=Dwarvish Pathfinder, race=dwarf
+#: data/core/units/dwarves/Pathfinder.cfg:18
+msgid ""
+"These hardy dwarves are sometimes away from their caves for long periods, "
+"scouting and patrolling the borders. They spend this time watching for "
+"invaders, and fighting bandits and thieves who encroach on dwarvish "
+"territory. They are powerful fighters in a melee, and from a distance their "
+"deftly thrown axes can rival the power and accuracy of a human archer."
+msgstr ""
+
+#. [unit_type]: id=Dwarvish Runemaster, race=dwarf
+#: data/core/units/dwarves/Runemaster.cfg:4
+msgid "Dwarvish Runemaster"
+msgstr ""
+
+#. [unit_type]: id=Dwarvish Runemaster, race=dwarf
+#: data/core/units/dwarves/Runemaster.cfg:21
+msgid ""
+"Dwarven magic most often manifests itself by the inscription of runes in the "
+"surface of an object, which by their mere presence somehow imbue it with "
+"power. Though rarely seen in combat, a master of these runes can put them to "
+"terrifying use."
+msgstr ""
+
+#. [attack]: type=impact
+#: data/core/units/dwarves/Runemaster.cfg:38
+msgid "runic hammer"
+msgstr ""
+
+#. [attack]: type=fire
+#: data/core/units/dwarves/Runemaster.cfg:47
+msgid "lightning bolt"
+msgstr ""
+
+#. [unit_type]: id=Dwarvish Scout, race=dwarf
+#: data/core/units/dwarves/Scout.cfg:4
+msgid "Dwarvish Scout"
+msgstr ""
+
+#. [unit_type]: id=Dwarvish Scout, race=dwarf
+#: data/core/units/dwarves/Scout.cfg:19
+msgid ""
+"Although the dwarves cannot match the taller races in a sprint, when "
+"unencumbered by heavy armor their tremendous stamina and endurance allows "
+"them to match all but the fastest on foot. Dwarvish Scouts use this to their "
+"advantage, ranging ahead of the main force and reporting back on troop "
+"movements and dispositions, or securing important objectives. Outside of "
+"battle, they are often used to relay messages between dwarvish communities. "
+"However, they pay for their speed with the poorer protection provided by "
+"their lighter armor."
+msgstr ""
+
+#. [unit_type]: id=Dwarvish Sentinel, race=dwarf
+#: data/core/units/dwarves/Sentinel.cfg:4
+msgid "Dwarvish Sentinel"
+msgstr ""
+
+#. [unit_type]: id=Dwarvish Sentinel, race=dwarf
+#: data/core/units/dwarves/Sentinel.cfg:20
+msgid ""
+"Champions among their fellow troops, the dwarven sentinels form the bulwark "
+"of their battle lines. Leading a direct assault against a line that they "
+"fortify, is often out of the question; it tends toward being suicidal, "
+"rather than merely ineffectual. These dwarves are masters of the melee, and "
+"can hold a patch of earth with the singleminded tenacity of an oak."
+msgstr ""
+
+#. [unit_type]: id=Dwarvish Stalwart, race=dwarf
+#: data/core/units/dwarves/Stalwart.cfg:4
+msgid "Dwarvish Stalwart"
+msgstr ""
+
+#. [unit_type]: id=Dwarvish Stalwart, race=dwarf
+#: data/core/units/dwarves/Stalwart.cfg:19
+msgid ""
+"The wiles of experience and training turn guardsmen into worthy soldiers. "
+"These stalwart troops are equipped to match their skills, and can hold their "
+"ground against all but the most visceral assault. It is a dangerous thing to "
+"lose a foothold to one such as these, for it will not be easily reprised."
+msgstr ""
+
+#. [unit_type]: id=Dwarvish Steelclad, race=dwarf
+#: data/core/units/dwarves/Steelclad.cfg:4
+msgid "Dwarvish Steelclad"
+msgstr ""
+
+#. [unit_type]: id=Dwarvish Steelclad, race=dwarf
+#: data/core/units/dwarves/Steelclad.cfg:20
+msgid ""
+"The more experienced Dwarvish Steelclad fighters wear heavy chain mail and "
+"plate armor, for which they are rightly famous."
+msgstr ""
+
+#. [unit_type]: id=Dwarvish Thunderer, race=dwarf
+#: data/core/units/dwarves/Thunderer.cfg:4
+msgid "Dwarvish Thunderer"
+msgstr ""
+
+#. [unit_type]: id=Dwarvish Thunderer, race=dwarf
+#: data/core/units/dwarves/Thunderer.cfg:20
+msgid ""
+"When the men of Wesnoth first encountered the dwarves, they were mystified "
+"by the power of the Dwarvish Thunderers, who were able to hurl death from "
+"afar through the apparatus of these strange wands they carried into battle. "
+"The deafening noise of these 'thundersticks' is terrifying to behold, and is "
+"made more so by the secrecy which dwarves wrap about their workings."
+msgstr ""
+
+#. [attack]: type=pierce
+#: data/core/units/dwarves/Thunderer.cfg:120
+#: data/core/units/dwarves/Thunderguard.cfg:49
+msgid "thunderstick"
+msgstr ""
+
+#. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
+#: data/core/units/dwarves/Thunderguard.cfg:4
+msgid "Dwarvish Thunderguard"
+msgstr ""
+
+#. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
+#: data/core/units/dwarves/Thunderguard.cfg:22
+msgid ""
+"The Dwarven Thunderguards are famed for their curious weaponry, these "
+"strange staffs of wood and iron that make a thunderous noise in their anger. "
+"The machinations behind this weaponry are a mystery, a secret taken to the "
+"grave by the dwarves of Knalga who wield them, and are assumed to have even "
+"forged them. The most that is known are reports of dwarves pouring a strange "
+"black dust into the mouth of their weapons, which some say is a food to fuel "
+"the beast imprisoned within.\n"
+"\n"
+"Though a single shot from these 'thundersticks' can take several minutes to "
+"prepare, the results are seen by the Dwarves as being well worth the wait."
+msgstr ""
+
+#. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
+#: data/core/units/dwarves/Ulfserker.cfg:4
+msgid "Dwarvish Ulfserker"
+msgstr ""
+
+#. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
+#: data/core/units/dwarves/Ulfserker.cfg:21
+msgid ""
+"Dwarves are an ancient race of powerful fighters. Ulfserkers are the most "
+"ferocious of these; in battle, they will work themselves into a blind rage "
+"wherein they feel neither fear nor pain, and will pay no heed to any wounds "
+"they receive."
+msgstr ""
+
+#. [unit_type]: id=Elvish Archer, race=elf
+#: data/core/units/elves/Archer.cfg:4
+msgid "Elvish Archer"
+msgstr ""
+
+#. [unit_type]: id=Elvish Archer, race=elf
+#: data/core/units/elves/Archer.cfg:21
+msgid ""
+"Elves have always had a reputation for archery, a skill that, for many "
+"reasons, comes naturally to them. Even the frail of body can be deadly with "
+"a bow in hand, and in times of war, many will take up this weapon. Though "
+"their relative inexperience with combat leaves them somewhat vulnerable, "
+"their natural grace ensures that they can best any of humanity's fresh "
+"recruits."
+msgstr ""
+
+#. [attack]: type=blade
+#. [attack]: type=arcane
+#: data/core/units/elves/Archer.cfg:37 data/core/units/elves/Avenger.cfg:76
+#: data/core/units/elves/Captain.cfg:47 data/core/units/elves/Champion.cfg:36
+#: data/core/units/elves/Fighter.cfg:36 data/core/units/elves/Hero.cfg:35
+#: data/core/units/elves/High_Lord.cfg:73 data/core/units/elves/Lord.cfg:39
+#: data/core/units/elves/Marksman.cfg:64 data/core/units/elves/Marshal.cfg:46
+#: data/core/units/elves/Outrider.cfg:46 data/core/units/elves/Ranger.cfg:73
+#: data/core/units/elves/Rider.cfg:48 data/core/units/elves/Scout.cfg:47
+#: data/core/units/elves/Sharpshooter.cfg:63
+#: data/core/units/humans/Horse_Knight.cfg:35
+#: data/core/units/humans/Horse_Paladin.cfg:52
+#: data/core/units/humans/Loyalist_Cavalryman.cfg:64
+#: data/core/units/humans/Loyalist_Dragoon.cfg:49
+#: data/core/units/humans/Loyalist_Lieutenant.cfg:46
+#: data/core/units/humans/Loyalist_Longbowman.cfg:39
+#: data/core/units/humans/Loyalist_Master_Bowman.cfg:39
+#: data/core/units/humans/Loyalist_Sergeant.cfg:47
+#: data/core/units/humans/Loyalist_Swordsman.cfg:39
+#: data/core/units/humans/Woodsman_Ranger.cfg:59
+#: data/core/units/nagas/Fighter.cfg:102 data/core/units/nagas/Myrmidon.cfg:43
+#: data/core/units/nagas/Warrior.cfg:41 data/core/units/orcs/Grunt.cfg:71
+#: data/core/units/orcs/Leader.cfg:28
+msgid "sword"
+msgstr ""
+
+#. [attack]: type=pierce
+#. [attack]: type=fire
+#: data/core/units/elves/Archer.cfg:46 data/core/units/elves/Avenger.cfg:85
+#: data/core/units/elves/Captain.cfg:56 data/core/units/elves/Champion.cfg:45
+#: data/core/units/elves/Fighter.cfg:45 data/core/units/elves/Hero.cfg:44
+#: data/core/units/elves/Marshal.cfg:55 data/core/units/elves/Outrider.cfg:55
+#: data/core/units/elves/Ranger.cfg:82 data/core/units/elves/Rider.cfg:57
+#: data/core/units/elves/Scout.cfg:56
+#: data/core/units/humans/Loyalist_Bowman.cfg:46
+#: data/core/units/humans/Woodsman.cfg:51
+#: data/core/units/humans/Woodsman_Huntsman.cfg:60
+#: data/core/units/humans/Woodsman_Poacher.cfg:57
+#: data/core/units/humans/Woodsman_Ranger.cfg:68
+#: data/core/units/humans/Woodsman_Trapper.cfg:91
+#: data/core/units/orcs/Archer.cfg:35 data/core/units/orcs/Archer.cfg:44
+#: data/core/units/orcs/Warlord.cfg:34
+#: data/core/units/undead/Skele_Banebow.cfg:40
+#: data/core/units/undead/Skele_Bone_Shooter.cfg:38
+#: data/core/units/undead/Skeleton_Archer.cfg:41
+msgid "bow"
+msgstr ""
+
+#. [female]
+#: data/core/units/elves/Archer.cfg:183
+msgid "female^Elvish Archer"
+msgstr ""
+
+#. [unit_type]: id=Elvish Avenger, race=elf
+#: data/core/units/elves/Avenger.cfg:4
+msgid "Elvish Avenger"
+msgstr ""
+
+#. [unit_type]: id=Elvish Avenger, race=elf
+#: data/core/units/elves/Avenger.cfg:23
+msgid ""
+"The curious name of the elvish 'Avengers' comes from a tactic often employed "
+"by these master rangers. The enemy is allowed to break through a feint "
+"defense, and when the vulnerable troops behind the front line follow, these "
+"archers break cover and attack, cutting the supply lines and surrounding the "
+"enemy in one fell stroke.\n"
+"\n"
+"This has, at times, been interpreted as a form of vengeance for their "
+"brethren lost earlier in the battle. Although not so base in design, it is "
+"not at all inaccurate."
+msgstr ""
+
+#. [female]
+#: data/core/units/elves/Avenger.cfg:192
+msgid "female^Elvish Avenger"
+msgstr ""
+
+#. [unit_type]: id=Elvish Captain, race=elf
+#: data/core/units/elves/Captain.cfg:4
+msgid "Elvish Captain"
+msgstr ""
+
+#. [unit_type]: id=Elvish Captain, race=elf
+#: data/core/units/elves/Captain.cfg:26
+msgid ""
+"Elves, unlike many other races, will quickly acknowledge and follow any of "
+"their peers who have experience in combat. In this they differ greatly from "
+"humanity, for whom leadership is often a matter of coercion and "
+"intimidation. The combination of their willingness to accept the wisdom of "
+"their leaders, and the tendency to choose leaders of merit is one of the "
+"quiet strengths of the elves."
+msgstr ""
+
+#. [unit_type]: id=Elvish Champion, race=elf
+#: data/core/units/elves/Champion.cfg:4
+msgid "Elvish Champion"
+msgstr ""
+
+#. [unit_type]: id=Elvish Champion, race=elf
+#: data/core/units/elves/Champion.cfg:20
+msgid ""
+"Those few elves who deliberately hone themselves into weapons of war become "
+"something which belies the peace-loving reputation of their race. Dedication "
+"and skill are matched with purity of form, and the result is swordsmanship "
+"to which few can compare. Even their archery, treated as a secondary "
+"pursuit, is masterfully executed."
+msgstr ""
+
+#. [unit_type]: id=Elvish Druid, race=elf
+#: data/core/units/elves/Druid.cfg:4
+msgid "female^Elvish Druid"
+msgstr ""
+
+#. [unit_type]: id=Elvish Druid, race=elf
+#: data/core/units/elves/Druid.cfg:21
+msgid ""
+"The magic of the wood-elves is poorly suited for combat, but effective "
+"nonetheless. The forests in which they thrive can become quickened by a word "
+"of command, and will lash out at those who threaten their peace.\n"
+"\n"
+"The chief ability of Druids lies in healing, and it is for this skill that "
+"they are revered by their people."
+msgstr ""
+
+#. [attack]: type=impact
+#: data/core/units/elves/Druid.cfg:40 data/core/units/elves/Enchantress.cfg:38
+#: data/core/units/elves/Shaman.cfg:42 data/core/units/elves/Sorceress.cfg:40
+#: data/core/units/humans/Mage.cfg:67 data/core/units/humans/Mage_Arch.cfg:81
+#: data/core/units/humans/Mage_Elder.cfg:25
+#: data/core/units/humans/Mage_Great.cfg:42
+#: data/core/units/humans/Mage_Red.cfg:66
+#: data/core/units/humans/Mage_Silver.cfg:48
+#: data/core/units/humans/Mage_White.cfg:133
+#: data/core/units/merfolk/Diviner.cfg:100
+#: data/core/units/merfolk/Enchantress.cfg:37
+#: data/core/units/merfolk/Initiate.cfg:40
+#: data/core/units/merfolk/Priestess.cfg:97
+#: data/core/units/saurians/Augur.cfg:78
+#: data/core/units/saurians/Oracle.cfg:78
+#: data/core/units/saurians/Soothsayer.cfg:78
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:98
+msgid "staff"
+msgstr ""
+
+#. [attack]: type=impact
+#: data/core/units/elves/Druid.cfg:49 data/core/units/elves/Shyde.cfg:54
+msgid "ensnare"
+msgstr ""
+
+#. [attack]: type=pierce
+#: data/core/units/elves/Druid.cfg:61 data/core/units/elves/Shyde.cfg:66
+msgid "thorns"
+msgstr ""
+
+#. [unit_type]: id=Elvish Enchantress, race=elf
+#: data/core/units/elves/Enchantress.cfg:4
+msgid "female^Elvish Enchantress"
+msgstr ""
+
+#. [unit_type]: id=Elvish Enchantress, race=elf
+#: data/core/units/elves/Enchantress.cfg:19
+msgid ""
+"The magic of the elves is wholly unlike that of humanity, so much so that "
+"humans are almost universally incapable of understanding it, let alone using "
+"it. Likewise, those who are masters of it are equally enigmatic; though it "
+"can be said that they are revered by their people, very little can be said "
+"about their actual function or purpose within that society."
+msgstr ""
+
+#. [attack]: type=impact
+#: data/core/units/elves/Enchantress.cfg:48
+#: data/core/units/elves/Shaman.cfg:51 data/core/units/elves/Sorceress.cfg:50
+msgid "entangle"
+msgstr ""
+
+#. [attack]: type=arcane
+#: data/core/units/elves/Enchantress.cfg:59
+#: data/core/units/elves/High_Lord.cfg:82 data/core/units/elves/Lord.cfg:48
+#: data/core/units/elves/Sorceress.cfg:61 data/core/units/elves/Sylph.cfg:65
+msgid "faerie fire"
+msgstr ""
+
+#. [unit_type]: id=Elvish Fighter, race=elf
+#: data/core/units/elves/Fighter.cfg:4
+msgid "Elvish Fighter"
+msgstr ""
+
+#. [unit_type]: id=Elvish Fighter, race=elf
+#: data/core/units/elves/Fighter.cfg:20
+msgid ""
+"Elves are not warlike by nature, but in times of need, their natural grace "
+"and agility serve them well, as does their skillful craftsmanship. An elf "
+"can grasp the basics of swordsmanship and archery in a time uncannily short "
+"by the standards of other races, and put them to effective use on the "
+"battlefield."
+msgstr ""
+
+#. [unit_type]: id=Elvish Hero, race=elf
+#: data/core/units/elves/Hero.cfg:4
+msgid "Elvish Hero"
+msgstr ""
+
+#. [unit_type]: id=Elvish Hero, race=elf
+#: data/core/units/elves/Hero.cfg:19
+msgid ""
+"Elves, though not warlike by nature, are swift to learn; a relatively small "
+"amount of experience will turn an elf from a competent fighter into a master "
+"of combat. Those who are honored as heroes are strong with both sword and "
+"bow, and their skill once acquired does not fade for lack of practice."
+msgstr ""
+
+#. [unit_type]: id=Elvish High Lord, race=elf
+#: data/core/units/elves/High_Lord.cfg:4
+msgid "Elvish High Lord"
+msgstr ""
+
+#. [unit_type]: id=Elvish High Lord, race=elf
+#: data/core/units/elves/High_Lord.cfg:19
+msgid ""
+"The leaders of elvenkind command an instinctive loyalty from their people "
+"that rulers of other races can only envy, and earn it with great mindfulness "
+"and wisdom. Quiet and contemplative in times of peace, a High Lord in the "
+"full of his wrath is an awesome sight indeed."
+msgstr ""
+
+#. [unit_type]: id=Elvish Lady, race=elf
+#: data/core/units/elves/Lady.cfg:5
+msgid "female^Elvish Lady"
+msgstr ""
+
+#. [unit_type]: id=Elvish Lady, race=elf
+#: data/core/units/elves/Lady.cfg:21
+msgid ""
+"Elves choose their leaders for their wisdom and sensitivity to the balance "
+"of universal forces; foresight is what has protected them in times of "
+"uncertainty. Their just reign is rewarded by the unflagging fealty of their "
+"people, which is the greatest gift for which any ruler could ask."
+msgstr ""
+
+#. [unit_type]: id=Elvish Lord, race=elf
+#: data/core/units/elves/Lord.cfg:4
+msgid "Elvish Lord"
+msgstr ""
+
+#. [unit_type]: id=Elvish Lord, race=elf
+#: data/core/units/elves/Lord.cfg:18
+msgid ""
+"The nobility of the elves are possessed of merit to match their standing in "
+"society. Elvish Lords are the wisest and strongest of their people, and are "
+"fearsome in their command of magic."
+msgstr ""
+
+#. [unit_type]: id=Elvish Marksman, race=elf
+#: data/core/units/elves/Marksman.cfg:4
+msgid "Elvish Marksman"
+msgstr ""
+
+#. [unit_type]: id=Elvish Marksman, race=elf
+#: data/core/units/elves/Marksman.cfg:20
+msgid ""
+"Elves are wonderously keen-sighted, a gift which contributes to their "
+"mastery of the bow. An elf practiced at archery can hit targets that a man "
+"couldn't even see, and can nock a second arrow almost as soon as the first "
+"is let fly. Realizing this prodigious skill does come with one cost, that "
+"being a lack of practice with the sword."
+msgstr ""
+
+#. [attack]: type=pierce
+#: data/core/units/elves/Marksman.cfg:73
+#: data/core/units/elves/Sharpshooter.cfg:72
+#: data/core/units/humans/Loyalist_Longbowman.cfg:48
+#: data/core/units/humans/Loyalist_Master_Bowman.cfg:48
+msgid "longbow"
+msgstr ""
+
+#. [female]
+#: data/core/units/elves/Marksman.cfg:183
+msgid "female^Elvish Marksman"
+msgstr ""
+
+#. [unit_type]: id=Elvish Marshal, race=elf
+#: data/core/units/elves/Marshal.cfg:4
+msgid "Elvish Marshal"
+msgstr ""
+
+#. [unit_type]: id=Elvish Marshal, race=elf
+#: data/core/units/elves/Marshal.cfg:27
+msgid ""
+"The longevity and natural intelligence of elves make them apt for military "
+"matters, enough even to counter their general distaste for war. Elves "
+"remember things much more clearly than humankind, and can often intuit what "
+"others can only be trained to do. Certainly, on those rare occasions when an "
+"elf sets his mind to war, the strategy that results is often the work of a "
+"master."
+msgstr ""
+
+#. [unit_type]: id=Elvish Outrider, race=elf
+#: data/core/units/elves/Outrider.cfg:4
+msgid "Elvish Outrider"
+msgstr ""
+
+#. [unit_type]: id=Elvish Outrider, race=elf
+#: data/core/units/elves/Outrider.cfg:23
+msgid ""
+"Elvish Outriders are trained as the royal couriers of the elven kingdoms. "
+"Despite the peaceful nature of their people, their experience makes them "
+"quite deadly in combat. No human has ever come close to their skill in using "
+"a bow on horseback - in fact, most would be hard pressed to equal it "
+"standing on solid ground.\n"
+"\n"
+"The speed of these soldiers allows the elves to strike when and where they "
+"choose when fighting on their home ground, a fact that has saved many of "
+"their number from death."
+msgstr ""
+
+#. [unit_type]: id=Elvish Ranger, race=elf
+#: data/core/units/elves/Ranger.cfg:3
+msgid "Elvish Ranger"
+msgstr ""
+
+#. [unit_type]: id=Elvish Ranger, race=elf
+#: data/core/units/elves/Ranger.cfg:20
+msgid ""
+"Though a man might spend years in the forest, he will never shake the "
+"feeling that he is a guest in a realm of which he is not truly a part. With "
+"elves, this is quite reversed. Any elf that studies the lore of the woods "
+"rapidly becomes a master of them. This, combined with a considerable skill "
+"at archery and swordsmanship, is very useful in warfare."
+msgstr ""
+
+#. [female]
+#: data/core/units/elves/Ranger.cfg:189
+msgid "female^Elvish Ranger"
+msgstr ""
+
+#. [unit_type]: id=Elvish Rider, race=elf
+#: data/core/units/elves/Rider.cfg:4
+msgid "Elvish Rider"
+msgstr ""
+
+#. [unit_type]: id=Elvish Rider, race=elf
+#: data/core/units/elves/Rider.cfg:24
+msgid ""
+"The master horsemen of the elves are able to move through forests at a speed "
+"which would be suicidal for any human. Awe of the rider is quite justified - "
+"but questions have also been raised about the stock of the horses, for the "
+"feats they perform seem almost supernatural.\n"
+"\n"
+"This combination of incredible mobility and potent combat strength is one of "
+"the greatest assets the elves possess in warfare."
+msgstr ""
+
+#. [unit_type]: id=Elvish Scout, race=elf
+#: data/core/units/elves/Scout.cfg:4
+msgid "Elvish Scout"
+msgstr ""
+
+#. [unit_type]: id=Elvish Scout, race=elf
+#: data/core/units/elves/Scout.cfg:23
+msgid ""
+"The horsemen of the wood elves have some skill with bow and sword, but their "
+"true skill lies in their horsemanship. Even other elves are impressed by "
+"their uncanny speed in the woods, and their ability to dart through the "
+"thick of the forest with nary a scratch. They may be the only cavalry in "
+"existence that fares better in the woods than on open ground."
+msgstr ""
+
+#. [unit_type]: id=Elvish Shaman, race=elf
+#: data/core/units/elves/Shaman.cfg:4
+msgid "female^Elvish Shaman"
+msgstr ""
+
+#. [unit_type]: id=Elvish Shaman, race=elf
+#: data/core/units/elves/Shaman.cfg:23
+msgid ""
+"Being partly faerie in nature, elves have an inherent capability for magic. "
+"This is realized in their affinity with the natural world, which they can "
+"call upon as an ally in combat. Enemies wandering in their forests may soon "
+"find themselves entangled by roots and hindered by the very ground they "
+"stand on.\n"
+"\n"
+"The healing abilities of the elves are also remarkable, and of capital use "
+"in battle."
+msgstr ""
+
+#. [unit_type]: id=Elvish Sharpshooter, race=elf
+#: data/core/units/elves/Sharpshooter.cfg:4
+msgid "Elvish Sharpshooter"
+msgstr ""
+
+#. [unit_type]: id=Elvish Sharpshooter, race=elf
+#: data/core/units/elves/Sharpshooter.cfg:21
+msgid ""
+"There was a legend of an elf who stopped an arrow by shooting it out of the "
+"air with one of his own. It is a testament to the skill of the elves that "
+"such a story could be taken seriously. The sharpshooters of the elves have, "
+"quite simply, mastered the art of archery."
+msgstr ""
+
+#. [female]
+#: data/core/units/elves/Sharpshooter.cfg:182
+msgid "female^Elvish Sharpshooter"
+msgstr ""
+
+#. [unit_type]: id=Elvish Shyde, race=elf
+#: data/core/units/elves/Shyde.cfg:4
+msgid "female^Elvish Shyde"
+msgstr ""
+
+#. [unit_type]: id=Elvish Shyde, race=elf
+#: data/core/units/elves/Shyde.cfg:22
+msgid ""
+"Devotion to the path of faerie may will eventually transform an elf maiden "
+"into a creature of both worlds. Guided by a nature which is little "
+"understood, these beautiful stewards of the elven forests epitomize the "
+"grace and mystery of their people."
+msgstr ""
+
+#. [attack]: type=impact
+#: data/core/units/elves/Shyde.cfg:41 data/core/units/elves/Sylph.cfg:40
+msgid "faerie touch"
+msgstr ""
+
+#. [unit_type]: id=Elvish Sorceress, race=elf
+#: data/core/units/elves/Sorceress.cfg:4
+msgid "female^Elvish Sorceress"
+msgstr ""
+
+#. [unit_type]: id=Elvish Sorceress, race=elf
+#: data/core/units/elves/Sorceress.cfg:21
+msgid ""
+"The world of faerie is far more potent than the corporeal world. Simply "
+"bringing some of this world into our own can have violent results. This is "
+"well-understood by the elves, although rarely used with malicious intent; "
+"doing so is no easy task, and is a very ill-regarded use of their strength.\n"
+"\n"
+"Those able to do so are roughly titled as 'sorceresses' by other races; and "
+"certainly are capable of acting the part."
+msgstr ""
+
+#. [unit_type]: id=Elvish Sylph, race=elf
+#: data/core/units/elves/Sylph.cfg:4
+msgid "female^Elvish Sylph"
+msgstr ""
+
+#. [unit_type]: id=Elvish Sylph, race=elf
+#: data/core/units/elves/Sylph.cfg:21
+msgid ""
+"Rarely seen, the sage-like Sylphs are masters of both their faerie and "
+"mundane natures. They are possessed of wondrous, and sometimes terrifying "
+"powers. Legends concerning these have given other races a healthy fear of "
+"the elves."
+msgstr ""
+
+#. [attack]: type=impact
+#: data/core/units/elves/Sylph.cfg:53
+msgid "gossamer"
+msgstr ""
+
+#. [unit_type]: id=Fog Clearer, race=monster
+#: data/core/units/fake/Fog_Clearer.cfg:7
+msgid "dummy_unit^Fog Clearer"
+msgstr ""
+
+#. [unit_type]: id=Direwolf Rider, race=wolf
+#: data/core/units/goblins/Direwolf_Rider.cfg:4
+msgid "Direwolf Rider"
+msgstr ""
+
+#. [unit_type]: id=Direwolf Rider, race=wolf
+#: data/core/units/goblins/Direwolf_Rider.cfg:22
+msgid ""
+"'Dire wolves' differ from the common variety only in size and color. They "
+"typically stand taller than a horse at the shoulder, and have an appetite to "
+"match. Only a madman would willingly encounter them; but goblins, at great "
+"cost to themselves, have managed to tame and ride them.\n"
+"\n"
+"The claws of a wolf are not generally regarded as being the more dangerous "
+"parts, but on a beast this large, they are thicker and longer than iron "
+"nails. Their riders smear a poison on the front set, not unlike that used by "
+"the orcish assassins, making a swipe from these beasts' paws into a most "
+"deadly stroke."
+msgstr ""
+
+#. [unit_type]: id=Goblin Impaler, race=goblin
+#: data/core/units/goblins/Impaler.cfg:4
+msgid "Goblin Impaler"
+msgstr ""
+
+#. [unit_type]: id=Goblin Impaler, race=goblin
+#: data/core/units/goblins/Impaler.cfg:21
+msgid ""
+"Goblins are used by the orcs as skirmishers to disrupt the enemy's battle "
+"line. Those who manage to survive their first few battles equip themselves "
+"with a long spear to compensate for their short reach, and better armor to "
+"guard their diminuitive frames."
+msgstr ""
+
+#. [unit_type]: id=Goblin Knight, race=wolf
+#: data/core/units/goblins/Knight.cfg:4
+msgid "Goblin Knight"
+msgstr ""
+
+#. [unit_type]: id=Goblin Knight, race=wolf
+#: data/core/units/goblins/Knight.cfg:21
+msgid ""
+"The Goblin 'Knights' have little in common with the men who share that "
+"title, and the title is bestowed in mockery by their enemies. The similarity "
+"is simply that they are the elite of the wolf riders, likely promoted to "
+"their position by their success in some audacious raid.\n"
+"\n"
+"The wolves they are given are bred for speed and strength, making them quite "
+"dangerous in combat."
+msgstr ""
+
+#. [unit_type]: id=Goblin Pillager, race=wolf
+#: data/core/units/goblins/Pillager.cfg:4
+msgid "Goblin Pillager"
+msgstr ""
+
+#. [unit_type]: id=Goblin Pillager, race=wolf
+#: data/core/units/goblins/Pillager.cfg:20
+msgid ""
+"Some Goblins train their wolves to overcome their fear of fire. In raids, "
+"these goblins take a supporting role; they will torch the homes and crops of "
+"their foes, and also carry nets to wreak havoc against those attempting to "
+"rally for defense or reprisal."
+msgstr ""
+
+#. [attack]: type=fire
+#: data/core/units/goblins/Pillager.cfg:56
+msgid "torch"
+msgstr ""
+
+#. [attack]: type=impact
+#: data/core/units/goblins/Pillager.cfg:65
+#: data/core/units/merfolk/Entangler.cfg:35
+#: data/core/units/merfolk/Netcaster.cfg:46
+msgid "net"
+msgstr ""
+
+#. [unit_type]: id=Goblin Rouser, race=goblin
+#: data/core/units/goblins/Rouser.cfg:4
+msgid "Goblin Rouser"
+msgstr ""
+
+#. [unit_type]: id=Goblin Rouser, race=goblin
+#: data/core/units/goblins/Rouser.cfg:22
+msgid ""
+"Standard-bearers are an oddity amongst goblins. A goblin who has survived "
+"enough battles to be considered a veteran is rare enough, and it is rarer "
+"still for the other goblins to recognize and respect his veteran status. "
+"Nonetheless, a rouser's frenzied goading effectively steels the less veteran "
+"fighters to strive harder and longer before they die."
+msgstr ""
+
+#. [unit_type]: id=Goblin Spearman, race=goblin
+#: data/core/units/goblins/Spearman.cfg:4
+msgid "Goblin Spearman"
+msgstr ""
+
+#. [unit_type]: id=Goblin Spearman, race=goblin
+#: data/core/units/goblins/Spearman.cfg:22
+msgid ""
+"In any litter of orcs, several are born much smaller and weaker than the "
+"rest. These runts are called 'Goblins' and are looked down on by the rest of "
+"their kin. In battle, these are given the most meager of equipment, and are "
+"used as a soak-off force to give the Warlords time to prepare the real "
+"assault.\n"
+"\n"
+"Some speculate that the existence of these creatures is the beginning of a "
+"failure of the orcish bloodline, though no one knows enough of their history "
+"to state anything conclusive."
+msgstr ""
+
+#. [unit_type]: id=Wolf Rider, race=wolf
+#: data/core/units/goblins/Wolf_Rider.cfg:4
+msgid "Wolf Rider"
+msgstr ""
+
+#. [unit_type]: id=Wolf Rider, race=wolf
+#: data/core/units/goblins/Wolf_Rider.cfg:37
+msgid ""
+"No one is quite sure how the practice of taming and riding wolves came into "
+"being, but the advantages of it for a goblin are obvious. Goblins are "
+"smaller and much weaker than their orcish kin, and are often tasked to the "
+"most dangerous and unwanted parts of a fight. Any who can manage to win "
+"themselves a mount have a much safer, and daresay, more amusing role in "
+"combat.\n"
+"\n"
+"Wolves, likely, could never support the weight of a man in plate, but a "
+"goblin in leather armor is a simple load to bear. Quite unlike horses, these "
+"mounts have a rather easy time traversing the mountains, though water and "
+"woods will still slow them down."
+msgstr ""
+
+#. [unit_type]: id=Gryphon, race=gryphon
+#: data/core/units/gryphons/Gryphon.cfg:4
+msgid "Gryphon"
+msgstr ""
+
+#. [unit_type]: id=Gryphon, race=gryphon
+#: data/core/units/gryphons/Gryphon.cfg:19
+msgid ""
+"These majestic and powerful creatures are masters of the sky. Gryphons are "
+"both dangerous and wary of other intelligent creatures, and thus should not "
+"be disturbed without a good reason."
+msgstr ""
+
+#. [unit_type]: id=Gryphon Master, race=gryphon
+#: data/core/units/gryphons/Gryphon_Master.cfg:4
+msgid "Gryphon Master"
+msgstr ""
+
+#. [unit_type]: id=Gryphon Master, race=gryphon
+#: data/core/units/gryphons/Gryphon_Master.cfg:20
+msgid ""
+"Gryphon Masters have long experience flying the Gryphons, which have become "
+"an extension of themselves. This special relationship makes the heart of the "
+"earth-bound tremble, for these mighty birds of prey may strike from anywhere."
+msgstr ""
+
+#. [unit_type]: id=Gryphon Rider, race=gryphon
+#: data/core/units/gryphons/Gryphon_Rider.cfg:4
+msgid "Gryphon Rider"
+msgstr ""
+
+#. [unit_type]: id=Gryphon Rider, race=gryphon
+#: data/core/units/gryphons/Gryphon_Rider.cfg:20
+msgid ""
+"Only a few are able to bond with the mighty Gryphons. Those who do may "
+"become Gryphon Riders, and discover the world of the skies upon the backs of "
+"these flying beasts."
+msgstr ""
+
+#. [unit_type]: id=Grand Knight, race=human
+#: data/core/units/humans/Horse_Grand_Knight.cfg:4
+msgid "Grand Knight"
+msgstr ""
+
+#. [unit_type]: id=Grand Knight, race=human
+#: data/core/units/humans/Horse_Grand_Knight.cfg:20
+msgid ""
+"Grand Knights have reached the acme of skill with sword and lance. Wearing "
+"full plate, and riding steeds bred more for power than for speed, these "
+"warriors form the core of any serious cavalry force. A grand knight at the "
+"head of a charge is a terrifying sight for infantry, and is often enough to "
+"break right through a defensive line."
+msgstr ""
+
+#. [attack]: type=blade
+#: data/core/units/humans/Horse_Grand_Knight.cfg:36
+#: data/core/units/humans/Loyalist_Cavalier.cfg:50
+#: data/core/units/humans/Loyalist_General.cfg:56
+#: data/core/units/humans/Loyalist_Grand_Marshal.cfg:52
+#: data/core/units/humans/Loyalist_Royal_Guard.cfg:40
+msgid "longsword"
+msgstr ""
+
+#. [attack]: type=pierce
+#: data/core/units/humans/Horse_Grand_Knight.cfg:45
+#: data/core/units/humans/Horse_Knight.cfg:44
+#: data/core/units/humans/Horse_Lancer.cfg:36
+#: data/core/units/humans/Horse_Paladin.cfg:61
+msgid "lance"
+msgstr ""
+
+#. [unit_type]: id=Knight, race=human
+#: data/core/units/humans/Horse_Knight.cfg:4
+msgid "Knight"
+msgstr ""
+
+#. [unit_type]: id=Knight, race=human
+#: data/core/units/humans/Horse_Knight.cfg:19
+msgid ""
+"Horsemen of skill and discipline are promoted to Knights. Veterans of "
+"combat, they have seen the often-fatal results of a failed charge, and have "
+"learnt discretion in its use. Knights, therefore, carry swords in their "
+"armament, and practice tactics which, although requiring of much more "
+"patience, are less risky than a charge. Their lances are still at the ready, "
+"however, and growing experience with these weapons makes them deadlier at "
+"the tilt."
+msgstr ""
+
+#. [unit_type]: id=Lancer, race=human
+#: data/core/units/humans/Horse_Lancer.cfg:4
+msgid "Lancer"
+msgstr ""
+
+#. [unit_type]: id=Lancer, race=human
+#: data/core/units/humans/Horse_Lancer.cfg:20
+msgid ""
+"Lancers are among the bravest and most feared riders in all of Wesnoth. Clad "
+"in minimal armor, they free themselves to ride swiftly, faster than any of "
+"their peers. The daring tactics they employ are like a double-edged sword, "
+"for they often win either glory or a swift death. Lancers excel in hunting "
+"down infantrymen who have made the mistake of breaking formation, and in "
+"piercing defensive lines. However, they have limited use in defense."
+msgstr ""
+
+#. [unit_type]: id=Paladin, race=human
+#: data/core/units/humans/Horse_Paladin.cfg:4
+msgid "Paladin"
+msgstr ""
+
+#. [unit_type]: id=Paladin, race=human
+#: data/core/units/humans/Horse_Paladin.cfg:22
+msgid ""
+"Knights of the highest virtue, Paladins have sworn their strength not to "
+"king and crown, but to ideals themselves; of chivalry, and the stewardship "
+"of everything that is good. They may serve in the armies of the world, but "
+"their first loyalties often lie with groups of their own making; secret, "
+"monastic orders that cross political and cultural boundaries. Rulers are "
+"sometimes wary of them, for the paladins' loyalty is only as strong as the "
+"liege's apparent virtue. This has led the more darkly ambitious to either "
+"attempt to defame and disperse these groups, or more rarely, to conjure "
+"elaborate deceptions to keep these otherwise staunchly loyal troops in "
+"service.\n"
+"    \n"
+"Full paladins are generally not quite as fearsome as the 'Grand Knights' "
+"that champion most armies, but they are first-class fighters nonetheless. "
+"Additionally, their wisdom and piety grants these warrior monks certain "
+"curious abilities; a paladin is very powerful in fighting magical or "
+"unnatural things, and most have some skill at medicine and healing."
+msgstr ""
+
+#. [unit_type]: id=Horseman, race=human
+#: data/core/units/humans/Horseman.cfg:4
+msgid "Horseman"
+msgstr ""
+
+#. [unit_type]: id=Horseman, race=human
+#: data/core/units/humans/Horseman.cfg:20
+msgid ""
+"Often hailing from the wilder and untamed regions of Wesnoth, Horsemen are "
+"trained from childhood to ride and to follow a strict code of honor. A "
+"charge made by a horseman is a powerful though risky tactic, the worth of "
+"which has been proven time and time again on the battlefield. Horsemen excel "
+"against most infantry, especially those who have fallen out of line, but "
+"must take care against both spearmen and archers for whom their large size "
+"provide inviting targets."
+msgstr ""
+
+#. [unit_type]: id=Bowman, race=human
+#: data/core/units/humans/Loyalist_Bowman.cfg:4
+msgid "Bowman"
+msgstr ""
+
+#. [unit_type]: id=Bowman, race=human
+#: data/core/units/humans/Loyalist_Bowman.cfg:21
+msgid ""
+"The use of archery in shooting something other than game was seen from its "
+"inception, and archers have been indispensable in warfare since time "
+"immemorial. Usually of humble origins, hailing from the peasantry or "
+"woodsmen, military bowmen are trained to competence with both a bow and a "
+"short sword, and are very common on the battlefield."
+msgstr ""
+
+#. [attack]: type=blade
+#: data/core/units/humans/Loyalist_Bowman.cfg:37
+#: data/core/units/orcs/Crossbowman.cfg:24 data/core/units/orcs/Slurbow.cfg:29
+msgid "short sword"
+msgstr ""
+
+#. [unit_type]: id=Cavalier, race=human
+#: data/core/units/humans/Loyalist_Cavalier.cfg:4
+msgid "Cavalier"
+msgstr ""
+
+#. [unit_type]: id=Cavalier, race=human
+#: data/core/units/humans/Loyalist_Cavalier.cfg:21
+msgid ""
+"Cavaliers are masters at the use of both sword and crossbow from horseback. "
+"Their combination of striking power and mobility is fearsome; and they have "
+"a reputation for dash and aggressiveness to match it. The daring deeds of "
+"Cavaliers are the subject of many a tale and song."
+msgstr ""
+
+#. [attack]: type=pierce
+#. [attack]: type=fire
+#: data/core/units/humans/Loyalist_Cavalier.cfg:59
+#: data/core/units/humans/Loyalist_Dragoon.cfg:58
+#: data/core/units/humans/Loyalist_Duelist.cfg:94
+#: data/core/units/humans/Loyalist_General.cfg:65
+#: data/core/units/humans/Loyalist_Grand_Marshal.cfg:61
+#: data/core/units/humans/Loyalist_Lieutenant.cfg:55
+#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:53
+#: data/core/units/humans/Loyalist_Sergeant.cfg:56
+#: data/core/units/orcs/Crossbowman.cfg:33
+#: data/core/units/orcs/Crossbowman.cfg:42 data/core/units/orcs/Leader.cfg:37
+#: data/core/units/orcs/Ruler.cfg:36 data/core/units/orcs/Slurbow.cfg:38
+#: data/core/units/orcs/Slurbow.cfg:47 data/core/units/orcs/Sovereign.cfg:37
+#: data/core/units/undead/Skele_Death_Knight.cfg:54
+msgid "crossbow"
+msgstr ""
+
+#. [unit_type]: id=Cavalryman, race=human
+#: data/core/units/humans/Loyalist_Cavalryman.cfg:4
+msgid "Cavalryman"
+msgstr ""
+
+#. [unit_type]: id=Cavalryman, race=human
+#: data/core/units/humans/Loyalist_Cavalryman.cfg:23
+msgid ""
+"Cavalrymen are distinguished from horsemen by their tactics and equipment. A "
+"cavalryman wears heavier armor, and carries a sword and shield, rather than "
+"a lance. Their tactics do not include charging; instead they maneuver to "
+"slash with a sword, using both horse and rider as an effective tool of "
+"melee.\n"
+"\n"
+"Cavalrymen are very useful for taking and holding positions on open ground, "
+"for screening friendly soldiers, and also for scouting work."
+msgstr ""
+
+#. [unit_type]: id=Dragoon, race=human
+#: data/core/units/humans/Loyalist_Dragoon.cfg:4
+msgid "Dragoon"
+msgstr ""
+
+#. [unit_type]: id=Dragoon, race=human
+#: data/core/units/humans/Loyalist_Dragoon.cfg:20
+msgid ""
+"The more talented cavalrymen in the armies of Wesnoth are trained in the use "
+"of the crossbow, and matched with much more powerful steeds. Well-armored, "
+"and skilled in the use of their swords, these soldiers can drive forward and "
+"hold the ground they take. Their mobility and resilience make them of great "
+"value on the battlefield."
+msgstr ""
+
+#. [unit_type]: id=Duelist, race=human
+#: data/core/units/humans/Loyalist_Duelist.cfg:4
+msgid "Duelist"
+msgstr ""
+
+#. [unit_type]: id=Duelist, race=human
+#: data/core/units/humans/Loyalist_Duelist.cfg:20
+msgid ""
+"It is a peculiar custom of Wesnoth's nobility that they typically enroll "
+"their sons into one of two orders of armigers, training them either in the "
+"art of horsemanship or fencing. Duelists are so named for an unfortunately "
+"common practice of young aristocrats, for whom the sting of insult, whether "
+"real or fancied, can incite a rash demonstration of their natural right.\n"
+"\n"
+"Experienced fencers carry with them a small crossbow that is easily "
+"concealed under a coat or cape. Slow to load and sometimes thought "
+"dishonorable to use, it is in fact very useful, and those of their ranks who "
+"live long enough to be veterans typically do so by making such concessions "
+"to utility and survival."
+msgstr ""
+
+#. [attack]: type=blade
+#: data/core/units/humans/Loyalist_Duelist.cfg:85
+#: data/core/units/humans/Loyalist_Fencer.cfg:140
+#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:44
+msgid "saber"
+msgstr ""
+
+#. [unit_type]: id=Fencer, race=human
+#: data/core/units/humans/Loyalist_Fencer.cfg:4
+msgid "Fencer"
+msgstr ""
+
+#. [unit_type]: id=Fencer, race=human
+#: data/core/units/humans/Loyalist_Fencer.cfg:21
+msgid ""
+"Fencers belong to a school of thought that considers the armor most soldiers "
+"wear in combat to be their own worst enemy. While armor can only soften a "
+"blow, evading it leaves the defender completely unharmed. Being able to "
+"reliably dodge any offensive move is a luxury only afforded to the fit of "
+"body, and then only to those who endure rigorous training.\n"
+"\n"
+"Outfitted with only a dagger and saber, fencers are light on their feet and "
+"useful in many situations where their armor-bound peers are at a "
+"disadvantage. They relish dancing circles around troops like heavy infantry, "
+"mocking the weight of their full armor."
+msgstr ""
+
+#. [unit_type]: id=General, race=human
+#: data/core/units/humans/Loyalist_General.cfg:4
+msgid "General"
+msgstr ""
+
+#. [unit_type]: id=General, race=human
+#: data/core/units/humans/Loyalist_General.cfg:30
+msgid ""
+"As the leaders of their armies, Generals are responsible for the protection "
+"of large or important areas in the kingdoms to which they have sworn fealty."
+msgstr ""
+
+#. [unit_type]: id=Grand Marshal, race=human
+#: data/core/units/humans/Loyalist_Grand_Marshal.cfg:4
+msgid "Grand Marshal"
+msgstr ""
+
+#. [unit_type]: id=Grand Marshal, race=human
+#: data/core/units/humans/Loyalist_Grand_Marshal.cfg:26
+msgid ""
+"The rank of Grand Marshal is one of the most esteemed in the armies of "
+"humanity, and those who bear its title have survived many trials by fire, "
+"proving both their tactical wit and their considerable mettle at personal "
+"combat."
+msgstr ""
+
+#. [unit_type]: id=Halberdier, race=human
+#: data/core/units/humans/Loyalist_Halberdier.cfg:4
+msgid "Halberdier"
+msgstr ""
+
+#. [unit_type]: id=Halberdier, race=human
+#: data/core/units/humans/Loyalist_Halberdier.cfg:21
+msgid ""
+"A halberd is a heavy weapon and difficult to use, but very powerful in the "
+"hands of an expert. It is also much more flexible than the spear from which "
+"it descended. As any halberdier can tell you, the weapon possesses four "
+"primary striking points, two more than a spear or pike; these are the tip, "
+"the blade, the spike at the base of the shaft, and the inner point on the "
+"blade, which can be used in a motion pulling back towards the wielder. All "
+"this makes for a very versatile weapon in melee, especially against "
+"cavalry.\n"
+"\n"
+"However, a halberd is notably more expensive to craft than a spear, and in "
+"the hands of a novice, much less effective. In the armies of Wesnoth, it is "
+"customary only to grant these weapons to veteran pikemen, who have proven "
+"that they have the skill to employ them properly on the field of war."
+msgstr ""
+
+#. [unit_type]: id=Heavy Infantryman, race=human
+#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:4
+msgid "Heavy Infantryman"
+msgstr ""
+
+#. [unit_type]: id=Heavy Infantryman, race=human
+#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:19
+msgid ""
+"Heavy infantry are brawny fighters clad in full plate and wielding massive "
+"impact weapons. Though they fight with unmatched power in melee combat, they "
+"have poor mobility and are best employed in static defense of fortified "
+"positions. A few of these in battle line will stiffen it considerably, "
+"albeit at an obvious cost in tactical flexibility."
+msgstr ""
+
+#. [attack]: type=impact
+#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:37
+#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:33
+#: data/core/units/humans/Outlaw.cfg:36
+#: data/core/units/humans/Outlaw_Bandit.cfg:35
+#: data/core/units/humans/Outlaw_Fugitive.cfg:41
+#: data/core/units/humans/Outlaw_Highwayman.cfg:37
+#: data/core/units/humans/Royal_Warrior.cfg:35
+msgid "mace"
+msgstr ""
+
+#. [unit_type]: id=Iron Mauler, race=human
+#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:4
+msgid "Iron Mauler"
+msgstr ""
+
+#. [unit_type]: id=Iron Mauler, race=human
+#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:21
+msgid ""
+"Iron Maulers are given their name for reasons which are all too obvious to "
+"their foes. The men within these suits of armor can match ogres in contests "
+"of strength, and are marked as the champions of the castle guards in which "
+"they serve. They are, however, expensive to maintain, and cannot be sent to "
+"distant battles without a full convoy of servants to support them.\n"
+"\n"
+"Though staggering in melee combat, there are many drawbacks to being "
+"outfitted in this way; Iron Maulers tire easily, and know all too well that "
+"they cannot run on the battlefield. Too often have they seen a distant "
+"comrade fall, yet were powerless to reach the scene in time to help."
+msgstr ""
+
+#. [unit_type]: id=Javelineer, race=human
+#: data/core/units/humans/Loyalist_Javelineer.cfg:4
+msgid "Javelineer"
+msgstr ""
+
+#. [unit_type]: id=Javelineer, race=human
+#: data/core/units/humans/Loyalist_Javelineer.cfg:19
+msgid ""
+"Spearmen almost always equip themselves with a few javelins, to harry, if "
+"not kill, enemies at range. Some, however, take to them rather well, finding "
+"that they have a natural talent in their use. Javelineers are a valuable "
+"asset to an army, being able to supplement their skill in melee combat with "
+"an ability to handle distant foes. They can hurl javelins into enemy ranks "
+"from a distance, often without retribution, and still hold their ground in "
+"melee."
+msgstr ""
+
+#. [unit_type]: id=Lieutenant, race=human
+#: data/core/units/humans/Loyalist_Lieutenant.cfg:4
+msgid "Lieutenant"
+msgstr ""
+
+#. [unit_type]: id=Lieutenant, race=human
+#: data/core/units/humans/Loyalist_Lieutenant.cfg:25
+msgid ""
+"Trained at swords and crossbows, Lieutenants lead small groups of human "
+"soldiers, coordinating their attacks."
+msgstr ""
+
+#. [unit_type]: id=Longbowman, race=human
+#: data/core/units/humans/Loyalist_Longbowman.cfg:4
+msgid "Longbowman"
+msgstr ""
+
+#. [unit_type]: id=Longbowman, race=human
+#: data/core/units/humans/Loyalist_Longbowman.cfg:21
+msgid ""
+"Longbows are fearsome weapons, but too difficult for beginning archers to "
+"wield. It takes great strength to draw one, and the added range and power it "
+"confers remain useless unless one has good aim with the weapon. Longbowmen "
+"carry their weapons as a badge of pride, and most bowmen look forward to the "
+"day they can begin using one."
+msgstr ""
+
+#. [unit_type]: id=Master Bowman, race=human
+#: data/core/units/humans/Loyalist_Master_Bowman.cfg:4
+msgid "Master Bowman"
+msgstr ""
+
+#. [unit_type]: id=Master Bowman, race=human
+#: data/core/units/humans/Loyalist_Master_Bowman.cfg:21
+msgid ""
+"Master bowmen have reached the zenith of their art, inasmuch as any human is "
+"capable. Armed with both a sword, and a great yew bow, these warriors crown "
+"battalions of archers with their presence, bringing down many a foe with "
+"their well-aimed shots. Their skill with the sword is also not to be "
+"discounted; they are easily as good with it as any novice swordsman. Of the "
+"many races in the world, only the elves surpass humanity in archery, and "
+"their human counterparts have speculated, perhaps in envy, that this is only "
+"by dint of age."
+msgstr ""
+
+#. [unit_type]: id=Master at Arms, race=human
+#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:4
+msgid "Master at Arms"
+msgstr ""
+
+#. [unit_type]: id=Master at Arms, race=human
+#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:21
+msgid ""
+"Master fencers have an envied place in life. Though the journey to their "
+"station was a dangerous way of life, they have reached the time wherein they "
+"reap its rewards. Famed for their skill and dashing manner, these gentlemen "
+"have the bearing of natural aristocrats, and are followed by the eyes of "
+"many a high born lady.\n"
+"\n"
+"They usually have the luxury of choosing their appointments, and are free to "
+"roam the land should they so elect. Often, they will be found as the "
+"captains of a castle guard, or as the master of a military academy, "
+"positions in which their flamboyant nature is not only accepted, but is "
+"perhaps even useful."
+msgstr ""
+
+#. [unit_type]: id=Pikeman, race=human
+#: data/core/units/humans/Loyalist_Pikeman.cfg:4
+msgid "Pikeman"
+msgstr ""
+
+#. [unit_type]: id=Pikeman, race=human
+#: data/core/units/humans/Loyalist_Pikeman.cfg:18
+msgid ""
+"Promising spearmen in the armies of Wesnoth are often graduated to wielding "
+"pikes, and are outfitted with something far superior to the motley "
+"collection of leather armor they wore as recruits. A pike is a much longer "
+"weapon than a spear, and thus facilitates different combat tactics. A wall "
+"of pikemen is the bane of any cavalry charge, and with proper discipline and "
+"tactics, pikemen can also hold most other infantry at bay."
+msgstr ""
+
+#. [attack]: type=pierce
+#: data/core/units/humans/Loyalist_Pikeman.cfg:65
+msgid "pike"
+msgstr ""
+
+#. [unit_type]: id=Royal Guard, race=human
+#: data/core/units/humans/Loyalist_Royal_Guard.cfg:4
+msgid "Royal Guard"
+msgstr ""
+
+#. [unit_type]: id=Royal Guard, race=human
+#: data/core/units/humans/Loyalist_Royal_Guard.cfg:19
+msgid ""
+"Royal Guards are picked from the best swordsmen in Wesnoth. Serving under "
+"any of the higher nobility, they function as bodyguards, and partly as a "
+"badge of office for their employers. A special force of Royal Guards is "
+"stationed at the capitol, guarding the palace grounds and the royal family. "
+"Because of their trusted relationship to their superiors, they, rather than "
+"mercenaries, are often deployed on missions of crucial import. Their "
+"reliability and mastery of close combat are their best assets, for which "
+"they are well-renowned."
+msgstr ""
+
+#. [unit_type]: id=Sergeant, race=human
+#: data/core/units/humans/Loyalist_Sergeant.cfg:4
+msgid "Sergeant"
+msgstr ""
+
+#. [unit_type]: id=Sergeant, race=human
+#: data/core/units/humans/Loyalist_Sergeant.cfg:26
+msgid ""
+"The Sergeant is a low-ranking officer in the ranks of an army. Though "
+"academically trained, he will need some experience in the field before his "
+"leadership is sound and acknowledged."
+msgstr ""
+
+#. [unit_type]: id=Shock Trooper, race=human
+#: data/core/units/humans/Loyalist_Shock_Trooper.cfg:4
+msgid "Shock Trooper"
+msgstr ""
+
+#. [unit_type]: id=Shock Trooper, race=human
+#: data/core/units/humans/Loyalist_Shock_Trooper.cfg:18
+msgid ""
+"Shock troopers are the elite of the heavy infantry, and a significant part "
+"of their use is mere intimidation. The only men who can enter their ranks "
+"are prodigiously well-built, and when clad in black plate brimming with "
+"spikes, they are a fearsome sight to behold. The sight of Shock Troopers "
+"breaking an enemy often does the same to the morale of any opposition, who "
+"sometimes wonder if such armor covers monsters, rather than men. The "
+"drawback of such heavy armor is, of course, the time it takes to move into "
+"and out of combat."
+msgstr ""
+
+#. [attack]: type=impact
+#: data/core/units/humans/Loyalist_Shock_Trooper.cfg:36
+msgid "flail"
+msgstr ""
+
+#. [unit_type]: id=Spearman, race=human
+#: data/core/units/humans/Loyalist_Spearman.cfg:4
+msgid "Spearman"
+msgstr ""
+
+#. [unit_type]: id=Spearman, race=human
+#: data/core/units/humans/Loyalist_Spearman.cfg:20
+msgid ""
+"Swords are, for many, an expensive luxury, and one which peasants can ill "
+"afford. Spears are much easier to make and will do well even without a "
+"spearhead, though most can afford one. Clad in leather armor, and often "
+"armed with a shield and a few javelins, spearmen are the staple of most "
+"armies, often thrown into the front lines with only the most basic training."
+msgstr ""
+
+#. [unit_type]: id=Swordsman, race=human
+#: data/core/units/humans/Loyalist_Swordsman.cfg:4
+msgid "Swordsman"
+msgstr ""
+
+#. [unit_type]: id=Swordsman, race=human
+#: data/core/units/humans/Loyalist_Swordsman.cfg:18
+msgid ""
+"An experienced soldier will often save enough to equip himself with a suit "
+"of scale or chain armor, and a sturdy broadsword. Though trading their "
+"spears for swords can be a jarring change, most spearmen will leap at the "
+"chance, knowing all too well the limitations of the weapon they are leaving "
+"behind. A sword is not without its own drawbacks, but is more versatile than "
+"a spear, and much better in close quarters."
+msgstr ""
+
+#. [unit_type]: id=Mage, race=human
+#: data/core/units/humans/Mage.cfg:4
+msgid "Mage"
+msgstr ""
+
+#. [unit_type]: id=Mage, race=human
+#: data/core/units/humans/Mage.cfg:25
+msgid ""
+"Humans have often pondered the workings of the world in which they live. "
+"Some endeavor to take this beyond idle musing, to set it as the primary "
+"enterprise of their lives. Any magi worthy of the title have spent at least "
+"a decade in study, amassing a sum of knowledge which sets them apart from "
+"other people. These men and women, who have committed themselves fully to "
+"the pursuit of wisdom, stand in stark contrast to a world where few can even "
+"read and write. Their ranks are filled with the children of hopeful "
+"nobility, or those who sought an escape from the intellectual void of manual "
+"labor.\n"
+"\n"
+"It is an irony that, with all their knowledge, and their unassuming monopoly "
+"thereof, the collective community of magi could likely rule society, were "
+"they ever to try. However, their true love is neither money, nor power, and "
+"those who see the study of magic as a means to such ends often lack the very "
+"conviction required for true mastery.\n"
+"\n"
+"Physically frail, and lacking familiarity with combat, magi do possess "
+"certain arts which are of great utility in battle."
+msgstr ""
+
+#. [attack]: type=fire
+#: data/core/units/humans/Mage.cfg:76
+#: data/core/units/humans/Mage_Silver.cfg:57
+msgid "missile"
+msgstr ""
+
+#. [female]
+#: data/core/units/humans/Mage.cfg:174
+msgid "female^Mage"
+msgstr ""
+
+#. [unit_type]: id=Arch Mage, race=human
+#: data/core/units/humans/Mage_Arch.cfg:4
+msgid "Arch Mage"
+msgstr ""
+
+#. [unit_type]: id=Arch Mage, race=human
+#: data/core/units/humans/Mage_Arch.cfg:21
+msgid ""
+"The title of Arch Mage is traditionally conferred only after a lifetime of "
+"study and achievement to match. Arch Magi are often employed in positions of "
+"education, or as advisors to those sensible enough to seek the fruits of "
+"their wisdom. Many tend to wealthy patrons, a profitable enterprise for both "
+"as, outside of the occasional thaumaturgy or word of advice, it gives the "
+"mage leave to pursue their research undisturbed. From this flows the greater "
+"body of human knowledge; the sciences, the philosophies, and the arts which "
+"give beauty to the world at large.\n"
+"\n"
+"Though not trained for any sort of combat, if need arises an Arch Mage can "
+"unleash the full power of their art, something which is not to be taken "
+"lightly."
+msgstr ""
+
+#. [attack]: type=fire
+#: data/core/units/humans/Mage_Arch.cfg:90
+#: data/core/units/humans/Mage_Great.cfg:51
+#: data/core/units/humans/Mage_Red.cfg:75
+msgid "fireball"
+msgstr ""
+
+#. [female]
+#: data/core/units/humans/Mage_Arch.cfg:171
+msgid "female^Arch Mage"
+msgstr ""
+
+#. [unit_type]: id=Elder Mage, race=human
+#: data/core/units/humans/Mage_Elder.cfg:4
+msgid "Elder Mage"
+msgstr ""
+
+#. [unit_type]: id=Elder Mage, race=human
+#: data/core/units/humans/Mage_Elder.cfg:22
+msgid ""
+"Once great, Elder Magi have seen their power a little diminished from "
+"wearying years of battle. Nevertheless they remain feared on the battlefield "
+"on account of their powerful lightning bolts."
+msgstr ""
+
+#. [attack]: type=fire
+#: data/core/units/humans/Mage_Elder.cfg:34
+msgid "lightning"
+msgstr ""
+
+#. [unit_type]: id=Great Mage, race=human
+#: data/core/units/humans/Mage_Great.cfg:4
+msgid "Great Mage"
+msgstr ""
+
+#. [unit_type]: id=Great Mage, race=human
+#: data/core/units/humans/Mage_Great.cfg:22
+msgid ""
+"Any person who is even considered for the title of Great Mage is quite "
+"nearly a legend in their own time, and town criers have forcibly learnt "
+"discretion in applying the title. Merit for the title is carefully "
+"considered by a council of the leading magi of the age, and the conferment "
+"of the title is given only by a majority vote. Regardless, anyone who is "
+"seriously nominated for the honor of being called a Great Mage is, without "
+"question, a master of their art, and has surpassed almost any of their peers "
+"in skill.\n"
+"\n"
+"Though they are not warriors, by any means, the application of their art to "
+"combat is something that often causes other soldiers to stand aside in awe."
+msgstr ""
+
+#. [female]
+#: data/core/units/humans/Mage_Great.cfg:132
+msgid "female^Great Mage"
+msgstr ""
+
+#. [unit_type]: id=Red Mage, race=human
+#: data/core/units/humans/Mage_Red.cfg:4
+msgid "Red Mage"
+msgstr ""
+
+#. [unit_type]: id=Red Mage, race=human
+#: data/core/units/humans/Mage_Red.cfg:21
+msgid ""
+"Upon the successful culmination of their apprenticeship, a mage is stripped "
+"of the brown robes of an apprentice and given the ruddy cloak of a master. "
+"The significance of this change is often lost on the peasantry, who "
+"mistakenly title Master Magi as 'Red Magi'. Likewise, the symbolism of the "
+"change in colors is often mistaken to signify the mage's ability to "
+"seemingly conjure fire from nothing but thin air, a trick which, although "
+"undeniably useful, is viewed by the magi themselves as a crass application "
+"of their hard-won knowledge.\n"
+"\n"
+"Though physically frail, and untrained as warriors, the 'Red Magi' have a "
+"number of tricks up their sleeves, including the gouts of fire which may "
+"have cemented their colloquial name."
+msgstr ""
+
+#. [female]
+#: data/core/units/humans/Mage_Red.cfg:157
+msgid "female^Red Mage"
+msgstr ""
+
+#. [unit_type]: id=Silver Mage, race=human
+#: data/core/units/humans/Mage_Silver.cfg:4
+msgid "Silver Mage"
+msgstr ""
+
+#. [unit_type]: id=Silver Mage, race=human
+#: data/core/units/humans/Mage_Silver.cfg:24
+msgid ""
+"SPECIAL_NOTE^ Silver Magi are well-attuned to their magical natures and are "
+"highly resistant to non-physical damage."
+msgstr ""
+
+#. [unit_type]: id=Silver Mage, race=human
+#: data/core/units/humans/Mage_Silver.cfg:24
+msgid ""
+"The many paths that a mage can take in study lead to strikingly different "
+"ends. Often viewed as sages, or wandering mystics, silver magi act under an "
+"agenda which is obscure even to their own colleagues. Though helpful to the "
+"magisteriums which often employ them in the field, they remain somewhat "
+"aloof.\n"
+"\n"
+"They have, in fact, their own order amongst the ranks of magi, an order "
+"which withholds certain secrets from their peers. One of these is an "
+"apparent ability to cross great distances, faster than one could possibly "
+"travel on foot. Members of the silver order ardently refuse to discuss the "
+"workings of this with any of their fellow magi, and on those rare occasions "
+"when others have pried into their work, they have abandoned the endeavor, "
+"never to speak of it again.\n"
+"\n"
+"Silver magi are often more physically adept than other magi, and their "
+"skills are of undeniable use on the battlefield, if one can manage to induce "
+"the mage to apply them."
+msgstr ""
+
+#. [female]
+#: data/core/units/humans/Mage_Silver.cfg:283
+msgid "female^Silver Mage"
+msgstr ""
+
+#. [unit_type]: id=White Mage, race=human
+#: data/core/units/humans/Mage_White.cfg:4
+msgid "White Mage"
+msgstr ""
+
+#. [unit_type]: id=White Mage, race=human
+#: data/core/units/humans/Mage_White.cfg:21
+msgid ""
+"Some magi, as they learn about the world around them, and learn the truth of "
+"the suffering and squalor in which humanity too often lives, find that they "
+"cannot bring themselves to be cloistered into a life of study. These men and "
+"women give up the life of a mage, and join monastic orders, dedicating the "
+"skills they have been given to the good of all. After their ordination, they "
+"often travel the world, ministering to sickness and injury.\n"
+"\n"
+"Though not trained for combat, they are a potent ally against magical or "
+"unnatural things."
+msgstr ""
+
+#. [attack]: type=arcane
+#: data/core/units/humans/Mage_White.cfg:142
+#: data/core/units/humans/Mage_of_Light.cfg:120
+#: data/core/units/merfolk/Diviner.cfg:109
+#: data/core/units/merfolk/Priestess.cfg:106
+msgid "lightbeam"
+msgstr ""
+
+#. [female]
+#: data/core/units/humans/Mage_White.cfg:277
+msgid "female^White Mage"
+msgstr ""
+
+#. [unit_type]: id=Mage of Light, race=human
+#: data/core/units/humans/Mage_of_Light.cfg:4
+msgid "Mage of Light"
+msgstr ""
+
+#. [unit_type]: id=Mage of Light, race=human
+#: data/core/units/humans/Mage_of_Light.cfg:23
+msgid ""
+"After years of experience, the most devout of white magi develop vast "
+"spiritual powers. By strict devotion to the path of the light, they can call "
+"upon its aid to chase away the shadows of the night.\n"
+"\n"
+"Following a strict code of piety and honor, these men and women work "
+"tirelessly to bring life and order to the troubled world in which they live."
+msgstr ""
+
+#. [attack]: type=impact
+#: data/core/units/humans/Mage_of_Light.cfg:111
+msgid "morning star"
+msgstr ""
+
+#. [female]
+#: data/core/units/humans/Mage_of_Light.cfg:245
+msgid "female^Mage of Light"
+msgstr ""
+
+#. [unit_type]: id=Outlaw, race=human
+#: data/core/units/humans/Outlaw.cfg:4
+msgid "Outlaw"
+msgstr ""
+
+#. [unit_type]: id=Outlaw, race=human
+#: data/core/units/humans/Outlaw.cfg:19
+msgid ""
+"After some years of service, former 'footpads' rise up in the ranks of their "
+"fellow outlaws. Having proven themselves in combat, they are given more "
+"dangerous tasks, and a greater share of the spoils. Though many opponents "
+"would mock their choice of weaponry, the outlaws are well aware of its "
+"deadly capacity, and also of the ready availability of ammunition. Outlaws "
+"are somewhat ill at ease fighting during the day, preferring the cover of "
+"nightfall."
+msgstr ""
+
+#. [attack]: type=impact
+#: data/core/units/humans/Outlaw.cfg:44
+#: data/core/units/humans/Outlaw_Footpad.cfg:47
+#: data/core/units/humans/Outlaw_Fugitive.cfg:50
+#: data/core/units/trolls/Rocklobber.cfg:36
+msgid "sling"
+msgstr ""
+
+#. [female]
+#: data/core/units/humans/Outlaw.cfg:115
+msgid "female^Outlaw"
+msgstr ""
+
+#. [unit_type]: id=Assassin, race=human
+#: data/core/units/humans/Outlaw_Assassin.cfg:4
+msgid "Assassin"
+msgstr ""
+
+#. [unit_type]: id=Assassin, race=human
+#: data/core/units/humans/Outlaw_Assassin.cfg:20
+msgid ""
+"The greatest of thieves are sometimes tasked to take far more than their "
+"victim's belongings. Masters of knife-fighting and uncannily light on their "
+"feet, these menacing figures will employ any means to dispatch their "
+"victims, be it poisoned knives thrown from afar, or a dagger planted in the "
+"back. Deadly at night, assassins are less able fighting under the sun."
+msgstr ""
+
+#. [attack]: type=blade
+#: data/core/units/humans/Outlaw_Assassin.cfg:52
+#: data/core/units/humans/Outlaw_Rogue.cfg:51
+msgid "knife"
+msgstr ""
+
+#. [female]
+#: data/core/units/humans/Outlaw_Assassin.cfg:179
+msgid "female^Assassin"
+msgstr ""
+
+#. [unit_type]: id=Bandit, race=human
+#: data/core/units/humans/Outlaw_Bandit.cfg:4
+msgid "Bandit"
+msgstr ""
+
+#. [unit_type]: id=Bandit, race=human
+#: data/core/units/humans/Outlaw_Bandit.cfg:18
+msgid ""
+"Bandits are a motley collection of men, most of dubious background. They are "
+"the strong arm of any organized group of criminals, and though they may lack "
+"in finesse, or intelligence, they excel at their preferred task of pummeling "
+"victims into submission. Like any sort of outlaw, they're not comfortable "
+"fighting in broad daylight, being used to working at night."
+msgstr ""
+
+#. [unit_type]: id=Footpad, race=human
+#: data/core/units/humans/Outlaw_Footpad.cfg:4
+msgid "Footpad"
+msgstr ""
+
+#. [unit_type]: id=Footpad, race=human
+#: data/core/units/humans/Outlaw_Footpad.cfg:21
+msgid ""
+"These petty criminals are often derisively called 'footpads' by their "
+"superiors, for they are tasked with any job that requires a great deal of "
+"running around, often being employed as couriers, or scouts. The endurance "
+"and agility they gain from this serves them well in combat, and despite "
+"their inferior weaponry they are quite good at harrying their enemies, "
+"especially under cover of darkness."
+msgstr ""
+
+#. [attack]: type=impact
+#: data/core/units/humans/Outlaw_Footpad.cfg:38
+#: data/core/units/humans/Outlaw_Ruffian.cfg:36
+#: data/core/units/humans/Outlaw_Thug.cfg:37
+#: data/core/units/merfolk/Entangler.cfg:27
+#: data/core/units/merfolk/Netcaster.cfg:38
+#: data/core/units/trolls/Troll.cfg:38
+msgid "club"
+msgstr ""
+
+#. [female]
+#: data/core/units/humans/Outlaw_Footpad.cfg:176
+msgid "female^Footpad"
+msgstr ""
+
+#. [unit_type]: id=Fugitive, race=human
+#: data/core/units/humans/Outlaw_Fugitive.cfg:5
+msgid "Fugitive"
+msgstr ""
+
+#. [unit_type]: id=Fugitive, race=human
+#: data/core/units/humans/Outlaw_Fugitive.cfg:21
+msgid ""
+"Veteran criminals become notorious for both their ruthlessness and ability "
+"to elude capture. They can be dangerous in their element, though no match "
+"for the sheer numbers that law-abiding soldiery can throw at them."
+msgstr ""
+
+#. [female]
+#: data/core/units/humans/Outlaw_Fugitive.cfg:122
+msgid "female^Fugitive"
+msgstr ""
+
+#. [unit_type]: id=Highwayman, race=human
+#: data/core/units/humans/Outlaw_Highwayman.cfg:5
+msgid "Highwayman"
+msgstr ""
+
+#. [unit_type]: id=Highwayman, race=human
+#: data/core/units/humans/Outlaw_Highwayman.cfg:20
+msgid ""
+"Highwaymen have gained an infamous reputation for underhanded deeds of "
+"violence. Ready to hire themselves out to whoever will pay the most, they "
+"lead bands of lesser rogues against their employer's enemies, often "
+"attacking on lonely roads or in the dead of night. Their experience with "
+"such encounters makes them deadly foes in hand to hand combat."
+msgstr ""
+
+#. [unit_type]: id=Rogue, race=human
+#: data/core/units/humans/Outlaw_Rogue.cfg:4
+msgid "Rogue"
+msgstr ""
+
+#. [unit_type]: id=Rogue, race=human
+#: data/core/units/humans/Outlaw_Rogue.cfg:19
+msgid ""
+"The ringleaders of any group of thieves earn their positions by skill. These "
+"rogues have spent many an unpleasant moment darting through crowds and "
+"dodging away from those who wish them ill, a set of skills which is very "
+"handy in a fight. Masters of knifework, they can also throw knives with "
+"reliable accuracy, and their long hours of prowling around at night leave "
+"them more comfortable fighting in the dark."
+msgstr ""
+
+#. [female]
+#: data/core/units/humans/Outlaw_Rogue.cfg:153
+msgid "female^Rogue"
+msgstr ""
+
+#. [unit_type]: id=Ruffian, race=human
+#: data/core/units/humans/Outlaw_Ruffian.cfg:4
+msgid "Ruffian"
+msgstr ""
+
+#. [unit_type]: id=Ruffian, race=human
+#: data/core/units/humans/Outlaw_Ruffian.cfg:19
+msgid ""
+"Some men without particular skills cannot or will not make an honest living. "
+"Those that attempt to make their way through life by the heavy end of a "
+"stick, are known as 'Ruffians'. With enough luck and experience, they "
+"sometimes manage to avoid the imprisonment or death that awaits most of "
+"their colleagues."
+msgstr ""
+
+#. [unit_type]: id=Thief, race=human
+#: data/core/units/humans/Outlaw_Thief.cfg:4
+msgid "Thief"
+msgstr ""
+
+#. [unit_type]: id=Thief, race=human
+#: data/core/units/humans/Outlaw_Thief.cfg:20
+msgid ""
+"For as long as anyone can remember, the members of the various 'guilds' of "
+"rat-catchers that spring up in any larger city have had a curious practice "
+"of bleaching their hair with lime till it becomes a pale shade of blue. It "
+"is a bold thing to do, as their profession often delves into less-than-legal "
+"enterprises. Thieves have many skills, and by necessity are both light on "
+"their feet, and good with knives. They happily employ less-than-honorable "
+"tactics in combat, seeing little merit in a 'fair fight'."
+msgstr ""
+
+#. [female]
+#: data/core/units/humans/Outlaw_Thief.cfg:377
+msgid "female^Thief"
+msgstr ""
+
+#. [unit_type]: id=Thug, race=human
+#: data/core/units/humans/Outlaw_Thug.cfg:4
+msgid "Thug"
+msgstr ""
+
+#. [unit_type]: id=Thug, race=human
+#: data/core/units/humans/Outlaw_Thug.cfg:20
+msgid ""
+"Thugs come from a wide variety of sources; while a few are born into "
+"thuggery, many are former soldiers deemed unfit to serve in the army or "
+"peasants thrown off their lands. They become thugs as a means of sustenance. "
+"Regardless of their background, they all share a penchant for beating their "
+"victims with large clubs."
+msgstr ""
+
+#. [unit_type]: id=Peasant, race=human
+#: data/core/units/humans/Peasant.cfg:4
+msgid "Peasant"
+msgstr ""
+
+#. [unit_type]: id=Peasant, race=human
+#: data/core/units/humans/Peasant.cfg:20
+msgid ""
+"Peasants are the backbone of the rural economy, and the soldiers of last "
+"resort. While not warlike by nature, they will stubbornly defend their "
+"homes. However, if you're hurling peasants at your foes, you're clearly out "
+"of superior forces."
+msgstr ""
+
+#. [attack]: type=pierce
+#: data/core/units/humans/Peasant.cfg:37 data/core/units/humans/Peasant.cfg:46
+msgid "pitchfork"
+msgstr ""
+
+#. [unit_type]: id=Royal Warrior, race=human
+#: data/core/units/humans/Royal_Warrior.cfg:8
+msgid "Royal Warrior"
+msgstr ""
+
+#. [unit_type]: id=Royal Warrior, race=human
+#: data/core/units/humans/Royal_Warrior.cfg:31
+msgid ""
+"Royal warriors are the kings and princes of human noble houses, armed and "
+"armored to a degree heavier than that of their knights."
+msgstr ""
+
+#. [unit_type]: id=Woodsman, race=human
+#: data/core/units/humans/Woodsman.cfg:4
+msgid "Woodsman"
+msgstr ""
+
+#. [unit_type]: id=Woodsman, race=human
+#: data/core/units/humans/Woodsman.cfg:20
+msgid ""
+"Woodsmen are hunters, woodcutters, charcoal-burners, and others who eke out "
+"a living where the human world verges on the wilderness. Wits and woodcraft "
+"often support them where weapons will not."
+msgstr ""
+
+#. [unit_type]: id=Huntsman, race=human
+#: data/core/units/humans/Woodsman_Huntsman.cfg:5
+msgid "Huntsman"
+msgstr ""
+
+#. [unit_type]: id=Huntsman, race=human
+#: data/core/units/humans/Woodsman_Huntsman.cfg:23
+msgid ""
+"Hunting is a popular sport of noblemen, but it can also be a livelihood for "
+"commoners. Like any other craft, it has men of masterful skill in its "
+"practice. Huntsmen know all the tricks of their trade, and are skilled at "
+"navigating the wilderness, at tracking, and at the use of the bow. They are "
+"a fair shot at moving targets, and targets hiding under brush and cover; a "
+"skill wrought from years of practice at shooting game, and one which "
+"garrisoned bowmen often lack.\n"
+"\n"
+"Master hunters are employed by any group living in or passing through wild "
+"country, be they men of the law, or those working against it. Even nature "
+"itself can have deadly surprises, and any commander who fails to hire a such "
+"a guide can lose his men to nothing more than terrain. Good woodsmen can "
+"save lives, ease travel, provide food, and their skill with a bow is "
+"capitally useful in a fight."
+msgstr ""
+
+#. [unit_type]: id=Poacher, race=human
+#: data/core/units/humans/Woodsman_Poacher.cfg:4
+msgid "Poacher"
+msgstr ""
+
+#. [unit_type]: id=Poacher, race=human
+#: data/core/units/humans/Woodsman_Poacher.cfg:22
+msgid ""
+"Though not trained as warriors, the skills possessed by a hunter (especially "
+"those of archery) are useful in battle. Any group of soldiers or bandits "
+"traveling through the wild will need a few poachers in their employ, not "
+"merely for hunting but for lending a hand in any serious fight.\n"
+"\n"
+"Because of their experience, these hunters are unusually capable at night, "
+"and in forests and swamps."
+msgstr ""
+
+#. [unit_type]: id=Ranger, race=human
+#: data/core/units/humans/Woodsman_Ranger.cfg:5
+msgid "Ranger"
+msgstr ""
+
+#. [unit_type]: id=Ranger, race=human
+#: data/core/units/humans/Woodsman_Ranger.cfg:23
+msgid ""
+"Rangers are wild men and wanderers, who have chosen to shun the company of "
+"their fellow men for myriad reasons. They have spent the better part of "
+"their lives in the thick of nature, and know many of its secrets. They are "
+"excellent pathfinders and explorers, and can find food and shelter where "
+"other men would find only sticks and stones.\n"
+"\n"
+"The presence of these men troubles the more authoritarian of rulers; they "
+"are an element that knights and landed armies cannot control. They are men "
+"of dubious motives, and are the first to scoff at any royal decree, if they "
+"even hear of it at all. Rangers can be hired, but they are just as likely to "
+"be in the employ of bandits, as they are to be in the king's service."
+msgstr ""
+
+#. [unit_type]: id=Trapper, race=human
+#: data/core/units/humans/Woodsman_Trapper.cfg:4
+msgid "Trapper"
+msgstr ""
+
+#. [unit_type]: id=Trapper, race=human
+#: data/core/units/humans/Woodsman_Trapper.cfg:21
+msgid ""
+"Master woodsmen are useful allies to any army, and indispensable for any "
+"sizable group of people living in the wilderness. They can track both man "
+"and beast, notice things most others would overlook, and are often the only "
+"ones who can find food for the table, be it animal or vegetable.\n"
+"\n"
+"Their skill at hunting is very useful in combat, and also leaves them "
+"unusually competent at night, and in forests and swamps."
+msgstr ""
+
+#. [unit_type]: id=Mermaid Diviner, race=merman
+#: data/core/units/merfolk/Diviner.cfg:4
+msgid "female^Mermaid Diviner"
+msgstr ""
+
+#. [unit_type]: id=Mermaid Diviner, race=merman
+#: data/core/units/merfolk/Diviner.cfg:25
+msgid ""
+"Years of devotion may endow a priestess with great wisdom on the workings of "
+"the world, and grants some the favor of the light. The power thus given to "
+"these ladies of the water is a recurring motif in tale and song; such as the "
+"that of the knights of the silver spire, cornered and slain to a man at the "
+"banks of the Alavynne, but who rode again the next day, in full number, and "
+"wrought the downfall of the crimson duke."
+msgstr ""
+
+#. [unit_type]: id=Mermaid Enchantress, race=merman
+#: data/core/units/merfolk/Enchantress.cfg:4
+msgid "female^Mermaid Enchantress"
+msgstr ""
+
+#. [unit_type]: id=Mermaid Enchantress, race=merman
+#: data/core/units/merfolk/Enchantress.cfg:20
+msgid ""
+"Mermaids, like elves, have a powerful and native ability in magic, though "
+"theirs is considerably different than that of the elves. Those who master "
+"this ability are held in high regard, and their skill is used in a multitude "
+"of crafts, many of which humanity would never dream. The obvious use in war "
+"is forbidden against their own race - this power is the greater part of what "
+"protects their people from the monsters that wander out of the abyss."
+msgstr ""
+
+#. [attack]: type=impact
+#: data/core/units/merfolk/Enchantress.cfg:46
+#: data/core/units/merfolk/Initiate.cfg:49
+#: data/core/units/merfolk/Siren.cfg:54
+msgid "water spray"
+msgstr ""
+
+#. [unit_type]: id=Merman Entangler, race=merman
+#: data/core/units/merfolk/Entangler.cfg:4
+msgid "Merman Entangler"
+msgstr ""
+
+#. [unit_type]: id=Merman Entangler, race=merman
+#: data/core/units/merfolk/Entangler.cfg:22
+msgid ""
+"Merfolk tend to use a combination of both nets and clubs in fishing; nets to "
+"collect the fish, and clubs to finish the kill. Both of these tools have "
+"seen adaptation for warfare, and are valuable enough that auxilliaries who "
+"specialize in using them are deliberately brought to battle.\n"
+"\n"
+"    Mermen often find themselves in a standoff with land-based enemies; the "
+"merfolk are too strong in the water, and are too weak to make any offense on "
+"land. Nets are a key bit of leverage; without nets, mermen can't give any "
+"effective chase over land, and are at a great disadvantage in hand-to-hand "
+"combat."
+msgstr ""
+
+#. [unit_type]: id=Merman Fighter, race=merman
+#: data/core/units/merfolk/Fighter.cfg:4
+msgid "Merman Fighter"
+msgstr ""
+
+#. [unit_type]: id=Merman Fighter, race=merman
+#: data/core/units/merfolk/Fighter.cfg:20
+msgid ""
+"Skilled denizens of the sea, Mermen are powerful and quick in any watery "
+"environment, but lose most of their mobility on land."
+msgstr ""
+
+#. [unit_type]: id=Merman Hoplite, race=merman
+#: data/core/units/merfolk/Hoplite.cfg:4
+msgid "Merman Hoplite"
+msgstr ""
+
+#. [unit_type]: id=Merman Hoplite, race=merman
+#: data/core/units/merfolk/Hoplite.cfg:21
+msgid ""
+"With their towering shields, the Merman Hoplites form the elite guard of the "
+"watery realm. Their powerful armor and rigid discipline allow them to hold a "
+"steadfast line in the maelstrom of battle. In times of desperation, they can "
+"even do so on land, though not nearly as well as a creature with legs."
+msgstr ""
+
+#. [unit_type]: id=Merman Hunter, race=merman
+#: data/core/units/merfolk/Hunter.cfg:4
+msgid "Merman Hunter"
+msgstr ""
+
+#. [unit_type]: id=Merman Hunter, race=merman
+#: data/core/units/merfolk/Hunter.cfg:20
+msgid ""
+"The skills employed by mermen in spear-fishing are easily translated into "
+"warfare, especially against those who are not at home in the water. In times "
+"of need, many mermen of that occupation will volunteer to swell the ranks of "
+"their military."
+msgstr ""
+
+#. [unit_type]: id=Mermaid Initiate, race=merman
+#: data/core/units/merfolk/Initiate.cfg:4
+msgid "female^Mermaid Initiate"
+msgstr ""
+
+#. [unit_type]: id=Mermaid Initiate, race=merman
+#: data/core/units/merfolk/Initiate.cfg:23
+msgid ""
+"Young mermaids are often initiated into the water magics native to their "
+"people. The wondrous abilities this grants are inimitable by any other race, "
+"a mark of the faerie side of these creatures.\n"
+"\n"
+"Despite their frailty, this makes them quite formidable in combat, as they "
+"can call upon the very water about them to smite their enemies."
+msgstr ""
+
+#. [unit_type]: id=Merman Javelineer, race=merman
+#: data/core/units/merfolk/Javelineer.cfg:4
+msgid "Merman Javelineer"
+msgstr ""
+
+#. [unit_type]: id=Merman Javelineer, race=merman
+#: data/core/units/merfolk/Javelineer.cfg:20
+msgid ""
+"Those mermen who master the art of the javelin can become nearly as "
+"effective as an archer - though the heft of their weapons impedes their "
+"range, the impact of one is considerably greater. In the water, the mobility "
+"of the mermen more than makes up for this when facing foes who cannot swim."
+msgstr ""
+
+#. [unit_type]: id=Merman Netcaster, race=merman
+#: data/core/units/merfolk/Netcaster.cfg:4
+msgid "Merman Netcaster"
+msgstr ""
+
+#. [unit_type]: id=Merman Netcaster, race=merman
+#: data/core/units/merfolk/Netcaster.cfg:21
+msgid ""
+"Fishing, as practiced by mermen, is largely a matter of chasing schools of "
+"fish into waiting nets, where oar-like clubs are used to dispatch the prey. "
+"The improvisation of using these against soldiers proved very effective; "
+"most land-native creatures are already quite awkward when waist-deep in "
+"water, and getting caught in a net can render them nearly helpless.\n"
+"    \n"
+"    The effectiveness of this method led to the development of smaller, "
+"weighted nets, which could be cast through the air; these were useless for "
+"fishing, but were useful in both combat, and in hunting game that came too "
+"close to shore. Clubs were used in combat with little or no adaptation from "
+"fishing, since they were already quite deadly."
+msgstr ""
+
+#. [unit_type]: id=Mermaid Priestess, race=merman
+#: data/core/units/merfolk/Priestess.cfg:4
+msgid "female^Mermaid Priestess"
+msgstr ""
+
+#. [unit_type]: id=Mermaid Priestess, race=merman
+#: data/core/units/merfolk/Priestess.cfg:23
+msgid ""
+"Among mermen, mysticism is generally left to the mermaids, who are more "
+"inclined to it. It is they who dedicate themselves to the ideal of bringing "
+"peace and life to the world, and to the arts which make that possible. Their "
+"piety also grants them certain powers, allowing them to guard their people "
+"against magical or unnatural things."
+msgstr ""
+
+#. [unit_type]: id=Mermaid Siren, race=merman
+#: data/core/units/merfolk/Siren.cfg:4
+msgid "Mermaid Siren"
+msgstr ""
+
+#. [unit_type]: id=Mermaid Siren, race=merman
+#: data/core/units/merfolk/Siren.cfg:23
+msgid ""
+"The faerie nature of the mermaids is strongest in the Sirens, whose "
+"connection to the currents of magic often causes them to be mistaken for "
+"naiads themselves. Though certainly far from the truth, the mistake is "
+"understandable, as true naiads are rarely seen even by mermaids. The "
+"manifestation of their magic is certainly very similar; the water about a "
+"siren can be commanded at whim, like an extension of herself.\n"
+"\n"
+"The myriad applications of this rarely occur to land dwellers, who simply "
+"regard it with wonder."
+msgstr ""
+
+#. [attack]: type=impact
+#: data/core/units/merfolk/Siren.cfg:42
+msgid "naia touch"
+msgstr ""
+
+#. [unit_type]: id=Merman Spearman, race=merman
+#: data/core/units/merfolk/Spearman.cfg:4
+msgid "Merman Spearman"
+msgstr ""
+
+#. [unit_type]: id=Merman Spearman, race=merman
+#: data/core/units/merfolk/Spearman.cfg:19
+msgid ""
+"Archery is little favored by the mermen, for whom use of javelins serves a "
+"similar function. Though thrown javelins are of little use under the water, "
+"they are extremely effective at the surface, where their weight allows them "
+"to plunge several feet below the water while retaining enough momentum to "
+"wreak damage. They are also useful in melee, even deep under the surface, "
+"which is something that certainly cannot be said of arrows."
+msgstr ""
+
+#. [unit_type]: id=Merman Triton, race=merman
+#: data/core/units/merfolk/Triton.cfg:4
+msgid "Merman Triton"
+msgstr ""
+
+#. [unit_type]: id=Merman Triton, race=merman
+#: data/core/units/merfolk/Triton.cfg:21
+msgid ""
+"Tritons are combat masters of the sea. Skilled in use of the trident, "
+"Tritons easily defeat any enemy foolish enough to wander into their "
+"preferred environment."
+msgstr ""
+
+#. [unit_type]: id=Merman Warrior, race=merman
+#: data/core/units/merfolk/Warrior.cfg:4
+msgid "Merman Warrior"
+msgstr ""
+
+#. [unit_type]: id=Merman Warrior, race=merman
+#: data/core/units/merfolk/Warrior.cfg:19
+msgid ""
+"The Mermen Warriors form the core of the mermen armies. Wielding powerful "
+"tridents, they are a bane to any who dare enter their waters."
+msgstr ""
+
+#. [unit_type]: id=Giant Spider, race=monster
+#: data/core/units/monsters/Cave_Spider.cfg:4
+msgid "Giant Spider"
+msgstr ""
+
+#. [unit_type]: id=Giant Spider, race=monster
+#: data/core/units/monsters/Cave_Spider.cfg:20
+msgid ""
+"Giant Spiders are said to roam the depths of Knalga, devouring many victims. "
+"They have a vicious bite, made worse by the fact that it is poisoned, and "
+"can also fling webs through the air to trap their prey."
+msgstr ""
+
+#. [attack]: type=impact
+#: data/core/units/monsters/Cave_Spider.cfg:49
+msgid "web"
+msgstr ""
+
+#. [unit_type]: id=Cuttle Fish, race=monster
+#: data/core/units/monsters/Cuttle_Fish.cfg:4
+msgid "Cuttle Fish"
+msgstr ""
+
+#. [unit_type]: id=Cuttle Fish, race=monster
+#: data/core/units/monsters/Cuttle_Fish.cfg:18
+msgid ""
+"Cuttle Fish are gigantic creatures of the seas. They can grab their "
+"opponents with strong tentacles, or spit a poisonous black ink from a "
+"distance. The best way to survive an encounter with these monsters is to "
+"remain ashore."
+msgstr ""
+
+#. [attack]: type=impact
+#: data/core/units/monsters/Cuttle_Fish.cfg:35
+#: data/core/units/monsters/Tentacle.cfg:62
+msgid "tentacle"
+msgstr ""
+
+#. [attack]: type=pierce
+#: data/core/units/monsters/Cuttle_Fish.cfg:46
+msgid "ink"
+msgstr ""
+
+#. [unit_type]: id=Fire Dragon, race=monster
+#: data/core/units/monsters/Fire_Dragon.cfg:4
+msgid "Fire Dragon"
+msgstr ""
+
+#. [unit_type]: id=Fire Dragon, race=monster
+#: data/core/units/monsters/Fire_Dragon.cfg:24
+msgid ""
+"A dragon is a legendary creature, normally seen only in fantastic tales. "
+"They are very rare, and were it not for the historical events, the "
+"singlehanded destruction of cities and towns that these creatures have "
+"wrought, they might be dismissed as mere myth. Legends are very specific "
+"about the ravages of dragons; noting their great strength, speed, their "
+"preternatural cunning, and above all else, the great fire that burns inside "
+"of them.\n"
+"\n"
+"Battling a dragon is said to be the pinnacle of danger itself, fit only for "
+"fools, or the bravest of knights."
+msgstr ""
+
+#. [attack]: type=blade
+#: data/core/units/monsters/Fire_Dragon.cfg:31
+msgid "bite"
+msgstr ""
+
+#. [attack]: type=impact
+#: data/core/units/monsters/Fire_Dragon.cfg:40
+msgid "tail"
+msgstr ""
+
+#. [unit_type]: id=Giant Mudcrawler, race=monster
+#: data/core/units/monsters/Giant_Mudcrawler.cfg:4
+msgid "Giant Mudcrawler"
+msgstr ""
+
+#. [unit_type]: id=Giant Mudcrawler, race=monster
+#: data/core/units/monsters/Giant_Mudcrawler.cfg:18
+msgid ""
+"Giant Mudcrawlers are a larger kind of Mudcrawler, and are magical "
+"constructs of soil and water. They attack by belching lumps of mud at their "
+"foes, or by striking them with their fists."
+msgstr ""
+
+#. [attack]: type=impact
+#: data/core/units/monsters/Giant_Mudcrawler.cfg:47
+#: data/core/units/monsters/Yeti.cfg:36
+#: data/core/units/trolls/Rocklobber.cfg:27
+#: data/core/units/trolls/Troll_Shaman.cfg:31
+#: data/core/units/trolls/Whelp.cfg:39
+#: data/core/units/undead/Skeleton_Archer.cfg:32
+msgid "fist"
+msgstr ""
+
+#. [attack]: type=impact
+#: data/core/units/monsters/Giant_Mudcrawler.cfg:56
+#: data/core/units/monsters/Mudcrawler.cfg:46
+msgid "mud glob"
+msgstr ""
+
+#. [unit_type]: id=Giant Scorpion, race=monster
+#: data/core/units/monsters/Giant_Scorpion.cfg:4
+msgid "Giant Scorpion"
+msgstr ""
+
+#. [unit_type]: id=Giant Scorpion, race=monster
+#: data/core/units/monsters/Giant_Scorpion.cfg:19
+msgid ""
+"A normal scorpion is dangerous enough - the deadliness of one the size of a "
+"man needs little explanation."
+msgstr ""
+
+#. [attack]: type=pierce
+#: data/core/units/monsters/Giant_Scorpion.cfg:24
+msgid "sting"
+msgstr ""
+
+#. [attack]: type=impact
+#: data/core/units/monsters/Giant_Scorpion.cfg:36
+msgid "pincers"
+msgstr ""
+
+#. [unit_type]: id=Mudcrawler, race=monster
+#: data/core/units/monsters/Mudcrawler.cfg:4
+msgid "Mudcrawler"
+msgstr ""
+
+#. [unit_type]: id=Mudcrawler, race=monster
+#: data/core/units/monsters/Mudcrawler.cfg:19
+msgid ""
+"Mudcrawlers are magical constructs of soil and water. They attack by "
+"belching lumps of mud at their foes."
+msgstr ""
+
+#. [unit_type]: id=Sea Serpent, race=monster
+#: data/core/units/monsters/Sea_Serpent.cfg:4
+msgid "Sea Serpent"
+msgstr ""
+
+#. [unit_type]: id=Sea Serpent, race=monster
+#: data/core/units/monsters/Sea_Serpent.cfg:22
+msgid ""
+"Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
+msgstr ""
+
+#. [unit_type]: id=Skeletal Dragon, race=undead
+#: data/core/units/monsters/Skeletal_Dragon.cfg:4
+msgid "Skeletal Dragon"
+msgstr ""
+
+#. [unit_type]: id=Skeletal Dragon, race=undead
+#: data/core/units/monsters/Skeletal_Dragon.cfg:26
+msgid ""
+"Long ago one of the mightiest living creatures, the feared Dragon has become "
+"only bones and dark sinew. Long after its death, it was raised through the "
+"dark powers of necromancy, which it now serves. The Skeletal Dragon may look "
+"like nothing more than a pile of bones, but few people who thought that way "
+"lived long enough to change their minds."
+msgstr ""
+
+#. [attack]: type=blade
+#: data/core/units/monsters/Skeletal_Dragon.cfg:30
+msgid "jaw"
+msgstr ""
+
+#. [unit_type]: id=Tentacle of the Deep, race=monster
+#: data/core/units/monsters/Tentacle.cfg:4
+msgid "Tentacle of the Deep"
+msgstr ""
+
+#. [unit_type]: id=Tentacle of the Deep, race=monster
+#: data/core/units/monsters/Tentacle.cfg:22
+msgid ""
+"Tentacles of the Deep are the appendages of some greater monster that lurks "
+"below the waves."
+msgstr ""
+
+#. [unit_type]: id=Water Serpent, race=monster
+#: data/core/units/monsters/Water_Serpent.cfg:5
+msgid "Water Serpent"
+msgstr ""
+
+#. [unit_type]: id=Water Serpent, race=monster
+#: data/core/units/monsters/Water_Serpent.cfg:38
+msgid ""
+"Scholars differ as to the ancestry of the Water Serpent. Some hold that they "
+"are the immature young, or mature cousins, of Sea Serpents. Others hold them "
+"up as a primitive offshoot of the Nagas. What is certain is that it is wise "
+"to avoid waters where they are known to congregate."
+msgstr ""
+
+#. [unit_type]: id=Wolf, race=wolf
+#: data/core/units/monsters/Wolf.cfg:4
+msgid "Wolf"
+msgstr ""
+
+#. [unit_type]: id=Wolf, race=wolf
+#: data/core/units/monsters/Wolf.cfg:35
+msgid ""
+"Wolves are aggressive animals that hunt in packs. Although weak "
+"individually, a wolf pack can kill even the strongest man in minutes."
+msgstr ""
+
+#. [unit_type]: id=Yeti, race=monster
+#: data/core/units/monsters/Yeti.cfg:4
+msgid "Yeti"
+msgstr ""
+
+#. [unit_type]: id=Yeti, race=monster
+#: data/core/units/monsters/Yeti.cfg:18
+msgid ""
+"Little is known about Yetis, ape-like creatures said to live in remote and "
+"snow-covered mountains. Few profess to have seen one, and their existence is "
+"doubted by many."
+msgstr ""
+
+#. [unit_type]: id=Naga Fighter, race=naga
+#: data/core/units/nagas/Fighter.cfg:4
+msgid "Naga Fighter"
+msgstr ""
+
+#. [unit_type]: id=Naga Fighter, race=naga
+#: data/core/units/nagas/Fighter.cfg:21
+msgid ""
+"The serpentine naga are one of the few races capable of any meaningful "
+"mobility in water, giving them mastery of a whole world effectively "
+"forbidden to land dwellers. Still, they are not true creatures of the sea, "
+"and their inability to breathe water leaves them in trepidation of the "
+"abyss. They are small, and somewhat frail in form, but often much more "
+"nimble than their opponents."
+msgstr ""
+
+#. [female]
+#: data/core/units/nagas/Fighter.cfg:153
+msgid "Nagini Fighter"
+msgstr ""
+
+#. [unit_type]: id=Naga Myrmidon, race=naga
+#: data/core/units/nagas/Myrmidon.cfg:4
+msgid "Naga Myrmidon"
+msgstr ""
+
+#. [unit_type]: id=Naga Myrmidon, race=naga
+#: data/core/units/nagas/Myrmidon.cfg:22
+msgid ""
+"The most practiced of the naga blademasters are initiated into the caste of "
+"the Myrmidon, masters of their twin-bladed art. They strike as fast as the "
+"snakes which they resemble, and dance away from attacks with grace. Not only "
+"are they potent enemies on any open terrain, but their ability to swim "
+"allows them deadly mobility in water."
+msgstr ""
+
+#. [female]
+#: data/core/units/nagas/Myrmidon.cfg:95
+msgid "Nagini Myrmidon"
+msgstr ""
+
+#. [female]
+#: data/core/units/nagas/Myrmidon.cfg:97
+msgid ""
+"The most practiced of the nagani blademasters are initiated into the caste "
+"of the Myrmidon, masters of their twin-bladed art. They strike as fast as "
+"the snakes which they resemble, and dance away from attacks with grace. Not "
+"only are they potent enemies on any open terrain, but their ability to swim "
+"allows them a deadly mobility."
+msgstr ""
+
+#. [unit_type]: id=Naga Warrior, race=naga
+#: data/core/units/nagas/Warrior.cfg:4
+msgid "Naga Warrior"
+msgstr ""
+
+#. [unit_type]: id=Naga Warrior, race=naga
+#: data/core/units/nagas/Warrior.cfg:20
+msgid ""
+"The young warriors of the naga aspire to the day when they merit their "
+"second blade. Their martial practice of using twin blades is wholly unlike "
+"that of the Orcs and other races, for they have begun to learn the art of "
+"using their serpentine form to best effect, twisting and turning to dodge "
+"from blows. This makes them potent on land, but the friction of water "
+"greatly impedes the technique."
+msgstr ""
+
+#. [female]
+#: data/core/units/nagas/Warrior.cfg:92
+msgid "Nagini Warrior"
+msgstr ""
+
+#. [female]
+#: data/core/units/nagas/Warrior.cfg:94
+msgid ""
+"Many of the young warriors of the nagani aspire for the day when they merit "
+"their second blade. Their martial practice of using twin blades is wholly "
+"unlike that of the Orcs and other races, for they have begun to learn the "
+"art of using their serpentine form to best effect, twisting and turning to "
+"dodge from blows. This makes them potent on land, but the friction of water "
+"greatly impedes their ability to do this."
+msgstr ""
+
+#. [unit_type]: id=Ogre, race=ogre
+#: data/core/units/ogres/Ogre.cfg:4
+msgid "Ogre"
+msgstr ""
+
+#. [unit_type]: id=Ogre, race=ogre
+#: data/core/units/ogres/Ogre.cfg:22
+msgid ""
+"Ogres are giant creatures that usually live alone in the wilderness, "
+"remarkably similar to humans in form, though large and misshapen. While they "
+"can be easily outrun or outsmarted, their strength is not to be "
+"underestimated."
+msgstr ""
+
+#. [attack]: type=blade
+#: data/core/units/ogres/Ogre.cfg:38 data/core/units/ogres/Young_Ogre.cfg:38
+msgid "cleaver"
+msgstr ""
+
+#. [unit_type]: id=Young Ogre, race=ogre
+#: data/core/units/ogres/Young_Ogre.cfg:4
+msgid "Young Ogre"
+msgstr ""
+
+#. [unit_type]: id=Young Ogre, race=ogre
+#: data/core/units/ogres/Young_Ogre.cfg:22
+msgid ""
+"When still young, Ogres are sometimes captured and taken into armies to be "
+"trained. They cannot manage weapons skillfully, but they compensate for that "
+"lack with great strength."
+msgstr ""
+
+#. [unit_type]: id=Orcish Archer, race=orc
+#: data/core/units/orcs/Archer.cfg:4
+msgid "Orcish Archer"
+msgstr ""
+
+#. [unit_type]: id=Orcish Archer, race=orc
+#: data/core/units/orcs/Archer.cfg:19
+msgid ""
+"Amongst orcs, bows are often regarded as a cowardly weapon; but even orcs, "
+"especially youths and those of slight build, are pragmatic enough to use "
+"them in spite of this. Orcish archers are seldom well equipped, and have no "
+"semblance of training. Even as poorly handled as they are, their weapons can "
+"still be quite deadly, and the wielders thereof rarely march alone."
+msgstr ""
+
+#. [unit_type]: id=Orcish Assassin, race=orc
+#: data/core/units/orcs/Assassin.cfg:4
+msgid "Orcish Assassin"
+msgstr ""
+
+#. [unit_type]: id=Orcish Assassin, race=orc
+#: data/core/units/orcs/Assassin.cfg:22
+msgid ""
+"Though some consider it cowardly to use, poison is a weapon favored by orcs, "
+"especially those weak of frame. Orcish assassins, who use it on throwing "
+"knives, are typically frail by orcish standards, although surprisingly "
+"nimble. Though rarely the ones who deal the killing blow, their tactics are "
+"a considerable aid to their larger and more brutal kin."
+msgstr ""
+
+#. [attack]: type=blade
+#: data/core/units/orcs/Assassin.cfg:35 data/core/units/orcs/Slayer.cfg:36
+msgid "throwing knives"
+msgstr ""
+
+#. [unit_type]: id=Orcish Crossbowman, race=orc
+#: data/core/units/orcs/Crossbowman.cfg:4
+msgid "Orcish Crossbowman"
+msgstr ""
+
+#. [unit_type]: id=Orcish Crossbowman, race=orc
+#: data/core/units/orcs/Crossbowman.cfg:18
+msgid ""
+"Orcish crossbows are crude imitations of human or dwarvish design; a "
+"crossbow of any make, though, is a fairly potent device. The orcs privileged "
+"enough to wield them are capable warriors, and what they lack in finesse, "
+"they make up for in numbers."
+msgstr ""
+
+#. [unit_type]: id=Orcish Grunt, race=orc
+#: data/core/units/orcs/Grunt.cfg:4
+msgid "Orcish Grunt"
+msgstr ""
+
+#. [unit_type]: id=Orcish Grunt, race=orc
+#: data/core/units/orcs/Grunt.cfg:19
+msgid ""
+"Orcish Grunts form the core of the orcish forces. Although slower than human "
+"or elven fighters, Grunts can deliver much more powerful blows, and take "
+"more hits before falling."
+msgstr ""
+
+#. [unit_type]: id=Orcish Leader, race=orc
+#: data/core/units/orcs/Leader.cfg:4
+msgid "Orcish Leader"
+msgstr ""
+
+#. [unit_type]: id=Orcish Leader, race=orc
+#: data/core/units/orcs/Leader.cfg:19
+msgid ""
+"Unusually cunning orcs tend to find themselves as the leaders of warrior "
+"bands. They carry a bow out of necessity, but are much more skilled with the "
+"sword. These orcs are powerful fighters, but they also have a certain "
+"rapport with their kin, especially goblins, and can inspire them to fight "
+"with uncharacteristic boldness."
+msgstr ""
+
+#. [unit_type]: id=Orcish Ruler, race=orc
+#: data/core/units/orcs/Ruler.cfg:4
+msgid "Orcish Ruler"
+msgstr ""
+
+#. [unit_type]: id=Orcish Ruler, race=orc
+#: data/core/units/orcs/Ruler.cfg:18
+msgid ""
+"Any orc who can keep a large tribe from feuding and in-fighting is often "
+"unusually intelligent and commanding, and is inevitably very strong as well. "
+"They are skilled with both sword and bow, but their real talent lies in "
+"their rare ability to rally other orcs to battle, to give orders that are "
+"followed not out of fear, but loyalty."
+msgstr ""
+
+#. [attack]: type=blade
+#: data/core/units/orcs/Ruler.cfg:27 data/core/units/orcs/Sovereign.cfg:28
+#: data/core/units/orcs/Warlord.cfg:25 data/core/units/orcs/Warrior.cfg:35
+msgid "greatsword"
+msgstr ""
+
+#. [unit_type]: id=Orcish Slayer, race=orc
+#: data/core/units/orcs/Slayer.cfg:4
+msgid "Orcish Slayer"
+msgstr ""
+
+#. [unit_type]: id=Orcish Slayer, race=orc
+#: data/core/units/orcs/Slayer.cfg:22
+msgid ""
+"The larger or more skilled orcish assassins are called 'Slayers' by their "
+"enemies. Slayers are fast on their feet, and quite nimble in combat, "
+"although they achieve that end by forgoing armor. Their weapon of choice, "
+"poison, is a vicious tool, and its common use on the battlefield is often "
+"the real cause of orcish supremacy."
+msgstr ""
+
+#. [unit_type]: id=Orcish Slurbow, race=orc
+#: data/core/units/orcs/Slurbow.cfg:4
+msgid "Orcish Slurbow"
+msgstr ""
+
+#. [unit_type]: id=Orcish Slurbow, race=orc
+#: data/core/units/orcs/Slurbow.cfg:23
+msgid ""
+"The basic design of a crossbow gives rise to the arbalest or 'slurbow'; a "
+"much more intricate device, complete with a hand-turned cranequin to re-cock "
+"the weapon, and often with a multi-ply arc, of laminate wood or bone, "
+"driving the projectile. Such a device is much easier to work with, and much "
+"more powerful than simpler crossbows; it is also completely beyond orcish "
+"manufacture.\n"
+"\n"
+"Orcs prize any such weapons they can manage to plunder, and they invariably "
+"end up in the hands of their strongest and most cunning archers."
+msgstr ""
+
+#. [unit_type]: id=Orcish Sovereign, race=orc
+#: data/core/units/orcs/Sovereign.cfg:4
+msgid "Orcish Sovereign"
+msgstr ""
+
+#. [unit_type]: id=Orcish Sovereign, race=orc
+#: data/core/units/orcs/Sovereign.cfg:19
+msgid ""
+"From time to time, an orc will arise who has a natural charisma and command "
+"over his ilk. If he is also strong and cunning enough to survive early "
+"leadership struggles, he will inevitably find himself leading a great horde "
+"of warriors, and he will also inevitably cause a great deal of trouble for "
+"the civilized races of the world. The surest way to disperse such a host is "
+"to slay this rare orc who can hold it together."
+msgstr ""
+
+#. [unit_type]: id=Orcish Warlord, race=orc
+#: data/core/units/orcs/Warlord.cfg:4
+msgid "Orcish Warlord"
+msgstr ""
+
+#. [unit_type]: id=Orcish Warlord, race=orc
+#: data/core/units/orcs/Warlord.cfg:19
+msgid ""
+"Only orcs with both great cunning and unsurpassed strength can become "
+"Warlords. Masters of the sword, and even possessing some skill with the bow, "
+"these beast-warriors lead their brethren with iron will and iron hand."
+msgstr ""
+
+#. [unit_type]: id=Orcish Warrior, race=orc
+#: data/core/units/orcs/Warrior.cfg:4
+msgid "Orcish Warrior"
+msgstr ""
+
+#. [unit_type]: id=Orcish Warrior, race=orc
+#: data/core/units/orcs/Warrior.cfg:18
+msgid ""
+"Having mastered the art of dual-sword fighting, Orcish Warriors are highly "
+"respected among the Orcs, and highly feared by their foes. Their only "
+"weakness is their inability to wield the bow."
+msgstr ""
+
+#. [unit_type]: id=Saurian Ambusher, race=lizard
+#: data/core/units/saurians/Ambusher.cfg:4
+msgid "Saurian Ambusher"
+msgstr ""
+
+#. [unit_type]: id=Saurian Ambusher, race=lizard
+#: data/core/units/saurians/Ambusher.cfg:19
+msgid ""
+"Saurians are light on their feet, and able at navigating terrain that often "
+"confounds their enemies. When this natural mobility is combined with "
+"experience, strength, and proper equipment, their warriors can become "
+"particularly threatening in battle - if only because they are so much more "
+"difficult to confine than other foes. Even in armor, saurian warriors can "
+"take advantage of the smallest gap in an enemy line, and have the prowess to "
+"make the enemy regret tactical mistakes."
+msgstr ""
+
+#. [unit_type]: id=Saurian Augur, race=lizard
+#: data/core/units/saurians/Augur.cfg:4
+msgid "Saurian Augur"
+msgstr ""
+
+#. [unit_type]: id=Saurian Augur, race=lizard
+#: data/core/units/saurians/Augur.cfg:21
+msgid ""
+"Saurians have some knowledge of what men call sorcery, but their practice of "
+"it reeks of augury and black magic. It is little understood, but rightly "
+"regarded with fear by those against whom it is used."
+msgstr ""
+
+#. [attack]: type=cold
+#: data/core/units/saurians/Augur.cfg:87
+#: data/core/units/saurians/Oracle.cfg:87
+#: data/core/units/saurians/Soothsayer.cfg:87
+msgid "curse"
+msgstr ""
+
+#. [unit_type]: id=Saurian Flanker, race=lizard
+#: data/core/units/saurians/Flanker.cfg:4
+msgid "Saurian Flanker"
+msgstr ""
+
+#. [unit_type]: id=Saurian Flanker, race=lizard
+#: data/core/units/saurians/Flanker.cfg:20
+msgid ""
+"Saurian warriors are generally weaker in frame than their elven or human "
+"counterparts. This is of course a relative term, and they can still become "
+"considerably powerful, whilst losing none of their natural mobility. This is "
+"very dangerous in combat, as a careless enemy can soon find their support "
+"troops flanked by these creatures."
+msgstr ""
+
+#. [unit_type]: id=Saurian Oracle, race=lizard
+#: data/core/units/saurians/Oracle.cfg:4
+msgid "Saurian Oracle"
+msgstr ""
+
+#. [unit_type]: id=Saurian Oracle, race=lizard
+#: data/core/units/saurians/Oracle.cfg:21
+msgid ""
+"Certain saurians are seen dressed in arcane regalia and covered head to toe "
+"in horrifying, esoteric shapes and markings, both with paint and tattoo. "
+"Some suspect them to be visionaries, or oracles amongst their ilk. But "
+"whatever 'societal' function they may have, they are undeniably powerful in "
+"the strange magics their kind possess, and are beings to be wary of if ever "
+"seen."
+msgstr ""
+
+#. [unit_type]: id=Saurian Skirmisher, race=lizard
+#: data/core/units/saurians/Skirmisher.cfg:4
+msgid "Saurian Skirmisher"
+msgstr ""
+
+#. [unit_type]: id=Saurian Skirmisher, race=lizard
+#: data/core/units/saurians/Skirmisher.cfg:22
+msgid ""
+"Saurians are very small of frame, and though they are somewhat frail because "
+"of this, they are very, very agile. In combat, their size allows them to "
+"dart past defenses that would hold any grown man at bay, making them a "
+"tricky foe to deal with.\n"
+"\n"
+"Spears are their preferred weapon, as their powerful hind legs can drive a "
+"spear with enough force to do considerable damage, either in hand or thrown."
+msgstr ""
+
+#. [unit_type]: id=Saurian Soothsayer, race=lizard
+#: data/core/units/saurians/Soothsayer.cfg:4
+msgid "Saurian Soothsayer"
+msgstr ""
+
+#. [unit_type]: id=Saurian Soothsayer, race=lizard
+#: data/core/units/saurians/Soothsayer.cfg:21
+msgid ""
+"Saurians are known to have some strange skills, arts bordering on the "
+"magical and mysterious. It is clear that some of them are particularly "
+"skilled at a sort of medicine, which is of great benefit whenever battle is "
+"brought against them."
+msgstr ""
+
+#. [unit_type]: id=Great Troll, race=troll
+#: data/core/units/trolls/Great.cfg:4
+msgid "Great Troll"
+msgstr ""
+
+#. [unit_type]: id=Great Troll, race=troll
+#: data/core/units/trolls/Great.cfg:19
+msgid ""
+"When a troll, gifted with abnormal strength of life, matches that with age "
+"and wisdom, it becomes something extraordinary, a beast remembered for "
+"generations. Their feats of strength and cunning are the source of most "
+"tales about trolls, and to see the stories made flesh does nothing to "
+"diminish their grandeur."
+msgstr ""
+
+#. [unit_type]: id=Troll Hero, race=troll
+#: data/core/units/trolls/Hero.cfg:4
+msgid "Troll Hero"
+msgstr ""
+
+#. [unit_type]: id=Troll Hero, race=troll
+#: data/core/units/trolls/Hero.cfg:18
+msgid ""
+"Some trolls are born with an exceptional share of the strength and vitality "
+"that characterizes their race. In a society where might makes right, those "
+"of their ilk revere them as heroes."
+msgstr ""
+
+#. [unit_type]: id=Troll Rocklobber, race=troll
+#: data/core/units/trolls/Rocklobber.cfg:4
+msgid "Troll Rocklobber"
+msgstr ""
+
+#. [unit_type]: id=Troll Rocklobber, race=troll
+#: data/core/units/trolls/Rocklobber.cfg:20
+msgid ""
+"The thought of throwing a boulder in combat has certainly occurred to many "
+"trolls, and some have taken to them as a weapon of choice. Because stones "
+"well-shaped to fly true are not always easy to find, Rocklobbers have taken "
+"to carrying them in sacks slung over their shoulders. The same leather out "
+"of which the sack is formed is easily adapted to a crude sling."
+msgstr ""
+
+#. [unit_type]: id=Troll, race=troll
+#: data/core/units/trolls/Troll.cfg:4
+msgid "Troll"
+msgstr ""
+
+#. [unit_type]: id=Troll, race=troll
+#: data/core/units/trolls/Troll.cfg:18
+msgid ""
+"Trolls have long troubled the thoughts of humanity and dwarf-kind. Sages "
+"remain baffled at the origins of these creatures and the driving force "
+"behind their unnatural vitality and strength. A fully-grown troll towers "
+"above a man, and, even unarmed, would be a great threat in combat. The large "
+"clubs typically favored in fighting act as extensions of their arms, used "
+"for the same purpose of mauling their prey into submission."
+msgstr ""
+
+#. [unit_type]: id=Troll Shaman, race=troll
+#: data/core/units/trolls/Troll_Shaman.cfg:4
+msgid "Troll Shaman"
+msgstr ""
+
+#. [unit_type]: id=Troll Shaman, race=troll
+#: data/core/units/trolls/Troll_Shaman.cfg:24
+msgid ""
+"Troll shamans are the mystical leaders of the trolls. Though not as strong "
+"or tough as other trolls, their true power lies in their fire magic, which "
+"they use to blast enemies with gouts of flame."
+msgstr ""
+
+#. [attack]: type=fire
+#: data/core/units/trolls/Troll_Shaman.cfg:41
+msgid "flame blast"
+msgstr ""
+
+#. [unit_type]: id=Troll Warrior, race=troll
+#: data/core/units/trolls/Warrior.cfg:4
+msgid "Troll Warrior"
+msgstr ""
+
+#. [unit_type]: id=Troll Warrior, race=troll
+#: data/core/units/trolls/Warrior.cfg:20
+msgid ""
+"Trolls typically neither need nor prefer to use any proper armament in "
+"combat, as large 'sticks and stones' serve them all too well. However, "
+"trolls have been seen on numerous occasions clad in rough-shod armor and "
+"bearing metal hammers. It is speculated that orcish allies are the source "
+"and crafters of these; expeditions into several forcibly-vacated troll holes "
+"have shown little evidence of tool use, and certainly no metalworking of any "
+"kind. Given how dangerous a troll is with its bare hands, the thought of a "
+"troll with proper armament is entirely unsettling."
+msgstr ""
+
+#. [unit_type]: id=Troll Whelp, race=troll
+#: data/core/units/trolls/Whelp.cfg:4
+msgid "Troll Whelp"
+msgstr ""
+
+#. [unit_type]: id=Troll Whelp, race=troll
+#: data/core/units/trolls/Whelp.cfg:20
+msgid ""
+"Describing a troll as a whelp is something of an oxymoron, given that their "
+"bodies are already much hardier than that of a grown man. They are clumsy "
+"and not yet capable of walking properly, forced instead to shamble about on "
+"all fours, but any difficulty this causes them is more than made up for by "
+"the raw strength of their race."
+msgstr ""
+
+#. [unit_type]: id=Ghoul, race=undead
+#: data/core/units/undead/Corpse_Ghoul.cfg:4
+msgid "Ghoul"
+msgstr ""
+
+#. [unit_type]: id=Ghoul, race=undead
+#: data/core/units/undead/Corpse_Ghoul.cfg:22
+msgid ""
+"Only the more perverse and sadistic of necromancers know what must be done "
+"to turn a person into a ghoul, and it is a secret they are not telling. The "
+"result, however, is all too well known; it is a beast that knows nothing of "
+"its days as a human being, a creature that shambles about as naked as the "
+"day it was born, and gorges itself on the flesh of the dead.\n"
+"\n"
+"It is because of such things that necromancy is condemned with an almost "
+"primal hatred in all civilized lands."
+msgstr ""
+
+#. [unit_type]: id=Necrophage, race=undead
+#: data/core/units/undead/Corpse_Necrophage.cfg:4
+msgid "Necrophage"
+msgstr ""
+
+#. [unit_type]: id=Necrophage, race=undead
+#: data/core/units/undead/Corpse_Necrophage.cfg:20
+msgid ""
+"The necrophage, or 'devourer of the dead', is a monstrous, corpulent thing, "
+"which bears only a crude resemblance to a man. They appear to be quite "
+"rotten in spite of their ability to move; they are rife with disease and "
+"poisons of the blood, and have a stench to match. But the most revolting "
+"fact about these fratures, apparent only to those who can perceive the "
+"traces of foul magic on them, is that they were somehow made from living men "
+"- a process about which almost nothing is known, but which can be nothing "
+"but nightmarish."
+msgstr ""
+
+#. [unit_type]: id=Soulless, race=undead
+#: data/core/units/undead/Corpse_Soulless.cfg:6
+msgid "Soulless"
+msgstr ""
+
+#. [unit_type]: id=Soulless, race=undead
+#: data/core/units/undead/Corpse_Soulless.cfg:20
+msgid ""
+"The technique of animating a dead body is unfortunately well-known in the "
+"dark arts; practitioners often use it to raise servants and soldiers from "
+"unwilling corpses. These shamblers are often numerous, but fragile; a touch "
+"of combat can waken them, though, making them far more formidable."
+msgstr ""
+
+#. [attack]: type=impact
+#. [attack]: type=arcane
+#: data/core/units/undead/Corpse_Soulless.cfg:26
+#: data/core/units/undead/Corpse_Walking.cfg:25
+#: data/core/units/undead/Necro_Ancient_Lich.cfg:48
+#: data/core/units/undead/Necro_Lich.cfg:48
+#: data/core/units/undead/Spirit_Ghost.cfg:130
+msgid "touch"
+msgstr ""
+
+#. [unit_type]: id=Walking Corpse, race=undead
+#: data/core/units/undead/Corpse_Walking.cfg:6
+msgid "Walking Corpse"
+msgstr ""
+
+#. [unit_type]: id=Walking Corpse, race=undead
+#: data/core/units/undead/Corpse_Walking.cfg:19
+msgid ""
+"Walking Corpses are the bodies of the dead, re-animated by dark magic. "
+"Though not especially dangerous to a trained soldier, the sight of one's "
+"former comrades amongst their number is frightening to say the least."
+msgstr ""
+
+#. [unit_type]: id=Ancient Lich, race=undead
+#: data/core/units/undead/Necro_Ancient_Lich.cfg:4
+msgid "Ancient Lich"
+msgstr ""
+
+#. [unit_type]: id=Ancient Lich, race=undead
+#: data/core/units/undead/Necro_Ancient_Lich.cfg:25
+msgid ""
+"A being of this order is a revenant of ages long past. Anyone who encounters "
+"an Ancient Lich likely has far worse things to worry about than death."
+msgstr ""
+
+#. [attack]: type=cold
+#: data/core/units/undead/Necro_Ancient_Lich.cfg:60
+#: data/core/units/undead/Necro_Lich.cfg:60
+msgid "chill tempest"
+msgstr ""
+
+#. [attack]: type=arcane
+#: data/core/units/undead/Necro_Ancient_Lich.cfg:72
+#: data/core/units/undead/Necro_Dark_Adept.cfg:55
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:119
+#: data/core/units/undead/Necro_Lich.cfg:72
+#: data/core/units/undead/Necromancer.cfg:63
+msgid "shadow wave"
+msgstr ""
+
+#. [unit_type]: id=Dark Adept, race=human
+#: data/core/units/undead/Necro_Dark_Adept.cfg:4
+msgid "Dark Adept"
+msgstr ""
+
+#. [unit_type]: id=Dark Adept, race=human
+#: data/core/units/undead/Necro_Dark_Adept.cfg:26
+msgid ""
+"To attract any practitioners, the lure of black magic must be a great prize "
+"indeed, for anyone caught practicing the art in the civilized world is "
+"subject to a death sentence. And yet there are those who pursue this art, "
+"for the prize offered is nothing less than immortality. Hidden away in "
+"secret cults, or initiated into the dark orders of the underworld, the "
+"training which these fanatics must endure often drives them to exhaustion "
+"and enfeeblement.\n"
+"\n"
+"In such condition, their only weapon is the craft they have so committed "
+"themselves to learning."
+msgstr ""
+
+#. [attack]: type=cold
+#: data/core/units/undead/Necro_Dark_Adept.cfg:43
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:107
+#: data/core/units/undead/Necromancer.cfg:51
+msgid "chill wave"
+msgstr ""
+
+#. [female]
+#: data/core/units/undead/Necro_Dark_Adept.cfg:295
+msgid "female^Dark Adept"
+msgstr ""
+
+#. [unit_type]: id=Dark Sorcerer, race=human
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:4
+msgid "Dark Sorcerer"
+msgstr ""
+
+#. [unit_type]: id=Dark Sorcerer, race=human
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:21
+msgid ""
+"The dread inspired by black magic is enhanced by the secrecy and fell rumors "
+"which surround it. Dark sorcerers have begun to unlock the secrets of life "
+"and death, the latter of which is all too easy to inflict. This labor gives "
+"the first glimmerings of the connection between the soul and inert matter, "
+"and the first successful experiments in manipulating this bond. The terrible "
+"unknown that lurks beyond death is glimpsed, and will inevitably be "
+"fathomed.\n"
+"\n"
+"Despite any design they may have of using this to wrest their own "
+"immortality from nature's grasp, the first results of their work have "
+"immediate, and unpleasant applications. The life they breathe into dead "
+"matter can create servants for them, servants which will work, but which "
+"will also kill, and will never question their masters. These creations have "
+"a loyalty any tyrant would dream of, and it is tempting to those with even "
+"the slightest desire for power."
+msgstr ""
+
+#. [female]
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:250
+msgid "Dark Sorceress"
+msgstr ""
+
+#. [female]
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:256
+msgid ""
+"The dread inspired by black magic comes chiefly from how little is known "
+"about it by the common man. Dark sorceresses have begun to unlock the "
+"secrets of life and death, the latter of which is all too easy to inflict. "
+"This labor gives the first glimmerings of the connection between the soul "
+"and inert matter, and the first successful experiments in manipulating this "
+"bond. The terrible unknown that lurks beyond death is glimpsed, and will "
+"inevitably be fathomed.\n"
+"\n"
+"Despite any design they may have of using this to wrest their own "
+"immortality from nature's grasp, the first results of their work have "
+"immediate, and unpleasant applications. The life they breathe into dead "
+"matter can create servants for them, servants which will work, but which "
+"will also kill, and will never question their mistress. These creations have "
+"a loyalty any tyrant would dream of, and it is tempting to those with even "
+"the merest desire for power."
+msgstr ""
+
+#. [unit_type]: id=Lich, race=undead
+#: data/core/units/undead/Necro_Lich.cfg:4
+msgid "Lich"
+msgstr ""
+
+#. [unit_type]: id=Lich, race=undead
+#: data/core/units/undead/Necro_Lich.cfg:25
+msgid ""
+"A lich is the physical embodiment of black magic's first goal: the quest to "
+"achieve immortality. Though a great deal is sacrificed in the rebirth, in "
+"becoming a lich one cheats death of that which truly gives it terror. For it "
+"is the mind that is retained, and the spirit which follows, though the body "
+"may wither away.\n"
+"\n"
+"It is not known, save perhaps by the inner circles of necromancy, whether "
+"life is prolonged indefinitely or simply extended. But the fact that this "
+"question can be raised at all, testifies to the magnitude of what their "
+"order has achieved."
+msgstr ""
+
+#. [unit_type]: id=Necromancer, race=human
+#: data/core/units/undead/Necromancer.cfg:4
+msgid "Necromancer"
+msgstr ""
+
+#. [unit_type]: id=Necromancer, race=human
+#: data/core/units/undead/Necromancer.cfg:22
+msgid ""
+"One of the pinnacles of what is considered 'black magic' is the art of "
+"necromancy, the terrible ability to awaken the dead with false life. This "
+"discovery alone caused humanity's condemnation of black magic, for the "
+"nightmarish things it has made real have given fear a vast new arsenal.\n"
+"\n"
+"This ability, in all aspects, is the first step towards cheating death of "
+"its ultimate prize."
+msgstr ""
+
+#. [attack]: type=impact
+#: data/core/units/undead/Necromancer.cfg:39
+msgid "plague staff"
+msgstr ""
+
+#. [female]
+#: data/core/units/undead/Necromancer.cfg:254
+msgid "female^Necromancer"
+msgstr ""
+
+#. [unit_type]: id=Banebow, race=undead
+#: data/core/units/undead/Skele_Banebow.cfg:5
+msgid "Banebow"
+msgstr ""
+
+#. [unit_type]: id=Banebow, race=undead
+#: data/core/units/undead/Skele_Banebow.cfg:18
+msgid ""
+"The most powerful of the undead archers invariably end up being those who "
+"were themselves archers in their previous life. They wander the fields of "
+"battle, guided by the fading memory of their former skill, neither knowing, "
+"nor caring what their purpose or foes might be. They are driven only by a "
+"malice born of their empty and tortured existence."
+msgstr ""
+
+#. [unit_type]: id=Bone Shooter, race=undead
+#: data/core/units/undead/Skele_Bone_Shooter.cfg:4
+msgid "Bone Shooter"
+msgstr ""
+
+#. [unit_type]: id=Bone Shooter, race=undead
+#: data/core/units/undead/Skele_Bone_Shooter.cfg:16
+msgid ""
+"Of a dark sorcerer's creations, some take more strongly to the false life "
+"given them. The potency of their un-life is given equipment to match; "
+"archers, in particular, are often outfitted with a truly vile arsenal. Their "
+"quivers are filled with shafts made not of wood, but of the bones of their "
+"victims. It follows that they are dubbed simply 'Bone-Shooters' by their "
+"unfortunate enemies."
+msgstr ""
+
+#. [unit_type]: id=Chocobone, race=undead
+#: data/core/units/undead/Skele_Chocobone.cfg:4
+msgid "Chocobone"
+msgstr ""
+
+#. [unit_type]: id=Chocobone, race=undead
+#: data/core/units/undead/Skele_Chocobone.cfg:21
+msgid ""
+"Riding the bones of ostrich-like large birds once used as mounts by a lost "
+"civilization, the skeletal Chocobones can move faster than most cavalry "
+"units."
+msgstr ""
+
+#. [unit_type]: id=Death Knight, race=undead
+#: data/core/units/undead/Skele_Death_Knight.cfg:4
+msgid "Death Knight"
+msgstr ""
+
+#. [unit_type]: id=Death Knight, race=undead
+#: data/core/units/undead/Skele_Death_Knight.cfg:26
+msgid ""
+"Tales are told of the mightiest warriors and generals, who, cursed with hate "
+"and stung by betrayal, have come back to this world as Death Knights. "
+"Wielding the same weapons as in life, they command the Undead in their quest "
+"for revenge."
+msgstr ""
+
+#. [unit_type]: id=Deathblade, race=undead
+#: data/core/units/undead/Skele_Deathblade.cfg:4
+msgid "Deathblade"
+msgstr ""
+
+#. [unit_type]: id=Deathblade, race=undead
+#: data/core/units/undead/Skele_Deathblade.cfg:19
+msgid ""
+"In life, the abominations known as 'Deathblades' were masters of combat, "
+"soldiers who were both lithe and deadly. Their new masters, recognizing "
+"this, outfit them to match the skills they once had. Though frail, these "
+"monsters are much faster than the rest of their kind, both on foot and with "
+"their blades."
+msgstr ""
+
+#. [unit_type]: id=Draug, race=undead
+#: data/core/units/undead/Skele_Draug.cfg:4
+msgid "Draug"
+msgstr ""
+
+#. [unit_type]: id=Draug, race=undead
+#: data/core/units/undead/Skele_Draug.cfg:18
+msgid ""
+"There is little left, in these towering ruins, of the men they once were. "
+"Warriors at heart, they are now lost in the dream of unlife; wandering "
+"through the battles of their memory and fighting desperately for release, "
+"for a peace bought only by strength of arms. And so they struggle; both "
+"unthinking, and unrelenting."
+msgstr ""
+
+#. [unit_type]: id=Revenant, race=undead
+#: data/core/units/undead/Skele_Revenant.cfg:4
+msgid "Revenant"
+msgstr ""
+
+#. [unit_type]: id=Revenant, race=undead
+#: data/core/units/undead/Skele_Revenant.cfg:19
+msgid ""
+"Given false life to do battle once more, the creatures known as Revenants "
+"were clearly great warriors in their time, though the memory of that time is "
+"allmost wholly lost to their undead selves. Even the sorcerers who raised "
+"them can only speculate on their past. Such questions aside, a Revenant is a "
+"powerful tool in combat: a fearless warrior that feels no pain and will "
+"fight to the bitter end."
+msgstr ""
+
+#. [unit_type]: id=Skeleton, race=undead
+#: data/core/units/undead/Skeleton.cfg:4
+msgid "Skeleton"
+msgstr ""
+
+#. [unit_type]: id=Skeleton, race=undead
+#: data/core/units/undead/Skeleton.cfg:19
+msgid ""
+"Skeletons are warriors who have been slain in battle and brought back by "
+"dark magics. Nearly mindless, and unwavering in their purpose, they fear "
+"neither pain, nor death, and their mere presence will often frighten away "
+"any who would challenge their master."
+msgstr ""
+
+#. [unit_type]: id=Skeleton Archer, race=undead
+#: data/core/units/undead/Skeleton_Archer.cfg:4
+msgid "Skeleton Archer"
+msgstr ""
+
+#. [unit_type]: id=Skeleton Archer, race=undead
+#: data/core/units/undead/Skeleton_Archer.cfg:17
+msgid ""
+"A skeleton archer is little different from the 'skeletons' which often "
+"accompany it - it is a sin against nature, a warrior raised from the dead to "
+"fight once again. In their masters' hands, these soldiers will do anything "
+"to achieve the tasks laid before them, for death holds no fear for one who "
+"is already dead."
+msgstr ""
+
+#. [unit_type]: id=Ghost, race=undead
+#: data/core/units/undead/Spirit_Ghost.cfg:4
+msgid "Ghost"
+msgstr ""
+
+#. [unit_type]: id=Ghost, race=undead
+#: data/core/units/undead/Spirit_Ghost.cfg:19
+msgid ""
+"Enslaved within a shroud of enchantments, a trapped spirit may be likened to "
+"the wind in the sails of a ship. This damned vessel becomes an unfailing "
+"servant which can be bound to whatever task their master sees fit."
+msgstr ""
+
+#. [attack]: type=cold
+#: data/core/units/undead/Spirit_Ghost.cfg:142
+#: data/core/units/undead/Spirit_Spectre.cfg:70
+#: data/core/units/undead/Spirit_Wraith.cfg:32
+msgid "wail"
+msgstr ""
+
+#. [unit_type]: id=Nightgaunt, race=undead
+#: data/core/units/undead/Spirit_Nightgaunt.cfg:4
+msgid "Nightgaunt"
+msgstr ""
+
+#. [unit_type]: id=Nightgaunt, race=undead
+#: data/core/units/undead/Spirit_Nightgaunt.cfg:19
+msgid ""
+"The purpose of the masks that these creatures wear is unknown, as is the "
+"countenance that they obscure. These terrible forms are rarely seen by the "
+"living, and those who live to speak of them had no leisure to study their "
+"foe."
+msgstr ""
+
+#. [unit_type]: id=Shadow, race=undead
+#: data/core/units/undead/Spirit_Shadow.cfg:4
+msgid "Shadow"
+msgstr ""
+
+#. [unit_type]: id=Shadow, race=undead
+#: data/core/units/undead/Spirit_Shadow.cfg:20
+msgid ""
+"When light came into the world and gave form to the unknown, fear was forced "
+"to retreat into darkness. Since that day, the shadows of the world have held "
+"terror for humanity, though it knows not why.\n"
+"\n"
+"That is a question which is easily answered by a necromancer."
+msgstr ""
+
+#. [unit_type]: id=Spectre, race=undead
+#: data/core/units/undead/Spirit_Spectre.cfg:4
+msgid "Spectre"
+msgstr ""
+
+#. [unit_type]: id=Spectre, race=undead
+#: data/core/units/undead/Spirit_Spectre.cfg:21
+msgid ""
+"Sometimes called the 'hollow men', spectres form the right arm of their "
+"masters' powers. They are an unholy terror to the living, for they are quite "
+"as deadly as their appearance suggests.\n"
+"\n"
+"The creation of these is itself no mean feat, but the real danger in "
+"encountering one is that it is likely only the harbinger of a much more "
+"dangerous force that will follow in its wake."
+msgstr ""
+
+#. [attack]: type=arcane
+#: data/core/units/undead/Spirit_Spectre.cfg:59
+#: data/core/units/undead/Spirit_Wraith.cfg:21
+msgid "baneblade"
+msgstr ""
+
+#. [unit_type]: id=Wraith, race=undead
+#: data/core/units/undead/Spirit_Wraith.cfg:4
+msgid "Wraith"
+msgstr ""
+
+#. [unit_type]: id=Wraith, race=undead
+#: data/core/units/undead/Spirit_Wraith.cfg:17
+msgid ""
+"These shades of what were once warriors are among the most terrifying things "
+"a necromancer can create, for a sword will cleave right through them as if "
+"through air, seemingly without doing harm. It is the thought that these foes "
+"are invincible which is so frightening, a notion that is fortunately far "
+"from the truth."
+msgstr ""
+
+#. [unit_type]: id=Ancient Wose, race=wose
+#: data/core/units/wose/Ancient.cfg:4
+msgid "Ancient Wose"
+msgstr ""
+
+#. [unit_type]: id=Ancient Wose, race=wose
+#: data/core/units/wose/Ancient.cfg:21
+msgid ""
+"There is a curious story of a farmer who had a great oak in his lawn, a tree "
+"which had stood when his father first broke the soil on that land, and under "
+"which his family had many memories. It was thus a shock to him, one morning, "
+"when he awoke to find it somehow spirited away, with nothing but a bare "
+"patch of earth where it once stood.\n"
+"\n"
+"Such encounters are all that is known of what are presumably the most "
+"ancient of woses."
+msgstr ""
+
+#. [attack]: type=impact
+#: data/core/units/wose/Ancient.cfg:105 data/core/units/wose/Elder.cfg:104
+#: data/core/units/wose/Wose.cfg:43
+msgid "crush"
+msgstr ""
+
+#. [unit_type]: id=Elder Wose, race=wose
+#: data/core/units/wose/Elder.cfg:4
+msgid "Elder Wose"
+msgstr ""
+
+#. [unit_type]: id=Elder Wose, race=wose
+#: data/core/units/wose/Elder.cfg:20
+msgid ""
+"Woses have been said to possess many shapes, all of them tree-like in form, "
+"and as they age, to increase in size. Tales tell of woses who resemble trees "
+"in this respect as well, towering over the creatures who walk beneath them. "
+"This is the greater part of why they are so rarely seen - standing in the "
+"slumber which they so often do, a wose of that stature appears to be nothing "
+"more than an oddly-shaped tree. Even a careless elf can sometimes be "
+"fooled.\n"
+"\n"
+"Woses are not warriors by any means, but their great strength can easily be "
+"turned to violence, should someone manage to raise the ire of these "
+"creatures."
+msgstr ""
+
+#. [unit_type]: id=Wose, race=wose
+#: data/core/units/wose/Wose.cfg:4
+msgid "Wose"
+msgstr ""
+
+#. [unit_type]: id=Wose, race=wose
+#: data/core/units/wose/Wose.cfg:21
+msgid ""
+"Rarely seen even by elves, the Wose is an order of creature about which "
+"little is known. The elves are the source of most of this knowledge; they "
+"know that these beings are not descended from trees, despite the similarity "
+"in form, and they know that a wose is more closely tied to the faerie world "
+"than the elves themselves, though in a different way. The motives and "
+"workings of their kind are unknown, though most subscribe to the obvious "
+"theory that woses are dedicated wardens of the natural world.\n"
+"\n"
+"Woses are utterly unwarlike, but possess a great strength. They are, "
+"however, neither used to, nor quick at moving around."
+msgstr ""
