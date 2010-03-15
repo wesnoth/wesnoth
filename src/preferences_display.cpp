@@ -120,7 +120,7 @@ void set_fullscreen(CVideo& video, const bool ison)
 			int tmp_flags = flags;
 			std::pair<int,int> tmp_res;
 			if(detect_video_settings(video, tmp_res, bpp, tmp_flags)) {
-				video.setMode(tmp_res.first, tmp_res.second, bpp, tmp_flags);
+				set_resolution(video, tmp_res.first, tmp_res.second);
 			// TODO: see if below line is actually needed, possibly for displays that only support 16 bbp
 			} else if(video.modePossible(1024,768,16,flags)) {
 				set_resolution(video, 1024, 768);
