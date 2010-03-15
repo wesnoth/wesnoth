@@ -1982,7 +1982,7 @@ void server::process_data_game(const network::connection sock,
 		size_t nsides = 0;
 		const simple_wml::node::child_list& sides = data.root().children("side");
 		for (simple_wml::node::child_list::const_iterator s = sides.begin(); s != sides.end(); ++s) {
-	        	++nsides;
+			++nsides;
 		}
 		if (nsides > gamemap::MAX_PLAYERS) {
 			delete_game(itor);
