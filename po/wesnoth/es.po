@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-15 01:03+0100\n"
+"POT-Creation-Date: 2010-03-15 21:23+0100\n"
 "PO-Revision-Date: 2009-12-15 23:10+0100\n"
 "Last-Translator: Diego J. <diegojromerolopez@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -7173,6 +7173,14 @@ msgstr ""
 "aliados controlados por la computadora utilizando el menú contextual al "
 "hacer clic derecho."
 
+#: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1612
+msgid "Victory:"
+msgstr "Victoria:"
+
+#: data/lua/wml-tags.lua:25
+msgid "Defeat:"
+msgstr "Derrota:"
+
 #: data/temp-file_send_data_strings.cfg:12
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
 msgstr ""
@@ -9292,10 +9300,6 @@ msgstr "Vacío"
 msgid "Cannot find era $era"
 msgstr "No se encuentra la era $era"
 
-#: src/multiplayer_connect.cpp:1612
-msgid "Victory:"
-msgstr "Victoria:"
-
 #: src/multiplayer_connect.cpp:1614
 msgid "Defeat enemy leader(s)"
 msgstr "Derrotar a los líderes enemigos"
@@ -10225,9 +10229,6 @@ msgstr "Permitir envíos de resúmenes"
 #~ msgstr ""
 #~ "La posición del líder no está vacía, se ha encontrado una definición de "
 #~ "bando duplicada para el bando «$side|»."
-
-#~ msgid "Defeat:"
-#~ msgstr "Derrota:"
 
 #~ msgid "--no games open--"
 #~ msgstr "--no hay partidas abiertas--"

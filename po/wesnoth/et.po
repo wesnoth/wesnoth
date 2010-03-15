@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4 Estonian translation\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-15 01:03+0100\n"
+"POT-Creation-Date: 2010-03-15 21:23+0100\n"
 "PO-Revision-Date: 2009-12-25 11:55+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: Kaido Kikkas <kakk@kakupesa.net>\n"
@@ -6850,6 +6850,14 @@ msgstr ""
 "Paljudes stsenaariumides saad sa anda enda arvuti poolt juhitavatele "
 "liitlastele lihtsaid käske, kasutades paremklõpsuga avanevat menüüd."
 
+#: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1612
+msgid "Victory:"
+msgstr "Võit:"
+
+#: data/lua/wml-tags.lua:25
+msgid "Defeat:"
+msgstr "Kaotus:"
+
 #: data/temp-file_send_data_strings.cfg:12
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
 msgstr "Aita meil Wesnothi paremaks teha!"
@@ -8925,10 +8933,6 @@ msgstr "Tühi"
 msgid "Cannot find era $era"
 msgstr "Ei leia ajastut $era"
 
-#: src/multiplayer_connect.cpp:1612
-msgid "Victory:"
-msgstr "Võit:"
-
 #: src/multiplayer_connect.cpp:1614
 msgid "Defeat enemy leader(s)"
 msgstr "Alista vaenlase pealik(ud)"
@@ -9837,9 +9841,6 @@ msgstr "Lülita kokkuvõtete saatmine sisse"
 #~ "found."
 #~ msgstr ""
 #~ "Pealiku asukoht pole tühi -  osapool '$side|' on defineeritud topelt."
-
-#~ msgid "Defeat:"
-#~ msgstr "Kaotus:"
 
 #~ msgid "--no games open--"
 #~ msgstr "--avatud mänge pole--"

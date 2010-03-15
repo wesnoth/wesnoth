@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-15 01:03+0100\n"
+"POT-Creation-Date: 2010-03-15 21:23+0100\n"
 "PO-Revision-Date: 2009-11-28 13:01+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
@@ -7070,6 +7070,14 @@ msgstr ""
 "kontrolowanym przez komputer używając menu kontekstowego przywoływanego "
 "prawym przyciskiem myszy."
 
+#: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1612
+msgid "Victory:"
+msgstr "Zwycięstwo:"
+
+#: data/lua/wml-tags.lua:25
+msgid "Defeat:"
+msgstr "Porażka:"
+
 #: data/temp-file_send_data_strings.cfg:12
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
 msgstr "Wysyłanie statystyk - pomóż nam uczynić Wesnoth lepszym!"
@@ -9195,10 +9203,6 @@ msgstr "Puste"
 msgid "Cannot find era $era"
 msgstr "Era $era nieznaleziona"
 
-#: src/multiplayer_connect.cpp:1612
-msgid "Victory:"
-msgstr "Zwycięstwo:"
-
 #: src/multiplayer_connect.cpp:1614
 msgid "Defeat enemy leader(s)"
 msgstr "Pokonaj przywódców wroga"
@@ -10132,9 +10136,6 @@ msgstr "Włącz wysyłanie podsumowań"
 #~ msgstr ""
 #~ "Pozycja przywódcy nie jest pusta - znaleziono duplikat definicji strony "
 #~ "'$side|'."
-
-#~ msgid "Defeat:"
-#~ msgstr "Porażka:"
 
 #~ msgid "--no games open--"
 #~ msgstr "--brak otwartych gier--"

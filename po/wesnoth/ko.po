@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-15 01:03+0100\n"
+"POT-Creation-Date: 2010-03-15 21:23+0100\n"
 "PO-Revision-Date: 2006-03-21 21:06-0800\n"
 "Last-Translator: Andrew <Sfradix@hotmail.com>\n"
 "Language-Team: none\n"
@@ -5423,6 +5423,15 @@ msgid ""
 "computer-controlled allies using the right-click context menu."
 msgstr ""
 
+#: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1612
+msgid "Victory:"
+msgstr ""
+
+#: data/lua/wml-tags.lua:25
+#, fuzzy
+msgid "Defeat:"
+msgstr "기본"
+
 #: data/temp-file_send_data_strings.cfg:12
 #, fuzzy
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
@@ -7532,10 +7541,6 @@ msgstr "없음"
 msgid "Cannot find era $era"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:1612
-msgid "Victory:"
-msgstr ""
-
 #: src/multiplayer_connect.cpp:1614
 #, fuzzy
 msgid "Defeat enemy leader(s)"
@@ -8632,10 +8637,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "--move--"
 #~ msgstr "이동력:"
-
-#, fuzzy
-#~ msgid "Default"
-#~ msgstr "기본"
 
 #, fuzzy
 #~ msgid "cancel"

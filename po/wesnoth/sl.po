@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-15 01:03+0100\n"
+"POT-Creation-Date: 2010-03-15 21:23+0100\n"
 "PO-Revision-Date: 2006-08-14 19:33+0200\n"
 "Last-Translator: Jaka Kranjc <wesnoth@prinas.si>\n"
 "Language-Team: Slovenian\n"
@@ -6212,6 +6212,14 @@ msgid ""
 "computer-controlled allies using the right-click context menu."
 msgstr ""
 
+#: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1612
+msgid "Victory:"
+msgstr "Zmaga:"
+
+#: data/lua/wml-tags.lua:25
+msgid "Defeat:"
+msgstr "Poraz:"
+
 #: data/temp-file_send_data_strings.cfg:12
 #, fuzzy
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
@@ -8451,10 +8459,6 @@ msgstr "Prazno"
 msgid "Cannot find era $era"
 msgstr "Ni mogoče najti ere $era"
 
-#: src/multiplayer_connect.cpp:1612
-msgid "Victory:"
-msgstr "Zmaga:"
-
 #: src/multiplayer_connect.cpp:1614
 #, fuzzy
 msgid "Defeat enemy leader(s)"
@@ -9422,9 +9426,6 @@ msgstr "Omogoči pošiljanje povzetkov"
 
 #~ msgid "Level"
 #~ msgstr "Stopnja"
-
-#~ msgid "Defeat:"
-#~ msgstr "Poraz:"
 
 #~ msgid "--no games open--"
 #~ msgstr "--nobena igra ne poteka--"

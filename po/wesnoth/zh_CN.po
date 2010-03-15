@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-15 01:03+0100\n"
+"POT-Creation-Date: 2010-03-15 21:23+0100\n"
 "PO-Revision-Date: 2009-12-16 00:20-0600\n"
 "Last-Translator: Yuanle Song <sylecn@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -6507,6 +6507,15 @@ msgid ""
 "computer-controlled allies using the right-click context menu."
 msgstr "在许多战役中，你都可以通过右键快捷菜单对盟友下达简单指令。"
 
+#: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1612
+msgid "Victory:"
+msgstr "胜利："
+
+#: data/lua/wml-tags.lua:25
+#, fuzzy
+msgid "Defeat:"
+msgstr "失败"
+
 #: data/temp-file_send_data_strings.cfg:12
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
 msgstr "即将上传统计数据 - 帮助我们改进韦诺，提升您的游戏体验！"
@@ -8558,10 +8567,6 @@ msgstr "空位"
 #: src/multiplayer_connect.cpp:1589
 msgid "Cannot find era $era"
 msgstr "找不到$era时期"
-
-#: src/multiplayer_connect.cpp:1612
-msgid "Victory:"
-msgstr "胜利："
 
 #: src/multiplayer_connect.cpp:1614
 msgid "Defeat enemy leader(s)"

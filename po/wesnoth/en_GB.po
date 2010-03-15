@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-15 01:03+0100\n"
+"POT-Creation-Date: 2010-03-15 21:23+0100\n"
 "PO-Revision-Date: 2009-11-02 10:07-0500\n"
 "Last-Translator: Eric S. Raymond <esr@thyrsus.com>\n"
 "Language-Team: English (British) <en@li.org>\n"
@@ -6964,6 +6964,14 @@ msgstr ""
 "In many campaign scenarios, you may issue simple instructions for your "
 "computer-controlled allies using the right-click context menu."
 
+#: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1612
+msgid "Victory:"
+msgstr "Victory:"
+
+#: data/lua/wml-tags.lua:25
+msgid "Defeat:"
+msgstr "Defeat:"
+
 #: data/temp-file_send_data_strings.cfg:12
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
 msgstr "About to upload statistics - Help us make Wesnoth better for you!"
@@ -9049,10 +9057,6 @@ msgstr "Empty"
 msgid "Cannot find era $era"
 msgstr "Cannot find era $era"
 
-#: src/multiplayer_connect.cpp:1612
-msgid "Victory:"
-msgstr "Victory:"
-
 #: src/multiplayer_connect.cpp:1614
 msgid "Defeat enemy leader(s)"
 msgstr "Defeat enemy leader(s)"
@@ -9965,9 +9969,6 @@ msgstr "Enable summary uploads"
 #~ msgstr ""
 #~ "Leader position not empty - duplicate side definition for side '$side|' "
 #~ "found."
-
-#~ msgid "Defeat:"
-#~ msgstr "Defeat:"
 
 #~ msgid "--no games open--"
 #~ msgstr "--no games open--"

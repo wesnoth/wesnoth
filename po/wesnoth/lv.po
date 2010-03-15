@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.9\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-15 01:03+0100\n"
+"POT-Creation-Date: 2010-03-15 21:23+0100\n"
 "PO-Revision-Date: 2010-03-15 16:31+0300\n"
 "Last-Translator: Reinis Danne <rei4dan@gmail.com>\n"
 "Language-Team: none\n"
@@ -6998,6 +6998,14 @@ msgstr ""
 "Daudzos kampaņu scenārijos, jūs variet dot vienkāršas instrukcijas jūsu ar "
 "datoru kontrolētajiem sabiedrotajiem, izmantojot labā klikšķa izvēlni."
 
+#: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1612
+msgid "Victory:"
+msgstr "Uzvara:"
+
+#: data/lua/wml-tags.lua:25
+msgid "Defeat:"
+msgstr "Sakāve:"
+
 #: data/temp-file_send_data_strings.cfg:12
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
 msgstr ""
@@ -9114,10 +9122,6 @@ msgstr "Tukšs"
 msgid "Cannot find era $era"
 msgstr "Nav atrasta ēra $era"
 
-#: src/multiplayer_connect.cpp:1612
-msgid "Victory:"
-msgstr "Uzvara:"
-
 #: src/multiplayer_connect.cpp:1614
 msgid "Defeat enemy leader(s)"
 msgstr "Sakaut pretinieku līderi/-us"
@@ -10045,9 +10049,6 @@ msgstr "Atļaut kopsavilkumu augšupielādi"
 #~ msgstr ""
 #~ "Līdera pozīcija nav tukša - atrasta divkārša puses definīcija pusei "
 #~ "'$side|'."
-
-#~ msgid "Defeat:"
-#~ msgstr "Sakāve:"
 
 #~ msgid "--no games open--"
 #~ msgstr "--neviena spēle nav atvērta--"

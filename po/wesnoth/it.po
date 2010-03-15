@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-15 01:03+0100\n"
+"POT-Creation-Date: 2010-03-15 21:23+0100\n"
 "PO-Revision-Date: 2010-01-30 11:50+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -7110,6 +7110,14 @@ msgstr ""
 "In molti scenari di campagne puoi dare semplici istruzioni ai tuoi alleati "
 "controllati dal computer usando il menù contestuale del tasto destro.."
 
+#: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1612
+msgid "Victory:"
+msgstr "Vittoria:"
+
+#: data/lua/wml-tags.lua:25
+msgid "Defeat:"
+msgstr "Sconfitta:"
+
 #: data/temp-file_send_data_strings.cfg:12
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
 msgstr "Sto per inviare le statistiche – Aiutaci a migliorare Wesnoth!"
@@ -9220,10 +9228,6 @@ msgstr "Vuoto"
 msgid "Cannot find era $era"
 msgstr "Non è stato possibile trovare l'era $era"
 
-#: src/multiplayer_connect.cpp:1612
-msgid "Victory:"
-msgstr "Vittoria:"
-
 #: src/multiplayer_connect.cpp:1614
 msgid "Defeat enemy leader(s)"
 msgstr "Sconfiggi il o i condottieri nemici"
@@ -10157,9 +10161,6 @@ msgstr "Abilita l'invio del sommario"
 #~ msgstr ""
 #~ "Posizione del condottiero non vuota – definizione di side duplicata per "
 #~ "la fazione «$side|»."
-
-#~ msgid "Defeat:"
-#~ msgstr "Sconfitta:"
 
 #~ msgid "--no games open--"
 #~ msgstr "--nessuna partita aperta--"

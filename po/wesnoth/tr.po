@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-15 01:03+0100\n"
+"POT-Creation-Date: 2010-03-15 21:23+0100\n"
 "PO-Revision-Date: 2009-04-12 14:56+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <ceviri@belgeler.gen.tr>\n"
@@ -6825,6 +6825,14 @@ msgstr ""
 "Çogu seferberlik senaryosunda sağ tık bağlam menüsünü kullanarak bilgisayar "
 "denetimindeki müttefiklerinize basit komutlar verebilirsiniz."
 
+#: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1612
+msgid "Victory:"
+msgstr "Galibiyet:"
+
+#: data/lua/wml-tags.lua:25
+msgid "Defeat:"
+msgstr "Mağlubiyet:"
+
 #: data/temp-file_send_data_strings.cfg:12
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
 msgstr ""
@@ -8932,10 +8940,6 @@ msgstr "Boş"
 msgid "Cannot find era $era"
 msgstr "$era çağı bulunamıyor"
 
-#: src/multiplayer_connect.cpp:1612
-msgid "Victory:"
-msgstr "Galibiyet:"
-
 #: src/multiplayer_connect.cpp:1614
 #, fuzzy
 msgid "Defeat enemy leader(s)"
@@ -9859,9 +9863,6 @@ msgstr "Özet göndermeyi etkinleştir"
 #~ "Leader position not empty - duplicate side definition for side '$side|' "
 #~ "found."
 #~ msgstr "‘$side|’ için birden fazla taraf tanımı bulundu."
-
-#~ msgid "Defeat:"
-#~ msgstr "Mağlubiyet:"
 
 #~ msgid "--no games open--"
 #~ msgstr "--açık oyun yok--"

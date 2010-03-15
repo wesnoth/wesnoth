@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-15 01:03+0100\n"
+"POT-Creation-Date: 2010-03-15 21:23+0100\n"
 "PO-Revision-Date: 2010-02-01 21:07+0900\n"
 "Last-Translator: \n"
 "Language-Team: Japanese Translation Team\n"
@@ -6885,6 +6885,14 @@ msgstr ""
 "多くのキャンペーンシナリオでは、右クリックのコンテキストメニューを使って、コ"
 "ンピュータが操作する友軍に単純な指示を発行するかもしれません。"
 
+#: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1612
+msgid "Victory:"
+msgstr "勝利条件:"
+
+#: data/lua/wml-tags.lua:25
+msgid "Defeat:"
+msgstr "敗北条件:"
+
 #: data/temp-file_send_data_strings.cfg:12
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
 msgstr ""
@@ -8962,10 +8970,6 @@ msgstr "なし"
 msgid "Cannot find era $era"
 msgstr "$era の時代が見つかりません"
 
-#: src/multiplayer_connect.cpp:1612
-msgid "Victory:"
-msgstr "勝利条件:"
-
 #: src/multiplayer_connect.cpp:1614
 msgid "Defeat enemy leader(s)"
 msgstr "敵のリーダー（達）を倒す"
@@ -9984,9 +9988,6 @@ msgstr "サマリのアップロードを有効にする"
 #~ msgstr ""
 #~ "保存名は、コロン（:）、スラッシュ（/）、バックスラッシュ（\\）を含んではい"
 #~ "けません。違う名前をつけて下さい。"
-
-#~ msgid "Defeat:"
-#~ msgstr "敗北条件:"
 
 #~ msgid "stone: "
 #~ msgstr "石化: "

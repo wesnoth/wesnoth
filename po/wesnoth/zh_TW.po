@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth1.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-15 01:03+0100\n"
+"POT-Creation-Date: 2010-03-15 21:23+0100\n"
 "PO-Revision-Date: 2009-05-08 22:09+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
@@ -6419,6 +6419,14 @@ msgid ""
 "computer-controlled allies using the right-click context menu."
 msgstr "在許多戰役中，你可以透過右鍵快捷鍵選單對盟友下達簡單指令。"
 
+#: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1612
+msgid "Victory:"
+msgstr "勝利："
+
+#: data/lua/wml-tags.lua:25
+msgid "Defeat:"
+msgstr "失敗："
+
 #: data/temp-file_send_data_strings.cfg:12
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
 msgstr "關於上傳的資料，會幫助我們讓韋諾更好！"
@@ -8492,10 +8500,6 @@ msgstr "空位"
 msgid "Cannot find era $era"
 msgstr "找不到$era時期"
 
-#: src/multiplayer_connect.cpp:1612
-msgid "Victory:"
-msgstr "勝利："
-
 #: src/multiplayer_connect.cpp:1614
 #, fuzzy
 msgid "Defeat enemy leader(s)"
@@ -9396,9 +9400,6 @@ msgstr "開啟訊息回報"
 #~ "Leader position not empty - duplicate side definition for side '$side|' "
 #~ "found."
 #~ msgstr "發現重復的陣營定義： '$side|'"
-
-#~ msgid "Defeat:"
-#~ msgstr "失敗："
 
 #~ msgid "--no games open--"
 #~ msgstr "—當前没有已建立的遊戲—"

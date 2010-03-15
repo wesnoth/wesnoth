@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-15 01:03+0100\n"
+"POT-Creation-Date: 2010-03-15 21:23+0100\n"
 "PO-Revision-Date: 2009-11-07 15:00+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -6983,6 +6983,15 @@ msgstr ""
 "V mnoha scénářích tažení můžete vydat vašim počítačovým spojencům příkazy v "
 "menu po kliknutí pravým tlačítkem na vůdce."
 
+#: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1612
+msgid "Victory:"
+msgstr "Vítězství:"
+
+#: data/lua/wml-tags.lua:25
+#, fuzzy
+msgid "Defeat:"
+msgstr "Porážka"
+
 #: data/temp-file_send_data_strings.cfg:12
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
 msgstr "Odeslání statistik - Pomozte nám vylepšit Wesnoth!"
@@ -9102,10 +9111,6 @@ msgstr "Prázdný"
 #: src/multiplayer_connect.cpp:1589
 msgid "Cannot find era $era"
 msgstr "Nemohu najít následující věk - $era"
-
-#: src/multiplayer_connect.cpp:1612
-msgid "Victory:"
-msgstr "Vítězství:"
 
 #: src/multiplayer_connect.cpp:1614
 msgid "Defeat enemy leader(s)"

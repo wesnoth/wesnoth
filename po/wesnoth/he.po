@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-15 01:03+0100\n"
+"POT-Creation-Date: 2010-03-15 21:23+0100\n"
 "PO-Revision-Date: 2009-07-13 00:55+0300\n"
 "Last-Translator: Oron Peled <oron@actcom.co.il>\n"
 "Language-Team: Hebrew\n"
@@ -6148,6 +6148,14 @@ msgid ""
 "computer-controlled allies using the right-click context menu."
 msgstr ""
 
+#: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1612
+msgid "Victory:"
+msgstr "ניצחון:"
+
+#: data/lua/wml-tags.lua:25
+msgid "Defeat:"
+msgstr "תבוסה:"
+
 #: data/temp-file_send_data_strings.cfg:12
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
 msgstr "מתחיל להעלות סטטיסטיקה - עזור לנו להפוך את ווסנות' לטוב יותר בשבילך!"
@@ -8238,10 +8246,6 @@ msgstr "ריק"
 msgid "Cannot find era $era"
 msgstr "לא יכול למצוא תקופה $era"
 
-#: src/multiplayer_connect.cpp:1612
-msgid "Victory:"
-msgstr "ניצחון:"
-
 #: src/multiplayer_connect.cpp:1614
 #, fuzzy
 msgid "Defeat enemy leader(s)"
@@ -9168,9 +9172,6 @@ msgstr "אפשר העלאות סיכומיפ"
 #~ "Leader position not empty - duplicate side definition for side '$side|' "
 #~ "found."
 #~ msgstr "נמצאה הגדרת צד כפולה לצד '$side|'."
-
-#~ msgid "Defeat:"
-#~ msgstr "תבוסה:"
 
 #~ msgid "--no games open--"
 #~ msgstr "--אין משחקים פתוחים--"

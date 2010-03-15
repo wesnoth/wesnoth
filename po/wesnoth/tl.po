@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-15 01:03+0100\n"
+"POT-Creation-Date: 2010-03-15 21:23+0100\n"
 "PO-Revision-Date: 2008-02-21 10:21+0800\n"
 "Last-Translator: eve <eve_eso@yahoo.com>\n"
 "Language-Team: \n"
@@ -5764,6 +5764,14 @@ msgid ""
 "computer-controlled allies using the right-click context menu."
 msgstr ""
 
+#: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1612
+msgid "Victory:"
+msgstr "Panalo:"
+
+#: data/lua/wml-tags.lua:25
+msgid "Defeat:"
+msgstr "Talo:"
+
 #: data/temp-file_send_data_strings.cfg:12
 #, fuzzy
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
@@ -7840,10 +7848,6 @@ msgstr "Walang laman"
 msgid "Cannot find era $era"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:1612
-msgid "Victory:"
-msgstr "Panalo:"
-
 #: src/multiplayer_connect.cpp:1614
 msgid "Defeat enemy leader(s)"
 msgstr ""
@@ -8769,9 +8773,6 @@ msgstr "Bigyan ng pagkakataon ang pag-upload ng sumaryo o buod"
 
 #~ msgid "Level"
 #~ msgstr "Antas"
-
-#~ msgid "Defeat:"
-#~ msgstr "Talo:"
 
 #~ msgid "--no games open--"
 #~ msgstr "--walang bukas na laro--"

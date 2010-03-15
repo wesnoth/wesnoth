@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-15 01:03+0100\n"
+"POT-Creation-Date: 2010-03-15 21:23+0100\n"
 "PO-Revision-Date: 2008-12-09 21:00+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -7078,6 +7078,14 @@ msgid ""
 "computer-controlled allies using the right-click context menu."
 msgstr ""
 
+#: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1612
+msgid "Victory:"
+msgstr "Victoria:"
+
+#: data/lua/wml-tags.lua:25
+msgid "Defeat:"
+msgstr "Derrota:"
+
 #: data/temp-file_send_data_strings.cfg:12
 #, fuzzy
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
@@ -9202,10 +9210,6 @@ msgstr "Baleiro"
 msgid "Cannot find era $era"
 msgstr "Non se puido atopar a era $era"
 
-#: src/multiplayer_connect.cpp:1612
-msgid "Victory:"
-msgstr "Victoria:"
-
 #: src/multiplayer_connect.cpp:1614
 #, fuzzy
 msgid "Defeat enemy leader(s)"
@@ -10142,9 +10146,6 @@ msgstr "Activar a suba de resumos"
 #~ "Leader position not empty - duplicate side definition for side '$side|' "
 #~ "found."
 #~ msgstr "Atopouse unha definición de bando duplicada para o bando '$side|'."
-
-#~ msgid "Defeat:"
-#~ msgstr "Derrota:"
 
 #~ msgid "--no games open--"
 #~ msgstr "--non hai partidas abertas--"

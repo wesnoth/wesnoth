@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-15 01:03+0100\n"
+"POT-Creation-Date: 2010-03-15 21:23+0100\n"
 "PO-Revision-Date: 2009-02-05 00:22+0530\n"
 "Last-Translator: Sujit R Jadhav <sujitrjadhav@gmail.com>\n"
 "Language-Team: Marathi <sujitrjadhav@gmail.com>\n"
@@ -5306,6 +5306,14 @@ msgid ""
 "computer-controlled allies using the right-click context menu."
 msgstr ""
 
+#: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1612
+msgid "Victory:"
+msgstr "विजय"
+
+#: data/lua/wml-tags.lua:25
+msgid "Defeat:"
+msgstr "पराभव"
+
 #: data/temp-file_send_data_strings.cfg:12
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
 msgstr ""
@@ -7347,10 +7355,6 @@ msgstr "रिक्त"
 msgid "Cannot find era $era"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:1612
-msgid "Victory:"
-msgstr "विजय"
-
 #: src/multiplayer_connect.cpp:1614
 msgid "Defeat enemy leader(s)"
 msgstr ""
@@ -8233,9 +8237,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Level"
 #~ msgstr "पातळी"
-
-#~ msgid "Defeat:"
-#~ msgstr "पराभव"
 
 #~ msgid "--no games open--"
 #~ msgstr "--कोणताही खेळ चालू नाही--"

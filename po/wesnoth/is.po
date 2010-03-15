@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.0-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-15 01:03+0100\n"
+"POT-Creation-Date: 2010-03-15 21:23+0100\n"
 "PO-Revision-Date: 2009-06-15 15:08-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: \n"
@@ -6484,6 +6484,14 @@ msgstr ""
 "Í mörgum atburðarásum herferðar, máttu gefa einfaldar leiðbeiningar til "
 "tölvu-stjórnaðra bandamenna með því að nota hægri-smell valmyndina."
 
+#: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1612
+msgid "Victory:"
+msgstr "Sigur:"
+
+#: data/lua/wml-tags.lua:25
+msgid "Defeat:"
+msgstr "Tap:"
+
 #: data/temp-file_send_data_strings.cfg:12
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
 msgstr ""
@@ -8585,10 +8593,6 @@ msgstr "Autt"
 msgid "Cannot find era $era"
 msgstr "Gat ekki fundið tímabilið $era"
 
-#: src/multiplayer_connect.cpp:1612
-msgid "Victory:"
-msgstr "Sigur:"
-
 #: src/multiplayer_connect.cpp:1614
 #, fuzzy
 msgid "Defeat enemy leader(s)"
@@ -9497,9 +9501,6 @@ msgstr ""
 #~ "Leader position not empty - duplicate side definition for side '$side|' "
 #~ "found."
 #~ msgstr "Tvíföld skilgrining hliðar fyrir hliðina '$side|' fannst."
-
-#~ msgid "Defeat:"
-#~ msgstr "Tap:"
 
 #~ msgid "--no games open--"
 #~ msgstr "--enginn leikur opinn--"

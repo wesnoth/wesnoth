@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-15 01:03+0100\n"
+"POT-Creation-Date: 2010-03-15 21:23+0100\n"
 "PO-Revision-Date: 2009-11-03 18:24+0100\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
@@ -7104,6 +7104,14 @@ msgstr ""
 "menüből egyszerű útmutatásokkal lásd el a számítógép-vezérelte "
 "szövetségeseidet."
 
+#: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1612
+msgid "Victory:"
+msgstr "Győzöl, ha:"
+
+#: data/lua/wml-tags.lua:25
+msgid "Defeat:"
+msgstr "Veszítesz, ha:"
+
 #: data/temp-file_send_data_strings.cfg:12
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
 msgstr "Statisztika feltöltése – Segíts a Wesnoth tökéletesítésében!"
@@ -9208,10 +9216,6 @@ msgstr "Üres"
 msgid "Cannot find era $era"
 msgstr "Nem találom a(z) $era korszakot"
 
-#: src/multiplayer_connect.cpp:1612
-msgid "Victory:"
-msgstr "Győzöl, ha:"
-
 #: src/multiplayer_connect.cpp:1614
 msgid "Defeat enemy leader(s)"
 msgstr "Legyőzöd az (összes) ellenfél vezérét"
@@ -10142,9 +10146,6 @@ msgstr "Összesítések feltöltésének engedélyezése"
 #~ msgstr ""
 #~ "A vezér mezője nem üres – a(z) „|$side|” csapatnál kétszeres "
 #~ "hozzárendelési hiba állt elő."
-
-#~ msgid "Defeat:"
-#~ msgstr "Veszítesz, ha:"
 
 #~ msgid "--no games open--"
 #~ msgstr "--nincs nyitott játék--"

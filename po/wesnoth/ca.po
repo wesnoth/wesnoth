@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.6.0+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-15 01:03+0100\n"
+"POT-Creation-Date: 2010-03-15 21:23+0100\n"
 "PO-Revision-Date: 2009-03-21 20:49+0100\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
@@ -6629,6 +6629,14 @@ msgid ""
 "computer-controlled allies using the right-click context menu."
 msgstr ""
 
+#: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1612
+msgid "Victory:"
+msgstr "Victòria:"
+
+#: data/lua/wml-tags.lua:25
+msgid "Defeat:"
+msgstr "Derrota:"
+
 #: data/temp-file_send_data_strings.cfg:12
 #, fuzzy
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
@@ -8727,10 +8735,6 @@ msgstr "Buit"
 msgid "Cannot find era $era"
 msgstr "No ha estat possible trobar $era."
 
-#: src/multiplayer_connect.cpp:1612
-msgid "Victory:"
-msgstr "Victòria:"
-
 #: src/multiplayer_connect.cpp:1614
 #, fuzzy
 msgid "Defeat enemy leader(s)"
@@ -9640,9 +9644,6 @@ msgstr "Permetre la pujada de resums"
 
 #~ msgid "Level"
 #~ msgstr "Nivell"
-
-#~ msgid "Defeat:"
-#~ msgstr "Derrota:"
 
 #~ msgid "--no games open--"
 #~ msgstr "--no hi ha partides obertes--"

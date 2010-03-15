@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-15 01:03+0100\n"
+"POT-Creation-Date: 2010-03-15 21:23+0100\n"
 "PO-Revision-Date: 2010-02-07 11:25+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -7214,6 +7214,14 @@ msgstr ""
 "Verbündeten einfache Befehle erteilen, in dem Ihr das Kontextmenü mit einem "
 "Rechtsklick öffnet und dann »Verbündeten instruieren« auswählt."
 
+#: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1612
+msgid "Victory:"
+msgstr "Sieg:"
+
+#: data/lua/wml-tags.lua:25
+msgid "Defeat:"
+msgstr "Niederlage:"
+
 #: data/temp-file_send_data_strings.cfg:12
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
 msgstr "Hochladen von Statistiken - Helft uns, Wesnoth zu verbessern!"
@@ -9349,10 +9357,6 @@ msgstr "Leer"
 msgid "Cannot find era $era"
 msgstr "Kann die Epoche $era nicht finden"
 
-#: src/multiplayer_connect.cpp:1612
-msgid "Victory:"
-msgstr "Sieg:"
-
 #: src/multiplayer_connect.cpp:1614
 msgid "Defeat enemy leader(s)"
 msgstr "Besiegt alle gegnerischen Anführer"
@@ -10281,9 +10285,6 @@ msgstr "Die Übertragung von Zusammenfassungen erlauben"
 #~ "Leader position not empty - duplicate side definition for side '$side|' "
 #~ "found."
 #~ msgstr "Doppelte Fraktionsdefinition für Fraktion »$side|« gefunden"
-
-#~ msgid "Defeat:"
-#~ msgstr "Niederlage:"
 
 #~ msgid "--no games open--"
 #~ msgstr "– keine offenen Partien –"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-15 01:03+0100\n"
+"POT-Creation-Date: 2010-03-15 21:23+0100\n"
 "PO-Revision-Date: 2008-03-01 19:31+0200\n"
 "Last-Translator: Aleksej Korgenkov <grimpanto@mail.ru>\n"
 "Language-Team: \n"
@@ -6556,6 +6556,14 @@ msgid ""
 "computer-controlled allies using the right-click context menu."
 msgstr ""
 
+#: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1612
+msgid "Victory:"
+msgstr "Venko se:"
+
+#: data/lua/wml-tags.lua:25
+msgid "Defeat:"
+msgstr "Malvenko se:"
+
 #: data/temp-file_send_data_strings.cfg:12
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
 msgstr ""
@@ -8688,10 +8696,6 @@ msgstr "Nenio"
 msgid "Cannot find era $era"
 msgstr "Mi ne kapablas trovi eraon $era"
 
-#: src/multiplayer_connect.cpp:1612
-msgid "Victory:"
-msgstr "Venko se:"
-
 #: src/multiplayer_connect.cpp:1614
 #, fuzzy
 msgid "Defeat enemy leader(s)"
@@ -9605,9 +9609,6 @@ msgstr ""
 
 #~ msgid "Level"
 #~ msgstr "Nivelo"
-
-#~ msgid "Defeat:"
-#~ msgstr "Malvenko se:"
 
 #~ msgid "--no games open--"
 #~ msgstr "--neniu malfermita ludo--"

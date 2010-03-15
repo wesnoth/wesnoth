@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-15 01:03+0100\n"
+"POT-Creation-Date: 2010-03-15 21:23+0100\n"
 "PO-Revision-Date: 2009-11-19 19:36+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
@@ -6934,6 +6934,14 @@ msgstr ""
 "V mnohých scénach vo výprave môžeš vydávať jednoduché rozkazy spojencom "
 "ovládaným počítačom pomocou kontextového menu (pravé tlačidlo myši)."
 
+#: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1612
+msgid "Victory:"
+msgstr "Vyhráš, ak:"
+
+#: data/lua/wml-tags.lua:25
+msgid "Defeat:"
+msgstr "Prehráš, ak:"
+
 #: data/temp-file_send_data_strings.cfg:12
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
 msgstr "Odoslanie štatistík - Pomôž nám urobiť Wesnoth lepším pre teba!"
@@ -9037,10 +9045,6 @@ msgstr "Nič"
 msgid "Cannot find era $era"
 msgstr "Neviem nájsť éru $era"
 
-#: src/multiplayer_connect.cpp:1612
-msgid "Victory:"
-msgstr "Vyhráš, ak:"
-
 #: src/multiplayer_connect.cpp:1614
 msgid "Defeat enemy leader(s)"
 msgstr "Poraz ostatných veliteľov"
@@ -9962,9 +9966,6 @@ msgstr "Umožni posielanie štatistík"
 #~ msgstr ""
 #~ "Pozícia veliteľa nie je prázdna - našla sa duplicitná definícia strany "
 #~ "'$side|'."
-
-#~ msgid "Defeat:"
-#~ msgstr "Prehráš, ak:"
 
 #~ msgid "--no games open--"
 #~ msgstr "--nie je otvorená žiadna hra--"

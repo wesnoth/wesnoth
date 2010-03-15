@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-15 01:03+0100\n"
+"POT-Creation-Date: 2010-03-15 21:23+0100\n"
 "PO-Revision-Date: 2008-11-04 13:44+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -7033,6 +7033,14 @@ msgid ""
 "computer-controlled allies using the right-click context menu."
 msgstr ""
 
+#: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1612
+msgid "Victory:"
+msgstr "Sejr:"
+
+#: data/lua/wml-tags.lua:25
+msgid "Defeat:"
+msgstr "Nederlag:"
+
 #: data/temp-file_send_data_strings.cfg:12
 #, fuzzy
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
@@ -9157,10 +9165,6 @@ msgstr "Tom"
 msgid "Cannot find era $era"
 msgstr "Kan ikke finde æra $era"
 
-#: src/multiplayer_connect.cpp:1612
-msgid "Victory:"
-msgstr "Sejr:"
-
 #: src/multiplayer_connect.cpp:1614
 #, fuzzy
 msgid "Defeat enemy leader(s)"
@@ -10094,9 +10098,6 @@ msgstr "Slå sending af resumer til"
 #~ "Leader position not empty - duplicate side definition for side '$side|' "
 #~ "found."
 #~ msgstr "Ens sidedefinition for side '$side|'."
-
-#~ msgid "Defeat:"
-#~ msgstr "Nederlag:"
 
 #~ msgid "--no games open--"
 #~ msgstr "--ingen spil er i gang--"

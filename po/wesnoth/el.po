@@ -149,7 +149,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: el_gr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-15 01:03+0100\n"
+"POT-Creation-Date: 2010-03-15 21:23+0100\n"
 "PO-Revision-Date: 2008-01-21 18:54+0200\n"
 "Last-Translator: Konstantinos Egarhos <atixos@gmail.com>\n"
 "Language-Team:  <el@li.org>\n"
@@ -5968,6 +5968,14 @@ msgid ""
 "computer-controlled allies using the right-click context menu."
 msgstr ""
 
+#: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1612
+msgid "Victory:"
+msgstr "Νίκη:"
+
+#: data/lua/wml-tags.lua:25
+msgid "Defeat:"
+msgstr "Ηττα:"
+
 #: data/temp-file_send_data_strings.cfg:12
 #, fuzzy
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
@@ -8121,10 +8129,6 @@ msgstr "Κενό"
 msgid "Cannot find era $era"
 msgstr "Δεν μπορεί να βρεθεί η εποχή $era"
 
-#: src/multiplayer_connect.cpp:1612
-msgid "Victory:"
-msgstr "Νίκη:"
-
 #: src/multiplayer_connect.cpp:1614
 #, fuzzy
 msgid "Defeat enemy leader(s)"
@@ -9043,9 +9047,6 @@ msgstr "Επέτρεψε να σταλθούν οι περιλήψεις"
 
 #~ msgid "Level"
 #~ msgstr "Επίπεδο"
-
-#~ msgid "Defeat:"
-#~ msgstr "Ηττα:"
 
 #~ msgid "--no games open--"
 #~ msgstr "--δεν υπάρχουν ανοιχτά παιχνίδια--"

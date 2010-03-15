@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-15 01:03+0100\n"
+"POT-Creation-Date: 2010-03-15 21:23+0100\n"
 "PO-Revision-Date: 2009-09-26 15:40+0700\n"
 "Last-Translator: Phạm Thành Nam <phamthanhnam.ptn@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
@@ -7018,6 +7018,14 @@ msgstr ""
 "Trong nhiều kịch bản chiến dịch, bạn có thể cấp những chỉ thị đơn giản cho "
 "đồng minh do máy tính điều khiển sử dụng trình đơn ngữ cảnh chuột phải."
 
+#: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1612
+msgid "Victory:"
+msgstr "Chiến thắng:"
+
+#: data/lua/wml-tags.lua:25
+msgid "Defeat:"
+msgstr "Thua cuộc:"
+
 #: data/temp-file_send_data_strings.cfg:12
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
 msgstr "Sắp tải lên thống kê - Giúp chúng tôi làm cho Wesnoth tốt hơn cho bạn!"
@@ -9093,10 +9101,6 @@ msgstr "Bỏ trống"
 msgid "Cannot find era $era"
 msgstr "Không thể tìm thấy kỷ nguyên $era"
 
-#: src/multiplayer_connect.cpp:1612
-msgid "Victory:"
-msgstr "Chiến thắng:"
-
 #: src/multiplayer_connect.cpp:1614
 msgid "Defeat enemy leader(s)"
 msgstr "Đánh bại lãnh đạo kẻ thù"
@@ -9999,9 +10003,6 @@ msgstr "Cho phép tải lên bản tổng kết"
 #~ "Leader position not empty - duplicate side definition for side '$side|' "
 #~ "found."
 #~ msgstr "Vị trí người lãnh đạo không trống - trùng định nghĩa phe '$side|'."
-
-#~ msgid "Defeat:"
-#~ msgstr "Thua cuộc:"
 
 #~ msgid "--no games open--"
 #~ msgstr "--không có trò chơi nào mở--"

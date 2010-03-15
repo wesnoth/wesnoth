@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-15 01:03+0100\n"
+"POT-Creation-Date: 2010-03-15 21:23+0100\n"
 "PO-Revision-Date: 2010-02-20 21:49+0200\n"
 "Last-Translator: Samu Voutilainen <smar@smar.fi>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
@@ -7053,6 +7053,14 @@ msgstr ""
 "tietokoneen ohjastamille liittolaisillesi käyttäen hiiren oikean painikkeen "
 "takaa löytyvää pudotusvalikkoa."
 
+#: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1612
+msgid "Victory:"
+msgstr "Voitto:"
+
+#: data/lua/wml-tags.lua:25
+msgid "Defeat:"
+msgstr "Tappio:"
+
 #: data/temp-file_send_data_strings.cfg:12
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
 msgstr ""
@@ -9147,10 +9155,6 @@ msgstr "tyhjä"
 msgid "Cannot find era $era"
 msgstr "Aikakautta $era ei löydy"
 
-#: src/multiplayer_connect.cpp:1612
-msgid "Victory:"
-msgstr "Voitto:"
-
 #: src/multiplayer_connect.cpp:1614
 msgid "Defeat enemy leader(s)"
 msgstr "Kukista vihollisjohtaja(t)"
@@ -10067,9 +10071,6 @@ msgstr "Salli yhteenvetojen lähettäminen"
 #~ "Leader position not empty - duplicate side definition for side '$side|' "
 #~ "found."
 #~ msgstr "Päällekkäinen puolimääritys puolelle '$side|' löydetty."
-
-#~ msgid "Defeat:"
-#~ msgstr "Tappio:"
 
 #~ msgid "--no games open--"
 #~ msgstr "– ei avoimia pelejä –"

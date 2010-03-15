@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.1.1\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-15 01:03+0100\n"
+"POT-Creation-Date: 2010-03-15 21:23+0100\n"
 "PO-Revision-Date: 2009-04-05 10:50+0100\n"
 "Last-Translator: Gaute Storli Nielsen <gauteamus(at)gmail(dot)com>\n"
 "Language-Team: None\n"
@@ -6557,6 +6557,14 @@ msgid ""
 "computer-controlled allies using the right-click context menu."
 msgstr ""
 
+#: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1612
+msgid "Victory:"
+msgstr "Seier:"
+
+#: data/lua/wml-tags.lua:25
+msgid "Defeat:"
+msgstr "Nederlag:"
+
 #: data/temp-file_send_data_strings.cfg:12
 #, fuzzy
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
@@ -8782,10 +8790,6 @@ msgstr "Ingen spiller"
 msgid "Cannot find era $era"
 msgstr "Finner ikke epoke $era"
 
-#: src/multiplayer_connect.cpp:1612
-msgid "Victory:"
-msgstr "Seier:"
-
 #: src/multiplayer_connect.cpp:1614
 #, fuzzy
 msgid "Defeat enemy leader(s)"
@@ -9739,9 +9743,6 @@ msgstr "Tillat sammendragsopplasting"
 
 #~ msgid "Level"
 #~ msgstr "Grad"
-
-#~ msgid "Defeat:"
-#~ msgstr "Nederlag:"
 
 #~ msgid "--no games open--"
 #~ msgstr "--ingen spill pågår--"

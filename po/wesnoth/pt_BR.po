@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-15 01:03+0100\n"
+"POT-Creation-Date: 2010-03-15 21:23+0100\n"
 "PO-Revision-Date: 2009-12-04 16:34-0300\n"
 "Last-Translator: Gatts_Berserk <gatts_games@hotmail.com>\n"
 "Language-Team: Portuguese - Brasil\n"
@@ -6828,6 +6828,14 @@ msgid ""
 "computer-controlled allies using the right-click context menu."
 msgstr ""
 
+#: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1612
+msgid "Victory:"
+msgstr "Vitória:"
+
+#: data/lua/wml-tags.lua:25
+msgid "Defeat:"
+msgstr "Derrota:"
+
 #: data/temp-file_send_data_strings.cfg:12
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
 msgstr "Envie seu progresso - Ajude-nos a fazer um Wesnoth melhor para você!"
@@ -8894,10 +8902,6 @@ msgstr "Vazio"
 msgid "Cannot find era $era"
 msgstr "Não conseguiu encontrar a era $era"
 
-#: src/multiplayer_connect.cpp:1612
-msgid "Victory:"
-msgstr "Vitória:"
-
 #: src/multiplayer_connect.cpp:1614
 msgid "Defeat enemy leader(s)"
 msgstr "Derrote o(s) lídere(s) inimigo(s)"
@@ -9813,9 +9817,6 @@ msgstr "Permitir o envio de resumos"
 
 #~ msgid "Level"
 #~ msgstr "Nível"
-
-#~ msgid "Defeat:"
-#~ msgstr "Derrota:"
 
 #~ msgid "--no games open--"
 #~ msgstr "--não há jogos abertos--"

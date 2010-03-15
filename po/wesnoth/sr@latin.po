@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-15 01:03+0100\n"
+"POT-Creation-Date: 2010-03-15 21:23+0100\n"
 "PO-Revision-Date: 2010-02-27 10:47+0100\n"
 "Last-Translator: Dalibor Djuric <dalibor.djuric@mozilla-srbija.org>\n"
 "Language-Team: Serbian\n"
@@ -6954,6 +6954,15 @@ msgstr ""
 "U mnogim scenarijima u pohodu, saveznicima kojima upravlja računar možete "
 "izdavati jednostavne upute preko kontekstnog menija na desni klik."
 
+#: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1612
+msgid "Victory:"
+msgstr "pobeda:"
+
+#: data/lua/wml-tags.lua:25
+#, fuzzy
+msgid "Defeat:"
+msgstr "Poraz"
+
 #: data/temp-file_send_data_strings.cfg:12
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
 msgstr "Kačenje statistike u pripremi — pomozite nam da poboljšamo Vesnot!"
@@ -9074,10 +9083,6 @@ msgstr "prazno"
 #: src/multiplayer_connect.cpp:1589
 msgid "Cannot find era $era"
 msgstr "Ne mogu da nađem epohu $era"
-
-#: src/multiplayer_connect.cpp:1612
-msgid "Victory:"
-msgstr "pobeda:"
 
 #: src/multiplayer_connect.cpp:1614
 msgid "Defeat enemy leader(s)"

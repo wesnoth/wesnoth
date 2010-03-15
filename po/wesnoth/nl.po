@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-15 01:03+0100\n"
+"POT-Creation-Date: 2010-03-15 21:23+0100\n"
 "PO-Revision-Date: 2009-10-04 19:26+0100\n"
 "Last-Translator: Alexander van Gessel (AI/AI0867) <AI0867@gmail.com>\n"
 "Language-Team: Dutch <AI0867@gmail.com>\n"
@@ -7048,6 +7048,14 @@ msgstr ""
 "In veel veldtocht scenarios kan je simpele instructies geven aan je computer-"
 "gecontroleerde bondgenoten met het rechtermuisknop menu."
 
+#: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1612
+msgid "Victory:"
+msgstr "Overwinning:"
+
+#: data/lua/wml-tags.lua:25
+msgid "Defeat:"
+msgstr "Nederlaag:"
+
 #: data/temp-file_send_data_strings.cfg:12
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
 msgstr "Klaar om statistieken te verzenden - Help ons Wesnoth te verbeteren!"
@@ -9148,10 +9156,6 @@ msgstr "Niemand"
 msgid "Cannot find era $era"
 msgstr "Kan tijdperk $era niet vinden"
 
-#: src/multiplayer_connect.cpp:1612
-msgid "Victory:"
-msgstr "Overwinning:"
-
 #: src/multiplayer_connect.cpp:1614
 msgid "Defeat enemy leader(s)"
 msgstr "Dood de vijandelijke leider(s)"
@@ -10073,9 +10077,6 @@ msgstr "Samenvattingen uploaden aan"
 #~ "Leader position not empty - duplicate side definition for side '$side|' "
 #~ "found."
 #~ msgstr "Dubbele zijde definitie voor '$side|' gevonden."
-
-#~ msgid "Defeat:"
-#~ msgstr "Nederlaag:"
 
 #~ msgid "--no games open--"
 #~ msgstr "--geen spellen bezig--"
