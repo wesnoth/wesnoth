@@ -1,3 +1,5 @@
+--! #textdomain wesnoth-low
+
 local labels = {}
 local wml_label
 

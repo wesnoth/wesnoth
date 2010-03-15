@@ -1,3 +1,5 @@
+--! #textdomain wesnoth-low
+
 local replace_map
 replace_map = wesnoth.register_wml_action("replace_map",
   function(cfg)

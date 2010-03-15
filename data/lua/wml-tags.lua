@@ -1,3 +1,5 @@
+--! #textdomain wesnoth
+
 local helper = wesnoth.require "lua/helper.lua"
 
 local function trim(s)

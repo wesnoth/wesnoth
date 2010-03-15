@@ -1,3 +1,4 @@
+--! #textdomain wesnoth
 
 return {
 

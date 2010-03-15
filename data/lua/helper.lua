@@ -1,3 +1,5 @@
+--! #textdomain wesnoth
+
 local helper = {}
 
 --! Interrupts the current execution and displays a chat message that looks like a WML error.
