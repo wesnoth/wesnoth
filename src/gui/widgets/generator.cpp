@@ -137,7 +137,7 @@ tpoint thorizontal_list::calculate_best_size() const
 void thorizontal_list::place(const tpoint& origin, const tpoint& size)
 {
 	/*
-	 * - Set every item to it's best size.
+	 * - Set every item to its best size.
 	 * - The origin gets increased with the width of the last item.
 	 * - No item should be higher as the size.
 	 * - In the end the origin should be the sum or the origin and the wanted
@@ -332,7 +332,7 @@ tpoint tvertical_list::calculate_best_size() const
 void tvertical_list::place(const tpoint& origin, const tpoint& size)
 {
 	/*
-	 * - Set every item to it's best size.
+	 * - Set every item to its best size.
 	 * - The origin gets increased with the height of the last item.
 	 * - No item should be wider as the size.
 	 * - In the end the origin should be the sum or the origin and the wanted
