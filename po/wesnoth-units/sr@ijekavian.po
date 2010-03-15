@@ -1,28 +1,31 @@
-# #-#-#-#-#  wesnoth-units.cpp.pot (Battle for Wesnoth VERSION)  #-#-#-#-#
-# Serbian translations for Battle for Wesnoth package.
-# Copyright (C) 2010 Wesnoth development team
+# Translation of wesnoth-units.po into Serbian.
+# Copyright (C) 2005 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# Automatically generated, 2010.
+# Chusslove Illich <caslav.ilic@gmx.net>, 2007, 2008, 2009, 2010.
+# Dalibor Djuric <dalibor.djuric@mozilla-srbija.org>, 2010.
 #
+# Branko Kokanovic, 2006.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.7.1+svn\n"
+"Project-Id-Version: wesnoth-units\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-03-15 01:03+0100\n"
-"PO-Revision-Date: 2010-03-15 01:03+0100\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2010-03-02 11:21+0100\n"
+"Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
+"Language-Team: Serbian\n"
+"Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: sr@ijekavian\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Environment: wesnoth, wesnoth/noent\n"
+"X-Wrapping: fine\n"
 
 #. [unit_type]: id=Blood Bat, race=bats
 #: data/core/units/bats/Bat_Blood.cfg:4
 msgid "Blood Bat"
-msgstr ""
+msgstr "крво-шишмиш"
 
 #. [unit_type]: id=Blood Bat, race=bats
 #: data/core/units/bats/Bat_Blood.cfg:20
@@ -32,6 +35,10 @@ msgid ""
 "blood of those they attack, thereby gaining some of the health lost by their "
 "victims."
 msgstr ""
+"Крво-шишмиши тако су названи усљед своје румене појаве, што неким изгледа "
+"као обиљежје њихове омиљене исхране. Ова су створења брза, и могу црпсти крв "
+"оних које нападну, тако уливајући себи нешто од нарушеног здравља услед "
+"дејства противника."
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
@@ -47,12 +54,12 @@ msgstr ""
 #: data/core/units/monsters/Water_Serpent.cfg:43
 #: data/core/units/monsters/Wolf.cfg:50
 msgid "fangs"
-msgstr ""
+msgstr "очњаци"
 
 #. [unit_type]: id=Dread Bat, race=bats
 #: data/core/units/bats/Bat_Dread.cfg:4
 msgid "Dread Bat"
-msgstr ""
+msgstr "ужас-шишмиш"
 
 #. [unit_type]: id=Dread Bat, race=bats
 #: data/core/units/bats/Bat_Dread.cfg:26
@@ -61,11 +68,14 @@ msgid ""
 "Bats, gaining the ability to drain not merely the blood but the very life "
 "energy of their victims."
 msgstr ""
+"Најзлобнији, најграбљивији и најуспјешнији од крво-шишмиша постају ужас-"
+"шишмиши, задобивши способност да црпе не тек крв, већ саму животну силу из "
+"својих жртава."
 
 #. [unit_type]: id=Vampire Bat, race=bats
 #: data/core/units/bats/Bat_Vampire.cfg:4
 msgid "Vampire Bat"
-msgstr ""
+msgstr "вампир-шишмиш"
 
 #. [unit_type]: id=Vampire Bat, race=bats
 #: data/core/units/bats/Bat_Vampire.cfg:20
@@ -74,11 +84,14 @@ msgid ""
 "While their fangs are not very powerful, the health of victims is drained "
 "away along with their blood, and given to the Bats."
 msgstr ""
+"Вампир-шишмиши су летеће звјери које се хране крвљу других створења. Иако им "
+"очњаци нису превише јаки, могу исисавати крв жртве и тако је слабити, "
+"истовремено окрепљујући шишмиша."
 
 #. [unit_type]: id=Boat, race=mechanical
 #: data/core/units/boats/Boat.cfg:4
 msgid "Boat"
-msgstr ""
+msgstr "чамац"
 
 #. [unit_type]: id=Boat, race=mechanical
 #: data/core/units/boats/Boat.cfg:18
@@ -86,21 +99,23 @@ msgid ""
 "Propelled by oars or small sails, boats are used to travel short distances "
 "and in shallows where large ships cannot navigate."
 msgstr ""
+"Погоњени веслима или малим једрима, чамцима се преваљују кратка растојања у "
+"плићацима гдје већи бродови не могу упловити."
 
 #. [unit_type]: id=Galleon, race=mechanical
 #: data/core/units/boats/Galleon.cfg:6
 msgid "Galleon"
-msgstr ""
+msgstr "галија"
 
 #. [unit_type]: id=Galleon, race=mechanical
 #: data/core/units/boats/Galleon.cfg:21
 msgid "Galleons are blue-water ships built for trade and transport."
-msgstr ""
+msgstr "Галије су прекоокеански бродови грађени за трговину и ношење товара."
 
 #. [unit_type]: id=Pirate Galleon, race=mechanical
 #: data/core/units/boats/Pirate_Galleon.cfg:4
 msgid "Pirate Galleon"
-msgstr ""
+msgstr "гусарска галија"
 
 #. [unit_type]: id=Pirate Galleon, race=mechanical
 #: data/core/units/boats/Pirate_Galleon.cfg:18
@@ -109,17 +124,19 @@ msgid ""
 "who crew them are more than happy to help relieve other ships of their "
 "weighty cargo."
 msgstr ""
+"Гусарске галије су теретним бродовима што су вукови овцама. Гусари што њима "
+"једре више су него ради да растерете друге бродове њиховог тешког товара."
 
 #. [attack]: type=pierce
 #: data/core/units/boats/Pirate_Galleon.cfg:21
 #: data/core/units/boats/Transport_Galleon.cfg:22
 msgid "ballista"
-msgstr ""
+msgstr "балиста"
 
 #. [unit_type]: id=Transport Galleon, race=mechanical
 #: data/core/units/boats/Transport_Galleon.cfg:4
 msgid "Transport Galleon"
-msgstr ""
+msgstr "товарна галија"
 
 #. [unit_type]: id=Transport Galleon, race=mechanical
 #: data/core/units/boats/Transport_Galleon.cfg:18
@@ -127,11 +144,13 @@ msgid ""
 "Transport Galleons are well-armed ships that carry troops. If they reach the "
 "shore, they can land the troops to attack."
 msgstr ""
+"Товарне галије су добро наоружани бродови, који носе и војску. Када "
+"пристигну на обалу, могу искрцати те снаге у напад."
 
 #. [unit_type]: id=Drake Arbiter, race=drake
 #: data/core/units/drakes/Arbiter.cfg:4
 msgid "Drake Arbiter"
-msgstr ""
+msgstr "змаго-пресудник"
 
 #. [unit_type]: id=Drake Arbiter, race=drake
 #: data/core/units/drakes/Arbiter.cfg:19
@@ -143,6 +162,12 @@ msgid ""
 "raw heft the massive metal head provides. The thick plate these drakes wear "
 "protects them well against weapons that could slip between their scales."
 msgstr ""
+"Пресудници врло озбиљно схватају задуженост своје касте за очување реда. "
+"Како би боље извршавали дужности, напустили су обичајне змашке приручне "
+"канџе и размијенили копља за шиљак и сјечиво хелебарде. Губитак "
+"покретљивости схватају као правичну цијену за сирови замах који пружа "
+"масивна метална кацига. Дебео оклоп који носе штити их добро од оружја која "
+"би им иначе могла склизнути између крљушти."
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
@@ -151,12 +176,12 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Halberdier.cfg:41
 #: data/core/units/humans/Loyalist_Halberdier.cfg:53
 msgid "halberd"
-msgstr ""
+msgstr "хелебарда"
 
 #. [unit_type]: id=Armageddon Drake, race=drake
 #: data/core/units/drakes/Armageddon.cfg:4
 msgid "Armageddon Drake"
-msgstr ""
+msgstr "змаго-судњичас"
 
 #. [unit_type]: id=Armageddon Drake, race=drake
 #: data/core/units/drakes/Armageddon.cfg:27
@@ -166,12 +191,16 @@ msgid ""
 "dragons are but legend. The creatures known as 'Armageddon Drakes' are "
 "towering things, both immune to and possessed of a tremendous fire."
 msgstr ""
+"Да није оклопа који носе, поједини змагови не би се разликовали од истинских "
+"змајева, барем у очима нижих раса за које су змајеви бића из предања. Они "
+"познати као змагови-судњичаси су узвишена створења, како обдарена "
+"неизмијерном ватром тако и неосјетљива на њу."
 
 #. [attack]: type=blade
 #: data/core/units/drakes/Armageddon.cfg:86 data/core/units/drakes/Fire.cfg:42
 #: data/core/units/drakes/Inferno.cfg:44
 msgid "battle claws"
-msgstr ""
+msgstr "бојне канџе"
 
 #. [attack]: type=fire
 #: data/core/units/drakes/Armageddon.cfg:95
@@ -184,12 +213,12 @@ msgstr ""
 #: data/core/units/drakes/Warrior.cfg:48
 #: data/core/units/monsters/Fire_Dragon.cfg:49
 msgid "fire breath"
-msgstr ""
+msgstr "ватродах"
 
 #. [unit_type]: id=Drake Blademaster, race=drake
 #: data/core/units/drakes/Blademaster.cfg:4
 msgid "Drake Blademaster"
-msgstr ""
+msgstr "змаго-оштрохват"
 
 #. [unit_type]: id=Drake Blademaster, race=drake
 #: data/core/units/drakes/Blademaster.cfg:21
@@ -201,6 +230,11 @@ msgid ""
 "around; Blademasters fiercely protect their fellows' honor, and no-one would "
 "dispute their right to do so."
 msgstr ""
+"Црни оклоп обиљежје је оштрохвата̂, елитног реда касте бораца. Тек неколицина "
+"успије да се домогне вјештине и моћи потребне за произвођење у овај највиши "
+"чин прије него што страда у боју. Други змагови умију да ниподаштавају касту "
+"бораца, али се двапут осврну да неки оштрохват није у близини; јер они "
+"ватрено штите част својих другова, и нема онога који би им нешто ту замјерио."
 
 #. [attack]: type=blade
 #: data/core/units/drakes/Blademaster.cfg:41
@@ -208,12 +242,12 @@ msgstr ""
 #: data/core/units/drakes/Enforcer.cfg:36
 #: data/core/units/drakes/Thrasher.cfg:23
 msgid "war talon"
-msgstr ""
+msgstr "ратна канџа"
 
 #. [unit_type]: id=Drake Burner, race=drake
 #: data/core/units/drakes/Burner.cfg:4
 msgid "Drake Burner"
-msgstr ""
+msgstr "змаго-кремен"
 
 #. [unit_type]: id=Drake Burner, race=drake
 #: data/core/units/drakes/Burner.cfg:20
@@ -223,6 +257,10 @@ msgid ""
 "coupled with their sheer size and fearsome claws, makes them deadly foes in "
 "combat."
 msgstr ""
+"Кремен-змагови су они малобројни и поносити у којима тече најчистија крв и "
+"снага њихових удаљених предака, дајући им могућност бљувања ватре. То, "
+"спрегнуто са њиховом големошћу и застрашујућим канџама, чини их смртоносним "
+"противницима у борби."
 
 #. [attack]: type=blade
 #: data/core/units/drakes/Burner.cfg:40
@@ -236,12 +274,12 @@ msgstr ""
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:67
 #: data/core/units/undead/Spirit_Shadow.cfg:135
 msgid "claws"
-msgstr ""
+msgstr "канџе"
 
 #. [unit_type]: id=Drake Clasher, race=drake
 #: data/core/units/drakes/Clasher.cfg:4
 msgid "Drake Clasher"
-msgstr ""
+msgstr "змаго-сударач"
 
 #. [unit_type]: id=Drake Clasher, race=drake
 #: data/core/units/drakes/Clasher.cfg:23
@@ -258,6 +296,17 @@ msgid ""
 "particularly good at \"resolving\" territorial disputes with other drakes "
 "and enforcing the laws of their tribe."
 msgstr ""
+"Сударачи су припадници јединствене касте у змагова. Њихови дебели оклопи, "
+"иако надомијештају урођену слабост змагова на копља и стријеле, толико су "
+"тешки и ограничавајући да сударачи не могу летјети нити доћи до довољно даха "
+"да упрегну своју унутрашњу ватру. Они су, пак, пригрлили овај недостатак, "
+"потпуно опточавајући своја крила, како би истакли да им летење није "
+"неопходно да би превладали у боју.\n"
+"\n"
+"Ово је такође једина каста којој је дозвољено да прекрши табу борећи се "
+"копљима, у додатак змашким обичајним металним канџама. То их чини посебно "
+"добрим у „разрешавању“ територијалних размирица са осталим змаговима и "
+"наметању закона̂ свога племена."
 
 #. [attack]: type=pierce
 #: data/core/units/drakes/Clasher.cfg:48
@@ -287,12 +336,12 @@ msgstr ""
 #: data/core/units/saurians/Skirmisher.cfg:142
 #: data/core/units/undead/Skele_Chocobone.cfg:26
 msgid "spear"
-msgstr ""
+msgstr "копље"
 
 #. [unit_type]: id=Drake Enforcer, race=drake
 #: data/core/units/drakes/Enforcer.cfg:4
 msgid "Drake Enforcer"
-msgstr ""
+msgstr "змаго-силник"
 
 #. [unit_type]: id=Drake Enforcer, race=drake
 #: data/core/units/drakes/Enforcer.cfg:21
@@ -304,12 +353,17 @@ msgid ""
 "careful not to besmirch the honor of the Enforcers, and generally call upon "
 "them to combat only the most pernicious of enemies."
 msgstr ""
+"За силнике нису тактике врдања и обмане; они јуришају тамо гдје је најжешћа "
+"борба прса у прса. На тако блиском растојању, није битно што их оклоп "
+"спречава да бљују пламен — битна је само снага коју су научили да "
+"усредсриједе у сваком удару. Змашки вођи пазе да не укаљају част силника̂, па "
+"их позивају у бој само пред најпогубнијим непријатељима."
 
 #. [attack]: type=impact
 #: data/core/units/drakes/Enforcer.cfg:45
 #: data/core/units/drakes/Thrasher.cfg:41
 msgid "ram"
-msgstr ""
+msgstr "ован"
 
 #. [attack]: type=pierce
 #. [attack]: type=blade
@@ -318,12 +372,12 @@ msgstr ""
 #: data/core/units/merfolk/Triton.cfg:38 data/core/units/merfolk/Triton.cfg:46
 #: data/core/units/merfolk/Warrior.cfg:36
 msgid "trident"
-msgstr ""
+msgstr "трозубац"
 
 #. [unit_type]: id=Drake Fighter, race=drake
 #: data/core/units/drakes/Fighter.cfg:4
 msgid "Drake Fighter"
-msgstr ""
+msgstr "змаго-борац"
 
 #. [unit_type]: id=Drake Fighter, race=drake
 #: data/core/units/drakes/Fighter.cfg:20
@@ -333,18 +387,22 @@ msgid ""
 "Their great strength, coupled with their hardened scales, is rightly "
 "frightening to swordsman of any other race."
 msgstr ""
+"Змагови борци рукују закривљеним ратним сјечивима, и посједују змајобљувачке "
+"способности својих предака. Такође умију летјети, што је забрињавајући било "
+"ком противнику. Њихова велика снага, у садејству са отврднулим крљуштима, "
+"право је застрашујућа за мачеваоце било које друге расе."
 
 #. [attack]: type=blade
 #: data/core/units/drakes/Fighter.cfg:39
 #: data/core/units/drakes/Flameheart.cfg:35
 #: data/core/units/drakes/Flare.cfg:34 data/core/units/drakes/Warrior.cfg:39
 msgid "war blade"
-msgstr ""
+msgstr "ратно сјечиво"
 
 #. [unit_type]: id=Fire Drake, race=drake
 #: data/core/units/drakes/Fire.cfg:4
 msgid "Fire Drake"
-msgstr ""
+msgstr "змаго-ватропир"
 
 #. [unit_type]: id=Fire Drake, race=drake
 #: data/core/units/drakes/Fire.cfg:19
@@ -355,11 +413,15 @@ msgid ""
 "vitality emanates through their skin, scorching their scales to a reddish-"
 "gray."
 msgstr ""
+"Будући да им још увек није дозвољено ношење црвеног злата, привилегије "
+"највиших редова кременаша, ватропири опточавају свој оклоп сребром. Иако су "
+"тек ступили на пут посвећивања свом унутрашњем пламену, његова животност "
+"избија кроз њихову кожу, прљећи им крљушти црвенкасто сивом."
 
 #. [unit_type]: id=Drake Flameheart, race=drake
 #: data/core/units/drakes/Flameheart.cfg:4
 msgid "Drake Flameheart"
-msgstr ""
+msgstr "змаго-пламенодух"
 
 #. [unit_type]: id=Drake Flameheart, race=drake
 #: data/core/units/drakes/Flameheart.cfg:27
@@ -372,11 +434,17 @@ msgid ""
 "leader for supremacy, and only if he is sure of the support of his fellow "
 "drakes."
 msgstr ""
+"Пламенодусима недостаје снага да се обрачунају са вишим змаговима у борби "
+"један на један, али свеједно избјегавају сукобљавање у оквиру племена. "
+"Искуство је поучило сваког змага овог чина о домету његовог ауторитета: када "
+"треба притиснути оне које води, а када их је најбоље оставити сопственим "
+"наумима. Врло ријетко ће пламенодух изазвати премоћ свог племенског вођа, и "
+"то само ако је сигуран у подршку својих парњака."
 
 #. [unit_type]: id=Drake Flare, race=drake
 #: data/core/units/drakes/Flare.cfg:4
 msgid "Drake Flare"
-msgstr ""
+msgstr "змаго-бакљар"
 
 #. [unit_type]: id=Drake Flare, race=drake
 #: data/core/units/drakes/Flare.cfg:26
@@ -387,11 +455,15 @@ msgid ""
 "they are more often seen leading small war parties or mediating disputes "
 "with a subtle hand."
 msgstr ""
+"Поштовани због врелине свог пламена и обожавани због своје харизме, бакљари "
+"стреме да постану велики вођи свога народа, и у рату и у миру. Иако ће "
+"покоје мало подвојено племе прихватити бакљара за вођа, чешће се виђају како "
+"заповиједају мањим ратним дружинама или изглађују размирице лукавим потезима."
 
 #. [unit_type]: id=Drake Glider, race=drake
 #: data/core/units/drakes/Glider.cfg:4
 msgid "Drake Glider"
-msgstr ""
+msgstr "змаго-једрен"
 
 #. [unit_type]: id=Drake Glider, race=drake
 #: data/core/units/drakes/Glider.cfg:23
@@ -409,17 +481,29 @@ msgid ""
 "distance – and if all else fails, he will fight with his feet, keeping his "
 "precious wings as far from the enemy as possible."
 msgstr ""
+"Многим змаговима прија струјање ваздуха преко крљушти, што их води огртању "
+"лаким плаштовима касте једрена. Страст су им дуги ловачки излети у удаљене "
+"кутке племенске територије, иако се други змагови често питају шта може "
+"навести некога да се прихвати једноличности лова када већа слава чека на "
+"бојишту.\n"
+"\n"
+"Једрени се најчешће окомљују на већу ловину, попут јелена, свиња или "
+"делфина; змашка урођена способност да усмјеравају пламен, ометена у других "
+"каста због њихових оклопа, овде је незамјенљива за разоткривање и "
+"сатјеривање плијена без повређивања. Када се једрен нађе на бојишту, радије "
+"кидише на непријатеља из даљине; када то више није могуће, бориће се ногама, "
+"држећи драгоцјена крила што даље од непријатеља."
 
 #. [attack]: type=impact
 #: data/core/units/drakes/Glider.cfg:44
 #: data/core/units/drakes/Hurricane.cfg:129 data/core/units/drakes/Sky.cfg:128
 msgid "slam"
-msgstr ""
+msgstr "тресак"
 
 #. [unit_type]: id=Hurricane Drake, race=drake
 #: data/core/units/drakes/Hurricane.cfg:4
 msgid "Hurricane Drake"
-msgstr ""
+msgstr "змаго-олујник"
 
 #. [unit_type]: id=Hurricane Drake, race=drake
 #: data/core/units/drakes/Hurricane.cfg:20
@@ -432,11 +516,18 @@ msgid ""
 "other castes has increased their skill in combat, but their greatest "
 "strength still lies in their speed and flight."
 msgstr ""
+"Змагови олујници издигли су се изнад рутинског лова и сакупљања, за које су "
+"задужени нижи чланови њихове касте. Они чине саставни дио змашких војски, "
+"извиђајући испред главнине снага, разносећи поруке преко бојишта, и "
+"заскачући непријатеља гдје овај то најмање очекује. Борбена вјештина им је "
+"увећана тиме што им је дозвољено — иако с извјесним неодобравањем — да "
+"вјежбају са придошлицама из других касти, али им највећа предност и даље "
+"лежи у брзини и лету."
 
 #. [unit_type]: id=Inferno Drake, race=drake
 #: data/core/units/drakes/Inferno.cfg:4
 msgid "Inferno Drake"
-msgstr ""
+msgstr "змаго-пакленик"
 
 #. [unit_type]: id=Inferno Drake, race=drake
 #: data/core/units/drakes/Inferno.cfg:21
@@ -447,11 +538,16 @@ msgid ""
 "from extensive use of their inner flame, their sculpted red-gold armor "
 "enhancing the illusion that they are, in fact, dragons."
 msgstr ""
+"Пакленици су господари ватре којом дишу, страхопоштовани у својим племенима "
+"готово колико и сами њихови змајски преци. То што се могу пробити "
+"неповријеђени кроз ватрену олују сопственог дјела, крљушти опрљене до "
+"црвенила опсежном употребом унутрашњег плама, и извајани црвено-златни "
+"оклоп, појачава привид да су ови змагови, у ствари, змајеви лично."
 
 #. [unit_type]: id=Sky Drake, race=drake
 #: data/core/units/drakes/Sky.cfg:4
 msgid "Sky Drake"
-msgstr ""
+msgstr "змаго-небохват"
 
 #. [unit_type]: id=Sky Drake, race=drake
 #: data/core/units/drakes/Sky.cfg:19
@@ -463,11 +559,16 @@ msgid ""
 "of their tribe and, just possibly, time with one of the closely-guarded "
 "drake females."
 msgstr ""
+"Лаки керамички оклоп који носе небохвати симбол је њиховог чина, опточен "
+"сребром у част њихове повезаности с ваздухом. Као ловачки вођи, често "
+"проводе дуго времена изван својих домова. Сваки се труди да кући донесе што "
+"више ловине, како би придобио поштовање од свог пламена и, само можда, "
+"вријеме с једном од пажљиво чуваних змашких женки."
 
 #. [unit_type]: id=Drake Thrasher, race=drake
 #: data/core/units/drakes/Thrasher.cfg:4
 msgid "Drake Thrasher"
-msgstr ""
+msgstr "змаго-разламач"
 
 #. [unit_type]: id=Drake Thrasher, race=drake
 #: data/core/units/drakes/Thrasher.cfg:19
@@ -479,11 +580,16 @@ msgid ""
 "are weapons. A Thrasher will gladly fulfill his caste duties, as long as it "
 "can be done on the battlefield."
 msgstr ""
+"Умјесто да допусте да буду спутани својим оклопом, разламачи су научили да "
+"преусмјере његову тежину у корист замаха својих тијела, додајући силину "
+"ударима својих кратких копаља и борбених канџи. Опрема и тијело су једно; "
+"чак су и њихове дебеле кациге и тврде лобање под њима оружја. Разламач ће "
+"радо испуњавати дужности своје касте, док год то може чинити на бојном пољу."
 
 #. [unit_type]: id=Drake Warden, race=drake
 #: data/core/units/drakes/Warden.cfg:4
 msgid "Drake Warden"
-msgstr ""
+msgstr "змаго-надзорник"
 
 #. [unit_type]: id=Drake Warden, race=drake
 #: data/core/units/drakes/Warden.cfg:20
@@ -496,11 +602,18 @@ msgid ""
 "bronze plate is the strongest work from the Drake forges, and their halberds "
 "can cleave a human in half."
 msgstr ""
+"Надзорници се у касти сударача истичу по двије ствари: својим украшеним "
+"кацигама, обликованим по узору на змајске претке, и пажњом с којом увијају "
+"своја оклопљена крила у ткања свијетлих боја прије него што се јаве на "
+"дужност. Иако овај обичај одијевања потиче од поноса који осјећају због "
+"своје улоге у змашком друштву, далеко је од парадног. Њихов кабасти бронзани "
+"оклоп најчвршћа су израђевина змашких ковница, а својим хелебардама могу "
+"расцијепити човјека надвоје."
 
 #. [unit_type]: id=Drake Warrior, race=drake
 #: data/core/units/drakes/Warrior.cfg:4
 msgid "Drake Warrior"
-msgstr ""
+msgstr "змаго-ратник"
 
 #. [unit_type]: id=Drake Warrior, race=drake
 #: data/core/units/drakes/Warrior.cfg:19
@@ -512,11 +625,16 @@ msgid ""
 "plated leather with the traditional war blade mounted on the back of each "
 "hand."
 msgstr ""
+"Змагови из борачке касте, попут змаго-ратника, ослонац су сваке племенске "
+"војске. Немају посебних могућности нити вјештина којима би се издвојили; "
+"само им урођена сирова снага и војничка увјежбаност помажу да се пробију "
+"кроз непријатељске редове. Тако се боре већ вијековима, одјевени у кожу "
+"прекривену керамичким плочицама и наоружани ратним сјечивима преко надланица."
 
 #. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #: data/core/units/dwarves/Berserker.cfg:4
 msgid "Dwarvish Berserker"
-msgstr ""
+msgstr "патуљ-безглав"
 
 #. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #: data/core/units/dwarves/Berserker.cfg:20
@@ -525,17 +643,21 @@ msgid ""
 "rage before combat. These warriors disdain all notion of defense, thinking "
 "only of the unrelenting assaults for which they are legendary."
 msgstr ""
+"Безглави су припадници ријетке касте патуљака, који се прије боја сами "
+"доводе у стање необузданог бијеса. Ови ратници одбацују сваку помисао о "
+"одбрани, немајући на уму ничег другог до неуморног јуриша, по којем су ушли "
+"у предања."
 
 #. [attack]: type=blade
 #: data/core/units/dwarves/Berserker.cfg:44
 #: data/core/units/dwarves/Ulfserker.cfg:45
 msgid "berserker frenzy"
-msgstr ""
+msgstr "безглави бијес"
 
 #. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
 #: data/core/units/dwarves/Dragonguard.cfg:4
 msgid "Dwarvish Dragonguard"
-msgstr ""
+msgstr "патуљ-змајогард"
 
 #. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
 #: data/core/units/dwarves/Dragonguard.cfg:21
@@ -549,6 +671,13 @@ msgid ""
 "Dwarven citadels are both renowned and feared; weapons that have broken the "
 "mightiest of warriors with a single blow."
 msgstr ""
+"Није познато зашто се змајогарди називају тако, именом које су им надјенула "
+"њихова патуљачка браћа. Неки нагађају да оно следи из њиховог вољеног "
+"оружја, тих чудноватих штапова који бљују ватру и смрт. Други претпостављају "
+"да је то зато што таква оружја могу бити пријетња и правом змају, види ли се "
+"опет такво створење у познатом свијету. Шта год било у питању, због тог "
+"оружја су ови чувари великих патуљачких цитадела и чувени и страхопоштовани; "
+"оружја које је сломило и највеће ратнике једним ударцем."
 
 #. [attack]: type=blade
 #: data/core/units/dwarves/Dragonguard.cfg:39
@@ -566,17 +695,17 @@ msgstr ""
 #: data/core/units/undead/Skele_Banebow.cfg:31
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:29
 msgid "dagger"
-msgstr ""
+msgstr "бодеж"
 
 #. [attack]: type=pierce
 #: data/core/units/dwarves/Dragonguard.cfg:48
 msgid "dragonstaff"
-msgstr ""
+msgstr "змајоштап"
 
 #. [unit_type]: id=Dwarvish Explorer, race=dwarf
 #: data/core/units/dwarves/Explorer.cfg:4
 msgid "Dwarvish Explorer"
-msgstr ""
+msgstr "патуљ-истраживач"
 
 #. [unit_type]: id=Dwarvish Explorer, race=dwarf
 #: data/core/units/dwarves/Explorer.cfg:24
@@ -588,13 +717,19 @@ msgid ""
 "having practiced this skill hunting in the mountains. Their maneuverability "
 "makes them dangerous and tricky foes."
 msgstr ""
+"Патуљ-истраживачи су без премца у умијећу преживљавања. Служећи се само "
+"опремом коју понесу, мјесецима могу лутати шумама и планинама у потрази за "
+"новим жилама руде и налазиштима минерала. Док им је вјештина блиске борбе "
+"мања него у неких других патуљака, неприкосновени су бацачи сјекира, што су "
+"увјежбали ловећи по планинама. Покретљивост их чини опасним и препреденим "
+"противницима."
 
 #. [attack]: type=blade
 #: data/core/units/dwarves/Explorer.cfg:42 data/core/units/dwarves/Lord.cfg:52
 #: data/core/units/dwarves/Steelclad.cfg:52
 #: data/core/units/undead/Skele_Death_Knight.cfg:45
 msgid "battle axe"
-msgstr ""
+msgstr "бојна сјекира"
 
 #. [attack]: type=blade
 #: data/core/units/dwarves/Explorer.cfg:51
@@ -607,12 +742,12 @@ msgstr ""
 #: data/core/units/undead/Skele_Revenant.cfg:43
 #: data/core/units/undead/Skeleton.cfg:119
 msgid "axe"
-msgstr ""
+msgstr "сјекира"
 
 #. [unit_type]: id=Dwarvish Fighter, race=dwarf
 #: data/core/units/dwarves/Fighter.cfg:4
 msgid "Dwarvish Fighter"
-msgstr ""
+msgstr "патуљ-борац"
 
 #. [unit_type]: id=Dwarvish Fighter, race=dwarf
 #: data/core/units/dwarves/Fighter.cfg:20
@@ -622,6 +757,10 @@ msgid ""
 "terrain or underground. Their power and endurance more than compensate for "
 "their relatively poor mobility."
 msgstr ""
+"Патуљачки борци рукују моћним бојним сјекирама и чекићима, што их чини "
+"жестоким противницима у блиској борби. Изврсни су на планинском терену и у "
+"пећинама. Њихова снага и издржљивост више него надокнађују понешто слабу "
+"покретљивост."
 
 #. [attack]: type=impact
 #: data/core/units/dwarves/Fighter.cfg:55 data/core/units/dwarves/Lord.cfg:61
@@ -629,12 +768,12 @@ msgstr ""
 #: data/core/units/trolls/Great.cfg:27 data/core/units/trolls/Hero.cfg:27
 #: data/core/units/trolls/Warrior.cfg:27
 msgid "hammer"
-msgstr ""
+msgstr "чекић"
 
 #. [unit_type]: id=Dwarvish Guardsman, race=dwarf
 #: data/core/units/dwarves/Guardsman.cfg:4
 msgid "Dwarvish Guardsman"
-msgstr ""
+msgstr "патуљ-бранич"
 
 #. [unit_type]: id=Dwarvish Guardsman, race=dwarf
 #: data/core/units/dwarves/Guardsman.cfg:20
@@ -645,6 +784,12 @@ msgid ""
 "role is to hold the line, and to take a heavy toll on those who try to break "
 "it. As the line marches forward, they act to secure its hard-won advance."
 msgstr ""
+"Патуљачка раса је одувијек била чувена по својој кршној грађи, и многи од "
+"њихових ратника се опремају тако да искористе ову предност. Браничи ступају "
+"у бој уз истурене кулин-штитове и копља. Најчешће им је дужност да одржавају "
+"положај, и да нанесу тешке губитке онима који би се покушали пробити. Док "
+"редови војске марширају, браничи су ту да обезбиједе тешко извојевани "
+"напредак."
 
 #. [attack]: type=pierce
 #: data/core/units/dwarves/Guardsman.cfg:52
@@ -653,12 +798,12 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Javelineer.cfg:51
 #: data/core/units/humans/Loyalist_Spearman.cfg:71
 msgid "javelin"
-msgstr ""
+msgstr "џилит"
 
 #. [unit_type]: id=Dwarvish Lord, race=dwarf
 #: data/core/units/dwarves/Lord.cfg:4
 msgid "Dwarvish Lord"
-msgstr ""
+msgstr "патуљ-господар"
 
 #. [unit_type]: id=Dwarvish Lord, race=dwarf
 #: data/core/units/dwarves/Lord.cfg:20
@@ -668,16 +813,20 @@ msgid ""
 "target with a thrown hand axe at several paces. Though slow on their feet, "
 "these dwarves are a testament to the prowess of their kin."
 msgstr ""
+"Обујмљени сјајним оклопом, ови патуљци изгледају као краљеви одоздо планина. "
+"Владају сјекиром и чекићем мајсторском вјештином, и са велике удаљености "
+"могу погодити мету ручном сјекирицом. Иако спори у покрету, ови патуљци су "
+"свједочанство срчаности свога рода."
 
 #. [attack]: type=blade
 #: data/core/units/dwarves/Lord.cfg:70
 msgid "hatchet"
-msgstr ""
+msgstr "сјекирица"
 
 #. [unit_type]: id=Dwarvish Pathfinder, race=dwarf
 #: data/core/units/dwarves/Pathfinder.cfg:4
 msgid "Dwarvish Pathfinder"
-msgstr ""
+msgstr "патуљ-наступач"
 
 #. [unit_type]: id=Dwarvish Pathfinder, race=dwarf
 #: data/core/units/dwarves/Pathfinder.cfg:18
@@ -688,11 +837,16 @@ msgid ""
 "territory. They are powerful fighters in a melee, and from a distance their "
 "deftly thrown axes can rival the power and accuracy of a human archer."
 msgstr ""
+"Ови срчани патуљци понекад проводе дуго времена изван својих пећина, "
+"извиђајући и надгледајући границе. Вријеме проводе пазећи на упадице и "
+"борећи се против разбојника и лопова што насрћу на патуљачке територије. "
+"Моћни су борци прса у прса, а на одстојању спретно бацаним сјекирама могу "
+"домашити силину и прецизност људских стријелаца."
 
 #. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #: data/core/units/dwarves/Runemaster.cfg:4
 msgid "Dwarvish Runemaster"
-msgstr ""
+msgstr "патуљ-рунотворац"
 
 #. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #: data/core/units/dwarves/Runemaster.cfg:21
@@ -702,21 +856,24 @@ msgid ""
 "power. Though rarely seen in combat, a master of these runes can put them to "
 "terrifying use."
 msgstr ""
+"Патуљачка магија се најчешће исказује урезивањем руна у површ објекта, које "
+"га својим самим присуством некако прожимају моћи. Иако ријетко виђени у "
+"борби, мајстор руна може их употријебити са страшном дјелотворношћу."
 
 #. [attack]: type=impact
 #: data/core/units/dwarves/Runemaster.cfg:38
 msgid "runic hammer"
-msgstr ""
+msgstr "рунски чекић"
 
 #. [attack]: type=fire
 #: data/core/units/dwarves/Runemaster.cfg:47
 msgid "lightning bolt"
-msgstr ""
+msgstr "сноп муња"
 
 #. [unit_type]: id=Dwarvish Scout, race=dwarf
 #: data/core/units/dwarves/Scout.cfg:4
 msgid "Dwarvish Scout"
-msgstr ""
+msgstr "патуљ-извиђач"
 
 #. [unit_type]: id=Dwarvish Scout, race=dwarf
 #: data/core/units/dwarves/Scout.cfg:19
@@ -730,11 +887,18 @@ msgid ""
 "However, they pay for their speed with the poorer protection provided by "
 "their lighter armor."
 msgstr ""
+"Иако се патуљци не могу такмичити у трчању на кратке стазе са стасом вишим "
+"расама, када су неоптерећени тешким оклопом неизмијерна издржљивост и "
+"отпорност им омогућава да у стопу прате све осим најбржих. Патуљ-извиђачи "
+"упрежу ово у своју корист, јездећи испред главнине снага и извјештавајући о "
+"покретима и размијештају непријатеља, или објезбеђујући важне циљеве. Изван "
+"битке, често им се повјерава преношење порука између патуљачких заједница. "
+"Међутим, своју брзину плаћају слабијом заштитом коју пружа лакши оклоп."
 
 #. [unit_type]: id=Dwarvish Sentinel, race=dwarf
 #: data/core/units/dwarves/Sentinel.cfg:4
 msgid "Dwarvish Sentinel"
-msgstr ""
+msgstr "патуљ-стражар"
 
 #. [unit_type]: id=Dwarvish Sentinel, race=dwarf
 #: data/core/units/dwarves/Sentinel.cfg:20
@@ -745,11 +909,16 @@ msgid ""
 "rather than merely ineffectual. These dwarves are masters of the melee, and "
 "can hold a patch of earth with the singleminded tenacity of an oak."
 msgstr ""
+"Заточници међу својим саборцима, патуљачки стражари сачињавају грудобран "
+"својих борбених редова. Покренути непосредан јуриш против линије коју они "
+"утврђују, углавном не долази у обзир; не да не би био дјелотворан, већ "
+"обично и самоубилачки. Ови патуљци мајстори су блиске борбе, и могу држати "
+"парче прашњавог поља необазирућом жилавошћу једног храста."
 
 #. [unit_type]: id=Dwarvish Stalwart, race=dwarf
 #: data/core/units/dwarves/Stalwart.cfg:4
 msgid "Dwarvish Stalwart"
-msgstr ""
+msgstr "патуљ-стамен"
 
 #. [unit_type]: id=Dwarvish Stalwart, race=dwarf
 #: data/core/units/dwarves/Stalwart.cfg:19
@@ -759,11 +928,15 @@ msgid ""
 "ground against all but the most visceral assault. It is a dangerous thing to "
 "lose a foothold to one such as these, for it will not be easily reprised."
 msgstr ""
+"Трикови искуства и увјежбавање претварају браниче у достојне војнике. Ова "
+"кршна војска опремљена је према својој вјештини, и може се одржати на "
+"положају против сваког до најодлучнијег јуриша. Опасно је одступити са "
+"положаја пред стаменима, јер се тај неће моћи лако повратити."
 
 #. [unit_type]: id=Dwarvish Steelclad, race=dwarf
 #: data/core/units/dwarves/Steelclad.cfg:4
 msgid "Dwarvish Steelclad"
-msgstr ""
+msgstr "патуљ-гвозден"
 
 #. [unit_type]: id=Dwarvish Steelclad, race=dwarf
 #: data/core/units/dwarves/Steelclad.cfg:20
@@ -771,11 +944,13 @@ msgid ""
 "The more experienced Dwarvish Steelclad fighters wear heavy chain mail and "
 "plate armor, for which they are rightly famous."
 msgstr ""
+"Искуснији патуљачки гвозден-борци носе тешке челичне кошуљице и бојне "
+"оклопе, по којима су с правом чувени."
 
 #. [unit_type]: id=Dwarvish Thunderer, race=dwarf
 #: data/core/units/dwarves/Thunderer.cfg:4
 msgid "Dwarvish Thunderer"
-msgstr ""
+msgstr "патуљ-громовник"
 
 #. [unit_type]: id=Dwarvish Thunderer, race=dwarf
 #: data/core/units/dwarves/Thunderer.cfg:20
@@ -786,17 +961,22 @@ msgid ""
 "The deafening noise of these 'thundersticks' is terrifying to behold, and is "
 "made more so by the secrecy which dwarves wrap about their workings."
 msgstr ""
+"Када су људи из Веснота први пут сусрели патуљке, били су запањени моћју "
+"патуљачких громовника, који су могли да хитну смрт издалека кроз некакве "
+"чудне направе, „громоштапове“ које су носили у битку. Заглушујућа бука "
+"громоштапова је истински застрашујућа, и још више усљед тајности којом "
+"патуљци обавијају њихова унутрашња устројства."
 
 #. [attack]: type=pierce
 #: data/core/units/dwarves/Thunderer.cfg:120
 #: data/core/units/dwarves/Thunderguard.cfg:49
 msgid "thunderstick"
-msgstr ""
+msgstr "громоштап"
 
 #. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
 #: data/core/units/dwarves/Thunderguard.cfg:4
 msgid "Dwarvish Thunderguard"
-msgstr ""
+msgstr "патуљ-громогард"
 
 #. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
 #: data/core/units/dwarves/Thunderguard.cfg:22
@@ -812,11 +992,21 @@ msgid ""
 "Though a single shot from these 'thundersticks' can take several minutes to "
 "prepare, the results are seen by the Dwarves as being well worth the wait."
 msgstr ""
+"Патуљачки громогарди на гласу су по свом необичном оружју, чудесним "
+"штаповима од дрвета и гвожђа што громовито хуче у свом бијесу. Устројства "
+"која покрећу ово оружје непозната су, тајна коју са собом у гроб носе "
+"патуљци Кналге који њима владају, и за које се претпоставља да су их чак "
+"сами исковали. Највише што се зна су извјештаји о патуљцима који сипају "
+"чудну црну прашину у уста свог оружја, за коју неки кажу да је храна опакој "
+"звјери у оружју заточеној.\n"
+"\n"
+"Иако може проћи неколико минута док се припреми само један хитац из "
+"громоштапа, у очима патуљака његово дејство је сасвим достојно тог чекања."
 
 #. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
 #: data/core/units/dwarves/Ulfserker.cfg:4
 msgid "Dwarvish Ulfserker"
-msgstr ""
+msgstr "патуљ-лудотрк"
 
 #. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
 #: data/core/units/dwarves/Ulfserker.cfg:21
@@ -826,11 +1016,14 @@ msgid ""
 "wherein they feel neither fear nor pain, and will pay no heed to any wounds "
 "they receive."
 msgstr ""
+"Патуљци су древна раса моћних бораца. Лудотрци су у борби најдивљији међу "
+"њима: у боју ће се препустити слијепом бијесу када више не осјећају ни "
+"страха ни бола, и неће се ни осврнути на повреде које сами задобију."
 
 #. [unit_type]: id=Elvish Archer, race=elf
 #: data/core/units/elves/Archer.cfg:4
 msgid "Elvish Archer"
-msgstr ""
+msgstr "вилин-стријелац"
 
 #. [unit_type]: id=Elvish Archer, race=elf
 #: data/core/units/elves/Archer.cfg:21
@@ -842,6 +1035,11 @@ msgid ""
 "their natural grace ensures that they can best any of humanity's fresh "
 "recruits."
 msgstr ""
+"Вилењаци су одувијек били на гласу по вјештини стрељаштва, која им је, из "
+"многих разлога, природно својствена. Чак и крхко тијело може бити смртоносно "
+"са луком у руци, и у вријеме рата, многи вилењак ће подићи ово оружје. Иако "
+"их извјесно неискуство у борби чини донекле рањивима, њихова природна "
+"складност осигураће да могу надмашити и најбоље људске новајлије."
 
 #. [attack]: type=blade
 #. [attack]: type=arcane
@@ -867,7 +1065,7 @@ msgstr ""
 #: data/core/units/nagas/Warrior.cfg:41 data/core/units/orcs/Grunt.cfg:71
 #: data/core/units/orcs/Leader.cfg:28
 msgid "sword"
-msgstr ""
+msgstr "мач"
 
 #. [attack]: type=pierce
 #. [attack]: type=fire
@@ -889,17 +1087,17 @@ msgstr ""
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:38
 #: data/core/units/undead/Skeleton_Archer.cfg:41
 msgid "bow"
-msgstr ""
+msgstr "лук"
 
 #. [female]
 #: data/core/units/elves/Archer.cfg:183
 msgid "female^Elvish Archer"
-msgstr ""
+msgstr "вилин-стрелашица"
 
 #. [unit_type]: id=Elvish Avenger, race=elf
 #: data/core/units/elves/Avenger.cfg:4
 msgid "Elvish Avenger"
-msgstr ""
+msgstr "вилин-осветник"
 
 #. [unit_type]: id=Elvish Avenger, race=elf
 #: data/core/units/elves/Avenger.cfg:23
@@ -914,16 +1112,25 @@ msgid ""
 "brethren lost earlier in the battle. Although not so base in design, it is "
 "not at all inaccurate."
 msgstr ""
+"Чудноват назив вилењачких „осветника“ потиче од тактике коју ови мајстори "
+"шумочувари често примјењују. Непријатељу се допусти да пробије лажну "
+"одбрану, и када пратећи пробој наиђу његове рањиве позадинске снаге, ови "
+"стријелци искачу из засједе и нападају, одсијецајући снабдијевање "
+"непријатељу и опкољавајући га једним ударом.\n"
+"\n"
+"Понекада се овакво понашање тумачи као облик освете за своју сабраћу "
+"страдалу у ранијем току боја. Иако мотиви нису заиста тако исконски, ово "
+"тумачење није ни сасвим нетачно."
 
 #. [female]
 #: data/core/units/elves/Avenger.cfg:192
 msgid "female^Elvish Avenger"
-msgstr ""
+msgstr "вилин-осветница"
 
 #. [unit_type]: id=Elvish Captain, race=elf
 #: data/core/units/elves/Captain.cfg:4
 msgid "Elvish Captain"
-msgstr ""
+msgstr "вилин-капетан"
 
 #. [unit_type]: id=Elvish Captain, race=elf
 #: data/core/units/elves/Captain.cfg:26
@@ -935,11 +1142,16 @@ msgid ""
 "their leaders, and the tendency to choose leaders of merit is one of the "
 "quiet strengths of the elves."
 msgstr ""
+"Вилењаци, за разлику од многи других раса, брзо ће признати и пратити своје "
+"садруге који су се прекалили у борбама. Ово је посебно насупрот људима, код "
+"којих је вођство често непостојана збрка присиле и застрашивања. Способност "
+"да одаберу способне вође и спремност да прихвате њихову мудрост, заједно "
+"узете једна су од тихих снага вилењака."
 
 #. [unit_type]: id=Elvish Champion, race=elf
 #: data/core/units/elves/Champion.cfg:4
 msgid "Elvish Champion"
-msgstr ""
+msgstr "вилин-заточник"
 
 #. [unit_type]: id=Elvish Champion, race=elf
 #: data/core/units/elves/Champion.cfg:20
@@ -950,11 +1162,16 @@ msgid ""
 "to which few can compare. Even their archery, treated as a secondary "
 "pursuit, is masterfully executed."
 msgstr ""
+"Оно мало вилењака који се хотимице изоштре у употреби ратничких оруђа, стају "
+"насупрот мирољубивом угледу своје расе. Посвећеност и вјештина упарени са "
+"чистотом облика, воде господарењу мачем са којим се малобројни могу "
+"огледати. Чак и стрељаштво, које узимају за споредно, изводе мајсторском "
+"вјештином."
 
 #. [unit_type]: id=Elvish Druid, race=elf
 #: data/core/units/elves/Druid.cfg:4
 msgid "female^Elvish Druid"
-msgstr ""
+msgstr "вилин-друидка"
 
 #. [unit_type]: id=Elvish Druid, race=elf
 #: data/core/units/elves/Druid.cfg:21
@@ -966,6 +1183,12 @@ msgid ""
 "The chief ability of Druids lies in healing, and it is for this skill that "
 "they are revered by their people."
 msgstr ""
+"Магија шумских вилењака лоше пристоји борби, али се ипак може дјелотворно "
+"употребити. Шума у којој бивствују може бити оживљена једном ријечју, и "
+"сручити бијес на оне који пријете вилењачком миру.\n"
+"\n"
+"Главна способност вилин-друидки лежи у лијечењу, и по томе су штоване међу "
+"својим народом."
 
 #. [attack]: type=impact
 #: data/core/units/elves/Druid.cfg:40 data/core/units/elves/Enchantress.cfg:38
@@ -985,22 +1208,22 @@ msgstr ""
 #: data/core/units/saurians/Soothsayer.cfg:78
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:98
 msgid "staff"
-msgstr ""
+msgstr "штап"
 
 #. [attack]: type=impact
 #: data/core/units/elves/Druid.cfg:49 data/core/units/elves/Shyde.cfg:54
 msgid "ensnare"
-msgstr ""
+msgstr "клопка"
 
 #. [attack]: type=pierce
 #: data/core/units/elves/Druid.cfg:61 data/core/units/elves/Shyde.cfg:66
 msgid "thorns"
-msgstr ""
+msgstr "трње"
 
 #. [unit_type]: id=Elvish Enchantress, race=elf
 #: data/core/units/elves/Enchantress.cfg:4
 msgid "female^Elvish Enchantress"
-msgstr ""
+msgstr "вилин-опсјенарка"
 
 #. [unit_type]: id=Elvish Enchantress, race=elf
 #: data/core/units/elves/Enchantress.cfg:19
@@ -1011,24 +1234,29 @@ msgid ""
 "can be said that they are revered by their people, very little can be said "
 "about their actual function or purpose within that society."
 msgstr ""
+"Магија вилењака је потпуно различита од оне коју користе људи, толико да су "
+"ови готово универзално неспособни да је разумију, а камоли употријебе. "
+"Вилењаци који њоме овладају су једнако загонетни; иако се може рећи да су "
+"обожавани међу својим народом, врло мало се зна о њиховом стварном "
+"намјештењу или сврси у вилењачком друштву."
 
 #. [attack]: type=impact
 #: data/core/units/elves/Enchantress.cfg:48
 #: data/core/units/elves/Shaman.cfg:51 data/core/units/elves/Sorceress.cfg:50
 msgid "entangle"
-msgstr ""
+msgstr "уплитање"
 
 #. [attack]: type=arcane
 #: data/core/units/elves/Enchantress.cfg:59
 #: data/core/units/elves/High_Lord.cfg:82 data/core/units/elves/Lord.cfg:48
 #: data/core/units/elves/Sorceress.cfg:61 data/core/units/elves/Sylph.cfg:65
 msgid "faerie fire"
-msgstr ""
+msgstr "вилин-ватра"
 
 #. [unit_type]: id=Elvish Fighter, race=elf
 #: data/core/units/elves/Fighter.cfg:4
 msgid "Elvish Fighter"
-msgstr ""
+msgstr "вилин-борац"
 
 #. [unit_type]: id=Elvish Fighter, race=elf
 #: data/core/units/elves/Fighter.cfg:20
@@ -1039,11 +1267,15 @@ msgid ""
 "by the standards of other races, and put them to effective use on the "
 "battlefield."
 msgstr ""
+"Вилењаци по нарави нису ратоборни, али у случају нужде, њихова природна "
+"складност и окретност, као и вјешто занатство, служе им добро. Вилењак може "
+"усвојити основе мачевања и стрељаштва за вријеме несхватљиво кратко по "
+"мјерилима других раса, и добро их употријебити на бојишту."
 
 #. [unit_type]: id=Elvish Hero, race=elf
 #: data/core/units/elves/Hero.cfg:4
 msgid "Elvish Hero"
-msgstr ""
+msgstr "вилин-херој"
 
 #. [unit_type]: id=Elvish Hero, race=elf
 #: data/core/units/elves/Hero.cfg:19
@@ -1053,11 +1285,15 @@ msgid ""
 "of combat. Those who are honored as heroes are strong with both sword and "
 "bow, and their skill once acquired does not fade for lack of practice."
 msgstr ""
+"Вилењаци, иако не ратоборни по природи, брзо уче; потребна је сразмјерно "
+"мала количина искуства да се вилењак претвори из способног борца у мајстора "
+"бојног поља. Они који су удостојени херојства, јаки су и на мачу и на луку, "
+"и те им вјештине не вену чак и када не вјежбају."
 
 #. [unit_type]: id=Elvish High Lord, race=elf
 #: data/core/units/elves/High_Lord.cfg:4
 msgid "Elvish High Lord"
-msgstr ""
+msgstr "вилин-надгосподар"
 
 #. [unit_type]: id=Elvish High Lord, race=elf
 #: data/core/units/elves/High_Lord.cfg:19
@@ -1067,11 +1303,15 @@ msgid ""
 "and wisdom. Quiet and contemplative in times of peace, a High Lord in the "
 "full of his wrath is an awesome sight indeed."
 msgstr ""
+"Вођи вилењачки уживају нагонску вијерност свога народа, на каквој им вођи "
+"других раса могу само позавидјети, а задобијају је великом промишљеношћу и "
+"мудрошћу. Тих и замишљен у мирна времена, надгосподар у налету бијеса "
+"уистину је застрашујућ призор."
 
 #. [unit_type]: id=Elvish Lady, race=elf
 #: data/core/units/elves/Lady.cfg:5
 msgid "female^Elvish Lady"
-msgstr ""
+msgstr "вилин-госпа"
 
 #. [unit_type]: id=Elvish Lady, race=elf
 #: data/core/units/elves/Lady.cfg:21
@@ -1081,11 +1321,15 @@ msgid ""
 "uncertainty. Their just reign is rewarded by the unflagging fealty of their "
 "people, which is the greatest gift for which any ruler could ask."
 msgstr ""
+"Вилењаци бирају своје вође по њиховој мудрости и разумијевању за равнотежу "
+"свеопштих сила; далековидост је оно што их чува у неизвјесна времена. "
+"Праведна владавина бива награђена непоколебаном вијерношћу народном, највећи "
+"дар који један владар може искати."
 
 #. [unit_type]: id=Elvish Lord, race=elf
 #: data/core/units/elves/Lord.cfg:4
 msgid "Elvish Lord"
-msgstr ""
+msgstr "вилин-господар"
 
 #. [unit_type]: id=Elvish Lord, race=elf
 #: data/core/units/elves/Lord.cfg:18
@@ -1094,11 +1338,14 @@ msgid ""
 "society. Elvish Lords are the wisest and strongest of their people, and are "
 "fearsome in their command of magic."
 msgstr ""
+"Вилењачко племство обдарено је врлинама присталим њиховом положају у "
+"друштву. Вилин-господари су најмудрији и најјачи од свога народа, и "
+"ненадмашни у владању магијом."
 
 #. [unit_type]: id=Elvish Marksman, race=elf
 #: data/core/units/elves/Marksman.cfg:4
 msgid "Elvish Marksman"
-msgstr ""
+msgstr "вилин-оштроок"
 
 #. [unit_type]: id=Elvish Marksman, race=elf
 #: data/core/units/elves/Marksman.cfg:20
@@ -1109,6 +1356,12 @@ msgid ""
 "is let fly. Realizing this prodigious skill does come with one cost, that "
 "being a lack of practice with the sword."
 msgstr ""
+"У вилењака је чудесно оштар вид, дар који доприноси њиховом мајсторству у "
+"стрељаштву. Вилењак извјежбан у стрељаштву може да погоди мете које човјек "
+"не може ни да види, и запети другу стријелу чим се прва отисне у лет.\n"
+"\n"
+"Ова раскошна вјештина ипак долази уз цијену, а то је недостатак увјежбаности "
+"са мачем."
 
 #. [attack]: type=pierce
 #: data/core/units/elves/Marksman.cfg:73
@@ -1116,17 +1369,17 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Longbowman.cfg:48
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:48
 msgid "longbow"
-msgstr ""
+msgstr "дуги лук"
 
 #. [female]
 #: data/core/units/elves/Marksman.cfg:183
 msgid "female^Elvish Marksman"
-msgstr ""
+msgstr "вилин-оштроок"
 
 #. [unit_type]: id=Elvish Marshal, race=elf
 #: data/core/units/elves/Marshal.cfg:4
 msgid "Elvish Marshal"
-msgstr ""
+msgstr "вилин-маршал"
 
 #. [unit_type]: id=Elvish Marshal, race=elf
 #: data/core/units/elves/Marshal.cfg:27
@@ -1138,11 +1391,17 @@ msgid ""
 "elf sets his mind to war, the strategy that results is often the work of a "
 "master."
 msgstr ""
+"Дуговјечност и природна оштроумност вилењака производи необичну надареност "
+"за војна питања, довољну да сузбије њихов општи одбојни став према ратовању. "
+"Вилењаци много јасније памте него људи, и често сами могу закључити оно о "
+"чему би други морали бити поучени да схвате. Заиста, у ријетке прилике када "
+"се вилењак лати умовања о рату, стратегије које произиђу често су мајсторско "
+"дјело."
 
 #. [unit_type]: id=Elvish Outrider, race=elf
 #: data/core/units/elves/Outrider.cfg:4
 msgid "Elvish Outrider"
-msgstr ""
+msgstr "вилин-надјахач"
 
 #. [unit_type]: id=Elvish Outrider, race=elf
 #: data/core/units/elves/Outrider.cfg:23
@@ -1157,11 +1416,19 @@ msgid ""
 "choose when fighting on their home ground, a fact that has saved many of "
 "their number from death."
 msgstr ""
+"Вилењачки надјахачи вјежбани су за краљевске курире у вилењачким "
+"краљевствима. Упркос мирољубивој нарави свог народа, њихово искуство их "
+"такође чини смртоносним у борби. Ниједан човјек никада се није приближио "
+"њиховој вјештини употребе лука у пуном галопу; штавише, тек уз највеће "
+"напоре неки би се могли изједначити и кад стоје непокретни.\n"
+"\n"
+"Брзина ових војника омогућава им да ударе гдје и када изаберу ако се боре на "
+"својој родној земљи, што је многе од њих спасило сигурне смрти."
 
 #. [unit_type]: id=Elvish Ranger, race=elf
 #: data/core/units/elves/Ranger.cfg:3
 msgid "Elvish Ranger"
-msgstr ""
+msgstr "вилин-шумочувар"
 
 #. [unit_type]: id=Elvish Ranger, race=elf
 #: data/core/units/elves/Ranger.cfg:20
@@ -1172,16 +1439,20 @@ msgid ""
 "rapidly becomes a master of them. This, combined with a considerable skill "
 "at archery and swordsmanship, is very useful in warfare."
 msgstr ""
+"Иако би човјек могао провести године живећи у шуми, никада се не би могао "
+"отрести осјећаја да је само гост у царству којег никада заиста не може "
+"постати дио. Сваки вилењак који проучава науке шуме брзо њима загосподари, "
+"што када се дода вјештини стрељаштва и мачевања, постаје моћно оруђе рата."
 
 #. [female]
 #: data/core/units/elves/Ranger.cfg:189
 msgid "female^Elvish Ranger"
-msgstr ""
+msgstr "вилин-шумочуварка"
 
 #. [unit_type]: id=Elvish Rider, race=elf
 #: data/core/units/elves/Rider.cfg:4
 msgid "Elvish Rider"
-msgstr ""
+msgstr "вилин-јахач"
 
 #. [unit_type]: id=Elvish Rider, race=elf
 #: data/core/units/elves/Rider.cfg:24
@@ -1194,11 +1465,18 @@ msgid ""
 "This combination of incredible mobility and potent combat strength is one of "
 "the greatest assets the elves possess in warfare."
 msgstr ""
+"Мајстори коњаници вилењака могу се кретати шумом брзином која би била "
+"погубна за било ког човјека. Иако ово свакако изазива уздахе људи упућене "
+"јахачу, питања су такође постављана о узгоју коња који их носе, јер чинови "
+"које изводе дјелују готово натприродно.\n"
+"\n"
+"Ова упареност невјероватне покретљивости и моћне борбене спреме, једна је од "
+"највећих предности које вилењаке истиче у борби."
 
 #. [unit_type]: id=Elvish Scout, race=elf
 #: data/core/units/elves/Scout.cfg:4
 msgid "Elvish Scout"
-msgstr ""
+msgstr "вилин-извиђач"
 
 #. [unit_type]: id=Elvish Scout, race=elf
 #: data/core/units/elves/Scout.cfg:23
@@ -1209,11 +1487,16 @@ msgid ""
 "thick of the forest with nary a scratch. They may be the only cavalry in "
 "existence that fares better in the woods than on open ground."
 msgstr ""
+"Коњаници шумских вилењака донекле су спретни са луком и мачем, али њихова "
+"права предност лежи у јахачким вјештинама. Чак су и други вилењаци понекад "
+"изненађени њиховом изванредном брзином кретања кроз шуму, способношћу да се "
+"кроз најгушће грање провуку једва огребани. Они су, вјероватно, једина "
+"позната коњица која се боље сналази у шуми него на отвореном простору."
 
 #. [unit_type]: id=Elvish Shaman, race=elf
 #: data/core/units/elves/Shaman.cfg:4
 msgid "female^Elvish Shaman"
-msgstr ""
+msgstr "вилин-врачарка"
 
 #. [unit_type]: id=Elvish Shaman, race=elf
 #: data/core/units/elves/Shaman.cfg:23
@@ -1227,11 +1510,19 @@ msgid ""
 "The healing abilities of the elves are also remarkable, and of capital use "
 "in battle."
 msgstr ""
+"Пошто су дијелом вилинске природе, вилењаци имају урођене магијске "
+"способности. Оне се остварују кроз њихову склоност ка свијету природе, којег "
+"могу дозвати за савезника у борби. Непријатељи који се намјере у вилењачку "
+"шуму могу се убрзо наћи упетљани у коријење преко кога само што су "
+"прегазили.\n"
+"\n"
+"Видарске способности вилењака такође су изузетне, и од суштинског значаја у "
+"биткама."
 
 #. [unit_type]: id=Elvish Sharpshooter, race=elf
 #: data/core/units/elves/Sharpshooter.cfg:4
 msgid "Elvish Sharpshooter"
-msgstr ""
+msgstr "вилин-далекометаш"
 
 #. [unit_type]: id=Elvish Sharpshooter, race=elf
 #: data/core/units/elves/Sharpshooter.cfg:21
@@ -1241,16 +1532,20 @@ msgid ""
 "such a story could be taken seriously. The sharpshooters of the elves have, "
 "quite simply, mastered the art of archery."
 msgstr ""
+"Кружише једном извјесна прича, о вилењаку који је одбио стријелу у лету "
+"погодивши је једном од својих. Да се такво шта може прихватити заозбиљно, "
+"свједочанставо је вилењачке вјештине. Вилењачки далекометаши су, "
+"једноставно, до конца загосподарили умјетношћу стрељаштва."
 
 #. [female]
 #: data/core/units/elves/Sharpshooter.cfg:182
 msgid "female^Elvish Sharpshooter"
-msgstr ""
+msgstr "вилин-далекометашица"
 
 #. [unit_type]: id=Elvish Shyde, race=elf
 #: data/core/units/elves/Shyde.cfg:4
 msgid "female^Elvish Shyde"
-msgstr ""
+msgstr "вилин-шејда"
 
 #. [unit_type]: id=Elvish Shyde, race=elf
 #: data/core/units/elves/Shyde.cfg:22
@@ -1260,16 +1555,19 @@ msgid ""
 "understood, these beautiful stewards of the elven forests epitomize the "
 "grace and mystery of their people."
 msgstr ""
+"Посвећеност путу вилинства може преобразити вилењачку дјевојку у створење од "
+"оба свијета. Вођене природом која је слабо разјашњена, ове предивне "
+"настојнице вилењачких шума узор су складности и тајновитости свог народа."
 
 #. [attack]: type=impact
 #: data/core/units/elves/Shyde.cfg:41 data/core/units/elves/Sylph.cfg:40
 msgid "faerie touch"
-msgstr ""
+msgstr "вилин-додир"
 
 #. [unit_type]: id=Elvish Sorceress, race=elf
 #: data/core/units/elves/Sorceress.cfg:4
 msgid "female^Elvish Sorceress"
-msgstr ""
+msgstr "вилин-чаробница"
 
 #. [unit_type]: id=Elvish Sorceress, race=elf
 #: data/core/units/elves/Sorceress.cfg:21
@@ -1282,11 +1580,19 @@ msgid ""
 "Those able to do so are roughly titled as 'sorceresses' by other races; and "
 "certainly are capable of acting the part."
 msgstr ""
+"Вилински свијет је много моћнији од свакодневног опипљивог. Једноставно "
+"увођење елемената тог свијета у овај наш може довести до бурних посљедица. "
+"Вилењакиње то сасвим разумију, али ријетко искоришћавају са злобним поводом; "
+"прво што није лако постићи, а друго што се сматра врло ружном употребом "
+"њихових моћи.\n"
+"\n"
+"Оне које су способне да управљају вилинским тварима често међу другим расама "
+"бивају називане „чаробницама“ — и засигурно су дорасле таквом звању."
 
 #. [unit_type]: id=Elvish Sylph, race=elf
 #: data/core/units/elves/Sylph.cfg:4
 msgid "female^Elvish Sylph"
-msgstr ""
+msgstr "вилин-силфа"
 
 #. [unit_type]: id=Elvish Sylph, race=elf
 #: data/core/units/elves/Sylph.cfg:21
@@ -1296,21 +1602,24 @@ msgid ""
 "powers. Legends concerning these have given other races a healthy fear of "
 "the elves."
 msgstr ""
+"Ријетко виђане, мудролике силфе су мајстори и своје вилинске и овосвјетовне "
+"природе. Обдарене су чудесним, понекад застрашујућим моћима, испредених у "
+"митове који другим расама уливају здраву дозу страха од вилењака."
 
 #. [attack]: type=impact
 #: data/core/units/elves/Sylph.cfg:53
 msgid "gossamer"
-msgstr ""
+msgstr "копрена"
 
 #. [unit_type]: id=Fog Clearer, race=monster
 #: data/core/units/fake/Fog_Clearer.cfg:7
 msgid "dummy_unit^Fog Clearer"
-msgstr ""
+msgstr "развијавач магле"
 
 #. [unit_type]: id=Direwolf Rider, race=wolf
 #: data/core/units/goblins/Direwolf_Rider.cfg:4
 msgid "Direwolf Rider"
-msgstr ""
+msgstr "грозоседлаш"
 
 #. [unit_type]: id=Direwolf Rider, race=wolf
 #: data/core/units/goblins/Direwolf_Rider.cfg:22
@@ -1326,11 +1635,20 @@ msgid ""
 "the orcish assassins, making a swipe from these beasts' paws into a most "
 "deadly stroke."
 msgstr ""
+"„Грозовукови“ разликују се од баштенског накота само по величини и боји. "
+"Обично су у раменима виши од коња, и имају томе одговарајући апетит. Само би "
+"се лудак могао својевољно сусрести са једним; али гоблини, уз велики данак, "
+"успјели су да их укроте и упрегну.\n"
+"\n"
+"Канџе вука се обично не сматрају његовим опаснијим посједом, али код звери "
+"овако велике, дебље су и дуже од гвоздених чавла. На предњи пар, њихови "
+"јахачи им мажу отров, не много различит од оног који користе орковске убице, "
+"чинећи замах шапе ових звјери изузетно смртоносним потезом."
 
 #. [unit_type]: id=Goblin Impaler, race=goblin
 #: data/core/units/goblins/Impaler.cfg:4
 msgid "Goblin Impaler"
-msgstr ""
+msgstr "гобли-набијач"
 
 #. [unit_type]: id=Goblin Impaler, race=goblin
 #: data/core/units/goblins/Impaler.cfg:21
@@ -1340,11 +1658,15 @@ msgid ""
 "with a long spear to compensate for their short reach, and better armor to "
 "guard their diminuitive frames."
 msgstr ""
+"Оркови користе гоблине као потрошно месо за предње линије својих "
+"непријатеља. Гоблини који некако успију да преживе прве бојеве, опремају се "
+"дугим копљем које им помаже да надокнаде свој кратак дохват, и бољим оклопом "
+"да заклоне своју ситну грађу."
 
 #. [unit_type]: id=Goblin Knight, race=wolf
 #: data/core/units/goblins/Knight.cfg:4
 msgid "Goblin Knight"
-msgstr ""
+msgstr "гобли-витез"
 
 #. [unit_type]: id=Goblin Knight, race=wolf
 #: data/core/units/goblins/Knight.cfg:21
@@ -1357,11 +1679,18 @@ msgid ""
 "The wolves they are given are bred for speed and strength, making them quite "
 "dangerous in combat."
 msgstr ""
+"Гоблински „витезови“ имају мало заједничког са људима који дијеле исто "
+"звање, већ се оно најпре користи у жаргону њихових непријатеља. Сличност "
+"долази једино отуда што чине елиту вукоседлаша, највјероватније унапређени "
+"на тај положај поводом успјеха у каквом смјелом походу.\n"
+"\n"
+"Вуци који им се дају одгајају се за брзину и снагу, чинећи их врло опасним у "
+"борби."
 
 #. [unit_type]: id=Goblin Pillager, race=wolf
 #: data/core/units/goblins/Pillager.cfg:4
 msgid "Goblin Pillager"
-msgstr ""
+msgstr "гобли-пљачкаш"
 
 #. [unit_type]: id=Goblin Pillager, race=wolf
 #: data/core/units/goblins/Pillager.cfg:20
@@ -1371,23 +1700,27 @@ msgid ""
 "their foes, and also carry nets to wreak havoc against those attempting to "
 "rally for defense or reprisal."
 msgstr ""
+"Неки гоблини вјежбају своје вукове да превазиђу урођени страх од ватре. У "
+"походима, ови гоблини имају улогу подршке; палиће домове и љетину својих "
+"противника, и носити мреже за уношење пометње међу оне који покушају да "
+"збију редове за одбрану или одмазду."
 
 #. [attack]: type=fire
 #: data/core/units/goblins/Pillager.cfg:56
 msgid "torch"
-msgstr ""
+msgstr "бакља"
 
 #. [attack]: type=impact
 #: data/core/units/goblins/Pillager.cfg:65
 #: data/core/units/merfolk/Entangler.cfg:35
 #: data/core/units/merfolk/Netcaster.cfg:46
 msgid "net"
-msgstr ""
+msgstr "мрежа"
 
 #. [unit_type]: id=Goblin Rouser, race=goblin
 #: data/core/units/goblins/Rouser.cfg:4
 msgid "Goblin Rouser"
-msgstr ""
+msgstr "гобли-подстрекач"
 
 #. [unit_type]: id=Goblin Rouser, race=goblin
 #: data/core/units/goblins/Rouser.cfg:22
@@ -1398,11 +1731,16 @@ msgid ""
 "Nonetheless, a rouser's frenzied goading effectively steels the less veteran "
 "fighters to strive harder and longer before they die."
 msgstr ""
+"Носиоци барјака су необичан призор међу гоблинима. Гоблин који је преживјео "
+"довољно битака да се може сматрати ветераном права је ријеткост, а још је "
+"рјеђе да му други гоблини признају и поштују ветерански статус. Па ипак, "
+"подстрекачево гњевно уњкање покреће млађе борце да се упињу јаче и дуже "
+"прије него што страдају."
 
 #. [unit_type]: id=Goblin Spearman, race=goblin
 #: data/core/units/goblins/Spearman.cfg:4
 msgid "Goblin Spearman"
-msgstr ""
+msgstr "гобли-копљаник"
 
 #. [unit_type]: id=Goblin Spearman, race=goblin
 #: data/core/units/goblins/Spearman.cfg:22
@@ -1417,11 +1755,19 @@ msgid ""
 "failure of the orcish bloodline, though no one knows enough of their history "
 "to state anything conclusive."
 msgstr ""
+"У сваком накоту оркова, неколико их се изроди много мањим и слабијим од "
+"осталих. Ови недоношци називају се „гоблинима“, и према њима се односи са "
+"ниподаштавањем. У биткама, даје им се најбједнија опрема, и користе се као "
+"завара да купе ратовођима довољно времена за припрему правог напада.\n"
+"\n"
+"Неки нагађају да постојање ових створења представља почетак краха орковског "
+"наслијеђа, али нико не зна довољно о њиховом историјату да би донио "
+"непобитне закључке."
 
 #. [unit_type]: id=Wolf Rider, race=wolf
 #: data/core/units/goblins/Wolf_Rider.cfg:4
 msgid "Wolf Rider"
-msgstr ""
+msgstr "вукоседлаш"
 
 #. [unit_type]: id=Wolf Rider, race=wolf
 #: data/core/units/goblins/Wolf_Rider.cfg:37
@@ -1438,11 +1784,22 @@ msgid ""
 "mounts have a rather easy time traversing the mountains, though water and "
 "woods will still slow them down."
 msgstr ""
+"Нико није сасвим сигуран како је постао обичај кроћења и јахања вукова, али "
+"је предност тога за једног гоблина очита. Гоблинима, будући мањим и много "
+"слабијим од својих пунокрвних сународника оркова, често се задају "
+"најопасније и најнежељеније улоге у боју. Стога, сваки гоблин који успије "
+"себи да осигура седло има много безбједнију, и зашто не рећи, забавнију "
+"улогу у борби.\n"
+"\n"
+"Вукови, с друге стране, никако не би могли издржати тежину човјека у бојном "
+"оклопу, али гоблина у кожном оклопу већ могу лако изнијети. За разлику од "
+"коња, лако им је да газе планинским тереном, али ће их вода и шума једнако "
+"успоравати."
 
 #. [unit_type]: id=Gryphon, race=gryphon
 #: data/core/units/gryphons/Gryphon.cfg:4
 msgid "Gryphon"
-msgstr ""
+msgstr "грифон"
 
 #. [unit_type]: id=Gryphon, race=gryphon
 #: data/core/units/gryphons/Gryphon.cfg:19
@@ -1451,11 +1808,14 @@ msgid ""
 "both dangerous and wary of other intelligent creatures, and thus should not "
 "be disturbed without a good reason."
 msgstr ""
+"Ова величанствена и моћна створења господаре небом. Грифони су и опасни и "
+"обазриви према другим мислећим створењима, и стога их не треба узнемиравати "
+"без доброг разлога."
 
 #. [unit_type]: id=Gryphon Master, race=gryphon
 #: data/core/units/gryphons/Gryphon_Master.cfg:4
 msgid "Gryphon Master"
-msgstr ""
+msgstr "грифо-мајстор"
 
 #. [unit_type]: id=Gryphon Master, race=gryphon
 #: data/core/units/gryphons/Gryphon_Master.cfg:20
@@ -1464,11 +1824,15 @@ msgid ""
 "an extension of themselves. This special relationship makes the heart of the "
 "earth-bound tremble, for these mighty birds of prey may strike from anywhere."
 msgstr ""
+"Грифонски мајстори имају дуго искуство у летењу грифонима, који су им "
+"постали духовни продужетак. Овај посебан однос међу њима чини да се тресу "
+"срца оних везаних за земљу, јер моћна грабљивица може ударити изненада и "
+"ниоткуд."
 
 #. [unit_type]: id=Gryphon Rider, race=gryphon
 #: data/core/units/gryphons/Gryphon_Rider.cfg:4
 msgid "Gryphon Rider"
-msgstr ""
+msgstr "грифо-јахач"
 
 #. [unit_type]: id=Gryphon Rider, race=gryphon
 #: data/core/units/gryphons/Gryphon_Rider.cfg:20
@@ -1477,11 +1841,14 @@ msgid ""
 "become Gryphon Riders, and discover the world of the skies upon the backs of "
 "these flying beasts."
 msgstr ""
+"Само неколицина способна је да се сјати са моћним грифонима. Они који "
+"успију, постају грифонски јахачи, и откривају царство неба на леђима тих "
+"летећих звјери."
 
 #. [unit_type]: id=Grand Knight, race=human
 #: data/core/units/humans/Horse_Grand_Knight.cfg:4
 msgid "Grand Knight"
-msgstr ""
+msgstr "велевитез"
 
 #. [unit_type]: id=Grand Knight, race=human
 #: data/core/units/humans/Horse_Grand_Knight.cfg:20
@@ -1492,6 +1859,11 @@ msgid ""
 "head of a charge is a terrifying sight for infantry, and is often enough to "
 "break right through a defensive line."
 msgstr ""
+"Велевитези су достигли врхунац умијећа са мачем и бојним копљем. Носећи пуни "
+"челични оклоп, и јашући на вранцима узгајаним прије за снагу него брзину, "
+"ови ратници чине језгро било које озбиљне коњичке силе. Велевитез на челу "
+"јуриша застрашујући је призор за пјешадију, и често је довољан да пробије "
+"одбрамбену постројбу."
 
 #. [attack]: type=blade
 #: data/core/units/humans/Horse_Grand_Knight.cfg:36
@@ -1500,7 +1872,7 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:52
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:40
 msgid "longsword"
-msgstr ""
+msgstr "дуги мач"
 
 #. [attack]: type=pierce
 #: data/core/units/humans/Horse_Grand_Knight.cfg:45
@@ -1508,12 +1880,12 @@ msgstr ""
 #: data/core/units/humans/Horse_Lancer.cfg:36
 #: data/core/units/humans/Horse_Paladin.cfg:61
 msgid "lance"
-msgstr ""
+msgstr "бојно копље"
 
 #. [unit_type]: id=Knight, race=human
 #: data/core/units/humans/Horse_Knight.cfg:4
 msgid "Knight"
-msgstr ""
+msgstr "витез"
 
 #. [unit_type]: id=Knight, race=human
 #: data/core/units/humans/Horse_Knight.cfg:19
@@ -1526,11 +1898,17 @@ msgid ""
 "however, and growing experience with these weapons makes them deadlier at "
 "the tilt."
 msgstr ""
+"Дисциплиновани и способни коњаници унапређују се у витезове. Прекаљени у "
+"борбама, нагледали су се често кобних посљедица неуспјелих јуриша, и научили "
+"да обуздају његову употребу. Витезови, стога, носе мачеве у свом арсеналу и "
+"практикују тактике које, иако захтијевају много више стрпљења, далеко су "
+"безбједније за извођење. Међутим, и даље су им при руци бојна копља, која "
+"смотрено употребљавана могу им бити само од користи."
 
 #. [unit_type]: id=Lancer, race=human
 #: data/core/units/humans/Horse_Lancer.cfg:4
 msgid "Lancer"
-msgstr ""
+msgstr "јуришник"
 
 #. [unit_type]: id=Lancer, race=human
 #: data/core/units/humans/Horse_Lancer.cfg:20
@@ -1542,11 +1920,17 @@ msgid ""
 "down infantrymen who have made the mistake of breaking formation, and in "
 "piercing defensive lines. However, they have limited use in defense."
 msgstr ""
+"Јуришници су међу најхрабријим и најстрахопоштованијим коњаницима у цијелом "
+"Весноту. Одјевени у врло мало оклопа, ослобађају га се да би хитро јахали, "
+"брже од било којих сабораца. Одважне тактике које примјењују двосјекли су "
+"мач, често им или доносећи славу, или брзу смрт. Јуришници се истичу у лову "
+"на злосрећне пјешадинце који су расули своје редове, и у пробијању "
+"одбрамбених линија. Међутим, у одбрани имају ограничену употребу."
 
 #. [unit_type]: id=Paladin, race=human
 #: data/core/units/humans/Horse_Paladin.cfg:4
 msgid "Paladin"
-msgstr ""
+msgstr "паладин"
 
 #. [unit_type]: id=Paladin, race=human
 #: data/core/units/humans/Horse_Paladin.cfg:22
@@ -1568,11 +1952,26 @@ msgid ""
 "curious abilities; a paladin is very powerful in fighting magical or "
 "unnatural things, and most have some skill at medicine and healing."
 msgstr ""
+"Витези највеће преданости, Паладини заклеше своју снагу не краљу нити круни, "
+"већ самим идеалима; витештва, и повјереништва над свим што је добро. Могу "
+"служити у разнобојним војскама, али им је прва оданост према дружинама свога "
+"кова — тајним, монашким редовима што превазилазе политичке и културне "
+"границе. Владари су понекад обазриви према паладину, јер је његова вијерност "
+"јака таман колико господара му исказана врлина. Ово је завело неке с "
+"мрачнијим наумима да покушају што оклеветати што разгнати ове дружине, или "
+"рјеђе, испреду разрађене сплетке којима би у служби задржали ове иначе "
+"постојано вијерне ратнике.\n"
+"\n"
+"Посвећени паладини обично нису тако страхопоштовани као велевитези који "
+"предводе већину војски, али су свеједно првокласни борци. Поред тога, "
+"мудрост и вјера подаје овим ратницима-монасима извјесне необичне "
+"способности; паладин је непоколебљив пред магичним и неприродним појавама, а "
+"већина их је и понешто упућена у медицину и видарство."
 
 #. [unit_type]: id=Horseman, race=human
 #: data/core/units/humans/Horseman.cfg:4
 msgid "Horseman"
-msgstr ""
+msgstr "коњаник"
 
 #. [unit_type]: id=Horseman, race=human
 #: data/core/units/humans/Horseman.cfg:20
@@ -1585,11 +1984,17 @@ msgid ""
 "must take care against both spearmen and archers for whom their large size "
 "provide inviting targets."
 msgstr ""
+"Често поријеклом из прилично неукроћених области Веснота, коњаници се од "
+"дјетињства уче да јашу и прате строги кодекс части. Јуриш коњаника моћна је "
+"али и немарна тактика, која се поново и поново исказује на бојиштима. "
+"Коњаници се истичу против већине пјешадије, посебно оне која разбије редове, "
+"али се морају пазити против копљаника и стријелаца, којима величина и замах "
+"коњаника представљају привлачне мете."
 
 #. [unit_type]: id=Bowman, race=human
 #: data/core/units/humans/Loyalist_Bowman.cfg:4
 msgid "Bowman"
-msgstr ""
+msgstr "лукаш"
 
 #. [unit_type]: id=Bowman, race=human
 #: data/core/units/humans/Loyalist_Bowman.cfg:21
@@ -1600,17 +2005,22 @@ msgid ""
 "woodsmen, military bowmen are trained to competence with both a bow and a "
 "short sword, and are very common on the battlefield."
 msgstr ""
+"Употреба стрељаштва у одстрељивању и другог осим ловине виђења је од њеног "
+"замећа, и стријелци су незамјенљиви у ратовању још од давно заборављених "
+"времена. Обично скромног поријекла, долазећи из сељаштва или шумљаштва, "
+"војни лукаши добро су увјежбани и с луком и с кратким мачем, и врло су чест "
+"призор на бојним пољима."
 
 #. [attack]: type=blade
 #: data/core/units/humans/Loyalist_Bowman.cfg:37
 #: data/core/units/orcs/Crossbowman.cfg:24 data/core/units/orcs/Slurbow.cfg:29
 msgid "short sword"
-msgstr ""
+msgstr "кратки мач"
 
 #. [unit_type]: id=Cavalier, race=human
 #: data/core/units/humans/Loyalist_Cavalier.cfg:4
 msgid "Cavalier"
-msgstr ""
+msgstr "кирасир"
 
 #. [unit_type]: id=Cavalier, race=human
 #: data/core/units/humans/Loyalist_Cavalier.cfg:21
@@ -1620,6 +2030,10 @@ msgid ""
 "a reputation for dash and aggressiveness to match it. The daring deeds of "
 "Cavaliers are the subject of many a tale and song."
 msgstr ""
+"Кирасири су мајстори употребе и мача и самостријела са коња. Посједују "
+"застрашујуће јединство ударне моћи и покретљивости, и на гласу су по томе "
+"одговарајућој смјелости и ратоборности. Одважна дјела кирасира тема су "
+"многој причи и пјесми."
 
 #. [attack]: type=pierce
 #. [attack]: type=fire
@@ -1637,12 +2051,12 @@ msgstr ""
 #: data/core/units/orcs/Slurbow.cfg:47 data/core/units/orcs/Sovereign.cfg:37
 #: data/core/units/undead/Skele_Death_Knight.cfg:54
 msgid "crossbow"
-msgstr ""
+msgstr "самостријел"
 
 #. [unit_type]: id=Cavalryman, race=human
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:4
 msgid "Cavalryman"
-msgstr ""
+msgstr "хусар"
 
 #. [unit_type]: id=Cavalryman, race=human
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:23
@@ -1656,11 +2070,18 @@ msgid ""
 "Cavalrymen are very useful for taking and holding positions on open ground, "
 "for screening friendly soldiers, and also for scouting work."
 msgstr ""
+"Хусари се разликују од обичних коњаника по својим тактикама и опреми. Хусар "
+"носи тежи оклоп, а од оружја мач и штит, прије него бојно копље. Хусарске "
+"тактике не укључују јуришање, већ маневрисање брзим ударима и повлачењима, "
+"користећи и коња и јахача као корисно оруђе у блиској борби.\n"
+"\n"
+"Хусари су врло корисни за заузимање и држање положаја на отвореним теренима, "
+"за заклањање пријатељских војника, као и за извиђачке намене."
 
 #. [unit_type]: id=Dragoon, race=human
 #: data/core/units/humans/Loyalist_Dragoon.cfg:4
 msgid "Dragoon"
-msgstr ""
+msgstr "драгун"
 
 #. [unit_type]: id=Dragoon, race=human
 #: data/core/units/humans/Loyalist_Dragoon.cfg:20
@@ -1671,11 +2092,15 @@ msgid ""
 "hold the ground they take. Their mobility and resilience make them of great "
 "value on the battlefield."
 msgstr ""
+"Надаренији међу хусарима у војскама Веснота вјежбају се за употребу "
+"самостријела, и бивају упарени с много снажнијим вранцима. Добро оклопљени, "
+"умјешни са мачем, ови војници могу притискати напад и држати положаје које "
+"заузму. Њихова покретљивост и жилавост од велике су вриједности на бојишту."
 
 #. [unit_type]: id=Duelist, race=human
 #: data/core/units/humans/Loyalist_Duelist.cfg:4
 msgid "Duelist"
-msgstr ""
+msgstr "изазивач"
 
 #. [unit_type]: id=Duelist, race=human
 #: data/core/units/humans/Loyalist_Duelist.cfg:20
@@ -1692,18 +2117,29 @@ msgid ""
 "live long enough to be veterans typically do so by making such concessions "
 "to utility and survival."
 msgstr ""
+"Чудна је мода међу Веснотовим племством, да обично учлањују своје синове у "
+"један од два реда штитоноша, гдје се вјежбају или умјетности јахања, или "
+"мачевања. Изазивачи су тако названи по несрећно честој навици међу младим "
+"аристократама, које оштрина увреде, било праве или извјештачене, може "
+"потакнути на нагло испољавање свог природног права.\n"
+"\n"
+"Искусни мачеваоци носе са собом мали самостријел, који се лако скрива под "
+"капутом или плаштом. Иако спор за пуњење и проказан нечасним за употребу, у "
+"ствари је веома користан. Они међу мачеваоцима који поживе довољно дуго да "
+"се уброје у ветеране, то су обично и успјели помиривши се са неопходностима "
+"преживљавања."
 
 #. [attack]: type=blade
 #: data/core/units/humans/Loyalist_Duelist.cfg:85
 #: data/core/units/humans/Loyalist_Fencer.cfg:140
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:44
 msgid "saber"
-msgstr ""
+msgstr "сабља"
 
 #. [unit_type]: id=Fencer, race=human
 #: data/core/units/humans/Loyalist_Fencer.cfg:4
 msgid "Fencer"
-msgstr ""
+msgstr "мачевалац"
 
 #. [unit_type]: id=Fencer, race=human
 #: data/core/units/humans/Loyalist_Fencer.cfg:21
@@ -1719,11 +2155,22 @@ msgid ""
 "disadvantage. They relish dancing circles around troops like heavy infantry, "
 "mocking the weight of their full armor."
 msgstr ""
+"Мачеваоци припадају школи мишљења која сматра оклоп који већина војника носи "
+"у бици, њиховим сопственим најгорим непријатељем. Док оклоп може само "
+"ублажити ударац, потпуно измицање ударцу ће избјећи сваку штету. Рачунати на "
+"поуздано измицање већини нападачких замаха, луксуз је који себи могу "
+"приуштити само природно окретни, па чак и тада тек послије строгог "
+"увјежбавања.\n"
+"\n"
+"Опремљени само бодежом и витким мачем, мачеваоци су лаки на ногама и корисни "
+"у многим околностима гдје би њихови оклопом спутани садрузи били у незгодном "
+"положају. Уживају у салетању кругова око снага какве су тешка пјешадија, "
+"ругајући се цијени који ови морају да плате својим тешким оклопима."
 
 #. [unit_type]: id=General, race=human
 #: data/core/units/humans/Loyalist_General.cfg:4
 msgid "General"
-msgstr ""
+msgstr "генерал"
 
 #. [unit_type]: id=General, race=human
 #: data/core/units/humans/Loyalist_General.cfg:30
@@ -1731,11 +2178,13 @@ msgid ""
 "As the leaders of their armies, Generals are responsible for the protection "
 "of large or important areas in the kingdoms to which they have sworn fealty."
 msgstr ""
+"Као вођи својих војски, генерали су одговорни за заштиту великих или важних "
+"области краљевства коме су се заклели на вијерност."
 
 #. [unit_type]: id=Grand Marshal, race=human
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:4
 msgid "Grand Marshal"
-msgstr ""
+msgstr "велемаршал"
 
 #. [unit_type]: id=Grand Marshal, race=human
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:26
@@ -1745,11 +2194,14 @@ msgid ""
 "proving both their tactical wit and their considerable mettle at personal "
 "combat."
 msgstr ""
+"Чин велемаршала један је од најпоштованијих у војскама људи, и они који носе "
+"то звање превазишли су многа ватрена крштења, исказавши своје тактичке "
+"мудрости и значајну одлучност у личној борби."
 
 #. [unit_type]: id=Halberdier, race=human
 #: data/core/units/humans/Loyalist_Halberdier.cfg:4
 msgid "Halberdier"
-msgstr ""
+msgstr "хелебардир"
 
 #. [unit_type]: id=Halberdier, race=human
 #: data/core/units/humans/Loyalist_Halberdier.cfg:21
@@ -1768,11 +2220,23 @@ msgid ""
 "customary only to grant these weapons to veteran pikemen, who have proven "
 "that they have the skill to employ them properly on the field of war."
 msgstr ""
+"Хелебарда је тешко оружје и незгодно за употребу, али врло моћно у рукама "
+"стручњака. Такође је много прилагодљивије од копља, од кога је постало. Као "
+"што ће вам сваки хелебардир рећи, ово оружје посједује четири главне ударне "
+"тачке, двије више него копље или дуго копље; то су врх, сјечиво, шиљак у "
+"основи шипке, и унутрашња тачка на сјечиву, која се може употријебити у "
+"повлачењу ка руковаоцу. Све ово је чини вишенамјенским оружјем у блиској "
+"борби, посебно против коњице.\n"
+"\n"
+"Међутим, хелебардом је примјетно теже руковати него копљем, и у рукама "
+"новајлије, много је мање дјелотворна. У војскама Веснота, обичај је да се "
+"ово оружје издаје само ветеранима пикенирима, који су доказали да посједују "
+"вјештину неопходну да је правилно употребе на ратишту."
 
 #. [unit_type]: id=Heavy Infantryman, race=human
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:4
 msgid "Heavy Infantryman"
-msgstr ""
+msgstr "тешкоход"
 
 #. [unit_type]: id=Heavy Infantryman, race=human
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:19
@@ -1783,6 +2247,11 @@ msgid ""
 "positions. A few of these in battle line will stiffen it considerably, "
 "albeit at an obvious cost in tactical flexibility."
 msgstr ""
+"Тешку пјешадију чине мишићави борци опремљени пуним челичним оклопом и "
+"гломазним ударним оружјем. Иако им је снага у блиској борби ненадмашна, због "
+"слабе покретљивости најбоље их је упослити за статичку одбрану утврђених "
+"положаја. Неколико тешкохода значајно ће ојачати ударну линију, мада по "
+"очигледну цијену у тактичкој прилагодљивости."
 
 #. [attack]: type=impact
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:37
@@ -1793,12 +2262,12 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Highwayman.cfg:37
 #: data/core/units/humans/Royal_Warrior.cfg:35
 msgid "mace"
-msgstr ""
+msgstr "топуз"
 
 #. [unit_type]: id=Iron Mauler, race=human
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:4
 msgid "Iron Mauler"
-msgstr ""
+msgstr "башчелик"
 
 #. [unit_type]: id=Iron Mauler, race=human
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:21
@@ -1814,11 +2283,20 @@ msgid ""
 "they cannot run on the battlefield. Too often have they seen a distant "
 "comrade fall, yet were powerless to reach the scene in time to help."
 msgstr ""
+"Башчелици су добили такво име из очитих разлога. Људи у овим борбеним "
+"оклопима могу се носити са огровима у натјецању снаге, и обично су прваци "
+"дворских стража у којима служе. Међутим, скупи су за одржавање, и не могу се "
+"слати у удаљене битке без пуне пратње послужилаца за подршку.\n"
+"\n"
+"Иако запањујући у блиској борби, има много недостатака оваквог опремања. "
+"Башчелици се лако умарају, и предобро знају да не могу трчати на бојишту. "
+"Често им се догађа да виде како им саборац у даљини страда, али су немоћни "
+"да стигну на лице мјеста довољно брзо да пруже помоћ."
 
 #. [unit_type]: id=Javelineer, race=human
 #: data/core/units/humans/Loyalist_Javelineer.cfg:4
 msgid "Javelineer"
-msgstr ""
+msgstr "џилитер"
 
 #. [unit_type]: id=Javelineer, race=human
 #: data/core/units/humans/Loyalist_Javelineer.cfg:19
@@ -1831,11 +2309,17 @@ msgid ""
 "from a distance, often without retribution, and still hold their ground in "
 "melee."
 msgstr ""
+"Копљаници обично са собом носе и неколико џилита, да узнемиравају, ако већ "
+"не и да убију, непријатеља из даљине. Некима се, међутим, џилитирање врло "
+"прими, налазећи да су природно надарени за то. Џилитери су важна фактор у "
+"војсци, пошто могу допунити своју вјештину у блиској борби могућношћу да се "
+"носе са удаљеним противницима. Могу хитати џилите у непријатељске редове из "
+"даљине, често без узвраћања, па ипак држати свој положај у блиској борби."
 
 #. [unit_type]: id=Lieutenant, race=human
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:4
 msgid "Lieutenant"
-msgstr ""
+msgstr "поручник"
 
 #. [unit_type]: id=Lieutenant, race=human
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:25
@@ -1843,11 +2327,13 @@ msgid ""
 "Trained at swords and crossbows, Lieutenants lead small groups of human "
 "soldiers, coordinating their attacks."
 msgstr ""
+"Увјежбани са мачевима и самостријелима, поручници руководе малим скупинама "
+"људских војника, усклађујући њихове нападе."
 
 #. [unit_type]: id=Longbowman, race=human
 #: data/core/units/humans/Loyalist_Longbowman.cfg:4
 msgid "Longbowman"
-msgstr ""
+msgstr "дуголукаш"
 
 #. [unit_type]: id=Longbowman, race=human
 #: data/core/units/humans/Loyalist_Longbowman.cfg:21
@@ -1858,11 +2344,16 @@ msgid ""
 "carry their weapons as a badge of pride, and most bowmen look forward to the "
 "day they can begin using one."
 msgstr ""
+"Дуги лукови су страшно оружје, али превише тешко за руковање стријелцима "
+"почетницима. Потребна је велика снага да се њиме запне, а повећани домет и "
+"моћ су бескорисни ако се оружјем не може добро циљати. Дуголукаши носе своје "
+"оружје као биљег поноса, и већина лукаша се нада дану када ће и сами моћи "
+"почети да га користе."
 
 #. [unit_type]: id=Master Bowman, race=human
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:4
 msgid "Master Bowman"
-msgstr ""
+msgstr "мајстор-лукаш"
 
 #. [unit_type]: id=Master Bowman, race=human
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:21
@@ -1876,11 +2367,19 @@ msgid ""
 "their human counterparts have speculated, perhaps in envy, that this is only "
 "by dint of age."
 msgstr ""
+"Мајстор-лукаши су досегли врхунац своје вјештине, колико је за човјека то "
+"већ могуће. Наоружани и мачем и великим тисовим луком, ови ратници крунишу "
+"батаљоне стријелаца својим присуством, обарајући многог противника добро "
+"нациљаним хицима. Не треба се олако одбацити ни њихова вјештина с мачем, јер "
+"могу бити добри у мачевању као било који мачевалац почетник. Од многих раса "
+"на свету, само су вилењаци надмашили људе у стрељаштву; њихови људски "
+"савременици нагађају, уз мало љубоморе, да то може бити само заслугом "
+"вилењачке дуговјечности."
 
 #. [unit_type]: id=Master at Arms, race=human
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:4
 msgid "Master at Arms"
-msgstr ""
+msgstr "мајстор-оружар"
 
 #. [unit_type]: id=Master at Arms, race=human
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:21
@@ -1897,11 +2396,20 @@ msgid ""
 "positions in which their flamboyant nature is not only accepted, but is "
 "perhaps even useful."
 msgstr ""
+"Мајстори мачеваоци на завидном су положају у друштву. Иако им је пут до тога "
+"водио преко опасног начина живота, доживјели су доба да жању његове плодове. "
+"Чувени по својој вјештини и полетном владању, ова господа имају ношење "
+"природних аристократа, и праћени су очима многе даме високог порекла.\n"
+"\n"
+"Обично имају тај луксуз да бирају своја намјештења, и слободни су да "
+"тумарају земљом ако тако одаберу. Често их се може наћи у својству капетана "
+"дворских стража или заповједника војних академија, положајима за које њихова "
+"расипна природа не само да је прихватљива, већ можда и корисна."
 
 #. [unit_type]: id=Pikeman, race=human
 #: data/core/units/humans/Loyalist_Pikeman.cfg:4
 msgid "Pikeman"
-msgstr ""
+msgstr "пикенир"
 
 #. [unit_type]: id=Pikeman, race=human
 #: data/core/units/humans/Loyalist_Pikeman.cfg:18
@@ -1913,16 +2421,22 @@ msgid ""
 "of pikemen is the bane of any cavalry charge, and with proper discipline and "
 "tactics, pikemen can also hold most other infantry at bay."
 msgstr ""
+"Обећавајући копљаници у војскама Веснота често се обучавају руковању дугим "
+"копљима, и снабдијевају спремом надмоћнијом од разноразних кожних оклопа "
+"које су носили као регрути. Дуго копље, будући знатно дуже од обичног, "
+"позива на употребу различитих тактика. Зид пикенирâ је крвник многом "
+"коњичком јуришу, а уз одговарајућу дисциплину и тактику, могу и већину "
+"пјешадије држати на одстојању."
 
 #. [attack]: type=pierce
 #: data/core/units/humans/Loyalist_Pikeman.cfg:65
 msgid "pike"
-msgstr ""
+msgstr "дуго копље"
 
 #. [unit_type]: id=Royal Guard, race=human
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:4
 msgid "Royal Guard"
-msgstr ""
+msgstr "царигардејац"
 
 #. [unit_type]: id=Royal Guard, race=human
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:19
@@ -1936,11 +2450,18 @@ msgid ""
 "reliability and mastery of close combat are their best assets, for which "
 "they are well-renowned."
 msgstr ""
+"Царигардејци се бирају од најбољих мачевалаца у Весноту. Служећи под високим "
+"племством, њихове су дужности најпре тјелохранитељске, а дијелом су и "
+"статусни симбол својих налагодаваца. Посебан одред царигардејаца распоређен "
+"је у престоници, гдје чува земљиште палате и краљевску породицу. Због односа "
+"испуњеног повјерењем са својим надређенима, често их,  прије него плаћенике, "
+"одашиљу на задатке од кључне важности. Њихова поузданост и владање блиском "
+"борбом, по којима су надалеко чувени, највећи су им иметак."
 
 #. [unit_type]: id=Sergeant, race=human
 #: data/core/units/humans/Loyalist_Sergeant.cfg:4
 msgid "Sergeant"
-msgstr ""
+msgstr "наредник"
 
 #. [unit_type]: id=Sergeant, race=human
 #: data/core/units/humans/Loyalist_Sergeant.cfg:26
@@ -1949,11 +2470,14 @@ msgid ""
 "academically trained, he will need some experience in the field before his "
 "leadership is sound and acknowledged."
 msgstr ""
+"Наредник је нижи официр у редовима краљевске војске. Иако академски "
+"обучаван, биће му потребно нешто искуства на терену прије него што његово "
+"заповиједање постане ваљано и признато."
 
 #. [unit_type]: id=Shock Trooper, race=human
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:4
 msgid "Shock Trooper"
-msgstr ""
+msgstr "бојолом"
 
 #. [unit_type]: id=Shock Trooper, race=human
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:18
@@ -1967,16 +2491,24 @@ msgid ""
 "drawback of such heavy armor is, of course, the time it takes to move into "
 "and out of combat."
 msgstr ""
+"Бојоломи су елита тешке пјешадије, и пола њихове употребе у рату своди се на "
+"просто застрашивање непријатеља. Само људи необично кршног стаса могу ући у "
+"њихове редове, и када се обујме црним оклопима начичканим шиљцима, постају "
+"појава страшна за гледање. Призор бојолома док разарају непријатеље својим "
+"сјеверњачама, довољан је да разбије у парчиће морал противника, који се "
+"понекад питају покрива ли тај оклоп чудовишта прије него људе. Недостатак "
+"тешког оклопа, свакако, јесте вријеме потребно да се укључе и искључе из "
+"борбе."
 
 #. [attack]: type=impact
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:36
 msgid "flail"
-msgstr ""
+msgstr "млатило"
 
 #. [unit_type]: id=Spearman, race=human
 #: data/core/units/humans/Loyalist_Spearman.cfg:4
 msgid "Spearman"
-msgstr ""
+msgstr "копљаник"
 
 #. [unit_type]: id=Spearman, race=human
 #: data/core/units/humans/Loyalist_Spearman.cfg:20
@@ -1987,11 +2519,16 @@ msgid ""
 "armed with a shield and a few javelins, spearmen are the staple of most "
 "armies, often thrown into the front lines with only the most basic training."
 msgstr ""
+"Мачеви су скуп луксуз, који сељаци тешко себи могу приуштити. Копља је много "
+"лакше направити и биће корисна и без шиљка, иако га већина већ може "
+"приуштити. Одјевени у кожни оклоп, и често наоружани штитом и са неколико "
+"џилита, копљаници су основна спрема многих војски, често бивајући бачени у "
+"бој само са основном обуком."
 
 #. [unit_type]: id=Swordsman, race=human
 #: data/core/units/humans/Loyalist_Swordsman.cfg:4
 msgid "Swordsman"
-msgstr ""
+msgstr "мачерук"
 
 #. [unit_type]: id=Swordsman, race=human
 #: data/core/units/humans/Loyalist_Swordsman.cfg:18
@@ -2003,11 +2540,17 @@ msgid ""
 "behind. A sword is not without its own drawbacks, but is more versatile than "
 "a spear, and much better in close quarters."
 msgstr ""
+"Искусан војник ће често уштедјети довољно да се опреми љуспичавим или "
+"ланчаним оклопом, и робусним широким мачем. Иако је одмјена копља мачем "
+"донекле драстична измјена, већина копљаника ће пожурити да тако учини, "
+"познавши предобро ограничења оружја које остављају за собом. Ни мач није без "
+"недостатака, али је много покретљивији од копља, и стога много бољи за "
+"блиску борбу."
 
 #. [unit_type]: id=Mage, race=human
 #: data/core/units/humans/Mage.cfg:4
 msgid "Mage"
-msgstr ""
+msgstr "маг"
 
 #. [unit_type]: id=Mage, race=human
 #: data/core/units/humans/Mage.cfg:25
@@ -2031,22 +2574,39 @@ msgid ""
 "Physically frail, and lacking familiarity with combat, magi do possess "
 "certain arts which are of great utility in battle."
 msgstr ""
+"Људи често мозгају о устројствима свијета у коме живе. Неки настоје да оду "
+"са овим даље од беспосличарске забаве, да то поставе као главни подухват "
+"својих живота. Магови су провели већ неколико година у проучавању, и "
+"сакупили довољну количину знања да се издвоје међу свијетом. У свијету гдје "
+"мало ко умије да чита и пише, ови мушкарци и жене су се сасма посветили "
+"гоњењу за знањем. Њихови редови испуњени су дјецом пунонадежног племства, "
+"или онима који би да побјегну од интелектуалне празнине која прожима "
+"раднички живот.\n"
+"\n"
+"Иронично је то, поред свог знања сакупљеног и њихове искључиве повластице на "
+"њ, да би заједница магова лако могла завладати друштвом, ако би икада то "
+"покушали. Међутим, њихова права љубав није ни новац ни моћ, и они који тога "
+"ради желе да проучавају магију, често не посједују унутрашње убеђење "
+"неопходно за истинско овладавање њоме.\n"
+"\n"
+"Иако физички крхки и без упућености у борбене вјештине, магови ипак имају "
+"одређене вјештине које су од велике користи у боју."
 
 #. [attack]: type=fire
 #: data/core/units/humans/Mage.cfg:76
 #: data/core/units/humans/Mage_Silver.cfg:57
 msgid "missile"
-msgstr ""
+msgstr "пројектил"
 
 #. [female]
 #: data/core/units/humans/Mage.cfg:174
 msgid "female^Mage"
-msgstr ""
+msgstr "мага"
 
 #. [unit_type]: id=Arch Mage, race=human
 #: data/core/units/humans/Mage_Arch.cfg:4
 msgid "Arch Mage"
-msgstr ""
+msgstr "архимаг"
 
 #. [unit_type]: id=Arch Mage, race=human
 #: data/core/units/humans/Mage_Arch.cfg:21
@@ -2064,23 +2624,33 @@ msgid ""
 "unleash the full power of their art, something which is not to be taken "
 "lightly."
 msgstr ""
+"Звање аргхимага повјерава се само послије цијелог вијека проучавања и "
+"достигнућа руку под руку. Архимагови су често запослени подучавањем, или као "
+"савјетници довољно разборитих да затраже плодове њихове мудрости. Многи се "
+"старају о богатим покровитељима, што је уносно за обоје; поред повремених "
+"задатака или ријечи савјета, магу остаје времена да се неометано бави својим "
+"истраживањем. Одатле проистиче већи дио знања човјечанства — филозофија, "
+"науке и умјетности које дају љепоту свијету што их окружује.\n"
+"\n"
+"Иако нису обучавани за било какав вид борбе, када се укаже потреба архимаг "
+"може да ослободи сву моћ свог знања и умијећа, што не треба узимати олако."
 
 #. [attack]: type=fire
 #: data/core/units/humans/Mage_Arch.cfg:90
 #: data/core/units/humans/Mage_Great.cfg:51
 #: data/core/units/humans/Mage_Red.cfg:75
 msgid "fireball"
-msgstr ""
+msgstr "ватреница"
 
 #. [female]
 #: data/core/units/humans/Mage_Arch.cfg:171
 msgid "female^Arch Mage"
-msgstr ""
+msgstr "архимага"
 
 #. [unit_type]: id=Elder Mage, race=human
 #: data/core/units/humans/Mage_Elder.cfg:4
 msgid "Elder Mage"
-msgstr ""
+msgstr "стари маг"
 
 #. [unit_type]: id=Elder Mage, race=human
 #: data/core/units/humans/Mage_Elder.cfg:22
@@ -2089,16 +2659,19 @@ msgid ""
 "wearying years of battle. Nevertheless they remain feared on the battlefield "
 "on account of their powerful lightning bolts."
 msgstr ""
+"Некада велики, старим маговима моћ се помало умањила током година "
+"измарајућих бојева. Па ипак их се и даље чува на бојишту, усљед снопова муња "
+"којима владају."
 
 #. [attack]: type=fire
 #: data/core/units/humans/Mage_Elder.cfg:34
 msgid "lightning"
-msgstr ""
+msgstr "муња"
 
 #. [unit_type]: id=Great Mage, race=human
 #: data/core/units/humans/Mage_Great.cfg:4
 msgid "Great Mage"
-msgstr ""
+msgstr "велики маг"
 
 #. [unit_type]: id=Great Mage, race=human
 #: data/core/units/humans/Mage_Great.cfg:22
@@ -2115,16 +2688,25 @@ msgid ""
 "Though they are not warriors, by any means, the application of their art to "
 "combat is something that often causes other soldiers to stand aside in awe."
 msgstr ""
+"Ко год се макар разматра за звање великог мага, сасвим сигурно је скоро "
+"легенда за живота, и градски вијесници су силом прилика научили да буду "
+"дискретни при употребљавању тог звања. Достојност звању пажљиво разматра "
+"вијеће водећих магова тог доба, и она се додјељује већинским гласом. Без "
+"обзира, свако ко је озбиљно био предложен за великог мага, јесте, без сумње, "
+"мајстор својих вјештина, непревазиђен међу готово свим савременицима.\n"
+"\n"
+"Иако ни на који начин нису ратници, примјена њихових вјештина у борби често "
+"доводи до тога да други војници застају запањени."
 
 #. [female]
 #: data/core/units/humans/Mage_Great.cfg:132
 msgid "female^Great Mage"
-msgstr ""
+msgstr "велика мага"
 
 #. [unit_type]: id=Red Mage, race=human
 #: data/core/units/humans/Mage_Red.cfg:4
 msgid "Red Mage"
-msgstr ""
+msgstr "црвени маг"
 
 #. [unit_type]: id=Red Mage, race=human
 #: data/core/units/humans/Mage_Red.cfg:21
@@ -2142,16 +2724,26 @@ msgid ""
 "number of tricks up their sleeves, including the gouts of fire which may "
 "have cemented their colloquial name."
 msgstr ""
+"По успешном окончању свог шегртовања, магу се узима смеђа шегртска одежда, и "
+"даје му се румена одежда мајстора. Значај ове промјене се често губи међу "
+"сељаштвом, које неријетко ословљава мајстора мага са „црвени магу“. Такође, "
+"симболизам промјене боја се често погрешно узима као стечена способност за "
+"призивање ватре из ведра неба; трик који, премда несумњиво користан, у очима "
+"магова представља тек тричаву примјену знања које су мукотрпно освојили.\n"
+"\n"
+"Иако физички слабашни, и неувјежбани за ратнике, „црвени магови“ имају многе "
+"трикове из рукава, укључујући и клобуке ватре који су установили њихово "
+"колоквијално ословљавање."
 
 #. [female]
 #: data/core/units/humans/Mage_Red.cfg:157
 msgid "female^Red Mage"
-msgstr ""
+msgstr "црвена мага"
 
 #. [unit_type]: id=Silver Mage, race=human
 #: data/core/units/humans/Mage_Silver.cfg:4
 msgid "Silver Mage"
-msgstr ""
+msgstr "сребрни маг"
 
 #. [unit_type]: id=Silver Mage, race=human
 #: data/core/units/humans/Mage_Silver.cfg:24
@@ -2159,6 +2751,8 @@ msgid ""
 "SPECIAL_NOTE^ Silver Magi are well-attuned to their magical natures and are "
 "highly resistant to non-physical damage."
 msgstr ""
+" Сребрни магови су добро прилагођени својој магичној природи и врло су "
+"отпорни на не-физичке нападе."
 
 #. [unit_type]: id=Silver Mage, race=human
 #: data/core/units/humans/Mage_Silver.cfg:24
@@ -2181,16 +2775,33 @@ msgid ""
 "skills are of undeniable use on the battlefield, if one can manage to induce "
 "the mage to apply them."
 msgstr ""
+"Многа путешествија којима маг може кренути у свом проучавању, воде до "
+"запањујуће различитих крајева. Често виђени као мудраци, или лутајући "
+"мистици, сребрни магови дјелају по плановима несхватљивим чак и својим "
+"сопственим колегама. Иако корисни магистеријумима који их најмљују, остају "
+"некако подвојени.\n"
+"\n"
+"Сребрни магови имају, у ствари, сопствени ред у сталежима магова, који "
+"прикрива извјесне тајне од својих савременика. Једна од таквих је способност "
+"да прелазе велике удаљености брже него што би ико то могао учинити пјешке. "
+"Чланови реда сребрних магова свесрдно одбијају расправу о начинима постизања "
+"овог, чак и са другим маговима. У ријетким приликама када су други успјели "
+"да зађу у њихове послове, брзо би напуштали таква настојања, да више никад "
+"не проговоре о томе.\n"
+"\n"
+"Сребрни магови су често физички вичнији од осталих магова, и њихове су "
+"могућности на бојишту неоспорне — ако неко успе да притјера мага да их "
+"употријеби."
 
 #. [female]
 #: data/core/units/humans/Mage_Silver.cfg:283
 msgid "female^Silver Mage"
-msgstr ""
+msgstr "Сребрна мага"
 
 #. [unit_type]: id=White Mage, race=human
 #: data/core/units/humans/Mage_White.cfg:4
 msgid "White Mage"
-msgstr ""
+msgstr "бијели маг"
 
 #. [unit_type]: id=White Mage, race=human
 #: data/core/units/humans/Mage_White.cfg:21
@@ -2205,6 +2816,15 @@ msgid ""
 "Though not trained for combat, they are a potent ally against magical or "
 "unnatural things."
 msgstr ""
+"Неки магови, како спознају свијет око себе и увиђају истину о патњи и биједи "
+"у којој човечанство пречесто битише, налазе да се не могу оградити животом "
+"изучавања. Ови мушкарци и жене одбацују живот магова и прикључују се "
+"монашким редовима, посвећујући стекнуте вјештине добробити свију. После "
+"иницијације, они често лутају свијетом, на путу збрињавајући болесне и "
+"рањене.\n"
+"\n"
+"Иако нису увјежбани за борбу, моћни су савезници против свих магичних и "
+"неприродних бића."
 
 #. [attack]: type=arcane
 #: data/core/units/humans/Mage_White.cfg:142
@@ -2212,17 +2832,17 @@ msgstr ""
 #: data/core/units/merfolk/Diviner.cfg:109
 #: data/core/units/merfolk/Priestess.cfg:106
 msgid "lightbeam"
-msgstr ""
+msgstr "свјетлосни сноп"
 
 #. [female]
 #: data/core/units/humans/Mage_White.cfg:277
 msgid "female^White Mage"
-msgstr ""
+msgstr "бијела мага"
 
 #. [unit_type]: id=Mage of Light, race=human
 #: data/core/units/humans/Mage_of_Light.cfg:4
 msgid "Mage of Light"
-msgstr ""
+msgstr "маг свјетлости"
 
 #. [unit_type]: id=Mage of Light, race=human
 #: data/core/units/humans/Mage_of_Light.cfg:23
@@ -2234,21 +2854,27 @@ msgid ""
 "Following a strict code of piety and honor, these men and women work "
 "tirelessly to bring life and order to the troubled world in which they live."
 msgstr ""
+"Послије година стицања искуства, најпосвећенији бијели магови бивају "
+"даровани несагледивим духовним моћима. Својом непоколебљивом оданошћу путу "
+"свјетла, могу се позвати на његову помоћ да развије таме мрака.\n"
+"\n"
+"Пратећи строги кодекс штовања и части, ови мушкарци и жене неуморно раде на "
+"успостављању живота и реда у свијету пуном невоља у коме живе."
 
 #. [attack]: type=impact
 #: data/core/units/humans/Mage_of_Light.cfg:111
 msgid "morning star"
-msgstr ""
+msgstr "сјеверњача"
 
 #. [female]
 #: data/core/units/humans/Mage_of_Light.cfg:245
 msgid "female^Mage of Light"
-msgstr ""
+msgstr "Мага свјетлости"
 
 #. [unit_type]: id=Outlaw, race=human
 #: data/core/units/humans/Outlaw.cfg:4
 msgid "Outlaw"
-msgstr ""
+msgstr "одметник"
 
 #. [unit_type]: id=Outlaw, race=human
 #: data/core/units/humans/Outlaw.cfg:19
@@ -2261,6 +2887,12 @@ msgid ""
 "are somewhat ill at ease fighting during the day, preferring the cover of "
 "nightfall."
 msgstr ""
+"Послије неколико година служења, бивши „потрчко“ издиже се у редовима својих "
+"одметничких дружбеника. Пошто се доказао у борби, дају му се опаснији "
+"задаци, али и већи дио оствареног плијена. Иако се многи противници ругају "
+"њиховом избору оружја, одметници су врло свјесни његовог смртоносног "
+"дејства, и лаке доступности муниције. Одметницима није најпријатније да се "
+"боре у по бијела дана, већ им више одговара заклон ноћи."
 
 #. [attack]: type=impact
 #: data/core/units/humans/Outlaw.cfg:44
@@ -2268,17 +2900,17 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Fugitive.cfg:50
 #: data/core/units/trolls/Rocklobber.cfg:36
 msgid "sling"
-msgstr ""
+msgstr "праћка"
 
 #. [female]
 #: data/core/units/humans/Outlaw.cfg:115
 msgid "female^Outlaw"
-msgstr ""
+msgstr "одметница"
 
 #. [unit_type]: id=Assassin, race=human
 #: data/core/units/humans/Outlaw_Assassin.cfg:4
 msgid "Assassin"
-msgstr ""
+msgstr "убица"
 
 #. [unit_type]: id=Assassin, race=human
 #: data/core/units/humans/Outlaw_Assassin.cfg:20
@@ -2289,22 +2921,28 @@ msgid ""
 "victims, be it poisoned knives thrown from afar, or a dagger planted in the "
 "back. Deadly at night, assassins are less able fighting under the sun."
 msgstr ""
+"Најспособнији међу лоповима некада се задужују да одузму жртви много више од "
+"њених посједа. Мајстори борбе са ножем и волшебно окретни на ногама, ове "
+"застрашујуће сподобе упошљавају било који погодан начин за тихо одстрањивање "
+"жртава; било помоћу отрованог ножа баченог из даљине, или бодежа изблиза "
+"забијеног у леђа. Смртоносни ноћу, није им сасвим пријатно да се боре по "
+"свјетлу дана."
 
 #. [attack]: type=blade
 #: data/core/units/humans/Outlaw_Assassin.cfg:52
 #: data/core/units/humans/Outlaw_Rogue.cfg:51
 msgid "knife"
-msgstr ""
+msgstr "нож"
 
 #. [female]
 #: data/core/units/humans/Outlaw_Assassin.cfg:179
 msgid "female^Assassin"
-msgstr ""
+msgstr "убица"
 
 #. [unit_type]: id=Bandit, race=human
 #: data/core/units/humans/Outlaw_Bandit.cfg:4
 msgid "Bandit"
-msgstr ""
+msgstr "разбојник"
 
 #. [unit_type]: id=Bandit, race=human
 #: data/core/units/humans/Outlaw_Bandit.cfg:18
@@ -2315,11 +2953,17 @@ msgid ""
 "victims into submission. Like any sort of outlaw, they're not comfortable "
 "fighting in broad daylight, being used to working at night."
 msgstr ""
+"Разбојници су шаролика скупина људи, већином незавидне прошлости. Они су "
+"ударна песница било које организоване криминалне групе; иако им може "
+"недостајати суптилност и оштроумност, сасвим су погодни за уобичајене "
+"задатке утјеривања жртава у послушност. Као и остали одметници, није им "
+"пријатно да дејствују по дневном светлу, већ су навикли на обављање послова "
+"ноћу."
 
 #. [unit_type]: id=Footpad, race=human
 #: data/core/units/humans/Outlaw_Footpad.cfg:4
 msgid "Footpad"
-msgstr ""
+msgstr "потрчко"
 
 #. [unit_type]: id=Footpad, race=human
 #: data/core/units/humans/Outlaw_Footpad.cfg:21
@@ -2331,6 +2975,11 @@ msgid ""
 "their inferior weaponry they are quite good at harrying their enemies, "
 "especially under cover of darkness."
 msgstr ""
+"Ове ситне криминалце њихови шефови често са ниподаштавањем називају "
+"„потрчцима“, јер им се обично у задатак дају послови који захтијевају пуно "
+"трчкарања унаоколо, као курирски или извиђачки. Издржљивост и лаконогост "
+"коју из тога извлаче, корисно им служи и у борби; без обзира на ништавно "
+"наоружање, добри су у малтретирању непријатеља, посебно под покровом мрака."
 
 #. [attack]: type=impact
 #: data/core/units/humans/Outlaw_Footpad.cfg:38
@@ -2340,17 +2989,17 @@ msgstr ""
 #: data/core/units/merfolk/Netcaster.cfg:38
 #: data/core/units/trolls/Troll.cfg:38
 msgid "club"
-msgstr ""
+msgstr "батина"
 
 #. [female]
 #: data/core/units/humans/Outlaw_Footpad.cfg:176
 msgid "female^Footpad"
-msgstr ""
+msgstr "потрчкица"
 
 #. [unit_type]: id=Fugitive, race=human
 #: data/core/units/humans/Outlaw_Fugitive.cfg:5
 msgid "Fugitive"
-msgstr ""
+msgstr "бјегунац"
 
 #. [unit_type]: id=Fugitive, race=human
 #: data/core/units/humans/Outlaw_Fugitive.cfg:21
@@ -2359,16 +3008,19 @@ msgid ""
 "to elude capture. They can be dangerous in their element, though no match "
 "for the sheer numbers that law-abiding soldiery can throw at them."
 msgstr ""
+"Прекаљени криминалци постају озлоглашени како по својој безобзирности тако и "
+"по способности да измакну хватању. Могу бити опасни у свом природном "
+"окружењу, али ипак нису дорасли бројчаној надмоћи законољубивог војништва."
 
 #. [female]
 #: data/core/units/humans/Outlaw_Fugitive.cfg:122
 msgid "female^Fugitive"
-msgstr ""
+msgstr "бјегуница"
 
 #. [unit_type]: id=Highwayman, race=human
 #: data/core/units/humans/Outlaw_Highwayman.cfg:5
 msgid "Highwayman"
-msgstr ""
+msgstr "друмаш"
 
 #. [unit_type]: id=Highwayman, race=human
 #: data/core/units/humans/Outlaw_Highwayman.cfg:20
@@ -2379,11 +3031,16 @@ msgid ""
 "attacking on lonely roads or in the dead of night. Their experience with "
 "such encounters makes them deadly foes in hand to hand combat."
 msgstr ""
+"Друмаши су изашли на рђав глас по потајним делима пуним насиља. Спремни да "
+"се унајме коме год да плати највише, воде дружине мањих одметника против "
+"непријатеља̂ свога послодавца, често ударајући на осамљеним друмовима под "
+"окриљем ноћи. Искуство из таквих окршаја чини их смртоносним противницима у "
+"борби прса у прса."
 
 #. [unit_type]: id=Rogue, race=human
 #: data/core/units/humans/Outlaw_Rogue.cfg:4
 msgid "Rogue"
-msgstr ""
+msgstr "нитков"
 
 #. [unit_type]: id=Rogue, race=human
 #: data/core/units/humans/Outlaw_Rogue.cfg:19
@@ -2395,16 +3052,21 @@ msgid ""
 "reliable accuracy, and their long hours of prowling around at night leave "
 "them more comfortable fighting in the dark."
 msgstr ""
+"Коловође у лоповским организацијама зарађују своје положаје вјештином. "
+"Провели су многе непријатне тренутке срљајући кроз гомилу и измичући онима "
+"који би им наудили, чиме су стекли искуство врло корисно и у борбама. "
+"Мајстори су руковања ножем, могу их и бацати са поузданом прецизношћу, а "
+"дуги часови ноћних шуњања навикли су их да то још боље чине по мраку."
 
 #. [female]
 #: data/core/units/humans/Outlaw_Rogue.cfg:153
 msgid "female^Rogue"
-msgstr ""
+msgstr "нитковица"
 
 #. [unit_type]: id=Ruffian, race=human
 #: data/core/units/humans/Outlaw_Ruffian.cfg:4
 msgid "Ruffian"
-msgstr ""
+msgstr "сировина"
 
 #. [unit_type]: id=Ruffian, race=human
 #: data/core/units/humans/Outlaw_Ruffian.cfg:19
@@ -2415,11 +3077,15 @@ msgid ""
 "sometimes manage to avoid the imprisonment or death that awaits most of "
 "their colleagues."
 msgstr ""
+"Неки људи без посебних вјештина не могу или не желе поштено да зарађују за "
+"живот. За оне који покушавају да се пробију кроз живот тешким крајем мачуге, "
+"каже се да су „сировине“. Уз довољно среће и искуства, некада успију да "
+"избјегну ћелију или губилиште које чека већину њихове сорте."
 
 #. [unit_type]: id=Thief, race=human
 #: data/core/units/humans/Outlaw_Thief.cfg:4
 msgid "Thief"
-msgstr ""
+msgstr "лопов"
 
 #. [unit_type]: id=Thief, race=human
 #: data/core/units/humans/Outlaw_Thief.cfg:20
@@ -2432,16 +3098,23 @@ msgid ""
 "their feet, and good with knives. They happily employ less-than-honorable "
 "tactics in combat, seeing little merit in a 'fair fight'."
 msgstr ""
+"Од када се памти, чланови разних „еснафа“ хватача пацова, који изникну у "
+"сваком већем граду, имају чудан обичај да испирају косу кречом све док не "
+"постане блиједа нијанса плаве. То је одважан поступак, јер се многи од њих "
+"упуштају у не сасвим легалне подухвате, гдје могу бити лако уочени. Лопови "
+"су обдарени многим вјештинама, по природи свог посла морају бити добри са "
+"ножевима и лаки на ногама. Радо се служе не сасвим часним тактикама у борби, "
+"не видећи пуно смисла у „поштеном обрачуну“."
 
 #. [female]
 #: data/core/units/humans/Outlaw_Thief.cfg:377
 msgid "female^Thief"
-msgstr ""
+msgstr "лоповка"
 
 #. [unit_type]: id=Thug, race=human
 #: data/core/units/humans/Outlaw_Thug.cfg:4
 msgid "Thug"
-msgstr ""
+msgstr "сјецикеса"
 
 #. [unit_type]: id=Thug, race=human
 #: data/core/units/humans/Outlaw_Thug.cfg:20
@@ -2452,11 +3125,16 @@ msgid ""
 "Regardless of their background, they all share a penchant for beating their "
 "victims with large clubs."
 msgstr ""
+"Сјецикесе пристижу из разних извора; док их се неколицина роди у таквој "
+"средини, многи су бивши војници отпуштени као неспособни, или сељаци који су "
+"остали без земље. На овакав начин живота брзо се одлучују ради преживљавања. "
+"Без обзира на појединачне прошлости, сви дијеле исти обичај пребијања својих "
+"жртава великим батинама."
 
 #. [unit_type]: id=Peasant, race=human
 #: data/core/units/humans/Peasant.cfg:4
 msgid "Peasant"
-msgstr ""
+msgstr "сељак"
 
 #. [unit_type]: id=Peasant, race=human
 #: data/core/units/humans/Peasant.cfg:20
@@ -2466,16 +3144,20 @@ msgid ""
 "homes. However, if you're hurling peasants at your foes, you're clearly out "
 "of superior forces."
 msgstr ""
+"Сељаци су кичма руралне економије, и војници у посљедњем прибежишту. Иако по "
+"природи нису ратоборни, тврдоглаво ће бранити своја огњишта. Свеједно, ко "
+"започне да гура сељаке противу непријатеља, тај је очито остао без способних "
+"снага."
 
 #. [attack]: type=pierce
 #: data/core/units/humans/Peasant.cfg:37 data/core/units/humans/Peasant.cfg:46
 msgid "pitchfork"
-msgstr ""
+msgstr "вила"
 
 #. [unit_type]: id=Royal Warrior, race=human
 #: data/core/units/humans/Royal_Warrior.cfg:8
 msgid "Royal Warrior"
-msgstr ""
+msgstr "бојар"
 
 #. [unit_type]: id=Royal Warrior, race=human
 #: data/core/units/humans/Royal_Warrior.cfg:31
@@ -2483,11 +3165,13 @@ msgid ""
 "Royal warriors are the kings and princes of human noble houses, armed and "
 "armored to a degree heavier than that of their knights."
 msgstr ""
+"Бојари су краљеви и принчеви људских племићких кућа, наоружани и оклопљени "
+"поврх уобичајеног за витезове којима заповиједају."
 
 #. [unit_type]: id=Woodsman, race=human
 #: data/core/units/humans/Woodsman.cfg:4
 msgid "Woodsman"
-msgstr ""
+msgstr "шумљак"
 
 #. [unit_type]: id=Woodsman, race=human
 #: data/core/units/humans/Woodsman.cfg:20
@@ -2496,11 +3180,14 @@ msgid ""
 "a living where the human world verges on the wilderness. Wits and woodcraft "
 "often support them where weapons will not."
 msgstr ""
+"Шумљаци су ловци, дрводјеље, дрвеноугљаши, и други који уживају у животу на "
+"граници света људи и дивљине. Досјетљивост и умијеће са дрветом често им "
+"помогну гдје оружје не би."
 
 #. [unit_type]: id=Huntsman, race=human
 #: data/core/units/humans/Woodsman_Huntsman.cfg:5
 msgid "Huntsman"
-msgstr ""
+msgstr "ловодар"
 
 #. [unit_type]: id=Huntsman, race=human
 #: data/core/units/humans/Woodsman_Huntsman.cfg:23
@@ -2520,11 +3207,24 @@ msgid ""
 "save lives, ease travel, provide food, and their skill with a bow is "
 "capitally useful in a fight."
 msgstr ""
+"Лов је омиљена разбибрига племству, али може бити и средство издржавања "
+"пучанству. Као и за сваку вјештину, има оних који су лов мајсторски "
+"савладали. Ловодари познају све трикове заната, извјештени су у кретању "
+"дивљином, праћењу, и употреби лука. Ваљани су стрелци за мете покретне и "
+"скривене по жбуњу и заклонима, вјештина коју су стекли годинама гађања "
+"ловине, и која обученим стојећим стрелцима често недостаје.\n"
+"\n"
+"Прекаљене ловце у службу узимају све дружине што живе или се крећу дивљим "
+"пределима, било да су људи од закона или супротстављени му. Природа сама "
+"умије изњедрити погибељна изненађења, те заповједник који не унајми оваквог "
+"водича ризикује губитак људства ни до чега другог до опасног терена. Спретни "
+"људи од шуме спасавају животе, олакшавају путовање, набављају храну, а "
+"вјештина им с луком може бити кључна у борби."
 
 #. [unit_type]: id=Poacher, race=human
 #: data/core/units/humans/Woodsman_Poacher.cfg:4
 msgid "Poacher"
-msgstr ""
+msgstr "криволовац"
 
 #. [unit_type]: id=Poacher, race=human
 #: data/core/units/humans/Woodsman_Poacher.cfg:22
@@ -2537,11 +3237,18 @@ msgid ""
 "Because of their experience, these hunters are unusually capable at night, "
 "and in forests and swamps."
 msgstr ""
+"Иако нису увјежбани као ратници, вјештине које ловци посједују, посебно "
+"везане за стрељаштво, корисне су у бици. Свакој дружини која се пробија "
+"дивљином, што војничкој што разбојничкој, требаће неколико криволоваца у "
+"служби — не само лова ради, већ и на помоћ у каквој озбиљној борби.\n"
+"\n"
+"Теком свог искуства, ови ловци су необично дјелатни у току ноћи, и у шумама "
+"и мочварама."
 
 #. [unit_type]: id=Ranger, race=human
 #: data/core/units/humans/Woodsman_Ranger.cfg:5
 msgid "Ranger"
-msgstr ""
+msgstr "самосвој"
 
 #. [unit_type]: id=Ranger, race=human
 #: data/core/units/humans/Woodsman_Ranger.cfg:23
@@ -2558,11 +3265,21 @@ msgid ""
 "even hear of it at all. Rangers can be hired, but they are just as likely to "
 "be in the employ of bandits, as they are to be in the king's service."
 msgstr ""
+"Самосвоји су људи дивљине и луталице, што одабраше избјегавање друштва са "
+"ближњима из мноштва разлога. Већи дио живота провели су у нетакнутој "
+"природи, упознавши многе њене тајне. Изврсни су трагачи и истраживачи, да "
+"могу прибавити храну и уточиште гдје би други нашли само грање и камење.\n"
+"\n"
+"Присуство оваквих прилика мучи деспотскије међу вођима; чинилац су којим "
+"витези и устоличене војске не могу управљати. Људи су сумњивих побуда, и "
+"први који ће се наругати издатом краљевском прогласу, ако га уопште уприличе "
+"саслушати. Самосвоји се могу унајмити, али ће једнако приљежно ступити у "
+"службу разбојницима, колико и краљевим поданицима."
 
 #. [unit_type]: id=Trapper, race=human
 #: data/core/units/humans/Woodsman_Trapper.cfg:4
 msgid "Trapper"
-msgstr ""
+msgstr "трапер"
 
 #. [unit_type]: id=Trapper, race=human
 #: data/core/units/humans/Woodsman_Trapper.cfg:21
@@ -2575,11 +3292,19 @@ msgid ""
 "Their skill at hunting is very useful in combat, and also leaves them "
 "unusually competent at night, and in forests and swamps."
 msgstr ""
+"Мајстори у сналажењу шумом корисни су савезници свакој војсци, а "
+"незаобилазни у било каквој већој скупини настањеној у дивљини. Могу пратити "
+"и човјека и звијер, уочити ствари које би већина превидјела, а често су и "
+"једини који могу наћи поштену храну за трпезу, било животињског или биљног "
+"поријекла.\n"
+"\n"
+"Њихова ловачка вјештина врло је корисна у борби, а чини их и необично "
+"вјештим у току ноћи, у шумама и мочварама."
 
 #. [unit_type]: id=Mermaid Diviner, race=merman
 #: data/core/units/merfolk/Diviner.cfg:4
 msgid "female^Mermaid Diviner"
-msgstr ""
+msgstr "морен-богословка"
 
 #. [unit_type]: id=Mermaid Diviner, race=merman
 #: data/core/units/merfolk/Diviner.cfg:25
@@ -2591,11 +3316,16 @@ msgid ""
 "banks of the Alavynne, but who rode again the next day, in full number, and "
 "wrought the downfall of the crimson duke."
 msgstr ""
+"Године посвећености могу обдарити свештеницу великом мудрошћу о устројствима "
+"света, и обасјати милошћу свјетла. Моћ тако подарена овим дамама воде, чест "
+"је мотив у причи и пјесми; као што је она о витезима сребрне куле, ухваћеним "
+"у клопку и посјеченим до посљедњег на обалама Алавине, али који већ сљедећег "
+"дана појахаше поново у пуном броју, донијевши пропаст гримизном војводи."
 
 #. [unit_type]: id=Mermaid Enchantress, race=merman
 #: data/core/units/merfolk/Enchantress.cfg:4
 msgid "female^Mermaid Enchantress"
-msgstr ""
+msgstr "морен-опсјенарка"
 
 #. [unit_type]: id=Mermaid Enchantress, race=merman
 #: data/core/units/merfolk/Enchantress.cfg:20
@@ -2607,18 +3337,24 @@ msgid ""
 "is forbidden against their own race - this power is the greater part of what "
 "protects their people from the monsters that wander out of the abyss."
 msgstr ""
+"Морејке, као и вилењаци, имају моћну урођену склоност ка магији, иако је "
+"њихова посве другачија. Оне који овладају овом способношћу држи се са "
+"великим поштовањем, и њихова вјештина се користи у сијасет намјена, многе "
+"међу њима такве да људи никад не би ни сањали. Очигледна могућност употребе "
+"у рату забрањена је против њихове сопствене расе — јер та је моћ део "
+"свеобухватније, која чува њихов народ од чудовишта што вребају из бездана."
 
 #. [attack]: type=impact
 #: data/core/units/merfolk/Enchantress.cfg:46
 #: data/core/units/merfolk/Initiate.cfg:49
 #: data/core/units/merfolk/Siren.cfg:54
 msgid "water spray"
-msgstr ""
+msgstr "водени пљусак"
 
 #. [unit_type]: id=Merman Entangler, race=merman
 #: data/core/units/merfolk/Entangler.cfg:4
 msgid "Merman Entangler"
-msgstr ""
+msgstr "морен-уплитач"
 
 #. [unit_type]: id=Merman Entangler, race=merman
 #: data/core/units/merfolk/Entangler.cfg:22
@@ -2634,11 +3370,20 @@ msgid ""
 "effective chase over land, and are at a great disadvantage in hand-to-hand "
 "combat."
 msgstr ""
+"Морејци обично комбинују мреже и батине у риболову: мрежом сакупљају рибе, а "
+"батином их дотуку. Обе ове алатке нашле су своју примјену и у ратовању, "
+"довољно вриједну да се они који њима владају често позивају у битку као "
+"помоћне снаге.\n"
+"\n"
+"Морејци су често супротстављени непријатељима пребиваоцима копна. Док су у "
+"води врло јаки, морејци на копну никако нису способни за офанзивне покрете. "
+"Мреже им зато пружају кључни ослонац: без њих, не би могли ништа дјелотворно "
+"појурити преко копна, и били би у великој неповољности при борби прса у прса."
 
 #. [unit_type]: id=Merman Fighter, race=merman
 #: data/core/units/merfolk/Fighter.cfg:4
 msgid "Merman Fighter"
-msgstr ""
+msgstr "морен-борац"
 
 #. [unit_type]: id=Merman Fighter, race=merman
 #: data/core/units/merfolk/Fighter.cfg:20
@@ -2646,11 +3391,13 @@ msgid ""
 "Skilled denizens of the sea, Mermen are powerful and quick in any watery "
 "environment, but lose most of their mobility on land."
 msgstr ""
+"Вјешти становници мора, морејци су моћни и хитри у било којој воденој "
+"средини, али се тешко напрежу при кретању копном."
 
 #. [unit_type]: id=Merman Hoplite, race=merman
 #: data/core/units/merfolk/Hoplite.cfg:4
 msgid "Merman Hoplite"
-msgstr ""
+msgstr "морен-хоплит"
 
 #. [unit_type]: id=Merman Hoplite, race=merman
 #: data/core/units/merfolk/Hoplite.cfg:21
@@ -2660,11 +3407,15 @@ msgid ""
 "steadfast line in the maelstrom of battle. In times of desperation, they can "
 "even do so on land, though not nearly as well as a creature with legs."
 msgstr ""
+"Познати по кулин-штитовима, морејски хоплити чине елитну стражу воденог "
+"царства. Њихов моћан оклоп и чврста дисциплина омогућава им да постојано "
+"одржавају строј у ковитлацу битке. У тренуцима очаја могу се борити и на "
+"копну, али ни изблиза тако добро као створења са ногама."
 
 #. [unit_type]: id=Merman Hunter, race=merman
 #: data/core/units/merfolk/Hunter.cfg:4
 msgid "Merman Hunter"
-msgstr ""
+msgstr "морен-ловац"
 
 #. [unit_type]: id=Merman Hunter, race=merman
 #: data/core/units/merfolk/Hunter.cfg:20
@@ -2674,11 +3425,15 @@ msgid ""
 "of need, many mermen of that occupation will volunteer to swell the ranks of "
 "their military."
 msgstr ""
+"Вјештине које морејци користе у ловачком копљарењу дају се лако пренијети у "
+"бој, посебно против оних који се у води не осјећају као код куће. У "
+"тренуцима нужде, многи ће морејац ловачког позива понудити своје вјештине "
+"редовима морејске војске."
 
 #. [unit_type]: id=Mermaid Initiate, race=merman
 #: data/core/units/merfolk/Initiate.cfg:4
 msgid "female^Mermaid Initiate"
-msgstr ""
+msgstr "морен-искушеница"
 
 #. [unit_type]: id=Mermaid Initiate, race=merman
 #: data/core/units/merfolk/Initiate.cfg:23
@@ -2690,11 +3445,17 @@ msgid ""
 "Despite their frailty, this makes them quite formidable in combat, as they "
 "can call upon the very water about them to smite their enemies."
 msgstr ""
+"Младе морејке често се уводе у спознавање водених магија својствених њиховом "
+"народу. Чудесне могућности које се пружају неупоредиве су са било којом "
+"другом расом, и биљег су вилинске стране ових створења.\n"
+"\n"
+"Упркос својој ломљивости, магија их чини врло незгодним у борби, јер могу се "
+"позвати на саму воду око себе да сможди њихове непријатеље."
 
 #. [unit_type]: id=Merman Javelineer, race=merman
 #: data/core/units/merfolk/Javelineer.cfg:4
 msgid "Merman Javelineer"
-msgstr ""
+msgstr "морен-џилитер"
 
 #. [unit_type]: id=Merman Javelineer, race=merman
 #: data/core/units/merfolk/Javelineer.cfg:20
@@ -2704,11 +3465,16 @@ msgid ""
 "range, the impact of one is considerably greater. In the water, the mobility "
 "of the mermen more than makes up for this when facing foes who cannot swim."
 msgstr ""
+"Они морејци који загосподаре вјештином џилитерства, могу бити дјелотворни "
+"скоро колико и стријелац — иако тежина њиховом оружју скраћује добачај, "
+"погодак му је значајно разорнији. У води, покретљивост морејаца више него "
+"надомијешта било који недостатак, посебно када су суочени са противницима "
+"који не пливају добро."
 
 #. [unit_type]: id=Merman Netcaster, race=merman
 #: data/core/units/merfolk/Netcaster.cfg:4
 msgid "Merman Netcaster"
-msgstr ""
+msgstr "морен-мрежар"
 
 #. [unit_type]: id=Merman Netcaster, race=merman
 #: data/core/units/merfolk/Netcaster.cfg:21
@@ -2725,11 +3491,22 @@ msgid ""
 "close to shore. Clubs were used in combat with little or no adaptation from "
 "fishing, since they were already quite deadly."
 msgstr ""
+"Риболов, какав практикују морејци, углавном је ствар утјеривања рибљих јата "
+"у разапете мреже, гдје се потом плијен дотуче батинама налик на весла. "
+"Импровизована примјена овог поступка на непријатељске војнике врло је "
+"дјелотворна; већина копнених створења већ се тешко сналази у води до паса, "
+"па кад се још ухвате у мреже постају готово беспомоћна.\n"
+"\n"
+"Дјелотворност ове тактике довела је до развоја мањих, отежаних мрежа, које "
+"се могу бацати кроз ваздух. Оне су бескорисне за риболов, али корисне како "
+"за борбу, тако и за ловљење копненог плијена што залута надомак обале. "
+"Батине које се користе у борби мало се или нимало разликују од риболовних, "
+"пошто су и такве сасвим смртоносне."
 
 #. [unit_type]: id=Mermaid Priestess, race=merman
 #: data/core/units/merfolk/Priestess.cfg:4
 msgid "female^Mermaid Priestess"
-msgstr ""
+msgstr "морен-свештеница"
 
 #. [unit_type]: id=Mermaid Priestess, race=merman
 #: data/core/units/merfolk/Priestess.cfg:23
@@ -2740,11 +3517,15 @@ msgid ""
 "piety also grants them certain powers, allowing them to guard their people "
 "against magical or unnatural things."
 msgstr ""
+"Међу морејцима, мистицизам се обично препушта морејкама, које су томе више "
+"наклоњене. Оне се посвећују идеалима доношења мира и живота у свијет, и "
+"проучавању вјештина које ће томе помоћи. Њихова истрајност и побожност даје "
+"им и неке духовне моћи, које користе за заштиту свог народа од несвијета."
 
 #. [unit_type]: id=Mermaid Siren, race=merman
 #: data/core/units/merfolk/Siren.cfg:4
 msgid "Mermaid Siren"
-msgstr ""
+msgstr "морен-сирена"
 
 #. [unit_type]: id=Mermaid Siren, race=merman
 #: data/core/units/merfolk/Siren.cfg:23
@@ -2759,16 +3540,25 @@ msgid ""
 "The myriad applications of this rarely occur to land dwellers, who simply "
 "regard it with wonder."
 msgstr ""
+"Вилинска природа морејки најјача је у сирена, чија повезаност са магијским "
+"струјама чини да често буду замијењене за саме најаде. Иако је то засигурно "
+"далеко од збиље, погрешка је разумљива, јер чак и морејке ретко виђају праве "
+"најаде. Појавни облик њихове магије је такође врло сличан; сирене могу "
+"командовати водом око себе како им се прохтије, као да је продужетак њих "
+"самих.\n"
+"\n"
+"Бројност могућих примијена овога ретко пада на ум житељима копна, који на то "
+"гледају простодушном радозналошћу."
 
 #. [attack]: type=impact
 #: data/core/units/merfolk/Siren.cfg:42
 msgid "naia touch"
-msgstr ""
+msgstr "најски додир"
 
 #. [unit_type]: id=Merman Spearman, race=merman
 #: data/core/units/merfolk/Spearman.cfg:4
 msgid "Merman Spearman"
-msgstr ""
+msgstr "морен-копљаник"
 
 #. [unit_type]: id=Merman Spearman, race=merman
 #: data/core/units/merfolk/Spearman.cfg:19
@@ -2780,11 +3570,17 @@ msgid ""
 "wreak damage. They are also useful in melee, even deep under the surface, "
 "which is something that certainly cannot be said of arrows."
 msgstr ""
+"Стрељаштво није сасвим омиљено међу морејцима, којима џилити служе у сличне "
+"сврхе. Иако је бацање џилита несврховито под водом, на површини је изузетно "
+"корисно, јер им тежина омогућава да на мјесту удара продру и до неколико "
+"лаката испод површине, задржавајући довољан замах да учине штету. Џилити су "
+"корисни и у блиској борби, чак и дубоко испод површине, што се сигурно не "
+"може тврдити за стријеле."
 
 #. [unit_type]: id=Merman Triton, race=merman
 #: data/core/units/merfolk/Triton.cfg:4
 msgid "Merman Triton"
-msgstr ""
+msgstr "морен-тритон"
 
 #. [unit_type]: id=Merman Triton, race=merman
 #: data/core/units/merfolk/Triton.cfg:21
@@ -2793,11 +3589,14 @@ msgid ""
 "Tritons easily defeat any enemy foolish enough to wander into their "
 "preferred environment."
 msgstr ""
+"Тритони су господари мора. Извјештени у употреби трозупца, с лакоћом "
+"поражавају сваког непријатеља довољно несмотреног да зађе у домаће окружење "
+"морејаца."
 
 #. [unit_type]: id=Merman Warrior, race=merman
 #: data/core/units/merfolk/Warrior.cfg:4
 msgid "Merman Warrior"
-msgstr ""
+msgstr "морен-ратник"
 
 #. [unit_type]: id=Merman Warrior, race=merman
 #: data/core/units/merfolk/Warrior.cfg:19
@@ -2805,11 +3604,13 @@ msgid ""
 "The Mermen Warriors form the core of the mermen armies. Wielding powerful "
 "tridents, they are a bane to any who dare enter their waters."
 msgstr ""
+"Морејски ратници чине језгро њихових војски. Рукујући моћним трозупцима, "
+"крвници су свима који се усуде да кроче у њихове воде."
 
 #. [unit_type]: id=Giant Spider, race=monster
 #: data/core/units/monsters/Cave_Spider.cfg:4
 msgid "Giant Spider"
-msgstr ""
+msgstr "џиновски паук"
 
 #. [unit_type]: id=Giant Spider, race=monster
 #: data/core/units/monsters/Cave_Spider.cfg:20
@@ -2818,16 +3619,19 @@ msgid ""
 "They have a vicious bite, made worse by the fact that it is poisoned, and "
 "can also fling webs through the air to trap their prey."
 msgstr ""
+"Прича се да у дубинама Кналге вребају џиновски пауци, прождирући многе "
+"жртве. Могу уједати изблиза, трујући своје непријатеље, а мрежом нападати на "
+"даљину, упетљавајући и успоравајући непријатеља."
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Cave_Spider.cfg:49
 msgid "web"
-msgstr ""
+msgstr "мрежа"
 
 #. [unit_type]: id=Cuttle Fish, race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:4
 msgid "Cuttle Fish"
-msgstr ""
+msgstr "сипа"
 
 #. [unit_type]: id=Cuttle Fish, race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:18
@@ -2837,22 +3641,25 @@ msgid ""
 "distance. The best way to survive an encounter with these monsters is to "
 "remain ashore."
 msgstr ""
+"Сипе су џиновска морска створења. Јаким пипцима грабе противнике, или бљују "
+"на њих отровну тинту из даљине. Најбољи начин за преживљавање сусрета са "
+"овим чудовиштима, јесте држати се копна на првом мјесту."
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Cuttle_Fish.cfg:35
 #: data/core/units/monsters/Tentacle.cfg:62
 msgid "tentacle"
-msgstr ""
+msgstr "пипак"
 
 #. [attack]: type=pierce
 #: data/core/units/monsters/Cuttle_Fish.cfg:46
 msgid "ink"
-msgstr ""
+msgstr "тинта"
 
 #. [unit_type]: id=Fire Dragon, race=monster
 #: data/core/units/monsters/Fire_Dragon.cfg:4
 msgid "Fire Dragon"
-msgstr ""
+msgstr "ватрени змај"
 
 #. [unit_type]: id=Fire Dragon, race=monster
 #: data/core/units/monsters/Fire_Dragon.cfg:24
@@ -2868,21 +3675,30 @@ msgid ""
 "Battling a dragon is said to be the pinnacle of danger itself, fit only for "
 "fools, or the bravest of knights."
 msgstr ""
+"Змај је створење из предања, које се обично јавља само у маштовитим причама. "
+"Врло су ријетки, и да не би историјских догађаја, разарања читавих градова "
+"за која су змајеви самостално били кадри, били би одбачени као чист мит. "
+"Предања су врло одређена о пустошењу змајева; наводе њихову неизмијерну "
+"снагу, брзину, волшебну лукавост, и изнад свега, велику ватру која изгара "
+"унутар њих.\n"
+"\n"
+"За бој против змаја каже се да је врхунац опасности, пристао само највећим "
+"будалама, или најхрабријим од витезова."
 
 #. [attack]: type=blade
 #: data/core/units/monsters/Fire_Dragon.cfg:31
 msgid "bite"
-msgstr ""
+msgstr "угриз"
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Fire_Dragon.cfg:40
 msgid "tail"
-msgstr ""
+msgstr "реп"
 
 #. [unit_type]: id=Giant Mudcrawler, race=monster
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:4
 msgid "Giant Mudcrawler"
-msgstr ""
+msgstr "џиновски муљогмиз"
 
 #. [unit_type]: id=Giant Mudcrawler, race=monster
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:18
@@ -2891,6 +3707,9 @@ msgid ""
 "constructs of soil and water. They attack by belching lumps of mud at their "
 "foes, or by striking them with their fists."
 msgstr ""
+"Џиновски муљогмизи су већа врста оних обичних, и магичне су састојбе земље и "
+"воде. Нападају бљујући блатњаве груде на противнике, или их пљускавши својим "
+"песницама."
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:47
@@ -2900,18 +3719,18 @@ msgstr ""
 #: data/core/units/trolls/Whelp.cfg:39
 #: data/core/units/undead/Skeleton_Archer.cfg:32
 msgid "fist"
-msgstr ""
+msgstr "песница"
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:56
 #: data/core/units/monsters/Mudcrawler.cfg:46
 msgid "mud glob"
-msgstr ""
+msgstr "муљогруда"
 
 #. [unit_type]: id=Giant Scorpion, race=monster
 #: data/core/units/monsters/Giant_Scorpion.cfg:4
 msgid "Giant Scorpion"
-msgstr ""
+msgstr "џиновска шкорпија"
 
 #. [unit_type]: id=Giant Scorpion, race=monster
 #: data/core/units/monsters/Giant_Scorpion.cfg:19
@@ -2919,21 +3738,23 @@ msgid ""
 "A normal scorpion is dangerous enough - the deadliness of one the size of a "
 "man needs little explanation."
 msgstr ""
+"И обична шкорпија довољно је опасна — за ону величине човјека, није ни "
+"потребно помињати."
 
 #. [attack]: type=pierce
 #: data/core/units/monsters/Giant_Scorpion.cfg:24
 msgid "sting"
-msgstr ""
+msgstr "жаока"
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Giant_Scorpion.cfg:36
 msgid "pincers"
-msgstr ""
+msgstr "клијешта"
 
 #. [unit_type]: id=Mudcrawler, race=monster
 #: data/core/units/monsters/Mudcrawler.cfg:4
 msgid "Mudcrawler"
-msgstr ""
+msgstr "муљогмиз"
 
 #. [unit_type]: id=Mudcrawler, race=monster
 #: data/core/units/monsters/Mudcrawler.cfg:19
@@ -2941,22 +3762,25 @@ msgid ""
 "Mudcrawlers are magical constructs of soil and water. They attack by "
 "belching lumps of mud at their foes."
 msgstr ""
+"Муљогмизи су магијски начињени од земље и воде. Нападају бљујући блатњаве "
+"груде на непријатеље."
 
 #. [unit_type]: id=Sea Serpent, race=monster
 #: data/core/units/monsters/Sea_Serpent.cfg:4
 msgid "Sea Serpent"
-msgstr ""
+msgstr "морски змијар"
 
 #. [unit_type]: id=Sea Serpent, race=monster
 #: data/core/units/monsters/Sea_Serpent.cfg:22
 msgid ""
 "Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
 msgstr ""
+"Морски змијари су горостасна чудовишта, кадра да сама преврћу цијеле бродове."
 
 #. [unit_type]: id=Skeletal Dragon, race=undead
 #: data/core/units/monsters/Skeletal_Dragon.cfg:4
 msgid "Skeletal Dragon"
-msgstr ""
+msgstr "ћеле-змај"
 
 #. [unit_type]: id=Skeletal Dragon, race=undead
 #: data/core/units/monsters/Skeletal_Dragon.cfg:26
@@ -2967,16 +3791,20 @@ msgid ""
 "like nothing more than a pile of bones, but few people who thought that way "
 "lived long enough to change their minds."
 msgstr ""
+"Некада давно од најмоћних живих створења, страшни змај постао је само кост и "
+"мрачна снага. Дуго послије смрти, подигнут је мрачним моћима некромантије, "
+"којима сада служи. Ћеле-змај можда личи на обичну врећу костију, али је мало "
+"оних који су тако размишљали доживјело да се предомисли."
 
 #. [attack]: type=blade
 #: data/core/units/monsters/Skeletal_Dragon.cfg:30
 msgid "jaw"
-msgstr ""
+msgstr "чељусти"
 
 #. [unit_type]: id=Tentacle of the Deep, race=monster
 #: data/core/units/monsters/Tentacle.cfg:4
 msgid "Tentacle of the Deep"
-msgstr ""
+msgstr "бездански пипак"
 
 #. [unit_type]: id=Tentacle of the Deep, race=monster
 #: data/core/units/monsters/Tentacle.cfg:22
@@ -2984,11 +3812,12 @@ msgid ""
 "Tentacles of the Deep are the appendages of some greater monster that lurks "
 "below the waves."
 msgstr ""
+"Бездански пипци су продужеци неког грдног чудовишта које вреба под таласима."
 
 #. [unit_type]: id=Water Serpent, race=monster
 #: data/core/units/monsters/Water_Serpent.cfg:5
 msgid "Water Serpent"
-msgstr ""
+msgstr "водени змијар"
 
 #. [unit_type]: id=Water Serpent, race=monster
 #: data/core/units/monsters/Water_Serpent.cfg:38
@@ -2998,11 +3827,15 @@ msgid ""
 "up as a primitive offshoot of the Nagas. What is certain is that it is wise "
 "to avoid waters where they are known to congregate."
 msgstr ""
+"Зналци имају различита мишљења о поријеклу водених змијара. Неки држе да су "
+"то незрели млади, или дозрели сродници, морских змијара. Други их, пак, "
+"сматрају примитивном граном нагајаца. Оно што је сигурно јесте да је мудро "
+"избјегавати воде за које се зна да су им места окупљања."
 
 #. [unit_type]: id=Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:4
 msgid "Wolf"
-msgstr ""
+msgstr "вук"
 
 #. [unit_type]: id=Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:35
@@ -3010,11 +3843,13 @@ msgid ""
 "Wolves are aggressive animals that hunt in packs. Although weak "
 "individually, a wolf pack can kill even the strongest man in minutes."
 msgstr ""
+"Вукови су насртљиве животиње које лове у чопорима. Иако слаби појединачно, "
+"чопор вукова у трену може убити чак и најјачег човјека."
 
 #. [unit_type]: id=Yeti, race=monster
 #: data/core/units/monsters/Yeti.cfg:4
 msgid "Yeti"
-msgstr ""
+msgstr "јети"
 
 #. [unit_type]: id=Yeti, race=monster
 #: data/core/units/monsters/Yeti.cfg:18
@@ -3023,11 +3858,14 @@ msgid ""
 "snow-covered mountains. Few profess to have seen one, and their existence is "
 "doubted by many."
 msgstr ""
+"О јетијима, мајмуноликим створењима што живе у забаченим и снијегом "
+"покривеним планинама, мало се зна. Малобројни су они који тврде да су се "
+"сусрели с једним, усљед чега многи сумњају у њихово постојање."
 
 #. [unit_type]: id=Naga Fighter, race=naga
 #: data/core/units/nagas/Fighter.cfg:4
 msgid "Naga Fighter"
-msgstr ""
+msgstr "нага-борац"
 
 #. [unit_type]: id=Naga Fighter, race=naga
 #: data/core/units/nagas/Fighter.cfg:21
@@ -3039,16 +3877,21 @@ msgid ""
 "abyss. They are small, and somewhat frail in form, but often much more "
 "nimble than their opponents."
 msgstr ""
+"Змијолики нагајци једна су од малобројних раса са извесном покретљивошћу у "
+"води, што им даје у власт читав свијет практично забрањен житељима копна. Па "
+"ипак, нису права водена створења — њихова немогућност да дишу под водом, "
+"улива им страх од морских бездана. Мали су и понешто крхког обличја, али "
+"често много окретљивији од својих противника."
 
 #. [female]
 #: data/core/units/nagas/Fighter.cfg:153
 msgid "Nagini Fighter"
-msgstr ""
+msgstr "нага-борац"
 
 #. [unit_type]: id=Naga Myrmidon, race=naga
 #: data/core/units/nagas/Myrmidon.cfg:4
 msgid "Naga Myrmidon"
-msgstr ""
+msgstr "нага-мирмидон"
 
 #. [unit_type]: id=Naga Myrmidon, race=naga
 #: data/core/units/nagas/Myrmidon.cfg:22
@@ -3059,11 +3902,16 @@ msgid ""
 "are they potent enemies on any open terrain, but their ability to swim "
 "allows them deadly mobility in water."
 msgstr ""
+"Најизвјежбанији мећу нагајским ратницима уводе се у касту мирмидона, "
+"мајстора руковања двосјеклим оружјем. Ударају брзо као змије којима "
+"наликују, и складно измичу узвратним ударцима. Не само да су моћни "
+"противници на било ком отвореном терену, већ им и способност пливања даје "
+"смртоносну покретљивост."
 
 #. [female]
 #: data/core/units/nagas/Myrmidon.cfg:95
 msgid "Nagini Myrmidon"
-msgstr ""
+msgstr "нага-мирмидонка"
 
 #. [female]
 #: data/core/units/nagas/Myrmidon.cfg:97
@@ -3074,11 +3922,16 @@ msgid ""
 "only are they potent enemies on any open terrain, but their ability to swim "
 "allows them a deadly mobility."
 msgstr ""
+"Најизвјежбаније мећу нагајским ратницама уводе се у касту мирмидона, "
+"мајстора руковања двосјеклим оружјем. Ударају брзо као змије којима "
+"наликују, и складно измичу узвратним ударцима. Не само да су моћни "
+"противници на било ком отвореном терену, већ им и способност пливања даје "
+"смртоносну покретљивост."
 
 #. [unit_type]: id=Naga Warrior, race=naga
 #: data/core/units/nagas/Warrior.cfg:4
 msgid "Naga Warrior"
-msgstr ""
+msgstr "нага-ратник"
 
 #. [unit_type]: id=Naga Warrior, race=naga
 #: data/core/units/nagas/Warrior.cfg:20
@@ -3090,11 +3943,17 @@ msgid ""
 "from blows. This makes them potent on land, but the friction of water "
 "greatly impedes the technique."
 msgstr ""
+"Многи млади нагајски ратници теже да једнога дана завриједе добијања другог "
+"сечива. Њихова борилачка вјештина употребе двосјеклог оружја нимало није "
+"налик оној коју користе оркови и друге расе, јер су је ковали са наумом да "
+"што боље искористе своје змијско обличје, уврћући се и окрећући како би "
+"изврдали ударцима. Ово их чини опасним на копну, али водено окружење доста "
+"смета таквој техници."
 
 #. [female]
 #: data/core/units/nagas/Warrior.cfg:92
 msgid "Nagini Warrior"
-msgstr ""
+msgstr "нага-ратница"
 
 #. [female]
 #: data/core/units/nagas/Warrior.cfg:94
@@ -3106,11 +3965,17 @@ msgid ""
 "dodge from blows. This makes them potent on land, but the friction of water "
 "greatly impedes their ability to do this."
 msgstr ""
+"Многе младе нагајске ратнице теже да једнога дана завриједе добијања другог "
+"сјечива. Њихова борилачка вјештина употребе двосјеклог оружја нимало није "
+"налик оној коју користе оркови и друге расе, јер су је ковале са наумом да "
+"што боље искористе своје змијско обличје, уврћући се и окрећући како би "
+"изврдале ударцима. Ово их чини опасним на копну, али водено окружење доста "
+"смета таквој техници."
 
 #. [unit_type]: id=Ogre, race=ogre
 #: data/core/units/ogres/Ogre.cfg:4
 msgid "Ogre"
-msgstr ""
+msgstr "огр"
 
 #. [unit_type]: id=Ogre, race=ogre
 #: data/core/units/ogres/Ogre.cfg:22
@@ -3120,16 +3985,19 @@ msgid ""
 "can be easily outrun or outsmarted, their strength is not to be "
 "underestimated."
 msgstr ""
+"Огрови су велика створења која обично живе сама у дивљини, необично слична "
+"људима по обличју, иако огромна и наказна. Док их је лако избјећи или их "
+"надмудрити, не треба потцјењивати њихову снагу."
 
 #. [attack]: type=blade
 #: data/core/units/ogres/Ogre.cfg:38 data/core/units/ogres/Young_Ogre.cfg:38
 msgid "cleaver"
-msgstr ""
+msgstr "сатара"
 
 #. [unit_type]: id=Young Ogre, race=ogre
 #: data/core/units/ogres/Young_Ogre.cfg:4
 msgid "Young Ogre"
-msgstr ""
+msgstr "млади огр"
 
 #. [unit_type]: id=Young Ogre, race=ogre
 #: data/core/units/ogres/Young_Ogre.cfg:22
@@ -3138,11 +4006,14 @@ msgid ""
 "trained. They cannot manage weapons skillfully, but they compensate for that "
 "lack with great strength."
 msgstr ""
+"Док су још млади, огрови се некада заробљавају и увјежбавају у туђим "
+"војскама. То што не умеју вјешто руковати оружјем, пада у засјенак када се "
+"узме у обзир њихова снага."
 
 #. [unit_type]: id=Orcish Archer, race=orc
 #: data/core/units/orcs/Archer.cfg:4
 msgid "Orcish Archer"
-msgstr ""
+msgstr "орко-стријелац"
 
 #. [unit_type]: id=Orcish Archer, race=orc
 #: data/core/units/orcs/Archer.cfg:19
@@ -3153,11 +4024,16 @@ msgid ""
 "semblance of training. Even as poorly handled as they are, their weapons can "
 "still be quite deadly, and the wielders thereof rarely march alone."
 msgstr ""
+"Међу орковима лукови се често узимају за кукавичко оружје; али чак и оркови, "
+"посебно млади и они ситније грађе, довољно су разборити да их користе упркос "
+"томе. Орковски стријелци су ријетко добро опремљени, и једва увјежбани. Чак "
+"и тако лоше употребљевано, њихово оружје може бити смртоносно, а и они који "
+"њиме рукују ријетко наступају сами."
 
 #. [unit_type]: id=Orcish Assassin, race=orc
 #: data/core/units/orcs/Assassin.cfg:4
 msgid "Orcish Assassin"
-msgstr ""
+msgstr "орко-убица"
 
 #. [unit_type]: id=Orcish Assassin, race=orc
 #: data/core/units/orcs/Assassin.cfg:22
@@ -3168,16 +4044,21 @@ msgid ""
 "nimble. Though rarely the ones who deal the killing blow, their tactics are "
 "a considerable aid to their larger and more brutal kin."
 msgstr ""
+"Иако га неки сматрају за кукавичко оружје, отров је међу орковима омиљен, "
+"посебно онима слабијег стаса. Орковске убице, који користе отровне ножеве за "
+"бацање, обично су ситни према орковским мјерилима, али изненађујуће окретни. "
+"Иако су ријетко ти који задају крајњи ударац, њихове тактике су значајно "
+"помажу већима и суровијима од њихове врсте."
 
 #. [attack]: type=blade
 #: data/core/units/orcs/Assassin.cfg:35 data/core/units/orcs/Slayer.cfg:36
 msgid "throwing knives"
-msgstr ""
+msgstr "нож за бацање"
 
 #. [unit_type]: id=Orcish Crossbowman, race=orc
 #: data/core/units/orcs/Crossbowman.cfg:4
 msgid "Orcish Crossbowman"
-msgstr ""
+msgstr "орко-самостријелац"
 
 #. [unit_type]: id=Orcish Crossbowman, race=orc
 #: data/core/units/orcs/Crossbowman.cfg:18
@@ -3187,11 +4068,15 @@ msgid ""
 "enough to wield them are capable warriors, and what they lack in finesse, "
 "they make up for in numbers."
 msgstr ""
+"Орковски самостријели тек грубо опонашају оне у људи или патуљака; међутим, "
+"какве год израде, самостријел је увијек опасно оружје. Оркови који су "
+"повлашћени да га користе способни су ратници, и што им недостаје у финоћи "
+"покрета, надокнађују бројношћу."
 
 #. [unit_type]: id=Orcish Grunt, race=orc
 #: data/core/units/orcs/Grunt.cfg:4
 msgid "Orcish Grunt"
-msgstr ""
+msgstr "орко-грокташ"
 
 #. [unit_type]: id=Orcish Grunt, race=orc
 #: data/core/units/orcs/Grunt.cfg:19
@@ -3200,11 +4085,14 @@ msgid ""
 "or elven fighters, Grunts can deliver much more powerful blows, and take "
 "more hits before falling."
 msgstr ""
+"Орковски грокташи чине језгро орковских снага. Иако спорији од људских, а "
+"посебно вилењачких бораца, грокташи могу задавати много јаче ударце, и сами "
+"поднијети више прије него настрадају."
 
 #. [unit_type]: id=Orcish Leader, race=orc
 #: data/core/units/orcs/Leader.cfg:4
 msgid "Orcish Leader"
-msgstr ""
+msgstr "орко-главник"
 
 #. [unit_type]: id=Orcish Leader, race=orc
 #: data/core/units/orcs/Leader.cfg:19
@@ -3215,11 +4103,15 @@ msgid ""
 "rapport with their kin, especially goblins, and can inspire them to fight "
 "with uncharacteristic boldness."
 msgstr ""
+"Необично лукави оркови се често налазе у улози вођева ратничких дружина. "
+"Носе и лук за случајеве нужде, али су много вјештији са мачем. Ови су оркови "
+"моћни борци сами по себи, али и уживају извјестан углед међу саборцима, "
+"посебно гоблинима, те их умију надахнути да се боре необичном одважношћу."
 
 #. [unit_type]: id=Orcish Ruler, race=orc
 #: data/core/units/orcs/Ruler.cfg:4
 msgid "Orcish Ruler"
-msgstr ""
+msgstr "орко-владар"
 
 #. [unit_type]: id=Orcish Ruler, race=orc
 #: data/core/units/orcs/Ruler.cfg:18
@@ -3230,17 +4122,22 @@ msgid ""
 "their rare ability to rally other orcs to battle, to give orders that are "
 "followed not out of fear, but loyalty."
 msgstr ""
+"Било који орк који умије спријечити унутрашње размирице и поделе у великом "
+"племену, мора бити необично оштроуман и заповједништву вичан, а неизбјежно и "
+"врло снажан. Умјешан је и са мачем и са луком, али прави дар владара јесте "
+"његова ријетка способност да држи на окупу друге орке у боју, издајући "
+"наређења која се прате не из страха, већ оданости."
 
 #. [attack]: type=blade
 #: data/core/units/orcs/Ruler.cfg:27 data/core/units/orcs/Sovereign.cfg:28
 #: data/core/units/orcs/Warlord.cfg:25 data/core/units/orcs/Warrior.cfg:35
 msgid "greatsword"
-msgstr ""
+msgstr "велики мач"
 
 #. [unit_type]: id=Orcish Slayer, race=orc
 #: data/core/units/orcs/Slayer.cfg:4
 msgid "Orcish Slayer"
-msgstr ""
+msgstr "орко-кољач"
 
 #. [unit_type]: id=Orcish Slayer, race=orc
 #: data/core/units/orcs/Slayer.cfg:22
@@ -3251,11 +4148,15 @@ msgid ""
 "poison, is a vicious tool, and its common use on the battlefield is often "
 "the real cause of orcish supremacy."
 msgstr ""
+"Снажније или вјештије орковске убице непријатељи називају „кољачима“. Брзи "
+"су на ногама, врло окретни у борби, иако то постижу слабијом заштићеношћу. "
+"Њихово омиљено оружје, отров, прљаво је оруђе, али је његова употреба без "
+"устезања на бојном пољу често прави узрок орковске надмоћи."
 
 #. [unit_type]: id=Orcish Slurbow, race=orc
 #: data/core/units/orcs/Slurbow.cfg:4
 msgid "Orcish Slurbow"
-msgstr ""
+msgstr "орко-љигалук"
 
 #. [unit_type]: id=Orcish Slurbow, race=orc
 #: data/core/units/orcs/Slurbow.cfg:23
@@ -3270,11 +4171,20 @@ msgid ""
 "Orcs prize any such weapons they can manage to plunder, and they invariably "
 "end up in the hands of their strongest and most cunning archers."
 msgstr ""
+"Из основне изведбе самостријела издваја се арбалет или „љигалук“, знатно "
+"сложеније оружје, са котуром за снажније затезање и вишеслојним луком од "
+"ламината дрвета или костију, који погони пројектил. Овим уређајем је лакше "
+"руковати, и много је моћније од једноставног самостријела; његова израда је "
+"такође потпуно изван орковских занатских способности.\n"
+"\n"
+"Оркови високо цијене и увек се труде да заробе примјерке овог оружја, који "
+"без изузетка завршавају у рукама њихових најснажнијих и најлукавијих "
+"стријелаца."
 
 #. [unit_type]: id=Orcish Sovereign, race=orc
 #: data/core/units/orcs/Sovereign.cfg:4
 msgid "Orcish Sovereign"
-msgstr ""
+msgstr "орко-суверен"
 
 #. [unit_type]: id=Orcish Sovereign, race=orc
 #: data/core/units/orcs/Sovereign.cfg:19
@@ -3286,11 +4196,17 @@ msgid ""
 "the civilized races of the world. The surest way to disperse such a host is "
 "to slay this rare orc who can hold it together."
 msgstr ""
+"С времена на вријеме, појавиће се орк који природном харизматичношћу лако "
+"одржава заповједништво над својом врстом. Ако је усто снажан и довољно лукав "
+"да преживи рано отимање око вођства, неизбјежно ће се наћи на челу "
+"неизмјерних ратничких хорди, које ће једнако неизбјежно изазивати многе "
+"невоље цивилизованим расама широм свијета. Најсигурнији начин за разбијање "
+"такве силе јесте отарасити се тог изванредног орка који је одржава на окупу."
 
 #. [unit_type]: id=Orcish Warlord, race=orc
 #: data/core/units/orcs/Warlord.cfg:4
 msgid "Orcish Warlord"
-msgstr ""
+msgstr "орко-ратовођ"
 
 #. [unit_type]: id=Orcish Warlord, race=orc
 #: data/core/units/orcs/Warlord.cfg:19
@@ -3299,11 +4215,14 @@ msgid ""
 "Warlords. Masters of the sword, and even possessing some skill with the bow, "
 "these beast-warriors lead their brethren with iron will and iron hand."
 msgstr ""
+"Само оркови знатне лукавости и непревазиђене снаге могу постати ратовођи. "
+"Господари мачева, донекле познавши и стрељачке вјештине, ови зверски ратници "
+"воде свој род гвозденом вољом и гвозденом песницом."
 
 #. [unit_type]: id=Orcish Warrior, race=orc
 #: data/core/units/orcs/Warrior.cfg:4
 msgid "Orcish Warrior"
-msgstr ""
+msgstr "орко-ратник"
 
 #. [unit_type]: id=Orcish Warrior, race=orc
 #: data/core/units/orcs/Warrior.cfg:18
@@ -3312,11 +4231,14 @@ msgid ""
 "respected among the Orcs, and highly feared by their foes. Their only "
 "weakness is their inability to wield the bow."
 msgstr ""
+"Пошто су овладали вјештином борбе са двоструким мачем, орковски ратници су "
+"на гласу међу својим саборцима, и страхопоштовани од стране непријатеља. "
+"Једина слабост им је у неумијећу руковања луком."
 
 #. [unit_type]: id=Saurian Ambusher, race=lizard
 #: data/core/units/saurians/Ambusher.cfg:4
 msgid "Saurian Ambusher"
-msgstr ""
+msgstr "саур-бусијаш"
 
 #. [unit_type]: id=Saurian Ambusher, race=lizard
 #: data/core/units/saurians/Ambusher.cfg:19
@@ -3329,11 +4251,18 @@ msgid ""
 "take advantage of the smallest gap in an enemy line, and have the prowess to "
 "make the enemy regret tactical mistakes."
 msgstr ""
+"Сауријанци су лаки на ногама и значајно извјештени у кретању теренима који "
+"ограничавају њихове непријатеље. Када се ова природна покретљивост упари са "
+"искуством, снагом и ваљаном опремом, њихови ратници могу бити врло опасни у "
+"бици — ако ни због чега другог, зато што их је знатно теже сатјерати у ћошак "
+"него друге противнике. Чак и незанемарљиво оклопљени, искористиће и најмањи "
+"процјеп у непријатељској линији, а не недостаје им срчаности да непријатељ "
+"зажали због таквог пропуста."
 
 #. [unit_type]: id=Saurian Augur, race=lizard
 #: data/core/units/saurians/Augur.cfg:4
 msgid "Saurian Augur"
-msgstr ""
+msgstr "саур-претсказач"
 
 #. [unit_type]: id=Saurian Augur, race=lizard
 #: data/core/units/saurians/Augur.cfg:21
@@ -3342,18 +4271,21 @@ msgid ""
 "it reeks of augury and black magic. It is little understood, but rightly "
 "regarded with fear by those against whom it is used."
 msgstr ""
+"Сауријанци су понешто вични у ономе би људи назвали чаробњаштвом, али таквим "
+"које заудара на прорицање и црне чини. Колико год се мало разумије извана, "
+"на гласу је по страху међу онима против којих се употреби."
 
 #. [attack]: type=cold
 #: data/core/units/saurians/Augur.cfg:87
 #: data/core/units/saurians/Oracle.cfg:87
 #: data/core/units/saurians/Soothsayer.cfg:87
 msgid "curse"
-msgstr ""
+msgstr "клетва"
 
 #. [unit_type]: id=Saurian Flanker, race=lizard
 #: data/core/units/saurians/Flanker.cfg:4
 msgid "Saurian Flanker"
-msgstr ""
+msgstr "саур-боковњак"
 
 #. [unit_type]: id=Saurian Flanker, race=lizard
 #: data/core/units/saurians/Flanker.cfg:20
@@ -3364,11 +4296,16 @@ msgid ""
 "very dangerous in combat, as a careless enemy can soon find their support "
 "troops flanked by these creatures."
 msgstr ""
+"Сауријански ратници су обично слабијег стаса него њихови вилењачки или "
+"људски парњаци. Ова тврдња је ипак само општа, јер сауријанци могу достићи "
+"значајну снагу, не изгубивши притом нимало од своје природне покретљивости. "
+"Тада постају изузетно опасни у борби, јер неопрезан непријатељ лако може "
+"изложити своје позадинске редове неочекиваном нападу ових створења."
 
 #. [unit_type]: id=Saurian Oracle, race=lizard
 #: data/core/units/saurians/Oracle.cfg:4
 msgid "Saurian Oracle"
-msgstr ""
+msgstr "саур-пророк"
 
 #. [unit_type]: id=Saurian Oracle, race=lizard
 #: data/core/units/saurians/Oracle.cfg:21
@@ -3380,11 +4317,16 @@ msgid ""
 "the strange magics their kind possess, and are beings to be wary of if ever "
 "seen."
 msgstr ""
+"Извјесни сауријанци виђају се у раскошним одеждама, и прекривени од главе до "
+"пете страшним, езотеричним обличјима и биљезима, што насликаним што "
+"истетовираним. Неки сумњају да су то визионари, или пророчишта међу својом "
+"сортом. Али какав год друштвени положај да имају, неоспорно су моћни у "
+"владању чудним магијама своје расе, и треба их се добро чувати када се спазе."
 
 #. [unit_type]: id=Saurian Skirmisher, race=lizard
 #: data/core/units/saurians/Skirmisher.cfg:4
 msgid "Saurian Skirmisher"
-msgstr ""
+msgstr "саур-чаркаш"
 
 #. [unit_type]: id=Saurian Skirmisher, race=lizard
 #: data/core/units/saurians/Skirmisher.cfg:22
@@ -3397,11 +4339,19 @@ msgid ""
 "Spears are their preferred weapon, as their powerful hind legs can drive a "
 "spear with enough force to do considerable damage, either in hand or thrown."
 msgstr ""
+"Сауријанци су ситног стаса и, иако због тога донекле крхки, врло, врло хитри "
+"и окретни. У борби, мала величина им омогућава да се дрско провлаче кроз "
+"одбране које би сваког човјека задржале на одстојању, што их чини незгодним "
+"противником за обрачун.\n"
+"\n"
+"Копља су њихово оружје избора, пошто га својим задњим ногама могу "
+"потискивати довољно јако да нанесе значајну штету како у блиској борби, тако "
+"и када се баца."
 
 #. [unit_type]: id=Saurian Soothsayer, race=lizard
 #: data/core/units/saurians/Soothsayer.cfg:4
 msgid "Saurian Soothsayer"
-msgstr ""
+msgstr "саур-правоказ"
 
 #. [unit_type]: id=Saurian Soothsayer, race=lizard
 #: data/core/units/saurians/Soothsayer.cfg:21
@@ -3411,11 +4361,14 @@ msgid ""
 "skilled at a sort of medicine, which is of great benefit whenever battle is "
 "brought against them."
 msgstr ""
+"За сауријанце се зна да посједују неке необичне вјештине, које се граниче са "
+"магичним и мистериозним. Јасно је да су неки од њих посебно вјешти у некој "
+"врсти видарства, што им је од велике користи кад год се упетљају у битку."
 
 #. [unit_type]: id=Great Troll, race=troll
 #: data/core/units/trolls/Great.cfg:4
 msgid "Great Troll"
-msgstr ""
+msgstr "трол-великан"
 
 #. [unit_type]: id=Great Troll, race=troll
 #: data/core/units/trolls/Great.cfg:19
@@ -3426,11 +4379,15 @@ msgid ""
 "tales about trolls, and to see the stories made flesh does nothing to "
 "diminish their grandeur."
 msgstr ""
+"Када трол, обдарен натприродном животном силом, упари то са зрелошћу и "
+"мудрошћу, постаје нешто изузетно, звијер која се памти покољењима. Њихови "
+"подвизи снаге и лукавости, извор су многој причи о троловима. Видјети живо "
+"отјелотворење таквих прича, ни најмање не умањује њихов раскош."
 
 #. [unit_type]: id=Troll Hero, race=troll
 #: data/core/units/trolls/Hero.cfg:4
 msgid "Troll Hero"
-msgstr ""
+msgstr "трол-херој"
 
 #. [unit_type]: id=Troll Hero, race=troll
 #: data/core/units/trolls/Hero.cfg:18
@@ -3439,11 +4396,14 @@ msgid ""
 "that characterizes their race. In a society where might makes right, those "
 "of their ilk revere them as heroes."
 msgstr ""
+"Неки тролови рађају се са изванредним удјелом снаге и животности, чак и у "
+"поређењу међу сопственом врстом. У друштву гдје влада закон јачега, тролови "
+"таквог кова обожавани су као јунаци."
 
 #. [unit_type]: id=Troll Rocklobber, race=troll
 #: data/core/units/trolls/Rocklobber.cfg:4
 msgid "Troll Rocklobber"
-msgstr ""
+msgstr "трол-каменохит"
 
 #. [unit_type]: id=Troll Rocklobber, race=troll
 #: data/core/units/trolls/Rocklobber.cfg:20
@@ -3454,11 +4414,16 @@ msgid ""
 "to carrying them in sacks slung over their shoulders. The same leather out "
 "of which the sack is formed is easily adapted to a crude sling."
 msgstr ""
+"Замисао о бацању стијена у борби свакако се родила многим троловима, и неки "
+"су то чак прихватили као омиљени начин борбе. Пошто камење добро обликовано "
+"да лети правилно није увијек лако наћи, каменохити се старају да их носе "
+"довољно са собом, у врећама пребаченим преко рамена. Иста кожа од које су "
+"вреће начињене, лако се преуређује у грубу праћку."
 
 #. [unit_type]: id=Troll, race=troll
 #: data/core/units/trolls/Troll.cfg:4
 msgid "Troll"
-msgstr ""
+msgstr "трол"
 
 #. [unit_type]: id=Troll, race=troll
 #: data/core/units/trolls/Troll.cfg:18
@@ -3470,11 +4435,17 @@ msgid ""
 "clubs typically favored in fighting act as extensions of their arms, used "
 "for the same purpose of mauling their prey into submission."
 msgstr ""
+"Тролови су већ дуго трн у оку сазнања људи и патуљака, који су и даље у "
+"недоумици око поријекла ових створења, и још важније, сила које им дају ту "
+"неприродну животност и снагу. Потпуно одрастао трол пријетећи надвисује "
+"човјека, и, чак и ненаоружан, представља велику пријетњу у борби. Велике "
+"батине којима се тролови радо служе, дејствују као продужетак њихових руку, "
+"утјерујући жртве у послушност."
 
 #. [unit_type]: id=Troll Shaman, race=troll
 #: data/core/units/trolls/Troll_Shaman.cfg:4
 msgid "Troll Shaman"
-msgstr ""
+msgstr "трол-врачар"
 
 #. [unit_type]: id=Troll Shaman, race=troll
 #: data/core/units/trolls/Troll_Shaman.cfg:24
@@ -3483,16 +4454,19 @@ msgid ""
 "or tough as other trolls, their true power lies in their fire magic, which "
 "they use to blast enemies with gouts of flame."
 msgstr ""
+"Врачари су загонетни вођи тролова. Ни јаки ни жилави као други тролови, "
+"стварна моћ им лежи у ватреној магији, којом заспу непријатеља пламеним "
+"клобуцима."
 
 #. [attack]: type=fire
 #: data/core/units/trolls/Troll_Shaman.cfg:41
 msgid "flame blast"
-msgstr ""
+msgstr "пламени млаз"
 
 #. [unit_type]: id=Troll Warrior, race=troll
 #: data/core/units/trolls/Warrior.cfg:4
 msgid "Troll Warrior"
-msgstr ""
+msgstr "трол-ратник"
 
 #. [unit_type]: id=Troll Warrior, race=troll
 #: data/core/units/trolls/Warrior.cfg:20
@@ -3506,11 +4480,20 @@ msgid ""
 "kind. Given how dangerous a troll is with its bare hands, the thought of a "
 "troll with proper armament is entirely unsettling."
 msgstr ""
+"Троловима обично неко посебно оружје у бици нити је потребно, нити га "
+"користе, јер их велике „батине и стјенчуге“ сасвим добро служе. Међутим, "
+"многобројни су извјештаји о троловима одјевеним у грубо сачињен оклоп, који "
+"носе металне чекиће. Нагађа се да су извор, а често и творци ових помагала, "
+"њихови уобичајени орковских савезници; јер како су многа испитивања под "
+"пријетњом напуштених троловских јама показале, мало је доказа о употреби "
+"алата, а баш никаквих о обради метала било које врсте. С обзиром на то "
+"колико је трол опасан у борби голим рукама, помисао на једног пристојно "
+"наоружаног сасма је онеспокојавајућа."
 
 #. [unit_type]: id=Troll Whelp, race=troll
 #: data/core/units/trolls/Whelp.cfg:4
 msgid "Troll Whelp"
-msgstr ""
+msgstr "трол-штенац"
 
 #. [unit_type]: id=Troll Whelp, race=troll
 #: data/core/units/trolls/Whelp.cfg:20
@@ -3521,11 +4504,15 @@ msgid ""
 "all fours, but any difficulty this causes them is more than made up for by "
 "the raw strength of their race."
 msgstr ""
+"Описивати трола као штенца донекле је оксиморон, имајући у виду да су већ "
+"тада њихова тијела издржљивија од одраслог човјека. Иако су неспретни и "
+"неспособни да правилно ходају, већ се морају гегати на све четири, сирова "
+"снага коју већ посједују сасвим надокнађује те непогодности."
 
 #. [unit_type]: id=Ghoul, race=undead
 #: data/core/units/undead/Corpse_Ghoul.cfg:4
 msgid "Ghoul"
-msgstr ""
+msgstr "свирепњак"
 
 #. [unit_type]: id=Ghoul, race=undead
 #: data/core/units/undead/Corpse_Ghoul.cfg:22
@@ -3539,11 +4526,19 @@ msgid ""
 "It is because of such things that necromancy is condemned with an almost "
 "primal hatred in all civilized lands."
 msgstr ""
+"Само развратнији и мучитељскији међу некромантима знају шта мора бити "
+"учињено да би се неко претворио у свирепњака, што је тајна која се никоме не "
+"прича. Исход је, међутим, предобро познат: звијер која не зна ништа о својем "
+"битисању као живог бића, већ бауља около нага као на дан рођења, и прождире "
+"месо мртвих.\n"
+"\n"
+"Због оваквих је ужаса некромантија проклета скоро исконском мржњом, у свим "
+"цивилизованим земљама."
 
 #. [unit_type]: id=Necrophage, race=undead
 #: data/core/units/undead/Corpse_Necrophage.cfg:4
 msgid "Necrophage"
-msgstr ""
+msgstr "некрофаг"
 
 #. [unit_type]: id=Necrophage, race=undead
 #: data/core/units/undead/Corpse_Necrophage.cfg:20
@@ -3557,11 +4552,18 @@ msgid ""
 "- a process about which almost nothing is known, but which can be nothing "
 "but nightmarish."
 msgstr ""
+"Некрофаг, илити „прождирач мртвих“, грозоморна је и подгојена појава, тек "
+"грубе сличности с човјеком. Наизглед су сасма сатрули упркос способности "
+"кретања, обилују болештинама и тровањима крви, уз задах који томе пристаје. "
+"Али најодвратнија чињеница у вези с овим створењима, видљива само онима који "
+"могу осјетити трагове погане магије на њима, јесте да су некако склепани од "
+"живих људи — поступак о којем готово ништа није знано, али који не може бити "
+"друго до наличје ужаса."
 
 #. [unit_type]: id=Soulless, race=undead
 #: data/core/units/undead/Corpse_Soulless.cfg:6
 msgid "Soulless"
-msgstr ""
+msgstr "бездушник"
 
 #. [unit_type]: id=Soulless, race=undead
 #: data/core/units/undead/Corpse_Soulless.cfg:20
@@ -3571,6 +4573,10 @@ msgid ""
 "unwilling corpses. These shamblers are often numerous, but fragile; a touch "
 "of combat can waken them, though, making them far more formidable."
 msgstr ""
+"Поступци оживљавања мртвог тијела нажалост су међу добро познатим мрачним "
+"умијећима; они који се њиме користе често себи подижу слуге и војнике од "
+"невољних лешева. Такве вреће мртвог меса често су бројне, али ломне; нешто "
+"прекаљености у борби, међутим, може их учинити много тежим противницима."
 
 #. [attack]: type=impact
 #. [attack]: type=arcane
@@ -3580,12 +4586,12 @@ msgstr ""
 #: data/core/units/undead/Necro_Lich.cfg:48
 #: data/core/units/undead/Spirit_Ghost.cfg:130
 msgid "touch"
-msgstr ""
+msgstr "додир"
 
 #. [unit_type]: id=Walking Corpse, race=undead
 #: data/core/units/undead/Corpse_Walking.cfg:6
 msgid "Walking Corpse"
-msgstr ""
+msgstr "бауљаш"
 
 #. [unit_type]: id=Walking Corpse, race=undead
 #: data/core/units/undead/Corpse_Walking.cfg:19
@@ -3594,11 +4600,14 @@ msgid ""
 "Though not especially dangerous to a trained soldier, the sight of one's "
 "former comrades amongst their number is frightening to say the least."
 msgstr ""
+"Бауљаши су тијела мртвих, подигнута из смрти мрачном магијом. Иако не "
+"посебно опасни пред увјежбаним војником, угледати своје бивше саборце у "
+"подераним редовима бауљаша велики је ударац за самопоуздање."
 
 #. [unit_type]: id=Ancient Lich, race=undead
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:4
 msgid "Ancient Lich"
-msgstr ""
+msgstr "древни косац"
 
 #. [unit_type]: id=Ancient Lich, race=undead
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:25
@@ -3606,12 +4615,15 @@ msgid ""
 "A being of this order is a revenant of ages long past. Anyone who encounters "
 "an Ancient Lich likely has far worse things to worry about than death."
 msgstr ""
+"Биће овог степена вјесник је давно прошлог времена. Ко год се сусретне са "
+"древним косцем, сасвим сигурно треба да се забрине много горих ствари од "
+"смрти."
 
 #. [attack]: type=cold
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:60
 #: data/core/units/undead/Necro_Lich.cfg:60
 msgid "chill tempest"
-msgstr ""
+msgstr "хладна олуја"
 
 #. [attack]: type=arcane
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:72
@@ -3620,12 +4632,12 @@ msgstr ""
 #: data/core/units/undead/Necro_Lich.cfg:72
 #: data/core/units/undead/Necromancer.cfg:63
 msgid "shadow wave"
-msgstr ""
+msgstr "талас сијенки"
 
 #. [unit_type]: id=Dark Adept, race=human
 #: data/core/units/undead/Necro_Dark_Adept.cfg:4
 msgid "Dark Adept"
-msgstr ""
+msgstr "мрачни упућеник"
 
 #. [unit_type]: id=Dark Adept, race=human
 #: data/core/units/undead/Necro_Dark_Adept.cfg:26
@@ -3641,23 +4653,32 @@ msgid ""
 "In such condition, their only weapon is the craft they have so committed "
 "themselves to learning."
 msgstr ""
+"Да би привукла сљедбенике, искушење црне магије мора бити заиста велика "
+"награда, јер у цивилизованом свијету, свако ухваћен у бављењу њоме осуђен је "
+"на смртну казну. Па ипак има оних који проучавају мрачне путеве, јер награда "
+"није ништа друго до бесмртност. Скривени у тајним култовима, или упућени у "
+"мрачне редове подсвијета, увјежбавање које ови фанатици морају претрпјети "
+"често их доводи до изнурености и клонућа.\n"
+"\n"
+"У таквом стању, једино оружје им је умјешност у томе чему су се толико "
+"посветили."
 
 #. [attack]: type=cold
 #: data/core/units/undead/Necro_Dark_Adept.cfg:43
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:107
 #: data/core/units/undead/Necromancer.cfg:51
 msgid "chill wave"
-msgstr ""
+msgstr "талас мраза"
 
 #. [female]
 #: data/core/units/undead/Necro_Dark_Adept.cfg:295
 msgid "female^Dark Adept"
-msgstr ""
+msgstr "мрачна упућеница"
 
 #. [unit_type]: id=Dark Sorcerer, race=human
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:4
 msgid "Dark Sorcerer"
-msgstr ""
+msgstr "мрачни чаробњак"
 
 #. [unit_type]: id=Dark Sorcerer, race=human
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:21
@@ -3678,11 +4699,24 @@ msgid ""
 "a loyalty any tyrant would dream of, and it is tempting to those with even "
 "the slightest desire for power."
 msgstr ""
+"Језа коју црна магија улива увећана је и тајновитошћу и суровим гласинама "
+"које о њој круже. Мрачни чаробњаци крећу на пут откључавања тајни живота и "
+"смрти, гдје је потоње тако лако нанијети. Труд им указује прве свјетлаце "
+"повезаности душе са бесловјесним, и даје прве опитне успјехе у управљању "
+"овом свезом. Назиру страшну непознаницу што вреба с ону страну смрти, коју "
+"ће неизбјежно до краја упознати.\n"
+"\n"
+"Упркос сваком науму који могу гајити о употреби овог како би сопствену "
+"смртност истргли из руку природе, први исходи њиховог рада имају посредне, "
+"често нежељене примјене. Живот који удишу мртвој твари може им створити "
+"слуге, такве које ће радити, али и убијати и никада преиспитивати свога "
+"господара. Ове створевине исказују оданост какву би сваки тиранин могао "
+"сањати, која ставља на искушење и оне са мрвицом жудње за моћи."
 
 #. [female]
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:250
 msgid "Dark Sorceress"
-msgstr ""
+msgstr "мрачна чаробница"
 
 #. [female]
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:256
@@ -3703,11 +4737,24 @@ msgid ""
 "a loyalty any tyrant would dream of, and it is tempting to those with even "
 "the merest desire for power."
 msgstr ""
+"Језа коју црна магија улива потиче најприје од тога колико је мало обичан "
+"човјек познаје. Мрачне чаробнице крећу на пут откључавања тајни живота и "
+"смрти, гдје је потоње тако лако нанијети. Труд им указује прве свјетлаце "
+"повезаности душе са бесловјесним, и даје прве опитне успехе у управљању овом "
+"свезом. Назиру страшну непознаницу што вреба с ону страну смрти, коју ће "
+"неизбјежно до краја упознати.\n"
+"\n"
+"Упркос сваком науму који могу гајити о употреби овог како би сопствену "
+"смртност истргли из руку природе, први исходи њиховог рада имају посредне, "
+"често нежељене примене. Живот који удишу мртвој твари може им створити "
+"слуге, такве које ће радити, али и убијати и никада преиспитивати своју "
+"господарицу. Ове створевине исказују оданост какву би сваки тиранин могао "
+"сањати, која ставља на искушење и оне са мрвицом жудње за моћи."
 
 #. [unit_type]: id=Lich, race=undead
 #: data/core/units/undead/Necro_Lich.cfg:4
 msgid "Lich"
-msgstr ""
+msgstr "косац"
 
 #. [unit_type]: id=Lich, race=undead
 #: data/core/units/undead/Necro_Lich.cfg:25
@@ -3723,11 +4770,19 @@ msgid ""
 "question can be raised at all, testifies to the magnitude of what their "
 "order has achieved."
 msgstr ""
+"Косац је физичко отјелотворење најпречег наума црне магије: потраге за "
+"бесмртношћу. Иако се много жртвује преобраћењем, постајући косац појединац "
+"одузима смрти оно што је чини истински страшном. Јер је ум тај који ће "
+"преостати, и дух који га прати, док смртно тијело може свенути.\n"
+"\n"
+"Није познато, осим можда у унутрашњим круговима некромантије, да ли овиме "
+"живот постаје вјечан, или просто бива продужен. Али и само разматрање такве "
+"могућности, свједочи величини онога што је већ постигнуто у тим круговима."
 
 #. [unit_type]: id=Necromancer, race=human
 #: data/core/units/undead/Necromancer.cfg:4
 msgid "Necromancer"
-msgstr ""
+msgstr "некромант"
 
 #. [unit_type]: id=Necromancer, race=human
 #: data/core/units/undead/Necromancer.cfg:22
@@ -3740,21 +4795,28 @@ msgid ""
 "This ability, in all aspects, is the first step towards cheating death of "
 "its ultimate prize."
 msgstr ""
+"Један од врхунаца онога што се сматра „црном магијом“, јесте вјештина "
+"некромантије, страшне способности да се мртвима удахне лажан живот. Само ово "
+"откриће довело је до тога да човјечанство осуди црну магију, јер је њена "
+"способност да ноћне море претвори у јаву улила страху неизмеран арсенал.\n"
+"\n"
+"Ова способност, у сваком погледу, први је корак ка варању смрти, отимајући "
+"јој крајњи трофеј."
 
 #. [attack]: type=impact
 #: data/core/units/undead/Necromancer.cfg:39
 msgid "plague staff"
-msgstr ""
+msgstr "кужни штап"
 
 #. [female]
 #: data/core/units/undead/Necromancer.cfg:254
 msgid "female^Necromancer"
-msgstr ""
+msgstr "некромантка"
 
 #. [unit_type]: id=Banebow, race=undead
 #: data/core/units/undead/Skele_Banebow.cfg:5
 msgid "Banebow"
-msgstr ""
+msgstr "крволук"
 
 #. [unit_type]: id=Banebow, race=undead
 #: data/core/units/undead/Skele_Banebow.cfg:18
@@ -3765,11 +4827,16 @@ msgid ""
 "nor caring what their purpose or foes might be. They are driven only by a "
 "malice born of their empty and tortured existence."
 msgstr ""
+"Најмоћнији међу немртвим стријелцима неизбежно постају они који су и за "
+"овоземљаског живота били стријелци. Лутају бојним пољем, вођени избледјелим "
+"памћењем своје раније вјештине, не знајући нити марећи шта би им био циљ или "
+"противник. Покретани су само злобом изниклом из вапаја свога празног и "
+"измученог постојања."
 
 #. [unit_type]: id=Bone Shooter, race=undead
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:4
 msgid "Bone Shooter"
-msgstr ""
+msgstr "коскотрг"
 
 #. [unit_type]: id=Bone Shooter, race=undead
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:16
@@ -3781,11 +4848,16 @@ msgid ""
 "victims. It follows that they are dubbed simply 'Bone-Shooters' by their "
 "unfortunate enemies."
 msgstr ""
+"Од творевина мрачног чаробњака, нека се јаче прихвате лажног живота који им "
+"је уливен. Таквој сили даје се и одговарајућа опрема. Посебно стријелци, "
+"често су опремљени истински злокобним оружјем. Њихови тоболци испуњени су не "
+"стријелама од прућа, већ од костију њихових жртава. По томе су једноставно "
+"знани као „коскотрзи“ међу својим несрећним непријатељима."
 
 #. [unit_type]: id=Chocobone, race=undead
 #: data/core/units/undead/Skele_Chocobone.cfg:4
 msgid "Chocobone"
-msgstr ""
+msgstr "чококост"
 
 #. [unit_type]: id=Chocobone, race=undead
 #: data/core/units/undead/Skele_Chocobone.cfg:21
@@ -3794,11 +4866,14 @@ msgid ""
 "civilization, the skeletal Chocobones can move faster than most cavalry "
 "units."
 msgstr ""
+"Јашући на скелету великих нојоликих птица које је некада јахала данас "
+"изгубљена цивилизација, чококости се могу кретати брже од већине коњичких "
+"јединица."
 
 #. [unit_type]: id=Death Knight, race=undead
 #: data/core/units/undead/Skele_Death_Knight.cfg:4
 msgid "Death Knight"
-msgstr ""
+msgstr "мртви витез"
 
 #. [unit_type]: id=Death Knight, race=undead
 #: data/core/units/undead/Skele_Death_Knight.cfg:26
@@ -3808,11 +4883,15 @@ msgid ""
 "Wielding the same weapons as in life, they command the Undead in their quest "
 "for revenge."
 msgstr ""
+"Приче се приповиједају о најмоћнијим ратницима и генералима, који, проклети "
+"мржњом и осјећањем изданости, походе поново овај свијет као мртви витезови. "
+"Владајући истим оружјем којим су и раније, заповиједају они немртвима у "
+"својој потрази за осветом."
 
 #. [unit_type]: id=Deathblade, race=undead
 #: data/core/units/undead/Skele_Deathblade.cfg:4
 msgid "Deathblade"
-msgstr ""
+msgstr "смртокос"
 
 #. [unit_type]: id=Deathblade, race=undead
 #: data/core/units/undead/Skele_Deathblade.cfg:19
@@ -3823,11 +4902,16 @@ msgid ""
 "monsters are much faster than the rest of their kind, both on foot and with "
 "their blades."
 msgstr ""
+"За живота, напасти знане као „смртокоси“ биле су мајстори-борци, војници "
+"истовремено и гипки и смртоносни. Ово ће њихови нови господари често "
+"препознати, и покушати да искористе опремајући их сагласно њиховим "
+"некадашњим вјештинама. Иако крхка, ова чудовишта много су бржа од себи "
+"сличних, и по кретњама и по руковању сјечивима."
 
 #. [unit_type]: id=Draug, race=undead
 #: data/core/units/undead/Skele_Draug.cfg:4
 msgid "Draug"
-msgstr ""
+msgstr "грозомор"
 
 #. [unit_type]: id=Draug, race=undead
 #: data/core/units/undead/Skele_Draug.cfg:18
@@ -3838,11 +4922,15 @@ msgid ""
 "for a peace bought only by strength of arms. And so they struggle; both "
 "unthinking, and unrelenting."
 msgstr ""
+"Мало је остало у овим надвисујућим руинама од људи који су некада били. "
+"Ратници у срцу, сада су изгубљени у сновима неживота. Лутајући кроз највеће "
+"битке из својих сећања, очајнички се боре за отпуст, за мир који се купује "
+"само снагом оружја. Такви су им напори: без размишљања, без предаха."
 
 #. [unit_type]: id=Revenant, race=undead
 #: data/core/units/undead/Skele_Revenant.cfg:4
 msgid "Revenant"
-msgstr ""
+msgstr "враћеник"
 
 #. [unit_type]: id=Revenant, race=undead
 #: data/core/units/undead/Skele_Revenant.cfg:19
@@ -3854,11 +4942,17 @@ msgid ""
 "powerful tool in combat: a fearless warrior that feels no pain and will "
 "fight to the bitter end."
 msgstr ""
+"Уливени лажним животом како би се поново борили, створења позната као "
+"повраћеници очигледно су била велики ратници у своје доба, иако је им "
+"сјећање на та времена скоро потпуно утопљено у немртвом себству. Чак и "
+"чаробњаци који су их издигли могу само да нагађају о њиховој прошлости. Без "
+"обзира на ове недоумице, враћеник је моћно оруђе у боју: неустрашиви ратник "
+"који не осјећа бола, који ће се борити до љутог краја."
 
 #. [unit_type]: id=Skeleton, race=undead
 #: data/core/units/undead/Skeleton.cfg:4
 msgid "Skeleton"
-msgstr ""
+msgstr "скелет"
 
 #. [unit_type]: id=Skeleton, race=undead
 #: data/core/units/undead/Skeleton.cfg:19
@@ -3868,11 +4962,15 @@ msgid ""
 "neither pain, nor death, and their mere presence will often frighten away "
 "any who would challenge their master."
 msgstr ""
+"Скелети су ратници посјечени у бици, који су у неживот враћени заслугом "
+"мрачних магија. Скоро бесловјесни, непоколебљиви у својој намени, не боје се "
+"ни бола ни смрти. Њихово само присуство често ће устрашити и отерати оне "
+"који би да се супротставе њиховом господару."
 
 #. [unit_type]: id=Skeleton Archer, race=undead
 #: data/core/units/undead/Skeleton_Archer.cfg:4
 msgid "Skeleton Archer"
-msgstr ""
+msgstr "ћеле-стријелац"
 
 #. [unit_type]: id=Skeleton Archer, race=undead
 #: data/core/units/undead/Skeleton_Archer.cfg:17
@@ -3883,11 +4981,16 @@ msgid ""
 "to achieve the tasks laid before them, for death holds no fear for one who "
 "is already dead."
 msgstr ""
+"Ћеле-стријелац мало се разликује од скелета који га обично прате — гријех је "
+"противприродни, ратник подигнут из мртвих да се још једном бори. У рукама "
+"свога господара, ови војници учиниће шта год је потребно да изврше "
+"постављене им задатке, јер смрт не задаје страха онима који су је већ "
+"искусили."
 
 #. [unit_type]: id=Ghost, race=undead
 #: data/core/units/undead/Spirit_Ghost.cfg:4
 msgid "Ghost"
-msgstr ""
+msgstr "дух"
 
 #. [unit_type]: id=Ghost, race=undead
 #: data/core/units/undead/Spirit_Ghost.cfg:19
@@ -3896,18 +4999,21 @@ msgid ""
 "the wind in the sails of a ship. This damned vessel becomes an unfailing "
 "servant which can be bound to whatever task their master sees fit."
 msgstr ""
+"Заробљен покровом злокобних опсена, дух сличи вјетру захваћеном бродским "
+"једрима. Производ оваквог заточеништва је поуздани слуга, коме се може "
+"повјерити сваки задатак који се његовом господару усхтије."
 
 #. [attack]: type=cold
 #: data/core/units/undead/Spirit_Ghost.cfg:142
 #: data/core/units/undead/Spirit_Spectre.cfg:70
 #: data/core/units/undead/Spirit_Wraith.cfg:32
 msgid "wail"
-msgstr ""
+msgstr "јаук"
 
 #. [unit_type]: id=Nightgaunt, race=undead
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:4
 msgid "Nightgaunt"
-msgstr ""
+msgstr "ноћорђав"
 
 #. [unit_type]: id=Nightgaunt, race=undead
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:19
@@ -3917,11 +5023,14 @@ msgid ""
 "living, and those who live to speak of them had no leisure to study their "
 "foe."
 msgstr ""
+"Сврха масака које ова створења носе није позната, као ни наличја њима "
+"заклоњена. Ови ужасни облици ријетко се виђају међу живима, и они који "
+"преживе да о томе говоре, засигурно себи нису дозволили луксуз радозналости."
 
 #. [unit_type]: id=Shadow, race=undead
 #: data/core/units/undead/Spirit_Shadow.cfg:4
 msgid "Shadow"
-msgstr ""
+msgstr "сијенка"
 
 #. [unit_type]: id=Shadow, race=undead
 #: data/core/units/undead/Spirit_Shadow.cfg:20
@@ -3932,11 +5041,16 @@ msgid ""
 "\n"
 "That is a question which is easily answered by a necromancer."
 msgstr ""
+"Када свјетлост наступи у свијет и подаше обличје непознатом, страх бијеше "
+"присиљен повлачењу у таму. Од тог дана, сијенке свијета уливале су страву "
+"човјечанству, иако не знају зашто.\n"
+"\n"
+"Ово је недоумица коју с лакоћом разрешава некромант."
 
 #. [unit_type]: id=Spectre, race=undead
 #: data/core/units/undead/Spirit_Spectre.cfg:4
 msgid "Spectre"
-msgstr ""
+msgstr "сабласт"
 
 #. [unit_type]: id=Spectre, race=undead
 #: data/core/units/undead/Spirit_Spectre.cfg:21
@@ -3949,17 +5063,24 @@ msgid ""
 "encountering one is that it is likely only the harbinger of a much more "
 "dangerous force that will follow in its wake."
 msgstr ""
+"Некада називани „шупљим људима“, сабласти су десна рука моћи свога "
+"господара. Ове су творевине несвети ужас међу живима, јер су сасвим "
+"смртоносне како на то својом појавом и указују.\n"
+"\n"
+"Ово им није једино злокобно својство; још већа опасност сусрета с једном "
+"саблашћу лежи у томе што је она вјероватно тек весник много опасније силе "
+"која слиједи њеним трагом."
 
 #. [attack]: type=arcane
 #: data/core/units/undead/Spirit_Spectre.cfg:59
 #: data/core/units/undead/Spirit_Wraith.cfg:21
 msgid "baneblade"
-msgstr ""
+msgstr "проклетник"
 
 #. [unit_type]: id=Wraith, race=undead
 #: data/core/units/undead/Spirit_Wraith.cfg:4
 msgid "Wraith"
-msgstr ""
+msgstr "утвара"
 
 #. [unit_type]: id=Wraith, race=undead
 #: data/core/units/undead/Spirit_Wraith.cfg:17
@@ -3970,11 +5091,15 @@ msgid ""
 "are invincible which is so frightening, a notion that is fortunately far "
 "from the truth."
 msgstr ""
+"Ова измучена обличја која су некада била велики ратници, међу најстрашнијим "
+"су творевинама које некромант може призвати, јер мач ће само прохујати кроз "
+"њих као кроз ваздух, без икаквог учинка. То је оно што улива толики страх, "
+"помисао о њиховој непобједивости, која је на срећу далеко од истине."
 
 #. [unit_type]: id=Ancient Wose, race=wose
 #: data/core/units/wose/Ancient.cfg:4
 msgid "Ancient Wose"
-msgstr ""
+msgstr "древни ивер"
 
 #. [unit_type]: id=Ancient Wose, race=wose
 #: data/core/units/wose/Ancient.cfg:21
@@ -3988,17 +5113,26 @@ msgid ""
 "Such encounters are all that is known of what are presumably the most "
 "ancient of woses."
 msgstr ""
+"Постоји необична прича о сељаку који је имао велики храст на свом пашњаку, "
+"дрво које је ту стајало од како је његов отац први пут обрадио земљиште "
+"имања, и под којим је његова породица стекла многе успомене. Био је то "
+"потпуни шок за њега, једног јутра, када се пробудио и увидио да је храст "
+"некуда одмаглио, не оставивши ништа до голо парче земље тамо гдје је некада "
+"стајао.\n"
+"\n"
+"Овакви сусрети су све што се зна о онима за које се претпоставља да су "
+"најдревнији међу иверима."
 
 #. [attack]: type=impact
 #: data/core/units/wose/Ancient.cfg:105 data/core/units/wose/Elder.cfg:104
 #: data/core/units/wose/Wose.cfg:43
 msgid "crush"
-msgstr ""
+msgstr "гажење"
 
 #. [unit_type]: id=Elder Wose, race=wose
 #: data/core/units/wose/Elder.cfg:4
 msgid "Elder Wose"
-msgstr ""
+msgstr "стари ивер"
 
 #. [unit_type]: id=Elder Wose, race=wose
 #: data/core/units/wose/Elder.cfg:20
@@ -4015,11 +5149,20 @@ msgid ""
 "turned to violence, should someone manage to raise the ire of these "
 "creatures."
 msgstr ""
+"За ивере се каже да су многих обличја, сви налик дрвећу, и да како старе, "
+"увећавају своју величину. Приче зборе о иверима који и по величини приличе "
+"дрвећу, надвисујући сва створења што ходе под њима. Ово је и већи део "
+"разлога зашто су тако ријетко виђени — мирујући у дријемежу као што често "
+"чини, ивер те величине сасвим је налик мало чуднијем дрвету. Чак се и понеки "
+"неопрезни вилењак може преварити.\n"
+"\n"
+"Ивери ни у ком случају нису ратници, али је снага коју посједују очигледно "
+"способна за разорно насиље, успије ли неко да пробуди бијес ових створења."
 
 #. [unit_type]: id=Wose, race=wose
 #: data/core/units/wose/Wose.cfg:4
 msgid "Wose"
-msgstr ""
+msgstr "ивер"
 
 #. [unit_type]: id=Wose, race=wose
 #: data/core/units/wose/Wose.cfg:21
@@ -4035,3 +5178,12 @@ msgid ""
 "Woses are utterly unwarlike, but possess a great strength. They are, "
 "however, neither used to, nor quick at moving around."
 msgstr ""
+"Ријетко виђани чак и међу вилењацима, ивери су ред створења о којима се мало "
+"зна. Вилењаци су извор већине тих сазнања; знају да ова створења нису "
+"потомци дрвећа, упркос физичким сличностима, и да су ближе везана за "
+"вилински свијет него сами вилењаци, премда на другачији начин. Њихови мотиви "
+"и понашање нису познати, иако су многи очигледног становишта да су ивери "
+"надзорници природног царства.\n"
+"\n"
+"Ивери су сасвим нератоборни, али посједују велику снагу. Међутим, нити "
+"обичавају, нити могу да се брзо крећу наоколо."

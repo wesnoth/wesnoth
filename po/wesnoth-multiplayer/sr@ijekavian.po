@@ -1,90 +1,92 @@
-# #-#-#-#-#  wesnoth-multiplayer.cpp.pot (Battle for Wesnoth VERSION)  #-#-#-#-#
-# Serbian translations for Battle for Wesnoth package.
-# Copyright (C) 2010 Wesnoth development team
+# Translation of wesnoth-multiplayer.po into Serbian.
+# Copyright (C) 2005 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# Automatically generated, 2010.
-#
+# Chusslove Illich <caslav.ilic@gmx.net>, 2007, 2008, 2009, 2010.
+# Dalibor Djuric <dalibor.djuric@mozilla-srbija.org>, 2010.
+# Branko Kokanovic, 2006.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.7.1+svn\n"
+"Project-Id-Version: wesnoth-multiplayer\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-03-15 01:03+0100\n"
-"PO-Revision-Date: 2010-03-15 01:03+0100\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2010-03-14 18:26+0100\n"
+"Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
+"Language-Team: Serbian\n"
+"Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: sr@ijekavian\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Environment: wesnoth, wesnoth/noent\n"
+"X-Wrapping: fine\n"
 
 #. [generic_multiplayer]: id=user_map
 #: data/multiplayer/_main.cfg:8
 msgid "User Map"
-msgstr ""
+msgstr "Корисничка мапа"
 
 #. [multiplayer_side]: id=Random
 #: data/multiplayer/eras.cfg:5
 msgid "Random"
-msgstr ""
+msgstr "насумична"
 
 #. [era]: id=era_default
 #: data/multiplayer/eras.cfg:144
 msgid "Default"
-msgstr ""
+msgstr "подразумевана"
 
 #. [era]: id=era_heroes
 #: data/multiplayer/eras.cfg:160
 msgid "Age of Heroes"
-msgstr ""
+msgstr "Доба хероја"
 
 #. [multiplayer_side]: id=Drakes, type=Drake Flare
 #. [multiplayer_side]: id=Drakes, type=Drake Flameheart
 #: data/multiplayer/factions/drakes-aoh.cfg:4
 #: data/multiplayer/factions/drakes-default.cfg:4
 msgid "Drakes"
-msgstr ""
+msgstr "Змагови"
 
 #. [multiplayer_side]: id=Knalgan Alliance, type=Dwarvish Steelclad
 #. [multiplayer_side]: id=Knalgan Alliance, type=Dwarvish Lord
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
 #: data/multiplayer/factions/knalgans-default.cfg:4
 msgid "Knalgan Alliance"
-msgstr ""
+msgstr "Кналгански савез"
 
 #. [multiplayer_side]: id=Loyalists, type=Lieutenant
 #. [multiplayer_side]: id=Loyalists, type=General
 #: data/multiplayer/factions/loyalists-aoh.cfg:4
 #: data/multiplayer/factions/loyalists-default.cfg:4
 msgid "Loyalists"
-msgstr ""
+msgstr "Лојалисти"
 
 #. [multiplayer_side]: id=Northerners, type=Orcish Warlord
 #. [multiplayer_side]: id=Northerners, type=Orcish Warrior
 #: data/multiplayer/factions/northerners-aoh.cfg:4
 #: data/multiplayer/factions/northerners-default.cfg:4
 msgid "Northerners"
-msgstr ""
+msgstr "Сјеверњаци"
 
 #. [multiplayer_side]: id=Rebels, type=Elvish Marshal
 #. [multiplayer_side]: id=Rebels, type=Elvish Captain
 #: data/multiplayer/factions/rebels-aoh.cfg:4
 #: data/multiplayer/factions/rebels-default.cfg:4
 msgid "Rebels"
-msgstr ""
+msgstr "Побуњеници"
 
 #. [multiplayer_side]: id=Undead, type=Dark Sorcerer
 #. [multiplayer_side]: id=Undead, type=Lich
 #: data/multiplayer/factions/undead-aoh.cfg:4
 #: data/multiplayer/factions/undead-default.cfg:4
 msgid "Undead"
-msgstr ""
+msgstr "Немртви"
 
 #. [multiplayer]: id=multiplayer_Basilisk
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:33
 msgid "2p - Caves of the Basilisk"
-msgstr ""
+msgstr "2и: Пећине Базилиска"
 
 #. [multiplayer]: id=multiplayer_Basilisk
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:35
@@ -93,6 +95,9 @@ msgid ""
 "Basilisk. The petrified forms of his victims remain as monuments to his "
 "savage power."
 msgstr ""
+"Ове пећине некада бијаху јазбина Чаксу Нејиксу, древном базилиску из "
+"предања. Окамењена обличја његових жртава стоје као споменици његовој "
+"суровој моћи."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:49
@@ -122,7 +127,7 @@ msgstr ""
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:74
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:122
 msgid "teamname^North"
-msgstr ""
+msgstr "Сјевер"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:61
@@ -146,7 +151,7 @@ msgstr ""
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:56
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:68
 msgid "teamname^South"
-msgstr ""
+msgstr "Југ"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:101
@@ -172,11 +177,32 @@ msgid ""
 "His home to steal the Basilisk's gold.\n"
 "(inscribed by Flametrooper)"
 msgstr ""
+"Вјетрови хладни, и небо чудновато,\n"
+"у ноћи одмаклој, мјесец сијаше богато,\n"
+"храбар бијаше змаг, који напусти праг\n"
+"дома свог, да Базилисково отме злато.\n"
+" \n"
+"У ту ноћ давну, неба усковитланог,\n"
+"одрекавши се животног знања стеченог,\n"
+"храбро и без писка, у пећину Базилиска\n"
+"одлети, гоњен жудњом срца ватреног.\n"
+" \n"
+"Авај, плати он то суровим данком,\n"
+"јер Базилиск, једним моћним криком,\n"
+"срце му укочи, живог га у камен преточи,\n"
+"да заувијек свједочи страшним науком.\n"
+" \n"
+"Вјетрови хладни, и небо чудновато,\n"
+"године пролазе, и дана дремљиво јато,\n"
+"почива овдје змаг, који напусти праг\n"
+"дома свог, да Базилисково отме злато.\n"
+" \n"
+"(урезао Пламенобојник)"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:104
 msgid "Xikkrisx"
-msgstr ""
+msgstr "Ксикрискс"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:110
@@ -201,11 +227,28 @@ msgid ""
 "traveled far from the lake, Xikkrisx set the statue down inside of a small "
 "cave, and lay down to rest. He was awoken by a bone-chilling roar."
 msgstr ""
+"Ксикрискс од Сирсиска бијаше моћан сауријански ратник, којег у ове области "
+"одаслаше старјешине клана Рисририлосаска (што значи „лове-непријатеље-у-"
+"кључалим-ријекама“). У припреми похода против људске испоставе, старјешинама "
+"изнимно требаше моћне магије Оксирскса, саур-мистика, посљедњи пут виђеног "
+"гдје хита у смијеру језера Руасколин. Ксикрискс пронађе Оксирсксово "
+"окамењено обличје, скупа са брижљиво умотаним свитком, очевидно испуштеним у "
+"узак процјеп у пећинском поду. Разви свитак, те ишчита кратак пасус око "
+"средине записа: „Пошто га свезаше и прогнаше из Горњег свијета, Чаксов "
+"разјарени дух потражи избављење. Успије тако остварити искварујући утицај на "
+"извјесне области Горњег свијета, усмјерен кроз ‘камене путоводе’ што се "
+"пружају са површине до дубина Подземних досега. Бијес његов измијени јаја "
+"великих гуштера, обликујући им тијело и дух по лику Чаксове мржње“. Збуњен, "
+"Ксикрискс усмјери пажњу на задатак пред собом. С помишљу да би старјешине "
+"можда нашле начина повратити Оксирскса, поче дуго и напорно повлачење кипа "
+"назад у окриље клана Рисририлосаска. Исцрпљен а да није одмакао далеко од "
+"језера, Ксикрискс одложи кип у малу пећину, и прилеже да предахне. Пробудио "
+"га је крик што леди крв у жилама."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:113
 msgid "Oxsrrsk"
-msgstr ""
+msgstr "Оксирскс"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:116
@@ -230,6 +273,22 @@ msgid ""
 "convinced of his ability to locate and bind this powerful creature into his "
 "service, Oxsrrsk set out on his journey..."
 msgstr ""
+"Оксирскс бијаше моћан саур-пророк, који, током похода против супарничког "
+"клана Ксракса, прибави сасвим запањујућ свитак (из ризница дотад почившег "
+"пророка Хескс-Рзака). Наслов свитку гласише „Нејикс гранитног погледа“, и "
+"под њим се зборише о створењу знаном као „Чаксо Нејикс“, имену које је, на "
+"прастаром сауријанском, значило „најстарији у породу Чаксовом“. За Чакса се "
+"вјеровало да је био моћни полубог Подземних досега, описан као „велики демон "
+"из земље“ у вилењачким Историјама. Према тим записима, Чаксо једном пожеље "
+"да претвори сав живот земаљски у камен; толика му бијеше мржња према "
+"створењима крви и меса. На концу га поразише и свезаше моћним магијама, али "
+"стољећима након његовог прогнанства (у царство далеко испод површи земље), "
+"Историје забиљежише појаву немани нове сорте, способних да претворе свако "
+"живо биће у камен. Једног по једног, и по велику цијену, базилиске напокон "
+"савладаше. Све, чинило се, осим једног: базилиска по имену „Нејикс“, илити "
+"„Најстарији пород“ на савременом језику. Врхунски увјерен у своју способност "
+"да пронађе и подјарми ово моћно створење својим наумима, отисну се Оксирскс "
+"на пут..."
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:129
@@ -243,11 +302,20 @@ msgid ""
 "- - Seven Stones - and the Elven\n"
 "(inscribed by Gauteamus)"
 msgstr ""
+"Спретних покрета, бистрог погледа\n"
+"- - Седам камених и један\n"
+"Остављаше душманима мало изгледа\n"
+"- - Седам камених и један\n"
+"Стријелац знан као Змајобојник\n"
+"'међ киповима овдје дође и њему крвник\n"
+"- - Седам камених и вилењак\n"
+" \n"
+"(урезао Гватеамус)"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:133
 msgid "Blum Duk"
-msgstr ""
+msgstr "Блам Дук"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:138
@@ -267,11 +335,27 @@ msgid ""
 "words: Good Gog, dog, are yer legs made of stone?!?\n"
 "(inscribed by Elvish Pillager)"
 msgstr ""
+"Блам Дук бијеше знаменит у свом гоблинском клану по томе што је укротио "
+"једног од грозовукова из планина, и имао храброст томе пригодну. Само његово "
+"вођство и спретност успијевали су да одрже у животу гоблине у тој области, "
+"поред људских и вилењачких пријетњи. Кружиле су гласине да је његов вук "
+"сатро педесет људи и стотину вилењака.\n"
+" \n"
+"Стога, када је чуо за страшно чудовиште које походи ту област, било је "
+"сасвим очекивано да сам одјаше у сукоб томе. Остали гоблини су очекивали да "
+"ће без помуке посјећи створење, и довући назад његов леш за гозбу.\n"
+" \n"
+"Стварност га је пресјекла. Чим се приближио Базилиску, Блам Дук се најежио "
+"од ужаса. Покушао је да окрене вука и побјегне, али се није могао макнути. "
+"Како је створење грабило према њему, извикао је посљедње речи: Добри Гого, "
+"псето, јесу ли ти ноге од камена?!\n"
+" \n"
+"(урезао Вилин-пљачкаш)"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:142
 msgid "Rah Ihn Mar"
-msgstr ""
+msgstr "Рах Ин Мар"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:144
@@ -286,6 +370,14 @@ msgid ""
 "Terowydlithrol, who had been seen entering the region but a day ago. Burning "
 "for vengeance, Rah Ihn Mar began the hunt....."
 msgstr ""
+"Рах Ин Мар, Побједник Пламених брда, наиђе пут језера Руасколин у потјери за "
+"вилин-херојем Теровидлитролом, међу вилењацима знаном као „Змајобојник“. "
+"Преносило се да је Теровидлитрол убио ватреног змаја што запријети "
+"вилењачком селу, те ударио у „противнапад“ у којем неких тридесет седам "
+"змагова, улогорених у оближњем кланцу и наводно у савезу са змајем, бијаху "
+"побијени. Знајући да су змагови били недужни, Рах Ин Мар дође к језеру "
+"Руасколин да улови и посијече Теровидлитрола, којег спазише у тој области "
+"колико дан раније. Изгарајући за осветом, Рах Ин Мар отпоче лов..."
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:152
@@ -298,6 +390,13 @@ msgid ""
 "arrived.\n"
 "(inscribed by Turin)"
 msgstr ""
+"Живио је тамо већ добима и добима, у дубини воденој, вребајући несрећне "
+"рибе, жабе, и морејеце који залутају у његов забран. Било је то његово "
+"језеро, ничије друго, и иако није било велико, он му је био господар. Онда "
+"наиђе Базилиск и погледа Змијару у очи — и Змијар не умре, али и не бијеше "
+"више жив. Тако стиже нови господар језера.\n"
+" \n"
+"(урезао Турин)"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:160
@@ -310,11 +409,19 @@ msgid ""
 "of his once great bearing and strength.\n"
 "(inscribed by Fynmiir)"
 msgstr ""
+"Славни јунак из златног доба Веснота, велики коњаник и заповједник наиђе на "
+"ово зло мјесто док је био у походу против оркова. Како их та погана створења "
+"ухватише неспремне, иако му многи саборац погибе борио се гордо, посјекавши "
+"многе непријатеље. Али авај! У тренутку кад је докрајчио и посљедњег орка, "
+"претвори га Базилиск у камен. И још увијек стоји ту, тај укочени подсјетник "
+"његовог некада величанственог држања и снаге.\n"
+" \n"
+"(урезао Финмир)"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:164
 msgid "Bramwythl"
-msgstr ""
+msgstr "Брамвитл"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:169
@@ -335,11 +442,29 @@ msgid ""
 "granted.\n"
 "(inscribed by Elvish Pillager)"
 msgstr ""
+"Ивер Брамвитл бјеше сматран спорим и ћутљивим типом, чак и међу другим "
+"иверима. Више него било који други ивер, уживао је да просто стоји сам на "
+"сунцу, подигнутих руку, дивећи се љепоти празног неба. Једном се чак "
+"повјерио другом да му је највећа жеља да се заувијек грије у "
+"величанствености сунца.\n"
+" \n"
+"Недуго затим, локална заједница ивера чуше за приближавање ужасног "
+"чудовишта, довољно моћног да лако уништи то мало ивера што је живјело у "
+"близини. Стога су се брзо одселили (брзо за ивере, у сваком случају), али је "
+"Брамвитл заостао — у свој пометњи, нико се није сјетио да га пронађе и "
+"предочи му опасност.\n"
+" \n"
+"Базилиск га је изненадио потпуно несвјесног, и претворио га у камен прије "
+"него што је уопште могао и да препозна звијер. Његов окамењени обрис и дан "
+"данас стоји тамо, гријан сунчевим зрацима, под отвореним небом. Највећа жеља "
+"му је испуњена.\n"
+" \n"
+"(урезао Вилин-пљачкаш)"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:173
 msgid "Talael Ryndoc"
-msgstr ""
+msgstr "Талајел Риндок"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:176
@@ -347,11 +472,13 @@ msgid ""
 "General Talael Ryndoc came to this place to fight a duel with the Grand "
 "Marshal Aethec Corryn, but the two men never found one another. "
 msgstr ""
+"Генерал Риндок дође овамо да избори двобој са великим маршалом Етеком "
+"Корином, али се два човјека никада не сретоше."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:179
 msgid "Aethec Corryn"
-msgstr ""
+msgstr "Етек Корин"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:184
@@ -363,11 +490,17 @@ msgid ""
 "\n"
 "Perhaps he should not have shouted quite so loudly.... "
 msgstr ""
+"Посљедње што изрече велики маршал Корин: „Талајеле Риндоку! Доста ми је "
+"потраге за тобом! Поћи ћу назад Халдриковој дворани, и извијестити двор о "
+"твојему кукавичлуку да се појавиш на заказаном двобоју! Бешчашће које те "
+"сустигне биће грозније од смрти коју бих ти подарио!“\n"
+"\n"
+"Можда није требало да виче толико гласно..."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:188
 msgid "Rilhon"
-msgstr ""
+msgstr "Рилон"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:191
@@ -384,6 +517,17 @@ msgid ""
 "enough, in possession of all of his teeth.\n"
 "(inscribed by Paterson)"
 msgstr ""
+"Овај храбри ратник, међу нагајцима знан као Рилон, бијеше чуо за баснословно "
+"благо изгубљено у овдашњим водњикавим пећинама — копље за које се причало да "
+"је начињено од очњака Чакса Нејикса, древног базилиска којег је некада давно "
+"посјекао вилењачки јунак Елорадујил. Према предању, оружје лежаше негдје на "
+"дну баш овог језера (језеро Руасколин, названо по познатом морском змијару "
+"коме је било дом). Пошто се спремио за битку са змијаром, Рилон наиђе на два "
+"поприлична изненађења. Прво бијеше окамењено обличје змијара Руасколина. "
+"Друго бијеше сасвим жив Чаксо Нејикс, коме су, зачудо, сви зуби били на "
+"броју.\n"
+" \n"
+"(урезао Патерсон)"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:212
@@ -404,11 +548,26 @@ msgid ""
 "\n"
 "(inscribed by MJQ)"
 msgstr ""
+"Кроз таласе и камените канале\n"
+"плаве и бијеле\n"
+"дизала је и спуштала плиме\n"
+"и учила рибе како да зборе планетама\n"
+"сребрно зелена\n"
+"магијом\n"
+"која истиче из њеног духа у опне алги и љуске пужева\n"
+"извијањем свога репа и руку\n"
+"слала је пјесме на игличастим ногама преко пијесака\n"
+"а сада\n"
+"а сада најчуднија тишина\n"
+"већ годинама и годинама\n"
+"она није трепнула\n"
+" \n"
+"(урезао МЈКу)"
 
 #. [multiplayer]: id=multiplayer_Cynsaun_Battlefield
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:6
 msgid "2p - Cynsaun Battlefield"
-msgstr ""
+msgstr "2и: Бојиште Синсона"
 
 #. [multiplayer]: id=multiplayer_Cynsaun_Battlefield
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:8
@@ -416,11 +575,13 @@ msgid ""
 "Cynsaun Province was named for Warrior-Queen Cynsaun the First, who drove "
 "the necromancers from these lands in 961 YW."
 msgstr ""
+"Покрајина Синсон названа је по краљици-ратници Синсон Првој, која изгна "
+"некроманте из ових земаља 961. гв."
 
 #. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:5
 msgid "2p - Dark Forecast (Survival)"
-msgstr ""
+msgstr "2и: Мрачна прогноза (опстанак)"
 
 #. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:8
@@ -432,6 +593,12 @@ msgid ""
 "\n"
 "Note: You need to use map settings for the scenario to work right."
 msgstr ""
+"„Мрачна прогноза“ је сценарио опстанка за самосталну или игру у двоје против "
+"насумично извлачених јединица ВИ. Побједа се остварује одбијањем свих "
+"непријатељских таласа. Током играња, терен ће се мијењати према случајним "
+"временским условима.\n"
+"\n"
+"Напомена: Морате подесити поставке мапе да би се сценарио ваљано одиграо."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:434
@@ -440,6 +607,9 @@ msgid ""
 "blood soaked blade from the last of the rebels. There will be no more "
 "resistance from the local scum. Your reign has finally earned stability."
 msgstr ""
+"Крици и молбе за милост напокон су угушени, док уклањаш крвљу натопљено "
+"сјечиво из посљедњег побуњеника. Неће се више опирати ова мјесна багра. "
+"Владавина твоја напокон је зарадила стабилност."
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:795
@@ -447,73 +617,75 @@ msgid ""
 "The last and most powerful of these creatures are almost upon us. I feel "
 "that if we can finish them off in time, we shall be victorious."
 msgstr ""
+"Пристижу посљедња и најмоћнија међ' овим створењима. Осјећам, докрајчимо ли "
+"их на вријеме, побједа је наша."
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:972
 msgid "Heavy Snowfall"
-msgstr ""
+msgstr "тешка мећава"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:986
 msgid "Snowfall"
-msgstr ""
+msgstr "мећава"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1006
 msgid "Heavy Rains"
-msgstr ""
+msgstr "тежак пљусак"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1020
 msgid "Drought"
-msgstr ""
+msgstr "суша"
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1028
 msgid "Clear Weather"
-msgstr ""
+msgstr "чисто небо"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1165
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1196
 msgid "teamname^Revolt"
-msgstr ""
+msgstr "Бунџије"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1215
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1232
 msgid "teamname^Human"
-msgstr ""
+msgstr "Људи"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1386
 msgid "Single player mode - uses the reduced strength spawns."
-msgstr ""
+msgstr "За једног играча — израњања смањене снаге."
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1389
 msgid "Two player mode - uses the full strength spawns."
-msgstr ""
+msgstr "За два играча — израњања пуне снаге."
 
 #. [objectives]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1409
 msgid "Survive and defeat the waves of opposition."
-msgstr ""
+msgstr "Преживиш ли и поразиш противничке таласе"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1411
 msgid "Defeat all waves"
-msgstr ""
+msgstr "Поразиш ли све таласе"
 
 #. [objective]: condition=lose
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1415
 msgid "Lose all your team's leaders"
-msgstr ""
+msgstr "Страдају ли сви вођи тимова"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1426
 msgid "Dark Forecast - a random survival scenario"
-msgstr ""
+msgstr "Мрачна прогноза — насумични сценарио опстанка"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1449
@@ -542,11 +714,33 @@ msgid ""
 "<span color='green'>Rhuvaen</span>\n"
 "- WML implementation"
 msgstr ""
+"Циљ је преживјети израњајуће таласе и поразити коначне архинепријатеље.\n"
+"\n"
+"Таласи израњају насумично и биће различити при сваком игрању „Мрачне "
+"прогнозе“.\n"
+"\n"
+"\n"
+"Пристижу са сјеверних, јужних и западних крајева мапе — мада најчешће "
+"израњају на западу. Израњање се одиграва у понешто правилним временским "
+"периодима.\n"
+"\n"
+"\n"
+"И вријеме ће се насумично мијењати, утичући на распоред мапе.\n"
+"\n"
+"\n"
+"\n"
+"<span color='red'>„Мрачну прогнозу“ направише:</span>\n"
+"\n"
+"<span color='green'>jb</span>\n"
+"— дизајнирање мапе, групе израњања и концепт сценарија\n"
+"\n"
+"<span color='green'>Rhuvaen</span>\n"
+"— изведба ВМЛ-а"
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1454
 msgid "So this is the accursed valley - a land ours for the taking."
-msgstr ""
+msgstr "Ово је, дакле, та клета долина — земља наша за заузимање."
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1458
@@ -555,13 +749,15 @@ msgid ""
 "our claim is not going to be unopposed. We must be prepared for the "
 "surprises of this land."
 msgstr ""
+"Круже гласине да су насељеници у чудном савезу човјека и звјери, те наши "
+"захтјеви неће проћи без отпора. Морамо бити спремни на изненађења ове земље."
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1462
 msgid ""
 "Then let us discover what lies in waiting and teach them not to oppose our "
 "claim."
-msgstr ""
+msgstr "Откријмо онда шта вреба притајено и научимо их да нама нема отпора."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1499
@@ -569,6 +765,7 @@ msgid ""
 "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
 "me..."
 msgstr ""
+"Ах! Како ово може бити? Поразише нас обични варвари! Богови ме напустише..."
 
 #. [message]: speaker=second_unit
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1513
@@ -576,6 +773,8 @@ msgid ""
 "Cheers of your enemy are the last thing you hear as you slip into death..."
 "their joy fills your last moments with pure hate."
 msgstr ""
+"Покличи непријатељски последње су што чујеш док клизиш у смрт... Радост "
+"њихова испуњава ти последње тренутке чистом мржњом."
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1535
@@ -584,11 +783,14 @@ msgid ""
 "ghostly wisps drain away your will, you realize that your time in this land "
 "is over."
 msgstr ""
+"Непријатељ кличе док се мрачна измаглица диже над земљом, обузимајући те. "
+"Док ти сабласни снопови црпе вољу, схваташ да је твоје вријеме у овој земљи "
+"истекло."
 
 #. [multiplayer]: id=multiplayer_Den_of_Onis
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
 msgid "2p - Den of Onis"
-msgstr ""
+msgstr "2и: Јазбина Ониса"
 
 #. [multiplayer]: id=multiplayer_Den_of_Onis
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:7
@@ -601,11 +803,17 @@ msgid ""
 "the Den of Onis, hoping to unlock the strange and mysterious magics of its "
 "creators."
 msgstr ""
+"Ова сасвим необична међу пећинама беше позната као „Дворана веселих ђавола“, "
+"и служише као унутрашња утврда кахрушких Онија. Кахруци бијаху рђава и "
+"лукава раса људождерских демона, што кињише народе источних земаља готово "
+"четири стотине година, прије него што нетрагом нестадоше из Ирдије. Од тада, "
+"многе су се стране утркивале за превласт над Јазбином Онија, надајући се да "
+"ће одгонетнути тајне и загонетне магије њених градитеља."
 
 #. [multiplayer]: id=multiplayer_Fallenstar_Lake
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:5
 msgid "2p - Fallenstar Lake"
-msgstr ""
+msgstr "2и: Звјездопадно језеро"
 
 #. [multiplayer]: id=multiplayer_Fallenstar_Lake
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:6
@@ -613,6 +821,8 @@ msgid ""
 "Long ago, a great star fell from the heavens, leaving its mark on this "
 "coniferous region."
 msgstr ""
+"Некада давано, сручи се са небеса велика звијезда, оставивши свој биљег на "
+"овој зимзеленој земљи."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:21
@@ -639,7 +849,7 @@ msgstr ""
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:74
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:85
 msgid "teamname^West"
-msgstr ""
+msgstr "Запад"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:32
@@ -665,12 +875,12 @@ msgstr ""
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:63
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:96
 msgid "teamname^East"
-msgstr ""
+msgstr "Исток"
 
 #. [multiplayer]: id=multiplayer_Hamlets
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:5
 msgid "2p - Hamlets"
-msgstr ""
+msgstr "2и: Сеоца"
 
 #. [multiplayer]: id=multiplayer_4p_Hamlets
 #. [multiplayer]: id=multiplayer_Hamlets
@@ -680,11 +890,13 @@ msgid ""
 "Warfare transforms the simple farms and villages of a peaceful region into a "
 "subtly parceled battlefield."
 msgstr ""
+"Ратовање претвара простодушне фарме и села мирољубиве области у препредено "
+"испарчано бојиште."
 
 #. [multiplayer]: id=multiplayer_Hornshark_Island
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:5
 msgid "2p - Hornshark Island"
-msgstr ""
+msgstr "2и: Острво рог-ајкуле"
 
 #. [multiplayer]: id=multiplayer_Hornshark_Island
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:6
@@ -692,11 +904,13 @@ msgid ""
 "Players must navigate the dispersive terrain of this small but "
 "topographically dense island."
 msgstr ""
+"Играчи се морају кретати разуђеним тереном овог малог, али топографски "
+"густог острва."
 
 #. [multiplayer]: id=multiplayer_Howling_Ghost_Badlands
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:5
 msgid "2p - Howling Ghost Badlands"
-msgstr ""
+msgstr "2и: Злоземље завијајућег духа"
 
 #. [multiplayer]: id=multiplayer_Howling_Ghost_Badlands
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:6
@@ -704,11 +918,13 @@ msgid ""
 "Little remains of this once wealthy mining colony, now a haven for raiders "
 "and thieves."
 msgstr ""
+"Мало је остало од ове некада богате рударске постаје, сада уточишта "
+"разбојницима и лоповима."
 
 #. [multiplayer]: id=multiplayer_Sablestone_Delta
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:5
 msgid "2p - Sablestone Delta"
-msgstr ""
+msgstr "2и: Делта самуркамена"
 
 #. [multiplayer]: id=multiplayer_Sablestone_Delta
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:6
@@ -716,11 +932,13 @@ msgid ""
 "Two armies collide on this disjointed coastal landscape of hidden caves and "
 "jagged rivers."
 msgstr ""
+"Двије армије се сударају на разуђеном обалском пејзажу скривених пећина и "
+"назупчених ријека."
 
 #. [multiplayer]: id=multiplayer_Silverhead_Crossing
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:5
 msgid "2p - Silverhead Crossing"
-msgstr ""
+msgstr "2и: Раскршће Силверхед"
 
 #. [multiplayer]: id=multiplayer_Silverhead_Crossing
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:6
@@ -728,21 +946,23 @@ msgid ""
 "Players must traverse all manner of terrain in pursuit of victory on this "
 "multi-fronted duel map."
 msgstr ""
+"Играчи морају газити преко свакаквог терена у потери за побједом на овој "
+"вишефронтовској мапи за двобој."
 
 #. [trait]: id=remove_hp
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:23
 msgid "statue"
-msgstr ""
+msgstr "кип"
 
 #. [trait]: id=remove_hp
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:24
 msgid "This is a sculpture made of stone."
-msgstr ""
+msgstr "Скулптура начињена од камена."
 
 #. [multiplayer]: id=multiplayer_Sullas_Ruins
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:39
 msgid "2p - Sulla's Ruins"
-msgstr ""
+msgstr "2и: Рушевине Суле"
 
 #. [multiplayer]: id=multiplayer_Sullas_Ruins
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:40
@@ -750,11 +970,13 @@ msgid ""
 "Flooded by the seas and battered by the winter elements, only ruins, water "
 "and ice now remain in the shadow of this once mighty empire."
 msgstr ""
+"Плављене морима и ударане налетима зиме, само рушевине, вода и лед остају "
+"као сијенка овога некада моћног царства."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:86
 msgid "Statue of Sulla"
-msgstr ""
+msgstr "Кип Суле"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:89
@@ -763,51 +985,54 @@ msgid ""
 "Sulla the Tyrant, Empress of the Sinking Tower, Lady of the Walking Glacier, "
 "Sulla the Incinerator, Sulla the Proud and Sulla the Righteous."
 msgstr ""
+"У камен уклесано наличје Суле Велике, познате и као Сула Праведна, Сула "
+"Тиранка, Царица Тонуће куле, Госпа Ходајућег глечера, Сула Сагоревачица, "
+"Сула Поносита и Сула Истинољубива."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:91
 msgid "Statue of Lhun-dup"
-msgstr ""
+msgstr "Кип Лун-дупа"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:93
 msgid "A stone-carved likeness of Lhun-dup, Servant of Sulla."
-msgstr ""
+msgstr "У камен уклесано наличје Лун-дупа, сљедбеника Сулиног."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:95
 msgid "Statue of Ri-nzen"
-msgstr ""
+msgstr "Кип Ри-нзена"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:97
 msgid "A stone-carved likeness of Ri-nzen, Servant of Sulla."
-msgstr ""
+msgstr "У камен уклесано наличје Ри-нзена, сљедбеника Сулиног."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:99
 msgid "Statue of Ten-zin"
-msgstr ""
+msgstr "Кип Тен-зина"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:101
 msgid "A stone-carved likeness of Ten-zin, Servant of Sulla."
-msgstr ""
+msgstr "У камен уклесано наличје Тен-зина, сљедбеника Сулиног."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:103
 msgid "Statue of Lo-bsang"
-msgstr ""
+msgstr "Кип Ло-бсанга"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:105
 msgid "A stone-carved likeness of Lo-bsang, Servant of Sulla."
-msgstr ""
+msgstr "У камен уклесано наличје Ло-бсанга, сљедбеника Сулиног."
 
 #. [multiplayer]: id=multiplayer_The_Freelands
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:6
 msgid "2p - The Freelands"
-msgstr ""
+msgstr "2и: Слободоземље"
 
 #. [multiplayer]: id=multiplayer_The_Freelands
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:8
@@ -819,11 +1044,16 @@ msgid ""
 "for hundreds of years, repelling great beasts from their western borders, "
 "and Carorathian Imperialists from their eastern borders."
 msgstr ""
+"Слободоземље, знано међу народима далеког истока и као „Земља без краљева“, "
+"простире се између Дивљоземља и Краљевства Карората, раздвајајући земљу "
+"потпуног закона од земље потпуног дивљаштва. Народ Слободоземља бори се већ "
+"стотинама година против пунонадежних завојевача својих земаља, одбијајући "
+"велике звјери са западних граница, а кароратске царисте са источних."
 
 #. [multiplayer]: id=multiplayer_Weldyn_Channel
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:5
 msgid "2p - Weldyn Channel"
-msgstr ""
+msgstr "2и: Велдински ров"
 
 #. [multiplayer]: id=multiplayer_Weldyn_Channel
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:7
@@ -831,11 +1061,13 @@ msgid ""
 "This vital supply route has played a key role in many of Wesnoth's greatest "
 "battles."
 msgstr ""
+"Ова снабдјевачка траса од животног значаја одиграла је кључну улогу у многим "
+"од Веснотових највећих битака."
 
 #. [multiplayer]: id=multiplayer_Alirok_Marsh
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:5
 msgid "3p - Alirok Marsh"
-msgstr ""
+msgstr "3и: Алирочка мочвара"
 
 #. [multiplayer]: id=multiplayer_Blue_Water_Province
 #. [multiplayer]: id=multiplayer_Loris_River
@@ -864,17 +1096,18 @@ msgstr ""
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:8
 #: data/multiplayer/scenarios/8p_Morituri.cfg:7
 msgid " Recommended setting of 2 gold per village."
-msgstr ""
+msgstr " Препоручује се 2 златника по селу."
 
 #. [multiplayer]: id=multiplayer_Alirok_Marsh
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 msgid "Three players come head to head on this water-cut battlefield."
 msgstr ""
+"Три играча суочавају се очи у очи на овом водом водом испресецаном бојишту."
 
 #. [multiplayer]: id=multiplayer_Island_of_the_Horatii
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:5
 msgid "3p - Island of the Horatii"
-msgstr ""
+msgstr "3и: Острво Хоратиј"
 
 #. [multiplayer]: id=multiplayer_Island_of_the_Horatii
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
@@ -882,11 +1115,13 @@ msgid ""
 "Controlling the central island is often the key to victory in this 21x21hex "
 "3 player free for all map."
 msgstr ""
+"Владати средишњим острвом често је кључ побједе на овој 21×21 мапи за три "
+"играча."
 
 #. [multiplayer]: id=multiplayer_3p_Morituri
 #: data/multiplayer/scenarios/3p_Morituri.cfg:5
 msgid "3p - Morituri"
-msgstr ""
+msgstr "3и: Моритури"
 
 #. [multiplayer]: id=multiplayer_3p_Morituri
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
@@ -894,11 +1129,13 @@ msgid ""
 "Only one faction will emerge victorious from this tightly bordered three-"
 "player map."
 msgstr ""
+"Само једна фракција може избити непобијеђена из ове тијесно ограђене мапе за "
+"три играча."
 
 #. [multiplayer]: id=multiplayer_Blue_Water_Province
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:5
 msgid "4p - Blue Water Province"
-msgstr ""
+msgstr "4и: Плаводерна покрајина"
 
 #. [multiplayer]: id=multiplayer_Blue_Water_Province
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:7
@@ -908,6 +1145,9 @@ msgid ""
 "snowcapped mountains of this small province, its villagers hardly seem to "
 "take notice."
 msgstr ""
+"Историчари пишу да је Плаводерна покрајина рушена и изграђивана око двадесет "
+"пута. Сада, како се војске поново сустичу на каменитим токовима и сњежним "
+"планинама ове мале покрајине, тамошњи житељи то скоро и не примјећују."
 
 #. [side]
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:21
@@ -920,7 +1160,7 @@ msgstr ""
 #: data/multiplayer/scenarios/8p_Morituri.cfg:73
 #: data/multiplayer/scenarios/8p_Morituri.cfg:84
 msgid "teamname^Team 1"
-msgstr ""
+msgstr "Тим 1"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:32
@@ -933,37 +1173,37 @@ msgstr ""
 #: data/multiplayer/scenarios/8p_Morituri.cfg:51
 #: data/multiplayer/scenarios/8p_Morituri.cfg:95
 msgid "teamname^Team 2"
-msgstr ""
+msgstr "Тим 2"
 
 #. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:5
 msgid "4p - Castle Hopping Isle"
-msgstr ""
+msgstr "4и: Скакутање по замковима"
 
 #. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:7
 msgid "Hop from castle to castle while fighting over a central isle."
-msgstr ""
+msgstr "Скакутање од замка до замка у току борбе око средишњег острва."
 
 #. [multiplayer]: id=multiplayer_Clash
 #: data/multiplayer/scenarios/4p_Clash.cfg:5
 msgid "4p - Clash"
-msgstr ""
+msgstr "4и: Судар"
 
 #. [multiplayer]: id=multiplayer_Clash
 #: data/multiplayer/scenarios/4p_Clash.cfg:7
 msgid "Small map for 2 vs. 2."
-msgstr ""
+msgstr "Мала мапа за 2 на 2."
 
 #. [multiplayer]: id=multiplayer_4p_Hamlets
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:5
 msgid "4p - Hamlets"
-msgstr ""
+msgstr "4и: Сеоца"
 
 #. [multiplayer]: id=multiplayer_Isars_Cross
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:7
 msgid "4p - Isar's Cross"
-msgstr ""
+msgstr "4и: Изаров прелаз"
 
 #. [multiplayer]: id=multiplayer_Isars_Cross
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:9
@@ -973,6 +1213,9 @@ msgid ""
 "1&4 vs. 2&3 (northeast vs. southwest). Designed for 75 starting gold, 20 "
 "villages."
 msgstr ""
+"Врло мала 2 на 2 мапа. Борба у тијесним подручјима захтијева дјелотворну "
+"ротацију јединица и прецизно планирање потеза. Тимови постављени за играче 1 "
+"и 4 пр. 2 и 3 (сјевероисток пр. југозапад). Дизајнирано за 75зл, 20 села."
 
 #. [side]
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:20
@@ -986,7 +1229,7 @@ msgstr ""
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:62
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:110
 msgid "teamname^South-West"
-msgstr ""
+msgstr "Југ-запад"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:32
@@ -998,19 +1241,19 @@ msgstr ""
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:51
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:62
 msgid "teamname^North-East"
-msgstr ""
+msgstr "Сјевер-исток"
 
 #. [multiplayer]: id=multiplayer_King_of_the_Hill
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:7
 msgid "4p - King of the Hill"
-msgstr ""
+msgstr "4и: Господар бријега"
 
 #. [multiplayer]: id=multiplayer_King_of_the_Hill
 #. [multiplayer]: id=multiplayer_Siege_Castles
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:9
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
 msgid " Recommended setting of 2 gold per village and 150 starting gold."
-msgstr ""
+msgstr " Препоручене поставке су 2 златника по селу и 150 на почетку."
 
 #. [multiplayer]: id=multiplayer_King_of_the_Hill
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:9
@@ -1018,6 +1261,8 @@ msgid ""
 "Controlling the area around the central keep is very lucrative in this 36X36 "
 "4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
 msgstr ""
+"Држање подручја око средишњег замка врло је уносно на овој 36×36 мапи за "
+"четири играча, сви против свих. Добра је и за 2 на 2. Постоји 36 села."
 
 #. [side]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:32
@@ -1029,7 +1274,7 @@ msgstr ""
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:86
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:98
 msgid "teamname^South-East"
-msgstr ""
+msgstr "Југ-исток"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:56
@@ -1037,12 +1282,12 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:59
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:22
 msgid "teamname^North-West"
-msgstr ""
+msgstr "Сјевер-запад"
 
 #. [multiplayer]: id=multiplayer_Lagoon
 #: data/multiplayer/scenarios/4p_Lagoon.cfg:5
 msgid "4p - Lagoon"
-msgstr ""
+msgstr "4и: Лагуна"
 
 #. [multiplayer]: id=multiplayer_Crusaders_Field
 #. [multiplayer]: id=multiplayer_The_Wilderlands
@@ -1051,17 +1296,17 @@ msgstr ""
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:38
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
 msgid " Recommended setting of 1 gold per village."
-msgstr ""
+msgstr " Препоручује се 1 златник по селу."
 
 #. [multiplayer]: id=multiplayer_Lagoon
 #: data/multiplayer/scenarios/4p_Lagoon.cfg:6
 msgid "Four factions contend for dominance over this watery settlement."
-msgstr ""
+msgstr "Четири фракције боре се за превласт у овој водњикавој настамби."
 
 #. [multiplayer]: id=multiplayer_Loris_River
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:7
 msgid "4p - Loris River"
-msgstr ""
+msgstr "4и: Ријека Лорис"
 
 #. [multiplayer]: id=multiplayer_Loris_River
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:9
@@ -1069,26 +1314,28 @@ msgid ""
 "A 25x25 2 vs. 2 map centered around a river with keeps in opposite corners. "
 "Designed for players 1&4 vs. 2&3. There are 28 villages."
 msgstr ""
+"25×25, 2 на 2 мапа, усредсријеђена око ријеке са замковима у супротним "
+"угловима. Направљена за играче 1 и 4 пр. 2 и 3. Постоји 28 села."
 
 #. [multiplayer]: id=multiplayer_4p_Morituri
 #: data/multiplayer/scenarios/4p_Morituri.cfg:5
 msgid "4p - Morituri"
-msgstr ""
+msgstr "4и: Моритури"
 
 #. [multiplayer]: id=multiplayer_4p_Morituri
 #: data/multiplayer/scenarios/4p_Morituri.cfg:7
 msgid "Who will emerge from the confines of this perilous battlefield?"
-msgstr ""
+msgstr "Ко ће изађи окићен ловоровим вијенцем из теснаца овог oпасног бојишта?"
 
 #. [multiplayer]: id=multiplayer_Paths_of_Daggers
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:7
 msgid "4p - Paths of Daggers"
-msgstr ""
+msgstr "4и: Путеви ножева"
 
 #. [multiplayer]: id=multiplayer_Paths_of_Daggers
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
 msgid " Recommended setting of 2 gold per village, 28 villages."
-msgstr ""
+msgstr " Препоручене поставке су 2 златника по селу, 28 села."
 
 #. [multiplayer]: id=multiplayer_Paths_of_Daggers
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
@@ -1096,11 +1343,14 @@ msgid ""
 "A 35X27 2 vs. 2 map with 5 separate paths of engagement. Balanced to be "
 "played east vs. west (1&4 vs. 2&3), but works well with any teams or FFA."
 msgstr ""
+"35×27, 2 на 2 мапа, са 5 раздвојених путева за напад. Одмјерена да се игра "
+"исток пр. запада (1 и 4 пр. 2 и 3), али може и са другим распоредима, или "
+"сви против свих."
 
 #. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:6
 msgid "4p - Ruins of Terra-Dwelve"
-msgstr ""
+msgstr "4и: Рушевине Тера-двелве"
 
 #. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:7
@@ -1108,11 +1358,13 @@ msgid ""
 "Battle over the legendary treasures of the ancient ruins of Terra-Dwelve. "
 "Large multi-fronted 2vs2 set in a vast underground complex."
 msgstr ""
+"Битка за легендарна блага древних рушевина Тера-двелве. Велика "
+"вишефронтовска 2 на 2 поставка у огромном подземном комплексу."
 
 #. [multiplayer]: id=multiplayer_Siege_Castles
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:7
 msgid "4p - Siege Castles"
-msgstr ""
+msgstr "4и: Опсадни замкови"
 
 #. [multiplayer]: id=multiplayer_Siege_Castles
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
@@ -1120,21 +1372,23 @@ msgid ""
 "40X30 4 player map where 4 mighty castles face off at the convergence of two "
 "rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 villages."
 msgstr ""
+"40×30 мапа за 4 играча, гдје се 4 моћна замка сучељавају на ушћу двају "
+"ријека. Добра за 2 на 2 и сви против свих. Има око 45 села."
 
 #. [multiplayer]: id=multiplayer_4p_Underworld
 #: data/multiplayer/scenarios/4p_Underworld.cfg:5
 msgid "4p - Underworld"
-msgstr ""
+msgstr "4и: Подсвијет"
 
 #. [multiplayer]: id=multiplayer_4p_Underworld
 #: data/multiplayer/scenarios/4p_Underworld.cfg:6
 msgid "A fast-paced 2 vs. 2 map set deep below the surface."
-msgstr ""
+msgstr "2 на 2 мапа брзог темпа, дубоко под површином."
 
 #. [multiplayer]: id=multiplayer_Xanthe_Chaos
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:7
 msgid "4p - Xanthe Chaos"
-msgstr ""
+msgstr "4и: Ксантијски метеж"
 
 #. [multiplayer]: id=multiplayer_Xanthe_Chaos
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:9
@@ -1142,11 +1396,13 @@ msgid ""
 "A 24X28 2 vs. 2 map with auxiliary keeps, and a large messy battle in the "
 "center common."
 msgstr ""
+"24×28, 2 на 2 мапа, са допунским кулама, и великом збрканом битком у "
+"средишњем подручју."
 
 #. [multiplayer]: id=multiplayer_Auction-X
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:5
 msgid "5p - Auction-X"
-msgstr ""
+msgstr "5и: Аукција-икс"
 
 #. [multiplayer]: id=multiplayer_Auction-X
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:7
@@ -1156,46 +1412,51 @@ msgid ""
 "and the best way to determine how much is an auction, LOWEST bid wins. It is "
 "a very small map so 75 gold is recommended for the other players."
 msgstr ""
+"4 играча окружују средишњу кулу, игра опстанка против ВИ, као сви против "
+"свих, или 4 на 1. Средишњем играчу ће требати више злата у 4 на 1 или сви-"
+"против-свих, а најбољи начин за утврђивање количине је путем аукције, где "
+"НАЈНИЖА понуда добија. Мапа је врло мала, тако да се за остале играче "
+"препоручује 75 златника."
 
 #. [side]
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:21
 msgid "teamname^Northeast"
-msgstr ""
+msgstr "Сјевероисток"
 
 #. [side]
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:33
 msgid "teamname^Southeast"
-msgstr ""
+msgstr "Југоисток"
 
 #. [side]
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:45
 msgid "teamname^Southwest"
-msgstr ""
+msgstr "Југозапад"
 
 #. [side]
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:57
 msgid "teamname^Northwest"
-msgstr ""
+msgstr "Сјеверозапад"
 
 #. [side]
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:69
 msgid "teamname^Center"
-msgstr ""
+msgstr "Центар"
 
 #. [multiplayer]: id=multiplayer_Forest_of_Fear
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:5
 msgid "5p - Forest of Fear"
-msgstr ""
+msgstr "5и: Шума страха"
 
 #. [multiplayer]: id=multiplayer_Forest_of_Fear
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:7
 msgid "In this mixed landscape, five armies battle for supremacy."
-msgstr ""
+msgstr "На овом мијешаном пејзажу, пет војски се бори за премоћ."
 
 #. [multiplayer]: id=multiplayer_The_Wilderlands
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:37
 msgid "5p - The Wilderlands"
-msgstr ""
+msgstr "5и: Дивљоземље"
 
 #. [multiplayer]: id=multiplayer_The_Wilderlands
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:38
@@ -1203,11 +1464,13 @@ msgid ""
 "A vast region of wild, untamed wilderness, its terrain dotted with forests, "
 "caves, rivers, and the ruins of ancient fortresses."
 msgstr ""
+"Непрегледна област дивље, неукроћене природе, терена посутог шумама, "
+"пећинама, ријекама и остацима древних тврђава."
 
 #. [multiplayer]: id=multiplayer_Crusaders_Field
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:5
 msgid "6p - Crusaders' Field"
-msgstr ""
+msgstr "6и: Крсташево поље"
 
 #. [multiplayer]: id=multiplayer_Crusaders_Field
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
@@ -1216,74 +1479,78 @@ msgid ""
 "of war, where the ghosts of thousands of brave warriors float invisibly "
 "through the mountains, trees and rivers."
 msgstr ""
+"Борбени крици за збијање редова могу се поново чути на овом временом "
+"похабаном ратишту, гдје духови хиљада храбрих ратника невидљиво плове кроз "
+"планине, дрвећа и ријеке."
 
 #. [multiplayer]: id=multiplayer_Hexcake
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:5
 msgid "6p - Hexcake"
-msgstr ""
+msgstr "6и: Шестоколач"
 
 #. [multiplayer]: id=multiplayer_Hexcake
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:7
 msgid "2 vs. 2 or 3 vs. 3 team game."
-msgstr ""
+msgstr "Тимска игра 2 на 2 или 3 на 3."
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:200
 msgid "Turn 2: Loyalists"
-msgstr ""
+msgstr "Потез 2: Лојалисти"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:201
 msgid "Turn 5: Knalgans"
-msgstr ""
+msgstr "Потез 5: Кналганци"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:202
 msgid "Turn 8: Rebels"
-msgstr ""
+msgstr "Потез 8: Побуњеници"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:203
 msgid "Turn 11: Northerners"
-msgstr ""
+msgstr "Потез 11: Сјеверњаци"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:204
 msgid "Turn 14: Drakes"
-msgstr ""
+msgstr "Потез 14: Змагови"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:205
 msgid "Turn 17: Undead"
-msgstr ""
+msgstr "Потез 17: Немртви"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:206
 msgid "Tower of Doom"
-msgstr ""
+msgstr "Кула пропасти"
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:337
 msgid "6p - Team Survival"
-msgstr ""
+msgstr "6и: Тимски опстанак"
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:340
 msgid "Scenario where the objective is to survive for as long as possible."
-msgstr ""
+msgstr "Сценарио у коме је циљ преживјети колико је дуго могуће."
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:348
 msgid "Hint: Learning the enemy spawnpoints and types helps alot."
 msgstr ""
+"Савет: Упознавање непријатељских мјеста израњања и типова доста помаже."
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:348
 msgid "Survive for 32 turns."
-msgstr ""
+msgstr "Опстанете ли 32 потеза."
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:349
 msgid "Survive all enemy attacks."
-msgstr ""
+msgstr "Преживите ли све непријатељске налете."
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:350
 msgid "Death of your team leaders."
-msgstr ""
+msgstr "Страдају ли ваши вођи тимова."
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:372
@@ -1292,28 +1559,34 @@ msgid ""
 "impossible. Frankly, I haven't got a clue as to how you did it, so send me "
 "the replay by mail to: roze@roze.mine.nu. Thank You!"
 msgstr ""
+"Честитам, преживјели сте на мапи за коју многи тврде да је то немогуће. "
+"Искрено, појма немам како сте то постигли, стога ме извијестите на: "
+"roze@roze.mine.nu — хвала вам!"
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:372
 msgid "Faery"
-msgstr ""
+msgstr "Вила"
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:375
 msgid "Death"
-msgstr ""
+msgstr "Смрт"
 
+# well-spelled: Бвахахахаааа
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:375
 msgid ""
 "You have lost this game, but fear not. You can always try again. And again. "
 "And again. *Muahahaha*"
 msgstr ""
+"Изгубили сте ову партију, али не брините. Увијек се можете наново искушати. "
+"И наново. И наново. *Бвахахахаааа*"
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:381
 msgid "Attacker"
-msgstr ""
+msgstr "нападач"
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:386
@@ -1323,12 +1596,12 @@ msgstr ""
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:406
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:411
 msgid "Defender"
-msgstr ""
+msgstr "бранилац"
 
 #. [multiplayer]: id=multiplayer_The_Manzivan_Traps
 #: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:7
 msgid "6p - The Manzivan Traps"
-msgstr ""
+msgstr "6и: Замке Манзивана"
 
 #. [multiplayer]: id=multiplayer_The_Manzivan_Traps
 #: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:10
@@ -1338,11 +1611,15 @@ msgid ""
 "extended. Teams set for players 145 vs. 236 (east vs west). Designed for 100 "
 "starting gold, has 33 villages."
 msgstr ""
+"40×20, 3 на 3 мапа. Замке Манзивана надалеко су познате као збуњујућа област "
+"тешког терена, у којој је лако завршити ван положаја или превише растегнут. "
+"Тимови су подешени за играче 145 пр. 236 (исток пр. запада). Пројектовано за "
+"100 злата на почетку, има 33 села."
 
 #. [multiplayer]: id=multiplayer_Waterloo_Sunset
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:7
 msgid "6p - Waterloo Sunset"
-msgstr ""
+msgstr "6и: Сумрак Ватерлоа"
 
 #. [multiplayer]: id=multiplayer_Waterloo_Sunset
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:9
@@ -1352,11 +1629,15 @@ msgid ""
 "south), but having players 146 or 136 as a team is also interesting. "
 "Designed for 150 starting gold, has 44 villages."
 msgstr ""
+"40×40, 3 на 3 мапа. Прилагодљива координација савезника неопходна је да се "
+"избјегне попуштање под бројношћу противника. Подешено за тимове 145 пр. 236 "
+"(сјевер пр. југа), али занимљиво је и са тимовима 146 или 136. Дизајнирано "
+"за 150 златника на почетку, има 44 села."
 
 #. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:5
 msgid "8p - Mokena Prairie"
-msgstr ""
+msgstr "8и: Мокенска прерија"
 
 #. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:8
@@ -1364,11 +1645,13 @@ msgid ""
 "Inspired from Morituri, this 8 player map creates an epic battle scene that "
 "requires two teams to coordinate on both offense and defense."
 msgstr ""
+"Инспирисана „Моритуријем“, ова мапа за 8 играча оживљава епски бој који од "
+"два тима захтева садејство и у нападу и у одбрани."
 
 #. [multiplayer]: id=multiplayer_8p_Morituri
 #: data/multiplayer/scenarios/8p_Morituri.cfg:5
 msgid "8p - Morituri"
-msgstr ""
+msgstr "8и: Моритури"
 
 #. [multiplayer]: id=multiplayer_8p_Morituri
 #: data/multiplayer/scenarios/8p_Morituri.cfg:7
@@ -1376,11 +1659,13 @@ msgid ""
 "Teamwork and tactics are key to victory in this unusual battlefield, where "
 "eight armies fight to the finish."
 msgstr ""
+"Тимска игра и тактизирање кључ су побједе на овом необичном бојном пољу, "
+"гдје се осам војски бори до краја."
 
 #. [multiplayer]: id=multiplayer_Merkwuerdigliebe
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:7
 msgid "9p - Merkwuerdigliebe"
-msgstr ""
+msgstr "9и: Чудновата привлачност"
 
 #. [multiplayer]: id=multiplayer_Merkwuerdigliebe
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:9
@@ -1390,13 +1675,17 @@ msgid ""
 "vs. southeast vs. southwest). There are very few villages per player, so 3 "
 "gold per villages is recommended."
 msgstr ""
+"Врло мала 3 на 3 на 3 мапа. Препоручује се тајмер на 60 секунди, због "
+"великог броја играча. Тимови су 159 пр. 267 пр. 348 (север пр. југоистока "
+"пр. југозапада). Врло мало села по играчу, тако да се препоручује 3 златника "
+"по селу."
 
 #. [scenario]: id=multiplayer_Random_Map
 #. [multiplayer]: id=multiplayer_Random_Map
 #: data/multiplayer/scenarios/Random_Scenario.cfg:6
 #: data/multiplayer/scenarios/Random_Scenario.cfg:11
 msgid "Random map"
-msgstr ""
+msgstr "Насумично"
 
 #. [multiplayer]: id=multiplayer_Random_Map
 #: data/multiplayer/scenarios/Random_Scenario.cfg:7
@@ -1404,13 +1693,15 @@ msgid ""
 "Randomly generated map. Note: random maps are often unbalanced, but if you "
 "have time, you can regenerate them until you get a good one."
 msgstr ""
+"Мапа се ствара насумично. Напомена: насумичне мапе су често неуравнотежене, "
+"али ако имате времена, можете их стварати док не добијете једну ваљану."
 
 #. [scenario]: id=multiplayer_Random_Map_Desert
 #. [multiplayer]: id=multiplayer_Random_Map_Desert
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:10
 msgid "Random map (Desert)"
-msgstr ""
+msgstr "Насумично (пустиња)"
 
 #. [multiplayer]: id=multiplayer_Random_Map_Desert
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:6
@@ -1419,13 +1710,16 @@ msgid ""
 "unbalanced, but if you have time, you can regenerate them until you get a "
 "good one."
 msgstr ""
+"Насумична мапа са пијеском као главним тереном. Напомена: насумичне мапе су "
+"често неуравнотежене, али ако имате времена, можете их стварати док не "
+"добијете једну ваљану."
 
 #. [scenario]: id=multiplayer_Random_Map_Marsh
 #. [multiplayer]: id=multiplayer_Random_Map_Marsh
 #: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:10
 msgid "Random map (Marsh)"
-msgstr ""
+msgstr "Насумично (мочвара)"
 
 #. [multiplayer]: id=multiplayer_Random_Map_Marsh
 #: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:6
@@ -1434,13 +1728,16 @@ msgid ""
 "unbalanced, but if you have time, you can regenerate them until you get a "
 "good one."
 msgstr ""
+"Насумична мапа са мочваром као главним тереном. Напомена: насумичне мапе су "
+"често неуравнотежене, али ако имате времена, можете их стварати док не "
+"добијете једну ваљану."
 
 #. [scenario]: id=multiplayer_Random_Map_Winter
 #. [multiplayer]: id=multiplayer_Random_Map_Winter
 #: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:10
 msgid "Random map (Winter)"
-msgstr ""
+msgstr "Насумично (зима)"
 
 #. [multiplayer]: id=multiplayer_Random_Map_Winter
 #: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:6
@@ -1449,11 +1746,14 @@ msgid ""
 "terrains. Note: random maps are often unbalanced, but if you have time, you "
 "can regenerate them until you get a good one."
 msgstr ""
+"Насумична мапа на преласку између прољећа и зиме, углавном са сњежним "
+"тереном. Напомена: насумичне мапе су често неуравнотежене, али ако имате "
+"времена, можете их стварати док не добијете једну ваљану."
 
 #. [multiplayer]: id=wesbench_ai
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:7
 msgid "Wesnoth Benchmark: AI"
-msgstr ""
+msgstr "Проба Веснота: ВИ"
 
 #. [multiplayer]: id=wesbench_ai
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:8
@@ -1461,11 +1761,13 @@ msgid ""
 "A wesnoth benchmark, use --nogui --no-delay --multiplayer --"
 "scenario=wesbench_ai --exit-at-end."
 msgstr ""
+"Проба перформанси, употријебите: --nogui --no-delay --multiplayer --"
+"scenario=wesbench_ai --exit-at-end"
 
 #. [multiplayer]: id=wesbench_scroll
 #: data/multiplayer/scenarios/Wesbench_Scroll.cfg:7
 msgid "Wesnoth Benchmark: Scrolling"
-msgstr ""
+msgstr "Проба Веснота: клизање"
 
 #. [multiplayer]: id=wesbench_scroll
 #: data/multiplayer/scenarios/Wesbench_Scroll.cfg:8
@@ -1473,11 +1775,13 @@ msgid ""
 "A wesnoth benchmark, use --no-delay --multiplayer --scenario=wesbench_scroll "
 "--exit-at-end."
 msgstr ""
+"Проба перформанси, употријебите: --no-delay --multiplayer --"
+"scenario=wesbench_scroll --exit-at-end"
 
 #. [multiplayer]: id=wesbench_shroud_walk
 #: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:7
 msgid "Wesnoth Benchmark: Walking through Shroud"
-msgstr ""
+msgstr "Проба Веснота: шетање кроз покров"
 
 #. [multiplayer]: id=wesbench_shroud_walk
 #: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:8
@@ -1485,3 +1789,5 @@ msgid ""
 "A wesnoth benchmark, use --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
 msgstr ""
+"Проба перформанси, употријебите: --no-delay --multiplayer --"
+"scenario=wesbench_shroud_walk --exit-at-end"
