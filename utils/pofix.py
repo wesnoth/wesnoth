@@ -279,6 +279,11 @@ stringfixes = {
 ("$troll_name", "$intl_troll_name"),
 ),
 
+"1.8-announcement" : (
+("WML events an AI components", "WML events and AI components"),
+),
+
+
 }
 
 # Speak, if all argument files are newer than this timestamp
