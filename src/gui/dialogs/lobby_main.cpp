@@ -393,7 +393,7 @@ tlobby_main::tlobby_main(const config& game_config
 	, player_list_dirty_(false)
 	, gamelist_dirty_(false)
 	, last_gamelist_update_(0)
-	, gamelist_diff_update_(false)
+	, gamelist_diff_update_(true)
 	, disp_(disp)
 	, lobby_update_timer_(0)
 	, preferences_wrapper_()
@@ -613,6 +613,7 @@ void tlobby_main::update_gamelist_diff()
 				gamelistbox_->add_row(make_game_row_data(game), list_i);
 				DBG_LB << "Added a game listbox row not at the end"
 					<< list_i << " " << gamelistbox_->get_item_count() << "\n";
+				list_rows_deleted--;
 			} else {
 				gamelistbox_->add_row(make_game_row_data(game));
 			}
@@ -629,7 +630,7 @@ void tlobby_main::update_gamelist_diff()
 			if (list_i + list_rows_deleted >= gamelist_id_at_row_.size()) {
 				ERR_LB << "gamelist_id_at_row_ overflow! "
 					<< list_i << " + " << list_rows_deleted
-					<< " > " << gamelist_id_at_row_.size()
+					<< " >= " << gamelist_id_at_row_.size()
 					<< " -- triggering a full refresh\n";
 				network::send_data(config("refresh_lobby"), 0, true);
 				return;
@@ -1292,6 +1293,7 @@ void tlobby_main::network_handler()
 			update_gamelist_diff();
 		} else {
 			update_gamelist();
+			gamelist_diff_update_ = true;
 		}
 	}
 	if (player_list_dirty_) {
@@ -1364,7 +1366,6 @@ void tlobby_main::process_gamelist_diff(const config &data)
 	if (lobby_info_.process_gamelist_diff(data)) {
 		DBG_LB << "Received gamelist diff\n";
 		gamelist_dirty_ = true;
-		gamelist_diff_update_ = true;
 	} else {
 		ERR_LB << "process_gamelist_diff failed!\n";
 	}
