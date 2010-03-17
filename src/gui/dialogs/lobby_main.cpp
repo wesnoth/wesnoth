@@ -572,7 +572,6 @@ void tlobby_main::update_gamelist()
 	gamelistbox_->clear();
 	gamelist_id_at_row_.clear();
 	lobby_info_.make_games_vector();
-	lobby_info_.apply_game_filter();
 	update_gamelist_header();
 	int select_row = -1;
 	for (unsigned i = 0; i < lobby_info_.games().size(); ++i) {
@@ -586,7 +585,6 @@ void tlobby_main::update_gamelist()
 		tgrid* grid = gamelistbox_->get_row_grid(gamelistbox_->get_item_count() - 1);
 		adjust_game_row_contents(game, gamelistbox_->get_item_count() - 1, grid);
 	}
-	gamelistbox_->set_row_shown(lobby_info_.games_visibility());
 	if (select_row >= 0 && select_row != gamelistbox_->get_selected_row()) {
 		gamelistbox_->select_row(select_row);
 	}
@@ -594,13 +592,14 @@ void tlobby_main::update_gamelist()
 	gamelist_dirty_ = false;
 	last_gamelist_update_ = SDL_GetTicks();
 	lobby_info_.sync_games_display_status();
+	lobby_info_.apply_game_filter();
+	gamelistbox_->set_row_shown(lobby_info_.games_visibility());
 }
 
 void tlobby_main::update_gamelist_diff()
 {
 	SCOPE_LB;
 	lobby_info_.make_games_vector();
-	lobby_info_.apply_game_filter();
 	update_gamelist_header();
 	int select_row = -1;
 	unsigned list_i = 0;
@@ -679,6 +678,8 @@ void tlobby_main::update_gamelist_diff()
 	gamelist_dirty_ = false;
 	last_gamelist_update_ = SDL_GetTicks();
 	lobby_info_.sync_games_display_status();
+	lobby_info_.apply_game_filter();
+	gamelistbox_->set_row_shown(lobby_info_.games_visibility());
 }
 
 void tlobby_main::update_gamelist_header()
@@ -799,7 +800,10 @@ void tlobby_main::adjust_game_row_contents(const game_info& game, int idx, tgrid
 
 void tlobby_main::update_gamelist_filter()
 {
+	DBG_LB << "tlobby_main::update_gamelist_filter\n";
 	lobby_info_.apply_game_filter();
+	DBG_LB << "Games in lobby_info: " << lobby_info_.games().size()
+		<< ", games in listbox: " << gamelistbox_->get_item_count() << "\n";
 	assert(lobby_info_.games().size() == gamelistbox_->get_item_count());
 	gamelistbox_->set_row_shown(lobby_info_.games_visibility());
 }
