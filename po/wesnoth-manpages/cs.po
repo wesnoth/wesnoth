@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-11-02 12:29+0100\n"
-"PO-Revision-Date: 2009-09-29 08:46+0100\n"
+"PO-Revision-Date: 2010-03-17 22:28+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -580,7 +580,7 @@ msgid ""
 msgstr ""
 "skončí hru při konci scénáře, tedy bez zobrazení okénka s informací o "
 "vítězství/prohře, které vyžaduje uživatelskou akci - stisk tlačítka OK. Tato "
-"volba se používá při ruzných měřeních."
+"volba se používá při různých měřeních."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:207
@@ -687,9 +687,7 @@ msgstr ""
 # type: Plain text
 #: ../../doc/man/wesnoth.6:244 ../../doc/man/wesnothd.6:272
 msgid "Visit the official homepage: http://www.wesnoth.org/"
-msgstr ""
-"Navštivte oficiální stránky: http://www.wesnoth.org/ a oficiální české "
-"stránky http://www.wesnoth.wz.cz/"
+msgstr "Navštivte oficiální stránky: http://www.wesnoth.org/"
 
 # type: SH
 #: ../../doc/man/wesnoth.6:245 ../../doc/man/wesnothd.6:273
@@ -935,8 +933,8 @@ msgid ""
 "they come from the fifo.  Set it to B<yes> to allow remote shutdown via a /"
 "query by an administrator."
 msgstr ""
-"Při nastavení na B<no> (výchozí), požadavky shut_down a restart "
-"jsouignorovány, pokud nepocházejí z fifo. Při nastavení B<yes> může správce "
+"Při nastavení na B<no> (výchozí), požadavky shut_down a restart jsou "
+"ignorovány, pokud nepocházejí z fifo. Při nastavení B<yes> může správce "
 "vzdáleně vypnout server pomocí /query."
 
 # type: TP
@@ -1046,7 +1044,7 @@ msgid ""
 "The time period (in seconds) message flooding is detected in. (default: "
 "B<10> seconds)"
 msgstr ""
-"Časová perioda (ve vteřinách), po které se nuluje počítadlo přjatých zpráv. "
+"Časová perioda (ve vteřinách), po které se nuluje počítadlo přijatých zpráv. "
 "(implicitně B<10> sekund)"
 
 # type: TP
@@ -1309,7 +1307,7 @@ msgid ""
 "[user_handler]> section is present in the configuration the server will run "
 "without any nick registration service."
 msgstr ""
-"B<[user_handler]> Kpnfiguruje uživatelský handler. Dostupné klíče se liší "
+"B<[user_handler]> Konfiguruje uživatelský handler. Dostupné klíče se liší "
 "podle toho, který handler je použit - nastaveno klíčem B<user_handler>. "
 "Pokud není v konfiguraci nalezena žádná sekce B<[user_handler]>, server "
 "poběží bez služeb správy přezdívek."
