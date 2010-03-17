@@ -951,7 +951,7 @@ void tlobby_main::update_selected_game()
 
 	find_widget<tbutton>(window_, "join_global", false).set_active(can_join);
 
-	update_playerlist();
+	player_list_dirty_ = true;
 }
 
 void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
@@ -1239,7 +1239,7 @@ void tlobby_main::active_window_changed()
 
 	find_widget<tbutton>(window_, "close_window", false)
 			.set_active(close_button_active);
-	update_playerlist();
+	player_list_dirty_ = true;
 }
 
 
@@ -1396,7 +1396,7 @@ void tlobby_main::process_room_join(const config &data)
 			*/
 		}
 		if (r == active_window_room()) {
-			update_playerlist();
+			player_list_dirty_ = true;
 		}
 	} else {
 		if (player == preferences::login()) {
@@ -1434,7 +1434,7 @@ void tlobby_main::process_room_part(const config &data)
 		add_room_window_message(room, "server", VGETTEXT("$player has left the room", symbols));
 		*/
         if (active_window_room() == r) {
-            update_playerlist();
+			player_list_dirty_ = true;
         }
 	} else {
 		LOG_LB << "Discarding part info for a room the player is not in\n";
@@ -1469,7 +1469,7 @@ void tlobby_main::process_room_query_response(const config& data)
 				assert(r);
 				r->process_room_members(members);
 				if (r == active_window_room()) {
-					update_playerlist();
+					player_list_dirty_ = true;
 				}
 			}
 		} else {
@@ -1571,7 +1571,6 @@ void tlobby_main::send_message_button_callback(gui2::twindow &/*window*/)
 		//      opened window, so e.g. /ignore in a whisper session ignores
 		//      the other party without having to specify it's nick.
 		chat_handler::do_speak(input);
-		if (player_list_dirty_) update_gamelist_filter();
 	} else {
 		config msg;
 		send_message_to_active_window(input);
@@ -1698,9 +1697,8 @@ void tlobby_main::player_filter_callback(gui2::twidget* /*widget*/)
 	player_list_.update_sort_icons();
 	preferences::set_playerlist_sort_relation(player_list_.sort_by_relation->get_value());
 	preferences::set_playerlist_sort_name(player_list_.sort_by_name->get_value());
-	update_gamelist_filter();
-	update_playerlist();
-	window_->invalidate_layout();
+	player_list_dirty_ = true;
+	//window_->invalidate_layout();
 }
 
 void tlobby_main::user_dialog_callback(user_info* info)
