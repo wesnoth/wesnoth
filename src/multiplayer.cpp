@@ -522,9 +522,9 @@ static void do_preferences_dialog(game_display& disp, const config& game_config)
 static void enter_lobby_mode(game_display& disp, const config& game_config, mp::chat& chat, config& gamelist)
 {
 	mp::ui::result res;
-	lobby_info li(game_config);
 
 	while (true) {
+		lobby_info li(game_config);
 		gui2::tlobby_main dlg(game_config, li, disp);
 		dlg.set_preferences_callback(
 			boost::bind(do_preferences_dialog,
