@@ -1134,17 +1134,18 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			rand_rng::set_seed(seed);
 			LOG_REPLAY << "Replaying attack with seed " << seed << "\n";
 
-			DBG_REPLAY << "Attacker XP (before attack): " << u->second.experience() << "\n";;
+			DBG_REPLAY << "Attacker XP (before attack): " << u->second.experience() << "\n";
 
 			attack_unit(src, dst, weapon_num, def_weapon_num, !get_replay_source().is_skipping());
-
-			DBG_REPLAY << "Attacker XP (after attack): " << u->second.experience() << "\n";;
 
 			u = resources::units->find(src);
 			tgt = resources::units->find(dst);
 
-			if (u.valid() && u->second.advances()) {
-				get_replay_source().add_expected_advancement(u->first);
+			if(u.valid()){
+				DBG_REPLAY << "Attacker XP (after attack): " << u->second.experience() << "\n";
+				if(u->second.advances()) {
+					get_replay_source().add_expected_advancement(u->first);
+				}
 			}
 
 			DBG_REPLAY << "expected_advancements.size: " << get_replay_source().expected_advancements().size() << "\n";
