@@ -404,7 +404,7 @@ void replay::add_log_data(const std::string &category, const std::string &key, c
 
 void replay::add_checksum_check(const map_location& loc)
 {
-	if(! game_config::mp_debug) {
+	if(! game_config::mp_debug || ! (resources::units->find(loc).valid()) ) {
 		return;
 	}
 	config* const cmd = add_command();
