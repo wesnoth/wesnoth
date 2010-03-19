@@ -27,19 +27,9 @@
 #include "../default/contexts.hpp"
 #include "../game_info.hpp"
 #include "../manager.hpp"
-#include "../../foreach.hpp"
-#include "../../log.hpp"
 #include "../../terrain_filter.hpp"
 
-#include <map>
-#include <stack>
 #include <vector>
-#include <deque>
-#include <iterator>
-#include <algorithm>
-#include <boost/lexical_cast.hpp>
-#include <boost/pointer_cast.hpp>
-
 
 namespace ai {
 
@@ -47,22 +37,19 @@ template<typename T>
 class config_value_translator {
 public:
 
+	static T cfg_to_value(const config &cfg)
+	{
+		return lexical_cast_default<T>(cfg["value"]);
+	}
+
 	static void cfg_to_value(const config &cfg, T &value)
 	{
-		try {
-			value = boost::lexical_cast<T>(cfg["value"]);
-		} catch (boost::bad_lexical_cast e) {
-			//@todo: 1.7.11 handle error, at least log it
-		}
+		value = cfg_to_value(cfg);
 	}
 
 	static void value_to_cfg(const T &value, config &cfg)
 	{
-		try {
-			cfg["value"] = boost::lexical_cast<std::string>(value);
-		} catch (boost::bad_lexical_cast e) {
-			//@todo: 1.7.11 handle error, at least log it
-		}
+		cfg["value"] = str_cast(value);
 	}
 
 	static config value_to_cfg(const T &value)
@@ -71,13 +58,6 @@ public:
 		value_to_cfg(value,cfg);
 		return cfg;
 	}
-
-	static T cfg_to_value(const config &cfg)
-	{
-		T value;
-		cfg_to_value(cfg,value);
-		return value;
-	}
 };
 
 
@@ -85,9 +65,14 @@ template<>
 class config_value_translator<bool> {
 public:
 
+	static bool cfg_to_value(const config &cfg)
+	{
+		return utils::string_bool(cfg["value"]);
+	}
+
 	static void cfg_to_value(const config &cfg, bool &value)
 	{
-		value = utils::string_bool(cfg["value"]);
+		value = cfg_to_value(cfg);
 	}
 
 	static void value_to_cfg(const bool &value, config &cfg)
@@ -102,64 +87,25 @@ public:
 		return cfg;
 	}
 
-	static bool cfg_to_value(const config &cfg)
-	{
-		bool value;
-		cfg_to_value(cfg,value);
-		return value;
-	}
 };
-
-
-template<>
-class config_value_translator<int> {
-public:
-
-	static void cfg_to_value(const config &cfg, int &value)
-	{
-		value = atoi(cfg["value"].c_str());
-	}
-
-	static void value_to_cfg(const int &value, config &cfg)
-	{
-		cfg["value"] = boost::lexical_cast<std::string>(value);
-	}
-
-	static config value_to_cfg(const int &value)
-	{
-		config cfg;
-		value_to_cfg(value,cfg);
-		return cfg;
-	}
-
-	static int cfg_to_value(const config &cfg)
-	{
-		int value;
-		cfg_to_value(cfg,value);
-		return value;
-	}
-};
-
 
 template<>
 class config_value_translator< std::vector<std::string> > {
 public:
 
+	static std::vector<std::string> cfg_to_value(const config &cfg)
+	{
+		return utils::split(cfg["value"]);
+	}
+
 	static void cfg_to_value(const config &cfg, std::vector<std::string> &value)
 	{
-		value = utils::split(cfg["value"]);
+		value = cfg_to_value(cfg);
 	}
 
 	static void value_to_cfg(const std::vector<std::string> &value, config &cfg)
 	{
-		std::stringstream buf;
-		for(std::vector<std::string>::const_iterator p = value.begin(); p != value.end(); ++p) {
-			if (p != value.begin()) {
-				buf << ",";
-			}
-			buf << *p;
-		}
-		cfg["value"] = buf.str();
+		cfg["value"] = utils::join(value);
 	}
 
 	static config value_to_cfg(const std::vector<std::string> &value)
@@ -167,13 +113,6 @@ public:
 		config cfg;
 		value_to_cfg(value,cfg);
 		return cfg;
-	}
-
-	static std::vector<std::string> cfg_to_value(const config &cfg)
-	{
-		std::vector<std::string> value;
-		cfg_to_value(cfg,value);
-		return value;
 	}
 };
 
@@ -183,10 +122,10 @@ public:
 
 	static void cfg_to_value(const config &cfg, config &value)
 	{
-		if (cfg.child("value")) {
-			value = cfg.child("value");
+		if (const config &v = cfg.child("value")) {
+			value = v;
 		} else {
-			value = config();
+			value.clear();
 		}
 	}
 
@@ -204,9 +143,7 @@ public:
 
 	static config cfg_to_value(const config &cfg)
 	{
-		config value;
-		cfg_to_value(cfg,value);
-		return value;
+		return cfg.child_or_empty("value");
 	}
 };
 
@@ -214,9 +151,14 @@ template<>
 class config_value_translator<ministage> {
 public:
 
+	static ministage cfg_to_value(const config &cfg)
+	{
+		return ministage(cfg.child_or_empty("value"));
+	}
+
 	static void cfg_to_value(const config &cfg, ministage &value)
 	{
-		value = ministage(cfg.child_or_empty("value"));
+		value = cfg_to_value(cfg);
 	}
 
 	static void value_to_cfg(const ministage &value, config &cfg)
@@ -230,31 +172,24 @@ public:
 		value_to_cfg(value,cfg);
 		return cfg;
 	}
-
-	static ministage cfg_to_value(const config &cfg)
-	{
-		config c;
-		ministage value(c);
-		cfg_to_value(cfg,value);
-		return value;
-	}
 };
 
 template<>
 class config_value_translator<terrain_filter> {
 public:
 
+	static terrain_filter cfg_to_value(const config &cfg)
+	{
+		if (const config &v = cfg.child("value")) {
+			return terrain_filter(vconfig(v), manager::get_ai_info().units);
+		}
+		static config c("not");
+		return terrain_filter(vconfig(c),manager::get_ai_info().units);
+	}
+
 	static void cfg_to_value(const config &cfg, terrain_filter &value)
 	{
-		if (cfg.child("value")) {
-			value = terrain_filter(vconfig(cfg.child("value")),manager::get_ai_info().units);
-		} else {
-			static config c;
-			if (!c.child("not")) {
-				c.add_child("not");
-			}
-			value = terrain_filter(vconfig(c),manager::get_ai_info().units);
-		}
+		value = cfg_to_value(cfg);
 	}
 
 	static void value_to_cfg(const terrain_filter &value, config &cfg)
@@ -267,18 +202,6 @@ public:
 		config cfg;
 		value_to_cfg(value,cfg);
 		return cfg;
-	}
-
-	static terrain_filter cfg_to_value(const config &cfg)
-	{
-		if (cfg.child("value")) {
-			return terrain_filter(vconfig(cfg.child("value")),manager::get_ai_info().units);
-		}
-		static config c;
-		if (!c.child("not")) {
-			c.add_child("not");
-		}
-		return terrain_filter(vconfig(c),manager::get_ai_info().units);
 	}
 };
 
@@ -491,11 +414,7 @@ public:
 
 	static terrain_filter variant_to_value(const variant &var)
 	{
-		static config c;
-		if (!c.child("not")) {
-			c.add_child("not");
-		}
-
+		static config c("not");
 		terrain_filter value(vconfig(c),manager::get_ai_info().units);
 		variant_to_value(var,value);
 		return value;
