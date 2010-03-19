@@ -93,6 +93,7 @@ game_classification::game_classification(const config& cfg):
 	{}
 
 game_classification::game_classification(const game_classification& gc):
+	savegame_config(),
 	label(gc.label),
 	parent(gc.parent),
 	version(gc.version),
