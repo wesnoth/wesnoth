@@ -134,7 +134,9 @@ local function wml_gold(cfg)
 end
 
 local function wml_store_gold(cfg)
-	local team = wesnoth.get_side(cfg.side or 1)
+	local side = tonumber(cfg.side or 1) or
+		helper.wml_error("[store_gold] given a noninteger side= attribute.")
+	local team = wesnoth.get_side(side)
 	wesnoth.set_variable(cfg.variable or "gold", team.gold)
 end
 
