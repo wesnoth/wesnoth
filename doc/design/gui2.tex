@@ -1,0 +1,503 @@
+\documentclass[a4paper,notitlepage,twocolumn,draft]{report}
+
+\usepackage[english]{babel}
+\usepackage {hyperref}
+
+\author{M.~de Wever}
+\title{Gui2 design document}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\begin{abstract}
+
+Late 2007 I started to rewrite the gui engine of Wesnoth, this project is called
+the gui2 project. A lot of code and documentation has been written since. The
+documentation is available at:
+\begin{itemize}
+\item \url{http://wiki.wesnoth.org/GUIToolkit} The general information
+	regarding the project and documentation regarding the WML used.
+\item \url{http://devdocs.wesnoth.org} The general doxygen information.
+\item \url{http://devdocs.wesnoth.org/pages.html} Contains some links to more
+	gui2 specific information.
+\end{itemize}
+
+This documentation describes a lot of the details and the wiki describes some of
+the design from the WML side. Doxygen contains some information regarding the
+design of the C++ side but it misses the overall design. This paper tries to
+fill that gap, trying to explain more of the overall design and some of the
+design choices.
+
+\end{abstract}
+
+
+\chapter{Introduction}
+
+This paper describes the general design of the gui2 project. The paper is
+divided in several chapters:
+\begin{description}
+\item[Chapter 1] Explains why yet another document is added instead of using the
+	doxygen and a short history of the gui2 project.
+\item[Chapter 2] Goes into the general design and structure of the gui2 project.
+\item[Chapter 3] Dives deeper into certain parts of the design of certain
+	classes and algorithms.
+\end{description}
+
+A omission in this paper is the simple story of how to add your own widgets in
+the C++ code\footnote{The WML part is described in the wiki.}. I have a slightly
+outdated paper on the subject, but decided not to add it; the paper needs
+polishing and updates, but I've some design changes planned for the 1.9
+development series. These changes will also change the way of adding new
+widgets, so that paper needs to be rewritten and added after the rewrite is
+complete.
+
+\section{Why why why?}
+
+Why is this document written in \LaTeX{} instead of doxygen? The reason is
+simple; during the development of the iterator class I felt I had to write a
+lot. Writing much documentation in doxygen feels awkward. A lot of time is spend
+on formatting, the number of subsections is limited (too low in my opinion).
+Also it's not possible to document why certain functions aren't implemented, a
+solution would be to make the function private and declared only, but that feels
+like an ugly hack.
+
+Why is the document needed? In my opinion most manuals written in doxygen are
+great as reference manuals but fail to explain how to do certain things with the
+library and fail to explain why certain things are implemented in the way it is.
+Writing a separate document separated from the code has the disadvantage of
+getting earlier out of sync when an implementation details differs, but this can
+be used as an advantage as well. Since it's hard to keep the details in sync,
+it's a good reason not to dive into these details. This makes a natural
+separation between which part should be in doxygen and which part in this
+manual.
+
+Why after the above, are some parts of gui2 documented in separate pages in
+doxygen? This indeed seems a contradiction, but it's not. Remember the first
+paragraph stating it's annoying to write this kind of documentation in doxygen?
+These parts are where I realized it's annoying to do it in doxygen and haven't
+been incorporated in this document\footnote{These parts are still mentioned in
+this paper, but they refer to the doxygen documentation.}.
+
+\section{History}
+
+The gui2 project was started late in 2007 to fix several problems I had with the
+current gui at that time. The problems I had were:
+\begin{enumerate}
+\item When using small resolutions the gui started to look bad, since widgets
+	simply left their container and were drawn outside it.
+\item Most of the gui was hard-coded in the C++ code and thus not configurable
+	for normal users.
+\item ThemeWML, the part that allows the user to configure the layout, is not
+	well understood by the current developers.
+\end{enumerate}
+
+This let to the following design goals:
+
+\begin{enumerate}
+\item The gui should look well at every possible resolution and automatically
+	fit well.
+\item Everything, or at least as much as possible should be configurable by WML.
+\item The project needed more documentation as the current ThemeWML, and explain
+	how to create your own guis.
+\end{enumerate}
+
+At the time of this writing the project is still work in progress\footnote{It
+was never expected to be a short during project.} and will still take while to
+finish. This initial goals were pretty clear, and still are. On the other hand
+how to implement certain parts provided to be less clear.
+
+The library is the first time I designed a gui toolkit and like with all larger
+projects, you need to learn from mistakes; preferably of others, but your doomed
+to make your own as well. The design process is an iterative one, causing some
+parts of the design to be changed several times. At the time of
+writing\footnote{Shortly before the 1.8 release.} a lot of areas feel stable,
+but others are still planned to be rewritten. Mainly the handling of scrollbar
+widgets feels awkward and hacky and are slated for a redesign.
+
+Other parts of the gui are still in the planning stage and not implemented yet,
+but the project moves along at a steady pace and more features will be added in
+the future.
+
+\paragraph{}
+
+The history of this document also goes back a long time, it's mostly build from
+various scraps of notes I have on my system. The plan was to change these notes
+to doxygen format some day put it in the source. The problem was to find a nice
+place in the source to do so.
+
+This lead to the fact the notes just stayed on my system and the number of
+notes accumulated. During travelling to work I started to design some things for
+the 1.9 development series and for the iterator class I needed a new kind of
+document. I decided that was the final straw and started to work on writing this
+document while travelling.
+
+Since you read this document it's uploaded in the Wesnoth source tree, this
+doesn't mean the document is complete. In fact it more means the opposite, the
+draft is uploaded and I can start to work on finishing the document by adding
+the missing information.
+
+
+\chapter{Overall design}
+
+This chapter takes a deeper look into the overall design of the library. Before
+we can explain how things work, we'll have a look at the features; both
+implemented and planned for the future. Once we know what the gui should be able
+to do I'll explain how these goals are achieved. The chapter ends with a short
+explanation of the directory structure so you'll be able to find the parts of
+the library.
+
+\section{Features}
+
+Wesnoth runs on a large amount of devices, with an even larger amount of display
+resolutions, from $320\times 240$ on hand-held devices to $2560\times 1600$ on
+large 30" screens. The gui should look appealing on all these devices. Therefore
+there are three resolution groups:
+\begin{description}
+\item[hand-held devices] For these devices the code needs to be compiled with
+\textbf{TINY\_GUI}. This forces all images to be scaled down by a factor two.
+	The typical resolutions on these devices are $320\times 240$ -- $640\times
+	480$.
+\item[PC] For the usage on PC's Wesnoth offers the resolutions $800\times 600$
+	-- $2560\times 1600$\footnote{And larger once screens that size become
+	available.}.
+\item[Netbooks] When the first netbooks were introduced the normal resolution
+	was $800\times 480$, which is slightly smaller as the minimum PC resolution.
+	Therefore a start option \textsc{--smallgui} was added making minimal
+	modifications to the layout\footnote{Actually this is gui1 only.}.
+\end{description}
+
+In order to facilitate this range of resolutions the gui2 code allows several
+definitions of a window, tuned for a specific resolution. The reason is twofold;
+first to make a difference between the hand-held devices and PCs, second allow
+different views for different resolutions.
+
+The main example of this feature\footnote{Not yet implemented, but one of the
+main reasons to add this feature.} is the attack dialogue. The dialogue has a
+button to show the damage calculation, which shows a new dialogue with the
+calculation overview. From an UI point of view I consider that rather ugly and
+rather have tabs to switch between the view. But when I have a larger screen the
+dialogue only fills a small part and I need to switch between tabs to see the
+info, in that case I rather have one dialogue without tabs, which directly shows
+all information. When the user changes the resolution the dialogue should switch
+between these two views, depending on the current resolution.
+
+\paragraph{}
+
+The gui should be able to adapt to the size actually needed, the current gui
+uses fixed sizes at some places. This leads to problems that when the screen
+resolution is reduced widgets end up outside the dialogue or get truncated. The
+same for some translated texts, where the translation is much longer as the
+English original. Gui2 solves this problem by dynamically determining the size
+of a widget and adjust the layout until it fits. This has the disadvantage that
+dialogues with a lot of dynamic content, resize at random times and changing the
+layout of the dialogue slightly. Another disadvantage is that when a dialogue
+doesn't fit Wesnoth terminates. This problem can be fixed by adding scrollbars
+to every window. When the dialogue doesn't fit the scrollbars are used and the
+dialogue fits again, might be a bit ugly but at least everything fits again.
+
+\paragraph{}
+
+It must be possible for WML designers to change the entire gui of Wesnoth with
+their own version. For example Spacenoth\footnote{That project is dead, but
+that doesn't matter for this example.} is Wesnoth is a space setting, so the
+project might want to use a more fitting user interface.
+
+Adding a new gui is a lot of work and can't be done in one fell swoop, so the
+code needs to support a gradual conversion. Therefore when you select your own
+theme\footnote{Support for this selection and the entire fall-back haven't been
+added yet. Obviously I want to add support, but it remains low priority until
+somebody really wants to add their own gui.} the engine first searches in the
+new theme for items\footnote{A widget or window.}. When an item is not found it
+uses that item from the default theme. Therefore it's mandatory that every item
+is defined for the default gui, which the engine validates at
+startup\footnote{That causes the problem that Wesnoth sometimes refused to start
+when the source and data are out-of-sync.}.
+
+\section{The big picture}
+
+First we dive into the components that define the gui.
+
+\subsection{Widget}
+
+A widget is the basic user interface element, like a label, a button or a text
+entry. Every widget has its own behaviour, which sometimes can be influenced by
+certain settings, but the main behaviour is fixed per widget. Next to behaviour
+a widget also has a visual representation so the user can see and interact with
+the widget.
+
+Before the widget is shown to the user it needs to be created first, the
+creation happens in the window builder class. This class reads the definition of
+a widget and fills in the blanks et voil\`a the widget is there. Let's go over
+this part in more slow-motion.
+
+\paragraph{The definition}
+The definition determines how a widget looks and some basic properties, these
+properties are the same for all instances of that widget. For example a button
+has a minimum size so the decoration can be drawn. It's possible to make
+multiple definitions of a button. These different definitions, can look
+different have different minimum sizes and other properties.
+
+These definitions are written in WML and a small loader class loads and
+validates the definition. The definition is then added to the list of known
+widgets of this type.
+
+The definition of the widget depends on the resolution, this is for example used
+in the button. It has a minimum size depending on the decoration used, in
+\textbf{TINY\_GUI} mode the decoration is scaled down, so the minimum size can
+also be reduced.
+
+\paragraph{The builder}
+The builder is started from the C++ code, started while building a window. This
+window definition contains a list of widget to build with more instance specific
+values. For example a label builder has the text to show to the user as
+parameter.
+
+These builder ``scripts'' are also written in WML and loaded by as small loader
+class that does the validation and build the needed widget.
+
+\paragraph{Widget}
+The widget itself is written in a larger C++ class and it defines the behaviour
+and provide various hooks to modify the properties of that widget. These hooks
+are used by the builder, but can also be modified later by the engine.
+
+Other hooks provide bindings to react to events. The bindings are now rather
+static, but with the new event handling added late in the 1.8 release series
+more things are possible. The plan is to enhance this part during the 1.9
+release series and deprecate and remove the current interface.
+
+Of course the question ``why wait until 1.9'' raises. The reason is simple it
+was added late in the 1.8 cycle to fix certain issues with the MP lobby at that
+time I had no time to convert the rest of the code, since I was working on the
+MP lobby instead.
+
+\subsection{Window}
+
+A window can mean two things, the window widget and the window definition. In
+this section the window definition is meant. Already discussed before, but a bit
+more verbose this time.
+
+The window definition defines a window and which widgets are placed in the
+window. This window definition also depends on the resolution. This allows the
+window to look different depending on the resolution. The changes can be small
+or the window can look completely different.
+
+\subsection{Dialogue}
+
+A dialogue is a pure C++ thing. A dialogue shows a window, but is not a window.
+So what's the difference\footnote{These are the definitions used in the gui2
+code and not the definition of other window toolkits.}? A window is a dumb
+combination of widgets created depending on the definitions in a WML file. After
+the window is created it often needs extra content and react to certain events.
+For example the language dialogue after building has an empty list of languages.
+This is where the dialogue comes into play. The user asks for the language
+selection dialogue. The code creates and shows a dialogue. The dialogue code
+builds a window, then fills the language list with the available languages and
+selects the current language and then shows it to the user.
+
+In other dialogues the code also needs to wire in event handlers or build other
+structures. It searches the wanted widget by id, in some cases it doesn't even
+care what kind of widget is used. In other cases it needs to be of a certain
+class or ``concept''. This allows a flexible design and let the user select the
+kind of widget used in some cases.
+
+So the dialogue is the sugar between the WML window and an interactive dialogue
+shown in the game.
+
+\section{Directory structure}
+
+This section describes the directories available, instead of listing them in
+alphabetic order I list them in a order that makes explaining them more natural.
+
+\begin{description}
+\item[src/gui] The general source code directory with all parts used for the gui.
+
+\begin{description}
+\item[dialogs] This directory contains all dialogues used in Wesnoth, in
+	general every file contains one dialogue, the name of the file being the
+	logical name of what the dialogue does. Some dialogues have a helper
+	dialogue, which is sometimes embedded in the same file.
+\item[widgets] This directory contains all widgets used in the library. Every
+	file contains one widget. Also base classes or concepts of widgets are
+	stored in this directory. During the development it also accumulated some
+	helper files, which don't fit in the aforementioned descriptions, this lead
+	to the creation of the auxiliary directory. Some files haven't been moved to
+	this new directory yet.
+\item[auxiliary] This directory contains items auxiliary classes. Some helper
+	parts are so large that they got their own subdirectory.
+
+\begin{description}
+\item[event] Contains all event handling code, the translation from SDL events
+	to the internal events and their dispatching.
+\item[widget\_definition] Contains the code to serialize the WML to an internal
+	data structure, needed to define that kind of widget. The names of the files
+	match the widget names. (Most files are rather small, but I prefer small
+	single tasked files over huge files controlling a lot of code\footnote{Some
+	might remember I started with a single file, which did exactly that, but the
+	file got too large to maintain efficiently.}.
+\item[window\_builder] Contains the code to create a widget object, from the
+	widget definition and the data supplied in the window definition. Again the
+	name of the file matches the name of widget they build. (These files are
+	also mostly small.)
+\end{description}
+
+\end{description}
+
+\item[data/gui] The general data directory with all parts used for the gui. All
+	guis shipped with Wesnoth should be in a sub-directory of this one, with a
+	config file with the name of the directory as main entry point and include
+	the sub-directory. At the time of writing only one gui is shipped, the
+	default one.
+
+\begin{description}
+\item[default] This directory is the bases for the default gui.
+
+\begin{description}
+\item[macro] This directory contains some helper macros, for default font sizes.
+\item[widget] This directory contains the definitions of widgets. Since there
+	can be multiple definitions of a widget their name is the name of the widget
+	with a suffix. The suffix for the default widgets is, \textsc{default} for
+	the others an appropriate name is picked.
+\item[window] Contains the definitions of windows, the name of the files is the
+	name of the dialogue they represent.
+\end{description}
+
+\end{description}
+
+\end{description}
+
+
+\chapter{Design details}
+
+Now that the big picture regarding the library is known, I dive into parts of
+the code that can use more explanation. A part not explained here, doesn't mean
+the code is obvious or simple, lack of time to document it properly is more
+likely the excuse.
+
+\section{Layout algorithm}
+
+An important part of the gui engine is to properly layout the widgets in the
+available space. The documentation of that algorithm is written in
+doxygen\footnote{\url{http://devdocs.wesnoth.org/layout_algorihm.html}}.
+
+\section{Event handling and dispatching}
+
+The event handling translates the ``raw'' SDL events to an event structure
+specific to gui2, effectively decoupling the interface. This also allows adding
+frameworks to fake events. The documentation of that code is written in doxygen
+doxygen\footnote{\url{http://devdocs.wesnoth.org/event_dispatching.html}}
+
+\section{Iterator}
+
+The iterator class is written\footnote{The code hasn't been written yet only
+designed how it should look. Still I feel the design is rather finished and I
+can update this paper if details change too much.} to alleviate certain
+problems. The scrollbar containers have their own grid and a grid for it's
+content. The implantation makes the looping over all children tricky. This has
+been solved, but the design of the solution is rather awkward. Obviously fixing
+the design is the right thing to do, but that breaks the iteration.
+
+By first writing an iteration class the interface for iteration can be kept
+cleaner and the classes can easily be refactored.
+
+\subsection{Design}
+
+There are two basic kind of iterators in the design, the simple ones that can
+only travel themselves and their direct children. This type will be referred to
+as basic iterator hereafter. 
+
+This basic iterator is a superclass for several specific subclasses. The
+superclass is a concrete class, which can be instantiated. This class acts as a
+sentinel iterator, signalling the end of a list.
+
+Every widget has it's own creation function returning a pointer to a subclass
+object, allowing the main iterator to keep pointers to basic iterators, which it
+uses for travelling.
+
+\paragraph{}
+
+The other kind is called the main iterator. This iterator is the type the user
+normally creates and uses. The class is a template class, where a policy designs
+how the travelling should go\footnote{For now only one policy is planned, but I
+can think of more kinds}.
+
+When the main iterator is created it's possible to add a predicate to the
+constructor. The predicate determines what the travelling routine does with a
+candidate widget.
+
+Now that we know the players in the game look further about the implementation
+details and the decisions made.
+
+\subsubsection{Travelling}
+
+A widget can have several ``layers'' namely:
+
+\begin{description}
+\item[self] The widget itself.
+\item[grid] Container widget have a grid which is another layer, note that for a
+	grid widget, its grid and self layer are the same.
+\item[content] Scrollbar containers have a grid, containing their scrollbars and
+	a dummy content spacer. Their real content is stored in a separate internal
+	node, which is used as content layer.
+\end{description}
+
+The travel policy decides in which order these layers are visited, and when a
+node from a ``grid'' or ``content'' is returned, which direction to travel?
+Travel over them first and then into their children or children first? These
+decisions are coded in the travelling policy.
+
+While travelling, the policy finds a candidate widget to travel to. This widget is
+offered for evaluation to the predicate, which returns one of the following
+values:
+
+\begin{description}
+\item[return] The widget referred by the iterator is accepted and the algorithm
+	found its target.
+\item[continue] The widget is skipped and the next candidate is sought.
+\item[break] The widget is not allowed and the travelling at this layer stops.
+	This doesn't mean the algorithm gives up. This layer is cancelled but the
+	travelling path might have more options, which are used. At the moment there's
+	no way to tell that the candidate has failed and that the searching should stop
+	altogether, a ``exit'' result might be added for that case.
+\end{description}
+
+Obviously these names are inspired by the C++ keywords.
+
+\subsubsection{Copying}
+
+The basic iterators are copyable since their state can easily be copied.
+
+\paragraph{}
+
+The main iterator can't be copied, it would involve copying the state
+and copying the iterator is deemed not to be needed.
+
+\subsubsection{Operator++(int) (postfix increment)}
+
+The postfix increment operator hasn't been added to either widget type. For the
+basic iterators, there's the problem that the type iterator returned after
+iteration might not be the original type. This works properly on the prefix
+increment operator since it's a virtual function, using the covariant return
+type.
+
+The postfix version needs to return an object and that would involve slicing the
+returned object instead of binding it to a reference.
+
+\paragraph{}
+
+The main iterator has no postfix increment operator since it's not copyable.
+This of course is a bit the chicken and the egg problem, since I wanted to
+prevent the postfix increment operator I made the class not copyable.
+
+For most (standard) iterator classes the overhead of copying isn't too high
+since those iterators carry little state.  This iterator carries a lot of state,
+so you don't want to copy it. The cost of copying is $O(n)$ where $n$ is the
+depth in the widget tree the iterator is\footnote{This might depend on the
+travelling policy, but it won't get cheap}. So in the same spirit that the
+standard library doesn't add operator[] for std::list I omitted the postfix
+increment operator.
+
+\end{document}
+
