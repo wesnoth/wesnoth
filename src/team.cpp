@@ -229,6 +229,7 @@ void team::merge_shroud_map_data(const std::string& shroud_data)
 }
 
 team::team(const config& cfg, const gamemap& map, int gold) :
+		savegame_config(),
 		gold_(gold),
 		villages_(),
 		shroud_(),

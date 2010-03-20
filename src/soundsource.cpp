@@ -32,6 +32,8 @@ const unsigned DEFAULT_FADE_RANGE       = 14;
 unsigned int positional_source::last_id = 0;
 
 manager::manager(const display &disp) :
+	observer(),
+	savegame_config(),
 	sources_(),
 	disp_(disp)
 {

@@ -57,6 +57,7 @@ static lg::log_domain log_engine_tc("engine/team_construction");
 #define DBG_NG_TC LOG_STREAM(debug, log_engine_tc)
 
 game_classification::game_classification():
+	savegame_config(),
 	label(),
 	parent(),
 	version(),
@@ -75,6 +76,7 @@ game_classification::game_classification():
 	{}
 
 game_classification::game_classification(const config& cfg):
+	savegame_config(),
 	label(cfg["label"]),
 	parent(cfg["parent"]),
 	version(cfg["version"]),

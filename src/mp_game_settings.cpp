@@ -23,6 +23,7 @@
 #include "util.hpp"
 
 mp_game_settings::mp_game_settings() :
+	savegame_config(),
 	name(),
 	password(),
 	hash(),
@@ -48,6 +49,7 @@ mp_game_settings::mp_game_settings() :
 { reset(); }
 
 mp_game_settings::mp_game_settings(const config& cfg) :
+	savegame_config(),
 	name(),
 	password(),
 	hash(),
@@ -74,7 +76,8 @@ mp_game_settings::mp_game_settings(const config& cfg) :
 }
 
 mp_game_settings::mp_game_settings(const mp_game_settings& settings)
-	: name(settings.name)
+	: savegame_config()
+	, name(settings.name)
 	, password(settings.password)
 	, hash(settings.hash)
 	, mp_era(settings.mp_era)
