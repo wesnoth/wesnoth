@@ -6,12 +6,7 @@
 
 AC_PREREQ([2.60])
 
-#######################################################################
-# Don't forget to change the default value of 'experimental' 
-# to match whether this is a stable or unstable release.
-#######################################################################
 define([WESNOTH_VERSION],[1.7.15+svn])
-experimental_default=no
 define([WESNOTH_BUGS],[http://bugs.wesnoth.org])
 
 AC_INIT([Battle for Wesnoth], WESNOTH_VERSION, WESNOTH_BUGS, [wesnoth])
@@ -172,11 +167,6 @@ if test "x$debug_window_layout" = "xyes"
 then
 	CPPFLAGS="$CPPFLAGS -DDEBUG_WINDOW_LAYOUT_GRAPHS"
 fi
-
-AC_ARG_ENABLE([experimental],
-              AS_HELP_STRING([--enable-experimental], [enable experimental developer-only code]),
-	      [experimental=$enableval],
-	      [experimental=$experimental_default])
 
 
 DATADIR=$PACKAGE
