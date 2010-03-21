@@ -1738,6 +1738,7 @@ void tlobby_main::user_dialog_callback(user_info* info)
 	//update_gamelist();
 	delay_playerlist_update_ = false;
 	player_list_dirty_ = true;
+	network::send_data(config("refresh_lobby"), 0, true);
 }
 
 void tlobby_main::skip_replay_changed_callback(twidget* w)
