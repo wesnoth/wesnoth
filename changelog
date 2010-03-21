@@ -16,6 +16,8 @@ Version 1.7.15+svn:
    * Fix bug #15601: replay crashes when replay log messages are enabled
    * Fix segfault due to missing seed-attribute of an attack in a replay
    * Added the first draft of the gui2 design documentation
+   * Limit the maximum length of the mp command dialog as workaround for bug
+     #13333 (This workaround is only implemented for Windows and Mac)
 
 Version 1.7.15-1.8rc1:
  * AI:

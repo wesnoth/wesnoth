@@ -60,7 +60,18 @@ void tmp_cmd_wrapper::pre_show(CVideo& /*video*/, twindow& window)
 {
 	ttext_box* message =
 		dynamic_cast<ttext_box*>(window.find("message", false));
-	if(message) window.keyboard_capture(message);
+	if(message) {
+		/**
+		 * @todo For some reason the text wrapping fails on Windows and Mac,
+		 * this causes an exception to be thrown, which brings the user back
+		 * to the main menu. So avoid that problem by imposing a maximum
+		 * length (the number of letters W that fit).
+		 */
+#if defined(_WIN32) || defined(__APPLE__)
+		message->set_maximum_length(18);
+#endif
+		window.keyboard_capture(message);
+	}
 
 	message = dynamic_cast<ttext_box*>(window.find("reason", false));
 	if(message) message->set_active(preferences::is_authenticated());
