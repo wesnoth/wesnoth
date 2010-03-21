@@ -559,6 +559,9 @@ void playsingle_controller::play_turn(bool save)
 		}
 
 		check_victory();
+
+		//if loading a savegame, network turns might not have reset this yet
+		loading_game_ = false;
 	}
 
 	// Time has run out
