@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-15 01:03+0100\n"
-"PO-Revision-Date: 2010-02-07 19:07+0100\n"
+"POT-Creation-Date: 2010-03-15 21:32+0100\n"
+"PO-Revision-Date: 2010-03-20 18:51+0100\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
@@ -2066,11 +2066,12 @@ msgstr "Aucune grille définie."
 
 #: src/gui/auxiliary/window_builder.cpp:146
 msgid "Linked '$id' group has multiple definitions."
-msgstr ""
+msgstr "Le groupe lié « $id » a plusieurs définitions."
 
 #: src/gui/auxiliary/window_builder.cpp:342
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
+"Le groupe lié « $id » a besoin d'une clé « fixed_width » ou « fixed_height »."
 
 #: src/gui/auxiliary/window_builder.cpp:441
 msgid "A row must have a column."
@@ -2162,10 +2163,12 @@ msgid ""
 "Whisper session with $name started. If you don't want to receive messages "
 "from this user, type /ignore $name\n"
 msgstr ""
+"Une conversation privée avec $name a débuté. Si vous ne voulez pas recevoir "
+"les messages de cet utilisateur, tapez /ignore $name\n"
 
 #: src/gui/dialogs/lobby_main.cpp:1078
 msgid "Room $name joined"
-msgstr ""
+msgstr "Salle $name rejointe"
 
 #: src/gui/dialogs/lobby_main.cpp:1548
 msgid "Password Required"

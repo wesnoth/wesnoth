@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-08 14:58+0100\n"
-"PO-Revision-Date: 2009-11-08 15:20+0100\n"
-"Last-Translator: Guillaume Melquiond <guillaume.melquiond@gmail.com>\n"
+"POT-Creation-Date: 2010-03-15 21:33+0100\n"
+"PO-Revision-Date: 2010-03-20 19:43+0100\n"
+"Last-Translator: Benoît Timbert <benoît.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -61,11 +61,16 @@ msgstr "Chauve-souris terrifiante"
 
 #. [unit_type]: id=Dread Bat, race=bats
 #: data/core/units/bats/Bat_Dread.cfg:26
+#, fuzzy
 msgid ""
 "The most vicious, predatory, and successful of the Blood Bats become Dread "
 "Bats, gaining the ability to drain not merely the blood but the very life "
 "energy of their victims."
 msgstr ""
+"Les Chauve-souris sanguinaires les plus vicieuses, dangereuses et "
+"victorieuses deviennent des Chauve-souris terrifiantes, gagnant ainsi la "
+"capacité d'aspirer, non plus le sang, mais l'énergie vitale de leurs "
+"victimes."
 
 #. [unit_type]: id=Vampire Bat, race=bats
 #: data/core/units/bats/Bat_Vampire.cfg:4
@@ -150,9 +155,8 @@ msgstr ""
 
 #. [unit_type]: id=Drake Arbiter, race=drake
 #: data/core/units/drakes/Arbiter.cfg:4
-#, fuzzy
 msgid "Drake Arbiter"
-msgstr "Combattant dracan"
+msgstr "Autorité dracane"
 
 #. [unit_type]: id=Drake Arbiter, race=drake
 #: data/core/units/drakes/Arbiter.cfg:19
@@ -218,6 +222,7 @@ msgstr "Maître-lame dracan"
 
 #. [unit_type]: id=Drake Blademaster, race=drake
 #: data/core/units/drakes/Blademaster.cfg:21
+#, fuzzy
 msgid ""
 "Black armor marks the elite order of the Fighter caste: the Blademasters. "
 "Only a few manage to gain the skill and power necessary to be admitted to "
@@ -226,6 +231,13 @@ msgid ""
 "around; Blademasters fiercely protect their fellows' honor, and no-one would "
 "dispute their right to do so."
 msgstr ""
+"Les Armures Noires forment l'élite de la caste de Combattants : Les Maître-"
+"lames. Il y en a peu qui arrivent à gagner les compétences et le pouvoir "
+"nécessaire pour être admis à ce haut rang, sans périr dans la bataille. Bien "
+"qu'il arrive aux autres dracans de critiquer la caste de Combattants, ils "
+"vérifient deux fois pour s'assurer qu'il n'y en a aucun aux alentours; Les "
+"Maître-lames protègent farouchement l'honneur de leur ordre, et personne ne "
+"leur disputerait ce droit."
 
 #. [attack]: type=blade
 #: data/core/units/drakes/Blademaster.cfg:41
@@ -233,7 +245,7 @@ msgstr ""
 #: data/core/units/drakes/Enforcer.cfg:36
 #: data/core/units/drakes/Thrasher.cfg:23
 msgid "war talon"
-msgstr ""
+msgstr "serres de combat"
 
 #. [unit_type]: id=Drake Burner, race=drake
 #: data/core/units/drakes/Burner.cfg:4
@@ -274,6 +286,7 @@ msgstr "Cogneur dracan"
 
 #. [unit_type]: id=Drake Clasher, race=drake
 #: data/core/units/drakes/Clasher.cfg:23
+#, fuzzy
 msgid ""
 "The Clashers are members of a unique caste among the drakes. Their thick "
 "armor, while compensating for the drakes' natural weakness against spears "
@@ -287,6 +300,13 @@ msgid ""
 "particularly good at \"resolving\" territorial disputes with other drakes "
 "and enforcing the laws of their tribe."
 msgstr ""
+"Les Cogneurs sont les membres d'une classe unique parmi les dracans. Leur "
+"épaisse armure, toute en compensant la faiblesse naturelle des dracans "
+"contre les lances et les flèches, est tellement lourde et imposante qu'ils "
+"ne sont alors plus capables de voler ou d'utiliser leur feu interne, faute "
+"de souffle. Ils ont embrassé cet handicap, moulant totalement leurs ailes "
+"pour montrer qu'ils n'ont pas besoin de voler pour triompher lors de la "
+"bataille."
 
 #. [attack]: type=pierce
 #: data/core/units/drakes/Clasher.cfg:48
@@ -338,7 +358,7 @@ msgstr ""
 #: data/core/units/drakes/Enforcer.cfg:45
 #: data/core/units/drakes/Thrasher.cfg:41
 msgid "ram"
-msgstr ""
+msgstr "coup de boule"
 
 #. [attack]: type=pierce
 #. [attack]: type=blade
@@ -381,6 +401,7 @@ msgstr "Dracan incendiaire"
 
 #. [unit_type]: id=Fire Drake, race=drake
 #: data/core/units/drakes/Fire.cfg:19
+#, fuzzy
 msgid ""
 "Not yet permitted to wear the red-gold reserved for the highest ranks of the "
 "Burners, the Fire Drakes trim their armor with silver. Though they have only "
@@ -388,6 +409,11 @@ msgid ""
 "vitality emanates through their skin, scorching their scales to a reddish-"
 "gray."
 msgstr ""
+"N'ayant pas encore le droit de porter le rouge-or réservé aux plus hauts "
+"rangs des Pyrodracans, les Dracans Incendiaires font leurs armures en "
+"argent. Bien qu'ils viennent juste de commencer à dédier leurs vies à la "
+"flamme qui brule en eux, c'est leur vitalité qui émane à travers leur peau, "
+"brulant leurs écailles et les rendant gris-rouge."
 
 #. [unit_type]: id=Drake Flameheart, race=drake
 #: data/core/units/drakes/Flameheart.cfg:4
@@ -499,9 +525,8 @@ msgstr ""
 
 #. [unit_type]: id=Drake Thrasher, race=drake
 #: data/core/units/drakes/Thrasher.cfg:4
-#, fuzzy
 msgid "Drake Thrasher"
-msgstr "Cogneur dracan"
+msgstr "Rosseur dracan"
 
 #. [unit_type]: id=Drake Thrasher, race=drake
 #: data/core/units/drakes/Thrasher.cfg:19
@@ -737,9 +762,8 @@ msgstr "hachette"
 
 #. [unit_type]: id=Dwarvish Pathfinder, race=dwarf
 #: data/core/units/dwarves/Pathfinder.cfg:4
-#, fuzzy
 msgid "Dwarvish Pathfinder"
-msgstr "Foudroyeur nain"
+msgstr "Pisteur nain"
 
 #. [unit_type]: id=Dwarvish Pathfinder, race=dwarf
 #: data/core/units/dwarves/Pathfinder.cfg:18
@@ -2440,9 +2464,8 @@ msgstr ""
 
 #. [attack]: type=impact
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:36
-#, fuzzy
 msgid "flail"
-msgstr "queue"
+msgstr "fléau d'armes"
 
 #. [unit_type]: id=Spearman, race=human
 #: data/core/units/humans/Loyalist_Spearman.cfg:4
