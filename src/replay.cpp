@@ -1130,9 +1130,16 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				continue;
 			}
 
-			rand_rng::seed_t seed = lexical_cast<rand_rng::seed_t>(child["seed"]);
-			rand_rng::set_seed(seed);
-			LOG_REPLAY << "Replaying attack with seed " << seed << "\n";
+			try {
+				rand_rng::seed_t seed = lexical_cast<rand_rng::seed_t>(child["seed"]);
+				rand_rng::set_seed(seed);
+				LOG_REPLAY << "Replaying attack with seed " << seed << "\n";
+			} catch (bad_lexical_cast) {
+				std::stringstream errbuf;
+				errbuf << "illegal random seed for the attack " << src << " -> " << dst << '\n';
+				replay::process_error(errbuf.str());
+				continue;
+			}
 
 			DBG_REPLAY << "Attacker XP (before attack): " << u->second.experience() << "\n";
 
