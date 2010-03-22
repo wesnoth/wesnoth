@@ -1,10 +1,9 @@
 Version 1.7.15+svn:
  * AI:
-   * Fix bug #14247: make formula AI behave correctly if the side has only 1
+   * Fixed bug #14247: make formula AI behave correctly if the side has only 1
      potential recruit.
  * Graphics:
-   * New Cave Spider graphics
-   * New Cuttle Fish graphics
+   * New Cave Spider and Cuttle Fish graphics
  * Language and i18n:
    * New translations: Serbian Ijekavian, Serbian Ijekavian Latin
    * Updated translations: Czech, Finnish, French, German, Hungarian, Japanese,
@@ -19,16 +18,16 @@ Version 1.7.15+svn:
    * Work around a lobby resize issue, which made game list contents too small
      (bug #15561)
  * Miscellaneous and bug fixes:
-   * Defaulted log level to error again
-   * Fix bug #13882: Map which is invalid aborts map selection
-   * Fix bug #14114: checksum operations fail against certain scenario events
-   * Fix bug #15545: recall list gone after loading savegame created in linger
-     mode
-   * Fix bug #15656: OOS errors in LoW from differing starting gold
-   * Fix bug #15598: can't move units after reloading game
-   * Fix bug #15601: replay crashes when replay log messages are enabled
-   * Fix segfault due to missing seed-attribute of an attack in a replay
    * Added the first draft of the gui2 design documentation
+   * Defaulted log level to error again
+   * Fixed bug #13882: Map which is invalid aborts map selection
+   * Fixed bug #14114: checksum operations fail against certain scenario events
+   * Fixed bug #15545: recall list gone after loading savegame created in
+     linger mode
+   * Fixed bug #15598: can't move units after reloading game
+   * Fixed bug #15601: replay crashes when replay log messages are enabled
+   * Fixed bug #15656: OOS errors in LoW from differing starting gold
+   * Fixed segfault due to missing seed-attribute of an attack in a replay
    * Limit the maximum length of the mp command dialog as workaround for bug
      #13333 (This workaround is only implemented for Windows and Mac)
 

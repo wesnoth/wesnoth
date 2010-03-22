@@ -4,8 +4,7 @@ changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/trunk/changelog
 
 Version 1.7.15+svn:
  * Graphics:
-   * New Cave Spider graphics
-   * New Cuttle Fish graphics
+   * New Cave Spider and Cuttle Fish graphics
  * Language and i18n:
    * New translations: Serbian Ijekavian, Serbian Ijekavian Latin.
    * Updated translations: Czech, Finnish, French, German, Hungarian, Japanese,
@@ -16,10 +15,12 @@ Version 1.7.15+svn:
    * The titlescreen will play a random music playlist, instead of looping the
      main menu song (but will still start with the main menu theme).
  * Miscellaneous and bug fixes:
-   * Fix bug #13882: Map which is invalid aborts map selection
-   * Fix bug #15545: recall list gone after loading savegame created in linger
-     mode
-   * Fix bug #15656: OOS errors in LoW from differing starting gold
+   * Fixed bug #13882: Map which is invalid aborts map selection.
+   * Fixed bug #15545: Recall list gone after loading savegame created in
+     linger mode.
+   * Fixed bug #15598: Can't move units after reloading game.
+   * Fixed bug #15656: OutOfSync errors in Legend of Wesmere due to differing
+     starting gold
 
 
 Version 1.7.15-1.8rc1:
