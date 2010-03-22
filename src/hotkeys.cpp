@@ -525,7 +525,7 @@ hotkey_item& get_hotkey(int character, int keycode, bool shift, bool ctrl,
 		   << "\n";
 
 	// Sometimes control modifies by -64, ie ^A == 1.
-	if (character < 64 && ctrl) {
+	if (0 < character && character < 64 && ctrl) {
 		if (shift)
 			character += 64;
 		else
