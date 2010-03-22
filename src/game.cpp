@@ -1941,7 +1941,17 @@ static int do_gameloop(int argc, char** argv)
 		statistics::fresh_stats();
 
         if (!game.is_loading()) {
-            sound::play_music_repeatedly(game_config::title_music);
+			const config &cfg = game.game_config().child("titlescreen_music");
+			if (cfg) {
+	            sound::play_music_repeatedly(game_config::title_music);
+				foreach (const config &i, cfg.child_range("music")) {
+					sound::play_music_config(i);
+				}
+				sound::commit_music_changes();
+			} else {
+				sound::empty_playlist();
+				sound::stop_music();
+			}
         }
 
 		if(game.play_test() == false) {
