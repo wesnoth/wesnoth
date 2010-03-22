@@ -33,6 +33,7 @@
 #include "playcampaign.hpp"
 #include "upload_log.hpp"
 #include "formula_string_utils.hpp"
+#include "sound.hpp"
 
 #include <boost/bind.hpp>
 
@@ -521,9 +522,21 @@ static void do_preferences_dialog(game_display& disp, const config& game_config)
 
 static void enter_lobby_mode(game_display& disp, const config& game_config, mp::chat& chat, config& gamelist)
 {
+
+
 	mp::ui::result res;
 
 	while (true) {
+		const config &cfg = game_config.child("lobby_music");
+		if (cfg) {
+			foreach (const config &i, cfg.child_range("music")) {
+				sound::play_music_config(i);
+			}
+			sound::commit_music_changes();
+		} else {
+			sound::empty_playlist();
+			sound::stop_music();
+		}
 		lobby_info li(game_config);
 		gui2::tlobby_main dlg(game_config, li, disp);
 		dlg.set_preferences_callback(
