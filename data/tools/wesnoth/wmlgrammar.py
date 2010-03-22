@@ -20,6 +20,7 @@ class Grammar(object):
             "tstring" : re.compile(".*"),
         }
         self.elements = {}
+        self.categories = {}
         for type in schema.get_all_text():
             match = parse_match(type.data)
             self.datatypes.update( { type.name : match } )
@@ -28,12 +29,21 @@ class Grammar(object):
             self.elements.update( { node.name : node } )
         for element in [el for el in self.elements.values() if el.parent]:
             element.inherit(self.elements[element.parent])
+        # categories
+        for element in [el for el in self.elements.values() if el.category]:
+            if element.category not in self.categories:
+                self.categories[element.category] = []
+            self.categories[element.category].append( element )
 
     def get_element(self, name):
         return self.elements[name]
 
     def get_datatype(self, name):
         return self.datatypes[name]
+
+    def get_category(self, name):
+        if name not in self.categories: return []
+        return self.categories[name]
 
 class Node(object):
     def __init__(self, schema, datatypes):
@@ -42,6 +52,8 @@ class Node(object):
         self.ext_elements = [] #Ugh, do we really want to do this?
         self.attributes = set([])
         self.parent = None
+        self.description = None
+        self.category = None
         for item in schema.get_all_text():
             if item.name[0] == '_':
                 self.elements.add( Element(item) )
@@ -51,6 +63,9 @@ class Node(object):
             if item.name == "element":
                 print "[element] found in schema, not parsing yet"
                 #self.ext_elements...
+            elif item.name == "description":
+                self.description = item.get_text("text")
+                self.category = item.get_text("category")
             else:
                 raise Exception( "Unknown element [%s] encountered in grammar for [%s]" % (item.name, self.name) )
         if ':' in self.name:
