@@ -321,11 +321,21 @@ void create::process_event()
 	}
 
 	if(launch_game_.pressed() || maps_menu_.double_clicked()) {
-		if(name_entry_.text() != "") {
+		// check if the map is valid
+		const std::string& map_data = parameters_.scenario_data["map_data"];
+		std::auto_ptr<gamemap> map(NULL);
+		try {
+			map = std::auto_ptr<gamemap>(new gamemap(game_config(), map_data));
+		} catch(incorrect_map_format_exception&) {
+		} catch(twml_exception&) {}
+
+		if (map.get() == NULL) {
+			gui2::show_transient_message(disp_.video(), "", _("The map is invalid."));
+		} else if (name_entry_.text() == "") {
+			gui2::show_transient_message(disp_.video(), "", _("You must enter a name."));
+		} else {
 			set_result(CREATE);
 			return;
-		} else {
-			gui2::show_transient_message(disp_.video(), "", _("You must enter a name."));
 		}
 	}
 
