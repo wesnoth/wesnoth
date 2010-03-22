@@ -1,14 +1,11 @@
 package wesnoth_eclipse_plugin.wizards;
 
-import java.lang.reflect.InvocationTargetException;
-
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
-import org.eclipse.ui.wizards.newresource.BasicNewProjectResourceWizard;
 
 public class CampaignNewWizard extends Wizard implements INewWizard {
 	
