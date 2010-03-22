@@ -1132,7 +1132,8 @@ unit_type_data::unit_type_data() :
 	hide_help_all_(false),
 	hide_help_type_(),
 	hide_help_race_(),
-	unit_cfg_(NULL)
+	unit_cfg_(NULL),
+	build_status_(unit_type::NOT_BUILT)
 {
 }
 
@@ -1251,59 +1252,50 @@ void unit_type_data::clear()
 	types_.clear();
 	movement_types_.clear();
 	races_.clear();
+	build_status_ = unit_type::NOT_BUILT;
 
 	hide_help_all_ = false;
 	hide_help_race_.clear();
 	hide_help_type_.clear();
 }
 
-void unit_type_data::build_all(unit_type::BUILD_STATUS status) const
+void unit_type_data::build_all(unit_type::BUILD_STATUS status)
 {
-    assert(unit_cfg_ != NULL);
+	if (int(status) <= int(build_status_)) return;
+	assert(unit_cfg_ != NULL);
 
-    for (unit_type_map::iterator u = types_.begin(); u != types_.end(); ++u){
-        build_unit_type(u, status);
-    }
-    for (unit_type_map::iterator u = types_.begin(); u != types_.end(); ++u){
-        add_advancement(u->second);
-    }
+	for (unit_type_map::iterator u = types_.begin(), u_end = types_.end(); u != u_end; ++u) {
+		build_unit_type(u, status);
+	}
+	for (unit_type_map::iterator u = types_.begin(), u_end = types_.end(); u != u_end; ++u) {
+		add_advancement(u->second);
+	}
+
+	build_status_ = status;
 }
 
 unit_type &unit_type_data::build_unit_type(const unit_type_map::iterator &ut, unit_type::BUILD_STATUS status) const
 {
-    DBG_UT << "Building unit type " << ut->first << ", level " << status << "\n";
+	DBG_UT << "Building unit type " << ut->first << ", level " << status << '\n';
 
-    switch (status){
-        case unit_type::CREATED: {
-			const config& unit_cfg = find_config(ut->first);
-            ut->second.set_config(unit_cfg);
-			ut->second.build_created(unit_cfg, movement_types_, races_, unit_cfg_->child_range("trait"));
-            break;
-        }
-        case unit_type::HELP_INDEX: {
-            //build the stuff that is needed to feed the help index
-            if ( (ut->second.build_status() == unit_type::NOT_BUILT) || (ut->second.build_status() == unit_type::CREATED) ) {
-				const config& unit_cfg = find_config(ut->first);
-				ut->second.build_help_index(unit_cfg, movement_types_, races_, unit_cfg_->child_range("trait"));
-			}
-            break;
-        }
-        case unit_type::WITHOUT_ANIMATIONS:
-        case unit_type::FULL: {
-            if ( (ut->second.build_status() == unit_type::NOT_BUILT) ||
-                (ut->second.build_status() == unit_type::CREATED) ||
-                (ut->second.build_status() == unit_type::HELP_INDEX) )
-            {
-				const config& unit_cfg = find_config(ut->first);
-				ut->second.build_full(unit_cfg, movement_types_, races_, unit_cfg_->child_range("trait"));
-            }
-            break;
-        }
-        default:
-            break;
-    }
+	const config &unit_cfg = find_config(ut->first);
+	if (int(status) <= int(ut->second.build_status()))
+		return ut->second;
 
-    return ut->second;
+	switch (status) {
+	case unit_type::CREATED:
+		ut->second.set_config(unit_cfg);
+		ut->second.build_created(unit_cfg, movement_types_, races_, unit_cfg_->child_range("trait"));
+		break;
+	case unit_type::HELP_INDEX:
+		// Build the data needed to feed the help index.
+		ut->second.build_help_index(unit_cfg, movement_types_, races_, unit_cfg_->child_range("trait"));
+		break;
+	default:
+		ut->second.build_full(unit_cfg, movement_types_, races_, unit_cfg_->child_range("trait"));
+	}
+
+	return ut->second;
 }
 
 void unit_type_data::read_hide_help(const config& cfg)
