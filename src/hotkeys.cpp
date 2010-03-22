@@ -264,43 +264,46 @@ void hotkey_item::load_from_config(const config& cfg)
 	ctrl_ = utils::string_bool(cfg["ctrl"]);
 	shift_ = utils::string_bool(cfg["shift"]);
 
-	if (!key.empty()) {
-		// They may really want a specific key on the keyboard: we assume
-		// that any single character keyname is a character.
-		if (key == CLEARED_TEXT)
-		{
-			type_ = hotkey_item::CLEARED;
-		}
-		else if (key.size() > 1) {
-			type_ = BY_KEYCODE;
+	if (key.empty()) return;
 
-			keycode_ = sdl_keysym_from_name(key);
-			if (keycode_ == SDLK_UNKNOWN) {
-				if (tolower(key[0]) != 'f') {
-					ERR_CF << "hotkey key '" << key << "' invalid\n";
-				} else {
-					int num = lexical_cast_default<int>
-						(std::string(key.begin()+1,	key.end()), 1);
-					keycode_ = num + SDLK_F1 - 1;
-				}
+	if (key == CLEARED_TEXT)
+	{
+		type_ = hotkey_item::CLEARED;
+		return;
+	}
+
+	wide_string wkey = utils::string_to_wstring(key);
+
+	// They may really want a specific key on the keyboard: we assume
+	// that any single character keyname is a character.
+	if (wkey.size() > 1) {
+		type_ = BY_KEYCODE;
+
+		keycode_ = sdl_keysym_from_name(key);
+		if (keycode_ == SDLK_UNKNOWN) {
+			if (tolower(key[0]) != 'f') {
+				ERR_CF << "hotkey key '" << key << "' invalid\n";
+			} else {
+				int num = lexical_cast_default<int>(key.c_str() + 1);
+				keycode_ = num + SDLK_F1 - 1;
 			}
-		} else if (key == " " || shift_
-#ifdef __APPLE__
-			   || alt_
-#endif
-			   ) {
-			// Space must be treated as a key because shift-space
-			// isn't a different character from space, and control key
-			// makes it go weird.  shift=yes should never be specified
-			// on single characters (eg. key=m, shift=yes would be
-			// key=M), but we don't want to break old preferences
-			// files.
-			type_ = BY_KEYCODE;
-			keycode_ = key[0];
-		} else {
-			type_ = BY_CHARACTER;
-			character_ = key[0];
 		}
+	} else if (key == " " || shift_
+#ifdef __APPLE__
+		|| alt_
+#endif
+		) {
+		// Space must be treated as a key because shift-space
+		// isn't a different character from space, and control key
+		// makes it go weird.  shift=yes should never be specified
+		// on single characters (eg. key=m, shift=yes would be
+		// key=M), but we don't want to break old preferences
+		// files.
+		type_ = BY_KEYCODE;
+		keycode_ = wkey[0];
+	} else {
+		type_ = BY_CHARACTER;
+		character_ = wkey[0];
 	}
 }
 
@@ -473,7 +476,7 @@ void save_hotkeys(config& cfg)
 			item["key"] = SDL_GetKeyName(SDLKey(i->get_keycode()));
 			item["shift"] = i->get_shift() ? "yes" : "no";
 		} else if (i->get_type() == hotkey_item::BY_CHARACTER) {
-			item["key"] = std::string(1, static_cast<char>(i->get_character()));
+			item["key"] = utils::wchar_to_string(i->get_character());
 		}
 		item["alt"] = i->get_alt() ? "yes" : "no";
 		item["ctrl"] = i->get_ctrl() ? "yes" : "no";
