@@ -1,4 +1,7 @@
 Version 1.7.15+svn:
+ * AI:
+   * Fix bug #14247: make formula AI behave correctly if the side has only 1
+     potential recruit.
  * Graphics:
    * New Cave Spider graphics
    * New Cuttle Fish graphics
@@ -8,7 +11,7 @@ Version 1.7.15+svn:
      Lithuanian, Serbian, Spanish, Slovak
  * User interface:
    * Work around a lobby resize issue, which made game list contents too small
-   (bug #15561)
+     (bug #15561)
  * Miscellaneous and bug fixes:
    * Defaulted log level to error again
    * Fix bug #14114: checksum operations fail against certain scenario events

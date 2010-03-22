@@ -102,11 +102,11 @@ def my_recruits_movement_cost(ai*)
 		id_translator = id_to_location_map(ai);
 
 def locally_normalize_to_highest( input_map )
-	map( input_map, (value * 100)/max )
+	map( input_map, if(max=0,100,(value * 100)/max) )
 	where max = highest_value(input_map);
 
 def locally_normalize_to_lowest( input_map )
-	map( input_map, (value * 100)/min )
+	map( input_map, if(min=0,100,(value * 100)/min) )
 	where min = lowest_value(input_map);
 
 
