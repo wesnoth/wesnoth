@@ -9,6 +9,12 @@ Version 1.7.15+svn:
    * New translations: Serbian Ijekavian, Serbian Ijekavian Latin
    * Updated translations: Czech, Finnish, French, German, Hungarian, Japanese,
      Latvian, Lithuanian, Serbian, Spanish, Slovak
+ * Music and sound effects:
+   * The lobby will play a random music playlist, configured by [lobby_music],
+     instead of looping the main menu song (bug #15668).
+   * The titlescreen will play a random music playlist, configured by
+     [titlescreen_music], instead of looping the main menu song (bug #15669).
+     First song played will still alaways be the main_menu theme.
  * User interface:
    * Work around a lobby resize issue, which made game list contents too small
      (bug #15561)
@@ -25,10 +31,6 @@ Version 1.7.15+svn:
    * Added the first draft of the gui2 design documentation
    * Limit the maximum length of the mp command dialog as workaround for bug
      #13333 (This workaround is only implemented for Windows and Mac)
-   * The lobby will play a random music playlist, configured by [lobby_music],
-     instead of looping the main menu song (bug #15668).
-   * The titlescreen will play a random music playlist, configured by
-     [titlescreen_music], instead of looping the main menu song (bug #15669).
 
 Version 1.7.15-1.8rc1:
  * AI:
