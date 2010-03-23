@@ -4,6 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.wesnoth.wml.schema.SchemaAttribute;
+import org.wesnoth.wml.schema.SchemaChild;
 import org.wesnoth.wml.schema.SchemaTag;
 import org.wesnoth.wml.schema.impl.SchemaAttributeChildImpl;
 import org.wesnoth.wml.schema.impl.SchemaAttributeImpl;
@@ -44,29 +45,29 @@ public class SchemaFactory {
 		SchemaAttributeImpl integer = new SchemaAttributeImpl("integer");
 		schemaAttributesMap.put("integer", integer);
 
-		campaign.addAttribute(new SchemaAttributeChildImpl("abbrev",identifier,true));
+		campaign.addAttribute(new SchemaAttributeChildImpl("abbrev",identifier,SchemaChild.REQUIRED));
 
-		campaign.addAttribute(new SchemaAttributeChildImpl("define",identifier,true));
+		campaign.addAttribute(new SchemaAttributeChildImpl("define",identifier,SchemaChild.REQUIRED));
 
-		campaign.addAttribute(new SchemaAttributeChildImpl("description",tstring,true));
+		campaign.addAttribute(new SchemaAttributeChildImpl("description",tstring,SchemaChild.REQUIRED));
 
-		campaign.addAttribute(new SchemaAttributeChildImpl("difficulties",string,true));
+		campaign.addAttribute(new SchemaAttributeChildImpl("difficulties",string,SchemaChild.REQUIRED));
 
-		campaign.addAttribute(new SchemaAttributeChildImpl("difficulty_descriptions",string,true));
+		campaign.addAttribute(new SchemaAttributeChildImpl("difficulty_descriptions",string,SchemaChild.REQUIRED));
 
-		campaign.addAttribute(new SchemaAttributeChildImpl("extra_defines",string,false));
+		campaign.addAttribute(new SchemaAttributeChildImpl("extra_defines",string,SchemaChild.OPTIONAL));
 
-		campaign.addAttribute(new SchemaAttributeChildImpl("first_scenario",identifier,true));
+		campaign.addAttribute(new SchemaAttributeChildImpl("first_scenario",identifier,SchemaChild.REQUIRED));
 
-		campaign.addAttribute(new SchemaAttributeChildImpl("icon",path,false));
+		campaign.addAttribute(new SchemaAttributeChildImpl("icon",path,SchemaChild.OPTIONAL));
 
-		campaign.addAttribute(new SchemaAttributeChildImpl("id",string,true));
+		campaign.addAttribute(new SchemaAttributeChildImpl("id",string,SchemaChild.REQUIRED));
 
-		campaign.addAttribute(new SchemaAttributeChildImpl("image",path,false));
+		campaign.addAttribute(new SchemaAttributeChildImpl("image",path,SchemaChild.OPTIONAL));
 
-		campaign.addAttribute(new SchemaAttributeChildImpl("name",tstring,true));
+		campaign.addAttribute(new SchemaAttributeChildImpl("name",tstring,SchemaChild.REQUIRED));
 
-		campaign.addAttribute(new SchemaAttributeChildImpl("rank",integer,true));
+		campaign.addAttribute(new SchemaAttributeChildImpl("rank",integer,SchemaChild.REQUIRED));
 
 
 		schemaTagsMap.put("campaign", campaign);
