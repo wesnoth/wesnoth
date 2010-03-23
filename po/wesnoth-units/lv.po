@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-03-08 14:58+0100\n"
-"PO-Revision-Date: 2010-03-15 16:32+0300\n"
+"PO-Revision-Date: 2010-03-23 00:57+0300\n"
 "Last-Translator: Reinis Danne <rei4dan@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -50,7 +50,7 @@ msgstr "ilkņi"
 #. [unit_type]: id=Dread Bat, race=bats
 #: data/core/units/bats/Bat_Dread.cfg:4
 msgid "Dread Bat"
-msgstr ""
+msgstr "Šausmu sikspārnis"
 
 #. [unit_type]: id=Dread Bat, race=bats
 #: data/core/units/bats/Bat_Dread.cfg:26
@@ -59,11 +59,14 @@ msgid ""
 "Bats, gaining the ability to drain not merely the blood but the very life "
 "energy of their victims."
 msgstr ""
+"Visnegantākie, plēsonīgākie un veiksmīgākie no asins sikspārņiem kļūst par "
+"šausmu sikspārņiem, iegūstot spēju izsūkt no to upuriem ne tikai asinis, bet "
+"pašu dzīvības enerģiju."
 
 #. [unit_type]: id=Vampire Bat, race=bats
 #: data/core/units/bats/Bat_Vampire.cfg:4
 msgid "Vampire Bat"
-msgstr ""
+msgstr "Vampīru sikspārnis"
 
 #. [unit_type]: id=Vampire Bat, race=bats
 #: data/core/units/bats/Bat_Vampire.cfg:20
@@ -72,6 +75,9 @@ msgid ""
 "While their fangs are not very powerful, the health of victims is drained "
 "away along with their blood, and given to the Bats."
 msgstr ""
+"Vampīru sikspārņi ir lidojoši zvēri, kas barojas no citu radību asinīm. Lai "
+"gan to nagi nav ļoti spēcīgi, upuru veselība tiek izsūkta kopā ar to asinīm "
+"un dota sikspārņiem."
 
 #. [unit_type]: id=Boat, race=mechanical
 #: data/core/units/boats/Boat.cfg:4
@@ -84,6 +90,8 @@ msgid ""
 "Propelled by oars or small sails, boats are used to travel short distances "
 "and in shallows where large ships cannot navigate."
 msgstr ""
+"Dzītas uz priekšu ar airiem vai mazām burām, laivas tiek izmantotas, lai "
+"ceļotu īsas distances un seklumos, kur lieli kuģi nespēj pārvietoties."
 
 #. [unit_type]: id=Galleon, race=mechanical
 #: data/core/units/boats/Galleon.cfg:6
@@ -93,7 +101,7 @@ msgstr "Galeona"
 #. [unit_type]: id=Galleon, race=mechanical
 #: data/core/units/boats/Galleon.cfg:21
 msgid "Galleons are blue-water ships built for trade and transport."
-msgstr ""
+msgstr "Galeonas ir zilo ūdeņu kuģi, kas būvēti tirdzniecībai un transportam."
 
 #. [unit_type]: id=Pirate Galleon, race=mechanical
 #: data/core/units/boats/Pirate_Galleon.cfg:4
@@ -107,6 +115,8 @@ msgid ""
 "who crew them are more than happy to help relieve other ships of their "
 "weighty cargo."
 msgstr ""
+"Pirātu galeonas transporta kuģiem ir tas pats kas vilki aitām. Pirāti, kuri "
+"tās vada, ir vairāk kā priecīgi atvieglot citus kuģus no to smagās kravas."
 
 #. [attack]: type=pierce
 #: data/core/units/boats/Pirate_Galleon.cfg:21
@@ -2155,7 +2165,7 @@ msgstr ""
 #. [unit_type]: id=Mage, race=human
 #: data/core/units/humans/Mage.cfg:4
 msgid "Mage"
-msgstr ""
+msgstr "Mags"
 
 #. [unit_type]: id=Mage, race=human
 #: data/core/units/humans/Mage.cfg:25
@@ -2179,6 +2189,24 @@ msgid ""
 "Physically frail, and lacking familiarity with combat, magi do possess "
 "certain arts which are of great utility in battle."
 msgstr ""
+"Cilvēki bieži ir prātojuši par pasaules, kurā viņi dzīvo, darbību. Daži "
+"iedziļinās tajā daudz tālāk par vienkāršu apcerēšanu, un izvēlas to par "
+"savas dzīves galveno nodarbi. Jebkurš mags, kurš ir tā titula vērts, ir "
+"pavadījis vismaz dekādi studējot, savācot zināšanu krājumu, kas tos atšķir "
+"no citiem cilvēkiem. Šie vīri un sievas, kuri pilnībā ir veltījuši sevi "
+"gudrības meklējumiem, stāv spilgtā kontrastā ar pasauli, kurā tikai daži "
+"spēj lasīt un rakstīt. To rindas ir pildītas ar cerību pilniem "
+"aristokrātiem, vai tiem, kuri meklē izeju no intelektuālā trūkuma roku "
+"darbā.\n"
+"\n"
+"Tā ir ironija, ka ar visām viņu zināšanām, un tādēļ viņu pieticīgo monopolu, "
+"magu sabiedrība iespējams spētu valdīt pār sabiedrību, ja vien viņi to "
+"mēģinātu. Tomēr viņu patiesais aicinājums nav ne nauda, ne vara, un tiem, "
+"kuri redz maģijas studijas kā līdzekļus, lai tiktu pie tiem, bieži trūkst "
+"tieši tā apņēmība, kas nepieciešama patiesas meistarības sasniegšanai.\n"
+"\n"
+"Lai gan fiziski trausli, un ar nepietiekamu kaujas pieredzi, magiem ir "
+"pazīstamas noteiktas mākslas, kuras ir ļoti noderīgas kaujā."
 
 #. [attack]: type=fire
 #: data/core/units/humans/Mage.cfg:76
@@ -2218,7 +2246,7 @@ msgstr ""
 #: data/core/units/humans/Mage_Great.cfg:51
 #: data/core/units/humans/Mage_Red.cfg:75
 msgid "fireball"
-msgstr ""
+msgstr "ugunsbumba"
 
 #. [female]
 #: data/core/units/humans/Mage_Arch.cfg:171
@@ -3204,7 +3232,7 @@ msgstr ""
 #. [unit_type]: id=Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:4
 msgid "Wolf"
-msgstr ""
+msgstr "Vilki"
 
 #. [unit_type]: id=Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:35
@@ -3212,6 +3240,8 @@ msgid ""
 "Wolves are aggressive animals that hunt in packs. Although weak "
 "individually, a wolf pack can kill even the strongest man in minutes."
 msgstr ""
+"Vilki ir agresīvi dzīvnieki, kuri medī baros. Lai gan individuāli vāji, "
+"vilku bars spēj nogalināt pat visspēcīgāko vīru minūšu laikā."
 
 #. [unit_type]: id=Yeti, race=monster
 #: data/core/units/monsters/Yeti.cfg:4
@@ -3571,7 +3601,7 @@ msgstr ""
 #: data/core/units/saurians/Oracle.cfg:87
 #: data/core/units/saurians/Soothsayer.cfg:87
 msgid "curse"
-msgstr ""
+msgstr "lāsts"
 
 #. [unit_type]: id=Saurian Flanker, race=lizard
 #: data/core/units/saurians/Flanker.cfg:4
@@ -4081,7 +4111,7 @@ msgstr ""
 #. [unit_type]: id=Skeleton, race=undead
 #: data/core/units/undead/Skeleton.cfg:4
 msgid "Skeleton"
-msgstr ""
+msgstr "Skelets"
 
 #. [unit_type]: id=Skeleton, race=undead
 #: data/core/units/undead/Skeleton.cfg:19
@@ -4091,6 +4121,10 @@ msgid ""
 "neither pain, nor death, and their mere presence will often frighten away "
 "any who would challenge their master."
 msgstr ""
+"Skeleti ir kareivji, kuri tikuši nokauti kaujā un ir atgriesti dzīvē ar "
+"melnās maģijas palīdzibu. Tik pat kā bez apziņas, un nešaubīgi par savu "
+"mērķi, viņi nebaidās ne sāpju, ne nāves, un to klātbūtne vien bieži "
+"aizbaidīs katru, kurš izaicinātu viņu pavēlnieku."
 
 #. [unit_type]: id=Skeleton Archer, race=undead
 #: data/core/units/undead/Skeleton_Archer.cfg:4
