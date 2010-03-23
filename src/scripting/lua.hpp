@@ -19,6 +19,10 @@
 
 struct lua_State;
 
+namespace ai {
+struct engine_lua;
+};
+
 /**
  * Proxy table for the AI context
  */
@@ -66,7 +70,7 @@ public:
 	bool run_filter(char const *name, unit const &u);
 	/** Runs a plain script. */
 	void run(char const *prog) { execute(prog, 0, 0); }
-	lua_ai_context* create_ai_context(char const *code, int side);
+	lua_ai_context* create_ai_context(char const *code, ai::engine_lua *engine);
 	lua_ai_action_handler* create_ai_action_handler(char const *code, lua_ai_context &context);
 };
 

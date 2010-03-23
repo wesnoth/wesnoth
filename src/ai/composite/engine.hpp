@@ -85,6 +85,9 @@ public:
 
 	virtual const std::string& get_name() const;
 
+
+	readonly_context& get_readonly_context();
+
 	/**
 	 * set ai context (which is not available during early initialization)
 	 */

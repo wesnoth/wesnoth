@@ -133,7 +133,7 @@ engine_lua::engine_lua( readonly_context &context, const config &cfg )
 	: engine(context,cfg)
 	, lua_ai_context_(resources::lua_kernel->create_ai_context(
 				  cfg["code"].c_str()
-				, context.get_side())) //will be moved to set_ai_context
+				, this)) //will be moved to set_ai_context
 {
 	name_ = "lua";
 }

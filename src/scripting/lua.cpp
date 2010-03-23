@@ -54,6 +54,7 @@ extern "C" {
 #include "terrain_translation.hpp"
 #include "unit.hpp"
 #include "ai/actions.hpp"
+#include "ai/composite/engine_lua.hpp"
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)
@@ -2541,7 +2542,7 @@ static int ai_execute_move(lua_State *L, bool remove_movement)
 		return luaL_typerror(L, index, "location (unit/integers)");
 	}
 
-	int side = lua_tointeger(L,lua_upvalueindex(1));
+	int side = ((ai::engine_lua*)lua_touserdata(L,lua_upvalueindex(1)))->get_readonly_context().get_side();
 	map_location from, to;
 	if (!to_map_location(L, index, from)) goto error_call_destructors;
 	if (!to_map_location(L, index, to)) goto error_call_destructors;
@@ -2567,13 +2568,15 @@ static int cfun_ai_execute_attack(lua_State *L)
 		return luaL_typerror(L, index, "location (unit/integers)");
 	}
 
-	int side = lua_tointeger(L,lua_upvalueindex(1));
+	ai::readonly_context &context = ((ai::engine_lua*)lua_touserdata(L,lua_upvalueindex(1)))->get_readonly_context();
+
+	int side = context.get_side();
 	map_location attacker, defender;
 	if (!to_map_location(L, index, attacker)) goto error_call_destructors;
 	if (!to_map_location(L, index, defender)) goto error_call_destructors;
 
 	int attacker_weapon = -1;//-1 means 'select what is best'
-	double aggression = 0.5;//TODO: replace with side agression
+	double aggression = context.get_aggression();//use the aggression from the context
 
 	if (!lua_isnoneornil(L, index+1) && lua_isnumber(L,index+1)) {
 		aggression = lua_tonumber(L, index+1);
@@ -2595,7 +2598,7 @@ static int ai_execute_stopunit_select(lua_State *L, bool remove_movement, bool r
 		return luaL_typerror(L, index, "location (unit/integers)");
 	}
 
-	int side = lua_tointeger(L,lua_upvalueindex(1));
+	int side = ((ai::engine_lua*)lua_touserdata(L,lua_upvalueindex(1)))->get_readonly_context().get_side();
 	map_location loc;
 	if (!to_map_location(L, index, loc)) goto error_call_destructors;
 
@@ -2621,7 +2624,7 @@ static int cfun_ai_execute_stopunit_all(lua_State *L)
 static int cfun_ai_execute_recruit(lua_State *L)
 {
 	const char *unit_name = luaL_checkstring(L, 1);
-	int side = lua_tointeger(L,lua_upvalueindex(1));
+	int side = ((ai::engine_lua*)lua_touserdata(L,lua_upvalueindex(1)))->get_readonly_context().get_side();
 	map_location where;
 	if (!lua_isnoneornil(L, 2)) {
 		where.x = lua_tonumber(L, 2) - 1;
@@ -2635,7 +2638,7 @@ static int cfun_ai_execute_recruit(lua_State *L)
 static int cfun_ai_execute_recall(lua_State *L)
 {
 	const char *unit_id = luaL_checkstring(L, 1);
-	int side = lua_tointeger(L,lua_upvalueindex(1));
+	int side = ((ai::engine_lua*)lua_touserdata(L,lua_upvalueindex(1)))->get_readonly_context().get_side();
 	map_location where;
 	if (!lua_isnoneornil(L, 2)) {
 		where.x = lua_tonumber(L, 2) - 1;
@@ -2646,7 +2649,7 @@ static int cfun_ai_execute_recall(lua_State *L)
 	return transform_ai_action(L,recall_result);
 }
 
-lua_ai_context* LuaKernel::create_ai_context(char const *code, int side)
+lua_ai_context* LuaKernel::create_ai_context(char const *code, ai::engine_lua *engine)
 {
 	lua_State *L = mState;
 	int res_ai = luaL_loadstring(L, code);//stack size is now 1 [ -1: ai_context]
@@ -2660,7 +2663,8 @@ lua_ai_context* LuaKernel::create_ai_context(char const *code, int side)
 	}
 	//push data table here
 	lua_newtable(L);// stack size is 2 [ -1: new table, -2: ai as string ]
-	lua_pushinteger(L,side);
+	lua_pushinteger(L, engine->get_readonly_context().get_side());
+
 	lua_setfield(L, -2, "side");//stack size is 2 [- 1: new table; -2 ai as string]
 
 	static luaL_reg const callbacks[] = {
@@ -2676,7 +2680,7 @@ lua_ai_context* LuaKernel::create_ai_context(char const *code, int side)
 	};
 
 	for (const luaL_reg *p = callbacks; p->name; ++p) {
-		lua_pushinteger(L, side);
+		lua_pushlightuserdata(L, engine);
 		lua_pushcclosure(L, p->func, 1);
 		lua_setfield(L, -2, p->name);
 	}
@@ -2694,7 +2698,7 @@ lua_ai_context* LuaKernel::create_ai_context(char const *code, int side)
 	lua_pushvalue(L, -2); //stack size is now 3: [-1: ai_context  -2: ais_table  -3: ai_context]
 	lua_rawseti(L, -2, length_ai + 1);// ais_table[length+1]=ai_context.  stack size is now 2 [-1: ais_table  -2: ai_context]
 	lua_pop(L, 2);
-	return new lua_ai_context(L, length_ai + 1, side);
+	return new lua_ai_context(L, length_ai + 1, engine->get_readonly_context().get_side());
 }
 
 lua_ai_action_handler* LuaKernel::create_ai_action_handler(char const *code, lua_ai_context &context)

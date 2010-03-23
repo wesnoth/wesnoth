@@ -152,5 +152,10 @@ const std::string& engine::get_id() const
 	return id_;
 }
 
+readonly_context& engine::get_readonly_context()
+{
+	return ai_;
+}
+
 
 } //end of namespace ai
