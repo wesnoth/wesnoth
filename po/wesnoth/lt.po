@@ -29,17 +29,17 @@ msgstr "Paklausti prieš trinant išsaugojimą"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:19
 msgid "Mouse Scrolling"
-msgstr ""
+msgstr "Žemėlapio slankiojimas pelės ratuku"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:26
 msgid "Middle-click Scrolling"
-msgstr ""
+msgstr "Žemėlapio slankiojimas viduriniuoju pelės klavišu"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:33
 msgid "Keep scrolling when mouse leaves window"
-msgstr ""
+msgstr "Nenustoti slinkti žemėlapio, pelei palikus langą"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:40
@@ -197,6 +197,13 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
+"Gydo +4:\n"
+"Leidžia daliniui pagydyti gretimą draugišką dalinį mūsų ėjimo pradžioje.\n"
+"\n"
+"Gydomasis dalinys gali pagyti ne daugiau, nei 4 GT per ėjimą, arba tą ėjimą "
+"išvengti nuodų poveikio.\n"
+"Šis gydytojas negali išgydyti nuo nuodų. Apnuodytasis dalinys turi ieškoti "
+"pagalbos kaime arba pas dalinį, kuris gali atnuodyti."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
@@ -223,6 +230,14 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
+"Gydo +8:\n"
+"Šis dalinys apjungia vaistažoles su magija ir gydo dalinius greičiau, nei "
+"įprasta mūšio lauke.\n"
+"\n"
+"Gydomasis dalinys gali pagyti ne daugiau, nei 8 GT per ėjimą, arba tą ėjimą "
+"išvengti nuodų poveikio.\n"
+"Šis gydytojas negali išgydyti nuo nuodų. Apnuodytasis dalinys turi ieškoti "
+"pagalbos kaime arba pas dalinį, kuris gali atnuodyti."
 
 #. [about]
 #: data/core/about.cfg:7
@@ -2517,6 +2532,8 @@ msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
 msgstr ""
+"\n"
+"Pažymėtą dalinį paaukština N kartų. Pavyzdžiui: :unit advances=2"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:51
@@ -5379,6 +5396,10 @@ msgid ""
 "where they are). Use this to make sure the enemy can't reach your weak or "
 "injured units on his next turn."
 msgstr ""
+"„Veiksmų“ meniu galite pasirinkti „Rodyti priešų ėjimus“, kad paryškintumėte "
+"visus langelius į kurios gali eiti jūsų priešininkas (tariant, kad jūsų "
+"daliniai stovės ten kur jie yra). Naudokite tai, kad įsitikintumėte jog "
+"priešas negali kitą ėjimą pasiekti jūsų silpnų arba sužeistų dalinių."
 
 #. [tip]
 #: data/hardwired/tips.cfg:12 data/hardwired/tips.cfg:24
@@ -5661,7 +5682,7 @@ msgid ""
 "well in hills, mountains and caves."
 msgstr ""
 "Elfų daliniai gerai juda ir kaunasi miškuose. Dvarfų daliniai gerai juda ir "
-"kaunasi kalvose ir kalnuose ir urvuose."
+"kaunasi kalvose, kalnuose ir urvuose."
 
 #. [tip]
 #: data/hardwired/tips.cfg:107
@@ -5669,8 +5690,8 @@ msgid ""
 "Patience is often key. Rather than attacking in bad conditions or with few "
 "troops, wait for better conditions and then attack."
 msgstr ""
-"Kantrybė dažnai yra esmė. Vietoj to, kad pulti blogomis sąlygomis ar su "
-"mažai karių, geriau palaukti geresnių sąlygų ir tada pulti."
+"Kantrybė dažnai svarbiausia. Vietoj to, kad pultumėte blogomis sąlygomis ar "
+"su mažai karių, geriau palaukite geresnių sąlygų ir tada pulkite."
 
 #. [tip]
 #: data/hardwired/tips.cfg:111
@@ -5678,6 +5699,8 @@ msgid ""
 "If you are attacked from several directions, it may be a good idea to send "
 "expendable units in some directions to delay enemy units."
 msgstr ""
+"Jeigu jus puola iškart iš kelių pusių, galite pristabdyti kai kuriuos priešų "
+"dalinius, pasiųsdami saviškius, kuriuos galite paaukoti."
 
 #. [tip]
 #: data/hardwired/tips.cfg:115
@@ -5698,6 +5721,9 @@ msgid ""
 "finish early. You will always earn more gold this way than through capturing "
 "villages and waiting for turns to run out."
 msgstr ""
+"Daugumoje kampanijų gausite aukso premiją už ankstyvą baigimą, priklausančią "
+"nuo kaimų žemėlapyje ir nepanaudotų ėjimų skaičiaus. Taip visada laimėsite "
+"daugiau aukso, nei užgrobdami visus kaimus ir laukdami, kol pasibaigs ėjimai."
 
 #. [tip]
 #: data/hardwired/tips.cfg:123
@@ -5779,6 +5805,8 @@ msgid ""
 "Use healers to support your attacks - they will win you battles without "
 "needing to attack anything themselves."
 msgstr ""
+"Remkite savo puolėjus gydytojais – jie padės jums laimėti mūšius patys nieko "
+"nepuldami."
 
 #. [tip]
 #: data/hardwired/tips.cfg:156
@@ -7113,7 +7141,7 @@ msgstr "Nuotolis"
 
 #: src/help.cpp:1465
 msgid "Special"
-msgstr ""
+msgstr "Ypatinga"
 
 #: src/help.cpp:1515
 msgid "Resistances"
@@ -7236,11 +7264,11 @@ msgstr "Ar tikrai norite atleisti ją?"
 
 #: src/menu_events.cpp:93
 msgid "My lord, this unit is an experienced one, having advanced levels! "
-msgstr ""
+msgstr "Pone, tai yra patyręs karys, turintis paaukštinimų!"
 
 #: src/menu_events.cpp:97
 msgid "My lord, this unit is close to advancing a level! "
-msgstr ""
+msgstr "Pone, šis karys tuoj gali pasikelti lygį!"
 
 #: src/menu_events.cpp:195
 msgid "Statistics"
@@ -7534,7 +7562,7 @@ msgstr "Nutildyti visus stebėtojus."
 
 #: src/menu_events.cpp:2239
 msgid "Send a message to the server admins currently online"
-msgstr ""
+msgstr "Siųsti pranešimą dabar prisijungusiems serverio administratoriams"
 
 #: src/menu_events.cpp:2241
 msgid "Send an emotion or personal action in chat."
@@ -7576,7 +7604,7 @@ msgstr "Užregistruoti savo slapyvardį"
 
 #: src/menu_events.cpp:2265
 msgid "Drop your nick."
-msgstr ""
+msgstr "Nustoti naudoti savo slapyvardį."
 
 #: src/menu_events.cpp:2267
 msgid "Update details for your nick. For possible details see '/details'."
@@ -7596,7 +7624,7 @@ msgstr "Prisijungti prie kambario."
 
 #: src/menu_events.cpp:2277
 msgid "Part a room."
-msgstr ""
+msgstr "Palikti kambarį."
 
 #: src/menu_events.cpp:2279
 msgid "List room members."
@@ -7608,11 +7636,11 @@ msgstr "Išvardinti prieinamus kambarius."
 
 #: src/menu_events.cpp:2283
 msgid "Room message."
-msgstr ""
+msgstr "Kambario žinutė."
 
 #: src/menu_events.cpp:2285
 msgid "Room query."
-msgstr ""
+msgstr "Kambario užklausa."
 
 #: src/menu_events.cpp:2414
 msgid "Refresh gui."
@@ -7656,7 +7684,7 @@ msgstr "Uždrausti autoišsaugojimus."
 
 #: src/menu_events.cpp:2439
 msgid "Advance to the next scenario, or scenario identified by 'id'"
-msgstr ""
+msgstr "Pereiti į sekantį scenarijų, arba į scenarijų, nurodytą prie „id“"
 
 #: src/menu_events.cpp:2442
 msgid "Choose next scenario"
@@ -7672,7 +7700,7 @@ msgstr "Išjungti derinimo režimą."
 
 #: src/menu_events.cpp:2449
 msgid "Execute a Lua statement."
-msgstr ""
+msgstr "Įvykdyti Lua reiškinį"
 
 #: src/menu_events.cpp:2451
 msgid "Set the command used by the custom command hotkey"
@@ -7680,7 +7708,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2453
 msgid "Launch the gamestate inspector"
-msgstr ""
+msgstr "Įjungti žaidimo būklės inspektorių"
 
 #: src/menu_events.cpp:2455
 msgid "Set or show alias to a command"
@@ -7854,6 +7882,8 @@ msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
 msgstr ""
+"Slapyvardyje „$nick“ yra neleidžiamų simbolių. Galima naudoti tik skaičius, "
+"raides, pabraukimą ir brūkšnį."
 
 #: src/multiplayer.cpp:305
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
@@ -7863,7 +7893,7 @@ msgstr ""
 
 #: src/multiplayer.cpp:308
 msgid "The nick '$nick' is reserved and cannot be used by players."
-msgstr ""
+msgstr "Slapyvardis „$nick“ rezervuotas, žaidėjams jo naudoti negalima."
 
 #: src/multiplayer.cpp:310
 msgid "The nick '$nick' is not registered on this server."
@@ -7871,11 +7901,11 @@ msgstr "Slapyvardis „$nick“ neužregistruotas šiame serveryje."
 
 #: src/multiplayer.cpp:311
 msgid " This server disallows unregistered nicks."
-msgstr ""
+msgstr " Šis serveris neleidžia neregistruotų slapyvardžių."
 
 #: src/multiplayer.cpp:313 src/multiplayer.cpp:315
 msgid "The nick '$nick' is registered on this server."
-msgstr ""
+msgstr "Slapyvardis „$nick“ šiame serveryje jau užregistruotas."
 
 #: src/multiplayer.cpp:316
 msgid ""
@@ -7891,7 +7921,7 @@ msgstr ""
 
 #: src/multiplayer.cpp:322
 msgid "The password you provided was incorrect."
-msgstr "Slaptažodis, kurį pateikėte, buvo neteisingas."
+msgstr "Jūsų pateiktas slaptažodis buvo neteisingas."
 
 #: src/multiplayer_connect.cpp:95 src/multiplayer_connect.cpp:485
 #: src/multiplayer_connect.cpp:629
@@ -8377,7 +8407,7 @@ msgstr "per ėjimą"
 
 #: src/playsingle_controller.cpp:220
 msgid "Turns finished early: "
-msgstr ""
+msgstr "Nepanaudoti ėjimai: "
 
 #: src/playsingle_controller.cpp:222
 msgid "Bonus: "
@@ -8609,7 +8639,7 @@ msgstr "Netikėti simboliai po kintamojo pavadinimo (tikėtasi , arba =)"
 
 #: src/serialization/parser.cpp:282 src/serialization/parser.cpp:306
 msgid "Unterminated quoted string"
-msgstr ""
+msgstr "Trūksta uždarančių kabučių"
 
 #: src/serialization/parser.cpp:348
 msgid "$error, value '$value', previous '$previous_value' at $pos"
@@ -8902,6 +8932,10 @@ msgid ""
 "help us improve game play by giving permission to send these summaries "
 "(anonymously) to wesnoth.org.\n"
 msgstr ""
+"Vesnotui reikia savanoriškų atsiliepimų iš žaidėjų, ypač iš pradedančiųjų ir "
+"naujų žaidėjų. Vesnotas išsaugo santrauką apie jūsų žaidimo eigą; "
+"pagelbėsite mums tobulinti žaidimą, jei sutiksite, kad jūsų žaidimų "
+"santraukos būtų anonimiškai nusiųstos į wesnoth.org.\n"
 
 #: src/upload_log.cpp:369
 msgid "Summaries are stored here:"
@@ -8909,7 +8943,7 @@ msgstr "Santraukos išsaugotos čia:"
 
 #: src/upload_log.cpp:371
 msgid "You can view the results at:"
-msgstr ""
+msgstr "Rezultatus galite peržvelgti čia:"
 
 #: src/upload_log.cpp:373
 msgid "Help us make Wesnoth better for you!"
@@ -8917,4 +8951,4 @@ msgstr "Padėkite mums padaryti Vesnotą geresnį jums!"
 
 #: src/upload_log.cpp:375
 msgid "Enable summary uploads"
-msgstr "Įgalinti santraukų siuntimą"
+msgstr "Leisti santraukų siuntimą"
