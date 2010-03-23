@@ -281,6 +281,7 @@ stringfixes = {
 
 "1.8-announcement" : (
 ("WML events an AI components", "WML events and AI components"),
+("1.7.3", "1.7.13"),
 ),
 
 
