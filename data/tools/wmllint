@@ -475,6 +475,12 @@ linechanges = (
         ("slasher-", "arbiter-"),
         # Changes after 1.7.5
         ("portraits/nagas/fighter+female.png", "portraits/nagas/fighter.png"),
+        # Changes after 1.8rc1
+        ("portraits/orcs/warlord.png", "portraits/orcs/transparent/warlord.png"),
+        ("portraits/orcs/warlord2.png","portraits/orcs/transparent/warlord.png"),
+        ("portraits/orcs/warlord3.png","portraits/orcs/transparent/grunt-2.png"),
+        ("portraits/orcs/warlord4.png","portraits/orcs/transparent/grunt-2.png"),
+        ("portraits/orcs/warlord5.png","portraits/orcs/transparent/grunt-3.png"),
         )
 
 def validate_on_pop(tagstack, closer, filename, lineno):
