@@ -37,12 +37,13 @@
 
 #include <cairo-features.h>
 
-#ifdef CAIRO_HAS_FT_FONT
-#include <fontconfig/fontconfig.h>
-#endif
-
 #ifdef CAIRO_HAS_WIN32_FONT
 #include <windows.h>
+#undef CAIRO_HAS_FT_FONT
+#endif
+
+#ifdef CAIRO_HAS_FT_FONT
+#include <fontconfig/fontconfig.h>
 #endif
 
 static lg::log_domain log_font("font");
