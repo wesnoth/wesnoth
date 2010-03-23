@@ -5,6 +5,7 @@ import org.wesnoth.wml.schema.SchemaTagChild;
 
 public class SchemaTagChildImpl implements SchemaTagChild {
 	SchemaTag child;
+	String name;
 	boolean repeated;
 	boolean required;
 
@@ -33,6 +34,14 @@ public class SchemaTagChildImpl implements SchemaTagChild {
 
 	public void setRequired(boolean required) {
 		this.required = required;
+	}
+
+	public String getName() {
+		return this.name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }
