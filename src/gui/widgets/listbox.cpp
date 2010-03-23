@@ -16,6 +16,7 @@
 
 #include "gui/widgets/listbox.hpp"
 
+#include "gui/auxiliary/layout_exception.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/widgets/window.hpp"
 
@@ -481,7 +482,16 @@ void tlistbox::set_content_size(const tpoint& origin, const tpoint& size)
 
 	const int best_height = content_grid()->get_best_size().y;
 	const tpoint s(size.x, size.y < best_height ? size.y : best_height);
-	content_grid()->place(origin, s);
+	try {
+		content_grid()->place(origin, s);
+	} catch(tlayout_placement_failed&) {
+		ERR_GUI_L << LOG_HEADER << " placement of the content has failed, "
+				" hope the window can save us.\n";
+		twindow *window = get_window();
+		assert(window);
+
+		window->invalidate_layout();
+	}
 }
 
 void tlistbox::layout_children(const bool force)

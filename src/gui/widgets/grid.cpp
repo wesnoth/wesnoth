@@ -535,6 +535,7 @@ void tgrid::place(const tpoint& origin, const tpoint& size)
 	}
 
 	// This shouldn't be possible...
+	throw tlayout_placement_failed();
 	assert(false);
 }
 
