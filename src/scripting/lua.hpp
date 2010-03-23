@@ -51,7 +51,7 @@ public:
 	{
 	}
 	~lua_ai_action_handler();
-	void handle(config &);
+	void handle(config &, bool configOut = false);
 };
 
 

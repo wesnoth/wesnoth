@@ -55,7 +55,7 @@ public:
 	{
 		serialized_evaluation_state_ = config();
 		if (evaluation_action_handler_) {
-			evaluation_action_handler_->handle(serialized_evaluation_state_);
+			evaluation_action_handler_->handle(serialized_evaluation_state_, true);
 		} else {
 			return BAD_SCORE;
 		}

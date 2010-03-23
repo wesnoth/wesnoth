@@ -364,6 +364,8 @@ static bool luaW_pcall(lua_State *L
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_insert(L, -2 - nArgs);
 
+	int error_handler_index = lua_gettop(L) - nArgs - 1;
+
 	// Call the function.
 	int res = lua_pcall(L, nArgs, nRets, -2 - nArgs);
 	if (res)
@@ -382,7 +384,13 @@ static bool luaW_pcall(lua_State *L
 	}
 
 	// Remove the error handler.
-	lua_remove(L, -1 - nRets);
+
+	if(nRets == LUA_MULTRET) {
+		lua_remove(L, error_handler_index);
+	} else {
+		lua_remove(L, -1 - nRets);
+	}
+
 	return true;
 }
 
@@ -2735,19 +2743,38 @@ lua_ai_context::~lua_ai_context()
 	lua_pop(L, 1);
 }
 
-/**
- * handling of config in-out parameter will be done later
- */
-void lua_ai_action_handler::handle(config &/*cfg*/)
+void lua_ai_action_handler::handle(config &cfg, bool configOut)
 {
+	int initial_top = lua_gettop(L);//get the old stack size
+
 	// Load the user function from the registry.
 	lua_pushlightuserdata(L, (void *)&aisKey);//stack size is now 1 [-1: ais_table key]
 	lua_rawget(L, LUA_REGISTRYINDEX);//stack size is still 1 [-1: ais_table]
 	lua_rawgeti(L, -1, num_);//stack size is 2 [-1: ai_action  -2: ais_table]
-	lua_remove(L,-2);//stack size is 1 [-1: ai_action]
+	lua_remove(L, -2);//stack size is 1 [-1: ai_action]
 	//load the lua ai context as a parameter
 	context_.load();//stack size is 2 [-1: ai_context -2: ai_action]
-	luaW_pcall(L, 1, 0, true);
+
+	if (!configOut)
+	{
+		lua_newtable(L);//stack size is 3 [-1: table -2: ai_context -3: ai_action]
+		table_of_wml_config(L, cfg);//the new table now contains the config
+		luaW_pcall(L, 2, LUA_MULTRET, true);
+	}
+	else if (lua_gettop(L) > initial_top)
+	{
+		if (luaW_pcall(L, 1, LUA_MULTRET, true)) {
+			int score = lua_tonumber(L, initial_top + 1);//get score
+
+			if (lua_gettop(L) >= initial_top + 2) {//check if we also have config
+				luaW_toconfig(L, initial_top + 2, cfg);//get config
+			}
+
+			cfg["score"] = str_cast(score);//write score to the config
+		}
+	}
+
+	lua_settop(L, initial_top);//empty stack
 }
 
 lua_ai_action_handler::~lua_ai_action_handler()
