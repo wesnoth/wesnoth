@@ -2,6 +2,11 @@ Version 1.7.15+svn:
  * AI:
    * Fixed bug #14247: make formula AI behave correctly if the side has only 1
      potential recruit.
+ * Campaigns:
+   * Legend of Wesmere:
+     * Fixed bug #15631: Scenario 3: arrival of Kalenz failed
+     * Fixed bug #15679: Scenario 17: leader of side 2 is missing
+     * Fixed bug #15680: Scenario 18: wrong recruitment options
  * Graphics:
    * New Cave Spider and Cuttle Fish graphics
  * Language and i18n:
@@ -30,10 +35,7 @@ Version 1.7.15+svn:
    * Fixed segfault due to missing seed-attribute of an attack in a replay
    * Limit the maximum length of the mp command dialog as workaround for bug
      #13333 (This workaround is only implemented for Windows and Mac)
-   * Fixed bug #15631: LOW-3: arrival of Kalenz failed
-   * Fixed bug #15679: LOW-17: leader of side 2 is missing
-   * Fixed bug #15680: LOW-18: wrong recruitment options
-	
+
 Version 1.7.15-1.8rc1:
  * AI:
    * Set RCA AI to be the default AI for single-player campaigns.
