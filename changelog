@@ -1,6 +1,6 @@
 Version 1.7.15+svn:
  * AI:
-   * Fixed bug #14247: make formula AI behave correctly if the side has only 1
+   * Fixed bug #14247: Make formula AI behave correctly if the side has only 1
      potential recruit.
  * Campaigns:
    * Legend of Wesmere:
@@ -8,33 +8,34 @@ Version 1.7.15+svn:
      * Fixed bug #15679: Scenario 17: leader of side 2 is missing
      * Fixed bug #15680: Scenario 18: wrong recruitment options
  * Graphics:
-   * New Cave Spider and Cuttle Fish graphics
+   * Added new Cave Spider and Cuttle Fish graphics
  * Language and i18n:
-   * New translations: Serbian Ijekavian, Serbian Ijekavian Latin
+   * Added new translations: Serbian Ijekavian, Serbian Ijekavian Latin
    * Updated translations: Czech, Finnish, French, German, Hungarian, Japanese,
      Latvian, Lithuanian, Russian, Serbian, Spanish, Slovak
  * Music and sound effects:
-   * The lobby will play a random music playlist, configured by [lobby_music],
-     instead of looping the main menu song (bug #15668).
-   * The titlescreen will play a random music playlist, configured by
-     [titlescreen_music], instead of looping the main menu song (bug #15669).
-     First song played will still alaways be the main_menu theme.
+   * Fixed bug #15668: The lobby will play a random music playlist, configured
+     by [lobby_music], instead of looping the main menu song
+   * Fixed bug #15669: The titlescreen will play a random music playlist,
+     configured by [titlescreen_music], instead of looping the main menu song
+     First song played will still always be the main_menu theme.
  * User interface:
-   * Work around a lobby resize issue, which made game list contents too small
-     (bug #15561)
+   * Worked around bug #15561: Resizing the lobby made the items in the game
+     listbox too small
  * Miscellaneous and bug fixes:
    * Added the first draft of the gui2 design documentation
    * Defaulted log level to error again
    * Fixed bug #13882: Map which is invalid aborts map selection
-   * Fixed bug #14114: checksum operations fail against certain scenario events
-   * Fixed bug #15545: recall list gone after loading savegame created in
+   * Fixed bug #14114: Checksum operations fail against certain scenario events
+   * Fixed bug #15545: Recall list gone after loading savegame created in
      linger mode
-   * Fixed bug #15598: can't move units after reloading game
-   * Fixed bug #15601: replay crashes when replay log messages are enabled
+   * Fixed bug #15598: Can't move units after reloading game
+   * Fixed bug #15601: Replay crashes when replay log messages are enabled
    * Fixed bug #15656: OOS errors in LoW from differing starting gold
-   * Fixed segfault due to missing seed-attribute of an attack in a replay
-   * Limit the maximum length of the mp command dialog as workaround for bug
-     #13333 (This workaround is only implemented for Windows and Mac)
+   * Fixed a segfault due to missing seed-attribute of an attack in a replay
+   * Worked around bug #13333: Limit the maximum length of the mp command
+     dialog as workaround for bug (This workaround is only implemented for
+     Windows and Mac)
 
 Version 1.7.15-1.8rc1:
  * AI:
