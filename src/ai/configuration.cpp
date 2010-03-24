@@ -288,7 +288,23 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 bool configuration::upgrade_side_config_from_1_07_02_to_1_07_03(side_number side, config &cfg)
 {
 	LOG_AI_CONFIGURATION << "side "<< side <<": upgrading ai config version from version 1.7.2 to 1.7.3"<< std::endl;
-	config parsed_cfg = get_ai_config_for("testing_ai_default");
+	config parsed_cfg;
+
+	bool is_idle_ai = false;
+	if (cfg["ai_algorithm"]=="idle_ai") {
+		is_idle_ai = true;
+	} else {
+		foreach (config &aiparam, cfg.child_range("ai")) {
+			if (aiparam["ai_algorithm"]=="idle_ai") {
+				is_idle_ai = true;
+				break;
+			}
+		}
+	}	
+	
+	if (!is_idle_ai) {
+		parsed_cfg = get_ai_config_for("testing_ai_default");
+	}
 
 	//get values of all aspects
 	upgrade_aspect_configs_from_1_07_02_to_1_07_03(side, cfg.child_range("ai"), parsed_cfg);
