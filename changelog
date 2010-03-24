@@ -9,7 +9,7 @@ Version 1.7.15+svn:
      * Fixed bug #15679: Scenario 17: leader of side 2 is missing
      * Fixed bug #15680: Scenario 18: wrong recruitment options
    * Descent into Darkness
-     * New Giant Rat base fram and animations.
+     * New Giant Rat base frame and animations.
    * Under the Burning Suns
      * Scenario 2: speed up AI turn.
  * Graphics:
@@ -18,6 +18,8 @@ Version 1.7.15+svn:
    * Added new translations: Serbian Ijekavian, Serbian Ijekavian Latin
    * Updated translations: Czech, Finnish, French, German, Hungarian, Japanese,
      Latvian, Lithuanian, Russian, Serbian, Spanish, Slovak
+ * Multiplayer:
+   * Updated maps: Cynsaun Battlefield
  * Music and sound effects:
    * Fixed bug #15668: The lobby will play a random music playlist, configured
      by [lobby_music], instead of looping the main menu song
@@ -70,7 +72,7 @@ Version 1.7.15-1.8rc1:
    * Improved resizing of a window when the contents don't fit, fixes the
      window scrollbars in the MP lobby
    * Fixed redraw invalidation issues in the MP lobby
- 	
+
 Version 1.7.14-1.8beta7:
  * AI:
    * Allow to write AI components in LUA
