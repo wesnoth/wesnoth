@@ -1938,8 +1938,11 @@ class map_command_handler
 					print(get_cmd(), _("This command is currently unavailable."));
 				}
 			} else if (help_on_unknown_) {
-				print("help", "Unknown command (" + get_cmd() + "), try " + cmd_prefix_ + "help "
-					"for a list of available commands.");
+				utils::string_map symbols;
+				symbols["command"] = get_cmd();
+				symbols["help_command"] = cmd_prefix_ + "help";
+				print("help", VGETTEXT("Unknown command '$command', try $help_command "
+					"for a list of available commands.", symbols));
 			}
 		}
 	protected:
@@ -1947,7 +1950,8 @@ class map_command_handler
 		{
 			register_command("help", &map_command_handler<Worker>::help,
 				_("Available commands list and command-specific help. "
-				"Use \"help all\" to include currently unavailable commands."), "[all|<command>]");
+				"Use \"help all\" to include currently unavailable commands."),
+				_("do not translate the 'all'^[all|<command>]"));
 		}
 		//derived classes initialize the map overriding this function
 		virtual void init_map() = 0;
@@ -1991,11 +1995,13 @@ class map_command_handler
 		//command error reporting shorthands
 		void command_failed(const std::string& message)
 		{
-			print(get_cmd(), "Error: " + message);
+			print(get_cmd(), _("Error:") + std::string(" ") + message);
 		}
 		void command_failed_need_arg(int argn)
 		{
-			command_failed("Missing argument " + lexical_cast<std::string>(argn));
+			utils::string_map symbols;
+			symbols["arg_id"] = lexical_cast<std::string>(argn);
+			command_failed(VGETTEXT("Missing argument $arg_id", symbols));
 		}
 		void print_usage()
 		{
@@ -2039,8 +2045,12 @@ class map_command_handler
 					ss << "; ";
 				}
 			}
-			print("help", "Available commands " + get_flags_description() + ":\n" + ss.str());
-			print("help", "Type " + cmd_prefix_ + "help <command> for more info.");
+			utils::string_map symbols;
+			symbols["flags_description"] = get_flags_description();
+			symbols["list_of_commands"] = ss.str();
+			symbols["help_command"] = cmd_prefix_ + "help";
+			print(_("help"), VGETTEXT("Available commands $flags_description:\n$list_of_commands", symbols));
+			print(_("help"), VGETTEXT("Type $help_command <command> for more info.", symbols));
 		}
 		//returns true if the command exists.
 		bool help_command(const std::string& acmd)
@@ -2056,14 +2066,14 @@ class map_command_handler
 					ss << " - " << c->help;
 				}
 				if (!c->usage.empty()) {
-					ss << " Usage: " << cmd_prefix_ << cmd << " " << c->usage;
+					ss << " " << _("Usage:") << " " << cmd_prefix_ << cmd << " " << c->usage;
 				}
 				ss << get_command_flags_description(*c);
 				const std::vector<std::string> l = get_aliases(cmd);
 				if (!l.empty()) {
-					ss << " (aliases: " << utils::join(l,' ') << ")";
+					ss << " (" << _("aliases:") << " " << utils::join(l,' ') << ")";
 				}
-				print("help", ss.str());
+				print(_("help"), ss.str());
 			}
 			return c != 0;
 		}
@@ -2187,13 +2197,17 @@ class chat_command_handler : public map_command_handler<chat_command_handler>
 		void do_details();
 
 		std::string get_flags_description() const {
-			return "(A) - auth command";
+			return _("(A) - auth command");
 		}
 
 		std::string get_command_flags_description(
 			const map_command_handler<chat_command_handler>::command& c) const
 		{
-			return std::string(c.has_flag('A') ? " (auth only)" : "");
+			if (c.has_flag('A')) {
+				return std::string(" ") + _("(auth only)");
+			} else {
+				return "";
+			}
 		}
 
 		bool is_enabled(
@@ -2215,16 +2229,16 @@ class chat_command_handler : public map_command_handler<chat_command_handler>
 			register_alias("query", "q");
 			register_command("ban", &chat_command_handler::do_network_send_req_arg,
 				_("Ban and kick a player or observer. If he is not in the"
-				" game but on the server he will only be banned."), "<nick>");
+				" game but on the server he will only be banned."), _("<nick>"));
 			register_command("unban", &chat_command_handler::do_network_send_req_arg,
 				_("Unban a user. He does not have to be in the game but on"
-				" the server."), "<nick>");
+				" the server."), _("<nick>"));
 			register_command("kick", &chat_command_handler::do_network_send_req_arg,
-				_("Kick a player or observer."), "<nick>");
+				_("Kick a player or observer."), _("<nick>"));
 			register_command("mute", &chat_command_handler::do_network_send,
-				_("Mute an observer. Without an argument displays the mute status."), "<nick>");
+				_("Mute an observer. Without an argument displays the mute status."), _("<nick>"));
 			register_command("unmute", &chat_command_handler::do_network_send,
-				_("Unmute an observer. Without an argument unmutes everyone."), "<nick>");
+				_("Unmute an observer. Without an argument unmutes everyone."), _("<nick>"));
 			register_command("muteall", &chat_command_handler::do_network_send,
 				_("Mute/Unmute all observers. (toggles)"), "");
 			register_command("ping", &chat_command_handler::do_network_send,
@@ -2238,51 +2252,51 @@ class chat_command_handler : public map_command_handler<chat_command_handler>
 			register_command("adminmsg", &chat_command_handler::do_network_send_req_arg,
 				_("Send a message to the server admins currently online"), "");
 			register_command("emote", &chat_command_handler::do_emote,
-				_("Send an emotion or personal action in chat."), "<message>");
+				_("Send an emotion or personal action in chat."), _("<message>"));
 			register_alias("emote", "me");
 			register_command("whisper", &chat_command_handler::do_whisper,
 				_("Sends a private message. "
 				"You can't send messages to players that don't control "
-				"a side in a running game you are in."), "<nick> <message>");
+				"a side in a running game you are in."), _("<nick> <message>"));
 			register_alias("whisper", "msg");
 			register_alias("whisper", "m");
 			register_command("log", &chat_command_handler::do_log,
-				_("Change the log level of a log domain."), "<level> <domain>");
+				_("Change the log level of a log domain."), _("<level> <domain>"));
 			register_command("ignore", &chat_command_handler::do_ignore,
-				_("Add a nick to your ignores list."), "<nick>");
+				_("Add a nick to your ignores list."), _("<nick>"));
 			register_command("friend", &chat_command_handler::do_friend,
-				_("Add a nick to your friends list."), "<nick>");
+				_("Add a nick to your friends list."), _("<nick>"));
 			register_command("remove", &chat_command_handler::do_remove,
-				_("Remove a nick from your ignores or friends list."), "<nick>");
+				_("Remove a nick from your ignores or friends list."), _("<nick>"));
 			register_command("list", &chat_command_handler::do_display,
 				_("Show your ignores and friends list."));
 			register_alias("list", "display");
 			register_command("version", &chat_command_handler::do_version,
 				_("Display version information."));
 			register_command("register", &chat_command_handler::do_register,
-				_("Register your nick"), "<password> <email (optional)>");
+				_("Register your nick"), _("<password> <email (optional)>"));
 			register_command("drop", &chat_command_handler::do_drop,
 				_("Drop your nick."));
 			register_command("set", &chat_command_handler::do_set,
 				_("Update details for your nick. For possible details see '/details'."),
-				"<detail> <value>");
+				_("<detail> <value>"));
 			register_command("info", &chat_command_handler::do_info,
-				_("Request information about a nick."), "<nick>");
+				_("Request information about a nick."), _("<nick>"));
 			register_command("details", &chat_command_handler::do_details,
 				_("Request a list of details you can set for your registered nick."));
 			register_command("join", &chat_command_handler::do_network_send_req_arg,
-				_("Join a room."), "<room>");
+				_("Join a room."), _("<room>"));
 			register_alias("join", "j");
 			register_command("part", &chat_command_handler::do_network_send_req_arg,
-				_("Part a room."), "<room>");
+				_("Part a room."), _("<room>"));
 			register_command("names", &chat_command_handler::do_room_query,
-				_("List room members."), "<room>");
+				_("List room members."), _("<room>"));
 			register_command("rooms", &chat_command_handler::do_room_query_noarg,
 				_("List available rooms."));
 			register_command("room", &chat_command_handler::do_chanmsg,
-				_("Room message."), "<room> <msg>");
+				_("Room message."), _("<room> <msg>"));
 			register_command("room_query", &chat_command_handler::do_gen_room_query,
-				_("Room query."), "<room> <type> [value]");
+				_("Room query."), _("<room> <type> [value]"));
 			register_alias("room_query", "rq");
 		}
 	private:
@@ -2380,14 +2394,15 @@ class console_handler : public map_command_handler<console_handler>, private cha
 		void do_toggle_draw_terrain_codes();
 
 		std::string get_flags_description() const {
-			return "(D) - debug only, (N) - network only, (A) - auth only";
+			return _("(D) - debug only, (N) - network only, (A) - auth only");
 		}
 		using chat_command_handler::get_command_flags_description; //silence a warning
 		std::string get_command_flags_description(const chmap::command& c) const
 		{
-			return std::string(c.has_flag('D') ? " (debug command)" : "")
-				 + std::string(c.has_flag('N') ? " (network only)" : "")
-				 + std::string(c.has_flag('A') ? " (auth only)" : "");
+			std::string space(" ");
+			return std::string(c.has_flag('D') ? space + _("(debug command)") : "")
+				 + std::string(c.has_flag('N') ? space + _(" (network only)") : "")
+				 + std::string(c.has_flag('A') ? space + _(" (auth only)") : "");
 		}
 		using map::is_enabled;
 		bool is_enabled(const chmap::command& c) const
@@ -2413,15 +2428,15 @@ class console_handler : public map_command_handler<console_handler>, private cha
 			register_command("refresh", &console_handler::do_refresh,
 				_("Refresh gui."));
 			register_command("droid", &console_handler::do_droid,
-				_("Switch a side to/from AI control."), "[<side> [on/off]]");
+				_("Switch a side to/from AI control."), _("do not translate the on/off^[<side> [on/off]]"));
 			register_command("theme", &console_handler::do_theme);
 			register_command("control", &console_handler::do_control,
-				_("Assign control of a side to a different player or observer."), "<side> <nick>", "N");
+				_("Assign control of a side to a different player or observer."), _("<side> <nick>"), "N");
 			register_command("clear", &console_handler::do_clear,
 				_("Clear chat history."));
 			register_command("sunset", &console_handler::do_sunset,
 				_("Visualize the screen refresh procedure."), "", "D");
-			register_command("fps", &console_handler::do_fps, "Show fps.");
+			register_command("fps", &console_handler::do_fps, _("Show fps."));
 			register_command("benchmark", &console_handler::do_benchmark);
 			register_command("save", &console_handler::do_save, _("Save game."));
 			register_alias("save", "w");
@@ -2436,7 +2451,7 @@ class console_handler : public map_command_handler<console_handler>, private cha
 			register_command("nosaves", &console_handler::do_nosaves,
 				_("Disable autosaves."));
 			register_command("next_level", &console_handler::do_next_level,
-				_("Advance to the next scenario, or scenario identified by 'id'"), "<id>", "D");
+				_("Advance to the next scenario, or scenario identified by 'id'"), _("<id>"), "D");
 			register_alias("next_level", "n");
 			register_command("choose_level", &console_handler::do_choose_level,
 				_("Choose next scenario"), "", "D");
@@ -2448,15 +2463,15 @@ class console_handler : public map_command_handler<console_handler>, private cha
 			register_command("lua", &console_handler::do_lua,
 				_("Execute a Lua statement."));
 			register_command("custom", &console_handler::do_custom,
-				_("Set the command used by the custom command hotkey"), "<command>[;<command>...]");
+				_("Set the command used by the custom command hotkey"), _("<command>[;<command>...]"));
 			register_command("inspect", &console_handler::do_inspect,
 				_("Launch the gamestate inspector"), "", "D");
 			register_command("alias", &console_handler::do_set_alias,
-				_("Set or show alias to a command"), "<name>[=<command>]");
+				_("Set or show alias to a command"), _("<name>[=<command>]"));
 			register_command("set_var", &console_handler::do_set_var,
-				_("Set a scenario variable."), "<var>=<value>", "D");
+				_("Set a scenario variable."), _("<var>=<value>"), "D");
 			register_command("show_var", &console_handler::do_show_var,
-				_("Show a scenario variable."), "<var>", "D");
+				_("Show a scenario variable."), _("<var>"), "D");
 			register_command("unit", &console_handler::do_unit,
 				_("Modify a unit variable. (Only top level keys are supported.)"), "", "D");
 
@@ -2615,12 +2630,16 @@ void chat_handler::send_whisper(const std::string& receiver, const std::string& 
 
 void chat_handler::add_whisper_sent(const std::string& receiver, const std::string& message)
 {
-	add_chat_message(time(NULL), "whisper to " + receiver, 0, message);
+	utils::string_map symbols;
+	symbols["receiver"] = receiver;
+	add_chat_message(time(NULL), VGETTEXT("whisper to $receiver", symbols), 0, message);
 }
 
 void chat_handler::add_whisper_received(const std::string& sender, const std::string& message)
 {
-	add_chat_message(time(NULL), "whisper: " + sender, 0, message);
+	utils::string_map symbols;
+	symbols["sender"] = sender;
+	add_chat_message(time(NULL), VGETTEXT("whisper: $sender", symbols), 0, message);
 }
 
 void chat_handler::send_chat_room_message(const std::string& room,
@@ -2716,14 +2735,16 @@ void chat_command_handler::do_ignore()
 {
 	if (get_arg(1).empty()) {
 		const std::set<std::string>& tmp = preferences::get_ignores();
-		print("ignores list", tmp.empty() ? "(empty)" : utils::join(tmp));
+		print(_("ignores list"), tmp.empty() ? _("(empty)") : utils::join(tmp));
 	} else {
 		for(int i = 1; !get_arg(i).empty(); i++){
+			utils::string_map symbols;
+			symbols["nick"] = get_arg(i);
 			if (preferences::add_ignore(get_arg(i))) {
-				print("ignore",  _("Added to ignore list: ") + get_arg(i));
+				print(_("ignores list"),  VGETTEXT("Added to ignore list: $nick", symbols));
 				chat_handler_.user_relation_changed(get_arg(i));
 			} else {
-				command_failed(_("Invalid username: ") + get_arg(i));
+				command_failed(VGETTEXT("Invalid username: $nick", symbols));
 			}
 		}
 	}
@@ -2733,14 +2754,16 @@ void chat_command_handler::do_friend()
 {
 	if (get_arg(1).empty()) {
 		const std::set<std::string>& tmp = preferences::get_friends();
-		print("friends list", tmp.empty() ? "(empty)" : utils::join(tmp));
+		print(_("friends list"), tmp.empty() ? _("(empty)") : utils::join(tmp));
 	} else {
 		for(int i = 1;!get_arg(i).empty();i++){
+			utils::string_map symbols;
+			symbols["nick"] = get_arg(i);
 			if (preferences::add_friend(get_arg(i))) {
 				chat_handler_.user_relation_changed(get_arg(i));
-				print("friend",  _("Added to friends list: ") + get_arg(i));
+				print(_("friends list"),  VGETTEXT("Added to friends list: $nick", symbols));
 			} else {
-				command_failed(_("Invalid username: ") + get_arg(i));
+				command_failed(VGETTEXT("Invalid username: $nick", symbols));
 			}
 		}
 	}
@@ -2752,7 +2775,9 @@ void chat_command_handler::do_remove()
 		preferences::remove_friend(get_arg(i));
 		preferences::remove_ignore(get_arg(i));
 		chat_handler_.user_relation_changed(get_arg(i));
-		print("list", _("Removed from list: ") + get_arg(i));
+		utils::string_map symbols;
+		symbols["nick"] = get_arg(i);
+		print(_("friends and ignores list"), VGETTEXT("Removed from list: $nick", symbols));
 	}
 }
 
@@ -2762,20 +2787,20 @@ void chat_command_handler::do_display()
 	const std::set<std::string> & ignores = preferences::get_ignores();
 
 	if (!friends.empty()) {
-		print("friends list", utils::join(friends));
+		print(_("friends list"), utils::join(friends));
 	}
 
 	if (!ignores.empty()) {
-		print("ignores list", utils::join(ignores));
+		print(_("ignores list"), utils::join(ignores));
 	}
 
 	if (friends.empty() && ignores.empty()) {
-		print("list", _("There are no players on your friends or ignore list."));
+		print(_("friends and ignores list"), _("There are no players on your friends or ignore list."));
 	}
 }
 
 void chat_command_handler::do_version() {
-	print("version", game_config::revision);
+	print(_("version"), game_config::revision);
 }
 
 void chat_command_handler::do_register() {
@@ -2789,8 +2814,16 @@ void chat_command_handler::do_register() {
 	if(!get_data(2).empty()) {
 		reg["mail"] = get_arg(2);
 	}
-	print("nick registration", "registering with password *** and " +
-			(get_data(2).empty() ? "no email address" : "email address " + get_data(2)));
+	std::string msg;
+	if (get_data(2).empty()) {
+		msg = _("registering with password *** and no email address");
+	} else {
+		utils::string_map symbols;
+		symbols["email"] = get_data(2);
+		msg = VGETTEXT("registering with password *** and "
+			"email address $email", symbols);
+	}
+	print(_("nick registration"), msg);
 
 	network::send_data(data, 0, true);
 }
@@ -2801,7 +2834,7 @@ void chat_command_handler::do_drop() {
 
 	nickserv.add_child("drop");
 
-	print("nick registration", "dropping your username");
+	print(_("nick registration"), _("dropping your username"));
 
 	network::send_data(data, 0, true);
 }
@@ -2816,7 +2849,10 @@ void chat_command_handler::do_set() {
 	config &set = nickserv.add_child("set");
 	set["detail"] = get_arg(1);
 	set["value"] = get_data(2);
-	print("nick registration", "setting " + get_arg(1) + " to " + get_data(2));
+	utils::string_map symbols;
+	symbols["var"] = get_arg(1);
+	symbols["value"] = get_arg(2);
+	print(_("nick registration"), VGETTEXT("setting $var to $value", symbols));
 
 	network::send_data(data, 0, true);
 }
@@ -2828,7 +2864,9 @@ void chat_command_handler::do_info() {
 	config& nickserv = data.add_child("nickserv");
 
 	nickserv.add_child("info")["name"] = get_data(1);
-	print("nick registration", "requesting information for user " + get_data(1));
+	utils::string_map symbols;
+	symbols["nick"] = get_arg(1);
+	print(_("nick registration"), VGETTEXT("requesting information for user $nick", symbols));
 
 	network::send_data(data, 0, true);
 }
@@ -3183,7 +3221,7 @@ void console_handler::do_set_var() {
 		const std::string value(j+1,data.end());
 		menu_handler_.gamestate_.set_variable(name,value);
 	} else {
-		command_failed("Variable not found");
+		command_failed(_("Variable not found"));
 	}
 }
 void console_handler::do_show_var() {
@@ -3219,7 +3257,10 @@ void console_handler::do_unit() {
 	// changed to allow general string
 	// alignments for UMC.
 	if (name == "alignment" && (value != "lawful" && value != "neutral" && value != "chaotic")) {
-		command_failed("Invalid alignment: '" + value + "', needs to be one of lawful, neutral or chaotic.");
+		utils::string_map symbols;
+		symbols["alignment"] = get_arg(1);
+		command_failed(VGETTEXT("Invalid alignment: '$alignment',"
+			" needs to be one of lawful, neutral or chaotic.", symbols));
 		return;
 	}
 	if (name == "advances" ){
@@ -3259,7 +3300,7 @@ void console_handler::do_unbuff() {
 		menu_handler_.gui_->invalidate(i->first);
 		menu_handler_.gui_->invalidate_unit();
 	} else {
-		command_failed("No unit selected");
+		command_failed(_("No unit selected"));
 	}
 }*/
 void console_handler::do_discover() {
@@ -3275,7 +3316,7 @@ void console_handler::do_create() {
 	if (menu_handler_.map_.on_board(loc)) {
 		const unit_type *ut = unit_types.find(get_data());
 		if (!ut) {
-			command_failed("Invalid unit type");
+			command_failed(_("Invalid unit type"));
 			return;
 		}
 
@@ -3288,7 +3329,7 @@ void console_handler::do_create() {
 		menu_handler_.gui_->invalidate(loc);
 		menu_handler_.gui_->invalidate_unit();
 	} else {
-		command_failed("Invalid location");
+		command_failed(_("Invalid location"));
 	}
 }
 void console_handler::do_fog() {
