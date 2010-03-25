@@ -1394,11 +1394,10 @@ void tlobby_main::process_room_join(const config &data)
 			}
 		} else {
 			r->add_member(player);
-			/* TODO: Uncomment after stringfreeze is lifted, add/use preference
+			/* TODO: add/use preference */
 			utils::string_map symbols;
 			symbols["player"] = player;
 			add_room_window_message(room, "server", VGETTEXT("$player has entered the room", symbols));
-			*/
 		}
 		if (r == active_window_room()) {
 			player_list_dirty_ = true;
@@ -1433,11 +1432,10 @@ void tlobby_main::process_room_part(const config &data)
 	room_info* r = lobby_info_.get_room(room);
 	if (r) {
 		r->remove_member(player);
-		/* TODO: Uncomment after stringfreeze is lifted, add/use preference
+		/* TODO: add/use preference */
 		utils::string_map symbols;
 		symbols["player"] = player;
 		add_room_window_message(room, "server", VGETTEXT("$player has left the room", symbols));
-		*/
         if (active_window_room() == r) {
 			player_list_dirty_ = true;
         }
