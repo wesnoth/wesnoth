@@ -61,9 +61,9 @@ vypíše názov adresára s používateľskými nastaveniami a skončí.
 zapne ďalšie možnosti príkazového režimu hry (ďalšie informácie o príkazovom
 režime na http://www.wesnoth.org/wiki/CommandMode).
 .TP 
-\fB\-e,\ \-\-editor\fP\fI\ file\fP
-start the in\-game map editor directly. If \fIfile\fP is specified, equivalent
-to \fB\-e \-\-load\fP
+\fB\-e,\ \-\-editor\fP\fI\ súbor\fP
+priamo spustí zabudovaný editor máp. Ak je zadaný \fIsúbor\fP, potom je
+ekvivalentné s \fB\-e \-\-load\fP
 .TP 
 \fB\-\-fps\fP
 zobrazí momentálnu rýchlosť hry, počet snímok za sekundu, v rohu obrazovky.
@@ -83,10 +83,10 @@ zbalí uloženú hru do formátu gzip, uloží ju ako \fIvstupný_súbor\fP.gz a
 vypíše súhrn možností príkazového riadku do štandardného výstupu, a skončí.
 .TP 
 \fB\-l,\ \-\-load\fP\fI\ súbor\fP
-loads the savegame \fIfile\fP from the standard save game directory.  If the
-\fB\-e\fP or \fB\-\-editor\fP option is used as well, starts the editor with the map
-from \fIfile\fP open. If it is a directory, the editor will start with a load
-map dialog opened there.
+načíta uloženú hru z \fIsúbor\fP v štandardnom adresári uložených hier. Ak je
+použitá aj voľba \fB\-e\fP alebo \fB\-\-editor\fP, potom spustí editor s mapou zo
+\fIsúbor\fP. Ak je to adresár, editor sa spustí s ponukou na výber súboru mapy
+z tohto adresára.
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdoména1\fP\fB,\fP\fIdoména2\fP\fB,\fP\fI...\fP
 nastaví úroveň závažnosti zapisovacích domén. \fBall\fP znamená všetky
@@ -101,9 +101,9 @@ počet snímok za sekundu, ktoré môže hra zobraziť; hodnota by mala byť med
 1 a 1000, štandardne je \fB50\fP.
 .TP 
 \fB\-m, \-\-multiplayer\fP
-runs a multiplayer game. There are additional options that can be used
-together with \fB\-\-multiplayer\fP as explained below. Only these additional
-options can follow \fB\-\-multiplayer\fP.
+spustí hru pre viacerých hráčov. Ďalšie možnosti použiteľné v kombinácii s
+\fB\-\-multiplayer\fP sú vysvetlené nižšie. Iba tieto voľby môžu nasledovať za
+\fB\-\-multiplayer\fP.
 .TP 
 \fB\-\-no\-delay\fP
 spustí hru bez akýchkoľvek spomalení, kvôli meraniu rýchlosti grafiky. Toto
@@ -153,8 +153,8 @@ Pri možnostiach ovplyvňujúcich konkrétnu bojovú stranu je uvedené
 \fIčíslo\fP. Za \fIčíslo\fP treba dosadiť číslo bojovej strany. Zvyčajne je to 1
 alebo 2, ale záleží to na možnom počte hráčov vo vybranej scéne.
 .TP 
-\fB\-\-ai_config\fP\fInumber\fP\fB=\fP\fIvalue\fP
-selects a configuration file to load for the AI controller for this side.
+\fB\-\-ai_config\fP\fIčíslo\fP\fB=\fP\fIhodnota\fP
+zvolí konfiguračný súbor na načítanie pre počítačového hráča za danú stranu.
 .TP 
 \fB\-\-algorithm\fP\fIčíslo\fP\fB=\fP\fIhodnota\fP
 nastaví neštandardný algoritmus počítačovému hráčovi za danú stranu. Možné

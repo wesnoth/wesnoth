@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-lib_1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-15 01:03+0100\n"
+"POT-Creation-Date: 2010-03-25 12:17+0100\n"
 "PO-Revision-Date: 2009-11-26 23:16+0100\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
@@ -825,8 +825,8 @@ msgstr "Végrehajtási nyom"
 #. [grid]
 #: data/gui/default/window/formula_debugger.cfg:226
 #: data/gui/default/window/lobby_main.cfg:660
-#: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:643
-#: src/hotkeys.cpp:934
+#: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:646
+#: src/hotkeys.cpp:937
 msgid "Quit"
 msgstr "Kilépés"
 
@@ -2156,20 +2156,20 @@ msgstr "Verzió: "
 msgid "whisper to $receiver"
 msgstr "súgás neki: $receiver"
 
-#: src/gui/dialogs/lobby_main.cpp:689
+#: src/gui/dialogs/lobby_main.cpp:691
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "Játékok: összesen $num_total mérkőzés zajlik, ebből $num_shown látható"
 
-#: src/gui/dialogs/lobby_main.cpp:731
+#: src/gui/dialogs/lobby_main.cpp:733
 msgid "Observers allowed"
 msgstr "Megfigyelés engedélyezve"
 
 # tiltva?
-#: src/gui/dialogs/lobby_main.cpp:734
+#: src/gui/dialogs/lobby_main.cpp:736
 msgid "Observers not allowed"
 msgstr "Megfigyelés letiltva"
 
-#: src/gui/dialogs/lobby_main.cpp:1072
+#: src/gui/dialogs/lobby_main.cpp:1077
 msgid ""
 "Whisper session with $name started. If you don't want to receive messages "
 "from this user, type /ignore $name\n"
@@ -2177,19 +2177,19 @@ msgstr ""
 "Sugdolózás kezdődött ezzel a felhasználóval: $name. Ha mégsem szeretnél "
 "üzeneteket kapni tőle, írd be a következő parancsot: /ignore $name\n"
 
-#: src/gui/dialogs/lobby_main.cpp:1078
+#: src/gui/dialogs/lobby_main.cpp:1083
 msgid "Room $name joined"
 msgstr "Csatlakoztál ehhez a szobához: $name"
 
-#: src/gui/dialogs/lobby_main.cpp:1548
+#: src/gui/dialogs/lobby_main.cpp:1553
 msgid "Password Required"
 msgstr "Jelszó szükséges"
 
-#: src/gui/dialogs/lobby_main.cpp:1549
+#: src/gui/dialogs/lobby_main.cpp:1554
 msgid "Joining this game requires a password."
 msgstr "A játékhoz való csatlakozáshoz jelszó szükséges."
 
-#: src/gui/dialogs/lobby_main.cpp:1550
+#: src/gui/dialogs/lobby_main.cpp:1555
 msgid "Password: "
 msgstr "Jelszó: "
 
@@ -2287,7 +2287,7 @@ msgstr "Alap ráközelítés"
 msgid "Toggle Full Screen"
 msgstr "Teljes képernyős mód beállítása"
 
-#: src/hotkeys.cpp:58 src/hotkeys.cpp:889
+#: src/hotkeys.cpp:58 src/hotkeys.cpp:892
 msgid "Screenshot"
 msgstr "Képernyőkép"
 
@@ -2651,19 +2651,19 @@ msgstr "Felhasználói Parancs#2"
 msgid "User-Command#3"
 msgstr "Felhasználói Parancs#3"
 
-#: src/hotkeys.cpp:643 src/hotkeys.cpp:934
+#: src/hotkeys.cpp:646 src/hotkeys.cpp:937
 msgid "Do you really want to quit?"
 msgstr "Biztos ki akarsz lépni?"
 
-#: src/hotkeys.cpp:889
+#: src/hotkeys.cpp:892
 msgid "Map-Screenshot"
 msgstr "Képernyőkép a térképről"
 
-#: src/hotkeys.cpp:896
+#: src/hotkeys.cpp:899
 msgid "Screenshot done"
 msgstr "Képernyőkép elkészítve"
 
-#: src/hotkeys.cpp:898
+#: src/hotkeys.cpp:901
 msgid "Screenshot failed"
 msgstr "Képernyőkép készítése sikertelen"
 

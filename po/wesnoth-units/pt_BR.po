@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-08 14:58+0100\n"
+"POT-Creation-Date: 2010-03-25 12:17+0100\n"
 "PO-Revision-Date: 2010-01-28 23:36-0300\n"
 "Last-Translator: Rainer Oliveira <rainercoliveira@gmail.com>\n"
 "Language-Team: Portuguese - Brasil <gnome-l10n-br@listas.cipsga.org.br>\n"
@@ -44,7 +44,7 @@ msgstr ""
 #: data/core/units/goblins/Knight.cfg:48
 #: data/core/units/goblins/Pillager.cfg:47
 #: data/core/units/goblins/Wolf_Rider.cfg:64
-#: data/core/units/monsters/Cave_Spider.cfg:37
+#: data/core/units/monsters/Cave_Spider.cfg:25
 #: data/core/units/monsters/Sea_Serpent.cfg:27
 #: data/core/units/monsters/Water_Serpent.cfg:43
 #: data/core/units/monsters/Wolf.cfg:50
@@ -693,8 +693,8 @@ msgstr ""
 #: data/core/units/humans/Woodsman_Huntsman.cfg:51
 #: data/core/units/humans/Woodsman_Poacher.cfg:48
 #: data/core/units/humans/Woodsman_Trapper.cfg:82
-#: data/core/units/orcs/Archer.cfg:26 data/core/units/orcs/Assassin.cfg:26
-#: data/core/units/orcs/Slayer.cfg:27
+#: data/core/units/orcs/Archer.cfg:26 data/core/units/orcs/Assassin.cfg:40
+#: data/core/units/orcs/Slayer.cfg:39
 #: data/core/units/undead/Skele_Banebow.cfg:31
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:29
 msgid "dagger"
@@ -1074,7 +1074,7 @@ msgstr "espada"
 #: data/core/units/humans/Woodsman_Ranger.cfg:68
 #: data/core/units/humans/Woodsman_Trapper.cfg:91
 #: data/core/units/orcs/Archer.cfg:35 data/core/units/orcs/Archer.cfg:44
-#: data/core/units/orcs/Warlord.cfg:34
+#: data/core/units/orcs/Warlord.cfg:46
 #: data/core/units/undead/Skele_Banebow.cfg:40
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:38
 #: data/core/units/undead/Skeleton_Archer.cfg:41
@@ -1201,7 +1201,7 @@ msgstr ""
 #: data/core/units/saurians/Augur.cfg:78
 #: data/core/units/saurians/Oracle.cfg:78
 #: data/core/units/saurians/Soothsayer.cfg:78
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:98
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:99
 msgid "staff"
 msgstr "bastão"
 
@@ -3663,7 +3663,7 @@ msgstr ""
 "também podem atirar teias pelo ar, aprisionando suas vítimas."
 
 #. [attack]: type=impact
-#: data/core/units/monsters/Cave_Spider.cfg:49
+#: data/core/units/monsters/Cave_Spider.cfg:37
 msgid "web"
 msgstr "teia"
 
@@ -3686,13 +3686,13 @@ msgstr ""
 "firme."
 
 #. [attack]: type=impact
-#: data/core/units/monsters/Cuttle_Fish.cfg:35
+#: data/core/units/monsters/Cuttle_Fish.cfg:49
 #: data/core/units/monsters/Tentacle.cfg:62
 msgid "tentacle"
 msgstr "tentáculo"
 
 #. [attack]: type=pierce
-#: data/core/units/monsters/Cuttle_Fish.cfg:46
+#: data/core/units/monsters/Cuttle_Fish.cfg:60
 msgid "ink"
 msgstr "tinta"
 
@@ -4098,7 +4098,7 @@ msgstr ""
 "ajuda considerável para seus primos maiores e mais brutais."
 
 #. [attack]: type=blade
-#: data/core/units/orcs/Assassin.cfg:35 data/core/units/orcs/Slayer.cfg:36
+#: data/core/units/orcs/Assassin.cfg:49 data/core/units/orcs/Slayer.cfg:48
 msgid "throwing knives"
 msgstr "arremessar facas"
 
@@ -4178,7 +4178,7 @@ msgstr ""
 
 #. [attack]: type=blade
 #: data/core/units/orcs/Ruler.cfg:27 data/core/units/orcs/Sovereign.cfg:28
-#: data/core/units/orcs/Warlord.cfg:25 data/core/units/orcs/Warrior.cfg:35
+#: data/core/units/orcs/Warlord.cfg:37 data/core/units/orcs/Warrior.cfg:35
 msgid "greatsword"
 msgstr "espada larga"
 
@@ -4691,7 +4691,7 @@ msgstr "onda gelada"
 #. [attack]: type=arcane
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:72
 #: data/core/units/undead/Necro_Dark_Adept.cfg:55
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:119
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:120
 #: data/core/units/undead/Necro_Lich.cfg:72
 #: data/core/units/undead/Necromancer.cfg:63
 msgid "shadow wave"
@@ -4729,7 +4729,7 @@ msgstr ""
 
 #. [attack]: type=cold
 #: data/core/units/undead/Necro_Dark_Adept.cfg:43
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:107
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:108
 #: data/core/units/undead/Necromancer.cfg:51
 msgid "chill wave"
 msgstr "onda gelada"
@@ -4780,12 +4780,12 @@ msgstr ""
 "são tentadoras demais para aqueles com um mínimo de sede de poder."
 
 #. [female]
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:250
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:251
 msgid "Dark Sorceress"
 msgstr "Feiticeira Sombria"
 
 #. [female]
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:256
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:257
 msgid ""
 "The dread inspired by black magic comes chiefly from how little is known "
 "about it by the common man. Dark sorceresses have begun to unlock the "

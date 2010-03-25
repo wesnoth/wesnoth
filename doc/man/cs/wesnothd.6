@@ -91,8 +91,8 @@ zapíná výpis rozšířených logovacích informací.
 .
 .TP 
 \fBallow_remote_shutdown\fP
-Při nastavení na \fBno\fP (výchozí), požadavky shut_down a restart
-jsouignorovány, pokud nepocházejí z fifo. Při nastavení \fByes\fP může správce
+Při nastavení na \fBno\fP (výchozí), požadavky shut_down a restart jsou
+ignorovány, pokud nepocházejí z fifo. Při nastavení \fByes\fP může správce
 vzdáleně vypnout server pomocí /query.
 .TP 
 \fBban_save_file\fP
@@ -123,7 +123,7 @@ Maximální počet zpráv, které jsou přijaty během
 \fBmessages_time_period\fP. (implicitně \fB4\fP)
 .TP 
 \fBmessages_time_period\fP
-Časová perioda (ve vteřinách), po které se nuluje počítadlo přjatých
+Časová perioda (ve vteřinách), po které se nuluje počítadlo přijatých
 zpráv. (implicitně \fB10\fP sekund)
 .TP 
 \fBmotd\fP
@@ -209,7 +209,7 @@ na určený server klientské požadavky. Akceptuje stejné klíče jako
 \fB[redirect]\fP.
 .RE
 .P
-\fB[user_handler]\fP Kpnfiguruje uživatelský handler. Dostupné klíče se liší
+\fB[user_handler]\fP Konfiguruje uživatelský handler. Dostupné klíče se liší
 podle toho, který handler je použit \- nastaveno klíčem
 \fBuser_handler\fP. Pokud není v konfiguraci nalezena žádná sekce
 \fB[user_handler]\fP, server poběží bez služeb správy přezdívek.
@@ -273,8 +273,7 @@ Cyril Bouthors <cyril@bouthors.org>. Překlad Oto 'tapik' Buchta
 <tapik@buchtovi.cz> a Vladimír Slávik
 <slavik.vladimir@seznam.cz>.
 .br
-Navštivte oficiální stránky: http://www.wesnoth.org/ a oficiální české
-stránky http://www.wesnoth.wz.cz/
+Navštivte oficiální stránky: http://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .

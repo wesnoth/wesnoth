@@ -8,17 +8,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-ei\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-15 01:03+0100\n"
+"POT-Creation-Date: 2010-03-25 12:17+0100\n"
 "PO-Revision-Date: 2010-03-05 01:53+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
-"Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: sr\n"
 "X-Generator: KBabel 1.11.4\n"
-"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
-"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%"
+"10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Environment: wesnoth, wesnoth/noent\n"
 "X-Wrapping: fine\n"
 
@@ -395,7 +395,7 @@ msgstr "Одупреш ли се до Десиновог повратка за �
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:113
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:89
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:141
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:177
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:155
 #: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:135
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:133
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:160
@@ -534,7 +534,7 @@ msgstr "Помјериш ли Гведрија на подна врата"
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:117
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:93
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:145
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:181
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:159
 #: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:139
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:137
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:164
@@ -1126,7 +1126,7 @@ msgstr ""
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:161
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:260
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:238
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:291
 msgid "Hmm..."
 msgstr "Хм..."
@@ -1389,7 +1389,7 @@ msgstr "Поразиш ли вођу немртвих"
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:121
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:97
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:149
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:185
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:163
 #: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:143
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:141
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:168
@@ -2426,12 +2426,12 @@ msgid "Ran-Lar"
 msgstr "Ран-Лар"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:173
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:151
 msgid "Destroy the bridge OR defeat all enemies"
 msgstr "Обориш ли мост ИЛИ поразиш све непријатеље"
 
 #. [objectives]
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:188
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:166
 msgid ""
 "Note: every unit not on the south side of the river when the bridge is "
 "destroyed will be lost (including non-recalled units)"
@@ -2440,12 +2440,12 @@ msgstr ""
 "када мост падне (укључујући и несазване)."
 
 #. [unit]: id=Engineer, type=Red Mage
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:198
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:176
 msgid "Engineer"
 msgstr "инжењер"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:210
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:188
 msgid ""
 "All is lost! We have to get out of the Northlands as quickly as possible! "
 "Run for your - what the...!? Who are you?"
@@ -2455,7 +2455,7 @@ msgstr ""
 
 # |, no-check-spell, no-hybdl
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:215
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:193
 msgid ""
 "I'm an enginea'. I s'pect you'll have a need of me services. I bet you're "
 "gonna want me to blow up that bridge ov'r theah."
@@ -2464,13 +2464,13 @@ msgstr ""
 "шћет' да порушим тај мост."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:219
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:197
 msgid "Why would we want to do that?!?"
 msgstr "А зашто бисмо то желели?!?"
 
 # |, no-check-spell, no-hybdl
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:223
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:201
 msgid ""
 "Well, I see those orcs are chasin' you, and if I blow up the bridge, they "
 "can't get across. It'll help you to escape."
@@ -2479,13 +2479,13 @@ msgstr ""
 "Так' ћете лакше побјећ'."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:227
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:205
 msgid "I see... I think it is a good idea to hire him. How much?"
 msgstr "А тако... Мислим да је добра идеја унајмити га. Колико?"
 
 # |, no-check-spell, no-hybdl
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:231
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:209
 msgid ""
 "I aint charging gold - I wants protecshun! Everywhere I go, I see orcs, "
 "undead. 'T'aint safe 'round 'ere!"
@@ -2494,7 +2494,7 @@ msgstr ""
 "сигурно вој!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:235
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:213
 msgid ""
 "Very well, we'll protect you from the undead. But we can't help you until we "
 "get across this river. Now let's go!"
@@ -2504,7 +2504,7 @@ msgstr ""
 
 # |, no-check-spell, no-hybdl
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:239
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:217
 msgid ""
 "Deal. I c'n blow'er up once I get to that signpost ov'r dere. That's where "
 "my eq'pment is. But ev'ryone not ov'r theah on that side when it blows w'll "
@@ -2515,29 +2515,29 @@ msgstr ""
 
 # |, no-check-spell, no-hybdl
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:256
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:234
 msgid "So, d'ya want me to blow up der bridge yet, Cap'n?"
 msgstr "Па, 'оћеш ме већ једном пуст'т' да срушим мост, шефе?"
 
 #. [option]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:262
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:240
 msgid "Yes, blow it up."
 msgstr "Да, руши га."
 
 # |, no-check-spell, no-hybdl
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:266
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:244
 msgid "Alright! Blast'n time!"
 msgstr "Тако! Сад ће пућ'!"
 
 # |, no-check-spell
 #. [message]: speaker=narrator
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:279
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:257
 msgid "BOOM!!!"
 msgstr "БУУУМ!!!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:304
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:282
 msgid ""
 "Good, we have escaped from these orcs. But where will we go? There are "
 "undead in Wesnoth."
@@ -2546,7 +2546,7 @@ msgstr ""
 "немртвих."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:308
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:286
 msgid ""
 "It is not safe here, but we cannot go back north. The orcs are a more "
 "immediate threat."
@@ -2555,23 +2555,23 @@ msgstr ""
 "непосреднија претња."
 
 #. [option]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:318
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:296
 msgid "No, wait until later."
 msgstr "Не, сачекај мало."
 
 # |, no-check-spell, no-hybdl
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:322
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:300
 msgid "Neh? Alright then, we'll wait fa' later, eh?"
 msgstr "Не? Добро, онда остав'ћемо за касније, а?"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:335
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:313
 msgid "We have not thrown down the bridge in time! The orcs will kill us all!"
 msgstr "Мост није срушен на вријеме! Оркови ће нас све побити!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:343
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:321
 msgid ""
 "Well, we didn't have to blow up the bridge after all, but we still have to "
 "leave the northlands. More orcs will come. But where will we go? There are "
@@ -2582,12 +2582,12 @@ msgstr ""
 "немртвих."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:357
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:335
 msgid "So what do you propose?"
 msgstr "Имате ли некакав приједлог?"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:361
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:339
 msgid ""
 "We cannot go north, for that is where orcs are... we cannot go east, for "
 "that is where the undead come from... we cannot go west, for the ocean lies "
@@ -2600,7 +2600,7 @@ msgstr ""
 "би нас ипак пронашли."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:365
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:343
 msgid ""
 "We could go south, and return to Wesnoth... but I do not know what that "
 "would accomplish."
@@ -2608,12 +2608,12 @@ msgstr ""
 "Можемо на југ, да се вратимо у Веснот. Али не знам шта бисмо тиме постигли."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:369
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:347
 msgid "It would accomplish nothing! The undead will kill us all!"
 msgstr "Не бисмо постигли баш ништа! Немртви ће нас све побити!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:373
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:351
 msgid ""
 "Have you not heard what Dacyn said? Either the orcs or undead will kill us "
 "no matter what we do. Our only hope was to isolate ourselves on the Isle of "
@@ -2625,7 +2625,7 @@ msgstr ""
 "бисмо се враћали истим путем, а узбунили смо оркове. Дакле, ако нема наде..."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:377
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:355
 msgid ""
 "There is still some hope left. If we return to Wesnoth, we may be able to "
 "aid the king in defeating these invaders. We saw them attack us. And, I "
@@ -2637,7 +2637,7 @@ msgstr ""
 "немртвих."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:381
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:359
 msgid ""
 "Very well. If returning to Wesnoth has any chance of success, it is our best "
 "option. We will go south."
@@ -2646,7 +2646,7 @@ msgstr ""
 "онда је то најбољи избор. Кренимо на југ."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:385
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:363
 msgid ""
 "I do not like this. But it appears we will die no matter our course of "
 "action."
@@ -2655,7 +2655,7 @@ msgstr ""
 
 # |, no-check-spell, no-hybdl
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:389
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:367
 msgid ""
 "I'll be followin' yah from now on. Hope yah can get to Weld'n an' all so I "
 "c'n stop runnin'..."
