@@ -330,10 +330,7 @@ void create::process_event()
 		} catch(twml_exception&) {}
 
 		if (map.get() == NULL) {
-			//this line added a new string, using an old string for 1.8.0, using a semi fitting string instead
-			//TODO: reactivate the correct line post 1.8.0
-			//gui2::show_transient_message(disp_.video(), "", _("The map is invalid."));
-			gui2::show_transient_message(disp_.video(), "", _("The game map could not be loaded: "));
+			gui2::show_transient_message(disp_.video(), "", _("The map is invalid."));
 		} else if (name_entry_.text() == "") {
 			gui2::show_transient_message(disp_.video(), "", _("You must enter a name."));
 		} else {
