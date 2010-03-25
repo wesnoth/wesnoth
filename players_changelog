@@ -2,14 +2,14 @@ This is meant to be a concise list of player-visible changes (very minor
 changes may be omitted). For a complete list of changes, see the main
 changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/trunk/changelog
 
-Version 1.7.15+svn:
+Version 1.8.0:
  * Campaigns:
+   * Descent into Darkness
+     * Added new Giant Rat base frame and animations.
    * Legend of Wesmere:
      * Fixed bug #15631: Scenario 3: arrival of Kalenz failed.
      * Fixed bug #15679: Scenario 17: leader of side 2 is missing.
      * Fixed bug #15680: Scenario 18: wrong recruitment options.
-   * Descent into Darkness
-     * New Giant Rat base fram and animations.
    * Under the Burning Suns
      * Scenario 2: speed up AI turn.
 
@@ -25,10 +25,11 @@ Version 1.7.15+svn:
    * Updated maps: Cynsaun Battlefield.
 
  * Music and sound effects:
-   * The lobby will play a random music playlist, instead of looping the main
-     menu song.
-   * The titlescreen will play a random music playlist, instead of looping the
-     main menu song (but will still start with the main menu theme).
+   * Fixed bug #15668: The lobby will play a random music playlist, configured
+     by [lobby_music], instead of looping the main menu song.
+   * Fixed bug #15669: The titlescreen will play a random music playlist,
+     configured by [titlescreen_music], instead of looping the main menu song.
+     The first song played will still always be the main_menu theme.
 
  * Miscellaneous and bug fixes:
    * Fixed bug #13882: Map which is invalid aborts map selection.
