@@ -253,8 +253,7 @@ static server_type open_connection(game_display& disp, const std::string& origin
 								const std::string salt = (*error)["salt"];
 
 								if (salt.length() < 12) {
-									//TODO gettextify after end of stringfreeze
-									throw network::error("Bad data received from server");
+									throw network::error(_("Bad data received from server"));
 								}
 
 								sp["password"] = util::create_hash(util::create_hash(password, util::get_salt(salt),
