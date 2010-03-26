@@ -156,7 +156,7 @@ public:
 	//
 	bool wait(const mutex& m);
 
-	enum WAIT_TIMEOUT_RESULT { WAIT_OK, WAIT_TIMEOUT, WAIT_ERROR };
+	enum WAIT_TIMEOUT_RESULT { WAIT_OK, WAIT_TIMED_OUT, WAIT_ERROR };
 
 	// wait on the condition with a timeout. Basically the same as the
 	// wait() function, but if the lock is not aquired before the
