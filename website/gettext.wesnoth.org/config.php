@@ -10,7 +10,7 @@
 // the msgfmt program path
 $msgfmt="/usr/bin/msgfmt";
 
-$branch="1.6"; //version of current stable (folder name of the checkout folder)
+$branch="1.8"; //version of current stable (folder name of the checkout folder)
 $wescampbranchversion="1.6";
 $wescamptrunkversion="1.7";
 
