@@ -30,7 +30,7 @@ sort($existing_extra_packs_b);
 $stats = array();
 
 if(!isset($_GET['version'])){
-        $version = '1.8';
+        $version = 'trunk';
 }else{
 	$version = $_GET['version'];
 }
