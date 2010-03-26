@@ -466,7 +466,7 @@ static void enter_connect_mode(game_display& disp, const config& game_config,
 
 static void enter_create_mode(game_display& disp, const config& game_config, mp::chat& chat, config& gamelist, mp::controller default_controller, bool local_players_only)
 {
-	if (0 && gui2::new_widgets) {
+	if (gui2::new_widgets) {
 
 		gui2::tmp_create_game dlg(game_config);
 
