@@ -21,7 +21,7 @@ struct lua_State;
 
 namespace ai {
 struct engine_lua;
-};
+}
 
 /**
  * Proxy table for the AI context
