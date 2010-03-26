@@ -45,6 +45,10 @@ ttoggle_panel::ttoggle_panel()
 				&ttoggle_panel::signal_handler_mouse_leave, this, _2, _3));
 
 	connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(
+				  &ttoggle_panel::signal_handler_pre_left_button_click
+				, this, _2)
+			, event::tdispatcher::back_pre_child);
+	connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(
 				&ttoggle_panel::signal_handler_left_button_click
 					, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(
@@ -176,6 +180,17 @@ void ttoggle_panel::signal_handler_mouse_leave(
 		set_state(ENABLED);
 	}
 	handled = true;
+}
+
+void ttoggle_panel::signal_handler_pre_left_button_click(
+		const event::tevent event)
+{
+	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+
+	set_value(true);
+	if(callback_state_change_) {
+		callback_state_change_(this);
+	}
 }
 
 void ttoggle_panel::signal_handler_left_button_click(
