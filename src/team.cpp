@@ -26,6 +26,7 @@
 #include "log.hpp"
 #include "map.hpp"
 #include "resources.hpp"
+#include "game_preferences.hpp"
 #include "team.hpp"
 
 static lg::log_domain log_engine("engine");
@@ -234,7 +235,7 @@ team::team(const config& cfg, const gamemap& map, int gold) :
 		villages_(),
 		shroud_(),
 		fog_(),
-		auto_shroud_updates_(true),
+		auto_shroud_updates_(!preferences::delay_shroud_updates_on_start()),
 		info_(cfg),
 		countdown_time_(0),
 		action_bonus_count_(0),

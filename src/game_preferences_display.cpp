@@ -109,7 +109,7 @@ private:
 			friends_list_button_, friends_back_button_,
 			friends_add_friend_button_, friends_add_ignore_button_,
 			friends_remove_button_, show_floating_labels_button_,
-			turn_dialog_button_, turn_bell_button_,
+			turn_dialog_button_, delay_shroud_updates_button_, turn_bell_button_,
 			show_team_colours_button_, show_colour_cursors_button_,
 			show_haloing_button_, video_mode_button_,
 			theme_button_, hotkeys_button_,
@@ -176,6 +176,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  friends_remove_button_(disp.video(), _("Remove")),
 	  show_floating_labels_button_(disp.video(), _("Show Floating Labels"), gui::button::TYPE_CHECK),
 	  turn_dialog_button_(disp.video(), _("Turn Dialog"), gui::button::TYPE_CHECK),
+	  delay_shroud_updates_button_(disp.video(), _("Delay Shroud Updates on Start"), gui::button::TYPE_CHECK),
 	  turn_bell_button_(disp.video(), _("Turn Bell"), gui::button::TYPE_CHECK),
 	  show_team_colours_button_(disp.video(), _("Show Team Colors"), gui::button::TYPE_CHECK),
 	  show_colour_cursors_button_(disp.video(), _("Show Color Cursors"), gui::button::TYPE_CHECK),
@@ -384,6 +385,9 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	turn_dialog_button_.set_check(turn_dialog());
 	turn_dialog_button_.set_help_string(_("Display a dialog at the beginning of your turn"));
 
+	delay_shroud_updates_button_.set_check(delay_shroud_updates_on_start());
+	delay_shroud_updates_button_.set_help_string(_("Activates the Delay Shroud Updates option on game start"));
+
 	turn_bell_button_.set_check(turn_bell());
 	turn_bell_button_.set_help_string(_("Play a bell sound at the beginning of your turn"));
 
@@ -443,6 +447,7 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&friends_input_);
 	h.push_back(&show_floating_labels_button_);
 	h.push_back(&turn_dialog_button_);
+	h.push_back(&delay_shroud_updates_button_);
 	h.push_back(&turn_bell_button_);
 	h.push_back(&UI_sound_button_);
 	h.push_back(&show_team_colours_button_);
@@ -515,6 +520,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	turbo_slider_.set_location(turbo_rect);
 	ypos += item_interline; show_ai_moves_button_.set_location(rect.x, ypos);
 	ypos += short_interline; turn_dialog_button_.set_location(rect.x, ypos);
+	ypos += short_interline; delay_shroud_updates_button_.set_location(rect.x, ypos);
 	ypos += short_interline; interrupt_when_ally_sighted_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_team_colours_button_.set_location(rect.x, ypos);
 	ypos += short_interline; show_grid_button_.set_location(rect.x, ypos);
@@ -686,6 +692,8 @@ void preferences_dialog::process_event()
 			set_delete_saves(delete_saves_button_.checked());
 		if (turn_dialog_button_.pressed())
 			set_turn_dialog(turn_dialog_button_.checked());
+		if (delay_shroud_updates_button_.pressed())
+			set_delay_shroud_updates_on_start(delay_shroud_updates_button_.checked());
 		if (show_team_colours_button_.pressed())
 			set_show_side_colours(show_team_colours_button_.checked());
 		if (hotkeys_button_.pressed()) {
@@ -1073,6 +1081,7 @@ void preferences_dialog::set_selection(int index)
 	turbo_slider_.enable(turbo());
 	show_ai_moves_button_.hide(hide_general);
 	turn_dialog_button_.hide(hide_general);
+	delay_shroud_updates_button_.hide(hide_general);
 	interrupt_when_ally_sighted_button_.hide(hide_general);
 	hotkeys_button_.hide(hide_general);
 	show_team_colours_button_.hide(hide_general);

@@ -93,6 +93,9 @@ namespace preferences {
 	bool turn_dialog();
 	void set_turn_dialog(bool ison);
 
+	bool delay_shroud_updates_on_start();
+	void set_delay_shroud_updates_on_start(bool value);
+
 	bool show_combat();
 
 	bool allow_observers();

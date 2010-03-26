@@ -400,6 +400,16 @@ void set_turn_dialog(bool ison)
 	preferences::set("turn_dialog", ison ? "yes" : "no");
 }
 
+bool delay_shroud_updates_on_start()
+{
+	return utils::string_bool(preferences::get("delay_shroud_updates_on_start"), false);
+}
+
+void set_delay_shroud_updates_on_start(bool value)
+{
+	preferences::set("delay_shroud_updates_on_start", value ? "yes" : "no");
+}
+
 bool show_combat()
 {
 	return utils::string_bool(preferences::get("show_combat"), true);
