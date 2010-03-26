@@ -59,7 +59,7 @@ log_domain::log_domain(char const *name)
 {
 	// Indirection to prevent initialization depending on link order.
 	if (!domains) domains = new domain_map;
-	domain_ = &*domains->insert(logd(name, 0)).first;
+	domain_ = &*domains->insert(logd(name, 1)).first;
 }
 
 bool set_log_domain_severity(std::string const &name, int severity)
