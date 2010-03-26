@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-25 12:17+0100\n"
+"POT-Creation-Date: 2010-03-26 15:39+0100\n"
 "PO-Revision-Date: 2009-12-14 21:23+0100\n"
 "Last-Translator: Diego J. <diegojromerolopez@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -2189,15 +2189,23 @@ msgstr ""
 msgid "Room $name joined"
 msgstr "Unido a partida $name"
 
-#: src/gui/dialogs/lobby_main.cpp:1553
+#: src/gui/dialogs/lobby_main.cpp:1400
+msgid "$player has entered the room"
+msgstr ""
+
+#: src/gui/dialogs/lobby_main.cpp:1438
+msgid "$player has left the room"
+msgstr ""
+
+#: src/gui/dialogs/lobby_main.cpp:1551
 msgid "Password Required"
 msgstr "Se requiere contraseña"
 
-#: src/gui/dialogs/lobby_main.cpp:1554
+#: src/gui/dialogs/lobby_main.cpp:1552
 msgid "Joining this game requires a password."
 msgstr "Se requiere una contraseña para unirse a esta partida."
 
-#: src/gui/dialogs/lobby_main.cpp:1555
+#: src/gui/dialogs/lobby_main.cpp:1553
 msgid "Password: "
 msgstr "Contraseña:"
 

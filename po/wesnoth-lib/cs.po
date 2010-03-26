@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-25 12:17+0100\n"
+"POT-Creation-Date: 2010-03-26 15:39+0100\n"
 "PO-Revision-Date: 2010-03-17 22:25+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -2184,15 +2184,23 @@ msgstr ""
 msgid "Room $name joined"
 msgstr "Vstoupil(a) jsi do místnosti $name"
 
-#: src/gui/dialogs/lobby_main.cpp:1553
+#: src/gui/dialogs/lobby_main.cpp:1400
+msgid "$player has entered the room"
+msgstr ""
+
+#: src/gui/dialogs/lobby_main.cpp:1438
+msgid "$player has left the room"
+msgstr ""
+
+#: src/gui/dialogs/lobby_main.cpp:1551
 msgid "Password Required"
 msgstr "Je zapotřebí heslo"
 
-#: src/gui/dialogs/lobby_main.cpp:1554
+#: src/gui/dialogs/lobby_main.cpp:1552
 msgid "Joining this game requires a password."
 msgstr "Ke vstupu do této hry je zapotřebí heslo."
 
-#: src/gui/dialogs/lobby_main.cpp:1555
+#: src/gui/dialogs/lobby_main.cpp:1553
 msgid "Password: "
 msgstr "Heslo: "
 

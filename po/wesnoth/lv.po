@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.9\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-25 12:17+0100\n"
+"POT-Creation-Date: 2010-03-26 15:39+0100\n"
 "PO-Revision-Date: 2010-03-15 23:42+0300\n"
 "Last-Translator: Reinis Danne <rei4dan@gmail.com>\n"
 "Language-Team: none\n"
@@ -5190,6 +5190,12 @@ msgstr "bāla"
 msgid "aged"
 msgstr "gados"
 
+#. [trait]: id=aged
+#: data/core/macros/traits.cfg:222
+#, fuzzy
+msgid "female^aged"
+msgstr "bāla"
+
 #. [color_range]: id=red
 #. [color_range]: id=1
 #: data/core/team-colors.cfg:14 data/core/team-colors.cfg:83
@@ -7368,7 +7374,7 @@ msgstr ""
 "nepieciešams instalēt visas nepieciešamās pakotnes.)"
 
 #: src/addon_management.cpp:531 src/addon_management.cpp:605
-#: src/multiplayer.cpp:215 src/multiplayer.cpp:275 src/multiplayer_ui.cpp:80
+#: src/multiplayer.cpp:215 src/multiplayer.cpp:274 src/multiplayer_ui.cpp:80
 msgid "Connection timed out"
 msgstr "Iestājās savienojuma noildze"
 
@@ -7851,8 +7857,7 @@ msgstr "Neizdevās ielādēt spēli: "
 msgid "Error while playing the game: "
 msgstr "Kļūde spēlējot spēli: "
 
-#: src/game.cpp:1290 src/multiplayer_create.cpp:336 src/playcampaign.cpp:109
-#: src/playcampaign.cpp:398
+#: src/game.cpp:1290 src/playcampaign.cpp:109 src/playcampaign.cpp:398
 msgid "The game map could not be loaded: "
 msgstr "Neizdevās ielādēt spēles karti: "
 
@@ -7978,7 +7983,7 @@ msgstr "Izturība: "
 msgid "(Att / Def)"
 msgstr "(Uzbr / Aizs)"
 
-#: src/generate_report.cpp:214 src/multiplayer_create.cpp:416
+#: src/generate_report.cpp:214 src/multiplayer_create.cpp:413
 msgid "Experience Modifier: "
 msgstr "Pieredzes modifikatori: "
 
@@ -8114,7 +8119,7 @@ msgstr "Ne draugs, ne ignorētais"
 msgid "You"
 msgstr "Tu"
 
-#: src/gui/dialogs/lobby_player_info.cpp:114 src/multiplayer_create.cpp:554
+#: src/gui/dialogs/lobby_player_info.cpp:114 src/multiplayer_create.cpp:551
 msgid "Error"
 msgstr "Kļūda"
 
@@ -8580,7 +8585,13 @@ msgstr "Meklēt"
 msgid "This command is currently unavailable."
 msgstr "Šī komanda pašlaik nav pieejama."
 
-#: src/menu_events.cpp:1949
+#: src/menu_events.cpp:1944
+msgid ""
+"Unknown command '$command', try $help_command for a list of available "
+"commands."
+msgstr ""
+
+#: src/menu_events.cpp:1952
 msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
@@ -8588,11 +8599,57 @@ msgstr ""
 "Pieejamo komandu saraksts un komandām specifiska palīdzība. Izmanto \"help "
 "all\", lai iekļautu pašreiz nepieejamās komandas."
 
-#: src/menu_events.cpp:2054
+#: src/menu_events.cpp:1954
+msgid "do not translate the 'all'^[all|<command>]"
+msgstr ""
+
+#: src/menu_events.cpp:1998
+#, fuzzy
+msgid "Error:"
+msgstr "Kļūda: "
+
+#: src/menu_events.cpp:2004
+msgid "Missing argument $arg_id"
+msgstr ""
+
+#: src/menu_events.cpp:2052
+msgid ""
+"Available commands $flags_description:\n"
+"$list_of_commands"
+msgstr ""
+
+#: src/menu_events.cpp:2052 src/menu_events.cpp:2053 src/menu_events.cpp:2076
+#, fuzzy
+msgid "help"
+msgstr "Palīdzība"
+
+#: src/menu_events.cpp:2053
+msgid "Type $help_command <command> for more info."
+msgstr ""
+
+#: src/menu_events.cpp:2064
 msgid " No help available."
 msgstr " Palīdzība nav pieejama."
 
-#: src/menu_events.cpp:2213
+#: src/menu_events.cpp:2069
+#, fuzzy
+msgid "Usage:"
+msgstr "Ziņa:"
+
+#: src/menu_events.cpp:2074
+msgid "aliases:"
+msgstr ""
+
+#: src/menu_events.cpp:2200
+msgid "(A) - auth command"
+msgstr ""
+
+#: src/menu_events.cpp:2207
+#, fuzzy
+msgid "(auth only)"
+msgstr "Tikai komanda"
+
+#: src/menu_events.cpp:2227
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
@@ -8600,7 +8657,7 @@ msgstr ""
 "Sūtīt pieprasījumu uz serveri. Bez argumentiem serveris tev pateiks "
 "pieejamās komandas."
 
-#: src/menu_events.cpp:2217
+#: src/menu_events.cpp:2231
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
@@ -8609,38 +8666,49 @@ msgstr ""
 "spēlē, bet ir tikai uz servera, tad viņam tikai tiks uzlikts piekļuves "
 "aizliegums."
 
-#: src/menu_events.cpp:2220
+#: src/menu_events.cpp:2232 src/menu_events.cpp:2235 src/menu_events.cpp:2237
+#: src/menu_events.cpp:2239 src/menu_events.cpp:2241 src/menu_events.cpp:2266
+#: src/menu_events.cpp:2268 src/menu_events.cpp:2270 src/menu_events.cpp:2284
+msgid "<nick>"
+msgstr ""
+
+#: src/menu_events.cpp:2234
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr ""
 "Noņemt lietotāja piekļuves aizliegumu. Viņam nav jābūt spēlē, bet uz servera."
 
-#: src/menu_events.cpp:2223
+#: src/menu_events.cpp:2237
 msgid "Kick a player or observer."
 msgstr "Klikšķini uz spēlētāju vai novērotāju."
 
-#: src/menu_events.cpp:2225
+#: src/menu_events.cpp:2239
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr "Apklusināt novērotāju. Bez argumenta attēlo apklusināšanas statusu."
 
-#: src/menu_events.cpp:2227
+#: src/menu_events.cpp:2241
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr ""
 "Noņemt apklusinājumu no novērotāja. Bez argumenta noņem apklusinājumu no "
 "visiem."
 
-#: src/menu_events.cpp:2229
+#: src/menu_events.cpp:2243
 msgid "Mute/Unmute all observers. (toggles)"
 msgstr "Apklusina/noņem apklusinājumu no visiem novērotājiem. (pārslēdz)"
 
-#: src/menu_events.cpp:2239
+#: src/menu_events.cpp:2253
 msgid "Send a message to the server admins currently online"
 msgstr "Sūta ziņu tiešsaistē esošajiem servera administratoriem"
 
-#: src/menu_events.cpp:2241
+#: src/menu_events.cpp:2255
+#, fuzzy
+msgid "<message>"
+msgstr "Ziņa:"
+
+#: src/menu_events.cpp:2255
 msgid "Send an emotion or personal action in chat."
 msgstr "Sūtīt emociju vai personīgo darbību uz čatu."
 
-#: src/menu_events.cpp:2244
+#: src/menu_events.cpp:2258
 msgid ""
 "Sends a private message. You can't send messages to players that don't "
 "control a side in a running game you are in."
@@ -8648,275 +8716,437 @@ msgstr ""
 "Sūta privātu ziņu. Jūs nevariet sūtīt ziņas spēlētājiem, kuri nekontrolē "
 "kādu no pusēm notiekošajā spēlē, kurā jūs esiet."
 
-#: src/menu_events.cpp:2250
+#: src/menu_events.cpp:2260
+msgid "<nick> <message>"
+msgstr ""
+
+#: src/menu_events.cpp:2264
+msgid "<level> <domain>"
+msgstr ""
+
+#: src/menu_events.cpp:2264
 msgid "Change the log level of a log domain."
 msgstr "Nomainīt žurnalēšanas līmeni žurnalēšanas domēnam."
 
-#: src/menu_events.cpp:2252
+#: src/menu_events.cpp:2266
 msgid "Add a nick to your ignores list."
 msgstr "Pievienot lietotājvārdu ignorēto sarakstam."
 
-#: src/menu_events.cpp:2254
+#: src/menu_events.cpp:2268
 msgid "Add a nick to your friends list."
 msgstr "Pievienot lietotājvārdu draugu sarakstam."
 
-#: src/menu_events.cpp:2256
+#: src/menu_events.cpp:2270
 msgid "Remove a nick from your ignores or friends list."
 msgstr "Izņemt lietotājvārdu no ignorēto vai draugu saraksta."
 
-#: src/menu_events.cpp:2258
+#: src/menu_events.cpp:2272
 msgid "Show your ignores and friends list."
 msgstr "Parāda ignorēto un draugu sarakstu."
 
-#: src/menu_events.cpp:2261
+#: src/menu_events.cpp:2275
 msgid "Display version information."
 msgstr "Parādīt informāciju par versiju."
 
-#: src/menu_events.cpp:2263
+#: src/menu_events.cpp:2277
+msgid "<password> <email (optional)>"
+msgstr ""
+
+#: src/menu_events.cpp:2277
 msgid "Register your nick"
 msgstr "Reģistrē savu lietotājvārdu"
 
-#: src/menu_events.cpp:2265
+#: src/menu_events.cpp:2279
 msgid "Drop your nick."
 msgstr "Nomet savu lietotājvārdu."
 
-#: src/menu_events.cpp:2267
+#: src/menu_events.cpp:2281
 msgid "Update details for your nick. For possible details see '/details'."
 msgstr ""
 "Atjauno sava lietotājvārda detaļas. Iespējamās detaļas skaties '/details'."
 
-#: src/menu_events.cpp:2270
+#: src/menu_events.cpp:2282
+msgid "<detail> <value>"
+msgstr ""
+
+#: src/menu_events.cpp:2284
 msgid "Request information about a nick."
 msgstr "Pieprasīt informāciju par lietotājvārdu."
 
-#: src/menu_events.cpp:2272
+#: src/menu_events.cpp:2286
 msgid "Request a list of details you can set for your registered nick."
 msgstr ""
 "Pieprasīt sarakstu ar detaļām, ko vari iestatīt savam reģistrātajam "
 "lietotājvārdam."
 
-#: src/menu_events.cpp:2274
+#: src/menu_events.cpp:2288 src/menu_events.cpp:2291 src/menu_events.cpp:2293
+msgid "<room>"
+msgstr ""
+
+#: src/menu_events.cpp:2288
 msgid "Join a room."
 msgstr "Pievienoties istabai."
 
-#: src/menu_events.cpp:2277
+#: src/menu_events.cpp:2291
 msgid "Part a room."
 msgstr "Iziet no istabas."
 
-#: src/menu_events.cpp:2279
+#: src/menu_events.cpp:2293
 msgid "List room members."
 msgstr "Parādīt istabas dalībniekus."
 
-#: src/menu_events.cpp:2281
+#: src/menu_events.cpp:2295
 msgid "List available rooms."
 msgstr "Parādīt pieejamās istabas."
 
-#: src/menu_events.cpp:2283
+#: src/menu_events.cpp:2297
+msgid "<room> <msg>"
+msgstr ""
+
+#: src/menu_events.cpp:2297
 msgid "Room message."
 msgstr "Istabas ziņa."
 
-#: src/menu_events.cpp:2285
+#: src/menu_events.cpp:2299
+msgid "<room> <type> [value]"
+msgstr ""
+
+#: src/menu_events.cpp:2299
 msgid "Room query."
 msgstr "Istabas pieprasījums."
 
-#: src/menu_events.cpp:2414
+#: src/menu_events.cpp:2397
+msgid "(D) - debug only, (N) - network only, (A) - auth only"
+msgstr ""
+
+#: src/menu_events.cpp:2403
+#, fuzzy
+msgid "(debug command)"
+msgstr "Atkļūdošanas darbības"
+
+#: src/menu_events.cpp:2404
+#, fuzzy
+msgid " (network only)"
+msgstr "Tīkla spēlētājs"
+
+#: src/menu_events.cpp:2405
+msgid " (auth only)"
+msgstr ""
+
+#: src/menu_events.cpp:2429
 msgid "Refresh gui."
 msgstr "Atsvaidzināt saskarni."
 
-#: src/menu_events.cpp:2416
+#: src/menu_events.cpp:2431
 msgid "Switch a side to/from AI control."
 msgstr "Pārslēgt pusi uz/no datora kontroles."
 
-#: src/menu_events.cpp:2419
+#: src/menu_events.cpp:2431
+msgid "do not translate the on/off^[<side> [on/off]]"
+msgstr ""
+
+#: src/menu_events.cpp:2434
+msgid "<side> <nick>"
+msgstr ""
+
+#: src/menu_events.cpp:2434
 msgid "Assign control of a side to a different player or observer."
 msgstr "Piešķirt kontrol pār pusi citam lietotājam vai novērotājam."
 
-#: src/menu_events.cpp:2421
+#: src/menu_events.cpp:2436
 msgid "Clear chat history."
 msgstr "Notīrīt čata vēsturi."
 
-#: src/menu_events.cpp:2423
+#: src/menu_events.cpp:2438
 msgid "Visualize the screen refresh procedure."
 msgstr "Vizualizēt ekrāna atjaunināšanas procedūru."
 
-#: src/menu_events.cpp:2426
+#: src/menu_events.cpp:2439
+#, fuzzy
+msgid "Show fps."
+msgstr "Parādīt atkārtojumu"
+
+#: src/menu_events.cpp:2441
 msgid "Save game."
 msgstr "Saglabāt spēli."
 
-#: src/menu_events.cpp:2428
+#: src/menu_events.cpp:2443
 msgid "Quit game."
 msgstr "Pamest spēli."
 
-#: src/menu_events.cpp:2432
+#: src/menu_events.cpp:2447
 msgid "Save and quit."
 msgstr "Saglabāt un iziet."
 
-#: src/menu_events.cpp:2435
+#: src/menu_events.cpp:2450
 msgid "Ignore replay errors."
 msgstr "Ignorēt atbilžu kļūdas."
 
-#: src/menu_events.cpp:2437
+#: src/menu_events.cpp:2452
 msgid "Disable autosaves."
 msgstr "Atslēgt automātisko saglabāšanu."
 
-#: src/menu_events.cpp:2439
+#: src/menu_events.cpp:2454
+msgid "<id>"
+msgstr ""
+
+#: src/menu_events.cpp:2454
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr "Turpināt uz nākamo scenāriju vai scenāriju, kurš identificēts ar 'id'"
 
-#: src/menu_events.cpp:2442
+#: src/menu_events.cpp:2457
 msgid "Choose next scenario"
 msgstr "Izvēlēties nākamo scenāriju"
 
-#: src/menu_events.cpp:2445
+#: src/menu_events.cpp:2460
 msgid "Turn debug mode on."
 msgstr "Ieslēgt atkļūdošanas režimu."
 
-#: src/menu_events.cpp:2447
+#: src/menu_events.cpp:2462
 msgid "Turn debug mode off."
 msgstr "Atslēgt atkļūdošanas režīmu."
 
-#: src/menu_events.cpp:2449
+#: src/menu_events.cpp:2464
 msgid "Execute a Lua statement."
 msgstr "Izpildīt Lua komandu."
 
-#: src/menu_events.cpp:2451
+#: src/menu_events.cpp:2466
+msgid "<command>[;<command>...]"
+msgstr ""
+
+#: src/menu_events.cpp:2466
 msgid "Set the command used by the custom command hotkey"
 msgstr "Uzstatīt komandu, kuru izmanto pielāgotās komandas karstais taustiņš"
 
-#: src/menu_events.cpp:2453
+#: src/menu_events.cpp:2468
 msgid "Launch the gamestate inspector"
 msgstr "Palaist spēles statusa inspektoru"
 
-#: src/menu_events.cpp:2455
+#: src/menu_events.cpp:2470
+msgid "<name>[=<command>]"
+msgstr ""
+
+#: src/menu_events.cpp:2470
 msgid "Set or show alias to a command"
 msgstr "Uzstatīt vai parādīt komandas citu vārdu"
 
-#: src/menu_events.cpp:2457
+#: src/menu_events.cpp:2472
+msgid "<var>=<value>"
+msgstr ""
+
+#: src/menu_events.cpp:2472
 msgid "Set a scenario variable."
 msgstr "Iestatīt scenārija mainīgo."
 
-#: src/menu_events.cpp:2459
+#: src/menu_events.cpp:2474
+msgid "<var>"
+msgstr ""
+
+#: src/menu_events.cpp:2474
 msgid "Show a scenario variable."
 msgstr "Parādīt scenārija mainīgo."
 
-#: src/menu_events.cpp:2461
+#: src/menu_events.cpp:2476
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr ""
 "Izmainīt vienības mainīgo. (Tikai augstākā līmeņa atslēgas tiek atbalstītas.)"
 
-#: src/menu_events.cpp:2468
+#: src/menu_events.cpp:2483
 msgid "Discover all units in help."
 msgstr "Atklāj visas vienības palīdzībā."
 
-#: src/menu_events.cpp:2473
+#: src/menu_events.cpp:2488
 msgid "Create a unit."
 msgstr "Izveidot vienību."
 
-#: src/menu_events.cpp:2475
+#: src/menu_events.cpp:2490
 msgid "Toggle fog for the current player."
 msgstr "Ieslēgt/izslēgt miglu pašreizējam spēlētājam."
 
-#: src/menu_events.cpp:2477
+#: src/menu_events.cpp:2492
 msgid "Toggle shroud for the current player."
 msgstr "Ieslēgt/izslēgt plīvuru pašreizējam spēlētājam."
 
-#: src/menu_events.cpp:2479
+#: src/menu_events.cpp:2494
 msgid "Give gold to the current player."
 msgstr "Dot zeltu pašreizējam spēlētājam."
 
-#: src/menu_events.cpp:2481
+#: src/menu_events.cpp:2496
 msgid "Fire a game event."
 msgstr "Palaist spēles notikumu."
 
-#: src/menu_events.cpp:2484
+#: src/menu_events.cpp:2499
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr "Pārslēdz x,y koordinātu attēlošanu uz lauciņiem."
 
-#: src/menu_events.cpp:2487
+#: src/menu_events.cpp:2502
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "Ieslēgt/Izslēgt apvidus kodu rādīšanu uz lauciņiem."
 
-#: src/menu_events.cpp:2531
+#: src/menu_events.cpp:2546
 msgid "Unknown debug level: '$level'."
 msgstr "Nezināms atkļūdošanas līmenis: '$level'."
 
-#: src/menu_events.cpp:2533 src/menu_events.cpp:2542
+#: src/menu_events.cpp:2548 src/menu_events.cpp:2557
 msgid "error"
 msgstr "kļūda"
 
-#: src/menu_events.cpp:2540
+#: src/menu_events.cpp:2555
 msgid "Unknown debug domain: '$domain'."
 msgstr "Nezināms atkļūdošanas domēns: '$domain'."
 
-#: src/menu_events.cpp:2549
+#: src/menu_events.cpp:2564
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr "Pārslēdza domēnu '$domain' uz līmeni '$level'."
 
-#: src/menu_events.cpp:2723
-msgid "Added to ignore list: "
+#: src/menu_events.cpp:2635
+msgid "whisper to $receiver"
+msgstr ""
+
+#: src/menu_events.cpp:2642
+msgid "whisper: $sender"
+msgstr ""
+
+#: src/menu_events.cpp:2738 src/menu_events.cpp:2757
+#: src/multiplayer_connect.cpp:699
+msgid "(empty)"
+msgstr "(tukšs)"
+
+#: src/menu_events.cpp:2738 src/menu_events.cpp:2744 src/menu_events.cpp:2794
+#, fuzzy
+msgid "ignores list"
+msgstr "Ignorēto sarakstā"
+
+#: src/menu_events.cpp:2744
+#, fuzzy
+msgid "Added to ignore list: $nick"
 msgstr "Pievienoja ignorēto sarakstam: "
 
-#: src/menu_events.cpp:2726 src/menu_events.cpp:2743
-msgid "Invalid username: "
+#: src/menu_events.cpp:2747 src/menu_events.cpp:2766
+#, fuzzy
+msgid "Invalid username: $nick"
 msgstr "Nederīgs lietotājvārds: "
 
-#: src/menu_events.cpp:2741
-msgid "Added to friends list: "
+#: src/menu_events.cpp:2757 src/menu_events.cpp:2764 src/menu_events.cpp:2790
+#, fuzzy
+msgid "friends list"
+msgstr "Draugu sarakstā"
+
+#: src/menu_events.cpp:2764
+#, fuzzy
+msgid "Added to friends list: $nick"
 msgstr "Pievienoja draugu sarakstam: "
 
-#: src/menu_events.cpp:2755
-msgid "Removed from list: "
+#: src/menu_events.cpp:2780
+#, fuzzy
+msgid "Removed from list: $nick"
 msgstr "Izņēma no saraksta: "
 
-#: src/menu_events.cpp:2773
+#: src/menu_events.cpp:2780 src/menu_events.cpp:2798
+#, fuzzy
+msgid "friends and ignores list"
+msgstr "Ignorēto sarakstā"
+
+#: src/menu_events.cpp:2798
 msgid "There are no players on your friends or ignore list."
 msgstr "Tavā draugu vai ignorēto sarakstā nav neviena spēlētāja."
 
-#: src/menu_events.cpp:2943
+#: src/menu_events.cpp:2803
+#, fuzzy
+msgid "version"
+msgstr "Versija"
+
+#: src/menu_events.cpp:2819
+msgid "registering with password *** and no email address"
+msgstr ""
+
+#: src/menu_events.cpp:2823
+msgid "registering with password *** and email address $email"
+msgstr ""
+
+#: src/menu_events.cpp:2826 src/menu_events.cpp:2837 src/menu_events.cpp:2855
+#: src/menu_events.cpp:2869
+msgid "nick registration"
+msgstr ""
+
+#: src/menu_events.cpp:2837
+msgid "dropping your username"
+msgstr ""
+
+#: src/menu_events.cpp:2855
+msgid "setting $var to $value"
+msgstr ""
+
+#: src/menu_events.cpp:2869
+#, fuzzy
+msgid "requesting information for user $nick"
+msgstr "Pieprasīt informāciju par lietotājvārdu."
+
+#: src/menu_events.cpp:2981
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Neizdevās atrast iezīmi vai vienību, kas saturētu virkni '$search'."
 
-#: src/menu_events.cpp:2972
+#: src/menu_events.cpp:3010
 msgid "Can't droid invalid side: '$side'."
 msgstr "Nevar automatizēt nederīgu pusi: '$side'."
 
-#: src/menu_events.cpp:2977
+#: src/menu_events.cpp:3015
 msgid "Can't droid networked side: '$side'."
 msgstr "Nevar automatizēt tīkla pusi: '$side'."
 
-#: src/menu_events.cpp:3014
+#: src/menu_events.cpp:3052
 msgid "Can't change control of invalid side: '$side'."
 msgstr "Nevar mainīt kontroli nederīgai pusei: '$side'."
 
-#: src/menu_events.cpp:3020
+#: src/menu_events.cpp:3058
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "Neizdevās mainīt no robežām izgājušu pusi: '$side'."
 
-#: src/menu_events.cpp:3111
+#: src/menu_events.cpp:3149
 msgid "Choose Scenario (Debug!)"
 msgstr "Izvēlēties scenāriju (Atkļūdot!)"
 
-#: src/menu_events.cpp:3132
+#: src/menu_events.cpp:3170
 msgid "Debug mode activated!"
 msgstr "Atkļūdošanas režīms ieslēgts!"
 
-#: src/menu_events.cpp:3135
+#: src/menu_events.cpp:3173
 msgid "Debug mode not available in network games"
 msgstr "Atkļūdošanas režīms nav pieejams tīkla spēlēs"
 
-#: src/menu_events.cpp:3140
+#: src/menu_events.cpp:3178
 msgid "Debug mode deactivated!"
 msgstr "Atkļūdošanas režīms atslēgts!"
 
-#: src/menu_events.cpp:3327
+#: src/menu_events.cpp:3224
+msgid "Variable not found"
+msgstr ""
+
+#: src/menu_events.cpp:3262
+msgid ""
+"Invalid alignment: '$alignment', needs to be one of lawful, neutral or "
+"chaotic."
+msgstr ""
+
+#: src/menu_events.cpp:3319
+#, fuzzy
+msgid "Invalid unit type"
+msgstr "Nederīgs iezīmes nosaukums"
+
+#: src/menu_events.cpp:3332
+#, fuzzy
+msgid "Invalid location"
+msgstr "Nederīga krāsa"
+
+#: src/menu_events.cpp:3368
 msgid "ai"
 msgstr "dators"
 
-#: src/menu_events.cpp:3337 src/menu_events.cpp:3352
+#: src/menu_events.cpp:3378 src/menu_events.cpp:3393
 msgid "prompt^Command:"
 msgstr "Komanda:"
 
-#: src/menu_events.cpp:3372
+#: src/menu_events.cpp:3413
 msgid "User-Command#3"
 msgstr "User-Command#3"
 
@@ -8947,15 +9177,19 @@ msgstr ""
 msgid "Server-side redirect loop"
 msgstr "Servera puses pārvirzīšanas cilpa"
 
-#: src/multiplayer.cpp:298
+#: src/multiplayer.cpp:256
+msgid "Bad data received from server"
+msgstr ""
+
+#: src/multiplayer.cpp:297
 msgid "You must login first."
 msgstr "Vispirms ir jāautorizējas."
 
-#: src/multiplayer.cpp:300
+#: src/multiplayer.cpp:299
 msgid "The nick '$nick' is already taken."
 msgstr "Lietotājvārds '$nick' jau ir aizņemts."
 
-#: src/multiplayer.cpp:302
+#: src/multiplayer.cpp:301
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
@@ -8963,29 +9197,29 @@ msgstr ""
 "Lietotājvārds '$nick' satur neatļautas zīmes. Ir atļauti tikai burti, "
 "cipari, zemsvītras un domuzīmes."
 
-#: src/multiplayer.cpp:306
+#: src/multiplayer.cpp:305
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
 msgstr ""
 "Lietotājvārds '$nick' ir pārāk garš. Lietotājvārds nedrīkst būt garāks par "
 "18 zīmēm."
 
-#: src/multiplayer.cpp:309
+#: src/multiplayer.cpp:308
 msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr "Lietotājvārds '$nick' ir rezervēts, un spēlētāji to nevar izmantot."
 
-#: src/multiplayer.cpp:311
+#: src/multiplayer.cpp:310
 msgid "The nick '$nick' is not registered on this server."
 msgstr "Lietotājvārds '$nick' nav reģistrēts uz šī servera."
 
-#: src/multiplayer.cpp:312
+#: src/multiplayer.cpp:311
 msgid " This server disallows unregistered nicks."
 msgstr " Šis serveris neatļauj nereģistrētus lietotājvārdus."
 
-#: src/multiplayer.cpp:314 src/multiplayer.cpp:316
+#: src/multiplayer.cpp:313 src/multiplayer.cpp:315
 msgid "The nick '$nick' is registered on this server."
 msgstr "Lietotājvārds '$nick' ir reģistrēts uz šī servera."
 
-#: src/multiplayer.cpp:317
+#: src/multiplayer.cpp:316
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
@@ -8993,13 +9227,13 @@ msgstr ""
 "BRĪDINĀJUMS: Viens lietotājs jau izmanto šo lietotājvārdu, ielogojošanās "
 "izsauks tā lietotāja izmešanu!"
 
-#: src/multiplayer.cpp:320
+#: src/multiplayer.cpp:319
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
 "Kļūda žurnalēšanas procedūrā (serverim nebija \"sēklas\" jūsu savienojumam)."
 
-#: src/multiplayer.cpp:323
+#: src/multiplayer.cpp:322
 msgid "The password you provided was incorrect."
 msgstr "Jūsu ierakstītā parole bija nepareiza."
 
@@ -9046,10 +9280,6 @@ msgstr "(Tukša vieta)"
 #: src/multiplayer_connect.cpp:694
 msgid "(Reserved for $playername)"
 msgstr "(Rezervēts priekš $playername)"
-
-#: src/multiplayer_connect.cpp:699
-msgid "(empty)"
-msgstr "(tukšs)"
 
 #: src/multiplayer_connect.cpp:806
 msgid "Reserved"
@@ -9252,62 +9482,67 @@ msgstr "$login spēle"
 msgid "Invalid era selected"
 msgstr "Izvēlēta nederīga ēra"
 
-#: src/multiplayer_create.cpp:338
+#: src/multiplayer_create.cpp:333
+#, fuzzy
+msgid "The map is invalid."
+msgstr "Spēle ir beigusies."
+
+#: src/multiplayer_create.cpp:335
 msgid "You must enter a name."
 msgstr "Jums jāievada vārds."
 
-#: src/multiplayer_create.cpp:346
+#: src/multiplayer_create.cpp:343
 msgid "Set Password"
 msgstr "Iestatīt paroli"
 
-#: src/multiplayer_create.cpp:347
+#: src/multiplayer_create.cpp:344
 msgid "Password: "
 msgstr "Parole: "
 
-#: src/multiplayer_create.cpp:347
+#: src/multiplayer_create.cpp:344
 msgid ""
 "Set the password that people wanting to join your game as players must enter."
 msgstr ""
 "Iestatīt paroli, kuru lietotājiem jāievada, lai pievienotos tavai spēlei kā "
 "spēlētāji."
 
-#: src/multiplayer_create.cpp:355
+#: src/multiplayer_create.cpp:352
 msgid "Turns: "
 msgstr "Gājieni: "
 
-#: src/multiplayer_create.cpp:357
+#: src/multiplayer_create.cpp:354
 msgid "Unlimited Turns"
 msgstr "Neierobežoti gājieni"
 
-#: src/multiplayer_create.cpp:385
+#: src/multiplayer_create.cpp:382
 msgid "Init. Limit: "
 msgstr "Sāk. ierobežojums: "
 
-#: src/multiplayer_create.cpp:390
+#: src/multiplayer_create.cpp:387
 msgid "Turn Bonus: "
 msgstr "Gājiena prēmija: "
 
-#: src/multiplayer_create.cpp:394
+#: src/multiplayer_create.cpp:391
 msgid "Reservoir: "
 msgstr "Rezervuārs: "
 
-#: src/multiplayer_create.cpp:399
+#: src/multiplayer_create.cpp:396
 msgid "Action Bonus: "
 msgstr "Darbības prēmija: "
 
-#: src/multiplayer_create.cpp:406
+#: src/multiplayer_create.cpp:403
 msgid "Village Gold: "
 msgstr "Ciema zelts: "
 
-#: src/multiplayer_create.cpp:414
+#: src/multiplayer_create.cpp:411
 msgid "Exp. Mod.: "
 msgstr "Pieredzes mod.:"
 
-#: src/multiplayer_create.cpp:551
+#: src/multiplayer_create.cpp:548
 msgid "Players: "
 msgstr "Spēlētāji: "
 
-#: src/multiplayer_create.cpp:552
+#: src/multiplayer_create.cpp:549
 msgid "Size: "
 msgstr "Izmērs: "
 

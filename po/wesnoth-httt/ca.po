@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-08 14:58+0100\n"
+"POT-Creation-Date: 2010-03-26 15:39+0100\n"
 "PO-Revision-Date: 2008-03-02 10:04+0100\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Catalan <wesnoth-ca@ettin.org>\n"
@@ -2577,8 +2577,9 @@ msgstr "Li'sar"
 #. [side]: type=General, id=Malatus
 #. [side]: type=Princess, id=Li'sar
 #. [side]: type=General, id=Herbert
+#. [side]: type=General, id=Robryn
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:124
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:82
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:80
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:76
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:185
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:112
@@ -2984,46 +2985,46 @@ msgstr "La muntanya dels grius"
 msgid "Defeat the mother gryphon and the enemy commander"
 msgstr "Derrota la mare dels grius i al comandant enemic"
 
-#. [side]: type=General, id=Heford
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:72
-#: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:124
-msgid "Heford"
-msgstr "Heford"
+#. [side]: type=General, id=Robryn
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:70
+#, fuzzy
+msgid "Robryn"
+msgstr "Ronry"
 
 #. [side]: type=Gryphon, id=Mother Gryphon
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:90
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:88
 msgid "Mother Gryphon"
 msgstr "Mare griu"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:110
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:108
 msgid "Graak"
 msgstr "Graak"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:111
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:109
 msgid "Grook"
 msgstr "Grook"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:112
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:110
 msgid "Gruak"
 msgstr "Gruak"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:124
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:122
 msgid "What is this place? That is one big mountain!"
 msgstr "On som? Aquesta és sens dubte una gran muntanya!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:128
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:126
 msgid "That is the fabled Gryphon Mountain."
 msgstr ""
 "És la famosa muntanya dels grius! Hem d'anar amb cura, doncs despertar els "
 "grius seria perillós."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:132
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:130
 msgid ""
 "Gryphon Mountain! Maybe we could steal some eggs from the gryphons and train "
 "the young to be flying mounts. Would that work, Delfador?"
@@ -3032,7 +3033,7 @@ msgstr ""
 "entrenar-los per ser muntures voladores. Seria possible, Delfador?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:136
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:134
 msgid ""
 "We can try to do that, but we must be careful. To disturb the gryphons could "
 "prove dangerous... and yet such mounts could help us greatly later. Whatever "
@@ -3043,22 +3044,22 @@ msgstr ""
 "En qualsevol cas, hem de passar per aquest lloc."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:140
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:138
 msgid "Well, let's start climbing the mountain!"
 msgstr "Comencem l'escalada, doncs!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:156
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:154
 msgid "Here are the mother Gryphon's eggs!"
 msgstr "Aquí estan els ous de la mare dels grius!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:160
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:158
 msgid "Excellent! We should be able to breed Gryphons for our own uses now!"
 msgstr "Excel·lent! Ara podrem criar grius!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:172
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:170
 msgid ""
 "It appears that we are not the only ones interested in this mountain. Once "
 "again the Queen opposes us!"
@@ -3067,12 +3068,12 @@ msgstr ""
 "la reina se'ns oposa!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:176
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:174
 msgid "Quickly, men! Onward!"
 msgstr "Ràpid soldats, endavant!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:191
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:189
 msgid ""
 "Ha ha! We have killed this foul beast of the air, and can deny the rebels "
 "its eggs!"
@@ -3081,12 +3082,12 @@ msgstr ""
 "nostres!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:231
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:229
 msgid "We have defeated them! Now what do we do?"
 msgstr "Els hem derrotat! Què fem, ara?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:235
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:233
 msgid ""
 "We must continue north. It is too late to return to the safety of Elensefar "
 "or Alduin before winter falls. We must therefore cross the great river and "
@@ -3097,7 +3098,7 @@ msgstr ""
 "continuar cap a les terres dels nans. Som-hi!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:245
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:243
 msgid ""
 "With these gryphon eggs we should be able to breed gryphons that will serve "
 "us. When they are large enough to carry mounts, we can hire gryphon riders!"
@@ -3106,7 +3107,7 @@ msgstr ""
 "Quan siguin prou grans com per dur muntures podrem reclutar genets de grius!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:262
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:260
 msgid ""
 "It is a shame we could not get those gryphon eggs. I am glad we did not "
 "slaughter any gryphons. They are magnificent animals (looks back at the "
@@ -3114,22 +3115,22 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:266
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:264
 msgid "Whoa!!"
 msgstr ""
 
 #. [then]
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:320
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:318
 msgid "Graik"
 msgstr "Graik"
 
 #. [then]
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:321
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:319
 msgid "Griak"
 msgstr "Griak"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:328
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:326
 msgid ""
 "Indeed, the majestic beasts were now circling the mountain's peak. Several "
 "glared in Konrad's direction, their eagle eyes fixed on him at an incredible "
@@ -3137,22 +3138,22 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:365
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:363
 msgid "Amazing! I have never before heard of such behavior in gryphons."
 msgstr ""
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:369
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:367
 msgid "What does it mean?"
 msgstr "Què vol dir això?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:373
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:371
 msgid "I do not know. Come now, the show is over."
 msgstr ""
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:379
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:377
 msgid ""
 "It is a shame we could not get those gryphon eggs - they would surely have "
 "given us an advantage sometime. Still, we must continue."
@@ -3161,25 +3162,25 @@ msgstr ""
 "sens dubte d'una gran ajuda. Tot i així, hem de continuar."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:387
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:385
 msgid "Let us continue onward!"
 msgstr "Continuem!"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:416
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:453
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:414
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:451
 msgid "Rampant Graak"
 msgstr "Graak furiós"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:427
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:464
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:425
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:462
 msgid "Rampant Grook"
 msgstr "Grook furiós"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:438
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:475
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:436
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:473
 msgid "Rampant Gruak"
 msgstr "Gruak furiós"
 
@@ -7795,6 +7796,11 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:108
 msgid "Haliel-Maga"
 msgstr "Haliel-Maga"
+
+#. [side]: type=General, id=Heford
+#: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:124
+msgid "Heford"
+msgstr "Heford"
 
 #. [side]: type=Cavalier, id=Sir Kalm
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:139

@@ -266,6 +266,11 @@ UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT
 \fBmail_port\fP
 Порт на којем слуша поштански сервер. Подразумијевано 25.
 .
+.SH "EXIT STATUS"
+.
+Normal exit status is 0 when the server was properly shutdown. An exit
+status of 2 indicates an error with the command line options.
+.
 .SH АУТОР
 .
 Написао Дејвид Вајт (David White) <davidnwhite@verizon.net>. Уредили

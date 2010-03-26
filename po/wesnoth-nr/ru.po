@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-14 18:39+0100\n"
+"POT-Creation-Date: 2010-03-26 15:39+0100\n"
 "PO-Revision-Date: 2009-12-12 11:58+0300\n"
 "Last-Translator: Fedor Khod'kov <fedor76@istra.ru>\n"
 "Language-Team: none\n"
@@ -398,7 +398,7 @@ msgstr "Победите вражеских вождей"
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1017
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:398
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:434
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:916
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:913
 msgid "Death of Tallin"
 msgstr "Смерть Таллина"
 
@@ -834,7 +834,7 @@ msgstr "Очистите пещеры"
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:606
 #: data/campaigns/Northern_Rebirth/scenarios/03_To_The_Mines.cfg:169
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:323
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:928
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:925
 msgid "Death of Hamel"
 msgstr "Смерть Хамеля"
 
@@ -5422,7 +5422,7 @@ msgstr ""
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:775
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1101
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:435
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:985
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:982
 msgid " *snicker*"
 msgstr " *усмехается*"
 
@@ -5988,7 +5988,7 @@ msgstr "Спасите принцессу"
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1021
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:402
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:438
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:920
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:917
 msgid "Death of Ro'Arthian"
 msgstr "Смерть Ро-Арфьяна"
 
@@ -6001,7 +6001,7 @@ msgstr "Смерть Ро-Арфьяна"
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1025
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:406
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:442
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:924
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:921
 msgid "Death of Ro'Sothian"
 msgstr "Смерть Ро-Зотьяна"
 
@@ -8045,7 +8045,7 @@ msgstr "Ты глупец, человек! Гляди -- сейчас мы ва�
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1013
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:394
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:912
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:909
 msgid "Defeat the enemy leaders"
 msgstr "Победите вражеских вождей"
 
@@ -8894,10 +8894,21 @@ msgstr ""
 "счёты. Взять их воины — пусть ни один орк не уйдёт живым!"
 
 #. [message]: id=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:506
+#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:512
 msgid ""
 "Thanks to Hidel and the elves, we have recovered our gold. Now let's run "
 "down Rakshas and settle up with him once and for all."
+msgstr ""
+"Мы вернули наше золото, благодаря Хиделю и эльфам. А теперь — за Ракшасом. "
+"Пора с ним наконец рассчитаться."
+
+#. [message]: id=Tallin
+#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:518
+#, fuzzy
+msgid ""
+"Hidel's death was a grievous loss; our thirst for vengeance must do what the "
+"stolen gold cannot. Now let's run down Rakshas and settle up with him once "
+"and for all."
 msgstr ""
 "Мы вернули наше золото, благодаря Хиделю и эльфам. А теперь — за Ракшасом. "
 "Пора с ним наконец рассчитаться."
@@ -8965,13 +8976,13 @@ msgid "Halter"
 msgstr "Гальтер"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:667
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:664
 msgid ""
 "The group that went to the north was led by Krash and his drake friends."
 msgstr "Северную группу вёл Краш и его друзья-дрейки."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:680
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:677
 msgid ""
 "The group that went to the north was led by Ro'Arthian and was composed of "
 "trolls, ogres and some selected mages."
@@ -8980,7 +8991,7 @@ msgstr ""
 "избранных магов."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:703
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:700
 msgid ""
 "Eryssa and the remaining elves, eager to avenge Hidel, went south, while "
 "Tallin himself led the western group."
@@ -8989,7 +9000,7 @@ msgstr ""
 "Западную группу вёл сам Таллин."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:725
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:722
 msgid ""
 "Ro'Arthian's brother, Ro'Sothian went south with another crew of trolls, "
 "ogres and mages. Tallin himself led the western group."
@@ -8998,12 +9009,12 @@ msgstr ""
 "огров и магов. Западную группу вёл сам Таллин."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:752
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:749
 msgid "A few short hours later all the groups converged on the fortress."
 msgstr "Прошло лишь несколько часов, и вот все они сошлись у крепости."
 
 #. [message]: id=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:778
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:775
 msgid ""
 "Rakshas! You have evaded me for the last time. Now come out and die like a "
 "man!"
@@ -9011,12 +9022,12 @@ msgstr ""
 "Ракшас! Последний раз ты ушёл от меня. Выходи же на бой, и умри как мужчина!"
 
 #. [message]: id=Rakshas
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:782
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:779
 msgid "What the...? How did he get here?"
 msgstr "Какого...? Ты как сюда попал?"
 
 #. [message]: id=Eryssa
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:791
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:788
 msgid ""
 "We have crushed and scattered your entire eastern flank, and now it's your "
 "turn!"
@@ -9024,7 +9035,7 @@ msgstr ""
 "Мы разбили и рассеяли всё твоё восточное крыло, а теперь пришёл твой черёд!"
 
 #. [message]: id=Rakshas
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:795
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:792
 msgid ""
 "You slimy little elf! So you have joined hands with these humans, have you? "
 "Very well, both of you shall soon be dead!"
@@ -9033,7 +9044,7 @@ msgstr ""
 "скоро вам всем конец!"
 
 #. [message]: id=Eryssa
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:799
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:796
 msgid ""
 "Good luck, you monster. You are cut off and surrounded. We shall kill you "
 "and feed your carcass to the vultures and wild beasts."
@@ -9042,7 +9053,7 @@ msgstr ""
 "стервятникам и диким зверям."
 
 #. [message]: id=Rakshas
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:803
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:800
 msgid ""
 "Hahahahah! You fools, do you not see that you are right in the heart of "
 "orcish territory, surrounded yourselves! Why, at this very moment my entire "
@@ -9054,7 +9065,7 @@ msgstr ""
 "армия. Скоро она придёт — Вас раскидают как солому!"
 
 #. [message]: id=Ro'Arthian
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:809
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:806
 msgid ""
 "We have crushed and scattered your entire eastern flank, buddy, and now it's "
 "your turn!"
@@ -9062,19 +9073,19 @@ msgstr ""
 "Мы сокрушили и размели всё твоё левое крыло, дружок, а теперь твоя очередь!"
 
 #. [message]: id=Rakshas
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:813
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:810
 msgid ""
 "Argh, you frustrating little vermin! I am going to pluck your eyeballs out "
 "and..."
 msgstr "Ах ты, маленький негодник! Я вырву твои глаза и..."
 
 #. [message]: id=Ro'Arthian
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:817
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:814
 msgid "We don't have any eyeballs, you idiot!"
 msgstr "У нас нет глаз, дурень!"
 
 #. [message]: id=Rakshas
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:822
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:819
 msgid ""
 "PAH! You fools, know that you shall soon be outnumbered and surrounded. At "
 "this very moment my entire western army is marching this way. They will soon "
@@ -9085,75 +9096,75 @@ msgstr ""
 "солому!"
 
 #. [message]: id=Hamel
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:867
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:864
 msgid "Will they, now?"
 msgstr "Ну-ну."
 
 #. [message]: id=Rakshas
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:871
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:868
 msgid "WHAT!?!?!"
 msgstr "ЧТО!?!?!"
 
 #. [message]: id=Hamel
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:875
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:872
 msgid ""
 "Your western army has been slaughtered, Rakshas, and YOU will soon join them!"
 msgstr "Твоей западной армии конец, Ракшас, и следующим будешь ТЫ!"
 
 #. [message]: id=Rakshas
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:879
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:876
 msgid "But... but... how can this be?"
 msgstr "Но... но... как это возможно?"
 
 #. [message]: id=Hamel
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:883
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:880
 msgid "It's called 'The End', foul orc. Forward! FOR KNALGA!!!"
 msgstr "Это называется «Конец», мерзкий орк. Вперёд! ЗА КНАЛГА!!!"
 
 #. [message]: id=Krash
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:887
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:884
 msgid "FOR FRIENDSHIP!!!"
 msgstr "ЗА ДРУЖБУ!!!"
 
 #. [message]: id=Ro'Arthian
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:891
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:888
 msgid "FOR PEACE!!!"
 msgstr "ЗА МИР!!!"
 
 #. [message]: id=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:895
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:892
 msgid "FOR FUN!"
 msgstr "ЗА... ЗАРАДИ ПОТЕХИ!"
 
 #. [message]: id=Eryssa
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:899
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:896
 msgid "FOR HIDEL!!!"
 msgstr "ЗА ХИДЕЛЯ!!!"
 
 #. [message]: role=Supporter
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:903
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:900
 msgid "FOR DWARVEN DOORS!!!"
 msgstr "ЗА ГНОМЬИ ВРАТА!!!"
 
 #. [message]: id=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:907
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:904
 msgid "FOR THE NORTH! FALL ON THEM, MEN!!!"
 msgstr "ЗА СЕВЕР! НАВАЛИСЬ, РЕБЯТА!!!"
 
 #. [message]: id=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:940
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:937
 msgid "Sweet gods, look at all those orcs pouring out of that fortress."
 msgstr ""
 "Боже правый, только посмотрите на всех этих орков, что высыпали из этой "
 "крепости."
 
 #. [message]: id=Hamel
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:944
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:941
 msgid "Aye, and not just any orcs either, those are all hardened veterans!"
 msgstr "Ага, и это кстати не просто орки, это всё закалённые в боях ветераны!"
 
 #. [message]: id=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:948
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:945
 msgid ""
 "Yeah. Obviously this is going to take some time. If necessary we can sit "
 "tight in our fortifications and siege them until they starve!"
@@ -9162,41 +9173,41 @@ msgstr ""
 "и осадить их, пока на них не нападёт голод."
 
 #. [message]: id=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:960
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:957
 msgid ""
 "Die, you murderous beast! No longer shall you terrorize the people of the "
 "North."
 msgstr "Умри, убийца! Ты больше не будешь грозить народам севера!"
 
 #. [message]: id=Hamel
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:964
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:961
 msgid "Learn the fate of one who offends the Dwarves of Knalga."
 msgstr "Узнай судьбу тех, кто нападает на гномов Кналга."
 
 #. [message]: id=Eryssa
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:968
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:965
 msgid "Or the elves of the Northern Forests."
 msgstr "Или эльфов северных лесов."
 
 #. [message]: role=Supporter
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:972
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:969
 msgid "Or the humans of Dwarven Doors."
 msgstr "Или людей Гномьих Врат."
 
 #. [message]: id=Rakshas
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:977
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:974
 msgid ""
 " *gurggle* No!... this.... cannot.... be... happening.... to.... me....."
 msgstr ""
 " *задыхаясь* Нет!... этого.... не.... может... быть.... со.... мной....."
 
 #. [message]: id=Sister Thera
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:981
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:978
 msgid "Such were the last words of Rakshas the great!"
 msgstr "Вот они, последние слова великого Ракшаса!"
 
 #. [message]: id=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:994
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:991
 msgid ""
 "At last! Rakshas has been slain, and the orcish host has been crushed. Peace "
 "and prosperity will come to the Northlands once again!"
@@ -9205,7 +9216,7 @@ msgstr ""
 "снова придёт мир и процветание!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:998
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:995
 msgid ""
 "At these words all the allied forces gave out a combined and thunderous "
 "cheer. Their long ordeal was finally over."
@@ -9214,13 +9225,13 @@ msgstr ""
 "длительные невзгоды наконец остались в прошлом."
 
 #. [message]: id=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1003
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1000
 msgid " *small voice lost in the uproar* Awww, is it over already?"
 msgstr " *голосом, едва слышным во всеобщем ликовании* Тьфу ты, и это всё?"
 
 #. [message]: id=Hamel
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1072
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1069
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:554
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:565
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:587
@@ -9228,7 +9239,7 @@ msgid "Argh!"
 msgstr "А-а-а!"
 
 #. [message]: id=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1076
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1073
 msgid ""
 "Hamel! Blast it, without the dwarves to hold the western flank we are as "
 "good as defeated."
@@ -9237,12 +9248,12 @@ msgstr ""
 "спета."
 
 #. [message]: id=Sisal
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1090
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1087
 msgid "Ahhhh! Farewell friends. I now go to join Hidel."
 msgstr "Аааа! Прощайте, друзья. Я иду к Хиделю."
 
 #. [message]: id=Eryssa
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1094
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1091
 msgid "Sisal! Noooo! Not you too!"
 msgstr "Сизаль! Нееет! Только не ты!"
 
