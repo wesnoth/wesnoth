@@ -1001,6 +1001,7 @@ connect::connect(game_display& disp, const config& game_config,
 		chat& c, config& gamelist, const mp_game_settings& params, const int num_turns,
 		mp::controller default_controller, bool local_players_only) :
 	mp::ui(disp, _("Game Lobby: ") + params.name, game_config, c, gamelist),
+	disp_(&disp),
 	local_only_(local_players_only),
 	level_(),
 	state_(),
@@ -1030,6 +1031,7 @@ connect::connect(game_display& disp, const config& game_config,
 
 	launch_(video(), _("I'm Ready")),
 	cancel_(video(), _("Cancel")),
+	add_local_player_(video(), _("Add named local player")),
 	combo_control_group_(new gui::drop_group_manager())
 {
 	load_game();
@@ -1098,6 +1100,33 @@ connect::connect(game_display& disp, const config& game_config,
 void connect::process_event()
 {
 	bool changed = false;
+
+	/*
+	 * If the Add Local Player button is pressed, display corresponding dialog box.
+	 * Dialog box is shown again if an already existing player name is entered.
+	 * If the name is valid, add a new user with that name to the list of connected users,
+	 * and refresh the UI.
+	 */
+	if (add_local_player_.pressed()) {
+		bool alreadyExists = false;
+		do {
+			alreadyExists = false;
+			gui::dialog d(*disp_, _("Enter a name for the new player"), "", gui::OK_CANCEL);
+			d.set_textbox(_("Name: "));
+			d.show();
+			if(d.result() != gui::CLOSE_DIALOG && !d.textbox_text().empty())
+			{
+				for(connected_user_list::iterator it = users_.begin(); it != users_.end(); ++it) {
+					if( (*it).name == d.textbox_text() ) alreadyExists = true;
+				}
+				if (!alreadyExists) {
+					users_.push_back(connected_user(d.textbox_text(), CNTR_LOCAL, 0));
+					update_playerlist_state();
+					update_user_combos();
+				}
+			}
+		} while (alreadyExists);
+	}
 
 	for(size_t n = 0; n != sides_.size(); ++n) {
 		sides_[n].process_event();
@@ -1423,6 +1452,9 @@ void connect::layout_children(const SDL_Rect& rect)
 	colour_title_label_.set_location((left+375), top+35);
 	gold_title_label_.set_location((left+493), top+35);
 	income_title_label_.set_location((left+560), top+35);
+
+	add_local_player_.set_location(left + gui::ButtonHPadding, bottom -
+				waiting_label_.height() - gui::ButtonVPadding - add_local_player_.height());
 
 	SDL_Rect scroll_pane_rect;
 	scroll_pane_rect.x = ca.x;

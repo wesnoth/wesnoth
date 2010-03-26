@@ -191,6 +191,10 @@ public:
 
 	typedef std::vector<side> side_list;
 
+	/**
+	 * Pointer to the display
+	 */
+	game_display* disp_;
 
 	connect(game_display& disp, const config& game_config, chat& c,
 			config& gamelist, const mp_game_settings& params, const int num_turns,
@@ -315,6 +319,7 @@ private:
 
 	gui::button launch_;
 	gui::button cancel_;
+	gui::button add_local_player_;
 
 	gui::drop_group_manager_ptr combo_control_group_;
 
