@@ -237,22 +237,27 @@ void playsingle_controller::report_victory(
 	std::string goldmsg;
 	utils::string_map symbols;
 
-	if (player_gold < 0) {
-		symbols["gold"] = "0";
-	} else {
-		symbols["gold"] = lexical_cast_default<std::string>(player_gold);
-	}
+	symbols["gold"] = lexical_cast_default<std::string>(player_gold);
 
 	// Note that both strings are the same in english, but some languages will
 	// want to translate them differently.
 	if(end_level.carryover_add) {
-		goldmsg = vngettext(
-			"You will start the next scenario with $gold "
-			"on top of the defined minimum starting gold.",
-			"You will start the next scenario with $gold "
-			"on top of the defined minimum starting gold.",
-			player_gold, symbols);
+		if(player_gold > 0) {
+			goldmsg = vngettext(
+					"You will start the next scenario with $gold "
+					"on top of the defined minimum starting gold.",
+					"You will start the next scenario with $gold "
+					"on top of the defined minimum starting gold.",
+					player_gold, symbols);
 
+		} else {
+			goldmsg = vngettext(
+					"You will start the next scenario with "
+					"the defined minimum starting gold.",
+					"You will start the next scenario with "
+					"the defined minimum starting gold.",
+					player_gold, symbols);
+		}
 	} else {
 		goldmsg = vngettext(
 			"You will start the next scenario with $gold "
