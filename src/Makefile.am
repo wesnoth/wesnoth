@@ -113,7 +113,6 @@ wesnoth_source = \
 	gui/auxiliary/widget_definition/image.cpp \
 	gui/auxiliary/widget_definition/label.cpp \
 	gui/auxiliary/widget_definition/listbox.cpp \
-	gui/auxiliary/widget_definition/menubar.cpp \
 	gui/auxiliary/widget_definition/minimap.cpp \
 	gui/auxiliary/widget_definition/multi_page.cpp \
 	gui/auxiliary/widget_definition/panel.cpp \
@@ -139,7 +138,6 @@ wesnoth_source = \
 	gui/auxiliary/window_builder/label.cpp \
 	gui/auxiliary/window_builder/listbox.cpp \
 	gui/auxiliary/window_builder/minimap.cpp \
-	gui/auxiliary/window_builder/menubar.cpp \
 	gui/auxiliary/window_builder/multi_page.cpp \
 	gui/auxiliary/window_builder/repeating_button.cpp \
 	gui/auxiliary/window_builder/scroll_label.cpp \
@@ -189,7 +187,6 @@ wesnoth_source = \
 	gui/widgets/image.cpp \
 	gui/widgets/label.cpp \
 	gui/widgets/listbox.cpp \
-	gui/widgets/menubar.cpp \
 	gui/widgets/minimap.cpp \
 	gui/widgets/multi_page.cpp \
 	gui/widgets/panel.cpp \

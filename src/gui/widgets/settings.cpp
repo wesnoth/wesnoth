@@ -32,7 +32,6 @@
 #include "gui/auxiliary/widget_definition/image.hpp"
 #include "gui/auxiliary/widget_definition/label.hpp"
 #include "gui/auxiliary/widget_definition/listbox.hpp"
-#include "gui/auxiliary/widget_definition/menubar.hpp"
 #include "gui/auxiliary/widget_definition/minimap.hpp"
 #include "gui/auxiliary/widget_definition/multi_page.hpp"
 #include "gui/auxiliary/widget_definition/panel.hpp"
@@ -193,9 +192,6 @@ const std::string& tgui_definition::read(const config& cfg)
  *     Horizontal_scrollbar          @macro = horizontal_scrollbar_description
  *     Label                         @macro = label_description
  *     Listbox                       @macro = listbox_description
- *     Menubar                       A menubar which is used in menus and the
- *                                   tabbar in a tabcontrol. (NOTE this widget
- *                                   is still under heavy development.)
  *     Minimap                       @macro = minimap_description
  *     Multi_page                    @macro = multi_page_description
  *     Panel                         @macro = panel_description
@@ -271,7 +267,6 @@ const std::string& tgui_definition::read(const config& cfg)
 	load_definitions<timage_definition>("image", cfg);
 	load_definitions<tlabel_definition>("label", cfg);
 	load_definitions<tlistbox_definition>("listbox", cfg);
-	load_definitions<tmenubar_definition>("menubar", cfg);
 	load_definitions<tminimap_definition>("minimap", cfg);
 	load_definitions<tmulti_page_definition>("multi_page", cfg);
 	load_definitions<tstacked_widget_definition>("stacked_widget", cfg);

@@ -28,7 +28,6 @@
 #include "gui/auxiliary/window_builder/label.hpp"
 #include "gui/auxiliary/window_builder/listbox.hpp"
 #include "gui/auxiliary/window_builder/minimap.hpp"
-#include "gui/auxiliary/window_builder/menubar.hpp"
 #include "gui/auxiliary/window_builder/multi_page.hpp"
 #include "gui/auxiliary/window_builder/repeating_button.hpp"
 #include "gui/auxiliary/window_builder/scroll_label.hpp"
@@ -76,7 +75,6 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 	TRY(image);
 	TRY(label);
 	TRY(listbox);
-	TRY(menubar);
 	TRY(minimap);
 	TRY(multi_page);
 	TRY(panel);
