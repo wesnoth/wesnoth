@@ -30,10 +30,6 @@ public:
 		fdb_(fdb)
 	{}
 
-
-	/** Inherited from tdialog. */
-	twindow* build_window(CVideo& video);
-
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
 
@@ -51,6 +47,9 @@ public:
 
 private:
 	game_logic::formula_debugger &fdb_;
+
+	/** Inherited from tdialog, implemented by REGISTER_WINDOW. */
+	virtual const std::string& window_id() const;
 };
 
 }

@@ -519,6 +519,8 @@ private:
 };
 
 
+REGISTER_WINDOW(gamestate_inspector)
+
 tgamestate_inspector::tgamestate_inspector(const vconfig &cfg)
 	: view_()
 {
@@ -526,18 +528,10 @@ tgamestate_inspector::tgamestate_inspector(const vconfig &cfg)
 	view_ = boost::shared_ptr<view>(new view(cfg));
 }
 
-
-twindow* tgamestate_inspector::build_window(CVideo& video)
-{
-	return build(video, get_id(GAMESTATE_INSPECTOR));
-}
-
-
 boost::shared_ptr<tgamestate_inspector::view> tgamestate_inspector::get_view()
 {
 	return view_;
 }
-
 
 void tgamestate_inspector::pre_show(CVideo& video, twindow& window)
 {

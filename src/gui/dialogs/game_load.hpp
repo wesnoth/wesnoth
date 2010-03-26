@@ -40,8 +40,9 @@ protected:
 	void post_show(twindow& window);
 
 private:
-	/** Inherited from tdialog. */
-	twindow* build_window(CVideo& video);
+
+	/** Inherited from tdialog, implemented by REGISTER_WINDOW. */
+	virtual const std::string& window_id() const;
 
 	bool filter_text_changed(ttext_* textbox, const std::string& text);
 	void list_item_clicked(twindow& window);

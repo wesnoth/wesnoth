@@ -21,8 +21,8 @@
 
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/slider.hpp"
+#include "gui/widgets/settings.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gettext.hpp"
 
@@ -66,6 +66,8 @@ namespace gui2 {
  *                                an MDI interface or not.
  * @end_table
  */
+
+REGISTER_WINDOW(editor_settings)
 
 teditor_settings::teditor_settings()
 	: redraw_callback_()
@@ -186,11 +188,6 @@ void teditor_settings::update_selected_tod_info(twindow& window)
 	current_tod_label_->set_active(!custom);
 	update_tod_display(window);
 	window.invalidate_layout();
-}
-
-twindow* teditor_settings::build_window(CVideo& video)
-{
-	return build(video, get_id(EDITOR_SETTINGS));
 }
 
 void teditor_settings::pre_show(CVideo& /*video*/, twindow& window)

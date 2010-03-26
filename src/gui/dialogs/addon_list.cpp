@@ -44,10 +44,7 @@ namespace gui2 {
  * @end_table
  */
 
-twindow* taddon_list::build_window(CVideo& video)
-{
-	return build(video, get_id(ADDON_LIST));
-}
+REGISTER_WINDOW(addon_list)
 
 void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
 {

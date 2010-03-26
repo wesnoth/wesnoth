@@ -37,8 +37,8 @@ private:
 	tfield_integer* map_width_;
 	tfield_integer* map_height_;
 
-	/** Inherited from tdialog. */
-	twindow* build_window(CVideo& video);
+	/** Inherited from tdialog, implemented by REGISTER_WINDOW. */
+	virtual const std::string& window_id() const;
 };
 
 } // namespace gui2

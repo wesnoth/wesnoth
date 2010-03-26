@@ -53,6 +53,7 @@
 #include "serialization/preprocessor.hpp"
 #include "formula_string_utils.hpp"
 
+
 namespace gui2 {
 
 bool new_widgets = false;
@@ -79,13 +80,16 @@ namespace settings {
 
 namespace {
 
-	/**
-	 * Vector with all known windows, these are validated on existance on
-	 * startup.
-	 *
-	 * The enum twindow_type is the index of the array.
-	 */
-	std::vector<std::string> window_type_list(COUNT);
+/**
+ * Returns the list of registered windows.
+ *
+ * The function can be used the look for registered windows or to add them.
+ */
+static std::vector<std::string>& registered_window_types()
+{
+	static std::vector<std::string> result;
+	return result;
+}
 
 struct tgui_definition
 {
@@ -297,10 +301,13 @@ const std::string& tgui_definition::read(const config& cfg)
 	if(id == "default") {
 		// The default gui needs to define all window types since we're the
 		// fallback in case another gui doesn't define the window type.
-		for(std::vector<std::string>::const_iterator itor = window_type_list.begin();
-				itor != window_type_list.end(); ++itor) {
+		for(std::vector<std::string>::const_iterator itor
+				= registered_window_types().begin()
+				; itor != registered_window_types().end()
+				; ++itor) {
 
-			VALIDATE(window_types.find(*itor) != window_types.end(), _("Window not defined."));
+			VALIDATE(window_types.find(*itor) != window_types.end()
+					, _("Window not defined."));
 		}
 	}
 
@@ -422,46 +429,26 @@ void tgui_definition::load_definitions(
 
 } // namespace
 
-static void fill_window_types()
+void register_window(const std::string& id)
 {
-	window_type_list[ADDON_CONNECT] = "addon_connect";
-	window_type_list[ADDON_LIST] = "addon_list";
-	window_type_list[CAMPAIGN_SELECTION] = "campaign_selection";
-	window_type_list[LANGUAGE_SELECTION] = "language_selection";
-	window_type_list[WML_MESSAGE_LEFT] = "wml_message_left";
-	window_type_list[WML_MESSAGE_RIGHT] = "wml_message_right";
-	window_type_list[MESSAGE] = "message";
-	window_type_list[TRANSIENT_MESSAGE] = "transient_message";
-	window_type_list[MP_CONNECT] = "mp_connect";
-	window_type_list[MP_METHOD_SELECTION] = "mp_method_selection";
-	window_type_list[MP_SERVER_LIST] = "mp_server_list";
-	window_type_list[MP_LOGIN] = "mp_login";
-	window_type_list[MP_CMD_WRAPPER] = "mp_cmd_wrapper";
-	window_type_list[MP_CREATE_GAME] = "mp_create_game";
-	window_type_list[TITLE_SCREEN] = "title_screen";
-	window_type_list[GAME_LOAD] = "game_load";
-	window_type_list[GAME_DELETE] = "game_delete";
-	window_type_list[GAME_SAVE] = "game_save";
-	window_type_list[GAME_SAVE_MESSAGE] = "game_save_message";
-	window_type_list[GAME_SAVE_OOS] = "game_save_oos";
-#ifndef DISABLE_EDITOR
-	window_type_list[EDITOR_NEW_MAP] = "editor_new_map";
-	window_type_list[EDITOR_GENERATE_MAP] = "editor_generate_map";
-	window_type_list[EDITOR_RESIZE_MAP] = "editor_resize_map";
-	window_type_list[EDITOR_SETTINGS] = "editor_settings";
-#endif
-	window_type_list[LOBBY_MAIN] = "lobby_main";
-	window_type_list[LOBBY_PLAYER_INFO] = "lobby_player_info";
-	window_type_list[UNIT_CREATE] = "unit_create";
-	window_type_list[FORMULA_DEBUGGER] = "formula_debugger";
-	window_type_list[GAMESTATE_INSPECTOR] = "gamestate_inspector";
-}
+	const std::vector<std::string>::iterator itor = std::find(
+			  registered_window_types().begin()
+			, registered_window_types().end()
+			, id);
 
-const std::string& get_id(const twindow_type window_type)
-{
-	assert(window_type >= 0 && window_type < COUNT);
+	/* Our own logger since the global ones might not be initialized yet. */
+	lg::log_domain log("gui/general");
 
-	return window_type_list[window_type];
+	if(itor == registered_window_types().end()) {
+		registered_window_types().push_back(id);
+
+		LOG_STREAM_INDENT(debug, log)
+				<< "Registered window '" << id << "'.\n";
+	} else {
+		LOG_STREAM_INDENT(info, log)
+				<< "Tried to reregister window '" << id
+				<< "', request ignored.\n";
+	}
 }
 
 void load_settings()
@@ -469,8 +456,6 @@ void load_settings()
 	LOG_GUI_G << "Setting: init gui.\n";
 
 	// Init.
-	fill_window_types();
-
 	twindow::update_screen_size();
 
 	// Read file.

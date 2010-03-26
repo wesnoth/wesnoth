@@ -25,6 +25,57 @@ class CVideo;
 namespace gui2 {
 
 /**
+ * Registers a window.
+ *
+ * Call this function to register a window. In the header of the class add the
+ * following code:
+ *@code
+ *  // Inherited from tdialog, implemented by REGISTER_WINDOW.
+ *	virtual const std::string& id() const;
+ *@endcode
+ * Then use this macro in the implementation, inside the gui2 namespace.
+ *
+ * @note When the window_id is "foo" and the type tfoo it's easier to use
+ * REGISTER_WINDOW(foo).
+ *
+ * @param type                    Class type of the window to register.
+ * @param widget_id               Id of the window, multiple dialogs can use
+ *                                the same window so the id doesn't need to be
+ *                                unique.
+ */
+#define REGISTER_WINDOW2(                                                  \
+		  type                                                             \
+		, id)                                                              \
+namespace {                                                                \
+                                                                           \
+	namespace ns_##type {                                                  \
+                                                                           \
+		struct tregister_helper {                                          \
+			tregister_helper()                                             \
+			{                                                              \
+				register_window(id);                                       \
+			}                                                              \
+		};                                                                 \
+                                                                           \
+		tregister_helper register_helper;                                  \
+	}                                                                      \
+}                                                                          \
+                                                                           \
+const std::string&                                                         \
+type::window_id() const                                                    \
+{                                                                          \
+	static const std::string result(id);                                   \
+	return result;                                                         \
+}
+
+/**
+ * Wrapper for REGISTER_WINDOW2.
+ *
+ * "Calls" REGISTER_WINDOW2(twindow_id, "window_id")
+ */
+#define REGISTER_WINDOW(window_id) REGISTER_WINDOW2(t##window_id, #window_id)
+
+/**
  * Abstract base class for all dialogs.
  *
  * A dialog shows a certain window instance to the user. The subclasses of this
@@ -130,6 +181,9 @@ private:
 	 */
 	bool restore_;
 
+	/** The id of the window to build. */
+	virtual const std::string& window_id() const = 0;
+
 	/**
 	 * Builds the window.
 	 *
@@ -140,7 +194,16 @@ private:
 	 *                            upon.
 	 * @returns                   The window to show.
 	 */
-	virtual twindow* build_window(CVideo& video) = 0;
+	twindow* build_window(CVideo& video) const;
+
+	/**
+	 * Actions to be taken directly after the window is build.
+	 *
+	 * @param video               The video which contains the surface to draw
+	 *                            upon.
+	 * @param window              The window just created.
+	 */
+	virtual void post_build(CVideo& /*video*/, twindow& /*window*/) {}
 
 	/**
 	 * Actions to be taken before showing the window.

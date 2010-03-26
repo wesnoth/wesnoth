@@ -326,8 +326,11 @@ private:
 
 	void skip_replay_changed_callback(twidget* w);
 
+	/** Inherited from tdialog, implemented by REGISTER_WINDOW. */
+	virtual const std::string& window_id() const;
+
 	/** Inherited from tdialog. */
-	twindow* build_window(CVideo& video);
+	virtual void post_build(CVideo& video, twindow& window);
 
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);

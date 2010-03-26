@@ -29,7 +29,6 @@
 #include "gettext.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/wml_message.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "help.hpp"
 #include "log.hpp"

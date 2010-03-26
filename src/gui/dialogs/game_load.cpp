@@ -68,6 +68,8 @@ namespace gui2 {
  * @end_table
  */
 
+REGISTER_WINDOW(game_load)
+
 tgame_load::tgame_load(const config& cache_config)
 	: txtFilter_(register_text("txtFilter", false))
 	, chk_show_replay_(register_bool("show_replay"))
@@ -79,11 +81,6 @@ tgame_load::tgame_load(const config& cache_config)
 	, cache_config_(cache_config)
 	, last_words_()
 {
-}
-
-twindow* tgame_load::build_window(CVideo& video)
-{
-	return build(video, get_id(GAME_LOAD));
 }
 
 void tgame_load::pre_show(CVideo& /*video*/, twindow& window)

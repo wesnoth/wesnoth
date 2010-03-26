@@ -38,6 +38,8 @@ namespace gui2 {
  * @end_table
  */
 
+REGISTER_WINDOW(editor_new_map)
+
 teditor_new_map::teditor_new_map() :
 	map_width_(register_integer("width", false)),
 	map_height_(register_integer("height", false))
@@ -64,9 +66,5 @@ int teditor_new_map::map_height() const
 	return map_height_->get_cache_value();
 }
 
-twindow* teditor_new_map::build_window(CVideo& video)
-{
-	return build(video, get_id(EDITOR_NEW_MAP));
-}
-
 } // namespace gui2
+

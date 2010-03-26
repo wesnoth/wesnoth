@@ -60,6 +60,8 @@ namespace gui2 {
  * @end_table
  */
 
+REGISTER_WINDOW(campaign_selection)
+
 void tcampaign_selection::campaign_selected(twindow& window)
 {
 	if(new_widgets) {
@@ -86,11 +88,6 @@ void tcampaign_selection::campaign_selected(twindow& window)
 
 		multi_page.select_page(list.get_selected_row());
 	}
-}
-
-twindow* tcampaign_selection::build_window(CVideo& video)
-{
-	return build(video, get_id(CAMPAIGN_SELECTION));
 }
 
 void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)

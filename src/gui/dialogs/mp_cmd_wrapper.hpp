@@ -30,8 +30,9 @@ public:
 	const std::string& time() const { return time_; }
 
 private:
-	/** Inherited from tdialog. */
-	twindow* build_window(CVideo& video);
+
+	/** Inherited from tdialog, implemented by REGISTER_WINDOW. */
+	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);

@@ -30,14 +30,14 @@ public:
 	tgamestate_inspector(const vconfig &cfg);
 
 	/** Inherited from tdialog. */
-	twindow* build_window(CVideo& video);
-
-	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
 
 	boost::shared_ptr<view> get_view();
 
 private:
+	/** Inherited from tdialog, implemented by REGISTER_WINDOW. */
+	virtual const std::string& window_id() const;
+
 	boost::shared_ptr<view> view_;
 
 };

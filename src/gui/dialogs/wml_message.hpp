@@ -96,13 +96,6 @@ private:
 	/** The chosen option. */
 	int *chosen_option_;
 
-	/**
-	 * Inherited from tdialog.
-	 *
-	 * The subclasses need to implement the left or right definition.
-	 */
-	twindow* build_window(CVideo& /*video*/) = 0;
-
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
 
@@ -119,9 +112,11 @@ public:
 		: twml_message_(title, message, portrait, mirror)
 	{
 	}
+
 private:
-	/** Inherited from twml_message_. */
-	twindow* build_window(CVideo& video);
+
+	/** Inherited from tdialog, implemented by REGISTER_WINDOW. */
+	virtual const std::string& window_id() const;
 };
 
 /** Shows a dialog with the portrait on the right side. */
@@ -133,9 +128,11 @@ public:
 		: twml_message_(title, message, portrait, mirror)
 	{
 	}
+
 private:
-	/** Inherited from twml_message_. */
-	twindow* build_window(CVideo& video);
+
+	/** Inherited from tdialog, implemented by REGISTER_WINDOW. */
+	virtual const std::string& window_id() const;
 };
 
 

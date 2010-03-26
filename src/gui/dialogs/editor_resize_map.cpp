@@ -73,6 +73,8 @@ namespace gui2 {
  * @end_table
  */
 
+REGISTER_WINDOW(editor_resize_map)
+
 /**
  * @todo Test whether the slider can be changed to an interger selector.
  * Should be possible, since it's also done in the new map dialog.
@@ -122,11 +124,6 @@ void teditor_resize_map::set_old_map_height(int value)
 bool teditor_resize_map::copy_edge_terrain() const
 {
 	return copy_edge_terrain_->get_cache_value();
-}
-
-twindow* teditor_resize_map::build_window(CVideo& video)
-{
-	return build(video, get_id(EDITOR_RESIZE_MAP));
 }
 
 void teditor_resize_map::pre_show(CVideo& /*video*/, twindow& window)

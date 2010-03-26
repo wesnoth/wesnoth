@@ -29,6 +29,8 @@
 
 namespace gui2 {
 
+REGISTER_WINDOW(mp_create_game)
+
 tmp_create_game::tmp_create_game(const config& cfg) :
 	cfg_(cfg),
 	scenario_(NULL),
@@ -56,11 +58,6 @@ tmp_create_game::tmp_create_game(const config& cfg) :
 		preferences::xp_modifier ,
 		preferences::set_xp_modifier))
 {
-}
-
-twindow* tmp_create_game::build_window(CVideo& video)
-{
-	return build(video, get_id(MP_CREATE_GAME));
 }
 
 void tmp_create_game::pre_show(CVideo& /*video*/, twindow& window)

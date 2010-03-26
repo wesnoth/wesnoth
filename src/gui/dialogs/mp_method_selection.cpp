@@ -40,10 +40,8 @@ namespace gui2 {
  *     (method_list) (listbox) ()      The list with possible game methods.
  * @end_table
  */
-twindow* tmp_method_selection::build_window(CVideo& video)
-{
-	return build(video, get_id(MP_METHOD_SELECTION));
-}
+
+REGISTER_WINDOW(mp_method_selection)
 
 void tmp_method_selection::pre_show(CVideo& /*video*/, twindow& window)
 {

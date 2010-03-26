@@ -48,13 +48,10 @@ namespace gui2 {
  * @end_table
  */
 
+REGISTER_WINDOW(mp_cmd_wrapper)
+
 tmp_cmd_wrapper::tmp_cmd_wrapper(const t_string& user) :
 		message_(), reason_(), time_(), user_(user) { }
-
-twindow* tmp_cmd_wrapper::build_window(CVideo& video)
-{
-	return build(video, get_id(MP_CMD_WRAPPER));
-}
 
 void tmp_cmd_wrapper::pre_show(CVideo& /*video*/, twindow& window)
 {

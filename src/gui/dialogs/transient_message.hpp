@@ -52,8 +52,8 @@ private:
 	/** Use  markup for the message. */
 	bool message_use_markup_;
 
-	/** Inherited from tdialog. */
-	twindow* build_window(CVideo& video);
+	/** Inherited from tdialog, implemented by REGISTER_WINDOW. */
+	virtual const std::string& window_id() const;
 };
 
 /**

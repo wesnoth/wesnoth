@@ -24,10 +24,7 @@
 
 namespace gui2 {
 
-twindow* ttransient_message::build_window(CVideo& video)
-{
-	return build(video, get_id(TRANSIENT_MESSAGE));
-}
+REGISTER_WINDOW(transient_message)
 
 void ttransient_message::pre_show(CVideo& /*video*/, twindow& window)
 {

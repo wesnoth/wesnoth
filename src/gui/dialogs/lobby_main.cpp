@@ -67,6 +67,8 @@ static lg::log_domain log_lobby("lobby");
 
 namespace gui2 {
 
+REGISTER_WINDOW(lobby_main)
+
 void tsub_player_list::init(gui2::twindow &w, const std::string &id)
 {
 	list = find_widget<tlistbox>(&w, id, false, true);
@@ -477,18 +479,15 @@ static bool fullscreen(CVideo& video)
 	return true;
 }
 
-twindow* tlobby_main::build_window(CVideo& video)
+void tlobby_main::post_build(CVideo& video, twindow& window)
 {
-	twindow* window = build(video, get_id(LOBBY_MAIN));
-	assert(window);
-
 	/** @todo Should become a global hotkey after 1.8, then remove it here. */
-	window->register_hotkey(hotkey::HOTKEY_FULLSCREEN
+	window.register_hotkey(hotkey::HOTKEY_FULLSCREEN
 			, boost::bind(fullscreen, boost::ref(video)));
 
 
 	/** @todo Remove this code once the resizing in twindow is finished. */
-	window->connect_signal<event::SDL_VIDEO_RESIZE>(
+	window.connect_signal<event::SDL_VIDEO_RESIZE>(
 			  boost::bind(&signal_handler_sdl_video_resize
 				  , _2, _3, _4, _5, boost::ref(video))
 			, event::tdispatcher::front_child);
@@ -497,15 +496,13 @@ twindow* tlobby_main::build_window(CVideo& video)
 	preferences_wrapper_ = boost::bind(
 			  &tlobby_main::show_preferences_button_callback
 			, this
-			, boost::ref(*window));
+			, boost::ref(window));
 
-	window->register_hotkey(
+	window.register_hotkey(
 			  hotkey::HOTKEY_PREFERENCES
 			, boost::bind(function_wrapper<bool, boost::function<void()> >
 				, true
 				, boost::cref(preferences_wrapper_)));
-
-	return window;
 }
 
 namespace {

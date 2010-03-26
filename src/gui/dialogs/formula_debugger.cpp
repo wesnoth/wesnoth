@@ -47,10 +47,7 @@ namespace gui2 {
  * @end_table
  */
 
-twindow* tformula_debugger::build_window(CVideo& video)
-{
-	return build(video, get_id(FORMULA_DEBUGGER));
-}
+REGISTER_WINDOW(formula_debugger)
 
 void tformula_debugger::pre_show(CVideo& /*video*/, twindow& window)
 {

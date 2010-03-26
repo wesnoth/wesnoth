@@ -39,16 +39,14 @@ namespace gui2 {
  *                                The name of the savefile.
  * @end_table
  */
+
+REGISTER_WINDOW(game_save)
+
 tgame_save::tgame_save(const std::string& title, const std::string& filename) :
 	txtFilename_(register_text("txtFilename", false)),
 	title_(title),
 	filename_(filename)
 {
-}
-
-twindow* tgame_save::build_window(CVideo& video)
-{
-	return build(video, get_id(GAME_SAVE));
 }
 
 void tgame_save::pre_show(CVideo& /*video*/, twindow& window)
@@ -66,15 +64,13 @@ void tgame_save::post_show(twindow& window)
 	filename_ = txtFilename_->get_widget_value(window);
 }
 
+
+REGISTER_WINDOW(game_save_message)
+
 tgame_save_message::tgame_save_message(const std::string& title, const std::string& filename, const std::string& message)
 	: tgame_save(title, filename),
 	message_(message)
 {}
-
-twindow* tgame_save_message::build_window(CVideo& video)
-{
-	return build(video, get_id(GAME_SAVE_MESSAGE));
-}
 
 void tgame_save_message::pre_show(CVideo& video, twindow& window)
 {
@@ -83,16 +79,13 @@ void tgame_save_message::pre_show(CVideo& video, twindow& window)
 	tgame_save::pre_show(video, window);
 }
 
+REGISTER_WINDOW(game_save_oos)
+
 tgame_save_oos::tgame_save_oos(const std::string& title, const std::string& filename, const std::string& message)
 	: tgame_save_message(title, filename, message),
 	btnIgnoreAll_(register_bool("ignore_all", false)),
 	ignore_all_(false)
 {}
-
-twindow* tgame_save_oos::build_window(CVideo& video)
-{
-	return build(video, get_id(GAME_SAVE_OOS));
-}
 
 void tgame_save_oos::post_show(twindow& window)
 {

@@ -66,16 +66,13 @@ void show_dialog(twidget* caller)
  * @end_table
  */
 
+REGISTER_WINDOW(title_screen)
+
 ttitle_screen::ttitle_screen()
 	: video_(NULL)
 	, tips_()
 {
 	read_tips_of_day(tips_);
-}
-
-twindow* ttitle_screen::build_window(CVideo& video)
-{
-	return build(video, get_id(TITLE_SCREEN));
 }
 
 void ttitle_screen::pre_show(CVideo& video, twindow& window)

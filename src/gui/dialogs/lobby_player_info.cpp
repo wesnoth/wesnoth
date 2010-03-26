@@ -24,6 +24,8 @@
 
 namespace gui2 {
 
+REGISTER_WINDOW(lobby_player_info)
+
 tlobby_player_info::tlobby_player_info(events::chat_handler& chat, user_info& info, const lobby_info& li)
 : chat_(chat), info_(info), reason_(NULL), time_(NULL), relation_(NULL),
 add_to_friends_(NULL), add_to_ignores_(NULL), remove_from_list_(NULL),
@@ -33,11 +35,6 @@ result_open_whisper_(false), lobby_info_(li)
 
 tlobby_player_info::~tlobby_player_info()
 {
-}
-
-twindow* tlobby_player_info::build_window(CVideo& video)
-{
-	return build(video, get_id(LOBBY_PLAYER_INFO));
 }
 
 void tlobby_player_info::pre_show(CVideo& /*video*/, twindow& window)

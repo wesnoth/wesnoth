@@ -49,6 +49,7 @@ namespace {
  *     -(address) (control) ()         The address/host_name of the server.
  * @end_table
  */
+
 class tmp_server_list : public tdialog
 {
 public:
@@ -61,9 +62,8 @@ public:
 private:
 	std::string host_name_;
 
-	/** Inherited from tdialog. */
-	twindow* build_window(CVideo& video)
-		{ return build(video, get_id(MP_SERVER_LIST)); }
+	/** Inherited from tdialog, implemented by REGISTER_WINDOW. */
+	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
@@ -71,6 +71,8 @@ private:
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);
 };
+
+REGISTER_WINDOW(mp_server_list)
 
 void tmp_server_list::pre_show(CVideo& /*video*/, twindow& window)
 {
@@ -126,17 +128,15 @@ void tmp_server_list::post_show(twindow& window)
  *                                     predefined servers to connect to.
  * @end_table
  */
+
+REGISTER_WINDOW(mp_connect)
+
 tmp_connect::tmp_connect() :
 	video_(0),
 	host_name_(register_text("host_name", false,
 		preferences::network_host,
 		preferences::set_network_host))
 {
-}
-
-twindow* tmp_connect::build_window(CVideo& video)
-{
-	return build(video, get_id(MP_CONNECT));
 }
 
 void tmp_connect::pre_show(CVideo& video, twindow& window)
@@ -194,13 +194,10 @@ void tmp_connect::show_server_list(twindow& window)
  * @end_table
  */
 
+REGISTER_WINDOW(mp_login)
+
 tmp_login::tmp_login(const t_string& label,	const bool focus_password) :
 		label_(label), focus_password_(focus_password) { }
-
-twindow* tmp_login::build_window(CVideo& video)
-{
-	return build(video, get_id(MP_LOGIN));
-}
 
 void tmp_login::pre_show(CVideo& /*video*/, twindow& window)
 {

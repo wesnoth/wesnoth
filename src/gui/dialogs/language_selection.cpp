@@ -39,10 +39,8 @@ namespace gui2 {
  *     -[] (control) ()                Gets the name of the language.
  * @end_table
  */
-twindow* tlanguage_selection::build_window(CVideo& video)
-{
-	return build(video, get_id(LANGUAGE_SELECTION));
-}
+
+REGISTER_WINDOW(language_selection)
 
 void tlanguage_selection::pre_show(CVideo& /*video*/, twindow& window)
 {

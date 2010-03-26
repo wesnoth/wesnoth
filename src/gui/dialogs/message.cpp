@@ -27,6 +27,8 @@
 
 namespace gui2 {
 
+REGISTER_WINDOW(message)
+
 /**
  * Helper to implement private functions without modifing the header.
  *
@@ -132,11 +134,6 @@ tmessage::tbutton_status::tbutton_status()
 	, visible(twidget::INVISIBLE)
 	, retval(twindow::NONE)
 {
-}
-
-twindow* tmessage::build_window(CVideo& video)
-{
-	return build(video, get_id(MESSAGE));
 }
 
 void show_message(CVideo& video, const std::string& title,

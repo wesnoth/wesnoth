@@ -30,54 +30,21 @@ namespace gui2 {
 /** Do we wish to use the new library or not. */
 extern bool new_widgets;
 
-enum twindow_type {
-	TITLE_SCREEN,            /**< The main title screen of the game. */
-	ADDON_CONNECT,           /**< The addon server connection dialog. */
-	ADDON_LIST,              /**< The addon list dialog. */
-	CAMPAIGN_SELECTION,      /**< The campaign selection dialog. */
-	LANGUAGE_SELECTION,      /**< The language selection dialog. */
-	MESSAGE,                 /**< A generic message dialog. */
-	TRANSIENT_MESSAGE,       /**< A transient message dialog. */
-	WML_MESSAGE_LEFT,        /**<
-	                          * A WML message dialog with the portrait on
-	                          * the left side.
-	                          */
-	WML_MESSAGE_RIGHT,       /**<
-	                          * A WML message dialog with the portrait on
-	                          * the right side.
-	                          */
-	MP_CONNECT,              /**< The mp server connection dialog. */
-	MP_METHOD_SELECTION,     /**<
-	                          * The dialog which allows you to choose the kind
-	                          * mp game the user wants to play.
-	                          */
-	MP_SERVER_LIST,          /**< The mp server list dialog. */
-	MP_LOGIN,                /**< The mp login dialog. */
-	MP_CMD_WRAPPER,          /**< graphical front-end to various mp commands*/
-	MP_CREATE_GAME,          /**< The mp creation dialog. */
-#ifndef DISABLE_EDITOR
-	EDITOR_NEW_MAP,          /**< New map dialog. */
-	EDITOR_GENERATE_MAP,     /**< Editor random map genarator dialog. */
-	EDITOR_RESIZE_MAP,       /**< Editor resize map dialog. */
-	EDITOR_SETTINGS,         /**< Editor settings dialog. */
-#endif
-	GAME_LOAD,				 /**< Load game dialog. */
-	GAME_DELETE,			 /**< Confirm delete dialog. */
-	GAME_SAVE,				 /**< Save game dialog. */
-	GAME_SAVE_MESSAGE,		 /**< Save game dialog with additional message. */
-	GAME_SAVE_OOS,			 /**< Save game dialog for processing OOS. */
-	LOBBY_MAIN,               /**< Main MP lobby screen */
-	LOBBY_PLAYER_INFO,        /**< MP lobby player info dialog */
-	UNIT_CREATE,			 /**< Debug-mode unit creation dialog */
-	FORMULA_DEBUGGER,         /**< Formula debugger dialog */
-	GAMESTATE_INSPECTOR,      /**< Visual inspector of the game state (WML variables, events)*/
-	COUNT                    /**<
-	                          * The last one to hold the number of items and as
-	                          * sentinel.
-	                          */
-};
-
-const std::string& get_id(const twindow_type window_type);
+/**
+ * Registers a window.
+ *
+ * This function registers the available windows defined in WML. All windows
+ * need to register themselves before @ref gui2::init) is called.
+ *
+ * @warning This function runs before @ref main() so needs to be careful
+ * regarding the static initialization problem.
+ *
+ * @note Double registering a window can't hurt, but no way to probe for it,
+ * this can be added if needed. The same for an unregister function.
+ *
+ * @param id                      The id of the window to register.
+ */
+void register_window(const std::string& id);
 
 
 	tresolution_definition_ptr get_control(

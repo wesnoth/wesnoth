@@ -187,15 +187,9 @@ void twml_message_::post_show(twindow& window)
 	}
 }
 
-twindow* twml_message_left::build_window(CVideo& video)
-{
-	return build(video, get_id(WML_MESSAGE_LEFT));
-}
+REGISTER_WINDOW(wml_message_left)
 
-twindow* twml_message_right::build_window(CVideo& video)
-{
-	return build(video, get_id(WML_MESSAGE_RIGHT));
-}
+REGISTER_WINDOW(wml_message_right)
 
 int show_wml_message(const bool left_side
 		, CVideo& video

@@ -45,6 +45,8 @@ namespace {
 
 namespace gui2 {
 
+REGISTER_WINDOW(unit_create)
+
 /* TODO: wiki-doc me! */
 
 tunit_create::tunit_create()
@@ -53,11 +55,6 @@ tunit_create::tunit_create()
 	, choice_(last_chosen_type_id)
 	, type_ids_()
 {
-}
-
-twindow* tunit_create::build_window(CVideo& video)
-{
-	return build(video, get_id(UNIT_CREATE));
 }
 
 void tunit_create::pre_show(CVideo& /*video*/, twindow& window)

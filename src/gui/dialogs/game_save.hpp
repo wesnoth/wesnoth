@@ -35,8 +35,9 @@ protected:
 	void post_show(twindow& window);
 
 private:
-	/** Inherited from tdialog. */
-	twindow* build_window(CVideo& video);
+
+	/** Inherited from tdialog, implemented by REGISTER_WINDOW. */
+	virtual const std::string& window_id() const;
 
 	tfield_text* txtFilename_;
 	std::string title_;
@@ -49,11 +50,11 @@ public:
 	tgame_save_message(const std::string& title, const std::string& filename="", const std::string& message="");
 
 private:
-	/** Inherited from tgame_save. */
-	void pre_show(CVideo& video, twindow& window);
+	/** Inherited from tdialog, implemented by REGISTER_WINDOW. */
+	virtual const std::string& window_id() const;
 
 	/** Inherited from tgame_save. */
-	twindow* build_window(CVideo& video);
+	void pre_show(CVideo& video, twindow& window);
 
 	std::string message_;
 };
@@ -66,8 +67,8 @@ public:
 	bool ignore_all() const { return ignore_all_; }
 
 private:
-	/** Inherited from tgame_save. */
-	twindow* build_window(CVideo& video);
+	/** Inherited from tdialog, implemented by REGISTER_WINDOW. */
+	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);

@@ -39,6 +39,8 @@ void tdialog::show(CVideo& video, const unsigned auto_close_time)
 	std::auto_ptr<twindow> window(build_window(video));
 	assert(window.get());
 
+	post_build(video, *window);
+
 	window->set_owner(this);
 
 	init_fields(*window);
@@ -100,6 +102,11 @@ tfield_text* tdialog::register_text(const std::string& id, const bool optional,
 
 	fields_.push_back(field);
 	return field;
+}
+
+twindow* tdialog::build_window(CVideo& video) const
+{
+	return build(video, window_id());
 }
 
 void tdialog::init_fields(twindow& window)

@@ -45,6 +45,8 @@ namespace gui2 {
  * @end_table
  */
 
+REGISTER_WINDOW(editor_generate_map)
+
 teditor_generate_map::teditor_generate_map()
 	: map_generators_()
 	, current_map_generator_(0)
@@ -85,11 +87,6 @@ void teditor_generate_map::update_current_generator_label(twindow& window)
 	current_generator_label_->set_label(ss.str());
 
 	window.invalidate_layout();
-}
-
-twindow* teditor_generate_map::build_window(CVideo& video)
-{
-	return build(video, get_id(EDITOR_GENERATE_MAP));
 }
 
 void teditor_generate_map::pre_show(CVideo& /*video*/, twindow& window)
