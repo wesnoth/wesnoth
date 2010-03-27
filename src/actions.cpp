@@ -1321,8 +1321,8 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
 	{
 		log_scope2(log_engine, "setting random results");
 		config cfg;
-		cfg["hits"] = hits ? "yes" : "no";
-		cfg["dies"] = dies ? "yes" : "no";
+		cfg["hits"] = hits;
+		cfg["dies"] = dies;
 		cfg["unit_hit"] = "defender";
 		cfg["damage"] = lexical_cast<std::string>(damage);
 		cfg["chance"] = lexical_cast<std::string>(attacker.cth_);

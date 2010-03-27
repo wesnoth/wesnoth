@@ -1003,7 +1003,7 @@ void game_display::write_overlays(config& cfg) const
 		item["image"] = i->second.image;
 		item["halo"] = i->second.halo;
 		item["team_name"] = i->second.team_name;
-		item["visible_in_fog"] = i->second.visible_in_fog ? "yes" : "no";
+		item["visible_in_fog"] = i->second.visible_in_fog;
 	}
 }
 

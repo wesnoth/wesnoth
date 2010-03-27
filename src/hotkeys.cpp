@@ -474,13 +474,13 @@ void save_hotkeys(config& cfg)
 
 		if (i->get_type() == hotkey_item::BY_KEYCODE) {
 			item["key"] = SDL_GetKeyName(SDLKey(i->get_keycode()));
-			item["shift"] = i->get_shift() ? "yes" : "no";
+			item["shift"] = i->get_shift();
 		} else if (i->get_type() == hotkey_item::BY_CHARACTER) {
 			item["key"] = utils::wchar_to_string(i->get_character());
 		}
-		item["alt"] = i->get_alt() ? "yes" : "no";
-		item["ctrl"] = i->get_ctrl() ? "yes" : "no";
-		item["cmd"] = i->get_cmd() ? "yes" : "no";
+		item["alt"] = i->get_alt();
+		item["ctrl"] = i->get_ctrl();
+		item["cmd"] = i->get_cmd();
 	}
 }
 

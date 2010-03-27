@@ -153,17 +153,17 @@ config mp_game_settings::to_config() const
 	cfg["mp_era"] = mp_era;
 	cfg["mp_scenario"] = mp_scenario;
 	cfg["experience_modifier"] = lexical_cast<std::string>(xp_modifier);
-	cfg["mp_countdown"] = mp_countdown ? "yes" : "no";
+	cfg["mp_countdown"] = mp_countdown;
 	cfg["mp_countdown_init_time"] = lexical_cast_default<std::string>(mp_countdown_init_time, "270");
 	cfg["mp_countdown_turn_bonus"] = lexical_cast_default<std::string>(mp_countdown_turn_bonus, "35");
 	cfg["mp_countdown_reservoir_time"] = lexical_cast_default<std::string>(mp_countdown_reservoir_time, "330");
 	cfg["mp_countdown_action_bonus"] = lexical_cast_default<std::string>(mp_countdown_action_bonus, "13");
 	cfg["mp_village_gold"] = lexical_cast<std::string>(village_gold);
-	cfg["mp_fog"] = fog_game ? "yes" : "no";
-	cfg["mp_shroud"] = shroud_game ? "yes" : "no";
-	cfg["mp_use_map_settings"] = use_map_settings ? "yes" : "no";
-	cfg["observer"] = allow_observers ? "yes" : "no";
-	cfg["savegame"] = saved_game ? "yes" : "no";
+	cfg["mp_fog"] = fog_game;
+	cfg["mp_shroud"] = shroud_game;
+	cfg["mp_use_map_settings"] = use_map_settings;
+	cfg["observer"] = allow_observers;
+	cfg["savegame"] = saved_game;
 
 	return cfg;
 }

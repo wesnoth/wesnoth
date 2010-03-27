@@ -912,7 +912,7 @@ void playsingle_controller::store_gold(bool obs)
 			while (side_it != side_range.second) {
 				if ((*side_it)["save_id"] == t.save_id()) {
 					(*side_it)["gold"] = str_cast<int>(carryover_gold);
-					(*side_it)["gold_add"] = end_level.carryover_add ? "yes" : "no";
+					(*side_it)["gold_add"] = end_level.carryover_add;
 					(*side_it)["colour"] = t.colour();
 					(*side_it)["current_player"] = t.current_player();
 					(*side_it)["name"] = t.name();
@@ -926,7 +926,7 @@ void playsingle_controller::store_gold(bool obs)
 				config &new_side = gamestate_.snapshot.add_child("side");
 				new_side["save_id"] = t.save_id();
 				new_side["gold"] = str_cast<int>(carryover_gold);
-				new_side["gold_add"] = end_level.carryover_add ? "yes" : "no";
+				new_side["gold_add"] = end_level.carryover_add;
 				new_side["colour"] = t.colour();
 				new_side["current_player"] = t.current_player();
 				new_side["name"] = t.name();

@@ -3194,7 +3194,7 @@ static void commit_wmi_commands() {
 
 		mref->command = *(wcc.second);
 		mref->command["name"] = mref->name;
-		mref->command["first_time_only"] = "no";
+		mref->command["first_time_only"] = false;
 
 		if(has_current_handler) {
 			if(is_empty_command) {

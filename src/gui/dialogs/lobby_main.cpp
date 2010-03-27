@@ -1541,7 +1541,7 @@ bool tlobby_main::do_game_join(int idx, bool observe)
 	config response;
 	config& join = response.add_child("join");
 	join["id"] = lexical_cast<std::string>(game.id);
-	join["observe"] = observe ? "yes" : "no";
+	join["observe"] = observe;
 	if (join && !observe && game.password_required) {
 		std::string password;
 		//TODO replace with a gui2 dialog

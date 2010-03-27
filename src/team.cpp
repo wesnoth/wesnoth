@@ -171,7 +171,7 @@ void team::team_info::write(config& cfg) const
 {
 	cfg["gold"] = str_cast(gold);
 	cfg["start_gold"] = str_cast(start_gold);
-	cfg["gold_add"] = gold_add ? "yes" : "no";
+	cfg["gold_add"] = gold_add;
 	cfg["income"] = str_cast(income);
 	cfg["name"] = name;
 	cfg["team_name"] = team_name;
@@ -182,14 +182,14 @@ void team::team_info::write(config& cfg) const
 	cfg["flag_icon"] = flag_icon;
 	cfg["id"] = description;
 	cfg["objectives"] = objectives;
-	cfg["objectives_changed"] = objectives_changed ? "yes" : "no";
+	cfg["objectives_changed"] = objectives_changed;
 	cfg["countdown_time"]= countdown_time;
 	cfg["action_bonus_count"]= str_cast(action_bonus_count);
 	cfg["village_gold"] = str_cast(income_per_village);
-	cfg["disallow_observers"] = disallow_observers ? "yes" : "no";
-	cfg["allow_player"] = allow_player ? "yes" : "no";
-	cfg["no_leader"] = no_leader ? "yes" : "no";
-	cfg["hidden"] = hidden ? "yes" : "no";
+	cfg["disallow_observers"] = disallow_observers;
+	cfg["allow_player"] = allow_player;
+	cfg["no_leader"] = no_leader;
+	cfg["hidden"] = hidden;
 
 	switch(controller) {
 	case AI: cfg["controller"] = "ai"; break;
@@ -211,15 +211,15 @@ void team::team_info::write(config& cfg) const
 
 	cfg["recruit"] = can_recruit_str.str();
 
-	cfg["share_maps"] = share_maps ? "yes" : "no";
-	cfg["share_view"] = share_view ? "yes" : "no";
+	cfg["share_maps"] = share_maps;
+	cfg["share_view"] = share_view;
 
 	if(music.empty() == false)
 		cfg["music"] = music;
 
 	cfg["colour"] = lexical_cast_default<std::string>(colour);
 
-	cfg["persistent"] = persistent ? "yes" : "no";
+	cfg["persistent"] = persistent;
 
 	cfg.add_child("ai",ai::manager::to_config(side));
 }
@@ -279,8 +279,8 @@ team::team(const config& cfg, const gamemap& map, int gold) :
 void team::write(config& cfg) const
 {
 	info_.write(cfg);
-	cfg["shroud"] = uses_shroud() ? "yes" : "no";
-	cfg["fog"] = uses_fog() ? "yes" : "no";
+	cfg["shroud"] = uses_shroud();
+	cfg["fog"] = uses_fog();
 	cfg["gold"] = str_cast(gold_);
 
 	// Write village locations

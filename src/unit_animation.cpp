@@ -487,7 +487,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	foreach (config &anim, expanded_cfg.child_range("standing_anim"))
 	{
 		anim["apply_to"] = "standing,default";
-		if (anim["offscreen"].empty()) anim["offscreen"] = "no";
+		if (anim["offscreen"].empty()) anim["offscreen"] = false;
 		if (anim["layer"].empty()) anim["layer"] = default_layer;
 		animations.push_back(unit_animation(anim));
 	}
@@ -496,7 +496,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	foreach (config &anim, expanded_cfg.child_range("idle_anim"))
 	{
 		anim["apply_to"] = "idling";
-		if (anim["offscreen"].empty()) anim["offscreen"] = "no";
+		if (anim["offscreen"].empty()) anim["offscreen"] = false;
 		if (anim["layer"].empty()) anim["layer"] = default_layer;
 		animations.push_back(unit_animation(anim));
 	}
@@ -587,9 +587,9 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		}
 		if (anim["hits"].empty())
 		{
-			anim["hits"] = "no";
+			anim["hits"] = false;
 			animations.push_back(unit_animation(anim));
-			anim["hits"] = "yes";
+			anim["hits"] = true;
 			animations.push_back(unit_animation(anim));
 			animations.back().add_frame(225,frame_builder()
 					.image(animations.back().get_last_frame().parameters(0).image)

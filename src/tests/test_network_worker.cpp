@@ -96,7 +96,7 @@ BOOST_AUTO_TEST_CASE( test_send_client )
 	config& child = cfg_send.add_child("test_client_send");
 
 	child["test"] = "yes!";
-	cfg_send["test_running"] = "yes";
+	cfg_send["test_running"] = true;
 	network::send_data(cfg_send, client_client1, true);
 
 	network::connection receive_from;

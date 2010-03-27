@@ -3433,7 +3433,7 @@ void menu_handler::change_side_controller(const std::string& side, const std::st
 	change["player"] = player;
 
 	if(own_side) {
-		change["own_side"] = "yes";
+		change["own_side"] = true;
 	}
 
 	network::send_data(cfg, 0, true);

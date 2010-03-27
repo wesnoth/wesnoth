@@ -353,8 +353,8 @@ void terrain_label::write(config& cfg) const
 	cfg["text"] = text();
 	cfg["team_name"] = (this->team_name());
 	cfg["colour"] = cfg_colour();
-	cfg["visible_in_fog"] = visible_in_fog() ? "yes" : "no";
-	cfg["visible_in_shroud"] = visible_in_shroud() ? "yes" : "no";
+	cfg["visible_in_fog"] = visible_in_fog_;
+	cfg["visible_in_shroud"] = visible_in_shroud_;
 }
 
 const std::string& terrain_label::text() const

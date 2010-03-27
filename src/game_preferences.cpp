@@ -386,7 +386,7 @@ bool remember_password()
 
 void set_remember_password(bool remember)
 {
-	preferences::set("remember_password", remember ? "yes" : "no");
+	preferences::set("remember_password", remember);
 	preferences::set("password", remember ? prv::password : "");
 }
 
@@ -397,7 +397,7 @@ bool turn_dialog()
 
 void set_turn_dialog(bool ison)
 {
-	preferences::set("turn_dialog", ison ? "yes" : "no");
+	preferences::set("turn_dialog", ison);
 }
 
 bool delay_shroud_updates_on_start()
@@ -407,7 +407,7 @@ bool delay_shroud_updates_on_start()
 
 void set_delay_shroud_updates_on_start(bool value)
 {
-	preferences::set("delay_shroud_updates_on_start", value ? "yes" : "no");
+	preferences::set("delay_shroud_updates_on_start", value);
 }
 
 bool show_combat()
@@ -422,7 +422,7 @@ bool allow_observers()
 
 void set_allow_observers(bool value)
 {
-	preferences::set("allow_observers", value ? "yes" : "no");
+	preferences::set("allow_observers", value);
 }
 
 bool use_map_settings()
@@ -432,7 +432,7 @@ bool use_map_settings()
 
 void set_use_map_settings(bool value)
 {
-	preferences::set("mp_use_map_settings", value ? "yes" : "no");
+	preferences::set("mp_use_map_settings", value);
 }
 
 int mp_server_warning_disabled()
@@ -469,7 +469,7 @@ bool random_start_time()
 
 void set_random_start_time(bool value)
 {
-	preferences::set("mp_random_start_time", value ? "yes" : "no");
+	preferences::set("mp_random_start_time", value);
 }
 
 bool fog()
@@ -479,7 +479,7 @@ bool fog()
 
 void set_fog(bool value)
 {
-	preferences::set("mp_fog", value ? "yes" : "no");
+	preferences::set("mp_fog", value);
 }
 
 bool shroud()
@@ -489,7 +489,7 @@ bool shroud()
 
 void set_shroud(bool value)
 {
-	preferences::set("mp_shroud", value ? "yes" : "no");
+	preferences::set("mp_shroud", value);
 }
 
 int turns()
@@ -509,7 +509,7 @@ bool skip_mp_replay()
 
 void set_skip_mp_replay(bool value)
 {
-	preferences::set("skip_mp_replay", value ? "yes" : "no");
+	preferences::set("skip_mp_replay", value);
 }
 
 bool countdown()
@@ -519,7 +519,7 @@ bool countdown()
 
 void set_countdown(bool value)
 {
-	preferences::set("mp_countdown", value ? "yes" : "no");
+	preferences::set("mp_countdown", value);
 }
 
 int countdown_init_time()
@@ -613,12 +613,12 @@ bool show_ai_moves()
 
 void set_show_ai_moves(bool value)
 {
-	preferences::set("show_ai_moves", value ? "yes" : "no");
+	preferences::set("show_ai_moves", value);
 }
 
 void set_show_side_colours(bool value)
 {
-	preferences::set("show_side_colours", value ? "yes" : "no");
+	preferences::set("show_side_colours", value);
 }
 
 bool show_side_colours()
@@ -628,7 +628,7 @@ bool show_side_colours()
 
 void set_save_replays(bool value)
 {
-	preferences::set("save_replays", value ? "yes" : "no");
+	preferences::set("save_replays", value);
 }
 
 bool save_replays()
@@ -638,7 +638,7 @@ bool save_replays()
 
 void set_delete_saves(bool value)
 {
-	preferences::set("delete_saves", value ? "yes" : "no");
+	preferences::set("delete_saves", value);
 }
 
 bool delete_saves()
@@ -648,7 +648,7 @@ bool delete_saves()
 
 void set_ask_delete_saves(bool value)
 {
-	preferences::set("ask_delete", value ? "yes" : "no");
+	preferences::set("ask_delete", value);
 }
 
 bool ask_delete_saves()
@@ -658,7 +658,7 @@ bool ask_delete_saves()
 
 void set_interrupt_when_ally_sighted(bool value)
 {
-	preferences::set("ally_sighted_interrupts", value ? "yes" : "no");
+	preferences::set("ally_sighted_interrupts", value);
 }
 
 bool interrupt_when_ally_sighted()
@@ -719,7 +719,7 @@ bool show_floating_labels()
 
 void set_show_floating_labels(bool value)
 {
-	preferences::set("floating_labels", value ? "yes" : "no");
+	preferences::set("floating_labels", value);
 }
 
 bool message_private()
@@ -740,7 +740,7 @@ bool show_haloes()
 void set_show_haloes(bool value)
 {
 	haloes = value;
-	preferences::set("show_haloes", value ? "yes" : "no");
+	preferences::set("show_haloes", value);
 }
 
 bool flip_time()
@@ -750,7 +750,7 @@ bool flip_time()
 
 void set_flip_time(bool value)
 {
-	preferences::set("flip_time", value ? "yes" : "no");
+	preferences::set("flip_time", value);
 }
 
 bool has_upload_log()
@@ -765,7 +765,7 @@ bool upload_log()
 
 void set_upload_log(bool value)
 {
-	preferences::set("upload_log_new", value ? "yes" : "no");
+	preferences::set("upload_log_new", value);
 }
 
 std::string upload_id()
@@ -803,7 +803,7 @@ bool chat_timestamping() {
 }
 
 void set_chat_timestamping(bool value) {
-	preferences::set("chat_timestamp", value ? "yes" : "no");
+	preferences::set("chat_timestamp", value);
 }
 
 int chat_lines()

@@ -26,7 +26,7 @@ bool lobby_sounds()
 
 void set_lobby_sounds(bool v)
 {
-	preferences::set("lobby_sounds", v ? "yes" : "no");
+	preferences::set("lobby_sounds", v);
 }
 
 bool sort_list()
@@ -36,7 +36,7 @@ bool sort_list()
 
 void _set_sort_list(bool sort)
 {
-	preferences::set("sort_list", sort ? "yes" : "no");
+	preferences::set("sort_list", sort);
 }
 
 bool iconize_list()
@@ -46,7 +46,7 @@ bool iconize_list()
 
 void _set_iconize_list(bool sort)
 {
-	preferences::set("iconize_list", sort ? "yes" : "no");
+	preferences::set("iconize_list", sort);
 }
 
 

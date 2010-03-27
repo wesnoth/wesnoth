@@ -98,7 +98,13 @@ void write_preferences()
 
 }
 
-void set(const std::string& key, std::string value) {
+void set(const std::string &key, bool value)
+{
+	prefs[key] = value;
+}
+
+void set(const std::string &key, const std::string &value)
+{
 	prefs[key] = value;
 }
 
@@ -141,7 +147,7 @@ bool fullscreen()
 
 void _set_fullscreen(bool ison)
 {
-	prefs["fullscreen"] = (ison ? "yes" : "no");
+	prefs["fullscreen"] = ison;
 }
 
 bool scroll_to_action()
@@ -151,7 +157,7 @@ bool scroll_to_action()
 
 void _set_scroll_to_action(bool ison)
 {
-	prefs["scroll_to_action"] = (ison ? "yes" : "no");
+	prefs["scroll_to_action"] = ison;
 }
 
 int min_allowed_width()
@@ -215,7 +221,7 @@ bool turbo()
 
 void _set_turbo(bool ison)
 {
-	prefs["turbo"] = (ison ? "yes" : "no");
+	prefs["turbo"] = ison;
 }
 
 double turbo_speed()
@@ -235,7 +241,7 @@ bool idle_anim()
 
 void _set_idle_anim(const bool ison)
 {
-	prefs["idle_anim"] = (ison ? "yes" : "no");
+	prefs["idle_anim"] = ison;
 }
 
 int idle_anim_rate()
@@ -265,7 +271,7 @@ bool ellipses()
 
 void _set_ellipses(bool ison)
 {
-	preferences::set("show_side_colours",  (ison ? "yes" : "no"));
+	preferences::set("show_side_colours",  ison);
 }
 
 bool grid()
@@ -275,7 +281,7 @@ bool grid()
 
 void _set_grid(bool ison)
 {
-	preferences::set("grid",  (ison ? "yes" : "no"));
+	preferences::set("grid", ison);
 }
 
 size_t sound_buffer_size()
@@ -376,15 +382,15 @@ bool turn_bell()
 bool set_turn_bell(bool ison)
 {
 	if(!turn_bell() && ison) {
-		preferences::set("turn_bell", "yes");
+		preferences::set("turn_bell", true);
 		if(!music_on() && !sound_on() && !UI_sound_on()) {
 			if(!sound::init_sound()) {
-				preferences::set("turn_bell", "no");
+				preferences::set("turn_bell", false);
 				return false;
 			}
 		}
 	} else if(turn_bell() && !ison) {
-		preferences::set("turn_bell", "no");
+		preferences::set("turn_bell", false);
 		sound::stop_bell();
 		if(!music_on() && !sound_on() && !UI_sound_on())
 			sound::close_sound();
@@ -400,15 +406,15 @@ bool UI_sound_on()
 bool set_UI_sound(bool ison)
 {
 	if(!UI_sound_on() && ison) {
-		preferences::set("UI_sound", "yes");
+		preferences::set("UI_sound", true);
 		if(!music_on() && !sound_on() && !turn_bell()) {
 			if(!sound::init_sound()) {
-				preferences::set("UI_sound", "no");
+				preferences::set("UI_sound", false);
 				return false;
 			}
 		}
 	} else if(UI_sound_on() && !ison) {
-		preferences::set("UI_sound", "no");
+		preferences::set("UI_sound", false);
 		sound::stop_UI_sound();
 		if(!music_on() && !sound_on() && !turn_bell())
 			sound::close_sound();
@@ -428,15 +434,15 @@ bool sound_on()
 
 bool set_sound(bool ison) {
 	if(!sound_on() && ison) {
-		preferences::set("sound", "yes");
+		preferences::set("sound", true);
 		if(!music_on() && !turn_bell() && !UI_sound_on()) {
 			if(!sound::init_sound()) {
-				preferences::set("sound", "no");
+				preferences::set("sound", false);
 				return false;
 			}
 		}
 	} else if(sound_on() && !ison) {
-		preferences::set("sound", "no");
+		preferences::set("sound", false);
 		sound::stop_sound();
 		if(!music_on() && !turn_bell() && !UI_sound_on())
 			sound::close_sound();
@@ -451,17 +457,17 @@ bool music_on()
 
 bool set_music(bool ison) {
 	if(!music_on() && ison) {
-		preferences::set("music", "yes");
+		preferences::set("music", true);
 		if(!sound_on() && !turn_bell() && !UI_sound_on()) {
 			if(!sound::init_sound()) {
-				preferences::set("music", "no");
+				preferences::set("music", false);
 				return false;
 			}
 		}
 		else
 			sound::play_music();
 	} else if(music_on() && !ison) {
-		preferences::set("music", "no");
+		preferences::set("music", false);
 		if(!sound_on() && !turn_bell() && !UI_sound_on())
 			sound::close_sound();
 		else
@@ -500,7 +506,7 @@ bool mouse_scroll_enabled()
 
 void enable_mouse_scroll(bool value)
 {
-	set("mouse_scrolling", value ? "yes" : "no");
+	set("mouse_scrolling", value);
 }
 
 int mouse_scroll_threshold()
@@ -545,7 +551,7 @@ bool use_colour_cursors()
 
 void _set_colour_cursors(bool value)
 {
-	preferences::set("colour_cursors", value ? "yes" : "no");
+	preferences::set("colour_cursors", value);
 	colour_cursors = value;
 }
 

@@ -802,7 +802,7 @@ bool game_controller::play_multiplayer_mode()
 		snprintf(buf,sizeof(buf),"%d",side_num);
 		s["side"] = buf;
 
-		s["canrecruit"] = "yes";
+		s["canrecruit"] = true;
 
 		s.append(*side);
 

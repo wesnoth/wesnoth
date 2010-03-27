@@ -221,8 +221,8 @@ void positional_source::write_config(config& cfg) const
 	cfg["sounds"] = this->files_;
 	cfg["delay"] = str_cast<unsigned int>(this->min_delay_);
 	cfg["chance"] = str_cast<unsigned int>(this->chance_);
-	cfg["check_fogged"] = this->check_fogged_ ? "yes" : "no";
-	cfg["check_shrouded"] = this->check_shrouded_ ? "yes" : "no";
+	cfg["check_fogged"] = check_fogged_;
+	cfg["check_shrouded"] = check_shrouded_;
 
 	cfg["x"] = cfg["y"] = "";
 	bool first_loc = true;

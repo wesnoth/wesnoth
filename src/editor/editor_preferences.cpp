@@ -34,7 +34,7 @@ namespace editor {
 	}
 
 	void set_use_mdi(bool value) {
-		preferences::set("editor_use_mdi", value ? "yes" : "no");
+		preferences::set("editor_use_mdi", value);
 	}
 
 	std::string default_dir() {
@@ -50,7 +50,7 @@ namespace editor {
 	}
 
 	void set_draw_terrain_codes(bool value) {
-		preferences::set("editor_draw_terrain_codes", value ? "yes" : "no");
+		preferences::set("editor_draw_terrain_codes", value);
 	}
 
 	bool draw_hex_coordinates() {
@@ -58,7 +58,7 @@ namespace editor {
 	}
 
 	void set_draw_hex_coordinates(bool value) {
-		preferences::set("editor_draw_hex_coordinates", value ? "yes" : "no");
+		preferences::set("editor_draw_hex_coordinates", value);
 	}
 
 	namespace {

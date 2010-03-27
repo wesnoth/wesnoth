@@ -131,10 +131,10 @@ bool aspect::redeploy(const config &cfg, const std::string& /*id*/)
 config aspect::to_config() const
 {
 	config cfg;
-	cfg["invalidate_on_turn_start"] = invalidate_on_turn_start_ ? "yes" : "no";
-	cfg["invalidate_on_tod_change"] = invalidate_on_tod_change_ ? "yes" : "no";
-	cfg["invalidate_on_gamestate_change"] = invalidate_on_gamestate_change_ ? "yes" : "no";
-	cfg["invalidate_on_minor_gamestate_change"] = invalidate_on_minor_gamestate_change_ ? "yes" : "no";
+	cfg["invalidate_on_turn_start"] = invalidate_on_turn_start_;
+	cfg["invalidate_on_tod_change"] = invalidate_on_tod_change_;
+	cfg["invalidate_on_gamestate_change"] = invalidate_on_gamestate_change_;
+	cfg["invalidate_on_minor_gamestate_change"] = invalidate_on_minor_gamestate_change_;
 	cfg["engine"] = engine_;
 	cfg["name"] = name_;
 	cfg["id"] = id_;

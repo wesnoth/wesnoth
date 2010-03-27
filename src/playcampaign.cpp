@@ -202,7 +202,7 @@ static void preload_lua_tags(const config &game_config, config &target)
 	{
 		config &ev = target.add_child("event");
 		ev["name"] = "preload";
-		ev["first_time_only"] = "no";
+		ev["first_time_only"] = false;
 		ev.add_child("lua", cfg);
 	}
 }
@@ -269,7 +269,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 			LOG_NG << "Adding dummy preload event.\n";
 			config &ev = gamestate.snapshot.add_child("event");
 			ev["name"] = "preload";
-			ev["first_time_only"] = "no";
+			ev["first_time_only"] = false;
 			config &lua = ev.add_child("lua");
 			lua["code"] = "wesnoth.dofile 'lua/wml-tags.lua'";
 		}

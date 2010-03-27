@@ -329,7 +329,7 @@ void replay::add_label(const terrain_label* label)
 	assert(label);
 	config* const cmd = add_command(false);
 
-	(*cmd)["undo"] = "no";
+	(*cmd)["undo"] = false;
 
 	config val;
 
@@ -342,7 +342,7 @@ void replay::clear_labels(const std::string& team_name)
 {
 	config* const cmd = add_command(false);
 
-	(*cmd)["undo"] = "no";
+	(*cmd)["undo"] = false;
 	config val;
 	val["team_name"] = team_name;
 	cmd->add_child("clear_labels",val);
@@ -351,7 +351,7 @@ void replay::clear_labels(const std::string& team_name)
 void replay::add_rename(const std::string& name, const map_location& loc)
 {
 	config* const cmd = add_command(false);
-	(*cmd)["async"] = "yes"; // Not undoable, but depends on moves/recruits that are
+	(*cmd)["async"] = true; // Not undoable, but depends on moves/recruits that are
 	config val;
 	loc.write(val);
 	val["name"] = name;
@@ -379,7 +379,7 @@ void replay::add_event(const std::string& name, const map_location& loc)
 		config& source = ev.add_child("source");
 		loc.write(source);
 	}
-	(*cmd)["undo"] = "no";
+	(*cmd)["undo"] = false;
 }
 
 void replay::add_log_data(const std::string &key, const std::string &var)
@@ -431,7 +431,7 @@ void replay::add_advancement(const map_location& loc)
 	config* const cmd = add_command(false);
 
 	config val;
-	(*cmd)["undo"] = "no";
+	(*cmd)["undo"] = false;
 	loc.write(val);
 	cmd->add_child("advance_unit",val);
 }
@@ -446,7 +446,7 @@ void replay::speak(const config& cfg)
 	config* const cmd = add_command(false);
 	if(cmd != NULL) {
 		cmd->add_child("speak",cfg);
-		(*cmd)["undo"] = "no";
+		(*cmd)["undo"] = false;
 		add_chat_message_location();
 	}
 }
@@ -519,7 +519,7 @@ config replay::get_data_range(int cmd_start, int cmd_end, DATA_TYPE data_type)
 			res.add_child("command",*cmd[cmd_start]);
 
 			if(data_type == NON_UNDO_DATA) {
-				(*cmd[cmd_start])["sent"] = "yes";
+				(*cmd[cmd_start])["sent"] = true;
 			}
 		}
 
@@ -708,7 +708,7 @@ void replay::add_config(const config& cfg, MARK_SENT mark)
 			add_chat_message_location();
 		}
 		if(mark == MARK_AS_SENT) {
-			cfg["sent"] = "yes";
+			cfg["sent"] = true;
 		}
 	}
 }

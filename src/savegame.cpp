@@ -853,8 +853,8 @@ void savegame::extract_summary_data_from_save(config& out)
 	const bool has_replay = gamestate_.replay_data.empty() == false;
 	const bool has_snapshot = gamestate_.snapshot.child("side");
 
-	out["replay"] = has_replay ? "yes" : "no";
-	out["snapshot"] = has_snapshot ? "yes" : "no";
+	out["replay"] = has_replay;
+	out["snapshot"] = has_snapshot;
 
 	out["label"] = gamestate_.classification().label;
 	out["parent"] = gamestate_.classification().parent;
@@ -1028,12 +1028,8 @@ void game_savegame::before_save()
 
 void game_savegame::write_game_snapshot()
 {
-
-	snapshot()["snapshot"] = "yes";
-
-	std::stringstream buf;
-	buf << gui_.playing_team();
-	snapshot()["playing_team"] = buf.str();
+	snapshot()["snapshot"] = true;
+	snapshot()["playing_team"] = str_cast(gui_.playing_team());
 
 	write_events(snapshot());
 

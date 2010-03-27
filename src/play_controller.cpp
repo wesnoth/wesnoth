@@ -573,17 +573,13 @@ config play_controller::to_config() const
 
 	cfg.merge_attributes(level_);
 
-	std::stringstream buf;
-
 	for(std::vector<team>::const_iterator t = teams_.begin(); t != teams_.end(); ++t) {
 		int side_num = t - teams_.begin() + 1;
 
 		config& side = cfg.add_child("side");
 		t->write(side);
-		side["no_leader"] = "yes";
-		buf.str(std::string());
-		buf << side_num;
-		side["side"] = buf.str();
+		side["no_leader"] = true;
+		side["side"] = str_cast(side_num);
 
 		if (!linger_){
 			//current visible units

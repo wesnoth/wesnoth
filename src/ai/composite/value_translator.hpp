@@ -77,7 +77,7 @@ public:
 
 	static void value_to_cfg(const bool &value, config &cfg)
 	{
-		cfg["value"] = value ? "yes" : "no";
+		cfg["value"] = value;
 	}
 
 	static config value_to_cfg(const bool &value)

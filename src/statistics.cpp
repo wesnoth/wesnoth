@@ -586,7 +586,7 @@ stats calculate_stats(int category, std::string save_id)
 config write_stats()
 {
 	config res;
-	res["mid_scenario"] = (mid_scenario ? "yes" : "no");
+	res["mid_scenario"] = mid_scenario;
 
 	for(std::vector<scenario_stats>::const_iterator i = master_stats.begin(); i != master_stats.end(); ++i) {
 		res.add_child("scenario",i->write());

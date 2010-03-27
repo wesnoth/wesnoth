@@ -358,7 +358,7 @@ void game_state::write_snapshot(config& cfg) const
 		new_cfg["id"]=j->first;
 		new_cfg["image"]=j->second->image;
 		new_cfg["description"]=j->second->description;
-		new_cfg["needs_select"]= (j->second->needs_select) ? "yes" : "no";
+		new_cfg["needs_select"] = j->second->needs_select;
 		if(!j->second->show_if.empty())
 			new_cfg.add_child("show_if", j->second->show_if);
 		if(!j->second->filter_location.empty())
@@ -378,8 +378,8 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 	const bool has_replay = cfg_replay && !cfg_replay.empty();
 	const bool has_snapshot = cfg_snapshot && cfg_snapshot.child("side");
 
-	cfg_summary["replay"] = has_replay ? "yes" : "no";
-	cfg_summary["snapshot"] = has_snapshot ? "yes" : "no";
+	cfg_summary["replay"] = has_replay;
+	cfg_summary["snapshot"] = has_snapshot;
 
 	cfg_summary["label"] = cfg_save["label"];
 	cfg_summary["parent"] = cfg_save["parent"];
@@ -869,7 +869,7 @@ protected:
 			leader_cfg_ = side_cfg_;
 
 			if (!leader_cfg_.has_attribute("canrecruit")){
-				leader_cfg_["canrecruit"] = "yes";
+				leader_cfg_["canrecruit"] = true;
 			}
 			if (!leader_cfg_.has_attribute("placement")){
 				leader_cfg_["placement"] = "map,leader";

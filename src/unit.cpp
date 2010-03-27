@@ -694,7 +694,7 @@ void unit::generate_name(rand_rng::simple_rng* rng)
 	if (!name_.empty() || !utils::string_bool(cfg_["generate_name"], true)) return;
 
 	name_ = race_->generate_name(gender_, rng);
-	cfg_["generate_name"] = "no";
+	cfg_["generate_name"] = false;
 }
 
 // Apply mandatory traits (e.g. undead, mechanical) to a unit and then
@@ -771,7 +771,7 @@ void unit::generate_traits(bool musthaveonly, game_state* state)
 
 	// Once random traits are added, don't do it again.
 	// Such as when restoring a saved character.
-	cfg_["random_traits"] = "no";
+	cfg_["random_traits"] = false;
 }
 
 std::vector<std::string> unit::get_traits_list() const
@@ -1575,7 +1575,7 @@ void unit::write(config& cfg) const
 
 	cfg["role"] = role_;
 	cfg["ai_special"] = ai_special_;
-	cfg["flying"] = flying_ ? "yes" : "no";
+	cfg["flying"] = flying_;
 
 	config status_flags;
 	std::map<std::string,std::string> all_states = get_states();
@@ -1595,7 +1595,7 @@ void unit::write(config& cfg) const
 	cfg["underlying_id"] = lexical_cast<std::string>(underlying_id_);
 
 	if(can_recruit())
-		cfg["canrecruit"] = "yes";
+		cfg["canrecruit"] = true;
 
 	cfg["facing"] = map_location::write_direction(facing_);
 
@@ -1615,7 +1615,7 @@ void unit::write(config& cfg) const
 	cfg["moves"] = lexical_cast_default<std::string>(movement_);
 	cfg["max_moves"] = lexical_cast_default<std::string>(max_movement_);
 
-	cfg["resting"] = resting_ ? "yes" : "no";
+	cfg["resting"] = resting_;
 
 	cfg["advances_to"] = utils::join(advances_to_);
 
@@ -1638,12 +1638,12 @@ void unit::write(config& cfg) const
 			cfg["alignment"] = "neutral";
 	}
 	cfg["flag_rgb"] = flag_rgb_;
-	cfg["unrenamable"] = unrenamable_ ? "yes" : "no";
+	cfg["unrenamable"] = unrenamable_;
 	cfg["alpha"] = lexical_cast_default<std::string>(alpha_);
 
 	cfg["attacks_left"] = lexical_cast_default<std::string>(attacks_left_);
 	cfg["max_attacks"] = lexical_cast_default<std::string>(max_attacks_);
-	cfg["zoc"] = emit_zoc_ ? "yes" : "no";
+	cfg["zoc"] = emit_zoc_;
 	cfg.clear_children("attack");
 	for(std::vector<attack_type>::const_iterator i = attacks_.begin(); i != attacks_.end(); ++i) {
 		cfg.add_child("attack",i->get_cfg());

@@ -32,6 +32,12 @@
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 
+config::proxy_string &config::proxy_string::operator=(bool b)
+{
+	real_str_ = b ? "yes" : "no";
+	return *this;
+}
+
 config config::invalid;
 
 const char* config::diff_track_attribute = "__diff_track";

@@ -685,7 +685,7 @@ config connect::side::get_config() const
 			break;
 		case CNTR_EMPTY:
 			description = N_("(Empty slot)");
-			res["no_leader"] = "yes";
+			res["no_leader"] = true;
 			break;
 		case CNTR_RESERVED:
 			{
@@ -711,7 +711,7 @@ config connect::side::get_config() const
 	}
 
 	res["name"] = res["user_description"];
-	res["allow_changes"] = (enabled_ && allow_changes_) ? "yes" : "no";
+	res["allow_changes"] = enabled_ && allow_changes_;
 
 	if(enabled_) {
 		if (leader_.empty()) {
@@ -732,21 +732,21 @@ config connect::side::get_config() const
 		// res["team"] = lexical_cast<std::string>(team_);
 		res["team_name"] = parent_->team_names_[team_];
 		res["user_team_name"] = parent_->user_team_names_[team_];
-		res["allow_player"] = allow_player_ ? "yes" : "no";
+		res["allow_player"] = allow_player_;
 		res["colour"] = lexical_cast<std::string>(colour_ + 1);
 		res["gold"] = lexical_cast<std::string>(gold_);
 		res["income"] = lexical_cast<std::string>(income_);
 
 		if(!parent_->params_.use_map_settings || res["fog"].empty() || (res["fog"] != "yes" && res["fog"] != "no")) {
-			res["fog"] = parent_->params_.fog_game ? "yes" : "no";
+			res["fog"] = parent_->params_.fog_game;
 		}
 
 		if(!parent_->params_.use_map_settings || res["shroud"].empty() || (res["shroud"] != "yes" && res["shroud"] != "no")) {
-			res["shroud"] = parent_->params_.shroud_game ? "yes" : "no";
+			res["shroud"] = parent_->params_.shroud_game;
 		}
 
-		res["share_maps"] = parent_->params_.share_maps ? "yes" : "no";
-		res["share_view"] =  parent_->params_.share_view ? "yes" : "no";
+		res["share_maps"] = parent_->params_.share_maps;
+		res["share_view"] =  parent_->params_.share_view;
 		if(!parent_->params_.use_map_settings || res["village_gold"].empty())
 			res["village_gold"] = lexical_cast<std::string>(parent_->params_.village_gold);
 	}
@@ -1237,7 +1237,7 @@ void connect::process_network_data(const config& data, const network::connection
 		const std::string name = data["name"];
 		if(name.empty()) {
 			config response;
-			response["failed"] = "yes";
+			response["failed"] = true;
 			network::send_data(response, sock, true);
 			ERR_CF << "ERROR: No username provided with the side.\n";
 			return;
@@ -1251,7 +1251,7 @@ void connect::process_network_data(const config& data, const network::connection
 			 */
 			if(find_player_side(name) != -1) {
 				config response;
-				response["failed"] = "yes";
+				response["failed"] = true;
 				response["message"] = "The nick '" + name + "' is already in use.";
 				network::send_data(response, sock, true);
 				return;
@@ -1279,7 +1279,7 @@ void connect::process_network_data(const config& data, const network::connection
 
 				if(itor == sides_.end()) {
 					config response;
-					response["failed"] = "yes";
+					response["failed"] = true;
 					network::send_data(response, sock, true);
 					config kick;
 					kick["username"] = data["name"];
@@ -1313,7 +1313,7 @@ void connect::process_network_data(const config& data, const network::connection
 		} else {
 			ERR_CF << "tried to take illegal side: " << side_taken << '\n';
 			config response;
-			response["failed"] = "yes";
+			response["failed"] = true;
 			network::send_data(response, sock, true);
 		}
 	}
@@ -1589,12 +1589,12 @@ void connect::load_game()
 		{
 			if (!tod_manager::is_start_ToD(level_["random_start_time"]))
 			{
-				level_["random_start_time"] = "yes";
+				level_["random_start_time"] = true;
 			}
 		}
 		else
 		{
-			level_["random_start_time"] = "no";
+			level_["random_start_time"] = false;
 		}
 
 		level_["experience_modifier"] = lexical_cast<std::string>(params_.xp_modifier);
@@ -1638,7 +1638,7 @@ void connect::load_game()
 	// This will force connecting clients to be using the same version number as us.
 	level_["version"] = game_config::version;
 
-	level_["observer"] = params_.allow_observers ? "yes" : "no";
+	level_["observer"] = params_.allow_observers;
 
 	if(level_["objectives"].empty()) {
 		level_["objectives"] = "<big>" + t_string(N_("Victory:"), "wesnoth") +

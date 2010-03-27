@@ -978,7 +978,7 @@ void preferences_dialog::process_event()
 			if(adv != NULL) {
 				const config& pref = *adv;
 				preferences::set(pref["field"],
-						advanced_button_.checked() ? "yes" : "no");
+						advanced_button_.checked());
 				set_advanced_menu();
 			}
 		}

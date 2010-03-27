@@ -343,7 +343,7 @@ void save_preview_pane::draw_contents()
 			savegame::manager::load_summary((*info_)[index_].name, summary, &dummy);
 			*summaries_[index_] = summary;
 		} catch(game::load_game_failed&) {
-			summary["corrupt"] = "yes";
+			summary["corrupt"] = true;
 		}
 	}
 

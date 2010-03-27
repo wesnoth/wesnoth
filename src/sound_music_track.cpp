@@ -128,7 +128,7 @@ void music_track::write(config &parent_node, bool append)
 	m["ms_before"] = lexical_cast<std::string>(ms_before_);
 	m["ms_after"] = lexical_cast<std::string>(ms_after_);
 	if(append) {
-		m["append"] = "yes";
+		m["append"] = true;
 	}
 }
 
