@@ -252,11 +252,7 @@ void parser::parse_variable()
 	if(variables.back().empty())
 		error(_("Empty variable name"));
 
-	{
-		for(std::vector<std::string>::iterator curvar = variables.begin(); curvar != variables.end(); ++curvar) {
-			cfg[*curvar] = "";
-		}
-	}
+	t_string_base buffer;
 
 	std::vector<std::string>::const_iterator curvar = variables.begin();
 
@@ -268,11 +264,12 @@ void parser::parse_variable()
 		switch (tok_->current_token().type) {
 		case ',':
 			if ((curvar+1) != variables.end()) {
-				curvar++;
-				cfg[*curvar] = "";
+				cfg[*curvar] = t_string(buffer);
+				buffer = t_string_base();
+				++curvar;
 				continue;
 			} else {
-				cfg[*curvar] += ",";
+				buffer += ",";
 			}
 			break;
 		case '_':
@@ -282,42 +279,43 @@ void parser::parse_variable()
 				error(_("Unterminated quoted string"));
 				break;
 			case token::QSTRING:
-				cfg[*curvar] += t_string(tok_->current_token().value, tok_->textdomain());
+				buffer += t_string_base(tok_->current_token().value, tok_->textdomain());
 				break;
 			default:
-				cfg[*curvar] += "_";
-				cfg[*curvar] += tok_->current_token().value;
+				buffer += "_";
+				buffer += tok_->current_token().value;
 				break;
 			case token::END:
 			case token::LF:
-				return;
+				goto finish;
 			}
 			break;
 		case '+':
-			// Ignore this
-			break;
+			ignore_next_newlines = true;
+			continue;
 		default:
-			cfg[*curvar] += tok_->current_token().leading_spaces + tok_->current_token().value;
+			buffer += tok_->current_token().leading_spaces + tok_->current_token().value;
 			break;
 		case token::QSTRING:
-			cfg[*curvar] += tok_->current_token().value;
+			buffer += tok_->current_token().value;
 			break;
 		case token::UNTERMINATED_QSTRING:
 			error(_("Unterminated quoted string"));
 			break;
 		case token::LF:
-			if(!ignore_next_newlines)
-				return;
-			break;
+			if (ignore_next_newlines) continue;
+			//nobreak
 		case token::END:
-			return;
+			goto finish;
 		}
 
-		if (tok_->current_token().type == '+') {
-			ignore_next_newlines = true;
-		} else if (tok_->current_token().type != token::LF) {
-			ignore_next_newlines = false;
-		}
+		ignore_next_newlines = false;
+	}
+
+	finish:
+	cfg[*curvar] = t_string(buffer);
+	while (++curvar != variables.end()) {
+		cfg[*curvar] = "";
 	}
 }
 
