@@ -927,9 +927,9 @@ void scenariostart_savegame::before_save()
 	// if there is no scenario information in the starting pos, add the (persistent) sides from the snapshot
 	// else do nothing, as persistence information was already added at the end of the previous scenario
 	if (gamestate().starting_pos["id"].empty()) {
-		foreach(const config* snapshot_side, gamestate().snapshot.get_children("side")) {
+		foreach(const config &snapshot_side, gamestate().snapshot.child_range("side")) {
 			//add all side tags (assuming they only contain carryover information)
-			gamestate().starting_pos.add_child("side", *snapshot_side);
+			gamestate().starting_pos.add_child("side", snapshot_side);
 		}
 	}
 }
