@@ -29,7 +29,7 @@ update-pot: $(POT)
 
 update-po: $(PO)
 
-update-html: $(HTML_STAMP) $(PAGE).en.html
+update-html: $(HTML_STAMP) #$(PAGE).en.html
 
 update-list: $(LIST_STAMP)
 
@@ -45,8 +45,8 @@ $(PO): $(TEMPLATE)
 	po4a-updatepo $(PO4A_OPTIONS) -m $< -p $@
 	@touch $@
 
-$(PAGE).en.html:
-	cp $(TEMPLATE) $@
+#$(PAGE).en.html:
+#	cp $(TEMPLATE) $@
 
 $(PAGE_STAMP).%.html: $(TEMPLATE) $(PODIR)/%.po
 	@html=`basename $@` && \
