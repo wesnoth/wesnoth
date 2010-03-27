@@ -613,7 +613,7 @@ void replay::undo()
 
 const config::child_list& replay::commands() const
 {
-	return cfg_.get_children("command");
+	return cfg_.get_children_deprecated("command");
 }
 
 int replay::ncommands()

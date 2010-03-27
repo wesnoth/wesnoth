@@ -736,5 +736,5 @@ config& variable_info::as_container() {
 
 variable_info::array_range variable_info::as_array() {
 	assert(is_valid);
-	return vars->child_range_bak(key);
+	return vars->child_range_deprecated(key);
 }

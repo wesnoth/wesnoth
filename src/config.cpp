@@ -151,7 +151,7 @@ void config::merge_children_by_attribute(const std::string& key, const std::stri
 	}
 }
 
-config::child_itors_bak config::child_range_bak(const std::string& key)
+config::child_itors_bak config::child_range_deprecated(const std::string& key)
 {
 	check_valid();
 
@@ -197,7 +197,7 @@ size_t config::child_count(const std::string& key) const
 	return 0;
 }
 
-const config::child_list& config::get_children(const std::string& key) const
+const config::child_list& config::get_children_deprecated(const std::string& key) const
 {
 	check_valid();
 

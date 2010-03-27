@@ -214,12 +214,12 @@ public:
 	typedef std::pair<const_attribute_iterator,const_attribute_iterator> const_attr_itors;
 
 	typedef std::pair<child_list::iterator, child_list::iterator> child_itors_bak;
-	child_itors_bak child_range_bak(const std::string &);
+	child_itors_bak child_range_deprecated(const std::string &);
 	child_itors child_range(const std::string& key);
 	const_child_itors child_range(const std::string& key) const;
 	size_t child_count(const std::string& key) const;
 
-	const child_list& get_children(const std::string& key) const;
+	const child_list& get_children_deprecated(const std::string& key) const;
 
 	/**
 	 * Copies the first child with the given @a key, or an empty config if there is none.
