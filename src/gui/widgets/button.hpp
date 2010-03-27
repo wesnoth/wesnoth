@@ -30,10 +30,6 @@ class tbutton
 public:
 	tbutton();
 
-	/** @deprecated use (dis)connect_signal_mouse_left_click instead. */
-	void set_callback_mouse_left_click(void (*callback) (twidget*))
-		{ callback_mouse_left_click_ = callback; }
-
 	/**
 	 * Connects a signal handler for a left mouse button click.
 	 *
@@ -107,12 +103,6 @@ private:
 	 * the window and the window closes itself.
 	 */
 	int retval_;
-
-	/**
-	 * This callback is used when the control gets a left click. Except when the
-	 * button has a retval_, then retval_ is set.
-	 */
-	void (*callback_mouse_left_click_) (twidget*);
 
 	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const;

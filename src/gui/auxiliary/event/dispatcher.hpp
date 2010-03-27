@@ -253,7 +253,7 @@ public:
 	 * This allows simply adding a member of a dialog to be used as a callback
 	 * for widget without a lot of magic. Note most widgets probaly will get a
 	 * callback like
-	 * set_callback_mouse_left_click(const tsignal_function& callback)
+	 * connect_signal_mouse_left_click(const tsignal_function& callback)
 	 * which hides this function for the avarage use.
 	 *
 	 * @tparam E                     The event the callback needs to react to.

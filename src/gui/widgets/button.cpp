@@ -33,7 +33,6 @@ tbutton::tbutton()
 	, tclickable_()
 	, state_(ENABLED)
 	, retval_(0)
-	, callback_mouse_left_click_(0)
 {
 	connect_signal<event::MOUSE_ENTER>(boost::bind(
 				&tbutton::signal_handler_mouse_enter, this, _2, _3));
@@ -131,9 +130,6 @@ void tbutton::signal_handler_left_button_click(
 		}
 	}
 
-	if(callback_mouse_left_click_) {
-		callback_mouse_left_click_(this);
-	}
 	handled = true;
 }
 
