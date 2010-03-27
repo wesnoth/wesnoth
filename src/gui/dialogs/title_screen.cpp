@@ -27,6 +27,8 @@
 #include "gui/widgets/window.hpp"
 #include "titlescreen.hpp"
 
+#include <boost/bind.hpp>
+
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 
@@ -35,13 +37,10 @@ namespace gui2 {
 namespace {
 
 template<class D>
-void show_dialog(twidget* caller)
+void show_dialog(CVideo& video)
 {
-	ttitle_screen *dialog = dynamic_cast<ttitle_screen*>(caller->dialog());
-	assert(dialog);
-
 	D dlg;
-	dlg.show(*(dialog->video()));
+	dlg.show(video);
 }
 
 } // namespace
@@ -89,21 +88,33 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 
 	/**** Set the buttons ****/
 	find_widget<tbutton>(&window, "addons", false).
-			set_callback_mouse_left_click(show_dialog<gui2::taddon_connect>);
+			connect_signal_mouse_left_click(boost::bind(
+				  show_dialog<gui2::taddon_connect>
+				, boost::ref(video)));
 
 	// Note changing the language doesn't upate the title screen...
 	find_widget<tbutton>(&window, "language", false).
-			set_callback_mouse_left_click(
-				show_dialog<gui2::tlanguage_selection>);
+			connect_signal_mouse_left_click(boost::bind(
+				  show_dialog<gui2::tlanguage_selection>
+				, boost::ref(video)));
 
 	/**** Set the tip of the day ****/
 	update_tip(window, true);
 
 	find_widget<tbutton>(&window, "next_tip", false).
-			set_callback_mouse_left_click(next_tip);
+			connect_signal_mouse_left_click(boost::bind(
+				  &ttitle_screen::update_tip
+				, this
+				, boost::ref(window)
+				, true));
 
 	find_widget<tbutton>(&window, "previous_tip", false).
-			set_callback_mouse_left_click(previous_tip);
+			connect_signal_mouse_left_click(boost::bind(
+				  &ttitle_screen::update_tip
+				, this
+				, boost::ref(window)
+				, false));
+
 
 	/***** Select a random game_title *****/
 	std::vector<std::string> game_title_list =
@@ -163,3 +174,4 @@ void ttitle_screen::previous_tip(twidget* caller)
 }
 
 } // namespace gui2
+
