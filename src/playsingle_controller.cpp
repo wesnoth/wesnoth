@@ -862,10 +862,10 @@ void playsingle_controller::store_recalls() {
 		}
 	}
 	//add any players from starting_pos that do not have a team in the current scenario
-	foreach (const config* player_cfg, gamestate_.starting_pos.get_children("player")) {
-		if (side_ids.count((*player_cfg)["save_id"]) == 0) {
-			LOG_NG << "stored inactive side in snapshot:\n" << (*player_cfg)["save_id"] << std::endl;
-			gamestate_.snapshot.add_child("side", (*player_cfg));
+	foreach (const config &player_cfg, gamestate_.starting_pos.child_range("player")) {
+		if (side_ids.count(player_cfg["save_id"]) == 0) {
+			LOG_NG << "stored inactive side in snapshot:\n" << player_cfg["save_id"] << std::endl;
+			gamestate_.snapshot.add_child("side", player_cfg);
 		}
 	}
 }
