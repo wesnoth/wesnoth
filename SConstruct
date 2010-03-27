@@ -47,7 +47,7 @@ def OptionalPath(key, val, env):
 
 opts.AddVariables(
     ListVariable('default_targets', 'Targets that will be built if no target is specified in command line.',
-        "wesnoth,wesnothd,test", Split("wesnoth wesnothd campaignd cutter exploder test")),
+        "wesnoth,wesnothd", Split("wesnoth wesnothd campaignd cutter exploder test")),
     EnumVariable('build', 'Build variant: debug, release profile or base (no subdirectory)', "release", ["release", "debug", "glibcxx_debug", "profile","base"]),
     PathVariable('build_dir', 'Build all intermediate files(objects, test programs, etc) under this dir', "build", PathVariable.PathAccept),
     ('extra_flags_config', 'Extra compiler and linker flags to use for configuration and all builds', ""),
