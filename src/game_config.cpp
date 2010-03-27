@@ -220,49 +220,47 @@ namespace game_config
 		}
 
 		server_list.clear();
-		const std::vector<config *> &servers = v.get_children("server");
-		std::vector<config *>::const_iterator server;
-		for(server = servers.begin(); server != servers.end(); ++server) {
+		foreach (const config &server, v.child_range("server"))
+		{
 			server_info sinf;
-			sinf.name = (**server)["name"];
-			sinf.address = (**server)["address"];
+			sinf.name = server["name"];
+			sinf.address = server["address"];
 			server_list.push_back(sinf);
 		}
 	}
 
-	void add_color_info(const config& v){
-		const config::child_list& team_colors = v.get_children("color_range");
-		for(config::child_list::const_iterator teamC = team_colors.begin(); teamC != team_colors.end(); ++teamC) {
-			if(!(**teamC)["id"].empty() && !(**teamC)["rgb"].empty()){
-				std::string id = (**teamC)["id"];
-				std::vector<Uint32> temp = string2rgb((**teamC)["rgb"]);
-				team_rgb_range.insert(std::make_pair(id,color_range(temp)));
-				team_rgb_name[id] = (**teamC)["name"];
-				//generate palette of same name;
-				std::vector<Uint32> tp = palette(team_rgb_range[id]);
-				if(!tp.empty()){
-					team_rgb_colors.insert(std::make_pair(id,tp));
-					//if this is being used, output log of palette for artists use.
-					DBG_NG << "color palette creation:\n";
-					std::stringstream str;
-					str << id <<" = ";
-					for(std::vector<Uint32>::const_iterator r=tp.begin(); r!=tp.end(); ++r){
-						int red = ((*r) & 0x00FF0000)>>16;
-						int green = ((*r) & 0x0000FF00)>>8;
-						int blue = ((*r) & 0x000000FF);
-						if(r!=tp.begin()) {
-							str<<",";
-						}
-						str << red << "," << green << "," << blue;
-					}
-					DBG_NG << str.str() <<"\n";
-				}
+	void add_color_info(const config &v)
+	{
+		foreach (const config &teamC, v.child_range("color_range"))
+		{
+			if (!teamC.has_attribute("id") || !teamC.has_attribute("rgb")) continue;
+			std::string id = teamC["id"];
+			std::vector<Uint32> temp = string2rgb(teamC["rgb"]);
+			team_rgb_range.insert(std::make_pair(id,color_range(temp)));
+			team_rgb_name[id] = teamC["name"];
+			//generate palette of same name;
+			std::vector<Uint32> tp = palette(team_rgb_range[id]);
+			if (tp.empty()) continue;
+			team_rgb_colors.insert(std::make_pair(id,tp));
+			//if this is being used, output log of palette for artists use.
+			DBG_NG << "color palette creation:\n";
+			std::ostringstream str;
+			str << id << " = ";
+			for (std::vector<Uint32>::const_iterator r = tp.begin(),
+			     r_end = tp.end(), r_beg = r; r != r_end; ++r)
+			{
+				int red = ((*r) & 0x00FF0000) >> 16;
+				int green = ((*r) & 0x0000FF00) >> 8;
+				int blue = ((*r) & 0x000000FF);
+				if (r != r_beg) str << ',';
+				str << red << ',' << green << ',' << blue;
 			}
+			DBG_NG << str.str() << '\n';
 		}
 
-		const config::child_list& colors = v.get_children("color_palette");
-		for(config::child_list::const_iterator cp = colors.begin(); cp != colors.end(); ++cp) {
-			foreach (const config::attribute &rgb, (*cp)->attribute_range())
+		foreach (const config &cp, v.child_range("color_palette"))
+		{
+			foreach (const config::attribute &rgb, cp.attribute_range())
 			{
 				try {
 					team_rgb_colors.insert(std::make_pair(rgb.first, string2rgb(rgb.second)));
