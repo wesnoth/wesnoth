@@ -186,63 +186,63 @@ void write_players(game_state& gamestate, config& cfg, const bool use_snapshot, 
 		tags.push_back("side");
 		tags.push_back("player"); //merge [player] tags for backwards compatibility of saves
 
-		foreach (const std::string& side_tag, tags) {
-			foreach (config* carryover_side, source->get_children(side_tag)) {
+		foreach (const std::string& side_tag, tags)
+		{
+			foreach (config &carryover_side, source->child_range(side_tag))
+			{
 				config *scenario_side = NULL;
 
 				//TODO: use the player_id instead of the save_id for that
-				if (config& c = cfg.find_child("side", "save_id", (*carryover_side)["save_id"])) {
+				if (config& c = cfg.find_child("side", "save_id", carryover_side["save_id"])) {
 					scenario_side = &c;
-				} else if (config& c = cfg.find_child("side", "id", (*carryover_side)["save_id"])) {
+				} else if (config& c = cfg.find_child("side", "id", carryover_side["save_id"])) {
 					scenario_side = &c;
 				}
 
-				if (scenario_side != NULL) {
-					//we have a matching side in the current scenario
-
-					//sort carryover gold
-					std::string gold = (*scenario_side)["gold"];
-					if(gold.empty())
-						gold = "100";
-					int ngold = lexical_cast_default<int>(gold);
-					int player_gold = lexical_cast_default<int>((*carryover_side)["gold"]);
-					if(utils::string_bool((*carryover_side)["gold_add"])) {
-						ngold +=  player_gold;
-					} else if(player_gold >= ngold) {
-						ngold = player_gold;
-					}
-					(*carryover_side)["gold"] = str_cast<int>(ngold);
-					if ( !(*scenario_side)["gold_add"].empty() ) {
-						(*carryover_side)["gold_add"] = (*scenario_side)["gold_add"];
-					}
-					//merge player information into the scenario cfg
-					(*scenario_side)["save_id"] = (*carryover_side)["save_id"];
-					(*scenario_side)["gold"] = str_cast<int>(ngold);
-					(*scenario_side)["gold_add"] = (*carryover_side)["gold_add"];
-					if (!(*carryover_side)["previous_recruits"].empty()) {
-						(*scenario_side)["previous_recruits"]	= (*carryover_side)["previous_recruits"];
-					} else {
-						(*scenario_side)["previous_recruits"]	= (*carryover_side)["can_recruit"];
-					}
-					(*scenario_side)["name"] = (*carryover_side)["name"];
-					(*scenario_side)["current_player"] = (*carryover_side)["current_player"];
-					(*scenario_side)["colour"] = (*carryover_side)["colour"];
-					//add recallable units
-					foreach (const config* u, carryover_side->get_children("unit")) {
-						scenario_side->add_child("unit", *u);
-					}
-
-				} else {
+				if (scenario_side == NULL) {
 					//no matching side in the current scenario, we add the persistent information in a [player] tag
-					cfg.add_child("player", (*carryover_side));
+					cfg.add_child("player", carryover_side);
+					continue;
+				}
+
+				//we have a matching side in the current scenario
+
+				//sort carryover gold
+				std::string gold = (*scenario_side)["gold"];
+				if (gold.empty()) gold = "100";
+				int ngold = lexical_cast_default<int>(gold);
+				int player_gold = lexical_cast_default<int>(carryover_side["gold"]);
+				if (utils::string_bool(carryover_side["gold_add"])) {
+					ngold += player_gold;
+				} else if (player_gold >= ngold) {
+					ngold = player_gold;
+				}
+				carryover_side["gold"] = str_cast(ngold);
+				if (!(*scenario_side)["gold_add"].empty()) {
+					carryover_side["gold_add"] = (*scenario_side)["gold_add"];
+				}
+				//merge player information into the scenario cfg
+				(*scenario_side)["save_id"] = carryover_side["save_id"];
+				(*scenario_side)["gold"] = str_cast(ngold);
+				(*scenario_side)["gold_add"] = carryover_side["gold_add"];
+				if (!carryover_side["previous_recruits"].empty()) {
+					(*scenario_side)["previous_recruits"]	= carryover_side["previous_recruits"];
+				} else {
+					(*scenario_side)["previous_recruits"]	= carryover_side["can_recruit"];
+				}
+				(*scenario_side)["name"] = carryover_side["name"];
+				(*scenario_side)["current_player"] = carryover_side["current_player"];
+				(*scenario_side)["colour"] = carryover_side["colour"];
+				//add recallable units
+				foreach (const config &u, carryover_side.child_range("unit")) {
+					scenario_side->add_child("unit", u);
 				}
 			}
-	}
-
+		}
 	} else {
-		foreach(const config* snapshot_side, source->get_children("side")) {
+		foreach(const config &snapshot_side, source->child_range("side")) {
 			//take all side tags and add them as players (assuming they only contain carryover information)
-			cfg.add_child("player", *snapshot_side);
+			cfg.add_child("player", snapshot_side);
 		}
 	}
 }
@@ -896,9 +896,8 @@ protected:
 
 		} else {
 			//units in [side]
-			const config::child_list& starting_units = side_cfg_.get_children("unit");
-			for(config::child_list::const_iterator su = starting_units.begin(); su != starting_units.end(); ++su) {
-				handle_unit(**su,"side_cfg");
+			foreach (const config &su, side_cfg_.child_range("unit")) {
+				handle_unit(su, "side_cfg");
 			}
 		}
 	}
