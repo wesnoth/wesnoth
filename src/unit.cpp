@@ -44,6 +44,7 @@ static lg::log_domain log_unit("unit");
 #define DBG_UT LOG_STREAM(debug, log_unit)
 #define LOG_UT LOG_STREAM(info, log_unit)
 #define WRN_UT LOG_STREAM(warn, log_unit)
+#define ERR_UT LOG_STREAM(err, log_unit)
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -435,8 +436,10 @@ unit::unit(unit_map* unitmap, const config& cfg,
 	{
 		foreach (const config::attribute &st, status_flags.attribute_range()) {
 			if (st.first == "healable") {
+				ERR_UT << "Usage of 'healable' is deprecated, use 'unhealable' instead, "
+					"support will be removed in 1.9.2.\n";
 				if (!utils::string_bool(st.second, true))
-					set_state("not_healable", true);
+					set_state("unhealable", true);
 			} else if (utils::string_bool(st.second)) {
 				set_state(st.first, true);
 			}
@@ -1099,8 +1102,7 @@ const std::map<std::string,std::string> unit::get_states() const
 {
 	std::map<std::string, std::string> all_states;
 	foreach (std::string const &s, states_) {
-		if (s == "not_healable") all_states["healable"] = "no";
-		else all_states[s] = "yes";
+		all_states[s] = "yes";
 	}
 	for (std::map<std::string, state_t>::const_iterator i = known_boolean_state_names_.begin(),
 	     i_end = known_boolean_state_names_.end(); i != i_end; ++i)
@@ -1150,6 +1152,7 @@ std::map<std::string, unit::state_t> unit::get_known_boolean_state_names()
 	known_boolean_state_names_map.insert(std::make_pair("petrified",STATE_PETRIFIED));
 	known_boolean_state_names_map.insert(std::make_pair("hidden",STATE_HIDDEN));
 	known_boolean_state_names_map.insert(std::make_pair("not_moved",STATE_NOT_MOVED));
+	known_boolean_state_names_map.insert(std::make_pair("unhealable",STATE_UNHEALABLE));
 	//not sure if "guardian" is a yes/no state.
 	//known_boolean_state_names_map.insert(std::make_pair("guardian",STATE_GUARDIAN));
 	return known_boolean_state_names_map;
