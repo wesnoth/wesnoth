@@ -158,61 +158,60 @@ namespace {
 #endif
 
 static void expand_partialresolution(config& dst_cfg, const config& top_cfg)
+{
+	std::vector<config> res_cfgs_;
+	// resolve all the partialresolutions
+	foreach (const config &part, top_cfg.child_range("partialresolution"))
 	{
-		std::vector<config> res_cfgs_;
-		// resolve all the partialresolutions
-		const config::child_list& parts_list = top_cfg.get_children("partialresolution");
-		for(config::child_list::const_iterator i = parts_list.begin(); i != parts_list.end(); ++i) {
-			// follow the inheritance hierarchy and push all the nodes on the stack
-			std::vector<const config*> parent_stack(1, (*i));
-			const config* parent;
-			std::string parent_id = (**i)["inherits"];
-			while (!*(parent = &top_cfg.find_child("resolution", "id", parent_id)))
+		// follow the inheritance hierarchy and push all the nodes on the stack
+		std::vector<const config*> parent_stack(1, &part);
+		const config *parent;
+		std::string parent_id = part["inherits"];
+		while (!*(parent = &top_cfg.find_child("resolution", "id", parent_id)))
+		{
+			parent = &top_cfg.find_child("partialresolution", "id", parent_id);
+			if (!*parent)
+				throw config::error("[partialresolution] refers to non-existant [resolution] " + parent_id);
+			parent_stack.push_back(parent);
+			parent_id = (*parent)["inherits"];
+		}
+
+		// Add the parent resolution and apply all the modifications of its children
+		res_cfgs_.push_back(*parent);
+		while (!parent_stack.empty()) {
+			//override attributes
+			res_cfgs_.back().merge_attributes(*parent_stack.back());
+			foreach (const config &rm, parent_stack.back()->child_range("remove")) {
+				find_ref(rm["id"], res_cfgs_.back(), true);
+			}
+
+			foreach (const config &chg, parent_stack.back()->child_range("change"))
 			{
-				parent = &top_cfg.find_child("partialresolution", "id", parent_id);
-				if (!*parent)
-					throw config::error("[partialresolution] refers to non-existant [resolution] " + parent_id);
-				parent_stack.push_back(parent);
-				parent_id = (*parent)["inherits"];
+				config &target = find_ref(chg["id"], res_cfgs_.back());
+				target.merge_attributes(chg);
 			}
 
-			// Add the parent resolution and apply all the modifications of its children
-			res_cfgs_.push_back(*parent);
-			while(!parent_stack.empty()) {
-				//override attributes
-				res_cfgs_.back().merge_attributes(*parent_stack.back());
-
-				foreach (const config &rm, parent_stack.back()->child_range("remove")) {
-					find_ref(rm["id"], res_cfgs_.back(), true);
+			// cannot add [status] sub-elements, but who cares
+			if (const config &c = parent_stack.back()->child("add"))
+			{
+				foreach (const config::any_child &j, c.all_children_range()) {
+					res_cfgs_.back().add_child(j.key, j.cfg);
 				}
-
-				foreach (const config &chg, parent_stack.back()->child_range("change"))
-				{
-					config &target = find_ref(chg["id"], res_cfgs_.back());
-					target.merge_attributes(chg);
-				}
-
-				// cannot add [status] sub-elements, but who cares
-				if (const config &c = parent_stack.back()->child("add"))
-				{
-					foreach (const config::any_child &j, c.all_children_range()) {
-						res_cfgs_.back().add_child(j.key, j.cfg);
-					}
-				}
-
-				parent_stack.pop_back();
 			}
+
+			parent_stack.pop_back();
 		}
-		// Add all the resolutions
-		foreach (const config &res, top_cfg.child_range("resolution")) {
-			dst_cfg.add_child("resolution", res);
-		}
-		// Add all the resolved resolutions
-		for(std::vector<config>::const_iterator k = res_cfgs_.begin(); k != res_cfgs_.end(); ++k) {
-			dst_cfg.add_child("resolution", (*k));
-		}
-		return;
 	}
+	// Add all the resolutions
+	foreach (const config &res, top_cfg.child_range("resolution")) {
+		dst_cfg.add_child("resolution", res);
+	}
+	// Add all the resolved resolutions
+	for(std::vector<config>::const_iterator k = res_cfgs_.begin(); k != res_cfgs_.end(); ++k) {
+		dst_cfg.add_child("resolution", (*k));
+	}
+	return;
+}
 
 static void do_resolve_rects(const config& cfg, config& resolved_config, config* resol_cfg = NULL) {
 
@@ -546,30 +545,29 @@ bool theme::set_resolution(const SDL_Rect& screen)
 {
 	bool result = false;
 
-	const config::child_list& resolutions = cfg_.get_children("resolution");
 	int current_rating = 1000000;
-	config::child_list::const_iterator i;
-	config::child_list::const_iterator current = resolutions.end();
-	for(i = resolutions.begin(); i != resolutions.end(); ++i) {
-		const int width = atoi((**i)["width"].c_str());
-		const int height = atoi((**i)["height"].c_str());
+	const config *current = NULL;
+	foreach (const config &i, cfg_.child_range("resolution"))
+	{
+		const int width = atoi(i["width"].c_str());
+		const int height = atoi(i["height"].c_str());
 		LOG_DP << "comparing resolution " << screen.w << "," << screen.h << " to " << width << "," << height << "\n";
 		if(screen.w >= width && screen.h >= height) {
 			LOG_DP << "loading theme: " << width << "," << height << "\n";
-			current = i;
+			current = &i;
 			result = true;
 			break;
 		}
 
 		const int rating = width*height;
 		if(rating < current_rating) {
-			current = i;
+			current = &i;
 			current_rating = rating;
 		}
 	}
 
-	if(current == resolutions.end()) {
-		if(!resolutions.empty()) {
+	if (!current) {
+		if (cfg_.child_count("resolution")) {
 			ERR_DP << "No valid resolution found\n";
 		}
 		return false;
@@ -587,8 +585,7 @@ bool theme::set_resolution(const SDL_Rect& screen)
 	status_.clear();
 	menus_.clear();
 
-	const config& cfg = **current;
-	add_object(cfg);
+	add_object(*current);
 
 	for (m = menus_.begin(); m != menus_.end(); ++m) {
 		if (title_stash.find(m->get_id()) != title_stash.end())
