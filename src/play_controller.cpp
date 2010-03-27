@@ -604,11 +604,8 @@ config play_controller::to_config() const
 	cfg.merge_with(tod_manager_.to_config());
 
 	// Write terrain_graphics data in snapshot, too
-	const config::child_list& terrains = level_.get_children("terrain_graphics");
-	for(config::child_list::const_iterator tg = terrains.begin();
-			tg != terrains.end(); ++tg) {
-
-		cfg.add_child("terrain_graphics", **tg);
+	foreach (const config &tg, level_.child_range("terrain_graphics")) {
+		cfg.add_child("terrain_graphics", tg);
 	}
 
 	//write out the current state of the map
