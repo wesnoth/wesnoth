@@ -1248,110 +1248,21 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 	}
 
 	// Random generation works as follows:
-	// random=[comma delimited list]
+	// rand=[comma delimited list]
 	// Each element in the list will be considered a separate choice,
 	// unless it contains "..". In this case, it must be a numerical
 	// range (i.e. -1..-10, 0..100, -10..10, etc).
 	const std::string random = cfg["random"];
+	std::string rand = cfg["rand"];
 	if(random.empty() == false) {
-		/**
-		 * @todo random seems to be used quite often in mainline so need to
-		 * see what the best solution to avoid rand and random.
-		 */
-		// random is deprecated but will be available in the 1.4 branch
-		// so enable the message after forking
-		//lg::wml_error << "Usage of 'random' is deprecated use 'rand' instead, "
-		//	"support will be removed in 1.5.3.\n";
-		std::string random_value;
-		// If we're not replaying, create a random number
-		if(get_replay_source().at_end()) {
-			std::string word;
-			std::vector<std::string> words;
-			std::vector<std::pair<long,long> > ranges;
-			int num_choices = 0;
-			std::string::size_type pos = 0, pos2 = std::string::npos;
-			std::stringstream ss(std::stringstream::in|std::stringstream::out);
-			while (pos2 != random.length()) {
-				pos = pos2+1;
-				pos2 = random.find(",", pos);
-
-				if (pos2 == std::string::npos)
-					pos2 = random.length();
-
-				word = random.substr(pos, pos2-pos);
-				words.push_back(word);
-				std::string::size_type tmp = word.find("..");
-
-
-				if (tmp == std::string::npos) {
-					// Treat this element as a string
-					ranges.push_back(std::pair<int, int>(0,0));
-					num_choices += 1;
-				}
-				else {
-					// Treat as a numerical range
-					const std::string first = word.substr(0, tmp);
-					const std::string second = word.substr(tmp+2,
-							random.length());
-
-					long low, high;
-					ss << first + " " + second;
-					ss >> low;
-					ss >> high;
-					ss.clear();
-
-					if (low > high) {
-						std::swap(low, high);
-					}
-					ranges.push_back(std::pair<long, long>(low,high));
-					num_choices += (high - low) + 1;
-
-					// Make 0..0 ranges work
-					if (high == 0 && low == 0) {
-						words.pop_back();
-						words.push_back("0");
-					}
-				}
-			}
-
-			int choice = get_random_nocheck() % num_choices;
-			int tmp = 0;
-			for(size_t i = 0; i < ranges.size(); ++i) {
-				tmp += (ranges[i].second - ranges[i].first) + 1;
-				if (tmp > choice) {
-					if (ranges[i].first == 0 && ranges[i].second == 0) {
-						random_value = words[i];
-					}
-					else {
-						tmp = (ranges[i].second - (tmp - choice)) + 1;
-						ss << tmp;
-						ss >> random_value;
-					}
-					break;
-				}
-			}
-			recorder.set_random_value(random_value.c_str());
+		lg::wml_error << "Usage of 'random' is deprecated use 'rand' instead, "
+			"support will be removed in 1.9.2.\n";
+		if(rand.empty()) {
+			rand = random;
 		}
-
-		// Otherwise get the random value from the replay data
-		else {
-			const int side = resources::controller->current_side();
-
-			do_replay_handle(side, "random_number");
-			const config* const action = get_replay_source().get_next_action();
-			if(action == NULL || action->get_children("random_number").empty()) {
-				replay::process_error("random_number expected but none found\n");
-				return;
-			}
-
-			const std::string& val = (*(action->get_children("random_number").front()))["value"];
-			random_value = val;
-		}
-		var = random_value;
 	}
 
 	// The new random generator, the logic is a copy paste of the old random.
-	const std::string rand = cfg["rand"];
 	if(rand.empty() == false) {
 		assert(state_of_game);
 
