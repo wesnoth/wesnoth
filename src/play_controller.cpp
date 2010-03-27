@@ -502,11 +502,11 @@ void play_controller::do_init_side(const unsigned int team_index){
 	log_scope("player turn");
 	team& current_team = teams_[team_index];
 
+	const std::string turn_num = str_cast(turn());
+	const std::string side_num = str_cast(team_index + 1);
+
 	// If this is right after loading a game we don't need to fire events and such. It was already done before saving.
 	if (!loading_game_) {
-		std::string turn_num = str_cast(turn());
-		std::string side_num = str_cast(team_index + 1);
-
 		if (turn() != previous_turn_)
 		{
 			game_events::fire("turn " + turn_num);
@@ -546,6 +546,8 @@ void play_controller::do_init_side(const unsigned int team_index){
 
 	if (!loading_game_) {
 		game_events::fire("turn refresh");
+		game_events::fire("side " + side_num + " turn refresh");
+		game_events::fire("side " + side_num + " turn " + turn_num + " refresh");
 	}
 
 	const time_of_day &tod = tod_manager_.get_time_of_day();
