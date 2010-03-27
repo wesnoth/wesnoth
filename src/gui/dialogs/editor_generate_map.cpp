@@ -22,6 +22,8 @@
 #include "gui/widgets/settings.hpp"
 #include "mapgen.hpp"
 
+#include <boost/bind.hpp>
+
 #define ERR_ED LOG_STREAM_INDENT(err, editor)
 
 namespace gui2 {
@@ -99,15 +101,17 @@ void teditor_generate_map::pre_show(CVideo& /*video*/, twindow& window)
 
 	tbutton& settings_button =
 			find_widget<tbutton>(&window, "settings", false);
-	settings_button.set_callback_mouse_left_click(
-			dialog_callback<teditor_generate_map
-				, &teditor_generate_map::do_settings>);
+	settings_button.connect_signal_mouse_left_click(boost::bind(
+			  &teditor_generate_map::do_settings
+			, this
+			, boost::ref(window)));
 
 	tbutton& next_generator_button =
 			find_widget<tbutton>(&window, "next_generator", false);
-	next_generator_button.set_callback_mouse_left_click(
-			dialog_callback<teditor_generate_map
-				, &teditor_generate_map::do_next_generator>);
+	next_generator_button.connect_signal_mouse_left_click(boost::bind(
+			  &teditor_generate_map::do_next_generator
+			, this
+			, boost::ref(window)));
 
 	update_current_generator_label(window);
 }
