@@ -116,14 +116,11 @@ void config::merge_children(const std::string& key)
 {
 	check_valid();
 
-	config merged_children;
-	const child_list& children = get_children(key);
-	if(children.size() < 2) {
-		return;
-	}
+	if (child_count(key) < 2) return;
 
-	for(child_list::const_iterator i = children.begin(); i != children.end(); ++i) {
-		merged_children.append(**i);
+	config merged_children;
+	foreach (const config &cfg, child_range(key)) {
+		merged_children.append(cfg);
 	}
 
 	clear_children(key);
@@ -134,24 +131,21 @@ void config::merge_children_by_attribute(const std::string& key, const std::stri
 {
 	check_valid();
 
-	std::map<std::string,config> merged_children_map;
-	const child_list& children = get_children(key);
-	if(children.size() < 2) {
-		return;
-	}
+	if (child_count(key) < 2) return;
 
-	for(child_list::const_iterator i = children.begin(); i != children.end(); ++i) {
-		const std::string& value = (**i)[attribute];
-		std::map<std::string,config>::iterator m = merged_children_map.find(value);
+	typedef std::map<std::string, config> config_map;
+	config_map merged_children_map;
+	foreach (const config &cfg, child_range(key)) {
+		const std::string &value = cfg[attribute];
+		config_map::iterator m = merged_children_map.find(value);
 		if ( m!=merged_children_map.end() ) {
-			m->second.append(**i);
+			m->second.append(cfg);
 		} else {
-			merged_children_map.insert(make_pair(value,**i));
+			merged_children_map.insert(make_pair(value, cfg));
 		}
 	}
 
 	clear_children(key);
-	typedef std::map<std::string,config> config_map;
 	foreach (const config_map::value_type &i, merged_children_map) {
 		add_child(key,i.second);
 	}
@@ -874,7 +868,10 @@ bool config::matches(const config &filter) const
 	// Now, match the kids
 	foreach (const any_child &i, filter.all_children_range())
 	{
-		if (i.key == "not") continue;
+		if (i.key == "not") {
+			if (matches(i.cfg)) return false;
+			continue;
+		}
 		bool found = false;
 		foreach (const config &j, child_range(i.key)) {
 			if (j.matches(i.cfg)) {
@@ -883,10 +880,6 @@ bool config::matches(const config &filter) const
 			}
 		}
 		if(!found) return false;
-	}
-	child_list negative_children = filter.get_children("not");
-	for(child_list::iterator j3 = negative_children.begin() ; j3 != negative_children.end() ; ++j3) {
-		if(matches(**j3)) return false;
 	}
 	return true;
 }
@@ -962,15 +955,15 @@ std::string config::hash() const
 			}
 		}
 	}
-	for(child_map::const_iterator list = children.begin(); list != children.end(); ++list) {
-		for(child_list::const_iterator child = list->second.begin(); child != list->second.end(); ++child) {
-			std::string child_hash = (*child)->hash();
-			for(c = child_hash.begin(); c != child_hash.end(); ++c) {
-				hash_str[i] ^= *c;
-				++i;
-				if(i == hash_length) {
-					i = 0;
-				}
+
+	foreach (const any_child &ch, all_children_range())
+	{
+		std::string child_hash = ch.cfg.hash();
+		foreach (char c, child_hash) {
+			hash_str[i] ^= c;
+			++i;
+			if(i == hash_length) {
+				i = 0;
 			}
 		}
 	}
