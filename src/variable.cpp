@@ -647,8 +647,7 @@ variable_info::variable_info(const std::string& varname,
 			return;
 		}
 
-		//std::cerr << "Entering " << element << "[" << inner_index << "] of [" << vars->get_children(element).size() << "]\n";
-		vars = vars->get_children(element)[inner_index];
+		vars = &vars->child(element, inner_index);
 		itor = std::find(key.begin(),key.end(),'.');
 		dot_index = key.find('.');
 	} // end subvar access
@@ -665,7 +664,7 @@ variable_info::variable_info(const std::string& varname,
 			index = game_config::max_loop;
 		}
 		key = std::string(key.begin(),index_start);
-		size_t size = vars->get_children(key).size();
+		size_t size = vars->child_count(key);
 		if(size <= index) {
 			if(!force_valid) {
 				WRN_NG << "variable_info: invalid WML array index, " << varname << std::endl;
@@ -677,12 +676,12 @@ variable_info::variable_info(const std::string& varname,
 		}
 		switch(vartype) {
 		case variable_info::TYPE_ARRAY:
-			vars = vars->get_children(key)[index];
+			vars = &vars->child(key, index);
 			key = "__array";
 			is_valid = force_valid || vars->child(key);
 			break;
 		case variable_info::TYPE_SCALAR:
-			vars = vars->get_children(key)[index];
+			vars = &vars->child(key, index);
 			key = "__value";
 			is_valid = force_valid || vars->has_attribute(key);
 			break;
@@ -725,9 +724,7 @@ config& variable_info::as_container() {
 	assert(is_valid);
 	if(explicit_index) {
 		// Empty data for explicit index was already created if it was needed
-		config::child_iterator i = vars->child_range(key).first;
-		std::advance(i, index);
-		return *i;
+		return vars->child(key, index);
 	}
 	if (config &temp = vars->child(key)) {
 		// The container exists, index not specified, return index 0

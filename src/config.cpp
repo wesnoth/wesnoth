@@ -210,25 +210,13 @@ const config::child_list& config::get_children(const std::string& key) const
 	}
 }
 
-config &config::child(const std::string& key)
+config &config::child(const std::string& key, int n)
 {
 	check_valid();
 
 	const child_map::const_iterator i = children.find(key);
-	if(i != children.end() && i->second.empty() == false) {
-		return *i->second.front();
-	} else {
-		return invalid;
-	}
-}
-
-const config &config::child(const std::string& key) const
-{
-	check_valid();
-
-	const child_map::const_iterator i = children.find(key);
-	if(i != children.end() && i->second.empty() == false) {
-		return *i->second.front();
+	if (i != children.end() && i->second.size() > size_t(n)) {
+		return *i->second[n];
 	} else {
 		return invalid;
 	}

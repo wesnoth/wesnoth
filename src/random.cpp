@@ -170,16 +170,16 @@ int rng::get_random_private(bool check)
 		return r;
 	}
 
-	const config::child_list random(random_->get_children("random"));
-	if (random_child_ >= random.size()) {
-		random_child_ = random.size() + 1;
+	size_t random_size = random_->child_count("random");
+	if (random_child_ >= random_size) {
+		random_child_ = random_size + 1;
 		int res = generator_.get_next_random() & 0x7FFFFFFF;
 		(random_->add_child("random"))["value"] = lexical_cast<std::string>(res);
 		LOG_RND << "get_random() returning " << res << " (added to random_)\n";
 		return res;
 	} else {
 		int mine = generator_.get_next_random();
-		int stored = lexical_cast_default<int>((*random[random_child_++])["value"], 0);
+		int stored = lexical_cast_default<int>(random_->child("random", random_child_++)["value"]);
 		if (mine != stored) {
 			if (check) {
 				ERR_RND << "Random number mismatch, mine " << mine << " vs " << stored << "\n";
@@ -197,9 +197,8 @@ const config* rng::get_random_results()
 {
 	assert(random_ != NULL);
 
-	const config::child_list random(random_->get_children("random"));
-	if (random_child_ <= 0 ||random_child_ > random.size()) return NULL;
-	const config &res = random[random_child_-1]->child("results");
+	if (random_child_ <= 0 ||random_child_ > random_->child_count("random")) return NULL;
+	const config &res = random_->child("random", random_child_ - 1).child("results");
 	return res ? &res : NULL;
 }
 
@@ -207,10 +206,10 @@ void rng::set_random_results(const config& cfg)
 {
 	assert(random_ != NULL);
 
-	const config::child_list random(random_->get_children("random"));
-	if (random_child_ <= 0 || random_child_ > random.size()) return;
-	random[random_child_-1]->clear_children("results");
-	random[random_child_-1]->add_child("results",cfg);
+	if (random_child_ <= 0 ||random_child_ > random_->child_count("random")) return;
+	config &r = random_->child("random", random_child_ - 1);
+	r.clear_children("results");
+	r.add_child("results", cfg);
 }
 
 config* rng::random()

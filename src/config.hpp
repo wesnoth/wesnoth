@@ -227,16 +227,17 @@ public:
 	config child_or_empty(const std::string &key) const;
 
 	/**
-	 * Returns the first child with the given @a key, or
+	 * Returns the nth child with the given @a key, or
 	 * a reference to an invalid config if there is none.
 	 */
-	config &child(const std::string& key);
+	config &child(const std::string& key, int n = 0);
 
 	/**
-	 * Returns the first child with the given @a key, or
+	 * Returns the nth child with the given @a key, or
 	 * a reference to an invalid config if there is none.
 	 */
-	const config &child(const std::string& key) const;
+	const config &child(const std::string& key, int n = 0) const
+	{ return const_cast<config *>(this)->child(key, n); }
 
 	config& add_child(const std::string& key);
 	config& add_child(const std::string& key, const config& val);
