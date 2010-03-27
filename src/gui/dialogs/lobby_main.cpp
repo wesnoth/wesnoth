@@ -990,16 +990,50 @@ void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
 	chat_input_ = find_widget<ttext_box>(&window, "chat_input", false, true);
 	chat_input_->set_key_press_callback(boost::bind(&tlobby_main::chat_input_keypress_callback, this, _1, _2, _3, _4));
 
-	GUI2_EASY_BUTTON_CALLBACK(send_message, tlobby_main);
-	GUI2_EASY_BUTTON_CALLBACK(create, tlobby_main);
-//	GUI2_EASY_BUTTON_CALLBACK(show_help, tlobby_main);
-	GUI2_EASY_BUTTON_CALLBACK(refresh, tlobby_main);
-	GUI2_EASY_BUTTON_CALLBACK(show_preferences, tlobby_main);
-	GUI2_EASY_BUTTON_CALLBACK(join_global, tlobby_main);
-	join_global_btn->set_active(false);
-	GUI2_EASY_BUTTON_CALLBACK(observe_global, tlobby_main);
-	observe_global_btn->set_active(false);
-	GUI2_EASY_BUTTON_CALLBACK(close_window, tlobby_main);
+	find_widget<tbutton>(&window, "send_message", false)
+			.connect_signal_mouse_left_click(boost::bind(
+				  &tlobby_main::send_message_button_callback
+				, this
+				, boost::ref(window)));
+	find_widget<tbutton>(&window, "create", false)
+			.connect_signal_mouse_left_click(boost::bind(
+				  &tlobby_main::create_button_callback
+				, this
+				, boost::ref(window)));
+/*	find_widget<tbutton>(&window, "show_help", false)
+			.connect_signal_mouse_left_click(boost::bind(
+				  &tlobby_main::show_help_button_callback
+				, this
+				, boost::ref(window)));
+*/	find_widget<tbutton>(&window, "refresh", false)
+			.connect_signal_mouse_left_click(boost::bind(
+				  &tlobby_main::refresh_button_callback
+				, this
+				, boost::ref(window)));
+	find_widget<tbutton>(&window, "show_preferences", false)
+			.connect_signal_mouse_left_click(boost::bind(
+				  &tlobby_main::show_preferences_button_callback
+				, this
+				, boost::ref(window)));
+	find_widget<tbutton>(&window, "join_global", false)
+			.connect_signal_mouse_left_click(boost::bind(
+				  &tlobby_main::join_global_button_callback
+				, this
+				, boost::ref(window)));
+	find_widget<tbutton>(&window, "join_global", false)
+			.set_active(false);
+	find_widget<tbutton>(&window, "observe_global", false)
+			.connect_signal_mouse_left_click(boost::bind(
+				  &tlobby_main::observe_global_button_callback
+				, this
+				, boost::ref(window)));
+	find_widget<tbutton>(&window, "observe_global", false)
+			.set_active(false);
+	find_widget<tbutton>(&window, "close_window", false)
+			.connect_signal_mouse_left_click(boost::bind(
+				  &tlobby_main::close_window_button_callback
+				, this
+				, boost::ref(window)));
 
 	ttoggle_button& skip_replay =
 			find_widget<ttoggle_button>(&window, "skip_replay", false);
