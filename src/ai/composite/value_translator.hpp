@@ -1,4 +1,4 @@
-/* $Id: value_translator.hpp 38379 2009 - 2010-09-03 23:23:37Z crab $ */
+/* $Id$ */
 /*
    Copyright (C) 2009 - 2010 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-03-26 15:39+0100\n"
-"PO-Revision-Date: 2009-11-19 19:36+0100\n"
+"PO-Revision-Date: 2010-03-27 23:51+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -5150,9 +5150,8 @@ msgstr "skúsený"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:222
-#, fuzzy
 msgid "female^aged"
-msgstr "hlúpa"
+msgstr "skúsená"
 
 #. [color_range]: id=red
 #. [color_range]: id=1
@@ -8527,6 +8526,8 @@ msgid ""
 "Unknown command '$command', try $help_command for a list of available "
 "commands."
 msgstr ""
+"Neznámy príkaz '$command', použite $help_command pre zoznam dostupných "
+"príkazov."
 
 #: src/menu_events.cpp:1952
 msgid ""
@@ -8538,53 +8539,51 @@ msgstr ""
 
 #: src/menu_events.cpp:1954
 msgid "do not translate the 'all'^[all|<command>]"
-msgstr ""
+msgstr "[all|<príkaz>]"
 
 #: src/menu_events.cpp:1998
-#, fuzzy
 msgid "Error:"
 msgstr "Chyba:"
 
 #: src/menu_events.cpp:2004
 msgid "Missing argument $arg_id"
-msgstr ""
+msgstr "Chýbajúci parameter $arg_id"
 
 #: src/menu_events.cpp:2052
 msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
 msgstr ""
+"Dostupné príkazy $flags_description:\n"
+"$list_of_commands"
 
 #: src/menu_events.cpp:2052 src/menu_events.cpp:2053 src/menu_events.cpp:2076
-#, fuzzy
 msgid "help"
-msgstr "Pomoc"
+msgstr "pomoc"
 
 #: src/menu_events.cpp:2053
 msgid "Type $help_command <command> for more info."
-msgstr ""
+msgstr "Použite $help_command <príkaz> pre ďalšie informácie."
 
 #: src/menu_events.cpp:2064
 msgid " No help available."
 msgstr " Žiadna pomoc nie je k dispozícii."
 
 #: src/menu_events.cpp:2069
-#, fuzzy
 msgid "Usage:"
-msgstr "Správa:"
+msgstr "Použitie:"
 
 #: src/menu_events.cpp:2074
 msgid "aliases:"
-msgstr ""
+msgstr "aliasy:"
 
 #: src/menu_events.cpp:2200
 msgid "(A) - auth command"
-msgstr ""
+msgstr "(A) - autentifikačný príkaz"
 
 #: src/menu_events.cpp:2207
-#, fuzzy
 msgid "(auth only)"
-msgstr "Len tímu"
+msgstr "(len pri autentifikácii)"
 
 #: src/menu_events.cpp:2227
 msgid ""
@@ -8606,7 +8605,7 @@ msgstr ""
 #: src/menu_events.cpp:2239 src/menu_events.cpp:2241 src/menu_events.cpp:2266
 #: src/menu_events.cpp:2268 src/menu_events.cpp:2270 src/menu_events.cpp:2284
 msgid "<nick>"
-msgstr ""
+msgstr "<prezývka>"
 
 #: src/menu_events.cpp:2234
 msgid "Unban a user. He does not have to be in the game but on the server."
@@ -8633,9 +8632,8 @@ msgid "Send a message to the server admins currently online"
 msgstr "Pošli správu práve pripojeným správcom servera"
 
 #: src/menu_events.cpp:2255
-#, fuzzy
 msgid "<message>"
-msgstr "Správa:"
+msgstr "<správa>"
 
 #: src/menu_events.cpp:2255
 msgid "Send an emotion or personal action in chat."
@@ -8651,11 +8649,11 @@ msgstr ""
 
 #: src/menu_events.cpp:2260
 msgid "<nick> <message>"
-msgstr ""
+msgstr "<prezývka> <správa>"
 
 #: src/menu_events.cpp:2264
 msgid "<level> <domain>"
-msgstr ""
+msgstr "<úroveň> <doména>"
 
 #: src/menu_events.cpp:2264
 msgid "Change the log level of a log domain."
@@ -8683,7 +8681,7 @@ msgstr "Zobraziť informácie o verzii."
 
 #: src/menu_events.cpp:2277
 msgid "<password> <email (optional)>"
-msgstr ""
+msgstr "<heslo> <email (nepovinné)>"
 
 #: src/menu_events.cpp:2277
 msgid "Register your nick"
@@ -8701,7 +8699,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2282
 msgid "<detail> <value>"
-msgstr ""
+msgstr "<detail> <hodnota>"
 
 #: src/menu_events.cpp:2284
 msgid "Request information about a nick."
@@ -8714,7 +8712,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2288 src/menu_events.cpp:2291 src/menu_events.cpp:2293
 msgid "<room>"
-msgstr ""
+msgstr "<miestnosť>"
 
 #: src/menu_events.cpp:2288
 msgid "Join a room."
@@ -8734,7 +8732,7 @@ msgstr "Zobraz dostupné miestnosti."
 
 #: src/menu_events.cpp:2297
 msgid "<room> <msg>"
-msgstr ""
+msgstr "<miestnosť> <správa>"
 
 #: src/menu_events.cpp:2297
 msgid "Room message."
@@ -8742,7 +8740,7 @@ msgstr "Správa do miestnosti."
 
 #: src/menu_events.cpp:2299
 msgid "<room> <type> [value]"
-msgstr ""
+msgstr "<miestnosť> <typ> [hodnota]"
 
 #: src/menu_events.cpp:2299
 msgid "Room query."
@@ -8751,20 +8749,19 @@ msgstr "Dotaz v miestnosti."
 #: src/menu_events.cpp:2397
 msgid "(D) - debug only, (N) - network only, (A) - auth only"
 msgstr ""
+"(D) - len pre ladenie, (N) - len na sieti, (A) - len pri autentifikácii"
 
 #: src/menu_events.cpp:2403
-#, fuzzy
 msgid "(debug command)"
-msgstr "Príkazy režimu ladenia"
+msgstr "(príkaz ladenia)"
 
 #: src/menu_events.cpp:2404
-#, fuzzy
 msgid " (network only)"
-msgstr "Sieťový hráč"
+msgstr " (len na sieti)"
 
 #: src/menu_events.cpp:2405
 msgid " (auth only)"
-msgstr ""
+msgstr " (len pri autentifikácii)"
 
 #: src/menu_events.cpp:2429
 msgid "Refresh gui."
@@ -8776,12 +8773,11 @@ msgstr "Vypni/zapni ovládanie strany počítačom."
 
 #: src/menu_events.cpp:2431
 msgid "do not translate the on/off^[<side> [on/off]]"
-msgstr ""
+msgstr "[<strana> [on/off]]"
 
 #: src/menu_events.cpp:2434
-#, fuzzy
 msgid "<side> <nick>"
-msgstr "Použitie: control [strana] [meno]"
+msgstr "<side> <nick>"
 
 #: src/menu_events.cpp:2434
 msgid "Assign control of a side to a different player or observer."
@@ -8796,9 +8792,8 @@ msgid "Visualize the screen refresh procedure."
 msgstr "Zviditeľniť proces prekresľovania obrazovky."
 
 #: src/menu_events.cpp:2439
-#, fuzzy
 msgid "Show fps."
-msgstr "Ukáž záznam"
+msgstr "Ukáž počet snímok za sekundu."
 
 #: src/menu_events.cpp:2441
 msgid "Save game."
@@ -8822,7 +8817,7 @@ msgstr "Vypnúť automatické ukladanie."
 
 #: src/menu_events.cpp:2454
 msgid "<id>"
-msgstr ""
+msgstr "<id>"
 
 #: src/menu_events.cpp:2454
 msgid "Advance to the next scenario, or scenario identified by 'id'"
@@ -8846,7 +8841,7 @@ msgstr "Vykonaj príkaz v jazyku Lua."
 
 #: src/menu_events.cpp:2466
 msgid "<command>[;<command>...]"
-msgstr ""
+msgstr "<príkaz>[;<príkaz>...]"
 
 #: src/menu_events.cpp:2466
 msgid "Set the command used by the custom command hotkey"
@@ -8858,7 +8853,7 @@ msgstr "Spusti prieskumníka stavu hry"
 
 #: src/menu_events.cpp:2470
 msgid "<name>[=<command>]"
-msgstr ""
+msgstr "<meno>[=<príkaz>]"
 
 #: src/menu_events.cpp:2470
 msgid "Set or show alias to a command"
@@ -8866,7 +8861,7 @@ msgstr "Nastaviť alebo zobraziť alternatívny názov (alias) pre príkaz"
 
 #: src/menu_events.cpp:2472
 msgid "<var>=<value>"
-msgstr ""
+msgstr "<premenná>=<hodnota>"
 
 #: src/menu_events.cpp:2472
 msgid "Set a scenario variable."
@@ -8874,7 +8869,7 @@ msgstr "Nastaví stavovú premennú scény."
 
 #: src/menu_events.cpp:2474
 msgid "<var>"
-msgstr ""
+msgstr "<premenná>"
 
 #: src/menu_events.cpp:2474
 msgid "Show a scenario variable."
@@ -8935,11 +8930,11 @@ msgstr "Doména: '$domain' prepnutá na úroveň: '$level'."
 
 #: src/menu_events.cpp:2635
 msgid "whisper to $receiver"
-msgstr ""
+msgstr "šepkanie k $receiver"
 
 #: src/menu_events.cpp:2642
 msgid "whisper: $sender"
-msgstr ""
+msgstr "šepkanie: $sender"
 
 #: src/menu_events.cpp:2738 src/menu_events.cpp:2757
 #: src/multiplayer_connect.cpp:699
@@ -8947,74 +8942,65 @@ msgid "(empty)"
 msgstr "(sprázdne)"
 
 #: src/menu_events.cpp:2738 src/menu_events.cpp:2744 src/menu_events.cpp:2794
-#, fuzzy
 msgid "ignores list"
-msgstr "Na zozname ignorovaných"
+msgstr "zoznam ignorovaných"
 
 #: src/menu_events.cpp:2744
-#, fuzzy
 msgid "Added to ignore list: $nick"
-msgstr "Pridaný do zoznamu ignorovaných: "
+msgstr "Pridaný do zoznamu ignorovaných: $nick"
 
 #: src/menu_events.cpp:2747 src/menu_events.cpp:2766
-#, fuzzy
 msgid "Invalid username: $nick"
-msgstr "Neplatné používateľské meno: "
+msgstr "Neplatné používateľské meno: $nick"
 
 #: src/menu_events.cpp:2757 src/menu_events.cpp:2764 src/menu_events.cpp:2790
-#, fuzzy
 msgid "friends list"
-msgstr "Na zozname priateľov"
+msgstr "zoznam priateľov"
 
 #: src/menu_events.cpp:2764
-#, fuzzy
 msgid "Added to friends list: $nick"
-msgstr "Pridaný do zoznamu priateľov: "
+msgstr "Pridaný do zoznamu priateľov: $nick"
 
 #: src/menu_events.cpp:2780
-#, fuzzy
 msgid "Removed from list: $nick"
-msgstr "Vyradený zo zoznamu: "
+msgstr "Vyradený zo zoznamu: $nick"
 
 #: src/menu_events.cpp:2780 src/menu_events.cpp:2798
-#, fuzzy
 msgid "friends and ignores list"
-msgstr "Na zozname ignorovaných"
+msgstr "zoznam priateľov a ignorovaných"
 
 #: src/menu_events.cpp:2798
 msgid "There are no players on your friends or ignore list."
 msgstr "V zozname priateľov alebo ignorovaných nie sú žiadni hráči"
 
 #: src/menu_events.cpp:2803
-#, fuzzy
 msgid "version"
-msgstr "Verzia"
+msgstr "verzia"
 
 #: src/menu_events.cpp:2819
 msgid "registering with password *** and no email address"
-msgstr ""
+msgstr "registrovanie s heslom *** a žiadnou e-mailovou adresou"
 
 #: src/menu_events.cpp:2823
 msgid "registering with password *** and email address $email"
-msgstr ""
+msgstr "registrovanie s heslom *** a e-mailovou adresou $email"
 
 #: src/menu_events.cpp:2826 src/menu_events.cpp:2837 src/menu_events.cpp:2855
 #: src/menu_events.cpp:2869
 msgid "nick registration"
-msgstr ""
+msgstr "registrovanie prezývky"
 
 #: src/menu_events.cpp:2837
 msgid "dropping your username"
-msgstr ""
+msgstr "ruší sa tvoje používateľské meno"
 
 #: src/menu_events.cpp:2855
 msgid "setting $var to $value"
-msgstr ""
+msgstr "nastavuje sa $var na $value"
 
 #: src/menu_events.cpp:2869
-#, fuzzy
 msgid "requesting information for user $nick"
-msgstr "Vyžiadaj informácie o prezývke."
+msgstr "zisťujú sa informácie o používateľovi $nick."
 
 #: src/menu_events.cpp:2981
 msgid "Couldn't find label or unit containing the string '$search'."
@@ -9054,23 +9040,23 @@ msgstr "Režim ladenia deaktivovaný!"
 
 #: src/menu_events.cpp:3224
 msgid "Variable not found"
-msgstr ""
+msgstr "Premenná sa nenašla"
 
 #: src/menu_events.cpp:3262
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral or "
 "chaotic."
 msgstr ""
+"Neplatná príslušnosť: '$alignment', musí byť 'poriadok', 'neutrál' alebo "
+"'chaos'."
 
 #: src/menu_events.cpp:3319
-#, fuzzy
 msgid "Invalid unit type"
-msgstr "Neplatný názov značky"
+msgstr "Neplatný typ jednotky"
 
 #: src/menu_events.cpp:3332
-#, fuzzy
 msgid "Invalid location"
-msgstr "Neplatná farba"
+msgstr "Neplatná poloha"
 
 #: src/menu_events.cpp:3368
 msgid "ai"
@@ -9113,7 +9099,7 @@ msgstr "Server presmerováva dokola"
 
 #: src/multiplayer.cpp:256
 msgid "Bad data received from server"
-msgstr ""
+msgstr "Zo serveru boli prijaté zlé údaje"
 
 #: src/multiplayer.cpp:297
 msgid "You must login first."
@@ -9414,9 +9400,8 @@ msgid "Invalid era selected"
 msgstr "Vybraná neplatná éra"
 
 #: src/multiplayer_create.cpp:333
-#, fuzzy
 msgid "The map is invalid."
-msgstr "Hra skončila."
+msgstr "Mapa je neplatná."
 
 #: src/multiplayer_create.cpp:335
 msgid "You must enter a name."
