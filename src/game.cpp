@@ -1382,8 +1382,8 @@ void game_controller::load_game_cfg(const bool force)
 		config core_terrain_rules;
 		// FIXME: there should be a canned algorithm for cloning child_list objects,
 		// along with the memory their elements point to... little implementation detail.
-		foreach(config const* p_cfg, game_config_.get_children("terrain_graphics")) {
-			core_terrain_rules.add_child("terrain_graphics", *p_cfg);
+		foreach (config const &p_cfg, game_config_.child_range("terrain_graphics")) {
+			core_terrain_rules.add_child("terrain_graphics", p_cfg);
 		}
 		game_config_.clear_children("terrain_graphics");
 
