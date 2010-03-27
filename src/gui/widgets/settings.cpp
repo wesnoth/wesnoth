@@ -431,18 +431,8 @@ void register_window(const std::string& id)
 			, registered_window_types().end()
 			, id);
 
-	/* Our own logger since the global ones might not be initialized yet. */
-	lg::log_domain log("gui/general");
-
 	if(itor == registered_window_types().end()) {
 		registered_window_types().push_back(id);
-
-		LOG_STREAM_INDENT(debug, log)
-				<< "Registered window '" << id << "'.\n";
-	} else {
-		LOG_STREAM_INDENT(info, log)
-				<< "Tried to reregister window '" << id
-				<< "', request ignored.\n";
 	}
 }
 
