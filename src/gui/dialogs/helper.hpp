@@ -33,18 +33,6 @@ void dialog_callback(twidget* caller)
 	(dialog->*fptr)(*window);
 }
 
-/**
- * Macro (ugh) for setting standardised dialog callbacks, a button with id "foo"
- * will have it's callback registered to MY_TYPE::foo_button_callback. Designed
- * to be used within a dialog's pre_show() (requires a twindow& window in the
- * current scope).
- */
-#define GUI2_EASY_BUTTON_CALLBACK(ID, MY_TYPE) \
-	tbutton* ID##_btn = dynamic_cast<tbutton*>(window.find(#ID, false)); \
-	VALIDATE(ID##_btn, missing_widget(#ID)); \
-	ID##_btn->set_callback_mouse_left_click(dialog_callback<MY_TYPE, \
-		&MY_TYPE::ID##_button_callback>);
-
 } // namespace gui2
 
 #endif
