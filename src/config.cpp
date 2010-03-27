@@ -396,13 +396,6 @@ void config::remove_child(const std::string& key, size_t index)
 	delete res;
 }
 
-t_string& config::operator[](const std::string& key)
-{
-	check_valid();
-
-	return values[key];
-}
-
 const t_string& config::operator[](const std::string& key) const
 {
 	return get_attribute(key);

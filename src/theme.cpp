@@ -166,13 +166,14 @@ static void expand_partialresolution(config& dst_cfg, const config& top_cfg)
 			// follow the inheritance hierarchy and push all the nodes on the stack
 			std::vector<const config*> parent_stack(1, (*i));
 			const config* parent;
-			const t_string* parent_id = &((**i)["inherits"]);
-			while (!*(parent = &top_cfg.find_child("resolution", "id", (*parent_id)))) {
-				parent = &top_cfg.find_child("partialresolution", "id", (*parent_id));
+			std::string parent_id = (**i)["inherits"];
+			while (!*(parent = &top_cfg.find_child("resolution", "id", parent_id)))
+			{
+				parent = &top_cfg.find_child("partialresolution", "id", parent_id);
 				if (!*parent)
-					throw config::error("[partialresolution] refers to non-existant [resolution] " + (*parent_id).str());
+					throw config::error("[partialresolution] refers to non-existant [resolution] " + parent_id);
 				parent_stack.push_back(parent);
-				parent_id = &((*parent)["inherits"]);
+				parent_id = (*parent)["inherits"];
 			}
 
 			// Add the parent resolution and apply all the modifications of its children

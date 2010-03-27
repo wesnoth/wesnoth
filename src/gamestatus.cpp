@@ -462,16 +462,16 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 	}
 }
 
-t_string& game_state::get_variable(const std::string& key)
+config::proxy_string game_state::get_variable(const std::string& key)
 {
 	return variable_info(key, true, variable_info::TYPE_SCALAR).as_scalar();
 }
 
-const t_string& game_state::get_variable_const(const std::string& key) const
+t_string game_state::get_variable_const(const std::string& key) const
 {
 	variable_info to_get(key, false, variable_info::TYPE_SCALAR);
 	if(!to_get.is_valid) {
-			t_string& to_return = temporaries[key];
+			config::proxy_string to_return = temporaries[key];
 			if (key.size() > 7 && key.substr(key.size()-7) == ".length") {
 				// length is a special attribute, so guarantee its correctness
 				to_return = "0";

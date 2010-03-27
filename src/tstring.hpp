@@ -121,7 +121,6 @@ public:
 
 	operator t_string_base() const { return get(); }
 	t_string& operator=(const t_string& o) { super::operator=(o); return *this; }
-	t_string& operator=(const std::string& o) { super::operator=(base(o)); return *this; }
 	t_string& operator=(const char* o) { super::operator=(base(o)); return *this; }
 
 	t_string operator+(const t_string& o) const { return get() + o.get(); }

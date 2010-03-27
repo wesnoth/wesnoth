@@ -74,7 +74,7 @@ namespace preferences {
 	int idle_anim_rate();
 	void _set_idle_anim_rate(const int rate);
 
-	const std::string& language();
+	std::string language();
 	void set_language(const std::string& s);
 
 	// Don't rename it to sound() because of a gcc-3.3 branch bug,

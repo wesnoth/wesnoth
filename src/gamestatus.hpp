@@ -96,8 +96,8 @@ public:
 
 	// Variable access
 
-	t_string& get_variable(const std::string& varname);
-	virtual const t_string& get_variable_const(const std::string& varname) const;
+	config::proxy_string get_variable(const std::string &varname);
+	virtual t_string get_variable_const(const std::string& varname) const;
 	config& get_variable_cfg(const std::string& varname);
 	variable_info::array_range get_variable_cfgs(const std::string& varname);
 

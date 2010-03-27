@@ -1490,8 +1490,8 @@ void connect::lists_init()
 		int side_num = 1;
 		foreach (config &side, sides)
 		{
-			t_string &team_name = side["team_name"];
-			t_string &user_team_name = side["user_team_name"];
+			config::proxy_string team_name = side["team_name"];
+			config::proxy_string user_team_name = side["user_team_name"];
 
 			if(team_name.empty())
 				team_name = lexical_cast<std::string>(side_num);
@@ -1516,7 +1516,7 @@ void connect::lists_init()
 		foreach (config &side, sides)
 		{
 			const std::string side_num = lexical_cast<std::string>(_side_num);
-			t_string &team_name = side["team_name"];
+			config::proxy_string team_name = side["team_name"];
 
 			if(team_name.empty())
 				team_name = side_num;

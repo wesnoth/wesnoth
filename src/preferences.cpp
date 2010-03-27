@@ -248,7 +248,7 @@ void _set_idle_anim_rate(const int rate)
 	preferences::set("idle_anim_rate", lexical_cast<std::string>(rate));
 }
 
-const std::string& language()
+std::string language()
 {
 	return prefs["locale"];
 }

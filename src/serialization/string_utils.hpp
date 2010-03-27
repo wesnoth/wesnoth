@@ -33,7 +33,7 @@ class variable_set
 public:
 	virtual ~variable_set();
 
-	virtual const t_string& get_variable_const(const std::string& id) const = 0;
+	virtual t_string get_variable_const(const std::string& id) const = 0;
 };
 
 /** The type we use to represent Unicode strings. */

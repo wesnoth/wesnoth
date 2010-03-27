@@ -176,6 +176,39 @@ public:
 		Itor i_;
 	};
 
+	class proxy_string
+	{
+		t_string &real_str_;
+	public:
+		proxy_string(config &owner, const std::string &key)
+			: real_str_(owner.values[key]) {}
+
+		proxy_string &operator=(const proxy_string &other)
+		{ return this->operator=(other.real_str_); }
+
+		proxy_string& operator=(const char *str)
+		{ real_str_ = str; return *this; }
+		proxy_string& operator=(const t_string &str)
+		{ real_str_ = str; return *this; }
+		proxy_string& operator=(const std::string &str)
+		{ real_str_ = str; return *this; }
+
+		proxy_string& operator+=(const std::string &str)
+		{ real_str_ += str; return *this; }
+
+		// t_string 'emulation' methods
+		bool empty() const { return real_str_.empty(); }
+		const char *c_str() const { return real_str_.c_str(); }
+		std::string to_serialized() const { return real_str_.to_serialized(); }
+
+		const std::string &str() const { return real_str_.str(); }
+		operator std::string() const { return real_str_.str(); }
+		operator t_string() const { return real_str_; }
+
+		inline friend std::ostream& operator<<(std::ostream &os, const proxy_string &str)
+		{ return os << str.real_str_; }
+	};
+
 	typedef std::pair<const_attribute_iterator,const_attribute_iterator> const_attr_itors;
 
 	typedef std::pair<child_list::iterator, child_list::iterator> child_itors_bak;
@@ -206,7 +239,9 @@ public:
 	config& add_child(const std::string& key);
 	config& add_child(const std::string& key, const config& val);
 	config& add_child_at(const std::string& key, const config& val, size_t index);
-	t_string& operator[](const std::string& key);
+
+	proxy_string operator[](const std::string& key)
+	{ return proxy_string(*this, key); }
 	const t_string& operator[](const std::string& key) const;
 
 	/**

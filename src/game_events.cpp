@@ -176,7 +176,7 @@ namespace {
 		}
 		private:
 		static unsigned instance_count;
-		t_string x1_, x2_, y1_, y2_;
+		std::string x1_, x2_, y1_, y2_;
 	};
 	unsigned pump_manager::instance_count=0;
 
@@ -1107,21 +1107,16 @@ WML_HANDLER_FUNCTION(move_unit_fake, /*event_info*/, cfg)
 }
 
 // Helper function(s) for [set_variable]
-namespace {
-	bool isint(const std::string &var) {
-		return var.find('.') == std::string::npos;
-	}
-	bool isint(const t_string &var) {
-		return isint(var.str());
-	}
-} // End anonymous namespace
+static bool isint(const std::string &var) {
+	return var.find('.') == std::string::npos;
+}
 
 WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 {
 	game_state *state_of_game = resources::state_of_game;
 
 	const std::string name = cfg["name"];
-	t_string& var = state_of_game->get_variable(name);
+	config::proxy_string var = state_of_game->get_variable(name);
 
 	const t_string &literal = cfg.get_config()["literal"]; // no $var substitution
 	if(literal.empty() == false) {
@@ -1163,7 +1158,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 
 	const std::string multiply = cfg["multiply"];
 	if(multiply.empty() == false) {
-		if(isint(var) && isint(multiply)) {
+		if(isint(var.str()) && isint(multiply)) {
 			var = str_cast( std::atoi(var.c_str()) * std::atoi(multiply.c_str()) );
 		} else {
 			var = str_cast( std::atof(var.c_str()) * std::atof(multiply.c_str()) );
@@ -1176,7 +1171,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 			ERR_NG << "division by zero on variable " << name << "\n";
 			return;
 		}
-		if(isint(var) && isint(divide)) {
+		if(isint(var.str()) && isint(divide)) {
 			var = str_cast( std::atoi(var.c_str()) / std::atoi(divide.c_str()) );
 		} else {
 			var = str_cast( std::atof(var.c_str()) / std::atof(divide.c_str()) );
@@ -1189,7 +1184,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 			ERR_NG << "division by zero on variable " << name << "\n";
 			return;
 		}
-		if(isint(var) && isint(modulo)) {
+		if(isint(var.str()) && isint(modulo)) {
 			var = str_cast( std::atoi(var.c_str()) % std::atoi(modulo.c_str()) );
 		} else {
 			double value = std::fmod( std::atof(var.c_str()), std::atof(modulo.c_str()) );

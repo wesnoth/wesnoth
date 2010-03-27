@@ -211,7 +211,7 @@ public:
 	 * Results: after deciding the desired type, these methods can retrieve the result
 	 * Note: first you should force_valid or check is_valid, otherwise these may fail
 	 */
-	t_string& as_scalar();
+	config::proxy_string as_scalar();
 	config& as_container();
 	array_range as_array(); //range may be empty
 };
