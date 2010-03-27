@@ -183,14 +183,19 @@ public:
 		{ return this->operator=(other.real_str_); }
 
 		proxy_string &operator=(bool);
+
 		proxy_string& operator=(const char *str)
-		{ real_str_ = str; return *this; }
-		proxy_string& operator=(const t_string &str)
 		{ real_str_ = str; return *this; }
 		proxy_string& operator=(const std::string &str)
 		{ real_str_ = str; return *this; }
+		proxy_string& operator=(const t_string &str)
+		{ real_str_ = str; return *this; }
 
+		proxy_string& operator+=(const char *str)
+		{ real_str_ += str; return *this; }
 		proxy_string& operator+=(const std::string &str)
+		{ real_str_ += str; return *this; }
+		proxy_string& operator+=(const t_string &str)
 		{ real_str_ += str; return *this; }
 
 		// t_string 'emulation' methods
