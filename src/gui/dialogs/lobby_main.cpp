@@ -779,14 +779,18 @@ void tlobby_main::adjust_game_row_contents(const game_info& game, int idx, tgrid
 
 	tbutton* join_button = dynamic_cast<tbutton*>(grid->find("join", false));
 	if (join_button) {
-		join_button->set_callback_mouse_left_click(
-			dialog_callback<tlobby_main, &tlobby_main::join_button_callback>);
+		join_button->connect_signal_mouse_left_click(boost::bind(
+				  &tlobby_main::join_button_callback
+				, this
+				, boost::ref(*window_)));
 		join_button->set_active(game.can_join());
 	}
 	tbutton* observe_button = dynamic_cast<tbutton*>(grid->find("observe", false));
 	if (observe_button) {
-		observe_button->set_callback_mouse_left_click(
-			dialog_callback<tlobby_main, &tlobby_main::observe_button_callback>);
+		observe_button->connect_signal_mouse_left_click(boost::bind(
+				  &tlobby_main::observe_button_callback
+				, this
+				, boost::ref(*window_)));
 		observe_button->set_active(game.can_observe());
 	}
 	tminimap* minimap = dynamic_cast<tminimap*>(grid->find("minimap", false));
