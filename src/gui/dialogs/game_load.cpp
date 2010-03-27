@@ -107,7 +107,11 @@ void tgame_load::pre_show(CVideo& /*video*/, twindow& window)
 	}
 	fill_game_list(window, games_);
 
-	GUI2_EASY_BUTTON_CALLBACK(delete, tgame_load);
+	find_widget<tbutton>(&window, "delete", false)
+			.connect_signal_mouse_left_click(boost::bind(
+				  &tgame_load::delete_button_callback
+				, this
+				, boost::ref(window)));
 
 	display_savegame(window);
 }
