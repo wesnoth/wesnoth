@@ -1255,7 +1255,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 	const std::string random = cfg["random"];
 	std::string rand = cfg["rand"];
 	if(random.empty() == false) {
-		lg::wml_error << "Usage of 'random' is deprecated use 'rand' instead, "
+		ERR_WML << "Usage of 'random' is deprecated, use 'rand' instead, "
 			"support will be removed in 1.9.2.\n";
 		if(rand.empty()) {
 			rand = random;
