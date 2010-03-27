@@ -22,6 +22,8 @@
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 
+#include <boost/bind.hpp>
+
 namespace gui2 {
 
 REGISTER_WINDOW(lobby_player_info)
@@ -40,18 +42,45 @@ tlobby_player_info::~tlobby_player_info()
 void tlobby_player_info::pre_show(CVideo& /*video*/, twindow& window)
 {
 	relation_ = find_widget<tlabel>(&window, "relation_info", false, true);
-	GUI2_EASY_BUTTON_CALLBACK(start_whisper, tlobby_player_info);
+	find_widget<tbutton>(&window, "start_whisper", false)
+			.connect_signal_mouse_left_click(boost::bind(
+				  &tlobby_player_info::start_whisper_button_callback
+				, this
+				, boost::ref(window)));
 
-	GUI2_EASY_BUTTON_CALLBACK(add_to_friends, tlobby_player_info);
-	GUI2_EASY_BUTTON_CALLBACK(add_to_ignores, tlobby_player_info);
-	GUI2_EASY_BUTTON_CALLBACK(remove_from_list, tlobby_player_info);
-	add_to_friends_ = add_to_friends_btn;
-	add_to_ignores_ = add_to_ignores_btn;
-	remove_from_list_ = remove_from_list_btn;
+	add_to_friends_ = &find_widget<tbutton>(&window, "add_to_friends", false);
+	add_to_friends_->connect_signal_mouse_left_click(boost::bind(
+				  &tlobby_player_info::add_to_friends_button_callback
+				, this
+				, boost::ref(window)));
 
-	GUI2_EASY_BUTTON_CALLBACK(check_status, tlobby_player_info);
-	GUI2_EASY_BUTTON_CALLBACK(kick, tlobby_player_info);
-	GUI2_EASY_BUTTON_CALLBACK(kick_ban, tlobby_player_info);
+	add_to_ignores_ = &find_widget<tbutton>(&window, "add_to_ignores", false);
+	add_to_ignores_->connect_signal_mouse_left_click(boost::bind(
+				  &tlobby_player_info::add_to_ignores_button_callback
+				, this
+				, boost::ref(window)));
+
+	remove_from_list_ = &find_widget<tbutton>(&window, "remove_from_list", false);
+	remove_from_list_->connect_signal_mouse_left_click(boost::bind(
+				  &tlobby_player_info::remove_from_list_button_callback
+				, this
+				, boost::ref(window)));
+
+	find_widget<tbutton>(&window, "check_status", false)
+			.connect_signal_mouse_left_click(boost::bind(
+				  &tlobby_player_info::check_status_button_callback
+				, this
+				, boost::ref(window)));
+	find_widget<tbutton>(&window, "kick", false)
+			.connect_signal_mouse_left_click(boost::bind(
+				  &tlobby_player_info::kick_button_callback
+				, this
+				, boost::ref(window)));
+	find_widget<tbutton>(&window, "kick_ban", false)
+			.connect_signal_mouse_left_click(boost::bind(
+				  &tlobby_player_info::kick_ban_button_callback
+				, this
+				, boost::ref(window)));
 
 	find_widget<tlabel>(&window, "player_name", false)
 			.set_label(info_.name);
