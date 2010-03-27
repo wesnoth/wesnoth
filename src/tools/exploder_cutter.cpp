@@ -14,6 +14,7 @@
 
 #include "exploder_cutter.hpp"
 #include "filesystem.hpp"
+#include "foreach.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 #include "serialization/string_utils.hpp"
@@ -46,13 +47,10 @@ const config cutter::load_config(const std::string &filename)
 
 void cutter::load_masks(const config& conf)
 {
-	const config::child_list& masks = conf.get_children("mask");
-
-	for(config::child_list::const_iterator itor = masks.begin();
-		       itor != masks.end(); ++itor) {
-
-		const std::string name = (**itor)["name"];
-		const std::string image = get_mask_dir() + "/" + (**itor)["image"];
+	foreach (const config &m, conf.child_range("mask"))
+	{
+		const std::string name = m["name"];
+		const std::string image = get_mask_dir() + "/" + m["image"];
 
 		if(verbose_) {
 			std::cerr << "Adding mask " << name << "\n";
@@ -61,8 +59,8 @@ void cutter::load_masks(const config& conf)
 		if(image.empty())
 			throw exploder_failure("Missing image for mask " + name);
 
-		const exploder_point shift((**itor)["shift"]);
-		const exploder_rect cut((**itor)["cut"]);
+		const exploder_point shift(m["shift"]);
+		const exploder_rect cut(m["cut"]);
 
 		if(masks_.find(name) != masks_.end() && masks_[name].filename != image) {
 			throw exploder_failure("Mask " + name +
@@ -95,11 +93,8 @@ cutter::surface_map cutter::cut_surface(surface surf, const config& conf)
 {
 	surface_map res;
 
-	const config::child_list& config_parts = conf.get_children("part");
-	config::child_list::const_iterator itor;
-
-	for(itor = config_parts.begin(); itor != config_parts.end(); ++itor) {
-		add_sub_image(surf, res, *itor);
+	foreach (const config &part, conf.child_range("part")) {
+		add_sub_image(surf, res, &part);
 	}
 
 	return res;
