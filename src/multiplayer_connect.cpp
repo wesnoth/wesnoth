@@ -753,30 +753,17 @@ config connect::side::get_config() const
 
 	if(parent_->params_.use_map_settings && enabled_) {
 		config trimmed = cfg_;
-		trimmed["side"] = "";
-		trimmed["controller"] = "";
-		trimmed["id"] = "";
-		trimmed["team_name"] = "";
-		trimmed["user_team_name"] = "";
-		trimmed["colour"] = "";
-		trimmed["gold"] = "";
-		trimmed["income"] = "";
-		trimmed["allow_changes"] = "";
-/*
-		trimmed["allow_player"] = "";
-		trimmed["colour_lock"] = "";
-		trimmed["faction"] = "";
-		trimmed["gender"] = "";
-		trimmed["gold_lock"] = "";
-		trimmed["income_lock"] = "";
-		trimmed["recruit"] = "";
-		trimmed["team_lock"] = "";
-*/
+		static char const *attrs[] = { "side", "controller", "id",
+			"team_name", "user_team_name", "colour", "gold",
+			"income", "allow_changes" };
+		foreach (const char *attr, attrs) {
+			trimmed.remove_attribute(attr);
+		}
+
 		if(controller_ != CNTR_COMPUTER) {
 			// Only override names for computer controlled players
-			trimmed["user_description"] = "";
+			trimmed.remove_attribute("user_description");
 		}
-		trimmed.prune();
 		res.merge_with(trimmed);
 	}
 	return res;

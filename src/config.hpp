@@ -380,9 +380,6 @@ public:
 
 	bool matches(const config &filter) const;
 
-	/** Removes keys with empty values. */
-	void prune();
-
 	/**
 	 * Append data from another config object to this one.
 	 * Attributes in the latter config object will clobber attributes in this one.
