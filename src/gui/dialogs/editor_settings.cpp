@@ -26,6 +26,8 @@
 #include "gui/widgets/toggle_button.hpp"
 #include "gettext.hpp"
 
+#include <boost/bind.hpp>
+
 #define ERR_ED LOG_STREAM_INDENT(err, editor)
 
 namespace gui2 {
@@ -210,15 +212,18 @@ void teditor_settings::pre_show(CVideo& /*video*/, twindow& window)
 
 	tbutton& next_tod_button = find_widget<tbutton>(
 			&window, "next_tod", false);
-	next_tod_button.set_callback_mouse_left_click(
-			dialog_callback<teditor_settings
-				, &teditor_settings::do_next_tod>);
+	next_tod_button.connect_signal_mouse_left_click(boost::bind(
+			  &teditor_settings::do_next_tod
+			, this
+			, boost::ref(window)));
+
 
 	tbutton& apply_button = find_widget<tbutton>(
 			&window, "apply", false);
-	apply_button.set_callback_mouse_left_click(
-			dialog_callback<teditor_settings
-				, &teditor_settings::update_tod_display>);
+	apply_button.connect_signal_mouse_left_click(boost::bind(
+			  &teditor_settings::update_tod_display
+			, this
+			, boost::ref(window)));
 
 	custom_tod_toggle_->set_callback_state_change(
 			dialog_callback<teditor_settings
