@@ -160,18 +160,20 @@ BOOST_AUTO_TEST_CASE( test_load_config )
 {
 
 	config test_config = setup_test_config();
-
-	BOOST_CHECK_EQUAL(test_config, *cache.get_config(test_data_path));
-
-	test_scoped_define test_define_def("TEST_DEFINE");
+	config cached_config;
+	cache.get_config(test_data_path, cached_config);
+	BOOST_CHECK_EQUAL(test_config, cached_config);
 
 	config &child = test_config.add_child("test_key2");
 	child["define"] = t_string("testing translation reset.", GETTEXT_DOMAIN);
 
 
-	BOOST_CHECK_EQUAL(test_config, *cache.get_config(test_data_path));
+	test_scoped_define test_define_def("TEST_DEFINE");
+	cached_config.clear();
+	cache.get_config(test_data_path, cached_config);
+	BOOST_CHECK_EQUAL(test_config, cached_config);
 
-	BOOST_CHECK_EQUAL(test_config.child("test_key2")["define"].str(), cache.get_config(test_data_path)->child("test_key2")["define"].str());
+	BOOST_CHECK_EQUAL(test_config.child("test_key2")["define"].str(), cached_config.child("test_key2")["define"].str());
 }
 
 BOOST_AUTO_TEST_CASE( test_non_clean_config_loading )
@@ -209,9 +211,14 @@ BOOST_AUTO_TEST_CASE( test_macrosubstitution )
 	test_scoped_define macro("TEST_MACRO");
 
 	// Without cache
-	BOOST_CHECK_EQUAL(test_config, *cache.get_config(test_data_path));
+	config cached_config;
+	cache.get_config(test_data_path, cached_config);
+	BOOST_CHECK_EQUAL(test_config, cached_config);
+
 	// With cache
-	BOOST_CHECK_EQUAL(test_config, *cache.get_config(test_data_path));
+	cached_config.clear();
+	cache.get_config(test_data_path, cached_config);
+	BOOST_CHECK_EQUAL(test_config, cached_config);
 
 
 }
@@ -232,7 +239,9 @@ BOOST_AUTO_TEST_CASE( test_transaction )
 
 	game_config::config_cache_transaction transaction;
 
-	BOOST_CHECK_EQUAL(test_config, *cache.get_config(test_data_path));
+	config cached_config;
+	cache.get_config(test_data_path, cached_config);
+	BOOST_CHECK_EQUAL(test_config, cached_config);
 
 	transaction.lock();
 	config umc_config;
@@ -242,7 +251,9 @@ BOOST_AUTO_TEST_CASE( test_transaction )
 	(*child)["define"] = "transaction";
 	child = &umc_config.add_child("test_key4");
 	(*child)["defined"] = "parameter";
-	BOOST_CHECK_EQUAL(umc_config, *cache.get_config("data/test/test/umc.cfg"));
+	cached_config.clear();
+	cache.get_config("data/test/test/umc.cfg", cached_config);
+	BOOST_CHECK_EQUAL(umc_config, cached_config);
 }
 
 BOOST_AUTO_TEST_CASE( test_define_loading )
@@ -262,7 +273,9 @@ BOOST_AUTO_TEST_CASE( test_define_loading )
 
 	game_config::config_cache_transaction transaction;
 
-	BOOST_CHECK_EQUAL(test_config, *cache.get_config(test_data_path));
+	config cached_config;
+	cache.get_config(test_data_path, cached_config);
+	BOOST_CHECK_EQUAL(test_config, cached_config);
 
 	transaction.lock();
 
@@ -274,7 +287,9 @@ BOOST_AUTO_TEST_CASE( test_define_loading )
 	(*child)["define"] = "transaction";
 	child = &umc_config.add_child("test_key4");
 	(*child)["defined"] = "parameter";
-	BOOST_CHECK_EQUAL(umc_config, *cache.get_config("data/test/test/umc.cfg"));
+	cached_config.clear();
+	cache.get_config("data/test/test/umc.cfg", cached_config);
+	BOOST_CHECK_EQUAL(umc_config, cached_config);
 	cache.set_force_invalid_cache(false);
 }
 
@@ -284,9 +299,13 @@ BOOST_AUTO_TEST_CASE( test_lead_spaces_loading )
 	test_config.add_child("test_lead_space")["space"] = "empty char in middle";
 	// Force reload of cache
 	cache.set_force_invalid_cache(true);
-	BOOST_CHECK_EQUAL(test_config, *cache.get_config("data/test/test/leading_space.cfg"));
+	config cached_config;
+	cache.get_config("data/test/test/leading_space.cfg", cached_config);
+	BOOST_CHECK_EQUAL(test_config, cached_config);
 	cache.set_force_invalid_cache(false);
-	BOOST_CHECK_EQUAL(test_config, *cache.get_config("data/test/test/leading_space.cfg"));
+	cached_config.clear();
+	cache.get_config("data/test/test/leading_space.cfg", cached_config);
+	BOOST_CHECK_EQUAL(test_config, cached_config);
 }
 
 #if 0

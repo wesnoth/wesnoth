@@ -136,11 +136,6 @@ namespace game_config {
 		 * @param cfg config object that is written to. Should be empty on entry.
 		 */
 		void get_config(const std::string& path, config& cfg);
-		/**
-		 * Gets config_ptr from given @a path.
-		 * @return config object.
-		 */
-		config_ptr get_config(const std::string& path);
 
 		/**
 		 * Clear stored defines map to default values

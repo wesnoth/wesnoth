@@ -88,15 +88,6 @@ namespace game_config {
 		load_configs(path, cfg);
 	}
 
-	config_ptr config_cache::get_config(const std::string& path)
-	{
-		config_ptr ret(new config());
-		load_configs(path, *ret);
-
-		return ret;
-	}
-
-
 	void config_cache::write_file(std::string path, const config& cfg)
 	{
 		scoped_ostream stream = ostream_file(path);
