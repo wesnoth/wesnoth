@@ -608,7 +608,7 @@ variable_info::variable_info(const std::string& varname,
 			element = std::string(element.begin(),index_start);
 		}
 
-		size_t size = vars->get_children(element).size();
+		size_t size = vars->child_count(element);
 		if(size <= inner_index) {
 			if(force_valid) {
 				// Add elements to the array until the requested size is attained
@@ -725,7 +725,9 @@ config& variable_info::as_container() {
 	assert(is_valid);
 	if(explicit_index) {
 		// Empty data for explicit index was already created if it was needed
-		return *vars->get_children(key)[index];
+		config::child_iterator i = vars->child_range(key).first;
+		std::advance(i, index);
+		return *i;
 	}
 	if (config &temp = vars->child(key)) {
 		// The container exists, index not specified, return index 0
