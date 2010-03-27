@@ -492,20 +492,16 @@ void server::load_config() {
 	}
 
 	redirected_versions_.clear();
-	const config::child_list& redirects = cfg_.get_children("redirect");
-	for (config::child_list::const_iterator i = redirects.begin(); i != redirects.end(); ++i) {
-		const std::vector<std::string> versions(utils::split((**i)["version"]));
-		for (std::vector<std::string>::const_iterator j = versions.begin(); j != versions.end(); ++j) {
-			redirected_versions_[*j] = **i;
+	foreach (const config &redirect, cfg_.child_range("redirect")) {
+		foreach (const std::string &version, utils::split(redirect["version"])) {
+			redirected_versions_[version] = redirect;
 		}
 	}
 
 	proxy_versions_.clear();
-	const config::child_list& proxies = cfg_.get_children("proxy");
-	for (config::child_list::const_iterator p = proxies.begin(); p != proxies.end(); ++p) {
-		const std::vector<std::string> versions(utils::split((**p)["version"]));
-		for (std::vector<std::string>::const_iterator j = versions.begin(); j != versions.end(); ++j) {
-			proxy_versions_[*j] = **p;
+	foreach (const config &proxy, cfg_.child_range("proxy")) {
+		foreach (const std::string &version, utils::split(proxy["version"])) {
+			proxy_versions_[version] = proxy;
 		}
 	}
 	ban_manager_.load_config(cfg_);
