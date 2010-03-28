@@ -490,8 +490,10 @@ def validate_on_pop(tagstack, closer, filename, lineno):
     if verbose >= 3:
         print '"%s", line %d: closing %s I see %s with %s' % (filename, lineno, closer, tag, attributes)
     # Detect a malformation that will cause the game to barf while attempting
-    # to deserialize an empty unit.
-    if "scenario" in ancestors and closer == "side" and "type" not in attributes and ("no_leader" not in attributes or attributes["no_leader"] != "yes") and "multiplayer" not in ancestors:
+    # to deserialize an empty unit.  The final "and attributes" ias a blatant
+    # hack; some compaigns like to generate entire side declarations with
+    # macros. 
+    if "scenario" in ancestors and closer == "side" and "type" not in attributes and ("no_leader" not in attributes or attributes["no_leader"] != "yes") and "multiplayer" not in ancestors and attributes:
         print '"%s", line %d: [side] without type attribute' % (filename, lineno)
     # This assumes that conversion will always happen in units/ files.
     if "units" not in filename and closer == "unit" and "race" in attributes:
