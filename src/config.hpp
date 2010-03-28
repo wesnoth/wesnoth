@@ -38,8 +38,6 @@
 #include "game_errors.hpp"
 #include "tstring.hpp"
 
-#include "shared_string.hpp"
-
 typedef std::map<std::string, t_string> string_map;
 
 class config;
