@@ -1037,7 +1037,7 @@ WML_HANDLER_FUNCTION(move_unit_fake, /*event_info*/, cfg)
 	unit_race::GENDER gender = string_gender(cfg["gender"]);
 	const unit_type *ut = unit_types.find(type);
 	if (!ut) return;
-	unit dummy_unit(resources::units, ut, side_num + 1, false, gender);
+	unit dummy_unit(ut, side_num + 1, false, gender);
 
 	config mod;
 	config &effect = mod.add_child("effect");
@@ -1549,7 +1549,6 @@ WML_HANDLER_FUNCTION(role, /*event_info*/, cfg)
 				// Iterate over the player's recall list to find a match
 				for(size_t i=0; i < pi->recall_list().size(); ++i) {
 					unit& u = pi->recall_list()[i];
-					u.set_game_context(resources::units);
 					scoped_recall_unit auto_store("this_unit", player_id, i);
 					if (u.matches_filter(filter, map_location())) {
 						u.set_role(cfg["role"]);
@@ -1734,7 +1733,7 @@ WML_HANDLER_FUNCTION(unit, /*event_info*/, cfg)
 	const config& parsed_cfg = cfg.get_parsed_config();
 
 	if (cfg.has_attribute("to_variable")) {
-		unit new_unit(resources::units, parsed_cfg, true, resources::state_of_game);
+		unit new_unit(parsed_cfg, true, resources::state_of_game);
 		config &var = resources::state_of_game->get_variable_cfg(parsed_cfg["to_variable"]);
 		var.clear();
 		new_unit.write(var);
@@ -1798,7 +1797,6 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 
 		for(std::vector<unit>::iterator u = avail.begin(); u != avail.end(); ++u) {
 			DBG_NG << "checking unit against filter...\n";
-			u->set_game_context(resources::units);
 			scoped_recall_unit auto_store("this_unit", player_id, u - avail.begin());
 			if (u->matches_filter(unit_filter, map_location())) {
 				map_location loc = cfg_to_loc(cfg);
@@ -2034,7 +2032,6 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 		{
 			std::vector<unit>& avail_units = pi->recall_list();
 			for(std::vector<unit>::iterator j = avail_units.begin(); j != avail_units.end();) {
-				j->set_game_context(resources::units);
 				scoped_recall_unit auto_store("this_unit", pi->save_id(), j - avail_units.begin());
 				if (j->matches_filter(cfg, map_location())) {
 					j = avail_units.erase(j);
@@ -2182,7 +2179,6 @@ WML_HANDLER_FUNCTION(store_unit, /*event_info*/, cfg)
 				pi != resources::teams->end(); ++pi) {
 			std::vector<unit>& avail_units = pi->recall_list();
 			for(std::vector<unit>::iterator j = avail_units.begin(); j != avail_units.end();) {
-				j->set_game_context(resources::units);
 				scoped_recall_unit auto_store("this_unit", pi->save_id(), j - avail_units.begin());
 				if (!j->matches_filter(filter, map_location())) {
 					++j;
@@ -2213,7 +2209,7 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 
 	try {
 		config tmp_cfg(var);
-		const unit u(resources::units, tmp_cfg, false);
+		const unit u(tmp_cfg, false);
 
 		preferences::encountered_units().insert(u.type_id());
 		map_location loc = cfg_to_loc(

@@ -751,7 +751,6 @@ void recall_result::do_execute()
 
 		unit &un = *rec;
 		recorder.add_recall(un.id(), recall_location_);
-		un.set_game_context(&info.units);
 		place_recruit(un, recall_location_, true, true);
 		statistics::recall_unit(un);
 		my_team.spend_gold(game_config::recall_cost);
@@ -986,7 +985,7 @@ void recruit_result::do_execute()
 	const events::command_disabler disable_commands;
 	const std::string recruit_err = find_recruit_location(get_side(), recruit_location_);
 	if(recruit_err.empty()) {
-		const unit new_unit(&info.units, u, get_side(), true);
+		const unit new_unit(u, get_side(), true);
 		place_recruit(new_unit, recruit_location_, false, preferences::show_ai_moves());
 		statistics::recruit_unit(new_unit);
 		get_my_team(info).spend_gold(u->cost());

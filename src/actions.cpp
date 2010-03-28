@@ -261,7 +261,7 @@ void unit_creator::add_unit(const config &cfg)
 		if(add_to_recall_) {
 			if (recall_list_element==team_.recall_list().end()) {
 				//add to recall list
-				unit new_unit(resources::units, temp_cfg, true,resources::state_of_game);
+				unit new_unit(temp_cfg, true, resources::state_of_game);
 				team_.recall_list().push_back(new_unit);
 				DBG_NG << "inserting unit with id=["<<id<<"] on recall list for side " << new_unit.side() << "\n";
 			} else {
@@ -275,14 +275,13 @@ void unit_creator::add_unit(const config &cfg)
 		temp_cfg.remove_attribute("animate");
 		if (recall_list_element==team_.recall_list().end()) {
 			//new unit
-			unit new_unit(resources::units, temp_cfg, true, resources::state_of_game);
+			unit new_unit(temp_cfg, true, resources::state_of_game);
 			resources::units->add(loc, new_unit);
 			LOG_NG << "inserting unit for side " << new_unit.side() << "\n";
 			post_create(loc,new_unit,animate);
 		} else {
 			//get unit from recall list
 			unit recalled_unit = *recall_list_element;
-			recalled_unit.set_game_context(resources::units);
 			team_.recall_list().erase(recall_list_element);
 			resources::units->add(loc, recalled_unit);
 			LOG_NG << "inserting unit from recall list for side " << recalled_unit.side()<< " with id="<< id << "\n";
@@ -1439,8 +1438,8 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
 			if (reanimator)
 			{
 				LOG_NG << "found unit type:" << reanimator->id() << '\n';
-				unit newunit(&units_, reanimator,
-					attacker.get_unit().side(), true, unit_race::MALE);
+				unit newunit(reanimator, attacker.get_unit().side(),
+					true, unit_race::MALE);
 				newunit.set_attacks(0);
 				newunit.set_movement(0);
 				// Apply variation

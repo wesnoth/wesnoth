@@ -777,7 +777,7 @@ void menu_handler::do_recruit(const std::string &name, int side_num,
 
 	//create a unit with traits
 	recorder.add_recruit(recruit_num, loc);
-	const unit new_unit(&units_, u_type, side_num, true);
+	const unit new_unit(u_type, side_num, true);
 	place_recruit(new_unit, loc, false, true);
 	current_team.spend_gold(u_type->cost());
 	statistics::recruit_unit(new_unit);
@@ -955,7 +955,6 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	}
 	unit un = recall_list_team[res];
 	recorder.add_recall(un.id(), loc);
-	un.set_game_context(&units_);
 	place_recruit(un, loc, true, true);
 	statistics::recall_unit(un);
 	current_team.spend_gold(game_config::recall_cost);
@@ -1126,7 +1125,6 @@ void menu_handler::redo(int side_num)
 			const std::string &msg = find_recruit_location(side_num, loc);
 			if(msg.empty()) {
 				unit un = action.affected_unit;
-				un.set_game_context(&units_);
 				place_recruit(un, loc, true, true);
 				statistics::recall_unit(un);
 				current_team.spend_gold(game_config::recall_cost);
@@ -1404,7 +1402,7 @@ void menu_handler::create_unit_2(mouse_handler& mousehandler)
 		gender = ut.genders().front();
 	}
 
-	unit chosen(&units_, &ut, 1, true, gender);
+	unit chosen(&ut, 1, true, gender);
 	chosen.new_turn();
 
 	//FIXME: the generate name option seems useless now, remove it
@@ -1498,7 +1496,7 @@ void menu_handler::create_unit(mouse_handler& mousehandler)
 
 		const unit_race::GENDER gender = random_gender ? unit_race::NUM_GENDERS : unit_race::MALE;
 
-		unit chosen(&units_, unit_choices[choice], 1, true, gender);
+		unit chosen(unit_choices[choice], 1, true, gender);
 		chosen.new_turn();
 
 		const map_location& loc = mousehandler.get_last_hex();
@@ -3274,7 +3272,7 @@ void console_handler::do_unit() {
 		const map_location loc = i->get_location();
 		menu_handler_.units_.erase(loc);
 		cfg[name] = value;
-		unit new_u(&menu_handler_.units_, cfg, true);
+		unit new_u(cfg, true);
 		menu_handler_.units_.add(loc, new_u);
 	}
 	menu_handler_.gui_->invalidate(i->get_location());
@@ -3321,7 +3319,7 @@ void console_handler::do_create() {
 
 		menu_handler_.units_.erase(loc);
 
-		unit created(&menu_handler_.units_, ut, 1, true);
+		unit created(ut, 1, true);
 		created.new_turn();
 
 		menu_handler_.units_.add(loc, created);

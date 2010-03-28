@@ -947,7 +947,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			}
 
 			const std::string res = find_recruit_location(side_num, loc);
-			const unit new_unit(resources::units, u_type, side_num, true);
+			const unit new_unit(u_type, side_num, true);
 			if (res.empty()) {
 				place_recruit(new_unit, loc, false, !get_replay_source().is_skipping());
 			} else {
@@ -984,7 +984,6 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 
 			if (recall_unit != current_team.recall_list().end()) {
 				statistics::recall_unit(*recall_unit);
-				(*recall_unit).set_game_context(resources::units);
 				place_recruit(*recall_unit, loc, true, !get_replay_source().is_skipping());
 				current_team.recall_list().erase(recall_unit);
 				current_team.spend_gold(game_config::recall_cost);

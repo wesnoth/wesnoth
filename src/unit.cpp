@@ -204,8 +204,7 @@ unit::unit(const unit& o):
 {
 }
 
-unit::unit(unit_map* unitmap, const config& cfg,
-		bool use_traits, game_state* state) :
+unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	cfg_(cfg),
 	loc_(),
 	advances_to_(),
@@ -272,7 +271,7 @@ unit::unit(unit_map* unitmap, const config& cfg,
 	hidden_(false),
 	draw_bars_(false),
 	modifications_(),
-	units_(unitmap),
+	units_(NULL),
 	invisibility_cache_()
 {
 	set_state(STATE_HIDDEN,true);
@@ -550,8 +549,8 @@ void unit::clear_status_caches()
 	units_with_cache.clear();
 }
 
-unit::unit(unit_map *unitmap, const unit_type *t, int side,
-		bool real_unit, unit_race::GENDER gender) :
+unit::unit(const unit_type *t, int side, bool real_unit,
+	unit_race::GENDER gender) :
 	cfg_(),
 	loc_(),
 	advances_to_(),
@@ -619,7 +618,7 @@ unit::unit(unit_map *unitmap, const unit_type *t, int side,
 	hidden_(false),
 	draw_bars_(false),
 	modifications_(),
-	units_(unitmap),
+	units_(NULL),
 	invisibility_cache_()
 {
 

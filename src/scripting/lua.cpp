@@ -1957,7 +1957,7 @@ static int intf_put_unit(lua_State *L)
 				goto error_call_destructors_3;
 		}
 		try {
-			u = new unit(resources::units, cfg, true, resources::state_of_game);
+			u = new unit(cfg, true, resources::state_of_game);
 		} catch (const game::error &e) {
 			error_buffer = "broken unit WML [" + e.message + "]";
 			goto error_call_destructors_2;
@@ -1998,7 +1998,7 @@ static int intf_find_vacant_tile(lua_State *L)
 			if (!luaW_toconfig(L, 3, cfg))
 				goto error_call_destructors;
 			try {
-				u = new unit(resources::units, cfg, false, resources::state_of_game);
+				u = new unit(cfg, false, resources::state_of_game);
 			} catch (const game::error &) {
 				goto error_call_destructors;
 			}
@@ -2057,7 +2057,7 @@ static int intf_create_unit(lua_State *L)
 	if (!luaW_toconfig(L, 1, cfg))
 		goto error_call_destructors_1;
 	try {
-		unit *u = new unit(resources::units, cfg, true, resources::state_of_game);
+		unit *u = new unit(cfg, true, resources::state_of_game);
 		new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(u);
 		lua_pushlightuserdata(L, (void *)&getunitKey);
 		lua_rawget(L, LUA_REGISTRYINDEX);
