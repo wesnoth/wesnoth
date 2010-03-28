@@ -5,7 +5,6 @@ import os, shutil
 import re
 from fnmatch import fnmatch
 from os.path import join, walk
-from collections import defaultdict
 Import("env")
 
 def remove_pot_cdate(path):
@@ -29,6 +28,7 @@ textdomains = filter(os.path.isdir, textdomains)
 linguas = Split(open("LINGUAS").read())
 
 if "pot-update" in COMMAND_LINE_TARGETS:
+    from collections import defaultdict
     domain_sources = defaultdict(list)
     def fill_source_list(arg, dir, files):
         for file in files:
