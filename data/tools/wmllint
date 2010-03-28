@@ -1074,6 +1074,7 @@ def global_sanity_check(filename, lines):
     in_stage = False
     in_cfg = False
     in_goal = False
+    in_set_menu_item = False
     in_facet = False
     in_sound_source = False
     in_remove_sound_source = False
@@ -1113,6 +1114,10 @@ def global_sanity_check(filename, lines):
             in_goal = True
         elif "[/goal]" in lines[i]:
             in_goal = False
+        elif "[set_menu_item]" in lines[i]:
+            in_set_menu_item = True
+        elif "[/set_menu_item]" in lines[i]:
+            in_set_menu_item = False
         elif "[facet]" in lines[i]:
             in_facet = True
         elif "[/facet]" in lines[i]:
@@ -1209,7 +1214,7 @@ def global_sanity_check(filename, lines):
                         present.append(value)
                     elif value in ('narrator', 'unit', 'second_unit') or (value and value[0] in ("$", "{")):
                         continue
-                    elif preamble_seen and not ignore_id and not in_object and not in_cfg and not in_facet and not in_sound_source and not in_remove_sound_source and not in_stage and not in_goal and not value in present:
+                    elif preamble_seen and not ignore_id and not in_object and not in_cfg and not in_facet and not in_sound_source and not in_remove_sound_source and not in_stage and not in_goal and not in_set_menu_item and not value in present:
                         print '"%s", line %d: unknown \'%s\' referred to by id' \
                               % (filename, i+1, value)
                 if markcheck and has_tr_mark and not ("wmllint: ignore" in comment or "wmllint: noconvert" in comment):
