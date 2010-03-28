@@ -92,7 +92,7 @@ public:
 
 // ~~~ Begin iterator code ~~~
 
-	template <template <typename> class iter_policy, typename iter_types>
+	template<typename iter_types>
 	struct iterator_base {
 		typedef unit value_type;
 		typedef std::forward_iterator_tag iterator_category;
@@ -102,26 +102,54 @@ public:
 		typedef typename iter_types::map_type map_type;
 		typedef typename iter_types::iterator_type iterator_type;
 
-		iterator_base() : policy_(), counter_(), map_(NULL), i_() { }
-		iterator_base(iterator_type i, map_type* m) : policy_(i, m), counter_(m), map_(m), i_(i) { }
+		iterator_base()
+		: counter_(), map_(NULL), i_() { }
+		iterator_base(iterator_type i, map_type* m)
+		: counter_(m), map_(m), i_(i) { }
 
-		pointer operator->() const { assert(policy_.valid(i_, map_)); return i_->second.ptr; }
-		reference operator*() const { assert(policy_.valid(i_, map_)); return *i_->second.ptr; }
+		pointer operator->() const
+		{ assert(valid()); return i_->second.ptr; }
+		reference operator*() const
+		{ assert(valid()); return *i_->second.ptr; }
 
-		iterator_base& operator++();
-		iterator_base operator++(int);
+		iterator_base& operator++()
+		{
+			assert(i_ != map_->map_.end());
+			do ++i_;
+			while (i_ != map_->map_.end() && !i_->second.valid);
+			return *this;
+		}
 
-		iterator_base& operator--();
-		iterator_base operator--(int);
+		iterator_base operator++(int)
+		{
+			iterator_base temp(*this);
+			operator++();
+			return temp;
+		}
 
-		bool valid() const { return policy_.valid(i_, map_); }
+		iterator_base& operator--()
+		{
+			assert(i_ != map_->map_.begin());
+			do --i_;
+			while (i_ != map_->map_.begin() && !i_->second.valid);
+			return *this;
+		}
+
+		iterator_base operator--(int)
+		{
+			iterator_base temp(*this);
+			operator--();
+			return temp;
+		}
+
+		bool valid() const
+		{ return i_ != map_->map_.end() && i_->second.valid; }
 
 		bool operator==(const iterator_base& rhs) const { return i_ == rhs.i_; }
 		bool operator!=(const iterator_base& rhs) const { return !operator==(rhs); }
 
-		template <template <typename> class that_policy, typename that_types>
-		iterator_base(const iterator_base<that_policy, that_types>& that) :
-			policy_(that.i_, that.map_),
+		template <typename that_types>
+		iterator_base(const iterator_base<that_types> &that) :
 			counter_(that.counter_),
 			map_(that.map_),
 			i_(that.i_)
@@ -130,10 +158,9 @@ public:
 
 		map_type* get_map() const { return map_; }
 
-		template <template <typename> class X, typename Y> friend struct iterator_base;
+		template<typename Y> friend struct iterator_base;
 
 	private:
-		iter_policy<iter_types> policy_;
 		iterator_counter counter_;
 		map_type* map_;
 		iterator_type i_;
@@ -155,18 +182,6 @@ public:
 		typedef value_type& reference_type;
 	};
 
-	template <typename iter_types>
-	struct unit_policy {
-		typedef typename iter_types::iterator_type iterator_type;
-
-		unit_policy() { }
-		unit_policy(const iterator_type&, const unit_map*) { }
-
-		void update(const iterator_type&, const unit_map*) { }
-
-		bool valid(const iterator_type& i, const unit_map* map) const { return i != map->map_.end() && i->second.valid; }
-	};
-
 // ~~~ End iterator code ~~~
 
 
@@ -185,8 +200,8 @@ public:
 	 * a pair containing the unit that the iterator points to. Basically, as long as the unit is on the
 	 * gamemap somewhere, the iterator will be valid.
 	 */
-	typedef iterator_base<unit_policy, standard_iter_types> unit_iterator;
-	typedef iterator_base<unit_policy, const_iter_types> const_unit_iterator;
+	typedef iterator_base<standard_iter_types> unit_iterator;
+	typedef iterator_base<const_iter_types> const_unit_iterator;
 
 	/** provided as a convenience as unit_map used to be an std::map */
 	typedef unit_iterator iterator;
@@ -299,43 +314,6 @@ void unit_map::erase(const T& iter) {
 
 	if (erase(iter->get_location()) != 1)
 		assert(0);
-}
-
-template <template <typename> class iter_policy, typename iter_types>
-unit_map::iterator_base<iter_policy, iter_types>& unit_map::iterator_base<iter_policy, iter_types>::operator++() {
-	assert(i_ != map_->map_.end());
-	++i_;
-	while (i_ != map_->map_.end() && !i_->second.valid) ++i_;
-
-	if (i_ != map_->map_.end()) policy_.update(i_, map_);
-
-	return *this;
-}
-
-template <template <typename> class iter_policy, typename iter_types>
-unit_map::iterator_base<iter_policy, iter_types> unit_map::iterator_base<iter_policy, iter_types>::operator++(int) {
-	unit_map::iterator_base<iter_policy, iter_types> temp(*this);
-	operator++();
-	return temp;
-}
-
-template <template <typename> class iter_policy, typename iter_types>
-unit_map::iterator_base<iter_policy, iter_types>& unit_map::iterator_base<iter_policy, iter_types>::operator--() {
-	assert(i_ != map_->map_.begin());
-
-	--i_;
-	while (i_ != map_->map_.begin() && !i_->second.valid) --i_;
-
-	if (i_->second.valid) policy_.update(i_, map_);
-
-	return *this;
-}
-
-template <template <typename> class iter_policy, typename iter_types>
-unit_map::iterator_base<iter_policy, iter_types> unit_map::iterator_base<iter_policy, iter_types>::operator--(int) {
-	unit_map::iterator_base<iter_policy, iter_types> temp(*this);
-	operator--();
-	return temp;
 }
 
 #endif	// UNIT_MAP_H_INCLUDED
