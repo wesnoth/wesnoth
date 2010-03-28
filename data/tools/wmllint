@@ -932,7 +932,7 @@ def global_sanity_check(filename, lines):
                     (key, prefix, value, comment) = fields 
                     if key == 'name' and value == 'die':
                         die_event = True
-            elif parent == "[filter]":
+            elif die_event and not filter_subject and parent == "[filter]":
                 # Check to see if it has a filter subject
                 if "id" in nav.text:
                     try:
@@ -948,7 +948,6 @@ def global_sanity_check(filename, lines):
                     if key in ("id", "speaker"):
                         if (value == filter_subject) or (value == "unit"):
                             print '"%s", line %d: %s speaks in his/her death event' % (filename, nav.lineno+1, value)
-                        filter_subject = None
     # Collect information on defined movement types and races
     for nav in WmllintIterator(lines, filename):
         above = nav.ancestors()
