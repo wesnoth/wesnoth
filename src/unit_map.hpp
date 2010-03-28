@@ -92,9 +92,6 @@ public:
 
 // ~~~ Begin iterator code ~~~
 
-	template <typename X, typename Y>
-	struct convertible;
-
 	template <template <typename> class iter_policy, typename iter_types>
 	struct iterator_base {
 		typedef unit value_type;
@@ -303,18 +300,6 @@ void unit_map::erase(const T& iter) {
 	if (erase(iter->get_location()) != 1)
 		assert(0);
 }
-
-// define allowed conversions.
-template <>
-struct unit_map::convertible<unit_map::standard_iter_types, unit_map::const_iter_types> { };
-
-template <typename T>
-struct unit_map::convertible<T, T> { };
-
-template <typename X, typename Y>
-struct unit_map::convertible<unit_map::unit_policy<X>, unit_map::unit_policy<Y> > { };
-
-
 
 template <template <typename> class iter_policy, typename iter_types>
 unit_map::iterator_base<iter_policy, iter_types>& unit_map::iterator_base<iter_policy, iter_types>::operator++() {
