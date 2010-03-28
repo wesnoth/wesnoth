@@ -484,12 +484,11 @@ void server::load_config() {
 
 	accepted_versions_.clear();
 	const std::string& versions = cfg_["versions_accepted"];
-	if (versions.empty() == false) {
+	if (versions.empty()) {
 		accepted_versions_.push_back("1.8*");
 		accepted_versions_.push_back("test");
 	} else {
-		accepted_versions_.push_back(game_config::version);
-		accepted_versions_.push_back("test");
+		accepted_versions_ = utils::split(versions);
 	}
 
 	redirected_versions_.clear();
