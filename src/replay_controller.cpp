@@ -15,6 +15,7 @@
 
 #include "global.hpp"
 
+#include "foreach.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_events.hpp"
 #include "gettext.hpp"
@@ -319,9 +320,9 @@ void replay_controller::play_side(const unsigned int /*team_index*/, bool){
 			finish_side_turn();
 
 			// This is necessary for replays in order to show possible movements.
-			for (unit_map::iterator uit = units_.begin(); uit != units_.end(); ++uit) {
-				if (uit->second.side() != player_number_) {
-					uit->second.new_turn();
+			foreach (unit &u, units_) {
+				if (u.side() != player_number_) {
+					u.new_turn();
 				}
 			}
 		}

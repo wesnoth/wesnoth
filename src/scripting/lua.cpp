@@ -418,7 +418,7 @@ unit *lua_unit::get()
 	if (ptr) return ptr;
 	unit_map::unit_iterator ui = resources::units->find(uid);
 	if (!ui.valid()) return NULL;
-	return &ui->second;
+	return &*ui;
 }
 
 void lua_unit::reload()
@@ -870,9 +870,9 @@ static int intf_get_units(lua_State *L)
 	for (unit_map::const_unit_iterator ui = units.begin(), ui_end = units.end();
 	     ui != ui_end; ++ui)
 	{
-		if (!filter.null() && !ui->second.matches_filter(filter, ui->first))
+		if (!filter.null() && !ui->matches_filter(filter, ui->get_location()))
 			continue;
-		new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(ui->second.underlying_id());
+		new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(ui->underlying_id());
 		lua_pushvalue(L, 1);
 		lua_setmetatable(L, 3);
 		lua_rawseti(L, 2, i);
@@ -1713,7 +1713,7 @@ static int intf_find_path(lua_State *L)
 			goto error_call_destructors_2;
 		src.y = lua_tointeger(L, arg) - 1;
 		unit_map::const_unit_iterator ui = units.find(src);
-		if (ui.valid()) u = &ui->second;
+		if (ui.valid()) u = &*ui;
 		++arg;
 	}
 
@@ -1840,7 +1840,7 @@ static int intf_find_reach(lua_State *L)
 		unit_map::const_unit_iterator ui = units.find(src);
 		if (!ui.valid())
 			goto error_call_destructors_3;
-		u = &ui->second;
+		u = &*ui;
 		++arg;
 	}
 
@@ -2461,7 +2461,7 @@ bool LuaKernel::run_filter(char const *name, unit const &u)
 	lua_rawget(L, LUA_GLOBALSINDEX);
 
 	// Pass the unit as argument.
-	new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(ui->second.underlying_id());
+	new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(ui->underlying_id());
 	lua_pushlightuserdata(L, (void *)&getunitKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_setmetatable(L, -2);

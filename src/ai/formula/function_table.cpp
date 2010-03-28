@@ -718,8 +718,8 @@ private:
 		unit_map::const_iterator un = ai_.get_info().units.begin();
 		unit_map::const_iterator end = ai_.get_info().units.end();
 		while (un != end) {
-			if (distance_between(loc, un->first) <= range) {
-				if (un->second.side() != ai_.get_side()) {//fixme: ignores allied units
+			if (distance_between(loc, un->get_location()) <= range) {
+				if (un->side() != ai_.get_side()) {//fixme: ignores allied units
 					vars.push_back(variant(new unit_callable(*un)));
 				}
 			}
@@ -762,7 +762,7 @@ private:
 		}
 
 		battle_context bc(ai_.get_info().units, convert_variant<location_callable>(args()[1]->evaluate(variables,add_debug_info(fdb,1,"calculate_outcome:attacker_attack_location")))->loc(),
-			defender_location, weapon, -1, 1.0, NULL, &ai_.get_info().units.find(attacker_location)->second);
+			defender_location, weapon, -1, 1.0, NULL, &*ai_.get_info().units.find(attacker_location));
 		std::vector<double> hp_dist = bc.get_attacker_combatant().hp_dist;
 		std::vector<double>::iterator it = hp_dist.begin();
 		int i = 0;
@@ -1024,7 +1024,7 @@ private:
 
                 std::set<map_location> allowed_teleports = ai_.get_allowed_teleports(unit_it);
 
-		pathfind::emergency_path_calculator em_calc(unit_it->second, ai_.get_info().map);
+		pathfind::emergency_path_calculator em_calc(*unit_it, ai_.get_info().map);
 
                 pathfind::plain_route route = pathfind::a_star_search(src, dst, 1000.0, &em_calc, ai_.get_info().map.w(), ai_.get_info().map.h(), &allowed_teleports);
 
@@ -1033,7 +1033,7 @@ private:
                 }
 
                 for (std::vector<map_location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
-                    if( unit_it->second.movement_cost(ai_.get_info().map[*loc_iter]) < 99 )
+                    if (unit_it->movement_cost(ai_.get_info().map[*loc_iter]) < 99 )
                         locations.push_back( variant( new location_callable(*loc_iter) ));
                     else
                         break;

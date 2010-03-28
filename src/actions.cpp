@@ -221,7 +221,7 @@ map_location unit_creator::find_location(const config &cfg)
 			unit_map::const_iterator leader = resources::units->find_leader(team_.side());
 			//todo: take 'leader in recall list' possibility into account
 			if (leader.valid()) {
-				loc = leader->first;
+				loc = leader->get_location();
 			} else {
 				loc = start_pos_;
 			}
@@ -356,12 +356,11 @@ std::string find_recruit_location(int side, map_location &recruit_loc, bool need
 		u_end = resources::units->end(), leader = u_end, leader_keep = u_end;
 
 	for(; u != u_end; ++u) {
-		if(u->second.can_recruit() &&
-				static_cast<int>(u->second.side()) == side) {
+		if (u->can_recruit() && u->side() == side) {
 			leader = u;
-			if (!need_castle || resources::game_map->is_keep(leader->first)) {
+			if (!need_castle || resources::game_map->is_keep(leader->get_location())) {
 				leader_keep = leader;
-				if (can_recruit_on(*resources::game_map, leader_keep->first,
+				if (can_recruit_on(*resources::game_map, leader_keep->get_location(),
 						recruit_loc))
 					break;
 			}
@@ -375,21 +374,21 @@ std::string find_recruit_location(int side, map_location &recruit_loc, bool need
 	assert(leader != u_end || !need_castle);
 
 	if (need_castle && leader_keep == u_end) {
-		LOG_NG << "Leader not on start: leader is on " << leader->first << '\n';
+		LOG_NG << "Leader not on start: leader is on " << leader->get_location() << '\n';
 		return _("You must have your leader on a keep to recruit or recall units.");
 	}
 
 	if(need_castle) {
 		if (resources::units->find(recruit_loc) != resources::units->end() ||
-		    !can_recruit_on(*resources::game_map, leader_keep->first, recruit_loc))
+		    !can_recruit_on(*resources::game_map, leader_keep->get_location(), recruit_loc))
 		{
 			recruit_loc = map_location();
 		}
 	}
 
 	if (!resources::game_map->on_board(recruit_loc)) {
-		recruit_loc = find_vacant_tile(*resources::game_map, *resources::units, leader_keep->first,
-					       need_castle ? pathfind::VACANT_CASTLE : pathfind::VACANT_ANY);
+		recruit_loc = find_vacant_tile(*resources::game_map, *resources::units, leader_keep->get_location(),
+			need_castle ? pathfind::VACANT_CASTLE : pathfind::VACANT_ANY);
 	} else if (resources::units->count(recruit_loc) == 1) {
 	  recruit_loc = find_vacant_tile(*resources::game_map, *resources::units, recruit_loc, pathfind::VACANT_ANY);
 	}
@@ -432,17 +431,17 @@ void place_recruit(const unit &u, const map_location &recruit_location,
 		game_events::fire("prerecruit",recruit_location);
 	}
 	const unit_map::iterator new_unit_itor = resources::units->find(recruit_location);
-	if (new_unit_itor != resources::units->end()) new_unit_itor->second.set_hidden(false);
+	if (new_unit_itor.valid()) new_unit_itor->set_hidden(false);
 	unit_map::iterator leader = resources::units->begin();
 	for(; leader != resources::units->end(); ++leader)
-		if(leader->second.can_recruit()
-				&& static_cast<int>(leader->second.side()) == new_unit.side()
-				&& resources::game_map->is_keep(leader->first)
-				&& can_recruit_on(*resources::game_map, leader->first, recruit_location))
+		if (leader->can_recruit() &&
+		    leader->side() == new_unit.side() &&
+		    resources::game_map->is_keep(leader->get_location()) &&
+		    can_recruit_on(*resources::game_map, leader->get_location(), recruit_location))
 			break;
 	if (show) {
 		if (leader.valid()) {
-			unit_display::unit_recruited(recruit_location,leader->first);
+			unit_display::unit_recruited(recruit_location, leader->get_location());
 		} else {
 			unit_display::unit_recruited(recruit_location);
 		}
@@ -495,7 +494,7 @@ map_location under_leadership(const unit_map& units,
 	if(un == units.end()) {
 		return map_location::null_location;
 	}
-	unit_ability_list abil = un->second.get_abilities("leadership");
+	unit_ability_list abil = un->get_abilities("leadership");
 	if(bonus) {
 		*bonus = abil.highest("value").first;
 	}
@@ -507,8 +506,8 @@ battle_context::battle_context(const unit_map& units,
 		int attacker_weapon, int defender_weapon, double aggression, const combatant *prev_def, const unit* attacker_ptr)
 : attacker_stats_(NULL), defender_stats_(NULL), attacker_combatant_(NULL), defender_combatant_(NULL)
 {
-	const unit& attacker = attacker_ptr ? *attacker_ptr : units.find(attacker_loc)->second;
-	const unit& defender = units.find(defender_loc)->second;
+	const unit &attacker = attacker_ptr ? *attacker_ptr : *units.find(attacker_loc);
+	const unit &defender = *units.find(defender_loc);
 	const double harm_weight = 1.0 - aggression;
 
 	if (attacker_weapon == -1 && attacker.attacks().size() == 1 && attacker.attacks()[0].attack_weight() > 0 )
@@ -1153,20 +1152,20 @@ attack::unit_info::unit_info(const map_location& loc, int weapon, unit_map& unit
 {
 	unit_map::iterator i = units_.find(loc_);
 	if (!i.valid()) return;
-	id_ = i->second.underlying_id();
+	id_ = i->underlying_id();
 }
 
 unit &attack::unit_info::get_unit()
 {
 	unit_map::iterator i = units_.find(loc_);
-	assert(i.valid() && i->second.underlying_id() == id_);
-	return i->second;
+	assert(i.valid() && i->underlying_id() == id_);
+	return *i;
 }
 
 bool attack::unit_info::valid()
 {
 	unit_map::iterator i = units_.find(loc_);
-	return i.valid() && i->second.underlying_id() == id_;
+	return i.valid() && i->underlying_id() == id_;
 }
 
 std::string attack::unit_info::dump()
@@ -1709,18 +1708,17 @@ bool get_village(const map_location& loc, int side, int *action_timebonus)
 // Simple algorithm: no maximum number of patients per healer.
 void reset_resting(unit_map& units, int side)
 {
-	for (unit_map::iterator i = units.begin(); i != units.end(); ++i) {
-		if (i->second.side() == side)
-			i->second.set_resting(true);
+	foreach (unit &u, units) {
+		if (u.side() == side)
+			u.set_resting(true);
 	}
 }
 
 /* Contains all the data used to display healing */
 struct unit_healing_struct {
-  unit *healed;
-  map_location *healed_loc;
-  std::vector<unit_map::iterator> healers;
-  int healing;
+	unit *healed;
+	std::vector<unit *> healers;
+	int healing;
 };
 
 void calculate_healing(int side, bool update_display)
@@ -1728,28 +1726,27 @@ void calculate_healing(int side, bool update_display)
 	DBG_NG << "beginning of healing calculations\n";
 	unit_map &units = *resources::units;
 
-        /* list used to display healing after having computed it */
-        std::list<struct unit_healing_struct> l;
+	std::list<unit_healing_struct> l;
 
 	// We look for all allied units, then we see if our healer is near them.
-	for (unit_map::iterator i = units.begin(); i != units.end(); ++i) {
+	foreach (unit &u, units) {
 
-		if (i->second.get_state("unhealable") || i->second.incapacitated())
+		if (u.get_state("unhealable") || u.incapacitated())
 			continue;
 
-		DBG_NG << "found healable unit at (" << i->first << ")\n";
+		DBG_NG << "found healable unit at (" << u.get_location() << ")\n";
 
 		unit_map::iterator curer = units.end();
-		std::vector<unit_map::iterator> healers;
+		std::vector<unit *> healers;
 
 		int healing = 0;
 		int rest_healing = 0;
 
 		std::string curing;
 
-		unit_ability_list heal = i->second.get_abilities("heals");
+		unit_ability_list heal = u.get_abilities("heals");
 
-		const bool is_poisoned = i->second.get_state(unit::STATE_POISONED);
+		const bool is_poisoned = u.get_state(unit::STATE_POISONED);
 		if(is_poisoned) {
 			// Remove the enemies' healers to determine if poison is slowed or cured
 			for (std::vector<std::pair<const config *, map_location> >::iterator
@@ -1758,7 +1755,7 @@ void calculate_healing(int side, bool update_display)
 				unit_map::iterator potential_healer = units.find(h_it->second);
 
 				assert(potential_healer != units.end());
-				if ((*resources::teams)[potential_healer->second.side() - 1].is_enemy(side)) {
+				if ((*resources::teams)[potential_healer->side() - 1].is_enemy(side)) {
 					h_it = heal.cfgs.erase(h_it);
 				} else {
 					++h_it;
@@ -1770,7 +1767,7 @@ void calculate_healing(int side, bool update_display)
 				if((*heal_it->first)["poison"] == "cured") {
 					curer = units.find(heal_it->second);
 					// Full curing only occurs on the healer turn (may be changed)
-					if(curer->second.side() == side) {
+					if(curer->side() == side) {
 						curing = "cured";
 					} else if(curing != "cured") {
 						curing = "slowed";
@@ -1789,7 +1786,7 @@ void calculate_healing(int side, bool update_display)
 
 			unit_map::iterator potential_healer = units.find(h_it->second);
 			assert(potential_healer != units.end());
-			if(potential_healer->second.side() != side) {
+			if(potential_healer->side() != side) {
 				h_it = heal.cfgs.erase(h_it);
 			} else {
 				++h_it;
@@ -1800,15 +1797,15 @@ void calculate_healing(int side, bool update_display)
 		healing = heal_effect.get_composite_value();
 
 		for(std::vector<unit_abilities::individual_effect>::const_iterator heal_loc = heal_effect.begin(); heal_loc != heal_effect.end(); ++heal_loc) {
-			healers.push_back(units.find(heal_loc->loc));
+			healers.push_back(&*units.find(heal_loc->loc));
 		}
 
 		if (!healers.empty()) {
 			DBG_NG << "Unit has " << healers.size() << " potential healers\n";
 		}
 
-		if(i->second.side() == side) {
-			unit_ability_list regen = i->second.get_abilities("regenerate");
+		if (u.side() == side) {
+			unit_ability_list regen = u.get_abilities("regenerate");
 			unit_abilities::effect regen_effect(regen,0,false);
 			if(regen_effect.get_composite_value() > healing) {
 				healing = regen_effect.get_composite_value();
@@ -1825,7 +1822,7 @@ void calculate_healing(int side, bool update_display)
 					}
 				}
 			}
-			if (int h = resources::game_map->gives_healing(i->first)) {
+			if (int h = resources::game_map->gives_healing(u.get_location())) {
 				if (h > healing) {
 					healing = h;
 					healers.clear();
@@ -1834,27 +1831,27 @@ void calculate_healing(int side, bool update_display)
 				curing = "cured";
 				curer = units.end();
 			}
-			if(i->second.resting() || i->second.is_healthy()) {
+			if (u.resting() || u.is_healthy()) {
 				rest_healing = game_config::rest_heal_amount;
 				healing += rest_healing;
 			}
 		}
 		if(is_poisoned) {
 			if(curing == "cured") {
-				i->second.set_state(unit::STATE_POISONED,false);
+				u.set_state(unit::STATE_POISONED, false);
 				healing = rest_healing;
 				healers.clear();
 				if (curer != units.end())
-					healers.push_back(curer);
+					healers.push_back(&*curer);
 			} else if(curing == "slowed") {
 				healing = rest_healing;
 				healers.clear();
 				if (curer != units.end())
-					healers.push_back(curer);
+					healers.push_back(&*curer);
 			} else {
 				healers.clear();
 				healing = rest_healing;
-				if(i->second.side() == side) {
+				if (u.side() == side) {
 					healing -= game_config::poison_amount;
 				}
 			}
@@ -1864,8 +1861,8 @@ void calculate_healing(int side, bool update_display)
 			continue;
 		}
 
-		int pos_max = i->second.max_hitpoints() - i->second.hitpoints();
-		int neg_max = -(i->second.hitpoints() - 1);
+		int pos_max = u.max_hitpoints() - u.hitpoints();
+		int neg_max = -(u.hitpoints() - 1);
 		if(healing > 0 && pos_max <= 0) {
 			// Do not try to "heal" if HP >= max HP
 			continue;
@@ -1882,58 +1879,53 @@ void calculate_healing(int side, bool update_display)
 
 
 		if (!recorder.is_skipping() && update_display &&
-		    !(i->second.invisible(i->first, units, *resources::teams) &&
+		    !(u.invisible(u.get_location(), units, *resources::teams) &&
 		      (*resources::teams)[resources::screen->viewing_team()].is_enemy(side)))
 		{
-                  struct unit_healing_struct uhs = {
-                    &i->second,
-                    &i->first,
-                    healers,
-                    healing
-                  };
-                  l.push_front(uhs);
+			unit_healing_struct uhs = { &u, healers, healing };
+			l.push_front(uhs);
 		}
 		if (healing > 0)
-			i->second.heal(healing);
+			u.heal(healing);
 		else if (healing < 0)
-			i->second.take_hit(-healing);
+			u.take_hit(-healing);
 		resources::screen->invalidate_unit();
 	}
 
-        /* display healing with nearest first algorithm */
-        if (!l.empty()) {
+	// Display healing with nearest first algorithm.
+	if (!l.empty()) {
 
-          /* the first unit to be healed is chosen arbitrarily */
-          struct unit_healing_struct uhs = l.front();
-          l.pop_front();
+		// The first unit to be healed is chosen arbitrarily.
+		unit_healing_struct uhs = l.front();
+		l.pop_front();
 
-          unit_display::unit_healing(*uhs.healed, *uhs.healed_loc,
-                                     uhs.healers, uhs.healing);
+		unit_display::unit_healing(*uhs.healed, uhs.healed->get_location(),
+			uhs.healers, uhs.healing);
 
-          /* next unit to be healed is nearest from uhs left in list l */
-          while (!l.empty()) {
+		/* next unit to be healed is nearest from uhs left in list l */
+		while (!l.empty()) {
 
-            std::list<struct unit_healing_struct>::iterator nearest;
-            int min_d = INT_MAX;
+			std::list<unit_healing_struct>::iterator nearest;
+			int min_d = INT_MAX;
 
-            /* for each unit in l, remember nearest */
-            for (std::list<struct unit_healing_struct>::iterator i = l.begin();
-                 i != l.end() ; ++i) {
-              //int d = uhs.square_dist(*i);
-              int d = distance_between(*uhs.healed_loc, *i->healed_loc);
-              if (d < min_d) {
-                min_d = d;
-                nearest = i;
-              }
-            }
+			/* for each unit in l, remember nearest */
+			for (std::list<unit_healing_struct>::iterator i =
+			     l.begin(), i_end = l.end(); i != i_end; ++i)
+			{
+				int d = distance_between(uhs.healed->get_location(), i->healed->get_location());
+				if (d < min_d) {
+					min_d = d;
+					nearest = i;
+				}
+			}
 
-            uhs = *nearest;
-            l.erase(nearest);
+			uhs = *nearest;
+			l.erase(nearest);
 
-            unit_display::unit_healing(*uhs.healed, *uhs.healed_loc,
-                                       uhs.healers, uhs.healing);
-          }
-        }
+			unit_display::unit_healing(*uhs.healed, uhs.healed->get_location(),
+				uhs.healers, uhs.healing);
+		}
+	}
 
 	DBG_NG << "end of healing calculations\n";
 }
@@ -1959,20 +1951,20 @@ void advance_unit(map_location loc, const std::string &advance_to)
 		return;
 	}
 	// original_type is not a reference, since the unit may disappear at any moment.
-	std::string original_type = u->second.type_id();
+	std::string original_type = u->type_id();
 	LOG_NG << "firing advance event at " << loc <<"\n";
 
 	game_events::fire("advance",loc);
 
-	if(!u.valid() || u->second.experience() < u->second.max_experience()
-	|| u->second.type_id() != original_type)
+	if (!u.valid() || u->experience() < u->max_experience() ||
+	    u->type_id() != original_type)
 	{
 		LOG_NG << "WML has invalidated the advancing unit, abort\n";
 		return;
 	}
 
-	loc = u->first;
-	unit new_unit = get_advanced_unit(u->second, advance_to);
+	loc = u->get_location();
+	unit new_unit = get_advanced_unit(*u, advance_to);
 	statistics::advance_unit(new_unit);
 
 	preferences::encountered_units().insert(new_unit.type_id());
@@ -2081,14 +2073,14 @@ namespace {
 
 			const unit_map::const_iterator sighted = resources::units->find(*it);
 			if (sighted.valid() &&
-			    (!sighted->second.invisible(*it, *resources::units, *resources::teams)
-			     || !tm.is_enemy(sighted->second.side())))
+			    (!sighted->invisible(*it, *resources::units, *resources::teams)
+			     || !tm.is_enemy(sighted->side())))
 			{
 				//check if we know this unit, but we always know ourself
 				//just in case we managed to move on a fogged hex (teleport)
 				if(seen_units != NULL && known_units != NULL
 						&& known_units->count(*it) == 0 && *it != loc) {
-					if (!(sighted->second.get_state(unit::STATE_PETRIFIED)))
+					if (!(sighted->get_state(unit::STATE_PETRIFIED)))
 					{
 						seen_units->insert(*it);
 					}
@@ -2114,12 +2106,11 @@ void recalculate_fog(int side)
 
 	tm.refog();
 
-	for (unit_map::iterator i = resources::units->begin(); i != resources::units->end(); ++i)
+	foreach (unit &u, *resources::units)
 	{
-		if (i->second.side() == side) {
-			const unit_movement_resetter move_resetter(i->second);
-
-			clear_shroud_unit(i->first, side);
+		if (u.side() == side) {
+			const unit_movement_resetter move_resetter(u);
+			clear_shroud_unit(u.get_location(), side);
 		}
 	}
 
@@ -2137,12 +2128,11 @@ bool clear_shroud(int side)
 
 	bool result = false;
 
-	unit_map::iterator i;
-	for (i = resources::units->begin(); i != resources::units->end(); ++i) {
-		if (i->second.side() == side) {
-			const unit_movement_resetter move_resetter(i->second);
-
-			result |= clear_shroud_unit(i->first, side);
+	foreach (unit &u, *resources::units)
+	{
+		if (u.side() == side) {
+			const unit_movement_resetter move_resetter(u);
+			result |= clear_shroud_unit(u.get_location(), side);
 		}
 	}
 
@@ -2189,10 +2179,10 @@ size_t move_unit(move_unit_spectator *move_spectator,
 	//don't modify goto if we're have a spectator
 	//if it is present, then the caller code is responsible for modifying gotos
 	if (move_spectator==NULL) {
-		ui->second.set_goto(map_location());
+		ui->set_goto(map_location());
 	}
 
-	size_t team_num = ui->second.side()-1;
+	size_t team_num = ui->side() - 1;
 	team *tm = &teams[team_num];
 
 	const bool check_shroud = should_clear_shroud && tm->auto_shroud_updates() &&
@@ -2200,18 +2190,18 @@ size_t move_unit(move_unit_spectator *move_spectator,
 
 	std::set<map_location> known_units;
 	if(check_shroud) {
-		for(unit_map::const_iterator u = units.begin(); u != units.end(); ++u) {
-			if (!tm->fogged(u->first)) {
-				known_units.insert(u->first);
-				tm->see(u->second.side() - 1);
+		foreach (const unit &u, units) {
+			if (!tm->fogged(u.get_location())) {
+				known_units.insert(u.get_location());
+				tm->see(u.side() - 1);
 			}
 		}
 	}
 
 	// See how far along the given path we can move.
-	const int starting_moves = ui->second.movement_left();
+	const int starting_moves = ui->movement_left();
 	int moves_left = starting_moves;
-	std::vector<map_location> starting_waypoints = ui->second.waypoints();
+	std::vector<map_location> starting_waypoints = ui->waypoints();
 	std::set<map_location> seen_units;
 	std::set<map_location> petrified_units;
 	bool discovered_unit = false;
@@ -2221,10 +2211,10 @@ size_t move_unit(move_unit_spectator *move_spectator,
 	std::string ambushed_string;
 
 	for(step = route.begin()+1; step != route.end(); ++step) {
-		const bool skirmisher = ui->second.get_ability_bool("skirmisher",*step);
+		const bool skirmisher = ui->get_ability_bool("skirmisher",*step);
 		const t_translation::t_terrain terrain = map[*step];
 
-		const int cost = ui->second.movement_cost(terrain);
+		const int cost = ui->movement_cost(terrain);
 
 		//check whether a unit was sighted and whether it should interrupt move
 		bool sighted_interrupts = false;
@@ -2240,7 +2230,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 					continue;
 				}
 
-				if (tm->is_enemy(u->second.side())) {
+				if (tm->is_enemy(u->side())) {
 					sighted_interrupts = true;
 					break;
 				}
@@ -2256,7 +2246,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 
 		const unit_map::const_iterator enemy_unit = units.find(*step);
 		if (enemy_unit != units.end()) {
-			if (tm->is_enemy(enemy_unit->second.side())) {
+			if (tm->is_enemy(enemy_unit->side())) {
 				if (move_spectator!=NULL) {
 					move_spectator->set_ambusher(enemy_unit);
 				}
@@ -2277,7 +2267,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 		moves_left -= cost;
 
 		// remove passed waypoints
-		std::vector<map_location>& waypoints = ui->second.waypoints();
+		std::vector<map_location>& waypoints = ui->waypoints();
 		if(!waypoints.empty() && waypoints.front() == *step) {
 			waypoints.erase(waypoints.begin());
 		}
@@ -2294,17 +2284,17 @@ size_t move_unit(move_unit_spectator *move_spectator,
 				DBG_NG << "checking for units from " << (step->x+1) << "," << (step->y+1) << "\n";
 
 				// Temporarily reset the unit's moves to full
-				const unit_movement_resetter move_resetter(ui->second);
+				const unit_movement_resetter move_resetter(*ui);
 
 				// We have to swap out any unit that is already in the hex,
 				// so we can put our unit there, then we'll swap back at the end.
-				unit temp_unit(ui->second);
+				unit temp_unit(*ui);
 				const temporary_unit_placer unit_placer(units,*step,temp_unit);
 				if (tm->auto_shroud_updates()) {
 					should_clear_stack |= clear_shroud_unit(*step,
-						ui->second.side(), &known_units, &seen_units, &petrified_units);
+						ui->side(), &known_units, &seen_units, &petrified_units);
 				} else {
-					clear_shroud_unit(*step, ui->second.side(),
+					clear_shroud_unit(*step, ui->side(),
 						&known_units, &seen_units, &petrified_units);
 				}
 				if(should_clear_stack) {
@@ -2313,10 +2303,10 @@ size_t move_unit(move_unit_spectator *move_spectator,
 			}
 		}
 		// we also refreh its side, just in case if an event change it
-		team_num = ui->second.side()-1;
+		team_num = ui->side() - 1;
 		tm = &teams[team_num];
 
-		if (!skirmisher && pathfind::enemy_zoc(units, teams, *step, *tm, ui->second.side())) {
+		if (!skirmisher && pathfind::enemy_zoc(units, teams, *step, *tm, ui->side())) {
 			moves_left = 0;
 		}
 
@@ -2326,12 +2316,12 @@ size_t move_unit(move_unit_spectator *move_spectator,
 
 		for(int i = 0; i != 6; ++i) {
 			// Check if we are checking ourselves
-			if(adjacent[i] == ui->first)
+			if (adjacent[i] == ui->get_location())
 				continue;
 
 			const unit_map::const_iterator it = units.find(adjacent[i]);
-			if (it != units.end() && tm->is_enemy(it->second.side()) &&
-			    it->second.invisible(it->first, units, teams))
+			if (it != units.end() && tm->is_enemy(it->side()) &&
+			    it->invisible(it->get_location(), units, teams))
 			{
 				discovered_unit = true;
 				should_clear_stack = true;
@@ -2340,7 +2330,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 					move_spectator->set_ambusher(it);
 				}
 
-				unit_ability_list hides = it->second.get_abilities("hides");
+				unit_ability_list hides = it->get_abilities("hides");
 
 				std::vector<std::pair<const config *, map_location> >::const_iterator hide_it = hides.cfgs.begin();
 				// we only use the first valid alert message
@@ -2359,7 +2349,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 		map_location const &loc = steps.back();
 		if (units.count(loc) == 0)
 			break;
-		moves_left += ui->second.movement_cost(map[loc]);
+		moves_left += ui->movement_cost(map[loc]);
 		steps.pop_back();
 	}
 
@@ -2368,17 +2358,17 @@ size_t move_unit(move_unit_spectator *move_spectator,
 	// If we can't get all the way there and have to set a go-to.
 	if(steps.size() != route.size() && discovered_unit == false) {
 		if(seen_units.empty() == false) {
-			ui->second.set_interrupted_move(route.back());
+			ui->set_interrupted_move(route.back());
 		} else {
 
 			//don't modify goto if we're have a spectator
 			//if it is present, then the caller code is responsible for modifying gotos
 			if (move_spectator==NULL) {
-				ui->second.set_goto(route.back());
+				ui->set_goto(route.back());
 			}
 		}
 	} else {
-		ui->second.set_interrupted_move(map_location());
+		ui->set_interrupted_move(map_location());
 	}
 
 	if(steps.size() < 2) {
@@ -2388,8 +2378,8 @@ size_t move_unit(move_unit_spectator *move_spectator,
 	if(next_unit != NULL)
 		*next_unit = steps.back();
 
-	map_location::DIRECTION orig_dir = ui->second.facing();
-	unit_display::move_unit(steps, ui->second, teams, show_move);
+	map_location::DIRECTION orig_dir = ui->facing();
+	unit_display::move_unit(steps, *ui, teams, show_move);
 
 	// before moving the real unit, check if it may uncover invisible units
 	// and, if any, invalidate their hexes to show their visibility's change
@@ -2397,18 +2387,18 @@ size_t move_unit(move_unit_spectator *move_spectator,
 	get_adjacent_tiles(steps.back(), adjacent);
 	for(int i = 0; i != 6; ++i) {
 		const unit_map::const_iterator it = units.find(adjacent[i]);
-		if (it != units.end() && tm->is_enemy(it->second.side()) &&
-				it->second.invisible(it->first, units, teams))
+		if (it != units.end() && tm->is_enemy(it->side()) &&
+				it->invisible(it->get_location(), units, teams))
 			disp.invalidate(adjacent[i]);
 	}
 
 	// move the real unit
-	units.move(ui->first, steps.back());
+	units.move(ui->get_location(), steps.back());
 	unit::clear_status_caches();
 
 	ui = units.find(steps.back());
-	ui->second.set_movement(moves_left);
-	ui->second.set_standing();
+	ui->set_movement(moves_left);
+	ui->set_standing();
 
 	disp.invalidate_unit_after_move(steps.front(), steps.back());
 
@@ -2425,7 +2415,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 		orig_village_owner = village_owner(steps.back(),teams);
 
 		if(size_t(orig_village_owner) != team_num) {
-			ui->second.set_movement(0);
+			ui->set_movement(0);
 			event_mutated = get_village(steps.back(), team_num + 1, &action_time_bonus);
 		}
 	}
@@ -2434,7 +2424,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 	// Show the final move animation step
 	disp.draw();
 
-	if ( teams[ui->second.side()-1].uses_shroud() || teams[ui->second.side()-1].uses_fog())
+	if (teams[ui->side() - 1].uses_shroud() || teams[ui->side() - 1].uses_fog())
 	{
 		std::set<map_location>::iterator sight_it;
 		const std::string sighted_str("sighted");
@@ -2472,7 +2462,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 		} else {
 			// MP_COUNTDOWN: added param
 			undo_stack->push_back(
-				undo_action(maybe_ui->second, steps,
+				undo_action(*maybe_ui, steps,
 						starting_waypoints, starting_moves,
 						action_time_bonus, orig_village_owner, orig_dir));
 		}
@@ -2509,7 +2499,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 				continue;
 			}
 
-			if (tm->is_enemy(u->second.side())) {
+			if (tm->is_enemy(u->side())) {
 				++nenemies;
 				if (move_spectator!=NULL) {
 					move_spectator->add_seen_enemy(u);
@@ -2522,7 +2512,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 			}
 
 			DBG_NG << "processed...\n";
-			tm->see(u->second.side() - 1);
+			tm->see(u->side() - 1);
 		}
 
 		// The message we display is different depending on
@@ -2590,10 +2580,9 @@ bool unit_can_move(const unit &u)
 	for(int n = 0; n != 6; ++n) {
 		if (resources::game_map->on_board(locs[n])) {
 			const unit_map::const_iterator i = resources::units->find(locs[n]);
-			if (i.valid()) {
-				if(!i->second.incapacitated() && current_team.is_enemy(i->second.side())) {
-					return true;
-				}
+			if (i.valid() && !i->incapacitated() &&
+			    current_team.is_enemy(i->side())) {
+				return true;
 			}
 
 			if (u.movement_cost((*resources::game_map)[locs[n]]) <= u.movement_left()) {
@@ -2628,9 +2617,9 @@ void apply_shroud_changes(undo_list &undos, int side)
 	*/
 
 	std::set<map_location> known_units;
-	for(unit_map::const_iterator u = units.begin(); u != units.end(); ++u) {
-		if (!tm.fogged(u->first)) {
-			known_units.insert(u->first);
+	foreach (const unit &u, units) {
+		if (!tm.fogged(u.get_location())) {
+			known_units.insert(u.get_location());
 		}
 	}
 
@@ -2649,7 +2638,7 @@ void apply_shroud_changes(undo_list &undos, int side)
 		if(unit_itor == units.end())
 			continue;
 
-		unit temporary_unit(unit_itor->second);
+		unit temporary_unit(*unit_itor);
 		// We're not really going to mutate the unit, just temporarily
 		// set its moves to maximum, but then switch them back.
 		const unit_movement_resetter move_resetter(temporary_unit);
@@ -2658,13 +2647,13 @@ void apply_shroud_changes(undo_list &undos, int side)
 		for(step = un->route.begin(); step != un->route.end(); ++step) {
 			// we skip places where
 
-			if (*step != unit_itor->first
+			if (*step != unit_itor->get_location()
 				&& units.find(*step) != units.end())
 				continue;
 			// We have to swap out any unit that is already in the hex,
 			// so we can put our unit there, then we'll swap back at the end.
 			boost::scoped_ptr<temporary_unit_placer> unit_placer;
-			if (*step != unit_itor->first)
+			if (*step != unit_itor->get_location())
 			{
 				unit_placer.reset(new temporary_unit_placer(units,*step, temporary_unit));
 			}
@@ -2689,9 +2678,9 @@ void apply_shroud_changes(undo_list &undos, int side)
 			{
 				unit_map::const_iterator new_unit = units.find(*sight_it);
 				assert(new_unit != units.end());
-				tm.see(new_unit->second.side() - 1);
+				tm.see(new_unit->side() - 1);
 
-				game_events::raise("sighted",*sight_it,unit_itor->first);
+				game_events::raise("sighted", *sight_it, unit_itor->get_location());
 				sighted_event = true;
 			}
 			for (std::set<map_location>::iterator sight_it = petrified_units.begin();
@@ -2699,9 +2688,9 @@ void apply_shroud_changes(undo_list &undos, int side)
 			{
 				unit_map::const_iterator new_unit = units.find(*sight_it);
 				assert(new_unit != units.end());
-				tm.see(new_unit->second.side() - 1);
+				tm.see(new_unit->side() - 1);
 
-				game_events::raise("sighted",*sight_it,unit_itor->first);
+				game_events::raise("sighted", *sight_it, unit_itor->get_location());
 				sighted_event = true;
 			}
 		}
@@ -2749,11 +2738,10 @@ bool backstab_check(const map_location& attacker_loc,
 	const unit_map::const_iterator opp =
 		units.find(adj[(i+3)%6]);
 	if(opp == units.end()) return false; // No opposite unit
-	if(opp->second.incapacitated()) return false;
-	if(size_t(defender->second.side()-1) >= teams.size() ||
-			size_t(opp->second.side()-1) >= teams.size())
+	if (opp->incapacitated()) return false;
+	if (size_t(defender->side() - 1) >= teams.size() || size_t(opp->side() - 1) >= teams.size())
 		return true; // If sides aren't valid teams, then they are enemies
-	if(teams[defender->second.side()-1].is_enemy(opp->second.side()))
+	if (teams[defender->side() - 1].is_enemy(opp->side()))
 		return true; // Defender and opposite are enemies
 	return false; // Defender and opposite are friends
 }

@@ -98,12 +98,10 @@ void unit_recruited(const map_location& loc,
 	const map_location& leader_loc=map_location::null_location);
 
 /**
- * Set healer_loc to an invalid location if there are no healers.
- *
  * This will use a poisoning anim if healing<0.
  */
-void unit_healing(unit& healed, map_location& healed_loc,
-	std::vector<unit_map::iterator> healers, int healing);
+void unit_healing(unit &healed, const map_location &healed_loc,
+	const std::vector<unit *> &healers, int healing);
 
 
 /**

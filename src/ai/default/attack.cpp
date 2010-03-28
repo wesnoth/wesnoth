@@ -48,7 +48,7 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 	size_t tile;
 	for(tile = 0; tile != 6; ++tile) {
 		const unit_map::const_iterator leader = units.find(adj[tile]);
-		if(leader != units.end() && leader->second.can_recruit() && ai_obj.current_team().is_enemy(leader->second.side()) == false) {
+		if(leader != units.end() && leader->can_recruit() && !ai_obj.current_team().is_enemy(leader->side())) {
 			break;
 		}
 	}
@@ -56,11 +56,11 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 	leader_threat = (tile != 6);
 	uses_leader = false;
 
-	target_value = defend_it->second.cost();
-	target_value += (double(defend_it->second.experience())/
-	                 double(defend_it->second.max_experience()))*target_value;
-	target_starting_damage = defend_it->second.max_hitpoints() -
-	                         defend_it->second.hitpoints();
+	target_value = defend_it->cost();
+	target_value += (double(defend_it->experience())/
+	                 double(defend_it->max_experience()))*target_value;
+	target_starting_damage = defend_it->max_hitpoints() -
+	                         defend_it->hitpoints();
 
 	// Calculate the 'alternative_terrain_quality' -- the best possible defensive values
 	// the attacking units could hope to achieve if they didn't attack and moved somewhere.
@@ -70,7 +70,7 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 	double cost_sum = 0.0;
 	for(size_t i = 0; i != movements.size(); ++i) {
 		const unit_map::const_iterator att = units.find(movements[i].first);
-		const double cost = att->second.cost();
+		const double cost = att->cost();
 		cost_sum += cost;
 		alternative_terrain_quality += cost*ai_obj.best_defensive_position(movements[i].first,dstsrc,srcdst,enemy_dstsrc).chance_to_hit;
 	}
@@ -95,11 +95,11 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 
 	for (m = movements.begin(); m != movements.end(); ++m) {
 		// We fix up units map to reflect what this would look like.
-		std::pair<map_location,unit> *up = units.extract(m->first);
-		up->first = m->second;
+		unit *up = units.extract(m->first);
+		up->set_location(m->second);
 		units.insert(up);
 
-		if (up->second.can_recruit()) {
+		if (up->can_recruit()) {
 			uses_leader = true;
 			// FIXME: suokko's r29531 omitted this line
 			leader_threat = false;
@@ -112,7 +112,7 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 		// This cache is only about 99% correct, but speeds up evaluation by about 1000 times.
 		// We recalculate when we actually attack.
 		std::map<std::pair<map_location, const unit_type *>,std::pair<battle_context::unit_stats,battle_context::unit_stats> >::iterator usc;
-		const unit_type* up_type = up->second.type();
+		const unit_type *up_type = up->type();
 		if(up_type) {
 			usc = ai_obj.unit_stats_cache().find(std::pair<map_location, const unit_type *>(target, up_type));
 		} else {
@@ -121,7 +121,7 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 		// Just check this attack is valid for this attacking unit (may be modified)
 		if (usc != ai_obj.unit_stats_cache().end() &&
 				usc->second.first.attack_num <
-				static_cast<int>(up->second.attacks().size())) {
+				static_cast<int>(up->attacks().size())) {
 
 			from_cache = true;
 			bc = new battle_context(usc->second.first, usc->second.second);
@@ -152,15 +152,15 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 		double prob_died = att.hp_dist[0];
 		double prob_survived = (1.0 - prob_died) * prob_fought;
 
-		double cost = up->second.cost();
+		double cost = up->cost();
 		const bool on_village = map.is_village(m->second);
 		// Up to double the value of a unit based on experience
-		cost += (double(up->second.experience())/double(up->second.max_experience()))*cost;
+		cost += (double(up->experience()) / up->max_experience())*cost;
 		resources_used += cost;
 		avg_losses += cost * prob_died;
 
 		// add half of cost for poisoned unit so it might get chance to heal
-		avg_losses += cost * up->second.get_state(unit::STATE_POISONED) /2;
+		avg_losses += cost * up->get_state(unit::STATE_POISONED) /2;
 
 		// Double reward to emphasize getting onto villages if they survive.
 		if (on_village) {
@@ -171,8 +171,8 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 
 		double advance_prob = 0.0;
 		// The reward for advancing a unit is to get a 'negative' loss of that unit
-		if (!up->second.advances_to().empty()) {
-			int xp_for_advance = up->second.max_experience() - up->second.experience();
+		if (!up->advances_to().empty()) {
+			int xp_for_advance = up->max_experience() - up->experience();
 			int kill_xp, fight_xp;
 
 			// See bug #6272... in some cases, unit already has got enough xp to advance,
@@ -180,26 +180,26 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 			if (xp_for_advance <= 0)
 				xp_for_advance = 1;
 
-			fight_xp = defend_it->second.level();
+			fight_xp = defend_it->level();
 			kill_xp = game_config::kill_xp(fight_xp);
 
 			if (fight_xp >= xp_for_advance) {
 				advance_prob = prob_fought;
-				avg_losses -= up->second.cost() * prob_fought;
+				avg_losses -= up->cost() * prob_fought;
 			} else if (kill_xp >= xp_for_advance) {
 				advance_prob = prob_killed;
-				avg_losses -= up->second.cost() * prob_killed;
+				avg_losses -= up->cost() * prob_killed;
 				// The reward for getting a unit closer to advancement
 				// (if it didn't advance) is to get the proportion of
 				// remaining experience needed, and multiply it by
 				// a quarter of the unit cost.
 				// This will cause the AI to heavily favor
 				// getting xp for close-to-advance units.
-				avg_losses -= up->second.cost() * 0.25 *
+				avg_losses -= up->cost() * 0.25 *
 					fight_xp * (prob_fought - prob_killed)
 					/ xp_for_advance;
 			} else {
-				avg_losses -= up->second.cost() * 0.25 *
+				avg_losses -= up->cost() * 0.25 *
 					(kill_xp * prob_killed + fight_xp * (prob_fought - prob_killed))
 					/ xp_for_advance;
 			}
@@ -207,19 +207,19 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 			// The reward for killing with a unit that plagues
 			// is to get a 'negative' loss of that unit.
 			if (bc->get_attacker_stats().plagues) {
-				avg_losses -= prob_killed * up->second.cost();
+				avg_losses -= prob_killed * up->cost();
 			}
 		}
 
 		// If we didn't advance, we took this damage.
-		avg_damage_taken += (up->second.hitpoints() - att.average_hp()) * (1.0 - advance_prob);
+		avg_damage_taken += (up->hitpoints() - att.average_hp()) * (1.0 - advance_prob);
 
 		/**
 		 * @todo 1.9: attack_prediction.cpp should understand advancement
 		 * directly.  For each level of attacker def gets 1 xp or
 		 * kill_experience.
 		 */
-		int fight_xp = up->second.level();
+		int fight_xp = up->level();
 		int kill_xp = game_config::kill_xp(fight_xp);
 		def_avg_experience += fight_xp * (1.0 - att.hp_dist[0]) + kill_xp * att.hp_dist[0];
 		if (m == movements.begin()) {
@@ -227,15 +227,15 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 		}
 	}
 
-	if (!defend_it->second.advances_to().empty() &&
-		def_avg_experience >= defend_it->second.max_experience() - defend_it->second.experience()) {
+	if (!defend_it->advances_to().empty() &&
+		def_avg_experience >= defend_it->max_experience() - defend_it->experience()) {
 		// It's likely to advance: only if we can kill with first blow.
 		chance_to_kill = first_chance_kill;
 		// Negative average damage (it will advance).
-		avg_damage_inflicted = defend_it->second.hitpoints() - defend_it->second.max_hitpoints();
+		avg_damage_inflicted = defend_it->hitpoints() - defend_it->max_hitpoints();
 	} else {
 		chance_to_kill = prev_def->hp_dist[0];
-		avg_damage_inflicted = defend_it->second.hitpoints() - prev_def->average_hp(map.gives_healing(defend_it->first));
+		avg_damage_inflicted = defend_it->hitpoints() - prev_def->average_hp(map.gives_healing(defend_it->get_location()));
 	}
 
 	delete prev_bc;
@@ -344,7 +344,7 @@ double attack_analysis::rating(double aggression, const readonly_context& ai_obj
  */
 bool ai_default::desperate_attack(const map_location &loc)
 {
-	const unit &u = units_.find(loc)->second;
+	const unit &u = *units_.find(loc);
 	LOG_AI << "desperate attack by '" << u.type_id() << "' " << loc << "\n";
 
 	map_location adj[6];

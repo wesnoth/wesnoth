@@ -95,8 +95,6 @@ public:
 	virtual void on_create();
 
 private:
-	virtual bool matches_unit(unit_map::const_iterator u);
-
 	double value() const
 	{
 		return value_;

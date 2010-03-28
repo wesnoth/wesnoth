@@ -525,8 +525,8 @@ void play_controller::do_init_side(const unsigned int team_index){
 	// or if we are loading a game.
 	if (!loading_game_ && turn() > 1) {
 		for(unit_map::iterator i = units_.begin(); i != units_.end(); ++i) {
-			if (i->second.side() == player_number_) {
-				i->second.new_turn();
+			if (i->side() == player_number_) {
+				i->new_turn();
 			}
 		}
 
@@ -584,10 +584,10 @@ config play_controller::to_config() const
 		if (!linger_){
 			//current visible units
 			for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
-				if(i->second.side() == side_num) {
+				if (i->side() == side_num) {
 					config& u = side.add_child("unit");
-					i->first.write(u);
-					i->second.write(u);
+					i->get_location().write(u);
+					i->write(u);
 				}
 			}
 		}
@@ -616,8 +616,8 @@ config play_controller::to_config() const
 
 void play_controller::finish_side_turn(){
 	for(unit_map::iterator uit = units_.begin(); uit != units_.end(); ++uit) {
-		if(uit->second.side() == player_number_)
-			uit->second.end_turn();
+		if (uit->side() == player_number_)
+			uit->end_turn();
 	}
 
 	// This implements "delayed map sharing."
@@ -647,7 +647,7 @@ bool play_controller::enemies_visible() const
 
 	// See if any enemies are visible
 	for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u)
-		if(current_team().is_enemy(u->second.side()) && !gui_->fogged(u->first))
+		if (current_team().is_enemy(u->side()) && !gui_->fogged(u->get_location()))
 			return true;
 
 	return false;
@@ -750,9 +750,9 @@ bool play_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int in
 	case hotkey::HOTKEY_RENAME_UNIT:
 		return !events::commands_disabled &&
 			menu_handler_.current_unit(mouse_handler_) != units_.end() &&
-			!(menu_handler_.current_unit(mouse_handler_)->second.unrenamable()) &&
-			menu_handler_.current_unit(mouse_handler_)->second.side() == gui_->viewing_side() &&
-			teams_[menu_handler_.current_unit(mouse_handler_)->second.side() - 1].is_human();
+			!(menu_handler_.current_unit(mouse_handler_)->unrenamable()) &&
+			menu_handler_.current_unit(mouse_handler_)->side() == gui_->viewing_side() &&
+			teams_[menu_handler_.current_unit(mouse_handler_)->side() - 1].is_human();
 
 	default:
 		return false;
@@ -896,12 +896,12 @@ void play_controller::process_keyup_event(const SDL_Event& event) {
 			const unit_map::iterator u = mouse_handler_.selected_unit();
 
 			if(u != units_.end()) {
-				bool teleport = u->second.get_ability_bool("teleport");
+				bool teleport = u->get_ability_bool("teleport");
 
 				// if it's not the unit's turn, we reset its moves
-				unit_movement_resetter move_reset(u->second, u->second.side() != player_number_);
+				unit_movement_resetter move_reset(*u, u->side() != player_number_);
 
-				mouse_handler_.set_current_paths(pathfind::paths(map_,units_,u->first,
+				mouse_handler_.set_current_paths(pathfind::paths(map_, units_, u->get_location(),
 				                       teams_,false,teleport, teams_[gui_->viewing_team()],
 				                       mouse_handler_.get_path_turns()));
 
@@ -1059,9 +1059,9 @@ bool play_controller::in_context_menu(hotkey::HOTKEY_COMMAND command) const
 		// Enable recruit/recall on castle/keep tiles
 		for(unit_map::const_iterator leader = units_.begin();
 				leader != units_.end();++leader) {
-			if (leader->second.can_recruit() &&
-				static_cast<int>(leader->second.side()) == player_number_ &&
-				can_recruit_on(map_, leader->first, mouse_handler_.get_last_hex()))
+			if (leader->can_recruit() &&
+			    leader->side() == player_number_ &&
+				can_recruit_on(map_, leader->get_location(), mouse_handler_.get_last_hex()))
 				return true;
 		}
 		return false;
@@ -1139,9 +1139,9 @@ void play_controller::check_victory()
 	for (unit_map::const_iterator i = units_.begin(),
 	     i_end = units_.end(); i != i_end; ++i)
 	{
-		if (i->second.can_recruit()) {
-			DBG_NG << "seen leader for side " << i->second.side() << "\n";
-			seen_leaders.push_back(i->second.side());
+		if (i->can_recruit()) {
+			DBG_NG << "seen leader for side " << i->side() << "\n";
+			seen_leaders.push_back(i->side());
 		}
 	}
 

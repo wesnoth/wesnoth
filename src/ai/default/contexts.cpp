@@ -81,10 +81,10 @@ int default_ai_context_impl::count_free_hexes_in_castle(const map_location &loc,
 			const unit_map::const_iterator u = units_.find(adj[n]);
 			ret += count_free_hexes_in_castle(adj[n], checked_hexes);
 			if (u == units_.end()
-				|| (current_team().is_enemy(u->second.side())
-					&& u->second.invisible(adj[n], units_, get_info().teams))
-				|| ((&get_info().teams[u->second.side()-1]) == &current_team()
-					&& u->second.movement_left() > 0)) {
+				|| (current_team().is_enemy(u->side())
+					&& u->invisible(adj[n], units_, get_info().teams))
+				|| ((&get_info().teams[u->side() - 1]) == &current_team()
+					&& u->movement_left() > 0)) {
 				ret += 1;
 			}
 		}
@@ -121,7 +121,7 @@ bool default_ai_context_impl::multistep_move_possible(const map_location& from,
 				if (itor != moves->second.destinations.end())
 				{
 					LOG_AI << "Can make it to keep with " << itor->move_left << " movement left.\n";
-					unit temp_unit(i->second);
+					unit temp_unit(*i);
 					temp_unit.set_movement(itor->move_left);
 					const temporary_unit_placer unit_placer(units_,via,temp_unit);
 					const pathfind::paths unit_paths(get_info().map,units_,via,get_info().teams,false,false,current_team());
@@ -191,13 +191,13 @@ std::vector<target> default_ai_context_impl::find_targets(unit_map::const_iterat
 
 	//if enemy units are in range of the leader, then we target the enemies who are in range.
 	if(has_leader) {
-		const double threat = power_projection(leader->first,enemy_dstsrc);
+		double threat = power_projection(leader->get_location(), enemy_dstsrc);
 		if(threat > 0.0) {
 			//find the location of enemy threats
 			std::set<map_location> threats;
 
 			map_location adj[6];
-			get_adjacent_tiles(leader->first,adj);
+			get_adjacent_tiles(leader->get_location(), adj);
 			for(size_t n = 0; n != 6; ++n) {
 				std::pair<move_map::const_iterator,move_map::const_iterator> itors = enemy_dstsrc.equal_range(adj[n]);
 				while(itors.first != itors.second) {
@@ -258,7 +258,7 @@ std::vector<target> default_ai_context_impl::find_targets(unit_map::const_iterat
 			}
 			else
 			{
-				double leader_distance = distance_between(*t, leader->first);
+				double leader_distance = distance_between(*t, leader->get_location());
 				double value = village_value * (1.0 - leader_distance / corner_distance);
 				LOG_AI << "found village target... " << *t
 					<< " with value: " << value
@@ -275,11 +275,11 @@ std::vector<target> default_ai_context_impl::find_targets(unit_map::const_iterat
 	if (get_leader_value()>0.0) {
 		for(u = units_.begin(); u != units_.end(); ++u) {
 			//is a visible enemy leader
-			if (u->second.can_recruit() && current_team().is_enemy(u->second.side())
-			    && !u->second.invisible(u->first, units_, teams_)) {
-				assert(map_.on_board(u->first));
-				LOG_AI << "found enemy leader (side: " << u->second.side() << ") target... " << u->first << " with value: " << get_leader_value() << "\n";
-				targets.push_back(target(u->first,get_leader_value(),target::LEADER));
+			if (u->can_recruit() && current_team().is_enemy(u->side())
+			    && !u->invisible(u->get_location(), units_, teams_)) {
+				assert(map_.on_board(u->get_location()));
+				LOG_AI << "found enemy leader (side: " << u->side() << ") target... " << u->get_location() << " with value: " << get_leader_value() << "\n";
+				targets.push_back(target(u->get_location(), get_leader_value(), target::LEADER));
 			}
 		}
 

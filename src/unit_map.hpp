@@ -20,7 +20,6 @@
 #include "map_location.hpp"
 
 #include <cassert>
-#include <boost/static_assert.hpp>
 
 #include <map>
 
@@ -64,16 +63,11 @@ private:
 	};
 
 	struct node {
-		bool valid_;
-		std::pair<map_location, unit>* ptr_;
+		bool valid;
+		unit *ptr;
 
-		node(bool v, std::pair<map_location, unit>* p) : valid_(v), ptr_(p) { }
-		node() : valid_(0), ptr_(NULL) { }
-
-		bool valid() const { return valid_; }
-		bool& get_valid() { return valid_; }
-		unit& get_unit() const;
-		map_location& get_location() const;
+		node(bool v, unit *p) : valid(v), ptr(p) { }
+		node() : valid(0), ptr(NULL) { }
 	};
 
 public:
@@ -103,17 +97,19 @@ public:
 
 	template <template <typename> class iter_policy, typename iter_types>
 	struct iterator_base {
+		typedef unit value_type;
+		typedef std::forward_iterator_tag iterator_category;
+		typedef int difference_type;
+		typedef unit *pointer;
+		typedef unit &reference;
 		typedef typename iter_types::map_type map_type;
 		typedef typename iter_types::iterator_type iterator_type;
-		typedef typename iter_types::value_type value_type;
-		typedef typename iter_types::reference_type reference_type;
-		typedef typename iter_types::pointer_type pointer_type;
 
 		iterator_base() : policy_(), counter_(), map_(NULL), i_() { }
 		iterator_base(iterator_type i, map_type* m) : policy_(i, m), counter_(m), map_(m), i_(i) { }
 
-		pointer_type operator->() const { assert(policy_.valid(i_, map_)); return i_->second.ptr_; }
-		reference_type operator*() const { assert(policy_.valid(i_, map_)); return *i_->second.ptr_; }
+		pointer operator->() const { assert(policy_.valid(i_, map_)); return i_->second.ptr; }
+		reference operator*() const { assert(policy_.valid(i_, map_)); return *i_->second.ptr; }
 
 		iterator_base& operator++();
 		iterator_base operator++(int);
@@ -133,8 +129,6 @@ public:
 			map_(that.map_),
 			i_(that.i_)
 		{
-			BOOST_STATIC_ASSERT(sizeof(convertible<that_policy<that_types>, iter_policy<iter_types> >) != 0);
-			BOOST_STATIC_ASSERT(sizeof(convertible<that_types, iter_types>) != 0);
 		}
 
 		map_type* get_map() const { return map_; }
@@ -151,7 +145,7 @@ public:
 	struct standard_iter_types {
 		typedef unit_map map_type;
 		typedef unit_map::umap::iterator iterator_type;
-		typedef std::pair<map_location, unit> value_type;
+		typedef unit value_type;
 		typedef value_type* pointer_type;
 		typedef value_type& reference_type;
 	};
@@ -159,7 +153,7 @@ public:
 	struct const_iter_types {
 		typedef const unit_map map_type;
 		typedef unit_map::umap::const_iterator iterator_type;
-		typedef const std::pair<map_location, unit> value_type;
+		typedef const unit value_type;
 		typedef value_type* pointer_type;
 		typedef value_type& reference_type;
 	};
@@ -173,7 +167,7 @@ public:
 
 		void update(const iterator_type&, const unit_map*) { }
 
-		bool valid(const iterator_type& i, const unit_map* map) const { return i != map->map_.end() && i->second.valid(); }
+		bool valid(const iterator_type& i, const unit_map* map) const { return i != map->map_.end() && i->second.valid; }
 	};
 
 // ~~~ End iterator code ~~~
@@ -240,13 +234,13 @@ public:
 	void add(const map_location &l, const unit &u);
 
 	/**
-	 * Adds the pair location/unit to the map.
+	 * Adds the unit to the map.
 	 * @pre The location is empty.
 	 * @pre The unit::underlying_id should not be used by the map already.
 	 * @note The map takes ownership of the pointed object.
 	 * @note This function should be used in conjunction with #extract only.
 	 */
-	void insert(std::pair<map_location,unit> *p);
+	void insert(unit *p);
 
 	/**
 	 * Moves a unit from location @a src to location @a dst.
@@ -262,7 +256,7 @@ public:
 	size_t erase(const map_location &loc);
 
 	/** Extract (like erase, but don't delete). */
-	std::pair<map_location,unit>* extract(const map_location& loc);
+	unit *extract(const map_location &loc);
 
 	/** Invalidates all iterators on both maps */
 	void swap(unit_map& o) {
@@ -276,16 +270,16 @@ private:
 	void clean_invalid();
 
 	void invalidate(umap::iterator& i)
-		{ if(i == map_.end()) return; i->second.get_valid() = false; ++num_invalid_; }
+		{ if(i == map_.end()) return; i->second.valid = false; ++num_invalid_; }
 	void validate(umap::iterator& i)
-		{ if(i == map_.end()) return; i->second.get_valid() = true; --num_invalid_; }
+		{ if(i == map_.end()) return; i->second.valid = true; --num_invalid_; }
 
 	void delete_all();
 
 	void add_iter() const { ++num_iters_; }
 	void remove_iter() const { --num_iters_; }
 
-	bool is_valid(const umap::const_iterator& i) const { return i != map_.end() && i->second.valid(); }
+	bool is_valid(const umap::const_iterator& i) const { return i != map_.end() && i->second.valid; }
 
 	/**
 	 * unit.underlying_id() -> unit_map::node
@@ -306,7 +300,7 @@ template <typename T>
 void unit_map::erase(const T& iter) {
 	assert(iter.valid());
 
-	if (erase(iter->first) != 1)
+	if (erase(iter->get_location()) != 1)
 		assert(0);
 }
 
@@ -326,7 +320,7 @@ template <template <typename> class iter_policy, typename iter_types>
 unit_map::iterator_base<iter_policy, iter_types>& unit_map::iterator_base<iter_policy, iter_types>::operator++() {
 	assert(i_ != map_->map_.end());
 	++i_;
-	while (i_ != map_->map_.end() && !i_->second.valid()) ++i_;
+	while (i_ != map_->map_.end() && !i_->second.valid) ++i_;
 
 	if (i_ != map_->map_.end()) policy_.update(i_, map_);
 
@@ -345,9 +339,9 @@ unit_map::iterator_base<iter_policy, iter_types>& unit_map::iterator_base<iter_p
 	assert(i_ != map_->map_.begin());
 
 	--i_;
-	while (i_ != map_->map_.begin() && !i_->second.valid()) --i_;
+	while (i_ != map_->map_.begin() && !i_->second.valid) --i_;
 
-	if (i_->second.valid()) policy_.update(i_, map_);
+	if (i_->second.valid) policy_.update(i_, map_);
 
 	return *this;
 }

@@ -315,15 +315,15 @@ report generate_report(TYPE type,
 			std::set<std::string> seen_units;
 			std::map<int,std::vector<std::string> > resistances;
 			for(unit_map::const_iterator u_it = units.begin(); u_it != units.end(); ++u_it) {
-				if(teams[team_index].is_enemy(u_it->second.side()) &&
-				   !current_team.fogged(u_it->first) &&
-				   seen_units.count(u_it->second.type_id()) == 0 &&
-				   ( !current_team.is_enemy(u_it->second.side()) ||
-				     !u_it->second.invisible(u_it->first,units,teams)))
+				if (teams[team_index].is_enemy(u_it->side()) &&
+				    !current_team.fogged(u_it->get_location()) &&
+				    seen_units.count(u_it->type_id()) == 0 &&
+				    (!current_team.is_enemy(u_it->side()) ||
+				     !u_it->invisible(u_it->get_location(), units, teams)))
 				{
-					seen_units.insert(u_it->second.type_id());
-					int resistance = u_it->second.resistance_against(at, false, u_it->first) - 100;
-					resistances[resistance].push_back(u_it->second.type_name());
+					seen_units.insert(u_it->type_id());
+					int resistance = u_it->resistance_against(at, false, u_it->get_location()) - 100;
+					resistances[resistance].push_back(u_it->type_name());
 				}
 			}
 

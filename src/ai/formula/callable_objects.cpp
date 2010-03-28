@@ -113,7 +113,7 @@ attack_callable::attack_callable(const ai::formula_ai& ai, const map_location& m
 				    const map_location& src, const map_location& dst, int weapon)
 	: move_from_(move_from), src_(src), dst_(dst),
 	bc_(ai.get_info().units, src, dst, weapon, -1, 1.0, NULL,
-		&ai.get_info().units.find(move_from)->second)
+		&*ai.get_info().units.find(move_from))
 {
       type_ = ATTACK_C;
 }
@@ -177,8 +177,8 @@ variant attack_map_callable::get_value(const std::string& key) const {
 		}
 		/* special case, when unit moved toward enemy and can only attack */
 		for(unit_map::const_iterator i = ai_.get_info().units.begin(); i != ai_.get_info().units.end(); ++i) {
-			if((i->second.side() == ai_.get_side()) && (i->second.attacks_left() > 0)) {
-				collect_possible_attacks(vars, i->first, i->first);
+			if (i->side() == ai_.get_side() && i->attacks_left() > 0) {
+				collect_possible_attacks(vars, i->get_location(), i->get_location());
 			}
 		}
 		return variant(&vars);
@@ -205,9 +205,9 @@ void attack_map_callable::collect_possible_attacks(std::vector<variant>& vars, m
 		if (unit == units_.end())
 			continue;
 		/* if tile is occupied by friendly or petrified/invisible unit */
-		if (! ai_.current_team().is_enemy(unit->second.side())  ||
-				unit->second.incapacitated() ||
-				unit->second.invisible(unit->first, units_, ai_.get_info().teams) )
+		if (!ai_.current_team().is_enemy(unit->side())  ||
+		    unit->incapacitated() ||
+		    unit->invisible(unit->get_location(), units_, ai_.get_info().teams))
 			continue;
 		/* add attacks with default weapon */
 		attack_callable* item = new attack_callable(ai_, attacker_location, attack_position, adj[n], -1);

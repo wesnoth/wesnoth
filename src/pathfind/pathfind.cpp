@@ -370,12 +370,12 @@ pathfind::paths::paths(gamemap const &map, unit_map const &units,
 		return;
 	}
 
-	if(i->second.side() < 1 || i->second.side() > int(teams.size())) {
+	if (i->side() < 1 || i->side() > int(teams.size())) {
 		return;
 	}
 
-	find_routes(map,units,i->second,loc,
-		i->second.movement_left(), destinations, teams, force_ignore_zoc,
+	find_routes(map, units, *i, loc,
+		i->movement_left(), destinations, teams, force_ignore_zoc,
 		allow_teleport,additional_turns,viewing_team,
 		see_all, ignore_units);
 }

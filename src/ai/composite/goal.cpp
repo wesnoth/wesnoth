@@ -108,34 +108,20 @@ void target_unit_goal::on_create()
 	}
 }
 
-
-bool target_unit_goal::matches_unit(unit_map::const_iterator u)
-{
-	if (!u.valid()) {
-		return false;
-	}
-	const config &criteria = cfg_.child("criteria");
-	if (!criteria) {
-		return false;
-	}
-	return u->second.matches_filter(vconfig(criteria),u->first);
-}
-
-
 void target_unit_goal::add_targets(std::back_insert_iterator< std::vector< target > > target_list)
 {
 	if (!(this)->active()) {
 		return;
 	}
 
-	unit_map &units = get_info().units;
+	const config &criteria = cfg_.child("criteria");
+	if (!criteria) return;
 
 	//find the enemy leaders and explicit targets
-	unit_map::const_iterator u;
-	for(u = units.begin(); u != units.end(); ++u) {
-		if (this->matches_unit(u)) {
-			LOG_AI_GOAL << "found explicit target... " << u->first << " with value: " << this->value() << "\n";
-			*target_list = target(u->first,this->value(),target::EXPLICIT);
+	foreach (const unit &u, get_info().units) {
+		if (u.matches_filter(vconfig(criteria), u.get_location())) {
+			LOG_AI_GOAL << "found explicit target... " << u.get_location() << " with value: " << value() << "\n";
+			*target_list = target(u.get_location(), value(), target::EXPLICIT);
 		}
 	}
 
@@ -215,15 +201,15 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target > 
 
 	std::set<map_location> items;
 	if (protect_unit_) {
-		for(unit_map::const_iterator u = units.begin(); u != units.end(); ++u) {
-
-			if (protect_only_own_unit_ && u->second.side()!=get_side()) {
+		foreach (const unit &u, units)
+		{
+			if (protect_only_own_unit_ && u.side() != get_side()) {
 				continue;
 			}
 			//TODO: we will protect hidden units, by not testing for invisibility to current side
-			if (u->second.matches_filter(vconfig(criteria),u->first)) {
-				DBG_AI_GOAL << "in "<<goal_type<< ": " << u->first << " should be protected " << std::endl;
-				items.insert(u->first);
+			if (u.matches_filter(vconfig(criteria), u.get_location())) {
+				DBG_AI_GOAL << "in " << goal_type << ": " << u.get_location() << " should be protected\n";
+				items.insert(u.get_location());
 			}
 		}
 	} else {
@@ -233,13 +219,16 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target > 
 	// Look for directions to protect a specific location or specific unit.
 	foreach (const map_location &loc, items)
 	{
-		for(unit_map::const_iterator u = units.begin(); u != units.end(); ++u) {
-			const int distance = distance_between(u->first,loc);
-			if(current_team().is_enemy(u->second.side()) && distance < radius_
-			&& !u->second.invisible(u->first, units, teams)) {
-				DBG_AI_GOAL << "in "<<goal_type<<": found threat target. " << u->first << " is a threat to "<< loc << std::endl;
-				*target_list = target(u->first, value_ * double(radius_-distance) /
-							double(radius_),target::THREAT);
+		foreach (const unit &u, units)
+		{
+			int distance = distance_between(u.get_location(), loc);
+			if (current_team().is_enemy(u.side()) && distance < radius_ &&
+			    !u.invisible(u.get_location(), units, teams))
+			{
+				DBG_AI_GOAL << "in " << goal_type << ": found threat target. " << u.get_location() << " is a threat to "<< loc << '\n';
+				*target_list = target(u.get_location(),
+					value_ * double(radius_ - distance) /
+					radius_, target::THREAT);
 			}
 		}
 	}

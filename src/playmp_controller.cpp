@@ -16,6 +16,7 @@
 #include "playmp_controller.hpp"
 
 #include "dialogs.hpp"
+#include "foreach.hpp"
 #include "game_end_exceptions.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
@@ -326,8 +327,8 @@ void playmp_controller::linger(upload_log& log)
 	// stay stuck in linger state when the *next* scenario is over.
 	gamestate_.classification().completion = "running";
 	// End all unit moves
-	for (unit_map::iterator u = units_.begin(); u != units_.end(); ++u) {
-		u->second.set_user_end_turn(true);
+	foreach (unit &u, units_) {
+		u.set_user_end_turn(true);
 	}
 	//current_team().set_countdown_time(0);
 	//halt and cancel the countdown timer

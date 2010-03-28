@@ -59,10 +59,10 @@ double goto_phase::evaluate()
 	gamemap &map_ = get_info().map;
 
 	for(unit_map::iterator ui = units_.begin(); ui != units_.end(); ++ui) {
-		if(ui->second.get_goto() == ui->first) {
-			ui->second.set_goto(map_location());
-		} else if(ui->second.side() == get_side() && map_.on_board(ui->second.get_goto())) {
-			gotos.push_back(ui->first);
+		if (ui->get_goto() == ui->get_location()) {
+			ui->set_goto(map_location());
+		} else if (ui->side() == get_side() && map_.on_board(ui->get_goto())) {
+			gotos.push_back(ui->get_location());
 		}
 	}
 
@@ -71,10 +71,10 @@ double goto_phase::evaluate()
 		int closest_distance = -1;
 		std::pair<map_location,map_location> closest_move;
 		for(move_map::const_iterator i = get_dstsrc().begin(); i != get_dstsrc().end(); ++i) {
-			if(i->second != ui->first) {
+			if(i->second != ui->get_location()) {
 				continue;
 			}
-			const int distance = distance_between(i->first,ui->second.get_goto());
+			int distance = distance_between(i->first,ui->get_goto());
 			if(closest_distance == -1 || distance < closest_distance) {
 				closest_distance = distance;
 				closest_move = *i;
@@ -82,7 +82,7 @@ double goto_phase::evaluate()
 		}
 
 		if(closest_distance != -1) {
-			move_ = check_move_action(ui->first,closest_move.first);
+			move_ = check_move_action(ui->get_location(), closest_move.first);
 			if (move_->is_ok()) {
 				return get_score();
 			}
@@ -122,11 +122,11 @@ double aspect_recruitment_phase::evaluate()
 	if(leader == get_info().units.end()) {
 		return BAD_SCORE;
 	}
-	if(!get_info().map.is_keep(leader->first)) {
+	if (!get_info().map.is_keep(leader->get_location())) {
 		return BAD_SCORE;
 	}
 
-	map_location recruit_loc = find_vacant_tile(get_info().map, get_info().units, leader->first, pathfind::VACANT_CASTLE);
+	map_location recruit_loc = find_vacant_tile(get_info().map, get_info().units, leader->get_location(), pathfind::VACANT_CASTLE);
 	if (!get_info().map.on_board(recruit_loc)) {
 		return BAD_SCORE;
 	}
@@ -169,13 +169,13 @@ double recruitment_phase::evaluate()
 	if(leader == get_info().units.end()) {
 		return BAD_SCORE;
 	}
-	if(!get_info().map.is_keep(leader->first)) {
+	if (!get_info().map.is_keep(leader->get_location())) {
 		return BAD_SCORE;
 	}
 
 	std::set<map_location> checked_hexes;
-	checked_hexes.insert(leader->first);
-	if(count_free_hexes_in_castle(leader->first, checked_hexes)==0) {
+	checked_hexes.insert(leader->get_location());
+	if (count_free_hexes_in_castle(leader->get_location(), checked_hexes)==0) {
 		return BAD_SCORE;
 	}
 
@@ -195,7 +195,7 @@ void recruitment_phase::execute()
 	gamemap &map_ = get_info().map;
 	std::vector<team> &teams_ = get_info().teams;
 
-	map_location start_pos = units_.find_leader(get_side())->first;
+	map_location start_pos = units_.find_leader(get_side())->get_location();
 
 	raise_user_interact();
 	//analyze_potential_recruit_movements();
@@ -245,8 +245,8 @@ void recruitment_phase::execute()
 		std::map<std::string,int> unit_types;
 
 		for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
-			if(u->second.side() == get_side()) {
-				++unit_types[u->second.usage()];
+			if (u->side() == get_side()) {
+				++unit_types[u->usage()];
 			}
 		}
 
@@ -463,11 +463,11 @@ void recruitment_phase::analyze_potential_recruit_combat()
 		int score = 0, weighting = 0;
 
 		for(unit_map::const_iterator j = units_.begin(); j != units_.end(); ++j) {
-			if(j->second.can_recruit() || current_team().is_enemy(j->second.side()) == false) {
+			if (j->can_recruit() || !current_team().is_enemy(j->side())) {
 				continue;
 			}
 
-			unit const &un = j->second;
+			unit const &un = *j;
 			const unit_type *enemy_info = unit_types.find(un.type_id());
 			VALIDATE(enemy_info, "Unknown unit type : " + un.type_id() + " while scoring units.");
 
@@ -632,18 +632,18 @@ double move_leader_to_goals_phase::evaluate()
 	}
 
 	const unit_map::iterator leader = get_info().units.find_leader(get_side());
-	if(!leader.valid() || leader->second.incapacitated()) {
+	if (!leader.valid() || leader->incapacitated()) {
 		WRN_AI_TESTING_AI_DEFAULT << "Leader not found\n";
 		return BAD_SCORE;
 	}
 
 	id_ = goal["id"];
-	if (leader->first==dst_) {
+	if (leader->get_location() == dst_) {
 		//goal already reached
 		if (auto_remove_ && !id_.empty()) {
 			remove_goal(id_);
 		} else {
-			move_ = check_move_action(leader->first, leader->first,!auto_remove_);//we do full moves if we don't want to remove goal
+			move_ = check_move_action(leader->get_location(), leader->get_location(), !auto_remove_);//we do full moves if we don't want to remove goal
 			if (move_->is_ok()) {
 				return get_score();
 			} else {
@@ -652,32 +652,32 @@ double move_leader_to_goals_phase::evaluate()
 		}
 	}
 
-	pathfind::shortest_path_calculator calc(leader->second, current_team(), get_info().units, get_info().teams, get_info().map);
-	pathfind::plain_route route = a_star_search(leader->first, dst_, 1000.0, &calc,
+	pathfind::shortest_path_calculator calc(*leader, current_team(), get_info().units, get_info().teams, get_info().map);
+	pathfind::plain_route route = a_star_search(leader->get_location(), dst_, 1000.0, &calc,
 			get_info().map.w(), get_info().map.h());
 	if(route.steps.empty()) {
 		LOG_AI_TESTING_AI_DEFAULT << "route empty";
 		return BAD_SCORE;
 	}
 
-	const pathfind::paths leader_paths(get_info().map, get_info().units, leader->first,
+	const pathfind::paths leader_paths(get_info().map, get_info().units, leader->get_location(),
 				 get_info().teams, false, false, current_team());
 
 	std::map<map_location,pathfind::paths> possible_moves;
-	possible_moves.insert(std::pair<map_location,pathfind::paths>(leader->first,leader_paths));
+	possible_moves.insert(std::pair<map_location,pathfind::paths>(leader->get_location(), leader_paths));
 
 	map_location loc;
 	foreach (const map_location &l, route.steps)
 	{
 		if (leader_paths.destinations.contains(l) &&
-		    power_projection(l, get_enemy_dstsrc()) < double(leader->second.hitpoints())*max_risk)
+		    power_projection(l, get_enemy_dstsrc()) < leader->hitpoints() * max_risk)
 		{
 			loc = l;
 		}
 	}
 
 	if(loc.valid()) {
-		move_ = check_move_action(leader->first,loc,false);
+		move_ = check_move_action(leader->get_location(), loc, false);
 		if (move_->is_ok()) {
 			return get_score();
 		}
@@ -727,22 +727,22 @@ double move_leader_to_keep_phase::evaluate()
 	unit_map &units_ = get_info().units;
 	const unit_map::iterator leader = units_.find_leader(get_side());
 
-	if(leader == units_.end() || leader->second.incapacitated() || leader->second.movement_left()==0 ) {
+	if (leader == units_.end() || leader->incapacitated() || leader->movement_left() == 0) {
 		return BAD_SCORE;
 	}
 
 	// Find where the leader can move
-	const pathfind::paths leader_paths(get_info().map, units_, leader->first,
-		 get_info().teams, false, false, current_team());
-	const map_location& keep = suitable_keep(leader->first,leader_paths);
+	const pathfind::paths leader_paths(get_info().map, units_, leader->get_location(),
+		get_info().teams, false, false, current_team());
+	const map_location& keep = suitable_keep(leader->get_location(), leader_paths);
 
 	std::map<map_location,pathfind::paths> possible_moves;
-	possible_moves.insert(std::pair<map_location,pathfind::paths>(leader->first,leader_paths));
+	possible_moves.insert(std::make_pair(leader->get_location(), leader_paths));
 
 	// If the leader is not on keep, move him there.
-	if(leader->first != keep) {
+	if (leader->get_location() != keep) {
 		if (leader_paths.destinations.contains(keep) && units_.count(keep) == 0) {
-			move_ = check_move_action(leader->first,keep,false);
+			move_ = check_move_action(leader->get_location(), keep, false);
 			if (move_->is_ok()){
 				return get_score();
 			}
@@ -754,7 +754,7 @@ double move_leader_to_keep_phase::evaluate()
 
 		// The leader can't move to his keep, try to move to the closest location
 		// to the keep where there are no enemies in range.
-		const int current_distance = distance_between(leader->first,keep);
+		int current_distance = distance_between(leader->get_location(), keep);
 		foreach (const pathfind::paths::step &dest, leader_paths.destinations)
 		{
 			if (!units_.find(dest.curr).valid()){
@@ -771,7 +771,7 @@ double move_leader_to_keep_phase::evaluate()
 			j != moves_toward_keep.end(); ++j) {
 
 			if(get_enemy_dstsrc().count(j->second) == 0) {
-				move_ = check_move_action(leader->first,j->second,true);
+				move_ = check_move_action(leader->get_location(), j->second, true);
 				if (move_->is_ok()){
 					return get_score();
 				}
@@ -827,7 +827,7 @@ void get_villages_phase::execute()
 
 	for(tmoves::const_iterator i = moves_.begin(); i != moves_.end(); ++i) {
 
-		if(leader != units_.end() && leader->first == i->second) {
+		if(leader != units_.end() && leader->get_location() == i->second) {
 			leader_move = *i;
 		} else {
 			if(units_.count(i->first) == 0) {
@@ -840,9 +840,10 @@ void get_villages_phase::execute()
 				leader = units_.find_leader(get_side());
 				const unit_map::const_iterator new_unit = units_.find(loc);
 
-				if(new_unit != units_.end() &&
-						power_projection(i->first,get_enemy_dstsrc()) >= new_unit->second.hitpoints()/4) {
-					LOG_AI_TESTING_AI_DEFAULT << "found support target... " << new_unit->first << "\n";
+				if (new_unit != units_.end() &&
+				    power_projection(i->first, get_enemy_dstsrc()) >= new_unit->hitpoints() / 4)
+				{
+					LOG_AI_TESTING_AI_DEFAULT << "found support target... " << new_unit->get_location() << '\n';
 					//FIXME: suokko tweaked the constant 1.0 to the formula:
 					//25.0* current_team().caution() * power_projection(loc,enemy_dstsrc) / new_unit->second.hitpoints()
 					//Is this an improvement?
@@ -875,8 +876,8 @@ void get_villages_phase::get_villages(const moves_map& possible_moves,
 	const int ticks = SDL_GetTicks();
 	best_leader_loc_ = map_location::null_location;
 	if(leader != units_.end()) {
-		keep_loc_ = nearest_keep(leader->first);
-		leader_loc_ = leader->first;
+		keep_loc_ = nearest_keep(leader->get_location());
+		leader_loc_ = leader->get_location();
 	} else {
 		keep_loc_ = map_location::null_location;
 		leader_loc_ = map_location::null_location;
@@ -889,9 +890,8 @@ void get_villages_phase::get_villages(const moves_map& possible_moves,
 	for(unit_map::const_iterator u_itor = units_.begin();
 			u_itor != units_.end(); ++u_itor) {
 
-		if(u_itor->second.side() == get_side()
-				&& u_itor->second.movement_left()) {
-			reachmap.insert(std::make_pair(u_itor->first,	std::vector<map_location>()));
+		if(u_itor->side() == get_side() && u_itor->movement_left()) {
+			reachmap.insert(std::make_pair(u_itor->get_location(),	std::vector<map_location>()));
 		}
 	}
 
@@ -1014,11 +1014,11 @@ void get_villages_phase::find_villages(
 		}
 
 		const unit_map::const_iterator u = get_info().units.find(j->second);
-		if (u == get_info().units.end() || u->second.get_state("guardian")) {
+		if (u == get_info().units.end() || u->get_state("guardian")) {
 			continue;
 		}
 
-		const unit& un = u->second;
+		const unit  &un = *u;
 		//FIXME: suokko turned this 2:1 to 1.5:1.0.
 		//and dropped the second term of the multiplication.  Is that better?
 		//const double threat_multipler = (current_loc == leader_loc?2:1) * current_team().caution() * 10;
@@ -1621,7 +1621,7 @@ double get_healing_phase::evaluate()
 	unit_map &units_ = get_info().units;
 	unit_map::iterator u_it = units_.begin();
 	for(; u_it != units_.end(); ++u_it) {
-		unit& u = u_it->second;
+		unit &u = *u_it;
 
 		// If the unit is on our side, has lost as many or more than
 		// 1/2 round worth of healing, and doesn't regenerate itself,
@@ -1633,14 +1633,14 @@ double get_healing_phase::evaluate()
 		{
 			// Look for the village which is the least vulnerable to enemy attack.
 			typedef std::multimap<map_location,map_location>::const_iterator Itor;
-			std::pair<Itor,Itor> it = get_srcdst().equal_range(u_it->first);
+			std::pair<Itor,Itor> it = get_srcdst().equal_range(u_it->get_location());
 			double best_vulnerability = 100000.0;
 			// Make leader units more unlikely to move to vulnerable villages
 			const double leader_penalty = (u.can_recruit()?2.0:1.0);
 			Itor best_loc = it.second;
 			while(it.first != it.second) {
 				const map_location& dst = it.first->second;
-				if(get_info().map.gives_healing(dst) && (units_.find(dst) == units_.end() || dst == u_it->first)) {
+				if (get_info().map.gives_healing(dst) && (units_.find(dst) == units_.end() || dst == u_it->get_location())) {
 					const double vuln = power_projection(it.first->first, get_enemy_dstsrc());
 					DBG_AI_TESTING_AI_DEFAULT << "found village with vulnerability: " << vuln << "\n";
 					if(vuln < best_vulnerability) {
@@ -1704,19 +1704,19 @@ double retreat_phase::evaluate()
 
 	map_location leader_adj[6];
 	if(leader != units_.end()) {
-		get_adjacent_tiles(leader->first,leader_adj);
+		get_adjacent_tiles(leader->get_location(), leader_adj);
 	}
 
 	for(unit_map::iterator i = units_.begin(); i != units_.end(); ++i) {
-		if(i->second.side() == get_side() &&
-				i->second.movement_left() == i->second.total_movement() &&
-				unit_map::const_iterator(i) != leader &&
-				!i->second.incapacitated()) {
-
+		if (i->side() == get_side() &&
+		    i->movement_left() == i->total_movement() &&
+		    unit_map::const_iterator(i) != leader &&
+		    !i->incapacitated())
+		{
 			// This unit still has movement left, and is a candidate to retreat.
 			// We see the amount of power of each side on the situation,
 			// and decide whether it should retreat.
-			if(should_retreat(i->first, i, fullmove_srcdst, fullmove_dstsrc, get_caution())) {
+			if(should_retreat(i->get_location(), i, fullmove_srcdst, fullmove_dstsrc, get_caution())) {
 
 				bool can_reach_leader = false;
 
@@ -1725,12 +1725,12 @@ double retreat_phase::evaluate()
 				// If we can't find anywhere where we like the power balance,
 				// just try to get to the best defensive hex.
 				typedef move_map::const_iterator Itor;
-				std::pair<Itor,Itor> itors = get_srcdst().equal_range(i->first);
-				map_location best_pos, best_defensive(i->first);
+				std::pair<Itor,Itor> itors = get_srcdst().equal_range(i->get_location());
+				map_location best_pos, best_defensive(i->get_location());
 
 				double best_rating = -1000.0;
-				int best_defensive_rating = i->second.defense_modifier(get_info().map.get_terrain(i->first))
-					- (get_info().map.is_village(i->first) ? 10 : 0);
+				int best_defensive_rating = i->defense_modifier(get_info().map.get_terrain(i->get_location()))
+					- (get_info().map.is_village(i->get_location()) ? 10 : 0);
 				while(itors.first != itors.second) {
 
 					if(leader != units_.end() && std::count(leader_adj,
@@ -1744,7 +1744,7 @@ double retreat_phase::evaluate()
 					// compared to theirs, multiplying their power projection by their
 					// chance to hit us on the hex we're planning to flee to.
 					const map_location& hex = itors.first->second;
-					const int defense = i->second.defense_modifier(get_info().map.get_terrain(hex));
+					const int defense = i->defense_modifier(get_info().map.get_terrain(hex));
 					const double our_power = power_projection(hex,get_dstsrc());
 					const double their_power = power_projection(hex,get_enemy_dstsrc()) * double(defense)/100.0;
 					const double rating = our_power - their_power;
@@ -1775,7 +1775,7 @@ double retreat_phase::evaluate()
 				}
 
 				if(best_pos.valid()) {
-					move_ = check_move_action(i->first,best_pos,true);
+					move_ = check_move_action(i->get_location(), best_pos, true);
 					if (move_->is_ok()) {
 						return get_score();
 					}
@@ -1805,10 +1805,10 @@ bool retreat_phase::should_retreat(const map_location& loc, const unit_map::cons
 		return false;
 	}
 
-	const double optimal_terrain = best_defensive_position(un->first, dstsrc,
+	double optimal_terrain = best_defensive_position(un->get_location(), dstsrc,
 			srcdst, enemy_dstsrc).chance_to_hit/100.0;
 	const double proposed_terrain =
-		un->second.defense_modifier(get_info().map.get_terrain(loc))/100.0;
+		un->defense_modifier(get_info().map.get_terrain(loc)) / 100.0;
 
 	// The 'exposure' is the additional % chance to hit
 	// this unit receives from being on a sub-optimal defensive terrain.
@@ -1840,11 +1840,11 @@ double simple_move_and_targeting_phase::evaluate()
 	unit_map::const_iterator leader = units_.find_leader(get_side());
 	map_location my_leader_loc = map_location::null_location;
 	if (leader.valid()) {
-		my_leader_loc = leader->first;
+		my_leader_loc = leader->get_location();
 	}
 
 	for(leader = units_.begin(); leader != units_.end(); ++leader) {
-		if(leader->second.can_recruit() && current_team().is_enemy(leader->second.side())) {
+		if(leader->can_recruit() && current_team().is_enemy(leader->side())) {
 			break;
 		}
 	}
@@ -1857,7 +1857,7 @@ double simple_move_and_targeting_phase::evaluate()
 	std::pair<map_location,map_location> closest_move;
 
 	for(move_map::const_iterator i = get_dstsrc().begin(); i != get_dstsrc().end(); ++i) {
-		const int distance = distance_between(i->first,leader->first);
+		int distance = distance_between(i->first, leader->get_location());
 		if(closest_distance == -1 || distance < closest_distance) {
 			if ((i->second!=my_leader_loc) && (i->second!=i->first)) {
 				closest_distance = distance;

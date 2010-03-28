@@ -264,10 +264,10 @@ int unit_animation::matches(const game_display &disp,const map_location& loc,con
 		if(!secondary_unit_filter_.empty()) {
 			unit_map::const_iterator unit;
 			for(unit=disp.get_const_units().begin() ; unit != disp.get_const_units().end() ; ++unit) {
-				if(unit->first == second_loc) {
+				if (unit->get_location() == second_loc) {
 					std::vector<config>::const_iterator second_itor;
 					for(second_itor = secondary_unit_filter_.begin(); second_itor != secondary_unit_filter_.end(); ++second_itor) {
-						if (!unit->second.matches_filter(vconfig(*second_itor), second_loc)) return MATCH_FAIL;
+						if (!unit->matches_filter(vconfig(*second_itor), second_loc)) return MATCH_FAIL;
 						result++;
 					}
 

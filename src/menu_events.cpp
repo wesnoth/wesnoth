@@ -167,8 +167,8 @@ std::string menu_handler::get_title_suffix(int side_num)
 	std::stringstream msg;
 	if(controlled_recruiters >= 2) {
 		unit_map::const_iterator leader = units_.find_leader(side_num);
-		if(leader != units_.end() && !leader->second.name().empty()) {
-			msg << " (" << leader->second.name(); msg << ")";
+		if (leader != units_.end() && !leader->name().empty()) {
+			msg << " (" << leader->name(); msg << ")";
 		}
 	}
 	return msg.str();
@@ -224,55 +224,55 @@ void menu_handler::unit_list()
 	int selected = 0;
 
 	for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
-		if (i->second.side() != gui_->viewing_side())
+		if (i->side() != gui_->viewing_side())
 			continue;
 
 		std::stringstream row;
 		// If a unit is already selected on the map, we do the same in the unit list dialog
-		if (gui_->selected_hex() == i->first) {
+		if (gui_->selected_hex() == i->get_location()) {
 			 row << DEFAULT_ITEM;
 			 selected = units_list.size();
 		}
 		// If unit is leader, show name in special color, e.g. gold/silver
 		/** @todo TODO: hero just has overlay "misc/hero-icon.png" - needs an ability to query */
 
-		if(i->second.can_recruit() ) {
+		if (i->can_recruit() ) {
 			row << "<205,173,0>";   // gold3
 		}
-		row << i->second.type_name() << COLUMN_SEPARATOR;
-		if(i->second.can_recruit() ) {
+		row << i->type_name() << COLUMN_SEPARATOR;
+		if (i->can_recruit() ) {
 			row << "<205,173,0>";   // gold3
 		}
-		row << i->second.name()   << COLUMN_SEPARATOR;
+		row << i->name()   << COLUMN_SEPARATOR;
 
 		// display move left (0=red, moved=yellow, not moved=green)
-		if(i->second.movement_left() == 0) {
+		if (i->movement_left() == 0) {
 			row << font::RED_TEXT;
-		} else if(i->second.movement_left() < i->second.total_movement() ) {
+		} else if (i->movement_left() < i->total_movement() ) {
 			row << "<255,255,0>";
 		} else {
 			row << font::GREEN_TEXT;
 		}
-		row << i->second.movement_left() << "/" << i->second.total_movement() << COLUMN_SEPARATOR;
+		row << i->movement_left() << '/' << i->total_movement() << COLUMN_SEPARATOR;
 
 		// show icons if unit is slowed, poisoned, petrified, invisible:
-		if(i->second.get_state(unit::STATE_PETRIFIED))
+		if(i->get_state(unit::STATE_PETRIFIED))
 			row << IMAGE_PREFIX << "misc/petrified.png"    << IMG_TEXT_SEPARATOR;
-		if(i->second.get_state(unit::STATE_POISONED))
+		if(i->get_state(unit::STATE_POISONED))
 			row << IMAGE_PREFIX << "misc/poisoned.png" << IMG_TEXT_SEPARATOR;
-		if(i->second.get_state(unit::STATE_SLOWED))
+		if(i->get_state(unit::STATE_SLOWED))
 			row << IMAGE_PREFIX << "misc/slowed.png"   << IMG_TEXT_SEPARATOR;
-		if(i->second.invisible(i->first, units_, teams_ ,false))
+		if(i->invisible(i->get_location(), units_, teams_ ,false))
 			row << IMAGE_PREFIX << "misc/invisible.png";
 		row << COLUMN_SEPARATOR;
 
 		// Display HP
 		// see also unit_preview_pane in dialogs.cpp
-		row << font::color2markup(i->second.hp_color());
-		row << i->second.hitpoints()  << "/" << i->second.max_hitpoints() << COLUMN_SEPARATOR;
+		row << font::color2markup(i->hp_color());
+		row << i->hitpoints()  << '/' << i->max_hitpoints() << COLUMN_SEPARATOR;
 
 		// Show units of level (0=gray, 1 normal, 2 bold, 2+ bold&wbright)
-		const int level = i->second.level();
+		int level = i->level();
 		if(level < 1) {
 			row << "<150,150,150>";
 		} else if(level == 1) {
@@ -285,21 +285,21 @@ void menu_handler::unit_list()
 		row << level << COLUMN_SEPARATOR;
 
 		// Display XP
-		row << font::color2markup(i->second.xp_color());
-		row << i->second.experience() << "/";
-		if(i->second.can_advance()) {
-			row << i->second.max_experience();
+		row << font::color2markup(i->xp_color());
+		row << i->experience() << "/";
+		if (i->can_advance()) {
+			row << i->max_experience();
 		} else {
 			row << "-";
 		}
 		row << COLUMN_SEPARATOR;
 
 		// TODO: show 'loyal' in green / xxx in red  //  how to handle translations ??
-		row << i->second.traits_description();
+		row << i->traits_description();
 		items.push_back(row.str());
 
-		locations_list.push_back(i->first);
-		units_list.push_back(i->second);
+		locations_list.push_back(i->get_location());
+		units_list.push_back(*i);
 	}
 
 	{
@@ -415,9 +415,9 @@ void menu_handler::status_table(int selected)
 			// Add leader image. If it's fogged
 			// show only a random leader image.
 			if (known || game_config::debug) {
-				str << IMAGE_PREFIX << leader->second.absolute_image();
+				str << IMAGE_PREFIX << leader->absolute_image();
 				leader_bools.push_back(true);
-				leader_name = leader->second.name();
+				leader_name = leader->name();
 			} else {
 				str << IMAGE_PREFIX << std::string("units/unknown-unit.png");
 				leader_bools.push_back(false);
@@ -427,7 +427,7 @@ void menu_handler::status_table(int selected)
 				leader_name = teams_[n].current_player();
 
 #ifndef LOW_MEM
-			str << "~RC(" << leader->second.team_color() << ">" << team::get_side_colour_index(n+1) << ")";
+			str << "~RC(" << leader->team_color() << '>' << team::get_side_colour_index(n+1) << ')';
 #endif
 		} else {
 			leader_bools.push_back(false);
@@ -526,14 +526,14 @@ void menu_handler::scenario_settings_table(int selected)
 			// Add leader image. If it's fogged
 			// show only a random leader image.
 			if (viewing_team.knows_about_team(n, network::nconnections() > 0) || game_config::debug) {
-				str << IMAGE_PREFIX << leader->second.absolute_image();
+				str << IMAGE_PREFIX << leader->absolute_image();
 				leader_bools.push_back(true);
 			} else {
 				str << IMAGE_PREFIX << std::string("units/unknown-unit.png");
 				leader_bools.push_back(false);
 			}
 #ifndef LOW_MEM
-			str << "~RC(" << leader->second.team_color() << ">"
+			str << "~RC(" << leader->team_color() << '>'
 			    << team::get_side_colour_index(n+1) << ")";
 #endif
 		} else {
@@ -1004,7 +1004,7 @@ void menu_handler::undo(int side_num)
 				return;
 			}
 
-			const unit& un = units_.find(action.recall_loc)->second;
+			const unit &un = *units_.find(action.recall_loc);
 			statistics::un_recall_unit(un);
 			current_team.spend_gold(-game_config::recall_cost);
 
@@ -1021,7 +1021,7 @@ void menu_handler::undo(int side_num)
 			return;
 		}
 
-		const unit& un = units_.find(action.recall_loc)->second;
+		const unit &un = *units_.find(action.recall_loc);
 		statistics::un_recruit_unit(un);
 		assert(un.type());
 		current_team.spend_gold(-un.type()->cost());
@@ -1059,18 +1059,18 @@ void menu_handler::undo(int side_num)
 			}
 		}
 
-		action.starting_moves = u->second.movement_left();
+		action.starting_moves = u->movement_left();
 
-		unit_display::move_unit(route, u->second, teams_, true, action.starting_dir);
+		unit_display::move_unit(route, *u, teams_, true, action.starting_dir);
 
-		units_.move(u->first, route.back());
+		units_.move(u->get_location(), route.back());
 		unit::clear_status_caches();
 
 		u = units_.find(route.back());
-		u->second.set_goto(map_location());
-		std::swap(u->second.waypoints(), action.waypoints);
-		u->second.set_movement(starting_moves);
-		u->second.set_standing();
+		u->set_goto(map_location());
+		std::swap(u->waypoints(), action.waypoints);
+		u->set_movement(starting_moves);
+		u->set_standing();
 
 		gui_->invalidate_unit_after_move(route.front(), route.back());
 		gui_->draw();
@@ -1197,21 +1197,21 @@ void menu_handler::redo(int side_num)
 			return;
 		}
 
-		action.starting_moves = u->second.movement_left();
+		action.starting_moves = u->movement_left();
 
-		unit_display::move_unit(route,u->second,teams_);
+		unit_display::move_unit(route, *u, teams_);
 
-		units_.move(u->first, route.back());
+		units_.move(u->get_location(), route.back());
 		u = units_.find(route.back());
 
 		unit::clear_status_caches();
-		u->second.set_goto(action.affected_unit.get_goto());
-		std::swap(u->second.waypoints(), action.waypoints);
-		u->second.set_movement(starting_moves);
-		u->second.set_standing();
+		u->set_goto(action.affected_unit.get_goto());
+		std::swap(u->waypoints(), action.waypoints);
+		u->set_movement(starting_moves);
+		u->set_standing();
 
 		if(map_.is_village(route.back())) {
-			get_village(route.back(), u->second.side());
+			get_village(route.back(), u->side());
 			//MP_COUNTDOWN restore capture bonus
 			if(action.countdown_time_bonus)
 			{
@@ -1252,15 +1252,16 @@ void menu_handler::show_enemy_moves(bool ignore_units, int side_num)
 
 	// Compute enemy movement positions
 	for(unit_map::iterator u = units_.begin(); u != units_.end(); ++u) {
-		bool invisible = u->second.invisible(u->first, units_, teams_);
+		bool invisible = u->invisible(u->get_location(), units_, teams_);
 
-		if (teams_[side_num - 1].is_enemy(u->second.side()) &&
-			!gui_->fogged(u->first) && !u->second.incapacitated() && !invisible)
+		if (teams_[side_num - 1].is_enemy(u->side()) &&
+		    !gui_->fogged(u->get_location()) && !u->incapacitated() && !invisible)
 		{
-			const unit_movement_resetter move_reset(u->second);
-			bool teleports = u->second.get_ability_bool("teleport");
+			const unit_movement_resetter move_reset(*u);
+			bool teleports = u->get_ability_bool("teleport");
 			const pathfind::paths& path = pathfind::paths(map_,units_,
-									  u->first,teams_,false,teleports,teams_[gui_->viewing_team()], 0,false, ignore_units);
+				u->get_location(), teams_, false, teleports,
+				teams_[gui_->viewing_team()], 0, false, ignore_units);
 
 			gui_->highlight_another_reach(path);
 		}
@@ -1286,16 +1287,16 @@ bool menu_handler::end_turn(int side_num)
 	bool unmoved_units = false, partmoved_units = false, some_units_have_moved = false;
 	int units_alive = 0;
 	for(unit_map::const_iterator un = units_.begin(); un != units_.end(); ++un) {
-		if (un->second.side() == side_num) {
+		if (un->side() == side_num) {
 			units_alive++;
-			if (unit_can_move(un->second)) {
-				if(!un->second.has_moved()) {
+			if (unit_can_move(*un)) {
+				if (!un->has_moved()) {
 					unmoved_units = true;
 				}
 
 				partmoved_units = true;
 			}
-			if(un->second.has_moved()) {
+			if (un->has_moved()) {
 				some_units_have_moved = true;
 			}
 		}
@@ -1330,7 +1331,7 @@ void menu_handler::goto_leader(int side_num)
 	unit_map::const_iterator i = units_.find_leader(side_num);
 	if(i != units_.end()) {
 		clear_shroud(side_num);
-		gui_->scroll_to_tile(i->first,game_display::WARP);
+		gui_->scroll_to_tile(i->get_location(), game_display::WARP);
 	}
 }
 
@@ -1338,23 +1339,23 @@ void menu_handler::unit_description(mouse_handler& mousehandler)
 {
 	const unit_map::const_iterator un = current_unit(mousehandler);
 	if(un != units_.end()) {
-		dialogs::show_unit_description(un->second);
+		dialogs::show_unit_description(*un);
 	}
 }
 
 void menu_handler::rename_unit(mouse_handler& mousehandler)
 {
 	const unit_map::iterator un = current_unit(mousehandler);
-	if (un == units_.end() || gui_->viewing_side() != un->second.side())
+	if (un == units_.end() || gui_->viewing_side() != un->side())
 		return;
-	if(un->second.unrenamable())
+	if (un->unrenamable())
 		return;
 
-	std::string name = un->second.name();
+	std::string name = un->name();
 	const int res = gui::show_dialog(*gui_,NULL,_("Rename Unit"),"", gui::OK_CANCEL,NULL,NULL,"",&name);
 	if(res == 0) {
-		recorder.add_rename(name, un->first);
-		un->second.rename(name);
+		recorder.add_rename(name, un->get_location());
+		un->rename(name);
 		gui_->invalidate_unit();
 	}
 }
@@ -1529,12 +1530,12 @@ void menu_handler::change_side(mouse_handler& mousehandler)
 		}
 		get_village(loc, team + 1);
 	} else {
-		int side = i->second.side();
+		int side = i->side();
 		++side;
 		if(side > team::nteams()) {
 			side = 1;
 		}
-		i->second.set_side(side);
+		i->set_side(side);
 
 		if(map_.is_village(loc)) {
 			get_village(loc, side);
@@ -1587,11 +1588,11 @@ void menu_handler::clear_labels()
 void menu_handler::continue_move(mouse_handler &mousehandler, int side_num)
 {
 	unit_map::iterator i = current_unit(mousehandler);
-	if(i == units_.end() || i->second.move_interrupted() == false) {
+	if (i == units_.end() || !i->move_interrupted()) {
 		i = units_.find(mousehandler.get_selected_hex());
-		if (i == units_.end() || i->second.move_interrupted() == false) return;
+		if (i == units_.end() || !i->move_interrupted()) return;
 	}
-	move_unit_to_loc(i, i->second.get_interrupted_move(), true,
+	move_unit_to_loc(i, i->get_interrupted_move(), true,
 		side_num, mousehandler);
 }
 
@@ -1601,12 +1602,12 @@ void menu_handler::move_unit_to_loc(const unit_map::const_iterator &ui,
 {
 	assert(ui != units_.end());
 
-	pathfind::marked_route route = mousehandler.get_route(ui, target, ui->second.waypoints(), teams_[side_num - 1]);
+	pathfind::marked_route route = mousehandler.get_route(ui, target, ui->waypoints(), teams_[side_num - 1]);
 
 	if(route.steps.empty())
 		return;
 
-	assert(route.steps.front() == ui->first);
+	assert(route.steps.front() == ui->get_location());
 
 	gui_->set_route(&route);
 	move_unit(NULL, route.steps, &recorder, &undo_stack_, true, NULL, continue_move);
@@ -1628,14 +1629,14 @@ void menu_handler::execute_gotos(mouse_handler &mousehandler, int side)
 		change = false;
 		blocked_unit = false;
 		for(unit_map::iterator ui = units_.begin(); ui != units_.end(); ++ui) {
-			if(ui->second.side() != side  || ui->second.movement_left() == 0)
+			if (ui->side() != side  || ui->movement_left() == 0)
 				continue;
 
-			const map_location& current_loc = ui->first;
-			const map_location& goto_loc = ui->second.get_goto();
+			const map_location &current_loc = ui->get_location();
+			const map_location &goto_loc = ui->get_goto();
 
 			if(goto_loc == current_loc){
-				ui->second.set_goto(map_location());
+				ui->set_goto(map_location());
 				continue;
 			}
 
@@ -1646,7 +1647,7 @@ void menu_handler::execute_gotos(mouse_handler &mousehandler, int side)
 			if(fully_moved.count(current_loc))
 				continue;
 
-			pathfind::marked_route route = mousehandler.get_route(ui, goto_loc, ui->second.waypoints(), teams_[side - 1]);
+			pathfind::marked_route route = mousehandler.get_route(ui, goto_loc, ui->waypoints(), teams_[side - 1]);
 
 			if(route.steps.size() <= 1) { // invalid path
 				fully_moved.insert(current_loc);
@@ -1714,17 +1715,16 @@ void menu_handler::toggle_grid()
 void menu_handler::unit_hold_position(mouse_handler &mousehandler, int side_num)
 {
 	const unit_map::iterator un = units_.find(mousehandler.get_selected_hex());
-	if (un != units_.end() && un->second.side() == side_num &&
-		un->second.movement_left() >= 0)
+	if (un != units_.end() && un->side() == side_num && un->movement_left() >= 0)
 	{
-		un->second.set_hold_position(!un->second.hold_position());
+		un->set_hold_position(!un->hold_position());
 		gui_->invalidate(mousehandler.get_selected_hex());
 
 		mousehandler.set_current_paths(pathfind::paths());
 		gui_->draw();
 
-		if(un->second.hold_position()) {
-			un->second.set_user_end_turn(true);
+		if (un->hold_position()) {
+			un->set_user_end_turn(true);
 			mousehandler.cycle_units(false);
 		}
 	}
@@ -1733,19 +1733,18 @@ void menu_handler::unit_hold_position(mouse_handler &mousehandler, int side_num)
 void menu_handler::end_unit_turn(mouse_handler &mousehandler, int side_num)
 {
 	const unit_map::iterator un = units_.find(mousehandler.get_selected_hex());
-	if (un != units_.end() && un->second.side() == side_num &&
-		un->second.movement_left() >= 0)
+	if (un != units_.end() && un->side() == side_num && un->movement_left() >= 0)
 	{
-		un->second.set_user_end_turn(!un->second.user_end_turn());
-		if(un->second.hold_position() && !un->second.user_end_turn()){
-		  un->second.set_hold_position(false);
+		un->set_user_end_turn(!un->user_end_turn());
+		if (un->hold_position() && !un->user_end_turn()) {
+			un->set_hold_position(false);
 		}
 		gui_->invalidate(mousehandler.get_selected_hex());
 
 		mousehandler.set_current_paths(pathfind::paths());
 		gui_->draw();
 
-		if(un->second.user_end_turn()) {
+		if (un->user_end_turn()) {
 			mousehandler.cycle_units(false);
 		}
 	}
@@ -2953,12 +2952,12 @@ void menu_handler::do_search(const std::string& new_search)
 		if (!gui_->fogged(loc)) {
 			unit_map::const_iterator ui = units_.find(loc);
 			if(ui != units_.end()) {
-				const std::string name = ui->second.name();
+				const std::string name = ui->name();
 				if(std::search(name.begin(), name.end(),
 						last_search_.begin(), last_search_.end(),
 						chars_equal_insensitive) != name.end()) {
-					if (!teams_[gui_->viewing_team()].is_enemy(ui->second.side())
-						|| !ui->second.invisible(ui->first, units_,teams_)) {
+					if (!teams_[gui_->viewing_team()].is_enemy(ui->side()) ||
+					    !ui->invisible(ui->get_location(), units_,teams_)) {
 						found = true;
 					}
 				}
@@ -3266,19 +3265,19 @@ void console_handler::do_unit() {
 	if (name == "advances" ){
 		int int_value = lexical_cast<int>(value);
 		for (int levels=0; levels<int_value; levels++) {
-			i->second.get_experience( i->second.max_experience() - i->second.experience() );
-			dialogs::advance_unit(i->first);
+			i->get_experience(i->max_experience() - i->experience());
+			dialogs::advance_unit(i->get_location());
 		}
 	} else {
 		config cfg;
-		i->second.write(cfg);
-		const map_location loc = i->first;
+		i->write(cfg);
+		const map_location loc = i->get_location();
 		menu_handler_.units_.erase(loc);
 		cfg[name] = value;
 		unit new_u(&menu_handler_.units_, cfg, true);
 		menu_handler_.units_.add(loc, new_u);
 	}
-	menu_handler_.gui_->invalidate(i->first);
+	menu_handler_.gui_->invalidate(i->get_location());
 	menu_handler_.gui_->invalidate_unit();
 }
 /*void console_handler::do_buff() {

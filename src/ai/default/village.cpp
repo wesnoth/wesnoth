@@ -161,8 +161,8 @@ bool ai_default::get_villages(const std::map<map_location,pathfind::paths>& poss
 	const int ticks = SDL_GetTicks();
 	best_leader_loc = map_location::null_location;
 	if(leader != units_.end()) {
-		keep_loc = nearest_keep(leader->first);
-		leader_loc = leader->first;
+		keep_loc = nearest_keep(leader->get_location());
+		leader_loc = leader->get_location();
 	} else {
 		keep_loc = map_location::null_location;
 		leader_loc = map_location::null_location;
@@ -175,9 +175,9 @@ bool ai_default::get_villages(const std::map<map_location,pathfind::paths>& poss
 	for(unit_map::const_iterator u_itor = units_.begin();
 			u_itor != units_.end(); ++u_itor) {
 
-		if(u_itor->second.side() == get_side()
-				&& u_itor->second.movement_left()) {
-			reachmap.insert(std::make_pair(u_itor->first,	std::vector<map_location>()));
+		if (u_itor->side() == get_side() &&
+		    u_itor->movement_left()) {
+			reachmap.insert(std::make_pair(u_itor->get_location(),	std::vector<map_location>()));
 		}
 	}
 
@@ -218,7 +218,7 @@ bool ai_default::get_villages(const std::map<map_location,pathfind::paths>& poss
 	int moves_made = 0;
 	for(tmoves::const_iterator i = moves.begin(); i != moves.end(); ++i) {
 
-		if(leader != units_.end() && leader->first == i->second) {
+		if(leader != units_.end() && leader->get_location() == i->second) {
 			leader_move = *i;
 		} else {
 			if(units_.count(i->first) == 0) {
@@ -237,12 +237,12 @@ bool ai_default::get_villages(const std::map<map_location,pathfind::paths>& poss
 				const unit_map::const_iterator new_unit = units_.find(loc);
 
 				if(new_unit != units_.end() &&
-						power_projection(i->first,enemy_dstsrc) >= new_unit->second.hitpoints()/4) {
-					LOG_AI << "found support target... " << new_unit->first << "\n";
+				    power_projection(i->first, enemy_dstsrc) >= new_unit->hitpoints() / 4) {
+					LOG_AI << "found support target... " << new_unit->get_location() << '\n';
 					//FIXME: sukko tweaked the constant 1.0 to the formula:
 					//25.0* current_team().caution() * power_projection(loc,enemy_dstsrc) / new_unit->second.hitpoints()
 					//Is this an improvement?
-					add_target(target(new_unit->first,1.0,target::SUPPORT));
+					add_target(target(new_unit->get_location(), 1.0, target::SUPPORT));
 				}
 			}
 		}
@@ -350,11 +350,11 @@ void ai_default::find_villages(
 		}
 
 		const unit_map::const_iterator u = units_.find(j->second);
-		if (u == units_.end() || u->second.get_state("guardian")) {
+		if (u == units_.end() || u->get_state("guardian")) {
 			continue;
 		}
 
-		const unit& un = u->second;
+		const unit& un = *u;
 		//FIXME: suokko turned this 2:1 to 1.5:1.0.
 		//and dropped the second term of the multiplication.  Is that better?
 		//const double threat_multipler = (current_loc == leader_loc?2:1) * current_team().caution() * 10;

@@ -153,7 +153,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			unit_map::iterator leader = resources::units->find_leader(side);
 			bool restart = resources::screen->get_playing_team() == index;
 			if (!player.empty() && leader.valid())
-				leader->second.rename(player);
+				leader->rename(player);
 
 
 			if (controller == "human" && !tm.is_human()) {
@@ -201,9 +201,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		if (controller == "ai"){
 			tm.make_ai();
 			tm.set_current_player("ai" + side_str);
-			if(have_leader) leader->second.rename("ai"+side_str);
-
-
+			if (have_leader) leader->rename("ai" + side_str);
 			return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 		}
 
@@ -257,18 +255,14 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			case 0:
 				tm.make_human_ai();
 				tm.set_current_player("ai" + side_str);
-				if(have_leader) leader->second.rename("ai"+side_str);
+				if (have_leader) leader->rename("ai" + side_str);
 				change_controller(side_str, "human_ai");
-
-
 				return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 
 			case 1:
 				tm.make_human();
 				tm.set_current_player("human" + side_str);
-				if(have_leader) leader->second.rename("human"+side_str);
-
-
+				if (have_leader) leader->rename("human" + side_str);
 				return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 			case 2:
 				//The user pressed "end game". Don't throw a network error here or he will get
@@ -281,7 +275,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 						// Server thinks this side is ours now so in case of error transfering side we have to make local state to same as what server thinks it is.
 						tm.make_human();
 						tm.set_current_player("human"+side_str);
-						if(have_leader) leader->second.rename("human"+side_str);
+						if (have_leader) leader->rename("human"+side_str);
 					}
 
 					const size_t index = static_cast<size_t>(action - 3);
@@ -293,7 +287,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 					} else {
 						tm.make_human_ai();
 						tm.set_current_player("ai"+side_str);
-						if(have_leader) leader->second.rename("ai"+side_str);
+						if (have_leader) leader->rename("ai" + side_str);
 						change_controller(side_str, "human_ai");
 					}
 					return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;

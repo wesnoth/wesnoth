@@ -228,14 +228,18 @@ public:
 
 		for(unit_map::iterator i = resources::units->begin(); i != resources::units->end(); ++i) {
 			std::stringstream s;
-			s << "("<<i->first;
-			s << ") side=" << i->second.side() <<" ";
-			if (i->second.can_recruit()) {
+			s << '(' << i->get_location();
+			s << ") side=" << i->side() << ' ';
+			if (i->can_recruit()) {
 				s << "LEADER ";
 			}
 
-			s << "id=["<<i->second.id() << "] "<<i->second.type_id() << "; L"<<i->second.level()<<"; " << i->second.experience() <<"/" << i->second.max_experience()<< " xp; "<< i->second.hitpoints() <<"/"<<i->second.max_hitpoints()<<" hp; ";
-				foreach (const std::string &str, i->second.get_traits_list() ) {
+			s << "id=[" << i->id() << "] " << i->type_id()
+				<< "; L" << i->level()<< "; " << i->experience()
+				<< '/' << i->max_experience() << " xp; "
+				<< i->hitpoints() << '/' << i->max_hitpoints()
+				<< " hp; ";
+			foreach (const std::string &str, i->get_traits_list()) {
 				s << str <<" ";
 			}
 
@@ -259,7 +263,7 @@ public:
 		for(unit_map::iterator u = resources::units->begin(); u != resources::units->end(); ++u) {
 			if (selected==i) {
 				config c_unit;
-				u->second.write(c_unit);
+				u->write(c_unit);
 				model_.set_inspect_window_text(c_unit.debug());
 				return;
 			}
@@ -361,16 +365,21 @@ public:
 		if (selected==6) {
 			std::stringstream s;
 			for(unit_map::iterator i = resources::units->begin(); i != resources::units->end(); ++i) {
-				if (i->second.side()!=side_) {
+				if (i->side()!=side_) {
 					continue;
 				}
-				s <<i->first;
-				if (i->second.can_recruit()) {
+				s << i->get_location();
+				if (i->can_recruit()) {
 					s << " LEADER ";
 				}
 
-				s << "id=["<<i->second.id() << "] "<<i->second.type_id() << "; L"<<i->second.level()<<"; " << i->second.experience() <<"/" << i->second.max_experience()<< " xp; "<< i->second.hitpoints() <<"/"<<i->second.max_hitpoints()<<" hp." << std::endl;
-				foreach (const std::string &str, i->second.get_traits_list() ) {
+				s << "id=[" << i->id() << "] " << i->type_id()
+					<< "; L" << i->level()<< "; "
+					<< i->experience() << '/'
+					<< i->max_experience() << " xp; "
+					<< i->hitpoints() << '/'
+					<< i->max_hitpoints()<<" hp.\n";
+				foreach (const std::string &str, i->get_traits_list() ) {
 					s << "\t" << str<< std::endl;
 				}
 				s << std::endl << std::endl;

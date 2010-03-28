@@ -182,7 +182,7 @@ pathfind::plain_route formula_ai::shortest_path_calculator(const map_location &s
     map_location destination = dst;
 
     unit_map &units_ = get_info().units;
-    pathfind::shortest_path_calculator calc(unit_it->second, current_team(), units_, get_info().teams, get_info().map);
+    pathfind::shortest_path_calculator calc(*unit_it, current_team(), units_, get_info().teams, get_info().map);
 
     unit_map::const_iterator dst_un = units_.find(destination);
 
@@ -231,7 +231,7 @@ pathfind::plain_route formula_ai::shortest_path_calculator(const map_location &s
 
 std::set<map_location> formula_ai::get_allowed_teleports(unit_map::iterator& unit_it) const
 {
-  return pathfind::get_teleport_locations(unit_it->second, get_info().units, current_team(), true);
+  return pathfind::get_teleport_locations(*unit_it, get_info().units, current_team(), true);
 }
 
 map_location formula_ai::path_calculator(const map_location& src, const map_location& dst, unit_map::iterator& unit_it) const{
@@ -247,7 +247,7 @@ map_location formula_ai::path_calculator(const map_location& src, const map_loca
 		pathfind::plain_route route = shortest_path_calculator( src, dst, unit_it, allowed_teleports );
 
 		if( route.steps.size() == 0 ) {
-			pathfind::emergency_path_calculator em_calc(unit_it->second, get_info().map);
+			pathfind::emergency_path_calculator em_calc(*unit_it, get_info().map);
 			route = pathfind::a_star_search(src, dst, 1000.0, &em_calc, get_info().map.w(), get_info().map.h(), &allowed_teleports);
 			if( route.steps.size() < 2 ) {
 				return map_location();
@@ -392,7 +392,7 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 
 			//make sure that unit which has to attack is at given position and is able to attack
 			unit_map::const_iterator unit = get_info().units.find(_attack_analysis->movements.front().first);
-			if ( ( unit == get_info().units.end() ) || (unit->second.attacks_left() == 0) )
+			if (!unit.valid() || unit->attacks_left() == 0)
 				continue;
 
 			const map_location& move_from = _attack_analysis->movements.front().first;
@@ -490,13 +490,13 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 			    status = 5001; //exceeded nmber of calls in a row - possible infinite loop
 			} else if( (unit = get_info().units.find(set_unit_var_command->loc())) == get_info().units.end() ) {
 			    status = 5002; //unit not found
-			} else if( unit->second.side() != get_side() ) {
+			} else if (unit->side() != get_side()) {
 			    status = 5003;//unit does not belong to our side
 			}
 
 			if( status == 0 ){
 				LOG_AI << "Setting unit variable: " << set_unit_var_command->key() << " -> " << set_unit_var_command->value().to_debug_string() << "\n";
-				unit->second.add_formula_var(set_unit_var_command->key(), set_unit_var_command->value());
+				unit->add_formula_var(set_unit_var_command->key(), set_unit_var_command->value());
 				made_moves.push_back(action);
 			} else {
 				ERR_AI << "ERROR #" << status << " while executing 'set_unit_var' formula function\n";
@@ -789,8 +789,8 @@ variant formula_ai::get_value(const std::string& key) const
 			std::vector<variant> v;
 			tmp.push_back( v );
 		}
-		for(unit_map::const_iterator i = get_info().units.begin(); i != get_info().units.end(); ++i) {
-			tmp[ i->second.side()-1 ].push_back( variant(new unit_callable(*i)) );
+		foreach (const unit &u, get_info().units) {
+			tmp[u.side() - 1].push_back(variant(new unit_callable(u)));
 		}
 		for( size_t i = 0; i<tmp.size(); ++i)
 			vars.push_back( variant( &tmp[i] ));
@@ -800,7 +800,7 @@ variant formula_ai::get_value(const std::string& key) const
 	{
 		std::vector<variant> vars;
 		for(unit_map::const_iterator i = get_info().units.begin(); i != get_info().units.end(); ++i) {
-			if(i->second.side() == get_side()) {
+			if (i->side() == get_side()) {
 				vars.push_back(variant(new unit_callable(*i)));
 			}
 		}
@@ -810,8 +810,8 @@ variant formula_ai::get_value(const std::string& key) const
 	{
 		std::vector<variant> vars;
 		for(unit_map::const_iterator i = get_info().units.begin(); i != get_info().units.end(); ++i) {
-			if(current_team().is_enemy(i->second.side())) {
-				if (!i->second.incapacitated()) {
+			if (current_team().is_enemy(i->side())) {
+				if (!i->incapacitated()) {
 					vars.push_back(variant(new unit_callable(*i)));
 				}
 			}

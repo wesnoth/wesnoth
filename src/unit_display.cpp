@@ -17,6 +17,7 @@
 #include "global.hpp"
 #include "unit_display.hpp"
 
+#include "foreach.hpp"
 #include "game_preferences.hpp"
 #include "game_events.hpp"
 #include "log.hpp"
@@ -318,19 +319,19 @@ void unit_attack(
 
 	const unit_map::iterator att = units.find(a);
 	assert(att != units.end());
-	unit& attacker = att->second;
+	unit& attacker = *att;
 
 	const unit_map::iterator def = units.find(b);
 	assert(def != units.end());
 	// do a copy so we can change the caracteristics
-	unit defender = def->second;
+	unit defender = *def;
 	bool was_hidden = defender.get_hidden();
-	def->second.set_hidden(true);
+	def->set_hidden(true);
 	disp->place_temporary_unit(defender);
 
 
-	att->second.set_facing(a.get_relative_dir(b));
-	def->second.set_facing(b.get_relative_dir(a));
+	att->set_facing(a.get_relative_dir(b));
+	def->set_facing(b.get_relative_dir(a));
 	defender.set_facing(b.get_relative_dir(a));
 
 
@@ -360,27 +361,37 @@ void unit_attack(
 	}else {
 		hit_type = unit_animation::MISS;
 	}
-	animator.add_animation(&attacker,"attack",att->first,def->first,damage,true,false,text_2,display::rgb(0,255,0),hit_type,&attack,secondary_attack,swing);
+	animator.add_animation(&attacker, "attack", att->get_location(),
+		def->get_location(), damage, true, false, text_2,
+		display::rgb(0, 255, 0), hit_type, &attack, secondary_attack,
+		swing);
 
 	// note that we take an anim from the real unit, we'll use it later
-	const unit_animation * defender_anim = def->second.choose_animation(*disp,def->first,"defend",att->first,damage,hit_type,&attack,secondary_attack,swing);
-	animator.add_animation(&defender,defender_anim,def->first,true,false,text  ,display::rgb(255,0,0));;
+	const unit_animation *defender_anim = def->choose_animation(*disp,
+		def->get_location(), "defend", att->get_location(), damage,
+		hit_type, &attack, secondary_attack, swing);
+	animator.add_animation(&defender, defender_anim, def->get_location(),
+		true, false, text , display::rgb(255, 0, 0));
 
 	for (std::vector<std::pair<const config *, map_location> >::iterator itor = leaders.cfgs.begin(); itor != leaders.cfgs.end(); ++itor) {
 		if(itor->second == a) continue;
 		if(itor->second == b) continue;
 		unit_map::iterator leader = units.find(itor->second);
 		assert(leader != units.end());
-		leader->second.set_facing(itor->second.get_relative_dir(a));
-		animator.add_animation(&leader->second,"leading",itor->second,att->first,damage,true,false,"",0,hit_type,&attack,secondary_attack,swing);
+		leader->set_facing(itor->second.get_relative_dir(a));
+		animator.add_animation(&*leader, "leading", itor->second,
+			att->get_location(), damage, true, false, "", 0,
+			hit_type, &attack, secondary_attack, swing);
 	}
 	for (std::vector<std::pair<const config *, map_location> >::iterator itor = helpers.cfgs.begin(); itor != helpers.cfgs.end(); ++itor) {
 		if(itor->second == a) continue;
 		if(itor->second == b) continue;
 		unit_map::iterator helper = units.find(itor->second);
 		assert(helper != units.end());
-		helper->second.set_facing(itor->second.get_relative_dir(b));
-		animator.add_animation(&helper->second,"resistance",itor->second,def->first,damage,true,false,"",0,hit_type,&attack,secondary_attack,swing);
+		helper->set_facing(itor->second.get_relative_dir(b));
+		animator.add_animation(&*helper, "resistance", itor->second,
+			def->get_location(), damage, true, false, "", 0,
+			hit_type, &attack, secondary_attack, swing);
 	}
 
 
@@ -398,10 +409,10 @@ void unit_attack(
 	}
 	animator.wait_for_end();
 	// pass the animation back to the real unit
-	def->second.start_animation(animator.get_end_time(),defender_anim,true);
-	reset_helpers(&att->second,&def->second);
+	def->start_animation(animator.get_end_time(), defender_anim, true);
+	reset_helpers(&*att, &*def);
 	disp->remove_temporary_unit();
-	def->second.set_hidden(was_hidden);
+	def->set_hidden(was_hidden);
 }
 
 // private helper function, set all helpers to default position
@@ -414,7 +425,7 @@ void reset_helpers(const unit *attacker,const unit *defender)
 		for (std::vector<std::pair<const config *, map_location> >::iterator itor = leaders.cfgs.begin(); itor != leaders.cfgs.end(); ++itor) {
 			unit_map::iterator leader = units.find(itor->second);
 			assert(leader != units.end());
-			leader->second.set_standing();
+			leader->set_standing();
 		}
 	}
 
@@ -423,7 +434,7 @@ void reset_helpers(const unit *attacker,const unit *defender)
 		for (std::vector<std::pair<const config *, map_location> >::iterator itor = helpers.cfgs.begin(); itor != helpers.cfgs.end(); ++itor) {
 			unit_map::iterator helper = units.find(itor->second);
 			assert(helper != units.end());
-			helper->second.set_standing();
+			helper->set_standing();
 		}
 	}
 }
@@ -434,30 +445,31 @@ void unit_recruited(const map_location& loc,const map_location& leader_loc)
 	if(!disp || disp->video().update_locked() || disp->video().faked() ||disp->fogged(loc)) return;
 	unit_map::iterator u = disp->get_units().find(loc);
 	if(u == disp->get_units().end()) return;
-	u->second.set_hidden(true);
+	u->set_hidden(true);
 
 	unit_animator animator;
 	if(leader_loc != map_location::null_location) {
 		unit_map::iterator leader = disp->get_units().find(leader_loc);
 		if(leader == disp->get_units().end()) return;
 		disp->scroll_to_tiles(loc,leader_loc,game_display::ONSCREEN,true,0.0,false);
-		leader->second.set_facing(leader_loc.get_relative_dir(loc));
-		animator.add_animation(&leader->second,"recruiting",leader_loc,loc,0,true);
+		leader->set_facing(leader_loc.get_relative_dir(loc));
+		animator.add_animation(&*leader, "recruiting", leader_loc, loc, 0, true);
 	} else {
 		disp->scroll_to_tile(loc,game_display::ONSCREEN,true,false);
 	}
 
 	disp->draw();
-	u->second.set_hidden(false);
-	u->second.set_facing(static_cast<map_location::DIRECTION>(rand()%map_location::NDIRECTIONS));
-	animator.add_animation(&u->second,"recruited",loc,leader_loc);
+	u->set_hidden(false);
+	u->set_facing(static_cast<map_location::DIRECTION>(rand()%map_location::NDIRECTIONS));
+	animator.add_animation(&*u, "recruited", loc, leader_loc);
 	animator.start_animations();
 	animator.wait_for_end();
 	animator.set_all_standing();
 	if (loc==disp->mouseover_hex()) disp->invalidate_unit();
 }
 
-void unit_healing(unit& healed,map_location& healed_loc, std::vector<unit_map::iterator> healers, int healing)
+void unit_healing(unit &healed, const map_location &healed_loc,
+	const std::vector<unit *> &healers, int healing)
 {
 	game_display* disp = game_display::get_singleton();
 	if(!disp || disp->video().update_locked() || disp->video().faked() || disp->fogged(healed_loc)) return;
@@ -467,9 +479,10 @@ void unit_healing(unit& healed,map_location& healed_loc, std::vector<unit_map::i
 	disp->display_unit_hex(healed_loc);
 	unit_animator animator;
 
-	for(std::vector<unit_map::iterator>::iterator heal_anim_it = healers.begin(); heal_anim_it != healers.end(); ++heal_anim_it) {
-		(*heal_anim_it)->second.set_facing((*heal_anim_it)->first.get_relative_dir(healed_loc));
-		animator.add_animation(&(*heal_anim_it)->second,"healing",(*heal_anim_it)->first,healed_loc,healing);
+	foreach (unit *h, healers) {
+		h->set_facing(h->get_location().get_relative_dir(healed_loc));
+		animator.add_animation(h, "healing", h->get_location(),
+			healed_loc, healing);
 	}
 	if (healing < 0) {
 		animator.add_animation(&healed,"poisoned",healed_loc,map_location::null_location,-healing,false,false,lexical_cast<std::string>(-healing), display::rgb(255,0,0));
@@ -504,19 +517,19 @@ void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const m
 	vconfig filter = cfg.child("filter");
 	if(!filter.null()) {
 		for (u = resources::units->begin(); u != resources::units->end(); ++u) {
-			if(game_events::unit_matches_filter(u, filter))
+			if (game_events::unit_matches_filter(*u, filter))
 				break;
 		}
 	}
 
 	// We have found a unit that matches the filter
-	if (u.valid() && !resources::screen->fogged(u->first))
+	if (u.valid() && !resources::screen->fogged(u->get_location()))
 	{
 		attack_type *primary = NULL;
 		attack_type *secondary = NULL;
 		Uint32 text_color;
 		unit_animation::hit_type hits=  unit_animation::INVALID;
-		std::vector<attack_type> attacks = u->second.attacks();
+		std::vector<attack_type> attacks = u->attacks();
 		std::vector<attack_type>::iterator itor;
 
 		filter = cfg.child("primary_attack");
@@ -553,7 +566,7 @@ void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const m
 		} else {
 			text_color = display::rgb(atoi(cfg["red"].c_str()),atoi(cfg["green"].c_str()),atoi(cfg["blue"].c_str()));
 		}
-		resources::screen->scroll_to_tile(u->first, game_display::ONSCREEN, true, false);
+		resources::screen->scroll_to_tile(u->get_location(), game_display::ONSCREEN, true, false);
 		vconfig t_filter = cfg.child("facing");
 		map_location secondary_loc = map_location::null_location;
 		if(!t_filter.empty()) {
@@ -561,13 +574,16 @@ void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const m
 			std::set<map_location> locs;
 			filter.get_locations(locs);
 			if(!locs.empty()) {
-				map_location::DIRECTION dir =u->first.get_relative_dir(*locs.begin());
-				u->second.set_facing(dir);
-				secondary_loc = u->first.get_direction(dir);
+				map_location::DIRECTION dir =u->get_location().get_relative_dir(*locs.begin());
+				u->set_facing(dir);
+				secondary_loc = u->get_location().get_direction(dir);
 			}
 		}
-		animator.add_animation(&u->second,cfg["flag"],u->first,secondary_loc,lexical_cast_default<int>(cfg["value"]),utils::string_bool(cfg["with_bars"]),
-				false,cfg["text"],text_color, hits,primary,secondary,lexical_cast_default<int>(cfg["value_second"]));
+		animator.add_animation(&*u, cfg["flag"], u->get_location(),
+			secondary_loc, lexical_cast_default<int>(cfg["value"]),
+			utils::string_bool(cfg["with_bars"]), false,
+			cfg["text"], text_color, hits, primary, secondary,
+			lexical_cast_default<int>(cfg["value_second"]));
 	}
 	const vconfig::child_list sub_anims = cfg.get_children("animate");
 	vconfig::child_list::const_iterator anim_itor;

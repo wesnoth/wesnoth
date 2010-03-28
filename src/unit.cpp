@@ -1466,11 +1466,11 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 			for (j = dirs.begin(); j != j_end; ++j) {
 				unit_map::const_iterator unit_itor = units_->find(adjacent[*j]);
 				if (unit_itor == units_->end()
-				|| !unit_itor->second.matches_filter(*i, unit_itor->first, use_flat_tod)) {
+				|| !unit_itor->matches_filter(*i, unit_itor->get_location(), use_flat_tod)) {
 					continue;
 				}
 				if (!(*i).has_attribute("is_enemy")
-				|| utils::string_bool((*i)["is_enemy"]) == teams_manager::get_teams()[this->side()-1].is_enemy(unit_itor->second.side())) {
+				|| utils::string_bool((*i)["is_enemy"]) == teams_manager::get_teams()[this->side()-1].is_enemy(unit_itor->side())) {
 					++match_count;
 				}
 			}
@@ -2668,15 +2668,17 @@ bool unit::invisible(const map_location& loc,
 	static const std::string hides("hides");
 	bool is_inv = get_state(STATE_HIDDEN) && get_ability_bool(hides,loc);
 	if(is_inv){
-		for(unit_map::const_iterator u = units.begin(); u != units.end(); ++u) {
-			if(teams[side_-1].is_enemy(u->second.side()) && tiles_adjacent(loc,u->first)) {
+		foreach (const unit &u, units)
+		{
+			const map_location &u_loc = u.get_location();
+			if (teams[side_-1].is_enemy(u.side()) && tiles_adjacent(loc, u_loc)) {
 				// Enemy spotted in adjacent tiles, check if we can see him.
 				// Watch out to call invisible with see_all=true to avoid infinite recursive calls!
 				if(see_all) {
 					is_inv = false;
 					break;
-				} else if(!teams[side_-1].fogged(u->first)
-				&& !u->second.invisible(u->first, units,teams,true)) {
+				} else if (!teams[side_-1].fogged(u_loc)
+				&& !u.invisible(u_loc, units, teams, true)) {
 					is_inv = false;
 					break;
 				}
@@ -2741,36 +2743,27 @@ unit_movement_resetter::~unit_movement_resetter()
 int side_units(const unit_map& units, int side)
 {
 	int res = 0;
-	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
-		if(i->second.side() == side) {
-			++res;
-		}
+	foreach (const unit &u, units) {
+		if (u.side() == side) ++res;
 	}
-
 	return res;
 }
 
 int side_units_cost(const unit_map& units, int side)
 {
 	int res = 0;
-	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
-		if(i->second.side() == side) {
-			res += i->second.cost();
-		}
+	foreach (const unit &u, units) {
+		if (u.side() == side) res += u.cost();
 	}
-
 	return res;
 }
 
 int side_upkeep(const unit_map& units, int side)
 {
 	int res = 0;
-	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
-		if(i->second.side() == side) {
-			res += i->second.upkeep();
-		}
+	foreach (const unit &u, units) {
+		if (u.side() == side) res += u.upkeep();
 	}
-
 	return res;
 }
 
@@ -2781,8 +2774,8 @@ unit_map::iterator find_visible_unit(unit_map& units, const map_location &loc,
 	unit_map::iterator u = units.find(loc);
 	if (see_all) return u;
 	if (!u.valid() || current_team.fogged(loc) ||
-	    (current_team.is_enemy(u->second.side()) &&
-	     u->second.invisible(loc, units, *resources::teams)))
+	    (current_team.is_enemy(u->side()) &&
+	     u->invisible(loc, units, *resources::teams)))
 		return units.end();
 	return u;
 }
@@ -2793,7 +2786,7 @@ const unit *get_visible_unit(const unit_map &units, const map_location &loc,
 	unit_map::const_iterator ui = find_visible_unit(units, loc,
 		current_team, see_all);
 	if (ui == units.end()) return NULL;
-	return &ui->second;
+	return &*ui;
 }
 
 void unit::refresh()

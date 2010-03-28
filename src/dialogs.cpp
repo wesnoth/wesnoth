@@ -70,33 +70,33 @@ namespace dialogs
 void advance_unit(const map_location &loc, bool random_choice, bool add_replay_event)
 {
 	unit_map::iterator u = resources::units->find(loc);
-	if (u == resources::units->end() || u->second.advances() == false)
+	if (u == resources::units->end() || !u->advances())
 		return;
 
-	LOG_DP << "advance_unit: " << u->second.type_id() << "\n";
+	LOG_DP << "advance_unit: " << u->type_id() << "\n";
 
-	const std::vector<std::string>& options = u->second.advances_to();
+	const std::vector<std::string>& options = u->advances_to();
 
 	std::vector<std::string> lang_options;
 
 	std::vector<unit> sample_units;
 	for(std::vector<std::string>::const_iterator op = options.begin(); op != options.end(); ++op) {
-		sample_units.push_back(::get_advanced_unit(u->second, *op));
+		sample_units.push_back(::get_advanced_unit(*u, *op));
 		const unit& type = sample_units.back();
 
 #ifdef LOW_MEM
 		lang_options.push_back(IMAGE_PREFIX + type.absolute_image() + COLUMN_SEPARATOR + type.type_name());
 #else
-		lang_options.push_back(IMAGE_PREFIX + type.absolute_image() + u->second.image_mods() + COLUMN_SEPARATOR + type.type_name());
+		lang_options.push_back(IMAGE_PREFIX + type.absolute_image() + u->image_mods() + COLUMN_SEPARATOR + type.type_name());
 #endif
 		preferences::encountered_units().insert(*op);
 	}
 
 	bool always_display = false;
-	foreach (const config &mod, u->second.get_modification_advances())
+	foreach (const config &mod, u->get_modification_advances())
 	{
 		if (utils::string_bool(mod["always_display"])) always_display = true;
-		sample_units.push_back(::get_advanced_unit(u->second, u->second.type_id()));
+		sample_units.push_back(::get_advanced_unit(*u, u->type_id()));
 		sample_units.back().add_modification("advance", mod);
 		const unit& type = sample_units.back();
 		if (!mod["image"].empty()) {
@@ -105,7 +105,7 @@ void advance_unit(const map_location &loc, bool random_choice, bool add_replay_e
 #ifdef LOW_MEM
 			lang_options.push_back(IMAGE_PREFIX + type.absolute_image() + COLUMN_SEPARATOR + mod["description"].str());
 #else
-			lang_options.push_back(IMAGE_PREFIX + type.absolute_image() + u->second.image_mods() + COLUMN_SEPARATOR + mod["description"].str());
+			lang_options.push_back(IMAGE_PREFIX + type.absolute_image() + u->image_mods() + COLUMN_SEPARATOR + mod["description"].str());
 #endif
 		}
 	}
@@ -148,12 +148,12 @@ void advance_unit(const map_location &loc, bool random_choice, bool add_replay_e
 	u = resources::units->find(loc);
 	if (u != resources::units->end()) {
 		// Level 10 unit gives 80 XP and the highest mainline is level 5
-		if(u->second.experience() < 81) {
+		if (u->experience() < 81) {
 			// For all leveling up we have to add advancement to replay here because replay
 			// doesn't handle cascading advancement since it just calls animate_unit_advancement().
 			advance_unit(loc, random_choice, true);
 		} else {
-			ERR_CF << "Unit has an too high amount of " << u->second.experience()
+			ERR_CF << "Unit has an too high amount of " << u->experience()
 				<< " XP left, cascade leveling disabled\n";
 		}
 	} else {
@@ -166,12 +166,12 @@ bool animate_unit_advancement(const map_location &loc, size_t choice)
 	const events::command_disabler cmd_disabler;
 
 	unit_map::iterator u = resources::units->find(loc);
-	if (u == resources::units->end() || u->second.advances() == false) {
+	if (u == resources::units->end() || !u->advances()) {
 		return false;
 	}
 
-	const std::vector<std::string>& options = u->second.advances_to();
-	std::vector<config> mod_options = u->second.get_modification_advances();
+	const std::vector<std::string>& options = u->advances_to();
+	std::vector<config> mod_options = u->get_modification_advances();
 
 	if(choice >= options.size() + mod_options.size()) {
 		return false;
@@ -183,7 +183,7 @@ bool animate_unit_advancement(const map_location &loc, size_t choice)
 	if (!resources::screen->video().update_locked()) {
 		unit_animator animator;
 		bool with_bars = true;
-		animator.add_animation(&u->second,"levelout", u->first, map_location(), 0, with_bars);
+		animator.add_animation(&*u,"levelout", u->get_location(), map_location(), 0, with_bars);
 		animator.start_animations();
 		animator.wait_for_end();
 	}
@@ -193,7 +193,7 @@ bool animate_unit_advancement(const map_location &loc, size_t choice)
 		std::string chosen_unit = options[choice];
 		::advance_unit(loc, chosen_unit);
 	} else {
-		unit amla_unit(u->second);
+		unit amla_unit(*u);
 		const config &mod_option = mod_options[choice - options.size()];
 
 		LOG_NG << "firing advance event (AMLA)\n";
@@ -212,7 +212,7 @@ bool animate_unit_advancement(const map_location &loc, size_t choice)
 
 	if (u != resources::units->end() && !resources::screen->video().update_locked()) {
 		unit_animator animator;
-		animator.add_animation(&u->second,"levelin",u->first, map_location(), 0, true);
+		animator.add_animation(&*u, "levelin", u->get_location(), map_location(), 0, true);
 		animator.start_animations();
 		animator.wait_for_end();
 		animator.set_all_standing();

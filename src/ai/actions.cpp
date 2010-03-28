@@ -203,7 +203,7 @@ const unit* attack_result::get_unit(game_info &info, const map_location &loc) co
 	if (u == units.end()){
 		return NULL;
 	}
-	return &u->second;
+	return &*u;
 
 }
 
@@ -330,7 +330,7 @@ void attack_result::do_execute()
 
 	const unit_map::const_iterator defender = get_info().units.find(defender_loc_);
 	if(defender != get_info().units.end()) {
-		const size_t defender_team = size_t(defender->second.side()) - 1;
+		size_t defender_team = defender->side() - 1;
 		if(defender_team < get_info().teams.size()) {
 			dialogs::advance_unit(defender_loc_ , !get_info().teams[defender_team].is_human());
 		}
@@ -378,7 +378,7 @@ const unit *move_result::get_unit(const unit_map &units, const std::vector<team>
 		set_error(E_NO_UNIT);
 		return NULL;
 	}
-	const unit *u = &un->second;
+	const unit *u = &*un;
 	if (u->side() != get_side()) {
 		set_error(E_NOT_OWN_UNIT);
 		return NULL;
@@ -522,7 +522,7 @@ void move_result::do_execute()
 		if ( move_spectator_.get_ambusher().valid() || !move_spectator_.get_seen_enemies().empty() || !move_spectator_.get_seen_friends().empty() ) {
 			set_gamestate_changed();
 		} else if (move_spectator_.get_unit().valid()){
-			unit_location_ = move_spectator_.get_unit()->first;
+			unit_location_ = move_spectator_.get_unit()->get_location();
 			if (unit_location_ != from_) {
 				set_gamestate_changed();
 			}
@@ -532,8 +532,9 @@ void move_result::do_execute()
 	}
 
 	if (move_spectator_.get_unit().valid()){
-		unit_location_ = move_spectator_.get_unit()->first;
-		if ( remove_movement_ && ( move_spectator_.get_unit()->second.movement_left() > 0 ) && (unit_location_==to_)) {
+		unit_location_ = move_spectator_.get_unit()->get_location();
+		if (remove_movement_ && move_spectator_.get_unit()->movement_left() > 0 && unit_location_ == to_)
+		{
 			stopunit_result_ptr stopunit_res = actions::execute_stopunit_action(get_side(),true,unit_location_,true,false);
 			if (!stopunit_res->is_ok()) {
 				set_error(stopunit_res->get_status());
@@ -601,7 +602,7 @@ const unit *recall_result::get_leader(const unit_map& units, bool)
 		set_error(E_NO_LEADER);
 		return NULL;
 	}
-	return &my_leader->second;
+	return &*my_leader;
 
 }
 
@@ -705,7 +706,7 @@ void recall_result::do_check_after()
 		set_error(AI_ACTION_FAILURE);
 		return;
 	}
-	if (unit->second.side()!=get_side()){
+	if (unit->side() != get_side()){
 		set_error(AI_ACTION_FAILURE);
 		return;
 	}
@@ -830,7 +831,7 @@ const unit *recruit_result::get_leader(const unit_map& units, bool)
 		set_error(E_NO_LEADER);
 		return NULL;
 	}
-	return &my_leader->second;
+	return &*my_leader;
 
 }
 
@@ -945,7 +946,7 @@ void recruit_result::do_check_after()
 		set_error(AI_ACTION_FAILURE);
 		return;
 	}
-	if (unit->second.side()!=get_side()){
+	if (unit->side() != get_side()){
 		set_error(AI_ACTION_FAILURE);
 		return;
 	}
@@ -1027,7 +1028,7 @@ const unit *stopunit_result::get_unit(const unit_map &units, bool)
 		set_error(E_NO_UNIT);
 		return NULL;
 	}
-	const unit *u = &un->second;
+	const unit *u = &*un;
 	if (u->side() != get_side()) {
 		set_error(E_NOT_OWN_UNIT);
 		return NULL;
@@ -1064,11 +1065,11 @@ void stopunit_result::do_check_after()
 		set_error(AI_ACTION_FAILURE);
 		return;
 	}
-	if (remove_movement_ && (un->second.movement_left()!=0) ){
+	if (remove_movement_ && un->movement_left() != 0) {
 		set_error(AI_ACTION_FAILURE);
 		return;
 	}
-	if (remove_attacks_ && (un->second.attacks_left()!=0) ) {
+	if (remove_attacks_ && un->attacks_left() != 0) {
 		set_error(AI_ACTION_FAILURE);
 		return;
 	}
@@ -1101,12 +1102,12 @@ void stopunit_result::do_execute()
 	unit_map::iterator un = info.units.find(unit_location_);
 	try {
 		if (remove_movement_){
-			un->second.remove_movement_ai();
+			un->remove_movement_ai();
 			set_gamestate_changed();
 			manager::raise_gamestate_changed();
 		}
 		if (remove_attacks_){
-			un->second.remove_attacks_ai();
+			un->remove_attacks_ai();
 			set_gamestate_changed();
 			manager::raise_gamestate_changed();//to be on the safe side
 		}

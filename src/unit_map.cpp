@@ -26,18 +26,14 @@ static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define DBG_NG LOG_STREAM(debug, log_engine)
 
-unit& unit_map::node::get_unit() const { return ptr_->second; }
-map_location& unit_map::node::get_location() const { return ptr_->first; }
-
 unit_map::unit_map(const unit_map& that) :
-	/* Initialize to silence compiler warnings. */
 	map_(),
 	lmap_(),
 	num_iters_(0),
 	num_invalid_(0)
 {
 	for (const_unit_iterator i = that.begin(); i != that.end(); i++) {
-		add(i->first, i->second);
+		add(i->get_location(), *i);
 	}
 }
 
@@ -47,7 +43,6 @@ unit_map &unit_map::operator=(const unit_map &that)
 	swap(temp);
 	return *this;
 }
-
 
 unit_map::~unit_map()
 {
@@ -98,60 +93,63 @@ unit_map::const_unit_iterator unit_map::begin() const {
 }
 
 void unit_map::add(const map_location &l, const unit &u) {
-	insert(new std::pair<map_location,unit>(l, u));
-}
-
-void unit_map::move(const map_location &src, const map_location &dst) {
-	std::pair<map_location,unit> *p = extract(src);
-	assert(p);
-	p->first = dst;
+	unit *p = new unit(u);
+	p->set_location(l);
 	insert(p);
 }
 
-void unit_map::insert(std::pair<map_location,unit> *p)
-{
-	unit_id_type unit_id = p->second.underlying_id();
-	umap::iterator iter = map_.find(unit_id);
+void unit_map::move(const map_location &src, const map_location &dst) {
+	unit *p = extract(src);
+	assert(p);
+	p->set_location(dst);
+	insert(p);
+}
 
-	if (!p->first.valid()) {
-		ERR_NG << "Trying to add " << p->second.name()
-			<< " - " << p->second.id() << " at an invalid location; Discarding.\n";
+void unit_map::insert(unit *p)
+{
+	unit_id_type unit_id = p->underlying_id();
+	umap::iterator iter = map_.find(unit_id);
+	const map_location &loc = p->get_location();
+
+	if (!p->get_location().valid()) {
+		ERR_NG << "Trying to add " << p->name()
+			<< " - " << p->id() << " at an invalid location; Discarding.\n";
 		delete p;
 		return;
 	}
 
-	p->second.set_location(p->first);
+	p->set_game_context(this);
 
 	if (iter == map_.end()) {
 		map_[unit_id] = node(true, p);
 	} else if(!is_valid(iter)) {
-		iter->second.ptr_ = p;
+		iter->second.ptr = p;
 		validate(iter);
-	} else if(iter->second.get_location() == p->first) {
-		erase(p->first);
+	} else if(iter->second.ptr->get_location() == loc) {
+		erase(loc);
 		insert(p);
 		return;
 	} else {
-		ERR_NG << "Trying to add " << p->second.name() <<
-			" - " << p->second.id() <<
-			" - " << p->second.underlying_id() <<
-			" ("  << p->first <<
-			") over " << iter->second.get_unit().name() <<
-			" - " << iter->second.get_unit().id() <<
-			" - " << iter->second.get_unit().underlying_id() <<
-			" ("  << iter->second.get_location() <<
+		ERR_NG << "Trying to add " << p->name() <<
+			" - " << p->id() <<
+			" - " << p->underlying_id() <<
+			" ("  << loc <<
+			") over " << iter->second.ptr->name() <<
+			" - " << iter->second.ptr->id() <<
+			" - " << iter->second.ptr->underlying_id() <<
+			" ("  << iter->second.ptr->get_location() <<
 			"). The new unit will be assigned underlying_id="
 			<< (1 + n_unit::id_manager::instance().get_save_id())
 			<< " to prevent duplicate id conflicts.\n";
-		p->second.clone(false);
+		p->clone(false);
 		insert(p);
 		return;
 	}
 
-	DBG_NG << "Adding unit " << p->second.underlying_id()<< " - " << p->second.id() << " to location: (" << p->first.x+1 << "," << p->first.y+1
-			<< ")\n";
+	DBG_NG << "Adding unit " << p->underlying_id()<< " - " << p->id()
+		<< " to location: (" << loc.x + 1 << "," << loc.y + 1 << ")\n";
 
-	std::pair<lmap::iterator,bool> res = lmap_.insert(std::make_pair(p->first, unit_id));
+	std::pair<lmap::iterator,bool> res = lmap_.insert(std::make_pair(loc, unit_id));
 	assert(res.second);
 }
 
@@ -170,8 +168,8 @@ void unit_map::delete_all()
 {
 	for (umap::iterator i = map_.begin(); i != map_.end(); ++i) {
 		if (is_valid(i)) {
-			DBG_NG << "Delete unit " << i->second.get_unit().underlying_id() << "\n";
-			delete(i->second.ptr_);
+			DBG_NG << "Delete unit " << i->second.ptr->underlying_id() << "\n";
+			delete(i->second.ptr);
 		}
 	}
 
@@ -179,14 +177,14 @@ void unit_map::delete_all()
 	map_.clear();
 }
 
-std::pair<map_location,unit> *unit_map::extract(const map_location &loc)
+unit *unit_map::extract(const map_location &loc)
 {
 	lmap::iterator i = lmap_.find(loc);
 	if (i == lmap_.end())
 		return NULL;
 
 	umap::iterator iter = map_.find(i->second);
-	std::pair<map_location,unit> *res = iter->second.ptr_;
+	unit *res = iter->second.ptr;
 
 	DBG_NG << "Extract unit " << i->second << "\n";
 	invalidate(iter);
@@ -206,7 +204,7 @@ size_t unit_map::erase(const map_location &loc)
 
 	invalidate(iter);
 
-	delete iter->second.ptr_;
+	delete iter->second.ptr;
 	lmap_.erase(i);
 
 	return 1;
@@ -242,7 +240,7 @@ unit_map::unit_iterator unit_map::find_leader(int side)
 {
 	unit_map::iterator i = begin(), i_end = end();
 	for (; i != i_end; ++i) {
-		if (static_cast<int>(i->second.side()) == side && i->second.can_recruit())
+		if (static_cast<int>(i->side()) == side && i->can_recruit())
 			return i;
 	}
 	return i_end;
@@ -254,8 +252,8 @@ unit_map::unit_iterator unit_map::find_first_leader(int side)
 	unit_map::iterator first_leader = end();
 
 	for (; i != i_end; ++i) {
-		if (static_cast<int>(i->second.side()) == side && i->second.can_recruit()){
-			if ((first_leader == end()) || (i->second.underlying_id() < first_leader->second.underlying_id()) )
+		if (static_cast<int>(i->side()) == side && i->can_recruit()){
+			if ((first_leader == end()) || (i->underlying_id() < first_leader->underlying_id()) )
 				first_leader = i;
 		}
 	}

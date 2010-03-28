@@ -267,7 +267,7 @@ void game_display::scroll_to_leader(unit_map& units, int side, SCROLL_TYPE scrol
 		/*
 		const hotkey::basic_handler key_events_handler(gui_);
 		*/
-		scroll_to_tile(leader->first, scroll_type,true,force);
+		scroll_to_tile(leader->get_location(), scroll_type, true, force);
 	}
 }
 
@@ -418,7 +418,7 @@ void game_display::redraw_units(const std::vector<map_location>& invalidated_uni
 	foreach (map_location loc, invalidated_unit_locations) {
 		unit_map::iterator u_it = units_.find(loc);
 		if (u_it != units_.end()) {
-			u_it->second.redraw_unit();
+			u_it->redraw_unit();
 			//simulate_delay += 1;
 		}
 		if (temp_unit_ && temp_unit_->get_location() == loc) {
@@ -485,18 +485,18 @@ void game_display::draw_minimap_units()
 	double yscaling = 1.0 * minimap_location_.h / get_map().h();
 
 	for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
-		if(fogged(u->first) ||
-				(teams_[currentTeam_].is_enemy(u->second.side()) &&
-				u->second.invisible(u->first,units_,teams_))) {
+		if (fogged(u->get_location()) ||
+		    (teams_[currentTeam_].is_enemy(u->side()) &&
+		     u->invisible(u->get_location(), units_,teams_))) {
 			continue;
 		}
 
-		const int side = u->second.side();
+		int side = u->side();
 		const SDL_Color col = team::get_minimap_colour(side);
 		const Uint32 mapped_col = SDL_MapRGB(video().getSurface()->format,col.r,col.g,col.b);
 
-		double u_x = u->first.x * xscaling;
-		double u_y = (u->first.y + (is_odd(u->first.x) ? 1 : -1)/4.0) * yscaling;
+		double u_x = u->get_location().x * xscaling;
+		double u_y = (u->get_location().y + (is_odd(u->get_location().x) ? 1 : -1)/4.0) * yscaling;
  		// use 4/3 to compensate the horizontal hexes imbrication
 		double u_w = 4.0 / 3.0 * xscaling;
 		double u_h = yscaling;
@@ -597,7 +597,7 @@ void game_display::draw_movement_info(const map_location& loc)
 		const unit_map::const_iterator un = units_.find(route_.steps.front());
 		if(un != units_.end()) {
 			// Display the def% of this terrain
-			const int def =  100 - un->second.defense_modifier(get_map().get_terrain(loc));
+			int def =  100 - un->defense_modifier(get_map().get_terrain(loc));
 			std::stringstream def_text;
 			def_text << def << "%";
 
@@ -670,7 +670,7 @@ std::vector<surface> game_display::footsteps_images(const map_location& loc)
 	int move_cost = 1;
 	const unit_map::const_iterator u = units_.find(route_.steps.front());
 	if(u != units_.end()) {
-			move_cost = u->second.movement_cost(get_map().get_terrain(loc));
+		move_cost = u->movement_cost(get_map().get_terrain(loc));
 	}
 	int image_number = std::min<int>(move_cost, game_config::foot_speed_prefix.size());
 	if (image_number < 1) {
@@ -897,14 +897,14 @@ void game_display::invalidate_animations()
 	display::invalidate_animations();
 	unit_map::iterator unit;
 	for(unit=units_.begin() ; unit != units_.end() ; ++unit)
-		unit->second.refresh();
+		unit->refresh();
 	if (temp_unit_ )
 		temp_unit_->refresh();
 	bool new_inval = true;
 	while(new_inval) {
 		new_inval = false;
 		for(unit=units_.begin() ; unit != units_.end() ; ++unit) {
-			new_inval |= unit->second.invalidate(unit->second.get_location());
+			new_inval |= unit->invalidate(unit->get_location());
 		}
 		if (temp_unit_ ) {
 			//new_inval |=invalidate(temp_unit_loc_);

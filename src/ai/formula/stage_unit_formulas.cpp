@@ -53,12 +53,12 @@ bool stage_unit_formulas::do_play_stage()
 
 	for(unit_map::unit_iterator i = units_.begin() ; i != units_.end() ; ++i)
 	{
-		if ( (i->second.side() == get_side())  ) {
-			if ( i->second.has_formula() || i->second.has_loop_formula()) {
+		if (i->side() == get_side()) {
+			if (i->has_formula() || i->has_loop_formula()) {
 				int priority = 0;
-				if( i->second.has_priority_formula() ) {
+				if (i->has_priority_formula()) {
 					try {
-						game_logic::const_formula_ptr priority_formula(fai_.create_optional_formula(i->second.get_priority_formula()));
+						game_logic::const_formula_ptr priority_formula(fai_.create_optional_formula(i->get_priority_formula()));
 						if (priority_formula) {
 							game_logic::map_formula_callable callable(&fai_);
 							callable.add_ref();
@@ -70,7 +70,7 @@ bool stage_unit_formulas::do_play_stage()
 					} catch(game_logic::formula_error& e) {
 						if(e.filename == "formula")
 							e.line = 0;
-						fai_.handle_exception( e, "Unit priority formula error for unit: '" + i->second.type_id() + "' standing at (" + boost::lexical_cast<std::string>(i->first.x+1) + "," + boost::lexical_cast<std::string>(i->first.y+1) + ")");
+						fai_.handle_exception( e, "Unit priority formula error for unit: '" + i->type_id() + "' standing at (" + str_cast(i->get_location().x + 1) + "," + str_cast(i->get_location().y + 1) + ")");
 
 						priority = 0;
 					} catch(type_error& e) {
@@ -90,9 +90,9 @@ bool stage_unit_formulas::do_play_stage()
 
 		if( i.valid() ) {
 
-			if ( i->second.has_formula() ) {
+			if (i->has_formula()) {
 				try {
-					game_logic::const_formula_ptr formula(fai_.create_optional_formula(i->second.get_formula()));
+					game_logic::const_formula_ptr formula(fai_.create_optional_formula(i->get_formula()));
 					if (formula) {
 						game_logic::map_formula_callable callable(&fai_);
 						callable.add_ref();
@@ -106,16 +106,16 @@ bool stage_unit_formulas::do_play_stage()
 					if(e.filename == "formula") {
 						e.line = 0;
 					}
-					fai_.handle_exception( e, "Unit formula error for unit: '" + i->second.type_id() + "' standing at (" + boost::lexical_cast<std::string>(i->first.x+1) + "," + boost::lexical_cast<std::string>(i->first.y+1) + ")");
+					fai_.handle_exception( e, "Unit formula error for unit: '" + i->type_id() + "' standing at (" + str_cast(i->get_location().x + 1) + "," + str_cast(i->get_location().y + 1) + ")");
 				}
 			}
 		}
 
 		if( i.valid() ) {
-			if( i->second.has_loop_formula() )
+			if (i->has_loop_formula())
 			{
 				try {
-					game_logic::const_formula_ptr loop_formula(fai_.create_optional_formula(i->second.get_loop_formula()));
+					game_logic::const_formula_ptr loop_formula(fai_.create_optional_formula(i->get_loop_formula()));
 					if (loop_formula) {
 						game_logic::map_formula_callable callable(&fai_);
 						callable.add_ref();
@@ -130,7 +130,7 @@ bool stage_unit_formulas::do_play_stage()
 					if (e.filename == "formula") {
 						e.line = 0;
 					}
-					fai_.handle_exception( e, "Unit loop formula error for unit: '" + i->second.type_id() + "' standing at (" + boost::lexical_cast<std::string>(i->first.x+1) + "," + boost::lexical_cast<std::string>(i->first.y+1) + ")");
+					fai_.handle_exception( e, "Unit loop formula error for unit: '" + i->type_id() + "' standing at (" + str_cast(i->get_location().x + 1) + "," + str_cast(i->get_location().y + 1) + ")");
 				}
 			}
 		}

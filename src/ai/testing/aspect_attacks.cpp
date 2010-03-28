@@ -69,11 +69,11 @@ boost::shared_ptr<attacks_vector> aspect_attacks::analyze_targets() const
 
 		std::vector<map_location> unit_locs;
 		for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
-			if(i->second.side() == get_side() && i->second.attacks_left()) {
-				if (!i->second.matches_filter(vconfig(filter_own_),i->first)) {
+			if (i->side() == get_side() && i->attacks_left()) {
+				if (!i->matches_filter(vconfig(filter_own_), i->get_location())) {
 					continue;
 				}
-				unit_locs.push_back(i->first);
+				unit_locs.push_back(i->get_location());
 			}
 		}
 
@@ -90,18 +90,20 @@ boost::shared_ptr<attacks_vector> aspect_attacks::analyze_targets() const
 
 		// Attack anyone who is on the enemy side,
 		// and who is not invisible or petrified.
-		if(current_team().is_enemy(j->second.side()) && !j->second.incapacitated() &&
-		   j->second.invisible(j->first,units_,get_info().teams) == false) {
-			if (!j->second.matches_filter(vconfig(filter_enemy_),j->first)) {
+		if (current_team().is_enemy(j->side()) && !j->incapacitated() &&
+		    !j->invisible(j->get_location(),units_,get_info().teams))
+		{
+			if (!j->matches_filter(vconfig(filter_enemy_), j->get_location())) {
 				continue;
 			}
 			map_location adjacent[6];
-			get_adjacent_tiles(j->first,adjacent);
+			get_adjacent_tiles(j->get_location(), adjacent);
 			attack_analysis analysis;
-			analysis.target = j->first;
+			analysis.target = j->get_location();
 			analysis.vulnerability = 0.0;
 			analysis.support = 0.0;
-			do_attack_analysis(j->first,srcdst,dstsrc,fullmove_srcdst,fullmove_dstsrc,enemy_srcdst,enemy_dstsrc,
+			do_attack_analysis(j->get_location(), srcdst, dstsrc,
+				fullmove_srcdst, fullmove_dstsrc, enemy_srcdst, enemy_dstsrc,
 				adjacent,used_locations,unit_locs,*res,analysis);
 		}
 	}
@@ -166,7 +168,7 @@ void aspect_attacks::do_attack_analysis(
 		//
 		// See if the unit has the slow ability -- units with slow only attack first.
 		bool backstab = false, slow = false;
-		std::vector<attack_type>& attacks = unit_itor->second.attacks();
+		std::vector<attack_type>& attacks = unit_itor->attacks();
 		for(std::vector<attack_type>::iterator a = attacks.begin(); a != attacks.end(); ++a) {
 			a->set_specials_context(map_location(), map_location(), units_, true, NULL);
 			if(a->get_special_bool("backstab")) {
@@ -203,7 +205,7 @@ void aspect_attacks::do_attack_analysis(
                        if(map_.on_board(adj[tile]))
                        {
                                accessible_tiles++;
-                               if(tmp_unit != units_.end() && get_side() != tmp_unit->second.side())
+                               if (tmp_unit != units_.end() && get_side() != tmp_unit->side())
                                {
                                        enemy_units_around++;
                                        possible_flanked = true;
@@ -214,7 +216,7 @@ void aspect_attacks::do_attack_analysis(
                         if(map_.on_board(adj[tile + 3]))
                        {
                                accessible_tiles++;
-                               if(tmp_opposite_unit != units_.end() && get_side() != tmp_opposite_unit->second.side())
+                               if (tmp_opposite_unit != units_.end() && get_side() != tmp_opposite_unit->side())
                                {
                                        enemy_units_around++;
                                        if(possible_flanked)
@@ -258,11 +260,11 @@ void aspect_attacks::do_attack_analysis(
 				}
 			}
 
-			unit_ability_list abil = unit_itor->second.get_abilities("leadership",tiles[j]);
+			unit_ability_list abil = unit_itor->get_abilities("leadership",tiles[j]);
 			int best_leadership_bonus = abil.highest("value").first;
 			double leadership_bonus = static_cast<double>(best_leadership_bonus+100)/100.0;
 			if (leadership_bonus > 1.1) {
-				LOG_AI << unit_itor->second.name() << " is getting leadership " << leadership_bonus << "\n";
+				LOG_AI << unit_itor->name() << " is getting leadership " << leadership_bonus << "\n";
 			}
 
 			// Check to see whether this move would be a backstab.
@@ -286,7 +288,7 @@ void aspect_attacks::do_attack_analysis(
 					}
 
 					// No surround bonus if target is skirmisher
-					if (!itor->second.get_ability_bool("skirmisker"))
+					if (!itor->get_ability_bool("skirmisker"))
 						surround_bonus = 1.2;
 				}
 
@@ -294,7 +296,7 @@ void aspect_attacks::do_attack_analysis(
 			}
 
 			// See if this position is the best rated we've seen so far.
-			const int rating = static_cast<int>(rate_terrain(unit_itor->second,tiles[j]) * backstab_bonus * leadership_bonus);
+			int rating = static_cast<int>(rate_terrain(*unit_itor, tiles[j]) * backstab_bonus * leadership_bonus);
 			if(cur_position >= 0 && rating < best_rating) {
 				continue;
 			}
@@ -457,7 +459,7 @@ double aspect_attacks::power_projection(const map_location& loc, const move_map&
 				continue;
 			}
 
-			const unit& un = u->second;
+			const unit &un = *u;
 
 			int tod_modifier = 0;
 			if(un.alignment() == unit_type::LAWFUL) {

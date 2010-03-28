@@ -127,7 +127,7 @@ namespace test_utils {
 		unit_map::iterator it = end->get_units().find(loc);
 		if (it == end->get_units().end())
 			return std::string();
-		return it->second.id();
+		return it->id();
 	}
 
 }

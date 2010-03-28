@@ -465,11 +465,11 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			LOG_NG << "Add units that survived the scenario to the recall list.\n";
 			for(unit_map::iterator un = units_.begin(); un != units_.end(); ++un) {
 
-				if(teams_[un->second.side()-1].persistent()) {
-					LOG_NG << "Added unit " << un->second.id() << ", " << un->second.name() << "\n";
-					un->second.new_turn();
-					un->second.new_scenario();
-					teams_[un->second.side()-1].recall_list().push_back(un->second);
+				if (teams_[un->side() - 1].persistent()) {
+					LOG_NG << "Added unit " << un->id() << ", " << un->name() << "\n";
+					un->new_turn();
+					un->new_scenario();
+					teams_[un->side() - 1].recall_list().push_back(*un);
 				}
 			}
 			//store all units that survived (recall list for the next scenario) in snapshot
@@ -721,7 +721,7 @@ void playsingle_controller::linger(upload_log& log)
 
 	// End all unit moves
 	for (unit_map::iterator u = units_.begin(); u != units_.end(); ++u) {
-		u->second.set_user_end_turn(true);
+		u->set_user_end_turn(true);
 	}
 	try {
 		// Same logic as single-player human turn, but
@@ -988,11 +988,11 @@ bool playsingle_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, 
 				return false;
 
 			if( (menu_handler_.current_unit(mouse_handler_) != units_.end())
-				&& (menu_handler_.current_unit(mouse_handler_)->second.move_interrupted()))
+				&& (menu_handler_.current_unit(mouse_handler_)->move_interrupted()))
 				return true;
 			const unit_map::const_iterator i = units_.find(mouse_handler_.get_selected_hex());
 			if (i == units_.end()) return false;
-			return i->second.move_interrupted();
+			return i->move_interrupted();
 		}
 		default: return play_controller::can_execute_command(command, index);
 	}

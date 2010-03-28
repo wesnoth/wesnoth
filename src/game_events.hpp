@@ -65,8 +65,8 @@ namespace game_events
 	};
 
 	struct entity_location : public map_location {
-		entity_location(map_location loc, const size_t id=0);
-		explicit entity_location(unit_map::iterator itor);
+		entity_location(const map_location &loc, size_t id = 0);
+		explicit entity_location(const unit &);
 		bool requires_unit() const;
 		bool matches_unit(const unit& u) const;
 		private:
@@ -120,7 +120,7 @@ namespace game_events
 	void write_events(config& cfg);
 	void add_events(const config::const_child_itors &cfgs,const std::string& id);
 
-	bool unit_matches_filter(unit_map::const_iterator itor, const vconfig& filter);
+	bool unit_matches_filter(const unit &, const vconfig& filter);
 
 	/** Used for [wml_message]. */
 	void handle_wml_log_message(const config& cfg);

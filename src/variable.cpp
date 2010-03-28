@@ -502,7 +502,7 @@ void scoped_xy_unit::activate()
 	unit_map::const_iterator itor = umap_.find(loc);
 	if(itor != umap_.end()) {
 		config tmp_cfg;
-		itor->second.write(tmp_cfg);
+		itor->write(tmp_cfg);
 		tmp_cfg["x"] = lexical_cast<std::string,int>(x_ + 1);
 		tmp_cfg["y"] = lexical_cast<std::string,int>(y_ + 1);
 		LOG_NG << "auto-storing $" << name() << " at (" << loc << ")\n";

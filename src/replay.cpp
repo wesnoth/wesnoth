@@ -77,8 +77,8 @@ static void verify(const unit_map& units, const config& cfg) {
 		}
 
 		for(unit_map::const_iterator j = units.begin(); j != units.end(); ++j) {
-			if(locs.count(j->first) == 0) {
-				errbuf << "local unit at " << j->first
+			if (locs.count(j->get_location()) == 0) {
+				errbuf << "local unit at " << j->get_location()
 					   << " but none in data source\n";
 			}
 		}
@@ -99,7 +99,7 @@ static void verify(const unit_map& units, const config& cfg) {
 		}
 
 		config cfg;
-		u->second.write(cfg);
+		u->write(cfg);
 
 		bool is_ok = true;
 		static const std::string fields[] = {"type","hitpoints","experience","side",""};
@@ -176,7 +176,7 @@ void replay::add_unit_checksum(const map_location& loc,config* const cfg)
 	loc.write(cc);
 	unit_map::const_iterator u = resources::units->find(loc);
 	assert(u.valid());
-	cc["value"] = get_checksum(u->second);
+	cc["value"] = get_checksum(*u);
 }
 
 void replay::add_start()
@@ -760,7 +760,7 @@ static void check_checksums(const config &cfg)
 					events::chat_handler::MESSAGE_PRIVATE, false);
 			continue;
 		}
-		if (get_checksum(u->second) != ch["value"]) {
+		if (get_checksum(*u) != ch["value"]) {
 			std::stringstream message;
 			message << "checksum mismatch at " << loc.x+1 << "," << loc.y+1 << "!";
 			resources::screen->add_chat_message(time(NULL), "verification", 1, message.str(),
@@ -886,13 +886,13 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 
 			unit_map::iterator u = resources::units->find(loc);
 			if (u.valid()) {
-				if(u->second.unrenamable()) {
+				if (u->unrenamable()) {
 					std::stringstream errbuf;
-					errbuf << "renaming unrenamable unit " << u->second.id() << "\n";
+					errbuf << "renaming unrenamable unit " << u->id() << '\n';
 					replay::process_error(errbuf.str());
 					continue;
 				}
-				u->second.rename(name);
+				u->rename(name);
 			} else {
 				// Users can rename units while it's being killed at another machine.
 				// This since the player can rename units when it's not his/her turn.
@@ -1109,7 +1109,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				continue;
 			}
 
-			if(size_t(weapon_num) >= u->second.attacks().size()) {
+			if (size_t(weapon_num) >= u->attacks().size()) {
 				replay::process_error("illegal weapon type in attack\n");
 				continue;
 			}
@@ -1123,8 +1123,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				continue;
 			}
 
-			if(def_weapon_num >=
-					static_cast<int>(tgt->second.attacks().size())) {
+			if (def_weapon_num >= static_cast<int>(tgt->attacks().size())) {
 
 				replay::process_error("illegal defender weapon type in attack\n");
 				continue;
@@ -1141,7 +1140,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				continue;
 			}
 
-			DBG_REPLAY << "Attacker XP (before attack): " << u->second.experience() << "\n";
+			DBG_REPLAY << "Attacker XP (before attack): " << u->experience() << "\n";
 
 			attack_unit(src, dst, weapon_num, def_weapon_num, !get_replay_source().is_skipping());
 
@@ -1149,15 +1148,15 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			tgt = resources::units->find(dst);
 
 			if(u.valid()){
-				DBG_REPLAY << "Attacker XP (after attack): " << u->second.experience() << "\n";
-				if(u->second.advances()) {
-					get_replay_source().add_expected_advancement(u->first);
+				DBG_REPLAY << "Attacker XP (after attack): " << u->experience() << "\n";
+				if (u->advances()) {
+					get_replay_source().add_expected_advancement(u->get_location());
 				}
 			}
 
 			DBG_REPLAY << "expected_advancements.size: " << get_replay_source().expected_advancements().size() << "\n";
-			if (tgt.valid() && tgt->second.advances()) {
-				get_replay_source().add_expected_advancement(tgt->first);
+			if (tgt.valid() && tgt->advances()) {
+				get_replay_source().add_expected_advancement(tgt->get_location());
 			}
 
 			//check victory now if we don't have any advancements. If we do have advancements,

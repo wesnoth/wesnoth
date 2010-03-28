@@ -516,7 +516,7 @@ struct temporary_unit_placer
 private:
 	unit_map& m_;
 	const map_location& loc_;
-	std::pair<map_location,unit> *temp_;
+	unit *temp_;
 };
 
 /**
@@ -533,7 +533,7 @@ private:
 	unit_map& m_;
 	const map_location& src_;
 	const map_location& dst_;
-	std::pair<map_location,unit> *temp_;
+	unit *temp_;
 };
 
 /**

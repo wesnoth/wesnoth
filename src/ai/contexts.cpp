@@ -310,36 +310,36 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 		// If we are looking for the movement of enemies, then this unit must be an enemy unit.
 		// If we are looking for movement of our own units, it must be on our side.
 		// If we are assuming full movement, then it may be a unit on our side, or allied.
-		if((enemy && current_team().is_enemy(un_it->second.side()) == false) ||
-		   (!enemy && !assume_full_movement && un_it->second.side() != get_side()) ||
-		   (!enemy && assume_full_movement && current_team().is_enemy(un_it->second.side()))) {
+		if ((enemy && current_team().is_enemy(un_it->side()) == false) ||
+		    (!enemy && !assume_full_movement && un_it->side() != get_side()) ||
+		    (!enemy && assume_full_movement && current_team().is_enemy(un_it->side()))) {
 			continue;
 		}
 		// Discount incapacitated units
-		if(un_it->second.incapacitated()
-			|| (!assume_full_movement && un_it->second.movement_left() == 0)) {
+		if (un_it->incapacitated() ||
+		    (!assume_full_movement && un_it->movement_left() == 0)) {
 			continue;
 		}
 
 		// We can't see where invisible enemy units might move.
-		if(enemy && un_it->second.invisible(un_it->first,units,get_info().teams) && !see_all) {
+		if (enemy && un_it->invisible(un_it->get_location(), units, get_info().teams) && !see_all) {
 			continue;
 		}
 		// If it's an enemy unit, reset its moves while we do the calculations.
-		unit* held_unit = const_cast<unit*>(&(un_it->second));
+		unit* held_unit = const_cast<unit *>(&*un_it);
 		const unit_movement_resetter move_resetter(*held_unit,enemy || assume_full_movement);
 
 		// Insert the trivial moves of staying on the same map location.
-		if(un_it->second.movement_left() > 0 ) {
-			std::pair<map_location,map_location> trivial_mv(un_it->first,un_it->first);
+		if (un_it->movement_left() > 0) {
+			std::pair<map_location,map_location> trivial_mv(un_it->get_location(), un_it->get_location());
 			srcdst.insert(trivial_mv);
 			dstsrc.insert(trivial_mv);
 		}
-		bool teleports = un_it->second.get_ability_bool("teleport");
+		bool teleports = un_it->get_ability_bool("teleport");
 		res.insert(std::pair<map_location,pathfind::paths>(
-					 un_it->first,pathfind::paths(get_info().map,units,
-					 un_it->first,get_info().teams,false,teleports,
-									current_team(),0,see_all)));
+			un_it->get_location(), pathfind::paths(get_info().map,
+			units, un_it->get_location(), get_info().teams, false,
+			teleports, current_team(), 0, see_all)));
 	}
 
 	// deactivate terrain filtering if it's just the dummy 'matches nothing'
@@ -436,7 +436,7 @@ const defensive_position& readonly_context_impl::best_defensive_position(const m
 	typedef move_map::const_iterator Itor;
 	const std::pair<Itor,Itor> itors = srcdst.equal_range(loc);
 	for(Itor i = itors.first; i != itors.second; ++i) {
-		const int defense = itor->second.defense_modifier(get_info().map.get_terrain(i->second));
+		const int defense = itor->defense_modifier(get_info().map.get_terrain(i->second));
 		if(defense > pos.chance_to_hit) {
 			continue;
 		}
@@ -893,21 +893,22 @@ const std::set<map_location>& keeps_cache::get()
 bool readonly_context_impl::leader_can_reach_keep() const
 {
 	const unit_map::iterator leader = get_info().units.find_leader(get_side());
-	if(leader == get_info().units.end() || leader->second.incapacitated()) {
+	if(leader == get_info().units.end() || leader->incapacitated()) {
 		return false;
 	}
 
-	const map_location& start_pos = nearest_keep(leader->first);
+	const map_location &start_pos = nearest_keep(leader->get_location());
 	if(start_pos.valid() == false) {
 		return false;
 	}
 
-	if(leader->first == start_pos) {
+	if (leader->get_location() == start_pos) {
 		return true;
 	}
 
 	// Find where the leader can move
-	const pathfind::paths leader_paths(get_info().map,get_info().units,leader->first,get_info().teams,false,false,current_team());
+	const pathfind::paths leader_paths(get_info().map, get_info().units,
+		leader->get_location(), get_info().teams, false, false, current_team());
 
 
 	return leader_paths.destinations.contains(start_pos);
@@ -985,7 +986,7 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 				continue;
 			}
 
-			const unit& un = u->second;
+			const unit& un = *u;
 
 			int tod_modifier = 0;
 			if(un.alignment() == unit_type::LAWFUL) {
@@ -1048,7 +1049,7 @@ void readonly_context_impl::recalculate_move_maps() const
 	if (get_passive_leader()||get_passive_leader_shares_keep()) {
 		unit_map::iterator i = get_info().units.find_leader(get_side());
 		if (i.valid()) {
-			map_location loc = i->first;
+			map_location loc = i->get_location();
 			srcdst_.erase(loc);
 			for(move_map::iterator i = dstsrc_.begin(); i != dstsrc_.end(); ) {
 				if(i->second == loc) {
