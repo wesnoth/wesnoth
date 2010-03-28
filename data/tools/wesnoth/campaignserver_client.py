@@ -10,7 +10,7 @@ import wesnoth.wmlparser as wmlparser
 dumpi = 0
 class CampaignClient:
     # First port listed will be used as default.
-    portmap = (("15001", "1.8.x"), ("15004", "1.7.x"), ("15003", "1.6.x"), ("15005", "1.4.x"))
+    portmap = (("15002", "1.9.x"), ("15004", "trunk"), ("15001", "1.8.x"), ("15003", "1.6.x"), ("15005", "1.4.x"))
 
     def __init__(self, address = None):
         """

@@ -20,7 +20,7 @@
 
 #include <cstring>
 
-const unsigned short default_campaignd_port = 15001;
+const unsigned short default_campaignd_port = 15002;
 
 static bool two_dots(char a, char b)
 {
