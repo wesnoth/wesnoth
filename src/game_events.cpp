@@ -2945,28 +2945,6 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 			if(dlg_result == gui2::twindow::CANCEL) {
 				current_context->skip_messages = true;
 			}
-
-			/**
-			 * @todo enable portrait code in 1.7 and write a clean api.
-			 */
-#if 0
-			const tportrait* portrait =
-				speaker->second.portrait(400, tportrait::LEFT);
-			if(portrait) {
-				gui2::twml_message_left dlg(
-						caption,
-						cfg["message"],
-						portrait->image,
-						portrait->mirror);
-
-				dlg.show(screen->video());
-				if(dlg.get_retval() == gui2::twindow::CANCEL) {
-					handler.skip_messages(true);
-				}
-				return;
-			}
-#endif
-
 		}
 
 		// Otherwise if an input has to be made, get it from the replay data
