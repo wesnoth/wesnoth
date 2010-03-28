@@ -999,13 +999,6 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 
 }
 
-formula_ptr formula::create_string_formula(const std::string& str)
-{
-	formula_ptr res(new formula());
-	res->expr_.reset(new string_expression(str));
-	return res;
-}
-
 formula_ptr formula::create_optional_formula(const std::string& str, function_symbol_table* symbols)
 {
 	if(str.empty()) {
@@ -1234,8 +1227,6 @@ int main()
 		const int dice_roll = formula("3d6").execute().as_int();
 		assert(dice_roll >= 3 && dice_roll <= 18);
 
-		assert(formula::create_string_formula("Your strength is {strength}")->execute(c).as_string() ==
-						"Your strength is 15");
 		variant myarray = formula("[1,2,3]").execute();
 		assert(myarray.num_elements() == 3);
 		assert(myarray[0].as_int() == 1);
