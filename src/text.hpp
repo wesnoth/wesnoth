@@ -104,7 +104,7 @@ public:
 
 	/**
 	 * The flags have the same values as the ones in SDL_TTF so it's easy to mix
-	 * them for now. To avoid including SDL_TTF in the header they'r only
+	 * them for now. To avoid including SDL_TTF in the header they're only
 	 * declared here. Once SDL_TTF is removed they can be moved in the header.
 	 */
 
