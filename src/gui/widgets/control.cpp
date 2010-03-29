@@ -41,6 +41,7 @@ tcontrol::tcontrol(const unsigned canvas_count)
 	, config_(0)
 	, renderer_()
 	, text_maximum_width_(0)
+	, text_alignment_(PANGO_ALIGN_LEFT)
 	, shrunken_(false)
 {
 }
@@ -244,6 +245,17 @@ void tcontrol::set_use_markup(bool use_markup)
 	set_dirty();
 }
 
+void tcontrol::set_text_alignment(const PangoAlignment text_alignment)
+{
+	if(text_alignment_ == text_alignment) {
+		return;
+	}
+
+	text_alignment_ = text_alignment;
+	update_canvas();
+	set_dirty();
+}
+
 void tcontrol::update_canvas()
 {
 	const int max_width = get_text_maximum_width();
@@ -253,6 +265,8 @@ void tcontrol::update_canvas()
 	foreach(tcanvas& canvas, canvas_) {
 		canvas.set_variable("text", variant(label_));
 		canvas.set_variable("text_markup", variant(use_markup_));
+		canvas.set_variable("text_alignment"
+				, variant(encode_text_alignment(text_alignment_)));
 		canvas.set_variable("text_maximum_width", variant(max_width));
 		canvas.set_variable("text_maximum_height", variant(max_height));
 		canvas.set_variable("text_wrap_mode", variant(can_wrap()
@@ -299,6 +313,7 @@ tpoint tcontrol::get_best_text_size(const tpoint& minimum_size, const tpoint& ma
 
 	renderer_.set_font_size(config_->text_font_size);
 	renderer_.set_font_style(config_->text_font_style);
+	renderer_.set_alignment(text_alignment_);
 
 	// Try with the minimum wanted size.
 	const int maximum_width =  text_maximum_width_ != 0

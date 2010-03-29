@@ -209,6 +209,12 @@ public:
 	tcanvas& canvas(const unsigned index)
 		{ assert(index < canvas_.size()); return canvas_[index]; }
 
+	void set_text_alignment(const PangoAlignment text_alignment);
+	PangoAlignment get_text_alignment() const
+	{
+		return text_alignment_;
+	}
+
 protected:
 	tresolution_definition_ptr config() { return config_; }
 	tresolution_definition_const_ptr config() const { return config_; }
@@ -347,6 +353,9 @@ private:
 
 	/** The maximum width for the text in a control. */
 	int text_maximum_width_;
+
+	/** The alignment of the text in a control. */
+	PangoAlignment text_alignment_;
 
 	/** Is the widget smaller as it's best size? */
 	bool shrunken_;

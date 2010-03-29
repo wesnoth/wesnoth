@@ -17,6 +17,8 @@
 
 #include "gui/auxiliary/window_builder/control.hpp"
 
+#include <pango/pango-layout.h>
+
 namespace gui2 {
 
 namespace implementation {
@@ -29,6 +31,8 @@ struct tbuilder_label
 	twidget* build () const;
 
 	bool wrap;
+
+	PangoAlignment text_alignment;
 };
 
 } // namespace implementation

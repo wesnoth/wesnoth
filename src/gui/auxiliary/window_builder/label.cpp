@@ -27,6 +27,7 @@ namespace implementation {
 tbuilder_label::tbuilder_label(const config& cfg)
 	: tbuilder_control(cfg)
 	, wrap(utils::string_bool(cfg["wrap"]))
+	, text_alignment(decode_text_alignment(cfg["text_alignment"]))
 {
 }
 
@@ -37,6 +38,7 @@ twidget* tbuilder_label::build() const
 	init_control(widget);
 
 	widget->set_can_wrap(wrap);
+	widget->set_text_alignment(text_alignment);
 
 	DBG_GUI_G << "Window builder: placed label '"
 		<< id << "' with defintion '"
@@ -68,6 +70,8 @@ twidget* tbuilder_label::build() const
  * List with the label specific variables:
  * @start_table = config
  *     wrap (bool = false)        Is wrapping enabled for the label.
+ *     text_alignment (h_align = "left")
+ *                                How is the text aligned in the label.
  * @end_table
  */
 
