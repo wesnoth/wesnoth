@@ -271,7 +271,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	hidden_(false),
 	draw_bars_(false),
 	modifications_(),
-	units_(NULL),
+	units_(resources::units),
 	invisibility_cache_()
 {
 	set_state(STATE_HIDDEN,true);
@@ -618,7 +618,7 @@ unit::unit(const unit_type *t, int side, bool real_unit,
 	hidden_(false),
 	draw_bars_(false),
 	modifications_(),
-	units_(NULL),
+	units_(resources::units),
 	invisibility_cache_()
 {
 
