@@ -232,6 +232,13 @@ public:
             return strcoll(s1->title.c_str(), s2->title.c_str()) < 0; }
 };
 
+class string_less
+{
+public:
+	bool operator() (const std::string &s1, const std::string &s2) const {
+		return strcoll(s1.c_str(), s2.c_str()) < 0;
+	}
+};
 
 struct delete_section
 {
@@ -1090,7 +1097,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 	std::vector<topic> topics;
 
 	std::map<t_string, std::string> special_description;
-	std::map<t_string, std::set<std::string> > special_units;
+	std::map<t_string, std::set<std::string, string_less> > special_units;
 
 	foreach (const unit_type_data::unit_type_map::value_type &i, unit_types.types())
 	{
@@ -1138,8 +1145,8 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 		std::stringstream text;
 		text << s->second;
 		text << "\n\n" << _("<header>text='Units having this special attack'</header>") << "\n";
-		std::set<std::string>& units = special_units[s->first];
-		for (std::set<std::string>::iterator u = units.begin(); u != units.end();++u) {
+		std::set<std::string, string_less> &units = special_units[s->first];
+		for (std::set<std::string, string_less>::iterator u = units.begin(); u != units.end(); ++u) {
 			text << (*u) << "\n";
 		}
 
@@ -1155,7 +1162,7 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 {
 	std::vector<topic> topics;
 	std::map<t_string, std::string> ability_description;
-	std::map<t_string, std::set<std::string> > ability_units;
+	std::map<t_string, std::set<std::string, string_less> > ability_units;
 	// Look through all the unit types, check if a unit of this type
 	// should have a full description, if so, add this units abilities
 	// for display. We do not want to show abilities that the user has
@@ -1214,8 +1221,8 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 		std::stringstream text;
 		text << a->second;  //description
 		text << "\n\n" << _("<header>text='Units having this ability'</header>") << "\n";
-		std::set<std::string>& units = ability_units[a->first];
-		for (std::set<std::string>::iterator u = units.begin(); u != units.end();++u) {
+		std::set<std::string, string_less> &units = ability_units[a->first];
+		for (std::set<std::string, string_less>::iterator u = units.begin(); u != units.end(); ++u) {
 			text << (*u) << "\n";
 		}
 
@@ -1675,8 +1682,8 @@ std::vector<std::string> make_unit_links_list(const std::vector<std::string>& ty
 
 void generate_races_sections(const config *help_cfg, section &sec, int level)
 {
-	std::set<std::string> races;
-	std::set<std::string> visible_races;
+	std::set<std::string, string_less> races;
+	std::set<std::string, string_less> visible_races;
 
 	foreach (const unit_type_data::unit_type_map::value_type &i, unit_types.types())
 	{
@@ -1691,7 +1698,7 @@ void generate_races_sections(const config *help_cfg, section &sec, int level)
 
 	std::stringstream text;
 
-	for(std::set<std::string>::iterator it = races.begin(); it != races.end(); ++it) {
+	for(std::set<std::string, string_less>::iterator it = races.begin(); it != races.end(); ++it) {
 		section race_section;
 		config section_cfg;
 
@@ -1718,7 +1725,7 @@ void generate_races_sections(const config *help_cfg, section &sec, int level)
 std::vector<topic> generate_unit_topics(const bool sort_generated, const std::string& race)
 {
 	std::vector<topic> topics;
-	std::set<std::string> race_units;
+	std::set<std::string, string_less> race_units;
 
 	foreach (const unit_type_data::unit_type_map::value_type &i, unit_types.types())
 	{
@@ -1760,7 +1767,7 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 	std::stringstream text;
 	text << race_description;
 	text << "\n\n" << _("<header>text='Units of this race'</header>") << "\n";
-	for (std::set<std::string>::iterator u = race_units.begin(); u != race_units.end();++u) {
+	for (std::set<std::string, string_less>::iterator u = race_units.begin(); u != race_units.end(); ++u) {
 		text << (*u) << "\n";
 	}
 	topics.push_back(topic(race_name, race_id, text.str()) );
