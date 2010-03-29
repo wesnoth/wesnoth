@@ -17,6 +17,8 @@
 
 #include "SDL.h"
 
+#include <pango/pango-layout.h>
+
 #include <string>
 
 struct surface;
@@ -91,6 +93,28 @@ SDL_Rect create_rect(const tpoint& origin, const tpoint& size);
  * @returns                       The colour.
  */
 Uint32 decode_colour(const std::string& colour);
+
+/**
+ * Converts a text alignment string to a text alignment.
+ *
+ * @param alignment               An alignment string see
+ *                                http://www.wesnoth.org/wiki/GUIVariable for
+ *                                more info.
+ *
+ * @returns                       The text alignment.
+ */
+PangoAlignment decode_text_alignment(const std::string& alignment);
+
+/**
+ * Converts a text alignment to its string representation.
+ *
+ * @param alignment              An alignment.
+ *
+ * @returns                       An alignment string see
+ *                                http://www.wesnoth.org/wiki/GUIVariable for
+ *                                more info.
+ */
+std::string encode_text_alignment(const PangoAlignment alignment);
 
 /**
  * Converts a font style string to a font style.

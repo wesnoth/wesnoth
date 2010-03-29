@@ -101,6 +101,31 @@ Uint32 decode_colour(const std::string& colour)
 	return result;
 }
 
+PangoAlignment decode_text_alignment(const std::string& alignment)
+{
+	if(alignment == "center") {
+		return PANGO_ALIGN_CENTER;
+	} else if(alignment == "right") {
+		return PANGO_ALIGN_RIGHT;
+	} else {
+		if(!alignment.empty() && alignment != "left") {
+			ERR_GUI_E << "Invalid text alignment '"
+					<< alignment << "' falling back to 'left'.\n";
+		}
+		return PANGO_ALIGN_LEFT;
+	}
+}
+
+std::string encode_text_alignment(const PangoAlignment alignment)
+{
+	switch(alignment) {
+		case PANGO_ALIGN_LEFT:   return "left";
+		case PANGO_ALIGN_RIGHT:  return "right";
+		case PANGO_ALIGN_CENTER: return "center";
+	}
+	assert(false);
+}
+
 surface save_background(const surface& background, const SDL_Rect& rect)
 {
 	assert(background);

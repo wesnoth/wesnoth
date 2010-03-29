@@ -17,6 +17,7 @@
 
 #include "formula_callable.hpp"
 #include "../../formula.hpp"
+#include "gui/widgets/helper.hpp"
 #include "serialization/string_utils.hpp"
 #include "util.hpp"
 
@@ -129,6 +130,13 @@ inline t_string tformula<t_string>::execute(const game_logic::map_formula_callab
 	return game_logic::formula(formula_).evaluate(variables).as_string();
 }
 
+template<>
+inline PangoAlignment tformula<PangoAlignment>::execute(
+		const game_logic::map_formula_callable& variables) const
+{
+	return decode_text_alignment(
+			game_logic::formula(formula_).evaluate(variables).as_string());
+}
 template<class T>
 inline T tformula<T>::execute(const game_logic::map_formula_callable& variables) const
 {
@@ -154,6 +162,12 @@ template<>
 inline void tformula<t_string>::convert(const std::string& str)
 {
 	value_ = str;
+}
+
+template<>
+inline void tformula<PangoAlignment>::convert(const std::string& str)
+{
+	value_ = decode_text_alignment(str);
 }
 
 template<class T>

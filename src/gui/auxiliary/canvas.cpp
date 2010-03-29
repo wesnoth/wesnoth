@@ -157,6 +157,8 @@ tline::tline(const config& cfg) :
  *                                     reason to use this variable and thus
  *                                     it's values are not listed and might
  *                                     change without further notice.)
+ *     text_alignment h_align          The way the text is aligned inside the
+ *                                     canvas.
  *@end_table
  *
  * The size variables are copied to the window and will be determined runtime.
@@ -275,6 +277,9 @@ tline::tline(const config& cfg) :
  *                                     @* left   aligned at the left side
  *                                     @* right  aligned at the right side
  *                                     @* center centered
+ *
+ *     f_h_align                       A horizontal alignment or a formula
+ *                                     returning a horizontal alignment.
  *
  *     border                          Comma separated list of borders to use.
  *                                     Possible values:
@@ -905,6 +910,9 @@ private:
 	/** The style of the text. */
 	unsigned font_style_;
 
+	/** The alignment of the text. */
+	tformula<PangoAlignment> text_alignment_;
+
 	/** The colour of the text. */
 	Uint32 colour_;
 
@@ -928,6 +936,7 @@ ttext::ttext(const config& cfg) :
 	h_(cfg["h"]),
 	font_size_(lexical_cast_default<unsigned>(cfg["font_size"])),
 	font_style_(decode_font_style(cfg["font_style"])),
+	text_alignment_(cfg["text_alignment"]),
 	colour_(decode_colour(cfg["colour"])),
 	text_(cfg["text"]),
 	text_markup_(cfg["text_markup"], false),
@@ -949,15 +958,21 @@ ttext::ttext(const config& cfg) :
  *     h (f_unsigned = 0)              The height of the rectangle.
  *     font_size (unsigned)            The size of the font to draw in.
  *     font_style (font_style = "")    The style of the text.
+ *     text_alignment (f_h_align = "left")
+ *                                     The alignment of the text.
  *     colour (colour = "")            The colour of the text.
  *     text (f_tstring = "")           The text to draw (translatable).
- *     test_markup (f_bool = false)    Can the text have markup?
- *     maximum_width (f_int = -1)      The maximum width the text is allowed to be.
- *     maximum_height (f_int = -1)     The maximum height the text is allowed to be.
+ *     text_markup (f_bool = false)    Can the text have markup?
+ *     maximum_width (f_int = -1)      The maximum width the text is allowed to
+ *                                     be.
+ *     maximum_height (f_int = -1)     The maximum height the text is allowed
+ *                                     to be.
  *     debug = (string = "")           Debug message to show upon creation
  *                                     this message is not stored.
  * @end_table
- * NOTE alignment can be done with the formulas.
+ * NOTE alignment could only be done with the formulas, but now with the
+ * text_alignment flag as well, older widgets might still use the formulas and
+ * not all widgets may expose the text alignment yet.
  *
  * Variables:
  * @start_table = formula
@@ -997,6 +1012,7 @@ void ttext::draw(surface& canvas,
 
 	text_renderer.set_font_size(font_size_).
 		set_font_style(font_style_).
+		set_alignment(text_alignment_(variables)).
 		set_foreground_colour(colour_).
 		set_maximum_width(maximum_width_(variables)).
 		set_maximum_height(maximum_height_(variables)).
