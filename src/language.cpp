@@ -160,7 +160,7 @@ static void wesnoth_setlocale(int category, std::string const &slocale,
 			extra = locale.substr(pos);
 		}
 
-		char const *encoding[] = { "", ".utf-8", ".UTF-8" };
+		char const *encoding[] = { ".utf-8", ".UTF-8", "" };
 		for (int j = 0; j != 3; ++j)
 		{
 			locale = lang + encoding[j] + extra;
