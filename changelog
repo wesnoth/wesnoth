@@ -5,16 +5,20 @@ Version 1.9.0-svn:
        scenario.
  * Language and i18n:
    * Updated translations: Slovak
+ * User interface:
+   * Removed the unused gui2 menu bar
+   * Added a window register framework
+   * Enabled the --new-widgets MP create dialog again
+   * Enabled the hidden join observe buttons per row
+   * Enabled alignment in labels
+   * Avoid resizing when next or previous button is pressed in the
+     --new-widgets title screen
  * WML Engine:
    * Deprecated [set_variable]'s random key, use rand instead
    * Renamed [unit][status] healable to unhealable so it can default to 'no'
    * Added 'side X turn refresh' and 'side X turn Y refresh' events
  * Miscellaneous and bug fixes:
    * Defaulted log level to warning again
-   * Removed the unused gui2 menu bar
-   * Added a window register framework
-   * Enabled the --new-widgets MP create dialog again
-   * Enable the hidden join observe buttons per row
    * New option to auto-set delay shroud update on game start
    * better fix for bug 14765 now that string freeze is off
    * Added a way to rename local players at game creation
