@@ -1,6 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2006 - 2010 by Rusty Russell <rusty@rustcorp.com.au>
+   Copyright (C) 2006 - 2009 by Rusty Russell <rusty@rustcorp.com.au>
+   Copyright (C) 2010 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -44,12 +45,18 @@ unit_map &unit_map::operator=(const unit_map &that)
 	return *this;
 }
 
-unit_map::~unit_map()
+void unit_map::swap(unit_map &o)
 {
-	assert(num_iters_ == 0);
-	delete_all();
+	assert(num_iters_ == 0 && o.num_iters_ == 0);
+	std::swap(map_, o.map_);
+	std::swap(lmap_, o.lmap_);
+	std::swap(num_invalid_, o.num_invalid_);
 }
 
+unit_map::~unit_map()
+{
+	clear();
+}
 
 unit_map::unit_iterator unit_map::find(const map_location &loc) {
 	lmap::const_iterator i = lmap_.find(loc);
@@ -63,10 +70,10 @@ unit_map::unit_iterator unit_map::find(const map_location &loc) {
 	return unit_iterator(iter, this);
 }
 
-unit_map::unit_iterator unit_map::find(const size_t &id) {
+unit_map::unit_iterator unit_map::find(size_t id)
+{
 	umap::iterator iter = map_.find(id);
-	iter = is_valid(iter) ? iter : map_.end();
-
+	if (!is_valid(iter)) iter = map_.end();
 	return unit_iterator(iter, this);
 }
 
@@ -107,38 +114,33 @@ void unit_map::move(const map_location &src, const map_location &dst) {
 
 void unit_map::insert(unit *p)
 {
-	unit_id_type unit_id = p->underlying_id();
-	umap::iterator iter = map_.find(unit_id);
+	size_t unit_id = p->underlying_id();
 	const map_location &loc = p->get_location();
 
-	if (!p->get_location().valid()) {
+	if (!loc.valid()) {
 		ERR_NG << "Trying to add " << p->name()
 			<< " - " << p->id() << " at an invalid location; Discarding.\n";
 		delete p;
 		return;
 	}
 
+	std::pair<umap::iterator, bool> biter =
+		map_.insert(std::make_pair(unit_id, p));
+
 	p->set_game_context(this);
 
-	if (iter == map_.end()) {
-		map_[unit_id] = node(true, p);
-	} else if(!is_valid(iter)) {
-		iter->second.ptr = p;
-		validate(iter);
-	} else if(iter->second.ptr->get_location() == loc) {
-		erase(loc);
-		insert(p);
-		return;
+	if (biter.second) {
+	} else if (!biter.first->second) {
+		biter.first->second = p;
+		--num_invalid_;
 	} else {
-		ERR_NG << "Trying to add " << p->name() <<
-			" - " << p->id() <<
-			" - " << p->underlying_id() <<
-			" ("  << loc <<
-			") over " << iter->second.ptr->name() <<
-			" - " << iter->second.ptr->id() <<
-			" - " << iter->second.ptr->underlying_id() <<
-			" ("  << iter->second.ptr->get_location() <<
-			"). The new unit will be assigned underlying_id="
+		unit *q = biter.first->second;
+		ERR_NG << "Trying to add " << p->name()
+			<< " - " << p->id() << " - " << p->underlying_id()
+			<< " ("  << loc << ") over " << q->name()
+			<< " - " << q->id() << " - " << q->underlying_id()
+			<< " ("  << q->get_location()
+			<< "). The new unit will be assigned underlying_id="
 			<< (1 + n_unit::id_manager::instance().get_save_id())
 			<< " to prevent duplicate id conflicts.\n";
 		p->clone(false);
@@ -146,7 +148,7 @@ void unit_map::insert(unit *p)
 		return;
 	}
 
-	DBG_NG << "Adding unit " << p->underlying_id()<< " - " << p->id()
+	DBG_NG << "Adding unit " << p->underlying_id() << " - " << p->id()
 		<< " to location: (" << loc.x + 1 << "," << loc.y + 1 << ")\n";
 
 	std::pair<lmap::iterator,bool> res = lmap_.insert(std::make_pair(loc, unit_id));
@@ -164,12 +166,14 @@ void unit_map::replace(const map_location &l, const unit &u)
 	add(loc, u);
 }
 
-void unit_map::delete_all()
+void unit_map::clear()
 {
+	assert(num_iters_ == 0);
+
 	for (umap::iterator i = map_.begin(); i != map_.end(); ++i) {
 		if (is_valid(i)) {
-			DBG_NG << "Delete unit " << i->second.ptr->underlying_id() << "\n";
-			delete(i->second.ptr);
+			DBG_NG << "Delete unit " << i->second->underlying_id() << "\n";
+			delete i->second;
 		}
 	}
 
@@ -184,10 +188,12 @@ unit *unit_map::extract(const map_location &loc)
 		return NULL;
 
 	umap::iterator iter = map_.find(i->second);
-	unit *res = iter->second.ptr;
+	unit *res = iter->second;
+	res->set_game_context(NULL);
 
-	DBG_NG << "Extract unit " << i->second << "\n";
-	invalidate(iter);
+	DBG_NG << "Extract unit " << i->second << '\n';
+	iter->second = NULL;
+	++num_invalid_;
 	lmap_.erase(i);
 
 	return res;
@@ -195,24 +201,10 @@ unit *unit_map::extract(const map_location &loc)
 
 size_t unit_map::erase(const map_location &loc)
 {
-	lmap::iterator i = lmap_.find(loc);
-	if (i == lmap_.end())
-		return 0;
-
-	umap::iterator iter = map_.find(i->second);
-	DBG_NG << "Erase unit " << i->second << "\n";
-
-	invalidate(iter);
-
-	delete iter->second.ptr;
-	lmap_.erase(i);
-
+	unit *u = extract(loc);
+	if (!u) return 0;
+	delete u;
 	return 1;
-}
-
-void unit_map::clear()
-{
-	delete_all();
 }
 
 void unit_map::clean_invalid() {
