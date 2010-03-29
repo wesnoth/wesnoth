@@ -163,7 +163,7 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 		}
 
 	} else {
-		/***** Hid the tree view. *****/
+		/***** Hide the tree view. *****/
 		if(ttree_view* tree = find_widget<ttree_view>(
 				&window, "campaign_tree", false, false)) {
 
