@@ -23,6 +23,7 @@
 #include "gui/dialogs/language_selection.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
+#include "gui/widgets/multi_page.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "titlescreen.hpp"
@@ -58,6 +59,10 @@ void show_dialog(CVideo& video)
  *     (addons) (button) ()       The button to get the addons.
  *     (language) (button) ()     The button to change the language.
  *
+ *     (tips) (multi_page) ()     A multi_page to hold all tips, when this
+ *                                widget is used the area of the tips doesn't
+ *                                need to be resized when the next or previous
+ *                                button is pressed.
  *     (tip) (label) ()           The tip of the day.
  *     (source) (label) ()        The source for the tip of the day.
  *     (next_tip) (button) ()     The button show the next tip of day.
@@ -99,6 +104,31 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 				, boost::ref(video)));
 
 	/**** Set the tip of the day ****/
+	/*
+	 * NOTE: although the tips are set in the multi_page only the first page
+	 * will be used and the widget content is set there. This is a kind of
+	 * hack, but will be fixed when this dialog will be moved out of
+	 * --new-widgets. Then the tips part of the code no longer needs to be
+	 *  shared with the other title screen and can be moved here.
+	 */
+	tmulti_page* tip_pages =
+			find_widget<tmulti_page>(&window, "tips", false, false);
+	if(tip_pages) {
+		foreach(const config& tip, tips_.child_range("tip")) {
+
+			string_map widget;
+			std::map<std::string, string_map> page;
+
+			widget["label"] = tip["text"];
+			page["tip"] = widget;
+
+			widget["label"] = tip["source"];
+			page["source"] = widget;
+
+			tip_pages->add_page(page);
+
+		}
+	}
 	update_tip(window, true);
 
 	find_widget<tbutton>(&window, "next_tip", false).
@@ -145,10 +175,13 @@ void ttitle_screen::update_tip(twindow& window, const bool previous)
 	find_widget<tlabel>(&window, "source", false).set_label((*tip)["source"]);
 
 	/**
-	 * @todo Convert the code to use a multi_page so the invalidate is not
-	 * needed.
+	 * @todo Need to move the real tips "calculation" to this file so we can
+	 * move through the pages.
+	 * 
 	 */
-	window.invalidate_layout();
+	if(!find_widget<tmulti_page>(&window, "tips", false, false)) {
+		window.invalidate_layout();
+	}
 }
 
 void ttitle_screen::next_tip(twidget* caller)
