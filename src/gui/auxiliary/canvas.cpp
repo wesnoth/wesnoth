@@ -272,8 +272,8 @@ tline::tline(const config& cfg) :
  *     h_align                         Horizontal alignment; how an item is
  *                                     aligned horizontal in the available
  *                                     space. Possible values:
- *                                     @* top    aligned at the top
- *                                     @* bottom aligned at the bottom
+ *                                     @* left   aligned at the left side
+ *                                     @* right  aligned at the right side
  *                                     @* center centered
  *
  *     border                          Comma separated list of borders to use.
