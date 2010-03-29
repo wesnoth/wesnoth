@@ -125,9 +125,9 @@ tcontrol_definition::tcontrol_definition(const config& cfg) :
  *
  */
 
-	VALIDATE(!id.empty(), missing_mandatory_wml_key("gui", "id"));
+	VALIDATE(!id.empty(), missing_mandatory_wml_key("control", "id"));
 	VALIDATE(!description.empty()
-			, missing_mandatory_wml_key("gui", "description"));
+			, missing_mandatory_wml_key("control", "description"));
 
 	/*
 	 * Do this validation here instead of in load_resolutions so the
