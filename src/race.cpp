@@ -25,7 +25,10 @@
 #include "random.hpp"
 #include "simple_rng.hpp"
 
-static config empty_traits;
+static const config &empty_traits() {
+		static config cfg;
+		return cfg;
+}
 
 static void add_prefixes(const wide_string& str, size_t length, markov_prefix_map& res)
 {
@@ -134,7 +137,7 @@ unit_race::unit_race() :
 		description_(),
 		ntraits_(0),
 		chain_size_(0),
-		traits_(empty_traits.child_range("trait")),
+		traits_(empty_traits().child_range("trait")),
 		global_traits_(true)
 {
 		name_[MALE] = "";

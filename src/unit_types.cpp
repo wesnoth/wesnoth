@@ -541,7 +541,11 @@ int defense_modifier_internal(std::map<t_translation::t_terrain, int>& defense_m
 	return res;
 }
 
-static const unit_race dummy_race;
+static const unit_race& dummy_race(){
+	static unit_race ur;
+	return ur;
+}
+
 
 #ifdef _MSC_VER
 #pragma warning(push)
@@ -567,7 +571,7 @@ unit_type::unit_type() :
 	num_traits_(0),
 	gender_types_(),
 	variations_(),
-	race_(&dummy_race),
+	race_(&dummy_race()),
 	alpha_(),
 	abilities_(),
 	adv_abilities_(),
@@ -654,7 +658,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	num_traits_(0),
 	gender_types_(),
 	variations_(),
-	race_(&dummy_race),
+	race_(&dummy_race()),
 	alpha_(),
 	abilities_(),
 	adv_abilities_(),
@@ -805,8 +809,7 @@ void unit_type::build_help_index(const config& cfg, const movement_type_map& mv_
 	if(race_it != races.end()) {
 		race_ = &race_it->second;
 	} else {
-		static const unit_race dummy_race;
-		race_ = &dummy_race;
+		race_ = &dummy_race();
 	}
 
 	// if num_traits is not defined, we use the num_traits from race
