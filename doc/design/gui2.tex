@@ -376,11 +376,23 @@ the code that can use more explanation. A part not explained here, doesn't mean
 the code is obvious or simple, lack of time to document it properly is more
 likely the excuse.
 
+\section{Boot strapping the library}
+
+Before the library can be started the available widgets and windows need to
+be registered. This registering is done before \textsc{main()} is started.
+The registering is done by some small static classes that do the registering
+of the item\footnote{Widget or Window.} in its constructor. Since this
+involves some redundant typing there are REGISTER\_XXX macros written.
+
+After all items are register the library can be started, which is simply
+done by \textsc{gui2::init()}. This function does all required steps to get
+the library up and running.
+
 \section{Layout algorithm}
 
 An important part of the gui engine is to properly layout the widgets in the
 available space. The documentation of that algorithm is written in
-doxygen\footnote{\url{http://devdocs.wesnoth.org/layout_algorihm.html}}.
+doxygen\footnote{\url{http://devdocs.wesnoth.org/layout\_algorihm.html}}.
 
 \section{Event handling and dispatching}
 \label{event_handling}
