@@ -941,7 +941,6 @@ static void run(unsigned specific_battle)
 			if (i == j)
 				continue;
 			for (k = 0; k < NUM_UNITS; ++k) {
-				double untouched;
 				if (i == k || j == k)
 					continue;
 				++battle;
