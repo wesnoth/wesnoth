@@ -15,7 +15,11 @@
 #ifndef GUI_DIALOGS_EDITOR_RESIZE_MAP_HPP_INCLUDED
 #define GUI_DIALOGS_EDITOR_RESIZE_MAP_HPP_INCLUDED
 
+#include "gui/auxiliary/notifier.hpp"
+#include "gui/auxiliary/notifiee.hpp"
 #include "gui/dialogs/dialog.hpp"
+
+#include <boost/function.hpp>
 
 namespace gui2 {
 
@@ -73,6 +77,11 @@ private:
 
 	void pre_show(CVideo& video, twindow& window);
 
+	/** Notifiee for the height modification callback. */
+	tnotifiee<boost::function<void(void)> > height_positioner_moved_notifiee_;
+
+	/** Notifiee for the width modification callback. */
+	tnotifiee<boost::function<void(void)> > width_positioner_moved_notifiee_;
 };
 
 } // namespace gui2

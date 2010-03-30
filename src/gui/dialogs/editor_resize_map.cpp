@@ -22,6 +22,8 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/slider.hpp"
 
+#include <boost/bind.hpp>
+
 namespace gui2 {
 
 /*WIKI
@@ -87,7 +89,9 @@ teditor_resize_map::teditor_resize_map() :
 	copy_edge_terrain_(register_bool("copy_edge_terrain", false)),
 	old_width_(),
 	old_height_(),
-	expand_direction_(EXPAND_BOTTOM_RIGHT)
+	expand_direction_(EXPAND_BOTTOM_RIGHT),
+	height_positioner_moved_notifiee_(),
+	width_positioner_moved_notifiee_()
 {
 }
 
@@ -133,10 +137,20 @@ void teditor_resize_map::pre_show(CVideo& /*video*/, twindow& window)
 	height_ = find_widget<tslider>(&window, "height", false, true);
 	width_ = find_widget<tslider>(&window, "width", false, true);
 
-	height_->set_callback_positioner_move(dialog_callback<teditor_resize_map
-			, &teditor_resize_map::update_expand_direction>);
-	width_->set_callback_positioner_move(dialog_callback<teditor_resize_map
-			, &teditor_resize_map::update_expand_direction>);
+	height_->connect_positioner_moved_notifiee(
+			  height_positioner_moved_notifiee_
+			, boost::bind(
+				  &teditor_resize_map::update_expand_direction
+				, this
+				, boost::ref(window)));
+
+	width_->connect_positioner_moved_notifiee(
+			  width_positioner_moved_notifiee_
+			, boost::bind(
+				  &teditor_resize_map::update_expand_direction
+				, this
+				, boost::ref(window)));
+
 	old_width.set_label(lexical_cast<std::string>(old_width_));
 	old_height.set_label(lexical_cast<std::string>(old_height_));
 
