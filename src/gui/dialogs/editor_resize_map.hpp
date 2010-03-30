@@ -77,6 +77,8 @@ private:
 
 	void pre_show(CVideo& video, twindow& window);
 
+	/***** ***** ***** callback notifiees ***** ****** *****/
+
 	/** Notifiee for the height modification callback. */
 	tnotifiee<boost::function<void(void)> > height_positioner_moved_notifiee_;
 
