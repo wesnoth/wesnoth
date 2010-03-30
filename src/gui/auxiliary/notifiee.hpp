@@ -15,6 +15,8 @@
 #ifndef GUI_WIDGETS_AUXILIARY_NOTIFIEE_HPP_INCLUDED
 #define GUI_WIDGETS_AUXILIARY_NOTIFIEE_HPP_INCLUDED
 
+#include <cstdlib>
+
 namespace gui2 {
 
 template<class T>
