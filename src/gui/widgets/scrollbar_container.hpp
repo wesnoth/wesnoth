@@ -15,6 +15,7 @@
 #ifndef GUI_WIDGETS_SCROLLBAR_CONTAINER_HPP_INCLUDED
 #define GUI_WIDGETS_SCROLLBAR_CONTAINER_HPP_INCLUDED
 
+#include "gui/auxiliary/notifiee.hpp"
 #include "gui/widgets/container.hpp"
 #include "gui/widgets/scrollbar.hpp"
 
@@ -178,10 +179,10 @@ public:
 	 * Callback when the scrollbar moves (NOTE maybe only one callback needed).
 	 * Maybe also make protected or private and add a friend.
 	 */
-	void vertical_scrollbar_moved(twidget* /*caller*/)
+	void vertical_scrollbar_moved()
 		{ scrollbar_moved(); }
 
-	void horizontal_scrollbar_moved(twidget* /*caller*/)
+	void horizontal_scrollbar_moved()
 		{ scrollbar_moved(); }
 
 protected:
@@ -491,6 +492,14 @@ private:
 			, bool& handled);
 	void signal_handler_sdl_wheel_right(const event::tevent event
 			, bool& handled);
+
+	/***** ***** ***** callback notifiees ***** ****** *****/
+
+	tnotifiee<boost::function<void(void)> >
+			vertical_scrollbar_positioner_moved_notifiee_;
+
+	tnotifiee<boost::function<void(void)> >
+			horizontal_scrollbar_positioner_moved_notifiee_;
 };
 
 } // namespace gui2

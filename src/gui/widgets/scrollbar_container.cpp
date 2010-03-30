@@ -60,18 +60,6 @@ const std::map<std::string, tscrollbar_::tscroll>& scroll_lookup()
 	return lookup;
 }
 
-void callback_vertical_scrollbar(twidget* caller)
-{
-	gui2::get_parent<gui2::tscrollbar_container>
-		(caller)->vertical_scrollbar_moved(caller);
-}
-
-void callback_horizontal_scrollbar(twidget* caller)
-{
-	gui2::get_parent<gui2::tscrollbar_container>
-		(caller)->horizontal_scrollbar_moved(caller);
-}
-
 } // namespace
 
 tscrollbar_container::tscrollbar_container(const unsigned canvas_count)
@@ -86,6 +74,8 @@ tscrollbar_container::tscrollbar_container(const unsigned canvas_count)
 	, content_grid_(NULL)
 	, content_(NULL)
 	, content_visible_area_()
+	, vertical_scrollbar_positioner_moved_notifiee_()
+	, horizontal_scrollbar_positioner_moved_notifiee_()
 {
 	connect_signal<event::SDL_KEY_DOWN>(boost::bind(
 			&tscrollbar_container::signal_handler_sdl_key_down
@@ -689,8 +679,11 @@ void tscrollbar_container::finalize_setup()
 	vertical_scrollbar_ = find_widget<tscrollbar_>(
 			vertical_scrollbar_grid_, "_vertical_scrollbar", false, true);
 
-	vertical_scrollbar_->
-		set_callback_positioner_move(callback_vertical_scrollbar);
+	vertical_scrollbar_->connect_positioner_moved_notifiee(
+			  vertical_scrollbar_positioner_moved_notifiee_
+			, boost::bind(
+				  &tscrollbar_container::vertical_scrollbar_moved
+				, this));
 
 	/***** Setup horizontal scrollbar *****/
 	horizontal_scrollbar_grid_ =
@@ -699,8 +692,11 @@ void tscrollbar_container::finalize_setup()
 	horizontal_scrollbar_ = find_widget<tscrollbar_>(
 			horizontal_scrollbar_grid_, "_horizontal_scrollbar", false, true);
 
-	horizontal_scrollbar_->
-		set_callback_positioner_move(callback_horizontal_scrollbar);
+	horizontal_scrollbar_->connect_positioner_moved_notifiee(
+			  horizontal_scrollbar_positioner_moved_notifiee_
+			, boost::bind(
+				  &tscrollbar_container::horizontal_scrollbar_moved
+				, this));
 
 	/***** Setup the scrollbar buttons *****/
 	typedef std::pair<std::string, tscrollbar_::tscroll> hack;
