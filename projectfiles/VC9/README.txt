@@ -1,5 +1,27 @@
 README.txt
 ==========
+NEW WAY (using cmake):
+
+Wesnoth 1.9 (since r41888) can be compiled using cmake+msvc9
+
+1) download ftp://ftp.terraninfo.net/wesnoth/msvc9/external.zip (55mb download)
+      and unpack it into wesnoth's directory - so, there'll be an 'external'
+      folder in there.
+
+2) install cmake http://www.cmake.org/cmake/resources/software.html and put it
+      into %PATH% 
+
+3) to allow the game to run, put full path to 'external/dll' into %PATH% 
+
+4) run 'external/msvc9-cmake.bat'
+
+5) open generated project file in msvc9 and compile. the project should pick
+      up changes in cmake files automatically. Also, you can re-run the .bat
+      file to regenerate it.
+
+
+==========
+OLD WAY (using a standalone project file):
 This is a HowTo guide to help setting up MSVC 2008 (aka VC9) to 
 compile Wesnoth. 
 
