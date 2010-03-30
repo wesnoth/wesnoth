@@ -18,6 +18,8 @@
 
 #include "gui/widgets/label.hpp"
 #include "gui/auxiliary/log.hpp"
+#include "gui/auxiliary/widget_definition/scroll_label.hpp"
+#include "gui/widgets/settings.hpp"
 #include "gui/widgets/scrollbar.hpp"
 #include "gui/widgets/spacer.hpp"
 #include "gui/widgets/window.hpp"
@@ -28,6 +30,8 @@
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
 namespace gui2 {
+
+REGISTER_WIDGET(scroll_label)
 
 tscroll_label::tscroll_label()
 	: tscrollbar_container(COUNT)

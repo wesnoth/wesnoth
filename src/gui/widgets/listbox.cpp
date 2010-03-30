@@ -18,14 +18,22 @@
 
 #include "gui/auxiliary/layout_exception.hpp"
 #include "gui/auxiliary/log.hpp"
+#include "gui/auxiliary/widget_definition/listbox.hpp"
+#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
+
+#include <boost/bind.hpp>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
 namespace gui2 {
 
+REGISTER_WIDGET(listbox)
+
 namespace {
+// in seperate namespace to avoid name classes
+REGISTER_WIDGET3(tlistbox_definition, "horizontal_listbox", _4)
 
 void callback_list_item_clicked(twidget* caller)
 {

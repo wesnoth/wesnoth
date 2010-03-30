@@ -18,6 +18,7 @@
 
 #include "foreach.hpp"
 #include "gui/auxiliary/log.hpp"
+#include "gui/auxiliary/widget_definition/toggle_button.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "sound.hpp"
@@ -28,6 +29,8 @@
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
 namespace gui2 {
+
+REGISTER_WIDGET(toggle_button)
 
 ttoggle_button::ttoggle_button()
 	: tcontrol(COUNT)

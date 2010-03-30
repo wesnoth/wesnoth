@@ -16,10 +16,15 @@
 
 #include "gui/widgets/multi_page.hpp"
 
+#include "gui/auxiliary/widget_definition/multi_page.hpp"
+#include "gui/widgets/settings.hpp"
 #include "gui/widgets/generator.hpp"
+
+#include <boost/bind.hpp>
 
 namespace gui2 {
 
+REGISTER_WIDGET(multi_page)
 tmulti_page::tmulti_page()
 	: tcontainer_(0)
 	, generator_(NULL)

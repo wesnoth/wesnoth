@@ -17,6 +17,8 @@
 #include "gui/widgets/tree_view.hpp"
 
 #include "gui/auxiliary/log.hpp"
+#include "gui/auxiliary/widget_definition/tree_view.hpp"
+#include "gui/widgets/settings.hpp"
 #include "gui/widgets/tree_view_node.hpp"
 #include "gui/widgets/window.hpp"
 
@@ -26,6 +28,8 @@
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
 namespace gui2 {
+
+REGISTER_WIDGET(tree_view)
 
 ttree_view::ttree_view(const std::vector<tnode_definition>& node_definitions)
 	: tscrollbar_container(2)

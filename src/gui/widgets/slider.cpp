@@ -23,10 +23,14 @@
 #include "gui/widgets/settings.hpp"
 #include "sound.hpp"
 
+#include <boost/bind.hpp>
+
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
 namespace gui2 {
+
+REGISTER_WIDGET(slider)
 
 static int distance(const int a, const int b)
 {

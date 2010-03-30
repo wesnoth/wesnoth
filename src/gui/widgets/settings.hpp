@@ -22,10 +22,14 @@
 
 #include "gui/auxiliary/widget_definition/window.hpp"
 
+#include <boost/function.hpp>
+
 #include <string>
 #include <vector>
 
 namespace gui2 {
+
+class tgui_definition;
 
 /** Do we wish to use the new library or not. */
 extern bool new_widgets;
@@ -45,6 +49,73 @@ extern bool new_widgets;
  * @param id                      The id of the window to register.
  */
 void register_window(const std::string& id);
+
+/**
+ * Registers a widgets.
+ *
+ * This function registers the available widgets defined in WML. All widgets
+ * need to register themselves before @ref gui2::init) is called.
+ *
+ * @warning This function runs before @ref main() so needs to be careful
+ * regarding the static initialization problem.
+ *
+ * @param id                      The id of the widget to register.
+ * @param functor                 The function to load the definitions.
+ */
+void register_widget(const std::string& id
+		, boost::function<void(
+			  tgui_definition& gui_definition
+			, const std::string& definition_type
+			, const config& cfg
+			, const char *key)> functor);
+
+/**
+ * Loads the definitions of a widget.
+ *
+ * @param gui_definition          The gui definition the widget definition
+ *                                belongs to.
+ * @param definition_type         The type of the widget whose definitions are
+ *                                to be loaded.
+ * @param definitions             The definitions serialized from a config
+ *                                object.
+ */
+void load_widget_definitions(
+	  tgui_definition& gui_definition
+	, const std::string& definition_type
+	, const std::vector<tcontrol_definition_ptr>& definitions);
+
+/**
+ * Loads the definitions of a widget.
+ *
+ * This function is templated and kept small so only loads the definitions from
+ * the config and then lets the real job be done by the @ref
+ * load_widget_definitions above.
+ *
+ * @param gui_definition          The gui definition the widget definition
+ *                                belongs to.
+ * @param definition_type         The type of the widget whose definitions are
+ *                                to be loaded.
+ * @param config                  The config to serialiaze the definitions
+ *                                from.
+ * @param key                     Optional id of the definition to load.
+ */
+template<class T>
+void load_widget_definitions(
+	  tgui_definition& gui_definition
+	, const std::string& definition_type
+	, const config& cfg
+	, const char *key)
+{
+	std::vector<tcontrol_definition_ptr> definitions;
+
+	foreach(const config& definition
+			, cfg.child_range(key ? key : definition_type + "_definition")) {
+
+		definitions.push_back(new T(definition));
+	}
+
+	load_widget_definitions(gui_definition, definition_type, definitions);
+}
 
 
 	tresolution_definition_ptr get_control(

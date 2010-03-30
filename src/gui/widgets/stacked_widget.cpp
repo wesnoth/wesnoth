@@ -17,9 +17,15 @@
 #include "gui/widgets/stacked_widget.hpp"
 
 #include "foreach.hpp"
+#include "gui/auxiliary/widget_definition/stacked_widget.hpp"
+#include "gui/widgets/settings.hpp"
 #include "gui/widgets/generator.hpp"
 
+#include <boost/bind.hpp>
+
 namespace gui2 {
+
+REGISTER_WIDGET(stacked_widget)
 
 tstacked_widget::tstacked_widget()
 	: tcontainer_(1)

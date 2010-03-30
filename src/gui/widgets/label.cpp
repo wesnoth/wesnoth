@@ -16,8 +16,14 @@
 
 #include "gui/widgets/label.hpp"
 
+#include "gui/auxiliary/widget_definition/label.hpp"
+#include "gui/widgets/settings.hpp"
+
+#include <boost/bind.hpp>
 
 namespace gui2 {
+
+REGISTER_WIDGET(label)
 
 void tlabel::set_state(const tstate state)
 {

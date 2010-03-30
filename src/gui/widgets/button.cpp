@@ -17,6 +17,7 @@
 #include "gui/widgets/button.hpp"
 
 #include "gui/auxiliary/log.hpp"
+#include "gui/auxiliary/widget_definition/button.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "sound.hpp"
@@ -27,6 +28,8 @@
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
 namespace gui2 {
+
+REGISTER_WIDGET(button)
 
 tbutton::tbutton()
 	: tcontrol(COUNT)

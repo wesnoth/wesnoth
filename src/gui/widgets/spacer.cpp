@@ -16,7 +16,14 @@
 
 #include "gui/widgets/spacer.hpp"
 
+#include "gui/auxiliary/widget_definition/spacer.hpp"
+#include "gui/widgets/settings.hpp"
+
+#include <boost/bind.hpp>
+
 namespace gui2 {
+
+REGISTER_WIDGET(spacer)
 
 const std::string& tspacer::get_control_type() const
 {

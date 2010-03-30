@@ -20,6 +20,7 @@
 #include "foreach.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/widget_definition/text_box.hpp"
+#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "game_preferences.hpp"
 
@@ -29,6 +30,8 @@
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
 namespace gui2 {
+
+REGISTER_WIDGET(text_box)
 
 ttext_history ttext_history::get_history(const std::string& id, const bool enabled)
 {

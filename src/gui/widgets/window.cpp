@@ -50,6 +50,8 @@
 
 namespace gui2{
 
+REGISTER_WIDGET(window)
+
 unsigned twindow::sunset_ = 0;
 
 namespace {

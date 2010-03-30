@@ -17,9 +17,13 @@
 #include "gui/widgets/minimap.hpp"
 
 #include "gui/auxiliary/log.hpp"
+#include "gui/auxiliary/widget_definition/minimap.hpp"
+#include "gui/widgets/settings.hpp"
 #include "map.hpp"
 #include "map_exception.hpp"
 #include "../../minimap.hpp"
+
+#include <boost/bind.hpp>
 
 #include <algorithm>
 
@@ -33,6 +37,8 @@ static lg::log_domain log_config("config");
 //#define DEBUG_MINIMAP_CACHE
 
 namespace gui2 {
+
+REGISTER_WIDGET(minimap)
 
 /** Key type for the cache. */
 struct tkey

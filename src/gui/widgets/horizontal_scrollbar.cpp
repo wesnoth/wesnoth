@@ -16,9 +16,14 @@
 
 #include "gui/widgets/horizontal_scrollbar.hpp"
 
+#include "gui/widgets/settings.hpp"
 #include "gui/auxiliary/widget_definition/horizontal_scrollbar.hpp"
 
+#include <boost/bind.hpp>
+
 namespace gui2 {
+
+REGISTER_WIDGET(horizontal_scrollbar)
 
 unsigned thorizontal_scrollbar::minimum_positioner_length() const
 {

@@ -16,7 +16,14 @@
 
 #include "gui/widgets/tooltip.hpp"
 
+#include "gui/auxiliary/widget_definition/tooltip.hpp"
+#include "gui/widgets/settings.hpp"
+
+#include <boost/bind.hpp>
+
 namespace gui2 {
+
+REGISTER_WIDGET(tooltip)
 
 const std::string& ttooltip::get_control_type() const
 {

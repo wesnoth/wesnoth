@@ -17,12 +17,18 @@
 #include "gui/widgets/image.hpp"
 
 #include "../../image.hpp"
+#include "gui/auxiliary/widget_definition/image.hpp"
 #include "gui/auxiliary/log.hpp"
+#include "gui/widgets/settings.hpp"
+
+#include <boost/bind.hpp>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
 namespace gui2 {
+
+REGISTER_WIDGET(image)
 
 tpoint timage::calculate_best_size() const
 {

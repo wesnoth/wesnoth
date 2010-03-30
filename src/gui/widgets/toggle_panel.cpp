@@ -30,6 +30,8 @@
 
 namespace gui2 {
 
+REGISTER_WIDGET(toggle_panel)
+
 ttoggle_panel::ttoggle_panel()
 	: tpanel(COUNT)
 	, state_(ENABLED)

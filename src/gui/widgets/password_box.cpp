@@ -18,12 +18,18 @@
 #include "gui/widgets/password_box.hpp"
 
 #include "gui/auxiliary/log.hpp"
+#include "gui/auxiliary/widget_definition/text_box.hpp"
+#include "gui/widgets/settings.hpp"
 #include "serialization/string_utils.hpp"
+
+#include <boost/bind.hpp>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
 namespace gui2 {
+
+REGISTER_WIDGET3(ttext_box_definition, "password_box", "text_box_definition")
 
 namespace {
 

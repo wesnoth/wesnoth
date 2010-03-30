@@ -16,7 +16,14 @@
 
 #include "gui/widgets/scrollbar_panel.hpp"
 
+#include "gui/auxiliary/widget_definition/scrollbar_panel.hpp"
+#include "gui/widgets/settings.hpp"
+
+#include <boost/bind.hpp>
+
 namespace gui2 {
+
+REGISTER_WIDGET(scrollbar_panel)
 
 const std::string& tscrollbar_panel::get_control_type() const
 {

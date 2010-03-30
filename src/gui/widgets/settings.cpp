@@ -27,31 +27,10 @@
 #include "foreach.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/log.hpp"
-#include "gui/auxiliary/widget_definition/button.hpp"
-#include "gui/auxiliary/widget_definition/horizontal_scrollbar.hpp"
-#include "gui/auxiliary/widget_definition/image.hpp"
-#include "gui/auxiliary/widget_definition/label.hpp"
-#include "gui/auxiliary/widget_definition/listbox.hpp"
-#include "gui/auxiliary/widget_definition/minimap.hpp"
-#include "gui/auxiliary/widget_definition/multi_page.hpp"
-#include "gui/auxiliary/widget_definition/panel.hpp"
-#include "gui/auxiliary/widget_definition/repeating_button.hpp"
-#include "gui/auxiliary/widget_definition/scroll_label.hpp"
-#include "gui/auxiliary/widget_definition/scrollbar_panel.hpp"
-#include "gui/auxiliary/widget_definition/slider.hpp"
-#include "gui/auxiliary/widget_definition/spacer.hpp"
-#include "gui/auxiliary/widget_definition/stacked_widget.hpp"
-#include "gui/auxiliary/widget_definition/text_box.hpp"
-#include "gui/auxiliary/widget_definition/toggle_button.hpp"
-#include "gui/auxiliary/widget_definition/toggle_panel.hpp"
-#include "gui/auxiliary/widget_definition/tooltip.hpp"
-#include "gui/auxiliary/widget_definition/tree_view.hpp"
-#include "gui/auxiliary/widget_definition/vertical_scrollbar.hpp"
 #include "gui/widgets/window.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 #include "formula_string_utils.hpp"
-
 
 namespace gui2 {
 
@@ -77,8 +56,6 @@ namespace settings {
 
 } // namespace settings
 
-namespace {
-
 /**
  * Returns the list of registered windows.
  *
@@ -87,6 +64,20 @@ namespace {
 static std::vector<std::string>& registered_window_types()
 {
 	static std::vector<std::string> result;
+	return result;
+}
+
+typedef std::map<
+		  std::string
+		, boost::function<void(
+			  tgui_definition&
+			  , const std::string&
+			  , const config&
+			  , const char *key)> > tregistered_widget_type;
+
+static tregistered_widget_type& registred_widget_type()
+{
+	static tregistered_widget_type result;
 	return result;
 }
 
@@ -127,10 +118,11 @@ struct tgui_definition
 	std::map<std::string, twindow_definition> windows;
 
 	std::map<std::string, twindow_builder> window_types;
+
+	void load_widget_definitions(
+			  const std::string& definition_type
+			, const std::vector<tcontrol_definition_ptr>& definitions);
 private:
-	template<class T>
-	void load_definitions(const std::string& definition_type,
-		const config &cfg, const char *key = NULL);
 
 	unsigned popup_show_delay_;
 	unsigned popup_show_time_;
@@ -260,31 +252,17 @@ const std::string& tgui_definition::read(const config& cfg)
 	DBG_GUI_P << "Parsing gui " << id << '\n';
 
 	/***** Control definitions *****/
-	load_definitions<tbutton_definition>("button", cfg);
-	// share the definition of the normal listbox.
-	load_definitions<tlistbox_definition>("horizontal_listbox", cfg);
-	load_definitions<thorizontal_scrollbar_definition>("horizontal_scrollbar", cfg);
-	load_definitions<timage_definition>("image", cfg);
-	load_definitions<tlabel_definition>("label", cfg);
-	load_definitions<tlistbox_definition>("listbox", cfg);
-	load_definitions<tminimap_definition>("minimap", cfg);
-	load_definitions<tmulti_page_definition>("multi_page", cfg);
-	load_definitions<tstacked_widget_definition>("stacked_widget", cfg);
-	load_definitions<tpanel_definition>("panel", cfg);
-	load_definitions<trepeating_button_definition>("repeating_button", cfg);
-	load_definitions<tscroll_label_definition>("scroll_label", cfg);
-	load_definitions<tscrollbar_panel_definition>("scrollbar_panel", cfg);
-	load_definitions<tslider_definition>("slider", cfg);
-	load_definitions<tspacer_definition>("spacer", cfg);
-	load_definitions<ttext_box_definition>("text_box", cfg);
-	// use the same definition for password boxes
-	load_definitions<ttext_box_definition>("password_box", cfg, "text_box_definition");
-	load_definitions<ttoggle_button_definition>("toggle_button", cfg);
-	load_definitions<ttoggle_panel_definition>("toggle_panel", cfg);
-	load_definitions<ttooltip_definition>("tooltip", cfg);
-	load_definitions<ttree_view_definition>("tree_view", cfg);
-	load_definitions<tvertical_scrollbar_definition>("vertical_scrollbar", cfg);
-	load_definitions<twindow_definition>("window", cfg);
+	typedef std::pair<
+			  const std::string
+			, boost::function<void(
+				  tgui_definition&
+				  , const std::string&
+				  , const config&
+				  , const char *key)> > thack;
+
+	foreach(thack& widget_type, registred_widget_type()) {
+		widget_type.second(*this, widget_type.first, cfg, NULL);
+	}
 
 	/***** Window types *****/
 	foreach (const config &w, cfg.child_range("window")) {
@@ -388,29 +366,31 @@ void tgui_definition::activate() const
 	settings::sound_slider_adjust = sound_slider_adjust_;
 }
 
-template<class T>
-void tgui_definition::load_definitions(
-	const std::string &definition_type, const config &cfg, const char *key)
+void tgui_definition::load_widget_definitions(
+		  const std::string& definition_type
+		, const std::vector<tcontrol_definition_ptr>& definitions)
 {
-	foreach (const config &d, cfg.child_range(key ? key : definition_type + "_definition"))
-	{
-		T* def = new T(d);
+	foreach(const tcontrol_definition_ptr& def, definitions) {
 
 		// We assume all definitions are unique if not we would leak memory.
 		assert(control_definition[definition_type].find(def->id)
-			== control_definition[definition_type].end());
+				== control_definition[definition_type].end());
 
-		control_definition[definition_type].insert(std::make_pair(def->id, def));
+		control_definition[definition_type]
+				.insert(std::make_pair(def->id, def));
 	}
 
 	utils::string_map symbols;
 	symbols["definition"] = definition_type;
 	symbols["id"] = "default";
 	t_string msg(vgettext(
-		"Widget definition '$definition' doesn't contain the definition for '$id'.",
-		symbols));
+			  "Widget definition '$definition' "
+			  "doesn't contain the definition for '$id'."
+			, symbols));
+
 	VALIDATE(control_definition[definition_type].find("default")
-		!= control_definition[definition_type].end(), msg);
+			!= control_definition[definition_type].end(), msg);
+
 }
 
 	/** Map with all known windows, (the builder class builds a window). */
@@ -421,8 +401,6 @@ void tgui_definition::load_definitions(
 
 	/** Points to the current gui. */
 	std::map<std::string, tgui_definition>::const_iterator current_gui = guis.end();
-
-} // namespace
 
 void register_window(const std::string& id)
 {
@@ -492,6 +470,25 @@ tstate_definition::tstate_definition(const config &cfg) :
 	VALIDATE(draw, _("No state or draw section defined."));
 
 	canvas.set_cfg(draw);
+}
+
+void register_widget(const std::string& id
+		, boost::function<void(
+			  tgui_definition& gui_definition
+			, const std::string& definition_type
+			, const config& cfg
+			, const char *key)> functor)
+{
+	registred_widget_type().insert(std::make_pair(id, functor));
+}
+
+void load_widget_definitions(
+	  tgui_definition& gui_definition
+	, const std::string& definition_type
+	, const std::vector<tcontrol_definition_ptr>& definitions)
+{
+	DBG_GUI_P << "Load definition '" << definition_type << "'.\n";
+	gui_definition.load_widget_definitions(definition_type, definitions);
 }
 
 tresolution_definition_ptr get_control(

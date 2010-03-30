@@ -17,8 +17,13 @@
 #include "gui/widgets/vertical_scrollbar.hpp"
 
 #include "gui/auxiliary/widget_definition/vertical_scrollbar.hpp"
+#include "gui/widgets/settings.hpp"
+
+#include <boost/bind.hpp>
 
 namespace gui2 {
+
+REGISTER_WIDGET(vertical_scrollbar)
 
 unsigned tvertical_scrollbar::minimum_positioner_length() const
 {

@@ -18,11 +18,16 @@
 
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/widget_definition/panel.hpp"
+#include "gui/widgets/settings.hpp"
+
+#include <boost/bind.hpp>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
 namespace gui2 {
+
+REGISTER_WIDGET(panel)
 
 SDL_Rect tpanel::get_client_rect() const
 {
