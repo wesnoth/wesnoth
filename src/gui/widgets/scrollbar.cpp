@@ -27,8 +27,17 @@
 
 namespace gui2 {
 
+void tpositioner_moved_notifier::notify()
+{
+	typedef std::pair<tnotifiee<tfunctor>* const, tfunctor> thack;
+	foreach(const thack& item, notifiees()) {
+		item.second();
+	}
+}
+
 tscrollbar_::tscrollbar_()
 	: tcontrol(COUNT)
+	, positioner_moved_notifier_()
 	, state_(ENABLED)
 	, item_count_(0)
 	, item_position_(0)
@@ -264,6 +273,8 @@ void tscrollbar_::move_positioner(const int distance)
 		if(callback_positioner_move_) {
 			callback_positioner_move_(this);
 		}
+
+		positioner_moved_notifier_.notify();
 	}
 #if 0
 	std::cerr << "Scrollbar move overview:\n"

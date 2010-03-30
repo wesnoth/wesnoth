@@ -15,9 +15,20 @@
 #ifndef GUI_WIDGETS_SCROLLBAR_HPP_INCLUDED
 #define GUI_WIDGETS_SCROLLBAR_HPP_INCLUDED
 
+#include "gui/auxiliary/notifier.hpp"
 #include "gui/widgets/control.hpp"
 
+#include <boost/function.hpp>
+
 namespace gui2 {
+
+/** Notifier class, triggered if the positioner is moved. */
+class tpositioner_moved_notifier
+	: public tnotifier<boost::function<void(void)> >
+{
+public:
+	void notify();
+};
 
 /**
  * Base class for a scroll bar.
@@ -117,6 +128,19 @@ public:
 	void set_callback_positioner_move(void (*callback) (twidget*))
 		{ callback_positioner_move_ = callback; }
 
+	void connect_positioner_moved_notifiee(
+			  tnotifiee<tpositioner_moved_notifier::tfunctor>& notifiee
+			, tpositioner_moved_notifier::tfunctor functor)
+	{
+		positioner_moved_notifier_.connect_notifiee(notifiee, functor);
+	}
+
+	void disconnect_positioner_moved_notifiee(
+			  tnotifiee<tpositioner_moved_notifier::tfunctor>& notifiee)
+	{
+		positioner_moved_notifier_.disconnect_notifiee(notifiee);
+	}
+
 protected:
 	unsigned get_positioner_offset() const { return positioner_offset_; }
 
@@ -134,6 +158,9 @@ protected:
 	 */
 	virtual void child_callback_positioner_moved() {}
 private:
+
+	tpositioner_moved_notifier positioner_moved_notifier_;
+
 	/**
 	 * Possible states of the widget.
 	 *
