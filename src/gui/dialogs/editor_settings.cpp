@@ -87,6 +87,9 @@ teditor_settings::teditor_settings()
 	, custom_tod_green_field_(register_integer("custom_tod_green", false))
 	, custom_tod_blue_field_(register_integer("custom_tod_blue", false))
 	, use_mdi_field_(register_bool("use_mdi"))
+	, custom_tod_red_moved_notifiee_()
+	, custom_tod_green_moved_notifiee_()
+	, custom_tod_blue_moved_notifiee_()
 {
 }
 
@@ -228,15 +231,28 @@ void teditor_settings::pre_show(CVideo& /*video*/, twindow& window)
 	custom_tod_toggle_->set_callback_state_change(
 			dialog_callback<teditor_settings
 				, &teditor_settings::update_selected_tod_info>);
-	custom_tod_red_->set_callback_positioner_move(
-			dialog_callback<teditor_settings
-				, &teditor_settings::slider_update_callback>);
-	custom_tod_green_->set_callback_positioner_move(
-			dialog_callback<teditor_settings
-				, &teditor_settings::slider_update_callback>);
-	custom_tod_blue_->set_callback_positioner_move(
-			dialog_callback<teditor_settings
-				, &teditor_settings::slider_update_callback>);
+
+	custom_tod_red_->connect_positioner_moved_notifiee(
+			  custom_tod_red_moved_notifiee_
+			, boost::bind(
+				  &teditor_settings::slider_update_callback
+				, this
+				, boost::ref(window)));
+
+	custom_tod_green_->connect_positioner_moved_notifiee(
+			  custom_tod_green_moved_notifiee_
+			, boost::bind(
+				  &teditor_settings::slider_update_callback
+				, this
+				, boost::ref(window)));
+
+	custom_tod_blue_->connect_positioner_moved_notifiee(
+			  custom_tod_blue_moved_notifiee_
+			, boost::bind(
+				  &teditor_settings::slider_update_callback
+				, this
+				, boost::ref(window)));
+
 	update_selected_tod_info(window);
 }
 
