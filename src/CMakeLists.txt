@@ -565,15 +565,9 @@ if(ENABLE_GAME)
 		)
 	endif(ENABLE_TESTS)
 
-if(MSVC)
 	add_executable(wesnoth WIN32
 		${wesnoth_SRC}
 	)
-else(MSVC)
-	add_executable(wesnoth
-		${wesnoth_SRC}
-	)
-endif(MSVC)
 
 	target_link_libraries(wesnoth
 	   ${wesnoth_LIB}
@@ -610,15 +604,9 @@ SET(wesnothd_SRC
     loadscreen_empty.cpp 
 )
 
-if(MSVC)
-	add_executable(wesnothd WIN32
-		${wesnothd_SRC}
-	)
-else(MSVC)
-	add_executable(wesnothd
-		${wesnothd_SRC}
-	)
-endif(MSVC)
+add_executable(wesnothd WIN32
+	${wesnothd_SRC}
+)
 
 target_link_libraries(wesnothd wesnoth-core ${server-external-libs})
 set_target_properties(wesnothd PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}wesnothd${BINARY_SUFFIX})
