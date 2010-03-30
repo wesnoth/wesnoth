@@ -56,7 +56,7 @@ public:
 	bool is_ok();
 
 	/* get the return value of the action */
-	int get_status();
+	int get_status() const;
 
 	/* describe the action */
 	virtual std::string do_describe() const =0;

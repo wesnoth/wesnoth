@@ -148,7 +148,8 @@ void action_result::set_gamestate_changed()
 }
 
 
-int action_result::get_status(){
+int action_result::get_status() const
+{
 	return status_;
 }
 
