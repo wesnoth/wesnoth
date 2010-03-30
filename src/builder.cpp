@@ -796,15 +796,15 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 		for(constraint_set::iterator constraint = pbr.constraints.begin(); constraint != pbr.constraints.end();
 		    ++constraint) {
 
-			if(global_set_flag.size())
+			if(!global_set_flag.empty())
 				constraint->second.set_flag.insert(constraint->second.set_flag.end(),
 						global_set_flag.begin(), global_set_flag.end());
 
-			if(global_no_flag.size())
+			if(!global_no_flag.empty())
 				constraint->second.no_flag.insert(constraint->second.no_flag.end(),
 						global_no_flag.begin(), global_no_flag.end());
 
-			if(global_has_flag.size())
+			if(!global_has_flag.empty())
 				constraint->second.has_flag.insert(constraint->second.has_flag.end(),
 						global_has_flag.begin(), global_has_flag.end());
 
