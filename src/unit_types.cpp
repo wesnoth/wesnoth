@@ -468,7 +468,7 @@ int defense_modifier_internal(std::map<t_translation::t_terrain, int>& defense_m
 
 	// If this is an alias, then select the best of all underlying terrains.
 	const t_translation::t_list& underlying = map.underlying_def_terrain(terrain);
-	assert(underlying.size() > 0);
+	assert(!underlying.empty());
 
 	if (underlying.size() != 1 || underlying.front() != terrain) {
 		bool revert = (underlying.front() == t_translation::MINUS ? true : false);
