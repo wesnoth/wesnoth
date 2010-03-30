@@ -4,11 +4,20 @@ if(MSVC)
 	# compilation, so disabled for now. The problem occurred on Gentoo with
 	# boost 1.37. Debian with boost 1.34, 1.35 and 1.38 works properly.
 	include_directories( ${Boost_INCLUDE_DIR} )
+
+	#additional MSVC includes
+	include_directories( ${PANGO_INCLUDE_DIR} )
+	include_directories( ${CAIRO_INCLUDE_DIR} )
+	include_directories( ${GLIB_INCLUDE_DIR} )
+	include_directories( ${GLIBCONFIG_INCLUDE_PATH} )
+else(MSVC)
+	include_directories( ${FONTCONFIG_INCLUDE_DIRS} )
 endif(MSVC)
+
+
 include_directories( ${LUA_INCLUDE_DIR} )
 include_directories( ${SDL_INCLUDE_DIR} )
 include_directories( ${PANGOCAIRO_INCLUDE_DIRS} )
-include_directories( ${FONTCONFIG_INCLUDE_DIRS} )
 include_directories( ${GETTEXT_INCLUDE_DIR} )
 include_directories( ${LIBDBUS_INCLUDE_DIRS} )
 
@@ -41,6 +50,9 @@ if(MSVC)
 	# the includes and cause build errors.
 	set( common-external-libs
 		${SDL_LIBRARY}
+		${SDLMAIN_LIBRARY}
+		${LIBINTL_LIBRARY}
+		ws2_32.lib
 	)
 else(MSVC)
 	set( common-external-libs
@@ -61,6 +73,17 @@ set( game-external-libs
     ${LUA_LIBRARIES}
     ${LIBDBUS_LIBRARIES}
 )
+
+if(MSVC)
+	set( game-external-libs
+		${game-external-libs}
+		${PANGO_LIBRARY}
+		${PANGOCAIRO_LIBRARY}
+		${CAIRO_LIBRARY}
+		${GOBJECT_LIBRARY}
+	)
+endif(MSVC)
+
 
 set( server-external-libs
     ${common-external-libs}
@@ -110,6 +133,37 @@ if(SVNVERSION_EXECUTABLE)
   
 endif(SVNVERSION_EXECUTABLE)
 
+if(MSVC)
+	SOURCE_GROUP("src" REGULAR_EXPRESSION ".*")
+	SOURCE_GROUP("src ai" REGULAR_EXPRESSION "ai/.*")
+	SOURCE_GROUP("src ai ai2" REGULAR_EXPRESSION "ai/ai2/.*")
+	SOURCE_GROUP("src ai composite" REGULAR_EXPRESSION "ai/composite/.*")
+	SOURCE_GROUP("src ai default" REGULAR_EXPRESSION "ai/default/.*")
+	SOURCE_GROUP("src ai dfool" REGULAR_EXPRESSION "ai/dfool/.*")
+	SOURCE_GROUP("src ai formula" REGULAR_EXPRESSION "ai/formula/.*")
+	SOURCE_GROUP("src ai testing" REGULAR_EXPRESSION "ai/testing/.*")
+	SOURCE_GROUP("src campaign_server" REGULAR_EXPRESSION "campaign_server/.*")
+	SOURCE_GROUP("src editor" REGULAR_EXPRESSION "editor/.*")
+	SOURCE_GROUP("src gui" REGULAR_EXPRESSION "gui/.*")
+	SOURCE_GROUP("src gui auxiliary" REGULAR_EXPRESSION "gui/auxiliary/.*")
+	SOURCE_GROUP("src gui auxiliary event" REGULAR_EXPRESSION "gui/auxiliary/event/.*")
+	SOURCE_GROUP("src gui auxiliary window_definition" REGULAR_EXPRESSION "gui/auxiliary/window_definition/.*")
+	SOURCE_GROUP("src gui auxiliary window_builder" REGULAR_EXPRESSION "gui/auxiliary/window_builder/.*")
+	SOURCE_GROUP("src gui dialogs" REGULAR_EXPRESSION "gui/dialogs/.*")
+	SOURCE_GROUP("src gui dialogs lobby" REGULAR_EXPRESSION "gui/dialogs/lobby/.*")
+	SOURCE_GROUP("src gui widgets" REGULAR_EXPRESSION "gui/widgets/.*")
+	SOURCE_GROUP("src pathfind" REGULAR_EXPRESSION "pathfind/.*")
+	SOURCE_GROUP("src scripting" REGULAR_EXPRESSION "scripting/.*")
+	SOURCE_GROUP("src serialization" REGULAR_EXPRESSION "serialization/.*")
+	SOURCE_GROUP("src server" REGULAR_EXPRESSION "server/.*")
+	SOURCE_GROUP("src storyscreen" REGULAR_EXPRESSION "storyscreen/.*")
+	SOURCE_GROUP("src tests" REGULAR_EXPRESSION "tests/.*")
+	SOURCE_GROUP("src tests gui" REGULAR_EXPRESSION "tests/gui/.*")
+	SOURCE_GROUP("src tests utils" REGULAR_EXPRESSION "tests/utils/.*")
+	SOURCE_GROUP("src tools" REGULAR_EXPRESSION "tools/.*")
+	SOURCE_GROUP("src widgets" REGULAR_EXPRESSION "widgets/.*")
+
+endif(MSVC)
 
 ########### libwesnoth-core ###############
 
@@ -511,10 +565,16 @@ if(ENABLE_GAME)
 		)
 	endif(ENABLE_TESTS)
 
-
+if(MSVC)
+	add_executable(wesnoth WIN32
+		${wesnoth_SRC}
+	)
+else(MSVC)
 	add_executable(wesnoth
 		${wesnoth_SRC}
 	)
+endif(MSVC)
+
 	target_link_libraries(wesnoth
 	   ${wesnoth_LIB}
 	   ${game-external-libs}
@@ -550,7 +610,16 @@ SET(wesnothd_SRC
     loadscreen_empty.cpp 
 )
 
-add_executable(wesnothd ${wesnothd_SRC})
+if(MSVC)
+	add_executable(wesnothd WIN32
+		${wesnothd_SRC}
+	)
+else(MSVC)
+	add_executable(wesnothd
+		${wesnothd_SRC}
+	)
+endif(MSVC)
+
 target_link_libraries(wesnothd wesnoth-core ${server-external-libs})
 set_target_properties(wesnothd PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}wesnothd${BINARY_SUFFIX})
 
