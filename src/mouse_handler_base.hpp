@@ -76,9 +76,9 @@ public:
 	virtual void mouse_motion(int x, int y, const bool browse, bool update=false) = 0;
 
 	virtual void mouse_press(const SDL_MouseButtonEvent& event, const bool browse);
-	bool is_left_click(const SDL_MouseButtonEvent& event);
-	bool is_middle_click(const SDL_MouseButtonEvent& event);
-	bool is_right_click(const SDL_MouseButtonEvent& event);
+	bool is_left_click(const SDL_MouseButtonEvent& event) const;
+	bool is_middle_click(const SDL_MouseButtonEvent& event) const;
+	bool is_right_click(const SDL_MouseButtonEvent& event) const;
 
 	/**
 	 * Derived classes can overrid this to disable mousewheel scrolling under

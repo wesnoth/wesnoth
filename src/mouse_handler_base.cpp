@@ -199,19 +199,23 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 	mouse_update(browse);
 }
 
-bool mouse_handler_base::is_left_click(const SDL_MouseButtonEvent& event)
+bool mouse_handler_base::is_left_click(
+		const SDL_MouseButtonEvent& event) const
 {
 	return event.button == SDL_BUTTON_LEFT && !command_active();
 }
 
-bool mouse_handler_base::is_middle_click(const SDL_MouseButtonEvent& event)
+bool mouse_handler_base::is_middle_click(
+		const SDL_MouseButtonEvent& event) const
 {
 	return event.button == SDL_BUTTON_MIDDLE;
 }
 
-bool mouse_handler_base::is_right_click(const SDL_MouseButtonEvent& event)
+bool mouse_handler_base::is_right_click(
+		const SDL_MouseButtonEvent& event) const
 {
-	return event.button == SDL_BUTTON_RIGHT || (event.button == SDL_BUTTON_LEFT && command_active());
+	return event.button == SDL_BUTTON_RIGHT
+			|| (event.button == SDL_BUTTON_LEFT && command_active());
 }
 
 bool mouse_handler_base::allow_mouse_wheel_scroll(int /*x*/, int /*y*/)
