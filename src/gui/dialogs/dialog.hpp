@@ -35,11 +35,11 @@ namespace gui2 {
  *@endcode
  * Then use this macro in the implementation, inside the gui2 namespace.
  *
- * @note When the window_id is "foo" and the type tfoo it's easier to use
+ * @note When the @ref id is "foo" and the type tfoo it's easier to use
  * REGISTER_WINDOW(foo).
  *
  * @param type                    Class type of the window to register.
- * @param widget_id               Id of the window, multiple dialogs can use
+ * @param id                      Id of the window, multiple dialogs can use
  *                                the same window so the id doesn't need to be
  *                                unique.
  */
