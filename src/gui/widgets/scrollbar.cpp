@@ -47,7 +47,6 @@ tscrollbar_::tscrollbar_()
 	, mouse_(0, 0)
 	, positioner_offset_(0)
 	, positioner_length_(0)
-	, callback_positioner_move_(0)
 {
 	connect_signal<event::MOUSE_ENTER>(boost::bind(
 				&tscrollbar_::signal_handler_mouse_enter, this, _2, _3, _4));
@@ -270,10 +269,6 @@ void tscrollbar_::move_positioner(const int distance)
 
 		child_callback_positioner_moved();
 
-		if(callback_positioner_move_) {
-			callback_positioner_move_(this);
-		}
-
 		positioner_moved_notifier_.notify();
 	}
 #if 0
@@ -390,14 +385,10 @@ void tscrollbar_::signal_handler_left_button_down(
 
 	if(bar == -1) {
 		scroll(HALF_JUMP_BACKWARDS);
-		if(callback_positioner_move_) {
-			callback_positioner_move_(this);
-		}
+		positioner_moved_notifier_.notify();
 	} else if(bar == 1) {
 		scroll(HALF_JUMP_FORWARD);
-		if(callback_positioner_move_) {
-			callback_positioner_move_(this);
-		}
+		positioner_moved_notifier_.notify();
 	} else {
 		assert(bar == 0);
 	}

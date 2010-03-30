@@ -125,9 +125,6 @@ public:
 	void set_step_size(const unsigned step_size)
 		{ step_size_ = step_size; recalculate(); }
 
-	void set_callback_positioner_move(void (*callback) (twidget*))
-		{ callback_positioner_move_ = callback; }
-
 	void connect_positioner_moved_notifiee(
 			  tnotifiee<tpositioner_moved_notifier::tfunctor>& notifiee
 			, tpositioner_moved_notifier::tfunctor functor)
@@ -224,9 +221,6 @@ private:
 
 	/** The current length of the positioner. */
 	unsigned positioner_length_;
-
-	/** This callback is used when the positioner is moved by the user. */
-	void (*callback_positioner_move_) (twidget*);
 
 	/***** ***** ***** ***** Pure virtual functions ***** ***** ***** *****/
 
