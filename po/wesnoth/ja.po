@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-03-26 15:39+0100\n"
-"PO-Revision-Date: 2010-02-01 21:07+0900\n"
+"PO-Revision-Date: 2010-03-30 22:14+0900\n"
 "Last-Translator: \n"
 "Language-Team: Japanese Translation Team\n"
 "MIME-Version: 1.0\n"
@@ -5137,9 +5137,8 @@ msgstr "老化"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:222
-#, fuzzy
 msgid "female^aged"
-msgstr "凡愚"
+msgstr "老化"
 
 #. [color_range]: id=red
 #. [color_range]: id=1
@@ -8461,9 +8460,8 @@ msgid "do not translate the 'all'^[all|<command>]"
 msgstr ""
 
 #: src/menu_events.cpp:1998
-#, fuzzy
 msgid "Error:"
-msgstr "エラー: "
+msgstr "エラー:"
 
 #: src/menu_events.cpp:2004
 msgid "Missing argument $arg_id"
@@ -8476,7 +8474,6 @@ msgid ""
 msgstr ""
 
 #: src/menu_events.cpp:2052 src/menu_events.cpp:2053 src/menu_events.cpp:2076
-#, fuzzy
 msgid "help"
 msgstr "ヘルプ"
 
@@ -8558,9 +8555,8 @@ msgid "Send a message to the server admins currently online"
 msgstr "現在オンラインのサーバー管理者にメッセージを送信"
 
 #: src/menu_events.cpp:2255
-#, fuzzy
 msgid "<message>"
-msgstr "メッセージ:"
+msgstr "<メッセージ>"
 
 #: src/menu_events.cpp:2255
 msgid "Send an emotion or personal action in chat."
@@ -8675,14 +8671,12 @@ msgid "(D) - debug only, (N) - network only, (A) - auth only"
 msgstr ""
 
 #: src/menu_events.cpp:2403
-#, fuzzy
 msgid "(debug command)"
-msgstr "デバッグモードコマンド"
+msgstr "（デバッグコマンド）"
 
 #: src/menu_events.cpp:2404
-#, fuzzy
 msgid " (network only)"
-msgstr "ネットプレイヤー"
+msgstr "（ネットワークのみ）"
 
 #: src/menu_events.cpp:2405
 msgid " (auth only)"
@@ -8701,9 +8695,8 @@ msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr ""
 
 #: src/menu_events.cpp:2434
-#, fuzzy
 msgid "<side> <nick>"
-msgstr "使い方: control <陣営> <ニックネーム>"
+msgstr "<陣営> <ニックネーム>"
 
 #: src/menu_events.cpp:2434
 msgid "Assign control of a side to a different player or observer."
@@ -8857,11 +8850,11 @@ msgstr "範囲切り替え: 「 $domain 」を以下のレベルに: 「 $level 
 
 #: src/menu_events.cpp:2635
 msgid "whisper to $receiver"
-msgstr ""
+msgstr "$receiver にささやく"
 
 #: src/menu_events.cpp:2642
 msgid "whisper: $sender"
-msgstr ""
+msgstr "ささやき: $sender"
 
 #: src/menu_events.cpp:2738 src/menu_events.cpp:2757
 #: src/multiplayer_connect.cpp:699
@@ -8869,46 +8862,38 @@ msgid "(empty)"
 msgstr "（空）"
 
 #: src/menu_events.cpp:2738 src/menu_events.cpp:2744 src/menu_events.cpp:2794
-#, fuzzy
 msgid "ignores list"
-msgstr "無視リスト上"
+msgstr "無視リスト"
 
 #: src/menu_events.cpp:2744
-#, fuzzy
 msgid "Added to ignore list: $nick"
-msgstr "無視リストに追加されました: "
+msgstr "無視リストに追加されました: $nick"
 
 #: src/menu_events.cpp:2747 src/menu_events.cpp:2766
-#, fuzzy
 msgid "Invalid username: $nick"
-msgstr "無効なユーザー名: "
+msgstr "無効なユーザー名: $nick"
 
 #: src/menu_events.cpp:2757 src/menu_events.cpp:2764 src/menu_events.cpp:2790
-#, fuzzy
 msgid "friends list"
-msgstr "友人リスト上"
+msgstr "友人リスト"
 
 #: src/menu_events.cpp:2764
-#, fuzzy
 msgid "Added to friends list: $nick"
-msgstr "友人リストに追加されました: "
+msgstr "友人リストに追加されました: $nick"
 
 #: src/menu_events.cpp:2780
-#, fuzzy
 msgid "Removed from list: $nick"
-msgstr "リストから削除されました: "
+msgstr "リストから削除されました: $nick"
 
 #: src/menu_events.cpp:2780 src/menu_events.cpp:2798
-#, fuzzy
 msgid "friends and ignores list"
-msgstr "無視リスト上"
+msgstr "友人/無視リスト"
 
 #: src/menu_events.cpp:2798
 msgid "There are no players on your friends or ignore list."
 msgstr "友人リスト、無視リストにプレイヤーはいません。"
 
 #: src/menu_events.cpp:2803
-#, fuzzy
 msgid "version"
 msgstr "バージョン"
 
@@ -8934,9 +8919,8 @@ msgid "setting $var to $value"
 msgstr ""
 
 #: src/menu_events.cpp:2869
-#, fuzzy
 msgid "requesting information for user $nick"
-msgstr "ニックネームについての情報を要求します。"
+msgstr "ユーザー $nick についての情報を要求します。"
 
 #: src/menu_events.cpp:2981
 msgid "Couldn't find label or unit containing the string '$search'."
@@ -8986,14 +8970,12 @@ msgid ""
 msgstr ""
 
 #: src/menu_events.cpp:3319
-#, fuzzy
 msgid "Invalid unit type"
-msgstr "無効なタグ名"
+msgstr "無効なユニットタイプ"
 
 #: src/menu_events.cpp:3332
-#, fuzzy
 msgid "Invalid location"
-msgstr "無効な色"
+msgstr "無効な場所"
 
 #: src/menu_events.cpp:3368
 msgid "ai"
@@ -9339,9 +9321,8 @@ msgid "Invalid era selected"
 msgstr "無効な時代が選択されました"
 
 #: src/multiplayer_create.cpp:333
-#, fuzzy
 msgid "The map is invalid."
-msgstr "ゲーム終了です。"
+msgstr "このマップは無効です。"
 
 #: src/multiplayer_create.cpp:335
 msgid "You must enter a name."
