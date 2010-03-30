@@ -731,8 +731,9 @@ variant formula_ai::get_value(const std::string& key) const
 		unit_types.build_all(unit_type::FULL);
 
 		const std::set<std::string>& recruits = current_team().recruits();
-		if(recruits.size()==0)
+		if(recruits.empty()) {
 			return variant( &vars );
+		}
 		for(std::set<std::string>::const_iterator i = recruits.begin(); i != recruits.end(); ++i)
 		{
 			const unit_type *ut = unit_types.find(*i);
@@ -756,8 +757,9 @@ variant formula_ai::get_value(const std::string& key) const
 			tmp.push_back( v );
 
 			const std::set<std::string>& recruits = get_info().teams[i].recruits();
-			if(recruits.size()==0)
+			if(recruits.empty()) {
 				continue;
+			}
 			for(std::set<std::string>::const_iterator str_it = recruits.begin(); str_it != recruits.end(); ++str_it)
 			{
 				const unit_type *ut = unit_types.find(*str_it);
