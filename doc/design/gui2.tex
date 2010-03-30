@@ -383,6 +383,7 @@ available space. The documentation of that algorithm is written in
 doxygen\footnote{\url{http://devdocs.wesnoth.org/layout_algorihm.html}}.
 
 \section{Event handling and dispatching}
+\label{event_handling}
 
 The event handling translates the ``raw'' SDL events to an event structure
 specific to gui2, effectively decoupling the interface. This also allows adding
@@ -498,6 +499,45 @@ depth in the widget tree the iterator is\footnote{This might depend on the
 travelling policy, but it won't get cheap}. So in the same spirit that the
 standard library doesn't add operator[] for std::list I omitted the postfix
 increment operator.
+
+
+\section{Callbacks}
+
+\S~\ref{event_handling} describes the generic event handling for the widgets but
+in some cases a widget wants to notify other widgets of a state change. Parts of
+gui2 use simple C-style callbacks for that purpose, but using boost::function
+makes better replacement. Therefore the code was analysed closer and another
+problem should be rectified; The callback causes a binding between two objects,
+but they are not notified of the deletion of the object leaving a hole for
+calling a destroyed object.
+
+In order to fix the problem two classes are defined:
+
+\begin{description}
+\item[tnotifier] The class sending the wanted notification.
+\item[tnotifiee] The class to manage the lifetime of the connection.
+\end{description}
+
+The tnotifiee is a small class that holds a pointer to the receiver its
+connected to, upon destruction it uses this pointer to deregister itself by the
+receiver. There after the callback function will no longer be called.
+
+The class should be used as member of a class so it can manage the lifetime of
+the connection with the tnotifier.
+
+\paragraph{}
+
+The tnotifier is the main class, when a callback is registered it stores the
+callbacks in an internal list and updates the pointer in the tnotifiee to
+itself.
+
+Upon destruction it clears the pointer in all tnotifiees that point to use, that
+way upon destruction of the tnotifiee it won't try to deregister itself with
+this destroyed object.
+
+Subclasses of the tnotifier should add an notification function so the notifier
+can call all callbacks in the list. The notifier should take care of this
+calling.
 
 \end{document}
 
