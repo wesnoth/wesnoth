@@ -39,19 +39,19 @@
 
 static void exception_translator_config(const config::error& e)
 {
-	throw boost::execution_exception(boost::execution_exception::cpp_exception_error, "config:error: " + e.message);
+	throw "config:error: " + e.message;
 }
 
 static void exception_translator_network(const network::error& e)
 {
-	throw boost::execution_exception(boost::execution_exception::cpp_exception_error, "network::error: " + e.message);
+	throw "network::error: " + e.message;
 }
 
 
 
 static void exception_translator_game(const game::error& e)
 {
-	throw boost::execution_exception(boost::execution_exception::cpp_exception_error, "game::error: " + e.message);
+	throw "game::error: " + e.message;
 }
 
 struct wesnoth_global_fixture {
