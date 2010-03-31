@@ -42,7 +42,7 @@ public class ScenarioNewWizardPage extends WizardPage {
 	 */
 	public ScenarioNewWizardPage(ISelection selection) {
 		super("wizardPage");
-		setTitle("Multi-page Editor File");
+		setTitle("Scenario File");
 		setDescription("This wizard creates a new file with *.cfg extension that can be opened by a multi-page editor.");
 		this.selection = selection;
 	}

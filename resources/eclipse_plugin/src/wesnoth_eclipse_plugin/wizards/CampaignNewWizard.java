@@ -29,6 +29,7 @@ public class CampaignNewWizard extends Wizard implements INewWizard {
 	//	System.exit(0);
 		setWindowTitle("Create a new Campaign");
         setNeedsProgressMonitor(true);
+        
       //  fPluginData = new PluginFieldData();
 	}
 
