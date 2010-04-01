@@ -116,6 +116,7 @@ wesnoth_source = \
 	gui/auxiliary/widget_definition/minimap.cpp \
 	gui/auxiliary/widget_definition/multi_page.cpp \
 	gui/auxiliary/widget_definition/panel.cpp \
+	gui/auxiliary/widget_definition/progress_bar.cpp \
 	gui/auxiliary/widget_definition/repeating_button.cpp \
 	gui/auxiliary/widget_definition/scroll_label.cpp \
 	gui/auxiliary/widget_definition/scrollbar_panel.cpp \
@@ -149,6 +150,7 @@ wesnoth_source = \
 	gui/auxiliary/window_builder/toggle_button.cpp \
 	gui/auxiliary/window_builder/vertical_scrollbar.cpp \
 	gui/auxiliary/window_builder/panel.cpp \
+	gui/auxiliary/window_builder/progress_bar.cpp \
 	gui/auxiliary/window_builder/password_box.cpp \
 	gui/auxiliary/window_builder/toggle_panel.cpp \
 	gui/auxiliary/window_builder/tree_view.cpp \
@@ -190,6 +192,7 @@ wesnoth_source = \
 	gui/widgets/minimap.cpp \
 	gui/widgets/multi_page.cpp \
 	gui/widgets/panel.cpp \
+	gui/widgets/progress_bar.cpp \
 	gui/widgets/password_box.cpp \
 	gui/widgets/repeating_button.cpp \
 	gui/widgets/settings.cpp \
