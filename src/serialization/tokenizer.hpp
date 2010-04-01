@@ -63,7 +63,7 @@ class tokenizer
 {
 	public:
 		tokenizer(std::istream& in);
-		~tokenizer() {}
+		~tokenizer();
 
 		const token& next_token()
 		{

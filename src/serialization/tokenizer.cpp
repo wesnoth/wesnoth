@@ -29,7 +29,14 @@ tokenizer::tokenizer(std::istream& in) :
 	token_(),
 	in_(in)
 {
+	in_.exceptions(std::ios_base::badbit);
 	next_char_fast();
+}
+
+tokenizer::~tokenizer()
+{
+	in_.clear(std::ios_base::goodbit);
+	in_.exceptions(std::ios_base::goodbit);
 }
 
 #ifdef DEBUG
