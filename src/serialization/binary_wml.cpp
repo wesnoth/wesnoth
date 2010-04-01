@@ -22,7 +22,6 @@
 
 #include "config.hpp"
 #include "foreach.hpp"
-#include "loadscreen.hpp"
 #include "log.hpp"
 #include "serialization/binary_wml.hpp"
 
