@@ -906,11 +906,11 @@ bool preprocessor_data::get_chunk()
 				}
 				else
 				{
-					if (!slowpath_)
-						put("dummy=" + symbol);
-					else
-						strings_.back() += "dummy=" + symbol;
-					ERR_CF << "File not found '" << symbol << "'\n";
+					std::ostringstream error;
+					error << "macro/file '" << symbol << "' is missing";
+					std::ostringstream location;
+					location << linenum_ << ' ' << target_.location_;
+					target_.error(error.str(), location.str());
 				}
 			} else {
 				ERR_CF << "Too much nested preprocessing inclusions at "
