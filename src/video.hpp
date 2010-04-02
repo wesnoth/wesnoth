@@ -47,7 +47,7 @@ class CVideo : private boost::noncopyable {
 	~CVideo();
 
 
-	int modePossible( int x, int y, int bits_per_pixel, int flags );
+	int modePossible( int x, int y, int bits_per_pixel, int flags ,bool current_screen_optimal=false);
 	int setMode( int x, int y, int bits_per_pixel, int flags );
 
 	//did the mode change, since the last call to the modeChanged() method?
