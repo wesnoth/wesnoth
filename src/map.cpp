@@ -191,8 +191,7 @@ void gamemap::read(const std::string& data)
 		throw incorrect_map_format_exception(msg.c_str());
 	}
 
-	/* The third parameter is required for MSVC++ 6.0 */
-	const std::string& map = std::string(data, header_offset + 2, std::string::npos);
+	const std::string& map = std::string(data, header_offset + 2);
 
 	try {
 		tiles_ = t_translation::read_game_map(map, starting_positions);
