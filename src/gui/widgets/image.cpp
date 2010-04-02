@@ -18,6 +18,7 @@
 
 #include "../../image.hpp"
 #include "gui/auxiliary/widget_definition/image.hpp"
+#include "gui/auxiliary/window_builder/image.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/widgets/settings.hpp"
 

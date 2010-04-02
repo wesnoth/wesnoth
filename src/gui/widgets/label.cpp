@@ -17,6 +17,7 @@
 #include "gui/widgets/label.hpp"
 
 #include "gui/auxiliary/widget_definition/label.hpp"
+#include "gui/auxiliary/window_builder/label.hpp"
 #include "gui/widgets/settings.hpp"
 
 #include <boost/bind.hpp>

@@ -19,6 +19,7 @@
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/timer.hpp"
 #include "gui/auxiliary/widget_definition/repeating_button.hpp"
+#include "gui/auxiliary/window_builder/repeating_button.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "sound.hpp"

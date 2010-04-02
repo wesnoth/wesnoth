@@ -20,6 +20,7 @@
 #include "formatter.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/widget_definition/slider.hpp"
+#include "gui/auxiliary/window_builder/slider.hpp"
 #include "gui/widgets/settings.hpp"
 #include "sound.hpp"
 

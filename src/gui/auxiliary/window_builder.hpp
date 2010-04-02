@@ -18,6 +18,8 @@
 #include "gui/auxiliary/formula.hpp"
 #include "reference_counted_object.hpp"
 
+#include <boost/function.hpp>
+
 #include <string>
 #include <vector>
 
@@ -31,6 +33,7 @@ class tgrid;
 class twindow;
 
 twindow* build(CVideo& video, const std::string& type);
+
 
 /** Contains the info needed to instantiate a widget. */
 struct tbuilder_widget : public reference_counted_object
@@ -48,6 +51,34 @@ public:
 
 typedef boost::intrusive_ptr<tbuilder_widget> tbuilder_widget_ptr;
 typedef boost::intrusive_ptr<const tbuilder_widget> const_tbuilder_widget_ptr;
+
+/**
+ * Registers a widget to be build.
+ *
+ * @warning This function runs before @ref main() so needs to be careful
+ * regarding the static initialization problem.
+ *
+ * @param id                      The id of the widget as used in WML.
+ * @param functor                 The functor to create the widget.
+ */
+void register_builder_widget(const std::string& id
+		, boost::function<tbuilder_widget_ptr(config)> functor);
+
+/**
+ * Helper to generate a widget from a WML widget instance.
+ *
+ * Mainly used as functor for @ref register_builder_widget.
+ *
+ * @param cfg                     The config with the information to
+ *                                instanciate the widget.
+ *
+ * @returns                       A generic widget builder pointer.
+ */
+template<class T>
+tbuilder_widget_ptr build_widget(const config& cfg)
+{
+	return new T(cfg);
+}
 
 struct tbuilder_grid : public tbuilder_widget
 {

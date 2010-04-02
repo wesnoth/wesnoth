@@ -20,36 +20,31 @@
 #include "foreach.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/log.hpp"
-#include "gui/auxiliary/window_builder/button.hpp"
 #include "gui/auxiliary/window_builder/helper.hpp"
-#include "gui/auxiliary/window_builder/horizontal_listbox.hpp"
-#include "gui/auxiliary/window_builder/horizontal_scrollbar.hpp"
-#include "gui/auxiliary/window_builder/image.hpp"
-#include "gui/auxiliary/window_builder/label.hpp"
-#include "gui/auxiliary/window_builder/listbox.hpp"
-#include "gui/auxiliary/window_builder/minimap.hpp"
-#include "gui/auxiliary/window_builder/multi_page.hpp"
-#include "gui/auxiliary/window_builder/repeating_button.hpp"
-#include "gui/auxiliary/window_builder/scroll_label.hpp"
+#if 1 // See the #if in create_builder_widget.
 #include "gui/auxiliary/window_builder/scrollbar_panel.hpp"
-#include "gui/auxiliary/window_builder/slider.hpp"
-#include "gui/auxiliary/window_builder/spacer.hpp"
+#include "gui/auxiliary/window_builder/horizontal_scrollbar.hpp"
+#include "gui/auxiliary/window_builder/repeating_button.hpp"
 #include "gui/auxiliary/window_builder/stacked_widget.hpp"
-#include "gui/auxiliary/window_builder/text_box.hpp"
-#include "gui/auxiliary/window_builder/toggle_button.hpp"
-#include "gui/auxiliary/window_builder/tree_view.hpp"
-#include "gui/auxiliary/window_builder/panel.hpp"
-#include "gui/auxiliary/window_builder/password_box.hpp"
-#include "gui/auxiliary/window_builder/progress_bar.hpp"
-#include "gui/auxiliary/window_builder/toggle_panel.hpp"
 #include "gui/auxiliary/window_builder/vertical_scrollbar.hpp"
+#endif
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "formula_string_utils.hpp"
 
+#include <boost/bind.hpp>
+
 namespace gui2 {
 
 namespace {
+
+static std::map<std::string, boost::function<tbuilder_widget_ptr(config)> >&
+builder_widget_lookup()
+{
+	static std::map<std::string, boost::function<tbuilder_widget_ptr(config)> >
+			result;
+	return result;
+}
 
 tbuilder_widget_ptr create_builder_widget(const config& cfg)
 {
@@ -62,39 +57,51 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 		assert(false);
 	}
 
-#define TRY(name) do { \
-	if (const config &c = cfg.child(#name)) \
-		return new tbuilder_##name(c); \
+
+	typedef
+			std::pair<
+				  std::string
+				, boost::function<tbuilder_widget_ptr(config)> >
+			thack;
+	foreach(const thack& item, builder_widget_lookup()) {
+		if(item.first == "window" || item.first == "tooltip") {
+			continue;
+		}
+		if(const config &c = cfg.child(item.first)) {
+			return item.second(c);
+		}
+	}
+
+	if(const config &c = cfg.child("grid")) {
+		return new tbuilder_grid(c);
+	}
+
+/*
+ * This is rather odd, when commented out the classes no longer seem to be in
+ * the executable, no real idea why, except maybe of an overzealous optimizer
+ * while linking. It seems that all these classes aren't explicitly
+ * instantiated but only implicitly. Also when looking at the symbols in
+ * libwesnoth-game.a the repeating button is there regardless of this #if but
+ * in the final binary only if the #if is enabled.
+ *
+ * If this code is executed, which it will cause an assertion failure.
+ */
+#if 1
+#define TRY(name)                                                          \
+	do {                                                                   \
+		if(const config &c = cfg.child(#name)) {                           \
+			tbuilder_widget_ptr p = new implementation::tbuilder_##name(c);\
+			assert(false);                                                 \
+		}                                                                  \
 	} while (0)
 
-	// The widgets builders are mostly in this namespace.
-	using namespace gui2::implementation;
-
-	TRY(button);
-	TRY(horizontal_listbox);
-	TRY(horizontal_scrollbar);
-	TRY(image);
-	TRY(label);
-	TRY(listbox);
-	TRY(minimap);
-	TRY(multi_page);
-	TRY(panel);
-	TRY(repeating_button);
-	TRY(scroll_label);
-	TRY(scrollbar_panel);
-	TRY(slider);
-	TRY(spacer);
 	TRY(stacked_widget);
-	TRY(text_box);
-	TRY(password_box);
-	TRY(progress_bar);
-	TRY(toggle_button);
-	TRY(toggle_panel);
-	TRY(tree_view);
+	TRY(scrollbar_panel);
+	TRY(horizontal_scrollbar);
+	TRY(repeating_button);
 	TRY(vertical_scrollbar);
-	TRY(grid);
-
 #undef TRY
+#endif
 
 	std::cerr << cfg;
 	ERROR_LOG(false);
@@ -170,6 +177,12 @@ twindow* build(CVideo& video, const std::string& type)
 	window->add_to_keyboard_chain(window);
 
 	return window;
+}
+
+void register_builder_widget(const std::string& id
+		, boost::function<tbuilder_widget_ptr(config)> functor)
+{
+	builder_widget_lookup().insert(std::make_pair(id, functor));
 }
 
 const std::string& twindow_builder::read(const config& cfg)

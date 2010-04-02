@@ -780,6 +780,10 @@ namespace {                                                                \
 						, _2                                               \
 						, _3                                               \
 						, key));                                           \
+                                                                           \
+				register_builder_widget(#id, boost::bind(                  \
+							  build_widget<implementation::tbuilder_##id>  \
+							, _1));                                        \
 			}                                                              \
 		};                                                                 \
                                                                            \

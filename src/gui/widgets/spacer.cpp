@@ -17,6 +17,7 @@
 #include "gui/widgets/spacer.hpp"
 
 #include "gui/auxiliary/widget_definition/spacer.hpp"
+#include "gui/auxiliary/window_builder/spacer.hpp"
 #include "gui/widgets/settings.hpp"
 
 #include <boost/bind.hpp>

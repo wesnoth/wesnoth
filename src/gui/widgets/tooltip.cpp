@@ -17,11 +17,30 @@
 #include "gui/widgets/tooltip.hpp"
 
 #include "gui/auxiliary/widget_definition/tooltip.hpp"
+#include "gui/auxiliary/window_builder/control.hpp"
 #include "gui/widgets/settings.hpp"
 
 #include <boost/bind.hpp>
 
 namespace gui2 {
+
+namespace implementation {
+
+/** @todo See whether this hack can be removed. */
+// Needed to fix a compiler error in REGISTER_WIDGET.
+class tbuilder_tooltip
+	: public tbuilder_control
+{
+public:
+	tbuilder_tooltip(const config& cfg)
+		: tbuilder_control(cfg)
+	{
+	}
+
+	twidget* build() const { return NULL; }
+};
+
+} // namespace implementation
 
 REGISTER_WIDGET(tooltip)
 

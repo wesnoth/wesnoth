@@ -18,6 +18,7 @@
 
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/widget_definition/panel.hpp"
+#include "gui/auxiliary/window_builder/panel.hpp"
 #include "gui/widgets/settings.hpp"
 
 #include <boost/bind.hpp>

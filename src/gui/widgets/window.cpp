@@ -29,6 +29,7 @@
 #include "gui/auxiliary/event/distributor.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/layout_exception.hpp"
+#include "gui/auxiliary/window_builder/control.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/settings.hpp"
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
@@ -50,6 +51,22 @@
 
 namespace gui2{
 
+namespace implementation {
+/** @todo See whether this hack can be removed. */
+// Needed to fix a compiler error in REGISTER_WIDGET.
+class tbuilder_window
+	: public tbuilder_control
+{
+public:
+	tbuilder_window(const config& cfg)
+		: tbuilder_control(cfg)
+	{
+	}
+
+	twidget* build() const { return NULL; }
+};
+
+} // namespace implementation
 REGISTER_WIDGET(window)
 
 unsigned twindow::sunset_ = 0;

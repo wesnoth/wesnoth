@@ -17,6 +17,7 @@
 #include "gui/widgets/multi_page.hpp"
 
 #include "gui/auxiliary/widget_definition/multi_page.hpp"
+#include "gui/auxiliary/window_builder/multi_page.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/generator.hpp"
 
