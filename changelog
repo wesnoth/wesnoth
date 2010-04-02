@@ -17,6 +17,8 @@ Version 1.9.0-svn:
    * Added "animated" logo to the --new-widgets title screen
    * Fixed the language is refreshed after the language is changed in the
      --new-widgets title screen
+   * Implemented bug #15623 (patch #1568): On change resolution screen,
+     widescreen resolutions are now marked as such
  * WML Engine:
    * Deprecated [set_variable]'s random key, use rand instead
    * Renamed [unit][status] healable to unhealable so it can default to 'no'
