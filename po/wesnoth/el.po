@@ -149,7 +149,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: el_gr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-26 15:39+0100\n"
+"POT-Creation-Date: 2010-04-02 12:40+0200\n"
 "PO-Revision-Date: 2008-01-21 18:54+0200\n"
 "Last-Translator: Konstantinos Egarhos <atixos@gmail.com>\n"
 "Language-Team:  <el@li.org>\n"
@@ -7654,12 +7654,12 @@ msgid "aliases:"
 msgstr ""
 
 #: src/menu_events.cpp:2200
-msgid "(A) - auth command"
+msgid "(A) - admin command"
 msgstr ""
 
-#: src/menu_events.cpp:2207
+#: src/menu_events.cpp:2207 src/menu_events.cpp:2405
 #, fuzzy
-msgid "(auth only)"
+msgid "(admin only)"
 msgstr "Μόνο στην ομάδα"
 
 #: src/menu_events.cpp:2227
@@ -7823,7 +7823,7 @@ msgid "Room query."
 msgstr ""
 
 #: src/menu_events.cpp:2397
-msgid "(D) - debug only, (N) - network only, (A) - auth only"
+msgid "(D) - debug only, (N) - network only, (A) - admin only"
 msgstr ""
 
 #: src/menu_events.cpp:2403
@@ -7833,12 +7833,8 @@ msgstr "Γενικές διαταγές"
 
 #: src/menu_events.cpp:2404
 #, fuzzy
-msgid " (network only)"
+msgid "(network only)"
 msgstr "Δικτυακός παίκτης"
-
-#: src/menu_events.cpp:2405
-msgid " (auth only)"
-msgstr ""
 
 #: src/menu_events.cpp:2429
 msgid "Refresh gui."
@@ -8765,7 +8761,7 @@ msgstr "Πρόσθετος Χρυσός:"
 msgid "Retained Gold: "
 msgstr ""
 
-#: src/playsingle_controller.cpp:250
+#: src/playsingle_controller.cpp:247
 msgid ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
@@ -8775,7 +8771,15 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/playsingle_controller.cpp:258
+#: src/playsingle_controller.cpp:255
+msgid ""
+"You will start the next scenario with the defined minimum starting gold."
+msgid_plural ""
+"You will start the next scenario with the defined minimum starting gold."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/playsingle_controller.cpp:263
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
@@ -8785,33 +8789,33 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/playsingle_controller.cpp:410
+#: src/playsingle_controller.cpp:415
 msgid "Game Over"
 msgstr "Τέλος Παιχνιδιού"
 
-#: src/playsingle_controller.cpp:411
+#: src/playsingle_controller.cpp:416
 msgid "The game is over."
 msgstr "Το παιχνίδι τελείωσε."
 
-#: src/playsingle_controller.cpp:496
+#: src/playsingle_controller.cpp:501
 msgid ""
 "A network disconnection has occurred, and the game\n"
 "cannot continue. Do you want to save the game?"
 msgstr ""
 
-#: src/playsingle_controller.cpp:659
+#: src/playsingle_controller.cpp:664
 msgid "It is now $name|'s turn"
 msgstr "Τέλος σεναρίου"
 
-#: src/playsingle_controller.cpp:877
+#: src/playsingle_controller.cpp:882
 msgid "Scenario Report"
 msgstr "Αναφορά σεναρίου"
 
-#: src/playsingle_controller.cpp:879
+#: src/playsingle_controller.cpp:884
 msgid "Victory"
 msgstr "Νίκη"
 
-#: src/playsingle_controller.cpp:880
+#: src/playsingle_controller.cpp:885
 msgid "You have emerged victorious!"
 msgstr "Αναδειχθήκατε νικητής!"
 

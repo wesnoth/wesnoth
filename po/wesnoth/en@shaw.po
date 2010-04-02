@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-26 15:39+0100\n"
+"POT-Creation-Date: 2010-04-02 12:40+0200\n"
 "PO-Revision-Date: 2009-10-11 21:15-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -8419,12 +8419,12 @@ msgid "aliases:"
 msgstr ""
 
 #: src/menu_events.cpp:2200
-msgid "(A) - auth command"
+msgid "(A) - admin command"
 msgstr ""
 
-#: src/menu_events.cpp:2207
+#: src/menu_events.cpp:2207 src/menu_events.cpp:2405
 #, fuzzy
-msgid "(auth only)"
+msgid "(admin only)"
 msgstr "𐑑𐑰𐑥 𐑴𐑯𐑤𐑦"
 
 #: src/menu_events.cpp:2227
@@ -8586,7 +8586,7 @@ msgid "Room query."
 msgstr "𐑮𐑵𐑥 𐑒𐑢𐑽𐑦."
 
 #: src/menu_events.cpp:2397
-msgid "(D) - debug only, (N) - network only, (A) - auth only"
+msgid "(D) - debug only, (N) - network only, (A) - admin only"
 msgstr ""
 
 #: src/menu_events.cpp:2403
@@ -8596,12 +8596,8 @@ msgstr "𐑛𐑰𐑚𐑳𐑜 𐑥𐑴𐑛 𐑒𐑩𐑥𐑭𐑯𐑛𐑟"
 
 #: src/menu_events.cpp:2404
 #, fuzzy
-msgid " (network only)"
+msgid "(network only)"
 msgstr "𐑯𐑧𐑑𐑢𐑻𐑒 𐑐𐑤𐑱𐑻"
-
-#: src/menu_events.cpp:2405
-msgid " (auth only)"
-msgstr ""
 
 #: src/menu_events.cpp:2429
 msgid "Refresh gui."
@@ -9511,7 +9507,7 @@ msgstr "𐑚𐑴𐑯𐑩𐑕 𐑜𐑴𐑤𐑛: "
 msgid "Retained Gold: "
 msgstr "𐑮𐑦𐑑𐑱𐑯𐑛 𐑜𐑴𐑤𐑛: "
 
-#: src/playsingle_controller.cpp:250
+#: src/playsingle_controller.cpp:247
 msgid ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
@@ -9523,7 +9519,18 @@ msgstr[0] ""
 msgstr[1] ""
 "𐑿 𐑢𐑦𐑤 𐑕𐑑𐑸𐑑 𐑞 𐑯𐑧𐑒𐑕𐑑 𐑕𐑦𐑯𐑺𐑰𐑴 𐑢𐑦𐑞 $gold 𐑪𐑯 𐑑𐑪𐑐 𐑝 𐑞 𐑛𐑦𐑓𐑲𐑯𐑛 𐑥𐑦𐑯𐑩𐑥𐑩𐑥 𐑕𐑑𐑸𐑑𐑦𐑙 𐑜𐑴𐑤𐑛."
 
-#: src/playsingle_controller.cpp:258
+#: src/playsingle_controller.cpp:255
+#, fuzzy
+msgid ""
+"You will start the next scenario with the defined minimum starting gold."
+msgid_plural ""
+"You will start the next scenario with the defined minimum starting gold."
+msgstr[0] ""
+"𐑿 𐑢𐑦𐑤 𐑕𐑑𐑸𐑑 𐑞 𐑯𐑧𐑒𐑕𐑑 𐑕𐑦𐑯𐑺𐑰𐑴 𐑢𐑦𐑞 $gold 𐑪𐑯 𐑑𐑪𐑐 𐑝 𐑞 𐑛𐑦𐑓𐑲𐑯𐑛 𐑥𐑦𐑯𐑩𐑥𐑩𐑥 𐑕𐑑𐑸𐑑𐑦𐑙 𐑜𐑴𐑤𐑛."
+msgstr[1] ""
+"𐑿 𐑢𐑦𐑤 𐑕𐑑𐑸𐑑 𐑞 𐑯𐑧𐑒𐑕𐑑 𐑕𐑦𐑯𐑺𐑰𐑴 𐑢𐑦𐑞 $gold 𐑪𐑯 𐑑𐑪𐑐 𐑝 𐑞 𐑛𐑦𐑓𐑲𐑯𐑛 𐑥𐑦𐑯𐑩𐑥𐑩𐑥 𐑕𐑑𐑸𐑑𐑦𐑙 𐑜𐑴𐑤𐑛."
+
+#: src/playsingle_controller.cpp:263
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
@@ -9537,15 +9544,15 @@ msgstr[1] ""
 "𐑿 𐑢𐑦𐑤 𐑕𐑑𐑸𐑑 𐑞 𐑯𐑧𐑒𐑕𐑑 𐑕𐑦𐑯𐑺𐑰𐑴 𐑢𐑦𐑞 $gold 𐑹 𐑦𐑑𐑕 𐑛𐑦𐑓𐑲𐑯𐑛 𐑥𐑦𐑯𐑩𐑥𐑩𐑥 𐑕𐑑𐑸𐑑𐑦𐑙 𐑜𐑴𐑤𐑛, 𐑢𐑦𐑗𐑧𐑝𐑼 "
 "𐑦𐑟 𐑣𐑲𐑼."
 
-#: src/playsingle_controller.cpp:410
+#: src/playsingle_controller.cpp:415
 msgid "Game Over"
 msgstr "𐑜𐑱𐑥 𐑴𐑝𐑼"
 
-#: src/playsingle_controller.cpp:411
+#: src/playsingle_controller.cpp:416
 msgid "The game is over."
 msgstr "𐑞 𐑜𐑱𐑥 𐑦𐑟 𐑴𐑝𐑼."
 
-#: src/playsingle_controller.cpp:496
+#: src/playsingle_controller.cpp:501
 msgid ""
 "A network disconnection has occurred, and the game\n"
 "cannot continue. Do you want to save the game?"
@@ -9553,19 +9560,19 @@ msgstr ""
 "𐑩 𐑯𐑧𐑑𐑢𐑻𐑒 𐑛𐑦𐑕𐑒𐑩𐑯𐑧𐑒𐑖𐑩𐑯 𐑣𐑨𐑟 𐑪𐑒𐑻𐑛, 𐑯 𐑞 𐑜𐑱𐑥\n"
 "𐑒𐑨𐑯𐑪𐑑 𐑒𐑩𐑯𐑑𐑦𐑯𐑿. 𐑛𐑵 𐑿 𐑢𐑪𐑯𐑑 𐑑 𐑕𐑱𐑝 𐑞 𐑜𐑱𐑥?"
 
-#: src/playsingle_controller.cpp:659
+#: src/playsingle_controller.cpp:664
 msgid "It is now $name|'s turn"
 msgstr "𐑦𐑑 𐑦𐑟 𐑯𐑬 $name|'s 𐑑𐑻𐑯"
 
-#: src/playsingle_controller.cpp:877
+#: src/playsingle_controller.cpp:882
 msgid "Scenario Report"
 msgstr "𐑕𐑦𐑯𐑺𐑰𐑴 𐑮𐑩𐑐𐑹𐑑"
 
-#: src/playsingle_controller.cpp:879
+#: src/playsingle_controller.cpp:884
 msgid "Victory"
 msgstr "𐑝𐑦𐑒𐑑𐑼𐑦"
 
-#: src/playsingle_controller.cpp:880
+#: src/playsingle_controller.cpp:885
 msgid "You have emerged victorious!"
 msgstr "𐑿 𐑣𐑨𐑝 𐑦𐑥𐑻𐑡𐑛 𐑝𐑦𐑒𐑑𐑹𐑦𐑩𐑕!"
 

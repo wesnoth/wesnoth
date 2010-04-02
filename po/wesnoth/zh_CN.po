@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-26 15:39+0100\n"
+"POT-Creation-Date: 2010-04-02 12:40+0200\n"
 "PO-Revision-Date: 2009-12-16 00:20-0600\n"
 "Last-Translator: Yuanle Song <sylecn@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -8116,12 +8116,12 @@ msgid "aliases:"
 msgstr ""
 
 #: src/menu_events.cpp:2200
-msgid "(A) - auth command"
+msgid "(A) - admin command"
 msgstr ""
 
-#: src/menu_events.cpp:2207
+#: src/menu_events.cpp:2207 src/menu_events.cpp:2405
 #, fuzzy
-msgid "(auth only)"
+msgid "(admin only)"
 msgstr "针对团队"
 
 #: src/menu_events.cpp:2227
@@ -8278,7 +8278,7 @@ msgid "Room query."
 msgstr "房间查询。"
 
 #: src/menu_events.cpp:2397
-msgid "(D) - debug only, (N) - network only, (A) - auth only"
+msgid "(D) - debug only, (N) - network only, (A) - admin only"
 msgstr ""
 
 #: src/menu_events.cpp:2403
@@ -8288,12 +8288,8 @@ msgstr "调试模式命令"
 
 #: src/menu_events.cpp:2404
 #, fuzzy
-msgid " (network only)"
+msgid "(network only)"
 msgstr "网络玩家"
-
-#: src/menu_events.cpp:2405
-msgid " (auth only)"
-msgstr ""
 
 #: src/menu_events.cpp:2429
 msgid "Refresh gui."
@@ -9200,7 +9196,7 @@ msgstr "奖励金钱: "
 msgid "Retained Gold: "
 msgstr "所剩金币： "
 
-#: src/playsingle_controller.cpp:250
+#: src/playsingle_controller.cpp:247
 msgid ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
@@ -9210,7 +9206,16 @@ msgid_plural ""
 msgstr[0] "您将以 $gold 金子开始下一幕。不会考虑游戏预定的最小起始资金。"
 msgstr[1] "您将以 $gold 金子开始下一幕。不会考虑游戏预定的最小起始资金。"
 
-#: src/playsingle_controller.cpp:258
+#: src/playsingle_controller.cpp:255
+#, fuzzy
+msgid ""
+"You will start the next scenario with the defined minimum starting gold."
+msgid_plural ""
+"You will start the next scenario with the defined minimum starting gold."
+msgstr[0] "您将以 $gold 金子开始下一幕。不会考虑游戏预定的最小起始资金。"
+msgstr[1] "您将以 $gold 金子开始下一幕。不会考虑游戏预定的最小起始资金。"
+
+#: src/playsingle_controller.cpp:263
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
@@ -9220,33 +9225,33 @@ msgid_plural ""
 msgstr[0] "您将以 $gold 金子和预定的最小起始资金中较高那个开始下一幕。"
 msgstr[1] "您将以 $gold 金子和预定的最小起始资金中较高那个开始下一幕。"
 
-#: src/playsingle_controller.cpp:410
+#: src/playsingle_controller.cpp:415
 msgid "Game Over"
 msgstr "游戏结束"
 
-#: src/playsingle_controller.cpp:411
+#: src/playsingle_controller.cpp:416
 msgid "The game is over."
 msgstr "本游戏结束。"
 
-#: src/playsingle_controller.cpp:496
+#: src/playsingle_controller.cpp:501
 msgid ""
 "A network disconnection has occurred, and the game\n"
 "cannot continue. Do you want to save the game?"
 msgstr "网络连接已断开，游戏无法继续进行。您想保存游戏吗？"
 
-#: src/playsingle_controller.cpp:659
+#: src/playsingle_controller.cpp:664
 msgid "It is now $name|'s turn"
 msgstr "轮到$name|了"
 
-#: src/playsingle_controller.cpp:877
+#: src/playsingle_controller.cpp:882
 msgid "Scenario Report"
 msgstr "场景报告"
 
-#: src/playsingle_controller.cpp:879
+#: src/playsingle_controller.cpp:884
 msgid "Victory"
 msgstr "胜利"
 
-#: src/playsingle_controller.cpp:880
+#: src/playsingle_controller.cpp:885
 msgid "You have emerged victorious!"
 msgstr "您取得了胜利！"
 

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-26 15:39+0100\n"
+"POT-Creation-Date: 2010-04-02 12:40+0200\n"
 "PO-Revision-Date: 2010-03-15 22:39+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -8620,12 +8620,12 @@ msgid "aliases:"
 msgstr ""
 
 #: src/menu_events.cpp:2200
-msgid "(A) - auth command"
+msgid "(A) - admin command"
 msgstr ""
 
-#: src/menu_events.cpp:2207
+#: src/menu_events.cpp:2207 src/menu_events.cpp:2405
 #, fuzzy
-msgid "(auth only)"
+msgid "(admin only)"
 msgstr "Samo timski"
 
 #: src/menu_events.cpp:2227
@@ -8787,7 +8787,7 @@ msgid "Room query."
 msgstr "Upit sobe."
 
 #: src/menu_events.cpp:2397
-msgid "(D) - debug only, (N) - network only, (A) - auth only"
+msgid "(D) - debug only, (N) - network only, (A) - admin only"
 msgstr ""
 
 #: src/menu_events.cpp:2403
@@ -8797,12 +8797,8 @@ msgstr "Ispravljačke naredbe"
 
 #: src/menu_events.cpp:2404
 #, fuzzy
-msgid " (network only)"
+msgid "(network only)"
 msgstr "mrežni igrač"
-
-#: src/menu_events.cpp:2405
-msgid " (auth only)"
-msgstr ""
 
 #: src/menu_events.cpp:2429
 msgid "Refresh gui."
@@ -9720,7 +9716,7 @@ msgstr "bonus zlata: "
 msgid "Retained Gold: "
 msgstr "zadržano zlato: "
 
-#: src/playsingle_controller.cpp:250
+#: src/playsingle_controller.cpp:247
 msgid ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
@@ -9740,7 +9736,26 @@ msgstr[3] ""
 "Počinjete naredni scenario sa jednim zlatnikom dodatim na zadati najmanji "
 "početni broj."
 
-#: src/playsingle_controller.cpp:258
+#: src/playsingle_controller.cpp:255
+#, fuzzy
+msgid ""
+"You will start the next scenario with the defined minimum starting gold."
+msgid_plural ""
+"You will start the next scenario with the defined minimum starting gold."
+msgstr[0] ""
+"Počinjete naredni scenario sa $gold zlatnikom dodatim na zadati najmanji "
+"početni broj."
+msgstr[1] ""
+"Počinjete naredni scenario sa $gold zlatnika dodata na zadati najmanji "
+"početni broj."
+msgstr[2] ""
+"Počinjete naredni scenario sa $gold zlatnika dodatih na zadati najmanji "
+"početni broj."
+msgstr[3] ""
+"Počinjete naredni scenario sa jednim zlatnikom dodatim na zadati najmanji "
+"početni broj."
+
+#: src/playsingle_controller.cpp:263
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
@@ -9760,15 +9775,15 @@ msgstr[3] ""
 "Počinjete naredni scenario sa većim od jednog zlatnika i najmanjeg zadatog "
 "početnog broja."
 
-#: src/playsingle_controller.cpp:410
+#: src/playsingle_controller.cpp:415
 msgid "Game Over"
 msgstr "Kraj igre"
 
-#: src/playsingle_controller.cpp:411
+#: src/playsingle_controller.cpp:416
 msgid "The game is over."
 msgstr "Igra je završena."
 
-#: src/playsingle_controller.cpp:496
+#: src/playsingle_controller.cpp:501
 msgid ""
 "A network disconnection has occurred, and the game\n"
 "cannot continue. Do you want to save the game?"
@@ -9776,19 +9791,19 @@ msgstr ""
 "Mrežna veza je prekinuta i igra se ne može nastaviti.\n"
 "Želite li da sačuvate poziciju?"
 
-#: src/playsingle_controller.cpp:659
+#: src/playsingle_controller.cpp:664
 msgid "It is now $name|'s turn"
 msgstr "Na potezu je $name"
 
-#: src/playsingle_controller.cpp:877
+#: src/playsingle_controller.cpp:882
 msgid "Scenario Report"
 msgstr "Izveštaj scenarija"
 
-#: src/playsingle_controller.cpp:879
+#: src/playsingle_controller.cpp:884
 msgid "Victory"
 msgstr "Pobeda"
 
-#: src/playsingle_controller.cpp:880
+#: src/playsingle_controller.cpp:885
 msgid "You have emerged victorious!"
 msgstr "Pobedili ste!"
 

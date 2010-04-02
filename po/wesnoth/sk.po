@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-26 15:39+0100\n"
+"POT-Creation-Date: 2010-04-02 12:40+0200\n"
 "PO-Revision-Date: 2010-03-27 23:51+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
@@ -8578,11 +8578,13 @@ msgid "aliases:"
 msgstr "aliasy:"
 
 #: src/menu_events.cpp:2200
-msgid "(A) - auth command"
+#, fuzzy
+msgid "(A) - admin command"
 msgstr "(A) - autentifikačný príkaz"
 
-#: src/menu_events.cpp:2207
-msgid "(auth only)"
+#: src/menu_events.cpp:2207 src/menu_events.cpp:2405
+#, fuzzy
+msgid "(admin only)"
 msgstr "(len pri autentifikácii)"
 
 #: src/menu_events.cpp:2227
@@ -8747,7 +8749,8 @@ msgid "Room query."
 msgstr "Dotaz v miestnosti."
 
 #: src/menu_events.cpp:2397
-msgid "(D) - debug only, (N) - network only, (A) - auth only"
+#, fuzzy
+msgid "(D) - debug only, (N) - network only, (A) - admin only"
 msgstr ""
 "(D) - len pre ladenie, (N) - len na sieti, (A) - len pri autentifikácii"
 
@@ -8756,12 +8759,9 @@ msgid "(debug command)"
 msgstr "(príkaz ladenia)"
 
 #: src/menu_events.cpp:2404
-msgid " (network only)"
+#, fuzzy
+msgid "(network only)"
 msgstr " (len na sieti)"
-
-#: src/menu_events.cpp:2405
-msgid " (auth only)"
-msgstr " (len pri autentifikácii)"
 
 #: src/menu_events.cpp:2429
 msgid "Refresh gui."
@@ -9664,7 +9664,7 @@ msgstr "Bonusové zlato: "
 msgid "Retained Gold: "
 msgstr "Ušetrené zlato: "
 
-#: src/playsingle_controller.cpp:250
+#: src/playsingle_controller.cpp:247
 msgid ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
@@ -9681,7 +9681,23 @@ msgstr[2] ""
 "Ďalšiu scénu začneš s $gold zlatkami navyše oproti minimálnemu počiatočnému "
 "zlatu."
 
-#: src/playsingle_controller.cpp:258
+#: src/playsingle_controller.cpp:255
+#, fuzzy
+msgid ""
+"You will start the next scenario with the defined minimum starting gold."
+msgid_plural ""
+"You will start the next scenario with the defined minimum starting gold."
+msgstr[0] ""
+"Ďalšiu scénu začneš s $gold zlatkami navyše oproti minimálnemu počiatočnému "
+"zlatu."
+msgstr[1] ""
+"Ďalšiu scénu začneš s $gold zlatkou navyše oproti minimálnemu počiatočnému "
+"zlatu."
+msgstr[2] ""
+"Ďalšiu scénu začneš s $gold zlatkami navyše oproti minimálnemu počiatočnému "
+"zlatu."
+
+#: src/playsingle_controller.cpp:263
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
@@ -9698,15 +9714,15 @@ msgstr[2] ""
 "Ďalšiu scénu začneš s $gold zlatkami alebo s minimálnym začiatočným zlatom, "
 "podľa toho ktoré je vyššie."
 
-#: src/playsingle_controller.cpp:410
+#: src/playsingle_controller.cpp:415
 msgid "Game Over"
 msgstr "Koniec hry"
 
-#: src/playsingle_controller.cpp:411
+#: src/playsingle_controller.cpp:416
 msgid "The game is over."
 msgstr "Hra skončila."
 
-#: src/playsingle_controller.cpp:496
+#: src/playsingle_controller.cpp:501
 msgid ""
 "A network disconnection has occurred, and the game\n"
 "cannot continue. Do you want to save the game?"
@@ -9714,19 +9730,19 @@ msgstr ""
 "Prerušilo sa sieťové spojenie a hra\n"
 "nemôže pokračovať. Chceš ju uložiť?"
 
-#: src/playsingle_controller.cpp:659
+#: src/playsingle_controller.cpp:664
 msgid "It is now $name|'s turn"
 msgstr "Na ťahu je $name"
 
-#: src/playsingle_controller.cpp:877
+#: src/playsingle_controller.cpp:882
 msgid "Scenario Report"
 msgstr "Správa o scéne"
 
-#: src/playsingle_controller.cpp:879
+#: src/playsingle_controller.cpp:884
 msgid "Victory"
 msgstr "Víťazstvo"
 
-#: src/playsingle_controller.cpp:880
+#: src/playsingle_controller.cpp:885
 msgid "You have emerged victorious!"
 msgstr "Zvíťazil si!"
 
@@ -10175,6 +10191,9 @@ msgstr "Pomôž nám urobiť Wesnoth lepším pre teba!"
 #: src/upload_log.cpp:375
 msgid "Enable summary uploads"
 msgstr "Umožni posielanie štatistík"
+
+#~ msgid " (auth only)"
+#~ msgstr " (len pri autentifikácii)"
 
 #~ msgid "Unknown unit type '$type|'"
 #~ msgstr "Neznámy typ jednotky '$type|'"

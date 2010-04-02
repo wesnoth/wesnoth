@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.1.1\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-26 15:39+0100\n"
+"POT-Creation-Date: 2010-04-02 12:40+0200\n"
 "PO-Revision-Date: 2009-04-05 10:50+0100\n"
 "Last-Translator: Gaute Storli Nielsen <gauteamus(at)gmail(dot)com>\n"
 "Language-Team: None\n"
@@ -8293,12 +8293,12 @@ msgid "aliases:"
 msgstr ""
 
 #: src/menu_events.cpp:2200
-msgid "(A) - auth command"
+msgid "(A) - admin command"
 msgstr ""
 
-#: src/menu_events.cpp:2207
+#: src/menu_events.cpp:2207 src/menu_events.cpp:2405
 #, fuzzy
-msgid "(auth only)"
+msgid "(admin only)"
 msgstr "Turkis"
 
 #: src/menu_events.cpp:2227
@@ -8476,7 +8476,7 @@ msgid "Room query."
 msgstr ""
 
 #: src/menu_events.cpp:2397
-msgid "(D) - debug only, (N) - network only, (A) - auth only"
+msgid "(D) - debug only, (N) - network only, (A) - admin only"
 msgstr ""
 
 #: src/menu_events.cpp:2403
@@ -8486,12 +8486,8 @@ msgstr "Generelle kommandoer"
 
 #: src/menu_events.cpp:2404
 #, fuzzy
-msgid " (network only)"
+msgid "(network only)"
 msgstr "Nettverksspiller"
-
-#: src/menu_events.cpp:2405
-msgid " (auth only)"
-msgstr ""
 
 #: src/menu_events.cpp:2429
 msgid "Refresh gui."
@@ -9438,7 +9434,7 @@ msgstr "Bonus: "
 msgid "Retained Gold: "
 msgstr "Beholdte gullstykker: "
 
-#: src/playsingle_controller.cpp:250
+#: src/playsingle_controller.cpp:247
 #, fuzzy
 msgid ""
 "You will start the next scenario with $gold on top of the defined minimum "
@@ -9449,7 +9445,16 @@ msgid_plural ""
 msgstr[0] "80% av gullet blir med videre til neste scenario"
 msgstr[1] "80% av gullet blir med videre til neste scenario"
 
-#: src/playsingle_controller.cpp:258
+#: src/playsingle_controller.cpp:255
+#, fuzzy
+msgid ""
+"You will start the next scenario with the defined minimum starting gold."
+msgid_plural ""
+"You will start the next scenario with the defined minimum starting gold."
+msgstr[0] "80% av gullet blir med videre til neste scenario"
+msgstr[1] "80% av gullet blir med videre til neste scenario"
+
+#: src/playsingle_controller.cpp:263
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
@@ -9459,15 +9464,15 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/playsingle_controller.cpp:410
+#: src/playsingle_controller.cpp:415
 msgid "Game Over"
 msgstr "Spillet er slutt"
 
-#: src/playsingle_controller.cpp:411
+#: src/playsingle_controller.cpp:416
 msgid "The game is over."
 msgstr "Spillet er slutt."
 
-#: src/playsingle_controller.cpp:496
+#: src/playsingle_controller.cpp:501
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game\n"
@@ -9476,20 +9481,20 @@ msgstr ""
 "Det har skjedd en frakobling fra nettverket, og spillet kan ikke fortsette. "
 "Vil du lagre spillet?"
 
-#: src/playsingle_controller.cpp:659
+#: src/playsingle_controller.cpp:664
 #, fuzzy
 msgid "It is now $name|'s turn"
 msgstr "Det er din tur"
 
-#: src/playsingle_controller.cpp:877
+#: src/playsingle_controller.cpp:882
 msgid "Scenario Report"
 msgstr "Scenariorapport"
 
-#: src/playsingle_controller.cpp:879
+#: src/playsingle_controller.cpp:884
 msgid "Victory"
 msgstr "Seier"
 
-#: src/playsingle_controller.cpp:880
+#: src/playsingle_controller.cpp:885
 msgid "You have emerged victorious!"
 msgstr "Du har seiret!"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.9\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-26 15:39+0100\n"
+"POT-Creation-Date: 2010-04-02 12:40+0200\n"
 "PO-Revision-Date: 2010-03-15 23:42+0300\n"
 "Last-Translator: Reinis Danne <rei4dan@gmail.com>\n"
 "Language-Team: none\n"
@@ -8641,12 +8641,12 @@ msgid "aliases:"
 msgstr ""
 
 #: src/menu_events.cpp:2200
-msgid "(A) - auth command"
+msgid "(A) - admin command"
 msgstr ""
 
-#: src/menu_events.cpp:2207
+#: src/menu_events.cpp:2207 src/menu_events.cpp:2405
 #, fuzzy
-msgid "(auth only)"
+msgid "(admin only)"
 msgstr "Tikai komanda"
 
 #: src/menu_events.cpp:2227
@@ -8816,7 +8816,7 @@ msgid "Room query."
 msgstr "Istabas pieprasījums."
 
 #: src/menu_events.cpp:2397
-msgid "(D) - debug only, (N) - network only, (A) - auth only"
+msgid "(D) - debug only, (N) - network only, (A) - admin only"
 msgstr ""
 
 #: src/menu_events.cpp:2403
@@ -8826,12 +8826,8 @@ msgstr "Atkļūdošanas darbības"
 
 #: src/menu_events.cpp:2404
 #, fuzzy
-msgid " (network only)"
+msgid "(network only)"
 msgstr "Tīkla spēlētājs"
-
-#: src/menu_events.cpp:2405
-msgid " (auth only)"
-msgstr ""
 
 #: src/menu_events.cpp:2429
 msgid "Refresh gui."
@@ -9751,7 +9747,7 @@ msgstr "Prēmijas zelts: "
 msgid "Retained Gold: "
 msgstr "Saglabātais zelts: "
 
-#: src/playsingle_controller.cpp:250
+#: src/playsingle_controller.cpp:247
 msgid ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
@@ -9768,7 +9764,23 @@ msgstr[2] ""
 "Nākamo scenāriju jūs sāksiet ar $gold zelta gabaliem papildus noteiktajam "
 "minimālajam sākuma zeltam."
 
-#: src/playsingle_controller.cpp:258
+#: src/playsingle_controller.cpp:255
+#, fuzzy
+msgid ""
+"You will start the next scenario with the defined minimum starting gold."
+msgid_plural ""
+"You will start the next scenario with the defined minimum starting gold."
+msgstr[0] ""
+"Nākamo scenāriju jūs sāksiet ar $gold zelta gabalu papildus noteiktajam "
+"minimālajam sākuma zeltam."
+msgstr[1] ""
+"Nākamo scenāriju jūs sāksiet ar $gold zelta gabaliem papildus noteiktajam "
+"minimālajam sākuma zeltam."
+msgstr[2] ""
+"Nākamo scenāriju jūs sāksiet ar $gold zelta gabaliem papildus noteiktajam "
+"minimālajam sākuma zeltam."
+
+#: src/playsingle_controller.cpp:263
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
@@ -9785,15 +9797,15 @@ msgstr[2] ""
 "Jūs sāksiet nākamo scenāriju ar $gold zelta gabaliem vai ar noteikto "
 "minimālo zelta daudzumu, atkarībā no tā, kurš ir lielāks."
 
-#: src/playsingle_controller.cpp:410
+#: src/playsingle_controller.cpp:415
 msgid "Game Over"
 msgstr "Spēles beigas"
 
-#: src/playsingle_controller.cpp:411
+#: src/playsingle_controller.cpp:416
 msgid "The game is over."
 msgstr "Spēle ir beigusies."
 
-#: src/playsingle_controller.cpp:496
+#: src/playsingle_controller.cpp:501
 msgid ""
 "A network disconnection has occurred, and the game\n"
 "cannot continue. Do you want to save the game?"
@@ -9801,19 +9813,19 @@ msgstr ""
 "Tīkls ticis atvienots un spēle\n"
 "nevar tikt turpināta. Vai vēlaties saglabāt spēli?"
 
-#: src/playsingle_controller.cpp:659
+#: src/playsingle_controller.cpp:664
 msgid "It is now $name|'s turn"
 msgstr "Tagad ir $name| gājiens"
 
-#: src/playsingle_controller.cpp:877
+#: src/playsingle_controller.cpp:882
 msgid "Scenario Report"
 msgstr "Scenārija atskaite"
 
-#: src/playsingle_controller.cpp:879
+#: src/playsingle_controller.cpp:884
 msgid "Victory"
 msgstr "Uzvara"
 
-#: src/playsingle_controller.cpp:880
+#: src/playsingle_controller.cpp:885
 msgid "You have emerged victorious!"
 msgstr "Tu esi uzvarējis!"
 
