@@ -1312,8 +1312,6 @@ bool game_controller::change_language()
 			wm_title_string += " - " + game_config::revision;
 			SDL_WM_SetCaption(wm_title_string.c_str(), NULL);
 		}
-
-		t_string::reset_translations();
 	}
 
 	return true;

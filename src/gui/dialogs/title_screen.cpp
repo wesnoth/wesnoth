@@ -47,6 +47,19 @@ void show_dialog(CVideo& video)
 	dlg.show(video);
 }
 
+void show_language_dialog(CVideo& video, twindow& window)
+{
+	tlanguage_selection dlg;
+	dlg.show(video);
+	if(dlg.get_retval() == twindow::OK) {
+		/*
+		 * This call both reloads all texts in the new translation for the
+		 * widgets and then finds the new best layout in the new language.
+		 */
+		window.invalidate_layout();
+	}
+}
+
 } // namespace
 
 /*WIKI
@@ -105,7 +118,6 @@ static void animate_logo(
 	}
 }
 
-
 void ttitle_screen::pre_show(CVideo& video, twindow& window)
 {
 	assert(!video_);
@@ -124,11 +136,11 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 				  show_dialog<gui2::taddon_connect>
 				, boost::ref(video)));
 
-	// Note changing the language doesn't upate the title screen...
 	find_widget<tbutton>(&window, "language", false).
 			connect_signal_mouse_left_click(boost::bind(
-				  show_dialog<gui2::tlanguage_selection>
-				, boost::ref(video)));
+				  show_language_dialog
+				, boost::ref(video)
+				, boost::ref(window)));
 
 	/**** Set the tip of the day ****/
 	/*
