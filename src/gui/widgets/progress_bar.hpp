@@ -26,8 +26,10 @@ public:
 
 	tprogress_bar()
 		: tcontrol(COUNT)
-		, percentage_(0)
+		, percentage_(-1)
 	{
+		// Force canvas update
+		set_percentage(0);
 	}
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
@@ -47,7 +49,7 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_precentage(const unsigned percentage);
+	void set_percentage(const unsigned percentage);
 	unsigned get_percentage() const { return percentage_; }
 
 private:
