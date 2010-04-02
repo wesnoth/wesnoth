@@ -33,7 +33,7 @@ REGISTER_WIDGET(listbox)
 
 namespace {
 // in seperate namespace to avoid name classes
-REGISTER_WIDGET3(tlistbox_definition, "horizontal_listbox", _4)
+REGISTER_WIDGET3(tlistbox_definition, horizontal_listbox, _4)
 
 void callback_list_item_clicked(twidget* caller)
 {

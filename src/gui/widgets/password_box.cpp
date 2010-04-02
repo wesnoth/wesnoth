@@ -29,7 +29,7 @@
 
 namespace gui2 {
 
-REGISTER_WIDGET3(ttext_box_definition, "password_box", "text_box_definition")
+REGISTER_WIDGET3(ttext_box_definition, password_box, "text_box_definition")
 
 namespace {
 

@@ -774,7 +774,7 @@ namespace {                                                                \
 		struct tregister_helper {                                          \
 			tregister_helper()                                             \
 			{                                                              \
-				register_widget(id, boost::bind(                           \
+				register_widget(#id, boost::bind(                          \
 						  load_widget_definitions<type>                    \
 						, _1                                               \
 						, _2                                               \
@@ -790,9 +790,9 @@ namespace {                                                                \
 /**
  * Wrapper for REGISTER_WIDGET3.
  *
- * "Calls" REGISTER_WINDOW3(tid_definition, "id", _4)
+ * "Calls" REGISTER_WINDOW3(tid_definition, id, _4)
  */
-#define REGISTER_WIDGET(id) REGISTER_WIDGET3(t##id##_definition, #id, _4)
+#define REGISTER_WIDGET(id) REGISTER_WIDGET3(t##id##_definition, id, _4)
 
 #endif
 
