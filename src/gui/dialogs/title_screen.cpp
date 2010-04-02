@@ -17,13 +17,16 @@
 #include "gui/dialogs/title_screen.hpp"
 
 #include "game_config.hpp"
+#include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "gui/auxiliary/timer.hpp"
 #include "gui/dialogs/addon_connect.hpp"
 #include "gui/dialogs/language_selection.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/multi_page.hpp"
+#include "gui/widgets/progress_bar.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "titlescreen.hpp"
@@ -67,6 +70,7 @@ void show_dialog(CVideo& video)
  *     (source) (label) ()        The source for the tip of the day.
  *     (next_tip) (button) ()     The button show the next tip of day.
  *     (previous_tip) (button) () The button show the previous tip of day.
+ *     (logo) (progress_bar) ()   A progress bar to "animate" the image
  * @end_table
  */
 
@@ -75,9 +79,32 @@ REGISTER_WINDOW(title_screen)
 ttitle_screen::ttitle_screen()
 	: video_(NULL)
 	, tips_()
+	, logo_timer_id_(0)
 {
 	read_tips_of_day(tips_);
 }
+
+ttitle_screen::~ttitle_screen()
+{
+	if(logo_timer_id_) {
+		remove_timer(logo_timer_id_);
+	}
+}
+static void animate_logo(
+		  unsigned long& timer_id
+		, unsigned& percentage
+		, tprogress_bar& progress_bar)
+{
+	assert(percentage <= 100);
+	++percentage;
+	progress_bar.set_percentage(percentage);
+
+	if(percentage == 100) {
+		remove_timer(timer_id);
+		timer_id = 0;
+	}
+}
+
 
 void ttitle_screen::pre_show(CVideo& video, twindow& window)
 {
@@ -157,6 +184,27 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 	} else {
 		window.canvas()[0].set_variable("background_image",
 			variant(game_title_list[rand()%game_title_list.size()]));
+	}
+
+	/***** Set the logo *****/
+	tprogress_bar* logo =
+			find_widget<tprogress_bar>(&window, "logo", false, false);
+	if(logo) {
+		static unsigned percentage = preferences::startup_effect() ? 0 : 100;
+		logo->set_percentage(percentage);
+
+		if(percentage < 100) {
+			/*
+			 * The interval is empirically determined  so that the speed "felt"
+			 * good.
+			 */
+			logo_timer_id_ = add_timer(30
+					, boost::bind(animate_logo
+						, boost::ref(logo_timer_id_)
+						, boost::ref(percentage)
+						, boost::ref(*logo))
+					, true);
+		}
 	}
 }
 

@@ -26,6 +26,8 @@ class ttitle_screen : public tdialog
 public:
 	ttitle_screen();
 
+	~ttitle_screen();
+
 	CVideo* video() { return video_; }
 
 private:
@@ -43,6 +45,9 @@ private:
 
 	/** Hold the tips of the day. */
 	config tips_;
+
+	/** The progress bar time for the logo. */
+	unsigned long logo_timer_id_;
 
 	/**
 	 * Updates the tip of day widget.
