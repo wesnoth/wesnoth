@@ -79,6 +79,7 @@ public:
 	bool animation_finished_potential() const;
 	int get_animation_time() const;
 	int get_animation_time_potential() const;
+	void set_animation_time(int time);
 
 	int get_animation_duration() const;
 	const T& get_current_frame() const;
@@ -119,7 +120,7 @@ private:
 
 	bool does_not_change_;	// Optimization for 1-frame permanent animations
 	bool started_;
-	bool need_first_update_;
+	bool force_next_update_;
 	std::vector<frame> frames_;
 
 	// These are only valid when anim is started

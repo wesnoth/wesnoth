@@ -67,18 +67,19 @@ terrain_builder::tile::tile() :
 	images(),
 	images_foreground(),
 	images_background(),
-	last_tod("invalid_tod")
+	last_tod("invalid_tod"),
+	rand_seed(rand())
 {}
 
 void terrain_builder::tile::add_image_to_cache(const std::string &tod, ordered_ri_list::const_iterator itor)
 {
 	rule_image_variantlist::const_iterator tod_variant =
-		itor->second->variants.find(tod);
+		itor->second.second->variants.find(tod);
 
-	if(tod_variant == itor->second->variants.end())
-		tod_variant = itor->second->variants.find("");
+	if(tod_variant == itor->second.second->variants.end())
+		tod_variant = itor->second.second->variants.find("");
 
-	if(tod_variant != itor->second->variants.end()) {
+	if(tod_variant != itor->second.second->variants.end()) {
 		//calculate original y-value and layer from list index
 		int layer = itor->first / BASE_Y_INTERVAL;
 		int basey = itor->first % BASE_Y_INTERVAL;
@@ -90,8 +91,10 @@ void terrain_builder::tile::add_image_to_cache(const std::string &tod, ordered_r
 
 		if(layer < 0 || (layer == 0 && basey < UNITPOS)) {
 			images_background.push_back(tod_variant->second.image);
+			images_background.back().set_animation_time(itor->second.first%images_background.back().get_animation_duration());
 		} else {
 			images_foreground.push_back(tod_variant->second.image);
+			images_foreground.back().set_animation_time(itor->second.first%images_foreground.back().get_animation_duration());
 		}
 	}
 }
@@ -111,6 +114,7 @@ void terrain_builder::tile::clear()
 {
 	flags.clear();
 	images.clear();
+	rand_seed=rand();
 	images_foreground.clear();
 	images_background.clear();
 	last_tod = "invalid_tod";
@@ -128,6 +132,7 @@ void terrain_builder::tilemap::reload(int x, int y)
 	y_ = y;
     std::vector<terrain_builder::tile> new_tiles((x + 4) * (y + 4));
     tiles_.swap(new_tiles);
+    reset();
 }
 
 bool terrain_builder::tilemap::on_map(const map_location &loc) const
@@ -320,8 +325,10 @@ bool terrain_builder::rule_valid(const building_rule &rule) const
 
 				// we already precached file existence in the constructor
 				// but only for filenames not using ".."
-				if(!image::exists("terrain/" + s + ".png", s.find("..") == std::string::npos))
+				if(!image::exists("terrain/" + s + ".png", s.find("..") == std::string::npos)){
+				//	printf("%s\n",s.c_str());
 					return false;
+				}
 			}
 		}
 	}
@@ -950,9 +957,16 @@ void terrain_builder::apply_rule(const terrain_builder::building_rule &rule, con
 		// We want to order the images by layer first and base-y second,
 		// so we sort by layer*BASE_Y_INTERVAL + BASE_Y_INTERVAL/2 + basey
 		// Thus, allowed values for basey are from -50000 to 49999
+		int rand_seed;
+		if(tile_map_.on_map(loc)){
+			rand_seed = tile_map_[loc].rand_seed;
+		} else {
+			rand_seed= 0;
+		}
 		for(img = constraint->second.images.begin(); img != constraint->second.images.end(); ++img) {
-			btile.images.insert(std::pair<int, const rule_image*>(
-									img->layer*BASE_Y_INTERVAL + BASE_Y_INTERVAL/2 + img->basey, &*img));
+			btile.images.insert(std::pair<int,std::pair<int, const rule_image*> >(
+									img->layer*BASE_Y_INTERVAL + BASE_Y_INTERVAL/2 + img->basey,
+								       	std::pair<int,const rule_image*>(rand_seed,&*img)));
 		}
 
 		// Sets flags
