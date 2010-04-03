@@ -522,8 +522,6 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos += short_interline; turn_dialog_button_.set_location(rect.x, ypos);
 	ypos += short_interline; delay_shroud_updates_button_.set_location(rect.x, ypos);
 	ypos += short_interline; interrupt_when_ally_sighted_button_.set_location(rect.x, ypos);
-	ypos += item_interline; show_team_colours_button_.set_location(rect.x, ypos);
-	ypos += short_interline; show_grid_button_.set_location(rect.x, ypos);
 	ypos += item_interline; save_replays_button_.set_location(rect.x, ypos);
 	ypos += short_interline; delete_saves_button_.set_location(rect.x, ypos);
 	ypos += short_interline; autosavemax_slider_label_.set_location(rect.x, ypos);
@@ -540,6 +538,8 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos += item_interline; flip_time_button_.set_location(rect.x,ypos);
 	ypos += item_interline; show_floating_labels_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_haloing_button_.set_location(rect.x, ypos);
+	ypos += item_interline; show_team_colours_button_.set_location(rect.x, ypos);
+	ypos += item_interline; show_grid_button_.set_location(rect.x, ypos);
 	ypos += item_interline; idle_anim_button_.set_location(rect.x, ypos);
 	ypos += short_interline;
 	idle_anim_slider_label_.set_location(rect.x, ypos);
@@ -1084,8 +1084,6 @@ void preferences_dialog::set_selection(int index)
 	delay_shroud_updates_button_.hide(hide_general);
 	interrupt_when_ally_sighted_button_.hide(hide_general);
 	hotkeys_button_.hide(hide_general);
-	show_team_colours_button_.hide(hide_general);
-	show_grid_button_.hide(hide_general);
 	save_replays_button_.hide(hide_general);
 	delete_saves_button_.hide(hide_general);
 	autosavemax_slider_label_.hide(hide_general);
@@ -1107,6 +1105,8 @@ void preferences_dialog::set_selection(int index)
 	video_mode_button_.hide(hide_display);
 	theme_button_.hide(hide_display);
 	flip_time_button_.hide(hide_display);
+	show_team_colours_button_.hide(hide_display);
+	show_grid_button_.hide(hide_display);
 
 	const bool hide_sound = tab_ != SOUND_TAB;
 	music_button_.hide(hide_sound);

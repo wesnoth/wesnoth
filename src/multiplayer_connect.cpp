@@ -1440,6 +1440,7 @@ void connect::layout_children(const SDL_Rect& rect)
 	gold_title_label_.set_location((left+493), top+35);
 	income_title_label_.set_location((left+560), top+35);
 
+	add_local_player_.set_help_string(_("Adds a named hotseat player to the player list"));
 	add_local_player_.set_location(left + gui::ButtonHPadding, bottom -
 				waiting_label_.height() - gui::ButtonVPadding - add_local_player_.height());
 
