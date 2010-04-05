@@ -1347,10 +1347,11 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 
 		bool remove_empty=utils::string_bool(join_element["remove_empty"]);
 
-		variable_info::array_range array=state_of_game->get_variable_cfgs(array_name);
-
 		std::string joined_string;
 		std::string current_string;
+
+		variable_info vi(array_name, true, variable_info::TYPE_ARRAY);
+		variable_info::array_range array = vi.as_array();
 
 		for(std::vector<config*>::iterator i=array.first; i!=array.second; ++i)
 		{
