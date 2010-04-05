@@ -61,6 +61,6 @@ twidget* tbuilder_progress_bar::build() const
  *
  * @macro = progress_bar_description
  *
- * An progress bar has no extra fields.
+ * A progress bar has no extra fields.
  */
 
