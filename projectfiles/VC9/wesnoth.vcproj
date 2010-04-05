@@ -578,10 +578,6 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\portrait.cpp"
-				>
-			</File>
-			<File
 				RelativePath="..\..\src\preferences.cpp"
 				>
 			</File>
@@ -1049,34 +1045,6 @@
 					</File>
 					<File
 						RelativePath="..\..\src\gui\widgets\listbox.cpp"
-						>
-						<FileConfiguration
-							Name="Debug|Win32"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-								ObjectFile="$(IntDir)\Gui\Widgets\"
-							/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Release|Win32"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-								ObjectFile="$(IntDir)\Gui\Widgets\"
-							/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug (fast)|Win32"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-								ObjectFile="$(IntDir)\Gui\Widgets\"
-							/>
-						</FileConfiguration>
-					</File>
-					<File
-						RelativePath="..\..\src\gui\widgets\menubar.cpp"
 						>
 						<FileConfiguration
 							Name="Debug|Win32"
@@ -2712,34 +2680,6 @@
 						</File>
 						<File
 							RelativePath="..\..\src\gui\auxiliary\window_builder\listbox.cpp"
-							>
-							<FileConfiguration
-								Name="Debug|Win32"
-								>
-								<Tool
-									Name="VCCLCompilerTool"
-									ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
-								/>
-							</FileConfiguration>
-							<FileConfiguration
-								Name="Release|Win32"
-								>
-								<Tool
-									Name="VCCLCompilerTool"
-									ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
-								/>
-							</FileConfiguration>
-							<FileConfiguration
-								Name="Debug (fast)|Win32"
-								>
-								<Tool
-									Name="VCCLCompilerTool"
-									ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
-								/>
-							</FileConfiguration>
-						</File>
-						<File
-							RelativePath="..\..\src\gui\auxiliary\window_builder\menubar.cpp"
 							>
 							<FileConfiguration
 								Name="Debug|Win32"
@@ -4872,34 +4812,6 @@
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath="..\..\src\ai\formula\stage_rca_formulas.cpp"
-						>
-						<FileConfiguration
-							Name="Debug|Win32"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-								ObjectFile="$(IntDir)\ai\formula\"
-							/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Release|Win32"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-								ObjectFile="$(IntDir)\ai\formula\"
-							/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug (fast)|Win32"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-								ObjectFile="$(IntDir)\ai\formula\"
-							/>
-						</FileConfiguration>
-					</File>
-					<File
 						RelativePath="..\..\src\ai\formula\stage_side_formulas.cpp"
 						>
 						<FileConfiguration
@@ -5073,34 +4985,6 @@
 					</File>
 					<File
 						RelativePath="..\..\src\ai\testing\stage_fallback.cpp"
-						>
-						<FileConfiguration
-							Name="Debug|Win32"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-								ObjectFile="$(IntDir)\ai\testing\"
-							/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Release|Win32"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-								ObjectFile="$(IntDir)\ai\testing\"
-							/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug (fast)|Win32"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-								ObjectFile="$(IntDir)\ai\testing\"
-							/>
-						</FileConfiguration>
-					</File>
-					<File
-						RelativePath="..\..\src\ai\testing\stage_rca.cpp"
 						>
 						<FileConfiguration
 							Name="Debug|Win32"
@@ -5494,10 +5378,6 @@
 			</File>
 			<File
 				RelativePath="..\..\src\playturn.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\portrait.hpp"
 				>
 			</File>
 			<File
@@ -5951,10 +5831,6 @@
 						>
 					</File>
 					<File
-						RelativePath="..\..\src\gui\widgets\menubar.hpp"
-						>
-					</File>
-					<File
 						RelativePath="..\..\src\gui\widgets\minimap.hpp"
 						>
 					</File>
@@ -6111,10 +5987,6 @@
 						</File>
 						<File
 							RelativePath="..\..\src\gui\auxiliary\window_builder\listbox.hpp"
-							>
-						</File>
-						<File
-							RelativePath="..\..\src\gui\auxiliary\window_builder\menubar.hpp"
 							>
 						</File>
 						<File
@@ -6384,10 +6256,6 @@
 					</File>
 					<File
 						RelativePath="..\..\src\ai\formula\function_table.hpp"
-						>
-					</File>
-					<File
-						RelativePath="..\..\src\ai\formula\stage_rca_formulas.hpp"
 						>
 					</File>
 					<File
