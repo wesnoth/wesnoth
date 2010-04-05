@@ -1066,7 +1066,7 @@ void unit::remove_temporary_modifications()
 
 	for(unsigned int i = 0; i != NumModificationTypes; ++i) {
 		const std::string& mod_name = ModificationTypes[i];
-		for (int j = modifications_.child_count(mod_name) - 1; j >= 0; ++j)
+		for (int j = modifications_.child_count(mod_name) - 1; j >= 0; --j)
 		{
 			const config &mod = modifications_.child(mod_name, j);
 			if (mod["duration"] != "forever" && !mod["duration"].empty()) {
