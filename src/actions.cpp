@@ -248,7 +248,7 @@ void unit_creator::add_unit(const config &cfg)
 {
 	config temp_cfg(cfg);
 	map_location loc = find_location(temp_cfg);
-	temp_cfg["side"] = str_cast(team_.side());
+	temp_cfg["side"] = team_.side();
 	temp_cfg.remove_attribute("placement");
 	temp_cfg.remove_attribute("player_id");
 	temp_cfg.remove_attribute("faction_from_recruit");
@@ -1322,8 +1322,8 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
 		cfg["hits"] = hits;
 		cfg["dies"] = dies;
 		cfg["unit_hit"] = "defender";
-		cfg["damage"] = lexical_cast<std::string>(damage);
-		cfg["chance"] = lexical_cast<std::string>(attacker.cth_);
+		cfg["damage"] = damage;
+		cfg["chance"] = attacker.cth_;
 
 		set_random_results(cfg);
 	}
