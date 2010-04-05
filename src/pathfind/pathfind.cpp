@@ -41,46 +41,45 @@ static lg::log_domain log_engine("engine");
 map_location pathfind::find_vacant_tile(const gamemap& map,
 				const unit_map& units,
 				const map_location& loc,
-		      	 	pathfind::VACANT_TILE_TYPE vacancy,
+				pathfind::VACANT_TILE_TYPE vacancy,
 				const unit* pass_check)
 {
-	std::set<map_location> pending_tiles_to_check;
-	std::set<map_location> tiles_checked;
-	pending_tiles_to_check.insert( loc );
+	if (!map.on_board(loc)) return map_location();
+	std::set<map_location> pending_tiles_to_check, tiles_checked;
+	pending_tiles_to_check.insert(loc);
 	// Iterate out 50 hexes from loc
 	for (int distance = 0; distance < 50; ++distance) {
 		if (pending_tiles_to_check.empty())
 			return map_location();
 		//Copy over the hexes to check and clear the old set
-		std::set<map_location> tiles_checking = pending_tiles_to_check;
-		std::set<map_location>::const_iterator tc_itor = tiles_checking.begin();
-		pending_tiles_to_check.clear();
+		std::set<map_location> tiles_checking;
+		tiles_checking.swap(pending_tiles_to_check);
 		//Iterate over all the hexes we need to check
-		for ( ; tc_itor != tiles_checking.end(); ++tc_itor )
+		foreach (const map_location &loc, tiles_checking)
 		{
 			//If the unit cannot reach this area or it's not a castle but should, skip it.
-			if ((vacancy == pathfind::VACANT_CASTLE && !map.is_castle(*tc_itor))
-			|| (pass_check && pass_check->movement_cost(map[*tc_itor])
+			if ((vacancy == pathfind::VACANT_CASTLE && !map.is_castle(loc))
+			|| (pass_check && pass_check->movement_cost(map[loc])
 					== unit_movement_type::UNREACHABLE))
 				continue;
 			//If the hex is empty, return it.
-			if (map.on_board(*tc_itor) && units.find(*tc_itor) == units.end())
-				return (*tc_itor);
+			if (units.find(loc) == units.end())
+				return loc;
 			map_location adjs[6];
-			get_adjacent_tiles(*tc_itor,adjs);
-			for (int i = 0; i != 6; ++i)
+			get_adjacent_tiles(loc,adjs);
+			foreach (const map_location &loc, adjs)
 			{
-				//Add the tile to be checked if it hasn't already been and isn't already
-				//pending to be checked
-				if (pending_tiles_to_check.find(adjs[i]) == pending_tiles_to_check.end() &&
-					tiles_checked.find(adjs[i]) == tiles_checked.end() &&
-					tiles_checking.find(adjs[i]) == tiles_checking.end())
+				if (!map.on_board(loc)) continue;
+				// Add the tile to be checked if it hasn't already been and
+				// isn't being checked.
+				if (tiles_checked.find(loc) == tiles_checked.end() &&
+				    tiles_checking.find(loc) == tiles_checking.end())
 				{
-					pending_tiles_to_check.insert(adjs[i]);
+					pending_tiles_to_check.insert(loc);
 				}
 			}
 		}
-		tiles_checked = tiles_checking;
+		tiles_checked.swap(tiles_checking);
 	}
 	return map_location();
 }
