@@ -123,7 +123,7 @@ public:
 	enum MARK_SENT { MARK_AS_UNSENT, MARK_AS_SENT };
 	void add_config(const config& cfg, MARK_SENT mark=MARK_AS_UNSENT);
 
-	int ncommands();
+	int ncommands() const;
 
 	static void process_error(const std::string& msg);
 
@@ -136,7 +136,7 @@ private:
 
 	void add_chat_log_entry(const config &speak, std::ostream &str) const;
 
-	const config::child_list& commands() const;
+	config &command(int);
 	void remove_command(int);
 	/** Adds a new empty command to the command list.
 	 *
@@ -151,7 +151,7 @@ private:
 	 */
 	config* add_command(bool update_random_context=true);
 	config cfg_;
-	unsigned int pos_;
+	int pos_;
 
 	config* current_;
 

@@ -482,13 +482,12 @@ std::stringstream message_log;
 
 std::string replay::build_chat_log()
 {
-	const config::child_list& cmd = commands();
 	std::vector<int>::iterator loc_it;
 	int last_location = 0;
 	for (loc_it = message_locations.begin(); loc_it != message_locations.end(); ++loc_it)
 	{
 		last_location = *loc_it;
-		const config &speak = cmd[last_location]->child("speak");
+		const config &speak = command(last_location).child("speak");
 		add_chat_log_entry(speak, message_log);
 
 	}
@@ -511,19 +510,14 @@ config replay::get_data_range(int cmd_start, int cmd_end, DATA_TYPE data_type)
 {
 	config res;
 
-	const config::child_list& cmd = commands();
-	while(cmd_start < cmd_end) {
-		if ((data_type == ALL_DATA || (*cmd[cmd_start])["undo"] == "no")
-			&& (*cmd[cmd_start])["sent"] != "yes")
+	for (int cmd = cmd_start; cmd < cmd_end; ++cmd)
+	{
+		config &c = command(cmd);
+		if ((data_type == ALL_DATA || c["undo"] == "no") && c["sent"] != "yes")
 		{
-			res.add_child("command",*cmd[cmd_start]);
-
-			if(data_type == NON_UNDO_DATA) {
-				(*cmd[cmd_start])["sent"] = true;
-			}
+			res.add_child("command", c);
+			if (data_type == NON_UNDO_DATA) c["sent"] = true;
 		}
-
-		++cmd_start;
 	}
 
 	return res;
@@ -531,7 +525,7 @@ config replay::get_data_range(int cmd_start, int cmd_end, DATA_TYPE data_type)
 
 void replay::undo()
 {
-	const config::child_list &cmds = commands();
+	const config::child_list &cmds = cfg_.get_children_deprecated("command");
 	std::pair<config::child_list::const_iterator, config::child_list::const_iterator>
 		cmd(cmds.begin(), cmds.end());
 	std::vector<config::child_list::const_iterator> async_cmds;
@@ -611,14 +605,14 @@ void replay::undo()
 	set_random(NULL);
 }
 
-const config::child_list& replay::commands() const
+config &replay::command(int n)
 {
-	return cfg_.get_children_deprecated("command");
+	return cfg_.child("command", n);
 }
 
-int replay::ncommands()
+int replay::ncommands() const
 {
-	return commands().size();
+	return cfg_.child_count("command");
 }
 
 config* replay::add_command(bool update_random_context)
@@ -644,12 +638,12 @@ void replay::revert_action()
 
 config* replay::get_next_action()
 {
-	if(pos_ >= commands().size())
+	if (pos_ >= ncommands())
 		return NULL;
 
-	LOG_REPLAY << "up to replay action " << pos_ + 1 << "/" << commands().size() << "\n";
+	LOG_REPLAY << "up to replay action " << pos_ + 1 << '/' << ncommands() << '\n';
 
-	current_ = commands()[pos_];
+	current_ = &command(pos_);
 	set_random(current_);
 	++pos_;
 	return current_;
@@ -657,26 +651,26 @@ config* replay::get_next_action()
 
 void replay::pre_replay()
 {
-	if ((rng::random() == NULL) && (commands().size() > 0)){
+	if (rng::random() == NULL && ncommands() > 0) {
 		if (at_end())
 		{
 			add_command(true);
 		}
 		else
 		{
-			set_random(commands()[pos_]);
+			set_random(&command(pos_));
 		}
 	}
 }
 
 bool replay::at_end() const
 {
-	return pos_ >= commands().size();
+	return pos_ >= ncommands();
 }
 
 void replay::set_to_end()
 {
-	pos_ = commands().size();
+	pos_ = ncommands();
 	current_ = NULL;
 	set_random(NULL);
 }
@@ -694,7 +688,7 @@ void replay::clear()
 
 bool replay::empty()
 {
-	return commands().empty();
+	return ncommands() == 0;
 }
 
 void replay::add_config(const config& cfg, MARK_SENT mark)
