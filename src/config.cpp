@@ -36,16 +36,20 @@ config config::invalid;
 
 const char* config::diff_track_attribute = "__diff_track";
 
+int *volatile null_pointer = 0;
+
 void config::check_valid() const
 {
-	if (!*this)
-		throw error("Mandatory WML child missing yet untested for. Please report.");
+	if (*this) return;
+	*null_pointer = 0;
+	throw error("Mandatory WML child missing yet untested for. Please report.");
 }
 
 void config::check_valid(const config &cfg) const
 {
-	if (!*this || !cfg)
-		throw error("Mandatory WML child missing yet untested for. Please report.");
+	if (*this && cfg) return;
+	*null_pointer = 0;
+	throw error("Mandatory WML child missing yet untested for. Please report.");
 }
 
 config::config() : values(), children(), ordered_children()
