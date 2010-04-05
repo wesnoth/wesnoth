@@ -223,25 +223,10 @@ void positional_source::write_config(config& cfg) const
 	cfg["chance"] = str_cast<unsigned int>(this->chance_);
 	cfg["check_fogged"] = check_fogged_;
 	cfg["check_shrouded"] = check_shrouded_;
-
-	std::ostringstream sx, sy;
-	bool first_loc = true;
-	foreach(const map_location& loc, locations_) {
-		if(!first_loc) {
-			sx << ',';
-			sy << ',';
-		} else {
-			first_loc = false;
-		}
-		sx << loc.x;
-		sy << loc.y;
-	}
-	cfg["x"] = sx.str();
-	cfg["y"] = sy.str();
-
 	cfg["loop"] = str_cast<unsigned int>(this->loops_);
 	cfg["full_range"] = str_cast<unsigned int>(this->range_);
 	cfg["fade_range"] = str_cast<unsigned int>(this->faderange_);
+	write_locations(locations_, cfg);
 }
 
 sourcespec::sourcespec(const config& cfg) :
@@ -256,26 +241,7 @@ sourcespec::sourcespec(const config& cfg) :
 	check_shrouded_(utils::string_bool(cfg["check_shrouded"], true)),
 	locations_()
 {
-	const std::vector<std::string>& vx = utils::split(cfg["x"]);
-	const std::vector<std::string>& vy = utils::split(cfg["y"]);
-
-	if(vx.empty() || vy.empty()) {
-		lg::wml_error << "missing sound source locations";
-	}
-
-	if(vx.size() != vy.size()) {
-		lg::wml_error << "mismatched number of sound source location coordinates";
-	}
-	else {
-		for(unsigned int i = 0; i < std::min(vx.size(), vy.size()); ++i) {
-			try {
-				map_location loc(lexical_cast<int>(vx[i]), lexical_cast<int>(vy[i]));
-				locations_.push_back(loc);
-			} catch(bad_lexical_cast&) {
-				lg::wml_error << "non-numerical coordinates for soundsource (" << vx[i] << ',' << vy[i] << ')';
-			}
-		}
-	}
+	read_locations(cfg, locations_);
 }
 
 } // namespace soundsource
