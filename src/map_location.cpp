@@ -129,11 +129,8 @@ map_location::map_location(const config& cfg, const variable_set *variables) :
 
 void map_location::write(config& cfg) const
 {
-	char buf[50];
-	snprintf(buf,sizeof(buf),"%d",x+1);
-	cfg["x"] = buf;
-	snprintf(buf,sizeof(buf),"%d",y+1);
-	cfg["y"] = buf;
+	cfg["x"] = x + 1;
+	cfg["y"] = y + 1;
 }
 
 map_location map_location::legacy_negation() const
