@@ -307,13 +307,6 @@ void team::lose_village(const map_location& loc)
 	}
 }
 
-void team::remove_recruit(const std::string& recruit)
-{
-	info_.can_recruit.erase(recruit);
-	info_.average_price = 0;
-	ai::manager::raise_recruit_list_changed();
-}
-
 void team::set_recruits(const std::set<std::string>& recruits)
 {
 	info_.can_recruit = recruits;
