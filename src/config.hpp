@@ -217,8 +217,6 @@ public:
 	const_child_itors child_range(const std::string& key) const;
 	size_t child_count(const std::string& key) const;
 
-	const child_list& get_children_deprecated(const std::string& key) const;
-
 	/**
 	 * Copies the first child with the given @a key, or an empty config if there is none.
 	 */

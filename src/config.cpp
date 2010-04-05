@@ -197,19 +197,6 @@ size_t config::child_count(const std::string& key) const
 	return 0;
 }
 
-const config::child_list& config::get_children_deprecated(const std::string& key) const
-{
-	check_valid();
-
-	const child_map::const_iterator i = children.find(key);
-	if(i != children.end()) {
-		return i->second;
-	} else {
-		static const child_list dummy;
-		return dummy;
-	}
-}
-
 config &config::child(const std::string& key, int n)
 {
 	check_valid();
