@@ -433,11 +433,6 @@ const vconfig vconfig::all_children_iterator::get_child() const
 	return vconfig(&i_->cfg, cache_key_);
 }
 
-size_t vconfig::all_children_iterator::get_index() const
-{
-	return i_.get_index() + index_offset_;
-}
-
 bool vconfig::all_children_iterator::operator==(all_children_iterator i) const
 {
 	return (i_ == i.i_ && inner_index_ == i.inner_index_);

@@ -314,13 +314,13 @@ public:
 		any_child operator*() const;
 		arrow_helper operator->() const { return *this; }
 
-		size_t get_index() const;
-
 		bool operator==(const all_children_iterator &i) const { return i_ == i.i_; }
 		bool operator!=(const all_children_iterator &i) const { return i_ != i.i_; }
 
 	private:
 		Itor i_;
+
+		friend class config;
 	};
 
 	typedef std::pair<all_children_iterator, all_children_iterator> all_children_itors;

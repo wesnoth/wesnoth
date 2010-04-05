@@ -309,24 +309,25 @@ void config::recursive_clear_value(const std::string& key)
 config::all_children_iterator config::erase(const config::all_children_iterator& i)
 {
 	check_valid();
+	size_t index = i.i_->index;
 
 	config* found_config = NULL;
 	std::vector<child_pos>::iterator erase_pos, j, j_end = ordered_children.end();
 	for(j = ordered_children.begin(); j != j_end; ++j) {
 		if (i->key == j->pos->first) {
-			if(i.get_index() == j->index) {
+			if (j->index == index) {
 				erase_pos = j;
 				found_config = *(j->pos->second.begin() + j->index);
-			} else if(i.get_index() < j->index) {
-				//decrement subsequent child indeces of the same key
-				j->index--;
+			} else if (j->index > index) {
+				// Decrement indexes of subsequent children with the same key.
+				--j->index;
 			}
 		}
 	}
 	child_list& vec = children[i->key];
 	assert(found_config && erase_pos->index < vec.size());
 	delete found_config;
-	vec.erase(vec.begin()+i.get_index());
+	vec.erase(vec.begin() + index);
 	return all_children_iterator(ordered_children.erase(erase_pos));
 }
 
@@ -533,11 +534,6 @@ bool config::empty() const
 config::any_child config::all_children_iterator::operator*() const
 {
 	return any_child(&i_->pos->first, i_->pos->second[i_->index]);
-}
-
-size_t config::all_children_iterator::get_index() const
-{
-	return i_->index;
 }
 
 config::all_children_iterator config::ordered_begin() const

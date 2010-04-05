@@ -93,7 +93,6 @@ public:
 		pointer operator->() const;
 
 		std::string get_key() const;
-		size_t get_index() const;
 		const vconfig get_child() const;
 
 		bool operator==(all_children_iterator i) const;
