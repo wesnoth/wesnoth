@@ -62,6 +62,7 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 	tlabel& title = find_widget<tlabel>(&window, "title", false);
 	title.set_label(title_);
 	title.set_use_markup(true);
+	title.set_can_wrap(true);
 
 	tcontrol& message = find_widget<tcontrol>(&window, "message", false);
 	message.set_label(message_);
