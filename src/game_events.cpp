@@ -706,33 +706,6 @@ WML_HANDLER_FUNCTION(allow_recruit, /*event_info*/, cfg)
 	}
 }
 
-WML_HANDLER_FUNCTION(disallow_recruit, /*event_info*/, cfg)
-{
-	int side_num = lexical_cast_default<int>(cfg["side"], 1);
-	unsigned index = side_num - 1;
-	if (index >= resources::teams->size()) return;
-
-	foreach (const std::string &r, utils::split(cfg["type"])) {
-		(*resources::teams)[index].remove_recruit(r);
-	}
-}
-
-WML_HANDLER_FUNCTION(set_recruit, /*event_info*/, cfg)
-{
-	std::string side = cfg["side"];
-	const int side_num = lexical_cast_default<int>(side,1);
-	const size_t index = side_num-1;
-
-	if (index >= resources::teams->size())
-		return;
-
-	std::vector<std::string> recruit = utils::split(cfg["recruit"]);
-	if(recruit.size() == 1 && recruit.back() == "")
-		recruit.clear();
-
-	(*resources::teams)[index].set_recruits(std::set<std::string>(recruit.begin(), recruit.end()));
-}
-
 WML_HANDLER_FUNCTION(music, /*event_info*/, cfg)
 {
 	sound::play_music_config(cfg.get_parsed_config());

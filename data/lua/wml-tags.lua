@@ -124,19 +124,23 @@ local function wml_message(cfg)
 	end
 end
 
-local function wml_gold(cfg)
+local function get_team(cfg, tag)
 	local side = tonumber(cfg.side or 1) or
-		helper.wml_error("[gold] given a noninteger side= attribute.")
-	local team = wesnoth.get_side(side)
+		helper.wml_error(tag .. " given a noninteger side= attribute.")
+	local team = wesnoth.get_side(side) or
+		helper.wml_error(tag .. " given an invalid side= attribute.")
+	return team
+end
+
+local function wml_gold(cfg)
+	local team = get_team(cfg, "[gold]")
 	local amount = tonumber(cfg.amount) or
 		helper.wml_error("[gold] missing required amount= attribute.")
 	team.gold = team.gold + amount
 end
 
 local function wml_store_gold(cfg)
-	local side = tonumber(cfg.side or 1) or
-		helper.wml_error("[store_gold] given a noninteger side= attribute.")
-	local team = wesnoth.get_side(side)
+	local team = get_team(cfg, "[store_gold]")
 	wesnoth.set_variable(cfg.variable or "gold", team.gold)
 end
 
@@ -185,6 +189,29 @@ local function wml_fire_event(cfg)
 	wesnoth.fire_event(cfg.name, x1, y1, x2, y2, w1, w2)
 end
 
+local function wml_disallow_recruit(cfg)
+	local team = get_team(cfg, "[disallow_recruit]")
+	local v = team.recruit
+	for w in string.gmatch(cfg.type, "[^%s,][^,]*") do
+		for i, r in ipairs(v) do
+			if r == w then
+				table.remove(v, i)
+				break
+			end
+		end
+	end
+	team.recruit = v
+end
+
+local function wml_set_recruit(cfg)
+	local team = get_team(cfg, "[set_recruit]")
+	local v = {}
+	for w in string.gmatch(cfg.recruit, "[^%s,][^,]*") do
+		table.insert(v, w)
+	end
+	team.recruit = v
+end
+
 local function wml_action_tag(cfg)
 	-- The new tag's name
 	local name = cfg.name or
@@ -210,4 +237,6 @@ wesnoth.register_wml_action("clear_variable", wml_clear_variable)
 wesnoth.register_wml_action("store_unit_type", wml_store_unit_type)
 wesnoth.register_wml_action("store_unit_type_ids", wml_store_unit_type_ids)
 wesnoth.register_wml_action("fire_event", wml_fire_event)
+wesnoth.register_wml_action("disallow_recruit", wml_disallow_recruit)
+wesnoth.register_wml_action("set_recruit", wml_set_recruit)
 wesnoth.register_wml_action("wml_action", wml_action_tag)
