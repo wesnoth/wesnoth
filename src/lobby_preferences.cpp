@@ -21,7 +21,7 @@ namespace preferences {
 
 bool lobby_sounds()
 {
-	return utils::string_bool(preferences::get("lobby_sounds"), true);
+	return preferences::get("lobby_sounds", true);
 }
 
 void set_lobby_sounds(bool v)
@@ -31,7 +31,7 @@ void set_lobby_sounds(bool v)
 
 bool sort_list()
 {
-	return utils::string_bool(preferences::get("sort_list"), true);
+	return preferences::get("sort_list", true);
 }
 
 void _set_sort_list(bool sort)
@@ -41,7 +41,7 @@ void _set_sort_list(bool sort)
 
 bool iconize_list()
 {
-	return utils::string_bool(preferences::get("iconize_list"), true);
+	return preferences::get("iconize_list", true);
 }
 
 void _set_iconize_list(bool sort)
@@ -52,17 +52,17 @@ void _set_iconize_list(bool sort)
 
 bool whisper_friends_only()
 {
-	return utils::string_bool(preferences::get("lobby_whisper_friends_only"));
+	return preferences::get("lobby_whisper_friends_only", false);
 }
 
 bool auto_open_whisper_windows()
 {
-	return utils::string_bool(preferences::get("lobby_auto_open_whisper_windows"), true);
+	return preferences::get("lobby_auto_open_whisper_windows", true);
 }
 
 bool playerlist_sort_relation()
 {
-	return utils::string_bool(preferences::get("lobby_playerlist_sort_relation"), true);
+	return preferences::get("lobby_playerlist_sort_relation", true);
 }
 
 void set_playerlist_sort_relation(bool v)
@@ -72,7 +72,7 @@ void set_playerlist_sort_relation(bool v)
 
 bool playerlist_sort_name()
 {
-	return utils::string_bool(preferences::get("lobby_playerlist_sort_name"), true);
+	return preferences::get("lobby_playerlist_sort_name", true);
 }
 
 void set_playerlist_sort_name(bool v)
@@ -82,7 +82,7 @@ void set_playerlist_sort_name(bool v)
 
 bool playerlist_group_players()
 {
-	return utils::string_bool(preferences::get("lobby_playerlist_group_players"), true);
+	return preferences::get("lobby_playerlist_group_players", true);
 }
 
 void set_playerlist_group_players(bool v)
