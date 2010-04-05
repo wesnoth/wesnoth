@@ -145,10 +145,10 @@ bool positional_source::is_global()
 
 void positional_source::update(unsigned int time, const display &disp)
 {
-	if(time - last_played_ < min_delay_ || sound::is_sound_playing(id_))
+	if (time - last_played_ < unsigned(min_delay_) || sound::is_sound_playing(id_))
 		return;
 
-	unsigned int i = rand() % 100 + 1;
+	int i = rand() % 100 + 1;
 
 	if(i <= chance_) {
 		last_played_ = time;
@@ -206,7 +206,7 @@ int positional_source::calculate_volume(const map_location &loc, const display &
 
 	SDL_Rect area = disp.map_area();
 	map_location center = disp.hex_clicked_on(area.x + area.w / 2, area.y + area.h / 2);
-	size_t distance = distance_between(loc, center);
+	int distance = distance_between(loc, center);
 
 	if(distance <= range_) {
 		return 0;
@@ -218,14 +218,14 @@ int positional_source::calculate_volume(const map_location &loc, const display &
 
 void positional_source::write_config(config& cfg) const
 {
-	cfg["sounds"] = this->files_;
-	cfg["delay"] = str_cast<unsigned int>(this->min_delay_);
-	cfg["chance"] = str_cast<unsigned int>(this->chance_);
+	cfg["sounds"] = files_;
+	cfg["delay"] = min_delay_;
+	cfg["chance"] = chance_;
 	cfg["check_fogged"] = check_fogged_;
 	cfg["check_shrouded"] = check_shrouded_;
-	cfg["loop"] = str_cast<unsigned int>(this->loops_);
-	cfg["full_range"] = str_cast<unsigned int>(this->range_);
-	cfg["fade_range"] = str_cast<unsigned int>(this->faderange_);
+	cfg["loop"] = loops_;
+	cfg["full_range"] = range_;
+	cfg["fade_range"] = faderange_;
 	write_locations(locations_, cfg);
 }
 

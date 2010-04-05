@@ -37,12 +37,12 @@ class manager;
  */
 class positional_source {
 	unsigned int last_played_;
-	unsigned int min_delay_;
-	unsigned int chance_;
-	unsigned int loops_;
+	int min_delay_;
+	int chance_;
+	int loops_;
 	const unsigned int id_;
-	unsigned int range_;
-	unsigned int faderange_;
+	int range_;
+	int faderange_;
 	bool check_fogged_;
 	bool check_shrouded_;
 	std::string files_;
