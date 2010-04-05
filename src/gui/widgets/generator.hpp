@@ -118,7 +118,20 @@ public:
 	/** Returns the number of selected items. */
 	virtual unsigned get_selected_item_count() const = 0;
 
-	/** Returns the first selected item, -1 if none selected. */
+	/**
+	 * Returns the selected item.
+	 *
+	 * If a list has multiple selected items it looks whether it knows the last
+	 * item acutally selected, if that item is selected that one is choosen.
+	 * Else is goes through all selected items and returns the first one
+	 * selected.
+	 *
+	 * @note tstacked_widget depends on that behaviour it always has all items
+	 * selected and thus shown and by default the last selected item (the top
+	 * one) is active.
+	 *
+	 * @returns                   The selected item, -1 if none selected.
+	 */
 	virtual int get_selected_item() const = 0;
 
 	/** Gets the grid of an item. */

@@ -550,6 +550,7 @@ public:
 		, placement()
 		, select_action()
 		, selected_item_count_(0)
+		, last_selected_item_(-1)
 		, items_()
 	{
 	}
@@ -596,6 +597,7 @@ public:
 
 		if(select && !is_selected(index)) {
 			maximum_selection::select_item(index);
+			last_selected_item_ = index;
 		} else if(is_selected(index)) {
 			if(!minimum_selection::deselect_item(index)) {
 				// Some items might have deseleted themselves so
@@ -655,6 +657,12 @@ public:
 
 		if(selected_item_count_ == 0) {
 			return -1;
+		} else if(last_selected_item_ != -1
+				&& last_selected_item_ < static_cast<int>(items_.size())
+				&& (*items_[last_selected_item_]).selected) {
+
+			return last_selected_item_;
+
 		} else {
 			for(size_t i = 0; i < items_.size(); ++i) {
 				if((*items_[i]).selected) {
@@ -914,6 +922,9 @@ private:
 
 	/** The number of selected items. */
 	unsigned selected_item_count_;
+
+	/** The last item selected. */
+	int last_selected_item_;
 
 	/** The items in the generator. */
 	std::vector<titem*> items_;

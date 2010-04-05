@@ -71,8 +71,10 @@ twidget* tbuilder_stacked_widget::build() const
  *
  * == Stacked widget ==
  *
- * A stacked widget is a set of widget stacked on top of each other.
- *
+ * A stacked widget is a set of widget stacked on top of each other. The
+ * widgets are drawn in the layers, in the order defined in the the instance
+ * config. By default the last drawn item is also the "active" layer for the
+ * event handling.
  *
  * @start_table = config
  * @end_table
