@@ -224,18 +224,20 @@ void positional_source::write_config(config& cfg) const
 	cfg["check_fogged"] = check_fogged_;
 	cfg["check_shrouded"] = check_shrouded_;
 
-	cfg["x"] = cfg["y"] = "";
+	std::ostringstream sx, sy;
 	bool first_loc = true;
 	foreach(const map_location& loc, locations_) {
 		if(!first_loc) {
-			cfg["x"] += ",";
-			cfg["y"] += ",";
+			sx << ',';
+			sy << ',';
 		} else {
 			first_loc = false;
 		}
-		cfg["x"] += str_cast<unsigned int>(loc.x);
-		cfg["y"] += str_cast<unsigned int>(loc.y);
+		sx << loc.x;
+		sy << loc.y;
 	}
+	cfg["x"] = sx.str();
+	cfg["y"] = sy.str();
 
 	cfg["loop"] = str_cast<unsigned int>(this->loops_);
 	cfg["full_range"] = str_cast<unsigned int>(this->range_);
