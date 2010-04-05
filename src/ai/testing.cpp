@@ -45,7 +45,7 @@ void ai_testing::log_turn(const char* msg, unsigned int side)
 	assert(side>=1);
 	team& current_team = i.teams[side-1];
 
-	size_t _turn_number = i.tod_manager_.turn();
+	int _turn_number = i.tod_manager_.turn();
 	int _units = side_units(i.units,side);
 	int _units_cost = side_units_cost(i.units,side);
 	int _gold = current_team.gold();
@@ -60,13 +60,13 @@ void ai_testing::log_turn(const char* msg, unsigned int side)
 	DBG_AI_TESTING << msg << "_INCOME"     << side << ": " << _income << std::endl;
 
 	config c;
-        c["side"] = str_cast(side);
-        c["turn"] = str_cast(_turn_number);
-        c["event"] = msg;
-        c["units"] = str_cast(_units);
-        c["units_cost"] =str_cast(_units_cost);
-        c["gold"] = str_cast(_gold);
-        c["villages"] = str_cast(_villages);
+	c["side"] = int(side);
+	c["turn"] = _turn_number;
+	c["event"] = msg;
+	c["units"] = _units;
+	c["units_cost"] = _units_cost;
+	c["gold"] = _gold;
+	c["villages"] = _villages;
 	recorder.add_log_data("ai_log","turn_info",c);
 }
 
