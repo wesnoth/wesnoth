@@ -211,8 +211,6 @@ public:
 
 	typedef std::pair<const_attribute_iterator,const_attribute_iterator> const_attr_itors;
 
-	typedef std::pair<child_list::iterator, child_list::iterator> child_itors_bak;
-	child_itors_bak child_range_deprecated(const std::string &);
 	child_itors child_range(const std::string& key);
 	const_child_itors child_range(const std::string& key) const;
 	size_t child_count(const std::string& key) const;

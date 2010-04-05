@@ -151,19 +151,6 @@ void config::merge_children_by_attribute(const std::string& key, const std::stri
 	}
 }
 
-config::child_itors_bak config::child_range_deprecated(const std::string& key)
-{
-	check_valid();
-
-	child_map::iterator i = children.find(key);
-	if(i != children.end()) {
-		return child_itors_bak(i->second.begin(),i->second.end());
-	} else {
-		static std::vector<config*> dummy;
-		return child_itors_bak(dummy.begin(),dummy.end());
-	}
-}
-
 config::child_itors config::child_range(const std::string& key)
 {
 	check_valid();
