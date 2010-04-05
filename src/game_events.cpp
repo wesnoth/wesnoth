@@ -2036,47 +2036,6 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 	}
 }
 
-// Fire any events
-WML_HANDLER_FUNCTION(fire_event, /*event_info*/, cfg)
-{
-	unit_map *units = resources::units;
-	gamemap *game_map = resources::game_map;
-
-	map_location loc1,loc2;
-	config data;
-	if (cfg.has_child("primary_unit")) {
-		vconfig primary_unit_filter = cfg.child("primary_unit");
-		foreach (const unit &u, *units) {
-			if (game_events::unit_matches_filter(u, primary_unit_filter)) {
-				loc1 = u.get_location();
-				break;
-			}
-		}
-		if(!game_map->on_board(loc1)) {
-			WRN_NG << "failed to match [primary_unit] in [fire_event] with a single on-board unit\n";
-		}
-	}
-	if (cfg.has_child("primary_attack")) {
-		data.add_child("first", cfg.child("primary_attack").get_parsed_config());
-	}
-	if (cfg.has_child("secondary_unit")) {
-		vconfig secondary_unit_filter = cfg.child("secondary_unit");
-		foreach (const unit &u, *units) {
-			if (game_events::unit_matches_filter(u, secondary_unit_filter)) {
-				loc2 = u.get_location();
-				break;
-			}
-		}
-		if(!game_map->on_board(loc2)) {
-			WRN_NG << "failed to match [secondary_unit] in [fire_event] with a single on-board unit\n";
-		}
-	}
-	if (cfg.has_child("secondary_attack")) {
-		data.add_child("second", cfg.child("secondary_attack").get_parsed_config());
-	}
-	game_events::fire(cfg["name"],loc1,loc2,data);
-}
-
 // Setting of menu items
 WML_HANDLER_FUNCTION(set_menu_item, /*event_info*/, cfg)
 {

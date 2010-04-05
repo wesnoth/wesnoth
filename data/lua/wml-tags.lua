@@ -167,6 +167,24 @@ local function wml_store_unit_type(cfg)
 	end
 end
 
+local function wml_fire_event(cfg)
+	local u1 = helper.get_child(cfg, "primary_unit")
+	u1 = u1 and wesnoth.get_units(u1)[1]
+	local x1, y1 = 0, 0
+	if u1 then x1, y1 = u1.x, u1.y end
+
+	local u2 = helper.get_child(cfg, "secondary_unit")
+	u2 = u2 and wesnoth.get_units(u2)[1]
+	local x2, y2 = 0, 0
+	if u2 then x2, y2 = u2.x, u2.y end
+
+	local w1 = helper.get_child(cfg, "primary_attack")
+	local w2 = helper.get_child(cfg, "secondary_attack")
+	if w2 then w1 = w1 or {} end
+
+	wesnoth.fire_event(cfg.name, x1, y1, x2, y2, w1, w2)
+end
+
 local function wml_action_tag(cfg)
 	-- The new tag's name
 	local name = cfg.name or
@@ -191,4 +209,5 @@ wesnoth.register_wml_action("store_gold", wml_store_gold)
 wesnoth.register_wml_action("clear_variable", wml_clear_variable)
 wesnoth.register_wml_action("store_unit_type", wml_store_unit_type)
 wesnoth.register_wml_action("store_unit_type_ids", wml_store_unit_type_ids)
+wesnoth.register_wml_action("fire_event", wml_fire_event)
 wesnoth.register_wml_action("wml_action", wml_action_tag)
