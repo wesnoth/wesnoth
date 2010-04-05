@@ -101,7 +101,7 @@ public:
 
 	private:
 		Itor i_;
-		unsigned inner_index_;
+		int inner_index_;
 		unsigned index_offset_;
 		const config* cache_key_;
 	};
@@ -186,8 +186,8 @@ private:
 /** Information on a WML variable. */
 struct variable_info
 {
-typedef std::pair<std::vector<config*>::iterator, std::vector<config*>::iterator> array_range;
-public:
+	typedef config::child_itors array_range;
+
 	/**
 	 * TYPE: the correct variable type should be decided by the user of the info structure
 	 * Note: an Array can also be considered a Container, since index 0 will be used by default

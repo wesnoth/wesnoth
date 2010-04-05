@@ -18,11 +18,12 @@
 
 #include "actions.hpp"
 #include "config.hpp"
-#include "tod_manager.hpp"
+#include "foreach.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "resources.hpp"
 #include "terrain_filter.hpp"
+#include "tod_manager.hpp"
 #include "variable.hpp"
 
 static lg::log_domain log_engine("engine");
@@ -122,15 +123,14 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 					return false;
 				}
 			} else {
-				variable_info::array_range a_range;
-				for(a_range = vi.as_array(); a_range.first != a_range.second; ++a_range.first) {
-					if(map_location(**a_range.first,NULL) == loc) {
+				bool found = false;
+				foreach (const config &cfg, vi.as_array()) {
+					if (map_location(cfg, NULL) == loc) {
+						found = true;
 						break;
 					}
 				}
-				if(a_range.first == a_range.second) {
-					return false;
-				}
+				if (!found) return true;
 			}
 		}
 	}
@@ -354,10 +354,9 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 			}
 		} else {
 			std::set<map_location> findin_locs;
-			variable_info::array_range a_range;
-			for(a_range = vi.as_array(); a_range.first != a_range.second; ++a_range.first) {
-				map_location test_loc(**a_range.first,NULL);
-				if(xy_set.count(test_loc)) {
+			foreach (const config &cfg, vi.as_array()) {
+				map_location test_loc(cfg, NULL);
+				if (xy_set.count(test_loc)) {
 					findin_locs.insert(test_loc);
 				}
 			}

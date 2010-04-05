@@ -255,7 +255,7 @@ const config vconfig::get_parsed_config() const
 						res.add_child(name); //add empty tag
 					}
 					while(range.first != range.second) {
-						res.add_child(name, vconfig(**range.first++).get_parsed_config());
+						res.add_child(name, vconfig(*range.first++).get_parsed_config());
 					}
 				}
 				vconfig_recursion.erase(vname);
@@ -301,7 +301,7 @@ vconfig::child_list vconfig::get_children(const std::string& key) const
 						res.push_back(vconfig(empty_config));
 					}
 					while(range.first != range.second) {
-						config * cp = *range.first++;
+						config *cp = &*range.first++;
 						res.push_back(vconfig(cp, cp));
 					}
 				}
@@ -376,7 +376,7 @@ vconfig::all_children_iterator& vconfig::all_children_iterator::operator++()
 		variable_info vinfo(vconfig(i_->cfg)["variable"], false, variable_info::TYPE_CONTAINER);
 		if(vinfo.is_valid && !vinfo.explicit_index) {
 			variable_info::array_range range = vinfo.as_array();
-			if(range.first != range.second && range.first + (++inner_index_) != range.second) {
+			if (++inner_index_ < std::distance(range.first, range.second)) {
 				++index_offset_;
 				return *this;
 			}
@@ -425,7 +425,9 @@ const vconfig vconfig::all_children_iterator::get_child() const
 			cp = &(vinfo.as_container());
 			return vconfig(cp, cp);
 		}
-		cp = *(vinfo.as_array().first + inner_index_);
+		variable_info::array_range r = vinfo.as_array();
+		std::advance(r.first, inner_index_);
+		cp = &*r.first;
 		return vconfig(cp, cp);
 	}
 	return vconfig(&i_->cfg, cache_key_);
@@ -736,5 +738,5 @@ config& variable_info::as_container() {
 
 variable_info::array_range variable_info::as_array() {
 	assert(is_valid);
-	return vars->child_range_deprecated(key);
+	return vars->child_range(key);
 }
