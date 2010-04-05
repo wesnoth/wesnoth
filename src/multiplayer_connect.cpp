@@ -646,7 +646,7 @@ config connect::side::get_config() const
 	if (cfg_.get_attribute("side").empty()
 			|| cfg_["side"] != lexical_cast<std::string>(index_ + 1))
 	{
-		res["side"] = lexical_cast<std::string>(index_ + 1);
+		res["side"] = index_ + 1;
 	}
 	res["controller"] = controller_names[controller_];
 	res["current_player"] = player_id_.empty() ? current_player_ : player_id_;
@@ -734,8 +734,8 @@ config connect::side::get_config() const
 		res["user_team_name"] = parent_->user_team_names_[team_];
 		res["allow_player"] = allow_player_;
 		res["colour"] = lexical_cast<std::string>(colour_ + 1);
-		res["gold"] = lexical_cast<std::string>(gold_);
-		res["income"] = lexical_cast<std::string>(income_);
+		res["gold"] = gold_;
+		res["income"] = income_;
 
 		if(!parent_->params_.use_map_settings || res["fog"].empty() || (res["fog"] != "yes" && res["fog"] != "no")) {
 			res["fog"] = parent_->params_.fog_game;
@@ -748,7 +748,7 @@ config connect::side::get_config() const
 		res["share_maps"] = parent_->params_.share_maps;
 		res["share_view"] =  parent_->params_.share_view;
 		if(!parent_->params_.use_map_settings || res["village_gold"].empty())
-			res["village_gold"] = lexical_cast<std::string>(parent_->params_.village_gold);
+			res["village_gold"] = parent_->params_.village_gold;
 	}
 
 	if(parent_->params_.use_map_settings && enabled_) {
@@ -1477,7 +1477,7 @@ void connect::lists_init()
 			config::proxy_string user_team_name = side["user_team_name"];
 
 			if(team_name.empty())
-				team_name = lexical_cast<std::string>(side_num);
+				team_name = side_num;
 
 			if(user_team_name.empty())
 			{
@@ -1561,11 +1561,11 @@ void connect::load_game()
 		params_.saved_game = false;
 		params_.mp_scenario = params_.scenario_data["id"];
 		level_.merge_with(params_.scenario_data);
-		level_["turns"] = lexical_cast<std::string>(num_turns_);
+		level_["turns"] = num_turns_;
 		level_.add_child("multiplayer", params_.to_config());
 
 		params_.hash = level_.hash();
-		level_["next_underlying_unit_id"] = lexical_cast<std::string>(0);
+		level_["next_underlying_unit_id"] = 0;
 		n_unit::id_manager::instance().clear();
 
 		if (params_.random_start_time)
@@ -1580,8 +1580,8 @@ void connect::load_game()
 			level_["random_start_time"] = false;
 		}
 
-		level_["experience_modifier"] = lexical_cast<std::string>(params_.xp_modifier);
-		level_["random_seed"] = lexical_cast<std::string>(state_.rng().get_random_seed());
+		level_["experience_modifier"] = params_.xp_modifier;
+		level_["random_seed"] = state_.rng().get_random_seed();
 	}
 
 	// Add the map name to the title.
