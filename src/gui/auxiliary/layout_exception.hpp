@@ -47,16 +47,6 @@ struct tlayout_exception_height_resize_failed
 {
 };
 
-/**
- * Exception thrown when the placement failed.
- *
- * @todo This exception is used as surrogate fix the lobby crash.
- * Remove the commit that introduced us.
- */
-struct tlayout_placement_failed
-{
-};
-
 } // namespace gui2
 
 #endif
