@@ -1,6 +1,27 @@
-\documentclass[a4paper,notitlepage,twocolumn,draft]{report}
+\documentclass[a4paper,notitlepage]{report}
 
 \usepackage[english]{babel}
+\usepackage{listings}
+\lstset{
+	  numbers = left
+	, showstringspaces = false
+	, tabsize = 4
+	, frame = single
+	, xrightmargin = -7em
+	, xleftmargin = -7em
+}
+
+\lstdefinestyle{C++}{
+	  language = C++
+	, escapeinside = {/*@}{@*/}}
+
+\lstdefinelanguage{WML}{}
+\lstdefinestyle{WML}{
+	  language = WML
+	, escapeinside = {\#*@}{@*\#}}
+
+\usepackage{verbatim}
+
 \usepackage {hyperref}
 
 \author{M.~de Wever}
@@ -550,6 +571,215 @@ this destroyed object.
 Subclasses of the tnotifier should add an notification function so the notifier
 can call all callbacks in the list. The notifier should take care of this
 calling.
+
+
+\chapter{Creating new widgets and dialogues}
+
+This chapter dives into the area of creating your own widgets or dialogues. For
+this example we use a real widget and dialogue under development. The widget
+being developed is the progress bar and the screen the initial load screen.
+
+First we make the widget then the screen in order to test the widget, this
+happens often when you need to add a new widget that you need it for a new
+dialogue so you need to create both for testing. Another option is to add the
+widget as dummy item to another existing dialogue. When adding a dialogue for
+which all widgets already exist this doesn't matter and you can directly dive
+into generating the dialogue.
+
+\section{Creating the widget}
+\label{creating_the_widget}
+
+The widget is normally split in 7 different files. Three .cpp/.hpp files and one
+WML file. Usually I start to create the new files by simply copy pasting the old
+files and pick a rather small class like timage or something. Then I start to
+update the build system files, followed by creating the code for the
+classes\footnote{Obviously I already thought about the design of the class
+before that, but that's of less importance in this tutorial}.
+
+Now we start to explain what the various files do, first a general overview of
+the files after which I dive more into the implementation of the file.
+
+\begin{description}
+
+\item[src/gui/auxiliary/widget\_definition/progress\_bar.*]
+	These files contain the definition of the progress bar. This mainly involves
+	the fixed fields for the widget. This widget has no extra fields so the copy
+	pasted version suffices. This file contains the \emph{static} properties for
+	a certain definition of a progress bar.
+
+\begin{description}
+\item[hpp] Listing \ref{widget_definition.hpp} contains the sample code. 
+	\begin{description}
+	\item[Line \ref{widget_definition.hpp:control}] Normally a
+		widget definition inherits from tcontrol\_definition which defines the
+		basic mandatory fields for a widget definition and a templated load
+		function for the resolution. Most widgets don't add more members to this
+		class.
+	\item[Line \ref{widget_definition.hpp:resolution}] Normally a resolution
+		definition inherits from tresolution\_definition\_ which define the
+		basic mandatory fiets for a resolution definition. Not all widgets use
+		these members, but most do. Most widgets don't add more members to this
+		class, except most container classes that add a grid builder
+		definition. Another example is are the scrollbars which define some
+		minimum sizes for parts of their control.
+	\end{description}
+
+\item[cpp] Listing \ref{widget_definition.cpp} contains the sample code. 
+	\begin{description}
+	\item[Line \ref{widget_definition.cpp:textdomain}] Every file in the library
+		is inside the ``wesnoth-lib'' text domain.
+	\item[Line \ref{widget_definition.cpp:constructor}] The constructor used is
+		pretty typical for all widgets.
+	\item[Line \ref{widget_definition.cpp:resolution_constructor}] The
+		constructor used is semi-typical. Resolutions that have their own
+		members initialize them in the constructor, but also validate mandatory
+		fields for their existence.
+
+		Also the progress bar only has one state, most widgets have more and
+		thus add more states.
+
+		And maybe the most important part of this constructor is the wiki
+		comment. This comment is used to generate wiki pages about the widget.
+		These wiki pages are used by content creators to know how to create a
+		proper WML file for the class.
+	\end{description}
+\end{description}
+
+\item[data/gui/default/widget/progress\_bar\_default.cfg]
+	Now that the widget is defined, we can decide how it should look. Which is
+	done in this file. Note that in the formula we use ``percentage'' which is
+	the percentage of the bar to be filled.
+
+% TODO add the description of the files
+
+\item[src/gui/auxiliary/window\_builder/progress\_bar.*]
+	These files contain the code to build a widget from the definition described
+	above and a config object as defined in the window. This file contains the
+	\emph{dynamic} properties of the progress bar. Since the progress bar has no
+	dynamic content this file is also rather short.
+
+\begin{description}
+\item[hpp] Listing \ref{window_builder.hpp} contains the sample code. 
+	\begin{description}
+	\item[Line \ref{window_builder.hpp:control}] Normally a
+		window builder inherits from tbuilder\_control which defines the
+		basic mandatory fields for a window builder.
+
+		The function also declares the build function.
+
+		Widget define their own member if they want to have some runtime
+		settings, e.g. the spacer defines its fixed size if needed.
+	\end{description}
+
+\item[cpp] Listing \ref{window_builder.cpp} contains the sample code. 
+	\begin{description}
+	\item[Line \ref{window_builder.cpp:textdomain}] Every file in the library
+		is inside the ``wesnoth-lib'' text domain.
+	\item[Line \ref{window_builder.cpp:constructor}] The constructor used is
+		pretty typical for all widgets.
+
+		If the constructor initialize custom members it may add some validation.
+		This is also true when the widget has a grid, like the listbox or
+		multi\_page.
+	\item[Line \ref{window_builder.cpp:build}]
+		This build() is semi-typical, it creates the widget initializes the
+		default fields and returns the created object.
+
+		Widgets with their own members initialize them after initializing the
+		default members.
+	\item[Line \ref{window_builder.cpp:wiki}]
+		At the end of the file it contains two wiki comment sections:
+
+		The first defines a macro with a short description of the widget.
+
+		The second describes the extra fields for the instance of the widget.
+	\end{description}
+\end{description}
+
+\item[src/gui/widgets/progress\_bar.*]
+	These files contain the interaction the widget has with the outer world and
+	how it reacts to events. Again the progress bar is rather boring. The
+	interesting part is the setter of the percentage, here the value of the
+	percentage use in the drawing routines is set\footnote{Other classes have a
+	separate update canvas, but that's because the canvas in those classes is
+	invalidated in several functions.}
+
+% TODO add the description of the files
+
+\end{description}
+
+This completes the simple progress bar widget. Of course we haven't tested it
+yet since there's no dialogue to test it in. So let's implement a dialogue.
+
+\begin{comment}
+
+FIXME add to list in settings.
+
+FIXME add a caveat emptor regarding broken linker
+
+FIXME add the builder files, at least mention them
+
+
+\section{Creating the window}
+
+The window is normally split in 3 files. One .cpp/.hpp file and one WML file.
+The dialogue used it the load progress dialogue, this is not the greatest
+example dialogue, so this section may later use another dialogue as example.
+
+\end{comment}
+
+\appendix
+
+
+\chapter{Files for creating the widget}
+
+This chapter contains the files created in \S~\ref{creating_the_widget}, these
+files aren't the real files added, but a slightly modified version; The
+copyright headers are stripped to avoid taking up useless space. Some extra
+comments are added to make referencing possible. This also means the files here
+will get out of date with the real files when fixes are committed, that's also
+fine since it doesn't change how the files are structured. The label still
+mentions the original filename, but might over time differ from the listings
+below.
+
+\lstinputlisting[style=C++
+	, caption={src/gui/auxiliary/widget\_definition/progress\_bar.hpp}
+	, label=widget_definition.hpp]
+	{gui2/widget_definition.hpp}
+
+\pagebreak
+\lstinputlisting[style=C++
+	, caption={src/gui/auxiliary/widget\_definition/progress\_bar.cpp}
+	, label=widget_definition.cpp]
+	{gui2/widget_definition.cpp}
+
+\pagebreak
+\lstinputlisting[style=WML
+	, caption={data/gui/default/widget/progress\_bar\_default.cfg}
+	, label=progress_bar.cfg]
+	{gui2/progress_bar.cfg}
+
+\pagebreak
+\lstinputlisting[style=C++
+	, caption={src/gui/auxiliary/window\_builder/progress\_bar.hpp}
+	, label=window_builder.hpp]
+	{gui2/window_builder.hpp}
+
+\lstinputlisting[style=C++
+	, caption={src/gui/auxiliary/window\_builder/progress\_bar.cpp}
+	, label=window_builder.cpp]
+	{gui2/window_builder.cpp}
+
+\lstinputlisting[style=C++
+	, caption={src/gui/widgets/progress\_bar.hpp}
+	, label=progress_bar.hpp]
+	{gui2/progress_bar.hpp}
+
+\pagebreak
+\lstinputlisting[style=C++
+	, caption={src/gui/widgets/progress\_bar.cpp}
+	, label=progress_bar.cpp]
+	{gui2/progress_bar.cpp}
 
 \end{document}
 
