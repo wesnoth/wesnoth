@@ -523,12 +523,15 @@ config replay::get_data_range(int cmd_start, int cmd_end, DATA_TYPE data_type)
 	return res;
 }
 
+struct async_cmd
+{
+	config *cfg;
+	int num;
+};
+
 void replay::undo()
 {
-	const config::child_list &cmds = cfg_.get_children_deprecated("command");
-	std::pair<config::child_list::const_iterator, config::child_list::const_iterator>
-		cmd(cmds.begin(), cmds.end());
-	std::vector<config::child_list::const_iterator> async_cmds;
+	std::vector<async_cmd> async_cmds;
 	// Remember commands not yet synced and skip over them.
 	// We assume that all already sent (sent=yes) data isn't undoable
 	// even if not marked explicitely with undo=no.
@@ -537,70 +540,64 @@ void replay::undo()
 	 * @todo Change undo= to default to "no" and explicitely mark all
 	 * undoable commands with yes.
 	 */
-	while(cmd.first != cmd.second && ((**(cmd.second-1))["undo"] == "no"
-		|| (**(cmd.second-1))["async"] == "yes"
-		|| (**(cmd.second-1))["sent"] == "yes"))
+
+	int cmd;
+	for (cmd = ncommands() - 1; cmd >= 0; --cmd)
 	{
-		if ((**(cmd.second-1))["async"] == "yes")
-			async_cmds.push_back(cmd.second-1);
-		--cmd.second;
+		config &c = command(cmd);
+		if (c["undo"] != "no" && c["async"] != "yes" && c["sent"] != "yes") break;
+		if (c["async"] == "yes") {
+			async_cmd ac = { &c, cmd };
+			async_cmds.push_back(ac);
+		}
 	}
 
-	if(cmd.first != cmd.second) {
-		config& cmd_second = (**(cmd.second-1));
-		if (const config &child = cmd_second.child("move"))
+	if (cmd < 0) return;
+	config &c = command(cmd);
+
+	if (const config &child = c.child("move"))
+	{
+		// A unit's move is being undone.
+		// Repair unsynced cmds whose locations depend on that unit's location.
+		const std::vector<map_location> steps =
+			parse_location_range(child["x"], child["y"]);
+
+		if (steps.empty()) {
+			ERR_REPLAY << "trying to undo a move using an empty path";
+			return; // nothing to do, I suppose.
+		}
+
+		const map_location &src = steps.front();
+		const map_location &dst = steps.back();
+
+		foreach (const async_cmd &ac, async_cmds)
 		{
-			// A unit's move is being undone.
-			// Repair unsynced cmds whose locations depend on that unit's location.
-			const std::vector<map_location> steps =
-					parse_location_range(child["x"], child["y"]);
-
-			if(steps.empty()) {
-				ERR_REPLAY << "trying to undo a move using an empty path";
-				return; // nothing to do, I suppose.
-			}
-
-			const map_location src = steps.front();
-			const map_location dst = steps.back();
-
-			for (std::vector<config::child_list::const_iterator>::iterator async_cmd =
-				 async_cmds.begin(); async_cmd != async_cmds.end(); ++async_cmd)
-			{
-				if (config &async_child = (***async_cmd).child("rename"))
-				{
-					map_location aloc(async_child, resources::state_of_game);
-					if (dst == aloc)
-					{
-						src.write(async_child);
-					}
-				}
+			if (config &async_child = ac.cfg->child("rename")) {
+				map_location aloc(async_child, resources::state_of_game);
+				if (dst == aloc) src.write(async_child);
 			}
 		}
-		else
-		{
-			const config *chld = &cmd_second.child("recruit");
-			if (!*chld) chld = &cmd_second.child("recall");
-			if (*chld) {
+	}
+	else
+	{
+		const config *chld = &c.child("recruit");
+		if (!*chld) chld = &c.child("recall");
+		if (*chld) {
 			// A unit is being un-recruited or un-recalled.
 			// Remove unsynced commands that would act on that unit.
 			map_location src(*chld, resources::state_of_game);
-			for (std::vector<config::child_list::const_iterator>::iterator async_cmd =
-				 async_cmds.begin(); async_cmd != async_cmds.end(); ++async_cmd)
+			foreach (const async_cmd &ac, async_cmds)
 			{
-				if (config &async_child = (***async_cmd).child("rename"))
+				if (config &async_child = ac.cfg->child("rename"))
 				{
 					map_location aloc(async_child, resources::state_of_game);
-					if (src == aloc)
-					{
-						remove_command(*async_cmd - cmd.first);
-					}
+					if (src == aloc) remove_command(ac.num);
 				}
-			}
 			}
 		}
 	}
 
-	remove_command(cmd.second - cmd.first - 1);
+	remove_command(cmd);
 	current_ = NULL;
 	set_random(NULL);
 }
