@@ -169,10 +169,10 @@ team::team_info::team_info(const config& cfg) :
 
 void team::team_info::write(config& cfg) const
 {
-	cfg["gold"] = str_cast(gold);
-	cfg["start_gold"] = str_cast(start_gold);
+	cfg["gold"] = gold;
+	cfg["start_gold"] = start_gold;
 	cfg["gold_add"] = gold_add;
-	cfg["income"] = str_cast(income);
+	cfg["income"] = income;
 	cfg["name"] = name;
 	cfg["team_name"] = team_name;
 	cfg["user_team_name"] = user_team_name;
@@ -184,8 +184,8 @@ void team::team_info::write(config& cfg) const
 	cfg["objectives"] = objectives;
 	cfg["objectives_changed"] = objectives_changed;
 	cfg["countdown_time"]= countdown_time;
-	cfg["action_bonus_count"]= str_cast(action_bonus_count);
-	cfg["village_gold"] = str_cast(income_per_village);
+	cfg["action_bonus_count"]= action_bonus_count;
+	cfg["village_gold"] = income_per_village;
 	cfg["disallow_observers"] = disallow_observers;
 	cfg["allow_player"] = allow_player;
 	cfg["no_leader"] = no_leader;
@@ -281,7 +281,7 @@ void team::write(config& cfg) const
 	info_.write(cfg);
 	cfg["shroud"] = uses_shroud();
 	cfg["fog"] = uses_fog();
-	cfg["gold"] = str_cast(gold_);
+	cfg["gold"] = gold_;
 
 	// Write village locations
 	for(std::set<map_location>::const_iterator t = villages_.begin(); t != villages_.end(); ++t) {
@@ -290,8 +290,8 @@ void team::write(config& cfg) const
 
 	cfg["shroud_data"] = shroud_.write();
 
-	cfg["countdown_time"] = str_cast(countdown_time_);
-	cfg["action_bonus_count"] = str_cast(action_bonus_count_);
+	cfg["countdown_time"] = countdown_time_;
+	cfg["action_bonus_count"] = action_bonus_count_;
 }
 
 bool team::get_village(const map_location& loc)
