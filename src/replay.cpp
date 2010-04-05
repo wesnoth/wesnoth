@@ -190,9 +190,7 @@ void replay::add_recruit(int value, const map_location& loc)
 	config* const cmd = add_command();
 
 	config val;
-
-	val["value"] = str_cast(value);
-
+	val["value"] = value;
 	loc.write(val);
 
 	cmd->add_child("recruit",val);
@@ -256,13 +254,13 @@ void replay::add_attack(const map_location& a, const map_location& b,
 	add_pos("attack",a,b);
 	config &cfg = current_->child("attack");
 
-	cfg["weapon"] = str_cast(att_weapon);
-	cfg["defender_weapon"] = str_cast(def_weapon);
+	cfg["weapon"] = att_weapon;
+	cfg["defender_weapon"] = def_weapon;
 	cfg["attacker_type"] = attacker_type_id;
 	cfg["defender_type"] = defender_type_id;
-	cfg["attacker_lvl"] = str_cast(attacker_lvl);
-	cfg["defender_lvl"] = str_cast(defender_lvl);
-	cfg["turn"] = str_cast(turn);
+	cfg["attacker_lvl"] = attacker_lvl;
+	cfg["defender_lvl"] = defender_lvl;
+	cfg["turn"] = int(turn);
 	cfg["tod"] = t.id;
 	add_unit_checksum(a,current_);
 	add_unit_checksum(b,current_);
