@@ -106,11 +106,21 @@ ttitle_screen::~ttitle_screen()
 static void animate_logo(
 		  unsigned long& timer_id
 		, unsigned& percentage
-		, tprogress_bar& progress_bar)
+		, tprogress_bar& progress_bar
+		, twindow& window)
 {
 	assert(percentage <= 100);
 	++percentage;
 	progress_bar.set_percentage(percentage);
+
+	/*
+	 * The progress bar may overlap (actually underlap) other widgets, which
+	 * the update invalidates, so make sure the whole window is redrawn to fix
+	 * this possible problem. Of course this is expensive but the logo is
+	 * animated once so the cost is only once.
+	 */
+	window.set_dirty();
+
 
 	if(percentage == 100) {
 		remove_timer(timer_id);
@@ -214,7 +224,8 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 					, boost::bind(animate_logo
 						, boost::ref(logo_timer_id_)
 						, boost::ref(percentage)
-						, boost::ref(*logo))
+						, boost::ref(*logo)
+						, boost::ref(window))
 					, true);
 		}
 	}
