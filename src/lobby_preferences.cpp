@@ -67,7 +67,7 @@ bool playerlist_sort_relation()
 
 void set_playerlist_sort_relation(bool v)
 {
-	return preferences::set("lobby_playerlist_sort_relation", lexical_cast<std::string>(v));
+	return preferences::set("lobby_playerlist_sort_relation", v);
 }
 
 bool playerlist_sort_name()
@@ -77,7 +77,7 @@ bool playerlist_sort_name()
 
 void set_playerlist_sort_name(bool v)
 {
-	return preferences::set("lobby_playerlist_sort_name", lexical_cast<std::string>(v));
+	return preferences::set("lobby_playerlist_sort_name", v);
 }
 
 bool playerlist_group_players()
@@ -87,7 +87,7 @@ bool playerlist_group_players()
 
 void set_playerlist_group_players(bool v)
 {
-	return preferences::set("lobby_playerlist_group_players", lexical_cast<std::string>(v));
+	return preferences::set("lobby_playerlist_group_players", v);
 }
 
 } //end namespace preferences
