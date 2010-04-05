@@ -38,6 +38,12 @@ config::proxy_string &config::proxy_string::operator=(bool b)
 	return *this;
 }
 
+config::proxy_string &config::proxy_string::operator=(int v)
+{
+	real_str_ = str_cast(v);
+	return *this;
+}
+
 config config::invalid;
 
 const char* config::diff_track_attribute = "__diff_track";
