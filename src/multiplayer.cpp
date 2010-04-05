@@ -537,6 +537,16 @@ static void enter_lobby_mode(game_display& disp, const config& game_config, mp::
 			sound::stop_music();
 		}
 		lobby_info li(game_config);
+
+		// Force a black background
+		const Uint32 colour = SDL_MapRGBA(disp.video().getSurface()->format
+				, 0
+				, 0
+				, 0
+				, 255);
+
+		SDL_FillRect(disp.video().getSurface(), NULL, colour);
+
 		gui2::tlobby_main dlg(game_config, li, disp);
 		dlg.set_preferences_callback(
 			boost::bind(do_preferences_dialog,
