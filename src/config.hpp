@@ -189,12 +189,11 @@ public:
 		proxy_string& operator=(const t_string &str)
 		{ real_str_ = str; return *this; }
 
-		// t_string 'emulation' methods
 		bool empty() const { return real_str_.empty(); }
 		const char *c_str() const { return real_str_.c_str(); }
-		std::string to_serialized() const { return real_str_.to_serialized(); }
-
 		const std::string &str() const { return real_str_.str(); }
+		const t_string &t_str() const { return real_str_; }
+
 		operator std::string() const { return real_str_.str(); }
 		operator t_string() const { return real_str_; }
 
