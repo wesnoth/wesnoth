@@ -426,6 +426,8 @@ twindow::tretval twindow::get_retval_by_id(const std::string& id)
 		return static_cast<tretval>(gui::GET_ADDONS);
 	} else if(id == "preferences") {
 		return static_cast<tretval>(gui::EDIT_PREFERENCES);
+	} else if("upload_statistics") {
+		return static_cast<tretval>(gui::BEG_FOR_UPLOAD);
 
 	// default if nothing matched
 	} else {
