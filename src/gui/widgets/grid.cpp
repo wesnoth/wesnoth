@@ -465,7 +465,7 @@ void tgrid::place(const tpoint& origin, const tpoint& size)
 	}
 
 	/***** GROW *****/
-	if(best_size < size) {
+	if(best_size.x <= size.x && best_size.y <= size.y) {
 
 		// expand it.
 		if(size.x > best_size.x) {
