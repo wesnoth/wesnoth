@@ -237,8 +237,9 @@ namespace {
 				break;
 			}
 			if (!already) {
-				script_names += "\n" + (*i)["name"];
-				(*i)["name"] += ".unchecked";
+				std::string name = (*i)["name"];
+				script_names += "\n" + name;
+				(*i)["name"] = name + ".unchecked";
 			}
 		}
 		if (!script_names.empty())
