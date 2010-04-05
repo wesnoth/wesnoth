@@ -147,7 +147,7 @@ config* get_prefs(){
 
 bool fullscreen()
 {
-	return utils::string_bool(get("fullscreen"), false);
+	return get("fullscreen", false);
 }
 
 void _set_fullscreen(bool ison)
@@ -157,7 +157,7 @@ void _set_fullscreen(bool ison)
 
 bool scroll_to_action()
 {
-	return utils::string_bool(get("scroll_to_action"), true);
+	return get("scroll_to_action", true);
 }
 
 void _set_scroll_to_action(bool ison)
@@ -221,7 +221,7 @@ bool turbo()
 		return true;
 	}
 
-	return  utils::string_bool(get("turbo"), false);
+	return get("turbo", false);
 }
 
 void _set_turbo(bool ison)
@@ -241,7 +241,7 @@ void save_turbo_speed(const double speed)
 
 bool idle_anim()
 {
-	return  utils::string_bool(get("idle_anim"), true);
+	return  get("idle_anim", true);
 }
 
 void _set_idle_anim(const bool ison)
@@ -271,7 +271,7 @@ void set_language(const std::string& s)
 
 bool ellipses()
 {
-	return utils::string_bool(get("show_side_colours"), false);
+	return get("show_side_colours", false);
 }
 
 void _set_ellipses(bool ison)
@@ -281,7 +281,7 @@ void _set_ellipses(bool ison)
 
 bool grid()
 {
-	return utils::string_bool(get("grid"), false);
+	return get("grid", false);
 }
 
 void _set_grid(bool ison)
@@ -381,7 +381,7 @@ void set_UI_volume(int vol)
 
 bool turn_bell()
 {
-	return utils::string_bool(get("turn_bell"), true);
+	return get("turn_bell", true);
 }
 
 bool set_turn_bell(bool ison)
@@ -405,7 +405,7 @@ bool set_turn_bell(bool ison)
 
 bool UI_sound_on()
 {
-	return utils::string_bool(get("UI_sound"), true);
+	return get("UI_sound", true);
 }
 
 bool set_UI_sound(bool ison)
@@ -429,12 +429,12 @@ bool set_UI_sound(bool ison)
 
 bool message_bell()
 {
-	return utils::string_bool(get("message_bell"), true);
+	return get("message_bell", true);
 }
 
 bool sound_on()
 {
-	return utils::string_bool(get("sound"), true);
+	return get("sound", true);
 }
 
 bool set_sound(bool ison) {
@@ -457,7 +457,7 @@ bool set_sound(bool ison) {
 
 bool music_on()
 {
-	return utils::string_bool(get("music"), true);
+	return get("music", true);
 }
 
 bool set_music(bool ison) {
@@ -501,12 +501,12 @@ void set_scroll_speed(const int new_speed)
 
 bool middle_click_scrolls()
 {
-	return utils::string_bool(get("middle_click_scrolls"), true);
+	return get("middle_click_scrolls", true);
 }
 
 bool mouse_scroll_enabled()
 {
-	return utils::string_bool(get("mouse_scrolling"), true);
+	return get("mouse_scrolling", true);
 }
 
 void enable_mouse_scroll(bool value)
@@ -521,12 +521,12 @@ int mouse_scroll_threshold()
 
 bool animate_map()
 {
-	return utils::string_bool(preferences::get("animate_map"), true);
+	return preferences::get("animate_map", true);
 }
 
 bool show_standing_animations()
 {
-	return utils::string_bool(preferences::get("unit_standing_animations"), true);
+	return preferences::get("unit_standing_animations", true);
 }
 
 bool show_fps()
