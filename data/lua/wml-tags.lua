@@ -220,6 +220,24 @@ local function wml_store_map_dimensions(cfg)
 	wesnoth.set_variable(var .. ".border_size", b)
 end
 
+local function wml_unit_worth(cfg)
+	local u = wesnoth.get_units(cfg)[1]
+	if not u then helper.wml_error "[unit_worth]'s filter didn't match any units" end
+	local ut = wesnoth.get_unit_type(u.__cfg.type)
+	local hp = u.hitpoints / u.max_hitpoints
+	local xp = u.experience / u.max_experience
+	local best_adv = ut.cost
+	for w in string.gmatch(ut.__cfg.advances_to, "[^%s,][^,]*") do
+		local uta = wesnoth.get_unit_type(w)
+		if uta.cost > best_adv then best_adv = uta.cost end
+	end
+	wesnoth.set_variable("cost", ut.cost)
+	wesnoth.set_variable("next_cost", best_adv)
+	wesnoth.set_variable("health", math.floor(hp * 100))
+	wesnoth.set_variable("experience", math.floor(xp * 100))
+	wesnoth.set_variable("unit_worth", math.floor(math.max(ut.cost * hp, best_adv * xp)))
+end
+
 local function wml_action_tag(cfg)
 	-- The new tag's name
 	local name = cfg.name or
@@ -248,4 +266,5 @@ wesnoth.register_wml_action("fire_event", wml_fire_event)
 wesnoth.register_wml_action("disallow_recruit", wml_disallow_recruit)
 wesnoth.register_wml_action("set_recruit", wml_set_recruit)
 wesnoth.register_wml_action("store_map_dimensions", wml_store_map_dimensions)
+wesnoth.register_wml_action("unit_worth", wml_unit_worth)
 wesnoth.register_wml_action("wml_action", wml_action_tag)

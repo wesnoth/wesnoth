@@ -2998,53 +2998,6 @@ WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
 	ai::manager::raise_map_changed();
 }
 
-WML_HANDLER_FUNCTION(unit_worth, /*event_info*/, cfg)
-{
-	game_state *state_of_game = resources::state_of_game;
-	unit_map *units = resources::units;
-	//const vconfig &unit_filter = cfg.child("filter");
-	const vconfig &unit_filter = cfg;
-	//if(unit_filter.null()) {
-	//	ERR_WML << _("[unit_worth] used without a [filter]") << "\n";
-	//	return;
-	//}
-	unit_map::iterator u;
-
-	for(u  = units->begin(); u != units->end(); ++u) {
-		if (game_events::unit_matches_filter(*u, unit_filter))
-			break;
-	}
-
-	if(u != units->end()) {
-		const unit_type *type = u->type();
-		const int cost = type->cost();
-		int hp = u->hitpoints() * 1000 / u->max_hitpoints();
-		int xp = u->experience() * 1000 / u->max_experience();
-		const std::vector<std::string> &advances = u->advances_to();
-		int best_advance = cost;
-		foreach(const std::string& new_type, advances) {
-			const unit_type *t = unit_types.find(new_type);
-			if (t) {
-				best_advance = std::max(best_advance, t->cost());
-			}
-		}
-
-		const int hp_based = cost * hp / 1000;
-		const int xp_based = best_advance * xp / 1000;
-		const int total = std::max(hp_based, xp_based);
-
-
-		state_of_game->get_variable("cost") = lexical_cast_default<std::string>(cost);
-		state_of_game->get_variable("next_cost") = lexical_cast_default<std::string>(best_advance);
-		state_of_game->get_variable("health") = lexical_cast_default<std::string>(hp/10);
-		state_of_game->get_variable("experience") = lexical_cast_default<std::string>(xp/10);
-		state_of_game->get_variable("unit_worth") = lexical_cast_default<std::string>(total);
-
-	} else {
-		ERR_WML << _("[unit_worth]'s filter didn't match any units!") << "\n";
-	}
-}
-
 /** Handles all the different types of actions that can be triggered by an event. */
 
 static void commit_new_handlers() {
