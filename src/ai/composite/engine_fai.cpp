@@ -19,7 +19,6 @@
 
 #include "ai.hpp"
 #include "engine_fai.hpp"
-#include "../formula/stage_rca_formulas.hpp"
 #include "../formula/stage_side_formulas.hpp"
 #include "../formula/stage_unit_formulas.hpp"
 #include "rca.hpp"
