@@ -1066,14 +1066,14 @@ void unit::remove_temporary_modifications()
 
 	for(unsigned int i = 0; i != NumModificationTypes; ++i) {
 		const std::string& mod_name = ModificationTypes[i];
-		const config::child_list& mods = modifications_.get_children_deprecated(mod_name);
-		for(size_t j = 0; j != mods.size(); ++j) {
-			const config& mod = *mods[j];
-			if(mod["duration"] != "forever" && mod["duration"] != "") {
+		for (int j = modifications_.child_count(mod_name) - 1; j >= 0; ++j)
+		{
+			const config &mod = modifications_.child(mod_name, j);
+			if (mod["duration"] != "forever" && !mod["duration"].empty()) {
 				if(mod.has_attribute("prev_type")) {
 					type_ = mod["prev_type"];
 				}
-				modifications_.remove_child(mod_name, j--);
+				modifications_.remove_child(mod_name, j);
 				rebuild_from_type = true;
 			}
 		}
