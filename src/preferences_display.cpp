@@ -531,9 +531,8 @@ bool show_video_mode_dialog(display& disp)
 			option << DEFAULT_ITEM;
 
 		option << j->first << "x" << j->second;
-		/*widescreen threshold is 5:3 to mark aspect ratios just
-		  a hair under 16:9 as widescreen*/
-		if ((double)j->first/j->second>=5.0/3)
+		/*widescreen threshold is 16:10*/
+		if ((double)j->first/j->second >= 16.0/10.0)
 		  option << _(" (widescreen)");
 		options.push_back(option.str());
 	}
