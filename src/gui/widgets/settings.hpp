@@ -29,7 +29,7 @@
 
 namespace gui2 {
 
-class tgui_definition;
+struct tgui_definition;
 
 /** Do we wish to use the new library or not. */
 extern bool new_widgets;
