@@ -1525,13 +1525,13 @@ void unit::write(config& cfg) const
 		cfg.remove_attribute("description");
 	}
 
-	cfg["hitpoints"] = str_cast(hit_points_);
-	cfg["max_hitpoints"] = str_cast(max_hit_points_);
+	cfg["hitpoints"] = hit_points_;
+	cfg["max_hitpoints"] = max_hit_points_;
 
-	cfg["experience"] = str_cast(experience_);
-	cfg["max_experience"] = str_cast(max_experience_);
+	cfg["experience"] = experience_;
+	cfg["max_experience"] = max_experience_;
 
-	cfg["side"] = str_cast(side_);
+	cfg["side"] = side_;
 
 	cfg["type"] = type_id();
 
@@ -1598,8 +1598,8 @@ void unit::write(config& cfg) const
 
 	cfg["facing"] = map_location::write_direction(facing_);
 
-	cfg["goto_x"] = lexical_cast_default<std::string>(goto_.x+1);
-	cfg["goto_y"] = lexical_cast_default<std::string>(goto_.y+1);
+	cfg["goto_x"] = goto_.x + 1;
+	cfg["goto_y"] = goto_.y + 1;
 
 	cfg.clear_children("waypoints");
 	if(waypoints_.empty() == false && goto_.valid()) {
@@ -1611,8 +1611,8 @@ void unit::write(config& cfg) const
 		write_locations(waypoints, waypoints_cfg);
 	}
 
-	cfg["moves"] = lexical_cast_default<std::string>(movement_);
-	cfg["max_moves"] = lexical_cast_default<std::string>(max_movement_);
+	cfg["moves"] = movement_;
+	cfg["max_moves"] = max_movement_;
 
 	cfg["resting"] = resting_;
 
@@ -1622,7 +1622,7 @@ void unit::write(config& cfg) const
 	cfg["language_name"] = type_name_;
 	cfg["undead_variation"] = undead_variation_;
 	cfg["variation"] = variation_;
-	cfg["level"] = lexical_cast_default<std::string>(level_);
+	cfg["level"] = level_;
 	switch(alignment_) {
 		case unit_type::LAWFUL:
 			cfg["alignment"] = "lawful";
@@ -1640,14 +1640,14 @@ void unit::write(config& cfg) const
 	cfg["unrenamable"] = unrenamable_;
 	cfg["alpha"] = lexical_cast_default<std::string>(alpha_);
 
-	cfg["attacks_left"] = lexical_cast_default<std::string>(attacks_left_);
-	cfg["max_attacks"] = lexical_cast_default<std::string>(max_attacks_);
+	cfg["attacks_left"] = attacks_left_;
+	cfg["max_attacks"] = max_attacks_;
 	cfg["zoc"] = emit_zoc_;
 	cfg.clear_children("attack");
 	for(std::vector<attack_type>::const_iterator i = attacks_.begin(); i != attacks_.end(); ++i) {
 		cfg.add_child("attack",i->get_cfg());
 	}
-	cfg["cost"] = lexical_cast_default<std::string>(unit_value_);
+	cfg["cost"] = unit_value_;
 	cfg.clear_children("modifications");
 	cfg.add_child("modifications",modifications_);
 
@@ -2208,7 +2208,7 @@ static void mod_mdr_merge(config& dst, const config& mod, bool delta)
 	foreach (const config::attribute &i, mod.attribute_range()) {
 		int v = 0;
 		if (delta) v = lexical_cast_default<int>(dst[i.first]);
-		dst[i.first] = lexical_cast<std::string>(v + lexical_cast_default<int>(i.second));
+		dst[i.first] = v + lexical_cast_default<int>(i.second);
 	}
 }
 
