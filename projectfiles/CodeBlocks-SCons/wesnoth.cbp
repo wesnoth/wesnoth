@@ -91,8 +91,6 @@
 		<Unit filename="..\..\src\ai\formula\candidates.hpp" />
 		<Unit filename="..\..\src\ai\formula\function_table.cpp" />
 		<Unit filename="..\..\src\ai\formula\function_table.hpp" />
-		<Unit filename="..\..\src\ai\formula\stage_rca_formulas.cpp" />
-		<Unit filename="..\..\src\ai\formula\stage_rca_formulas.hpp" />
 		<Unit filename="..\..\src\ai\formula\stage_side_formulas.cpp" />
 		<Unit filename="..\..\src\ai\formula\stage_side_formulas.hpp" />
 		<Unit filename="..\..\src\ai\formula\stage_unit_formulas.cpp" />
@@ -240,6 +238,8 @@
 		<Unit filename="..\..\src\gui\auxiliary\layout_exception.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\log.cpp" />
 		<Unit filename="..\..\src\gui\auxiliary\log.hpp" />
+		<Unit filename="..\..\src\gui\auxiliary\notifiee.hpp" />
+		<Unit filename="..\..\src\gui\auxiliary\notifier.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\timer.cpp" />
 		<Unit filename="..\..\src\gui\auxiliary\timer.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\widget_definition.cpp" />
@@ -254,14 +254,14 @@
 		<Unit filename="..\..\src\gui\auxiliary\widget_definition\label.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\widget_definition\listbox.cpp" />
 		<Unit filename="..\..\src\gui\auxiliary\widget_definition\listbox.hpp" />
-		<Unit filename="..\..\src\gui\auxiliary\widget_definition\menubar.cpp" />
-		<Unit filename="..\..\src\gui\auxiliary\widget_definition\menubar.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\widget_definition\minimap.cpp" />
 		<Unit filename="..\..\src\gui\auxiliary\widget_definition\minimap.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\widget_definition\multi_page.cpp" />
 		<Unit filename="..\..\src\gui\auxiliary\widget_definition\multi_page.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\widget_definition\panel.cpp" />
 		<Unit filename="..\..\src\gui\auxiliary\widget_definition\panel.hpp" />
+		<Unit filename="..\..\src\gui\auxiliary\widget_definition\progress_bar.cpp" />
+		<Unit filename="..\..\src\gui\auxiliary\widget_definition\progress_bar.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\widget_definition\repeating_button.cpp" />
 		<Unit filename="..\..\src\gui\auxiliary\widget_definition\repeating_button.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\widget_definition\scroll_label.cpp" />
@@ -306,8 +306,6 @@
 		<Unit filename="..\..\src\gui\auxiliary\window_builder\label.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\window_builder\listbox.cpp" />
 		<Unit filename="..\..\src\gui\auxiliary\window_builder\listbox.hpp" />
-		<Unit filename="..\..\src\gui\auxiliary\window_builder\menubar.cpp" />
-		<Unit filename="..\..\src\gui\auxiliary\window_builder\menubar.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\window_builder\minimap.cpp" />
 		<Unit filename="..\..\src\gui\auxiliary\window_builder\minimap.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\window_builder\multi_page.cpp" />
@@ -316,6 +314,8 @@
 		<Unit filename="..\..\src\gui\auxiliary\window_builder\panel.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\window_builder\password_box.cpp" />
 		<Unit filename="..\..\src\gui\auxiliary\window_builder\password_box.hpp" />
+		<Unit filename="..\..\src\gui\auxiliary\window_builder\progress_bar.cpp" />
+		<Unit filename="..\..\src\gui\auxiliary\window_builder\progress_bar.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\window_builder\repeating_button.cpp" />
 		<Unit filename="..\..\src\gui\auxiliary\window_builder\repeating_button.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\window_builder\scroll_label.cpp" />
@@ -425,8 +425,6 @@
 		<Unit filename="..\..\src\gui\widgets\label.hpp" />
 		<Unit filename="..\..\src\gui\widgets\listbox.cpp" />
 		<Unit filename="..\..\src\gui\widgets\listbox.hpp" />
-		<Unit filename="..\..\src\gui\widgets\menubar.cpp" />
-		<Unit filename="..\..\src\gui\widgets\menubar.hpp" />
 		<Unit filename="..\..\src\gui\widgets\minimap.cpp" />
 		<Unit filename="..\..\src\gui\widgets\minimap.hpp" />
 		<Unit filename="..\..\src\gui\widgets\multi_page.cpp" />
@@ -435,6 +433,8 @@
 		<Unit filename="..\..\src\gui\widgets\panel.hpp" />
 		<Unit filename="..\..\src\gui\widgets\password_box.cpp" />
 		<Unit filename="..\..\src\gui\widgets\password_box.hpp" />
+		<Unit filename="..\..\src\gui\widgets\progress_bar.cpp" />
+		<Unit filename="..\..\src\gui\widgets\progress_bar.hpp" />
 		<Unit filename="..\..\src\gui\widgets\repeating_button.cpp" />
 		<Unit filename="..\..\src\gui\widgets\repeating_button.hpp" />
 		<Unit filename="..\..\src\gui\widgets\scroll_label.cpp" />
@@ -553,8 +553,6 @@
 		<Unit filename="..\..\src\pathfind\astarsearch.cpp" />
 		<Unit filename="..\..\src\pathfind\pathfind.cpp" />
 		<Unit filename="..\..\src\pathfind\pathfind.hpp" />
-		<Unit filename="..\..\src\pathfind\teleport.cpp" />
-		<Unit filename="..\..\src\pathfind\teleport.hpp" />
 		<Unit filename="..\..\src\pathutils.cpp" />
 		<Unit filename="..\..\src\pathutils.hpp" />
 		<Unit filename="..\..\src\play_controller.cpp" />
@@ -571,8 +569,6 @@
 			<Option compilerVar="CC" />
 			<Option compiler="gcc" use="1" buildCommand="$compiler $options -DDISABLE_POOL_ALLOC $includes -c $file -o $object" />
 		</Unit>
-		<Unit filename="..\..\src\portrait.cpp" />
-		<Unit filename="..\..\src\portrait.hpp" />
 		<Unit filename="..\..\src\preferences.cpp" />
 		<Unit filename="..\..\src\preferences.hpp" />
 		<Unit filename="..\..\src\preferences_display.cpp" />
@@ -618,7 +614,6 @@
 		<Unit filename="..\..\src\sha1.cpp" />
 		<Unit filename="..\..\src\sha1.hpp" />
 		<Unit filename="..\..\src\shared_object.hpp" />
-		<Unit filename="..\..\src\shared_string.hpp" />
 		<Unit filename="..\..\src\show_dialog.cpp" />
 		<Unit filename="..\..\src\show_dialog.hpp" />
 		<Unit filename="..\..\src\simple_rng.hpp" />
