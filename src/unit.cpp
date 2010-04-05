@@ -1712,13 +1712,13 @@ void unit::start_animation(int start_time, const unit_animation *animation,
 	bool with_bars, bool cycles, const std::string &text, Uint32 text_color, STATE state)
 {
 	const game_display * disp =  game_display::get_singleton();
-    // everything except standing select and idle
-    const bool accelerate = (state != STATE_FORGET && state != STATE_STANDING);
-	if(!animation) {
+	state_ = state;
+	if (!animation && state != STATE_STANDING) {
 		set_standing(with_bars);
 		return ;
 	}
-	state_ =state;
+	// everything except standing select and idle
+	bool accelerate = (state != STATE_FORGET && state != STATE_STANDING);
 	draw_bars_ =  with_bars;
 	delete anim_;
 	anim_ = new unit_animation(*animation);
