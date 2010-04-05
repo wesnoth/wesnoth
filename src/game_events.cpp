@@ -2240,21 +2240,6 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 	}
 }
 
-WML_HANDLER_FUNCTION(store_map_dimensions, /*event_info*/, cfg)
-{
-	game_state *state_of_game = resources::state_of_game;
-	gamemap *game_map = resources::game_map;
-
-	std::string variable = cfg["variable"];
-	if (variable.empty()) {
-		variable="map_size";
-	}
-
-	state_of_game->get_variable(variable + ".width") = str_cast<int>(game_map->w());
-	state_of_game->get_variable(variable + ".height") = str_cast<int>(game_map->h());
-	state_of_game->get_variable(variable + ".border_size") = str_cast<int>(game_map->border_size());
-}
-
 WML_HANDLER_FUNCTION(store_starting_location, /*event_info*/, cfg)
 {
 	std::string side = cfg["side"];

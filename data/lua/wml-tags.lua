@@ -212,6 +212,14 @@ local function wml_set_recruit(cfg)
 	team.recruit = v
 end
 
+local function wml_store_map_dimensions(cfg)
+	local var = cfg.variable or "map_size"
+	local w, h, b = wesnoth.get_map_size()
+	wesnoth.set_variable(var .. ".width", w)
+	wesnoth.set_variable(var .. ".height", h)
+	wesnoth.set_variable(var .. ".border_size", b)
+end
+
 local function wml_action_tag(cfg)
 	-- The new tag's name
 	local name = cfg.name or
@@ -239,4 +247,5 @@ wesnoth.register_wml_action("store_unit_type_ids", wml_store_unit_type_ids)
 wesnoth.register_wml_action("fire_event", wml_fire_event)
 wesnoth.register_wml_action("disallow_recruit", wml_disallow_recruit)
 wesnoth.register_wml_action("set_recruit", wml_set_recruit)
+wesnoth.register_wml_action("store_map_dimensions", wml_store_map_dimensions)
 wesnoth.register_wml_action("wml_action", wml_action_tag)
