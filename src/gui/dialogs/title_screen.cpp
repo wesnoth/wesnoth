@@ -84,6 +84,8 @@ void show_language_dialog(CVideo& video, twindow& window)
  *     (next_tip) (button) ()     The button show the next tip of day.
  *     (previous_tip) (button) () The button show the previous tip of day.
  *     (logo) (progress_bar) ()   A progress bar to "animate" the image
+ *     (revision_number) (control)
+ *                                A widget to show the version number.
  * @end_table
  */
 
@@ -137,6 +139,12 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 	window.set_click_dismiss(false);
 	window.set_escape_disabled(true);
 
+	/**** Set the version number ****/
+	if(tcontrol* control
+			= find_widget<tcontrol>(&window, "revision_number", false, false)) {
+
+		control->set_label(_("Version ") + game_config::revision);
+	}
 	window.canvas()[0].set_variable("revision_number",
 		variant(_("Version") + std::string(" ") + game_config::revision));
 
