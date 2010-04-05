@@ -131,6 +131,11 @@ std::string get(const std::string& key) {
 	return prefs[key];
 }
 
+bool get(const std::string &key, bool def)
+{
+	return utils::string_bool(prefs[key], def);
+}
+
 void disable_preferences_save() {
 	no_preferences_save = true;
 }
