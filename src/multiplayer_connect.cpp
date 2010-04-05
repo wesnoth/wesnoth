@@ -829,11 +829,6 @@ void connect::side::set_ready_for_start(bool ready_for_start)
 	ready_for_start_ = ready_for_start;
 }
 
-const std::string& connect::side::get_save_id() const
-{
-	return save_id_;
-}
-
 void connect::side::import_network_user(const config& data)
 {
 	if (controller_ == CNTR_RESERVED)

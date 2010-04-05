@@ -105,8 +105,6 @@ public:
 		/** Sets if the joining player has chosen his leader. */
 		void set_ready_for_start(bool ready_for_start);
 
-		const std::string& get_save_id() const;
-
 		/**
 		 * Imports data from the network into this side, and updates the UI
 		 * accordingly.
