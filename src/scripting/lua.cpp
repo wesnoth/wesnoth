@@ -1585,12 +1585,12 @@ static int impl_current_get(lua_State *L)
 			cfg.add_child("second_weapon", weapon);
 		}
 		if (ev.loc1.valid()) {
-			cfg["x1"] = str_cast(ev.loc1.x + 1);
-			cfg["y1"] = str_cast(ev.loc1.y + 1);
+			cfg["x1"] = ev.loc1.x + 1;
+			cfg["y1"] = ev.loc1.y + 1;
 		}
 		if (ev.loc2.valid()) {
-			cfg["x2"] = str_cast(ev.loc2.x + 1);
-			cfg["y2"] = str_cast(ev.loc2.y + 1);
+			cfg["x2"] = ev.loc2.x + 1;
+			cfg["y2"] = ev.loc2.y + 1;
 		}
 		lua_newtable(L);
 		table_of_wml_config(L, cfg);
@@ -2428,12 +2428,12 @@ void LuaKernel::run_event(vconfig const &cfg, game_events::queued_event const &e
 		args.add_child("second_weapon", weapon);
 	}
 	if (ev.loc1.valid()) {
-		args["x1"] = str_cast(ev.loc1.x + 1);
-		args["y1"] = str_cast(ev.loc1.y + 1);
+		args["x1"] = ev.loc1.x + 1;
+		args["y1"] = ev.loc1.y + 1;
 	}
 	if (ev.loc2.valid()) {
-		args["x2"] = str_cast(ev.loc2.x + 1);
-		args["y2"] = str_cast(ev.loc2.y + 1);
+		args["x2"] = ev.loc2.x + 1;
+		args["y2"] = ev.loc2.y + 1;
 	}
 
 	// Get the code from the uninterpolated config object, so that $ symbols
@@ -2774,7 +2774,7 @@ void lua_ai_action_handler::handle(config &cfg, bool configOut)
 				luaW_toconfig(L, initial_top + 2, cfg);//get config
 			}
 
-			cfg["score"] = str_cast(score);//write score to the config
+			cfg["score"] = score; // write score to the config
 		}
 	}
 
