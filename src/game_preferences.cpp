@@ -60,8 +60,8 @@ manager::manager() :
 	set_music_volume(music_volume());
 	set_sound_volume(sound_volume());
 
-	set_show_haloes(utils::string_bool(preferences::get("show_haloes"), true));
-	if(!utils::string_bool(preferences::get("remember_timer_settings"), false)) {
+	set_show_haloes(preferences::get("show_haloes", true));
+	if (!preferences::get("remember_timer_settings", false)) {
 		preferences::erase("mp_countdown_init_time");
 		preferences::erase("mp_countdown_reservoir_time");
 		preferences::erase("mp_countdown_turn_bonus");
@@ -381,7 +381,7 @@ void set_password(const std::string& password)
 
 bool remember_password()
 {
-	return utils::string_bool(preferences::get("remember_password"), false);
+	return preferences::get("remember_password", false);
 }
 
 void set_remember_password(bool remember)
@@ -392,7 +392,7 @@ void set_remember_password(bool remember)
 
 bool turn_dialog()
 {
-	return utils::string_bool(preferences::get("turn_dialog"), false);
+	return preferences::get("turn_dialog", false);
 }
 
 void set_turn_dialog(bool ison)
@@ -402,7 +402,7 @@ void set_turn_dialog(bool ison)
 
 bool delay_shroud_updates_on_start()
 {
-	return utils::string_bool(preferences::get("delay_shroud_updates_on_start"), false);
+	return preferences::get("delay_shroud_updates_on_start", false);
 }
 
 void set_delay_shroud_updates_on_start(bool value)
@@ -412,12 +412,12 @@ void set_delay_shroud_updates_on_start(bool value)
 
 bool show_combat()
 {
-	return utils::string_bool(preferences::get("show_combat"), true);
+	return preferences::get("show_combat", true);
 }
 
 bool allow_observers()
 {
-	return utils::string_bool(preferences::get("allow_observers"), true);
+	return preferences::get("allow_observers", true);
 }
 
 void set_allow_observers(bool value)
@@ -427,7 +427,7 @@ void set_allow_observers(bool value)
 
 bool use_map_settings()
 {
-	return utils::string_bool(preferences::get("mp_use_map_settings"), true);
+	return preferences::get("mp_use_map_settings", true);
 }
 
 void set_use_map_settings(bool value)
@@ -504,7 +504,7 @@ void set_turns(int value)
 
 bool skip_mp_replay()
 {
-	return utils::string_bool(preferences::get("skip_mp_replay"), false);
+	return preferences::get("skip_mp_replay", false);
 }
 
 void set_skip_mp_replay(bool value)
@@ -514,7 +514,7 @@ void set_skip_mp_replay(bool value)
 
 bool countdown()
 {
-	return utils::string_bool(preferences::get("mp_countdown"), false);
+	return preferences::get("mp_countdown", false);
 }
 
 void set_countdown(bool value)
@@ -608,7 +608,7 @@ void set_map(int value)
 
 bool show_ai_moves()
 {
-	return utils::string_bool(preferences::get("show_ai_moves"), true);
+	return preferences::get("show_ai_moves", true);
 }
 
 void set_show_ai_moves(bool value)
@@ -623,7 +623,7 @@ void set_show_side_colours(bool value)
 
 bool show_side_colours()
 {
-	return utils::string_bool(preferences::get("show_side_colours"), true);
+	return preferences::get("show_side_colours", true);
 }
 
 void set_save_replays(bool value)
@@ -633,7 +633,7 @@ void set_save_replays(bool value)
 
 bool save_replays()
 {
-	return utils::string_bool(preferences::get("save_replays"), true);
+	return preferences::get("save_replays", true);
 }
 
 void set_delete_saves(bool value)
@@ -643,7 +643,7 @@ void set_delete_saves(bool value)
 
 bool delete_saves()
 {
-	return utils::string_bool(preferences::get("delete_saves"), false);
+	return preferences::get("delete_saves", false);
 }
 
 void set_ask_delete_saves(bool value)
@@ -653,7 +653,7 @@ void set_ask_delete_saves(bool value)
 
 bool ask_delete_saves()
 {
-	return utils::string_bool(preferences::get("ask_delete"), true);
+	return preferences::get("ask_delete", true);
 }
 
 void set_interrupt_when_ally_sighted(bool value)
@@ -663,7 +663,7 @@ void set_interrupt_when_ally_sighted(bool value)
 
 bool interrupt_when_ally_sighted()
 {
-	return utils::string_bool(preferences::get("ally_sighted_interrupts"), true);
+	return preferences::get("ally_sighted_interrupts", true);
 }
 
 int autosavemax()
@@ -714,7 +714,7 @@ void set_theme(const std::string& theme)
 
 bool show_floating_labels()
 {
-	return utils::string_bool(preferences::get("floating_labels"), true);
+	return preferences::get("floating_labels", true);
 }
 
 void set_show_floating_labels(bool value)
@@ -745,7 +745,7 @@ void set_show_haloes(bool value)
 
 bool flip_time()
 {
-	return utils::string_bool(preferences::get("flip_time"), false);
+	return preferences::get("flip_time", false);
 }
 
 void set_flip_time(bool value)
@@ -760,7 +760,7 @@ bool has_upload_log()
 
 bool upload_log()
 {
-	return utils::string_bool(preferences::get("upload_log_new"), true);
+	return preferences::get("upload_log_new", true);
 }
 
 void set_upload_log(bool value)
@@ -783,12 +783,12 @@ std::string upload_id()
 
 bool compress_saves()
 {
-	return utils::string_bool(preferences::get("compress_saves"), true);
+	return preferences::get("compress_saves", true);
 }
 
 bool startup_effect()
 {
-	return utils::string_bool(preferences::get("startup_effect"), true);
+	return preferences::get("startup_effect", true);
 }
 
 std::string get_chat_timestamp(const time_t& t) {
@@ -799,7 +799,7 @@ std::string get_chat_timestamp(const time_t& t) {
 }
 
 bool chat_timestamping() {
-	return utils::string_bool(preferences::get("chat_timestamp"), false);
+	return preferences::get("chat_timestamp", false);
 }
 
 void set_chat_timestamping(bool value) {
