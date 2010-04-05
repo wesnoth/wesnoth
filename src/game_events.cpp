@@ -2256,7 +2256,7 @@ WML_HANDLER_FUNCTION(store_starting_location, /*event_info*/, cfg)
 	resources::game_map->write_terrain(loc, loc_store);
 	if (resources::game_map->is_village(loc)) {
 		int side = village_owner(loc, *resources::teams) + 1;
-		loc_store["owner_side"] = str_cast(side);
+		loc_store["owner_side"] = side;
 	}
 }
 
@@ -2295,7 +2295,7 @@ WML_HANDLER_FUNCTION(store_villages, /*event_info*/, cfg)
 			j->write(loc_store);
 			resources::game_map->write_terrain(*j, loc_store);
 			int side = village_owner(*j, *resources::teams) + 1;
-			loc_store["owner_side"] = str_cast(side);
+			loc_store["owner_side"] = side;
 		}
 	}
 	varinfo.vars->clear_children(varinfo.key);
@@ -2322,7 +2322,7 @@ WML_HANDLER_FUNCTION(store_locations, /*event_info*/, cfg)
 		resources::game_map->write_terrain(*j, loc_store);
 		if (resources::game_map->is_village(*j)) {
 			int side = village_owner(*j, *resources::teams) + 1;
-			loc_store["owner_side"] = str_cast(side);
+			loc_store["owner_side"] = side;
 		}
 	}
 }
