@@ -190,10 +190,10 @@ if(ENABLE_TESTS)
 endif(ENABLE_TESTS)
 if(ENABLE_GAME)
 	find_package( Lua51 REQUIRED)
-	find_package( PkgConfig REQUIRED )
 
-	pkg_check_modules( PANGOCAIRO REQUIRED pangocairo>=1.14.8 )
 	if(NOT MSVC)
+		find_package( PkgConfig REQUIRED )
+		pkg_check_modules( PANGOCAIRO REQUIRED pangocairo>=1.14.8 )
 		pkg_check_modules( FONTCONFIG REQUIRED fontconfig>=2.4.1 )
 	endif(NOT MSVC)
 
