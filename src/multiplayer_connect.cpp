@@ -1559,7 +1559,7 @@ void connect::load_game()
 	} else {
 		level_.clear();
 		params_.saved_game = false;
-		params_.mp_scenario = params_.scenario_data["id"];
+		params_.mp_scenario = params_.scenario_data["id"].str();
 		level_.merge_with(params_.scenario_data);
 		level_["turns"] = num_turns_;
 		level_.add_child("multiplayer", params_.to_config());
@@ -1585,7 +1585,7 @@ void connect::load_game()
 	}
 
 	// Add the map name to the title.
-	append_to_title(" - " + level_["name"]);
+	append_to_title(" - " + level_["name"].t_str());
 
 
 	std::string era = params_.mp_era;
@@ -1668,7 +1668,7 @@ void connect::update_and_send_diff(bool update_time_of_day)
 	if (update_time_of_day)
 	{
 		// Set random start ToD
-		tod_manager tod_mng(level_,atoi(level_["turns"].c_str()),&state_);
+		tod_manager tod_mng(level_, level_["turns"], &state_);
 	}
 
 	config diff = level_.get_diff(old_level);

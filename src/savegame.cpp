@@ -450,11 +450,11 @@ void loadgame::load_game(std::string& filename, bool show_replay, bool cancel_or
         }
 	}
 
-	gamestate_.classification().difficulty = load_config_["difficulty"];
-	gamestate_.classification().campaign_define = load_config_["campaign_define"];
-	gamestate_.classification().campaign_type = load_config_["campaign_type"];
+	gamestate_.classification().difficulty = load_config_["difficulty"].str();
+	gamestate_.classification().campaign_define = load_config_["campaign_define"].str();
+	gamestate_.classification().campaign_type = load_config_["campaign_type"].str();
 	gamestate_.classification().campaign_xtra_defines = utils::split(load_config_["campaign_extra_defines"]);
-	gamestate_.classification().version = load_config_["version"];
+	gamestate_.classification().version = load_config_["version"].str();
 
 	check_version_compatibility();
 

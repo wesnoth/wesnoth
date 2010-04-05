@@ -1112,27 +1112,27 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 	const std::string add = cfg["add"];
 	if(add.empty() == false) {
 		if(isint(var.str()) && isint(add)) {
-			var = str_cast( std::atoi(var.c_str()) + std::atoi(add.c_str()) );
+			var = var.to_int() + atoi(add.c_str());
 		} else {
-			var = str_cast( std::atof(var.c_str()) + std::atof(add.c_str()) );
+			var = str_cast(atof(var.str().c_str()) + atof(add.c_str()));
 		}
 	}
 
 	const std::string sub = cfg["sub"];
 	if(sub.empty() == false) {
 		if(isint(var.str()) && isint(sub)) {
-			var = str_cast( std::atoi(var.c_str()) - std::atoi(sub.c_str()) );
+			var = var.to_int() - atoi(sub.c_str());
 		} else {
-			var = str_cast( std::atof(var.c_str()) - std::atof(sub.c_str()) );
+			var = str_cast(atof(var.str().c_str()) - atof(sub.c_str()));
 		}
 	}
 
 	const std::string multiply = cfg["multiply"];
 	if(multiply.empty() == false) {
 		if(isint(var.str()) && isint(multiply)) {
-			var = str_cast( std::atoi(var.c_str()) * std::atoi(multiply.c_str()) );
+			var = var.to_int() * atoi(multiply.c_str());
 		} else {
-			var = str_cast( std::atof(var.c_str()) * std::atof(multiply.c_str()) );
+			var = str_cast(atof(var.str().c_str()) * atof(multiply.c_str()));
 		}
 	}
 
@@ -1143,9 +1143,9 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 			return;
 		}
 		if(isint(var.str()) && isint(divide)) {
-			var = str_cast( std::atoi(var.c_str()) / std::atoi(divide.c_str()) );
+			var = var.to_int() / atoi(divide.c_str());
 		} else {
-			var = str_cast( std::atof(var.c_str()) / std::atof(divide.c_str()) );
+			var = str_cast(atof(var.str().c_str()) / atof(divide.c_str()));
 		}
 	}
 
@@ -1156,16 +1156,16 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 			return;
 		}
 		if(isint(var.str()) && isint(modulo)) {
-			var = str_cast( std::atoi(var.c_str()) % std::atoi(modulo.c_str()) );
+			var = var.to_int() % atoi(modulo.c_str());
 		} else {
-			double value = std::fmod( std::atof(var.c_str()), std::atof(modulo.c_str()) );
+			double value = std::fmod(atof(var.str().c_str()), atof(modulo.c_str()));
 			var = str_cast(value);
 		}
 	}
 
 	const std::string round_val = cfg["round"];
 	if(round_val.empty() == false) {
-		double value = std::atof(var.c_str());
+		double value = atof(var.str().c_str());
 		if (round_val == "ceil") {
 			value = std::ceil(value);
 		} else if (round_val == "floor") {

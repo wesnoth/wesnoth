@@ -439,14 +439,14 @@ void server::load_config() {
 	input_.reset(new input_stream(fifo_path));
 
 	save_replays_ = utils::string_bool(cfg_["save_replays"], false);
-	replay_save_path_ = cfg_["replay_save_path"];
+	replay_save_path_ = cfg_["replay_save_path"].str();
 
 	tor_ip_list_ = utils::split(cfg_["tor_ip_list_path"].empty() ? "" : read_file(cfg_["tor_ip_list_path"]), '\n');
 
-	admin_passwd_ = cfg_["passwd"];
-	motd_ = cfg_["motd"];
+	admin_passwd_ = cfg_["passwd"].str();
+	motd_ = cfg_["motd"].str();
 	lan_server_ = lexical_cast_default<time_t>(cfg_["lan_server"], 0);
-	uh_name_ = cfg_["user_handler"];
+	uh_name_ = cfg_["user_handler"].str();
 
 	deny_unregistered_login_ = utils::string_bool(cfg_["deny_unregistered_login"], false);
 
@@ -478,7 +478,7 @@ void server::load_config() {
 	// Example config line:
 	// restart_command="./wesnothd-debug -d -c ~/.wesnoth1.5/server.cfg"
 	// remember to make new one as a daemon or it will block old one
-	restart_command = cfg_["restart_command"];
+	restart_command = cfg_["restart_command"].str();
 
 	fps_limit_.set_ms_per_frame(lexical_cast_default<size_t>(cfg_["ms_per_frame"], 20));
 

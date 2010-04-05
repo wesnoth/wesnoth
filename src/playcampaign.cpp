@@ -91,7 +91,7 @@ void play_replay(display& disp, game_state& gamestate, const config& game_config
 	try {
 		// Preserve old label eg. replay
 		if (gamestate.classification().label.empty())
-			gamestate.classification().label = starting_pos["name"];
+			gamestate.classification().label = starting_pos["name"].str();
 		//if (gamestate.abbrev.empty())
 		//	gamestate.abbrev = (*scenario)["abbrev"];
 
@@ -261,7 +261,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		gamestate.set_menu_items(gamestate.snapshot.child_range("menu_item"));
 		// Replace game label with that from snapshot
 		if (!gamestate.snapshot["label"].empty()){
-			gamestate.classification().label = gamestate.snapshot["label"];
+			gamestate.classification().label = gamestate.snapshot["label"].str();
 		}
 		// Helper for transitioning middle-of-scenario savefiles from 1.6 to 1.8.
 		// To be removed for 1.10.
@@ -497,7 +497,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				{
 					std::string id = side["save_id"];
 					if(id.empty()) {
-						id = side["id"];
+						id = side["id"].str();
 					}
 					if(!id.empty()) {
 						/* Update side info to match current_player info

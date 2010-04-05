@@ -799,7 +799,7 @@ theme::menu* theme::refresh_title(const std::string& id, const std::string& new_
 theme::menu* theme::refresh_title2(const std::string& id, const std::string& title_tag){
 	std::string new_title;
 
-	config& cfg = find_ref(id, cfg_, false);
+	const config &cfg = find_ref(id, cfg_, false);
 	if (! cfg[title_tag].empty())
 		new_title = cfg[title_tag];
 

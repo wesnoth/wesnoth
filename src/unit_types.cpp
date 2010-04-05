@@ -692,8 +692,8 @@ unit_type::~unit_type()
 
 void unit_type::set_config(const config& cfg)
 {
-    cfg_ = cfg;
-	id_ = cfg_["id"];
+	cfg_ = cfg;
+	id_ = cfg["id"];
 }
 
 void unit_type::build_full(const config& cfg, const movement_type_map& mv_types,
@@ -800,10 +800,10 @@ void unit_type::build_help_index(const config& cfg, const movement_type_map& mv_
 	movement_ = lexical_cast_default<int>(cfg["movement"], 1);
 	max_attacks_ = lexical_cast_default<int>(cfg["attacks"], 1);
 	cost_ = lexical_cast_default<int>(cfg["cost"], 1);
-	usage_ = cfg_["usage"];
-	undead_variation_ = cfg_["undead_variation"];
-	image_ = cfg_["image"];
-    image_profile_ = cfg_["profile"];
+	usage_ = cfg_["usage"].str();
+	undead_variation_ = cfg_["undead_variation"].str();
+	image_ = cfg_["image"].str();
+	image_profile_ = cfg_["profile"].str();
 
 	const race_map::const_iterator race_it = races.find(cfg["race"]);
 	if(race_it != races.end()) {
@@ -1168,7 +1168,7 @@ void unit_type_data::set_config(config &cfg)
             merge_cfg.clear_children("base_unit");
             std::string id = merge_cfg["id"];
             if(id.empty()) {
-                id = from_cfg["name"];
+				id = from_cfg["name"].str();
             }
 
 			ut = merge_cfg;

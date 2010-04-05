@@ -321,7 +321,7 @@ static server_type open_connection(game_display& disp, const std::string& origin
 					} else if((*error)["error_code"] == MP_INCORRECT_PASSWORD_ERROR) {
 						error_message = _("The password you provided was incorrect.");
 					} else {
-						error_message = (*error)["message"];
+						error_message = (*error)["message"].str();
 					}
 
 					gui2::tmp_login dlg(error_message, !((*error)["password_request"].empty()));

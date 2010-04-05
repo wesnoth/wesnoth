@@ -209,7 +209,7 @@ void wait::join_game(bool observe)
 	}
 
 	// Add the map name to the title.
-	append_to_title(": " + level_["name"]);
+	append_to_title(": " + level_["name"].t_str());
 
 	if (!observe) {
 		//search for an appropriate vacant slot. If a description is set

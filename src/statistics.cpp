@@ -161,7 +161,7 @@ static stats::battle_result_map read_battle_result_map(const config& cfg)
 	foreach (const config &i, cfg.child_range("sequence"))
 	{
 		config item = i;
-		const int key = atoi(item["_num"].c_str());
+		int key = item["_num"];
 		item.remove_attribute("_num");
 		m[key] = read_str_int_map(item);
 	}

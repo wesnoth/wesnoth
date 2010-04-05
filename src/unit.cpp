@@ -2517,12 +2517,12 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 	// Apply variations -- only apply if we are adding this for the first time.
 	if (!last_effect.empty() && no_add == false) {
 		if ((last_effect)["apply_to"] == "variation") {
-			variation_ = (last_effect)["name"];
+			variation_ = last_effect["name"].str();
 			advance_to(this->type());
 		} else if ((last_effect)["apply_to"] == "type") {
 			if (!new_child->has_attribute("prev_type"))
 				(*new_child)["prev_type"] = type_id();
-			type_ = (last_effect)["name"];
+			type_ = last_effect["name"].str();
 			int hit_points = hit_points_;
 			int experience = experience_;
 			int movement = movement_;

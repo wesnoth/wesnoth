@@ -44,6 +44,11 @@ config::proxy_string &config::proxy_string::operator=(int v)
 	return *this;
 }
 
+int config::proxy_string::to_int(int def) const
+{
+	return lexical_cast_default(real_str_.c_str(), def);
+}
+
 config config::invalid;
 
 const char* config::diff_track_attribute = "__diff_track";

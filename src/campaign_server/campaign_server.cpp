@@ -525,13 +525,13 @@ namespace {
 							LOG_CS << "Upload aborted - invalid file names in add-on data.\n";
 							network::send_data(construct_error("Add-on rejected: The add-on contains an illegal file or directory name."
 									" File or directory names may not contain any of the following characters: '/ \\ : ~'"), sock, gzipped);
-						} else if (campaign && (*campaign)["passphrase"] != upload["passphrase"]) {
+						} else if (campaign && (*campaign)["passphrase"].str() != upload["passphrase"]) {
 							// the user password failed, now test for the master password, in master password
 							// mode the upload behaves different since it's only intended to update translations.
 							// In a later version the translations will be separated from the addon.
 							LOG_CS << "Upload is admin upload.\n";
 							if (!campaigns()["master_password"].empty()
-							    && campaigns()["master_password"] == upload["passphrase"])
+							    && campaigns()["master_password"].str() == upload["passphrase"])
 							{
 								std::string message = "Add-on accepted.";
 
@@ -585,7 +585,7 @@ namespace {
 
 							(*campaign)["title"] = upload["title"];
 							(*campaign)["name"] = upload["name"];
-							(*campaign)["filename"] = "data/" + upload["name"];
+							(*campaign)["filename"] = "data/" + upload["name"].str();
 							(*campaign)["passphrase"] = upload["passphrase"];
 							(*campaign)["author"] = upload["author"];
 							(*campaign)["description"] = upload["description"];

@@ -201,7 +201,7 @@ void tod_manager::set_start_ToD(config &level, int current_turn)
 {
 	if (!level["current_tod"].empty())
 	{
-		set_time_of_day(atoi(level["current_tod"].c_str()));
+		set_time_of_day(level["current_tod"]);
 		return;
 	}
 	std::string random_start_time = level["random_start_time"];

@@ -48,18 +48,18 @@ cave_map_generator::cave_map_generator(const config &cfg) :
 	flipx_(false),
 	flipy_(false)
 {
-	width_ = atoi(cfg_["map_width"].c_str());
-	height_ = atoi(cfg_["map_height"].c_str());
+	width_ = cfg_["map_width"];
+	height_ = cfg_["map_height"];
 
-	village_density_ = atoi(cfg_["village_density"].c_str());
+	village_density_ = cfg_["village_density"];
 
-	const int r = rand()%100;
-	const int chance = atoi(cfg_["flipx_chance"].c_str());
+	int r = rand() % 100;
+	int chance = cfg_["flipx_chance"];
 
 	flipx_ = r < chance;
 
 	LOG_NG << "flipx: " << r << " < " << chance << " = " << (flipx_ ? "true" : "false") << "\n";
-	flipy_ = (rand()%100) < atoi(cfg_["flipy_chance"].c_str());
+	flipy_ = rand() % 100 < cfg_["flipy_chance"];
 }
 
 std::string cave_map_generator::config_name() const
