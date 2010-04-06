@@ -1,0 +1,208 @@
+This is the history of DM commit messages from the Wesnoth-UMC-Dev Project's
+repository.
+
+DW was mainlined in Wesnoth version 1.9.0, using revision 6900.
+
+------------------------------------------------------------------------
+r6900 | shikadilord | 2010-04-05 16:53:21 -0400 (Mon, 05 Apr 2010) | 3 lines
+
+DW: ran wmlindent
+
+
+------------------------------------------------------------------------
+r6899 | shikadilord | 2010-04-05 16:52:36 -0400 (Mon, 05 Apr 2010) | 8 lines
+
+DW: ran wesnoth-optipng
+
+Overall statistics (only for files with a smaller recompressed size):
+  Original size: 303 KiB on 8 files
+ Optimized size: 286 KiB
+   Total saving: 17 KiB = 5% decrease
+
+
+------------------------------------------------------------------------
+r6898 | shikadilord | 2010-04-05 16:50:27 -0400 (Mon, 05 Apr 2010) | 5 lines
+
+DW: ran umcpropfix to fix SVN properties on newly committed (?) files
+
+*** Fixed: 3 files of 155
+
+
+------------------------------------------------------------------------
+r6889 | beetlenaut | 2010-04-04 05:21:49 -0400 (Sun, 04 Apr 2010) | 1 line
+
+Fixed a problem with the kraken
+------------------------------------------------------------------------
+r6888 | beetlenaut | 2010-04-04 04:31:07 -0400 (Sun, 04 Apr 2010) | 1 line
+
+Text polishing
+------------------------------------------------------------------------
+r6887 | beetlenaut | 2010-04-04 03:48:24 -0400 (Sun, 04 Apr 2010) | 1 line
+
+Slight text cleanup.
+------------------------------------------------------------------------
+r6886 | beetlenaut | 2010-04-04 03:46:44 -0400 (Sun, 04 Apr 2010) | 1 line
+
+Credits updated.
+------------------------------------------------------------------------
+r6885 | beetlenaut | 2010-04-04 02:55:38 -0400 (Sun, 04 Apr 2010) | 1 line
+
+Switches to new sprites for Kai Krellis.
+------------------------------------------------------------------------
+r6884 | beetlenaut | 2010-04-04 02:29:52 -0400 (Sun, 04 Apr 2010) | 1 line
+
+Dialog change to improve the backstory.
+------------------------------------------------------------------------
+r6883 | beetlenaut | 2010-04-04 01:18:48 -0400 (Sun, 04 Apr 2010) | 1 line
+
+Makes the slavers scenario a bit easier on hardest difficulties.
+------------------------------------------------------------------------
+r6882 | beetlenaut | 2010-04-04 01:07:54 -0400 (Sun, 04 Apr 2010) | 1 line
+
+Fixes problems with {WHISPER}s that kept the campaign from loading.
+------------------------------------------------------------------------
+r6881 | beetlenaut | 2010-04-04 01:04:17 -0400 (Sun, 04 Apr 2010) | 1 line
+
+Added portrait for Kai Krellis, and moved the portrait for Cylanna to the transparent folder.
+------------------------------------------------------------------------
+r6880 | beetlenaut | 2010-04-03 21:14:32 -0300 (Sat, 03 Apr 2010) | 1 line
+
+Attack icons
+------------------------------------------------------------------------
+r6853 | esr | 2010-03-27 21:08:17 -0300 (Sat, 27 Mar 2010) | 2 lines
+
+More Dead Water wmllint cleanup (not complete yet).
+
+------------------------------------------------------------------------
+r6852 | shikadilord | 2010-03-27 19:08:12 -0300 (Sat, 27 Mar 2010) | 3 lines
+
+DW: more fixes
+
+
+------------------------------------------------------------------------
+r6850 | shikadilord | 2010-03-27 17:51:03 -0300 (Sat, 27 Mar 2010) | 3 lines
+
+DW: fix more cases of untranslatable unit names
+
+
+------------------------------------------------------------------------
+r6849 | esr | 2010-03-27 17:44:40 -0300 (Sat, 27 Mar 2010) | 2 lines
+
+Partial wmllint cleanup for Dead Water.
+
+------------------------------------------------------------------------
+r6847 | shikadilord | 2010-03-27 17:27:12 -0300 (Sat, 27 Mar 2010) | 5 lines
+
+DW: fix invalid WML
+
+s/generateDescription/generate_description/g
+
+
+------------------------------------------------------------------------
+r6845 | shikadilord | 2010-03-27 17:17:12 -0300 (Sat, 27 Mar 2010) | 6 lines
+
+DW: unrenamable/translatability fixes in scenario 1
+
+* Gwabbo is now unrenamable and his name is translatable
+* Cylanna's name is now translatable
+
+
+------------------------------------------------------------------------
+r6843 | shikadilord | 2010-03-27 17:07:58 -0300 (Sat, 27 Mar 2010) | 7 lines
+
+DW: fix bad textdomain binding detected by textdomain_check_trunk
+
+Fire_Guardian.cfg was bound to wesnoth-utbs instead of wesnoth-Dead_Water
+
+(Needs to be backported.)
+
+
+------------------------------------------------------------------------
+r6841 | shikadilord | 2010-03-27 17:00:38 -0300 (Sat, 27 Mar 2010) | 3 lines
+
+DW: ran wmlindent
+
+
+------------------------------------------------------------------------
+r6702 | esr | 2010-03-08 21:59:03 -0300 (Mon, 08 Mar 2010) | 2 lines
+
+Bring summary up to date.
+
+------------------------------------------------------------------------
+r6701 | esr | 2010-03-08 21:46:59 -0300 (Mon, 08 Mar 2010) | 2 lines
+
+The changes I made were not really larhe enough to qualify as a rewrite.
+
+------------------------------------------------------------------------
+r6375 | espreon | 2010-02-06 21:54:05 -0300 (Sat, 06 Feb 2010) | 7 lines
+
+DW: Ran wesnoth-optipng:
+
+Overall statistics (only for files with a smaller recompressed size):
+  Original size: 393 KiB on 4 files
+ Optimized size: 378 KiB
+   Total saving: 15 KiB = 3% decrease
+
+------------------------------------------------------------------------
+r6374 | espreon | 2010-02-06 21:37:40 -0300 (Sat, 06 Feb 2010) | 1 line
+
+DW: ran set-properties.
+------------------------------------------------------------------------
+r6346 | shikadilord | 2010-02-05 23:10:22 -0300 (Fri, 05 Feb 2010) | 3 lines
+
+Make Cylanna unrenamable in scenario 1
+
+
+------------------------------------------------------------------------
+r5940 | beetlenaut | 2009-12-20 16:59:09 -0300 (Sun, 20 Dec 2009) | 1 line
+
+Cylanna portrait
+------------------------------------------------------------------------
+r5938 | beetlenaut | 2009-12-20 03:59:48 -0300 (Sun, 20 Dec 2009) | 1 line
+
+citizen/brawler portrait
+------------------------------------------------------------------------
+r5937 | beetlenaut | 2009-12-20 03:54:17 -0300 (Sun, 20 Dec 2009) | 1 line
+
+prose change
+------------------------------------------------------------------------
+r5915 | shikadilord | 2009-12-17 00:19:45 -0300 (Thu, 17 Dec 2009) | 2 lines
+
+Do not require a duplicate of a mainline image for DW's menu entry icon
+
+------------------------------------------------------------------------
+r5903 | esr | 2009-12-16 13:50:21 -0300 (Wed, 16 Dec 2009) | 2 lines
+
+Text polish.
+
+------------------------------------------------------------------------
+r5898 | esr | 2009-12-15 22:21:24 -0300 (Tue, 15 Dec 2009) | 2 lines
+
+Prose polish.
+
+------------------------------------------------------------------------
+r5895 | espreon | 2009-12-15 21:20:43 -0300 (Tue, 15 Dec 2009) | 1 line
+
+DW: ran wesnoth-optipng; saved 63 KiB; 23%.
+------------------------------------------------------------------------
+r5894 | espreon | 2009-12-15 21:15:56 -0300 (Tue, 15 Dec 2009) | 1 line
+
+DW: ran set-properties.
+------------------------------------------------------------------------
+r5890 | espreon | 2009-12-15 21:01:03 -0300 (Tue, 15 Dec 2009) | 1 line
+
+DW: made use of the undead flag.
+------------------------------------------------------------------------
+r5873 | espreon | 2009-12-14 21:43:01 -0300 (Mon, 14 Dec 2009) | 1 line
+
+DW: made use of the 'image' key in the [removeitem] codeblock in the ankh macro.
+------------------------------------------------------------------------
+r5860 | ai0867 | 2009-12-11 20:50:19 -0300 (Fri, 11 Dec 2009) | 1 line
+
+Pacify wmllint a bit
+------------------------------------------------------------------------
+r5859 | ai0867 | 2009-12-11 13:37:21 -0300 (Fri, 11 Dec 2009) | 2 lines
+
+Import Dead Water
+
+------------------------------------------------------------------------
