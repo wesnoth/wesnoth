@@ -50,6 +50,7 @@ cp po/wesnoth/LINGUAS po/%(textdomain)s/
 
 cat > po/%(textdomain)s/FINDCFG <<'EOF'
 find data/campaigns/%(campaign)s -name '*.cfg' -print
+find data/campaigns/%(campaign)s -name '*.lua' -print
 EOF
 
 
