@@ -29,6 +29,8 @@ Version 1.9.0-svn:
    * Deprecated [set_variable]'s random key, use rand instead
    * Renamed [unit][status] healable to unhealable so it can default to 'no'
    * Added 'side X turn refresh' and 'side X turn Y refresh' events
+   * Add ~DARKEN() counterpart to ~BRIGHTEN()
+   * Implement min_value for [illuminates]
  * Miscellaneous and bug fixes:
    * Defaulted log level to warning again
    * New option to auto-set delay shroud update on game start

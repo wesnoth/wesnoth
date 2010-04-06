@@ -719,6 +719,10 @@ surface locator::load_image_sub_file() const
 				else if (function == "BRIGHTEN") {
 					functor_queue.push_back(new brighten_function());
 				}
+				// Add a dark overlay.
+				else if (function == "DARKEN") {
+					functor_queue.push_back(new darken_function());
+				}
 				else {
 					ERR_DP << "unknown image function in path: " << function << '\n';
 				}

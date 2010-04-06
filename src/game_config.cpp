@@ -84,6 +84,7 @@ namespace game_config
 
 	std::string observer_image = "misc/eye.png";
 	std::string tod_bright_image = "misc/tod-bright.png";
+	std::string tod_dark_image = "misc/tod-dark.png";
 	std::string unchecked_menu_image = "buttons/checkbox.png";
 	std::string checked_menu_image = "buttons/checkbox-pressed.png";
 	std::string wml_menu_image = "buttons/WML-custom.png";
@@ -197,6 +198,7 @@ namespace game_config
 
 		observer_image = v["observer_image"];
 		tod_bright_image = v["tod_bright_image"];
+		tod_dark_image = v["tod_dark_image"];
 
 		level_image = v["level_image"];
 		ellipsis_image = v["ellipsis_image"];

@@ -277,6 +277,8 @@ time_of_day tod_manager::time_of_day_at(const unit_map& units,const map_location
 				int mod = illum_effect.get_composite_value();
 				if(mod + tod.lawful_bonus > illum.highest("max_value").first) {
 					mod = illum.highest("max_value").first - tod.lawful_bonus;
+				} else if(mod + tod.lawful_bonus < illum.lowest("min_value").first) {
+					mod = illum.lowest("min_value").first - tod.lawful_bonus;
 				}
 				lighten = std::max<int>(mod, lighten);
 				darken = std::min<int>(mod, darken);

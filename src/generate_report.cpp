@@ -388,6 +388,7 @@ report generate_report(TYPE type,
 
 		std::string tod_image = tod.image;
 		if (tod.bonus_modified > 0) tod_image += "~BRIGHTEN()";
+		else if (tod.bonus_modified < 0) tod_image += "~DARKEN()";
 		if (preferences::flip_time()) tod_image += "~FL(horiz)";
 
 		return report("",tod_image,tooltip.str());

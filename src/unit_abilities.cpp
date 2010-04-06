@@ -374,6 +374,38 @@ std::pair<int,map_location> unit_ability_list::highest(const std::string& key, i
 	return std::make_pair(flat + stack, best_loc);
 }
 
+std::pair<int,map_location> unit_ability_list::lowest(const std::string& key, int def) const
+{
+	if (cfgs.empty()) {
+		return std::make_pair(def, map_location());
+	}
+	// The returned location is the best non-cumulative one, if any,
+	// the best absolute cumulative one otherwise.
+	map_location best_loc;
+	bool only_cumulative = true;
+	int abs_max = 0;
+	int flat = 0;
+	int stack = 0;
+	typedef std::pair<const config *, map_location> pt;
+	foreach (pt const &p, cfgs)
+	{
+		int value = lexical_cast_default<int>((*p.first)[key], def);
+		if (utils::string_bool((*p.first)["cumulative"])) {
+			stack += value;
+			if (value < 0) value = -value;
+			if (only_cumulative && value <= abs_max) {
+				abs_max = value;
+				best_loc = p.second;
+			}
+		} else if (only_cumulative || value < flat) {
+			only_cumulative = false;
+			flat = value;
+			best_loc = p.second;
+		}
+	}
+	return std::make_pair(flat + stack, best_loc);
+}
+
 /*
  *
  * [special]

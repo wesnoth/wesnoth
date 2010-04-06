@@ -126,4 +126,13 @@ surface brighten_function::operator()(const surface &src) const
 	return ret;
 }
 
+surface darken_function::operator()(const surface &src) const
+{
+	surface ret = make_neutral_surface(src);
+	surface tod_dark(image::get_image(game_config:: tod_dark_image));
+	if (tod_dark)
+		blit_surface(tod_dark, NULL, ret, NULL);
+	return ret;
+}
+
 } /* end namespace image */

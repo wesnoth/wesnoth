@@ -196,6 +196,14 @@ struct brighten_function : function_base
 	virtual surface operator()(const surface &src) const;
 };
 
+/**
+ * Overlay with ToD darkening (DARKEN).
+ */
+struct darken_function : function_base
+{
+	virtual surface operator()(const surface &src) const;
+};
+
 } /* end namespace image */
 
 #endif /* !defined(IMAGE_FUNCTION_HPP_INCLUDED) */
