@@ -18,6 +18,7 @@ set(NORMAL_DOMAINS
     wesnoth-aoi
     wesnoth-did
     wesnoth-dm
+    wesnoth-dw
     wesnoth-editor
     wesnoth-ei
     wesnoth-httt
