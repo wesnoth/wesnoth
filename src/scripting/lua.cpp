@@ -1270,6 +1270,38 @@ static int intf_register_wml_action(lua_State *L)
 	return 1;
 }
 
+
+/**
+ * - Ret 1: the number of sides
+ */
+
+static int intf_get_side_count(lua_State *L){
+        std::vector<team> &teams = *resources::teams;
+        lua_pushinteger(L, teams.size());
+        return 1;
+}
+
+
+/**
+ * Gets 2 parameters
+ * - Arg 1: side number of the first team
+ * - Arg 2: side number of the second team
+ * - Ret 1: true, if these two teams are enemies
+ */
+
+static int intf_is_enemy(lua_State *L){
+
+        size_t side_1 = luaL_checkint(L, 1)-1;
+        size_t side_2 = luaL_checkint(L, 2)-1;
+        std::vector<team> &teams = *resources::teams;
+
+        if( side_1 >= teams.size() || side_2 >= teams.size()){
+                return 0;
+        }
+        lua_pushboolean(L, teams[side_1].is_enemy(side_2));
+        return 1;
+}
+
 /**
  * Gets some data on a side (__index metamethod).
  * - Arg 1: full userdata containing the team.
@@ -2239,6 +2271,7 @@ LuaKernel::LuaKernel()
 		{ "get_map_size",             &intf_get_map_size             },
 		{ "get_selected_tile",        &intf_get_selected_tile        },
 		{ "get_side",                 &intf_get_side                 },
+		{ "get_side_count",           &intf_get_side_count           },
 		{ "get_terrain",              &intf_get_terrain              },
 		{ "get_terrain_info",         &intf_get_terrain_info         },
 		{ "get_unit_type",            &intf_get_unit_type            },
@@ -2246,6 +2279,7 @@ LuaKernel::LuaKernel()
 		{ "get_units",                &intf_get_units                },
 		{ "get_variable",             &intf_get_variable             },
 		{ "get_village_owner",        &intf_get_village_owner        },
+		{ "is_enemy",                 &intf_is_enemy                 },
 		{ "message",                  &intf_message                  },
 		{ "put_unit",                 &intf_put_unit                 },
 		{ "register_wml_action",      &intf_register_wml_action      },

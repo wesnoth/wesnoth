@@ -35,6 +35,7 @@ Version 1.9.0-svn:
    * Added 'side X turn refresh' and 'side X turn Y refresh' events
    * Add ~DARKEN() counterpart to ~BRIGHTEN()
    * Implement min_value for [illuminates]
+   * Added lua functions wesnoth.get_side_count() and wesnoth.is_enemy(a,b)
  * Miscellaneous and bug fixes:
    * Defaulted log level to warning again
    * New option to auto-set delay shroud update on game start
