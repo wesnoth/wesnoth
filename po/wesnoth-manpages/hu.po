@@ -5,20 +5,20 @@
 #
 # Automatically generated, 2006.
 # Pintér Csaba <piere-d-siorac@freemail.hu>, 2008.
-# Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2008, 2009.
+# Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2008, 2009, 2010.
 # Gabor Udvari <gabor.udvari@gmail.com>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: hu-mapages_1.7\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-03-26 15:41+0100\n"
-"PO-Revision-Date: 2009-10-20 16:51+0000\n"
-"Last-Translator: Gabor Udvari <gabor.udvari@gmail.com>\n"
-"Language-Team: Hungarian <en@li.org>\n"
+"PO-Revision-Date: 2010-03-27 12:30+0100\n"
+"Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
+"Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 1.0\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 # type: TH
@@ -761,7 +761,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:235 ../../doc/man/wesnothd.6:265
 #, no-wrap
 msgid "EXIT STATUS"
-msgstr ""
+msgstr "BEFEJEZÉSI ÁLLAPOT"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:238
@@ -770,6 +770,10 @@ msgid ""
 "fonts, etc) initialization error. An exit status of 2 indicates an error "
 "with the command line options."
 msgstr ""
+"A szabályos befejezési állapot értéke 0. Ha a befejezési állapot 1, az arra "
+"utal, hogy valamely összetevőt (SDL, videó, betűtípusok, stb.) nem sikerült "
+"elindítani. Ha a befejezési állapot 2, akkor a parancssori opciókkal van "
+"gond."
 
 # type: SH
 #. type: SH
@@ -1734,6 +1738,9 @@ msgid ""
 "Normal exit status is 0 when the server was properly shutdown. An exit "
 "status of 2 indicates an error with the command line options."
 msgstr ""
+"A befejezési állapot értéke 0, ha a kiszolgálót szabályosan sikerült "
+"leállítani. Ha a befejezési állapot értéke 2, akkor a parancssori opciókkal "
+"van gond."
 
 # type: Plain text
 #. type: Plain text
