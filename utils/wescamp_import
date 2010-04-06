@@ -44,7 +44,7 @@ Usage: wescamp_import {-h | wescamp-path campaign-name textdomain}
 # Generated script to do an import of %(textdomain)s from a WesCamp checkout
 #
 mkdir po/%(textdomain)s
-cp %(wescamp_path)s/%(campaign)s-po/po/*.po* po/%(textdomain)s
+cp %(wescamp_path)s/%(campaign)s/po/*.po* po/%(textdomain)s
 
 cp po/wesnoth/LINGUAS po/%(textdomain)s/
 
