@@ -4,13 +4,13 @@
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Automatically generated, 2004.
-# Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2007-2009.
+# Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2007-2009, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: hu-lib_1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-26 15:39+0100\n"
-"PO-Revision-Date: 2009-11-26 23:16+0100\n"
+"POT-Creation-Date: 2010-03-26 15:41+0100\n"
+"PO-Revision-Date: 2010-04-03 12:26+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
 "MIME-Version: 1.0\n"
@@ -1073,12 +1073,12 @@ msgstr "Játékosok sorba rendezése:"
 #. [toggle_button]: id=player_list_sort_relation
 #: data/gui/default/window/lobby_main.cfg:313
 msgid "Friends first, ignored people last"
-msgstr "A barátokat elsőként, a figyelmen kívül hagyottakat a legvégén"
+msgstr "A barátokat elsőként, a mellőzötteket a legvégén"
 
 #. [toggle_button]: id=player_list_sort_name
 #: data/gui/default/window/lobby_main.cfg:321
 msgid "Alphabetically"
-msgstr "Ábécésorrend"
+msgstr "ABC-sorrend"
 
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:337
@@ -1128,7 +1128,7 @@ msgstr "Barátok"
 #. [toggle_button]: id=filter_without_ignored
 #: data/gui/default/window/lobby_main.cfg:592
 msgid "No ignored"
-msgstr "A figyelmen kívül hagyottak nélkül"
+msgstr "A mellőzöttek nélkül"
 
 #. [toggle_button]: id=filter_vacant_slots
 #: data/gui/default/window/lobby_main.cfg:598
@@ -1200,7 +1200,7 @@ msgstr "Felvétel a barátaim közé"
 #. [button]: id=add_to_ignores
 #: data/gui/default/window/lobby_player_info.cfg:100
 msgid "Add to ignores list"
-msgstr "Felvétel a figyelmen kívül hagyottak közé"
+msgstr "Felvétel a mellőzöttek közé"
 
 #. [button]: id=remove_from_list
 #: data/gui/default/window/lobby_player_info.cfg:109
@@ -1261,7 +1261,7 @@ msgstr "Privát üzenet küldése"
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:133
 msgid "Friends/Ignored List"
-msgstr "Barátok/figyelmen kívül hagyott felhasználók listája"
+msgstr "Barátok/mellőzött felhasználók listája"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=add_friend
@@ -1275,7 +1275,7 @@ msgstr "Felvétel a barátok közé"
 #: data/gui/default/window/mp_cmd_wrapper.cfg:177
 #: src/game_preferences_display.cpp:175
 msgid "Add As Ignore"
-msgstr "Felhasználó figyelmen kívül hagyása"
+msgstr "Felhasználó mellőzése"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=remove
@@ -1900,9 +1900,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:369
 msgid "View and edit your friends and ignores list"
-msgstr ""
-"Barátaim és a figyelmen kívül hagyottak listájának megtekintése és "
-"szerkesztése"
+msgstr "Barátaim és a mellőzöttek listájának megtekintése és szerkesztése"
 
 #: src/game_preferences_display.cpp:370
 msgid "Back to the multiplayer options"
@@ -1914,7 +1912,7 @@ msgstr "A megadott felhasználó felvétele a barátaim közé"
 
 #: src/game_preferences_display.cpp:372
 msgid "Add this username to your ignores list"
-msgstr "A megadott felhasználó felvétele a figyelmen kívül hagyottak közé"
+msgstr "A megadott felhasználó felvétele a mellőzöttek közé"
 
 #: src/game_preferences_display.cpp:373
 msgid "Remove this username from your list"
@@ -2183,11 +2181,11 @@ msgstr "Csatlakoztál ehhez a szobához: $name"
 
 #: src/gui/dialogs/lobby_main.cpp:1400
 msgid "$player has entered the room"
-msgstr ""
+msgstr "$player belépett a szobába"
 
 #: src/gui/dialogs/lobby_main.cpp:1438
 msgid "$player has left the room"
-msgstr ""
+msgstr "$player elhagyta a szobát"
 
 #: src/gui/dialogs/lobby_main.cpp:1551
 msgid "Password Required"

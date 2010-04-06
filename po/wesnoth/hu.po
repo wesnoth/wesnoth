@@ -4,7 +4,7 @@
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Széll Tamás <tomi@digiflex.hu>, 2005.
-# Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2007, 2008, 2009.
+# Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2007, 2008, 2009, 2010.
 # Pintér Csaba <piere-d-siorac@freemail.hu>, 2008.
 # Fábián Balázs <nermal93@freemail.hu>, 2008.
 # Barthalos Márton <barthalosmarton@yahoo.com>, 2008, 2009.
@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-26 15:39+0100\n"
-"PO-Revision-Date: 2009-11-03 18:24+0100\n"
+"POT-Creation-Date: 2010-03-26 15:41+0100\n"
+"PO-Revision-Date: 2010-04-06 19:43+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
 "MIME-Version: 1.0\n"
@@ -5278,9 +5278,8 @@ msgstr "elaggott"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:222
-#, fuzzy
 msgid "female^aged"
-msgstr "buta"
+msgstr "elaggott"
 
 #. [color_range]: id=red
 #. [color_range]: id=1
@@ -8205,11 +8204,11 @@ msgstr "Szerepel a barátok listáján"
 
 #: src/gui/dialogs/lobby_player_info.cpp:101
 msgid "On ignores list"
-msgstr "Szerepel a figyelmen kívül hagyottak listáján"
+msgstr "Szerepel a mellőzöttek listáján"
 
 #: src/gui/dialogs/lobby_player_info.cpp:106
 msgid "Neither a friend nor ignored"
-msgstr "Se nem barát, se nem figyelmen kívül hagyott"
+msgstr "Se nem barát, se nem mellőzött"
 
 #: src/gui/dialogs/lobby_player_info.cpp:111
 msgid "You"
@@ -8681,6 +8680,8 @@ msgid ""
 "Unknown command '$command', try $help_command for a list of available "
 "commands."
 msgstr ""
+"A megadott „$command” parancs ismeretlen, a használható parancsok "
+"kilistázásához írd be ezt: $help_command."
 
 #: src/menu_events.cpp:1952
 msgid ""
@@ -8692,53 +8693,53 @@ msgstr ""
 
 #: src/menu_events.cpp:1954
 msgid "do not translate the 'all'^[all|<command>]"
-msgstr ""
+msgstr "[all|<parancs>]"
 
 #: src/menu_events.cpp:1998
-#, fuzzy
 msgid "Error:"
-msgstr "Hiba: "
+msgstr "Hiba:"
 
 #: src/menu_events.cpp:2004
 msgid "Missing argument $arg_id"
-msgstr ""
+msgstr "A következő argumentum hiányzik: $arg_id"
 
 #: src/menu_events.cpp:2052
 msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
 msgstr ""
+"Elérhető parancsok $flags_description:\n"
+"$list_of_commands"
 
 #: src/menu_events.cpp:2052 src/menu_events.cpp:2053 src/menu_events.cpp:2076
-#, fuzzy
 msgid "help"
-msgstr "Súgó"
+msgstr "súgó"
 
 #: src/menu_events.cpp:2053
 msgid "Type $help_command <command> for more info."
-msgstr ""
+msgstr "További információért írd be ezt: $help_command <parancs>"
 
 #: src/menu_events.cpp:2064
 msgid " No help available."
 msgstr "Nincs elérhető súgó."
 
 #: src/menu_events.cpp:2069
-#, fuzzy
 msgid "Usage:"
-msgstr "Üzenet:"
+msgstr "Használat:"
 
 #: src/menu_events.cpp:2074
 msgid "aliases:"
-msgstr ""
+msgstr "másként:"
 
 #: src/menu_events.cpp:2200
+#, fuzzy
 msgid "(A) - auth command"
-msgstr ""
+msgstr "(A) - rendszergazdai parancs"
 
 #: src/menu_events.cpp:2207
 #, fuzzy
 msgid "(auth only)"
-msgstr "csak a csapat"
+msgstr " (csak rendszergazda)"
 
 #: src/menu_events.cpp:2227
 msgid ""
@@ -8760,7 +8761,7 @@ msgstr ""
 #: src/menu_events.cpp:2239 src/menu_events.cpp:2241 src/menu_events.cpp:2266
 #: src/menu_events.cpp:2268 src/menu_events.cpp:2270 src/menu_events.cpp:2284
 msgid "<nick>"
-msgstr ""
+msgstr "<becenév>"
 
 #: src/menu_events.cpp:2234
 msgid "Unban a user. He does not have to be in the game but on the server."
@@ -8793,9 +8794,8 @@ msgid "Send a message to the server admins currently online"
 msgstr "Üzenet küldése a kiszolgáló éppen jelen lévő adminisztrátorainak."
 
 #: src/menu_events.cpp:2255
-#, fuzzy
 msgid "<message>"
-msgstr "Üzenet:"
+msgstr "<üzenet>"
 
 #: src/menu_events.cpp:2255
 msgid "Send an emotion or personal action in chat."
@@ -8811,11 +8811,11 @@ msgstr ""
 
 #: src/menu_events.cpp:2260
 msgid "<nick> <message>"
-msgstr ""
+msgstr "<becenév> <üzenet>"
 
 #: src/menu_events.cpp:2264
 msgid "<level> <domain>"
-msgstr ""
+msgstr "<szint> <tartomány>"
 
 #: src/menu_events.cpp:2264
 msgid "Change the log level of a log domain."
@@ -8843,7 +8843,7 @@ msgstr "Információ a kijelző verziójáról."
 
 #: src/menu_events.cpp:2277
 msgid "<password> <email (optional)>"
-msgstr ""
+msgstr "<jelszó> <villevél (nem kötelező)>"
 
 #: src/menu_events.cpp:2277
 msgid "Register your nick"
@@ -8861,7 +8861,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2282
 msgid "<detail> <value>"
-msgstr ""
+msgstr "<részlet> <érték>"
 
 #: src/menu_events.cpp:2284
 msgid "Request information about a nick."
@@ -8873,7 +8873,7 @@ msgstr "A regisztrált felhasználónevedhez tartozó adatok listázása."
 
 #: src/menu_events.cpp:2288 src/menu_events.cpp:2291 src/menu_events.cpp:2293
 msgid "<room>"
-msgstr ""
+msgstr "<szoba>"
 
 #: src/menu_events.cpp:2288
 msgid "Join a room."
@@ -8893,7 +8893,7 @@ msgstr "Az elérhető szobák listázása."
 
 #: src/menu_events.cpp:2297
 msgid "<room> <msg>"
-msgstr ""
+msgstr "<szoba> <üzenet>"
 
 #: src/menu_events.cpp:2297
 msgid "Room message."
@@ -8901,29 +8901,29 @@ msgstr "A szoba témája."
 
 #: src/menu_events.cpp:2299
 msgid "<room> <type> [value]"
-msgstr ""
+msgstr "<szoba> <típus> [érték]"
 
 #: src/menu_events.cpp:2299
 msgid "Room query."
 msgstr "Keresés a szobák között."
 
 #: src/menu_events.cpp:2397
+#, fuzzy
 msgid "(D) - debug only, (N) - network only, (A) - auth only"
-msgstr ""
+msgstr "(D) - csak hibakeresés, (N) - csak hálózat, (A) - csak adminisztráció"
 
 #: src/menu_events.cpp:2403
-#, fuzzy
 msgid "(debug command)"
-msgstr "A hibakereső üzemmód parancsai"
+msgstr "(hibakereső parancs)"
 
 #: src/menu_events.cpp:2404
 #, fuzzy
 msgid " (network only)"
-msgstr "Hálózati játékos"
+msgstr "(csak hálózat)"
 
 #: src/menu_events.cpp:2405
 msgid " (auth only)"
-msgstr ""
+msgstr " (csak rendszergazda)"
 
 #: src/menu_events.cpp:2429
 msgid "Refresh gui."
@@ -8935,29 +8935,28 @@ msgstr "Adott oldalon az MI ki- vagy bekapcsolása."
 
 #: src/menu_events.cpp:2431
 msgid "do not translate the on/off^[<side> [on/off]]"
-msgstr ""
+msgstr "[<csapat> [on/off]]"
 
 #: src/menu_events.cpp:2434
 msgid "<side> <nick>"
-msgstr ""
+msgstr "<csapat> <becenév>"
 
 #: src/menu_events.cpp:2434
 msgid "Assign control of a side to a different player or observer."
 msgstr ""
-"Adott oldal irányításának egy másik játékoshoz vagy megfigyelőhöz rendelése."
+"Az adott csapat irányítását egy másik játékoshoz vagy megfigyelőhöz rendeli."
 
 #: src/menu_events.cpp:2436
 msgid "Clear chat history."
-msgstr "A csevegés sorainak kiürítése."
+msgstr "A csevegési előzmények törlése."
 
 #: src/menu_events.cpp:2438
 msgid "Visualize the screen refresh procedure."
 msgstr "A képernyő-frissítési folyamat vizualizálása."
 
 #: src/menu_events.cpp:2439
-#, fuzzy
 msgid "Show fps."
-msgstr "Visszajátszás mutatása"
+msgstr "A képernyőfrissítési gyakoriság (fps) értékének mutatása."
 
 #: src/menu_events.cpp:2441
 msgid "Save game."
@@ -8981,7 +8980,7 @@ msgstr "Az automatikus mentés kikapcsolása."
 
 #: src/menu_events.cpp:2454
 msgid "<id>"
-msgstr ""
+msgstr "<azonosító>"
 
 #: src/menu_events.cpp:2454
 msgid "Advance to the next scenario, or scenario identified by 'id'"
@@ -9006,7 +9005,7 @@ msgstr "Egy Lua utasítás végrehajtása."
 
 #: src/menu_events.cpp:2466
 msgid "<command>[;<command>...]"
-msgstr ""
+msgstr "<parancs>[;<parancs>...]"
 
 #: src/menu_events.cpp:2466
 msgid "Set the command used by the custom command hotkey"
@@ -9014,19 +9013,19 @@ msgstr "Egy parancsnak a felhasználói gyorsbillentyűhöz rendelése"
 
 #: src/menu_events.cpp:2468
 msgid "Launch the gamestate inspector"
-msgstr "A játékállapot-felügyelő indítása"
+msgstr "A játékállapot-figyelő indítása"
 
 #: src/menu_events.cpp:2470
 msgid "<name>[=<command>]"
-msgstr ""
+msgstr "<név>[=<parancs>]"
 
 #: src/menu_events.cpp:2470
 msgid "Set or show alias to a command"
-msgstr "Alias megmutatása és parancshoz rendelése"
+msgstr "Alias megmutatása vagy egy parancshoz rendelése"
 
 #: src/menu_events.cpp:2472
 msgid "<var>=<value>"
-msgstr ""
+msgstr "<változó>=<érték>"
 
 #: src/menu_events.cpp:2472
 msgid "Set a scenario variable."
@@ -9034,7 +9033,7 @@ msgstr "Egy játékváltozó értékének megadása."
 
 #: src/menu_events.cpp:2474
 msgid "<var>"
-msgstr ""
+msgstr "<változó>"
 
 #: src/menu_events.cpp:2474
 msgid "Show a scenario variable."
@@ -9095,11 +9094,11 @@ msgstr ""
 
 #: src/menu_events.cpp:2635
 msgid "whisper to $receiver"
-msgstr ""
+msgstr "súgás neki: $receiver"
 
 #: src/menu_events.cpp:2642
 msgid "whisper: $sender"
-msgstr ""
+msgstr "súgás tőle: $sender"
 
 #: src/menu_events.cpp:2738 src/menu_events.cpp:2757
 #: src/multiplayer_connect.cpp:699
@@ -9107,74 +9106,65 @@ msgid "(empty)"
 msgstr "(üres)"
 
 #: src/menu_events.cpp:2738 src/menu_events.cpp:2744 src/menu_events.cpp:2794
-#, fuzzy
 msgid "ignores list"
-msgstr "Szerepel a figyelmen kívül hagyottak listáján"
+msgstr "mellőzöttek listája"
 
 #: src/menu_events.cpp:2744
-#, fuzzy
 msgid "Added to ignore list: $nick"
-msgstr "Hozzáadva a mellőzési listádhoz: "
+msgstr "Hozzáadva a mellőzési listádhoz: $nick "
 
 #: src/menu_events.cpp:2747 src/menu_events.cpp:2766
-#, fuzzy
 msgid "Invalid username: $nick"
-msgstr "Érvénytelen felhasználónév: "
+msgstr "Érvénytelen felhasználónév: $nick"
 
 #: src/menu_events.cpp:2757 src/menu_events.cpp:2764 src/menu_events.cpp:2790
-#, fuzzy
 msgid "friends list"
-msgstr "Szerepel a barátok listáján"
+msgstr "barátok listája"
 
 #: src/menu_events.cpp:2764
-#, fuzzy
 msgid "Added to friends list: $nick"
-msgstr "Hozzáadva a barátok listádhoz:"
+msgstr "Hozzáadva a barátok listájához: $nick"
 
 #: src/menu_events.cpp:2780
-#, fuzzy
 msgid "Removed from list: $nick"
-msgstr "Kitörölve a listádról: "
+msgstr "Kitörölve a listádról: $nick "
 
 #: src/menu_events.cpp:2780 src/menu_events.cpp:2798
-#, fuzzy
 msgid "friends and ignores list"
-msgstr "Szerepel a figyelmen kívül hagyottak listáján"
+msgstr "barátok és mellőzöttek listája"
 
 #: src/menu_events.cpp:2798
 msgid "There are no players on your friends or ignore list."
 msgstr "Nincs játékos sem a barátaid között, sem a mellőzöttek listáján."
 
 #: src/menu_events.cpp:2803
-#, fuzzy
 msgid "version"
-msgstr "Verzió"
+msgstr "verzió"
 
 #: src/menu_events.cpp:2819
 msgid "registering with password *** and no email address"
-msgstr ""
+msgstr "regisztráció a *** jelszóval villevélcím nélkül"
 
 #: src/menu_events.cpp:2823
 msgid "registering with password *** and email address $email"
-msgstr ""
+msgstr "regisztráció a *** jelszóval és a megadott $email villevélcímmel"
 
 #: src/menu_events.cpp:2826 src/menu_events.cpp:2837 src/menu_events.cpp:2855
 #: src/menu_events.cpp:2869
 msgid "nick registration"
-msgstr ""
+msgstr "becenév regisztrálása"
 
 #: src/menu_events.cpp:2837
 msgid "dropping your username"
-msgstr ""
+msgstr "felhasználónév törlése"
 
 #: src/menu_events.cpp:2855
 msgid "setting $var to $value"
-msgstr ""
+msgstr "a megadott változó ($var) beállítása erre az értékre: $value"
 
 #: src/menu_events.cpp:2869
-#, fuzzy
 msgid "requesting information for user $nick"
-msgstr "Felhasználó adatainak megtekintése."
+msgstr "információ kérése a következő felhasználóról: $nick"
 
 #: src/menu_events.cpp:2981
 msgid "Couldn't find label or unit containing the string '$search'."
@@ -9217,27 +9207,27 @@ msgstr "Hibakereső üzemmód kikapcsolva!"
 
 #: src/menu_events.cpp:3224
 msgid "Variable not found"
-msgstr ""
+msgstr "A változó nem található"
 
 #: src/menu_events.cpp:3262
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral or "
 "chaotic."
 msgstr ""
+"Érvénytelen beállítottság: „$alignment”. A semleges, hűséges és törvénytelen "
+"beállítottság használható."
 
 #: src/menu_events.cpp:3319
-#, fuzzy
 msgid "Invalid unit type"
-msgstr "Érvénytelen nevű tag"
+msgstr "Érvénytelen egységtípus"
 
 #: src/menu_events.cpp:3332
-#, fuzzy
 msgid "Invalid location"
-msgstr "Érvénytelen szín"
+msgstr "Érvénytelen hely"
 
 #: src/menu_events.cpp:3368
 msgid "ai"
-msgstr "mi"
+msgstr "MI"
 
 #: src/menu_events.cpp:3378 src/menu_events.cpp:3393
 msgid "prompt^Command:"
@@ -9277,7 +9267,7 @@ msgstr "Kiszolgálóoldali átirányító hurok"
 
 #: src/multiplayer.cpp:256
 msgid "Bad data received from server"
-msgstr ""
+msgstr "Helytelen adatok érkeztek a kiszolgálótól"
 
 #: src/multiplayer.cpp:297
 msgid "You must login first."
@@ -9587,9 +9577,8 @@ msgid "Invalid era selected"
 msgstr "A kiválasztott korszak érvénytelen"
 
 #: src/multiplayer_create.cpp:333
-#, fuzzy
 msgid "The map is invalid."
-msgstr "A játék véget ért."
+msgstr "A térkép érvénytelen."
 
 #: src/multiplayer_create.cpp:335
 msgid "You must enter a name."
@@ -10369,6 +10358,20 @@ msgstr "Segíts a Wesnoth tökéletesítésében!"
 #: src/upload_log.cpp:375
 msgid "Enable summary uploads"
 msgstr "Összesítések feltöltésének engedélyezése"
+
+#~ msgid "(admin only)"
+#~ msgstr "(csak rendszergazda)"
+
+#~ msgid ""
+#~ "You will start the next scenario with the defined minimum starting gold."
+#~ msgid_plural ""
+#~ "You will start the next scenario with the defined minimum starting gold."
+#~ msgstr[0] ""
+#~ "A következő pályát a meghatározott minimális kezdési arannyal fogod "
+#~ "kezdeni."
+#~ msgstr[1] ""
+#~ "A következő pályát a meghatározott minimális kezdési arannyal fogod "
+#~ "kezdeni."
 
 #~ msgid "Unknown unit type '$type|'"
 #~ msgstr "Ismeretlen egységtípus: „|$type|”"
