@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="sampleBuilder"
+         name="Sample Project Builder"
+         point="org.eclipse.core.resources.builders">
+      <builder
+            hasNature="true">
+         <run
+               class="wesnoth_eclipse_plugin.builder.SampleBuilder">
+         </run>
+      </builder>
+   </extension>
+   <extension
+         id="sampleNature"
+         name="Sample Project Nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="wesnoth_eclipse_plugin.builder.SampleNature">
+         </run>
+      </runtime>
+      <builder
+            id="Wesnoth_Eclipse_Plugin.sampleBuilder">
+      </builder>
+   </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            objectClass="org.eclipse.core.resources.IProject"
+            nameFilter="*"
+            id="Wesnoth_Eclipse_Plugin.contribution1">
+         <action
+               label="Add/Remove Sample Nature"
+               class="wesnoth_eclipse_plugin.builder.ToggleNatureAction"
+               menubarPath="additions"
+               enablesFor="+"
+               id="Wesnoth_Eclipse_Plugin.addRemoveNatureAction">
+         </action>
+      </objectContribution>
+   </extension>
+   <extension
+         id="xmlProblem"
+         name="XML Problem"
+         point="org.eclipse.core.resources.markers">
+      <super
+            type="org.eclipse.core.resources.problemmarker">
+      </super>
+      <persistent
+            value="true">
+      </persistent>
+   </extension>
+   <extension
+         point="org.eclipse.help.toc">
+      <toc
+            file="toc.xml">
+      </toc>
+      <toc
+            file="testToc.xml"
+            primary="true">
+      </toc>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="Sample Category"
+            id="Wesnoth_Eclipse_Plugin">
+      </category>
+      <view
+            name="Wesnoth View"
+            icon="icons/sample.gif"
+            category="Wesnoth_Eclipse_Plugin"
+            class="wesnoth_eclipse_plugin.views.SampleView"
+            id="wesnoth_eclipse_plugin.views.SampleView">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <view
+               ratio="0.5"
+               relative="org.eclipse.ui.views.TaskList"
+               relationship="right"
+               id="wesnoth_eclipse_plugin.views.SampleView">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.help.contexts">
+      <contexts
+            file="contexts.xml">
+      </contexts>
+   </extension>
+
+   <extension 
+       point="org.eclipse.ui.newWizards">
+       <category name="Wesnoth"
+             id="wesnoth.eclipse.newWizards">
+       </category>
+       <wizard name="Wesnoth Campaign"
+           icon="icons/sample.gif"
+		   category="wesnoth.eclipse.newWizards"
+           class="wesnoth_eclipse_plugin.wizards.CampaignNewWizard"
+           id="wesnoth_eclipse_plugin.wizards.CampaignNewWizard"
+           project="true">           
+           <description>Create a Wesnoth campaign.</description>
+       </wizard>
+  <!-- </extension> -->
+
+ <!-- <extension 
+       point="org.eclipse.ui.newWizards">
+       <category name="Wesnoth"
+             id="wesnoth.eclipse.newWizards"> 
+       </category> -->
+       <wizard name="Wesnoth Scenario"
+           icon="icons/sample.gif"
+		   category="wesnoth.eclipse.newWizards"
+           class="wesnoth_eclipse_plugin.wizards.ScenarioNewWizard"
+           id="wesnoth_eclipse_plugin.wizards.ScenarioNewWizard"
+           project="false">           
+           <description>Create a Wesnoth campaign.</description>
+       </wizard>
+   </extension>
+
+</plugin>
