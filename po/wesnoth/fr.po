@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-26 15:39+0100\n"
-"PO-Revision-Date: 2010-02-07 11:11+0100\n"
+"POT-Creation-Date: 2010-03-26 15:41+0100\n"
+"PO-Revision-Date: 2010-04-07 22:11+0200\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
@@ -5239,9 +5239,8 @@ msgstr "âgé"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:222
-#, fuzzy
 msgid "female^aged"
-msgstr "faible"
+msgstr "âgée"
 
 #. [color_range]: id=red
 #. [color_range]: id=1
@@ -8681,6 +8680,8 @@ msgid ""
 "Unknown command '$command', try $help_command for a list of available "
 "commands."
 msgstr ""
+"La commande « $command » est inconnue. Essayez la commande $help pour "
+"afficher la liste des commandes disponibles."
 
 #: src/menu_events.cpp:1952
 msgid ""
@@ -8691,56 +8692,58 @@ msgstr ""
 "Utilisez « Aide complète » pour inclure les commandes actuellement "
 "indisponibles."
 
+# FIXME : à voir ce que ça signifie
 #: src/menu_events.cpp:1954
+#, fuzzy
 msgid "do not translate the 'all'^[all|<command>]"
-msgstr ""
+msgstr "ne pas traduire la 'all'^[all|<command>]"
 
 #: src/menu_events.cpp:1998
-#, fuzzy
 msgid "Error:"
 msgstr "Erreur : "
 
 #: src/menu_events.cpp:2004
 msgid "Missing argument $arg_id"
-msgstr ""
+msgstr "Argument $arg_id manquant"
 
 #: src/menu_events.cpp:2052
 msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
 msgstr ""
+"Commandes disponibles $flags_description :\n"
+"$list_of_commands"
 
 #: src/menu_events.cpp:2052 src/menu_events.cpp:2053 src/menu_events.cpp:2076
-#, fuzzy
 msgid "help"
-msgstr "Aide"
+msgstr "aide"
 
 #: src/menu_events.cpp:2053
 msgid "Type $help_command <command> for more info."
-msgstr ""
+msgstr "Tapez $help_command <commande> pour plus d'informations."
 
 #: src/menu_events.cpp:2064
 msgid " No help available."
 msgstr "Aucune aide disponible"
 
 #: src/menu_events.cpp:2069
-#, fuzzy
 msgid "Usage:"
-msgstr "Message : "
+msgstr "Usage : "
 
 #: src/menu_events.cpp:2074
 msgid "aliases:"
-msgstr ""
+msgstr "Alias : "
 
 #: src/menu_events.cpp:2200
+#, fuzzy
 msgid "(A) - auth command"
-msgstr ""
+msgstr "(A) - commande admin"
 
 # team labels
 #: src/menu_events.cpp:2207
 #, fuzzy
 msgid "(auth only)"
-msgstr "Note pour l'équipe"
+msgstr "(réservé aux admins)"
 
 #: src/menu_events.cpp:2227
 msgid ""
@@ -8762,7 +8765,7 @@ msgstr ""
 #: src/menu_events.cpp:2239 src/menu_events.cpp:2241 src/menu_events.cpp:2266
 #: src/menu_events.cpp:2268 src/menu_events.cpp:2270 src/menu_events.cpp:2284
 msgid "<nick>"
-msgstr ""
+msgstr "<pseudo>"
 
 #: src/menu_events.cpp:2234
 msgid "Unban a user. He does not have to be in the game but on the server."
@@ -8793,9 +8796,8 @@ msgid "Send a message to the server admins currently online"
 msgstr "Envoie un message aux administrateurs qui sont en ligne"
 
 #: src/menu_events.cpp:2255
-#, fuzzy
 msgid "<message>"
-msgstr "Message : "
+msgstr "<message>"
 
 #: src/menu_events.cpp:2255
 msgid "Send an emotion or personal action in chat."
@@ -8811,11 +8813,11 @@ msgstr ""
 
 #: src/menu_events.cpp:2260
 msgid "<nick> <message>"
-msgstr ""
+msgstr "<pseudo> <message>"
 
 #: src/menu_events.cpp:2264
 msgid "<level> <domain>"
-msgstr ""
+msgstr "<niveau> <domaine>"
 
 #: src/menu_events.cpp:2264
 msgid "Change the log level of a log domain."
@@ -8843,7 +8845,7 @@ msgstr "Affiche la version."
 
 #: src/menu_events.cpp:2277
 msgid "<password> <email (optional)>"
-msgstr ""
+msgstr "<mot de passe> <email (optionnel)>"
 
 #: src/menu_events.cpp:2277
 msgid "Register your nick"
@@ -8861,7 +8863,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2282
 msgid "<detail> <value>"
-msgstr ""
+msgstr "<détail> <valeur>"
 
 #: src/menu_events.cpp:2284
 msgid "Request information about a nick."
@@ -8875,7 +8877,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2288 src/menu_events.cpp:2291 src/menu_events.cpp:2293
 msgid "<room>"
-msgstr ""
+msgstr "<salle>"
 
 #: src/menu_events.cpp:2288
 msgid "Join a room."
@@ -8895,7 +8897,7 @@ msgstr "Liste des salles disponibles."
 
 #: src/menu_events.cpp:2297
 msgid "<room> <msg>"
-msgstr ""
+msgstr "<salle> <message>"
 
 #: src/menu_events.cpp:2297
 msgid "Room message."
@@ -8903,29 +8905,32 @@ msgstr "Message de salle."
 
 #: src/menu_events.cpp:2299
 msgid "<room> <type> [value]"
-msgstr ""
+msgstr "<salle> <type> [valeur]"
 
 #: src/menu_events.cpp:2299
 msgid "Room query."
 msgstr "Requête de salle."
 
 #: src/menu_events.cpp:2397
+#, fuzzy
 msgid "(D) - debug only, (N) - network only, (A) - auth only"
 msgstr ""
+"(D) - débogage uniquement, (N) - réseau uniquement, (A) - admin uniquement"
 
 #: src/menu_events.cpp:2403
-#, fuzzy
 msgid "(debug command)"
-msgstr "Commandes du mode débug"
+msgstr "(commandes de débogage)"
 
 #: src/menu_events.cpp:2404
 #, fuzzy
 msgid " (network only)"
-msgstr "Joueur réseau"
+msgstr " (réseau uniquement)"
 
+# team labels
 #: src/menu_events.cpp:2405
+#, fuzzy
 msgid " (auth only)"
-msgstr ""
+msgstr "(réservé aux admins)"
 
 #: src/menu_events.cpp:2429
 msgid "Refresh gui."
@@ -8935,14 +8940,14 @@ msgstr "Rafraîchit l'IHM."
 msgid "Switch a side to/from AI control."
 msgstr "Passe ou reprend le contrôle d'un camp à l'IA."
 
+# FIXME : quoi ça ????
 #: src/menu_events.cpp:2431
 msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr ""
 
 #: src/menu_events.cpp:2434
-#, fuzzy
 msgid "<side> <nick>"
-msgstr "Utilisation : control <camp> <nom>"
+msgstr "<camp> <pseudo>"
 
 #: src/menu_events.cpp:2434
 msgid "Assign control of a side to a different player or observer."
@@ -8959,7 +8964,7 @@ msgstr "Visualiser la procédure de rafraîchissement de l'écran."
 #: src/menu_events.cpp:2439
 #, fuzzy
 msgid "Show fps."
-msgstr "Revoir les actions passées"
+msgstr "Montrez les fps"
 
 #: src/menu_events.cpp:2441
 msgid "Save game."
@@ -8983,7 +8988,7 @@ msgstr "Désactive les sauvegardes automatiques."
 
 #: src/menu_events.cpp:2454
 msgid "<id>"
-msgstr ""
+msgstr "<id>"
 
 #: src/menu_events.cpp:2454
 msgid "Advance to the next scenario, or scenario identified by 'id'"
@@ -9007,7 +9012,7 @@ msgstr "Exécute une commande Lua."
 
 #: src/menu_events.cpp:2466
 msgid "<command>[;<command>...]"
-msgstr ""
+msgstr "<commande>[;<commande>...]"
 
 #: src/menu_events.cpp:2466
 msgid "Set the command used by the custom command hotkey"
@@ -9020,7 +9025,7 @@ msgstr "Lancer le débogueur d'état de partie"
 
 #: src/menu_events.cpp:2470
 msgid "<name>[=<command>]"
-msgstr ""
+msgstr "<nom>[=<commande>]"
 
 #: src/menu_events.cpp:2470
 msgid "Set or show alias to a command"
@@ -9028,7 +9033,7 @@ msgstr "Crée ou affiche un alias vers une commande"
 
 #: src/menu_events.cpp:2472
 msgid "<var>=<value>"
-msgstr ""
+msgstr "<variable>=<valeur>"
 
 #: src/menu_events.cpp:2472
 msgid "Set a scenario variable."
@@ -9036,7 +9041,7 @@ msgstr "Change une variable du scénario."
 
 #: src/menu_events.cpp:2474
 msgid "<var>"
-msgstr ""
+msgstr "<variable>"
 
 #: src/menu_events.cpp:2474
 msgid "Show a scenario variable."
@@ -9098,11 +9103,11 @@ msgstr "Affectation du domaine « $domain » au niveau « $level »."
 
 #: src/menu_events.cpp:2635
 msgid "whisper to $receiver"
-msgstr ""
+msgstr "chuchoter à $receiver"
 
 #: src/menu_events.cpp:2642
 msgid "whisper: $sender"
-msgstr ""
+msgstr "chuchotement: $sender"
 
 #: src/menu_events.cpp:2738 src/menu_events.cpp:2757
 #: src/multiplayer_connect.cpp:699
@@ -9110,74 +9115,65 @@ msgid "(empty)"
 msgstr "(vide)"
 
 #: src/menu_events.cpp:2738 src/menu_events.cpp:2744 src/menu_events.cpp:2794
-#, fuzzy
 msgid "ignores list"
-msgstr "Dans la liste des ignorés"
+msgstr "liste des ignorés"
 
 #: src/menu_events.cpp:2744
-#, fuzzy
 msgid "Added to ignore list: $nick"
-msgstr "Ajouté à la liste des ignorés : "
+msgstr "Ajouté à la liste des ignorés : $nick"
 
 #: src/menu_events.cpp:2747 src/menu_events.cpp:2766
-#, fuzzy
 msgid "Invalid username: $nick"
-msgstr "Nom d'utilisateur incorrect"
+msgstr "Nom d'utilisateur incorrect : $nick"
 
 #: src/menu_events.cpp:2757 src/menu_events.cpp:2764 src/menu_events.cpp:2790
-#, fuzzy
 msgid "friends list"
-msgstr "Dans la liste d'amis"
+msgstr "liste des amis"
 
 #: src/menu_events.cpp:2764
-#, fuzzy
 msgid "Added to friends list: $nick"
-msgstr "Ajouté à la liste des amis : "
+msgstr "Ajouté à la liste des amis : $nick"
 
 #: src/menu_events.cpp:2780
-#, fuzzy
 msgid "Removed from list: $nick"
-msgstr "Enlevé de la liste : "
+msgstr "Enlevé de la liste : $nick"
 
 #: src/menu_events.cpp:2780 src/menu_events.cpp:2798
-#, fuzzy
 msgid "friends and ignores list"
-msgstr "Dans la liste des ignorés"
+msgstr "liste d'amis et des ignorés"
 
 #: src/menu_events.cpp:2798
 msgid "There are no players on your friends or ignore list."
 msgstr "Il n'y a pas de joueurs dans vos listes d'amis ou d'ignorés."
 
 #: src/menu_events.cpp:2803
-#, fuzzy
 msgid "version"
 msgstr "Version"
 
 #: src/menu_events.cpp:2819
 msgid "registering with password *** and no email address"
-msgstr ""
+msgstr "enregistrement avec le mot de passe *** et pas d'adresse email"
 
 #: src/menu_events.cpp:2823
 msgid "registering with password *** and email address $email"
-msgstr ""
+msgstr "enregistrement avec le mot de passe *** et l'adresse email $email"
 
 #: src/menu_events.cpp:2826 src/menu_events.cpp:2837 src/menu_events.cpp:2855
 #: src/menu_events.cpp:2869
 msgid "nick registration"
-msgstr ""
+msgstr "enregistrement de pseudo"
 
 #: src/menu_events.cpp:2837
 msgid "dropping your username"
-msgstr ""
+msgstr "libération de votre nom d'utilisateur"
 
 #: src/menu_events.cpp:2855
 msgid "setting $var to $value"
-msgstr ""
+msgstr "$value affectée à $var"
 
 #: src/menu_events.cpp:2869
-#, fuzzy
 msgid "requesting information for user $nick"
-msgstr "Obtenir des informations à propos d'un pseudo."
+msgstr "Obtenir des informations sur l'utilisateur $nick"
 
 #: src/menu_events.cpp:2981
 msgid "Couldn't find label or unit containing the string '$search'."
@@ -9201,7 +9197,7 @@ msgstr "Impossible de changer le contrôle de ce camp hors-limites : « $side�
 
 #: src/menu_events.cpp:3149
 msgid "Choose Scenario (Debug!)"
-msgstr "Choisir un scénario (débogage!)"
+msgstr "Choisir un scénario (débogage !)"
 
 #: src/menu_events.cpp:3170
 msgid "Debug mode activated!"
@@ -9217,23 +9213,23 @@ msgstr "Mode debug désactivé !"
 
 #: src/menu_events.cpp:3224
 msgid "Variable not found"
-msgstr ""
+msgstr "Variable non trouvée"
 
 #: src/menu_events.cpp:3262
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral or "
 "chaotic."
 msgstr ""
+"Alignement invalide : « $alignment ». Doit être « lawful », « neutral » ou « "
+"chaotic »."
 
 #: src/menu_events.cpp:3319
-#, fuzzy
 msgid "Invalid unit type"
-msgstr "Nom de balise incorrect"
+msgstr "Type d'unité incorrect"
 
 #: src/menu_events.cpp:3332
-#, fuzzy
 msgid "Invalid location"
-msgstr "Couleur non valide"
+msgstr "Emplacement non valide"
 
 #: src/menu_events.cpp:3368
 msgid "ai"
@@ -9277,7 +9273,7 @@ msgstr "Boucle de redirection du serveur"
 
 #: src/multiplayer.cpp:256
 msgid "Bad data received from server"
-msgstr ""
+msgstr "Données corrompues reçues du serveur"
 
 #: src/multiplayer.cpp:297
 msgid "You must login first."
@@ -9583,9 +9579,8 @@ msgid "Invalid era selected"
 msgstr "Ère sélectionnée non valide"
 
 #: src/multiplayer_create.cpp:333
-#, fuzzy
 msgid "The map is invalid."
-msgstr "La partie est terminée."
+msgstr "La carte n'est pas valide."
 
 #: src/multiplayer_create.cpp:335
 msgid "You must enter a name."
@@ -10363,6 +10358,17 @@ msgstr "Aidez-nous à améliorer Wesnoth pour vous !"
 #: src/upload_log.cpp:375
 msgid "Enable summary uploads"
 msgstr "Autoriser l'envoi de résumés"
+
+#~ msgid ""
+#~ "You will start the next scenario with the defined minimum starting gold."
+#~ msgid_plural ""
+#~ "You will start the next scenario with the defined minimum starting gold."
+#~ msgstr[0] ""
+#~ "Vous commencerez le prochain scénario avec le minimum de pièce d'or de "
+#~ "départ du scénario."
+#~ msgstr[1] ""
+#~ "Vous commencerez le prochain scénario avec le minimum de pièces d'or "
+#~ "départ du scénario."
 
 #~ msgid "Unknown unit type '$type|'"
 #~ msgstr "Type d'unité inconnu : « $type| »"
