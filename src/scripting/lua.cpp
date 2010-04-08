@@ -1318,6 +1318,7 @@ static int impl_side_get(lua_State *L)
 	return_int_attrib("gold", t.gold());
 	return_tstring_attrib("objectives", t.objectives());
 	return_int_attrib("village_gold", t.village_gold());
+	return_int_attrib("recall_cost", t.recall_cost());
 	return_int_attrib("base_income", t.base_income());
 	return_int_attrib("total_income", t.total_income());
 	return_bool_attrib("objectives_changed", t.objectives_changed());
@@ -1361,6 +1362,7 @@ static int impl_side_set(lua_State *L)
 	modify_int_attrib("gold", t.set_gold(value));
 	modify_tstring_attrib("objectives", t.set_objectives(value, true));
 	modify_int_attrib("village_gold", t.set_village_gold(value));
+	modify_int_attrib("recall_cost", t.set_recall_cost(value));
 	modify_int_attrib("base_income", t.set_base_income(value));
 	modify_bool_attrib("objectives_changed", t.set_objectives_changed(value != 0));
 	modify_tstring_attrib("user_team_name", t.change_team(t.team_name(), value));

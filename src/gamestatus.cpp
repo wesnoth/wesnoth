@@ -906,8 +906,8 @@ protected:
 			"flag", "flag_icon", "objectives", "objectives_changed",
 			"disallow_observers", "allow_player", "no_leader",
 			"hidden", "music", "colour", "ai_config", "gold",
-			"start_gold", "team_rgb", "village_gold", "controller",
-			"persistent", "share_view",
+			"start_gold", "team_rgb", "village_gold", "recall_cost",
+			"controller", "persistent", "share_view",
 			"share_maps", "recruit", "fog", "shroud", "shroud_data",
 			// Multiplayer attributes.
 			"income_lock", "gold_lock", "team_lock", "leader",

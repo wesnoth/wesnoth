@@ -589,7 +589,7 @@ bool recall_result::test_available_for_recalling(const team &my_team, bool)
 
 bool recall_result::test_enough_gold(const team &my_team,  bool)
 {
-	if (my_team.gold() < game_config::recall_cost ) {
+	if (my_team.gold() < my_team.recall_cost() ) {
 		set_error(E_NO_GOLD);
 		return false;
 	}
@@ -754,7 +754,7 @@ void recall_result::do_execute()
 		recorder.add_recall(un.id(), recall_location_);
 		place_recruit(un, recall_location_, true, true);
 		statistics::recall_unit(un);
-		my_team.spend_gold(game_config::recall_cost);
+		my_team.spend_gold(my_team.recall_cost());
 
 		my_team.recall_list().erase(rec);
 		if (resources::screen!=NULL) {

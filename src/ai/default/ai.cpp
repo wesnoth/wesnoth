@@ -1698,7 +1698,7 @@ static void debug_print_recall_list_scores(const std::vector< std::pair<std::str
 
 bool ai_default_recruitment_stage::analyze_recall_list()
 {
-	if (current_team().gold() < game_config::recall_cost ) {
+	if (current_team().gold() < current_team().recall_cost() ) {
 		return false;
 	}
 

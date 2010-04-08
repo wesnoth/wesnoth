@@ -933,13 +933,13 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 		if (res < 0) return;
 	}
 
-	if (current_team.gold() < game_config::recall_cost) {
+	if (current_team.gold() < current_team.recall_cost()) {
 		utils::string_map i18n_symbols;
-		i18n_symbols["cost"] = lexical_cast<std::string>(game_config::recall_cost);
+		i18n_symbols["cost"] = lexical_cast<std::string>(current_team.recall_cost());
 		std::string msg = vngettext(
 			"You must have at least 1 gold piece to recall a unit",
 			"You must have at least $cost gold pieces to recall a unit",
-			game_config::recall_cost, i18n_symbols);
+			current_team.recall_cost(), i18n_symbols);
 		gui2::show_transient_message(gui_->video(), "", msg);
 		return;
 	}
@@ -957,7 +957,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	recorder.add_recall(un.id(), loc);
 	place_recruit(un, loc, true, true);
 	statistics::recall_unit(un);
-	current_team.spend_gold(game_config::recall_cost);
+	current_team.spend_gold(current_team.recall_cost());
 
 	bool shroud_cleared = clear_shroud(side_num);
 	if (shroud_cleared) {
@@ -1005,7 +1005,7 @@ void menu_handler::undo(int side_num)
 
 			const unit &un = *units_.find(action.recall_loc);
 			statistics::un_recall_unit(un);
-			current_team.spend_gold(-game_config::recall_cost);
+			current_team.spend_gold(-current_team.recall_cost());
 
 			current_team.recall_list().push_back(un);
 			// invalidate before erasing allow us
@@ -1127,7 +1127,7 @@ void menu_handler::redo(int side_num)
 				unit un = action.affected_unit;
 				place_recruit(un, loc, true, true);
 				statistics::recall_unit(un);
-				current_team.spend_gold(game_config::recall_cost);
+				current_team.spend_gold(current_team.recall_cost());
 
 				//remove the unit from the recall list
 				std::vector<unit>::iterator unit_it = std::find_if(current_team.recall_list().begin(),

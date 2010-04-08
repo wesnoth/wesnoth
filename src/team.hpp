@@ -70,6 +70,7 @@ public:
 		bool gold_add;
 		int income;
 		int income_per_village;
+		int recall_cost;
 		mutable int average_price;
 		std::set<std::string> can_recruit;
 		std::string team_name;
@@ -130,7 +131,9 @@ public:
 	bool gold_add() const { return info_.gold_add; }
 	int base_income() const { return info_.income + game_config::base_income; }
 	int village_gold() const { return info_.income_per_village; }
+	int recall_cost() const { return info_.recall_cost; }
 	void set_village_gold(int income) { info_.income_per_village = income; }
+	void set_recall_cost(int cost) { info_.recall_cost = cost; }
 	int total_income() const { return base_income() + villages_.size() * info_.income_per_village; }
 	void new_turn() { gold_ += total_income(); }
 	void get_shared_maps();

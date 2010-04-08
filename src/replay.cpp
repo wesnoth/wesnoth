@@ -975,7 +975,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				statistics::recall_unit(*recall_unit);
 				place_recruit(*recall_unit, loc, true, !get_replay_source().is_skipping());
 				current_team.recall_list().erase(recall_unit);
-				current_team.spend_gold(game_config::recall_cost);
+				current_team.spend_gold(current_team.recall_cost());
 				fix_shroud = !get_replay_source().is_skipping();
 			} else {
 				replay::process_error("illegal recall: unit_id '" + unit_id + "' could not be found within the recall list.\n");
