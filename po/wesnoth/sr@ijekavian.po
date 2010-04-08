@@ -10,15 +10,15 @@ msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-04-02 12:40+0200\n"
-"PO-Revision-Date: 2010-03-15 22:39+0100\n"
+"PO-Revision-Date: 2010-04-08 21:45+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
+"Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: sr\n"
-"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%"
-"10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Environment: wesnoth, wesnoth/noent\n"
 "X-Associated-UI-Catalogs: wesnoth-lib wesnoth-httt\n"
 "X-Wrapping: fine\n"
@@ -5169,9 +5169,8 @@ msgstr "старост"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:222
-#, fuzzy
 msgid "female^aged"
-msgstr "приглупост"
+msgstr "старост"
 
 #. [color_range]: id=red
 #. [color_range]: id=1
@@ -6960,9 +6959,8 @@ msgid "Victory:"
 msgstr "побједа:"
 
 #: data/lua/wml-tags.lua:25
-#, fuzzy
 msgid "Defeat:"
-msgstr "Пораз"
+msgstr "пораз:"
 
 #: data/temp-file_send_data_strings.cfg:12
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
@@ -7184,11 +7182,11 @@ msgstr "У замку нема више слободних поља за нов�
 
 #: src/actions.cpp:532 src/actions.cpp:591 src/actions.cpp:1522
 msgid "An invalid attacker weapon got selected."
-msgstr "Изабрано је неваљано оружје за нападача."
+msgstr "Изабрано је лоше оружје за нападача."
 
 #: src/actions.cpp:537
 msgid "An invalid defender weapon got selected."
-msgstr "Изабрано је неваљано оружје за браниоца."
+msgstr "Изабрано је лоше оружје за браниоца."
 
 #: src/actions.cpp:1280
 msgid "female^poisoned"
@@ -7372,8 +7370,7 @@ msgstr "Преузимам додатак: $addon_title|..."
 #: src/addon_management.cpp:652
 msgid ""
 "The add-on has an invalid file or directory name and can not be installed."
-msgstr ""
-"Додатак нема ваљано име датотеке или фасцикле и не може се инсталирати."
+msgstr "Додатак има лоше име датотеке или фасцикле и не може се инсталирати."
 
 #: src/addon_management.cpp:701
 msgid "The add-on '$addon_title|' has been successfully installed."
@@ -7656,7 +7653,7 @@ msgstr "%a %b %d %H.%M %Y"
 
 #: src/dialogs.cpp:444
 msgid "#(Invalid)"
-msgstr "#(неваљано)"
+msgstr "#(лоше)"
 
 #: src/dialogs.cpp:462
 msgid "Campaign: $campaign_name"
@@ -7875,7 +7872,7 @@ msgstr "Учитавам насловни екран."
 
 #: src/game_config.cpp:287
 msgid "Invalid color range: "
-msgstr "Неваљан опсег боја: "
+msgstr "Лош опсег боја: "
 
 #: src/game_events.cpp:204
 msgid "Error: "
@@ -8564,6 +8561,8 @@ msgid ""
 "Unknown command '$command', try $help_command for a list of available "
 "commands."
 msgstr ""
+"Непозната наредба ‘$command’ (са $help_command добијате списак доступних "
+"наредби)."
 
 #: src/menu_events.cpp:1952
 msgid ""
@@ -8575,53 +8574,53 @@ msgstr ""
 
 #: src/menu_events.cpp:1954
 msgid "do not translate the 'all'^[all|<command>]"
-msgstr ""
+msgstr "[all|<наредба>]"
 
 #: src/menu_events.cpp:1998
-#, fuzzy
 msgid "Error:"
-msgstr "Грешка: "
+msgstr "Грешка:"
 
 #: src/menu_events.cpp:2004
 msgid "Missing argument $arg_id"
-msgstr ""
+msgstr "Недостаје аргумент $arg_id"
 
 #: src/menu_events.cpp:2052
 msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
 msgstr ""
+"Доступне наредбе $flags_description:\n"
+"$list_of_commands"
 
 #: src/menu_events.cpp:2052 src/menu_events.cpp:2053 src/menu_events.cpp:2076
-#, fuzzy
 msgid "help"
-msgstr "Помоћ"
+msgstr "помоћ"
 
 #: src/menu_events.cpp:2053
 msgid "Type $help_command <command> for more info."
-msgstr ""
+msgstr "Упишите $help_command <наредба> за више детаља."
 
 #: src/menu_events.cpp:2064
 msgid " No help available."
 msgstr " Помоћ није доступна."
 
 #: src/menu_events.cpp:2069
-#, fuzzy
 msgid "Usage:"
-msgstr "порука:"
+msgstr "Употреба:"
 
 #: src/menu_events.cpp:2074
 msgid "aliases:"
-msgstr ""
+msgstr "алијаси:"
 
+# well-spelled: админ
 #: src/menu_events.cpp:2200
 msgid "(A) - admin command"
-msgstr ""
+msgstr "(A) — админ. наредба"
 
+# well-spelled: админ
 #: src/menu_events.cpp:2207 src/menu_events.cpp:2405
-#, fuzzy
 msgid "(admin only)"
-msgstr "Само тимски"
+msgstr "(само админ.)"
 
 #: src/menu_events.cpp:2227
 msgid ""
@@ -8642,7 +8641,7 @@ msgstr ""
 #: src/menu_events.cpp:2239 src/menu_events.cpp:2241 src/menu_events.cpp:2266
 #: src/menu_events.cpp:2268 src/menu_events.cpp:2270 src/menu_events.cpp:2284
 msgid "<nick>"
-msgstr ""
+msgstr "<надимак>"
 
 #: src/menu_events.cpp:2234
 msgid "Unban a user. He does not have to be in the game but on the server."
@@ -8669,9 +8668,8 @@ msgid "Send a message to the server admins currently online"
 msgstr "Шаље поруку администраторима сервера тренутно на вези."
 
 #: src/menu_events.cpp:2255
-#, fuzzy
 msgid "<message>"
-msgstr "порука:"
+msgstr "<порука>"
 
 #: src/menu_events.cpp:2255
 msgid "Send an emotion or personal action in chat."
@@ -8687,11 +8685,11 @@ msgstr ""
 
 #: src/menu_events.cpp:2260
 msgid "<nick> <message>"
-msgstr ""
+msgstr "<надимак> <порука>"
 
 #: src/menu_events.cpp:2264
 msgid "<level> <domain>"
-msgstr ""
+msgstr "<ниво> <домен>"
 
 #: src/menu_events.cpp:2264
 msgid "Change the log level of a log domain."
@@ -8719,7 +8717,7 @@ msgstr "Приказује податак о верзији."
 
 #: src/menu_events.cpp:2277
 msgid "<password> <email (optional)>"
-msgstr ""
+msgstr "<лозинка> <е-пошта (опционо)>"
 
 #: src/menu_events.cpp:2277
 msgid "Register your nick"
@@ -8735,7 +8733,7 @@ msgstr "Ажурира детаље вашег надимка. За могуће
 
 #: src/menu_events.cpp:2282
 msgid "<detail> <value>"
-msgstr ""
+msgstr "<детаљ> <вредност>"
 
 #: src/menu_events.cpp:2284
 msgid "Request information about a nick."
@@ -8747,7 +8745,7 @@ msgstr "Захтијева списак детаља које можете за�
 
 #: src/menu_events.cpp:2288 src/menu_events.cpp:2291 src/menu_events.cpp:2293
 msgid "<room>"
-msgstr ""
+msgstr "<соба>"
 
 #: src/menu_events.cpp:2288
 msgid "Join a room."
@@ -8767,7 +8765,7 @@ msgstr "Наброји доступне собе."
 
 #: src/menu_events.cpp:2297
 msgid "<room> <msg>"
-msgstr ""
+msgstr "<соба> <порука>"
 
 #: src/menu_events.cpp:2297
 msgid "Room message."
@@ -8775,25 +8773,24 @@ msgstr "Порука собе."
 
 #: src/menu_events.cpp:2299
 msgid "<room> <type> [value]"
-msgstr ""
+msgstr "<соба> <тип> [вредност]"
 
 #: src/menu_events.cpp:2299
 msgid "Room query."
 msgstr "Упит собе."
 
+# well-spelled: админ
 #: src/menu_events.cpp:2397
 msgid "(D) - debug only, (N) - network only, (A) - admin only"
-msgstr ""
+msgstr "(D) — само исправљање, (N) — само мрежа, (A) — само админ"
 
 #: src/menu_events.cpp:2403
-#, fuzzy
 msgid "(debug command)"
-msgstr "Исправљачке наредбе"
+msgstr "(исправљачка наредба)"
 
 #: src/menu_events.cpp:2404
-#, fuzzy
 msgid "(network only)"
-msgstr "мрежни играч"
+msgstr "(само мрежа)"
 
 #: src/menu_events.cpp:2429
 msgid "Refresh gui."
@@ -8805,11 +8802,11 @@ msgstr "Даје или одузима управљање страном ВИ."
 
 #: src/menu_events.cpp:2431
 msgid "do not translate the on/off^[<side> [on/off]]"
-msgstr ""
+msgstr "[<страна> [on/off]]"
 
 #: src/menu_events.cpp:2434
 msgid "<side> <nick>"
-msgstr ""
+msgstr "<страна> <надимак>"
 
 #: src/menu_events.cpp:2434
 msgid "Assign control of a side to a different player or observer."
@@ -8824,9 +8821,8 @@ msgid "Visualize the screen refresh procedure."
 msgstr "Сагледава поступак освјежавања екрана."
 
 #: src/menu_events.cpp:2439
-#, fuzzy
 msgid "Show fps."
-msgstr "Пусти снимак"
+msgstr "Приказује број кадрова у секунди."
 
 #: src/menu_events.cpp:2441
 msgid "Save game."
@@ -8850,7 +8846,7 @@ msgstr "Искључује аутопозиције."
 
 #: src/menu_events.cpp:2454
 msgid "<id>"
-msgstr ""
+msgstr "<ид>"
 
 #: src/menu_events.cpp:2454
 msgid "Advance to the next scenario, or scenario identified by 'id'"
@@ -8874,7 +8870,7 @@ msgstr "Извршава Lua исказ."
 
 #: src/menu_events.cpp:2466
 msgid "<command>[;<command>...]"
-msgstr ""
+msgstr "<наредба>[;<наредба>...]"
 
 #: src/menu_events.cpp:2466
 msgid "Set the command used by the custom command hotkey"
@@ -8886,7 +8882,7 @@ msgstr "Покреће испитивач стања игре."
 
 #: src/menu_events.cpp:2470
 msgid "<name>[=<command>]"
-msgstr ""
+msgstr "<име>[=<наредба>]"
 
 #: src/menu_events.cpp:2470
 msgid "Set or show alias to a command"
@@ -8894,7 +8890,7 @@ msgstr "Поставља или приказује алијас наредбе."
 
 #: src/menu_events.cpp:2472
 msgid "<var>=<value>"
-msgstr ""
+msgstr "<променљива>=<вредност>"
 
 #: src/menu_events.cpp:2472
 msgid "Set a scenario variable."
@@ -8902,7 +8898,7 @@ msgstr "Поставља променљиву сценарија."
 
 #: src/menu_events.cpp:2474
 msgid "<var>"
-msgstr ""
+msgstr "<променљива>"
 
 #: src/menu_events.cpp:2474
 msgid "Show a scenario variable."
@@ -8963,11 +8959,11 @@ msgstr "Домен пребачен: ‘$domain|’ на ниво: ‘$level|’
 
 #: src/menu_events.cpp:2635
 msgid "whisper to $receiver"
-msgstr ""
+msgstr "шапат за $receiver"
 
 #: src/menu_events.cpp:2642
 msgid "whisper: $sender"
-msgstr ""
+msgstr "шапат: $sender"
 
 #: src/menu_events.cpp:2738 src/menu_events.cpp:2757
 #: src/multiplayer_connect.cpp:699
@@ -8975,83 +8971,74 @@ msgid "(empty)"
 msgstr "(празно)"
 
 #: src/menu_events.cpp:2738 src/menu_events.cpp:2744 src/menu_events.cpp:2794
-#, fuzzy
 msgid "ignores list"
-msgstr "на списку игнорисаних"
+msgstr "списак игнорисаних"
 
 #: src/menu_events.cpp:2744
-#, fuzzy
 msgid "Added to ignore list: $nick"
-msgstr "Додат на списак игнорисаних: "
+msgstr "Додат на списак игнорисаних: $nick"
 
 #: src/menu_events.cpp:2747 src/menu_events.cpp:2766
-#, fuzzy
 msgid "Invalid username: $nick"
-msgstr "Неваљано корисничко име: "
+msgstr "Лоше корисничко име: $nick"
 
 #: src/menu_events.cpp:2757 src/menu_events.cpp:2764 src/menu_events.cpp:2790
-#, fuzzy
 msgid "friends list"
-msgstr "на списку пријатеља"
+msgstr "списак пријатеља"
 
 #: src/menu_events.cpp:2764
-#, fuzzy
 msgid "Added to friends list: $nick"
-msgstr "Додат на списак пријатеља: "
+msgstr "Додат на списак пријатеља: $nick"
 
 #: src/menu_events.cpp:2780
-#, fuzzy
 msgid "Removed from list: $nick"
-msgstr "Уклоњен са списка: "
+msgstr "Уклоњен са списка: $nick"
 
 #: src/menu_events.cpp:2780 src/menu_events.cpp:2798
-#, fuzzy
 msgid "friends and ignores list"
-msgstr "на списку игнорисаних"
+msgstr "списак пријатеља и игнорисаних"
 
 #: src/menu_events.cpp:2798
 msgid "There are no players on your friends or ignore list."
 msgstr "Нема играча ни на вашем списку пријатеља ни игнорисаних."
 
 #: src/menu_events.cpp:2803
-#, fuzzy
 msgid "version"
 msgstr "верзија"
 
 #: src/menu_events.cpp:2819
 msgid "registering with password *** and no email address"
-msgstr ""
+msgstr "региструјем са лозинком *** и без адресе е-поште"
 
 #: src/menu_events.cpp:2823
 msgid "registering with password *** and email address $email"
-msgstr ""
+msgstr "региструјем са лозинком *** и адресом е-поште $email"
 
 #: src/menu_events.cpp:2826 src/menu_events.cpp:2837 src/menu_events.cpp:2855
 #: src/menu_events.cpp:2869
 msgid "nick registration"
-msgstr ""
+msgstr "региструјем надимак"
 
 #: src/menu_events.cpp:2837
 msgid "dropping your username"
-msgstr ""
+msgstr "уклањам ваш надимак"
 
 #: src/menu_events.cpp:2855
 msgid "setting $var to $value"
-msgstr ""
+msgstr "постављам $var на $value"
 
 #: src/menu_events.cpp:2869
-#, fuzzy
 msgid "requesting information for user $nick"
-msgstr "Затражите податке о надимку."
+msgstr "тражим податке о кориснику $nick"
 
 #: src/menu_events.cpp:2981
 msgid "Couldn't find label or unit containing the string '$search'."
-msgstr "Нисам могао да нађем етикету или јединицу која садржи ‘$search|’."
+msgstr "Не могу да нађем етикету или јединицу која садржи ‘$search|’."
 
 # well-spelled: дроидовати
 #: src/menu_events.cpp:3010
 msgid "Can't droid invalid side: '$side'."
-msgstr "Не може се дроидовати неваљана страна: ‘$side|’."
+msgstr "Не може се дроидовати лоша страна: ‘$side|’."
 
 # well-spelled: дроидовати
 #: src/menu_events.cpp:3015
@@ -9060,7 +9047,7 @@ msgstr "Не може се дроидовати умрежена страна: �
 
 #: src/menu_events.cpp:3052
 msgid "Can't change control of invalid side: '$side'."
-msgstr "Не може се промијенити управљање над неваљаном страном: ‘$side|’."
+msgstr "Не може се промијенити управљање над лошом страном: ‘$side|’."
 
 #: src/menu_events.cpp:3058
 msgid "Can't change control of out-of-bounds side: '$side'."
@@ -9084,23 +9071,22 @@ msgstr "Исправљање деактивирано!"
 
 #: src/menu_events.cpp:3224
 msgid "Variable not found"
-msgstr ""
+msgstr "Променљива није нађена"
 
 #: src/menu_events.cpp:3262
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral or "
 "chaotic."
 msgstr ""
+"Лош аргумент: ‘$alignment’ мора бити једно од lawful, neutral или chaotic."
 
 #: src/menu_events.cpp:3319
-#, fuzzy
 msgid "Invalid unit type"
-msgstr "Неваљано име ознаке"
+msgstr "Лош тип јединице"
 
 #: src/menu_events.cpp:3332
-#, fuzzy
 msgid "Invalid location"
-msgstr "Неваљана боја"
+msgstr "Лоша локација"
 
 #: src/menu_events.cpp:3368
 msgid "ai"
@@ -9142,7 +9128,7 @@ msgstr "Петља преусмеравања на страни сервера"
 
 #: src/multiplayer.cpp:256
 msgid "Bad data received from server"
-msgstr ""
+msgstr "Лоши подаци примљени са сервера"
 
 #: src/multiplayer.cpp:297
 msgid "You must login first."
@@ -9157,7 +9143,7 @@ msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
 msgstr ""
-"Надимак „$nick“ садржи неваљане знакове. Дозвољена су само слова, бројеви, "
+"Надимак „$nick“ садржи лоше знакове. Дозвољена су само слова, бројеви, "
 "подвлаке и цртице."
 
 #: src/multiplayer.cpp:305
@@ -9283,11 +9269,11 @@ msgstr "У бој!"
 
 #: src/multiplayer_connect.cpp:1041
 msgid "The scenario is invalid because it has no id."
-msgstr "Сценарио није није ваљан јер нема ИД."
+msgstr "Сценарио није је неправилан јер нема ИД."
 
 #: src/multiplayer_connect.cpp:1045
 msgid "The scenario is invalid because it has no sides."
-msgstr "Сценарио није није ваљан јер нема страна."
+msgstr "Сценарио није је неправилан јер нема страна."
 
 #: src/multiplayer_connect.cpp:1440
 msgid "Network Player"
@@ -9439,12 +9425,11 @@ msgstr "$login-ова игра"
 
 #: src/multiplayer_create.cpp:287
 msgid "Invalid era selected"
-msgstr "Изабрана је неваљана епоха"
+msgstr "Изабрана је лоша епоха"
 
 #: src/multiplayer_create.cpp:333
-#, fuzzy
 msgid "The map is invalid."
-msgstr "Игра је завршена."
+msgstr "Мапа је неправилна."
 
 #: src/multiplayer_create.cpp:335
 msgid "You must enter a name."
@@ -9508,7 +9493,7 @@ msgstr "величина: "
 
 #: src/multiplayer_ui.cpp:195
 msgid "Invalid Color"
-msgstr "Неваљана боја"
+msgstr "Лоша боја"
 
 #: src/multiplayer_ui.cpp:425
 msgid "Selected user: "
@@ -9560,7 +9545,7 @@ msgstr[3] "златник"
 
 #: src/network.cpp:106
 msgid "invalid network handle"
-msgstr "неваљана мрежна ручка"
+msgstr "лоша мрежна ручка"
 
 #: src/network.cpp:139
 msgid "Client disconnected"
@@ -9732,23 +9717,14 @@ msgstr[3] ""
 "почетни број."
 
 #: src/playsingle_controller.cpp:255
-#, fuzzy
 msgid ""
 "You will start the next scenario with the defined minimum starting gold."
 msgid_plural ""
 "You will start the next scenario with the defined minimum starting gold."
-msgstr[0] ""
-"Почињете наредни сценарио са $gold златником додатим на задати најмањи "
-"почетни број."
-msgstr[1] ""
-"Почињете наредни сценарио са $gold златника додата на задати најмањи почетни "
-"број."
-msgstr[2] ""
-"Почињете наредни сценарио са $gold златника додатих на задати најмањи "
-"почетни број."
-msgstr[3] ""
-"Почињете наредни сценарио са једним златником додатим на задати најмањи "
-"почетни број."
+msgstr[0] "Почињете наредни сценарио са задатим најмањим бројем златника."
+msgstr[1] "Почињете наредни сценарио са задатим најмањим бројем златника."
+msgstr[2] "Почињете наредни сценарио са задатим најмањим бројем златника."
+msgstr[3] "Почињете наредни сценарио са задатим најмањим бројем златника."
 
 #: src/playsingle_controller.cpp:263
 msgid ""
@@ -9907,7 +9883,7 @@ msgstr "Недовршена ознака [element]"
 
 #: src/serialization/parser.cpp:184 src/serialization/parser.cpp:222
 msgid "Invalid tag name"
-msgstr "Неваљано име ознаке"
+msgstr "Лоше име ознаке"
 
 #: src/serialization/parser.cpp:187
 msgid "Unterminated [+element] tag"
@@ -9915,7 +9891,7 @@ msgstr "Недовршена ознака [+element]"
 
 #: src/serialization/parser.cpp:203
 msgid "Invalid closing tag name"
-msgstr "Неваљано име затварајуће ознаке"
+msgstr "Лоше име затварајуће ознаке"
 
 #: src/serialization/parser.cpp:206
 msgid "Unterminated closing tag"
@@ -9927,7 +9903,7 @@ msgstr "Неочекивана затварајућа ознака"
 
 #: src/serialization/parser.cpp:216
 msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
-msgstr "Нађена неваљана затварајућа ознака $tag2 за $tag1 (отворено код $pos)"
+msgstr "Нађена лоша затварајућа ознака $tag2 за $tag1 (отворено код $pos)"
 
 #: src/serialization/parser.cpp:241 src/serialization/parser.cpp:253
 msgid "Empty variable name"
