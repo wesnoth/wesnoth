@@ -6,11 +6,8 @@
          id="sampleBuilder"
          name="Sample Project Builder"
          point="org.eclipse.core.resources.builders">
-      <builder
-            hasNature="true">
-         <run
-               class="wesnoth_eclipse_plugin.builder.SampleBuilder">
-         </run>
+      <builder hasNature="true">
+         <run class="wesnoth_eclipse_plugin.builder.SampleBuilder"/>
       </builder>
    </extension>
    <extension

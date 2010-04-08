@@ -8,6 +8,8 @@ Bundle-Vendor: www.wesnoth.org
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.core.resources,
- org.eclipse.ui.ide
+ org.eclipse.ui.ide,
+ org.eclipse.jface.text;bundle-version="3.5.2",
+ org.eclipse.ui.editors;bundle-version="3.5.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
