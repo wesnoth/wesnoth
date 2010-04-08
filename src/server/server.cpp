@@ -1243,6 +1243,8 @@ void server::start_new_server() {
 
 std::string server::process_command(std::string query, std::string issuer_name) {
 	std::ostringstream out;
+	utils::strip(query);
+
 	if (issuer_name == "*socket*" && query.at(0) == '+') {
 		// The first argument might be "+<issuer>: ".
 		// In that case we use +<issuer>+ as the issuer_name.
