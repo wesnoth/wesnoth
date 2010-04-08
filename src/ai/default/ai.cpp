@@ -1682,6 +1682,20 @@ public:
 	}
 };
 
+static void debug_print_recall_list_scores(const std::vector< std::pair<std::string,double> > &recall_list_scores,const char *message)
+{
+	if (!lg::debug.dont_log(log_ai)) {
+		std::stringstream s;
+		s << message << std::endl;
+		for (std::vector< std::pair<std::string,double> >::const_iterator p = recall_list_scores.begin(); p!=recall_list_scores.end();++p) {
+			s << p->first << " ["<<p->second<<"]"<<std::endl;
+		}
+		DBG_AI << s.str();
+	}
+
+
+}
+
 bool ai_default_recruitment_stage::analyze_recall_list()
 {
 	if (current_team().gold() < game_config::recall_cost ) {
@@ -1696,36 +1710,20 @@ bool ai_default_recruitment_stage::analyze_recall_list()
 
 	std::transform(recalls.begin(), recalls.end(), std::back_inserter< std::vector <std::pair<std::string,double> > > (recall_list_scores_), unit_combat_score_getter(*this) );
 
-	if (!lg::debug.dont_log(log_ai)) {
-		std::stringstream s;
-		s << "Recall list (after scoring):"<< std::endl;
-		for (std::vector< std::pair<std::string,double> >::const_iterator p = recall_list_scores_.begin(); p!=recall_list_scores_.end();++p) {
-			s << p->first << " ["<<p->second<<"]"<<std::endl;
-		}
-		DBG_AI << s.str();
-	}
+	debug_print_recall_list_scores(recall_list_scores_,"Recall list, after scoring:");
 
 	recall_list_scores_.erase( std::remove_if(recall_list_scores_.begin(), recall_list_scores_.end(), bad_recalls_remover(unit_combat_scores_)), recall_list_scores_.end() );
 
-	if (!lg::debug.dont_log(log_ai)) {
-		std::stringstream s;
-		s << "Recall list, after erase:"<< std::endl;
-		for (std::vector< std::pair<std::string,double> >::const_iterator p = recall_list_scores_.begin(); p!=recall_list_scores_.end();++p) {
-			s << p->first << " ["<<p->second<<"]"<<std::endl;
-		}
-		DBG_AI << s.str();
+	debug_print_recall_list_scores(recall_list_scores_,"Recall list, after erase:");
+
+	if (recall_list_scores_.empty()) {
+		return false;
 	}
 
 	sort(recall_list_scores_.begin(),recall_list_scores_.end(),combat_score_less());
 
-	if (!lg::debug.dont_log(log_ai)) {
-		std::stringstream s;
-		s << "Recall list, after sort (worst to best):"<< std::endl;
-		for (std::vector< std::pair<std::string,double> >::const_iterator p = recall_list_scores_.begin(); p!=recall_list_scores_.end();++p) {
-			s << p->first << " ["<<p->second<<"]"<<std::endl;
-		}
-		DBG_AI << s.str();
-	}
+	debug_print_recall_list_scores(recall_list_scores_,"Recall list, after sort (worst to best):");
+
 	return !(recall_list_scores_.empty());
 }
 
