@@ -945,6 +945,8 @@ preprocessor_deleter::preprocessor_deleter(preprocessor_streambuf *buf,
 
 preprocessor_deleter::~preprocessor_deleter()
 {
+	clear(std::ios_base::goodbit);
+	exceptions(std::ios_base::goodbit);
 	rdbuf(NULL);
 	delete buf_;
 	delete defines_;
