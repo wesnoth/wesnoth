@@ -451,7 +451,11 @@ void menu_handler::status_table(int selected)
 		} else {
 			str << data.gold << COLUMN_SEPARATOR;
 		}
-		str << data.villages << COLUMN_SEPARATOR
+		str << data.villages;
+                if(!(viewing_team.uses_fog() || viewing_team.uses_shroud())) {
+                        str << "/" << map_.villages().size();
+                }
+		str << COLUMN_SEPARATOR
 			<< data.units << COLUMN_SEPARATOR << data.upkeep << COLUMN_SEPARATOR
 			<< (data.net_income < 0 ? font::BAD_TEXT : font::NULL_MARKUP) << data.net_income;
 		total_villages += data.villages;
