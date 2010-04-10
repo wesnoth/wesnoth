@@ -19,14 +19,9 @@
 #define GETTEXT_DOMAIN "wesnoth-editor"
 #include "action.hpp"
 #include "map_context.hpp"
-#include "../construct_dialog.hpp"
-
-#include "../resources.hpp"
 
 #include "../foreach.hpp"
 #include "../gettext.hpp"
-
-#include "../unit.hpp"
 
 namespace editor {
 
@@ -152,7 +147,6 @@ void editor_action_chain::perform_without_undo(map_context& mc) const
 		}
 	}
 }
-/* end of generic classes */
 
 void editor_action_area::extend(const editor_map& /*map*/, const std::set<map_location>& locs)
 {
@@ -181,6 +175,7 @@ void editor_action_paste::perform_without_undo(map_context& mc) const
 	mc.set_needs_terrain_rebuild();
 }
 
+
 editor_action_paint_area* editor_action_paint_area::clone() const
 {
 	return new editor_action_paint_area(*this);
@@ -196,23 +191,6 @@ void editor_action_paint_area::perform_without_undo(map_context& mc) const
 {
 	mc.draw_terrain(t_, area_, one_layer_);
 	mc.set_needs_terrain_rebuild();
-}
-
-editor_action_name_area* editor_action_name_area::clone() const
-{
-	return new editor_action_name_area(*this);
-}
-editor_action_paste* editor_action_name_area::perform(map_context& mc) const
-{
-	//TODO undo
-	map_fragment mf(mc.get_map(), area_);
-	std::auto_ptr<editor_action_paste> undo(new editor_action_paste(mf));
-	perform_without_undo(mc);
-	return undo.release();
-}
-void editor_action_name_area::perform_without_undo(map_context& mc) const
-{
-	mc.get_map().get_named_areas().add_area(area_id_,area_);
 }
 
 editor_action_fill* editor_action_fill::clone() const
@@ -270,233 +248,6 @@ void editor_action_starting_position::perform_without_undo(map_context& mc) cons
 	mc.set_needs_labels_reset();
 }
 
-
-
-
-editor_action_unit_replace* editor_action_unit_replace::clone() const
-{
-	return new editor_action_unit_replace(*this);
-}
-
-editor_action_village* editor_action_village::clone() const
-{
-	return new editor_action_village(*this);
-}
-
-editor_action_village_delete* editor_action_village_delete::clone() const
-{
-	return new editor_action_village_delete(*this);
-}
-
-editor_action_unit* editor_action_unit::clone() const
-{
-	return new editor_action_unit(*this);
-}
-
-
-
-
-editor_action_label_delete* editor_action_label_delete::clone() const
-{
-	return new editor_action_label_delete(*this);
-}
-editor_action* editor_action_label_delete::perform(map_context& mc) const
-{
-	std::auto_ptr<editor_action> undo;
-
-	std::vector<label> deleted = mc.get_map().get_game_labels().delete_labels(loc_);
-
-	editor_action_chain* undo_chain = new editor_action_chain();
-	for (std::vector<label>::const_iterator it = deleted.begin(); it != deleted.end(); it++) {
-		ERR_ED << it->text();
-		undo_chain->append_action(new editor_action_label(loc_,it->text(),it->team_name()));
-	}
-	undo.reset(undo_chain);
-	mc.set_needs_labels_reset();
-	//perform_without_undo(mc);
-	return undo.release();
-}
-void editor_action_label_delete::perform_without_undo(map_context& mc) const
-{
-
-}
-
-
-
-
-
-
-
-
-editor_action_label* editor_action_label::clone() const
-{
-	return new editor_action_label(*this);
-}
-editor_action* editor_action_label::perform(map_context& mc) const
-{
-	std::auto_ptr<editor_action> undo;
-	const label* old_label = mc.get_map().get_game_labels().get_label(loc_);
-	if (old_label) {
-		undo.reset(new editor_action_label(loc_, old_label->text(), old_label->team_name()) );
-	} else {
-		undo.reset(new editor_action_label_delete(loc_));
-	}
-
-	perform_without_undo(mc);
-	return undo.release();
-}
-
-
-
-
-
-
-
-
-
-
-editor_action* editor_action_unit_replace::perform(map_context& mc) const
-{
-	std::auto_ptr<editor_action> undo(new editor_action_unit_replace(new_loc_, loc_));
-
-	perform_without_undo(mc);
-	return undo.release();
-}
-void editor_action_unit_replace::perform_without_undo(map_context& mc) const
-{
-	unit_map& units = mc.get_map().get_units();
-	units.move(loc_, new_loc_);
-	unit::clear_status_caches();
-
-	unit& u = *units.find(new_loc_);
-	u.set_standing();
-	mc.set_needs_labels_reset();
-
-	//TODO
-//	if (mc.get_map().is_village(new_loc_)) {
-//		(*(resources::teams))[u.side()].get_village(new_loc_);
-//	}
-//TODO check if that is useful
-//	resources::screen->invalidate_unit_after_move(loc_, new_loc_);
-//	resources::screen->draw();
-}
-
-void editor_action_label::perform_without_undo(map_context& mc) const
-{
-	mc.get_map().get_game_labels().set_label(loc_,text_);
-	mc.set_needs_labels_reset();
-}
-
-
-
-
-editor_action* editor_action_village::perform(map_context& mc) const
-{
-	std::auto_ptr<editor_action> undo;
-
-	//TODO return undo.release() ?
-	if(!mc.get_map().is_village(loc_)) return NULL;
-	std::vector<team>& teams = mc.get_map().get_teams();
-	team *t = unsigned(side_number_) < teams.size() ? &teams[side_number_] : NULL;
-	if (t && t->owns_village(loc_)) {
-		return NULL;
-	}
-
-	undo.reset(new editor_action_village_delete(loc_));
-
-	for(std::vector<team>::iterator i = teams.begin(); i != teams.end(); ++i) {
-		if (i->owns_village(loc_))
-			undo.reset(new editor_action_village(loc_, i->side() -1));
-	}
-
-
-	perform_without_undo(mc);
-
-	return undo.release();
-}
-void editor_action_village::perform_without_undo(map_context& mc) const
-{
-	std::vector<team>& teams = mc.get_map().get_teams();
-	for(std::vector<team>::iterator i = teams.begin(); i != teams.end(); ++i) {
-			i->lose_village(loc_);
-	}
-	teams[side_number_].get_village(loc_, false);
-}
-
-
-editor_action* editor_action_village_delete::perform(map_context& mc) const
-{
-	std::auto_ptr<editor_action> undo;
-
-	//TODO can teams be const?
-	std::vector<team>& teams = mc.get_map().get_teams();
-	for(std::vector<team>::iterator i = teams.begin(); i != teams.end(); ++i) {
-		if (i->owns_village(loc_)) {
-			perform_without_undo(mc);
-			undo.reset(new editor_action_village(loc_, i->side() -1));
-		}
-	}
-
-	return undo.release();
-}
-
-void editor_action_village_delete::perform_without_undo(map_context& mc) const
-{
-	std::vector<team>& teams = mc.get_map().get_teams();
-	for(std::vector<team>::iterator i = teams.begin(); i != teams.end(); ++i) {
-		if (i->owns_village(loc_)) {
-			i->lose_village(loc_);
-		}
-	}
-}
-
-editor_action* editor_action_unit_delete::perform(map_context& mc) const
-{
-	std::auto_ptr<editor_action> undo;
-
-	unit_map& units = mc.get_units();
-	unit_map::const_unit_iterator unit_it = units.find(loc_);
-
-	if (unit_it != units.end()) {
-		undo.reset(new editor_action_unit(loc_, *unit_it));
-		perform_without_undo(mc);
-	}
-	return undo.release();
-}
-void editor_action_unit_delete::perform_without_undo(map_context& mc) const
-{
-	unit_map& units = mc.get_units();
-	if (!units.erase(loc_)) {
-		ERR_ED << "Could not delete unit on " << loc_.x << "/" << loc_.y;
-	}
-	mc.set_needs_labels_reset();
-}
-
-
-
-
-
-
-editor_action* editor_action_unit::perform(map_context& mc) const
-{
-	std::auto_ptr<editor_action> undo(new editor_action_unit_delete(loc_));
-	perform_without_undo(mc);
-	return undo.release();
-}
-void editor_action_unit::perform_without_undo(map_context& mc) const
-{
-	mc.get_units().add(loc_,u_);
-	mc.get_units().find(loc_)->set_location(loc_);
-	//TODO may be useful
-	//	chosen.new_turn();
-	mc.set_needs_labels_reset();
-}
-
-
-editor_action_unit_delete* editor_action_unit_delete::clone() const
-{
-	return new editor_action_unit_delete(*this);
-}
 
 editor_action_select* editor_action_select::clone() const
 {
@@ -646,7 +397,7 @@ editor_action_create_mask* editor_action_create_mask::clone() const
 }
 void editor_action_create_mask::perform_without_undo(map_context& mc) const
 {
-	mc.get_map() = editor_map(mc.get_map().mask_to(target_), mc.get_map().get_level());
+	mc.get_map() = editor_map(mc.get_map().mask_to(target_));
 	mc.set_needs_terrain_rebuild();
 }
 

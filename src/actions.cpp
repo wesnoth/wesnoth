@@ -1723,6 +1723,8 @@ struct unit_healing_struct {
 void calculate_healing(int side, bool update_display)
 {
 	DBG_NG << "beginning of healing calculations\n";
+
+	int heal_accel = unit_type::stat_accelerator::get_acceleration();
 	unit_map &units = *resources::units;
 
 	std::list<unit_healing_struct> l;
@@ -1793,7 +1795,7 @@ void calculate_healing(int side, bool update_display)
 		}
 
 		unit_abilities::effect heal_effect(heal,0,false);
-		healing = heal_effect.get_composite_value();
+		healing = heal_effect.get_composite_value() * heal_accel;
 
 		for(std::vector<unit_abilities::individual_effect>::const_iterator heal_loc = heal_effect.begin(); heal_loc != heal_effect.end(); ++heal_loc) {
 			healers.push_back(&*units.find(heal_loc->loc));
@@ -1807,7 +1809,7 @@ void calculate_healing(int side, bool update_display)
 			unit_ability_list regen = u.get_abilities("regenerate");
 			unit_abilities::effect regen_effect(regen,0,false);
 			if(regen_effect.get_composite_value() > healing) {
-				healing = regen_effect.get_composite_value();
+				healing = regen_effect.get_composite_value() * heal_accel;
 				healers.clear();
 			}
 			if(regen.cfgs.size()) {
@@ -1823,7 +1825,7 @@ void calculate_healing(int side, bool update_display)
 			}
 			if (int h = resources::game_map->gives_healing(u.get_location())) {
 				if (h > healing) {
-					healing = h;
+					healing = h * heal_accel;
 					healers.clear();
 				}
 				/** @todo FIXME */
@@ -1831,7 +1833,7 @@ void calculate_healing(int side, bool update_display)
 				curer = units.end();
 			}
 			if (u.resting() || u.is_healthy()) {
-				rest_healing = game_config::rest_heal_amount;
+				rest_healing = game_config::rest_heal_amount * heal_accel;
 				healing += rest_healing;
 			}
 		}
@@ -1851,7 +1853,7 @@ void calculate_healing(int side, bool update_display)
 				healers.clear();
 				healing = rest_healing;
 				if (u.side() == side) {
-					healing -= game_config::poison_amount;
+					healing -= game_config::poison_amount * heal_accel;
 				}
 			}
 		}

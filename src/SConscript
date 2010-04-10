@@ -79,7 +79,6 @@ libwesnoth_sources = Split("""
     loadscreen.cpp
     map_create.cpp
     map_label.cpp
-    map_area.cpp
     mapgen.cpp
     mapgen_dialog.cpp
     marked-up_text.cpp
@@ -219,7 +218,6 @@ wesnoth_sources = Split("""
     multiplayer_create.cpp
     multiplayer_connect.cpp
     pathfind/pathfind.cpp
-    pathfind/teleport.cpp
     playcampaign.cpp
     play_controller.cpp
     playmp_controller.cpp

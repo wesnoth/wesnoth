@@ -34,7 +34,6 @@ unit_map::unit_map(const unit_map& that) :
 	num_invalid_(0)
 {
 	for (const_unit_iterator i = that.begin(); i != that.end(); i++) {
-		i->set_game_context(this);
 		add(i->get_location(), *i);
 	}
 }
@@ -43,14 +42,6 @@ unit_map &unit_map::operator=(const unit_map &that)
 {
 	unit_map temp(that);
 	swap(temp);
-	for (unit_iterator i = begin(); i != end(); i++) {
-		//TODO
-//				unit u = *i;
-
-			i->set_game_context(this);
-	//		add(i->get_location(), *i);
-//				add(i->get_location(), u);
-		}
 	return *this;
 }
 

@@ -63,7 +63,7 @@ class gamemap;
 class display
 {
 public:
-	display(CVideo& video, gamemap* map, const config& theme_cfg,
+	display(CVideo& video, const gamemap* map, const config& theme_cfg,
 			const config& level);
 	virtual ~display();
 
@@ -73,7 +73,7 @@ public:
 	 */
 	void reload_map();
 
-	virtual void change_map(gamemap* m);
+	void change_map(const gamemap* m);
 
 	static Uint32 rgb(Uint8 red, Uint8 green, Uint8 blue)
 		{ return 0xFF000000 | (red << 16) | (green << 8) | blue; }
@@ -312,7 +312,6 @@ public:
 
 
 	const gamemap& get_map() const { return *map_; }
-	gamemap& get_map() { return *map_; }
 
 	/**
 	 * The last action in drawing a tile is adding the overlays.
@@ -562,7 +561,7 @@ protected:
 	void scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_type,bool force = true);
 
 	CVideo& screen_;
-	gamemap* map_;
+	const gamemap* map_;
 	const team *viewpoint_;
 	int xpos_, ypos_;
 	theme theme_;

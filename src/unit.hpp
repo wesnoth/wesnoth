@@ -71,7 +71,7 @@ public:
 	  * (to prevent OOS caused by RNG calls)
 	  */
 	unit(const unit_type* t, int side, bool real_unit,
-		unit_race::GENDER gender=unit_race::NUM_GENDERS, bool canrecruit = false);
+		unit_race::GENDER gender = unit_race::NUM_GENDERS);
 	virtual ~unit();
 	unit& operator=(const unit&);
 

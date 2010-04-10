@@ -168,6 +168,7 @@ then
 	CPPFLAGS="$CPPFLAGS -DDEBUG_WINDOW_LAYOUT_GRAPHS"
 fi
 
+
 DATADIR=$PACKAGE
 AC_ARG_WITH([datadir-name],
             AS_HELP_STRING([--with-datadir-name@<:@=DIR@:>@], [change name of data directory @<:@wesnoth@:>@]),

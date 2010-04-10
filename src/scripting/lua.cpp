@@ -49,7 +49,6 @@ extern "C" {
 #include "log.hpp"
 #include "map.hpp"
 #include "pathfind/pathfind.hpp"
-#include "pathfind/teleport.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "terrain_translation.hpp"

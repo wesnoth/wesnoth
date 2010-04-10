@@ -18,14 +18,9 @@
 #include "editor_display.hpp"
 #include "mouse_action.hpp"
 
-#include "gui/dialogs/gamestate_inspector.hpp"
 #include "../construct_dialog.hpp"
 #include "../gettext.hpp"
 
-
-#include "map_label.hpp"
-#include "gui/dialogs/unit_create.hpp"
-//#include "resources.hpp"
 
 namespace editor {
 
@@ -416,238 +411,6 @@ void mouse_action_fill::set_mouse_overlay(editor_display& disp)
 	set_terrain_mouse_overlay(disp, terrain_left_, terrain_right_);
 }
 
-editor_action* mouse_action_village::click_right(editor_display& /*disp*/, int /*x*/, int /*y*/)
-{
-	return NULL;
-}
-
-editor_action* mouse_action_village::click_left(editor_display& /*disp*/, int /*x*/, int /*y*/)
-{
-	return NULL;
-}
-
-editor_action* mouse_action_village::up_left(editor_display& disp, int x, int y)
-{
-	map_location hex = disp.hex_clicked_on(x, y);
-	return new editor_action_village(hex, disp.playing_team());
-}
-
-editor_action* mouse_action_village::up_right(editor_display& disp, int x, int y)
-{
-	map_location hex = disp.hex_clicked_on(x, y);
-	return new editor_action_village_delete(hex);
-}
-
-
-
-editor_action* mouse_action_unit::click_right(editor_display& disp, int x, int y)
-{
-	map_location hex = disp.hex_clicked_on(x, y);
-	const unit_map& units = disp.map().get_const_units();
-
-	last_hex_ = hex;
-
-	const unit_map::const_unit_iterator unit_it = units.find(hex);
-	if (unit_it != units.end()) {
-//		surface image = unit_it->second.still_image();
-//		Uint8 alpha = 196;
-//		int size = image->w;
-//		int zoom = static_cast<int>(size * disp.get_zoom_factor());
-//		// Add the alpha factor and scale the image
-//		image = scale_surface(adjust_surface_alpha(image, alpha), zoom, zoom);
-//		disp.set_mouseover_hex_overlay(image);
-		temp_unit_ = &*unit_it;
-
-		//TODO set the mouse pointer to a draging one.
-
-	} else { temp_unit_ = NULL; }
-
-	click_ = true;
-	return NULL;
-}
-editor_action* mouse_action_unit::drag_right(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo)
-{
-	map_location hex = disp.hex_clicked_on(x, y);
-	if (last_hex_ != hex) {
-		last_hex_ = hex;
-		if (temp_unit_) {
-			for (map_location::DIRECTION direction = map_location::NORTH;
-					direction <= map_location::NORTH_WEST;
-					direction = map_location::DIRECTION(direction +1)){
-				if (temp_unit_->get_location().get_direction(direction, 1) == hex) {
-					unit& u = *disp.map().get_units().find(temp_unit_->get_location());
-					u.set_facing(direction);
-					u.set_standing();
-				}
-			}
-		}
-	}
-	return NULL;
-}
-editor_action* mouse_action_unit::up_right(editor_display& disp, int x, int y)
-{
-	map_location hex = disp.hex_clicked_on(x, y);
-	return new editor_action_unit_delete(hex);
-}
-
-editor_action* mouse_action_unit::click_left(editor_display& disp, int x, int y)
-{
-	map_location hex = disp.hex_clicked_on(x, y);
-	const unit_map& units = disp.map().get_const_units();
-
-	const unit_map::const_unit_iterator unit_it = units.find(hex);
-	if (unit_it != units.end()) {
-		surface image = unit_it->still_image();
-		Uint8 alpha = 196;
-		int size = image->w;
-		int zoom = static_cast<int>(size * disp.get_zoom_factor());
-		// Add the alpha factor and scale the image
-		image = scale_surface(adjust_surface_alpha(image, alpha), zoom, zoom);
-		disp.set_mouseover_hex_overlay(image);
-		temp_unit_ = &*unit_it;
-
-		//TODO set the mouse pointer to a draging one.
-
-	} else { temp_unit_ = NULL; }
-
-	click_ = true;
-	return NULL;
-}
-
-editor_action* mouse_action_map_label::click_left(editor_display& disp, int x, int y)
-{
-	click_ = true;
-	map_location hex = disp.hex_clicked_on(x, y);
-	clicked_on_ = hex;
-	last_draged_ = hex;
-	return NULL;
-}
-editor_action* mouse_action_map_label::click_right(editor_display& /*disp*/, int /*x*/, int /*y*/)
-{
-	return NULL;
-}
-editor_action* mouse_action_map_label::up_right(editor_display& disp, int x, int y)
-{
-	map_location hex = disp.hex_clicked_on(x, y);
-	return new editor_action_label_delete(hex);
-}
-editor_action* mouse_action_map_label::drag_left(editor_display& disp, int x, int y
-		, bool& partial, editor_action* last_undo)
-{
-	map_location hex = disp.hex_clicked_on(x, y);
-
-	if (hex == last_draged_)
-		return NULL;
-
-	//TODO this is somewhat hacky.
-	disp.labels().clear_all();
-	//TODO How can they be redrawn?
-
-	last_draged_ = hex;
-
-	const label* clicked_label = disp.map().get_game_labels().get_label(clicked_on_);
-	if (clicked_label) {
-		std::string text = clicked_label->text() + "\n";
-		const label* hex_label = disp.labels().get_label(hex);
-		//TODO the stacking is not working because we don't redraw all the labels.
-		if (hex_label)
-			text += hex_label->text();
-
-		terrain_label* onscreen = new terrain_label(text, "", hex, disp.labels(),
-				font::LABEL_COLOUR, true, true, false);
-		disp.labels().add_label(hex, onscreen);
-	}
-	return NULL;
-}
-editor_action* mouse_action_map_label::drag_end(editor_display& disp, int x, int y)
-{
-	//don't bring up the new label box.
-	click_ = false;
-	map_location hex = disp.hex_clicked_on(x, y);
-	editor_action_chain* chain = NULL;
-	if (clicked_on_.valid()) {
-		// This is not a onscreen label but belongs to the editor_map.
-		const label& label_clicked = *(disp.map().get_game_labels().get_label(clicked_on_));
-
-		chain = new editor_action_chain();
-		chain->append_action(new editor_action_label(hex, label_clicked.text(), label_clicked.team_name()));
-		chain->append_action(new editor_action_label_delete(clicked_on_));
-	}
-	return chain;
-}
-
-
-
-editor_action* mouse_action_map_label::up_left(editor_display& disp, int x, int y)
-{
-	if (!click_) return NULL;
-	click_ = false;
-	map_location hex = disp.hex_clicked_on(x, y);
-	if (!disp.map().on_board(hex)) {
-		return NULL;
-	}
-
-	const label* old_label = disp.map().get_game_labels().get_label(hex);
-
-	bool visible_in_fog = true;
-	bool visible_in_shroud = true;
-
-	//TODO gui2
-	gui::dialog	d(disp, _("Place Label"), "", gui::OK_CANCEL);
-	d.set_textbox(_("Label: "), (old_label ? old_label->text() : ""), map_labels::get_max_chars());
-	//TODO note that gui1 does not support more than one textbox in a dialogue.
-	//	d.set_textbox(_("Team: "), (old_label ? old_label->team_name() : ""), map_labels::get_max_chars());
-	d.add_option(_("Visible in Fog"), visible_in_fog, gui::dialog::BUTTON_CHECKBOX_LEFT);
-	d.add_option(_("Visible in Shroud"), visible_in_shroud, gui::dialog::BUTTON_CHECKBOX_LEFT);
-	//color can be adjusted as well
-	//	d.add_option(_("Team only"), team_only, gui::dialog::BUTTON_CHECKBOX_LEFT);
-	//TODO
-	const std::string team_name = "";
-
-	editor_action* a = NULL;
-	if(!d.show()) {
-		a = new editor_action_label(hex, d.textbox_text(), team_name);
-		update_brush_highlights(disp, hex);
-	}
-	return a;
-}
-
-void mouse_action_map_label::set_mouse_overlay(editor_display& disp)
-{
-	surface image = image::get_image("editor/tool-overlay-starting-position.png");
-	Uint8 alpha = 196;
-	int size = image->w;
-	int zoom = static_cast<int>(size * disp.get_zoom_factor());
-
-	// Add the alpha factor and scale the image
-	image = scale_surface(adjust_surface_alpha(image, alpha), zoom, zoom);
-	disp.set_mouseover_hex_overlay(image);
-}
-
-void mouse_action_village::set_mouse_overlay(editor_display& disp)
-{
-	surface image = image::get_image("editor/tool-overlay-village.png");
-	Uint8 alpha = 196;
-	int size = image->w;
-	int zoom = static_cast<int>(size * disp.get_zoom_factor());
-
-	// Add the alpha factor and scale the image
-	image = scale_surface(adjust_surface_alpha(image, alpha), zoom, zoom);
-	disp.set_mouseover_hex_overlay(image);
-}
-
-void mouse_action_unit::set_mouse_overlay(editor_display& disp)
-{
-	//TODO change to a new image.
-	surface image = image::get_image("editor/tool-overlay-starting-position.png");
-	Uint8 alpha = 196;
-	int size = image->w;
-	int zoom = static_cast<int>(size * disp.get_zoom_factor());
-
-	// Add the alpha factor and scale the image
-	image = scale_surface(adjust_surface_alpha(image, alpha), zoom, zoom);
-	disp.set_mouseover_hex_overlay(image);
-}
 
 
 editor_action* mouse_action_starting_position::up_left(editor_display& disp, int x, int y)
@@ -682,93 +445,6 @@ editor_action* mouse_action_starting_position::up_left(editor_display& disp, int
 	return a;
 }
 
-
-editor_action* mouse_action_unit::drag_end(editor_display& disp, int x, int y) {
-
-	if (!click_) return NULL;
-	click_ = false;
-
-	editor_action* a = NULL;
-
-	if(temp_unit_) {
-		map_location hex = disp.hex_clicked_on(x, y);
-		if (!disp.map().on_board(hex))
-			return NULL;
-		unit u = *temp_unit_;
-		a = new editor_action_unit_replace(u.get_location(), hex);
-	}
-//	ERR_ED << "\n Drag end at " << hex.x << "/" << hex.y;
-	return a;
-}
-
-
-
-
-editor_action* mouse_action_unit::up_left(editor_display& disp, int x, int y)
-{
-	if (!click_) return NULL;
-	click_ = false;
-	map_location hex = disp.hex_clicked_on(x, y);
-	if (!disp.map().on_board(hex)) {
-		return NULL;
-	}
-
-	if (temp_unit_) {
-		config u;
-		temp_unit_->write(u);
-
-		// TODO: see the comments below
-		//vconfig cfg;
-		//gui2::tconfig_inspector inspect_dialog(cfg, u);
-		//inspect_dialog.show(disp.video());
-
-	}
-
-	//TODO the gui1 dialog works better.
-	//
-	// The unit creation dialog makes sure unit types
-	// are properly cached.
-	//
-	gui2::tunit_create create_dlg;
-	create_dlg.show(disp.video());
-
-	if(create_dlg.no_choice()) {
-		return NULL;
-	}
-
-	const std::string& ut_id = create_dlg.choice();
-	const unit_type *utp = unit_types.find(ut_id);
-	if (!utp) {
-		ERR_ED << "create unit dialog returned inexistent or unusable unit_type id '" << ut_id << "'\n";
-		return NULL;
-	}
-
-	const unit_type &ut = *utp;
-
-	unit_race::GENDER gender = create_dlg.gender();
-	//TODO
-	//			const bool generate_name = create_dlg.generate_name();
-
-	// Do not try to set bad genders, may mess up l10n
-	// FIXME: is this actually necessary?
-	if(ut.genders().end() == std::find(ut.genders().begin(), ut.genders().end(), gender)) {
-		gender = ut.genders().front();
-	}
-
-	bool canrecruit = disp.map().get_teams()[disp.get_playing_team() ].no_leader();
-
-	if (canrecruit) disp.map().get_teams()[disp.get_playing_team() ].have_leader(true);
-	// FIXME: This may NOT work as intended, as the unit_map to add the unit to cannot be specified.
-	// Blame silene for removing that argument from unit's constructors
-	//unit u(&disp.map().get_units(), utp, disp.get_playing_team() +1, false, gender, canrecruit);
-	unit u(utp, disp.get_playing_team() +1, false, gender, canrecruit);
-
-
-	editor_action* a = new editor_action_unit(hex, u);
-	return a;
-}
-
-
 editor_action* mouse_action_starting_position::click_left(editor_display& /*disp*/, int /*x*/, int /*y*/)
 {
 	click_ = true;
@@ -777,24 +453,13 @@ editor_action* mouse_action_starting_position::click_left(editor_display& /*disp
 
 editor_action* mouse_action_starting_position::up_right(editor_display& disp, int x, int y)
 {
-	//TODO
-//	map_location hex = disp.hex_clicked_on(x, y);
-//	int player_starting_at_hex = disp.map().is_starting_position(hex) + 1;
-//	if (player_starting_at_hex != -1) {
-//		config side;
-////		disp.get_teams()[player_starting_at_hex].write(side);
-//		disp.get_teams()[1].write(side);
-//		//const config const_side = side;
-//		vconfig vside(side, true);
-//		ERR_ED << vside.get_config().debug();
-//		gui2::tgamestate_inspector inspect_dialog(vside);
-//		inspect_dialog.show(disp.video());
-////		inspect_dialog.show(resources::screen->video());
-//		return NULL;
-//		//return new editor_action_side_config(map_location(), player_starting_at_hex);
-//	} else {
+	map_location hex = disp.hex_clicked_on(x, y);
+	int player_starting_at_hex = disp.map().is_starting_position(hex) + 1;
+	if (player_starting_at_hex != -1) {
+		return new editor_action_starting_position(map_location(), player_starting_at_hex);
+	} else {
 		return NULL;
-//	}
+	}
 }
 
 editor_action* mouse_action_starting_position::click_right(editor_display& /*disp*/, int /*x*/, int /*y*/)

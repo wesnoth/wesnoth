@@ -18,13 +18,6 @@
 #include "editor_common.hpp"
 
 #include "../map.hpp"
-#include "../map_label.hpp"
-#include "../map_area.hpp"
-#include "../unit_map.hpp"
-
-#include "tod_manager.hpp"
-#include "soundsource.hpp"
-#include "gamestatus.hpp"
 
 #include <deque>
 #include <set>
@@ -82,29 +75,29 @@ public:
 	/**
 	 * Empty map constructor
 	 */
-	explicit editor_map(const config& terrain_cfg, const config& level);
+	explicit editor_map(const config& terrain_cfg);
 
 	/**
 	 * Create an editor map from a map data string
 	 */
-	editor_map(const config& terrain_cfg, const std::string& data, const config& level);
+	editor_map(const config& terrain_cfg, const std::string& data);
 
 	/**
 	 * Wrapper around editor_map(cfg, data) that catches possible exceptions
 	 * and wraps them in a editor_map_load_exception
 	 */
-	static editor_map from_string(const config& terrain_cfg, const std::string& data, const config& level);
+	static editor_map from_string(const config& terrain_cfg, const std::string& data);
 
 	/**
 	 * Create an editor map with the given dimensions and filler terrain
 	 */
-	editor_map(const config& terrain_cfg, size_t width, size_t height, t_translation::t_terrain filler, const config& level);
+	editor_map(const config& terrain_cfg, size_t width, size_t height, t_translation::t_terrain filler);
 
 	/**
 	 * Create an editor_map by upgrading an existing gamemap. The map data is
-	 * copied. Marked "explicit" to avoid potentially harmful automatic conversions.
+	 * copied. Marked "explicit" to avoid potentially harmful autmatic conversions.
 	 */
-	explicit editor_map(const gamemap& map, const config& level);
+	explicit editor_map(const gamemap& map);
 
 	/**
 	 * editor_map destructor
@@ -117,44 +110,11 @@ public:
 	void sanity_check();
 
 	/**
-	 * Get a contiguous set of tiles having the same terrain as the starting location.
+	 * Get a contigious set of tiles having the same terrain as the starting location.
 	 * Useful for flood fill or magic wand selection
-	 * @return a contiguous set of locations that will always contain at least the starting element
+	 * @return a contigious set of locations that will always contain at least the starting element
 	 */
 	std::set<map_location> get_contigious_terrain_tiles(const map_location& start) const;
-
-	/**
-	 * Unit map accessor
-	 */
-	unit_map& get_units() { return units_; };
-
-	const unit_map& get_const_units() const { return units_; };
-
-	//TODO
-//	unit_map& get_units() const { return units_; };
-
-	labels& get_game_labels() { return game_labels_; }
-
-	map_areas& get_named_areas() { return named_areas_; }
-
-	const map_areas& get_named_areas() const { return named_areas_; }
-
-	const labels& get_game_labels() const { return game_labels_; }
-
-	tod_manager&  get_tod_manager() { return tod_manager_; }
-
-	const config& get_level() { return cfg_; }
-
-	//TODO
-//	soundsource::manager* get_sound_source_manager() { return soundsources_manager_; }
-
-	std::vector<team>&  get_teams() { return teams_; }
-
-	const std::vector<team>& get_teams() const { return teams_; }
-
-	game_state&  get_state() { return state_; }
-
-	const game_state& get_state() const { return state_; }
 
 	/**
 	 * Set labels for staring positions in the given display object.
@@ -240,36 +200,6 @@ protected:
 	 * The selected hexes
 	 */
 	std::set<map_location> selection_;
-
-	/**
-	 * The unit_map that contains the unit objects of the map.
-	 */
-	unit_map units_;
-
-	/**
-	 * The map labels from inside [map]
-	 *
-	 */
-	labels game_labels_;
-
-	/**
-	 * the named locations
-	 */
-	map_areas named_areas_;
-
-	tod_manager tod_manager_;
-
-	//TODO
-//	boost::scoped_ptr<soundsource::manager> soundsources_manager_;
-
-	std::vector<team> teams_;
-
-	config cfg_;
-
-	game_state state_;
-
-private:
-	void setup(const config& level);
 };
 
 

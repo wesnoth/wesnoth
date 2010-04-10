@@ -42,15 +42,12 @@ class unit_map;
 class game_display : public display
 {
 public:
-	game_display(unit_map* units, CVideo& video,
-			gamemap* map, tod_manager* tod_manager,
-			std::vector<team>* t, const config& theme_cfg,
+	game_display(unit_map& units, CVideo& video,
+			const gamemap& map, const tod_manager& tod_manager,
+			const std::vector<team>& t, const config& theme_cfg,
 			const config& level);
 
 	static game_display* create_dummy_display(CVideo& video);
-
-	//TODO sort in
-	void load_flags();
 
 	~game_display();
 	static game_display* get_singleton() { return singleton_ ;}
@@ -243,10 +240,10 @@ public:
 	void set_team(size_t team, bool observe=false);
 	void set_playing_team(size_t team);
 	size_t get_playing_team() const {return activeTeam_;}
-	const std::vector<team>& get_teams() {return *teams_;}
+	const std::vector<team>& get_teams() {return teams_;}
 
-	virtual unit_map& get_units() {return *units_;}
-	virtual const unit_map& get_const_units() const {return *units_;}
+	unit_map& get_units() {return units_;}
+	const unit_map& get_const_units() const {return units_;}
 
 	/**
 	 * Draws a cross on a tile to emphasize something there.
@@ -263,7 +260,7 @@ public:
 	/** The playing team is the team whose turn it is. */
 	size_t playing_team() const { return activeTeam_; }
 
-	bool team_valid() const { return currentTeam_ < teams_->size(); }
+	bool team_valid() const { return currentTeam_ < teams_.size(); }
 	std::string current_team_name() const;
 
 	void add_observer(const std::string& name) { observers_.insert(name); }
@@ -307,11 +304,8 @@ private:
 	// This surface must be freed by the caller
 	surface get_flag(const map_location& loc);
 
-protected:
-	unit_map* units_;
-	tod_manager* tod_manager_;
+	unit_map& units_;
 
-private:
 	unit *temp_unit_;
 
 	// Locations of the attack direction indicator's parts
@@ -328,11 +322,10 @@ private:
 
 	pathfind::marked_route route_;
 
+	const tod_manager& tod_manager_;
 
-protected:
-	std::vector<team>* teams_;
+	const std::vector<team>& teams_;
 
-private:
 	const config& level_;
 
 	void invalidate_route();

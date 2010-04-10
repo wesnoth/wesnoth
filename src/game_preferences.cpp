@@ -581,9 +581,19 @@ int xp_modifier()
 	return settings::get_xp_modifier(preferences::get("mp_xp_modifier"));
 }
 
+int stat_modifier()
+{
+	return settings::get_stat_modifier(preferences::get("mp_stat_modifier"));
+}
+
 void set_xp_modifier(int value)
 {
 	preferences::set("mp_xp_modifier", lexical_cast<std::string>(value));
+}
+
+void set_stat_modifier(int value)
+{
+	preferences::set("mp_stat_modifier", lexical_cast<std::string>(value));
 }
 
 int era()

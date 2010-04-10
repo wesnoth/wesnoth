@@ -30,7 +30,7 @@ namespace editor {
  * an appropriate editor_action object. Mouse actions may store some temporary data
  * such as the last clicked hex for better handling of click-drag. They should *not* modify
  * the map or trigger refreshes, but may set brush locations and similar overlays that
- * should be visible around the mouse cursor, hence the display references are no constants.
+ * should be visible around the mouse cursor, hence the display references are not const.
  */
 class mouse_action
 {
@@ -47,7 +47,7 @@ public:
 	virtual bool has_context_menu() const;
 
 	/**
-	 * Mouse move (not a drag). Never changes anything (other than temporary highlights and similar)
+	 * Mouse move (not a drag). Never changes anything (other than temporary highlihts and similar)
 	 */
 	void move(editor_display& disp, const map_location& hex);
 
@@ -57,7 +57,7 @@ public:
 	void update_brush_highlights(editor_display& disp, const map_location& hex);
 
 	/**
-	 * Locations that would be affected by a click, used by move to update highlights. Defaults to highlight the mouseover hex.
+	 * Locations that would be affected by a click, used by move to update highlights. Defauts to higlight the mouseover hex.
 	 * Maybe also used for actually performing the action in click() or drag().
 	 */
 	virtual std::set<map_location> affected_hexes(editor_display& disp, const map_location& hex);
@@ -247,14 +247,14 @@ public:
 	editor_action* click_left(editor_display& disp, int x, int y);
 
 	/**
+	 * Handle terrain sampling before calling generic handler
+	 */
+	editor_action* click_right(editor_display& disp, int x, int y);
+
+	/**
 	 * Create an appropriate editor_action and return it
 	 */
 	editor_action* click_perform_left(editor_display& disp, const std::set<map_location>& hexes);
-	/**
-	 * Handle terrain sampling before calling generic handler
-	 */
-
-	editor_action* click_right(editor_display& disp, int x, int y);
 
 	/**
 	 * Create an appropriate editor_action and return it
@@ -280,16 +280,6 @@ public:
 	}
 
 	/**
-	 * Left click/drag selects
-	 */
-	editor_action* click_perform_left(editor_display& disp, const std::set<map_location>& hexes);
-
-	/**
-	 * Right click/drag deselects
-	 */
-	editor_action* click_perform_right(editor_display& disp, const std::set<map_location>& hexes);
-
-	/**
 	 * Overriden to allow special behaviour based on modifier keys
 	 */
 	std::set<map_location> affected_hexes(editor_display& disp, const map_location& hex);
@@ -298,6 +288,16 @@ public:
 	 * Force a fake "move" event to update brush overlay on key event
 	 */
 	editor_action* key_event(editor_display& disp, const SDL_Event& e);
+
+	/**
+	 * Left click/drag selects
+	 */
+	editor_action* click_perform_left(editor_display& disp, const std::set<map_location>& hexes);
+
+	/**
+	 * Right click/drag deselects
+	 */
+	editor_action* click_perform_right(editor_display& disp, const std::set<map_location>& hexes);
 
 	virtual void set_mouse_overlay(editor_display& disp);
 };
@@ -313,6 +313,13 @@ public:
 	{
 	}
 
+	bool has_context_menu() const;
+
+	/**
+	 * Show an outline of where the paste will go
+	 */
+	std::set<map_location> affected_hexes(editor_display& disp, const map_location& hex);
+
 	/**
 	 * Return a paste with offset action
 	 */
@@ -323,14 +330,7 @@ public:
 	 */
 	editor_action* click_right(editor_display& disp, int x, int y);
 
-	/**
-	 * Show an outline of where the paste will go
-	 */
-	std::set<map_location> affected_hexes(editor_display& disp, const map_location& hex);
-
 	virtual void set_mouse_overlay(editor_display& disp);
-
-	bool has_context_menu() const;
 
 protected:
 	/**
@@ -354,6 +354,11 @@ public:
 	}
 
 	/**
+	 * Tiles that will be painted to, possibly use modifier keys here
+	 */
+	std::set<map_location> affected_hexes(editor_display& disp, const map_location& hex);
+
+	/**
 	 * Left / right click fills with the respective terrain
 	 */
 	editor_action* click_left(editor_display& disp, int x, int y);
@@ -362,11 +367,6 @@ public:
 	 * Left / right click fills with the respective terrain
 	 */
 	editor_action* click_right(editor_display& disp, int x, int y);
-
-	/**
-	 * Tiles that will be painted to, possibly use modifier keys here
-	 */
-	std::set<map_location> affected_hexes(editor_display& disp, const map_location& hex);
 
 	virtual void set_mouse_overlay(editor_display& disp);
 
@@ -386,8 +386,6 @@ public:
 	{
 	}
 
-	editor_action* click_left(editor_display& disp, int x, int y);
-
 	/**
 	 * Left click displays a player-number-selector dialog and then creates an action
 	 * or returns NULL if cancel was pressed or there would be no change.
@@ -395,13 +393,14 @@ public:
 	 */
 	editor_action* up_left(editor_display& disp, int x, int y);
 
-	editor_action* click_right(editor_display& disp, int x, int y);
-
+	editor_action* click_left(editor_display& disp, int x, int y);
 	/**
 	 * Right click only erases the starting position if there is one.
 	 * Do this on mouse up to avoid drag issue,
 	 */
 	editor_action* up_right(editor_display& disp, int x, int y);
+
+	editor_action* click_right(editor_display& disp, int x, int y);
 
 	virtual void set_mouse_overlay(editor_display& disp);
 
@@ -409,171 +408,7 @@ private:
 	bool click_;
 };
 
-/**
- * TODO
- */
-class mouse_action_unit : public mouse_action
-{
-public:
-	mouse_action_unit(const CKey& key)
-	: mouse_action(key), click_(false), temp_unit_(), last_hex_()
-	{
-	}
 
-	/**
-	 * TODO
-	 */
-	editor_action* click_left(editor_display& disp, int x, int y);
-
-	/**
-	 * TODO
-	 */
-	editor_action* up_left(editor_display& disp, int x, int y);
-
-	/**
-	 * TODO
-	 */
-	editor_action* click_right(editor_display& disp, int x, int y);
-
-
-	editor_action* drag_right(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo);
-
-	/**
-	 * Right click only erases the starting position if there is one.
-	 * Do this on mouse up to avoid drag issue,
-	 */
-	editor_action* up_right(editor_display& disp, int x, int y);
-
-	/**
-	 * TODO
-	 */
-	editor_action* drag_end(editor_display& disp, int x, int y);
-
-	virtual void set_mouse_overlay(editor_display& disp);
-
-private:
-	bool click_;
-	const unit* temp_unit_;
-	map_location last_hex_;
-};
-
-/**
- * TODO
- */
-class mouse_action_path : public mouse_action
-{
-public:
-	mouse_action_path(const CKey& key)
-	: mouse_action(key)
-	{
-	}
-
-	/**
-	 * TODO
-	 */
-	editor_action* click_left(editor_display& disp, int x, int y) { return NULL; };
-
-	/**
-	 * TODO
-	 */
-	editor_action* up_left(editor_display& disp, int x, int y) { return NULL; };
-
-	/**
-	 * TODO
-	 */
-	editor_action* click_right(editor_display& disp, int x, int y) { return NULL; };
-
-	/**
-	 * Right click only erases the starting position if there is one.
-	 * Do this on mouse up to avoid drag issue,
-	 */
-	editor_action* up_right(editor_display& disp, int x, int y) { return NULL; };
-
-	virtual void set_mouse_overlay(editor_display& disp) {};
-};
-
-
-
-
-
-
-/**
- * TODO
- */
-class mouse_action_village : public mouse_action
-{
-public:
-	mouse_action_village(const CKey& key)
-	: mouse_action(key)
-	{
-	}
-
-	/**
-	 * TODO
-	 */
-	editor_action* click_left(editor_display& disp, int x, int y);
-
-	/**
-	 * TODO
-	 */
-	editor_action* up_left(editor_display& disp, int x, int y);
-
-	/**
-	 * TODO
-	 */
-	editor_action* click_right(editor_display& disp, int x, int y);
-
-	/**
-	 * Right click only erases the starting position if there is one.
-	 * Do this on mouse up to avoid drag issue,
-	 */
-	editor_action* up_right(editor_display& disp, int x, int y);
-
-	virtual void set_mouse_overlay(editor_display& disp);
-};
-
-/**
- * Set map label action.
- */
-class mouse_action_map_label : public mouse_action
-{
-public:
-	mouse_action_map_label(const CKey& key)
-	: mouse_action(key), click_(false), clicked_on_(), last_draged_()
-	  {
-	  }
-
-	editor_action* click_left(editor_display& disp, int x, int y);
-
-	/**
-	 * Left click displays a dialog that is used for entering the label string.
-	 */
-	editor_action* up_left(editor_display& disp, int x, int y);
-
-	editor_action* click_right(editor_display& disp, int x, int y);
-
-	/**
-	 * Right click erases the label under the mouse.
-	 */
-	editor_action* up_right(editor_display& disp, int x, int y);
-
-	/**
-	 * Drag operation. A click should have occured earlier. Defaults to no action.
-	 */
-	editor_action* drag_left(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo);
-
-	/**
-	 * TODO
-	 */
-	editor_action* drag_end(editor_display& disp, int x, int y);
-
-	virtual void set_mouse_overlay(editor_display& disp);
-
-private:
-	bool click_;
-	map_location clicked_on_;
-	map_location last_draged_;
-};
 
 } //end namespace editor
 

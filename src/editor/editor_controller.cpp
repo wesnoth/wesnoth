@@ -13,6 +13,7 @@
 */
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
+#include "asserts.hpp"
 #include "action.hpp"
 #include "editor_controller.hpp"
 #include "editor_palettes.hpp"
@@ -27,8 +28,6 @@
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/window.hpp"
 
-#include "../resources.hpp"
-#include "../asserts.hpp"
 #include "../clipboard.hpp"
 #include "../filechooser.hpp"
 #include "../filesystem.hpp"
@@ -66,7 +65,6 @@ public:
 	}
 private:
 	editor_controller& ec_;
-	//TODO size_changed_ is private and not used in the class.
 	bool size_changed_;
 	bool refreshed_;
 };
@@ -74,13 +72,10 @@ private:
 editor_controller::editor_controller(const config &game_config, CVideo& video, map_context* init_map_context /*=NULL*/)
 	: controller_base(SDL_GetTicks(), game_config, video)
 	, mouse_handler_base()
-	, halo_manager_()
 	, rng_(NULL)
 	, rng_setter_(NULL)
 	, map_contexts_()
 	, current_context_index_(0)
-	, current_area_index_(0)
-	, current_side_index_(0)
 	, gui_(NULL)
 	, map_generators_()
 	, tods_()
@@ -113,7 +108,6 @@ editor_controller::editor_controller(const config &game_config, CVideo& video, m
 	if (default_dir_.empty()) {
 		default_dir_ = get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps");
 	}
-	init_globals();
 	init_gui(video);
 	init_brushes(game_config);
 	init_mouse_actions(game_config);
@@ -125,7 +119,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video, m
 	rng_.reset(new rand_rng::rng());
 	rng_setter_.reset(new rand_rng::set_random_generator(rng_.get()));
 	hotkey::get_hotkey(hotkey::HOTKEY_QUIT_GAME).set_description(_("Quit Editor"));
-
+	get_map_context().set_starting_position_labels(gui());
 	cursor::set(cursor::NORMAL);
 	image::set_colour_adjustment(preferences::editor::tod_r(), preferences::editor::tod_g(), preferences::editor::tod_b());
 	theme& theme = gui().get_theme();
@@ -146,29 +140,16 @@ editor_controller::editor_controller(const config &game_config, CVideo& video, m
 	}
 }
 
-void editor_controller::init_globals()
-{
-	resources::game_map = &(get_map());
-	resources::teams = &(get_map().get_teams());
-	resources::tod_manager = &(get_map().get_tod_manager());
-	resources::units = &(get_map().get_units());
-	resources::state_of_game = &(get_map().get_state());
-}
-
 void editor_controller::init_gui(CVideo& video)
 {
-
 	const config &theme_cfg = get_theme(game_config_, "editor");
-	gui_.reset(new editor_display(video, &get_map(), theme_cfg, config()));
+	gui_.reset(new editor_display(video, get_map(), theme_cfg, config()));
 	gui_->set_grid(preferences::grid());
 	prefs_disp_manager_.reset(new preferences::display_manager(&gui()));
-
 	gui_->add_redraw_observer(boost::bind(&editor_controller::display_redraw_callback, this, _1));
 	floating_label_manager_.reset(new font::floating_label_context());
 	gui().set_draw_coordinates(preferences::editor::draw_hex_coordinates());
 	gui().set_draw_terrain_codes(preferences::editor::draw_terrain_codes());
-
-	halo_manager_.reset(new halo::manager(*gui_));
 }
 
 void editor_controller::init_sidebar(const config& game_config)
@@ -203,16 +184,6 @@ void editor_controller::init_mouse_actions(const config& game_config)
 		new mouse_action_select(&brush_, key_)));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_STARTING_POSITION,
 		new mouse_action_starting_position(key_)));
-
-	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_LABEL,
-			new mouse_action_map_label(key_)));
-	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_UNIT,
-			new mouse_action_unit(key_)));
-	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_PATH,
-			new mouse_action_path(key_)));
-	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_VILLAGE,
-			new mouse_action_village(key_)));
-
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_PASTE,
 		new mouse_action_paste(clipboard_, key_)));
 	foreach (const theme::menu& menu, gui().get_theme().menus()) {
@@ -357,7 +328,7 @@ int editor_controller::add_map_context(map_context* mc)
 
 void editor_controller::create_default_context()
 {
-	map_context* mc = new map_context(editor_map(game_config_, 44, 33, t_translation::GRASS_LAND, config()));
+	map_context* mc = new map_context(editor_map(game_config_, 44, 33, t_translation::GRASS_LAND));
 	add_map_context(mc);
 }
 
@@ -384,34 +355,8 @@ void editor_controller::switch_context(const int index)
 		WRN_ED << "Invalid index in switch map context: " << index << "\n";
 		return;
 	}
-	current_context_index_ = index;
-	current_side_index_ = 0;
-	current_area_index_ = 0;
 	map_context_refresher mcr(*this, *map_contexts_[index]);
-}
-
-void editor_controller::switch_area(const int index)
-{
-	//TODO implement undo
-	const map_areas areas = get_map().get_named_areas();
-	const std::vector<std::string> ids = areas.get_area_ids();
-	current_area_index_ = index;
-	std::string area_id = ids[index];
-	map_area area = areas.get_area(area_id);
-	std::set<map_location> area_locs = area.get_simple_locations();
-	get_display().scroll_to_tile(*(area_locs.begin()),display::WARP);
-	perform_refresh(editor_action_select(area_locs));
-}
-
-void editor_controller::switch_side(const int index)
-{
-	if (index < 0 || static_cast<size_t>(index) >= get_map_context().get_map().get_teams().size() +1) {
-		WRN_ED << "Invalid index in switch side context: " << index << "\n";
-		return;
-	}
-	get_display().set_team(index , false);
-	get_display().set_playing_team(index );
-	current_side_index_ = index;
+	current_context_index_ = index;
 }
 
 void editor_controller::replace_map_context(map_context* new_mc)
@@ -503,35 +448,6 @@ void editor_controller::new_map_dialog()
 	}
 }
 
-void editor_controller::new_side_dialog()
-{
-	if (!use_mdi_ && !confirm_discard()) return;
-
-	std::vector<team>& teams = get_map().get_teams();
-
-	int side = get_map().get_teams().size();
-	std::string side_str = lexical_cast<std::string>(side);
-	std::string new_str = lexical_cast<std::string>(side +1);
-	//TODO make that translatable.
-	gui2::show_message(gui().video(), "Side created" , "The side number " + side_str + " was created.");
-
-	config side_cfg;
-	side_cfg["no_leader"] = "yes";
-	side_cfg["side"] = new_str;
-	//TODO remove or comment.
-	//get_map().get_state().build_team(dummy, "", get_map().get_teams(), dummy, get_map()
-		//		, get_map().get_units(), true);
-	team t(side_cfg, get_map(), 100);
-	//This may invalidate the teams vector
-	teams.push_back(t);
-	get_display().load_flags();
-	get_display().set_team(side -1, true);
-	get_display().set_playing_team(side -1);
-	get_map_context().clear_undo_redo();
-	current_side_index_ = side -1;
-}
-
-
 void editor_controller::save_map_as_dialog()
 {
 	std::string input_name = get_map_context().get_filename();
@@ -561,37 +477,6 @@ void editor_controller::save_map_as_dialog()
 	save_map_as(input_name);
 }
 
-//TODO avoid duplicate code.
-void editor_controller::save_multiplayer_as_dialog()
-{
-	std::string input_name = get_map_context().get_filename();
-	if (input_name.empty()) {
-		input_name = default_dir_;
-	}
-	const std::string old_input_name = input_name;
-
-	int res = 0;
-	int overwrite_res = 1;
-	do {
-		input_name = old_input_name;
-		res = dialogs::show_file_chooser_dialog_save(gui(), input_name, _("Save the Multiplayer Scenario As"));
-		if (res == 0) {
-			if (file_exists(input_name)) {
-				overwrite_res = gui::dialog(gui(), "",
-					_("The file already exists. Do you want to overwrite it?"),
-					gui::YES_NO).show();
-			} else {
-				overwrite_res = 0;
-			}
-		} else {
-			return; //cancel pressed
-		}
-	} while (overwrite_res != 0);
-
-	save_multiplayer_as(input_name);
-}
-
-
 void editor_controller::generate_map_dialog()
 {
 	if (map_generators_.empty()) {
@@ -615,7 +500,7 @@ void editor_controller::generate_map_dialog()
 		if (map_string.empty()) {
 			gui2::show_transient_message(gui().video(), "", _("Map creation failed."));
 		} else {
-			editor_map new_map(game_config_, map_string, config());
+			editor_map new_map(game_config_, map_string);
 			editor_action_whole_map a(new_map);
 			perform_refresh(a);
 		}
@@ -751,30 +636,6 @@ bool editor_controller::save_map_as(const std::string& filename)
 	}
 }
 
-bool editor_controller::save_multiplayer_as(const std::string& filename)
-{
-	size_t is_open = check_open_map(filename);
-	if (is_open < map_contexts_.size()
-			&& is_open != static_cast<unsigned>(current_context_index_)) {
-
-		gui::dialog(gui(), _("This map is already open."), filename).show();
-		return false;
-	}
-	std::string old_filename = get_map_context().get_filename();
-	bool embedded = get_map_context().is_embedded();
-	get_map_context().set_filename(filename);
-	get_map_context().set_embedded(false);
-	if (!save_multiplayer(true)) {
-		get_map_context().set_filename(old_filename);
-		get_map_context().set_embedded(embedded);
-		return false;
-	} else {
-		return true;
-	}
-}
-
-
-
 bool editor_controller::save_map(bool display_confirmation)
 {
 	try {
@@ -789,30 +650,13 @@ bool editor_controller::save_map(bool display_confirmation)
 	return true;
 }
 
-bool editor_controller::save_multiplayer(bool display_confirmation)
-{
-	gui::dialog	d(get_display(), _("Scenario ID?"), "", gui::OK_CANCEL);
-	d.set_textbox(_("ID: "), "");
-	d.show();
-
-	try {
-		get_map_context().save_multiplayer(d.textbox_text());
-		if (display_confirmation) {
-			gui2::show_transient_message(gui().video(), "", _("Multiplayer Scenario saved."));
-		}
-	} catch (editor_map_save_exception& e) {
-		gui2::show_transient_message(gui().video(), "", e.what());
-		return false;
-	}
-	return true;
-}
-
 size_t editor_controller::check_open_map(const std::string& fn) const
 {
 	size_t i = 0;
 	while (i < map_contexts_.size() && map_contexts_[i]->get_filename() != fn) ++i;
 	return i;
 }
+
 
 bool editor_controller::check_switch_open_map(const std::string& fn)
 {
@@ -861,7 +705,6 @@ void editor_controller::load_map(const std::string& filename, bool new_context)
 				}
 			}
 		}
-
 	} catch (editor_map_load_exception& e) {
 		gui2::show_transient_message(gui().video(), _("Error loading map"), e.what());
 		return;
@@ -881,7 +724,7 @@ void editor_controller::revert_map()
 
 void editor_controller::new_map(int width, int height, t_translation::t_terrain fill, bool new_context)
 {
-	editor_map m(game_config_, width, height, fill, config());
+	editor_map m(game_config_, width, height, fill);
 	if (new_context) {
 		int new_id = add_map_context(new map_context(m));
 		switch_context(new_id);
@@ -945,22 +788,15 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 {
 
 	using namespace hotkey; //reduce hotkey:: clutter
-	unsigned i = static_cast<unsigned>(index);
 	switch (command) {
 		case HOTKEY_NULL:
-
-			if (index < 0)
-				return false;
-
-			switch (menu_context_) {
-				case WINDOW:
-					//TODO Ilor -- here is the place to disable the one item menu.
-					return (i < map_contexts_.size());
-				case AREA:
-					return (i < get_map().get_named_areas().get_area_ids().size() +1);
-				case SIDE:
-					return (i < get_map().get_teams().size() +1);
+			if (index >= 0) {
+				unsigned i = static_cast<unsigned>(index);
+				if (i < map_contexts_.size()) {
+					return true;
+				}
 			}
+			return false;
 		case HOTKEY_ZOOM_IN:
 		case HOTKEY_ZOOM_OUT:
 		case HOTKEY_ZOOM_DEFAULT:
@@ -983,45 +819,28 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_EDITOR_QUIT_TO_DESKTOP:
 		case HOTKEY_EDITOR_SETTINGS:
 		case HOTKEY_EDITOR_MAP_NEW:
-		case HOTKEY_EDITOR_SIDE_NEW:
 		case HOTKEY_EDITOR_MAP_LOAD:
 		case HOTKEY_EDITOR_MAP_SAVE_AS:
-			//TODO disable the multiplayer save options when no sides defined?
-		case HOTKEY_EDITOR_MULTIPLAYER_SAVE:
-			//TODO clean up.
-	//	case HOTKEY_EDITOR_MULTIPLAYER_SAVE_AS:
 		case HOTKEY_EDITOR_BRUSH_NEXT:
 		case HOTKEY_EDITOR_TOOL_NEXT:
 		case HOTKEY_EDITOR_TERRAIN_PALETTE_SWAP:
 			return true; //editor hotkeys we can always do
 		case HOTKEY_EDITOR_MAP_SAVE:
 		case HOTKEY_EDITOR_SWITCH_MAP:
-		case HOTKEY_EDITOR_SWITCH_AREA:
-		case HOTKEY_EDITOR_SWITCH_SIDE:
 		case HOTKEY_EDITOR_CLOSE_MAP:
 			return true;
 		case HOTKEY_EDITOR_MAP_REVERT:
 			return !get_map_context().get_filename().empty();
+			return true;
 		case HOTKEY_EDITOR_TOOL_PAINT:
 		case HOTKEY_EDITOR_TOOL_FILL:
 		case HOTKEY_EDITOR_TOOL_SELECT:
 		case HOTKEY_EDITOR_TOOL_STARTING_POSITION:
 			return true; //tool selection always possible
-
-		case HOTKEY_EDITOR_TOOL_LABEL:
-			return true; //tool selection always possible
-		case HOTKEY_EDITOR_TOOL_UNIT:
-			return true; //tool selection always possible
-		case HOTKEY_EDITOR_TOOL_VILLAGE:
-			return true; //tool selection always possible
-		case HOTKEY_EDITOR_TOOL_PATH:
-			return true; //tool selection always possible
-
 		case HOTKEY_EDITOR_CUT:
 		case HOTKEY_EDITOR_COPY:
 		case HOTKEY_EDITOR_EXPORT_SELECTION_COORDS:
 		case HOTKEY_EDITOR_SELECTION_FILL:
-		case HOTKEY_EDITOR_SELECTION_NAME:
 		case HOTKEY_EDITOR_SELECTION_RANDOMIZE:
 			return !get_map().selection().empty();
 		case HOTKEY_EDITOR_SELECTION_ROTATE:
@@ -1063,10 +882,6 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 		case HOTKEY_EDITOR_TOOL_PAINT:
 		case HOTKEY_EDITOR_TOOL_FILL:
 		case HOTKEY_EDITOR_TOOL_SELECT:
-		case HOTKEY_EDITOR_TOOL_LABEL:
-		case HOTKEY_EDITOR_TOOL_UNIT:
-		case HOTKEY_EDITOR_TOOL_PATH:
-		case HOTKEY_EDITOR_TOOL_VILLAGE:
 		case HOTKEY_EDITOR_TOOL_STARTING_POSITION:
 			return is_mouse_action_set(command) ? ACTION_ON : ACTION_OFF;
 		case HOTKEY_EDITOR_DRAW_COORDINATES:
@@ -1074,15 +889,8 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 		case HOTKEY_EDITOR_DRAW_TERRAIN_CODES:
 			return gui_->get_draw_terrain_codes() ? ACTION_ON : ACTION_OFF;
 		case HOTKEY_NULL:
-			switch (menu_context_) {
-			case WINDOW:
-				return index == current_context_index_ ? ACTION_ON : ACTION_OFF;
-			case AREA:
-				return index == current_area_index_ ? ACTION_ON : ACTION_OFF;
-			case SIDE:
-				return index == current_side_index_ ? ACTION_ON : ACTION_OFF;
-			}
-			default:
+			return index == current_context_index_ ? ACTION_ON : ACTION_OFF;
+		default:
 			return command_executor::get_action_state(command, index);
 	}
 }
@@ -1091,31 +899,16 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 {
 	SCOPE_ED;
 	using namespace hotkey;
-	unsigned i = static_cast<unsigned>(index);
 	switch (command) {
 		case HOTKEY_NULL:
-			if (index < 0) {
-				return false;
-			}
-			switch (menu_context_) {
-
-			case WINDOW:
+			if (index >= 0) {
+				unsigned i = static_cast<unsigned>(index);
 				if (i < map_contexts_.size()) {
 					switch_context(index);
 					return true;
 				}
-			case SIDE:
-				if (i < get_map().get_teams().size() +1) {
-					switch_side(index);
-					return true;
-				}
-			case AREA:
-				if (i < get_map().get_named_areas().get_area_ids().size() +1) {
-					switch_area(index);
-					return true;
-				}
 			}
-
+			return false;
 		case HOTKEY_QUIT_GAME:
 			quit_confirm(EXIT_NORMAL);
 			return true;
@@ -1141,14 +934,7 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 		case HOTKEY_EDITOR_TOOL_FILL:
 		case HOTKEY_EDITOR_TOOL_SELECT:
 		case HOTKEY_EDITOR_TOOL_STARTING_POSITION:
-		case HOTKEY_EDITOR_TOOL_LABEL:
 			hotkey_set_mouse_action(command);
-			return true;
-		case HOTKEY_EDITOR_TOOL_VILLAGE:
-		case HOTKEY_EDITOR_TOOL_UNIT:
-		case HOTKEY_EDITOR_TOOL_PATH:
-			if (current_side_index_ != (signed)(get_map().get_teams().size() -1))
-				hotkey_set_mouse_action(command);
 			return true;
 		case HOTKEY_EDITOR_PASTE: //paste is somewhat different as it might be "one action then revert to previous mode"
 			hotkey_set_mouse_action(command);
@@ -1194,9 +980,6 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 		case HOTKEY_EDITOR_SELECTION_FILL:
 			fill_selection();
 			return true;
-		case HOTKEY_EDITOR_SELECTION_NAME:
-			name_selection();
-			return true;
 		case HOTKEY_EDITOR_SELECTION_RANDOMIZE:
 			perform_refresh(editor_action_shuffle_area(get_map().selection()));
 			return true;
@@ -1209,9 +992,6 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 		case HOTKEY_EDITOR_MAP_REVERT:
 			revert_map();
 			return true;
-		case HOTKEY_EDITOR_SIDE_NEW:
-			new_side_dialog();
-			return true;
 		case HOTKEY_EDITOR_MAP_NEW:
 			new_map_dialog();
 			return true;
@@ -1223,22 +1003,9 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 				save_map();
 			}
 			return true;
-		case HOTKEY_EDITOR_MULTIPLAYER_SAVE:
-//TODO clean up.
-			//			if (get_map_context().get_filename().empty()
-//			|| is_directory(get_map_context().get_filename())) {
-//				save_multiplayer_as_dialog();
-//			} else {
-				save_multiplayer();
-//			}
-			return true;
 		case HOTKEY_EDITOR_MAP_SAVE_AS:
 			save_map_as_dialog();
 			return true;
-			//TODO clean up.
-	//	case HOTKEY_EDITOR_MULTIPLAYER_SAVE_AS:
-	//		save_multiplayer_as_dialog();
-	//		return true;
 		case HOTKEY_EDITOR_MAP_GENERATE:
 			generate_map_dialog();
 			return true;
@@ -1305,41 +1072,6 @@ void editor_controller::expand_open_maps_menu(std::vector<std::string>& items)
 			break;
 		}
 	}
-	menu_context_ = WINDOW;
-}
-
-void editor_controller::expand_side_menu(std::vector<std::string>& items)
-{
-	for (unsigned int i = 0 ; i < items.size(); ++i) {
-		if (items[i] == "editor-switch-side") {
-			items.erase(items.begin() + i);
-			//TODO "None" needs to be localized
-			for (unsigned int i = 1; i < get_map().get_teams().size(); ++i) {
-				std::string label = "[" + lexical_cast<std::string>(i) + "] "
-						+ lexical_cast<std::string>(get_map().get_teams()[i-1].side());
-				items.push_back(label);
-			}
-			std::string none_label = "[None] ";
-			items.push_back(none_label);
-		}
-	}
-	menu_context_ = SIDE;
-}
-
-void editor_controller::expand_named_area_menu(std::vector<std::string>& items)
-{
-	for (unsigned int i = 0; i < items.size(); ++i) {
-		if (items[i] == "editor-switch-area") {
-			items.erase(items.begin() + i);
-
-
-			std::vector<std::string> areas = get_map().get_named_areas().get_area_ids();
-			items.insert(items.end(), areas.begin(), areas.end() );
-			std::string none_label = "[None] ";
-			items.push_back(none_label);
-		}
-	}
-	menu_context_ = AREA;
 }
 
 void editor_controller::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu)
@@ -1388,14 +1120,6 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 	}
 	if (!items.empty() && items.front() == "editor-switch-map") {
 		expand_open_maps_menu(items);
-		context_menu = true; //FIXME hack to display a one-item menu
-	}
-	if (!items.empty() && items.front() == "editor-switch-area") {
-		expand_named_area_menu(items);
-		context_menu = true; //FIXME hack to display a one-item menu
-	}
-	if (!items.empty() && items.front() == "editor-switch-side") {
-		expand_side_menu(items);
 		context_menu = true; //FIXME hack to display a one-item menu
 	}
 	command_executor::show_menu(items, xloc, yloc, context_menu, gui());
@@ -1458,37 +1182,6 @@ void editor_controller::export_selection_coords()
 void editor_controller::fill_selection()
 {
 	perform_refresh(editor_action_paint_area(get_map().selection(), foreground_terrain_));
-}
-
-void editor_controller::name_selection()
-{
-	gui::dialog	d(get_display(), _("Name Selected Area"), "", gui::OK_CANCEL);
-
-	//TODO think about map_labels::get_max_chars
-	d.set_textbox(_("Area Identity: "), "", map_labels::get_max_chars());
-//		d.set_textbox(_("Area Identity: "), (old_label ? old_label->text() : ""), map_labels::get_max_chars());
-	//	//TODO note that gui1 does not support more than one textbox in a dialogue.
-	////	d.set_textbox(_("Team: "), (old_label ? old_label->team_name() : ""), map_labels::get_max_chars());
-//		d.add_option(_("Visible in Fog"), visible_in_fog, gui::dialog::BUTTON_CHECKBOX_LEFT);
-//		d.add_option(_("Visible in Shroud"), visible_in_shroud, gui::dialog::BUTTON_CHECKBOX_LEFT);
-		if(!d.show()) {
-		//		SDL_Color colour = font::LABEL_COLOUR;
-
-				//TODO cleanup
-				// remove the old label if we changed the team_name
-		//		if (d.option_checked() == (old_team_name == "")) {
-		//			const terrain_label* old = gui_->labels().set_label(loc, "", old_team_name, colour);
-		//			if (old) recorder.add_label(old);
-		//		}
-		//		const terrain_label* res = gui_->labels().set_label(loc, d.textbox_text(), team_name, colour);
-
-		//		terrain_label label = new terrain_label(d.textbox_text(), "", hex, )
-
-		//		const terrain_label* label = disp.labels().set_label(hex, d.textbox_text());
-			perform_refresh(editor_action_name_area(get_map().selection(), d.textbox_text()));
-//				a = new editor_action_label(hex, d.textbox_text());
-//				update_brush_highlights(disp, hex);
-			}
 }
 
 void editor_controller::hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command)

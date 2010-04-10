@@ -61,6 +61,14 @@ private:
 
 	/** Mirror the portrait? */
 	bool mirror_;
+
+	/**
+	 * Inherited from tdialog.
+	 *
+	 * The subclasses need to implement the left or right definition.
+	 */
+	twindow* build_window(CVideo& /*video*/) = 0;
+
 };
 
 /** Shows a dialog with the portrait on the left side. */
@@ -71,8 +79,8 @@ public:
 		ticon_message_(title, message, portrait, mirror) {
 	}
 private:
-	/** Inherited from tdialog, implemented by REGISTER_WINDOW */
-	virtual const std::string& window_id() const;
+	/** Inherited from twml_message_. */
+	twindow* build_window(CVideo& video);
 };
 
 /** Shows a dialog with the portrait on the right side. */
@@ -83,8 +91,8 @@ public:
 		ticon_message_(title, message, portrait, mirror) {
 	}
 private:
-	/** Inherited from tdialog, implemented by REGISTER_WINDOW */
-	virtual const std::string& window_id() const;
+	/** Inherited from twml_message_. */
+	twindow* build_window(CVideo& video);
 };
 
 class toption_message_: public ticon_message_ {
@@ -120,8 +128,8 @@ public:
 				chosen_option) {
 	}
 private:
-	/** Inherited from tdialog, implemented by REGISTER_WINDOW */
-	virtual const std::string& window_id() const;
+	/** Inherited from twml_message_. */
+	twindow* build_window(CVideo& video);
 };
 
 /** Shows a dialog with the portrait on the right side. */
@@ -134,8 +142,8 @@ public:
 				chosen_option) {
 	}
 private:
-	/** Inherited from tdialog, implemented by REGISTER_WINDOW */
-	virtual const std::string& window_id() const;
+	/** Inherited from twml_message_. */
+	twindow* build_window(CVideo& video);
 };
 
 class tinput_message_: public ticon_message_ {
@@ -176,8 +184,8 @@ public:
 				input_text, maximum_length) {
 	}
 private:
-	/** Inherited from tdialog, implemented by REGISTER_WINDOW */
-	virtual const std::string& window_id() const;
+	/** Inherited from twml_message_. */
+	twindow* build_window(CVideo& video);
 };
 
 /** Shows a dialog with the portrait on the right side. */
@@ -191,8 +199,8 @@ public:
 				input_text, maximum_length) {
 	}
 private:
-	/** Inherited from tdialog, implemented by REGISTER_WINDOW */
-	virtual const std::string& window_id() const;
+	/** Inherited from twml_message_. */
+	twindow* build_window(CVideo& video);
 };
 
 class tunit_message_: public ticon_message_ {
@@ -213,7 +221,7 @@ public:
 		it = type_list.begin();
 
 		for (it = type_list.begin(); it != type_list.end(); it++) {
-			unit new_unit(*it, side_num, false);
+			unit new_unit(resources::units, *it, side_num, false);
 			unit_list_.push_back(new_unit);
 		}
 	}
@@ -251,7 +259,7 @@ public:
 			std::string& chosen_type, int side_num, int gold) :
 		tunit_message_(/*_*/("Recruit"), /*_*/("Select unit:"), mirror,
 				type_list, &unit_, side_num, gold), chosen_type_(chosen_type),
-				unit_(type_list.front(), false, side_num) {
+				unit_(resources::units, type_list.front(), false, side_num) {
 	}
 
 	/** Inherited from tdialog. */
@@ -276,8 +284,8 @@ public:
 		trecruit_message_(mirror, type_list, chosen_type, side_num, gold) {
 	}
 private:
-	/** Inherited from tdialog, implemented by REGISTER_WINDOW */
-	virtual const std::string& window_id() const;
+	/** Inherited from twml_message_. */
+	twindow* build_window(CVideo& video);
 };
 
 class trecruit_message_right: public trecruit_message_ {
@@ -288,8 +296,8 @@ public:
 		trecruit_message_(mirror, type_list, chosen_type, side_num, gold) {
 	}
 private:
-	/** Inherited from tdialog, implemented by REGISTER_WINDOW */
-	virtual const std::string& window_id() const;
+	/** Inherited from twml_message_. */
+	twindow* build_window(CVideo& video);
 };
 
 class tunit_message_left: public tunit_message_ {
@@ -300,8 +308,8 @@ public:
 		tunit_message_(title, message, mirror, unit_list, chosen_unit) {
 	}
 private:
-	/** Inherited from tdialog, implemented by REGISTER_WINDOW */
-	virtual const std::string& window_id() const;
+	/** Inherited from twml_message_. */
+	twindow* build_window(CVideo& video);
 };
 
 class tunit_message_right: public tunit_message_ {
@@ -312,8 +320,8 @@ public:
 		tunit_message_(title, message, mirror, unit_list, chosen_unit) {
 	}
 private:
-	/** Inherited from tdialog, implemented by REGISTER_WINDOW */
-	virtual const std::string& window_id() const;
+	/** Inherited from twml_message_. */
+	twindow* build_window(CVideo& video);
 };
 
 class trecall_message_: public tunit_message_ {
@@ -348,8 +356,8 @@ public:
 		trecall_message_(mirror, unit_list, chosen_unit, game_menu_handler) {
 	}
 private:
-	/** Inherited from tdialog, implemented by REGISTER_WINDOW */
-	virtual const std::string& window_id() const;
+	/** Inherited from twml_message_. */
+	twindow* build_window(CVideo& video);
 };
 
 class trecall_message_right: public trecall_message_ {
@@ -360,8 +368,8 @@ public:
 		trecall_message_(mirror, unit_list, chosen_unit, game_menu_handler) {
 	}
 private:
-	/** Inherited from tdialog, implemented by REGISTER_WINDOW */
-	virtual const std::string& window_id() const;
+	/** Inherited from twml_message_. */
+	twindow* build_window(CVideo& video);
 };
 
 //TODO find a way to reference to this documentation in the other methods.

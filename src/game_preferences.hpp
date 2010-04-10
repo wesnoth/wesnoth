@@ -142,6 +142,9 @@ namespace preferences {
 	int xp_modifier();
 	void set_xp_modifier(int value);
 
+	int stat_modifier();
+	void set_stat_modifier(int value);
+
 	int era();
 	void set_era(int value);
 

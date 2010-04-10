@@ -337,7 +337,6 @@ set(wesnoth-main_SRC
     gui/dialogs/game_delete.cpp
     gui/dialogs/game_save.cpp
     gui/dialogs/gamestate_inspector.cpp
-    gui/dialogs/icon_message.cpp
     gui/dialogs/language_selection.cpp
     gui/dialogs/lobby/lobby_data.cpp
     gui/dialogs/lobby/lobby_info.cpp
@@ -402,8 +401,6 @@ set(wesnoth-main_SRC
     multiplayer_create.cpp
     network.cpp
     network_worker.cpp
-    pathfind/pathfind.cpp
-    pathfind/teleport.cpp
     playcampaign.cpp
     play_controller.cpp
     playmp_controller.cpp
@@ -491,7 +488,6 @@ SET(libwesnoth-game_STAT_SRC
     lobby_preferences.cpp
     map_create.cpp
     map_label.cpp
-    map_area.cpp
     mapgen.cpp
     mapgen_dialog.cpp
     marked-up_text.cpp
@@ -527,6 +523,11 @@ SET(libwesnoth-game_STAT_SRC
     widgets/widget.cpp
     wml_exception.cpp
 )
+
+    SET(libwesnoth-game_STAT_SRC
+        ${libwesnoth-game_STAT_SRC}
+        pathfind/pathfind.cpp
+    )
 
 if(ENABLE_GAME AND ENABLE_TESTS)
 	set(libwesnoth-game_STAT_SRC

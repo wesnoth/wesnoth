@@ -53,17 +53,17 @@ static lg::log_domain log_engine("engine");
 
 std::map<map_location,fixed_t> game_display::debugHighlights_;
 
-game_display::game_display(unit_map* units, CVideo& video, gamemap* map,
-		tod_manager* tod, std::vector<team>* t,
+game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
+		const tod_manager& tod, const std::vector<team>& t,
 		const config& theme_cfg, const config& level) :
-		display(video, map, theme_cfg, level),
+		display(video, &map, theme_cfg, level),
 		units_(units),
-		tod_manager_(tod),
 		temp_unit_(NULL),
 		attack_indicator_src_(),
 		attack_indicator_dst_(),
 		energy_bar_rects_(),
 		route_(),
+		tod_manager_(tod),
 		teams_(t),
 		level_(level),
 		invalidateUnit_(true),
@@ -86,69 +86,16 @@ game_display::game_display(unit_map* units, CVideo& video, gamemap* map,
 {
 	singleton_ = this;
 
-	load_flags();
-	clear_screen();
-//	flags_.reserve(teams_->size());
-//
-//	std::vector<std::string> side_colors;
-//	side_colors.reserve(teams_->size());
-//
-//	for(size_t i = 0; i != teams_->size(); ++i) {
-//		std::string side_color = team::get_side_colour_index(i+1);
-//		side_colors.push_back(side_color);
-//		std::string flag = (*teams_)[i].flag();
-//		std::string old_rgb = game_config::flag_rgb;
-//		std::string new_rgb = side_color;
-//
-//		if(flag.empty()) {
-//			flag = game_config::flag_image;
-//		}
-//
-//		LOG_DP << "Adding flag for team " << i << " from animation " << flag << "\n";
-//
-//		// Must recolor flag image
-//		animated<image::locator> temp_anim;
-//
-//		std::vector<std::string> items = utils::split(flag);
-//		std::vector<std::string>::const_iterator itor = items.begin();
-//		for(; itor != items.end(); ++itor) {
-//			const std::vector<std::string>& items = utils::split(*itor, ':');
-//			std::string str;
-//			int time;
-//
-//			if(items.size() > 1) {
-//				str = items.front();
-//				time = atoi(items.back().c_str());
-//			} else {
-//				str = *itor;
-//				time = 100;
-//			}
-//			std::stringstream temp;
-//			temp << str << "~RC(" << old_rgb << ">"<< new_rgb << ")";
-//			image::locator flag_image(temp.str());
-//			temp_anim.add_frame(time, flag_image);
-//		}
-//		flags_.push_back(temp_anim);
-//
-//		flags_.back().start_animation(rand()%flags_.back().get_end_time(), true);
-//	}
-//	image::set_team_colors(&side_colors);
-//	clear_screen();
-}
-
-void game_display::load_flags() {
 	// Inits the flag list and the team colors used by ~TC
-
-	flags_.clear();
-	flags_.reserve(teams_->size());
+	flags_.reserve(teams_.size());
 
 	std::vector<std::string> side_colors;
-	side_colors.reserve(teams_->size());
+	side_colors.reserve(teams_.size());
 
-	for(size_t i = 0; i != teams_->size(); ++i) {
+	for(size_t i = 0; i != teams_.size(); ++i) {
 		std::string side_color = team::get_side_colour_index(i+1);
 		side_colors.push_back(side_color);
-		std::string flag = (*teams_)[i].flag();
+		std::string flag = teams_[i].flag();
 		std::string old_rgb = game_config::flag_rgb;
 		std::string new_rgb = side_color;
 
@@ -185,8 +132,8 @@ void game_display::load_flags() {
 		flags_.back().start_animation(rand()%flags_.back().get_end_time(), true);
 	}
 	image::set_team_colors(&side_colors);
+	clear_screen();
 }
-
 
 game_display* game_display::create_dummy_display(CVideo& video)
 {
@@ -195,8 +142,8 @@ game_display* game_display::create_dummy_display(CVideo& video)
 	static gamemap dummy_map(dummy_cfg, "");
 	static tod_manager dummy_tod(dummy_cfg, 0);
 	static std::vector<team> dummy_teams;
-	return new game_display(&dummy_umap, video, &dummy_map, &dummy_tod,
-			&dummy_teams, dummy_cfg, dummy_cfg);
+	return new game_display(dummy_umap, video, dummy_map, dummy_tod,
+			dummy_teams, dummy_cfg, dummy_cfg);
 }
 
 game_display::~game_display()
@@ -208,10 +155,10 @@ game_display::~game_display()
 
 void game_display::new_turn()
 {
-	const time_of_day& tod = tod_manager_->get_time_of_day();
+	const time_of_day& tod = tod_manager_.get_time_of_day();
 
 	if( !first_turn_) {
-		const time_of_day& old_tod = tod_manager_->get_previous_time_of_day();
+		const time_of_day& old_tod = tod_manager_.get_previous_time_of_day();
 
 		if(old_tod.image_mask != tod.image_mask) {
 			const surface old_mask(image::get_image(old_tod.image_mask,image::UNMASKED));
@@ -257,7 +204,7 @@ void game_display::new_turn()
 
 void game_display::adjust_colours(int r, int g, int b)
 {
-	const time_of_day& tod = tod_manager_->get_time_of_day();
+	const time_of_day& tod = tod_manager_.get_time_of_day();
 	image::set_colour_adjustment(tod.red+r,tod.green+g,tod.blue+b);
 }
 
@@ -273,15 +220,15 @@ void game_display::select_hex(map_location hex)
 
 void game_display::highlight_hex(map_location hex)
 {
-	const unit *u = get_visible_unit(*units_, hex, (*teams_)[viewing_team()], !viewpoint_);
+	const unit *u = get_visible_unit(units_, hex, teams_[viewing_team()], !viewpoint_);
 	if (u) {
 		displayedUnitHex_ = hex;
 		invalidate_unit();
 	} else {
-		u = get_visible_unit(*units_, mouseoverHex_, (*teams_)[viewing_team()], !viewpoint_);
+		u = get_visible_unit(units_, mouseoverHex_, teams_[viewing_team()], !viewpoint_);
 		if (u) {
 			// mouse moved from unit hex to non-unit hex
-			if (units_->count(selectedHex_)) {
+			if (units_.count(selectedHex_)) {
 				displayedUnitHex_ = selectedHex_;
 				invalidate_unit();
 			}
@@ -295,7 +242,7 @@ void game_display::highlight_hex(map_location hex)
 
 void game_display::display_unit_hex(map_location hex)
 {
-	const unit *u = get_visible_unit(*units_, hex, (*teams_)[viewing_team()], !viewpoint_);
+	const unit *u = get_visible_unit(units_, hex, teams_[viewing_team()], !viewpoint_);
 	if (u) {
 		displayedUnitHex_ = hex;
 		invalidate_unit();
@@ -314,8 +261,7 @@ void game_display::scroll_to_leader(unit_map& units, int side, SCROLL_TYPE scrol
 {
 	unit_map::const_iterator leader = units.find_leader(side);
 
-	if(leader != units_->end()) {
-		//TODO remove someday.
+	if(leader != units_.end()) {
 		// YogiHH: I can't see why we need another key_handler here,
 		// therefore I will comment it out :
 		/*
@@ -338,7 +284,7 @@ std::vector<map_location> game_display::get_invalidated_unit_locations() {
 	std::vector<map_location> unit_locations;
 	foreach (const map_location& loc, invalidated_) {
 		if ((temp_unit_ && temp_unit_->get_location() == loc) ||
-		    units_->find(loc) != units_->end())
+		    units_.find(loc) != units_.end())
 		{
 			unit_locations.push_back(loc);
 		}
@@ -354,7 +300,7 @@ image::TYPE game_display::get_image_type(const map_location& loc) {
 		if (loc == mouseoverHex_ || loc == attack_indicator_src_) {
 			return image::BRIGHTENED;
 		} else if (loc == selectedHex_) {
-			const unit *un = get_visible_unit(*units_, loc, (*teams_)[currentTeam_], !viewpoint_);
+			const unit *un = get_visible_unit(units_, loc, teams_[currentTeam_], !viewpoint_);
 			if (un && !un->get_hidden()) {
 				return image::BRIGHTENED;
 			}
@@ -395,7 +341,7 @@ void game_display::draw_hex(const map_location& loc)
 		std::pair<Itor,Itor> overlays = overlays_.equal_range(loc);
 		for( ; overlays.first != overlays.second; ++overlays.first) {
 			if ((overlays.first->second.team_name == "" ||
-			overlays.first->second.team_name.find((*teams_)[playing_team()].team_name()) != std::string::npos)
+			overlays.first->second.team_name.find(teams_[playing_team()].team_name()) != std::string::npos)
 			&& !(is_fogged && !overlays.first->second.visible_in_fog))
 			{
 				drawing_buffer_add(LAYER_TERRAIN_BG, loc, tblit(xpos, ypos,
@@ -408,7 +354,7 @@ void game_display::draw_hex(const map_location& loc)
 
 	// Draw the time-of-day mask on top of the terrain in the hex.
 	// tod may differ from tod if hex is illuminated.
-	const std::string& tod_hex_mask = tod_manager_->get_time_of_day(0, loc).image_mask;
+	const std::string& tod_hex_mask = tod_manager_.get_time_of_day(0, loc).image_mask;
 	if(tod_hex_mask1 != NULL || tod_hex_mask2 != NULL) {
 		drawing_buffer_add(LAYER_TERRAIN_FG, loc, tblit(xpos, ypos, tod_hex_mask1));
 		drawing_buffer_add(LAYER_TERRAIN_FG, loc, tblit(xpos, ypos, tod_hex_mask2));
@@ -462,7 +408,7 @@ void game_display::draw_hex(const map_location& loc)
 
 void game_display::update_time_of_day()
 {
-	tod_ = tod_manager_->get_time_of_day();
+	tod_ = tod_manager_.get_time_of_day();
 }
 
 void game_display::redraw_units(const std::vector<map_location>& invalidated_unit_locations)
@@ -470,8 +416,8 @@ void game_display::redraw_units(const std::vector<map_location>& invalidated_uni
 	// Units can overlap multiple hexes, so we need
 	// to redraw them last and in the good sequence.
 	foreach (map_location loc, invalidated_unit_locations) {
-		unit_map::iterator u_it = units_->find(loc);
-		if (u_it != units_->end()) {
+		unit_map::iterator u_it = units_.find(loc);
+		if (u_it != units_.end()) {
 			u_it->redraw_unit();
 			//simulate_delay += 1;
 		}
@@ -489,7 +435,7 @@ void game_display::draw_report(reports::TYPE report_num)
 	}
 
 	reports::report report = reports::generate_report(report_num, report_,
-							  (*teams_)[viewing_team()],
+							  teams_[viewing_team()],
 							  size_t(currentTeam_+1),size_t(activeTeam_+1),
 							  selectedHex_, mouseoverHex_, displayedUnitHex_,
 		observers_, level_, !viewpoint_);
@@ -499,7 +445,7 @@ void game_display::draw_report(reports::TYPE report_num)
 
 void game_display::draw_game_status()
 {
-	if(teams_->empty()) {
+	if(teams_.empty()) {
 		return;
 	}
 
@@ -513,7 +459,7 @@ void game_display::draw_sidebar()
 	draw_report(reports::REPORT_CLOCK);
 	draw_report(reports::REPORT_COUNTDOWN);
 
-	if(teams_->empty()) {
+	if(teams_.empty()) {
 		return;
 	}
 
@@ -538,14 +484,10 @@ void game_display::draw_minimap_units()
 	double xscaling = 1.0 * minimap_location_.w / get_map().w();
 	double yscaling = 1.0 * minimap_location_.h / get_map().h();
 
-	for(unit_map::const_iterator u = units_->begin(); u != units_->end(); ++u) {
-		//TODO remove debug code.
-		config debug;
-		u->write(debug);
-		ERR_DP << "\n" << debug.debug() << "\n";
+	for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
 		if (fogged(u->get_location()) ||
-			((*teams_)[currentTeam_].is_enemy(u->side()) &&
-			 u->invisible(u->get_location(), *units_, *teams_))) {
+		    (teams_[currentTeam_].is_enemy(u->side()) &&
+		     u->invisible(u->get_location(), units_,teams_))) {
 			continue;
 		}
 
@@ -609,7 +551,6 @@ void game_display::draw_bar(const std::string& image, int xpos, int ypos,
 		height = bar_loc.h;
 	}
 
-	//TODO comment or remove the cruft.
 	//if(alpha != ftofxp(1.0)) {
 	//	surf.assign(adjust_surface_alpha(surf,alpha));
 	//	if(surf == NULL) {
@@ -653,8 +594,8 @@ void game_display::draw_movement_info(const map_location& loc)
 	// Don't use empty route or the first step (the unit will be there)
 	if(w != route_.marks.end()
 				&& !route_.steps.empty() && route_.steps.front() != loc) {
-		const unit_map::const_iterator un = units_->find(route_.steps.front());
-		if(un != units_->end()) {
+		const unit_map::const_iterator un = units_.find(route_.steps.front());
+		if(un != units_.end()) {
 			// Display the def% of this terrain
 			int def =  100 - un->defense_modifier(get_map().get_terrain(loc));
 			std::stringstream def_text;
@@ -727,8 +668,8 @@ std::vector<surface> game_display::footsteps_images(const map_location& loc)
 
 	// Check which footsteps images of game_config we will use
 	int move_cost = 1;
-	const unit_map::const_iterator u = units_->find(route_.steps.front());
-	if(u != units_->end()) {
+	const unit_map::const_iterator u = units_.find(route_.steps.front());
+	if(u != units_.end()) {
 		move_cost = u->movement_cost(get_map().get_terrain(loc));
 	}
 	int image_number = std::min<int>(move_cost, game_config::foot_speed_prefix.size());
@@ -786,9 +727,9 @@ surface game_display::get_flag(const map_location& loc)
 		return surface(NULL);
 	}
 
-	for(size_t i = 0; i != teams_->size(); ++i) {
-		if((*teams_)[i].owns_village(loc) &&
-		  (!fogged(loc) || !(*teams_)[currentTeam_].is_enemy(i+1)))
+	for(size_t i = 0; i != teams_.size(); ++i) {
+		if(teams_[i].owns_village(loc) &&
+		  (!fogged(loc) || !teams_[currentTeam_].is_enemy(i+1)))
 		{
 			flags_[i].update_last_draw_time();
 			const image::locator& image_flag = preferences::animate_map() ?
@@ -944,7 +885,7 @@ void game_display::invalidate_animations_location(const map_location& loc) {
 	if (get_map().is_village(loc)) {
 		const int owner = player_teams::village_owner(loc);
 		if (owner >= 0 && flags_[owner].need_update()
-		&& (!fogged(loc) || !(*teams_)[currentTeam_].is_enemy(owner+1))) {
+		&& (!fogged(loc) || !teams_[currentTeam_].is_enemy(owner+1))) {
 			invalidate(loc);
 		}
 	}
@@ -955,14 +896,14 @@ void game_display::invalidate_animations()
 	new_animation_frame();
 	display::invalidate_animations();
 	unit_map::iterator unit;
-	for(unit=units_->begin() ; unit != units_->end() ; ++unit)
+	for(unit=units_.begin() ; unit != units_.end() ; ++unit)
 		unit->refresh();
 	if (temp_unit_ )
 		temp_unit_->refresh();
 	bool new_inval = true;
 	while(new_inval) {
 		new_inval = false;
-		for(unit=units_->begin() ; unit != units_->end() ; ++unit) {
+		for(unit=units_.begin() ; unit != units_.end() ; ++unit) {
 			new_inval |= unit->invalidate(unit->get_location());
 		}
 		if (temp_unit_ ) {
@@ -1068,8 +1009,8 @@ void game_display::write_overlays(config& cfg) const
 
 void game_display::parse_team_overlays()
 {
-	const team& curr_team = (*teams_)[playing_team()];
-	const team& prev_team = (*teams_)[playing_team()-1 < teams_->size() ? playing_team()-1 : teams_->size()-1];
+	const team& curr_team = teams_[playing_team()];
+	const team& prev_team = teams_[playing_team()-1 < teams_.size() ? playing_team()-1 : teams_.size()-1];
 	foreach (const game_display::overlay_map::value_type i, overlays_) {
 		const overlay& ov = i.second;
 		if (!ov.team_name.empty() &&
@@ -1085,7 +1026,7 @@ std::string game_display::current_team_name() const
 {
 	if (team_valid())
 	{
-		return (*teams_)[currentTeam_].team_name();
+		return teams_[currentTeam_].team_name();
 	}
 	return std::string();
 }
@@ -1286,12 +1227,12 @@ void game_display::send_notification(const std::string& /*owner*/, const std::st
 
 void game_display::set_team(size_t teamindex, bool show_everything)
 {
-	assert(teamindex < teams_->size());
+	assert(teamindex < teams_.size());
 	currentTeam_ = teamindex;
 	if (!show_everything)
 	{
-		labels().set_team(&(*teams_)[teamindex]);
-		viewpoint_ = &(*teams_)[teamindex];
+		labels().set_team(&teams_[teamindex]);
+		viewpoint_ = &teams_[teamindex];
 	}
 	else
 	{
@@ -1303,7 +1244,7 @@ void game_display::set_team(size_t teamindex, bool show_everything)
 
 void game_display::set_playing_team(size_t teamindex)
 {
-	assert(teamindex < teams_->size());
+	assert(teamindex < teams_.size());
 	activeTeam_ = teamindex;
 	invalidate_game_status();
 }

@@ -46,7 +46,7 @@ public:
 	int accuracy() const { return accuracy_; }
 	int parry() const { return parry_; }
 	int damage() const { return damage_; }
-	int num_attacks() const { return num_attacks_; }
+	int num_attacks() const;// { return num_attacks_; }
 	double attack_weight() const { return attack_weight_; }
 	double defense_weight() const { return defense_weight_; }
 
@@ -204,7 +204,7 @@ public:
 	// NOTE: this used to be a const object reference, but it messed up with the
 	// translation engine upon changing the language in the same session.
 	const t_string unit_description() const;
-	int hitpoints() const { return hitpoints_; }
+	int hitpoints() const;
 	int level() const { return level_; }
 	int movement() const { return movement_; }
 	int max_attacks() const { return max_attacks_; }
@@ -225,6 +225,14 @@ public:
 	struct experience_accelerator {
 		experience_accelerator(int modifier);
 		~experience_accelerator();
+		static int get_acceleration();
+	private:
+		int old_value_;
+	};
+
+	struct stat_accelerator {
+		stat_accelerator(int modifier);
+		~stat_accelerator();
 		static int get_acceleration();
 	private:
 		int old_value_;

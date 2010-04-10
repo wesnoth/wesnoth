@@ -31,6 +31,7 @@ mp_game_settings::mp_game_settings() :
 	mp_scenario(),
 	village_gold(0),
 	xp_modifier(0),
+	stat_modifier(0),
 	mp_countdown_init_time(0),
 	mp_countdown_reservoir_time(0),
 	mp_countdown_turn_bonus(0),
@@ -57,6 +58,7 @@ mp_game_settings::mp_game_settings(const config& cfg) :
 	mp_scenario(),
 	village_gold(0),
 	xp_modifier(0),
+	stat_modifier(0),
 	mp_countdown_init_time(0),
 	mp_countdown_reservoir_time(0),
 	mp_countdown_turn_bonus(0),
@@ -84,6 +86,7 @@ mp_game_settings::mp_game_settings(const mp_game_settings& settings)
 	, mp_scenario(settings.mp_scenario)
 	, village_gold(settings.village_gold)
 	, xp_modifier(settings.xp_modifier)
+	, stat_modifier(settings.stat_modifier)
 	, mp_countdown_init_time(settings.mp_countdown_init_time)
 	, mp_countdown_reservoir_time(settings.mp_countdown_reservoir_time)
 	, mp_countdown_turn_bonus(settings.mp_countdown_turn_bonus)
@@ -112,6 +115,7 @@ void mp_game_settings::set_from_config(const config& game_cfg)
 	mp_era = cfg["mp_era"];
 	mp_scenario = cfg["mp_scenario"];
 	xp_modifier = lexical_cast_default<int>(cfg["experience_modifier"]);
+	stat_modifier = lexical_cast_default<int>(cfg["stat_modifier"]);
 	use_map_settings = utils::string_bool(cfg["mp_use_map_settings"]);
 	fog_game = utils::string_bool(cfg["mp_fog"]);
 	shroud_game = utils::string_bool(cfg["mp_shroud"]);
@@ -134,6 +138,7 @@ void mp_game_settings::reset()
 	mp_scenario = "";
 	village_gold = 0;
 	xp_modifier = 0;
+	stat_modifier = 0;
 	mp_countdown_init_time=0;
 	mp_countdown_reservoir_time=0;
 	mp_countdown_turn_bonus=0;
@@ -153,6 +158,7 @@ config mp_game_settings::to_config() const
 	cfg["mp_era"] = mp_era;
 	cfg["mp_scenario"] = mp_scenario;
 	cfg["experience_modifier"] = lexical_cast<std::string>(xp_modifier);
+	cfg["stat_modifier"] = lexical_cast<std::string>(stat_modifier);
 	cfg["mp_countdown"] = mp_countdown;
 	cfg["mp_countdown_init_time"] = lexical_cast_default<std::string>(mp_countdown_init_time, "270");
 	cfg["mp_countdown_turn_bonus"] = lexical_cast_default<std::string>(mp_countdown_turn_bonus, "35");

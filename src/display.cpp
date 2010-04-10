@@ -76,7 +76,7 @@ namespace {
 
 int display::last_zoom_ = SmallZoom;
 
-display::display(CVideo& video, gamemap* map, const config& theme_cfg, const config& level) :
+display::display(CVideo& video, const gamemap* map, const config& theme_cfg, const config& level) :
 	screen_(video),
 	map_(map),
 	viewpoint_(NULL),
@@ -154,7 +154,7 @@ void display::reload_map()
 	builder_->reload_map();
 }
 
-void display::change_map(gamemap* m)
+void display::change_map(const gamemap* m)
 {
 	map_ = m;
 	builder_->change_map(m);

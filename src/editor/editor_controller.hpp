@@ -22,10 +22,6 @@
 #include "editor_main.hpp"
 #include "map_context.hpp"
 #include "map_fragment.hpp"
-#include "halo.hpp"
-//#include "tod_manager.hpp"
-//#include "soundsource.hpp"
-#include "..//gamestatus.hpp"
 
 #include "../controller_base.hpp"
 #include "../events.hpp"
@@ -116,9 +112,6 @@ class editor_controller : public controller_base,
 		/** Get the map from the current map context object */
 		editor_map& get_map() { return get_map_context().get_map(); }
 
-		/** Get the units from the current map context object */
-		unit_map& get_units() { return get_map_context().get_units(); }
-
 		/** Get the map from the current map context object - const version*/
 		const editor_map& get_map() const { return get_map_context().get_map(); }
 
@@ -137,12 +130,6 @@ class editor_controller : public controller_base,
 		/** Switches the context to the one under the specified index. */
 		void switch_context(const int index);
 
-		/** Switches the side to the one under the specified index. */
-		void switch_area(const int index);
-
-		/** Switches the side to the one under the specified index. */
-		void switch_side(const int index);
-
 		/** Set the default dir (where the filebrowser is pointing at when there is no map file opened) */
 		void set_default_dir(const std::string& str);
 
@@ -152,14 +139,8 @@ class editor_controller : public controller_base,
 		/** Display a new map dialog and process user input. */
 		void new_map_dialog();
 
-		/** Display a new map dialog and process user input. */
-		void new_side_dialog();
-
 		/** Display a save map as dialog and process user input. */
 		void save_map_as_dialog();
-
-		/** Display a save map as dialog and process user input. */
-		void save_multiplayer_as_dialog();
 
 		/** Display a generate random map dialog and process user input. */
 		void generate_map_dialog();
@@ -184,18 +165,6 @@ class editor_controller : public controller_base,
 		 * @return true on success
 		 */
 		bool save_map(bool display_confirmation = false);
-
-		/**
-		 * Save a multiplayer scenario under a given filename.
-		 * @return true on success
-		 */
-		bool save_multiplayer_as(const std::string& filename);
-
-		/**
-		 * Save the multiplayer scenario under a given filename. Displays an error message on failure.
-		 * @return true on success
-		 */
-		bool save_multiplayer(bool display_confirmation = false);
 
 		/**
 		 * Create a new map.
@@ -256,12 +225,6 @@ class editor_controller : public controller_base,
 		/** Menu expanding for open maps list */
 		void expand_open_maps_menu(std::vector<std::string>& items);
 
-		/** Menu expanding for defined locations list */
-		void expand_side_menu(std::vector<std::string>& items);
-
-		/** Menu expanding for defined locations list */
-		void expand_named_area_menu(std::vector<std::string>& items);
-
 		/** controller_base override */
 		void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu);
 
@@ -285,9 +248,6 @@ class editor_controller : public controller_base,
 
 		/** Fill the selection with the foreground terrain */
 		void fill_selection();
-
-		/** Declare a named location on the selection */
-		void name_selection();
 
 		/**
 		 * Set the current mouse action based on a hotkey id
@@ -356,9 +316,6 @@ class editor_controller : public controller_base,
 		/** init the display object and general set-up */
 		void init_gui(CVideo& video);
 
-		/** init the global singletons */
-		void init_globals();
-
 		/** init the sidebar objects */
 		void init_sidebar(const config& game_config);
 
@@ -412,8 +369,6 @@ class editor_controller : public controller_base,
 		 */
 		void redo();
 
-		boost::scoped_ptr<halo::manager> halo_manager_;
-
 		boost::scoped_ptr<rand_rng::rng> rng_;
 
 		boost::scoped_ptr<rand_rng::set_random_generator> rng_setter_;
@@ -423,12 +378,6 @@ class editor_controller : public controller_base,
 
 		/** Index into the map_contexts_ array */
 		int current_context_index_;
-
-		/** Index for the areas */
-		int current_area_index_;
-
-		/** Index for the sides */
-		int current_side_index_;
 
 		/** The display object used and owned by the editor. */
 		boost::scoped_ptr<editor_display> gui_;
@@ -452,11 +401,6 @@ class editor_controller : public controller_base,
 		boost::scoped_ptr<preferences::display_manager> prefs_disp_manager_;
 		tooltips::manager tooltip_manager_;
 		boost::scoped_ptr<font::floating_label_context> floating_label_manager_;
-//TODO clean up
-		//		tod_manager tod_manager_;
-//		boost::scoped_ptr<soundsource::manager> soundsources_manager_;
-
-
 
 		/** Quit main loop flag */
 		bool do_quit_;
@@ -498,18 +442,6 @@ class editor_controller : public controller_base,
 
 		/** Default directory for map load/save as dialogs */
 		std::string default_dir_;
-
-		enum menu_context {
-				WINDOW,
-				AREA,
-				SIDE,
-			};
-
-		menu_context menu_context_;
-
-		//TODO
-		game_state game_state_;
-//		std::vector<team> teams_;
 };
 
 } //end namespace editor

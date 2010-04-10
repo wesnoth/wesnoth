@@ -31,11 +31,7 @@
 #include "map_fragment.hpp"
 
 #include "../map.hpp"
-#include "../map_label.hpp"
 #include "../terrain.hpp"
-
-#include "../unit_types.hpp"
-
 namespace editor {
 
 /**
@@ -266,25 +262,6 @@ class editor_action_paint_area : public editor_action_area
 };
 
 /**
- * Name the selected terrain.
- */
-class editor_action_name_area : public editor_action_area
-{
-	public:
-		editor_action_name_area(const std::set<map_location>& area, const std::string& area_id)
-		: editor_action_area(area), area_id_(area_id)
-		{
-		}
-		editor_action_name_area* clone() const;
-		editor_action_paste* perform(map_context& mc) const;
-		void perform_without_undo(map_context& mc) const;
-		const char* get_name() const { return "name_area"; }
-	private:
-		const std::string area_id_;
-};
-
-
-/**
  * Flood fill. Somewhat redundant with paint_area.
  */
 class editor_action_fill : public editor_action_location_terrain
@@ -319,126 +296,6 @@ class editor_action_starting_position : public editor_action_location
 		const char* get_name() const { return "starting_pos"; }
 	protected:
 		int player_;
-};
-
-/**
- * Set label action
- */
-class editor_action_label : public editor_action_location
-{
-	public:
-		editor_action_label(map_location loc, const std::string& text, const std::string& team_name)
-		: editor_action_location(loc), text_(text) , team_name_(team_name)
-		{
-		}
-		editor_action_label* clone() const;
-		editor_action* perform(map_context& mc) const;
-		void perform_without_undo(map_context& mc) const;
-		const char* get_name() const { return "label"; }
-	protected:
-		const std::string text_;
-		const std::string team_name_;
-};
-
-class editor_action_label_delete : public editor_action_location
-{
-	public:
-		editor_action_label_delete(map_location loc)
-		: editor_action_location(loc)
-		{
-		}
-		editor_action_label_delete* clone() const;
-		editor_action* perform(map_context& mc) const;
-		void perform_without_undo(map_context& mc) const;
-		const char* get_name() const { return "label_delete"; }
-};
-
-
-/**
- * place a new unit on the map
- */
-class editor_action_unit : public editor_action_location
-{
-	public:
-		editor_action_unit(map_location loc,
-				const unit& u)
-		: editor_action_location(loc), u_(u)
-		{
-		}
-		editor_action_unit* clone() const;
-		editor_action* perform(map_context& mc) const;
-		void perform_without_undo(map_context& mc) const;
-		const char* get_name() const { return "unit"; }
-	protected:
-		unit u_;
-};
-
-/**
- * Remove a unit from the map.
- */
-class editor_action_unit_delete : public editor_action_location
-{
-	public:
-		editor_action_unit_delete(map_location loc)
-		: editor_action_location(loc)
-		{
-		}
-		editor_action_unit_delete* clone() const;
-		editor_action* perform(map_context& mc) const;
-		void perform_without_undo(map_context& mc) const;
-		const char* get_name() const { return "unit_delete"; }
-};
-
-/**
- * Clears the ownership of a village.
- */
-class editor_action_village_delete : public editor_action_location
-{
-	public:
-		editor_action_village_delete(map_location loc)
-		: editor_action_location(loc)
-		{
-		}
-		editor_action_village_delete* clone() const;
-		editor_action* perform(map_context& mc) const;
-		void perform_without_undo(map_context& mc) const;
-		const char* get_name() const { return "village_delete"; }
-};
-
-
-/**
- * Sets the ownership of a village to the current side.
- */
-class editor_action_village : public editor_action_location
-{
-	public:
-		editor_action_village(map_location loc, int side_number)
-		: editor_action_location(loc), side_number_(side_number)
-		{
-		}
-		editor_action_village* clone() const;
-		editor_action* perform(map_context& mc) const;
-		void perform_without_undo(map_context& mc) const;
-		const char* get_name() const { return "village"; }
-	private:
-		int side_number_;
-};
-
-
-
-class editor_action_unit_replace : public editor_action_location
-{
-	public:
-		editor_action_unit_replace(map_location loc, map_location new_loc)
-		: editor_action_location(loc), new_loc_(new_loc)
-		{
-		}
-		editor_action_unit_replace* clone() const;
-		editor_action* perform(map_context& mc) const;
-		void perform_without_undo(map_context& mc) const;
-		const char* get_name() const { return "replace_unit"; }
-	protected:
-		map_location new_loc_;
 };
 
 

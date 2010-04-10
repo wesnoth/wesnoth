@@ -75,7 +75,7 @@ struct map_location {
 	// Adds an absolute location to a "delta" location
 	// This is not the mathematically correct behaviour, it is neither
 	// commutative nor associative. Negative coordinates may give strange
-	// results. It is retained because terrain builder code relies in this
+	// results. It is retained because terain builder code relies in this
 	// broken behaviour. Best avoid.
 	map_location legacy_negation() const;
 	map_location legacy_sum(const map_location &a) const;

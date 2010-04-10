@@ -252,9 +252,6 @@ public:
 
 	void swap(unit_map& o);
 
-	//TODO move to the right location and comment!
-	void write(config& cfg) const;
-
 private:
 	/** Removes invalid entries in map_ if safe and needed. */
 	void clean_invalid();
