@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-26 15:39+0100\n"
-"PO-Revision-Date: 2010-03-27 23:51+0100\n"
+"POT-Creation-Date: 2010-03-26 15:41+0100\n"
+"PO-Revision-Date: 2010-04-09 22:18+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -8578,12 +8578,14 @@ msgid "aliases:"
 msgstr "aliasy:"
 
 #: src/menu_events.cpp:2200
+#, fuzzy
 msgid "(A) - auth command"
-msgstr "(A) - autentifikačný príkaz"
+msgstr "(A) - administračný príkaz"
 
 #: src/menu_events.cpp:2207
+#, fuzzy
 msgid "(auth only)"
-msgstr "(len pri autentifikácii)"
+msgstr " (len pri autentifikácii)"
 
 #: src/menu_events.cpp:2227
 msgid ""
@@ -8747,17 +8749,19 @@ msgid "Room query."
 msgstr "Dotaz v miestnosti."
 
 #: src/menu_events.cpp:2397
+#, fuzzy
 msgid "(D) - debug only, (N) - network only, (A) - auth only"
 msgstr ""
-"(D) - len pre ladenie, (N) - len na sieti, (A) - len pri autentifikácii"
+"(D) - len pre ladenie, (N) - len na sieti, (A) - len pre administrátora"
 
 #: src/menu_events.cpp:2403
 msgid "(debug command)"
 msgstr "(príkaz ladenia)"
 
 #: src/menu_events.cpp:2404
+#, fuzzy
 msgid " (network only)"
-msgstr " (len na sieti)"
+msgstr "(len na sieti)"
 
 #: src/menu_events.cpp:2405
 msgid " (auth only)"
@@ -10175,6 +10179,17 @@ msgstr "Pomôž nám urobiť Wesnoth lepším pre teba!"
 #: src/upload_log.cpp:375
 msgid "Enable summary uploads"
 msgstr "Umožni posielanie štatistík"
+
+#~ msgid "(admin only)"
+#~ msgstr "(len pre administrátora)"
+
+#~ msgid ""
+#~ "You will start the next scenario with the defined minimum starting gold."
+#~ msgid_plural ""
+#~ "You will start the next scenario with the defined minimum starting gold."
+#~ msgstr[0] "Ďalšiu scénu začneš s určeným minimálnym počiatočným zlatom."
+#~ msgstr[1] "Ďalšiu scénu začneš s určeným minimálnym počiatočným zlatom."
+#~ msgstr[2] "Ďalšiu scénu začneš s určeným minimálnym počiatočným zlatom."
 
 #~ msgid "Unknown unit type '$type|'"
 #~ msgstr "Neznámy typ jednotky '$type|'"
