@@ -559,17 +559,11 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				gamestate.write_snapshot(next_cfg);
 				next_cfg["next_scenario"] = (*scenario)["next_scenario"];
 				next_cfg.add_child("snapshot");
-				//move the player information into the hosts gamestate
-				write_players(gamestate, starting_pos, true, true);
 				gamestate.starting_pos = *scenario;
-
+				//move the player information into the hosts gamestate
+				write_players(gamestate, gamestate.starting_pos, true, true);
 				next_cfg.add_child("multiplayer", gamestate.mp_settings().to_config());
 				next_cfg.add_child("replay_start", gamestate.starting_pos);
-				//move side information from gamestate into the config that is sent to the other clients
-				next_cfg.clear_children("side");
-				foreach (config& side, gamestate.starting_pos.child_range("side"))
-					next_cfg.add_child("side", side);
-
 				network::send_data(cfg, 0, true);
 			}
 		}

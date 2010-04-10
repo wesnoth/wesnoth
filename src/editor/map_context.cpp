@@ -14,7 +14,10 @@
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
 #include "action.hpp"
+
 #include "map_context.hpp"
+#include "../serialization/parser.hpp"
+#include "../serialization/preprocessor.hpp"
 
 #include "../display.hpp"
 #include "../filesystem.hpp"
@@ -54,7 +57,7 @@ map_context::map_context(const config& game_config, const std::string& filename)
 	: filename_(filename)
 	, map_data_key_()
 	, embedded_(false)
-	, map_(game_config)
+	, map_(game_config, config())
 	, undo_stack_()
 	, redo_stack_()
 	, actions_since_save_(0)
@@ -65,6 +68,15 @@ map_context::map_context(const config& game_config, const std::string& filename)
 	, changed_locations_()
 	, everything_changed_(false)
 {
+//TODO
+	std::cerr << "\n map_context constructor "<< this << "\n";
+
+
+	config level;
+	read(level, *(preprocess_file(filename_)));
+
+//	ERR_ED << level.debug();
+
 	log_scope2(log_editor, "Loading map " + filename);
 	if (!file_exists(filename) || is_directory(filename)) {
 		throw editor_map_load_exception(filename, _("File not found"));
@@ -82,8 +94,8 @@ map_context::map_context(const config& game_config, const std::string& filename)
 			std::string new_filename = get_wml_location(m2[1], directory_name(m2[1]));
 			if (new_filename.empty()) {
 				std::string message = _("The map file looks like a scenario, "
-					"but the map_data value does not point to an existing file")
-					+ std::string("\n") + m2[1];
+						"but the map_data value does not point to an existing file")
+						+ std::string("\n") + m2[1];
 				throw editor_map_load_exception(filename, message);
 			}
 			LOG_ED << "New filename is: " << new_filename << "\n";
@@ -99,11 +111,12 @@ map_context::map_context(const config& game_config, const std::string& filename)
 		std::string message = _("Empty map file");
 		throw editor_map_load_exception(filename, message);
 	}
-	map_ = editor_map::from_string(game_config, map_string); //throws on error
+	map_ = editor_map::from_string(game_config, map_string, level); //throws on error
 }
 
 map_context::~map_context()
 {
+	std::cerr << "\n map context destructor : "<< this << "\n";
 	clear_stack(undo_stack_);
 	clear_stack(redo_stack_);
 }
@@ -190,6 +203,38 @@ void map_context::set_starting_position_labels(display& disp)
 {
 	std::set<map_location> new_label_locs = map_.set_starting_position_labels(disp);
 	starting_position_label_locs_.insert(new_label_locs.begin(), new_label_locs.end());
+
+	const labels::team_label_map& labels = map_.get_game_labels().get_team_label_map();
+	for(labels::team_label_map::const_iterator i = labels.begin(); i != labels.end(); ++i)
+	{
+		for (labels::label_map::const_iterator j = i->second.begin(); j != i->second.end(); ++j)
+		{
+			const label* old_label = disp.labels().get_label(j->second->location());
+			std::string new_text;
+			//TODO enable translation.
+//			new_text += *(_("Label:")) + " " + j->second->text();
+			new_text = "Label: ";
+			new_text += j->second->text();
+			if (old_label)
+				new_text += "\n" + old_label->text();
+			disp.labels().set_label((j->second)->location(), new_text, "", font::LABEL_COLOUR, true, true, false);
+	//			j->second->scroll(xmove, ymove);
+		}
+	}
+
+	const unit_map& units = map_.get_units();
+	for(unit_map::const_unit_iterator it = units.begin(); it != units.end(); it++) {
+		const label* old_label = disp.labels().get_label(it->get_location());
+		std::string new_text;
+	//			new_text += *(_("Label:")) + " " + j->second->text();
+		new_text = "<span size=\"larger\">id:</span>"; //<< j->second->text();
+	//	new_text = "Id: "; //<< j->second->text();
+		new_text += it->id();
+		if (old_label)
+			new_text += "\n" + old_label->text();
+		disp.labels().set_label(it->get_location(), new_text, "", font::LABEL_COLOUR, true, true, false);
+	}
+
 }
 
 void map_context::reset_starting_position_labels(display& disp)
@@ -199,33 +244,92 @@ void map_context::reset_starting_position_labels(display& disp)
 	set_needs_labels_reset(false);
 }
 
-bool map_context::save()
+void map_context::write_cfg(config& cfg)
 {
-	std::string data = map_.write();
-	try {
-		if (!is_embedded()) {
-			write_file(get_filename(), data);
-		} else {
-			std::string map_string = read_file(get_filename());
-			boost::regex re("(.*map_data\\s*=\\s*\")(.+?)(\".*)");
-			boost::smatch m;
-			if (boost::regex_search(map_string, m, re, boost::regex_constants::match_not_dot_null)) {
-				std::stringstream ss;
-				ss << m[1];
-				ss << data;
-				ss << m[3];
-				write_file(get_filename(), ss.str());
-			} else {
-				throw editor_map_save_exception(_("Could not save into scenario"));
+	cfg["map_data"] = map_.write();
+
+//	std::string data = map_.write();
+//	map_cfg["map_data"] = data;
+
+	config& label_event = cfg.add_child("event");
+	label_event["name"] = "prestart";
+
+	map_.get_game_labels().write(label_event);
+	map_.get_named_areas().write(cfg);
+
+	std::stringstream buf;
+
+	for(std::vector<team>::const_iterator t = map_.get_teams().begin(); t != map_.get_teams().end() -1; ++t) {
+		int side_num = t - map_.get_teams().begin() + 1;
+
+		config& side = cfg.add_child("side");
+		t->write(side);
+		side["no_leader"] = "yes";
+		buf.str(std::string());
+		buf << side_num;
+		side["side"] = buf.str();
+
+		//current visible units
+		for(unit_map::const_iterator i = map_.get_units().begin(); i != map_.get_units().end(); ++i) {
+			if(i->side() == side_num) {
+				config& u = side.add_child("unit");
+				i->get_location().write(u); // TODO: Needed?
+				i->write(u);
 			}
 		}
-		clear_modified();
+	}
+}
+
+bool map_context::save_multiplayer(const std::string& id)
+{
+	config scenario_cfg;
+	config& multiplayer = scenario_cfg.add_child("multiplayer");
+	multiplayer["id"] = id;
+	multiplayer["name"] = id;
+	write_cfg(multiplayer);
+	return save(scenario_cfg, get_user_data_dir() + "/data/add-ons/" + id + ".cfg" );
+}
+
+bool map_context::save()
+{
+	config cfg;
+	write_cfg(cfg);
+	return save(cfg, get_filename());
+}
+
+bool map_context::save(config& map_cfg, const std::string& filename)
+{
+//TODO
+//	try {
+//		if (!is_embedded()) {
+//			write_file(get_filename(), data);
+//
+//		} else {
+//			std::string map_string = read_file(get_filename());
+//			boost::regex re("(.*map_data\\s*=\\s*\")(.+?)(\".*)");
+//			boost::smatch m;
+//			if (boost::regex_search(map_string, m, re, boost::regex_constants::match_not_dot_null)) {
+//				std::stringstream ss;
+//				ss << m[1];
+//				ss << data;
+//				ss << m[3];
+//				write_file(get_filename(), ss.str());
+//			} else {
+//				throw editor_map_save_exception(_("Could not save into scenario"));
+//			}
+//		}
+
+	try {
+		scoped_ostream map_file = ostream_file(filename);
+		write(*map_file, map_cfg);
 	} catch (io_exception& e) {
 		utils::string_map symbols;
 		symbols["msg"] = e.what();
-		const std::string msg = vgettext("Could not save the map: $msg", symbols);
+		const std::string msg = vgettext("Could not save the file: $msg", symbols);
 		throw editor_map_save_exception(msg);
 	}
+
+	clear_modified();
 	return true;
 }
 
@@ -271,6 +375,7 @@ void map_context::perform_partial_action(const editor_action& action)
 	undo_chain->prepend_action(undo);
 	clear_stack(redo_stack_);
 }
+
 bool map_context::modified() const
 {
 	return actions_since_save_ != 0;

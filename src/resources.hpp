@@ -28,6 +28,9 @@ class unit_map;
 
 namespace soundsource { class manager; }
 
+namespace pathfind { class manager; }
+
+
 namespace resources
 {
 	extern game_display *screen;
@@ -39,6 +42,7 @@ namespace resources
 	extern LuaKernel *lua_kernel;
 	extern play_controller *controller;
 	extern tod_manager *tod_manager;
+	extern pathfind::manager *tunnels;
 }
 
 #endif

@@ -64,8 +64,8 @@ namespace test_utils {
 		dummy_tod_(dummy_cfg_, 0),
 		dummy_teams_(),
 		main_event_context_(),
-		disp_(dummy_umap_, video_, dummy_map_, dummy_tod_,
-				dummy_teams_, dummy_cfg_, dummy_cfg_)
+		disp_(&dummy_umap_, video_, &dummy_map_, &dummy_tod_,
+				&dummy_teams_, dummy_cfg_, dummy_cfg_)
 	{
 	}
 

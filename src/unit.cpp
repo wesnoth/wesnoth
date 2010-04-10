@@ -287,7 +287,8 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 		side_ = 1;
 	}
 
-	validate_side(side_);
+	//TODO enable agian
+//	validate_side(side_);
 
 	underlying_id_ = lexical_cast_default<size_t>(cfg["underlying_id"],0);
 	set_underlying_id();
@@ -550,7 +551,7 @@ void unit::clear_status_caches()
 }
 
 unit::unit(const unit_type *t, int side, bool real_unit,
-	unit_race::GENDER gender) :
+	unit_race::GENDER gender, bool canrecruit) :
 	cfg_(),
 	loc_(),
 	advances_to_(),
@@ -567,7 +568,7 @@ unit::unit(const unit_type *t, int side, bool real_unit,
 	experience_(0),
 	max_experience_(0),
 	level_(0),
-	canrecruit_(false),
+	canrecruit_(canrecruit),
 	alignment_(),
 	flag_rgb_(),
 	image_mods_(),

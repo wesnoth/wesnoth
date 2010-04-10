@@ -17,6 +17,8 @@
 
 #include "editor_common.hpp"
 #include "editor_map.hpp"
+#include "../unit_map.hpp"
+#include "../map_label.hpp"
 
 #include <boost/utility.hpp>
 
@@ -60,6 +62,11 @@ public:
 	 * Map accesor
 	 */
 	editor_map& get_map() { return map_; };
+
+	/**
+	 * Unit map accesor
+	 */
+	unit_map& get_units() { return map_.get_units(); };
 
 	/**
 	 * Map accesor - const version
@@ -128,6 +135,8 @@ public:
 
 	void set_starting_position_labels(display& disp);
 
+//	void set_map_labels(display& disp);
+
 	void reset_starting_position_labels(display& disp);
 
 	const std::string& get_filename() const { return filename_; }
@@ -135,6 +144,8 @@ public:
 	void set_filename(const std::string& fn) { filename_ = fn; }
 
 	const std::string& get_map_data_key() const { return map_data_key_; }
+
+
 
 	bool is_embedded() const { return embedded_; }
 
@@ -146,7 +157,13 @@ public:
 	 */
 	bool save();
 
+	bool save(config& cfg, const std::string& filename);
+
+	bool save_multiplayer(const std::string& id = "test");
+
 	void set_map(const editor_map& map);
+
+	void write_cfg(config& cfg);
 
 	/**
 	 * Performs an action (thus modyfying the map). An appropriate undo action is added to
@@ -217,6 +234,8 @@ protected:
 	 */
 	std::string map_data_key_;
 
+
+
 	/**
 	 * Whether the map context refers to a map embedded in a scenario file.
 	 * This distinction is important in order to avoid overwriting the scenario.
@@ -227,6 +246,8 @@ protected:
 	 * The map object of this map_context.
 	 */
 	editor_map map_;
+
+
 
 	/**
 	 * Container type used to store actions in the undo and redo stacks

@@ -26,6 +26,7 @@
 #include "halo.hpp"
 #include "loadscreen.hpp"
 #include "log.hpp"
+#include "pathfind/teleport.hpp"
 #include "resources.hpp"
 #include "savegame.hpp"
 #include "sound.hpp"
@@ -65,6 +66,7 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	menu_handler_(NULL, units_, teams_, level, map_, game_config, tod_manager_, state_of_game, undo_stack_, redo_stack_),
 	soundsources_manager_(),
 	tod_manager_(level, num_turns, &state_of_game),
+	pathfind_manager_(),
 	gui_(),
 	statistics_context_(level["name"]),
 	level_(level),
@@ -119,6 +121,7 @@ play_controller::~play_controller()
 	resources::screen = NULL;
 	resources::soundsources = NULL;
 	resources::tod_manager = NULL;
+	resources::tunnels = NULL;
 }
 
 void play_controller::init(CVideo& video){
@@ -195,7 +198,7 @@ void play_controller::init(CVideo& video){
 	LOG_NG << "initializing display... " << (SDL_GetTicks() - ticks_) << "\n";
 
 	const config &theme_cfg = get_theme(game_config_, level_["theme"]);
-	gui_.reset(new game_display(units_, video, map_, tod_manager_, teams_, theme_cfg, level_));
+	gui_.reset(new game_display(&units_, video, &map_, &tod_manager_, &teams_, theme_cfg, level_));
 	if (!gui_->video().faked()) {
 		if (gamestate_.mp_settings().mp_countdown)
 			gui_->get_theme().modify_label("time-icon", _ ("time left for current turn"));
@@ -247,8 +250,10 @@ void play_controller::init_managers(){
 	prefs_disp_manager_.reset(new preferences::display_manager(gui_.get()));
 	tooltips_manager_.reset(new tooltips::manager(gui_->video()));
 	soundsources_manager_.reset(new soundsource::manager(*gui_));
+	pathfind_manager_.reset(new pathfind::manager(level_));
 
 	resources::soundsources = soundsources_manager_.get();
+	resources::tunnels = pathfind_manager_.get();
 
 	halo_manager_.reset(new halo::manager(*gui_));
 	LOG_NG << "done initializing managers... " << (SDL_GetTicks() - ticks_) << "\n";
@@ -610,6 +615,7 @@ config play_controller::to_config() const
 
 	//write out the current state of the map
 	cfg["map_data"] = map_.write();
+	cfg.merge_with(pathfind_manager_->to_config());
 
 	return cfg;
 }
@@ -896,13 +902,11 @@ void play_controller::process_keyup_event(const SDL_Event& event) {
 			const unit_map::iterator u = mouse_handler_.selected_unit();
 
 			if(u != units_.end()) {
-				bool teleport = u->get_ability_bool("teleport");
-
 				// if it's not the unit's turn, we reset its moves
 				unit_movement_resetter move_reset(*u, u->side() != player_number_);
 
 				mouse_handler_.set_current_paths(pathfind::paths(map_, units_, u->get_location(),
-				                       teams_,false,teleport, teams_[gui_->viewing_team()],
+				                       teams_,false,true, teams_[gui_->viewing_team()],
 				                       mouse_handler_.get_path_turns()));
 
 				gui_->highlight_reach(mouse_handler_.current_paths());

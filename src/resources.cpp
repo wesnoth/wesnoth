@@ -25,4 +25,5 @@ namespace resources
 	LuaKernel *lua_kernel;
 	play_controller *controller;
 	::tod_manager *tod_manager;
+	pathfind::manager *tunnels;
 }

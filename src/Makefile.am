@@ -229,6 +229,7 @@ wesnoth_source = \
 	network.cpp \
 	network_worker.cpp \
 	pathfind/pathfind.cpp \
+	pathfind/teleport.cpp
 	playcampaign.cpp \
 	play_controller.cpp \
 	playmp_controller.cpp \
@@ -271,7 +272,6 @@ wesnoth_source = \
 	widgets/combo_drag.cpp \
 	widgets/drop_target.cpp \
 	widgets/scrollpane.cpp
-
 
 # used with editor option in the wesnoth target
 wesnoth_editor_SOURCES = \

@@ -16,6 +16,8 @@
 #include "action_base.hpp"
 #include "editor_map.hpp"
 #include "formula_string_utils.hpp"
+#include "resources.hpp"
+#include "map_location.hpp"
 
 #include "../display.hpp"
 #include "../filesystem.hpp"
@@ -40,23 +42,38 @@ editor_map_load_exception wrap_exc(const char* type, const std::string& e_msg, c
 	return editor_map_load_exception(filename, msg);
 }
 
-editor_map::editor_map(const config& terrain_cfg)
+editor_map::editor_map(const config& terrain_cfg, const config& level)
 	: gamemap(terrain_cfg, gamemap::default_map_header)
 	, selection_()
+	, units_()
+	, game_labels_(level)
+	, named_areas_(level)
+	, tod_manager_(level, 1)
+	, teams_()
+	, cfg_(level)
+	, state_()
 {
+	setup(level);
 }
 
-editor_map::editor_map(const config& terrain_cfg, const std::string& data)
+editor_map::editor_map(const config& terrain_cfg, const std::string& data, const config& level)
 	: gamemap(terrain_cfg, data)
 	, selection_()
+	, units_()
+	, game_labels_(level)
+	, named_areas_(level)
+	, tod_manager_(level, 1)
+	, teams_()
+	, cfg_(level)
 {
+	setup(level);
 	sanity_check();
 }
 
-editor_map editor_map::from_string(const config& terrain_cfg, const std::string& data)
+editor_map editor_map::from_string(const config& terrain_cfg, const std::string& data, const config& level)
 {
 	try {
-		return editor_map(terrain_cfg, data);
+		return editor_map(terrain_cfg, data, level);
 	} catch (incorrect_map_format_exception& e) {
 		throw wrap_exc("format", e.msg_, "");
 	} catch (twml_exception& e) {
@@ -66,18 +83,34 @@ editor_map editor_map::from_string(const config& terrain_cfg, const std::string&
 	}
 }
 
-editor_map::editor_map(const config& terrain_cfg, size_t width, size_t height, t_translation::t_terrain filler)
+editor_map::editor_map(const config& terrain_cfg, size_t width, size_t height, t_translation::t_terrain filler, const config& level)
 	: gamemap(terrain_cfg, gamemap::default_map_header + t_translation::write_game_map(
 		t_translation::t_map(width + 2, t_translation::t_list(height + 2, filler))))
 	, selection_()
+	, units_()
+	, game_labels_(level)
+	, named_areas_(level)
+	, tod_manager_(level, 1)
+	, teams_()
+	, cfg_(level)
+	, state_()
 {
+	setup(level);
 	sanity_check();
 }
 
-editor_map::editor_map(const gamemap& map)
+editor_map::editor_map(const gamemap& map, const config& level)
 	: gamemap(map)
 	, selection_()
+	, units_()
+	, game_labels_(level)
+	, named_areas_(level)
+	, tod_manager_(level, 1)
+	, teams_()
+	, cfg_(level)
+	, state_()
 {
+	setup(level);
 	sanity_check();
 }
 
@@ -150,7 +183,8 @@ std::set<map_location> editor_map::set_starting_position_labels(display& disp)
 	label += " ";
 	for (int i = 1; i <= gamemap::MAX_PLAYERS; i++) {
 		if (startingPositions_[i].valid()) {
-			disp.labels().set_label(startingPositions_[i], label + lexical_cast<std::string>(i));
+			disp.labels().set_label(startingPositions_[i],
+					label + lexical_cast<std::string>(i), "", font::LABEL_COLOUR, true, true, false);
 			label_locs.insert(startingPositions_[i]);
 		}
 	}
@@ -385,6 +419,34 @@ void editor_map::shrink_bottom(int count)
 	total_height_ -= count;
 }
 
+void editor_map::setup(const config& level)
+{
+	resources::game_map = this;
+	resources::units = &units_;
+	resources::teams = &teams_;
+	resources::state_of_game = &state_;
+	//TODO make the controller available?
+	//	resources::controller = this;
+	resources::tod_manager = &tod_manager_;
 
+	foreach (const config &side, level.child_range("side"))
+	{
+		//TODO clean up.
+	//			state_.build_team(side, "", teams_, level, *this
+	//						, units_, false);
+		teams_.push_back(team(side,*this,100));
+		foreach (const config &a_unit, side.child_range("unit")) {
+			map_location loc(a_unit, NULL);
+			units_.add(loc,
+					unit(a_unit, true, &state_) );
+		}
+	}
+		config dummy;
+		dummy["no_leader"] = "yes";
+		dummy["side"] = "1";
+////		state_.build_team(dummy, "", teams_, level, *this
+////					, units_, false);
+		teams_.push_back(team(dummy,*this,100));
+}
 
 } //end namespace editor

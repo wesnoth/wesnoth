@@ -18,6 +18,7 @@
 #include "log.hpp"
 #include "map.hpp"
 #include "pathfind/pathfind.hpp"
+#include "pathfind/teleport.hpp"
 #include "foreach.hpp"
 
 #include <queue>
@@ -78,24 +79,34 @@ struct node {
 		, in(bad_search_counter)
 	{
 	}
-	node(double s, const map_location &c, const map_location &p, const map_location &dst, bool i, const std::set<map_location>* teleports):
+	node(double s, const map_location &c, const map_location &p, const map_location &dst, bool i, const pathfind::teleport_map* teleports):
 		g(s), h(heuristic(c, dst)), t(g + h), curr(c), prev(p), in(search_counter + i)
 	{
-		if (teleports != NULL) {
-			double srch = h, dsth = h;
-			std::set<map_location>::const_iterator i;
-			for(i = teleports->begin(); i != teleports->end(); ++i) {
-				const double new_srch = heuristic(c, *i);
-				const double new_dsth = heuristic(*i, dst);
-				if(new_srch < srch) {
-					srch = new_srch;
-				}
-				if(new_dsth < dsth) {
-					dsth = new_dsth;
-				}
+		if (teleports && !teleports->empty()) {
+
+			double new_srch = 1.0;
+			std::set<map_location> sources;
+			teleports->get_sources(sources);
+
+			std::set<map_location>::const_iterator it = sources.begin();
+			for(; it != sources.end(); ++it) {
+				const double tmp_srch = heuristic(c, *it);
+				if (tmp_srch < new_srch) { new_srch = tmp_srch; }
 			}
-			if(srch + dsth + 1.0 < h) {
-				h = srch + dsth + 1.0;
+
+
+			double new_dsth = 1.0;
+			std::set<map_location> targets;
+			teleports->get_targets(targets);
+
+			for(it = targets.begin(); it != targets.end(); ++it) {
+				const double tmp_dsth = heuristic(*it, dst);
+				if (tmp_dsth < new_dsth) { new_dsth = tmp_dsth; }
+			}
+
+			double new_h = new_srch + new_dsth + 1.0;
+			if (new_h < h) {
+				h = new_h;
 				t = g + h;
 			}
 		}
@@ -129,8 +140,9 @@ public:
 
 
 pathfind::plain_route pathfind::a_star_search(const map_location& src, const map_location& dst,
-		  	    double stop_at, const pathfind::cost_calculator *calc, const size_t width,
-                            const size_t height, const std::set<map_location>* teleports) {
+                            double stop_at, const cost_calculator *calc, const size_t width,
+                            const size_t height,
+                            const teleport_map *teleports) {
 	//----------------- PRE_CONDITIONS ------------------
 	assert(src.valid(width, height));
 	assert(dst.valid(width, height));
@@ -145,13 +157,6 @@ pathfind::plain_route pathfind::a_star_search(const map_location& src, const map
 		pathfind::plain_route locRoute;
 		locRoute.move_cost = int(calc->getNoPathValue());
 		return locRoute;
-	}
-
-	if (teleports && teleports->empty()) teleports = NULL;
-
-	std::vector<map_location> locs(teleports ? 6 + teleports->size() : 6 );
-	if (teleports) {
-		std::copy(teleports->begin(), teleports->end(), locs.begin() + 6);
 	}
 
 	// increment search_counter but skip the range equivalent to uninitialized
@@ -181,12 +186,26 @@ pathfind::plain_route pathfind::a_star_search(const map_location& src, const map
 
 		if (n.t >= nodes[index(dst)].g) break;
 
+		std::vector<map_location> locs;
+
+		int i;
+		if (teleports && !teleports->empty()) {
+
+			std::set<map_location> allowed_teleports;
+			teleports->get_adjacents(allowed_teleports, n.curr);
+
+			i = allowed_teleports.size() +6;
+			locs = std::vector<map_location>(i);
+
+			std::copy(allowed_teleports.begin(), allowed_teleports.end(), locs.begin() + 6);
+		} else
+		{ locs = std::vector<map_location>(6); i = 6;}
+
 		get_adjacent_tiles(n.curr, &locs[0]);
 
-		int i = teleports && teleports->count(n.curr) ? locs.size() : 6;
 		for (; i-- > 0;) {
 			if (!locs[i].valid(width, height)) continue;
-
+			if (locs[i] == n.curr) continue;
 			node& next = nodes[index(locs[i])];
 
 			double thresh = (next.in - search_counter <= 1u) ? next.g : stop_at + 1;

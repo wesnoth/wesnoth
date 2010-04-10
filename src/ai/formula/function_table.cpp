@@ -27,6 +27,7 @@
 #include "../../log.hpp"
 #include "../../map_label.hpp"
 #include "../../menu_events.hpp"
+#include "../../pathfind/teleport.hpp"
 #include "../../replay.hpp"
 #include "../../terrain_filter.hpp"
 #include "../../unit.hpp"
@@ -658,7 +659,7 @@ private:
 		if (ai_.get_info().units.find(loc)==ai_.get_info().units.end()){
 			return variant();
 		}
-		const pathfind::paths unit_paths(ai_.get_info().map, ai_.get_info().units, loc ,ai_.get_info().teams, false, false, ai_.current_team());
+		const pathfind::paths unit_paths(ai_.get_info().map, ai_.get_info().units, loc ,ai_.get_info().teams, false, true, ai_.current_team());
 		return variant(new location_callable(ai_.suitable_keep(loc,unit_paths)));
 	}
 
@@ -972,7 +973,7 @@ private:
 			throw formula_error( str.str(), "", "", 0);
 		}
 
-                std::set<map_location> allowed_teleports = ai_.get_allowed_teleports(unit_it);
+		pathfind::teleport_map allowed_teleports = ai_.get_allowed_teleports(unit_it);
 
 		pathfind::plain_route route = ai_.shortest_path_calculator( src, dst, unit_it, allowed_teleports );
 
@@ -1022,22 +1023,22 @@ private:
 			throw formula_error( str.str(), "", "", 0);
 		}
 
-                std::set<map_location> allowed_teleports = ai_.get_allowed_teleports(unit_it);
+		pathfind::teleport_map allowed_teleports = ai_.get_allowed_teleports(unit_it);
 
 		pathfind::emergency_path_calculator em_calc(*unit_it, ai_.get_info().map);
 
-                pathfind::plain_route route = pathfind::a_star_search(src, dst, 1000.0, &em_calc, ai_.get_info().map.w(), ai_.get_info().map.h(), &allowed_teleports);
+		pathfind::plain_route route = pathfind::a_star_search(src, dst, 1000.0, &em_calc, ai_.get_info().map.w(), ai_.get_info().map.h(), &allowed_teleports);
 
-                if( route.steps.size() < 2 ) {
-                    return variant(&locations);
-                }
+		if( route.steps.size() < 2 ) {
+			return variant(&locations);
+		}
 
-                for (std::vector<map_location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
-                    if (unit_it->movement_cost(ai_.get_info().map[*loc_iter]) < 99 )
-                        locations.push_back( variant( new location_callable(*loc_iter) ));
-                    else
-                        break;
-                }
+		for (std::vector<map_location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
+			if (unit_it->movement_cost(ai_.get_info().map[*loc_iter]) < 99 )
+				locations.push_back( variant( new location_callable(*loc_iter) ));
+			else
+				break;
+		}
 
 		return variant(&locations);
 	}
@@ -1076,13 +1077,13 @@ private:
 			throw formula_error( str.str(), "", "", 0);
 		}
 
-                std::set<map_location> allowed_teleports = ai_.get_allowed_teleports(unit_it);
+		pathfind::teleport_map allowed_teleports = ai_.get_allowed_teleports(unit_it);
 
 		pathfind::plain_route route = ai_.shortest_path_calculator( src, dst, unit_it, allowed_teleports );
 
-                if( route.steps.size() < 2 ) {
+		if( route.steps.size() < 2 ) {
 			return variant();
-                }
+		}
 
 		map_location loc = map_location::null_location;
 		const ai::moves_map &possible_moves = ai_.get_possible_moves();
@@ -1242,15 +1243,15 @@ private:
         }
 
         void display_label(const map_location& location, const std::string& text) const {
-                game_display* gui = game_display::get_singleton();
+  //              game_display* gui = game_display::get_singleton();
 		std::string team_name;
 
-		SDL_Color colour = int_to_color(team::get_side_rgb(ai_.get_side()));
+//		SDL_Color colour = int_to_color(team::get_side_rgb(ai_.get_side()));
 
-		const terrain_label *res;
-		res = gui->labels().set_label(location, text, team_name, colour);
-		if (res)
-			recorder.add_label(res);
+//		const terrain_label *res;
+////		res = gui->labels().set_label(location, text, team_name, colour);
+//		if (res)
+//			recorder.add_label(res);
         }
 
 	const formula_ai& ai_;

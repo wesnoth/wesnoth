@@ -734,7 +734,7 @@ void ai_default::move_leader_to_keep()
 
 	// Find where the leader can move
 	const pathfind::paths leader_paths(map_, units_, leader->get_location(),
-	       teams_, false, false, current_team());
+	       teams_, false, true, current_team());
 	const map_location& keep = suitable_keep(leader->get_location(), leader_paths);
 
 	std::map<map_location,pathfind::paths> possible_moves;

@@ -302,10 +302,13 @@ void team::write(config& cfg) const
 	cfg["action_bonus_count"] = action_bonus_count_;
 }
 
-bool team::get_village(const map_location& loc)
+bool team::get_village(const map_location& loc, const bool fire_event)
 {
 	villages_.insert(loc);
-	return game_events::fire("capture",loc);
+	if (fire_event)
+		return game_events::fire("capture",loc);
+	//TODO better false? Or is that a hack at all?
+	return true;
 }
 
 void team::lose_village(const map_location& loc)

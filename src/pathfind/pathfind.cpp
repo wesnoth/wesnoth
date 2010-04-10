@@ -21,6 +21,7 @@
 #include "global.hpp"
 
 #include "pathfind/pathfind.hpp"
+#include "pathfind/teleport.hpp"
 
 #include "foreach.hpp"
 #include "gettext.hpp"
@@ -103,29 +104,6 @@ bool pathfind::enemy_zoc(unit_map const &units, std::vector<team> const &teams,
 	return false;
 }
 
-std::set<map_location> pathfind::get_teleport_locations(const unit &u,
-	const unit_map &units, const team &viewing_team,
-	bool see_all, bool ignore_units)
-{
-	std::set<map_location> res;
-	if (!u.get_ability_bool("teleport")) return res;
-
-	const team &current_team = (*resources::teams)[u.side() - 1];
-	const map_location &loc = u.get_location();
-	foreach (const map_location &l, current_team.villages())
-	{
-		// This must be a vacant village (or occupied by the unit)
-		// to be able to teleport.
-		if (!see_all && viewing_team.is_enemy(u.side()) && viewing_team.fogged(l))
-			continue;
-		if (!ignore_units && l != loc &&
-		    get_visible_unit(units, l, viewing_team, see_all))
-			continue;
-		res.insert(l);
-	}
-	return res;
-}
-
 static unsigned search_counter;
 
 namespace {
@@ -192,15 +170,12 @@ static void find_routes(const gamemap& map, const unit_map& units,
 		bool see_all, bool ignore_units)
 {
 	const team& current_team = teams[u.side() - 1];
-	std::set<map_location> teleports;
+	pathfind::teleport_map teleports;
 	if (allow_teleport) {
 	  teleports = pathfind::get_teleport_locations(u, units, viewing_team, see_all, ignore_units);
 	}
 
 	const int total_movement = u.total_movement();
-
-	std::vector<map_location> locs(6 + teleports.size());
-	std::copy(teleports.begin(), teleports.end(), locs.begin() + 6);
 
 	search_counter += 2;
 	if (search_counter == 0) search_counter = 2;
@@ -223,9 +198,15 @@ static void find_routes(const gamemap& map, const unit_map& units,
 		pq.pop_back();
 		n.in = search_counter;
 
+		std::set<map_location> allowed_teleports;
+		teleports.get_adjacents(allowed_teleports, n.curr);
+		std::vector<map_location> locs(6 + allowed_teleports.size());
+		std::copy(allowed_teleports.begin(), allowed_teleports.end(), locs.begin() + 6);
 		get_adjacent_tiles(n.curr, &locs[0]);
-		for (int i = teleports.count(n.curr) ? locs.size() : 6; i-- > 0; ) {
+		for (int i = locs.size(); i-- > 0; ) {
 			if (!locs[i].valid(map.w(), map.h())) continue;
+
+			if (locs[i] == n.curr) continue;
 
 			node& next = nodes[index(locs[i])];
 

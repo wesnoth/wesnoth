@@ -48,7 +48,7 @@ size_specs::size_specs()
 void adjust_sizes(const display &disp, size_specs &sizes) {
 	/** @todo Hardcoded coordinates for brush selection, make it themeable. */
 	sizes.brush_x = disp.map_outside_area().w + 10;
-	sizes.brush_y = 212;
+	sizes.brush_y = 242;
 	/** @todo Hardcoded coordinates for terrain palette, make it themeable. */
 	sizes.palette_x = disp.map_outside_area().w + 16;
 	sizes.palette_y = sizes.brush_y + 72;

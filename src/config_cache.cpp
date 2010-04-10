@@ -80,7 +80,6 @@ namespace game_config {
 #if defined(__APPLE__)
 		defines_map_["APPLE"] = preproc_define();
 #endif
-
 	}
 
 	void config_cache::get_config(const std::string& path, config& cfg)
