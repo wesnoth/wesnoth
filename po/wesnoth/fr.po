@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-03-26 15:41+0100\n"
-"PO-Revision-Date: 2010-04-07 22:11+0200\n"
+"PO-Revision-Date: 2010-04-10 13:46+0200\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
@@ -731,7 +731,8 @@ msgstr ""
 "En cours de partie, gardez en tête qu'une brève explication apparaîtra si "
 "vous glissez le curseur sur différents éléments du jeu, comme par exemple "
 "dans le panneau d'état, à droite. Cela est très utile quand vous voyez pour "
-"la première fois une nouvelle <ref>dst=abilities text='capacité'</ref>."
+"la première fois une nouvelle <ref>dst='..abilities_section' "
+"text='capacité'</ref>."
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:152
@@ -6270,8 +6271,8 @@ msgstr "Lac $name|,Étang $name|,Mare $name|,Mer de $name|,Bassin du $name|"
 #: data/hardwired/english.cfg:24
 msgid "$name's Peak,Mount $name"
 msgstr ""
-"Mont $mountain,Aiguille du $mountain,Pic du $mountain,Puy du $mountain,Piton "
-"de $mountain,Dent de $mountain,Sommet de $mountain"
+"Mont $name,Aiguille du $name,Pic du $name,Puy du $name,Piton de $name,Dent "
+"de $name,Sommet de $name"
 
 # Noms de villages dans des plaines
 #. [language]
@@ -6316,7 +6317,7 @@ msgid ""
 "$bridge|ton"
 msgstr ""
 "Pont-de-$river,Bac-sur-$river,Saint-$name|-du-pont,Pont de $river,Traverse-"
-"du-$name"
+"du-$name,$bridge|bourg,$bridge|ville"
 
 # Noms de villages dans des plaines
 #. [language]
@@ -7351,14 +7352,14 @@ msgstr "Téléportation ratée ! La sortie est occupée."
 #: src/actions.cpp:2538
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
-msgstr[0] " $friends unité alliée en vue !"
-msgstr[1] " $friends unités alliées en vue !"
+msgstr[0] "Unité alliée en vue !"
+msgstr[1] "$friends unités alliées en vue !"
 
 #: src/actions.cpp:2541
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
-msgstr[0] " $enemies unité ennemie en vue !"
-msgstr[1] " $enemies unités ennemies en vue !"
+msgstr[0] "Unité ennemie en vue !"
+msgstr[1] "$enemies unités ennemies en vue !"
 
 #: src/actions.cpp:2546
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
@@ -7452,10 +7453,10 @@ msgid_plural ""
 "$addon_title depends upon the following add-ons which you have not installed "
 "yet:"
 msgstr[0] ""
-"$addon_title dépend des extensions suivantes que vous n'avez pas encore "
-"installées :"
+"$addon_title dépend de l'extension suivante que vous n'avez pas encore "
+"installée :"
 msgstr[1] ""
-"Cette extension dépend des extensions suivantes que vous n'avez pas encore "
+"$addon_title dépend des extensions suivantes que vous n'avez pas encore "
 "installées :"
 
 #: src/addon_management.cpp:510
@@ -8680,8 +8681,8 @@ msgid ""
 "Unknown command '$command', try $help_command for a list of available "
 "commands."
 msgstr ""
-"La commande « $command » est inconnue. Essayez la commande $help pour "
-"afficher la liste des commandes disponibles."
+"La commande « $command » est inconnue. Essayez « $help_command » pour afficher "
+"la liste des commandes disponibles."
 
 #: src/menu_events.cpp:1952
 msgid ""
@@ -8696,7 +8697,7 @@ msgstr ""
 #: src/menu_events.cpp:1954
 #, fuzzy
 msgid "do not translate the 'all'^[all|<command>]"
-msgstr "[all|<command>]"
+msgstr "ne pas traduire la 'all'^[all|<command>]"
 
 #: src/menu_events.cpp:1998
 msgid "Error:"
@@ -8724,7 +8725,7 @@ msgstr "Tapez $help_command <commande> pour plus d'informations."
 
 #: src/menu_events.cpp:2064
 msgid " No help available."
-msgstr "Aucune aide disponible"
+msgstr " Aucune aide disponible."
 
 #: src/menu_events.cpp:2069
 msgid "Usage:"
@@ -8924,7 +8925,7 @@ msgstr "(commandes de débogage)"
 #: src/menu_events.cpp:2404
 #, fuzzy
 msgid " (network only)"
-msgstr " (réseau uniquement)"
+msgstr "(réseau uniquement)"
 
 # team labels
 #: src/menu_events.cpp:2405
