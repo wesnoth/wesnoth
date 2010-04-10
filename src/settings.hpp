@@ -71,20 +71,6 @@ namespace settings {
 	int get_xp_modifier(const std::string& value);
 
 	/**
-	 *  Gets the stat modifier.
-	 *  If no valid value supplied, it will return a default.
-	 *  The value is also range checked.
-	 *  When out of bounds, it will be set to the nearest bound.
-	 *
-	 *  @param value        string containing the stat modifier
-	 *
-	 *  @returns            the stat modifier
-	 */
-	int get_stat_modifier(const std::string& value);
-
-
-
-	/**
 	 * Returns whether the fog of war should be used.
 	 * If no valid value is supplied, it will return a default.
 	 *

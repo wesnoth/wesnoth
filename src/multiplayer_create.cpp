@@ -73,8 +73,6 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist)
 	village_gold_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOUR),
 	xp_modifier_slider_(disp.video()),
 	xp_modifier_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOUR),
-	stat_modifier_slider_(disp.video()),
-    stat_modifier_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOUR),
 	name_entry_label_(disp.video(), _("Name of game:"), font::SIZE_PLUS, font::LOBBY_COLOUR),
 	num_players_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOUR),
 	map_size_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOUR),
@@ -182,12 +180,6 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist)
 	xp_modifier_slider_.set_increment(10);
 	xp_modifier_slider_.set_help_string(_("The amount of experience a unit needs to advance"));
 
-	stat_modifier_slider_.set_min(1);
-	stat_modifier_slider_.set_max(3);
-	xp_modifier_slider_.set_value(preferences::stat_modifier());
-	xp_modifier_slider_.set_increment(1);
-	xp_modifier_slider_.set_help_string(_("The factor the units' statistics are multiplied with"));
-
 	use_map_settings_.set_check(preferences::use_map_settings());
 	use_map_settings_.set_help_string(_("Use scenario specific settings"));
 
@@ -266,7 +258,6 @@ create::~create()
 		preferences::set_random_start_time(parameters_.random_start_time);
 		preferences::set_village_gold(parameters_.village_gold);
 		preferences::set_xp_modifier(parameters_.xp_modifier);
-		preferences::set_stat_modifier(parameters_.stat_modifier);
 	}
 }
 
@@ -307,7 +298,6 @@ mp_game_settings& create::get_parameters()
 	parameters_.mp_countdown = countdown_game_.checked();
 	parameters_.village_gold = village_gold_slider_.value();
 	parameters_.xp_modifier = xp_modifier_slider_.value();
-	parameters_.stat_modifier = stat_modifier_slider_.value();
 	parameters_.use_map_settings = use_map_settings_.checked();
 	parameters_.random_start_time = random_start_time_.checked();
 	parameters_.fog_game = fog_game_.checked();
@@ -424,15 +414,6 @@ void create::process_event()
 #endif
 
 	xp_modifier_label_.set_text(buf.str());
-
-	// Stat modifier
-	const int statmod = stat_modifier_slider_.value();
-	buf.str("");
-//TODO tiny not tiny?
-	buf << N_("Statistics Modifier: ") << statmod << "x";
-
-	stat_modifier_label_.set_text(buf.str());
-
 
 	bool map_changed = map_selection_ != maps_menu_.selection();
 	map_selection_ = maps_menu_.selection();
@@ -587,10 +568,6 @@ void create::process_event()
 			settings::get_xp_modifier(parameters_.scenario_data["experience_modifier"]) :
 			preferences::xp_modifier());
 
-		stat_modifier_slider_.set_value(map_settings ?
-			settings::get_stat_modifier(parameters_.scenario_data["stat_modifier"]) :
-			preferences::stat_modifier());
-
 		random_start_time_.set_check(map_settings ?
 			settings::use_random_start_time(parameters_.scenario_data["random_start_time"]) :
 			preferences::random_start_time());
@@ -624,7 +601,6 @@ void create::process_event()
 		turns_slider_.enable(!map_settings);
 		village_gold_slider_.enable(!map_settings);
 		xp_modifier_slider_.enable(!map_settings);
-		stat_modifier_slider_.enable(!map_settings);
 		random_start_time_.enable(!map_settings);
 		fog_game_.enable(!map_settings);
 		shroud_game_.enable(!map_settings);
@@ -653,8 +629,6 @@ void create::hide_children(bool hide)
 	village_gold_label_.hide(hide);
 	xp_modifier_slider_.hide(hide);
 	xp_modifier_label_.hide(hide);
-	stat_modifier_slider_.hide(hide);
-	stat_modifier_label_.hide(hide);
 
 	name_entry_label_.hide(hide);
 	num_players_label_.hide(hide);
@@ -793,12 +767,6 @@ void create::layout_children(const SDL_Rect& rect)
 	xp_modifier_slider_.set_width(ca.w - xpos);
 	xp_modifier_slider_.set_location(xpos, ypos);
 	ypos += xp_modifier_slider_.height() + border_size;
-
-	stat_modifier_label_.set_location(xpos, ypos);
-	ypos += stat_modifier_label_.height() + border_size;
-	stat_modifier_slider_.set_width(ca.w - xpos);
-	stat_modifier_slider_.set_location(xpos, ypos);
-	ypos += stat_modifier_slider_.height() + border_size;
 
 	use_map_settings_.set_location(xpos, ypos);
 	fog_game_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);

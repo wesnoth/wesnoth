@@ -49,11 +49,6 @@ int get_xp_modifier(const std::string& value)
 	return lexical_cast_in_range<int>(value, 70, 30, 200);
 }
 
-int get_stat_modifier(const std::string& value)
-{
-	return lexical_cast_in_range<int>(value, 1, 1, 3);
-}
-
 bool use_fog(const std::string& value)
 {
 	return utils::string_bool(value, true);

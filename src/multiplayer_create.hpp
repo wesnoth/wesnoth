@@ -75,8 +75,6 @@ private:
 	gui::label village_gold_label_;
 	gui::slider xp_modifier_slider_;
 	gui::label xp_modifier_label_;
-	gui::slider stat_modifier_slider_;
-	gui::label stat_modifier_label_;
 
 	gui::label name_entry_label_;
 	gui::label num_players_label_;

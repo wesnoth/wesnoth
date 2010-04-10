@@ -208,7 +208,6 @@ protected:
 	undo_list redo_stack_;
 
 	const unit_type::experience_accelerator xp_mod_;
-	const unit_type::stat_accelerator stat_mod_;
 	//if a team is specified whose turn it is, it means we're loading a game
 	//instead of starting a fresh one. Gets reset to false after init_side
 	bool loading_game_;

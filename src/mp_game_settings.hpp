@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 - 2010 by Jï¿½rg Hinrichs
+   Copyright (C) 2003 - 2010 by Jörg Hinrichs
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -41,7 +41,6 @@ struct mp_game_settings : public savegame::savegame_config
 
 	int village_gold;
 	int xp_modifier;
-	int stat_modifier;
 	int mp_countdown_init_time;
 	int mp_countdown_reservoir_time;
 	int mp_countdown_turn_bonus;

@@ -39,11 +39,6 @@ static lg::log_domain log_config("config");
 static lg::log_domain log_unit("unit");
 #define DBG_UT LOG_STREAM(debug, log_unit)
 
-namespace {
-	int stat_modifier = 1;
-}
-
-
 attack_type::attack_type(const config& cfg) :
 	aloc_(),
 	dloc_(),
@@ -98,12 +93,6 @@ std::string attack_type::accuracy_parry_description() const
 	}
 
 	return s.str();
-}
-
-int attack_type::num_attacks() const
-{
-	int attacks = (num_attacks_ * stat_modifier);
-	return attacks;
 }
 
 bool attack_type::matches_filter(const config& cfg,bool self) const
@@ -1004,33 +993,6 @@ int unit_type::experience_needed(bool with_acceleration) const
 	}
 	return experience_needed_;
 }
-
-
-
-
-
-unit_type::stat_accelerator::stat_accelerator(int modifier) : old_value_(stat_modifier)
-{
-	stat_modifier = modifier;
-}
-
-unit_type::stat_accelerator::~stat_accelerator()
-{
-	stat_modifier = old_value_;
-}
-
-int unit_type::stat_accelerator::get_acceleration()
-{
-	return stat_modifier;
-}
-
-
-int unit_type::hitpoints() const
-{
-		int hp = (hitpoints_ * stat_modifier);
-		return hp;
-}
-
 
 const char* unit_type::alignment_description(unit_type::ALIGNMENT align, unit_race::GENDER gender)
 {

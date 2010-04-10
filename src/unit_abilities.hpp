@@ -46,7 +46,7 @@ class effect
 		effect(const unit_ability_list& list, int def, bool backstab);
 
 		int get_composite_value() const
-		{ return composite_value_ ;}
+		{ return composite_value_; }
 		effect_list::const_iterator begin() const
 		{ return effect_list_.begin(); }
 		effect_list::const_iterator end() const
