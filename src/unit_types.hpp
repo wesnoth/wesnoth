@@ -17,6 +17,7 @@
 #include "unit_animation.hpp"
 #include "config.hpp"
 #include "map_location.hpp"
+#include "portrait.hpp"
 #include "race.hpp"
 
 #include <set>
@@ -267,6 +268,8 @@ public:
 
     BUILD_STATUS build_status() const { return build_status_; }
 
+	const std::vector<tportrait>& portraits() const { return portraits_; }
+
 	const config &get_cfg() const { return cfg_; }
 
 	void set_config(const config& cfg);
@@ -323,6 +326,9 @@ private:
 	mutable std::vector<unit_animation> animations_;
 
 	BUILD_STATUS build_status_;
+
+	/** List with the portraits available for the unit. */
+	std::vector<tportrait> portraits_;
 };
 
 class unit_type_data

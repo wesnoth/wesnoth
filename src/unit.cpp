@@ -2873,6 +2873,20 @@ std::string unit::image_mods() const{
 	return modifier.str();
 }
 
+const tportrait* unit::portrait(
+		const unsigned size, const tportrait::tside side) const
+{
+	foreach(const tportrait& portrait, (type()->portraits())) {
+		if(portrait.size == size
+				&& (side ==  portrait.side || portrait.side == tportrait::BOTH)) {
+
+			return &portrait;
+		}
+	}
+
+	return NULL;
+}
+
 void unit::remove_attacks_ai()
 {
 	if (attacks_left_ == max_attacks_) {

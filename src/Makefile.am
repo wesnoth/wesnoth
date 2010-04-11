@@ -234,6 +234,7 @@ wesnoth_source = \
 	playmp_controller.cpp \
 	playsingle_controller.cpp \
 	playturn.cpp \
+	portrait.cpp \
 	replay.cpp \
 	replay_controller.cpp \
 	resources.cpp \
