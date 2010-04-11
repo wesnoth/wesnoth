@@ -1,21 +1,22 @@
 # translation of wesnoth-manpages to Galician
 #
-# Leandro Regueiro <leandro.regueiro@gmail.com>, 2007, 2008.
-# Fran Diéguez <fran dot dieguez at glug dot es>, 2008.
 #
 # Proxecto Trasno <http://trasno.net>
 #
+# Leandro Regueiro <leandro.regueiro@gmail.com>, 2007, 2008.
+# Fran Diéguez <fran dot dieguez at glug dot es>, 2008, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "POT-Creation-Date: 2010-03-26 15:41+0100\n"
-"PO-Revision-Date: 2008-12-08 15:46+0100\n"
-"Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
-"Language-Team: Galician <proxecto@trasno.net>\n"
+"PO-Revision-Date: 2010-03-11 09:17+0000\n"
+"Last-Translator: \n"
+"Language-Team: Galego <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 0.3\n"
 
 # type: TH
 #. type: TH
@@ -27,9 +28,9 @@ msgstr "WESNOTH"
 # type: TH
 #. type: TH
 #: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnothd.6:16
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "2009"
-msgstr "2007"
+msgstr "2009"
 
 # type: TH
 #. type: TH
@@ -152,13 +153,12 @@ msgstr "B<--config-dir>I<\\ nome>"
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:57
-#, fuzzy
 msgid ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
 "Documents\\eMy Games\" for windows."
 msgstr ""
-"define I<name> coma o directorio da configuración do usuario en $HOME ou Os "
-"Meus Documentos\\eOs Meus Xogos en windows."
+"define I<name> coma o directorio da configuración do usuario en $HOME ou "
+"\"Os Meus Documentos\\eOs Meus Xogos\" en windows."
 
 # type: TP
 #. type: TP
@@ -194,9 +194,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:64
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-e,\\ --editor>I<\\ file>"
-msgstr "B<-e, --editor>"
+msgstr "B<-e,\\ --editor>I<\\ ficheiro>"
 
 # type: Plain text
 #. type: Plain text
@@ -205,6 +205,8 @@ msgid ""
 "start the in-game map editor directly. If I<file> is specified, equivalent "
 "to B<-e --load>"
 msgstr ""
+"inicia directamente o editor de mapas integrado. Se se especifica "
+"I<ficheiro>, equivale a B<-e --load>"
 
 # type: TP
 #. type: TP
@@ -295,16 +297,16 @@ msgstr "B<-l,\\ --load>I<\\ ficheiro>"
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:104
-#, fuzzy
 msgid ""
 "loads the savegame I<file> from the standard save game directory.  If the B<-"
 "e> or B<--editor> option is used as well, starts the editor with the map "
 "from I<file> open. If it is a directory, the editor will start with a load "
 "map dialog opened there."
 msgstr ""
-"carga o ficheiro de partida I<ficheiro> dende o directorio de partidas "
-"gardadas predeterminado. Se tamén se usan as opcións B<-e> ou B<--editor>, "
-"iníciase o editor aberto co mapa de I<ficheiro>."
+"carga a partida |<ficheiro> dende o directorio de partidas estándar. Se "
+"tamén se usan as opcións B<-e> ou B<--editor>, iníciase o editor co mapa de |"
+"<ficheiro> aberto. Se é un directorio, o editor iniciarase cun diálogo de "
+"carga de mapas aberto en dito directorio."
 
 # type: TP
 #. type: TP
@@ -581,7 +583,6 @@ msgstr ""
 msgid "B<--ai_config>I<number>B<=>I<value>"
 msgstr "B<--side>I<número>B<=>I<valor>"
 
-# type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:183
 msgid ""
@@ -806,9 +807,10 @@ msgstr "COPYRIGHT"
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:252 ../../doc/man/wesnothd.6:280
+#, fuzzy
 msgid "Copyright \\(co 2003-2009 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
-"Copyright \\(co 2003-2009 David White E<lt>davidnwhite@verizon.netE<gt>"
+"Copyright \\(co 2003-2007 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #. type: Plain text
@@ -1067,14 +1069,12 @@ msgstr "[/I<etiqueta>]"
 msgid "Global keys:"
 msgstr "Claves globais:"
 
-# type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:110
 #, no-wrap
 msgid "B<allow_remote_shutdown>"
 msgstr ""
 
-# type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:114
 msgid ""
@@ -1101,14 +1101,12 @@ msgstr ""
 "poida ler e escribir. As vedas hanse gardar neste ficheiro e leranse de novo "
 "cando se inicie o servidor."
 
-# type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:118
 #, no-wrap
 msgid "B<compress_stored_rooms>"
 msgstr ""
 
-# type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:121
 msgid ""
@@ -1222,14 +1220,12 @@ msgstr "B<motd>"
 msgid "The message of the day."
 msgstr "A mensaxe do día."
 
-# type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:144
 #, no-wrap
 msgid "B<new_room_policy>"
 msgstr ""
 
-# type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:147
 msgid ""
@@ -1256,12 +1252,14 @@ msgstr ""
 "O contrasinal que se usa para obter privilexios de administrador. "
 "Normalmente comeza por `admin '."
 
+# type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:150
 #, no-wrap
 msgid "B<replay_save_path>"
-msgstr ""
+msgstr "B<ruta do ficheiro de repetición>"
 
+# type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:153
 msgid ""
@@ -1269,6 +1267,9 @@ msgid ""
 "trailing /!) Defaults to `' which means the directory wesnothd was started "
 "in."
 msgstr ""
+"O directorio no que o servidor garda as repeticións das partidas (non "
+"esquezas a canle /!). Por defecto é `' que fai referencia ao directorio no "
+"que se iniciou wesnothd."
 
 # type: TP
 #. type: TP
@@ -1296,7 +1297,6 @@ msgstr ""
 msgid "B<room_save_file>"
 msgstr "B<ban_save_file>"
 
-# type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:159
 msgid ""
@@ -1305,18 +1305,22 @@ msgid ""
 "loaded and not saved."
 msgstr ""
 
+# type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:159
 #, no-wrap
 msgid "B<save_replays>"
-msgstr ""
+msgstr "B<save_replays>"
 
+# type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:162
 msgid ""
 "Defines whether the server will automatically save replays of games. "
 "(default: B<false>)"
 msgstr ""
+"Define se o servidor gardará as repeticións das partidas automaticamente "
+"(por defecto B<false>)."
 
 # type: TP
 #. type: TP
@@ -1349,11 +1353,12 @@ msgstr "Exemplo: B<versions_accepted=\"*\"> acepta calquera cadea de versión."
 #: ../../doc/man/wesnothd.6:168
 #, no-wrap
 msgid "B<user_handler>"
-msgstr ""
+msgstr "B<user_handler>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:173
+#, fuzzy
 msgid ""
 "The name of the user handler to use. Currently available user handlers are "
 "B<forum> (to connect wesnothd to a phpbb forum database) and B<sample> (a "
@@ -1361,6 +1366,12 @@ msgid ""
 "anything real you are insane). The default value is B<forum>. You must also "
 "add a B<[user_handler]> section, see below."
 msgstr ""
+"O nome que manexará o xestor de usuarios. Os xestores de usuarios "
+"dispoñibles actualmente son \"forum\" (para conectar wesnothd á base de "
+"datos dun foro phpbb) e \"sample\" (un exemplo da interface do xestor de "
+"usuarios, hai que estar tolo para utilizala en algo real). O valor por "
+"defecto é \"forum\". Tamén tes que engadir unha sección B<[user_handler]>, "
+"véxase a continuación."
 
 # type: SS
 #. type: SS
@@ -1484,45 +1495,51 @@ msgstr ""
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:221
+#, fuzzy
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
 "on which user handler is set with the B<user_handler> key. If no B<"
 "[user_handler]> section is present in the configuration the server will run "
 "without any nick registration service."
 msgstr ""
+"B<[user_handler]> configura o xestor de usuarios. As palabras clave "
+"dispoñibles varían segundo o xestor de usuarios que se establece mediante a "
+"palabra clave B<user_handler>. Se non hai ningunha sección [user_handler] na "
+"configuración, o servidor executarase sen ningún servizo de rexistro de "
+"alcumes."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:222
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_host>"
-msgstr "B<host>"
+msgstr "B<db_host>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:225
 msgid "(for user_handler=forum) The hostname of the database server"
-msgstr ""
+msgstr "(para user_handler=forum) O nome do servidor da base de datos"
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:225
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_name>"
-msgstr "B<name>"
+msgstr "B<db_name>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:228
 msgid "(for user_handler=forum) The name of the database"
-msgstr ""
+msgstr "(para user_handler=forum) O nome da base de datos"
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:228
 #, no-wrap
 msgid "B<db_user>"
-msgstr ""
+msgstr "B<db_user>"
 
 # type: Plain text
 #. type: Plain text
@@ -1531,26 +1548,28 @@ msgid ""
 "(for user_handler=forum) The name of the user under which to log into the "
 "database"
 msgstr ""
+"(para user_handler=forum) O nome do usuario co que iniciar sesión na base de "
+"datos"
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:231
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_password>"
-msgstr "B<passwd>"
+msgstr "B<db_password>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:234
 msgid "(for user_handler=forum) This user's password"
-msgstr ""
+msgstr "(para user_handler=forum) O contrasinal deste usuario"
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:234
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_users_table>"
-msgstr "B<ban_save_file>"
+msgstr "B<db_users_table>"
 
 # type: Plain text
 #. type: Plain text
@@ -1560,17 +1579,21 @@ msgid ""
 "saves its user data. Most likely this will be E<lt>table-prefixE<gt>_users "
 "(e.g. phpbb3_users)."
 msgstr ""
+"(para user_handler=forum) O nome da táboa na que o foro phpbb almacena os "
+"datos do usuario. O máis probable é que dita táboa sexa <lt>prefixo-da-"
+"táboaE<gt>_users (por exemplo, phpbb3_users)."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:237
 #, no-wrap
 msgid "B<db_extra_table>"
-msgstr ""
+msgstr "B<db_extra_table>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:241
+#, fuzzy
 msgid ""
 "(for user_handler=forum) The name of the table in which wesnothd will save "
 "its own data about users. You will have to create this table manually, e.g.: "
@@ -1578,13 +1601,18 @@ msgid ""
 "user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) "
 "NOT NULL DEFAULT 0);>"
 msgstr ""
+"(para user_handler=forum) O nome da táboa na que wesnothd gardará os seus "
+"propios datos dos usuarios. Terás que crear esta táboa manualmente, por "
+"exemplo: CREATE TABLE E<lt>nome-da-táboaE<gt>(nome_do_usuario VARCHAR(255) "
+"PRIMARY KEY, ultima_visita_usuario INT UNSIGNED NOT NULL DEFAULT 0, "
+"usuario_moderador TINYINT(4) NOT NULL DEFAULT 0);"
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:241
 #, no-wrap
 msgid "B<user_expiration>"
-msgstr ""
+msgstr "B<user_expiration>"
 
 # type: Plain text
 #. type: Plain text
@@ -1593,6 +1621,8 @@ msgid ""
 "(for user_handler=sample) The time after which a registered nick expires (in "
 "days)."
 msgstr ""
+"(PARA user_handler=sample) O tempo en días tras o cal caduca un alcume "
+"rexistrado."
 
 # type: Plain text
 #. type: Plain text
@@ -1601,71 +1631,76 @@ msgid ""
 "B<[mail]> Configures an SMTP server through which the user handler can send "
 "mail. Currently only used by the sample user handler."
 msgstr ""
+"B<[mail]> Configura un servidor SMTP mediante o cal o xestor de usuarios "
+"pode enviar correos electrónicos. Actualmente só o utiliza o xestor de "
+"usuarios de exemplo."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:249
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<server>"
-msgstr "B<version>"
+msgstr "B<servidor>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:252
 msgid "The hostname of the mail server"
-msgstr ""
+msgstr "O nome do servidor de correo"
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:252
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<username>"
-msgstr "B<name>"
+msgstr "B<usuario>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:255
 msgid "The user name under which to log into the mail server."
 msgstr ""
+"O nome de usuario co que iniciar sesión no servidor de correo electrónico."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:255
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<password>"
-msgstr "B<passwd>"
+msgstr "B<contrasinal>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:258
 msgid "This user's password."
-msgstr ""
+msgstr "O contrasinal deste usuario."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:258
 #, no-wrap
 msgid "B<from_address>"
-msgstr ""
+msgstr "B<remitente>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:261
 msgid "The reply-to address of you mail."
-msgstr ""
+msgstr "O enderezo do remitente da mensaxe."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:261
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<mail_port>"
-msgstr "B<port>"
+msgstr "B<porto_correo>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:264
 msgid "The port on which your mail server is running. Default is 25."
 msgstr ""
+"O porto no que se executa o servidor de correo electrónico. Por defecto 25."
 
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:268
@@ -1677,7 +1712,6 @@ msgstr ""
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:274
-#, fuzzy
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
@@ -1685,10 +1719,11 @@ msgid ""
 "baumhauer@gmail.comE<gt>.  This manual page was originally written by Cyril "
 "Bouthors E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
-"Escrito por David White E<lt>davidnwhite@verizon.netE<gt>.  Editado por Nils "
-"Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt> e "
-"Soliton E<lt>soliton.de@gmail.comE<gt>. Esta páxina de manual escribiuna "
-"orixinalmente Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
+"Autor: David White E<lt>davidnwhite@verizon.netE<gt>. Edición: Nils Kneuper "
+"E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, Soliton "
+"E<lt>soliton.de@gmail.comE<gt> e Thomas Baumhauer E<lt>thomas."
+"baumhauer@gmail.comE<gt>. Autor orixinal do manual: Cyril Bouthors "
+"E<lt>cyril@bouthors.orgE<gt>."
 
 # type: Plain text
 #. type: Plain text
@@ -1707,40 +1742,3 @@ msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
 #~ msgstr ""
 #~ "usa localizacións falsas especiais para cambiar a calquera lingua incluso "
 #~ "se esa lingua non está instalada para todo o sistema."
-
-# type: Plain text
-#~ msgid "start the in-game map editor directly."
-#~ msgstr "inicia directamente o editor de mapas no xogo."
-
-# type: TP
-#~ msgid "B<--python-api>"
-#~ msgstr "B<--python-api>"
-
-# type: Plain text
-#~ msgid "prints the runtime documentation for the python API."
-#~ msgstr "mostra a documentación en tempo de execución da API de Python."
-
-# type: TP
-#~ msgid "B<--python-shell>"
-#~ msgstr "B<--python-shell>"
-
-# type: Plain text
-#~ msgid "invokes wesnoth's embedded python interpreter in interactive mode."
-#~ msgstr ""
-#~ "invoca ó intérprete de python embebido de wesnoth en modo interactivo."
-
-# type: TP
-#~ msgid ""
-#~ "Example to test your own AI against the default AI without starting the "
-#~ "GUI:"
-#~ msgstr ""
-#~ "Exemplo para probar a túa propia IA contra a IA predeterminada sen "
-#~ "iniciar a GUI:"
-
-# type: Plain text
-#~ msgid ""
-#~ "B<wesnoth --nogui --multiplayer --controller1=ai --controller2=ai --"
-#~ "algorithm2=python_ai --parm2=python_script:py/my_own_python_ai.py>"
-#~ msgstr ""
-#~ "B<wesnoth --nogui --multiplayer --controller1=ai --controller2=ai --"
-#~ "algorithm2=python_ai --parm2=python_script:py/a_miña_propia_ia.py>"

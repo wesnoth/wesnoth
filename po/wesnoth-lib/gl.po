@@ -2,23 +2,25 @@
 # Copyright (C) 2006 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
-# Leandro Regueiro <leandro.regueiro@gmail.com>, 2007, 2008.
-# Fran Diéguez <fran dot dieguez at glug dot es>, 2008.
 #
 # Proxecto Trasno <http://trasno.net>
 #
+# Leandro Regueiro <leandro.regueiro@gmail.com>, 2007, 2008.
+# Fran Diéguez <fran dot dieguez at glug dot es>, 2008.
+# Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-26 15:39+0100\n"
-"PO-Revision-Date: 2008-12-09 21:18+0100\n"
-"Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
+"POT-Creation-Date: 2010-03-26 15:41+0100\n"
+"PO-Revision-Date: 2010-04-01 00:26+0200\n"
+"Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 1.0\n"
 
 #. [terrain_type]: id=off_map
 #: data/core/terrain.cfg:13
@@ -331,7 +333,7 @@ msgstr "Outeiros con bosque"
 #: data/core/terrain.cfg:694 data/core/terrain.cfg:703
 #: data/core/terrain.cfg:712
 msgid "Grassland"
-msgstr "Prado"
+msgstr "Herbal"
 
 #. [terrain_type]: id=savanna
 #: data/core/terrain.cfg:721
@@ -413,7 +415,7 @@ msgstr "Braña"
 #. [terrain_type]: id=lit
 #: data/core/terrain.cfg:896
 msgid "Lit"
-msgstr ""
+msgstr "Luz"
 
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:906
@@ -718,13 +720,13 @@ msgstr "Antigo alto:"
 #: data/gui/default/window/editor_resize_map.cfg:145
 #, fuzzy
 msgid "Expand / shrink direction"
-msgstr "Encoller selección en"
+msgstr "A dirección do empaquetado da barra de menú"
 
 #. [toggle_button]: id=copy_edge_terrain
 #: data/gui/default/window/editor_resize_map.cfg:240
 #, fuzzy
 msgid "Copy edge terrain"
-msgstr "Detección Óptima de Bordos"
+msgstr "De_tectar bordos"
 
 #. [button]: id=ok
 #: data/gui/default/window/editor_resize_map.cfg:262
@@ -741,7 +743,7 @@ msgstr "Configuración do editor"
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:46
 msgid "Time of day lighting preset"
-msgstr ""
+msgstr "Predefinición da hora do día"
 
 #. [button]: id=next_tod
 #. [button]: id=next_tip
@@ -753,9 +755,8 @@ msgstr "Seguinte"
 
 #. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:83
-#, fuzzy
 msgid "Custom lighting setting"
-msgstr "Iluminación de _fondo/primeiro plano"
+msgstr "Opción de iluminación personalizada"
 
 #. [toggle_button]: id=custom_tod_auto_refresh
 #: data/gui/default/window/editor_settings.cfg:93
@@ -780,7 +781,7 @@ msgstr "Azul:"
 #. [toggle_button]: id=use_mdi
 #: data/gui/default/window/editor_settings.cfg:208
 msgid "Allow more than one map to be open at the same time (MDI)"
-msgstr ""
+msgstr "Permitir que se abra máis dun mapa á vez (MDI)"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=apply
@@ -821,7 +822,7 @@ msgstr "Acción"
 #: data/gui/default/window/formula_debugger.cfg:120
 #, fuzzy
 msgid "Step operation"
-msgstr "Información do mapa"
+msgstr "Establecer o Terreo"
 
 #. [button]: id=next
 #: data/gui/default/window/formula_debugger.cfg:131
@@ -939,7 +940,7 @@ msgstr "Eliminar ficheiro"
 #: data/gui/default/window/game_load.cfg:371
 #, fuzzy
 msgid "Show replay"
-msgstr "xogador"
+msgstr "Gardar repetición"
 
 #. [toggle_button]: id=cancel_orders
 #: data/gui/default/window/game_load.cfg:389
@@ -1123,7 +1124,7 @@ msgstr ""
 #: data/gui/default/window/lobby_main.cfg:337
 #, fuzzy
 msgid "Selected game"
-msgstr "Eliminar ficheiro"
+msgstr "Crear partida"
 
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:338
@@ -1148,8 +1149,9 @@ msgstr ""
 
 #. [image]: id=pending_messages
 #: data/gui/default/window/lobby_main.cfg:497
+#, fuzzy
 msgid "Messages waiting"
-msgstr ""
+msgstr "Mensaxería"
 
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:567
@@ -1203,7 +1205,7 @@ msgstr "Preferencias"
 #: data/gui/default/window/lobby_main.cfg:672
 #, fuzzy
 msgid "Refresh"
-msgstr "Modo de _visualización"
+msgstr "Actualizar a pantalla"
 
 #. [label]
 #. [button]: id=create
@@ -1214,8 +1216,9 @@ msgstr "Crear partida"
 
 #. [button]: id=join_global
 #: data/gui/default/window/lobby_main.cfg:692
+#, fuzzy
 msgid "Join"
-msgstr ""
+msgstr "Iniciar sesión"
 
 #. [button]: id=observe_global
 #: data/gui/default/window/lobby_main.cfg:698
@@ -1224,9 +1227,8 @@ msgstr ""
 
 #. [toggle_button]: id=skip_replay
 #: data/gui/default/window/lobby_main.cfg:704
-#, fuzzy
 msgid "Quick replay"
-msgstr "xogador"
+msgstr ""
 
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:30
@@ -1238,7 +1240,7 @@ msgstr "Xogadores:"
 #: data/gui/default/window/lobby_player_info.cfg:62
 #, fuzzy
 msgid "Send private message"
-msgstr "Limpar as mensaxes"
+msgstr "Enviar unha mensaxe privada"
 
 #. [button]: id=add_to_friends
 #: data/gui/default/window/lobby_player_info.cfg:91
@@ -1262,7 +1264,7 @@ msgstr "Recuperar dende o Disco"
 #: data/gui/default/window/lobby_player_info.cfg:133
 #, fuzzy
 msgid "Moderation"
-msgstr "Información do mapa"
+msgstr "Moderación"
 
 #. [button]: id=check_status
 #: data/gui/default/window/lobby_player_info.cfg:140
@@ -1274,49 +1276,52 @@ msgstr ""
 msgid "Kick / ban reason:"
 msgstr ""
 
+# kick=expulsar
+# ban=desterrar
 #. [button]: id=kick
 #: data/gui/default/window/lobby_player_info.cfg:160
 #: data/gui/default/window/mp_cmd_wrapper.cfg:381
 msgid "Kick"
-msgstr ""
+msgstr "Expulsar"
 
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:167
 msgid "Ban time:"
 msgstr ""
 
+# kick=expulsar
+# ban=desterrar
 #. [button]: id=kick_ban
 #: data/gui/default/window/lobby_player_info.cfg:180
+#, fuzzy
 msgid "Kick/ban"
-msgstr ""
+msgstr "Expulsar"
 
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
 #, fuzzy
 msgid "Multiplayer command dialog"
-msgstr "Opcións multixogador"
+msgstr "Diálogo de inicio de sesión no servidor multixogador"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:31
 msgid "Messaging"
-msgstr ""
+msgstr "Mensaxería"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:61
 msgid "Message:"
-msgstr ""
+msgstr "Mensaxe:"
 
 #. [button]: id=ok
 #: data/gui/default/window/mp_cmd_wrapper.cfg:93
-#, fuzzy
 msgid "Send a private message"
-msgstr "Limpar as mensaxes"
+msgstr "Enviar unha mensaxe privada"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:133
-#, fuzzy
 msgid "Friends/Ignored List"
-msgstr "Lista de amigos"
+msgstr "Lista de Amigos/Ignorados"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=add_friend
@@ -1342,29 +1347,30 @@ msgstr "Eliminar"
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:233
 msgid "Moderating"
-msgstr ""
+msgstr "Moderación"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:263
 msgid "Reason:"
-msgstr ""
+msgstr "Razón:"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:315
-#, fuzzy
 msgid "Time:"
-msgstr "Tema"
+msgstr "Hora:"
 
 #. [button]: id=status
 #: data/gui/default/window/mp_cmd_wrapper.cfg:366
-#, fuzzy
 msgid "Status"
-msgstr "Táboa de estado"
+msgstr "Estado"
 
+# kick=expulsar
+# ban=desterrar
 #. [button]: id=ban
 #: data/gui/default/window/mp_cmd_wrapper.cfg:396
+#, fuzzy
 msgid "Ban"
-msgstr ""
+msgstr "Excluír"
 
 #. [label]
 #: data/gui/default/window/mp_connect.cfg:50
@@ -1428,7 +1434,7 @@ msgstr "Sen límite"
 #: data/gui/default/window/mp_create_game.cfg:372
 #, fuzzy
 msgid "Village gold"
-msgstr "Vila"
+msgstr "Home dourado"
 
 #. [toggle_button]: id=fog
 #: data/gui/default/window/mp_create_game.cfg:452
@@ -1448,36 +1454,37 @@ msgstr "Crear partida"
 #. [window]: id=mp_login
 #: data/gui/default/window/mp_login.cfg:8
 msgid "Multiplayer server login dialog"
-msgstr ""
+msgstr "Diálogo de inicio de sesión no servidor multixogador"
 
 #. [label]
 #: data/gui/default/window/mp_login.cfg:31
+#, fuzzy
 msgid "Login"
-msgstr ""
+msgstr "Iniciar sesión"
 
 #. [label]
 #: data/gui/default/window/mp_login.cfg:81
 #: data/gui/default/window/mp_method_selection.cfg:61
 msgid "Login:"
-msgstr ""
+msgstr "Usuario:"
 
 #. [label]
 #: data/gui/default/window/mp_login.cfg:134
-#, fuzzy
 msgid "Password:"
-msgstr "Definir o contrasinal"
+msgstr "Contrasinal:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=remember_password
 #: data/gui/default/window/mp_login.cfg:190
 #: src/game_preferences_display.cpp:170
 msgid "Save password to preferences (clear text)"
-msgstr ""
+msgstr "Gardar o contrasinal nas preferencias (en texto claro)"
 
+# recordatorio de contrasinal
 #. [button]: id=password_reminder
 #: data/gui/default/window/mp_login.cfg:248
 msgid "Password Reminder"
-msgstr ""
+msgstr "Recordatorio de contrasinal"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -1521,9 +1528,8 @@ msgstr "Aloxar partida en rede"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:159
-#, fuzzy
 msgid "Host a game using dedicated server 'wesnothd'"
-msgstr "Aloxar unha partida usando un servidor 'wesnothd' dedicado"
+msgstr "Aloxar unha partida usando o servidor dedicado 'wesnothd'"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:168
@@ -1888,6 +1894,8 @@ msgstr "Escolle se o xogo debe verse a pantalla completa ou nunha ventá"
 msgid ""
 "Should the map view scroll to a unit when an action or move is animated."
 msgstr ""
+"Debe desprazarse a vista do mapa cara unha unidade cando se anima unha "
+"acción ou movemento."
 
 #: src/game_preferences_display.cpp:303
 msgid "Make units move and fight faster"
@@ -1929,7 +1937,7 @@ msgstr "Mosta iconas diante dos nomes dos xogadores na sala de xogo."
 
 #: src/game_preferences_display.cpp:358
 msgid "Uncheck to delete the saved password (on exit)."
-msgstr ""
+msgstr "Desmarca para eliminar o contrasinal gardado (ó saír)."
 
 #: src/game_preferences_display.cpp:362
 msgid "Do not show messages about players joining the multiplayer lobby"
@@ -2090,7 +2098,7 @@ msgstr "Non hai temas coñecidos. Tenta cambialos dende un xogo xa existente."
 
 #: src/game_preferences_display.cpp:1267
 msgid "Find $filename server binary to host networked games"
-msgstr ""
+msgstr "Buscar o binario do servidor $filename para aloxar partidas en rede"
 
 #: src/gui/auxiliary/canvas.cpp:369
 msgid "Line doesn't fit on canvas."
@@ -2166,7 +2174,7 @@ msgstr "Non se definiu ningunha reixa."
 
 #: src/gui/auxiliary/window_builder/slider.cpp:66
 msgid "The number of value_labels and values don't match."
-msgstr ""
+msgstr "Os números de value_labels e values non coinciden."
 
 #: src/gui/auxiliary/window_builder/stacked_widget.cpp:36
 #, fuzzy
@@ -2239,10 +2247,11 @@ msgstr ""
 msgid "$player has left the room"
 msgstr ""
 
+# recordatorio de contrasinal
 #: src/gui/dialogs/lobby_main.cpp:1551
 #, fuzzy
 msgid "Password Required"
-msgstr "Definir o contrasinal"
+msgstr "Recordatorio de contrasinal"
 
 #: src/gui/dialogs/lobby_main.cpp:1552
 msgid "Joining this game requires a password."
@@ -2251,7 +2260,7 @@ msgstr ""
 #: src/gui/dialogs/lobby_main.cpp:1553
 #, fuzzy
 msgid "Password: "
-msgstr "Definir o contrasinal"
+msgstr "Contrasinal:"
 
 #: src/gui/dialogs/message.cpp:192 src/gui/dialogs/transient_message.cpp:57
 msgid "Error"
@@ -2266,9 +2275,8 @@ msgid "Version"
 msgstr "Versión"
 
 #: src/gui/widgets/helper.cpp:170
-#, fuzzy
 msgid "Mandatory widget '$id' hasn't been defined."
-msgstr "Non se definiu un servidor."
+msgstr "Non se definiu o widget obrigatorio '$id'."
 
 #: src/gui/widgets/settings.cpp:303
 msgid "Window not defined."
@@ -2277,16 +2285,15 @@ msgstr "Ventá non definida."
 #: src/gui/widgets/settings.cpp:408
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
-msgstr ""
+msgstr "A definición de widget '$definition' non contén a definición de '$id'."
 
 #: src/gui/widgets/settings.cpp:495
 msgid "No default gui defined."
 msgstr "non se definiu a interface gráfica predeterminada."
 
 #: src/gui/widgets/settings.cpp:522
-#, fuzzy
 msgid "No state or draw section defined."
-msgstr "Non se definiu un servidor."
+msgstr "Non se definiu unha sección de debuxo ou de estado."
 
 #: src/gui/widgets/window.cpp:788
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
@@ -2296,6 +2303,7 @@ msgstr ""
 #: src/tests/gui/test_gui2.cpp:229
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr ""
+"Produciuse un erro ao mostrar un diálogo, o cal non collía na pantalla."
 
 #: src/hotkeys.cpp:46
 msgid "Next Unit"
@@ -2502,7 +2510,7 @@ msgstr "Cambiar de mapa"
 #: src/hotkeys.cpp:109
 #, fuzzy
 msgid "Partial Undo"
-msgstr "Historial de cambios"
+msgstr "_Desfacer movemento"
 
 #: src/hotkeys.cpp:111
 msgid "Load Map"
@@ -2529,9 +2537,8 @@ msgid "Next Tool"
 msgstr "Seguinte ferramenta"
 
 #: src/hotkeys.cpp:119
-#, fuzzy
 msgid "Paint Tool"
-msgstr "Ferramenta Pintura:"
+msgstr "Ferramenta de pintura"
 
 #: src/hotkeys.cpp:120
 msgid "Fill Tool"
@@ -2546,14 +2553,12 @@ msgid "Set Starting Positions Tool"
 msgstr "Ferramenta de definición das posicións iniciais"
 
 #: src/hotkeys.cpp:124
-#, fuzzy
 msgid "Next Brush"
-msgstr "Editor de pinceis"
+msgstr "Seguinte pincel"
 
 #: src/hotkeys.cpp:125
-#, fuzzy
 msgid "Default Brush"
-msgstr "Editor de pinceis"
+msgstr "Pincel predeterminado"
 
 #: src/hotkeys.cpp:126
 msgid "Cut"
@@ -2569,7 +2574,7 @@ msgstr "Pegar"
 
 #: src/hotkeys.cpp:129
 msgid "Export selected coordinates to system clipboard"
-msgstr ""
+msgstr "Exportar as coordenadas seleccionadas ao portarretallos do sistema"
 
 #: src/hotkeys.cpp:131
 msgid "Select All"
@@ -2584,24 +2589,20 @@ msgid "Select None"
 msgstr "Non seleccionar nada"
 
 #: src/hotkeys.cpp:137
-#, fuzzy
 msgid "Rotate Clipboard Clockwise"
-msgstr "Rotar 90° en sentido _horario"
+msgstr "Rotar o que hai no portarretallos en sentido horario"
 
 #: src/hotkeys.cpp:139
-#, fuzzy
 msgid "Rotate Clipboard Counter-Clockwise"
-msgstr "Rota-la selección 90° en sentido antihorario"
+msgstr "Rotar o que hai no portarretallos en sentido antihorario"
 
 #: src/hotkeys.cpp:141
-#, fuzzy
 msgid "Flip Clipboard Horizontally"
-msgstr "Voltear imaxe horizontalmente"
+msgstr "Voltear horizontalmente o que hai no portarretallos"
 
 #: src/hotkeys.cpp:143
-#, fuzzy
 msgid "Flip Clipboard Vertically"
-msgstr "Voltear imaxe verticalmente"
+msgstr "Voltear verticalmente o que hai no portarretallos"
 
 #: src/hotkeys.cpp:145
 msgid "Rotate Selection"
@@ -2616,14 +2617,13 @@ msgid "Fill Selection"
 msgstr "Encher a selección"
 
 #: src/hotkeys.cpp:151
-#, fuzzy
 msgid "Generate Tiles In Selection"
-msgstr "<small>Non hai degradados na selección</small>"
+msgstr "Xerar os hexágonos da selección"
 
 #: src/hotkeys.cpp:153
 #, fuzzy
 msgid "Randomize Tiles In Selection"
-msgstr "<small>Non hai degradados na selección</small>"
+msgstr "_Centrar de novo os puntos medios na selección"
 
 #: src/hotkeys.cpp:157
 msgid "Rotate Map"
@@ -2639,12 +2639,11 @@ msgstr "Aplicar unha máscara"
 
 #: src/hotkeys.cpp:163
 msgid "Create Mask"
-msgstr "Crear máscara"
+msgstr "Crear unha máscara"
 
 #: src/hotkeys.cpp:165
-#, fuzzy
 msgid "Refresh Display"
-msgstr "Modo de _visualización"
+msgstr "Actualizar a pantalla"
 
 #: src/hotkeys.cpp:167
 msgid "Update Terrain Transitions"
@@ -2715,12 +2714,10 @@ msgid "Clear messages"
 msgstr "Limpar as mensaxes"
 
 #: src/hotkeys.cpp:195
-#, fuzzy
 msgid "User-Command#2"
 msgstr "Comando-Usuario#2"
 
 #: src/hotkeys.cpp:196
-#, fuzzy
 msgid "User-Command#3"
 msgstr "Comando-Usuario#3"
 
@@ -2729,9 +2726,8 @@ msgid "Do you really want to quit?"
 msgstr "Desexa saír?"
 
 #: src/hotkeys.cpp:892
-#, fuzzy
 msgid "Map-Screenshot"
-msgstr "Importar a captura"
+msgstr "Captura-de-pantalla"
 
 #: src/hotkeys.cpp:899
 msgid "Screenshot done"
@@ -2878,12 +2874,11 @@ msgstr ""
 "Atopouse un terreo cunha cadea de máis de 4 caracteres, o terreo afectado é:"
 
 #: src/wml_exception.cpp:53
-#, fuzzy
 msgid ""
 "An error due to possibly invalid WML occurred\n"
 "The error message is :"
 msgstr ""
-"Ocorreu un erro debido a un posible WML incorrecto\n"
+"Ocorreu un erro, posiblemente debido a un WML incorrecto\n"
 "A mensaxe de erro é: "
 
 #: src/wml_exception.cpp:55
@@ -2914,10 +2909,6 @@ msgstr ""
 
 #~ msgid "Change the brightness of the display"
 #~ msgstr "Cambiar o brillo da visualización"
-
-#, fuzzy
-#~ msgid "Change username"
-#~ msgstr "Inserir un nome de usuario"
 
 #~ msgid "No scrollbar defined."
 #~ msgstr "Non se definiu ningunha barra de desprazamento."
@@ -2963,9 +2954,6 @@ msgstr ""
 
 #~ msgid "Flip around (this may change the dimensions of the map):"
 #~ msgstr "Virar (isto pode cambiar as dimensións do mapa):"
-
-#~ msgid "Set Terrain"
-#~ msgstr "Establecer o Terreo"
 
 #~ msgid "Save As"
 #~ msgstr "Gardar Coma"

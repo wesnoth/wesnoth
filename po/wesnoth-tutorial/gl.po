@@ -1,21 +1,23 @@
 # Galician translation of wesnoth-tutorial
 #
-# Leandro Regueiro <leandro.regueiro@gmail.com>, 2007, 2008.
 #
 # Proxecto Trasno <http://trasno.net>
 #
+# Leandro Regueiro <leandro.regueiro@gmail.com>, 2007, 2008, 2009.
+# Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-01-17 17:49+0100\n"
-"PO-Revision-Date: 2008-12-08 15:46+0100\n"
-"Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
+"POT-Creation-Date: 2010-04-02 12:40+0200\n"
+"PO-Revision-Date: 2010-04-10 16:20+0200\n"
+"Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 1.0\n"
 
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:40
 #, fuzzy
@@ -24,7 +26,7 @@ msgid ""
 "<big>Click a mouse button or press spacebar to continue...</big>"
 msgstr ""
 "\n"
-"*Clic co botón esquerdo ou preme calquera tecla para continuar..."
+"*Clic co botón esquerdo ou preme a tecla de espazo para continuar..."
 
 #. [tutorial]: id=tutorial
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:49
@@ -191,8 +193,7 @@ msgid ""
 msgstr ""
 "*Ups!\n"
 "Movécheste a un sitio que non era! Despois desta mensaxe, podes premer 'u' "
-"para desfacer, despois inténtao de novo.\n"
-"*Clic co botón esquerdo do rato ou preme calquera tecla para continuar..."
+"para desfacer, despois inténtao de novo."
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:314
@@ -387,7 +388,6 @@ msgstr "Preme na vila para mover a Li'sar"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:540
-#, fuzzy
 msgid ""
 "You captured a village! It now flies your flag color and has been added to "
 "your total village count at the top of the screen (house icon). Villages "
@@ -395,10 +395,9 @@ msgid ""
 "one for every village you own."
 msgstr ""
 "Agora 'posúes' esta vila! Podes ver que enarbora unha bandeira ca túa cor, e "
-"engadiuse á conta de vilas totais que posues na cima da pantalla (a icona da "
-"casa). As vilas dan o ouro nedesario para recrutar unidades. Cada turno "
-"conseguirás dous de ouro, ademais de un por cada vila que posúas.\n"
-"*Clic co botón esquerdo ou preme calquera tecla para continuar..."
+"engadiuse á conta de vilas totais que posúes na cima da pantalla (a icona da "
+"casa). As vilas dan o ouro necesario para recrutar unidades. Cada turno "
+"conseguirás dous de ouro, ademais de un por cada vila que posúas."
 
 #. [event]
 #. [then]
@@ -422,7 +421,6 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:585
-#, fuzzy
 msgid ""
 "female^You're about to be healed by $hp_difference hitpoints, but I think "
 "you're going to need some help against that quintain."
@@ -473,16 +471,14 @@ msgstr "Move a Li'sar á torre"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:628
-#, fuzzy
 msgid ""
 "Whenever you're on a keep, you can recruit into castle tiles around it by "
 "right-clicking and selecting 'Recruit'. This time you will only be given one "
 "type of unit to choose: the Elvish Fighter."
 msgstr ""
-"Cando esteas nunha torre, poderás recrutar nos hexágonos do castelo que teña "
-"arredor, premendo co botón dereito e seleccionando 'Recrutar'. Agora só "
-"terás unha unidade para escoller: o Elfo Loitador.\n"
-"*Clic co botón esquerdo ou preme calquera tecla para continuar..."
+"Cando esteas nunha torre, poderás recrutar nos hexágonos do castelo que "
+"teñas arredor, premendo co botón dereito e seleccionando 'Recrutar'. Agora "
+"só terás unha unidade dispoñible para escoller: o Elfo Loitador."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:632
@@ -492,7 +488,6 @@ msgstr "Preme co botón dereito nun hexágono do castelo e selecciona Recrutar"
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:668
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:700
-#, fuzzy
 msgid ""
 "These newly recruited units can do nothing this turn; you will control them "
 "next turn.\n"
@@ -502,8 +497,7 @@ msgstr ""
 "Estas unidades que acabas de recrutar non poden facer nada neste turno; "
 "controlaralas no seguinte turno.\n"
 "Nota: despois deste diálogo podes mover o rato por riba dunha unidade para "
-"ver a súa descrición na parte dereita da pantalla.\n"
-"*Clic co botón esquerdo ou preme calquera tecla para continuar..."
+"ver a súa descrición na parte dereita da pantalla."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:679
@@ -1105,6 +1099,7 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:552
+#, fuzzy
 msgid ""
 "If any Elvish Fighters from your last battle had experience, we would recall "
 "them to the current battlefield. However, both units don't have much "
@@ -1258,8 +1253,8 @@ msgid ""
 "No! I said RECALL $recall_name1 from the last battle, not recruit a new "
 "$recruit.language_name|! Now try again..."
 msgstr ""
-"Non! Díxenche REINCORPORA a $recall_name1 da última batalla, e non recruta "
-"un novo $recruit.type|! Proba de novo..."
+"Non! Díxenche REINCORPORA a $recall_name1 da última batalla, non recruta un "
+"novo $recruit.language_name|! Proba de novo..."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:810
@@ -1285,7 +1280,8 @@ msgid ""
 "$recruit.language_name|? I said RECRUIT a new ELVISH FIGHTER. Now try "
 "again..."
 msgstr ""
-"$recruit.type|? Díxenche RECRUTA un novo ELFO LOITADOR. Proba outra vez..."
+"$recruit.language_name|? Díxenche RECRUTA un novo ELFO LOITADOR. Proba outra "
+"vez..."
 
 #. [unit]: id=Elindel, type=Elvish Fighter
 #. [else]
@@ -1705,8 +1701,8 @@ msgid ""
 "We will miss $deadguy.name| because he had $deadguy.experience experience "
 "points, meaning he would have advanced to level 2 soon."
 msgstr ""
-"Perderemos a $deadguy.user_description|, e tiña $deadguy.experience puntos "
-"de experiencia, o que significa que pronto avanzaría ó nivel 2."
+"Perderemos a $deadguy.name|, e tiña $deadguy.experience puntos de "
+"experiencia, o que significa que pronto avanzaría ó nivel 2."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1357
@@ -1715,8 +1711,8 @@ msgid ""
 "We will miss $deadguy.name| because she had $deadguy.experience experience "
 "points, meaning she would have advanced to level 2 soon."
 msgstr ""
-"Perderemos a $deadguy.user_description|, e tiña $deadguy.experience puntos "
-"de experiencia, o que significa que pronto avanzaría ó nivel 2."
+"Perderemos a $deadguy.name|, e tiña $deadguy.experience puntos de "
+"experiencia, o que significa que pronto avanzaría ó nivel 2."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1368
@@ -1887,10 +1883,6 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "mallo"
-
-#, fuzzy
-#~ msgid "<big>Galdrad"
-#~ msgstr "Galdrad"
 
 #~ msgid ""
 #~ "Hello translators! Tutorial is meant to be a little funny at the start, "
