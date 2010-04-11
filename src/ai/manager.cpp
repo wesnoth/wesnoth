@@ -88,7 +88,10 @@ void holder::init( side_number side )
 
 	if (this->ai_) {
 		ai_->on_create();
-		foreach (const config &mod_ai, cfg_.child_range("modify_ai")) {
+		foreach (config &mod_ai, cfg_.child_range("modify_ai")) {
+			if (!mod_ai.has_attribute("side")) {
+				mod_ai["side"] = side;
+			}
 			modify_ai(mod_ai);
 		}
 		cfg_.clear_children("modify_ai");
