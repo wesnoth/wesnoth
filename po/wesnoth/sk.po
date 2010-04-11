@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-03-26 15:41+0100\n"
-"PO-Revision-Date: 2010-04-09 22:18+0100\n"
+"PO-Revision-Date: 2010-04-11 00:39+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -51,7 +51,7 @@ msgstr "Animovať mapu"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:47
 msgid "Show Titlescreen Animation"
-msgstr "Animácia úvodnej obrazovky"
+msgstr "Animovať úvodnú obrazovku"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:54
@@ -66,24 +66,24 @@ msgstr "Zobrazovať súboj"
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:68
 msgid "Ping Timeout"
-msgstr "Vypršal čas na odozvu"
+msgstr "Čas na odozvu"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:69
 msgid ""
 "Number of seconds to wait for a ping reply before we time out. Disable with "
 "0."
-msgstr "Počet sekúnd, počas ktorých sa má čakať na odozvu. Vypni s 0."
+msgstr "Počet sekúnd, počas ktorých sa má čakať na odozvu (ping). Vypni s 0."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:79
 msgid "Accept whisper messages from friends only"
-msgstr "Prijímaj súkromné správy len od priateľov"
+msgstr "Súkromné správy prijímať len od priateľov"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:86
 msgid "Auto-open whisper windows in lobby"
-msgstr "Automaticky otvor okno so súkromnými správami v čakárni"
+msgstr "Automaticky otvoriť okno na súkromné správy v čakárni"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:93
@@ -113,7 +113,7 @@ msgstr "otrávený"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:749
 #: data/core/macros/abilities.cfg:554
 msgid "berserk"
-msgstr "berserk"
+msgstr "zúrivý"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:752
@@ -123,7 +123,7 @@ msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
-"Berserk:\n"
+"Zúrivý:\n"
 "Či pri útoku alebo pri obrane, tento druh útoku trvá až do smrti jedného z "
 "protivníkov, prípadne kým si nevymenia 30 sérií útokov."
 
@@ -3248,7 +3248,7 @@ msgstr "nočné zakrádanie"
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:442 data/core/macros/abilities.cfg:448
 msgid "concealment"
-msgstr "Utajenie"
+msgstr "utajenie"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:443 data/core/macros/abilities.cfg:449
@@ -6114,8 +6114,8 @@ msgid ""
 msgstr ""
 "Jednotky poriadku bojujú lepšie cez deň a horšie v noci.\n"
 "\n"
-"Deň: +25% Zranenie\n"
-"Noc: -25% Zranenie"
+"Deň: +25% zranenie spôsobené pri útoku\n"
+"Noc: -25% zranenie spôsobené pri útoku"
 
 #. [language]
 #: data/hardwired/english.cfg:12
@@ -6135,8 +6135,8 @@ msgid ""
 msgstr ""
 "Jednotky chaosu bojujú lepšie v noci a horšie vo dne.\n"
 "\n"
-"Deň: -25% Zranenie\n"
-"Noc: +25% Zranenie"
+"Deň: -25% zranenie spôsobené pri útoku\n"
+"Noc: +25% zranenie spôsobené pri útoku"
 
 # Bridge
 #. [language]
@@ -8080,7 +8080,7 @@ msgstr "Velitelia: "
 
 #: src/help.cpp:1258
 msgid "Recruits:"
-msgstr "Naverbovaných:"
+msgstr "Verbovaní:"
 
 #: src/help.cpp:1272 src/multiplayer_create.cpp:79
 msgid "Era:"
@@ -8136,7 +8136,7 @@ msgstr "Útoky"
 
 #: src/help.cpp:1461
 msgid "unit help^Name"
-msgstr "Meno"
+msgstr "Názov"
 
 #: src/help.cpp:1463
 msgid "Strikes"
@@ -8144,7 +8144,7 @@ msgstr "Údery"
 
 #: src/help.cpp:1464
 msgid "Range"
-msgstr "Z diaľky"
+msgstr "Dosah"
 
 #: src/help.cpp:1465
 msgid "Special"
@@ -9269,7 +9269,7 @@ msgstr "Neviem nájsť éru $era"
 
 #: src/multiplayer_connect.cpp:1614
 msgid "Defeat enemy leader(s)"
-msgstr "Poraz ostatných veliteľov"
+msgstr "Porazíš ostatných veliteľov"
 
 #: src/multiplayer_connect.cpp:1718
 msgid "Waiting for players to join..."

@@ -2,37 +2,38 @@
 # Copyright (C) 2006 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
-# Leandro Regueiro <leandro.regueiro@gmail.com>, 2007, 2008.
 #
 # Proxecto Trasno <http://trasno.net>
 #
+# Leandro Regueiro <leandro.regueiro@gmail.com>, 2007, 2008, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-02-25 00:07+0100\n"
-"PO-Revision-Date: 2008-12-08 15:39+0100\n"
-"Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
-"Language-Team: Galician <proxecto@trasno.net>\n"
+"POT-Creation-Date: 2010-03-26 15:41+0100\n"
+"PO-Revision-Date: 2010-03-10 15:00+0100\n"
+"Last-Translator: \n"
+"Language-Team: Galego <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 0.3\n"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:5
 msgid "Single Hex"
-msgstr ""
+msgstr "Un só hexágono"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:15
 msgid "Radius 1 Hex"
-msgstr ""
+msgstr "Radio 1 hexágono"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:25
 msgid "Radius 2 Hex"
-msgstr ""
+msgstr "Radio 2 hexágonos"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:55
@@ -100,13 +101,13 @@ msgstr "especial"
 #. [menu]: id=flood_button_editor
 #: data/core/editor/tool-hints.cfg:7 data/core/editor/tool-hints.cfg:13
 #: data/themes/editor.cfg:179 data/themes/editor.cfg:192
-#, fuzzy
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
-"Use o botón esquerdo/dereito do rato para pintar o terreo do primeiro/"
-"segundo plano. Prema Shift para pintar só a capa base."
+"Use o botón esquerdo ou dereito do rato para pintar o terreo en primeiro ou "
+"segundo plano. Mantén premido Maiús para pintar só a capa base. Ctrl e "
+"premer para probar un terreo baixo o cursor."
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
@@ -115,6 +116,9 @@ msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
 msgstr ""
+"O botón esquerdo do rato selecciona, o dereito cancela a selección. Mantén "
+"premida a tecla Maiús para seleccionar mediante a vara máxica hexágonos co "
+"mesmo tipo de terreo."
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
 #. [menu]: id=start_position_button_editor
@@ -124,16 +128,19 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
+"O botón esquerdo do rato amosa a selección do usuario, mentres que o dereito "
+"a limpa. As teclas numéricas van á posición inicial, Alt + número establece "
+"a respectiva posición inicial baixo o cursor, Supr a borra."
 
 #. [editor_tool_hint]: id=editor-paste
 #: data/core/editor/tool-hints.cfg:30
-#, fuzzy
 msgid ""
 "Click to paste, zoom out for more accuracy when pasting large areas. Use the "
 "edit menu to transform the clipboard (rotate, mirror)."
 msgstr ""
-"Prema para pegar. Use o menú editar para transformar o portarretallos "
-"(rotar, espellar)."
+"Prema para pegar, alonxe para pegar de xeito máis exacto cando manipule "
+"zonas grandes. Use o menú editar para transformar o portarretallos (rotar, "
+"espellar)."
 
 #. [menu]: id=menu-editor-file
 #: data/themes/editor.cfg:120
@@ -257,17 +264,19 @@ msgstr "Gardouse o mapa."
 
 #: src/editor/editor_controller.cpp:688
 msgid "Loaded embedded map data"
-msgstr ""
+msgstr "Cargáronse os datos integrados no mapa"
 
 #: src/editor/editor_controller.cpp:689 src/editor/editor_controller.cpp:703
 msgid "Map loaded from scenario"
-msgstr ""
+msgstr "Mapa cargado dende o escenario"
 
 #: src/editor/editor_controller.cpp:699
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
 msgstr ""
+"Cargouse o ficheiro do mapa ao que se fai referencia:\n"
+"$new"
 
 #: src/editor/editor_controller.cpp:1092
 msgid "Undo"
@@ -308,11 +317,11 @@ msgstr "O tamaño do mapa de destino é diferente ó do mapa actual"
 
 #: src/editor/editor_palettes.cpp:506
 msgid "(non-core)"
-msgstr ""
+msgstr "(non oficial)"
 
 #: src/editor/editor_palettes.cpp:507
 msgid "Will not work in game without extra care."
-msgstr ""
+msgstr "Só funcionará na partida se se ten sumo coidado."
 
 #: src/editor/editor_palettes.cpp:532
 msgid "FG"
@@ -324,23 +333,23 @@ msgstr "Fondo"
 
 #: src/editor/map_context.cpp:70
 msgid "File not found"
-msgstr ""
+msgstr "Non se atopou o ficheiro"
 
 #: src/editor/map_context.cpp:84
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 msgstr ""
+"O ficheiro de mapa parece un escenario, pero o valor de map_data non "
+"referencia ningún ficheiro existente"
 
 #: src/editor/map_context.cpp:99
-#, fuzzy
 msgid "Empty map file"
-msgstr "O ficheiro de mapa está baleiro ou non se atopou ningún ficheiro"
+msgstr "Ficheiro de mapa baleiro"
 
 #: src/editor/map_context.cpp:219
-#, fuzzy
 msgid "Could not save into scenario"
-msgstr "Non se puido garda-lo mapa: $msg"
+msgstr "Non foi posible gardar no escenario"
 
 #: src/editor/map_context.cpp:226
 msgid "Could not save the map: $msg"
@@ -361,10 +370,20 @@ msgid ""
 "the cursor. Pressing a number key by itself will scroll to that player's "
 "starting position."
 msgstr ""
+"Que xogadores empezarán aquí? Podes utilizar Alt + número para establecer a "
+"posición inicial dun xogador, e Supr para borrar a posición inicial situada "
+"baixo o cursor. Premendo directamente unha tecla numérica moveraste á "
+"posición inicial do xogador correspondente."
 
 #: src/gui/dialogs/editor_settings.cpp:162
 msgid "Custom setting"
 msgstr "Opción personalizada"
+
+#~ msgid "Error creating action object"
+#~ msgstr "Erro ó crear o obxecto da acción"
+
+#~ msgid "Action not implemented"
+#~ msgstr "Acción non implementada"
 
 #~ msgid "Error"
 #~ msgstr "Erro"
