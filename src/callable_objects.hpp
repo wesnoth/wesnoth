@@ -153,7 +153,7 @@ public:
 	}
 
 	unit_callable(const unit &u)
-		: loc_(map_location::null_location), u_(u)
+		: loc_(u.get_location()), u_(u)
 	{
 		type_ = UNIT_C;
 	}
