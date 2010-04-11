@@ -147,13 +147,13 @@ public class SampleBuilder extends IncrementalProjectBuilder {
 	}
 
 	void checkXML(IResource resource) {
-		Logger.print("got a _main.cfg file");
 		// dummy condition
 		if (resource instanceof IFile && resource.getName().equals("_main.cfg")) {
 			try {
 				IFile file = (IFile) resource;
 				deleteMarkers(file);
 				
+				/*
 				IMarker[] resIMarkers = file.findMarkers(MARKER_TYPE, false, IResource.DEPTH_ZERO);
 				Logger.print("found markers: " + resIMarkers.length);
 				
@@ -182,6 +182,7 @@ public class SampleBuilder extends IncrementalProjectBuilder {
 					marker.setAttribute(IMarker.LINE_NUMBER, token.getLine());
 					marker.setAttribute(IMarker.SEVERITY,token.getType().toMarkerSeverity());
 				}
+				*/
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

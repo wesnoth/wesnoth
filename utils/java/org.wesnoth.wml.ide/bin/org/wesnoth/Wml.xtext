@@ -1,0 +1,28 @@
+grammar org.wesnoth.Wml with org.eclipse.xtext.common.Terminals
+
+generate wml "http://www.wesnoth.org/Wml"
+
+Model :
+	(imports+=Import)*
+	(elements+=Type)*;
+	
+Import :
+	'import' importURI=STRING;
+	
+Type:
+	SimpleType | Entity | CampaignType;
+	
+SimpleType:
+	'type' name=ID;
+	
+CampaignType:
+	'[campaign]' (name=ID)? '[/campaign]';
+	
+Entity :
+	'entity' name=ID ('extends' extends=[Entity])? '{'
+		properties+=Property*
+	'}';
+
+Property:
+	'property' name=ID ':' type=[Type] (many?='[]')?;
+	

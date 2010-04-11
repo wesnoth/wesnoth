@@ -1,0 +1,31 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.wesnoth.wml.ide
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0
+Bundle-SymbolicName: org.wesnoth.wml.ide; singleton:=true
+Eclipse-RegisterBuddy: org.eclipse.xtext.log4j
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.generator;resolution:=optional,
+ de.itemis.xtext.antlr;resolution:=optional,
+ org.apache.commons.logging;resolution:=optional,
+ org.eclipse.emf.codegen.ecore;resolution:=optional,
+ org.eclipse.xtext.log4j;resolution:=optional,
+ org.eclipse.emf.mwe.utils;resolution:=optional,
+ org.eclipse.emf.mwe.core;resolution:=optional,
+ com.ibm.icu;resolution:=optional,
+ org.eclipse.xtext.xtend;resolution:=optional,
+ org.eclipse.xtext.util,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.common,
+ org.antlr.runtime
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: org.wesnoth,
+ org.wesnoth.services,
+ org.wesnoth.wml,
+ org.wesnoth.wml.impl,
+ org.wesnoth.wml.util,
+ org.wesnoth.parseTreeConstruction,
+ org.wesnoth.parser.antlr,
+ org.wesnoth.validation

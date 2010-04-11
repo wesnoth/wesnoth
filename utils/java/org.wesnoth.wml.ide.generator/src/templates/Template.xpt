@@ -1,0 +1,11 @@
+«IMPORT wml»;
+
+«EXTENSION templates::Extensions»
+
+«DEFINE main FOR Model-»
+«FILE "output.txt"-»
+«FOREACH this.elements.typeSelect(Entity).sortBy(e|e.name) AS e-»
+«e.name» has «e.listSubclasses()».
+«ENDFOREACH-»
+«ENDFILE-»
+«ENDDEFINE»

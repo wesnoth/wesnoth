@@ -1,0 +1,9 @@
+import wml;
+
+listSubclasses(Entity this) :
+	let subclasses = this.eRootContainer.eAllContents.typeSelect(Entity).select(e|e.extends == this).name:
+		switch (subclasses.size) { 
+			case 0: "no subclasses"
+			case 1: "subclass: " + subclasses.toString(", ")
+			default: subclasses.size.toString() + " subclasses: " + subclasses.toString(", ")
+		};

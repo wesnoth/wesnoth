@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<plugin>
+
+    <extension
+            point="org.eclipse.ui.editors">
+        <editor
+            class="org.wesnoth.WmlExecutableExtensionFactory:org.eclipse.xtext.ui.core.editor.XtextEditor"
+            contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
+            default="true"
+            extensions="cfg"
+            id="org.wesnoth.Wml"
+            name="Wml Editor">
+        </editor>
+    </extension>
+    <extension
+        point="org.eclipse.ui.handlers">
+        <handler
+            class="org.wesnoth.WmlExecutableExtensionFactory:org.eclipse.xtext.ui.common.editor.hyperlinking.OpenDeclarationHandler"
+            commandId="org.eclipse.xtext.ui.common.editor.hyperlinking.OpenDeclaration">
+            <activeWhen>
+                <reference
+                    definitionId="org.wesnoth.Wml.Editor.opened">
+                </reference>
+            </activeWhen>
+        </handler>
+        <handler
+            class="org.wesnoth.WmlExecutableExtensionFactory:org.eclipse.xtext.ui.core.editor.handler.ValidateActionHandler"
+            commandId="org.wesnoth.Wml.validate">
+         <activeWhen>
+            <reference
+                    definitionId="org.wesnoth.Wml.Editor.opened">
+            </reference>
+         </activeWhen>
+      </handler>
+    </extension>
+    <extension point="org.eclipse.core.expressions.definitions">
+        <definition id="org.wesnoth.Wml.Editor.opened">
+            <and>
+                <reference definitionId="isActiveEditorAnInstanceOfXtextEditor"/>
+                <with variable="activeEditor">
+                    <test property="org.eclipse.xtext.ui.core.editor.XtextEditor.languageName" 
+                        value="org.wesnoth.Wml" 
+                        forcePluginActivation="true"/>
+                </with>        
+            </and>
+        </definition>
+    </extension>
+    <extension
+            point="org.eclipse.ui.preferencePages">
+        <page
+            class="org.wesnoth.WmlExecutableExtensionFactory:org.eclipse.xtext.ui.core.editor.preferences.LanguageRootPreferencePage"
+            id="org.wesnoth.Wml"
+            name="Wml"
+            category="org.eclipse.xtext.languages">
+            <keywordReference id="org.wesnoth.ui.keyword_Wml"/>
+        </page>
+        <page
+            category="org.wesnoth.Wml"
+            class="org.wesnoth.WmlExecutableExtensionFactory:org.eclipse.xtext.ui.common.editor.syntaxcoloring.SyntaxColoringPreferencePage"
+            id="org.wesnoth.Wml.coloring"
+            name="Syntax Coloring">
+            <keywordReference id="org.wesnoth.ui.keyword_Wml"/>
+        </page>
+        <page
+            category="org.wesnoth.Wml"
+            class="org.wesnoth.WmlExecutableExtensionFactory:org.eclipse.xtext.ui.common.editor.templates.XtextTemplatePreferencePage"
+            id="org.wesnoth.Wml.templates"
+            name="Templates">
+            <keywordReference id="org.wesnoth.ui.keyword_Wml"/>
+        </page>
+    </extension>
+    <extension
+        point="org.eclipse.ui.keywords">
+        <keyword
+            id="org.wesnoth.ui.keyword_Wml"
+            label="Wml"/>
+    </extension>
+    <extension
+         point="org.eclipse.ui.commands">
+      <command
+            description="Trigger expensive validation"
+            id="org.wesnoth.Wml.validate"
+            name="Validate">
+      </command>
+    </extension>
+    <extension point="org.eclipse.ui.menus">
+        <menuContribution
+            locationURI="popup:#TextEditorContext?after=group.open">
+             <command
+                 commandId="org.wesnoth.Wml.validate"
+                 style="push"
+                 tooltip="Trigger expensive validation">
+            <visibleWhen checkEnabled="false">
+                <reference
+                    definitionId="org.wesnoth.Wml.Editor.opened">
+                </reference>
+            </visibleWhen>
+         </command>  
+         </menuContribution>
+    </extension>
+
+<!-- adding resource factories -->
+
+	<extension
+		point="org.eclipse.emf.ecore.extension_parser">
+		<parser
+			class="org.wesnoth.WmlExecutableExtensionFactory:org.eclipse.xtext.resource.XtextResourceFactory"
+			type="cfg">
+		</parser>
+	</extension>
+
+
+
+
+</plugin>
