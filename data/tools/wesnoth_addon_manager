@@ -292,6 +292,8 @@ if __name__ == "__main__":
         pbl = wmldata.read_file(pblfile, "PBL")
         if os.path.exists(ignfile):
             ign = open(ignfile).readlines()
+            # strip line endings and whitespace
+            ign = [i.strip() for i in ign]
         else:
             ign = [
                 ".*",
