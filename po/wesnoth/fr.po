@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-03-26 15:41+0100\n"
-"PO-Revision-Date: 2010-04-10 13:46+0200\n"
-"Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
+"PO-Revision-Date: 2010-04-11 09:25+0100\n"
+"Last-Translator: Guigou Guillaume <guillaume.guigou@orange.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -8693,11 +8693,9 @@ msgstr ""
 "Utilisez « Aide complète » pour inclure les commandes actuellement "
 "indisponibles."
 
-# FIXME : à voir ce que ça signifie
 #: src/menu_events.cpp:1954
-#, fuzzy
 msgid "do not translate the 'all'^[all|<command>]"
-msgstr "ne pas traduire la 'all'^[all|<command>]"
+msgstr "[all|<commande>]"
 
 #: src/menu_events.cpp:1998
 msgid "Error:"
@@ -8923,7 +8921,6 @@ msgid "(debug command)"
 msgstr "(commandes de débogage)"
 
 #: src/menu_events.cpp:2404
-#, fuzzy
 msgid " (network only)"
 msgstr "(réseau uniquement)"
 
@@ -8941,10 +8938,9 @@ msgstr "Rafraîchit l'IHM."
 msgid "Switch a side to/from AI control."
 msgstr "Passe ou reprend le contrôle d'un camp à l'IA."
 
-# FIXME : quoi ça ????
 #: src/menu_events.cpp:2431
 msgid "do not translate the on/off^[<side> [on/off]]"
-msgstr ""
+msgstr "[<camp> [on/off]]"
 
 #: src/menu_events.cpp:2434
 msgid "<side> <nick>"
@@ -8963,7 +8959,6 @@ msgid "Visualize the screen refresh procedure."
 msgstr "Visualiser la procédure de rafraîchissement de l'écran."
 
 #: src/menu_events.cpp:2439
-#, fuzzy
 msgid "Show fps."
 msgstr "Montrez les fps"
 

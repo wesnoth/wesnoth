@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-26 15:39+0100\n"
-"PO-Revision-Date: 2010-03-20 18:51+0100\n"
-"Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
+"POT-Creation-Date: 2010-03-26 15:41+0100\n"
+"PO-Revision-Date: 2010-04-11 09:45+0100\n"
+"Last-Translator: Guigou Guillaume <guillaume.guigou@orange.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -2172,11 +2172,11 @@ msgstr "Salle $name rejointe"
 
 #: src/gui/dialogs/lobby_main.cpp:1400
 msgid "$player has entered the room"
-msgstr ""
+msgstr "$player est entré dans la salle de discussion"
 
 #: src/gui/dialogs/lobby_main.cpp:1438
 msgid "$player has left the room"
-msgstr ""
+msgstr "$player a quitté la salle de discussion"
 
 #: src/gui/dialogs/lobby_main.cpp:1551
 msgid "Password Required"
@@ -2227,7 +2227,7 @@ msgstr "Aucun état ou zone de dessin défini."
 
 #: src/gui/widgets/window.cpp:788
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
-msgstr ""
+msgstr "Rejet nécessite un clic du bouton «click_dismiss» ou «ok»."
 
 #: src/gui/widgets/window.cpp:813 src/gui/widgets/window.cpp:846
 #: src/tests/gui/test_gui2.cpp:229
@@ -2677,7 +2677,7 @@ msgstr "La capture d'écran a échoué"
 #. translate this message as "sv,da", while Danish as "da,sv".
 #: src/image.cpp:345
 msgid "language code for localized resources^en_US"
-msgstr ""
+msgstr "fr"
 
 #: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:289
 msgid "Close Window"
@@ -2890,55 +2890,3 @@ msgstr ""
 
 #~ msgid "Y offset:"
 #~ msgstr "Décalage en Y :"
-
-# Benoît : pas sûr d'avoir compris de quoi il s'agit
-#~ msgid "Smart expand"
-#~ msgstr "Agrandissement intelligent"
-
-#~ msgid "X-Axis"
-#~ msgstr "Axe X"
-
-#~ msgid "Y-Axis"
-#~ msgstr "Axe Y"
-
-#~ msgid "Flip around (this may change the dimensions of the map):"
-#~ msgstr "Retourner (peut modifier les dimensions de la carte) :"
-
-#~ msgid "Set Terrain"
-#~ msgstr "Définir le terrain"
-
-#~ msgid "Save As"
-#~ msgstr "Sauvegarder sous"
-
-#~ msgid "Set Player's keep"
-#~ msgstr "Définir le donjon du joueur"
-
-#~ msgid "Flood Fill"
-#~ msgstr "Remplir"
-
-#~ msgid "Flip Map"
-#~ msgstr "Inverser la carte"
-
-#~ msgid "Draw Terrain"
-#~ msgstr "Afficher le terrain"
-
-#~ msgid "Delay transition updates"
-#~ msgstr "Différer les mises à jour des transitions entre terrains"
-
-#~ msgid "Cave Lit"
-#~ msgstr "Caverne éclairée"
-
-#~ msgid "Rockbound Cave Lit"
-#~ msgstr "Caverne accidentée éclairée"
-
-#~ msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
-#~ msgstr "Terrain non valide, probablement au format v1.2. Terrain : "
-
-#~ msgid "No default window defined."
-#~ msgstr "Aucune fenêtre définie par défaut."
-
-#~ msgid "No default button defined."
-#~ msgstr "Aucun bouton défini par défaut."
-
-#~ msgid "No layer or draw section defined."
-#~ msgstr "Aucune couche ou zone de dessin définie."
