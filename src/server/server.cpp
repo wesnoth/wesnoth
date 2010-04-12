@@ -604,7 +604,7 @@ void server::run() {
 			}
 
 			time_t now = time(NULL);
-			if (last_ping_ + 30 <= now) {
+			if (last_ping_ + network::ping_interval <= now) {
 				if (lan_server_ && players_.empty() && last_user_seen_time_ + lan_server_ < now)
 				{
 					LOG_SERVER << "Lan server has been empty for  " << (now - last_user_seen_time_) << " seconds. Shutting down!\n";

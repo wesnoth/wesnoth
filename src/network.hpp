@@ -258,6 +258,8 @@ statistics get_receive_stats(connection handle);
 
 /** Amount of seconds after the last server ping when we assume to have timed out. */
 extern unsigned int ping_timeout;
+/** Minimum interval between pings. */
+const int ping_interval = 30;
 } // network namespace
 
 
