@@ -256,7 +256,7 @@ void ttitle_screen::update_tip(twindow& window, const bool previous)
 	/**
 	 * @todo Need to move the real tips "calculation" to this file so we can
 	 * move through the pages.
-	 * 
+	 *
 	 */
 	if(!find_widget<tmulti_page>(&window, "tips", false, false)) {
 		window.invalidate_layout();
