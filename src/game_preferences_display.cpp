@@ -339,7 +339,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	show_ai_moves_button_.set_help_string(_("Do not animate AI units moving"));
 
 	interrupt_when_ally_sighted_button_.set_check(interrupt_when_ally_sighted());
-	interrupt_when_ally_sighted_button_.set_help_string(("Sighting an allied unit interrupts your unit's movement"));
+	interrupt_when_ally_sighted_button_.set_help_string(_("Sighting an allied unit interrupts your unit's movement"));
 
 	save_replays_button_.set_check(save_replays());
 	save_replays_button_.set_help_string(_("Save Replay on SP/MP Victory or MP Defeat"));
