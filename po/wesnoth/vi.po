@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-04-10 12:33+0200\n"
+"POT-Creation-Date: 2010-04-12 13:09+0200\n"
 "PO-Revision-Date: 2009-09-26 15:40+0700\n"
 "Last-Translator: Phạm Thành Nam <phamthanhnam.ptn@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
@@ -89,6 +89,18 @@ msgstr "Xếp nhóm người chơi trong phòng gặp gỡ"
 #: data/advanced_preferences.cfg:100
 msgid "Lobby sounds"
 msgstr "Âm thanh trong phòng gặp gỡ"
+
+#. [ai]: id=default # id is needed uniquely identify a MP AI, it is not needed in the scenario AI
+#: data/ai/ais/default_ai.cfg:4
+#, fuzzy
+msgid "Multiplayer_AI^Default AI"
+msgstr "Nhiều đấu thủ"
+
+#. [ai]: id=testing_ai_default
+#: data/ai/ais/testing_ai_default.cfg:5
+#, fuzzy
+msgid "Multiplayer_AI^RCA AI"
+msgstr "Nhiều đấu thủ"
 
 #. [time]: id=underground
 #. [illuminated_time]: id=underground_illum

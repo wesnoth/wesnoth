@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-04-10 12:33+0200\n"
+"POT-Creation-Date: 2010-04-12 13:09+0200\n"
 "PO-Revision-Date: 2010-04-06 19:43+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
@@ -100,6 +100,18 @@ msgstr "A játékosok csoportosítása a játékcsarnokban"
 #: data/advanced_preferences.cfg:100
 msgid "Lobby sounds"
 msgstr "Hangok engedélyezése a játékcsarnokban"
+
+#. [ai]: id=default # id is needed uniquely identify a MP AI, it is not needed in the scenario AI
+#: data/ai/ais/default_ai.cfg:4
+#, fuzzy
+msgid "Multiplayer_AI^Default AI"
+msgstr "Többjátékos"
+
+#. [ai]: id=testing_ai_default
+#: data/ai/ais/testing_ai_default.cfg:5
+#, fuzzy
+msgid "Multiplayer_AI^RCA AI"
+msgstr "Többjátékos"
 
 #. [time]: id=underground
 #. [illuminated_time]: id=underground_illum

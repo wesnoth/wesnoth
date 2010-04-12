@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.6.0+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-04-10 12:33+0200\n"
+"POT-Creation-Date: 2010-04-12 13:09+0200\n"
 "PO-Revision-Date: 2009-03-21 20:49+0100\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
@@ -99,6 +99,18 @@ msgstr ""
 #: data/advanced_preferences.cfg:100
 msgid "Lobby sounds"
 msgstr ""
+
+#. [ai]: id=default # id is needed uniquely identify a MP AI, it is not needed in the scenario AI
+#: data/ai/ais/default_ai.cfg:4
+#, fuzzy
+msgid "Multiplayer_AI^Default AI"
+msgstr "Multijugador"
+
+#. [ai]: id=testing_ai_default
+#: data/ai/ais/testing_ai_default.cfg:5
+#, fuzzy
+msgid "Multiplayer_AI^RCA AI"
+msgstr "Multijugador"
 
 #. [time]: id=underground
 #. [illuminated_time]: id=underground_illum

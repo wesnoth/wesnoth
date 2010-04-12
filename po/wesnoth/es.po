@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-04-10 12:33+0200\n"
+"POT-Creation-Date: 2010-04-12 13:09+0200\n"
 "PO-Revision-Date: 2009-12-15 23:10+0100\n"
 "Last-Translator: Diego J. <diegojromerolopez@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -108,6 +108,18 @@ msgstr "Agrupar jugadores en una sala"
 #: data/advanced_preferences.cfg:100
 msgid "Lobby sounds"
 msgstr "Sonidos de sala"
+
+#. [ai]: id=default # id is needed uniquely identify a MP AI, it is not needed in the scenario AI
+#: data/ai/ais/default_ai.cfg:4
+#, fuzzy
+msgid "Multiplayer_AI^Default AI"
+msgstr "Multijugador"
+
+#. [ai]: id=testing_ai_default
+#: data/ai/ais/testing_ai_default.cfg:5
+#, fuzzy
+msgid "Multiplayer_AI^RCA AI"
+msgstr "Multijugador"
 
 #. [time]: id=underground
 #. [illuminated_time]: id=underground_illum
