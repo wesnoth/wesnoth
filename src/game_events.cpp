@@ -2959,6 +2959,17 @@ WML_HANDLER_FUNCTION(time_area, /*event_info*/, cfg)
 	}
 }
 
+//Replacing the current time of day schedule
+WML_HANDLER_FUNCTION(replace_schedule, /*event_info*/, cfg)
+{
+	if(cfg.get_children("time").empty()) {
+		ERR_NG << "attempted to to replace ToD schedule with empty schedule\n";
+	} else {
+		resources::tod_manager->replace_schedule(cfg.get_parsed_config());
+		LOG_NG << "replaced ToD schedule\n";
+	}
+}
+
 // Adding new events
 WML_HANDLER_FUNCTION(event, /*event_info*/, cfg)
 {

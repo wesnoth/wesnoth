@@ -56,6 +56,11 @@ class tod_manager : public savegame::savegame_config
 		static bool is_start_ToD(const std::string&);
 
 		/**
+		 * Replace the time of day schedule
+		 */
+		void replace_schedule(const config& time_cfg);
+
+		/**
 		 * Adds a new local time area from config, making it follow its own
 		 * time-of-day sequence.
 		 *

@@ -158,6 +158,12 @@ bool tod_manager::is_start_ToD(const std::string& random_start_time)
 		&& utils::string_bool(random_start_time, true);
 }
 
+void tod_manager::replace_schedule(const config& time_cfg)
+{
+	times_.clear();
+	time_of_day::parse_times(time_cfg,times_);
+}
+
 void tod_manager::add_time_area(const config& cfg)
 {
 	areas_.push_back(area_time_of_day());
