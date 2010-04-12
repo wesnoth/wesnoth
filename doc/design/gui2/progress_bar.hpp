@@ -5,12 +5,12 @@
 
 namespace gui2 {
 
-class tprogress_bar
+class tprogress_bar /*@ \label{progress_bar.cpp:class} @*/
 	: public tcontrol
 {
 public:
 
-	tprogress_bar()
+	tprogress_bar()  /*@ \label{progress_bar.cpp:constructor} @*/
 		: tcontrol(COUNT)
 		, percentage_(-1)
 	{
@@ -18,7 +18,7 @@ public:
 		set_percentage(0);
 	}
 
-	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
+	/***** ***** ***** ***** Inherited ***** ***** ***** *****/ /*@ \label{progress_bar.cpp:inherited} @*/
 
 	/** Inherited from tcontrol. */
 	void set_active(const bool /*active*/) {}
@@ -33,7 +33,7 @@ public:
 	bool disable_click_dismiss() const { return false; }
 
 
-	/***** ***** ***** setters / getters for members ***** ****** *****/
+	/***** ***** ***** setters / getters for members ***** ****** *****/ /*@ \label{progress_bar.cpp:settersgetters} @*/
 
 	void set_percentage(const unsigned percentage);
 	unsigned get_percentage() const { return percentage_; }
@@ -45,7 +45,7 @@ private:
 	 *
 	 * Note the order of the states must be the same as defined in settings.hpp.
 	 */
-	enum tstate { ENABLED, COUNT };
+	enum tstate { ENABLED, COUNT }; /*@ \label{progress_bar.cpp:state} @*/
 
 	/** The percentage done. */
 	unsigned percentage_;

@@ -617,7 +617,7 @@ the files after which I dive more into the implementation of the file.
 		class.
 	\item[Line \ref{widget_definition.hpp:resolution}] Normally a resolution
 		definition inherits from tresolution\_definition\_ which define the
-		basic mandatory fiets for a resolution definition. Not all widgets use
+		basic mandatory fields for a resolution definition. Not all widgets use
 		these members, but most do. Most widgets don't add more members to this
 		class, except most container classes that add a grid builder
 		definition. Another example is are the scrollbars which define some
@@ -650,7 +650,17 @@ the files after which I dive more into the implementation of the file.
 	done in this file. Note that in the formula we use ``percentage'' which is
 	the percentage of the bar to be filled.
 
-% TODO add the description of the files
+	\begin{description}
+	\item[Line \ref{progress_bar.cfg:textdomain}] Every file in the library
+		is inside the ``wesnoth-lib'' text domain.
+
+	\item[Line \ref{progress_bar.cfg:class}]
+		Beginning of the progress bar, this part is much better documented in
+		the wiki %TODO ref
+		since this part is aimed at WML authors, duplicating that effort here
+		makes no sense so just visit the wiki.
+
+	\end{description}
 
 \item[src/gui/auxiliary/window\_builder/progress\_bar.*]
 	These files contain the code to build a widget from the definition described
@@ -704,7 +714,114 @@ the files after which I dive more into the implementation of the file.
 	separate update canvas, but that's because the canvas in those classes is
 	invalidated in several functions.}
 
-% TODO add the description of the files
+\begin{description}
+\item[hpp] Listing \ref{progress_bar.hpp} contains the sample code. 
+	\begin{description}
+	\item[Line \ref{progress_bar.hpp:class}]
+		Most simple widgets derive from tcontrol, which is the base class of the
+		visual widgets. Another common base is tcontainer or
+		tscrollbar\_container.
+
+	\item[Line \ref{progress_bar.hpp:constructor}]
+		The class calls the control constructor with the number of states, which
+		is the number of canvases used. Other then that it does the
+		initialization of its members. Some constructors do a bit more
+		processing but where a lot needs to be done, it's often deferred to a
+		finalize function.	
+
+	\item[Line \ref{progress_bar.hpp:inherited}]
+		This section implements or overrides member functions of the base class.
+		Some functions are pure virtual and need to be overridden others to
+		change behaviour.\footnote{Of course a list of which functions are
+		common the add here would be nice, however the library is still too
+		volatile to do so, no need to create a soon out of date list.}
+
+	\item[Line \ref{progress_bar.hpp:settersgetters}]
+		This section contains the setters and getters for the class. The
+		list below shows the common convention where T is the type of the
+		setter/getter and ``foo'' the name of the member without trailing
+		underscore.
+
+		\begin{description}
+		\item{setter}
+			Signature void set\_foo(const T foo); The type T can be by reference
+			if a larger class.
+
+		\item{getter}
+			Signature T get\_foo() const { return foo\_; } The type T is always
+			returned by value.
+
+		\item{reference}
+			Signature T& foo() { return foo\_; } This version returns the value
+			by reference, and it should also have a const version. These
+			functions or at least the non-const version are often not public.
+
+		\item{pointer}
+			Signature T* foo() { return foo\_; } Almost the same as the
+			reference version and is used for members that are pointers. The
+			text of the reference also applies here.
+
+			Furthermore this version often has no normal getter but may have a
+			setter.
+		\end{description}
+
+	\item[Line \ref{progress_bar.hpp:state}]
+		The state has the list of states available and normally has COUNT as
+		last value, which in turn is used in the constructor to initialize the
+		base class.
+
+	\end{description}
+
+\item[cpp] Listing \ref{progress_bar.cpp} contains the sample code. 
+	\begin{description}
+	\item[Line \ref{progress_bar.cpp:textdomain}] Every file in the library
+		is inside the ``wesnoth-lib'' text domain.
+
+	\item[Line \ref{progress_bar.cpp:logheader}]
+		The common headers used for logging, this makes sure the output of the
+		items always have the same format. Used by
+		LOG\_FOO << LOG_HEADER << "foo.\n"; or
+		log\_scope(foo, LOG_SCOPE); % check function signature
+
+	\item[Line \ref{progress_bar.cpp:register}]
+		Registers a widget, this part is really volatile and still has some
+		hoops and rings to jump through. Normally it works if not too bad and
+		look through the other widgets to see how to fix it. 
+
+		\textfb{Caveat emptor} just when all compiles fine you get a runtime
+		error about your new nice class, the builder claims your widget doesn't
+		exist. \emph{Don't panic} probably you did nothing wrong grep TRY in
+		src/gui/auxiliary/window\_builder.cpp (at the moment of writing line 96)
+		and read the comment above, dully add your class to the list and be
+		happy.
+
+	\item[Line \ref{progress_bar.cpp:get_control_type}]
+		Simple helper to get the human readable name of the class. The first
+		version was inlined in the header, but that seems to be an ODR
+		violation. At least at some point a compiler or linker complained, can't
+		really remember which one. % TODO git pick-axe
+
+	\end{description}
+\end{description}
+
+This completes the writing of the files for the new classes, some files need to
+be modified to get things up and running. The build system files need the three
+new .cpp files listed, these are:
+\begin{itemize}
+\item src/Makefile.am
+\item src/SConstruct
+\item src/CmakeLists.txt
+\end{itemize}
+
+The next step has become optional now that most build systems can glob the files
+needed for translation, but I still add them manually as well. The file is 
+po/wesnoth-lib/POTFILES.IN which holds the files for the wesnoth-lib text
+domain.
+
+The last file to be edited is src/gui/widgets/settings.cpp here a wiki comment
+for the new class needs to be added, this might change. The reason is that
+before automatically registering widgets this file needed more modification so
+it was done in one fell swoop.
 
 \end{description}
 
@@ -713,17 +830,10 @@ yet since there's no dialogue to test it in. So let's implement a dialogue.
 
 \begin{comment}
 
-FIXME add to list in settings.
-
-FIXME add a caveat emptor regarding broken linker
-
-FIXME add the builder files, at least mention them
-
-
 \section{Creating the window}
 
 The window is normally split in 3 files. One .cpp/.hpp file and one WML file.
-The dialogue used it the load progress dialogue, this is not the greatest
+The dialogue used is the load progress dialogue, this is not the greatest
 example dialogue, so this section may later use another dialogue as example.
 
 \end{comment}
