@@ -821,7 +821,7 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 	// Remove pure unit_type attributes.
 	static char const *unit_type_attrs[] = { "movement", "movement_type",
 		"die_sound", "flies", "inherit", "variation_name",
-		"ignore_race_traits" };
+		"ignore_race_traits", "hide_help" };
 	foreach (const char *attr, unit_type_attrs) {
 		cfg_.remove_attribute(attr);
 	}
