@@ -52,6 +52,8 @@ Version 1.9.0-svn:
    * Fixed picking the proper locale, the problem only occurred on some
      systems
    * Added a way to compile wesnoth on windows by using CMake + MSVC9.
+   * Fixed the ping timeout not waiting for the default ping interval when
+     ping timeout is not set to 0
  * Terrain animation related
    * animated terrain animations are not synchronized anymore
    * reworked macros to handle animations
