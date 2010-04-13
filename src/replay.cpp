@@ -269,7 +269,7 @@ void replay::add_attack(const map_location& a, const map_location& b,
 void replay::add_seed(const char* child_name, rand_rng::seed_t seed)
 {
 	LOG_REPLAY << "Setting seed for child type " << child_name << ": " << seed << "\n";
-	current_->child(child_name)["seed"] = lexical_cast<std::string>(seed);
+	random()->child(child_name)["seed"] = lexical_cast<std::string>(seed);
 }
 
 void replay::add_pos(const std::string& type,
