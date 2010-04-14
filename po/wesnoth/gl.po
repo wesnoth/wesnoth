@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-03-26 15:41+0100\n"
-"PO-Revision-Date: 2010-04-11 18:58+0200\n"
+"PO-Revision-Date: 2010-04-14 18:51+0200\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -3846,11 +3846,11 @@ msgstr "Puntos de vida máximos aumentados en "
 
 #: data/core/macros/carryover-utils.cfg:9
 msgid "Early finish bonus."
-msgstr "Bonificación por rematar cedo."
+msgstr "Hai bonificación por rematar cedo."
 
 #: data/core/macros/carryover-utils.cfg:12
 msgid "No early finish bonus."
-msgstr "Sen bonificación por rematar cedo."
+msgstr "Non hai bonificación por rematar cedo."
 
 #: data/core/macros/carryover-utils.cfg:15
 msgid "<small>(early finish bonus)</small>"
@@ -3866,7 +3866,7 @@ msgid ""
 "100% of finishing gold carried over to the next scenario."
 msgstr ""
 "\n"
-"Consérvase o 100% do ouro co que se rematou para o seguinte escenario."
+"Conservarase o 100% do ouro co que se remate para o seguinte escenario."
 
 #: data/core/macros/carryover-utils.cfg:26
 msgid ""
@@ -3874,7 +3874,7 @@ msgid ""
 "40% of finishing gold carried over to the next scenario."
 msgstr ""
 "\n"
-"Consérvase o 40% do ouro co que se rematou para o seguinte escenario."
+"Conservarase o 40% do ouro co que se remate para o seguinte escenario."
 
 #: data/core/macros/carryover-utils.cfg:30
 msgid ""
@@ -3882,7 +3882,7 @@ msgid ""
 "20% of finishing gold carried over to the next scenario."
 msgstr ""
 "\n"
-"Consérvase o 20% do ouro co que se rematou para o seguinte escenario."
+"Conservarase o 20% do ouro co que se remate para o seguinte escenario."
 
 #. [objective]: description=<span color='white'>, condition=win
 #: data/core/macros/carryover-utils.cfg:34
@@ -6242,25 +6242,29 @@ msgstr "Servidor oficial de Wesnoth"
 msgid "Alternate Wesnoth Server"
 msgstr "Servidor alternativo de Wesnoth"
 
+# A minúsucula é a propósito, aparece tras dous puntos (:) na carga de partidas.
 #. [language]
 #: data/hardwired/english.cfg:3
 msgid "Easy"
-msgstr "Fácil"
+msgstr "fácil"
 
+# A minúsucula é a propósito, aparece tras dous puntos (:) na carga de partidas.
 #. [language]
 #: data/hardwired/english.cfg:4
 msgid "Medium"
-msgstr "Medio"
+msgstr "medio"
 
+# A minúsucula é a propósito, aparece tras dous puntos (:) na carga de partidas.
 #. [language]
 #: data/hardwired/english.cfg:5
 msgid "Hard"
-msgstr "Difícil"
+msgstr "difícil"
 
+# A minúsucula é a propósito, aparece tras dous puntos (:) na carga de partidas.
 #. [language]
 #: data/hardwired/english.cfg:6
 msgid "Nightmare"
-msgstr "Pesadelo"
+msgstr "pesadelo"
 
 #. [language]
 #: data/hardwired/english.cfg:11
@@ -7017,7 +7021,7 @@ msgstr "─ Princesa Li'sar, 515 d.W."
 #. [tip]
 #: data/hardwired/tips.cfg:143
 msgid "Read the hotkeys list in the preferences menu."
-msgstr "Le a lista de atallos de teclado no menú de preferencias."
+msgstr "Le a lista de atallos do teclado no menú de preferencias."
 
 #. [tip]
 #: data/hardwired/tips.cfg:147
@@ -7250,13 +7254,14 @@ msgstr "Accións"
 msgid "End Turn"
 msgstr "Rematar a quenda"
 
+# Optimizado para a interface.
 #. [menu]: id=button-endturn
 #. [change]: id=button-endturn
 #. [menu]: id=button-endturn2
 #: data/themes/default.cfg:154 data/themes/default.cfg:775
 #: data/themes/default.cfg:1033 data/themes/dfool.cfg:166
 msgid "End Scenario"
-msgstr "Rematar o escenario"
+msgstr "Rematar o escen."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
@@ -7350,7 +7355,7 @@ msgstr "Reproducir"
 #. [menu]: id=button-playreplay, type=image
 #: data/themes/macros.cfg:75
 msgid "continuous replay"
-msgstr "repetición continua"
+msgstr "Repetición continua"
 
 #. [menu]: id=button-stopreplay, type=image
 #: data/themes/macros.cfg:92
@@ -7360,7 +7365,7 @@ msgstr "Deter"
 #. [menu]: id=button-stopreplay, type=image
 #: data/themes/macros.cfg:93
 msgid "pause at end of turn"
-msgstr "deter ao final de cada quenda"
+msgstr "Deter ao final de cada quenda"
 
 #. [menu]: id=button-resetreplay, type=image
 #: data/themes/macros.cfg:110
@@ -7370,7 +7375,7 @@ msgstr "Restablecer"
 #. [menu]: id=button-resetreplay, type=image
 #: data/themes/macros.cfg:111
 msgid "reset to beginning"
-msgstr "volver ao comezo"
+msgstr "Volver ao comezo"
 
 #. [menu]: id=button-nextturn, type=image
 #: data/themes/macros.cfg:128
@@ -7380,7 +7385,7 @@ msgstr "Seguinte quenda"
 #. [menu]: id=button-nextturn, type=image
 #: data/themes/macros.cfg:129
 msgid "play turn"
-msgstr "xogar a quenda"
+msgstr "Xogar a rolda"
 
 #. [menu]: id=button-nextside, type=image
 #: data/themes/macros.cfg:146
@@ -7390,7 +7395,7 @@ msgstr "Seguinte bando"
 #. [menu]: id=button-nextside, type=image
 #: data/themes/macros.cfg:147
 msgid "play side turn"
-msgstr "xogar a quenda do bando"
+msgstr "Xogar a quenda"
 
 #. [menu]: id=show-what
 #: data/themes/macros.cfg:163
@@ -7875,9 +7880,10 @@ msgstr "Seguro que queres borrar esta partida?"
 msgid "Don't ask me again!"
 msgstr "Non me volvas preguntar!"
 
+# Aparece ao cargar partidas.
 #: src/dialogs.cpp:429 src/savegame.cpp:133
 msgid "%a %b %d %H:%M %Y"
-msgstr "%a %b %d %H:%M %Y"
+msgstr "%a, %d %b %Y (%H:%M)"
 
 #: src/dialogs.cpp:444
 msgid "#(Invalid)"
@@ -7895,9 +7901,10 @@ msgstr "Multixogador"
 msgid "Tutorial"
 msgstr "Titorial"
 
+# A maiúscula é a propósito, aparece ao principio dunha liña ao cargar partidas (repeticións).
 #: src/dialogs.cpp:479 src/savegame.cpp:947
 msgid "replay"
-msgstr "repetición"
+msgstr "Repetición"
 
 #: src/dialogs.cpp:481 src/savegame.cpp:1019
 msgid "Turn"
@@ -8476,12 +8483,12 @@ msgstr "Aleatorio"
 #: src/leader_list.cpp:147 src/multiplayer_connect.cpp:217
 #: src/multiplayer_connect.cpp:261
 msgid "Female ♀"
-msgstr "Feminino ♀"
+msgstr "Femia ♀"
 
 #: src/leader_list.cpp:151 src/multiplayer_connect.cpp:219
 #: src/multiplayer_connect.cpp:263
 msgid "Male ♂"
-msgstr "Masculino ♂"
+msgstr "Macho ♂"
 
 #: src/leader_list.cpp:162 src/leader_list.cpp:187
 msgid "Random"
@@ -8565,7 +8572,7 @@ msgstr "Líder"
 
 #: src/menu_events.cpp:370 src/multiplayer_connect.cpp:1017
 msgid "Team"
-msgstr "Equipo"
+msgstr "Alianza"
 
 #: src/menu_events.cpp:371 src/multiplayer_connect.cpp:1028
 msgid "Gold"
@@ -8767,7 +8774,7 @@ msgstr "Etiqueta: "
 
 #: src/menu_events.cpp:1554
 msgid "Team only"
-msgstr "Só o equipo"
+msgstr "Só a alianza"
 
 #: src/menu_events.cpp:1757
 msgid "Search"
@@ -9822,7 +9829,7 @@ msgstr "Cargando o nivel"
 
 #: src/play_controller.cpp:155
 msgid "Initializing teams"
-msgstr "Inicializando os equipos"
+msgstr "Inicializando as alianzas"
 
 #: src/play_controller.cpp:187
 msgid "Loading units"
@@ -9958,9 +9965,9 @@ msgid_plural ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
 msgstr[0] ""
-"Comezará o seguinte escenario cunha peza de ouro ademais do mínimo inicial."
+"Comezarás o seguinte escenario cunha peza de ouro ademais do mínimo inicial."
 msgstr[1] ""
-"Comezará o seguinte escenario con $gold pezas de ouro ademais do mínimo "
+"Comezarás o seguinte escenario con $gold pezas de ouro ademais do mínimo "
 "inicial."
 
 #: src/playsingle_controller.cpp:258
@@ -9971,10 +9978,10 @@ msgid_plural ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
 msgstr[0] ""
-"Comezará o seguinte escenario cunha peza de ouro ou co ouro mínimo inicial "
+"Comezarás o seguinte escenario cunha peza de ouro ou co ouro mínimo inicial "
 "establecido, o que sexa máis alto."
 msgstr[1] ""
-"Comezará o seguinte escenario con $gold pezas de ouro ou co ouro mínimo "
+"Comezarás o seguinte escenario con $gold pezas de ouro ou co ouro mínimo "
 "inicial establecido, o que sexa máis alto."
 
 #: src/playsingle_controller.cpp:410
@@ -10461,14 +10468,20 @@ msgstr "Axúdanos a mellorar Wesnoth para ti!"
 msgid "Enable summary uploads"
 msgstr "Activar o envío de resumos"
 
+#~ msgid "Multiplayer_AI^Default AI"
+#~ msgstr "AI por defecto"
+
+#~ msgid "Multiplayer_AI^RCA AI"
+#~ msgstr "AI RCA"
+
 #~ msgid ""
 #~ "You will start the next scenario with the defined minimum starting gold."
 #~ msgid_plural ""
 #~ "You will start the next scenario with the defined minimum starting gold."
 #~ msgstr[0] ""
-#~ "Comezará o seguinte escenario co ouro mínimo inicial establecido."
+#~ "Comezarás o seguinte escenario co ouro mínimo inicial establecido."
 #~ msgstr[1] ""
-#~ "Comezará o seguinte escenario co ouro mínimo inicial establecido."
+#~ "Comezarás o seguinte escenario co ouro mínimo inicial establecido."
 
 #~ msgid "Unknown unit type '$type|'"
 #~ msgstr "Tipo de unidade descoñecido '$type|'"
