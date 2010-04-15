@@ -1644,13 +1644,18 @@ private:
 };
 
 
+template <class T, class V>
+bool smaller_mapped_value(const std::pair<T,V>& a, const std::pair<T,V>& b)
+{
+  return a.second < b.second;
+}
 
 class bad_recalls_remover {
 public:
 	bad_recalls_remover(const std::map<std::string, int>& unit_combat_scores)
 		: allow_any_(false), best_combat_score_()
 	{
-		std::map<std::string, int>::const_iterator cs = std::min_element(unit_combat_scores.begin(),unit_combat_scores.end(),unit_combat_scores.value_comp());
+		std::map<std::string, int>::const_iterator cs = std::min_element(unit_combat_scores.begin(),unit_combat_scores.end(),&smaller_mapped_value<std::string,int>);
 
 		if (cs == unit_combat_scores.end()) {
 			allow_any_ = true;
