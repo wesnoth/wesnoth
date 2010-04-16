@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n - Le Sceptre de Feu\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-25 12:17+0100\n"
-"PO-Revision-Date: 2009-07-25 13:45+0100\n"
-"Last-Translator: Damien J <guydelatourATgloireetpouvoir.com>\n"
+"POT-Creation-Date: 2010-03-26 15:41+0100\n"
+"PO-Revision-Date: 2010-04-13 10:43+0100\n"
+"Last-Translator: Guigou <guillaume.guigou@cnfpt.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -190,6 +190,9 @@ msgid ""
 "<span color='white'>Alternative objective:</span>\n"
 "<span color='green'>Defeat Glildur</span> <small>(early finish bonus)</small>"
 msgstr ""
+"<span color='white'>Objectif Alternatif:</span>\n"
+"<span color='green'>Vaincre Glildur</span> <small>(bonus de fin prématurée)</"
+"small>"
 
 #. [objective]: condition=lose
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:135
@@ -766,12 +769,11 @@ msgstr "Baglur"
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:203
-#, fuzzy
 msgid ""
 "Wait! Rugnur, dinna' they tell you <i>anything</i> when you took command "
 "here?!?"
 msgstr ""
-"Attendez ! Rugnur, ils ne vous ont RIEN dit quand vous avez pris le "
+"Attendez ! Rugnur, ils ne vous ont <i>RIEN</i> dit quand vous avez pris le "
 "commandement ici ?!? "
 
 #. [message]: speaker=Rugnur
@@ -781,7 +783,6 @@ msgstr "Pas vraiment. On était censé être en temps de paix. Qui êtes-vous ?
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:211
-#, fuzzy
 msgid ""
 "Argh! I'm a retired warrior... it looks like I'll ha' to come out and help "
 "you, else we'll be overrun by the damn elves... argh again. Well, listen "
@@ -811,14 +812,13 @@ msgstr "Baglur, comment ferme-t-on les portes ?"
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:223
-#, fuzzy
 msgid ""
 "Och, well that's the difficulty. It's a magic gate. Indestructible. But that "
 "means it can only be closed by magic. Ye need to position a warrior on each "
 "of the six glyphs. When all are occupied, the gates wi' close. Then the "
 "elves will be shut out of the caves forever, at least through this entrance."
 msgstr ""
-"Agh, eh bien, c'est ça le problème. C'est une porte magique. Indestructible. "
+"Hé, eh bien, c'est ça le problème. C'est une porte magique. Indestructible. "
 "Mais qui ne peut être fermée que par magie. Il faut placer un guerrier sur "
 "chacun des six glyphes. Quand ils seront tous occupés, les portes se "
 "fermeront. Ensuite les elfes ne pourront plus entrer dans ces galeries, du "
@@ -833,13 +833,12 @@ msgstr ""
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:231
-#, fuzzy
 msgid ""
 "Och, well, no. Lately trolls have been more in charge of those caves where "
 "the glyphs are than we dwarves have."
 msgstr ""
-"Argh, eh bien non. Ces derniers temps, ce sont plus des trolls qui ont "
-"occupé les grottes où les glyphes sont situés que des nains."
+"Hé, eh bien non. Ces derniers temps, ce sont plus des trolls qui ont occupé "
+"les grottes où les glyphes sont situés que des nains."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:235
@@ -904,14 +903,13 @@ msgstr ""
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:424
-#, fuzzy
 msgid ""
 "Just watch. The gates wi' close very soon. Then the elves outside - and, "
 "unfortunately, our dwarves who are still out there - wi' become irrelevant."
 msgstr ""
 "On regarde, tout simplement. Les portes vont très rapidement se fermer. "
 "Ensuite, les elfes qui sont dehors, et malheureusement nos nains toujours là-"
-"bas, n'auront plus d'importance."
+"bas - n'auront plus d'importance."
 
 #. [message]: speaker=Glindur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:498
@@ -926,7 +924,6 @@ msgstr ""
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:502
-#, fuzzy
 msgid ""
 "If that is what ye choose to do, fine, but be prepared to wait for many "
 "years."
@@ -1605,9 +1602,8 @@ msgstr ""
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:167
-#, fuzzy
 msgid "Ha! <i>You</i> don't trust <i>me</i>?"
-msgstr "Ha! _Tu_ ne _me_ fais pas confiance ?"
+msgstr "Ha! <i>Tu</i>  ne me fais pas confiance <i>à moi</i> ?"
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:171
@@ -1699,7 +1695,6 @@ msgstr ""
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:222
-#, fuzzy
 msgid ""
 "Wait, wait. The gold and coal... I think we can find those in the abandoned "
 "eastern mines, north of the Arkan-thoria. Trolls ha' overrun them, but "
@@ -1836,7 +1831,6 @@ msgstr ""
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:302
-#, fuzzy
 msgid "Also, the only coal that wi' melt this gold is here."
 msgstr "De même, le seul charbon capable de faire fondre cet or est aussi ici."
 
@@ -2337,41 +2331,36 @@ msgstr "Deux-mille, et je ne descendrai pas plus bas."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:274
-#, fuzzy
 msgid "What are we going to do? We can't go much higher!"
-msgstr "(chuchote) Qu'allons nous faire ? Nous ne pouvons pas monter plus !"
+msgstr "Qu'allons nous faire ? Nous ne pouvons pas monter plus !"
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:278
-#, fuzzy
 msgid "Offer him fifteen hundred, but don't go up, even if he refuses."
 msgstr ""
-"(chuchote) Offrons-lui mille-cinq-cents pièces et n'allons pas plus loin, "
-"même s'il refuse."
+"Offrons-lui mille-cinq-cents pièces et n'allons pas plus loin, même s'il "
+"refuse."
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:282
-#, fuzzy
 msgid ""
 "Bah! Getting this cut isn't worth that much; what with Rugnur's mistake "
 "earlier, and all the other expenses, if we pay more than a thousand we'll "
 "barely even make a profit!"
 msgstr ""
-"(chuchote) Bah ! Cette taille ne vaut pas autant ; avec l'erreur de Rugnur "
-"et toutes les autres dépenses, nous ne ferons quasiment aucun profit si nous "
-"payons plus de mille pièces !"
+"Bah ! Cette taille ne vaut pas autant ; avec l'erreur de Rugnur et toutes "
+"les autres dépenses, nous ne ferons quasiment aucun profit si nous payons "
+"plus de mille pièces !"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:286
-#, fuzzy
 msgid "So what are you going to do?"
-msgstr "(chuchote) Et donc, que faisons-nous ?"
+msgstr "Et donc, que faisons-nous ?"
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:290
-#, fuzzy
 msgid "Fight him, and take the tools by force."
-msgstr "(chuchote) Combattons-les et prenons-leur les outils de force."
+msgstr "Combattons-les et prenons-leur les outils de force."
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:294
@@ -2675,14 +2664,11 @@ msgstr ""
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:212
-#, fuzzy
 msgid "If ye'll permit me to say so, sir, ye're wrong. We could - "
-msgstr ""
-"Si vous me le permettez, monsieur, vous vous trompez. Nous pourrions..."
+msgstr "Si vous me le permettez, monsieur, vous vous trompez. Nous pourrions -"
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:216
-#, fuzzy
 msgid ""
 "Shut up, Baglur! You don't know what you're talking about. I've analyzed the "
 "situation, and we're doomed. Our best hope is to surrender. Perhaps if we "
@@ -2690,8 +2676,8 @@ msgid ""
 msgstr ""
 "Tais-toi, Baglur ! Tu ne sais pas de quoi tu parles. J'ai analysé la "
 "situation et nous sommes condamnés. Notre meilleur espoir est de nous "
-"rendre. Peut-être que si nous donnons les plans du sceptre aux elfes, ils "
-"nous laisseront vivre."
+"rendre. Peut-être que si nous donnons les plans du Sceptre de Feu aux elfes, "
+"ils nous laisseront vivre."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:222
@@ -2701,7 +2687,6 @@ msgstr ""
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:226
-#, fuzzy
 msgid ""
 "Shut up, Rugnur! You don't know what you're talking about. I've analyzed the "
 "situation, and we're doomed. Our best hope is to surrender. Perhaps if we "
@@ -2709,8 +2694,8 @@ msgid ""
 msgstr ""
 "Tais-toi, Rugnur! Tu ne sais pas de quoi tu parles. J'ai analysé la "
 "situation et nous sommes condamnés. Notre meilleur espoir est de nous "
-"rendre. Peut-être que si nous donnons les plans du sceptre aux elfes, ils "
-"nous laisserons vivre."
+"rendre. Peut-être que si nous donnons les plans du Sceptre de Feu aux elfes, "
+"ils nous laisserons vivre."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:232
@@ -2917,7 +2902,6 @@ msgstr ""
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:439
-#, fuzzy
 msgid ""
 "Alanin, ride as fast as you can south. Tell Haldric we are heading "
 "northeast, towards the old eastern mines, and if he wants his precious "
@@ -3189,7 +3173,6 @@ msgstr ""
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:206
-#, fuzzy
 msgid ""
 "So we're running away, eh? I dinna' like that, but it seems it's our only "
 "option."
@@ -3261,14 +3244,12 @@ msgstr "Raaaawww ! Ragaaardez ! Forgeeez iiicii !"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:298
-#, fuzzy
 msgid ""
 "It looks like a forge, heated by the lava. It looks magic, and it looks hot "
 "enough to make the Sceptre."
 msgstr ""
-"Regardez, j'ai trouvé quelque chose ici. On dirait une forge, chauffée par "
-"la lave. Elle a l'air magique et je pense qu'elle est assez chaude pour "
-"faire le sceptre. "
+"On dirait une forge, chauffée par la lave. Elle a l'air magique et je pense "
+"qu'elle est assez chaude pour faire le sceptre. "
 
 #. [message]: speaker=unit
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:304
@@ -3292,19 +3273,17 @@ msgstr "Déplacer Thursagan vers la forge"
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:319
-#, fuzzy
 msgid "Defend Thursagan until the Sceptre of Fire is complete"
-msgstr "Défendre Thursagan jusqu'à ce que le sceptre soit fini"
+msgstr "Défendre Thursagan jusqu'à ce que le Sceptre de Feu soit fini"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:347
-#, fuzzy
 msgid ""
 "This forge will work perfectly. Give me a few days here, and I can reforge "
 "the Sceptre of Fire to fulfill its purpose."
 msgstr ""
 "Cette forge conviendra parfaitement. Donnez-moi quelques jours et je pourrai "
-"reforger le sceptre pour qu'il remplisse son rôle."
+"reforger le Sceptre de Feu pour qu'il remplisse son rôle."
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:356
@@ -3331,7 +3310,6 @@ msgstr "Ayahahh..."
 
 #. [effect]: type=fire
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:434
-#, fuzzy
 msgid "sceptre of fire"
 msgstr "sceptre de feu"
 
@@ -3355,9 +3333,8 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:485
-#, fuzzy
 msgid "In $turnsleft more turns I will have completed the Sceptre of Fire."
-msgstr "Dans $turnsleft tours, j'aurai terminé le sceptre."
+msgstr "Dans $turnsleft tours, j'aurai terminé le Sceptre de Feu."
 
 #. [scenario]: id=9_Caverns_of_Flame
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:3
@@ -3547,13 +3524,12 @@ msgstr ""
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:526
-#, fuzzy
 msgid ""
 "We cannot let any of the elves or their mercenaries escape; they would tell "
 "where the Sceptre of Fire is. Make sure they all die!"
 msgstr ""
 "Nous ne pouvons laisser s'échapper aucun elfes et aucun mercenaire : ils "
-"diraient où est le sceptre. Assurez-vous qu'ils meurent tous !"
+"diraient où est le sceptre de Feu. Assurez-vous qu'ils meurent tous !"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:532
@@ -3593,7 +3569,6 @@ msgstr "Arghh !!! Le volcan est en éruption et notre sortie est bloquée !!! 
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:666
-#, fuzzy
 msgid ""
 "We have hidden the Sceptre well, but now the volcano is going to erupt and "
 "kill us all."
@@ -3826,19 +3801,17 @@ msgstr "Kreeeeya ! Darat ! Nomiduun. Bah."
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:218
-#, fuzzy
 msgid ""
 "I see. Well... what do you want me to do now? The Sceptre of Fire is made, "
 "yes, but I don't know where it is, the makers are dead, and orcs have "
 "probably already found it and hid it somewhere else."
 msgstr ""
-"Je vois. Bon... Que veux-tu que je fasse, maintenant ? Le Sceptre est fait, "
-"oui, mais je ne sais pas où il est, ses artisans sont morts, et les orcs "
-"l'ont probablement déjà trouvé et caché quelque part ailleurs."
+"Je vois. Bon... Que veux-tu que je fasse, maintenant ? Le Sceptre de Feu est "
+"fait, oui, mais je ne sais pas où il est, ses artisans sont morts, et les "
+"orcs l'ont probablement déjà trouvé et caché quelque part ailleurs."
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:222
-#, fuzzy
 msgid ""
 "I do not know. I only bring the news, I did not cause it, nor do I fully "
 "understand its implications. But, my advice would be to do nothing. I "
@@ -3849,7 +3822,7 @@ msgstr ""
 "responsable, et je ne comprends pas non plus leurs implications. Mais mon "
 "conseil serait de ne rien faire. Je pense que vous ne le retrouverez pas, "
 "même en envoyant des centaines d'armées pour le chercher. Mais notez dans "
-"les livres d'histoire que le Sceptre existe bien."
+"les livres d'histoire que le Sceptre de Feu existe bien."
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:226

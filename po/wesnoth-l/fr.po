@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-02-25 00:07+0100\n"
-"PO-Revision-Date: 2009-02-15 23:49+0100\n"
-"Last-Translator: Damien J <guydelatour AT gloireetpouvoirPTcom>\n"
+"POT-Creation-Date: 2010-03-26 15:41+0100\n"
+"PO-Revision-Date: 2010-04-12 19:14+0100\n"
+"Last-Translator: Guigou Guillaume <guillaume.guigou@orange.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -49,11 +49,10 @@ msgstr "Paysan"
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:25
 msgid "(Intermediate level, 9 scenarios)"
-msgstr ""
+msgstr "(Niveau intermédiaire, 9 scénarios)"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:25
-#, fuzzy
 msgid ""
 "As the shadow of civil war lengthens across Wesnoth, a band of hardy "
 "marchlanders revolts against the tyranny of Queen Asheviere. To win their "
@@ -65,7 +64,8 @@ msgstr ""
 "paysans se révolte contre la tyrannie de la reine Asheviere. Pour gagner "
 "leur liberté, ils doivent non seulement vaincre les fines lames de l'armée "
 "de Wesnoth, mais aussi affronter de plus infâmes ennemis, comme des orcs et "
-"des morts-vivants (Niveau intermédiaire, 9 scénarios)."
+"des morts-vivants.\n"
+"\n"
 
 #. [about]
 #: data/campaigns/Liberty/_main.cfg:28
@@ -363,14 +363,13 @@ msgstr ""
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:300
-#, fuzzy
 msgid ""
 "We are barely able to survive these orc raids. We lost two men last week, "
 "more could have died today... yet Weldyn does nothing!"
 msgstr ""
 "Nous arrivons à peine à survivre à ces attaques d'orcs. Nous avons perdu "
-"deux hommes la semaine dernière, et plus aujourd'hui... et Weldyn ne fait "
-"rien !"
+"deux hommes la semaine dernière, et plus pourrait mourrir aujourd'hui... et "
+"Weldyn ne fait rien !"
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:306
@@ -463,6 +462,9 @@ msgid ""
 "None remarked on the passing of the tiny, isolated frontier town. It was but "
 "a harbinger of the evil to come under the tyranny of Asheviere."
 msgstr ""
+"Personne ne remarqua la disparition  d’un petit village frontalier isolé. Et "
+"pourtant ce fut le signe avant-coureur du mal à venir sous la tyrannie de la "
+"Reine Asheviere."
 
 #. [scenario]: id=civil_disobedience
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:4
@@ -646,6 +648,9 @@ msgid ""
 "They would be remembered only traitors rightly put down by the Queen's "
 "lances. And in the dark years to come, woe betide any who questioned it."
 msgstr ""
+"Nous nous souviendrons d'eux comme des traîtres, qui ont été réduits au "
+"silence par les lances de la reine. Et dans les sombres années à venir, "
+"malheur à quiconque ose prétendre le contraire."
 
 #. [scenario]: id=a_strategy_of_hope
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:4
@@ -863,6 +868,10 @@ msgid ""
 "fates. It was a bitter doom, and as Wesnoth descended into darkness they "
 "would live to see worse."
 msgstr ""
+"Relnan et Baldras retournèrent dans leurs villages, ils ne trouvèrent que "
+"des ruines fumantes. Tous les défenseurs ont été tués. Les autres avaient "
+"disparu, on ne sait où. C'était un triste sort, mais Wesnoth sombré dans un "
+"avenir trouble, ils vivraient pour voir encore pire."
 
 #. [scenario]: id=unlawful_orders
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:4
@@ -1114,6 +1123,9 @@ msgid ""
 "rebellion could even be planned. Her power and ruthlessness - and their toll "
 "of death - would only grow greater with time."
 msgstr ""
+"En effet, les armées d’Ashevière ont été réunis et ont attaqué la rébellion "
+"naissante avant même qu’elle ne soit organiser. Sa puissance et sa cruauté - "
+"et le nombre de ses victimes - ne ferait que grandir avec le temps."
 
 #. [scenario]: id=hide_and_seek
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:6
@@ -1199,7 +1211,6 @@ msgstr "Ils nous cherchent."
 
 #. [message]: speaker=Link
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:528
-#, fuzzy
 msgid ""
 "Well, good thing I found you first. Now hurry, you must make it past the "
 "city into the Grey Woods. There is a small path in the southeast that leads "
@@ -1287,7 +1298,6 @@ msgstr ""
 
 #. [message]: speaker=Hans
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:748
-#, fuzzy
 msgid "Fly, and we may yet evade them in the Grey Woods."
 msgstr "Fuyez, nous pourrons peut-être encore leur échapper par les Bois Gris."
 
@@ -1310,7 +1320,6 @@ msgstr ""
 
 #. [scenario]: id=the_gray_woods
 #: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:4
-#, fuzzy
 msgid "The Grey Woods"
 msgstr "Les Bois Gris"
 
@@ -1451,7 +1460,6 @@ msgstr "La liche est détruite et ses mignons sont morts."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:312
-#, fuzzy
 msgid ""
 "The defeat of the evil lich infesting the Grey Woods was a bittersweet "
 "victory. With Helicrom dead, the guild of shadow magic was thrown into "
@@ -1592,7 +1600,6 @@ msgstr "Les Chasseurs"
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:24
-#, fuzzy
 msgid ""
 "Baldras and his men quickly left the Grey Woods, not entirely convinced of "
 "their safety even after eradicating the lich."
@@ -1602,7 +1609,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:27
-#, fuzzy
 msgid ""
 "As they marched, many men and women from the small hamlets peppering the "
 "area around Carcyn and the Grey Woods approached the group, asking to join "
@@ -2284,6 +2290,9 @@ msgid ""
 "there would be no help for the villagers, ground beneath the wheels of "
 "Asheviere's wrath."
 msgstr ""
+"La rébellion a tout misé sur une victoire contre Halstead mais gagner ou "
+"perdre, il ne pouvait y avoir de salut pour les habitants des villages "
+"écrasé par la cruelle machine de guerre d’Asheviere."
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:920
@@ -2867,6 +2876,10 @@ msgid ""
 "left dead and the few survivors born away to unguessable fates. It was a "
 "bitter doom, but as Asheviere's grip tightened they would live to see worse."
 msgstr ""
+"Ils retournèrent dans leurs villages, ils ne trouvèrent que des ruines "
+"fumantes. Tous les défenseurs ont été tués. Les autres avaient disparu, on "
+"ne sait où. C'était un triste sort, mais Wesnoth sombré dans un avenir "
+"trouble, ils vivraient pour voir encore pire."
 
 #~ msgid "Translators"
 #~ msgstr "Traducteurs"
