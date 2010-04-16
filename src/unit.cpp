@@ -1757,15 +1757,15 @@ void unit::redraw_unit()
 		}
 		return;
 	}
-	if(refreshing_) {
-		return;
+
+	if (!anim_) {
+		set_standing();
+		if (!anim_) return;
 	}
+
+	if (refreshing_) return;
 	refreshing_ = true;
 
-
-	if(!anim_) {
-		set_standing();
-	}
 	anim_->update_last_draw_time();
 	frame_parameters params;
 	const t_translation::t_terrain terrain = map.get_terrain(loc_);
