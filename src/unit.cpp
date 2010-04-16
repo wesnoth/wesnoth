@@ -1713,8 +1713,9 @@ void unit::start_animation(int start_time, const unit_animation *animation,
 {
 	const game_display * disp =  game_display::get_singleton();
 	state_ = state;
-	if (!animation && state != STATE_STANDING) {
-		set_standing(with_bars);
+	if (!animation) {
+		if (state != STATE_STANDING)
+			set_standing(with_bars);
 		return ;
 	}
 	// everything except standing select and idle
