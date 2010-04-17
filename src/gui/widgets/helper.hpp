@@ -128,31 +128,6 @@ std::string encode_text_alignment(const PangoAlignment alignment);
 unsigned decode_font_style(const std::string& style);
 
 /**
- * Copies a portion of a surface.
- *
- * Unlike get_surface_portion it copies rather then using SDL_Blit. Using
- * SDL_Blit gives problems with transparent surfaces.
- *
- * @param background              The surface to safe a portion from, this
- *                                surface shouldn't be a RLE surface.
- * @param rect                    The part of the surface to copy, the part of
- *                                the rect should be entirely on the surface.
- *
- * @returns                       A copy of the wanted part of the background.
- */
-surface save_background(const surface& background, const SDL_Rect& rect);
-
-/**
- * Copies one surface unto another one.
- *
- * @param restorer               The surface to copy to the background.
- * @param background             The surface to copy unto.
- * @param rect                   The area to copy to on the background.
- */
-void restore_background(const surface& restorer,
-		surface& background,const SDL_Rect& rect);
-
-/**
  * Returns a default error message if a mandatory widget is ommited.
  *
  * @param id                      The id of the omitted widget.
