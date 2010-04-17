@@ -305,28 +305,19 @@ bool operator!=(const SDL_Color& a, const SDL_Color& b);
 SDL_Color inverse(const SDL_Color& colour);
 SDL_Color int_to_color(const Uint32 rgb);
 
+/**
+ * Helper class for pinning SDL surfaces into memory.
+ * @note This class should be used only with neutral surfaces, so that
+ *       the pointer returned by #pixels is meaningful.
+ */
 struct surface_lock
 {
-	surface_lock(const surface &surf) : surface_(surf), locked_(false)
-	{
-		if(SDL_MUSTLOCK(surface_)) {
-			const int res = SDL_LockSurface(surface_);
-			if(res == 0) {
-				locked_ = true;
-			}
-		}
-	}
-
-	~surface_lock()
-	{
-		if(locked_) {
-			SDL_UnlockSurface(surface_);
-		}
-	}
+	surface_lock(const surface &surf);
+	~surface_lock();
 
 	Uint32* pixels() { return reinterpret_cast<Uint32*>(surface_->pixels); }
 private:
-	surface const surface_;
+	SDL_Surface *surface_;
 	bool locked_;
 };
 

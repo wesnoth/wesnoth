@@ -26,6 +26,23 @@
 #include <cstring>
 #include <iostream>
 
+surface_lock::surface_lock(const surface &surf) : surface_(surf), locked_(false)
+{
+	if (SDL_MUSTLOCK(surface_))
+		locked_ = SDL_LockSurface(surface_) == 0;
+	// Check that the surface is neutral bpp 32, possibly with an empty alpha channel.
+	assert((surface_->flags & SDL_RLEACCEL) == 0 &&
+		surface_->format->BytesPerPixel == 4 &&
+		surface_->format->Rmask == 0xFF0000u &&
+		(surface_->format->Amask | 0xFF000000u) == 0xFF000000u);
+}
+
+surface_lock::~surface_lock()
+{
+	if (locked_)
+		SDL_UnlockSurface(surface_);
+}
+
 SDL_Color int_to_color(const Uint32 rgb) {
 	SDL_Color to_return = {
 		(0x00FF0000 & rgb)>>16,
