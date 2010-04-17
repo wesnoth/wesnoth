@@ -686,7 +686,7 @@ bool preprocessor_data::get_chunk()
 			if (items.empty()) {
 				std::string error="No macro name found after #define directive";
 				std::ostringstream location;
-				location<<linenum_<<' '<<target_.location_;
+				location << linenum << ' ' << target_.location_;
 				target_.error(error, location.str());
 			}
 			std::string symbol = items.front();
@@ -728,6 +728,14 @@ bool preprocessor_data::get_chunk()
 			std::string const &symbol = read_word();
 			bool skip = target_.defines_->count(symbol) == 0;
 			DBG_CF << "testing for macro " << symbol << ": " << (skip ? "not defined" : "defined") << '\n';
+			if (skip) {
+				skip = !file_exists(symbol);
+				DBG_CF << "testing for file \"" << symbol << "\": " << (skip ? "does not exist" : "exists") << '\n';
+			}
+			if (skip) {
+				skip = !is_directory(symbol);
+				DBG_CF << "testing for directory \"" << symbol << "\": " << (skip ? "does not exist" : "exists") << '\n';
+			}
 			if (skip)
 				++skipping_;
 			push_token(skip ? 'J' : 'i');
