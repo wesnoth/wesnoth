@@ -1070,7 +1070,7 @@ void floating_label::draw(surface screen)
 	}
 
 	if(buf_ == NULL) {
-		buf_.assign(create_compatible_surface(surf_));
+		buf_.assign(create_compatible_surface(screen, surf_->w, surf_->h));
 		if(buf_ == NULL) {
 			return;
 		}
