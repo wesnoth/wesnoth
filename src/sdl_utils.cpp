@@ -1406,8 +1406,12 @@ surface create_compatible_surface(const surface &surf, int width, int height)
 	if(height == -1)
 		height = surf->h;
 
-	return SDL_CreateRGBSurface(SDL_SWSURFACE,width,height,surf->format->BitsPerPixel,
-		                        surf->format->Rmask,surf->format->Gmask,surf->format->Bmask,surf->format->Amask);
+	surface s = SDL_CreateRGBSurface(SDL_SWSURFACE, width, height, surf->format->BitsPerPixel,
+		surf->format->Rmask, surf->format->Gmask, surf->format->Bmask, surf->format->Amask);
+	if (surf->format->palette) {
+		SDL_SetPalette(s, SDL_LOGPAL, surf->format->palette->colors, 0, surf->format->palette->ncolors);
+	}
+	return s;
 }
 
 void blit_surface(const surface& src,
