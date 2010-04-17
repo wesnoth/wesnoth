@@ -1020,9 +1020,6 @@ void blur_surface(surface& surf, SDL_Rect rect, unsigned depth)
 		return;
 	}
 
-	assert((surf->flags & SDL_RLEACCEL) == 0);
-	assert(surf->format->BitsPerPixel == 32);
-
 	const unsigned max_blur = 256;
 	if(depth > max_blur) {
 		depth = max_blur;
@@ -1436,8 +1433,6 @@ void blit_surface(const surface& src,
 {
 	assert(src);
 	assert(dst);
-	assert((src->flags & SDL_RLEACCEL) == 0);
-	assert((dst->flags & SDL_RLEACCEL) == 0);
 
 	// Get the areas to blit
 	SDL_Rect dst_rect = { 0, 0, dst->w, dst->h };
