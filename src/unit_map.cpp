@@ -51,6 +51,12 @@ void unit_map::swap(unit_map &o)
 	std::swap(map_, o.map_);
 	std::swap(lmap_, o.lmap_);
 	std::swap(num_invalid_, o.num_invalid_);
+	for (const_unit_iterator i = begin(); i != end(); ++i) {
+		i->set_game_context(this);
+	}
+	for (const_unit_iterator i = o.begin(); i != o.end(); ++i) {
+		i->set_game_context(&o);
+	}
 }
 
 unit_map::~unit_map()
