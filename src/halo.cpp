@@ -231,7 +231,7 @@ void effect::unrender()
 
 	SDL_Rect rect = {xpos,ypos,surf_->w,surf_->h};
 	SDL_BlitSurface(buffer_,NULL,screen,&rect);
-	update_rect(rect_);
+	update_rect(rect);
 }
 
 bool effect::on_location(const std::set<map_location>& locations) const
