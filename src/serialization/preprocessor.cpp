@@ -611,9 +611,9 @@ bool preprocessor_data::get_chunk()
 		default: s = "???";
 		}
 		std::ostringstream error;
-		error<<s<<" not terminated";
-        std::ostringstream location;
-		location<<linenum_<<' '<<target_.location_;
+		error << s << " not terminated";
+		std::ostringstream location;
+		location << token.linenum << ' ' << target_.location_;
 		pop_token();
 		target_.error(error.str(), location.str());
 	}
