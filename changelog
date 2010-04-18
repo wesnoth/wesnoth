@@ -55,6 +55,7 @@ Version 1.9.0-svn:
    * Fixed the ping timeout not waiting for the default ping interval when
      ping timeout is not set to 0
    * Fixed a bug in scoring of AI recall list. Patch by billynux.
+   * Strip whitespace characters from .ign patterns (bug #15902)
  * Terrain animation related
    * animated terrain animations are not synchronized anymore
    * reworked macros to handle animations
