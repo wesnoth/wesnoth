@@ -1682,6 +1682,28 @@ bool tlobby_main::chat_input_keypress_callback(twidget* widget, SDLKey key,
 	if (key == SDLK_RETURN || key == SDLK_KP_ENTER) {
 		send_message_button_callback(*widget->get_window());
 		return true;
+	} else if(key == SDLK_TAB) {
+		std::string text = chat_input_->get_value();
+		const std::vector<user_info>& match_infos = lobby_info_.users();
+		std::vector<std::string> matches;
+
+		foreach(const user_info& ui, match_infos) {
+			if(ui.name != preferences::login()) {
+				matches.push_back(ui.name);
+			}
+		}
+		const bool line_start = utils::word_completion(text, matches);
+
+		if (matches.empty()) return false;
+
+		if (matches.size() == 1) {
+			text.append(line_start ? ": " : " ");
+		} else {
+			std::string completion_list = utils::join(matches, ' ');
+			append_to_chatbox(completion_list);
+		}
+		chat_input_->set_value(text);
+		return true;
 	}
 	return false;
 }
