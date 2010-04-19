@@ -726,24 +726,30 @@ bool preprocessor_data::get_chunk()
 		} else if (command == "ifdef") {
 			skip_spaces();
 			std::string const &symbol = read_word();
-			bool skip = target_.defines_->count(symbol) == 0;
-			DBG_CF << "testing for macro " << symbol << ": " << (skip ? "not defined" : "defined") << '\n';
-			if (skip) {
-				skip = !file_exists(symbol);
-				DBG_CF << "testing for file \"" << symbol << "\": " << (skip ? "does not exist" : "exists") << '\n';
+			bool found = target_.defines_->count(symbol) != 0;
+			DBG_CF << "testing for macro " << symbol << ": "
+				<< (found ? "defined" : "not defined") << '\n';
+			if (!found) {
+				found = !get_wml_location(symbol, directory_).empty();
+				DBG_CF << "testing for file or directory " << symbol << ": "
+					<< (found ? "found" : "not found") << '\n';
 			}
-			if (skip) {
-				skip = !is_directory(symbol);
-				DBG_CF << "testing for directory \"" << symbol << "\": " << (skip ? "does not exist" : "exists") << '\n';
-			}
+			bool skip = !found;
 			if (skip)
 				++skipping_;
 			push_token(skip ? 'J' : 'i');
 		} else if (command == "ifndef") {
 			skip_spaces();
 			std::string const &symbol = read_word();
-			bool skip = target_.defines_->count(symbol) != 0;
-			DBG_CF << "testing for macro " << symbol << ": " << (skip ? "not defined" : "defined") << '\n';
+			bool found = target_.defines_->count(symbol) != 0;
+			DBG_CF << "testing for macro " << symbol << ": "
+				<< (found ? "defined" : "not defined") << '\n';
+			if (!found) {
+				found = !get_wml_location(symbol, directory_).empty();
+				DBG_CF << "testing for file or directory " << symbol << ": "
+					<< (found ? "found" : "not found") << '\n';
+			}
+			bool skip = found;
 			if (skip)
 				++skipping_;
 			push_token(skip ? 'J' : 'i');

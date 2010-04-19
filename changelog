@@ -44,6 +44,8 @@ Version 1.9.0-svn:
    * Added lua functions wesnoth.get_side_count() and wesnoth.is_enemy(a,b)
    * Add 'recall_cost' key for [side], to override [game_config]'s default
    * Add [replace_schedule] tag, which replaces the time of day schedule
+   * Trying to include a missing macro/file is now a fatal error
+   * Extended #ifdef so that it also tests for files and directories
  * Miscellaneous and bug fixes:
    * Defaulted log level to warning again
    * New option to auto-set delay shroud update on game start
