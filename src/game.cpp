@@ -130,7 +130,19 @@ static bool less_campaigns_rank(const config &a, const config &b) {
 }
 
 namespace {
-
+struct jump_to_campaign_info
+{
+public:
+	jump_to_campaign_info(bool jump,int difficulty, std::string campaign_id,std::string scenario_id){
+		jump_ = jump;
+		difficulty_ = difficulty;
+		campaign_id_ = campaign_id;
+		scenario_id_ = scenario_id;
+	}
+	bool jump_;
+	int difficulty_;
+	std::string campaign_id_,scenario_id_;
+};
 class game_controller
 {
 public:
@@ -152,6 +164,7 @@ public:
 	bool load_game();
 	void set_tutorial();
 
+	std::string jump_to_campaign_id();
 	bool new_campaign();
 	bool goto_campaign();
 	bool goto_multiplayer();
@@ -220,7 +233,8 @@ private:
 	bool loaded_game_cancel_orders_;
 
 	std::string multiplayer_server_;
-	bool jump_to_campaign_, jump_to_multiplayer_;
+	bool jump_to_multiplayer_;
+	jump_to_campaign_info jump_to_campaign_;
 #ifndef DISABLE_EDITOR
 	bool jump_to_editor_;
 #endif
@@ -258,7 +272,7 @@ game_controller::game_controller(int argc, char** argv) :
 	loaded_game_show_replay_(false),
 	loaded_game_cancel_orders_(false),
 	multiplayer_server_(),
-	jump_to_campaign_(false),
+	jump_to_campaign_(false,-1,"",""),
 	jump_to_multiplayer_(false)
 #ifndef DISABLE_EDITOR
 	 ,jump_to_editor_(false)
@@ -368,9 +382,32 @@ game_controller::game_controller(int argc, char** argv) :
 		} else if(val == "--fullscreen" || val == "-f") {
 			preferences::set_fullscreen(true);
 
-		} else if(val == "--campaign" || val == "-c") {
-			jump_to_campaign_ = true;
+		} else if(val.find("--campaign") == 0 || val.find("-c") == 0) {
+			// campaign starting template: 
+			// -c[[<difficulty>] <id_campaign> [<id_scenario>]]
+			// --campaign[[<difficulty>] <id_campaign> [<id_scenario>]]
+			jump_to_campaign_.jump_ = true;
 
+			// we don't know if the next argument is from --campaign
+			// or for setting the data directory, so we assume is the latter
+			if (arg_ + 2 < argc_ && argv_[arg_+1][0] != '-')
+			{
+				// we parse difficulty only here, since a campaign is supplied from command line
+				if (isdigit(val[val.size()-1]))
+					jump_to_campaign_.difficulty_ = lexical_cast<int>(val[val.size()-1]);
+
+				++arg_;
+				jump_to_campaign_.campaign_id_ = std::string(argv_[arg_]);
+				std::cerr<<"selected campaign id: ["<<jump_to_campaign_.campaign_id_
+					<<"] | difficulty: ["<<jump_to_campaign_.difficulty_<<"]\n";
+			}
+
+			if (arg_ + 2 < argc_ && argv_[arg_+1][0] != '-')
+			{
+				++arg_;
+				jump_to_campaign_.scenario_id_ = std::string(argv_[arg_]);
+				std::cerr<<"selected scenario id: ["<<jump_to_campaign_.scenario_id_<<"]\n";
+			}
 		} else if(val == "--server" || val == "-s"){
 			jump_to_multiplayer_ = true;
 			//Do we have any server specified ?
@@ -1019,26 +1056,71 @@ bool game_controller::new_campaign()
 		return false;
 	}
 
-	gui2::tcampaign_selection dlg(campaigns);
+	int campaign_num = -1;
+	// No campaign selected from command line
+	if (jump_to_campaign_.campaign_id_.empty())
+	{
+		gui2::tcampaign_selection dlg(campaigns);
 
-	try {
-		dlg.show(disp().video());
-	} catch(twml_exception& e) {
-		e.show(disp());
-		return false;
+		try {
+			dlg.show(disp().video());
+		} catch(twml_exception& e) {
+			e.show(disp());
+			return false;
+		}
+
+		if(dlg.get_retval() != gui2::twindow::OK) {
+			return false;
+		}
+
+		campaign_num = dlg.get_choice();
 	}
+	else
+	{
+		// don't reset the campaign_id_ so we can know 
+		// if we should quit the game or return to the main menu
 
-	if(dlg.get_retval() != gui2::twindow::OK) {
-		return false;
+		// checking for valid campaign name
+		for(int i=0;i<campaigns.size();++i)
+		{
+			if (campaigns[i]["id"] == jump_to_campaign_.campaign_id_)
+			{
+				campaign_num = i;
+				break;
+			}
+		}
+
+		// didn't found any campaign with that id
+		if (campaign_num == -1)
+		{
+			std::cerr<<"No such campaign id to jump to: ["<<jump_to_campaign_.campaign_id_<<"]\n";
+			return false;
+		}	
 	}
-
-	const int campaign_num = dlg.get_choice();
 
 	const config &campaign = campaigns[campaign_num];
-
 	state_.classification().campaign = campaign["id"];
 	state_.classification().abbrev = campaign["abbrev"];
-	state_.classification().scenario = campaign["first_scenario"];
+
+	// we didn't specify in the command line the scenario to be started
+	if (jump_to_campaign_.scenario_id_.empty())
+		state_.classification().scenario = campaign["first_scenario"];
+	else
+	{
+		config scenario;
+		foreach(const config &sc, campaign.child_range("scenario"))
+		{
+			if (sc["id"] == jump_to_campaign_.scenario_id_)
+				scenario = sc;
+		}
+
+		if (scenario == NULL)
+		{
+			std::cerr<<"No such scenario id to jump to: ["<<jump_to_campaign_.scenario_id_<<"]\n";
+			return false;
+		}
+		state_.classification().scenario = jump_to_campaign_.scenario_id_;
+	}
 	state_.classification().end_text = campaign["end_text"];
 	state_.classification().end_text_duration = lexical_cast_default<unsigned int>(campaign["end_text_duration"]);
 
@@ -1048,22 +1130,38 @@ bool game_controller::new_campaign()
 	const std::vector<std::string> difficulties = utils::split(campaign["difficulties"]);
 
 	if(difficulties.empty() == false) {
-		if(difficulty_options.size() != difficulties.size()) {
-			difficulty_options.resize(difficulties.size());
-			std::copy(difficulties.begin(),difficulties.end(),difficulty_options.begin());
+		int difficulty = 0;
+		if (jump_to_campaign_.difficulty_ == -1){
+			if(difficulty_options.size() != difficulties.size()) {
+				difficulty_options.resize(difficulties.size());
+				std::copy(difficulties.begin(),difficulties.end(),difficulty_options.begin());
+			}
+
+			gui::dialog dlg(disp(), _("Difficulty"),
+				_("Select difficulty level:"), gui::OK_CANCEL);
+			dlg.set_menu(difficulty_options);
+			if(dlg.show() == -1) {
+				// canceled difficulty dialog, relaunch the campaign selection dialog
+				return new_campaign();
+			}
+			difficulty = dlg.result();
+		}
+		else
+		{
+			if (jump_to_campaign_.difficulty_ > difficulties.size())
+			{
+				std::cerr<<"incorrect difficulty number: ["<<jump_to_campaign_.difficulty_<<"]. maximum is ["<<difficulties.size()<<"].\n";
+				return false;
+			}
+			else
+			{
+				difficulty = jump_to_campaign_.difficulty_ - 1;
+			}
 		}
 
-		gui::dialog dlg(disp(), _("Difficulty"),
-			_("Select difficulty level:"), gui::OK_CANCEL);
-		dlg.set_menu(difficulty_options);
-		if(dlg.show() == -1) {
-			// canceled difficulty dialog, relaunch the campaign selection dialog
-			return new_campaign();
-		}
-
-		state_.classification().difficulty = difficulties[dlg.result()];
+		state_.classification().difficulty = difficulties[difficulty];
 		cache_.clear_defines();
-		cache_.add_define(difficulties[dlg.result()]);
+		cache_.add_define(difficulties[difficulty]);
 	}
 
 	state_.classification().campaign_define = campaign["define"];
@@ -1073,11 +1171,14 @@ bool game_controller::new_campaign()
 }
 
 }
-
+std::string game_controller::jump_to_campaign_id()
+{
+	return jump_to_campaign_.campaign_id_;
+}
 bool game_controller::goto_campaign()
 {
-	if(jump_to_campaign_){
-		jump_to_campaign_ = false;
+	if(jump_to_campaign_.jump_){
+		jump_to_campaign_.jump_ = false;
 		if(new_campaign()) {
 			launch_game(game_controller::RELOAD_DATA);
 		}else{
@@ -1633,7 +1734,14 @@ static int process_command_args(int argc, char** argv) {
 			<< " [<options>] [<data-directory>]\n"
 			<< "Available options:\n"
 			<< "  --bpp <number>               sets BitsPerPixel value. Example: --bpp 32\n"
-			<< "  -c, --campaign               goes directly to the campaign selection menu.\n"
+			<< "  -c[[<difficulty>] <id_c> [<id_s]] , --campaign[[<difficulty>] <id_c> [<id_s>]]\n"
+			<< "							   goes directly to the campaign.\n"
+			<< "							   - difficulty : the difficulty of the specified\n"
+			<< "										  campaign (1 to max - Default is 1)\n"
+			<< "							   - id_c: the id of the campaign. A selection \n"
+			<< "								       menu will appear if none specified\n"
+			<< "							   - id_s: the id of the scenario from the\n"
+			<< "									   specified campaign\n"
 			<< "  --config-dir <name>          sets the path of the user config directory to\n"
 			<< "                               $HOME/<name> or My Documents\\My Games\\<name> for windows.\n"
 			<< "  --config-path                prints the path of the user config directory and\n"
@@ -1968,7 +2076,10 @@ static int do_gameloop(int argc, char** argv)
 
 		//Start directly a campaign
 		if(game.goto_campaign() == false){
-			continue; //Go to main menu
+			if (game.jump_to_campaign_id().empty())
+				continue; //Go to main menu
+			else
+				return 1; //we got an error starting the campaign from command line
 		}
 
 		//Start directly a multiplayer
