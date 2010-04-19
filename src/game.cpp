@@ -272,8 +272,8 @@ game_controller::game_controller(int argc, char** argv) :
 	loaded_game_show_replay_(false),
 	loaded_game_cancel_orders_(false),
 	multiplayer_server_(),
-	jump_to_campaign_(false,-1,"",""),
-	jump_to_multiplayer_(false)
+	jump_to_multiplayer_(false),
+	jump_to_campaign_(false,-1,"","")
 #ifndef DISABLE_EDITOR
 	 ,jump_to_editor_(false)
 #endif
@@ -1081,7 +1081,7 @@ bool game_controller::new_campaign()
 		// if we should quit the game or return to the main menu
 
 		// checking for valid campaign name
-		for(int i=0;i<campaigns.size();++i)
+		for(size_t i = 0; i < campaigns.size(); ++i)
 		{
 			if (campaigns[i]["id"] == jump_to_campaign_.campaign_id_)
 			{
@@ -1148,7 +1148,8 @@ bool game_controller::new_campaign()
 		}
 		else
 		{
-			if (jump_to_campaign_.difficulty_ > difficulties.size())
+			if (jump_to_campaign_.difficulty_
+					> static_cast<int>(difficulties.size()))
 			{
 				std::cerr<<"incorrect difficulty number: ["<<jump_to_campaign_.difficulty_<<"]. maximum is ["<<difficulties.size()<<"].\n";
 				return false;
