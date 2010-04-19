@@ -49,6 +49,18 @@ static lg::log_domain log_engine("engine");
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 
+static void clear_resources()
+{
+	resources::game_map = NULL;
+	resources::units = NULL;
+	resources::teams = NULL;
+	resources::state_of_game = NULL;
+	resources::controller = NULL;
+	resources::screen = NULL;
+	resources::soundsources = NULL;
+	resources::tod_manager = NULL;
+}
+
 play_controller::play_controller(const config& level, game_state& state_of_game,
 		int ticks, int num_turns, const config& game_config, CVideo& video,
 		bool skip_replay) :
@@ -106,19 +118,17 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	hotkey::deactivate_all_scopes();
 	hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
 	hotkey::set_scope_active(hotkey::SCOPE_GAME);
-	init(video);
+	try {
+		init(video);
+	} catch (...) {
+		clear_resources();
+		throw;
+	}
 }
 
 play_controller::~play_controller()
 {
-	resources::game_map = NULL;
-	resources::units = NULL;
-	resources::teams = NULL;
-	resources::state_of_game = NULL;
-	resources::controller = NULL;
-	resources::screen = NULL;
-	resources::soundsources = NULL;
-	resources::tod_manager = NULL;
+	clear_resources();
 }
 
 void play_controller::init(CVideo& video){
