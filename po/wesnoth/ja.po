@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-26 15:39+0100\n"
-"PO-Revision-Date: 2010-03-30 22:14+0900\n"
+"POT-Creation-Date: 2010-03-26 15:41+0100\n"
+"PO-Revision-Date: 2010-04-20 06:33+0900\n"
 "Last-Translator: \n"
 "Language-Team: Japanese Translation Team\n"
 "MIME-Version: 1.0\n"
@@ -7146,12 +7146,12 @@ msgstr "テレポートに失敗した！ 出口が空いていなかった"
 #: src/actions.cpp:2538
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
-msgstr[0] "味方ユニット発見"
+msgstr[0] "味方ユニット発見 $friends"
 
 #: src/actions.cpp:2541
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
-msgstr[0] "敵ユニット発見！"
+msgstr[0] "敵ユニット発見！$enemies"
 
 #: src/actions.cpp:2546
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
@@ -8495,8 +8495,9 @@ msgid "aliases:"
 msgstr ""
 
 #: src/menu_events.cpp:2200
+#, fuzzy
 msgid "(A) - auth command"
-msgstr ""
+msgstr "（デバッグコマンド）"
 
 #: src/menu_events.cpp:2207
 #, fuzzy
@@ -8675,12 +8676,14 @@ msgid "(debug command)"
 msgstr "（デバッグコマンド）"
 
 #: src/menu_events.cpp:2404
+#, fuzzy
 msgid " (network only)"
 msgstr "（ネットワークのみ）"
 
 #: src/menu_events.cpp:2405
+#, fuzzy
 msgid " (auth only)"
-msgstr ""
+msgstr "チームのみ"
 
 #: src/menu_events.cpp:2429
 msgid "Refresh gui."
@@ -10082,6 +10085,23 @@ msgstr "Wesnoth をもっとよくするために協力してください！"
 #: src/upload_log.cpp:375
 msgid "Enable summary uploads"
 msgstr "サマリのアップロードを有効にする"
+
+#, fuzzy
+#~ msgid "Multiplayer_AI^Default AI"
+#~ msgstr "マルチプレイヤー"
+
+#, fuzzy
+#~ msgid "Multiplayer_AI^RCA AI"
+#~ msgstr "マルチプレイヤー"
+
+#, fuzzy
+#~ msgid ""
+#~ "You will start the next scenario with the defined minimum starting gold."
+#~ msgid_plural ""
+#~ "You will start the next scenario with the defined minimum starting gold."
+#~ msgstr[0] ""
+#~ "次のシナリオの開始ゴールドは次のシナリオに設定されている最小ゴールドに "
+#~ "$gold を加えたものになります。"
 
 #~ msgid "Unknown unit type '$type|'"
 #~ msgstr "不明なユニットタイプ「 $type| 」"
