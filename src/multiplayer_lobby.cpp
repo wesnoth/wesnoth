@@ -735,7 +735,7 @@ lobby::lobby(game_display& disp, const config& cfg, chat& c, config& gamelist) :
 	invert_filter_(disp.video(), _("Invert"), gui::button::TYPE_CHECK),
 	vacant_slots_(disp.video(), _("Vacant Slots"), gui::button::TYPE_CHECK),
 	friends_in_game_(disp.video(), _("Friends in Game"), gui::button::TYPE_CHECK),
-	filter_label_(disp.video(), _("Search:")),
+	filter_label_(disp.video(), _("Filter:")),
 	filter_text_(disp.video(), 150),
 #endif
 	last_selected_game_(-1), sorter_(gamelist),
