@@ -383,7 +383,7 @@ game_controller::game_controller(int argc, char** argv) :
 			preferences::set_fullscreen(true);
 
 		} else if(val.find("--campaign") == 0 || val.find("-c") == 0) {
-			// campaign starting template: 
+			// campaign starting template:
 			// -c[[<difficulty>] <id_campaign> [<id_scenario>]]
 			// --campaign[[<difficulty>] <id_campaign> [<id_scenario>]]
 			jump_to_campaign_.jump_ = true;
@@ -1077,7 +1077,7 @@ bool game_controller::new_campaign()
 	}
 	else
 	{
-		// don't reset the campaign_id_ so we can know 
+		// don't reset the campaign_id_ so we can know
 		// if we should quit the game or return to the main menu
 
 		// checking for valid campaign name
@@ -1095,7 +1095,7 @@ bool game_controller::new_campaign()
 		{
 			std::cerr<<"No such campaign id to jump to: ["<<jump_to_campaign_.campaign_id_<<"]\n";
 			return false;
-		}	
+		}
 	}
 
 	const config &campaign = campaigns[campaign_num];
