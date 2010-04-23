@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-04-20 11:32+0200\n"
+"POT-Creation-Date: 2010-04-23 23:46+0200\n"
 "PO-Revision-Date: 2006-03-21 21:06-0800\n"
 "Last-Translator: Andrew <Sfradix@hotmail.com>\n"
 "Language-Team: none\n"
@@ -5811,7 +5811,7 @@ msgid ""
 msgstr ""
 
 #: src/addon_management.cpp:532 src/addon_management.cpp:606
-#: src/multiplayer.cpp:215 src/multiplayer.cpp:274 src/multiplayer_ui.cpp:80
+#: src/multiplayer.cpp:216 src/multiplayer.cpp:275 src/multiplayer_ui.cpp:80
 msgid "Connection timed out"
 msgstr ""
 
@@ -6033,7 +6033,7 @@ msgstr ""
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr ""
 
-#: src/addon_management.cpp:1220 src/multiplayer.cpp:227
+#: src/addon_management.cpp:1220 src/multiplayer.cpp:228
 msgid "Confirm"
 msgstr ""
 
@@ -6475,51 +6475,52 @@ msgstr "혼돈 유닛:"
 msgid "Observers:"
 msgstr "관람자:"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:204
+#: src/gui/dialogs/lobby/lobby_data.cpp:204 src/multiplayer_lobby.cpp:431
 msgid "Unknown era: $era_id"
 msgstr ""
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:209
+#: src/gui/dialogs/lobby/lobby_data.cpp:209 src/multiplayer_lobby.cpp:435
 msgid "Unknown era"
 msgstr ""
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:264
+#: src/gui/dialogs/lobby/lobby_data.cpp:264 src/multiplayer_lobby.cpp:497
 msgid "Remote scenario"
 msgstr ""
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:272
+#: src/gui/dialogs/lobby/lobby_data.cpp:272 src/multiplayer_lobby.cpp:504
 msgid "Unknown scenario: $scenario_id"
 msgstr ""
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:277
+#: src/gui/dialogs/lobby/lobby_data.cpp:277 src/multiplayer_lobby.cpp:508
 msgid "Unknown scenario"
 msgstr ""
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:283
+#: src/gui/dialogs/lobby/lobby_data.cpp:283 src/multiplayer_lobby.cpp:513
 #, fuzzy
 msgid "Reloaded game"
 msgstr "저장 된 게임을 불러옵니다"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:294
+#: src/gui/dialogs/lobby/lobby_data.cpp:294 src/multiplayer_lobby.cpp:529
 #, fuzzy
 msgid "Turn "
 msgstr "턴"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:298
+#: src/gui/dialogs/lobby/lobby_data.cpp:298 src/multiplayer_lobby.cpp:533
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] ""
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:304
+#: src/gui/dialogs/lobby/lobby_data.cpp:304 src/multiplayer_lobby.cpp:544
 msgid "Fog"
 msgstr "안개"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:307
 #: src/gui/dialogs/lobby/lobby_data.cpp:310 src/multiplayer_create.cpp:84
+#: src/multiplayer_lobby.cpp:548 src/multiplayer_lobby.cpp:554
 msgid "Shroud"
 msgstr "맵 가리기"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:312
+#: src/gui/dialogs/lobby/lobby_data.cpp:312 src/multiplayer_lobby.cpp:558
 msgid "none"
 msgstr "없음"
 
@@ -7587,74 +7588,74 @@ msgstr "적 공격하기"
 msgid "Choose weapon:"
 msgstr "무기 선택:"
 
-#: src/multiplayer.cpp:137 src/multiplayer.cpp:174
+#: src/multiplayer.cpp:138 src/multiplayer.cpp:175
 msgid "Connecting to Server..."
 msgstr "서버 접속 중"
 
-#: src/multiplayer.cpp:147
+#: src/multiplayer.cpp:148
 msgid "Reading from Server..."
 msgstr "서버로부터 파일 읽는 중"
 
-#: src/multiplayer.cpp:157
+#: src/multiplayer.cpp:158
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
 msgstr ""
 
-#: src/multiplayer.cpp:168
+#: src/multiplayer.cpp:169
 msgid "Server-side redirect loop"
 msgstr ""
 
-#: src/multiplayer.cpp:256
+#: src/multiplayer.cpp:257
 msgid "Bad data received from server"
 msgstr ""
 
-#: src/multiplayer.cpp:297
+#: src/multiplayer.cpp:298
 msgid "You must login first."
 msgstr ""
 
-#: src/multiplayer.cpp:299
+#: src/multiplayer.cpp:300
 msgid "The nick '$nick' is already taken."
 msgstr ""
 
-#: src/multiplayer.cpp:301
+#: src/multiplayer.cpp:302
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
 msgstr ""
 
-#: src/multiplayer.cpp:305
+#: src/multiplayer.cpp:306
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
 msgstr ""
 
-#: src/multiplayer.cpp:308
+#: src/multiplayer.cpp:309
 msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr ""
 
-#: src/multiplayer.cpp:310
+#: src/multiplayer.cpp:311
 msgid "The nick '$nick' is not registered on this server."
 msgstr ""
 
-#: src/multiplayer.cpp:311
+#: src/multiplayer.cpp:312
 msgid " This server disallows unregistered nicks."
 msgstr ""
 
-#: src/multiplayer.cpp:313 src/multiplayer.cpp:315
+#: src/multiplayer.cpp:314 src/multiplayer.cpp:316
 msgid "The nick '$nick' is registered on this server."
 msgstr ""
 
-#: src/multiplayer.cpp:316
+#: src/multiplayer.cpp:317
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
 msgstr ""
 
-#: src/multiplayer.cpp:319
+#: src/multiplayer.cpp:320
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
 
-#: src/multiplayer.cpp:322
+#: src/multiplayer.cpp:323
 msgid "The password you provided was incorrect."
 msgstr ""
 
@@ -7779,7 +7780,7 @@ msgstr ""
 msgid "Waiting for players to join..."
 msgstr "플레이어 접속을 기다리는 중..."
 
-#: src/multiplayer_create.cpp:50
+#: src/multiplayer_create.cpp:50 src/multiplayer_lobby.cpp:727
 msgid "Create Game"
 msgstr "방 만들기"
 
@@ -7795,7 +7796,7 @@ msgstr "게임 이름:"
 msgid "Map to play:"
 msgstr "맵 선택:"
 
-#: src/multiplayer_create.cpp:81
+#: src/multiplayer_create.cpp:81 src/multiplayer_lobby.cpp:272
 msgid "Use map settings"
 msgstr "유즈맵 세팅"
 
@@ -7920,7 +7921,7 @@ msgstr "이름을 입력해야만 합니다."
 msgid "Set Password"
 msgstr ""
 
-#: src/multiplayer_create.cpp:344
+#: src/multiplayer_create.cpp:344 src/multiplayer_lobby.cpp:901
 #, fuzzy
 msgid "Password: "
 msgstr "소드"
@@ -7974,11 +7975,102 @@ msgstr "플레이어 수:"
 msgid "Size: "
 msgstr ""
 
+#: src/multiplayer_lobby.cpp:119
+msgid "--no games open--"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:153
+msgid " (Unknown Era)"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:536 src/multiplayer_lobby.cpp:899
+#, fuzzy
+msgid "Password Required"
+msgstr "소드"
+
+#: src/multiplayer_lobby.cpp:720 src/multiplayer_wait.cpp:174
+msgid "Game Lobby"
+msgstr "게임 로비"
+
+#: src/multiplayer_lobby.cpp:725
+msgid "Observe Game"
+msgstr "게임 관람하기"
+
+#: src/multiplayer_lobby.cpp:726
+msgid "Join Game"
+msgstr "방 접속하기"
+
+#: src/multiplayer_lobby.cpp:728
+#, fuzzy
+msgid "Quick Replays"
+msgstr "리플레이"
+
+#: src/multiplayer_lobby.cpp:730
+msgid "Preferences"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:732
+msgid "Quit"
+msgstr "나가기"
+
+#: src/multiplayer_lobby.cpp:734
+msgid "Apply Filter"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:735
+msgid "Invert"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:736
+msgid "Vacant Slots"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:737
+msgid "Friends in Game"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:738
+msgid "Filter:"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:747
+msgid "Skip quickly to the active turn when observing"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:751
+msgid ""
+"Enable the games filter. If unchecked all games are shown, regardless of any "
+"filter."
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:754
+msgid ""
+"Show all games that do *not* match your filter. Useful for hiding games you "
+"are not interested in."
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:758
+msgid "Only show games that have at least one vacant slot"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:762
+msgid ""
+"Only show games that are played or observed by at least one of your friends"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:766
+msgid "Only show games whose title or description contain the entered text"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:900
+msgid "Joining this game requires a password."
+msgstr ""
+
 #: src/multiplayer_ui.cpp:195
 msgid "Invalid Color"
 msgstr ""
 
-#: src/multiplayer_ui.cpp:425
+#: src/multiplayer_ui.cpp:427
 #, fuzzy
 msgid "Selected user: "
 msgstr "유닛 선택:"
@@ -7990,10 +8082,6 @@ msgstr ""
 #: src/multiplayer_wait.cpp:129
 msgid "Recruits: "
 msgstr ""
-
-#: src/multiplayer_wait.cpp:174
-msgid "Game Lobby"
-msgstr "게임 로비"
 
 #: src/multiplayer_wait.cpp:176
 msgid "Waiting for game to start..."
@@ -8709,19 +8797,6 @@ msgstr ""
 
 #~ msgid "Level"
 #~ msgstr "레벨"
-
-#~ msgid "Observe Game"
-#~ msgstr "게임 관람하기"
-
-#~ msgid "Join Game"
-#~ msgstr "방 접속하기"
-
-#, fuzzy
-#~ msgid "Quick Replays"
-#~ msgstr "리플레이"
-
-#~ msgid "Quit"
-#~ msgstr "나가기"
 
 #, fuzzy
 #~ msgid "End scenario"

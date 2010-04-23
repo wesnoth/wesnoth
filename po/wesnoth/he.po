@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-04-20 11:32+0200\n"
+"POT-Creation-Date: 2010-04-23 23:46+0200\n"
 "PO-Revision-Date: 2009-07-13 00:55+0300\n"
 "Last-Translator: Oron Peled <oron@actcom.co.il>\n"
 "Language-Team: Hebrew\n"
@@ -6534,7 +6534,7 @@ msgid ""
 msgstr ""
 
 #: src/addon_management.cpp:532 src/addon_management.cpp:606
-#: src/multiplayer.cpp:215 src/multiplayer.cpp:274 src/multiplayer_ui.cpp:80
+#: src/multiplayer.cpp:216 src/multiplayer.cpp:275 src/multiplayer_ui.cpp:80
 msgid "Connection timed out"
 msgstr "תם זמן ההמתנה לחיבור"
 
@@ -6743,7 +6743,7 @@ msgstr "מחק תוספים"
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr "אתה בטוח שברצונך למחוק את התוסף  '$addon|'?"
 
-#: src/addon_management.cpp:1220 src/multiplayer.cpp:227
+#: src/addon_management.cpp:1220 src/multiplayer.cpp:228
 msgid "Confirm"
 msgstr "אשר"
 
@@ -7180,56 +7180,57 @@ msgstr "יחידות תוהו: "
 msgid "Observers:"
 msgstr "צופים:"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:204
+#: src/gui/dialogs/lobby/lobby_data.cpp:204 src/multiplayer_lobby.cpp:431
 #, fuzzy
 msgid "Unknown era: $era_id"
 msgstr "עידן לא ידוע: "
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:209
+#: src/gui/dialogs/lobby/lobby_data.cpp:209 src/multiplayer_lobby.cpp:435
 msgid "Unknown era"
 msgstr "עידן לא ידוע: "
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:264
+#: src/gui/dialogs/lobby/lobby_data.cpp:264 src/multiplayer_lobby.cpp:497
 #, fuzzy
 msgid "Remote scenario"
 msgstr "תרחיש לא ידוע"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:272
+#: src/gui/dialogs/lobby/lobby_data.cpp:272 src/multiplayer_lobby.cpp:504
 #, fuzzy
 msgid "Unknown scenario: $scenario_id"
 msgstr "תרחיש לא ידוע: "
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:277
+#: src/gui/dialogs/lobby/lobby_data.cpp:277 src/multiplayer_lobby.cpp:508
 msgid "Unknown scenario"
 msgstr "תרחיש לא ידוע"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:283
+#: src/gui/dialogs/lobby/lobby_data.cpp:283 src/multiplayer_lobby.cpp:513
 #, fuzzy
 msgid "Reloaded game"
 msgstr "טען מחדש משחק לשחקן אחד"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:294
+#: src/gui/dialogs/lobby/lobby_data.cpp:294 src/multiplayer_lobby.cpp:529
 #, fuzzy
 msgid "Turn "
 msgstr "תור"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:298
+#: src/gui/dialogs/lobby/lobby_data.cpp:298 src/multiplayer_lobby.cpp:533
 #, fuzzy
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "מקום פנוי:"
 msgstr[1] "מקום פנוי:"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:304
+#: src/gui/dialogs/lobby/lobby_data.cpp:304 src/multiplayer_lobby.cpp:544
 msgid "Fog"
 msgstr "ערפל"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:307
 #: src/gui/dialogs/lobby/lobby_data.cpp:310 src/multiplayer_create.cpp:84
+#: src/multiplayer_lobby.cpp:548 src/multiplayer_lobby.cpp:554
 msgid "Shroud"
 msgstr "ממוסך"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:312
+#: src/gui/dialogs/lobby/lobby_data.cpp:312 src/multiplayer_lobby.cpp:558
 msgid "none"
 msgstr "אין"
 
@@ -8297,75 +8298,75 @@ msgstr "יש לתקוף את האויב"
 msgid "Choose weapon:"
 msgstr "בחירת נשק:"
 
-#: src/multiplayer.cpp:137 src/multiplayer.cpp:174
+#: src/multiplayer.cpp:138 src/multiplayer.cpp:175
 msgid "Connecting to Server..."
 msgstr "מתחבר לשרת..."
 
-#: src/multiplayer.cpp:147
+#: src/multiplayer.cpp:148
 msgid "Reading from Server..."
 msgstr "קורא מהשרת..."
 
-#: src/multiplayer.cpp:157
+#: src/multiplayer.cpp:158
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
 msgstr "שרת זה דורש גרסה '$version1' בעוד שלך יש גרסה '$version2'"
 
-#: src/multiplayer.cpp:168
+#: src/multiplayer.cpp:169
 msgid "Server-side redirect loop"
 msgstr "לולאת כיוון מחדש בצד של השרת"
 
-#: src/multiplayer.cpp:256
+#: src/multiplayer.cpp:257
 msgid "Bad data received from server"
 msgstr ""
 
-#: src/multiplayer.cpp:297
+#: src/multiplayer.cpp:298
 #, fuzzy
 msgid "You must login first."
 msgstr "אתה חייב להכנס לשרת זה"
 
-#: src/multiplayer.cpp:299
+#: src/multiplayer.cpp:300
 msgid "The nick '$nick' is already taken."
 msgstr ""
 
-#: src/multiplayer.cpp:301
+#: src/multiplayer.cpp:302
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
 msgstr ""
 
-#: src/multiplayer.cpp:305
+#: src/multiplayer.cpp:306
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
 msgstr ""
 
-#: src/multiplayer.cpp:308
+#: src/multiplayer.cpp:309
 msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr ""
 
-#: src/multiplayer.cpp:310
+#: src/multiplayer.cpp:311
 msgid "The nick '$nick' is not registered on this server."
 msgstr ""
 
-#: src/multiplayer.cpp:311
+#: src/multiplayer.cpp:312
 msgid " This server disallows unregistered nicks."
 msgstr ""
 
-#: src/multiplayer.cpp:313 src/multiplayer.cpp:315
+#: src/multiplayer.cpp:314 src/multiplayer.cpp:316
 msgid "The nick '$nick' is registered on this server."
 msgstr ""
 
-#: src/multiplayer.cpp:316
+#: src/multiplayer.cpp:317
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
 msgstr ""
 
-#: src/multiplayer.cpp:319
+#: src/multiplayer.cpp:320
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
 
-#: src/multiplayer.cpp:322
+#: src/multiplayer.cpp:323
 msgid "The password you provided was incorrect."
 msgstr ""
 
@@ -8493,7 +8494,7 @@ msgstr ""
 msgid "Waiting for players to join..."
 msgstr "ממתין להצטרפות שחקנים..."
 
-#: src/multiplayer_create.cpp:50
+#: src/multiplayer_create.cpp:50 src/multiplayer_lobby.cpp:727
 msgid "Create Game"
 msgstr "צור משחק"
 
@@ -8509,7 +8510,7 @@ msgstr "שם משחק:"
 msgid "Map to play:"
 msgstr "מפת משחק:"
 
-#: src/multiplayer_create.cpp:81
+#: src/multiplayer_create.cpp:81 src/multiplayer_lobby.cpp:272
 msgid "Use map settings"
 msgstr "השתמש בהגדרות המפה"
 
@@ -8637,7 +8638,7 @@ msgstr "חובה להקליד שם."
 msgid "Set Password"
 msgstr ""
 
-#: src/multiplayer_create.cpp:344
+#: src/multiplayer_create.cpp:344 src/multiplayer_lobby.cpp:901
 #, fuzzy
 msgid "Password: "
 msgstr "חרב"
@@ -8692,11 +8693,107 @@ msgstr "שחקנים:"
 msgid "Size: "
 msgstr "גודל"
 
+#: src/multiplayer_lobby.cpp:119
+msgid "--no games open--"
+msgstr "--אין משחקים פתוחים--"
+
+#: src/multiplayer_lobby.cpp:153
+#, fuzzy
+msgid " (Unknown Era)"
+msgstr "עידן לא ידוע: "
+
+#: src/multiplayer_lobby.cpp:536 src/multiplayer_lobby.cpp:899
+#, fuzzy
+msgid "Password Required"
+msgstr "חרב"
+
+#: src/multiplayer_lobby.cpp:720 src/multiplayer_wait.cpp:174
+msgid "Game Lobby"
+msgstr "לובי המשחק"
+
+#: src/multiplayer_lobby.cpp:725
+msgid "Observe Game"
+msgstr "התבונן במשחק"
+
+#: src/multiplayer_lobby.cpp:726
+msgid "Join Game"
+msgstr "הצטרף למשחק"
+
+#: src/multiplayer_lobby.cpp:728
+#, fuzzy
+msgid "Quick Replays"
+msgstr " מהתחלה"
+
+#: src/multiplayer_lobby.cpp:730
+#, fuzzy
+msgid "Preferences"
+msgstr "נסיכה"
+
+#: src/multiplayer_lobby.cpp:732
+msgid "Quit"
+msgstr "צא"
+
+#: src/multiplayer_lobby.cpp:734
+#, fuzzy
+msgid "Apply Filter"
+msgstr "סינון: "
+
+#: src/multiplayer_lobby.cpp:735
+msgid "Invert"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:736
+#, fuzzy
+msgid "Vacant Slots"
+msgstr "מקום פנוי:"
+
+#: src/multiplayer_lobby.cpp:737
+msgid "Friends in Game"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:738
+#, fuzzy
+msgid "Filter:"
+msgstr "סינון: "
+
+#: src/multiplayer_lobby.cpp:747
+msgid "Skip quickly to the active turn when observing"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:751
+msgid ""
+"Enable the games filter. If unchecked all games are shown, regardless of any "
+"filter."
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:754
+msgid ""
+"Show all games that do *not* match your filter. Useful for hiding games you "
+"are not interested in."
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:758
+msgid "Only show games that have at least one vacant slot"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:762
+msgid ""
+"Only show games that are played or observed by at least one of your friends"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:766
+msgid "Only show games whose title or description contain the entered text"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:900
+msgid "Joining this game requires a password."
+msgstr ""
+
 #: src/multiplayer_ui.cpp:195
 msgid "Invalid Color"
 msgstr "צבע לא חוקי"
 
-#: src/multiplayer_ui.cpp:425
+#: src/multiplayer_ui.cpp:427
 #, fuzzy
 msgid "Selected user: "
 msgstr "בחר יחידה:"
@@ -8708,10 +8805,6 @@ msgstr "מנהיג: "
 #: src/multiplayer_wait.cpp:129
 msgid "Recruits: "
 msgstr "מגוייסים: "
-
-#: src/multiplayer_wait.cpp:174
-msgid "Game Lobby"
-msgstr "לובי המשחק"
 
 #: src/multiplayer_wait.cpp:176
 msgid "Waiting for game to start..."
@@ -9422,34 +9515,6 @@ msgstr "אפשר העלאות סיכומיפ"
 #~ "Leader position not empty - duplicate side definition for side '$side|' "
 #~ "found."
 #~ msgstr "נמצאה הגדרת צד כפולה לצד '$side|'."
-
-#~ msgid "--no games open--"
-#~ msgstr "--אין משחקים פתוחים--"
-
-#, fuzzy
-#~ msgid " (Unknown Era)"
-#~ msgstr "עידן לא ידוע: "
-
-#~ msgid "Observe Game"
-#~ msgstr "התבונן במשחק"
-
-#~ msgid "Join Game"
-#~ msgstr "הצטרף למשחק"
-
-#, fuzzy
-#~ msgid "Quick Replays"
-#~ msgstr " מהתחלה"
-
-#, fuzzy
-#~ msgid "Preferences"
-#~ msgstr "נסיכה"
-
-#~ msgid "Quit"
-#~ msgstr "צא"
-
-#, fuzzy
-#~ msgid "Vacant Slots"
-#~ msgstr "מקום פנוי:"
 
 #, fuzzy
 #~ msgid "Search:"

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-04-20 11:32+0200\n"
+"POT-Creation-Date: 2010-04-23 23:46+0200\n"
 "PO-Revision-Date: 2009-09-26 15:40+0700\n"
 "Last-Translator: Phạm Thành Nam <phamthanhnam.ptn@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
@@ -7396,7 +7396,7 @@ msgstr ""
 "để chơi.)"
 
 #: src/addon_management.cpp:532 src/addon_management.cpp:606
-#: src/multiplayer.cpp:215 src/multiplayer.cpp:274 src/multiplayer_ui.cpp:80
+#: src/multiplayer.cpp:216 src/multiplayer.cpp:275 src/multiplayer_ui.cpp:80
 msgid "Connection timed out"
 msgstr "Kết nối hết giờ"
 
@@ -7608,7 +7608,7 @@ msgstr "Gỡ bỏ phần bổ sung"
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr "Bạn có chắc bạn muốn xóa phần bổ sung '$addon|' không?"
 
-#: src/addon_management.cpp:1220 src/multiplayer.cpp:227
+#: src/addon_management.cpp:1220 src/multiplayer.cpp:228
 msgid "Confirm"
 msgstr "Xác nhận"
 
@@ -8046,49 +8046,50 @@ msgstr "Đơn vị hỗn độn: "
 msgid "Observers:"
 msgstr "Người quan sát:"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:204
+#: src/gui/dialogs/lobby/lobby_data.cpp:204 src/multiplayer_lobby.cpp:431
 msgid "Unknown era: $era_id"
 msgstr "Kỷ nguyên không xác định: $era_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:209
+#: src/gui/dialogs/lobby/lobby_data.cpp:209 src/multiplayer_lobby.cpp:435
 msgid "Unknown era"
 msgstr "Kỷ nguyên không xác định"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:264
+#: src/gui/dialogs/lobby/lobby_data.cpp:264 src/multiplayer_lobby.cpp:497
 msgid "Remote scenario"
 msgstr "Kịch bản xa"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:272
+#: src/gui/dialogs/lobby/lobby_data.cpp:272 src/multiplayer_lobby.cpp:504
 msgid "Unknown scenario: $scenario_id"
 msgstr "Kịch bản không xác định: $scenario_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:277
+#: src/gui/dialogs/lobby/lobby_data.cpp:277 src/multiplayer_lobby.cpp:508
 msgid "Unknown scenario"
 msgstr "Kịch bản không xác định"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:283
+#: src/gui/dialogs/lobby/lobby_data.cpp:283 src/multiplayer_lobby.cpp:513
 msgid "Reloaded game"
 msgstr "Trò chơi tải lại"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:294
+#: src/gui/dialogs/lobby/lobby_data.cpp:294 src/multiplayer_lobby.cpp:529
 msgid "Turn "
 msgstr "Lượt "
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:298
+#: src/gui/dialogs/lobby/lobby_data.cpp:298 src/multiplayer_lobby.cpp:533
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Khe trống:"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:304
+#: src/gui/dialogs/lobby/lobby_data.cpp:304 src/multiplayer_lobby.cpp:544
 msgid "Fog"
 msgstr "Sương mù"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:307
 #: src/gui/dialogs/lobby/lobby_data.cpp:310 src/multiplayer_create.cpp:84
+#: src/multiplayer_lobby.cpp:548 src/multiplayer_lobby.cpp:554
 msgid "Shroud"
 msgstr "Màn che"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:312
+#: src/gui/dialogs/lobby/lobby_data.cpp:312 src/multiplayer_lobby.cpp:558
 msgid "none"
 msgstr "không có"
 
@@ -9155,15 +9156,15 @@ msgstr "Tấn công kẻ thù"
 msgid "Choose weapon:"
 msgstr "Chọn vũ khí:"
 
-#: src/multiplayer.cpp:137 src/multiplayer.cpp:174
+#: src/multiplayer.cpp:138 src/multiplayer.cpp:175
 msgid "Connecting to Server..."
 msgstr "Đang kết nối đến máy chủ..."
 
-#: src/multiplayer.cpp:147
+#: src/multiplayer.cpp:148
 msgid "Reading from Server..."
 msgstr "Đang đọc từ máy chủ..."
 
-#: src/multiplayer.cpp:157
+#: src/multiplayer.cpp:158
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
@@ -9171,23 +9172,23 @@ msgstr ""
 "Máy chủ yêu cầu phiên bản '$version1' trong khi bạn đang sử dụng phiên bản "
 "'$version2'"
 
-#: src/multiplayer.cpp:168
+#: src/multiplayer.cpp:169
 msgid "Server-side redirect loop"
 msgstr "Lặp điều hướng phía máy chủ"
 
-#: src/multiplayer.cpp:256
+#: src/multiplayer.cpp:257
 msgid "Bad data received from server"
 msgstr ""
 
-#: src/multiplayer.cpp:297
+#: src/multiplayer.cpp:298
 msgid "You must login first."
 msgstr "Trước hết bạn phải đăng nhập."
 
-#: src/multiplayer.cpp:299
+#: src/multiplayer.cpp:300
 msgid "The nick '$nick' is already taken."
 msgstr "Biệt danh '$nick' đã bị lấy."
 
-#: src/multiplayer.cpp:301
+#: src/multiplayer.cpp:302
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
@@ -9195,27 +9196,27 @@ msgstr ""
 "Biệt danh '$nick' chứa ký tự không hợp lệ. Chỉ cho phép các ký tự dạng chữ "
 "cái, chữ số, dấu gạch dưới và gạch nối."
 
-#: src/multiplayer.cpp:305
+#: src/multiplayer.cpp:306
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
 msgstr "Biệt danh '$nick' quá dài. Biệt danh phải từ 18 ký tự trở xuống."
 
-#: src/multiplayer.cpp:308
+#: src/multiplayer.cpp:309
 msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr "Biệt danh '$nick' là dành riêng và các đấu thủ không thể sử dụng."
 
-#: src/multiplayer.cpp:310
+#: src/multiplayer.cpp:311
 msgid "The nick '$nick' is not registered on this server."
 msgstr "Biệt danh '$nick' không đăng ký trên máy chủ này."
 
-#: src/multiplayer.cpp:311
+#: src/multiplayer.cpp:312
 msgid " This server disallows unregistered nicks."
 msgstr " Máy chủ này không cho phép những biệt danh không đăng ký."
 
-#: src/multiplayer.cpp:313 src/multiplayer.cpp:315
+#: src/multiplayer.cpp:314 src/multiplayer.cpp:316
 msgid "The nick '$nick' is registered on this server."
 msgstr "Biệt danh '$nick' đã đăng ký trên máy chủ này."
 
-#: src/multiplayer.cpp:316
+#: src/multiplayer.cpp:317
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
@@ -9223,12 +9224,12 @@ msgstr ""
 "CẢNH BÁO: Đã có một máy khách sử dụng biệt danh này, đăng nhập sẽ làm cho "
 "máy khách đó bị đuổi!"
 
-#: src/multiplayer.cpp:319
+#: src/multiplayer.cpp:320
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr "Lỗi trong thủ tục đăng nhập (máy chủ không gieo mầm kết nối của bạn)."
 
-#: src/multiplayer.cpp:322
+#: src/multiplayer.cpp:323
 msgid "The password you provided was incorrect."
 msgstr "Mật khẩu bạn cung cấp không đúng."
 
@@ -9348,7 +9349,7 @@ msgstr "Đánh bại lãnh đạo kẻ thù"
 msgid "Waiting for players to join..."
 msgstr "Đang chờ các đấu thủ tham gia..."
 
-#: src/multiplayer_create.cpp:50
+#: src/multiplayer_create.cpp:50 src/multiplayer_lobby.cpp:727
 msgid "Create Game"
 msgstr "Tạo trò chơi"
 
@@ -9364,7 +9365,7 @@ msgstr "Tên trò chơi:"
 msgid "Map to play:"
 msgstr "Bản đồ cần chơi:"
 
-#: src/multiplayer_create.cpp:81
+#: src/multiplayer_create.cpp:81 src/multiplayer_lobby.cpp:272
 msgid "Use map settings"
 msgstr "Sử dụng thiết lập bản đồ"
 
@@ -9491,7 +9492,7 @@ msgstr "Bạn phải nhập một tên."
 msgid "Set Password"
 msgstr "Đặt mật khẩu"
 
-#: src/multiplayer_create.cpp:344
+#: src/multiplayer_create.cpp:344 src/multiplayer_lobby.cpp:901
 msgid "Password: "
 msgstr "Mật khẩu: "
 
@@ -9540,11 +9541,107 @@ msgstr "Đấu thủ: "
 msgid "Size: "
 msgstr "Kích thước: "
 
+#: src/multiplayer_lobby.cpp:119
+msgid "--no games open--"
+msgstr "--không có trò chơi nào mở--"
+
+#: src/multiplayer_lobby.cpp:153
+msgid " (Unknown Era)"
+msgstr " (Kỷ nguyên không xác định)"
+
+#: src/multiplayer_lobby.cpp:536 src/multiplayer_lobby.cpp:899
+msgid "Password Required"
+msgstr "Cần mật khẩu"
+
+#: src/multiplayer_lobby.cpp:720 src/multiplayer_wait.cpp:174
+msgid "Game Lobby"
+msgstr "Phòng gặp gỡ"
+
+#: src/multiplayer_lobby.cpp:725
+msgid "Observe Game"
+msgstr "Quan sát trò chơi"
+
+#: src/multiplayer_lobby.cpp:726
+msgid "Join Game"
+msgstr "Tham gia trò chơi"
+
+#: src/multiplayer_lobby.cpp:728
+msgid "Quick Replays"
+msgstr "Phát lại nhanh"
+
+#: src/multiplayer_lobby.cpp:730
+msgid "Preferences"
+msgstr "Tùy thích"
+
+#: src/multiplayer_lobby.cpp:732
+msgid "Quit"
+msgstr "Thoát"
+
+#: src/multiplayer_lobby.cpp:734
+msgid "Apply Filter"
+msgstr "Áp dụng bộ lọc"
+
+#: src/multiplayer_lobby.cpp:735
+msgid "Invert"
+msgstr "Đảo ngược"
+
+#: src/multiplayer_lobby.cpp:736
+msgid "Vacant Slots"
+msgstr "Khe trống"
+
+#: src/multiplayer_lobby.cpp:737
+msgid "Friends in Game"
+msgstr "Bạn bè đang chơi"
+
+#: src/multiplayer_lobby.cpp:738
+#, fuzzy
+msgid "Filter:"
+msgstr "Bộ lọc: "
+
+#: src/multiplayer_lobby.cpp:747
+msgid "Skip quickly to the active turn when observing"
+msgstr "Nhảy nhanh đến lượt hoạt động khi quan sát"
+
+#: src/multiplayer_lobby.cpp:751
+msgid ""
+"Enable the games filter. If unchecked all games are shown, regardless of any "
+"filter."
+msgstr ""
+"Cho hiệu lực bộ lọc trò chơi. Nếu không đánh dấu, sẽ hiện mọi trò chơi, bất "
+"kể bộ lọc là gì."
+
+#: src/multiplayer_lobby.cpp:754
+msgid ""
+"Show all games that do *not* match your filter. Useful for hiding games you "
+"are not interested in."
+msgstr ""
+"Hiện tất cả các trò chơi *không* khớp với bộ lọc của bạn. Hữu ích khi ẩn "
+"những trò chơi mà bạn không quan tâm."
+
+#: src/multiplayer_lobby.cpp:758
+msgid "Only show games that have at least one vacant slot"
+msgstr "Chỉ hiện những trò chơi có ít nhất một khe trống"
+
+#: src/multiplayer_lobby.cpp:762
+msgid ""
+"Only show games that are played or observed by at least one of your friends"
+msgstr ""
+"Chỉ hiện những trò chơi do ít nhất một trong số các bạn bè của bạn chơi hoặc "
+"quan sát"
+
+#: src/multiplayer_lobby.cpp:766
+msgid "Only show games whose title or description contain the entered text"
+msgstr "Chỉ hiện những trò chơi có tiêu đề hoặc mô tả chứa văn bản nhập"
+
+#: src/multiplayer_lobby.cpp:900
+msgid "Joining this game requires a password."
+msgstr "Cần mật khẩu để tham gia trò chơi này."
+
 #: src/multiplayer_ui.cpp:195
 msgid "Invalid Color"
 msgstr "Màu không hợp lệ"
 
-#: src/multiplayer_ui.cpp:425
+#: src/multiplayer_ui.cpp:427
 msgid "Selected user: "
 msgstr "Người dùng được chọn: "
 
@@ -9555,10 +9652,6 @@ msgstr "Người lãnh đạo: "
 #: src/multiplayer_wait.cpp:129
 msgid "Recruits: "
 msgstr "Tuyển quân: "
-
-#: src/multiplayer_wait.cpp:174
-msgid "Game Lobby"
-msgstr "Phòng gặp gỡ"
 
 #: src/multiplayer_wait.cpp:176
 msgid "Waiting for game to start..."
@@ -10258,77 +10351,8 @@ msgstr "Cho phép tải lên bản tổng kết"
 #~ "found."
 #~ msgstr "Vị trí người lãnh đạo không trống - trùng định nghĩa phe '$side|'."
 
-#~ msgid "--no games open--"
-#~ msgstr "--không có trò chơi nào mở--"
-
-#~ msgid " (Unknown Era)"
-#~ msgstr " (Kỷ nguyên không xác định)"
-
-#~ msgid "Password Required"
-#~ msgstr "Cần mật khẩu"
-
-#~ msgid "Observe Game"
-#~ msgstr "Quan sát trò chơi"
-
-#~ msgid "Join Game"
-#~ msgstr "Tham gia trò chơi"
-
-#~ msgid "Quick Replays"
-#~ msgstr "Phát lại nhanh"
-
-#~ msgid "Preferences"
-#~ msgstr "Tùy thích"
-
-#~ msgid "Quit"
-#~ msgstr "Thoát"
-
-#~ msgid "Apply Filter"
-#~ msgstr "Áp dụng bộ lọc"
-
-#~ msgid "Invert"
-#~ msgstr "Đảo ngược"
-
-#~ msgid "Vacant Slots"
-#~ msgstr "Khe trống"
-
-#~ msgid "Friends in Game"
-#~ msgstr "Bạn bè đang chơi"
-
 #~ msgid "Search:"
 #~ msgstr "Tìm kiếm:"
-
-#~ msgid "Skip quickly to the active turn when observing"
-#~ msgstr "Nhảy nhanh đến lượt hoạt động khi quan sát"
-
-#~ msgid ""
-#~ "Enable the games filter. If unchecked all games are shown, regardless of "
-#~ "any filter."
-#~ msgstr ""
-#~ "Cho hiệu lực bộ lọc trò chơi. Nếu không đánh dấu, sẽ hiện mọi trò chơi, "
-#~ "bất kể bộ lọc là gì."
-
-#~ msgid ""
-#~ "Show all games that do *not* match your filter. Useful for hiding games "
-#~ "you are not interested in."
-#~ msgstr ""
-#~ "Hiện tất cả các trò chơi *không* khớp với bộ lọc của bạn. Hữu ích khi ẩn "
-#~ "những trò chơi mà bạn không quan tâm."
-
-#~ msgid "Only show games that have at least one vacant slot"
-#~ msgstr "Chỉ hiện những trò chơi có ít nhất một khe trống"
-
-#~ msgid ""
-#~ "Only show games that are played or observed by at least one of your "
-#~ "friends"
-#~ msgstr ""
-#~ "Chỉ hiện những trò chơi do ít nhất một trong số các bạn bè của bạn chơi "
-#~ "hoặc quan sát"
-
-#~ msgid "Only show games whose title or description contain the entered text"
-#~ msgstr "Chỉ hiện những trò chơi có tiêu đề hoặc mô tả chứa văn bản nhập"
-
-#~ msgid "Joining this game requires a password."
-#~ msgstr "Cần mật khẩu để tham gia trò chơi này."
 
 #~ msgid "End scenario"
 #~ msgstr "Kết thúc kịch bản"

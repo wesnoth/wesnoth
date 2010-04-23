@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-04-20 11:32+0200\n"
+"POT-Creation-Date: 2010-04-23 23:46+0200\n"
 "PO-Revision-Date: 2009-10-11 21:15-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -7184,7 +7184,7 @@ msgstr ""
 "𐑦𐑯 𐑹𐑛𐑼 𐑑 𐑐𐑤𐑱.)"
 
 #: src/addon_management.cpp:532 src/addon_management.cpp:606
-#: src/multiplayer.cpp:215 src/multiplayer.cpp:274 src/multiplayer_ui.cpp:80
+#: src/multiplayer.cpp:216 src/multiplayer.cpp:275 src/multiplayer_ui.cpp:80
 msgid "Connection timed out"
 msgstr "𐑒𐑩𐑯𐑧𐑒𐑖𐑩𐑯 𐑑𐑲𐑥𐑛 𐑬𐑑"
 
@@ -7396,7 +7396,7 @@ msgstr "𐑳𐑯𐑦𐑯𐑕𐑑𐑷𐑤 𐑨𐑛-𐑭𐑯𐑟"
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr "𐑸 𐑿 𐑖𐑫𐑼 𐑿 𐑢𐑪𐑯𐑑 𐑑 𐑮𐑰𐑥𐑵𐑝 𐑞 𐑨𐑛-𐑪𐑯 '$addon|'?"
 
-#: src/addon_management.cpp:1220 src/multiplayer.cpp:227
+#: src/addon_management.cpp:1220 src/multiplayer.cpp:228
 msgid "Confirm"
 msgstr "𐑒𐑪𐑯𐑓𐑻𐑥"
 
@@ -7833,50 +7833,51 @@ msgstr "𐑒𐑱𐑭𐑑𐑦𐑒 𐑿𐑯𐑦𐑑𐑕: "
 msgid "Observers:"
 msgstr "𐑩𐑚𐑟𐑻𐑝𐑼𐑟:"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:204
+#: src/gui/dialogs/lobby/lobby_data.cpp:204 src/multiplayer_lobby.cpp:431
 msgid "Unknown era: $era_id"
 msgstr "𐑳𐑯𐑯𐑴𐑯 𐑽𐑩: $era_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:209
+#: src/gui/dialogs/lobby/lobby_data.cpp:209 src/multiplayer_lobby.cpp:435
 msgid "Unknown era"
 msgstr "𐑳𐑯𐑯𐑴𐑯 𐑽𐑩"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:264
+#: src/gui/dialogs/lobby/lobby_data.cpp:264 src/multiplayer_lobby.cpp:497
 msgid "Remote scenario"
 msgstr "𐑮𐑦𐑥𐑴𐑑 𐑕𐑦𐑯𐑺𐑰𐑴"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:272
+#: src/gui/dialogs/lobby/lobby_data.cpp:272 src/multiplayer_lobby.cpp:504
 msgid "Unknown scenario: $scenario_id"
 msgstr "𐑳𐑯𐑯𐑴𐑯 𐑕𐑦𐑯𐑺𐑰𐑴: $scenario_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:277
+#: src/gui/dialogs/lobby/lobby_data.cpp:277 src/multiplayer_lobby.cpp:508
 msgid "Unknown scenario"
 msgstr "𐑳𐑯𐑯𐑴𐑯 𐑕𐑦𐑯𐑺𐑰𐑴"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:283
+#: src/gui/dialogs/lobby/lobby_data.cpp:283 src/multiplayer_lobby.cpp:513
 msgid "Reloaded game"
 msgstr "𐑮𐑰𐑤𐑴𐑛𐑦𐑛 𐑜𐑱𐑥"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:294
+#: src/gui/dialogs/lobby/lobby_data.cpp:294 src/multiplayer_lobby.cpp:529
 msgid "Turn "
 msgstr "𐑑𐑻𐑯 "
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:298
+#: src/gui/dialogs/lobby/lobby_data.cpp:298 src/multiplayer_lobby.cpp:533
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "𐑝𐑱𐑒𐑩𐑯𐑑 𐑕𐑤𐑪𐑑:"
 msgstr[1] "𐑝𐑱𐑒𐑩𐑯𐑑 𐑕𐑤𐑭𐑑𐑕:"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:304
+#: src/gui/dialogs/lobby/lobby_data.cpp:304 src/multiplayer_lobby.cpp:544
 msgid "Fog"
 msgstr "𐑓𐑪𐑜"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:307
 #: src/gui/dialogs/lobby/lobby_data.cpp:310 src/multiplayer_create.cpp:84
+#: src/multiplayer_lobby.cpp:548 src/multiplayer_lobby.cpp:554
 msgid "Shroud"
 msgstr "𐑖𐑮𐑬𐑛"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:312
+#: src/gui/dialogs/lobby/lobby_data.cpp:312 src/multiplayer_lobby.cpp:558
 msgid "none"
 msgstr "𐑯𐑳𐑯"
 
@@ -8935,37 +8936,37 @@ msgstr "𐑩𐑑𐑨𐑒 𐑧𐑯𐑩𐑥𐑦"
 msgid "Choose weapon:"
 msgstr "𐑗𐑵𐑟 𐑢𐑧𐑐𐑩𐑯:"
 
-#: src/multiplayer.cpp:137 src/multiplayer.cpp:174
+#: src/multiplayer.cpp:138 src/multiplayer.cpp:175
 msgid "Connecting to Server..."
 msgstr "𐑒𐑩𐑯𐑧𐑒𐑑𐑦𐑙 𐑑 𐑕𐑻𐑝𐑻..."
 
-#: src/multiplayer.cpp:147
+#: src/multiplayer.cpp:148
 msgid "Reading from Server..."
 msgstr "𐑮𐑰𐑛𐑦𐑙 𐑓𐑮𐑪𐑥 𐑕𐑻𐑝𐑻..."
 
-#: src/multiplayer.cpp:157
+#: src/multiplayer.cpp:158
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
 msgstr "𐑞 𐑕𐑻𐑝𐑻 𐑮𐑦𐑒𐑢𐑲𐑼𐑟 𐑝𐑻𐑠𐑩𐑯 '$version1' 𐑢𐑲𐑤 𐑿 𐑸 𐑿𐑟𐑦𐑙 𐑝𐑻𐑠𐑩𐑯 '$version2'"
 
-#: src/multiplayer.cpp:168
+#: src/multiplayer.cpp:169
 msgid "Server-side redirect loop"
 msgstr "𐑕𐑻𐑝𐑻-𐑕𐑲𐑛 𐑮𐑰𐑛𐑻𐑧𐑒𐑑 𐑤𐑵𐑐"
 
-#: src/multiplayer.cpp:256
+#: src/multiplayer.cpp:257
 msgid "Bad data received from server"
 msgstr ""
 
-#: src/multiplayer.cpp:297
+#: src/multiplayer.cpp:298
 msgid "You must login first."
 msgstr "𐑿 𐑥𐑳𐑕𐑑 𐑤𐑪𐑜𐑦𐑯 𐑓𐑻𐑕𐑑."
 
-#: src/multiplayer.cpp:299
+#: src/multiplayer.cpp:300
 msgid "The nick '$nick' is already taken."
 msgstr "𐑞 𐑯𐑦𐑒 '$nick' 𐑦𐑟 𐑷𐑤𐑮𐑧𐑛𐑦 𐑑𐑱𐑒𐑩𐑯."
 
-#: src/multiplayer.cpp:301
+#: src/multiplayer.cpp:302
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
@@ -8973,27 +8974,27 @@ msgstr ""
 "𐑞 𐑯𐑦𐑒 '$nick' 𐑒𐑩𐑯𐑑𐑱𐑯𐑟 𐑦𐑯𐑝𐑨𐑤𐑦𐑛 𐑒𐑨𐑮𐑩𐑒𐑑𐑼𐑟. 𐑴𐑯𐑤𐑦 𐑨𐑤𐑓𐑩-𐑯𐑿𐑥𐑧𐑮𐑦𐑒 𐑒𐑨𐑮𐑩𐑒𐑑𐑼𐑟, 𐑩𐑯𐑛𐑻𐑕𐑒𐑹𐑟 "
 "𐑯 𐑣𐑲𐑓𐑧𐑯𐑕 𐑸 𐑩𐑤𐑬𐑛."
 
-#: src/multiplayer.cpp:305
+#: src/multiplayer.cpp:306
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
 msgstr "𐑞 𐑯𐑦𐑒 '$nick' 𐑦𐑟 𐑑𐑵 𐑤𐑪𐑙. 𐑯𐑦𐑒𐑕 𐑥𐑳𐑕𐑑 𐑚𐑰 18 𐑒𐑨𐑮𐑩𐑒𐑑𐑼𐑟 𐑹 𐑤𐑧𐑕."
 
-#: src/multiplayer.cpp:308
+#: src/multiplayer.cpp:309
 msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr "𐑞 𐑯𐑦𐑒 '$nick' 𐑦𐑟 𐑮𐑦𐑟𐑻𐑝𐑛 𐑯 𐑒𐑨𐑯𐑪𐑑 𐑚𐑰 𐑫𐑸𐑹𐑴𐑖𐑱𐑿𐑟𐑛 𐑚𐑲 𐑐𐑤𐑱𐑼𐑟."
 
-#: src/multiplayer.cpp:310
+#: src/multiplayer.cpp:311
 msgid "The nick '$nick' is not registered on this server."
 msgstr "𐑞 𐑯𐑦𐑒 '$nick' 𐑦𐑟 𐑯𐑪𐑑 𐑮𐑧𐑡𐑦𐑕𐑑𐑼𐑛 𐑪𐑯 𐑞𐑦𐑕 𐑕𐑻𐑝𐑻."
 
-#: src/multiplayer.cpp:311
+#: src/multiplayer.cpp:312
 msgid " This server disallows unregistered nicks."
 msgstr "𐑞𐑦𐑕 𐑕𐑻𐑝𐑻 𐑛𐑦𐑕𐑩𐑤𐑬𐑕 𐑩𐑯𐑮𐑧𐑡𐑦𐑕𐑑𐑻𐑛 𐑯𐑦𐑒𐑕."
 
-#: src/multiplayer.cpp:313 src/multiplayer.cpp:315
+#: src/multiplayer.cpp:314 src/multiplayer.cpp:316
 msgid "The nick '$nick' is registered on this server."
 msgstr "𐑞 𐑯𐑦𐑒 '$nick' 𐑦𐑟 𐑮𐑧𐑡𐑦𐑕𐑑𐑼𐑛 𐑪𐑯 𐑞𐑦𐑕 𐑕𐑻𐑝𐑻."
 
-#: src/multiplayer.cpp:316
+#: src/multiplayer.cpp:317
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
@@ -9001,12 +9002,12 @@ msgstr ""
 "𐑢𐑹𐑯𐑦𐑙: 𐑞𐑺 𐑦𐑟 𐑷𐑤𐑮𐑧𐑛𐑦 𐑩 𐑒𐑤𐑲𐑩𐑯𐑑 𐑿𐑟𐑦𐑙 𐑞𐑦𐑕 𐑯𐑦𐑒, 𐑤𐑪𐑜𐑦𐑙 𐑦𐑯 𐑢𐑦𐑤 𐑒𐑷𐑟 𐑞𐑨𐑑 𐑒𐑤𐑲𐑩𐑯𐑑 𐑑 𐑚𐑰 "
 "𐑒𐑦𐑒𐑑!"
 
-#: src/multiplayer.cpp:319
+#: src/multiplayer.cpp:320
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr "𐑻𐑹 𐑦𐑯 𐑞 𐑤𐑪𐑜𐑦𐑯 𐑐𐑮𐑩𐑕𐑰𐑡𐑻 (𐑞 𐑕𐑻𐑝𐑻 𐑣𐑨𐑛 𐑯𐑴 𐑕𐑰𐑛 𐑓𐑹 𐑿𐑼 𐑒𐑩𐑯𐑧𐑒𐑖𐑩𐑯)."
 
-#: src/multiplayer.cpp:322
+#: src/multiplayer.cpp:323
 msgid "The password you provided was incorrect."
 msgstr "𐑞 𐑐𐑭𐑕𐑢𐑻𐑛 𐑿 𐑐𐑮𐑩𐑝𐑲𐑛𐑩𐑛 𐑢𐑪𐑟 𐑦𐑯𐑒𐑩𐑮𐑧𐑒𐑑."
 
@@ -9126,7 +9127,7 @@ msgstr "𐑛𐑦𐑓𐑰𐑑 𐑧𐑯𐑩𐑥𐑦 𐑤𐑰𐑛𐑻(𐑕)"
 msgid "Waiting for players to join..."
 msgstr "𐑢𐑱𐑑𐑦𐑙 𐑓𐑹 𐑐𐑤𐑱𐑼𐑟 𐑑 𐑡𐑶𐑯..."
 
-#: src/multiplayer_create.cpp:50
+#: src/multiplayer_create.cpp:50 src/multiplayer_lobby.cpp:727
 msgid "Create Game"
 msgstr "𐑒𐑮𐑰𐑱𐑑 𐑜𐑱𐑥"
 
@@ -9142,7 +9143,7 @@ msgstr "𐑯𐑱𐑥 𐑝 𐑜𐑱𐑥:"
 msgid "Map to play:"
 msgstr "𐑥𐑨𐑐 𐑑 𐑐𐑤𐑱:"
 
-#: src/multiplayer_create.cpp:81
+#: src/multiplayer_create.cpp:81 src/multiplayer_lobby.cpp:272
 msgid "Use map settings"
 msgstr "𐑿𐑟 𐑥𐑨𐑐 𐑕𐑧𐑑𐑦𐑙𐑟"
 
@@ -9267,7 +9268,7 @@ msgstr "𐑿 𐑥𐑳𐑕𐑑 𐑧𐑯𐑑𐑼 𐑩 𐑯𐑱𐑥."
 msgid "Set Password"
 msgstr "𐑕𐑧𐑑 𐑐𐑭𐑕𐑢𐑻𐑛"
 
-#: src/multiplayer_create.cpp:344
+#: src/multiplayer_create.cpp:344 src/multiplayer_lobby.cpp:901
 msgid "Password: "
 msgstr "𐑐𐑭𐑕𐑢𐑻𐑛: "
 
@@ -9316,11 +9317,103 @@ msgstr "𐑐𐑤𐑱𐑼𐑟: "
 msgid "Size: "
 msgstr "𐑕𐑲𐑟: "
 
+#: src/multiplayer_lobby.cpp:119
+msgid "--no games open--"
+msgstr "--no 𐑜𐑱𐑥𐑟 𐑴𐑐𐑩𐑯--"
+
+#: src/multiplayer_lobby.cpp:153
+msgid " (Unknown Era)"
+msgstr "(𐑳𐑯𐑯𐑴𐑯 𐑽𐑩)"
+
+#: src/multiplayer_lobby.cpp:536 src/multiplayer_lobby.cpp:899
+msgid "Password Required"
+msgstr "𐑐𐑭𐑕𐑢𐑻𐑛 𐑮𐑦𐑒𐑢𐑲𐑼𐑛"
+
+#: src/multiplayer_lobby.cpp:720 src/multiplayer_wait.cpp:174
+msgid "Game Lobby"
+msgstr "𐑜𐑱𐑥 𐑤𐑭𐑚𐑰"
+
+#: src/multiplayer_lobby.cpp:725
+msgid "Observe Game"
+msgstr "𐑩𐑚𐑟𐑻𐑝 𐑜𐑱𐑥"
+
+#: src/multiplayer_lobby.cpp:726
+msgid "Join Game"
+msgstr "𐑡𐑶𐑯 𐑜𐑱𐑥"
+
+#: src/multiplayer_lobby.cpp:728
+msgid "Quick Replays"
+msgstr "𐑒𐑢𐑦𐑒 𐑮𐑰𐑐𐑤𐑱𐑟"
+
+#: src/multiplayer_lobby.cpp:730
+msgid "Preferences"
+msgstr "𐑐𐑮𐑧𐑓𐑼𐑩𐑯𐑕𐑩𐑟"
+
+#: src/multiplayer_lobby.cpp:732
+msgid "Quit"
+msgstr "𐑒𐑢𐑦𐑑"
+
+#: src/multiplayer_lobby.cpp:734
+msgid "Apply Filter"
+msgstr "𐑩𐑐𐑤𐑲 𐑓𐑦𐑤𐑑𐑼"
+
+#: src/multiplayer_lobby.cpp:735
+msgid "Invert"
+msgstr "𐑦𐑯𐑝𐑻𐑑"
+
+#: src/multiplayer_lobby.cpp:736
+msgid "Vacant Slots"
+msgstr "𐑝𐑱𐑒𐑩𐑯𐑑 𐑕𐑤𐑭𐑑𐑕"
+
+#: src/multiplayer_lobby.cpp:737
+msgid "Friends in Game"
+msgstr "𐑓𐑮𐑧𐑯𐑛𐑟 𐑦𐑯 𐑜𐑱𐑥"
+
+#: src/multiplayer_lobby.cpp:738
+#, fuzzy
+msgid "Filter:"
+msgstr "𐑓𐑦𐑤𐑑𐑼: "
+
+#: src/multiplayer_lobby.cpp:747
+msgid "Skip quickly to the active turn when observing"
+msgstr "𐑕𐑒𐑦𐑐 𐑒𐑢𐑦𐑒𐑤𐑦 𐑑 𐑞 𐑨𐑒𐑑𐑦𐑝 𐑑𐑻𐑯 𐑢𐑧𐑯 𐑩𐑚𐑟𐑻𐑝𐑦𐑙"
+
+#: src/multiplayer_lobby.cpp:751
+msgid ""
+"Enable the games filter. If unchecked all games are shown, regardless of any "
+"filter."
+msgstr "𐑦𐑯𐑱𐑚𐑩𐑤 𐑞 𐑜𐑱𐑥𐑟 𐑓𐑦𐑤𐑑𐑼. 𐑦𐑓 𐑩𐑯𐑗𐑧𐑒𐑑 𐑷𐑤 𐑜𐑱𐑥𐑟 𐑸 𐑖𐑴𐑯, 𐑮𐑦𐑜𐑸𐑛𐑤𐑩𐑕 𐑝 𐑧𐑯𐑦 𐑓𐑦𐑤𐑑𐑼."
+
+#: src/multiplayer_lobby.cpp:754
+msgid ""
+"Show all games that do *not* match your filter. Useful for hiding games you "
+"are not interested in."
+msgstr ""
+"𐑖𐑴 𐑷𐑤 𐑜𐑱𐑥𐑟 𐑞𐑨𐑑 𐑛𐑵 *𐑯𐑪𐑑* 𐑥𐑨𐑗 𐑿𐑼 𐑓𐑦𐑤𐑑𐑼. 𐑿𐑕𐑓𐑩𐑤 𐑓𐑹 𐑣𐑲𐑛𐑦𐑙 𐑜𐑱𐑥𐑟 𐑿 𐑸 𐑯𐑪𐑑 𐑦𐑯𐑑𐑼𐑩𐑕𐑑𐑩𐑛 "
+"𐑦𐑯."
+
+#: src/multiplayer_lobby.cpp:758
+msgid "Only show games that have at least one vacant slot"
+msgstr "𐑴𐑯𐑤𐑦 𐑖𐑴 𐑜𐑱𐑥𐑟 𐑞𐑨𐑑 𐑣𐑨𐑝 𐑨𐑑 𐑤𐑰𐑕𐑑 𐑢𐑳𐑯 𐑝𐑱𐑒𐑩𐑯𐑑 𐑕𐑤𐑪𐑑"
+
+#: src/multiplayer_lobby.cpp:762
+msgid ""
+"Only show games that are played or observed by at least one of your friends"
+msgstr "𐑴𐑯𐑤𐑦 𐑖𐑴 𐑜𐑱𐑥𐑟 𐑞𐑨𐑑 𐑸 𐑐𐑤𐑱𐑛 𐑹 𐑩𐑚𐑟𐑻𐑝𐑛 𐑚𐑲 𐑨𐑑 𐑤𐑰𐑕𐑑 𐑢𐑳𐑯 𐑝 𐑿𐑼 𐑓𐑮𐑧𐑯𐑛𐑟"
+
+#: src/multiplayer_lobby.cpp:766
+msgid "Only show games whose title or description contain the entered text"
+msgstr "𐑴𐑯𐑤𐑦 𐑖𐑴 𐑜𐑱𐑥𐑟 𐑣𐑵𐑟 𐑑𐑲𐑑𐑩𐑤 𐑹 𐑛𐑦𐑕𐑒𐑮𐑦𐑐𐑖𐑩𐑯 𐑒𐑩𐑯𐑑𐑱𐑯 𐑞 𐑧𐑯𐑑𐑻𐑛 𐑑𐑧𐑒𐑕𐑑"
+
+#: src/multiplayer_lobby.cpp:900
+msgid "Joining this game requires a password."
+msgstr "𐑡𐑶𐑯𐑦𐑙 𐑞𐑦𐑕 𐑜𐑱𐑥 𐑮𐑦𐑒𐑢𐑲𐑼𐑟 𐑩 𐑐𐑭𐑕𐑢𐑻𐑛."
+
 #: src/multiplayer_ui.cpp:195
 msgid "Invalid Color"
 msgstr "𐑦𐑯𐑝𐑨𐑤𐑦𐑛 𐑒𐑳𐑤𐑼"
 
-#: src/multiplayer_ui.cpp:425
+#: src/multiplayer_ui.cpp:427
 msgid "Selected user: "
 msgstr "𐑕𐑩𐑤𐑧𐑒𐑑𐑩𐑛 𐑿𐑟𐑼: "
 
@@ -9331,10 +9424,6 @@ msgstr "𐑤𐑰𐑛𐑻: "
 #: src/multiplayer_wait.cpp:129
 msgid "Recruits: "
 msgstr "𐑮𐑩𐑒𐑮𐑵𐑑𐑕: "
-
-#: src/multiplayer_wait.cpp:174
-msgid "Game Lobby"
-msgstr "𐑜𐑱𐑥 𐑤𐑭𐑚𐑰"
 
 #: src/multiplayer_wait.cpp:176
 msgid "Waiting for game to start..."
@@ -10038,73 +10127,8 @@ msgstr "𐑦𐑯𐑱𐑚𐑩𐑤 𐑕𐑳𐑥𐑼𐑦 𐑳𐑐𐑤𐑴𐑛𐑟"
 #~ msgstr ""
 #~ "𐑤𐑰𐑛𐑻 𐑐𐑩𐑟𐑦𐑖𐑩𐑯 𐑯𐑪𐑑 𐑧𐑥𐑐𐑑𐑦 - 𐑛𐑿𐑐𐑤𐑦𐑒𐑩𐑑 𐑕𐑲𐑛 𐑛𐑧𐑓𐑩𐑯𐑦𐑖𐑩𐑯 𐑓𐑹 𐑕𐑲𐑛 '$side|' 𐑓𐑬𐑯𐑛."
 
-#~ msgid "--no games open--"
-#~ msgstr "--no 𐑜𐑱𐑥𐑟 𐑴𐑐𐑩𐑯--"
-
-#~ msgid " (Unknown Era)"
-#~ msgstr "(𐑳𐑯𐑯𐑴𐑯 𐑽𐑩)"
-
-#~ msgid "Password Required"
-#~ msgstr "𐑐𐑭𐑕𐑢𐑻𐑛 𐑮𐑦𐑒𐑢𐑲𐑼𐑛"
-
-#~ msgid "Observe Game"
-#~ msgstr "𐑩𐑚𐑟𐑻𐑝 𐑜𐑱𐑥"
-
-#~ msgid "Join Game"
-#~ msgstr "𐑡𐑶𐑯 𐑜𐑱𐑥"
-
-#~ msgid "Quick Replays"
-#~ msgstr "𐑒𐑢𐑦𐑒 𐑮𐑰𐑐𐑤𐑱𐑟"
-
-#~ msgid "Preferences"
-#~ msgstr "𐑐𐑮𐑧𐑓𐑼𐑩𐑯𐑕𐑩𐑟"
-
-#~ msgid "Quit"
-#~ msgstr "𐑒𐑢𐑦𐑑"
-
-#~ msgid "Apply Filter"
-#~ msgstr "𐑩𐑐𐑤𐑲 𐑓𐑦𐑤𐑑𐑼"
-
-#~ msgid "Invert"
-#~ msgstr "𐑦𐑯𐑝𐑻𐑑"
-
-#~ msgid "Vacant Slots"
-#~ msgstr "𐑝𐑱𐑒𐑩𐑯𐑑 𐑕𐑤𐑭𐑑𐑕"
-
-#~ msgid "Friends in Game"
-#~ msgstr "𐑓𐑮𐑧𐑯𐑛𐑟 𐑦𐑯 𐑜𐑱𐑥"
-
 #~ msgid "Search:"
 #~ msgstr "𐑕𐑻𐑗:"
-
-#~ msgid "Skip quickly to the active turn when observing"
-#~ msgstr "𐑕𐑒𐑦𐑐 𐑒𐑢𐑦𐑒𐑤𐑦 𐑑 𐑞 𐑨𐑒𐑑𐑦𐑝 𐑑𐑻𐑯 𐑢𐑧𐑯 𐑩𐑚𐑟𐑻𐑝𐑦𐑙"
-
-#~ msgid ""
-#~ "Enable the games filter. If unchecked all games are shown, regardless of "
-#~ "any filter."
-#~ msgstr "𐑦𐑯𐑱𐑚𐑩𐑤 𐑞 𐑜𐑱𐑥𐑟 𐑓𐑦𐑤𐑑𐑼. 𐑦𐑓 𐑩𐑯𐑗𐑧𐑒𐑑 𐑷𐑤 𐑜𐑱𐑥𐑟 𐑸 𐑖𐑴𐑯, 𐑮𐑦𐑜𐑸𐑛𐑤𐑩𐑕 𐑝 𐑧𐑯𐑦 𐑓𐑦𐑤𐑑𐑼."
-
-#~ msgid ""
-#~ "Show all games that do *not* match your filter. Useful for hiding games "
-#~ "you are not interested in."
-#~ msgstr ""
-#~ "𐑖𐑴 𐑷𐑤 𐑜𐑱𐑥𐑟 𐑞𐑨𐑑 𐑛𐑵 *𐑯𐑪𐑑* 𐑥𐑨𐑗 𐑿𐑼 𐑓𐑦𐑤𐑑𐑼. 𐑿𐑕𐑓𐑩𐑤 𐑓𐑹 𐑣𐑲𐑛𐑦𐑙 𐑜𐑱𐑥𐑟 𐑿 𐑸 𐑯𐑪𐑑 "
-#~ "𐑦𐑯𐑑𐑼𐑩𐑕𐑑𐑩𐑛 𐑦𐑯."
-
-#~ msgid "Only show games that have at least one vacant slot"
-#~ msgstr "𐑴𐑯𐑤𐑦 𐑖𐑴 𐑜𐑱𐑥𐑟 𐑞𐑨𐑑 𐑣𐑨𐑝 𐑨𐑑 𐑤𐑰𐑕𐑑 𐑢𐑳𐑯 𐑝𐑱𐑒𐑩𐑯𐑑 𐑕𐑤𐑪𐑑"
-
-#~ msgid ""
-#~ "Only show games that are played or observed by at least one of your "
-#~ "friends"
-#~ msgstr "𐑴𐑯𐑤𐑦 𐑖𐑴 𐑜𐑱𐑥𐑟 𐑞𐑨𐑑 𐑸 𐑐𐑤𐑱𐑛 𐑹 𐑩𐑚𐑟𐑻𐑝𐑛 𐑚𐑲 𐑨𐑑 𐑤𐑰𐑕𐑑 𐑢𐑳𐑯 𐑝 𐑿𐑼 𐑓𐑮𐑧𐑯𐑛𐑟"
-
-#~ msgid "Only show games whose title or description contain the entered text"
-#~ msgstr "𐑴𐑯𐑤𐑦 𐑖𐑴 𐑜𐑱𐑥𐑟 𐑣𐑵𐑟 𐑑𐑲𐑑𐑩𐑤 𐑹 𐑛𐑦𐑕𐑒𐑮𐑦𐑐𐑖𐑩𐑯 𐑒𐑩𐑯𐑑𐑱𐑯 𐑞 𐑧𐑯𐑑𐑻𐑛 𐑑𐑧𐑒𐑕𐑑"
-
-#~ msgid "Joining this game requires a password."
-#~ msgstr "𐑡𐑶𐑯𐑦𐑙 𐑞𐑦𐑕 𐑜𐑱𐑥 𐑮𐑦𐑒𐑢𐑲𐑼𐑟 𐑩 𐑐𐑭𐑕𐑢𐑻𐑛."
 
 #~ msgid "End scenario"
 #~ msgstr "𐑧𐑯𐑛 𐑕𐑦𐑯𐑺𐑰𐑴"

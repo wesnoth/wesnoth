@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-04-20 11:32+0200\n"
+"POT-Creation-Date: 2010-04-23 23:46+0200\n"
 "PO-Revision-Date: 2010-04-08 21:45+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -7365,7 +7365,7 @@ msgstr ""
 "zavisnosti da biste igrali.)"
 
 #: src/addon_management.cpp:532 src/addon_management.cpp:606
-#: src/multiplayer.cpp:215 src/multiplayer.cpp:274 src/multiplayer_ui.cpp:80
+#: src/multiplayer.cpp:216 src/multiplayer.cpp:275 src/multiplayer_ui.cpp:80
 msgid "Connection timed out"
 msgstr "Veza je istekla."
 
@@ -7591,7 +7591,7 @@ msgstr "Deinstaliraj dodatke"
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr "Želite li zaista da uklonite ‘$addon|’?"
 
-#: src/addon_management.cpp:1220 src/multiplayer.cpp:227
+#: src/addon_management.cpp:1220 src/multiplayer.cpp:228
 msgid "Confirm"
 msgstr "Potvrdi"
 
@@ -8035,35 +8035,35 @@ msgstr "haotične jedinice: "
 msgid "Observers:"
 msgstr "posmatrači:"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:204
+#: src/gui/dialogs/lobby/lobby_data.cpp:204 src/multiplayer_lobby.cpp:431
 msgid "Unknown era: $era_id"
 msgstr "nepoznata epoha: $era_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:209
+#: src/gui/dialogs/lobby/lobby_data.cpp:209 src/multiplayer_lobby.cpp:435
 msgid "Unknown era"
 msgstr "nepoznata epoha"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:264
+#: src/gui/dialogs/lobby/lobby_data.cpp:264 src/multiplayer_lobby.cpp:497
 msgid "Remote scenario"
 msgstr "udaljeni scenario"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:272
+#: src/gui/dialogs/lobby/lobby_data.cpp:272 src/multiplayer_lobby.cpp:504
 msgid "Unknown scenario: $scenario_id"
 msgstr "nepoznat scenario: $scenario_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:277
+#: src/gui/dialogs/lobby/lobby_data.cpp:277 src/multiplayer_lobby.cpp:508
 msgid "Unknown scenario"
 msgstr "nepoznat scenario"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:283
+#: src/gui/dialogs/lobby/lobby_data.cpp:283 src/multiplayer_lobby.cpp:513
 msgid "Reloaded game"
 msgstr "učitana pozicija"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:294
+#: src/gui/dialogs/lobby/lobby_data.cpp:294 src/multiplayer_lobby.cpp:529
 msgid "Turn "
 msgstr "potez "
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:298
+#: src/gui/dialogs/lobby/lobby_data.cpp:298 src/multiplayer_lobby.cpp:533
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "slobodna mjesta:"
@@ -8071,16 +8071,17 @@ msgstr[1] "slobodna mjesta:"
 msgstr[2] "slobodna mjesta:"
 msgstr[3] "slobodno mjesto:"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:304
+#: src/gui/dialogs/lobby/lobby_data.cpp:304 src/multiplayer_lobby.cpp:544
 msgid "Fog"
 msgstr "magla"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:307
 #: src/gui/dialogs/lobby/lobby_data.cpp:310 src/multiplayer_create.cpp:84
+#: src/multiplayer_lobby.cpp:548 src/multiplayer_lobby.cpp:554
 msgid "Shroud"
 msgstr "pokrov"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:312
+#: src/gui/dialogs/lobby/lobby_data.cpp:312 src/multiplayer_lobby.cpp:558
 msgid "none"
 msgstr "nema"
 
@@ -9136,37 +9137,37 @@ msgstr "Napadni"
 msgid "Choose weapon:"
 msgstr "Izbor oružja:"
 
-#: src/multiplayer.cpp:137 src/multiplayer.cpp:174
+#: src/multiplayer.cpp:138 src/multiplayer.cpp:175
 msgid "Connecting to Server..."
 msgstr "Povezujem se sa serverom..."
 
-#: src/multiplayer.cpp:147
+#: src/multiplayer.cpp:148
 msgid "Reading from Server..."
 msgstr "Čitam sa servera..."
 
-#: src/multiplayer.cpp:157
+#: src/multiplayer.cpp:158
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
 msgstr "Server zahtijeva verziju '$version1', dok je vaša '$version2'."
 
-#: src/multiplayer.cpp:168
+#: src/multiplayer.cpp:169
 msgid "Server-side redirect loop"
 msgstr "Petlja preusmeravanja na strani servera"
 
-#: src/multiplayer.cpp:256
+#: src/multiplayer.cpp:257
 msgid "Bad data received from server"
 msgstr "Loši podaci primljeni sa servera"
 
-#: src/multiplayer.cpp:297
+#: src/multiplayer.cpp:298
 msgid "You must login first."
 msgstr "Morate se prvo prijaviti."
 
-#: src/multiplayer.cpp:299
+#: src/multiplayer.cpp:300
 msgid "The nick '$nick' is already taken."
 msgstr "Nadimak „$nick“ već je zauzet."
 
-#: src/multiplayer.cpp:301
+#: src/multiplayer.cpp:302
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
@@ -9174,27 +9175,27 @@ msgstr ""
 "Nadimak „$nick“ sadrži loše znakove. Dozvoljena su samo slova, brojevi, "
 "podvlake i crtice."
 
-#: src/multiplayer.cpp:305
+#: src/multiplayer.cpp:306
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
 msgstr "Nadimak „$nick“ je predugačak. Ne može imati više od 18 znakova."
 
-#: src/multiplayer.cpp:308
+#: src/multiplayer.cpp:309
 msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr "Nadimak „$nick“ je rezervisan i igrači ga ne mogu uzeti."
 
-#: src/multiplayer.cpp:310
+#: src/multiplayer.cpp:311
 msgid "The nick '$nick' is not registered on this server."
 msgstr "Nadimak „$nick“ nije registrovan na ovom serveru."
 
-#: src/multiplayer.cpp:311
+#: src/multiplayer.cpp:312
 msgid " This server disallows unregistered nicks."
 msgstr " Ovaj server ne dozvoljava neregistrovane nadimke."
 
-#: src/multiplayer.cpp:313 src/multiplayer.cpp:315
+#: src/multiplayer.cpp:314 src/multiplayer.cpp:316
 msgid "The nick '$nick' is registered on this server."
 msgstr "Nadimak „$nick“ registrovan je na ovom serveru."
 
-#: src/multiplayer.cpp:316
+#: src/multiplayer.cpp:317
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
@@ -9202,12 +9203,12 @@ msgstr ""
 "UPOZORENJE: Jedan klijent već ima ovaj nadimak, prijavljivanjem ćete ga "
 "izbaciti!"
 
-#: src/multiplayer.cpp:319
+#: src/multiplayer.cpp:320
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr "Greška u postupku prijavljivanja (server nema seme za vašu vezu)."
 
-#: src/multiplayer.cpp:322
+#: src/multiplayer.cpp:323
 msgid "The password you provided was incorrect."
 msgstr "Dali ste neispravnu lozinku."
 
@@ -9327,7 +9328,7 @@ msgstr "Poraziš li protivničke vođe"
 msgid "Waiting for players to join..."
 msgstr "Čekamo da se pridruže igrači..."
 
-#: src/multiplayer_create.cpp:50
+#: src/multiplayer_create.cpp:50 src/multiplayer_lobby.cpp:727
 msgid "Create Game"
 msgstr "Napravi partiju"
 
@@ -9343,7 +9344,7 @@ msgstr "naziv partije:"
 msgid "Map to play:"
 msgstr "mapa za igranje:"
 
-#: src/multiplayer_create.cpp:81
+#: src/multiplayer_create.cpp:81 src/multiplayer_lobby.cpp:272
 msgid "Use map settings"
 msgstr "prema postavkama mape"
 
@@ -9467,7 +9468,7 @@ msgstr "Morate unijeti ime."
 msgid "Set Password"
 msgstr "Namiještanje lozinke"
 
-#: src/multiplayer_create.cpp:344
+#: src/multiplayer_create.cpp:344 src/multiplayer_lobby.cpp:901
 msgid "Password: "
 msgstr "Lozinka: "
 
@@ -9519,11 +9520,110 @@ msgstr "igrača: "
 msgid "Size: "
 msgstr "veličina: "
 
+#: src/multiplayer_lobby.cpp:119
+msgid "--no games open--"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:153
+#, fuzzy
+msgid " (Unknown Era)"
+msgstr "nepoznata epoha"
+
+#: src/multiplayer_lobby.cpp:536 src/multiplayer_lobby.cpp:899
+#, fuzzy
+msgid "Password Required"
+msgstr "Lozinka: "
+
+#: src/multiplayer_lobby.cpp:720 src/multiplayer_wait.cpp:174
+msgid "Game Lobby"
+msgstr "Igrački hol"
+
+#: src/multiplayer_lobby.cpp:725
+#, fuzzy
+msgid "Observe Game"
+msgstr "posmatrači"
+
+#: src/multiplayer_lobby.cpp:726
+#, fuzzy
+msgid "Join Game"
+msgstr "Učitavanje pozicije"
+
+#: src/multiplayer_lobby.cpp:728
+#, fuzzy
+msgid "Quick Replays"
+msgstr "Snimak"
+
+#: src/multiplayer_lobby.cpp:730
+#, fuzzy
+msgid "Preferences"
+msgstr "Zavisnosti"
+
+#: src/multiplayer_lobby.cpp:732
+#, fuzzy
+msgid "Quit"
+msgstr "hitrost"
+
+#: src/multiplayer_lobby.cpp:734
+#, fuzzy
+msgid "Apply Filter"
+msgstr "Filter: "
+
+#: src/multiplayer_lobby.cpp:735
+msgid "Invert"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:736
+#, fuzzy
+msgid "Vacant Slots"
+msgstr "slobodna mjesta:"
+
+#: src/multiplayer_lobby.cpp:737
+msgid "Friends in Game"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:738
+#, fuzzy
+msgid "Filter:"
+msgstr "Filter: "
+
+#: src/multiplayer_lobby.cpp:747
+msgid "Skip quickly to the active turn when observing"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:751
+msgid ""
+"Enable the games filter. If unchecked all games are shown, regardless of any "
+"filter."
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:754
+msgid ""
+"Show all games that do *not* match your filter. Useful for hiding games you "
+"are not interested in."
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:758
+msgid "Only show games that have at least one vacant slot"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:762
+msgid ""
+"Only show games that are played or observed by at least one of your friends"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:766
+msgid "Only show games whose title or description contain the entered text"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:900
+msgid "Joining this game requires a password."
+msgstr ""
+
 #: src/multiplayer_ui.cpp:195
 msgid "Invalid Color"
 msgstr "Loša boja"
 
-#: src/multiplayer_ui.cpp:425
+#: src/multiplayer_ui.cpp:427
 msgid "Selected user: "
 msgstr "Izabrani korisnik: "
 
@@ -9534,10 +9634,6 @@ msgstr "vođ: "
 #: src/multiplayer_wait.cpp:129
 msgid "Recruits: "
 msgstr "regruti: "
-
-#: src/multiplayer_wait.cpp:174
-msgid "Game Lobby"
-msgstr "Igrački hol"
 
 #: src/multiplayer_wait.cpp:176
 msgid "Waiting for game to start..."

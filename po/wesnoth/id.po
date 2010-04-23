@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-04-20 11:32+0200\n"
+"POT-Creation-Date: 2010-04-23 23:46+0200\n"
 "PO-Revision-Date: 2009-04-27 14:31+0530\n"
 "Last-Translator: Nicky IW <inkraiswitras@yahoo.com>\n"
 "Language-Team: none\n"
@@ -7573,7 +7573,7 @@ msgid ""
 msgstr ""
 
 #: src/addon_management.cpp:532 src/addon_management.cpp:606
-#: src/multiplayer.cpp:215 src/multiplayer.cpp:274 src/multiplayer_ui.cpp:80
+#: src/multiplayer.cpp:216 src/multiplayer.cpp:275 src/multiplayer_ui.cpp:80
 msgid "Connection timed out"
 msgstr "Koneksi timed out."
 
@@ -7788,7 +7788,7 @@ msgstr "Ubah tambahan"
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr "Apakah anda yakin anda mau menghapus add-on '$addon|'?"
 
-#: src/addon_management.cpp:1220 src/multiplayer.cpp:227
+#: src/addon_management.cpp:1220 src/multiplayer.cpp:228
 msgid "Confirm"
 msgstr "Tegaskan"
 
@@ -8232,49 +8232,50 @@ msgstr "Unit brutal:"
 msgid "Observers:"
 msgstr "Peninjau:"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:204
+#: src/gui/dialogs/lobby/lobby_data.cpp:204 src/multiplayer_lobby.cpp:431
 msgid "Unknown era: $era_id"
 msgstr "Era tidak diketahui: $era_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:209
+#: src/gui/dialogs/lobby/lobby_data.cpp:209 src/multiplayer_lobby.cpp:435
 msgid "Unknown era"
 msgstr "Era tidak diketahui"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:264
+#: src/gui/dialogs/lobby/lobby_data.cpp:264 src/multiplayer_lobby.cpp:497
 msgid "Remote scenario"
 msgstr "Skenario jauh"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:272
+#: src/gui/dialogs/lobby/lobby_data.cpp:272 src/multiplayer_lobby.cpp:504
 msgid "Unknown scenario: $scenario_id"
 msgstr "Skenario tidak diketahui: $scenario_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:277
+#: src/gui/dialogs/lobby/lobby_data.cpp:277 src/multiplayer_lobby.cpp:508
 msgid "Unknown scenario"
 msgstr "Skenario tidak diketahui"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:283
+#: src/gui/dialogs/lobby/lobby_data.cpp:283 src/multiplayer_lobby.cpp:513
 msgid "Reloaded game"
 msgstr "Permainan reload"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:294
+#: src/gui/dialogs/lobby/lobby_data.cpp:294 src/multiplayer_lobby.cpp:529
 msgid "Turn "
 msgstr "Giliran"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:298
+#: src/gui/dialogs/lobby/lobby_data.cpp:298 src/multiplayer_lobby.cpp:533
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Tempat kosong"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:304
+#: src/gui/dialogs/lobby/lobby_data.cpp:304 src/multiplayer_lobby.cpp:544
 msgid "Fog"
 msgstr "Kabut"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:307
 #: src/gui/dialogs/lobby/lobby_data.cpp:310 src/multiplayer_create.cpp:84
+#: src/multiplayer_lobby.cpp:548 src/multiplayer_lobby.cpp:554
 msgid "Shroud"
 msgstr "Selubung"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:312
+#: src/gui/dialogs/lobby/lobby_data.cpp:312 src/multiplayer_lobby.cpp:558
 msgid "none"
 msgstr "tidak ada"
 
@@ -9355,15 +9356,15 @@ msgstr "Serang Musuh"
 msgid "Choose weapon:"
 msgstr "Pilih senjata:"
 
-#: src/multiplayer.cpp:137 src/multiplayer.cpp:174
+#: src/multiplayer.cpp:138 src/multiplayer.cpp:175
 msgid "Connecting to Server..."
 msgstr "Menyambungkan ke Server..."
 
-#: src/multiplayer.cpp:147
+#: src/multiplayer.cpp:148
 msgid "Reading from Server..."
 msgstr "Membaca dari Server..."
 
-#: src/multiplayer.cpp:157
+#: src/multiplayer.cpp:158
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
@@ -9371,23 +9372,23 @@ msgstr ""
 "Server ini memerlukan versi '$version1' sedangkan anda menggunakan versi "
 "'$version2'"
 
-#: src/multiplayer.cpp:168
+#: src/multiplayer.cpp:169
 msgid "Server-side redirect loop"
 msgstr "Putaran kembali dari server"
 
-#: src/multiplayer.cpp:256
+#: src/multiplayer.cpp:257
 msgid "Bad data received from server"
 msgstr ""
 
-#: src/multiplayer.cpp:297
+#: src/multiplayer.cpp:298
 msgid "You must login first."
 msgstr "Anda harus pertama-tama login."
 
-#: src/multiplayer.cpp:299
+#: src/multiplayer.cpp:300
 msgid "The nick '$nick' is already taken."
 msgstr "Nama '$nick' sudah diambil."
 
-#: src/multiplayer.cpp:301
+#: src/multiplayer.cpp:302
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
@@ -9395,29 +9396,29 @@ msgstr ""
 "Nama '$nick' memiliki karakter tidak berlaku. Hanya huruf, angka, garis "
 "bawah dan strip dibolehkan."
 
-#: src/multiplayer.cpp:305
+#: src/multiplayer.cpp:306
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
 msgstr ""
 "Nama '$nick' terlalu panjang. Nama harus memiliki 18 karakter atau lebih "
 "sedikit."
 
-#: src/multiplayer.cpp:308
+#: src/multiplayer.cpp:309
 msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr "Nama '$nick' dilindungi dan tidak bisa digunakan oleh pemain."
 
-#: src/multiplayer.cpp:310
+#: src/multiplayer.cpp:311
 msgid "The nick '$nick' is not registered on this server."
 msgstr "Nama '$nick' tidak terdaftar di server ini"
 
-#: src/multiplayer.cpp:311
+#: src/multiplayer.cpp:312
 msgid " This server disallows unregistered nicks."
 msgstr "Server ini tidak membolehkan nama-nama tidak terdaftar."
 
-#: src/multiplayer.cpp:313 src/multiplayer.cpp:315
+#: src/multiplayer.cpp:314 src/multiplayer.cpp:316
 msgid "The nick '$nick' is registered on this server."
 msgstr "Nama '$nick' terdaftar di server ini"
 
-#: src/multiplayer.cpp:316
+#: src/multiplayer.cpp:317
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
@@ -9425,13 +9426,13 @@ msgstr ""
 "PERINGATAN: Sudah ada sebuah klien menggunakan nama ini, melog in akan "
 "menyebabkan klien tersebut ditendang!"
 
-#: src/multiplayer.cpp:319
+#: src/multiplayer.cpp:320
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
 "Error di prosedur login (server tidak memiliki biji untuk koneksi anda)."
 
-#: src/multiplayer.cpp:322
+#: src/multiplayer.cpp:323
 msgid "The password you provided was incorrect."
 msgstr "Kata sandi yang anda berikan salah."
 
@@ -9555,7 +9556,7 @@ msgstr ""
 msgid "Waiting for players to join..."
 msgstr "Menunggu pemain-pemain menggabungkan diri..."
 
-#: src/multiplayer_create.cpp:50
+#: src/multiplayer_create.cpp:50 src/multiplayer_lobby.cpp:727
 msgid "Create Game"
 msgstr "Membuat Permainan"
 
@@ -9571,7 +9572,7 @@ msgstr "Nama permainan:"
 msgid "Map to play:"
 msgstr "Peta untuk dimainkan:"
 
-#: src/multiplayer_create.cpp:81
+#: src/multiplayer_create.cpp:81 src/multiplayer_lobby.cpp:272
 msgid "Use map settings"
 msgstr "Gunakan setting peta"
 
@@ -9698,7 +9699,7 @@ msgstr "Anda harus memasukkan sebuah nama."
 msgid "Set Password"
 msgstr "Pilih Kata Sandi"
 
-#: src/multiplayer_create.cpp:344
+#: src/multiplayer_create.cpp:344 src/multiplayer_lobby.cpp:901
 msgid "Password: "
 msgstr "Kata Sandi:"
 
@@ -9749,11 +9750,103 @@ msgstr "Pemain:"
 msgid "Size: "
 msgstr "Dimensi:"
 
+#: src/multiplayer_lobby.cpp:119
+msgid "--no games open--"
+msgstr "--tidak ada permainan dibuka--"
+
+#: src/multiplayer_lobby.cpp:153
+msgid " (Unknown Era)"
+msgstr "(Era Tidak Diketahui)"
+
+#: src/multiplayer_lobby.cpp:536 src/multiplayer_lobby.cpp:899
+msgid "Password Required"
+msgstr "Kata Sandi Diperlukan"
+
+#: src/multiplayer_lobby.cpp:720 src/multiplayer_wait.cpp:174
+msgid "Game Lobby"
+msgstr "Lobi Permainan"
+
+#: src/multiplayer_lobby.cpp:725
+msgid "Observe Game"
+msgstr "Tinjau Permainan"
+
+#: src/multiplayer_lobby.cpp:726
+msgid "Join Game"
+msgstr "Bergabung Permainan "
+
+#: src/multiplayer_lobby.cpp:728
+msgid "Quick Replays"
+msgstr "Replay Cepat"
+
+#: src/multiplayer_lobby.cpp:730
+msgid "Preferences"
+msgstr "Pilihan"
+
+#: src/multiplayer_lobby.cpp:732
+msgid "Quit"
+msgstr "Keluar"
+
+#: src/multiplayer_lobby.cpp:734
+#, fuzzy
+msgid "Apply Filter"
+msgstr "Filter:"
+
+#: src/multiplayer_lobby.cpp:735
+msgid "Invert"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:736
+#, fuzzy
+msgid "Vacant Slots"
+msgstr "Tempat kosong"
+
+#: src/multiplayer_lobby.cpp:737
+msgid "Friends in Game"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:738
+#, fuzzy
+msgid "Filter:"
+msgstr "Filter:"
+
+#: src/multiplayer_lobby.cpp:747
+msgid "Skip quickly to the active turn when observing"
+msgstr "Lompati dengan cepat ke giliran aktif ketika meninjau"
+
+#: src/multiplayer_lobby.cpp:751
+msgid ""
+"Enable the games filter. If unchecked all games are shown, regardless of any "
+"filter."
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:754
+msgid ""
+"Show all games that do *not* match your filter. Useful for hiding games you "
+"are not interested in."
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:758
+msgid "Only show games that have at least one vacant slot"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:762
+msgid ""
+"Only show games that are played or observed by at least one of your friends"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:766
+msgid "Only show games whose title or description contain the entered text"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:900
+msgid "Joining this game requires a password."
+msgstr "Bergabung permainan ini memerlukan kata sandi."
+
 #: src/multiplayer_ui.cpp:195
 msgid "Invalid Color"
 msgstr "Warna Tidak Berlaku"
 
-#: src/multiplayer_ui.cpp:425
+#: src/multiplayer_ui.cpp:427
 msgid "Selected user: "
 msgstr "Pemain dipilih:"
 
@@ -9764,10 +9857,6 @@ msgstr "Pemimpin:"
 #: src/multiplayer_wait.cpp:129
 msgid "Recruits: "
 msgstr "Rekrut:"
-
-#: src/multiplayer_wait.cpp:174
-msgid "Game Lobby"
-msgstr "Lobi Permainan"
 
 #: src/multiplayer_wait.cpp:176
 msgid "Waiting for game to start..."
@@ -10481,43 +10570,9 @@ msgstr "Bolehkan upload ringkasan"
 #~ "found."
 #~ msgstr "Definisi sisi duplikat untuk sisi '$side|' ditemukan"
 
-#~ msgid "--no games open--"
-#~ msgstr "--tidak ada permainan dibuka--"
-
-#~ msgid " (Unknown Era)"
-#~ msgstr "(Era Tidak Diketahui)"
-
-#~ msgid "Password Required"
-#~ msgstr "Kata Sandi Diperlukan"
-
-#~ msgid "Observe Game"
-#~ msgstr "Tinjau Permainan"
-
-#~ msgid "Join Game"
-#~ msgstr "Bergabung Permainan "
-
-#~ msgid "Quick Replays"
-#~ msgstr "Replay Cepat"
-
-#~ msgid "Preferences"
-#~ msgstr "Pilihan"
-
-#~ msgid "Quit"
-#~ msgstr "Keluar"
-
-#, fuzzy
-#~ msgid "Vacant Slots"
-#~ msgstr "Tempat kosong"
-
 #, fuzzy
 #~ msgid "Search:"
 #~ msgstr "Cari"
-
-#~ msgid "Skip quickly to the active turn when observing"
-#~ msgstr "Lompati dengan cepat ke giliran aktif ketika meninjau"
-
-#~ msgid "Joining this game requires a password."
-#~ msgstr "Bergabung permainan ini memerlukan kata sandi."
 
 #~ msgid "End scenario"
 #~ msgstr "Akhir skenario"

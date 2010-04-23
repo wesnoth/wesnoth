@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-04-20 11:32+0200\n"
+"POT-Creation-Date: 2010-04-23 23:46+0200\n"
 "PO-Revision-Date: 2009-11-16 21:22-0500\n"
 "Last-Translator: Michael Babich (Aethaeryn) <michaelbabich7@gmail.com>\n"
 "Language-Team: Latin\n"
@@ -7156,7 +7156,7 @@ msgid ""
 msgstr ""
 
 #: src/addon_management.cpp:532 src/addon_management.cpp:606
-#: src/multiplayer.cpp:215 src/multiplayer.cpp:274 src/multiplayer_ui.cpp:80
+#: src/multiplayer.cpp:216 src/multiplayer.cpp:275 src/multiplayer_ui.cpp:80
 #, fuzzy
 msgid "Connection timed out"
 msgstr "Tempus coniunctionis exit"
@@ -7381,7 +7381,7 @@ msgstr "Summove appendicem"
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr ""
 
-#: src/addon_management.cpp:1220 src/multiplayer.cpp:227
+#: src/addon_management.cpp:1220 src/multiplayer.cpp:228
 msgid "Confirm"
 msgstr "Confirmo"
 
@@ -7878,55 +7878,56 @@ msgstr "Filii tenebrarum: "
 msgid "Observers:"
 msgstr "Spectatores: "
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:204
+#: src/gui/dialogs/lobby/lobby_data.cpp:204 src/multiplayer_lobby.cpp:431
 msgid "Unknown era: $era_id"
 msgstr "Aetas incognita: $era_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:209
+#: src/gui/dialogs/lobby/lobby_data.cpp:209 src/multiplayer_lobby.cpp:435
 msgid "Unknown era"
 msgstr "Aetas incognita"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:264
+#: src/gui/dialogs/lobby/lobby_data.cpp:264 src/multiplayer_lobby.cpp:497
 #, fuzzy
 msgid "Remote scenario"
 msgstr "Missio remota"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:272
+#: src/gui/dialogs/lobby/lobby_data.cpp:272 src/multiplayer_lobby.cpp:504
 #, fuzzy
 msgid "Unknown scenario: $scenario_id"
 msgstr "Missio incognita: '"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:277
+#: src/gui/dialogs/lobby/lobby_data.cpp:277 src/multiplayer_lobby.cpp:508
 #, fuzzy
 msgid "Unknown scenario"
 msgstr "Missio incognita"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:283
+#: src/gui/dialogs/lobby/lobby_data.cpp:283 src/multiplayer_lobby.cpp:513
 #, fuzzy
 msgid "Reloaded game"
 msgstr "Lusum servatum unius lusoris restituere"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:294
+#: src/gui/dialogs/lobby/lobby_data.cpp:294 src/multiplayer_lobby.cpp:529
 msgid "Turn "
 msgstr "Vicis "
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:298
+#: src/gui/dialogs/lobby/lobby_data.cpp:298 src/multiplayer_lobby.cpp:533
 #, fuzzy
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Rima Vacua:"
 msgstr[1] "Rima Vacua:"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:304
+#: src/gui/dialogs/lobby/lobby_data.cpp:304 src/multiplayer_lobby.cpp:544
 msgid "Fog"
 msgstr "Nebula"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:307
 #: src/gui/dialogs/lobby/lobby_data.cpp:310 src/multiplayer_create.cpp:84
+#: src/multiplayer_lobby.cpp:548 src/multiplayer_lobby.cpp:554
 msgid "Shroud"
 msgstr "Absconsus"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:312
+#: src/gui/dialogs/lobby/lobby_data.cpp:312 src/multiplayer_lobby.cpp:558
 msgid "none"
 msgstr "nullus"
 
@@ -9075,17 +9076,17 @@ msgstr "Hostem Oppugnare"
 msgid "Choose weapon:"
 msgstr "Opta ferrum:"
 
-#: src/multiplayer.cpp:137 src/multiplayer.cpp:174
+#: src/multiplayer.cpp:138 src/multiplayer.cpp:175
 #, fuzzy
 msgid "Connecting to Server..."
 msgstr "Ad Moderatrum Coniungens..."
 
-#: src/multiplayer.cpp:147
+#: src/multiplayer.cpp:148
 #, fuzzy
 msgid "Reading from Server..."
 msgstr "A Moderatro Legens..."
 
-#: src/multiplayer.cpp:157
+#: src/multiplayer.cpp:158
 #, fuzzy
 msgid ""
 "The server requires version '$version1' while you are using version "
@@ -9093,62 +9094,62 @@ msgid ""
 msgstr ""
 "Moderatrum requirit versionem '$version1' sed uteris versio '$version2'"
 
-#: src/multiplayer.cpp:168
+#: src/multiplayer.cpp:169
 #, fuzzy
 msgid "Server-side redirect loop"
 msgstr "Sinus redirectionis a parte moderatri"
 
-#: src/multiplayer.cpp:256
+#: src/multiplayer.cpp:257
 msgid "Bad data received from server"
 msgstr ""
 
-#: src/multiplayer.cpp:297
+#: src/multiplayer.cpp:298
 #, fuzzy
 msgid "You must login first."
 msgstr "Opus est inire in moderatrum hoc"
 
-#: src/multiplayer.cpp:299
+#: src/multiplayer.cpp:300
 msgid "The nick '$nick' is already taken."
 msgstr ""
 
-#: src/multiplayer.cpp:301
+#: src/multiplayer.cpp:302
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
 msgstr ""
 
-#: src/multiplayer.cpp:305
+#: src/multiplayer.cpp:306
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
 msgstr ""
 
-#: src/multiplayer.cpp:308
+#: src/multiplayer.cpp:309
 msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr ""
 
-#: src/multiplayer.cpp:310
+#: src/multiplayer.cpp:311
 msgid "The nick '$nick' is not registered on this server."
 msgstr ""
 
-#: src/multiplayer.cpp:311
+#: src/multiplayer.cpp:312
 msgid " This server disallows unregistered nicks."
 msgstr ""
 
-#: src/multiplayer.cpp:313 src/multiplayer.cpp:315
+#: src/multiplayer.cpp:314 src/multiplayer.cpp:316
 msgid "The nick '$nick' is registered on this server."
 msgstr ""
 
-#: src/multiplayer.cpp:316
+#: src/multiplayer.cpp:317
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
 msgstr ""
 
-#: src/multiplayer.cpp:319
+#: src/multiplayer.cpp:320
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
 
-#: src/multiplayer.cpp:322
+#: src/multiplayer.cpp:323
 msgid "The password you provided was incorrect."
 msgstr ""
 
@@ -9274,7 +9275,7 @@ msgstr "Vince ducem hostilem (aut duces hostiles)."
 msgid "Waiting for players to join..."
 msgstr "Exspecto ut lusores coniugerint..."
 
-#: src/multiplayer_create.cpp:50
+#: src/multiplayer_create.cpp:50 src/multiplayer_lobby.cpp:727
 msgid "Create Game"
 msgstr "Crea Ludum"
 
@@ -9291,7 +9292,7 @@ msgstr "Nomen lusus:"
 msgid "Map to play:"
 msgstr "Charta ludere:"
 
-#: src/multiplayer_create.cpp:81
+#: src/multiplayer_create.cpp:81 src/multiplayer_lobby.cpp:272
 msgid "Use map settings"
 msgstr "Electiones chartae uti"
 
@@ -9436,7 +9437,7 @@ msgstr "Nomen dare opus est."
 msgid "Set Password"
 msgstr "Verbum Absconditum Ponere"
 
-#: src/multiplayer_create.cpp:344
+#: src/multiplayer_create.cpp:344 src/multiplayer_lobby.cpp:901
 msgid "Password: "
 msgstr "Verbum Absconditum: "
 
@@ -9489,12 +9490,109 @@ msgstr "Lusores: "
 msgid "Size: "
 msgstr "Magnitudo:"
 
+#: src/multiplayer_lobby.cpp:119
+#, fuzzy
+msgid "--no games open--"
+msgstr "--nullus ludus apertus--"
+
+#: src/multiplayer_lobby.cpp:153
+msgid " (Unknown Era)"
+msgstr "(Aetas Incognita)"
+
+#: src/multiplayer_lobby.cpp:536 src/multiplayer_lobby.cpp:899
+msgid "Password Required"
+msgstr "Verbum Absconditum Necessarium Est"
+
+#: src/multiplayer_lobby.cpp:720 src/multiplayer_wait.cpp:174
+msgid "Game Lobby"
+msgstr "Atrium Ludi"
+
+#: src/multiplayer_lobby.cpp:725
+#, fuzzy
+msgid "Observe Game"
+msgstr "Lusum Aspectare"
+
+#: src/multiplayer_lobby.cpp:726
+#, fuzzy
+msgid "Join Game"
+msgstr "Ad Lusum Coniungere"
+
+#: src/multiplayer_lobby.cpp:728
+#, fuzzy
+msgid "Quick Replays"
+msgstr "Remonstrata Celera"
+
+#: src/multiplayer_lobby.cpp:730
+#, fuzzy
+msgid "Preferences"
+msgstr "Impostationes"
+
+#: src/multiplayer_lobby.cpp:732
+msgid "Quit"
+msgstr "Exire"
+
+#: src/multiplayer_lobby.cpp:734
+msgid "Apply Filter"
+msgstr "Filtrum Aptare"
+
+#: src/multiplayer_lobby.cpp:735
+msgid "Invert"
+msgstr "Intervertere"
+
+#: src/multiplayer_lobby.cpp:736
+#, fuzzy
+msgid "Vacant Slots"
+msgstr "Rimae Vacuae:"
+
+#: src/multiplayer_lobby.cpp:737
+msgid "Friends in Game"
+msgstr "Amici in Ludum"
+
+#: src/multiplayer_lobby.cpp:738
+#, fuzzy
+msgid "Filter:"
+msgstr "Filtrum:"
+
+#: src/multiplayer_lobby.cpp:747
+#, fuzzy
+msgid "Skip quickly to the active turn when observing"
+msgstr "Celeriter ad tractum currentem in observatio saltare"
+
+#: src/multiplayer_lobby.cpp:751
+msgid ""
+"Enable the games filter. If unchecked all games are shown, regardless of any "
+"filter."
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:754
+msgid ""
+"Show all games that do *not* match your filter. Useful for hiding games you "
+"are not interested in."
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:758
+msgid "Only show games that have at least one vacant slot"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:762
+msgid ""
+"Only show games that are played or observed by at least one of your friends"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:766
+msgid "Only show games whose title or description contain the entered text"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:900
+msgid "Joining this game requires a password."
+msgstr ""
+
 #: src/multiplayer_ui.cpp:195
 #, fuzzy
 msgid "Invalid Color"
 msgstr "Color invalidus"
 
-#: src/multiplayer_ui.cpp:425
+#: src/multiplayer_ui.cpp:427
 #, fuzzy
 msgid "Selected user: "
 msgstr "Unitatem elegere: "
@@ -9507,10 +9605,6 @@ msgstr "Dux: "
 #, fuzzy
 msgid "Recruits: "
 msgstr "Tirones: "
-
-#: src/multiplayer_wait.cpp:174
-msgid "Game Lobby"
-msgstr "Atrium Ludi"
 
 #: src/multiplayer_wait.cpp:176
 #, fuzzy
@@ -10281,54 +10375,8 @@ msgstr "Potestatem facere summaria mittendi"
 #~ msgstr "Ordo"
 
 #, fuzzy
-#~ msgid "--no games open--"
-#~ msgstr "--nullus ludus apertus--"
-
-#~ msgid " (Unknown Era)"
-#~ msgstr "(Aetas Incognita)"
-
-#~ msgid "Password Required"
-#~ msgstr "Verbum Absconditum Necessarium Est"
-
-#, fuzzy
-#~ msgid "Observe Game"
-#~ msgstr "Lusum Aspectare"
-
-#, fuzzy
-#~ msgid "Join Game"
-#~ msgstr "Ad Lusum Coniungere"
-
-#, fuzzy
-#~ msgid "Quick Replays"
-#~ msgstr "Remonstrata Celera"
-
-#, fuzzy
-#~ msgid "Preferences"
-#~ msgstr "Impostationes"
-
-#~ msgid "Quit"
-#~ msgstr "Exire"
-
-#~ msgid "Apply Filter"
-#~ msgstr "Filtrum Aptare"
-
-#~ msgid "Invert"
-#~ msgstr "Intervertere"
-
-#, fuzzy
-#~ msgid "Vacant Slots"
-#~ msgstr "Rimae Vacuae:"
-
-#~ msgid "Friends in Game"
-#~ msgstr "Amici in Ludum"
-
-#, fuzzy
 #~ msgid "Search:"
 #~ msgstr "Investigatio"
-
-#, fuzzy
-#~ msgid "Skip quickly to the active turn when observing"
-#~ msgstr "Celeriter ad tractum currentem in observatio saltare"
 
 #, fuzzy
 #~ msgid "End scenario"

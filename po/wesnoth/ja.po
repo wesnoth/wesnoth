@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-04-20 11:32+0200\n"
+"POT-Creation-Date: 2010-04-23 23:46+0200\n"
 "PO-Revision-Date: 2010-04-20 06:33+0900\n"
 "Last-Translator: \n"
 "Language-Team: Japanese Translation Team\n"
@@ -7265,7 +7265,7 @@ msgstr ""
 "ドオンを導入する必要があります。）"
 
 #: src/addon_management.cpp:532 src/addon_management.cpp:606
-#: src/multiplayer.cpp:215 src/multiplayer.cpp:274 src/multiplayer_ui.cpp:80
+#: src/multiplayer.cpp:216 src/multiplayer.cpp:275 src/multiplayer_ui.cpp:80
 msgid "Connection timed out"
 msgstr "接続時間切れ"
 
@@ -7476,7 +7476,7 @@ msgstr "アドオンの削除"
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr "本当にアドオン「 $addon| 」を削除してもよろしいですか？"
 
-#: src/addon_management.cpp:1220 src/multiplayer.cpp:227
+#: src/addon_management.cpp:1220 src/multiplayer.cpp:228
 msgid "Confirm"
 msgstr "確認"
 
@@ -7914,49 +7914,50 @@ msgstr "混沌ユニット: "
 msgid "Observers:"
 msgstr "観戦者:"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:204
+#: src/gui/dialogs/lobby/lobby_data.cpp:204 src/multiplayer_lobby.cpp:431
 msgid "Unknown era: $era_id"
 msgstr "不明な時代: $era_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:209
+#: src/gui/dialogs/lobby/lobby_data.cpp:209 src/multiplayer_lobby.cpp:435
 msgid "Unknown era"
 msgstr "不明な時代"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:264
+#: src/gui/dialogs/lobby/lobby_data.cpp:264 src/multiplayer_lobby.cpp:497
 msgid "Remote scenario"
 msgstr "リモートシナリオ"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:272
+#: src/gui/dialogs/lobby/lobby_data.cpp:272 src/multiplayer_lobby.cpp:504
 msgid "Unknown scenario: $scenario_id"
 msgstr "不明なシナリオ: $scenario_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:277
+#: src/gui/dialogs/lobby/lobby_data.cpp:277 src/multiplayer_lobby.cpp:508
 msgid "Unknown scenario"
 msgstr "不明なシナリオ"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:283
+#: src/gui/dialogs/lobby/lobby_data.cpp:283 src/multiplayer_lobby.cpp:513
 msgid "Reloaded game"
 msgstr "リロードされたゲーム"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:294
+#: src/gui/dialogs/lobby/lobby_data.cpp:294 src/multiplayer_lobby.cpp:529
 msgid "Turn "
 msgstr "ターン "
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:298
+#: src/gui/dialogs/lobby/lobby_data.cpp:298 src/multiplayer_lobby.cpp:533
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "空いているスロット"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:304
+#: src/gui/dialogs/lobby/lobby_data.cpp:304 src/multiplayer_lobby.cpp:544
 msgid "Fog"
 msgstr "霧"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:307
 #: src/gui/dialogs/lobby/lobby_data.cpp:310 src/multiplayer_create.cpp:84
+#: src/multiplayer_lobby.cpp:548 src/multiplayer_lobby.cpp:554
 msgid "Shroud"
 msgstr "幕"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:312
+#: src/gui/dialogs/lobby/lobby_data.cpp:312 src/multiplayer_lobby.cpp:558
 msgid "none"
 msgstr "なし"
 
@@ -9006,15 +9007,15 @@ msgstr "敵を攻撃する"
 msgid "Choose weapon:"
 msgstr "武器の選択:"
 
-#: src/multiplayer.cpp:137 src/multiplayer.cpp:174
+#: src/multiplayer.cpp:138 src/multiplayer.cpp:175
 msgid "Connecting to Server..."
 msgstr "サーバーに接続中……"
 
-#: src/multiplayer.cpp:147
+#: src/multiplayer.cpp:148
 msgid "Reading from Server..."
 msgstr "サーバーから読み込み中……"
 
-#: src/multiplayer.cpp:157
+#: src/multiplayer.cpp:158
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
@@ -9022,23 +9023,23 @@ msgstr ""
 "サーバーではバージョン「 $version1 」を要求していますが、あなたのお使いのバー"
 "ジョンは「 $version2 」です。"
 
-#: src/multiplayer.cpp:168
+#: src/multiplayer.cpp:169
 msgid "Server-side redirect loop"
 msgstr "サーバー側のリダイレクトループ"
 
-#: src/multiplayer.cpp:256
+#: src/multiplayer.cpp:257
 msgid "Bad data received from server"
 msgstr ""
 
-#: src/multiplayer.cpp:297
+#: src/multiplayer.cpp:298
 msgid "You must login first."
 msgstr "あなたは最初にログインする必要があります"
 
-#: src/multiplayer.cpp:299
+#: src/multiplayer.cpp:300
 msgid "The nick '$nick' is already taken."
 msgstr "ニックネーム「 $nick 」は既に使用されています。"
 
-#: src/multiplayer.cpp:301
+#: src/multiplayer.cpp:302
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
@@ -9046,29 +9047,29 @@ msgstr ""
 "ニックネーム「 $nick 」は使用できない文字を含んでいます。英数字とアンダースコ"
 "ア(_)、ハイフン(-)のみが使用できます。"
 
-#: src/multiplayer.cpp:305
+#: src/multiplayer.cpp:306
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
 msgstr ""
 "ニックネーム「 $nick 」は長すぎます。ニックネームは 18 文字以下でなければなり"
 "ません。"
 
-#: src/multiplayer.cpp:308
+#: src/multiplayer.cpp:309
 msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr "ニックネーム「 $nick 」は予約済みです。プレイヤーには使用できません。"
 
-#: src/multiplayer.cpp:310
+#: src/multiplayer.cpp:311
 msgid "The nick '$nick' is not registered on this server."
 msgstr "ニックネーム「 $nick 」はこのサーバーに登録されていません。"
 
-#: src/multiplayer.cpp:311
+#: src/multiplayer.cpp:312
 msgid " This server disallows unregistered nicks."
 msgstr " このサーバーは登録されていないニックネームを許容しません。"
 
-#: src/multiplayer.cpp:313 src/multiplayer.cpp:315
+#: src/multiplayer.cpp:314 src/multiplayer.cpp:316
 msgid "The nick '$nick' is registered on this server."
 msgstr "ニックネーム「 $nick 」はこのサーバーに登録されています。"
 
-#: src/multiplayer.cpp:316
+#: src/multiplayer.cpp:317
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
@@ -9076,12 +9077,12 @@ msgstr ""
 "警告: このニックネームを使用している端末が既に存在しています。このままログイ"
 "ンすると、その端末は切断されます！"
 
-#: src/multiplayer.cpp:319
+#: src/multiplayer.cpp:320
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr "ログイン処理中のエラー（サーバーに接続の種がありません）"
 
-#: src/multiplayer.cpp:322
+#: src/multiplayer.cpp:323
 msgid "The password you provided was incorrect."
 msgstr "入力したパスワードは間違っています。"
 
@@ -9201,7 +9202,7 @@ msgstr "敵のリーダー（達）を倒す"
 msgid "Waiting for players to join..."
 msgstr "プレイヤーの参加待ち……"
 
-#: src/multiplayer_create.cpp:50
+#: src/multiplayer_create.cpp:50 src/multiplayer_lobby.cpp:727
 msgid "Create Game"
 msgstr "ゲームの作成"
 
@@ -9217,7 +9218,7 @@ msgstr "ゲーム名:"
 msgid "Map to play:"
 msgstr "使用マップ:"
 
-#: src/multiplayer_create.cpp:81
+#: src/multiplayer_create.cpp:81 src/multiplayer_lobby.cpp:272
 msgid "Use map settings"
 msgstr "マップ設定を使用"
 
@@ -9341,7 +9342,7 @@ msgstr "名前を入れて下さい。"
 msgid "Set Password"
 msgstr "パスワードの設定"
 
-#: src/multiplayer_create.cpp:344
+#: src/multiplayer_create.cpp:344 src/multiplayer_lobby.cpp:901
 msgid "Password: "
 msgstr "パスワード: "
 
@@ -9392,11 +9393,102 @@ msgstr "プレイヤー数: "
 msgid "Size: "
 msgstr "大きさ: "
 
+#: src/multiplayer_lobby.cpp:119
+msgid "--no games open--"
+msgstr "＜公開中のゲームはありません＞"
+
+#: src/multiplayer_lobby.cpp:153
+msgid " (Unknown Era)"
+msgstr " （不明な時代）"
+
+#: src/multiplayer_lobby.cpp:536 src/multiplayer_lobby.cpp:899
+msgid "Password Required"
+msgstr "要パスワード"
+
+#: src/multiplayer_lobby.cpp:720 src/multiplayer_wait.cpp:174
+msgid "Game Lobby"
+msgstr "ゲームロビー"
+
+#: src/multiplayer_lobby.cpp:725
+msgid "Observe Game"
+msgstr "ゲーム観戦"
+
+#: src/multiplayer_lobby.cpp:726
+msgid "Join Game"
+msgstr "ゲームに参加"
+
+#: src/multiplayer_lobby.cpp:728
+msgid "Quick Replays"
+msgstr "高速リプレイ"
+
+#: src/multiplayer_lobby.cpp:730
+msgid "Preferences"
+msgstr "初期設定"
+
+#: src/multiplayer_lobby.cpp:732
+msgid "Quit"
+msgstr "終了"
+
+#: src/multiplayer_lobby.cpp:734
+#, fuzzy
+msgid "Apply Filter"
+msgstr "フィルター: "
+
+#: src/multiplayer_lobby.cpp:735
+msgid "Invert"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:736
+msgid "Vacant Slots"
+msgstr "空いているスロット"
+
+#: src/multiplayer_lobby.cpp:737
+msgid "Friends in Game"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:738
+#, fuzzy
+msgid "Filter:"
+msgstr "フィルター: "
+
+#: src/multiplayer_lobby.cpp:747
+msgid "Skip quickly to the active turn when observing"
+msgstr "観戦のとき、現在のターンまで瞬時にスキップします"
+
+#: src/multiplayer_lobby.cpp:751
+msgid ""
+"Enable the games filter. If unchecked all games are shown, regardless of any "
+"filter."
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:754
+msgid ""
+"Show all games that do *not* match your filter. Useful for hiding games you "
+"are not interested in."
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:758
+msgid "Only show games that have at least one vacant slot"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:762
+msgid ""
+"Only show games that are played or observed by at least one of your friends"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:766
+msgid "Only show games whose title or description contain the entered text"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:900
+msgid "Joining this game requires a password."
+msgstr "ゲームに参加するにはパスワードが必要です。"
+
 #: src/multiplayer_ui.cpp:195
 msgid "Invalid Color"
 msgstr "無効な色"
 
-#: src/multiplayer_ui.cpp:425
+#: src/multiplayer_ui.cpp:427
 msgid "Selected user: "
 msgstr "ユーザーを選択してください: "
 
@@ -9407,10 +9499,6 @@ msgstr "リーダー: "
 #: src/multiplayer_wait.cpp:129
 msgid "Recruits: "
 msgstr "雇用: "
-
-#: src/multiplayer_wait.cpp:174
-msgid "Game Lobby"
-msgstr "ゲームロビー"
 
 #: src/multiplayer_wait.cpp:176
 msgid "Waiting for game to start..."
@@ -10235,33 +10323,6 @@ msgstr "サマリのアップロードを有効にする"
 #~ msgid "Computer player"
 #~ msgstr "コンピュータプレイヤー"
 
-#~ msgid "--no games open--"
-#~ msgstr "＜公開中のゲームはありません＞"
-
-#~ msgid " (Unknown Era)"
-#~ msgstr " （不明な時代）"
-
-#~ msgid "Password Required"
-#~ msgstr "要パスワード"
-
-#~ msgid "Observe Game"
-#~ msgstr "ゲーム観戦"
-
-#~ msgid "Quick Replays"
-#~ msgstr "高速リプレイ"
-
-#~ msgid "Preferences"
-#~ msgstr "初期設定"
-
-#~ msgid "Quit"
-#~ msgstr "終了"
-
-#~ msgid "Skip quickly to the active turn when observing"
-#~ msgstr "観戦のとき、現在のターンまで瞬時にスキップします"
-
-#~ msgid "Joining this game requires a password."
-#~ msgstr "ゲームに参加するにはパスワードが必要です。"
-
 #~ msgid "The replay could not be saved"
 #~ msgstr "リプレイは保存できませんでした"
 
@@ -10443,12 +10504,6 @@ msgstr "サマリのアップロードを有効にする"
 #, fuzzy
 #~ msgid "DejaVuSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 #~ msgstr "DejaVuSans.ttf,Andagii.ttf,wqy-zenhei.ttc"
-
-#~ msgid "Join Game"
-#~ msgstr "ゲームに参加"
-
-#~ msgid "Vacant Slots"
-#~ msgstr "空いているスロット"
 
 #~ msgid "Search:"
 #~ msgstr "検索:"

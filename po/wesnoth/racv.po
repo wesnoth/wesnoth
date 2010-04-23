@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-04-20 11:32+0200\n"
+"POT-Creation-Date: 2010-04-23 23:46+0200\n"
 "PO-Revision-Date: 2008-09-24 02:09+0100\n"
 "Last-Translator: Mavorte <mavorte1@yahoo.es>\n"
 "Language-Team: none\n"
@@ -7530,7 +7530,7 @@ msgid ""
 msgstr ""
 
 #: src/addon_management.cpp:532 src/addon_management.cpp:606
-#: src/multiplayer.cpp:215 src/multiplayer.cpp:274 src/multiplayer_ui.cpp:80
+#: src/multiplayer.cpp:216 src/multiplayer.cpp:275 src/multiplayer_ui.cpp:80
 msgid "Connection timed out"
 msgstr "Conexió perduda."
 
@@ -7755,7 +7755,7 @@ msgstr "Enviant expansió..."
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr "¿Esteu segur que voleu eliminar l'expansió «$addon|»?"
 
-#: src/addon_management.cpp:1220 src/multiplayer.cpp:227
+#: src/addon_management.cpp:1220 src/multiplayer.cpp:228
 msgid "Confirm"
 msgstr "Confirmar"
 
@@ -8205,50 +8205,51 @@ msgstr "Unitats caòtiques: "
 msgid "Observers:"
 msgstr "Observadors:"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:204
+#: src/gui/dialogs/lobby/lobby_data.cpp:204 src/multiplayer_lobby.cpp:431
 msgid "Unknown era: $era_id"
 msgstr "Era desconeguda: $era_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:209
+#: src/gui/dialogs/lobby/lobby_data.cpp:209 src/multiplayer_lobby.cpp:435
 msgid "Unknown era"
 msgstr "Era desconeguda"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:264
+#: src/gui/dialogs/lobby/lobby_data.cpp:264 src/multiplayer_lobby.cpp:497
 msgid "Remote scenario"
 msgstr "Escenari remot"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:272
+#: src/gui/dialogs/lobby/lobby_data.cpp:272 src/multiplayer_lobby.cpp:504
 msgid "Unknown scenario: $scenario_id"
 msgstr "Escenari desconegut: $scenario_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:277
+#: src/gui/dialogs/lobby/lobby_data.cpp:277 src/multiplayer_lobby.cpp:508
 msgid "Unknown scenario"
 msgstr "Escenari desconegut"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:283
+#: src/gui/dialogs/lobby/lobby_data.cpp:283 src/multiplayer_lobby.cpp:513
 msgid "Reloaded game"
 msgstr "Partida recarregada"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:294
+#: src/gui/dialogs/lobby/lobby_data.cpp:294 src/multiplayer_lobby.cpp:529
 msgid "Turn "
 msgstr "Tanda"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:298
+#: src/gui/dialogs/lobby/lobby_data.cpp:298 src/multiplayer_lobby.cpp:533
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Plaça lliure:"
 msgstr[1] "Places lliures:"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:304
+#: src/gui/dialogs/lobby/lobby_data.cpp:304 src/multiplayer_lobby.cpp:544
 msgid "Fog"
 msgstr "Boira"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:307
 #: src/gui/dialogs/lobby/lobby_data.cpp:310 src/multiplayer_create.cpp:84
+#: src/multiplayer_lobby.cpp:548 src/multiplayer_lobby.cpp:554
 msgid "Shroud"
 msgstr "Ocultació"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:312
+#: src/gui/dialogs/lobby/lobby_data.cpp:312 src/multiplayer_lobby.cpp:558
 msgid "none"
 msgstr "cap"
 
@@ -9360,15 +9361,15 @@ msgstr "Atac enemic"
 msgid "Choose weapon:"
 msgstr "Tria l'arma:"
 
-#: src/multiplayer.cpp:137 src/multiplayer.cpp:174
+#: src/multiplayer.cpp:138 src/multiplayer.cpp:175
 msgid "Connecting to Server..."
 msgstr "Conectant ab el servidor..."
 
-#: src/multiplayer.cpp:147
+#: src/multiplayer.cpp:148
 msgid "Reading from Server..."
 msgstr "S'està llegint del servidor..."
 
-#: src/multiplayer.cpp:157
+#: src/multiplayer.cpp:158
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
@@ -9376,61 +9377,61 @@ msgstr ""
 "El servidor requerïx la versió '$version1', pero estàs usant la versió "
 "'$version2'."
 
-#: src/multiplayer.cpp:168
+#: src/multiplayer.cpp:169
 msgid "Server-side redirect loop"
 msgstr "Redirecció del servidor"
 
-#: src/multiplayer.cpp:256
+#: src/multiplayer.cpp:257
 msgid "Bad data received from server"
 msgstr ""
 
-#: src/multiplayer.cpp:297
+#: src/multiplayer.cpp:298
 #, fuzzy
 msgid "You must login first."
 msgstr "Has d'entrar en este servidor"
 
-#: src/multiplayer.cpp:299
+#: src/multiplayer.cpp:300
 msgid "The nick '$nick' is already taken."
 msgstr ""
 
-#: src/multiplayer.cpp:301
+#: src/multiplayer.cpp:302
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
 msgstr ""
 
-#: src/multiplayer.cpp:305
+#: src/multiplayer.cpp:306
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
 msgstr ""
 
-#: src/multiplayer.cpp:308
+#: src/multiplayer.cpp:309
 msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr ""
 
-#: src/multiplayer.cpp:310
+#: src/multiplayer.cpp:311
 msgid "The nick '$nick' is not registered on this server."
 msgstr ""
 
-#: src/multiplayer.cpp:311
+#: src/multiplayer.cpp:312
 msgid " This server disallows unregistered nicks."
 msgstr ""
 
-#: src/multiplayer.cpp:313 src/multiplayer.cpp:315
+#: src/multiplayer.cpp:314 src/multiplayer.cpp:316
 msgid "The nick '$nick' is registered on this server."
 msgstr ""
 
-#: src/multiplayer.cpp:316
+#: src/multiplayer.cpp:317
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
 msgstr ""
 
-#: src/multiplayer.cpp:319
+#: src/multiplayer.cpp:320
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
 
-#: src/multiplayer.cpp:322
+#: src/multiplayer.cpp:323
 msgid "The password you provided was incorrect."
 msgstr ""
 
@@ -9555,7 +9556,7 @@ msgstr ""
 msgid "Waiting for players to join..."
 msgstr "Esperant a que s'afigen jugadors..."
 
-#: src/multiplayer_create.cpp:50
+#: src/multiplayer_create.cpp:50 src/multiplayer_lobby.cpp:727
 msgid "Create Game"
 msgstr "Crear partida"
 
@@ -9571,7 +9572,7 @@ msgstr "Nom de la partida:"
 msgid "Map to play:"
 msgstr "Mapa a jugar:"
 
-#: src/multiplayer_create.cpp:81
+#: src/multiplayer_create.cpp:81 src/multiplayer_lobby.cpp:272
 msgid "Use map settings"
 msgstr "Paràmetros per defecte"
 
@@ -9696,7 +9697,7 @@ msgstr "Has d'introduir un nom."
 msgid "Set Password"
 msgstr "Establèixer Contrasenya"
 
-#: src/multiplayer_create.cpp:344
+#: src/multiplayer_create.cpp:344 src/multiplayer_lobby.cpp:901
 msgid "Password: "
 msgstr "Contrasenya:"
 
@@ -9747,11 +9748,105 @@ msgstr "Jugadors: "
 msgid "Size: "
 msgstr "Tamany:"
 
+#: src/multiplayer_lobby.cpp:119
+msgid "--no games open--"
+msgstr "<no hi ha partides obertes>"
+
+#: src/multiplayer_lobby.cpp:153
+#, fuzzy
+msgid " (Unknown Era)"
+msgstr "Era desconeguda"
+
+#: src/multiplayer_lobby.cpp:536 src/multiplayer_lobby.cpp:899
+msgid "Password Required"
+msgstr "Contrasenya requerida"
+
+#: src/multiplayer_lobby.cpp:720 src/multiplayer_wait.cpp:174
+msgid "Game Lobby"
+msgstr "Sala de joc"
+
+#: src/multiplayer_lobby.cpp:725
+msgid "Observe Game"
+msgstr "Observar joc"
+
+#: src/multiplayer_lobby.cpp:726
+msgid "Join Game"
+msgstr "Unir-se"
+
+#: src/multiplayer_lobby.cpp:728
+msgid "Quick Replays"
+msgstr "Repetició ràpida"
+
+#: src/multiplayer_lobby.cpp:730
+msgid "Preferences"
+msgstr "Preferències"
+
+#: src/multiplayer_lobby.cpp:732
+msgid "Quit"
+msgstr "Eixir"
+
+#: src/multiplayer_lobby.cpp:734
+#, fuzzy
+msgid "Apply Filter"
+msgstr "Filtre:"
+
+#: src/multiplayer_lobby.cpp:735
+#, fuzzy
+msgid "Invert"
+msgstr "ret"
+
+#: src/multiplayer_lobby.cpp:736
+#, fuzzy
+msgid "Vacant Slots"
+msgstr "Places lliures:"
+
+#: src/multiplayer_lobby.cpp:737
+msgid "Friends in Game"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:738
+#, fuzzy
+msgid "Filter:"
+msgstr "Filtre:"
+
+#: src/multiplayer_lobby.cpp:747
+msgid "Skip quickly to the active turn when observing"
+msgstr "Botar ràpidament a la tanda activa (quan s'observa)"
+
+#: src/multiplayer_lobby.cpp:751
+msgid ""
+"Enable the games filter. If unchecked all games are shown, regardless of any "
+"filter."
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:754
+msgid ""
+"Show all games that do *not* match your filter. Useful for hiding games you "
+"are not interested in."
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:758
+msgid "Only show games that have at least one vacant slot"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:762
+msgid ""
+"Only show games that are played or observed by at least one of your friends"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:766
+msgid "Only show games whose title or description contain the entered text"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:900
+msgid "Joining this game requires a password."
+msgstr "Unir-se ad este joc requerix contrasenya."
+
 #: src/multiplayer_ui.cpp:195
 msgid "Invalid Color"
 msgstr "Color no vàlit"
 
-#: src/multiplayer_ui.cpp:425
+#: src/multiplayer_ui.cpp:427
 #, fuzzy
 msgid "Selected user: "
 msgstr "Selecciona una unitat:"
@@ -9763,10 +9858,6 @@ msgstr "Líder: "
 #: src/multiplayer_wait.cpp:129
 msgid "Recruits: "
 msgstr "Reclutaments: "
-
-#: src/multiplayer_wait.cpp:174
-msgid "Game Lobby"
-msgstr "Sala de joc"
 
 #: src/multiplayer_wait.cpp:176
 msgid "Waiting for game to start..."
@@ -10503,48 +10594,9 @@ msgstr "Permetre emissions de resums"
 #~ "found."
 #~ msgstr "S'ha trobat una definició de bando duplicada per al bando '$side|'."
 
-#~ msgid "--no games open--"
-#~ msgstr "<no hi ha partides obertes>"
-
-#, fuzzy
-#~ msgid " (Unknown Era)"
-#~ msgstr "Era desconeguda"
-
-#~ msgid "Password Required"
-#~ msgstr "Contrasenya requerida"
-
-#~ msgid "Observe Game"
-#~ msgstr "Observar joc"
-
-#~ msgid "Join Game"
-#~ msgstr "Unir-se"
-
-#~ msgid "Quick Replays"
-#~ msgstr "Repetició ràpida"
-
-#~ msgid "Preferences"
-#~ msgstr "Preferències"
-
-#~ msgid "Quit"
-#~ msgstr "Eixir"
-
-#, fuzzy
-#~ msgid "Invert"
-#~ msgstr "ret"
-
-#, fuzzy
-#~ msgid "Vacant Slots"
-#~ msgstr "Places lliures:"
-
 #, fuzzy
 #~ msgid "Search:"
 #~ msgstr "Busca"
-
-#~ msgid "Skip quickly to the active turn when observing"
-#~ msgstr "Botar ràpidament a la tanda activa (quan s'observa)"
-
-#~ msgid "Joining this game requires a password."
-#~ msgstr "Unir-se ad este joc requerix contrasenya."
 
 #~ msgid "End scenario"
 #~ msgstr "Fi de l'escenari"

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-04-20 11:32+0200\n"
+"POT-Creation-Date: 2010-04-23 23:46+0200\n"
 "PO-Revision-Date: 2010-01-30 11:50+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -7497,7 +7497,7 @@ msgstr ""
 "giocare)?"
 
 #: src/addon_management.cpp:532 src/addon_management.cpp:606
-#: src/multiplayer.cpp:215 src/multiplayer.cpp:274 src/multiplayer_ui.cpp:80
+#: src/multiplayer.cpp:216 src/multiplayer.cpp:275 src/multiplayer_ui.cpp:80
 msgid "Connection timed out"
 msgstr "Connessione scaduta"
 
@@ -7714,7 +7714,7 @@ msgstr "Deinstalla estensioni"
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr "Sei sicuro di voler eliminare l'estensione «$addon»?"
 
-#: src/addon_management.cpp:1220 src/multiplayer.cpp:227
+#: src/addon_management.cpp:1220 src/multiplayer.cpp:228
 msgid "Confirm"
 msgstr "Confermo"
 
@@ -8156,50 +8156,51 @@ msgstr "Unità caotiche: "
 msgid "Observers:"
 msgstr "Osservatori:"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:204
+#: src/gui/dialogs/lobby/lobby_data.cpp:204 src/multiplayer_lobby.cpp:431
 msgid "Unknown era: $era_id"
 msgstr "Era sconosciuta: $era_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:209
+#: src/gui/dialogs/lobby/lobby_data.cpp:209 src/multiplayer_lobby.cpp:435
 msgid "Unknown era"
 msgstr "Era sconosciuta"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:264
+#: src/gui/dialogs/lobby/lobby_data.cpp:264 src/multiplayer_lobby.cpp:497
 msgid "Remote scenario"
 msgstr "Scenario remoto"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:272
+#: src/gui/dialogs/lobby/lobby_data.cpp:272 src/multiplayer_lobby.cpp:504
 msgid "Unknown scenario: $scenario_id"
 msgstr "Scenario sconosciuto: $scenario_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:277
+#: src/gui/dialogs/lobby/lobby_data.cpp:277 src/multiplayer_lobby.cpp:508
 msgid "Unknown scenario"
 msgstr "Scenario sconosciuto"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:283
+#: src/gui/dialogs/lobby/lobby_data.cpp:283 src/multiplayer_lobby.cpp:513
 msgid "Reloaded game"
 msgstr "Partita ricaricata"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:294
+#: src/gui/dialogs/lobby/lobby_data.cpp:294 src/multiplayer_lobby.cpp:529
 msgid "Turn "
 msgstr "Turno "
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:298
+#: src/gui/dialogs/lobby/lobby_data.cpp:298 src/multiplayer_lobby.cpp:533
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Casella vuota:"
 msgstr[1] "Caselle vuote:"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:304
+#: src/gui/dialogs/lobby/lobby_data.cpp:304 src/multiplayer_lobby.cpp:544
 msgid "Fog"
 msgstr "Nebbia"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:307
 #: src/gui/dialogs/lobby/lobby_data.cpp:310 src/multiplayer_create.cpp:84
+#: src/multiplayer_lobby.cpp:548 src/multiplayer_lobby.cpp:554
 msgid "Shroud"
 msgstr "Oscurità"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:312
+#: src/gui/dialogs/lobby/lobby_data.cpp:312 src/multiplayer_lobby.cpp:558
 msgid "none"
 msgstr "nessuno"
 
@@ -9276,15 +9277,15 @@ msgstr "Attacca il nemico"
 msgid "Choose weapon:"
 msgstr "Scegli l'arma:"
 
-#: src/multiplayer.cpp:137 src/multiplayer.cpp:174
+#: src/multiplayer.cpp:138 src/multiplayer.cpp:175
 msgid "Connecting to Server..."
 msgstr "Connessione al server..."
 
-#: src/multiplayer.cpp:147
+#: src/multiplayer.cpp:148
 msgid "Reading from Server..."
 msgstr "Ricezione dati dal server..."
 
-#: src/multiplayer.cpp:157
+#: src/multiplayer.cpp:158
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
@@ -9292,23 +9293,23 @@ msgstr ""
 "Il server richiede la versione «$version1» mentre tu hai la versione "
 "«$version2»"
 
-#: src/multiplayer.cpp:168
+#: src/multiplayer.cpp:169
 msgid "Server-side redirect loop"
 msgstr "Reindirizzamento ridondante da parte del server"
 
-#: src/multiplayer.cpp:256
+#: src/multiplayer.cpp:257
 msgid "Bad data received from server"
 msgstr ""
 
-#: src/multiplayer.cpp:297
+#: src/multiplayer.cpp:298
 msgid "You must login first."
 msgstr "Devi prima accedere al server."
 
-#: src/multiplayer.cpp:299
+#: src/multiplayer.cpp:300
 msgid "The nick '$nick' is already taken."
 msgstr "Il nome utente «$nick» è già in uso."
 
-#: src/multiplayer.cpp:301
+#: src/multiplayer.cpp:302
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
@@ -9316,30 +9317,30 @@ msgstr ""
 "Il nome utente «$nick» contiene caratteri non validi. Sono consentiti solo "
 "caratteri alfanumerici, simboli di sottolineatura o trattini."
 
-#: src/multiplayer.cpp:305
+#: src/multiplayer.cpp:306
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
 msgstr ""
 "Il nome utente «$nick» è troppo lungo. I nomi utente devono essere lunghi al "
 "più 18 caratteri."
 
-#: src/multiplayer.cpp:308
+#: src/multiplayer.cpp:309
 msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr ""
 "Il nome utente «$nick» è riservato e non può essere usato dai giocatori."
 
-#: src/multiplayer.cpp:310
+#: src/multiplayer.cpp:311
 msgid "The nick '$nick' is not registered on this server."
 msgstr "Il nome utente «$nick» non è stato registrato su questo server."
 
-#: src/multiplayer.cpp:311
+#: src/multiplayer.cpp:312
 msgid " This server disallows unregistered nicks."
 msgstr " Questo server non permette l'uso di nomi non registrati."
 
-#: src/multiplayer.cpp:313 src/multiplayer.cpp:315
+#: src/multiplayer.cpp:314 src/multiplayer.cpp:316
 msgid "The nick '$nick' is registered on this server."
 msgstr "Il nome utente «$nick» è stato riservato su questo server."
 
-#: src/multiplayer.cpp:316
+#: src/multiplayer.cpp:317
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
@@ -9347,14 +9348,14 @@ msgstr ""
 "ATTENZIONE: C'è già un client che usa questo nome utente, l'accesso farà in "
 "modo che l'altro client venga scacciato!"
 
-#: src/multiplayer.cpp:319
+#: src/multiplayer.cpp:320
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
 "Errore nella procedura di accesso (il server non ha un seme per la tua "
 "connessione)."
 
-#: src/multiplayer.cpp:322
+#: src/multiplayer.cpp:323
 msgid "The password you provided was incorrect."
 msgstr "La password inserita è sbagliata."
 
@@ -9474,7 +9475,7 @@ msgstr "Sconfiggi il o i condottieri nemici"
 msgid "Waiting for players to join..."
 msgstr "In attesa degli altri giocatori..."
 
-#: src/multiplayer_create.cpp:50
+#: src/multiplayer_create.cpp:50 src/multiplayer_lobby.cpp:727
 msgid "Create Game"
 msgstr "Crea partita"
 
@@ -9490,7 +9491,7 @@ msgstr "Nome della partita:"
 msgid "Map to play:"
 msgstr "Mappa da giocare:"
 
-#: src/multiplayer_create.cpp:81
+#: src/multiplayer_create.cpp:81 src/multiplayer_lobby.cpp:272
 msgid "Use map settings"
 msgstr "Usa le impostazioni della mappa"
 
@@ -9618,7 +9619,7 @@ msgstr "Devi inserire un nome."
 msgid "Set Password"
 msgstr "Imposta parola d'ordine"
 
-#: src/multiplayer_create.cpp:344
+#: src/multiplayer_create.cpp:344 src/multiplayer_lobby.cpp:901
 msgid "Password: "
 msgstr "Parola d'ordine: "
 
@@ -9669,11 +9670,109 @@ msgstr "Giocatori: "
 msgid "Size: "
 msgstr "Dimensione: "
 
+#: src/multiplayer_lobby.cpp:119
+msgid "--no games open--"
+msgstr "--nessuna partita aperta--"
+
+#: src/multiplayer_lobby.cpp:153
+msgid " (Unknown Era)"
+msgstr " (Era sconosciuta)"
+
+#: src/multiplayer_lobby.cpp:536 src/multiplayer_lobby.cpp:899
+msgid "Password Required"
+msgstr "Parola d'ordine richiesta"
+
+#: src/multiplayer_lobby.cpp:720 src/multiplayer_wait.cpp:174
+msgid "Game Lobby"
+msgstr "Game Lobby"
+
+#: src/multiplayer_lobby.cpp:725
+msgid "Observe Game"
+msgstr "Osserva la partita"
+
+#: src/multiplayer_lobby.cpp:726
+msgid "Join Game"
+msgstr "Collegati al gioco"
+
+#: src/multiplayer_lobby.cpp:728
+msgid "Quick Replays"
+msgstr "Replay veloce"
+
+#: src/multiplayer_lobby.cpp:730
+msgid "Preferences"
+msgstr "Opzioni"
+
+#: src/multiplayer_lobby.cpp:732
+msgid "Quit"
+msgstr "Esci"
+
+#: src/multiplayer_lobby.cpp:734
+msgid "Apply Filter"
+msgstr "Applica filtro"
+
+#: src/multiplayer_lobby.cpp:735
+msgid "Invert"
+msgstr "Inverti"
+
+#: src/multiplayer_lobby.cpp:736
+msgid "Vacant Slots"
+msgstr "Caselle vuote:"
+
+#: src/multiplayer_lobby.cpp:737
+msgid "Friends in Game"
+msgstr "Amici nella partita"
+
+#: src/multiplayer_lobby.cpp:738
+#, fuzzy
+msgid "Filter:"
+msgstr "Filtro: "
+
+#: src/multiplayer_lobby.cpp:747
+msgid "Skip quickly to the active turn when observing"
+msgstr "Salta velocemente al turno attivo quando si osserva"
+
+#: src/multiplayer_lobby.cpp:751
+msgid ""
+"Enable the games filter. If unchecked all games are shown, regardless of any "
+"filter."
+msgstr ""
+"Attiva il filtro sulle partite. Se la casella non è marcata verranno "
+"mostrate tutte le partite, indipendentemente da qualsiasi filtro."
+
+#: src/multiplayer_lobby.cpp:754
+msgid ""
+"Show all games that do *not* match your filter. Useful for hiding games you "
+"are not interested in."
+msgstr ""
+"Mostra tutte le partite che *non* corrispondono al filtro. Utile per "
+"nascondere le partite che non ti interessano."
+
+#: src/multiplayer_lobby.cpp:758
+msgid "Only show games that have at least one vacant slot"
+msgstr "Mostra solo le partite che hanno almeno una casella libera"
+
+#: src/multiplayer_lobby.cpp:762
+msgid ""
+"Only show games that are played or observed by at least one of your friends"
+msgstr ""
+"Mostra solo le partite che sono giocate o osservate da almeno uno dei tuoi "
+"amici"
+
+#: src/multiplayer_lobby.cpp:766
+msgid "Only show games whose title or description contain the entered text"
+msgstr ""
+"Mostra solo le partite il cui titolo o descrizione contengono il testo "
+"immesso"
+
+#: src/multiplayer_lobby.cpp:900
+msgid "Joining this game requires a password."
+msgstr "Collegarsi a questa partita richiede la parola d'ordine."
+
 #: src/multiplayer_ui.cpp:195
 msgid "Invalid Color"
 msgstr "Colore non valido"
 
-#: src/multiplayer_ui.cpp:425
+#: src/multiplayer_ui.cpp:427
 msgid "Selected user: "
 msgstr "Utente selezionato:"
 
@@ -9684,10 +9783,6 @@ msgstr "Condottiero: "
 #: src/multiplayer_wait.cpp:129
 msgid "Recruits: "
 msgstr "Reclutamenti: "
-
-#: src/multiplayer_wait.cpp:174
-msgid "Game Lobby"
-msgstr "Game Lobby"
 
 #: src/multiplayer_wait.cpp:176
 msgid "Waiting for game to start..."
@@ -10415,79 +10510,8 @@ msgstr "Abilita l'invio del sommario"
 #~ "Posizione del condottiero non vuota – definizione di side duplicata per "
 #~ "la fazione «$side|»."
 
-#~ msgid "--no games open--"
-#~ msgstr "--nessuna partita aperta--"
-
-#~ msgid " (Unknown Era)"
-#~ msgstr " (Era sconosciuta)"
-
-#~ msgid "Password Required"
-#~ msgstr "Parola d'ordine richiesta"
-
-#~ msgid "Observe Game"
-#~ msgstr "Osserva la partita"
-
-#~ msgid "Join Game"
-#~ msgstr "Collegati al gioco"
-
-#~ msgid "Quick Replays"
-#~ msgstr "Replay veloce"
-
-#~ msgid "Preferences"
-#~ msgstr "Opzioni"
-
-#~ msgid "Quit"
-#~ msgstr "Esci"
-
-#~ msgid "Apply Filter"
-#~ msgstr "Applica filtro"
-
-#~ msgid "Invert"
-#~ msgstr "Inverti"
-
-#~ msgid "Vacant Slots"
-#~ msgstr "Caselle vuote:"
-
-#~ msgid "Friends in Game"
-#~ msgstr "Amici nella partita"
-
 #~ msgid "Search:"
 #~ msgstr "Cerca:"
-
-#~ msgid "Skip quickly to the active turn when observing"
-#~ msgstr "Salta velocemente al turno attivo quando si osserva"
-
-#~ msgid ""
-#~ "Enable the games filter. If unchecked all games are shown, regardless of "
-#~ "any filter."
-#~ msgstr ""
-#~ "Attiva il filtro sulle partite. Se la casella non è marcata verranno "
-#~ "mostrate tutte le partite, indipendentemente da qualsiasi filtro."
-
-#~ msgid ""
-#~ "Show all games that do *not* match your filter. Useful for hiding games "
-#~ "you are not interested in."
-#~ msgstr ""
-#~ "Mostra tutte le partite che *non* corrispondono al filtro. Utile per "
-#~ "nascondere le partite che non ti interessano."
-
-#~ msgid "Only show games that have at least one vacant slot"
-#~ msgstr "Mostra solo le partite che hanno almeno una casella libera"
-
-#~ msgid ""
-#~ "Only show games that are played or observed by at least one of your "
-#~ "friends"
-#~ msgstr ""
-#~ "Mostra solo le partite che sono giocate o osservate da almeno uno dei "
-#~ "tuoi amici"
-
-#~ msgid "Only show games whose title or description contain the entered text"
-#~ msgstr ""
-#~ "Mostra solo le partite il cui titolo o descrizione contengono il testo "
-#~ "immesso"
-
-#~ msgid "Joining this game requires a password."
-#~ msgstr "Collegarsi a questa partita richiede la parola d'ordine."
 
 #~ msgid "End scenario"
 #~ msgstr "Termina scenario"

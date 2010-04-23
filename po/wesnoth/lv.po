@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.9\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-04-20 11:32+0200\n"
+"POT-Creation-Date: 2010-04-23 23:46+0200\n"
 "PO-Revision-Date: 2010-03-15 23:42+0300\n"
 "Last-Translator: Reinis Danne <rei4dan@gmail.com>\n"
 "Language-Team: none\n"
@@ -7386,7 +7386,7 @@ msgstr ""
 "nepieciešams instalēt visas nepieciešamās pakotnes.)"
 
 #: src/addon_management.cpp:532 src/addon_management.cpp:606
-#: src/multiplayer.cpp:215 src/multiplayer.cpp:274 src/multiplayer_ui.cpp:80
+#: src/multiplayer.cpp:216 src/multiplayer.cpp:275 src/multiplayer_ui.cpp:80
 msgid "Connection timed out"
 msgstr "Iestājās savienojuma noildze"
 
@@ -7605,7 +7605,7 @@ msgstr "Noinstalēt papildinājumus"
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr "Vai esat pārliecināti, ka vēlaties noņemt papildinājumu '$addon|'?"
 
-#: src/addon_management.cpp:1220 src/multiplayer.cpp:227
+#: src/addon_management.cpp:1220 src/multiplayer.cpp:228
 msgid "Confirm"
 msgstr "Apstiprināt"
 
@@ -8051,51 +8051,52 @@ msgstr "Haotiskās vienības: "
 msgid "Observers:"
 msgstr "Novērotāji:"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:204
+#: src/gui/dialogs/lobby/lobby_data.cpp:204 src/multiplayer_lobby.cpp:431
 msgid "Unknown era: $era_id"
 msgstr "Nezināma ēra: $era_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:209
+#: src/gui/dialogs/lobby/lobby_data.cpp:209 src/multiplayer_lobby.cpp:435
 msgid "Unknown era"
 msgstr "Nezināma ēra"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:264
+#: src/gui/dialogs/lobby/lobby_data.cpp:264 src/multiplayer_lobby.cpp:497
 msgid "Remote scenario"
 msgstr "Attālinatais scenārijs"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:272
+#: src/gui/dialogs/lobby/lobby_data.cpp:272 src/multiplayer_lobby.cpp:504
 msgid "Unknown scenario: $scenario_id"
 msgstr "Nezināms scenārijs: $scenārija_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:277
+#: src/gui/dialogs/lobby/lobby_data.cpp:277 src/multiplayer_lobby.cpp:508
 msgid "Unknown scenario"
 msgstr "Nezināms scenārijs"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:283
+#: src/gui/dialogs/lobby/lobby_data.cpp:283 src/multiplayer_lobby.cpp:513
 msgid "Reloaded game"
 msgstr "Pārlādēta spēle"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:294
+#: src/gui/dialogs/lobby/lobby_data.cpp:294 src/multiplayer_lobby.cpp:529
 msgid "Turn "
 msgstr "Gājiens "
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:298
+#: src/gui/dialogs/lobby/lobby_data.cpp:298 src/multiplayer_lobby.cpp:533
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Brīva vieta:"
 msgstr[1] "Brīvas vietas:"
 msgstr[2] "Brīvas vietas:"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:304
+#: src/gui/dialogs/lobby/lobby_data.cpp:304 src/multiplayer_lobby.cpp:544
 msgid "Fog"
 msgstr "Migla"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:307
 #: src/gui/dialogs/lobby/lobby_data.cpp:310 src/multiplayer_create.cpp:84
+#: src/multiplayer_lobby.cpp:548 src/multiplayer_lobby.cpp:554
 msgid "Shroud"
 msgstr "Plīvurs"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:312
+#: src/gui/dialogs/lobby/lobby_data.cpp:312 src/multiplayer_lobby.cpp:558
 msgid "none"
 msgstr "nekas"
 
@@ -9166,38 +9167,38 @@ msgstr "Uzbrukt pretiniekam"
 msgid "Choose weapon:"
 msgstr "Izvēlieties uzbrukuma veidu:"
 
-#: src/multiplayer.cpp:137 src/multiplayer.cpp:174
+#: src/multiplayer.cpp:138 src/multiplayer.cpp:175
 msgid "Connecting to Server..."
 msgstr "Pieslēdzas serverim..."
 
-#: src/multiplayer.cpp:147
+#: src/multiplayer.cpp:148
 msgid "Reading from Server..."
 msgstr "Saņem datus no servera..."
 
-#: src/multiplayer.cpp:157
+#: src/multiplayer.cpp:158
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
 msgstr ""
 "Serverim nepieciešama versija '$version1', jūs lietojat versiju '$version2'"
 
-#: src/multiplayer.cpp:168
+#: src/multiplayer.cpp:169
 msgid "Server-side redirect loop"
 msgstr "Servera puses pārvirzīšanas cilpa"
 
-#: src/multiplayer.cpp:256
+#: src/multiplayer.cpp:257
 msgid "Bad data received from server"
 msgstr ""
 
-#: src/multiplayer.cpp:297
+#: src/multiplayer.cpp:298
 msgid "You must login first."
 msgstr "Vispirms ir jāautorizējas."
 
-#: src/multiplayer.cpp:299
+#: src/multiplayer.cpp:300
 msgid "The nick '$nick' is already taken."
 msgstr "Lietotājvārds '$nick' jau ir aizņemts."
 
-#: src/multiplayer.cpp:301
+#: src/multiplayer.cpp:302
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
@@ -9205,29 +9206,29 @@ msgstr ""
 "Lietotājvārds '$nick' satur neatļautas zīmes. Ir atļauti tikai burti, "
 "cipari, zemsvītras un domuzīmes."
 
-#: src/multiplayer.cpp:305
+#: src/multiplayer.cpp:306
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
 msgstr ""
 "Lietotājvārds '$nick' ir pārāk garš. Lietotājvārds nedrīkst būt garāks par "
 "18 zīmēm."
 
-#: src/multiplayer.cpp:308
+#: src/multiplayer.cpp:309
 msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr "Lietotājvārds '$nick' ir rezervēts, un spēlētāji to nevar izmantot."
 
-#: src/multiplayer.cpp:310
+#: src/multiplayer.cpp:311
 msgid "The nick '$nick' is not registered on this server."
 msgstr "Lietotājvārds '$nick' nav reģistrēts uz šī servera."
 
-#: src/multiplayer.cpp:311
+#: src/multiplayer.cpp:312
 msgid " This server disallows unregistered nicks."
 msgstr " Šis serveris neatļauj nereģistrētus lietotājvārdus."
 
-#: src/multiplayer.cpp:313 src/multiplayer.cpp:315
+#: src/multiplayer.cpp:314 src/multiplayer.cpp:316
 msgid "The nick '$nick' is registered on this server."
 msgstr "Lietotājvārds '$nick' ir reģistrēts uz šī servera."
 
-#: src/multiplayer.cpp:316
+#: src/multiplayer.cpp:317
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
@@ -9235,13 +9236,13 @@ msgstr ""
 "BRĪDINĀJUMS: Viens lietotājs jau izmanto šo lietotājvārdu, ielogojošanās "
 "izsauks tā lietotāja izmešanu!"
 
-#: src/multiplayer.cpp:319
+#: src/multiplayer.cpp:320
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
 "Kļūda žurnalēšanas procedūrā (serverim nebija \"sēklas\" jūsu savienojumam)."
 
-#: src/multiplayer.cpp:322
+#: src/multiplayer.cpp:323
 msgid "The password you provided was incorrect."
 msgstr "Jūsu ierakstītā parole bija nepareiza."
 
@@ -9361,7 +9362,7 @@ msgstr "Sakaut pretinieku līderi/-us"
 msgid "Waiting for players to join..."
 msgstr "Gaida spēlētāju pievienošanos..."
 
-#: src/multiplayer_create.cpp:50
+#: src/multiplayer_create.cpp:50 src/multiplayer_lobby.cpp:727
 msgid "Create Game"
 msgstr "Izveidot spēli"
 
@@ -9377,7 +9378,7 @@ msgstr "Spēles nosaukums:"
 msgid "Map to play:"
 msgstr "Karte, ko spēlēt:"
 
-#: src/multiplayer_create.cpp:81
+#: src/multiplayer_create.cpp:81 src/multiplayer_lobby.cpp:272
 msgid "Use map settings"
 msgstr "Izmantot kartes iestatījumus"
 
@@ -9503,7 +9504,7 @@ msgstr "Jums jāievada vārds."
 msgid "Set Password"
 msgstr "Iestatīt paroli"
 
-#: src/multiplayer_create.cpp:344
+#: src/multiplayer_create.cpp:344 src/multiplayer_lobby.cpp:901
 msgid "Password: "
 msgstr "Parole: "
 
@@ -9554,11 +9555,104 @@ msgstr "Spēlētāji: "
 msgid "Size: "
 msgstr "Izmērs: "
 
+#: src/multiplayer_lobby.cpp:119
+msgid "--no games open--"
+msgstr "--neviena spēle nav atvērta--"
+
+#: src/multiplayer_lobby.cpp:153
+msgid " (Unknown Era)"
+msgstr "(Nezināma ēra)"
+
+#: src/multiplayer_lobby.cpp:536 src/multiplayer_lobby.cpp:899
+msgid "Password Required"
+msgstr "Nepieciešama parole"
+
+#: src/multiplayer_lobby.cpp:720 src/multiplayer_wait.cpp:174
+msgid "Game Lobby"
+msgstr "Spēles priekšnams"
+
+#: src/multiplayer_lobby.cpp:725
+msgid "Observe Game"
+msgstr "Vērot spēli"
+
+#: src/multiplayer_lobby.cpp:726
+msgid "Join Game"
+msgstr "Pievienoties spēlei"
+
+#: src/multiplayer_lobby.cpp:728
+msgid "Quick Replays"
+msgstr "Ātrie atkārtojumi"
+
+#: src/multiplayer_lobby.cpp:730
+msgid "Preferences"
+msgstr "Iestatījumi"
+
+#: src/multiplayer_lobby.cpp:732
+msgid "Quit"
+msgstr "Pamest"
+
+#: src/multiplayer_lobby.cpp:734
+msgid "Apply Filter"
+msgstr "Pielietot filtru"
+
+#: src/multiplayer_lobby.cpp:735
+msgid "Invert"
+msgstr "Invertēt"
+
+#: src/multiplayer_lobby.cpp:736
+msgid "Vacant Slots"
+msgstr "Brīvas vietas"
+
+#: src/multiplayer_lobby.cpp:737
+msgid "Friends in Game"
+msgstr "Draugi spēlē"
+
+#: src/multiplayer_lobby.cpp:738
+#, fuzzy
+msgid "Filter:"
+msgstr "Filtrēt: "
+
+#: src/multiplayer_lobby.cpp:747
+msgid "Skip quickly to the active turn when observing"
+msgstr "Ātri pāriet uz aktīvo gājienu, kad novēro"
+
+#: src/multiplayer_lobby.cpp:751
+msgid ""
+"Enable the games filter. If unchecked all games are shown, regardless of any "
+"filter."
+msgstr ""
+"Iespējot spēļu filtru. Ja neieķeksēts, tad tiek rādītas visas spēles "
+"neatkarīgi no filtriem."
+
+#: src/multiplayer_lobby.cpp:754
+msgid ""
+"Show all games that do *not* match your filter. Useful for hiding games you "
+"are not interested in."
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:758
+msgid "Only show games that have at least one vacant slot"
+msgstr "Rādīt tikai spēles ar vismaz vienu brīvu vietu"
+
+#: src/multiplayer_lobby.cpp:762
+msgid ""
+"Only show games that are played or observed by at least one of your friends"
+msgstr ""
+"Rādīt tikai spēles, kuras spēlē vai novēro vismaz viens no taviem draugiem"
+
+#: src/multiplayer_lobby.cpp:766
+msgid "Only show games whose title or description contain the entered text"
+msgstr "Rādīt tikai spēles, kuru nosaukums vai apraksts satur ievadīto tekstu"
+
+#: src/multiplayer_lobby.cpp:900
+msgid "Joining this game requires a password."
+msgstr "Lai pievienotos šai spēlei, nepieciešama parole."
+
 #: src/multiplayer_ui.cpp:195
 msgid "Invalid Color"
 msgstr "Nederīga krāsa"
 
-#: src/multiplayer_ui.cpp:425
+#: src/multiplayer_ui.cpp:427
 msgid "Selected user: "
 msgstr "Izvēlēties lietotāju: "
 
@@ -9569,10 +9663,6 @@ msgstr "Līderis: "
 #: src/multiplayer_wait.cpp:129
 msgid "Recruits: "
 msgstr "Iesaucamie: "
-
-#: src/multiplayer_wait.cpp:174
-msgid "Game Lobby"
-msgstr "Spēles priekšnams"
 
 #: src/multiplayer_wait.cpp:176
 msgid "Waiting for game to start..."
@@ -10302,70 +10392,8 @@ msgstr "Atļaut kopsavilkumu augšupielādi"
 #~ "Līdera pozīcija nav tukša - atrasta divkārša puses definīcija pusei "
 #~ "'$side|'."
 
-#~ msgid "--no games open--"
-#~ msgstr "--neviena spēle nav atvērta--"
-
-#~ msgid " (Unknown Era)"
-#~ msgstr "(Nezināma ēra)"
-
-#~ msgid "Password Required"
-#~ msgstr "Nepieciešama parole"
-
-#~ msgid "Observe Game"
-#~ msgstr "Vērot spēli"
-
-#~ msgid "Join Game"
-#~ msgstr "Pievienoties spēlei"
-
-#~ msgid "Quick Replays"
-#~ msgstr "Ātrie atkārtojumi"
-
-#~ msgid "Preferences"
-#~ msgstr "Iestatījumi"
-
-#~ msgid "Quit"
-#~ msgstr "Pamest"
-
-#~ msgid "Apply Filter"
-#~ msgstr "Pielietot filtru"
-
-#~ msgid "Invert"
-#~ msgstr "Invertēt"
-
-#~ msgid "Vacant Slots"
-#~ msgstr "Brīvas vietas"
-
-#~ msgid "Friends in Game"
-#~ msgstr "Draugi spēlē"
-
 #~ msgid "Search:"
 #~ msgstr "Meklēt:"
-
-#~ msgid "Skip quickly to the active turn when observing"
-#~ msgstr "Ātri pāriet uz aktīvo gājienu, kad novēro"
-
-#~ msgid ""
-#~ "Enable the games filter. If unchecked all games are shown, regardless of "
-#~ "any filter."
-#~ msgstr ""
-#~ "Iespējot spēļu filtru. Ja neieķeksēts, tad tiek rādītas visas spēles "
-#~ "neatkarīgi no filtriem."
-
-#~ msgid "Only show games that have at least one vacant slot"
-#~ msgstr "Rādīt tikai spēles ar vismaz vienu brīvu vietu"
-
-#~ msgid ""
-#~ "Only show games that are played or observed by at least one of your "
-#~ "friends"
-#~ msgstr ""
-#~ "Rādīt tikai spēles, kuras spēlē vai novēro vismaz viens no taviem draugiem"
-
-#~ msgid "Only show games whose title or description contain the entered text"
-#~ msgstr ""
-#~ "Rādīt tikai spēles, kuru nosaukums vai apraksts satur ievadīto tekstu"
-
-#~ msgid "Joining this game requires a password."
-#~ msgstr "Lai pievienotos šai spēlei, nepieciešama parole."
 
 #, fuzzy
 #~ msgid "Can rest while moving, takes a quarter less poison damage"

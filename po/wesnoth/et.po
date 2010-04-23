@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4 Estonian translation\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-04-20 11:32+0200\n"
+"POT-Creation-Date: 2010-04-23 23:46+0200\n"
 "PO-Revision-Date: 2009-12-25 11:55+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: Kaido Kikkas <kakk@kakupesa.net>\n"
@@ -7235,7 +7235,7 @@ msgstr ""
 "paigaldama ka kõik teised vajaminevad lisamoodulid.)"
 
 #: src/addon_management.cpp:532 src/addon_management.cpp:606
-#: src/multiplayer.cpp:215 src/multiplayer.cpp:274 src/multiplayer_ui.cpp:80
+#: src/multiplayer.cpp:216 src/multiplayer.cpp:275 src/multiplayer_ui.cpp:80
 msgid "Connection timed out"
 msgstr "Ühendus aegus."
 
@@ -7445,7 +7445,7 @@ msgstr "Lisamooduli eemaldamine"
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr "Oled kindel, et soovid eemaldada lisamoodulit '$addon|'?"
 
-#: src/addon_management.cpp:1220 src/multiplayer.cpp:227
+#: src/addon_management.cpp:1220 src/multiplayer.cpp:228
 msgid "Confirm"
 msgstr "Kinnita"
 
@@ -7883,50 +7883,51 @@ msgstr "Korratud üksused:"
 msgid "Observers:"
 msgstr "Vaatlejad:"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:204
+#: src/gui/dialogs/lobby/lobby_data.cpp:204 src/multiplayer_lobby.cpp:431
 msgid "Unknown era: $era_id"
 msgstr "Tundmatu ajastu: $era_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:209
+#: src/gui/dialogs/lobby/lobby_data.cpp:209 src/multiplayer_lobby.cpp:435
 msgid "Unknown era"
 msgstr "Tundmatu ajastu"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:264
+#: src/gui/dialogs/lobby/lobby_data.cpp:264 src/multiplayer_lobby.cpp:497
 msgid "Remote scenario"
 msgstr "Eemalt loetav stsenaarium"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:272
+#: src/gui/dialogs/lobby/lobby_data.cpp:272 src/multiplayer_lobby.cpp:504
 msgid "Unknown scenario: $scenario_id"
 msgstr "Tundmatu stsenaarium: $scenario_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:277
+#: src/gui/dialogs/lobby/lobby_data.cpp:277 src/multiplayer_lobby.cpp:508
 msgid "Unknown scenario"
 msgstr "Tundmatu stsenaarium"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:283
+#: src/gui/dialogs/lobby/lobby_data.cpp:283 src/multiplayer_lobby.cpp:513
 msgid "Reloaded game"
 msgstr "Mäng laeti uuesti"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:294
+#: src/gui/dialogs/lobby/lobby_data.cpp:294 src/multiplayer_lobby.cpp:529
 msgid "Turn "
 msgstr "Käik"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:298
+#: src/gui/dialogs/lobby/lobby_data.cpp:298 src/multiplayer_lobby.cpp:533
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Vaba koht:"
 msgstr[1] "Vabad kohad:"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:304
+#: src/gui/dialogs/lobby/lobby_data.cpp:304 src/multiplayer_lobby.cpp:544
 msgid "Fog"
 msgstr "Udu"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:307
 #: src/gui/dialogs/lobby/lobby_data.cpp:310 src/multiplayer_create.cpp:84
+#: src/multiplayer_lobby.cpp:548 src/multiplayer_lobby.cpp:554
 msgid "Shroud"
 msgstr "Pimendus"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:312
+#: src/gui/dialogs/lobby/lobby_data.cpp:312 src/multiplayer_lobby.cpp:558
 msgid "none"
 msgstr "mitte midagi"
 
@@ -8990,37 +8991,37 @@ msgstr "Ründa vaenlast"
 msgid "Choose weapon:"
 msgstr "Vali relv:"
 
-#: src/multiplayer.cpp:137 src/multiplayer.cpp:174
+#: src/multiplayer.cpp:138 src/multiplayer.cpp:175
 msgid "Connecting to Server..."
 msgstr "Serveriga ühenduse loomine..."
 
-#: src/multiplayer.cpp:147
+#: src/multiplayer.cpp:148
 msgid "Reading from Server..."
 msgstr "Loen serverist..."
 
-#: src/multiplayer.cpp:157
+#: src/multiplayer.cpp:158
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
 msgstr "See server tahab versiooni '$version1', sul on aga '$version2'"
 
-#: src/multiplayer.cpp:168
+#: src/multiplayer.cpp:169
 msgid "Server-side redirect loop"
 msgstr "Serveripoolne ümbersuunamine"
 
-#: src/multiplayer.cpp:256
+#: src/multiplayer.cpp:257
 msgid "Bad data received from server"
 msgstr ""
 
-#: src/multiplayer.cpp:297
+#: src/multiplayer.cpp:298
 msgid "You must login first."
 msgstr "See server nõuab sisselogimist."
 
-#: src/multiplayer.cpp:299
+#: src/multiplayer.cpp:300
 msgid "The nick '$nick' is already taken."
 msgstr "Nimi '$nick' on juba võetud."
 
-#: src/multiplayer.cpp:301
+#: src/multiplayer.cpp:302
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
@@ -9028,27 +9029,27 @@ msgstr ""
 "Nimi '$nick' sisaldab keelatud märke. Lubatud on vaid tähed, numbrid, "
 "allkriips ja sidekriips."
 
-#: src/multiplayer.cpp:305
+#: src/multiplayer.cpp:306
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
 msgstr "Nimi '$nick' on liiga pikk. Lubatud on kuni 18 tähemärki."
 
-#: src/multiplayer.cpp:308
+#: src/multiplayer.cpp:309
 msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr "Nimi '$nick' on reserveeritud ja mängijad ei saa seda valida."
 
-#: src/multiplayer.cpp:310
+#: src/multiplayer.cpp:311
 msgid "The nick '$nick' is not registered on this server."
 msgstr "Nimi '$nick' pole selles serveris registreeritud."
 
-#: src/multiplayer.cpp:311
+#: src/multiplayer.cpp:312
 msgid " This server disallows unregistered nicks."
 msgstr "See server ei luba registreerimata nimesid."
 
-#: src/multiplayer.cpp:313 src/multiplayer.cpp:315
+#: src/multiplayer.cpp:314 src/multiplayer.cpp:316
 msgid "The nick '$nick' is registered on this server."
 msgstr "Nimi '$nick' on selles serveris registreeritud."
 
-#: src/multiplayer.cpp:316
+#: src/multiplayer.cpp:317
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
@@ -9056,12 +9057,12 @@ msgstr ""
 "HOIATUS: Keegi kasutab juba seda nime - sellega sisse logimine viskab "
 "eelmise kasutaja välja!"
 
-#: src/multiplayer.cpp:319
+#: src/multiplayer.cpp:320
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr "Viga sisselogimisel (server ei suuda ühenduda)."
 
-#: src/multiplayer.cpp:322
+#: src/multiplayer.cpp:323
 msgid "The password you provided was incorrect."
 msgstr "Parool oli vale."
 
@@ -9181,7 +9182,7 @@ msgstr "Alista vaenlase pealik(ud)"
 msgid "Waiting for players to join..."
 msgstr "Ootan mängijate liitumist..."
 
-#: src/multiplayer_create.cpp:50
+#: src/multiplayer_create.cpp:50 src/multiplayer_lobby.cpp:727
 msgid "Create Game"
 msgstr "Loo mäng"
 
@@ -9197,7 +9198,7 @@ msgstr "Mängu nimi:"
 msgid "Map to play:"
 msgstr "Mängu kaart:"
 
-#: src/multiplayer_create.cpp:81
+#: src/multiplayer_create.cpp:81 src/multiplayer_lobby.cpp:272
 msgid "Use map settings"
 msgstr "Kasuta kaardi valikuid"
 
@@ -9324,7 +9325,7 @@ msgstr "Sa pead sisestama nime."
 msgid "Set Password"
 msgstr "Määra parool"
 
-#: src/multiplayer_create.cpp:344
+#: src/multiplayer_create.cpp:344 src/multiplayer_lobby.cpp:901
 msgid "Password: "
 msgstr "Parool:"
 
@@ -9373,11 +9374,103 @@ msgstr "Mängijaid:"
 msgid "Size: "
 msgstr "Suurus:"
 
+#: src/multiplayer_lobby.cpp:119
+msgid "--no games open--"
+msgstr "--avatud mänge pole--"
+
+#: src/multiplayer_lobby.cpp:153
+msgid " (Unknown Era)"
+msgstr "(Tundmatu ajastu)"
+
+#: src/multiplayer_lobby.cpp:536 src/multiplayer_lobby.cpp:899
+msgid "Password Required"
+msgstr "Vajab parooli"
+
+#: src/multiplayer_lobby.cpp:720 src/multiplayer_wait.cpp:174
+msgid "Game Lobby"
+msgstr "Mängu ooteruum"
+
+#: src/multiplayer_lobby.cpp:725
+msgid "Observe Game"
+msgstr "Vaatle mängu"
+
+#: src/multiplayer_lobby.cpp:726
+msgid "Join Game"
+msgstr "Liitu mänguga"
+
+#: src/multiplayer_lobby.cpp:728
+msgid "Quick Replays"
+msgstr "Kiired kordused"
+
+#: src/multiplayer_lobby.cpp:730
+msgid "Preferences"
+msgstr "Eelistused"
+
+#: src/multiplayer_lobby.cpp:732
+msgid "Quit"
+msgstr "Lõpeta"
+
+#: src/multiplayer_lobby.cpp:734
+msgid "Apply Filter"
+msgstr "Rakenda filtrit"
+
+#: src/multiplayer_lobby.cpp:735
+msgid "Invert"
+msgstr "Pööra ringi"
+
+#: src/multiplayer_lobby.cpp:736
+msgid "Vacant Slots"
+msgstr "Vabad kohad"
+
+#: src/multiplayer_lobby.cpp:737
+msgid "Friends in Game"
+msgstr "Sõbrad mängus"
+
+#: src/multiplayer_lobby.cpp:738
+#, fuzzy
+msgid "Filter:"
+msgstr "Filter:"
+
+#: src/multiplayer_lobby.cpp:747
+msgid "Skip quickly to the active turn when observing"
+msgstr "Keri mängu vaatlemisel aktiivse käiguni"
+
+#: src/multiplayer_lobby.cpp:751
+msgid ""
+"Enable the games filter. If unchecked all games are shown, regardless of any "
+"filter."
+msgstr "Lülita mängufilter sisse. Kui see on väljas, näidatakse kõiki mänge."
+
+#: src/multiplayer_lobby.cpp:754
+msgid ""
+"Show all games that do *not* match your filter. Useful for hiding games you "
+"are not interested in."
+msgstr ""
+"Näita kõiki mänge, mis EI klapi filtriga. Sobib mittehuvitavate mängude "
+"peitmiseks."
+
+#: src/multiplayer_lobby.cpp:758
+msgid "Only show games that have at least one vacant slot"
+msgstr "Näita ainult mänge, kus on vähemalt üks vaba koht"
+
+#: src/multiplayer_lobby.cpp:762
+msgid ""
+"Only show games that are played or observed by at least one of your friends"
+msgstr "Näita ainult mänge, kus mängib või vaatleb vähemalt üks sõber"
+
+#: src/multiplayer_lobby.cpp:766
+msgid "Only show games whose title or description contain the entered text"
+msgstr "Näita ainult mänge, mille nimi või kirjeldus sisaldab etteantud teksti"
+
+#: src/multiplayer_lobby.cpp:900
+msgid "Joining this game requires a password."
+msgstr "Selle mänguga liitumine vajab parooli."
+
 #: src/multiplayer_ui.cpp:195
 msgid "Invalid Color"
 msgstr "Vigane värvus"
 
-#: src/multiplayer_ui.cpp:425
+#: src/multiplayer_ui.cpp:427
 msgid "Selected user: "
 msgstr "Valitud kasutaja:"
 
@@ -9388,10 +9481,6 @@ msgstr "Pealik:"
 #: src/multiplayer_wait.cpp:129
 msgid "Recruits: "
 msgstr "Värbabi:"
-
-#: src/multiplayer_wait.cpp:174
-msgid "Game Lobby"
-msgstr "Mängu ooteruum"
 
 #: src/multiplayer_wait.cpp:176
 msgid "Waiting for game to start..."
@@ -10098,75 +10187,8 @@ msgstr "Lülita kokkuvõtete saatmine sisse"
 #~ msgstr ""
 #~ "Pealiku asukoht pole tühi -  osapool '$side|' on defineeritud topelt."
 
-#~ msgid "--no games open--"
-#~ msgstr "--avatud mänge pole--"
-
-#~ msgid " (Unknown Era)"
-#~ msgstr "(Tundmatu ajastu)"
-
-#~ msgid "Password Required"
-#~ msgstr "Vajab parooli"
-
-#~ msgid "Observe Game"
-#~ msgstr "Vaatle mängu"
-
-#~ msgid "Join Game"
-#~ msgstr "Liitu mänguga"
-
-#~ msgid "Quick Replays"
-#~ msgstr "Kiired kordused"
-
-#~ msgid "Preferences"
-#~ msgstr "Eelistused"
-
-#~ msgid "Quit"
-#~ msgstr "Lõpeta"
-
-#~ msgid "Apply Filter"
-#~ msgstr "Rakenda filtrit"
-
-#~ msgid "Invert"
-#~ msgstr "Pööra ringi"
-
-#~ msgid "Vacant Slots"
-#~ msgstr "Vabad kohad"
-
-#~ msgid "Friends in Game"
-#~ msgstr "Sõbrad mängus"
-
 #~ msgid "Search:"
 #~ msgstr "Otsi:"
-
-#~ msgid "Skip quickly to the active turn when observing"
-#~ msgstr "Keri mängu vaatlemisel aktiivse käiguni"
-
-#~ msgid ""
-#~ "Enable the games filter. If unchecked all games are shown, regardless of "
-#~ "any filter."
-#~ msgstr ""
-#~ "Lülita mängufilter sisse. Kui see on väljas, näidatakse kõiki mänge."
-
-#~ msgid ""
-#~ "Show all games that do *not* match your filter. Useful for hiding games "
-#~ "you are not interested in."
-#~ msgstr ""
-#~ "Näita kõiki mänge, mis EI klapi filtriga. Sobib mittehuvitavate mängude "
-#~ "peitmiseks."
-
-#~ msgid "Only show games that have at least one vacant slot"
-#~ msgstr "Näita ainult mänge, kus on vähemalt üks vaba koht"
-
-#~ msgid ""
-#~ "Only show games that are played or observed by at least one of your "
-#~ "friends"
-#~ msgstr "Näita ainult mänge, kus mängib või vaatleb vähemalt üks sõber"
-
-#~ msgid "Only show games whose title or description contain the entered text"
-#~ msgstr ""
-#~ "Näita ainult mänge, mille nimi või kirjeldus sisaldab etteantud teksti"
-
-#~ msgid "Joining this game requires a password."
-#~ msgstr "Selle mänguga liitumine vajab parooli."
 
 #~ msgid "End scenario"
 #~ msgstr "Lõpeta stsenaarium"

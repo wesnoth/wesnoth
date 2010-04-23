@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-04-20 11:32+0200\n"
+"POT-Creation-Date: 2010-04-23 23:46+0200\n"
 "PO-Revision-Date: 2010-04-21 11:18+0200\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -7584,7 +7584,7 @@ msgstr ""
 "dependencias)"
 
 #: src/addon_management.cpp:532 src/addon_management.cpp:606
-#: src/multiplayer.cpp:215 src/multiplayer.cpp:274 src/multiplayer_ui.cpp:80
+#: src/multiplayer.cpp:216 src/multiplayer.cpp:275 src/multiplayer_ui.cpp:80
 msgid "Connection timed out"
 msgstr "A conexión expirou"
 
@@ -7805,7 +7805,7 @@ msgstr "Desinstalar complementos"
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr "Seguro que queres borrar o complemento «$addon|»?"
 
-#: src/addon_management.cpp:1220 src/multiplayer.cpp:227
+#: src/addon_management.cpp:1220 src/multiplayer.cpp:228
 msgid "Confirm"
 msgstr "Confirmar"
 
@@ -8250,50 +8250,51 @@ msgstr "Unidades caóticas: "
 msgid "Observers:"
 msgstr "Observadores:"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:204
+#: src/gui/dialogs/lobby/lobby_data.cpp:204 src/multiplayer_lobby.cpp:431
 msgid "Unknown era: $era_id"
 msgstr "Era descoñecida: $era_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:209
+#: src/gui/dialogs/lobby/lobby_data.cpp:209 src/multiplayer_lobby.cpp:435
 msgid "Unknown era"
 msgstr "Era descoñecida"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:264
+#: src/gui/dialogs/lobby/lobby_data.cpp:264 src/multiplayer_lobby.cpp:497
 msgid "Remote scenario"
 msgstr "Escenario remoto"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:272
+#: src/gui/dialogs/lobby/lobby_data.cpp:272 src/multiplayer_lobby.cpp:504
 msgid "Unknown scenario: $scenario_id"
 msgstr "Escenario descoñecido: $scenario_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:277
+#: src/gui/dialogs/lobby/lobby_data.cpp:277 src/multiplayer_lobby.cpp:508
 msgid "Unknown scenario"
 msgstr "Escenario descoñecido"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:283
+#: src/gui/dialogs/lobby/lobby_data.cpp:283 src/multiplayer_lobby.cpp:513
 msgid "Reloaded game"
 msgstr "Partida recargada"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:294
+#: src/gui/dialogs/lobby/lobby_data.cpp:294 src/multiplayer_lobby.cpp:529
 msgid "Turn "
 msgstr "Quenda "
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:298
+#: src/gui/dialogs/lobby/lobby_data.cpp:298 src/multiplayer_lobby.cpp:533
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Posto vacante:"
 msgstr[1] "Postos vacantes:"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:304
+#: src/gui/dialogs/lobby/lobby_data.cpp:304 src/multiplayer_lobby.cpp:544
 msgid "Fog"
 msgstr "Néboa de guerra"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:307
 #: src/gui/dialogs/lobby/lobby_data.cpp:310 src/multiplayer_create.cpp:84
+#: src/multiplayer_lobby.cpp:548 src/multiplayer_lobby.cpp:554
 msgid "Shroud"
 msgstr "Manto do descoñecido"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:312
+#: src/gui/dialogs/lobby/lobby_data.cpp:312 src/multiplayer_lobby.cpp:558
 msgid "none"
 msgstr "ningún"
 
@@ -9364,15 +9365,15 @@ msgstr "Atacar ao inimigo"
 msgid "Choose weapon:"
 msgstr "Escoller arma:"
 
-#: src/multiplayer.cpp:137 src/multiplayer.cpp:174
+#: src/multiplayer.cpp:138 src/multiplayer.cpp:175
 msgid "Connecting to Server..."
 msgstr "Conectando ao servidor..."
 
-#: src/multiplayer.cpp:147
+#: src/multiplayer.cpp:148
 msgid "Reading from Server..."
 msgstr "Lendo dende o servidor..."
 
-#: src/multiplayer.cpp:157
+#: src/multiplayer.cpp:158
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
@@ -9380,23 +9381,23 @@ msgstr ""
 "O servidor require a versión «$version1», pero ti estás usando a versión "
 "«$version2»"
 
-#: src/multiplayer.cpp:168
+#: src/multiplayer.cpp:169
 msgid "Server-side redirect loop"
 msgstr "Bucle de redirección no servidor"
 
-#: src/multiplayer.cpp:256
+#: src/multiplayer.cpp:257
 msgid "Bad data received from server"
 msgstr "Recibíronse datos do servidor en mal estado"
 
-#: src/multiplayer.cpp:297
+#: src/multiplayer.cpp:298
 msgid "You must login first."
 msgstr "Debes identificarte antes."
 
-#: src/multiplayer.cpp:299
+#: src/multiplayer.cpp:300
 msgid "The nick '$nick' is already taken."
 msgstr "O alcume «$nick» xa está collido."
 
-#: src/multiplayer.cpp:301
+#: src/multiplayer.cpp:302
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
@@ -9404,28 +9405,28 @@ msgstr ""
 "O alcume «$nick» contén caracteres non soportados. Só se permiten caracteres "
 "alfanuméricos anglosaxóns (nin tiles nin eñes), guións e guións baixos."
 
-#: src/multiplayer.cpp:305
+#: src/multiplayer.cpp:306
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
 msgstr ""
 "O alcume «$nick» é longo de máis. Os alcumes deben ter 18 caracteres ou menos."
 
-#: src/multiplayer.cpp:308
+#: src/multiplayer.cpp:309
 msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr "O alcume «$nick» está reservado e ningún xogador pode usalo."
 
-#: src/multiplayer.cpp:310
+#: src/multiplayer.cpp:311
 msgid "The nick '$nick' is not registered on this server."
 msgstr "O alcume «$nick» non está rexistrado neste servidor."
 
-#: src/multiplayer.cpp:311
+#: src/multiplayer.cpp:312
 msgid " This server disallows unregistered nicks."
 msgstr " Este servidor non permite os alcumes sen rexistrar."
 
-#: src/multiplayer.cpp:313 src/multiplayer.cpp:315
+#: src/multiplayer.cpp:314 src/multiplayer.cpp:316
 msgid "The nick '$nick' is registered on this server."
 msgstr "O alcume «$nick» xa está rexistrado neste servidor."
 
-#: src/multiplayer.cpp:316
+#: src/multiplayer.cpp:317
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
@@ -9433,14 +9434,14 @@ msgstr ""
 "ADVERTENCIA: xa hai un cliente que usa este alcume, se te identificas con el "
 "botarase a ese cliente!"
 
-#: src/multiplayer.cpp:319
+#: src/multiplayer.cpp:320
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
 "Houbo un erro ao identificarse (o servidor non tiña semente para a túa "
 "conexión)."
 
-#: src/multiplayer.cpp:322
+#: src/multiplayer.cpp:323
 msgid "The password you provided was incorrect."
 msgstr "O contrasinal que proporcionou é incorrecto."
 
@@ -9561,7 +9562,7 @@ msgstr "Derrota ao líder ou líderes inimigos"
 msgid "Waiting for players to join..."
 msgstr "Agardando a que se unan xogadores..."
 
-#: src/multiplayer_create.cpp:50
+#: src/multiplayer_create.cpp:50 src/multiplayer_lobby.cpp:727
 msgid "Create Game"
 msgstr "Crear unha partida"
 
@@ -9577,7 +9578,7 @@ msgstr "Nome da partida:"
 msgid "Map to play:"
 msgstr "Mapa a xogar:"
 
-#: src/multiplayer_create.cpp:81
+#: src/multiplayer_create.cpp:81 src/multiplayer_lobby.cpp:272
 msgid "Use map settings"
 msgstr "Usar a configuración do mapa"
 
@@ -9703,7 +9704,7 @@ msgstr "Debes introducir un nome."
 msgid "Set Password"
 msgstr "Establecer un contrasinal"
 
-#: src/multiplayer_create.cpp:344
+#: src/multiplayer_create.cpp:344 src/multiplayer_lobby.cpp:901
 msgid "Password: "
 msgstr "Contrasinal: "
 
@@ -9754,11 +9755,104 @@ msgstr "Xogadores: "
 msgid "Size: "
 msgstr "Tamaño: "
 
+#: src/multiplayer_lobby.cpp:119
+msgid "--no games open--"
+msgstr "--non hai partidas abertas--"
+
+#: src/multiplayer_lobby.cpp:153
+msgid " (Unknown Era)"
+msgstr " (Era descoñecida)"
+
+#: src/multiplayer_lobby.cpp:536 src/multiplayer_lobby.cpp:899
+msgid "Password Required"
+msgstr "Requírese un Contrasinal"
+
+#: src/multiplayer_lobby.cpp:720 src/multiplayer_wait.cpp:174
+msgid "Game Lobby"
+msgstr "Sala do xogo"
+
+#: src/multiplayer_lobby.cpp:725
+msgid "Observe Game"
+msgstr "Observar Partida"
+
+#: src/multiplayer_lobby.cpp:726
+#, fuzzy
+msgid "Join Game"
+msgstr "Cargar unha partida"
+
+#: src/multiplayer_lobby.cpp:728
+msgid "Quick Replays"
+msgstr "Repeticións rápidas"
+
+#: src/multiplayer_lobby.cpp:730
+msgid "Preferences"
+msgstr "Preferencias"
+
+#: src/multiplayer_lobby.cpp:732
+msgid "Quit"
+msgstr "Saír"
+
+#: src/multiplayer_lobby.cpp:734
+#, fuzzy
+msgid "Apply Filter"
+msgstr "Filtro: "
+
+#: src/multiplayer_lobby.cpp:735
+msgid "Invert"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:736
+#, fuzzy
+msgid "Vacant Slots"
+msgstr "Posto vacante:"
+
+#: src/multiplayer_lobby.cpp:737
+msgid "Friends in Game"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:738
+#, fuzzy
+msgid "Filter:"
+msgstr "Filtro: "
+
+#: src/multiplayer_lobby.cpp:747
+msgid "Skip quickly to the active turn when observing"
+msgstr "Saltar rapidamente ó turno activo ó observar"
+
+#: src/multiplayer_lobby.cpp:751
+msgid ""
+"Enable the games filter. If unchecked all games are shown, regardless of any "
+"filter."
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:754
+msgid ""
+"Show all games that do *not* match your filter. Useful for hiding games you "
+"are not interested in."
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:758
+msgid "Only show games that have at least one vacant slot"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:762
+msgid ""
+"Only show games that are played or observed by at least one of your friends"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:766
+msgid "Only show games whose title or description contain the entered text"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:900
+msgid "Joining this game requires a password."
+msgstr "Para unirse a esta partida hai que proporcionar un contrasinal"
+
 #: src/multiplayer_ui.cpp:195
 msgid "Invalid Color"
 msgstr "Cor incorrecta"
 
-#: src/multiplayer_ui.cpp:425
+#: src/multiplayer_ui.cpp:427
 msgid "Selected user: "
 msgstr "Usuario seleccionado: "
 
@@ -9769,10 +9863,6 @@ msgstr "Líder: "
 #: src/multiplayer_wait.cpp:129
 msgid "Recruits: "
 msgstr "Recrutamentos: "
-
-#: src/multiplayer_wait.cpp:174
-msgid "Game Lobby"
-msgstr "Sala do xogo"
 
 #: src/multiplayer_wait.cpp:176
 msgid "Waiting for game to start..."
@@ -10537,33 +10627,6 @@ msgstr "Activar o envío de resumos"
 
 #~ msgid "Computer player"
 #~ msgstr "Xogador do ordenador"
-
-#~ msgid "--no games open--"
-#~ msgstr "--non hai partidas abertas--"
-
-#~ msgid " (Unknown Era)"
-#~ msgstr " (Era descoñecida)"
-
-#~ msgid "Password Required"
-#~ msgstr "Requírese un Contrasinal"
-
-#~ msgid "Observe Game"
-#~ msgstr "Observar Partida"
-
-#~ msgid "Quick Replays"
-#~ msgstr "Repeticións rápidas"
-
-#~ msgid "Preferences"
-#~ msgstr "Preferencias"
-
-#~ msgid "Quit"
-#~ msgstr "Saír"
-
-#~ msgid "Skip quickly to the active turn when observing"
-#~ msgstr "Saltar rapidamente ó turno activo ó observar"
-
-#~ msgid "Joining this game requires a password."
-#~ msgstr "Para unirse a esta partida hai que proporcionar un contrasinal"
 
 #~ msgid "The replay could not be saved"
 #~ msgstr "Non se puido gardar a repetición"

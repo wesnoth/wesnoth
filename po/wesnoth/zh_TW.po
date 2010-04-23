@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth1.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-04-20 11:32+0200\n"
+"POT-Creation-Date: 2010-04-23 23:46+0200\n"
 "PO-Revision-Date: 2009-05-08 22:09+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
@@ -6805,7 +6805,7 @@ msgid ""
 msgstr ""
 
 #: src/addon_management.cpp:532 src/addon_management.cpp:606
-#: src/multiplayer.cpp:215 src/multiplayer.cpp:274 src/multiplayer_ui.cpp:80
+#: src/multiplayer.cpp:216 src/multiplayer.cpp:275 src/multiplayer_ui.cpp:80
 msgid "Connection timed out"
 msgstr "連接超時"
 
@@ -7013,7 +7013,7 @@ msgstr "移除模組"
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr "您確定要移除模組 '$addon|' ?"
 
-#: src/addon_management.cpp:1220 src/multiplayer.cpp:227
+#: src/addon_management.cpp:1220 src/multiplayer.cpp:228
 msgid "Confirm"
 msgstr "確認"
 
@@ -7448,50 +7448,51 @@ msgstr "渾沌單位： "
 msgid "Observers:"
 msgstr "觀察者："
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:204
+#: src/gui/dialogs/lobby/lobby_data.cpp:204 src/multiplayer_lobby.cpp:431
 msgid "Unknown era: $era_id"
 msgstr "未知時代: $era_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:209
+#: src/gui/dialogs/lobby/lobby_data.cpp:209 src/multiplayer_lobby.cpp:435
 msgid "Unknown era"
 msgstr "未知時代"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:264
+#: src/gui/dialogs/lobby/lobby_data.cpp:264 src/multiplayer_lobby.cpp:497
 msgid "Remote scenario"
 msgstr "遠程場景"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:272
+#: src/gui/dialogs/lobby/lobby_data.cpp:272 src/multiplayer_lobby.cpp:504
 msgid "Unknown scenario: $scenario_id"
 msgstr "未知場景: $scenario_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:277
+#: src/gui/dialogs/lobby/lobby_data.cpp:277 src/multiplayer_lobby.cpp:508
 msgid "Unknown scenario"
 msgstr "未知場景"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:283
+#: src/gui/dialogs/lobby/lobby_data.cpp:283 src/multiplayer_lobby.cpp:513
 msgid "Reloaded game"
 msgstr "已載入的遊戲"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:294
+#: src/gui/dialogs/lobby/lobby_data.cpp:294 src/multiplayer_lobby.cpp:529
 msgid "Turn "
 msgstr "回合"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:298
+#: src/gui/dialogs/lobby/lobby_data.cpp:298 src/multiplayer_lobby.cpp:533
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "空位："
 msgstr[1] "空位："
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:304
+#: src/gui/dialogs/lobby/lobby_data.cpp:304 src/multiplayer_lobby.cpp:544
 msgid "Fog"
 msgstr "迷霧"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:307
 #: src/gui/dialogs/lobby/lobby_data.cpp:310 src/multiplayer_create.cpp:84
+#: src/multiplayer_lobby.cpp:548 src/multiplayer_lobby.cpp:554
 msgid "Shroud"
 msgstr "戰場黑幕"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:312
+#: src/gui/dialogs/lobby/lobby_data.cpp:312 src/multiplayer_lobby.cpp:558
 msgid "none"
 msgstr "無"
 
@@ -8560,74 +8561,74 @@ msgstr "攻撃敵人"
 msgid "Choose weapon:"
 msgstr "選擇武器："
 
-#: src/multiplayer.cpp:137 src/multiplayer.cpp:174
+#: src/multiplayer.cpp:138 src/multiplayer.cpp:175
 msgid "Connecting to Server..."
 msgstr "正在連接到伺服器..."
 
-#: src/multiplayer.cpp:147
+#: src/multiplayer.cpp:148
 msgid "Reading from Server..."
 msgstr "從伺服器讀取數據……"
 
-#: src/multiplayer.cpp:157
+#: src/multiplayer.cpp:158
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
 msgstr "本伺服器須要版本“$version1”，而您的版本是“$version2”。"
 
-#: src/multiplayer.cpp:168
+#: src/multiplayer.cpp:169
 msgid "Server-side redirect loop"
 msgstr "伺服器重定向循環"
 
-#: src/multiplayer.cpp:256
+#: src/multiplayer.cpp:257
 msgid "Bad data received from server"
 msgstr ""
 
-#: src/multiplayer.cpp:297
+#: src/multiplayer.cpp:298
 msgid "You must login first."
 msgstr "您必須先登入。"
 
-#: src/multiplayer.cpp:299
+#: src/multiplayer.cpp:300
 msgid "The nick '$nick' is already taken."
 msgstr "此帳號名稱'$nick'已被註冊。"
 
-#: src/multiplayer.cpp:301
+#: src/multiplayer.cpp:302
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
 msgstr "此帳號名稱'$nick'包含無效字元，只能與用數字與字母、底線和連字號。"
 
-#: src/multiplayer.cpp:305
+#: src/multiplayer.cpp:306
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
 msgstr "此帳號名稱'$nick'太長，帳號名稱必須小於18個字元。"
 
-#: src/multiplayer.cpp:308
+#: src/multiplayer.cpp:309
 msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr "此帳號名稱 '$nick'已被保留，無法被玩家使用。"
 
-#: src/multiplayer.cpp:310
+#: src/multiplayer.cpp:311
 msgid "The nick '$nick' is not registered on this server."
 msgstr "此帳號名稱'$nick'尚未在本伺服器註冊。"
 
-#: src/multiplayer.cpp:311
+#: src/multiplayer.cpp:312
 msgid " This server disallows unregistered nicks."
 msgstr "本伺服器無法註冊這個帳號名稱。"
 
-#: src/multiplayer.cpp:313 src/multiplayer.cpp:315
+#: src/multiplayer.cpp:314 src/multiplayer.cpp:316
 msgid "The nick '$nick' is registered on this server."
 msgstr "這個帳號'$nick'已經在這個伺服器上註冊。"
 
-#: src/multiplayer.cpp:316
+#: src/multiplayer.cpp:317
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
 msgstr "警告：已經有一個客户端使用這個帳戶登入。如果繼續登入將擠掉先前使用者。"
 
-#: src/multiplayer.cpp:319
+#: src/multiplayer.cpp:320
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr "登入錯誤（伺服器沒有連結您的位置）。"
 
-#: src/multiplayer.cpp:322
+#: src/multiplayer.cpp:323
 msgid "The password you provided was incorrect."
 msgstr "您輸入的密碼錯誤。"
 
@@ -8751,7 +8752,7 @@ msgstr ""
 msgid "Waiting for players to join..."
 msgstr "等待玩家加入..."
 
-#: src/multiplayer_create.cpp:50
+#: src/multiplayer_create.cpp:50 src/multiplayer_lobby.cpp:727
 msgid "Create Game"
 msgstr "創造遊戲"
 
@@ -8767,7 +8768,7 @@ msgstr "遊戲名："
 msgid "Map to play:"
 msgstr "選擇遊戲地圖："
 
-#: src/multiplayer_create.cpp:81
+#: src/multiplayer_create.cpp:81 src/multiplayer_lobby.cpp:272
 msgid "Use map settings"
 msgstr "使用地圖設定"
 
@@ -8892,7 +8893,7 @@ msgstr "您必須輸入名字。"
 msgid "Set Password"
 msgstr "設定密碼"
 
-#: src/multiplayer_create.cpp:344
+#: src/multiplayer_create.cpp:344 src/multiplayer_lobby.cpp:901
 msgid "Password: "
 msgstr "密碼:"
 
@@ -8941,11 +8942,103 @@ msgstr "玩家： "
 msgid "Size: "
 msgstr "大小"
 
+#: src/multiplayer_lobby.cpp:119
+msgid "--no games open--"
+msgstr "—當前没有已建立的遊戲—"
+
+#: src/multiplayer_lobby.cpp:153
+msgid " (Unknown Era)"
+msgstr "（未知時代）"
+
+#: src/multiplayer_lobby.cpp:536 src/multiplayer_lobby.cpp:899
+msgid "Password Required"
+msgstr "需要密碼"
+
+#: src/multiplayer_lobby.cpp:720 src/multiplayer_wait.cpp:174
+msgid "Game Lobby"
+msgstr "遊戲大廳"
+
+#: src/multiplayer_lobby.cpp:725
+msgid "Observe Game"
+msgstr "觀察遊戲"
+
+#: src/multiplayer_lobby.cpp:726
+msgid "Join Game"
+msgstr "加入遊戲"
+
+#: src/multiplayer_lobby.cpp:728
+msgid "Quick Replays"
+msgstr "快速播放"
+
+#: src/multiplayer_lobby.cpp:730
+msgid "Preferences"
+msgstr "偏好設定"
+
+#: src/multiplayer_lobby.cpp:732
+msgid "Quit"
+msgstr "退出"
+
+#: src/multiplayer_lobby.cpp:734
+#, fuzzy
+msgid "Apply Filter"
+msgstr "過濾： "
+
+#: src/multiplayer_lobby.cpp:735
+msgid "Invert"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:736
+#, fuzzy
+msgid "Vacant Slots"
+msgstr "空位："
+
+#: src/multiplayer_lobby.cpp:737
+msgid "Friends in Game"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:738
+#, fuzzy
+msgid "Filter:"
+msgstr "過濾： "
+
+#: src/multiplayer_lobby.cpp:747
+msgid "Skip quickly to the active turn when observing"
+msgstr "觀察遊戲時快速跳至當前進行中的回合"
+
+#: src/multiplayer_lobby.cpp:751
+msgid ""
+"Enable the games filter. If unchecked all games are shown, regardless of any "
+"filter."
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:754
+msgid ""
+"Show all games that do *not* match your filter. Useful for hiding games you "
+"are not interested in."
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:758
+msgid "Only show games that have at least one vacant slot"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:762
+msgid ""
+"Only show games that are played or observed by at least one of your friends"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:766
+msgid "Only show games whose title or description contain the entered text"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:900
+msgid "Joining this game requires a password."
+msgstr "加入此遊戲需要密碼."
+
 #: src/multiplayer_ui.cpp:195
 msgid "Invalid Color"
 msgstr "無效顔色"
 
-#: src/multiplayer_ui.cpp:425
+#: src/multiplayer_ui.cpp:427
 msgid "Selected user: "
 msgstr "選擇單位："
 
@@ -8956,10 +9049,6 @@ msgstr "英雄： "
 #: src/multiplayer_wait.cpp:129
 msgid "Recruits: "
 msgstr "招募： "
-
-#: src/multiplayer_wait.cpp:174
-msgid "Game Lobby"
-msgstr "遊戲大廳"
 
 #: src/multiplayer_wait.cpp:176
 msgid "Waiting for game to start..."
@@ -9655,43 +9744,9 @@ msgstr "開啟訊息回報"
 #~ "found."
 #~ msgstr "發現重復的陣營定義： '$side|'"
 
-#~ msgid "--no games open--"
-#~ msgstr "—當前没有已建立的遊戲—"
-
-#~ msgid " (Unknown Era)"
-#~ msgstr "（未知時代）"
-
-#~ msgid "Password Required"
-#~ msgstr "需要密碼"
-
-#~ msgid "Observe Game"
-#~ msgstr "觀察遊戲"
-
-#~ msgid "Join Game"
-#~ msgstr "加入遊戲"
-
-#~ msgid "Quick Replays"
-#~ msgstr "快速播放"
-
-#~ msgid "Preferences"
-#~ msgstr "偏好設定"
-
-#~ msgid "Quit"
-#~ msgstr "退出"
-
-#, fuzzy
-#~ msgid "Vacant Slots"
-#~ msgstr "空位："
-
 #, fuzzy
 #~ msgid "Search:"
 #~ msgstr "搜索"
-
-#~ msgid "Skip quickly to the active turn when observing"
-#~ msgstr "觀察遊戲時快速跳至當前進行中的回合"
-
-#~ msgid "Joining this game requires a password."
-#~ msgstr "加入此遊戲需要密碼."
 
 #~ msgid "End scenario"
 #~ msgstr "結束本任務"

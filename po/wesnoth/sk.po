@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-04-20 11:32+0200\n"
+"POT-Creation-Date: 2010-04-23 23:46+0200\n"
 "PO-Revision-Date: 2010-04-15 20:40+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
@@ -7326,7 +7326,7 @@ msgstr ""
 "hraním potrebné nainštalovať jeho závislosti.)"
 
 #: src/addon_management.cpp:532 src/addon_management.cpp:606
-#: src/multiplayer.cpp:215 src/multiplayer.cpp:274 src/multiplayer_ui.cpp:80
+#: src/multiplayer.cpp:216 src/multiplayer.cpp:275 src/multiplayer_ui.cpp:80
 msgid "Connection timed out"
 msgstr "Čas na pripojenie vypršal"
 
@@ -7544,7 +7544,7 @@ msgstr "Odinštalovať doplnky"
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr "Naozaj odstrániť doplnok '$addon|'?"
 
-#: src/addon_management.cpp:1220 src/multiplayer.cpp:227
+#: src/addon_management.cpp:1220 src/multiplayer.cpp:228
 msgid "Confirm"
 msgstr "Potvrdiť"
 
@@ -7988,51 +7988,52 @@ msgstr "Jednotky chaosu: "
 msgid "Observers:"
 msgstr "Diváci:"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:204
+#: src/gui/dialogs/lobby/lobby_data.cpp:204 src/multiplayer_lobby.cpp:431
 msgid "Unknown era: $era_id"
 msgstr "Neznáma éra: $era_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:209
+#: src/gui/dialogs/lobby/lobby_data.cpp:209 src/multiplayer_lobby.cpp:435
 msgid "Unknown era"
 msgstr "Neznáma éra"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:264
+#: src/gui/dialogs/lobby/lobby_data.cpp:264 src/multiplayer_lobby.cpp:497
 msgid "Remote scenario"
 msgstr "Scéna z iného počítača"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:272
+#: src/gui/dialogs/lobby/lobby_data.cpp:272 src/multiplayer_lobby.cpp:504
 msgid "Unknown scenario: $scenario_id"
 msgstr "Neznáma scéna: $scenario_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:277
+#: src/gui/dialogs/lobby/lobby_data.cpp:277 src/multiplayer_lobby.cpp:508
 msgid "Unknown scenario"
 msgstr "Neznáma scéna"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:283
+#: src/gui/dialogs/lobby/lobby_data.cpp:283 src/multiplayer_lobby.cpp:513
 msgid "Reloaded game"
 msgstr "Znovunačítaná hra"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:294
+#: src/gui/dialogs/lobby/lobby_data.cpp:294 src/multiplayer_lobby.cpp:529
 msgid "Turn "
 msgstr "Kolo "
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:298
+#: src/gui/dialogs/lobby/lobby_data.cpp:298 src/multiplayer_lobby.cpp:533
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Voľné miesta:"
 msgstr[1] "Voľné miesto:"
 msgstr[2] "Voľné miesta:"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:304
+#: src/gui/dialogs/lobby/lobby_data.cpp:304 src/multiplayer_lobby.cpp:544
 msgid "Fog"
 msgstr "Hmla"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:307
 #: src/gui/dialogs/lobby/lobby_data.cpp:310 src/multiplayer_create.cpp:84
+#: src/multiplayer_lobby.cpp:548 src/multiplayer_lobby.cpp:554
 msgid "Shroud"
 msgstr "Odkrývanie mapy"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:312
+#: src/gui/dialogs/lobby/lobby_data.cpp:312 src/multiplayer_lobby.cpp:558
 msgid "none"
 msgstr "nič"
 
@@ -9084,38 +9085,38 @@ msgstr "Zaútoč na súpera"
 msgid "Choose weapon:"
 msgstr "Vyber si zbraň:"
 
-#: src/multiplayer.cpp:137 src/multiplayer.cpp:174
+#: src/multiplayer.cpp:138 src/multiplayer.cpp:175
 msgid "Connecting to Server..."
 msgstr "Pripájam sa na server..."
 
-#: src/multiplayer.cpp:147
+#: src/multiplayer.cpp:148
 msgid "Reading from Server..."
 msgstr "Čítam zo servera..."
 
-#: src/multiplayer.cpp:157
+#: src/multiplayer.cpp:158
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
 msgstr ""
 "Server požaduje verziu '$version1' a na počítači máš verziu '$version2'"
 
-#: src/multiplayer.cpp:168
+#: src/multiplayer.cpp:169
 msgid "Server-side redirect loop"
 msgstr "Server presmerováva dokola"
 
-#: src/multiplayer.cpp:256
+#: src/multiplayer.cpp:257
 msgid "Bad data received from server"
 msgstr "Zo serveru boli prijaté zlé údaje"
 
-#: src/multiplayer.cpp:297
+#: src/multiplayer.cpp:298
 msgid "You must login first."
 msgstr "Musíš sa najprv prihlásiť."
 
-#: src/multiplayer.cpp:299
+#: src/multiplayer.cpp:300
 msgid "The nick '$nick' is already taken."
 msgstr "Prezývka '$nick' je už používaná."
 
-#: src/multiplayer.cpp:301
+#: src/multiplayer.cpp:302
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
@@ -9123,28 +9124,28 @@ msgstr ""
 "Prezývka '$nick' obsahuje nepovolené znaky. Povolené sú len písmená, čísla, "
 "pomlčky a podtržníky."
 
-#: src/multiplayer.cpp:305
+#: src/multiplayer.cpp:306
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
 msgstr ""
 "Prezývka '$nick' je príliš dlhá. Prezývky môžu mať maximálne 18 znakov."
 
-#: src/multiplayer.cpp:308
+#: src/multiplayer.cpp:309
 msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr "Prezývka '$nick' je rezervovaná a nemôže byť použitá hráčmi."
 
-#: src/multiplayer.cpp:310
+#: src/multiplayer.cpp:311
 msgid "The nick '$nick' is not registered on this server."
 msgstr "Prezývka '$nick' nie je na tomto serveri registrovaná."
 
-#: src/multiplayer.cpp:311
+#: src/multiplayer.cpp:312
 msgid " This server disallows unregistered nicks."
 msgstr " Tento server nepovoľuje neregistrované prezývky."
 
-#: src/multiplayer.cpp:313 src/multiplayer.cpp:315
+#: src/multiplayer.cpp:314 src/multiplayer.cpp:316
 msgid "The nick '$nick' is registered on this server."
 msgstr "Prezývka '$nick' je na tomto serveri registrovaná."
 
-#: src/multiplayer.cpp:316
+#: src/multiplayer.cpp:317
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
@@ -9152,12 +9153,12 @@ msgstr ""
 "VAROVANIE: Túto prezývku už používa iný používateľ, prihlásenie spôsobí "
 "vykopnutie tohto používateľa!"
 
-#: src/multiplayer.cpp:319
+#: src/multiplayer.cpp:320
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr "Chyba pri prihlasovaní (server nemal 'seed' pre toto pripojenie)."
 
-#: src/multiplayer.cpp:322
+#: src/multiplayer.cpp:323
 msgid "The password you provided was incorrect."
 msgstr "Zadané heslo je nesprávne."
 
@@ -9277,7 +9278,7 @@ msgstr "Porazíš ostatných veliteľov"
 msgid "Waiting for players to join..."
 msgstr "Čakám, kým sa pripoja hráči..."
 
-#: src/multiplayer_create.cpp:50
+#: src/multiplayer_create.cpp:50 src/multiplayer_lobby.cpp:727
 msgid "Create Game"
 msgstr "Vytvor hru"
 
@@ -9293,7 +9294,7 @@ msgstr "Názov hry:"
 msgid "Map to play:"
 msgstr "Hrá sa na mape:"
 
-#: src/multiplayer_create.cpp:81
+#: src/multiplayer_create.cpp:81 src/multiplayer_lobby.cpp:272
 msgid "Use map settings"
 msgstr "Použi nastavenia mapy"
 
@@ -9417,7 +9418,7 @@ msgstr "Musíte zadať meno."
 msgid "Set Password"
 msgstr "Nastaviť heslo"
 
-#: src/multiplayer_create.cpp:344
+#: src/multiplayer_create.cpp:344 src/multiplayer_lobby.cpp:901
 msgid "Password: "
 msgstr "Heslo: "
 
@@ -9466,11 +9467,105 @@ msgstr "Hráči: "
 msgid "Size: "
 msgstr "Veľkosť: "
 
+#: src/multiplayer_lobby.cpp:119
+msgid "--no games open--"
+msgstr "--nie je otvorená žiadna hra--"
+
+#: src/multiplayer_lobby.cpp:153
+msgid " (Unknown Era)"
+msgstr "(Neznáma éra)"
+
+#: src/multiplayer_lobby.cpp:536 src/multiplayer_lobby.cpp:899
+msgid "Password Required"
+msgstr "Vyžaduje sa heslo"
+
+#: src/multiplayer_lobby.cpp:720 src/multiplayer_wait.cpp:174
+msgid "Game Lobby"
+msgstr "Čakáreň"
+
+#: src/multiplayer_lobby.cpp:725
+msgid "Observe Game"
+msgstr "Pozoruj hru"
+
+#: src/multiplayer_lobby.cpp:726
+msgid "Join Game"
+msgstr "Pridaj sa k hre"
+
+#: src/multiplayer_lobby.cpp:728
+msgid "Quick Replays"
+msgstr "Rýchle záznamy"
+
+#: src/multiplayer_lobby.cpp:730
+msgid "Preferences"
+msgstr "Nastavenia"
+
+#: src/multiplayer_lobby.cpp:732
+msgid "Quit"
+msgstr "Koniec"
+
+#: src/multiplayer_lobby.cpp:734
+msgid "Apply Filter"
+msgstr "Použi filter"
+
+#: src/multiplayer_lobby.cpp:735
+msgid "Invert"
+msgstr "Invertuj"
+
+#: src/multiplayer_lobby.cpp:736
+msgid "Vacant Slots"
+msgstr "Voľné miesta"
+
+#: src/multiplayer_lobby.cpp:737
+msgid "Friends in Game"
+msgstr "Priatelia v hre"
+
+#: src/multiplayer_lobby.cpp:738
+#, fuzzy
+msgid "Filter:"
+msgstr "Filter: "
+
+#: src/multiplayer_lobby.cpp:747
+msgid "Skip quickly to the active turn when observing"
+msgstr "Pri pozorovaní rýchlo preskoč na aktuálne kolo"
+
+#: src/multiplayer_lobby.cpp:751
+msgid ""
+"Enable the games filter. If unchecked all games are shown, regardless of any "
+"filter."
+msgstr ""
+"Zapni filter hier. Ak nie je zvolené, zobrazia sa všetky hry, bez ohľadu na "
+"filter."
+
+#: src/multiplayer_lobby.cpp:754
+msgid ""
+"Show all games that do *not* match your filter. Useful for hiding games you "
+"are not interested in."
+msgstr ""
+"Zobraz všetky hry, ktoré nespĺňajú filter. Vhodné na skrytie hier, ktoré nie "
+"sú zaujímavé."
+
+#: src/multiplayer_lobby.cpp:758
+msgid "Only show games that have at least one vacant slot"
+msgstr "Zobraz len hry s aspoň jedným voľným miestom"
+
+#: src/multiplayer_lobby.cpp:762
+msgid ""
+"Only show games that are played or observed by at least one of your friends"
+msgstr "Zobraz len hry, kde hrá alebo pozoruje niektorý tvoj priateľ"
+
+#: src/multiplayer_lobby.cpp:766
+msgid "Only show games whose title or description contain the entered text"
+msgstr "Zobraz len hry, ktorých názov alebo popis obsahuje zadaný text"
+
+#: src/multiplayer_lobby.cpp:900
+msgid "Joining this game requires a password."
+msgstr "Vstup do tejto hry vyžaduje heslo."
+
 #: src/multiplayer_ui.cpp:195
 msgid "Invalid Color"
 msgstr "Neplatná farba"
 
-#: src/multiplayer_ui.cpp:425
+#: src/multiplayer_ui.cpp:427
 msgid "Selected user: "
 msgstr "Vyber používateľa: "
 
@@ -9481,10 +9576,6 @@ msgstr "Veliteľ: "
 #: src/multiplayer_wait.cpp:129
 msgid "Recruits: "
 msgstr "Naverbovaných: "
-
-#: src/multiplayer_wait.cpp:174
-msgid "Game Lobby"
-msgstr "Čakáreň"
 
 #: src/multiplayer_wait.cpp:176
 msgid "Waiting for game to start..."
@@ -10207,75 +10298,8 @@ msgstr "Umožni posielanie štatistík"
 #~ "Pozícia veliteľa nie je prázdna - našla sa duplicitná definícia strany "
 #~ "'$side|'."
 
-#~ msgid "--no games open--"
-#~ msgstr "--nie je otvorená žiadna hra--"
-
-#~ msgid " (Unknown Era)"
-#~ msgstr "(Neznáma éra)"
-
-#~ msgid "Password Required"
-#~ msgstr "Vyžaduje sa heslo"
-
-#~ msgid "Observe Game"
-#~ msgstr "Pozoruj hru"
-
-#~ msgid "Join Game"
-#~ msgstr "Pridaj sa k hre"
-
-#~ msgid "Quick Replays"
-#~ msgstr "Rýchle záznamy"
-
-#~ msgid "Preferences"
-#~ msgstr "Nastavenia"
-
-#~ msgid "Quit"
-#~ msgstr "Koniec"
-
-#~ msgid "Apply Filter"
-#~ msgstr "Použi filter"
-
-#~ msgid "Invert"
-#~ msgstr "Invertuj"
-
-#~ msgid "Vacant Slots"
-#~ msgstr "Voľné miesta"
-
-#~ msgid "Friends in Game"
-#~ msgstr "Priatelia v hre"
-
 #~ msgid "Search:"
 #~ msgstr "Hľadaj:"
-
-#~ msgid "Skip quickly to the active turn when observing"
-#~ msgstr "Pri pozorovaní rýchlo preskoč na aktuálne kolo"
-
-#~ msgid ""
-#~ "Enable the games filter. If unchecked all games are shown, regardless of "
-#~ "any filter."
-#~ msgstr ""
-#~ "Zapni filter hier. Ak nie je zvolené, zobrazia sa všetky hry, bez ohľadu "
-#~ "na filter."
-
-#~ msgid ""
-#~ "Show all games that do *not* match your filter. Useful for hiding games "
-#~ "you are not interested in."
-#~ msgstr ""
-#~ "Zobraz všetky hry, ktoré nespĺňajú filter. Vhodné na skrytie hier, ktoré "
-#~ "nie sú zaujímavé."
-
-#~ msgid "Only show games that have at least one vacant slot"
-#~ msgstr "Zobraz len hry s aspoň jedným voľným miestom"
-
-#~ msgid ""
-#~ "Only show games that are played or observed by at least one of your "
-#~ "friends"
-#~ msgstr "Zobraz len hry, kde hrá alebo pozoruje niektorý tvoj priateľ"
-
-#~ msgid "Only show games whose title or description contain the entered text"
-#~ msgstr "Zobraz len hry, ktorých názov alebo popis obsahuje zadaný text"
-
-#~ msgid "Joining this game requires a password."
-#~ msgstr "Vstup do tejto hry vyžaduje heslo."
 
 #~ msgid "End scenario"
 #~ msgstr "Ukončiť scénu"
