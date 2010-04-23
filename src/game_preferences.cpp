@@ -279,6 +279,20 @@ void _set_lobby_joins(int show)
 	}
 }
 
+bool new_lobby()
+{
+	std::cerr << get("new_lobby") << "\n";
+	return utils::string_bool(get("new_lobby"), false);
+}
+
+void set_new_lobby(bool value)
+{
+	std::cerr << get("new_lobby") << value;
+	preferences::set("new_lobby", (value ? "yes" : "no"));
+	std::cerr << get("new_lobby") << "\n";
+}
+
+
 const std::vector<game_config::server_info>& server_list()
 {
 	static std::vector<game_config::server_info> pref_servers;

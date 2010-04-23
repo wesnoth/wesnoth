@@ -548,7 +548,7 @@ static void enter_lobby_mode(game_display& disp, const config& game_config, mp::
 
 		SDL_FillRect(disp.video().getSurface(), NULL, colour);
 
-		if(gui2::new_widgets) {
+		if(preferences::new_lobby()) {
 			gui2::tlobby_main dlg(game_config, li, disp);
 			dlg.set_preferences_callback(
 				boost::bind(do_preferences_dialog,
