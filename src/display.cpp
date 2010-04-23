@@ -98,7 +98,7 @@ display::display(CVideo& video, const gamemap* map, const config& theme_cfg, con
 	invalidateGameStatus_(true),
 	map_labels_(new map_labels(*this, 0)),
 	shroud_image_("terrain/" + get_map().get_terrain_info(t_translation::VOID_TERRAIN).minimap_image() + ".png"),
-	fog_image_("terrain/" + get_map().get_terrain_info(t_translation::FOGGED).minimap_image() + ".png"),
+	fog_image_("terrain/" + get_map().get_terrain_info(t_translation::FOGGED).minimap_image()),
 	tod_(time_of_day()),
 	scroll_event_("scrolled"),
 	nextDraw_(0),
@@ -2003,7 +2003,7 @@ void display::draw_hex(const map_location& loc) {
 			image::get_image(shroud_image_, image_type)));
 	} else if(fogged(loc)) {
 		drawing_buffer_add(LAYER_FOG_SHROUD, loc, tblit(xpos, ypos,
-			image::get_image(fog_image_, image_type)));
+			image::get_image(fog_image(loc), image_type)));
 	}
 
 	if(!shrouded(loc)) {

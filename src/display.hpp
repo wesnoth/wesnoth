@@ -33,6 +33,7 @@
 #ifndef DISPLAY_H_INCLUDED
 #define DISPLAY_H_INCLUDED
 
+#include <sstream>
 class config;
 class terrain_builder;
 class map_labels;
@@ -559,6 +560,14 @@ protected:
 	void draw_image_for_report(surface& img, SDL_Rect& rect);
 
 	void scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_type,bool force = true);
+
+	std::string fog_image(const map_location & loc){ 
+		std::stringstream tmp;
+		tmp << fog_image_;
+		tmp << (loc.x+loc.y)%3 +1;
+		tmp << ".png";
+		return tmp.str();
+	}
 
 	CVideo& screen_;
 	const gamemap* map_;
