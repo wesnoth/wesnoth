@@ -368,7 +368,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	show_lobby_joins_button3_.set_help_string(_("Show messages about all players joining the multiplayer lobby"));
 
 	new_lobby_button_.set_check(new_lobby());
-	new_lobby_button_.set_help_string(_("mouseover^Use new lobby interface"));
+	new_lobby_button_.set_help_string(_("mouseover^Use new lobby interface (only works after a manual reconnect to the server)"));
 
 	mp_server_search_button_.set_help_string(_("Find and set path to MP server to host LAN games."));
 	friends_list_button_.set_help_string(_("View and edit your friends and ignores list"));
