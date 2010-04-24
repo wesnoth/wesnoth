@@ -752,7 +752,7 @@ the files after which I dive more into the implementation of the file.
 			returned by value.
 
 		\item{reference}
-			Signature T& foo() { return foo\_; } This version returns the value
+			Signature T\& foo() { return foo\_; } This version returns the value
 			by reference, and it should also have a const version. These
 			functions or at least the non-const version are often not public.
 
@@ -780,15 +780,15 @@ the files after which I dive more into the implementation of the file.
 	\item[Line \ref{progress_bar.cpp:logheader}]
 		The common headers used for logging, this makes sure the output of the
 		items always have the same format. Used by
-		LOG\_FOO << LOG_HEADER << "foo.\n"; or
-		log\_scope(foo, LOG_SCOPE); % check function signature
+		LOG\_FOO \textless\textless{} LOG\_HEADER \textless\textless{} "foo.\textbackslash{}n"; or
+		log\_scope(foo, LOG\_SCOPE); % check function signature
 
 	\item[Line \ref{progress_bar.cpp:register}]
 		Registers a widget, this part is really volatile and still has some
 		hoops and rings to jump through. Normally it works if not too bad and
 		look through the other widgets to see how to fix it. 
 
-		\textfb{Caveat emptor} just when all compiles fine you get a runtime
+		\textbf{Caveat emptor} just when all compiles fine you get a runtime
 		error about your new nice class, the builder claims your widget doesn't
 		exist. \emph{Don't panic} probably you did nothing wrong grep TRY in
 		src/gui/auxiliary/window\_builder.cpp (at the moment of writing line 96)
