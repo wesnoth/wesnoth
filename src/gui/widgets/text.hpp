@@ -370,6 +370,7 @@ protected:
 	virtual void handle_key_default(
 		bool& handled, SDLKey key, SDLMod modifier, Uint16 unicode);
 
+private:
 	/**
 	 * Key press callback.
 	 *
