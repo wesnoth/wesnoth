@@ -23,6 +23,9 @@
 #include "game_end_exceptions.hpp"
 #include "game_events.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/unit_attack.hpp"
+#include "gui/widgets/settings.hpp"
+#include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "marked-up_text.hpp"
@@ -647,6 +650,30 @@ int mouse_handler::fill_weapon_choices(std::vector<battle_context>& bc_vector, u
 
 int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const map_location& defender_loc)
 {
+	if(gui2::new_widgets) {
+
+		unit_map::iterator attacker = find_unit(attacker_loc);
+		unit_map::iterator defender = find_unit(defender_loc);
+
+		std::vector<battle_context> weapons;
+		const int best_weapon =
+				fill_weapon_choices(weapons, attacker, defender);
+
+		gui2::tunit_attack dlg(
+				  attacker
+				, defender
+				, weapons
+				, best_weapon);
+
+		dlg.show(gui_->video());
+
+		if(dlg.get_retval() == gui2::twindow::OK) {
+			return dlg.get_selected_weapon();
+		} else {
+			return -1;
+		}
+	}
+
 	unit_map::iterator attacker = find_unit(attacker_loc);
 	unit_map::iterator defender = find_unit(defender_loc);
 

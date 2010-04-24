@@ -175,6 +175,7 @@ wesnoth_source = \
 	gui/dialogs/mp_cmd_wrapper.cpp \
 	gui/dialogs/title_screen.cpp \
 	gui/dialogs/transient_message.cpp \
+	gui/dialogs/unit_attack.cpp \
 	gui/dialogs/unit_create.cpp \
 	gui/dialogs/wml_message.cpp \
 	gui/widgets/button.cpp \
