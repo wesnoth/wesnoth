@@ -54,7 +54,7 @@ tbutton::tbutton()
 void tbutton::connect_signal_mouse_left_click(
 		const event::tsignal_function& signal)
 {
-	connect_signal<event::LEFT_BUTTON_CLICK>( signal);
+	connect_signal<event::LEFT_BUTTON_CLICK>(signal);
 }
 
 void tbutton::disconnect_signal_mouse_left_click(
