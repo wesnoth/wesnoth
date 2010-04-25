@@ -105,7 +105,9 @@ if(CMAKE_COMPILER_IS_GNUCXX)
 	if(NOT CONFIGURED)
 
 		if(ENABLE_STRICT_COMPILATION)
-			set(STRICT_FLAGS "-Werror -Wno-unused-parameter")
+			# The current networking code breaks strict aliasing in g++ 4.5.
+			# Once the code is converted to boost::asio it might be reenabled.
+			set(STRICT_FLAGS "-Werror -Wno-unused-parameter -Wno-strict-aliasing")
 		else(ENABLE_STRICT_COMPILATION)
 			set(STRICT_FLAGS "")
 		endif(ENABLE_STRICT_COMPILATION)

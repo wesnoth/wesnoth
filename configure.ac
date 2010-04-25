@@ -107,7 +107,10 @@ if test "x$strict" = "xyes"
 then
 #   Strict compilation for C files is disabled until somebody wants to clean them.
 #	CFLAGS="-Werror -Wno-unused -Wno-sign-compare $CFLAGS"
-	CXXFLAGS="-Werror -Wno-unused-parameter $CXXFLAGS"
+
+	# The current networking code breaks strict aliasing in g++ 4.5.
+	# Once the code is converted to boost::asio it might be reenabled.
+	CXXFLAGS="-Werror -Wno-unused-parameter -Wno-strict-aliasing $CXXFLAGS"
 fi
 
 # Make tests default in svn version
