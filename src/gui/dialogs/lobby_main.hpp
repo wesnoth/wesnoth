@@ -310,13 +310,17 @@ private:
 
 	void room_switch_callback(twindow& window);
 
-	bool chat_input_keypress_callback(twidget* widget, SDLKey key, SDLMod mod, Uint16 unicode);
+	void chat_input_keypress_callback(
+			  bool& handled
+			, bool& halt
+			, const SDLKey key
+			, twindow& window);
 
 	void game_filter_reload();
 
 	void game_filter_change_callback(twidget* widget);
 
-	bool game_filter_keypress_callback(twidget* widget, SDLKey key, SDLMod mod, Uint16 unicode);
+	void game_filter_keypress_callback(const SDLKey key);
 
 	void gamelist_change_callback(twindow& window);
 

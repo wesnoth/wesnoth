@@ -33,7 +33,6 @@ ttext_::ttext_()
 	, text_()
 	, selection_start_(0)
 	, selection_length_(0)
-	, key_press_callback_()
 	, text_changed_callback_()
 {
 #ifdef __unix__
@@ -81,6 +80,14 @@ void ttext_::set_value(const std::string& text)
 		update_canvas();
 		set_dirty();
 	}
+}
+
+void ttext_::connect_signal_pre_key_press_callback(
+			const event::tsignal_keyboard_function& signal)
+{
+	connect_signal<event::SDL_KEY_DOWN>(
+			  signal
+			, event::tdispatcher::front_child);
 }
 
 void ttext_::set_cursor(const size_t offset, const bool select)
@@ -293,12 +300,6 @@ void ttext_::signal_handler_sdl_key_down(const event::tevent event
 #else
 	const unsigned copypaste_modifier = KMOD_CTRL;
 #endif
-
-	if(key_press_callback_) {
-		if((handled = key_press_callback_(this, key, modifier, unicode))) {
-			return;
-		}
-	}
 
 	switch(key) {
 

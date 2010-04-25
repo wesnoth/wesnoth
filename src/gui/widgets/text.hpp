@@ -15,6 +15,7 @@
 #ifndef GUI_WIDGETS_TEXT_HPP_INCLUDED
 #define GUI_WIDGETS_TEXT_HPP_INCLUDED
 
+//#include "gui/auxiliary/event/dispatcher.hpp"
 #include "gui/widgets/control.hpp"
 #include "../../text.hpp"
 
@@ -28,6 +29,9 @@ namespace gui2 {
  * Abstract base class for text items.
  *
  * All other text classes should inherit from this base class.
+ *
+ * Common signal handlers:
+ * - connect_signal_pre_key_press
  */
 class ttext_ : public tcontrol
 {
@@ -59,14 +63,13 @@ public:
 	const std::string& text() const { return text_.text(); }
 
 	/**
-	 * Set the keypress callback. Return value determines whether normal
-	 * handling should be performed by the widget (true) or not (false).
+	 * Sets a connection handler for the keyboard.
+	 *
+	 * The filter will be executed before the widget itself handles the event.
 	 */
-	void set_key_press_callback(
-		boost::function< bool (twidget*, SDLKey, SDLMod, Uint16) > cb)
-	{
-		key_press_callback_ = cb;
-	}
+	void connect_signal_pre_key_press_callback(
+			const event::tsignal_keyboard_function& signal);
+
 
 	/** Set the text_changed callback. */
 	void set_text_changed_callback(
@@ -371,19 +374,6 @@ protected:
 		bool& handled, SDLKey key, SDLMod modifier, Uint16 unicode);
 
 private:
-	/**
-	 * Key press callback.
-	 *
-	 * This callback is called in key_press before the other functions. The
-	 * return value of this function sets the handled flag. If handled the
-	 * key_press function will stop its execution. The parameters to the
-	 * function are:
-	 * - The widget invoking the callback
-	 * - The SDL key code, needed for special keys.
-	 * - The keyboard modifiers when the key was pressed.
-	 * - The unicode for the pressed key.
-	 */
-	boost::function< bool (twidget*, SDLKey, SDLMod, Uint16) > key_press_callback_;
 
 	/**
 	 * Text changed callback.

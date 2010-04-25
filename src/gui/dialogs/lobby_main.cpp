@@ -988,7 +988,14 @@ void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
 	window_ = &window;
 
 	chat_input_ = find_widget<ttext_box>(&window, "chat_input", false, true);
-	chat_input_->set_key_press_callback(boost::bind(&tlobby_main::chat_input_keypress_callback, this, _1, _2, _3, _4));
+	assert(chat_input_);
+	connect_signal_pre_key_press(*chat_input_, boost::bind(
+			  &tlobby_main::chat_input_keypress_callback
+			, this
+			, _3
+			, _4
+			, _5
+			, boost::ref(window)));
 
 	find_widget<tbutton>(&window, "send_message", false)
 			.connect_signal_mouse_left_click(boost::bind(
@@ -1058,8 +1065,10 @@ void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
 		boost::bind(&tlobby_main::game_filter_change_callback, this, _1));
 	filter_invert_->set_callback_state_change(
 		boost::bind(&tlobby_main::game_filter_change_callback, this, _1));
-	filter_text_->set_key_press_callback(
-		boost::bind(&tlobby_main::game_filter_keypress_callback, this, _1, _2, _3, _4));
+	connect_signal_pre_key_press(*filter_text_, boost::bind(
+			  &tlobby_main::game_filter_keypress_callback
+			, this
+			, _5));
 
 	room_window_open("lobby", true);
 	active_window_changed();
@@ -1676,12 +1685,16 @@ void tlobby_main::room_switch_callback(twindow& /*window*/)
 	switch_to_window(roomlistbox_->get_selected_row());
 }
 
-bool tlobby_main::chat_input_keypress_callback(twidget* widget, SDLKey key,
-	SDLMod /*mod*/, Uint16 /*unicode*/)
+void tlobby_main::chat_input_keypress_callback(
+		  bool& handled
+		, bool& halt
+		, const SDLKey key
+		, twindow& window)
 {
 	if (key == SDLK_RETURN || key == SDLK_KP_ENTER) {
-		send_message_button_callback(*widget->get_window());
-		return true;
+		send_message_button_callback(window);
+		handled = true;
+		halt = true;
 	} else if(key == SDLK_TAB) {
 		std::string text = chat_input_->get_value();
 		const std::vector<user_info>& match_infos = lobby_info_.users();
@@ -1694,7 +1707,9 @@ bool tlobby_main::chat_input_keypress_callback(twidget* widget, SDLKey key,
 		}
 		const bool line_start = utils::word_completion(text, matches);
 
-		if (matches.empty()) return false;
+		if (matches.empty()) {
+			return;
+		}
 
 		if (matches.size() == 1) {
 			text.append(line_start ? ": " : " ");
@@ -1703,9 +1718,9 @@ bool tlobby_main::chat_input_keypress_callback(twidget* widget, SDLKey key,
 			append_to_chatbox(completion_list);
 		}
 		chat_input_->set_value(text);
-		return true;
+		handled = true;
+		halt = true;
 	}
-	return false;
 }
 
 void tlobby_main::game_filter_reload()
@@ -1731,14 +1746,12 @@ void tlobby_main::game_filter_reload()
 	lobby_info_.set_game_filter_invert(filter_invert_->get_value());
 }
 
-bool tlobby_main::game_filter_keypress_callback(twidget* /*widget*/, SDLKey key,
-	SDLMod /*mod*/, Uint16 /*unicode*/)
+void tlobby_main::game_filter_keypress_callback(const SDLKey key)
 {
 	if (key == SDLK_RETURN || key == SDLK_KP_ENTER) {
 		game_filter_reload();
 		update_gamelist_filter();
 	}
-	return false;
 }
 
 void tlobby_main::game_filter_change_callback(gui2::twidget* /*widget*/)
