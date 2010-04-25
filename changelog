@@ -15,7 +15,17 @@ Version 1.9.0-svn:
    * Fixed bug #15937: Made untranslateable strings translateable.
  * Multiplayer:
    * Fixed bug #15865: missing WML Child error.
-   * Added the winner of the first Wesnoth map compitition, the 2 player map "Elensefar Courtyard" by krotop.
+   * Added the winner of the first Wesnoth map compitition, the 2 player map
+     "Elensefar Courtyard" by krotop.
+ * Terrain:
+   * animated terrain animations are not synchronized anymore
+   * reworked macros to handle animations
+   * added new stone-wall-lit terrain
+   * made all animated terrains use the new macro system
+   * added a new "snowy castle" terrain
+   * added new mausoleum scenery
+   * added new "snowy fort"
+   * added new "desert castle"
  * User interface:
    * Removed the unused gui2 menu bar
    * Added a window register framework
@@ -65,15 +75,6 @@ Version 1.9.0-svn:
    * Strip whitespace characters from .ign patterns (bug #15902)
    * Fixed tab completion not working in the new lobby (bug #14730)
    * Fixed compilation for g++ 4.5
- * Terrain animation related
-   * animated terrain animations are not synchronized anymore
-   * reworked macros to handle animations
-   * added new stone-wall-lit terrain
-   * made all animated terrains use the new macro system
-   * added a new "snowy castle" terrain
-   * added new mausoleum scenery
-   * added new "snowy fort"
-   * added new "desert castle"
 
 Version 1.8.0:
  * AI:
