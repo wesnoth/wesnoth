@@ -101,14 +101,14 @@ void teditor_generate_map::pre_show(CVideo& /*video*/, twindow& window)
 
 	tbutton& settings_button =
 			find_widget<tbutton>(&window, "settings", false);
-	settings_button.connect_signal_mouse_left_click(boost::bind(
+	connect_signal_mouse_left_click(settings_button, boost::bind(
 			  &teditor_generate_map::do_settings
 			, this
 			, boost::ref(window)));
 
 	tbutton& next_generator_button =
 			find_widget<tbutton>(&window, "next_generator", false);
-	next_generator_button.connect_signal_mouse_left_click(boost::bind(
+	connect_signal_mouse_left_click(next_generator_button, boost::bind(
 			  &teditor_generate_map::do_next_generator
 			, this
 			, boost::ref(window)));

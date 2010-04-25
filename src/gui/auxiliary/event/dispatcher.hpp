@@ -625,6 +625,22 @@ inline void connect_signal_pre_key_press(
 			, event::tdispatcher::front_child);
 }
 
+/** Connects a signal handler for a left mouse button click. */
+inline void connect_signal_mouse_left_click(
+		  tdispatcher& dispatcher
+		, const event::tsignal_function& signal)
+{
+	dispatcher.connect_signal<event::LEFT_BUTTON_CLICK>(signal);
+}
+
+/** Disconnects a signal handler for a left mouse button click. */
+inline void disconnect_signal_mouse_left_click(
+		  tdispatcher& dispatcher
+		, const event::tsignal_function& signal)
+{
+	dispatcher.disconnect_signal<event::LEFT_BUTTON_CLICK>(signal);
+}
+
 } // namespace event
 
 } // namespace gui2

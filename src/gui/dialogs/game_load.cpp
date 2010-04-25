@@ -107,8 +107,9 @@ void tgame_load::pre_show(CVideo& /*video*/, twindow& window)
 	}
 	fill_game_list(window, games_);
 
-	find_widget<tbutton>(&window, "delete", false)
-			.connect_signal_mouse_left_click(boost::bind(
+	connect_signal_mouse_left_click(
+			find_widget<tbutton>(&window, "delete", false)
+			, boost::bind(
 				  &tgame_load::delete_button_callback
 				, this
 				, boost::ref(window)));

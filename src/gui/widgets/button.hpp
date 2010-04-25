@@ -30,27 +30,6 @@ class tbutton
 public:
 	tbutton();
 
-	/**
-	 * Connects a signal handler for a left mouse button click.
-	 *
-	 * @todo Implement everywhere.
-	 *
-	 * The signal should be used for all common cases (which now have
-	 * set_callback_xxx). The those set functions can be removed.
-	 *
-	 * @param signal              The signal to connect.
-	 */
-	void connect_signal_mouse_left_click(const event::tsignal_function& signal);
-
-	/**
-	 * Disconnects a signal handler for a left mouse button click.
-	 *
-	 * @param signal              The signal to disconnect (should be the same
-	 *                            as send to the connect call.
-	 */
-	void disconnect_signal_mouse_left_click(
-			const event::tsignal_function& signal);
-
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
 	/** Inherited from tcontrol. */
@@ -63,16 +42,24 @@ public:
 	/** Inherited from tcontrol. */
 	unsigned get_state() const { return state_; }
 
-	/** Inherited from tclickable. */
+	/**
+	 * Inherited from tclickable.
+	 *
+	 * @deprecated The function needs to be removed from the base class as well.
+	 */
 	void connect_click_handler(const event::tsignal_function& signal)
 	{
-		connect_signal_mouse_left_click(signal);
+		connect_signal_mouse_left_click(*this, signal);
 	}
 
-	/** Inherited from tclickable. */
+	/**
+	 * Inherited from tclickable.
+	 *
+	 * @deprecated The function needs to be removed from the base class as well.
+	 */
 	void disconnect_click_handler(const event::tsignal_function& signal)
 	{
-		disconnect_signal_mouse_left_click(signal);
+		disconnect_signal_mouse_left_click(*this, signal);
 	}
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/

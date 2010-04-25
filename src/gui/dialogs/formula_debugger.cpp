@@ -115,7 +115,7 @@ void tformula_debugger::pre_show(CVideo& /*video*/, twindow& window)
 	// callbacks
 	tbutton& step_button = find_widget<tbutton>(&window, "step", false);
 
-	step_button.connect_signal_mouse_left_click(boost::bind(
+	connect_signal_mouse_left_click(step_button, boost::bind(
 			  &tformula_debugger::callback_step_button
 			, this
 			, boost::ref(window)));
@@ -123,14 +123,14 @@ void tformula_debugger::pre_show(CVideo& /*video*/, twindow& window)
 
 	tbutton& stepout_button = find_widget<tbutton>(&window, "stepout", false);
 
-	stepout_button.connect_signal_mouse_left_click(boost::bind(
+	connect_signal_mouse_left_click(stepout_button, boost::bind(
 			  &tformula_debugger::callback_stepout_button
 			, this
 			, boost::ref(window)));
 
 	tbutton& next_button = find_widget<tbutton>(&window, "next", false);
 
-	next_button.connect_signal_mouse_left_click(boost::bind(
+	connect_signal_mouse_left_click(next_button, boost::bind(
 			  &tformula_debugger::callback_next_button
 			, this
 			, boost::ref(window)));
@@ -138,7 +138,7 @@ void tformula_debugger::pre_show(CVideo& /*video*/, twindow& window)
 
 	tbutton& continue_button = find_widget<tbutton>(&window, "continue", false);
 
-	continue_button.connect_signal_mouse_left_click(boost::bind(
+	connect_signal_mouse_left_click(continue_button, boost::bind(
 			  &tformula_debugger::callback_continue_button
 			, this
 			, boost::ref(window)));

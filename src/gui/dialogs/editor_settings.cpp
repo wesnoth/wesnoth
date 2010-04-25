@@ -215,7 +215,7 @@ void teditor_settings::pre_show(CVideo& /*video*/, twindow& window)
 
 	tbutton& next_tod_button = find_widget<tbutton>(
 			&window, "next_tod", false);
-	next_tod_button.connect_signal_mouse_left_click(boost::bind(
+	connect_signal_mouse_left_click(next_tod_button, boost::bind(
 			  &teditor_settings::do_next_tod
 			, this
 			, boost::ref(window)));
@@ -223,7 +223,7 @@ void teditor_settings::pre_show(CVideo& /*video*/, twindow& window)
 
 	tbutton& apply_button = find_widget<tbutton>(
 			&window, "apply", false);
-	apply_button.connect_signal_mouse_left_click(boost::bind(
+	connect_signal_mouse_left_click(apply_button, boost::bind(
 			  &teditor_settings::update_tod_display
 			, this
 			, boost::ref(window)));

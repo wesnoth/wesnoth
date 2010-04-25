@@ -779,7 +779,7 @@ void tlobby_main::adjust_game_row_contents(const game_info& game, int idx, tgrid
 
 	tbutton* join_button = dynamic_cast<tbutton*>(grid->find("join", false));
 	if (join_button) {
-		join_button->connect_signal_mouse_left_click(boost::bind(
+		connect_signal_mouse_left_click(*join_button, boost::bind(
 				  &tlobby_main::join_button_callback
 				, this
 				, boost::ref(*window_)));
@@ -787,7 +787,7 @@ void tlobby_main::adjust_game_row_contents(const game_info& game, int idx, tgrid
 	}
 	tbutton* observe_button = dynamic_cast<tbutton*>(grid->find("observe", false));
 	if (observe_button) {
-		observe_button->connect_signal_mouse_left_click(boost::bind(
+		connect_signal_mouse_left_click(*observe_button, boost::bind(
 				  &tlobby_main::observe_button_callback
 				, this
 				, boost::ref(*window_)));
@@ -997,47 +997,60 @@ void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
 			, _5
 			, boost::ref(window)));
 
-	find_widget<tbutton>(&window, "send_message", false)
-			.connect_signal_mouse_left_click(boost::bind(
+	connect_signal_mouse_left_click(
+			  find_widget<tbutton>(&window, "send_message", false)
+			, boost::bind(
 				  &tlobby_main::send_message_button_callback
 				, this
 				, boost::ref(window)));
-	find_widget<tbutton>(&window, "create", false)
-			.connect_signal_mouse_left_click(boost::bind(
+
+	connect_signal_mouse_left_click(
+			  find_widget<tbutton>(&window, "create", false)
+			, boost::bind(
 				  &tlobby_main::create_button_callback
 				, this
 				, boost::ref(window)));
-/*	find_widget<tbutton>(&window, "show_help", false)
-			.connect_signal_mouse_left_click(boost::bind(
+/*
+	connect_signal_mouse_left_click(
+			  find_widget<tbutton>(&window, "show_help", false)
+			, boost::bind(
 				  &tlobby_main::show_help_button_callback
 				, this
 				, boost::ref(window)));
-*/	find_widget<tbutton>(&window, "refresh", false)
-			.connect_signal_mouse_left_click(boost::bind(
+*/
+	connect_signal_mouse_left_click(
+			  find_widget<tbutton>(&window, "refresh", false)
+			, boost::bind(
 				  &tlobby_main::refresh_button_callback
 				, this
 				, boost::ref(window)));
-	find_widget<tbutton>(&window, "show_preferences", false)
-			.connect_signal_mouse_left_click(boost::bind(
+
+	connect_signal_mouse_left_click(
+			  find_widget<tbutton>(&window, "show_preferences", false)
+			, boost::bind(
 				  &tlobby_main::show_preferences_button_callback
 				, this
 				, boost::ref(window)));
-	find_widget<tbutton>(&window, "join_global", false)
-			.connect_signal_mouse_left_click(boost::bind(
+
+	connect_signal_mouse_left_click(
+			  find_widget<tbutton>(&window, "join_global", false)
+			, boost::bind(
 				  &tlobby_main::join_global_button_callback
 				, this
 				, boost::ref(window)));
-	find_widget<tbutton>(&window, "join_global", false)
-			.set_active(false);
-	find_widget<tbutton>(&window, "observe_global", false)
-			.connect_signal_mouse_left_click(boost::bind(
+	find_widget<tbutton>(&window, "join_global", false).set_active(false);
+
+	connect_signal_mouse_left_click(
+			  find_widget<tbutton>(&window, "observe_global", false)
+			, boost::bind(
 				  &tlobby_main::observe_global_button_callback
 				, this
 				, boost::ref(window)));
-	find_widget<tbutton>(&window, "observe_global", false)
-			.set_active(false);
-	find_widget<tbutton>(&window, "close_window", false)
-			.connect_signal_mouse_left_click(boost::bind(
+	find_widget<tbutton>(&window, "observe_global", false).set_active(false);
+
+	connect_signal_mouse_left_click(
+			  find_widget<tbutton>(&window, "close_window", false)
+			, boost::bind(
 				  &tlobby_main::close_window_button_callback
 				, this
 				, boost::ref(window)));

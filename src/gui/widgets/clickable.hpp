@@ -23,6 +23,10 @@ namespace gui2 {
  * Parts of the engine inherit this class so we can have generic
  * clickable items. This is mainly for the button and the repeating button
  * classes.
+ *
+ * Common signal handlers:
+ * - connect_signal_mouse_left_click
+ * - disconnect_signal_mouse_left_click
  */
 class tclickable_
 {

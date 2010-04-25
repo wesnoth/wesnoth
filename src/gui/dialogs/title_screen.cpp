@@ -149,13 +149,15 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 		variant(_("Version") + std::string(" ") + game_config::revision));
 
 	/**** Set the buttons ****/
-	find_widget<tbutton>(&window, "addons", false).
-			connect_signal_mouse_left_click(boost::bind(
+	connect_signal_mouse_left_click(
+			  find_widget<tbutton>(&window, "addons", false)
+			, boost::bind(
 				  show_dialog<gui2::taddon_connect>
 				, boost::ref(video)));
 
-	find_widget<tbutton>(&window, "language", false).
-			connect_signal_mouse_left_click(boost::bind(
+	connect_signal_mouse_left_click(
+			  find_widget<tbutton>(&window, "language", false)
+			, boost::bind(
 				  show_language_dialog
 				, boost::ref(video)
 				, boost::ref(window)));
@@ -188,15 +190,17 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 	}
 	update_tip(window, true);
 
-	find_widget<tbutton>(&window, "next_tip", false).
-			connect_signal_mouse_left_click(boost::bind(
+	connect_signal_mouse_left_click(
+			  find_widget<tbutton>(&window, "next_tip", false)
+			, boost::bind(
 				  &ttitle_screen::update_tip
 				, this
 				, boost::ref(window)
 				, true));
 
-	find_widget<tbutton>(&window, "previous_tip", false).
-			connect_signal_mouse_left_click(boost::bind(
+	connect_signal_mouse_left_click(
+			  find_widget<tbutton>(&window, "previous_tip", false)
+			, boost::bind(
 				  &ttitle_screen::update_tip
 				, this
 				, boost::ref(window)

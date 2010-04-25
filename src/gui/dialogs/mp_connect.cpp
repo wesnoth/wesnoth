@@ -150,7 +150,7 @@ void tmp_connect::pre_show(CVideo& video, twindow& window)
 	// Set view list callback button.
 	if(tbutton* button = find_widget<tbutton>(&window, "list", false, false)) {
 
-		button->connect_signal_mouse_left_click(boost::bind(
+		connect_signal_mouse_left_click(*button, boost::bind(
 				  &tmp_connect::show_server_list
 				, this
 				, boost::ref(window)));
