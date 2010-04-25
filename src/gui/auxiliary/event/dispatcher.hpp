@@ -603,6 +603,28 @@ private:
 	std::map<hotkey::HOTKEY_COMMAND, thotkey_function> hotkeys_;
 };
 
+/***** ***** ***** ***** ***** Common helpers  ***** ***** ***** ***** *****/
+
+/*
+ * These helpers can be used to easily add callbacks to a dispatcher (widget).
+ * This is just a list of common ones all others can be used as well.
+ */
+
+/**
+ * Connects the signal for 'snooping' on the keypress.
+ *
+ * This callback is called before the widget itself allowing you to either
+ * snoop on the input or filter it.
+ */
+inline void connect_signal_pre_key_press(
+		  tdispatcher& dispatcher
+		, const event::tsignal_keyboard_function& signal)
+{
+	dispatcher.connect_signal<event::SDL_KEY_DOWN>(
+			  signal
+			, event::tdispatcher::front_child);
+}
+
 } // namespace event
 
 } // namespace gui2
