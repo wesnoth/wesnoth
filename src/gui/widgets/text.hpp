@@ -62,15 +62,6 @@ public:
 
 	const std::string& text() const { return text_.text(); }
 
-	/**
-	 * Sets a connection handler for the keyboard.
-	 *
-	 * The filter will be executed before the widget itself handles the event.
-	 */
-	void connect_signal_pre_key_press_callback(
-			const event::tsignal_keyboard_function& signal);
-
-
 	/** Set the text_changed callback. */
 	void set_text_changed_callback(
 		boost::function< void (ttext_* textbox, const std::string text) > cb)

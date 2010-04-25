@@ -82,14 +82,6 @@ void ttext_::set_value(const std::string& text)
 	}
 }
 
-void ttext_::connect_signal_pre_key_press_callback(
-			const event::tsignal_keyboard_function& signal)
-{
-	connect_signal<event::SDL_KEY_DOWN>(
-			  signal
-			, event::tdispatcher::front_child);
-}
-
 void ttext_::set_cursor(const size_t offset, const bool select)
 {
 	if(select) {
