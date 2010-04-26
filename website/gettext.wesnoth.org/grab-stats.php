@@ -50,26 +50,29 @@ function grab_stats ($tob, $official, $packs) // trunk or branch, official (1) o
 			$po_dir = $basedir . "/" . $package . "/po/";
 			$domain = getdomain($package);
 		}
-		$languages = file_get_contents($po_dir . "/LINGUAS");
-		$languages = substr($languages, 0, strlen($languages)-1);
-		$langs = explode(" ", $languages);
-		echo "<h2>Getting stats for package $package</h2>";
-		$stats["_pot"] = getstats("$po_dir/" . $domain . ".pot");
-		if (!file_exists("stats/" . $domain))
+		if (file_exists($po_dir)) // it can happen that the translation is broken in wescamp, this only happens when there is no po/ folder
 		{
-			system("mkdir stats/" . $domain);
+			$languages = file_get_contents($po_dir . "/LINGUAS");
+			$languages = substr($languages, 0, strlen($languages)-1);
+			$langs = explode(" ", $languages);
+			echo "<h2>Getting stats for package $package</h2>";
+			$stats["_pot"] = getstats("$po_dir/" . $domain . ".pot");
+			if (!file_exists("stats/" . $domain))
+			{
+				system("mkdir stats/" . $domain);
+			}
+			foreach ($langs as $lang)
+			{
+				echo "Getting stats for lang $lang<br/>";
+				$pofile = $po_dir . "/" . $lang . ".po";
+				$stats[$lang] = getstats($pofile);
+			}
+		
+			$serialized = serialize($stats);
+			$file = fopen("stats/" . $domain . "/" . $tob . "stats", "wb");
+			fwrite($file, $serialized);
+			fclose($file);
 		}
-		foreach ($langs as $lang)
-		{
-			echo "Getting stats for lang $lang<br/>";
-			$pofile = $po_dir . "/" . $lang . ".po";
-			$stats[$lang] = getstats($pofile);
-		}
-	
-		$serialized = serialize($stats);
-		$file = fopen("stats/" . $domain . "/" . $tob . "stats", "wb");
-		fwrite($file, $serialized);
-		fclose($file);
 	}
 }
 
