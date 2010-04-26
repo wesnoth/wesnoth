@@ -37,6 +37,7 @@ function grab_stats ($tob, $official, $packs) // trunk or branch, official (1) o
 	global $branchbasedir;
 	global $extratbasedir;
 	global $extrabbasedir;
+	global $ignore_langs;
 
 	foreach($packs as $package){
 		$stats = array();
@@ -64,8 +65,11 @@ function grab_stats ($tob, $official, $packs) // trunk or branch, official (1) o
 			foreach ($langs as $lang)
 			{
 				//echo "Getting stats for lang $lang\n";
-				$pofile = $po_dir . "/" . $lang . ".po";
-				$stats[$lang] = getstats($pofile);
+				if (!in_array($lang, $ignore_langs))
+				{
+					$pofile = $po_dir . "/" . $lang . ".po";
+					$stats[$lang] = getstats($pofile);
+				}
 			}
 		
 			$serialized = serialize($stats);
