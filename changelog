@@ -49,6 +49,7 @@ Version 1.9.0-svn:
      screen
    * Added the total number of villages to the status table lists
    * Added a new attack dialog, available for testing with --new-widgets
+   * Patch #1645: Fixed a bug sending keyboard events to deactivated controls
  * WML Engine:
    * Deprecated [set_variable]'s random key, use rand instead
    * Renamed [unit][status] healable to unhealable so it can default to 'no'

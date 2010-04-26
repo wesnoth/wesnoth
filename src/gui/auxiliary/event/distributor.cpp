@@ -787,10 +787,16 @@ void tdistributor::signal_handler_sdl_key_down(const SDLKey key
 	DBG_GUI_E << LOG_HEADER << event::SDL_KEY_DOWN << ".\n";
 
 	if(keyboard_focus_) {
-		DBG_GUI_E << LOG_HEADER << "Firing: " << event::SDL_KEY_DOWN << ".\n";
-		if(owner_.fire(event::SDL_KEY_DOWN
-				, *keyboard_focus_, key, modifier, unicode)) {
-			return;
+		// Attempt to cast to control, to avoid sending events if the
+		// widget is disabled. If the cast fails, we assume the widget
+		// is enabled and ready to receive events.
+		tcontrol* control = dynamic_cast<tcontrol*>(keyboard_focus_);
+		if(!control || control->get_active()) {
+			DBG_GUI_E << LOG_HEADER << "Firing: " << event::SDL_KEY_DOWN << ".\n";
+			if(owner_.fire(event::SDL_KEY_DOWN
+					, *keyboard_focus_, key, modifier, unicode)) {
+				return;
+			}
 		}
 	}
 
@@ -816,7 +822,15 @@ void tdistributor::signal_handler_sdl_key_down(const SDLKey key
 			 */
 			continue;
 		}
-
+		
+		// Attempt to cast to control, to avoid sending events if the
+		// widget is disabled. If the cast fails, we assume the widget
+		// is enabled and ready to receive events.
+		tcontrol* control = dynamic_cast<tcontrol*>(keyboard_focus_);
+		if(control != NULL && !control->get_active()) {
+			continue;
+		}
+		
 		DBG_GUI_E << LOG_HEADER << "Firing: " << event::SDL_KEY_DOWN << ".\n";
 		if(owner_.fire(event::SDL_KEY_DOWN
 				, **ritor, key, modifier, unicode)) {
