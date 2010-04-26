@@ -650,13 +650,6 @@ timage::timage(const config& cfg)
  *     h (f_unsigned = 0)              The height of the image, if not zero the
  *                                     image will be scaled to the desired
  *                                     height.
- *     stretch (bool = false)          Border images often need to be either
- *                                     stretched in the width or the height. If
- *                                     that's the case use stretch. It only
- *                                     works if only the height or the width is
- *                                     not zero.  It will copy the first pixel
- *                                     to the others. (Note this mode is
- *                                     deprecated, use resize_mode instead.)
  *     resize_mode (resize_mode = scale)
  *                                     Determines how an image is scaled to fit
  *                                     the wanted size.
@@ -692,13 +685,10 @@ timage::timage(const config& cfg)
  *
  */
 
-#if 0
-	/** @todo Enable in 1.9. */
 	if(!cfg["stretch"].empty()) {
-		ERR_GUI_D << "Image: The field 'strech' is "
-				"deprecated use 'resize_mode instead.\n";
+		ERR_GUI_D << "Image: The field 'stretch' is deprecated and "
+				"will be removed in 1.9.2. Use 'resize_mode' instead.\n";
 	}
-#endif
 
 	/** @todo Remove in 1.9. */
 	if(stretch_ && resize_mode_ != stretch) {
