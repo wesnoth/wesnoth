@@ -1,4 +1,4 @@
-/* $Id: icon_message.cpp 39955 2009-11-26 05:32:48Z fendrin $ */
+/* $Id$ */
 /*
  Copyright (C) 2009 - 2010 by Fabian Mueller <fabianmueller5@gmx.de>
  Part of the Battle for Wesnoth Project http://www.wesnoth.org/
