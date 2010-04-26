@@ -60,6 +60,7 @@ Version 1.9.0-svn:
    * Trying to include a missing macro/file is now a fatal error
    * Extended #ifdef so that it also tests for files and directories
    * Add [music_volume] tag, which permits modifications to music volume during scenario
+   * Added ON_DIFFICULTY, a macro that makes using different values based on difficulty simpler
  * Miscellaneous and bug fixes:
    * Defaulted log level to warning again
    * New option to auto-set delay shroud update on game start
@@ -154,8 +155,8 @@ Version 1.7.15-1.8rc1:
 Version 1.7.14-1.8beta7:
  * AI:
    * Allow to write AI components in LUA
-   * Implemented FR #15465: 'protect' goal was split into protect_location, 
-     protect_unit, protect_my_unit [goal] tags. protect_my_unit can be used 
+   * Implemented FR #15465: 'protect' goal was split into protect_location,
+     protect_unit, protect_my_unit [goal] tags. protect_my_unit can be used
      as a direct replacement for protect_leader.
  * Graphics:
    * Fixed bug 15344: missing ice to nothing transition
@@ -219,7 +220,7 @@ Version 1.7.13-1.8beta6:
    * The manual now does support translations of alternative texts for images
      (bug #14874)
  * Multiplayer
-   * An early test version of the multiplayer port of "Legend of Wesmere" 
+   * An early test version of the multiplayer port of "Legend of Wesmere"
      is available when starting wesnoth with the commandline argument "--debug"
  * User interface:
    * Add a new tree view widget
