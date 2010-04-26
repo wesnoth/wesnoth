@@ -55,7 +55,7 @@ function grab_stats ($tob, $official, $packs) // trunk or branch, official (1) o
 			$languages = file_get_contents($po_dir . "/LINGUAS");
 			$languages = substr($languages, 0, strlen($languages)-1);
 			$langs = explode(" ", $languages);
-			echo "<h2>Getting stats for package $package</h2>";
+			echo "Getting stats for package $package\n";
 			$stats["_pot"] = getstats("$po_dir/" . $domain . ".pot");
 			if (!file_exists("stats/" . $domain))
 			{
@@ -63,7 +63,7 @@ function grab_stats ($tob, $official, $packs) // trunk or branch, official (1) o
 			}
 			foreach ($langs as $lang)
 			{
-				echo "Getting stats for lang $lang<br/>";
+				//echo "Getting stats for lang $lang\n";
 				$pofile = $po_dir . "/" . $lang . ".po";
 				$stats[$lang] = getstats($pofile);
 			}
@@ -76,11 +76,11 @@ function grab_stats ($tob, $official, $packs) // trunk or branch, official (1) o
 	}
 }
 
-echo "<h1>Getting stats for trunk</h1>\n";
+echo "Getting stats for trunk\n";
 grab_stats("trunk", 1, $packs);
 grab_stats("trunk", 0, $extratpacks);
 
-echo "<h1>Getting stats for branch ($branch)</h1>\n";
+echo "Getting stats for branch ($branch)\n";
 grab_stats("branch", 1, $packs);
 grab_stats("branch", 0, $extrabpacks);
 
