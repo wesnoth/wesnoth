@@ -716,7 +716,7 @@ WML_HANDLER_FUNCTION(music_volume, /*event_info*/, cfg)
 	std::string absolute = cfg["value"];
 	std::string relative = cfg["relative"];
 	int vol = sound::get_music_volume();
-	
+
 	if(!absolute.empty()) {
 		vol = atoi(absolute.c_str());
 	}

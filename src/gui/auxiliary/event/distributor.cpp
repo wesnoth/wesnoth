@@ -822,7 +822,7 @@ void tdistributor::signal_handler_sdl_key_down(const SDLKey key
 			 */
 			continue;
 		}
-		
+
 		// Attempt to cast to control, to avoid sending events if the
 		// widget is disabled. If the cast fails, we assume the widget
 		// is enabled and ready to receive events.
@@ -830,7 +830,7 @@ void tdistributor::signal_handler_sdl_key_down(const SDLKey key
 		if(control != NULL && !control->get_active()) {
 			continue;
 		}
-		
+
 		DBG_GUI_E << LOG_HEADER << "Firing: " << event::SDL_KEY_DOWN << ".\n";
 		if(owner_.fire(event::SDL_KEY_DOWN
 				, **ritor, key, modifier, unicode)) {

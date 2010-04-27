@@ -561,7 +561,7 @@ protected:
 
 	void scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_type,bool force = true);
 
-	std::string fog_image(const map_location & loc){ 
+	std::string fog_image(const map_location & loc){
 		std::stringstream tmp;
 		tmp << fog_image_;
 		tmp << (loc.x+loc.y)%3 +1;
