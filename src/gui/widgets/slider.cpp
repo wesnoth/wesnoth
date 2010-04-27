@@ -21,6 +21,7 @@
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/widget_definition/slider.hpp"
 #include "gui/auxiliary/window_builder/slider.hpp"
+#include "gui/widgets/window.hpp"
 #include "gui/widgets/settings.hpp"
 #include "sound.hpp"
 
@@ -42,6 +43,21 @@ static int distance(const int a, const int b)
 	int result =  b - a;
 	assert(result >= 0);
 	return result;
+}
+
+tslider::tslider():
+		tscrollbar_(),
+		best_slider_length_(0),
+		minimum_value_(0),
+		minimum_value_label_(),
+		maximum_value_label_(),
+		value_labels_()
+{
+	connect_signal<event::SDL_KEY_DOWN>(boost::bind(
+		&tslider::signal_handler_sdl_key_down, this, _2, _3, _5, _6, _7));
+	connect_signal<event::LEFT_BUTTON_UP>(boost::bind(
+		&tslider::signal_handler_left_button_up, this, _2, _3));
+
 }
 
 tpoint tslider::calculate_best_size() const
@@ -224,6 +240,52 @@ const std::string& tslider::get_control_type() const
 {
 	static const std::string type = "slider";
 	return type;
+}
+
+void tslider::handle_key_decrease(bool& handled)
+{
+	DBG_GUI_E << LOG_HEADER << '\n';
+
+	handled = true;
+
+	scroll(tscrollbar_::ITEM_BACKWARDS);
+}
+
+void tslider::handle_key_increase(bool& handled)
+{
+	DBG_GUI_E << LOG_HEADER << '\n';
+
+	handled = true;
+
+	scroll(tscrollbar_::ITEM_FORWARD);
+}
+
+void tslider::signal_handler_sdl_key_down(const event::tevent event
+		, bool& handled
+		, const SDLKey key
+		, SDLMod modifier
+		, const Uint16 unicode)
+{
+
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+
+	if (key == SDLK_DOWN || key == SDLK_LEFT) {
+		handle_key_decrease(handled);
+	} else if (key == SDLK_UP || key == SDLK_RIGHT) {
+		handle_key_increase(handled);
+	} else {
+		// Do nothing. Ignore other keys.
+	}
+}
+
+void tslider::signal_handler_left_button_up(
+		const event::tevent event, bool& handled)
+{
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+
+	get_window()->keyboard_capture(this);
+
+	handled = true;
 }
 
 } // namespace gui2

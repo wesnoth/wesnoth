@@ -25,15 +25,7 @@ class tslider : public tscrollbar_, public tinteger_selector_
 {
 public:
 
-	tslider() :
-		tscrollbar_(),
-		best_slider_length_(0),
-		minimum_value_(0),
-		minimum_value_label_(),
-		maximum_value_label_(),
-		value_labels_()
-	{
-	}
+	tslider();
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
@@ -87,6 +79,7 @@ public:
 	 *                            the result of get_value().
 	 */
 	t_string get_value_label() const;
+
 protected:
 
 	/** Inherited from tscrollbar. */
@@ -155,6 +148,24 @@ private:
 
 	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const;
+
+	/**
+	 * Handlers for keyboard input
+	 */
+	void handle_key_decrease(bool& handled);
+	void handle_key_increase(bool& handled);
+
+	/**
+	 * Signal handlers:
+	 */
+	void signal_handler_sdl_key_down(const event::tevent event
+			, bool& handled
+			, const SDLKey key);
+
+	// In this subclass, only used to grab keyboard focus -
+	// see tscrollbar class for more handling of this event.
+	void signal_handler_left_button_up(
+			const event::tevent event, bool& handled);
 };
 
 } // namespace gui2
