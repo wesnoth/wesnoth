@@ -54,7 +54,7 @@ tslider::tslider():
 		value_labels_()
 {
 	connect_signal<event::SDL_KEY_DOWN>(boost::bind(
-		&tslider::signal_handler_sdl_key_down, this, _2, _3, _5, _6, _7));
+		&tslider::signal_handler_sdl_key_down, this, _2, _3, _5));
 	connect_signal<event::LEFT_BUTTON_UP>(boost::bind(
 		&tslider::signal_handler_left_button_up, this, _2, _3));
 
@@ -262,9 +262,7 @@ void tslider::handle_key_increase(bool& handled)
 
 void tslider::signal_handler_sdl_key_down(const event::tevent event
 		, bool& handled
-		, const SDLKey key
-		, SDLMod modifier
-		, const Uint16 unicode)
+		, const SDLKey key)
 {
 
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
