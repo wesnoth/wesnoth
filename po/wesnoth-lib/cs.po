@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-04-24 10:49+0200\n"
-"PO-Revision-Date: 2010-03-17 22:25+0100\n"
+"PO-Revision-Date: 2010-04-26 21:55+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -1665,7 +1665,7 @@ msgstr "Ukaž všechna připojení uživatelů"
 
 #: src/game_preferences_display.cpp:169
 msgid "Use new lobby interface"
-msgstr ""
+msgstr "Používej nové uspořádání čekárny"
 
 # seznam připojení?
 #: src/game_preferences_display.cpp:170
@@ -1884,7 +1884,7 @@ msgstr "Neanimuj jednotky ovládané počítačem"
 
 #: src/game_preferences_display.cpp:343
 msgid "Sighting an allied unit interrupts your unit's movement"
-msgstr ""
+msgstr "Přeruší pohyb jednotek při spatření spřátelené jednotky"
 
 #: src/game_preferences_display.cpp:351
 msgid "Overlay a grid onto the map"
@@ -1919,6 +1919,8 @@ msgid ""
 "mouseover^Use new lobby interface (only works after a manual reconnect to "
 "the server)"
 msgstr ""
+"Nastaví nové rozhraní čekárny hry více hráčů (funguje pouze po ručním "
+"znovupřipojení k serveru)"
 
 #: src/game_preferences_display.cpp:373
 msgid "Find and set path to MP server to host LAN games."
@@ -2200,11 +2202,11 @@ msgstr "Vstoupil(a) jsi do místnosti $name"
 
 #: src/gui/dialogs/lobby_main.cpp:1400
 msgid "$player has entered the room"
-msgstr ""
+msgstr "$player vstoupil(a) do místnosti"
 
 #: src/gui/dialogs/lobby_main.cpp:1438
 msgid "$player has left the room"
-msgstr ""
+msgstr "$player opustil(a) místnost"
 
 #: src/gui/dialogs/lobby_main.cpp:1551
 msgid "Password Required"
