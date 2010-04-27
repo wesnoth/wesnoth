@@ -17,6 +17,7 @@ function cmp_translated($a, $b){
 }
 
 function cmp_alpha($a, $b){
+	global $langs;
 	return strcmp($langs[$a],$langs[$b]);
 }
 
