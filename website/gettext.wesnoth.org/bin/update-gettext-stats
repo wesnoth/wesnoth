@@ -24,6 +24,6 @@ svn up
 
 #update the stats
 cd $SVNCHECKOUTPATH/gettext.wesnoth.org
-php grab-stats.php
+nice --adjustment=5 php grab-stats.php
 #php grab-stats.php >> $HOME/g.w.o-updates.log
 echo update completed at `date` >> $HOME/g.w.o-updates.log
