@@ -393,6 +393,7 @@ if __name__ == "__main__":
         if not campaign_list:
             cs = CampaignClient(address)
             campaign_list = cs.list_campaigns()
+            del cs
         if campaign_list:
             import addon_manager.html
             addon_manager.html.output(options.html, options.url,
