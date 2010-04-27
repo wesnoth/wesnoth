@@ -91,8 +91,13 @@ Select the add-on you want to install from the list and click "OK". The download
                     sys.stderr.write("Cannot find icon " + icon + "\n")
                     src = root_dir + "images/misc/missing-image.png"
                     imgurl = "icons/missing-image.png"
-            Popen([os.path.join(am_dir, "../unit_tree/TeamColorizer"),
-                src, path + "/" + imgurl])
+            #the following line results in many instances of TeamColorizer being
+            #spawned which currently helps killing the server
+            #TODO: make sure that this is serialized, as in "only one process of
+            #TeamColorizer running due to the current call of ths script at a
+            #time"
+            #Popen([os.path.join(am_dir, "../unit_tree/TeamColorizer"),
+            #    src, path + "/" + imgurl])
                 
         type = v("type", "none")
         size = float(v("size", "0"))
