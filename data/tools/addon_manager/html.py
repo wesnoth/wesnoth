@@ -64,6 +64,7 @@ Select the add-on you want to install from the list and click "OK". The download
     w("</thead>")
     w("<tbody>")
     root_dir = am_dir + "../../../"
+    images_to_tc = []
     for campaign in campaigns.get_all("campaign"):
         v = campaign.get_text_val
         translations = campaign.get_all("translation")
@@ -91,13 +92,7 @@ Select the add-on you want to install from the list and click "OK". The download
                     sys.stderr.write("Cannot find icon " + icon + "\n")
                     src = root_dir + "images/misc/missing-image.png"
                     imgurl = "icons/missing-image.png"
-            #the following line results in many instances of TeamColorizer being
-            #spawned which currently helps killing the server
-            #TODO: make sure that this is serialized, as in "only one process of
-            #TeamColorizer running due to the current call of ths script at a
-            #time"
-            #Popen([os.path.join(am_dir, "../unit_tree/TeamColorizer"),
-            #    src, path + "/" + imgurl])
+            images_to_tc.append( (src, path + "/" + imgurl) )
                 
         type = v("type", "none")
         size = float(v("size", "0"))
@@ -169,3 +164,6 @@ unit packs, terrain packs, music packs, etc. Usually a (perhaps optional) depend
 <p>Supported by <a href="http://www.jexiste.fr/">Jexiste</a></p>
 </div>
 </body></html>""")
+    sys.stderr.write("Done outputting html, now generating %d TC'ed images\n" % len(images_to_tc))
+    for pair in images_to_tc:
+        Popen([os.path.join(am_dir, "../unit_tree/TeamColorizer"), pair[0], pair[1]]).wait() # wait() to ensure only one process is exists at any time
