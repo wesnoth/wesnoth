@@ -19,6 +19,10 @@
  */
 
 #include "ai.hpp"
+#include "aspect.hpp"
+#include "engine.hpp"
+#include "goal.hpp"
+#include "property_handler.hpp"
 #include "stage.hpp"
 #include "../manager.hpp"
 #include "../../foreach.hpp"
@@ -74,11 +78,10 @@ void ai_composite::on_create()
 	boost::function2<void, std::vector<stage_ptr>&, const config&> factory_stages =
 		boost::bind(&ai::ai_composite::create_stage,*this,_1,_2);
 
-	register_vector_property("engine",get_engines(), factory_engines);
-	register_vector_property("goal",get_goals(), factory_goals);
-	register_vector_property("stage",stages_, factory_stages);
-
-	register_aspect_property("aspect",get_aspects());
+	register_vector_property(property_handlers(),"engine",get_engines(), factory_engines);
+	register_vector_property(property_handlers(),"goal",get_goals(), factory_goals);
+	register_vector_property(property_handlers(),"stage",stages_, factory_stages);
+	register_aspect_property(property_handlers(),"aspect",get_aspects());
 
 }
 

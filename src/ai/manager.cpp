@@ -27,6 +27,7 @@
 #include "registry.hpp"
 #include "../game_events.hpp"
 #include "../game_preferences.hpp"
+#include "../foreach.hpp"
 #include "../log.hpp"
 #include "../replay.hpp"
 #include "../serialization/string_utils.hpp"

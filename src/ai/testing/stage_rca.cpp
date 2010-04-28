@@ -20,6 +20,8 @@
 #include "stage_rca.hpp"
 
 #include "../composite/ai.hpp"
+#include "../composite/engine.hpp"
+#include "../composite/property_handler.hpp"
 #include "../gamestate_observer.hpp"
 #include "../../foreach.hpp"
 #include "../../log.hpp"
@@ -52,7 +54,7 @@ void candidate_action_evaluation_loop::on_create()
 	boost::function2<void, std::vector<candidate_action_ptr>&, const config&> factory_candidate_actions =
 		boost::bind(&testing_ai_default::candidate_action_evaluation_loop::create_candidate_action,*this,_1,_2);
 
-	register_vector_property("candidate_action",candidate_actions_, factory_candidate_actions);
+	register_vector_property(property_handlers(),"candidate_action",candidate_actions_, factory_candidate_actions);
 
 }
 

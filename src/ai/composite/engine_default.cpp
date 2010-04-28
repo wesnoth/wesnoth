@@ -18,8 +18,11 @@
  */
 
 #include "ai.hpp"
+#include "aspect.hpp"
+#include "goal.hpp"
 #include "engine_default.hpp"
 #include "rca.hpp"
+#include "stage.hpp"
 #include "../../foreach.hpp"
 #include "../../log.hpp"
 

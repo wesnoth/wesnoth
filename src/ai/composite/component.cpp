@@ -19,6 +19,7 @@
 
 #include "component.hpp"
 #include "engine.hpp"
+#include "property_handler.hpp"
 #include "../../log.hpp"
 #include "../../foreach.hpp"
 
@@ -122,6 +123,11 @@ std::vector<std::string> component::get_children_types()
 	return types;
 }
 
+
+property_handler_map& component::property_handlers()
+{
+	return property_handlers_;
+}
 
 static component *find_component(component *root, const std::string &path, path_element &tail)
 {

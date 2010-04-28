@@ -23,6 +23,7 @@
 #include "../actions.hpp"
 #include "../../foreach.hpp"
 #include "../../log.hpp"
+#include "../../terrain_filter.hpp"
 
 namespace ai {
 

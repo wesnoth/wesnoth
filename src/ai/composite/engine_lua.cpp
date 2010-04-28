@@ -20,6 +20,7 @@
 #include "ai.hpp"
 #include "engine_lua.hpp"
 #include "rca.hpp"
+#include "stage.hpp"
 #include "../../log.hpp"
 #include "../../resources.hpp"
 #include "../../scripting/lua.hpp"

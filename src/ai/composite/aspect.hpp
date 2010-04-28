@@ -23,6 +23,7 @@
 
 #include "component.hpp"
 #include "engine.hpp"
+#include "property_handler.hpp"
 #include "stage.hpp"
 #include "value_translator.hpp"
 
@@ -282,7 +283,7 @@ public:
 		boost::function2<void, typename aspect_type<T>::typesafe_ptr_vector&, const config&> factory_facets =
                         boost::bind(&ai::composite_aspect<T>::create_facet,*this,_1,_2);
 
-                register_vector_property("facet",facets_, factory_facets);
+                register_vector_property(this->property_handlers(),"facet",facets_, factory_facets);
 
 	}
 

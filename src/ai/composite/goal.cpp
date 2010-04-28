@@ -20,6 +20,7 @@
 #include "../manager.hpp"
 #include "../../log.hpp"
 #include "../../gamestatus.hpp"
+#include "../../foreach.hpp"
 #include "../../variable.hpp"
 
 #include <boost/lexical_cast.hpp>

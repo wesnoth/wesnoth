@@ -22,11 +22,7 @@
 
 #include "../../global.hpp"
 
-#include "aspect.hpp"
 #include "contexts.hpp"
-#include "engine.hpp"
-#include "goal.hpp"
-#include "stage.hpp"
 #include "../contexts.hpp"
 #include "../default/contexts.hpp"
 #include "../interface.hpp"

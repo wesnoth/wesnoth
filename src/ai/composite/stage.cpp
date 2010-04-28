@@ -18,6 +18,7 @@
  */
 
 #include "ai.hpp"
+#include "engine.hpp"
 #include "stage.hpp"
 #include "../contexts.hpp"
 #include "../../foreach.hpp"

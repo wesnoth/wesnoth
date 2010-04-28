@@ -32,21 +32,6 @@
 
 namespace ai{
 
-struct path_element {
-	path_element()
-		: property()
-		, id()
-		, position(0)
-	{
-	}
-
-	std::string property;
-	std::string id;
-	int position;
-};
-
-
-
 template<typename T>
 class path_element_matches{
 public:
@@ -89,7 +74,6 @@ public:
 };
 
 typedef boost::shared_ptr< base_property_handler > property_handler_ptr;
-
 
 template<typename T>
 class vector_property_handler : public base_property_handler {
@@ -242,6 +226,23 @@ private:
 	aspect_map &aspects_;
 
 };
+
+
+
+template<typename X>
+static void register_vector_property(std::map<std::string,property_handler_ptr> &property_handlers, const std::string &property, std::vector< boost::shared_ptr<X> > &values, boost::function2<void, std::vector< boost::shared_ptr<X> >&, const config&> construction_factory)
+{
+	property_handler_ptr handler_ptr = property_handler_ptr(new vector_property_handler<X>(property,values,construction_factory));
+	property_handlers.insert(std::make_pair(property,handler_ptr));
+}
+
+template<typename X>
+static void register_aspect_property(std::map<std::string,property_handler_ptr> &property_handlers, const std::string &property, std::map< std::string, boost::shared_ptr<X> > &aspects)
+{
+	property_handler_ptr handler_ptr = property_handler_ptr(new aspect_property_handler<X>(property,aspects));
+	property_handlers.insert(std::make_pair(property,handler_ptr));
+}
+
 
 } //of namespace ai
 
