@@ -104,10 +104,10 @@ static void set_weapon_info(twindow& window
 	attack_type no_weapon(empty);
 
 	for (size_t i = 0; i < weapons.size(); ++i) {
-		const battle_context::unit_stats& attacker =
+		const battle_context_unit_stats& attacker =
 				weapons[i].get_attacker_stats();
 
-		const battle_context::unit_stats& defender =
+		const battle_context_unit_stats& defender =
 				weapons[i].get_defender_stats();
 
 		const attack_type& attacker_weapon = attack_type(*attacker.weapon);

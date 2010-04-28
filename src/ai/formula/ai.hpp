@@ -53,6 +53,12 @@ typedef std::multiset< unit_formula_pair, game_logic::unit_formula_compare > uni
 
 }
 
+namespace pathfind {
+
+struct plain_route;
+
+} // of namespace pathfind
+
 namespace ai {
 
 class formula_ai : public readonly_context_proxy, public game_logic::formula_callable {

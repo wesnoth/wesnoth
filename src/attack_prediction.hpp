@@ -27,10 +27,10 @@
 struct combatant
 {
 	/** Construct a combatant. */
-	combatant(const battle_context::unit_stats &u, const combatant *prev = NULL);
+	combatant(const battle_context_unit_stats &u, const combatant *prev = NULL);
 
 	/** Copy constructor */
-	combatant(const combatant &that, const battle_context::unit_stats &u);
+	combatant(const combatant &that, const battle_context_unit_stats &u);
 
 	/** Simulate a fight!  Can be called multiple times for cumulative calculations. */
 	void fight(combatant &opponent, bool levelup_considered=true);
@@ -61,7 +61,7 @@ private:
 	unsigned min_hp() const;
 
 	/** HP distribution we could end up with. */
-	static unsigned hp_dist_size(const battle_context::unit_stats &u, const combatant *prev);
+	static unsigned hp_dist_size(const battle_context_unit_stats &u, const combatant *prev);
 
 	/** Combat without chance of death, berserk, slow or drain is simple. */
 	void no_death_fight(combatant &opponent);
@@ -75,7 +75,7 @@ private:
 	/** We must adjust for swarm after every combat. */
 	void adjust_hitchance();
 
-	const battle_context::unit_stats &u_;
+	const battle_context_unit_stats &u_;
 
 	/** Usually uniform, but if we have swarm, then can be different. */
 	std::vector<double> hit_chances_;

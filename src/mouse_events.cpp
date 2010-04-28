@@ -683,8 +683,8 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 	std::vector<std::string> items;
 
 	for (unsigned int i = 0; i < bc_vector.size(); i++) {
-		const battle_context::unit_stats& att = bc_vector[i].get_attacker_stats();
-		const battle_context::unit_stats& def = bc_vector[i].get_defender_stats();
+		const battle_context_unit_stats& att = bc_vector[i].get_attacker_stats();
+		const battle_context_unit_stats& def = bc_vector[i].get_defender_stats();
 		config tmp_config;
 		attack_type no_weapon(tmp_config);
 		const attack_type& attw = attack_type(*att.weapon);
@@ -787,8 +787,8 @@ void mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 	const map_location defender_loc = defender->get_location();
 
 	commands_disabled++;
-	const battle_context::unit_stats &att = bc_vector[choice].get_attacker_stats();
-	const battle_context::unit_stats &def = bc_vector[choice].get_defender_stats();
+	const battle_context_unit_stats &att = bc_vector[choice].get_attacker_stats();
+	const battle_context_unit_stats &def = bc_vector[choice].get_defender_stats();
 
 	attacker->set_goto(map_location());
 	clear_undo_stack();

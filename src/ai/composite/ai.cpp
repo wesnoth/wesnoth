@@ -25,6 +25,7 @@
 #include "property_handler.hpp"
 #include "stage.hpp"
 #include "../manager.hpp"
+#include "../../actions.hpp"
 #include "../../foreach.hpp"
 #include "../../log.hpp"
 

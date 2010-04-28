@@ -22,6 +22,8 @@
 #include "rca.hpp"
 #include "../../foreach.hpp"
 #include "../../log.hpp"
+#include "../../util.hpp"
+#include "../../serialization/string_utils.hpp"
 
 namespace ai {
 

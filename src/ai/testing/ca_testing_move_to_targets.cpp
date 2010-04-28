@@ -24,6 +24,7 @@
 #include "../../foreach.hpp"
 #include "../../log.hpp"
 #include "../../terrain_filter.hpp"
+#include "../../pathfind/pathfind.hpp"
 
 namespace ai {
 

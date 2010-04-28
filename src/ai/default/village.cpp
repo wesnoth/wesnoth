@@ -23,6 +23,8 @@
 #include "ai.hpp"
 #include "../../log.hpp"
 #include "../../map.hpp"
+#include "../../unit.hpp"
+#include "../../team.hpp"
 
 #include <numeric>
 

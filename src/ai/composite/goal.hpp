@@ -31,7 +31,6 @@
 
 #include "../contexts.hpp"
 #include "../game_info.hpp"
-#include "../../terrain_filter.hpp"
 
 //included for 'target' markers
 #include "../default/contexts.hpp"
@@ -42,6 +41,8 @@
 #include <stack>
 #include <vector>
 #include <deque>
+
+class terrain_filter;
 
 namespace ai {
 

@@ -22,9 +22,12 @@
 #include "../manager.hpp"
 #include "../composite/engine.hpp"
 #include "../composite/rca.hpp"
+#include "../../gamestatus.hpp"
 #include "../../foreach.hpp"
 #include "../../log.hpp"
 #include "../../wml_exception.hpp"
+#include "../../pathfind/pathfind.hpp"
+
 
 #include <numeric>
 

@@ -73,7 +73,7 @@ private:
 
 	// This method builds the strings describing the unit damage modifiers.
 	// Read the code to understand the arguments.
-	void get_unit_strings(const battle_context::unit_stats& stats,
+	void get_unit_strings(const battle_context_unit_stats& stats,
 					  const unit& u, const map_location& u_loc, float u_unscathed,
 					  const unit& opp, const map_location& opp_loc, const attack_type *opp_weapon,
 					  std::vector<std::string>& left_strings, std::vector<std::string>& right_strings,
@@ -103,8 +103,8 @@ private:
 	// It draws the image in the surface 'surf' and set the width and
 	// height of the image in the fields specified.
 	void get_hp_distrib_surface(const std::vector<std::pair<int, double> >& hp_prob_vector,
-							const battle_context::unit_stats& stats,
-								const battle_context::unit_stats& opp_stats,
+							const battle_context_unit_stats& stats,
+								const battle_context_unit_stats& opp_stats,
 								surface& surf, int& width, int& height);
 
 	// This method blends a RGB color. The method takes as input a surface,

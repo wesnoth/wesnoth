@@ -34,6 +34,7 @@
 #include "../formula_callable.hpp"
 #include "../formula_function.hpp"
 #include "../formula_fwd.hpp"
+#include "../game_display.hpp"
 #include "../game_end_exceptions.hpp"
 #include "../game_events.hpp"
 #include "../game_preferences.hpp"
@@ -84,6 +85,11 @@ void readwrite_context_impl::raise_gamestate_changed() const
 	manager::raise_gamestate_changed();
 }
 
+
+team& readwrite_context_impl::current_team_w()
+{
+	return get_info_w().teams[get_side()-1];
+}
 
 attack_result_ptr readwrite_context_impl::execute_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon){
 	return actions::execute_attack_action(get_side(),true,attacker_loc,defender_loc,attacker_weapon, get_aggression());
@@ -280,6 +286,12 @@ void readonly_context_impl::diagnostic(const std::string& msg)
 	if(game_config::debug) {
 		get_info().disp.set_diagnostic(msg);
 	}
+}
+
+
+const team& readonly_context_impl::current_team() const
+{
+	return get_info().teams[get_side()-1];
 }
 
 
@@ -1120,7 +1132,7 @@ const map_location& readonly_context_impl::suitable_keep(const map_location& lea
 
 	/** Weapon choice cache, to speed simulations. */
 std::map<std::pair<map_location,const unit_type *>,
-		std::pair<battle_context::unit_stats,battle_context::unit_stats> >& readonly_context_impl::unit_stats_cache() const
+		std::pair<battle_context_unit_stats,battle_context_unit_stats> >& readonly_context_impl::unit_stats_cache() const
 {
 	return unit_stats_cache_;
 }

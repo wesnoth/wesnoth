@@ -28,6 +28,12 @@
 #include <boost/lexical_cast.hpp>
 #include <boost/regex.hpp>
 
+namespace pathfind {
+
+struct pathfind;
+
+} //of namespace pathfind
+
 namespace ai {
 
 static lg::log_domain log_ai_component("ai/component");

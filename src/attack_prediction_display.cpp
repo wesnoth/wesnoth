@@ -88,8 +88,8 @@ battle_prediction_pane::battle_prediction_pane(const battle_context &bc,
 	combatant defender_combatant(bc.get_defender_stats());
 	attacker_combatant.fight(defender_combatant);
 
-	const battle_context::unit_stats& attacker_stats = bc.get_attacker_stats();
-	const battle_context::unit_stats& defender_stats = bc.get_defender_stats();
+	const battle_context_unit_stats& attacker_stats = bc.get_attacker_stats();
+	const battle_context_unit_stats& defender_stats = bc.get_defender_stats();
 
 	// Create the hitpoints distribution graphics.
 	std::vector<std::pair<int, double> > hp_prob_vector;
@@ -141,7 +141,7 @@ battle_prediction_pane::battle_prediction_pane(const battle_context &bc,
 	set_measurements(dialog_width_, dialog_height_);
 }
 
-void battle_prediction_pane::get_unit_strings(const battle_context::unit_stats& stats,
+void battle_prediction_pane::get_unit_strings(const battle_context_unit_stats& stats,
 										  const unit& u, const map_location& u_loc, float u_unscathed,
 										  const unit& opp, const map_location& opp_loc, const attack_type *opp_weapon,
 											  std::vector<std::string>& left_strings, std::vector<std::string>& right_strings,
@@ -405,8 +405,8 @@ void battle_prediction_pane::draw_unit(int x_off, int damage_line_skip, int left
 }
 
 void battle_prediction_pane::get_hp_distrib_surface(const std::vector<std::pair<int, double> >& hp_prob_vector,
-													const battle_context::unit_stats& stats,
-													const battle_context::unit_stats& opp_stats,
+													const battle_context_unit_stats& stats,
+													const battle_context_unit_stats& opp_stats,
 													surface& surf, int& width, int& height)
 {
 	// Font size. If you change this, you must update the separator space.

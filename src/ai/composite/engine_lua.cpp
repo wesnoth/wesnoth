@@ -21,10 +21,14 @@
 #include "engine_lua.hpp"
 #include "rca.hpp"
 #include "stage.hpp"
+
+#include "../gamestate_observer.hpp"
+
 #include "../../log.hpp"
 #include "../../resources.hpp"
 #include "../../scripting/lua.hpp"
-#include "../gamestate_observer.hpp"
+#include "../../util.hpp"
+
 
 namespace ai {
 

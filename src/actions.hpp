@@ -100,54 +100,55 @@ void place_recruit(const unit &u, const map_location &recruit_location,
 	bool is_recall, bool show = false, bool full_movement = false,
 	bool wml_triggered = false);
 
+/** Structure describing the statistics of a unit involved in the battle. */
+struct battle_context_unit_stats
+{
+	const attack_type *weapon;	/**< The weapon used by the unit to attack the opponent, or NULL if there is none. */
+	int attack_num;			/**< Index into unit->attacks() or -1 for none. */
+	bool is_attacker;		/**< True if the unit is the attacker. */
+	bool is_poisoned;		/**< True if the unit is poisoned at the beginning of the battle. */
+	bool is_slowed;			/**< True if the unit is slowed at the beginning of the battle. */
+	bool slows;				/**< Attack slows opponent when it hits. */
+	bool drains;			/**< Attack drains opponent when it hits. */
+	bool petrifies;			/**< Attack petrifies opponent when it hits. */
+	bool plagues;			/**< Attack turns opponent into a zombie when fatal. */
+	bool poisons;			/**< Attack poisons opponent when it hits. */
+	bool backstab_pos;		/**<
+		                         * True if the attacker is in *position* to backstab the defender (this is used to
+					 * determine whether to apply the backstab bonus in case the attacker has backstab).
+					 */
+	bool swarm;				/**< Attack has swarm special. */
+	bool firststrike;		/**< Attack has firststrike special. */
+	unsigned int experience, max_experience;
+	unsigned int level;
+
+	unsigned int rounds;	/**< Berserk special can force us to fight more than one round. */
+	unsigned int hp;		/**< Hitpoints of the unit at the beginning of the battle. */
+	unsigned int max_hp;	/**< Maximum hitpoints of the unit. */
+	unsigned int chance_to_hit;	/**< Effective chance to hit as a percentage (all factors accounted for). */
+	int damage;				/**< Effective damage of the weapon (all factors accounted for). */
+	int slow_damage;		/**< Effective damage if unit becomes slowed (== damage, if already slowed) */
+	unsigned int num_blows;	/**< Effective number of blows, takes swarm into account. */
+	unsigned int swarm_min;	/**< Minimum number of blows with swarm (equal to num_blows if swarm isn't used). */
+	unsigned int swarm_max;	/**< Maximum number of blows with swarm (equal to num_blows if swarm isn't used). */
+
+	std::string plague_type; /**< The plague type used by the attack, if any. */
+
+	battle_context_unit_stats(const unit &u, const map_location& u_loc,
+		   int u_attack_num, bool attacking,
+		   const unit &opp, const map_location& opp_loc,
+		   const attack_type *opp_weapon,
+		   const unit_map& units);
+	~battle_context_unit_stats();
+
+	/** Dumps the statistics of a unit on stdout. Remove it eventually. */
+	void dump() const;
+};
+
 /** Computes the statistics of a battle between an attacker and a defender unit. */
 class battle_context
 {
 public:
-	/** Structure describing the statistics of a unit involved in the battle. */
-	struct unit_stats
-	{
-		const attack_type *weapon;	/**< The weapon used by the unit to attack the opponent, or NULL if there is none. */
-		int attack_num;			/**< Index into unit->attacks() or -1 for none. */
-		bool is_attacker;		/**< True if the unit is the attacker. */
-		bool is_poisoned;		/**< True if the unit is poisoned at the beginning of the battle. */
-		bool is_slowed;			/**< True if the unit is slowed at the beginning of the battle. */
-		bool slows;				/**< Attack slows opponent when it hits. */
-		bool drains;			/**< Attack drains opponent when it hits. */
-		bool petrifies;			/**< Attack petrifies opponent when it hits. */
-		bool plagues;			/**< Attack turns opponent into a zombie when fatal. */
-		bool poisons;			/**< Attack poisons opponent when it hits. */
-		bool backstab_pos;		/**<
-		                         * True if the attacker is in *position* to backstab the defender (this is used to
-								 * determine whether to apply the backstab bonus in case the attacker has backstab).
-								 */
-		bool swarm;				/**< Attack has swarm special. */
-		bool firststrike;		/**< Attack has firststrike special. */
-		unsigned int experience, max_experience;
-		unsigned int level;
-
-		unsigned int rounds;	/**< Berserk special can force us to fight more than one round. */
-		unsigned int hp;		/**< Hitpoints of the unit at the beginning of the battle. */
-		unsigned int max_hp;	/**< Maximum hitpoints of the unit. */
-		unsigned int chance_to_hit;	/**< Effective chance to hit as a percentage (all factors accounted for). */
-		int damage;				/**< Effective damage of the weapon (all factors accounted for). */
-		int slow_damage;		/**< Effective damage if unit becomes slowed (== damage, if already slowed) */
-		unsigned int num_blows;	/**< Effective number of blows, takes swarm into account. */
-		unsigned int swarm_min;	/**< Minimum number of blows with swarm (equal to num_blows if swarm isn't used). */
-		unsigned int swarm_max;	/**< Maximum number of blows with swarm (equal to num_blows if swarm isn't used). */
-
-		std::string plague_type; /**< The plague type used by the attack, if any. */
-
-		unit_stats(const unit &u, const map_location& u_loc,
-				   int u_attack_num, bool attacking,
-				   const unit &opp, const map_location& opp_loc,
-				   const attack_type *opp_weapon,
-				   const unit_map& units);
-		~unit_stats();
-
-		/** Dumps the statistics of a unit on stdout. Remove it eventually. */
-		void dump() const;
-	};
 
 	/**
 	 * If no attacker_weapon is given, we select the best one,
@@ -159,8 +160,8 @@ public:
 				   const map_location& attacker_loc, const map_location& defender_loc,
 				   int attacker_weapon = -1, int defender_weapon = -1, double aggression = 0.0, const combatant *prev_def = NULL, const unit* attacker_ptr=NULL);
 
-	/** Used by the AI which caches unit_stats */
-	battle_context(const unit_stats &att, const unit_stats &def);
+	/** Used by the AI which caches battle_context_unit_stats */
+	battle_context(const battle_context_unit_stats &att, const battle_context_unit_stats &def);
 
 	battle_context(const battle_context &other);
 	~battle_context();
@@ -168,10 +169,10 @@ public:
 	battle_context& operator=(const battle_context &other);
 
 	/** This method returns the statistics of the attacker. */
-	const unit_stats& get_attacker_stats() const { return *attacker_stats_; }
+	const battle_context_unit_stats& get_attacker_stats() const { return *attacker_stats_; }
 
 	/** This method returns the statistics of the defender. */
-	const unit_stats& get_defender_stats() const { return *defender_stats_; }
+	const battle_context_unit_stats& get_defender_stats() const { return *defender_stats_; }
 
 	/** Get the simulation results. */
 	const combatant &get_attacker_combatant(const combatant *prev_def = NULL);
@@ -195,7 +196,7 @@ private:
 							   const map_location& attacker_loc, const map_location& defender_loc, const combatant *prev_def);
 
 	/** Statistics of the units. */
-	unit_stats *attacker_stats_, *defender_stats_;
+	battle_context_unit_stats *attacker_stats_, *defender_stats_;
 
 	/** Outcome of simulated fight. */
 	combatant *attacker_combatant_, *defender_combatant_;

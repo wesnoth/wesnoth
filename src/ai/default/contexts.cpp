@@ -24,7 +24,9 @@
 #include "../../foreach.hpp"
 #include "../../log.hpp"
 #include "../../map.hpp"
+#include "../../team.hpp"
 #include "../composite/goal.hpp"
+#include "../../pathfind/pathfind.hpp"
 
 static lg::log_domain log_ai("ai/general");
 #define DBG_AI LOG_STREAM(debug, log_ai)

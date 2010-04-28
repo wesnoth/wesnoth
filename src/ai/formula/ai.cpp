@@ -30,12 +30,14 @@
 #include "../manager.hpp"
 
 #include "../../callable_objects.hpp"
+#include "../../game_display.hpp"
 #include "../../foreach.hpp"
 #include "../../formula_debugger.hpp"
 #include "../../log.hpp"
 #include "../../menu_events.hpp"
 #include "../../terrain_filter.hpp"
 #include "../../tod_manager.hpp"
+#include "../../pathfind/pathfind.hpp"
 
 static lg::log_domain log_formula_ai("ai/engine/fai");
 #define DBG_AI LOG_STREAM(debug, log_formula_ai)

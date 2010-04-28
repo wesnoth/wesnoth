@@ -24,12 +24,15 @@
 #include "../../attack_prediction.hpp"
 #include "../../filesystem.hpp"
 #include "../../foreach.hpp"
+#include "../../game_display.hpp"
 #include "../../log.hpp"
 #include "../../map_label.hpp"
 #include "../../menu_events.hpp"
 #include "../../replay.hpp"
 #include "../../terrain_filter.hpp"
 #include "../../unit.hpp"
+#include "../../pathfind/pathfind.hpp"
+
 
 static lg::log_domain log_formula_ai("ai/engine/fai");
 #define LOG_AI LOG_STREAM(info, log_formula_ai)

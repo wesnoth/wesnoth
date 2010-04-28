@@ -37,6 +37,8 @@
 #include "../../unit_display.hpp"
 #include "../../wml_exception.hpp"
 
+#include "../../pathfind/pathfind.hpp"
+
 #include <iterator>
 #include <algorithm>
 #include <fstream>

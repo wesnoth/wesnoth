@@ -479,7 +479,7 @@ void prob_matrix::receive_blow_a(unsigned damage, unsigned slow_damage, double h
 
 } // end anon namespace
 
-unsigned combatant::hp_dist_size(const battle_context::unit_stats &u, const combatant *prev)
+unsigned combatant::hp_dist_size(const battle_context_unit_stats &u, const combatant *prev)
 {
 	// Our summary must be as big as previous one.
 	if (prev) {
@@ -491,7 +491,7 @@ unsigned combatant::hp_dist_size(const battle_context::unit_stats &u, const comb
 	return u.max_hp + 1;
 }
 
-combatant::combatant(const battle_context::unit_stats &u, const combatant *prev)
+combatant::combatant(const battle_context_unit_stats &u, const combatant *prev)
 	: hp_dist(hp_dist_size(u, prev)),
 	  untouched(0.0),
 	  poisoned(0.0),
@@ -513,8 +513,8 @@ combatant::combatant(const battle_context::unit_stats &u, const combatant *prev)
 	}
 }
 
-// Copy constructor (except use this copy of unit_stats)
-combatant::combatant(const combatant &that, const battle_context::unit_stats &u)
+// Copy constructor (except use this copy of battle_context_unit_stats)
+combatant::combatant(const combatant &that, const battle_context_unit_stats &u)
 	: hp_dist(that.hp_dist), untouched(that.untouched), poisoned(that.poisoned), slowed(that.slowed), u_(u), hit_chances_(that.hit_chances_)
 {
 		summary[0] = that.summary[0];

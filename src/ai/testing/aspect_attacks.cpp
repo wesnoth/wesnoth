@@ -20,10 +20,14 @@
 #include "aspect_attacks.hpp"
 
 #include "../manager.hpp"
+#include "../../actions.hpp"
 #include "../../foreach.hpp"
 #include "../../log.hpp"
 #include "../../map.hpp"
+#include "../../team.hpp"
 #include "../../tod_manager.hpp"
+#include "../../unit.hpp"
+#include "../../pathfind/pathfind.hpp"
 
 namespace ai {
 

@@ -29,6 +29,7 @@
 #include "../../map.hpp"
 #include "../../terrain_filter.hpp"
 #include "../../wml_exception.hpp"
+#include "../../pathfind/pathfind.hpp"
 
 
 static lg::log_domain log_ai("ai/move");

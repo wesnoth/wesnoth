@@ -23,6 +23,8 @@
 #include "../../global.hpp"
 
 #include "../contexts.hpp"
+#include "formula_callable.hpp"
+#include "unit_map.hpp"
 #include <vector>
 
 #ifdef _MSC_VER

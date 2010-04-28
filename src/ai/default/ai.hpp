@@ -32,6 +32,14 @@
 #pragma warning(disable:4250)
 #endif
 
+
+namespace pathfind {
+
+struct plain_route;
+
+} // of namespace pathfind
+
+
 namespace ai {
 
 class formula_ai;

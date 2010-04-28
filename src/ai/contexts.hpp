@@ -21,14 +21,14 @@
 #ifndef AI_CONTEXTS_HPP_INCLUDED
 #define AI_CONTEXTS_HPP_INCLUDED
 
-class game_display;
-class gamemap;
-
 #include "game_info.hpp"
-#include "../game_display.hpp"
-#include "../gamestatus.hpp"
 #include "../generic_event.hpp"
-#include "../playturn.hpp"
+#include "../config.hpp"
+#include "../terrain_translation.hpp"
+#include "../terrain_filter.hpp"
+
+
+//#include "../unit.hpp"
 
 #ifdef _MSC_VER
 #pragma warning(push)
@@ -36,7 +36,14 @@ class gamemap;
 #pragma warning(disable:4250)
 #endif
 
+class battle_context;
+class battle_context_unit_stats;
+class game_display;
+class gamemap;
+class variant;
 class terrain_filter;
+class unit;
+class unit_type;
 
 namespace ai {
 
@@ -367,7 +374,7 @@ public:
 
 
 	virtual std::map<std::pair<map_location,const unit_type *>,
-		std::pair<battle_context::unit_stats,battle_context::unit_stats> >& unit_stats_cache() const = 0;
+		std::pair<battle_context_unit_stats,battle_context_unit_stats> >& unit_stats_cache() const = 0;
 
 };
 
@@ -884,7 +891,7 @@ public:
 
 
 	virtual std::map<std::pair<map_location,const unit_type *>,
-		std::pair<battle_context::unit_stats,battle_context::unit_stats> >& unit_stats_cache() const
+		std::pair<battle_context_unit_stats,battle_context_unit_stats> >& unit_stats_cache() const
 	{
 		return target_->unit_stats_cache();
 	}
@@ -1051,7 +1058,7 @@ public:
 
 
 	/** Return a reference to the 'team' object for the AI. */
-	const team& current_team() const { return get_info().teams[get_side()-1]; }
+	const team& current_team() const;
 
 
 	/** Show a diagnostic message on the screen. */
@@ -1344,7 +1351,7 @@ public:
 
 
 	virtual std::map<std::pair<map_location,const unit_type *>,
-		std::pair<battle_context::unit_stats,battle_context::unit_stats> >& unit_stats_cache() const;
+		std::pair<battle_context_unit_stats,battle_context_unit_stats> >& unit_stats_cache() const;
 
 private:
 	template<typename T>
@@ -1392,7 +1399,7 @@ private:
 	mutable move_map srcdst_;
 	aspect_type< bool >::typesafe_ptr support_villages_;
 	mutable std::map<std::pair<map_location,const unit_type *>,
-			 std::pair<battle_context::unit_stats,battle_context::unit_stats> > unit_stats_cache_;
+			 std::pair<battle_context_unit_stats,battle_context_unit_stats> > unit_stats_cache_;
 	aspect_type< double >::typesafe_ptr village_value_;
 	aspect_type< int >::typesafe_ptr villages_per_scout_;
 
@@ -1476,7 +1483,7 @@ public:
 
 
 	/** Return a reference to the 'team' object for the AI. */
-	virtual team& current_team_w() { return get_info_w().teams[get_side()-1]; }
+	virtual team& current_team_w();
 
 
 	/** Notifies all interested observers of the event respectively. */
