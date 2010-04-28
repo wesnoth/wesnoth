@@ -37,7 +37,7 @@ class progressive_string {
 		int duration() const;
 		const std::string & get_current_element(int time) const;
 		bool does_not_change() const { return data_.size() <= 1; }
-		std::string get_original(){return input_;}
+		std::string get_original() const { return input_; }
 	private:
 		std::vector<std::pair<std::string,int> > data_;
 		std::string input_;
