@@ -28,7 +28,10 @@
 #include "../map.hpp"
 #include "../map_location.hpp"
 #include "../team.hpp"
-#include "../pathfind/pathfind.hpp"
+
+namespace pathfind {
+struct plain_route;
+} // of namespace pathfind
 
 #include <memory>
 #include <vector>
@@ -191,7 +194,7 @@ private:
 	move_unit_spectator move_spectator_;
 	const map_location to_;
 	bool remove_movement_;
-	pathfind::plain_route route_;
+	boost::shared_ptr<pathfind::plain_route> route_;
 	map_location unit_location_;
 };
 
