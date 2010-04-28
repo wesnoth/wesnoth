@@ -16,6 +16,7 @@
 
 #include "gui/widgets/tree_view_node.hpp"
 
+#include "gettext.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/toggle_panel.hpp"
@@ -98,14 +99,7 @@ ttree_view_node::ttree_view_node(const std::string& id
 			}
 		}
 
-		/** @todo enable after 1.9. */
-#if 0
-		// FIXME add node id
-//		VALIDATE(false, _("Unknown builder id for tree view node."));
-#else
-		assert(false);
-#endif
-
+		VALIDATE(false, _("Unknown builder id for tree view node."));
 	}
 }
 

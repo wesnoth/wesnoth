@@ -43,12 +43,7 @@ tbuilder_tree_view::tbuilder_tree_view(const config& cfg)
 		nodes.push_back(tnode(node));
 	}
 
-	/** @todo activate after the string freeze. */
-#if 0
-//	VALIDATE(!nodes.empty(), _("No nodes defined for a tree view."));
-#else
-	assert(!nodes.empty());
-#endif
+	VALIDATE(!nodes.empty(), _("No nodes defined for a tree view."));
 }
 
 twidget* tbuilder_tree_view::build() const
@@ -86,22 +81,13 @@ tbuilder_tree_view::tnode::tnode(const config& cfg)
 	, builder(NULL)
 {
 	VALIDATE(!id.empty(), missing_mandatory_wml_key("node", "id"));
-	/** @todo activate after the string freeze. */
-#if 0
-//	VALIDATE(id != "root",
-//			_("[node]id 'root' is reserved for the implentation."));
-#else
-	assert(id != "root");
-#endif
+
+	VALIDATE(id != "root"
+			, _("[node]id 'root' is reserved for the implentation."));
 
 	const config& node_definition = cfg.child("node_definition");
 
-	/** @todo activate after the string freeze. */
-#if 0
-//	VALIDATE(node_definition, _("No node defined."));
-#else
-	assert(node_definition);
-#endif
+	VALIDATE(node_definition, _("No node defined."));
 
 	builder = new tbuilder_grid(node_definition);
 }
