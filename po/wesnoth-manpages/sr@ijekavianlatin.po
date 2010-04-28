@@ -8,15 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-manpages\n"
 "POT-Creation-Date: 2010-03-26 15:41+0100\n"
-"PO-Revision-Date: 2010-03-28 22:56+0200\n"
-"Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
+"PO-Revision-Date: 2010-04-28 16:24+0200\n"
+"Last-Translator: Dalibor Djuric <dalibor.djuric@mozilla-srbija.org>\n"
 "Language-Team: Serbian\n"
+"Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: sr\n"
-"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%"
-"10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Environment: wesnoth, wesnoth/noent\n"
 "X-Wrapping: fine\n"
 
@@ -114,7 +114,7 @@ msgstr "B<--bpp>I<\\ broj>"
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:49
 msgid "sets BitsPerPixel value. Example: B<--bpp 32>"
-msgstr "postavlja vrijednost BitsPerPixel. Primer: B<--bpp 32>"
+msgstr "postavlja vrijednost BitsPerPixel. Primjer: B<--bpp 32>"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:49
@@ -425,7 +425,7 @@ msgid ""
 "in preferences. Example: B<--server server.wesnoth.org>"
 msgstr ""
 "povezuje se sa domaćinom ako je zadat, ili sa prvim serverom u postavkama. "
-"Na primer: B<--server server.wesnoth.org>"
+"Na primjer: B<--server server.wesnoth.org>"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:155
@@ -503,7 +503,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:180
 #, no-wrap
 msgid "B<--ai_config>I<number>B<=>I<value>"
-msgstr "B<--ai_config>I<broj>B<=>I<vrednost>"
+msgstr "B<--ai_config>I<broj>B<=>I<vrijednost>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:183
@@ -515,7 +515,7 @@ msgstr "bira postavnu datoteku koja se učitava za VI upravljača ove strane."
 #: ../../doc/man/wesnoth.6:183
 #, no-wrap
 msgid "B<--algorithm>I<number>B<=>I<value>"
-msgstr "B<--algorithm>I<broj>B<=>I<vrednost>"
+msgstr "B<--algorithm>I<broj>B<=>I<vrijednost>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:190
@@ -530,14 +530,14 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:190
 #, no-wrap
 msgid "B<--controller>I<number>B<=>I<value>"
-msgstr "B<--controller>I<broj>B<=>I<vrednost>"
+msgstr "B<--controller>I<broj>B<=>I<vrijednost>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:196
 msgid ""
 "selects the controller for this side. Available values: B<human> and B<ai>."
 msgstr ""
-"bira upravljača za zadatu stranu. Moguće vrijednosti su: B<human> (čovek) i "
+"bira upravljača za zadatu stranu. Moguće vrijednosti su: B<human> (čovjek) i "
 "B<ai> (VI)."
 
 #. type: TP
@@ -610,7 +610,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:221
 #, no-wrap
 msgid "B<--scenario=>I<value>"
-msgstr "B<--scenario=>I<vrednost>"
+msgstr "B<--scenario=>I<vrijednost>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:225
@@ -625,7 +625,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:225
 #, no-wrap
 msgid "B<--side>I<number>B<=>I<value>"
-msgstr "B<--side>I<broj>B<=>I<vrednost>"
+msgstr "B<--side>I<broj>B<=>I<vrijednost>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:230
@@ -634,7 +634,7 @@ msgid ""
 "an id. Factions are described in the data/multiplayer.cfg file."
 msgstr ""
 "bira frakciju iz tekuće epohe za zadatu stranu. Frakcija se bira ključem; "
-"moguće vrednosti opisane su u datoteci data/multiplayer.cfg"
+"moguće vrijednosti opisane su u datoteci data/multiplayer.cfg"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:230
@@ -853,8 +853,8 @@ msgid ""
 "sets the maximum number of waiting worker threads for network I/O to n "
 "(default: B<5>,\\ max:\\ B<30>)."
 msgstr ""
-"postavlja najveći broj radnih niti na čekanju za mrežni U/I (podrazumevano: "
-"B<5>,\\ najviše:\\ B<30>)."
+"postavlja najveći broj radnih niti na čekanju za mrežni U/I "
+"(podrazumijevano: B<5>,\\ najviše:\\ B<30>)."
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:81
@@ -1188,7 +1188,7 @@ msgstr ""
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:168
 msgid "Example: B<versions_accepted=\"*\"> accepts any version string."
-msgstr "Primer: B<versions_accepted=\"*\"> prihvata bilo koju nisku verzije."
+msgstr "Primjer: B<versions_accepted=\"*\"> prihvata bilo koju nisku verzije."
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:168
@@ -1207,7 +1207,7 @@ msgid ""
 msgstr ""
 "Ime rukovaoca korisnicima. Trenutno dostupni su B<forum> (server se povezuje "
 "sa phpBB bazom podataka foruma) i B<sample> (primjerna izvedba sučelja "
-"rukovaoca korisnicima, ludi ste ako ovo upotrebite negde zaozbiljno). "
+"rukovaoca korisnicima, ludi ste ako ovo upotrijebite negdje zaozbiljno). "
 "Podrazumijevana vrijednost je B<forum>. Takođe morate dodati odjeljak B<"
 "[user_handler]>, v. ispod."
 
@@ -1299,8 +1299,8 @@ msgid ""
 "30 minutes."
 msgstr ""
 "Trajanje. Format je %d[%s[%d%s[...]]] gdje s iz %s označava sekunde, m "
-"minute, h sate, D dane, M mesece, Y godine, a d je broj. Ako nije dat "
-"modifikator, pretpostavljaju se minuti (m). Primer: B<time=\"1D12h30m\"> "
+"minute, h sate, D dane, M mjesece, Y godine, a d je broj. Ako nije dat "
+"modifikator, pretpostavljaju se minuti (m). Primjer: B<time=\"1D12h30m\"> "
 "znači zabranu u trajanju od jednog dana, 12 sati i 30 minuta."
 
 #. type: Plain text
@@ -1435,7 +1435,7 @@ msgid ""
 "mail. Currently only used by the sample user handler."
 msgstr ""
 "B<[mail]> podešava SMTP server kroz koji rukovalac korisnicima šalje poštu. "
-"Trenutno samo za primerni rukovalac."
+"Trenutno samo za primjerni rukovalac."
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:249
