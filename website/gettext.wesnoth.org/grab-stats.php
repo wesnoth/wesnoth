@@ -51,7 +51,7 @@ function grab_stats ($tob, $official, $packs) // trunk or branch, official (1) o
 			$po_dir = $basedir . "/" . $package . "/po/";
 			$domain = getdomain($package);
 		}
-		if (file_exists($po_dir)) // it can happen that the translation is broken in wescamp, this only happens when there is no po/ folder
+		if (file_exists($po_dir . "/" . $domain . ".pot")) // it can happen that the translation is broken in wescamp, this mainly happens when there is no po/ folder with the file TEXTDOMAIN.pot
 		{
 			$languages = file_get_contents($po_dir . "/LINGUAS");
 			$languages = substr($languages, 0, strlen($languages)-1);
