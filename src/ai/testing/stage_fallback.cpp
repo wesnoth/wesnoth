@@ -19,6 +19,7 @@
 
 #include "stage_fallback.hpp"
 
+#include "../configuration.hpp"
 #include "../manager.hpp"
 #include "../composite/ai.hpp"
 #include "../../foreach.hpp"
@@ -40,14 +41,22 @@ fallback_to_other_ai::fallback_to_other_ai( ai_context &context, const config &c
 
 void fallback_to_other_ai::on_create()
 {
-	const config ai_cfg = cfg_.child_or_empty("ai");
-	fallback_ai_ = manager::create_transient_ai(ai_cfg["ai_algorithm"], ai_cfg, this);
+	config ai_cfg = cfg_.child_or_empty("ai");
+	//@todo 1.9.3 backward-compatability hack - try to update the old default ai config. remove in 1.9.3
+	config::proxy_string ai_algorithm = ai_cfg["ai_algorithm"];
+	if ((ai_algorithm.empty()) || (ai_algorithm=="default_ai")) {
+		if (configuration::parse_side_config(get_side(),cfg_,ai_cfg)) {
+				fallback_ai_ = manager::create_transient_ai("", ai_cfg, this);
+		}
+	}
+
 }
 
 
 config fallback_to_other_ai::to_config() const
 {
 	config cfg = stage::to_config();
+
 	if (fallback_ai_) {
 		cfg.add_child("ai",fallback_ai_->to_config());
 	}
