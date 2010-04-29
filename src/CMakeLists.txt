@@ -136,7 +136,6 @@ endif(SVNVERSION_EXECUTABLE)
 if(MSVC)
 	SOURCE_GROUP("src" REGULAR_EXPRESSION ".*")
 	SOURCE_GROUP("src ai" REGULAR_EXPRESSION "ai/.*")
-	SOURCE_GROUP("src ai ai2" REGULAR_EXPRESSION "ai/ai2/.*")
 	SOURCE_GROUP("src ai composite" REGULAR_EXPRESSION "ai/composite/.*")
 	SOURCE_GROUP("src ai default" REGULAR_EXPRESSION "ai/default/.*")
 	SOURCE_GROUP("src ai dfool" REGULAR_EXPRESSION "ai/dfool/.*")
@@ -233,8 +232,6 @@ set(wesnoth-main_SRC
     ai/default/ai.cpp
     ai/default/attack.cpp
     ai/default/contexts.cpp
-    ai/default/move.cpp
-    ai/default/village.cpp
     ai/formula/ai.cpp
     ai/formula/callable_objects.cpp
     ai/formula/candidates.cpp

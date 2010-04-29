@@ -17,7 +17,6 @@
  * @file ai/registry.cpp
  */
 
-#include "ai2/ai.hpp"
 #include "composite/ai.hpp"
 #include "composite/aspect.hpp"
 #include "composite/engine_default.hpp"
@@ -41,9 +40,7 @@ namespace ai {
 
 static register_ai_factory<ai_composite> ai_factory_default("");
 static register_ai_factory<ai_composite> ai_default_ai_factory("default_ai");
-static register_ai_factory<ai2> ai2_ai_factory("ai2");
 static register_ai_factory<idle_ai> ai_idle_ai_factory("idle_ai");
-//static register_ai_factory<formula_ai> ai_formula_ai_factory("formula_ai");
 static register_ai_factory<ai_composite> ai_composite_ai_factory("composite_ai");
 
 

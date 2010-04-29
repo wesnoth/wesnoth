@@ -59,8 +59,6 @@ wesnoth_source = \
 	ai/default/ai.cpp \
 	ai/default/attack.cpp \
 	ai/default/contexts.cpp \
-	ai/default/move.cpp \
-	ai/default/village.cpp \
 	ai/formula/ai.cpp \
 	ai/formula/callable_objects.cpp \
 	ai/formula/candidates.cpp \
