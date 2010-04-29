@@ -6,14 +6,15 @@
 # Nobuhito Okada <okyada@gmail.com>, 2005-2006.
 # MATSUMOTO Yuji <matumoto@marron.cias.osakafu-u.ac.jp>, 2005.
 # naoki iimura <amatubu@gmail.com>, 2005-2008.
+# IWAI, Masaharu <iwaim.sub@gmail.com>, 2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-03-26 15:41+0100\n"
-"PO-Revision-Date: 2010-04-20 06:33+0900\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2010-04-29 09:37+0900\n"
+"Last-Translator: IWAI, Masaharu <iwaim.sub@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -8446,6 +8447,8 @@ msgid ""
 "Unknown command '$command', try $help_command for a list of available "
 "commands."
 msgstr ""
+"未知のコマンド '$command' です。 利用可能なコマンドの一覧を調べるには "
+"$help_command を実行してください。"
 
 #: src/menu_events.cpp:1952
 msgid ""
@@ -8465,13 +8468,15 @@ msgstr "エラー:"
 
 #: src/menu_events.cpp:2004
 msgid "Missing argument $arg_id"
-msgstr ""
+msgstr "存在しない引数 $arg_id"
 
 #: src/menu_events.cpp:2052
 msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
 msgstr ""
+"利用可能なコマンド $flags_description:\n"
+"$list_of_commands"
 
 #: src/menu_events.cpp:2052 src/menu_events.cpp:2053 src/menu_events.cpp:2076
 msgid "help"
@@ -8479,30 +8484,29 @@ msgstr "ヘルプ"
 
 #: src/menu_events.cpp:2053
 msgid "Type $help_command <command> for more info."
-msgstr ""
+msgstr "更なる情報のために $help_command <コマンド> を入力してください。"
 
 #: src/menu_events.cpp:2064
 msgid " No help available."
 msgstr " ヘルプは利用できません。"
 
 #: src/menu_events.cpp:2069
-#, fuzzy
 msgid "Usage:"
-msgstr "メッセージ:"
+msgstr ""
 
 #: src/menu_events.cpp:2074
 msgid "aliases:"
-msgstr ""
+msgstr "エイリアス:"
 
 #: src/menu_events.cpp:2200
 #, fuzzy
 msgid "(A) - auth command"
-msgstr "（デバッグコマンド）"
+msgstr "(A) - 管理者コマンド"
 
 #: src/menu_events.cpp:2207
 #, fuzzy
 msgid "(auth only)"
-msgstr "チームのみ"
+msgstr "（管理者のみ）"
 
 #: src/menu_events.cpp:2227
 msgid ""
@@ -8633,7 +8637,7 @@ msgstr "あなたの登録したニックネームを設定できる詳細の一
 
 #: src/menu_events.cpp:2288 src/menu_events.cpp:2291 src/menu_events.cpp:2293
 msgid "<room>"
-msgstr ""
+msgstr "<部屋>"
 
 #: src/menu_events.cpp:2288
 msgid "Join a room."
@@ -8653,7 +8657,7 @@ msgstr "利用可能な部屋の一覧。"
 
 #: src/menu_events.cpp:2297
 msgid "<room> <msg>"
-msgstr ""
+msgstr "<部屋> <メッセージ>"
 
 #: src/menu_events.cpp:2297
 msgid "Room message."
@@ -8668,8 +8672,9 @@ msgid "Room query."
 msgstr "部屋の問い合わせ。"
 
 #: src/menu_events.cpp:2397
+#, fuzzy
 msgid "(D) - debug only, (N) - network only, (A) - auth only"
-msgstr ""
+msgstr "(D) - デバッグのみ, (N) - ネットワークのみ, (A) - 管理者のみ"
 
 #: src/menu_events.cpp:2403
 msgid "(debug command)"
@@ -8683,7 +8688,7 @@ msgstr "（ネットワークのみ）"
 #: src/menu_events.cpp:2405
 #, fuzzy
 msgid " (auth only)"
-msgstr "チームのみ"
+msgstr "（管理者のみ）"
 
 #: src/menu_events.cpp:2429
 msgid "Refresh gui."
@@ -8714,9 +8719,8 @@ msgid "Visualize the screen refresh procedure."
 msgstr "画面更新手続きを可視化します。"
 
 #: src/menu_events.cpp:2439
-#, fuzzy
 msgid "Show fps."
-msgstr "リプレイを見る"
+msgstr ""
 
 #: src/menu_events.cpp:2441
 msgid "Save game."
@@ -8764,7 +8768,7 @@ msgstr "Lua の命令文を実行"
 
 #: src/menu_events.cpp:2466
 msgid "<command>[;<command>...]"
-msgstr ""
+msgstr "<コマンド>[;<コマンド>...]"
 
 #: src/menu_events.cpp:2466
 msgid "Set the command used by the custom command hotkey"
@@ -10086,22 +10090,58 @@ msgstr "Wesnoth をもっとよくするために協力してください！"
 msgid "Enable summary uploads"
 msgstr "サマリのアップロードを有効にする"
 
-#, fuzzy
 #~ msgid "Multiplayer_AI^Default AI"
-#~ msgstr "マルチプレイヤー"
+#~ msgstr "デフォルト AI"
 
-#, fuzzy
 #~ msgid "Multiplayer_AI^RCA AI"
-#~ msgstr "マルチプレイヤー"
+#~ msgstr "RCA AI"
 
-#, fuzzy
+#~ msgid "--no games open--"
+#~ msgstr "＜公開中のゲームはありません＞"
+
+#~ msgid " (Unknown Era)"
+#~ msgstr " （不明な時代）"
+
+#~ msgid "Password Required"
+#~ msgstr "要パスワード"
+
+#~ msgid "Observe Game"
+#~ msgstr "ゲーム観戦"
+
+#~ msgid "Join Game"
+#~ msgstr "ゲームに参加"
+
+#~ msgid "Quick Replays"
+#~ msgstr "高速リプレイ"
+
+#~ msgid "Preferences"
+#~ msgstr "初期設定"
+
+#~ msgid "Quit"
+#~ msgstr "終了"
+
+#~ msgid "Apply Filter"
+#~ msgstr "フィルター適用"
+
+#~ msgid "Vacant Slots"
+#~ msgstr "空いているスロット"
+
+#~ msgid "Filter:"
+#~ msgstr "フィルター:"
+
+#~ msgid "Skip quickly to the active turn when observing"
+#~ msgstr "観戦のとき、現在のターンまで瞬時にスキップします"
+
+#~ msgid "Joining this game requires a password."
+#~ msgstr "ゲームに参加するにはパスワードが必要です。"
+
 #~ msgid ""
 #~ "You will start the next scenario with the defined minimum starting gold."
 #~ msgid_plural ""
 #~ "You will start the next scenario with the defined minimum starting gold."
 #~ msgstr[0] ""
-#~ "次のシナリオの開始ゴールドは次のシナリオに設定されている最小ゴールドに "
-#~ "$gold を加えたものになります。"
+#~ "次のシナリオの開始ゴールドは次のシナリオに設定されている最小ゴールドになり"
+#~ "ます。"
 
 #~ msgid "Unknown unit type '$type|'"
 #~ msgstr "不明なユニットタイプ「 $type| 」"
@@ -10235,33 +10275,6 @@ msgstr "サマリのアップロードを有効にする"
 
 #~ msgid "Computer player"
 #~ msgstr "コンピュータプレイヤー"
-
-#~ msgid "--no games open--"
-#~ msgstr "＜公開中のゲームはありません＞"
-
-#~ msgid " (Unknown Era)"
-#~ msgstr " （不明な時代）"
-
-#~ msgid "Password Required"
-#~ msgstr "要パスワード"
-
-#~ msgid "Observe Game"
-#~ msgstr "ゲーム観戦"
-
-#~ msgid "Quick Replays"
-#~ msgstr "高速リプレイ"
-
-#~ msgid "Preferences"
-#~ msgstr "初期設定"
-
-#~ msgid "Quit"
-#~ msgstr "終了"
-
-#~ msgid "Skip quickly to the active turn when observing"
-#~ msgstr "観戦のとき、現在のターンまで瞬時にスキップします"
-
-#~ msgid "Joining this game requires a password."
-#~ msgstr "ゲームに参加するにはパスワードが必要です。"
 
 #~ msgid "The replay could not be saved"
 #~ msgstr "リプレイは保存できませんでした"
@@ -10444,12 +10457,6 @@ msgstr "サマリのアップロードを有効にする"
 #, fuzzy
 #~ msgid "DejaVuSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 #~ msgstr "DejaVuSans.ttf,Andagii.ttf,wqy-zenhei.ttc"
-
-#~ msgid "Join Game"
-#~ msgstr "ゲームに参加"
-
-#~ msgid "Vacant Slots"
-#~ msgstr "空いているスロット"
 
 #~ msgid "Search:"
 #~ msgstr "検索:"
