@@ -25,9 +25,7 @@
 #include "game_info.hpp"
 
 #include "../actions.hpp"
-#include "../map.hpp"
 #include "../map_location.hpp"
-#include "../team.hpp"
 
 namespace pathfind {
 struct plain_route;
@@ -35,6 +33,9 @@ struct plain_route;
 
 #include <memory>
 #include <vector>
+
+class team;
+class gamemap;
 
 namespace ai {
 

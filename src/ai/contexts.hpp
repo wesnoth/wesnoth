@@ -24,8 +24,6 @@
 #include "game_info.hpp"
 #include "../generic_event.hpp"
 #include "../config.hpp"
-#include "../terrain_translation.hpp"
-#include "../terrain_filter.hpp"
 
 
 //#include "../unit.hpp"
@@ -42,6 +40,7 @@ class game_display;
 class gamemap;
 class variant;
 class terrain_filter;
+class terrain_translation;
 class unit;
 class unit_type;
 

@@ -21,6 +21,7 @@
 #include "../../log.hpp"
 #include "../../gamestatus.hpp"
 #include "../../foreach.hpp"
+#include "../../terrain_filter.hpp"
 #include "../../variable.hpp"
 
 #include <boost/lexical_cast.hpp>

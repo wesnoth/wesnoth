@@ -23,12 +23,13 @@
 #include "../../global.hpp"
 
 #include "engine.hpp"
-#include "../contexts.hpp"
-#include "../formula/ai.hpp"
+#include "contexts.hpp"
 #include <algorithm>
 
 //============================================================================
 namespace ai {
+
+class formula_ai;
 
 class engine_fai : public engine {
 public:
@@ -46,7 +47,7 @@ public:
 
 	virtual void set_ai_context(ai_context *context);
 private:
-	formula_ai formula_ai_;
+	boost::shared_ptr<formula_ai> formula_ai_;
 };
 
 } //end of namespace ai

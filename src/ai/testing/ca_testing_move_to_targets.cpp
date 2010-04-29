@@ -23,6 +23,7 @@
 #include "../actions.hpp"
 #include "../../foreach.hpp"
 #include "../../log.hpp"
+#include "../../map.hpp"
 #include "../../terrain_filter.hpp"
 #include "../../pathfind/pathfind.hpp"
 
@@ -136,7 +137,7 @@ void testing_move_to_targets_phase::execute()
 	std::vector<target> targets;
 	for(;;) {
 		if(targets.empty()) {
-			targets = find_targets(leader,get_enemy_dstsrc());
+			targets = find_targets(get_enemy_dstsrc());
 			targets.insert(targets.end(),additional_targets().begin(),
 				       additional_targets().end());
 			LOG_AI << "Found " << targets.size() << " targets\n";

@@ -21,12 +21,8 @@
 #define AI_INTERFACE_HPP_INCLUDED
 
 #include "../global.hpp"
-
-#include "game_info.hpp"
-
-#include "../formula_callable.hpp"
 #include "../savegame_config.hpp"
-
+#include "game_info.hpp"
 #include "default/contexts.hpp"
 
 namespace ai {

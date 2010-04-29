@@ -25,8 +25,9 @@
 #include "../composite/contexts.hpp"
 #include "../composite/rca.hpp"
 
-#include "../../config.hpp"
 
+#include "../../config.hpp"
+#include "../../unit_map.hpp"
 #include <boost/shared_ptr.hpp>
 #include <vector>
 

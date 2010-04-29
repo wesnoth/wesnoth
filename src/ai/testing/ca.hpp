@@ -22,10 +22,10 @@
 #define AI_TESTING_CA_HPP_INCLUDED
 
 #include "../../global.hpp"
+#include "../../unit_map.hpp"
 
-#include "../default/ai.hpp"
 #include "../composite/rca.hpp"
-#include "../composite/engine_default.hpp"
+
 
 #ifdef _MSC_VER
 #pragma warning(push)

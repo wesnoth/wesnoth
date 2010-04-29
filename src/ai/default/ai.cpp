@@ -555,7 +555,7 @@ void ai_default_recruitment_stage::analyze_potential_recruit_movements()
 	const unsigned int max_targets = 5;
 
 	const move_map srcdst, dstsrc;
-	std::vector<target> targets = find_targets(leader,dstsrc);
+	std::vector<target> targets = find_targets(dstsrc);
 	if(targets.size() > max_targets) {
 		std::sort(targets.begin(),targets.end(),target_comparer_distance(start));
 		targets.erase(targets.begin()+max_targets,targets.end());

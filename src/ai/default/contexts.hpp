@@ -24,7 +24,6 @@
 
 #include "../contexts.hpp"
 #include "formula_callable.hpp"
-#include "unit_map.hpp"
 #include <vector>
 
 #ifdef _MSC_VER
@@ -163,8 +162,7 @@ public:
 	virtual default_ai_context& get_default_ai_context() = 0;
 
 
-	virtual std::vector<target> find_targets(unit_map::const_iterator leader,
-			const move_map& enemy_dstsrc) = 0;
+	virtual std::vector<target> find_targets(const move_map& enemy_dstsrc) = 0;
 
 
 	virtual bool multistep_move_possible(const map_location& from,
@@ -224,10 +222,9 @@ public:
 	}
 
 
-	virtual std::vector<target> find_targets(unit_map::const_iterator leader,
-			const move_map& enemy_dstsrc)
+	virtual std::vector<target> find_targets(const move_map& enemy_dstsrc)
 	{
-		return target_->find_targets(leader,enemy_dstsrc);
+		return target_->find_targets(enemy_dstsrc);
 	}
 
 
@@ -292,8 +289,7 @@ public:
 	}
 
 
-	virtual std::vector<target> find_targets(unit_map::const_iterator leader,
-						 const move_map& enemy_dstsrc);
+	virtual std::vector<target> find_targets(const move_map& enemy_dstsrc);
 
 
 	virtual bool multistep_move_possible(const map_location& from,

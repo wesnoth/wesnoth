@@ -19,9 +19,11 @@
 
 #include "ai.hpp"
 #include "engine_fai.hpp"
+#include "rca.hpp"
+#include "../formula/ai.hpp"
+#include "../formula/candidates.hpp"
 #include "../formula/stage_side_formulas.hpp"
 #include "../formula/stage_unit_formulas.hpp"
-#include "rca.hpp"
 #include "../../foreach.hpp"
 #include "../../log.hpp"
 
@@ -67,15 +69,15 @@ public:
 	}
 private:
 	game_logic::candidate_action_ptr fai_ca_;
-	formula_ai &formula_ai_;
+	formula_ai formula_ai_;
 	const config cfg_;
 };
 
 engine_fai::engine_fai( readonly_context &context, const config &cfg )
-	: engine(context,cfg), formula_ai_(context,cfg.child_or_empty("formula_ai"))
+	: engine(context,cfg), formula_ai_(new formula_ai(context,cfg.child_or_empty("formula_ai")))
 {
 	name_ = "fai";
-	formula_ai_.on_create();
+	formula_ai_->on_create();
 }
 
 
@@ -85,13 +87,13 @@ engine_fai::~engine_fai()
 
 
 void engine_fai::do_parse_candidate_action_from_config( rca_context &context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr > > b ){
-	game_logic::candidate_action_ptr fai_ca = formula_ai_.load_candidate_action_from_config(cfg);
+	game_logic::candidate_action_ptr fai_ca = formula_ai_->load_candidate_action_from_config(cfg);
 	if (!fai_ca) {
 		ERR_AI_ENGINE_FAI << "side "<<ai_.get_side()<< " : ERROR creating candidate_action["<<cfg["name"]<<"]"<< std::endl;
 		DBG_AI_ENGINE_FAI << "config snippet contains: " << std::endl << cfg << std::endl;
 		return;
 	}
-	candidate_action_ptr ca = candidate_action_ptr(new fai_candidate_action_wrapper(context,cfg,fai_ca,formula_ai_));
+	candidate_action_ptr ca = candidate_action_ptr(new fai_candidate_action_wrapper(context,cfg,fai_ca,*formula_ai_));
 	*b = ca;
 
 }
@@ -109,9 +111,9 @@ void engine_fai::do_parse_stage_from_config( ai_context &context, const config &
 	//	st_ptr = stage_ptr(new stage_rca_formulas(context,cfg,formula_ai_));
 
 	if (name=="side_formulas") {
-		st_ptr = stage_ptr(new stage_side_formulas(context,cfg,formula_ai_));
+		st_ptr = stage_ptr(new stage_side_formulas(context,cfg,*formula_ai_));
 	} else if (name=="unit_formulas") {
-		st_ptr = stage_ptr(new stage_unit_formulas(context,cfg,formula_ai_));
+		st_ptr = stage_ptr(new stage_unit_formulas(context,cfg,*formula_ai_));
 	} else {
 		ERR_AI_ENGINE_FAI << "unknown type of formula_ai stage: ["<< name <<"]"<<std::endl;
 	}
@@ -123,7 +125,7 @@ void engine_fai::do_parse_stage_from_config( ai_context &context, const config &
 
 std::string engine_fai::evaluate(const std::string &str)
 {
-	return formula_ai_.evaluate(str);
+	return formula_ai_->evaluate(str);
 }
 
 
@@ -134,14 +136,14 @@ void engine_fai::set_ai_context(ai_context *context)
 	} else {
 		DBG_AI_ENGINE_FAI << "fai engine: ai_context is cleared" << std::endl;
 	}
-	formula_ai_.set_ai_context(context);
+	formula_ai_->set_ai_context(context);
 }
 
 
 config engine_fai::to_config() const
 {
 	config cfg = engine::to_config();
-	cfg.add_child("formula_ai",formula_ai_.to_config());
+	cfg.add_child("formula_ai",formula_ai_->to_config());
 	return cfg;
 }
 
