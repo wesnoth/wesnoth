@@ -28,7 +28,6 @@
 #include "registry.hpp"
 #include "testing/aspect_attacks.hpp"
 #include "testing/ca.hpp"
-#include "testing/ca_default_move_to_targets.hpp"
 #include "testing/ca_testing_move_to_targets.hpp"
 #include "testing/stage_rca.hpp"
 #include "testing/stage_fallback.hpp"
@@ -107,7 +106,7 @@ static register_candidate_action_factory<testing_ai_default::retreat_phase>
 static register_candidate_action_factory<testing_ai_default::simple_move_and_targeting_phase>
 	simple_move_and_targeting_phase_factory("testing_ai_default::simple_move_and_targeting_phase");
 
-static register_candidate_action_factory<testing_ai_default::default_move_to_targets_phase>
+static register_candidate_action_factory<testing_ai_default::testing_move_to_targets_phase>
 	default_move_to_targets_phase_factory("testing_ai_default::default_move_to_targets_phase");
 
 static register_candidate_action_factory<testing_ai_default::testing_move_to_targets_phase>
