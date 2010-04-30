@@ -19,7 +19,6 @@
 #include "game_display.hpp"
 #include "game_preferences.hpp"
 #include "log.hpp"
-#include "widgets/textbox.hpp"
 
 #include <ctime>
 

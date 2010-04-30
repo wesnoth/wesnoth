@@ -18,6 +18,8 @@
 
 #include "global.hpp"
 
+// Scoped_resource can't use a pointer to an incomplete pointer with MSVC.
+#include "widgets/textbox.hpp"
 #include "scoped_resource.hpp"
 
 #include <string>
@@ -29,7 +31,6 @@ class unit_map;
 
 namespace gui{
 
-	class textbox;
 	class button;
 
 	enum TEXTBOX_MODE { TEXTBOX_NONE, TEXTBOX_SEARCH, TEXTBOX_MESSAGE,
