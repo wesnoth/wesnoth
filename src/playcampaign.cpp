@@ -36,7 +36,6 @@
 #include "sound.hpp"
 #include "wml_exception.hpp"
 #include "formula_string_utils.hpp"
-#include "upload_log.hpp"
 
 #define LOG_G LOG_STREAM(info, lg::general)
 
@@ -114,7 +113,7 @@ void play_replay(display& disp, game_state& gamestate, const config& game_config
 
 static LEVEL_RESULT playsingle_scenario(const config& game_config,
 		const config* level, display& disp, game_state& state_of_game,
-		const config::const_child_itors &story, upload_log &log,
+		const config::const_child_itors &story, 
 		bool skip_replay, end_level_data &end_level)
 {
 	const int ticks = SDL_GetTicks();
@@ -124,8 +123,8 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 	playsingle_controller playcontroller(*level, state_of_game, ticks, num_turns, game_config, disp.video(), skip_replay);
 	LOG_NG << "created objects... " << (SDL_GetTicks() - playcontroller.get_ticks()) << "\n";
 
-	LEVEL_RESULT res = playcontroller.play_scenario(story, log, skip_replay);
-	log.read_replay();
+	LEVEL_RESULT res = playcontroller.play_scenario(story, skip_replay);
+
 	end_level = playcontroller.get_end_level_data();
 
 	if (res == DEFEAT) {
@@ -138,7 +137,7 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 	if (!disp.video().faked() && res != QUIT && end_level.linger_mode)
 	{
 		try {
-			playcontroller.linger(log);
+			playcontroller.linger();
 		} catch(end_level_exception& e) {
 			if (e.result == QUIT) {
 				return QUIT;
@@ -152,15 +151,15 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 
 static LEVEL_RESULT playmp_scenario(const config& game_config,
 		config const* level, display& disp, game_state& state_of_game,
-		const config::const_child_itors &story, upload_log &log, bool skip_replay,
+		const config::const_child_itors &story, bool skip_replay,
 		io_type_t& io_type, end_level_data &end_level)
 {
 	const int ticks = SDL_GetTicks();
 	const int num_turns = atoi((*level)["turns"].c_str());
 	playmp_controller playcontroller(*level, state_of_game, ticks, num_turns,
 		game_config, disp.video(), skip_replay, io_type == IO_SERVER);
-	LEVEL_RESULT res = playcontroller.play_scenario(story, log, skip_replay);
-	log.read_replay();
+	LEVEL_RESULT res = playcontroller.play_scenario(story, skip_replay);
+
 	end_level = playcontroller.get_end_level_data();
 	//Check if the player started as mp client and changed to host
 	if (io_type == IO_CLIENT && playcontroller.is_host())
@@ -183,7 +182,7 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 			}
 		} else {
 			try {
-				playcontroller.linger(log);
+				playcontroller.linger();
 			} catch(end_level_exception& e) {
 				if (e.result == QUIT) {
 					return QUIT;
@@ -208,7 +207,7 @@ static void preload_lua_tags(const config &game_config, config &target)
 }
 
 LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_config,
-		upload_log &log, io_type_t io_type, bool skip_replay)
+		               io_type_t io_type, bool skip_replay)
 {
 	std::string type = gamestate.classification().campaign_type;
 	if(type.empty())
@@ -381,11 +380,11 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 			switch (io_type){
 			case IO_NONE:
-				res = playsingle_scenario(game_config, scenario, disp, gamestate, story, log, skip_replay, end_level);
+				res = playsingle_scenario(game_config, scenario, disp, gamestate, story, skip_replay, end_level);
 				break;
 			case IO_SERVER:
 			case IO_CLIENT:
-				res = playmp_scenario(game_config, scenario, disp, gamestate, story, log, skip_replay, io_type, end_level);
+				res = playmp_scenario(game_config, scenario, disp, gamestate, story, skip_replay, io_type, end_level);
 				break;
 			}
 		} catch(game::load_game_failed& e) {

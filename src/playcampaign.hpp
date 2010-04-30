@@ -24,7 +24,6 @@ class display;
 class game_state;
 class config;
 class CVideo;
-struct upload_log;
 
 enum io_type_t {
 	IO_NONE,
@@ -34,7 +33,6 @@ enum io_type_t {
 
 LEVEL_RESULT play_game(display& disp, game_state& state,
 		const config& game_config,
-		upload_log &log,
 		io_type_t io_type=IO_NONE,
 		bool skip_replay = false);
 

@@ -32,7 +32,6 @@
 #include "multiplayer_lobby.hpp"
 #include "playmp_controller.hpp"
 #include "playcampaign.hpp"
-#include "upload_log.hpp"
 #include "formula_string_utils.hpp"
 #include "sound.hpp"
 
@@ -380,7 +379,6 @@ static void enter_wait_mode(game_display& disp, const config& game_config, mp::c
 	mp::ui::result res;
 	game_state state;
 	network_game_manager m;
-	upload_log nolog(false);
 
 	gamelist.clear();
 	statistics::fresh_stats();
@@ -409,7 +407,7 @@ static void enter_wait_mode(game_display& disp, const config& game_config, mp::c
 
 	switch (res) {
 	case mp::ui::PLAY:
-		play_game(disp, state, game_config, nolog, IO_CLIENT,
+		play_game(disp, state, game_config, IO_CLIENT,
 			preferences::skip_mp_replay() && observe);
 		recorder.clear();
 
@@ -430,7 +428,6 @@ static void enter_connect_mode(game_display& disp, const config& game_config,
 	game_state state;
 	const network::manager net_manager(1,1);
 	network_game_manager m;
-	upload_log nolog(false);
 
 	gamelist.clear();
 	statistics::fresh_stats();
@@ -451,7 +448,7 @@ static void enter_connect_mode(game_display& disp, const config& game_config,
 
 	switch (res) {
 	case mp::ui::PLAY:
-		play_game(disp, state, game_config, nolog, IO_SERVER);
+		play_game(disp, state, game_config, IO_SERVER);
 		recorder.clear();
 
 		break;

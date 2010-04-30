@@ -438,7 +438,6 @@ set(wesnoth-main_SRC
 	unit_id.cpp
     unit_map.cpp
     unit_types.cpp
-    upload_log.cpp
     variable.cpp
     variant.cpp
     widgets/combo.cpp

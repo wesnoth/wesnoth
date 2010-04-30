@@ -49,7 +49,6 @@ enum TITLE_RESULT { TUTORIAL = 1,		/**< Start special campaign 'tutorial' */
 					TIP_PREVIOUS,		/**< Show previous tip-of-the-day */
 					TIP_NEXT,			/**< Show next tip-of-the-day */
 					SHOW_HELP,
-					BEG_FOR_UPLOAD,		/**< Ask user for permission to upload game-stats as feedback */
 					REDRAW_BACKGROUND,	/**< Used after an action needing a redraw (ex: fullscreen) */
 					RELOAD_GAME_DATA,	/**< Used to reload all game data */
 					NOTHING				/**< Default, nothing done, no redraw needed */
