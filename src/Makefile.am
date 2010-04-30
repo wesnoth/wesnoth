@@ -68,6 +68,7 @@ wesnoth_source = \
 	ai/game_info.cpp \
 	ai/gamestate_observer.cpp \
 	ai/interface.cpp \
+	ai/lua/core.cpp \
 	ai/manager.cpp \
 	ai/registry.cpp \
 	ai/testing/aspect_attacks.cpp \

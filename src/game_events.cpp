@@ -3369,7 +3369,7 @@ namespace game_events {
 			unit_wml_ids.insert(id);
 		}
 
-		resources::lua_kernel = new LuaKernel;
+		resources::lua_kernel = new lua::LuaKernel;
 		manager_running = true;
 
 		foreach (static_wml_action_map::value_type &action, static_wml_actions) {

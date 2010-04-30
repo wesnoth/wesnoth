@@ -4812,6 +4812,38 @@
 					</File>
 				</Filter>
 				<Filter
+					Name="lua"
+					>
+					<File
+						RelativePath="..\..\src\ai\lua\core.cpp"
+						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\ai\lua\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\ai\lua\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug (fast)|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\ai\lua\"
+							/>
+						</FileConfiguration>
+					</File>
+				</Filter>
+				<Filter
 					Name="testing"
 					>
 					<File
@@ -6010,6 +6042,10 @@
 					RelativePath="..\..\src\scripting\lua.hpp"
 					>
 				</File>
+				<File
+					RelativePath="..\..\src\scripting\lua_api.hpp"
+					>
+				</File>
 			</Filter>
 			<Filter
 				Name="Storyscreen"
@@ -6172,6 +6208,14 @@
 					<File
 						RelativePath="..\..\src\ai\formula\stage_unit_formulas.hpp"
 						>
+					</File>
+				</Filter>
+				<Filter
+					Name="lua"
+					>
+					<File
+						RelativePath="..\..\src\ai\lua\core.hpp"
+					>
 					</File>
 				</Filter>
 				<Filter

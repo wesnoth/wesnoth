@@ -25,10 +25,10 @@
 #include "engine.hpp"
 #include "../contexts.hpp"
 
-class lua_ai_context;
-
 //============================================================================
 namespace ai {
+
+class lua_ai_context;
 
 class engine_lua : public engine {
 public:

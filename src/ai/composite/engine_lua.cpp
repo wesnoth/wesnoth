@@ -26,6 +26,7 @@
 
 #include "../../log.hpp"
 #include "../../resources.hpp"
+#include "../lua/core.hpp"
 #include "../../scripting/lua.hpp"
 #include "../../util.hpp"
 
@@ -49,8 +50,8 @@ public:
 	lua_candidate_action_wrapper( rca_context &context, const config &cfg, lua_ai_context &lua_ai_ctx)
 		: candidate_action(context,cfg),evaluation_(cfg["evaluation"]),evaluation_action_handler_(),execution_(cfg["execution"]),execution_action_handler_(),serialized_evaluation_state_()
 	{
-		evaluation_action_handler_ = boost::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_ai_action_handler(evaluation_.c_str(),lua_ai_ctx));
-		execution_action_handler_ = boost::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_ai_action_handler(execution_.c_str(),lua_ai_ctx));
+		evaluation_action_handler_ = boost::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(evaluation_.c_str(),lua_ai_ctx));
+		execution_action_handler_ = boost::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(execution_.c_str(),lua_ai_ctx));
 	}
 
 	virtual ~lua_candidate_action_wrapper() {}
@@ -99,7 +100,7 @@ public:
 	lua_stage_wrapper( ai_context &context, const config &cfg, lua_ai_context &lua_ai_ctx )
 		: stage(context,cfg),action_handler_(),code_(cfg["code"]),serialized_evaluation_state_(cfg.child_or_empty("state"))
 	{
-		action_handler_ =  boost::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_ai_action_handler(code_.c_str(),lua_ai_ctx));
+		action_handler_ =  boost::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(code_.c_str(),lua_ai_ctx));
 	}
 
 	virtual ~lua_stage_wrapper()
@@ -136,9 +137,9 @@ private:
  */
 engine_lua::engine_lua( readonly_context &context, const config &cfg )
 	: engine(context,cfg)
-	, lua_ai_context_(resources::lua_kernel->create_ai_context(
+	, lua_ai_context_(resources::lua_kernel->create_lua_ai_context(
 				  cfg["code"].c_str()
-				, this)) //will be moved to set_ai_context
+				, this))
 {
 	name_ = "lua";
 }
