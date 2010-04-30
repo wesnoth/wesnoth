@@ -23,7 +23,6 @@
 #include "playcampaign.hpp"
 #include "unit.hpp"
 #include "unit_map.hpp"
-#include "upload_log.hpp"
 
 
 
