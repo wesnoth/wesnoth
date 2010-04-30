@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-26 15:39+0100\n"
-"PO-Revision-Date: 2009-11-16 21:22-0500\n"
+"POT-Creation-Date: 2010-03-26 15:41+0100\n"
+"PO-Revision-Date: 2010-04-30 14:14-0500\n"
 "Last-Translator: Michael Babich (Aethaeryn) <michaelbabich7@gmail.com>\n"
 "Language-Team: Latin\n"
 "MIME-Version: 1.0\n"
@@ -625,7 +625,6 @@ msgstr "Agri"
 #. [section]: id=commands
 #. [topic]: id=..commands
 #: data/core/help.cfg:81 data/core/help.cfg:761
-#, fuzzy
 msgid "Commands"
 msgstr "Imperii"
 
@@ -6903,7 +6902,6 @@ msgstr "Remonstrare"
 
 #. [menu]: id=button-playreplay, type=image
 #: data/themes/macros.cfg:74
-#, fuzzy
 msgid "Play"
 msgstr "Ludere"
 
@@ -7843,7 +7841,6 @@ msgid "damage type: "
 msgstr "genus damni:"
 
 #: src/generate_report.cpp:332
-#, fuzzy
 msgid "vs"
 msgstr "contra"
 
@@ -8471,7 +8468,6 @@ msgid "Team only"
 msgstr "Caeruleus illustris"
 
 #: src/menu_events.cpp:1757
-#, fuzzy
 msgid "Search"
 msgstr "Investigatio"
 
@@ -8512,9 +8508,8 @@ msgid ""
 msgstr ""
 
 #: src/menu_events.cpp:2052 src/menu_events.cpp:2053 src/menu_events.cpp:2076
-#, fuzzy
 msgid "help"
-msgstr "Auxilium"
+msgstr "auxilium"
 
 #: src/menu_events.cpp:2053
 msgid "Type $help_command <command> for more info."
@@ -8526,17 +8521,17 @@ msgid " No help available."
 msgstr "Nullum propositum ad manum"
 
 #: src/menu_events.cpp:2069
-#, fuzzy
 msgid "Usage:"
-msgstr "Nuntius: "
+msgstr ""
 
 #: src/menu_events.cpp:2074
 msgid "aliases:"
 msgstr ""
 
 #: src/menu_events.cpp:2200
+#, fuzzy
 msgid "(A) - auth command"
-msgstr ""
+msgstr "Imperia Vulgaria"
 
 #: src/menu_events.cpp:2207
 #, fuzzy
@@ -8559,7 +8554,7 @@ msgstr ""
 #: src/menu_events.cpp:2239 src/menu_events.cpp:2241 src/menu_events.cpp:2266
 #: src/menu_events.cpp:2268 src/menu_events.cpp:2270 src/menu_events.cpp:2284
 msgid "<nick>"
-msgstr ""
+msgstr "<nomen>"
 
 #: src/menu_events.cpp:2234
 msgid "Unban a user. He does not have to be in the game but on the server."
@@ -8586,9 +8581,8 @@ msgid "Send a message to the server admins currently online"
 msgstr ""
 
 #: src/menu_events.cpp:2255
-#, fuzzy
 msgid "<message>"
-msgstr "Nuntius: "
+msgstr "<nuntius>"
 
 #: src/menu_events.cpp:2255
 #, fuzzy
@@ -8608,7 +8602,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2260
 msgid "<nick> <message>"
-msgstr ""
+msgstr "<nomen> <nuntius> "
 
 #: src/menu_events.cpp:2264
 msgid "<level> <domain>"
@@ -8729,8 +8723,9 @@ msgid " (network only)"
 msgstr "Lusor ex Reti"
 
 #: src/menu_events.cpp:2405
+#, fuzzy
 msgid " (auth only)"
-msgstr ""
+msgstr "Caeruleus illustris"
 
 #: src/menu_events.cpp:2429
 msgid "Refresh gui."
@@ -8746,7 +8741,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2434
 msgid "<side> <nick>"
-msgstr ""
+msgstr "<pars> <nomen>"
 
 #: src/menu_events.cpp:2434
 msgid "Assign control of a side to a different player or observer."
@@ -8837,19 +8832,21 @@ msgstr ""
 
 #: src/menu_events.cpp:2472
 msgid "<var>=<value>"
-msgstr ""
+msgstr "<var>=<pretium>"
 
 #: src/menu_events.cpp:2472
+#, fuzzy
 msgid "Set a scenario variable."
-msgstr ""
+msgstr "variabilis"
 
 #: src/menu_events.cpp:2474
 msgid "<var>"
-msgstr ""
+msgstr "<var>"
 
 #: src/menu_events.cpp:2474
+#, fuzzy
 msgid "Show a scenario variable."
-msgstr ""
+msgstr "variabilis"
 
 #: src/menu_events.cpp:2476
 msgid "Modify a unit variable. (Only top level keys are supported.)"
@@ -8957,9 +8954,8 @@ msgid "There are no players on your friends or ignore list."
 msgstr ""
 
 #: src/menu_events.cpp:2803
-#, fuzzy
 msgid "version"
-msgstr "Versio"
+msgstr "versio"
 
 #: src/menu_events.cpp:2819
 msgid "registering with password *** and no email address"
@@ -9605,7 +9601,6 @@ msgid "Back to turn "
 msgstr "Rursus ad vicem "
 
 #: src/playcampaign.cpp:133 src/playcampaign.cpp:171
-#, fuzzy
 msgid "Defeat"
 msgstr "Clades"
 
@@ -9686,9 +9681,8 @@ msgid "Turns finished early: "
 msgstr "Tractus quibus mature finisti: "
 
 #: src/playsingle_controller.cpp:222
-#, fuzzy
 msgid "Bonus: "
-msgstr "Bonum: "
+msgstr "Praemium: "
 
 #: src/playsingle_controller.cpp:225
 msgid "Gold: "
@@ -9699,9 +9693,8 @@ msgid "Carry over percentage: "
 msgstr ""
 
 #: src/playsingle_controller.cpp:232
-#, fuzzy
 msgid "Bonus Gold: "
-msgstr "Bonum: "
+msgstr "Aurum Praemii: "
 
 #: src/playsingle_controller.cpp:234
 #, fuzzy
@@ -9832,9 +9825,8 @@ msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Iam est nomen hoc. Visne id superscribere?"
 
 #: src/savegame.cpp:694
-#, fuzzy
 msgid "Overwrite?"
-msgstr "Superscriberene?"
+msgstr "Superne scribes?"
 
 #: src/savegame.cpp:704
 #, fuzzy
@@ -10260,8 +10252,13 @@ msgstr "Nos adiuva facientes Occidiseptentrionem meliorem tibi!"
 msgid "Enable summary uploads"
 msgstr "Potestatem facere summaria mittendi"
 
-#~ msgid "Level"
-#~ msgstr "Ordo"
+#, fuzzy
+#~ msgid "Multiplayer_AI^Default AI"
+#~ msgstr "Plures Lusores"
+
+#, fuzzy
+#~ msgid "Multiplayer_AI^RCA AI"
+#~ msgstr "Plures Lusores"
 
 #, fuzzy
 #~ msgid "--no games open--"
@@ -10306,12 +10303,27 @@ msgstr "Potestatem facere summaria mittendi"
 #~ msgstr "Amici in Ludum"
 
 #, fuzzy
-#~ msgid "Search:"
-#~ msgstr "Investigatio"
+#~ msgid "Filter:"
+#~ msgstr "Filtrum:"
 
 #, fuzzy
 #~ msgid "Skip quickly to the active turn when observing"
 #~ msgstr "Celeriter ad tractum currentem in observatio saltare"
+
+#, fuzzy
+#~ msgid ""
+#~ "You will start the next scenario with the defined minimum starting gold."
+#~ msgid_plural ""
+#~ "You will start the next scenario with the defined minimum starting gold."
+#~ msgstr[0] "LXXX pro cento auri retinentur pro scaenario insequenti"
+#~ msgstr[1] "LXXX pro cento auri retinentur pro scaenario insequenti"
+
+#~ msgid "Level"
+#~ msgstr "Ordo"
+
+#, fuzzy
+#~ msgid "Search:"
+#~ msgstr "Investigatio"
 
 #, fuzzy
 #~ msgid "End scenario"
