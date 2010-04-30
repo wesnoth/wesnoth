@@ -778,6 +778,11 @@ static int impl_unit_get(lua_State *L)
 	// Find the corresponding attribute.
 	return_int_attrib("x", u.get_location().x + 1);
 	return_int_attrib("y", u.get_location().y + 1);
+	if (strcmp(m, "loc") == 0) {
+		lua_pushinteger(L, u.get_location().x + 1);
+		lua_pushinteger(L, u.get_location().y + 1);
+		return 2;
+	}
 	return_int_attrib("side", u.side());
 	return_string_attrib("id", u.id());
 	return_int_attrib("hitpoints", u.hitpoints());
