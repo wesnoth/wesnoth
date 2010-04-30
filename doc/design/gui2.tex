@@ -587,7 +587,7 @@ which all widgets already exist this doesn't matter and you can directly dive
 into generating the dialogue.
 
 \section{Creating the widget}
-\label{creating_the_widget}
+\label{sec:creating_the_widget}
 
 The widget is normally split in 7 different files. Three .cpp/.hpp files and one
 WML file. Usually I start to create the new files by simply copy pasting the old
@@ -828,22 +828,146 @@ it was done in one fell swoop.
 This completes the simple progress bar widget. Of course we haven't tested it
 yet since there's no dialogue to test it in. So let's implement a dialogue.
 
-\begin{comment}
 
 \section{Creating the window}
+\label{sec:creating_the_window}
 
 The window is normally split in 3 files. One .cpp/.hpp file and one WML file.
-The dialogue used is the load progress dialogue, this is not the greatest
-example dialogue, so this section may later use another dialogue as example.
+The dialogue used is the unit attack dialogue, at least an initial version. This
+version barely does what it needs to do, and the in game version will be more
+polished. This simple version is nice as example here since it's not too large.
 
-\end{comment}
+Now we start to explain what the various files do, first a general overview of
+the files after which I dive more into the implementation of the file.
+
+\begin{description}
+
+\item[src/gui/dialogs/unit\_attack.*pp]
+	These files contain the code of the dialogue. This code `binds' the WML
+	code and allows the C++ code to show the dialogue show the right data at the
+	right place. In several cases this also allows the designer of the WML file
+	to decide which widget s/he picks.
+
+\begin{description}
+\item[hpp] Listing \ref{unit_attack.hpp} contains the sample code. 
+	\begin{description}
+	\item[Line \ref{unit_attack.hpp:class}]
+		Defines the class itself, which normally inherits from tdialog.
+		Sometimes a class inherits from another class, but that class then
+derives from tdialog, for example the wml\_dialogs have a common base and
+separate classes for left and right.
+
+	\item[Line \ref{unit_attack.hpp:constructor}]
+		Dialogues are often created and then shown once before being destroyed,
+therefore the constructor often takes all parameters needed. Since the show
+function shouldn't be overloaded the only other alternative would be member
+functions to set the members. Note when keeping `references' to widgets these
+member must be pointers and set to NULL in the constructor, this due to the
+simple fact that the widgets aren't created at this point. Also keep in mind
+when
+the dialogue is shown twice (using the \emph{same} object) the widgets won't be
+the same. The window owning the widgets is destroyed after being shown and
+a new one created upon the next call to show.
+
+	\item[Line \ref{unit_attack.hpp:settersgetters}]
+		As said before there are often no setters, since all is set in the
+contructor. Most members also remain hidden since the caller has the
+information. Only members that change are `exported'. The most common example in
+a class with a listbox, the last selected item is made public, since this is
+often used as choice the user made.
+
+	\item[Line \ref{unit_attack.hpp:window_id}]
+		This function is part of the window registration and only needs to be
+declared in the header, the definition will be provided by a macro.
+
+	\item[Line \ref{unit_attack.hpp:pre_show}]
+		This function is called after the window is created but before being
+shown. This is the point to set the members that point to a widget. As said
+before every time the dialogue is shown a newly created window is shown, so
+setting the pointers can be unconditional. This is also the place to fill the
+widgets with the proper content, if needed. Eg filling the languages in the
+language selection dialogue.
+
+	\item[Line \ref{unit_attack.hpp:post_show}]
+		Called after the dialogue is shown, this allows you to update certain
+statuses. E.g. if the dialogue is closed with the OK button set the selected
+language to the newly selected language. You can also update it unconditionally
+and let the caller test the status.
+
+	\item[Line \ref{unit_attack.hpp:member}]
+		At this point the list of private members start.
+
+	\end{description}
+
+\item[cpp] Listing \ref{unit_attack.cpp} contains the sample code. Note some
+parts are already described more verbose in the header and thus not mentioned
+here.
+	\begin{description}
+	\item[Line \ref{unit_attack.cpp:textdomain}]
+		Like written for the widget, every file is inside the `wesnoth-lib' text
+domain.
+
+	\item[Line \ref{unit_attack.cpp:wiki}]
+		Directly after the includes (inside the gui2 namespace) the wiki
+documentation starts.
+
+
+	\item[Line \ref{unit_attack.cpp:register}]
+		After the wiki documentation the registration code follows, it defines
+the window\_id function and does some other registration parts.
+
+	\item[Line \ref{unit_attack.cpp:pre_show}]
+		The pre\_show is already mentioned in the header file and it the one
+used here uses several static helper functions to do it's job.
+
+	\end{description}
+
+\end{description}
+
+\item[src/gui/dialogs/unit\_attack.cfg]
+	This file contains the WML that defines the widget. It should honour the
+restrains set in the wiki comment like \ref{unit_attack.cpp:wiki}. These
+constrains set the minimum set of needed widgets and their types, and mentions
+the optional widgets. How the widgets are placed and whether only the optional
+ones are set is up to the designer of the dialog. The gui toolkit wiki has more
+information on the subject. Still some parts are worth mentioning.
+
+	\begin{description}
+	\item[Line \ref{unit_attack.cfg:textdomain}]
+		Every file in the library is inside the ``wesnoth-lib'' text domain.
+
+	\item[Line \ref{unit_attack.cfg:defines}]
+		With larger dialogs I often design them on paper and then divide the
+dialog in several sections. These sections often are turned into defines in
+order to keep the main dialog rather simple. WML tends to be verbose and deeply
+nested, and the GUI's also tend to have a lot of nested items, these powers
+combined result in deeply nested structure, where one can easily lose the way.
+Also not that all local macros are prefixed with \_GUI, this to avoid clashes
+with other macros. The BIG in the names are just because I want to make a
+different definition of high resolution screens (this will be the first screen
+using that feature, but that will be added later).
+
+	\item[Line \ref{unit_attack.cfg:window}]
+		Not much to tell about this part, since it's all documented in the wiki.
+But do note that due to the defines above the grid in the window itself is
+rather simple.
+
+	\item[Line \ref{unit_attack.cfg:undefines}]
+		The local macros are no longer needed so undefine them, I normally
+undefine them in the oposite order of the definitions, I'm quite sure that's not
+actually needed, but it feels the right way\texttrademark.
+
+	\end{description}
+
+\end{description}
+
 
 \appendix
 
 
 \chapter{Files for creating the widget}
 
-This chapter contains the files created in \S~\ref{creating_the_widget}, these
+This chapter contains the files created in \S~\ref{sec:creating_the_widget}, these
 files aren't the real files added, but a slightly modified version; The
 copyright headers are stripped to avoid taking up useless space. Some extra
 comments are added to make referencing possible. This also means the files here
@@ -890,6 +1014,29 @@ below.
 	, caption={src/gui/widgets/progress\_bar.cpp}
 	, label=progress_bar.cpp]
 	{gui2/progress_bar.cpp}
+
+
+\chapter{Files for creating the window}
+
+This chapter like the previous one contains listings of files, this time for
+\S~\ref{sec:creating_the_window}. About the same is true for these files, except
+we know the originals will change in the future.
+
+\lstinputlisting[style=C++
+	, caption={src/gui/dialogs/unit\_attack.hpp}
+	, label=unit_attack.hpp]
+	{gui2/unit_attack.hpp}
+
+\lstinputlisting[style=C++
+	, caption={src/gui/dialogs/unit\_attack.cpp}
+	, label=unit_attack.cpp]
+	{gui2/unit_attack.cpp}
+
+\lstinputlisting[style=WML
+	, caption={src/gui/dialogs/unit\_attack.cfg}
+	, label=unit_attack.cfg]
+	{gui2/unit_attack.cfg}
+
 
 \end{document}
 
