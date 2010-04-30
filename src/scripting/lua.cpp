@@ -162,7 +162,9 @@ static void luaW_pushscalar(lua_State *L, t_string const &v)
 /**
  * Returns true if the metatable of the object is the one found in the registry.
  */
-bool luaW_hasmetatable(lua_State *L, int index, char const &key)
+static bool luaW_hasmetatable(lua_State *L
+		, int index
+		, char const &key)
 {
 	if (!lua_getmetatable(L, index))
 		return false;
@@ -2523,12 +2525,12 @@ bool LuaKernel::execute(char const *prog, int nArgs, int nRets)
 
 ai::lua_ai_context* LuaKernel::create_lua_ai_context(char const *code, ai::engine_lua *engine)
 {
-	ai::lua_ai_context::create(mState,code,engine);
+	return ai::lua_ai_context::create(mState,code,engine);
 }
 
 ai::lua_ai_action_handler* LuaKernel::create_lua_ai_action_handler(char const *code, ai::lua_ai_context &context)
 {
-	ai::lua_ai_action_handler::create(mState,code,context);
+	return ai::lua_ai_action_handler::create(mState,code,context);
 }
 
 } // of namespace lua
