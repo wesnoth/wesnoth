@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-04-23 23:46+0200\n"
-"PO-Revision-Date: 2009-12-07 19:10+0200\n"
-"Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
+"PO-Revision-Date: 2010-04-30 12:34+0400\n"
+"Last-Translator: Fedor Khod'kov <fedor76@istra.ru>\n"
 "Language-Team:  <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -104,15 +104,13 @@ msgstr "Звуки холла"
 
 #. [ai]: id=default # id is needed uniquely identify a MP AI, it is not needed in the scenario AI
 #: data/ai/ais/default_ai.cfg:4
-#, fuzzy
 msgid "Multiplayer_AI^Default AI"
-msgstr "Сетевая игра"
+msgstr "ИИ мультиплеера"
 
 #. [ai]: id=testing_ai_default
 #: data/ai/ais/testing_ai_default.cfg:5
-#, fuzzy
 msgid "Multiplayer_AI^RCA AI"
-msgstr "Сетевая игра"
+msgstr "ИИ мультиплеера"
 
 #. [time]: id=underground
 #. [illuminated_time]: id=underground_illum
@@ -4937,7 +4935,7 @@ msgid ""
 " This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it."
 msgstr ""
-"Этот боец может прятаться в деревнях (за исключением водных) и оставаться "
+" Этот боец может прятаться в деревнях (за исключением водных) и оставаться "
 "незамеченным для противника, кроме стоящих рядом с ним."
 
 #: data/core/macros/special-notes.cfg:50
@@ -4952,7 +4950,7 @@ msgid ""
 " This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
-"Этот боец увеличивает своё максимальное здоровье на 1 каждый раз, когда он "
+" Этот боец увеличивает своё максимальное здоровье на 1 каждый раз, когда он "
 "убивает живого врага."
 
 #: data/core/macros/special-notes.cfg:56
@@ -5181,12 +5179,12 @@ msgstr "слабая"
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:191
 msgid "slow"
-msgstr "замедляет"
+msgstr "медленный"
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:192
 msgid "female^slow"
-msgstr "замедляет"
+msgstr "медленная"
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:208
@@ -5205,9 +5203,8 @@ msgstr "старый"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:222
-#, fuzzy
 msgid "female^aged"
-msgstr "глупая"
+msgstr "старая"
 
 #. [color_range]: id=red
 #. [color_range]: id=1
@@ -6248,7 +6245,9 @@ msgstr ""
 msgid ""
 "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge,$bridge|ham,"
 "$bridge|ton"
-msgstr "$river|бридж,$river|бридж,$river|бридж,$name|гем,$name|бридж,$name|тон"
+msgstr ""
+"$river|бридж,$river|бридж,$river|бридж,$name|гем,$name|бридж,$bridge|гем,"
+"$name|тон"
 
 #. [language]
 #: data/hardwired/english.cfg:30
@@ -7895,11 +7894,11 @@ msgstr "Неверный диапазон цветов:"
 
 #: src/game_events.cpp:204
 msgid "Error: "
-msgstr "Ошибка:"
+msgstr "Ошибка: "
 
 #: src/game_events.cpp:207
 msgid "Warning: "
-msgstr "Предупреждение:"
+msgstr "Предупреждение: "
 
 #: src/game_events.cpp:210
 msgid "Debug: "
@@ -7953,7 +7952,7 @@ msgstr ""
 
 #: src/generate_report.cpp:140
 msgid "petrified: "
-msgstr "окаменел:"
+msgstr "окаменел: "
 
 #: src/generate_report.cpp:141
 msgid "This unit has been petrified. It may not move or attack."
@@ -8021,7 +8020,7 @@ msgstr "Хаотичные бойцы: "
 
 #: src/generate_report.cpp:565
 msgid "Observers:"
-msgstr "Наблюдатели:"
+msgstr "Наблюдатели: "
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:204 src/multiplayer_lobby.cpp:431
 msgid "Unknown era: $era_id"
@@ -8154,7 +8153,7 @@ msgstr "Разные"
 
 #: src/help.cpp:1396
 msgid "Race: "
-msgstr "Раса:"
+msgstr "Раса: "
 
 #: src/help.cpp:1403
 msgid "Abilities: "
@@ -8559,7 +8558,7 @@ msgstr "Поставить метку"
 
 #: src/menu_events.cpp:1553
 msgid "Label: "
-msgstr "Метка:"
+msgstr "Метка: "
 
 #: src/menu_events.cpp:1554
 msgid "Team only"
@@ -8578,6 +8577,8 @@ msgid ""
 "Unknown command '$command', try $help_command for a list of available "
 "commands."
 msgstr ""
+"Команда '$command' неизвестна; чтобы получить список доступных команд, "
+"введите $help_command."
 
 #: src/menu_events.cpp:1952
 msgid ""
@@ -8592,50 +8593,48 @@ msgid "do not translate the 'all'^[all|<command>]"
 msgstr ""
 
 #: src/menu_events.cpp:1998
-#, fuzzy
 msgid "Error:"
 msgstr "Ошибка:"
 
 #: src/menu_events.cpp:2004
 msgid "Missing argument $arg_id"
-msgstr ""
+msgstr "Пропущен аргумент $arg_id"
 
 #: src/menu_events.cpp:2052
 msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
 msgstr ""
+"Доступные команды $flags_description:\n"
+"$list_of_commands"
 
 #: src/menu_events.cpp:2052 src/menu_events.cpp:2053 src/menu_events.cpp:2076
-#, fuzzy
 msgid "help"
-msgstr "Помощь"
+msgstr "помощь"
 
 #: src/menu_events.cpp:2053
 msgid "Type $help_command <command> for more info."
-msgstr ""
+msgstr "введите $held_command <команда>, чтобы получить больше информации"
 
 #: src/menu_events.cpp:2064
 msgid " No help available."
 msgstr " Здесь нет подсказок."
 
 #: src/menu_events.cpp:2069
-#, fuzzy
 msgid "Usage:"
-msgstr "Сообщение:"
+msgstr "Формат:"
 
 #: src/menu_events.cpp:2074
 msgid "aliases:"
-msgstr ""
+msgstr "алиасы:"
 
 #: src/menu_events.cpp:2200
 msgid "(A) - admin command"
-msgstr ""
+msgstr "(A) — админская команда"
 
 #: src/menu_events.cpp:2207 src/menu_events.cpp:2405
-#, fuzzy
 msgid "(admin only)"
-msgstr "Только для команд"
+msgstr "(только для админов)"
 
 #: src/menu_events.cpp:2227
 msgid ""
@@ -8657,7 +8656,7 @@ msgstr ""
 #: src/menu_events.cpp:2239 src/menu_events.cpp:2241 src/menu_events.cpp:2266
 #: src/menu_events.cpp:2268 src/menu_events.cpp:2270 src/menu_events.cpp:2284
 msgid "<nick>"
-msgstr ""
+msgstr "<ник>"
 
 #: src/menu_events.cpp:2234
 msgid "Unban a user. He does not have to be in the game but on the server."
@@ -8688,9 +8687,8 @@ msgid "Send a message to the server admins currently online"
 msgstr "Отправить сообщение активным администраторам сервера"
 
 #: src/menu_events.cpp:2255
-#, fuzzy
 msgid "<message>"
-msgstr "Сообщение:"
+msgstr "<сообщение>"
 
 #: src/menu_events.cpp:2255
 msgid "Send an emotion or personal action in chat."
@@ -8706,11 +8704,11 @@ msgstr ""
 
 #: src/menu_events.cpp:2260
 msgid "<nick> <message>"
-msgstr ""
+msgstr "<ник> <сообщение>"
 
 #: src/menu_events.cpp:2264
 msgid "<level> <domain>"
-msgstr ""
+msgstr "<уровень> <домен>"
 
 #: src/menu_events.cpp:2264
 msgid "Change the log level of a log domain."
@@ -8738,7 +8736,7 @@ msgstr "Позакать версию"
 
 #: src/menu_events.cpp:2277
 msgid "<password> <email (optional)>"
-msgstr ""
+msgstr "<пароль> <email (необязательно)>"
 
 #: src/menu_events.cpp:2277
 msgid "Register your nick"
@@ -8754,7 +8752,7 @@ msgstr "Обновить профиль своего ника. Подробно�
 
 #: src/menu_events.cpp:2282
 msgid "<detail> <value>"
-msgstr ""
+msgstr "<параметр> <значение>"
 
 #: src/menu_events.cpp:2284
 msgid "Request information about a nick."
@@ -8766,7 +8764,7 @@ msgstr "Запросить, какие данные можно менять в �
 
 #: src/menu_events.cpp:2288 src/menu_events.cpp:2291 src/menu_events.cpp:2293
 msgid "<room>"
-msgstr ""
+msgstr "<комната>"
 
 #: src/menu_events.cpp:2288
 msgid "Join a room."
@@ -8786,7 +8784,7 @@ msgstr "Список доступных комнат."
 
 #: src/menu_events.cpp:2297
 msgid "<room> <msg>"
-msgstr ""
+msgstr "<комната> <сообщение>"
 
 #: src/menu_events.cpp:2297
 msgid "Room message."
@@ -8794,7 +8792,7 @@ msgstr "Сообщение для комнаты."
 
 #: src/menu_events.cpp:2299
 msgid "<room> <type> [value]"
-msgstr ""
+msgstr "<комната> <тип> [значение]"
 
 #: src/menu_events.cpp:2299
 msgid "Room query."
@@ -8803,16 +8801,15 @@ msgstr "Запрос к комнате."
 #: src/menu_events.cpp:2397
 msgid "(D) - debug only, (N) - network only, (A) - admin only"
 msgstr ""
+"(D) — отладочная команда, (N) — сетевая команда, (A) — админская команда"
 
 #: src/menu_events.cpp:2403
-#, fuzzy
 msgid "(debug command)"
-msgstr "Команды режима отладки"
+msgstr "(отладочная команда)"
 
 #: src/menu_events.cpp:2404
-#, fuzzy
 msgid "(network only)"
-msgstr "Сетевой игрок"
+msgstr "(сетевая команда)"
 
 #: src/menu_events.cpp:2429
 msgid "Refresh gui."
@@ -8827,9 +8824,8 @@ msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr ""
 
 #: src/menu_events.cpp:2434
-#, fuzzy
 msgid "<side> <nick>"
-msgstr "Использование: control <side> <nick>"
+msgstr "<сторона> <ник>"
 
 #: src/menu_events.cpp:2434
 msgid "Assign control of a side to a different player or observer."
@@ -8844,9 +8840,8 @@ msgid "Visualize the screen refresh procedure."
 msgstr "Показать порядок обновления экрана."
 
 #: src/menu_events.cpp:2439
-#, fuzzy
 msgid "Show fps."
-msgstr "Показать повтор"
+msgstr "Показать fps."
 
 #: src/menu_events.cpp:2441
 msgid "Save game."
@@ -8870,7 +8865,7 @@ msgstr "Отключить автосохранение."
 
 #: src/menu_events.cpp:2454
 msgid "<id>"
-msgstr ""
+msgstr "<id>"
 
 #: src/menu_events.cpp:2454
 msgid "Advance to the next scenario, or scenario identified by 'id'"
@@ -8894,7 +8889,7 @@ msgstr "Выполнить выражение Lua."
 
 #: src/menu_events.cpp:2466
 msgid "<command>[;<command>...]"
-msgstr ""
+msgstr "<команда>[;<команда>...]"
 
 #: src/menu_events.cpp:2466
 msgid "Set the command used by the custom command hotkey"
@@ -8906,7 +8901,7 @@ msgstr "Запустить Инспектор состояния игры"
 
 #: src/menu_events.cpp:2470
 msgid "<name>[=<command>]"
-msgstr ""
+msgstr "<имя>[=<команда>]"
 
 #: src/menu_events.cpp:2470
 msgid "Set or show alias to a command"
@@ -8914,7 +8909,7 @@ msgstr "Установить/показать алиас команды"
 
 #: src/menu_events.cpp:2472
 msgid "<var>=<value>"
-msgstr ""
+msgstr "<переменная>=<значение>"
 
 #: src/menu_events.cpp:2472
 msgid "Set a scenario variable."
@@ -8922,7 +8917,7 @@ msgstr "Установить переменную в сценарии."
 
 #: src/menu_events.cpp:2474
 msgid "<var>"
-msgstr ""
+msgstr "<переменная>"
 
 #: src/menu_events.cpp:2474
 msgid "Show a scenario variable."
@@ -8983,11 +8978,11 @@ msgstr "Домен: '$domain' переключён на уровень: '$level'
 
 #: src/menu_events.cpp:2635
 msgid "whisper to $receiver"
-msgstr ""
+msgstr "прошептать $receiver"
 
 #: src/menu_events.cpp:2642
 msgid "whisper: $sender"
-msgstr ""
+msgstr "шёпот: $sender"
 
 #: src/menu_events.cpp:2738 src/menu_events.cpp:2757
 #: src/multiplayer_connect.cpp:699
@@ -8995,74 +8990,65 @@ msgid "(empty)"
 msgstr "(пусто)"
 
 #: src/menu_events.cpp:2738 src/menu_events.cpp:2744 src/menu_events.cpp:2794
-#, fuzzy
 msgid "ignores list"
-msgstr "В списке игнора"
+msgstr "список игнора"
 
 #: src/menu_events.cpp:2744
-#, fuzzy
 msgid "Added to ignore list: $nick"
-msgstr "Добавлен в игнор-лист: "
+msgstr "Добавлен в игнор-лист: $nick"
 
 #: src/menu_events.cpp:2747 src/menu_events.cpp:2766
-#, fuzzy
 msgid "Invalid username: $nick"
-msgstr "Неправильный ник: "
+msgstr "Неправильный ник: $nick"
 
 #: src/menu_events.cpp:2757 src/menu_events.cpp:2764 src/menu_events.cpp:2790
-#, fuzzy
 msgid "friends list"
-msgstr "В списке друзей"
+msgstr "список друзей"
 
 #: src/menu_events.cpp:2764
-#, fuzzy
 msgid "Added to friends list: $nick"
-msgstr "Добавлен в список друзей: "
+msgstr "Добавлен в список друзей: $nick"
 
 #: src/menu_events.cpp:2780
-#, fuzzy
 msgid "Removed from list: $nick"
-msgstr "Удален из списка: "
+msgstr "Удален из списка: $nick"
 
 #: src/menu_events.cpp:2780 src/menu_events.cpp:2798
-#, fuzzy
 msgid "friends and ignores list"
-msgstr "В списке игнора"
+msgstr "списки друзей и игнора"
 
 #: src/menu_events.cpp:2798
 msgid "There are no players on your friends or ignore list."
 msgstr "В ваших списках друзей или игноре никого нет."
 
 #: src/menu_events.cpp:2803
-#, fuzzy
 msgid "version"
-msgstr "Версия"
+msgstr "версия"
 
 #: src/menu_events.cpp:2819
 msgid "registering with password *** and no email address"
-msgstr ""
+msgstr "регистрируем с паролем *** и без е-мэйла"
 
 #: src/menu_events.cpp:2823
 msgid "registering with password *** and email address $email"
-msgstr ""
+msgstr "регистрируем с паролем *** на е-мэйл $email"
 
 #: src/menu_events.cpp:2826 src/menu_events.cpp:2837 src/menu_events.cpp:2855
 #: src/menu_events.cpp:2869
 msgid "nick registration"
-msgstr ""
+msgstr "регистрирую ник"
 
 #: src/menu_events.cpp:2837
 msgid "dropping your username"
-msgstr ""
+msgstr "удаляю Ваш ник"
 
 #: src/menu_events.cpp:2855
 msgid "setting $var to $value"
-msgstr ""
+msgstr "выставляю для $var значение $value"
 
 #: src/menu_events.cpp:2869
-#, fuzzy
 msgid "requesting information for user $nick"
-msgstr "Запросить информацию о нике"
+msgstr "запрашиваю информацию о пользователе $nick"
 
 #: src/menu_events.cpp:2981
 msgid "Couldn't find label or unit containing the string '$search'."
@@ -9102,23 +9088,23 @@ msgstr "Режим отладки отключён!"
 
 #: src/menu_events.cpp:3224
 msgid "Variable not found"
-msgstr ""
+msgstr "Переменная не найдена"
 
 #: src/menu_events.cpp:3262
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral or "
 "chaotic."
 msgstr ""
+"Неизвестный тип: «$alignment», должно быть либо «порядочный», либо «хаотичный», "
+"либо «нейтральный»."
 
 #: src/menu_events.cpp:3319
-#, fuzzy
 msgid "Invalid unit type"
-msgstr "Неправильное название тэга"
+msgstr "Неправильный тип бойца"
 
 #: src/menu_events.cpp:3332
-#, fuzzy
 msgid "Invalid location"
-msgstr "Неверный цвет"
+msgstr "Неверное место"
 
 #: src/menu_events.cpp:3368
 msgid "ai"
@@ -9161,7 +9147,7 @@ msgstr "Редирект со стороны сервера"
 
 #: src/multiplayer.cpp:257
 msgid "Bad data received from server"
-msgstr ""
+msgstr "Сервер прислал неверные данные"
 
 #: src/multiplayer.cpp:298
 msgid "You must login first."
@@ -9193,7 +9179,7 @@ msgstr "Ник '$nick' не зарегистрирован на этом сер�
 
 #: src/multiplayer.cpp:312
 msgid " This server disallows unregistered nicks."
-msgstr "На этом сервере не разрешены незарегистрированные ники."
+msgstr " На этом сервере не разрешены незарегистрированные ники."
 
 #: src/multiplayer.cpp:314 src/multiplayer.cpp:316
 msgid "The nick '$nick' is registered on this server."
@@ -9278,7 +9264,7 @@ msgstr "Не могу найти тип лидера для фракции $fact
 
 #: src/multiplayer_connect.cpp:1003
 msgid "Game Lobby: "
-msgstr "Холл игры:"
+msgstr "Холл игры: "
 
 #: src/multiplayer_connect.cpp:1024
 msgid "Player/Type"
@@ -9463,9 +9449,8 @@ msgid "Invalid era selected"
 msgstr "Выбрана неправильная эра"
 
 #: src/multiplayer_create.cpp:333
-#, fuzzy
 msgid "The map is invalid."
-msgstr "Игра окончена."
+msgstr "Карта повреждена"
 
 #: src/multiplayer_create.cpp:335
 msgid "You must enter a name."
@@ -9477,7 +9462,7 @@ msgstr "Установить пароль"
 
 #: src/multiplayer_create.cpp:344 src/multiplayer_lobby.cpp:901
 msgid "Password: "
-msgstr "Пароль:"
+msgstr "Пароль: "
 
 #: src/multiplayer_create.cpp:344
 msgid ""
@@ -9516,7 +9501,7 @@ msgstr "Золота с деревень: "
 
 #: src/multiplayer_create.cpp:411
 msgid "Exp. Mod.: "
-msgstr "Мод. опыта:"
+msgstr "Мод. опыта: "
 
 #: src/multiplayer_create.cpp:548
 msgid "Players: "
@@ -9579,9 +9564,8 @@ msgid "Friends in Game"
 msgstr "Друзья в игре"
 
 #: src/multiplayer_lobby.cpp:738
-#, fuzzy
 msgid "Filter:"
-msgstr "Фильтр: "
+msgstr "Фильтр:"
 
 #: src/multiplayer_lobby.cpp:747
 msgid "Skip quickly to the active turn when observing"
@@ -9629,7 +9613,7 @@ msgstr "Неверный цвет"
 
 #: src/multiplayer_ui.cpp:427
 msgid "Selected user: "
-msgstr "Выберите пользователя:"
+msgstr "Выберите пользователя: "
 
 #: src/multiplayer_wait.cpp:125
 msgid "Leader: "
@@ -9661,7 +9645,7 @@ msgstr "Выберите фракцию:"
 
 #: src/multiplayer_wait.cpp:298
 msgid "Starting position: "
-msgstr "Место начала:"
+msgstr "Место начала: "
 
 #: src/multiplayer_wait.cpp:503
 msgid "multiplayer_starting_gold^Gold"
@@ -9737,7 +9721,7 @@ msgstr "Вы проиграли!"
 
 #: src/playcampaign.cpp:402
 msgid "Error while reading the WML: "
-msgstr "Возникла ошибка при чтении WML:"
+msgstr "Возникла ошибка при чтении WML: "
 
 #: src/playcampaign.cpp:438
 msgid "This scenario has ended. Do you want to continue the campaign?"
@@ -9813,7 +9797,7 @@ msgstr "Золото: "
 
 #: src/playsingle_controller.cpp:229
 msgid "Carry over percentage: "
-msgstr "Процент, сохраняющийся в следующем сценарии:"
+msgstr "Процент, сохраняющийся в следующем сценарии: "
 
 #: src/playsingle_controller.cpp:232
 msgid "Bonus Gold: "
@@ -9841,20 +9825,13 @@ msgstr[2] ""
 "сценария минимумом."
 
 #: src/playsingle_controller.cpp:255
-#, fuzzy
 msgid ""
 "You will start the next scenario with the defined minimum starting gold."
 msgid_plural ""
 "You will start the next scenario with the defined minimum starting gold."
-msgstr[0] ""
-"Вы начнёте следующий сценарий с $gold золота, или с заданным для этого "
-"сценария минимумом."
-msgstr[1] ""
-"Вы начнёте следующий сценарий с $gold золота, или с заданным для этого "
-"сценария минимумом."
-msgstr[2] ""
-"Вы начнёте следующий сценарий с $gold золота, или с заданным для этого "
-"сценария минимумом."
+msgstr[0] "Вы начнёте следующий сценарий с заданным для него минимумом золота."
+msgstr[1] "Вы начнёте следующий сценарий с заданным для него минимумом золота."
+msgstr[2] "Вы начнёте следующий сценарий с заданным для него минимумом золота."
 
 #: src/playsingle_controller.cpp:263
 msgid ""
@@ -9949,7 +9926,7 @@ msgstr "Это не сетевое сохранение"
 
 #: src/savegame.cpp:606
 msgid "The game could not be saved: "
-msgstr "Игра не может быть сохранена:"
+msgstr "Игра не может быть сохранена: "
 
 #: src/savegame.cpp:693
 msgid "Name: "
