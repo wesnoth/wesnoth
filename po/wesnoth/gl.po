@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-04-23 23:46+0200\n"
-"PO-Revision-Date: 2010-04-21 11:18+0200\n"
+"POT-Creation-Date: 2010-04-24 10:49+0200\n"
+"PO-Revision-Date: 2010-04-25 18:49+0200\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -4975,8 +4975,8 @@ msgid ""
 "more damage in combat, though this only applies to units of lower level."
 msgstr ""
 " o liderado desta unidade permítelle ás unidades adxacentes do mesmo bando "
-"inflixir máis dano no combate, aínda que isto só afecte ás unidades de nivel "
-"inferior."
+"inflixir máis dano no combate, aínda que isto só afecta ás unidades de nivel "
+"inferior ao seu."
 
 #: data/core/macros/special-notes.cfg:32
 msgid ""
@@ -7893,7 +7893,7 @@ msgstr "Non me volvas preguntar!"
 # Aparece ao cargar partidas.
 #: src/dialogs.cpp:429 src/savegame.cpp:133
 msgid "%a %b %d %H:%M %Y"
-msgstr "%a, %d %b %Y (%H:%M)"
+msgstr "%d de %b do %Y, ás %H:%M"
 
 #: src/dialogs.cpp:444
 msgid "#(Invalid)"
@@ -7916,9 +7916,10 @@ msgstr "Titorial"
 msgid "replay"
 msgstr "Repetición"
 
+# En referencia á rolda en que está a partida (unha rolda é o grupo formado por unha quenda de cada xogador).
 #: src/dialogs.cpp:481 src/savegame.cpp:1019
 msgid "Turn"
-msgstr "Quenda"
+msgstr "Rolda"
 
 #: src/dialogs.cpp:483
 msgid "Scenario Start"
@@ -9776,9 +9777,8 @@ msgid "Observe Game"
 msgstr "Observar Partida"
 
 #: src/multiplayer_lobby.cpp:726
-#, fuzzy
 msgid "Join Game"
-msgstr "Cargar unha partida"
+msgstr "Unirse á partida"
 
 #: src/multiplayer_lobby.cpp:728
 msgid "Quick Replays"
@@ -9793,27 +9793,24 @@ msgid "Quit"
 msgstr "Saír"
 
 #: src/multiplayer_lobby.cpp:734
-#, fuzzy
 msgid "Apply Filter"
-msgstr "Filtro: "
+msgstr "Aplicar o filtro"
 
 #: src/multiplayer_lobby.cpp:735
 msgid "Invert"
-msgstr ""
+msgstr "Inverter"
 
 #: src/multiplayer_lobby.cpp:736
-#, fuzzy
 msgid "Vacant Slots"
-msgstr "Posto vacante:"
+msgstr "Postos vacantes"
 
 #: src/multiplayer_lobby.cpp:737
 msgid "Friends in Game"
-msgstr ""
+msgstr "Amigos na partida"
 
 #: src/multiplayer_lobby.cpp:738
-#, fuzzy
 msgid "Filter:"
-msgstr "Filtro: "
+msgstr "Filtro:"
 
 #: src/multiplayer_lobby.cpp:747
 msgid "Skip quickly to the active turn when observing"
@@ -9824,29 +9821,36 @@ msgid ""
 "Enable the games filter. If unchecked all games are shown, regardless of any "
 "filter."
 msgstr ""
+"Activar o filtro de partidas. Se non está marcado amósanse todas as "
+"partidas, ignorando calquera filtro."
 
 #: src/multiplayer_lobby.cpp:754
 msgid ""
 "Show all games that do *not* match your filter. Useful for hiding games you "
 "are not interested in."
 msgstr ""
+"Amosar todas as partidas que NON se axustan ao teu filtro. Resulta útil para "
+"agochar partidas que non te interesen."
 
 #: src/multiplayer_lobby.cpp:758
 msgid "Only show games that have at least one vacant slot"
-msgstr ""
+msgstr "Só amosar as partidas ás que lles queda polo menos un posto vacante"
 
 #: src/multiplayer_lobby.cpp:762
 msgid ""
 "Only show games that are played or observed by at least one of your friends"
 msgstr ""
+"Só amosar as partidas nas que hai polo menos un amigo teu xogando ou de "
+"observador"
 
 #: src/multiplayer_lobby.cpp:766
 msgid "Only show games whose title or description contain the entered text"
 msgstr ""
+"Só amosar as partidas cuxo título ou descrición conteñen o texto introducido"
 
 #: src/multiplayer_lobby.cpp:900
 msgid "Joining this game requires a password."
-msgstr "Para unirse a esta partida hai que proporcionar un contrasinal"
+msgstr "Para unirse a esta partida hai que proporcionar un contrasinal."
 
 #: src/multiplayer_ui.cpp:195
 msgid "Invalid Color"
