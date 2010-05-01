@@ -12,7 +12,10 @@
    See the COPYING file for more details.
 */
 
-/** @file gui/auxiliary/log.cpp */
+/**
+ * @file gui/auxiliary/log.cpp
+ * Define the loggers for the gui toolkit.
+ */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 

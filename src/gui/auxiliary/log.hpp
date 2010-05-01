@@ -12,7 +12,10 @@
    See the COPYING file for more details.
 */
 
-/** @file gui/auxiliary/log.hpp */
+/**
+ * @file gui/auxiliary/log.hpp
+ * Define the common log macros for the gui toolkit.
+ */
 
 #ifndef GUI_AUXILIRY_LOG_HPP_INCLUDED
 #define GUI_AUXILIRY_LOG_HPP_INCLUDED
