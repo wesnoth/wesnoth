@@ -19,19 +19,18 @@
 
 namespace gui2 {
 
-class tgame_delete : public tdialog
+class tgame_delete
+	: public tdialog
 {
 public:
 	tgame_delete();
 
 	bool dont_ask_again() const { return dont_ask_again_; }
 
-protected:
+private:
 
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);
-
-private:
 
 	/** Inherited from tdialog, implemented by REGISTER_WINDOW. */
 	virtual const std::string& window_id() const;
