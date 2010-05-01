@@ -20,16 +20,16 @@
 
 namespace gui2 {
 
-timage_definition::timage_definition(const config& cfg) :
-	tcontrol_definition(cfg)
+timage_definition::timage_definition(const config& cfg)
+	: tcontrol_definition(cfg)
 {
 	DBG_GUI_P << "Parsing image " << id << '\n';
 
 	load_resolutions<tresolution>(cfg);
 }
 
-timage_definition::tresolution::tresolution(const config& cfg) :
-	tresolution_definition_(cfg)
+timage_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
 {
 /*WIKI
  * @page = GUIWidgetDefinitionWML
@@ -40,14 +40,13 @@ timage_definition::tresolution::tresolution(const config& cfg) :
  * @macro = image_description
  *
  * The definition of an image. The label field of the widget is used as the
- * name of file to show.
+ * name of file to show. The widget normally has no event interaction so only
+ * one state is defined.
  *
  * The following states exist:
  * * state_enabled, the image is enabled.
- *
  */
-
-	// Note the order should be the same as the enum tstate is image.hpp.
+	// Note the order should be the same as the enum tstate in image.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 }
 

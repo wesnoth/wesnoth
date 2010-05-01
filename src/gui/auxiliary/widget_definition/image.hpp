@@ -29,7 +29,6 @@ struct timage_definition
 	{
 		explicit tresolution(const config& cfg);
 	};
-
 };
 
 } // namespace gui2
