@@ -385,7 +385,12 @@ public:
 	 * @param position               The place where the function was added.
 	 *                               Needed remove the event from the right
 	 *                               place. (The function doesn't care whether
-	 *                               was added in front or back.)
+	 *                               was added in front or back, but it needs
+	 *                               to know the proper queue so it's save to
+	 *                               add with front_child and remove with
+	 *                               back_child. But it's not save to add with
+	 *                               front_child and remove with
+	 *                               front_pre_child)
 	 */
 	template<tevent E>
 	typename boost::enable_if<boost::mpl::has_key<
