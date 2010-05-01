@@ -25,7 +25,7 @@ struct tbuilder_progress_bar
 	: public tbuilder_control
 {
 
-	tbuilder_progress_bar(const config& cfg);
+	explicit tbuilder_progress_bar(const config& cfg);
 
 	twidget* build () const;
 };
@@ -35,5 +35,4 @@ struct tbuilder_progress_bar
 } // namespace gui2
 
 #endif
-
 
