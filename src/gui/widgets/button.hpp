@@ -42,21 +42,13 @@ public:
 	/** Inherited from tcontrol. */
 	unsigned get_state() const { return state_; }
 
-	/**
-	 * Inherited from tclickable.
-	 *
-	 * @deprecated The function needs to be removed from the base class as well.
-	 */
+	/** Inherited from tclickable. */
 	void connect_click_handler(const event::tsignal_function& signal)
 	{
 		connect_signal_mouse_left_click(*this, signal);
 	}
 
-	/**
-	 * Inherited from tclickable.
-	 *
-	 * @deprecated The function needs to be removed from the base class as well.
-	 */
+	/** Inherited from tclickable. */
 	void disconnect_click_handler(const event::tsignal_function& signal)
 	{
 		disconnect_signal_mouse_left_click(*this, signal);
