@@ -24,7 +24,7 @@ namespace implementation {
 struct tbuilder_minimap
 	: public tbuilder_control
 {
-	tbuilder_minimap(const config& cfg);
+	explicit tbuilder_minimap(const config& cfg);
 
 	twidget* build () const;
 };

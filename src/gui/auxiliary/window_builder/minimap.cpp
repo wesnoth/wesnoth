@@ -36,8 +36,8 @@ twidget* tbuilder_minimap::build() const
 	init_control(widget);
 
 	DBG_GUI_G << "Window builder: placed minimap '"
-		<< id << "' with defintion '"
-		<< definition << "'.\n";
+			<< id << "' with defintion '"
+			<< definition << "'.\n";
 
 	return widget;
 }
