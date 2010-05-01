@@ -41,9 +41,8 @@ tminimap_definition::tresolution::tresolution(const config& cfg)
  *
  * The following states exist:
  * * state_enabled, the minimap is enabled.
- *
  */
-	// Note the order should be the same as the enum tstate is minimap.hpp.
+	// Note the order should be the same as the enum tstate in minimap.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 }
 
