@@ -308,7 +308,7 @@ public:
 	 * What hex are currently invalidated (read only)
 	 * used for some fine grained invalidation algorithm which need recurstion
 	 */
-	const std::set<map_location> & get_invalidated() { return invalidated_; }
+	const std::set<map_location> & get_invalidated() const { return invalidated_; }
 
 
 
@@ -478,7 +478,7 @@ public:
 	 * currently: SELECTED_TERRAIN, EDIT_LEFT_BUTTON_FUNCTION
 	 */
 	void set_report_content(const reports::TYPE which_report, const std::string &content);
-	std::map<reports::TYPE, std::string> get_report_contents() {return report_;};
+	std::map<reports::TYPE, std::string> get_report_contents() const {return report_;};
 
 protected:
 	/** Clear the screen contents */
