@@ -20,16 +20,16 @@
 
 namespace gui2 {
 
-tprogress_bar_definition::tprogress_bar_definition(const config& cfg) :
-	tcontrol_definition(cfg)
+tprogress_bar_definition::tprogress_bar_definition(const config& cfg)
+	: tcontrol_definition(cfg)
 {
 	DBG_GUI_P << "Parsing progress bar " << id << '\n';
 
 	load_resolutions<tresolution>(cfg);
 }
 
-tprogress_bar_definition::tresolution::tresolution(const config& cfg) :
-	tresolution_definition_(cfg)
+tprogress_bar_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
 {
 /*WIKI
  * @page = GUIWidgetDefinitionWML
@@ -44,10 +44,9 @@ tprogress_bar_definition::tresolution::tresolution(const config& cfg) :
  *
  * The following states exist:
  * * state_enabled, the progress bar is enabled.
- *
  */
 
-	// Note the order should be the same as the enum tstate is progress_bar.hpp.
+	// Note the order should be the same as the enum tstate in progress_bar.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 }
 
