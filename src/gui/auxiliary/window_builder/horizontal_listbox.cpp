@@ -81,8 +81,8 @@ twidget* tbuilder_horizontal_listbox::build() const
 		<< definition << "'.\n";
 
 	boost::intrusive_ptr<const tlistbox_definition::tresolution> conf =
-		boost::dynamic_pointer_cast
-		<const tlistbox_definition::tresolution>(widget->config());
+			boost::dynamic_pointer_cast
+				<const tlistbox_definition::tresolution>(widget->config());
 	assert(conf);
 
 	widget->init_grid(conf->grid);
@@ -101,7 +101,7 @@ twidget* tbuilder_horizontal_listbox::build() const
  *
  *        A horizontal listbox is a control that holds several items of the
  *        same type.  Normally the items in a listbox are ordered in rows,
- *        this version orders them vertically instead.
+ *        this version orders them in columns instead.
  * @end_macro
  */
 
@@ -141,6 +141,5 @@ twidget* tbuilder_horizontal_listbox::build() const
  * * selectable widgets which are
  * ** toggle_button
  * ** toggle_panel
- *
  */
 

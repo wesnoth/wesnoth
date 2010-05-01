@@ -26,13 +26,12 @@ namespace implementation {
 struct tbuilder_horizontal_listbox
 	: public tbuilder_control
 {
-	tbuilder_horizontal_listbox(const config& cfg);
+	explicit tbuilder_horizontal_listbox(const config& cfg);
 
 	twidget* build () const;
 
-	tscrollbar_container::tscrollbar_mode
-			vertical_scrollbar_mode,
-			horizontal_scrollbar_mode;
+	tscrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
+	tscrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
 
 	tbuilder_grid_ptr list_builder;
 
