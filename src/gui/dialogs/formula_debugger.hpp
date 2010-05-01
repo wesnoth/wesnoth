@@ -23,17 +23,23 @@ namespace game_logic {
 
 namespace gui2 {
 
-class tformula_debugger : public tdialog
+class tformula_debugger
+	: public tdialog
 {
 public:
 	tformula_debugger(game_logic::formula_debugger &fdb) :
 		fdb_(fdb)
 	{}
 
+private:
+
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
 
+	/** Inherited from tdialog, implemented by REGISTER_WINDOW. */
+	virtual const std::string& window_id() const;
 
+	/***** ***** button callbacks ***** *****/
 	void callback_continue_button(twindow& window);
 
 
@@ -45,11 +51,8 @@ public:
 
 	void callback_stepout_button(twindow& window);
 
-private:
 	game_logic::formula_debugger &fdb_;
 
-	/** Inherited from tdialog, implemented by REGISTER_WINDOW. */
-	virtual const std::string& window_id() const;
 };
 
 }

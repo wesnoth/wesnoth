@@ -59,13 +59,13 @@ void tformula_debugger::pre_show(CVideo& /*video*/, twindow& window)
 	std::string indent = "  ";
 	int c = 0;
 	foreach (const game_logic::debug_info &i, fdb_.get_call_stack()) {
-		for (int d=0; d<c; d++) {
+		for(int d = 0; d < c; ++d) {
 			stack_text << indent;
 		}
 		stack_text << "#<span color=\"green\">" << i.counter()
 				<<"</span>: \"<span color=\"green\">"<< i.name()
 				<< "</span>\": '" << i.str() << "' " << std::endl;
-		c++;
+		++c;
 	}
 
 	stack_label->set_use_markup(true);
@@ -78,10 +78,10 @@ void tformula_debugger::pre_show(CVideo& /*video*/, twindow& window)
 
 	std::stringstream execution_text;
 	foreach (const game_logic::debug_info &i, fdb_.get_execution_trace()) {
-		for (int d=0; d<i.level(); d++) {
+		for(int d = 0; d < i.level(); ++d) {
 			execution_text << indent;
 		}
-		if (!i.evaluated() ) {
+		if(!i.evaluated()) {
 			execution_text << "#<span color=\"green\">" << i.counter()
 					<< "</span>: \"<span color=\"green\">" << i.name()
 					<< "</span>\": '" << i.str() << "' " << std::endl;
@@ -101,11 +101,11 @@ void tformula_debugger::pre_show(CVideo& /*video*/, twindow& window)
 	// state
 	std::string state_str;
 	bool is_end = false;
-	if (!fdb_.get_current_breakpoint()) {
+	if(!fdb_.get_current_breakpoint()) {
 		state_str = "";
 	} else {
 		state_str = fdb_.get_current_breakpoint()->name();
-	        if (state_str=="End") {
+	        if(state_str=="End") {
 			is_end = true;
 		}
 	}
@@ -114,37 +114,30 @@ void tformula_debugger::pre_show(CVideo& /*video*/, twindow& window)
 
 	// callbacks
 	tbutton& step_button = find_widget<tbutton>(&window, "step", false);
-
 	connect_signal_mouse_left_click(step_button, boost::bind(
 			  &tformula_debugger::callback_step_button
 			, this
 			, boost::ref(window)));
 
-
 	tbutton& stepout_button = find_widget<tbutton>(&window, "stepout", false);
-
 	connect_signal_mouse_left_click(stepout_button, boost::bind(
 			  &tformula_debugger::callback_stepout_button
 			, this
 			, boost::ref(window)));
 
 	tbutton& next_button = find_widget<tbutton>(&window, "next", false);
-
 	connect_signal_mouse_left_click(next_button, boost::bind(
 			  &tformula_debugger::callback_next_button
 			, this
 			, boost::ref(window)));
 
-
 	tbutton& continue_button = find_widget<tbutton>(&window, "continue", false);
-
 	connect_signal_mouse_left_click(continue_button, boost::bind(
 			  &tformula_debugger::callback_continue_button
 			, this
 			, boost::ref(window)));
 
-
-	if (is_end) {
+	if(is_end) {
 		step_button.set_active(false);
 		stepout_button.set_active(false);
 		next_button.set_active(false);
