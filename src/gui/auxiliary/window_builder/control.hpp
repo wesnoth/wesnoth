@@ -23,10 +23,9 @@ class tcontrol;
 
 namespace implementation {
 
-struct tbuilder_control : public tbuilder_widget
+struct tbuilder_control
+	: public tbuilder_widget
 {
-private:
-	tbuilder_control();
 public:
 
 	tbuilder_control(const config& cfg);

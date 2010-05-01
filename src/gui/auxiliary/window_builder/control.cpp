@@ -24,15 +24,15 @@ namespace gui2 {
 
 namespace implementation {
 
-tbuilder_control::tbuilder_control(const config& cfg) :
-	tbuilder_widget(cfg),
-	id(cfg["id"]),
-	definition(cfg["definition"]),
-	linked_group(cfg["linked_group"]),
-	label(cfg["label"]),
-	tooltip(cfg["tooltip"]),
-	help(cfg["help"]),
-	use_tooltip_on_label_overflow(
+tbuilder_control::tbuilder_control(const config& cfg)
+	: tbuilder_widget(cfg)
+	, id(cfg["id"])
+	, definition(cfg["definition"])
+	, linked_group(cfg["linked_group"])
+	, label(cfg["label"])
+	, tooltip(cfg["tooltip"])
+	, help(cfg["help"])
+	, use_tooltip_on_label_overflow(
 		utils::string_bool("use_tooltip_on_label_overflow", true))
 #ifndef LOW_MEM
 	, debug_border_mode(lexical_cast_default<int>(cfg["debug_border_mode"]))
@@ -43,9 +43,8 @@ tbuilder_control::tbuilder_control(const config& cfg) :
 		definition = "default";
 	}
 
-
 	DBG_GUI_P << "Window builder: found control with id '"
-		<< id << "' and definition '" << definition << "'.\n";
+			<< id << "' and definition '" << definition << "'.\n";
 }
 
 void tbuilder_control::init_control(tcontrol* control) const
@@ -90,8 +89,9 @@ void tbuilder_control::init_control(tcontrol* control) const
  *
  *     definition (string = "default") The id of the widget definition to use.
  *                                     This way it's possible to select a
- *                                     specific version of the widget eg a title
- *                                     label when the label is used as title.
+ *                                     specific version of the widget e.g. a
+ *                                     title label when the label is used as
+ *                                     title.
  *
  *     linked_group(string = "")       The linked group the control belongs
  *                                     to.
@@ -121,13 +121,11 @@ void tbuilder_control::init_control(tcontrol* control) const
  *                                     used for the tooltip. If this variable is
  *                                     set to true this will happen.
  *
- *   linked_group (string = "")        The linked group the widget belongs to.
- *
  *   debug_border_mode (unsigned = 0)  The mode for showing the debug border.
  *                                     This border shows the area reserved for
  *                                     a widget. This function is only meant
  *                                     for debugging and might not be
- *                                     available in all wesnoth binaries.
+ *                                     available in all Wesnoth binaries.
  *                                     Available modes:
  *                                     @* 0 no border.
  *                                     @* 1 1 pixel border.
