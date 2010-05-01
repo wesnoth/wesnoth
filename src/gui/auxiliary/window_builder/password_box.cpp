@@ -37,16 +37,18 @@ twidget* tbuilder_password_box::build() const
 
 	init_control(widget);
 
-	// A textbox doesn't have a label but a text
+	// A password box doesn't have a label but a text
 	widget->set_value(label);
 
-	if (!history_.empty()) {
+	if(!history_.empty()) {
+		ERR_GUI_G << "A history field for a password box is deprecated "
+				" and will be removed in 1.9.2.\n";
 		widget->set_history(history_);
 	}
 
 	DBG_GUI_G << "Window builder: placed password box '"
-		<< id << "' with defintion '"
-		<< definition << "'.\n";
+			<< id << "' with defintion '"
+			<< definition << "'.\n";
 
 	return widget;
 }
@@ -62,15 +64,7 @@ twidget* tbuilder_password_box::build() const
  * == Password box ==
  *
  * @start_table = config
- *     label (tstring = "")            The initial text of the text box.
- *     history (string = "")           The name of the history for the text
- *                                     box. A history saves the data entered
- *                                     in a text box between the games. With
- *                                     the up and down arrow it can be
- *                                     accessed. To create a new history item
- *                                     just add a new unique name for this
- *                                     field and the engine will handle the
- *                                     rest.
+ *     label (tstring = "")            The initial text of the password box.
  * @end_table
  */
 

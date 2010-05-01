@@ -26,13 +26,13 @@ namespace implementation {
 struct tbuilder_password_box
 	: public tbuilder_control
 {
-private:
-	std::string history_;
-
 public:
-	tbuilder_password_box(const config& cfg);
+	explicit tbuilder_password_box(const config& cfg);
 
 	twidget* build () const;
+
+private:
+	std::string history_;
 };
 
 } // namespace implementation
