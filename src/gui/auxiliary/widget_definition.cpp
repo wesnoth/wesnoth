@@ -23,20 +23,21 @@
 
 namespace gui2 {
 
-tresolution_definition_::tresolution_definition_(const config& cfg) :
-	window_width(lexical_cast_default<unsigned>(cfg["window_width"])),
-	window_height(lexical_cast_default<unsigned>(cfg["window_height"])),
-	min_width(lexical_cast_default<unsigned>(cfg["min_width"])),
-	min_height(lexical_cast_default<unsigned>(cfg["min_height"])),
-	default_width(lexical_cast_default<unsigned>(cfg["default_width"])),
-	default_height(lexical_cast_default<unsigned>(cfg["default_height"])),
-	max_width(lexical_cast_default<unsigned>(cfg["max_width"])),
-	max_height(lexical_cast_default<unsigned>(cfg["max_height"])),
-	text_extra_width(lexical_cast_default<unsigned>(cfg["text_extra_width"])),
-	text_extra_height(lexical_cast_default<unsigned>(cfg["text_extra_height"])),
-	text_font_size(lexical_cast_default<unsigned>(cfg["text_font_size"])),
-	text_font_style(decode_font_style(cfg["text_font_style"])),
-	state()
+tresolution_definition_::tresolution_definition_(const config& cfg)
+	: window_width(lexical_cast_default<unsigned>(cfg["window_width"]))
+	, window_height(lexical_cast_default<unsigned>(cfg["window_height"]))
+	, min_width(lexical_cast_default<unsigned>(cfg["min_width"]))
+	, min_height(lexical_cast_default<unsigned>(cfg["min_height"]))
+	, default_width(lexical_cast_default<unsigned>(cfg["default_width"]))
+	, default_height(lexical_cast_default<unsigned>(cfg["default_height"]))
+	, max_width(lexical_cast_default<unsigned>(cfg["max_width"]))
+	, max_height(lexical_cast_default<unsigned>(cfg["max_height"]))
+	, text_extra_width(lexical_cast_default<unsigned>(cfg["text_extra_width"]))
+	, text_extra_height(
+			lexical_cast_default<unsigned>(cfg["text_extra_height"]))
+	, text_font_size(lexical_cast_default<unsigned>(cfg["text_font_size"]))
+	, text_font_style(decode_font_style(cfg["text_font_style"]))
+	, state()
 {
 /*WIKI
  * @page = GUIToolkitWML
@@ -90,19 +91,17 @@ tresolution_definition_::tresolution_definition_(const config& cfg) :
  *                                   Note they aren't called state but state_xxx
  *                                   the exact names are listed per widget.
  * @end_table
- *
  */
 
 	DBG_GUI_P << "Parsing resolution "
-		<< window_width << ", " << window_height << '\n';
+			<< window_width << ", " << window_height << '\n';
 }
 
-tcontrol_definition::tcontrol_definition(const config& cfg) :
-	id(cfg["id"]),
-	description(cfg["description"]),
-	resolutions()
+tcontrol_definition::tcontrol_definition(const config& cfg)
+	: id(cfg["id"])
+	, description(cfg["description"])
+	, resolutions()
 {
-
 /*WIKI
  * @page = GUIWidgetDefinitionWML
  * @order = 1
@@ -112,7 +111,7 @@ tcontrol_definition::tcontrol_definition(const config& cfg) :
  * = Widget definition =
  *
  * This page describes the definition of all widgets in the toolkit. Every
- * widget has some parts in common, first of all every definition has the
+ * widget has some parts in common, first of all; every definition has the
  * following fields.
  *
  * @start_table = config
@@ -122,7 +121,6 @@ tcontrol_definition::tcontrol_definition(const config& cfg) :
  *     resolution (section)          The definitions of the widget in various
  *                                   resolutions.
  * @end_table
- *
  */
 
 	VALIDATE(!id.empty(), missing_mandatory_wml_key("control", "id"));

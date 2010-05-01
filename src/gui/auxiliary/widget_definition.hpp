@@ -30,7 +30,7 @@ namespace gui2 {
  */
 struct tstate_definition
 {
-	tstate_definition(const config &cfg);
+	explicit tstate_definition(const config &cfg);
 
 	tcanvas canvas;
 };
@@ -40,7 +40,7 @@ struct tstate_definition
 struct tresolution_definition_
 	: public reference_counted_object
 {
-	tresolution_definition_(const config& cfg);
+	explicit tresolution_definition_(const config& cfg);
 
 	unsigned window_width;
 	unsigned window_height;
@@ -73,14 +73,14 @@ typedef
 struct tcontrol_definition
 	: public reference_counted_object
 {
-	tcontrol_definition(const config& cfg);
+	explicit tcontrol_definition(const config& cfg);
 
 	template<class T>
 	void load_resolutions(const config &cfg)
 	{
 		config::const_child_itors itors = cfg.child_range("resolution");
-		foreach (const config &r, itors) {
-			resolutions.push_back(new T(r));
+		foreach(const config &resolution, itors) {
+			resolutions.push_back(new T(resolution));
 		}
 	}
 
