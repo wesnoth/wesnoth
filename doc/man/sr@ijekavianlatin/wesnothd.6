@@ -62,8 +62,8 @@ vezuje server za navedeni port. Ako se port ne navede, podrazumijevano se
 koristi \fB15000\fP.
 .TP 
 \fB\-t\ \fP\fIbroj\fP\fB,\ \-\-threads\fP\fI\ broj\fP
-postavlja najveći broj radnih niti na čekanju za mrežni U/I (podrazumevano:
-\fB5\fP,\ najviše:\ \fB30\fP).
+postavlja najveći broj radnih niti na čekanju za mrežni U/I
+(podrazumijevano: \fB5\fP,\ najviše:\ \fB30\fP).
 .TP 
 \fB\-T\ \fP\fIbroj\fP\fB,\ \-\-max\-threads\fP\fI\ broj\fP
 postavlja najveći broj radnih niti koje mogu biti stvorene; ako se zada
@@ -165,12 +165,12 @@ Zapetama razdvojen spisak niski verzija koje server prihvata. Prihvataju se
 \fB*\fP i \fB?\fP kao džokeri (podrazumijevana je verzija klijenta koja odgovara
 verziji servera)
 .br
-Primer: \fBversions_accepted="*"\fP prihvata bilo koju nisku verzije.
+Primjer: \fBversions_accepted="*"\fP prihvata bilo koju nisku verzije.
 .TP  
 \fBuser_handler\fP
 Ime rukovaoca korisnicima. Trenutno dostupni su \fBforum\fP (server se povezuje
 sa phpBB bazom podataka foruma) i \fBsample\fP (primjerna izvedba sučelja
-rukovaoca korisnicima, ludi ste ako ovo upotrebite negde
+rukovaoca korisnicima, ludi ste ako ovo upotrijebite negdje
 zaozbiljno). Podrazumijevana vrijednost je \fBforum\fP. Takođe morate dodati
 odjeljak \fB[user_handler]\fP, v. ispod.
 .
@@ -201,9 +201,9 @@ Ime koje upućuje na trajanje zabrane.
 .TP 
 \fBtime\fP
 Trajanje. Format je %d[%s[%d%s[...]]] gdje s iz %s označava sekunde, m
-minute, h sate, D dane, M mesece, Y godine, a d je broj. Ako nije dat
-modifikator, pretpostavljaju se minuti (m). Primer: \fBtime="1D12h30m"\fP znači
-zabranu u trajanju od jednog dana, 12 sati i 30 minuta.
+minute, h sate, D dane, M mjesece, Y godine, a d je broj. Ako nije dat
+modifikator, pretpostavljaju se minuti (m). Primjer: \fBtime="1D12h30m"\fP
+znači zabranu u trajanju od jednog dana, 12 sati i 30 minuta.
 .RE
 .P
 \fB[proxy]\fP oznaka koja govori serveru da se ponaša kao posrednik i
@@ -248,7 +248,7 @@ danima).
 .RE
 .P
 \fB[mail]\fP podešava SMTP server kroz koji rukovalac korisnicima šalje
-poštu. Trenutno samo za primerni rukovalac.
+poštu. Trenutno samo za primjerni rukovalac.
 .RS
 .TP  
 \fBserver\fP
