@@ -22,17 +22,17 @@
 
 namespace gui2 {
 
-ttree_view_definition::ttree_view_definition(const config& cfg) :
-	tcontrol_definition(cfg)
+ttree_view_definition::ttree_view_definition(const config& cfg)
+	: tcontrol_definition(cfg)
 {
 	DBG_GUI_P << "Parsing tree view " << id << '\n';
 
 	load_resolutions<tresolution>(cfg);
 }
 
-ttree_view_definition::tresolution::tresolution(const config& cfg) :
-	tresolution_definition_(cfg),
-	grid(NULL)
+ttree_view_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
+	, grid(NULL)
 {
 /*WIKI
  * @page = GUIWidgetDefinitionWML
@@ -47,7 +47,6 @@ ttree_view_definition::tresolution::tresolution(const config& cfg) :
  * The following states exist:
  * * state_enabled, the listbox is enabled.
  * * state_disabled, the listbox is disabled.
- *
  */
 
 	// Note the order should be the same as the enum tstate is listbox.hpp.
