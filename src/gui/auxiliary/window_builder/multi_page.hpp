@@ -29,7 +29,7 @@ namespace implementation {
 struct tbuilder_multi_page
 	: public tbuilder_control
 {
-	tbuilder_multi_page(const config& cfg);
+	explicit tbuilder_multi_page(const config& cfg);
 
 	twidget* build () const;
 
@@ -49,5 +49,4 @@ struct tbuilder_multi_page
 } // namespace gui2
 
 #endif
-
 

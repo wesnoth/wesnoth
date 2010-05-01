@@ -28,10 +28,10 @@ namespace gui2 {
 
 namespace implementation {
 
-tbuilder_multi_page::tbuilder_multi_page(const config& cfg) :
-	implementation::tbuilder_control(cfg),
-	builder(NULL),
-	data()
+tbuilder_multi_page::tbuilder_multi_page(const config& cfg)
+	: implementation::tbuilder_control(cfg)
+	, builder(NULL)
+	, data()
 {
 	const config &page = cfg.child("page_definition");
 
@@ -56,8 +56,9 @@ tbuilder_multi_page::tbuilder_multi_page(const config& cfg) :
 			++col;
 		}
 
-		VALIDATE(col == builder->cols, _("'list_data' must have "
-			"the same number of columns as the 'list_definition'."));
+		VALIDATE(col == builder->cols
+				, _("'list_data' must have "
+					"the same number of columns as the 'list_definition'."));
 	}
 }
 
@@ -74,8 +75,8 @@ twidget* tbuilder_multi_page::build() const
 			<< definition << "'.\n";
 
 	boost::intrusive_ptr<const tmulti_page_definition::tresolution> conf =
-		boost::dynamic_pointer_cast
-		<const tmulti_page_definition::tresolution>(widget->config());
+			boost::dynamic_pointer_cast
+				<const tmulti_page_definition::tresolution>(widget->config());
 	assert(conf);
 
 	widget->init_grid(conf->grid);
@@ -108,14 +109,14 @@ twidget* tbuilder_multi_page::build() const
  *
  * List with the multi page specific variables:
  * @start_table = config
- *     page_definition (section)       This defines how a listbox item
+ *     page_definition (section)       This defines how a multi page item
  *                                     looks. It must contain the grid
- *                                     definition for 1 row of the list.
+ *                                     definition for at least one page.
  *
  *     page_data(section = [])         A grid alike section which stores the
- *                                     initial data for the listbox. Every row
- *                                     must have the same number of columns as
- *                                     the 'list_definition'.
+ *                                     initial data for the multi page. Every
+ *                                     row must have the same number of columns
+ *                                     as the 'page_definition'.
  * @end_table
  */
 
