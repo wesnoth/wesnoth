@@ -24,7 +24,7 @@ namespace implementation {
 struct tbuilder_spacer
 	: public tbuilder_control
 {
-	tbuilder_spacer(const config& cfg);
+	explicit tbuilder_spacer(const config& cfg);
 
 	twidget* build () const;
 
@@ -38,5 +38,4 @@ private:
 } // namespace gui2
 
 #endif
-
 
