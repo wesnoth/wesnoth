@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-04-23 23:46+0200\n"
-"PO-Revision-Date: 2010-03-22 21:20+0200\n"
-"Last-Translator: Samu Voutilainen <smar@smar.fi>\n"
+"PO-Revision-Date: 2010-04-30 23:55+0200\n"
+"Last-Translator: Mikko Nikkilä <miccoh@gmail.com>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -8657,7 +8657,6 @@ msgid "do not translate the 'all'^[all|<command>]"
 msgstr ""
 
 #: src/menu_events.cpp:1998
-#, fuzzy
 msgid "Error:"
 msgstr "Virhe:"
 
@@ -8672,9 +8671,8 @@ msgid ""
 msgstr ""
 
 #: src/menu_events.cpp:2052 src/menu_events.cpp:2053 src/menu_events.cpp:2076
-#, fuzzy
 msgid "help"
-msgstr "Apua"
+msgstr "apua"
 
 #: src/menu_events.cpp:2053
 msgid "Type $help_command <command> for more info."
@@ -8685,9 +8683,8 @@ msgid " No help available."
 msgstr " Ohjetta ei ole saatavilla."
 
 #: src/menu_events.cpp:2069
-#, fuzzy
 msgid "Usage:"
-msgstr "Viesti:"
+msgstr "Käyttö:"
 
 #: src/menu_events.cpp:2074
 msgid "aliases:"
@@ -9062,74 +9059,65 @@ msgid "(empty)"
 msgstr "(tyhjä)"
 
 #: src/menu_events.cpp:2738 src/menu_events.cpp:2744 src/menu_events.cpp:2794
-#, fuzzy
 msgid "ignores list"
-msgstr "Suodatuslistalla"
+msgstr "ignoroitujen lista"
 
 #: src/menu_events.cpp:2744
-#, fuzzy
 msgid "Added to ignore list: $nick"
-msgstr "Et enää saa viestejä, jotka lähettää "
+msgstr "Et enää saa viestejä, jotka lähettää $nick"
 
 #: src/menu_events.cpp:2747 src/menu_events.cpp:2766
-#, fuzzy
 msgid "Invalid username: $nick"
-msgstr "Virheellinen käyttäjänimi: "
+msgstr "Virheellinen käyttäjänimi: $nick"
 
 #: src/menu_events.cpp:2757 src/menu_events.cpp:2764 src/menu_events.cpp:2790
-#, fuzzy
 msgid "friends list"
-msgstr "Ystävälistalla"
+msgstr "ystävälista"
 
 #: src/menu_events.cpp:2764
-#, fuzzy
 msgid "Added to friends list: $nick"
-msgstr "Lisätyt ystävälistalle: "
+msgstr "Lisätty ystävälistalle: $nick"
 
 #: src/menu_events.cpp:2780
-#, fuzzy
 msgid "Removed from list: $nick"
-msgstr "Poistettu listalta: "
+msgstr "Poistettu listalta: $nick"
 
 #: src/menu_events.cpp:2780 src/menu_events.cpp:2798
-#, fuzzy
 msgid "friends and ignores list"
-msgstr "Suodatuslistalla"
+msgstr "ystävien ja ignoroitujen lista"
 
 #: src/menu_events.cpp:2798
 msgid "There are no players on your friends or ignore list."
 msgstr "Sinulla ei ole pelaajia ystävien tai tai torjuttujen listalla."
 
 #: src/menu_events.cpp:2803
-#, fuzzy
 msgid "version"
 msgstr "versio"
 
 #: src/menu_events.cpp:2819
 msgid "registering with password *** and no email address"
-msgstr ""
+msgstr "rekisteröidään salasanalla *** ilman sähköpostiosoitetta"
 
 #: src/menu_events.cpp:2823
 msgid "registering with password *** and email address $email"
-msgstr ""
+msgstr "rekisteröidään salasanalla *** ja sähköpostiosoitteella $email"
 
 #: src/menu_events.cpp:2826 src/menu_events.cpp:2837 src/menu_events.cpp:2855
 #: src/menu_events.cpp:2869
 msgid "nick registration"
-msgstr ""
+msgstr "käyttäjänimen rekisteröinti"
 
 #: src/menu_events.cpp:2837
 msgid "dropping your username"
-msgstr ""
+msgstr "pudotetaan käyttäjänimesi"
 
 #: src/menu_events.cpp:2855
 msgid "setting $var to $value"
 msgstr ""
 
 #: src/menu_events.cpp:2869
-#, fuzzy
 msgid "requesting information for user $nick"
-msgstr "Pyydä tietoa nimimerkkiin liittyen."
+msgstr "pyydetään tietoa nimimerkkiin $nick liittyen"
 
 #: src/menu_events.cpp:2981
 msgid "Couldn't find label or unit containing the string '$search'."
@@ -9178,14 +9166,12 @@ msgid ""
 msgstr ""
 
 #: src/menu_events.cpp:3319
-#, fuzzy
 msgid "Invalid unit type"
-msgstr "Virheellinen tagin nimi"
+msgstr "Virheellinen yksikkötyyppi"
 
 #: src/menu_events.cpp:3332
-#, fuzzy
 msgid "Invalid location"
-msgstr "Virheellinen väri"
+msgstr "Virheellinen sijainti"
 
 #: src/menu_events.cpp:3368
 msgid "ai"
@@ -9535,9 +9521,8 @@ msgid "Invalid era selected"
 msgstr "Virheellinen aikakausi valittu."
 
 #: src/multiplayer_create.cpp:333
-#, fuzzy
 msgid "The map is invalid."
-msgstr "Peli on ohitse."
+msgstr "Kartta on virheellinen."
 
 #: src/multiplayer_create.cpp:335
 msgid "You must enter a name."
@@ -9634,25 +9619,22 @@ msgid "Quit"
 msgstr "Lopeta"
 
 #: src/multiplayer_lobby.cpp:734
-#, fuzzy
 msgid "Apply Filter"
-msgstr "Suodatin: "
+msgstr "Hyväksy suodatin"
 
 #: src/multiplayer_lobby.cpp:735
 msgid "Invert"
-msgstr ""
+msgstr "Käännä"
 
 #: src/multiplayer_lobby.cpp:736
-#, fuzzy
 msgid "Vacant Slots"
-msgstr "Vapaita paikkoja:"
+msgstr "Vapaita paikkoja"
 
 #: src/multiplayer_lobby.cpp:737
 msgid "Friends in Game"
-msgstr ""
+msgstr "Ystävät pelissä"
 
 #: src/multiplayer_lobby.cpp:738
-#, fuzzy
 msgid "Filter:"
 msgstr "Suodatin: "
 
@@ -9904,17 +9886,12 @@ msgstr[1] ""
 "vähimmäisaloituskullalla."
 
 #: src/playsingle_controller.cpp:255
-#, fuzzy
 msgid ""
 "You will start the next scenario with the defined minimum starting gold."
 msgid_plural ""
 "You will start the next scenario with the defined minimum starting gold."
-msgstr[0] ""
-"Aloitat seuraavan skenaarion $gold| kultapalalla ja lisäksi määrätyllä "
-"vähimmäisaloituskullalla."
-msgstr[1] ""
-"Aloitat seuraavan skenaarion $gold| kultapalalla ja lisäksi määrätyllä "
-"vähimmäisaloituskullalla."
+msgstr[0] "Aloitat seuraavan skenaarion määrätyllä vähimmäisaloituskullalla."
+msgstr[1] "Aloitat seuraavan skenaarion määrätyllä vähimmäisaloituskullalla."
 
 #: src/playsingle_controller.cpp:263
 msgid ""
