@@ -47,13 +47,15 @@ ttoggle_panel_definition::tresolution::tresolution(const config& cfg)
  *
  * The resolution for a toggle panel also contains the following keys:
  * @start_table = config
- *     top_border (unsigned = 0)     The size which isn't used for the client area.
- *     bottom_border (unsigned = 0)  The size which isn't used for the client area.
- *     left_border (unsigned = 0)    The size which isn't used for the client area.
- *     right_border (unsigned = 0)   The size which isn't used for the client area.
+ *     top_border (unsigned = 0)     The size which isn't used for the client
+ *                                   area.
+ *     bottom_border (unsigned = 0)  The size which isn't used for the client
+ *                                   area.
+ *     left_border (unsigned = 0)    The size which isn't used for the client
+ *                                   area.
+ *     right_border (unsigned = 0)   The size which isn't used for the client
+ *                                   area.
  * @end_table
- *
- * The following layers exist:
  *
  * The following states exist:
  * * state_enabled, the panel is enabled and not selected.
@@ -63,10 +65,8 @@ ttoggle_panel_definition::tresolution::tresolution(const config& cfg)
  * * state_enabled_selected, the panel is enabled and selected.
  * * state_disabled_selected, the panel is disabled and selected.
  * * state_focussed_selected, the mouse is over the panel and selected.
- *
  */
-
-	// Note the order should be the same as the enum tstate is toggle_panel.hpp.
+	// Note the order should be the same as the enum tstate in toggle_panel.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 	state.push_back(tstate_definition(cfg.child("state_disabled")));
 	state.push_back(tstate_definition(cfg.child("state_focussed")));
