@@ -20,8 +20,8 @@
 
 namespace gui2 {
 
-tlabel_definition::tlabel_definition(const config& cfg) :
-	tcontrol_definition(cfg)
+tlabel_definition::tlabel_definition(const config& cfg)
+	: tcontrol_definition(cfg)
 {
 	DBG_GUI_P << "Parsing label " << id << '\n';
 
@@ -29,8 +29,8 @@ tlabel_definition::tlabel_definition(const config& cfg) :
 }
 
 
-tlabel_definition::tresolution::tresolution(const config& cfg) :
-	tresolution_definition_(cfg)
+tlabel_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
 {
 /*WIKI
  * @page = GUIWidgetDefinitionWML
@@ -40,11 +40,14 @@ tlabel_definition::tresolution::tresolution(const config& cfg) :
  *
  * @macro = label_description
  *
+ * Although the label itself has no event interaction it still has two states.
+ * The reason is that labels are often used as visual indication of the state
+ * of the widget it labels.
+ *
  * The following states exist:
  * * state_enabled, the label is enabled.
  * * state_disabled, the label is disabled.
  */
-
 	// Note the order should be the same as the enum tstate is label.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 	state.push_back(tstate_definition(cfg.child("state_disabled")));
