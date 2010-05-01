@@ -30,9 +30,8 @@ struct tbuilder_tree_view
 
 	twidget* build () const;
 
-	tscrollbar_container::tscrollbar_mode
-			vertical_scrollbar_mode,
-			horizontal_scrollbar_mode;
+	tscrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
+	tscrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
 
 	unsigned indention_step_size;
 
