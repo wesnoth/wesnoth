@@ -39,12 +39,12 @@ tbuilder_slider::tbuilder_slider(const config& cfg)
 	, maximum_value_label_(cfg["maximum_value_label"])
 	, value_labels_()
 {
-	const config &labels = cfg.child("value_labels");
+	const config& labels = cfg.child("value_labels");
 	if(!labels) {
 		return;
 	}
 
-	foreach(const config &label, labels.child_range("value")) {
+	foreach(const config& label, labels.child_range("value")) {
 		value_labels_.push_back(label["label"]);
 	}
 }
@@ -62,8 +62,8 @@ twidget* tbuilder_slider::build() const
 	widget->set_value(value_);
 
 	if(!value_labels_.empty()) {
-		VALIDATE(value_labels_.size() == widget->get_item_count(),
-			_("The number of value_labels and values don't match."));
+		VALIDATE(value_labels_.size() == widget->get_item_count()
+				, _("The number of value_labels and values don't match."));
 
 		widget->set_value_labels(value_labels_);
 
@@ -73,8 +73,8 @@ twidget* tbuilder_slider::build() const
 	}
 
 	DBG_GUI_G << "Window builder: placed slider '"
-		<< id << "' with defintion '"
-		<< definition << "'.\n";
+			<< id << "' with defintion '"
+			<< definition << "'.\n";
 
 	return widget;
 }
@@ -120,8 +120,7 @@ twidget* tbuilder_slider::build() const
  *                                    might be the need for a special value
  *                                    (eg unlimited)). When this key has a
  *                                    value that value will be shown if the
- *                                    maximum is
- *                                    selected.
+ *                                    maximum is selected.
  *     value_labels ([])              It might be the labels need to be shown
  *                                    are not a linear number sequence eg
  *                                    (0.5, 1, 2, 4) in that case for all

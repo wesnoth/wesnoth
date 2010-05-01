@@ -28,7 +28,7 @@ namespace implementation {
 struct tbuilder_slider
 	: public tbuilder_control
 {
-	tbuilder_slider(const config& cfg);
+	explicit tbuilder_slider(const config& cfg);
 
 	twidget* build () const;
 
