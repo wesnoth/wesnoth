@@ -22,17 +22,17 @@
 
 namespace gui2 {
 
-tlistbox_definition::tlistbox_definition(const config& cfg) :
-	tcontrol_definition(cfg)
+tlistbox_definition::tlistbox_definition(const config& cfg)
+	: tcontrol_definition(cfg)
 {
 	DBG_GUI_P << "Parsing listbox " << id << '\n';
 
 	load_resolutions<tresolution>(cfg);
 }
 
-tlistbox_definition::tresolution::tresolution(const config& cfg) :
-	tresolution_definition_(cfg),
-	grid(NULL)
+tlistbox_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
+	, grid(NULL)
 {
 /*WIKI
  * @page = GUIWidgetDefinitionWML
@@ -42,7 +42,7 @@ tlistbox_definition::tresolution::tresolution(const config& cfg) :
  *
  * @macro = listbox_description
  *
- * The definition of a listbox contains the definition of it's scrollbar.
+ * The definition of a listbox contains the definition of its scrollbar.
  *
  * The resolution for a listbox also contains the following keys:
  * @start_table = config
@@ -63,14 +63,14 @@ tlistbox_definition::tresolution::tresolution(const config& cfg) :
  *     [_page_up] (clickable)          Move the position the number of visible
  *                                     items up. (See note at _line_up.)
  *
- *
  *     [_end] (clickable)              Moves the position to the end of the
  *                                     list.
  *     [_line_down] (clickable)        Move the position one item down.(See note
  *                                     at _line_up.)
  *     [_half_page_down] (clickable)   Move the position half the number of the
- *                                     visible items down. (See note at _line_up.)
- *     [_page_down] (clickable)         Move the position the number of visible
+ *                                     visible items down. (See note at
+ *                                     _line_up.)
+ *     [_page_down] (clickable)        Move the position the number of visible
  *                                     items down. (See note at _line_up.)
  *
  *     _scrollbar (vertical_scrollbar) This is the scrollbar so the user can
@@ -84,7 +84,6 @@ tlistbox_definition::tresolution::tresolution(const config& cfg) :
  * The following states exist:
  * * state_enabled, the listbox is enabled.
  * * state_disabled, the listbox is disabled.
- *
  */
 
 /*WIKI
@@ -97,7 +96,7 @@ tlistbox_definition::tresolution::tresolution(const config& cfg) :
  *
  * The definition of a horizontal listbox is the same as for a normal listbox.
  */
-	// Note the order should be the same as the enum tstate is listbox.hpp.
+	// Note the order should be the same as the enum tstate in listbox.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 	state.push_back(tstate_definition(cfg.child("state_disabled")));
 
