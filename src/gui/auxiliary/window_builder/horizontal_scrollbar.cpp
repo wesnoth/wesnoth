@@ -23,6 +23,11 @@ namespace gui2 {
 
 namespace implementation {
 
+tbuilder_horizontal_scrollbar::tbuilder_horizontal_scrollbar(const config& cfg)
+   : tbuilder_control(cfg)
+{
+}
+
 twidget* tbuilder_horizontal_scrollbar::build() const
 {
 	thorizontal_scrollbar *widget = new thorizontal_scrollbar();
@@ -30,9 +35,9 @@ twidget* tbuilder_horizontal_scrollbar::build() const
 	init_control(widget);
 
 	DBG_GUI_G << "Window builder:"
-		<< " placed horizontal scrollbar '" << id
-		<< "' with defintion '" << definition
-		<< "'.\n";
+			<< " placed horizontal scrollbar '" << id
+			<< "' with defintion '" << definition
+			<< "'.\n";
 
 	return widget;
 }
