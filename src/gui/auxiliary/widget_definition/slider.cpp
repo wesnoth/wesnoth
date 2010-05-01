@@ -67,12 +67,14 @@ tslider_definition::tresolution::tresolution(const config& cfg)
  * The following states exist:
  * * state_enabled, the slider is enabled.
  * * state_disabled, the slider is disabled.
- * * state_pressed, the left mouse button is down on the positioner of the slider.
+ * * state_pressed, the left mouse button is down on the positioner of the
+ *   slider.
  * * state_focussed, the mouse is over the positioner of the slider.
  */
-
-	VALIDATE(minimum_positioner_length,
-		missing_mandatory_wml_key("resolution", "minimum_positioner_length"));
+	VALIDATE(minimum_positioner_length
+			, missing_mandatory_wml_key(
+				  "resolution"
+				, "minimum_positioner_length"));
 
 	// Note the order should be the same as the enum tstate is slider.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
