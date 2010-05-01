@@ -20,18 +20,18 @@
 
 namespace gui2 {
 
-ttext_box_definition::ttext_box_definition(const config& cfg) :
-	tcontrol_definition(cfg)
+ttext_box_definition::ttext_box_definition(const config& cfg)
+	: tcontrol_definition(cfg)
 {
 	DBG_GUI_P << "Parsing text_box " << id << '\n';
 
 	load_resolutions<tresolution>(cfg);
 }
 
-ttext_box_definition::tresolution::tresolution(const config& cfg) :
-	tresolution_definition_(cfg),
-	text_x_offset(cfg["text_x_offset"]),
-	text_y_offset(cfg["text_y_offset"])
+ttext_box_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
+	, text_x_offset(cfg["text_x_offset"])
+	, text_y_offset(cfg["text_y_offset"])
 {
 /*WIKI
  * @page = GUIWidgetDefinitionWML
@@ -56,10 +56,8 @@ ttext_box_definition::tresolution::tresolution(const config& cfg) :
  * * state_enabled, the text box is enabled.
  * * state_disabled, the text box is disabled.
  * * state_focussed, the text box has the focus of the keyboard.
- *
  */
-
-	// Note the order should be the same as the enum tstate is text_box.hpp.
+	// Note the order should be the same as the enum tstate in text_box.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 	state.push_back(tstate_definition(cfg.child("state_disabled")));
 	state.push_back(tstate_definition(cfg.child("state_focussed")));
