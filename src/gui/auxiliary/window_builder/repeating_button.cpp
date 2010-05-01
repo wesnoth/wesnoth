@@ -62,5 +62,4 @@ twidget* tbuilder_repeating_button::build() const
  * == Repeating button ==
  *
  * @macro = repeating_button_description
- *
  */

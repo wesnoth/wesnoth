@@ -25,10 +25,9 @@ struct tbuilder_repeating_button
 	: public tbuilder_control
 {
 public:
-	tbuilder_repeating_button(const config& cfg);
+	explicit tbuilder_repeating_button(const config& cfg);
 
 	twidget* build () const;
-
 };
 
 } // namespace implementation
@@ -36,5 +35,4 @@ public:
 } // namespace gui2
 
 #endif
-
 
