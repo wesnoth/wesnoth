@@ -24,7 +24,7 @@ namespace implementation {
 struct tbuilder_toggle_panel
 	: public tbuilder_control
 {
-	tbuilder_toggle_panel(const config& cfg);
+	explicit tbuilder_toggle_panel(const config& cfg);
 
 	twidget* build () const;
 
@@ -34,7 +34,6 @@ private:
 	std::string retval_id_;
 	int retval_;
 };
-
 
 } // namespace implementation
 

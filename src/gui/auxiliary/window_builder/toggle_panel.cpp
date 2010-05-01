@@ -80,6 +80,5 @@ twidget* tbuilder_toggle_panel::build() const
  *     return_value (int = 0)          The return value, see
  *                                     [[GUIToolkitWML#Button]] for more info.
  * @end_table
- *
  */
 
