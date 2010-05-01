@@ -26,15 +26,14 @@ namespace implementation {
 struct tbuilder_scroll_label
 	: public tbuilder_control
 {
-	tbuilder_scroll_label(const config& cfg);
+	explicit tbuilder_scroll_label(const config& cfg);
 
 	twidget* build () const;
 
 private:
 
-	tscrollbar_container::tscrollbar_mode
-			vertical_scrollbar_mode,
-			horizontal_scrollbar_mode;
+	tscrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
+	tscrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
 };
 
 } // namespace implementation

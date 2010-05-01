@@ -45,8 +45,8 @@ twidget* tbuilder_scroll_label::build() const
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
 
 	boost::intrusive_ptr<const tscroll_label_definition::tresolution> conf =
-		boost::dynamic_pointer_cast
-		<const tscroll_label_definition::tresolution>(widget->config());
+			boost::dynamic_pointer_cast
+				<const tscroll_label_definition::tresolution>(widget->config());
 	assert(conf);
 
 	widget->init_grid(conf->grid);
