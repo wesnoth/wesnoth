@@ -35,7 +35,6 @@ struct tscrollbar_panel_definition
 	};
 };
 
-
 } // namespace gui2
 
 #endif
