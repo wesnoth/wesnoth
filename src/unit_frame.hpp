@@ -53,7 +53,7 @@ public:
 	int duration() const;
 	const T get_current_element(int time,T default_val=0) const;
 	bool does_not_change() const;
-		std::string get_original(){return input_;}
+	std::string get_original() const { return input_; }
 };
 
 typedef progressive_<int> progressive_int;
