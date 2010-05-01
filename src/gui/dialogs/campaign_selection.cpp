@@ -64,7 +64,7 @@ REGISTER_WINDOW(campaign_selection)
 
 void tcampaign_selection::campaign_selected(twindow& window)
 {
-	if(new_widgets) {
+	if(new_widgets && false) {
 		ttree_view& tree = find_widget<ttree_view>(&window
 				, "campaign_tree"
 				, false);
@@ -92,7 +92,7 @@ void tcampaign_selection::campaign_selected(twindow& window)
 
 void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 {
-	if(new_widgets) {
+	if(new_widgets && false) {
 		/***** Setup campaign tree. *****/
 		ttree_view& tree = find_widget<ttree_view>(&window
 				, "campaign_tree"
@@ -204,6 +204,13 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 				widget->set_visible(twidget::HIDDEN);
 			}
 
+			if(new_widgets) {
+				find_widget<tcontrol>(grid, "icon", false)
+						.set_visible(twidget::INVISIBLE);
+				find_widget<tcontrol>(grid, "victory", false)
+						.set_visible(twidget::INVISIBLE);
+			}
+
 			/*** Add detail item ***/
 			string_map detail_item;
 			std::map<std::string, string_map> detail_page;
@@ -223,7 +230,7 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 
 void tcampaign_selection::post_show(twindow& window)
 {
-	if(new_widgets) {
+	if(new_widgets && false) {
 		ttree_view& tree = find_widget<ttree_view>(&window
 				, "campaign_tree"
 				, false);
