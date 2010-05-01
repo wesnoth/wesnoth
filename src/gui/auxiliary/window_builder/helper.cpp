@@ -35,7 +35,7 @@ unsigned get_v_align(const std::string& v_align)
 	} else {
 		if(!v_align.empty() && v_align != "center") {
 			ERR_GUI_E << "Invalid vertical alignment '"
-				<< v_align << "' falling back to 'center'.\n";
+					<< v_align << "' falling back to 'center'.\n";
 		}
 		return tgrid::VERTICAL_ALIGN_CENTER;
 	}
@@ -50,7 +50,7 @@ unsigned get_h_align(const std::string& h_align)
 	} else {
 		if(!h_align.empty() && h_align != "center") {
 			ERR_GUI_E << "Invalid horizontal alignment '"
-				<< h_align << "' falling back to 'center'.\n";
+					<< h_align << "' falling back to 'center'.\n";
 		}
 		return tgrid::HORIZONTAL_ALIGN_CENTER;
 	}
@@ -120,14 +120,15 @@ tscrollbar_container::tscrollbar_mode
 	} else {
 		if(!scrollbar_mode.empty() && scrollbar_mode != "initial_auto") {
 			ERR_GUI_E << "Invalid scrollbar mode '"
-				<< scrollbar_mode << "' falling back to 'initial_auto'.\n";
+					<< scrollbar_mode << "' falling back to 'initial_auto'.\n";
 		}
 		return tscrollbar_container::auto_visible_first_run;
 	}
 }
 
-int get_retval(const std::string& retval_id,
-		const int retval, const std::string& id)
+int get_retval(const std::string& retval_id
+		, const int retval
+		, const std::string& id)
 {
 	if(!retval_id.empty()) {
 		int result = twindow::get_retval_by_id(retval_id);

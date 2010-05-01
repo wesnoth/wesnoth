@@ -79,8 +79,9 @@ tscrollbar_container::tscrollbar_mode
  * Else if there's a retval that's returned.
  * Else it falls back to the id.
  */
-int get_retval(const std::string& retval_id,
-		const int retval, const std::string& id);
+int get_retval(const std::string& retval_id
+		, const int retval
+		, const std::string& id);
 
 } // namespace implementation
 
