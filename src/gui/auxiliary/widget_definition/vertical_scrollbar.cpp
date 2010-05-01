@@ -30,14 +30,14 @@ tvertical_scrollbar_definition::tvertical_scrollbar_definition(
 	load_resolutions<tresolution>(cfg);
 }
 
-tvertical_scrollbar_definition::tresolution::tresolution(const config& cfg) :
-	tresolution_definition_(cfg),
-	minimum_positioner_length(
-			lexical_cast_default<unsigned>(cfg["minimum_positioner_length"])),
-	maximum_positioner_length(
-			lexical_cast_default<unsigned>(cfg["maximum_positioner_length"])),
-	top_offset(lexical_cast_default<unsigned>(cfg["top_offset"])),
-	bottom_offset(lexical_cast_default<unsigned>(cfg["bottom_offset"]))
+tvertical_scrollbar_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
+	, minimum_positioner_length(
+			lexical_cast_default<unsigned>(cfg["minimum_positioner_length"]))
+	, maximum_positioner_length(
+			lexical_cast_default<unsigned>(cfg["maximum_positioner_length"]))
+	, top_offset(lexical_cast_default<unsigned>(cfg["top_offset"]))
+	, bottom_offset(lexical_cast_default<unsigned>(cfg["bottom_offset"]))
 {
 /*WIKI
  * @page = GUIWidgetDefinitionWML
@@ -75,10 +75,12 @@ tvertical_scrollbar_definition::tresolution::tresolution(const config& cfg) :
  * * state_focussed, the mouse is over the positioner of the vertical scrollbar.
  */
 
-	VALIDATE(minimum_positioner_length,
-		missing_mandatory_wml_key("resolution", "minimum_positioner_length"));
+	VALIDATE(minimum_positioner_length
+			, missing_mandatory_wml_key(
+				  "resolution"
+				, "minimum_positioner_length"));
 
-	// Note the order should be the same as the enum tstate is scrollbar.hpp.
+	// Note the order should be the same as the enum tstate in scrollbar.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 	state.push_back(tstate_definition(cfg.child("state_disabled")));
 	state.push_back(tstate_definition(cfg.child("state_pressed")));
