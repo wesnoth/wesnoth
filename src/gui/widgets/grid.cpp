@@ -1016,6 +1016,17 @@ void tgrid_implementation::cell_request_reduce_width(
 			maximum_width - child.border_space().x);
 }
 
+void set_single_child(tgrid& grid, twidget* widget)
+{
+	grid.set_rows_cols(1, 1);
+	grid.set_child(widget
+			, 0
+			, 0
+			, tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT
+				| tgrid::VERTICAL_GROW_SEND_TO_CLIENT
+			, 0);
+}
+
 } // namespace gui2
 
 

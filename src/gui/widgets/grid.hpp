@@ -426,6 +426,17 @@ private:
 
 };
 
+/**
+ * Sets the single child in a grid.
+ *
+ * The function initializes the grid to 1 x 1 and adds the widget with the grow
+ * to client flags.
+ *
+ * @param grid                    The grid to add the child to.
+ * @param widget                  The widget to add as child to the grid.
+ */
+void set_single_child(tgrid& grid, twidget* widget);
+
 } // namespace gui2
 
 #endif
