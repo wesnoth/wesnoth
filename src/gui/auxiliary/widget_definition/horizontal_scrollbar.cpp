@@ -22,22 +22,22 @@
 namespace gui2 {
 
 thorizontal_scrollbar_definition::
-		thorizontal_scrollbar_definition(const config& cfg) :
-	tcontrol_definition(cfg)
+		thorizontal_scrollbar_definition(const config& cfg)
+	: tcontrol_definition(cfg)
 {
 	DBG_GUI_P << "Parsing horizontal scrollbar " << id << '\n';
 
 	load_resolutions<tresolution>(cfg);
 }
 
-thorizontal_scrollbar_definition::tresolution::tresolution(const config& cfg) :
-	tresolution_definition_(cfg),
-	minimum_positioner_length(
-		lexical_cast_default<unsigned>(cfg["minimum_positioner_length"])),
-	maximum_positioner_length(
-		lexical_cast_default<unsigned>(cfg["maximum_positioner_length"])),
-	left_offset(lexical_cast_default<unsigned>(cfg["left_offset"])),
-	right_offset(lexical_cast_default<unsigned>(cfg["right_offset"]))
+thorizontal_scrollbar_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
+	, minimum_positioner_length(
+			lexical_cast_default<unsigned>(cfg["minimum_positioner_length"]))
+	, maximum_positioner_length(
+			lexical_cast_default<unsigned>(cfg["maximum_positioner_length"]))
+	, left_offset(lexical_cast_default<unsigned>(cfg["left_offset"]))
+	, right_offset(lexical_cast_default<unsigned>(cfg["right_offset"]))
 {
 /*WIKI
  * @page = GUIWidgetDefinitionWML
@@ -69,12 +69,17 @@ thorizontal_scrollbar_definition::tresolution::tresolution(const config& cfg) :
  * The following states exist:
  * * state_enabled, the horizontal scrollbar is enabled.
  * * state_disabled, the horizontal scrollbar is disabled.
- * * state_pressed, the left mouse button is down on the positioner of the horizontal scrollbar.
- * * state_focussed, the mouse is over the positioner of the horizontal scrollbar.
+ * * state_pressed, the left mouse button is down on the positioner of the
+ *   horizontal scrollbar.
+ * * state_focussed, the mouse is over the positioner of the horizontal
+ *   scrollbar.
  */
 
-	VALIDATE(minimum_positioner_length,
-		missing_mandatory_wml_key("resolution", "minimum_positioner_length"));
+	VALIDATE(
+			  minimum_positioner_length
+			, missing_mandatory_wml_key(
+				  "resolution"
+				, "minimum_positioner_length"));
 
 	// Note the order should be the same as the enum tstate is scrollbar.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
