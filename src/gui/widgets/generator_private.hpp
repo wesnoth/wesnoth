@@ -689,7 +689,7 @@ public:
 
 
 	/** Inherited from tgenerator_. */
-	void create_item(const int index,
+	tgrid& create_item(const int index,
 			tbuilder_grid_const_ptr list_builder,
 			const string_map& item_data,
 			void (*callback)(twidget*))
@@ -697,11 +697,11 @@ public:
 		std::map<std::string, string_map> data;
 
 		data.insert(std::make_pair("", item_data));
-		create_item(index, list_builder, data, callback);
+		return create_item(index, list_builder, data, callback);
 	}
 
 	/** Inherited from tgenerator_. */
-	void create_item(const int index,
+	tgrid& create_item(const int index,
 			tbuilder_grid_const_ptr list_builder,
 			const std::map<std::string /* widget id */,
 			string_map>& item_data,
@@ -724,6 +724,7 @@ public:
 		if(!is_selected(item_index)) {
 			select_action::select(item->grid, false);
 		}
+		return item->grid;
 	}
 
 	/** Inherited from tgenerator_. */

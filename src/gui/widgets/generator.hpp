@@ -156,8 +156,10 @@ public:
 	 *                            the new item.
 	 * @param callback            The callback function to call when an item
 	 *                            in the grid is (de)selected.
+	 *
+	 * @returns                   A reference to the newly created grid.
 	 */
-	virtual void create_item(const int index,
+	virtual tgrid& create_item(const int index,
 			tbuilder_grid_const_ptr list_builder,
 			const string_map& item_data,
 			void (*callback)(twidget*)) = 0;
@@ -176,8 +178,10 @@ public:
 	 *                            the new item.
 	 * @param callback            The callback function to call when an item
 	 *                            in the grid is (de)selected.
+	 *
+	 * @returns                   A reference to the newly created grid.
 	 */
-	virtual void create_item(const int index,
+	virtual tgrid& create_item(const int index,
 			tbuilder_grid_const_ptr list_builder,
 			const std::map<std::string /* widget id */,
 			string_map>& data,
