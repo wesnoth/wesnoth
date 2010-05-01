@@ -12,6 +12,11 @@
    See the COPYING file for more details.
 */
 
+/**
+ * @file gui/auxiliary/layout_exception.cpp
+ * Defines the exception classes for the layout algorithm.
+ */
+
 #ifndef GUI_AUXILIRY_LAYOUT_EXCEPTION_HPP_INCLUDED
 #define GUI_AUXILIRY_LAYOUT_EXCEPTION_HPP_INCLUDED
 
