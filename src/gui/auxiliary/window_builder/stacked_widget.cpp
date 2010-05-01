@@ -50,8 +50,9 @@ twidget* tbuilder_stacked_widget::build() const
 			<< definition << "'.\n";
 
 	boost::intrusive_ptr<const tstacked_widget_definition::tresolution> conf =
-		boost::dynamic_pointer_cast
-		<const tstacked_widget_definition::tresolution>(widget->config());
+			boost::dynamic_pointer_cast
+				<const tstacked_widget_definition::tresolution>(
+						widget->config());
 	assert(conf);
 
 	widget->init_grid(conf->grid);

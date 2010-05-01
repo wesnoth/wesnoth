@@ -17,10 +17,7 @@
 
 #include "gui/auxiliary/window_builder/control.hpp"
 
-#include <map>
 #include <vector>
-
-typedef std::map<std::string,t_string> string_map;
 
 namespace gui2 {
 
@@ -29,7 +26,7 @@ namespace implementation {
 struct tbuilder_stacked_widget
 	: public tbuilder_control
 {
-	tbuilder_stacked_widget(const config& cfg);
+	explicit tbuilder_stacked_widget(const config& cfg);
 
 	twidget* build () const;
 
