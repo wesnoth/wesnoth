@@ -54,6 +54,5 @@ twidget* tbuilder_vertical_scrollbar::build() const
  * == Vertical scrollbar ==
  *
  * A vertical scrollbar has no special fields.
- *
  */
 

@@ -24,7 +24,7 @@ namespace implementation {
 struct tbuilder_vertical_scrollbar
 	: public tbuilder_control
 {
-	tbuilder_vertical_scrollbar(const config& cfg);
+	explicit tbuilder_vertical_scrollbar(const config& cfg);
 
 	twidget* build () const;
 };
