@@ -25,19 +25,21 @@ class tcampaign_selection
 	: public tdialog
 {
 public:
-	tcampaign_selection(const std::vector<config> &c)
-		: campaigns_(c)
+	tcampaign_selection(const std::vector<config>& campaigns)
+		: campaigns_(campaigns)
 		, choice_(-1)
 
 	{
 	}
 
+	/***** ***** ***** setters / getters for members ***** ****** *****/
+
 	int get_choice() const { return choice_; }
+
+private:
 
 	/** Called when another campaign is selected. */
 	void campaign_selected(twindow& window);
-
-private:
 
 	/** Inherited from tdialog, implemented by REGISTER_WINDOW. */
 	virtual const std::string& window_id() const;

@@ -249,3 +249,4 @@ void tcampaign_selection::post_show(twindow& window)
 }
 
 } // namespace gui2
+
