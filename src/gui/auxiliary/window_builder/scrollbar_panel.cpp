@@ -63,7 +63,6 @@ twidget* tbuilder_scrollbar_panel::build() const
 						(widget->config());
 	assert(conf);
 
-
 	widget->init_grid(conf->grid);
 	widget->finalize_setup();
 
