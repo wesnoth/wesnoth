@@ -21,15 +21,16 @@ namespace gui2 {
 
 namespace implementation {
 
-struct tbuilder_text_box : public implementation::tbuilder_control
+struct tbuilder_text_box
+	: public tbuilder_control
 {
-private:
-	std::string history_;
-
 public:
-	tbuilder_text_box(const config& cfg);
+	explicit tbuilder_text_box(const config& cfg);
 
 	twidget* build () const;
+
+private:
+	std::string history_;
 };
 
 
@@ -38,5 +39,4 @@ public:
 } // namespace gui2
 
 #endif
-
 
