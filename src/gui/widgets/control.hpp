@@ -326,6 +326,15 @@ protected:
 private:
 
 	/**
+	 * Initializes the control.
+	 *
+	 * Not everything can be code in the constructor since virtual functions
+	 * can't be used. So after contruction this function needs to be called and
+	 * only once, this happens when set_definition is called.
+	 */
+	virtual void init() {}
+
+	/**
 	 * Gets the best size for a text.
 	 *
 	 * @param minimum_size        The minimum size of the text.

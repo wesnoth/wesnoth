@@ -220,6 +220,8 @@ void tcontrol::set_definition(const std::string& definition)
 	twidget::set_definition(definition);
 	load_config();
 	assert(config());
+
+	init();
 }
 
 void tcontrol::set_label(const t_string& label)
