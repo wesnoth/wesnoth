@@ -32,17 +32,21 @@ class twidget;
 class tgrid;
 class twindow;
 
+/**
+ * Builds a window.
+ *
+ * @param video                   The frame buffer to draw upon.
+ * @param type                    The type id string of the window, this window
+ *                                must be registered at startup.
+ */
 twindow* build(CVideo& video, const std::string& type);
 
-
 /** Contains the info needed to instantiate a widget. */
-struct tbuilder_widget : public reference_counted_object
+struct tbuilder_widget
+	: public reference_counted_object
 {
-private:
-	tbuilder_widget();
-
 public:
-	tbuilder_widget(const config& /*cfg*/) {}
+	explicit tbuilder_widget(const config& /*cfg*/) {}
 
 
 	virtual twidget* build() const = 0;
@@ -80,13 +84,11 @@ tbuilder_widget_ptr build_widget(const config& cfg)
 	return new T(cfg);
 }
 
-struct tbuilder_grid : public tbuilder_widget
+struct tbuilder_grid
+	: public tbuilder_widget
 {
-private:
-	tbuilder_grid();
-
 public:
-	tbuilder_grid(const config& cfg);
+	explicit tbuilder_grid(const config& cfg);
 
 	std::string id;
 	std::string linked_group;
@@ -120,11 +122,8 @@ public:
 
 	struct tresolution
 	{
-	private:
-		tresolution();
-
 	public:
-		tresolution(const config& cfg);
+		explicit tresolution(const config& cfg);
 
 		unsigned window_width;
 		unsigned window_height;
@@ -170,13 +169,9 @@ public:
 private:
 	std::string id_;
 	std::string description_;
-
 };
 
 } // namespace gui2
 
-
 #endif
-
-
 

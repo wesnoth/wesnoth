@@ -32,9 +32,10 @@ namespace gui2 {
  *
  * @todo refactor with the grid builder.
  */
-struct tbuilder_gridcell : public tbuilder_widget
+struct tbuilder_gridcell
+	: public tbuilder_widget
 {
-	tbuilder_gridcell(const config& cfg);
+	explicit tbuilder_gridcell(const config& cfg);
 
 	/** The flags for the cell. */
 	unsigned flags;
