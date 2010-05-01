@@ -22,14 +22,6 @@
 
 namespace gui2 {
 
-/** Notifier class, triggered if the positioner is moved. */
-class tpositioner_moved_notifier
-	: public tnotifier<boost::function<void(void)> >
-{
-public:
-	void notify();
-};
-
 /**
  * Base class for a scroll bar.
  *
@@ -39,6 +31,11 @@ public:
  * To make this class generic we talk a lot about offset and length and use
  * pure virtual functions. The classes implementing us can use the heights or
  * widths, whichever is applicable.
+ *
+ * The NOTIFY_MODIFIED event is send when the position of scrollbar is changed.
+ *
+ * Common signal handlers:
+ * - connect_signal_notify_modified
  */
 class tscrollbar_ : public tcontrol
 {
@@ -125,19 +122,6 @@ public:
 	void set_step_size(const unsigned step_size)
 		{ step_size_ = step_size; recalculate(); }
 
-	void connect_positioner_moved_notifiee(
-			  tnotifiee<tpositioner_moved_notifier::tfunctor>& notifiee
-			, tpositioner_moved_notifier::tfunctor functor)
-	{
-		positioner_moved_notifier_.connect_notifiee(notifiee, functor);
-	}
-
-	void disconnect_positioner_moved_notifiee(
-			  tnotifiee<tpositioner_moved_notifier::tfunctor>& notifiee)
-	{
-		positioner_moved_notifier_.disconnect_notifiee(notifiee);
-	}
-
 protected:
 	unsigned get_positioner_offset() const { return positioner_offset_; }
 
@@ -155,8 +139,6 @@ protected:
 	 */
 	virtual void child_callback_positioner_moved() {}
 private:
-
-	tpositioner_moved_notifier positioner_moved_notifier_;
 
 	/**
 	 * Possible states of the widget.

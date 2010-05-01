@@ -74,8 +74,6 @@ tscrollbar_container::tscrollbar_container(const unsigned canvas_count)
 	, content_grid_(NULL)
 	, content_(NULL)
 	, content_visible_area_()
-	, vertical_scrollbar_positioner_moved_notifiee_()
-	, horizontal_scrollbar_positioner_moved_notifiee_()
 {
 	connect_signal<event::SDL_KEY_DOWN>(boost::bind(
 			&tscrollbar_container::signal_handler_sdl_key_down
@@ -93,8 +91,6 @@ tscrollbar_container::tscrollbar_container(const unsigned canvas_count)
 	connect_signal<event::SDL_WHEEL_RIGHT>(boost::bind(
 			&tscrollbar_container::signal_handler_sdl_wheel_right
 				, this, _2, _3));
-
-
 }
 
 void tscrollbar_container::layout_init(const bool full_initialization)
@@ -679,8 +675,7 @@ void tscrollbar_container::finalize_setup()
 	vertical_scrollbar_ = find_widget<tscrollbar_>(
 			vertical_scrollbar_grid_, "_vertical_scrollbar", false, true);
 
-	vertical_scrollbar_->connect_positioner_moved_notifiee(
-			  vertical_scrollbar_positioner_moved_notifiee_
+	connect_signal_notify_modified(*vertical_scrollbar_
 			, boost::bind(
 				  &tscrollbar_container::vertical_scrollbar_moved
 				, this));
@@ -692,8 +687,7 @@ void tscrollbar_container::finalize_setup()
 	horizontal_scrollbar_ = find_widget<tscrollbar_>(
 			horizontal_scrollbar_grid_, "_horizontal_scrollbar", false, true);
 
-	horizontal_scrollbar_->connect_positioner_moved_notifiee(
-			  horizontal_scrollbar_positioner_moved_notifiee_
+	connect_signal_notify_modified(*horizontal_scrollbar_
 			, boost::bind(
 				  &tscrollbar_container::horizontal_scrollbar_moved
 				, this));

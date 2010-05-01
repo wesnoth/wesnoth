@@ -94,17 +94,6 @@ private:
 	tfield_integer* custom_tod_blue_field_;
 
 	tfield_bool* use_mdi_field_;
-
-	/***** ***** ***** callback notifiees ***** ****** *****/
-
-	/** Notifiee for the custom tod red modification callback. */
-	tnotifiee<boost::function<void(void)> > custom_tod_red_moved_notifiee_;
-
-	/** Notifiee for the custom tod green modification callback. */
-	tnotifiee<boost::function<void(void)> > custom_tod_green_moved_notifiee_;
-
-	/** Notifiee for the custom tod blue modification callback. */
-	tnotifiee<boost::function<void(void)> > custom_tod_blue_moved_notifiee_;
 };
 
 } // namespace gui2

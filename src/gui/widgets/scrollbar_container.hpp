@@ -492,14 +492,6 @@ private:
 			, bool& handled);
 	void signal_handler_sdl_wheel_right(const event::tevent event
 			, bool& handled);
-
-	/***** ***** ***** callback notifiees ***** ****** *****/
-
-	tnotifiee<boost::function<void(void)> >
-			vertical_scrollbar_positioner_moved_notifiee_;
-
-	tnotifiee<boost::function<void(void)> >
-			horizontal_scrollbar_positioner_moved_notifiee_;
 };
 
 } // namespace gui2

@@ -76,14 +76,6 @@ private:
 	virtual const std::string& window_id() const;
 
 	void pre_show(CVideo& video, twindow& window);
-
-	/***** ***** ***** callback notifiees ***** ****** *****/
-
-	/** Notifiee for the height modification callback. */
-	tnotifiee<boost::function<void(void)> > height_positioner_moved_notifiee_;
-
-	/** Notifiee for the width modification callback. */
-	tnotifiee<boost::function<void(void)> > width_positioner_moved_notifiee_;
 };
 
 } // namespace gui2

@@ -89,9 +89,7 @@ teditor_resize_map::teditor_resize_map() :
 	copy_edge_terrain_(register_bool("copy_edge_terrain", false)),
 	old_width_(),
 	old_height_(),
-	expand_direction_(EXPAND_BOTTOM_RIGHT),
-	height_positioner_moved_notifiee_(),
-	width_positioner_moved_notifiee_()
+	expand_direction_(EXPAND_BOTTOM_RIGHT)
 {
 }
 
@@ -137,15 +135,13 @@ void teditor_resize_map::pre_show(CVideo& /*video*/, twindow& window)
 	height_ = find_widget<tslider>(&window, "height", false, true);
 	width_ = find_widget<tslider>(&window, "width", false, true);
 
-	height_->connect_positioner_moved_notifiee(
-			  height_positioner_moved_notifiee_
+	connect_signal_notify_modified(*height_
 			, boost::bind(
 				  &teditor_resize_map::update_expand_direction
 				, this
 				, boost::ref(window)));
 
-	width_->connect_positioner_moved_notifiee(
-			  width_positioner_moved_notifiee_
+	connect_signal_notify_modified(*width_
 			, boost::bind(
 				  &teditor_resize_map::update_expand_direction
 				, this
