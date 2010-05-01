@@ -134,31 +134,31 @@ protected:
 	 *
 	 * @returns                   Pointer to the created widget.
 	 */
-	tfield_bool* register_bool(const std::string& id,
-		const bool optional = false,
-		bool (*callback_load_value) () = NULL,
-		void (*callback_save_value) (const bool value) = NULL,
-		void (*callback_change) (twidget* widget) = NULL);
+	tfield_bool* register_bool(const std::string& id
+			, const bool optional = false
+			, bool (*callback_load_value) () = NULL
+			, void (*callback_save_value) (const bool value) = NULL
+			, void (*callback_change) (twidget* widget) = NULL);
 
 	/**
 	 * Creates a new integer field.
 	 *
 	 * See register_bool for more info.
 	 */
-	tfield_integer* register_integer(const std::string& id,
-		const bool optional = false,
-		int (*callback_load_value) () = NULL,
-		void (*callback_save_value) (const int value) = NULL);
+	tfield_integer* register_integer(const std::string& id
+			, const bool optional = false
+			, int (*callback_load_value) () = NULL
+			, void (*callback_save_value) (const int value) = NULL);
 
 	/**
 	 * Creates a new text field.
 	 *
 	 * See register_bool for more info.
 	 */
-	tfield_text* register_text(const std::string& id,
-		const bool optional = false,
-		std::string (*callback_load_value) () = NULL,
-		void (*callback_save_value) (const std::string& value) = NULL);
+	tfield_text* register_text(const std::string& id
+			, const bool optional = false
+			, std::string (*callback_load_value) () = NULL
+			, void (*callback_save_value) (const std::string& value) = NULL);
 private:
 	/** Returns the window exit status, 0 means not shown. */
 	int retval_;
