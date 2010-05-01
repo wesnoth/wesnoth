@@ -97,6 +97,14 @@ enum tevent {
 	                               * Send by a widget to notify others it's
 	                               * being destroyed.
 	                               */
+	, NOTIFY_MODIFIED             /**<
+	                               * Send by a widget to notify others its
+	                               * contents or state are modified.
+	                               *
+	                               * What modified means is documented per
+	                               * widget. If not documented the modified
+	                               * means nothing.
+	                               */
 	, RECEIVE_KEYBOARD_FOCUS     /**< Widget gets keyboard focus. */
 	, LOSE_KEYBOARD_FOCUS        /**< Widget loses keyboard focus. */
 	, SHOW_HOVER_TOOLTIP         /**< Request to show the hover tooltip. */
@@ -180,6 +188,7 @@ typedef
 typedef
 		boost::mpl::set<
 			  boost::mpl::int_<NOTIFY_REMOVAL>
+			, boost::mpl::int_<NOTIFY_MODIFIED>
 			, boost::mpl::int_<RECEIVE_KEYBOARD_FOCUS>
 			, boost::mpl::int_<LOSE_KEYBOARD_FOCUS>
 			, boost::mpl::int_<SHOW_HOVER_TOOLTIP>

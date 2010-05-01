@@ -646,6 +646,14 @@ inline void disconnect_signal_mouse_left_click(
 	dispatcher.disconnect_signal<LEFT_BUTTON_CLICK>(signal);
 }
 
+/** Connects a signal handler for getting a notification upon modification. */
+inline void connect_signal_notify_modified(
+		  tdispatcher& dispatcher
+		, const tsignal_notification_function& signal)
+{
+	dispatcher.connect_signal<event::NOTIFY_MODIFIED>(signal);
+}
+
 } // namespace event
 
 } // namespace gui2
