@@ -49,7 +49,6 @@ twidget* tbuilder_toggle_button::build() const
 	return widget;
 }
 
-
 } // namespace implementation
 
 } // namespace gui2

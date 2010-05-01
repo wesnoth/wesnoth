@@ -24,7 +24,7 @@ namespace implementation {
 struct tbuilder_toggle_button
 	: public tbuilder_control
 {
-	tbuilder_toggle_button(const config& cfg);
+	explicit tbuilder_toggle_button(const config& cfg);
 
 	twidget* build () const;
 
@@ -39,5 +39,4 @@ private:
 } // namespace gui2
 
 #endif
-
 
