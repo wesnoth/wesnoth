@@ -27,19 +27,41 @@
 
 namespace gui2{
 
-/** Template class can hold a value or a formula calculating the value. */
+/**
+ * Template class can hold a value or a formula to calculate the value.
+ *
+ * A string is a formula when it starts with a right paren, no other validation
+ * is done by this function, leading whitespace is significant.
+ *
+ * Upon getting the value of the formula a variable map is send. The variables
+ * of in the map can be used in the formula. The 'owners' of the class need to
+ * document the variables available.
+ *
+ * @tparam T                      The type of the formula. This type needs to
+ *                                be constructable form a string, either by a
+ *                                lexical_cast or a template specialization in
+ *                                this header.
+ */
 template <class T>
 class tformula
 {
 public:
+	/**
+	 * Constructor.
+	 *
+	 * @param str                 The string used to initialize the class, this
+	 *                            can either be a formula or a string which can
+	 *                            be converted to the type T.
+	 * @param value               The default value for the object.
+	 */
 	tformula<T>(const std::string& str, const T value = T());
 
 	/**
-	 * Returns the value, can only be used it the data is no formula.
+	 * Returns the value, can only be used if the data is no formula.
 	 *
-	 *  Another option would be to cache the output of the formula in value_
-	 *  and always allow this function. But for now decided that the caller
-	 *  needs to do the caching. It might be changed later.
+	 * Another option would be to cache the output of the formula in value_
+	 * and always allow this function. But for now decided that the caller
+	 * needs to do the caching. It might be changed later.
 	 */
 	T operator()() const
 	{
@@ -55,15 +77,39 @@ public:
 
 private:
 
-	/** Converts the string ot the template value. */
+	/**
+	 * Converts the string to the template type.
+	 *
+	 * This function is used by the constructor to convert the string to the
+	 * wanted value, if not a formula.
+	 *
+	 * @param str                 The str send to the constructor.
+	 */
 	void convert(const std::string& str);
 
+	/**
+	 * Executes the formula.
+	 *
+	 * This function does the calculation and can only be called if the object
+	 * contains a formula.
+	 *
+	 * @param variables           The state variables which might be used in
+	 *                            the formula. For example a screen_width can
+	 *                            be set so the formula can return the half
+	 *                            width of the screen.
+	 *
+	 * @returns                   The calculated value.
+	 */
 	T execute(const game_logic::map_formula_callable& variables) const;
 
-	/** If there is a formula it's stored in this string, empty if no formula. */
+	/** 
+	 * Contains the formuale for the variable.
+	 *
+	 * If the string is empty, there's no formula.
+	 */
 	std::string formula_;
 
-	/** If no formula it contains the value. */
+	/** If there's no formula it contains the value. */
 	T value_;
 };
 
@@ -81,11 +127,11 @@ tformula<T>::tformula(const std::string& str, const T value) :
 	} else {
 		convert(str);
 	}
-
 }
 
 template<class T>
-inline T tformula<T>::operator() (const game_logic::map_formula_callable& variables) const
+inline T tformula<T>::operator()(
+		const game_logic::map_formula_callable& variables) const
 {
 	if(has_formula()) {
 		const T& result = execute(variables);
@@ -101,31 +147,36 @@ inline T tformula<T>::operator() (const game_logic::map_formula_callable& variab
 }
 
 template<>
-inline bool tformula<bool>::execute(const game_logic::map_formula_callable& variables) const
+inline bool tformula<bool>::execute(
+		const game_logic::map_formula_callable& variables) const
 {
 	return game_logic::formula(formula_).evaluate(variables).as_bool();
 }
 
 template<>
-inline int tformula<int>::execute(const game_logic::map_formula_callable& variables) const
+inline int tformula<int>::execute(
+		const game_logic::map_formula_callable& variables) const
 {
 	return game_logic::formula(formula_).evaluate(variables).as_int();
 }
 
 template<>
-inline unsigned tformula<unsigned>::execute(const game_logic::map_formula_callable& variables) const
+inline unsigned tformula<unsigned>::execute(
+		const game_logic::map_formula_callable& variables) const
 {
 	return game_logic::formula(formula_).evaluate(variables).as_int();
 }
 
 template<>
-inline std::string tformula<std::string>::execute(const game_logic::map_formula_callable& variables) const
+inline std::string tformula<std::string>::execute(
+		const game_logic::map_formula_callable& variables) const
 {
 	return game_logic::formula(formula_).evaluate(variables).as_string();
 }
 
 template<>
-inline t_string tformula<t_string>::execute(const game_logic::map_formula_callable& variables) const
+inline t_string tformula<t_string>::execute(
+		const game_logic::map_formula_callable& variables) const
 {
 	return game_logic::formula(formula_).evaluate(variables).as_string();
 }
@@ -137,10 +188,12 @@ inline PangoAlignment tformula<PangoAlignment>::execute(
 	return decode_text_alignment(
 			game_logic::formula(formula_).evaluate(variables).as_string());
 }
+
 template<class T>
-inline T tformula<T>::execute(const game_logic::map_formula_callable& variables) const
+inline T tformula<T>::execute(
+		const game_logic::map_formula_callable& variables) const
 {
-	// Every type needs it's own execute function avoid instantiation of the
+	// Every type needs its own execute function avoid instantiation of the
 	// default execute.
 	BOOST_STATIC_ASSERT(sizeof(T) == 0);
 	return T();
