@@ -47,10 +47,10 @@ ttoggle_button_definition::tresolution::tresolution(const config& cfg)
  * * state_enabled_selected, the button is enabled and selected.
  * * state_disabled_selected, the button is disabled and selected.
  * * state_focussed_selected, the mouse is over the button and selected.
- *
  */
 
-	// Note the order should be the same as the enum tstate is toggle_button.hpp.
+	// Note the order should be the same as the enum tstate in
+	// toggle_button.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 	state.push_back(tstate_definition(cfg.child("state_disabled")));
 	state.push_back(tstate_definition(cfg.child("state_focussed")));
