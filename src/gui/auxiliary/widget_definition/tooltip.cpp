@@ -30,7 +30,6 @@ ttooltip_definition::ttooltip_definition(const config& cfg)
 
 ttooltip_definition::tresolution::tresolution(const config& cfg)
 	: tresolution_definition_(cfg)
-
 {
 /*WIKI
  * @page = GUIWidgetDefinitionWML
@@ -42,10 +41,7 @@ ttooltip_definition::tresolution::tresolution(const config& cfg)
  *
  * The following states exist:
  * * state_enabled, the tooltip has only one state, it's either shown or hidden.
- *
  */
-
-	// Note only one state for a tooltip.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 }
 
