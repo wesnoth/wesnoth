@@ -35,7 +35,6 @@ namespace gui2 {
 
 namespace {
 
-
 /*WIKI
  * @page = GUICanvasWML
  *
@@ -44,7 +43,6 @@ namespace {
  * = Canvas =
  *
  * A canvas is a blank drawing area on which the user can add various items.
- *
  */
 
 /*WIKI
@@ -54,7 +52,7 @@ namespace {
  *
  * This section contains the pre commit functions. These functions will be
  * executed before the drawn canvas is applied on top of the normal
- * background. Ther should only be one pre commit section and it's order
+ * background. There should only be one pre commit section and its order
  * regarding the other shapes doesn't matter.
  *
  * The section can have one of the following subsections.
@@ -73,7 +71,8 @@ namespace {
 /***** ***** ***** ***** ***** LINE ***** ***** ***** ***** *****/
 
 /** Definition of a line shape. */
-class tline : public tcanvas::tshape
+class tline
+	: public tcanvas::tshape
 {
 public:
 
@@ -84,11 +83,11 @@ public:
 	 *                            http://www.wesnoth.org/wiki/GUICanvasWML#Line
 	 *                            for more info.
 	 */
-	tline(const config& cfg);
+	explicit tline(const config& cfg);
 
 	/** Implement shape::draw(). */
-	void draw(surface& canvas,
-		const game_logic::map_formula_callable& variables);
+	void draw(surface& canvas
+			, const game_logic::map_formula_callable& variables);
 
 private:
 	tformula<unsigned>
@@ -110,13 +109,13 @@ private:
 	unsigned thickness_;
 };
 
-tline::tline(const config& cfg) :
-	x1_(cfg["x1"]),
-	y1_(cfg["y1"]),
-	x2_(cfg["x2"]),
-	y2_(cfg["y2"]),
-	colour_(decode_colour(cfg["colour"])),
-	thickness_(lexical_cast_default<unsigned>(cfg["thickness"]))
+tline::tline(const config& cfg)
+	: x1_(cfg["x1"])
+	, y1_(cfg["y1"])
+	, x2_(cfg["x2"])
+	, y2_(cfg["y2"])
+	, colour_(decode_colour(cfg["colour"]))
+	, thickness_(lexical_cast_default<unsigned>(cfg["thickness"]))
 {
 /*WIKI
  * @page = GUICanvasWML
@@ -155,18 +154,20 @@ tline::tline(const config& cfg) :
  *                                     variable meant to copy state from a
  *                                     widget to its canvas so there's no
  *                                     reason to use this variable and thus
- *                                     it's values are not listed and might
+ *                                     its values are not listed and might
  *                                     change without further notice.)
  *     text_alignment h_align          The way the text is aligned inside the
  *                                     canvas.
  *@end_table
  *
- * The size variables are copied to the window and will be determined runtime.
- * This is needed since the main window can be resized and the dialog needs to
- * resize accordingly. The following variables are available:
+ * The size variables are copied to the window and will be determined at
+ * runtime. This is needed since the main window can be resized and the dialog
+ * needs to resize accordingly. The following variables are available:
  * @start_table = formula
- *     screen_width unsigned         The usable width of the Wesnoth main window.
- *     screen_height unsigned        The usable height of the Wesnoth main window.
+ *     screen_width unsigned         The usable width of the Wesnoth main
+ *                                   window.
+ *     screen_height unsigned        The usable height of the Wesnoth main
+ *                                   window.
  *     gamemap_width unsigned        The usable width of the Wesnoth gamemap,
  *                                   if no gamemap shown it's the same value as
  *                                   screen_width.
@@ -349,8 +350,8 @@ tline::tline(const config& cfg) :
 	}
 }
 
-void tline::draw(surface& canvas,
-	const game_logic::map_formula_callable& variables)
+void tline::draw(surface& canvas
+		, const game_logic::map_formula_callable& variables)
 {
 	/**
 	 * @todo formulas are now recalculated every draw cycle which is a bit silly
@@ -364,14 +365,15 @@ void tline::draw(surface& canvas,
 	const unsigned y2 = y2_(variables);
 
 	DBG_GUI_D << "Line: draw from "
-		<< x1 << ',' << y1 << " to " << x2 << ',' << y2
-		<< " canvas size " << canvas->w << ',' << canvas->h << ".\n";
+			<< x1 << ',' << y1 << " to " << x2 << ',' << y2
+			<< " canvas size " << canvas->w << ',' << canvas->h << ".\n";
 
-	VALIDATE(static_cast<int>(x1) < canvas->w &&
-		 static_cast<int>(x2) < canvas->w &&
-		 static_cast<int>(y1) < canvas->h &&
-		 static_cast<int>(y2) < canvas->h,
-		 _("Line doesn't fit on canvas."));
+	VALIDATE(
+			  static_cast<int>(x1) < canvas->w
+				&& static_cast<int>(x2) < canvas->w
+				&& static_cast<int>(y1) < canvas->h
+				&& static_cast<int>(y2) < canvas->h
+			, _("Line doesn't fit on canvas."));
 
 	// @todo FIXME respect the thickness.
 
@@ -391,7 +393,8 @@ void tline::draw(surface& canvas,
 /***** ***** ***** ***** ***** Rectangle ***** ***** ***** ***** *****/
 
 /** Definition of a rectangle shape. */
-class trectangle : public tcanvas::tshape
+class trectangle
+	: public tcanvas::tshape
 {
 public:
 
@@ -402,11 +405,11 @@ public:
 	 *                            http://www.wesnoth.org/wiki/GUICanvasWML#Rectangle
 	 *                            for more info.
 	 */
-	trectangle(const config& cfg);
+	explicit trectangle(const config& cfg);
 
 	/** Implement shape::draw(). */
-	void draw(surface& canvas,
-		const game_logic::map_formula_callable& variables);
+	void draw(surface& canvas
+			, const game_logic::map_formula_callable& variables);
 
 private:
 	tformula<unsigned>
@@ -437,14 +440,14 @@ private:
 	Uint32 fill_colour_;
 };
 
-trectangle::trectangle(const config& cfg) :
-	x_(cfg["x"]),
-	y_(cfg["y"]),
-	w_(cfg["w"]),
-	h_(cfg["h"]),
-	border_thickness_(lexical_cast_default<unsigned>(cfg["border_thickness"])),
-	border_colour_(decode_colour(cfg["border_colour"])),
-	fill_colour_(decode_colour(cfg["fill_colour"]))
+trectangle::trectangle(const config& cfg)
+	: x_(cfg["x"])
+	, y_(cfg["y"])
+	, w_(cfg["w"])
+	, h_(cfg["h"])
+	, border_thickness_(lexical_cast_default<unsigned>(cfg["border_thickness"]))
+	, border_colour_(decode_colour(cfg["border_colour"]))
+	, fill_colour_(decode_colour(cfg["fill_colour"]))
 {
 /*WIKI
  * @page = GUICanvasWML
@@ -484,10 +487,9 @@ trectangle::trectangle(const config& cfg) :
 	}
 }
 
-void trectangle::draw(surface& canvas,
-	const game_logic::map_formula_callable& variables)
+void trectangle::draw(surface& canvas
+		, const game_logic::map_formula_callable& variables)
 {
-
 	/**
 	 * @todo formulas are now recalculated every draw cycle which is a  bit
 	 * silly unless there has been a resize. So to optimize we should use an
@@ -499,14 +501,15 @@ void trectangle::draw(surface& canvas,
 	const unsigned h = h_(variables);
 
 	DBG_GUI_D << "Rectangle: draw from " << x << ',' << y
-		<< " width " << w << " height " << h
-		<< " canvas size " << canvas->w << ',' << canvas->h << ".\n";
+			<< " width " << w << " height " << h
+			<< " canvas size " << canvas->w << ',' << canvas->h << ".\n";
 
-	VALIDATE(static_cast<int>(x) < canvas->w &&
-		 static_cast<int>(x + w) <= canvas->w &&
-		 static_cast<int>(y) < canvas->h &&
-		 static_cast<int>(y + h) <= canvas->h,
-		 _("Rectangle doesn't fit on canvas."));
+	VALIDATE(
+			  static_cast<int>(x) < canvas->w
+				&& static_cast<int>(x + w) <= canvas->w
+				&& static_cast<int>(y) < canvas->h
+				&& static_cast<int>(y + h) <= canvas->h
+			, _("Rectangle doesn't fit on canvas."));
 
 
 	surface_lock locker(canvas);
@@ -530,7 +533,6 @@ void trectangle::draw(surface& canvas,
 
 		// left vertical (top -> bottom)
 		draw_line(canvas, border_colour_, left, top, left, bottom);
-
 	}
 
 	// The fill_rect_alpha code below fails, can't remember the exact cause
@@ -552,7 +554,8 @@ void trectangle::draw(surface& canvas,
 /***** ***** ***** ***** ***** IMAGE ***** ***** ***** ***** *****/
 
 /** Definition of an image shape. */
-class timage : public tcanvas::tshape
+class timage
+	: public tcanvas::tshape
 {
 public:
 
@@ -563,11 +566,11 @@ public:
 	 *                            http://www.wesnoth.org/wiki/GUICanvasWML#Image
 	 *                            for more info.
 	 */
-	timage(const config& cfg);
+	explicit timage(const config& cfg);
 
 	/** Implement shape::draw(). */
-	void draw(surface& canvas,
-		const game_logic::map_formula_callable& variables);
+	void draw(surface& canvas
+			, const game_logic::map_formula_callable& variables);
 
 private:
 	tformula<unsigned>
@@ -669,11 +672,11 @@ timage::timage(const config& cfg)
  *                                      means x and y are evaluated after the
  *                                      width and height.)
  *     image_height unsigned            The height of the image, either the
- *                                      requested height or the natural height of
- *                                      the image. This value can be used to set
- *                                      the y (or x) value of the image. (This
- *                                      means x and y are evaluated after the
- *                                      width and height.)
+ *                                      requested height or the natural height
+ *                                      of the image. This value can be used to
+ *                                      set the y (or x) value of the image.
+ *                                      (This means x and y are evaluated after
+ *                                      the width and height.)
  *     image_original_width unsigned    The width of the image as stored on
  *                                      disk, can be used to set x or w
  *                                      (also y and h can be set).
@@ -682,7 +685,6 @@ timage::timage(const config& cfg)
  *                                      (also x and y can be set).
  * @end_table
  * Also the general variables are available, see [[#general_variables|Line]].
- *
  */
 
 	if(!cfg["stretch"].empty()) {
@@ -700,7 +702,7 @@ timage::timage(const config& cfg)
 
 		if(!tmp) {
 			ERR_GUI_D << "Image: '" << cfg["name"]
-				<< "'not found and won't be drawn.\n";
+					<< "'not found and won't be drawn.\n";
 			return;
 		}
 
@@ -715,8 +717,8 @@ timage::timage(const config& cfg)
 	}
 }
 
-void timage::draw(surface& canvas,
-	const game_logic::map_formula_callable& variables)
+void timage::draw(surface& canvas
+		, const game_logic::map_formula_callable& variables)
 {
 	DBG_GUI_D << "Image: draw.\n";
 
@@ -729,7 +731,8 @@ void timage::draw(surface& canvas,
 		const std::string& name = image_name_(variables);
 
 		if(name.empty()) {
-			DBG_GUI_D << "Image: formula returned no value, will not be drawn.\n";
+			DBG_GUI_D
+					<< "Image: formula returned no value, will not be drawn.\n";
 			return;
 		}
 
@@ -737,7 +740,7 @@ void timage::draw(surface& canvas,
 
 		if(!tmp) {
 			ERR_GUI_D << "Image: formula returned name '"
-				<< name << "'not found and won't be drawn.\n";
+					<< name << "'not found and won't be drawn.\n";
 			return;
 		}
 
@@ -789,7 +792,7 @@ void timage::draw(surface& canvas,
 		if(!w) {
 			if(stretch_image) {
 				DBG_GUI_D << "Image: vertical stretch from " << image_->w
-					<< ',' << image_->h << " to a height of " << h << ".\n";
+						<< ',' << image_->h << " to a height of " << h << ".\n";
 
 				surf = stretch_surface_vertical(image_, h, false);
 				done = true;
@@ -800,7 +803,7 @@ void timage::draw(surface& canvas,
 		if(!h) {
 			if(stretch_image) {
 				DBG_GUI_D << "Image: horizontal stretch from " << image_->w
-					<< ',' << image_->h << " to a width of " << w << ".\n";
+						<< ',' << image_->h << " to a width of " << w << ".\n";
 
 				surf = stretch_surface_horizontal(image_, w, false);
 				done = true;
@@ -861,7 +864,7 @@ timage::tresize_mode timage::get_resize_mode(const std::string& resize_mode)
 	} else {
 		if(!resize_mode.empty() && resize_mode != "scale") {
 			ERR_GUI_E << "Invalid resize mode '"
-				<< resize_mode << "' falling back to 'scale'.\n";
+					<< resize_mode << "' falling back to 'scale'.\n";
 		}
 		return timage::scale;
 	}
@@ -870,7 +873,8 @@ timage::tresize_mode timage::get_resize_mode(const std::string& resize_mode)
 /***** ***** ***** ***** ***** TEXT ***** ***** ***** ***** *****/
 
 /** Definition of a text shape. */
-class ttext : public tcanvas::tshape
+class ttext
+	: public tcanvas::tshape
 {
 public:
 
@@ -881,11 +885,11 @@ public:
 	 *                            http://www.wesnoth.org/wiki/GUICanvasWML#Text
 	 *                            for more info.
 	 */
-	ttext(const config& cfg);
+	explicit ttext(const config& cfg);
 
 	/** Implement shape::draw(). */
-	void draw(surface& canvas,
-		const game_logic::map_formula_callable& variables);
+	void draw(surface& canvas
+			, const game_logic::map_formula_callable& variables);
 
 private:
 	tformula<unsigned>
@@ -919,19 +923,19 @@ private:
 	tformula<int> maximum_height_;
 };
 
-ttext::ttext(const config& cfg) :
-	x_(cfg["x"]),
-	y_(cfg["y"]),
-	w_(cfg["w"]),
-	h_(cfg["h"]),
-	font_size_(lexical_cast_default<unsigned>(cfg["font_size"])),
-	font_style_(decode_font_style(cfg["font_style"])),
-	text_alignment_(cfg["text_alignment"]),
-	colour_(decode_colour(cfg["colour"])),
-	text_(cfg["text"]),
-	text_markup_(cfg["text_markup"], false),
-	maximum_width_(cfg["maximum_width"], -1),
-	maximum_height_(cfg["maximum_height"], -1)
+ttext::ttext(const config& cfg)
+	: x_(cfg["x"])
+	, y_(cfg["y"])
+	, w_(cfg["w"])
+	, h_(cfg["h"])
+	, font_size_(lexical_cast_default<unsigned>(cfg["font_size"]))
+	, font_style_(decode_font_style(cfg["font_style"]))
+	, text_alignment_(cfg["text_alignment"])
+	, colour_(decode_colour(cfg["colour"]))
+	, text_(cfg["text"])
+	, text_markup_(cfg["text_markup"], false)
+	, maximum_width_(cfg["maximum_width"], -1)
+	, maximum_height_(cfg["maximum_height"], -1)
 {
 
 /*WIKI
@@ -944,9 +948,11 @@ ttext::ttext(const config& cfg) :
  * @start_table = config
  *     x (f_unsigned = 0)              The x coordinate of the top left corner.
  *     y (f_unsigned = 0)              The y coordinate of the top left corner.
- *     w (f_unsigned = 0)              The width of the rectangle.
- *     h (f_unsigned = 0)              The height of the rectangle.
- *     font_size (unsigned)            The size of the font to draw in.
+ *     w (f_unsigned = 0)              The width of the text's bounding
+ *                                     rectangle.
+ *     h (f_unsigned = 0)              The height of the text's bounding
+ *                                     rectangle.
+ *     font_size (unsigned)            The size of the text font.
  *     font_style (font_style = "")    The style of the text.
  *     text_alignment (f_h_align = "left")
  *                                     The alignment of the text.
@@ -962,7 +968,8 @@ ttext::ttext(const config& cfg) :
  * @end_table
  * NOTE alignment could only be done with the formulas, but now with the
  * text_alignment flag as well, older widgets might still use the formulas and
- * not all widgets may expose the text alignment yet.
+ * not all widgets may expose the text alignment yet and when exposed not use
+ * it yet.
  *
  * Variables:
  * @start_table = formula
@@ -970,7 +977,6 @@ ttext::ttext(const config& cfg) :
  *     text_height unsigned            The height of the rendered text.
  * @end_table
  * Also the general variables are available, see [[#general_variables|Line]].
- *
  */
 
 	VALIDATE(font_size_, _("Text has a font size of 0."));
@@ -981,10 +987,9 @@ ttext::ttext(const config& cfg) :
 	}
 }
 
-void ttext::draw(surface& canvas,
-	const game_logic::map_formula_callable& variables)
+void ttext::draw(surface& canvas
+		, const game_logic::map_formula_callable& variables)
 {
-
 	assert(variables.has_key("text"));
 
 	// We first need to determine the size of the text which need the rendered
@@ -1000,21 +1005,21 @@ void ttext::draw(surface& canvas,
 	static font::ttext text_renderer;
 	text_renderer.set_text(text, text_markup_(variables));
 
-	text_renderer.set_font_size(font_size_).
-		set_font_style(font_style_).
-		set_alignment(text_alignment_(variables)).
-		set_foreground_colour(colour_).
-		set_maximum_width(maximum_width_(variables)).
-		set_maximum_height(maximum_height_(variables)).
-		set_ellipse_mode(variables.has_key("text_wrap_mode")
-			? static_cast<PangoEllipsizeMode>
-				(variables.query_value("text_wrap_mode").as_int())
-			: PANGO_ELLIPSIZE_END);
+	text_renderer.set_font_size(font_size_)
+			.set_font_style(font_style_)
+			.set_alignment(text_alignment_(variables))
+			.set_foreground_colour(colour_)
+			.set_maximum_width(maximum_width_(variables))
+			.set_maximum_height(maximum_height_(variables))
+			.set_ellipse_mode(variables.has_key("text_wrap_mode")
+				? static_cast<PangoEllipsizeMode>
+					(variables.query_value("text_wrap_mode").as_int())
+				: PANGO_ELLIPSIZE_END);
 
 	surface surf = text_renderer.render();
 	if(surf->w == 0) {
-		DBG_GUI_D  << "Text: Rendering '" <<
-				text << "' resulted in an empty canvas, leave.\n";
+		DBG_GUI_D  << "Text: Rendering '"
+				<< text << "' resulted in an empty canvas, leave.\n";
 		return;
 	}
 
@@ -1038,21 +1043,22 @@ void ttext::draw(surface& canvas,
 	const unsigned h = h_(local_variables);
 
 	DBG_GUI_D << "Text: drawing text '" << text
-		<< "' drawn from " << x << ',' << y
-		<< " width " << w << " height " << h
-		<< " canvas size " << canvas->w << ',' << canvas->h << ".\n";
+			<< "' drawn from " << x << ',' << y
+			<< " width " << w << " height " << h
+			<< " canvas size " << canvas->w << ',' << canvas->h << ".\n";
 
-	VALIDATE(static_cast<int>(x) < canvas->w &&
-		 static_cast<int>(y) < canvas->h,
-		 _("Text doesn't start on canvas."));
+	VALIDATE(static_cast<int>(x) < canvas->w && static_cast<int>(y) < canvas->h
+			, _("Text doesn't start on canvas."));
 
 	// A text might be to long and will be clipped.
 	if(surf->w > static_cast<int>(w)) {
-		WRN_GUI_D << "Text: text is too wide for the canvas and will be clipped.\n";
+		WRN_GUI_D << "Text: text is too wide for the "
+				"canvas and will be clipped.\n";
 	}
 
 	if(surf->h > static_cast<int>(h)) {
-		WRN_GUI_D << "Text: text is too high for the canvas and will be clipped.\n";
+		WRN_GUI_D << "Text: text is too high for the "
+				"canvas and will be clipped.\n";
 	}
 
 	SDL_Rect dst = { x, y, canvas->w, canvas->h };
@@ -1063,24 +1069,25 @@ void ttext::draw(surface& canvas,
 
 /***** ***** ***** ***** ***** CANVAS ***** ***** ***** ***** *****/
 
-tcanvas::tcanvas() :
-	shapes_(),
-	blur_depth_(0),
-	w_(0),
-	h_(0),
-	canvas_(),
-	variables_(),
-	dirty_(true)
+tcanvas::tcanvas()
+	: shapes_()
+	, blur_depth_(0)
+	, w_(0)
+	, h_(0)
+	, canvas_()
+	, variables_()
+	, dirty_(true)
 {
 }
-tcanvas::tcanvas(const config& cfg) :
-	shapes_(),
-	blur_depth_(0),
-	w_(0),
-	h_(0),
-	canvas_(),
-	variables_(),
-	dirty_(true)
+
+tcanvas::tcanvas(const config& cfg)
+	: shapes_()
+	, blur_depth_(0)
+	, w_(0)
+	, h_(0)
+	, canvas_()
+	, variables_()
+	, dirty_(true)
 {
 	parse_cfg(cfg);
 }
@@ -1177,20 +1184,30 @@ void tcanvas::parse_cfg(const config& cfg)
 			ERR_GUI_P << "Canvas: found a shape of an invalid type "
 					<< type << ".\n";
 
-			assert(false); // FIXME remove in production code.
+			assert(false);
 		}
 	}
 }
 
 /***** ***** ***** ***** ***** SHAPE ***** ***** ***** ***** *****/
 
-void tcanvas::tshape::put_pixel(ptrdiff_t start, Uint32 colour, unsigned w, unsigned x, unsigned y)
+void tcanvas::tshape::put_pixel(
+		  const ptrdiff_t start
+		, const Uint32 colour
+		, const unsigned w
+		, const unsigned x
+		, const unsigned y)
 {
 	*reinterpret_cast<Uint32*>(start + (y * w * 4) + x * 4) = colour;
 }
 
-void tcanvas::tshape::draw_line(surface& canvas, Uint32 colour,
-		const unsigned x1, unsigned y1, const unsigned x2, unsigned y2)
+void tcanvas::tshape::draw_line(
+		  surface& canvas
+		, Uint32 colour
+		, const unsigned x1
+		, unsigned y1
+		, const unsigned x2
+		, unsigned y2)
 {
 	colour = SDL_MapRGBA(canvas->format,
 		((colour & 0xFF000000) >> 24),
@@ -1202,9 +1219,9 @@ void tcanvas::tshape::draw_line(surface& canvas, Uint32 colour,
 	unsigned w = canvas->w;
 
 	DBG_GUI_D << "Shape: draw line from "
-		<< x1 << ',' << y1 << " to " << x2 << ',' << y2
-		<< " canvas width " << w << " canvas height "
-		<< canvas->h << ".\n";
+			<< x1 << ',' << y1 << " to " << x2 << ',' << y2
+			<< " canvas width " << w << " canvas height "
+			<< canvas->h << ".\n";
 
 	assert(static_cast<int>(x1) < canvas->w);
 	assert(static_cast<int>(x2) < canvas->w);
@@ -1241,8 +1258,8 @@ void tcanvas::tshape::draw_line(surface& canvas, Uint32 colour,
 	}
 
 	// Bresenham constants
-	int incE = 2 * dy;
-	int incNE = 2 * dy - 2 * dx;
+	const int incE = 2 * dy;
+	const int incNE = 2 * dy - 2 * dx;
 	int d = 2 * dy - dx;
 	int y = y1;
 

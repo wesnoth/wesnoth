@@ -68,8 +68,8 @@ public:
 		 *                        definition, this parameter contains the values
 		 *                        for these formulas.
 		 */
-		virtual void draw(surface& canvas,
-			const game_logic::map_formula_callable& variables) = 0;
+		virtual void draw(surface& canvas
+				, const game_logic::map_formula_callable& variables) = 0;
 
 	protected:
 
@@ -90,10 +90,15 @@ public:
 		 * @param x               The x coordinate of the pixel to draw.
 		 * @param y               The y coordinate of the pixel to draw.
 		 */
-		void put_pixel(ptrdiff_t start, Uint32 colour, unsigned w, unsigned x, unsigned y);
+		void put_pixel(
+				  const ptrdiff_t start
+				, const Uint32 colour
+				, const unsigned w
+				, const unsigned x
+				, const unsigned y);
 
 		/**
-		 * Draws a line
+		 * Draws a line.
 		 *
 		 * @param canvas          The canvas to draw upon, the caller should
 		 *                        lock the surface before calling.
@@ -103,8 +108,13 @@ public:
 		 * @param x2              The end x coordinate of the line to draw.
 		 * @param y2              The end y coordinate of the line to draw.
 		 */
-		void draw_line(surface& canvas, Uint32 colour,
-			const unsigned x1, unsigned y1, const unsigned x2, unsigned y2);
+		void draw_line(
+				  surface& canvas
+				, Uint32 colour
+				, const unsigned x1
+				, unsigned y1
+				, const unsigned x2
+				, unsigned y2);
 
 	};
 
@@ -119,7 +129,7 @@ public:
 	 * @param cfg                 The config object with the data to draw, see
 	 *                            http://www.wesnoth.org/wiki/GUICanvasWML
 	 */
-	tcanvas(const config& cfg);
+	explicit tcanvas(const config& cfg);
 
 	/**
 	 * Draws the canvas.
