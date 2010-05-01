@@ -38,9 +38,14 @@ tstacked_widget_definition::tresolution::tresolution(const config& cfg)
  * @page = GUIWidgetDefinitionWML
  * @order = 1_stacked_widget
  *
- * == Multi page ==
+ * == Stacked widget ==
  *
- * The documentation is not written yet.
+ * A stacked widget holds several widgets on top of eachother. This can be used
+ * for various effects; add an optional overlay to an image, stack it with a
+ * spacer to force a minimum size of a widget. The latter is handy to avoid
+ * making a seperate definition for a single instance with a fixed size.
+ *
+ * A stacked widget has no states.
  */
 
 	// Add a dummy state since every widget needs a state.
