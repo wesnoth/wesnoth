@@ -20,16 +20,16 @@
 
 namespace gui2 {
 
-tbutton_definition::tbutton_definition(const config& cfg) :
-	tcontrol_definition(cfg)
+tbutton_definition::tbutton_definition(const config& cfg)
+	: tcontrol_definition(cfg)
 {
 	DBG_GUI_P << "Parsing button " << id << '\n';
 
 	load_resolutions<tresolution>(cfg);
 }
 
-tbutton_definition::tresolution::tresolution(const config& cfg) :
-	tresolution_definition_(cfg)
+tbutton_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
 {
 /*WIKI
  * @page = GUIWidgetDefinitionWML
@@ -44,10 +44,9 @@ tbutton_definition::tresolution::tresolution(const config& cfg) :
  * * state_disabled, the button is disabled.
  * * state_pressed, the left mouse button is down.
  * * state_focussed, the mouse is over the button.
- *
  */
 
-	// Note the order should be the same as the enum tstate is button.hpp.
+	// Note the order should be the same as the enum tstate in button.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 	state.push_back(tstate_definition(cfg.child("state_disabled")));
 	state.push_back(tstate_definition(cfg.child("state_pressed")));
