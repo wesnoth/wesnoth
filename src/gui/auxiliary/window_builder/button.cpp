@@ -72,7 +72,7 @@ twidget* tbuilder_button::build() const
  * this value to the caller. The return value can either be defined by the
  * user or determined from the id of the button. The return value has a
  * higher precedence as the one defined by the id. (Of course it's weird to
- * give a button an id and then override it's return value.)
+ * give a button an id and then override its return value.)
  *
  * When the button doesn't have a standard id, but you still want to use the
  * return value of that id, use return_value_id instead. This has a higher
@@ -84,5 +84,5 @@ twidget* tbuilder_button::build() const
  *     return_value (int = 0)          The return value.
  *
  * @end_table
- *
  */
+

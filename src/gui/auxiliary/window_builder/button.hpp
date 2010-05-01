@@ -26,11 +26,8 @@ namespace implementation {
 struct tbuilder_button
 	: public tbuilder_control
 {
-
-private:
-	tbuilder_button();
 public:
-	tbuilder_button(const config& cfg);
+	explicit tbuilder_button(const config& cfg);
 
 	twidget* build () const;
 
@@ -44,5 +41,4 @@ private:
 } // namespace gui2
 
 #endif
-
 
