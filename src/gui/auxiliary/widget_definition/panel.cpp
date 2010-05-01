@@ -20,21 +20,20 @@
 
 namespace gui2 {
 
-tpanel_definition::tpanel_definition(const config& cfg) :
-	tcontrol_definition(cfg)
+tpanel_definition::tpanel_definition(const config& cfg)
+	: tcontrol_definition(cfg)
 {
-
 	DBG_GUI_P << "Parsing panel " << id << '\n';
 
 	load_resolutions<tresolution>(cfg);
 }
 
-tpanel_definition::tresolution::tresolution(const config& cfg) :
-	tresolution_definition_(cfg),
-	top_border(lexical_cast_default<unsigned>(cfg["top_border"])),
-	bottom_border(lexical_cast_default<unsigned>(cfg["bottom_border"])),
-	left_border(lexical_cast_default<unsigned>(cfg["left_border"])),
-	right_border(lexical_cast_default<unsigned>(cfg["right_border"]))
+tpanel_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
+	, top_border(lexical_cast_default<unsigned>(cfg["top_border"]))
+	, bottom_border(lexical_cast_default<unsigned>(cfg["bottom_border"]))
+	, left_border(lexical_cast_default<unsigned>(cfg["left_border"]))
+	, right_border(lexical_cast_default<unsigned>(cfg["right_border"]))
 {
 /*WIKI
  * @page = GUIWidgetDefinitionWML
@@ -68,5 +67,6 @@ tpanel_definition::tresolution::tresolution(const config& cfg) :
 	state.push_back(tstate_definition(cfg.child("background")));
 	state.push_back(tstate_definition(cfg.child("foreground")));
 }
+
 } // namespace gui2
 
