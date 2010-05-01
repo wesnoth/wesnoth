@@ -80,31 +80,24 @@ void tsub_player_list::init(gui2::twindow &w, const std::string &id)
 	count = find_widget<tlabel>(&w, id + "_count", false, true);
 	label = find_widget<tlabel>(&w, id + "_label", false, true);
 
+	ttree_view& parent_tree = find_widget<ttree_view>(&w
+			, "player_tree"
+			, false);
 
-	if(!new_widgets) {
+	string_map tree_group_field;
+	std::map<std::string, string_map> tree_group_item;
 
-		ttree_view& parent_tree = find_widget<ttree_view>(&w
-				, "player_tree"
-				, false);
+	tree_group_field["label"] = id;
+	tree_group_item["tree_view_node_label"] = tree_group_field;
+	tree = &parent_tree.add_node("player_group", tree_group_item);
 
-		string_map tree_group_field;
-		std::map<std::string, string_map> tree_group_item;
+	tree_label = find_widget<tlabel>(tree
+				, "tree_view_node_label"
+				, false
+				, true);
 
-		tree_group_field["label"] = id;
-		tree_group_item["tree_view_node_label"] = tree_group_field;
-		tree = &parent_tree.add_node("player_group", tree_group_item);
+	tree_label->set_label(label->label());
 
-		tree_label = find_widget<tlabel>(tree
-					, "tree_view_node_label"
-					, false
-					, true);
-
-		tree_label->set_label(label->label());
-
-	} else {
-		tree = NULL;
-		tree_label = NULL;
-	}
 }
 
 void tsub_player_list::show_toggle_callback(gui2::twidget* /*widget*/)
@@ -120,46 +113,26 @@ void tsub_player_list::show_toggle_callback(gui2::twidget* /*widget*/)
 
 void tsub_player_list::auto_hide()
 {
-	if(!new_widgets) {
-		assert(tree);
-		assert(tree_label);
-		if(tree->empty()) {
-			/**
-			 * @todo Make sure setting visible resizes the widget.
-			 *
-			 * It doesn't work here since invalidate_layout is blocked, but the
-			 * widget should also be able to handle it itself. Once done the
-			 * setting of the label text can also be removed.
-			 */
-			assert(label);
-			tree_label->set_label(label->label() + " (0)");
+	assert(tree);
+	assert(tree_label);
+	if(tree->empty()) {
+		/**
+		 * @todo Make sure setting visible resizes the widget.
+		 *
+		 * It doesn't work here since invalidate_layout is blocked, but the
+		 * widget should also be able to handle it itself. Once done the
+		 * setting of the label text can also be removed.
+		 */
+		assert(label);
+		tree_label->set_label(label->label() + " (0)");
 //			tree_label->set_visible(twidget::INVISIBLE);
-		} else {
-			assert(label);
-			std::stringstream ss;
-			ss << label->label() << " (" << tree->size() << ")";
-			tree_label->set_label(ss.str());
+	} else {
+		assert(label);
+		std::stringstream ss;
+		ss << label->label() << " (" << tree->size() << ")";
+		tree_label->set_label(ss.str());
 //			tree_label->set_visible(twidget::VISIBLE);
 		}
-	} else {
-		std::stringstream ss;
-		ss << "(" << list->get_item_count() << ")";
-		count->set_label(ss.str());
-		if (list->get_item_count() == 0) {
-			list->set_visible(twidget::INVISIBLE);
-			show_toggle->set_visible(twidget::INVISIBLE);
-			label->set_visible(twidget::INVISIBLE);
-			count->set_visible(twidget::INVISIBLE);
-		} else {
-			list->set_visible(show_toggle->get_value()
-					? twidget::INVISIBLE
-					: twidget::VISIBLE);
-			show_toggle->set_visible(twidget::VISIBLE);
-			label->set_visible(twidget::VISIBLE);
-			count->set_visible(twidget::VISIBLE);
-
-		}
-	}
 }
 
 void tplayer_list::init(gui2::twindow &w)
@@ -176,33 +149,28 @@ void tplayer_list::init(gui2::twindow &w)
 	tree = find_widget<ttree_view>(&w
 			, "player_tree"
 			, false
-			, !new_widgets);
+			, true);
 
-	if(!new_widgets) {
-		find_widget<twidget>(&w, "old_player_list", false)
-				.set_visible(twidget::INVISIBLE);
+	find_widget<twidget>(&w, "old_player_list", false)
+			.set_visible(twidget::INVISIBLE);
 
-		/**
-		 * @todo This is a hack to fold the items.
-		 *
-		 * This hack can be removed when folding is properly implemented.
-		 */
-		assert(active_room.tree);
-		find_widget<ttoggle_button>(active_room.tree
-					, "tree_view_node_icon"
-					, false).set_value(true);
-		assert(other_rooms.tree);
-		find_widget<ttoggle_button>(other_rooms.tree
-					, "tree_view_node_icon"
-					, false).set_value(true);
-		assert(other_games.tree);
-		find_widget<ttoggle_button>(other_games.tree
-					, "tree_view_node_icon"
-					, false).set_value(true);
-	}
-	if(new_widgets && tree) {
-		tree->set_visible(twidget::INVISIBLE);
-	}
+	/**
+	 * @todo This is a hack to fold the items.
+	 *
+	 * This hack can be removed when folding is properly implemented.
+	 */
+	assert(active_room.tree);
+	find_widget<ttoggle_button>(active_room.tree
+				, "tree_view_node_icon"
+				, false).set_value(true);
+	assert(other_rooms.tree);
+	find_widget<ttoggle_button>(other_rooms.tree
+				, "tree_view_node_icon"
+				, false).set_value(true);
+	assert(other_games.tree);
+	find_widget<ttoggle_button>(other_games.tree
+				, "tree_view_node_icon"
+				, false).set_value(true);
 }
 
 void tplayer_list::update_sort_icons()
@@ -829,17 +797,16 @@ void tlobby_main::update_playerlist()
 	player_list_.active_room.list->clear();
 	player_list_.other_rooms.list->clear();
 	player_list_.other_games.list->clear();
-	if(!new_widgets) {
-		assert(player_list_.active_game.tree);
-		assert(player_list_.active_room.tree);
-		assert(player_list_.other_games.tree);
-		assert(player_list_.other_rooms.tree);
 
-		player_list_.active_game.tree->clear();
-		player_list_.active_room.tree->clear();
-		player_list_.other_games.tree->clear();
-		player_list_.other_rooms.tree->clear();
-	}
+	assert(player_list_.active_game.tree);
+	assert(player_list_.active_room.tree);
+	assert(player_list_.other_games.tree);
+	assert(player_list_.other_rooms.tree);
+
+	player_list_.active_game.tree->clear();
+	player_list_.active_room.tree->clear();
+	player_list_.other_games.tree->clear();
+	player_list_.other_rooms.tree->clear();
 
 	foreach (user_info* userptr, lobby_info_.users_sorted())
 	{
@@ -900,37 +867,25 @@ void tlobby_main::update_playerlist()
 			target_list = &player_list_.other_rooms;
 		}
 
-		if(!new_widgets) {
-			assert(target_list->tree);
+		assert(target_list->tree);
 
-			string_map tree_group_field;
-			std::map<std::string, string_map> tree_group_item;
+		string_map tree_group_field;
+		std::map<std::string, string_map> tree_group_item;
 
-			/*** Add tree item ***/
-			tree_group_field["label"] = icon_ss.str();
-			tree_group_item["icon"] = tree_group_field;
+		/*** Add tree item ***/
+		tree_group_field["label"] = icon_ss.str();
+		tree_group_item["icon"] = tree_group_field;
 
-			tree_group_field["label"] = name;
-			tree_group_field["use_markup"] = "true";
-			tree_group_item["name"] = tree_group_field;
+		tree_group_field["label"] = name;
+		tree_group_field["use_markup"] = "true";
+		tree_group_item["name"] = tree_group_field;
 
-			ttree_view_node& player =
-					target_list->tree->add_child("player", tree_group_item);
+		ttree_view_node& player =
+				target_list->tree->add_child("player", tree_group_item);
 
-			find_widget<ttoggle_panel>(&player, "tree_view_node_label", false)
-					.set_callback_mouse_left_double_click(boost::bind(
-						&tlobby_main::user_dialog_callback, this, userptr));
-		} else {
-			target_list->list->add_row(data);
-
-			tgrid* grid = target_list->list->get_row_grid(target_list->list->get_item_count() - 1);
-
-			find_widget<tlabel>(grid, "player", false).set_use_markup(true);
-
-			find_widget<ttoggle_panel>(grid, "userpanel", false)
-					.set_callback_mouse_left_double_click(boost::bind(
-						&tlobby_main::user_dialog_callback, this, userptr));
-		}
+		find_widget<ttoggle_panel>(&player, "tree_view_node_label", false)
+				.set_callback_mouse_left_double_click(boost::bind(
+					&tlobby_main::user_dialog_callback, this, userptr));
 	}
 	player_list_.active_game.auto_hide();
 	player_list_.active_room.auto_hide();
