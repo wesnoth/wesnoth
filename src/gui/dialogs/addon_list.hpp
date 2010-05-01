@@ -26,7 +26,7 @@ class taddon_list
 	: public tdialog
 {
 public:
-	taddon_list(const config& cfg)
+	explicit taddon_list(const config& cfg)
 		: cfg_(cfg)
 	{
 	}
