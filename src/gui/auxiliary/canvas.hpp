@@ -70,52 +70,6 @@ public:
 		 */
 		virtual void draw(surface& canvas
 				, const game_logic::map_formula_callable& variables) = 0;
-
-	protected:
-
-		/***** ***** ***** ***** drawing primitives ***** ***** ***** *****/
-
-		/**
-		 * Draws a single pixel.
-		 *
-		 * A rather unoptimized single pixel draw routine.
-		 * @todo we're unoptimized maybe we should be removed and replaced by
-		 * something more efficient, making us an inlined non-member function
-		 * will probably already help.
-		 *
-		 * @param start           The memory address which is the start of the
-		 *                        surface buffer to draw in.
-		 * @param colour          The colour of the pixel to draw.
-		 * @param w               The width of the surface.
-		 * @param x               The x coordinate of the pixel to draw.
-		 * @param y               The y coordinate of the pixel to draw.
-		 */
-		void put_pixel(
-				  const ptrdiff_t start
-				, const Uint32 colour
-				, const unsigned w
-				, const unsigned x
-				, const unsigned y);
-
-		/**
-		 * Draws a line.
-		 *
-		 * @param canvas          The canvas to draw upon, the caller should
-		 *                        lock the surface before calling.
-		 * @param colour          The colour of the line to draw.
-		 * @param x1              The start x coordinate of the line to draw.
-		 * @param y1              The start y coordinate of the line to draw.
-		 * @param x2              The end x coordinate of the line to draw.
-		 * @param y2              The end y coordinate of the line to draw.
-		 */
-		void draw_line(
-				  surface& canvas
-				, Uint32 colour
-				, const unsigned x1
-				, unsigned y1
-				, const unsigned x2
-				, unsigned y2);
-
 	};
 
 	typedef boost::intrusive_ptr<tshape> tshape_ptr;

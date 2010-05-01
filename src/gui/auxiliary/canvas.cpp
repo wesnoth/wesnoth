@@ -68,6 +68,113 @@ namespace {
  * @end_table
  */
 
+/***** ***** ***** ***** ***** DRAWING PRIMITIVES ***** ***** ***** ***** *****/
+
+/**
+ * Draws a single pixel.
+ *
+ * @param start           The memory address which is the start of the surface
+ *                        buffer to draw in.
+ * @param colour          The colour of the pixel to draw.
+ * @param w               The width of the surface.
+ * @param x               The x coordinate of the pixel to draw.
+ * @param y               The y coordinate of the pixel to draw.
+ */
+static void put_pixel(
+		  const ptrdiff_t start
+		, const Uint32 colour
+		, const unsigned w
+		, const unsigned x
+		, const unsigned y)
+{
+	*reinterpret_cast<Uint32*>(start + (y * w * 4) + x * 4) = colour;
+}
+
+/**
+ * Draws a line.
+ *
+ * @param canvas          The canvas to draw upon, the caller should lock the
+ *                        surface before calling.
+ * @param colour          The colour of the line to draw.
+ * @param x1              The start x coordinate of the line to draw.
+ * @param y1              The start y coordinate of the line to draw.
+ * @param x2              The end x coordinate of the line to draw.
+ * @param y2              The end y coordinate of the line to draw.
+ */
+static void draw_line(
+		  surface& canvas
+		, Uint32 colour
+		, const unsigned x1
+		, unsigned y1
+		, const unsigned x2
+		, unsigned y2)
+{
+	colour = SDL_MapRGBA(canvas->format,
+		((colour & 0xFF000000) >> 24),
+		((colour & 0x00FF0000) >> 16),
+		((colour & 0x0000FF00) >> 8),
+		((colour & 0x000000FF)));
+
+	ptrdiff_t start = reinterpret_cast<ptrdiff_t>(canvas->pixels);
+	unsigned w = canvas->w;
+
+	DBG_GUI_D << "Shape: draw line from "
+			<< x1 << ',' << y1 << " to " << x2 << ',' << y2
+			<< " canvas width " << w << " canvas height "
+			<< canvas->h << ".\n";
+
+	assert(static_cast<int>(x1) < canvas->w);
+	assert(static_cast<int>(x2) < canvas->w);
+	assert(static_cast<int>(y1) < canvas->h);
+	assert(static_cast<int>(y2) < canvas->h);
+
+	// use a special case for vertical lines
+	if(x1 == x2) {
+		if(y2 < y1) {
+			std::swap(y1, y2);
+		}
+
+		for(unsigned y = y1; y <= y2; ++y) {
+			put_pixel(start, colour, w, x1, y);
+		}
+		return;
+	}
+
+	// use a special case for horizontal lines
+	if(y1 == y2) {
+		for(unsigned x  = x1; x <= x2; ++x) {
+			put_pixel(start, colour, w, x, y1);
+		}
+		return;
+	}
+
+	// draw based on Bresenham on wikipedia
+	int dx = x2 - x1;
+	int dy = y2 - y1;
+	int slope = 1;
+	if (dy < 0) {
+		slope = -1;
+		dy = -dy;
+	}
+
+	// Bresenham constants
+	const int incE = 2 * dy;
+	const int incNE = 2 * dy - 2 * dx;
+	int d = 2 * dy - dx;
+	int y = y1;
+
+	// Blit
+	for (unsigned x = x1; x <= x2; ++x) {
+		put_pixel(start, colour, w, x, y);
+		if (d <= 0) {
+			d += incE;
+		} else {
+			d += incNE;
+			y += slope;
+		}
+	}
+}
+
 /***** ***** ***** ***** ***** LINE ***** ***** ***** ***** *****/
 
 /** Definition of a line shape. */
@@ -1190,90 +1297,6 @@ void tcanvas::parse_cfg(const config& cfg)
 }
 
 /***** ***** ***** ***** ***** SHAPE ***** ***** ***** ***** *****/
-
-void tcanvas::tshape::put_pixel(
-		  const ptrdiff_t start
-		, const Uint32 colour
-		, const unsigned w
-		, const unsigned x
-		, const unsigned y)
-{
-	*reinterpret_cast<Uint32*>(start + (y * w * 4) + x * 4) = colour;
-}
-
-void tcanvas::tshape::draw_line(
-		  surface& canvas
-		, Uint32 colour
-		, const unsigned x1
-		, unsigned y1
-		, const unsigned x2
-		, unsigned y2)
-{
-	colour = SDL_MapRGBA(canvas->format,
-		((colour & 0xFF000000) >> 24),
-		((colour & 0x00FF0000) >> 16),
-		((colour & 0x0000FF00) >> 8),
-		((colour & 0x000000FF)));
-
-	ptrdiff_t start = reinterpret_cast<ptrdiff_t>(canvas->pixels);
-	unsigned w = canvas->w;
-
-	DBG_GUI_D << "Shape: draw line from "
-			<< x1 << ',' << y1 << " to " << x2 << ',' << y2
-			<< " canvas width " << w << " canvas height "
-			<< canvas->h << ".\n";
-
-	assert(static_cast<int>(x1) < canvas->w);
-	assert(static_cast<int>(x2) < canvas->w);
-	assert(static_cast<int>(y1) < canvas->h);
-	assert(static_cast<int>(y2) < canvas->h);
-
-	// use a special case for vertical lines
-	if(x1 == x2) {
-		if(y2 < y1) {
-			std::swap(y1, y2);
-		}
-
-		for(unsigned y = y1; y <= y2; ++y) {
-			put_pixel(start, colour, w, x1, y);
-		}
-		return;
-	}
-
-	// use a special case for horizontal lines
-	if(y1 == y2) {
-		for(unsigned x  = x1; x <= x2; ++x) {
-			put_pixel(start, colour, w, x, y1);
-		}
-		return;
-	}
-
-	// draw based on Bresenham on wikipedia
-	int dx = x2 - x1;
-	int dy = y2 - y1;
-	int slope = 1;
-	if (dy < 0) {
-		slope = -1;
-		dy = -dy;
-	}
-
-	// Bresenham constants
-	const int incE = 2 * dy;
-	const int incNE = 2 * dy - 2 * dx;
-	int d = 2 * dy - dx;
-	int y = y1;
-
-	// Blit
-	for (unsigned x = x1; x <= x2; ++x) {
-		put_pixel(start, colour, w, x, y);
-		if (d <= 0) {
-			d += incE;
-		} else {
-			d += incNE;
-			y += slope;
-		}
-	}
-}
 
 } // namespace gui2
 /*WIKI
