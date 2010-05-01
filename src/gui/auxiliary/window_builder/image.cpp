@@ -36,8 +36,8 @@ twidget* tbuilder_image::build() const
 	init_control(widget);
 
 	DBG_GUI_G << "Window builder: placed image '"
-		<< id << "' with defintion '"
-		<< definition << "'.\n";
+			<< id << "' with defintion '"
+			<< definition << "'.\n";
 
 	return widget;
 }

@@ -24,17 +24,14 @@ namespace implementation {
 struct tbuilder_image
 	: public tbuilder_control
 {
-
-	tbuilder_image(const config& cfg);
+	explicit tbuilder_image(const config& cfg);
 
 	twidget* build () const;
 };
-
 
 } // namespace implementation
 
 } // namespace gui2
 
 #endif
-
 
