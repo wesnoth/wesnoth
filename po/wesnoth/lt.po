@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-26 15:39+0100\n"
+"POT-Creation-Date: 2010-03-26 15:41+0100\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lietuvių <komp_lt@konferencijos.lt>\n"
@@ -4427,9 +4427,8 @@ msgstr "pagyvenęs"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:222
-#, fuzzy
 msgid "female^aged"
-msgstr "buka"
+msgstr "pagyvęnusi"
 
 #. [color_range]: id=red
 #. [color_range]: id=1
@@ -7539,9 +7538,8 @@ msgid "do not translate the 'all'^[all|<command>]"
 msgstr ""
 
 #: src/menu_events.cpp:1998
-#, fuzzy
 msgid "Error:"
-msgstr "Klaida: "
+msgstr "Klaida:"
 
 #: src/menu_events.cpp:2004
 msgid "Missing argument $arg_id"
@@ -7554,9 +7552,8 @@ msgid ""
 msgstr ""
 
 #: src/menu_events.cpp:2052 src/menu_events.cpp:2053 src/menu_events.cpp:2076
-#, fuzzy
 msgid "help"
-msgstr "Pagalba"
+msgstr "pagalba"
 
 #: src/menu_events.cpp:2053
 msgid "Type $help_command <command> for more info."
@@ -7567,17 +7564,17 @@ msgid " No help available."
 msgstr " Nėra prieinamos pagalbos."
 
 #: src/menu_events.cpp:2069
-#, fuzzy
 msgid "Usage:"
-msgstr "Pranešimas:"
+msgstr "Naudojimas:"
 
 #: src/menu_events.cpp:2074
 msgid "aliases:"
 msgstr ""
 
 #: src/menu_events.cpp:2200
+#, fuzzy
 msgid "(A) - auth command"
-msgstr ""
+msgstr "(derinimo komanda)"
 
 #: src/menu_events.cpp:2207
 #, fuzzy
@@ -7629,9 +7626,8 @@ msgid "Send a message to the server admins currently online"
 msgstr "Siųsti pranešimą dabar prisijungusiems serverio administratoriams"
 
 #: src/menu_events.cpp:2255
-#, fuzzy
 msgid "<message>"
-msgstr "Pranešimas:"
+msgstr "<pranešimas>"
 
 #: src/menu_events.cpp:2255
 msgid "Send an emotion or personal action in chat."
@@ -7744,18 +7740,18 @@ msgid "(D) - debug only, (N) - network only, (A) - auth only"
 msgstr ""
 
 #: src/menu_events.cpp:2403
-#, fuzzy
 msgid "(debug command)"
-msgstr "Derinimo režimo komandos"
+msgstr "(derinimo komanda)"
 
 #: src/menu_events.cpp:2404
 #, fuzzy
 msgid " (network only)"
-msgstr "Tinklo žaidėjas"
+msgstr " (tik tinkle)"
 
 #: src/menu_events.cpp:2405
+#, fuzzy
 msgid " (auth only)"
-msgstr ""
+msgstr "Tik komandai"
 
 #: src/menu_events.cpp:2429
 msgid "Refresh gui."
@@ -7975,9 +7971,8 @@ msgid "There are no players on your friends or ignore list."
 msgstr "Nėra žaidėjų jūsų draugų ar ignoruojamų sąraše."
 
 #: src/menu_events.cpp:2803
-#, fuzzy
 msgid "version"
-msgstr "Versija"
+msgstr "versija"
 
 #: src/menu_events.cpp:2819
 msgid "registering with password *** and no email address"
@@ -9101,7 +9096,7 @@ msgstr ""
 
 #: src/unit.cpp:2493
 msgid " move"
-msgstr "žingsnis"
+msgstr " žingsnis"
 
 #: src/unit.cpp:2509
 msgid "$effect_description per level"
@@ -9188,3 +9183,67 @@ msgstr "Padėkite mums padaryti Vesnotą geresnį jums!"
 #: src/upload_log.cpp:375
 msgid "Enable summary uploads"
 msgstr "Leisti santraukų siuntimą"
+
+#~ msgid "Multiplayer_AI^Default AI"
+#~ msgstr "Numatytas DI"
+
+#~ msgid "Multiplayer_AI^RCA AI"
+#~ msgstr "RCA DI"
+
+#, fuzzy
+#~ msgid " (Unknown Era)"
+#~ msgstr "Nežinoma era"
+
+#, fuzzy
+#~ msgid "Password Required"
+#~ msgstr "Slaptažodis: "
+
+#, fuzzy
+#~ msgid "Observe Game"
+#~ msgstr "Stebėtojai"
+
+#, fuzzy
+#~ msgid "Join Game"
+#~ msgstr "Įkelti žaidimą"
+
+#, fuzzy
+#~ msgid "Quick Replays"
+#~ msgstr "Peržaidimas"
+
+#, fuzzy
+#~ msgid "Preferences"
+#~ msgstr "Priklausomybės"
+
+#, fuzzy
+#~ msgid "Quit"
+#~ msgstr "Greitas"
+
+#, fuzzy
+#~ msgid "Apply Filter"
+#~ msgstr "Filtras: "
+
+#, fuzzy
+#~ msgid "Vacant Slots"
+#~ msgstr "Laisva vieta:"
+
+#, fuzzy
+#~ msgid "Filter:"
+#~ msgstr "Filtras: "
+
+#, fuzzy
+#~ msgid ""
+#~ "You will start the next scenario with the defined minimum starting gold."
+#~ msgid_plural ""
+#~ "You will start the next scenario with the defined minimum starting gold."
+#~ msgstr[0] ""
+#~ "Kitą scenarijų pradėsite su 1 auksiniu pridėtu prie nustatyto mažiausio "
+#~ "pradžios aukso."
+#~ msgstr[1] ""
+#~ "Kitą scenarijų pradėsite su $gold aukso pridėto prie nustatyto mažiausio "
+#~ "pradžios aukso."
+#~ msgstr[2] ""
+#~ "Kitą scenarijų pradėsite su $gold aukso pridėto prie nustatyto mažiausio "
+#~ "pradžios aukso."
+#~ msgstr[3] ""
+#~ "Kitą scenarijų pradėsite su $gold aukso pridėto prie nustatyto mažiausio "
+#~ "pradžios aukso."
