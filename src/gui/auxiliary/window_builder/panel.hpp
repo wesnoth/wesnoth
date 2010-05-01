@@ -24,7 +24,7 @@ namespace implementation {
 struct tbuilder_panel
 	: public tbuilder_control
 {
-	tbuilder_panel(const config& cfg);
+	explicit tbuilder_panel(const config& cfg);
 
 	twidget* build () const;
 

@@ -44,8 +44,8 @@ twidget* tbuilder_panel::build() const
 	init_control(widget);
 
 	DBG_GUI_G << "Window builder: placed panel '"
-		<< id << "' with defintion '"
-		<< definition << "'.\n";
+			<< id << "' with defintion '"
+			<< definition << "'.\n";
 
 	widget->init_grid(grid);
 	return widget;
