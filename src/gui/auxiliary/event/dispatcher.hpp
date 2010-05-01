@@ -623,27 +623,27 @@ private:
  */
 inline void connect_signal_pre_key_press(
 		  tdispatcher& dispatcher
-		, const event::tsignal_keyboard_function& signal)
+		, const tsignal_keyboard_function& signal)
 {
-	dispatcher.connect_signal<event::SDL_KEY_DOWN>(
+	dispatcher.connect_signal<SDL_KEY_DOWN>(
 			  signal
-			, event::tdispatcher::front_child);
+			, tdispatcher::front_child);
 }
 
 /** Connects a signal handler for a left mouse button click. */
 inline void connect_signal_mouse_left_click(
 		  tdispatcher& dispatcher
-		, const event::tsignal_function& signal)
+		, const tsignal_function& signal)
 {
-	dispatcher.connect_signal<event::LEFT_BUTTON_CLICK>(signal);
+	dispatcher.connect_signal<LEFT_BUTTON_CLICK>(signal);
 }
 
 /** Disconnects a signal handler for a left mouse button click. */
 inline void disconnect_signal_mouse_left_click(
 		  tdispatcher& dispatcher
-		, const event::tsignal_function& signal)
+		, const tsignal_function& signal)
 {
-	dispatcher.disconnect_signal<event::LEFT_BUTTON_CLICK>(signal);
+	dispatcher.disconnect_signal<LEFT_BUTTON_CLICK>(signal);
 }
 
 } // namespace event
