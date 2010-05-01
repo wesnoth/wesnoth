@@ -56,21 +56,24 @@ tbuilder_listbox::tbuilder_listbox(const config& cfg)
 			, _("A 'list_definition' should contain one row."));
 
 	const config &data = cfg.child("list_data");
-	if (!data) return;
+	if(!data) {
+		return;
+	}
 
-	foreach(const config &row, data.child_range("row")) {
+	foreach(const config& row, data.child_range("row")) {
 		unsigned col = 0;
 
-		foreach(const config &c, row.child_range("column")) {
+		foreach(const config& c, row.child_range("column")) {
 			list_data.push_back(string_map());
-			foreach (const config::attribute &i, c.attribute_range()) {
+			foreach(const config::attribute& i, c.attribute_range()) {
 				list_data.back()[i.first] = i.second;
 			}
 			++col;
 		}
 
-		VALIDATE(col == list_builder->cols, _("'list_data' must have "
-			"the same number of columns as the 'list_definition'."));
+		VALIDATE(col == list_builder->cols
+				, _("'list_data' must have the same number of "
+					"columns as the 'list_definition'."));
 	}
 }
 
@@ -87,12 +90,12 @@ twidget* tbuilder_listbox::build() const
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
 
 	DBG_GUI_G << "Window builder: placed listbox '"
-		<< id << "' with defintion '"
-		<< definition << "'.\n";
+			<< id << "' with defintion '"
+			<< definition << "'.\n";
 
 	boost::intrusive_ptr<const tlistbox_definition::tresolution> conf =
-		boost::dynamic_pointer_cast
-		<const tlistbox_definition::tresolution>(widget->config());
+			boost::dynamic_pointer_cast
+				<const tlistbox_definition::tresolution>(widget->config());
 	assert(conf);
 
 	widget->init_grid(conf->grid);
@@ -158,6 +161,5 @@ twidget* tbuilder_listbox::build() const
  * * selectable widgets which are
  * ** toggle_button
  * ** toggle_panel
- *
  */
 
