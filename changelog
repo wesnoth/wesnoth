@@ -21,16 +21,16 @@ Version 1.8.0+svn:
    * Fixed bug #15716: Lobby crash when refreshing with filtered out games
    * Fixed bug #15768: Avoid parts of the previous game show in the lobby
    * Re-added the old MP lobby
-   * Add a preference for switching between the old an new lobby, in the
+   * Added a preference for switching between the old and new lobby in the
      preferences dialog in the "Multiplayer" tab. Defaults to the old lobby.
  * Miscellaneous and bug fixes:
    * Removed the stats upload feature.
    * Better fix for bug #14765 now that string freeze is off
    * Fixed the ping timeout not waiting for the default ping interval when
      ping timeout is not set to 0
-   * Strip whitespace characters from .ign patterns (bug #15902)
-   * Fixed wesnoth_addon_manager's support for .ign files (bug #15846)
-   * Fixed tab completion not working in the new lobby (bug #14730)
+   * Fixed bug #14730: tab completion not working in the new lobby
+   * Fixed bug #15846: wesnoth_addon_manager's support for .ign files
+   * Fixed bug #15902: Strip whitespace characters from .ign patterns
    * Fixed compilation for g++ 4.5
 
 Version 1.8.0:
