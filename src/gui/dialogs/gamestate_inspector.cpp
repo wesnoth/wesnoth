@@ -18,7 +18,11 @@
 
 #include "gui/dialogs/helper.hpp"
 #include "gui/widgets/button.hpp"
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+#include "gui/widgets/list.hpp"
+#else
 #include "gui/widgets/listbox.hpp"
+#endif
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 
@@ -514,11 +518,24 @@ public:
 		model_.inspect = find_widget<tcontrol>(&window, "inspect", false,true);
 		model_.inspector_name = &find_widget<tcontrol>(&window, "inspector_name", false);
 
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+		connect_signal_notify_modified(*model_.stuff_list, boost::bind(
+				  &tgamestate_inspector::view::handle_stuff_list_item_clicked
+				, this
+				, boost::ref(window)));
+
+		connect_signal_notify_modified(*model_.stuff_types_list, boost::bind(
+				  &tgamestate_inspector::view::handle_stuff_list_item_clicked
+				, this
+				, boost::ref(window)));
+
+#else
 		model_.stuff_list->set_callback_value_change(
 			dialog_view_callback<tgamestate_inspector, tgamestate_inspector::view, &tgamestate_inspector::view::handle_stuff_list_item_clicked>);
 
 		model_.stuff_types_list->set_callback_value_change(
 			dialog_view_callback<tgamestate_inspector, tgamestate_inspector::view, &tgamestate_inspector::view::handle_stuff_types_list_item_clicked>);
+#endif
 
 	}
 

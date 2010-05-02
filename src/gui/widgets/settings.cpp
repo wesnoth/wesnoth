@@ -495,7 +495,14 @@ tresolution_definition_ptr get_control(
 		const std::string& control_type, const std::string& definition)
 {
 	const tgui_definition::tcontrol_definition_map::const_iterator
-		control_definition = current_gui->second.control_definition.find(control_type);
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+		control_definition = (control_type == "list")
+				? current_gui->second.control_definition.find("listbox")
+				: current_gui->second.control_definition.find(control_type);
+#else
+		control_definition =
+				current_gui->second.control_definition.find(control_type);
+#endif
 
 	ASSERT_LOG(control_definition != current_gui->second.control_definition.end(),
 			"Type '" << control_type << "' is unknown.");

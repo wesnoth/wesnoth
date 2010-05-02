@@ -18,7 +18,11 @@
 
 #include "gui/auxiliary/log.hpp"
 #include "gui/dialogs/helper.hpp"
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+#include "gui/widgets/list.hpp"
+#else
 #include "gui/widgets/listbox.hpp"
+#endif
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"

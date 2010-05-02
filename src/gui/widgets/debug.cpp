@@ -22,7 +22,11 @@
 #include "foreach.hpp"
 #include "formatter.hpp"
 #include "gui/widgets/generator.hpp"
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+#include "gui/widgets/list.hpp"
+#else
 #include "gui/widgets/listbox.hpp"
+#endif
 #include "gui/widgets/scrollbar_container.hpp"
 #include "gui/widgets/window.hpp"
 #include "serialization/string_utils.hpp"

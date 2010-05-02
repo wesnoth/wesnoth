@@ -17,7 +17,11 @@
 #include "gui/dialogs/unit_attack.hpp"
 
 #include "gui/widgets/image.hpp"
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+#include "gui/widgets/list.hpp"
+#else
 #include "gui/widgets/listbox.hpp"
+#endif
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "unit.hpp"

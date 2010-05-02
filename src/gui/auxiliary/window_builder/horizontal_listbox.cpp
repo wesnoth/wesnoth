@@ -21,7 +21,11 @@
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/widget_definition/listbox.hpp"
 #include "gui/auxiliary/window_builder/helper.hpp"
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+#include "gui/widgets/list.hpp"
+#else
 #include "gui/widgets/listbox.hpp"
+#endif
 #include "wml_exception.hpp"
 
 namespace gui2 {
@@ -66,6 +70,19 @@ tbuilder_horizontal_listbox::tbuilder_horizontal_listbox(const config& cfg)
 
 twidget* tbuilder_horizontal_listbox::build() const
 {
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+	tlist *widget = new tlist(true
+			, true
+			, tgenerator_::horizontal_list
+			, true
+			, list_builder);
+
+	init_control(widget);
+	if(!list_data.empty()) {
+		widget->append_rows(list_data);
+	}
+	return widget;
+#else
 	tlistbox *widget = new tlistbox(
 			true, true, tgenerator_::horizontal_list, true);
 
@@ -90,6 +107,7 @@ twidget* tbuilder_horizontal_listbox::build() const
 	widget->finalize(NULL, NULL, list_data);
 
 	return widget;
+#endif
 }
 
 } // namespace implementation

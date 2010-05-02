@@ -26,7 +26,11 @@
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+#include "gui/widgets/list.hpp"
+#else
 #include "gui/widgets/listbox.hpp"
+#endif
 #include "gui/widgets/minimap.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
@@ -98,8 +102,16 @@ void tgame_load::pre_show(CVideo& /*video*/, twindow& window)
 	tlistbox* list = find_widget<tlistbox>(
 			&window, "savegame_list", false, true);
 	window.keyboard_capture(list);
+
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+	connect_signal_notify_modified(*list, boost::bind(
+				  &tgame_load::list_item_clicked
+				, *this
+				, boost::ref(window)));
+#else
 	list->set_callback_value_change(
 			dialog_callback<tgame_load, &tgame_load::list_item_clicked>);
+#endif
 
 	{
 		cursor::setter cur(cursor::WAIT);

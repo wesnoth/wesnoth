@@ -12,6 +12,8 @@
    See the COPYING file for more details.
 */
 
+#ifndef GUI2_EXPERIMENTAL_LISTBOX
+
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gui/widgets/listbox.hpp"
@@ -521,3 +523,4 @@ const std::string& tlistbox::get_control_type() const
 }
 } // namespace gui2
 
+#endif

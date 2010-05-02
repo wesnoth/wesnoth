@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2008 - 2010 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2010 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,27 +12,25 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_LISTBOX_HPP_INCLUDED
-#define GUI_WIDGETS_LISTBOX_HPP_INCLUDED
+#ifndef GUI_WIDGETS_LIST_HPP_INCLUDED
+#define GUI_WIDGETS_LIST_HPP_INCLUDED
 
-#ifndef GUI2_EXPERIMENTAL_LISTBOX
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
 
 #include "gui/widgets/generator.hpp"
 #include "gui/widgets/scrollbar_container.hpp"
 
 namespace gui2 {
 
-namespace implementation {
-	struct tbuilder_listbox;
-	struct tbuilder_horizontal_listbox;
-}
-
-/** The listbox class. */
-class tlistbox
-		: public tscrollbar_container
+/**
+ * The list class.
+ *
+ * For now it's a generic for all kind of lists, horizontal, vertical etc.
+ * Might be that there will be different types per class, not sure yet.
+ */
+class tlist
+		: public tcontainer_
 {
-	friend struct implementation::tbuilder_listbox;
-	friend struct implementation::tbuilder_horizontal_listbox;
 	friend class tdebug_layout_graph;
 public:
 	/**
@@ -46,8 +44,11 @@ public:
 	 * @param select              Select an item when selected, if false it
 	 *                            changes the visible state instead.
 	 */
-	tlistbox(const bool has_minimum, const bool has_maximum,
-			const tgenerator_::tplacement placement, const bool select);
+	tlist(const bool has_minimum
+			, const bool has_maximum
+			, const tgenerator_::tplacement placement
+			, const bool select
+			, const tbuilder_grid_const_ptr list_builder);
 
 	/***** ***** ***** ***** Row handling. ***** ***** ****** *****/
 	/**
@@ -82,6 +83,14 @@ public:
 	void add_row(
 			  const std::map<std::string /* widget id */, string_map>& data
 			, const int index = -1);
+
+	/**
+	 * Appends several rows to the grid.
+	 *
+	 * @param items               The data to send to the set_members of the
+	 *                            widgets.
+	 */
+	void append_rows(const std::vector<string_map>& items);
 
 	/**
 	 * Removes a row in the listbox.
@@ -169,15 +178,7 @@ public:
 	 * @retval -1                 No row selected.
 	 */
 	int get_selected_row() const;
-
-	/** Function to call after the user clicked on a row. */
-	void list_item_clicked(twidget* caller);
-
-	/** Inherited from tcontainer_. */
-	void set_self_active(const bool /*active*/)  {}
-//		{ state_ = active ? ENABLED : DISABLED; }
-//
-
+#if 0
 	/**
 	 * Request to update the size of the content after changing the content.
 	 *
@@ -193,71 +194,37 @@ public:
 	 *                               otherwise.
 	 */
 	bool update_content_size();
-
+#endif
 	/***** ***** ***** ***** inherited ***** ***** ****** *****/
+
+	/** Inherited from tcontrol_. */
+	void init();
+
+	/** Inherited from tcontainer_. */
+	bool get_active() const { return state_ != DISABLED; }
+
+	/** Inherited from tcontainer_. */
+	unsigned get_state() const { return state_; }
 
 	/** Inherited from tscrollbar_container. */
 	void place(const tpoint& origin, const tpoint& size);
 
-	/** Inherited from tscrollbar_container. */
-	void layout_children();
-
-	/** Inherited from tscrollbar_container. */
-	void child_populate_dirty_list(twindow& caller,
-			const std::vector<twidget*>& call_stack);
-
-	/***** ***** ***** setters / getters for members ***** ****** *****/
-
-	void set_callback_value_change(void (*callback) (twidget* caller))
-		{ callback_value_changed_ = callback; }
-
-	void set_list_builder(tbuilder_grid_ptr list_builder)
-		{ list_builder_ = list_builder; }
-
-protected:
-
-	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
-
-	/** Inherited from tscrollbar_container. */
-	void handle_key_up_arrow(SDLMod modifier, bool& handled);
-
-	/** Inherited from tscrollbar_container. */
-	void handle_key_down_arrow(SDLMod modifier, bool& handled);
-
-	/** Inherited from tscrollbar_container. */
-	void handle_key_left_arrow(SDLMod modifier, bool& handled);
-
-	/** Inherited from tscrollbar_container. */
-	void handle_key_right_arrow(SDLMod modifier, bool& handled);
-
 private:
+	/**
+	 * Possible states of the widget.
+	 *
+	 * Note the order of the states must be the same as defined in settings.hpp.
+	 */
+	enum tstate { ENABLED, DISABLED, COUNT };
 
 	/**
-	 * @todo A listbox must have the following config parameters in the
-	 * instanciation:
-	 * - fixed row height?
-	 * - fixed column width?
-	 * and if so the following ways to set them
-	 * - fixed depending on header ids
-	 * - fixed depending on footer ids
-	 * - fixed depending on first row ids
-	 * - fixed depending on list (the user has to enter a list of ids)
+	 * Current state of the widget.
 	 *
-	 * For now it's always fixed width depending on the first row.
+	 * The state of the widget determines what to render and how the widget
+	 * reacts to certain 'events'.
 	 */
+	tstate state_;
 
-
-	/**
-	 * Finishes the building initialization of the widget.
-	 *
-	 * @param header              Builder for the header.
-	 * @param footer              Builder for the footer.
-	 * @param list_data           The initial data to fill the listbox with.
-	 */
-	void finalize(
-			tbuilder_grid_const_ptr header,
-			tbuilder_grid_const_ptr footer,
-			const std::vector<string_map>& list_data);
 	/**
 	 * Contains a pointer to the generator.
 	 *
@@ -270,17 +237,8 @@ private:
 	/** Contains the builder for the new items. */
 	tbuilder_grid_const_ptr list_builder_;
 
-	/**
-	 * This callback is called when the value in the listbox changes.
-	 *
-	 * @todo the implementation of the callback hasn't been tested a lot and
-	 * there might be too many calls. That might happen if an arrow up didn't
-	 * change the selected item.
-	 */
-	void (*callback_value_changed_) (twidget*);
-
 	bool need_layout_;
-
+#if 0
 	/**
 	 * Resizes the content.
 	 *
@@ -299,16 +257,40 @@ private:
 	void resize_content(
 			  const int width_modification
 			, const int height_modification);
-
+#endif
 	/** Layouts the children if needed. */
 	void layout_children(const bool force);
-
+#if 0
 	/** Inherited from tscrollbar_container. */
 	virtual void set_content_size(const tpoint& origin, const tpoint& size);
+#endif
+	/** Inherited from tcontainer_. */
+	void set_self_active(const bool)  {}
 
 	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const;
+
+	/***** ***** ***** signal handlers ***** ****** *****/
+
+	void signal_handler_left_button_down(const event::tevent event);
+
+	void signal_handler_pre_child_left_button_click(
+			  tgrid* grid
+			, const event::tevent event
+			, bool& handled
+			, bool& halt);
+
+	void signal_handler_left_button_click(
+			  tgrid* grid
+			, const event::tevent event);
+
+	void signal_handler_sdl_key_down(const event::tevent event
+			, bool& handled
+			, const SDLKey key
+			, SDLMod modifier);
 };
+
+typedef tlist tlistbox;
 
 } // namespace gui2
 

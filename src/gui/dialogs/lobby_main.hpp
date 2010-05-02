@@ -26,11 +26,16 @@
 
 class display;
 
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+#include "gui/widgets/list.hpp"
+#endif
 namespace gui2 {
 
 class tgrid;
 class tlabel;
+#ifndef GUI2_EXPERIMENTAL_LISTBOX
 class tlistbox;
+#endif
 class ttext_box;
 class twindow;
 class tmulti_page;

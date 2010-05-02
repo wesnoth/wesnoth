@@ -20,7 +20,11 @@
 #include "game_preferences.hpp"
 #include "gui/dialogs/field.hpp"
 #include "gui/widgets/button.hpp"
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+#include "gui/widgets/list.hpp"
+#else
 #include "gui/widgets/listbox.hpp"
+#endif
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/password_box.hpp"
 #include "gui/widgets/settings.hpp"

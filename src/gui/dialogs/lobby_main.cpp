@@ -23,7 +23,11 @@
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+#include "gui/widgets/list.hpp"
+#else
 #include "gui/widgets/listbox.hpp"
+#endif
 #include "gui/widgets/minimap.hpp"
 #include "gui/widgets/multi_page.hpp"
 #include "gui/widgets/scroll_label.hpp"
@@ -654,7 +658,9 @@ void tlobby_main::update_gamelist_header()
 	symbols["num_shown"] = lexical_cast<std::string>(lobby_info_.games_filtered().size());
 	symbols["num_total"] = lexical_cast<std::string>(lobby_info_.games().size());
 	std::string games_string = VGETTEXT("Games: showing $num_shown out of $num_total", symbols);
+#ifndef GUI2_EXPERIMENTAL_LISTBOX
 	find_widget<tlabel>(gamelistbox_, "map", false).set_label(games_string);
+#endif
 }
 
 std::map<std::string, string_map> tlobby_main::make_game_row_data(const game_info& game)
@@ -919,10 +925,27 @@ void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
 {
 	SCOPE_LB;
 	roomlistbox_ = find_widget<tlistbox>(&window, "room_list", false, true);
-	roomlistbox_->set_callback_value_change(dialog_callback<tlobby_main, &tlobby_main::room_switch_callback>);
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+	connect_signal_notify_modified(*roomlistbox_, boost::bind(
+				  &tlobby_main::room_switch_callback
+				, *this
+				, boost::ref(window)));
+#else
+	roomlistbox_->set_callback_value_change(
+			dialog_callback<tlobby_main, &tlobby_main::room_switch_callback>);
+#endif
 
 	gamelistbox_ =  find_widget<tlistbox>(&window, "game_list", false, true);
-	gamelistbox_->set_callback_value_change(dialog_callback<tlobby_main, &tlobby_main::gamelist_change_callback>);
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+	connect_signal_notify_modified(*gamelistbox_, boost::bind(
+				  &tlobby_main::gamelist_change_callback
+				, *this
+				, boost::ref(window)));
+#else
+	gamelistbox_->set_callback_value_change(
+			dialog_callback<tlobby_main
+				, &tlobby_main::gamelist_change_callback>);
+#endif
 
 	player_list_.init(window);
 

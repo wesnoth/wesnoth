@@ -186,6 +186,7 @@ wesnoth_source = \
 	gui/widgets/horizontal_scrollbar.cpp \
 	gui/widgets/image.cpp \
 	gui/widgets/label.cpp \
+	gui/widgets/list.cpp \
 	gui/widgets/listbox.cpp \
 	gui/widgets/minimap.cpp \
 	gui/widgets/multi_page.cpp \

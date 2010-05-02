@@ -19,7 +19,11 @@
 #include "foreach.hpp"
 #include "gui/dialogs/helper.hpp"
 #include "gui/widgets/image.hpp"
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+#include "gui/widgets/list.hpp"
+#else
 #include "gui/widgets/listbox.hpp"
+#endif
 #include "gui/widgets/multi_page.hpp"
 #include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/settings.hpp"
@@ -81,12 +85,14 @@ void tcampaign_selection::campaign_selected(twindow& window)
 				&window, "campaign_details", false);
 		multi_page.select_page(choice);
 	} else {
-		tlistbox& list = find_widget<tlistbox>(&window, "campaign_list", false);
+		const int selected_row =
+				find_widget<tlistbox>(&window, "campaign_list", false)
+					.get_selected_row();
 
 		tmulti_page& multi_page = find_widget<tmulti_page>(
 				&window, "campaign_details", false);
 
-		multi_page.select_page(list.get_selected_row());
+		multi_page.select_page(selected_row);
 	}
 }
 
@@ -171,12 +177,20 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 		}
 
 		/***** Setup campaign list. *****/
-		tlistbox& list = find_widget<tlistbox>(&window, "campaign_list", false);
-
+		tlistbox& list =
+				find_widget<tlistbox>(&window, "campaign_list", false);
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+		connect_signal_notify_modified(list, boost::bind(
+				  &tcampaign_selection::campaign_selected
+				, *this
+				, boost::ref(window)));
+#else
 		list.set_callback_value_change(dialog_callback
-				<tcampaign_selection, &tcampaign_selection::campaign_selected>);
+				<tcampaign_selection
+				, &tcampaign_selection::campaign_selected>);
+#endif
+			window.keyboard_capture(&list);
 
-		window.keyboard_capture(&list);
 
 		/***** Setup campaign details. *****/
 		tmulti_page& multi_page = find_widget<tmulti_page>(
@@ -202,13 +216,6 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 			twidget* widget = grid->find("victory", false);
 			if(widget && !utils::string_bool(c["completed"], false)) {
 				widget->set_visible(twidget::HIDDEN);
-			}
-
-			if(new_widgets) {
-				find_widget<tcontrol>(grid, "icon", false)
-						.set_visible(twidget::INVISIBLE);
-				find_widget<tcontrol>(grid, "victory", false)
-						.set_visible(twidget::INVISIBLE);
 			}
 
 			/*** Add detail item ***/

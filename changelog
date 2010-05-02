@@ -59,6 +59,8 @@ Version 1.9.0-svn:
    * Patch #1645: Fixed a bug sending keyboard events to deactivated controls
    * Deprecated the resize flag for gui2 image, use the resize_mode instead
    * Patch #1639: Added handlers for keyboard (arrow keys) to move gui2 sliders
+   * Added new experimental list box implementation, available for testing
+     with -DGUI2_EXPERIMENTAL_LISTBOX
  * WML Engine:
    * Deprecated [set_variable]'s random key, use rand instead
    * Renamed [unit][status] healable to unhealable so it can default to 'no'

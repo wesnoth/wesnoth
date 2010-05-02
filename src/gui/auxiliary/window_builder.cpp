@@ -81,7 +81,6 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 	if(const config &c = cfg.child("grid")) {
 		return new tbuilder_grid(c);
 	}
-
 /*
  * This is rather odd, when commented out the classes no longer seem to be in
  * the executable, no real idea why, except maybe of an overzealous optimizer

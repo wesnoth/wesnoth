@@ -22,11 +22,18 @@
 #include "gui/dialogs/field.hpp"
 #include "gui/dialogs/helper.hpp"
 #include "gui/widgets/integer_selector.hpp"
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+#include "gui/widgets/list.hpp"
+#else
 #include "gui/widgets/listbox.hpp"
+#endif
 #include "gui/widgets/minimap.hpp"
 #include "gui/widgets/settings.hpp"
 #include "../../settings.hpp"
 
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+#include <boost/bind.hpp>
+#endif
 namespace gui2 {
 
 REGISTER_WINDOW(mp_create_game)
@@ -65,8 +72,15 @@ void tmp_create_game::pre_show(CVideo& /*video*/, twindow& window)
 	find_widget<tminimap>(&window, "minimap", false).set_config(&cfg_);
 
 	tlistbox& list = find_widget<tlistbox>(&window, "map_list", false);
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+	connect_signal_notify_modified(list, boost::bind(
+				  &tmp_create_game::update_map
+				, *this
+				, boost::ref(window)));
+#else
 	list.set_callback_value_change(
 			dialog_callback<tmp_create_game, &tmp_create_game::update_map>);
+#endif
 
 	// Load option (might turn it into a button later).
 	string_map item;
