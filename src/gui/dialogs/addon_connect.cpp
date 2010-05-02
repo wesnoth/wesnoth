@@ -31,14 +31,17 @@ namespace gui2 {
  *
  * This shows the dialog for managing addons and connecting to the addon server.
  *
- * @start_table = grid
- *     [] (button) (2)                 This button closes the dialog and
- *                                     starts the addon manager.
- *     [] (button) (3)                 This button closes the dialog and
- *                                     starts the update routine.
- *     host_name (text_box)            This text contains the name of the
- *                                     server to connect to.
- * @end_table
+ * @begin{table}[dialog_widgets]
+ * hostname & & text_box & m &
+ *         This text contains the name of the server to connect to. $
+ *
+ * & 2 & button & o &
+ *         This button closes the dialog and starts the addon manager. $
+ *
+ * & 3 & button & o &
+ *         This button closes the dialog and starts the update routine. $
+ *
+ * @end{table}
  */
 
 REGISTER_WINDOW(addon_connect)
