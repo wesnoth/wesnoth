@@ -374,6 +374,52 @@ if __name__ == "__main__":
 
         return result
 
+    def create_dialog_widgets_table(data) :
+        """Creates a table for the widgets in a dialog."""
+
+        regex  = ""
+        regex += " *(-*)"                          # 0 indention marker
+        regex += "((?:[a-z]|[A-Z]|[0-9]|_)+ |) *&" # 1 optional id may start with an underscore
+        regex += " *(.*) +&"                       # 2 retval
+        regex += " *(.*?) +&"                      # 3 type
+        regex += " *(m|o) +&"                      # 4 mandatory flag
+        regex += " *(.*) +\$"                      # 5 description
+
+        res = re.compile(regex).findall(data)
+
+        if(len(res) == 0):
+            sys.stderr.write("Empty table:\n" + data + "\n")
+            return "Empty table."
+
+        result  = ""
+        result += '{| border="1"'
+        result += "\n!ID (return value)\n!Type\n!Mandatory\n!Description\n"
+        for i in range(len(res)):
+            result += "|-\n| " + "&nbsp;" * len(res[i][0]) * 8
+
+            if(res[i][1] == ""):
+                result += "''free to choose''" 
+            else:
+                result += res[i][1]
+
+            if(res[i][2] == ""):
+                result += "\n"
+            else:
+                result += " (" + res[i][2] + ")\n"
+
+            result += "| " + "[[GUIToolkitWML#" + res[i][3] + "|" + res[i][3] + "]]\n"
+
+            if(res[i][4] == "m"):
+                result += "| yes\n"
+            else:
+                result += "| no\n"
+
+            result += "| " + format(res[i][5]) + "\n"
+
+        result += "|}"
+
+        return result
+
     def create_table(table) :
         """Wrapper for creating tables."""
 
@@ -392,6 +438,8 @@ if __name__ == "__main__":
             return create_container_grid(table.group(2) + "\n")
         elif(type == "container"):
             return create_container_table(table.group(2) + "\n")
+        elif(type == "dialog_widgets"):
+            return create_dialog_widgets_table(table.group(2) + "\n")
         else:
             sys.stderr.write("Unknown table definition '" + type + "'.\n")
             return "Unknown table definition '" + type + "'."
@@ -403,6 +451,9 @@ if __name__ == "__main__":
         """
 
         table_regex = re.compile("^@start_table *= *(.*?)\n(.*?)\n@end_table.*?$", re.M | re.S)
+        data = table_regex.sub(lambda match: create_table(match), data)
+
+        table_regex = re.compile("^@begin{table}\[(.*?)\]\n(.*?)\n@end{table}$", re.M | re.S)
         data = table_regex.sub(lambda match: create_table(match), data)
         return data
 
