@@ -36,23 +36,21 @@ namespace gui2 {
  *
  * This shows the dialog for attacking units.
  *
- * @start_table = grid
+ * @begin{table}[dialog_widgets]
+ * attacker_portrait & & image   & o & Shows the portrait of the attacking unit. $
+ * attacker_icon     & & image   & o & Shows the icon of the attacking unit. $
+ * attacker_name     & & control & o & Shows the name of the attacking unit. $
  *
- *     attacker_portrait (image)       Shows the portrait of the attacking unit.
- *     attacker_icon (image)           Shows the icon of the attacking unit.
- *     attacker_name (control)         Shows the name of the attacking unit.
- *
- *
- *     defender_portrait (image)       Shows the portrait of the defending unit.
- *     defender_icon (image)           Shows the icon of the defending unit.
- *     defender_name (control)         Shows the name of the defending unit.
+ * defender_portrait & & image   & o & Shows the portrait of the defending unit. $
+ * defender_icon     & & image   & o & Shows the icon of the defending unit. $
+ * defender_name     & & control & o & Shows the name of the defending unit. $
  *
  *
- *     (weapon_list) (listbox)         The list with weapons to choos from.
- *     -[attacker_weapon] (control)    The weapon for the attacker to use.
- *     -[defender_weapon] (control)    The weapon for the defender to use.
+ * weapon_list       & & listbox & m & The list with weapons to choos from. $
+ * -attacker_weapon  & & control & o & The weapon for the attacker to use. $
+ * -defender_weapon  & & control & o & The weapon for the defender to use. $
  *
- * @end_table
+ * @end{table}
  */
 
 REGISTER_WINDOW(unit_attack)
