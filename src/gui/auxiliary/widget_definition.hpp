@@ -70,6 +70,24 @@ typedef
 	boost::intrusive_ptr<const tresolution_definition_>
 	tresolution_definition_const_ptr;
 
+/**
+ * Casts a tresolution_definition_const_ptr to another type.
+ *
+ * @tparam T                      The type to cast to, the non const version.
+ *
+ * @param ptr                     The pointer to cast.
+ *
+ * @returns                       A reference to type casted to.
+ */
+template<class T>
+const T& cast(tresolution_definition_const_ptr ptr)
+{
+	boost::intrusive_ptr<const T> conf =
+			boost::dynamic_pointer_cast<const T>(ptr);
+	assert(conf);
+	return *conf;
+}
+
 struct tcontrol_definition
 	: public reference_counted_object
 {
