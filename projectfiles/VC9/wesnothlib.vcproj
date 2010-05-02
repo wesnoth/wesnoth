@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="windows-1250"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="9,00"
+	Version="9.00"
 	Name="wesnothlib"
 	ProjectGUID="{4A16638B-127B-4AE8-8E0B-4B211B96F976}"
 	RootNamespace="wesnothlib"
@@ -42,7 +42,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="../../src"
-				PreprocessorDefinitions="WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;NOMINMAX"
+				PreprocessorDefinitions="WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;NOMINMAX;_DEBUG"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -186,10 +186,6 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\time.cpp"
-				>
-			</File>
-			<File
 				RelativePath="..\..\src\tstring.cpp"
 				>
 			</File>
@@ -281,10 +277,6 @@
 			</File>
 			<File
 				RelativePath="..\..\src\thread.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\time.hpp"
 				>
 			</File>
 			<File

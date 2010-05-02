@@ -44,6 +44,7 @@
 #include "unit_display.hpp"
 #include "wml_exception.hpp"
 #include "play_controller.hpp"
+#include "persist_var.hpp"
 
 #include <boost/scoped_ptr.hpp>
 #include <boost/lexical_cast.hpp>
@@ -3048,6 +3049,20 @@ WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
 	resources::screen->reload_map();
 	screen_needs_rebuild = true;
 	ai::manager::raise_map_changed();
+}
+
+// Experimental data persistence
+WML_HANDLER_FUNCTION(set_global_variable,/**/,pcfg)
+{
+	verify_and_set_global_variable(pcfg);
+}
+WML_HANDLER_FUNCTION(get_global_variable,/**/,pcfg)
+{
+	verify_and_get_global_variable(pcfg);
+}
+WML_HANDLER_FUNCTION(clear_global_variable,/**/,pcfg)
+{
+	verify_and_clear_global_variable(pcfg);
 }
 
 /** Handles all the different types of actions that can be triggered by an event. */

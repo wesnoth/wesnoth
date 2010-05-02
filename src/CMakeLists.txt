@@ -400,6 +400,8 @@ set(wesnoth-main_SRC
     multiplayer_create.cpp
     network.cpp
     network_worker.cpp
+    persist_context.cpp
+    persist_var.cpp
     playcampaign.cpp
     play_controller.cpp
     playmp_controller.cpp

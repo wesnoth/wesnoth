@@ -229,12 +229,13 @@ wesnoth_source = \
 	network.cpp \
 	network_worker.cpp \
 	pathfind/pathfind.cpp \
+	persist_context.cpp \
+	persist_var.cpp \
 	playcampaign.cpp \
 	play_controller.cpp \
 	playmp_controller.cpp \
 	playsingle_controller.cpp \
 	playturn.cpp \
-	portrait.cpp \
 	replay.cpp \
 	replay_controller.cpp \
 	resources.cpp \
