@@ -475,52 +475,6 @@ namespace {
 		}
 	}
 
-	/**
-	 * Checks if an add-on's dependencies are met.
-	 *
-	 * @param disp    Object to be used for displaying interactive messages.
-	 * @param deplist List of dependencies (add-on identifiers).
-	 *
-	 * @returns       true if dependencies are met; false otherwise.
-	 */
-	bool addon_dependencies_met(game_display &disp,
-		const std::vector<std::string> &deplist, const std::string &addon_title)
-	{
-		const std::vector<std::string>& installed = installed_addons();
-		std::vector<std::string>::const_iterator i;
-		std::string missing = "";
-		size_t count_missing = 0;
-
-		foreach(const std::string& i, deplist) {
-			if (std::find(installed.begin(), installed.end(), i) == installed.end()) {
-				missing += "\n" + i;
-				++count_missing;
-			}
-		}
-		// If there are any, display a message.
-		// TODO: Somehow offer to automatically download
-		// the missing dependencies.
-		if (!missing.empty()) {
-			const std::string msg_title    = _("Dependencies");
-			utils::string_map symbols;
-			symbols["addon_title"] = addon_title;
-			const std::string msg_entrytxt = utils::interpolate_variables_into_string(
-				_n("$addon_title depends upon the following add-on which you have not installed yet:",
-				"$addon_title depends upon the following add-ons which you have not installed yet:",
-				count_missing), &symbols);
-			std::string msg_reminder = utils::interpolate_variables_into_string(_("Do you still want to download $addon_title|? (You will have to install all the dependencies in order to play.)"), &symbols);
-
-			if(!gui2::show_message(disp.video()
-					, msg_title
-					, msg_entrytxt + "\n \n" + missing + "\n \n" + msg_reminder
-					, gui2::tmessage::ok_cancel_buttons) == gui2::twindow::OK) {
-
-				return false;
-			}
-		}
-		return true;
-	}
-
 	void upload_addon_to_server(game_display& disp, const std::string& addon, network::connection sock)
 	{
 		config request_terms;
@@ -612,7 +566,7 @@ namespace {
 		}
 	}
 
-	bool install_addon(game_display& disp, config const& addons_tree,
+	bool install_addon(game_display& disp,
 	                   const std::string& addon_id, const std::string& addon_title,
 	                   const std::string& addon_type_str, const std::string& addon_uploads_str,
 	                   const std::string& addon_version_str,
@@ -620,13 +574,6 @@ namespace {
 	                   const network::connection& sock, bool* do_refresh,
 	                   bool show_result = true)
 	{
-		// Get all dependencies of the addon/campaign selected for download.
-		const config &selected_campaign = addons_tree.find_child("campaign", "name", addon_id);
-		assert(selected_campaign);
-		// Get all dependencies which are not already installed.
-		// TODO: Somehow determine if the version is outdated.
-		std::vector<std::string> dependencies = utils::split(selected_campaign["dependencies"]);
-		if (!addon_dependencies_met(disp, dependencies, addon_title)) return false;
 		// Proceed to download and install
 		config request;
 		request.add_child("request_campaign")["name"] = addon_id;
@@ -733,7 +680,185 @@ namespace {
 		}
 	}
 
-	void addons_update_dlg(game_display &disp, config &cfg, const config::const_child_itors &remote_addons_list,
+	/**
+	 * Checks if an add-on's dependencies are met.
+	 *
+	 * @param disp    Object to be used for displaying interactive messages.
+	 * @param deplist List of dependencies (add-on identifiers).
+	 *
+	 * @returns       true if dependencies are met; false otherwise.
+	 */
+	bool addon_dependencies_met(game_display &disp, config const& addons_tree,
+		const std::string &addon_id,
+	        const network::manager& net_manager,
+	        const network::connection& sock, bool* do_refresh)
+	{
+		const config &selected_campaign = addons_tree.find_child("campaign", "name", addon_id);
+		assert(selected_campaign);
+		// Get all dependencies which are not already installed.
+		// TODO: Somehow determine if the version is outdated.
+		std::vector<std::string> dependencies = utils::split(selected_campaign["dependencies"]);
+		const std::vector<std::string>& installed = installed_addons();
+		std::vector<std::string>::const_iterator i;
+		std::string missing = "";
+		size_t count_missing = 0;
+
+		foreach(const std::string& i, dependencies) {
+			if (std::find(installed.begin(), installed.end(), i) == installed.end()) {
+				missing += "\n" + i;
+				++count_missing;
+			}
+		}
+		// If there are any, display a message.
+		// TODO: Somehow offer to automatically download
+		// the missing dependencies.
+		if (!missing.empty()) {
+			const config::const_child_itors &remote_addons_list = addons_tree.child_range("campaign");
+			std::vector<const config *> remote_matches_cfgs;
+			std::vector< std::string > safe_matches;
+			std::vector< std::string > unsafe_matches;
+			std::ostringstream unsafe_list;
+			std::map<std::string, version_info> remote_version_map;
+			foreach (const config &remote_addon, remote_addons_list)
+			{
+				if(remote_addon == NULL) continue; // shouldn't happen...
+				const std::string& name = remote_addon["name"];
+				if (std::find(dependencies.begin(), dependencies.end(), name) != dependencies.end()) {
+					const std::string& version = remote_addon["version"];
+					try {
+						remote_version_map.insert(std::make_pair(name, version_info(version)));
+					} catch(version_info::not_sane_exception const&) {
+						ERR_CFG << "remote add-on '" << name << "' has invalid version string '" << version << "', skipping from updates check...\n";
+						continue;
+					}
+					std::vector<std::string>::const_iterator local_match =
+							std::find(installed.begin(), installed.end(), name);
+					if(local_match == installed.end()) {
+						safe_matches.push_back(name);
+						remote_matches_cfgs.push_back(&remote_addon);
+					}
+				}
+			}
+			if(!safe_matches.empty()) {
+				// column contents
+				std::vector<std::string> addons, titles, versions, options, filtered_opts;
+				std::vector<int> sizes;
+
+				std::vector<std::string> types, uploads;
+
+				std::string sep(1, COLUMN_SEPARATOR);
+				const std::string& heading =
+					(formatter() << HEADING_PREFIX << sep << _("Name") << sep << _("Version") << sep
+					             << _("Author") << sep << _("Type") << sep << _("Size")).str();
+				options.push_back(heading);
+				filtered_opts.push_back(heading);
+
+				assert(safe_matches.size() == remote_matches_cfgs.size());
+				for(size_t i = 0; i < safe_matches.size(); ++i) {
+					const config& c = *(remote_matches_cfgs[i]);
+
+					uploads.push_back(c["uploads"]);
+
+					const std::string& type = c["type"];
+					const std::string& name = c["name"];
+					const std::string& size = c["size"];
+					const std::string& sizef = format_file_size(size);
+					const std::string& version = remote_version_map[name];
+
+					std::string author = c["author"];
+					std::string title = c["title"];
+					if(title.empty()) {
+						title = name;
+						std::replace(title.begin(), title.end(), '_', ' ');
+					}
+
+					utils::truncate_as_wstring(title, 20);
+					utils::truncate_as_wstring(author, 16);
+
+					//add negative sizes to reverse the sort order
+					sizes.push_back(-atoi(size.c_str()));
+
+					types.push_back(type);
+					titles.push_back(title);
+					addons.push_back(name);
+					versions.push_back(version);
+
+					std::string icon = c["icon"];
+					do_addon_icon_fixups(icon, name);
+
+					const std::string text_columns =
+						title + COLUMN_SEPARATOR +
+						version + COLUMN_SEPARATOR +
+						author + COLUMN_SEPARATOR +
+						type + COLUMN_SEPARATOR +
+						sizef + COLUMN_SEPARATOR;
+					options.push_back(IMAGE_PREFIX + icon + COLUMN_SEPARATOR + text_columns);
+					filtered_opts.push_back(text_columns);
+				}
+
+				// Create dialog
+				gui::dialog upd_dialog(disp,
+					_("Install dependencies"),
+					_n("The selected add-on has the following dependency. Do you want to install it?",
+					   "The selected add-on has the following dependencies. Do you want to install them?",
+					   safe_matches.size()
+					  ), gui::YES_NO);
+
+				gui::menu* addon_menu =
+					new gui::menu(disp.video(), options, false, -1,
+					              gui::dialog::max_menu_width, false);
+
+				// Add widgets
+				upd_dialog.set_menu(addon_menu);
+
+				// Activate
+				int index = upd_dialog.show();
+				if(index < 0)
+					return true;
+
+				bool result = true;
+				std::vector<std::string> failed_titles;
+
+				for(size_t i = 0; i < addons.size() && i < remote_matches_cfgs.size(); ++i)
+				{
+					if (!install_addon(disp, addons[i], titles[i],
+			       		            types[i], uploads[i], versions[i], net_manager, sock,
+			               		    do_refresh, false)) {
+						result=false;
+						failed_titles.push_back(titles[i]);
+					} else {
+						if (!addon_dependencies_met(disp, addons_tree, addons[i], net_manager, sock, do_refresh)) {
+							const std::string err_title = _("Installation of a dependency failed");
+							const std::string err_message =
+								_("While the add-on has been installed, a dependency is missing. Try to update the installed add-ons.");
+
+							gui2::show_message(disp.video(), err_title, err_message);
+						}
+					}
+				}
+
+				if(!result) {
+					assert(failed_titles.empty() == false);
+					std::string failed_titles_list_fmt;
+					foreach(const std::string& entry, failed_titles) {
+						failed_titles_list_fmt += '\n';
+						failed_titles_list_fmt += entry;
+					}
+					const std::string err_title = _("Installation failed");
+					const std::string err_message =
+								_n("The following add-on could not be downloaded or updated successfully:",
+								   "The following add-ons could not be downloaded or updated successfully:",
+								   failed_titles.size()) + failed_titles_list_fmt;
+
+					gui2::show_message(disp.video(), err_title, err_message);
+					return true;
+				}
+			}
+		}
+		return true;
+	}
+
+	void addons_update_dlg(game_display &disp, config const& addons_tree, const config::const_child_itors &remote_addons_list,
 	                       const network::manager& net_manager, const network::connection& sock,
 	                       bool* do_refresh)
 	{
@@ -905,25 +1030,39 @@ namespace {
 		bool result = true;
 		std::vector<std::string> failed_titles;
 
-		assert(cfg.child("campaigns"));
-
 		if(upd_all) {
 			for(size_t i = 0; i < addons.size() && i < remote_matches_cfgs.size(); ++i)
 			{
-				if (!install_addon(disp, cfg.child("campaigns"), addons[i], titles[i],
+				if (!install_addon(disp, addons[i], titles[i],
 				                   types[i], uploads[i], newversions[i], net_manager, sock,
 				                   do_refresh, false)) {
 					result=false;
 					failed_titles.push_back(titles[i]);
+				} else {
+					if (!addon_dependencies_met(disp, addons_tree, addons[i], net_manager, sock, do_refresh)) {
+						const std::string err_title = _("Installation of some dependency failed");
+						const std::string err_message =
+							_("While the add-on has been installed, some dependency is missing. Try to update the installed add-ons.");
+
+						gui2::show_message(disp.video(), err_title, err_message);
+					}
 				}
 			}
 		} else {
 			const size_t i = static_cast<size_t>(index);
-			if (!install_addon(disp, cfg.child("campaigns"), addons[i], titles[i],
+			if (!install_addon(disp, addons[i], titles[i],
 				               types[i], uploads[i], newversions[i], net_manager, sock,
 				               do_refresh, false)) {
 				result=false;
 				failed_titles.push_back(titles[i]);
+			} else {
+				if (!addon_dependencies_met(disp, addons_tree, addons[i], net_manager, sock, do_refresh)) {
+					const std::string err_title = _("Installation of some dependency failed");
+					const std::string err_message =
+						_("While the add-on has been installed, some dependency is missing. Try to update the installed add-ons.");
+
+					gui2::show_message(disp.video(), err_title, err_message);
+				}
 			}
 		}
 
@@ -998,7 +1137,7 @@ namespace {
 
 			const config::const_child_itors &addon_cfgs = addons_tree.child_range("campaign");
 			if(update_mode) {
-				addons_update_dlg(disp, cfg, addon_cfgs, net_manager, sock, do_refresh);
+				addons_update_dlg(disp, addons_tree, addon_cfgs, net_manager, sock, do_refresh);
 				return;
 			}
 
@@ -1155,8 +1294,15 @@ namespace {
 			}
 
 			// Handle download
-			install_addon(disp, addons_tree, addons[index], titles[index], types[index],
+			install_addon(disp, addons[index], types[index], titles[index],
 			              uploads[index], versions[index], net_manager, sock, do_refresh);
+			if (!addon_dependencies_met(disp, addons_tree, addons[index], net_manager, sock, do_refresh)) {
+				const std::string err_title = _("Installation of some dependency failed");
+				const std::string err_message =
+					_("While the add-on has been installed, some dependency is missing. Try to update the installed add-ons.");
+
+				gui2::show_message(disp.video(), err_title, err_message);
+			}
 
 			// Show the dialog again, and position it on the same item installed
 			download_addons(disp, remote_address, update_mode, do_refresh, index);
