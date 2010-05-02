@@ -510,7 +510,7 @@ namespace {
 				count_missing), &symbols);
 			std::string msg_reminder = utils::interpolate_variables_into_string(_("Do you still want to download $addon_title|? (You will have to install all the dependencies in order to play.)"), &symbols);
 
-			if(gui2::show_message(disp.video()
+			if(!gui2::show_message(disp.video()
 					, msg_title
 					, msg_entrytxt + "\n \n" + missing + "\n \n" + msg_reminder
 					, gui2::tmessage::ok_cancel_buttons) == gui2::twindow::OK) {
