@@ -211,7 +211,9 @@ if __name__ == "__main__":
         result += "\n!Section\n!Description\n"
         for i in range(len(res)):
             result += "|-\n"
-            result += "| " + re.sub(r'_', ' ', res[i][0])
+            result += "| " + "<span id=\"" + res[i][0].lower() + "\">" 
+            result += re.sub(r'_', ' ', res[i][0])
+            result += "</span>"
             result += " ([[GUIWidgetDefinitionWML#" 
             result += res[i][0]
             result += "|definition]]"
@@ -298,7 +300,7 @@ if __name__ == "__main__":
             else:
                 result += "(" + res[i][4] + ")\n"
 
-            result += "| " + res[i][3] + "\n"
+            result += "| " + "[[GUIToolkitWML#" + res[i][3] + "|" + res[i][3] + "]]\n"
 
             if(res[i][1] == ""):
                 result += "|yes\n"
