@@ -165,7 +165,7 @@ public:
 	bool load_game();
 	void set_tutorial();
 
-	std::string jump_to_campaign_id();
+	std::string jump_to_campaign_id() const;
 	bool new_campaign();
 	bool goto_campaign();
 	bool goto_multiplayer();
@@ -1173,10 +1173,12 @@ bool game_controller::new_campaign()
 }
 
 }
-std::string game_controller::jump_to_campaign_id()
+
+std::string game_controller::jump_to_campaign_id() const
 {
 	return jump_to_campaign_.campaign_id_;
 }
+
 bool game_controller::goto_campaign()
 {
 	if(jump_to_campaign_.jump_){
