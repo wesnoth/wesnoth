@@ -145,7 +145,8 @@ public:
 	{
 	}
 
-	std::string name() {
+	std::string name() const
+	{
 		return name_;
 	}
 
