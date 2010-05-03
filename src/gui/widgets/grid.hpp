@@ -37,8 +37,6 @@ public:
 
 	tgrid(const unsigned rows = 0, const unsigned cols = 0);
 
-	virtual ~tgrid();
-
 	/***** ***** ***** ***** LAYOUT FLAGS ***** ***** ***** *****/
 	static const unsigned VERTICAL_SHIFT                 = 0;
 	static const unsigned VERTICAL_GROW_SEND_TO_CLIENT   = 1 << VERTICAL_SHIFT;
@@ -301,6 +299,8 @@ private:
 			// Fixme make a class wo we can store some properties in the cache
 			// regarding size etc.
 			{}
+
+		~tchild();
 
 		/** Returns the best size for the cell. */
 		tpoint get_best_size() const;

@@ -42,13 +42,6 @@ tgrid::tgrid(const unsigned rows, const unsigned cols)
 {
 }
 
-tgrid::~tgrid()
-{
-	foreach(tchild& child, children_) {
-		delete child.widget();
-	}
-}
-
 unsigned tgrid::add_row(const unsigned count)
 {
 	assert(count);
@@ -682,6 +675,11 @@ void tgrid::set_rows_cols(const unsigned rows, const unsigned cols)
 	row_grow_factor_.resize(rows);
 	col_grow_factor_.resize(cols);
 	children_.resize(rows_ * cols_);
+}
+
+tgrid::tchild::~tchild()
+{
+	delete widget_;
 }
 
 tpoint tgrid::tchild::get_best_size() const
