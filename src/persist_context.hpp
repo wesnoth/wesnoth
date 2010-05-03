@@ -25,8 +25,8 @@ class persist_context {
 private:
 	// TODO: dirty marking
 	// TODO: child persist_contexts for embedded namespaces?
-	config cfg_;
 	std::string namespace_;
+	config cfg_;
 	bool valid_;
 public:
 	persist_context(const std::string &);
