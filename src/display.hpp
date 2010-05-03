@@ -343,10 +343,10 @@ public:
 	 * delay is the number of frames between each darkening
 	 * (0 to toggle).
 	 */
-	void sunset(const size_t delay = 0);
+	static void sunset(const size_t delay = 0);
 
 	/** Toogle to continuously redraw the screen. */
-	void toggle_benchmark();
+	static void toggle_benchmark();
 
 	void flip();
 
