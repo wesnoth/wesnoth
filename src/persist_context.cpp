@@ -21,12 +21,12 @@
 #include "resources.hpp"
 #include "serialization/binary_or_text.hpp"
 
-bool is_valid_namespace(const std::string &name_space)
+static bool is_valid_namespace(const std::string &name_space)
 {
 	return (name_space.find_first_not_of("!'(),-0123456789;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_") > name_space.length());
 }
 
-std::string get_persist_cfg_name(const std::string &name_space)
+static std::string get_persist_cfg_name(const std::string &name_space)
 {
 	// TODO: get namespace base name
 	if (is_valid_namespace(name_space))
@@ -35,7 +35,7 @@ std::string get_persist_cfg_name(const std::string &name_space)
 		return "";
 }
 
-bool load_persist_data(const std::string &name_space, config &cfg, const bool create_if_missing = true)
+static bool load_persist_data(const std::string &name_space, config &cfg, const bool create_if_missing = true)
 {
 	bool success = false;
 	std::string cfg_dir = get_dir(get_user_data_dir() + "/persist");
@@ -63,7 +63,7 @@ bool load_persist_data(const std::string &name_space, config &cfg, const bool cr
 	return success;
 }
 
-bool save_persist_data(std::string &name_space, config &cfg)
+static bool save_persist_data(std::string &name_space, config &cfg)
 {
 	bool success = false;
 

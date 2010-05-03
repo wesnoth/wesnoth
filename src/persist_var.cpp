@@ -21,7 +21,7 @@
 #include "resources.hpp"
 
 
-void get_global_variable(persist_context &ctx, const vconfig &pcfg)
+static void get_global_variable(persist_context &ctx, const vconfig &pcfg)
 {
 	std::string global = pcfg["from_global"];
 	std::string local = pcfg["to_local"];
@@ -37,12 +37,14 @@ void get_global_variable(persist_context &ctx, const vconfig &pcfg)
 		resources::state_of_game->set_variable(local,"");
 	}
 }
-void clear_global_variable(persist_context &ctx, const vconfig &pcfg)
+
+static void clear_global_variable(persist_context &ctx, const vconfig &pcfg)
 {
 	std::string global = pcfg["global"];
 	ctx.clear_var(global);	
 }
-void set_global_variable(persist_context &ctx, const vconfig &pcfg)
+
+static void set_global_variable(persist_context &ctx, const vconfig &pcfg)
 {
 	if (pcfg["from_local"].empty()) {
 		clear_global_variable(ctx, pcfg);
