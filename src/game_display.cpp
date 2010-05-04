@@ -58,7 +58,6 @@ game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 		const config& theme_cfg, const config& level) :
 		display(video, &map, theme_cfg, level),
 		units_(units),
-		temp_unit_(NULL),
 		attack_indicator_src_(),
 		attack_indicator_dst_(),
 		energy_bar_rects_(),
@@ -283,11 +282,12 @@ void game_display::pre_draw() {
 std::vector<map_location> game_display::get_invalidated_unit_locations() {
 	std::vector<map_location> unit_locations;
 	foreach (const map_location& loc, invalidated_) {
-		if ((temp_unit_ && temp_unit_->get_location() == loc) ||
-		    units_.find(loc) != units_.end())
-		{
-			unit_locations.push_back(loc);
+		bool addlocation = false;
+		addlocation |= (units_.find(loc) != units_.end());
+		foreach(unit* temp_unit, temporary_units_) {
+			addlocation |= (temp_unit->get_location() == loc);
 		}
+		if (addlocation) unit_locations.push_back(loc);
 	}
 	//sorted according to a drawing ordering object in order to render correctly
 	std::sort(unit_locations.begin(), unit_locations.end(), ordered_draw());
@@ -419,11 +419,11 @@ void game_display::redraw_units(const std::vector<map_location>& invalidated_uni
 		unit_map::iterator u_it = units_.find(loc);
 		if (u_it != units_.end()) {
 			u_it->redraw_unit();
-			//simulate_delay += 1;
 		}
-		if (temp_unit_ && temp_unit_->get_location() == loc) {
-			temp_unit_->redraw_unit();
-			//simulate_delay += 1;
+		foreach(unit* temp_unit, temporary_units_) {
+			if (temp_unit->get_location() == loc) {
+					temp_unit->redraw_unit();
+			}
 		}
 	}
 }
@@ -895,20 +895,19 @@ void game_display::invalidate_animations()
 {
 	new_animation_frame();
 	display::invalidate_animations();
-	unit_map::iterator unit;
-	for(unit=units_.begin() ; unit != units_.end() ; ++unit)
-		unit->refresh();
-	if (temp_unit_ )
-		temp_unit_->refresh();
+	unit_map::iterator u;
+	for(u=units_.begin() ; u != units_.end() ; ++u)
+		u->refresh();
+	foreach(unit* temp_unit, temporary_units_)
+		temp_unit->refresh();
 	bool new_inval = true;
 	while(new_inval) {
 		new_inval = false;
-		for(unit=units_.begin() ; unit != units_.end() ; ++unit) {
-			new_inval |= unit->invalidate(unit->get_location());
+		for(u=units_.begin() ; u != units_.end() ; ++u) {
+			new_inval |= u->invalidate(u->get_location());
 		}
-		if (temp_unit_ ) {
-			//new_inval |=invalidate(temp_unit_loc_);
-			new_inval |=temp_unit_->invalidate(temp_unit_->get_location());
+		foreach(unit* temp_unit, temporary_units_) {
+			new_inval |= temp_unit->invalidate(temp_unit->get_location());
 		}
 	}
 }
@@ -919,20 +918,22 @@ void game_display::debug_highlight(const map_location& loc, fixed_t amount)
 	debugHighlights_[loc] += amount;
 }
 
-void game_display::place_temporary_unit(unit &u)
+void game_display::place_temporary_unit(unit *u)
 {
-	temp_unit_ = &u;
-	invalidate(u.get_location());
+	if(!(temporary_units_.find(u) == temporary_units_.end())) printf("Warning: Duplicate fake unit.\n");
+	temporary_units_.insert(u);
+	invalidate(u->get_location());
+	printf("DONE: unit inserted.\n");
 }
 
-void game_display::remove_temporary_unit()
+void game_display::remove_temporary_unit(unit *u)
 {
-	if(!temp_unit_) return;
+	if (temporary_units_.erase(u) == 0) return;
 
-	invalidate(temp_unit_->get_location());
+	invalidate(u->get_location());
 	// Redraw with no location to get rid of haloes
-	temp_unit_->clear_haloes();
-	temp_unit_ = NULL;
+	u->clear_haloes();
+	printf("DONE: unit removed.\n");
 }
 
 void game_display::set_attack_indicator(const map_location& src, const map_location& dst)

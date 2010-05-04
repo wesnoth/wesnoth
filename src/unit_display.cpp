@@ -38,7 +38,9 @@ static void teleport_unit_between( const map_location& a, const map_location& b,
 
 	temp_unit.set_location(a);
 	if (!disp->fogged(a)) { // teleport
-		disp->place_temporary_unit(temp_unit);
+		//disp->remove_temporary_unit(&temp_unit);
+		//disp->place_temporary_unit(&temp_unit);
+		disp->invalidate(temp_unit.get_location());
 		temp_unit.set_facing(a.get_relative_dir(b));
 		unit_animator animator;
 		animator.add_animation(&temp_unit,"pre_teleport",a);
@@ -48,7 +50,9 @@ static void teleport_unit_between( const map_location& a, const map_location& b,
 
 	temp_unit.set_location(b);
 	if (!disp->fogged(b)) { // teleport
-		disp->place_temporary_unit(temp_unit);
+		//disp->remove_temporary_unit(&temp_unit);
+		//disp->place_temporary_unit(&temp_unit);
+		disp->invalidate(temp_unit.get_location());
 		temp_unit.set_facing(a.get_relative_dir(b));
 		disp->scroll_to_tiles(b,a,game_display::ONSCREEN,true,0.0,false);
 		unit_animator animator;
@@ -70,7 +74,8 @@ static void move_unit_between(const map_location& a, const map_location& b, unit
 	}
 
 	temp_unit.set_location(a);
-	disp->place_temporary_unit(temp_unit);
+	//disp->place_temporary_unit(&temp_unit);
+	disp->invalidate(temp_unit.get_location());
 	temp_unit.set_facing(a.get_relative_dir(b));
 	unit_animator animator;
 	animator.replace_anim_if_invalid(&temp_unit,"movement",a,b,step_num,
@@ -146,7 +151,7 @@ void move_unit(const std::vector<map_location>& path, unit& u,
 	u.set_hidden(true);
 	temp_unit.set_standing(false);
 	temp_unit.set_hidden(false);
-	disp->place_temporary_unit(temp_unit);
+	disp->place_temporary_unit(&temp_unit);
 	if(!invisible) {
 		// Scroll to the path, but only if it fully fits on screen.
 		// If it does not fit we might be able to do a better scroll later.
@@ -169,7 +174,9 @@ void move_unit(const std::vector<map_location>& path, unit& u,
 
 	// extra immobile mvt anim for take-off
 	temp_unit.set_location(path[0]);
-	disp->place_temporary_unit(temp_unit);
+	//disp->remove_temporary_unit(&temp_unit);
+	//disp->place_temporary_unit(&temp_unit);
+	disp->invalidate(temp_unit.get_location());
 	temp_unit.set_facing(path[0].get_relative_dir(path[1]));
 	unit_animator animator;
 	animator.add_animation(&temp_unit,"pre_movement",path[0],path[1]);
@@ -186,7 +193,9 @@ void move_unit(const std::vector<map_location>& path, unit& u,
 			if (!disp->tile_fully_on_screen(path[i]) || !disp->tile_fully_on_screen(path[i+1])) {
 				// prevent the unit from dissappearing if we scroll here with i == 0
 				temp_unit.set_location(path[i]);
-				disp->place_temporary_unit(temp_unit);
+				//disp->remove_temporary_unit(&temp_unit);
+				//disp->place_temporary_unit(&temp_unit);
+				disp->invalidate(temp_unit.get_location());
 				// scroll in as much of the remaining path as possible
 				std::vector<map_location> remaining_path;
 				for(size_t j = i; j < path.size(); ++j) {
@@ -213,7 +222,7 @@ void move_unit(const std::vector<map_location>& path, unit& u,
 	animator.add_animation(&temp_unit,"post_movement",path[path.size()-1],map_location::null_location);
 	animator.start_animations();
 	animator.wait_for_end();
-	disp->remove_temporary_unit();
+	disp->remove_temporary_unit(&temp_unit);
 
 	u.set_facing(dir);
 	u.set_hidden(was_hidden);
@@ -327,7 +336,7 @@ void unit_attack(
 	unit defender = *def;
 	bool was_hidden = defender.get_hidden();
 	def->set_hidden(true);
-	disp->place_temporary_unit(defender);
+	disp->place_temporary_unit(&defender);
 
 
 	att->set_facing(a.get_relative_dir(b));
@@ -411,7 +420,7 @@ void unit_attack(
 	// pass the animation back to the real unit
 	def->start_animation(animator.get_end_time(), defender_anim, true);
 	reset_helpers(&*att, &*def);
-	disp->remove_temporary_unit();
+	disp->remove_temporary_unit(&defender);
 	def->set_hidden(was_hidden);
 }
 
