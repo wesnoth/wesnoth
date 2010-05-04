@@ -34,6 +34,7 @@ class unit_map;
 #include <map>
 #include <set>
 #include <string>
+#include <deque>
 
 // This needs to be separate from display.h because of the static
 // singleton member, which will otherwise trigger link failure
@@ -185,9 +186,20 @@ protected:
 	virtual void draw_minimap_units();
 
 public:
-	/** Temporarily place a unit on map (moving: can overlap others). */
+	/** Temporarily place a unit on map (moving: can overlap others).
+	 *  The temp unit is added at the end of the temporary unit deque,
+	 *  and therefore gets drawn last, over other units and temp units.
+	 *  Adding the same unit twice isn't allowed.
+	 */
 	void place_temporary_unit(unit *u);
-	void remove_temporary_unit(unit *u);
+	/** Removes any instances of this temporary unit from the temporary unit vector.
+	 *  Returns the number of temp units deleted (normally 0 or 1).
+	 */
+	int remove_temporary_unit(unit *u);
+	/** Returns a reference to the temp unit deque.
+	 *  Use the place/remove methods instead of this whenever possible.
+	 */
+	std::deque<unit*>& get_temp_units() {return temp_units_;}
 
 	/** Set the attack direction indicator. */
 	void set_attack_indicator(const map_location& src, const map_location& dst);
@@ -306,7 +318,7 @@ private:
 
 	unit_map& units_;
 
-	std::set<unit*> temporary_units_;
+	std::deque<unit*> temp_units_;
 
 	// Locations of the attack direction indicator's parts
 	map_location attack_indicator_src_;

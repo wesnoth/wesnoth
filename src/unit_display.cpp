@@ -38,8 +38,6 @@ static void teleport_unit_between( const map_location& a, const map_location& b,
 
 	temp_unit.set_location(a);
 	if (!disp->fogged(a)) { // teleport
-		//disp->remove_temporary_unit(&temp_unit);
-		//disp->place_temporary_unit(&temp_unit);
 		disp->invalidate(temp_unit.get_location());
 		temp_unit.set_facing(a.get_relative_dir(b));
 		unit_animator animator;
@@ -50,8 +48,6 @@ static void teleport_unit_between( const map_location& a, const map_location& b,
 
 	temp_unit.set_location(b);
 	if (!disp->fogged(b)) { // teleport
-		//disp->remove_temporary_unit(&temp_unit);
-		//disp->place_temporary_unit(&temp_unit);
 		disp->invalidate(temp_unit.get_location());
 		temp_unit.set_facing(a.get_relative_dir(b));
 		disp->scroll_to_tiles(b,a,game_display::ONSCREEN,true,0.0,false);
@@ -74,7 +70,6 @@ static void move_unit_between(const map_location& a, const map_location& b, unit
 	}
 
 	temp_unit.set_location(a);
-	//disp->place_temporary_unit(&temp_unit);
 	disp->invalidate(temp_unit.get_location());
 	temp_unit.set_facing(a.get_relative_dir(b));
 	unit_animator animator;
@@ -174,8 +169,6 @@ void move_unit(const std::vector<map_location>& path, unit& u,
 
 	// extra immobile mvt anim for take-off
 	temp_unit.set_location(path[0]);
-	//disp->remove_temporary_unit(&temp_unit);
-	//disp->place_temporary_unit(&temp_unit);
 	disp->invalidate(temp_unit.get_location());
 	temp_unit.set_facing(path[0].get_relative_dir(path[1]));
 	unit_animator animator;
@@ -193,8 +186,6 @@ void move_unit(const std::vector<map_location>& path, unit& u,
 			if (!disp->tile_fully_on_screen(path[i]) || !disp->tile_fully_on_screen(path[i+1])) {
 				// prevent the unit from dissappearing if we scroll here with i == 0
 				temp_unit.set_location(path[i]);
-				//disp->remove_temporary_unit(&temp_unit);
-				//disp->place_temporary_unit(&temp_unit);
 				disp->invalidate(temp_unit.get_location());
 				// scroll in as much of the remaining path as possible
 				std::vector<map_location> remaining_path;
