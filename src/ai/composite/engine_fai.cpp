@@ -69,7 +69,7 @@ public:
 	}
 private:
 	game_logic::candidate_action_ptr fai_ca_;
-	formula_ai formula_ai_;
+	formula_ai &formula_ai_;
 	const config cfg_;
 };
 
