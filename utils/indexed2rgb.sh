@@ -57,10 +57,23 @@ for f in $filelist
 do
     if !(pngcheck $f|grep 'RGB+alpha' &> /dev/null)
     then
-        # 6 = RGBA http://www.imagemagick.org/Usage/formats/#png_write
+        # -define png:color-type=6 is the PNG way to specify RGBA, it doesn't always work though
+        # http://www.imagemagick.org/Usage/formats/#png_write
         convert -define png:color-type=6 $f $f.new
-        mv -f $f.new $f
-        converted="${converted} ${f}"
+
+        if !(pngcheck $f.new|grep 'RGB+alpha' &> /dev/null)
+        then
+            # asking the PNG writer nicely didn't work, force it instead
+            convert -type TrueColorMatte $f $f.new
+        fi
+
+        if (pngcheck $f.new|grep 'RGB+alpha' &> /dev/null)
+        then
+            mv -f $f.new $f
+            converted="${converted} ${f}"
+        else
+            echo "Failed to convert $f"
+        fi
     fi
 done
 
