@@ -806,7 +806,7 @@ namespace {
 
 				gui::menu* addon_menu =
 					new gui::menu(disp.video(), options, false, -1,
-					              gui::dialog::max_menu_width, false);
+				              gui::dialog::max_menu_width, NULL, NULL, false);
 
 				// Add widgets
 				upd_dialog.set_menu(addon_menu);
