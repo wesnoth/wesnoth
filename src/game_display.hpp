@@ -192,14 +192,15 @@ public:
 	 *  Adding the same unit twice isn't allowed.
 	 */
 	void place_temporary_unit(unit *u);
+
 	/** Removes any instances of this temporary unit from the temporary unit vector.
-	 *  Returns the number of temp units deleted (normally 0 or 1).
+	 *  Returns the number of temp units deleted (0 or 1, any other number indicates an error).
 	 */
 	int remove_temporary_unit(unit *u);
-	/** Returns a reference to the temp unit deque.
-	 *  Use the place/remove methods instead of this whenever possible.
+
+	/** Returns a reference to the temp units deque.
 	 */
-	std::deque<unit*>& get_temp_units() {return temp_units_;}
+	const std::deque<unit*>& get_temp_units() { return temp_units_; }
 
 	/** Set the attack direction indicator. */
 	void set_attack_indicator(const map_location& src, const map_location& dst);

@@ -286,8 +286,13 @@ std::vector<map_location> game_display::get_invalidated_unit_locations() {
 		addlocation |= (units_.find(loc) != units_.end());
 		foreach(unit* temp_unit, temp_units_) {
 			addlocation |= (temp_unit->get_location() == loc);
+			if (addlocation) {
+				break;
+			}
 		}
-		if (addlocation) unit_locations.push_back(loc);
+		if (addlocation) {
+			unit_locations.push_back(loc);
+		}
 	}
 	//sorted according to a drawing ordering object in order to render correctly
 	std::sort(unit_locations.begin(), unit_locations.end(), ordered_draw());
@@ -895,17 +900,21 @@ void game_display::invalidate_animations()
 {
 	new_animation_frame();
 	display::invalidate_animations();
-	foreach (unit& u, units_)
+	foreach (unit& u, units_) {
 		u.refresh();
-	foreach(unit* temp_unit, temp_units_)
+	}
+	foreach(unit* temp_unit, temp_units_) {
 		temp_unit->refresh();
+	}
 	bool new_inval = true;
 	while(new_inval) {
 		new_inval = false;
-		foreach (unit& u, units_)
+		foreach (unit& u, units_) {
 			new_inval |= u.invalidate(u.get_location());
-		foreach(unit* temp_unit, temp_units_)
+		}
+		foreach(unit* temp_unit, temp_units_) {
 			new_inval |= temp_unit->invalidate(temp_unit->get_location());
+		}
 	}
 }
 
@@ -937,6 +946,9 @@ int game_display::remove_temporary_unit(unit *u)
 		invalidate(u->get_location());
 		// Redraw with no location to get rid of haloes
 		u->clear_haloes();
+	}
+	if (removed > 1) {
+		ERR_NG << "Error: duplicate temp unit found in game_display::remove_temporary_unit" << std::endl;
 	}
 	return removed;
 }
