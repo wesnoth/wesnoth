@@ -21,7 +21,8 @@ echo "Converting $number files to RGB mode..."
 
 for f in $filelist
 do
-    convert -define png:color-type=TrueColor $f $f.new
+    # 6 = RGBA http://www.imagemagick.org/Usage/formats/#png_write
+    convert -define png:color-type=6 $f $f.new
     mv -f $f.new $f
 done
 
