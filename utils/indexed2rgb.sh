@@ -2,29 +2,79 @@
 #
 #  Script to convert PNGs from indexed to RGB mode.
 #
-#  Run-time requirements: ImageMagick
+#  Run-time requirements: ImageMagick, pngcheck
+#  If --optipng is used, also wesnoth-optipng's requirements
 #
 
+run_optipng="no"
+
 while [ "${1}" != "" ]; do
-    # Rather useless until we start accepting options, but whatever.
-    filelist="${filelist} ${1}"
-    shift
+    if [ "${1}" = "--help" ] || [ "${1}" = "-h" ]; then
+        cat << EOF
+Automatic PNG RGBA conversion script
+
+Usage:
+  `basename ${0}` [{--optipng|-o}] [{--help|-h}] {<file>|<dir>}...
+
+Files given on command line, are converted if they are not already in RGB+alpha mode (PNG mode 6).
+Directories will be recursively parsed for PNG files.
+
+Switches:
+  --help    / -h   Displays this help text.
+
+  --optipng / -o   Runs wesnoth-optipng on the converted files afterwards.
+
+This tool requires ImageMagick and pngcheck to be installed and available in PATH.
+If the --optipng option is used, it also requires wesnoth-optipng to be present in the same directory.
+EOF
+        exit 0
+    elif [ "${1}" = "--optipng" ] || [ "${1}" = "-o" ]; then
+        run_optipng="yes"
+        shift
+    elif [ -d "${1}" ]; then
+        filelist="${filelist} `find ${1} -iname "*.png"`"
+        shift
+    elif [ -f "${1}" ]; then
+        filelist="${filelist} ${1}"
+        shift
+    else
+        echo "Argument ${1} is not a known switch nor is it a directory or file. Exiting."
+        exit 1
+    fi
 done
 
-if test -z "$filelist"; then
-    filelist=`find -iname "*.png"`
+input_number=`echo $filelist|wc -w`
+converted=""
+
+if [ "$input_number" -eq "0" ]; then
+    echo "No input files"
+    exit 0
 fi
 
-number=`echo $filelist|wc -w`
-
-echo "Converting $number files to RGB mode..."
+echo -n "Converting $input_number files to RGB mode... "
 
 for f in $filelist
 do
-    # 6 = RGBA http://www.imagemagick.org/Usage/formats/#png_write
-    convert -define png:color-type=6 $f $f.new
-    mv -f $f.new $f
+    if !(pngcheck $f|grep 'RGB+alpha' &> /dev/null)
+    then
+        # 6 = RGBA http://www.imagemagick.org/Usage/formats/#png_write
+        convert -define png:color-type=6 $f $f.new
+        mv -f $f.new $f
+        converted="${converted} ${f}"
+    fi
 done
 
-echo "Done. Now would be a good time to run optipng"
+converted_number=`echo $converted|wc -w`
+
+echo "Done."
+echo "Changed $converted_number out of $input_number files."
+
+if [ "$converted_number" -eq "0" ];then
+    true
+elif [ "$run_optipng" = "yes" ];then
+    echo "Running optipng"
+    `dirname ${0}`/wesnoth-optipng $converted
+else
+    echo "Now would be a good time to run optipng"
+fi
 
