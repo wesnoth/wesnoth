@@ -1463,6 +1463,8 @@ void connect::lists_init()
 	}
 
 	// AI algorithms
+	const config &era = level_.child("era");
+	ai::configuration::add_era_ai_from_config(era);
 	ai_algorithms_ = ai::configuration::get_available_ais();
 
 	// Factions

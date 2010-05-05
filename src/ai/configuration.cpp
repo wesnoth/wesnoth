@@ -57,6 +57,7 @@ std::vector<well_known_aspect> well_known_aspects;
 void configuration::init(const config &game_config)
 {
 	ai_configurations_.clear();
+	era_ai_configurations_.clear();
 	well_known_aspects.clear();
 	well_known_aspects.push_back(well_known_aspect("aggression"));
 	well_known_aspects.push_back(well_known_aspect("attack_depth"));
@@ -114,9 +115,38 @@ void configuration::init(const config &game_config)
 	}
 }
 
+void configuration::add_era_ai_from_config(const config &era)
+{
+	era_ai_configurations_.clear();
+	foreach (const config &ai_configuration, era.child_range("ai")) {
+		const std::string &id = ai_configuration["id"];
+		if (id.empty()){
+
+			ERR_AI_CONFIGURATION << "skipped AI config due to missing id" << ". Config contains:"<< std::endl << ai_configuration << std::endl;
+			continue;
+		}
+		if (era_ai_configurations_.count(id)>0){
+			ERR_AI_CONFIGURATION << "skipped AI config due to duplicate id [" << id << "]. Config contains:"<< std::endl << ai_configuration << std::endl;
+			continue;
+		}
+
+		description desc;
+		desc.id=id;
+		desc.text=ai_configuration["description"];
+		desc.cfg=ai_configuration;
+
+		era_ai_configurations_.insert(std::make_pair(id,desc));
+		LOG_AI_CONFIGURATION << "loaded AI config: " << ai_configuration["description"] << std::endl;
+	}
+}
+
 std::vector<description*> configuration::get_available_ais(){
 	std::vector<description*> ais_list;
 	for(description_map::iterator desc = ai_configurations_.begin(); desc!=ai_configurations_.end(); ++desc) {
+		ais_list.push_back(&desc->second);
+		DBG_AI_CONFIGURATION << "has ai with config: "<< std::endl << desc->second.cfg<< std::endl;
+	}
+	for(description_map::iterator desc = era_ai_configurations_.begin(); desc!=era_ai_configurations_.end(); ++desc) {
 		ais_list.push_back(&desc->second);
 		DBG_AI_CONFIGURATION << "has ai with config: "<< std::endl << desc->second.cfg<< std::endl;
 	}
@@ -127,13 +157,19 @@ const config& configuration::get_ai_config_for(const std::string &id)
 {
 	description_map::iterator cfg_it = ai_configurations_.find(id);
 	if (cfg_it==ai_configurations_.end()){
-		return default_config_;
+		description_map::iterator era_cfg_it = era_ai_configurations_.find(id);
+		if (era_cfg_it==era_ai_configurations_.end()){
+			return default_config_;
+		} else {
+			return era_cfg_it->second.cfg;
+		}
 	}
 	return cfg_it->second.cfg;
 }
 
 
 configuration::description_map configuration::ai_configurations_ = configuration::description_map();
+configuration::description_map configuration::era_ai_configurations_ = configuration::description_map();
 config configuration::default_config_ = config();
 
 bool configuration::get_side_config_from_file(const std::string& file, config& cfg ){

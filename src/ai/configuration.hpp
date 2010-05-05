@@ -69,6 +69,7 @@ public:
 	 * @param game_config_ game config
 	 */
 	static void init(const config &game_config);
+	static void add_era_ai_from_config(const config &game_config);
 
 
 	/**
@@ -156,6 +157,7 @@ private:
 
 	typedef std::map<std::string, description> description_map;
 	static description_map ai_configurations_;
+	static description_map era_ai_configurations_;
 	static config default_config_;
 
 };
