@@ -30,6 +30,7 @@
 #include "../../formula_fwd.hpp"
 #include "../../formula_callable.hpp"
 
+#include <boost/noncopyable.hpp>
 
 #ifdef _MSC_VER
 #pragma warning(push)
@@ -61,8 +62,7 @@ struct plain_route;
 
 namespace ai {
 
-class formula_ai : public readonly_context_proxy, public game_logic::formula_callable {
-
+class formula_ai : public readonly_context_proxy, public game_logic::formula_callable, public boost::noncopyable {
 public:
 	explicit formula_ai(readonly_context &context, const config &cfg);
 	virtual ~formula_ai() {};

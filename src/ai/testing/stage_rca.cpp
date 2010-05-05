@@ -124,13 +124,14 @@ bool candidate_action_evaluation_loop::do_play_stage()
 
 		//Execution
 		if (best_score>candidate_action::BAD_SCORE) {
-			DBG_AI_TESTING_RCA_DEFAULT << "Best candidate action: "<< *best_ptr << std::endl;
+			DBG_AI_TESTING_RCA_DEFAULT << "Executing best candidate action: "<< *best_ptr << std::endl;
 			gamestate_observer gs_o;
 			best_ptr->execute();
 			executed = true;
 			if (!gs_o.is_gamestate_changed()) {
 				//this means that this CA has lied to us in evaluate()
 				//we punish it by disabling it
+				DBG_AI_TESTING_RCA_DEFAULT << "Disabling candidate action because it failed to change the game state: "<< *best_ptr << std::endl;
 				best_ptr->disable();
 				//since we don't re-enable at this play_stage, if we disable this CA, other may get the chance to go.
 			} else {

@@ -76,6 +76,7 @@ formula_ai::formula_ai(readonly_context &context, const config &cfg)
 {
 	add_ref();
 	init_readonly_context_proxy(context);
+	LOG_AI << "creating new formula ai"<< std::endl;
 }
 
 void formula_ai::handle_exception(game_logic::formula_error& e) const
@@ -169,6 +170,8 @@ variant formula_ai::make_action(game_logic::const_formula_ptr formula_, const ga
 
 	if (ai_ptr_) {
 		res = execute_variant(var, *ai_ptr_, false);
+	} else {
+		ERR_AI << "skipped execution of action because ai context is not set correctly" << std::endl;
 	}
 
         //remove outcome_positions
