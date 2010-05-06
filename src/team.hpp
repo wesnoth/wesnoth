@@ -86,6 +86,8 @@ public:
 
 		std::string description;
 
+		bool scroll_to_leader;
+
 		t_string objectives; /** < Team's objectives for the current level. */
 
 		/** Set to true when the objectives for this time changes.
@@ -152,6 +154,8 @@ public:
 		{ info_.current_player = player; }
 
 	int average_recruit_price() const;
+
+	bool get_scroll_to_leader() const {return info_.scroll_to_leader;}
 
 	const std::set<std::string>& recruits() const
 		{ return info_.can_recruit; }

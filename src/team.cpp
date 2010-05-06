@@ -65,6 +65,7 @@ team::team_info::team_info(const config& cfg) :
 		flag(cfg["flag"]),
 		flag_icon(cfg["flag_icon"]),
 		description(cfg["id"]),
+		scroll_to_leader(utils::string_bool(cfg["scroll_to_leader"],true)),
 		objectives(cfg["objectives"]),
 		objectives_changed(utils::string_bool(cfg["objectives_changed"])),
 		controller(),
@@ -198,6 +199,7 @@ void team::team_info::write(config& cfg) const
 	cfg["allow_player"] = allow_player;
 	cfg["no_leader"] = no_leader;
 	cfg["hidden"] = hidden;
+	cfg["scroll_to_leader"] = scroll_to_leader;
 
 	switch(controller) {
 	case AI: cfg["controller"] = "ai"; break;
