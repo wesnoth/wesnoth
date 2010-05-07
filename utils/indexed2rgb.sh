@@ -72,6 +72,7 @@ do
             mv -f $f.new $f
             converted="${converted} ${f}"
         else
+            rm $f.new
             echo "Failed to convert $f"
         fi
     fi
