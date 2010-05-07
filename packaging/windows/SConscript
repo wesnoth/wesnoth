@@ -19,6 +19,10 @@ def WindowsInstaller(env, files):
     files = map(Entry, Flatten(files))
     env["NSIS_INSTALL_FILES"] = ""
     env["NSIS_UNINSTALL_FILES"] = ""
+    try:
+        env["version_major"] = ".".join(env["version"].split(".")[0:2])
+    except:
+        env["version_major"] = ""
     for file in files:
         if not file:
             continue
