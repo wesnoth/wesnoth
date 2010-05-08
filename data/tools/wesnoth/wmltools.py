@@ -306,8 +306,11 @@ class CrossRef:
     def mark_matching_resources(self, pattern, fn, n):
         "Mark all definitions matching a specified pattern with a reference."
         pattern = pattern.replace("+", r"\+")
+        pattern = os.sep + pattern + "$"
+        if os.sep == "\\":
+            pattern = pattern.replace("\\", "\\\\")
         try:
-            pattern = re.compile(os.sep + pattern + "$")
+            pattern = re.compile(pattern)
         except sre_constants.error:
             print >>sys.stderr, "wmlscope: confused by %s" % pattern
             return None
@@ -615,6 +618,8 @@ class CrossRef:
                         # Catches maps that look like macro names.
                         if (name.endswith(".map") or name.endswith(".mask")) and name[0] == '{':
                             name = name[1:]
+                        if os.sep == "\\":
+                            name = name.replace("/", "\\")
                         key = None
                         # If name is already in our resource list, it's easy.
                         if name in self.fileref and self.visible_from(name, fn, n):
