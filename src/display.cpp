@@ -1951,7 +1951,6 @@ void display::draw_invalidated() {
 		int xpos = get_location_x(loc);
 		int ypos = get_location_y(loc);
 		const bool on_map = get_map().on_board(loc);
-		const bool off_map_tile = (get_map().get_terrain(loc) == t_translation::OFF_MAP_USER);
 		SDL_Rect hex_rect = {xpos, ypos, zoom_, zoom_};
 		if(!rects_overlap(hex_rect,clip_rect)) {
 			continue;
@@ -1959,7 +1958,7 @@ void display::draw_invalidated() {
 		draw_hex(loc);
 		drawn_hexes_+=1;
 		// If the tile is at the border, we start to blend it
-		if(!on_map && !off_map_tile) {
+		if(!on_map) {
 			 draw_border(loc, xpos, ypos);
 		}
 	}
