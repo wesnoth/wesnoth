@@ -667,7 +667,7 @@ public:
 		                            * Layer which holds stuff that needs to be
 		                            * sorted out further, but under units.
 		                            */
-		LAYER_UNIT_FIRST,          /**< Reserve layeres to be selected for WML. */
+		LAYER_UNIT_FIRST,          /**< Reserve layers to be selected for WML. */
 		LAYER_UNIT_BG = LAYER_UNIT_FIRST+10,             /**< Used for the ellipse behind the unit. */
 		LAYER_UNIT_DEFAULT=LAYER_UNIT_FIRST+40,/**<default layer for drawing units */
 		LAYER_TERRAIN_FG = LAYER_UNIT_FIRST+50, /**<
