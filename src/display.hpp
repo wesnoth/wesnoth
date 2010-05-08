@@ -683,6 +683,7 @@ public:
 		LAYER_UNIT_LAST=LAYER_UNIT_FIRST+100,
 		LAYER_REACHMAP,            /**< "black stripes" on unreachable hexes. */
 		LAYER_FOG_SHROUD,          /**< Fog and shroud. */
+		LAYER_ARROWS,              /**< Arrows from the arrows framework. Used for planned moves display. */
 		LAYER_UNIT_BAR,            /**<
 		                            * Unit bars and overlays are drawn on this
 		                            * layer (for testing here).
