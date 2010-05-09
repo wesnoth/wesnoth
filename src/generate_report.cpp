@@ -81,6 +81,7 @@ report generate_report(TYPE type,
 	}
 
 	std::ostringstream str;
+	using utils::signed_percent;
 
 	switch(type) {
 	case UNIT_NAME:
@@ -148,7 +149,7 @@ report generate_report(TYPE type,
 		const std::string &align_id = unit_type::alignment_id(u->alignment());
 		std::stringstream ss;
 		int cm = combat_modifier(units, displayed_unit_hex, u->alignment(), u->is_fearless());
-		ss << align << " (" << (cm >= 0 ? "+" : "−") << abs(cm) << "%)";
+		ss << align << " (" << signed_percent(cm) << ")";
 		return report(ss.str(), "", string_table[align_id + "_description"]);
 	}
 	case UNIT_ABILITIES: {
@@ -184,9 +185,9 @@ report generate_report(TYPE type,
 			int res_att = 100 - u->resistance_against(resist->first, true, displayed_unit_hex);
 			int res_def = 100 - u->resistance_against(resist->first, false, displayed_unit_hex);
 			if (res_att == res_def) {
-				line << res_def << "%\n";
+				line << signed_percent(res_def) << "\n";
 			} else {
-				line << res_att << "% / " << res_def << "%\n";
+				line << signed_percent(res_att) << " / " << signed_percent(res_def) << "\n";
 				att_def_diff = true;
 			}
 			resistances_table.insert(line.str());
@@ -329,7 +330,7 @@ report generate_report(TYPE type,
 
 			for(std::map<int,std::vector<std::string> >::reverse_iterator resist = resistances.rbegin(); resist != resistances.rend(); ++resist) {
 				std::sort(resist->second.begin(),resist->second.end());
-				tooltip << (resist->first >= 0 ? "+" : "") << resist->first << "% " << _("vs") << " ";
+				tooltip << signed_percent(resist->first) << " " << _("vs") << " ";
 				for(std::vector<std::string>::const_iterator i = resist->second.begin(); i != resist->second.end(); ++i) {
 					if(i != resist->second.begin()) {
 						tooltip << ", ";
@@ -382,9 +383,9 @@ report generate_report(TYPE type,
 		std::ostringstream tooltip;
 		int b = tod.lawful_bonus;
 		tooltip << tod.name << '\n'
-			<< _("Lawful units: ") << (b > 0 ? "+" : "") << b << "%\n"
-			<< _("Neutral units: ") << "0%\n"
-			<< _("Chaotic units: ") << (b < 0 ? "+" : "") << -b << "%";
+			<< _("Lawful units: ") << signed_percent(b) << "\n"
+			<< _("Neutral units: ") << signed_percent(0) << "\n"
+			<< _("Chaotic units: ") << signed_percent(-b);
 
 		std::string tod_image = tod.image;
 		if (tod.bonus_modified > 0) tod_image += "~BRIGHTEN()";
