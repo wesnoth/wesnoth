@@ -808,11 +808,6 @@ void play_UI_sound(const std::string& files)
 	}
 }
 
-int get_music_volume()
-{
-	return Mix_VolumeMusic(-1);
-}
-
 void set_music_volume(int vol)
 {
 	if(mix_ok && vol >= 0) {

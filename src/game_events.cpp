@@ -712,24 +712,33 @@ WML_HANDLER_FUNCTION(music, /*event_info*/, cfg)
 	sound::play_music_config(cfg.get_parsed_config());
 }
 
-WML_HANDLER_FUNCTION(music_volume, /*event_info*/, cfg)
+WML_HANDLER_FUNCTION(volume, /*event_info*/, cfg)
 {
-	std::string absolute = cfg["value"];
-	std::string relative = cfg["relative"];
-	int vol = sound::get_music_volume();
 
-	if(!absolute.empty()) {
-		vol = atoi(absolute.c_str());
+	int vol;
+	float rel;	
+	std::string music = cfg["music"];
+	std::string sound = cfg["sound"];
+
+	if(!music.empty()) {
+		vol = preferences::music_volume();
+		rel = atof(music.c_str());
+		if (rel < 100.0) {
+			vol = static_cast<int>(rel*vol/100.0);
+		}
+		sound::set_music_volume(vol);
 	}
 
-	if(!relative.empty()) {
-		const float rel = atof(relative.c_str());
-		vol = static_cast<int>(rel*vol/100.0);
+	if(!sound.empty()) {
+		vol = preferences::sound_volume();
+		rel = atof(sound.c_str());
+		if (rel < 100.0) {
+			vol = static_cast<int>(rel*vol/100.0);
+		}
+		sound::set_sound_volume(vol);
 	}
-
-	sound::set_music_volume(vol);
+	
 }
-
 
 WML_HANDLER_FUNCTION(sound, /*event_info*/, cfg)
 {

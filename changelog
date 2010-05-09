@@ -86,7 +86,7 @@ Version 1.9.0-svn:
    * Add [replace_schedule] tag, which replaces the time of day schedule
    * Trying to include a missing macro/file is now a fatal error
    * Extended #ifdef so that it also tests for files and directories
-   * Add [music_volume] tag, which permits modifications to music volume during scenario
+   * Added [volume] tag, which allows game volume to be changed during scenarios
    * Added ON_DIFFICULTY, a macro that makes using different values based on difficulty simpler
    * Prototype support for [set_global_variable]
    * Prototype support for [get_global_variable]
