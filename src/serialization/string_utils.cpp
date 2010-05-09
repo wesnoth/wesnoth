@@ -249,6 +249,14 @@ bool string_bool(const std::string& str, bool def) {
 	return true;
 }
 
+std::string signed_percent(int val)
+{
+	std::ostringstream oss;
+	//NOTE: "−" is the Unicode minus
+	oss << (val >= 0 ? "+" : "−") << abs(val) << "%";
+	return oss.str();
+}
+
 static bool is_username_char(char c) {
 	return ((c == '_') || (c == '-'));
 }

@@ -129,6 +129,9 @@ std::string &strip(std::string &str);
 /** Convert no, false, off, 0, 0.0 to false, empty to def, and others to true */
 bool string_bool(const std::string& str,bool def=false);
 
+/** Convert number into percentage (using the Unicode "−" and +0% convention */
+std::string signed_percent(int val);
+
 /**
  * Try to complete the last word of 'text' with the 'wordlist'.
  *
