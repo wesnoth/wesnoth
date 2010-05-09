@@ -20,10 +20,7 @@
 #ifndef UNIT_FRAME_H_INCLUDED
 #define UNIT_FRAME_H_INCLUDED
 
-#include "map_location.hpp"
-#include "util.hpp"
 #include "image.hpp"
-#include "serialization/string_utils.hpp"
 
 class config;
 

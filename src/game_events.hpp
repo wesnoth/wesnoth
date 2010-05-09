@@ -17,10 +17,7 @@
 
 #include "config.hpp"
 #include "map.hpp"
-#include "map_location.hpp"
-#include "serialization/string_utils.hpp"
 #include "variable.hpp"
-#include "unit_map.hpp"
 
 #include <vector>
 #include <map>
@@ -37,6 +34,8 @@
  * like mouse movement, keyboard events, etc.
  * See events.hpp for how they are handled.
  */
+
+class unit;
 
 /**
  * Changes a terrain location.
