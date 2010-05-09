@@ -264,6 +264,7 @@ void unit_creator::add_unit(const config &cfg)
 				unit new_unit(temp_cfg, true, resources::state_of_game);
 				team_.recall_list().push_back(new_unit);
 				DBG_NG << "inserting unit with id=["<<id<<"] on recall list for side " << new_unit.side() << "\n";
+				preferences::encountered_units().insert(new_unit.type_id());
 			} else {
 				LOG_NG << "wanted to insert unit on recall list, but recall list for side " << (cfg)["side"] << "already contains id="<<id<<"\n";
 			}
