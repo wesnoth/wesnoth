@@ -257,12 +257,12 @@ report generate_report(TYPE type,
 		foreach (const attack_type &at, u->attacks())
 		{
 			at.set_specials_context(displayed_unit_hex, map_location(), *u);
-			std::string lang_type = gettext(at.type().c_str());
-			str << span_color(font::weapon_color);
+	
+			int effdmg = 0;
 			if (u->get_state(unit::STATE_SLOWED)) {
-				str << round_damage(at.damage(), 1, 2) << '-';
+				effdmg = round_damage(at.damage(),1,2);
 			} else {
-				str << at.damage() << '-';
+				effdmg = at.damage();
 			}
 			int nattacks = at.num_attacks();
 			// Compute swarm attacks:
@@ -276,15 +276,13 @@ report generate_report(TYPE type,
 				nattacks = swarm_min_attacks + (swarm_max_attacks - swarm_min_attacks) * hitp / mhitp;
 
 			}
-			str << nattacks;
+
+			str << span_color(font::weapon_color);
+			str << effdmg << '-' << nattacks;
 			str << ' ' << at.name() << ' ' << at.accuracy_parry_description();
+			str << "</span>\n";
+
 			tooltip << at.name() << "\n";
-			int effdmg;
-			if (u->get_state(unit::STATE_SLOWED)) {
-				effdmg = round_damage(at.damage(),1,2);
-			} else {
-				effdmg = at.damage();
-			}
 			tooltip << effdmg   << ' ' << _n("tooltip^damage", "damage",  effdmg) << ", ";
 			tooltip << nattacks << ' ' << _n("tooltip^attack", "attacks", nattacks);
 
@@ -301,10 +299,11 @@ report generate_report(TYPE type,
 				tooltip << " " << (parry > 0 ? "+" : "") << parry << _("tooltip^% parry");
 			}
 
-			str << "</span>\n";
 			res.add_text(flush(str), flush(tooltip));
 
 			std::string range = gettext(at.range().c_str());
+			std::string lang_type = gettext(at.type().c_str());
+
 			str << span_color(font::weapon_details_color) << "  "
 				<< range << "--" << lang_type << "</span>\n";
 
@@ -342,7 +341,6 @@ report generate_report(TYPE type,
 			}
 
 			res.add_text(flush(str), flush(tooltip));
-
 
 			const std::vector<t_string> &specials = at.special_tooltips();
 
