@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-03-26 15:41+0100\n"
-"PO-Revision-Date: 2010-04-11 09:25+0100\n"
+"PO-Revision-Date: 2010-04-24 17:09+0100\n"
 "Last-Translator: Guigou Guillaume <guillaume.guigou@orange.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
@@ -8921,6 +8921,7 @@ msgid "(debug command)"
 msgstr "(commandes de débogage)"
 
 #: src/menu_events.cpp:2404
+#, fuzzy
 msgid " (network only)"
 msgstr "(réseau uniquement)"
 
@@ -10355,28 +10356,11 @@ msgstr "Aidez-nous à améliorer Wesnoth pour vous !"
 msgid "Enable summary uploads"
 msgstr "Autoriser l'envoi de résumés"
 
-#~ msgid ""
-#~ "You will start the next scenario with the defined minimum starting gold."
-#~ msgid_plural ""
-#~ "You will start the next scenario with the defined minimum starting gold."
-#~ msgstr[0] ""
-#~ "Vous commencerez le prochain scénario avec le minimum de pièce d'or de "
-#~ "départ du scénario."
-#~ msgstr[1] ""
-#~ "Vous commencerez le prochain scénario avec le minimum de pièces d'or "
-#~ "départ du scénario."
+#~ msgid "Multiplayer_AI^Default AI"
+#~ msgstr "Multijoueur IA par défaut"
 
-#~ msgid "Unknown unit type '$type|'"
-#~ msgstr "Type d'unité inconnu : « $type| »"
-
-#~ msgid "Level"
-#~ msgstr "Niveau"
-
-#~ msgid ""
-#~ "Leader position not empty - duplicate side definition for side '$side|' "
-#~ "found."
-#~ msgstr ""
-#~ "La position du chef n'est pas libre - Doublon du camp « $side » trouvé."
+#~ msgid "Multiplayer_AI^RCA AI"
+#~ msgstr "Multijoueur IA RCA"
 
 #~ msgid "--no games open--"
 #~ msgstr "<aucune partie en cours>"
@@ -10402,19 +10386,20 @@ msgstr "Autoriser l'envoi de résumés"
 #~ msgid "Quit"
 #~ msgstr "Quitter"
 
-#, fuzzy
+#~ msgid "Apply Filter"
+#~ msgstr "Appliquer Filtre "
+
 #~ msgid "Invert"
-#~ msgstr "Invertit"
+#~ msgstr "Intervertir"
 
 #~ msgid "Vacant Slots"
 #~ msgstr "Places vacantes"
 
-#, fuzzy
 #~ msgid "Friends in Game"
 #~ msgstr "Amis en jeu"
 
-#~ msgid "Search:"
-#~ msgstr "Rechercher :"
+#~ msgid "Filter:"
+#~ msgstr "Filtre : "
 
 #~ msgid "Skip quickly to the active turn when observing"
 #~ msgstr "Passe rapidement au tour en cours quand on observe"
@@ -10450,6 +10435,32 @@ msgstr "Autoriser l'envoi de résumés"
 
 #~ msgid "Joining this game requires a password."
 #~ msgstr "Se connecter à cette partie requiert un mot de passe."
+
+#~ msgid ""
+#~ "You will start the next scenario with the defined minimum starting gold."
+#~ msgid_plural ""
+#~ "You will start the next scenario with the defined minimum starting gold."
+#~ msgstr[0] ""
+#~ "Vous commencerez le prochain scénario avec le minimum de pièce d'or de "
+#~ "départ du scénario."
+#~ msgstr[1] ""
+#~ "Vous commencerez le prochain scénario avec le minimum de pièces d'or "
+#~ "départ du scénario."
+
+#~ msgid "Unknown unit type '$type|'"
+#~ msgstr "Type d'unité inconnu : « $type| »"
+
+#~ msgid "Level"
+#~ msgstr "Niveau"
+
+#~ msgid ""
+#~ "Leader position not empty - duplicate side definition for side '$side|' "
+#~ "found."
+#~ msgstr ""
+#~ "La position du chef n'est pas libre - Doublon du camp « $side » trouvé."
+
+#~ msgid "Search:"
+#~ msgstr "Rechercher :"
 
 #~ msgid "End scenario"
 #~ msgstr "Fin du scénario"
