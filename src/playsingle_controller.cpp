@@ -101,7 +101,7 @@ void playsingle_controller::init_gui(){
 
 void playsingle_controller::recruit(){
 	if (!browse_)
-		menu_handler_.recruit(browse_, player_number_, mouse_handler_.get_last_hex());
+		menu_handler_.recruit(player_number_, mouse_handler_.get_last_hex());
 }
 
 void playsingle_controller::repeat_recruit(){

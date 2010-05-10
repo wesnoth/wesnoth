@@ -57,7 +57,7 @@ public:
 	void speak();
 	void whisper();
 	void shout();
-	void recruit(bool browse, int side_num, const map_location &last_hex);
+	void recruit(int side_num, const map_location &last_hex);
 	void repeat_recruit(int side_num, const map_location &last_hex);
 	void recall(int side_num, const map_location& last_hex);
 	void undo(int side_num);

@@ -667,7 +667,7 @@ bool menu_handler::has_friends() const
 	return false;
 }
 
-void menu_handler::recruit(bool browse, int side_num, const map_location &last_hex)
+void menu_handler::recruit(int side_num, const map_location &last_hex)
 {
 	team &current_team = teams_[side_num - 1];
 
