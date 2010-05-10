@@ -669,9 +669,6 @@ bool menu_handler::has_friends() const
 
 void menu_handler::recruit(bool browse, int side_num, const map_location &last_hex)
 {
-	if(browse)
-		return;
-
 	team &current_team = teams_[side_num - 1];
 
 	std::vector<const unit_type*> sample_units;
