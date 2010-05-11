@@ -439,8 +439,8 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 					"support will be removed in 1.9.2.\n";
 				if (!utils::string_bool(st.second, true))
 					set_state("unhealable", true);
-			} else if (utils::string_bool(st.second)) {
-				set_state(st.first, true);
+			} else {
+				set_state(st.first, utils::string_bool(st.second));
 			}
 		}
 		cfg_.clear_children("status");
@@ -1106,10 +1106,7 @@ const std::map<std::string,std::string> unit::get_states() const
 	for (std::map<std::string, state_t>::const_iterator i = known_boolean_state_names_.begin(),
 	     i_end = known_boolean_state_names_.end(); i != i_end; ++i)
 	{
-		if (get_state(i->second)) {
-			all_states.insert(make_pair(i->first, "yes" ));
-		}
-
+		all_states[i->first] = get_state(i->second) ? "yes" : "no";
 	}
 	return all_states;
 }
