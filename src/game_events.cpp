@@ -723,7 +723,7 @@ WML_HANDLER_FUNCTION(volume, /*event_info*/, cfg)
 	if(!music.empty()) {
 		vol = preferences::music_volume();
 		rel = atof(music.c_str());
-		if (rel < 100.0) {
+		if (rel >= 0.0 && rel < 100.0) {
 			vol = static_cast<int>(rel*vol/100.0);
 		}
 		sound::set_music_volume(vol);
@@ -732,7 +732,7 @@ WML_HANDLER_FUNCTION(volume, /*event_info*/, cfg)
 	if(!sound.empty()) {
 		vol = preferences::sound_volume();
 		rel = atof(sound.c_str());
-		if (rel < 100.0) {
+		if (rel >= 0.0 && rel < 100.0) {
 			vol = static_cast<int>(rel*vol/100.0);
 		}
 		sound::set_sound_volume(vol);
