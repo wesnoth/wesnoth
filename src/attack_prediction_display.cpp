@@ -214,7 +214,7 @@ void battle_prediction_pane::get_unit_strings(const battle_context_unit_stats& s
 		if(tod_modifier != 0) {
 			left_strings.push_back(_("Time of day"));
 			str.str("");
-			str << (tod_modifier > 0 ? "+" : "") << tod_modifier << "%";
+			str << utils::signed_percent(tod_modifier);
 			right_strings.push_back(str.str());
 		}
 
@@ -224,7 +224,7 @@ void battle_prediction_pane::get_unit_strings(const battle_context_unit_stats& s
 		if(leadership_bonus != 0) {
 			left_strings.push_back(_("Leadership"));
 			str.str("");
-			str << "+" << leadership_bonus << "%";
+			str << utils::signed_percent(leadership_bonus);
 			right_strings.push_back(str.str());
 		}
 
