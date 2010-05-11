@@ -209,6 +209,26 @@ void battle_prediction_pane::get_unit_strings(const battle_context_unit_stats& s
 			}
 		}
 
+		// Time of day modifier.
+		int tod_modifier = combat_modifier(*resources::units, u_loc, u.alignment(), u.is_fearless());
+		if(tod_modifier != 0) {
+			left_strings.push_back(_("Time of day"));
+			str.str("");
+			str << (tod_modifier > 0 ? "+" : "") << tod_modifier << "%";
+			right_strings.push_back(str.str());
+		}
+
+		// Leadership bonus.
+		int leadership_bonus = 0;
+		under_leadership(*resources::units, u_loc, &leadership_bonus);
+		if(leadership_bonus != 0) {
+			left_strings.push_back(_("Leadership"));
+			str.str("");
+			str << "+" << leadership_bonus << "%";
+			right_strings.push_back(str.str());
+		}
+
+
 		// Resistance modifier.
 		int resistance_modifier = opp.damage_from(*weapon, !stats.is_attacker, opp_loc);
 		if(resistance_modifier != 100) {
@@ -228,25 +248,6 @@ void battle_prediction_pane::get_unit_strings(const battle_context_unit_stats& s
 		if(stats.is_slowed) {
 			left_strings.push_back(_("Slowed"));
 			right_strings.push_back("* 0.5");
-		}
-
-		// Time of day modifier.
-		int tod_modifier = combat_modifier(*resources::units, u_loc, u.alignment(), u.is_fearless());
-		if(tod_modifier != 0) {
-			left_strings.push_back(_("Time of day"));
-			str.str("");
-			str << (tod_modifier > 0 ? "+" : "") << tod_modifier << "%";
-			right_strings.push_back(str.str());
-		}
-
-// Leadership bonus.
-int leadership_bonus = 0;
-under_leadership(*resources::units, u_loc, &leadership_bonus);
-		if(leadership_bonus != 0) {
-			left_strings.push_back(_("Leadership"));
-			str.str("");
-			str << "+" << leadership_bonus << "%";
-			right_strings.push_back(str.str());
 		}
 
 		// Total damage.
