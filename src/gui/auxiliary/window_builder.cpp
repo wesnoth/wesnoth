@@ -33,6 +33,7 @@
 #include "gui/auxiliary/window_builder/slider.hpp"
 #include "gui/auxiliary/window_builder/scroll_label.hpp"
 #include "gui/auxiliary/window_builder/minimap.hpp"
+#include "gui/auxiliary/window_builder/button.hpp"
 #endif
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
@@ -111,6 +112,7 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 	TRY(slider);
 	TRY(scroll_label);
 	TRY(minimap);
+	TRY(button);
 #undef TRY
 #endif
 
