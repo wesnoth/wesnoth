@@ -247,7 +247,7 @@ void battle_prediction_pane::get_unit_strings(const battle_context_unit_stats& s
 		// Slowed penalty.
 		if(stats.is_slowed) {
 			left_strings.push_back(_("Slowed"));
-			right_strings.push_back("* 0.5");
+			right_strings.push_back("/ 2");
 		}
 
 		// Total damage.
