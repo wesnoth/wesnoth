@@ -1149,7 +1149,9 @@ WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 		longest_path = std::max(longest_path, paths.back().size());
 		ERR_WML << "Path " << paths.size() - 1 << " has length " << paths.back().size() << '\n';
 
+		units.back().set_location(paths.back().front());
 		disp->place_temporary_unit(&units.back());
+		disp->invalidate(units.back().get_location()); // shouldn't be needed, place_temporary_unit already calls invalidate()
 	}
 
 	ERR_WML << "Units placed, longest path is " << longest_path << " long\n";
@@ -1165,6 +1167,9 @@ WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 			path_step[0] = paths[un][step - 1];
 			path_step[1] = paths[un][step];
 			unit_display::move_unit(path_step, units[un], *resources::teams);
+			units[un].set_location(path_step[1]);
+			disp->invalidate(path_step[0]);
+			disp->invalidate(path_step[1]);
 		}
 	}
 
