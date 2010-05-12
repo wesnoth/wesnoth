@@ -31,61 +31,196 @@
 
 stringfixes = {
 
-# Changes in the wesnoth domain make consistent the use of the American
-# spelling "defense" in key strings.
-#
 "wesnoth" : (
+# Convert makeshift dashes:
+("- - -", "\xe2\x80\x94"),
+("- -", "\xe2\x80\x94"),
+("---", "\xe2\x80\x94"),
+("--", "\xe2\x80\x94"),
+(" -", "\xe2\x80\x94"),
+("- ", "\xe2\x80\x94 "),
+
+# Convert hyphen-minuses that are being used as minus signs
+# to the Unicode minus sign
+("-25", "\xe2\x88\x9225"),
+("-1", "\xe2\x88\x921"),
 ),
 
 "wesnoth-aoi" : (
+# Convert makeshift dashes:
+("- - -", "\xe2\x80\x94"),
+("- -", "\xe2\x80\x94"),
+("---", "\xe2\x80\x94"),
+("--", "\xe2\x80\x94"),
+(" -", "\xe2\x80\x94"),
+("- ", "\xe2\x80\x94 "),
 ),
 
 "wesnoth-did" : (
+# Convert makeshift dashes:
+("- - -", "\xe2\x80\x94"),
+("- -", "\xe2\x80\x94"),
+("---", "\xe2\x80\x94"),
+("--", "\xe2\x80\x94"),
+(" -", "\xe2\x80\x94"),
+("- ", "\xe2\x80\x94 "),
 ),
 
 "wesnoth-dm" : (
+# Convert makeshift dashes:
+("- - -", "\xe2\x80\x94"),
+("- -", "\xe2\x80\x94"),
+("---", "\xe2\x80\x94"),
+("--", "\xe2\x80\x94"),
+(" -", "\xe2\x80\x94"),
+("- ", "\xe2\x80\x94 "),
+),
+
+"wesnoth-dw" : (
+# Convert makeshift dashes:
+("- - -", "\xe2\x80\x94"),
+("- -", "\xe2\x80\x94"),
+("---", "\xe2\x80\x94"),
+("--", "\xe2\x80\x94"),
+(" -", "\xe2\x80\x94"),
+("- ", "\xe2\x80\x94 "),
 ),
 
 "wesnoth-ei" : (
+# Convert makeshift dashes:
+("- - -", "\xe2\x80\x94"),
+("- -", "\xe2\x80\x94"),
+("---", "\xe2\x80\x94"),
+("--", "\xe2\x80\x94"),
+(" -", "\xe2\x80\x94"),
+("- ", "\xe2\x80\x94 "),
+
+
+# aint -> ain't
+("aint", "ain't"),
 ),
 
 "wesnoth-httt" : (
+# Convert makeshift dashes:
+("- - -", "\xe2\x80\x94"),
+("- -", "\xe2\x80\x94"),
+("---", "\xe2\x80\x94"),
+("--", "\xe2\x80\x94"),
+(" -", "\xe2\x80\x94"),
+("- ", "\xe2\x80\x94 "),
 ),
 
 "wesnoth-low" : (
+# Convert makeshift dashes:
+("- - -", "\xe2\x80\x94"),
+("- -", "\xe2\x80\x94"),
+("---", "\xe2\x80\x94"),
+("--", "\xe2\x80\x94"),
+(" -", "\xe2\x80\x94"),
+("- ", "\xe2\x80\x94 "),
 ),
 
 "wesnoth-manual" : (
 ),
 
 "wesnoth-nr" : (
+# Convert makeshift dashes:
+("- - -", "\xe2\x80\x94"),
+("- -", "\xe2\x80\x94"),
+("---", "\xe2\x80\x94"),
+("--", "\xe2\x80\x94"),
+(" -", "\xe2\x80\x94"),
+("- ", "\xe2\x80\x94 "),
 ),
 
 "wesnoth-thot" : (
+# Convert makeshift dashes:
+("- - -", "\xe2\x80\x94"),
+("- -", "\xe2\x80\x94"),
+("---", "\xe2\x80\x94"),
+("--", "\xe2\x80\x94"),
+(" -", "\xe2\x80\x94"),
+("- ", "\xe2\x80\x94 "),
 ),
 
 "wesnoth-trow" : (
+# Convert makeshift dashes:
+("- - -", "\xe2\x80\x94"),
+("- -", "\xe2\x80\x94"),
+("---", "\xe2\x80\x94"),
+("--", "\xe2\x80\x94"),
+(" -", "\xe2\x80\x94"),
+("- ", "\xe2\x80\x94 "),
 ),
 
 "wesnoth-tsg" : (
+# Convert makeshift dashes:
+("- - -", "\xe2\x80\x94"),
+("- -", "\xe2\x80\x94"),
+("---", "\xe2\x80\x94"),
+("--", "\xe2\x80\x94"),
+(" -", "\xe2\x80\x94"),
+("- ", "\xe2\x80\x94 "),
 ),
 
 "wesnoth-sof" : (
+# Convert makeshift dashes:
+("- - -", "\xe2\x80\x94"),
+("- -", "\xe2\x80\x94"),
+("---", "\xe2\x80\x94"),
+("--", "\xe2\x80\x94"),
+(" -", "\xe2\x80\x94"),
+("- ", "\xe2\x80\x94 "),
 ),
 
 "wesnoth-sotbe" :(
+# Convert makeshift dashes:
+("- - -", "\xe2\x80\x94"),
+("- -", "\xe2\x80\x94"),
+("---", "\xe2\x80\x94"),
+("--", "\xe2\x80\x94"),
+(" -", "\xe2\x80\x94"),
+("- ", "\xe2\x80\x94 "),
 ),
 
 "wesnoth-tb" : (
+# Convert makeshift dashes:
+("- - -", "\xe2\x80\x94"),
+("- -", "\xe2\x80\x94"),
+("---", "\xe2\x80\x94"),
+("--", "\xe2\x80\x94"),
+(" -", "\xe2\x80\x94"),
+("- ", "\xe2\x80\x94 "),
 ),
 
 "wesnoth-tutorial" : (
+# Convert makeshift dashes:
+("- - -", "\xe2\x80\x94"),
+("- -", "\xe2\x80\x94"),
+("---", "\xe2\x80\x94"),
+("--", "\xe2\x80\x94"),
+(" -", "\xe2\x80\x94"),
+("- ", "\xe2\x80\x94 "),
 ),
 
 "wesnoth-units" : (
+# Convert makeshift dashes:
+("- - -", "\xe2\x80\x94"),
+("- -", "\xe2\x80\x94"),
+("---", "\xe2\x80\x94"),
+("--", "\xe2\x80\x94"),
+(" -", "\xe2\x80\x94"),
+("- ", "\xe2\x80\x94 "),
 ),
 
 "wesnoth-utbs" : (
+# Convert makeshift dashes:
+("- - -", "\xe2\x80\x94"),
+("- -", "\xe2\x80\x94"),
+("---", "\xe2\x80\x94"),
+("--", "\xe2\x80\x94"),
+(" -", "\xe2\x80\x94"),
+("- ", "\xe2\x80\x94 "),
 ),
 
 "1.8-announcement" : (
