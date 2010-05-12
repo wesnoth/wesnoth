@@ -1198,8 +1198,10 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 		var = value;
 	}
 
-	const t_string format = cfg["format"];	// Deprecated, use value
+	const t_string format = cfg["format"];
 	if(format.empty() == false) {
+		ERR_WML << "Usage of 'format' is deprecated, use 'rand' instead, "
+			"support will be removed in 1.9.2.\n";
 		var = format;
 	}
 
