@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-03-26 15:41+0100\n"
-"PO-Revision-Date: 2010-04-25 20:55+0100\n"
+"PO-Revision-Date: 2010-05-11 23:36+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -7856,11 +7856,11 @@ msgstr "Varovanie:"
 
 #: src/game_events.cpp:210
 msgid "Debug: "
-msgstr "Ladenie:"
+msgstr "Ladenie: "
 
 #: src/game_events.cpp:213
 msgid "Info: "
-msgstr "Informácia:"
+msgstr "Informácia: "
 
 #: src/game_events.cpp:3268
 msgid "[unit_worth]'s filter didn't match any units!"
@@ -8631,7 +8631,7 @@ msgstr "Umlčať/umožniť hovoriť všetkým divákom. (prepína)"
 
 #: src/menu_events.cpp:2253
 msgid "Send a message to the server admins currently online"
-msgstr "Pošli správu práve pripojeným správcom servera"
+msgstr "Pošle správu práve pripojeným správcom servera"
 
 #: src/menu_events.cpp:2255
 msgid "<message>"
@@ -8663,11 +8663,11 @@ msgstr "Prepne zapisovaciu doménu na inú úroveň závažnosti."
 
 #: src/menu_events.cpp:2266
 msgid "Add a nick to your ignores list."
-msgstr "Pridaj hráča do svojho zoznamu ignorovaných."
+msgstr "Pridá hráča do svojho zoznamu ignorovaných."
 
 #: src/menu_events.cpp:2268
 msgid "Add a nick to your friends list."
-msgstr "Pridaj hráča do svojho zoznamu priateľov."
+msgstr "Pridá hráča do svojho zoznamu priateľov."
 
 #: src/menu_events.cpp:2270
 msgid "Remove a nick from your ignores or friends list."
@@ -8675,19 +8675,20 @@ msgstr "Odstráň hráča zo svojho zoznamu ignorovaných alebo priateľov."
 
 #: src/menu_events.cpp:2272
 msgid "Show your ignores and friends list."
-msgstr "Zobraz svoj zoznam ignorovaných a priateľov."
+msgstr "Zobrazí tvoj zoznam ignorovaných a priateľov."
 
 #: src/menu_events.cpp:2275
 msgid "Display version information."
-msgstr "Zobraziť informácie o verzii."
+msgstr "Zobrazí informácie o verzii."
 
 #: src/menu_events.cpp:2277
 msgid "<password> <email (optional)>"
 msgstr "<heslo> <email (nepovinné)>"
 
+# bodka má byť, podľa kontextu
 #: src/menu_events.cpp:2277
 msgid "Register your nick"
-msgstr "Zaregistruj si prezývku"
+msgstr "Zaregistruje tvoju prezývku."
 
 #: src/menu_events.cpp:2279
 msgid "Drop your nick."
@@ -8705,12 +8706,12 @@ msgstr "<detail> <hodnota>"
 
 #: src/menu_events.cpp:2284
 msgid "Request information about a nick."
-msgstr "Vyžiadaj informácie o prezývke."
+msgstr "Vyžiada informácie o prezývke."
 
 #: src/menu_events.cpp:2286
 msgid "Request a list of details you can set for your registered nick."
 msgstr ""
-"Vyžiadaj zoznam údajov, ktoré je možné nastaviť pre zaregistrovanú prezývku."
+"Vyžiada zoznam údajov, ktoré je možné nastaviť pre zaregistrovanú prezývku."
 
 #: src/menu_events.cpp:2288 src/menu_events.cpp:2291 src/menu_events.cpp:2293
 msgid "<room>"
@@ -8722,7 +8723,7 @@ msgstr "Vstúpiť do miestnosti."
 
 #: src/menu_events.cpp:2291
 msgid "Part a room."
-msgstr "Opusti miestnosť"
+msgstr "Opustiť miestnosť."
 
 #: src/menu_events.cpp:2293
 msgid "List room members."
@@ -8730,7 +8731,7 @@ msgstr "Zoznam členov v miestnosti."
 
 #: src/menu_events.cpp:2295
 msgid "List available rooms."
-msgstr "Zobraz dostupné miestnosti."
+msgstr "Zobrazí dostupné miestnosti."
 
 #: src/menu_events.cpp:2297
 msgid "<room> <msg>"
@@ -8769,11 +8770,11 @@ msgstr " (len pri autentifikácii)"
 
 #: src/menu_events.cpp:2429
 msgid "Refresh gui."
-msgstr "Prekresli prostredie"
+msgstr "Prekreslí grafické prostredie."
 
 #: src/menu_events.cpp:2431
 msgid "Switch a side to/from AI control."
-msgstr "Vypni/zapni ovládanie strany počítačom."
+msgstr "Vypne/zapne ovládanie strany počítačom."
 
 #: src/menu_events.cpp:2431
 msgid "do not translate the on/off^[<side> [on/off]]"
@@ -8781,11 +8782,11 @@ msgstr "[<strana> [on/off]]"
 
 #: src/menu_events.cpp:2434
 msgid "<side> <nick>"
-msgstr "<side> <nick>"
+msgstr "<strana> <prezývka>"
 
 #: src/menu_events.cpp:2434
 msgid "Assign control of a side to a different player or observer."
-msgstr "Prideľ kontrolu nad stranou inému hráčovi alebo divákovi."
+msgstr "Pridelí kontrolu nad stranou inému hráčovi alebo divákovi."
 
 #: src/menu_events.cpp:2436
 msgid "Clear chat history."
@@ -8793,19 +8794,19 @@ msgstr "Vymaže všetky správy."
 
 #: src/menu_events.cpp:2438
 msgid "Visualize the screen refresh procedure."
-msgstr "Zviditeľniť proces prekresľovania obrazovky."
+msgstr "Zviditeľní proces prekresľovania obrazovky."
 
 #: src/menu_events.cpp:2439
 msgid "Show fps."
-msgstr "Ukáž počet snímok za sekundu."
+msgstr "Zobrazí počet snímok za sekundu."
 
 #: src/menu_events.cpp:2441
 msgid "Save game."
-msgstr "Ulož hru."
+msgstr "Uložiť hru."
 
 #: src/menu_events.cpp:2443
 msgid "Quit game."
-msgstr "Vypni hru."
+msgstr "Vypnúť hru."
 
 #: src/menu_events.cpp:2447
 msgid "Save and quit."
@@ -8833,7 +8834,7 @@ msgstr "Vyber ďalšiu scénu"
 
 #: src/menu_events.cpp:2460
 msgid "Turn debug mode on."
-msgstr "Zapni režim ladenia."
+msgstr "Zapnúť režim ladenia."
 
 #: src/menu_events.cpp:2462
 msgid "Turn debug mode off."
@@ -8841,27 +8842,29 @@ msgstr "Vypnúť režim ladenia."
 
 #: src/menu_events.cpp:2464
 msgid "Execute a Lua statement."
-msgstr "Vykonaj príkaz v jazyku Lua."
+msgstr "Vykonať príkaz v jazyku Lua."
 
 #: src/menu_events.cpp:2466
 msgid "<command>[;<command>...]"
 msgstr "<príkaz>[;<príkaz>...]"
 
+# bodka má byť, podľa kontextu
 #: src/menu_events.cpp:2466
 msgid "Set the command used by the custom command hotkey"
-msgstr "Zadaj príkaz použitý voliteľnou príkazovou klávesou"
+msgstr "Nastaví príkaz použitý voliteľnou príkazovou klávesou."
 
 #: src/menu_events.cpp:2468
 msgid "Launch the gamestate inspector"
-msgstr "Spusti prieskumníka stavu hry"
+msgstr "Spustiť prieskumníka stavu hry"
 
 #: src/menu_events.cpp:2470
 msgid "<name>[=<command>]"
 msgstr "<meno>[=<príkaz>]"
 
+# bodka má byť, podľa kontextu
 #: src/menu_events.cpp:2470
 msgid "Set or show alias to a command"
-msgstr "Nastaviť alebo zobraziť alternatívny názov (alias) pre príkaz"
+msgstr "Nastaviť alebo zobraziť alternatívny názov (alias) pre príkaz."
 
 #: src/menu_events.cpp:2472
 msgid "<var>=<value>"
@@ -8886,11 +8889,11 @@ msgstr ""
 
 #: src/menu_events.cpp:2483
 msgid "Discover all units in help."
-msgstr "Zobraz v návode všetky jednotky."
+msgstr "Zobrazí v návode všetky jednotky."
 
 #: src/menu_events.cpp:2488
 msgid "Create a unit."
-msgstr "Vytvor jednotku."
+msgstr "Vytvorí jednotku."
 
 #: src/menu_events.cpp:2490
 msgid "Toggle fog for the current player."
@@ -8943,7 +8946,7 @@ msgstr "šepkanie: $sender"
 #: src/menu_events.cpp:2738 src/menu_events.cpp:2757
 #: src/multiplayer_connect.cpp:699
 msgid "(empty)"
-msgstr "(sprázdne)"
+msgstr "(prázdne)"
 
 #: src/menu_events.cpp:2738 src/menu_events.cpp:2744 src/menu_events.cpp:2794
 msgid "ignores list"
@@ -9570,7 +9573,7 @@ msgstr "Automatické uloženie"
 
 #: src/play_controller.cpp:955
 msgid "Back to turn "
-msgstr "Späť na ťah"
+msgstr "Späť na ťah "
 
 #: src/playcampaign.cpp:133 src/playcampaign.cpp:171
 msgid "Defeat"
