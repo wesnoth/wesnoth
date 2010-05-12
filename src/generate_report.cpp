@@ -107,9 +107,19 @@ report generate_report(TYPE type,
 		image::locator flag_icon_img(flag_icon, mods);
 		return report("", flag_icon_img, teams[u->side() - 1].current_player());
 	}
-	case UNIT_LEVEL:
+	case UNIT_LEVEL: {
 		str << u->level();
-		break;
+		std::ostringstream tooltip;
+		tooltip << u->type_name() << "\n";
+		const std::vector<std::string>& adv_to = u->advances_to();
+		if(!adv_to.empty()) {
+			tooltip << _("Advances to:") << "\n";
+			foreach (const std::string& s, adv_to){
+				tooltip << "\t" << s << "\n";
+			}
+		}
+		return report(str.str(), "", tooltip.str());
+	}
 	case UNIT_AMLA: {
 	  report res;
 		const std::vector<std::pair<std::string,std::string> > &amla_icons=u->amla_icons();
@@ -204,7 +214,7 @@ report generate_report(TYPE type,
 			tooltip << (*line);
 		}
 
-		return report(str.str(), "", tooltip.str());
+
 	}
 	case UNIT_XP: {
 		std::ostringstream tooltip;
