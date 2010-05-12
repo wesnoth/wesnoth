@@ -214,7 +214,7 @@ report generate_report(TYPE type,
 			tooltip << (*line);
 		}
 
-
+		return report(str.str(), "", tooltip.str());
 	}
 	case UNIT_XP: {
 		std::ostringstream tooltip;
