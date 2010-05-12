@@ -279,7 +279,8 @@ report generate_report(TYPE type,
 			int damage_divisor = slowed ? 20000 : 10000;
 			int damage = round_damage(base_damage, damage_multiplier, damage_divisor);
 			
-			int nattacks = at.num_attacks();
+			int base_nattacks = at.num_attacks();
+			int nattacks = base_nattacks;
 			// Compute swarm attacks:
 			unit_ability_list swarm = at.get_specials("swarm");
 			if(!swarm.empty()) {
@@ -289,7 +290,6 @@ report generate_report(TYPE type,
 				int mhitp = u->max_hitpoints();
 
 				nattacks = swarm_min_attacks + (swarm_max_attacks - swarm_min_attacks) * hitp / mhitp;
-
 			}
 
 			str << span_color(font::weapon_color);
@@ -316,6 +316,11 @@ report generate_report(TYPE type,
 			}
 
 			tooltip << _("Attacks: ") << nattacks << "\n";
+			if(nattacks != base_nattacks){
+				tooltip << "\t" << _("Base attacks: ") << base_nattacks << "\n";
+				int hp_ratio = u->hitpoints() * 100 / u->max_hitpoints();
+				tooltip << "\t" << _("Swarm: ") << "* "<< hp_ratio <<"%" << "\n";
+			}
 
 			int accuracy = at.accuracy();
 			if(accuracy) {
