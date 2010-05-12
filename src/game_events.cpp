@@ -1126,6 +1126,56 @@ WML_HANDLER_FUNCTION(move_unit_fake, /*event_info*/, cfg)
 		unit_display::move_unit(path, *dummy_unit, *resources::teams);
 }
 
+WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
+{
+	ERR_WML << "Processing [move_units_fake]\n";
+
+	const vconfig::child_list unit_cfgs = cfg.get_children("fake_unit");
+	size_t num_units = unit_cfgs.size();
+	boost::ptr_vector<unit> units(num_units);
+	std::vector<std::vector<map_location> > paths;
+	paths.reserve(num_units);
+	game_display* disp = game_display::get_singleton();
+
+	ERR_WML << "Moving " << num_units << " units\n";
+
+	size_t longest_path = 0;
+
+	foreach(const vconfig& config, unit_cfgs) {
+		const std::vector<std::string> xvals = utils::split(config["x"]);
+		const std::vector<std::string> yvals = utils::split(config["y"]);
+		units.push_back(create_fake_unit(config));
+		paths.push_back(fake_unit_path(units.back(), xvals, yvals));
+		longest_path = std::max(longest_path, paths.back().size());
+		ERR_WML << "Path " << paths.size() - 1 << " has length " << paths.back().size() << '\n';
+
+		disp->place_temporary_unit(&units.back());
+	}
+
+	ERR_WML << "Units placed, longest path is " << longest_path << " long\n";
+
+	std::vector<map_location> path_step(2);
+	path_step.resize(2);
+	for(size_t step = 1; step < longest_path; ++step) {
+		ERR_WML << "Doing step " << step << "...\n";
+		for(size_t un = 0; un < num_units; ++un) {
+			if(step >= paths[un].size())
+				continue;
+			ERR_WML << "Moving unit " << un << ", doing step " << step << '\n';
+			path_step[0] = paths[un][step - 1];
+			path_step[1] = paths[un][step];
+			unit_display::move_unit(path_step, units[un], *resources::teams);
+		}
+	}
+
+	ERR_WML << "Units moved\n";
+
+	foreach(unit& u, units)
+		disp->remove_temporary_unit(&u);
+
+	ERR_WML << "Units removed\n";
+}
+
 // Helper function(s) for [set_variable]
 static bool isint(const std::string &var) {
 	return var.find('.') == std::string::npos;
