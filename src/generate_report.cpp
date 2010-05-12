@@ -257,13 +257,28 @@ report generate_report(TYPE type,
 		foreach (const attack_type &at, u->attacks())
 		{
 			at.set_specials_context(displayed_unit_hex, map_location(), *u);
-	
-			int effdmg = 0;
-			if (u->get_state(unit::STATE_SLOWED)) {
-				effdmg = round_damage(at.damage(),1,2);
-			} else {
-				effdmg = at.damage();
-			}
+
+			int base_damage = at.damage();
+			
+			int damage_multiplier = 100;
+
+			// Time of day bonus.
+			int tod_bonus = combat_modifier(units, displayed_unit_hex, u->alignment(), u->is_fearless());
+			damage_multiplier += tod_bonus;
+
+			// Leadership bonus.
+			int leader_bonus = 0;
+			if (under_leadership(units, displayed_unit_hex, &leader_bonus).valid())
+				damage_multiplier += leader_bonus;
+
+			// assume no specific resistance
+			damage_multiplier *= 100;
+
+			bool slowed = u->get_state(unit::STATE_SLOWED);
+
+			int damage_divisor = slowed ? 20000 : 10000;
+			int damage = round_damage(base_damage, damage_multiplier, damage_divisor);
+			
 			int nattacks = at.num_attacks();
 			// Compute swarm attacks:
 			unit_ability_list swarm = at.get_specials("swarm");
@@ -278,25 +293,38 @@ report generate_report(TYPE type,
 			}
 
 			str << span_color(font::weapon_color);
-			str << effdmg << '-' << nattacks;
+			str << damage << '-' << nattacks;
 			str << ' ' << at.name() << ' ' << at.accuracy_parry_description();
 			str << "</span>\n";
 
 			tooltip << at.name() << "\n";
-			tooltip << effdmg   << ' ' << _n("tooltip^damage", "damage",  effdmg) << ", ";
-			tooltip << nattacks << ' ' << _n("tooltip^attack", "attacks", nattacks);
+			tooltip << _("Damage: ") << damage << "\n";
+			// Damage calculations details:
+			if(tod_bonus || leader_bonus || slowed) {
+				tooltip << "\t" << _("Base damage: ") << base_damage << "\n";
+				if (tod_bonus) {
+					tooltip << "\t" << _("Time of day: ")
+						<< utils::signed_percent(tod_bonus) << "\n";
+				}
+				if (leader_bonus) {
+					tooltip << "\t" << _("Leadership: ")
+						<< utils::signed_percent(leader_bonus) << "\n";
+				}
+				if(slowed) {
+					tooltip << "\t" << _("Slowed: ") << "/ 2" << "\n";
+				}
+			}
+
+			tooltip << _("Attacks: ") << nattacks << "\n";
 
 			int accuracy = at.accuracy();
 			if(accuracy) {
-				// Help xgettext with a directive to recognise the string as a non C printf-like string
-				// xgettext:no-c-format
-				tooltip << " " << (accuracy > 0 ? "+" : "") << accuracy << _("tooltip^% accuracy");
+				tooltip << _("Accuracy :") << accuracy << "\n";
 			}
 
 			int parry = at.parry();
 			if(parry) {
-				// xgettext:no-c-format
-				tooltip << " " << (parry > 0 ? "+" : "") << parry << _("tooltip^% parry");
+				tooltip << _("Parry :") << parry << "\n";
 			}
 
 			res.add_text(flush(str), flush(tooltip));
