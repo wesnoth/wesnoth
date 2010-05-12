@@ -48,6 +48,7 @@
 
 #include <boost/scoped_ptr.hpp>
 #include <boost/lexical_cast.hpp>
+#include <boost/ptr_container/ptr_vector.hpp>
 #include <algorithm>
 #include <iomanip>
 #include <iostream>
@@ -1021,89 +1022,108 @@ WML_HANDLER_FUNCTION(store_turns, /*event_info*/, cfg)
 	resources::state_of_game->get_variable(var_name) = lexical_cast_default<std::string>(turns);
 }
 
+namespace {
+	std::auto_ptr<unit> create_fake_unit(const vconfig& cfg)
+	{
+		std::string type = cfg["type"];
+		std::string side = cfg["side"];
+		std::string variation = cfg["variation"];
+
+		size_t side_num = lexical_cast_default<int>(side,1)-1;
+		if (side_num >= resources::teams->size()) side_num = 0;
+
+		unit_race::GENDER gender = string_gender(cfg["gender"]);
+		const unit_type *ut = unit_types.find(type);
+		if (!ut) return std::auto_ptr<unit>();
+		std::auto_ptr<unit> fake_unit(new unit(ut, side_num + 1, false, gender));
+
+		if(!variation.empty()) {
+			config mod;
+			config &effect = mod.add_child("effect");
+			effect["apply_to"] = "variation";
+			effect["name"] = variation;
+			fake_unit->add_modification("variation",mod);
+		}
+		return fake_unit;
+	}
+	std::vector<map_location> fake_unit_path(const unit& fake_unit, const std::vector<std::string>& xvals, const std::vector<std::string>& yvals)
+	{
+		gamemap *game_map = resources::game_map;
+		std::vector<map_location> path;
+		map_location src;
+		map_location dst;
+		for(size_t i = 0; i != std::min(xvals.size(),yvals.size()); ++i) {
+			if(i==0){
+				src.x = atoi(xvals[i].c_str())-1;
+				src.y = atoi(yvals[i].c_str())-1;
+				if (!game_map->on_board(src)) {
+					ERR_CF << "invalid move_unit_fake source: " << src << '\n';
+					break;
+				}
+				path.push_back(src);
+				continue;
+			}
+			pathfind::shortest_path_calculator calc(fake_unit,
+					(*resources::teams)[fake_unit.side()-1],
+					*resources::units,
+					*resources::teams,
+					*game_map);
+
+			dst.x = atoi(xvals[i].c_str())-1;
+			dst.y = atoi(yvals[i].c_str())-1;
+			if (!game_map->on_board(dst)) {
+				ERR_CF << "invalid move_unit_fake destination: " << dst << '\n';
+				break;
+			}
+
+			pathfind::plain_route route = pathfind::a_star_search(src, dst, 10000, &calc,
+				game_map->w(), game_map->h());
+
+			if (route.steps.size() == 0) {
+				WRN_NG << "Could not find move_unit_fake route from " << src << " to " << dst << ": ignoring complexities\n";
+				pathfind::emergency_path_calculator calc(fake_unit, *game_map);
+
+				route = pathfind::a_star_search(src, dst, 10000, &calc,
+						game_map->w(), game_map->h());
+				if(route.steps.size() == 0) {
+					// This would occur when trying to do a MUF of a unit
+					// over locations which are unreachable to it (infinite movement
+					// costs). This really cannot fail.
+					WRN_NG << "Could not find move_unit_fake route from " << src << " to " << dst << ": ignoring terrain\n";
+					pathfind::dummy_path_calculator calc(fake_unit, *game_map);
+					route = a_star_search(src, dst, 10000, &calc, game_map->w(), game_map->h());
+					assert(route.steps.size() > 0);
+				}
+			}
+			// we add this section to the end of the complete path
+			// skipping section's head because already included
+			// by the previous iteration
+			path.insert(path.end(),
+					route.steps.begin()+1, route.steps.end());
+
+			src = dst;
+		}
+		return path;
+	}
+}
+
 // Moving a 'unit' - i.e. a dummy unit
 // that is just moving for the visual effect
 WML_HANDLER_FUNCTION(move_unit_fake, /*event_info*/, cfg)
 {
-	gamemap *game_map = resources::game_map;
+	std::auto_ptr<unit> dummy_unit = create_fake_unit(cfg);
+	if(!dummy_unit.get())
+		return;
 
-	std::string type = cfg["type"];
-	std::string side = cfg["side"];
-	std::string x = cfg["x"];
-	std::string y = cfg["y"];
-	std::string variation = cfg["variation"];
-
-	size_t side_num = lexical_cast_default<int>(side,1)-1;
-	if (side_num >= resources::teams->size()) side_num = 0;
-
-	unit_race::GENDER gender = string_gender(cfg["gender"]);
-	const unit_type *ut = unit_types.find(type);
-	if (!ut) return;
-	unit dummy_unit(ut, side_num + 1, false, gender);
-
-	config mod;
-	config &effect = mod.add_child("effect");
-	effect["apply_to"] = "variation";
-	effect["name"] = variation;
-	dummy_unit.add_modification("variation",mod);
+	const std::string x = cfg["x"];
+	const std::string y = cfg["y"];
 
 	const std::vector<std::string> xvals = utils::split(x);
 	const std::vector<std::string> yvals = utils::split(y);
-	std::vector<map_location> path;
-	map_location src;
-	map_location dst;
-	for(size_t i = 0; i != std::min(xvals.size(),yvals.size()); ++i) {
-		if(i==0){
-			src.x = atoi(xvals[i].c_str())-1;
-			src.y = atoi(yvals[i].c_str())-1;
-			if (!game_map->on_board(src)) {
-				ERR_CF << "invalid move_unit_fake source: " << src << '\n';
-				break;
-			}
-			path.push_back(src);
-			continue;
-		}
-		pathfind::shortest_path_calculator calc(dummy_unit,
-				(*resources::teams)[side_num],
-				*resources::units,
-				*resources::teams,
-				*game_map);
 
-		dst.x = atoi(xvals[i].c_str())-1;
-		dst.y = atoi(yvals[i].c_str())-1;
-		if (!game_map->on_board(dst)) {
-			ERR_CF << "invalid move_unit_fake destination: " << dst << '\n';
-			break;
-		}
-
-		pathfind::plain_route route = pathfind::a_star_search(src, dst, 10000, &calc,
-			game_map->w(), game_map->h());
-
-		if (route.steps.size() == 0) {
-			WRN_NG << "Could not find move_unit_fake route from " << src << " to " << dst << ": ignoring complexities\n";
-			pathfind::emergency_path_calculator calc(dummy_unit, *game_map);
-
-			route = pathfind::a_star_search(src, dst, 10000, &calc,
-					game_map->w(), game_map->h());
-			if(route.steps.size() == 0) {
-				// This would occur when trying to do a MUF of a unit
-				// over locations which are unreachable to it (infinite movement
-				// costs). This really cannot fail.
-				WRN_NG << "Could not find move_unit_fake route from " << src << " to " << dst << ": ignoring terrain\n";
-				pathfind::dummy_path_calculator calc(dummy_unit, *game_map);
-				route = a_star_search(src, dst, 10000, &calc, game_map->w(), game_map->h());
-				assert(route.steps.size() > 0);
-			}
-		}
-		// we add this section to the end of the complete path
-		// skipping section's head because already included
-		// by the previous iteration
-		path.insert(path.end(),
-				route.steps.begin()+1, route.steps.end());
-
-		src = dst;
-	}
-	if (!path.empty()) unit_display::move_unit(path, dummy_unit, *resources::teams);
+	const std::vector<map_location>& path = fake_unit_path(*dummy_unit, xvals, yvals);
+	if (!path.empty())
+		unit_display::move_unit(path, *dummy_unit, *resources::teams);
 }
 
 // Helper function(s) for [set_variable]
