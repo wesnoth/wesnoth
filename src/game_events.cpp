@@ -1023,89 +1023,92 @@ WML_HANDLER_FUNCTION(store_turns, /*event_info*/, cfg)
 }
 
 namespace {
-	std::auto_ptr<unit> create_fake_unit(const vconfig& cfg)
-	{
-		std::string type = cfg["type"];
-		std::string side = cfg["side"];
-		std::string variation = cfg["variation"];
 
-		size_t side_num = lexical_cast_default<int>(side,1)-1;
-		if (side_num >= resources::teams->size()) side_num = 0;
+std::auto_ptr<unit> create_fake_unit(const vconfig& cfg)
+{
+	std::string type = cfg["type"];
+	std::string side = cfg["side"];
+	std::string variation = cfg["variation"];
 
-		unit_race::GENDER gender = string_gender(cfg["gender"]);
-		const unit_type *ut = unit_types.find(type);
-		if (!ut) return std::auto_ptr<unit>();
-		std::auto_ptr<unit> fake_unit(new unit(ut, side_num + 1, false, gender));
+	size_t side_num = lexical_cast_default<int>(side,1)-1;
+	if (side_num >= resources::teams->size()) side_num = 0;
 
-		if(!variation.empty()) {
-			config mod;
-			config &effect = mod.add_child("effect");
-			effect["apply_to"] = "variation";
-			effect["name"] = variation;
-			fake_unit->add_modification("variation",mod);
-		}
-		return fake_unit;
+	unit_race::GENDER gender = string_gender(cfg["gender"]);
+	const unit_type *ut = unit_types.find(type);
+	if (!ut) return std::auto_ptr<unit>();
+	std::auto_ptr<unit> fake_unit(new unit(ut, side_num + 1, false, gender));
+
+	if(!variation.empty()) {
+		config mod;
+		config &effect = mod.add_child("effect");
+		effect["apply_to"] = "variation";
+		effect["name"] = variation;
+		fake_unit->add_modification("variation",mod);
 	}
-	std::vector<map_location> fake_unit_path(const unit& fake_unit, const std::vector<std::string>& xvals, const std::vector<std::string>& yvals)
-	{
-		gamemap *game_map = resources::game_map;
-		std::vector<map_location> path;
-		map_location src;
-		map_location dst;
-		for(size_t i = 0; i != std::min(xvals.size(),yvals.size()); ++i) {
-			if(i==0){
-				src.x = atoi(xvals[i].c_str())-1;
-				src.y = atoi(yvals[i].c_str())-1;
-				if (!game_map->on_board(src)) {
-					ERR_CF << "invalid move_unit_fake source: " << src << '\n';
-					break;
-				}
-				path.push_back(src);
-				continue;
-			}
-			pathfind::shortest_path_calculator calc(fake_unit,
-					(*resources::teams)[fake_unit.side()-1],
-					*resources::units,
-					*resources::teams,
-					*game_map);
+	return fake_unit;
+}
 
-			dst.x = atoi(xvals[i].c_str())-1;
-			dst.y = atoi(yvals[i].c_str())-1;
-			if (!game_map->on_board(dst)) {
-				ERR_CF << "invalid move_unit_fake destination: " << dst << '\n';
+std::vector<map_location> fake_unit_path(const unit& fake_unit, const std::vector<std::string>& xvals, const std::vector<std::string>& yvals)
+{
+	gamemap *game_map = resources::game_map;
+	std::vector<map_location> path;
+	map_location src;
+	map_location dst;
+	for(size_t i = 0; i != std::min(xvals.size(),yvals.size()); ++i) {
+		if(i==0){
+			src.x = atoi(xvals[i].c_str())-1;
+			src.y = atoi(yvals[i].c_str())-1;
+			if (!game_map->on_board(src)) {
+				ERR_CF << "invalid move_unit_fake source: " << src << '\n';
 				break;
 			}
-
-			pathfind::plain_route route = pathfind::a_star_search(src, dst, 10000, &calc,
-				game_map->w(), game_map->h());
-
-			if (route.steps.size() == 0) {
-				WRN_NG << "Could not find move_unit_fake route from " << src << " to " << dst << ": ignoring complexities\n";
-				pathfind::emergency_path_calculator calc(fake_unit, *game_map);
-
-				route = pathfind::a_star_search(src, dst, 10000, &calc,
-						game_map->w(), game_map->h());
-				if(route.steps.size() == 0) {
-					// This would occur when trying to do a MUF of a unit
-					// over locations which are unreachable to it (infinite movement
-					// costs). This really cannot fail.
-					WRN_NG << "Could not find move_unit_fake route from " << src << " to " << dst << ": ignoring terrain\n";
-					pathfind::dummy_path_calculator calc(fake_unit, *game_map);
-					route = a_star_search(src, dst, 10000, &calc, game_map->w(), game_map->h());
-					assert(route.steps.size() > 0);
-				}
-			}
-			// we add this section to the end of the complete path
-			// skipping section's head because already included
-			// by the previous iteration
-			path.insert(path.end(),
-					route.steps.begin()+1, route.steps.end());
-
-			src = dst;
+			path.push_back(src);
+			continue;
 		}
-		return path;
+		pathfind::shortest_path_calculator calc(fake_unit,
+				(*resources::teams)[fake_unit.side()-1],
+				*resources::units,
+				*resources::teams,
+				*game_map);
+
+		dst.x = atoi(xvals[i].c_str())-1;
+		dst.y = atoi(yvals[i].c_str())-1;
+		if (!game_map->on_board(dst)) {
+			ERR_CF << "invalid move_unit_fake destination: " << dst << '\n';
+			break;
+		}
+
+		pathfind::plain_route route = pathfind::a_star_search(src, dst, 10000, &calc,
+			game_map->w(), game_map->h());
+
+		if (route.steps.size() == 0) {
+			WRN_NG << "Could not find move_unit_fake route from " << src << " to " << dst << ": ignoring complexities\n";
+			pathfind::emergency_path_calculator calc(fake_unit, *game_map);
+
+			route = pathfind::a_star_search(src, dst, 10000, &calc,
+					game_map->w(), game_map->h());
+			if(route.steps.size() == 0) {
+				// This would occur when trying to do a MUF of a unit
+				// over locations which are unreachable to it (infinite movement
+				// costs). This really cannot fail.
+				WRN_NG << "Could not find move_unit_fake route from " << src << " to " << dst << ": ignoring terrain\n";
+				pathfind::dummy_path_calculator calc(fake_unit, *game_map);
+				route = a_star_search(src, dst, 10000, &calc, game_map->w(), game_map->h());
+				assert(route.steps.size() > 0);
+			}
+		}
+		// we add this section to the end of the complete path
+		// skipping section's head because already included
+		// by the previous iteration
+		path.insert(path.end(),
+				route.steps.begin()+1, route.steps.end());
+
+		src = dst;
 	}
+	return path;
 }
+
+} //end of anonymous namespace
 
 // Moving a 'unit' - i.e. a dummy unit
 // that is just moving for the visual effect
