@@ -76,6 +76,10 @@ Version 1.9.0-svn:
    * Patch #1639: Added handlers for keyboard (arrow keys) to move gui2 sliders
    * Added new experimental list box implementation, available for testing
      with -DGUI2_EXPERIMENTAL_LISTBOX
+   * Small improvements of the bonus used in the damage calculation dialog
+   * Damage in sidebar now also take account of ToD and leadership
+   * More info in the weapon tooltip (damage bonus calculation and swarm effect)
+   * Level tooltip shows next advancements.
  * WML Engine:
    * Deprecated [set_variable]'s random key, use rand instead
    * Renamed [unit][status] healable to unhealable so it can default to 'no'
