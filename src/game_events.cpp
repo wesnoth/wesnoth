@@ -1205,7 +1205,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 
 	const t_string format = cfg["format"];
 	if(format.empty() == false) {
-		ERR_WML << "Usage of 'format' is deprecated, use 'rand' instead, "
+		lg::wml_error << "Usage of 'format' is deprecated, use 'rand' instead, "
 			"support will be removed in 1.9.2.\n";
 		var = format;
 	}
@@ -1327,7 +1327,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 	const std::string random = cfg["random"];
 	std::string rand = cfg["rand"];
 	if(random.empty() == false) {
-		ERR_WML << "Usage of 'random' is deprecated, use 'rand' instead, "
+		lg::wml_error << "Usage of 'random' is deprecated, use 'rand' instead, "
 			"support will be removed in 1.9.2.\n";
 		if(rand.empty()) {
 			rand = random;
@@ -2500,7 +2500,8 @@ WML_HANDLER_FUNCTION(endlevel, /*event_info*/, cfg)
 	if (result.empty() || result == "victory") {
 		resources::controller->force_end_level(VICTORY);
 	} else if (result == "continue") {
-		lg::wml_error << "continue is deprecated as result in [endlevel],"
+		lg::wml_error << "continue is deprecated as result in [endlevel]"
+			" and will be removed in 1.9.2,"
 			" use the new attributes instead.\n";
 		data.carryover_percentage = 100;
 		data.carryover_add = false;
@@ -2508,7 +2509,8 @@ WML_HANDLER_FUNCTION(endlevel, /*event_info*/, cfg)
 		data.linger_mode = false;
 		resources::controller->force_end_level(VICTORY);
 	} else if (result == "continue_no_save") {
-		lg::wml_error << "continue_no_save is deprecated as result in [endlevel],"
+		lg::wml_error << "continue_no_save is deprecated as result in [endlevel]"
+			" and will be removed in 1.9.2,"
 			" use the new attributes instead.\n";
 		data.carryover_percentage = 100;
 		data.carryover_add = false;
