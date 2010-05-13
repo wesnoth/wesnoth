@@ -81,25 +81,35 @@ report generate_report(TYPE type,
 	}
 
 	std::ostringstream str;
+	std::ostringstream tooltip;
 	using utils::signed_percent;
 
 	switch(type) {
 	case UNIT_NAME:
 		str << "<b>" << u->name() << "</b>";
-		return report(str.str(), "", u->name());
+
+		tooltip << _("Name: ")
+			<< "<b>" << u->name() << "</b>";
+
+		return report(str.str(), "", tooltip.str());
 	case UNIT_TYPE: {
 		str << span_color(font::unit_type_color) << u->type_name() << naps;
 
-		std::ostringstream tooltip;
-		tooltip << u->type_name() << ":\n";
-		tooltip << u->unit_description();
+		tooltip << _("Type: ")
+			<< "<b>" << u->type_name() << "</b>\n"
+			<< u->unit_description();
 
 		return report(str.str(), "", tooltip.str());
 	}
-	case UNIT_RACE:
+	case UNIT_RACE: {
 		str << span_color(font::race_color)
 			<< u->race()->name(u->gender()) << naps;
-		break;
+
+		tooltip << _("Race: ")
+			<< "<b>" << u->race()->name(u->gender()) << "</b>";
+
+		return report(str.str(), "", tooltip.str());
+	}
 	case UNIT_SIDE: {
 		std::string flag_icon = teams[u->side() - 1].flag_icon();
 		std::string old_rgb = game_config::flag_rgb;
@@ -115,12 +125,16 @@ report generate_report(TYPE type,
 	}
 	case UNIT_LEVEL: {
 		str << u->level();
-		std::ostringstream tooltip;
-		tooltip << _("Advances to:") << "\n";
+
+		tooltip << _("Level: ")
+			<< "<b>" << u->level() << "</b>\n"
+			<< _("Advances to:") << "\n"
+			<< "<b>";
 		const std::vector<std::string>& adv_to = u->advances_to();
 		foreach (const std::string& s, adv_to){
 			tooltip << "\t" << s << "\n";
 		}
+		tooltip << "</b>";
 		return report(str.str(), "", tooltip.str());
 	}
 	case UNIT_AMLA: {
@@ -132,9 +146,8 @@ report generate_report(TYPE type,
 	  return(res);
 	}
 	case UNIT_TRAITS: {
-		std::ostringstream tooltip;
-		tooltip << _("Traits:") << "\n";
-		tooltip << u->modification_description("trait");
+		tooltip << _("Traits: ") << "\n"
+			<< u->modification_description("trait");
 		return report(u->traits_description(), "", tooltip.str());
 	}
 	case UNIT_STATUS: {
@@ -163,10 +176,13 @@ report generate_report(TYPE type,
 	case UNIT_ALIGNMENT: {
 		const std::string &align = unit_type::alignment_description(u->alignment(), u->gender());
 		const std::string &align_id = unit_type::alignment_id(u->alignment());
-		std::stringstream ss;
 		int cm = combat_modifier(units, displayed_unit_hex, u->alignment(), u->is_fearless());
-		ss << align << " (" << signed_percent(cm) << ")";
-		return report(ss.str(), "", string_table[align_id + "_description"]);
+		
+		str << align << " (" << signed_percent(cm) << ")";
+		tooltip << _("Alignement: ")
+			<< "<b>" << align << "</b>\n"
+			<< string_table[align_id + "_description"];
+		return report(str.str(), "", tooltip.str());
 	}
 	case UNIT_ABILITIES: {
 		report res;
@@ -176,13 +192,15 @@ report generate_report(TYPE type,
 			if(i+2 != abilities.end())
 				str << ",";
 			++i;
-			res.add_text(flush(str), *i);
+			//FIXME pull out ability's name from description
+			tooltip << _("Ability:") << "\n"
+				<< *i;
+			res.add_text(flush(str), flush(tooltip));
 		}
 
 		return res;
 	}
 	case UNIT_HP: {
-		std::ostringstream tooltip;
 		str << span_color(u->hp_color()) << u->hitpoints()
 			<< '/' << u->max_hitpoints() << naps;
 
@@ -223,8 +241,6 @@ report generate_report(TYPE type,
 		return report(str.str(), "", tooltip.str());
 	}
 	case UNIT_XP: {
-		std::ostringstream tooltip;
-
 		str << span_color(u->xp_color()) << u->experience()
 			<< '/' << u->max_experience() << naps;
 
@@ -245,9 +261,10 @@ report generate_report(TYPE type,
 		SDL_Color color = int_to_color(game_config::red_to_green(def));
 		str << span_color(color) << def << "%</span>";
 
-		std::ostringstream tooltip;
-		tooltip << _("Terrain: ") << map.get_terrain_info(terrain).description() << "\n";
-		tooltip << _("Chance to be hit: ") << def << "%\n";
+		tooltip << _("Terrain: ")
+			<< "<b>" << map.get_terrain_info(terrain).description() << "</b>\n"
+			<< _("Chance to be hit: ")
+			<< "<b>" << span_color(color)  << def << "%</span></b>";
 
 		return report(str.str(), "", tooltip.str());
 	}
@@ -267,7 +284,6 @@ report generate_report(TYPE type,
 	}
 	case UNIT_WEAPONS: {
 		report res;
-		std::ostringstream tooltip;
 
 		size_t team_index = u->side() - 1;
 		if(team_index >= teams.size()) {
@@ -318,8 +334,8 @@ report generate_report(TYPE type,
 			str << ' ' << at.name() << ' ' << at.accuracy_parry_description();
 			str << "</span>\n";
 
-			tooltip << _("Weapon: ") << at.name() << "\n";
-			tooltip << _("Damage: ") << damage << "\n";
+			tooltip << _("Weapon: ") << "<b>" << at.name() << "</b>\n"
+				<< _("Damage: ") << "<b>" << damage << "</b>\n";
 			// Damage calculations details:
 			if(tod_bonus || leader_bonus || slowed) {
 				tooltip << "\t" << _("Base damage: ") << base_damage << "\n";
@@ -336,7 +352,7 @@ report generate_report(TYPE type,
 				}
 			}
 
-			tooltip << _("Attacks: ") << nattacks << "\n";
+			tooltip << _("Attacks: ") << "<b>" << nattacks << "</b>\n";
 			if(nattacks != base_nattacks){
 				tooltip << "\t" << _("Base attacks: ") << base_nattacks << "\n";
 				int hp_ratio = u->hitpoints() * 100 / u->max_hitpoints();
@@ -345,12 +361,12 @@ report generate_report(TYPE type,
 
 			int accuracy = at.accuracy();
 			if(accuracy) {
-				tooltip << _("Accuracy :") << accuracy << "\n";
+				tooltip << _("Accuracy :") << "<b>" << accuracy << "</b>\n";
 			}
 
 			int parry = at.parry();
 			if(parry) {
-				tooltip << _("Parry :") << parry << "\n";
+				tooltip << _("Parry :") << "<b>" << parry << "</b>\n";
 			}
 
 			res.add_text(flush(str), flush(tooltip));
@@ -361,8 +377,8 @@ report generate_report(TYPE type,
 			str << span_color(font::weapon_details_color) << "  "
 				<< range << "--" << lang_type << "</span>\n";
 
-			tooltip << _("Weapon range: ") << range <<"\n";
-			tooltip << _("Damage type: ")  << lang_type << "\n";
+			tooltip << _("Weapon range: ") << "<b>" << range << "</b>\n"
+				<< _("Damage type: ")  << "<b>" << lang_type << "</b>\n";
 
 			// Find all the unit types on the map, and
 			// show this weapon's bonus against all the different units.
@@ -434,7 +450,6 @@ report generate_report(TYPE type,
 			tod = resources::tod_manager->time_of_day_at(units, mouseover, *resources::game_map);
 		}
 
-		std::ostringstream tooltip;
 		int b = tod.lawful_bonus;
 		tooltip << tod.name << '\n'
 			<< _("Lawful units: ") << signed_percent(b) << "\n"
