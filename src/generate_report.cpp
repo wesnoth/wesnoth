@@ -363,26 +363,28 @@ report generate_report(TYPE type,
 
 			tooltip << _("Weapon range: ") << range <<"\n";
 			tooltip << _("Damage type: ")  << lang_type << "\n";
+
 			// Find all the unit types on the map, and
 			// show this weapon's bonus against all the different units.
 			// Don't show invisible units, except if they are in our team or allied.
 			std::set<std::string> seen_units;
 			std::map<int,std::set<std::string> > resistances;
 			for(unit_map::const_iterator u_it = units.begin(); u_it != units.end(); ++u_it) {
+				const map_location& loc = u_it->get_location();
 				if (teams[team_index].is_enemy(u_it->side()) &&
-				    !current_team.fogged(u_it->get_location()) &&
+				    !current_team.fogged(loc) &&
 				    seen_units.count(u_it->type_id()) == 0 &&
 				    (!current_team.is_enemy(u_it->side()) ||
-				     !u_it->invisible(u_it->get_location(), units, teams)))
+				     !u_it->invisible(loc, units, teams)))
 				{
 					seen_units.insert(u_it->type_id());
-					int resistance = u_it->resistance_against(at, false, u_it->get_location()) - 100;
+					int resistance = u_it->resistance_against(at, false, loc) - 100;
 					resistances[resistance].insert(u_it->type_name());
 				}
 			}
 
+			// use reverse order to show higher damage bonus first
 			for(std::map<int,std::set<std::string> >::reverse_iterator resist = resistances.rbegin(); resist != resistances.rend(); ++resist) {
-				//std::sort(resist->second.begin(),resist->second.end());
 				tooltip << signed_percent(resist->first) << " " << _("vs") << " ";
 				for(std::set<std::string>::const_iterator i = resist->second.begin(); i != resist->second.end(); ++i) {
 					if(i != resist->second.begin()) {
