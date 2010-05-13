@@ -87,9 +87,15 @@ report generate_report(TYPE type,
 	case UNIT_NAME:
 		str << "<b>" << u->name() << "</b>";
 		return report(str.str(), "", u->name());
-	case UNIT_TYPE:
+	case UNIT_TYPE: {
 		str << span_color(font::unit_type_color) << u->type_name() << naps;
-		return report(str.str(), "", u->unit_description());
+
+		std::ostringstream tooltip;
+		tooltip << u->type_name() << ":\n";
+		tooltip << u->unit_description();
+
+		return report(str.str(), "", tooltip.str());
+	}
 	case UNIT_RACE:
 		str << span_color(font::race_color)
 			<< u->race()->name(u->gender()) << naps;
@@ -110,13 +116,10 @@ report generate_report(TYPE type,
 	case UNIT_LEVEL: {
 		str << u->level();
 		std::ostringstream tooltip;
-		tooltip << u->type_name() << "\n";
+		tooltip << _("Advances to:") << "\n";
 		const std::vector<std::string>& adv_to = u->advances_to();
-		if(!adv_to.empty()) {
-			tooltip << _("Advances to:") << "\n";
-			foreach (const std::string& s, adv_to){
-				tooltip << "\t" << s << "\n";
-			}
+		foreach (const std::string& s, adv_to){
+			tooltip << "\t" << s << "\n";
 		}
 		return report(str.str(), "", tooltip.str());
 	}
@@ -128,9 +131,12 @@ report generate_report(TYPE type,
 	  }
 	  return(res);
 	}
-	case UNIT_TRAITS:
-		return report(u->traits_description(), "", u->modification_description("trait"));
-
+	case UNIT_TRAITS: {
+		std::ostringstream tooltip;
+		tooltip << _("Traits:") << "\n";
+		tooltip << u->modification_description("trait");
+		return report(u->traits_description(), "", tooltip.str());
+	}
 	case UNIT_STATUS: {
 		report res;
 		if (map.on_board(displayed_unit_hex) &&
@@ -238,7 +244,12 @@ report generate_report(TYPE type,
 		int def = 100 - u->defense_modifier(terrain);
 		SDL_Color color = int_to_color(game_config::red_to_green(def));
 		str << span_color(color) << def << "%</span>";
-		break;
+
+		std::ostringstream tooltip;
+		tooltip << _("Terrain: ") << map.get_terrain_info(terrain).description() << "\n";
+		tooltip << _("Chance to be hit: ") << def << "%\n";
+
+		return report(str.str(), "", tooltip.str());
 	}
 	case UNIT_MOVES: {
 		float movement_frac = 1.0;
@@ -307,7 +318,7 @@ report generate_report(TYPE type,
 			str << ' ' << at.name() << ' ' << at.accuracy_parry_description();
 			str << "</span>\n";
 
-			tooltip << at.name() << "\n";
+			tooltip << _("Weapon: ") << at.name() << "\n";
 			tooltip << _("Damage: ") << damage << "\n";
 			// Damage calculations details:
 			if(tod_bonus || leader_bonus || slowed) {
@@ -350,8 +361,8 @@ report generate_report(TYPE type,
 			str << span_color(font::weapon_details_color) << "  "
 				<< range << "--" << lang_type << "</span>\n";
 
-			tooltip << _("weapon range: ") << range <<"\n";
-			tooltip << _("damage type: ")  << lang_type << "\n";
+			tooltip << _("Weapon range: ") << range <<"\n";
+			tooltip << _("Damage type: ")  << lang_type << "\n";
 			// Find all the unit types on the map, and
 			// show this weapon's bonus against all the different units.
 			// Don't show invisible units, except if they are in our team or allied.
