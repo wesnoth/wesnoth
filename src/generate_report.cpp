@@ -367,7 +367,7 @@ report generate_report(TYPE type,
 			// show this weapon's bonus against all the different units.
 			// Don't show invisible units, except if they are in our team or allied.
 			std::set<std::string> seen_units;
-			std::map<int,std::vector<std::string> > resistances;
+			std::map<int,std::set<std::string> > resistances;
 			for(unit_map::const_iterator u_it = units.begin(); u_it != units.end(); ++u_it) {
 				if (teams[team_index].is_enemy(u_it->side()) &&
 				    !current_team.fogged(u_it->get_location()) &&
@@ -377,14 +377,14 @@ report generate_report(TYPE type,
 				{
 					seen_units.insert(u_it->type_id());
 					int resistance = u_it->resistance_against(at, false, u_it->get_location()) - 100;
-					resistances[resistance].push_back(u_it->type_name());
+					resistances[resistance].insert(u_it->type_name());
 				}
 			}
 
-			for(std::map<int,std::vector<std::string> >::reverse_iterator resist = resistances.rbegin(); resist != resistances.rend(); ++resist) {
-				std::sort(resist->second.begin(),resist->second.end());
+			for(std::map<int,std::set<std::string> >::reverse_iterator resist = resistances.rbegin(); resist != resistances.rend(); ++resist) {
+				//std::sort(resist->second.begin(),resist->second.end());
 				tooltip << signed_percent(resist->first) << " " << _("vs") << " ";
-				for(std::vector<std::string>::const_iterator i = resist->second.begin(); i != resist->second.end(); ++i) {
+				for(std::set<std::string>::const_iterator i = resist->second.begin(); i != resist->second.end(); ++i) {
 					if(i != resist->second.begin()) {
 						tooltip << ", ";
 					}
