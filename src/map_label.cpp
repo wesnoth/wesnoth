@@ -459,13 +459,23 @@ void terrain_label::draw()
 
 		cfg_colour();
 
+		// If a colour is specified don't allow to override it with markup. (prevents faking map labels for example)
+		// FIXME: @todo Better detect if it's team label and not provided by
+		// the scenario.
+		bool use_markup = colour_ == font::LABEL_COLOUR;
+
 		handle_ = font::add_floating_label(text_,
 										   font::SIZE_NORMAL,
 										   colour_,
 										   xloc, yloc,
 										   0,0,
 										   -1,
-										   parent_->disp().map_outside_area());
+										   parent_->disp().map_outside_area(),
+										   font::CENTER_ALIGN,
+										   NULL, 0,
+										   font::ANCHOR_LABEL_SCREEN,
+										   use_markup
+										   );
 
 		calculate_shroud();
 	}
