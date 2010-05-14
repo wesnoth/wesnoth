@@ -2190,7 +2190,7 @@ void display::refresh_report(reports::TYPE report_num, reports::report report)
 			surface s = text.render();
 
 			// check if next element is text with almost no space to show it
-			const int minimal_text = 8; // width in pixels
+			const int minimal_text = 12; // width in pixels
 			if(!eol && rect.w - (x - rect.x + s->w) < minimal_text
 				 && e+1 != report.end() && !(e+1)->text.empty())
 			{
