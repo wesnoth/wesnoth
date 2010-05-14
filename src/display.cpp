@@ -2162,12 +2162,13 @@ void display::refresh_report(reports::TYPE report_num, reports::report report)
 	std::ostringstream ellipsis_tooltip;
 	SDL_Rect ellipsis_area = rect;
 
-	foreach (const reports::element &e, report)
+	reports::report::iterator e = report.begin();
+	for(; e != report.end(); ++e)
 	{
 		SDL_Rect area = { x, y, rect.w + rect.x - x, rect.h + rect.y - y };
 		if (area.h <= 0) break;
 
-		if (!e.text.empty())
+		if (!e->text.empty())
 		{
 			if (used_ellipsis) goto skip_element;
 
@@ -2176,7 +2177,7 @@ void display::refresh_report(reports::TYPE report_num, reports::report report)
 			if (item->font_rgb_set()) {
 				text.set_foreground_colour(item->font_rgb());
 			}
-			std::string t = e.text;
+			std::string t = e->text;
 			bool eol = false;
 			if (t[t.size() - 1] == '\n') {
 				eol = true;
@@ -2187,6 +2188,26 @@ void display::refresh_report(reports::TYPE report_num, reports::report report)
 			text.set_maximum_width(area.w);
 			text.set_maximum_height(area.h, false);
 			surface s = text.render();
+
+			// check if next element is text with almost no space to show it
+			const int minimal_text = 8; // width in pixels
+			if(!eol && rect.w - (x - rect.x + s->w) < minimal_text
+				 && e+1 != report.end() && !(e+1)->text.empty())
+			{
+				// make this element longer to trigger rendering of ellipsis
+				// (to indicate that next elements have not enough space)
+				//NOTE this space should be longer than minimal_text pixels
+				t = t + "    ";
+				text.set_text(t, true);
+				s = text.render();
+				// use the area of this element for next tooltips
+				used_ellipsis = true;
+				ellipsis_area.x = x;
+				ellipsis_area.y = y;
+				ellipsis_area.w = s->w;
+				ellipsis_area.h = s->h;
+			}
+
 			screen_.blit_surface(x, y, s);
 			area.w = s->w;
 			area.h = s->h;
@@ -2201,15 +2222,15 @@ void display::refresh_report(reports::TYPE report_num, reports::report report)
 				x += area.w;
 			}
 		}
-		else if (!e.image.get_filename().empty())
+		else if (!e->image.get_filename().empty())
 		{
 			if (used_ellipsis) goto skip_element;
 
 			// Draw an image element.
-			surface img(image::get_image(e.image));
+			surface img(image::get_image(e->image));
 
 			if (!img) {
-				ERR_DP << "could not find image for report: '" << e.image.get_filename() << "'\n";
+				ERR_DP << "could not find image for report: '" << e->image.get_filename() << "'\n";
 				continue;
 			}
 
@@ -2241,12 +2262,14 @@ void display::refresh_report(reports::TYPE report_num, reports::report report)
 		}
 
 		skip_element:
-		if (!e.tooltip.empty()) {
+		if (!e->tooltip.empty()) {
 			if (!used_ellipsis) {
-				tooltips::add_tooltip(area, e.tooltip);
+				tooltips::add_tooltip(area, e->tooltip);
 			} else {
 				// Collect all tooltips for the ellipsis.
-				ellipsis_tooltip << e.tooltip << '\n';
+				// TODO: need a better separator
+				ellipsis_tooltip << e->tooltip
+					<< "\n  _________\n\n";
 			}
 		}
 	}
