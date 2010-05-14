@@ -190,7 +190,7 @@ report generate_report(TYPE type,
 		for(std::vector<std::string>::const_iterator i = abilities.begin(); i != abilities.end(); ++i) {
 			str << gettext(i->c_str());
 			if(i+2 != abilities.end())
-				str << ",";
+				str << ", ";
 			++i;
 			//FIXME pull out ability's name from description
 			tooltip << _("Ability:") << "\n"
