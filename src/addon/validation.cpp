@@ -14,7 +14,7 @@
 */
 
 #include "global.hpp"
-#include "addon_checks.hpp"
+#include "addon/validation.hpp"
 #include "config.hpp"
 #include "foreach.hpp"
 

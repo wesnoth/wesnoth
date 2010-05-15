@@ -40,8 +40,8 @@ THELIBS = -L. $(SDL_IMAGE_LIBS) $(SDL_MIXER_LIBS) $(SDL_NET_LIBS) \
 wesnoth_source = \
 	about.cpp \
 	actions.cpp \
-	addon_checks.cpp \
-	addon_management.cpp \
+	addon/manager.cpp \
+	addon/validation.cpp \
 	ai/actions.cpp \
 	ai/composite/ai.cpp \
 	ai/composite/aspect.cpp \
@@ -351,7 +351,7 @@ wesnothd_DEPENDENCIES=libwesnoth-core.a
 #############################################################################
 
 campaignd_SOURCES = \
-	addon_checks.cpp \
+	addon/validation.cpp \
 	campaign_server/campaign_server.cpp \
 	server/input_stream.cpp \
 	network.cpp \

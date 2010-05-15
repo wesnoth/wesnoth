@@ -126,7 +126,7 @@ libwesnothd_sources = Split("""
 libwesnothd = env.Library("wesnothd", libwesnothd_sources)
 
 libcampaignd_sources = Split("""
-    addon_checks.cpp
+    addon/validation.cpp
     """)
 libcampaignd = env.Library("campaignd", libcampaignd_sources, OBJPREFIX = "campaignd_")
 
@@ -145,8 +145,8 @@ libcutter = client_env.Library("cutter", libcutter_sources)
 wesnoth_sources = Split("""
     about.cpp
     actions.cpp
-    addon_checks.cpp
-    addon_management.cpp
+    addon/manager.cpp
+    addon/validation.cpp
     ai/actions.cpp
     ai/composite/ai.cpp
     ai/composite/aspect.cpp

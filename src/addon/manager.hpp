@@ -13,12 +13,12 @@
    See the COPYING file for more details.
 */
 
-#ifndef ADDON_MANAGEMENT_HPP_INCLUDED
-#define ADDON_MANAGEMENT_HPP_INCLUDED
+#ifndef ADDON_MANAGER_HPP_INCLUDED
+#define ADDON_MANAGER_HPP_INCLUDED
 
 class config;
 
-#include "addon_checks.hpp"
+#include "addon/validation.hpp"
 
 #include <string>
 #include <vector>

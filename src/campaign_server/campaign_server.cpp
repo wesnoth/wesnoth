@@ -28,7 +28,7 @@
 #include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"
 #include "game_config.hpp"
-#include "addon_checks.hpp"
+#include "addon/validation.hpp"
 #include "version.hpp"
 #include "server/input_stream.hpp"
 #include "util.hpp"

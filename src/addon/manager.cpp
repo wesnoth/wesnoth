@@ -15,7 +15,7 @@
 
 #include "global.hpp"
 
-#include "addon_management.hpp"
+#include "addon/manager.hpp"
 #include "dialogs.hpp"
 #include "filesystem.hpp"
 #include "foreach.hpp"

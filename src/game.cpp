@@ -64,7 +64,7 @@
 #include "network.hpp"
 #include "playcampaign.hpp"
 #include "preferences_display.hpp"
-#include "addon_management.hpp"
+#include "addon/manager.hpp"
 #include "replay.hpp"
 #include "savegame.hpp"
 #include "sound.hpp"

@@ -13,8 +13,8 @@
    See the COPYING file for more details.
 */
 
-#ifndef ADDON_CHECKS_HPP_INCLUDED
-#define ADDON_CHECKS_HPP_INCLUDED
+#ifndef ADDON_VALIDATION_HPP_INCLUDED
+#define ADDON_VALIDATION_HPP_INCLUDED
 
 #include <vector>
 #include <string>
