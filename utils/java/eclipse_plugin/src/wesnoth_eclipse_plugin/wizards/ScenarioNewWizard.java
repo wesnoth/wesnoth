@@ -174,8 +174,10 @@ public class ScenarioNewWizard extends Wizard implements INewWizard {
 		params.add(new ReplaceableParameter("$$scenario_id", page0_.getScenarioId()));
 		params.add(new ReplaceableParameter("$$next_scenario_id", page0_.getNextScenarioId()));
 		params.add(new ReplaceableParameter("$$scenario_name", page0_.getScenarioName()));
+		params.add(new ReplaceableParameter("$$map_data", page0_.getMapData()));
 
 		params.add(new ReplaceableParameter("$$turns_number", String.valueOf(page0_.getTurnsNumber())));
+
 
 		String template = TemplateProvider.getProcessedTemplate("scenario", params);
 

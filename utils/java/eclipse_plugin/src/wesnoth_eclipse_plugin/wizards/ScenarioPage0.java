@@ -282,4 +282,10 @@ public class ScenarioPage0 extends WizardPage {
 	public int getTurnsNumber()	{
 		return txtTurns_.getSelection();
 	}
+	/**
+	 * @return the map data for the current scenario
+	 */
+	public String getMapData() {
+		return txtMapData_.getText();
+	}
 }
