@@ -869,7 +869,7 @@ const unit_preview_pane::details units_list_preview_pane::get_details() const
 	}
 	det.level = u.level();
 	det.alignment = unit_type::alignment_description(u.alignment(), u.gender());
-	det.traits = utils::join(u.traits_description(), ", ");
+	det.traits = utils::join(u.trait_names(), ", ");
 
 	//we filter to remove the tooltips (increment by 2)
 	const std::vector<std::string> &abilities = u.ability_tooltips(true);

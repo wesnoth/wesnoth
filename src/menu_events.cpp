@@ -295,7 +295,7 @@ void menu_handler::unit_list()
 		row << COLUMN_SEPARATOR;
 
 		// TODO: show 'loyal' in green / xxx in red  //  how to handle translations ??
-		row << utils::join(i->traits_description(), ", ");
+		row << utils::join(i->trait_names(), ", ");
 		items.push_back(row.str());
 
 		locations_list.push_back(i->get_location());
@@ -892,7 +892,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 
 #ifndef USE_TINY_GUI
 		option << COLUMN_SEPARATOR;
-		foreach (const t_string& trait, u.traits_description()) {
+		foreach (const t_string& trait, u.trait_names()) {
 			option << trait << '\n';
 			option_to_filter << " " << trait;
 		}

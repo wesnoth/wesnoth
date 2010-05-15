@@ -175,7 +175,7 @@ unit::unit(const unit& o):
            attacks_(o.attacks_),
            facing_(o.facing_),
 
-           traits_description_(o.traits_description_),
+           trait_names_(o.trait_names_),
            unit_value_(o.unit_value_),
            goto_(o.goto_),
            interrupted_move_(o.interrupted_move_),
@@ -252,7 +252,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	ai_special_(cfg["ai_special"]),
 	attacks_(),
 	facing_(map_location::SOUTH_EAST),
-	traits_description_(),
+	trait_names_(),
 	unit_value_(),
 	goto_(),
 	interrupted_move_(),
@@ -599,7 +599,7 @@ unit::unit(const unit_type *t, int side, bool real_unit,
 	ai_special_(),
 	attacks_(),
 	facing_(map_location::SOUTH_EAST),
-	traits_description_(),
+	trait_names_(),
 	unit_value_(),
 	goto_(),
 	interrupted_move_(),
@@ -791,7 +791,7 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 	t = &t->get_gender_unit_type(gender_).get_variation(variation_);
 
 	// Reset the scalar values first
-	traits_description_.clear();
+	trait_names_.clear();
 	is_fearless_ = false;
 	is_healthy_ = false;
 
@@ -2610,12 +2610,12 @@ void unit::apply_modifications()
 		const char *gender_string = gender_ == unit_race::FEMALE ? "female_name" : "male_name";
 		t_string const &gender_specific_name = m[gender_string];
 		if (!gender_specific_name.empty()) {
-			traits_description_.push_back(gender_specific_name);
+			trait_names_.push_back(gender_specific_name);
 			m["name"] = gender_specific_name;
 		} else {
 			t_string const &name = m["name"];
 			if (!name.empty()) {
-				traits_description_.push_back(name);
+				trait_names_.push_back(name);
 			}
 		}
 	}

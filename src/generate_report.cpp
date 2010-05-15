@@ -148,7 +148,7 @@ report generate_report(TYPE type,
 	case UNIT_TRAITS: {
 		tooltip << _("Traits: ") << "\n"
 			<< u->modification_description("trait");
-		return report(utils::join(u->traits_description(), ", "), "", tooltip.str());
+		return report(utils::join(u->trait_names(), ", "), "", tooltip.str());
 	}
 	case UNIT_STATUS: {
 		report res;
