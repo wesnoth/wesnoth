@@ -3,6 +3,7 @@ package wesnoth_eclipse_plugin.wizards;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -19,11 +20,11 @@ import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.Wizard;
-import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 
 import wesnoth_eclipse_plugin.Logger;
+import wesnoth_eclipse_plugin.ReplaceableParameter;
 import wesnoth_eclipse_plugin.StringUtils;
 import wesnoth_eclipse_plugin.TemplateProvider;
 
@@ -36,10 +37,11 @@ public class CampaignNewWizard extends Wizard implements INewWizard {
 	protected CampaignPage1 page1_;
 	protected CampaignPage2 page2_;
 
-	protected int _lastPageHashCode=0;
+	protected int lastPageHashCode_=0;
 
 	private IConfigurationElement fConfig;
 
+	@Override
 	public void addPages() {
 		page0_ = new CampaignPage0();
 		addPage(page0_);
@@ -50,7 +52,7 @@ public class CampaignNewWizard extends Wizard implements INewWizard {
 		page2_ = new CampaignPage2();
 		addPage(page2_);
 
-		_lastPageHashCode = getPages()[getPageCount()-1].hashCode();
+		lastPageHashCode_ = getPages()[getPageCount()-1].hashCode();
 	}
 
 	public CampaignNewWizard() {
@@ -100,6 +102,7 @@ public class CampaignNewWizard extends Wizard implements INewWizard {
 			createFolder(currentProject, "images");
 			createFolder(currentProject, "utils");
 			createFolder(currentProject, "maps");
+			createFolder(currentProject, "music");
 			createFolder(currentProject, "scenarios");
 			createFolder(currentProject, "units");
 			monitor.worked(5);
@@ -118,41 +121,27 @@ public class CampaignNewWizard extends Wizard implements INewWizard {
 	}
 	public String prepareTemplate(String templateName)
 	{
-		String tmpTemplate = TemplateProvider.getInstance().getTemplate(templateName);
-		if (tmpTemplate == null)
-		{
-			MessageBox box = new MessageBox(this.getShell());
-			box.setMessage(String.format("Template for %s not found.", templateName));
-			box.open();
-			return "";
-		}
+		ArrayList<ReplaceableParameter> params = new ArrayList<ReplaceableParameter>();
 
-		// get the lines
-		String[] template = tmpTemplate.split("\\r?\\n");
+		params.add(new ReplaceableParameter("$$campaign_name", page1_.getCampaignName()));
+		params.add(new ReplaceableParameter("$$author", page1_.getAuthor()));
+		params.add(new ReplaceableParameter("$$version", page1_.getVersion()));
+		params.add(new ReplaceableParameter("$$description", page1_.getDescription()));
+		params.add(new ReplaceableParameter("$$icon", page1_.getIconPath()));
+		params.add(new ReplaceableParameter("$$email", page1_.getEmail()));
+		params.add(new ReplaceableParameter("$$passphrase", page1_.getPassphrase()));
+		params.add(new ReplaceableParameter("$$email", page1_.getEmail()));
+		params.add(new ReplaceableParameter("$$translations_dir", page1_.getTranslationDir()));
 
-		replaceParameter(templateName,template,"$$campaign_name", page1_.getCampaignName());
-		replaceParameter(templateName,template,"$$author", page1_.getAuthor());
-		replaceParameter(templateName,template,"$$version", page1_.getVersion());
-		replaceParameter(templateName,template,"$$description", page1_.getDescription());
-		replaceParameter(templateName,template,"$$icon", page1_.getIconPath());
-		replaceParameter(templateName,template,"$$email", page1_.getEmail());
-		replaceParameter(templateName,template,"$$passphrase", page1_.getPassphrase());
-		replaceParameter(templateName,template,"$$email", page1_.getEmail());
-		replaceParameter(templateName,template,"$$translations_dir", page1_.getTranslationDir());
+		params.add(new ReplaceableParameter("$$abrev", page2_.getAbbrev()));
+		params.add(new ReplaceableParameter("$$define", page2_.getDefine()));
+		params.add(new ReplaceableParameter("$$difficulties", page2_.getDifficulties()));
+		params.add(new ReplaceableParameter("$$first_scenario", page2_.getFirstScenario()));
 
-		replaceParameter(templateName,template,"$$abrev", page2_.getAbbrev());
-		replaceParameter(templateName,template,"$$define", page2_.getDefine());
-		replaceParameter(templateName,template,"$$difficulties", page2_.getDifficulties());
-		replaceParameter(templateName,template,"$$first_scenario", page2_.getFirstScenario());
+		params.add(new ReplaceableParameter("$$project_name", page0_.getProjectName()));
+		params.add(new ReplaceableParameter("$$type", page1_.isMultiplayer()?"campaign_mp":"campaign"));
 
-		replaceParameter(templateName,template,"$$project_name", page0_.getProjectName());
-		replaceParameter(templateName,template,"$$type", page1_.isMultiplayer()?"campaign_mp":"campaign");
-
-		tmpTemplate = "";
-		for (String line: template) {
-			tmpTemplate += (line +"\n");
-		}
-		return tmpTemplate;
+		return TemplateProvider.getProcessedTemplate(templateName, params);
 	}
 	public void replaceParameter(String templateName, String[] template, String paramName,String paramValue)
 	{
@@ -165,8 +154,9 @@ public class CampaignNewWizard extends Wizard implements INewWizard {
 				{
 					// we don't have any value supplied -
 					// let's comment that line (if it's not already commented)
-					if (!(StringUtils.startsWith(template[i],"#")))
+					if (!(StringUtils.startsWith(template[i],"#"))) {
 						template[i]= "#" + template[i];
+					}
 				}
 			}
 		}
@@ -174,9 +164,10 @@ public class CampaignNewWizard extends Wizard implements INewWizard {
 	/* (non-Javadoc)
 	 * @see org.eclipse.jface.wizard.Wizard#canFinish()
 	 */
+	@Override
 	public boolean canFinish() {
 		IWizardPage page = getContainer().getCurrentPage();
-		return super.canFinish() && page.hashCode() == _lastPageHashCode && page.isPageComplete();
+		return super.canFinish() && page.hashCode() == lastPageHashCode_ && page.isPageComplete();
 	}
 
 	public void createFolder(IProject project,String folderName)
@@ -187,6 +178,11 @@ public class CampaignNewWizard extends Wizard implements INewWizard {
 	public void createFile(IProject project, String fileName, String fileContentsString)
 	{
 		IFile file = project.getFile(fileName);
+		if (fileContentsString == null) {
+			fileContentsString = "";
+			Logger.print("file contents are null (CampaignNewWizard.java)", 2);
+		}
+
 		ByteArrayInputStream inputStream  = new ByteArrayInputStream(fileContentsString.getBytes());
 
 		createResource(file, project, fileName,inputStream);
@@ -201,11 +197,13 @@ public class CampaignNewWizard extends Wizard implements INewWizard {
 	private void createResource(IResource resource, IProject project, String resourceName, InputStream input)
 	{
 		try{
-			if (!project.isOpen())
+			if (!project.isOpen()) {
 				project.open(new NullProgressMonitor());
+			}
 
-			if (resource.exists())
+			if (resource.exists()) {
 				return;
+			}
 
 			if (resource instanceof IFile)
 			{

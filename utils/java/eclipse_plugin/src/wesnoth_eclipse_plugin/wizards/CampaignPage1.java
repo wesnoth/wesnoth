@@ -12,8 +12,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
-import wesnoth_eclipse_plugin.StringUtils;
-
 public class CampaignPage1 extends WizardPage {
 	private Text txtCampaignName_;
 	private Text txtVersion_;
@@ -136,6 +134,9 @@ public class CampaignPage1 extends WizardPage {
 		return (isPageComplete() && getNextPage() != null);
 	}
 
+	/**
+	 * Checks the mandatory fields and updates the isPageComplete status
+	 */
 	public void updateIsPageComplete()
 	{
 		setPageComplete(false);
@@ -177,6 +178,7 @@ public class CampaignPage1 extends WizardPage {
 	/**
 	 * @return the description
 	 */
+	@Override
 	public String getDescription() {
 		return txtDescription_.getText();
 	}
