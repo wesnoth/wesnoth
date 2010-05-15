@@ -48,8 +48,11 @@ partagez\-les avec d'autres.
 \fB\-\-bpp\fP\fI\ nombre\fP
 Définit la valeur de bits par pixel (couleurs). Exemple\ : \fB\-\-bpp 32\fP
 .TP 
-\fB\-c, \-\-campaign\fP
-va directement au menu de sélection des campagnes.
+\fB\-c[[<difficulty>] <id_campaign> [<id_scenario>]], \-\-campaign[[<difficulty>] <id_campaign> [<id_scenario>]]\fP
+goes directly to the campaign based on the parameters.  The difficulty is a
+number between 1 and current campaign's difficulties number.  The default
+difficulty is 1.  The scenario must be one of the campaign's child
+scenarios. The default scenario is campaign's first scenario.
 .TP 
 \fB\-\-config\-dir\fP\fI\ répertoire\fP
 définit le répertoire de configuration de l'utilisateur à \fIname\fP dans $HOME

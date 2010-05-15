@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-01-17 17:49+0100\n"
+"POT-Creation-Date: 2010-05-15 14:01+0200\n"
 "PO-Revision-Date: 2009-09-22 11:10+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -582,10 +582,18 @@ msgstr "Klikni levým tlačítkem na panáka, abys na něj zaútočil."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:835
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:842
+msgid " The ranged attack was safer."
+msgstr ""
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:835
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:842
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:854
+#, fuzzy
 msgid ""
 "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. Quintain defended with its melee attack (3-5). The ranged attack was "
-"safer."
+"attack. The quintain defended with its melee attack (3-5)."
 msgstr ""
 "Tvůj elf použil meč (5-4, neboli 4 útoky po 5 zraněních), což je útok "
 "zblízka, takže se panák bránil svým útokem zblízka (3-5). Útok na dálku by "
@@ -593,27 +601,19 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:843
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:895
+#, fuzzy
 msgid ""
-"Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. The quintain defended with its melee attack (3-5). The ranged attack "
-"was safer.\n"
+"\n"
 "End your turn, then attack again."
-msgstr ""
-"Tvůj elf použil meč (5-4, neboli 4 útoky po 5 zraněních), což je útok "
-"zblízka, takže se panák bránil svým útokem zblízka (3-5). Útok na dálku by "
-"byl bezpečnější.\n"
-"Ukonči svůj tah a pak zaútoč znovu."
+msgstr "Ukonči své kolo a pak opět zaútoč."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:855
 msgid ""
-"Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. The quintain defended with its melee attack (3-5).\n"
+"\n"
 "You should tell the other Elf to use the bow."
 msgstr ""
-"Tvůj elf použil meč (5-4, neboli 4 útoky po 5 zraněních), což je útok "
-"zblízka, takže se panák bránil svým útokem zblízka (3-5).\n"
-"Bylo by moudré, kdyby druhý elf použil luk."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:858
@@ -623,6 +623,7 @@ msgstr "Zaútoč dalším elfem"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:887
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:894
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:905
 msgid ""
 "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
@@ -631,18 +632,6 @@ msgid ""
 msgstr ""
 "Tvůj elf použil luk (3-3, neboli 3 útoky po 3 zraněních). Panák nemá útok na "
 "dálku, jen zblízka, takže se nemohl bránit."
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:895
-msgid ""
-"Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
-"The quintain has no ranged attack, only a melee attack, so it could not "
-"defend itself.\n"
-"End your turn, then attack again."
-msgstr ""
-"Tvůj elf použil luk (3-3, neboli 3 útoky po 3 zraněních). Panák nemá útok na "
-"dálku, jen zblízka, takže se nemohl bránit.\n"
-"Ukonči svůj tah a zaútoč znovu."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:926
@@ -1805,12 +1794,12 @@ msgstr ""
 "Jsem dost dobrý s mečem: čtyři útoky po osmi životech."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1659
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1643
 msgid "You took too long! We'll never be rid of these Orcs!"
 msgstr "Trvalo ti to příliš dlouho, takhle se těch skřetů nikdy nezbavíme!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1677
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1661
 msgid ""
 "You are victorious! You may want to try Novice-level campaigns such as: The "
 "South Guard, An Orcish Incursion, A Tale of Two Brothers, and Heir to the "
@@ -1870,3 +1859,33 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "cep"
+
+#~ msgid ""
+#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
+#~ "attack. The quintain defended with its melee attack (3-5). The ranged "
+#~ "attack was safer.\n"
+#~ "End your turn, then attack again."
+#~ msgstr ""
+#~ "Tvůj elf použil meč (5-4, neboli 4 útoky po 5 zraněních), což je útok "
+#~ "zblízka, takže se panák bránil svým útokem zblízka (3-5). Útok na dálku "
+#~ "by byl bezpečnější.\n"
+#~ "Ukonči svůj tah a pak zaútoč znovu."
+
+#~ msgid ""
+#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
+#~ "attack. The quintain defended with its melee attack (3-5).\n"
+#~ "You should tell the other Elf to use the bow."
+#~ msgstr ""
+#~ "Tvůj elf použil meč (5-4, neboli 4 útoky po 5 zraněních), což je útok "
+#~ "zblízka, takže se panák bránil svým útokem zblízka (3-5).\n"
+#~ "Bylo by moudré, kdyby druhý elf použil luk."
+
+#~ msgid ""
+#~ "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 "
+#~ "attacks). The quintain has no ranged attack, only a melee attack, so it "
+#~ "could not defend itself.\n"
+#~ "End your turn, then attack again."
+#~ msgstr ""
+#~ "Tvůj elf použil luk (3-3, neboli 3 útoky po 3 zraněních). Panák nemá útok "
+#~ "na dálku, jen zblízka, takže se nemohl bránit.\n"
+#~ "Ukonči svůj tah a zaútoč znovu."

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-26 15:39+0100\n"
+"POT-Creation-Date: 2010-05-15 14:01+0200\n"
 "PO-Revision-Date: 2009-09-26 15:40+0700\n"
 "Last-Translator: Phạm Thành Nam <phamthanhnam.ptn@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
@@ -90,6 +90,18 @@ msgstr "Xếp nhóm người chơi trong phòng gặp gỡ"
 msgid "Lobby sounds"
 msgstr "Âm thanh trong phòng gặp gỡ"
 
+#. [advanced_preference]: type=boolean
+#: data/advanced_preferences.cfg:107
+#, fuzzy
+msgid "Disable notifications"
+msgstr "Vô hiệu lực lưu tự động."
+
+#. [ai]: id=testing_ai_default
+#: data/ai/ais/testing_ai_default.cfg:5
+#, fuzzy
+msgid "Multiplayer_AI^RCA AI"
+msgstr "Nhiều đấu thủ"
+
 #. [time]: id=underground
 #. [illuminated_time]: id=underground_illum
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:523
@@ -100,7 +112,7 @@ msgstr "Dưới lòng đất"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:304
-#: src/actions.cpp:1280
+#: src/actions.cpp:1279
 msgid "poisoned"
 msgstr "bị nhiễm độc"
 
@@ -160,14 +172,14 @@ msgstr ""
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1240
-#: src/actions.cpp:1285
+#: src/actions.cpp:1284
 msgid "female^slowed"
 msgstr "bị chậm"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [else]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1243
-#: src/actions.cpp:1285
+#: src/actions.cpp:1284
 msgid "slowed"
 msgstr "bị chậm"
 
@@ -246,304 +258,304 @@ msgid "Programming"
 msgstr "Lập trình"
 
 #. [about]
-#: data/core/about.cfg:205
+#: data/core/about.cfg:213
 msgid "General Purpose Administration and Coordination"
 msgstr "Quản lý và phối hợp đa năng"
 
 #. [about]
-#: data/core/about.cfg:223
+#: data/core/about.cfg:231
 msgid "Artwork and Graphics"
 msgstr "Nghệ thuật và đồ họa"
 
 #. [about]
-#: data/core/about.cfg:571
+#: data/core/about.cfg:583
 msgid "Music"
 msgstr "Âm nhạc"
 
 #. [about]
-#: data/core/about.cfg:605
+#: data/core/about.cfg:620
 msgid "Sound Effects"
 msgstr "Hiệu ứng âm thanh"
 
 #. [about]
-#: data/core/about.cfg:621
+#: data/core/about.cfg:636
 msgid "Campaign Design"
 msgstr "Thiết kế chiến dịch"
 
 #. [about]
-#: data/core/about.cfg:688
+#: data/core/about.cfg:703
 msgid "Multiplayer Maps and Balancing"
 msgstr "Bản đồ và cân đối tài chính nhiều đấu thủ"
 
 #. [about]
-#: data/core/about.cfg:729
+#: data/core/about.cfg:744
 msgid "Packagers"
 msgstr "Những người đóng gói"
 
 #. [about]
-#: data/core/about.cfg:795
+#: data/core/about.cfg:810
 msgid "Miscellaneous contributors"
 msgstr "Những người đóng góp hỗn hợp"
 
 #. [about]
-#: data/core/about.cfg:1021
+#: data/core/about.cfg:1062
 msgid "Internationalization Managers"
 msgstr "Những người quản lý quốc tế hóa"
 
 #. [about]
-#: data/core/about.cfg:1046
+#: data/core/about.cfg:1087
 msgid "English strings edition"
 msgstr "Sửa câu tiếng Anh"
 
 #. [about]
-#: data/core/about.cfg:1053
+#: data/core/about.cfg:1094
 msgid "Afrikaans Translation"
 msgstr "Bản dịch tiếng Hà Lan Nam Phi"
 
 #. [about]
-#: data/core/about.cfg:1069
+#: data/core/about.cfg:1110
 msgid "Arabic Translation"
 msgstr "Bản dịch tiếng Ả Rập"
 
 #. [about]
-#: data/core/about.cfg:1076
+#: data/core/about.cfg:1117
 msgid "Basque Translation"
 msgstr "Bản dịch tiếng Ba-x-cơ"
 
 #. [about]
-#: data/core/about.cfg:1089
+#: data/core/about.cfg:1130
 msgid "Bulgarian Translation"
 msgstr "Bản dịch tiếng Bun-ga-ri"
 
 #. [about]
-#: data/core/about.cfg:1108
+#: data/core/about.cfg:1149
 msgid "Catalan Translation"
 msgstr "Bản dịch tiếng Ca-ta-lan"
 
 #. [about]
-#: data/core/about.cfg:1149
+#: data/core/about.cfg:1190
 msgid "Chinese Translation"
 msgstr "Bản dịch tiếng Trung Quốc"
 
 #. [about]
-#: data/core/about.cfg:1187
+#: data/core/about.cfg:1228
 msgid "Chinese (Taiwan) Translation"
 msgstr "Bản dịch tiếng Trung Quốc (Đài Loan)"
 
 #. [about]
-#: data/core/about.cfg:1209
+#: data/core/about.cfg:1250
 msgid "Croatian Translation"
 msgstr "Bản dịch tiếng Croatia"
 
 #. [about]
-#: data/core/about.cfg:1216
+#: data/core/about.cfg:1257
 msgid "Czech Translation"
 msgstr "Bản dịch tiếng Séc"
 
 #. [about]
-#: data/core/about.cfg:1276
+#: data/core/about.cfg:1317
 msgid "Danish Translation"
 msgstr "Bản dịch tiếng Đan Mạch"
 
 #. [about]
-#: data/core/about.cfg:1307
+#: data/core/about.cfg:1348
 msgid "Dutch Translation"
 msgstr "Bản dịch tiếng Hà Lan"
 
 #. [about]
-#: data/core/about.cfg:1368
+#: data/core/about.cfg:1409
 msgid "English (GB) Translation"
 msgstr "Bản dịch tiếng Anh (vương quốc Anh)"
 
 #. [about]
-#: data/core/about.cfg:1381
+#: data/core/about.cfg:1422
 #, fuzzy
 msgid "English (Shaw) Translation"
 msgstr "Bản dịch tiếng Anh (vương quốc Anh)"
 
 #. [about]
-#: data/core/about.cfg:1405
+#: data/core/about.cfg:1446
 msgid "Esperanto Translation"
 msgstr "Bản dịch tiếng Esperanto"
 
 #. [about]
-#: data/core/about.cfg:1424
+#: data/core/about.cfg:1465
 msgid "Estonian Translation"
 msgstr "Bản dịch tiếng Estonia"
 
 #. [about]
-#: data/core/about.cfg:1434
+#: data/core/about.cfg:1475
 msgid "Filipino Translation"
 msgstr "Bản dịch tiếng Phi-lip-pin"
 
 #. [about]
-#: data/core/about.cfg:1444
+#: data/core/about.cfg:1485
 msgid "Finnish Translation"
 msgstr "Bản dịch tiếng Phần Lan"
 
 #. [about]
-#: data/core/about.cfg:1490
+#: data/core/about.cfg:1531
 msgid "French Translation"
 msgstr "Bản dịch tiếng Pháp"
 
 #. [about]
-#: data/core/about.cfg:1637
+#: data/core/about.cfg:1687
 msgid "Friulian Translation"
 msgstr "Bản dịch tiếng Friulia"
 
 #. [about]
-#: data/core/about.cfg:1644
+#: data/core/about.cfg:1694
 msgid "Galician Translation"
 msgstr "Bản dịch tiếng Galicia"
 
 #. [about]
-#: data/core/about.cfg:1680
+#: data/core/about.cfg:1730
 msgid "German Translation"
 msgstr "Bản dịch tiếng Đức"
 
 #. [about]
-#: data/core/about.cfg:1747
+#: data/core/about.cfg:1797
 msgid "Greek Translation"
 msgstr "Bản dịch tiếng Hy Lạp"
 
 #. [about]
-#: data/core/about.cfg:1781
+#: data/core/about.cfg:1831
 msgid "Hebrew Translation"
 msgstr "Bản dịch tiếng Do Thái"
 
 #. [about]
-#: data/core/about.cfg:1794
+#: data/core/about.cfg:1844
 msgid "Hungarian Translation"
 msgstr "Bản dịch tiếng Hung-ga-ri"
 
 #. [about]
-#: data/core/about.cfg:1855
+#: data/core/about.cfg:1905
 msgid "Icelandic translation"
 msgstr "Bản dịch tiếng Ai-x-len"
 
 #. [about]
-#: data/core/about.cfg:1865
+#: data/core/about.cfg:1915
 msgid "Indonesian Translation"
 msgstr "Bản dịch tiếng In-đô-nê-xi-a"
 
 #. [about]
-#: data/core/about.cfg:1872
+#: data/core/about.cfg:1922
 msgid "Italian Translation"
 msgstr "Bản dịch tiếng Italia"
 
 #. [about]
-#: data/core/about.cfg:1907
+#: data/core/about.cfg:1957
 msgid "Japanese Translation"
 msgstr "Bản dịch tiếng Nhật"
 
 #. [about]
-#: data/core/about.cfg:1950
+#: data/core/about.cfg:2006
 msgid "Korean Translation"
 msgstr "Bản dịch tiếng Hàn Quốc"
 
 #. [about]
-#: data/core/about.cfg:1957
+#: data/core/about.cfg:2013
 msgid "Latin Translation"
 msgstr "Bản dịch tiếng Latin"
 
 #. [about]
-#: data/core/about.cfg:1984
+#: data/core/about.cfg:2040
 msgid "Latvian Translation"
 msgstr "Bản dịch tiếng Latvia"
 
 #. [about]
-#: data/core/about.cfg:1995
+#: data/core/about.cfg:2051
 msgid "Lithuanian Translation"
 msgstr "Bản dịch tiếng Lát-vi"
 
 #. [about]
-#: data/core/about.cfg:2012
+#: data/core/about.cfg:2068
 msgid "Macedonian Translation"
 msgstr "Bản dịch tiếng Ma-xê-đô-ni-a"
 
 #. [about]
-#: data/core/about.cfg:2020
+#: data/core/about.cfg:2076
 msgid "Marathi Translation"
 msgstr "Bản dịch tiếng Ma-ra-tha"
 
 #. [about]
-#: data/core/about.cfg:2029
+#: data/core/about.cfg:2085
 msgid "Norwegian Translation"
 msgstr "Bản dịch tiếng Na Uy"
 
 #. [about]
-#: data/core/about.cfg:2054
+#: data/core/about.cfg:2110
 msgid "Polish Translation"
 msgstr "Bản dịch tiếng Ba Lan"
 
 #. [about]
-#: data/core/about.cfg:2103
+#: data/core/about.cfg:2150
 msgid "Portuguese Translation"
 msgstr "Bản dịch tiếng Bồ Đào Nha"
 
 #. [about]
-#: data/core/about.cfg:2110
+#: data/core/about.cfg:2157
 msgid "Portuguese (Brazil) Translation"
 msgstr "Bản dịch tiếng Bồ Đào Nha (B-ra-xin)"
 
 #. [about]
-#: data/core/about.cfg:2149
+#: data/core/about.cfg:2196
 msgid "Romanian Translation"
 msgstr "Bản dịch tiếng Romania"
 
 #. [about]
-#: data/core/about.cfg:2157
+#: data/core/about.cfg:2204
 msgid "Russian Translation"
 msgstr "Bản dịch tiếng Nga"
 
 #. [about]
-#: data/core/about.cfg:2224
+#: data/core/about.cfg:2271
 msgid "Serbian Translation"
 msgstr "Bản dịch tiếng Xéc-bi"
 
 #. [about]
-#: data/core/about.cfg:2243
+#: data/core/about.cfg:2290
 msgid "Slovak Translation"
 msgstr "Bản dịch tiếng Slô-va-ki-a"
 
 #. [about]
-#: data/core/about.cfg:2269
+#: data/core/about.cfg:2316
 msgid "Slovenian Translation"
 msgstr "Bản dịch tiếng Slô-vê-ni-a"
 
 #. [about]
-#: data/core/about.cfg:2282
+#: data/core/about.cfg:2329
 msgid "Spanish Translation"
 msgstr "Bản dịch tiếng Tây Ban Nha"
 
 #. [about]
-#: data/core/about.cfg:2343
+#: data/core/about.cfg:2390
 msgid "Swedish Translation"
 msgstr "Bản dịch tiếng Thụy Điển"
 
 #. [about]
-#: data/core/about.cfg:2372
+#: data/core/about.cfg:2419
 msgid "Turkish Translation"
 msgstr "Bản dịch tiếng Thổ Nhĩ Kỳ"
 
 #. [about]
-#: data/core/about.cfg:2394
+#: data/core/about.cfg:2441
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Bản dịch tiếng Va-len-ci-a (Ca-ta-lan phía nam)"
 
 #. [about]
-#: data/core/about.cfg:2407
+#: data/core/about.cfg:2454
 #, fuzzy
 msgid "Vietnamese Translation"
 msgstr "Bản dịch tiếng Trung Quốc"
 
 #. [about]
-#: data/core/about.cfg:2414
+#: data/core/about.cfg:2461
 msgid "RACV's Translation"
 msgstr "Bản dịch của RACV"
 
 #. [about]
-#: data/core/about.cfg:2421
+#: data/core/about.cfg:2468
 msgid "Bots"
 msgstr "Người máy"
 
@@ -562,7 +574,7 @@ msgstr "Cách chơi"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:33 data/core/help.cfg:355 src/menu_events.cpp:846
+#: data/core/help.cfg:33 data/core/help.cfg:355 src/menu_events.cpp:847
 msgid "Traits"
 msgstr "Đặc điểm"
 
@@ -586,7 +598,7 @@ msgstr "Tính đặc biệt của vũ khí"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=factions_section
-#: data/core/help.cfg:67 src/help.cpp:1287 src/help.cpp:1289
+#: data/core/help.cfg:67 src/help.cpp:1294 src/help.cpp:1296
 msgid "Factions"
 msgstr "Bè phái"
 
@@ -1313,13 +1325,14 @@ msgstr ""
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:263
+#, fuzzy
 msgid ""
 "\n"
 "\n"
 "Resistances work very simply: if a unit has 40% resistance against a damage "
 "type, then it will suffer 40% less damage when hit with that damage type. It "
 "is also possible for a unit to be vulnerable against some damage types. If a "
-"unit has −100% resistance against a damage type, it will suffer 100% more "
+"unit has —100% resistance against a damage type, it will suffer 100% more "
 "damage when hit by that type."
 msgstr ""
 "\n"
@@ -2098,7 +2111,8 @@ msgstr "Chậm chạp"
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:456
-msgid "Slow units have -1 movement but 5% more hitpoints."
+#, fuzzy
+msgid "Slow units have −1 movement but 5% more hitpoints."
 msgstr "Các đơn vị chậm chạp có di chuyển -1 nhưng nhiều năng lượng hơn 5%."
 
 #. [topic]: id=traits_slow
@@ -2123,7 +2137,8 @@ msgstr "Yếu ớt"
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:464
-msgid "Units with trait Weak get a -1 increment in hitpoints and melee damage."
+#, fuzzy
+msgid "Units with trait Weak get a −1 increment in hitpoints and melee damage."
 msgstr ""
 "Các đơn vị có đặc điểm yếu ớt giảm 1 điểm năng lượng và lượng thiệt hại cận "
 "chiến."
@@ -5572,11 +5587,12 @@ msgstr "Thần tiên"
 
 #. [race]: id=elf
 #: data/core/units.cfg:118
+#, fuzzy
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
 "They have slightly pointy ears, pale skin and usually blond hair. Few "
 "differences between humans and elves are more pronounced than the Elves' "
-"unusually long life - most, unless claimed by illness, accident or war, live "
+"unusually long life — most, unless claimed by illness, accident or war, live "
 "a full two and a half centuries. While some elves possessing a high magical "
 "aptitude have been known to live an additional full century, most elves "
 "begin to grow physically frail at some point between 250 and 300 years of "
@@ -5603,7 +5619,7 @@ msgid ""
 "open unvegetated spaces. They live primarily in the forests of the Great "
 "Continent; the Aethenwood in the southwest, Wesmere in the northwest, and "
 "the great northern woods of which the Lintanir Forest is the southernmost "
-"edge. \n"
+"edge.\n"
 "\n"
 "Elves are the eldest race of the continent, with the possible exception of "
 "trolls. Many of their settlements cannot be reliably dated, undoubtedly "
@@ -6773,7 +6789,8 @@ msgstr "Đừng sợ rút lui và tập hợp lại, đó thường là chìa kh
 
 #. [tip]
 #: data/hardwired/tips.cfg:116
-msgid "- Meneldur, 123YW"
+#, fuzzy
+msgid "— Meneldur, 123YW"
 msgstr "- Meneldur, năm Wesnoth 123"
 
 #. [tip]
@@ -7024,7 +7041,7 @@ msgstr ""
 "Trong nhiều kịch bản chiến dịch, bạn có thể cấp những chỉ thị đơn giản cho "
 "đồng minh do máy tính điều khiển sử dụng trình đơn ngữ cảnh chuột phải."
 
-#: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1612
+#: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1629
 msgid "Victory:"
 msgstr "Chiến thắng:"
 
@@ -7061,13 +7078,13 @@ msgstr "Không hỏi mỗi lần trước khi gửi dữ liệu"
 
 #. [menu]: id=menu-main
 #: data/themes/default.cfg:120 data/themes/dfool.cfg:139
-#: data/themes/experimental.cfg:95
+#: data/themes/experimental.cfg:101
 msgid "Menu"
 msgstr "Trình đơn"
 
 #. [menu]: id=actions-menu
 #: data/themes/default.cfg:131 data/themes/dfool.cfg:150
-#: data/themes/experimental.cfg:106
+#: data/themes/experimental.cfg:112
 msgid "Actions"
 msgstr "Hành động"
 
@@ -7089,7 +7106,7 @@ msgstr "Kết thúc kịch bản"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:237
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:208 src/unit.cpp:2330
+#: data/themes/experimental.cfg:187 src/menu_events.cpp:208 src/unit.cpp:2330
 #: src/unit.cpp:2486
 msgid "HP"
 msgstr "NL"
@@ -7097,54 +7114,54 @@ msgstr "NL"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-xp
 #: data/themes/default.cfg:221 data/themes/dfool.cfg:247
-#: data/themes/experimental.cfg:190 src/menu_events.cpp:210
-#: src/menu_events.cpp:844
+#: data/themes/experimental.cfg:196 src/menu_events.cpp:210
+#: src/menu_events.cpp:845
 msgid "XP"
 msgstr "KN"
 
 #. [label]: id=gold-icon
 #: data/themes/default.cfg:231 data/themes/dfool.cfg:266
-#: data/themes/experimental.cfg:199
+#: data/themes/experimental.cfg:205
 msgid "gold"
 msgstr "vàng"
 
 #. [label]: id=villages-icon
 #: data/themes/default.cfg:240 data/themes/dfool.cfg:275
-#: data/themes/experimental.cfg:208
+#: data/themes/experimental.cfg:214
 msgid "villages"
 msgstr "làng"
 
 #. [label]: id=units-icon
 #: data/themes/default.cfg:249 data/themes/dfool.cfg:284
-#: data/themes/experimental.cfg:217
+#: data/themes/experimental.cfg:223
 msgid "units"
 msgstr "đơn vị"
 
 #. [label]: id=upkeep-icon
 #: data/themes/default.cfg:258 data/themes/dfool.cfg:293
-#: data/themes/experimental.cfg:226
+#: data/themes/experimental.cfg:232
 msgid "upkeep"
 msgstr "phí bảo trì"
 
 #. [label]: id=income-icon
 #: data/themes/default.cfg:267 data/themes/dfool.cfg:302
-#: data/themes/experimental.cfg:235
+#: data/themes/experimental.cfg:241
 msgid "income"
 msgstr "thu nhập"
 
 #. [unit_level]: id=unit-level
 #: data/themes/default.cfg:429 data/themes/dfool.cfg:472
-#: data/themes/experimental.cfg:369
+#: data/themes/experimental.cfg:375
 msgid "statuspanel^level"
 msgstr "trình độ"
 
 #. [unit_moves]: id=unit-moves
-#: data/themes/default.cfg:459 data/themes/experimental.cfg:399
+#: data/themes/default.cfg:459 data/themes/experimental.cfg:405
 msgid "statuspanel^moves"
 msgstr "di chuyển"
 
 #. [unit_defense]: id=unit-defense
-#: data/themes/default.cfg:468 data/themes/experimental.cfg:408
+#: data/themes/default.cfg:468 data/themes/experimental.cfg:414
 msgid "statuspanel^terrain def."
 msgstr "phòng thủ địa hình"
 
@@ -7229,210 +7246,249 @@ msgstr "Góc nhìn"
 msgid "Skip animation"
 msgstr "Bỏ qua hoạt ảnh"
 
-#: src/about.cpp:198 src/help.cpp:3143 src/menu_events.cpp:317
+#: src/about.cpp:198 src/help.cpp:3150 src/menu_events.cpp:317
 #: src/menu_events.cpp:344 src/statistics_dialog.cpp:113
 msgid "Close"
 msgstr "Đóng"
 
-#: src/actions.cpp:372
+#: src/actions.cpp:371
 msgid "You don't have a leader to recruit with."
 msgstr "Bạn không có người lãnh đạo để tuyển quân."
 
-#: src/actions.cpp:379
+#: src/actions.cpp:378
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr "Bạn phải để người lãnh đạo trên pháo đài để tuyển quân hoặc gọi lại."
 
-#: src/actions.cpp:398
+#: src/actions.cpp:397
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Không có ô pháo đài nào trống để tuyển quân."
 
-#: src/actions.cpp:532 src/actions.cpp:591 src/actions.cpp:1522
+#: src/actions.cpp:531 src/actions.cpp:590 src/actions.cpp:1521
 msgid "An invalid attacker weapon got selected."
 msgstr "Đã chọn một vũ khí tấn công không hợp lệ."
 
-#: src/actions.cpp:537
+#: src/actions.cpp:536
 msgid "An invalid defender weapon got selected."
 msgstr "Đã chọn một vũ khí phòng thủ không hợp lệ."
 
-#: src/actions.cpp:1280
+#: src/actions.cpp:1279
 msgid "female^poisoned"
 msgstr "bị nhiễm độc"
 
-#: src/actions.cpp:1290
+#: src/actions.cpp:1289
 msgid "female^petrified"
 msgstr "bị hóa đá"
 
-#: src/actions.cpp:1290
+#: src/actions.cpp:1289
 msgid "petrified"
 msgstr "bị hóa đá"
 
-#: src/actions.cpp:2486
+#: src/actions.cpp:2476
 msgid "Ambushed!"
 msgstr "Bị mai phục!"
 
-#: src/actions.cpp:2493
+#: src/actions.cpp:2483
 msgid "Failed teleport! Exit not empty"
 msgstr "Dịch chuyển tức thời thất bại! Lối ra không trống"
 
-#: src/actions.cpp:2538
+#: src/actions.cpp:2528
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Nhìn thấy $friends đơn vị đồng minh"
 
-#: src/actions.cpp:2541
+#: src/actions.cpp:2531
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Nhìn thấy $enemies đơn vị kẻ thù!"
 
-#: src/actions.cpp:2546
+#: src/actions.cpp:2536
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "$friends đồng minh"
 
-#: src/actions.cpp:2547
+#: src/actions.cpp:2537
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "$enemies kẻ thù"
 
-#: src/actions.cpp:2548
+#: src/actions.cpp:2538
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Nhìn thấy đơn vị! ($friendphrase, $enemyphrase)"
 
-#: src/actions.cpp:2557
+#: src/actions.cpp:2547
 msgid "(press $hotkey to keep moving)"
 msgstr "(ấn $hotkey để tiếp tục di chuyển)"
 
-#: src/addon_management.cpp:341 src/unit_types.cpp:948
+#: src/addon_management.cpp:342 src/unit_types.cpp:951
 msgid "No description available."
 msgstr "Không có mô tả."
 
-#: src/addon_management.cpp:413
+#: src/addon_management.cpp:414
 msgid "B"
 msgstr "B"
 
-#: src/addon_management.cpp:416 src/dialogs.cpp:1054
+#: src/addon_management.cpp:417 src/dialogs.cpp:1054
 msgid "KB"
 msgstr "KB"
 
-#: src/addon_management.cpp:419
+#: src/addon_management.cpp:420
 msgid "MB"
 msgstr "MB"
 
-#: src/addon_management.cpp:422
+#: src/addon_management.cpp:423
 msgid "GB"
 msgstr "GB"
 
-#: src/addon_management.cpp:455
+#: src/addon_management.cpp:456
 msgid "addon_type^Campaign"
 msgstr "Chiến dịch"
 
-#: src/addon_management.cpp:457
+#: src/addon_management.cpp:458
 msgid "addon_type^Scenario"
 msgstr "Kịch bản"
 
-#: src/addon_management.cpp:459
+#: src/addon_management.cpp:460
 msgid "addon_type^MP era"
 msgstr "Kỷ nguyên NĐT"
 
-#: src/addon_management.cpp:461
+#: src/addon_management.cpp:462
 msgid "addon_type^MP faction"
 msgstr "Bè phái NĐT"
 
-#: src/addon_management.cpp:463
+#: src/addon_management.cpp:464
 msgid "addon_type^MP map-pack"
 msgstr "Gói bản đồ NĐT"
 
-#: src/addon_management.cpp:465
+#: src/addon_management.cpp:466
 msgid "addon_type^MP scenario"
 msgstr "Kịch bản NĐT"
 
-#: src/addon_management.cpp:467
+#: src/addon_management.cpp:468
 msgid "addon_type^MP campaign"
 msgstr "Chiến dịch NĐT"
 
-#: src/addon_management.cpp:469
+#: src/addon_management.cpp:470
 msgid "addon_type^Resources"
 msgstr "Tài nguyên"
 
-#: src/addon_management.cpp:471
+#: src/addon_management.cpp:472
 msgid "addon_type^Other"
 msgstr "Khác"
 
-#: src/addon_management.cpp:473
+#: src/addon_management.cpp:474
 msgid "addon_type^(unknown)"
 msgstr "(không xác định)"
 
-#: src/addon_management.cpp:503
-msgid "Dependencies"
-msgstr "Phụ thuộc"
-
-#: src/addon_management.cpp:507
-msgid ""
-"$addon_title depends upon the following add-on which you have not installed "
-"yet:"
-msgid_plural ""
-"$addon_title depends upon the following add-ons which you have not installed "
-"yet:"
-msgstr[0] "$addon_title phụ thuộc vào các phần bổ sung chưa cài đặt sau đây:"
-
-#: src/addon_management.cpp:510
-msgid ""
-"Do you still want to download $addon_title|? (You will have to install all "
-"the dependencies in order to play.)"
-msgstr ""
-"Bạn vẫn muốn tải về $addon_title|? (Bạn sẽ phải cài đặt tất cả các phụ thuộc "
-"để chơi.)"
-
-#: src/addon_management.cpp:531 src/addon_management.cpp:605
+#: src/addon_management.cpp:486 src/addon_management.cpp:560
 #: src/multiplayer.cpp:215 src/multiplayer.cpp:274 src/multiplayer_ui.cpp:80
 msgid "Connection timed out"
 msgstr "Kết nối hết giờ"
 
-#: src/addon_management.cpp:534
+#: src/addon_management.cpp:489
 msgid "The server responded with an error: \"$error|\""
 msgstr "Máy chủ đã trả lời bằng lỗi: \"$error|\""
 
-#: src/addon_management.cpp:543
+#: src/addon_management.cpp:498
 msgid "Terms"
 msgstr "Điều khoản"
 
-#: src/addon_management.cpp:578
+#: src/addon_management.cpp:533
 msgid "Sending add-on"
 msgstr "Đang gửi phần bổ sung"
 
-#: src/addon_management.cpp:582 src/addon_management.cpp:607
+#: src/addon_management.cpp:537 src/addon_management.cpp:562
 msgid "The server responded with an error: \""
 msgstr "Máy chủ đã trả lời bằng lỗi: \""
 
-#: src/addon_management.cpp:585 src/addon_management.cpp:610
+#: src/addon_management.cpp:540 src/addon_management.cpp:565
 #: src/multiplayer_wait.cpp:394
 msgid "Response"
 msgstr "Trả lời"
 
-#: src/addon_management.cpp:637
+#: src/addon_management.cpp:585
 msgid "Downloading add-on: $addon_title|..."
 msgstr "Đang tải về phần bổ sung: $addon_title|..."
 
-#: src/addon_management.cpp:652
+#: src/addon_management.cpp:600
 msgid ""
 "The add-on has an invalid file or directory name and can not be installed."
 msgstr ""
 "Phần bổ sung có tên tập tin hoặc tên thư mục không hợp lệ và không thể cài "
 "đặt được."
 
-#: src/addon_management.cpp:701
+#: src/addon_management.cpp:649
 msgid "The add-on '$addon_title|' has been successfully installed."
 msgstr "Phần bổ sung '$addon_title|' đã được cài đặt thành công."
 
-#: src/addon_management.cpp:702
+#: src/addon_management.cpp:650
 msgid "Add-on Installed"
 msgstr "Đã cài đặt phần bổ sung"
 
-#: src/addon_management.cpp:785
+#: src/addon_management.cpp:751 src/addon_management.cpp:938
+#: src/addon_management.cpp:1150 src/dialogs.cpp:571 src/menu_events.cpp:205
+#: src/menu_events.cpp:843
+msgid "Name"
+msgstr "Tên"
+
+#: src/addon_management.cpp:751 src/addon_management.cpp:1150
+#: src/titlescreen.cpp:349
+msgid "Version"
+msgstr "Phiên bản"
+
+#: src/addon_management.cpp:752 src/addon_management.cpp:939
+#: src/addon_management.cpp:1151
+msgid "Author"
+msgstr "Tác giả"
+
+#: src/addon_management.cpp:752 src/addon_management.cpp:939
+#: src/addon_management.cpp:1151
+msgid "Size"
+msgstr "Kích thước"
+
+#: src/addon_management.cpp:752 src/addon_management.cpp:1151
+#: src/help.cpp:1469 src/menu_events.cpp:204 src/menu_events.cpp:842
+#: src/menu_events.cpp:1438
+msgid "Type"
+msgstr "Kiểu"
+
+#: src/addon_management.cpp:801
+#, fuzzy
+msgid "Install dependencies"
+msgstr "Phụ thuộc"
+
+#: src/addon_management.cpp:802
+msgid ""
+"The selected add-on has the following dependency. Do you want to install it?"
+msgid_plural ""
+"The selected add-on has the following dependencies. Do you want to install "
+"them?"
+msgstr[0] ""
+
+#: src/addon_management.cpp:831
+msgid "Installation of a dependency failed"
+msgstr ""
+
+#: src/addon_management.cpp:833
+msgid ""
+"While the add-on has been installed, a dependency is missing. Try to update "
+"the installed add-ons."
+msgstr ""
+
+#: src/addon_management.cpp:847
+msgid "Installation failed"
+msgstr ""
+
+#: src/addon_management.cpp:849 src/addon_management.cpp:1078
+msgid "The following add-on could not be downloaded or updated successfully:"
+msgid_plural ""
+"The following add-ons could not be downloaded or updated successfully:"
+msgstr[0] "Không thể tải về hoặc cập nhật thành công các phần bổ sung sau đây:"
+
+#: src/addon_management.cpp:911
 msgid "Outdated add-ons"
 msgstr "Phần bổ sung lỗi thời"
 
-#: src/addon_management.cpp:787
+#: src/addon_management.cpp:913
 msgid ""
 "An outdated local add-on has publishing information attached. It will not be "
 "offered for updating."
@@ -7443,136 +7499,120 @@ msgstr[0] ""
 "Một số phần bổ sung cục bộ lỗi thời có thông tin phát hành đính kèm. Chúng "
 "sẽ không được cập nhật."
 
-#: src/addon_management.cpp:799
+#: src/addon_management.cpp:925
 msgid "No add-ons to update"
 msgstr "Không có phần bổ sung để cập nhật"
 
-#: src/addon_management.cpp:800
+#: src/addon_management.cpp:926
 msgid "Could not find any updated add-ons on this server."
 msgstr "Không thể tìm thấy phần bổ sung nào đã cập nhật trên máy chủ này."
 
-#: src/addon_management.cpp:812 src/addon_management.cpp:1010
-#: src/dialogs.cpp:571 src/menu_events.cpp:205 src/menu_events.cpp:842
-msgid "Name"
-msgstr "Tên"
-
-#: src/addon_management.cpp:812
+#: src/addon_management.cpp:938
 msgid "New version"
 msgstr "Phiên bản mới"
 
-#: src/addon_management.cpp:812
+#: src/addon_management.cpp:938
 msgid "Old version"
 msgstr "Phiên bản cũ"
 
-#: src/addon_management.cpp:813 src/addon_management.cpp:1011
-msgid "Author"
-msgstr "Tác giả"
-
-#: src/addon_management.cpp:813 src/addon_management.cpp:1011
-msgid "Size"
-msgstr "Kích thước"
-
-#: src/addon_management.cpp:864
+#: src/addon_management.cpp:990
 msgid "Update add-ons"
 msgstr "Cập nhật phần bổ sung"
 
-#: src/addon_management.cpp:865
+#: src/addon_management.cpp:991
 msgid "Select an add-on to update:"
 msgstr "Chọn phần bổ sung cần cập nhật:"
 
-#: src/addon_management.cpp:879
+#: src/addon_management.cpp:1005
 msgid "Update all"
 msgstr "Cập nhật toàn bộ"
 
-#: src/addon_management.cpp:936
+#: src/addon_management.cpp:1043 src/addon_management.cpp:1060
+#: src/addon_management.cpp:1300
+msgid "Installation of some dependency failed"
+msgstr ""
+
+#: src/addon_management.cpp:1045 src/addon_management.cpp:1062
+#: src/addon_management.cpp:1302
+msgid ""
+"While the add-on has been installed, some dependency is missing. Try to "
+"update the installed add-ons."
+msgstr ""
+
+#: src/addon_management.cpp:1076
 msgid "Update failed"
 msgstr "Cập nhật thất bại"
 
-#: src/addon_management.cpp:938
-msgid "The following add-on could not be downloaded or updated successfully:"
-msgid_plural ""
-"The following add-ons could not be downloaded or updated successfully:"
-msgstr[0] "Không thể tải về hoặc cập nhật thành công các phần bổ sung sau đây:"
-
-#: src/addon_management.cpp:946
+#: src/addon_management.cpp:1086
 msgid "Update succeeded"
 msgstr "Cập nhật thành công"
 
-#: src/addon_management.cpp:947
+#: src/addon_management.cpp:1087
 msgid "Add-on updated successfully."
 msgstr "Đã cập nhật thành công phần bổ sung."
 
-#: src/addon_management.cpp:948
+#: src/addon_management.cpp:1088
 msgid "All add-ons updated successfully."
 msgstr "Đã cập nhật thành công tất cả các phần bổ sung."
 
-#: src/addon_management.cpp:971
+#: src/addon_management.cpp:1111
 msgid "Connecting to add-ons server..."
 msgstr "Đang kết nối đến máy chủ phần bổ sung..."
 
-#: src/addon_management.cpp:974 src/network.cpp:369 src/network.cpp:377
+#: src/addon_management.cpp:1114 src/network.cpp:369 src/network.cpp:377
 msgid "Could not connect to host."
 msgstr "Không thể kết nối đến máy chủ."
 
-#: src/addon_management.cpp:982
+#: src/addon_management.cpp:1122
 msgid "Requesting list of add-ons"
 msgstr "Đang lấy danh sách phần bổ sung"
 
-#: src/addon_management.cpp:994
+#: src/addon_management.cpp:1134
 msgid "An error occurred while communicating with the server."
 msgstr "Lỗi xảy ra khi giao tiếp với máy chủ."
 
-#: src/addon_management.cpp:1010 src/titlescreen.cpp:349
-msgid "Version"
-msgstr "Phiên bản"
-
-#: src/addon_management.cpp:1011
+#: src/addon_management.cpp:1151
 msgid "Downloads"
 msgstr "Số lượt tải về"
 
-#: src/addon_management.cpp:1011 src/help.cpp:1462 src/menu_events.cpp:204
-#: src/menu_events.cpp:841 src/menu_events.cpp:1438
-msgid "Type"
-msgstr "Kiểu"
-
-#: src/addon_management.cpp:1085
+#: src/addon_management.cpp:1225
 msgid "Publish add-on: "
 msgstr "Phát hành phần bổ sung: "
 
-#: src/addon_management.cpp:1091
+#: src/addon_management.cpp:1231
 msgid "Delete add-on: "
 msgstr "Xóa phần bổ sung: "
 
-#: src/addon_management.cpp:1097
+#: src/addon_management.cpp:1237
 msgid "There are no add-ons available for download from this server."
 msgstr "Không có phần bổ sung nào để tải về từ máy chủ này."
 
-#: src/addon_management.cpp:1110
+#: src/addon_management.cpp:1250
 msgid "Get add-ons"
 msgstr "Lấy phần bổ sung"
 
-#: src/addon_management.cpp:1111
+#: src/addon_management.cpp:1251
 msgid "Choose the add-on to download."
 msgstr "Chọn phần bổ sung cần tải về."
 
-#: src/addon_management.cpp:1123 src/dialogs.cpp:596 src/menu_events.cpp:915
+#: src/addon_management.cpp:1263 src/dialogs.cpp:596 src/menu_events.cpp:916
 #: src/menu_events.cpp:1474
 msgid "Filter: "
 msgstr "Bộ lọc: "
 
-#: src/addon_management.cpp:1128
+#: src/addon_management.cpp:1268
 msgid "Description"
 msgstr ""
 
-#: src/addon_management.cpp:1165
+#: src/addon_management.cpp:1312
 msgid "Network communication error."
 msgstr "Lỗi giao tiếp mạng."
 
-#: src/addon_management.cpp:1168
+#: src/addon_management.cpp:1315
 msgid "Remote host disconnected."
 msgstr "Máy chủ từ xa đã ngắt kết nối."
 
-#: src/addon_management.cpp:1171
+#: src/addon_management.cpp:1318
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
@@ -7580,43 +7620,43 @@ msgstr ""
 "Trục trặc xảy ra khi thử tạo các tập tin cần thiết để cài đặt phần bổ sung "
 "này."
 
-#: src/addon_management.cpp:1189
+#: src/addon_management.cpp:1336
 msgid "You have no add-ons installed."
 msgstr "Bạn không cài đặt phần bổ sung nào."
 
-#: src/addon_management.cpp:1201
+#: src/addon_management.cpp:1348
 msgid "Choose the add-on to remove."
 msgstr "Chọn phần bổ sung cần xóa."
 
-#: src/addon_management.cpp:1201
+#: src/addon_management.cpp:1348
 msgid "Uninstall add-ons"
 msgstr "Gỡ bỏ phần bổ sung"
 
-#: src/addon_management.cpp:1213
+#: src/addon_management.cpp:1360
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr "Bạn có chắc bạn muốn xóa phần bổ sung '$addon|' không?"
 
-#: src/addon_management.cpp:1219 src/multiplayer.cpp:227
+#: src/addon_management.cpp:1366 src/multiplayer.cpp:227
 msgid "Confirm"
 msgstr "Xác nhận"
 
-#: src/addon_management.cpp:1232
+#: src/addon_management.cpp:1379
 msgid "Add-on '$addon|' deleted."
 msgstr "Đã xóa phần bổ sung '$addon|'."
 
-#: src/addon_management.cpp:1237
+#: src/addon_management.cpp:1384
 msgid "Add-on deleted"
 msgstr "Đã xóa phần bổ sung"
 
-#: src/addon_management.cpp:1245
+#: src/addon_management.cpp:1392
 msgid "Add-on could not be deleted properly:"
 msgstr "Không thể xóa phần bổ sung:"
 
-#: src/attack_prediction_display.cpp:107 src/attack_prediction_display.cpp:217
+#: src/attack_prediction_display.cpp:107 src/attack_prediction_display.cpp:237
 msgid "Attacker"
 msgstr "Người tấn công"
 
-#: src/attack_prediction_display.cpp:108 src/attack_prediction_display.cpp:216
+#: src/attack_prediction_display.cpp:108 src/attack_prediction_display.cpp:236
 msgid "Defender"
 msgstr "Người phòng thủ"
 
@@ -7624,39 +7664,39 @@ msgstr "Người phòng thủ"
 msgid "Expected Battle Result (HP)"
 msgstr "Kết quả trận đấu dự tính (NL)"
 
-#: src/attack_prediction_display.cpp:218
-msgid " resistance vs "
-msgstr " kháng cự lại "
-
-#: src/attack_prediction_display.cpp:219
-msgid " vulnerability vs "
-msgstr " nhược điểm với "
-
-#: src/attack_prediction_display.cpp:229
-msgid "Slowed"
-msgstr "Bị chậm"
-
-#: src/attack_prediction_display.cpp:236
+#: src/attack_prediction_display.cpp:215
 msgid "Time of day"
 msgstr "Thời điểm trong ngày"
 
-#: src/attack_prediction_display.cpp:246
+#: src/attack_prediction_display.cpp:225
 msgid "Leadership"
 msgstr "Lãnh đạo"
 
-#: src/attack_prediction_display.cpp:253
+#: src/attack_prediction_display.cpp:238
+msgid " resistance vs "
+msgstr " kháng cự lại "
+
+#: src/attack_prediction_display.cpp:239
+msgid " vulnerability vs "
+msgstr " nhược điểm với "
+
+#: src/attack_prediction_display.cpp:249
+msgid "Slowed"
+msgstr "Bị chậm"
+
+#: src/attack_prediction_display.cpp:254
 msgid "Total damage"
 msgstr "Tổng thiệt hại"
 
-#: src/attack_prediction_display.cpp:260
+#: src/attack_prediction_display.cpp:261
 msgid "No usable weapon"
 msgstr "Không có vũ khí nào sử dụng được"
 
-#: src/attack_prediction_display.cpp:265
+#: src/attack_prediction_display.cpp:266
 msgid "Chance of being unscathed"
 msgstr "Cơ hội không bị tổn thương"
 
-#: src/attack_prediction_display.cpp:547 src/mouse_events.cpp:720
+#: src/attack_prediction_display.cpp:548 src/mouse_events.cpp:746
 msgid "Damage Calculations"
 msgstr "Tính toán thiệt hại"
 
@@ -7776,7 +7816,7 @@ msgid "OK"
 msgstr "Đồng ý"
 
 #: src/dialogs.cpp:611 src/dialogs.cpp:1025 src/dialogs.cpp:1132
-#: src/multiplayer_connect.cpp:1032 src/multiplayer_create.cpp:86
+#: src/multiplayer_connect.cpp:1015 src/multiplayer_create.cpp:86
 #: src/multiplayer_wait.cpp:175
 msgid "Cancel"
 msgstr "Hủy bỏ"
@@ -7789,11 +7829,11 @@ msgstr "Xóa bản lưu"
 msgid "Profile"
 msgstr "Hồ sơ"
 
-#: src/dialogs.cpp:767 src/help.cpp:1333
+#: src/dialogs.cpp:767 src/help.cpp:1340
 msgid "level"
 msgstr "trình độ"
 
-#: src/dialogs.cpp:780 src/help.cpp:1436
+#: src/dialogs.cpp:780 src/help.cpp:1443
 msgid "HP: "
 msgstr "NL: "
 
@@ -7801,43 +7841,43 @@ msgstr "NL: "
 msgid "XP: "
 msgstr "KN: "
 
-#: src/dialogs.cpp:787 src/help.cpp:1437
+#: src/dialogs.cpp:787 src/help.cpp:1444
 msgid "Moves: "
 msgstr "Di chuyển: "
 
-#: src/game.cpp:577 src/game.cpp:1311
+#: src/game.cpp:615 src/game.cpp:1416
 msgid "The Battle for Wesnoth"
 msgstr "Trận chiến giành Wesnoth"
 
-#: src/game.cpp:908 src/game.cpp:916
+#: src/game.cpp:946 src/game.cpp:954
 msgid "The file you have tried to load is corrupt"
 msgstr "Tập tin bạn thử tải bị hỏng"
 
-#: src/game.cpp:911 src/game.cpp:919 src/savegame.cpp:534
+#: src/game.cpp:949 src/game.cpp:957 src/savegame.cpp:534
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Tập tin bạn thử tải bị hỏng: '"
 
-#: src/game.cpp:923
+#: src/game.cpp:961
 msgid "File I/O Error while reading the game"
 msgstr "Lỗi vào/ra tập tin khi đọc trò chơi"
 
-#: src/game.cpp:1018
+#: src/game.cpp:1056
 msgid "No campaigns are available.\n"
 msgstr "Không có chiến dịch nào.\n"
 
-#: src/game.cpp:1056
+#: src/game.cpp:1141
 msgid "Difficulty"
 msgstr "Độ khó"
 
-#: src/game.cpp:1057
+#: src/game.cpp:1142
 msgid "Select difficulty level:"
 msgstr "Chọn mức độ khó:"
 
-#: src/game.cpp:1192
+#: src/game.cpp:1297
 msgid "Do you really want to start the server?"
 msgstr "Bạn có thực sự muốn khởi động máy chủ không?"
 
-#: src/game.cpp:1193
+#: src/game.cpp:1298
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
@@ -7845,60 +7885,60 @@ msgstr ""
 "Máy chủ sẽ chạy trong một tiến trình ngầm đến khi tất cả các đấu thủ đã ngắt "
 "kết nối."
 
-#: src/game.cpp:1197
+#: src/game.cpp:1302
 msgid "Don't show again"
 msgstr "Không hiện lại nữa"
 
-#: src/game.cpp:1268
+#: src/game.cpp:1373
 msgid "Error while starting server: "
 msgstr "Lỗi khi khởi động máy chủ: "
 
-#: src/game.cpp:1270 src/playcampaign.cpp:105 src/playcampaign.cpp:392
+#: src/game.cpp:1375 src/playcampaign.cpp:105 src/playcampaign.cpp:392
 msgid "The game could not be loaded: "
 msgstr "Không thể tải trò chơi: "
 
-#: src/game.cpp:1272 src/playcampaign.cpp:107 src/playcampaign.cpp:395
+#: src/game.cpp:1377 src/playcampaign.cpp:107 src/playcampaign.cpp:395
 msgid "Error while playing the game: "
 msgstr "Lỗi khi chơi trò chơi: "
 
-#: src/game.cpp:1290 src/playcampaign.cpp:109 src/playcampaign.cpp:398
+#: src/game.cpp:1395 src/playcampaign.cpp:109 src/playcampaign.cpp:398
 msgid "The game map could not be loaded: "
 msgstr "Không thể tải bản đồ trò chơi: "
 
-#: src/game.cpp:1440
+#: src/game.cpp:1543
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Các phần bổ sung sau đây có lỗi và không thể tải được:"
 
-#: src/game.cpp:1447
+#: src/game.cpp:1550
 msgid "ERROR DETAILS:"
 msgstr "CHI TIẾT LỖI:"
 
-#: src/game.cpp:1467
+#: src/game.cpp:1570
 msgid "Error loading game configuration files: '"
 msgstr "Lỗi khi tải các tập tin cấu hình trò chơi: '"
 
-#: src/game.cpp:1468
+#: src/game.cpp:1571
 msgid "' (The game will now exit)"
 msgstr "' (Trò chơi bây giờ sẽ thoát)"
 
-#: src/game.cpp:1477
+#: src/game.cpp:1580
 msgid "Loading data files"
 msgstr "Đang tải các tập tin dữ liệu"
 
-#: src/game.cpp:1908
+#: src/game.cpp:2018
 msgid "Loading game configuration."
 msgstr "Đang tải cấu hình trò chơi."
 
-#: src/game.cpp:1914
+#: src/game.cpp:2024
 msgid "Re-initialize fonts for the current language."
 msgstr "Đang khởi tạo lại phông cho ngôn ngữ hiện thời."
 
-#: src/game.cpp:1922
+#: src/game.cpp:2032
 msgid "Searching for installed add-ons."
 msgstr "Đang tìm kiếm các phần bổ sung đã cài đặt."
 
-#: src/game.cpp:1931
+#: src/game.cpp:2041
 msgid "Loading title screen."
 msgstr "Đang tải màn hình tiêu đề."
 
@@ -7906,40 +7946,65 @@ msgstr "Đang tải màn hình tiêu đề."
 msgid "Invalid color range: "
 msgstr "Phạm vi màu không hợp lệ: "
 
-#: src/game_events.cpp:204
+#: src/game_events.cpp:205
 msgid "Error: "
 msgstr "Lỗi: "
 
-#: src/game_events.cpp:207
+#: src/game_events.cpp:208
 msgid "Warning: "
 msgstr "Cảnh báo: "
 
-#: src/game_events.cpp:210
+#: src/game_events.cpp:211
 msgid "Debug: "
 msgstr "Gỡ lỗi: "
 
-#: src/game_events.cpp:213
+#: src/game_events.cpp:214
 msgid "Info: "
 msgstr "Thông tin: "
 
-#: src/game_events.cpp:3268
-msgid "[unit_worth]'s filter didn't match any units!"
-msgstr "Bộ lọc của [unit_worth] không khớp với bất kỳ đơn vị nào!"
+#: src/generate_report.cpp:91 src/multiplayer_connect.cpp:1097
+#: src/savegame.cpp:693
+msgid "Name: "
+msgstr "Tên: "
 
-#: src/generate_report.cpp:128
+#: src/generate_report.cpp:98
+#, fuzzy
+msgid "Type: "
+msgstr "Kiểu"
+
+#: src/generate_report.cpp:108 src/help.cpp:1403
+msgid "Race: "
+msgstr "Loài: "
+
+#: src/generate_report.cpp:129
+#, fuzzy
+msgid "Level: "
+msgstr "Trình độ"
+
+#: src/generate_report.cpp:131
+#, fuzzy
+msgid "Advances to:"
+msgstr "Nâng cấp thành: "
+
+#: src/generate_report.cpp:149
+#, fuzzy
+msgid "Traits: "
+msgstr "Đặc điểm"
+
+#: src/generate_report.cpp:158
 msgid "invisible: "
 msgstr "vô hình: "
 
-#: src/generate_report.cpp:129
+#: src/generate_report.cpp:159
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
 "Đơn vị này vô hình. Các đơn vị kẻ thù không thể nhìn thấy hay tấn công nó."
 
-#: src/generate_report.cpp:132
+#: src/generate_report.cpp:162
 msgid "slowed: "
 msgstr "bị chậm: "
 
-#: src/generate_report.cpp:133
+#: src/generate_report.cpp:163
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking and its movement cost is doubled."
@@ -7947,11 +8012,11 @@ msgstr ""
 "Đơn vị này đã bị chậm. Nó sẽ chỉ gây ra một nửa lượng thiệt hại bình thường "
 "khi tấn công và chi phí di chuyển của nó tăng gấp đôi."
 
-#: src/generate_report.cpp:136
+#: src/generate_report.cpp:166
 msgid "poisoned: "
 msgstr "bị nhiễm độc: "
 
-#: src/generate_report.cpp:137
+#: src/generate_report.cpp:167
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the 'cures' "
@@ -7966,71 +8031,126 @@ msgstr ""
 "Các đơn vị không thể bị giết chỉ do chất độc. Chất độc sẽ không làm giảm nó "
 "xuống dưới 1 NL."
 
-#: src/generate_report.cpp:140
+#: src/generate_report.cpp:170
 msgid "petrified: "
 msgstr "bị hóa đá: "
 
-#: src/generate_report.cpp:141
+#: src/generate_report.cpp:171
 msgid "This unit has been petrified. It may not move or attack."
 msgstr "Đơn vị này đã bị hóa đá. Nó không thể di chuyển hay tấn công."
 
-#: src/generate_report.cpp:195
+#: src/generate_report.cpp:182
+#, fuzzy
+msgid "Alignement: "
+msgstr "Phân loại: "
+
+#: src/generate_report.cpp:196
+#, fuzzy
+msgid "Ability:"
+msgstr "Khả năng: "
+
+#: src/generate_report.cpp:230
 msgid "Resistances: "
 msgstr "Sức kháng cự: "
 
-#: src/generate_report.cpp:197
+#: src/generate_report.cpp:232
 msgid "(Att / Def)"
 msgstr "(TC / PT)"
 
-#: src/generate_report.cpp:214 src/multiplayer_create.cpp:413
+#: src/generate_report.cpp:247 src/multiplayer_create.cpp:413
 msgid "Experience Modifier: "
 msgstr "Hệ số kinh nghiệm: "
 
-#: src/generate_report.cpp:287
-msgid "tooltip^damage"
-msgid_plural "damage"
-msgstr[0] "lượng thiệt hại"
+#: src/generate_report.cpp:264
+#, fuzzy
+msgid "Terrain: "
+msgstr "Địa hình"
 
-#: src/generate_report.cpp:288
-msgid "tooltip^attack"
-msgid_plural "attacks"
-msgstr[0] "đòn tấn công"
+#: src/generate_report.cpp:266
+#, fuzzy
+msgid "Chance to be hit: "
+msgstr "Cơ hội không bị tổn thương"
 
-#: src/generate_report.cpp:294
-#, no-c-format
-msgid "tooltip^% accuracy"
-msgstr "% chính xác"
-
-#: src/generate_report.cpp:300
-#, no-c-format
-msgid "tooltip^% parry"
-msgstr "% tránh né"
-
-#: src/generate_report.cpp:310
-msgid "weapon range: "
+#: src/generate_report.cpp:337
+#, fuzzy
+msgid "Weapon: "
 msgstr "phạm vi vũ khí: "
 
-#: src/generate_report.cpp:311
-msgid "damage type: "
+#: src/generate_report.cpp:338
+#, fuzzy
+msgid "Damage: "
+msgstr "Thiệt hại"
+
+#: src/generate_report.cpp:341
+#, fuzzy
+msgid "Base damage: "
+msgstr "Tổng thiệt hại"
+
+#: src/generate_report.cpp:343
+#, fuzzy
+msgid "Time of day: "
+msgstr "Thời điểm trong ngày"
+
+#: src/generate_report.cpp:347
+#, fuzzy
+msgid "Leadership: "
+msgstr "Lãnh đạo"
+
+#: src/generate_report.cpp:351
+#, fuzzy
+msgid "Slowed: "
+msgstr "bị chậm: "
+
+#: src/generate_report.cpp:355
+#, fuzzy
+msgid "Attacks: "
+msgstr "Người tấn công"
+
+#: src/generate_report.cpp:357
+msgid "Base attacks: "
+msgstr ""
+
+#: src/generate_report.cpp:359
+#, fuzzy
+msgid "Swarm: "
+msgstr "Đầm lầy"
+
+#: src/generate_report.cpp:364
+#, fuzzy
+msgid "Accuracy :"
+msgstr "% chính xác"
+
+#: src/generate_report.cpp:369
+msgid "Parry :"
+msgstr ""
+
+#: src/generate_report.cpp:380
+#, fuzzy
+msgid "Weapon range: "
+msgstr "phạm vi vũ khí: "
+
+#: src/generate_report.cpp:381
+#, fuzzy
+msgid "Damage type: "
 msgstr "kiểu thiệt hại: "
 
-#: src/generate_report.cpp:332
+#: src/generate_report.cpp:404
 msgid "vs"
 msgstr "đấu với"
 
-#: src/generate_report.cpp:385
+#: src/generate_report.cpp:455
 msgid "Lawful units: "
 msgstr "Đơn vị chính thống: "
 
-#: src/generate_report.cpp:386
+#: src/generate_report.cpp:456
 msgid "Neutral units: "
 msgstr "Đơn vị trung lập: "
 
-#: src/generate_report.cpp:387
+#: src/generate_report.cpp:457
 msgid "Chaotic units: "
 msgstr "Đơn vị hỗn độn: "
 
-#: src/generate_report.cpp:565
+#: src/generate_report.cpp:636
 msgid "Observers:"
 msgstr "Người quan sát:"
 
@@ -8080,41 +8200,41 @@ msgstr "Màn che"
 msgid "none"
 msgstr "không có"
 
-#: src/gui/dialogs/lobby_player_info.cpp:65
+#: src/gui/dialogs/lobby_player_info.cpp:97
 msgid "In game:"
 msgstr "Đang chơi:"
 
-#: src/gui/dialogs/lobby_player_info.cpp:67
+#: src/gui/dialogs/lobby_player_info.cpp:99
 msgid "(observing)"
 msgstr "(đang quan sát)"
 
-#: src/gui/dialogs/lobby_player_info.cpp:69
+#: src/gui/dialogs/lobby_player_info.cpp:101
 msgid "(playing)"
 msgstr "(đang chơi)"
 
-#: src/gui/dialogs/lobby_player_info.cpp:72
+#: src/gui/dialogs/lobby_player_info.cpp:104
 msgid "In lobby"
 msgstr "Trong phòng gặp gỡ"
 
-#: src/gui/dialogs/lobby_player_info.cpp:96
+#: src/gui/dialogs/lobby_player_info.cpp:128
 #, fuzzy
 msgid "On friends list"
 msgstr "Đã thêm vào danh sách bạn bè: "
 
-#: src/gui/dialogs/lobby_player_info.cpp:101
+#: src/gui/dialogs/lobby_player_info.cpp:133
 #, fuzzy
 msgid "On ignores list"
 msgstr "Đã thêm vào danh sách bỏ qua: "
 
-#: src/gui/dialogs/lobby_player_info.cpp:106
+#: src/gui/dialogs/lobby_player_info.cpp:138
 msgid "Neither a friend nor ignored"
 msgstr ""
 
-#: src/gui/dialogs/lobby_player_info.cpp:111
+#: src/gui/dialogs/lobby_player_info.cpp:143
 msgid "You"
 msgstr ""
 
-#: src/gui/dialogs/lobby_player_info.cpp:114 src/multiplayer_create.cpp:551
+#: src/gui/dialogs/lobby_player_info.cpp:146 src/multiplayer_create.cpp:551
 msgid "Error"
 msgstr "Lỗi"
 
@@ -8122,143 +8242,139 @@ msgstr "Lỗi"
 msgid "Help"
 msgstr "Trợ giúp"
 
-#: src/help.cpp:1140
+#: src/help.cpp:1147
 msgid "<header>text='Units having this special attack'</header>"
 msgstr "<header>text='Các đơn vị có đòn tấn công đặc biệt này'</header>"
 
-#: src/help.cpp:1216
+#: src/help.cpp:1223
 msgid "<header>text='Units having this ability'</header>"
 msgstr "<header>text='Các đơn vị có khả năng này'</header>"
 
-#: src/help.cpp:1249
+#: src/help.cpp:1256
 msgid "Leaders:"
 msgstr "Người lãnh đạo:"
 
-#: src/help.cpp:1258
+#: src/help.cpp:1265
 msgid "Recruits:"
 msgstr "Tuyển quân:"
 
-#: src/help.cpp:1272 src/multiplayer_create.cpp:79
+#: src/help.cpp:1279 src/multiplayer_create.cpp:79
 msgid "Era:"
 msgstr "Kỷ nguyên:"
 
-#: src/help.cpp:1280
+#: src/help.cpp:1287
 msgid "Factions:"
 msgstr "Bè phái:"
 
-#: src/help.cpp:1290
+#: src/help.cpp:1297
 msgid "Factions are only used in multiplayer"
 msgstr "Bè phái chỉ được sử dụng trong chế độ nhiều đấu thủ"
 
-#: src/help.cpp:1365
+#: src/help.cpp:1372
 msgid "Advances from: "
 msgstr "Nâng cấp từ: "
 
-#: src/help.cpp:1367
+#: src/help.cpp:1374
 msgid "Advances to: "
 msgstr "Nâng cấp thành: "
 
-#: src/help.cpp:1394 src/help.cpp:1706 src/help.cpp:1756
+#: src/help.cpp:1401 src/help.cpp:1713 src/help.cpp:1763
 msgid "race^Miscellaneous"
 msgstr "Hỗn hợp"
 
-#: src/help.cpp:1396
-msgid "Race: "
-msgstr "Loài: "
-
-#: src/help.cpp:1403
+#: src/help.cpp:1410
 msgid "Abilities: "
 msgstr "Khả năng: "
 
-#: src/help.cpp:1420
+#: src/help.cpp:1427
 msgid "Ability Upgrades: "
 msgstr "Nâng cấp khả năng: "
 
-#: src/help.cpp:1438
+#: src/help.cpp:1445
 msgid "Cost: "
 msgstr "Chi phí: "
 
-#: src/help.cpp:1439
+#: src/help.cpp:1446
 msgid "Alignment: "
 msgstr "Phân loại: "
 
-#: src/help.cpp:1445
+#: src/help.cpp:1452
 msgid "Required XP: "
 msgstr "KN cần thiết: "
 
-#: src/help.cpp:1454
+#: src/help.cpp:1461
 msgid "unit help^Attacks"
 msgstr "Đòn tấn công"
 
-#: src/help.cpp:1461
+#: src/help.cpp:1468
 msgid "unit help^Name"
 msgstr "Tên"
 
-#: src/help.cpp:1463
+#: src/help.cpp:1470
 msgid "Strikes"
 msgstr "Đòn đánh"
 
-#: src/help.cpp:1464
+#: src/help.cpp:1471
 msgid "Range"
 msgstr "Phạm vi"
 
-#: src/help.cpp:1465
+#: src/help.cpp:1472
 msgid "Special"
 msgstr "Đặc biệt"
 
-#: src/help.cpp:1515
+#: src/help.cpp:1522
 msgid "Resistances"
 msgstr "Sức kháng cự"
 
-#: src/help.cpp:1519
+#: src/help.cpp:1526
 msgid "Attack Type"
 msgstr "Kiểu tấn công"
 
-#: src/help.cpp:1520
+#: src/help.cpp:1527
 msgid "Resistance"
 msgstr "Sức kháng cự"
 
-#: src/help.cpp:1555
+#: src/help.cpp:1562
 msgid "Terrain Modifiers"
 msgstr "Hệ số địa hình"
 
-#: src/help.cpp:1559
+#: src/help.cpp:1566
 msgid "Terrain"
 msgstr "Địa hình"
 
-#: src/help.cpp:1560
+#: src/help.cpp:1567
 msgid "Defense"
 msgstr "Phòng thủ"
 
-#: src/help.cpp:1561
+#: src/help.cpp:1568
 msgid "Movement Cost"
 msgstr "Chi phí di chuyển"
 
-#: src/help.cpp:1762
+#: src/help.cpp:1769
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='Các đơn vị thuộc loài này'</header>"
 
-#: src/help.cpp:2683 src/menu_events.cpp:569
+#: src/help.cpp:2690 src/menu_events.cpp:573
 msgid " < Back"
 msgstr " < Trở lại"
 
-#: src/help.cpp:2684
+#: src/help.cpp:2691
 msgid "Forward >"
 msgstr "Tiếp theo >"
 
-#: src/help.cpp:2796
+#: src/help.cpp:2803
 msgid "Reference to unknown topic: "
 msgstr "Tham chiếu đến chủ đề không xác định: "
 
-#: src/help.cpp:3052
+#: src/help.cpp:3059
 msgid "corrupted original file"
 msgstr "tập tin gốc bị hỏng"
 
-#: src/help.cpp:3146
+#: src/help.cpp:3153
 msgid "The Battle for Wesnoth Help"
 msgstr "Trợ giúp Trận chiến giành Wesnoth"
 
-#: src/help.cpp:3202
+#: src/help.cpp:3209
 msgid "Parse error when parsing help text: "
 msgstr "Lỗi phân tích khi phân tích văn bản trợ giúp: "
 
@@ -8345,7 +8461,7 @@ msgstr "DC"
 msgid "Status"
 msgstr "Trạng thái"
 
-#: src/menu_events.cpp:209 src/menu_events.cpp:843
+#: src/menu_events.cpp:209 src/menu_events.cpp:844
 msgid "Level^Lvl."
 msgstr "TĐ"
 
@@ -8365,11 +8481,11 @@ msgstr "Cuộn đến"
 msgid "Leader"
 msgstr "Người lãnh đạo"
 
-#: src/menu_events.cpp:370 src/multiplayer_connect.cpp:1017
+#: src/menu_events.cpp:370 src/multiplayer_connect.cpp:1000
 msgid "Team"
 msgstr "Đội"
 
-#: src/menu_events.cpp:371 src/multiplayer_connect.cpp:1028
+#: src/menu_events.cpp:371 src/multiplayer_connect.cpp:1011
 msgid "Gold"
 msgstr "Vàng"
 
@@ -8385,28 +8501,28 @@ msgstr "Đơn vị"
 msgid "Upkeep"
 msgstr "Phí bảo trì"
 
-#: src/menu_events.cpp:375 src/multiplayer_connect.cpp:1029
+#: src/menu_events.cpp:375 src/multiplayer_connect.cpp:1012
 #: src/multiplayer_wait.cpp:507
 msgid "Income"
 msgstr "Thu nhập"
 
-#: src/menu_events.cpp:476
+#: src/menu_events.cpp:480
 msgid "Current Status"
 msgstr "Trạng thái hiện thời"
 
-#: src/menu_events.cpp:477
+#: src/menu_events.cpp:481
 msgid "More >"
 msgstr "Nhiều hơn >"
 
-#: src/menu_events.cpp:495
+#: src/menu_events.cpp:499
 msgid "scenario settings^Leader"
 msgstr "Người lãnh đạo"
 
-#: src/menu_events.cpp:497
+#: src/menu_events.cpp:501
 msgid "scenario settings^Side"
 msgstr "Phe"
 
-#: src/menu_events.cpp:498
+#: src/menu_events.cpp:502
 msgid ""
 "scenario settings^Start\n"
 "Gold"
@@ -8414,7 +8530,7 @@ msgstr ""
 "Vàng\n"
 "ban đầu"
 
-#: src/menu_events.cpp:499
+#: src/menu_events.cpp:503
 msgid ""
 "scenario settings^Base\n"
 "Income"
@@ -8422,7 +8538,7 @@ msgstr ""
 "Thu nhập\n"
 "cơ bản"
 
-#: src/menu_events.cpp:500
+#: src/menu_events.cpp:504
 msgid ""
 "scenario settings^Gold Per\n"
 "Village"
@@ -8430,84 +8546,84 @@ msgstr ""
 "Vàng\n"
 "mỗi làng"
 
-#: src/menu_events.cpp:501
+#: src/menu_events.cpp:505
 msgid "scenario settings^Fog"
 msgstr "Sương mù"
 
-#: src/menu_events.cpp:502
+#: src/menu_events.cpp:506
 msgid "scenario settings^Shroud"
 msgstr "Màn che"
 
-#: src/menu_events.cpp:549 src/menu_events.cpp:550
+#: src/menu_events.cpp:553 src/menu_events.cpp:554
 msgid "no"
 msgstr "không"
 
-#: src/menu_events.cpp:549 src/menu_events.cpp:550
+#: src/menu_events.cpp:553 src/menu_events.cpp:554
 msgid "yes"
 msgstr "có"
 
-#: src/menu_events.cpp:566
+#: src/menu_events.cpp:570
 msgid "Scenario Settings"
 msgstr "Thiết lập kịch bản"
 
-#: src/menu_events.cpp:588
+#: src/menu_events.cpp:592
 msgid "Save the Map As"
 msgstr "Lưu bản đồ thành"
 
-#: src/menu_events.cpp:593
+#: src/menu_events.cpp:597
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Bản đồ đã tồn tại. Bạn có muốn ghi đè lên nó không?"
 
-#: src/menu_events.cpp:605
+#: src/menu_events.cpp:609
 msgid "Map saved."
 msgstr "Đã lưu bản đồ."
 
-#: src/menu_events.cpp:609
+#: src/menu_events.cpp:613
 msgid "Could not save the map: $msg"
 msgstr "Không thể lưu bản đồ: $msg"
 
-#: src/menu_events.cpp:624
+#: src/menu_events.cpp:628
 msgid "Chat Log"
 msgstr "Nhật ký tán gẫu"
 
-#: src/menu_events.cpp:634
+#: src/menu_events.cpp:638
 msgid "Message:"
 msgstr "Tin nhắn:"
 
-#: src/menu_events.cpp:635
+#: src/menu_events.cpp:639
 msgid "Send to allies only"
 msgstr "Chỉ gửi cho đồng minh"
 
-#: src/menu_events.cpp:635
+#: src/menu_events.cpp:639
 msgid "Send to observers only"
 msgstr "Chỉ gửi cho người quan sát"
 
-#: src/menu_events.cpp:698
+#: src/menu_events.cpp:699
 msgid "unit^Gold"
 msgid_plural "Gold"
 msgstr[0] "Vàng"
 
-#: src/menu_events.cpp:705
+#: src/menu_events.cpp:706
 msgid "You have no units available to recruit."
 msgstr "Bạn không thể tuyển bất kỳ đơn vị nào."
 
-#: src/menu_events.cpp:717
+#: src/menu_events.cpp:718
 msgid "Recruit"
 msgstr "Tuyển quân"
 
-#: src/menu_events.cpp:718 src/menu_events.cpp:910
+#: src/menu_events.cpp:719 src/menu_events.cpp:911
 msgid "Select unit:"
 msgstr "Chọn đơn vị:"
 
-#: src/menu_events.cpp:764
+#: src/menu_events.cpp:765
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Bạn không có đủ vàng để tuyển đơn vị đó"
 
-#: src/menu_events.cpp:810
+#: src/menu_events.cpp:811
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Bạn bị tách khỏi quân lính và không thể gọi lại chúng"
 
-#: src/menu_events.cpp:833
+#: src/menu_events.cpp:834
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -8515,15 +8631,15 @@ msgstr ""
 "Không có quân lính nào để gọi lại\n"
 "(Bạn phải có người sống sót kỳ cựu từ kịch bản trước)"
 
-#: src/menu_events.cpp:909
+#: src/menu_events.cpp:910
 msgid "Recall"
 msgstr "Gọi lại"
 
-#: src/menu_events.cpp:919
+#: src/menu_events.cpp:920
 msgid "Dismiss Unit"
 msgstr "Thải hồi đơn vị"
 
-#: src/menu_events.cpp:940
+#: src/menu_events.cpp:941
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] "Bạn phải có ít nhất $cost lượng vàng để gọi lại một đơn vị"
@@ -8568,21 +8684,21 @@ msgstr "Nhãn: "
 msgid "Team only"
 msgstr "Chỉ đội"
 
-#: src/menu_events.cpp:1757
+#: src/menu_events.cpp:1755
 msgid "Search"
 msgstr "Tìm kiếm"
 
-#: src/menu_events.cpp:1938
+#: src/menu_events.cpp:1936
 msgid "This command is currently unavailable."
 msgstr "Lệnh này hiện thời không khả dụng."
 
-#: src/menu_events.cpp:1944
+#: src/menu_events.cpp:1942
 msgid ""
 "Unknown command '$command', try $help_command for a list of available "
 "commands."
 msgstr ""
 
-#: src/menu_events.cpp:1952
+#: src/menu_events.cpp:1950
 msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
@@ -8590,57 +8706,57 @@ msgstr ""
 "Danh sách các lệnh và trợ giúp riêng mỗi lệnh. Sử dụng \"help all\" để bao "
 "gồm cả lệnh không khả dụng hiện thời."
 
-#: src/menu_events.cpp:1954
+#: src/menu_events.cpp:1952
 msgid "do not translate the 'all'^[all|<command>]"
 msgstr ""
 
-#: src/menu_events.cpp:1998
+#: src/menu_events.cpp:1996
 #, fuzzy
 msgid "Error:"
 msgstr "Lỗi: "
 
-#: src/menu_events.cpp:2004
+#: src/menu_events.cpp:2002
 msgid "Missing argument $arg_id"
 msgstr ""
 
-#: src/menu_events.cpp:2052
+#: src/menu_events.cpp:2050
 msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
 msgstr ""
 
-#: src/menu_events.cpp:2052 src/menu_events.cpp:2053 src/menu_events.cpp:2076
+#: src/menu_events.cpp:2050 src/menu_events.cpp:2051 src/menu_events.cpp:2074
 #, fuzzy
 msgid "help"
 msgstr "Trợ giúp"
 
-#: src/menu_events.cpp:2053
+#: src/menu_events.cpp:2051
 msgid "Type $help_command <command> for more info."
 msgstr ""
 
-#: src/menu_events.cpp:2064
+#: src/menu_events.cpp:2062
 msgid " No help available."
 msgstr " Không có trợ giúp."
 
-#: src/menu_events.cpp:2069
+#: src/menu_events.cpp:2067
 #, fuzzy
 msgid "Usage:"
 msgstr "Tin nhắn:"
 
-#: src/menu_events.cpp:2074
+#: src/menu_events.cpp:2072
 msgid "aliases:"
 msgstr ""
 
-#: src/menu_events.cpp:2200
-msgid "(A) — auth command"
+#: src/menu_events.cpp:2198
+msgid "(A) - admin command"
 msgstr ""
 
-#: src/menu_events.cpp:2207
+#: src/menu_events.cpp:2205 src/menu_events.cpp:2403
 #, fuzzy
-msgid "(auth only)"
+msgid "(admin only)"
 msgstr "Chỉ đội"
 
-#: src/menu_events.cpp:2227
+#: src/menu_events.cpp:2225
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
@@ -8648,7 +8764,7 @@ msgstr ""
 "Gửi truy vấn đến máy chủ. Không có tham số, máy chủ sẽ cho bạn biết các lệnh "
 "khả dụng."
 
-#: src/menu_events.cpp:2231
+#: src/menu_events.cpp:2229
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
@@ -8656,51 +8772,51 @@ msgstr ""
 "Cấm và đuổi một đấu thủ hoặc người quan sát. Nếu người đó không tham gia "
 "chơi nhưng ở trên máy chủ, người đó sẽ chỉ bị cấm."
 
-#: src/menu_events.cpp:2232 src/menu_events.cpp:2235 src/menu_events.cpp:2237
-#: src/menu_events.cpp:2239 src/menu_events.cpp:2241 src/menu_events.cpp:2266
-#: src/menu_events.cpp:2268 src/menu_events.cpp:2270 src/menu_events.cpp:2284
+#: src/menu_events.cpp:2230 src/menu_events.cpp:2233 src/menu_events.cpp:2235
+#: src/menu_events.cpp:2237 src/menu_events.cpp:2239 src/menu_events.cpp:2264
+#: src/menu_events.cpp:2266 src/menu_events.cpp:2268 src/menu_events.cpp:2282
 msgid "<nick>"
 msgstr ""
 
-#: src/menu_events.cpp:2234
+#: src/menu_events.cpp:2232
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr ""
 "Hủy lệnh cấm một người. Người đó không tham gia chơi nhưng ở trên máy chủ."
 
-#: src/menu_events.cpp:2237
+#: src/menu_events.cpp:2235
 msgid "Kick a player or observer."
 msgstr "Đuổi một đấu thủ hoặc người quan sát."
 
-#: src/menu_events.cpp:2239
+#: src/menu_events.cpp:2237
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr ""
 "Chặn tiếng một người quan sát. Không có tham số, hiển thị trạng thái chặn "
 "tiếng."
 
-#: src/menu_events.cpp:2241
+#: src/menu_events.cpp:2239
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr ""
 "Hủy chặn tiếng một người quan sát. Không có tham số, hủy chặn tiếng mọi "
 "người."
 
-#: src/menu_events.cpp:2243
+#: src/menu_events.cpp:2241
 msgid "Mute/Unmute all observers. (toggles)"
 msgstr "Chặn/hủy chặn tiếng mọi người quan sát. (bật tắt)"
 
-#: src/menu_events.cpp:2253
+#: src/menu_events.cpp:2251
 msgid "Send a message to the server admins currently online"
 msgstr "Gửi tin nhắn đến những người quản trị máy chủ hiện đang trực tuyến"
 
-#: src/menu_events.cpp:2255
+#: src/menu_events.cpp:2253
 #, fuzzy
 msgid "<message>"
 msgstr "Tin nhắn:"
 
-#: src/menu_events.cpp:2255
+#: src/menu_events.cpp:2253
 msgid "Send an emotion or personal action in chat."
 msgstr "Gửi cảm xúc hoặc hành động riêng tư khi tán gẫu."
 
-#: src/menu_events.cpp:2258
+#: src/menu_events.cpp:2256
 msgid ""
 "Sends a private message. You can't send messages to players that don't "
 "control a side in a running game you are in."
@@ -8708,442 +8824,438 @@ msgstr ""
 "Gửi tin nhắn riêng tư. Bạn không thể gửi tin nhắn đến những đấu thủ không "
 "điều khiển phe nào trong trò chơi bạn đang tham gia."
 
-#: src/menu_events.cpp:2260
+#: src/menu_events.cpp:2258
 msgid "<nick> <message>"
 msgstr ""
 
-#: src/menu_events.cpp:2264
+#: src/menu_events.cpp:2262
 msgid "<level> <domain>"
 msgstr ""
 
-#: src/menu_events.cpp:2264
+#: src/menu_events.cpp:2262
 msgid "Change the log level of a log domain."
 msgstr "Thay đổi mức độ ghi lưu của một phạm vi ghi lưu."
 
-#: src/menu_events.cpp:2266
+#: src/menu_events.cpp:2264
 msgid "Add a nick to your ignores list."
 msgstr "Thêm một biệt danh vào danh sách bỏ qua của bạn."
 
-#: src/menu_events.cpp:2268
+#: src/menu_events.cpp:2266
 msgid "Add a nick to your friends list."
 msgstr "Thêm một biệt danh vào danh sách bạn bè của bạn."
 
-#: src/menu_events.cpp:2270
+#: src/menu_events.cpp:2268
 msgid "Remove a nick from your ignores or friends list."
 msgstr "Xóa một biệt danh khỏi danh sách bỏ qua hoặc danh sách bạn bè của bạn."
 
-#: src/menu_events.cpp:2272
+#: src/menu_events.cpp:2270
 msgid "Show your ignores and friends list."
 msgstr "Hiện danh sách bỏ qua và danh sách bạn bè của bạn."
 
-#: src/menu_events.cpp:2275
+#: src/menu_events.cpp:2273
 msgid "Display version information."
 msgstr "Hiển thị thông tin phiên bản."
 
-#: src/menu_events.cpp:2277
+#: src/menu_events.cpp:2275
 msgid "<password> <email (optional)>"
 msgstr ""
 
-#: src/menu_events.cpp:2277
+#: src/menu_events.cpp:2275
 msgid "Register your nick"
 msgstr "Đăng ký biệt danh của bạn"
 
-#: src/menu_events.cpp:2279
+#: src/menu_events.cpp:2277
 msgid "Drop your nick."
 msgstr "Xóa biệt danh của bạn."
 
-#: src/menu_events.cpp:2281
+#: src/menu_events.cpp:2279
 msgid "Update details for your nick. For possible details see '/details'."
 msgstr ""
 "Cập nhật chi tiết cho biệt danh của bạn. Để biết chi tiết xem '/details'."
 
-#: src/menu_events.cpp:2282
+#: src/menu_events.cpp:2280
 msgid "<detail> <value>"
 msgstr ""
 
-#: src/menu_events.cpp:2284
+#: src/menu_events.cpp:2282
 msgid "Request information about a nick."
 msgstr "Lấy thông tin về một biệt danh."
 
-#: src/menu_events.cpp:2286
+#: src/menu_events.cpp:2284
 msgid "Request a list of details you can set for your registered nick."
 msgstr "Lấy danh sách chi tiết bạn có thể thiết lập cho biệt danh đã đăng ký."
 
-#: src/menu_events.cpp:2288 src/menu_events.cpp:2291 src/menu_events.cpp:2293
+#: src/menu_events.cpp:2286 src/menu_events.cpp:2289 src/menu_events.cpp:2291
 msgid "<room>"
 msgstr ""
 
-#: src/menu_events.cpp:2288
+#: src/menu_events.cpp:2286
 msgid "Join a room."
 msgstr "Tham gia một phòng."
 
-#: src/menu_events.cpp:2291
+#: src/menu_events.cpp:2289
 msgid "Part a room."
 msgstr "Rời một phòng."
 
-#: src/menu_events.cpp:2293
+#: src/menu_events.cpp:2291
 msgid "List room members."
 msgstr "Liệt kê các thành viên trong phòng."
 
-#: src/menu_events.cpp:2295
+#: src/menu_events.cpp:2293
 msgid "List available rooms."
 msgstr "Liệt kê các phòng."
 
-#: src/menu_events.cpp:2297
+#: src/menu_events.cpp:2295
 msgid "<room> <msg>"
 msgstr ""
 
-#: src/menu_events.cpp:2297
+#: src/menu_events.cpp:2295
 msgid "Room message."
 msgstr "Tin nhắn trong phòng."
 
-#: src/menu_events.cpp:2299
+#: src/menu_events.cpp:2297
 msgid "<room> <type> [value]"
 msgstr ""
 
-#: src/menu_events.cpp:2299
+#: src/menu_events.cpp:2297
 msgid "Room query."
 msgstr "Truy vấn trong phòng."
 
-#: src/menu_events.cpp:2397
-msgid "(D) — debug only, (N) — network only, (A) — auth only"
+#: src/menu_events.cpp:2395
+msgid "(D) - debug only, (N) - network only, (A) - admin only"
 msgstr ""
 
-#: src/menu_events.cpp:2403
+#: src/menu_events.cpp:2401
 #, fuzzy
 msgid "(debug command)"
 msgstr "Lệnh chế độ gỡ lỗi"
 
-#: src/menu_events.cpp:2404
+#: src/menu_events.cpp:2402
 #, fuzzy
-msgid " (network only)"
+msgid "(network only)"
 msgstr "Đấu thủ mạng"
 
-#: src/menu_events.cpp:2405
-msgid " (auth only)"
-msgstr ""
-
-#: src/menu_events.cpp:2429
+#: src/menu_events.cpp:2427
 msgid "Refresh gui."
 msgstr "Tải lại giao diện người dùng đồ họa."
 
-#: src/menu_events.cpp:2431
+#: src/menu_events.cpp:2429
 msgid "Switch a side to/from AI control."
 msgstr "Chuyển một phe thành/từ điều khiển của máy tính."
 
-#: src/menu_events.cpp:2431
+#: src/menu_events.cpp:2429
 msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr ""
 
-#: src/menu_events.cpp:2434
+#: src/menu_events.cpp:2432
 msgid "<side> <nick>"
 msgstr ""
 
-#: src/menu_events.cpp:2434
+#: src/menu_events.cpp:2432
 msgid "Assign control of a side to a different player or observer."
 msgstr "Cấp quyền điều khiển một phe cho một đấu thủ hoặc người quan sát khác."
 
-#: src/menu_events.cpp:2436
+#: src/menu_events.cpp:2434
 msgid "Clear chat history."
 msgstr "Xóa lịch sử tán gẫu."
 
-#: src/menu_events.cpp:2438
+#: src/menu_events.cpp:2436
 msgid "Visualize the screen refresh procedure."
 msgstr "Trực quan hóa thủ tục tải lại màn hình."
 
-#: src/menu_events.cpp:2439
+#: src/menu_events.cpp:2437
 #, fuzzy
 msgid "Show fps."
 msgstr "Hiện phát lại"
 
-#: src/menu_events.cpp:2441
+#: src/menu_events.cpp:2439
 msgid "Save game."
 msgstr "Lưu trò chơi."
 
-#: src/menu_events.cpp:2443
+#: src/menu_events.cpp:2441
 msgid "Quit game."
 msgstr "Thoát khỏi trò chơi."
 
-#: src/menu_events.cpp:2447
+#: src/menu_events.cpp:2445
 msgid "Save and quit."
 msgstr "Lưu và thoát."
 
-#: src/menu_events.cpp:2450
+#: src/menu_events.cpp:2448
 msgid "Ignore replay errors."
 msgstr "Bỏ qua các lỗi phát lại."
 
-#: src/menu_events.cpp:2452
+#: src/menu_events.cpp:2450
 msgid "Disable autosaves."
 msgstr "Vô hiệu lực lưu tự động."
 
-#: src/menu_events.cpp:2454
+#: src/menu_events.cpp:2452
 msgid "<id>"
 msgstr ""
 
-#: src/menu_events.cpp:2454
+#: src/menu_events.cpp:2452
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr "Chuyển sang kịch bản kế tiếp, hoặc kịch bản được xác định bởi 'id'"
 
-#: src/menu_events.cpp:2457
+#: src/menu_events.cpp:2455
 msgid "Choose next scenario"
 msgstr "Chọn kịch bản kế tiếp"
 
-#: src/menu_events.cpp:2460
+#: src/menu_events.cpp:2458
 msgid "Turn debug mode on."
 msgstr "Bật chế độ gỡ lỗi."
 
-#: src/menu_events.cpp:2462
+#: src/menu_events.cpp:2460
 msgid "Turn debug mode off."
 msgstr "Tắt chế độ gỡ lỗi."
 
-#: src/menu_events.cpp:2464
+#: src/menu_events.cpp:2462
 msgid "Execute a Lua statement."
 msgstr "Thi hành một câu lệnh Lua."
 
-#: src/menu_events.cpp:2466
+#: src/menu_events.cpp:2464
 msgid "<command>[;<command>...]"
 msgstr ""
 
-#: src/menu_events.cpp:2466
+#: src/menu_events.cpp:2464
 msgid "Set the command used by the custom command hotkey"
 msgstr "Thiết lập lệnh được sử dụng bởi phím lệnh tùy chỉnh"
 
-#: src/menu_events.cpp:2468
+#: src/menu_events.cpp:2466
 msgid "Launch the gamestate inspector"
 msgstr "Khởi chạy trình kiểm tra trạng thái trò chơi"
 
-#: src/menu_events.cpp:2470
+#: src/menu_events.cpp:2468
 msgid "<name>[=<command>]"
 msgstr ""
 
-#: src/menu_events.cpp:2470
+#: src/menu_events.cpp:2468
 msgid "Set or show alias to a command"
 msgstr "Thiết lập hoặc hiện bí danh một lệnh"
 
-#: src/menu_events.cpp:2472
+#: src/menu_events.cpp:2470
 msgid "<var>=<value>"
 msgstr ""
 
-#: src/menu_events.cpp:2472
+#: src/menu_events.cpp:2470
 msgid "Set a scenario variable."
 msgstr "Thiết lập một biến kịch bản."
 
-#: src/menu_events.cpp:2474
+#: src/menu_events.cpp:2472
 msgid "<var>"
 msgstr ""
 
-#: src/menu_events.cpp:2474
+#: src/menu_events.cpp:2472
 msgid "Show a scenario variable."
 msgstr "Hiện một biến kịch bản."
 
-#: src/menu_events.cpp:2476
+#: src/menu_events.cpp:2474
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr "Sửa đổi một biến đơn vị. (Chỉ hỗ trợ các khóa mức trên cùng.)"
 
-#: src/menu_events.cpp:2483
+#: src/menu_events.cpp:2481
 msgid "Discover all units in help."
 msgstr "Khám phá tất cả các đơn vị trong trợ giúp."
 
-#: src/menu_events.cpp:2488
+#: src/menu_events.cpp:2486
 msgid "Create a unit."
 msgstr "Tạo một đơn vị."
 
-#: src/menu_events.cpp:2490
+#: src/menu_events.cpp:2488
 msgid "Toggle fog for the current player."
 msgstr "Bật tắt sương mù cho đấu thủ hiện thời."
 
-#: src/menu_events.cpp:2492
+#: src/menu_events.cpp:2490
 msgid "Toggle shroud for the current player."
 msgstr "Bật tắt màn che cho đấu thủ hiện thời."
 
-#: src/menu_events.cpp:2494
+#: src/menu_events.cpp:2492
 msgid "Give gold to the current player."
 msgstr "Thêm vàng cho đấu thủ hiện thời."
 
-#: src/menu_events.cpp:2496
+#: src/menu_events.cpp:2494
 msgid "Fire a game event."
 msgstr "Kích hoạt một sự kiện trò chơi."
 
-#: src/menu_events.cpp:2499
+#: src/menu_events.cpp:2497
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr "Bật tắt phủ tọa độ x,y trên các hình lục giác."
 
-#: src/menu_events.cpp:2502
+#: src/menu_events.cpp:2500
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "Bật tắt phủ mã địa hình trên các hình lục giác."
 
-#: src/menu_events.cpp:2546
+#: src/menu_events.cpp:2544
 msgid "Unknown debug level: '$level'."
 msgstr "Mức độ gỡ lỗi không xác định: '$level'."
 
-#: src/menu_events.cpp:2548 src/menu_events.cpp:2557
+#: src/menu_events.cpp:2546 src/menu_events.cpp:2555
 msgid "error"
 msgstr "lỗi"
 
-#: src/menu_events.cpp:2555
+#: src/menu_events.cpp:2553
 msgid "Unknown debug domain: '$domain'."
 msgstr "Phạm vi gỡ lỗi không xác định: '$domain'."
 
-#: src/menu_events.cpp:2564
+#: src/menu_events.cpp:2562
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr "Đã chuyển phạm vi: '$domain' thành mức độ: '$level'."
 
-#: src/menu_events.cpp:2635
+#: src/menu_events.cpp:2633
 msgid "whisper to $receiver"
 msgstr ""
 
-#: src/menu_events.cpp:2642
+#: src/menu_events.cpp:2640
 msgid "whisper: $sender"
 msgstr ""
 
-#: src/menu_events.cpp:2738 src/menu_events.cpp:2757
+#: src/menu_events.cpp:2736 src/menu_events.cpp:2755
 #: src/multiplayer_connect.cpp:699
 msgid "(empty)"
 msgstr "(bỏ trống)"
 
-#: src/menu_events.cpp:2738 src/menu_events.cpp:2744 src/menu_events.cpp:2794
+#: src/menu_events.cpp:2736 src/menu_events.cpp:2742 src/menu_events.cpp:2792
 #, fuzzy
 msgid "ignores list"
 msgstr "Đã thêm vào danh sách bỏ qua: "
 
-#: src/menu_events.cpp:2744
+#: src/menu_events.cpp:2742
 #, fuzzy
 msgid "Added to ignore list: $nick"
 msgstr "Đã thêm vào danh sách bỏ qua: "
 
-#: src/menu_events.cpp:2747 src/menu_events.cpp:2766
+#: src/menu_events.cpp:2745 src/menu_events.cpp:2764
 #, fuzzy
 msgid "Invalid username: $nick"
 msgstr "Tên người dùng không hợp lệ: "
 
-#: src/menu_events.cpp:2757 src/menu_events.cpp:2764 src/menu_events.cpp:2790
+#: src/menu_events.cpp:2755 src/menu_events.cpp:2762 src/menu_events.cpp:2788
 #, fuzzy
 msgid "friends list"
 msgstr "Đã thêm vào danh sách bạn bè: "
 
-#: src/menu_events.cpp:2764
+#: src/menu_events.cpp:2762
 #, fuzzy
 msgid "Added to friends list: $nick"
 msgstr "Đã thêm vào danh sách bạn bè: "
 
-#: src/menu_events.cpp:2780
+#: src/menu_events.cpp:2778
 #, fuzzy
 msgid "Removed from list: $nick"
 msgstr "Đã xóa khỏi danh sách: "
 
-#: src/menu_events.cpp:2780 src/menu_events.cpp:2798
+#: src/menu_events.cpp:2778 src/menu_events.cpp:2796
 #, fuzzy
 msgid "friends and ignores list"
 msgstr "Đã thêm vào danh sách bỏ qua: "
 
-#: src/menu_events.cpp:2798
+#: src/menu_events.cpp:2796
 msgid "There are no players on your friends or ignore list."
 msgstr "Không có đấu thủ nào trong danh sách bạn bè hoặc danh sách bỏ qua."
 
-#: src/menu_events.cpp:2803
+#: src/menu_events.cpp:2801
 #, fuzzy
 msgid "version"
 msgstr "Phiên bản"
 
-#: src/menu_events.cpp:2819
+#: src/menu_events.cpp:2817
 msgid "registering with password *** and no email address"
 msgstr ""
 
-#: src/menu_events.cpp:2823
+#: src/menu_events.cpp:2821
 msgid "registering with password *** and email address $email"
 msgstr ""
 
-#: src/menu_events.cpp:2826 src/menu_events.cpp:2837 src/menu_events.cpp:2855
-#: src/menu_events.cpp:2869
+#: src/menu_events.cpp:2824 src/menu_events.cpp:2835 src/menu_events.cpp:2853
+#: src/menu_events.cpp:2867
 msgid "nick registration"
 msgstr ""
 
-#: src/menu_events.cpp:2837
+#: src/menu_events.cpp:2835
 msgid "dropping your username"
 msgstr ""
 
-#: src/menu_events.cpp:2855
+#: src/menu_events.cpp:2853
 msgid "setting $var to $value"
 msgstr ""
 
-#: src/menu_events.cpp:2869
+#: src/menu_events.cpp:2867
 #, fuzzy
 msgid "requesting information for user $nick"
 msgstr "Lấy thông tin về một biệt danh."
 
-#: src/menu_events.cpp:2981
+#: src/menu_events.cpp:2979
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Không thể tìm thấy nhãn hoặc đơn vị chứa chuỗi '$search'."
 
-#: src/menu_events.cpp:3010
+#: src/menu_events.cpp:3008
 msgid "Can't droid invalid side: '$side'."
 msgstr "Không thể máy hóa phe không hợp lệ: '$side'."
 
-#: src/menu_events.cpp:3015
+#: src/menu_events.cpp:3013
 msgid "Can't droid networked side: '$side'."
 msgstr "Không thể máy hóa phe mạng: '$side'."
 
-#: src/menu_events.cpp:3052
+#: src/menu_events.cpp:3050
 msgid "Can't change control of invalid side: '$side'."
 msgstr "Không thể thay đổi quyền điều khiển của phe không hợp lệ: '$side'."
 
-#: src/menu_events.cpp:3058
+#: src/menu_events.cpp:3056
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "Không thể thay đổi quyền điều khiển của phe ngoài phạm vi: '$side'."
 
-#: src/menu_events.cpp:3149
+#: src/menu_events.cpp:3147
 msgid "Choose Scenario (Debug!)"
 msgstr "Chọn kịch bản (Gỡ lỗi!)"
 
-#: src/menu_events.cpp:3170
+#: src/menu_events.cpp:3168
 msgid "Debug mode activated!"
 msgstr "Đã kích hoạt chế độ gỡ lỗi!"
 
-#: src/menu_events.cpp:3173
+#: src/menu_events.cpp:3171
 msgid "Debug mode not available in network games"
 msgstr "Chế độ gỡ lỗi không khả dụng trong các trò chơi mạng"
 
-#: src/menu_events.cpp:3178
+#: src/menu_events.cpp:3176
 msgid "Debug mode deactivated!"
 msgstr "Đã ngừng kích hoạt chế độ gỡ lỗi!"
 
-#: src/menu_events.cpp:3224
+#: src/menu_events.cpp:3222
 msgid "Variable not found"
 msgstr ""
 
-#: src/menu_events.cpp:3262
+#: src/menu_events.cpp:3260
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral or "
 "chaotic."
 msgstr ""
 
-#: src/menu_events.cpp:3319
+#: src/menu_events.cpp:3317
 #, fuzzy
 msgid "Invalid unit type"
 msgstr "Tên thẻ không hợp lệ"
 
-#: src/menu_events.cpp:3332
+#: src/menu_events.cpp:3330
 #, fuzzy
 msgid "Invalid location"
 msgstr "Màu không hợp lệ"
 
-#: src/menu_events.cpp:3368
+#: src/menu_events.cpp:3366
 msgid "ai"
 msgstr "mt"
 
-#: src/menu_events.cpp:3378 src/menu_events.cpp:3393
+#: src/menu_events.cpp:3376 src/menu_events.cpp:3391
 msgid "prompt^Command:"
 msgstr "Lệnh:"
 
-#: src/menu_events.cpp:3413
+#: src/menu_events.cpp:3411
 msgid "User-Command#3"
 msgstr "Lệnh người dùng #3"
 
-#: src/mouse_events.cpp:730
+#: src/mouse_events.cpp:756
 msgid "Attack Enemy"
 msgstr "Tấn công kẻ thù"
 
-#: src/mouse_events.cpp:731
+#: src/mouse_events.cpp:757
 msgid "Choose weapon:"
 msgstr "Chọn vũ khí:"
 
@@ -9252,7 +9364,7 @@ msgstr "(Khe trống)"
 msgid "Anonymous local player"
 msgstr "Đấu thủ cục bộ ẩn danh"
 
-#: src/multiplayer_connect.cpp:680 src/multiplayer_connect.cpp:1443
+#: src/multiplayer_connect.cpp:680 src/multiplayer_connect.cpp:1458
 msgid "Computer Player"
 msgstr "Đấu thủ máy tính"
 
@@ -9268,75 +9380,88 @@ msgstr "(Khe bỏ trống)"
 msgid "(Reserved for $playername)"
 msgstr "(Dành riêng cho $playername)"
 
-#: src/multiplayer_connect.cpp:806
+#: src/multiplayer_connect.cpp:793
 msgid "Reserved"
 msgstr "Dành riêng"
 
-#: src/multiplayer_connect.cpp:807
+#: src/multiplayer_connect.cpp:794
 msgid "--give--"
 msgstr "--cho--"
 
-#: src/multiplayer_connect.cpp:942
+#: src/multiplayer_connect.cpp:924
 msgid "Only random sides in the current era."
 msgstr "Chỉ các phe ngẫu nhiên trong kỷ nguyên hiện thời."
 
-#: src/multiplayer_connect.cpp:966
+#: src/multiplayer_connect.cpp:948
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Không thể tìm thấy kiểu người lãnh đạo cho bè phái $faction"
 
-#: src/multiplayer_connect.cpp:1003
+#: src/multiplayer_connect.cpp:985
 msgid "Game Lobby: "
 msgstr "Phòng gặp gỡ trò chơi: "
 
-#: src/multiplayer_connect.cpp:1024
+#: src/multiplayer_connect.cpp:1007
 msgid "Player/Type"
 msgstr "Đấu thủ/Kiểu"
 
-#: src/multiplayer_connect.cpp:1025
+#: src/multiplayer_connect.cpp:1008
 msgid "Faction"
 msgstr "Bè phái"
 
-#: src/multiplayer_connect.cpp:1026
+#: src/multiplayer_connect.cpp:1009
 msgid "Team/Gender"
 msgstr "Đội/Giới tính"
 
-#: src/multiplayer_connect.cpp:1027
+#: src/multiplayer_connect.cpp:1010
 msgid "Color"
 msgstr "Màu"
 
-#: src/multiplayer_connect.cpp:1031
+#: src/multiplayer_connect.cpp:1014
 msgid "I'm Ready"
 msgstr "Tôi đã sẵn sàng"
 
-#: src/multiplayer_connect.cpp:1041
+#: src/multiplayer_connect.cpp:1016
+#, fuzzy
+msgid "Add named local player"
+msgstr "Đấu thủ cục bộ ẩn danh"
+
+#: src/multiplayer_connect.cpp:1025
 msgid "The scenario is invalid because it has no id."
 msgstr "Kịch bản không hợp lệ vì nó không có định danh."
 
-#: src/multiplayer_connect.cpp:1045
+#: src/multiplayer_connect.cpp:1029
 msgid "The scenario is invalid because it has no sides."
 msgstr "Kịch bản không hợp lệ vì nó không có phe nào."
 
-#: src/multiplayer_connect.cpp:1440
+#: src/multiplayer_connect.cpp:1096
+msgid "Enter a name for the new player"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:1438
+msgid "Adds a named hotseat player to the player list"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:1455
 msgid "Network Player"
 msgstr "Đấu thủ mạng"
 
-#: src/multiplayer_connect.cpp:1442
+#: src/multiplayer_connect.cpp:1457
 msgid "Local Player"
 msgstr "Đấu thủ cục bộ"
 
-#: src/multiplayer_connect.cpp:1444
+#: src/multiplayer_connect.cpp:1459
 msgid "Empty"
 msgstr "Bỏ trống"
 
-#: src/multiplayer_connect.cpp:1589
+#: src/multiplayer_connect.cpp:1606
 msgid "Cannot find era $era"
 msgstr "Không thể tìm thấy kỷ nguyên $era"
 
-#: src/multiplayer_connect.cpp:1614
+#: src/multiplayer_connect.cpp:1631
 msgid "Defeat enemy leader(s)"
 msgstr "Đánh bại lãnh đạo kẻ thù"
 
-#: src/multiplayer_connect.cpp:1718
+#: src/multiplayer_connect.cpp:1735
 msgid "Waiting for players to join..."
 msgstr "Đang chờ các đấu thủ tham gia..."
 
@@ -9597,44 +9722,44 @@ msgstr "Không thể thêm ổ cắm vào tập hợp ổ cắm"
 msgid "Could not send initial handshake"
 msgstr "Không thể gửi lệnh bắt tay ban đầu"
 
-#: src/pathfind/pathfind.cpp:474
+#: src/pathfind/pathfind.cpp:473
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Đã gặp phải địa hình với chi phí di chuyển nhỏ hơn 1."
 
-#: src/play_controller.cpp:133
+#: src/play_controller.cpp:143
 msgid "Loading level"
 msgstr "Đang tải trình độ"
 
-#: src/play_controller.cpp:155
+#: src/play_controller.cpp:165
 msgid "Initializing teams"
 msgstr "Đang khởi tạo các đội"
 
-#: src/play_controller.cpp:187
+#: src/play_controller.cpp:197
 msgid "Loading units"
 msgstr "Đang tải các đơn vị"
 
-#: src/play_controller.cpp:194 src/play_controller.cpp:205
+#: src/play_controller.cpp:204 src/play_controller.cpp:215
 msgid "Initializing display"
 msgstr "Đang khởi tạo màn hình"
 
-#: src/play_controller.cpp:201
+#: src/play_controller.cpp:211
 msgid "time left for current turn"
 msgstr ""
 
-#: src/play_controller.cpp:203 src/replay_controller.cpp:136
+#: src/play_controller.cpp:213 src/replay_controller.cpp:137
 msgid "current local time"
 msgstr ""
 
-#: src/play_controller.cpp:241
+#: src/play_controller.cpp:251
 msgid "Starting game"
 msgstr "Đang bắt đầu trò chơi"
 
-#: src/play_controller.cpp:948 src/savegame.cpp:293 src/savegame.cpp:305
+#: src/play_controller.cpp:953 src/savegame.cpp:293 src/savegame.cpp:305
 #: src/savegame.cpp:973 src/savegame.cpp:975
 msgid "Auto-Save"
 msgstr "Lưu tự động"
 
-#: src/play_controller.cpp:955
+#: src/play_controller.cpp:960
 msgid "Back to turn "
 msgstr "Trở lại lượt "
 
@@ -9666,23 +9791,23 @@ msgstr "Bạn có muốn lưu trò chơi không?"
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Kịch bản không xác định: '$scenario|'"
 
-#: src/playmp_controller.cpp:94
+#: src/playmp_controller.cpp:95
 msgid "$name has taken control"
 msgstr "$name đã giành quyền điều khiển"
 
-#: src/playmp_controller.cpp:96
+#: src/playmp_controller.cpp:97
 msgid "Turn changed"
 msgstr "Đã thay đổi lượt"
 
-#: src/playmp_controller.cpp:228
+#: src/playmp_controller.cpp:229
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "Đang đảo ngược những di chuyển chưa được truyền đến máy chủ."
 
-#: src/playmp_controller.cpp:401
+#: src/playmp_controller.cpp:402
 msgid "Waiting for next scenario..."
 msgstr "Đang chờ kịch bản kế tiếp..."
 
-#: src/playmp_controller.cpp:522
+#: src/playmp_controller.cpp:523
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -9734,7 +9859,7 @@ msgstr "Lượng vàng thưởng: "
 msgid "Retained Gold: "
 msgstr "Lượng vàng giữ lại: "
 
-#: src/playsingle_controller.cpp:250
+#: src/playsingle_controller.cpp:247
 msgid ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
@@ -9745,7 +9870,17 @@ msgstr[0] ""
 "Bạn sẽ bắt đầu kịch bản kế tiếp với $gold cộng vào lượng vàng tối thiểu ban "
 "đầu của kịch bản."
 
-#: src/playsingle_controller.cpp:258
+#: src/playsingle_controller.cpp:255
+#, fuzzy
+msgid ""
+"You will start the next scenario with the defined minimum starting gold."
+msgid_plural ""
+"You will start the next scenario with the defined minimum starting gold."
+msgstr[0] ""
+"Bạn sẽ bắt đầu kịch bản kế tiếp với $gold cộng vào lượng vàng tối thiểu ban "
+"đầu của kịch bản."
+
+#: src/playsingle_controller.cpp:263
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
@@ -9756,15 +9891,15 @@ msgstr[0] ""
 "Bạn sẽ bắt đầu kịch bản kế tiếp với $gold hoặc lượng vàng tối thiểu ban đầu "
 "của kịch bản, tùy theo cái nào cao hơn."
 
-#: src/playsingle_controller.cpp:410
+#: src/playsingle_controller.cpp:415
 msgid "Game Over"
 msgstr "Trò chơi kết thúc"
 
-#: src/playsingle_controller.cpp:411
+#: src/playsingle_controller.cpp:416
 msgid "The game is over."
 msgstr "Trò chơi kết thúc."
 
-#: src/playsingle_controller.cpp:496
+#: src/playsingle_controller.cpp:501
 msgid ""
 "A network disconnection has occurred, and the game\n"
 "cannot continue. Do you want to save the game?"
@@ -9772,39 +9907,39 @@ msgstr ""
 "Đã xảy ra ngắt kết nối mạng, và trò chơi không thể tiếp tục.\n"
 "Bạn có muốn lưu trò chơi không?"
 
-#: src/playsingle_controller.cpp:659
+#: src/playsingle_controller.cpp:664
 msgid "It is now $name|'s turn"
 msgstr "Giờ là lượt của $name"
 
-#: src/playsingle_controller.cpp:877
+#: src/playsingle_controller.cpp:882
 msgid "Scenario Report"
 msgstr "Báo cáo kịch bản"
 
-#: src/playsingle_controller.cpp:879
+#: src/playsingle_controller.cpp:884
 msgid "Victory"
 msgstr "Chiến thắng"
 
-#: src/playsingle_controller.cpp:880
+#: src/playsingle_controller.cpp:885
 msgid "You have emerged victorious!"
 msgstr "Bạn đã giành chiến thắng!"
 
-#: src/playturn.cpp:219
+#: src/playturn.cpp:217
 msgid "Replace with AI"
 msgstr "Thay thế bằng máy tính"
 
-#: src/playturn.cpp:220
+#: src/playturn.cpp:218
 msgid "Replace with local player"
 msgstr "Thay thế bằng đấu thủ cục bộ"
 
-#: src/playturn.cpp:221
+#: src/playturn.cpp:219
 msgid "Abort game"
 msgstr "Hủy bỏ trò chơi"
 
-#: src/playturn.cpp:227 src/playturn.cpp:241
+#: src/playturn.cpp:225 src/playturn.cpp:239
 msgid "Replace with $player"
 msgstr "Thay thế bằng $player"
 
-#: src/playturn.cpp:247
+#: src/playturn.cpp:245
 msgid "$player has left the game. What do you want to do?"
 msgstr "$player đã rời khỏi trò chơi. Bạn muốn làm gì?"
 
@@ -9834,10 +9969,6 @@ msgstr "Đây không phải bản lưu nhiều đấu thủ"
 #: src/savegame.cpp:606
 msgid "The game could not be saved: "
 msgstr "Không thể lưu trò chơi: "
-
-#: src/savegame.cpp:693
-msgid "Name: "
-msgstr "Tên: "
 
 #: src/savegame.cpp:693
 msgid "Save already exists. Do you want to overwrite it?"
@@ -9919,15 +10050,15 @@ msgstr "Tên biến rỗng"
 msgid "Unexpected characters after variable name (expected , or =)"
 msgstr "Ký tự không mong muốn sau tên biến (cần , hoặc =)"
 
-#: src/serialization/parser.cpp:282 src/serialization/parser.cpp:306
+#: src/serialization/parser.cpp:279 src/serialization/parser.cpp:303
 msgid "Unterminated quoted string"
 msgstr "Chuỗi trích dẫn không kết thúc"
 
-#: src/serialization/parser.cpp:348
+#: src/serialization/parser.cpp:346
 msgid "$error, value '$value', previous '$previous_value' at $pos"
 msgstr "$error, giá trị '$value', giá trị trước '$previous_value' ở $pos"
 
-#: src/serialization/parser.cpp:352
+#: src/serialization/parser.cpp:350
 msgid "$error, value '$value' at $pos"
 msgstr "$error, giá trị '$value' ở $pos"
 
@@ -10119,12 +10250,12 @@ msgstr "Giúp Wesnoth"
 msgid "Help Wesnoth by sending us information"
 msgstr "Giúp Wesnoth bằng cách gửi cho chúng tôi thông tin"
 
-#: src/tod_manager.cpp:103 src/tod_manager.cpp:135 src/tod_manager.cpp:239
-#: src/tod_manager.cpp:252 src/tod_manager.cpp:302
+#: src/tod_manager.cpp:103 src/tod_manager.cpp:135 src/tod_manager.cpp:245
+#: src/tod_manager.cpp:258 src/tod_manager.cpp:310
 msgid "No time of day has been defined."
 msgstr "Không xác định được thời điểm trong ngày."
 
-#: src/unit.cpp:715
+#: src/unit.cpp:717
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "Kiểu đơn vị '$type|' không xác định khi tạo đặc điểm"
 
@@ -10176,27 +10307,27 @@ msgstr "% chính xác"
 msgid "% parry"
 msgstr "% tránh né"
 
-#: src/unit_types.cpp:1004
+#: src/unit_types.cpp:1007
 msgid "chaotic"
 msgstr "hỗn độn"
 
-#: src/unit_types.cpp:1004
+#: src/unit_types.cpp:1007
 msgid "lawful"
 msgstr "chính thống"
 
-#: src/unit_types.cpp:1004
+#: src/unit_types.cpp:1007
 msgid "neutral"
 msgstr "trung lập"
 
-#: src/unit_types.cpp:1005
+#: src/unit_types.cpp:1008
 msgid "female^chaotic"
 msgstr "hỗn độn"
 
-#: src/unit_types.cpp:1005
+#: src/unit_types.cpp:1008
 msgid "female^lawful"
 msgstr "chính thống"
 
-#: src/unit_types.cpp:1005
+#: src/unit_types.cpp:1008
 msgid "female^neutral"
 msgstr "trung lập"
 
@@ -10229,11 +10360,41 @@ msgstr "Giúp chúng tôi làm cho Wesnoth tốt hơn cho bạn!"
 msgid "Enable summary uploads"
 msgstr "Cho phép tải lên bản tổng kết"
 
+#~ msgid ""
+#~ "$addon_title depends upon the following add-on which you have not "
+#~ "installed yet:"
+#~ msgid_plural ""
+#~ "$addon_title depends upon the following add-ons which you have not "
+#~ "installed yet:"
+#~ msgstr[0] ""
+#~ "$addon_title phụ thuộc vào các phần bổ sung chưa cài đặt sau đây:"
+
+#~ msgid ""
+#~ "Do you still want to download $addon_title|? (You will have to install "
+#~ "all the dependencies in order to play.)"
+#~ msgstr ""
+#~ "Bạn vẫn muốn tải về $addon_title|? (Bạn sẽ phải cài đặt tất cả các phụ "
+#~ "thuộc để chơi.)"
+
+#~ msgid "[unit_worth]'s filter didn't match any units!"
+#~ msgstr "Bộ lọc của [unit_worth] không khớp với bất kỳ đơn vị nào!"
+
+#~ msgid "tooltip^damage"
+#~ msgid_plural "damage"
+#~ msgstr[0] "lượng thiệt hại"
+
+#~ msgid "tooltip^attack"
+#~ msgid_plural "attacks"
+#~ msgstr[0] "đòn tấn công"
+
+#~ msgid "tooltip^% accuracy"
+#~ msgstr "% chính xác"
+
+#~ msgid "tooltip^% parry"
+#~ msgstr "% tránh né"
+
 #~ msgid "Unknown unit type '$type|'"
 #~ msgstr "Kiểu đơn vị '$type|' không xác định"
-
-#~ msgid "Level"
-#~ msgstr "Trình độ"
 
 #~ msgid ""
 #~ "Leader position not empty - duplicate side definition for side '$side|' "

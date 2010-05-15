@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-01-17 17:49+0100\n"
+"POT-Creation-Date: 2010-05-15 14:01+0200\n"
 "PO-Revision-Date: 2009-12-26 14:50+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: none\n"
@@ -560,10 +560,18 @@ msgstr "Puusliku ründamiseks tee selle peal vasakklõps."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:835
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:842
+msgid " The ranged attack was safer."
+msgstr ""
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:835
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:842
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:854
+#, fuzzy
 msgid ""
 "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. Quintain defended with its melee attack (3-5). The ranged attack was "
-"safer."
+"attack. The quintain defended with its melee attack (3-5)."
 msgstr ""
 "Sinu haldjas kasutas mõõka (5-4 ehk neli 5-punktilist rünnakut), mis on "
 "lähirünnak. Puuslik vastas oma lähirünnakuga (3-5).  Kaugrünnak oleks olnud "
@@ -571,27 +579,19 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:843
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:895
+#, fuzzy
 msgid ""
-"Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. The quintain defended with its melee attack (3-5). The ranged attack "
-"was safer.\n"
+"\n"
 "End your turn, then attack again."
-msgstr ""
-"Sinu haldjas kasutas mõõka (5-4 ehk neli 5-punktilist rünnakut), mis on "
-"lähirünnak. Puuslik vastas oma lähirünnakuga (3-5).  Kaugrünnak oleks olnud "
-"ohutum.\n"
-"Lõpeta käik ja ründa siis uuesti."
+msgstr "Lõpeta käik ja ründa siis uuesti."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:855
 msgid ""
-"Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. The quintain defended with its melee attack (3-5).\n"
+"\n"
 "You should tell the other Elf to use the bow."
 msgstr ""
-"Sinu haldjas kasutas mõõka (5-4 ehk neli 5-punktilist rünnakut), mis on "
-"lähirünnak. Puuslik vastas oma lähirünnakuga (3-5). \n"
-"Teisel haldjal võiksid käskida vibu kasutada."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:858
@@ -601,6 +601,7 @@ msgstr "Ründa teise haldjaga"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:887
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:894
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:905
 msgid ""
 "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
@@ -610,19 +611,6 @@ msgstr ""
 "Sinu haldjas kasutas vibu, mis on kaugrünnak (3-3 ehk kolm 3-punktilist "
 "rünnakut). Puuslik kaugelt rünnata ei saa, tal on üksnes lähirünnak. Nii ei "
 "saanud ta end kaitsta."
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:895
-msgid ""
-"Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
-"The quintain has no ranged attack, only a melee attack, so it could not "
-"defend itself.\n"
-"End your turn, then attack again."
-msgstr ""
-"Sinu haldjas kasutas vibu, mis on kaugrünnak (3-3 ehk kolm 3-punktilist "
-"rünnakut). Puuslik kaugelt rünnata ei saa, tal on üksnes lähirünnak. Nii ei "
-"saanud ta end kaitsta.\n"
-"Lõpeta käik ja ründa siis uuesti."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:926
@@ -1765,12 +1753,12 @@ msgstr ""
 "Ma olen eriti hea mõõgaga: mul on neli 8-punktilist rünnakut."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1659
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1643
 msgid "You took too long! We'll never be rid of these Orcs!"
 msgstr "Sa viitsid liiga pikalt aega, nüüd ei saagi me neist orkidest lahti!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1677
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1661
 msgid ""
 "You are victorious! You may want to try Novice-level campaigns such as: The "
 "South Guard, An Orcish Incursion, A Tale of Two Brothers, and Heir to the "
@@ -1828,6 +1816,37 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "kettnui"
+
+#~ msgid ""
+#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
+#~ "attack. The quintain defended with its melee attack (3-5). The ranged "
+#~ "attack was safer.\n"
+#~ "End your turn, then attack again."
+#~ msgstr ""
+#~ "Sinu haldjas kasutas mõõka (5-4 ehk neli 5-punktilist rünnakut), mis on "
+#~ "lähirünnak. Puuslik vastas oma lähirünnakuga (3-5).  Kaugrünnak oleks "
+#~ "olnud ohutum.\n"
+#~ "Lõpeta käik ja ründa siis uuesti."
+
+#~ msgid ""
+#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
+#~ "attack. The quintain defended with its melee attack (3-5).\n"
+#~ "You should tell the other Elf to use the bow."
+#~ msgstr ""
+#~ "Sinu haldjas kasutas mõõka (5-4 ehk neli 5-punktilist rünnakut), mis on "
+#~ "lähirünnak. Puuslik vastas oma lähirünnakuga (3-5). \n"
+#~ "Teisel haldjal võiksid käskida vibu kasutada."
+
+#~ msgid ""
+#~ "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 "
+#~ "attacks). The quintain has no ranged attack, only a melee attack, so it "
+#~ "could not defend itself.\n"
+#~ "End your turn, then attack again."
+#~ msgstr ""
+#~ "Sinu haldjas kasutas vibu, mis on kaugrünnak (3-3 ehk kolm 3-punktilist "
+#~ "rünnakut). Puuslik kaugelt rünnata ei saa, tal on üksnes lähirünnak. Nii "
+#~ "ei saanud ta end kaitsta.\n"
+#~ "Lõpeta käik ja ründa siis uuesti."
 
 #~ msgid ""
 #~ "Hello translators! Tutorial is meant to be a little funny at the start, "

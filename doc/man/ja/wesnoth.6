@@ -40,8 +40,11 @@ Battle for \fBWesnoth\fPはターン制のファンタジー戦略ゲームで�
 \fB\-\-bpp\fP\fI\ number\fP
 ピクセル当りのビット数の値を設定。例: \fB\-\-bpp 32\fP
 .TP 
-\fB\-c, \-\-campaign\fP
-直接キャンペーン選択メニューに移動する。
+\fB\-c[[<difficulty>] <id_campaign> [<id_scenario>]], \-\-campaign[[<difficulty>] <id_campaign> [<id_scenario>]]\fP
+goes directly to the campaign based on the parameters.  The difficulty is a
+number between 1 and current campaign's difficulties number.  The default
+difficulty is 1.  The scenario must be one of the campaign's child
+scenarios. The default scenario is campaign's first scenario.
 .TP 
 \fB\-\-config\-dir\fP\fI\ name\fP
 ユーザ設定ディレクトリを $HOME 以下の \fIname\fP または windows の "My Documents\eMy Games" に設定する。

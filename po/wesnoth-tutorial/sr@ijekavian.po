@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-tutorial\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-25 12:17+0100\n"
+"POT-Creation-Date: 2010-05-15 14:01+0200\n"
 "PO-Revision-Date: 2010-02-28 20:28+0100\n"
 "Last-Translator: Dalibor Djuric <dalibor.djuric@mozilla-srbija.org>\n"
 "Language-Team: Serbian\n"
@@ -564,10 +564,18 @@ msgstr "Кликни лијевим на дрвенка да га нападне
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:835
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:842
+msgid " The ranged attack was safer."
+msgstr ""
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:835
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:842
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:854
+#, fuzzy
 msgid ""
 "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. Quintain defended with its melee attack (3-5). The ranged attack was "
-"safer."
+"attack. The quintain defended with its melee attack (3-5)."
 msgstr ""
 "Твој вилењак употријеби мач (5-4, значи 5 на штету, у 4 удара), што бијеше "
 "блиски напад. Дрвенко се исто тако бранише (3-5). Одступни напад је био "
@@ -575,27 +583,19 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:843
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:895
+#, fuzzy
 msgid ""
-"Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. The quintain defended with its melee attack (3-5). The ranged attack "
-"was safer.\n"
+"\n"
 "End your turn, then attack again."
-msgstr ""
-"Твој вилењак употријеби мач (5-4, значи 5 на штету, у 4 удара), што бијеше "
-"блиски напад. Дрвенко се исто тако бранише (3-5). Одступни напад је био "
-"безбједнији.\n"
-"Окончај свој потез, те удари поново."
+msgstr "Заврши свој потез, а онда нападни поново."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:855
 msgid ""
-"Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. The quintain defended with its melee attack (3-5).\n"
+"\n"
 "You should tell the other Elf to use the bow."
 msgstr ""
-"Твој вилењак употријеби мач (5-4, значи 5 на штету, у 4 удара), што беше "
-"блиски напад. Дрвенко се исто тако бранише (3-5).\n"
-"Треба да упутиш другог вилењака да користи лук."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:858
@@ -605,6 +605,7 @@ msgstr "Нападни другим вилењаком"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:887
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:894
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:905
 msgid ""
 "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
@@ -614,19 +615,6 @@ msgstr ""
 "Твој вилењак употријеби лук, што је одступни напад (3-3, или 3 на штету, у 3 "
 "удара). Дрвенко нема одступни напад, већ само блиски, те се није могао "
 "бранити."
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:895
-msgid ""
-"Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
-"The quintain has no ranged attack, only a melee attack, so it could not "
-"defend itself.\n"
-"End your turn, then attack again."
-msgstr ""
-"Твој вилењак употријеби лук, што је одступни напад (3-3, или 3 на штету, у 3 "
-"удара). Дрвенко нема одступни напад, већ само блиски, па се није могао "
-"бранити.\n"
-"Окончај свој потез, те нападни поново."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:926
@@ -1772,12 +1760,12 @@ msgstr ""
 "Посебно умјешно рукујем мачем, наносим 8 штете у 4 напада."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1659
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1643
 msgid "You took too long! We'll never be rid of these Orcs!"
 msgstr "Дуго ти је требало! Сада се никада нећемо ослободити ових оркова!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1677
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1661
 msgid ""
 "You are victorious! You may want to try Novice-level campaigns such as: The "
 "South Guard, An Orcish Incursion, A Tale of Two Brothers, and Heir to the "
@@ -1834,3 +1822,34 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "млатило"
+
+#~ msgid ""
+#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
+#~ "attack. The quintain defended with its melee attack (3-5). The ranged "
+#~ "attack was safer.\n"
+#~ "End your turn, then attack again."
+#~ msgstr ""
+#~ "Твој вилењак употријеби мач (5-4, значи 5 на штету, у 4 удара), што "
+#~ "бијеше блиски напад. Дрвенко се исто тако бранише (3-5). Одступни напад "
+#~ "је био безбједнији.\n"
+#~ "Окончај свој потез, те удари поново."
+
+#~ msgid ""
+#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
+#~ "attack. The quintain defended with its melee attack (3-5).\n"
+#~ "You should tell the other Elf to use the bow."
+#~ msgstr ""
+#~ "Твој вилењак употријеби мач (5-4, значи 5 на штету, у 4 удара), што беше "
+#~ "блиски напад. Дрвенко се исто тако бранише (3-5).\n"
+#~ "Треба да упутиш другог вилењака да користи лук."
+
+#~ msgid ""
+#~ "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 "
+#~ "attacks). The quintain has no ranged attack, only a melee attack, so it "
+#~ "could not defend itself.\n"
+#~ "End your turn, then attack again."
+#~ msgstr ""
+#~ "Твој вилењак употријеби лук, што је одступни напад (3-3, или 3 на штету, "
+#~ "у 3 удара). Дрвенко нема одступни напад, већ само блиски, па се није "
+#~ "могао бранити.\n"
+#~ "Окончај свој потез, те нападни поново."

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-26 15:41+0100\n"
+"POT-Creation-Date: 2010-05-15 14:01+0200\n"
 "PO-Revision-Date: 2010-04-29 09:38+0900\n"
 "Last-Translator: \n"
 "Language-Team: Japanese Translation Team\n"
@@ -102,6 +102,7 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:49
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:22
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:37
+#: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:34
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:21
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:21
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:48
@@ -132,6 +133,7 @@ msgstr "北軍"
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:61
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:35
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:26
+#: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:22
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:32
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:32
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:37
@@ -682,7 +684,7 @@ msgstr "暗黒の前兆 - ランダムのサバイバルシナリオ"
 msgid ""
 "Your aim is to survive the spawning waves and defeat the final arch-"
 "enemies.\n"
-"       \n"
+"\n"
 "The spawning waves are generated randomly and will different each time Dark "
 "Forecast is played.\n"
 "\n"
@@ -728,7 +730,8 @@ msgstr ""
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1454
-msgid "So this is the accursed valley - a land ours for the taking."
+#, fuzzy
+msgid "So this is the accursed valley — a land ours for the taking."
 msgstr "そうか。ここが呪われた谷―我々が手に入れようとしている土地か。"
 
 #. [message]
@@ -799,6 +802,24 @@ msgstr ""
 "消されるまで、400 年近く東側の土地の人々を脅かしてきた。以来、その創造者の奇"
 "怪で神秘的な魔法の開錠を望んで、多くの党派が Onis の巣窟の支配権を競ってき"
 "た。"
+
+#. [multiplayer]: id=multiplayer_elensefar_courtyard
+#: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:5
+#, fuzzy
+msgid "2p — Elensefar Courtyard"
+msgstr "2p — 流星湖"
+
+#. [multiplayer]: id=multiplayer_elensefar_courtyard
+#: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:7
+msgid ""
+"Fight through corridors and gardens, and dominate the eastern courtyard of "
+"what used to be the glorious city of Elensefar."
+msgstr ""
+
+#. [time]: id=underground_illum
+#: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:111
+msgid "Underground"
+msgstr ""
 
 #. [multiplayer]: id=multiplayer_Fallenstar_Lake
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:5

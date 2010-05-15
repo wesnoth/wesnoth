@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-01-17 17:49+0100\n"
+"POT-Creation-Date: 2010-05-15 14:01+0200\n"
 "PO-Revision-Date: 2009-09-26 16:01+0700\n"
 "Last-Translator: Phạm Thành Nam <phamthanhnam.ptn@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
@@ -571,10 +571,18 @@ msgstr "Nhấn chuột trái vào hình nộm để tấn công nó."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:835
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:842
+msgid " The ranged attack was safer."
+msgstr ""
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:835
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:842
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:854
+#, fuzzy
 msgid ""
 "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. Quintain defended with its melee attack (3-5). The ranged attack was "
-"safer."
+"attack. The quintain defended with its melee attack (3-5)."
 msgstr ""
 "Thần tiên của mi đã sử dụng kiếm (5-4; hay 5 lượng thiệt hại, 4 lần tấn "
 "công), đó là một đòn tấn công cận chiến. Hình nộm đã phòng thủ bằng đòn tấn "
@@ -582,28 +590,19 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:843
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:895
+#, fuzzy
 msgid ""
-"Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. The quintain defended with its melee attack (3-5). The ranged attack "
-"was safer.\n"
+"\n"
 "End your turn, then attack again."
-msgstr ""
-"Thần tiên của mi đã sử dụng kiếm (5-4; hay 5 lượng thiệt hại, 4 lần tấn "
-"công), đó là một đòn tấn công cận chiến. Hình nộm đã phòng thủ bằng đòn tấn "
-"công cận chiến của nó (3-5). Đòn tấn công từ xa an toàn hơn.\n"
-"Kết thúc lượt, sau đó tấn công lần nữa."
+msgstr "Kết thúc lượt và tấn công lần nữa."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:855
 msgid ""
-"Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. The quintain defended with its melee attack (3-5).\n"
+"\n"
 "You should tell the other Elf to use the bow."
 msgstr ""
-"Thần tiên của mi đã sử dụng kiếm (5-4; hay 5 lượng thiệt hại, 4 lần tấn "
-"công), đó là một đòn tấn công cận chiến. Hình nộm đã phòng thủ bằng đòn tấn "
-"công cận chiến của nó (3-5).\n"
-"Mi nên bảo thần tiên còn lại sử dụng cung."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:858
@@ -613,6 +612,7 @@ msgstr "Tấn công bằng thần tiên còn lại"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:887
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:894
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:905
 msgid ""
 "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
@@ -622,19 +622,6 @@ msgstr ""
 "Thần tiên của mi đã sử dụng cung, đó là một đòn tấn công từ xa (3-3; hay 3 "
 "lượng thiệt hại, 3 lần tấn công). Hình nộm không có đòn tấn công từ xa, chỉ "
 "có một đòn tấn công cận chiến, vì thế nó không thể tự bảo vệ."
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:895
-msgid ""
-"Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
-"The quintain has no ranged attack, only a melee attack, so it could not "
-"defend itself.\n"
-"End your turn, then attack again."
-msgstr ""
-"Thần tiên của mi đã sử dụng cung, đó là một đòn tấn công từ xa (3-3; hay 3 "
-"lượng thiệt hại, 3 lần tấn công). Hình nộm không có đòn tấn công từ xa, chỉ "
-"có một đòn tấn công cận chiến, vì thế nó không thể tự bảo vệ.\n"
-"Kết thúc lượt, sau đó tấn công lần nữa."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:926
@@ -1796,14 +1783,14 @@ msgstr ""
 "Tôi đặc biệt giỏi kiếm, gây 8 lượng thiệt hại mỗi lần với 4 đòn tấn công."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1659
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1643
 msgid "You took too long! We'll never be rid of these Orcs!"
 msgstr ""
 "Mất quá nhiều thời gian! Chúng ta sẽ chẳng bao giờ thoát khỏi bọn người thú "
 "đó!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1677
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1661
 msgid ""
 "You are victorious! You may want to try Novice-level campaigns such as: The "
 "South Guard, An Orcish Incursion, A Tale of Two Brothers, and Heir to the "
@@ -1862,3 +1849,35 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "đập"
+
+#~ msgid ""
+#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
+#~ "attack. The quintain defended with its melee attack (3-5). The ranged "
+#~ "attack was safer.\n"
+#~ "End your turn, then attack again."
+#~ msgstr ""
+#~ "Thần tiên của mi đã sử dụng kiếm (5-4; hay 5 lượng thiệt hại, 4 lần tấn "
+#~ "công), đó là một đòn tấn công cận chiến. Hình nộm đã phòng thủ bằng đòn "
+#~ "tấn công cận chiến của nó (3-5). Đòn tấn công từ xa an toàn hơn.\n"
+#~ "Kết thúc lượt, sau đó tấn công lần nữa."
+
+#~ msgid ""
+#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
+#~ "attack. The quintain defended with its melee attack (3-5).\n"
+#~ "You should tell the other Elf to use the bow."
+#~ msgstr ""
+#~ "Thần tiên của mi đã sử dụng kiếm (5-4; hay 5 lượng thiệt hại, 4 lần tấn "
+#~ "công), đó là một đòn tấn công cận chiến. Hình nộm đã phòng thủ bằng đòn "
+#~ "tấn công cận chiến của nó (3-5).\n"
+#~ "Mi nên bảo thần tiên còn lại sử dụng cung."
+
+#~ msgid ""
+#~ "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 "
+#~ "attacks). The quintain has no ranged attack, only a melee attack, so it "
+#~ "could not defend itself.\n"
+#~ "End your turn, then attack again."
+#~ msgstr ""
+#~ "Thần tiên của mi đã sử dụng cung, đó là một đòn tấn công từ xa (3-3; hay "
+#~ "3 lượng thiệt hại, 3 lần tấn công). Hình nộm không có đòn tấn công từ xa, "
+#~ "chỉ có một đòn tấn công cận chiến, vì thế nó không thể tự bảo vệ.\n"
+#~ "Kết thúc lượt, sau đó tấn công lần nữa."

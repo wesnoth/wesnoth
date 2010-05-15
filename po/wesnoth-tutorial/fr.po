@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-26 15:41+0100\n"
+"POT-Creation-Date: 2010-05-15 14:01+0200\n"
 "PO-Revision-Date: 2010-04-10 14:23+0200\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
@@ -583,10 +583,18 @@ msgstr "Cliquez avec le bouton gauche sur la quintaine pour l'attaquer."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:835
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:842
+msgid " The ranged attack was safer."
+msgstr ""
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:835
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:842
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:854
+#, fuzzy
 msgid ""
 "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. Quintain defended with its melee attack (3-5). The ranged attack was "
-"safer."
+"attack. The quintain defended with its melee attack (3-5)."
 msgstr ""
 "Votre elfe a utilisé une épée (5-4, soit 5 points de dégâts pour 4 "
 "attaques), qui est une arme de corps-à-corps. La quintaine s'est défendue "
@@ -594,30 +602,19 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:843
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:895
+#, fuzzy
 msgid ""
-"Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. The quintain defended with its melee attack (3-5). The ranged attack "
-"was safer.\n"
+"\n"
 "End your turn, then attack again."
-msgstr ""
-"Votre elfe a utilisé une épée (5-4, soit 5 points de dégâts pour 4 "
-"attaques), qui est une arme de corps-à-corps. La quintaine s'est défendue "
-"avec son arme de corps-à-corps (3-5). L'attaque à distance aurait été plus "
-"sûre.\n"
-"Terminez votre tour, puis attaquez à nouveau."
+msgstr "Terminez votre tour puis attaquez à nouveau."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:855
 msgid ""
-"Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. The quintain defended with its melee attack (3-5).\n"
+"\n"
 "You should tell the other Elf to use the bow."
 msgstr ""
-"Votre elfe a utilisé une épée (5-4, soit 5 points de dégâts pour 4 "
-"attaques), qui est une arme de corps-à-corps. La quintaine s'est défendue "
-"avec son arme de corps-à-corps (3-5). L'attaque à distance aurait été plus "
-"sûre.\n"
-"Vous devriez utiliser l'arc avec l'autre elfe."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:858
@@ -627,6 +624,7 @@ msgstr "Attaquez avec l'autre elfe"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:887
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:894
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:905
 msgid ""
 "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
@@ -637,20 +635,6 @@ msgstr ""
 "points de dégâts pour 3 attaques). La quintaine n'a pas d'attaque à "
 "distance, mais seulement une attaque de corps-à-corps ; elle n'a donc pas "
 "été capable de se défendre."
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:895
-msgid ""
-"Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
-"The quintain has no ranged attack, only a melee attack, so it could not "
-"defend itself.\n"
-"End your turn, then attack again."
-msgstr ""
-"Votre elfe a utilisé un arc, qui est une attaque à distance (3-3, soit 3 "
-"points de dégâts pour 3 attaques). La quintaine n'a pas d'attaque à "
-"distance, mais seulement une attaque de corps-à-corps ; elle n'a donc pas "
-"été capable de se défendre.\n"
-"Terminez votre tour, puis attaquez à nouveau."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:926
@@ -1853,7 +1837,7 @@ msgstr ""
 "points de dégâts chacune."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1659
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1643
 msgid "You took too long! We'll never be rid of these Orcs!"
 msgstr ""
 "Vous avez mis trop de temps ! Nous ne ne pourrons jamais nous débarrasser de "
@@ -1861,7 +1845,7 @@ msgstr ""
 
 # Damien : je n'ai pas repris tous noms, le joueur verra bien au fur et à mesure
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1677
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1661
 msgid ""
 "You are victorious! You may want to try Novice-level campaigns such as: The "
 "South Guard, An Orcish Incursion, A Tale of Two Brothers, and Heir to the "
@@ -1919,6 +1903,41 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "fléau"
+
+#~ msgid ""
+#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
+#~ "attack. The quintain defended with its melee attack (3-5). The ranged "
+#~ "attack was safer.\n"
+#~ "End your turn, then attack again."
+#~ msgstr ""
+#~ "Votre elfe a utilisé une épée (5-4, soit 5 points de dégâts pour 4 "
+#~ "attaques), qui est une arme de corps-à-corps. La quintaine s'est défendue "
+#~ "avec son arme de corps-à-corps (3-5). L'attaque à distance aurait été "
+#~ "plus sûre.\n"
+#~ "Terminez votre tour, puis attaquez à nouveau."
+
+#~ msgid ""
+#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
+#~ "attack. The quintain defended with its melee attack (3-5).\n"
+#~ "You should tell the other Elf to use the bow."
+#~ msgstr ""
+#~ "Votre elfe a utilisé une épée (5-4, soit 5 points de dégâts pour 4 "
+#~ "attaques), qui est une arme de corps-à-corps. La quintaine s'est défendue "
+#~ "avec son arme de corps-à-corps (3-5). L'attaque à distance aurait été "
+#~ "plus sûre.\n"
+#~ "Vous devriez utiliser l'arc avec l'autre elfe."
+
+#~ msgid ""
+#~ "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 "
+#~ "attacks). The quintain has no ranged attack, only a melee attack, so it "
+#~ "could not defend itself.\n"
+#~ "End your turn, then attack again."
+#~ msgstr ""
+#~ "Votre elfe a utilisé un arc, qui est une attaque à distance (3-3, soit 3 "
+#~ "points de dégâts pour 3 attaques). La quintaine n'a pas d'attaque à "
+#~ "distance, mais seulement une attaque de corps-à-corps ; elle n'a donc pas "
+#~ "été capable de se défendre.\n"
+#~ "Terminez votre tour, puis attaquez à nouveau."
 
 # Piou2fois-fr : :)
 #~ msgid ""

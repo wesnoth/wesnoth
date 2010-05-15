@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-tutorial\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-26 15:41+0100\n"
+"POT-Creation-Date: 2010-05-15 14:01+0200\n"
 "PO-Revision-Date: 2009-10-17 23:05+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
@@ -578,10 +578,18 @@ msgstr "Kattints bal gombbal a homokzsákra, hogy megtámadd. "
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:835
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:842
+msgid " The ranged attack was safer."
+msgstr ""
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:835
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:842
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:854
+#, fuzzy
 msgid ""
 "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. Quintain defended with its melee attack (3-5). The ranged attack was "
-"safer."
+"attack. The quintain defended with its melee attack (3-5)."
 msgstr ""
 "A tündéd a kardját használta (5-4; azaz 5 sebzés és 4 támadás), amely egy "
 "közelharci fegyver. A homokzsák védekezhetett az ő közelharci támadásával (3-"
@@ -589,28 +597,19 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:843
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:895
+#, fuzzy
 msgid ""
-"Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. The quintain defended with its melee attack (3-5). The ranged attack "
-"was safer.\n"
+"\n"
 "End your turn, then attack again."
-msgstr ""
-"A tündéd a kardját használta (5-4; azaz 5 sebzés és 4 támadás), amely egy "
-"közelharci fegyver. A homokzsák védekezhetett az ő közelharci támadásával (3-"
-"5). A távolsági támadás biztonságosabb lett volna.\n"
-"Fejezd be a köröd, majd támadj újra."
+msgstr "Fejezd be a köröd, és támadj újra."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:855
 msgid ""
-"Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. The quintain defended with its melee attack (3-5).\n"
+"\n"
 "You should tell the other Elf to use the bow."
 msgstr ""
-"A tündéd a kardját használta (5-4; azaz 5 sebzés és 4 támadás), amely egy "
-"közelharci fegyver. A homokzsák védekezhetett az ő közelharci támadásával (3-"
-"5).\n"
-"Javaslom, hogy a másik tünde inkább az íját használja."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:858
@@ -620,6 +619,7 @@ msgstr "Támadj a másik tündével"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:887
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:894
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:905
 msgid ""
 "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
@@ -629,19 +629,6 @@ msgstr ""
 "A tündéd az íját használta, amely távolsági támadás (3-3; azaz 3 sebzés és 3 "
 "támadás). A homokzsáknak nincs távolsági fegyvere, csak közelharci, tehát "
 "nem tudta magát védeni."
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:895
-msgid ""
-"Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
-"The quintain has no ranged attack, only a melee attack, so it could not "
-"defend itself.\n"
-"End your turn, then attack again."
-msgstr ""
-"A tündéd az íját használta, amely távolsági támadás (3-3; azaz 3 sebzés és 3 "
-"támadás). A homokzsáknak nincs távolsági fegyvere, csak közelharci, tehát "
-"nem tudta magát védeni.\n"
-"Fejezd be a köröd, majd támadj újra."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:926
@@ -1819,12 +1806,12 @@ msgstr ""
 "sebzést okoz."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1659
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1643
 msgid "You took too long! We'll never be rid of these Orcs!"
 msgstr "Túl régóta hadakozunk, már sosem szabadulunk meg az orkoktól!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1677
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1661
 msgid ""
 "You are victorious! You may want to try Novice-level campaigns such as: The "
 "South Guard, An Orcish Incursion, A Tale of Two Brothers, and Heir to the "
@@ -1884,6 +1871,38 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "cséphadaró"
+
+#~ msgid ""
+#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
+#~ "attack. The quintain defended with its melee attack (3-5). The ranged "
+#~ "attack was safer.\n"
+#~ "End your turn, then attack again."
+#~ msgstr ""
+#~ "A tündéd a kardját használta (5-4; azaz 5 sebzés és 4 támadás), amely egy "
+#~ "közelharci fegyver. A homokzsák védekezhetett az ő közelharci támadásával "
+#~ "(3-5). A távolsági támadás biztonságosabb lett volna.\n"
+#~ "Fejezd be a köröd, majd támadj újra."
+
+#~ msgid ""
+#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
+#~ "attack. The quintain defended with its melee attack (3-5).\n"
+#~ "You should tell the other Elf to use the bow."
+#~ msgstr ""
+#~ "A tündéd a kardját használta (5-4; azaz 5 sebzés és 4 támadás), amely egy "
+#~ "közelharci fegyver. A homokzsák védekezhetett az ő közelharci támadásával "
+#~ "(3-5).\n"
+#~ "Javaslom, hogy a másik tünde inkább az íját használja."
+
+#~ msgid ""
+#~ "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 "
+#~ "attacks). The quintain has no ranged attack, only a melee attack, so it "
+#~ "could not defend itself.\n"
+#~ "End your turn, then attack again."
+#~ msgstr ""
+#~ "A tündéd az íját használta, amely távolsági támadás (3-3; azaz 3 sebzés "
+#~ "és 3 támadás). A homokzsáknak nincs távolsági fegyvere, csak közelharci, "
+#~ "tehát nem tudta magát védeni.\n"
+#~ "Fejezd be a köröd, majd támadj újra."
 
 #~ msgid ""
 #~ "Hello translators! Tutorial is meant to be a little funny at the start, "

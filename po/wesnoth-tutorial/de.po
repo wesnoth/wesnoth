@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-01-17 17:49+0100\n"
+"POT-Creation-Date: 2010-05-15 14:01+0200\n"
 "PO-Revision-Date: 2009-09-30 17:12+0100\n"
 "Last-Translator: Tobias 'SonIcco' Schönau <tobias.schoenau@eagerbyte.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -602,39 +602,39 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:835
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:842
+msgid " The ranged attack was safer."
+msgstr ""
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:835
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:842
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:854
+#, fuzzy
 msgid ""
 "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. Quintain defended with its melee attack (3-5). The ranged attack was "
-"safer."
+"attack. The quintain defended with its melee attack (3-5)."
 msgstr ""
 "Dein Elf hat sein Schwert verwendet (5-4; oder 5 Schaden, 4 Angriffe), was "
 "ein Nahkampfangriff ist. Die Turnierpuppe verteidigt sich mit ihrem "
 "Nahkampfangriff (3-5). Der Fernkampfangriff wäre sicherer."
 
+# XXX - trailing dot (inconsistency)
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:843
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:895
+#, fuzzy
 msgid ""
-"Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. The quintain defended with its melee attack (3-5). The ranged attack "
-"was safer.\n"
+"\n"
 "End your turn, then attack again."
-msgstr ""
-"Dein Elf hat sein Schwert verwendet (5-4; oder 5 Schaden, 4 Angriffe), was "
-"ein Nahkampfangriff ist. Die Turnierpuppe verteidigt sich mit ihrem "
-"Nahkampfangriff (3-5). Der Fernkampfangriff wäre sicherer.\n"
-"Beende deinen Zug, dann greif erneut an."
+msgstr "Beendet Euren Zug und greift erneut an."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:855
 msgid ""
-"Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. The quintain defended with its melee attack (3-5).\n"
+"\n"
 "You should tell the other Elf to use the bow."
 msgstr ""
-"Dein Elf hat sein Schwert verwendet (5-4; oder 5 Schaden, 4 Angriffe), was "
-"ein Nahkampfangriff ist. Die Turnierpuppe verteidigt sich mit ihrem "
-"Nahkampfangriff (3-5).\n"
-"Du solltest dem anderen Elfen mitteilen, dass er den Bogen verwenden soll."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:858
@@ -644,6 +644,7 @@ msgstr "Lasst Euren zweiten Elfenkrieger angreifen"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:887
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:894
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:905
 msgid ""
 "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
@@ -653,19 +654,6 @@ msgstr ""
 "Dein Elf hat seinen Bogen verwendet, was ein Fernkampfangriff war (3-3; oder "
 "3 Schaden, 3 Angriffe). Die Turnierpuppe hat keinen Fernkampfangriff, nur "
 "einen Nahkampfangriff, daher konnte sie sich nicht wehren."
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:895
-msgid ""
-"Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
-"The quintain has no ranged attack, only a melee attack, so it could not "
-"defend itself.\n"
-"End your turn, then attack again."
-msgstr ""
-"Dein Elf hat seinen Bogen verwendet, was ein Fernkampfangriff war (3-3; oder "
-"3 Schaden, 3 Angriffe). Die Turnierpuppe hat keinen Fernkampfangriff, nur "
-"einen Nahkampfangriff, daher konnte sie sich nicht wehren.\n"
-"Beende deinen Zug, dann greif erneut an."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:926
@@ -1881,12 +1869,12 @@ msgstr ""
 "Schadenspunkte mit jedem meiner 4 Angriffe."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1659
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1643
 msgid "You took too long! We'll never be rid of these Orcs!"
 msgstr "Du hast zu lange gebraucht! Wir werden diese Orks nie los werden!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1677
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1661
 msgid ""
 "You are victorious! You may want to try Novice-level campaigns such as: The "
 "South Guard, An Orcish Incursion, A Tale of Two Brothers, and Heir to the "
@@ -1946,3 +1934,36 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "Dreschflegel"
+
+#~ msgid ""
+#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
+#~ "attack. The quintain defended with its melee attack (3-5). The ranged "
+#~ "attack was safer.\n"
+#~ "End your turn, then attack again."
+#~ msgstr ""
+#~ "Dein Elf hat sein Schwert verwendet (5-4; oder 5 Schaden, 4 Angriffe), "
+#~ "was ein Nahkampfangriff ist. Die Turnierpuppe verteidigt sich mit ihrem "
+#~ "Nahkampfangriff (3-5). Der Fernkampfangriff wäre sicherer.\n"
+#~ "Beende deinen Zug, dann greif erneut an."
+
+#~ msgid ""
+#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
+#~ "attack. The quintain defended with its melee attack (3-5).\n"
+#~ "You should tell the other Elf to use the bow."
+#~ msgstr ""
+#~ "Dein Elf hat sein Schwert verwendet (5-4; oder 5 Schaden, 4 Angriffe), "
+#~ "was ein Nahkampfangriff ist. Die Turnierpuppe verteidigt sich mit ihrem "
+#~ "Nahkampfangriff (3-5).\n"
+#~ "Du solltest dem anderen Elfen mitteilen, dass er den Bogen verwenden soll."
+
+#~ msgid ""
+#~ "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 "
+#~ "attacks). The quintain has no ranged attack, only a melee attack, so it "
+#~ "could not defend itself.\n"
+#~ "End your turn, then attack again."
+#~ msgstr ""
+#~ "Dein Elf hat seinen Bogen verwendet, was ein Fernkampfangriff war (3-3; "
+#~ "oder 3 Schaden, 3 Angriffe). Die Turnierpuppe hat keinen "
+#~ "Fernkampfangriff, nur einen Nahkampfangriff, daher konnte sie sich nicht "
+#~ "wehren.\n"
+#~ "Beende deinen Zug, dann greif erneut an."

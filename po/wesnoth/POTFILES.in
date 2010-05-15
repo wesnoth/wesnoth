@@ -19,8 +19,6 @@ src/ai/contexts.cpp
 src/ai/default/ai.cpp
 src/ai/default/attack.cpp
 src/ai/default/contexts.cpp
-src/ai/default/move.cpp
-src/ai/default/village.cpp
 src/ai/formula/ai.cpp
 src/ai/formula/callable_objects.cpp
 src/ai/formula/candidates.cpp
@@ -30,11 +28,11 @@ src/ai/formula/stage_unit_formulas.cpp
 src/ai/game_info.cpp
 src/ai/gamestate_observer.cpp
 src/ai/interface.cpp
+src/ai/lua/core.cpp
 src/ai/manager.cpp
 src/ai/registry.cpp
 src/ai/testing/aspect_attacks.cpp
 src/ai/testing/ca.cpp
-src/ai/testing/ca_default_move_to_targets.cpp
 src/ai/testing/ca_testing_move_to_targets.cpp
 src/ai/testing.cpp
 src/ai/testing/stage_fallback.cpp
@@ -109,11 +107,14 @@ src/network_worker.cpp
 src/pathfind/astarsearch.cpp
 src/pathfind/pathfind.cpp
 src/pathutils.cpp
+src/persist_context.cpp
+src/persist_var.cpp
 src/playcampaign.cpp
 src/play_controller.cpp
 src/playmp_controller.cpp
 src/playsingle_controller.cpp
 src/playturn.cpp
+src/portrait.cpp
 src/race.cpp
 src/random.cpp
 src/replay_controller.cpp

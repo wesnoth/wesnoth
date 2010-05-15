@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-02-02 13:04+0100\n"
+"POT-Creation-Date: 2010-05-15 14:01+0200\n"
 "PO-Revision-Date: 2009-03-04 21:13-0600\n"
 "Last-Translator: sylecn <sylecn@yahoo.com.cn>\n"
 "Language-Team: none\n"
@@ -194,8 +194,7 @@ msgstr "败克撒·马丁"
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:414
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:432
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:479
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:234
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:376
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:250
 msgid "Death of Deoran"
 msgstr "迪奥兰死亡"
 
@@ -1273,8 +1272,7 @@ msgstr "依茜丽儿到达米布林的村庄"
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:523
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:580
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:49
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:238
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:380
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:254
 msgid "Death of Ethiliel"
 msgstr "依茜丽儿死亡"
 
@@ -3065,7 +3063,7 @@ msgstr "韦斯汀大教会会在第 $council_arrive_turn| 回合到达。"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:515
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:301
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:313
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:12
 msgid "I have failed my kingdom and duty..."
 msgstr "王国和重任未完成啊…"
@@ -3202,29 +3200,52 @@ msgstr ""
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:217
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:218
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:219
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:276
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:288
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:300
 msgid "Disciple of Mebrin"
 msgstr "Disciple of Mebrin"
 
+#. [message]: speaker=Ethiliel
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:229
+msgid ""
+"We won't be able to hold them off for long. I should go reason with them!"
+msgstr "我们不可能支持很久。我要去和他们理论！"
+
+#. [message]: speaker=Deoran
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:233
+msgid ""
+"Are you sure that the elves will greet you any more kindly than they have "
+"met us? After all, you did lead us into the forests..."
+msgstr "妳确信精灵们对妳会更客气一些吗？毕竟，是妳带领我们进入森林的…"
+
+#. [message]: speaker=Ethiliel
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:237
+msgid "Perhaps not, but it is your only hope. I must reach Ithelden!"
+msgstr "可能不会，但这是唯一的希望。我必须和伊蒂尔丹谈谈！"
+
+#. [event]
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:240
+msgid "Ithelden's base"
+msgstr "伊蒂尔丹的基地"
+
 #. [objective]: condition=win
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:230
-msgid "Keep the enraged elves from sacking Westin"
-msgstr "阻止暴怒的精灵洗劫韦斯汀"
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:246
+msgid "Send Ethiliel to the Great Tree and parley with Ithelden"
+msgstr "让依茜丽儿到达大树(Great Tree)并与伊蒂尔丹会谈"
 
 #. [message]
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:289
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:301
 msgid "For every one of us you strike down, more will rise!"
 msgstr "每一个被你们杀死的人，都将引来更多！"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:315
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:327
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:52
 msgid "I have given my all for my kingdom! Avenge me, Deoran!"
 msgstr "我已为王国奉献所有！为我报仇，迪奥兰！"
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:328
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:340
 msgid ""
 "Ithelden's elves have killed Ethiliel! Now we have no chance to come to an "
 "agreement with them. A war with the Elves is imminent."
@@ -3233,44 +3254,11 @@ msgstr ""
 "将来临。"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:332
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:344
 msgid ""
 "We are far away from Weldyn. We'll surely all be killed long before any "
 "reinforcements arrive."
 msgstr "我们离威尔丁太远了。没等援军来我们都会被杀光。"
-
-#. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:355
-msgid ""
-"We won't be able to hold them off for long. I should go reason with them!"
-msgstr "我们不可能支持很久。我要去和他们理论！"
-
-#. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:359
-msgid ""
-"Are you sure that the elves will greet you any more kindly than they have "
-"met us? After all, you did lead us into the forests..."
-msgstr "妳确信精灵们对妳会更客气一些吗？毕竟，是妳带领我们进入森林的…"
-
-#. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:363
-msgid "Perhaps not, but it is your only hope. I must reach Ithelden!"
-msgstr "可能不会，但这是唯一的希望。我必须和伊蒂尔丹谈谈！"
-
-#. [event]
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:366
-msgid "Ithelden's base"
-msgstr "伊蒂尔丹的基地"
-
-#. [objective]: condition=win
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:372
-msgid "Send Ethiliel to the Great Tree and parley with Ithelden"
-msgstr "让依茜丽儿到达大树(Great Tree)并与伊蒂尔丹会谈"
-
-#. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:414
-msgid "I feel like I belong on this spot."
-msgstr "我觉得我属于这个地方。"
 
 #. [scenario]: id=10a_Elf_Epilogue
 #. [scenario]: id=9b_Bandit_Epilogue
@@ -3782,6 +3770,12 @@ msgid ""
 msgstr ""
 "迪奥兰先生，韦诺的骑士，奉召回威尔丁参与哈得里克陛下主持的会议。暴风雨席卷了"
 "整个王国，每一个统领都需要面对这次攻击…"
+
+#~ msgid "Keep the enraged elves from sacking Westin"
+#~ msgstr "阻止暴怒的精灵洗劫韦斯汀"
+
+#~ msgid "I feel like I belong on this spot."
+#~ msgstr "我觉得我属于这个地方。"
 
 #~ msgid "Hmm...I have to consider this..."
 #~ msgstr "恩...让我想想..."

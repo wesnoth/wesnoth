@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-15 01:03+0100\n"
+"POT-Creation-Date: 2010-05-15 14:01+0200\n"
 "PO-Revision-Date: 2009-01-07 13:44+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -98,6 +98,7 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:49
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:22
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:37
+#: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:34
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:21
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:21
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:48
@@ -128,6 +129,7 @@ msgstr "Nord"
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:61
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:35
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:26
+#: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:22
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:32
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:32
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:37
@@ -678,10 +680,11 @@ msgstr "Mørk forudsigelse - et tilfældigt overlevelsesscenarie"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1449
+#, fuzzy
 msgid ""
 "Your aim is to survive the spawning waves and defeat the final arch-"
 "enemies.\n"
-"       \n"
+"\n"
 "The spawning waves are generated randomly and will different each time Dark "
 "Forecast is played.\n"
 "\n"
@@ -729,7 +732,8 @@ msgstr ""
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1454
-msgid "So this is the accursed valley - a land ours for the taking."
+#, fuzzy
+msgid "So this is the accursed valley — a land ours for the taking."
 msgstr "Så dette er den forbandet dal - et land vi kan indtage."
 
 #. [message]
@@ -802,6 +806,24 @@ msgstr ""
 "spor. Siden den tid, har mange fraktioner forsøgt at få herredømmet over "
 "Onis hule, i håbet om at kunne afsløre den mærkelige og mystiske magi hos "
 "dens skabere."
+
+#. [multiplayer]: id=multiplayer_elensefar_courtyard
+#: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:5
+#, fuzzy
+msgid "2p — Elensefar Courtyard"
+msgstr "2p — Fallenstar Sø"
+
+#. [multiplayer]: id=multiplayer_elensefar_courtyard
+#: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:7
+msgid ""
+"Fight through corridors and gardens, and dominate the eastern courtyard of "
+"what used to be the glorious city of Elensefar."
+msgstr ""
+
+#. [time]: id=underground_illum
+#: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:111
+msgid "Underground"
+msgstr ""
 
 #. [multiplayer]: id=multiplayer_Fallenstar_Lake
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:5

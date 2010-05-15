@@ -47,8 +47,11 @@ hráčmi.
 \fB\-\-bpp\fP\fI\ číslo\fP
 nastaví počet bitov na obrazový bod (BitsPerPixel). Napríklad: \fB\-\-bpp 32\fP
 .TP 
-\fB\-c, \-\-campaign\fP
-skočí priamo do menu výberu výpravy.
+\fB\-c[[<difficulty>] <id_campaign> [<id_scenario>]], \-\-campaign[[<difficulty>] <id_campaign> [<id_scenario>]]\fP
+goes directly to the campaign based on the parameters.  The difficulty is a
+number between 1 and current campaign's difficulties number.  The default
+difficulty is 1.  The scenario must be one of the campaign's child
+scenarios. The default scenario is campaign's first scenario.
 .TP 
 \fB\-\-config\-dir\fP\fI\ názov\fP
 nastaví adresár s používateľskými nastaveniami na \fImeno\fP pod $HOME alebo
@@ -194,11 +197,11 @@ id. Frakcie sú popísané v súbore data/multiplayer.cfg.
 \fB\-\-turns=\fP\fIhodnota\fP
 nastaví počet ťahov pre danú scénu. Štandardná hodnota je \fB50\fP.
 .
-.SH "EXIT STATUS"
+.SH "NÁVRATOVÝ KÓD"
 .
-Normal exit status is 0. An exit status of 1 indicates an (SDL, video,
-fonts, etc) initialization error. An exit status of 2 indicates an error
-with the command line options.
+Normálny návratový kód je 0. Návratový kód 1 znamená chybu pri inicializácii
+(SDL, grafiky, písma, atď.). Návratový kód 2 znamená chybu v parametroch
+zadaných na príkazovom riadku.
 .
 .SH AUTOR
 .

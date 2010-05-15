@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-01-17 17:49+0100\n"
+"POT-Creation-Date: 2010-05-15 14:01+0200\n"
 "PO-Revision-Date: 2009-03-11 17:30-0400\n"
 "Last-Translator: Rainer Oliveira <rainercoliveira@gmail.com>\n"
 "Language-Team: none\n"
@@ -588,10 +588,18 @@ msgstr "Clique com o botão esquerdo no boneco de treino para atacá-lo."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:835
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:842
+msgid " The ranged attack was safer."
+msgstr ""
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:835
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:842
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:854
+#, fuzzy
 msgid ""
 "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. Quintain defended with its melee attack (3-5). The ranged attack was "
-"safer."
+"attack. The quintain defended with its melee attack (3-5)."
 msgstr ""
 "Seu elfo usou uma espada (5-4; ou 5 de dano e 4 golpes), que é um ataque "
 "corpo a corpo. O boneco retrucou com seu próprio ataque corpo a corpo (3-5). "
@@ -599,28 +607,19 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:843
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:895
+#, fuzzy
 msgid ""
-"Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. The quintain defended with its melee attack (3-5). The ranged attack "
-"was safer.\n"
+"\n"
 "End your turn, then attack again."
-msgstr ""
-"Seu elfo usou uma espada (5-4; ou 5 de dano e 4 golpes), que é um ataque "
-"corpo a corpo. O boneco retrucou com seu próprio ataque corpo a corpo (3-5). "
-"O ataque à distância teria sido mais seguro.\n"
-"Termine o seu turno e então ataque novamente."
+msgstr "Termine o seu turno e ataque novamente."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:855
 msgid ""
-"Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. The quintain defended with its melee attack (3-5).\n"
+"\n"
 "You should tell the other Elf to use the bow."
 msgstr ""
-"Seu elfo usou uma espada (5-4; ou 5 de dano e 4 golpes), que é um ataque "
-"corpo a corpo. O boneco retrucou com seu próprio ataque corpo a corpo (3-5). "
-"O ataque à distância teria sido mais seguro.\n"
-"Você deveria mandar o outro elfo atacar com o arco."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:858
@@ -630,6 +629,7 @@ msgstr "Ataque com o outro elfo"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:887
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:894
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:905
 msgid ""
 "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
@@ -639,19 +639,6 @@ msgstr ""
 "Seu elfo usou um arco, que é um ataque à distância (3-3; ou 3 de dano e 3 "
 "golpes). O boneco de treino não tem um ataque a distância, apenas corpo a "
 "corpo, então ele não pôde se defender."
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:895
-msgid ""
-"Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
-"The quintain has no ranged attack, only a melee attack, so it could not "
-"defend itself.\n"
-"End your turn, then attack again."
-msgstr ""
-"Seu elfo usou um arco, que é um ataque à distância (3-3; ou 3 de dano e 3 "
-"golpes). O boneco de treino não tem um ataque à distância, apenas corpo a "
-"corpo, então ele não pôde se defender.\n"
-"Termine o seu turno e então ataque novamente."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:926
@@ -1841,12 +1828,12 @@ msgstr ""
 "Eu sou particularmente bom com a espada: 4 golpes causam 8 danos cada."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1659
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1643
 msgid "You took too long! We'll never be rid of these Orcs!"
 msgstr "Você demorou muito! Nós nunca nos livraremos desses orcs!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1677
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1661
 msgid ""
 "You are victorious! You may want to try Novice-level campaigns such as: The "
 "South Guard, An Orcish Incursion, A Tale of Two Brothers, and Heir to the "
@@ -1905,6 +1892,38 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "mangual"
+
+#~ msgid ""
+#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
+#~ "attack. The quintain defended with its melee attack (3-5). The ranged "
+#~ "attack was safer.\n"
+#~ "End your turn, then attack again."
+#~ msgstr ""
+#~ "Seu elfo usou uma espada (5-4; ou 5 de dano e 4 golpes), que é um ataque "
+#~ "corpo a corpo. O boneco retrucou com seu próprio ataque corpo a corpo (3-"
+#~ "5). O ataque à distância teria sido mais seguro.\n"
+#~ "Termine o seu turno e então ataque novamente."
+
+#~ msgid ""
+#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
+#~ "attack. The quintain defended with its melee attack (3-5).\n"
+#~ "You should tell the other Elf to use the bow."
+#~ msgstr ""
+#~ "Seu elfo usou uma espada (5-4; ou 5 de dano e 4 golpes), que é um ataque "
+#~ "corpo a corpo. O boneco retrucou com seu próprio ataque corpo a corpo (3-"
+#~ "5). O ataque à distância teria sido mais seguro.\n"
+#~ "Você deveria mandar o outro elfo atacar com o arco."
+
+#~ msgid ""
+#~ "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 "
+#~ "attacks). The quintain has no ranged attack, only a melee attack, so it "
+#~ "could not defend itself.\n"
+#~ "End your turn, then attack again."
+#~ msgstr ""
+#~ "Seu elfo usou um arco, que é um ataque à distância (3-3; ou 3 de dano e 3 "
+#~ "golpes). O boneco de treino não tem um ataque à distância, apenas corpo a "
+#~ "corpo, então ele não pôde se defender.\n"
+#~ "Termine o seu turno e então ataque novamente."
 
 #, fuzzy
 #~ msgid "<big>Galdrad"

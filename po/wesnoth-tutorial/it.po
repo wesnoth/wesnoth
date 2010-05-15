@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-01-17 17:49+0100\n"
+"POT-Creation-Date: 2010-05-15 14:01+0200\n"
 "PO-Revision-Date: 2009-09-27 11:06+0200\n"
 "Last-Translator: Antonio Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -582,10 +582,18 @@ msgstr "Fai clic col tasto sinistro sulla quintana per attaccarla."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:835
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:842
+msgid " The ranged attack was safer."
+msgstr ""
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:835
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:842
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:854
+#, fuzzy
 msgid ""
 "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. Quintain defended with its melee attack (3-5). The ranged attack was "
-"safer."
+"attack. The quintain defended with its melee attack (3-5)."
 msgstr ""
 "Il tuo elfo ha usato una spada (5-4, cioè 5 punti di danno per 4 attacchi), "
 "un attacco da mischia, quindi la quintana si è difesa con il suo (3-5). "
@@ -593,27 +601,19 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:843
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:895
+#, fuzzy
 msgid ""
-"Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. The quintain defended with its melee attack (3-5). The ranged attack "
-"was safer.\n"
+"\n"
 "End your turn, then attack again."
-msgstr ""
-"Il tuo elfo ha usato una spada (5-4, cioè 5 di danno e 4 attacchi), un "
-"attacco da mischia, per questo la quintana si è difesa con il suo (3-5). "
-"L'attacco a distanza sarebbe stato più sicuro.\n"
-"Finisci il turno e poi attacca di nuovo."
+msgstr "Termina il turno e poi attacca di nuovo."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:855
 msgid ""
-"Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. The quintain defended with its melee attack (3-5).\n"
+"\n"
 "You should tell the other Elf to use the bow."
 msgstr ""
-"Il tuo elfo ha usato una spada (5-4, cioè 5 punti di danno per 4 attacchi) "
-"che è un attacco da mischia e per questo la quintana si è difesa con il suo "
-"attacco ravvicinato (3-5). Dovresti dire all'altro elfo di usare l'arco."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:858
@@ -623,6 +623,7 @@ msgstr "Attacca con l'altro elfo"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:887
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:894
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:905
 msgid ""
 "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
@@ -632,19 +633,6 @@ msgstr ""
 "Il tuo elfo ha usato un arco, un attacco a distanza (3-3, cioè 3 punti di "
 "danno per 3 attacchi). La quintana non possiede attacchi a distanza, ma solo "
 "da mischia, quindi non ha potuto difendersi."
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:895
-msgid ""
-"Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
-"The quintain has no ranged attack, only a melee attack, so it could not "
-"defend itself.\n"
-"End your turn, then attack again."
-msgstr ""
-"Il tuo elfo ha usato un arco, un attacco da distanza (3-3, o meglio 3 di "
-"danno per 3 attacchi). La quintana non possiede attacchi a distanza, ma solo "
-"da mischia, quindi non ha potuto difendersi.\n"
-"Finisci il turno, quindi attacca di nuovo."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:926
@@ -1833,12 +1821,12 @@ msgstr ""
 "per turno causando 8 punti ferita per ciascun colpo."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1659
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1643
 msgid "You took too long! We'll never be rid of these Orcs!"
 msgstr "Ci hai messo troppo, non batteremo più questi orchi!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1677
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1661
 msgid ""
 "You are victorious! You may want to try Novice-level campaigns such as: The "
 "South Guard, An Orcish Incursion, A Tale of Two Brothers, and Heir to the "
@@ -1897,6 +1885,38 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "mazza"
+
+#~ msgid ""
+#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
+#~ "attack. The quintain defended with its melee attack (3-5). The ranged "
+#~ "attack was safer.\n"
+#~ "End your turn, then attack again."
+#~ msgstr ""
+#~ "Il tuo elfo ha usato una spada (5-4, cioè 5 di danno e 4 attacchi), un "
+#~ "attacco da mischia, per questo la quintana si è difesa con il suo (3-5). "
+#~ "L'attacco a distanza sarebbe stato più sicuro.\n"
+#~ "Finisci il turno e poi attacca di nuovo."
+
+#~ msgid ""
+#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
+#~ "attack. The quintain defended with its melee attack (3-5).\n"
+#~ "You should tell the other Elf to use the bow."
+#~ msgstr ""
+#~ "Il tuo elfo ha usato una spada (5-4, cioè 5 punti di danno per 4 "
+#~ "attacchi) che è un attacco da mischia e per questo la quintana si è "
+#~ "difesa con il suo attacco ravvicinato (3-5). Dovresti dire all'altro elfo "
+#~ "di usare l'arco."
+
+#~ msgid ""
+#~ "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 "
+#~ "attacks). The quintain has no ranged attack, only a melee attack, so it "
+#~ "could not defend itself.\n"
+#~ "End your turn, then attack again."
+#~ msgstr ""
+#~ "Il tuo elfo ha usato un arco, un attacco da distanza (3-3, o meglio 3 di "
+#~ "danno per 3 attacchi). La quintana non possiede attacchi a distanza, ma "
+#~ "solo da mischia, quindi non ha potuto difendersi.\n"
+#~ "Finisci il turno, quindi attacca di nuovo."
 
 #~ msgid ""
 #~ "Hello translators! Tutorial is meant to be a little funny at the start, "

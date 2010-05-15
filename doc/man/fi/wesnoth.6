@@ -46,8 +46,11 @@ yksiköitä, skenaarioita tai kampanjoitasi ja jaa ne muiden pelaajien kanssa.
 \fB\-\-bpp\fP\fI\ luku\fP
 Asettaa värisyvyyden (bits per pixel). Esimerkki: \fB\-\-bpp 32\fP
 .TP 
-\fB\-c, \-\-campaign\fP
-Siirtyy suoraan kampanjanvalintavalikkoon.
+\fB\-c[[<difficulty>] <id_campaign> [<id_scenario>]], \-\-campaign[[<difficulty>] <id_campaign> [<id_scenario>]]\fP
+goes directly to the campaign based on the parameters.  The difficulty is a
+number between 1 and current campaign's difficulties number.  The default
+difficulty is 1.  The scenario must be one of the campaign's child
+scenarios. The default scenario is campaign's first scenario.
 .TP 
 \fB\-\-config\-dir\fP\fI\ nimi\fP
 Asettaa käyttäjän asetushakemiston \fInimen\fP hakemistossa $HOME tai windowsin

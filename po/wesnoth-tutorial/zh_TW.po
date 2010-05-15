@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.19+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-01-17 17:49+0100\n"
+"POT-Creation-Date: 2010-05-15 14:01+0200\n"
 "PO-Revision-Date: 2009-04-19 19:48+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese (Taiwan) <steven2880@gmail.com>\n"
@@ -548,36 +548,37 @@ msgstr "左鍵點選槍靶以攻擊它。"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:835
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:842
+msgid " The ranged attack was safer."
+msgstr ""
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:835
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:842
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:854
+#, fuzzy
 msgid ""
 "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. Quintain defended with its melee attack (3-5). The ranged attack was "
-"safer."
+"attack. The quintain defended with its melee attack (3-5)."
 msgstr ""
 "您的精靈使用劍(5-4，即四次攻擊，每次五點傷害)，這是近距離攻擊，所以槍靶會以它"
 "的近距離攻擊(3-5)來反擊。遠距離攻擊會比較安全。"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:843
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:895
+#, fuzzy
 msgid ""
-"Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. The quintain defended with its melee attack (3-5). The ranged attack "
-"was safer.\n"
+"\n"
 "End your turn, then attack again."
-msgstr ""
-"您的精靈使用劍(5-4，即四次攻擊，每次五點傷害)，這是近距離攻擊，所以槍靶會以它"
-"的近距離攻擊(3-5)來反擊。遠距離攻擊會比較安全。\n"
-"結束您的回合，然後在攻擊一次。"
+msgstr "結束您的回合，然後再次攻擊。"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:855
 msgid ""
-"Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. The quintain defended with its melee attack (3-5).\n"
+"\n"
 "You should tell the other Elf to use the bow."
 msgstr ""
-"您的精靈使用劍刃(5-4，即四次攻擊，每次五點傷害)，這是近距離攻擊，所以槍靶會以"
-"它的近距離攻擊(3-5)來反擊。\n"
-"您應該讓另一個精靈使用弓箭。"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:858
@@ -587,6 +588,7 @@ msgstr "使用另一個精靈攻擊"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:887
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:894
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:905
 msgid ""
 "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
@@ -595,18 +597,6 @@ msgid ""
 msgstr ""
 "您的精靈使用弓箭，這是一種遠程攻擊(3-3，即三次攻擊，每次三點傷害)。槍靶沒有遠"
 "程攻擊，所以它不會反擊。"
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:895
-msgid ""
-"Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
-"The quintain has no ranged attack, only a melee attack, so it could not "
-"defend itself.\n"
-"End your turn, then attack again."
-msgstr ""
-"您的精靈使用弓箭，這是一種遠程攻擊(3-3，即三次攻擊，每次三點傷害)。槍靶沒有遠"
-"程攻擊，所以它不會反擊。\n"
-"結束您的回合，然後再次攻擊。"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:926
@@ -1691,12 +1681,12 @@ msgstr ""
 "我擅長使用劍：每回合可以攻擊4次，每次8點傷害。"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1659
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1643
 msgid "You took too long! We'll never be rid of these Orcs!"
 msgstr "您浪費太多時間了，這樣我們永遠不能將這些半獸人驅除！"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1677
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1661
 msgid ""
 "You are victorious! You may want to try Novice-level campaigns such as: The "
 "South Guard, An Orcish Incursion, A Tale of Two Brothers, and Heir to the "
@@ -1749,6 +1739,35 @@ msgstr "槍靶是用來練習劍術和槍術的。被它打到是令人吃驚的
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "連枷"
+
+#~ msgid ""
+#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
+#~ "attack. The quintain defended with its melee attack (3-5). The ranged "
+#~ "attack was safer.\n"
+#~ "End your turn, then attack again."
+#~ msgstr ""
+#~ "您的精靈使用劍(5-4，即四次攻擊，每次五點傷害)，這是近距離攻擊，所以槍靶會"
+#~ "以它的近距離攻擊(3-5)來反擊。遠距離攻擊會比較安全。\n"
+#~ "結束您的回合，然後在攻擊一次。"
+
+#~ msgid ""
+#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
+#~ "attack. The quintain defended with its melee attack (3-5).\n"
+#~ "You should tell the other Elf to use the bow."
+#~ msgstr ""
+#~ "您的精靈使用劍刃(5-4，即四次攻擊，每次五點傷害)，這是近距離攻擊，所以槍靶"
+#~ "會以它的近距離攻擊(3-5)來反擊。\n"
+#~ "您應該讓另一個精靈使用弓箭。"
+
+#~ msgid ""
+#~ "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 "
+#~ "attacks). The quintain has no ranged attack, only a melee attack, so it "
+#~ "could not defend itself.\n"
+#~ "End your turn, then attack again."
+#~ msgstr ""
+#~ "您的精靈使用弓箭，這是一種遠程攻擊(3-3，即三次攻擊，每次三點傷害)。槍靶沒"
+#~ "有遠程攻擊，所以它不會反擊。\n"
+#~ "結束您的回合，然後再次攻擊。"
 
 #~ msgid ""
 #~ "Hello translators! Tutorial is meant to be a little funny at the start, "

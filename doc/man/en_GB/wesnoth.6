@@ -46,8 +46,11 @@ scenarios or campaigns, and share them with others.
 \fB\-\-bpp\fP\fI\ number\fP
 sets BitsPerPixel value. Example: \fB\-\-bpp 32\fP
 .TP 
-\fB\-c, \-\-campaign\fP
-goes directly to the campaign selection menu.
+\fB\-c[[<difficulty>] <id_campaign> [<id_scenario>]], \-\-campaign[[<difficulty>] <id_campaign> [<id_scenario>]]\fP
+goes directly to the campaign based on the parameters.  The difficulty is a
+number between 1 and current campaign's difficulties number.  The default
+difficulty is 1.  The scenario must be one of the campaign's child
+scenarios. The default scenario is campaign's first scenario.
 .TP 
 \fB\-\-config\-dir\fP\fI\ name\fP
 sets the user configuration directory to \fIname\fP under $HOME or "My

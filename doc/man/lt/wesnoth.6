@@ -48,8 +48,11 @@ ir dalinkitės jais su kitais.
 \fB\-\-bpp\fP\fI\ skaičius\fP
 nustato bitų vienam pikseliui vertę. Pavyzdžiui: \fB\-\-bpp 32\fP
 .TP 
-\fB\-c, \-\-campaign\fP
-iš karto rodo kampanijos pasirinkimo meniu.
+\fB\-c[[<difficulty>] <id_campaign> [<id_scenario>]], \-\-campaign[[<difficulty>] <id_campaign> [<id_scenario>]]\fP
+goes directly to the campaign based on the parameters.  The difficulty is a
+number between 1 and current campaign's difficulties number.  The default
+difficulty is 1.  The scenario must be one of the campaign's child
+scenarios. The default scenario is campaign's first scenario.
 .TP 
 \fB\-\-config\-dir\fP\fI\ pavadinimas\fP
 nustato naudotojo konfigūracijos aplanką į \fIname\fP esantį $HOME arba „My

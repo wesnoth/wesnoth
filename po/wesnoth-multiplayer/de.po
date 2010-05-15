@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-26 15:41+0100\n"
+"POT-Creation-Date: 2010-05-15 14:01+0200\n"
 "PO-Revision-Date: 2010-04-28 08:35+0200\n"
 "Last-Translator: Gerfried Fuchs <rhonda@deb.at>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -99,6 +99,7 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:49
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:22
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:37
+#: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:34
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:21
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:21
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:48
@@ -129,6 +130,7 @@ msgstr "Nord"
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:61
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:35
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:26
+#: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:22
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:32
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:32
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:37
@@ -704,10 +706,11 @@ msgstr "Dunkle Aussichten – ein zufallsabhängiges Überlebensszenario"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1449
+#, fuzzy
 msgid ""
 "Your aim is to survive the spawning waves and defeat the final arch-"
 "enemies.\n"
-"       \n"
+"\n"
 "The spawning waves are generated randomly and will different each time Dark "
 "Forecast is played.\n"
 "\n"
@@ -756,7 +759,8 @@ msgstr ""
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1454
-msgid "So this is the accursed valley - a land ours for the taking."
+#, fuzzy
+msgid "So this is the accursed valley — a land ours for the taking."
 msgstr ""
 "Endlich haben wir dieses verdammte Tal erreicht. Dieses Land wird unser sein."
 
@@ -831,6 +835,25 @@ msgstr ""
 "hinterlassen. Seit dieser Zeit haben viele Parteien versucht, die Höhlen von "
 "Onis in Besitz zu nehmen, um die seltsame und mysteriöse Magie ihrer "
 "Erschaffer zu entschlüsseln."
+
+#. [multiplayer]: id=multiplayer_elensefar_courtyard
+#: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:5
+msgid "2p — Elensefar Courtyard"
+msgstr "2S – Der Hof von Elensefar"
+
+#. [multiplayer]: id=multiplayer_elensefar_courtyard
+#: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:7
+msgid ""
+"Fight through corridors and gardens, and dominate the eastern courtyard of "
+"what used to be the glorious city of Elensefar."
+msgstr ""
+"Kämpft durch die Korridore und Gärten und dominiert den östlichen Hof der "
+"einstmals prächtigen Stadt von Elensefar."
+
+#. [time]: id=underground_illum
+#: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:111
+msgid "Underground"
+msgstr "Untergrund"
 
 #. [multiplayer]: id=multiplayer_Fallenstar_Lake
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:5
@@ -1851,16 +1874,3 @@ msgid ""
 msgstr ""
 "Ein Wesnoth-Leistungsvergleich, der folgende Einstellungen verwendet: --no-"
 "delay --multiplayer --scenario=wesbench_shroud_walk --exit-at-end."
-
-#~ msgid "2p - Elensefar Courtyard"
-#~ msgstr "2p - Der Hof von Elensefar"
-
-#~ msgid ""
-#~ "Fight through corridors and gardens, and dominate the eastern courtyard "
-#~ "of what used to be the glorious city of Elensefar."
-#~ msgstr ""
-#~ "Kämpft durch die Korridore und Gärten und dominiert den östlichen Hof der "
-#~ "einstmals prächtigen Stadt von Elensefar."
-
-#~ msgid "Underground"
-#~ msgstr "Untergrund"

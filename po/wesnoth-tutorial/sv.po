@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-01-17 17:49+0100\n"
+"POT-Creation-Date: 2010-05-15 14:01+0200\n"
 "PO-Revision-Date: 2009-02-06 19:04+0100\n"
 "Last-Translator: Gustav Tiger <admin@tigge.org>\n"
 "Language-Team: Swedish\n"
@@ -576,10 +576,18 @@ msgstr "Vänsterklicka på kvintanen för att anfalla den."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:835
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:842
+msgid " The ranged attack was safer."
+msgstr ""
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:835
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:842
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:854
+#, fuzzy
 msgid ""
 "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. Quintain defended with its melee attack (3-5). The ranged attack was "
-"safer."
+"attack. The quintain defended with its melee attack (3-5)."
 msgstr ""
 "Din alv använde ett svärd (5-4, eller 5 i skada, 4 attacker), vilket är ett "
 "närstridsvapen. Kvintanen försvarade sig med sitt närstridsvapen (3-5). "
@@ -587,27 +595,19 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:843
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:895
+#, fuzzy
 msgid ""
-"Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. The quintain defended with its melee attack (3-5). The ranged attack "
-"was safer.\n"
+"\n"
 "End your turn, then attack again."
-msgstr ""
-"Din alv använde ett svärd (5-4, eller 5 i skada, 4 attacker), vilket är ett "
-"närstridsvapen. Kvintanen försvarade sig med sitt närstridsvapen (3-5). "
-"Distansvapnet var säkrare i det här fallet.\n"
-"Avsluta draget och anfall sen igen."
+msgstr "Avsluta draget och anfall igen."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:855
 msgid ""
-"Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. The quintain defended with its melee attack (3-5).\n"
+"\n"
 "You should tell the other Elf to use the bow."
 msgstr ""
-"Din alv använde ett svärd (5-4, eller 5 i skada, 4 attacker), vilket är ett "
-"närstridsvapen. Kvintanen försvarade sig med sitt närstridsvapen (3-5).\n"
-"Du borde säga till den andra alven att använda sin pilbåge."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:858
@@ -617,6 +617,7 @@ msgstr "Anfall med den andra alven"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:887
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:894
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:905
 msgid ""
 "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
@@ -626,19 +627,6 @@ msgstr ""
 "Din alv använde en pilbåge, vilket är ett distansvapen (3-3, eller 3 i "
 "skada, 3 attacker). Kvintanen har inget distansvapen, bara ett "
 "närstridsvapen, så den kunde inte försvara sig."
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:895
-msgid ""
-"Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
-"The quintain has no ranged attack, only a melee attack, so it could not "
-"defend itself.\n"
-"End your turn, then attack again."
-msgstr ""
-"Din alv använde en pilbåge, vilket är ett distansvapen (3-3, eller 3 i "
-"skada, 3 attacker). Kvintanen har inget distansvapen, bara ett "
-"närstridsvapen, så den kunde inte försvara sig.\n"
-"Avsluta draget och anfall igen."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:926
@@ -1797,12 +1785,12 @@ msgstr ""
 "Jag är särskilt bra på att hantera svärd - vållar 8 i skada i 4 attacker."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1659
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1643
 msgid "You took too long! We'll never be rid of these Orcs!"
 msgstr "Du tog för lång tid på dig! Nu blir vi aldrig av med orcherna!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1677
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1661
 msgid ""
 "You are victorious! You may want to try Novice-level campaigns such as: The "
 "South Guard, An Orcish Incursion, A Tale of Two Brothers, and Heir to the "
@@ -1859,6 +1847,38 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "stridsgissel"
+
+#~ msgid ""
+#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
+#~ "attack. The quintain defended with its melee attack (3-5). The ranged "
+#~ "attack was safer.\n"
+#~ "End your turn, then attack again."
+#~ msgstr ""
+#~ "Din alv använde ett svärd (5-4, eller 5 i skada, 4 attacker), vilket är "
+#~ "ett närstridsvapen. Kvintanen försvarade sig med sitt närstridsvapen (3-"
+#~ "5). Distansvapnet var säkrare i det här fallet.\n"
+#~ "Avsluta draget och anfall sen igen."
+
+#~ msgid ""
+#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
+#~ "attack. The quintain defended with its melee attack (3-5).\n"
+#~ "You should tell the other Elf to use the bow."
+#~ msgstr ""
+#~ "Din alv använde ett svärd (5-4, eller 5 i skada, 4 attacker), vilket är "
+#~ "ett närstridsvapen. Kvintanen försvarade sig med sitt närstridsvapen (3-"
+#~ "5).\n"
+#~ "Du borde säga till den andra alven att använda sin pilbåge."
+
+#~ msgid ""
+#~ "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 "
+#~ "attacks). The quintain has no ranged attack, only a melee attack, so it "
+#~ "could not defend itself.\n"
+#~ "End your turn, then attack again."
+#~ msgstr ""
+#~ "Din alv använde en pilbåge, vilket är ett distansvapen (3-3, eller 3 i "
+#~ "skada, 3 attacker). Kvintanen har inget distansvapen, bara ett "
+#~ "närstridsvapen, så den kunde inte försvara sig.\n"
+#~ "Avsluta draget och anfall igen."
 
 #, fuzzy
 #~ msgid "<big>Galdrad"

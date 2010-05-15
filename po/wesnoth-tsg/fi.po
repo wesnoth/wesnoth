@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-02-02 13:04+0100\n"
+"POT-Creation-Date: 2010-05-15 14:01+0200\n"
 "PO-Revision-Date: 2009-12-23 15:02+0200\n"
 "Last-Translator: Mikko Nikkilä <miccoh@gmail.com>\n"
 "Language-Team: Finnish\n"
@@ -191,8 +191,7 @@ msgstr "Kukista Urza Mathin"
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:414
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:432
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:479
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:234
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:376
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:250
 msgid "Death of Deoran"
 msgstr "Deoranin kuolema"
 
@@ -1394,8 +1393,7 @@ msgstr "Saata Ethiliel Mebrinin kylään."
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:523
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:580
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:49
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:238
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:380
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:254
 msgid "Death of Ethiliel"
 msgstr "Ethilielin kuolema"
 
@@ -3387,7 +3385,7 @@ msgstr "Westinin neuvosto saapuu vuorolla $council_arrive_turn|."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:515
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:301
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:313
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:12
 msgid "I have failed my kingdom and duty..."
 msgstr "Olen pettänyt kuningaskuntani ja tehtäväni..."
@@ -3531,29 +3529,57 @@ msgstr ""
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:217
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:218
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:219
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:276
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:288
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:300
 msgid "Disciple of Mebrin"
 msgstr "Mebrinin opetuslapsi"
 
+#. [message]: speaker=Ethiliel
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:229
+msgid ""
+"We won't be able to hold them off for long. I should go reason with them!"
+msgstr ""
+"Emme pysty pidättelemään heitä kauaa. Minun täytyy mennä sovittelemaan "
+"heidän kanssaan! He eivät uskaltaisi hyökätä kimppuuni."
+
+#. [message]: speaker=Deoran
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:233
+msgid ""
+"Are you sure that the elves will greet you any more kindly than they have "
+"met us? After all, you did lead us into the forests..."
+msgstr ""
+"Oletko varma, että haltiat suhtautuvat sinuun yhtään sen ystävällisemmin "
+"kuin meihin? Sinähän johdatit meidät metsään."
+
+#. [message]: speaker=Ethiliel
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:237
+msgid "Perhaps not, but it is your only hope. I must reach Ithelden!"
+msgstr ""
+"Ehkä eivät, mutta se on ainoa toivonne. Minun on tavoitettava Ithelden!"
+
+#. [event]
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:240
+msgid "Ithelden's base"
+msgstr "Itheldenin tukikohta"
+
 #. [objective]: condition=win
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:230
-msgid "Keep the enraged elves from sacking Westin"
-msgstr "Estä raivostuneita haltioita tuhoamasta Westiniä"
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:246
+msgid "Send Ethiliel to the Great Tree and parley with Ithelden"
+msgstr "Vie Ethiliel suuren puun luo keskustelemaan Itheldenin kanssa"
 
 #. [message]
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:289
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:301
 msgid "For every one of us you strike down, more will rise!"
 msgstr "Jokaista kohti, jonka meistä tapat, tulee vielä enemmän!"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:315
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:327
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:52
 msgid "I have given my all for my kingdom! Avenge me, Deoran!"
 msgstr "Olen antanut kaikkeni kuningaskuntani puolesta! Kosta minut, Deoran!"
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:328
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:340
 msgid ""
 "Ithelden's elves have killed Ethiliel! Now we have no chance to come to an "
 "agreement with them. A war with the Elves is imminent."
@@ -3563,51 +3589,13 @@ msgstr ""
 "väistämätön."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:332
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:344
 msgid ""
 "We are far away from Weldyn. We'll surely all be killed long before any "
 "reinforcements arrive."
 msgstr ""
 "Olemme kaukana Weldynistä. Meidät tapetaan varmasti kauan ennen kuin "
 "vahvistusjoukot saapuvat."
-
-#. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:355
-msgid ""
-"We won't be able to hold them off for long. I should go reason with them!"
-msgstr ""
-"Emme pysty pidättelemään heitä kauaa. Minun täytyy mennä sovittelemaan "
-"heidän kanssaan! He eivät uskaltaisi hyökätä kimppuuni."
-
-#. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:359
-msgid ""
-"Are you sure that the elves will greet you any more kindly than they have "
-"met us? After all, you did lead us into the forests..."
-msgstr ""
-"Oletko varma, että haltiat suhtautuvat sinuun yhtään sen ystävällisemmin "
-"kuin meihin? Sinähän johdatit meidät metsään."
-
-#. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:363
-msgid "Perhaps not, but it is your only hope. I must reach Ithelden!"
-msgstr ""
-"Ehkä eivät, mutta se on ainoa toivonne. Minun on tavoitettava Ithelden!"
-
-#. [event]
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:366
-msgid "Ithelden's base"
-msgstr "Itheldenin tukikohta"
-
-#. [objective]: condition=win
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:372
-msgid "Send Ethiliel to the Great Tree and parley with Ithelden"
-msgstr "Vie Ethiliel suuren puun luo keskustelemaan Itheldenin kanssa"
-
-#. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:414
-msgid "I feel like I belong on this spot."
-msgstr "Tunnen, että ikään kuin kuuluisin tähän paikkaan."
 
 #. [scenario]: id=10a_Elf_Epilogue
 #. [scenario]: id=9b_Bandit_Epilogue
@@ -4182,6 +4170,12 @@ msgstr ""
 "Sir Deoran, Wesnothin ritari, kutsuttiin Weldyniin neuvonpitoon itsensä "
 "kuningas Haldricin kanssa. Myrskypilvet kasaantuivat ympäri valtakuntaa, ja "
 "jokaista komentajaa tarvittaisiin torjumaan tulvaa..."
+
+#~ msgid "Keep the enraged elves from sacking Westin"
+#~ msgstr "Estä raivostuneita haltioita tuhoamasta Westiniä"
+
+#~ msgid "I feel like I belong on this spot."
+#~ msgstr "Tunnen, että ikään kuin kuuluisin tähän paikkaan."
 
 #~ msgid "Hmm...I have to consider this..."
 #~ msgstr "Hmm... Minun täytyy harkita tätä..."

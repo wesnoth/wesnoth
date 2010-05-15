@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.9\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-01-17 17:49+0100\n"
+"POT-Creation-Date: 2010-05-15 14:01+0200\n"
 "PO-Revision-Date: 2010-03-15 16:31+0300\n"
 "Last-Translator: Reinis Danne <rei4dan@gmail.com>\n"
 "Language-Team: none\n"
@@ -573,10 +573,18 @@ msgstr "Kreisais klikšķis uz kvintana, lai tam uzbruktu."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:835
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:842
+msgid " The ranged attack was safer."
+msgstr ""
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:835
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:842
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:854
+#, fuzzy
 msgid ""
 "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. Quintain defended with its melee attack (3-5). The ranged attack was "
-"safer."
+"attack. The quintain defended with its melee attack (3-5)."
 msgstr ""
 "Tavs elfs izmantoja zobenu (5-4, jeb 5 bojājuma punkti un 4 uzbrukumi), kas "
 "ir tuvcīņas uzbrukums. Kvintans aizstāvējās ar savu tuvcīņas uzbrukumu (3-"
@@ -584,28 +592,19 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:843
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:895
+#, fuzzy
 msgid ""
-"Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. The quintain defended with its melee attack (3-5). The ranged attack "
-"was safer.\n"
+"\n"
 "End your turn, then attack again."
-msgstr ""
-"Tavs elfs izmantoja zobenu (5-4, jeb 5 bojājuma punkti un 4 uzbrukumi), kas "
-"ir tuvcīņas uzbrukums. Kvintans aizstāvējās ar savu tuvcīņas uzbrukumu (3-"
-"5). Lādiņa uzbrukums būtu bijis drošāks. Pabeidz savu gājienu un tad uzbrūc "
-"atkal."
+msgstr "Pabeidz savu gājienu un uzbrūc atkal."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:855
 msgid ""
-"Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. The quintain defended with its melee attack (3-5).\n"
+"\n"
 "You should tell the other Elf to use the bow."
 msgstr ""
-"Tavs elfs izmantoja zobenu (5-4, jeb 5 bojājuma punkti un 4 uzbrukumi), kas "
-"ir tuvcīņas uzbrukums. Kvintans aizstāvējās ar savu tuvcīņas uzbrukumu (3-"
-"5).\n"
-"Tev vajadzētu pateikt otram elfam, lai tas izmanto loku."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:858
@@ -615,6 +614,7 @@ msgstr "Uzbrukt ar otru elfu"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:887
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:894
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:905
 msgid ""
 "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
@@ -624,19 +624,6 @@ msgstr ""
 "Tavs elfs izmantoja loku, kas ir lādiņa uzbrukums (3-3, jeb 3 bojājuma "
 "punkti un 3 uzbrukumi). Kvintanam nav lādiņa uzbrukumu, tikai tuvcīņas, "
 "tāpēc tas nevar aizstāvēt sevi."
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:895
-msgid ""
-"Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
-"The quintain has no ranged attack, only a melee attack, so it could not "
-"defend itself.\n"
-"End your turn, then attack again."
-msgstr ""
-"Tavs elfs izmantoja loku, kas ir lādiņa uzbrukums (3-3, jeb 3 bojājuma "
-"punkti un 3 uzbrukumi). Kvintanam nav lādiņa uzbrukumu, tikai tuvcīņas, "
-"tāpēc tas nevar aizstāvēt sevi.\n"
-"Pabeidz savu gājienu un tad uzbrūc atkal."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:926
@@ -1798,12 +1785,12 @@ msgstr ""
 "uzbrukumos."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1659
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1643
 msgid "You took too long! We'll never be rid of these Orcs!"
 msgstr "Tu cīnījies pārāk ilgi! Mēs nekad netiksim vaļā no šiem orkiem!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1677
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1661
 msgid ""
 "You are victorious! You may want to try Novice-level campaigns such as: The "
 "South Guard, An Orcish Incursion, A Tale of Two Brothers, and Heir to the "
@@ -1862,3 +1849,35 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "sprigulis"
+
+#~ msgid ""
+#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
+#~ "attack. The quintain defended with its melee attack (3-5). The ranged "
+#~ "attack was safer.\n"
+#~ "End your turn, then attack again."
+#~ msgstr ""
+#~ "Tavs elfs izmantoja zobenu (5-4, jeb 5 bojājuma punkti un 4 uzbrukumi), "
+#~ "kas ir tuvcīņas uzbrukums. Kvintans aizstāvējās ar savu tuvcīņas "
+#~ "uzbrukumu (3-5). Lādiņa uzbrukums būtu bijis drošāks. Pabeidz savu "
+#~ "gājienu un tad uzbrūc atkal."
+
+#~ msgid ""
+#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
+#~ "attack. The quintain defended with its melee attack (3-5).\n"
+#~ "You should tell the other Elf to use the bow."
+#~ msgstr ""
+#~ "Tavs elfs izmantoja zobenu (5-4, jeb 5 bojājuma punkti un 4 uzbrukumi), "
+#~ "kas ir tuvcīņas uzbrukums. Kvintans aizstāvējās ar savu tuvcīņas "
+#~ "uzbrukumu (3-5).\n"
+#~ "Tev vajadzētu pateikt otram elfam, lai tas izmanto loku."
+
+#~ msgid ""
+#~ "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 "
+#~ "attacks). The quintain has no ranged attack, only a melee attack, so it "
+#~ "could not defend itself.\n"
+#~ "End your turn, then attack again."
+#~ msgstr ""
+#~ "Tavs elfs izmantoja loku, kas ir lādiņa uzbrukums (3-3, jeb 3 bojājuma "
+#~ "punkti un 3 uzbrukumi). Kvintanam nav lādiņa uzbrukumu, tikai tuvcīņas, "
+#~ "tāpēc tas nevar aizstāvēt sevi.\n"
+#~ "Pabeidz savu gājienu un tad uzbrūc atkal."

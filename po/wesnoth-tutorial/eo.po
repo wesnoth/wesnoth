@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-01-17 17:49+0100\n"
+"POT-Creation-Date: 2010-05-15 14:01+0200\n"
 "PO-Revision-Date: 2008-03-01 17:34+0200\n"
 "Last-Translator: Aleksej Korgenkov <grimpanto@mail.ru>\n"
 "Language-Team: none\n"
@@ -602,11 +602,18 @@ msgstr "Klaku la Timigilon por ataki ĝin."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:835
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:842
+msgid " The ranged attack was safer."
+msgstr ""
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:835
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:842
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:854
 #, fuzzy
 msgid ""
 "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. Quintain defended with its melee attack (3-5). The ranged attack was "
-"safer."
+"attack. The quintain defended with its melee attack (3-5)."
 msgstr ""
 "Via elfo uzis sabron (5-4, aŭ damaĝo 5, 4 atakoj), tio estas kontakta atako, "
 "do la timigilo respondas per sia kontakta atako (3-5). La distanca atako "
@@ -614,30 +621,19 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:843
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:895
 #, fuzzy
 msgid ""
-"Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. The quintain defended with its melee attack (3-5). The ranged attack "
-"was safer.\n"
+"\n"
 "End your turn, then attack again."
-msgstr ""
-"Via elfo uzis sabron (5-4, aŭ damaĝo 5, 4 atakoj), tio estas kontakta atako, "
-"do la timigilo respondas per sia kontakta atako (3-5). La distanca atako "
-"estas pli sekura.\n"
-"Finu vian movon kaj ataku denove."
+msgstr "Finu vian movon kaj ataku denove."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:855
-#, fuzzy
 msgid ""
-"Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. The quintain defended with its melee attack (3-5).\n"
+"\n"
 "You should tell the other Elf to use the bow."
 msgstr ""
-"Via elfo uzis sabron (5-4, aŭ damaĝo 5, 4 atakoj), kiu estas kontakta atako, "
-"do la timigilo respondas per sia kontakta atako (3-5). La distanca atako "
-"estas pli sekura.\n"
-"Decas diri al la alia Elfo uzi pafarkon."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:858
@@ -648,6 +644,7 @@ msgstr "Ataku kun helpo de alia Elfo"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:887
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:894
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:905
 #, fuzzy
 msgid ""
@@ -658,20 +655,6 @@ msgstr ""
 "Via elfo uzis pafarkon, kio estas distanca atako (3-3, aŭ 3 - damaĝo, 3 "
 "atakoj). La birtimigilo ne povas ataki distance, nur kontakte, do ĝi ne "
 "povas defendi sin."
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:895
-#, fuzzy
-msgid ""
-"Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
-"The quintain has no ranged attack, only a melee attack, so it could not "
-"defend itself.\n"
-"End your turn, then attack again."
-msgstr ""
-"Via elfo uzis pafarkon, kio estas distanca atako (3-3, aŭ 3 - damaĝo, 3 "
-"atakoj). La birtimigilo ne povas ataki distance, nur kontakte, do ĝi ne "
-"povas defendi sin.\n"
-"Finu vian movon kaj ataku denove."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:926
@@ -1897,13 +1880,13 @@ msgstr ""
 "Mi precipe bonas kun sabro: kvar atakoj donas po ok damaĝojn ĉiu."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1659
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1643
 #, fuzzy
 msgid "You took too long! We'll never be rid of these Orcs!"
 msgstr "Vi tro longe prokrastis, vi neniam liberiĝos de ĉi tiuj orkoj!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1677
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1661
 #, fuzzy
 msgid ""
 "You are victorious! You may want to try Novice-level campaigns such as: The "
@@ -1963,6 +1946,41 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "draŝilo"
+
+#, fuzzy
+#~ msgid ""
+#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
+#~ "attack. The quintain defended with its melee attack (3-5). The ranged "
+#~ "attack was safer.\n"
+#~ "End your turn, then attack again."
+#~ msgstr ""
+#~ "Via elfo uzis sabron (5-4, aŭ damaĝo 5, 4 atakoj), tio estas kontakta "
+#~ "atako, do la timigilo respondas per sia kontakta atako (3-5). La distanca "
+#~ "atako estas pli sekura.\n"
+#~ "Finu vian movon kaj ataku denove."
+
+#, fuzzy
+#~ msgid ""
+#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
+#~ "attack. The quintain defended with its melee attack (3-5).\n"
+#~ "You should tell the other Elf to use the bow."
+#~ msgstr ""
+#~ "Via elfo uzis sabron (5-4, aŭ damaĝo 5, 4 atakoj), kiu estas kontakta "
+#~ "atako, do la timigilo respondas per sia kontakta atako (3-5). La distanca "
+#~ "atako estas pli sekura.\n"
+#~ "Decas diri al la alia Elfo uzi pafarkon."
+
+#, fuzzy
+#~ msgid ""
+#~ "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 "
+#~ "attacks). The quintain has no ranged attack, only a melee attack, so it "
+#~ "could not defend itself.\n"
+#~ "End your turn, then attack again."
+#~ msgstr ""
+#~ "Via elfo uzis pafarkon, kio estas distanca atako (3-3, aŭ 3 - damaĝo, 3 "
+#~ "atakoj). La birtimigilo ne povas ataki distance, nur kontakte, do ĝi ne "
+#~ "povas defendi sin.\n"
+#~ "Finu vian movon kaj ataku denove."
 
 #, fuzzy
 #~ msgid "<big>Galdrad"

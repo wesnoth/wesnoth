@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: va\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-01-17 17:49+0100\n"
+"POT-Creation-Date: 2010-05-15 14:01+0200\n"
 "PO-Revision-Date: 2008-09-22 10:34+0100\n"
 "Last-Translator: Mavorte <mavorte1@yahoo.es>\n"
 "Language-Team: Valencià\n"
@@ -610,11 +610,18 @@ msgstr "Fes clic esquerre en l'estaferm per a atacar-lo."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:835
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:842
+msgid " The ranged attack was safer."
+msgstr ""
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:835
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:842
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:854
 #, fuzzy
 msgid ""
 "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. Quintain defended with its melee attack (3-5). The ranged attack was "
-"safer."
+"attack. The quintain defended with its melee attack (3-5)."
 msgstr ""
 "El teu elf ha usat una espasa (5-4, o 5 de dany i 4 atacs), que és un atac "
 "cos a cos, aixina que l'estaferm s'ha defés ab el seu atac cos a cos (3-5). "
@@ -622,29 +629,19 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:843
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:895
 #, fuzzy
 msgid ""
-"Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. The quintain defended with its melee attack (3-5). The ranged attack "
-"was safer.\n"
+"\n"
 "End your turn, then attack again."
-msgstr ""
-"El teu elf ha usat una espasa (5-4, o 5 de dany i 4 atacs), que és un atac "
-"cos a cos, aixina que l'estaferm s'ha defés ab el seu atac cos a cos (3-5). "
-"L'atac a distància era més segur.\n"
-"Finalisa la teua tanda i torna a atacar."
+msgstr "Finalisa la teua tanda i ataca de nou."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:855
-#, fuzzy
 msgid ""
-"Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. The quintain defended with its melee attack (3-5).\n"
+"\n"
 "You should tell the other Elf to use the bow."
 msgstr ""
-"El teu elf ha usat una espasa (5-4, o 5 de dany i 4 atacs), que és un atac "
-"cos a cos, aixina que l'estaferm s'ha defés ab el seu atac cos a cos (3-5).\n"
-"Deuries ordenar a l'atre elf que use l'arc."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:858
@@ -654,6 +651,7 @@ msgstr "Ataca ab l'atre elf"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:887
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:894
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:905
 #, fuzzy
 msgid ""
@@ -664,20 +662,6 @@ msgstr ""
 "El teu elf ha usat l'arc, que és un atac a distància (3-3, o 3 de dany i 3 "
 "atacs). L'estaferm no té atac a distància, només un cos a cos, aixina que no "
 "ha pogut defendre's."
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:895
-#, fuzzy
-msgid ""
-"Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
-"The quintain has no ranged attack, only a melee attack, so it could not "
-"defend itself.\n"
-"End your turn, then attack again."
-msgstr ""
-"El teu elf ha usat l'arc, que és un atac a distància (3-3, o 3 de dany i 3 "
-"atacs). L'estaferm no té atac a distància, només un cos a cos, aixina que no "
-"ha pogut defendre's.\n"
-"Finalisa la teua tanda i torna a atacar."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:926
@@ -1910,13 +1894,13 @@ msgstr ""
 "dany."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1659
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1643
 #, fuzzy
 msgid "You took too long! We'll never be rid of these Orcs!"
 msgstr "¡Has tardat massa, mai nos lliurarem d'estos orcs!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1677
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1661
 #, fuzzy
 msgid ""
 "You are victorious! You may want to try Novice-level campaigns such as: The "
@@ -1978,6 +1962,41 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "mall (maça ab cadenes)"
+
+#, fuzzy
+#~ msgid ""
+#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
+#~ "attack. The quintain defended with its melee attack (3-5). The ranged "
+#~ "attack was safer.\n"
+#~ "End your turn, then attack again."
+#~ msgstr ""
+#~ "El teu elf ha usat una espasa (5-4, o 5 de dany i 4 atacs), que és un "
+#~ "atac cos a cos, aixina que l'estaferm s'ha defés ab el seu atac cos a cos "
+#~ "(3-5). L'atac a distància era més segur.\n"
+#~ "Finalisa la teua tanda i torna a atacar."
+
+#, fuzzy
+#~ msgid ""
+#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
+#~ "attack. The quintain defended with its melee attack (3-5).\n"
+#~ "You should tell the other Elf to use the bow."
+#~ msgstr ""
+#~ "El teu elf ha usat una espasa (5-4, o 5 de dany i 4 atacs), que és un "
+#~ "atac cos a cos, aixina que l'estaferm s'ha defés ab el seu atac cos a cos "
+#~ "(3-5).\n"
+#~ "Deuries ordenar a l'atre elf que use l'arc."
+
+#, fuzzy
+#~ msgid ""
+#~ "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 "
+#~ "attacks). The quintain has no ranged attack, only a melee attack, so it "
+#~ "could not defend itself.\n"
+#~ "End your turn, then attack again."
+#~ msgstr ""
+#~ "El teu elf ha usat l'arc, que és un atac a distància (3-3, o 3 de dany i "
+#~ "3 atacs). L'estaferm no té atac a distància, només un cos a cos, aixina "
+#~ "que no ha pogut defendre's.\n"
+#~ "Finalisa la teua tanda i torna a atacar."
 
 #, fuzzy
 #~ msgid "<big>Galdrad"

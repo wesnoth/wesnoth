@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-26 15:39+0100\n"
+"POT-Creation-Date: 2010-05-15 14:01+0200\n"
 "PO-Revision-Date: 2009-05-10 01:14-0500\n"
 "Last-Translator: luojie <lililjlj@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -47,7 +47,7 @@ msgstr ""
 #: data/core/units/goblins/Knight.cfg:48
 #: data/core/units/goblins/Pillager.cfg:47
 #: data/core/units/goblins/Wolf_Rider.cfg:64
-#: data/core/units/monsters/Cave_Spider.cfg:25
+#: data/core/units/monsters/Giant_Spider.cfg:25
 #: data/core/units/monsters/Sea_Serpent.cfg:27
 #: data/core/units/monsters/Water_Serpent.cfg:43
 #: data/core/units/monsters/Wolf.cfg:50
@@ -3263,27 +3263,6 @@ msgstr ""
 "人鱼勇士是人鱼军队的中坚力量。他们手持强力的三叉戟，是那些胆敢挑战水下世界者"
 "的噩梦。"
 
-#. [unit_type]: id=Giant Spider, race=monster
-#: data/core/units/monsters/Cave_Spider.cfg:4
-msgid "Giant Spider"
-msgstr "巨型蜘蛛"
-
-#. [unit_type]: id=Giant Spider, race=monster
-#: data/core/units/monsters/Cave_Spider.cfg:20
-#, fuzzy
-msgid ""
-"Giant Spiders are said to roam the depths of Knalga, devouring many victims. "
-"They have a vicious bite, made worse by the fact that it is poisoned, and "
-"can also fling webs through the air to trap their prey."
-msgstr ""
-"据说，巨型蜘蛛生活在纳尔迦的深处，吞食了很多可怜的受害者。它们能用毒素在近战"
-"中打击对手，也能从远程用蛛网来减慢对手的速度。"
-
-#. [attack]: type=impact
-#: data/core/units/monsters/Cave_Spider.cfg:37
-msgid "web"
-msgstr "蛛网"
-
 #. [unit_type]: id=Cuttle Fish, race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:4
 msgid "Cuttle Fish"
@@ -3400,6 +3379,27 @@ msgstr "叮"
 #: data/core/units/monsters/Giant_Scorpion.cfg:36
 msgid "pincers"
 msgstr "钳"
+
+#. [unit_type]: id=Giant Spider, race=monster
+#: data/core/units/monsters/Giant_Spider.cfg:4
+msgid "Giant Spider"
+msgstr "巨型蜘蛛"
+
+#. [unit_type]: id=Giant Spider, race=monster
+#: data/core/units/monsters/Giant_Spider.cfg:20
+#, fuzzy
+msgid ""
+"Giant Spiders are said to roam the depths of Knalga, devouring many victims. "
+"They have a vicious bite, made worse by the fact that it is poisoned, and "
+"can also fling webs through the air to trap their prey."
+msgstr ""
+"据说，巨型蜘蛛生活在纳尔迦的深处，吞食了很多可怜的受害者。它们能用毒素在近战"
+"中打击对手，也能从远程用蛛网来减慢对手的速度。"
+
+#. [attack]: type=impact
+#: data/core/units/monsters/Giant_Spider.cfg:37
+msgid "web"
+msgstr "蛛网"
 
 #. [unit_type]: id=Mudcrawler, race=monster
 #: data/core/units/monsters/Mudcrawler.cfg:4
@@ -4141,7 +4141,7 @@ msgid ""
 "poisons of the blood, and have a stench to match. But the most revolting "
 "fact about these fratures, apparent only to those who can perceive the "
 "traces of foul magic on them, is that they were somehow made from living men "
-"- a process about which almost nothing is known, but which can be nothing "
+"— a process about which almost nothing is known, but which can be nothing "
 "but nightmarish."
 msgstr ""
 "死灵食尸鬼，这些“贪婪的死尸”是肥胖怪物样貌的一团东西，和人的形状还有点相似。"

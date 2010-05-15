@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-15 01:03+0100\n"
+"POT-Creation-Date: 2010-05-15 14:01+0200\n"
 "PO-Revision-Date: 2009-12-16 00:20-0600\n"
 "Last-Translator: Yuanle Song <sylecn@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -101,6 +101,7 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:49
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:22
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:37
+#: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:34
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:21
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:21
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:48
@@ -131,6 +132,7 @@ msgstr "北部"
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:61
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:35
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:26
+#: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:22
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:32
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:32
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:37
@@ -664,10 +666,11 @@ msgstr "黑暗预想- 未知的生存场景"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1449
+#, fuzzy
 msgid ""
 "Your aim is to survive the spawning waves and defeat the final arch-"
 "enemies.\n"
-"       \n"
+"\n"
 "The spawning waves are generated randomly and will different each time Dark "
 "Forecast is played.\n"
 "\n"
@@ -712,7 +715,8 @@ msgstr ""
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1454
-msgid "So this is the accursed valley - a land ours for the taking."
+#, fuzzy
+msgid "So this is the accursed valley — a land ours for the taking."
 msgstr "所以这是被诅咒的山谷- 我们要征服的土地。"
 
 #. [message]
@@ -778,6 +782,24 @@ msgstr ""
 "堡。Kah Ruuk是食人魔中既邪恶又狡猾的一个种族。在从Irdya悄无踪迹地消失之前，他"
 "们曾让东部大陆的居民恐惧了长达四百年的时间。从那时起，一直都有很多集团竞争"
 "Onis巢穴的统治权，他们希望能解开洞穴主人奇怪而又神秘的魔力。"
+
+#. [multiplayer]: id=multiplayer_elensefar_courtyard
+#: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:5
+#, fuzzy
+msgid "2p — Elensefar Courtyard"
+msgstr "2p — 坠星湖"
+
+#. [multiplayer]: id=multiplayer_elensefar_courtyard
+#: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:7
+msgid ""
+"Fight through corridors and gardens, and dominate the eastern courtyard of "
+"what used to be the glorious city of Elensefar."
+msgstr ""
+
+#. [time]: id=underground_illum
+#: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:111
+msgid "Underground"
+msgstr ""
 
 #. [multiplayer]: id=multiplayer_Fallenstar_Lake
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:5

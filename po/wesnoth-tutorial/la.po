@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-26 15:41+0100\n"
+"POT-Creation-Date: 2010-05-15 14:01+0200\n"
 "PO-Revision-Date: 2010-04-15 03:53+0100\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: none\n"
@@ -567,10 +567,18 @@ msgstr "Tange laeve Formam Militis ut pugnes."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:835
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:842
+msgid " The ranged attack was safer."
+msgstr ""
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:835
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:842
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:854
+#, fuzzy
 msgid ""
 "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. Quintain defended with its melee attack (3-5). The ranged attack was "
-"safer."
+"attack. The quintain defended with its melee attack (3-5)."
 msgstr ""
 "Dryadalis tuus gladium usus est (V-IV; vel V damna, IV impetus), qui "
 "conflictio est. Forma militis defensit cum impetu conflictionis (III-V). "
@@ -578,27 +586,19 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:843
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:895
+#, fuzzy
 msgid ""
-"Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. The quintain defended with its melee attack (3-5). The ranged attack "
-"was safer.\n"
+"\n"
 "End your turn, then attack again."
-msgstr ""
-"Dryadalis tuus gladium usus est (V-IV; vel V damna, IV impetus), qui "
-"conflictio est. Forma militis defensit cum impetu conflictionis (III-V). "
-"Impetus missile tutius fuerit.\n"
-"Fini vicem, tunc oppugna rursus.   "
+msgstr "Fini vicem, tunc rursus oppugnare."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:855
 msgid ""
-"Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. The quintain defended with its melee attack (3-5).\n"
+"\n"
 "You should tell the other Elf to use the bow."
 msgstr ""
-"Dryadalis tuus galdium usus est (V-IV; vel V damna, IV impetus), qui "
-"conflictio est. Forma militis defensit cum impetu conflictionis (III-V).\n"
-"Iubeas Dryadalem alterum ut arcum utatur."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:858
@@ -608,6 +608,7 @@ msgstr "Pugna cum dryadale altero"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:887
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:894
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:905
 msgid ""
 "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
@@ -617,19 +618,6 @@ msgstr ""
 "Dryadalis tuus arcum usus est (III-III; aut III damna, III impetus), qui "
 "missile est. Forma militis sibi non impetus missile est, modo conflictio, "
 "sic se defendere non potuit."
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:895
-msgid ""
-"Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
-"The quintain has no ranged attack, only a melee attack, so it could not "
-"defend itself.\n"
-"End your turn, then attack again."
-msgstr ""
-"Dryadalis tuus arcum usus est (III-III; aut III damna, III impetus), qui "
-"missile est. Forma militis sibi non impetus missile est, modo conflictio, "
-"sic se defendere non potuit.\n"
-"Fini vicem, tunc oppugna rursus."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:926
@@ -1770,12 +1758,12 @@ msgstr ""
 "Multum in primis cum gladio possum, octo damna mensae cum impetibus quattor."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1659
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1643
 msgid "You took too long! We'll never be rid of these Orcs!"
 msgstr "Nimis horae consumpsisti! Numquam orcibus illis defungentur!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1677
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1661
 msgid ""
 "You are victorious! You may want to try Novice-level campaigns such as: The "
 "South Guard, An Orcish Incursion, A Tale of Two Brothers, and Heir to the "
@@ -1833,6 +1821,37 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "flagellum ferreum"
+
+#~ msgid ""
+#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
+#~ "attack. The quintain defended with its melee attack (3-5). The ranged "
+#~ "attack was safer.\n"
+#~ "End your turn, then attack again."
+#~ msgstr ""
+#~ "Dryadalis tuus gladium usus est (V-IV; vel V damna, IV impetus), qui "
+#~ "conflictio est. Forma militis defensit cum impetu conflictionis (III-V). "
+#~ "Impetus missile tutius fuerit.\n"
+#~ "Fini vicem, tunc oppugna rursus.   "
+
+#~ msgid ""
+#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
+#~ "attack. The quintain defended with its melee attack (3-5).\n"
+#~ "You should tell the other Elf to use the bow."
+#~ msgstr ""
+#~ "Dryadalis tuus galdium usus est (V-IV; vel V damna, IV impetus), qui "
+#~ "conflictio est. Forma militis defensit cum impetu conflictionis (III-V).\n"
+#~ "Iubeas Dryadalem alterum ut arcum utatur."
+
+#~ msgid ""
+#~ "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 "
+#~ "attacks). The quintain has no ranged attack, only a melee attack, so it "
+#~ "could not defend itself.\n"
+#~ "End your turn, then attack again."
+#~ msgstr ""
+#~ "Dryadalis tuus arcum usus est (III-III; aut III damna, III impetus), qui "
+#~ "missile est. Forma militis sibi non impetus missile est, modo conflictio, "
+#~ "sic se defendere non potuit.\n"
+#~ "Fini vicem, tunc oppugna rursus."
 
 #, fuzzy
 #~ msgid ""

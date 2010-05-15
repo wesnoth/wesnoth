@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-15 01:03+0100\n"
+"POT-Creation-Date: 2010-05-15 14:01+0200\n"
 "PO-Revision-Date: 2009-10-09 19:50-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -103,6 +103,7 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:49
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:22
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:37
+#: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:34
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:21
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:21
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:48
@@ -133,6 +134,7 @@ msgstr "𐑯𐑹𐑔"
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:61
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:35
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:26
+#: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:22
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:32
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:32
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:37
@@ -689,10 +691,11 @@ msgstr "𐑛𐑸𐑒 𐑓𐑹𐑒𐑭𐑕𐑑 - 𐑩 𐑮𐑨𐑯𐑛𐑩𐑥 �
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1449
+#, fuzzy
 msgid ""
 "Your aim is to survive the spawning waves and defeat the final arch-"
 "enemies.\n"
-"       \n"
+"\n"
 "The spawning waves are generated randomly and will different each time Dark "
 "Forecast is played.\n"
 "\n"
@@ -737,7 +740,8 @@ msgstr ""
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1454
-msgid "So this is the accursed valley - a land ours for the taking."
+#, fuzzy
+msgid "So this is the accursed valley — a land ours for the taking."
 msgstr "𐑕𐑴 𐑞𐑦𐑕 𐑦𐑟 𐑞 𐑩𐑒𐑻𐑕𐑑 𐑝𐑨𐑤𐑰 - 𐑩 𐑤𐑨𐑯𐑛 𐑬𐑼𐑟 𐑓𐑹 𐑞 𐑑𐑱𐑒𐑦𐑙."
 
 #. [message]
@@ -806,6 +810,24 @@ msgstr ""
 "𐑣𐑵 𐑑𐑺𐑻𐑲𐑟𐑛 𐑞 𐑐𐑰𐑐𐑩𐑤 𐑝 𐑞 𐑰𐑕𐑑𐑼𐑯 𐑤𐑨𐑯𐑛𐑟 𐑓𐑹 𐑯𐑽𐑤𐑦 𐑓𐑹 𐑣𐑳𐑯𐑛𐑮𐑧𐑛 𐑘𐑽𐑟, 𐑚𐑦𐑓𐑹 𐑝𐑨𐑯𐑦𐑖𐑦𐑙 𐑓𐑮𐑪𐑥 "
 "Irdya 𐑢𐑦𐑞𐑬𐑑 𐑩 𐑑𐑮𐑱𐑕. 𐑕𐑦𐑯𐑕 𐑞𐑨𐑑 𐑑𐑲𐑥, 𐑥𐑧𐑯𐑦 𐑓𐑨𐑒𐑖𐑩𐑯𐑟 𐑣𐑨𐑝 𐑝𐑲𐑛 𐑓𐑹 𐑛𐑩𐑥𐑦𐑯𐑘𐑩𐑯 𐑴𐑝𐑼 𐑞 𐑛𐑧𐑯 "
 "𐑝 Onis, 𐑣𐑪𐑐𐑦𐑙 𐑑 𐑩𐑯𐑤𐑭𐑒 𐑞 𐑕𐑑𐑮𐑱𐑯𐑡 𐑯 𐑥𐑦𐑕𐑑𐑽𐑦𐑩𐑕 𐑥𐑨𐑡𐑦𐑒𐑕 𐑝 𐑦𐑑𐑕 𐑒𐑮𐑰𐑱𐑑𐑻𐑟."
+
+#. [multiplayer]: id=multiplayer_elensefar_courtyard
+#: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:5
+#, fuzzy
+msgid "2p — Elensefar Courtyard"
+msgstr "2p — Fallenstar 𐑤𐑱𐑒"
+
+#. [multiplayer]: id=multiplayer_elensefar_courtyard
+#: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:7
+msgid ""
+"Fight through corridors and gardens, and dominate the eastern courtyard of "
+"what used to be the glorious city of Elensefar."
+msgstr ""
+
+#. [time]: id=underground_illum
+#: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:111
+msgid "Underground"
+msgstr ""
 
 #. [multiplayer]: id=multiplayer_Fallenstar_Lake
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:5

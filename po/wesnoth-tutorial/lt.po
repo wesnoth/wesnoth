@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-01-17 17:49+0100\n"
+"POT-Creation-Date: 2010-05-15 14:01+0200\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lietuvių <komp_lt@konferencijos.lt>\n"
@@ -566,36 +566,37 @@ msgstr "Paspauskite ant iškamšos ir užpulsite."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:835
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:842
+msgid " The ranged attack was safer."
+msgstr ""
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:835
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:842
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:854
+#, fuzzy
 msgid ""
 "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. Quintain defended with its melee attack (3-5). The ranged attack was "
-"safer."
+"attack. The quintain defended with its melee attack (3-5)."
 msgstr ""
 "Tavo elfas panaudojo kalaviją (5-4: 5 žalos, 4 smūgiai), atakavo iš arti. "
 "Iškamša taip pat gynėsi iš arti (3-5). Tolima ataka būtų buvusi saugesnė."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:843
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:895
+#, fuzzy
 msgid ""
-"Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. The quintain defended with its melee attack (3-5). The ranged attack "
-"was safer.\n"
+"\n"
 "End your turn, then attack again."
-msgstr ""
-"Tavo elfas panaudojo kalaviją (5-4: 5 žalos, 4 smūgiai), atakavo iš arti. "
-"Iškamša taip pat gynėsi iš arti (3-5). Tolima ataka būtų buvusi saugesnė.\n"
-"Pabaik ėjimą ir pulk vėl."
+msgstr "Baikite savo ėjimą ir tada pulkite vėl."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:855
 msgid ""
-"Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-"attack. The quintain defended with its melee attack (3-5).\n"
+"\n"
 "You should tell the other Elf to use the bow."
 msgstr ""
-"Tavo elfas panaudojo kalaviją (5-4: 5 žalos, 4 smūgiai), atakavo iš arti. "
-"Iškamša taip pat gynėsi iš arti (3-5).\n"
-"Kitam elfui liepk pulti su lanku."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:858
@@ -605,6 +606,7 @@ msgstr "Pulkite su kitu elfu"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:887
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:894
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:905
 msgid ""
 "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
@@ -613,18 +615,6 @@ msgid ""
 msgstr ""
 "Tavo elfas panaudojo lanką (3-3: 3 žalos, 3 šūviai), atakavo iš toli. "
 "Iškamša moka kovoti tik iš arti, tad negalėjo apsiginti."
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:895
-msgid ""
-"Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
-"The quintain has no ranged attack, only a melee attack, so it could not "
-"defend itself.\n"
-"End your turn, then attack again."
-msgstr ""
-"Tavo elfas panaudojo lanką (3-3: 3 žalos, 3 šūviai), atakavo iš toli. "
-"Iškamša moka kovoti tik iš arti, tad negalėjo apsiginti.\n"
-"Pabaik ėjimą ir pulk vėl."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:926
@@ -1781,12 +1771,12 @@ msgstr ""
 "Aš ypač gerai valdau kalaviją, darau 8 taškus žalos po 4 smūgius per ėjimą."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1659
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1643
 msgid "You took too long! We'll never be rid of these Orcs!"
 msgstr "Užtrukai per ilgai! Niekada neatsikratysime šių orkų!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1677
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1661
 msgid ""
 "You are victorious! You may want to try Novice-level campaigns such as: The "
 "South Guard, An Orcish Incursion, A Tale of Two Brothers, and Heir to the "
@@ -1843,3 +1833,33 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "kovos spragilas"
+
+#~ msgid ""
+#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
+#~ "attack. The quintain defended with its melee attack (3-5). The ranged "
+#~ "attack was safer.\n"
+#~ "End your turn, then attack again."
+#~ msgstr ""
+#~ "Tavo elfas panaudojo kalaviją (5-4: 5 žalos, 4 smūgiai), atakavo iš arti. "
+#~ "Iškamša taip pat gynėsi iš arti (3-5). Tolima ataka būtų buvusi "
+#~ "saugesnė.\n"
+#~ "Pabaik ėjimą ir pulk vėl."
+
+#~ msgid ""
+#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
+#~ "attack. The quintain defended with its melee attack (3-5).\n"
+#~ "You should tell the other Elf to use the bow."
+#~ msgstr ""
+#~ "Tavo elfas panaudojo kalaviją (5-4: 5 žalos, 4 smūgiai), atakavo iš arti. "
+#~ "Iškamša taip pat gynėsi iš arti (3-5).\n"
+#~ "Kitam elfui liepk pulti su lanku."
+
+#~ msgid ""
+#~ "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 "
+#~ "attacks). The quintain has no ranged attack, only a melee attack, so it "
+#~ "could not defend itself.\n"
+#~ "End your turn, then attack again."
+#~ msgstr ""
+#~ "Tavo elfas panaudojo lanką (3-3: 3 žalos, 3 šūviai), atakavo iš toli. "
+#~ "Iškamša moka kovoti tik iš arti, tad negalėjo apsiginti.\n"
+#~ "Pabaik ėjimą ir pulk vėl."

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-03-26 15:39+0100\n"
+"POT-Creation-Date: 2010-05-15 14:01+0200\n"
 "PO-Revision-Date: 2010-03-30 00:12+0900\n"
 "Last-Translator: \n"
 "Language-Team: Japanese Translation Team\n"
@@ -48,7 +48,7 @@ msgstr ""
 #: data/core/units/goblins/Knight.cfg:48
 #: data/core/units/goblins/Pillager.cfg:47
 #: data/core/units/goblins/Wolf_Rider.cfg:64
-#: data/core/units/monsters/Cave_Spider.cfg:25
+#: data/core/units/monsters/Giant_Spider.cfg:25
 #: data/core/units/monsters/Sea_Serpent.cfg:27
 #: data/core/units/monsters/Water_Serpent.cfg:43
 #: data/core/units/monsters/Wolf.cfg:50
@@ -3536,28 +3536,6 @@ msgstr ""
 "マーマンの戦士はマーマンの軍隊の中核を形成します。力強いトライデントを使用す"
 "ることで、彼らは彼らの水域に入った命知らずを撃退します。"
 
-#. [unit_type]: id=Giant Spider, race=monster
-#: data/core/units/monsters/Cave_Spider.cfg:4
-msgid "Giant Spider"
-msgstr "巨大蜘蛛"
-
-#. [unit_type]: id=Giant Spider, race=monster
-#: data/core/units/monsters/Cave_Spider.cfg:20
-msgid ""
-"Giant Spiders are said to roam the depths of Knalga, devouring many victims. "
-"They have a vicious bite, made worse by the fact that it is poisoned, and "
-"can also fling webs through the air to trap their prey."
-msgstr ""
-"巨大蜘蛛は Knalga の深淵をさまよい歩いて多くの犠牲者を貪り食っていると言われ"
-"ています。彼らには危険な噛みつきがあり、それは毒を持っているという事実によっ"
-"てより凶悪になります。また、彼らは空中に蜘蛛の巣を投射して、犠牲者を捕らえる"
-"こともできます。"
-
-#. [attack]: type=impact
-#: data/core/units/monsters/Cave_Spider.cfg:37
-msgid "web"
-msgstr "蜘蛛の巣"
-
 #. [unit_type]: id=Cuttle Fish, race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:4
 msgid "Cuttle Fish"
@@ -3678,6 +3656,28 @@ msgstr "毒針"
 #: data/core/units/monsters/Giant_Scorpion.cfg:36
 msgid "pincers"
 msgstr "ハサミ"
+
+#. [unit_type]: id=Giant Spider, race=monster
+#: data/core/units/monsters/Giant_Spider.cfg:4
+msgid "Giant Spider"
+msgstr "巨大蜘蛛"
+
+#. [unit_type]: id=Giant Spider, race=monster
+#: data/core/units/monsters/Giant_Spider.cfg:20
+msgid ""
+"Giant Spiders are said to roam the depths of Knalga, devouring many victims. "
+"They have a vicious bite, made worse by the fact that it is poisoned, and "
+"can also fling webs through the air to trap their prey."
+msgstr ""
+"巨大蜘蛛は Knalga の深淵をさまよい歩いて多くの犠牲者を貪り食っていると言われ"
+"ています。彼らには危険な噛みつきがあり、それは毒を持っているという事実によっ"
+"てより凶悪になります。また、彼らは空中に蜘蛛の巣を投射して、犠牲者を捕らえる"
+"こともできます。"
+
+#. [attack]: type=impact
+#: data/core/units/monsters/Giant_Spider.cfg:37
+msgid "web"
+msgstr "蜘蛛の巣"
 
 #. [unit_type]: id=Mudcrawler, race=monster
 #: data/core/units/monsters/Mudcrawler.cfg:4
@@ -4454,6 +4454,7 @@ msgstr "ネクロファージ"
 
 #. [unit_type]: id=Necrophage, race=undead
 #: data/core/units/undead/Corpse_Necrophage.cfg:20
+#, fuzzy
 msgid ""
 "The necrophage, or 'devourer of the dead', is a monstrous, corpulent thing, "
 "which bears only a crude resemblance to a man. They appear to be quite "
@@ -4461,7 +4462,7 @@ msgid ""
 "poisons of the blood, and have a stench to match. But the most revolting "
 "fact about these fratures, apparent only to those who can perceive the "
 "traces of foul magic on them, is that they were somehow made from living men "
-"- a process about which almost nothing is known, but which can be nothing "
+"— a process about which almost nothing is known, but which can be nothing "
 "but nightmarish."
 msgstr ""
 "ネクロファージ、またの名を「死体をむさぼるもの」は、人間との粗雑な類似点だけ"

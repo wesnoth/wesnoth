@@ -41,8 +41,11 @@ wesnoth \- 韦诺之战，一个非常好的回合制策略游戏
 \fB\-\-bpp\fP\fI\ number\fP
 设置每象素占多少位(BitsPerPixel)。例如：\fB\-\-bpp 32\fP
 .TP 
-\fB\-c, \-\-campaign\fP
-直接进入战役选择菜单
+\fB\-c[[<difficulty>] <id_campaign> [<id_scenario>]], \-\-campaign[[<difficulty>] <id_campaign> [<id_scenario>]]\fP
+goes directly to the campaign based on the parameters.  The difficulty is a
+number between 1 and current campaign's difficulties number.  The default
+difficulty is 1.  The scenario must be one of the campaign's child
+scenarios. The default scenario is campaign's first scenario.
 .TP 
 \fB\-\-config\-dir\fP\fI\ name\fP
 设置用户数据目录为$HOME或者我的文档下的\fIname\fP目录。

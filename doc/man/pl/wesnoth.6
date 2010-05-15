@@ -49,8 +49,11 @@ innym graczom.
 \fB\-\-bpp\fP\fI\ liczba\fP
 ustawia liczbę bitów na piksel. Przykład: \fB\-\-bpp 32\fP
 .TP 
-\fB\-c, \-\-campaign\fP
-powoduje przejście bezpośrednio do menu wyboru kampanii.
+\fB\-c[[<difficulty>] <id_campaign> [<id_scenario>]], \-\-campaign[[<difficulty>] <id_campaign> [<id_scenario>]]\fP
+goes directly to the campaign based on the parameters.  The difficulty is a
+number between 1 and current campaign's difficulties number.  The default
+difficulty is 1.  The scenario must be one of the campaign's child
+scenarios. The default scenario is campaign's first scenario.
 .TP 
 \fB\-\-config\-dir\fP\fI\ name\fP
 ustawia katalog konfiguracyjny użytkownika na \fIname\fP w ramach katalogu
@@ -205,11 +208,11 @@ data/multiplayer.cfg.
 określa maksymalną liczbę tur dla danego scenariusza. Wartość domyślna to
 \fB50\fP.
 .
-.SH "EXIT STATUS"
+.SH "KOD WYJŚCIA"
 .
-Normal exit status is 0. An exit status of 1 indicates an (SDL, video,
-fonts, etc) initialization error. An exit status of 2 indicates an error
-with the command line options.
+Prawidłowy kod wyjścia to 0. Kod wyjścia równy 1 oznacza błąd inicjalizacji
+(SDL, grafika, czcionki itp.). Kod wyjścia 2 sygnalizuje nieprawidłowe opcje
+wiersza poleceń.
 .
 .SH AUTOR
 .
