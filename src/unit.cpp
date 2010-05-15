@@ -791,7 +791,7 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 	t = &t->get_gender_unit_type(gender_).get_variation(variation_);
 
 	// Reset the scalar values first
-	traits_description_ = "";
+	traits_description_.clear();
 	is_fearless_ = false;
 	is_healthy_ = false;
 
@@ -2610,12 +2610,12 @@ void unit::apply_modifications()
 		const char *gender_string = gender_ == unit_race::FEMALE ? "female_name" : "male_name";
 		t_string const &gender_specific_name = m[gender_string];
 		if (!gender_specific_name.empty()) {
-			traits.push_back(gender_specific_name);
+			traits_description_.push_back(gender_specific_name);
 			m["name"] = gender_specific_name;
 		} else {
 			t_string const &name = m["name"];
 			if (!name.empty()) {
-				traits.push_back(name);
+				traits_description_.push_back(name);
 			}
 		}
 	}
@@ -2625,19 +2625,6 @@ void unit::apply_modifications()
 		foreach (const config &m, modifications_.child_range(mod)) {
 			log_scope("add mod");
 			add_modification(ModificationTypes[i], m, true);
-		}
-	}
-
-	std::vector< t_string >::iterator k = traits.begin(), k_end = traits.end();
-	if (k != k_end) {
-		// We want to make sure the traits always have a consistent ordering.
-			// Try out not sorting, since quick,resilient can give different HP
-			// to resilient,quick so rather preserve order
-		// std::sort(k, k_end);
-		for(;;) {
-			traits_description_ += *(k++);
-			if (k == k_end) break;
-			traits_description_ += ", ";
 		}
 	}
 

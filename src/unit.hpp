@@ -207,7 +207,7 @@ public:
 	map_location::DIRECTION facing() const { return facing_; }
 
 	bool invalidate(const map_location &loc);
-	const t_string& traits_description() const { return traits_description_; }
+	const std::vector<t_string>& traits_description() const { return traits_description_; }
 	std::vector<std::string> get_traits_list() const;
 
 	int cost () const { return unit_value_; }
@@ -412,7 +412,7 @@ private:
 	std::vector<attack_type> attacks_;
 	map_location::DIRECTION facing_;
 
-	t_string traits_description_;
+	std::vector<t_string> traits_description_;
 	int unit_value_;
 	map_location goto_, interrupted_move_;
 	std::vector<map_location> waypoints_;
