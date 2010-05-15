@@ -77,6 +77,7 @@ public class CampaignNewWizard extends Wizard implements INewWizard {
 				public void run(IProgressMonitor monitor) throws InvocationTargetException,
 				InterruptedException {
 					createProject(monitor);
+					monitor.done();
 				}
 			});
 		}

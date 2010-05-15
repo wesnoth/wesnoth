@@ -77,7 +77,7 @@ public class TemplateProvider {
 
 	public static String getProcessedTemplate(String templateName, ArrayList<ReplaceableParameter> parameters)
 	{
-		String tmpTemplate=TemplateProvider.getInstance().getTemplate("scenario");
+		String tmpTemplate=TemplateProvider.getInstance().getTemplate(templateName);
 		if (tmpTemplate == null)
 		{
 			return null;
