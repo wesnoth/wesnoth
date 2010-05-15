@@ -72,6 +72,8 @@ stringfixes = {
 ("(D) - debug only, (N) - network only, (A) - auth only", "(D) — debug only, (N) — network only, (A) — auth only"),
 ("not empty - duplicate", "not empty — duplicate"),
 ("- King Konrad,", "— King Konrad,"),
+("Player Info -", "Player Info —"),
+("About to upload statistics - Help us make Wesnoth better for you!", "About to upload statistics — Help us make Wesnoth better for you!"),
 ),
 
 "wesnoth-anl" : (
@@ -223,6 +225,7 @@ stringfixes = {
 ("- WML implementation", "— WML implementation"),
 ("- So this is the accursed valley - a land ours for the taking.", "So this is the accursed valley — a land ours for the taking."),
 ("watery caves- a spear whose", "watery caves— a spear whose"),
+("-- map design, spawn groups and scenario concept", "— map design, spawn groups and scenario concept"),
 ("- WML implementation", "— WML implementation"),
 ),
 
