@@ -27,19 +27,27 @@
 # utils/pofix.py po/wesnoth*/*.po*
 # find data/campaigns/ -name '*.cfg' -print0 | xargs -0 utils/pofix.py
 #
-# Three lines in the structure below, marked with "#*", imply changes of
-# meaning that may require a change in translation.
+# Please do make sure to add a comment before and new blocks of conversions
+# that states when it was added (current version number is enough) so that
+# the file can be cleaned up more easily every now and then.
+# Example:
+# # conversion added in 1.9.5+svn
+# ("foo addwd bar", "foo added bar"),
+# # conversion added in 1.9.8+svn
+# ("fooba foo", "foobar foo"),
 
 stringfixes = {
 
 "wesnoth" : (
 # Convert hyphen-minuses that are being used as minus signs
 # to the Unicode minus sign
+# conversion added in 1.9.0-svn
 (" -25%", " −25%"),
 (" -1%", " −1%"),
 (" -100%", " −100%"),
 
 # Convert makeshift dashes:
+# conversion added in 1.9.0-svn
 ("however - from these", "however — from these"),
 ("campaign first - click", "campaign first — click"),
 ("unit type -", "unit type —"),
@@ -79,6 +87,7 @@ stringfixes = {
 
 "wesnoth-anl" : (
 # Convert makeshift dashes:
+# conversion added in 1.9.0-svn
 ("4p - A New Land", "4p — A New Land"),
 ("some underground mushroom mines nearby -", "some underground mushroom mines nearby —"),
 ("A New Land - Help", "A New Land — Help"),
@@ -87,6 +96,7 @@ stringfixes = {
 
 "wesnoth-aoi" : (
 # Convert makeshift dashes:
+# conversion added in 1.9.0-svn
 ("was easy to follow - a wide", "was easy to follow — a wide"),
 ("unmistakable - tree stumps", "unmistakable — tree stumps"),
 ("question remained - would he", "question remained — would he"),
@@ -96,12 +106,14 @@ stringfixes = {
 
 "wesnoth-did" : (
 # Convert makeshift dashes:
+# conversion added in 1.9.0-svn
 ("A Small Favor -", "A Small Favor —"),
 ("running away - my horsemen", "running away — my horsemen"),
 ),
 
 "wesnoth-dm" : (
 # Convert makeshift dashes:
+# conversion added in 1.9.0-svn
 ("warn you - a party", "warn you — a party"),
 ("each other - and you'll", "each other — and you'll"),
 ("Night is falling - that's", "Night is falling — that's"),
@@ -132,6 +144,7 @@ stringfixes = {
 
 "wesnoth-dw" : (
 # Convert makeshift dashes:
+# conversion added in 1.9.0-svn
 ("hearten the folk. And -", "hearten the folk. And —"),
 ("if you will permit - you", "if you will permit — you"),
 ("a week ago - wanted", "a week ago — wanted"),
@@ -141,6 +154,7 @@ stringfixes = {
 
 "wesnoth-ei" : (
 # Convert makeshift dashes:
+# conversion added in 1.9.0-svn
 ("Wait, before we go anywhere - who", "Wait, before we go anywhere — who"),
 ("This adept is weak - we may", "This adept is weak — we may"),
 ("onward - we must defeat", "onward — we must defeat"),
@@ -150,14 +164,17 @@ stringfixes = {
 ("It looks repairable - we", "It looks repairable — we"),
 ("Run for your - what the", "Run for your — what the"),
 # ... and aint -> ain't
+# conversion added in 1.9.0-svn
 ("I aint charging gold -", "I ain't charging gold —"),
 # Make it unspaced...
+# conversion added in 1.9.0-svn
 ("may be able to help us in - ", "may be able to help us in—"),
 ("Wait - what just happened?", "Wait — what just happened?"),
 ),
 
 "wesnoth-httt" : (
 # Convert makeshift dashes:
+# conversion added in 1.9.0-svn
 ("and the support of my men - from", "and the support of my men — from"),
 ("NE - Dan'Tonk", "NE — Dan'Tonk"),
 ("SE - Fort Tahn", "SE — Fort Tahn"),
@@ -181,6 +198,7 @@ stringfixes = {
 
 "wesnoth-l" : (
 # Convert makeshift dashes:
+# conversion added in 1.9.0-svn
 ("are on the hunt - and", "are on the hunt — and"),
 ("and ruthlessness - and their", "and ruthlessness — and their"),
 ("of death - would only", "of death — would only"),
@@ -192,11 +210,13 @@ stringfixes = {
 
 "wesnoth-lib" : (
 # Convert makeshift dashes
+# conversion added in 1.9.0-svn
 ("Player Info - ", "Player Info — "),
 ),
 
 "wesnoth-low" : (
 # Convert makeshift dashes:
+# conversion added in 1.9.0-svn
 ("follow you, Kalenz - but", "follow you, Kalenz — but"),
 ("Kalenz - lead us", "Kalenz — lead us"),
 ("them aid - it's clear", "them aid — it's clear"),
@@ -207,6 +227,7 @@ stringfixes = {
 
 "wesnoth-multiplayer" : (
 # Convert makeshift dashes
+# conversion added in 1.9.0-svn
 ("2p -", "2p —"),
 ("3p -", "3p —"),
 ("4p -", "4p —"),
@@ -232,6 +253,7 @@ stringfixes = {
 
 "wesnoth-nr" : (
 # Convert makeshift dashes:
+# conversion added in 1.9.0-svn
 ("afar -- hence they kept their weapons sharp, and reckoned themselves well ", "afar — hence they kept their weapons sharp, and reckoned themselves well "),
 ("forgetting that their ancestors had been free - and might have completely ", "forgetting that their ancestors had been free — and might have completely "),
 ("lives of the people of Dwarven Doors - forever.", "lives of the people of Dwarven Doors — forever."),
@@ -315,6 +337,7 @@ stringfixes = {
 
 "wesnoth-thot" : (
 # Convert makeshift dashes:
+# conversion added in 1.9.0-svn
 ("then living -- all", "then living — all"),
 ("the Hammer -- dropped", "the Hammer — dropped"),
 ("to my eyes - an", "to my eyes — an"),
@@ -326,6 +349,7 @@ stringfixes = {
 
 "wesnoth-trow" : (
 # Convert makeshift dashes:
+# conversion added in 1.9.0-svn
 ("Nay! Off with your hea- - -", "Nay! Off with your hea—"),
 ("is time - but I'll", "is time — but I'll"),
 ("SE - The River Road.", "SE — The River Road."),
@@ -359,6 +383,7 @@ stringfixes = {
 
 "wesnoth-tsg" : (
 # Convert makeshift dashes:
+# conversion added in 1.9.0-svn
 ("My lord! The dawn is breaking - now is the time for us to attack and drive ", "My lord! The dawn is breaking — now is the time for us to attack and drive "),
 ("reinforcements - Did Sir Loris send you from Westin?", "reinforcements — Did Sir Loris send you from Westin?"),
 ("We will do our best to hold the city - you lead your men across the river ", "We will do our best to hold the city — you lead your men across the river "),
@@ -378,6 +403,7 @@ stringfixes = {
 
 "wesnoth-sof" : (
 # Convert makeshift dashes:
+# conversion added in 1.9.0-svn
 ("So now I tell from whence it came -", "So now I tell from whence it came —"),
 ("The Fire-sceptre great -", "The Fire-sceptre great —"),
 ("Uh, no, wait! Lets talk business - how much will you pay us to do this for ", "Uh, no, wait! Lets talk business — how much will you pay us to do this for "),
@@ -410,6 +436,7 @@ stringfixes = {
 
 "wesnoth-sotbe" :(
 # Convert makeshift dashes:
+# conversion added in 1.9.0-svn
 ("the offer. However, on the way to the city of Dwarven Doors - the ", "the offer. However, on the way to the city of Dwarven Doors — the "),
 ("headquarters of the Northern Alliance - Karun and his small group of ", "headquarters of the Northern Alliance — Karun and his small group of "),
 ("The peace treaty still held however, partially because the treaty - although ", "The peace treaty still held however, partially because the treaty — although "),
@@ -447,6 +474,7 @@ stringfixes = {
 
 "wesnoth-tb" : (
 # Convert makeshift dashes:
+# conversion added in 1.9.0-svn
 ("A Tale of Two Brothers - Epilogue", "A Tale of Two Brothers — Epilogue"),
 ),
 
@@ -456,6 +484,7 @@ stringfixes = {
 
 "wesnoth-units" : (
 # Convert makeshift dashes:
+# conversion added in 1.9.0-svn
 ("allowed - grudgingly - to", "allowed — grudgingly — to"),
 ("horseback - in fact", "horseback — in fact"),
 ("is quite justified -", "is quite justified —"),
@@ -469,6 +498,7 @@ stringfixes = {
 
 "wesnoth-utbs" : (
 # Convert makeshift dashes:
+# conversion added in 1.9.0-svn
 ("Strike hard and fast and also be careful--right, this is going to be fun.", "Strike hard and fast and also be careful—right, this is going to be fun."),
 ("There might be, but I don't--", "There might be, but I don't—"),
 ("You idiot--", "You idiot—"),
@@ -481,6 +511,7 @@ stringfixes = {
 ),
 
 "1.8-announcement" : (
+# conversion added shortly before 1.8.0, might be relevant for the 1.10.0 announcement
 ("WML events an AI components", "WML events and AI components"),
 ("1.7.3", "1.7.13"),
 ("/tags/1.8/", "/tags/1.8.0/"),
