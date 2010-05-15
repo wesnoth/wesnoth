@@ -42,7 +42,6 @@ stringfixes = {
 # Convert makeshift dashes:
 ("however - from these", "however — from these"),
 ("campaign first - click", "campaign first — click"),
-("victory objectives - getting", "victory objectives — getting"),
 ("unit type -", "unit type —"),
 ("experience - 4 for", "experience — 4 for"),
 ("both worlds - for", "both worlds — for"),
@@ -74,6 +73,8 @@ stringfixes = {
 ("- King Konrad,", "— King Konrad,"),
 ("Player Info -", "Player Info —"),
 ("About to upload statistics - Help us make Wesnoth better for you!", "About to upload statistics — Help us make Wesnoth better for you!"),
+#the following rule applies to wesnoth/*.po* and to wesnoth-manual/*.po*
+("victory objectives - getting", "victory objectives — getting"),
 ),
 
 "wesnoth-anl" : (
