@@ -249,11 +249,10 @@ bool string_bool(const std::string& str, bool def) {
 	return true;
 }
 
-std::string signed_percent(int val)
+std::string signed_value(int val)
 {
 	std::ostringstream oss;
-	//NOTE: "−" is the Unicode minus
-	oss << (val >= 0 ? "+" : "−") << abs(val) << "%";
+	oss << (val >= 0 ? "+" : unicode_minus) << abs(val);
 	return oss.str();
 }
 

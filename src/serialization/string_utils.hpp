@@ -46,6 +46,8 @@ typedef std::string utf8_string;
 
 namespace utils {
 
+const std::string unicode_minus = "−";
+
 bool isnewline(const char c);
 bool portable_isspace(const char c);
 bool notspace(char c);
@@ -108,6 +110,11 @@ std::pair< int, int > parse_range(std::string const &str);
 std::vector< std::pair< int, int > > parse_ranges(std::string const &str);
 int apply_modifier( const int number, const std::string &amount, const int minimum = 0);
 
+/* add a "+" or replace the "-" par Unicode minus */
+inline std::string print_modifier(const std::string &mod)
+{ return mod[0] == '-' ?
+	(unicode_minus + std::string(mod.begin()+1, mod.end())) : ("+" + mod);}
+
 /** Prepends a configurable set of characters with a backslash */
 std::string escape(const std::string &str, const char *special_chars);
 
@@ -129,8 +136,11 @@ std::string &strip(std::string &str);
 /** Convert no, false, off, 0, 0.0 to false, empty to def, and others to true */
 bool string_bool(const std::string& str,bool def=false);
 
-/** Convert number into percentage (using the Unicode "−" and +0% convention */
-std::string signed_percent(int val);
+/** Convert into a signed value (using the Unicode "−" and +0 convention */
+std::string signed_value(int val);
+
+/** Convert into a percentage (using the Unicode "−" and +0% convention */
+inline std::string signed_percent(int val) {return signed_value(val) + "%";}
 
 /**
  * Try to complete the last word of 'text' with the 'wordlist'.

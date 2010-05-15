@@ -2336,8 +2336,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 
 					if(increase_total.empty() == false) {
 						if (!times)
-							description += (increase_total[0] != '-' ? "+" : "") +
-								increase_total + " " +
+							description += utils::print_modifier(increase_total) + " " +
 								t_string(N_("HP"), "wesnoth");
 
 						// A percentage on the end means increase by that many percent
@@ -2369,8 +2368,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 
 					if(increase.empty() == false) {
 						if (!times)
-							description += (increase[0] != '-' ? "+" : "") +
-								increase + " " +
+							description += utils::print_modifier(increase) + " " +
 								t_string(N_("moves"), "wesnoth");
 
 						max_movement_ = utils::apply_modifier(max_movement_, increase, 1);
@@ -2387,8 +2385,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 
 					if(increase.empty() == false) {
 						if (!times)
-							description += (increase[0] != '-' ? "+" : "") +
-								increase + " " +
+							description += utils::print_modifier(increase) + " " +
 								t_string(N_("XP to advance"), "wesnoth");
 
 						max_experience_ = utils::apply_modifier(max_experience_, increase, 1);
@@ -2492,23 +2489,20 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 				const std::string &increase_total = effect["increase_total"];
 
 				if(increase_total.empty() == false) {
-					description += (increase_total[0] != '-' ? "+" : "") +
-						increase_total + " " +
+					description += utils::print_modifier(increase_total) + " " +
 						t_string(N_("HP"), "wesnoth");
 				}
 			} else if(apply_to == "movement") {
 				const std::string &increase = effect["increase"];
 
 				if(increase.empty() == false) {
-					description += (increase[0] != '-' ? "+" : "") +
-						increase + t_string(N_(" move"), "wesnoth");
+					description += utils::print_modifier(increase) + t_string(N_(" move"), "wesnoth");
 				}
 			} else if(apply_to == "max_experience") {
 				const std::string &increase = effect["increase"];
 
 				if(increase.empty() == false) {
-					description += (increase[0] != '-' ? "+" : "") +
-						increase + " " +
+					description += utils::print_modifier(increase) + " " +
 						t_string(N_("XP to advance"), "wesnoth");
 				}
 			}
