@@ -96,18 +96,9 @@ public class CampaignPage2 extends WizardPage {
 		gd_txtDefine_.widthHint = 207;
 		txtDefine_.setLayoutData(gd_txtDefine_);
 		txtDefine_.addModifyListener(modifyListener);
-
-		Button chkDiffEasy_ = new Button(container, SWT.CHECK);
-		chkDiffEasy_.setText("EASY");
-		chkDiffEasy_.addSelectionListener(selectionListener);
-
-		Button chkDiffNormal_ = new Button(container, SWT.CHECK);
-		chkDiffNormal_.setText("NORMAL");
-		chkDiffNormal_.addSelectionListener(selectionListener);
-
-		Button chkDiffHard_ = new Button(container, SWT.CHECK);
-		chkDiffHard_.setText("HARD");
-		chkDiffHard_.addSelectionListener(selectionListener);
+		new Label(container, SWT.NONE);
+		new Label(container, SWT.NONE);
+		new Label(container, SWT.NONE);
 
 		Label lblDifficulties = new Label(container, SWT.NONE);
 		lblDifficulties.setText("Difficulties:");
@@ -116,9 +107,18 @@ public class CampaignPage2 extends WizardPage {
 		GridData gd_txtDifficulties_ = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
 		gd_txtDifficulties_.widthHint = 208;
 		txtDifficulties_.setLayoutData(gd_txtDifficulties_);
-		new Label(container, SWT.NONE);
-		new Label(container, SWT.NONE);
-		new Label(container, SWT.NONE);
+
+				Button chkDiffEasy_ = new Button(container, SWT.CHECK);
+				chkDiffEasy_.setText("EASY");
+				chkDiffEasy_.addSelectionListener(selectionListener);
+
+				Button chkDiffNormal_ = new Button(container, SWT.CHECK);
+				chkDiffNormal_.setText("NORMAL");
+				chkDiffNormal_.addSelectionListener(selectionListener);
+
+				Button chkDiffHard_ = new Button(container, SWT.CHECK);
+				chkDiffHard_.setText("HARD");
+				chkDiffHard_.addSelectionListener(selectionListener);
 
 		Label lblFirstScenario = new Label(container, SWT.NONE);
 		lblFirstScenario.setText("First Scenario:");
