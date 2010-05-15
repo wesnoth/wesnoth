@@ -1,0 +1,26 @@
+[textdomain]
+    name="wesnoth-$$campaign_name"
+	# translations directory path
+    path="$$translations_dir"
+[/textdomain]
+
+[campaign]
+	#textdomain wesnoth-$$campaign_name
+	name= _ "$$campaign_name"
+	abbrev="$$abrev"
+	define="$$define"
+	
+	icon= $$icon
+	description= _ "$$description"
+	difficulties=$$difficulties
+	
+	first_scenario=$$first_scenario
+	
+	#ifdef $$define
+		# add here custom code
+		{campaigns/$$project_name/scenarios}
+		[+units]
+			{campaigns/$$project_name/units}
+		[/units]
+	#endif
+[/campaign]
