@@ -27,12 +27,17 @@
 #include "wesconfig.h"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/string_utils.hpp"
+#include "serialization/parser.hpp"
+#include "filesystem.hpp"
 #include "util.hpp"
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 #define LOG_CF LOG_STREAM(info, log_config)
 #define DBG_CF LOG_STREAM(debug, log_config)
+
+static lg::log_domain log_preprocessor("preprocessor");
+#define LOG_PREPROC LOG_STREAM(info,log_preprocessor)
 
 using std::streambuf;
 
@@ -987,3 +992,72 @@ std::istream *preprocess_file(std::string const &fname,
 	return new preprocessor_deleter(buf, owned_defines);
 }
 
+void preprocess_resource(const std::string res_name, preproc_map *defines_map,
+			 bool write_cfg, bool write_plain_cfg,std::string target_directory)
+{
+	if (is_directory(res_name))
+	{
+		std::vector<std::string> dirs,files;
+
+		get_files_in_dir(res_name, &files, &dirs, ENTIRE_FILE_PATH, SKIP_MEDIA_DIR, DO_REORDER);
+
+		// subdirectories
+		foreach(const std::string dir, dirs)
+		{
+			LOG_PREPROC<<"processing sub-dir: "<<dir<<'\n';
+			preprocess_resource(dir,defines_map,write_cfg,write_plain_cfg,target_directory);
+		}
+
+		// files in current directory
+		foreach(const std::string file, files)
+		{
+			preprocess_resource(file,defines_map,write_cfg,write_plain_cfg,target_directory);
+		}
+		return;
+	}
+
+	// process only config files.
+	if (ends_with(res_name,".cfg") == false)
+		return;
+
+	LOG_PREPROC<<"processing resource: "<<res_name<<'\n';
+
+	std::string error_log;
+	scoped_istream stream = preprocess_file(res_name, defines_map, &error_log);
+	std::stringstream ss;
+	ss<<(*stream).rdbuf();
+	std::string streamContent = ss.str();
+
+	config cfg;
+
+	read(cfg, streamContent, &error_log);
+	if (!error_log.empty())
+	{
+		throw config::error(error_log);
+	}
+
+	if (write_cfg == true || write_plain_cfg == true)
+	{
+		std::string preproc_res_name = res_name;
+		// we replace <path>/data/<resource> with <target_directory>/<resource>
+		preproc_res_name.erase(0,preproc_res_name.find("/data")+5);
+		preproc_res_name.insert(0,target_directory);
+
+		// write the processed cfg file
+		if (write_cfg == true)
+		{
+			LOG_PREPROC<<"writing cfg file: "<<preproc_res_name<<'\n';
+			create_directory_if_missing_recursive(directory_name(preproc_res_name));
+			scoped_ostream outStream(ostream_file(preproc_res_name));
+			write(*outStream,cfg);
+		}
+
+		// write the plain cfg file
+		if (write_plain_cfg == true)
+		{
+			LOG_PREPROC<<"writing plain cfg file: "<<(preproc_res_name+".plain")<<'\n';
+			create_directory_if_missing_recursive(directory_name(preproc_res_name));
+			write_file(preproc_res_name+".plain",streamContent);
+		}
+	}
+}

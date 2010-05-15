@@ -47,7 +47,7 @@ campaigns, and share them with others.
 sets BitsPerPixel value. Example:
 .B --bpp 32
 .TP
-.B -c[[<difficulty>] <id_campaign> [<id_scenario>]], --campaign[[<difficulty>] <id_campaign> [<id_scenario>]]
+.B -c, --campaign[[<difficulty>] <id_campaign> [<id_scenario>]]
 goes directly to the campaign based on the parameters. 
 The difficulty is a number between 1 and current campaign's difficulties number.  The default difficulty is 1.
 The scenario must be one of the campaign's child scenarios. The default scenario is campaign's first scenario.
@@ -143,6 +143,10 @@ runs the game without sounds and music.
 .TP
 .B --path
 prints the name of the game data directory and exits.
+.TP
+.B --preprocess, -p[=<define1>,<define2>,...] <file/folder> <target directory>
+preprocesses a specified file/folder relative to the data/ directory. The file(s) will be written in the data/preproc folder: a plain cfg file and a processed cfg file. The needed folder tree will be created automatically if it doesn't exist.
+define1,define2,... - the extra defines will be added before processing the files.
 .TP
 .BI -r\  X x Y ,\ --resolution\  X x Y
 sets the screen resolution. Example:

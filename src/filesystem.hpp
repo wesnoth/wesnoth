@@ -109,6 +109,14 @@ std::string read_map(const std::string& name);
  *                                successfully created; false otherwise.
  */
 bool create_directory_if_missing(const std::string& dirname);
+/**
+ * Creates a recursive directory tree if it does not exist already
+ * @param dirname                 Full path of target directory. Non existing parents
+ *                                will be created
+ * @return                        True if the directory exists or could be
+ *                                successfully created; false otherwise.
+ */
+bool create_directory_if_missing_recursive(const std::string& dirname);
 
 /** Returns true if the given file is a directory. */
 bool is_directory(const std::string& fname);

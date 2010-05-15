@@ -124,6 +124,9 @@ static lg::log_domain log_config("config");
 static lg::log_domain log_network("network");
 #define ERR_NET LOG_STREAM(err, log_network)
 
+static lg::log_domain log_preprocessor("preprocessor");
+#define LOG_PREPROC LOG_STREAM(info,log_preprocessor)
+
 static bool less_campaigns_rank(const config &a, const config &b) {
 	return lexical_cast_default<int>(a["rank"], 1000) <
 	       lexical_cast_default<int>(b["rank"], 1000);
@@ -1738,7 +1741,7 @@ static int process_command_args(int argc, char** argv) {
 			<< " [<options>] [<data-directory>]\n"
 			<< "Available options:\n"
 			<< "  --bpp <number>               sets BitsPerPixel value. Example: --bpp 32\n"
-			<< "  -c[[<difficulty>] <id_c> [<id_s]] , --campaign[[<difficulty>] <id_c> [<id_s>]]\n"
+			<< "  -c, --campaign[[<difficulty>] <id_c> [<id_s>]]\n"
 			<< "							   goes directly to the campaign.\n"
 			<< "							   - difficulty : the difficulty of the specified\n"
 			<< "										  campaign (1 to max - Default is 1)\n"
@@ -1825,6 +1828,14 @@ static int process_command_args(int argc, char** argv) {
 			<< "  --no-srng                    disable server-side RNG support (will cause OOS\n"
 			<< "                               errors unless every player uses it)\n"
 			<< "  --path                       prints the path to the data directory and exits.\n"
+			<< "  --preprocess, -p[=<define1>,<define2>,...] <file/folder> <target directory>\n"
+			<< "                               preprocesses a specified file/folder relative to\n"
+			<< "                               the data/ directory. The file(s) will be written in\n"
+			<< "                               the specified target directory: a plain cfg file and a\n"
+			<< "                               processed cfg file. The needed folder tree will be\n"
+			<< "                               created automatically if it doesn't exist\n"
+			<< "                               define1,define2,...  - the extra defines will\n"
+			<< "                               be added before processing the files.\n"
 			<< "  -r, --resolution XxY         sets the screen resolution. Example: -r 800x600\n"
 			<< "  --rng-seed <number>          seeds the random number generator with number\n"
 			<< "                               Example: --rng-seed 0\n"
@@ -1934,6 +1945,57 @@ static int process_command_args(int argc, char** argv) {
 				return 2;
 			}
 			srand(lexical_cast_default<unsigned int>(argv[arg]));
+		} else if (val.find("--preprocess") == 0 || val.find("-p") == 0){
+			if (arg + 2 < argc){
+				++arg;
+				const std::string resourceToProcess(argv[arg]);
+				++arg;
+				const std::string targetDir(argv[arg]);
+
+				preproc_map defines_map;
+				std::string error_log;
+
+				// add the specified defines
+				size_t pos=std::string::npos;
+				if (val.find("--preprocess=") == 0)
+					pos = val.find("=");
+				else if (val.find("--p=") == 0)
+					pos = val.find("=");
+
+				// we have some defines specified
+				if (pos != std::string::npos)
+				{
+					std::string tmp_val = val.substr(pos+1);
+					while (pos != std::string::npos)
+					{
+						size_t tmpPos = val.find(',', pos+1);
+						tmp_val = val.substr(pos + 1,
+							tmpPos == std::string::npos ? tmpPos : tmpPos - (pos+1));
+						pos = tmpPos;
+
+						if (tmp_val.empty()){
+							LOG_PREPROC<<"empty define supplied\n";
+							continue;
+						}
+
+						LOG_PREPROC<<"adding define: "<< tmp_val<<'\n';
+						defines_map.insert(std::make_pair(tmp_val,
+							preproc_define(tmp_val)));
+					}
+				}
+
+				// preprocess common macros first
+				LOG_PREPROC<<"processing common macros...\n";
+				preprocess_resource(game_config::path + "/data/core/macros/",&defines_map);
+
+				LOG_PREPROC<<"processing target resource...\n";
+				preprocess_resource(game_config::path +"/data/"+ resourceToProcess, &defines_map,
+									true,true, targetDir);
+			}
+			else{
+				std::cerr<<"Please specify a source file/folder relative to the data/ directory and a target folder\n";
+			}
+			return 1;
 		}
 	}
 
