@@ -176,6 +176,7 @@ unit::unit(const unit& o):
            facing_(o.facing_),
 
            trait_names_(o.trait_names_),
+           trait_descriptions_(o.trait_descriptions_),
            unit_value_(o.unit_value_),
            goto_(o.goto_),
            interrupted_move_(o.interrupted_move_),
@@ -253,6 +254,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	attacks_(),
 	facing_(map_location::SOUTH_EAST),
 	trait_names_(),
+	trait_descriptions_(),
 	unit_value_(),
 	goto_(),
 	interrupted_move_(),
@@ -600,6 +602,7 @@ unit::unit(const unit_type *t, int side, bool real_unit,
 	attacks_(),
 	facing_(map_location::SOUTH_EAST),
 	trait_names_(),
+	trait_descriptions_(),
 	unit_value_(),
 	goto_(),
 	interrupted_move_(),
@@ -792,6 +795,7 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 
 	// Reset the scalar values first
 	trait_names_.clear();
+	trait_descriptions_.clear(),
 	is_fearless_ = false;
 	is_healthy_ = false;
 
@@ -2212,6 +2216,13 @@ static void mod_mdr_merge(config& dst, const config& mod, bool delta)
 
 void unit::add_modification(const std::string& type, const config& mod, bool no_add)
 {
+	//some trait activate specific flags
+	if(type == "trait") {
+		const std::string& id = mod["id"];
+		is_fearless_ = is_fearless_ || id == "fearless";
+		is_healthy_ = is_healthy_ || id == "healthy";
+	}
+
 	config *new_child = NULL;
 	if(no_add == false) {
 		new_child = &modifications_.add_child(type,mod);
@@ -2549,34 +2560,26 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 		}
 	}
 
-	const t_string& mod_name = mod["name"];
-	if (!mod_name.empty()) {
-		utils::string_map symbols;
-		// This is not specific to traits, but only visible there,
-		// so we tell that to translators
-		symbols["trait_name"] = mod_name;
-		symbols["trait_description"] = description;
-		description = vgettext("$trait_name|: $trait_description ", symbols);
+	// store trait info
+	if(type == "trait") {
+		add_trait_description(mod, description);
 	}
 
-	if(!description.empty())
-		description += "\n";
-
-	modification_descriptions_[type] += description;
+	//NOTE: if not a trait, description is currently not used
 }
 
-const t_string& unit::modification_description(const std::string& type) const
+void unit::add_trait_description(const config& trait, const t_string& description)
 {
-	const string_map::const_iterator i = modification_descriptions_.find(type);
-	if(i == modification_descriptions_.end()) {
-		static const t_string empty_string;
-		return empty_string;
-	} else {
-		return i->second;
+	const std::string& gender_string = gender_ == unit_race::FEMALE ? "female_name" : "male_name";
+	t_string const &gender_specific_name = trait[gender_string];
+	const t_string& name = gender_specific_name.empty() ?
+		 trait["name"] : gender_specific_name;
+
+	if(!name.empty()) {
+		trait_names_.push_back(name);
+		trait_descriptions_.push_back(description);
 	}
 }
-
-
 
 const unit_animation* unit::choose_animation(const game_display& disp, const map_location& loc,const std::string& event,
 		const map_location& second_loc,const int value,const unit_animation::hit_type hit,
@@ -2606,23 +2609,6 @@ const unit_animation* unit::choose_animation(const game_display& disp, const map
 void unit::apply_modifications()
 {
 	log_scope("apply mods");
-	std::vector< t_string > traits;
-	foreach (config &m, modifications_.child_range("trait"))
-	{
-		is_fearless_ = is_fearless_ || m["id"] == "fearless";
-		is_healthy_ = is_healthy_ || m["id"] == "healthy";
-		const char *gender_string = gender_ == unit_race::FEMALE ? "female_name" : "male_name";
-		t_string const &gender_specific_name = m[gender_string];
-		if (!gender_specific_name.empty()) {
-			trait_names_.push_back(gender_specific_name);
-			m["name"] = gender_specific_name;
-		} else {
-			t_string const &name = m["name"];
-			if (!name.empty()) {
-				trait_names_.push_back(name);
-			}
-		}
-	}
 
 	for(size_t i = 0; i != NumModificationTypes; ++i) {
 		const std::string& mod = ModificationTypes[i];

@@ -208,6 +208,7 @@ public:
 
 	bool invalidate(const map_location &loc);
 	const std::vector<t_string>& trait_names() const { return trait_names_; }
+	const std::vector<t_string>& trait_descriptions() const { return trait_descriptions_; }
 	std::vector<std::string> get_traits_list() const;
 
 	int cost () const { return unit_value_; }
@@ -253,8 +254,6 @@ public:
 
 	void add_modification(const std::string& type, const config& modification,
 	                  bool no_add=false);
-
-	const t_string& modification_description(const std::string& type) const;
 
 	bool move_interrupted() const { return movement_left() > 0 && interrupted_move_.x >= 0 && interrupted_move_.y >= 0; }
 	const map_location& get_interrupted_move() const { return interrupted_move_; }
@@ -310,7 +309,6 @@ public:
 	void apply_modifications();
 	void remove_temporary_modifications();
 	void generate_traits(bool musthaveonly=false, game_state* state = 0);
-	void generate_traits_description();
 	void generate_name(rand_rng::simple_rng *rng = 0);
 
 	// Only see_all=true use caching
@@ -351,6 +349,9 @@ private:
 
 	bool has_ability_by_id(const std::string& ability) const;
 	void remove_ability_by_id(const std::string& ability);
+
+	/** register a trait's name and its description for UI's use*/
+	void add_trait_description(const config& trait, const t_string& description);
 
 	void set_underlying_id();
 
@@ -413,6 +414,8 @@ private:
 	map_location::DIRECTION facing_;
 
 	std::vector<t_string> trait_names_;
+	std::vector<t_string> trait_descriptions_;
+
 	int unit_value_;
 	map_location goto_, interrupted_move_;
 	std::vector<map_location> waypoints_;

@@ -146,9 +146,22 @@ report generate_report(TYPE type,
 	  return(res);
 	}
 	case UNIT_TRAITS: {
-		tooltip << _("Traits: ") << "\n"
-			<< u->modification_description("trait");
-		return report(utils::join(u->trait_names(), ", "), "", tooltip.str());
+		report res;
+		const std::vector<t_string>& traits = u->trait_names();
+		const std::vector<t_string>& descriptions = u->trait_descriptions();
+		uint nb = traits.size();
+		for(uint i = 0; i < nb; ++i) {
+			str << traits[i];
+			if(i != nb - 1 )
+				str << ", ";
+			tooltip << _("Trait: ")
+				<< "<b>" << traits[i] << "</b>\n"
+				<< descriptions[i];
+
+			res.add_text(flush(str), flush(tooltip));
+		}
+
+		return res;
 	}
 	case UNIT_STATUS: {
 		report res;
