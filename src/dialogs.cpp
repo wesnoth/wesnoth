@@ -765,15 +765,8 @@ void unit_preview_pane::draw_contents()
 		<< font::race
 		<< (right_align && !weapons_ ? det.race+"  " : "  "+det.race) << "\n"
 		<< _("level") << " " << det.level << "\n"
-		<< det.alignment << "\n";
-
-// 	std::vector<t_string>::const_iterator t = det.traits.begin();
-// 	for(; t != det.traits.end(); ++t){
-// 		if(t != det.details.begin()) {
-// 			text << ", ";
-// 		}
-// 		text << *t << "\n";
-// 	}
+		<< det.alignment << "\n"
+		<< det.traits << "\n";
 
 	for(std::vector<t_string>::const_iterator a = det.abilities.begin(); a != det.abilities.end(); ++a) {
 		if(a != det.abilities.begin()) {
@@ -952,12 +945,12 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
 		if (name.empty()) {
 			name = tr["name"];
 		}
-/*		if (!name.empty()) {
+		if (!name.empty()) {
 			if (!det.traits.empty()) {
 				det.traits += ", ";
 			}
 			det.traits += name;
-		}*/
+		}
 	}
 
 	det.abilities = t->abilities();
