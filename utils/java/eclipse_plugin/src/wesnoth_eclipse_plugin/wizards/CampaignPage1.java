@@ -7,6 +7,8 @@ import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
@@ -47,82 +49,87 @@ public class CampaignPage1 extends WizardPage {
 				updateIsPageComplete();
 			}
 		};
-
-		txtCampaignName_ = new Text(container, SWT.BORDER);
-		txtCampaignName_.setBounds(122, 7, 206, 21);
-		txtCampaignName_.addModifyListener(updatePageCompleteListener);
+		container.setLayout(new GridLayout(3, false));
 
 		Label _lblCampaignName = new Label(container, SWT.NONE);
-		_lblCampaignName.setBounds(10, 10, 96, 15);
 		_lblCampaignName.setText("Campaign name* :");
+
+				txtCampaignName_ = new Text(container, SWT.BORDER);
+				GridData gd_txtCampaignName_ = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
+				gd_txtCampaignName_.heightHint = 15;
+				txtCampaignName_.setLayoutData(gd_txtCampaignName_);
+				txtCampaignName_.addModifyListener(updatePageCompleteListener);
+		new Label(container, SWT.NONE);
 
 		Label lblVersion = new Label(container, SWT.NONE);
 		lblVersion.setText("Version* :");
-		lblVersion.setBounds(10, 37, 96, 15);
 
 		txtVersion_ = new Text(container, SWT.BORDER);
-		txtVersion_.setBounds(122, 34, 206, 21);
+		txtVersion_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 		txtVersion_.addModifyListener(updatePageCompleteListener);
-
-		Label lblTranslationsDir = new Label(container, SWT.NONE);
-		lblTranslationsDir.setText("Translations folder:");
-		lblTranslationsDir.setBounds(10, 64, 106, 15);
-
-		txtTranslationDir_ = new Text(container, SWT.BORDER);
-		txtTranslationDir_.setBounds(122, 61, 206, 21);
-
-		Label lblRelativeToThe = new Label(container, SWT.NONE);
-		lblRelativeToThe.setBounds(334, 64, 174, 15);
-		lblRelativeToThe.setText("Relative to the data folder");
-
-		txtAuthor_ = new Text(container, SWT.BORDER);
-		txtAuthor_.setBounds(122, 121, 206, 21);
-
-		Label lblAuthor = new Label(container, SWT.NONE);
-		lblAuthor.setText("Author:");
-		lblAuthor.setBounds(10, 124, 96, 15);
-
-		txtEmail_ = new Text(container, SWT.BORDER);
-		txtEmail_.setBounds(122, 148, 206, 21);
-
-		Label lblDescription = new Label(container, SWT.NONE);
-		lblDescription.setText("Email:");
-		lblDescription.setBounds(10, 151, 96, 15);
-
-		txtDescription_ = new Text(container, SWT.BORDER);
-		txtDescription_.setBounds(122, 175, 206, 21);
-
-		Label lblDescription_1 = new Label(container, SWT.NONE);
-		lblDescription_1.setText("Description:");
-		lblDescription_1.setBounds(10, 178, 96, 15);
-
-		txtPassphrase_ = new Text(container, SWT.BORDER);
-		txtPassphrase_.setBounds(122, 202, 206, 21);
-
-		Label lblIcon = new Label(container, SWT.NONE);
-		lblIcon.setText("Passphrase:");
-		lblIcon.setBounds(10, 205, 96, 15);
 
 		Label lblFormat = new Label(container, SWT.NONE);
 		lblFormat.setToolTipText("Displayed to the right of the title, it is just text. However,\r\nstarting with Wesnoth 1.6, the required format is x.y.z \r\nwhere x, y and z are numbers and a value for x greater than 0 \r\nimplies the campaign is complete and balanced. \r\nTrailing non-numeric elements are ok, but nothing should\r\nappear before the numbers. This is necessary for the Update \r\nadd-ons button to work correctly.");
-		lblFormat.setBounds(334, 37, 72, 15);
 		lblFormat.setText("Format: x.y.z");
+
+																										Label lblTranslationsDir = new Label(container, SWT.NONE);
+																										lblTranslationsDir.setText("Translations folder:");
+
+																								txtTranslationDir_ = new Text(container, SWT.BORDER);
+																								txtTranslationDir_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
+
+																						Label lblRelativeToThe = new Label(container, SWT.NONE);
+																						lblRelativeToThe.setText("Relative to the data folder");
+
+																				chkMultiCampaign_ = new Button(container, SWT.CHECK);
+																				GridData gd_chkMultiCampaign_ = new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1);
+																				gd_chkMultiCampaign_.widthHint = 236;
+																				chkMultiCampaign_.setLayoutData(gd_chkMultiCampaign_);
+																				chkMultiCampaign_.setText("This is a multiplayer campaign");
+																		new Label(container, SWT.NONE);
+
+																		Label lblAuthor = new Label(container, SWT.NONE);
+																		lblAuthor.setText("Author:");
+
+																txtAuthor_ = new Text(container, SWT.BORDER);
+																txtAuthor_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
+														new Label(container, SWT.NONE);
+
+														Label lblDescription = new Label(container, SWT.NONE);
+														lblDescription.setText("Email:");
+
+												txtEmail_ = new Text(container, SWT.BORDER);
+												txtEmail_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
+										new Label(container, SWT.NONE);
+
+										Label lblDescription_1 = new Label(container, SWT.NONE);
+										lblDescription_1.setText("Description:");
+
+								txtDescription_ = new Text(container, SWT.BORDER);
+								txtDescription_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
+						new Label(container, SWT.NONE);
+
+						Label lblIcon = new Label(container, SWT.NONE);
+						lblIcon.setText("Passphrase:");
+
+				txtPassphrase_ = new Text(container, SWT.BORDER);
+				txtPassphrase_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
+		new Label(container, SWT.NONE);
 
 		Label lblIcon_1 = new Label(container, SWT.NONE);
 		lblIcon_1.setText("Icon:");
-		lblIcon_1.setBounds(10, 232, 96, 15);
 
 		txtIcon_ = new Text(container, SWT.BORDER);
-		txtIcon_.setBounds(122, 229, 206, 21);
+		GridData gd_txtIcon_ = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
+		gd_txtIcon_.widthHint = 163;
+		txtIcon_.setLayoutData(gd_txtIcon_);
 
 		Label lblRelativeToThe_1 = new Label(container, SWT.NONE);
+		GridData gd_lblRelativeToThe_1 = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
+		gd_lblRelativeToThe_1.widthHint = 285;
+		lblRelativeToThe_1.setLayoutData(gd_lblRelativeToThe_1);
 		lblRelativeToThe_1.setToolTipText("An image, displayed leftmost on the \"download campaigns\" screen.\r\nIt must be a standard Wesnoth graphic and not a custom one. \r\n(Well, a custom graphic will work if the user already has the campaign \r\ninstalled, or if it is a custom graphic from a different campaign that the \r\nuser has installed but others won't see it!) (Note that the icon used to \r\ndisplay your campaign for when it is played can be custom; for more\r\ninformation see CampaignWML.) If the icon is a unit with magenta color,\r\nplease use ImagePathFunctionWML to team-color it. ");
-		lblRelativeToThe_1.setBounds(334, 232, 230, 15);
 		lblRelativeToThe_1.setText("Relative to the data/core/images folder");
-
-		chkMultiCampaign_ = new Button(container, SWT.CHECK);
-		chkMultiCampaign_.setBounds(10, 86, 181, 16);
-		chkMultiCampaign_.setText("This is a multiplayer campaign");
 
 		updateIsPageComplete();
 	}
