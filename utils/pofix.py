@@ -35,9 +35,9 @@ stringfixes = {
 "wesnoth" : (
 # Convert hyphen-minuses that are being used as minus signs
 # to the Unicode minus sign
-("- 25%", " −25%"),
-("-1%", "−1%"),
-("-100%", "−100%"),
+(" -25%", " −25%"),
+(" -1%", " −1%"),
+(" -100%", " −100%"),
 
 # Convert makeshift dashes:
 ("however - from these", "however — from these"),
@@ -222,6 +222,8 @@ stringfixes = {
 ("- map design, spawn groups and scenario concept", "— map design, spawn groups and scenario concept"),
 ("- WML implementation", "— WML implementation"),
 ("- So this is the accursed valley - a land ours for the taking.", "So this is the accursed valley — a land ours for the taking."),
+("watery caves- a spear whose", "watery caves— a spear whose"),
+("- WML implementation", "— WML implementation"),
 ),
 
 "wesnoth-nr" : (
