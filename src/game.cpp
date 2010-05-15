@@ -1829,11 +1829,9 @@ static int process_command_args(int argc, char** argv) {
 			<< "                               errors unless every player uses it)\n"
 			<< "  --path                       prints the path to the data directory and exits.\n"
 			<< "  --preprocess, -p[=<define1>,<define2>,...] <file/folder> <target directory>\n"
-			<< "                               preprocesses a specified file/folder relative to\n"
-			<< "                               the data/ directory. The file(s) will be written in\n"
-			<< "                               the specified target directory: a plain cfg file and a\n"
-			<< "                               processed cfg file. The needed folder tree will be\n"
-			<< "                               created automatically if it doesn't exist\n"
+			<< "                               preprocesses a specified file/folder. The preprocessed\n"
+			<< "                               file(s) will be written in the specified target\n"
+			<< "                               directory: a plain cfg file and a processed cfg file.\n"
 			<< "                               define1,define2,...  - the extra defines will\n"
 			<< "                               be added before processing the files.\n"
 			<< "  -r, --resolution XxY         sets the screen resolution. Example: -r 800x600\n"
@@ -1989,11 +1987,10 @@ static int process_command_args(int argc, char** argv) {
 				preprocess_resource(game_config::path + "/data/core/macros/",&defines_map);
 
 				LOG_PREPROC<<"processing target resource...\n";
-				preprocess_resource(game_config::path +"/data/"+ resourceToProcess, &defines_map,
-									true,true, targetDir);
+				preprocess_resource(resourceToProcess, &defines_map, true,true, targetDir);
 			}
 			else{
-				std::cerr<<"Please specify a source file/folder relative to the data/ directory and a target folder\n";
+				std::cerr<<"Please specify a source file/folder and a target folder\n";
 			}
 			return 1;
 		}

@@ -1038,10 +1038,7 @@ void preprocess_resource(const std::string res_name, preproc_map *defines_map,
 
 	if (write_cfg == true || write_plain_cfg == true)
 	{
-		std::string preproc_res_name = res_name;
-		// we replace <path>/data/<resource> with <target_directory>/<resource>
-		preproc_res_name.erase(0,preproc_res_name.find("/data")+5);
-		preproc_res_name.insert(0,target_directory);
+		const std::string preproc_res_name = target_directory + "/" + file_name(res_name);
 
 		// write the processed cfg file
 		if (write_cfg == true)

@@ -145,8 +145,12 @@ runs the game without sounds and music.
 prints the name of the game data directory and exits.
 .TP
 .B --preprocess, -p[=<define1>,<define2>,...] <file/folder> <target directory>
-preprocesses a specified file/folder relative to the data/ directory. The file(s) will be written in the data/preproc folder: a plain cfg file and a processed cfg file. The needed folder tree will be created automatically if it doesn't exist.
-define1,define2,... - the extra defines will be added before processing the files.
+preprocesses a specified file/folder. The file(s) will be written in specified target
+directory: a plain cfg file and a processed cfg file. If a folder is specified, it will
+be preprocessed recursively based on the known preprocessor rules. The common macroses
+from the data/core/macros will be preprocessed before the specified resources.
+.B define1,define2,...
+- the extra defines will be added before processing the files.
 .TP
 .BI -r\  X x Y ,\ --resolution\  X x Y
 sets the screen resolution. Example:
