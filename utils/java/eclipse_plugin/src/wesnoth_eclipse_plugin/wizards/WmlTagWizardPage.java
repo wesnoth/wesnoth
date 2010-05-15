@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package wesnoth_eclipse_plugin.wizards;
 

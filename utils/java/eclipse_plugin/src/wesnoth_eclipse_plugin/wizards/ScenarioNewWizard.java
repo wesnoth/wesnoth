@@ -16,9 +16,9 @@ import org.eclipse.ui.*;
 import org.eclipse.ui.ide.IDE;
 
 /**
- * This is a sample new wizard. Its role is to create a new file 
+ * This is a sample new wizard. Its role is to create a new file
  * resource in the provided container. If the container resource
- * (a folder or a project) is selected in the workspace 
+ * (a folder or a project) is selected in the workspace
  * when the wizard is opened, it will accept it as the target
  * container. The wizard creates one file with the extension
  * "cfg". If a sample multi-page editor (also available
@@ -37,7 +37,7 @@ public class ScenarioNewWizard extends Wizard implements INewWizard {
 		super();
 		setNeedsProgressMonitor(true);
 	}
-	
+
 	/**
 	 * Adding the page to the wizard.
 	 */
@@ -77,7 +77,7 @@ public class ScenarioNewWizard extends Wizard implements INewWizard {
 		}
 		return true;
 	}
-	
+
 	/**
 	 * The worker method. It will find the container, create the
 	 * file if missing or just replace its contents, and open
@@ -122,7 +122,7 @@ public class ScenarioNewWizard extends Wizard implements INewWizard {
 		});
 		monitor.worked(1);
 	}
-	
+
 	/**
 	 * We will initialize file contents with a sample text.
 	 */

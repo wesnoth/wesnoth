@@ -9,13 +9,13 @@
 	name= _ "$$campaign_name"
 	abbrev="$$abrev"
 	define="$$define"
-	
+
 	icon= $$icon
 	description= _ "$$description"
 	difficulties=$$difficulties
-	
+
 	first_scenario=$$first_scenario
-	
+
 	#ifdef $$define
 		# add here custom code
 		{campaigns/$$project_name/scenarios}

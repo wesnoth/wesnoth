@@ -14,10 +14,10 @@ public class CampaignPage0 extends WizardNewProjectCreationPage {
 	 */
 	@Override
 	public void createControl(Composite parent) {
-		super.createControl(parent);			
+		super.createControl(parent);
 		setMessage("Specify the name of the campaign project.");
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see org.eclipse.jface.wizard.WizardPage#canFlipToNextPage()
 	 */

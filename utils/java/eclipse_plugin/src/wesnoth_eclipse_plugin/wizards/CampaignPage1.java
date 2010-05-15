@@ -1,4 +1,4 @@
-/** 
+/**
  * @author Timotei Dolean
  */
 package wesnoth_eclipse_plugin.wizards;
@@ -46,14 +46,14 @@ public class CampaignPage1 extends WizardPage {
 		ModifyListener updatePageCompleteListener = new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent e) {
-				updateIsPageComplete();			
+				updateIsPageComplete();
 			}
 		};
 
 		txtCampaignName_ = new Text(container, SWT.BORDER);
 		txtCampaignName_.setBounds(122, 7, 206, 21);
 		txtCampaignName_.addModifyListener(updatePageCompleteListener);
-		
+
 		Label _lblCampaignName = new Label(container, SWT.NONE);
 		_lblCampaignName.setBounds(10, 10, 96, 15);
 		_lblCampaignName.setText("Campaign name* :");
@@ -135,7 +135,7 @@ public class CampaignPage1 extends WizardPage {
 	public boolean canFlipToNextPage() {
 		return (isPageComplete() && getNextPage() != null);
 	}
-	
+
 	public void updateIsPageComplete()
 	{
 		setPageComplete(false);
@@ -144,7 +144,7 @@ public class CampaignPage1 extends WizardPage {
 			setErrorMessage("Campaign name is mandatory");
 			return;
 		}
-		
+
 		// match the pattern x.y.z
 		if (txtVersion_.getText().length() == 0 ||
 			!(txtVersion_.getText().matches("[\\d]+\\.[\\d]+\\.\\d[\\w\\W\\d\\D\\s\\S]*")))

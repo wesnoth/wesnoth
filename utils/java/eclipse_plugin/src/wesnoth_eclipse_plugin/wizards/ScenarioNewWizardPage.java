@@ -32,12 +32,12 @@ public class ScenarioNewWizardPage extends WizardPage {
 	private Text fileText;
 	private Text scenarioIdText;
 	private Text scenarioNameText;
-	
+
 	private ISelection selection;
 
 	/**
 	 * Constructor for SampleNewWizardPage.
-	 * 
+	 *
 	 * @param pageName
 	 */
 	public ScenarioNewWizardPage(ISelection selection) {
@@ -56,7 +56,7 @@ public class ScenarioNewWizardPage extends WizardPage {
 		container.setLayout(layout);
 		layout.numColumns = 3;
 		layout.verticalSpacing = 9;
-		
+
 		Label label = new Label(container, SWT.NULL);
 		label.setText("&Container:");
 		containerText = new Text(container, SWT.BORDER | SWT.SINGLE);
@@ -77,7 +77,7 @@ public class ScenarioNewWizardPage extends WizardPage {
 		});
 
 		label = new Label(container, SWT.NULL);
-		label.setText("&File name:");		
+		label.setText("&File name:");
 		fileText = new Text(container, SWT.BORDER | SWT.SINGLE);
 		gd = new GridData(GridData.FILL_HORIZONTAL);
 		fileText.setLayoutData(gd);
@@ -108,7 +108,7 @@ public class ScenarioNewWizardPage extends WizardPage {
 				dialogChanged();
 			}
 		});
-		
+
 		initialize();
 		dialogChanged();
 		setControl(container);

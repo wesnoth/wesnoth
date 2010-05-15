@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package wesnoth_eclipse_plugin;
 
@@ -19,7 +19,7 @@ public class Logger {
 	{
 		print(message, IStatus.INFO);
 	}
-	
+
 	/**
 	 * Prints a message to the error log with the specified severity
 	 * @param message the message to print

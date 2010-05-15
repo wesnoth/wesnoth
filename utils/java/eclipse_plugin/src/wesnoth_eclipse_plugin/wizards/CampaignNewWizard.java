@@ -56,7 +56,7 @@ public class CampaignNewWizard extends Wizard implements INewWizard {
 	public CampaignNewWizard() {
 		setWindowTitle("Create a new Campaign");
 		setNeedsProgressMonitor(true);
-		
+
 	}
 
 	@Override
@@ -218,10 +218,10 @@ public class CampaignNewWizard extends Wizard implements INewWizard {
 
 		}catch (CoreException e) {
 			Logger.print("Error creating the resource"+resourceName, IStatus.ERROR);
-			ErrorDialog dlgDialog = new ErrorDialog(getShell(), "Error creating the file", "There was an error creating the resource: "+resourceName, 
+			ErrorDialog dlgDialog = new ErrorDialog(getShell(), "Error creating the file", "There was an error creating the resource: "+resourceName,
 					new Status(IStatus.ERROR,"wesnoth_plugin","error"),0);
 			dlgDialog.open();
 			e.printStackTrace();
-		}			
+		}
 	}
 }
