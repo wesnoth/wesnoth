@@ -104,7 +104,7 @@ public class TemplateProvider {
 				}
 			}
 
-			result+= template[i]+"\\n";
+			result+= template[i]+"\n";
 		}
 		return result;
 	}
