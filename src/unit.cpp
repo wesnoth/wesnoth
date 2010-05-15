@@ -2530,35 +2530,39 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 			movement_ = movement;
 		}
 	}
-	t_string& description = modification_descriptions_[type];
-	t_string trait_description;
 
+	t_string description;
+
+	const t_string& mod_description = mod["description"];
+	if (!mod_description.empty()) {
+		description = mod_description + " ";
+	}
+	
 	// Punctuation should be translatable: not all languages use latin punctuation.
 	// (However, there maybe is a better way to do it)
-	if (!mod["description"].empty()) {
-		trait_description += mod["description"] + " ";
-	}
 	if(effects_description.empty() == false) {
-		//trait_description += t_string(N_("("), "wesnoth");
 		for(std::vector<t_string>::const_iterator i = effects_description.begin();
 				i != effects_description.end(); ++i) {
-			trait_description += *i;
+			description += *i;
 			if(i+1 != effects_description.end())
-				trait_description += t_string(N_(" and "), "wesnoth");
+				description += t_string(N_(" and "), "wesnoth");
 		}
-		//trait_description += t_string(N_(")"), "wesnoth");
 	}
 
-	if (!mod["name"].empty()) {
+	const t_string& mod_name = mod["name"];
+	if (!mod_name.empty()) {
 		utils::string_map symbols;
-		symbols["trait_name"] = mod["name"];
-		symbols["trait_description"] = trait_description;
-		description += vgettext("$trait_name|: $trait_description ", symbols);
-	} else if (!trait_description.empty()) {
-		description += trait_description;
+		// This is not specific to traits, but only visible there,
+		// so we tell that to translators
+		symbols["trait_name"] = mod_name;
+		symbols["trait_description"] = description;
+		description = vgettext("$trait_name|: $trait_description ", symbols);
 	}
 
-	description += "\n";
+	if(!description.empty())
+		description += "\n";
+
+	modification_descriptions_[type] += description;
 }
 
 const t_string& unit::modification_description(const std::string& type) const
