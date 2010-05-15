@@ -81,13 +81,13 @@ std::vector< std::string > paranthetical_split(std::string const &val,
 	std::string const &right=")",int flags = REMOVE_EMPTY | STRIP_SPACES);
 
 template <typename T>
-std::string join(T const &v, char c = ',')
+std::string join(T const &v, const std::string& s = ",")
 {
         std::stringstream str;
         for(typename T::const_iterator i = v.begin(); i != v.end(); ++i) {
                 str << *i;
                 if (boost::next(i) != v.end())
-                        str << c;
+                        str << s;
         }
 
         return str.str();

@@ -153,7 +153,7 @@ namespace gui{
 			if (matches.size() == 1 && mode_ == gui::TEXTBOX_MESSAGE) {
 				text.append(line_start ? ": " : " ");
 			} else {
-				std::string completion_list = utils::join(matches, ' ');
+				std::string completion_list = utils::join(matches, " ");
 				gui.add_chat_message(time(NULL), "", 0, completion_list,
 						events::chat_handler::MESSAGE_PRIVATE, false);
 			}

@@ -1797,7 +1797,7 @@ std::string generate_about_text()
 	std::transform(about_lines.begin(), about_lines.end(), std::back_inserter(res_lines),
 				   about_text_formatter());
 	res_lines.erase(std::remove(res_lines.begin(), res_lines.end(), ""), res_lines.end());
-	std::string text = utils::join(res_lines, '\n');
+	std::string text = utils::join(res_lines, "\n");
 	return text;
 }
 

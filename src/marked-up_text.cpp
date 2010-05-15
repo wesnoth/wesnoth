@@ -149,7 +149,7 @@ std::string del_tags(const std::string& text){
 			i2 = line->end();
 		*line = std::string(parse_markup(i1,i2,&ignore_int,&ignore_color,&ignore_int),i2);
 	}
-	return utils::join(lines, '\n');
+	return utils::join(lines, "\n");
 }
 
 std::string color2markup(const SDL_Color &color)

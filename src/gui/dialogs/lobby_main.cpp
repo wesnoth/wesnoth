@@ -1705,7 +1705,7 @@ void tlobby_main::chat_input_keypress_callback(
 		if (matches.size() == 1) {
 			text.append(line_start ? ": " : " ");
 		} else {
-			std::string completion_list = utils::join(matches, ' ');
+			std::string completion_list = utils::join(matches, " ");
 			append_to_chatbox(completion_list);
 		}
 		chat_input_->set_value(text);

@@ -2069,7 +2069,7 @@ class map_command_handler
 				ss << get_command_flags_description(*c);
 				const std::vector<std::string> l = get_aliases(cmd);
 				if (!l.empty()) {
-					ss << " (" << _("aliases:") << " " << utils::join(l,' ') << ")";
+					ss << " (" << _("aliases:") << " " << utils::join(l," ") << ")";
 				}
 				print(_("help"), ss.str());
 			}

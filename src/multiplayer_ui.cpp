@@ -511,7 +511,7 @@ void ui::handle_key_event(const SDL_KeyboardEvent& event)
 		if (matches.size() == 1) {
 			text.append(line_start ? ": " : " ");
 		} else {
-			std::string completion_list = utils::join(matches, ' ');
+			std::string completion_list = utils::join(matches, " ");
 			chat_.add_message(time(NULL), "", completion_list);
 			chat_.update_textbox(chat_textbox_);
 		}
