@@ -575,6 +575,10 @@ static SDL_Color string_to_color(const std::string &s);
 /// Make a best effort to word wrap s. All parts are less than width.
 static std::vector<std::string> split_in_width(const std::string &s, const int font_size, const unsigned width);
 
+/// shortcut to call font::line_width but using the font::PANGO_STYLE flag
+static int line_width(const std::string& line, int font_size, int style = TTF_STYLE_NORMAL)
+{ return font::line_width(line, font_size, style | font::PANGO_STYLE);}
+
 static std::string remove_first_space(const std::string& text);
 
 /// Prepend all chars with meaning inside attributes with a backslash.
@@ -759,7 +763,7 @@ static unsigned image_width(const std::string &filename)
 
 static void push_tab_pair(std::vector<std::pair<std::string, unsigned int> > &v, const std::string &s)
 	{
-		v.push_back(std::make_pair(s, font::line_width(s, normal_font_size)));
+		v.push_back(std::make_pair(s, help::line_width(s, normal_font_size)));
 	}
 
 namespace help {
@@ -1308,7 +1312,7 @@ class unit_topic_generator: public topic_generator
 	const unit_type& type_;
 	typedef std::pair< std::string, unsigned > item;
 	void push_header(std::vector< item > &row, char const *name) const {
-		row.push_back(item(bold(name), font::line_width(name, normal_font_size, TTF_STYLE_BOLD)));
+		row.push_back(item(bold(name), help::line_width(name, normal_font_size, TTF_STYLE_BOLD)));
 	}
 public:
 	unit_topic_generator(const unit_type &t): type_(t) {}
@@ -1510,7 +1514,7 @@ public:
 						++sp_it; //skip description
 					}
 					row.push_back(std::make_pair(attack_ss.str(),
-						font::line_width(lang_special, normal_font_size)));
+						help::line_width(lang_special, normal_font_size, TTF_STYLE_NORMAL)));
 
 				}
 				table.push_back(row);
@@ -1552,7 +1556,7 @@ public:
 			str.str(clear_stringstream);
 			str << resi;
 			row.push_back(std::make_pair(markup,
-						     font::line_width(str.str(), normal_font_size)));
+						     help::line_width(str.str(), normal_font_size)));
 			resistance_table.push_back(row);
 		}
 		ss << generate_table(resistance_table);
@@ -1587,7 +1591,7 @@ public:
 					str << "<ref>text='" << escape(name) << "' dst='"
 						<< escape(std::string("terrain_") + id) << "'</ref>";
 					row.push_back(std::make_pair(str.str(),
-						font::line_width(name, normal_font_size)));
+						help::line_width(name, normal_font_size)));
 
 					//defense  -  range: +10 % .. +70 %
 					str.str(clear_stringstream);
@@ -1608,7 +1612,7 @@ public:
 					str.str(clear_stringstream);
 					str << defense << "%";
 					row.push_back(std::make_pair(markup,
-						     font::line_width(str.str(), normal_font_size)));
+						     help::line_width(str.str(), normal_font_size)));
 
 					//movement  -  range: 1 .. 5, unit_movement_type::UNREACHABLE=impassable
 					str.str(clear_stringstream);
@@ -2198,8 +2202,9 @@ void help_text_area::set_items()
 	curr_loc_.second = 0;
 	curr_row_height_ = min_row_height_;
 	// Add the title item.
-	const std::string show_title =
-		font::make_text_ellipsis(shown_topic_->title, title_size, inner_location().w);
+	//FIXME why using ellipsis? A two-lines title is probably better
+	const std::string show_title = font::make_text_ellipsis(shown_topic_->title, title_size, inner_location().w);
+	//TODO use pango here too, but still inaccurate in the rare case of ellipsis
 	surface surf(font::get_rendered_text(show_title, title_size,
 					     font::NORMAL_COLOUR, TTF_STYLE_BOLD));
 	if (surf != NULL) {
@@ -2420,8 +2425,9 @@ void help_text_area::add_text_item(const std::string& text, const std::string& r
 	int state = ref_dst == "" ? 0 : TTF_STYLE_UNDERLINE;
 	state |= bold ? TTF_STYLE_BOLD : 0;
 	state |= italic ? TTF_STYLE_ITALIC : 0;
+	state |= font::PANGO_STYLE;
 	if (curr_loc_.first != get_min_x(curr_loc_.second, curr_row_height_)
-		&& remaining_width < font::line_width(first_word, font_size, state)) {
+		&& remaining_width < help::line_width(first_word, font_size, state)) {
 		// The first word does not fit, and we are not at the start of
 		// the line. Move down.
 		down_one_line();
@@ -2449,16 +2455,16 @@ void help_text_area::add_text_item(const std::string& text, const std::string& r
 
 			const std::string first_word_before = get_first_word(s);
 			const std::string first_word_after = get_first_word(remove_first_space(s));
-			if (get_remaining_width() >= font::line_width(first_word_after, font_size, state)
+			if (get_remaining_width() >= help::line_width(first_word_after, font_size, state)
 				&& get_remaining_width()
-				< font::line_width(first_word_before, font_size, state)) {
+				< help::line_width(first_word_before, font_size, state)) {
 				// If the removal of the space made this word fit, we
 				// must move down a line, otherwise it will be drawn
 				// without a space at the end of the line.
 				s = remove_first_space(s);
 				down_one_line();
 			}
-			else if (!(font::line_width(first_word_before, font_size, state)
+			else if (!(help::line_width(first_word_before, font_size, state)
 					   < get_remaining_width())) {
 				s = remove_first_space(s);
 			}
@@ -3048,7 +3054,9 @@ std::vector<std::string> split_in_width(const std::string &s, const int font_siz
 {
 	std::vector<std::string> res;
 	try {
-	const std::string& first_line = font::word_wrap_text(s, font_size, width, -1, 1, true);
+	//FIXME why do we use normal style here ?
+	int default_style = TTF_STYLE_NORMAL | font::PANGO_STYLE;
+	const std::string& first_line = font::word_wrap_text(s, font_size, width, -1, 1, default_style);
 	res.push_back(first_line);
 	if(s.size() > first_line.size()) {
 		res.push_back(s.substr(first_line.size()));
