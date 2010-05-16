@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-05-15 14:21+0200\n"
-"PO-Revision-Date: 2010-04-24 17:09+0100\n"
+"PO-Revision-Date: 2010-05-15 19:29+0100\n"
 "Last-Translator: Guigou Guillaume <guillaume.guigou@orange.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
@@ -103,9 +103,8 @@ msgstr "Sons du vestibule"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:107
-#, fuzzy
 msgid "Disable notifications"
-msgstr "Désactive les sauvegardes automatiques."
+msgstr "désactive les notifications"
 
 #. [ai]: id=testing_ai_default
 #: data/ai/ais/testing_ai_default.cfg:5
@@ -1333,7 +1332,6 @@ msgstr ""
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:263
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1348,7 +1346,7 @@ msgstr ""
 "Les résistances fonctionnent très simplement : une unité avec 40 % de "
 "résistance contre un type de dégâts subira 40 % de dégâts en moins sur un "
 "coup de ce type. Il est également possible pour une unité d'avoir une "
-"faiblesse contre certains types de dégâts : une unité avec -100 % de "
+"faiblesse contre certains types de dégâts : une unité avec —100 % de "
 "résistance contre un type de dégâts subira 100 % de dégâts en plus sur une "
 "attaque de ce type."
 
@@ -2118,7 +2116,6 @@ msgstr "Lent"
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:456
-#, fuzzy
 msgid "Slow units have −1 movement but 5% more hitpoints."
 msgstr ""
 "Les unités lentes ont 1 point de mouvement en moins, mais 5 % de points de "
@@ -2146,7 +2143,6 @@ msgstr "Faible"
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:464
-#, fuzzy
 msgid "Units with trait Weak get a −1 increment in hitpoints and melee damage."
 msgstr ""
 "Les unités faibles ont 1 point de vie en moins ; elle infligent 1 point de "
@@ -5597,7 +5593,6 @@ msgstr "Elfes"
 
 #. [race]: id=elf
 #: data/core/units.cfg:118
-#, fuzzy
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
 "They have slightly pointy ears, pale skin and usually blond hair. Few "
@@ -6856,9 +6851,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:116
-#, fuzzy
 msgid "— Meneldur, 123YW"
-msgstr "- Meneldur, 123 YW"
+msgstr "— Meneldur, 123 YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:119
@@ -7530,9 +7524,8 @@ msgid "Type"
 msgstr "Type"
 
 #: src/addon_management.cpp:801
-#, fuzzy
 msgid "Install dependencies"
-msgstr "Dépendances"
+msgstr "Installer dépendances"
 
 #: src/addon_management.cpp:802
 msgid ""
@@ -7545,7 +7538,7 @@ msgstr[1] ""
 
 #: src/addon_management.cpp:831
 msgid "Installation of a dependency failed"
-msgstr ""
+msgstr "Installation d'une dépendance a échoué"
 
 #: src/addon_management.cpp:833
 msgid ""
@@ -7555,7 +7548,7 @@ msgstr ""
 
 #: src/addon_management.cpp:847
 msgid "Installation failed"
-msgstr ""
+msgstr "L'installation a échoué"
 
 #: src/addon_management.cpp:849 src/addon_management.cpp:1078
 msgid "The following add-on could not be downloaded or updated successfully:"
@@ -7614,7 +7607,7 @@ msgstr "Tout mettre à jour"
 #: src/addon_management.cpp:1043 src/addon_management.cpp:1060
 #: src/addon_management.cpp:1300
 msgid "Installation of some dependency failed"
-msgstr ""
+msgstr "L'installation de certaines dépendances a échoué"
 
 #: src/addon_management.cpp:1045 src/addon_management.cpp:1062
 #: src/addon_management.cpp:1302
@@ -8059,28 +8052,24 @@ msgid "Name: "
 msgstr "Nom : "
 
 #: src/generate_report.cpp:98
-#, fuzzy
 msgid "Type: "
-msgstr "Type"
+msgstr "Type :"
 
 #: src/generate_report.cpp:108 src/help.cpp:1403
 msgid "Race: "
 msgstr "Race : "
 
 #: src/generate_report.cpp:129
-#, fuzzy
 msgid "Level: "
-msgstr "Niveau"
+msgstr "Niveau :"
 
 #: src/generate_report.cpp:131
-#, fuzzy
 msgid "Advances to:"
 msgstr "Évolue en : "
 
 #: src/generate_report.cpp:149
-#, fuzzy
 msgid "Traits: "
-msgstr "Traits"
+msgstr "Traits :"
 
 #: src/generate_report.cpp:158
 msgid "invisible: "
@@ -8134,14 +8123,12 @@ msgstr ""
 "Cette unité a été changée en pierre. Elle ne peut ni bouger, ni attaquer."
 
 #: src/generate_report.cpp:182
-#, fuzzy
 msgid "Alignement: "
 msgstr "Alignement : "
 
 #: src/generate_report.cpp:196
-#, fuzzy
 msgid "Ability:"
-msgstr "Capacités"
+msgstr "Capacités : "
 
 #: src/generate_report.cpp:230
 msgid "Resistances: "
@@ -8156,78 +8143,65 @@ msgid "Experience Modifier: "
 msgstr "Modifications d'expérience : "
 
 #: src/generate_report.cpp:264
-#, fuzzy
 msgid "Terrain: "
-msgstr "Terrain"
+msgstr "Terrain :"
 
 #: src/generate_report.cpp:266
-#, fuzzy
 msgid "Chance to be hit: "
-msgstr "Chance d'être indemne"
+msgstr "Chances d'être touché :"
 
 #: src/generate_report.cpp:337
-#, fuzzy
 msgid "Weapon: "
-msgstr "portée de l'arme : "
+msgstr "Arme : "
 
 #: src/generate_report.cpp:338
-#, fuzzy
 msgid "Damage: "
-msgstr "Dégâts"
+msgstr "Dégâts :"
 
 #: src/generate_report.cpp:341
-#, fuzzy
 msgid "Base damage: "
-msgstr "Dégâts totaux"
+msgstr "Dégâts totaux :"
 
 #: src/generate_report.cpp:343
-#, fuzzy
 msgid "Time of day: "
-msgstr "Moment de la journée"
+msgstr "Moment de la journée :"
 
 #: src/generate_report.cpp:347
-#, fuzzy
 msgid "Leadership: "
-msgstr "Commandement"
+msgstr "Commandement :"
 
 #: src/generate_report.cpp:351
-#, fuzzy
 msgid "Slowed: "
-msgstr "ralentie : "
+msgstr "ralentie :"
 
 #: src/generate_report.cpp:355
-#, fuzzy
 msgid "Attacks: "
-msgstr "Attaquant"
+msgstr "Attaques :"
 
 #: src/generate_report.cpp:357
 msgid "Base attacks: "
-msgstr ""
+msgstr "Attaques de base :"
 
 #: src/generate_report.cpp:359
-#, fuzzy
 msgid "Swarm: "
-msgstr "Marais"
+msgstr "Marais :"
 
 # Benoît : j'ai du mal à piger l'anglais ici
 #: src/generate_report.cpp:364
-#, fuzzy
 msgid "Accuracy :"
-msgstr " % précision"
+msgstr "Fidélité :"
 
 #: src/generate_report.cpp:369
 msgid "Parry :"
-msgstr ""
+msgstr "Parade :"
 
 #: src/generate_report.cpp:380
-#, fuzzy
 msgid "Weapon range: "
-msgstr "portée de l'arme : "
+msgstr "Portée de l'arme : "
 
 #: src/generate_report.cpp:381
-#, fuzzy
 msgid "Damage type: "
-msgstr "type de dégâts : "
+msgstr "Type de dégâts : "
 
 #: src/generate_report.cpp:404
 msgid "vs"
@@ -8844,15 +8818,13 @@ msgid "aliases:"
 msgstr "Alias : "
 
 #: src/menu_events.cpp:2198
-#, fuzzy
 msgid "(A) - admin command"
-msgstr "(A) - commande admin"
+msgstr "(A) - commande administrateur"
 
 # team labels
 #: src/menu_events.cpp:2205 src/menu_events.cpp:2403
-#, fuzzy
 msgid "(admin only)"
-msgstr "(réservé aux admins)"
+msgstr "(réservé aux adminstrateurs)"
 
 #: src/menu_events.cpp:2225
 msgid ""
@@ -9021,17 +8993,16 @@ msgid "Room query."
 msgstr "Requête de salle."
 
 #: src/menu_events.cpp:2395
-#, fuzzy
 msgid "(D) - debug only, (N) - network only, (A) - admin only"
 msgstr ""
-"(D) - débogage uniquement, (N) - réseau uniquement, (A) - admin uniquement"
+"(D) - débogage uniquement, (N) - réseau uniquement, (A) - adminstrateur "
+"uniquement"
 
 #: src/menu_events.cpp:2401
 msgid "(debug command)"
 msgstr "(commandes de débogage)"
 
 #: src/menu_events.cpp:2402
-#, fuzzy
 msgid "(network only)"
 msgstr "(réseau uniquement)"
 
@@ -9520,9 +9491,8 @@ msgid "I'm Ready"
 msgstr "Je suis prêt"
 
 #: src/multiplayer_connect.cpp:1016
-#, fuzzy
 msgid "Add named local player"
-msgstr "Joueur local anonyme"
+msgstr "Ajouter un nom de joueur local"
 
 #: src/multiplayer_connect.cpp:1025
 msgid "The scenario is invalid because it has no id."
@@ -9534,11 +9504,11 @@ msgstr "Le scénario n'est pas valide car il ne possède pas de camps."
 
 #: src/multiplayer_connect.cpp:1096
 msgid "Enter a name for the new player"
-msgstr ""
+msgstr "Entrez un nom pour le nouveau joueur"
 
 #: src/multiplayer_connect.cpp:1438
 msgid "Adds a named hotseat player to the player list"
-msgstr ""
+msgstr "Ajoute un nom à la liste des joueurs en chaise tournante"
 
 #: src/multiplayer_connect.cpp:1455
 msgid "Network Player"

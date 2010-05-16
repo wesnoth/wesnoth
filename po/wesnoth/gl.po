@@ -14,9 +14,9 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-05-15 14:21+0200\n"
-"PO-Revision-Date: 2010-04-25 18:49+0200\n"
+"PO-Revision-Date: 2010-05-05 10:43+0200\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
-"Language-Team: Galician <proxecto@trasno.net>\n"
+"Language-Team: Galician <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -90,17 +90,17 @@ msgstr "Só deixarlles bisbarche aos teus amigos"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:86
 msgid "Auto-open whisper windows in lobby"
-msgstr "Abrir automaticamente a fiestra de bisbar na sala"
+msgstr "Abrir automaticamente a fiestra de bisbar na sala de espera"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:93
 msgid "Group players in lobby"
-msgstr "Agrupar os xogadores da sala"
+msgstr "Agrupar os xogadores da sala de espera"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:100
 msgid "Lobby sounds"
-msgstr "Sons na sala"
+msgstr "Sons na sala de espera"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:107
@@ -8418,7 +8418,7 @@ msgstr "(xogando)"
 
 #: src/gui/dialogs/lobby_player_info.cpp:104
 msgid "In lobby"
-msgstr "Na sala"
+msgstr "Na sala de espera"
 
 #: src/gui/dialogs/lobby_player_info.cpp:128
 msgid "On friends list"
@@ -8954,12 +8954,10 @@ msgid "aliases:"
 msgstr "alias:"
 
 #: src/menu_events.cpp:2198
-#, fuzzy
 msgid "(A) - admin command"
 msgstr "orde de administrador (A)"
 
 #: src/menu_events.cpp:2205 src/menu_events.cpp:2403
-#, fuzzy
 msgid "(admin only)"
 msgstr "(só para administradores)"
 
@@ -9134,7 +9132,6 @@ msgid "Room query."
 msgstr "Petición da sala."
 
 #: src/menu_events.cpp:2395
-#, fuzzy
 msgid "(D) - debug only, (N) - network only, (A) - admin only"
 msgstr "só para depuración (D), só para rede (N), só para administradores (A)"
 
@@ -9143,7 +9140,6 @@ msgid "(debug command)"
 msgstr "(orde de depuración)"
 
 #: src/menu_events.cpp:2402
-#, fuzzy
 msgid "(network only)"
 msgstr "(só para rede)"
 
@@ -9613,7 +9609,7 @@ msgstr "Non se atopou o tipo de líder para a facción $faction"
 
 #: src/multiplayer_connect.cpp:985
 msgid "Game Lobby: "
-msgstr "Sala do xogo: "
+msgstr "Sala de espera do xogo: "
 
 #: src/multiplayer_connect.cpp:1007
 msgid "Player/Type"
@@ -9892,7 +9888,7 @@ msgstr "Recrutamentos: "
 
 #: src/multiplayer_wait.cpp:174
 msgid "Game Lobby"
-msgstr "Sala do xogo"
+msgstr "Sala de espera do xogo"
 
 #: src/multiplayer_wait.cpp:176
 msgid "Waiting for game to start..."
@@ -10593,6 +10589,9 @@ msgstr "Axúdanos a mellorar Wesnoth para ti!"
 msgid "Enable summary uploads"
 msgstr "Activar o envío de resumos"
 
+#~ msgid "Multiplayer_AI^Default AI"
+#~ msgstr "AI por defecto"
+
 #~ msgid ""
 #~ "$addon_title depends upon the following add-on which you have not "
 #~ "installed yet:"
@@ -10629,13 +10628,6 @@ msgstr "Activar o envío de resumos"
 
 #~ msgid "tooltip^% parry"
 #~ msgstr "% de defensa"
-
-#, fuzzy
-#~ msgid " (auth only)"
-#~ msgstr "(só para administradores)"
-
-#~ msgid "Multiplayer_AI^Default AI"
-#~ msgstr "AI por defecto"
 
 #~ msgid "--no games open--"
 #~ msgstr "--non hai partidas abertas--"
