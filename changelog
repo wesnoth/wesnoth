@@ -27,6 +27,12 @@ Version 1.9.0-svn:
    * Added the winner of the first Wesnoth map compitition, the 2 player map
      "Elensefar Courtyard" by krotop.
  * Terrain:
+   * all villages except water and swamp villages can now be placed on any base
+     terrain
+   * orcish, elven and human snow villages are now aliased to village,snow
+     instead of just to village
+   * orcish and human snow hills villages are now aliased to village,snowhills
+     instead of just to village,hills
    * animated terrain animations are not synchronized anymore
    * reworked macros to handle animations
    * added new stone-wall-lit terrain
@@ -124,8 +130,8 @@ Version 1.9.0-svn:
    * Cleaned up the gui2 code at various places
    * Fixed restoring and saving unit statuses (bug #15889)
  * Music and sound effects
-   * New version of "Northerners" by Stephen Rozanc (TreizeCouleurs)	
-	
+   * New version of "Northerners" by Stephen Rozanc (TreizeCouleurs)
+
 Version 1.8.0:
  * AI:
    * Fixed bug #14247: Make formula AI behave correctly if the side has only 1
