@@ -90,7 +90,6 @@ stringfixes = {
 ("As Battle for Wesnoth can be quite", "As <italic>text='Battle for Wesnoth'</italic> can be quite"),
 ("Movement in Battle for Wesnoth is simple", "Movement in <italic>text='Battle for Wesnoth'</italic> is simple"),
 ("Combat in Battle for Wesnoth always", "Combat in <italic>text='Battle for Wesnoth'</italic> always"),
-("Battle for Wesnoth automatically", "<italic>text='Battle for Wesnoth'</italic> automatically"),
 ),
 
 "wesnoth-anl" : (
