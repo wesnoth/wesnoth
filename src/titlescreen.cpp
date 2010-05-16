@@ -255,7 +255,7 @@ static void draw_tip_of_day(game_display& screen,
 	int tip_width = game_config::title_tip_width * screen.w() / 1024;
 
 	font::ttext text, source;
-	text.set_text((*tip)["text"], false);
+	text.set_text((*tip)["text"], true);
 	text.set_maximum_width(tip_width);
 	text.set_maximum_height(main_dialog_area->h);
 	source.set_text((*tip)["source"], false);
