@@ -481,6 +481,27 @@ linechanges = (
         ("portraits/orcs/warlord3.png","portraits/orcs/transparent/grunt-2.png"),
         ("portraits/orcs/warlord4.png","portraits/orcs/transparent/grunt-2.png"),
         ("portraits/orcs/warlord5.png","portraits/orcs/transparent/grunt-3.png"),
+        # Changes just before 1.9.0
+        ("flat/grass-r8", "flat/grass6"),
+        ("flat/grass-r7", "flat/grass5"),
+        ("flat/grass-r6", "flat/grass6"),
+        ("flat/grass-r5", "flat/grass5"),
+        ("flat/grass-r4", "flat/grass4"),
+        ("flat/grass-r3", "flat/grass3"),
+        ("flat/grass-r2", "flat/grass2"),
+        ("flat/grass-r1", "flat/grass1"),
+        ("Ha^Voa", "Ha^Voha"),
+        ("Hh^Vo,",  "Hh^Voh,"),
+        ("Hh^Vo\r",  "Hh^Voh\r"),
+        ("Hh^Vo\n",  "Hh^Voh\n"),
+        ("Mm^Vhh", "Mm^Vhm"),
+        ("Hh^Vc,",  "Hh^Vch,"),
+        ("Hh^Vc\r",  "Hh^Vch\r"),
+        ("Hh^Vc\n",  "Hh^Vch\n"),
+        ("Ha^Vca", "Ha^Vcha"),
+        ("Mm^Vc,",  "Mm^Vcm,"),
+        ("Mm^Vc\r",  "Mm^Vcm\r"),
+        ("Mm^Vc\n",  "Mm^Vcm\n"),
         )
 
 def validate_on_pop(tagstack, closer, filename, lineno):
