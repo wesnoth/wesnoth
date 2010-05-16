@@ -149,8 +149,8 @@ report generate_report(TYPE type,
 		report res;
 		const std::vector<t_string>& traits = u->trait_names();
 		const std::vector<t_string>& descriptions = u->trait_descriptions();
-		uint nb = traits.size();
-		for(uint i = 0; i < nb; ++i) {
+		unsigned int nb = traits.size();
+		for(unsigned int i = 0; i < nb; ++i) {
 			str << traits[i];
 			if(i != nb - 1 )
 				str << ", ";
@@ -190,7 +190,7 @@ report generate_report(TYPE type,
 		const std::string &align = unit_type::alignment_description(u->alignment(), u->gender());
 		const std::string &align_id = unit_type::alignment_id(u->alignment());
 		int cm = combat_modifier(units, displayed_unit_hex, u->alignment(), u->is_fearless());
-		
+
 		str << align << " (" << signed_percent(cm) << ")";
 		tooltip << _("Alignement: ")
 			<< "<b>" << align << "</b>\n"
@@ -309,7 +309,7 @@ report generate_report(TYPE type,
 			at.set_specials_context(displayed_unit_hex, map_location(), *u);
 
 			int base_damage = at.damage();
-			
+
 			int damage_multiplier = 100;
 
 			// Time of day bonus.
@@ -328,7 +328,7 @@ report generate_report(TYPE type,
 
 			int damage_divisor = slowed ? 20000 : 10000;
 			int damage = round_damage(base_damage, damage_multiplier, damage_divisor);
-			
+
 			int base_nattacks = at.num_attacks();
 			int nattacks = base_nattacks;
 			// Compute swarm attacks:
