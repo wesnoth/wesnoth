@@ -278,9 +278,8 @@ bool ttext::set_text(const std::string& text, const bool markedup)
 				ERR_GUI_L << "ttext::" << __func__
 						<< " text '" << text
 						<< "' has broken markup, set to normal text.\n";
-				/** @todo Enable after 1.8. */
-//				set_text(_("The text contains invalid markup: ") + text, false);
-				set_text(text, false);
+
+				set_text(_("The text contains invalid markup: ") + text, false);
 				return false;
 			}
 			pango_layout_set_markup(layout_, text.c_str(), text.size());
