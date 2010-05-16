@@ -420,6 +420,8 @@
 		<Unit filename="..\..\src\gui\dialogs\title_screen.hpp" />
 		<Unit filename="..\..\src\gui\dialogs\transient_message.cpp" />
 		<Unit filename="..\..\src\gui\dialogs\transient_message.hpp" />
+		<Unit filename="..\..\src\gui\dialogs\unit_attack.cpp" />
+		<Unit filename="..\..\src\gui\dialogs\unit_attack.hpp" />
 		<Unit filename="..\..\src\gui\dialogs\unit_create.cpp" />
 		<Unit filename="..\..\src\gui\dialogs\unit_create.hpp" />
 		<Unit filename="..\..\src\gui\dialogs\wml_message.cpp" />
@@ -449,6 +451,8 @@
 		<Unit filename="..\..\src\gui\widgets\integer_selector.hpp" />
 		<Unit filename="..\..\src\gui\widgets\label.cpp" />
 		<Unit filename="..\..\src\gui\widgets\label.hpp" />
+		<Unit filename="..\..\src\gui\widgets\list.cpp" />
+		<Unit filename="..\..\src\gui\widgets\list.hpp" />
 		<Unit filename="..\..\src\gui\widgets\listbox.cpp" />
 		<Unit filename="..\..\src\gui\widgets\listbox.hpp" />
 		<Unit filename="..\..\src\gui\widgets\minimap.cpp" />
@@ -581,6 +585,10 @@
 		<Unit filename="..\..\src\pathfind\pathfind.hpp" />
 		<Unit filename="..\..\src\pathutils.cpp" />
 		<Unit filename="..\..\src\pathutils.hpp" />
+		<Unit filename="..\..\src\persist_context.cpp" />
+		<Unit filename="..\..\src\persist_context.hpp" />
+		<Unit filename="..\..\src\persist_var.cpp" />
+		<Unit filename="..\..\src\persist_var.hpp" />
 		<Unit filename="..\..\src\play_controller.cpp" />
 		<Unit filename="..\..\src\play_controller.hpp" />
 		<Unit filename="..\..\src\playcampaign.cpp" />
@@ -595,6 +603,8 @@
 			<Option compilerVar="CC" />
 			<Option compiler="gcc" use="1" buildCommand="$compiler $options -DDISABLE_POOL_ALLOC $includes -c $file -o $object" />
 		</Unit>
+		<Unit filename="..\..\src\portrait.cpp" />
+		<Unit filename="..\..\src\portrait.hpp" />
 		<Unit filename="..\..\src\preferences.cpp" />
 		<Unit filename="..\..\src\preferences.hpp" />
 		<Unit filename="..\..\src\preferences_display.cpp" />
@@ -621,7 +631,7 @@
 		<Unit filename="..\..\src\scoped_resource.hpp" />
 		<Unit filename="..\..\src\scripting\lua.cpp" />
 		<Unit filename="..\..\src\scripting\lua.hpp" />
-		<Unit filename="..\..\src\scripting\lua_core.hpp" />
+		<Unit filename="..\..\src\scripting\lua_api.hpp" />
 		<Unit filename="..\..\src\sdl_utils.cpp" />
 		<Unit filename="..\..\src\sdl_utils.hpp" />
 		<Unit filename="..\..\src\serialization\binary_or_text.cpp" />
@@ -636,8 +646,8 @@
 		<Unit filename="..\..\src\serialization\string_utils.hpp" />
 		<Unit filename="..\..\src\serialization\tokenizer.cpp" />
 		<Unit filename="..\..\src\settings.cpp" />
-		<Unit filename="..\..\src\gui\dialogs\..\..\settings.hpp" />
 		<Unit filename="..\..\src\settings.hpp" />
+		<Unit filename="..\..\src\gui\dialogs\..\..\settings.hpp" />
 		<Unit filename="..\..\src\sha1.cpp" />
 		<Unit filename="..\..\src\sha1.hpp" />
 		<Unit filename="..\..\src\shared_object.hpp" />
