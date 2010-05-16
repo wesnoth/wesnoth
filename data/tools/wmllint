@@ -122,6 +122,22 @@ import sys, os, re, getopt, string, copy, difflib, time, gzip
 from wesnoth.wmltools import *
 from wesnoth.wmliterator import *
 
+# Changes meant to be done on maps and .cfg lines.
+mapchanges = (
+        ("Ha^Voa", "Ha^Voha"),
+        ("Hh^Vo,",  "Hh^Voh,"),
+        ("Hh^Vo\r",  "Hh^Voh\r"),
+        ("Hh^Vo\n",  "Hh^Voh\n"),
+        ("Mm^Vhh", "Mm^Vhm"),
+        ("Hh^Vc,",  "Hh^Vch,"),
+        ("Hh^Vc\r",  "Hh^Vch\r"),
+        ("Hh^Vc\n",  "Hh^Vch\n"),
+        ("Ha^Vca", "Ha^Vcha"),
+        ("Mm^Vc,",  "Mm^Vcm,"),
+        ("Mm^Vc\r",  "Mm^Vcm\r"),
+        ("Mm^Vc\n",  "Mm^Vcm\n"),
+        )
+
 # Global changes meant to be done on all lines.  Suppressed by noconvert.
 linechanges = (
         ("canrecruit=1", "canrecruit=yes"),
@@ -490,18 +506,6 @@ linechanges = (
         ("flat/grass-r3", "flat/grass3"),
         ("flat/grass-r2", "flat/grass2"),
         ("flat/grass-r1", "flat/grass1"),
-        ("Ha^Voa", "Ha^Voha"),
-        ("Hh^Vo,",  "Hh^Voh,"),
-        ("Hh^Vo\r",  "Hh^Voh\r"),
-        ("Hh^Vo\n",  "Hh^Voh\n"),
-        ("Mm^Vhh", "Mm^Vhm"),
-        ("Hh^Vc,",  "Hh^Vch,"),
-        ("Hh^Vc\r",  "Hh^Vch\r"),
-        ("Hh^Vc\n",  "Hh^Vch\n"),
-        ("Ha^Vca", "Ha^Vcha"),
-        ("Mm^Vc,",  "Mm^Vcm,"),
-        ("Mm^Vc\r",  "Mm^Vcm\r"),
-        ("Mm^Vc\n",  "Mm^Vcm\n"),
         )
 
 def validate_on_pop(tagstack, closer, filename, lineno):
@@ -1537,6 +1541,12 @@ def hack_syntax(filename, lines):
     # More syntax transformations would go here.
     return lines
 
+def maptransform(filename, baseline, inmap, y):
+    # Transform lines in maps
+    for i in range(len(inmap[y])):
+        for (old, new) in mapchanges:
+            inmap[y][i] = inmap[y][i].replace(old, new)
+
 # Generic machinery starts here
 
 def is_map(filename):
@@ -2138,7 +2148,7 @@ if __name__ == '__main__':
         original = line
         # Perform line changes
         if "wmllint: noconvert" not in original:
-            for (old, new) in linechanges:
+            for (old, new) in linechanges + mapchanges:
                 line = line.replace(old, new)
         # Perform tag renaming for 1.5.  Note: this has to happen before
         # the sanity check, which assumes [unit] has already been
@@ -2229,7 +2239,7 @@ if __name__ == '__main__':
                         continue
                     # Do file conversions
                     try:
-                        changed = translator(fn, [], texttransform)
+                        changed = translator(fn, [maptransform], texttransform)
                         if changed:
                             print "wmllint: converting", fn
                             if not dryrun:
