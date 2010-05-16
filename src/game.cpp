@@ -1957,7 +1957,7 @@ static int process_command_args(int argc, char** argv) {
 				size_t pos=std::string::npos;
 				if (val.find("--preprocess=") == 0)
 					pos = val.find("=");
-				else if (val.find("--p=") == 0)
+				else if (val.find("-p=") == 0)
 					pos = val.find("=");
 
 				// we have some defines specified
