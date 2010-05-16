@@ -83,6 +83,14 @@ stringfixes = {
 ("About to upload statistics - Help us make Wesnoth better for you!", "About to upload statistics — Help us make Wesnoth better for you!"),
 #the following rule applies to wesnoth/*.po* and to wesnoth-manual/*.po*
 ("victory objectives - getting", "victory objectives — getting"),
+
+# Italicize instances of "Battle for Wesnoth" that refer to the game
+("Battle for Wesnoth is a turn-based", "<italic>text='Battle for Wesnoth'</italic> is a turn-based"),
+("need to know to play Battle for Wesnoth", "need to know to play <italic>text='Battle for Wesnoth'</italic>"),
+("As Battle for Wesnoth can be quite", "As <italic>text='Battle for Wesnoth'</italic> can be quite"),
+("Movement in Battle for Wesnoth is simple", "Movement in <italic>text='Battle for Wesnoth'</italic> is simple"),
+("Combat in Battle for Wesnoth always", "Combat in <italic>text='Battle for Wesnoth'</italic> always"),
+("Battle for Wesnoth automatically", "<italic>text='Battle for Wesnoth'</italic> automatically"),
 ),
 
 "wesnoth-anl" : (
