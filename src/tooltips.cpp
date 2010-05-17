@@ -67,7 +67,7 @@ static void show_tooltip(const tooltip& tip)
 
 	clear_tooltip();
 
-	const SDL_Color bgcolour = {0,0,0,128};
+	const SDL_Color bgcolour = {0,0,0,160};
 	SDL_Rect area = screen_area();
 
 #ifdef USE_TINY_GUI
