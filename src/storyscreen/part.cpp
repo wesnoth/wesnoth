@@ -187,8 +187,10 @@ void part::resolve_wml(const vconfig &cfg)
 			const std::string branch_label =
 				game_events::conditional_passed(NULL, node) ?
 				"then" : "else";
-			const vconfig branch = node.child(branch_label);
-			resolve_wml(branch);
+			if(node.has_child(branch_label)) {
+				const vconfig branch = node.child(branch_label);
+				resolve_wml(branch);
+			}
 		}
 		// [switch]
 		else if(key == "switch") {
