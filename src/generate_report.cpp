@@ -274,10 +274,31 @@ report generate_report(TYPE type,
 		SDL_Color color = int_to_color(game_config::red_to_green(def));
 		str << span_color(color) << def << "%</span>";
 
+
 		tooltip << _("Terrain: ")
-			<< "<b>" << map.get_terrain_info(terrain).description() << "</b>\n"
-			<< _("Chance to be hit: ")
-			<< "<b>" << span_color(color)  << def << "%</span></b>";
+			<< "<b>" << map.get_terrain_info(terrain).description() << "</b>\n";
+
+		const t_translation::t_list& underlyings = map.underlying_def_terrain(terrain);
+		std::vector<int> t_defs;
+		bool revert = false;
+		if(underlyings.size() != 1 || underlyings.front() != terrain) {
+			foreach(const t_translation::t_terrain& t, underlyings) {
+				if(t == t_translation::MINUS) {
+					revert = true;
+				} else if(t == t_translation::PLUS) {
+					revert = false;
+				} else {
+					int t_def = 100 - u->defense_modifier(t);
+					SDL_Color color = int_to_color(game_config::red_to_green(t_def));
+					tooltip << "\t" << map.get_terrain_info(t).description() << ": "
+						<< span_color(color) << t_def << "%</span> "
+						<< (revert ? _("maximum^max.") : _("minimum^min.")) << "\n";
+				}
+			}
+		}
+
+		tooltip << "<b>" << _("Chance to be hit: ")
+			 << span_color(color)  << def << "%</span></b>";
 
 		return report(str.str(), "", tooltip.str());
 	}
