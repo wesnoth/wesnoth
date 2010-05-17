@@ -2268,8 +2268,9 @@ void display::refresh_report(reports::TYPE report_num, reports::report report)
 			} else {
 				// Collect all tooltips for the ellipsis.
 				// TODO: need a better separator
-				ellipsis_tooltip << e->tooltip
-					<< "\n  _________\n\n";
+				ellipsis_tooltip << e->tooltip;
+				if(e+1 != report.end())
+					ellipsis_tooltip << "\n  _________\n\n";
 			}
 		}
 	}
