@@ -55,8 +55,6 @@ public:
 
 	void clear(const std::string&);
 
-	void scroll(double xmove, double ymove);
-
 	void recalculate_labels();
 	bool visible_global_label(const map_location&) const;
 
@@ -112,8 +110,6 @@ public:
 	void update_info(const std::string&,
 					 const std::string&,
 					 const SDL_Color);
-
-	void scroll(double xmove, double ymove) const;
 
 	void recalculate();
 	void calculate_shroud() const;

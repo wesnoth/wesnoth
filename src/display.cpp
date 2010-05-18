@@ -1419,7 +1419,6 @@ bool display::scroll(int xmove, int ymove)
 	if(dx == 0 && dy == 0)
 		return false;
 
-	labels().scroll(dx, dy);
 	font::scroll_floating_labels(dx, dy);
 
 	surface screen(screen_.getSurface());

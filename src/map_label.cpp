@@ -234,17 +234,6 @@ void map_labels::clear_all()
 	labels_.clear();
 }
 
-void map_labels::scroll(double xmove, double ymove)
-{
-	for(team_label_map::const_iterator i = labels_.begin(); i != labels_.end(); ++i)
-	{
-		for (label_map::const_iterator j = i->second.begin(); j != i->second.end(); ++j)
-		{
-			j->second->scroll(xmove, ymove);
-		}
-	}
-}
-
 void map_labels::recalculate_labels()
 {
 	foreach (team_label_map::value_type &m, labels_)
@@ -417,17 +406,6 @@ void terrain_label::update_info(const std::string& text,
 	draw();
 }
 
-void terrain_label::scroll(const double xmove,
-						   const double ymove) const
-{
-	if(handle_)
-	{
-		font::move_floating_label(handle_,
-								  xmove,
-								  ymove);
-	}
-}
-
 void terrain_label::recalculate()
 {
 	draw();
@@ -473,7 +451,7 @@ void terrain_label::draw()
 										   parent_->disp().map_outside_area(),
 										   font::CENTER_ALIGN,
 										   NULL, 0,
-										   font::ANCHOR_LABEL_SCREEN,
+										   font::ANCHOR_LABEL_MAP,
 										   use_markup
 										   );
 
