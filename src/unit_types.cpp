@@ -189,8 +189,9 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 		cfg_["damage"] = lexical_cast_default<std::string>(damage_);
 
 		if(description != NULL) {
-			desc << (increase_damage[0] == '-' ? "" : "+") << increase_damage
-				<< " " << _n("damage","damage",lexical_cast<int>(increase_damage));
+			int inc_damage = lexical_cast<int>(increase_damage);
+			desc << utils::signed_value(inc_damage) << " "
+				 << _n("damage","damage", inc_damage);
 		}
 	}
 
@@ -199,8 +200,9 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 		cfg_["number"] = lexical_cast_default<std::string>(num_attacks_);
 
 		if(description != NULL) {
-			desc << (increase_attacks[0] == '-' ? "" : "+") << increase_attacks
-				<< " " << _n("strike","strikes",lexical_cast<int>(increase_attacks));
+			int inc_attacks = lexical_cast<int>(increase_attacks);
+			desc << utils::signed_value(inc_attacks) << " "
+				 << _n("strike", "strikes", inc_attacks);
 		}
 	}
 
@@ -209,9 +211,10 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 		cfg_["accuracy"] = lexical_cast_default<std::string>(accuracy_);
 
 		if(description != NULL) {
+			int inc_acc = lexical_cast<int>(increase_accuracy);
 			// Help xgettext with a directive to recognise the string as a non C printf-like string
 			// xgettext:no-c-format
-			desc << (increase_accuracy[0] == '-' ? "" : "+") << increase_accuracy << _("% accuracy");
+			desc << utils::signed_value(inc_acc) << _("% accuracy");
 		}
 	}
 
@@ -220,8 +223,9 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 		cfg_["parry"] = lexical_cast_default<std::string>(parry_);
 
 		if(description != NULL) {
+			int inc_parry = lexical_cast<int>(increase_parry);
 			// xgettext:no-c-format
-			desc << (increase_parry[0] == '-' ? "" : "+") << increase_parry << _("% parry");
+			desc << utils::signed_value(inc_parry) << _("% parry");
 		}
 	}
 
@@ -255,15 +259,17 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 
 	if(increase_damage.empty() == false) {
 		if(description != NULL) {
-			desc << (increase_damage[0] == '-' ? "" : "+") << increase_damage
-				<< " " << _n("damage","damage",lexical_cast<int>(increase_damage));
+			int inc_damage = lexical_cast<int>(increase_damage);
+			desc << utils::signed_value(inc_damage) << " "
+				 << _n("damage","damage", inc_damage);
 		}
 	}
 
 	if(increase_attacks.empty() == false) {
 		if(description != NULL) {
-			desc << (increase_attacks[0] == '-' ? "" : "+") << increase_attacks
-				<< " " << _n("strike","strikes",lexical_cast<int>(increase_attacks));
+			int inc_attacks = lexical_cast<int>(increase_attacks);
+			desc << utils::signed_value(inc_attacks) << " "
+				 << _n("strike", "strikes", inc_attacks);
 		}
 	}
 
