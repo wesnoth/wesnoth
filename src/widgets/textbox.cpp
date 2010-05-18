@@ -176,7 +176,7 @@ void textbox::draw_contents()
 
 				SDL_Rect rect = { loc.x + startx, loc.y + starty - src.y, right - startx, line_height_ };
 
-				const clip_rect_setter clipper(surf, loc);
+				const clip_rect_setter clipper(surf, &loc);
 
 				Uint32 colour = SDL_MapRGB(surf->format, 0, 0, 160);
 				fill_rect_alpha(rect, colour, 140, surf);

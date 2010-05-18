@@ -1819,7 +1819,7 @@ void draw_solid_tinted_rectangle(int x, int y, int w, int h,
 
 void draw_centered_on_background(surface surf, const SDL_Rect& rect, const SDL_Color& color, surface target)
 {
-	clip_rect_setter clip_setter(target, rect);
+	clip_rect_setter clip_setter(target, &rect);
 
 	Uint32 col = SDL_MapRGBA(target->format, color.r, color.g, color.b, color.unused);
 	//TODO: only draw background outside the image

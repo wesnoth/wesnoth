@@ -254,7 +254,7 @@ void twidget::draw_background(surface& frame_buffer)
 	assert(visible_ == VISIBLE);
 
 	if(drawing_action_ == PARTLY_DRAWN) {
-		clip_rect_setter clip(frame_buffer, clip_rect_);
+		clip_rect_setter clip(frame_buffer, &clip_rect_);
 		draw_debug_border(frame_buffer);
 		impl_draw_background(frame_buffer);
 	} else {
@@ -268,7 +268,7 @@ void twidget::draw_children(surface& frame_buffer)
 	assert(visible_ == VISIBLE);
 
 	if(drawing_action_ == PARTLY_DRAWN) {
-		clip_rect_setter clip(frame_buffer, clip_rect_);
+		clip_rect_setter clip(frame_buffer, &clip_rect_);
 		impl_draw_children(frame_buffer);
 	} else {
 		impl_draw_children(frame_buffer);
@@ -280,7 +280,7 @@ void twidget::draw_foreground(surface& frame_buffer)
 	assert(visible_ == VISIBLE);
 
 	if(drawing_action_ == PARTLY_DRAWN) {
-		clip_rect_setter clip(frame_buffer, clip_rect_);
+		clip_rect_setter clip(frame_buffer, &clip_rect_);
 		impl_draw_foreground(frame_buffer);
 	} else {
 		impl_draw_foreground(frame_buffer);

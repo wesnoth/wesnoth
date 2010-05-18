@@ -306,7 +306,7 @@ void show_about(display &disp, const std::string &campaign)
 
 		{
 		// clip to keep text into the frame (thus the new code block)
-		clip_rect_setter set_clip_rect(screen, text_rect);
+		clip_rect_setter set_clip_rect(screen, &text_rect);
 			do {
 				// draw the text (with ellipsis if needed)
 				// update the max_text_width for future cleaning

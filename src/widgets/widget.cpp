@@ -251,9 +251,7 @@ void widget::bg_update()
 
 void widget::bg_restore() const
 {
-	util::scoped_ptr<clip_rect_setter> clipper(NULL);
-	if (clip_)
-		clipper.assign(new clip_rect_setter(video().getSurface(), clip_rect_));
+	clip_rect_setter clipper(video().getSurface(), &clip_rect_, clip_);
 
 	if (needs_restore_) {
 		for(std::vector< surface_restorer >::const_iterator i = restorer_.begin(),
@@ -269,9 +267,7 @@ void widget::bg_restore() const
 
 void widget::bg_restore(SDL_Rect const &rect) const
 {
-	util::scoped_ptr<clip_rect_setter> clipper(NULL);
-	if (clip_)
-		clipper.assign(new clip_rect_setter(video().getSurface(), clip_rect_));
+	clip_rect_setter clipper(video().getSurface(), &clip_rect_, clip_);
 
 	for(std::vector< surface_restorer >::const_iterator i = restorer_.begin(),
 	    i_end = restorer_.end(); i != i_end; ++i)
@@ -292,9 +288,7 @@ void widget::draw()
 
 	bg_restore();
 
-	util::scoped_ptr<clip_rect_setter> clipper(NULL);
-	if (clip_)
-		clipper.assign(new clip_rect_setter(video().getSurface(), clip_rect_));
+	clip_rect_setter clipper(video().getSurface(), &clip_rect_, clip_);
 
 	draw_contents();
 

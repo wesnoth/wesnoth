@@ -707,8 +707,8 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 void display::drawing_buffer_commit()
 {
 	SDL_Rect clip_rect = map_area();
-	surface const dst(get_screen_surface());
-	clip_rect_setter set_clip_rect(dst, clip_rect);
+	const surface screen = get_screen_surface();
+	clip_rect_setter set_clip_rect(screen, &clip_rect);
 
 	/*
 	 * Info regarding the rendering algorithm.
@@ -800,10 +800,10 @@ void display::drawing_buffer_commit()
 
 								SDL_Rect srcrect = blit_itor->clip;
 								SDL_BlitSurface(*surface_itor,
-										&srcrect, dst, &dstrect);
+										&srcrect, screen, &dstrect);
 							} else {
 								SDL_BlitSurface(*surface_itor,
-										NULL, dst, &dstrect);
+										NULL, screen, &dstrect);
 							}
 						}
 						update_rect(blit_itor->x, blit_itor->y, zoom_, zoom_);
@@ -1181,7 +1181,7 @@ bool display::draw_init()
 		// Full redraw of the background
 		const SDL_Rect clip_rect = map_outside_area();
 		const surface screen = get_screen_surface();
-		clip_rect_setter set_clip_rect(screen, clip_rect);
+		clip_rect_setter set_clip_rect(screen, &clip_rect);
 		draw_background(screen, clip_rect, theme_.border().background_image);
 		update_rect(clip_rect);
 
@@ -1366,7 +1366,7 @@ void display::draw_minimap()
 	}
 
 	const surface screen(screen_.getSurface());
-	clip_rect_setter clip_setter(screen, area);
+	clip_rect_setter clip_setter(screen, &area);
 
 	SDL_Color back_color = {31,31,23,255};
 	draw_centered_on_background(minimap_, area, back_color, screen);
@@ -1945,7 +1945,7 @@ void display::draw_invalidated() {
 //	log_scope("display::draw_invalidated");
 	SDL_Rect clip_rect = get_clip_rect();
 	surface screen = get_screen_surface();
-	clip_rect_setter set_clip_rect(screen, clip_rect);
+	clip_rect_setter set_clip_rect(screen, &clip_rect);
 	foreach (map_location loc, invalidated_) {
 		int xpos = get_location_x(loc);
 		int ypos = get_location_y(loc);

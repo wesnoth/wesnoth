@@ -71,8 +71,7 @@ void wait::leader_preview_pane::draw_contents()
 	SDL_Rect const &loc = location();
 	const SDL_Rect area = { loc.x + leader_pane_border, loc.y + leader_pane_border,
 	                        loc.w - leader_pane_border * 2, loc.h - leader_pane_border * 2 };
-	SDL_Rect clip_area = area;
-	const clip_rect_setter clipper(screen,clip_area);
+	const clip_rect_setter clipper(screen, &area);
 
 	if(selection_ < side_list_.size()) {
 		const config& side = *side_list_[selection_];

@@ -193,7 +193,7 @@ bool effect::render()
 
 	surface const screen = disp->get_screen_surface();
 
-	const clip_rect_setter clip_setter(screen,clip_rect);
+	const clip_rect_setter clip_setter(screen, &clip_rect);
 	if(buffer_ == NULL || buffer_->w != rect.w || buffer_->h != rect.h) {
 		SDL_Rect rect = rect_;
 		buffer_.assign(get_surface_portion(screen,rect));
@@ -218,7 +218,7 @@ void effect::unrender()
 	surface const screen = disp->get_screen_surface();
 
 	SDL_Rect clip_rect = disp->map_outside_area();
-	const clip_rect_setter clip_setter(screen,clip_rect);
+	const clip_rect_setter clip_setter(screen, &clip_rect);
 
 	// Due to scrolling, the location of the rendered halo
 	// might have changed; recalculate

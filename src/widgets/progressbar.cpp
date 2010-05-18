@@ -89,7 +89,7 @@ void progress_bar::draw_contents()
 		selected_text_location.w = inner_area.w;
 		selected_text_location.h = inner_area.h;
 		{
-			clip_rect_setter clippy(surf, selected_text_location);
+			clip_rect_setter clippy(surf, &selected_text_location);
 			font::draw_text(
 				&video(),
 				selected_text_location,

@@ -1018,9 +1018,7 @@ void menu::draw()
 
 	bg_restore();
 
-	util::scoped_ptr<clip_rect_setter> clipper(NULL);
-	if(clip_rect())
-		clipper.assign(new clip_rect_setter(video().getSurface(), *clip_rect()));
+	clip_rect_setter(video().getSurface(), clip_rect(), clip_rect() != NULL);
 
 	draw_contents();
 

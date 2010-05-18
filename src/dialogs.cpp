@@ -352,8 +352,7 @@ void save_preview_pane::draw_contents()
 	SDL_Rect const &loc = location();
 	const SDL_Rect area = { loc.x + save_preview_border, loc.y + save_preview_border,
 	                        loc.w - save_preview_border * 2, loc.h - save_preview_border * 2 };
-	SDL_Rect clip_area = area;
-	const clip_rect_setter clipper(screen,clip_area);
+	const clip_rect_setter clipper(screen, &area);
 
 	int ypos = area.y;
 
@@ -725,8 +724,7 @@ void unit_preview_pane::draw_contents()
 	SDL_Rect const &loc = location();
 	const SDL_Rect area = { loc.x + unit_preview_border, loc.y + unit_preview_border,
 	                        loc.w - unit_preview_border * 2, loc.h - unit_preview_border * 2 };
-	SDL_Rect clip_area = area;
-	const clip_rect_setter clipper(screen,clip_area);
+	const clip_rect_setter clipper(screen, &area);
 
 	surface unit_image = det.image;
 	if (!left_)

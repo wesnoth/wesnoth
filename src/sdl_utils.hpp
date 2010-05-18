@@ -342,17 +342,24 @@ private:
 
 struct clip_rect_setter
 {
-	clip_rect_setter(const surface &surf, const SDL_Rect& r) : surface_(surf), rect()
+	// if r is NULL, clip to the full size of the surface.
+	clip_rect_setter(const surface &surf, const SDL_Rect* r, bool operate = true) : surface_(surf), rect_(), operate_(operate)
 	{
-		SDL_GetClipRect(surface_,&rect);
-		SDL_SetClipRect(surface_,&r);
+		if(operate_){
+			SDL_GetClipRect(surface_, &rect_);
+			SDL_SetClipRect(surface_, r);
+		}
 	}
 
-	~clip_rect_setter() { SDL_SetClipRect(surface_,&rect); }
+	~clip_rect_setter() {
+		if (operate_)
+			SDL_SetClipRect(surface_, &rect_);
+	}
 
 private:
 	surface surface_;
-	SDL_Rect rect;
+	SDL_Rect rect_;
+	const bool operate_;
 };
 
 

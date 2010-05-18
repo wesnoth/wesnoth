@@ -1078,7 +1078,7 @@ void floating_label::draw(surface screen)
 	}
 
 	SDL_Rect rect = {xpos(surf_->w),int(ypos_),surf_->w,surf_->h};
-	const clip_rect_setter clip_setter(screen,clip_rect_);
+	const clip_rect_setter clip_setter(screen, &clip_rect_);
 	SDL_BlitSurface(screen,&rect,buf_,NULL);
 	SDL_BlitSurface(surf_,NULL,screen,&rect);
 
@@ -1092,7 +1092,7 @@ void floating_label::undraw(surface screen)
 	}
 
 	SDL_Rect rect = {xpos(surf_->w),int(ypos_),surf_->w,surf_->h};
-	const clip_rect_setter clip_setter(screen,clip_rect_);
+	const clip_rect_setter clip_setter(screen, &clip_rect_);
 	SDL_BlitSurface(buf_,NULL,screen,&rect);
 
 	update_rect(rect);
