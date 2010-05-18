@@ -483,7 +483,7 @@ linechanges = (
         (".stoned", ".petrified"),
         ("stoned=", "petrified="),
         # Changed at rev 37390
-        ("swing=", "second_value="),
+        ("swing=", "value_second="),
         # Changed just before 1.7.3
         ("Drake Gladiator", "Drake Thrasher"),
         ("gladiator-", "thrasher-"),
@@ -506,6 +506,7 @@ linechanges = (
         ("flat/grass-r3", "flat/grass3"),
         ("flat/grass-r2", "flat/grass2"),
         ("flat/grass-r1", "flat/grass1"),
+        ("second_value=", "value_second="),	# Correct earlier wmllint error
         )
 
 def validate_on_pop(tagstack, closer, filename, lineno):
