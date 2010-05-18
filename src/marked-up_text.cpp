@@ -402,7 +402,7 @@ inline bool break_after(const wchar_t ch)
 } // end of anon namespace
 
 std::string word_wrap_text(const std::string& unwrapped_text, int font_size,
-	int max_width, int max_height, int max_lines, bool partial_line, int style)
+	int max_width, int max_height, int max_lines, bool partial_line)
 {
 	VALIDATE(max_width > 0, _("The maximum text width is less than 1."));
 
@@ -418,8 +418,7 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size,
 	std::string format_string;
 	SDL_Color color;
 	int font_sz = font_size;
-	if(style == 0)
-		style = TTF_STYLE_NORMAL;
+	int style = TTF_STYLE_NORMAL;
 	utils::utf8_iterator end = utils::utf8_iterator::end(unwrapped_text);
 
 	while(1) {

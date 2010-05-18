@@ -273,9 +273,6 @@ struct font_style_setter
 {
 	font_style_setter(TTF_Font* font, int style) : font_(font), old_style_(0)
 	{
-		//Don't use TTF_Font with pango (useless)
-		assert((style & font::PANGO_STYLE) == 0);
-
 		if(style == 0) {
 			style = TTF_STYLE_NORMAL;
 		}
@@ -584,36 +581,25 @@ void text_surface::measure() const
 	w_ = 0;
 	h_ = 0;
 
-	if(style_ & PANGO_STYLE){
-		//NOTE: we can't use TTF_SizeUTF8 to guess size without rendering
-		//so, we render the surfaces now
-		const std::vector<surface>& surfs = get_surfaces();
-		foreach (surface const &s, surfs){
-			w_ += s->w;
-			h_ = std::max<int>(h_, s->h);
-		}
-	} else {
-		if(chunks_.empty())
-			chunks_ = split_text(str_);
+	foreach (text_chunk const &chunk, chunks_)
+	{
+		TTF_Font* ttfont = get_font(font_id(chunk.subset, font_size_));
+		if(ttfont == NULL)
+			continue;
+		font_style_setter const style_setter(ttfont, style_);
 
-		foreach (text_chunk const &chunk, chunks_)
-		{
-			TTF_Font* ttfont = get_font(font_id(chunk.subset, font_size_));
-			if(ttfont == NULL)
-				continue;
-			font_style_setter const style_setter(ttfont, style_);
-
-			int w, h;
-			TTF_SizeUTF8(ttfont, chunk.text.c_str(), &w, &h);
-			w_ += w;
-			h_ = std::max<int>(h_, h);
-		}
+		int w, h;
+		TTF_SizeUTF8(ttfont, chunk.text.c_str(), &w, &h);
+		w_ += w;
+		h_ = std::max<int>(h_, h);
 	}
 }
 
 size_t text_surface::width() const
 {
 	if (w_ == -1) {
+		if(chunks_.empty())
+			chunks_ = split_text(str_);
 		measure();
 	}
 	return w_;
@@ -622,6 +608,8 @@ size_t text_surface::width() const
 size_t text_surface::height() const
 {
 	if (h_ == -1) {
+		if(chunks_.empty())
+			chunks_ = split_text(str_);
 		measure();
 	}
 	return h_;
@@ -634,44 +622,19 @@ std::vector<surface> const &text_surface::get_surfaces() const
 
 	initialized_ = true;
 
-	if (style_ & PANGO_STYLE) {
-		//TODO we should somehow control max width before rendering
-		//but can't call width() because it will call us
-	} else{
-		// Impose a maximal number of characters for a text line. Do now draw
-		// any text longer that that, to prevent a SDL buffer overflow
-		if(width() > max_text_line_width)
-			return surfs_;
-	}
-
-	if(chunks_.empty())
-		chunks_ = split_text(str_);
+	// Impose a maximal number of characters for a text line. Do now draw
+	// any text longer that that, to prevent a SDL buffer overflow
+	if(width() > max_text_line_width)
+		return surfs_;
 
 	foreach (text_chunk const &chunk, chunks_)
 	{
-		surface s;
-		if (style_ & PANGO_STYLE) {
-			ttext tt;
-			tt.set_font_size(font_size_);
-			tt.set_foreground_colour((color_.r << 24) | (color_.g << 16) | (color_.b << 8) | 255);
-			tt.set_font_style(style_ & (ttext::STYLE_BOLD | ttext::STYLE_ITALIC));
-			//TODO simplify this when ttext will understand underline
-			if (style_ & TTF_STYLE_UNDERLINE) {
-				tt.set_text("<u>" + chunk.text +"</u>", true);
-			} else {
-				tt.set_text(chunk.text, true);
-			}
+		TTF_Font* ttfont = get_font(font_id(chunk.subset, font_size_));
+		if (ttfont == NULL)
+			continue;
+		font_style_setter const style_setter(ttfont, style_);
 
-			// need to copy the surface before that ~ttext() frees it
-			s = make_neutral_surface(tt.render());
-		} else {
-			TTF_Font* ttfont = get_font(font_id(chunk.subset, font_size_));
-			if (ttfont == NULL)
-				continue;
-			font_style_setter const style_setter(ttfont, style_);
-
-			s = surface(TTF_RenderUTF8_Blended(ttfont, chunk.text.c_str(), color_));
-		}
+		surface s = surface(TTF_RenderUTF8_Blended(ttfont, chunk.text.c_str(), color_));
 		if(!s.null())
 			surfs_.push_back(s);
 	}
@@ -912,7 +875,6 @@ SDL_Rect line_size(const std::string& line, int font_size, int style)
 	return res;
 }
 
-//FIXME: Should allow to pass a style as parameter
 std::string make_text_ellipsis(const std::string &text, int font_size,
 		int max_width, bool with_tags, bool parse_for_style)
 {

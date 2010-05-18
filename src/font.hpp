@@ -85,8 +85,6 @@ const int
   ;
 #endif
 
-const int PANGO_STYLE = 0x10;
-
 // Returns a SDL surface containing the text rendered in a given colour.
 surface get_rendered_text(const std::string& text, int size, const SDL_Color& colour, int style=0);
 
