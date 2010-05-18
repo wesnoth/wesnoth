@@ -1,14 +1,15 @@
 # Chinese translations for Battle for Wesnoth package
-# sylecn <sylecn AT gmail.com>\n"
 # Copyright (C) 2006 Wesnoth development team.
 # Automatically generated, 2006.
+# sylecn <sylecn AT gmail.com>, 2009
+# CloudiDust <cloudidust@gmail.com>, 2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "POT-Creation-Date: 2010-03-26 15:41+0100\n"
-"PO-Revision-Date: 2009-12-16 00:20-0600\n"
-"Last-Translator: Yuanle Song <sylecn@gmail.com>\n"
+"PO-Revision-Date: 2010-05-16 10:58+0800\n"
+"Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -40,7 +41,7 @@ msgstr "wesnoth"
 #: ../../doc/man/wesnoth.6:16
 #, no-wrap
 msgid "Battle for Wesnoth"
-msgstr "韦诺之战"
+msgstr "Battle for Wesnoth"
 
 # type: SH
 #. type: SH
@@ -53,7 +54,7 @@ msgstr "命名"
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:20
 msgid "wesnoth - Battle for Wesnoth, a turn-based fantasy strategy game"
-msgstr "wesnoth - 韦诺之战，一个非常好的回合制策略游戏"
+msgstr "wesnoth - Battle for Wesnoth（韦诺之战），一个奇幻回合制策略游戏"
 
 # type: SH
 #. type: SH
@@ -66,7 +67,7 @@ msgstr "摘要"
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:26
 msgid "B<wesnoth> [I<OPTIONS>] [I<PATH_TO_DATA>]"
-msgstr "B<wesnoth> [I<OPTIONS>] [I<PATH_TO_DATA>]"
+msgstr "B<wesnoth> [I<选项>] [I<数据路径>]"
 
 # type: SH
 #. type: SH
@@ -79,7 +80,7 @@ msgstr "描述"
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:32
 msgid "Battle for B<Wesnoth> is a turn-based fantasy strategy game."
-msgstr "韦诺之战(B<Wesnoth>)是一个非常好的回合制策略游戏。"
+msgstr "Battle for B<Wesnoth>是一个奇幻回合制策略游戏。"
 
 # type: Plain text
 #. type: Plain text
@@ -94,11 +95,11 @@ msgid ""
 "Wesnoth's large community of on-line players. Create your own custom units, "
 "scenarios or campaigns, and share them with others."
 msgstr ""
-"用精心挑选的部队打败所有的敌人首领。管理好你的资源和村庄。 所有单位都有自己的"
-"优势和缺陷；要取得胜利，必须发挥出你的部队的优势，同时阻止你的对手这么做。 随"
-"着单位获得经验，他们会学会新的技能，变得更强大。 游戏特性：使用本地语言进行游"
-"戏。通过与电脑AI进行对抗提高自己的技能，当然也可以进入Wesnoth网上对战的大家"
-"庭。你还可以创建自己的单位，关卡和战役，并与所有wesnoth玩家分享。"
+"用精心挑选的部队打败所有的敌军领袖，管理好您的金币和村庄。所有单位都有自己的"
+"优势和缺陷：要取得胜利，必须发挥出您的部队的优势，同时阻止您的对手这么做。随"
+"着单位获得经验，他们会学会新的技能，变得更强大。使用您的语言进行游戏，通过与"
+"聪明的计算机对手对抗来测试自己的技能，当然也可以加入Wesnoth的在线玩家大社区。"
+"您还可以创建自己的单位，场景和战役，并与其他玩家分享。"
 
 # type: SH
 #. type: SH
@@ -118,7 +119,7 @@ msgstr "B<--bpp>I<\\ number>"
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:49
 msgid "sets BitsPerPixel value. Example: B<--bpp 32>"
-msgstr "设置每象素占多少位(BitsPerPixel)。例如：B<--bpp 32>"
+msgstr "设定每象素占多少位。例如：B<--bpp 32>"
 
 # type: TP
 #. type: TP
@@ -131,7 +132,7 @@ msgstr "B<-c, --campaign>"
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:52
 msgid "goes directly to the campaign selection menu."
-msgstr "直接进入战役选择菜单"
+msgstr "直接进入战役选择菜单。"
 
 # type: TP
 #. type: TP
@@ -146,7 +147,9 @@ msgstr "B<--config-dir>I<\\ name>"
 msgid ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
 "Documents\\eMy Games\" for windows."
-msgstr "设置用户数据目录为$HOME或者我的文档下的I<name>目录。"
+msgstr ""
+"设置用户配置目录为$HOME或者“我的文档\\我的游戏（My Documents\\My Games）”下的"
+"I<name>目录。"
 
 # type: TP
 #. type: TP
@@ -159,7 +162,7 @@ msgstr "B<--config-path>"
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:60
 msgid "prints the path of the user configuration directory and exits."
-msgstr "显示用户数据目录并退出"
+msgstr "输出用户配置目录的路径并退出。"
 
 # type: TP
 #. type: TP
@@ -175,8 +178,8 @@ msgid ""
 "enables additional command mode options in-game (see the wiki page at http://"
 "www.wesnoth.org/wiki/CommandMode for more information about command mode)."
 msgstr ""
-"在游戏中开启附加命令模式选项。关于命令模式(Command Mode)的更多信息请参阅"
-"wiki: http://www.wesnoth.org/wiki/CommandMode"
+"在游戏中启用附加的命令模式选项。（关于命令模式的更多信息请参阅wiki页面："
+"http://www.wesnoth.org/wiki/CommandMode）"
 
 # type: TP
 #. type: TP
@@ -191,7 +194,8 @@ msgstr "B<-e,\\ --editor>I<\\ file>"
 msgid ""
 "start the in-game map editor directly. If I<file> is specified, equivalent "
 "to B<-e --load>"
-msgstr "直接启动内置的地图编辑器。如果指定了I<file>，则和B<-e --load>等价。"
+msgstr ""
+"直接启动游戏内置的地图编辑器。如果指定了I<file>，则和B<-e --load>等价。"
 
 # type: TP
 #. type: TP
@@ -206,7 +210,7 @@ msgstr "B<--fps>"
 msgid ""
 "displays the number of frames per second the game is currently running at, "
 "in a corner of the screen."
-msgstr "在屏幕一角显示游戏fps(frames per second)"
+msgstr "在屏幕的一角显示游戏当前的每秒帧数（FPS）。"
 
 # type: TP
 #. type: TP
@@ -219,7 +223,7 @@ msgstr "B<-f, --fullscreen>"
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:77
 msgid "runs the game in full screen mode."
-msgstr "使用全屏模式进入游戏"
+msgstr "使用全屏模式运行游戏。"
 
 # type: TP
 #. type: TP
@@ -264,7 +268,7 @@ msgstr "B<-h, --help>"
 #: ../../doc/man/wesnoth.6:92
 msgid ""
 "displays a summary of command line options to standard output, and exits."
-msgstr "显示命令行可用选项，然后退出。"
+msgstr "在标准输出上显示命令行选项的概述，并退出。"
 
 # type: TP
 #. type: TP
@@ -282,9 +286,9 @@ msgid ""
 "from I<file> open. If it is a directory, the editor will start with a load "
 "map dialog opened there."
 msgstr ""
-"从默认游戏存档目录加载存档I<file>。如果与 B<-e> 或 B<--editor> 选项同时使用，"
-"启动地图编辑器并打开存档I<file>所对应的地图。如果是一个目录，则编辑器启动后自"
-"动在那里打开装载地图对话框。"
+"从默认游戏存档目录读取存档I<file>。如果与 B<-e> 或 B<--editor> 选项同时使用，"
+"启动地图编辑器并打开I<file>所对应的地图。如果是一个目录，则编辑器启动后自动打"
+"开读取地图对话框并定位到该目录。"
 
 # type: TP
 #. type: TP
@@ -301,8 +305,8 @@ msgid ""
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
 "B<debug>.  By default the B<error> level is used."
 msgstr ""
-"设置debug的级别。B<all>用来匹配任意级别。可选的级别有：B<error>,\\ "
-"B<warning>,\\ B<info>,\\ B<debug>. 默认的级别是B<error>。"
+"设置日志域的严重度级别。B<all>可以用来匹配任意日志域。可选的级别有："
+"B<error>，\\ B<warning>，\\ B<info>，\\ B<debug>。默认的级别是B<error>。"
 
 # type: TP
 #. type: TP
@@ -315,7 +319,7 @@ msgstr "B<--logdomains>"
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:116
 msgid "Dumps a list of all log domains and exits."
-msgstr "导出所有日志清单并退出"
+msgstr "导出所有日志域的清单并退出。"
 
 # type: TP
 #. type: TP
@@ -330,7 +334,7 @@ msgstr "B<--max-fps>"
 msgid ""
 "the number of frames per second the game can show, the value should be "
 "between the 1 and 1000, the default is B<50>."
-msgstr "游戏每秒能显示的帧数，可以设为1－1000的数，默认为B<50>。"
+msgstr "游戏每秒能显示的帧数，这个值应该在1和1000之间，默认为B<50>。"
 
 # type: TP
 #. type: TP
@@ -347,8 +351,8 @@ msgid ""
 "together with B<--multiplayer> as explained below. Only these additional "
 "options can follow B<--multiplayer>."
 msgstr ""
-"启动一个多人游戏。关于多人游戏下面有更多选项可以与B<--multiplayer>一起使用。"
-"只有这些选项可以跟在 B<--multiplayer>之后。"
+"启动一个多人游戏。有更多选项可以与B<--multiplayer>一起使用，详见下述。只有这"
+"些选项可以跟在 B<--multiplayer>之后。"
 
 # type: TP
 #. type: TP
@@ -364,7 +368,8 @@ msgid ""
 "runs the game without any delays for graphic benchmarking. This is "
 "automatically enabled by B<--nogui>."
 msgstr ""
-"不等待图形基准测试，直接启动游戏。使用 B<--nogui> 选项时会自动启用本选项。"
+"无任何延迟地运行游戏，以执行图形性能基准测试。使用 B<--nogui> 选项时会自动启"
+"用本选项。"
 
 # type: TP
 #. type: TP
@@ -377,7 +382,7 @@ msgstr "B<--nocache>"
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:135
 msgid "disables caching of game data."
-msgstr "禁止建立游戏数据的缓存"
+msgstr "禁止建立游戏数据的缓存。"
 
 # type: TP
 #. type: TP
@@ -390,7 +395,7 @@ msgstr "B<--nomusic>"
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:138
 msgid "runs the game without music."
-msgstr "启动游戏，并关闭音乐和音效"
+msgstr "以无音乐的方式启动游戏。"
 
 # type: TP
 #. type: TP
@@ -403,7 +408,7 @@ msgstr "B<--nosound>"
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:141
 msgid "runs the game without sounds and music."
-msgstr "以无音乐和音效的方式启动游戏"
+msgstr "以无音乐和音效的方式启动游戏。"
 
 # type: TP
 #. type: TP
@@ -416,7 +421,7 @@ msgstr "B<--path>"
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:144
 msgid "prints the name of the game data directory and exits."
-msgstr "显示游戏数据目录(data directory)并退出"
+msgstr "显示游戏数据目录的名称并退出。"
 
 # type: TP
 #. type: TP
@@ -429,7 +434,7 @@ msgstr "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:148
 msgid "sets the screen resolution. Example: B<-r 800x600>"
-msgstr "设置屏幕分辨率。例如：B<-r 800x600>"
+msgstr "设定屏幕分辨率。例如：B<-r 800x600>"
 
 # type: TP
 #. type: TP
@@ -444,7 +449,7 @@ msgstr "B<--smallgui>"
 msgid ""
 "allows to use screen resolutions down to 800x480 and resizes a few interface "
 "elements."
-msgstr "可以使用低至800x480的屏幕分辨率，自动调节一些界面元素的大小。"
+msgstr "可以使用低至800x480的屏幕分辨率，并自动调节一些界面元素的大小。"
 
 # type: TP
 #. type: TP
@@ -460,8 +465,8 @@ msgid ""
 "connects to the specified host if any, otherwise connect to the first server "
 "in preferences. Example: B<--server server.wesnoth.org>"
 msgstr ""
-"连接到指定的服务器。如果未指定，则连接到选项中第一个服务器。例如：B<--server "
-"server.wesnoth.org>"
+"如果指定了主机的话，连接到指定的主机。否则，连接到首选项中的第一个服务器。例"
+"如：B<--server server.wesnoth.org>"
 
 # type: TP
 #. type: TP
@@ -474,7 +479,7 @@ msgstr "B<-t, --test>"
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:158
 msgid "runs the game in a small test scenario."
-msgstr "使用一个小的测试场景启动游戏"
+msgstr "使用一个小测试场景启动游戏。"
 
 # type: TP
 #. type: TP
@@ -487,7 +492,7 @@ msgstr "B<--validcache>"
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:161
 msgid "assumes that the cache is valid. (dangerous)"
-msgstr "认为缓存是有效的。（危险）"
+msgstr "假定缓存是有效的。（因此不进行缓存验证，危险）"
 
 # type: TP
 #. type: TP
@@ -500,7 +505,7 @@ msgstr "B<-v, --version>"
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:164
 msgid "shows the version number and exits."
-msgstr "显示版本号并退出"
+msgstr "显示版本号并退出。"
 
 # type: TP
 #. type: TP
@@ -513,7 +518,7 @@ msgstr "B<-w, --windowed>"
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:167
 msgid "runs the game in windowed mode."
-msgstr "使用窗口模式进入游戏"
+msgstr "使用窗口模式进入游戏。"
 
 # type: TP
 #. type: TP
@@ -543,9 +548,8 @@ msgid ""
 "has to be replaced by a side number. It usually is 1 or 2 but depends on the "
 "number of players possible in the chosen scenario."
 msgstr ""
-"多人游戏里面选择一个阵营，可以使用标记I<number>。 I<number> 要用代表某个阵营"
-"的数字替换。一般是1 或者2。不过不同的场景可选的阵营数会有不同。具体的取决于你"
-"所玩的场景。"
+"多人游戏中特定于某一个阵营的选项用I<number>标记。I<number>要用代表某个阵营的"
+"数字替换。这个数字一般是1或者2，不过这取决于所选定场景中的玩家数量。"
 
 # type: TP
 #. type: TP
@@ -559,7 +563,7 @@ msgstr "B<--ai_config>I<number>B<=>I<value>"
 #: ../../doc/man/wesnoth.6:183
 msgid ""
 "selects a configuration file to load for the AI controller for this side."
-msgstr "为该方选择一个配置文件用来家在AI控制器"
+msgstr "为该阵营的AI控制者选择一个配置文件来读取。"
 
 # type: TP
 #. type: TP
@@ -574,7 +578,9 @@ msgstr "B<--algorithm>I<number>B<=>I<value>"
 msgid ""
 "selects a non-standard algorithm to be used by the AI controller for this "
 "side. Available values: B<idle_ai> and B<sample_ai>."
-msgstr "为这一阵营选择一个非标准的AI算法。可选值有：B<idle_ai>和B<sample_ai>."
+msgstr ""
+"为该阵营的AI控制者选择一个非标准的AI算法。可选值有：B<idle_ai>和"
+"B<sample_ai>。"
 
 # type: TP
 #. type: TP
@@ -588,7 +594,7 @@ msgstr "B<--controller>I<number>B<=>I<value>"
 #: ../../doc/man/wesnoth.6:196
 msgid ""
 "selects the controller for this side. Available values: B<human> and B<ai>."
-msgstr "选择这一阵营的控制者。可选值有：B<human>和B<ai>。"
+msgstr "选择该阵营的控制者。可选值有：B<human>和B<ai>。"
 
 # type: TP
 #. type: TP
@@ -605,8 +611,8 @@ msgid ""
 "The era is chosen by an id. Eras are described in the B<data/multiplayer/"
 "eras.cfg> file."
 msgstr ""
-"使用这个选项选择一个时代(era)来代替B<默认>时代。所选时代由id确定。关于时代描"
-"述请参考B<data/multiplayer/eras.cfg>文件。"
+"使用这个选项来选择一个时代以代替B<默认>时代。所选时代由id确定。时代信息在"
+"B<data/multiplayer/eras.cfg>文件中描述。"
 
 # type: TP
 #. type: TP
@@ -623,8 +629,8 @@ msgid ""
 "which requires the user to click OK.  This is also used for scriptable "
 "benchmarking."
 msgstr ""
-"当场景结束时直接退出而不显示胜利/失败对话框。这个选项也可以用来进行脚本基准测"
-"试。"
+"当场景结束时直接退出游戏而不显示需要用户点击“确认”按钮的胜利/失败对话框。这个"
+"选项也可以用来进行脚本化的性能基准测试。"
 
 # type: TP
 #. type: TP
@@ -640,8 +646,8 @@ msgid ""
 "runs the game without the GUI. Must appear before B<--multiplayer> to have "
 "the desired effect."
 msgstr ""
-"启动游戏，但不启用图形用户界面(GUI)。此选项必须在B<--multiplayer>之前使用才有"
-"效。"
+"启动游戏，但不启用图形用户界面（GUI）。此选项必须在B<--multiplayer>之前使用才"
+"有效。"
 
 # type: TP
 #. type: TP
@@ -658,8 +664,8 @@ msgid ""
 "options used with B<--controller> and B<--algorithm>.  It should only be "
 "useful for people designing their own AI. (not yet documented completely)"
 msgstr ""
-"为这个阵营设置附加选项。这个参数依赖于用于B<--controller>和B<--algorithm>的选"
-"项。这个选项只对设计AI的人比较有用。(目前还没有相应的文档)"
+"为该阵营设定附加参数。这个参数依赖于B<--controller>和B<--algorithm>的配置情"
+"况。这个选项应该只对自己设计AI的人比较有用。（目前还没有完整的文档）"
 
 # type: TP
 #. type: TP
@@ -674,7 +680,7 @@ msgstr "B<--scenario=>I<value>"
 msgid ""
 "selects a multiplayer scenario by id. The default scenario id is "
 "B<multiplayer_The_Freelands>."
-msgstr "通过id选择多人游戏地图。默认地图是B<multiplayer_The_Freelands>。"
+msgstr "通过id选择多人游戏地图。默认地图id是B<multiplayer_The_Freelands>。"
 
 # type: TP
 #. type: TP
@@ -690,8 +696,8 @@ msgid ""
 "selects a faction of the current era for this side. The faction is chosen by "
 "an id. Factions are described in the data/multiplayer.cfg file."
 msgstr ""
-"为当前阵营选择模式中的一个派别。所选派别由id决定。派别在文件data/multiplayer."
-"cfg文件中描述。"
+"为当前阵营选择当前时代中的一个派系。所选派系由id决定。派系在文件data/"
+"multiplayer.cfg文件中描述。"
 
 # type: TP
 #. type: TP
@@ -710,7 +716,7 @@ msgstr "设置所选场景的回合数限制。默认值为B<50>。"
 #: ../../doc/man/wesnoth.6:235 ../../doc/man/wesnothd.6:265
 #, no-wrap
 msgid "EXIT STATUS"
-msgstr ""
+msgstr "退出状态码"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:238
@@ -719,6 +725,8 @@ msgid ""
 "fonts, etc) initialization error. An exit status of 2 indicates an error "
 "with the command line options."
 msgstr ""
+"正常退出时的状态码为0。状态码1代表发生了（SDL、视频、字体等）初始化错误。状态"
+"码2代表命令行选项中有错误。"
 
 # type: SH
 #. type: SH
@@ -731,7 +739,7 @@ msgstr "作者"
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:242
 msgid "Written by David White E<lt>davidnwhite@verizon.netE<gt>."
-msgstr "由David White E<lt>davidnwhite@verizon.netE<gt>编写"
+msgstr "由David White E<lt>davidnwhite@verizon.netE<gt> 编写。"
 
 # type: Plain text
 #. type: Plain text
@@ -740,8 +748,8 @@ msgid ""
 "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
 "netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
 msgstr ""
-"经Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt> "
-"and Soliton E<lt>soliton.de@gmail.comE<gt>改动。"
+"经Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>，ott E<lt>ott@gaon.netE<gt> "
+"和 Soliton E<lt>soliton.de@gmail.comE<gt> 编辑。"
 
 # type: Plain text
 #. type: Plain text
@@ -749,29 +757,28 @@ msgstr ""
 msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
-msgstr "这个帮助页最早由 Cyril Bouthors 撰写E<lt>cyril@bouthors.orgE<gt>."
+msgstr "这个手册页最初由 Cyril Bouthors E<lt>cyril@bouthors.orgE<gt> 编写。"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:248 ../../doc/man/wesnothd.6:276
 msgid "Visit the official homepage: http://www.wesnoth.org/"
 msgstr ""
-"访问官方网站: http://www.wesnoth.org/\n"
-"以及Wesnoth中文网站：http://www.wesnoth.cn"
+"请访问官方主页：http://www.wesnoth.org/\n"
+"以及Wesnoth中文爱好者主页：http://www.wesnoth.cn"
 
 # type: SH
 #. type: SH
 #: ../../doc/man/wesnoth.6:249 ../../doc/man/wesnothd.6:277
 #, no-wrap
 msgid "COPYRIGHT"
-msgstr "COPYRIGHT"
+msgstr "版权"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:252 ../../doc/man/wesnothd.6:280
 msgid "Copyright \\(co 2003-2009 David White E<lt>davidnwhite@verizon.netE<gt>"
-msgstr ""
-"Copyright \\(co 2003-2009 David White E<lt>davidnwhite@verizon.netE<gt>"
+msgstr "版权所有 \\(co 2003-2009 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #. type: Plain text
@@ -781,11 +788,9 @@ msgid ""
 "published by the Free Software Foundation.  There is NO warranty; not even "
 "for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
 msgstr ""
-"这是一个自由软件；使用由FSF发布的GPL v2协议授权。原文如下：This is Free "
-"Software; this software is licensed under the GPL version 2, as published by "
-"the Free Software Foundation.  There is NO warranty; not even for "
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.There is NO warranty; "
-"not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
+"这是一款自由软件，使用由自由软件基金会发布的GPL版本2协议授权。使用本软件时*不"
+"*提供任何保证，甚至没有对“可销售性”和“针对某一特别目的之可用性”的保证。本段中"
+"文翻译不具有法律效力，只有GPL英文原本才具有法律效力。"
 
 # type: SH
 #. type: SH
@@ -819,13 +824,13 @@ msgstr "wesnothd"
 #: ../../doc/man/wesnothd.6:16
 #, no-wrap
 msgid "Battle for Wesnoth multiplayer network daemon"
-msgstr "韦诺之战多人游戏服务器"
+msgstr "Battle for Wesnoth 多人游戏守护进程（网络服务器）"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:23
 msgid "wesnothd - Battle for B<Wesnoth> multiplayer network daemon"
-msgstr "wesnothd - 韦诺之战 B<Wesnoth> 多人游戏服务器"
+msgstr "wesnothd - Battle for B<Wesnoth> 多人游戏守护进程（网络服务器）"
 
 # type: Plain text
 #. type: Plain text
@@ -851,8 +856,9 @@ msgid ""
 "wiki/ServerAdministration on what commands the server accepts via the "
 "wesnoth client (/query ...) or the fifo."
 msgstr ""
-"管理韦诺之战多人游戏。查看http://www.wesnoth.org/wiki/ServerAdministration 获"
-"取服务器接受的命令列表。客户端使用/query 或 fifo 会显示这一列表。"
+"管理Battle for Wesnoth的多人游戏。请参见http://www.wesnoth.org/wiki/"
+"ServerAdministration以查看服务器可以接受的命令列表。服务器可以从wesnoth客户端"
+"（/query ...）或者fifo接受命令。"
 
 # type: TP
 #. type: TP
@@ -869,8 +875,8 @@ msgid ""
 "B<SERVER CONFIG> below for the syntax. You can reload the config with "
 "sending SIGHUP to the server process."
 msgstr ""
-"指定wesnothd查找配置文件的目录。查看下面的B<SERVER CONFIG>通过发送SIGHUP信号"
-"给服务进程可以重新装载配置文件。"
+"指定wesnothd查找配置文件的目录。欲获知命令语法，请查看下面的B<服务器配置>小"
+"节。通过发送SIGHUP信号给服务器可以重新装载配置文件。"
 
 # type: TP
 #. type: TP
@@ -883,13 +889,13 @@ msgstr "B<-d, --daemon>"
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:55
 msgid "runs wesnothd as a daemon."
-msgstr "以守护进程方式(daemon)运行wesnothd"
+msgstr "以守护进程方式运行wesnothd。"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:58
 msgid "tells you what the command line options do."
-msgstr "显示命令行选项的作用"
+msgstr "显示命令行选项的作用。"
 
 # type: Plain text
 #. type: Plain text
@@ -900,9 +906,9 @@ msgid ""
 "B<debug>.  By default the B<error> level is used and the B<info> level for "
 "the B<server> domain."
 msgstr ""
-"设置日志记录的级别.B<all>用来匹配任意日志域(log domain)级别。可选的级别有："
-"B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>。默认的级别是B<error>，对B<服务"
-"器>域默认级别是B<info>。"
+"设置日志域的严重度级别。B<all>可以用来匹配任意日志域。可选的级别有：B<error>,"
+"\\ B<warning>,\\ B<info>,\\ B<debug>。默认的级别是B<error>，对B<server>域而"
+"言，默认级别是B<info>。"
 
 # type: TP
 #. type: TP
@@ -917,7 +923,7 @@ msgstr "B<-p\\ >I<port>B<,\\ --port>I<\\ port>"
 msgid ""
 "binds the server to the specified port. If no port is specified, port "
 "B<15000> will be used."
-msgstr "绑定服务到指定的端口。如果不指定端口将使用B<15000>端口。"
+msgstr "绑定服务器到指定的端口。如果不指定，则将使用B<15000>端口。"
 
 # type: TP
 #. type: TP
@@ -933,8 +939,8 @@ msgid ""
 "sets the maximum number of waiting worker threads for network I/O to n "
 "(default: B<5>,\\ max:\\ B<30>)."
 msgstr ""
-"设置网络I/O的最大挂起线程数(waiting worker threads)为n (默认值为B<5>，\\ 最大"
-"为\\ B<30>)。"
+"设置网络I/O中等待状态的工作线程的最大数量为n（默认值：B<5>，\\ 最大值：\\ "
+"B<30>）。"
 
 # type: TP
 #. type: TP
@@ -950,8 +956,7 @@ msgid ""
 "sets the maximum number of worker threads that will be created.  If set to "
 "B<0> there will be no limit (default: B<0>)."
 msgstr ""
-"设置允许创建的最大正常线程数(worker threads)。如果设置为B<0>则不限制线程数"
-"（默认值：B<0>）"
+"设置允许创建的最大工作线程数。如果设置为B<0>则不限制线程数（默认值：B<0>）"
 
 # type: TP
 #. type: TP
@@ -964,7 +969,7 @@ msgstr "B<-V, --version>"
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:91
 msgid "shows version number and exits."
-msgstr "显示版本号并退出"
+msgstr "显示版本号并退出。"
 
 # type: TP
 #. type: TP
@@ -977,21 +982,21 @@ msgstr "B<-v, --verbose>"
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:94
 msgid "turns debug logging on."
-msgstr "开启调试日志记录"
+msgstr "开启调试日志记录。"
 
 # type: SH
 #. type: SH
 #: ../../doc/man/wesnothd.6:95
 #, no-wrap
 msgid "SERVER CONFIG"
-msgstr "SERVER CONFIG"
+msgstr "服务器配置"
 
 # type: SS
 #. type: SS
 #: ../../doc/man/wesnothd.6:97
 #, no-wrap
 msgid "The general syntax is:"
-msgstr "The general syntax is:"
+msgstr "通用的语法为："
 
 # type: Plain text
 #. type: Plain text
@@ -1022,7 +1027,7 @@ msgstr "[/I<tag>]"
 #: ../../doc/man/wesnothd.6:108
 #, no-wrap
 msgid "Global keys:"
-msgstr "Global keys:"
+msgstr "全局主键："
 
 # type: TP
 #. type: TP
@@ -1039,8 +1044,8 @@ msgid ""
 "they come from the fifo.  Set it to B<yes> to allow remote shutdown via a /"
 "query by an administrator."
 msgstr ""
-"如果设置为 B<no> (默认值), 关闭和重启请求将被忽略，除非来自fifo。如果设为 "
-"B<yes> 则允许管理员通过 /query 远程关闭。"
+"如果设置为 B<no> （默认值），shut_down（关闭）和restart（重启）请求将被忽略，"
+"除非这些请求来自于fifo。如果设为 B<yes> 则允许管理员通过 /query 远程关闭。"
 
 # type: TP
 #. type: TP
@@ -1057,7 +1062,7 @@ msgid ""
 "and write.  Bans will be saved to this file and read again on server start."
 msgstr ""
 "一个服务器可读可写的（经gzip压缩的）文件的完整路径或相对路径。封禁信息会自动"
-"保存在这个文件，并在服务器重启时读取。"
+"保存在这个文件里，并在服务器启动时读取。"
 
 # type: TP
 #. type: TP
@@ -1072,7 +1077,7 @@ msgstr "B<compress_stored_rooms>"
 msgid ""
 "Determines whether the rooms file should be read and written to in "
 "compressed form. Defaults to B<yes>."
-msgstr "制定房间文件是否应该压缩。 默认值为 B<yes>."
+msgstr "指定房间文件是否应该以压缩形式读写。默认值为B<yes>。"
 
 # type: TP
 #. type: TP
@@ -1087,7 +1092,7 @@ msgstr "B<connections_allowed>"
 msgid ""
 "The number of allowed connections from the same IP. B<0> means infinite. "
 "(default: B<5>)"
-msgstr "同一IP允许的连接数。B<0> 表示无限制。(默认值：B<5>)"
+msgstr "同一IP允许的连接数。B<0> 表示无限制。（默认值：B<5>）"
 
 # type: TP
 #. type: TP
@@ -1105,9 +1110,9 @@ msgid ""
 "(used if nothing is specified) are: B<*admin*,*admln*,*server*,ai,ai?,"
 "computer,human,network,player>."
 msgstr ""
-"服务器不允许使用的用户名/昵称。可以使用B<*>和B<?>通配符。更多信息请查看 "
-"B<glob>(7) 。默认值(如果用户没有指定则自动使用)是：B<*admin*,*admln*,"
-"*server*,ai,ai?,computer,human,network,player>."
+"服务器不允许使用的用户名/昵称。可以使用B<*>和B<?>通配符。更多详细信息请查看"
+"B<glob>(7)。默认值（如果用户没有指定则自动使用）是：B<*admin*,*admln*,"
+"*server*,ai,ai?,computer,human,network,player>。"
 
 # type: TP
 #. type: TP
@@ -1124,8 +1129,9 @@ msgid ""
 "from wesnoth).  If not specified defaults to the compile-time path (default: "
 "B</var/run/socket/wesnothd/socket>)."
 msgstr ""
-"你能通过调用服务器命令的fifo路径（与在wesnoth中使用 /query 功能相同）。如果不"
-"指定，则默认为编译时指定的路径(默认：B</var/run/socket/wesnothd/socket>)."
+"服务器所使用的fifo文件的路径（与在wesnoth中使用 /query 功能相同），您可以向该"
+"文件内echo服务器命令。如果不指定，则默认为编译时指定的路径（默认值：B</var/"
+"run/socket/wesnothd/socket>）。"
 
 # type: TP
 #. type: TP
@@ -1139,7 +1145,7 @@ msgstr "B<max_messages>"
 #: ../../doc/man/wesnothd.6:138
 msgid ""
 "The number of allowed messages in B<messages_time_period>. (default: B<4>)"
-msgstr "B<messages_time_period>中允许存在的消息数。 (默认值: B<4>)"
+msgstr "B<messages_time_period>内允许的消息数。（默认值：B<4>）"
 
 # type: TP
 #. type: TP
@@ -1154,7 +1160,7 @@ msgstr "B<messages_time_period>"
 msgid ""
 "The time period (in seconds) message flooding is detected in. (default: "
 "B<10> seconds)"
-msgstr "消息泛滥(message flooding)检测时间间隔(秒)。 (默认值: B<10> 秒)"
+msgstr "消息泛滥检测的时间间隔（秒）。（默认值：B<10>秒）"
 
 # type: TP
 #. type: TP
@@ -1167,7 +1173,7 @@ msgstr "B<motd>"
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:144
 msgid "The message of the day."
-msgstr "当日新闻"
+msgstr "每日一言"
 
 # type: TP
 #. type: TP
@@ -1185,9 +1191,9 @@ msgid ""
 "respectively to everyone, registered users, admin users or disables new room "
 "creation. Default value is B<everyone>."
 msgstr ""
-"指定谁能在服务器上创建房间。可选值为 B<everyone>, B<registered>, B<admin> "
-"and B<nobody>, 分别表示所有人，注册用户，管理员用户，禁止创建房间。 默认值为 "
-"B<everyone>."
+"指定谁能在服务器上创建新房间。可选值为 B<everyone>，B<registered>，B<admin>和"
+"B<nobody>，分别代表所有人，注册用户，管理员或者禁止创建新房间。默认值为 "
+"B<everyone>。"
 
 # type: TP
 #. type: TP
@@ -1201,7 +1207,8 @@ msgstr "B<passwd>"
 #: ../../doc/man/wesnothd.6:150
 msgid ""
 "The password used to gain admin privileges (via B</query admin >I<password>)."
-msgstr "用来获取管理员权限的密码 (通过 B</query admin >I<password>)."
+msgstr ""
+"用来获取管理员权限的密码（通过 B</query admin >I<password>来取得权限）。"
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:150
@@ -1216,7 +1223,8 @@ msgid ""
 "trailing /!) Defaults to `' which means the directory wesnothd was started "
 "in."
 msgstr ""
-"存放游戏录像的目录。(必须以/结尾!)默认为`'(空),也就是wesnothd 启动时的目录。"
+"服务器用于存放游戏录像的目录。（不要忘了以/结尾！）默认为`'（空），意思是"
+"wesnothd启动时的当前目录。"
 
 # type: TP
 #. type: TP
@@ -1233,8 +1241,8 @@ msgid ""
 "B<restart> command. (Can only be issued via the fifo. See the "
 "B<allow_remote_shutdown> setting.)"
 msgstr ""
-"这是服务器使用B<restart>命令开启新进程时使用的命令。（只能通过fifo来调用。参"
-"考B<allow_remote_shutdown>设置。）"
+"这是服务器通过B<restart>命令开启新服务器进程时使用的命令。（只能通过fifo来调"
+"用。参见B<allow_remote_shutdown>设置。）"
 
 # type: TP
 #. type: TP
@@ -1251,8 +1259,8 @@ msgid ""
 "server startup and written to later. If empty or not set, rooms are not "
 "loaded and not saved."
 msgstr ""
-"制定存放房间信息的文件路径。这个文件在服务器启动时读取，之后会写入。如果设为"
-"空或者不设置，则房间不自动加载和保存。"
+"指定存放房间信息的文件的路径。这个文件在服务器启动时读取，之后会写入。如果设"
+"为空或者不设置，则房间不会被读取或保存。"
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:159
@@ -1265,7 +1273,7 @@ msgstr "B<save_replays>"
 msgid ""
 "Defines whether the server will automatically save replays of games. "
 "(default: B<false>)"
-msgstr "设置服务器是否自动保存游戏录像。(默认值: B<false>)"
+msgstr "设置服务器是否自动保存游戏录像。（默认值：B<false>）"
 
 # type: TP
 #. type: TP
@@ -1282,8 +1290,8 @@ msgid ""
 "and B<?> from wildcard patterns are supported.  (defaults to the "
 "corresponding wesnoth version)"
 msgstr ""
-"用逗号分隔的服务器接受的版本号列表。支持B<*>和B<?>通配符。（默认为(与服务器)"
-"一致的wesnoth版本）"
+"服务器接受的客户端版本号列表，是以逗号分隔的字符串。支持B<*>和B<?>通配符。"
+"（默认为与服务器版本一致的wesnoth版本）"
 
 # type: Plain text
 #. type: Plain text
@@ -1308,16 +1316,17 @@ msgid ""
 "anything real you are insane). The default value is B<forum>. You must also "
 "add a B<[user_handler]> section, see below."
 msgstr ""
-"希望使用的用户处理单元。目前可选的有B<forum>(将wesnothd与phpbb 论坛的数据库连"
-"接起来) 和B<sample>(一个实现用户处理的示例,如果你真的(直接)用这个那你一定是疯"
-"了)。默认值是B<forum>同时你必须添加一个B<[user_handler]>部分,看下面。"
+"希望使用的用户信息处理器的名称。目前可选的有B<forum>（将wesnothd与phpbb论坛的"
+"数据库连接起来）和B<sample>（一个用户信息处理接口的样例实现，如果您真的在实际"
+"中使用它，那您一定是疯了）。默认值是B<forum>，同时您必须添加一个B<"
+"[user_handler]>小节，请看下面。"
 
 # type: SS
 #. type: SS
 #: ../../doc/man/wesnothd.6:174
 #, no-wrap
 msgid "Global tags:"
-msgstr "Global tags:"
+msgstr "全局标签："
 
 # type: Plain text
 #. type: Plain text
@@ -1325,7 +1334,9 @@ msgstr "Global tags:"
 msgid ""
 "B<[redirect]> A tag to specify a server to redirect certain client versions "
 "to."
-msgstr "B<[redirect]> 服务器用来重定向特定客户端版本的标签。"
+msgstr ""
+"B<[redirect]> 这个标签用于设定一个服务器，以将某些版本的客户端重定向到该服务"
+"器上。"
 
 # type: TP
 #. type: TP
@@ -1338,7 +1349,7 @@ msgstr "B<host>"
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:183
 msgid "The address of the server to redirect to."
-msgstr "重定向到的服务器地址"
+msgstr "重定向到的服务器的地址。"
 
 # type: TP
 #. type: TP
@@ -1351,7 +1362,7 @@ msgstr "B<port>"
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:186
 msgid "The port to connect to."
-msgstr "连接端口"
+msgstr "应连接的端口。"
 
 # type: TP
 #. type: TP
@@ -1366,7 +1377,9 @@ msgstr "B<version>"
 msgid ""
 "A comma separated list of versions to redirect. Behaves the same way as "
 "B<versions_accepted> in regard to wildcard patterns."
-msgstr "用逗号分隔的需要重定向的版本号列表。同样可以使用`*'和`?'通配符。"
+msgstr ""
+"用逗号分隔的需要重定向的版本号列表。可以使用通配符，在这方面和 "
+"B<versions_accepted> 一样。"
 
 # type: Plain text
 #. type: Plain text
@@ -1374,7 +1387,9 @@ msgstr "用逗号分隔的需要重定向的版本号列表。同样可以使用
 msgid ""
 "B<[ban_time]> A tag to define convenient keywords for temporary ban time "
 "lengths."
-msgstr "B<[ban_time]> 这个标签定义一些常用的封禁时间长度的关键字。"
+msgstr ""
+"B<[ban_time]> 这个标签用于定义一些方便的关键字，以对应一些常用的临时封禁时间"
+"长度。"
 
 # type: TP
 #. type: TP
@@ -1387,7 +1402,7 @@ msgstr "B<name>"
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:199
 msgid "The name used to reference the ban time."
-msgstr "给封禁时间起一个名字"
+msgstr "用于引用封禁时间的名字。"
 
 # type: TP
 #. type: TP
@@ -1408,7 +1423,7 @@ msgid ""
 msgstr ""
 "时间长度定义。 格式为：%d[%s[%d%s[...]]] 其中%s是s（秒），m（分钟），h（小"
 "时），D（天），M（月），Y（年），%d是一个数字。如果不指定时间单位，默认为分钟"
-"（m）例如：B<time=\\\"1D12h30m\\\">结果是1天，12小时，30分钟的封禁。"
+"（m）。例如：B<time=\\\"1D12h30m\\\"> 代表的是1天零12小时又30分钟的封禁。"
 
 # type: Plain text
 #. type: Plain text
@@ -1418,8 +1433,8 @@ msgid ""
 "connected client's requests to the specified server.  Accepts the same keys "
 "as B<[redirect]>."
 msgstr ""
-"B<[proxy]> 这个标签告诉服务器扮演代理服务器角色，把用户连接重定向到另一台服务"
-"器。与B<[redirect]>接受一样的参数。"
+"B<[proxy]> 这个标签用于告诉服务器扮演代理服务器角色，把连接在本服务器上的用户"
+"的请求转发到指定的服务器。与B<[redirect]>接受一样的主键。"
 
 # type: Plain text
 #. type: Plain text
@@ -1430,9 +1445,9 @@ msgid ""
 "[user_handler]> section is present in the configuration the server will run "
 "without any nick registration service."
 msgstr ""
-"B<[user_handler]> 设置用户处理单元。可设置的键值很大程度上取决于通过"
-"B<user_handler>设置的用户处理单元的值。如果配置文件中没有B<[user_handler]>部"
-"分,服务器以不提供昵称注册服务的方式运行。"
+"B<[user_handler]> 配置用户数据处理器。可设置的主键取决于通过B<user_handler>设"
+"置的用户数据处理器是哪一个。如果配置文件中没有B<[user_handler]>小节，则服务器"
+"在运行中将不提供任何昵称注册服务。"
 
 # type: TP
 #. type: TP
@@ -1445,7 +1460,7 @@ msgstr "B<db_host>"
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:225
 msgid "(for user_handler=forum) The hostname of the database server"
-msgstr "(如果用户处理单元设置为 forum) 数据库服务器的主机名"
+msgstr "（如果user_handler=forum）数据库服务器的主机名"
 
 # type: TP
 #. type: TP
@@ -1458,7 +1473,7 @@ msgstr "B<db_name>"
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:228
 msgid "(for user_handler=forum) The name of the database"
-msgstr "(如果用户处理单元设置为 forum) 数据库名"
+msgstr "（如果user_handler=forum）数据库名"
 
 # type: TP
 #. type: TP
@@ -1473,7 +1488,7 @@ msgstr "B<db_user>"
 msgid ""
 "(for user_handler=forum) The name of the user under which to log into the "
 "database"
-msgstr "(如果用户处理单元设置为 forum) 数据库登录用户名"
+msgstr "（如果user_handler=forum）数据库登录用户名"
 
 # type: TP
 #. type: TP
@@ -1486,7 +1501,7 @@ msgstr "B<db_password>"
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:234
 msgid "(for user_handler=forum) This user's password"
-msgstr "(如果用户处理单元设置为 forum) 数据库登录密码"
+msgstr "（如果user_handler=forum）这个用户的密码"
 
 # type: TP
 #. type: TP
@@ -1503,8 +1518,8 @@ msgid ""
 "saves its user data. Most likely this will be E<lt>table-prefixE<gt>_users "
 "(e.g. phpbb3_users)."
 msgstr ""
-"(如果用户处理单元设置为 forum) phpbb 论坛中存放用户数据的表名。很可能是"
-"E<lt>table-prefixE<gt>_users (例如phpbb3_users)。"
+"（如果user_handler=forum）phpbb 论坛中存放用户数据的表名。很可能是E<lt>table-"
+"prefixE<gt>_users（例如phpbb3_users）。"
 
 # type: TP
 #. type: TP
@@ -1524,8 +1539,8 @@ msgid ""
 "user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) "
 "NOT NULL DEFAULT 0);>"
 msgstr ""
-"(如果用户处理单元设置为 forum) wesnothd存放用户游戏数据的表名。你必须自己创建"
-"这个表,例如:B<CREATE TABLE E<lt>table-nameE<gt>(username VARCHAR(255) "
+"（如果user_handler=forum）wesnothd存放自用的用户数据的表名。您必须自己手动创"
+"建这个表，例如：B<CREATE TABLE E<lt>table-nameE<gt>(username VARCHAR(255) "
 "PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, "
 "user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);>"
 
@@ -1542,7 +1557,7 @@ msgstr "B<user_expiration>"
 msgid ""
 "(for user_handler=sample) The time after which a registered nick expires (in "
 "days)."
-msgstr "(如果用户处理单元设置为 sample) 注册昵称失效时间(天数)。"
+msgstr "（如果user_handler=sample）注册昵称的失效时间（天数）。"
 
 # type: Plain text
 #. type: Plain text
@@ -1551,8 +1566,8 @@ msgid ""
 "B<[mail]> Configures an SMTP server through which the user handler can send "
 "mail. Currently only used by the sample user handler."
 msgstr ""
-"B<[mail]> 设置一个SMTP服务器,通过它用户处理单元可以发送邮件。目前只在sample "
-"用户处理单元中使用。"
+"B<[mail]> 设置一个SMTP服务器，通过它用户信息处理器可以发送邮件。目前只在样例"
+"处理器中使用。"
 
 # type: TP
 #. type: TP
@@ -1565,7 +1580,7 @@ msgstr "B<server>"
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:252
 msgid "The hostname of the mail server"
-msgstr "邮件服务器的主机名"
+msgstr "邮件服务器的主机名。"
 
 # type: TP
 #. type: TP
@@ -1604,7 +1619,7 @@ msgstr "B<from_address>"
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:261
 msgid "The reply-to address of you mail."
-msgstr "\"回复到\"邮件地址"
+msgstr "您的邮箱的“回复到”邮件地址。"
 
 # type: TP
 #. type: TP
@@ -1617,7 +1632,7 @@ msgstr "B<mail_port>"
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:264
 msgid "The port on which your mail server is running. Default is 25."
-msgstr "邮件服务器的端口。默认值位5。"
+msgstr "邮件服务器的端口。默认值为25。"
 
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:268
@@ -1625,6 +1640,7 @@ msgid ""
 "Normal exit status is 0 when the server was properly shutdown. An exit "
 "status of 2 indicates an error with the command line options."
 msgstr ""
+"正常退出时状态码为0，此时服务器正常关闭。状态码2代表命令行选项中有错误。"
 
 # type: Plain text
 #. type: Plain text
@@ -1636,26 +1652,14 @@ msgid ""
 "baumhauer@gmail.comE<gt>.  This manual page was originally written by Cyril "
 "Bouthors E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
-"由 David White E<lt>davidnwhite@verizon.netE<gt>编写。经 Nils Kneuper "
-"E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, Soliton "
+"由 David White E<lt>davidnwhite@verizon.netE<gt> 编写。经 Nils Kneuper "
+"E<lt>crazy-ivanovic@gmx.netE<gt>，ott E<lt>ott@gaon.netE<gt>，Soliton "
 "E<lt>soliton.de@gmail.comE<gt> 和 Thomas Baumhauer E<lt>thomas."
-"baumhauer@gmail.comE<gt>. 修改。这个帮助页最早由Cyril Bouthors "
-"E<lt>cyril@bouthors.orgE<gt>编写。"
+"baumhauer@gmail.comE<gt> 编辑。这个手册页最初由 Cyril Bouthors "
+"E<lt>cyril@bouthors.orgE<gt> 编写。"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:287
 msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
 msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
-
-# type: TP
-#~ msgid "B<--dummy-locales>"
-#~ msgstr "B<--dummy-locales>"
-
-# type: Plain text
-#~ msgid ""
-#~ "use special dummy locales to switch to any language even if that language "
-#~ "isn't installed system-wide."
-#~ msgstr ""
-#~ "使用特殊区域(dummy locales)设置切换到任意语言，即使那种语言不是全局安装"
-#~ "的。"
