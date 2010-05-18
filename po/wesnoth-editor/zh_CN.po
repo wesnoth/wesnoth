@@ -5,14 +5,15 @@
 # Automatically generated <>, 2005.
 # Huang huan <unicon221@gmail.com>, 2005.(unicon)
 # sylecn <sylecn@yahoo.com.cn>, 2009.
+# CloudiDust <cloudidust@gmail.com>, 2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-05-15 14:01+0200\n"
-"PO-Revision-Date: 2009-12-16 00:20-0600\n"
-"Last-Translator: Yuanle Song <sylecn@gmail.com>\n"
+"POT-Creation-Date: 2010-05-15 14:21+0200\n"
+"PO-Revision-Date: 2010-05-15 13:03+0800\n"
+"Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -36,7 +37,7 @@ msgstr "半径为2的格子"
 #. [brush]
 #: data/core/editor/brushes.cfg:55
 msgid "Hex Line NW-SE"
-msgstr "格子沿西北－东南直线排列"
+msgstr "格子沿西北-东南排列"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:10
@@ -51,7 +52,7 @@ msgstr "水"
 #. [editor_group]: id=flat
 #: data/core/editor/terrain-groups.cfg:23
 msgid "flat"
-msgstr "平坦"
+msgstr "平原"
 
 #. [editor_group]: id=desert
 #: data/core/editor/terrain-groups.cfg:30
@@ -71,7 +72,7 @@ msgstr "森林"
 #. [editor_group]: id=frozen
 #: data/core/editor/terrain-groups.cfg:51
 msgid "frozen"
-msgstr "冰冻"
+msgstr "雪地"
 
 #. [editor_group]: id=rough
 #: data/core/editor/terrain-groups.cfg:58
@@ -81,7 +82,7 @@ msgstr "粗糙"
 #. [editor_group]: id=cave
 #: data/core/editor/terrain-groups.cfg:65
 msgid "cave"
-msgstr "洞窟"
+msgstr "洞穴"
 
 #. [editor_group]: id=village
 #: data/core/editor/terrain-groups.cfg:72
@@ -96,7 +97,7 @@ msgstr "城堡"
 #. [editor_group]: id=special
 #: data/core/editor/terrain-groups.cfg:86
 msgid "special"
-msgstr "特殊的"
+msgstr "特殊"
 
 #. [editor_tool_hint]: id=editor-tool-paint
 #. [editor_tool_hint]: id=editor-tool-fill
@@ -108,8 +109,8 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
-"使用鼠标左（右）键绘制前（背）景地形。按下Shift键可以只绘制基层（base "
-"layer）。Ctrl+单击对当前光标位置地形取样。"
+"使用鼠标左/右键绘制前/背景地形。按下Shift键可以只绘制基层。Ctrl+单击将对当前"
+"光标位置处的地形取样。"
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
@@ -118,7 +119,8 @@ msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
 msgstr ""
-"使用鼠标左键选择，右键取消选择。按下Shift键可以自动选择同一地形的地面。"
+"使用鼠标左键选择，右键取消选择。按下Shift键可以自动选择同一地形的地面（使用魔"
+"术棒选择模式）。"
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
 #. [menu]: id=start_position_button_editor
@@ -129,7 +131,7 @@ msgid ""
 "position under cursor, delete clears."
 msgstr ""
 "单击鼠标左键显示玩家选择，右键取消。使用数字键滚动地图到起始点，Alt+数字键设"
-"置玩家起始点。使用delete键清除光标位置的起始点。"
+"置相应玩家的起始点。使用delete键清除光标位置的起始点。"
 
 #. [editor_tool_hint]: id=editor-paste
 #: data/core/editor/tool-hints.cfg:30
@@ -137,8 +139,8 @@ msgid ""
 "Click to paste, zoom out for more accuracy when pasting large areas. Use the "
 "edit menu to transform the clipboard (rotate, mirror)."
 msgstr ""
-"单击以粘贴，粘贴大面积区域时可以放大提高精度。使用编辑菜单来变换图像（选择，"
-"镜像）。"
+"单击以粘贴，粘贴大面积区域时请对地图进行缩小以提高精度。使用编辑菜单来变换剪"
+"贴板中的数据（旋转，镜像）。"
 
 #. [menu]: id=menu-editor-file
 #: data/themes/editor.cfg:120
@@ -179,19 +181,20 @@ msgstr "（新建地图）"
 
 #: src/editor/editor_controller.cpp:307
 msgid "Do you really want to quit?"
-msgstr "确定要退出吗？"
+msgstr "您真的想退出吗？"
 
 #: src/editor/editor_controller.cpp:309
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
-msgstr "确定要退出吗？上次保存之后所作的修改将会丢失。"
+msgstr "您真的想退出吗？上次保存之后对地图所作的修改将会全部丢失。"
 
 #: src/editor/editor_controller.cpp:311
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
-msgstr "确定要退出吗？下面的地图已经被修改，上次保存之后所作的修改将会丢失："
+msgstr ""
+"您真的想退出吗？以下地图已经被修改，上次保存之后所作的修改将会全部丢失："
 
 #: src/editor/editor_controller.cpp:316
 msgid "Quit"
@@ -199,7 +202,7 @@ msgstr "退出"
 
 #: src/editor/editor_controller.cpp:373
 msgid "No editor time-of-day found."
-msgstr "没有找到编辑器时间(time-of-day)"
+msgstr "没有找到编辑器时刻。"
 
 #: src/editor/editor_controller.cpp:409
 msgid "Unsaved Changes"
@@ -208,7 +211,7 @@ msgstr "未保存的更改"
 #: src/editor/editor_controller.cpp:410
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
-msgstr "放弃上次保存之后所作的修改吗？"
+msgstr "您想要放弃上次保存之后所作的修改吗？"
 
 #: src/editor/editor_controller.cpp:428
 msgid "Choose a Map to Open"
@@ -232,11 +235,11 @@ msgstr "创建地图失败。"
 
 #: src/editor/editor_controller.cpp:516
 msgid "Choose a mask to apply"
-msgstr "选择要使用的遮照"
+msgstr "选择要使用的遮罩"
 
 #: src/editor/editor_controller.cpp:523
 msgid "Error loading mask"
-msgstr "加载遮照时错误"
+msgstr "读取遮罩时发生错误"
 
 #: src/editor/editor_controller.cpp:538
 msgid "Choose target map"
@@ -244,7 +247,7 @@ msgstr "选择目标地图"
 
 #: src/editor/editor_controller.cpp:545 src/editor/editor_controller.cpp:709
 msgid "Error loading map"
-msgstr "加载地图时错误"
+msgstr "读取地图时发生错误"
 
 #: src/editor/editor_controller.cpp:623 src/editor/editor_controller.cpp:665
 msgid "This map is already open."
@@ -256,18 +259,18 @@ msgstr "地图已保存。"
 
 #: src/editor/editor_controller.cpp:688
 msgid "Loaded embedded map data"
-msgstr "已加载嵌入的地图数据"
+msgstr "已读取嵌入的地图数据"
 
 #: src/editor/editor_controller.cpp:689 src/editor/editor_controller.cpp:703
 msgid "Map loaded from scenario"
-msgstr "已从场景加载地图"
+msgstr "已从场景中读取地图"
 
 #: src/editor/editor_controller.cpp:699
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
 msgstr ""
-"已加载引用的地图文件：\n"
+"已读取被引用的地图文件：\n"
 "$new"
 
 #: src/editor/editor_controller.cpp:1092
@@ -280,11 +283,11 @@ msgstr "无法撤销"
 
 #: src/editor/editor_controller.cpp:1098
 msgid "Redo"
-msgstr "重复"
+msgstr "恢复"
 
 #: src/editor/editor_controller.cpp:1100
 msgid "Can't Redo"
-msgstr "无法重复"
+msgstr "无法恢复"
 
 #: src/editor/editor_controller.cpp:1105
 msgid "Auto-update Terrain Transitions: Yes"
@@ -304,11 +307,11 @@ msgstr "玩家"
 
 #: src/editor/editor_map.cpp:256
 msgid "The size of the target map is different from the current map"
-msgstr "目标地图尺寸与当前地图不同"
+msgstr "目标地图的尺寸与当前地图不同"
 
 #: src/editor/editor_palettes.cpp:506
 msgid "(non-core)"
-msgstr "(非核心)"
+msgstr "（非核心）"
 
 #: src/editor/editor_palettes.cpp:507
 msgid "Will not work in game without extra care."
@@ -316,11 +319,11 @@ msgstr "除非特别注意，否则不会正常工作。"
 
 #: src/editor/editor_palettes.cpp:532
 msgid "FG"
-msgstr "前置地形"
+msgstr "前景地形"
 
 #: src/editor/editor_palettes.cpp:534
 msgid "BG"
-msgstr "后置地形"
+msgstr "背景地形"
 
 #: src/editor/map_context.cpp:70
 msgid "File not found"
@@ -330,7 +333,8 @@ msgstr "文件不存在"
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
-msgstr "地图文件看起来像是一个场景,但是map_data的值指向一个不存在的文件。"
+msgstr ""
+"这个地图文件看起来像是一个场景，但是map_data的值指向了一个不存在的文件。"
 
 #: src/editor/map_context.cpp:99
 msgid "Empty map file"
@@ -342,11 +346,11 @@ msgstr "无法保存到场景"
 
 #: src/editor/map_context.cpp:226
 msgid "Could not save the map: $msg"
-msgstr "不能保存地图： $msg"
+msgstr "无法保存地图：$msg"
 
 #: src/editor/mouse_action.cpp:426
 msgid "(Player)^None"
-msgstr "(玩家)"
+msgstr "无"
 
 #: src/editor/mouse_action.cpp:433
 msgid "Choose player"
@@ -359,8 +363,8 @@ msgid ""
 "the cursor. Pressing a number key by itself will scroll to that player's "
 "starting position."
 msgstr ""
-"哪个玩家在这里开始游戏？使用alt+数字键设置起始点，使用del键清除光标所在位置的"
-"起始点。使用数字键可以跳转到对应的起始点。"
+"哪位玩家应该在这里开始游戏？您可以使用alt+数字键为玩家设置起始点，使用del键清"
+"除光标所在位置的起始点。仅按下数字键可以跳转到对应的起始点。"
 
 #: src/gui/dialogs/editor_settings.cpp:166
 msgid "Custom setting"
