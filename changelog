@@ -85,10 +85,14 @@ Version 1.9.0-svn:
    * Patch #1639: Added handlers for keyboard (arrow keys) to move gui2 sliders
    * Added new experimental list box implementation, available for testing
      with -DGUI2_EXPERIMENTAL_LISTBOX
-   * Small improvements of the bonus used in the damage calculation dialog
    * Damage in sidebar now also take account of ToD and leadership
    * More info in the weapon tooltip (damage bonus calculation and swarm effect)
-   * Level tooltip shows next advancements.
+   * Terrain defense tooltip show terrain's info and defense calculation
+   * Level tooltip shows next advancements
+   * Each trait has its own tooltip
+   * Most sidebar tooltips have now a category indication
+   * Tooltips of ellipsed text are grouped in the last visible item's tooltip
+   * Increase a little tooltip's opacity
  * WML Engine:
    * Deprecated [set_variable]'s random key, use rand instead
    * Renamed [unit][status] healable to unhealable so it can default to 'no'
