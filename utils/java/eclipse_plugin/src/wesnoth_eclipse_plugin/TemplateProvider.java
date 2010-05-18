@@ -65,7 +65,7 @@ public class TemplateProvider {
 						content += tmpLine + '\n';
 					}
 					templates_.put(tokensStrings[0],content);
-					System.out.println(String.format("read %s with content: %s\n",tokensStrings[0],content));
+					//System.out.println(String.format("read %s with content: %s\n",tokensStrings[0],content));
 					tmpReader.close();
 				}
 			}
