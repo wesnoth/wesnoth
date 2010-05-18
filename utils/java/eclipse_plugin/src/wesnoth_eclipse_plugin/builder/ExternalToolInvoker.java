@@ -91,4 +91,31 @@ public class ExternalToolInvoker {
 	{
 		return process_.getErrorStream();
 	}
+
+	public static boolean launchTool(String fileName, String args, boolean showOutput, boolean useThread){
+		try{
+			ExternalToolInvoker toolInvoker = new ExternalToolInvoker(fileName, args, useThread);
+			toolInvoker.run();
+			toolInvoker.waitFor();
+			if (showOutput)
+			{
+				String line="";
+				System.out.println("Output: ");
+				while((line  = toolInvoker.readOutputLine()) != null)
+				{
+					System.out.println(line);
+				}
+				System.out.println("Errors: ");
+				while((line  = toolInvoker.readErrorLine()) != null)
+				{
+					System.out.println(line);
+				}
+			}
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
 }

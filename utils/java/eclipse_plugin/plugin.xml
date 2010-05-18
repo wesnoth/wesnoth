@@ -122,5 +122,53 @@
            <description>Create a Wesnoth campaign.</description>
        </wizard>
    </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            id="Wesnoth_Eclipse_Plugin.commands.category"
+            name="Wesnoth">
+      </category>
+      <command
+            defaultHandler="wesnoth_eclipse_plugin.handlers.OpenEditorHandler"
+            description="Opens the wesnoth editor"
+            id="Wesnoth_Eclipse_Plugin.commands.openEditor"
+            name="openeditor">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               id="Wesnoth_Eclipse_Plugin.menus.wesnothMenu"
+               label="Wesnoth"
+               mnemonic="h">
+            <command
+                  commandId="Wesnoth_Eclipse_Plugin.commands.openEditor"
+                  id="Wesnoth_Eclipse_Plugin.menus.openEditor"
+                  label="Open editor"
+                  mnemonic="e">
+            </command>
+            <separator
+                  name="separator1"
+                  visible="true">
+            </separator>
+         </menu>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="wesnoth_eclipse_plugin.preferences.WesnothEditorPreferences"
+            id="wesnoth_eclipse_plugin.preferences.WesnothEditorPreferences"
+            name="Wesnoth UMC Plugin">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="wesnoth_eclipse_plugin.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
 
 </plugin>
