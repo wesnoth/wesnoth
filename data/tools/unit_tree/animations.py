@@ -20,6 +20,7 @@ def count_animations(out, name, a, c):
         count_animations(out, name, a2, c)
 
 def write_table_row(out, unit, color, name = None):
+    # See the list at the beginning of src/unit_animation.cpp
     anim_types = [
         "attack_anim",
         "defend",
@@ -27,7 +28,7 @@ def write_table_row(out, unit, color, name = None):
         "idle_anim",
         "movement_anim",
         "leading_anim",
-        "teleport",
+        "teleport_anim",
         "standing_anim",
         "healing_anim",
         "victory_anim",
@@ -37,7 +38,15 @@ def write_table_row(out, unit, color, name = None):
         "levelin_anim",
         "levelout_anim",
         "extra_anim",
+        "animation",
+        "resistance_anim",
+        "recruiting_anim",
+        "pre_movement_anim",
+        "post_movement_anim",
+        "draw_weapon_anim",
+        "sheath_weapon_anim"
     ]
+    
     
     needed = {}
     for at in anim_types: needed[at] = True
@@ -99,7 +108,15 @@ def put_units(f, us):
 <th>level in</th>
 <th>level out</th>
 <th>extra</th>
+<th>animation</th>
+<th>resistance_anim</th>
+<th>recruiting_anim</th>
+<th>pre_movement_anim</th>
+<th>post_movement_anim</th>
+<th>draw_weapon_anim</th>
+<th>sheath_weapon_anim</th>
 """.lstrip())
+
     f.write("</tr>\n")
     
     def by_race(u1, u2):
