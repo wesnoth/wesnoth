@@ -17,7 +17,6 @@ import wesnoth_eclipse_plugin.preferences.PreferenceInitializer;
 
 public class OpenEditorHandler extends AbstractHandler
 {
-	public final static String EDITOR_LAUNCH_ARGS = "-e";
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException
 	{
@@ -36,17 +35,24 @@ public class OpenEditorHandler extends AbstractHandler
 			return null;
 		}
 
-		System.out.printf("Running: [%s] with args: [%s]\n", editorPath,getLaunchEditorArguments("", workingDir));
-		ExternalToolInvoker.launchTool(editorPath, getLaunchEditorArguments("", workingDir),true, true);
+		System.out.printf("Running: [%s] with args: %s\n", editorPath, getLaunchEditorArguments("", workingDir));
+		ExternalToolInvoker.launchTool(editorPath, getLaunchEditorArguments("", workingDir),true,false, true);
 		return null;
 	}
 
 	public static Collection<String> getLaunchEditorArguments(String mapName, String workingDir)
 	{
-		Collection<String> args = new ArrayList<String>(2);
-		String path = workingDir + File.separator + mapName;
-		args.add(EDITOR_LAUNCH_ARGS);
-		args.add(path);
+		Collection<String> args = new ArrayList<String>(3);
+
+		args.add("-e");
+		args.add(mapName);
+
+		if (!workingDir.isEmpty())
+		{
+			args.add("-datadir");
+			args.add(workingDir);
+		}
+
 		return args;
 	}
 }
