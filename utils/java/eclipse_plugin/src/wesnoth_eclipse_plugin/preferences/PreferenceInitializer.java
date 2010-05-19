@@ -17,8 +17,9 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 	 */
 	@Override
 	public void initializeDefaultPreferences() {
-		//IPreferenceStore store = Activator.getDefault().getPreferenceStore();
-		//store.setDefault(name, value)
+		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
+		store.setDefault(PreferenceConstants.P_WESNOTH_EXEC_PATH, "");
+		store.setDefault(PreferenceConstants.P_WESNOTH_WORKING_DIR, "");
 	}
 
 	/**
