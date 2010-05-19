@@ -476,6 +476,31 @@ game_controller::game_controller(int argc, char** argv) :
 #endif
 		} else if(val == "--no-srng") {
 			rand_rng::disable_server_rng();
+		} else if(val == "-datadir") {
+			if(arg_+1 != argc_) {
+				++arg_;
+				const std::string datadir(argv_[arg_]);
+				std::cerr << "Overriding data directory with " << datadir << std::endl;
+#ifdef _WIN32
+				// use c_str to ensure that index 1 points to valid element since c_str() returns null-terminated string
+				if(datadir.c_str()[1] == ':') {
+#else
+				if(datadir[0] == '/') {
+#endif
+					game_config::path = datadir;
+				} else {
+					game_config::path = get_cwd() + '/' + datadir;
+				}
+
+				if(!is_directory(game_config::path)) {
+					std::cerr << "Could not find directory '" << game_config::path << "'\n";
+					throw config::error("directory not found");
+				}
+
+				font_manager_.update_font_path();
+			}
+			else
+				std::cerr << "please specify a data directory\n";
 		} else if(val[0] == '-') {
 			std::cerr << "unknown option: " << val << std::endl;
 			throw config::error("unknown option");
@@ -1753,6 +1778,7 @@ static int process_command_args(int argc, char** argv) {
 			<< "                               $HOME/<name> or My Documents\\My Games\\<name> for windows.\n"
 			<< "  --config-path                prints the path of the user config directory and\n"
 			<< "                               exits.\n"
+			<< "  -datadir <directory>		   overrides the data directory with the one specified.\n"
 			<< "  -d, --debug                  enables additional command mode options in-game.\n"
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 			<< "  --debug-dot-level=<level1>,<level2>,...\n"
