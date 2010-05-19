@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * @author Timotei Dolean
@@ -24,9 +27,13 @@ public class ExternalToolInvoker {
 	 * @param useThread true if the process will run in a thread
 	 * @throws IOException
 	 */
-	public ExternalToolInvoker(String fileName, String arguments, boolean useThread) throws IOException
+	public ExternalToolInvoker(String fileName, Collection<String> arguments, boolean useThread) throws IOException
 	{
-		processBuilder_ = new ProcessBuilder(fileName,arguments);
+		List<String> commandline = new ArrayList<String>();
+		commandline.add(fileName);
+		commandline.addAll(arguments);
+		/// @todo
+		processBuilder_ = new ProcessBuilder(commandline);
 		if (useThread)
 			processThread_ = new Thread(new Runnable() {
 				
@@ -92,7 +99,7 @@ public class ExternalToolInvoker {
 		return process_.getErrorStream();
 	}
 
-	public static boolean launchTool(String fileName, String args, boolean showOutput, boolean useThread){
+	public static boolean launchTool(String fileName, Collection<String> args, boolean showOutput, boolean useThread){
 		try{
 			ExternalToolInvoker toolInvoker = new ExternalToolInvoker(fileName, args, useThread);
 			toolInvoker.run();

@@ -1,6 +1,8 @@
 package wesnoth_eclipse_plugin.handlers;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -15,12 +17,7 @@ import wesnoth_eclipse_plugin.preferences.PreferenceInitializer;
 
 public class OpenEditorHandler extends AbstractHandler
 {
-	/**
-	 *  the arguments to launch the editor
-	 *  %s - the filename of the file to be edited
-	 *  %s - the data directory
-	 */
-	public final static String EDITOR_LAUNCH_ARGS = "-e %s";// %s";;
+	public final static String EDITOR_LAUNCH_ARGS = "-e";
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException
 	{
@@ -44,9 +41,12 @@ public class OpenEditorHandler extends AbstractHandler
 		return null;
 	}
 
-	public static String getLaunchEditorArguments(String mapName, String workingDir)
+	public static Collection<String> getLaunchEditorArguments(String mapName, String workingDir)
 	{
-		String args = String.format(EDITOR_LAUNCH_ARGS, mapName,workingDir);
+		Collection<String> args = new ArrayList<String>(2);
+		String path = workingDir + File.separator + mapName;
+		args.add(EDITOR_LAUNCH_ARGS);
+		args.add(path);
 		return args;
 	}
 }
