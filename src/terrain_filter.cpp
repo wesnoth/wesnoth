@@ -373,7 +373,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 		for (unsigned i = 0; i < adj_cfgs.size(); ++i) {
 			std::set<map_location> adj_set;
 			/* GCC-3.3 doesn't like operator[] so use at which has the same result */
-			terrain_filter(adj_cfgs.at(i), *this).get_locations(adj_set);
+			terrain_filter(adj_cfgs.at(i), *this).get_locations(adj_set, with_border);
 			cache_.adjacent_matches->push_back(adj_set);
 			if(i >= max_loop_ && i+1 < adj_cfgs.size()) {
 				ERR_NG << "terrain_filter: loop count greater than " << max_loop_
@@ -408,7 +408,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 		//handle [and]
 		if(cond_name == "and") {
 			std::set<map_location> intersect_hexes;
-			terrain_filter(cond_cfg, *this).get_locations(intersect_hexes);
+			terrain_filter(cond_cfg, *this).get_locations(intersect_hexes, with_border);
 			std::set<map_location>::iterator intersect_itor = xy_set.begin();
 			while(intersect_itor != xy_set.end()) {
 				if(intersect_hexes.find(*intersect_itor) == intersect_hexes.end()) {
@@ -421,7 +421,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 		//handle [or]
 		else if(cond_name == "or") {
 			std::set<map_location> union_hexes;
-			terrain_filter(cond_cfg, *this).get_locations(union_hexes);
+			terrain_filter(cond_cfg, *this).get_locations(union_hexes, with_border);
 			//xy_set.insert(union_hexes.begin(), union_hexes.end()); //doesn't compile on MSVC
 			std::set<map_location>::iterator insert_itor = union_hexes.begin();
 			while(insert_itor != union_hexes.end()) {
@@ -432,7 +432,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 		//handle [not]
 		else if(cond_name == "not") {
 			std::set<map_location> removal_hexes;
-			terrain_filter(cond_cfg, *this).get_locations(removal_hexes);
+			terrain_filter(cond_cfg, *this).get_locations(removal_hexes, with_border);
 			std::set<map_location>::iterator erase_itor = removal_hexes.begin();
 			while(erase_itor != removal_hexes.end()) {
 				xy_set.erase(*erase_itor++);
