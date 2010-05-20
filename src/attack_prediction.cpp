@@ -24,6 +24,7 @@
 
 #include "attack_prediction.hpp"
 
+#include "actions.hpp"
 #include "game_config.hpp"
 
 // Compile with -O3 -DBENCHMARK for speed testing,

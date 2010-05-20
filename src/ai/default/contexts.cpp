@@ -20,7 +20,7 @@
 
 #include "contexts.hpp"
 
-#include "../../attack_prediction.hpp"
+#include "../../actions.hpp"
 #include "../../foreach.hpp"
 #include "../../log.hpp"
 #include "../../map.hpp"

@@ -17,6 +17,7 @@
  * Recruiting, Fighting.
  */
 
+#include "actions.hpp"
 #include "attack_prediction.hpp"
 #include "foreach.hpp"
 #include "game_display.hpp"
