@@ -36,7 +36,8 @@ public class OpenEditorHandler extends AbstractHandler
 		}
 
 		System.out.printf("Running: [%s] with args: %s\n", editorPath, getLaunchEditorArguments("", workingDir));
-		ExternalToolInvoker.launchTool(editorPath, getLaunchEditorArguments("", workingDir),true,false, true);
+		ExternalToolInvoker.launchTool(editorPath, getLaunchEditorArguments("", workingDir),true,false, true,
+									window);
 		return null;
 	}
 

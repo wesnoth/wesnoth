@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.swt.widgets.MessageBox;
+import org.eclipse.ui.IWorkbenchWindow;
+
 /**
  * @author Timotei Dolean
  *
@@ -58,9 +61,19 @@ public class ExternalToolInvoker {
 		bufferedReaderOutput_ = new BufferedReader(new InputStreamReader(process_.getInputStream()));
 		bufferedReaderError_ = new BufferedReader(new InputStreamReader(process_.getErrorStream()));
 	}
-	public void waitFor() throws InterruptedException
+	/**
+	 * Waits for the current tool, and returns the return value
+	 * @return the return value of the tool
+	 */
+	public int waitFor()
 	{
-		process_.waitFor();
+		try{
+			return process_.waitFor();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}
 	}
 	public String readOutputLine()
 	{
@@ -119,30 +132,33 @@ public class ExternalToolInvoker {
 	 * @param waitFor true to wait till the program ends and show the output
 	 * at the end of the program or false to show it as it arrises
 	 * @param useThread true to launch the tool on a separate thread
+	 * @param workbenchWindow the workbench window used to show messages
+	 * (if null no messages will be triggered)
 	 * @return
 	 */
-	public static boolean launchTool(String fileName, Collection<String> args, boolean showOutput,
-			boolean waitFor,boolean useThread)
+	public static boolean launchTool(final String fileName,final Collection<String> args,final boolean showOutput,
+			final boolean waitFor,final boolean useThread,final IWorkbenchWindow workbenchWindow)
 	{
-		final boolean wait = waitFor;
-		final boolean show = showOutput;
-		final boolean thread = useThread;
-		final String file= fileName;
-		final Collection<String> arguments = args;
-
+		// we need a new thread so we won't block the caller
 		Thread launcherThread = new Thread(new Runnable() {
 			@Override
 			public void run()
 			{
 				try{
-					final ExternalToolInvoker toolInvoker = new ExternalToolInvoker(file, arguments, thread);
+					final ExternalToolInvoker toolInvoker = new ExternalToolInvoker(fileName, args, useThread);
 					toolInvoker.run();
-					if (wait)
-						toolInvoker.waitFor();
 
-					if (show)
+					if (waitFor)
 					{
-						if (wait)
+						if (toolInvoker.waitFor() != 0 && workbenchWindow != null)
+						{
+							showMessageBox(workbenchWindow, "The tool returned a non-zero value.");
+						}
+					}
+
+					if (showOutput)
+					{
+						if (waitFor)
 						{
 							String line="";
 							while((line  = toolInvoker.readOutputLine()) != null)
@@ -156,7 +172,6 @@ public class ExternalToolInvoker {
 							System.out.println("tool exited.");
 						}
 						else {
-							// we need a new thread so we won't block the caller
 							Thread outputStreamThread = new Thread(new Runnable() {
 								@Override
 								public void run()
@@ -178,6 +193,11 @@ public class ExternalToolInvoker {
 										System.out.println(line);
 									}
 									System.out.println("tool exited.");
+
+									if (toolInvoker.waitFor() != 0)
+									{
+										showMessageBox(workbenchWindow, "The tool returned a non-zero value.");
+									}
 								}
 							});
 							outputStreamThread.start();
@@ -192,5 +212,30 @@ public class ExternalToolInvoker {
 		});
 		launcherThread.start();
 		return true;
+	}
+
+	/**
+	 * Shows a message box with the specified message (thread-safe)
+	 * @param window the window where to show the message box
+	 * @param message the message to print
+	 */
+	private static void showMessageBox(final IWorkbenchWindow window,final String message)
+	{
+		try
+		{
+			window.getShell().getDisplay().asyncExec(new Runnable() {
+				@Override
+				public void run()
+				{
+					MessageBox box = new MessageBox(window.getShell());
+					box.setMessage(message);
+					box.open();
+				}
+			});
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 }
