@@ -122,8 +122,8 @@ public class ExternalToolInvoker {
 	 * @param fileName the full path to the executable to be launched
 	 * @param args the arguments list
 	 * @param showOutput true to show tool's ouput (stdout and stderr)
-	 * @param waitFor true to show the output at the end of the program
-	 * or false to show it as it arrises
+	 * @param waitFor true to wait till the program ends and show the output
+	 * at the end of the program or false to show it as it arrises
 	 * @param useThread true to launch the tool on a separate thread
 	 * @return
 	 */
@@ -131,17 +131,16 @@ public class ExternalToolInvoker {
 			boolean waitFor,boolean useThread)
 	{
 		try{
-			ExternalToolInvoker toolInvoker = new ExternalToolInvoker(fileName, args, useThread);
+			final ExternalToolInvoker toolInvoker = new ExternalToolInvoker(fileName, args, useThread);
 			toolInvoker.run();
 			if (waitFor)
 				toolInvoker.waitFor();
 
 			if (showOutput)
 			{
-				String line="";
-
 				if (waitFor)
 				{
+					String line="";
 					while((line  = toolInvoker.readOutputLine()) != null)
 					{
 						System.out.println(line);
@@ -152,20 +151,35 @@ public class ExternalToolInvoker {
 					}
 				}
 				else {
+					// we need a new thread so we won't block the caller
+					Thread thread = new Thread(new Runnable() {
+						@Override
+						public void run()
+						{
+							String line="";
+							while(!toolInvoker.processEnded())
+							{
+								line = toolInvoker.readOutputLine();
+								if (line!= null)
+									System.out.println(line);
 
-					while(!toolInvoker.processEnded())
-					{
-						line = toolInvoker.readOutputLine();
-						if (line!= null)
-							System.out.println(line);
+								line = toolInvoker.readErrorLine();
+								if (line!= null)
+									System.out.println(line);
 
-						line = toolInvoker.readErrorLine();
-						if (line!= null)
-							System.out.println(line);
-						Thread.sleep(10);
-					}
+								try{
+									Thread.sleep(10);
+								}
+								catch (InterruptedException e){
+									e.printStackTrace();
+								}
+							}
+
+							System.out.println("tool exited.");
+						}
+					});
+					thread.start();
 				}
-				System.out.println("tool exited.");
 			}
 		}
 		catch (Exception e) {
