@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="Wesnoth_Eclipse_Plugin"
+      label="Wesnoth UMC Plugin Feature"
+      version="0.1"
+      provider-name="Wesnoth">
+
+   <description>
+      This is the Wesnoth Eclipse UMC Plugin developed as part of Google Summer of Code 2010.
+   </description>
+
+   <requires>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.eclipse.jface.text" version="3.3.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.editors" version="3.3.0" match="greaterOrEqual"/>
+      <import plugin="org.wesnoth.wml.ide" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.wesnoth.wml.ide.generator" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.wesnoth.wml.ide.ui" version="1.0.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="Wesnoth_Eclipse_Plugin"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
