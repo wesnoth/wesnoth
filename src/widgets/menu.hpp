@@ -21,13 +21,15 @@
 #include <vector>
 
 
-#include "../image.hpp"
-#include "../events.hpp"
 #include "../sdl_utils.hpp"
 
 #include "scrollarea.hpp"
 
 #include "SDL.h"
+
+namespace image{
+	class locator;
+}
 
 namespace gui {
 

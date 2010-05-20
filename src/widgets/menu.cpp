@@ -21,6 +21,7 @@
 #include "game_config.hpp"
 #include "font.hpp"
 #include "language.hpp"
+#include "image.hpp"
 #include "marked-up_text.hpp"
 #include "sound.hpp"
 #include "video.hpp"

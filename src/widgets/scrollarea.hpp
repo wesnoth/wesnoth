@@ -18,7 +18,6 @@
 #define SCROLLAREA_HPP_INCLUDED
 
 #include "SDL.h"
-#include "../sdl_utils.hpp"
 #include "scrollbar.hpp"
 #include "widget.hpp"
 
