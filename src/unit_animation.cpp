@@ -150,7 +150,7 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 	secondary_unit_filter_(),
 	directions_(),
 	frequency_(0),
-	base_score_(0),
+	base_score_(atoi(cfg["base_score"].c_str())),
 	event_(),
 	value_(),
 	primary_attack_filter_(),
@@ -326,7 +326,7 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 	for(itor = animations.begin(); itor != animations.end() ; ++itor) {
 		if (std::find(itor->event_.begin(),itor->event_.end(),std::string("default"))!= itor->event_.end()) {
 			animation_base.push_back(*itor);
-			animation_base.back().base_score_ = unit_animation::DEFAULT_ANIM;
+			animation_base.back().base_score_ += unit_animation::DEFAULT_ANIM;
 			animation_base.back().event_.clear();
 		}
 	}
