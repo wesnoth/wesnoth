@@ -2010,7 +2010,7 @@ static int process_command_args(int argc, char** argv) {
 
 				// preprocess common macros first
 				LOG_PREPROC<<"processing common macros...\n";
-				preprocess_resource(game_config::path + "/data/core/macros/",&defines_map);
+				preprocess_resource(game_config::path + "/data/core/",&defines_map);
 
 				LOG_PREPROC<<"processing target resource...\n";
 				preprocess_resource(resourceToProcess, &defines_map, true,true, targetDir);
