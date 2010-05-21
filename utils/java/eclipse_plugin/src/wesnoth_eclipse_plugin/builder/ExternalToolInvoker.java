@@ -5,7 +5,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.swt.widgets.MessageBox;
@@ -30,7 +29,7 @@ public class ExternalToolInvoker {
 	 * @param useThread true if the process will run in a thread
 	 * @throws IOException
 	 */
-	public ExternalToolInvoker(String fileName, Collection<String> arguments, boolean useThread) throws IOException
+	public ExternalToolInvoker(String fileName, List<String> arguments, boolean useThread) throws IOException
 	{
 		List<String> commandline = new ArrayList<String>();
 		commandline.add(fileName);
@@ -156,7 +155,7 @@ public class ExternalToolInvoker {
 	 * (if null no messages will be triggered)
 	 * @return
 	 */
-	public static boolean launchTool(final String fileName,final Collection<String> args,final boolean showOutput,
+	public static boolean launchTool(final String fileName,final List<String> args,final boolean showOutput,
 			final boolean waitFor,final boolean useThread,final IWorkbenchWindow workbenchWindow)
 	{
 		// we need a new thread so we won't block the caller

@@ -2,7 +2,7 @@ package wesnoth_eclipse_plugin.handlers;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -41,9 +41,9 @@ public class OpenEditorHandler extends AbstractHandler
 		return null;
 	}
 
-	public static Collection<String> getLaunchEditorArguments(String mapName, String workingDir)
+	public static List<String> getLaunchEditorArguments(String mapName, String workingDir)
 	{
-		Collection<String> args = new ArrayList<String>(3);
+		List<String> args = new ArrayList<String>(3);
 
 		args.add("-e");
 		args.add(mapName);
