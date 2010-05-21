@@ -153,7 +153,12 @@ directory: a plain cfg file and a processed cfg file. If a folder is specified, 
 be preprocessed recursively based on the known preprocessor rules. The common macroses
 from the data/core/macros will be preprocessed before the specified resources.
 .B define1,define2,...
-- the extra defines will be added before processing the files.
+- the extra defines will be added before processing the files. If you want to add them
+you must add the '=' character before.
+Example:
+.B -p ~/wesnoth/data/campaigns/tutorial ~/result
+or
+.B -p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result
 .TP
 .BI -r\  X x Y ,\ --resolution\  X x Y
 sets the screen resolution. Example:
