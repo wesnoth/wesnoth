@@ -245,7 +245,10 @@ class WesnothList:
                 {~add-ons}
                 """)
         except wmlparser.Error, e:
-            print e
+            try:
+                print(e)
+            except UnicodeEncodeError:
+                print(e.text.encode("utf8", "ignore"))
             return n
         for campaign in WML.find_all("campaign"):
             cid = self.add_campaign(campaign)
