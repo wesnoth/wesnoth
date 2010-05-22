@@ -22,7 +22,7 @@ The only disadvantage is:
 
 """
 
-import os, glob, sys, re, subprocess, optparse
+import os, glob, sys, re, subprocess, optparse, tempfile
 
 class WMLError(Exception):
     """
@@ -33,6 +33,14 @@ class WMLError(Exception):
         self.line = parser.parser_line
         self.wml_line = parser.last_wml_line
         self.message = message
+        self.preprocessed = parser.preprocessed
+    
+    def __str__(self):
+        r = "WMLError:\n"
+        r += "    " + str(self.line) + " " + self.preprocessed + "\n"
+        r += "    " + self.wml_line + "\n"
+        r += "    " + self.message + "\n"
+        return r
 
 class StringNode:
     """
@@ -65,6 +73,12 @@ class AttributeNode:
     def debug(self):
         return self.key + "=" + " .. ".join(
             [v.debug() for v in self.value])
+        
+    def get_text(self, translation = None):
+        r = ""
+        for s in self.value:
+            r += s.data
+        return r
 
 class TagNode:
     """
@@ -88,7 +102,27 @@ class TagNode:
         s += "[/" + self.name + "]\n"
         return s
 
-class RootNode:
+    def get_all(self):
+        r = []
+        for sub in self.data:
+            ok = True
+            for k, v in kw:
+                if k == "tag":
+                   if not isinstance(sub, TagNode): ok = False
+                   elif not sub.name == v: ok = False
+                elif k == "att":
+                   if not isinstance(sub, AttributeNode): ok = False
+                   elif not sub.name == v: ok = False
+            if ok:
+                r.append(sub)
+        return r
+    
+    def get_text_val(self, name, default):
+        x = self.get_all(att = name)
+        if not x: return default
+        return x.get_text()
+
+class RootNode(TagNode):
     """
     The root node. There is exactly one such node.
     """
@@ -104,19 +138,31 @@ class RootNode:
         return s
 
 class Parser:
-    def __init__(self, path, wesnoth_exe, defines):
+    def __init__(self, wesnoth_exe, defines):
         """
         path - Path to the file to parse.
         wesnoth_exe - Wesnoth executable to use. This should have been
             configured to use the desired data and config directories.
         """
-        self.path = path
         self.wesnoth_exe = wesnoth_exe
         self.defines = defines
-        self.preprocess = None
+        self.preprocessed = None
+        
+        self.last_wml_line = "?"
+        self.parser_line = 0
         
         self.get_datadir()
         self.get_userdir()
+    
+    def parse_file(self, path):
+        self.path = path
+
+    def parse_text(self, text):
+        self.file = tempfile.NamedTemporaryFile(prefix = "wmlparser_",
+            suffix = ".cfg")
+        self.file.write(text)
+        self.file.flush()
+        self.path = self.file.name
 
     def get_datadir(self):
         p = subprocess.Popen([self.wesnoth_exe, "--path"],
@@ -141,11 +187,18 @@ class Parser:
         output = "/tmp/wmlparser"
         if not os.path.exists(output): os.mkdir(output)
         p_option = "-p=" + self.defines if self.defines else "-p "
-        p = subprocess.Popen([self.wesnoth_exe, p_option, self.path,
-            output], stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+        commandline = [self.wesnoth_exe, p_option, self.path,
+            output]
+        p = subprocess.Popen(commandline,
+            stdout = subprocess.PIPE, stderr = subprocess.PIPE)
         out, err = p.communicate()
-        self.preprocess = output + "/" + os.path.basename(self.path) +\
+        self.preprocessed = output + "/" + os.path.basename(self.path) +\
             ".plain"
+        if not os.path.exists(self.preprocessed):
+            raise WMLError(self, "Preprocessor error:\n" +
+                " ".join(commandline) + "\n" +
+                out +
+                err)
 
     def parse_line_without_commands(self, line):
         """
@@ -260,15 +313,14 @@ class Parser:
         self.temp_string_node = None
         self.temp_key_node = None
         self.in_string = False
-        self.last_wml_line = "?"
-        self.parser_line = 0
         self.textdomain = "wesnoth"
         self.translatable = False
-        self.parent_node = [RootNode()]
+        self.root = RootNode()
+        self.parent_node = [self.root]
 
         command_marker_byte = chr(254)
         
-        input = self.preprocess
+        input = self.preprocessed
         if not input: input = self.path
 
         for rawline in open(input, "rb"):
@@ -280,8 +332,6 @@ class Parser:
                 self.handle_command(rawline[compos + 1:-1])
             else:
                 self.parse_line_without_commands(rawline)
-        
-        print(self.parent_node[0].debug())
                     
     def handle_command(self, com):
         if com.startswith("line "):
@@ -294,11 +344,12 @@ class Parser:
 if __name__ == "__main__":
     opt = optparse.OptionParser()
     opt.add_option("-i", "--input")
+    opt.add_option("-t", "--text")
     opt.add_option("-w", "--wesnoth")
     opt.add_option("-d", "--defines")
     options, args = opt.parse_args()
     
-    if not options.input:
+    if not options.input and not options.text:
         sys.stderr.write("No input given.\n")
         sys.exit(1)
     
@@ -306,14 +357,10 @@ if __name__ == "__main__":
         sys.stderr.write("Wesnoth executable not found.\n")
         sys.exit(1)
 
-    p = Parser(options.input, options.wesnoth, options.defines)
+    p = Parser(options.wesnoth, options.defines)
+    if options.input: p.parse_file(options.input)
+    elif options.text: p.parse_text(options.text)
     p.preprocess()
-
-    try:
-        p.parse()
-    except WMLError as e:
-        print("WMLError:")
-        print("    " + str(e.line) + " " + p.preprocess)
-        print("    " + e.wml_line)
-        print("    " + e.message)
+    p.parse()
+    print(p.root.debug())
 
