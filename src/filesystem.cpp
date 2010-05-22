@@ -472,7 +472,8 @@ bool create_directory_if_missing_recursive(const std::string& dirname)
 			tmp_dirname.rfind('\\') > pos )
 			pos = tmp_dirname.rfind('\\');
 
-		create_directory_if_missing_recursive(tmp_dirname.substr(0,pos));
+		if (pos != std::string::npos)
+			create_directory_if_missing_recursive(tmp_dirname.substr(0,pos));
 
 		return create_directory_if_missing(tmp_dirname);
 	}
