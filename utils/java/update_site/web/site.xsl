@@ -5,11 +5,11 @@
 <xsl:for-each select="site">
 	<html>
 	<head>
-	<title>WesnothUMCPlugin update site</title>
+	<title>Wesnoth Eclipse Plugins update site</title>
 	<style>@import url("web/site.css");</style>
 	</head>
 	<body>
-	<h1 class="title">WesnothUMCPlugin update site</h1>
+	<h1 class="title">Wesnoth Eclipse Plugins</h1>
 	<p class="bodyText"><xsl:value-of select="description"/></p>
 	<table width="100%" border="0" cellspacing="1" cellpadding="2">
 	<xsl:for-each select="category-def">

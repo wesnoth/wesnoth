@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/Wesnoth_Eclipse_Plugin_0.1.0.jar" id="Wesnoth_Eclipse_Plugin" version="0.1"/>
+   <description name="Wesnoth Eclipse Updates" url="http://eclipse.wesnoth.org/">
+      The default update site for Wesnoth Eclipse Plugins
+   </description>
+   <feature url="features/Wesnoth_Eclipse_Plugin_0.1.0.jar" id="Wesnoth_Eclipse_Plugin" version="0.1">
+      <category name="eclipse_plugins"/>
+   </feature>
    <category-def name="eclipse_plugins" label="Eclipse Plugins">
       <description>
          This category contains Eclipse Plugins
