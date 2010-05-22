@@ -398,6 +398,7 @@ class preprocessor_data: preprocessor
 	void put(char);
 	void put(std::string const & /*, int change_line
 	= 0 */);
+	void conditional_skip(bool skip);
 public:
 	preprocessor_data(preprocessor_streambuf &,
 	                  std::istream *,
@@ -595,6 +596,12 @@ void preprocessor_data::put(std::string const &s /*, int line_change*/)
 //	target_.linenum_ += line_change;
 }
 
+void preprocessor_data::conditional_skip(bool skip)
+{
+	if (skip) ++skipping_;
+	push_token(skip ? 'J' : 'i');
+}
+
 bool preprocessor_data::get_chunk()
 {
 	char c = in_->get();
@@ -734,30 +741,28 @@ bool preprocessor_data::get_chunk()
 			bool found = target_.defines_->count(symbol) != 0;
 			DBG_CF << "testing for macro " << symbol << ": "
 				<< (found ? "defined" : "not defined") << '\n';
-			if (!found) {
-				found = !get_wml_location(symbol, directory_).empty();
-				DBG_CF << "testing for file or directory " << symbol << ": "
-					<< (found ? "found" : "not found") << '\n';
-			}
-			bool skip = !found;
-			if (skip)
-				++skipping_;
-			push_token(skip ? 'J' : 'i');
+			conditional_skip(!found);
 		} else if (command == "ifndef") {
 			skip_spaces();
 			std::string const &symbol = read_word();
 			bool found = target_.defines_->count(symbol) != 0;
 			DBG_CF << "testing for macro " << symbol << ": "
 				<< (found ? "defined" : "not defined") << '\n';
-			if (!found) {
-				found = !get_wml_location(symbol, directory_).empty();
-				DBG_CF << "testing for file or directory " << symbol << ": "
-					<< (found ? "found" : "not found") << '\n';
-			}
-			bool skip = found;
-			if (skip)
-				++skipping_;
-			push_token(skip ? 'J' : 'i');
+			conditional_skip(found);
+		} else if (command == "ifhave") {
+			skip_spaces();
+			std::string const &symbol = read_word();
+			bool found = !get_wml_location(symbol, directory_).empty();
+			DBG_CF << "testing for file or directory " << symbol << ": "
+				<< (found ? "found" : "not found") << '\n';
+			conditional_skip(!found);
+		} else if (command == "ifnhave") {
+			skip_spaces();
+			std::string const &symbol = read_word();
+			bool found = !get_wml_location(symbol, directory_).empty();
+			DBG_CF << "testing for file or directory " << symbol << ": "
+				<< (found ? "found" : "not found") << '\n';
+			conditional_skip(found);
 		} else if (command == "else") {
 			if (token.type == 'J') {
 				pop_token();

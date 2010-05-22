@@ -103,7 +103,7 @@ Version 1.9.0-svn:
    * Add 'recall_cost' key for [side], to override [game_config]'s default
    * Add [replace_schedule] tag, which replaces the time of day schedule
    * Trying to include a missing macro/file is now a fatal error
-   * Extended #ifdef so that it also tests for files and directories
+   * Added #ifhave/#ifnhave for testing existence of files and directories
    * Added [volume] tag, which allows game volume to be changed during scenarios
    * Added ON_DIFFICULTY, a macro that makes using different values based on difficulty simpler
    * Prototype support for [set_global_variable]
