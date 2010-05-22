@@ -2528,6 +2528,20 @@ bool LuaKernel::execute(char const *prog, int nArgs, int nRets)
 	return luaW_pcall(L, nArgs, nRets);
 }
 
+/**
+ * Loads the "package" package into the Lua environment.
+ * This action is inherently unsafe, as Lua scripts will now be able to
+ * load C libraries on their own, hence granting them the same privileges
+ * as the Wesnoth binary itsef.
+ */
+void LuaKernel::load_package()
+{
+	lua_State *L = mState;
+	lua_pushcfunction(L, luaopen_package);
+	lua_pushstring(L, "package");
+	lua_call(L, 1, 0);
+}
+
 ai::lua_ai_context* LuaKernel::create_lua_ai_context(char const *code, ai::engine_lua *engine)
 {
 	return ai::lua_ai_context::create(mState,code,engine);

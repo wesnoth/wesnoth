@@ -29,6 +29,7 @@
 #include "game_end_exceptions.hpp"
 #include "game_events.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/dialogs/wml_message.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
@@ -2371,6 +2372,7 @@ class console_handler : public map_command_handler<console_handler>, private cha
 		void do_debug();
 		void do_nodebug();
 		void do_lua();
+		void do_unsafe_lua();
 		void do_custom();
 		void do_set_alias();
 		void do_set_var();
@@ -2457,7 +2459,9 @@ class console_handler : public map_command_handler<console_handler>, private cha
 			register_command("nodebug", &console_handler::do_nodebug,
 				_("Turn debug mode off."), "", "D");
 			register_command("lua", &console_handler::do_lua,
-				_("Execute a Lua statement."));
+				_("Execute a Lua statement."), _("<command>[;<command>...]"), "D");
+			register_command("unsafe_lua", &console_handler::do_unsafe_lua,
+				_("Grant higher privileges to Lua scripts."), "", "D");
 			register_command("custom", &console_handler::do_custom,
 				_("Set the command used by the custom command hotkey"), _("<command>[;<command>...]"));
 			register_command("inspect", &console_handler::do_inspect,
@@ -3179,6 +3183,18 @@ void console_handler::do_lua() {
 	resources::lua_kernel->run(get_data().c_str());
 	game_events::commit();
 }
+
+void console_handler::do_unsafe_lua()
+{
+	if (gui2::show_message(resources::screen->video(), _("Unsafe Lua scripts."),
+		_("You are about to open a security breach in Wesnoth. Are you sure you want to continue? If you have downloaded add-ons, do not click 'ok'! They would instantly take over your computer. You have been warned."),
+		gui2::tmessage::ok_cancel_buttons) == gui2::twindow::OK)
+	{
+		print(get_cmd(), _("Unsafe mode enabled!"));
+		resources::lua_kernel->load_package();
+	}
+}
+
 void console_handler::do_custom() {
 	preferences::set_custom_command(get_data());
 }

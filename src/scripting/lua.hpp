@@ -40,6 +40,7 @@ public:
 	void run(char const *prog) { execute(prog, 0, 0); }
 	ai::lua_ai_context* create_lua_ai_context(char const *code, ai::engine_lua *engine);
 	ai::lua_ai_action_handler* create_lua_ai_action_handler(char const *code, ai::lua_ai_context &context);
+	void load_package();
 };
 
 } //of namespace lua
