@@ -108,7 +108,7 @@
       </contexts>
    </extension>
 
-   <extension 
+   <extension
        point="org.eclipse.ui.newWizards">
        <category name="Wesnoth"
              id="wesnoth.eclipse.newWizards">
@@ -118,22 +118,22 @@
 		   category="wesnoth.eclipse.newWizards"
            class="wesnoth_eclipse_plugin.wizards.CampaignNewWizard"
            id="wesnoth_eclipse_plugin.wizards.CampaignNewWizard"
-           project="true">           
+           project="true">
            <description>Create a Wesnoth campaign.</description>
        </wizard>
   <!-- </extension> -->
 
- <!-- <extension 
+ <!-- <extension
        point="org.eclipse.ui.newWizards">
        <category name="Wesnoth"
-             id="wesnoth.eclipse.newWizards"> 
+             id="wesnoth.eclipse.newWizards">
        </category> -->
        <wizard name="Wesnoth Scenario"
            icon="icons/sample.gif"
 		   category="wesnoth.eclipse.newWizards"
            class="wesnoth_eclipse_plugin.wizards.ScenarioNewWizard"
            id="wesnoth_eclipse_plugin.wizards.ScenarioNewWizard"
-           project="false">           
+           project="false">
            <description>Create a Wesnoth campaign.</description>
        </wizard>
    </extension>
@@ -148,6 +148,12 @@
             description="Opens the wesnoth editor"
             id="Wesnoth_Eclipse_Plugin.commands.openEditor"
             name="openeditor">
+      </command>
+      <command
+            defaultHandler="wesnoth_eclipse_plugin.handlers.ImportMapHandler"
+            description="Import an existing map into the current maps folder"
+            id="Wesnoth_Eclipse_Plugin.commands.importMap"
+            name="importMap">
       </command>
    </extension>
    <extension
@@ -170,6 +176,11 @@
                   name="separator1"
                   visible="true">
             </separator>
+            <command
+                  commandId="Wesnoth_Eclipse_Plugin.commands.importMap"
+                  icon="icons/wesnoth_editor-icon_16.png"
+                  label="Import Map">
+            </command>
          </menu>
       </menuContribution>
    </extension>
