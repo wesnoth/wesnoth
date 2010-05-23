@@ -141,13 +141,13 @@ public class CampaignPage2 extends WizardPage {
 	{
 		setPageComplete(false);
 
-		if (txtAbbrev_.getText().length() == 0)
+		if (txtAbbrev_.getText().isEmpty())
 		{
 			setErrorMessage("Please specify an abbreviation.");
 			return;
 		}
 
-		if (txtDefine_.getText().length() == 0)
+		if (txtDefine_.getText().isEmpty())
 		{
 			setErrorMessage("Please specify a define.");
 			return;

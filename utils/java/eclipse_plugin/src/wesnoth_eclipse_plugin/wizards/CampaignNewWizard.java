@@ -151,7 +151,7 @@ public class CampaignNewWizard extends Wizard implements INewWizard {
 			{
 				template[i] = template[i].replace(paramName, paramValue);
 
-				if (paramValue == null || paramValue.length() == 0)
+				if (paramValue == null || paramValue.isEmpty())
 				{
 					// we don't have any value supplied -
 					// let's comment that line (if it's not already commented)

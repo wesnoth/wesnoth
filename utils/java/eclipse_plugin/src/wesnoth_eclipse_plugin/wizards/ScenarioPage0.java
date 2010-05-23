@@ -198,7 +198,7 @@ public class ScenarioPage0 extends WizardPage {
 		String fileName = getFileName();
 		String warningMessage = "";
 
-		if (getProjectName().length() == 0) {
+		if (getProjectName().isEmpty()) {
 			setErrorMessage("An existing campaign must be specified");
 			return;
 		}
@@ -218,7 +218,7 @@ public class ScenarioPage0 extends WizardPage {
 			warningMessage += "The scenario *should* be created in the \"campaign_project/scenarios\" folder.";
 		}
 
-		if (fileName.length() == 0) {
+		if (fileName.isEmpty()) {
 			setErrorMessage("File name must be specified.");
 			return;
 		}
@@ -236,13 +236,13 @@ public class ScenarioPage0 extends WizardPage {
 			}
 		}
 
-		if (txtScenarioId_.getText().length() == 0)
+		if (txtScenarioId_.getText().isEmpty())
 		{
 			setErrorMessage("The scenario ID cannot be empty.");
 			return;
 		}
 		setErrorMessage(null);
-		setMessage(warningMessage == "" ? null : warningMessage, WARNING);
+		setMessage(warningMessage.isEmpty()? null : warningMessage, WARNING);
 		setPageComplete(true);
 	}
 

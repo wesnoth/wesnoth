@@ -95,7 +95,7 @@ public class TemplateProvider {
 				{
 					template[i] = template[i].replace(param.paramName, param.paramValue);
 
-					if (param.paramValue == null || param.paramValue.length() == 0)
+					if (param.paramValue == null || param.paramValue.isEmpty())
 					{
 						// we don't have any value supplied -
 						// let's comment that line (if it's not already commented)

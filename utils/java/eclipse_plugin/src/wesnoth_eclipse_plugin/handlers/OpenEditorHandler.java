@@ -24,10 +24,10 @@ public class OpenEditorHandler extends AbstractHandler
 		String editorPath = PreferenceInitializer.getString(PreferenceConstants.P_WESNOTH_EXEC_PATH);
 		String workingDir = PreferenceInitializer.getString(PreferenceConstants.P_WESNOTH_WORKING_DIR);
 
-		if (workingDir == "")
+		if (workingDir.isEmpty())
 			workingDir = editorPath.substring(0,editorPath.lastIndexOf(new File(editorPath).getName()));
 
-		if (editorPath == "")
+		if (editorPath.isEmpty())
 		{
 			MessageBox box = new MessageBox(window.getShell());
 			box.setMessage(String.format("Please set the wesnoth's executable path first."));

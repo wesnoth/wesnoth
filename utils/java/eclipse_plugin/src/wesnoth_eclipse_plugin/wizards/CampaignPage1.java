@@ -147,14 +147,14 @@ public class CampaignPage1 extends WizardPage {
 	public void updateIsPageComplete()
 	{
 		setPageComplete(false);
-		if (txtCampaignName_.getText().length() == 0)
+		if (txtCampaignName_.getText().isEmpty())
 		{
 			setErrorMessage("Campaign name is mandatory");
 			return;
 		}
 
 		// match the pattern x.y.z
-		if (txtVersion_.getText().length() == 0 ||
+		if (txtVersion_.getText().isEmpty() ||
 			!(txtVersion_.getText().matches("[\\d]+\\.[\\d]+\\.\\d[\\w\\W\\d\\D\\s\\S]*")))
 		{
 			setErrorMessage("The version must have the format: x.y.z");
