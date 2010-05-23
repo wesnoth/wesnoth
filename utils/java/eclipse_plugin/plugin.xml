@@ -45,8 +45,8 @@
             nameFilter="*maps*"
             objectClass="org.eclipse.core.resources.IFolder">
          <action
-               class="action.ImportMap"
-               enablesFor="+"
+               class="wesnoth_eclipse_plugin.action.ImportMap"
+               enablesFor="1"
                icon="icons/wesnoth_editor-icon.png"
                id="actions.importmap"
                label="Import map"
