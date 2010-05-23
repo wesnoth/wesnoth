@@ -29,13 +29,28 @@
             adaptable="true"
             objectClass="org.eclipse.core.resources.IProject"
             nameFilter="*"
-            id="Wesnoth_Eclipse_Plugin.contribution1">
+            id="Wesnoth_Eclipse_Plugin.projectContributions">
          <action
-               label="Add/Remove Sample Nature"
                class="wesnoth_eclipse_plugin.builder.ToggleNatureAction"
-               menubarPath="additions"
                enablesFor="+"
-               id="Wesnoth_Eclipse_Plugin.addRemoveNatureAction">
+               icon="icons/wesnoth-icon.png"
+               id="actions.addRemoveNature"
+               label="Add/Remove Sample Nature"
+               menubarPath="additions">
+         </action>
+      </objectContribution>
+      <objectContribution
+            adaptable="true"
+            id="Wesnoth Eclipse Plugin.mapContributions"
+            nameFilter="*maps*"
+            objectClass="org.eclipse.core.resources.IFolder">
+         <action
+               class="action.ImportMap"
+               enablesFor="+"
+               icon="icons/wesnoth_editor-icon.png"
+               id="actions.importmap"
+               label="Import map"
+               menubarPath="additions">
          </action>
       </objectContribution>
    </extension>
@@ -140,11 +155,13 @@
       <menuContribution
             locationURI="menu:org.eclipse.ui.main.menu?after=additions">
          <menu
+               icon="icons/wesnoth-icon_16.png"
                id="Wesnoth_Eclipse_Plugin.menus.wesnothMenu"
                label="Wesnoth"
                mnemonic="h">
             <command
                   commandId="Wesnoth_Eclipse_Plugin.commands.openEditor"
+                  icon="icons/wesnoth_editor-icon_16.png"
                   id="Wesnoth_Eclipse_Plugin.menus.openEditor"
                   label="Open editor"
                   mnemonic="e">
