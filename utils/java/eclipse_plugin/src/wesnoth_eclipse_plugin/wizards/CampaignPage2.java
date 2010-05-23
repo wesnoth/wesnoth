@@ -16,7 +16,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
-import wesnoth_eclipse_plugin.StringUtils;
+import wesnoth_eclipse_plugin.utils.StringUtils;
 
 public class CampaignPage2 extends WizardPage {
 	private Text txtAbbrev_;

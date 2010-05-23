@@ -25,8 +25,8 @@ import org.eclipse.ui.IWorkbench;
 
 import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.ReplaceableParameter;
-import wesnoth_eclipse_plugin.StringUtils;
 import wesnoth_eclipse_plugin.TemplateProvider;
+import wesnoth_eclipse_plugin.utils.StringUtils;
 
 public class CampaignNewWizard extends Wizard implements INewWizard {
 

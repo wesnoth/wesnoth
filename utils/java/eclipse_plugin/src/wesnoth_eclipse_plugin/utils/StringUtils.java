@@ -1,7 +1,7 @@
 /**
  * @author Timotei Dolean
  */
-package wesnoth_eclipse_plugin;
+package wesnoth_eclipse_plugin.utils;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

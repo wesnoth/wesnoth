@@ -9,6 +9,8 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import wesnoth_eclipse_plugin.utils.StringUtils;
+
 
 public class TemplateProvider {
 
