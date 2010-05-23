@@ -33,7 +33,7 @@
          <action
                class="wesnoth_eclipse_plugin.builder.ToggleNatureAction"
                enablesFor="+"
-               icon="icons/wesnoth-icon.png"
+               icon="icons/wesnoth-icon_16.png"
                id="actions.addRemoveNature"
                label="Add/Remove Sample Nature"
                menubarPath="additions">
@@ -47,9 +47,23 @@
          <action
                class="wesnoth_eclipse_plugin.action.ImportMap"
                enablesFor="1"
-               icon="icons/wesnoth_editor-icon.png"
+               icon="icons/wesnoth_editor-icon_16.png"
                id="actions.importmap"
                label="Import map"
+               menubarPath="additions">
+         </action>
+      </objectContribution>
+      <objectContribution
+            adaptable="false"
+            id="Wesnoth Eclipse Plugin.mapFilesContributions"
+            nameFilter="*.map"
+            objectClass="org.eclipse.core.resources.IFile">
+         <action
+               class="wesnoth_eclipse_plugin.action.OpenMapInEditor"
+               enablesFor="1"
+               icon="icons/wesnoth_editor-icon_16.png"
+               id="actions.openMapInEditor"
+               label="Open map in editor"
                menubarPath="additions">
          </action>
       </objectContribution>
@@ -155,6 +169,12 @@
             id="Wesnoth_Eclipse_Plugin.commands.importMap"
             name="importMap">
       </command>
+      <command
+            defaultHandler="wesnoth_eclipse_plugin.handlers.OpenMapHandler"
+            description="Opens the selected map in the map editor"
+            id="Wesnoth_Eclipse_Plugin.commands.openMapInEditor"
+            name="openMapInEditor">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.menus">
@@ -180,6 +200,12 @@
                   commandId="Wesnoth_Eclipse_Plugin.commands.importMap"
                   icon="icons/wesnoth_editor-icon_16.png"
                   label="Import Map">
+            </command>
+            <command
+                  commandId="Wesnoth_Eclipse_Plugin.commands.openMapInEditor"
+                  icon="icons/wesnoth_editor-icon_16.png"
+                  label="Open map with editor"
+                  style="push">
             </command>
          </menu>
       </menuContribution>

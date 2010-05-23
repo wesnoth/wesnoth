@@ -3,6 +3,7 @@
  */
 package wesnoth_eclipse_plugin.utils;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -29,6 +30,16 @@ public class WorkspaceUtils
 
 		return (IFolder)selection.getFirstElement();
 	}
+
+	public static IFile getSelectedFile(IWorkbenchWindow window)
+	{
+		IStructuredSelection selection = getSelectedStructuredSelection(window);
+		if (selection == null || !(selection.getFirstElement() instanceof IFile))
+			return null;
+
+		return (IFile)selection.getFirstElement();
+	}
+
 	public static IStructuredSelection getSelectedStructuredSelection(IWorkbenchWindow window)
 	{
 		if (window == null)

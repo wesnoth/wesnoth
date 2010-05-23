@@ -10,7 +10,6 @@ import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -29,17 +28,11 @@ import wesnoth_eclipse_plugin.TemplateProvider;
 import wesnoth_eclipse_plugin.utils.StringUtils;
 
 public class CampaignNewWizard extends Wizard implements INewWizard {
-
-	private org.eclipse.ui.IWorkbench workbench;
-	private org.eclipse.jface.viewers.IStructuredSelection selection;
-
 	protected CampaignPage0 page0_;
 	protected CampaignPage1 page1_;
 	protected CampaignPage2 page2_;
 
 	protected int lastPageHashCode_=0;
-
-	private IConfigurationElement fConfig;
 
 	@Override
 	public void addPages() {
@@ -63,8 +56,6 @@ public class CampaignNewWizard extends Wizard implements INewWizard {
 
 	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
-		this.workbench = workbench;
-		this.selection = selection;
 	}
 
 	@Override

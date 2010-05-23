@@ -78,11 +78,9 @@ public class ScenarioPage0 extends WizardPage {
 			}
 		};
 
-		Label label;
 		lblproject = new Label(container, SWT.NULL);
 		lblproject.setText("Project* :");
 		txtProject_ = new Text(container, SWT.BORDER | SWT.SINGLE);
-		GridData gd;
 		gd_txtProject_ = new GridData(GridData.FILL_HORIZONTAL);
 		txtProject_.setLayoutData(gd_txtProject_);
 		txtProject_.addModifyListener(modifyListener);
