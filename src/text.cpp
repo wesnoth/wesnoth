@@ -271,18 +271,25 @@ bool ttext::set_text(const std::string& text, const bool markedup)
 	if(markedup != markedup_text_ || text != text_) {
 		assert(layout_);
 
+		const wide_string wide = utils::string_to_wstring(text);
+		const std::string narrow = utils::wstring_to_string(wide);
+		if(text != narrow) {
+			ERR_GUI_L << "ttext::" << __func__
+					<< " text '" << text
+					<< "' contains invalid utf-8, trimmed the invalid parts.\n";
+		}
 		if(markedup) {
-			if(!pango_parse_markup(text.c_str(), text.size()
+			if(!pango_parse_markup(narrow.c_str(), narrow.size()
 						, 0, NULL, NULL, NULL, NULL)) {
 
 				ERR_GUI_L << "ttext::" << __func__
-						<< " text '" << text
+						<< " text '" << narrow
 						<< "' has broken markup, set to normal text.\n";
 
-				set_text(_("The text contains invalid markup: ") + text, false);
+				set_text(_("The text contains invalid markup: ") + narrow, false);
 				return false;
 			}
-			pango_layout_set_markup(layout_, text.c_str(), text.size());
+			pango_layout_set_markup(layout_, narrow.c_str(), narrow.size());
 		} else {
 			/*
 			 * pango_layout_set_text after pango_layout_set_markup might
@@ -290,10 +297,10 @@ bool ttext::set_text(const std::string& text, const bool markedup)
 			 * clear it unconditionally.
 			 */
 			pango_layout_set_attributes(layout_, NULL);
-			pango_layout_set_text(layout_, text.c_str(), text.size());
+			pango_layout_set_text(layout_, narrow.c_str(), narrow.size());
 		}
-		text_ = text;
-		length_ = utils::string_to_wstring(text_).size();
+		text_ = narrow;
+		length_ = wide.size();
 		markedup_text_ = markedup;
 		calculation_dirty_ = true;
 		surface_dirty_ = true;
