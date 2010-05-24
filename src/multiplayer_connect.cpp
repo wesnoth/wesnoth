@@ -61,24 +61,24 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	parent_(&parent),
 	cfg_(cfg),
 	index_(index),
-	id_(cfg_["id"]),
-	player_id_(cfg_["player_id"]),
-	save_id_(cfg_["save_id"]),
-	current_player_(cfg_["current_player"]),
+	id_(cfg["id"]),
+	player_id_(cfg["player_id"]),
+	save_id_(cfg["save_id"]),
+	current_player_(cfg["current_player"]),
 	controller_(CNTR_NETWORK),
-	faction_(cfg_["faction"]),
+	faction_(cfg["faction"]),
 	team_(0),
 	colour_(index),
-	gold_(cfg_["gold"].to_int(100)),
-	income_(cfg_["income"]),
+	gold_(cfg["gold"].to_int(100)),
+	income_(cfg["income"]),
 	leader_(),
 	gender_(),
 	ai_algorithm_(),
 	ready_for_start_(false),
-	gold_lock_(cfg_["gold_lock"].to_bool()),
-	income_lock_(cfg_["income_lock"].to_bool()),
-	team_lock_(cfg_["team_lock"].to_bool()),
-	colour_lock_(cfg_["colour_lock"].to_bool()),
+	gold_lock_(cfg["gold_lock"].to_bool()),
+	income_lock_(cfg["income_lock"].to_bool()),
+	team_lock_(cfg["team_lock"].to_bool()),
+	colour_lock_(cfg["colour_lock"].to_bool()),
 	player_number_(parent.video(), lexical_cast_default<std::string>(index+1, ""),
 	               font::SIZE_LARGE, font::LOBBY_COLOUR),
 	combo_controller_(new gui::combo_drag(parent.disp(), parent.player_types_, parent.combo_control_group_)),
@@ -93,8 +93,8 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	slider_income_(parent.video()),
 	label_gold_(parent.video(), "100", font::SIZE_SMALL, font::LOBBY_COLOUR),
 	label_income_(parent.video(), _("Normal"), font::SIZE_SMALL, font::LOBBY_COLOUR),
-	allow_player_(cfg_["allow_player"].to_bool(true)),
-	allow_changes_(cfg_["allow_changes"].to_bool(true)),
+	allow_player_(cfg["allow_player"].to_bool(true)),
+	allow_changes_(cfg["allow_changes"].to_bool(true)),
 	enabled_(!parent_->params_.saved_game), changed_(false),
 	llm_(parent.era_sides_, enabled_ ? &combo_leader_ : NULL, enabled_ ? &combo_gender_ : NULL)
 {
@@ -133,13 +133,13 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	slider_gold_.set_min(20);
 	slider_gold_.set_max(800);
 	slider_gold_.set_increment(25);
-	slider_gold_.set_value(cfg_["gold"].to_int(100));
+	slider_gold_.set_value(cfg["gold"].to_int(100));
 	slider_gold_.set_measurements(80, 16);
 
 	slider_income_.set_min(-2);
 	slider_income_.set_max(18);
 	slider_income_.set_increment(1);
-	slider_income_.set_value(cfg_["income"]);
+	slider_income_.set_value(cfg["income"]);
 	slider_income_.set_measurements(50, 16);
 
 	combo_faction_.enable(enabled_);
@@ -154,21 +154,21 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 
 	std::vector<std::string>::const_iterator itor =
 			std::find(parent_->team_names_.begin(), parent_->team_names_.end(),
-			cfg_["team_name"]);
+			cfg["team_name"]);
 	if(itor == parent_->team_names_.end()) {
 		assert(!parent_->team_names_.empty());
 		team_ = 0;
 	} else {
 		team_ = itor - parent_->team_names_.begin();
 	}
-	if (cfg_.has_attribute("colour")) {
-		colour_ = game_config::color_info(cfg_["colour"]).index() - 1;
+	if (cfg.has_attribute("colour")) {
+		colour_ = game_config::color_info(cfg["colour"]).index() - 1;
 	}
 	llm_.set_colour(colour_);
 
 	update_faction_combo();
 
-	if (const config &ai = cfg_.child("ai"))
+	if (const config &ai = cfg.child("ai"))
 		ai_algorithm_ = lexical_cast_default<std::string>(ai["ai_algorithm"], "default");
 	else
 		ai_algorithm_ = "default";
@@ -178,7 +178,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	if (!enabled_) {
 		faction_ = 0;
 		std::vector<std::string> pseudo_factions;
-		pseudo_factions.push_back(cfg_["name"]);
+		pseudo_factions.push_back(cfg["name"]);
 		combo_faction_.set_items(pseudo_factions);
 		combo_faction_.set_selected(0);
 
@@ -236,8 +236,8 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 		combo_colour_.enable(!colour_lock_);
 
 		// Set the leader and gender
-		leader_ = cfg_["type"].str();
-		gender_ = cfg_["gender"].str();
+		leader_ = cfg["type"].str();
+		gender_ = cfg["gender"].str();
 		if(!leader_.empty()) {
 			combo_leader_.enable(false);
 			combo_gender_.enable(false);
@@ -275,13 +275,13 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 		if(faction_ == 0) {
 			std::vector<std::string> find;
 			std::string search_field;
-			if(cfg_.has_attribute("faction")) {
+			if (cfg.has_attribute("faction")) {
 				// Choose based on faction
-				find.push_back(cfg_["faction"]);
+				find.push_back(cfg["faction"]);
 				search_field = "id";
-			} else if(utils::string_bool(cfg["faction_from_recruit"]) && cfg_.has_attribute("recruit")) {
+			} else if (cfg["faction_from_recruit"].to_bool() && cfg.has_attribute("recruit")) {
 				// Choose based on recruit
-				find = utils::split(cfg_["recruit"]);
+				find = utils::split(cfg["recruit"]);
 				search_field = "recruit";
 			} else if(!leader_.empty()) {
 				// Choose based on leader
