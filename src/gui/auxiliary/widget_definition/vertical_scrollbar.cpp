@@ -32,12 +32,10 @@ tvertical_scrollbar_definition::tvertical_scrollbar_definition(
 
 tvertical_scrollbar_definition::tresolution::tresolution(const config& cfg)
 	: tresolution_definition_(cfg)
-	, minimum_positioner_length(
-			lexical_cast_default<unsigned>(cfg["minimum_positioner_length"]))
-	, maximum_positioner_length(
-			lexical_cast_default<unsigned>(cfg["maximum_positioner_length"]))
-	, top_offset(lexical_cast_default<unsigned>(cfg["top_offset"]))
-	, bottom_offset(lexical_cast_default<unsigned>(cfg["bottom_offset"]))
+	, minimum_positioner_length(cfg["minimum_positioner_length"])
+	, maximum_positioner_length(cfg["maximum_positioner_length"])
+	, top_offset(cfg["top_offset"])
+	, bottom_offset(cfg["bottom_offset"])
 {
 /*WIKI
  * @page = GUIWidgetDefinitionWML
