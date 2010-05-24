@@ -30,10 +30,10 @@ tpanel_definition::tpanel_definition(const config& cfg)
 
 tpanel_definition::tresolution::tresolution(const config& cfg)
 	: tresolution_definition_(cfg)
-	, top_border(lexical_cast_default<unsigned>(cfg["top_border"]))
-	, bottom_border(lexical_cast_default<unsigned>(cfg["bottom_border"]))
-	, left_border(lexical_cast_default<unsigned>(cfg["left_border"]))
-	, right_border(lexical_cast_default<unsigned>(cfg["right_border"]))
+	, top_border(cfg["top_border"])
+	, bottom_border(cfg["bottom_border"])
+	, left_border(cfg["left_border"])
+	, right_border(cfg["right_border"])
 {
 /*WIKI
  * @page = GUIWidgetDefinitionWML
