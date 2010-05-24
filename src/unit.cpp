@@ -113,7 +113,7 @@ static unit_race::GENDER generate_gender(const config &cfg, game_state *state)
 	if (type.empty())
 		return unit_race::MALE;
 
-	bool random_gender = utils::string_bool(cfg["random_gender"], false);
+	bool random_gender = cfg["random_gender"].to_bool();
 	return generate_gender(type, random_gender, state);
 }
 
@@ -222,7 +222,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	experience_(0),
 	max_experience_(0),
 	level_(0),
-	canrecruit_(utils::string_bool(cfg["canrecruit"])),
+	canrecruit_(cfg["canrecruit"].to_bool()),
 	alignment_(),
 	flag_rgb_(),
 	image_mods_(),
@@ -284,14 +284,14 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 
 	cfg_.clear_children("unit"); //remove underlying unit definitions from scenario files
 
-	side_ = lexical_cast_default<int>(cfg["side"]);
+	side_ = cfg["side"];
 	if(side_ <= 0) {
 		side_ = 1;
 	}
 
 	validate_side(side_);
 
-	underlying_id_ = lexical_cast_default<size_t>(cfg["underlying_id"],0);
+	underlying_id_ = cfg["underlying_id"];
 	set_underlying_id();
 
 	overlays_ = utils::parenthetical_split(cfg["overlays"], ',');
@@ -320,29 +320,29 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 			race_ = &dummy_race;
 		}
 	}
-	level_ = lexical_cast_default<int>(cfg["level"], level_);
+	level_ = cfg["level"].to_int(level_);
 	if(cfg["undead_variation"] != "") {
 		undead_variation_ = cfg["undead_variation"].str();
 	}
 	if(cfg["max_attacks"] != "") {
-		max_attacks_ = std::max<int>(0,lexical_cast_default<int>(cfg["max_attacks"],1));
+		max_attacks_ = std::max(0, cfg["max_attacks"].to_int(1));
 	}
-	attacks_left_ = std::max<int>(0,lexical_cast_default<int>(cfg["attacks_left"], max_attacks_));
+	attacks_left_ = std::max(0, cfg["attacks_left"].to_int(max_attacks_));
 
 	if(cfg["alpha"] != "") {
 		alpha_ = lexical_cast_default<fixed_t>(cfg["alpha"]);
 	}
-	if(cfg["zoc"] != "") {
-		emit_zoc_ = utils::string_bool(cfg["zoc"]);
+	if (cfg.has_attribute("zoc")) {
+		emit_zoc_ = cfg["zoc"].to_bool();
 	}
-	if(cfg["flying"] != "") {
-		flying_ = utils::string_bool(cfg["flying"]);
+	if (cfg.has_attribute("flying")) {
+		flying_ = cfg["flying"].to_bool();
 	}
 	if (cfg.has_attribute("description")) {
 		cfg_["description"] = cfg["description"];
 	}
-	if(cfg["cost"] != "") {
-		unit_value_ = lexical_cast_default<int>(cfg["cost"]);
+	if (cfg.has_attribute("cost")) {
+		unit_value_ = cfg["cost"];
 	}
 	if(cfg["halo"] != "") {
 		clear_haloes();
@@ -351,9 +351,9 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	if(cfg["profile"] != "") {
 		cfg_["profile"] = cfg["profile"];
 	}
-	max_hit_points_ = std::max<int>(1,lexical_cast_default<int>(cfg["max_hitpoints"], max_hit_points_));
-	max_movement_ = std::max<int>(0,lexical_cast_default<int>(cfg["max_moves"], max_movement_));
-	max_experience_ = std::max<int>(1,lexical_cast_default<int>(cfg["max_experience"], max_experience_));
+	max_hit_points_ = std::max(1, cfg["max_hitpoints"].to_int(max_hit_points_));
+	max_movement_ = std::max(0, cfg["max_moves"].to_int(max_movement_));
+	max_experience_ = std::max(1, cfg["max_experience"].to_int(max_experience_));
 
 	std::vector<std::string> temp_advances = utils::split(cfg["advances_to"]);
 	if(temp_advances.size() == 1 && temp_advances.front() == "null") {
@@ -439,10 +439,10 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 			if (st.first == "healable") {
 				ERR_UT << "Usage of 'healable' is deprecated, use 'unhealable' instead, "
 					"support will be removed in 1.9.2.\n";
-				if (!utils::string_bool(st.second, true))
+				if (!st.second.to_bool(true))
 					set_state("unhealable", true);
 			} else {
-				set_state(st.first, utils::string_bool(st.second));
+				set_state(st.first, st.second.to_bool());
 			}
 		}
 		cfg_.clear_children("status");
@@ -456,14 +456,14 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 		cfg_.clear_children(tag_name);
 	}
 
-	if(cfg["hitpoints"] != "") {
-		hit_points_ = lexical_cast_default<int>(cfg["hitpoints"]);
+	if (cfg.has_attribute("hitpoints")) {
+		hit_points_ = cfg["hitpoints"];
 	} else {
 		hit_points_ = max_hit_points_;
 	}
 
-	goto_.x = lexical_cast_default<int>(cfg["goto_x"]) - 1;
-	goto_.y = lexical_cast_default<int>(cfg["goto_y"]) - 1;
+	goto_.x = cfg["goto_x"].to_int() - 1;
+	goto_.y = cfg["goto_y"].to_int() - 1;
 	if (const config &waypoints = cfg.child("waypoints")) {
 		read_locations(waypoints, waypoints_);
 		if(waypoints_.empty()==false){
@@ -475,7 +475,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	}
 
 	if(cfg["moves"] != "") {
-		movement_ = lexical_cast_default<int>(cfg["moves"]);
+		movement_ = cfg["moves"];
 		if(movement_ < 0) {
 			attacks_left_ = 0;
 			movement_ = 0;
@@ -483,9 +483,9 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	} else {
 		movement_ = max_movement_;
 	}
-	experience_ = lexical_cast_default<int>(cfg["experience"]);
-	resting_ = utils::string_bool(cfg["resting"]);
-	unrenamable_ = utils::string_bool(cfg["unrenamable"]);
+	experience_ = cfg["experience"];
+	resting_ = cfg["resting"].to_bool();
+	unrenamable_ = cfg["unrenamable"].to_bool();
 	if(cfg["alignment"]=="lawful") {
 		alignment_ = unit_type::LAWFUL;
 	} else if(cfg["alignment"]=="neutral") {
@@ -693,7 +693,7 @@ void unit::set_game_context(unit_map *unitmap)
 
 void unit::generate_name(rand_rng::simple_rng* rng)
 {
-	if (!name_.empty() || !utils::string_bool(cfg_["generate_name"], true)) return;
+	if (!name_.empty() || !cfg_["generate_name"].to_bool(true)) return;
 
 	name_ = race_->generate_name(gender_, rng);
 	cfg_["generate_name"] = false;
@@ -874,7 +874,7 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 		type_ = t->id();
 	}
 
-	if(utils::string_bool(cfg_["random_traits"], true)) {
+	if (cfg_["random_traits"].to_bool(true)) {
 		generate_traits(!use_traits, state);
 	} else {
 		// This will add any "musthave" traits to the new unit that it doesn't already have.
@@ -1592,7 +1592,7 @@ void unit::write(config& cfg) const
 
 	cfg["name"] = name_;
 	cfg["id"] = id_;
-	cfg["underlying_id"] = lexical_cast<std::string>(underlying_id_);
+	cfg["underlying_id"] = str_cast(underlying_id_);
 
 	if(can_recruit())
 		cfg["canrecruit"] = true;
@@ -1639,7 +1639,7 @@ void unit::write(config& cfg) const
 	}
 	cfg["flag_rgb"] = flag_rgb_;
 	cfg["unrenamable"] = unrenamable_;
-	cfg["alpha"] = lexical_cast_default<std::string>(alpha_);
+	cfg["alpha"] = str_cast(alpha_);
 
 	cfg["attacks_left"] = attacks_left_;
 	cfg["max_attacks"] = max_attacks_;
@@ -2004,7 +2004,7 @@ int unit::upkeep() const
 	if(cfg_["upkeep"] == "free") {
 		return 0;
 	}
-	return lexical_cast_default<int>(cfg_["upkeep"]);
+	return cfg_["upkeep"];
 }
 
 bool unit::loyal() const
@@ -2159,10 +2159,9 @@ std::vector<config> unit::get_modification_advances() const
 	std::vector<config> res;
 	foreach (const config &adv, modification_advancements())
 	{
-		if (utils::string_bool(adv["strict_amla"]) && !advances_to_.empty())
+		if (adv["strict_amla"].to_bool() && !advances_to_.empty())
 			continue;
-		if (modification_count("advance", adv["id"]) >=
-		    lexical_cast_default<size_t>(adv["max_times"], 1))
+		if (modification_count("advance", adv["id"]) >= unsigned(adv["max_times"].to_int(1)))
 			continue;
 
 		std::vector<std::string> temp = utils::split(adv["require_amla"]);
@@ -2209,8 +2208,8 @@ static void mod_mdr_merge(config& dst, const config& mod, bool delta)
 {
 	foreach (const config::attribute &i, mod.attribute_range()) {
 		int v = 0;
-		if (delta) v = lexical_cast_default<int>(dst[i.first]);
-		dst[i.first] = v + lexical_cast_default<int>(i.second);
+		if (delta) v = dst[i.first];
+		dst[i.first] = v + i.second.to_int();
 	}
 }
 
@@ -2407,27 +2406,23 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 				} else if (apply_to == "movement_costs") {
 					config &mv = cfg_.child_or_add("movement_costs");
 					if (const config &ap = effect.child("movement_costs")) {
-						const std::string &replace = effect["replace"];
-						mod_mdr_merge(mv, ap, !utils::string_bool(replace));
+						mod_mdr_merge(mv, ap, !effect["replace"].to_bool());
 					}
 					movement_costs_.clear();
 				} else if (apply_to == "defense") {
 					config &mv = cfg_.child_or_add("defense");
 					if (const config &ap = effect.child("defense")) {
-						const std::string &replace = effect["replace"];
-						mod_mdr_merge(mv, ap, !utils::string_bool(replace));
+						mod_mdr_merge(mv, ap, !effect["replace"].to_bool());
 					}
 					defense_mods_.clear();
 				} else if (apply_to == "resistance") {
 					config &mv = cfg_.child_or_add("resistance");
 					if (const config &ap = effect.child("resistance")) {
-						const std::string &replace = effect["replace"];
-						mod_mdr_merge(mv, ap, !utils::string_bool(replace));
+						mod_mdr_merge(mv, ap, !effect["replace"].to_bool());
 					}
 				} else if (apply_to == "zoc") {
-					const std::string &zoc_value = effect["value"];
-					if(!zoc_value.empty()) {
-						emit_zoc_ = utils::string_bool(zoc_value);
+					if (effect.has_attribute("value")) {
+						emit_zoc_ = effect["value"].to_bool();
 					}
 				} else if (apply_to == "new_ability") {
 					config &ab = cfg_.child_or_add("abilities");
