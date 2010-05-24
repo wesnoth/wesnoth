@@ -1168,7 +1168,6 @@ WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 			DBG_WML << "Moving unit " << un << ", doing step " << step << '\n';
 			path_step[0] = paths[un][step - 1];
 			path_step[1] = paths[un][step];
-			resources::screen->delay(400);
 			unit_display::move_unit(path_step, units[un], *resources::teams);
 			units[un].set_location(path_step[1]);
 			units[un].set_standing();
