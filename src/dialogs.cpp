@@ -95,7 +95,7 @@ void advance_unit(const map_location &loc, bool random_choice, bool add_replay_e
 	bool always_display = false;
 	foreach (const config &mod, u->get_modification_advances())
 	{
-		if (utils::string_bool(mod["always_display"])) always_display = true;
+		if (mod["always_display"].to_bool()) always_display = true;
 		sample_units.push_back(::get_advanced_unit(*u, u->type_id()));
 		sample_units.back().add_modification("advance", mod);
 		const unit& type = sample_units.back();
@@ -337,13 +337,13 @@ void save_preview_pane::draw_contents()
 	}
 
 	std::string dummy;
-	config& summary = *summaries_[index_];
-	if (summary["label"] == ""){
+	const config &summary = *summaries_[index_];
+	if (summary["label"].empty())
+	{
 		try {
-			savegame::manager::load_summary((*info_)[index_].name, summary, &dummy);
-			*summaries_[index_] = summary;
+			savegame::manager::load_summary((*info_)[index_].name, *summaries_[index_], &dummy);
 		} catch(game::load_game_failed&) {
-			summary["corrupt"] = true;
+			(*summaries_[index_])["corrupt"] = true;
 		}
 	}
 
@@ -439,7 +439,7 @@ void save_preview_pane::draw_contents()
 		<< (*info_)[index_].name << '\n' << time_buf;
 
 	const std::string& campaign_type = summary["campaign_type"];
-	if(utils::string_bool(summary["corrupt"], false)) {
+	if (summary["corrupt"].to_bool()) {
 		str << "\n" << _("#(Invalid)");
 	} else if (!campaign_type.empty()) {
 		str << "\n";
@@ -474,7 +474,7 @@ void save_preview_pane::draw_contents()
 
 		str << "\n";
 
-		if(utils::string_bool(summary["replay"], false) && !utils::string_bool(summary["snapshot"], true)) {
+		if (summary["replay"].to_bool() && !summary["snapshot"].to_bool(true)) {
 			str << _("replay");
 		} else if (!summary["turn"].empty()) {
 			str << _("Turn") << " " << summary["turn"];
@@ -628,7 +628,7 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sho
 	  *show_replay = lmenu.option_checked(option_index++);
 
 		const config& summary = *summaries[res];
-		if(utils::string_bool(summary["replay"], false) && !utils::string_bool(summary["snapshot"], true)) {
+		if (summary["replay"].to_bool() && !summary["snapshot"].to_bool(true)) {
 			*show_replay = true;
 		}
 	}
@@ -966,7 +966,7 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
 	// xp_color also need a simpler function for doing this
 	foreach (const config &adv, t->modification_advancements())
 	{
-		if (!utils::string_bool(adv["strict_amla"]) || !t->can_advance()) {
+		if (!adv["strict_amla"].to_bool() || !t->can_advance()) {
 			det.xp_color = "<170,0,255>"; // from unit::xp_color()
 			break;
 		}
