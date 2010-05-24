@@ -127,8 +127,7 @@ class RootNode(TagNode):
     The root node. There is exactly one such node.
     """
     def __init__(self):
-        self.name = None
-        self.data = []
+        TagNode.__init__(self, None)
 
     def debug(self):
         s = ""
