@@ -15,6 +15,7 @@ Version 1.8.1+svn:
    * Don't crash if a [story] [part] [if] misses [then] or [else] (bug #16028)
    * Added an advanced preference for disabling desktop notifications.
    * Added an internal command 'unsafe_lua' for enabling remote debugging.
+   * Fix a crash on OS X caused by passing invalid utf8 to pango
 
 Version 1.8.1:
  * Campaigns:
