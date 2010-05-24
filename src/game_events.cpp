@@ -717,7 +717,7 @@ WML_HANDLER_FUNCTION(volume, /*event_info*/, cfg)
 {
 
 	int vol;
-	float rel;	
+	float rel;
 	std::string music = cfg["music"];
 	std::string sound = cfg["sound"];
 
@@ -738,7 +738,7 @@ WML_HANDLER_FUNCTION(volume, /*event_info*/, cfg)
 		}
 		sound::set_sound_volume(vol);
 	}
-	
+
 }
 
 WML_HANDLER_FUNCTION(sound, /*event_info*/, cfg)

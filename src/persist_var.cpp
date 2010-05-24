@@ -41,7 +41,7 @@ static void get_global_variable(persist_context &ctx, const vconfig &pcfg)
 static void clear_global_variable(persist_context &ctx, const vconfig &pcfg)
 {
 	std::string global = pcfg["global"];
-	ctx.clear_var(global);	
+	ctx.clear_var(global);
 }
 
 static void set_global_variable(persist_context &ctx, const vconfig &pcfg)

@@ -2537,7 +2537,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 	if (!mod_description.empty()) {
 		description = mod_description + " ";
 	}
-	
+
 	// Punctuation should be translatable: not all languages use latin punctuation.
 	// (However, there maybe is a better way to do it)
 	if(effects_description.empty() == false) {

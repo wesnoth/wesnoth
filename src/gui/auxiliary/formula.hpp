@@ -102,7 +102,7 @@ private:
 	 */
 	T execute(const game_logic::map_formula_callable& variables) const;
 
-	/** 
+	/**
 	 * Contains the formuale for the variable.
 	 *
 	 * If the string is empty, there's no formula.
