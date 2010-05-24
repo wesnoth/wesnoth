@@ -28,8 +28,13 @@ static lg::log_domain log_ai_aspect("ai/aspect");
 #define WRN_AI_ASPECT LOG_STREAM(warn, log_ai_aspect)
 #define ERR_AI_ASPECT LOG_STREAM(err, log_ai_aspect)
 
-aspect::aspect(readonly_context &context, const config &cfg, const std::string &id)
-		: valid_(false), valid_variant_(false), cfg_(cfg), invalidate_on_turn_start_(utils::string_bool(cfg["invalidate_on_turn_start"],true)), invalidate_on_tod_change_(utils::string_bool(cfg["invalidate_on_tod_change"],true)), invalidate_on_gamestate_change_(utils::string_bool(cfg["invalidate_on_gamestate_change"])), invalidate_on_minor_gamestate_change_(utils::string_bool(cfg["invalidate_on_minor_gamestate_change"])),engine_(cfg["engine"]),name_(cfg["name"]),id_(id)
+aspect::aspect(readonly_context &context, const config &cfg, const std::string &id):
+	valid_(false), valid_variant_(false), cfg_(cfg),
+	invalidate_on_turn_start_(cfg["invalidate_on_turn_start"].to_bool(true)),
+	invalidate_on_tod_change_(cfg["invalidate_on_tod_change"].to_bool(true)),
+	invalidate_on_gamestate_change_(cfg["invalidate_on_gamestate_change"].to_bool()),
+	invalidate_on_minor_gamestate_change_(cfg["invalidate_on_minor_gamestate_change"].to_bool()),
+	engine_(cfg["engine"]), name_(cfg["name"]), id_(id)
 	{
 		DBG_AI_ASPECT << "creating new aspect: engine=["<<engine_<<"], name=["<<name_<<"], id=["<<id_<<"]"<< std::endl;
 		init_readonly_context_proxy(context);
@@ -84,10 +89,10 @@ bool aspect::redeploy(const config &cfg, const std::string& /*id*/)
 	valid_ = false;
 	valid_variant_ =false;
 	cfg_ = cfg;
-	invalidate_on_turn_start_ = utils::string_bool(cfg["invalidate_on_turn_start"],true);
-	invalidate_on_tod_change_ = utils::string_bool(cfg["invalidate_on_tod_change"],true);
-	invalidate_on_gamestate_change_ = utils::string_bool(cfg["invalidate_on_gamestate_change"]);
-	invalidate_on_minor_gamestate_change_ = utils::string_bool(cfg["invalidate_on_minor_gamestate_change"]);
+	invalidate_on_turn_start_ = cfg["invalidate_on_turn_start"].to_bool(true);
+	invalidate_on_tod_change_ = cfg["invalidate_on_tod_change"].to_bool(true);
+	invalidate_on_gamestate_change_ = cfg["invalidate_on_gamestate_change"].to_bool();
+	invalidate_on_minor_gamestate_change_ = cfg["invalidate_on_minor_gamestate_change"].to_bool();
 	engine_ = cfg["engine"].str();
 	name_ = cfg["name"].str();
 	id_ = cfg["id"].str();
