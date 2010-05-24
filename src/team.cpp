@@ -48,10 +48,10 @@ const std::vector<team>& teams_manager::get_teams()
 
 team::team_info::team_info(const config& cfg) :
 		name(cfg["name"]),
-		gold(lexical_cast_default<int>(cfg["gold"])),
+		gold(cfg["gold"]),
 		start_gold(0),
 		gold_add(false),
-		income(lexical_cast_default<int>(cfg["income"])),
+		income(cfg["income"]),
 		income_per_village(0),
 		recall_cost(0),
 		average_price(0),
@@ -61,23 +61,23 @@ team::team_info::team_info(const config& cfg) :
 		save_id(cfg["save_id"]),
 		current_player(cfg["current_player"]),
 		countdown_time(cfg["countdown_time"]),
-		action_bonus_count(lexical_cast_default<int>(cfg["action_bonus_count"])),
+		action_bonus_count(cfg["action_bonus_count"]),
 		flag(cfg["flag"]),
 		flag_icon(cfg["flag_icon"]),
 		description(cfg["id"]),
-		scroll_to_leader(utils::string_bool(cfg["scroll_to_leader"],true)),
+		scroll_to_leader(cfg["scroll_to_leader"].to_bool(true)),
 		objectives(cfg["objectives"].t_str()),
-		objectives_changed(utils::string_bool(cfg["objectives_changed"])),
+		objectives_changed(cfg["objectives_changed"].to_bool()),
 		controller(),
 		share_maps(false),
 		share_view(false),
-		disallow_observers(utils::string_bool(cfg["disallow_observers"])),
-		allow_player(utils::string_bool(cfg["allow_player"], true)),
-		no_leader(utils::string_bool(cfg["no_leader"])),
-		hidden(utils::string_bool(cfg["hidden"])),
+		disallow_observers(cfg["disallow_observers"].to_bool()),
+		allow_player(cfg["allow_player"].to_bool(true)),
+		no_leader(cfg["no_leader"].to_bool()),
+		hidden(cfg["hidden"].to_bool()),
 		music(cfg["music"]),
 		colour(cfg.has_attribute("colour") ? cfg["colour"] : cfg["side"]),
-		side(lexical_cast_default<int>(cfg["side"], 1)),
+		side(cfg["side"].to_int(1)),
 		persistent(false)
 {
 	// If arel starting new scenario overide settings from [ai] tags
@@ -98,7 +98,7 @@ team::team_info::team_info(const config& cfg) :
 	// at the start of a scenario "start_gold" is not set, we need to take the
 	// value from the gold setting (or fall back to the gold default)
 	if (!cfg["start_gold"].empty())
-		start_gold = lexical_cast_default<int>(cfg["start_gold"]);
+		start_gold = cfg["start_gold"];
 	else if (!cfg["gold"].empty())
 		start_gold = gold;
 	else
@@ -125,17 +125,8 @@ team::team_info::team_info(const config& cfg) :
 		team_color_range_[side] = global_rgb->second;
 	}
 
-	const std::string& village_income = cfg["village_gold"];
-	if(village_income.empty())
-		income_per_village = game_config::village_income;
-	else
-		income_per_village = lexical_cast_default<int>(village_income, game_config::village_income);
-
-	const std::string& recall_price = cfg["recall_cost"];
-	if(recall_price.empty())
-		recall_cost = game_config::recall_cost;
-	else
-		recall_cost = lexical_cast_default<int>(recall_price, game_config::recall_cost);
+	income_per_village = cfg["village_income"].to_int(game_config::village_income);
+	recall_cost = cfg["recall_cost"].to_int(game_config::recall_cost);
 
 	std::string control = cfg["controller"];
 	//by default, persistence of a team is set depending on the controller
@@ -150,7 +141,7 @@ team::team_info::team_info(const config& cfg) :
 		controller = NETWORK_AI;
 	else if (control == "null")
 	{
-		disallow_observers = utils::string_bool(cfg["disallow_observers"],true);
+		disallow_observers = cfg["disallow_observers"].to_bool(true);
 		controller = EMPTY;
 		persistent = false;
 	}
@@ -161,15 +152,15 @@ team::team_info::team_info(const config& cfg) :
 	}
 
 	//override persistence flag if it is explicitly defined in the config
-	persistent = utils::string_bool(cfg["persistent"], persistent);
+	persistent = cfg["persistent"].to_bool(persistent);
 
 	//========================================================
 	//END OF MESSY CODE
 
 	// Share_view and share_maps can't both be enabled,
 	// so share_view overrides share_maps.
-	share_view = utils::string_bool(cfg["share_view"]);
-	share_maps = !share_view && utils::string_bool(cfg["share_maps"],true);
+	share_view = cfg["share_view"].to_bool();
+	share_maps = !share_view && cfg["share_maps"].to_bool(true);
 
 	LOG_NG << "team_info::team_info(...): team_name: " << team_name
 	       << ", share_maps: " << share_maps << ", share_view: " << share_view << ".\n";
@@ -227,7 +218,7 @@ void team::team_info::write(config& cfg) const
 	if(music.empty() == false)
 		cfg["music"] = music;
 
-	cfg["colour"] = lexical_cast_default<std::string>(colour);
+	cfg["colour"] = str_cast(colour);
 
 	cfg["persistent"] = persistent;
 
@@ -255,8 +246,8 @@ team::team(const config& cfg, const gamemap& map, int gold) :
 		ally_shroud_(),
 		ally_fog_()
 {
-	fog_.set_enabled( utils::string_bool(cfg["fog"]) );
-	shroud_.set_enabled( utils::string_bool(cfg["shroud"]) );
+	fog_.set_enabled(cfg["fog"].to_bool());
+	shroud_.set_enabled(cfg["shroud"].to_bool());
 	shroud_.read(cfg["shroud_data"]);
 
 	LOG_NG << "team::team(...): team_name: " << info_.team_name
@@ -282,8 +273,8 @@ team::team(const config& cfg, const gamemap& map, int gold) :
 		}
 	}
 
-	countdown_time_=lexical_cast_default<int>(cfg["countdown_time"],0);
-	action_bonus_count_=lexical_cast_default<int>(cfg["action_bonus_count"],0);
+	countdown_time_ = cfg["countdown_time"];
+	action_bonus_count_ = cfg["action_bonus_count"];
 }
 
 void team::write(config& cfg) const
