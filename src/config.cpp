@@ -55,6 +55,7 @@ int config::attribute_value::to_int(int def) const
 double config::attribute_value::to_double(double def) const
 {
 	if (const double *p = boost::get<const double>(&value)) return *p;
+	if (const int *p = boost::get<const int>(&value)) return *p;
 	return def;
 }
 
