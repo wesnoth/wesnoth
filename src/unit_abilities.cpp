@@ -104,11 +104,11 @@ namespace unit_abilities {
 static bool affects_side(const config& cfg, const std::vector<team>& teams, size_t side, size_t other_side)
 {
 	if (side == other_side)
-		return utils::string_bool(cfg["affect_allies"], true);
+		return cfg["affect_allies"].to_bool(true);
 	if (teams[side - 1].is_enemy(other_side))
-		return utils::string_bool(cfg["affect_enemies"]);
+		return cfg["affect_enemies"].to_bool();
 	else
-		return utils::string_bool(cfg["affect_allies"]);
+		return cfg["affect_allies"].to_bool();
 }
 
 }
@@ -322,7 +322,7 @@ bool unit::ability_affects_self(const std::string& ability,const config& cfg,con
 {
 	int illuminates = -1;
 	const config &filter = cfg.child("filter_self");
-	bool affect_self = utils::string_bool(cfg["affect_self"], true);
+	bool affect_self = cfg["affect_self"].to_bool(true);
 	if (!filter || !affect_self) return affect_self;
 	return matches_filter(vconfig(filter), loc,cache_illuminates(illuminates, ability));
 }
@@ -357,8 +357,8 @@ std::pair<int,map_location> unit_ability_list::highest(const std::string& key, i
 	typedef std::pair<const config *, map_location> pt;
 	foreach (pt const &p, cfgs)
 	{
-		int value = lexical_cast_default<int>((*p.first)[key], def);
-		if (utils::string_bool((*p.first)["cumulative"])) {
+		int value = (*p.first)[key].to_int(def);
+		if ((*p.first)["cumulative"].to_bool()) {
 			stack += value;
 			if (value < 0) value = -value;
 			if (only_cumulative && value >= abs_max) {
@@ -389,8 +389,8 @@ std::pair<int,map_location> unit_ability_list::lowest(const std::string& key, in
 	typedef std::pair<const config *, map_location> pt;
 	foreach (pt const &p, cfgs)
 	{
-		int value = lexical_cast_default<int>((*p.first)[key], def);
-		if (utils::string_bool((*p.first)["cumulative"])) {
+		int value = (*p.first)[key].to_int(def);
+		if ((*p.first)["cumulative"].to_bool()) {
 			stack += value;
 			if (value < 0) value = -value;
 			if (only_cumulative && value <= abs_max) {
@@ -813,15 +813,14 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 		const config& cfg = (*i->first);
 		std::string const &effect_id = cfg[cfg["id"].empty() ? "name" : "id"];
 
-		if (!backstab && utils::string_bool(cfg["backstab"]))
+		if (!backstab && cfg["backstab"].to_bool())
 			continue;
 		if (!filter_base_matches(cfg, def))
 			continue;
 
-		std::string const &cfg_value = cfg["value"];
-		if (!cfg_value.empty()) {
-			int value = lexical_cast_default<int>(cfg_value);
-			bool cumulative = utils::string_bool(cfg["cumulative"]);
+		if (cfg.has_attribute("value")) {
+			int value = cfg["value"];
+			bool cumulative = cfg["cumulative"].to_bool();
 			if (!value_is_set && !cumulative) {
 				value_set = value;
 				set_effect.set(SET, value, i->first, i->second);
@@ -835,17 +834,15 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 			value_is_set = true;
 		}
 
-		std::string const &cfg_add = cfg["add"];
-		if (!cfg_add.empty()) {
-			int add = lexical_cast_default<int>(cfg_add);
+		if (cfg.has_attribute("add")) {
+			int add = cfg["add"];
 			std::map<std::string,individual_effect>::iterator add_effect = values_add.find(effect_id);
 			if(add_effect == values_add.end() || add > add_effect->second.value) {
 				values_add[effect_id].set(ADD,add,i->first,i->second);
 			}
 		}
-		std::string const &cfg_mul = cfg["multiply"];
-		if (!cfg_mul.empty()) {
-			int multiply = int(lexical_cast_default<float>(cfg_mul) * 100);
+		if (cfg.has_attribute("multiply")) {
+			int multiply = int(cfg["multiply"].to_double() * 100);
 			std::map<std::string,individual_effect>::iterator mul_effect = values_mul.find(effect_id);
 			if(mul_effect == values_mul.end() || multiply > mul_effect->second.value) {
 				values_mul[effect_id].set(MUL,multiply,i->first,i->second);
