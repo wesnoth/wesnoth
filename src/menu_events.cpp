@@ -954,6 +954,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 		return;
 	}
 	unit un = recall_list_team[res];
+	recall_list_team.erase(recall_list_team.begin() + res);
 	recorder.add_recall(un.id(), loc);
 	place_recruit(un, loc, true, true);
 	statistics::recall_unit(un);
@@ -967,8 +968,6 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	}
 
 	redo_stack_.clear();
-
-	recall_list_team.erase(recall_list_team.begin() + res);
 	gui_->invalidate_game_status();
 	gui_->invalidate_all();
 	recorder.add_checksum_check(loc);
@@ -1125,16 +1124,15 @@ void menu_handler::redo(int side_num)
 			const std::string &msg = find_recruit_location(side_num, loc);
 			if(msg.empty()) {
 				unit un = action.affected_unit;
-				place_recruit(un, loc, true, true);
-				statistics::recall_unit(un);
-				current_team.spend_gold(current_team.recall_cost());
-
 				//remove the unit from the recall list
 				std::vector<unit>::iterator unit_it = std::find_if(current_team.recall_list().begin(),
 					current_team.recall_list().end(), boost::bind(&unit::matches_id, _1, action.affected_unit.id()));
 				assert(unit_it != current_team.recall_list().end());
 				current_team.recall_list().erase(unit_it);
 
+				place_recruit(un, loc, true, true);
+				statistics::recall_unit(un);
+				current_team.spend_gold(current_team.recall_cost());
 				gui_->invalidate(loc);
 				gui_->draw();
 				recorder.add_checksum_check(loc);
