@@ -642,7 +642,7 @@ double move_leader_to_goals_phase::evaluate()
 		return BAD_SCORE;
 	}
 
-	id_ = goal["id"];
+	id_ = goal["id"].str();
 	if (leader->get_location() == dst_) {
 		//goal already reached
 		if (auto_remove_ && !id_.empty()) {

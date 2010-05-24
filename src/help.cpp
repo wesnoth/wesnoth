@@ -903,7 +903,7 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 	else if (section_cfg != NULL) {
 		const std::vector<std::string> sections = utils::quoted_split((*section_cfg)["sections"]);
 		sec.level = level;
-		const std::string id = level == 0 ? "toplevel" : (*section_cfg)["id"];
+		std::string id = level == 0 ? "toplevel" : (*section_cfg)["id"].str();
 		if (level != 0) {
 			if (!is_valid_id(id)) {
 				std::stringstream ss;
@@ -911,7 +911,7 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 				throw parse_error(ss.str());
 			}
 		}
-		const std::string title = level == 0 ? "" : (*section_cfg)["title"];
+		std::string title = level == 0 ? "" : (*section_cfg)["title"].str();
 		sec.id = id;
 		sec.title = title;
 		std::vector<std::string>::const_iterator it;

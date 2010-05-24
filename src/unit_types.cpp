@@ -46,17 +46,17 @@ attack_type::attack_type(const config& cfg) :
 	unitmap_(NULL),
 	other_attack_(NULL),
 	cfg_(cfg),
-	description_(cfg["description"]),
+	description_(cfg["description"].t_str()),
 	id_(cfg["name"]),
 	type_(cfg["type"]),
 	icon_(cfg["icon"]),
-	range_(cfg["range"].base_str()),
-	damage_(atol(cfg["damage"].c_str())),
-	num_attacks_(atol(cfg["number"].c_str())),
+	range_(cfg["range"]),
+	damage_(cfg["damage"]),
+	num_attacks_(cfg["number"]),
 	attack_weight_(lexical_cast_default<double>(cfg["attack_weight"],1.0)),
 	defense_weight_(lexical_cast_default<double>(cfg["defense_weight"],1.0)),
-	accuracy_(atol(cfg["accuracy"].c_str())),
-	parry_(atol(cfg["parry"].c_str()))
+	accuracy_(cfg["accuracy"]),
+	parry_(cfg["parry"])
 
 {
 	if (description_.empty())
@@ -311,13 +311,12 @@ unit_movement_type::unit_movement_type(const config& cfg, const unit_movement_ty
 unit_movement_type::unit_movement_type(): moveCosts_(), defenseMods_(), parent_(NULL), cfg_()
 {}
 
-const t_string& unit_movement_type::name() const
+std::string unit_movement_type::name() const
 {
-	const t_string& res = cfg_.get_attribute("name");
-	if(res == "" && parent_ != NULL)
+	if (!cfg_.has_attribute("name") && parent_)
 		return parent_->name();
 	else
-		return res;
+		return cfg_["name"];
 }
 
 int unit_movement_type::movement_cost(const gamemap& map,
@@ -702,7 +701,7 @@ unit_type::~unit_type()
 void unit_type::set_config(const config& cfg)
 {
 	cfg_ = cfg;
-	id_ = cfg["id"];
+	id_ = cfg["id"].str();
 }
 
 void unit_type::build_full(const config& cfg, const movement_type_map& mv_types,
@@ -786,7 +785,7 @@ void unit_type::build_full(const config& cfg, const movement_type_map& mv_types,
 	    DBG_UT << "no parent found for movement_type " << move_type << "\n";
 	}
 
-	flag_rgb_ = cfg["flag_rgb"];
+	flag_rgb_ = cfg["flag_rgb"].str();
 	game_config::add_color_info(cfg);
 
 

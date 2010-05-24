@@ -142,20 +142,20 @@ void ai_composite::play_turn(){
 }
 
 
-const std::string& ai_composite::get_id() const
+std::string ai_composite::get_id() const
 {
 	return cfg_["id"];
 }
 
 
 
-const std::string& ai_composite::get_name() const
+std::string ai_composite::get_name() const
 {
 	return cfg_["name"];
 }
 
 
-const std::string& ai_composite::get_engine() const
+std::string ai_composite::get_engine() const
 {
 	return cfg_["engine"];
 }

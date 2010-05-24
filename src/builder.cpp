@@ -747,9 +747,9 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 
 		if(!br["x"].empty() && !br["y"].empty())
 			pbr.location_constraints =
-				map_location(atoi(br["x"].c_str()) - 1, atoi(br["y"].c_str()) - 1);
+				map_location(br["x"].to_int() - 1, br["y"].to_int() - 1);
 
-		pbr.probability = br["probability"].empty() ? -1 : atoi(br["probability"].c_str());
+		pbr.probability = br["probability"].empty() ? -1 : br["probability"].to_int();
 
 		// Mapping anchor indices to anchor locations.
 		anchormap anchors;
@@ -764,10 +764,10 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 			// of terrain constraints, if it does not exist.
 			map_location loc;
 			if (!tc["x"].empty()) {
-				loc.x = atoi(tc["x"].c_str());
+				loc.x = tc["x"];
 			}
 			if (!tc["y"].empty()) {
-				loc.y = atoi(tc["y"].c_str());
+				loc.y = tc["y"];
 			}
 			if (!tc["loc"].empty()) {
 				std::vector<std::string> sloc = utils::split(tc["loc"]);
@@ -780,7 +780,7 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 				add_constraints(pbr.constraints, loc, tc, br);
 			}
 			if (!tc["pos"].empty()) {
-				int pos = atoi(tc["pos"].c_str());
+				int pos = tc["pos"];
 				if(anchors.find(pos) == anchors.end()) {
 					WRN_NG << "Invalid anchor!\n";
 					continue;

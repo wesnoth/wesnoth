@@ -80,7 +80,7 @@ game_classification::game_classification(const config& cfg):
 	label(cfg["label"]),
 	parent(cfg["parent"]),
 	version(cfg["version"]),
-	campaign_type(cfg["campaign_type"].empty() ? "scenario" : cfg["campaign_type"]),
+	campaign_type(cfg["campaign_type"].empty() ? "scenario" : cfg["campaign_type"].str()),
 	campaign_define(cfg["campaign_define"]),
 	campaign_xtra_defines(utils::split(cfg["campaign_extra_defines"])),
 	campaign(cfg["campaign"]),
@@ -91,7 +91,7 @@ game_classification::game_classification(const config& cfg):
 	completion(cfg["completion"]),
 	end_text(cfg["end_text"]),
 	end_text_duration(lexical_cast_default<unsigned int>(cfg["end_text_duration"])),
-	difficulty(cfg["difficulty"].empty() ? "NORMAL" : cfg["difficulty"])
+	difficulty(cfg["difficulty"].empty() ? "NORMAL" : cfg["difficulty"].str())
 	{}
 
 game_classification::game_classification(const game_classification& gc):
@@ -428,16 +428,16 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 
 				if (side["canrecruit"] == "yes")
 				{
-						leader = side["id"];
-						leader_image = side["image"];
+						leader = side["id"].str();
+						leader_image = side["image"].str();
 						break;
 				}
 
 				foreach (const config &u, side.child_range("unit"))
 				{
 					if (utils::string_bool(u["canrecruit"], false)) {
-						leader = u["id"];
-						leader_image = u["image"];
+						leader = u["id"].str();
+						leader_image = u["image"].str();
 						break;
 					}
 				}
@@ -462,7 +462,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 	}
 }
 
-config::proxy_string game_state::get_variable(const std::string& key)
+config::attribute_value &game_state::get_variable(const std::string& key)
 {
 	return variable_info(key, true, variable_info::TYPE_SCALAR).as_scalar();
 }
@@ -471,7 +471,7 @@ t_string game_state::get_variable_const(const std::string& key) const
 {
 	variable_info to_get(key, false, variable_info::TYPE_SCALAR);
 	if(!to_get.is_valid) {
-			config::proxy_string to_return = temporaries[key];
+			config::attribute_value &to_return = temporaries[key];
 			if (key.size() > 7 && key.substr(key.size()-7) == ".length") {
 				// length is a special attribute, so guarantee its correctness
 				to_return = "0";
@@ -960,7 +960,7 @@ void game_state::set_menu_items(const config::const_child_itors &menu_items)
 	clear_wmi(wml_menu_items);
 	foreach (const config &item, menu_items)
 	{
-		const std::string &id = item["id"].base_str();
+		std::string id = item["id"];
 		wml_menu_item*& mref = wml_menu_items[id];
 		if(mref == NULL) {
 			mref = new wml_menu_item(id, &item);
@@ -1021,7 +1021,7 @@ wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
 	}
 	name = temp.str();
 	if(cfg != NULL) {
-		image = (*cfg)["image"];
+		image = (*cfg)["image"].str();
 		description = (*cfg)["description"];
 		needs_select = utils::string_bool((*cfg)["needs_select"], false);
 		if (const config &c = cfg->child("show_if")) show_if = c;

@@ -82,10 +82,6 @@ public:
 	//do not override that method in subclasses which cannot evaluate formulas
 	virtual std::string evaluate(const std::string& str);
 
-
-	virtual const std::string& get_name() const;
-
-
 	readonly_context& get_readonly_context();
 
 	/**
@@ -100,10 +96,14 @@ public:
 	virtual config to_config() const;
 
 
-	virtual const std::string& get_id() const;
+	virtual std::string get_id() const
+	{ return id_; }
 
+	virtual std::string get_engine() const
+	{ return engine_; }
 
-	virtual const std::string& get_engine() const;
+	virtual std::string get_name() const
+	{ return name_; }
 
 protected:
 	readonly_context &ai_;

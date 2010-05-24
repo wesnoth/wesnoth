@@ -65,15 +65,9 @@ public:
 
 	bool active() const;
 
-
-	const std::string& get_id() const;
-
-
-	const std::string& get_name() const;
-
-
-	const std::string& get_engine() const;
-
+	virtual std::string get_id() const;
+	virtual std::string get_name() const;
+	virtual std::string get_engine() const;
 
 	bool redeploy(const config &cfg);
 

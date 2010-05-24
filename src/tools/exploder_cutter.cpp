@@ -131,7 +131,7 @@ void cutter::add_sub_image(const surface &surf, surface_map &map, const config* 
 
 	std::vector<std::string> pos = utils::split((*config)["pos"]);
 	if(pos.size() != 2)
-		throw exploder_failure("Invalid position " + (*config)["pos"]);
+		throw exploder_failure("Invalid position " + (*config)["pos"].str());
 
 	int x = atoi(pos[0].c_str());
 	int y = atoi(pos[1].c_str());

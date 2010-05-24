@@ -86,7 +86,7 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	units_(),
 	undo_stack_(),
 	redo_stack_(),
-	xp_mod_(atoi(level["experience_modifier"].c_str()) > 0 ? atoi(level["experience_modifier"].c_str()) : 100),
+	xp_mod_(level["experience_modifier"].to_int(100)),
 	loading_game_(level["playing_team"].empty() == false),
 	first_human_team_(-1),
 	player_number_(1),
@@ -808,7 +808,7 @@ std::string play_controller::get_unique_saveid(const config& cfg, std::set<std::
 	std::string save_id = cfg["save_id"];
 
 	if(save_id.empty()) {
-		save_id=cfg["id"];
+		save_id = cfg["id"].str();
 	}
 
 	if(save_id.empty()) {

@@ -194,8 +194,8 @@ game_info::game_info(const config& game, const config& game_config)
 		utils::string_map symbols;
 		symbols["era_id"] = game["mp_era"];
 		if (era_cfg) {
-			era = era_cfg["name"];
-			era_short = era_cfg["short_name"];
+			era = era_cfg["name"].str();
+			era_short = era_cfg["short_name"].str();
 			if (era_short.empty()) {
 				era_short = make_short_name(era);
 			}
@@ -243,7 +243,7 @@ game_info::game_info(const config& game, const config& game_config)
 			level_cfg = &game_config.find_child("generic_multiplayer", "id", game["mp_scenario"]);
 		}
 		if (*level_cfg) {
-			scenario = level_cfg->get_attribute("name");
+			scenario = (*level_cfg)["name"].str();
 			map_info += scenario;
 			// reloaded games do not match the original scenario hash,
 			// so it makes no sense to test them, they always would appear
@@ -312,9 +312,9 @@ game_info::game_info(const config& game, const config& game_config)
 		vision = _("none");
 	}
 	if (game["mp_countdown"] == "yes" ) {
-		time_limit =   game["mp_countdown_init_time"] + "+"
-		             + game["mp_countdown_turn_bonus"] + "/"
-		             + game["mp_countdown_action_bonus"];
+		time_limit =   game["mp_countdown_init_time"].str() + "+"
+		             + game["mp_countdown_turn_bonus"].str() + "/"
+		             + game["mp_countdown_action_bonus"].str();
 	} else {
 		time_limit = "";
 	}

@@ -96,7 +96,7 @@ public:
 
 	// Variable access
 
-	config::proxy_string get_variable(const std::string &varname);
+	config::attribute_value &get_variable(const std::string &varname);
 	virtual t_string get_variable_const(const std::string& varname) const;
 	config& get_variable_cfg(const std::string& varname);
 

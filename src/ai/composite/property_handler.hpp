@@ -106,7 +106,7 @@ public:
 		//if the id is not empty, try to delete all with this id
 		if (!cfg["id"].empty()) {
 			path_element with_same_id;
-			with_same_id.id=cfg["id"];
+			with_same_id.id = cfg["id"].str();
 			with_same_id.property = property_;
 			with_same_id.position=-1;
 			handle_delete(with_same_id);

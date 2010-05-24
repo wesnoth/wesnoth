@@ -89,10 +89,10 @@ void preproc_define::read_argument(const config &cfg)
 
 void preproc_define::read(const config& cfg)
 {
-	value = cfg["value"];
-	textdomain = cfg["textdomain"];
-	linenum = lexical_cast<int>(cfg["linenum"]);
-	location = cfg["location"];
+	value = cfg["value"].str();
+	textdomain = cfg["textdomain"].str();
+	linenum = cfg["linenum"];
+	location = cfg["location"].str();
 
 	foreach (const config &arg, cfg.child_range("argument"))
 		read_argument(arg);

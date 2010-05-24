@@ -99,7 +99,7 @@ tresolution_definition_::tresolution_definition_(const config& cfg)
 
 tcontrol_definition::tcontrol_definition(const config& cfg)
 	: id(cfg["id"])
-	, description(cfg["description"])
+	, description(cfg["description"].t_str())
 	, resolutions()
 {
 /*WIKI

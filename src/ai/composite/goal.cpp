@@ -62,22 +62,17 @@ config goal::to_config() const
 	return cfg_;
 }
 
-
-const std::string& goal::get_id() const
+std::string goal::get_id() const
 {
 	return cfg_["id"];
 }
 
-
-
-const std::string& goal::get_name() const
+std::string goal::get_name() const
 {
 	return cfg_["id"];
 }
 
-
-
-const std::string& goal::get_engine() const
+std::string goal::get_engine() const
 {
 	return cfg_["engine"];
 }

@@ -67,12 +67,12 @@ void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
 		item["label"] = tmp;
 		data.insert(std::make_pair("name", item));
 
-		tmp = c["version"];
+		tmp = c["version"].str();
 		utils::truncate_as_wstring(tmp, 12);
 		item["label"] = tmp;
 		data.insert(std::make_pair("version", item));
 
-		tmp = c["author"];
+		tmp = c["author"].str();
 		utils::truncate_as_wstring(tmp, 16);
 		item["label"] = tmp;
 		data.insert(std::make_pair("author", item));

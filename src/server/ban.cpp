@@ -187,23 +187,23 @@ static lg::log_domain log_server("server");
 	{
 		{
 			// parse ip and mask
-			ip_text_ = cfg["ip"];
+			ip_text_ = cfg["ip"].str();
 			ip_mask pair = parse_ip(ip_text_);
 			ip_ = pair.first;
 			mask_ = pair.second;
 		}
-		nick_ = cfg["nick"];
+		nick_ = cfg["nick"].str();
 		if (cfg.has_attribute("end_time"))
 			end_time_ = lexical_cast_default<time_t>(cfg["end_time"], 0);
 		if (cfg.has_attribute("start_time"))
 			start_time_ = lexical_cast_default<time_t>(cfg["start_time"], 0);
-		reason_ = cfg["reason"];
+		reason_ = cfg["reason"].str();
 
 		// only overwrite defaults if exists
 		if (cfg.has_attribute("who_banned"))
-			who_banned_ = cfg["who_banned"];
+			who_banned_ = cfg["who_banned"].str();
 		if (cfg.has_attribute("group"))
-			group_ = cfg["group"];
+			group_ = cfg["group"].str();
 	}
 
 	void banned::write(config& cfg) const
@@ -708,7 +708,7 @@ static lg::log_domain log_server("server");
 		if (filename_ != cfg["ban_save_file"])
 		{
 			dirty_ = true;
-			filename_ = cfg["ban_save_file"];
+			filename_ = cfg["ban_save_file"].str();
 		}
 	}
 

@@ -314,16 +314,15 @@ void cave_map_generator::place_passage(const passage& p)
 	}
 
 
-	const size_t windiness = atoi(p.cfg["windiness"].c_str());
-	const double laziness = std::max<double>(1.0,atof(p.cfg["laziness"].c_str()));
+	int windiness = p.cfg["windiness"];
+	double laziness = std::max<double>(1.0, p.cfg["laziness"].to_double());
 
 	passage_path_calculator calc(map_,wall_,laziness,windiness);
 
 	pathfind::plain_route rt = a_star_search(p.src, p.dst, 10000.0, &calc, width_, height_);
 
-	const size_t width = std::max<size_t>(1,atoi(p.cfg["width"].c_str()));
-
-	const size_t jagged = atoi(p.cfg["jagged"].c_str());
+	int width = std::max<int>(1, p.cfg["width"].to_int());
+	int jagged = p.cfg["jagged"];
 
 	for(std::vector<map_location>::const_iterator i = rt.steps.begin(); i != rt.steps.end(); ++i) {
 		std::set<map_location> locs;

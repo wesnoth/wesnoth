@@ -36,11 +36,11 @@ room::room(const std::string& name)
 }
 
 room::room(const config& wml)
-	: name_(wml.get_attribute("name"))
+	: name_(wml["name"])
 	, members_()
-	, persistent_(utils::string_bool(wml.get_attribute("persistent")))
-	, topic_(wml.get_attribute("topic"))
-	, logged_(utils::string_bool(wml.get_attribute("logged")))
+	, persistent_(wml["persistent"].to_bool())
+	, topic_(wml["topic"])
+	, logged_(wml["logged"].to_bool())
 {
 }
 

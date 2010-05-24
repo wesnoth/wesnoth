@@ -34,6 +34,7 @@
 #include <ostream>
 #include <string>
 #include <vector>
+#include <boost/variant.hpp>
 
 #include "game_errors.hpp"
 #include "tstring.hpp"
@@ -145,7 +146,57 @@ public:
 	typedef std::pair<child_iterator,child_iterator> child_itors;
 	typedef std::pair<const_child_iterator,const_child_iterator> const_child_itors;
 
-	typedef string_map::value_type attribute;
+	/**
+	 * Variant for storing WML attributes.
+	 * The most efficient type is used when assigning a value. For instance,
+	 * strings "yes", "no", "true", "false" will be detected and stored as boolean.
+	 * @note The blank variant is only used when querying missing attributes.
+	 *       It is not stored in config objects.
+	 */
+	class attribute_value
+	{
+		typedef boost::variant<boost::blank, bool, int, double, std::string, t_string> value_type;
+		value_type value;
+
+	public:
+		attribute_value &operator=(const attribute_value &other)
+		{ value = other.value; return *this; }
+
+		attribute_value &operator=(bool v)
+		{ value = v; return *this; }
+		attribute_value &operator=(int v)
+		{ value = v; return *this; }
+		attribute_value &operator=(double v)
+		{ value = v; return *this; }
+
+		attribute_value &operator=(const char *v)
+		{ return *this = std::string(v); }
+		attribute_value &operator=(const std::string &v);
+		attribute_value &operator=(const t_string &v);
+
+		bool to_bool(bool def = false) const;
+		int to_int(int def = 0) const;
+		double to_double(double def = 0.) const;
+
+		bool empty() const;
+		std::string str() const;
+		t_string t_str() const;
+
+		operator int() const { return to_int(); }
+		operator std::string() const { return str(); }
+		operator t_string() const { return t_str(); }
+
+		bool operator==(const attribute_value &other) const
+		{ return value == other.value; }
+		bool operator!=(const attribute_value &other) const
+		{ return !(value == other.value); }
+
+		inline friend std::ostream& operator<<(std::ostream &os, const attribute_value &v)
+		{ return os << v.str(); }
+	};
+
+	typedef std::map<std::string, attribute_value> attribute_map;
+	typedef attribute_map::value_type attribute;
 
 	struct const_attribute_iterator
 	{
@@ -154,7 +205,7 @@ public:
 		typedef int difference_type;
 		typedef const attribute *pointer;
 		typedef const attribute &reference;
-		typedef string_map::const_iterator Itor;
+		typedef attribute_map::const_iterator Itor;
 		explicit const_attribute_iterator(const Itor &i): i_(i) {}
 
 		const_attribute_iterator &operator++() { ++i_; return *this; }
@@ -168,40 +219,6 @@ public:
 
 	private:
 		Itor i_;
-	};
-
-	class proxy_string
-	{
-		t_string &real_str_;
-	public:
-		proxy_string(config &owner, const std::string &key)
-			: real_str_(owner.values[key]) {}
-
-		proxy_string &operator=(const proxy_string &other)
-		{ return this->operator=(other.real_str_); }
-
-		proxy_string &operator=(bool);
-		proxy_string &operator=(int);
-
-		proxy_string& operator=(const char *str)
-		{ real_str_ = str; return *this; }
-		proxy_string& operator=(const std::string &str)
-		{ real_str_ = str; return *this; }
-		proxy_string& operator=(const t_string &str)
-		{ real_str_ = str; return *this; }
-
-		int to_int(int def = 0) const;
-
-		bool empty() const { return real_str_.empty(); }
-		const std::string &str() const { return real_str_.str(); }
-		const t_string &t_str() const { return real_str_; }
-
-		operator int() const { return to_int(); }
-		operator std::string() const { return real_str_.str(); }
-		operator t_string() const { return real_str_; }
-
-		inline friend std::ostream& operator<<(std::ostream &os, const proxy_string &str)
-		{ return os << str.real_str_; }
 	};
 
 	typedef std::pair<const_attribute_iterator,const_attribute_iterator> const_attr_itors;
@@ -232,9 +249,9 @@ public:
 	config& add_child(const std::string& key, const config& val);
 	config& add_child_at(const std::string& key, const config& val, size_t index);
 
-	proxy_string operator[](const std::string& key)
-	{ return proxy_string(*this, key); }
-	const t_string& operator[](const std::string& key) const;
+	attribute_value &operator[](const std::string &key)
+	{ return values[key]; }
+	const attribute_value &operator[](const std::string &key) const;
 
 	/**
 	 * Returns a reference to the first child with the given @a key.
@@ -242,7 +259,6 @@ public:
 	 */
 	config &child_or_add(const std::string &key);
 
-	const t_string& get_attribute(const std::string& key) const;
 	bool has_attribute(const std::string &key) const;
 	void remove_attribute(const std::string &key);
 	void merge_attributes(const config &);
@@ -394,7 +410,7 @@ public:
 
 private:
 	/** All the attributes of this node. */
-	string_map values;
+	attribute_map values;
 
 	/** A list of all children of this node. */
 	child_map children;

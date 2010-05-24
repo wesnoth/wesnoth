@@ -104,19 +104,19 @@ public:
 	/**
 	 * Get the name of the candidate action (useful for debug purposes)
 	 */
-	const std::string& get_name() const;
+	virtual std::string get_name() const
+	{ return name_; }
 
 	/**
 	 * Get the type of the candidate action (useful for debug purposes)
 	 */
 	const std::string& get_type() const;
 
+	virtual std::string get_id() const
+	{ return id_; }
 
-	const std::string& get_id() const;
-
-
-	const std::string& get_engine() const;
-
+	virtual std::string get_engine() const
+	{ return engine_; }
 
 	int get_recursion_count() const;
 

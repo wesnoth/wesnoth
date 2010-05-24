@@ -151,66 +151,63 @@ namespace game_config
 
 		const config& v = *cfg;
 
-		base_income = lexical_cast_default<int>(v["base_income"], 2);
-		village_income = lexical_cast_default<int>(v["village_income"], 1);
-		poison_amount = lexical_cast_default<int>(v["poison_amount"], 8);
-		rest_heal_amount = lexical_cast_default<int>(v["rest_heal_amount"], 2);
-		recall_cost = lexical_cast_default<int>(v["recall_cost"], 20);
-		kill_experience = lexical_cast_default<int>(v["kill_experience"], 8);
-		lobby_refresh = lexical_cast_default<unsigned>(v["lobby_refresh"], 2000);
+		base_income = v["base_income"].to_int(2);
+		village_income = v["village_income"].to_int(1);
+		poison_amount = v["poison_amount"].to_int(8);
+		rest_heal_amount = v["rest_heal_amount"].to_int(2);
+		recall_cost = v["recall_cost"].to_int(20);
+		kill_experience = v["kill_experience"].to_int(8);
+		lobby_refresh = v["lobby_refresh"].to_int(2000);
 
-		game_icon = v["icon"];
-		game_title = v["title"];
-		game_logo = v["logo"];
-		title_music = v["title_music"];
-		lobby_music = v["lobby_music"];
+		game_icon = v["icon"].str();
+		game_title = v["title"].str();
+		game_logo = v["logo"].str();
+		title_music = v["title_music"].str();
+		lobby_music = v["lobby_music"].str();
 
-		title_logo_x = lexical_cast_default<int>(v["logo_x"]);
-		title_logo_y = lexical_cast_default<int>(v["logo_y"]);
-		title_buttons_x = lexical_cast_default<int>(v["buttons_x"]);
-		title_buttons_y = lexical_cast_default<int>(v["buttons_y"]);
-		title_buttons_padding = lexical_cast_default<int>(v["buttons_padding"]);
+		title_logo_x = v["logo_x"];
+		title_logo_y = v["logo_y"];
+		title_buttons_x = v["buttons_x"];
+		title_buttons_y = v["buttons_y"];
+		title_buttons_padding = v["buttons_padding"];
 
-		title_tip_x = lexical_cast_default<int>(v["tip_x"]);
-		title_tip_width = lexical_cast_default<int>(v["tip_width"]);
-		title_tip_padding = lexical_cast_default<int>(v["tip_padding"]);
+		title_tip_x = v["tip_x"].to_int();
+		title_tip_width = v["tip_width"].to_int();
+		title_tip_padding = v["tip_padding"].to_int();
 
 
-		energy_image = v["energy_image"];
-		moved_ball_image = v["moved_ball_image"];
-		unmoved_ball_image = v["unmoved_ball_image"];
-		partmoved_ball_image = v["partmoved_ball_image"];
-		enemy_ball_image = v["enemy_ball_image"];
-		ally_ball_image = v["ally_ball_image"];
-		flag_image = v["flag_image"];
-		flag_icon_image = v["flag_icon_image"];
+		energy_image = v["energy_image"].str();
+		moved_ball_image = v["moved_ball_image"].str();
+		unmoved_ball_image = v["unmoved_ball_image"].str();
+		partmoved_ball_image = v["partmoved_ball_image"].str();
+		enemy_ball_image = v["enemy_ball_image"].str();
+		ally_ball_image = v["ally_ball_image"].str();
+		flag_image = v["flag_image"].str();
+		flag_icon_image = v["flag_icon_image"].str();
 
 		hp_bar_scaling = lexical_cast_default<double>(v["hp_bar_scaling"]);
 		xp_bar_scaling = lexical_cast_default<double>(v["xp_bar_scaling"]);
 
 		foot_speed_prefix = utils::split(v["footprint_prefix"]);
-		foot_teleport_enter = v["footprint_teleport_enter"];
-		foot_teleport_exit = v["footprint_teleport_exit"];
+		foot_teleport_enter = v["footprint_teleport_enter"].str();
+		foot_teleport_exit = v["footprint_teleport_exit"].str();
 
-		terrain_mask_image = v["terrain_mask_image"];
-		grid_image = v["grid_image"];
-		unreachable_image = v["unreachable_image"];
+		terrain_mask_image = v["terrain_mask_image"].str();
+		grid_image = v["grid_image"].str();
+		unreachable_image = v["unreachable_image"].str();
 
-		observer_image = v["observer_image"];
-		tod_bright_image = v["tod_bright_image"];
-		tod_dark_image = v["tod_dark_image"];
+		observer_image = v["observer_image"].str();
+		tod_bright_image = v["tod_bright_image"].str();
+		tod_dark_image = v["tod_dark_image"].str();
 
-		level_image = v["level_image"];
-		ellipsis_image = v["ellipsis_image"];
-		default_victory_music = v["default_victory_music"];
-		default_defeat_music = v["default_defeat_music"];
+		level_image = v["level_image"].str();
+		ellipsis_image = v["ellipsis_image"].str();
+		default_victory_music = v["default_victory_music"].str();
+		default_defeat_music = v["default_defeat_music"].str();
 
 		add_color_info(v);
 
-		flag_rgb = v["flag_rgb"];
-		if( !flag_rgb.size()){
-			flag_rgb="flag_green";
-		}
+		if (v.has_attribute("flag_rgb")) flag_rgb = v["flag_rgb"].str();
 
 		red_green_scale = string2rgb(v["red_green_scale"]);
 		if (red_green_scale.empty()) {
@@ -225,8 +222,8 @@ namespace game_config
 		foreach (const config &server, v.child_range("server"))
 		{
 			server_info sinf;
-			sinf.name = server["name"];
-			sinf.address = server["address"];
+			sinf.name = server["name"].str();
+			sinf.address = server["address"].str();
 			server_list.push_back(sinf);
 		}
 	}

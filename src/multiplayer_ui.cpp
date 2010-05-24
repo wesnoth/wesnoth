@@ -574,25 +574,25 @@ void ui::process_network_data(const config& data, const network::connection /*so
 	} else if (const config &c = data.child("room_join")) {
 		if (c["player"] == preferences::login()) {
 			chat_.add_message(time(NULL), "server",
-				"You have joined the room '" + c["room"] + "'");
+				"You have joined the room '" + c["room"].str() + "'");
 		} else {
 			chat_.add_message(time(NULL), "server",
-				c["player"] + " has joined the room '" + c["room"] + "'");
+				c["player"].str() + " has joined the room '" + c["room"].str() + "'");
 		}
 		chat_.update_textbox(chat_textbox_);
 	} else if (const config &c = data.child("room_part")) {
 		if (c["player"] == preferences::login()) {
 			chat_.add_message(time(NULL), "server",
-				"You have left the room '" + c["room"] + "'");
+				"You have left the room '" + c["room"].str() + "'");
 		} else {
 			chat_.add_message(time(NULL), "server",
-				c["player"] + " has left the room '" + c["room"] + "'");
+				c["player"].str() + " has left the room '" + c["room"].str() + "'");
 		}
 		chat_.update_textbox(chat_textbox_);
 	} else if (const config &c = data.child("room_query_response")) {
 		if (const config &ms = c.child("members")) {
 			std::stringstream ss;
-			ss << "Room " << c["room"] << " members: ";
+			ss << "Room " << c["room"].str() << " members: ";
 			foreach (const config& m, ms.child_range("member")) {
 				ss << m["name"] << " ";
 			}
@@ -603,7 +603,7 @@ void ui::process_network_data(const config& data, const network::connection /*so
 			std::stringstream ss;
 			ss << "Rooms: ";
 			foreach (const config& r, rs.child_range("room")) {
-				ss << r["name"] << "(" << r["size"] << ") ";
+				ss << r["name"].str() << "(" << r["size"].str() << ") ";
 			}
 			chat_.add_message(time(NULL), "server", ss.str());
 			chat_.update_textbox(chat_textbox_);
@@ -711,11 +711,11 @@ void ui::gamelist_updated(bool silent)
 	foreach (const config &user, gamelist_.child_range("user"))
 	{
 		user_info u_elem;
-		u_elem.name = user["name"];
+		u_elem.name = user["name"].str();
 		u_elem.state = user["available"] == "no" ? GAME : LOBBY;
 		u_elem.registered = utils::string_bool(user["registered"]);
-		u_elem.game_id = user["game_id"];
-		u_elem.location = user["location"];
+		u_elem.game_id = user["game_id"].str();
+		u_elem.location = user["location"].str();
 		if (u_elem.name == preferences::login()) {
 			u_elem.relation = ME;
 		} else if (preferences::is_ignored(u_elem.name)) {

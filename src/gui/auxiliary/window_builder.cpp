@@ -218,8 +218,8 @@ const std::string& twindow_builder::read(const config& cfg)
  *
  */
 
-	id_ = cfg["id"];
-	description_ = cfg["description"];
+	id_ = cfg["id"].str();
+	description_ = cfg["description"].str();
 
 	VALIDATE(!id_.empty(), missing_mandatory_wml_key("window", "id"));
 	VALIDATE(!description_.empty(), missing_mandatory_wml_key("window", "description"));
@@ -354,7 +354,7 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
 
 	foreach (const config &lg, cfg.child_range("linked_group")) {
 		tlinked_group linked_group;
-		linked_group.id = lg["id"];
+		linked_group.id = lg["id"].str();
 		linked_group.fixed_width = utils::string_bool(lg["fixed_width"]);
 		linked_group.fixed_height = utils::string_bool(lg["fixed_height"]);
 

@@ -149,8 +149,8 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 	unit_filter_(),
 	secondary_unit_filter_(),
 	directions_(),
-	frequency_(0),
-	base_score_(atoi(cfg["base_score"].c_str())),
+	frequency_(cfg["frequency"]),
+	base_score_(cfg["base_score"]),
 	event_(),
 	value_(),
 	primary_attack_filter_(),
@@ -187,7 +187,6 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 	foreach (const config &filter, cfg.child_range("filter_second")) {
 		secondary_unit_filter_.push_back(filter);
 	}
-	frequency_ = atoi(cfg["frequency"].c_str());
 
 	std::vector<std::string> value_str = utils::split(cfg["value"]);
 	std::vector<std::string>::iterator value;
@@ -746,10 +745,10 @@ unit_animation::particule::particule(
 	starting_frame_time_=INT_MAX;
 	if(cfg[frame_string+"start_time"].empty() &&range.first != range.second) {
 		foreach (const config &frame, range) {
-			starting_frame_time_ = std::min(starting_frame_time_, atoi(frame["begin"].c_str()));
+			starting_frame_time_ = std::min(starting_frame_time_, frame["begin"].to_int());
 		}
 	} else {
-		starting_frame_time_ = atoi(cfg[frame_string+"start_time"].c_str());
+		starting_frame_time_ = cfg[frame_string+"start_time"];
 	}
 
 	foreach (const config &frame, range)

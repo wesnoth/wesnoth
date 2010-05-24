@@ -168,9 +168,9 @@ void tod_manager::add_time_area(const config& cfg)
 {
 	areas_.push_back(area_time_of_day());
 	area_time_of_day &area = areas_.back();
-	area.id   = cfg["id"];
-	area.xsrc = cfg["x"];
-	area.ysrc = cfg["y"];
+	area.id = cfg["id"].str();
+	area.xsrc = cfg["x"].str();
+	area.ysrc = cfg["y"].str();
 	std::vector<map_location> const& locs = parse_location_range(area.xsrc, area.ysrc);
 	std::copy(locs.begin(), locs.end(), std::inserter(area.hexes, area.hexes.end()));
 	time_of_day::parse_times(cfg, area.times);

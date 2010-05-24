@@ -72,21 +72,17 @@ config stage::to_config() const
 	return cfg;
 }
 
-
-const std::string& stage::get_id() const
+std::string stage::get_id() const
 {
 	return cfg_["id"];
 }
 
-
-const std::string& stage::get_engine() const
+std::string stage::get_engine() const
 {
 	return cfg_["engine"];
 }
 
-
-
-const std::string& stage::get_name() const
+std::string stage::get_name() const
 {
 	return cfg_["name"];
 }

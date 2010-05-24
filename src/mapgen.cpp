@@ -366,7 +366,7 @@ struct road_path_calculator : pathfind::cost_calculator
 		map_(terrain),
 		cfg_(cfg),
 		// Find out how windy roads should be.
-		windiness_(std::max<int>(1,atoi(cfg["road_windiness"].c_str()))),
+		windiness_(std::max<int>(1, cfg["road_windiness"].to_int())),
 		seed_(rand()),
 		cache_()
 	{
@@ -425,7 +425,7 @@ double road_path_calculator::cost(const location& loc,
 	terrain = t_translation::write_terrain_code(c);
 	double res = getNoPathValue();
 	if (const config &child = cfg_.find_child("road_cost", "terrain", terrain)) {
-		res = atof(child["cost"].c_str());
+		res = child["cost"].to_double();
 	}
 
 	cache_.insert(std::pair<t_translation::t_terrain, double>(c,res));
@@ -535,7 +535,7 @@ static map_location place_village(const t_translation::t_map& map,
 	std::set<map_location> locs;
 	get_tiles_radius(loc,radius,locs);
 	map_location best_loc;
-	size_t best_rating = 0;
+	int best_rating = 0;
 	for(std::set<map_location>::const_iterator i = locs.begin();
 			i != locs.end(); ++i) {
 
@@ -557,7 +557,7 @@ static map_location place_village(const t_translation::t_map& map,
 				adjacent_liked = &(adj_liked_cache[t]);
 			}
 
-			size_t rating = atoi(child["rating"].c_str());
+			int rating = child["rating"];
 			map_location adj[6];
 			get_adjacent_tiles(map_location(i->x,i->y),adj);
 			for(size_t n = 0; n != 6; ++n) {
@@ -819,8 +819,9 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		for(int tries = 0; tries != 100; ++tries) {
 			const int x = rand()%width;
 			const int y = rand()%height;
-			if(heights[x][y] > atoi(cfg["min_lake_height"].c_str())) {
-				const std::vector<location> river = generate_river(heights,terrain,x,y,atoi(cfg["river_frequency"].c_str()));
+			if (heights[x][y] > cfg["min_lake_height"].to_int()) {
+				std::vector<location> river = generate_river(heights,
+					terrain, x, y, cfg["river_frequency"]);
 
 				if(river.empty() == false && labels != NULL) {
 					std::string base_name;
@@ -844,7 +845,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 
 				LOG_NG << "generating lake...\n";
 				std::set<location> locs;
-				const bool res = generate_lake(terrain,x,y,atoi(cfg["lake_size"].c_str()),locs);
+				bool res = generate_lake(terrain, x, y, cfg["lake_size"], locs);
 				if(res && labels != NULL) {
 					bool touches_other_lake = false;
 
@@ -901,8 +902,8 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	 * more interesting types than the default.
 	 */
 	const height_map temperature_map = generate_height_map(width,height,
-	                                                       (atoi(cfg["temperature_iterations"].c_str())*width*height)/default_dimensions,
-														   atoi(cfg["temperature_size"].c_str()),0,0);
+		cfg["temperature_iterations"].to_int() * width * height / default_dimensions,
+		cfg["temperature_size"], 0, 0);
 
 	LOG_NG << "generated temperature map...\n";
 	LOG_NG << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
@@ -976,7 +977,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		const int min_y = height/3 + 3;
 		const int max_x = (width/3)*2 - 4;
 		const int max_y = (height/3)*2 - 4;
-		const size_t min_distance = atoi(castle_config["min_distance"].c_str());
+		int min_distance = castle_config["min_distance"];
 
 		location best_loc;
 		int best_ranking = 0;
@@ -1016,7 +1017,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	// Place roads.
 	// We select two tiles at random locations on the borders
 	// of the map, and try to build roads between them.
-	size_t nroads = atoi(cfg["roads"].c_str());
+	int nroads = cfg["roads"];
 	if(roads_between_castles) {
 		nroads += castles.size()*castles.size();
 	}
@@ -1024,7 +1025,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	std::set<location> bridges;
 
 	road_path_calculator calc(terrain,cfg);
-	for(size_t road = 0; road != nroads; ++road) {
+	for (int road = 0; road != nroads; ++road) {
 		log_scope("creating road");
 
 		/*
@@ -1040,7 +1041,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		dst.x += width/3 - 1;
 		dst.y += height/3 - 1;
 
-		if(roads_between_castles && road < castles.size()*castles.size()) {
+		if (roads_between_castles && road < int(castles.size() * castles.size())) {
 			const size_t src_castle = road/castles.size();
 			const size_t dst_castle = road%castles.size();
 			if(src_castle >= dst_castle) {

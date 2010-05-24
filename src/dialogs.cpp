@@ -377,8 +377,8 @@ void save_preview_pane::draw_contents()
 	if(map_data.empty()) {
 		const config &scenario = game_config_->find_child(summary["campaign_type"], "id", summary["scenario"]);
 		if (scenario && !scenario.find_child("side", "shroud", "yes")) {
-			map_data = scenario["map_data"];
-			if (map_data.empty() && !scenario["map"].empty()) {
+			map_data = scenario["map_data"].str();
+			if (map_data.empty() && scenario.has_attribute("map")) {
 				try {
 					map_data = read_map(scenario["map"]);
 				} catch(io_exception& e) {

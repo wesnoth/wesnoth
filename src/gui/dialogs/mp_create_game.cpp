@@ -106,8 +106,8 @@ void tmp_create_game::pre_show(CVideo& /*video*/, twindow& window)
 	{
 		if (utils::string_bool(map["allow_new_game"], true)) {
 			string_map item;
-			item.insert(std::make_pair("label", map["name"]));
-			item.insert(std::make_pair("tooltip", map["name"]));
+			item.insert(std::make_pair("label", map["name"].str()));
+			item.insert(std::make_pair("tooltip", map["name"].str()));
 			list.add_row(item);
 
 			// This hack is needed since the next item is too wide to fit.

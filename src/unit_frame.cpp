@@ -224,9 +224,9 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string) 
 	}
 
 	if(!cfg[frame_string+"duration"].empty()) {
-		duration(atoi(cfg[frame_string+"duration"].c_str()));
+		duration(cfg[frame_string + "duration"]);
 	} else {
-		duration(atoi(cfg[frame_string+"end"].c_str()) - atoi(cfg[frame_string+"begin"].c_str()));
+		duration(cfg[frame_string + "end"].to_int() - cfg[frame_string + "begin"].to_int());
 	}
 	halo(cfg[frame_string+"halo"],cfg[frame_string+"halo_x"],cfg[frame_string+"halo_y"],cfg[frame_string+"halo_mod"]);
 	 tmp_string_vect=utils::split(cfg[frame_string+"blend_color"]);

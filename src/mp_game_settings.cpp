@@ -107,10 +107,10 @@ void mp_game_settings::set_from_config(const config& game_cfg)
 	const config& rs = game_cfg.child("replay_start");
 	// if it's a replay the multiplayer section can be in the replay_start tag else fallback to top level
 	const config& cfg = mp ? mp : rs ? (rs.child("multiplayer") ? rs.child("multiplayer") : game_cfg) : game_cfg;
-	name = cfg["scenario"];
-	hash = cfg["hash"];
-	mp_era = cfg["mp_era"];
-	mp_scenario = cfg["mp_scenario"];
+	name = cfg["scenario"].str();
+	hash = cfg["hash"].str();
+	mp_era = cfg["mp_era"].str();
+	mp_scenario = cfg["mp_scenario"].str();
 	xp_modifier = lexical_cast_default<int>(cfg["experience_modifier"]);
 	use_map_settings = utils::string_bool(cfg["mp_use_map_settings"]);
 	fog_game = utils::string_bool(cfg["mp_fog"]);

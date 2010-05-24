@@ -98,15 +98,14 @@ public:
 		return true;
 	}
 
+	virtual std::string get_name() const
+	{ return name_; }
 
-	const std::string& get_name() const;
+	virtual std::string get_id() const
+	{ return id_; }
 
-
-	const std::string& get_id() const;
-
-
-	const std::string& get_engine() const;
-
+	virtual std::string get_engine() const
+	{ return engine_; }
 
 	static lg::log_domain& log();
 

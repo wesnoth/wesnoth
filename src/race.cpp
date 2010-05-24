@@ -146,12 +146,12 @@ unit_race::unit_race() :
 
 unit_race::unit_race(const config& cfg) :
 		id_(cfg["id"]),
-		plural_name_(cfg["plural_name"]),
-		description_(cfg["description"]),
-		ntraits_(atoi(cfg["num_traits"].c_str())),
-		chain_size_(atoi(cfg["markov_chain_size"].c_str())),
+		plural_name_(cfg["plural_name"].t_str()),
+		description_(cfg["description"].t_str()),
+		ntraits_(cfg["num_traits"]),
+		chain_size_(cfg["markov_chain_size"]),
 		traits_(cfg.child_range("trait")),
-		global_traits_(!utils::string_bool(cfg["ignore_global_traits"]))
+		global_traits_(!cfg["ignore_global_traits"].to_bool())
 
 {
 	if (id_.empty()) {

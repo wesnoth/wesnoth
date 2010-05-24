@@ -118,21 +118,6 @@ std::string engine::evaluate(const std::string& /*str*/)
 	return "evaluate command is not implemented by this engine";
 }
 
-
-
-const std::string& engine::get_name() const
-{
-	return name_;
-}
-
-
-
-const std::string& engine::get_engine() const
-{
-	return engine_;
-}
-
-
 void engine::set_ai_context(ai_context * /*context*/)
 {
 	//do nothing
@@ -144,12 +129,6 @@ config engine::to_config() const
 	cfg["engine"] = engine_;
 	cfg["name"] = get_name();
 	return cfg;
-}
-
-
-const std::string& engine::get_id() const
-{
-	return id_;
 }
 
 readonly_context& engine::get_readonly_context()

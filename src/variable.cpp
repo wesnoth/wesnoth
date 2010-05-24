@@ -712,7 +712,8 @@ variable_info::variable_info(const std::string& varname,
 	}
 }
 
-config::proxy_string variable_info::as_scalar() {
+config::attribute_value &variable_info::as_scalar()
+{
 	assert(is_valid);
 	return (*vars)[key];
 }

@@ -79,30 +79,10 @@ double candidate_action::get_max_score() const
 	return max_score_;
 }
 
-
-const std::string& candidate_action::get_name() const
-{
-	return name_;
-}
-
-
 const std::string& candidate_action::get_type() const
 {
 	return type_;
 }
-
-
-const std::string& candidate_action::get_id() const
-{
-	return id_;
-}
-
-
-const std::string& candidate_action::get_engine() const
-{
-	return engine_;
-}
-
 
 config candidate_action::to_config() const
 {

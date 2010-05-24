@@ -57,7 +57,7 @@ team::team_info::team_info(const config& cfg) :
 		average_price(0),
 		can_recruit(),
 		team_name(cfg["team_name"]),
-		user_team_name(cfg["user_team_name"]),
+		user_team_name(cfg["user_team_name"].t_str()),
 		save_id(cfg["save_id"]),
 		current_player(cfg["current_player"]),
 		countdown_time(cfg["countdown_time"]),
@@ -66,7 +66,7 @@ team::team_info::team_info(const config& cfg) :
 		flag_icon(cfg["flag_icon"]),
 		description(cfg["id"]),
 		scroll_to_leader(utils::string_bool(cfg["scroll_to_leader"],true)),
-		objectives(cfg["objectives"]),
+		objectives(cfg["objectives"].t_str()),
 		objectives_changed(utils::string_bool(cfg["objectives_changed"])),
 		controller(),
 		share_maps(false),
@@ -76,7 +76,7 @@ team::team_info::team_info(const config& cfg) :
 		no_leader(utils::string_bool(cfg["no_leader"])),
 		hidden(utils::string_bool(cfg["hidden"])),
 		music(cfg["music"]),
-		colour(cfg["colour"].size() ? cfg["colour"] : cfg["side"]),
+		colour(cfg.has_attribute("colour") ? cfg["colour"] : cfg["side"]),
 		side(lexical_cast_default<int>(cfg["side"], 1)),
 		persistent(false)
 {
@@ -105,7 +105,7 @@ team::team_info::team_info(const config& cfg) :
 		start_gold = default_team_gold;
 
 	if(team_name.empty()) {
-		team_name = cfg["side"];
+		team_name = cfg["side"].str();
 	}
 
 	if(save_id.empty()) {

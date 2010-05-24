@@ -212,7 +212,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	type_(cfg["type"]),
 	race_(NULL),
 	id_(cfg["id"]),
-	name_(cfg["name"]),
+	name_(cfg["name"].t_str()),
 	underlying_id_(0),
 	type_name_(),
 	undead_variation_(),
@@ -322,7 +322,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	}
 	level_ = lexical_cast_default<int>(cfg["level"], level_);
 	if(cfg["undead_variation"] != "") {
-		undead_variation_ = cfg["undead_variation"];
+		undead_variation_ = cfg["undead_variation"].str();
 	}
 	if(cfg["max_attacks"] != "") {
 		max_attacks_ = std::max<int>(0,lexical_cast_default<int>(cfg["max_attacks"],1));
@@ -364,9 +364,9 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 
 	if (const config &ai = cfg.child("ai"))
 	{
-		unit_formula_ = ai["formula"];
-		unit_loop_formula_ = ai["loop_formula"];
-		unit_priority_formula_ = ai["priority"];
+		unit_formula_ = ai["formula"].str();
+		unit_loop_formula_ = ai["loop_formula"].str();
+		unit_priority_formula_ = ai["priority"].str();
 
 		if (const config &ai_vars = ai.child("vars"))
 		{
@@ -914,7 +914,7 @@ const unit_type* unit::type() const
 	return &i.get_gender_unit_type(gender_).get_variation(variation_);
 }
 
-const std::string& unit::profile() const
+std::string unit::profile() const
 {
 	if(cfg_["profile"] != "" && cfg_["profile"] != "unit_image") {
 		return cfg_["profile"];
@@ -1075,7 +1075,7 @@ void unit::remove_temporary_modifications()
 			const config &mod = modifications_.child(mod_name, j);
 			if (mod["duration"] != "forever" && !mod["duration"].empty()) {
 				if(mod.has_attribute("prev_type")) {
-					type_ = mod["prev_type"];
+					type_ = mod["prev_type"].str();
 				}
 				modifications_.remove_child(mod_name, j);
 				rebuild_from_type = true;
@@ -2142,8 +2142,8 @@ std::vector<std::pair<std::string,std::string> > unit::amla_icons() const
 
 	foreach (const config &adv, get_modification_advances())
 	{
-		icon.first = adv["icon"];
-		icon.second = adv["description"];
+		icon.first = adv["icon"].str();
+		icon.second = adv["description"].str();
 
 		for (unsigned j = 0, j_count = modification_count("advance", adv["id"]);
 		     j < j_count; ++j)
@@ -2453,7 +2453,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 						image_mods_ = mod;
 					}
 					LOG_UT << "applying image_mod \n";
-					mod = effect["add"];
+					mod = effect["add"].str();
 					if (!mod.empty()){
 						image_mods_ += mod;
 					}

@@ -26,27 +26,74 @@
 #include "serialization/string_utils.hpp"
 #include "util.hpp"
 
+#include <cstdlib>
 #include <cstring>
 #include <deque>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 
-config::proxy_string &config::proxy_string::operator=(bool b)
+bool config::attribute_value::empty() const
 {
-	real_str_ = b ? "yes" : "no";
+	if (boost::get<const boost::blank>(&value)) return true;
+	if (const std::string *p = boost::get<const std::string>(&value)) return p->empty();
+	return false;
+}
+
+bool config::attribute_value::to_bool(bool def) const
+{
+	if (const bool *p = boost::get<const bool>(&value)) return *p;
+	return def;
+}
+
+int config::attribute_value::to_int(int def) const
+{
+	if (const int *p = boost::get<const int>(&value)) return *p;
+	return def;
+}
+
+double config::attribute_value::to_double(double def) const
+{
+	if (const double *p = boost::get<const double>(&value)) return *p;
+	return def;
+}
+
+std::string config::attribute_value::str() const
+{
+	static std::string s_yes("yes"), s_no("no");
+	if (const std::string *p = boost::get<const std::string>(&value)) return *p;
+	if (const t_string *p = boost::get<const t_string>(&value)) return p->str();
+	if (const bool *p = boost::get<const bool>(&value)) return *p ? s_yes : s_no;
+	if (const int *p = boost::get<const int>(&value)) return str_cast(*p);
+	if (const double *p = boost::get<const double>(&value)) return str_cast(*p);
+	return std::string();
+}
+
+t_string config::attribute_value::t_str() const
+{
+	if (const t_string *p = boost::get<const t_string>(&value)) return *p;
+	return str();
+}
+
+config::attribute_value &config::attribute_value::operator=(const std::string &v)
+{
+	if (v.empty()) { value = v; return *this; }
+	if (v == "yes" || v == "true") return *this = true;
+	if (v == "no" || v == "false") return *this = false;
+	char *eptr;
+	int i = strtol(v.c_str(), &eptr, 0);
+	if (*eptr == '\0') return *this = i;
+	double d = strtod(v.c_str(), &eptr);
+	if (*eptr == '\0') return *this = d;
+	value = v;
 	return *this;
 }
 
-config::proxy_string &config::proxy_string::operator=(int v)
+config::attribute_value &config::attribute_value::operator=(const t_string &v)
 {
-	real_str_ = str_cast(v);
+	if (!v.translatable()) return *this = v.str();
+	value = v;
 	return *this;
-}
-
-int config::proxy_string::to_int(int def) const
-{
-	return lexical_cast_default(real_str_.c_str(), def);
 }
 
 config config::invalid;
@@ -118,8 +165,8 @@ void config::append(const config& cfg)
 		add_child(value.key, value.cfg);
 	}
 
-	for(string_map::const_iterator j = cfg.values.begin(); j != cfg.values.end(); ++j) {
-		values[j->first] = j->second;
+	foreach (const attribute &v, cfg.values) {
+		values[v.first] = v.second;
 	}
 }
 
@@ -370,22 +417,14 @@ void config::remove_child(const std::string& key, size_t index)
 	delete res;
 }
 
-const t_string& config::operator[](const std::string& key) const
-{
-	return get_attribute(key);
-}
-
-const t_string& config::get_attribute(const std::string& key) const
+const config::attribute_value &config::operator[](const std::string &key) const
 {
 	check_valid();
 
-	const string_map::const_iterator i = values.find(key);
-	if(i != values.end()) {
-		return i->second;
-	} else {
-		static const t_string empty_string;
-		return empty_string;
-	}
+	const attribute_map::const_iterator i = values.find(key);
+	if (i != values.end()) return i->second;
+	static const attribute_value empty_attribute;
+	return empty_attribute;
 }
 
 void config::merge_attributes(const config &cfg)
@@ -393,10 +432,8 @@ void config::merge_attributes(const config &cfg)
 	check_valid(cfg);
 
 	assert(this != &cfg);
-	for (string_map::const_iterator i = cfg.values.begin(),
-	     i_end = cfg.values.end(); i != i_end; ++i)
-	{
-		values[i->first] = i->second;
+	foreach (const attribute &v, cfg.values) {
+		values[v.first] = v.second;
 	}
 }
 
@@ -580,9 +617,9 @@ void config::get_diff(const config& c, config& res) const
 
 	config* inserts = NULL;
 
-	string_map::const_iterator i;
+	attribute_map::const_iterator i;
 	for(i = values.begin(); i != values.end(); ++i) {
-		const string_map::const_iterator j = c.values.find(i->first);
+		const attribute_map::const_iterator j = c.values.find(i->first);
 		if(j == c.values.end() || (i->second != j->second && i->second != "")) {
 			if(inserts == NULL) {
 				inserts = &res.add_child("insert");
@@ -595,7 +632,7 @@ void config::get_diff(const config& c, config& res) const
 	config* deletes = NULL;
 
 	for(i = c.values.begin(); i != c.values.end(); ++i) {
-		const string_map::const_iterator itor = values.find(i->first);
+		const attribute_map::const_iterator itor = values.find(i->first);
 		if(itor == values.end() || itor->second == "") {
 			if(deletes == NULL) {
 				deletes = &res.add_child("delete");
@@ -782,10 +819,7 @@ void config::merge_with(const config& c)
 	std::map<std::string, unsigned> visitations;
 
 	// Merge attributes first
-	string_map::const_iterator attrib_it, attrib_end = c.values.end();
-	for(attrib_it = c.values.begin(); attrib_it != attrib_end; ++attrib_it) {
-		values[attrib_it->first] = attrib_it->second;
-	}
+	merge_attributes(c);
 
 	// Now merge shared tags
 	all_children_iterator::Itor i, i_end = ordered_children.end();
@@ -815,24 +849,7 @@ bool config::matches(const config &filter) const
 	check_valid(filter);
 
 	// First match values. all values should match.
-	for(string_map::const_iterator j = filter.values.begin(); j != filter.values.end(); ++j) {
-		if(!this->values.count(j->first)) return false;
-		const t_string& test_val = this->values.find(j->first)->second;
-		if(test_val != j->second) {
-			const std::string& boolcheck = j->second.base_str();
-			if(boolcheck == "yes" || boolcheck == "true" || boolcheck == "on") {
-				if(!utils::string_bool(test_val.base_str(), false)) {
-					return false;
-				}
-			} else if(boolcheck == "no" || boolcheck == "false" || boolcheck == "off") {
-				if(utils::string_bool(test_val.base_str(), true)) {
-					return false;
-				}
-			} else {
-				return false;
-			}
-		}
-	}
+	if (values != filter.values) return false;
 
 	// Now, match the kids
 	foreach (const any_child &i, filter.all_children_range())
@@ -899,29 +916,16 @@ std::string config::hash() const
 	hash_str[hash_length] = 0;
 
 	i = 0;
-	for(string_map::const_iterator val = values.begin(); val != values.end(); ++val) {
-		if(val->first.size() && val->second.size()) {
-			for(c = val->first.begin(); c != val->first.end(); ++c) {
-				if(utils::portable_isspace(*c)) {
-					continue;
-				}
-				hash_str[i] ^= *c;
-				++i;
-				if(i == hash_length) {
-					i = 0;
-				}
-			}
-			const std::string &base_str = val->second.base_str();
-			for(c = base_str.begin(); c != base_str.end(); ++c) {
-				if(utils::portable_isspace(*c)) {
-					continue;
-				}
-				hash_str[i] ^= *c;
-				++i;
-				if(i == hash_length) {
-					i = 0;
-				}
-			}
+	foreach (const attribute &val, values)
+	{
+		for (c = val.first.begin(); c != val.first.end(); ++c) {
+			hash_str[i] ^= *c;
+			if (++i == hash_length) i = 0;
+		}
+		std::string base_str = val.second.t_str().base_str();
+		for (c = base_str.begin(); c != base_str.end(); ++c) {
+			hash_str[i] ^= *c;
+			if (++i == hash_length) i = 0;
 		}
 	}
 

@@ -1128,12 +1128,12 @@ bool game_controller::new_campaign()
 	}
 
 	const config &campaign = campaigns[campaign_num];
-	state_.classification().campaign = campaign["id"];
-	state_.classification().abbrev = campaign["abbrev"];
+	state_.classification().campaign = campaign["id"].str();
+	state_.classification().abbrev = campaign["abbrev"].str();
 
 	// we didn't specify in the command line the scenario to be started
 	if (jump_to_campaign_.scenario_id_.empty())
-		state_.classification().scenario = campaign["first_scenario"];
+		state_.classification().scenario = campaign["first_scenario"].str();
 	else
 	{
 		config scenario;
@@ -1150,8 +1150,8 @@ bool game_controller::new_campaign()
 		}
 		state_.classification().scenario = jump_to_campaign_.scenario_id_;
 	}
-	state_.classification().end_text = campaign["end_text"];
-	state_.classification().end_text_duration = lexical_cast_default<unsigned int>(campaign["end_text_duration"]);
+	state_.classification().end_text = campaign["end_text"].str();
+	state_.classification().end_text_duration = campaign["end_text_duration"];
 
 	const std::string difficulty_descriptions = campaign["difficulty_descriptions"];
 	std::vector<std::string> difficulty_options = utils::split(difficulty_descriptions, ';');
@@ -1194,7 +1194,7 @@ bool game_controller::new_campaign()
 		cache_.add_define(difficulties[difficulty]);
 	}
 
-	state_.classification().campaign_define = campaign["define"];
+	state_.classification().campaign_define = campaign["define"].str();
 	state_.classification().campaign_xtra_defines = utils::split(campaign["extra_defines"]);
 
 	return true;

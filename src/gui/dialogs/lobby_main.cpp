@@ -1372,7 +1372,7 @@ void tlobby_main::process_message(const config &data, bool whisper /*= false*/)
 {
 	std::string sender = data["sender"];
 	DBG_LB << "process message from " << sender << " "
-		<< (whisper ? "(w)" : "") << ", len " << data["message"].size() << "\n";
+		<< (whisper ? "(w)" : "") << ", len " << data["message"].str().size() << '\n';
 	if (preferences::is_ignored(sender)) return;
 	const std::string& message = data["message"];
 	preferences::parse_admin_authentication(sender, message);

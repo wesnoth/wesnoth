@@ -356,7 +356,7 @@ void upload_log::quit(int turn)
 	std::string turnstr = lexical_cast<std::string>(turn);
 
 	// We only record the quit if they've actually played a turn.
-	if (!game_ || game_->get_attribute("start_turn") == turnstr || turn == 1)
+	if (!game_ || (*game_)["start_turn"] == turnstr || turn == 1)
 		return;
 
 	add_game_result("quit", turn);

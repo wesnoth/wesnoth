@@ -56,7 +56,7 @@ static size_t compute(std::string expr, size_t ref1, size_t ref2=0 ) {
 	// If x2 or y2 are not specified, use x1 and y1 values
 static _rect read_rect(const config& cfg) {
 		_rect rect = { 0, 0, 0, 0 };
-		const std::vector<std::string> items = utils::split(cfg["rect"].c_str());
+		std::vector<std::string> items = utils::split(cfg["rect"].str());
 		if(items.size() >= 1)
 			rect.x1 = atoi(items[0].c_str());
 
@@ -173,7 +173,7 @@ static void expand_partialresolution(config& dst_cfg, const config& top_cfg)
 			if (!*parent)
 				throw config::error("[partialresolution] refers to non-existant [resolution] " + parent_id);
 			parent_stack.push_back(parent);
-			parent_id = (*parent)["inherits"];
+			parent_id = (*parent)["inherits"].str();
 		}
 
 		// Add the parent resolution and apply all the modifications of its children
@@ -423,14 +423,15 @@ theme::label::label(const config& cfg) :
 	object(cfg),
 	text_(cfg["prefix"].str() + cfg["text"].str() + cfg["postfix"].str()),
 	icon_(cfg["icon"]),
-	font_(atoi(cfg["font_size"].c_str())),
+	font_(cfg["font_size"]),
 	font_rgb_set_(false),
 	font_rgb_(DefaultFontRGB)
 {
 	if(font_ == 0)
 		font_ = DefaultFontSize;
 
-	if(cfg["font_rgb"].size()){
+	if (cfg.has_attribute("font_rgb"))
+	{
 	std::vector<std::string> rgb_vec = utils::split(cfg["font_rgb"]);
 	  if(3 <= rgb_vec.size()){
 	    std::vector<std::string>::iterator c=rgb_vec.begin();
@@ -459,7 +460,7 @@ theme::status_item::status_item(const config& cfg) :
 	prefix_(cfg["prefix"].str() + cfg["prefix_literal"].str()),
 	postfix_(cfg["postfix_literal"].str() + cfg["postfix"].str()),
 	label_(),
-	font_(atoi(cfg["font_size"].c_str())),
+	font_(cfg["font_size"]),
 	font_rgb_set_(false),
 	font_rgb_(DefaultFontRGB)
 {
@@ -470,7 +471,8 @@ theme::status_item::status_item(const config& cfg) :
 		label_ = label(label_child);
 	}
 
-	if(cfg["font_rgb"].size()){
+	if (cfg.has_attribute("font_rgb"))
+	{
 	  std::vector<std::string> rgb_vec = utils::split(cfg["font_rgb"]);
 	  if(3 <= rgb_vec.size()){
 	    std::vector<std::string>::iterator c=rgb_vec.begin();
@@ -549,8 +551,8 @@ bool theme::set_resolution(const SDL_Rect& screen)
 	const config *current = NULL;
 	foreach (const config &i, cfg_.child_range("resolution"))
 	{
-		const int width = atoi(i["width"].c_str());
-		const int height = atoi(i["height"].c_str());
+		int width = i["width"];
+		int height = i["height"];
 		LOG_DP << "comparing resolution " << screen.w << "," << screen.h << " to " << width << "," << height << "\n";
 		if(screen.w >= width && screen.h >= height) {
 			LOG_DP << "loading theme: " << width << "," << height << "\n";
@@ -801,7 +803,7 @@ theme::menu* theme::refresh_title2(const std::string& id, const std::string& tit
 
 	const config &cfg = find_ref(id, cfg_, false);
 	if (! cfg[title_tag].empty())
-		new_title = cfg[title_tag];
+		new_title = cfg[title_tag].str();
 
 	return refresh_title(id, new_title);
 }

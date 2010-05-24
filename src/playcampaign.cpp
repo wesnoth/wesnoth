@@ -118,7 +118,7 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 		bool skip_replay, end_level_data &end_level)
 {
 	const int ticks = SDL_GetTicks();
-	const int num_turns = atoi((*level)["turns"].c_str());
+	int num_turns = (*level)["turns"].to_int();
 
 	LOG_NG << "creating objects... " << (SDL_GetTicks() - ticks) << "\n";
 	playsingle_controller playcontroller(*level, state_of_game, ticks, num_turns, game_config, disp.video(), skip_replay);
@@ -156,7 +156,7 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 		io_type_t& io_type, end_level_data &end_level)
 {
 	const int ticks = SDL_GetTicks();
-	const int num_turns = atoi((*level)["turns"].c_str());
+	int num_turns = (*level)["turns"].to_int();
 	playmp_controller playcontroller(*level, state_of_game, ticks, num_turns,
 		game_config, disp.video(), skip_replay, io_type == IO_SERVER);
 	LEVEL_RESULT res = playcontroller.play_scenario(story, log, skip_replay);
@@ -311,7 +311,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		}
 
 		config::const_child_itors story = scenario->child_range("story");
-		gamestate.classification().next_scenario = (*scenario)["next_scenario"];
+		gamestate.classification().next_scenario = (*scenario)["next_scenario"].str();
 
 		bool save_game_after_scenario = true;
 
@@ -322,7 +322,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 			// Preserve old label eg. replay
 			if (gamestate.classification().label.empty()) {
 				if (gamestate.classification().abbrev.empty())
-					gamestate.classification().label = (*scenario)["name"];
+					gamestate.classification().label = (*scenario)["name"].str();
 				else {
 					gamestate.classification().label = std::string(gamestate.classification().abbrev);
 					gamestate.classification().label.append("-");
@@ -578,7 +578,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 			// Update the label
 			std::string oldlabel = gamestate.classification().label;
 			if (gamestate.classification().abbrev.empty())
-				gamestate.classification().label = (*scenario)["name"];
+				gamestate.classification().label = (*scenario)["name"].str();
 			else {
 				gamestate.classification().label = std::string(gamestate.classification().abbrev);
 				gamestate.classification().label.append("-");

@@ -210,7 +210,7 @@ struct variable_info
 	 * Results: after deciding the desired type, these methods can retrieve the result
 	 * Note: first you should force_valid or check is_valid, otherwise these may fail
 	 */
-	config::proxy_string as_scalar();
+	config::attribute_value &as_scalar();
 	config& as_container();
 	array_range as_array(); //range may be empty
 };

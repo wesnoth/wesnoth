@@ -892,7 +892,7 @@ void savegame::extract_summary_data_from_save(config& out)
 		foreach (const config &u, side.child_range("unit"))
 		{
 			if (utils::string_bool(u["canrecruit"], false)) {
-				leader = u["id"];
+				leader = u["id"].str();
 				break;
 			}
 		}

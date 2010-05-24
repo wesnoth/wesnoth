@@ -64,9 +64,9 @@ public:
 	{
 	}
 
-	virtual const std::string& get_id() const = 0;
-	virtual const std::string& get_name() const = 0;
-	virtual const std::string& get_engine() const = 0;
+	virtual std::string get_id() const = 0;
+	virtual std::string get_name() const = 0;
+	virtual std::string get_engine() const = 0;
 	virtual ~component() {};
 	virtual component* get_child(const path_element &child);
 	virtual std::vector<component*> get_children(const std::string &type);

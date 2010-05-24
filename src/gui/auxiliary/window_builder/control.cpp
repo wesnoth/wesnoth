@@ -29,9 +29,9 @@ tbuilder_control::tbuilder_control(const config& cfg)
 	, id(cfg["id"])
 	, definition(cfg["definition"])
 	, linked_group(cfg["linked_group"])
-	, label(cfg["label"])
-	, tooltip(cfg["tooltip"])
-	, help(cfg["help"])
+	, label(cfg["label"].t_str())
+	, tooltip(cfg["tooltip"].t_str())
+	, help(cfg["help"].t_str())
 	, use_tooltip_on_label_overflow(
 		utils::string_bool("use_tooltip_on_label_overflow", true))
 #ifndef LOW_MEM

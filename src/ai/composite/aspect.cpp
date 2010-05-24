@@ -64,25 +64,6 @@ void aspect::on_create()
 {
 }
 
-
-const std::string& aspect::get_id() const
-{
-	return id_;
-}
-
-
-const std::string& aspect::get_name() const
-{
-	return name_;
-}
-
-
-const std::string& aspect::get_engine() const
-{
-	return engine_;
-}
-
-
 bool aspect::redeploy(const config &cfg, const std::string& /*id*/)
 {
 	if (invalidate_on_turn_start_) {
@@ -107,9 +88,9 @@ bool aspect::redeploy(const config &cfg, const std::string& /*id*/)
 	invalidate_on_tod_change_ = utils::string_bool(cfg["invalidate_on_tod_change"],true);
 	invalidate_on_gamestate_change_ = utils::string_bool(cfg["invalidate_on_gamestate_change"]);
 	invalidate_on_minor_gamestate_change_ = utils::string_bool(cfg["invalidate_on_minor_gamestate_change"]);
-	engine_ = cfg["engine"];
-	name_ = cfg["name"];
-	id_ = cfg["id"];
+	engine_ = cfg["engine"].str();
+	name_ = cfg["name"].str();
+	id_ = cfg["id"].str();
 	DBG_AI_ASPECT << "redeploying aspect: engine=["<<engine_<<"], name=["<<name_<<"], id=["<<id_<<"]"<< std::endl;
 	if (invalidate_on_turn_start_) {
 		manager::add_turn_started_observer(this);

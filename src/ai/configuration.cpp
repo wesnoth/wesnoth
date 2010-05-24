@@ -107,7 +107,7 @@ void configuration::init(const config &game_config)
 
 		description desc;
 		desc.id=id;
-		desc.text=ai_configuration["description"];
+		desc.text = ai_configuration["description"].str();
 		desc.cfg=ai_configuration;
 
 		ai_configurations_.insert(std::make_pair(id,desc));
@@ -132,7 +132,7 @@ void configuration::add_era_ai_from_config(const config &era)
 
 		description desc;
 		desc.id=id;
-		desc.text=ai_configuration["description"];
+		desc.text = ai_configuration["description"].str();
 		desc.cfg=ai_configuration;
 
 		era_ai_configurations_.insert(std::make_pair(id,desc));

@@ -243,7 +243,7 @@ const std::string& tgui_definition::read(const config& cfg)
  * @end_table
  *
  */
-	id = cfg["id"];
+	id = cfg["id"].str();
 	description = cfg["description"];
 
 	VALIDATE(!id.empty(), missing_mandatory_wml_key("gui", "id"));
@@ -345,10 +345,10 @@ const std::string& tgui_definition::read(const config& cfg)
 
 	VALIDATE(double_click_time_, missing_mandatory_wml_key("settings", "double_click_time"));
 
-	sound_button_click_ = settings["sound_button_click"];
-	sound_toggle_button_click_ = settings["sound_toggle_button_click"];
-	sound_toggle_panel_click_ = settings["sound_toggle_panel_click"];
-	sound_slider_adjust_ = settings["sound_slider_adjust"];
+	sound_button_click_ = settings["sound_button_click"].str();
+	sound_toggle_button_click_ = settings["sound_toggle_button_click"].str();
+	sound_toggle_panel_click_ = settings["sound_toggle_panel_click"].str();
+	sound_slider_adjust_ = settings["sound_slider_adjust"].str();
 
 	return id;
 }

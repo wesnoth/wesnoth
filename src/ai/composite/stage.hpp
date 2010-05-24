@@ -77,16 +77,9 @@ public:
 	 */
 	virtual config to_config() const;
 
-
-	virtual const std::string& get_id() const;
-
-
-	virtual const std::string& get_name() const;
-
-
-	virtual const std::string& get_engine() const;
-
-
+	virtual std::string get_id() const;
+	virtual std::string get_name() const;
+	virtual std::string get_engine() const;
 
 protected:
 	/**

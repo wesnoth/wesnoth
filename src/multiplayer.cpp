@@ -161,7 +161,7 @@ static server_type open_connection(game_display& disp, const std::string& origin
 		// Check for "redirect" messages
 		if (const config &redirect = data.child("redirect"))
 		{
-			host = redirect["host"];
+			host = redirect["host"].str();
 			port = lexical_cast_default<unsigned int>(redirect["port"], 15000);
 
 			if(shown_hosts.find(hostpair(host,port)) != shown_hosts.end()) {

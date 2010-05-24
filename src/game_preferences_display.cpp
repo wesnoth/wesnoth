@@ -952,7 +952,7 @@ void preferences_dialog::process_event()
 				advanced_slider_.hide(hide_int);
 				advanced_slider_label_.hide(hide_int);
 				if(value.empty()) {
-					value = pref["default"];
+					value = pref["default"].str();
 				}
 				if (pref["type"] == "boolean") {
 					advanced_button_.set_width(0);
@@ -1019,7 +1019,7 @@ void preferences_dialog::set_advanced_menu()
 		std::ostringstream str;
 		std::string field = preferences::get(adv["field"]);
 		if(field.empty()) {
-			field = adv["default"];
+			field = adv["default"].str();
 		}
 
 		if(field == "yes") {
@@ -1165,7 +1165,7 @@ void preferences_dialog::set_selection(int index)
 
 	const bool hide_advanced = tab_ != ADVANCED_TAB;
 	advanced_.hide(hide_advanced);
-	const std::string adv_type = get_advanced_pref() != NULL ? (*get_advanced_pref())["type"] : "";
+	std::string adv_type = get_advanced_pref() != NULL ? (*get_advanced_pref())["type"].str() : "";
 	const bool hide_advanced_bool = hide_advanced || adv_type != "boolean";
 	const bool hide_advanced_int = hide_advanced || adv_type != "int";
 	advanced_button_.hide(hide_advanced_bool);

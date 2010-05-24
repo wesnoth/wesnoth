@@ -37,7 +37,7 @@ LEVEL_RESULT play_replay_level(const config& game_config,
 {
 	try{
 		const int ticks = SDL_GetTicks();
-		const int num_turns = atoi((*level)["turns"].c_str());
+		int num_turns = (*level)["turns"].to_int();
 		DBG_NG << "creating objects... " << (SDL_GetTicks() - ticks) << "\n";
 		replay_controller replaycontroller(*level, state_of_game, ticks, num_turns, game_config, video);
 		DBG_NG << "created objects... " << (SDL_GetTicks() - replaycontroller.get_ticks()) << "\n";

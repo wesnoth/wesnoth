@@ -438,7 +438,7 @@ namespace game_events {
 		foreach (const vconfig &values, variables)
 		{
 			const std::string name = values["name"];
-			const std::string& value = resources::state_of_game->get_variable_const(name);
+			std::string value = resources::state_of_game->get_variable_const(name);
 
 			const double num_value = atof(value.c_str());
 
@@ -1192,7 +1192,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 	game_state *state_of_game = resources::state_of_game;
 
 	const std::string name = cfg["name"];
-	config::proxy_string var = state_of_game->get_variable(name);
+	config::attribute_value &var = state_of_game->get_variable(name);
 
 	const t_string &literal = cfg.get_config()["literal"]; // no $var substitution
 	if(literal.empty() == false) {
@@ -2657,7 +2657,7 @@ WML_HANDLER_FUNCTION(while, event_info, cfg)
 WML_HANDLER_FUNCTION(switch, event_info, cfg)
 {
 	const std::string var_name = cfg["variable"];
-	const std::string &var = resources::state_of_game->get_variable_const(var_name);
+	std::string var = resources::state_of_game->get_variable_const(var_name);
 
 	bool not_found = true;
 	// execute all cases where the value matches
@@ -3005,7 +3005,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 				replay::process_error("input expected but none found\n");
 				return;
 			}
-			text_input_result = (*action)["text"];
+			text_input_result = (*action)["text"].str();
 		}
 	}
 

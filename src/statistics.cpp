@@ -121,7 +121,7 @@ static stats::str_int_map read_str_int_map(const config& cfg)
 {
 	stats::str_int_map m;
 	foreach (const config::attribute &i, cfg.attribute_range()) {
-		m[i.first] = atoi(i.second.c_str());
+		m[i.first] = i.second;
 	}
 
 	return m;
@@ -404,7 +404,7 @@ void stats::read(const config& cfg)
 	turn_expected_damage_inflicted = lexical_cast<long long>(cfg["turn_expected_damage_inflicted"]);
 	turn_expected_damage_taken = lexical_cast<long long>(cfg["turn_expected_damage_taken"]);
 
-	save_id = cfg["save_id"];
+	save_id = cfg["save_id"].str();
 }
 
 scenario_context::scenario_context(const std::string& name)

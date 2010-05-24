@@ -289,7 +289,7 @@ mp_game_settings& create::get_parameters()
 		++era_list.first;
 	}
 
-	parameters_.mp_era = (*era_list.first)["id"];
+	parameters_.mp_era = (*era_list.first)["id"].str();
 	// CHECK
 	parameters_.mp_countdown_init_time = mp_countdown_init_time_val;
 	parameters_.mp_countdown_turn_bonus = mp_countdown_turn_bonus_val;

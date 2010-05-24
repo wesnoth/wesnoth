@@ -288,8 +288,8 @@ const std::vector<game_config::server_info>& server_list()
 		pref_servers.insert(pref_servers.begin(), game_servers.begin(), game_servers.end());
 		foreach (const config &server, get_prefs()->child_range("server")) {
 			game_config::server_info sinf;
-			sinf.name = server["name"];
-			sinf.address = server["address"];
+			sinf.name = server["name"].str();
+			sinf.address = server["address"].str();
 			pref_servers.push_back(sinf);
 		}
 	}

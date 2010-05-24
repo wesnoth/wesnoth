@@ -115,7 +115,7 @@ public:
 	unit_movement_type(const config& cfg, const unit_movement_type* parent=NULL);
 	unit_movement_type();
 
-	const t_string& name() const;
+	std::string name() const;
 	int movement_cost(const gamemap& map, t_translation::t_terrain terrain) const;
 	int defense_modifier(const gamemap& map, t_translation::t_terrain terrain) const;
 	int damage_against(const attack_type& attack) const { return resistance_against(attack); }

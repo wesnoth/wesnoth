@@ -35,8 +35,8 @@ tbuilder_slider::tbuilder_slider(const config& cfg)
 	, maximum_value_(lexical_cast_default<int>(cfg["maximum_value"]))
 	, step_size_(lexical_cast_default<unsigned>(cfg["step_size"]))
 	, value_(lexical_cast_default<unsigned>(cfg["value"]))
-	, minimum_value_label_(cfg["minimum_value_label"])
-	, maximum_value_label_(cfg["maximum_value_label"])
+	, minimum_value_label_(cfg["minimum_value_label"].t_str())
+	, maximum_value_label_(cfg["maximum_value_label"].t_str())
 	, value_labels_()
 {
 	const config& labels = cfg.child("value_labels");

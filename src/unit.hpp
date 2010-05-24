@@ -101,11 +101,11 @@ public:
 	void rename(const std::string& name) {if (!unrenamable_) name_= name;}
 
 	/** The unit's profile */
-	const std::string& profile() const;
+	std::string profile() const;
 	/** The unit's transparent profile */
 	std::string transparent() const;
 	/** Information about the unit -- a detailed description of it */
-	const t_string &unit_description() const { return cfg_["description"]; }
+	t_string unit_description() const { return cfg_["description"]; }
 
 	int hitpoints() const { return hit_points_; }
 	int max_hitpoints() const { return max_hit_points_; }
@@ -269,12 +269,12 @@ public:
 		Uint32 text_color = 0, STATE state = STATE_ANIM);
 
 	/** The name of the file to game_display (used in menus). */
-	const std::string& absolute_image() const { return cfg_["image"]; }
-	const std::string& image_halo() const { return cfg_["halo"]; }
+	std::string absolute_image() const { return cfg_["image"]; }
+	std::string image_halo() const { return cfg_["halo"]; }
 
-	const std::string& image_ellipse() const { return cfg_["ellipse"]; }
+	std::string image_ellipse() const { return cfg_["ellipse"]; }
 
-	const std::string& usage() const { return cfg_["usage"]; }
+	std::string usage() const { return cfg_["usage"]; }
 	unit_type::ALIGNMENT alignment() const { return alignment_; }
 	const unit_race* race() const { return race_; }
 

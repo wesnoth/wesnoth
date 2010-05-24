@@ -257,7 +257,7 @@ report generate_report(TYPE type,
 		str << span_color(u->xp_color()) << u->experience()
 			<< '/' << u->max_experience() << naps;
 
-		tooltip << _("Experience Modifier: ") << ((level["experience_modifier"] != "") ? level["experience_modifier"] : "100") << "%";
+		tooltip << _("Experience Modifier: ") << (!level["experience_modifier"].empty() ? level["experience_modifier"].str() : "100") << '%';
 		return report(str.str(), "", tooltip.str());
 	}
 	case UNIT_ADVANCEMENT_OPTIONS: {

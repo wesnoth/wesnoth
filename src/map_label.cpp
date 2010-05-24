@@ -313,10 +313,10 @@ void terrain_label::read(const config &cfg)
 	SDL_Color colour = font::LABEL_COLOUR;
 	std::string tmp_colour = cfg["colour"];
 
-	text_      = cfg["text"];
-	team_name_ = cfg["team_name"];
-	visible_in_fog_ = utils::string_bool(cfg["visible_in_fog"],true);
-	visible_in_shroud_ = utils::string_bool(cfg["visible_in_shroud"],false);
+	text_ = cfg["text"].str();
+	team_name_ = cfg["team_name"].str();
+	visible_in_fog_ = cfg["visible_in_fog"].to_bool(true);
+	visible_in_shroud_ = cfg["visible_in_shroud"].to_bool();
 
 	text_ = utils::interpolate_variables_into_string(text_, vs);
 	team_name_ = utils::interpolate_variables_into_string(team_name_, vs);

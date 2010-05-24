@@ -52,42 +52,42 @@ default_map_generator::default_map_generator(const config &cfg) :
 {
 	if (!cfg) return;
 
-	const int width = ::atoi(cfg["map_width"].c_str());
+	int width = cfg["map_width"];
 	if (width > 0)
 		width_ = width;
 
-	const int height = ::atoi(cfg["map_height"].c_str());
+	int height = cfg["map_height"];
 	if (height > 0)
 		height_ = height;
 
 	default_width_ = width_;
 	default_height_ = height_;
 
-	const int iterations = ::atoi(cfg["iterations"].c_str());
+	int iterations = cfg["iterations"];
 	if (iterations > 0)
 		iterations_ = iterations;
 
-	const int hill_size = ::atoi(cfg["hill_size"].c_str());
+	int hill_size = cfg["hill_size"];
 	if (hill_size > 0)
 		hill_size_ = hill_size;
 
-	const int max_lakes = ::atoi(cfg["max_lakes"].c_str());
+	int max_lakes = cfg["max_lakes"];
 	if (max_lakes > 0)
 		max_lakes_ = max_lakes;
 
-	const int nvillages = ::atoi(cfg["villages"].c_str());
+	int nvillages = cfg["villages"];
 	if (nvillages > 0)
 		nvillages_ = nvillages;
 
-	const int castle_size = ::atoi(cfg["castle_size"].c_str());
+	int castle_size = cfg["castle_size"];
 	if (castle_size > 0)
 		castle_size_ = castle_size;
 
-	const int nplayers = ::atoi(cfg["players"].c_str());
+	int nplayers = cfg["players"];
 	if (nplayers > 0)
 		nplayers_ = nplayers;
 
-	const int island_size = ::atoi(cfg["island_size"].c_str());
+	int island_size = cfg["island_size"];
 	if (island_size > 0)
 		island_size_ = island_size;
 }

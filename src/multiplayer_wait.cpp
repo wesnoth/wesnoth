@@ -446,7 +446,7 @@ void wait::generate_menu()
 		foreach (const config &side_unit, sd.child_range("unit"))
 		{
 			if (utils::string_bool(side_unit["canrecruit"], false)) {
-				leader_type = side_unit["type"];
+				leader_type = side_unit["type"].str();
 				break;
 			}
 		}
@@ -468,7 +468,7 @@ void wait::generate_menu()
 #else
 			std::string RCcolor = sd["colour"];
 			if (RCcolor.empty())
-				RCcolor = sd["side"];
+				RCcolor = sd["side"].str();
 			leader_image = utg.image() + std::string("~RC(") + std::string(utg.flag_rgb() + ">" + RCcolor + ")");
 #endif
 		} else {

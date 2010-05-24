@@ -61,24 +61,24 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	parent_(&parent),
 	cfg_(cfg),
 	index_(index),
-	id_(cfg_.get_attribute("id")),
-	player_id_(cfg_.get_attribute("player_id")),
-	save_id_(cfg_.get_attribute("save_id")),
-	current_player_(cfg_.get_attribute("current_player")),
+	id_(cfg_["id"]),
+	player_id_(cfg_["player_id"]),
+	save_id_(cfg_["save_id"]),
+	current_player_(cfg_["current_player"]),
 	controller_(CNTR_NETWORK),
-	faction_(lexical_cast_default<int>(cfg_.get_attribute("faction"), 0)),
+	faction_(cfg_["faction"]),
 	team_(0),
 	colour_(index),
-	gold_(lexical_cast_default<int>(cfg_.get_attribute("gold"), 100)),
-	income_(lexical_cast_default<int>(cfg_.get_attribute("income"), 0)),
+	gold_(cfg_["gold"].to_int(100)),
+	income_(cfg_["income"]),
 	leader_(),
 	gender_(),
 	ai_algorithm_(),
 	ready_for_start_(false),
-	gold_lock_(utils::string_bool(cfg_.get_attribute("gold_lock"), false)),
-	income_lock_(utils::string_bool(cfg_.get_attribute("income_lock"), false)),
-	team_lock_(utils::string_bool(cfg_.get_attribute("team_lock"), false)),
-	colour_lock_(utils::string_bool(cfg_.get_attribute("colour_lock"), false)),
+	gold_lock_(cfg_["gold_lock"].to_bool()),
+	income_lock_(cfg_["income_lock"].to_bool()),
+	team_lock_(cfg_["team_lock"].to_bool()),
+	colour_lock_(cfg_["colour_lock"].to_bool()),
 	player_number_(parent.video(), lexical_cast_default<std::string>(index+1, ""),
 	               font::SIZE_LARGE, font::LOBBY_COLOUR),
 	combo_controller_(new gui::combo_drag(parent.disp(), parent.player_types_, parent.combo_control_group_)),
@@ -93,8 +93,8 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	slider_income_(parent.video()),
 	label_gold_(parent.video(), "100", font::SIZE_SMALL, font::LOBBY_COLOUR),
 	label_income_(parent.video(), _("Normal"), font::SIZE_SMALL, font::LOBBY_COLOUR),
-	allow_player_(utils::string_bool(cfg_.get_attribute("allow_player"), true)),
-	allow_changes_(utils::string_bool(cfg_.get_attribute("allow_changes"), true)),
+	allow_player_(cfg_["allow_player"].to_bool(true)),
+	allow_changes_(cfg_["allow_changes"].to_bool(true)),
 	enabled_(!parent_->params_.saved_game), changed_(false),
 	llm_(parent.era_sides_, enabled_ ? &combo_leader_ : NULL, enabled_ ? &combo_gender_ : NULL)
 {
@@ -133,13 +133,13 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	slider_gold_.set_min(20);
 	slider_gold_.set_max(800);
 	slider_gold_.set_increment(25);
-	slider_gold_.set_value(lexical_cast_default<int>(cfg_.get_attribute("gold"), 100));
+	slider_gold_.set_value(cfg_["gold"].to_int(100));
 	slider_gold_.set_measurements(80, 16);
 
 	slider_income_.set_min(-2);
 	slider_income_.set_max(18);
 	slider_income_.set_increment(1);
-	slider_income_.set_value(lexical_cast_default<int>(cfg_.get_attribute("income"), 0));
+	slider_income_.set_value(cfg_["income"]);
 	slider_income_.set_measurements(50, 16);
 
 	combo_faction_.enable(enabled_);
@@ -154,14 +154,14 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 
 	std::vector<std::string>::const_iterator itor =
 			std::find(parent_->team_names_.begin(), parent_->team_names_.end(),
-			cfg_.get_attribute("team_name"));
+			cfg_["team_name"]);
 	if(itor == parent_->team_names_.end()) {
 		assert(!parent_->team_names_.empty());
 		team_ = 0;
 	} else {
 		team_ = itor - parent_->team_names_.begin();
 	}
-	if(!cfg_.get_attribute("colour").empty()) {
+	if (cfg_.has_attribute("colour")) {
 		colour_ = game_config::color_info(cfg_["colour"]).index() - 1;
 	}
 	llm_.set_colour(colour_);
@@ -189,8 +189,8 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 		foreach (const config &side_unit, cfg.child_range("unit"))
 		{
 			if (utils::string_bool(side_unit["canrecruit"], false)) {
-				leader_type = side_unit["type"];
-				gender_ = side_unit["gender"];
+				leader_type = side_unit["type"].str();
+				gender_ = side_unit["gender"].str();
 				break;
 			}
 		}
@@ -236,8 +236,8 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 		combo_colour_.enable(!colour_lock_);
 
 		// Set the leader and gender
-		leader_ = cfg_.get_attribute("type");
-		gender_ = cfg_.get_attribute("gender");
+		leader_ = cfg_["type"].str();
+		gender_ = cfg_["gender"].str();
 		if(!leader_.empty()) {
 			combo_leader_.enable(false);
 			combo_gender_.enable(false);
@@ -275,11 +275,11 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 		if(faction_ == 0) {
 			std::vector<std::string> find;
 			std::string search_field;
-			if(!cfg_.get_attribute("faction").empty()) {
+			if(cfg_.has_attribute("faction")) {
 				// Choose based on faction
 				find.push_back(cfg_["faction"]);
 				search_field = "id";
-			} else if(utils::string_bool(cfg["faction_from_recruit"]) && !cfg_.get_attribute("recruit").empty()) {
+			} else if(utils::string_bool(cfg["faction_from_recruit"]) && cfg_.has_attribute("recruit")) {
 				// Choose based on recruit
 				find = utils::split(cfg_["recruit"]);
 				search_field = "recruit";
@@ -643,7 +643,7 @@ config connect::side::get_config() const
 		res["faction_name"] = res["name"];
 	}
 	res.append(cfg_);
-	if (cfg_.get_attribute("side").empty()
+	if (!cfg_.has_attribute("side")
 			|| cfg_["side"] != lexical_cast<std::string>(index_ + 1))
 	{
 		res["side"] = index_ + 1;
@@ -659,7 +659,7 @@ config connect::side::get_config() const
 			description = N_("(Vacant slot)");
 			break;
 		case CNTR_LOCAL:
-			if(enabled_ && cfg_.get_attribute("save_id").empty()) {
+			if (enabled_ && !cfg_.has_attribute("save_id")) {
 				res["save_id"] = preferences::login() + res["side"].str();
 			}
 			res["player_id"] = preferences::login() + res["side"].str();
@@ -667,7 +667,7 @@ config connect::side::get_config() const
 			description = N_("Anonymous local player");
 			break;
 		case CNTR_COMPUTER:
-			if(enabled_ && cfg_.get_attribute("save_id").empty()) {
+			if (enabled_ && !cfg_.has_attribute("save_id")) {
 				res["save_id"] = "ai" + res["side"].str();
 			}
 			{
@@ -703,8 +703,8 @@ config connect::side::get_config() const
 		res["user_description"] = t_string(description, "wesnoth");
 	} else {
 		res["player_id"] = player_id_ + res["side"];
-		if(enabled_ && cfg_.get_attribute("save_id").empty()) {
-			res["save_id"] = player_id_ + res["side"].str();
+		if (enabled_ && !cfg_.has_attribute("save_id")) {
+			res["save_id"] = player_id_ + res["side"];
 		}
 
 		res["user_description"] = player_id_;
@@ -834,7 +834,7 @@ void connect::side::import_network_user(const config& data)
 	if (controller_ == CNTR_RESERVED)
 		set_ready_for_start(true);
 
-	player_id_ = data["name"];
+	player_id_ = data["name"].str();
 	controller_ = CNTR_NETWORK;
 
 	if(enabled_ && !parent_->era_sides_.empty()) {
@@ -884,16 +884,14 @@ void connect::side::resolve_random()
 	if(!enabled_ || parent_->era_sides_.empty())
 		return;
 
-	if(utils::string_bool(
-			(*parent_->era_sides_[faction_]).get_attribute("random_faction"),
-			false))
+	if ((*parent_->era_sides_[faction_])["random_faction"].to_bool())
 	{
 		std::vector<std::string> faction_choices, faction_excepts;
-		faction_choices = utils::split((*parent_->era_sides_[faction_]).get_attribute("choices"));
+		faction_choices = utils::split((*parent_->era_sides_[faction_])["choices"]);
 		if(faction_choices.size() == 1 && faction_choices.front() == "") {
 			faction_choices.clear();
 		}
-		faction_excepts = utils::split((*parent_->era_sides_[faction_]).get_attribute("except"));
+		faction_excepts = utils::split((*parent_->era_sides_[faction_])["except"]);
 		if(faction_excepts.size() == 1 && faction_excepts.front() == "") {
 			faction_excepts.clear();
 		}
@@ -1475,8 +1473,8 @@ void connect::lists_init()
 		int side_num = 1;
 		foreach (config &side, sides)
 		{
-			config::proxy_string team_name = side["team_name"];
-			config::proxy_string user_team_name = side["user_team_name"];
+			config::attribute_value &team_name = side["team_name"];
+			config::attribute_value &user_team_name = side["user_team_name"];
 
 			if(team_name.empty())
 				team_name = side_num;
@@ -1501,7 +1499,7 @@ void connect::lists_init()
 		foreach (config &side, sides)
 		{
 			const std::string side_num = lexical_cast<std::string>(_side_num);
-			config::proxy_string team_name = side["team_name"];
+			config::attribute_value &team_name = side["team_name"];
 
 			if(team_name.empty())
 				team_name = side_num;
@@ -1593,7 +1591,7 @@ void connect::load_game()
 	std::string era = params_.mp_era;
 	if (params_.saved_game) {
 		if (const config &c = level_.child("snapshot").child("era"))
-			era = c["id"];
+			era = c["id"].str();
 	}
 
 	// Initialize the list of sides available for the current era.

@@ -138,8 +138,7 @@ private:
 engine_lua::engine_lua( readonly_context &context, const config &cfg )
 	: engine(context,cfg)
 	, lua_ai_context_(resources::lua_kernel->create_lua_ai_context(
-				  cfg["code"].c_str()
-				, this))
+		cfg["code"].str().c_str(), this))
 {
 	name_ = "lua";
 }

@@ -109,13 +109,9 @@ public:
 	virtual ai_context& get_ai_context();
 
 
-	const std::string& get_id() const;
-
-
-	const std::string& get_name() const;
-
-
-	const std::string& get_engine() const;
+	virtual std::string get_id() const;
+	virtual std::string get_name() const;
+	virtual std::string get_engine() const;
 
 protected:
 

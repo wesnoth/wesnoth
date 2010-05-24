@@ -3140,7 +3140,7 @@ void console_handler::do_choose_level() {
 			if (id == menu_handler_.gamestate_.classification().next_scenario)
 				next = nb;
 			++nb;
-			scenario = mp["next_scenario"];
+			scenario = mp["next_scenario"].str();
 		}
 	}
 	std::sort(options.begin(), options.end());

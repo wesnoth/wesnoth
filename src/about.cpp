@@ -71,7 +71,7 @@ static void add_lines(std::vector<std::string> &res, config const &c) {
 	}
 
 	foreach (const config &entry, c.child_range("entry")) {
-		res.push_back("-  "+ entry["name"]);
+		res.push_back("-  "+ entry["name"].str());
 	}
 }
 

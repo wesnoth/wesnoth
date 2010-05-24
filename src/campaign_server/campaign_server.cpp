@@ -461,7 +461,7 @@ namespace {
 						LOG_CS << "sending campaign '" << req["name"] << "' to " << network::ip_address(sock)  << (gzipped?" using gzip":"");
 						config &campaign = campaigns().find_child("campaign", "name", req["name"]);
 						if (!campaign) {
-							network::send_data(construct_error("Add-on '" + req["name"] + "'not found."), sock, gzipped);
+							network::send_data(construct_error("Add-on '" + req["name"].str() + "'not found."), sock, gzipped);
 						} else {
  							if (gzipped)
  							{
@@ -660,7 +660,7 @@ namespace {
 
 						//erase the campaign
 						write_file(campaign["filename"], std::string());
-						remove(campaign["filename"].c_str());
+						remove(campaign["filename"].str().c_str());
 
 						config::child_itors itors = campaigns().child_range("campaign");
 						for (size_t index = 0; itors.first != itors.second;

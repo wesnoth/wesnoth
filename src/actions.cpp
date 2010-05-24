@@ -882,7 +882,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u, const map_lo
 			strcmp(opp.undead_variation().c_str(), "null") && !resources::game_map->is_village(opp_loc);
 
 		if (plagues) {
-			plague_type = (*plague_specials.cfgs.front().first)["type"];
+			plague_type = (*plague_specials.cfgs.front().first)["type"].str();
 			if (plague_type.empty())
 				plague_type = u.type_id();
 		}
@@ -1229,9 +1229,9 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
 	const config *ran_results = get_random_results();
 	if (ran_results)
 	{
-		int results_chance = atoi((*ran_results)["chance"].c_str());
-		bool results_hits = (*ran_results)["hits"] == "yes";
-		int results_damage = atoi((*ran_results)["damage"].c_str());
+		int results_chance = (*ran_results)["chance"];
+		bool results_hits = (*ran_results)["hits"].to_bool();
+		int results_damage = (*ran_results)["damage"];
 
 		if (results_chance != attacker.cth_)
 		{
@@ -2336,7 +2336,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 				std::vector<std::pair<const config *, map_location> >::const_iterator hide_it = hides.cfgs.begin();
 				// we only use the first valid alert message
 				for(;hide_it != hides.cfgs.end() && !ambushed_string.empty(); ++hide_it) {
-					ambushed_string = (*hide_it->first)["alert"];
+					ambushed_string = (*hide_it->first)["alert"].str();
 				}
 			}
 		}
