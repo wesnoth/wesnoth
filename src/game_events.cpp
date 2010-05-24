@@ -3133,7 +3133,7 @@ WML_HANDLER_FUNCTION(time_area, /*event_info*/, cfg)
 	log_scope("time_area");
 
 	const bool remove = utils::string_bool(cfg["remove"],false);
-	const std::string& ids = cfg["id"];
+	std::string ids = cfg["id"];
 
 	if(remove) {
 		const std::vector<std::string> id_list =
