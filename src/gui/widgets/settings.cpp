@@ -335,13 +335,12 @@ const std::string& tgui_definition::read(const config& cfg)
  */
 	const config &settings = cfg.child("settings");
 
-	popup_show_delay_ = lexical_cast_default<unsigned>(settings["popup_show_delay"]);
-	popup_show_time_ = lexical_cast_default<unsigned>(settings["popup_show_time"]);
-	help_show_time_ = lexical_cast_default<unsigned>(settings["help_show_time"]);
-	double_click_time_ = lexical_cast_default<unsigned>(settings["double_click_time"]);
+	popup_show_delay_ = settings["popup_show_delay"];
+	popup_show_time_ = settings["popup_show_time"];
+	help_show_time_ = settings["help_show_time"];
+	double_click_time_ = settings["double_click_time"];
 
-	repeat_button_repeat_time_ = lexical_cast_default<unsigned>(
-				settings["repeat_button_repeat_time"]);
+	repeat_button_repeat_time_ = settings["repeat_button_repeat_time"];
 
 	VALIDATE(double_click_time_, missing_mandatory_wml_key("settings", "double_click_time"));
 
