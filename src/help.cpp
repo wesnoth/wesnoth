@@ -2256,7 +2256,7 @@ void help_text_area::handle_ref_cfg(const config &cfg)
 {
 	const std::string dst = cfg["dst"];
 	const std::string text = cfg["text"];
-	const bool force = utils::string_bool(cfg["force"], false);
+	bool force = cfg["force"].to_bool();
 
 	if (dst == "") {
 		std::stringstream msg;
@@ -2300,11 +2300,8 @@ void help_text_area::handle_img_cfg(const config &cfg)
 {
 	const std::string src = cfg["src"];
 	const std::string align = cfg["align"];
-	const bool floating = utils::string_bool(cfg["float"], false);
-	bool box = true;
-	if (cfg["box"] != "" && !utils::string_bool(cfg["box"], false)) {
-		box = false;
-	}
+	bool floating = cfg["float"].to_bool();
+	bool box = cfg["box"].to_bool(true);
 	if (src == "") {
 		throw parse_error("Img markup must have src attribute.");
 	}
@@ -2382,16 +2379,9 @@ void help_text_area::handle_format_cfg(const config &cfg)
 	if (text == "") {
 		throw parse_error("Format markup must have text attribute.");
 	}
-	const bool bold = utils::string_bool(cfg["bold"], false);
-	const bool italic = utils::string_bool(cfg["italic"], false);
-	int font_size = normal_font_size;
-	if (cfg["font_size"] != "") {
-		try {
-			font_size = lexical_cast<int, std::string>(cfg["font_size"]);
-		} catch (bad_lexical_cast) {
-			throw parse_error("Invalid font_size in format markup.");
-		}
-	}
+	bool bold = cfg["bold"].to_bool();
+	bool italic = cfg["italic"].to_bool();
+	int font_size = cfg["font_size"].to_int(normal_font_size);
 	SDL_Color color = string_to_color(cfg["color"]);
 	add_text_item(text, "", false, font_size, bold, italic, color);
 }
