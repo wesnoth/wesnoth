@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-05-24 17:53+0200\n"
-"PO-Revision-Date: 2010-04-28 16:24+0200\n"
-"Last-Translator: Dalibor Djuric <dalibor.djuric@mozilla-srbija.org>\n"
+"PO-Revision-Date: 2010-05-24 20:48+0200\n"
+"Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
@@ -104,9 +104,8 @@ msgstr "Звукови хола"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:107
-#, fuzzy
 msgid "Disable notifications"
-msgstr "Искључује аутопозиције."
+msgstr "Без обавештења"
 
 #. [ai]: id=default # id is needed uniquely identify a MP AI, it is not needed in the scenario AI
 #: data/ai/ais/default_ai.cfg:4
@@ -8861,11 +8860,11 @@ msgstr "<наредба>[;<наредба>...]"
 
 #: src/menu_events.cpp:2464
 msgid "Execute a Lua statement."
-msgstr "Извршава Lua исказ."
+msgstr "Извршава луа исказ."
 
 #: src/menu_events.cpp:2466
 msgid "Grant higher privileges to Lua scripts."
-msgstr ""
+msgstr "Даје већа овлашћења луа скриптама."
 
 #: src/menu_events.cpp:2468
 msgid "Set the command used by the custom command hotkey"
@@ -9065,7 +9064,7 @@ msgstr "Исправљање деактивирано!"
 
 #: src/menu_events.cpp:3191
 msgid "Unsafe Lua scripts."
-msgstr ""
+msgstr "Небезбедне луа скрипте."
 
 #: src/menu_events.cpp:3192
 msgid ""
@@ -9073,10 +9072,13 @@ msgid ""
 "continue? If you have downloaded add-ons, do not click 'ok'! They would "
 "instantly take over your computer. You have been warned."
 msgstr ""
+"Овим ћете отворити безбедносни процеп у Весноту. Желите ли заиста да "
+"наставите? Ако сте преузели неке додатке, не кликћите на „У реду“! — могли "
+"би тог тренутка преузети ваш рачунар. Упозорили смо вас."
 
 #: src/menu_events.cpp:3195
 msgid "Unsafe mode enabled!"
-msgstr ""
+msgstr "Укључен небезбедан режим!"
 
 #: src/menu_events.cpp:3238
 msgid "Variable not found"
@@ -10285,49 +10287,3 @@ msgstr "законита"
 #: src/unit_types.cpp:1008
 msgid "female^neutral"
 msgstr "неутрална"
-
-#~ msgid ""
-#~ "Battle for Wesnoth automatically sends anonymized statistics about your "
-#~ "game advancement to a server where they are stored. This enables several "
-#~ "features, and allows us to improve Wesnoth. To learn more about this or "
-#~ "disable it, click the envelope in the bottom-right corner."
-#~ msgstr ""
-#~ "„Бој за Веснот“ аутоматски шаље анонимну статистику вашег напредовања "
-#~ "кроз игру серверу који их складишти, што нам отвара неколико могућности "
-#~ "за рад на побољшању Веснота. Да бисте више сазнали више о овоме, или "
-#~ "искључили слање, кликните на коверат у доњем десном углу."
-
-#~ msgid "Wesnoth Developers"
-#~ msgstr "— програмери Веснота"
-
-#~ msgid "Upload statistics"
-#~ msgstr "Статистика слања"
-
-#~ msgid "Help Wesnoth"
-#~ msgstr "Помогните Веснот"
-
-#~ msgid "Help Wesnoth by sending us information"
-#~ msgstr "Помозите Весноту шаљући нам информације"
-
-#~ msgid ""
-#~ "Wesnoth relies on volunteers like yourself for feedback, especially "
-#~ "beginners and new players. Wesnoth keeps summaries of your games: you can "
-#~ "help us improve game play by giving permission to send these summaries "
-#~ "(anonymously) to wesnoth.org.\n"
-#~ msgstr ""
-#~ "Веснот очекује реаговања од волонтера попут вас, поготову почетника и "
-#~ "нових играча. Веснот чува сажетке ваших партија: можете нам помоћи у "
-#~ "побољшању игривости дајући дозволу да се ови сажеци (анонимно) пошаљу на "
-#~ "wesnoth.org.\n"
-
-#~ msgid "Summaries are stored here:"
-#~ msgstr "Сажеци се чувају овде:"
-
-#~ msgid "You can view the results at:"
-#~ msgstr "Резултате можете видети на:"
-
-#~ msgid "Help us make Wesnoth better for you!"
-#~ msgstr "Помозите нам да побољшамо Веснот за вас!"
-
-#~ msgid "Enable summary uploads"
-#~ msgstr "Укључи слање сажетака"
