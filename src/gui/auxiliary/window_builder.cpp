@@ -236,9 +236,9 @@ const std::string& twindow_builder::read(const config& cfg)
 }
 
 twindow_builder::tresolution::tresolution(const config& cfg) :
-	window_width(lexical_cast_default<unsigned>(cfg["window_width"])),
-	window_height(lexical_cast_default<unsigned>(cfg["window_height"])),
-	automatic_placement(utils::string_bool(cfg["automatic_placement"], true)),
+	window_width(cfg["window_width"]),
+	window_height(cfg["window_height"]),
+	automatic_placement(cfg["automatic_placement"].to_bool(true)),
 	x(cfg["x"]),
 	y(cfg["y"]),
 	width(cfg["width"]),
@@ -247,9 +247,9 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
 			implementation::get_v_align(cfg["vertical_placement"])),
 	horizontal_placement(
 			implementation::get_h_align(cfg["horizontal_placement"])),
-	maximum_width(lexical_cast_default<unsigned>(cfg["maximum_width"])),
-	maximum_height(lexical_cast_default<unsigned>(cfg["maximum_height"])),
-	click_dismiss(utils::string_bool(cfg["click_dismiss"])),
+	maximum_width(cfg["maximum_width"]),
+	maximum_height(cfg["maximum_height"]),
+	click_dismiss(cfg["click_dismiss"].to_bool()),
 	definition(cfg["definition"]),
 	linked_groups(),
 	grid(0)
@@ -355,8 +355,8 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
 	foreach (const config &lg, cfg.child_range("linked_group")) {
 		tlinked_group linked_group;
 		linked_group.id = lg["id"].str();
-		linked_group.fixed_width = utils::string_bool(lg["fixed_width"]);
-		linked_group.fixed_height = utils::string_bool(lg["fixed_height"]);
+		linked_group.fixed_width = lg["fixed_width"].to_bool();
+		linked_group.fixed_height = lg["fixed_height"].to_bool();
 
 		VALIDATE(!linked_group.id.empty()
 				, missing_mandatory_wml_key("linked_group", "id"));
@@ -445,14 +445,14 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
 	{
 		unsigned col = 0;
 
-		row_grow_factor.push_back(lexical_cast_default<unsigned>(row["grow_factor"]));
+		row_grow_factor.push_back(row["grow_factor"]);
 
 		foreach (const config &c, row.child_range("column"))
 		{
 			flags.push_back(implementation::read_flags(c));
-			border_size.push_back(lexical_cast_default<unsigned>(c["border_size"]));
+			border_size.push_back(c["border_size"]);
 			if(rows == 0) {
-				col_grow_factor.push_back(lexical_cast_default<unsigned>(c["grow_factor"]));
+				col_grow_factor.push_back(c["grow_factor"]);
 			}
 
 			widgets.push_back(create_builder_widget(c));
@@ -477,7 +477,7 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
 tbuilder_gridcell::tbuilder_gridcell(const config& cfg) :
 	tbuilder_widget(cfg),
 	flags(implementation::read_flags(cfg)),
-	border_size(lexical_cast_default<unsigned>((cfg)["border_size"])),
+	border_size(cfg["border_size"]),
 	widget(create_builder_widget(cfg))
 {
 }

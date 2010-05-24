@@ -32,12 +32,10 @@ thorizontal_scrollbar_definition::
 
 thorizontal_scrollbar_definition::tresolution::tresolution(const config& cfg)
 	: tresolution_definition_(cfg)
-	, minimum_positioner_length(
-			lexical_cast_default<unsigned>(cfg["minimum_positioner_length"]))
-	, maximum_positioner_length(
-			lexical_cast_default<unsigned>(cfg["maximum_positioner_length"]))
-	, left_offset(lexical_cast_default<unsigned>(cfg["left_offset"]))
-	, right_offset(lexical_cast_default<unsigned>(cfg["right_offset"]))
+	, minimum_positioner_length(cfg["minimum_positioner_length"])
+	, maximum_positioner_length(cfg["maximum_positioner_length"])
+	, left_offset(cfg["left_offset"])
+	, right_offset(cfg["right_offset"])
 {
 /*WIKI
  * @page = GUIWidgetDefinitionWML
