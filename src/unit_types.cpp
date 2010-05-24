@@ -53,8 +53,8 @@ attack_type::attack_type(const config& cfg) :
 	range_(cfg["range"]),
 	damage_(cfg["damage"]),
 	num_attacks_(cfg["number"]),
-	attack_weight_(lexical_cast_default<double>(cfg["attack_weight"],1.0)),
-	defense_weight_(lexical_cast_default<double>(cfg["defense_weight"],1.0)),
+	attack_weight_(cfg["attack_weight"].to_double(1.0)),
+	defense_weight_(cfg["defense_weight"].to_double(1.0)),
 	accuracy_(cfg["accuracy"]),
 	parry_(cfg["parry"])
 
@@ -186,7 +186,7 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 
 	if(increase_damage.empty() == false) {
 		damage_ = utils::apply_modifier(damage_, increase_damage, 1);
-		cfg_["damage"] = lexical_cast_default<std::string>(damage_);
+		cfg_["damage"] = damage_;
 
 		if(description != NULL) {
 			int inc_damage = lexical_cast<int>(increase_damage);
@@ -197,7 +197,7 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 
 	if(increase_attacks.empty() == false) {
 		num_attacks_ = utils::apply_modifier(num_attacks_, increase_attacks, 1);
-		cfg_["number"] = lexical_cast_default<std::string>(num_attacks_);
+		cfg_["number"] = num_attacks_;
 
 		if(description != NULL) {
 			int inc_attacks = lexical_cast<int>(increase_attacks);
@@ -208,7 +208,7 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 
 	if(increase_accuracy.empty() == false) {
 		accuracy_ = utils::apply_modifier(accuracy_, increase_accuracy, 1);
-		cfg_["accuracy"] = lexical_cast_default<std::string>(accuracy_);
+		cfg_["accuracy"] = accuracy_;
 
 		if(description != NULL) {
 			int inc_acc = lexical_cast<int>(increase_accuracy);
@@ -220,7 +220,7 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 
 	if(increase_parry.empty() == false) {
 		parry_ = utils::apply_modifier(parry_, increase_parry, 1);
-		cfg_["parry"] = lexical_cast_default<std::string>(parry_);
+		cfg_["parry"] = parry_;
 
 		if(description != NULL) {
 			int inc_parry = lexical_cast<int>(increase_parry);
@@ -231,12 +231,12 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 
 	if(set_attack_weight.empty() == false) {
 		attack_weight_ = lexical_cast_default<double>(set_attack_weight,1.0);
-		cfg_["attack_weight"] = lexical_cast_default<std::string>(attack_weight_);
+		cfg_["attack_weight"] = attack_weight_;
 	}
 
 	if(set_defense_weight.empty() == false) {
 		defense_weight_ = lexical_cast_default<double>(set_defense_weight,1.0);
-		cfg_["defense_weight"] = lexical_cast_default<std::string>(defense_weight_);
+		cfg_["defense_weight"] = defense_weight_;
 	}
 
 	if(description != NULL) {
@@ -371,11 +371,10 @@ string_map unit_movement_type::damage_table() const
 
 bool unit_movement_type::is_flying() const
 {
-	const std::string& flies = cfg_["flies"];
-	if(flies == "" && parent_ != NULL)
+	if (!cfg_.has_attribute("flies") && parent_)
 		return parent_->is_flying();
 
-	return utils::string_bool(flies);
+	return cfg_["flies"].to_bool();
 }
 
 int movement_cost_internal(std::map<t_translation::t_terrain, int>& move_costs,
@@ -719,7 +718,7 @@ void unit_type::build_full(const config& cfg, const movement_type_map& mv_types,
 	}
 	foreach (const config &var_cfg, cfg.child_range("variation"))
 	{
-		if(utils::string_bool(var_cfg["inherit"])) {
+		if (var_cfg["inherit"].to_bool()) {
 			config nvar_cfg(cfg);
 			nvar_cfg.merge_with(var_cfg);
 			nvar_cfg.clear_children("variation");
@@ -749,7 +748,7 @@ void unit_type::build_full(const config& cfg, const movement_type_map& mv_types,
 		if (!race_->uses_global_traits()) {
 			possibleTraits_.clear();
 		}
-		if (utils::string_bool(cfg["ignore_race_traits"])) {
+		if (cfg["ignore_race_traits"].to_bool()) {
 			possibleTraits_.clear();
 		} else {
 			foreach (const config &t, race_->additional_traits())
@@ -766,7 +765,7 @@ void unit_type::build_full(const config& cfg, const movement_type_map& mv_types,
 		possibleTraits_.add_child("trait", trait);
 	}
 
-	zoc_ = utils::string_bool(cfg["zoc"], level_ > 0);
+	zoc_ = cfg["zoc"].to_bool(level_ > 0);
 
 	const std::string& alpha_blend = cfg["alpha"];
 	if(alpha_blend.empty() == false) {
@@ -808,11 +807,11 @@ void unit_type::build_help_index(const config& cfg, const movement_type_map& mv_
 
 	type_name_ = cfg_["name"];
 	description_ = cfg_["description"];
-	hitpoints_ = lexical_cast_default<int>(cfg["hitpoints"], 1);
-	level_ = lexical_cast_default<int>(cfg["level"], 0);
-	movement_ = lexical_cast_default<int>(cfg["movement"], 1);
-	max_attacks_ = lexical_cast_default<int>(cfg["attacks"], 1);
-	cost_ = lexical_cast_default<int>(cfg["cost"], 1);
+	hitpoints_ = cfg["hitpoints"].to_int(1);
+	level_ = cfg["level"];
+	movement_ = cfg["movement"].to_int(1);
+	max_attacks_ = cfg["attacks"].to_int(1);
+	cost_ = cfg["cost"].to_int(1);
 	usage_ = cfg_["usage"].str();
 	undead_variation_ = cfg_["undead_variation"].str();
 	image_ = cfg_["image"].str();
@@ -826,7 +825,7 @@ void unit_type::build_help_index(const config& cfg, const movement_type_map& mv_
 	}
 
 	// if num_traits is not defined, we use the num_traits from race
-	num_traits_ = lexical_cast_default<unsigned int>(cfg["num_traits"], race_->num_traits());
+	num_traits_ = cfg["num_traits"].to_int(race_->num_traits());
 
 	const std::vector<std::string> genders = utils::split(cfg["gender"]);
 	for(std::vector<std::string>::const_iterator g = genders.begin(); g != genders.end(); ++g) {
@@ -865,7 +864,7 @@ void unit_type::build_help_index(const config& cfg, const movement_type_map& mv_
 		}
 	}
 
-	hide_help_= utils::string_bool(cfg["hide_help"],false);
+	hide_help_= cfg["hide_help"].to_bool();
 
 	build_status_ = HELP_INDEX;
 }
@@ -879,7 +878,7 @@ void unit_type::build_created(const config& cfg, const movement_type_map& mv_typ
 	if (const config &male_cfg = cfg.child("male"))
 	{
 		config m_cfg;
-		if (!utils::string_bool(male_cfg["inherit"], true)) {
+		if (!male_cfg["inherit"].to_bool(true)) {
 			m_cfg = male_cfg;
 		} else {
 			m_cfg = cfg;
@@ -893,7 +892,7 @@ void unit_type::build_created(const config& cfg, const movement_type_map& mv_typ
 	if (const config &female_cfg = cfg.child("female"))
 	{
 		config f_cfg;
-		if (!utils::string_bool(female_cfg["inherit"], true)) {
+		if (!female_cfg["inherit"].to_bool(true)) {
 			f_cfg = female_cfg;
 		} else {
 			f_cfg = cfg;
@@ -909,7 +908,7 @@ void unit_type::build_created(const config& cfg, const movement_type_map& mv_typ
         advances_to_ = utils::split(advances_to_val);
     DBG_UT << "unit_type '" << id_ << "' advances to : " << advances_to_val << "\n";
 
- 	experience_needed_=lexical_cast_default<int>(cfg["experience"],500);
+	experience_needed_ = cfg["experience"].to_int(500);
 
 	build_status_ = CREATED;
 }
@@ -1205,7 +1204,7 @@ void unit_type_data::set_config(config &cfg)
 	build_all(unit_type::CREATED);
 
 	if (const config &hide_help = cfg.child("hide_help")) {
-		hide_help_all_ = utils::string_bool(hide_help["all"], false);
+		hide_help_all_ = hide_help["all"].to_bool();
 		read_hide_help(hide_help);
 	}
 }
@@ -1356,7 +1355,7 @@ void unit_type_data::add_advancement(unit_type& to_unit) const
     foreach (const config &af, cfg.child_range("advancefrom"))
     {
         const std::string &from = af["unit"];
-        const int xp = lexical_cast_default<int>(af["experience"],0);
+        int xp = af["experience"];
 
         unit_type_data::unit_type_map::iterator from_unit = types_.find(from);
 
