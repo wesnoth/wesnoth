@@ -58,6 +58,7 @@ game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 		const config& theme_cfg, const config& level) :
 		display(video, &map, theme_cfg, level),
 		units_(units),
+		temp_units_(),
 		attack_indicator_src_(),
 		attack_indicator_dst_(),
 		energy_bar_rects_(),
