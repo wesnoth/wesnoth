@@ -90,7 +90,7 @@ game_classification::game_classification(const config& cfg):
 	next_scenario(cfg["next_scenario"]),
 	completion(cfg["completion"]),
 	end_text(cfg["end_text"]),
-	end_text_duration(lexical_cast_default<unsigned int>(cfg["end_text_duration"])),
+	end_text_duration(cfg["end_text_duration"]),
 	difficulty(cfg["difficulty"].empty() ? "NORMAL" : cfg["difficulty"].str())
 	{}
 
@@ -208,27 +208,25 @@ void write_players(game_state& gamestate, config& cfg, const bool use_snapshot, 
 				//we have a matching side in the current scenario
 
 				//sort carryover gold
-				std::string gold = (*scenario_side)["gold"];
-				if (gold.empty()) gold = "100";
-				int ngold = lexical_cast_default<int>(gold);
-				int player_gold = lexical_cast_default<int>(carryover_side["gold"]);
-				if (utils::string_bool(carryover_side["gold_add"])) {
+				int ngold = (*scenario_side)["gold"].to_int(100);
+				int player_gold = carryover_side["gold"];
+				if (carryover_side["gold_add"].to_bool()) {
 					ngold += player_gold;
 				} else if (player_gold >= ngold) {
 					ngold = player_gold;
 				}
 				carryover_side["gold"] = str_cast(ngold);
-				if (!(*scenario_side)["gold_add"].empty()) {
+				if (scenario_side->has_attribute("gold_add")) {
 					carryover_side["gold_add"] = (*scenario_side)["gold_add"];
 				}
 				//merge player information into the scenario cfg
 				(*scenario_side)["save_id"] = carryover_side["save_id"];
-				(*scenario_side)["gold"] = str_cast(ngold);
+				(*scenario_side)["gold"] = ngold;
 				(*scenario_side)["gold_add"] = carryover_side["gold_add"];
-				if (!carryover_side["previous_recruits"].empty()) {
-					(*scenario_side)["previous_recruits"]	= carryover_side["previous_recruits"];
+				if (carryover_side.has_attribute("previous_recruits")) {
+					(*scenario_side)["previous_recruits"] = carryover_side["previous_recruits"];
 				} else {
-					(*scenario_side)["previous_recruits"]	= carryover_side["can_recruit"];
+					(*scenario_side)["previous_recruits"] = carryover_side["can_recruit"];
 				}
 				(*scenario_side)["name"] = carryover_side["name"];
 				(*scenario_side)["current_player"] = carryover_side["current_player"];
@@ -261,7 +259,7 @@ game_state::game_state(const config& cfg, bool show_replay) :
 		classification_(cfg),
 		mp_settings_(cfg)
 {
-	n_unit::id_manager::instance().set_save_id(lexical_cast_default<size_t>(cfg["next_underlying_unit_id"],0));
+	n_unit::id_manager::instance().set_save_id(cfg["next_underlying_unit_id"]);
 	log_scope("read_game");
 
 	const config &snapshot = cfg.child("snapshot");
@@ -272,7 +270,7 @@ game_state::game_state(const config& cfg, bool show_replay) :
 	if (load_snapshot) {
 		this->snapshot = snapshot;
 
-		rng_.seed_random(lexical_cast_default<unsigned>(snapshot["random_calls"]));
+		rng_.seed_random(snapshot["random_calls"]);
 	} else {
 		assert(replay_start);
 	}
@@ -342,10 +340,10 @@ void game_state::write_snapshot(config& cfg) const
 
 	cfg["campaign_define"] = classification_.campaign_define;
 	cfg["campaign_extra_defines"] = utils::join(classification_.campaign_xtra_defines);
-	cfg["next_underlying_unit_id"] = lexical_cast<std::string>(n_unit::id_manager::instance().get_save_id());
+	cfg["next_underlying_unit_id"] = str_cast(n_unit::id_manager::instance().get_save_id());
 
-	cfg["random_seed"] = lexical_cast<std::string>(rng_.get_random_seed());
-	cfg["random_calls"] = lexical_cast<std::string>(rng_.get_random_calls());
+	cfg["random_seed"] = rng_.get_random_seed();
+	cfg["random_calls"] = rng_.get_random_calls();
 
 	cfg["end_text"] = classification_.end_text;
 	cfg["end_text_duration"] = str_cast<unsigned int>(classification_.end_text_duration);
@@ -422,11 +420,11 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 					continue;
 				}
 
-				if (utils::string_bool(side["shroud"])) {
+				if (side["shroud"].to_bool()) {
 					shrouded = true;
 				}
 
-				if (side["canrecruit"] == "yes")
+				if (side["canrecruit"].to_bool())
 				{
 						leader = side["id"].str();
 						leader_image = side["image"].str();
@@ -435,7 +433,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 
 				foreach (const config &u, side.child_range("unit"))
 				{
-					if (utils::string_bool(u["canrecruit"], false)) {
+					if (u["canrecruit"].to_bool()) {
 						leader = u["id"].str();
 						leader_image = u["image"].str();
 						break;
@@ -672,7 +670,7 @@ protected:
 
 	void init()
 	{
-		side_ = lexical_cast_default<int>(side_cfg_["side"], 1);
+		side_ = side_cfg_["side"].to_int(1);
 
 		log_step("init");
 
@@ -688,7 +686,8 @@ protected:
 		   side_cfg_["controller"] == "network" ||
 		   side_cfg_["controller"] == "network_ai" ||
 		   side_cfg_["controller"] == "human_ai" ||
-		   utils::string_bool(side_cfg_["persistent"])) {
+			side_cfg_["persistent"].to_bool())
+		{
 			player_exists_ = true;
 
 			//if we have a snapshot, level contains team information
@@ -747,16 +746,16 @@ protected:
 
 		//true  - carryover gold is added to the start_gold.
 		//false - the max of the two is taken as start_gold.
-		gold_info_add_ = utils::string_bool((side_cfg_)["gold_add"]);
+		gold_info_add_ = side_cfg_["gold_add"].to_bool();
 
 		if (use_player_cfg()) {
 			try {
-				int player_gold = lexical_cast_default<int>((*player_cfg_)["gold"]);
+				int player_gold = (*player_cfg_)["gold"];
 				if (!player_exists_) {
 					//if we get the persistence information from [side], carryover gold is already sorted
 					gold_info_ngold_ = player_gold;
-					gold_info_add_ = utils::string_bool((*player_cfg_)["gold_add"]);
-				} else if(utils::string_bool((*player_cfg_)["gold_add"])) {
+					gold_info_add_ = (*player_cfg_)["gold_add"].to_bool();
+				} else if ((*player_cfg_)["gold_add"].to_bool()) {
 					gold_info_ngold_ +=  player_gold;
 					gold_info_add_ = true;
 				} else if(player_gold >= gold_info_ngold_) {
@@ -791,7 +790,7 @@ protected:
 			const config& child = level_.find_child_recursive("objectives", "side", side_cfg_["side"]);
 			bool silent = false;
 			if (child && child.has_attribute("silent"))
-				silent = utils::string_bool(child["silent"]);
+				silent = child["silent"].to_bool();
 			t_->set_objectives(level_["objectives"], silent);
 		}
 	}
@@ -860,7 +859,7 @@ protected:
 		// this hack shall be removed, since it messes up with 'multiple leaders'
 
 		// If this side tag describes the leader of the side
-		if(!utils::string_bool(side_cfg_["no_leader"]) && side_cfg_["controller"] != "null") {
+		if (!side_cfg_["no_leader"].to_bool() && side_cfg_["controller"] != "null") {
 			leader_cfg_ = side_cfg_;
 
 			if (!leader_cfg_.has_attribute("canrecruit")){
@@ -1023,7 +1022,7 @@ wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
 	if(cfg != NULL) {
 		image = (*cfg)["image"].str();
 		description = (*cfg)["description"];
-		needs_select = utils::string_bool((*cfg)["needs_select"], false);
+		needs_select = (*cfg)["needs_select"].to_bool();
 		if (const config &c = cfg->child("show_if")) show_if = c;
 		if (const config &c = cfg->child("filter_location")) filter_location = c;
 		if (const config &c = cfg->child("command")) command = c;
