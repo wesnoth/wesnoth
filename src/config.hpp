@@ -159,6 +159,12 @@ public:
 		value_type value;
 
 	public:
+
+		attribute_value()
+			: value()
+		{
+		}
+
 		attribute_value &operator=(const attribute_value &other)
 		{ value = other.value; return *this; }
 
