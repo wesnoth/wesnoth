@@ -229,7 +229,7 @@ local function wml_unit_worth(cfg)
 	local best_adv = ut.cost
 	for w in string.gmatch(ut.__cfg.advances_to, "[^%s,][^,]*") do
 		local uta = wesnoth.get_unit_type(w)
-		if uta.cost > best_adv then best_adv = uta.cost end
+		if uta ~= nil and uta.cost > best_adv then best_adv = uta.cost end
 	end
 	wesnoth.set_variable("cost", ut.cost)
 	wesnoth.set_variable("next_cost", best_adv)
