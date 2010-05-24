@@ -48,11 +48,11 @@ floating_image::floating_image(const floating_image& fi)
 
 floating_image::floating_image(const config& cfg)
 	: file_(cfg["file"])
-	, x_(lexical_cast_default<int>(cfg["x"]))
-	, y_(lexical_cast_default<int>(cfg["y"]))
-	, delay_(lexical_cast_default<int>(cfg["delay"]))
-	, autoscaled_(utils::string_bool(cfg["scaled"], false))
-	, centered_(utils::string_bool(cfg["centered"], false))
+	, x_(cfg["x"])
+	, y_(cfg["y"])
+	, delay_(cfg["delay"])
+	, autoscaled_(cfg["scaled"].to_bool())
+	, centered_(cfg["centered"].to_bool())
 {
 }
 
