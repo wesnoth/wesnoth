@@ -298,7 +298,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		gui_->add_overlay(
 			map_location(overlay, resources::state_of_game),
 			overlay["image"], overlay["halo"], overlay["team_name"],
-			utils::string_bool(overlay["visible_in_fog"], true));
+			overlay["visible_in_fog"].to_bool(true));
 	}
 
 	// Read sound sources
@@ -308,12 +308,10 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		soundsources_manager_->add(spec);
 	}
 
-	set_victory_when_enemies_defeated(
-		utils::string_bool(level_["victory_when_enemies_defeated"], true));
+	set_victory_when_enemies_defeated(level_["victory_when_enemies_defeated"].to_bool(true));
 	end_level_data &end_level = get_end_level_data();
-	end_level.carryover_percentage = lexical_cast_default<int>(
-		level_["carryover_percentage"], game_config::gold_carryover_percentage);
-	end_level.carryover_add = utils::string_bool(level_["carryover_add"]);
+	end_level.carryover_percentage = level_["carryover_percentage"].to_int(game_config::gold_carryover_percentage);
+	end_level.carryover_add = level_["carryover_add"].to_bool();
 
 	LOG_NG << "entering try... " << (SDL_GetTicks() - ticks_) << "\n";
 	try {
@@ -350,11 +348,9 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		if (linger_) {
 			//determine the bonus gold handling for this scenario
 			const config end_cfg = level_.child_or_empty("endlevel");
-			end_level.carryover_percentage = lexical_cast_default<int>(
-				level_["carryover_percentage"],
-				game_config::gold_carryover_percentage);
-			end_level.carryover_add = utils::string_bool(level_["carryover_add"]);
-			end_level.gold_bonus = utils::string_bool(end_cfg["bonus"], true);
+			end_level.carryover_percentage = level_["carryover_percentage"].to_int(game_config::gold_carryover_percentage);
+			end_level.carryover_add = level_["carryover_add"].to_bool();
+			end_level.gold_bonus = end_cfg["bonus"].to_bool(true);
 			end_level.carryover_report = false;
 			throw end_level_exception(SKIP_TO_LINGER);
 		}
