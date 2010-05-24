@@ -254,7 +254,7 @@ void tgame_load::evaluate_summary_string(std::stringstream& str
 		, const config& cfg_summary){
 
 	const std::string& campaign_type = cfg_summary["campaign_type"];
-	if(utils::string_bool(cfg_summary["corrupt"], false)) {
+	if (cfg_summary["corrupt"].to_bool()) {
 		str << "\n" << _("#(Invalid)");
 	} else if (!campaign_type.empty()) {
 		str << "\n";
@@ -291,9 +291,7 @@ void tgame_load::evaluate_summary_string(std::stringstream& str
 
 		str << "\n";
 
-		if(utils::string_bool(cfg_summary["replay"], false)
-				&& !utils::string_bool(cfg_summary["snapshot"], true)) {
-
+		if (cfg_summary["replay"].to_bool() && !cfg_summary["snapshot"].to_bool(true)) {
 			str << _("replay");
 		} else if (!cfg_summary["turn"].empty()) {
 			str << _("Turn") << " " << cfg_summary["turn"];
