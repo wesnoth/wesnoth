@@ -2555,6 +2555,20 @@ static int cfun_ai_execute_move_full(lua_State *L)
 	return ai_execute_move(L, true);
 }
 
+/**
+ * Loads the "package" package into the Lua environment.
+ * This action is inherently unsafe, as Lua scripts will now be able to
+ * load C libraries on their own, hence granting them the same privileges
+ * as the Wesnoth binary itsef.
+ */
+void LuaKernel::load_package()
+{
+	lua_State *L = mState;
+	lua_pushcfunction(L, luaopen_package);
+	lua_pushstring(L, "package");
+	lua_call(L, 1, 0);
+}
+
 static int cfun_ai_execute_move_partial(lua_State *L)
 {
 	return ai_execute_move(L, false);
