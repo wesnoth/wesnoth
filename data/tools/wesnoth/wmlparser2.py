@@ -102,7 +102,7 @@ class TagNode:
         s += "[/" + self.name + "]\n"
         return s
 
-    def get_all(self):
+    def get_all(self, **kw):
         r = []
         for sub in self.data:
             ok = True
