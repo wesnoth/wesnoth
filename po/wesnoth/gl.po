@@ -14,9 +14,10 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-05-15 14:21+0200\n"
-"PO-Revision-Date: 2010-05-05 10:43+0200\n"
+"PO-Revision-Date: 2010-05-24 21:41+0200\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
-"Language-Team: Galician <kde-i18n-doc@kde.org>\n"
+"Language-Team: Galician <proxecto@trasno.net>\n"
+"Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -104,9 +105,8 @@ msgstr "Sons na sala de espera"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:107
-#, fuzzy
 msgid "Disable notifications"
-msgstr "Desactivar os gardados automáticos."
+msgstr "Desactivar as notificacións"
 
 #. [ai]: id=testing_ai_default
 #: data/ai/ais/testing_ai_default.cfg:5
@@ -6675,9 +6675,9 @@ msgid ""
 "'Status Table' will let you know how your enemies are doing, and how you are "
 "doing in comparison."
 msgstr ""
-"Hai algunhas ventás de resumo útiles no menú principal. Por exemplo, a «Táboa "
-"de estado» permitirache saber como lles vai aos teus inimigos, e como che "
-"vai a ti en comparación."
+"Hai algunhas ventás de resumo útiles no menú principal. Por exemplo, a "
+"«Táboa de estado» permitirache saber como lles vai aos teus inimigos, e como "
+"che vai a ti en comparación."
 
 #. [tip]
 #: data/hardwired/tips.cfg:31
@@ -7130,9 +7130,10 @@ msgid ""
 "are limited by its maximum movement. Remember this when deciding what unit "
 "is best to scout specific types of terrain."
 msgstr ""
-"Nos mapas nos que se activou o «Manto do descoñecido» ou a «Néboa de guerra», "
-"a vista dunha unidade está limitada polo seu movemento máximo. Lembra isto "
-"cando decidas que unidade é mellor para explorar certos tipos de terreo."
+"Nos mapas nos que se activou o «Manto do descoñecido» ou a «Néboa de "
+"guerra», a vista dunha unidade está limitada polo seu movemento máximo. "
+"Lembra isto cando decidas que unidade é mellor para explorar certos tipos de "
+"terreo."
 
 #. [tip]
 #: data/hardwired/tips.cfg:183
@@ -7153,9 +7154,9 @@ msgid ""
 "can adjust campaign difficulty."
 msgstr ""
 "Podes enviarlle ao Proxecto Wesnoth un resumo anónimo dos teus progresos "
-"mediante o botón «Axudar co Wesnoth» (indicado pola icona do sobre na esquina "
-"inferior dereita da pantalla principal do xogo). Esta información é vital "
-"para que poidamos axustar o nivel de dificultade das campañas."
+"mediante o botón «Axudar co Wesnoth» (indicado pola icona do sobre na "
+"esquina inferior dereita da pantalla principal do xogo). Esta información é "
+"vital para que poidamos axustar o nivel de dificultade das campañas."
 
 #. [tip]
 #: data/hardwired/tips.cfg:191
@@ -7592,9 +7593,10 @@ msgstr "O servidor respondeu cun erro: «"
 msgid "Response"
 msgstr "Resposta"
 
+# Facilita máis a visualización que «Decargando o complemento: BlaBlaBla...»·
 #: src/addon_management.cpp:585
 msgid "Downloading add-on: $addon_title|..."
-msgstr "Descargando o complemento: $addon_title|..."
+msgstr "Descargando «$addon_title|»..."
 
 #: src/addon_management.cpp:600
 msgid ""
@@ -8202,16 +8204,18 @@ msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
 "Esta unidade é invisible. As unidades inimigas non poden vela nin atacala."
 
+# Aparece como inicio dunha fiestra de axuda, de aí a maiúscula.
 #: src/generate_report.cpp:162
 msgid "slowed: "
-msgstr "ralentizada: "
+msgstr "Ralentizada: "
 
+# Esta mensaxe séguelle a dous puntos (:), de aí que empece con minúscula.
 #: src/generate_report.cpp:163
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking and its movement cost is doubled."
 msgstr ""
-"Esta unidade foi ralentizada. Só inflixirá a metade do dano normal cando "
+"esta unidade foi ralentizada. Só inflixirá a metade do dano normal cando "
 "ataque e o seu custo de movemento duplicase."
 
 #: src/generate_report.cpp:166
@@ -8299,10 +8303,11 @@ msgstr "Momento do día"
 msgid "Leadership: "
 msgstr "Liderado"
 
+# Aparece como inicio dunha fiestra de axuda, de aí a maiúscula.
 #: src/generate_report.cpp:351
 #, fuzzy
 msgid "Slowed: "
-msgstr "ralentizada: "
+msgstr "Ralentizada: "
 
 #: src/generate_report.cpp:355
 #, fuzzy
@@ -8316,7 +8321,7 @@ msgstr ""
 #: src/generate_report.cpp:359
 #, fuzzy
 msgid "Swarm: "
-msgstr "Braña"
+msgstr "enxame"
 
 #: src/generate_report.cpp:364
 #, fuzzy
@@ -9510,7 +9515,8 @@ msgstr ""
 #: src/multiplayer.cpp:305
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
 msgstr ""
-"O alcume «$nick» é longo de máis. Os alcumes deben ter 18 caracteres ou menos."
+"O alcume «$nick» é longo de máis. Os alcumes deben ter 18 caracteres ou "
+"menos."
 
 #: src/multiplayer.cpp:308
 msgid "The nick '$nick' is reserved and cannot be used by players."
@@ -10273,8 +10279,8 @@ msgstr "Nome de variable baleiro"
 #: src/serialization/parser.cpp:247
 msgid "Unexpected characters after variable name (expected , or =)"
 msgstr ""
-"Atopáronse caracteres inesperados despois do nome da variable (agardábase «,» "
-"ou «=»)"
+"Atopáronse caracteres inesperados despois do nome da variable (agardábase "
+"«,» ou «=»)"
 
 # comiñas en teoria existe (falar en trasno), entrecomiñada existe???
 #: src/serialization/parser.cpp:279 src/serialization/parser.cpp:303
@@ -10628,6 +10634,24 @@ msgstr "Activar o envío de resumos"
 
 #~ msgid "tooltip^% parry"
 #~ msgstr "% de defensa"
+
+#~ msgid "Grant higher privileges to Lua scripts."
+#~ msgstr "Darlle máis privilexios aos guións en Lua."
+
+#~ msgid "Unsafe Lua scripts."
+#~ msgstr "Guións en Lua inseguros."
+
+#~ msgid ""
+#~ "You are about to open a security breach in Wesnoth. Are you sure you want "
+#~ "to continue? If you have downloaded add-ons, do not click 'ok'! They "
+#~ "would instantly take over your computer. You have been warned."
+#~ msgstr ""
+#~ "Estás a piques de abrir unha brecha na seguridade do Wesnoth. Seguro que "
+#~ "queres continuar? Se descargaches complementos, non premas en «aceptar»! "
+#~ "Podería tomar o control completo do teu computador. Quedas avisado."
+
+#~ msgid "Unsafe mode enabled!"
+#~ msgstr "Activouse o modo inseguro!"
 
 #~ msgid "--no games open--"
 #~ msgstr "--non hai partidas abertas--"
