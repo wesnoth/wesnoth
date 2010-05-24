@@ -241,7 +241,6 @@ wesnoth_sources = Split("""
     storyscreen/render.cpp
     team.cpp
     terrain_filter.cpp
-    time_of_day.cpp
     titlescreen.cpp
     tod_manager.cpp
     unit.cpp
@@ -426,7 +425,7 @@ for env in [test_env, client_env, env]:
 
 game_cpp = client_env.Object("game.cpp", EXTRA_DEFINE = not env["pool_alloc"] and "DISABLE_POOL_ALLOC" or None);
 
-client_env.WesnothProgram("wesnoth", [game_cpp] + [libwesnoth_extras, libwesnoth_core, libwesnoth_sdl, libwesnoth, libcampaignd, env["wesnoth_res"]], have_client_prereqs)
+client_env.WesnothProgram("wesnoth", [game_cpp] + [libwesnoth_extras, libwesnoth_core, libwesnoth_sdl, libwesnoth, env["wesnoth_res"]], have_client_prereqs)
 
 campaignd_sources = Split("""
     server/input_stream.cpp
