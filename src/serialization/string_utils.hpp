@@ -59,10 +59,10 @@ enum { REMOVE_EMPTY = 0x01,	/**< REMOVE_EMPTY : remove empty elements. */
 std::vector< std::string > split(std::string const &val, char c = ',', int flags = REMOVE_EMPTY | STRIP_SPACES);
 
 /**
- * Splits a string based either on a separator where text within paranthesis
+ * Splits a string based either on a separator where text within parenthesis
  * is protected from splitting (Note that one can use the same character for
- * both the left and right paranthesis. In this mode it usually makes only
- * sense to have one character for the left and right paranthesis.)
+ * both the left and right parenthesis. In this mode it usually makes only
+ * sense to have one character for the left and right parenthesis.)
  * or if the separator == 0 it splits a string into an odd number of parts:
  * - The part before the first '(',
  * - the part between the first '('
@@ -75,10 +75,10 @@ std::vector< std::string > split(std::string const &val, char c = ',', int flags
  * an empty elements are never removed as they are placeholders.
  * hence REMOVE EMPTY only works for the separator split.
  *
- * paranthetical_split("a(b)c{d}e(f{g})h",0,"({",")}") should return
+ * parenthetical_split("a(b)c{d}e(f{g})h",0,"({",")}") should return
  * a vector of <"a","b","c","d","e","f{g}","h">
  */
-std::vector< std::string > paranthetical_split(std::string const &val,
+std::vector< std::string > parenthetical_split(std::string const &val,
 	const char separator = 0 , std::string const &left="(",
 	std::string const &right=")",int flags = REMOVE_EMPTY | STRIP_SPACES);
 

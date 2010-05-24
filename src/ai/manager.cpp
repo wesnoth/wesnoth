@@ -501,7 +501,7 @@ const std::string manager::internal_evaluate_command( side_number side, const st
 	};
 
 
-	std::vector< std::string > cmd = utils::paranthetical_split(str, ' ',"'","'");
+	std::vector< std::string > cmd = utils::parenthetical_split(str, ' ',"'","'");
 
 	if (cmd.size()==3){
 		//!add_ai side file

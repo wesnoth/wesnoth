@@ -107,13 +107,13 @@ std::vector< std::string > split(std::string const &val, char c, int flags)
 	return res;
 }
 
-std::vector< std::string > paranthetical_split(std::string const &val,
+std::vector< std::string > parenthetical_split(std::string const &val,
 		const char separator, std::string const &left,
 		std::string const &right,int flags)
 {
 	std::vector< std::string > res;
 	std::vector<char> part;
-	bool in_paranthesis = false;
+	bool in_parenthesis = false;
 
 	std::string::const_iterator i1 = val.begin();
 	std::string::const_iterator i2 = val.begin();
@@ -127,7 +127,7 @@ std::vector< std::string > paranthetical_split(std::string const &val,
 	}
 
 	while (i2 != val.end()) {
-		if(!in_paranthesis && separator && *i2 == separator){
+		if(!in_parenthesis && separator && *i2 == separator){
 			std::string new_val(i1, i2);
 			if (flags & STRIP_SPACES)
 				strip(new_val);
@@ -152,7 +152,7 @@ std::vector< std::string > paranthetical_split(std::string const &val,
 				i1=i2;
 			}else{
 				if (part.empty())
-					in_paranthesis = false;
+					in_parenthesis = false;
 				++i2;
 			}
 			continue;
@@ -178,7 +178,7 @@ std::vector< std::string > paranthetical_split(std::string const &val,
 		if(!found){
 			++i2;
 		} else
-			in_paranthesis = true;
+			in_parenthesis = true;
 	}
 
 	std::string new_val(i1, i2);
@@ -188,7 +188,7 @@ std::vector< std::string > paranthetical_split(std::string const &val,
 		res.push_back(new_val);
 
 	if(!part.empty()){
-			ERR_GENERAL << "Mismatched paranthesis:\n"<<val<<"\n";;
+			ERR_GENERAL << "Mismatched parenthesis:\n"<<val<<"\n";;
 	}
 
 	return res;

@@ -450,10 +450,10 @@ surface locator::load_image_sub_file() const
 		// Regular functors
 		std::vector< image::function_base* > functor_queue;
 
-		const std::vector<std::string> modlist = utils::paranthetical_split(val_.modifications_,'~');
+		const std::vector<std::string> modlist = utils::parenthetical_split(val_.modifications_,'~');
 
 		foreach(const std::string& s, modlist) {
-			const std::vector<std::string> tmpmod = utils::paranthetical_split(s);
+			const std::vector<std::string> tmpmod = utils::parenthetical_split(s);
 			std::vector<std::string>::const_iterator j = tmpmod.begin();
 			while(j!= tmpmod.end()){
 				const std::string function = *j++;

@@ -294,7 +294,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	underlying_id_ = lexical_cast_default<size_t>(cfg["underlying_id"],0);
 	set_underlying_id();
 
-	overlays_ = utils::paranthetical_split(cfg["overlays"], ',');
+	overlays_ = utils::parenthetical_split(cfg["overlays"], ',');
 	if(overlays_.size() == 1 && overlays_.front() == "") {
 		overlays_.clear();
 	}

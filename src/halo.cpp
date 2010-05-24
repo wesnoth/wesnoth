@@ -277,7 +277,7 @@ int add(int x, int y, const std::string& image, const map_location& loc,
 {
 	const int id = halo_id++;
 	animated<image::locator>::anim_description image_vector;
-	std::vector<std::string> items = utils::paranthetical_split(image, ',');
+	std::vector<std::string> items = utils::parenthetical_split(image, ',');
 	std::vector<std::string>::const_iterator itor = items.begin();
 	for(; itor != items.end(); ++itor) {
 		const std::vector<std::string>& items = utils::split(*itor, ':');
