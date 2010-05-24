@@ -507,6 +507,8 @@ linechanges = (
         ("flat/grass-r2", "flat/grass2"),
         ("flat/grass-r1", "flat/grass1"),
         ("second_value=", "value_second="),	# Correct earlier wmllint error
+        (".stones", ".petrifies"),
+        ("stones=", "petrifies="),
         )
 
 def validate_on_pop(tagstack, closer, filename, lineno):
