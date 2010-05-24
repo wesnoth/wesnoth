@@ -138,6 +138,7 @@ Version 1.9.0-svn:
    * Cleaned up the gui2 code at various places
    * Fixed restoring and saving unit statuses (bug #15889)
    * Don't crash if a [story] [part] [if] misses [then] or [else] (bug #16028)
+   * Fix a crash on OS X caused by passing invalid utf8 to pango
  * Music and sound effects
    * New version of "Northerners" by Stephen Rozanc (TreizeCouleurs)
 
