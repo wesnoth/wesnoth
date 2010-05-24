@@ -111,18 +111,18 @@ void mp_game_settings::set_from_config(const config& game_cfg)
 	hash = cfg["hash"].str();
 	mp_era = cfg["mp_era"].str();
 	mp_scenario = cfg["mp_scenario"].str();
-	xp_modifier = lexical_cast_default<int>(cfg["experience_modifier"]);
-	use_map_settings = utils::string_bool(cfg["mp_use_map_settings"]);
-	fog_game = utils::string_bool(cfg["mp_fog"]);
-	shroud_game = utils::string_bool(cfg["mp_shroud"]);
-	mp_countdown = utils::string_bool(cfg["mp_countdown"]);
-	mp_countdown_init_time = lexical_cast_default<int>(cfg["mp_countdown_init_time"]);
-	mp_countdown_turn_bonus = lexical_cast_default<int>(cfg["mp_countdown_turn_bonus"]);
-	mp_countdown_reservoir_time = lexical_cast_default<int>(cfg["mp_countdown_reservoir_time"]);
-	mp_countdown_action_bonus = lexical_cast_default<int>(cfg["mp_countdown_action_bonus"]);
-	village_gold = lexical_cast_default<int>(cfg["mp_village_gold"]);
-	allow_observers = utils::string_bool(cfg["observer"]);
-	saved_game = utils::string_bool(cfg["savegame"]);
+	xp_modifier = cfg["experience_modifier"];
+	use_map_settings = cfg["mp_use_map_settings"].to_bool();
+	fog_game = cfg["mp_fog"].to_bool();
+	shroud_game = cfg["mp_shroud"].to_bool();
+	mp_countdown = cfg["mp_countdown"].to_bool();
+	mp_countdown_init_time = cfg["mp_countdown_init_time"];
+	mp_countdown_turn_bonus = cfg["mp_countdown_turn_bonus"];
+	mp_countdown_reservoir_time = cfg["mp_countdown_reservoir_time"];
+	mp_countdown_action_bonus = cfg["mp_countdown_action_bonus"];
+	village_gold = cfg["mp_village_gold"];
+	allow_observers = cfg["observer"].to_bool();
+	saved_game = cfg["savegame"].to_bool();
 }
 
 void mp_game_settings::reset()
@@ -152,13 +152,13 @@ config mp_game_settings::to_config() const
 	cfg["hash"] = hash;
 	cfg["mp_era"] = mp_era;
 	cfg["mp_scenario"] = mp_scenario;
-	cfg["experience_modifier"] = lexical_cast<std::string>(xp_modifier);
+	cfg["experience_modifier"] = xp_modifier;
 	cfg["mp_countdown"] = mp_countdown;
-	cfg["mp_countdown_init_time"] = lexical_cast_default<std::string>(mp_countdown_init_time, "270");
-	cfg["mp_countdown_turn_bonus"] = lexical_cast_default<std::string>(mp_countdown_turn_bonus, "35");
-	cfg["mp_countdown_reservoir_time"] = lexical_cast_default<std::string>(mp_countdown_reservoir_time, "330");
-	cfg["mp_countdown_action_bonus"] = lexical_cast_default<std::string>(mp_countdown_action_bonus, "13");
-	cfg["mp_village_gold"] = lexical_cast<std::string>(village_gold);
+	cfg["mp_countdown_init_time"] = mp_countdown_init_time;
+	cfg["mp_countdown_turn_bonus"] = mp_countdown_turn_bonus;
+	cfg["mp_countdown_reservoir_time"] = mp_countdown_reservoir_time;
+	cfg["mp_countdown_action_bonus"] = mp_countdown_action_bonus;
+	cfg["mp_village_gold"] = village_gold;
 	cfg["mp_fog"] = fog_game;
 	cfg["mp_shroud"] = shroud_game;
 	cfg["mp_use_map_settings"] = use_map_settings;
