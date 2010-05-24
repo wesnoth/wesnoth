@@ -292,7 +292,7 @@ unit::unit(unit_map* unitmap, const config& cfg,
 	underlying_id_ = lexical_cast_default<size_t>(cfg["underlying_id"],0);
 	set_underlying_id();
 
-	overlays_ = utils::split(cfg["overlays"]);
+	overlays_ = utils::paranthetical_split(cfg["overlays"], ',');
 	if(overlays_.size() == 1 && overlays_.front() == "") {
 		overlays_.clear();
 	}
