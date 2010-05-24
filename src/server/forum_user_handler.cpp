@@ -29,12 +29,12 @@ static lg::log_domain log_mp_user_handler("mp_user_handler");
 #define DBG_UH LOG_STREAM(debug, log_mp_user_handler)
 
 fuh::fuh(const config& c) {
-	db_name_ = c["db_name"];
-	db_host_ = c["db_host"];
-	db_user_ = c["db_user"];
-	db_password_ = c["db_password"];
-	db_users_table_ = c["db_users_table"];
-	db_extra_table_ = c["db_extra_table"];
+	db_name_ = c["db_name"].str();
+	db_host_ = c["db_host"].str();
+	db_user_ = c["db_user"].str();
+	db_password_ = c["db_password"].str();
+	db_users_table_ = c["db_users_table"].str();
+	db_extra_table_ = c["db_extra_table"].str();
 
 	conn = mysql_init(NULL);
 
