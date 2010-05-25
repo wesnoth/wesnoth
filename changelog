@@ -1,22 +1,41 @@
 Version 1.8.1+svn:
  * Campaigns:
    * Eastern Invasion:
-     * Made it slightly easier to rescue the knights in 'Mal-Ravanal's Capital'.
+     * Made it slightly easier to rescue the knights in 'Mal-Ravanal's Capital'
+   * Liberty:
+     * Fixed the village approach dialogue in the first scenario not triggering
+       right
+   * Northern Rebirth:
+     * Fixed "scenario 'Showdown' not found" error
    * The South Guard:
-     * A new set of story art by Scavenger.
+     * A new set of story art by Scavenger
+   * Under the Burning Suns:
+     * Fixed scouts sometimes not appearing in the first scenario
+     * Fixed broken transparancy for several images
  * Language and i18n:
    * Updated translations: Chinese (Simplified), French, Galician, German,
      Italian, Japanese, Serbian, Slovak, Spanish
  * Music:
-   * Replacement for "Northerners" by Stephen Rozanc.
+   * Replacement for "Northerners" by Stephen Rozanc
  * Miscellaneous and bug fixes:
-   * When warning the player about installing add-ons with missing dependencies,
-     make 'OK' and 'Cancel' work as expected (bug #15960)
-   * Don't crash if a [story] [part] [if] misses [then] or [else] (bug #16028)
-   * Added an advanced preference for disabling desktop notifications.
    * Added an internal command 'unsafe_lua' for enabling remote debugging.
-   * Fix a crash on OS X caused by passing invalid utf8 to pango
-
+   * Allow multi-argument image path functions to work in the unit overlays list
+   * Fixed bug #15701: Added an advanced preference for disabling desktop
+     notifications
+   * Fixed bug #15960: When warning the player about installing add-ons with
+     missing dependencies, make 'OK' and 'Cancel' work as expected
+   * Fixed bug #16020: Trim invalid utf-8 before passing it to pango, fixing a
+     crash in OSX
+   * Fixed bug #16028: Don't crash if a [story] [part] [if] misses [then] or
+     [else]
+   * Fixed bug #16035: wmllint missing stones -> petrifies
+   * Fixed bug #16041: error in wmllint tag replacement
+   * Fixed bug #16052: Propagate with_border parameter to nested location
+     computations
+   * Fixed bug #16072: Ensured that units are removed from recall list before
+     being recalled
+   * Fixed segfault when using [time_area]
+   
 Version 1.8.1:
  * Campaigns:
    * Northern Rebirth:
