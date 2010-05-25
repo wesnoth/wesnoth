@@ -106,21 +106,21 @@ class TagNode:
         r = []
         for sub in self.data:
             ok = True
-            for k, v in kw:
+            for k, v in kw.items():
                 if k == "tag":
                    if not isinstance(sub, TagNode): ok = False
                    elif not sub.name == v: ok = False
                 elif k == "att":
                    if not isinstance(sub, AttributeNode): ok = False
-                   elif not sub.name == v: ok = False
+                   elif not sub.key == v: ok = False
             if ok:
                 r.append(sub)
         return r
     
-    def get_text_val(self, name, default):
+    def get_text_val(self, name, default = None, translation = None):
         x = self.get_all(att = name)
         if not x: return default
-        return x.get_text()
+        return x[0].get_text(translation)
 
 class RootNode(TagNode):
     """
@@ -137,7 +137,7 @@ class RootNode(TagNode):
         return s
 
 class Parser:
-    def __init__(self, wesnoth_exe, defines):
+    def __init__(self, wesnoth_exe, defines = ""):
         """
         path - Path to the file to parse.
         wesnoth_exe - Wesnoth executable to use. This should have been
@@ -149,12 +149,11 @@ class Parser:
         
         self.last_wml_line = "?"
         self.parser_line = 0
-        
-        self.get_datadir()
-        self.get_userdir()
     
     def parse_file(self, path):
         self.path = path
+        self.preprocess()
+        self.parse()
 
     def parse_text(self, text):
         self.file = tempfile.NamedTemporaryFile(prefix = "wmlparser_",
@@ -162,19 +161,9 @@ class Parser:
         self.file.write(text)
         self.file.flush()
         self.path = self.file.name
+        self.preprocess()
+        self.parse()
 
-    def get_datadir(self):
-        p = subprocess.Popen([self.wesnoth_exe, "--path"],
-            stdout = subprocess.PIPE, stderr = subprocess.PIPE)
-        out, err = p.communicate()
-        self.datadir = out
-    
-    def get_userdir(self):
-        p = subprocess.Popen([self.wesnoth_exe, "--config-path"],
-            stdout = subprocess.PIPE, stderr = subprocess.PIPE)
-        out, err = p.communicate()
-        self.userdir = out
-    
     def preprocess(self):
         """
         Call wesnoth --preprocess to get preprocessed WML which we
@@ -205,18 +194,50 @@ class Parser:
         this.
         """
         if not line: return
+        
+        if self.in_arrows:
+            arrows = line.find('>>')
+            if arrows >= 0:
+                self.in_arrows = False
+                self.temp_string += line[:arrows]
+                self.temp_string_node = StringNode(self.temp_string)
+                self.temp_string = ""
+                self.temp_key_nodes[self.commas].value.append(
+                    self.temp_string_node)
+                self.in_arrows = False
+                self.parse_line_without_commands(line[arrows + 2:])
+            else:
+                self.temp_string += line
+            return
+
+        arrows = line.find('<<')
         quote = line.find('"')
+        
+        if arrows >= 0 and (quote < 0 or quote > arrows):
+            self.parse_line_without_commands(line[:arrows])
+            self.in_arrows = True
+            self.parse_line_without_commands(line[arrows + 2:])
+            return
+
         if quote >= 0:
             if self.in_string:
+                # double quote
+                if quote < len(line) - 1 and line[quote + 1] == '"':
+                    self.temp_string += line[:quote + 1]
+                    self.parse_line_without_commands(line[quote + 2:])
+                    return
                 self.temp_string += line[:quote]
                 self.temp_string_node = StringNode(self.temp_string)
                 if self.translatable:
                     self.temp_string_node.textdomain = self.textdomain
                     self.translatable = False
                 self.temp_string = ""
-                if not self.temp_key_node:
+                if not self.temp_key_nodes:
                     raise WMLError(self, "Unexpected string value.")
-                self.temp_key_node.value.append(self.temp_string_node)
+                
+                self.temp_key_nodes[self.commas].value.append(
+                    self.temp_string_node)
+                
                 self.in_string = False
                 self.parse_line_without_commands(line[quote + 1:])
             else:
@@ -234,7 +255,7 @@ class Parser:
         Parse a WML fragment outside of strings.
         """
         if not line: return
-        if self.temp_key_node == None:
+        if not self.temp_key_nodes:
             line = line.lstrip()
             if not line: return
 
@@ -275,32 +296,48 @@ class Parser:
 
     def handle_attribute(self, line):
         assign = line.find("=")
+        remainder = None
         if assign >= 0:
-            self.temp_key_node = AttributeNode(line[:assign])
-            self.parent_node[-1].data.append(self.temp_key_node)
-            self.parse_outside_strings(line[assign + 1:])
-        else:
-            self.temp_key_node = AttributeNode(line)
-            self.parent_node[-1].data.append(self.temp_key_node)
+            remainder = line[assign + 1:]
+            line = line[:assign]
+        
+        self.commas = 0
+        self.temp_key_nodes = []
+        for att in line.split(","):
+            att = att.strip()
+            node = AttributeNode(att)
+            self.temp_key_nodes.append(node)
+            self.parent_node[-1].data.append(node)
+
+        if remainder:
+            self.parse_outside_strings(remainder)
 
     def handle_value(self, segment, is_first):
+        
+        def add_text(segment):
+            n = len(self.temp_key_nodes)
+            maxsplit = n - self.commas - 1
+            if maxsplit < 0: maxsplit = 0
+            for subsegment in segment.split(",", maxsplit):
+                self.temp_string += subsegment.strip()
+                self.temp_string_node = StringNode(self.temp_string)
+                self.temp_string = ""
+                self.temp_key_nodes[self.commas].value.append(
+                    self.temp_string_node)
+                if self.commas < n - 1:
+                    self.commas += 1
+
         # Finish assignment on newline, except if there is a
         # plus sign before the newline.
         if segment[-1] == "\n":
             segment = segment.rstrip()
             if segment:
-                self.temp_string += segment
-                self.temp_string_node = StringNode(self.temp_string)
-                self.temp_string = ""
-                self.temp_key_node.value.append(self.temp_string_node)
-                self.temp_key_node = None
+                add_text(segment)
+                self.temp_key_nodes = []
             elif is_first:
-                self.temp_key_node = None
+                self.temp_key_nodes = []
         else:
-            self.temp_string += segment
-            self.temp_string_node = StringNode(self.temp_string)
-            self.temp_string = ""
-            self.temp_key_node.value.append(self.temp_string_node)
+            add_text(segment)
 
     def parse(self):
         """
@@ -310,8 +347,10 @@ class Parser:
         # parsing state
         self.temp_string = ""
         self.temp_string_node = None
-        self.temp_key_node = None
+        self.commas = 0
+        self.temp_key_nodes = []
         self.in_string = False
+        self.in_arrows = False
         self.textdomain = "wesnoth"
         self.translatable = False
         self.root = RootNode()
@@ -340,26 +379,157 @@ class Parser:
         else:
             raise WMLError(self, "Unknown parser command: " + com);
 
+    def get_all(self, **kw):
+        return self.root.get_all(**kw)
+    
+    def get_text_val(self, name, default = None, translation = None):
+        return self.root.get_text_val(name, default, translation)
+
+
+########################################################################
+#                                                                      # 
+# EVERYTHING BELOW IS ONLY TESTING STUFF AND CAN BE SAFELY IGNORED OR  #
+# REMOVED.                                                             #
+#                                                                      #
+########################################################################
+
 if __name__ == "__main__":
     opt = optparse.OptionParser()
     opt.add_option("-i", "--input")
     opt.add_option("-t", "--text")
     opt.add_option("-w", "--wesnoth")
     opt.add_option("-d", "--defines")
+    opt.add_option("-T", "--test", action = "store_true")
     options, args = opt.parse_args()
-    
-    if not options.input and not options.text:
-        sys.stderr.write("No input given.\n")
+
+    if not options.input and not options.text and not options.test:
+        sys.stderr.write("No input given. Use -h for help.\n")
         sys.exit(1)
     
     if not options.wesnoth or not os.path.exists(options.wesnoth):
         sys.stderr.write("Wesnoth executable not found.\n")
         sys.exit(1)
+    
+    if options.test:
+        print("Running tests")
+        p = Parser(options.wesnoth)
+        
+        only = None
+        def test(input, expected, note):
+            if only and note != only: return
+            input = input.strip()
+            expected = expected.strip()
+            p.parse_text(input)
+            output = p.root.debug().strip()
+            if output != expected:
+                print("__________")
+                print("FAILED " + note)
+                print("INPUT:")
+                print(input)
+                print("OUTPUT:")
+                print(output)
+                print("EXPECTED:")
+                print(expected)
+                print("__________")
+            else:
+                print("PASSED " + note)
+        
+        test(
+"""
+[test]
+a=1
+[/test]
+""", """
+[test]
+    a='1'
+[/test]
+""", "simple")
+
+        test(
+"""
+[test]
+a, b, c = 1, 2, 3
+[/test]
+""", """
+[test]
+    a='1'
+    b='2'
+    c='3'
+[/test]
+""", "multi assign")
+
+        test(
+"""
+[test]
+a, b = 1, 2, 3
+[/test]
+""", """
+[test]
+    a='1'
+    b='2, 3'
+[/test]
+""", "multi assign 2")
+
+        test(
+"""
+[test]
+a, b, c = 1, 2
+[/test]
+""", """
+[test]
+    a='1'
+    b='2'
+    c=
+[/test]
+""", "multi assign 3")
+
+        test(
+"""
+#textdomain A
+#define X
+    _ "abc"
+#enddef
+#textdomain B
+[test]
+x = _ "abc" + {X}
+[/test]
+""", """
+[test]
+    x=_<B>'abc' .. _<A>'abc'
+[/test]
+""", "textdomain")
+
+        test(
+"""
+[test]
+a = "a ""quoted"" word"
+[/test]
+""",
+"""
+[test]
+    a='a "quoted" word'
+[/test]
+""", "quoted")
+
+        test(
+"""
+[test]
+code = <<
+    "quotes" here
+    ""blah""
+>>
+[/test]
+""",
+"""
+[test]
+    code='\\n    "quotes" here\\n    ""blah""\\n'
+[/test]
+""", "quoted2")
+        
+        sys.exit(0)
 
     p = Parser(options.wesnoth, options.defines)
     if options.input: p.parse_file(options.input)
     elif options.text: p.parse_text(options.text)
-    p.preprocess()
-    p.parse()
     print(p.root.debug())
 
