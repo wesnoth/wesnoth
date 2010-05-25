@@ -1526,7 +1526,7 @@ void attack::perform()
 	d_.get_unit().set_resting(false);
 
 	// If the attacker was invisible, she isn't anymore!
-	a_.get_unit().set_state(unit::STATE_HIDDEN,false);
+	a_.get_unit().set_state(unit::STATE_UNCOVERED, true);
 
 	bc_ = new battle_context(units_, a_.loc_, d_.loc_, a_.weapon_, d_.weapon_);
 	a_stats_ = &bc_->get_attacker_stats();

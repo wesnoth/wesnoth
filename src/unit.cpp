@@ -276,8 +276,6 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	units_(resources::units),
 	invisibility_cache_()
 {
-	set_state(STATE_HIDDEN,true);
-
 	if (type_.empty()) {
 		throw game::game_error("creating unit with an empty type field");
 	}
@@ -441,8 +439,8 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 					"support will be removed in 1.9.2.\n";
 				if (!st.second.to_bool(true))
 					set_state("unhealable", true);
-			} else {
-				set_state(st.first, st.second.to_bool());
+			} else if (st.second.to_bool()) {
+				set_state(st.first, true);
 			}
 		}
 		cfg_.clear_children("status");
@@ -647,7 +645,6 @@ unit::unit(const unit_type *t, int side, bool real_unit,
 	getsHit_=0;
 	end_turn_ = false;
 	hold_position_ = false;
-	set_state(STATE_HIDDEN,true);
 	next_idling_ = 0;
 	frame_begin_time_ = 0;
 	unit_halo_ = halo::NO_HALO;
@@ -1033,7 +1030,7 @@ void unit::new_turn()
 	end_turn_ = false;
 	movement_ = total_movement();
 	attacks_left_ = max_attacks_;
-	set_state(STATE_HIDDEN,true);
+	set_state(STATE_UNCOVERED, false);
 
 	if (hold_position_) {
 		end_turn_ = true;
@@ -1110,7 +1107,10 @@ const std::map<std::string,std::string> unit::get_states() const
 	for (std::map<std::string, state_t>::const_iterator i = known_boolean_state_names_.begin(),
 	     i_end = known_boolean_state_names_.end(); i != i_end; ++i)
 	{
-		all_states[i->first] = get_state(i->second) ? "yes" : "no";
+		if (get_state(i->second)) {
+			all_states.insert(make_pair(i->first, "yes"));
+		}
+
 	}
 	return all_states;
 }
@@ -1150,7 +1150,7 @@ std::map<std::string, unit::state_t> unit::get_known_boolean_state_names()
 	known_boolean_state_names_map.insert(std::make_pair("slowed",STATE_SLOWED));
 	known_boolean_state_names_map.insert(std::make_pair("poisoned",STATE_POISONED));
 	known_boolean_state_names_map.insert(std::make_pair("petrified",STATE_PETRIFIED));
-	known_boolean_state_names_map.insert(std::make_pair("hidden",STATE_HIDDEN));
+	known_boolean_state_names_map.insert(std::make_pair("uncovered", STATE_UNCOVERED));
 	known_boolean_state_names_map.insert(std::make_pair("not_moved",STATE_NOT_MOVED));
 	known_boolean_state_names_map.insert(std::make_pair("unhealable",STATE_UNHEALABLE));
 	//not sure if "guardian" is a yes/no state.
@@ -2629,7 +2629,7 @@ bool unit::invisible(const map_location& loc,
 
 	// Test hidden status
 	static const std::string hides("hides");
-	bool is_inv = get_state(STATE_HIDDEN) && get_ability_bool(hides,loc);
+	bool is_inv = !get_state(STATE_UNCOVERED) && get_ability_bool(hides,loc);
 	if(is_inv){
 		foreach (const unit &u, units)
 		{

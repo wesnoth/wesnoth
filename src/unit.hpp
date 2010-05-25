@@ -161,7 +161,7 @@ public:
 	bool get_state(const std::string& state) const;
 	void set_state(const std::string &state, bool value);
 	enum state_t { STATE_SLOWED = 0, STATE_POISONED, STATE_PETRIFIED,
-		STATE_HIDDEN, STATE_NOT_MOVED, STATE_UNHEALABLE, STATE_UNKNOWN = -1 };
+		STATE_UNCOVERED, STATE_NOT_MOVED, STATE_UNHEALABLE, STATE_UNKNOWN = -1 };
 	void set_state(state_t state, bool value);
 	bool get_state(state_t state) const;
 	static state_t get_known_boolean_state_id(const std::string &state);
