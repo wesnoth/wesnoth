@@ -80,7 +80,7 @@ public class CampaignNewWizard extends Wizard implements INewWizard {
 	}
 	public void createProject(IProgressMonitor monitor)
 	{
-		monitor.beginTask("Creating the project structure...", 10);
+		monitor.beginTask("Creating the project structure...", 15);
 
 		try {
 			IProject currentProject = page0_.getProjectHandle();
@@ -105,6 +105,11 @@ public class CampaignNewWizard extends Wizard implements INewWizard {
 
 			// campaign_name.pbl - for uploading the campaign on the webserver
 			createFile(currentProject, page1_.getCampaignName()+".pbl",prepareTemplate("pbl"));
+			monitor.worked(2);
+
+			createFile(currentProject, "build.xml", prepareTemplate("build.xml"));
+			monitor.worked(4);
+
 		} catch (CoreException e) {
 			e.printStackTrace();
 		}
@@ -153,9 +158,7 @@ public class CampaignNewWizard extends Wizard implements INewWizard {
 			}
 		}
 	}
-	/* (non-Javadoc)
-	 * @see org.eclipse.jface.wizard.Wizard#canFinish()
-	 */
+
 	@Override
 	public boolean canFinish() {
 		IWizardPage page = getContainer().getCurrentPage();
