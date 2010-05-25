@@ -1723,15 +1723,10 @@ bool connect::can_start_game() const
 
 void connect::update_playerlist_state(bool silent)
 {
-	/**
-	 * @todo Better message for 1.9.
-	 *
-	 * If !sides_available() && !can_start() we could show a better message,
-	 * but that needs to wait until the stringfreeze is lifted.
-	 */
-	waiting_label_.set_text(!can_start_game()
-			? _("Waiting for players to join...")
-			: "");
+	waiting_label_.set_text(can_start_game() ? ""
+			: sides_available()
+				? _("Waiting for players to join...")
+				: _("Waiting for players to choose factions..."));
 	launch_.enable(can_start_game());
 
 	// If the "gamelist_" variable has users, use it.
