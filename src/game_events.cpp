@@ -2897,7 +2897,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 	}
 
 	const vconfig text_input_element = has_text_input ?
-		text_input_elements.front() : vconfig();
+		text_input_elements.front() : vconfig::empty_vconfig();
 
 	int option_chosen = 0;
 	std::string text_input_result;

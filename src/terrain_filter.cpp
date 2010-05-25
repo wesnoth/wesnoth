@@ -35,7 +35,7 @@ static lg::log_domain log_engine("engine");
 #pragma warning(push)
 #pragma warning(disable:4413)
 terrain_filter::terrain_filter():
-	cfg_(vconfig()),
+	cfg_(unconstructed_vconfig()),
 	units_(unit_map()),
 	cache_(),
 	max_loop_(),

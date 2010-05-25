@@ -3240,7 +3240,7 @@ void console_handler::do_show_var() {
 
 
 void console_handler::do_inspect() {
-	vconfig cfg;
+	vconfig cfg = vconfig::empty_vconfig();
 	gui2::tgamestate_inspector inspect_dialog(cfg);
 	inspect_dialog.show(resources::screen->video());
 }

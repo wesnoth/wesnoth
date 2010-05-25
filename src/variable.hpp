@@ -35,17 +35,15 @@ class unit_map;
 class vconfig
 {
 private:
+	vconfig();
 	vconfig(const config* cfg, const config* cache_key);
 public:
-/**
- * TODO: in development version 1.7+, the default constructor of vconfig() will
- * wrap an empty config instead of a null config to facilitate some gui2 code uses
- *
- */
-	vconfig();
 	vconfig(const vconfig& v);
 	explicit vconfig(const config &cfg, bool is_volatile=false);
 	~vconfig();
+
+	static vconfig empty_vconfig(); // Valid to dereference. Contains nothing
+	static vconfig unconstructed_vconfig(); // Must not be dereferenced
 
 	vconfig& operator=(const vconfig& cfg);
 	vconfig& operator=(const config &cfg);

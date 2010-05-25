@@ -206,6 +206,16 @@ vconfig::~vconfig()
 	decrement_config_usage(cache_key_);
 }
 
+vconfig vconfig::empty_vconfig()
+{
+    return vconfig(config(), true);
+}
+
+vconfig vconfig::unconstructed_vconfig()
+{
+    return vconfig();
+}
+
 vconfig& vconfig::operator=(const vconfig& cfg)
 {
 	const config* prev_key = cache_key_;
@@ -328,14 +338,11 @@ vconfig vconfig::child(const std::string& key) const
 			return vconfig(cp, cp);
 		}
 	}
-	return vconfig();
+	return empty_vconfig();
 }
 
 bool vconfig::has_child(const std::string& key) const
 {
-	if(!cfg_) {
-		return false;
-	}
 	if (cfg_->child(key)) {
 		return true;
 	}
@@ -351,9 +358,6 @@ bool vconfig::has_child(const std::string& key) const
 
 const t_string vconfig::expand(const std::string& key) const
 {
-	if(!cfg_) {
-		return t_string();
-	}
 	const t_string& val = (*cfg_)[key];
 	if(repos != NULL && !val.str().empty()) {
 		std::string interp = utils::interpolate_variables_into_string(val.str(), *repos);

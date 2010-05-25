@@ -347,7 +347,7 @@ static bool luaW_tovconfig(lua_State *L, int index, vconfig &vcfg, bool def = tr
 		case LUA_TNONE:
 		case LUA_TNIL:
 			if (def)
-				vcfg = vconfig(config(), true);
+				vcfg = vconfig::empty_vconfig();
 			break;
 		default:
 			return false;
@@ -851,7 +851,7 @@ static int intf_get_units(lua_State *L)
 		return luaL_typerror(L, 1, "WML table");
 	}
 
-	vconfig filter;
+	vconfig filter = vconfig::unconstructed_vconfig();
 	if (!luaW_tovconfig(L, 1, filter, false))
 		goto error_call_destructors;
 
@@ -891,7 +891,7 @@ static int intf_fire(lua_State *L)
 
 	char const *m = luaL_checkstring(L, 1);
 
-	vconfig vcfg;
+	vconfig vcfg = vconfig::unconstructed_vconfig();
 	if (!luaW_tovconfig(L, 2, vcfg))
 		goto error_call_destructors;
 
@@ -1104,7 +1104,7 @@ static int impl_wml_action_call(lua_State *L)
 		return luaL_typerror(L, 2, "WML table");
 	}
 
-	vconfig vcfg;
+	vconfig vcfg = vconfig::unconstructed_vconfig();
 	if (!luaW_tovconfig(L, 2, vcfg))
 		goto error_call_destructors;
 
