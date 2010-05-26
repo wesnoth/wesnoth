@@ -59,7 +59,6 @@ namespace {
   rand_rng::seed_t last_seed;
   bool seed_valid = false;
   boost::function<void (rand_rng::seed_t)> new_seed_callback;
-  bool srng_disabled = false;
 }
 
 
@@ -120,8 +119,8 @@ void invalidate_seed()
 
 bool has_valid_seed()
 {
-	//if the SRNG is disabled or we're in a SP game the seed is always valid
-	return srng_disabled || (network::nconnections() == 0) || seed_valid;
+	//if we're in a SP game the seed is always valid
+	return (network::nconnections() == 0) || seed_valid;
 }
 
 seed_t get_last_seed()
@@ -139,11 +138,6 @@ void clear_new_seed_callback()
 {
 	DBG_RND << "clear_new_seed_callback\n";
 	new_seed_callback = NULL;
-}
-
-void disable_server_rng()
-{
-	srng_disabled = true;
 }
 
 

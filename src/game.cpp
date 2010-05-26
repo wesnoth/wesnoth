@@ -474,8 +474,6 @@ game_controller::game_controller(int argc, char** argv) :
 				}
 			}
 #endif
-		} else if(val == "--no-srng") {
-			rand_rng::disable_server_rng();
 		} else if(val == "-datadir") {
 			if(arg_+1 != argc_) {
 				++arg_;
@@ -1851,8 +1849,6 @@ static int process_command_args(int argc, char** argv) {
 			<< "  --nocache                    disables caching of game data.\n"
 			<< "  --nomusic                    runs the game without music.\n"
 			<< "  --nosound                    runs the game without sounds and music.\n"
-			<< "  --no-srng                    disable server-side RNG support (will cause OOS\n"
-			<< "                               errors unless every player uses it)\n"
 			<< "  --path                       prints the path to the data directory and exits.\n"
 			<< "  --preprocess, -p[=<define1>,<define2>,...] <file/folder> <target directory>\n"
 			<< "                               preprocesses a specified file/folder. The preprocessed\n"

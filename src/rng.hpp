@@ -94,12 +94,6 @@ void set_new_seed_callback(boost::function<void (seed_t)> f);
  */
 void clear_new_seed_callback();
 
-/**
- * Disable server RNG support, will cause OOS if playing MP with a client with
- * SRNG enabled. For debugging purposes, should be removed before 1.8.0
- */
-void disable_server_rng();
-
 } // ends rand_rng namespace
 
 #endif
