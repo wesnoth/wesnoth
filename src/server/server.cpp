@@ -365,13 +365,6 @@ void server::send_error(network::connection sock, const char* msg, const char* e
 	send_doc(doc, sock, "error");
 }
 
-void server::send_error_dup(network::connection sock, const std::string& msg) const
-{
-	simple_wml::document doc;
-	doc.root().add_child("error").set_attr_dup("message", msg.c_str());
-	send_doc(doc, sock, "error");
-}
-
 void server::send_password_request(network::connection sock, const char* msg,
 	const std::string& user, const char* error_code, bool force_confirmation)
 {

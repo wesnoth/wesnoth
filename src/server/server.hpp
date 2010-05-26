@@ -19,7 +19,6 @@ public:
 	void run();
 private:
 	void send_error(network::connection sock, const char* msg, const char* error_code ="") const;
-	void send_error_dup(network::connection sock, const std::string& msg) const;
 
 	// The same as send_error(), we just add an extra child to the response
 	// telling the client the chosen username requires a password.
