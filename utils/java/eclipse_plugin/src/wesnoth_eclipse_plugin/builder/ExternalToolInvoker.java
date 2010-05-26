@@ -7,8 +7,9 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.ui.IWorkbenchWindow;
+
+import wesnoth_eclipse_plugin.utils.GUIUtils;
 
 /**
  * @author Timotei Dolean
@@ -171,7 +172,7 @@ public class ExternalToolInvoker {
 					{
 						if (toolInvoker.waitFor() != 0 && workbenchWindow != null)
 						{
-							showMessageBox(workbenchWindow, "The tool returned a non-zero value.");
+							GUIUtils.showMessageBox(workbenchWindow, "The tool returned a non-zero value.");
 						}
 					}
 
@@ -217,7 +218,7 @@ public class ExternalToolInvoker {
 
 									if (toolInvoker.waitFor() != 0)
 									{
-										showMessageBox(workbenchWindow, "The tool returned a non-zero value.");
+										GUIUtils.showMessageBox(workbenchWindow, "The tool returned a non-zero value.");
 									}
 								}
 							});
@@ -233,30 +234,5 @@ public class ExternalToolInvoker {
 		});
 		launcherThread.start();
 		return true;
-	}
-
-	/**
-	 * Shows a message box with the specified message (thread-safe)
-	 * @param window the window where to show the message box
-	 * @param message the message to print
-	 */
-	private static void showMessageBox(final IWorkbenchWindow window,final String message)
-	{
-		try
-		{
-			window.getShell().getDisplay().asyncExec(new Runnable() {
-				@Override
-				public void run()
-				{
-					MessageBox box = new MessageBox(window.getShell());
-					box.setMessage(message);
-					box.open();
-				}
-			});
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
 	}
 }
