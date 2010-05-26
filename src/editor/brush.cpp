@@ -18,8 +18,6 @@
 
 #include "../foreach.hpp"
 #include "../pathutils.hpp"
-#include "serialization/string_utils.hpp"
-#include "util.hpp"
 
 namespace editor {
 
@@ -35,7 +33,7 @@ brush::brush(const config& cfg)
  	, name_(cfg["name"])
 	, image_(cfg["image"])
 {
-	int radius = lexical_cast_default<int>(cfg["radius"], 0);
+	int radius = cfg["radius"];
 	if (radius > 0) {
 		std::vector<map_location> in_radius;
 		get_tiles_in_radius(map_location(0, 0), radius, in_radius);
@@ -45,8 +43,8 @@ brush::brush(const config& cfg)
 	}
 	foreach (const config &relative, cfg.child_range("relative"))
 	{
-		int x = lexical_cast_default<int>(relative["x"], 0);
-		int y = lexical_cast_default<int>(relative["y"], 0);
+		int x = relative["x"];
+		int y = relative["y"];
 		add_relative_location(x, y);
 	}
 	if (relative_tiles_.empty()) {
