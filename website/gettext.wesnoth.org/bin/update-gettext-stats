@@ -18,8 +18,8 @@ cd $SVNCHECKOUTPATH/wescamp-i18n/
 #svn cleanup
 svn up trunk/ branches/
 
-#update the announcement websites
-cd $SVNCHECKOUTPATH/announcement-websites/
+#update the website checkout
+cd $SVNCHECKOUTPATH/website/
 svn up
 
 #update the stats
