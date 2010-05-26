@@ -39,6 +39,7 @@
 #include "sdl_utils.hpp"
 #include "text.hpp"
 #include "tooltips.hpp"
+#include "arrow.hpp"
 
 #include "SDL_image.h"
 
@@ -2361,4 +2362,17 @@ void display::invalidate_animations()
 			invalidate_animations_location(loc);
 		}
 	}
+}
+
+arrow* display::create_arrow() {
+	//TODO: implement
+	return new arrow;
+}
+
+void display::arrow_changed(const arrow & a) {
+	//TODO: implement
+}
+
+void display::arrow_deleted(const arrow & a) {
+	//TODO: implement
 }

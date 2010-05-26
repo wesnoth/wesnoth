@@ -478,6 +478,7 @@ SET(libwesnoth-game_STAT_SRC
     construct_dialog.cpp
     cursor.cpp
     display.cpp
+    arrow.cpp
     events.cpp
     filechooser.cpp
     font.cpp
