@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-05-24 17:53+0200\n"
-"PO-Revision-Date: 2010-05-16 21:13+0800\n"
+"PO-Revision-Date: 2010-05-26 21:32+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -140,7 +140,7 @@ msgstr "精灵主楼"
 #. [terrain_type]: id=ruined_keep
 #: data/core/terrain.cfg:327
 msgid "Ruined Castle Keep"
-msgstr "被摧毁的城堡主楼"
+msgstr "荒废的城堡主楼"
 
 #. [terrain_type]: id=sunken_keep
 #: data/core/terrain.cfg:340
@@ -544,7 +544,7 @@ msgstr "不可步行地形"
 #: data/gui/default/window/mp_method_selection.cfg:148
 #: data/gui/default/window/mp_server_list.cfg:41
 msgid "Connect to Server"
-msgstr "连接服务器"
+msgstr "连接到服务器"
 
 #. [label]
 #: data/gui/default/window/addon_connect.cfg:51
@@ -844,7 +844,7 @@ msgstr "您真的想删除这个游戏吗？"
 #. [toggle_button]: id=dont_ask_again
 #: data/gui/default/window/game_delete.cfg:72
 msgid "Don't ask me again!"
-msgstr "不要再次询问！"
+msgstr "不要再次询问我！"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -1380,7 +1380,7 @@ msgstr "战争迷雾"
 #. [toggle_button]: id=random_start_time
 #: data/gui/default/window/mp_create_game.cfg:493
 msgid "Random start time"
-msgstr "游戏开始时间随机"
+msgstr "游戏开始时的时段随机"
 
 #. [button]: id=ok
 #: data/gui/default/window/mp_create_game.cfg:535
@@ -2027,7 +2027,7 @@ msgstr "当前无已知主题。请尝试在游戏时切换主题。"
 
 #: src/game_preferences_display.cpp:1278
 msgid "Find $filename server binary to host networked games"
-msgstr "查找 $filename 服务器可执行文件以便建立联网游戏"
+msgstr "查找$filename服务器可执行文件以便建立联网游戏"
 
 #: src/gui/auxiliary/canvas.cpp:369
 msgid "Line doesn't fit on canvas."
@@ -2139,7 +2139,7 @@ msgstr "版本："
 
 #: src/gui/dialogs/lobby_main.cpp:255
 msgid "whisper to $receiver"
-msgstr "与 $receiver 说悄悄话"
+msgstr "与$receiver说悄悄话"
 
 #: src/gui/dialogs/lobby_main.cpp:691
 msgid "Games: showing $num_shown out of $num_total"
@@ -2158,20 +2158,20 @@ msgid ""
 "Whisper session with $name started. If you don't want to receive messages "
 "from this user, type /ignore $name\n"
 msgstr ""
-"和 $name 的私人聊天开始。如果你不希望接收来自该用户的消息，请输入 /ignore "
+"和$name的私人聊天开始。如果你不希望接收来自该用户的消息，请输入 /ignore "
 "$name\n"
 
 #: src/gui/dialogs/lobby_main.cpp:1083
 msgid "Room $name joined"
-msgstr "已加入 $name 房间"
+msgstr "已加入$name房间"
 
 #: src/gui/dialogs/lobby_main.cpp:1400
 msgid "$player has entered the room"
-msgstr "$player 进入了房间"
+msgstr "$player进入了房间"
 
 #: src/gui/dialogs/lobby_main.cpp:1438
 msgid "$player has left the room"
-msgstr "$player 离开了房间"
+msgstr "$player离开了房间"
 
 #: src/gui/dialogs/lobby_main.cpp:1551
 msgid "Password Required"
@@ -2808,9 +2808,9 @@ msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
 msgstr ""
-"在区域“[$section|]”中有“$primary_key| = $primary_value”，其必须设的键"
-"值“$key|”没有设置。"
+"在小节“[$section|]”中有“$primary_key| = $primary_value”，其必须设定的键"
+"值“$key|”没有设定。"
 
 #: src/wml_exception.cpp:76
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
-msgstr "在区域“[$section|]”中，必须设的键值“$key|”没有设置。"
+msgstr "在小节“[$section|]”中，必须设定的键值“$key|”没有设定。"
