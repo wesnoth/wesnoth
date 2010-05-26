@@ -110,7 +110,7 @@ then
 
 	# The current networking code breaks strict aliasing in g++ 4.5.
 	# Once the code is converted to boost::asio it might be reenabled.
-	CXXFLAGS="-Werror -Wno-unused-parameter -Wno-strict-aliasing $CXXFLAGS"
+	CXXFLAGS="-Werror -Wno-strict-aliasing $CXXFLAGS"
 fi
 
 # Make tests default in svn version

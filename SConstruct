@@ -373,7 +373,7 @@ for env in [test_env, client_env, env]:
         if env['strict']:
             # The current networking code breaks strict aliasing in g++ 4.5.
             # Once the code is converted to boost::asio it might be reenabled.
-            env.AppendUnique(CCFLAGS = Split("-Werror -Wno-unused-parameter -Wno-strict-aliasing"))
+            env.AppendUnique(CCFLAGS = Split("-Werror -Wno-strict-aliasing"))
 
         env["OPT_FLAGS"] = "-O2"
         env["DEBUG_FLAGS"] = Split("-O0 -DDEBUG -ggdb3")
