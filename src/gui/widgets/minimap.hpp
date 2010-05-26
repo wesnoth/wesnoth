@@ -33,11 +33,7 @@ public:
 	tminimap() :
 		tcontrol(1),
 		map_data_(),
-		terrain_(NULL),
-		left_border_(0),
-		right_border_(0),
-		top_border_(0),
-		bottom_border_(0)
+		terrain_(NULL)
 	{
 	}
 
@@ -66,10 +62,6 @@ public:
 
 	void set_config(const ::config* terrain) { terrain_ = terrain; }
 
-	/** Sets all border variables, no function to set one at the time. */
-	void set_borders(const unsigned left,
-		const unsigned right, const unsigned top, const unsigned bottom);
-
 private:
 
 	/** The map data to be used to generate the map. */
@@ -81,16 +73,6 @@ private:
 	 * This config must be set before the object can be drawn.
 	 */
 	const ::config* terrain_;
-
-	/**
-	 * The minimap widget might have some drawing on the borders, these
-	 * variables hold the border size. The minimap itself is not drawn on that
-	 * area.
-	 */
-	unsigned left_border_;
-	unsigned right_border_;
-	unsigned top_border_;
-	unsigned bottom_border_;
 
 	/**
 	 * Gets the image for the minimap.

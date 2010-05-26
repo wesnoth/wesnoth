@@ -120,17 +120,6 @@ struct tvalue
 	typedef std::map<tkey, tvalue> tcache;
 	static tcache cache;
 
-void tminimap::set_borders(const unsigned left,
-		const unsigned right, const unsigned top, const unsigned bottom)
-{
-	left_border_ = left;
-	right_border_ = right;
-	top_border_ = top;
-	bottom_border_ = bottom;
-
-	set_dirty();
-}
-
 static bool compare(const std::pair<unsigned, tcache::iterator>& lhs
 		, const std::pair<unsigned, tcache::iterator>& rhs)
 {
@@ -230,10 +219,6 @@ void tminimap::impl_draw_background(surface& frame_buffer)
 	}
 
 	SDL_Rect rect = get_rect();
-	rect.x += left_border_;
-	rect.y += top_border_;
-	rect.w -= left_border_ + right_border_;
-	rect.h -= top_border_ + bottom_border_;
 	assert(rect.w > 0 && rect.h > 0);
 
 	const ::surface surf = get_image(rect.w, rect.h);
