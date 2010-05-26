@@ -43,6 +43,8 @@ public class WesnothEditorPreferences
 				"Wesnoth executable path:", getFieldEditorParent()));
 		addField(new  DirectoryFieldEditor(PreferenceConstants.P_WESNOTH_WORKING_DIR,
 				"Working directory:", getFieldEditorParent()));
+		addField(new  DirectoryFieldEditor(PreferenceConstants.P_WESNOTH_USER_DIR,
+				"User data directory:", getFieldEditorParent()));
 	}
 
 	public void init(IWorkbench workbench) {

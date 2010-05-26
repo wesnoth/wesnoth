@@ -20,6 +20,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
 		store.setDefault(PreferenceConstants.P_WESNOTH_EXEC_PATH, "");
 		store.setDefault(PreferenceConstants.P_WESNOTH_WORKING_DIR, "");
+		store.setDefault(PreferenceConstants.P_WESNOTH_USER_DIR, "");
 	}
 
 	/**
