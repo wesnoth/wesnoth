@@ -1,8 +1,8 @@
 package wesnoth_eclipse_plugin.preferences;
 
+import org.eclipse.jface.preference.DirectoryFieldEditor;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.jface.preference.FileFieldEditor;
-import org.eclipse.jface.preference.StringFieldEditor;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 
@@ -41,13 +41,10 @@ public class WesnothEditorPreferences
 	public void createFieldEditors() {
 		addField(new FileFieldEditor(PreferenceConstants.P_WESNOTH_EXEC_PATH,
 				"Wesnoth executable path:", getFieldEditorParent()));
-		addField(new  StringFieldEditor(PreferenceConstants.P_WESNOTH_WORKING_DIR,
+		addField(new  DirectoryFieldEditor(PreferenceConstants.P_WESNOTH_WORKING_DIR,
 				"Working directory:", getFieldEditorParent()));
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.ui.IWorkbenchPreferencePage#init(org.eclipse.ui.IWorkbench)
-	 */
 	public void init(IWorkbench workbench) {
 	}
 
