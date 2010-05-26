@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-05-24 17:53+0200\n"
-"PO-Revision-Date: 2010-05-11 23:36+0100\n"
+"PO-Revision-Date: 2010-05-25 23:40+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -98,9 +98,8 @@ msgstr "Zvuky v čakárni"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:107
-#, fuzzy
 msgid "Disable notifications"
-msgstr "Vypnúť automatické ukladanie."
+msgstr "Vypnúť oznamovania"
 
 #. [ai]: id=default # id is needed uniquely identify a MP AI, it is not needed in the scenario AI
 #: data/ai/ais/default_ai.cfg:4
@@ -8842,7 +8841,7 @@ msgstr "Vykonať príkaz v jazyku Lua."
 
 #: src/menu_events.cpp:2466
 msgid "Grant higher privileges to Lua scripts."
-msgstr ""
+msgstr "Povoliť Lua skriptom vyššie oprávnenia."
 
 # bodka má byť, podľa kontextu
 #: src/menu_events.cpp:2468
@@ -9043,7 +9042,7 @@ msgstr "Režim ladenia deaktivovaný!"
 
 #: src/menu_events.cpp:3191
 msgid "Unsafe Lua scripts."
-msgstr ""
+msgstr "Nebezpečné skripty v jazyku Lua."
 
 #: src/menu_events.cpp:3192
 msgid ""
@@ -9051,10 +9050,13 @@ msgid ""
 "continue? If you have downloaded add-ons, do not click 'ok'! They would "
 "instantly take over your computer. You have been warned."
 msgstr ""
+"Chystáš sa povoliť bezpečnostné riziko vo Wesnothe. Si si istý, že chceš "
+"pokračovať? Ak si stiahol nejaké doplnky, neklikaj na 'ok'! Mohli by "
+"ovládnuť počítať. Toto je posledné varovanie."
 
 #: src/menu_events.cpp:3195
 msgid "Unsafe mode enabled!"
-msgstr ""
+msgstr "Nezabezpečený režim zapnutý!"
 
 #: src/menu_events.cpp:3238
 msgid "Variable not found"
